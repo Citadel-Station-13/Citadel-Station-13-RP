@@ -1210,6 +1210,36 @@
 	icon_state = "cyancowgirl"
 	pokephrase = "Yee Haw!"
 
+/obj/item/toy/plushie/bear_grizzly
+	name = "Grizzly Bear"
+	icon_state = "bear_grizzly"
+	pokephrase = "Grrrowl!"
+
+/obj/item/toy/plushie/bear_polar
+	name = "Polar Bear"
+	icon_state = "bear_polar"
+	pokephrase = "Rrrrrh!"
+
+/obj/item/toy/plushie/bear_soda
+	name = "Soda Bear"
+	icon_state = "bear_soda"
+	pokephrase = "Consume!"
+
+/obj/item/toy/plushie/bear_bloody
+	name = "Bloody Bear"
+	icon_state = "bear_bloody"
+	pokephrase = "ROOOOOAAARRR!"
+
+/obj/item/toy/plushie/bear_panda
+	name = "Panda Bear"
+	icon_state = "bear_panda"
+	pokephrase = "Grrrhh!"
+
+/obj/item/toy/plushie/bear_space
+	name = "Space Bear"
+	icon_state = "bear_space"
+	pokephrase = "Mission is Grrrreen!"
+
 //Toy cult sword
 /obj/item/toy/cultsword
 	name = "foam sword"

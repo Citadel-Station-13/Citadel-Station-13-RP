@@ -2596,7 +2596,7 @@
 	name = "Quickdraw"
 	id = "quickdraw"
 	result = "quickdraw"
-	required_reagents = list("sarsaparilla" = 1, "tequila" = 1, "grenadine" = 1, "bitters" = 1)
+	required_reagents = list("sarsaparilla" = 1, "rum" = 1, "bitters" = 1)
 	reaction_sound = "sound/weapons/gunshot/gunshot.ogg"
 	result_amount = 3
 

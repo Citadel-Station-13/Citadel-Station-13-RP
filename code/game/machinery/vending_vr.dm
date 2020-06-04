@@ -48,6 +48,7 @@
 	/obj/item/storage/toolbox/lunchbox/cti = 3,
 	/obj/item/storage/toolbox/lunchbox/nymph = 3,
 	/obj/item/storage/toolbox/lunchbox/syndicate = 3,
+	/obj/item/storage/toolbox/lunchbox/cyancowgirl = 3,
 	/obj/item/trash/bowl = 30)
 	contraband = list(/obj/item/material/knife/butch = 2)
 
