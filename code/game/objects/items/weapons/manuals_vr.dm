@@ -71,7 +71,7 @@
 				<i>The majority of this book's pages are irreparably damaged or defaced. This mostly intact article is the only legible excerpt.</i><br>
 
 				<ol>
-					<li>...terview, 05-04-21...</li>
+					<li>...terview, 05-04-20...</li>
 					<li>He says, "What we're really worried about is creating some sort of creature that would be functioning like a human being, yet have strong animal-like features.*</li>
 					<li>*Grotesque mutations have been reported.</li>
 					<li>Certainly, if the mouse stood on its hind legs, if it stood on its hind legs and said, 'Hi, I'm Mickey!' we'd be worried. We'd be more than worried," the doctor said.</li>
