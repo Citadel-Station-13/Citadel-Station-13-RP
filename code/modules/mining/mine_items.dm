@@ -105,6 +105,24 @@
 	desc = "Cracks rocks with sonic blasts. This one seems like an improved design."
 	drill_verb = "hammering"
 
+/obj/item/pickaxe/icepick //Cannot actually lobotomize people. Yet.
+	name = "icepick"
+	desc = "A simple icepick, for all your digging, climbing, and lobotomizing needs."
+	icon = 'icons/obj/items.dmi'
+	slot_flags = SLOT_BELT
+	force = 12
+	throwforce = 15 //Discount shuriken.
+	icon_state = "icepick"
+	item_state = "icepick"
+	w_class = ITEMSIZE_SMALL
+	matter = list(DEFAULT_WALL_MATERIAL = 2750, "titanium" = 2000) //Titanium pick. Fancy. Only way to ge titanium reliably.
+	digspeed = 15 //More expensive than a diamond pick, a lot smaller but decently slower.
+	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
+	attack_verb = list("mined", "pierced", "stabbed", "attacked")
+	drill_verb = "picking"
+	sharp = 1
+
+
 /*****************************Shovel********************************/
 
 /obj/item/shovel
