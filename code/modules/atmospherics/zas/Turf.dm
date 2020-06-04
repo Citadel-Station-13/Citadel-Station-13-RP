@@ -1,3 +1,16 @@
+/turf
+	/// ZAS air zone it's currently in
+	var/datum/gas_mixture/turf/zone/air_zone
+
+
+
+
+
+
+
+
+
+
 /turf/simulated/var/zone/zone
 /turf/simulated/var/open_directions
 
@@ -291,6 +304,14 @@
 			make_air()
 		return air
 
+/**
+  * Initializes our initial gas string as our air.
+  *
+  * It is usually expected we are not within a zone.
+  * If we are within a zone, we will be removed from our zone and the
+  */
+/turf/proc/initialize_mapload_air()
+
 /turf/proc/make_air()
 	air = new/datum/gas_mixture_old
 	air.temperature = temperature
@@ -299,6 +320,7 @@
 	air.volume = CELL_VOLUME
 
 /turf/simulated/proc/c_copy_air()
-	if(!air) air = new/datum/gas_mixture_old
+	if(!air)
+		air = new/datum/gas_mixture_old
 	air.copy_from(zone.air)
 	air.group_multiplier = 1

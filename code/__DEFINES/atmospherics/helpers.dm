@@ -19,5 +19,11 @@
 			CACHE_GAS -= id;\
 	}
 
-#define ARCHIVE_TEMPERATURE(gas)		gas.temperature_archived = gas.temperature
-#define ARCHIVE_gases(gas)				gas.gas_archive = gas.gases.Copy()
+/// Internal define used to archive variables from within a gasmixture.
+#define INTERNAL_GASMIX_ARCHIVE temperature_archived=temperature;gas_archive=gases.Copy()
+#define INTERNAL_GASMIX_ARCHIVE_TEMPERATURE temperature_archived=temperature
+#define INTERNAL_GASMIX_ARCHIVE_GASES gas_archive=gases.Copy()
+/// Archives variables of a gas mixture
+#define ARCHIVE_GASMIX(gas) gas.temperature_archived=gas.temperature;gas.gas_archive=gas.gases.Copy()
+#define ARCHIVE_GASMIX_GASES(gas) gas.gas_archive=gas.gases.Copy()
+#define ARCHIVE_GASMIX_TEMPERATURE(gas) gas.temperature_archived=gas.temperature

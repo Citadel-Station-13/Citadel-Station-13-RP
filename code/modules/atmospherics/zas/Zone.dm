@@ -1,3 +1,88 @@
+/**
+  * Atmospherics - Zones
+  *
+  * ZAS zone mixtures, both holding data of the zone as well as of the air inside.
+  * Zone datums being separate was deprecated to save memory as all zones had air mixtures anyways.
+  *
+  * Each zone is a self-contained area where gas values would be the same if equalized across the entirety of it.
+  * This is the basics of how zone-based atmospherics works.
+  *
+  * Dynamic ZAS:
+  * The concept of zone blocking is removed in dynamic ZAS.
+  * Instead, you have a situation similar to LINDA/fastmos, in which only air block is used.
+  * The difference is, instead of every tile having its own air, air moves as a zone instead.
+  * Zone edges transmit air across zones, but also allow zones to "take over" others as needed.
+  *
+  * High level primer to new dynamic ZAS:
+  *
+  * ////WIP////
+  *
+  */
+/datum/gas_mixture/turf/zone
+	/// Name of the zone, mostly for debugging.
+	var/name
+	/// Unique ID, ascending.
+	var/static/uid_next = 0
+	/// If TRUE, this zone is invalid for air processing due to being in the middle of a rebuild, sectioning, merge, or otherwise.
+	var/invalid = TRUE
+	/// List of turfs
+	var/list/turf/turfs = list()
+	/// List of zone edges. This is what connects us and flows air between us and other zones.
+	var/list/datum/zone_edge/edges = list()
+	/// The last SSair cycle we archived our gas.
+	var/cycle_archived
+	/// The last SSair cycle we processed our edges.
+
+/datum/gas_mixture/turf/zone/New()
+	. = ..()
+	name = "Zone [++uid_next]"
+
+/datum/gas_mixture/turf/zone/Destroy(force, merged)
+	invalid = TRUE
+
+	turfs = null
+	edges = null
+	return ..()
+
+/**
+  * Initial propagation.
+  *
+  */
+/datum/gas_mixture/turf/zone/proc/initialization_propagation(turf/T, flags)
+
+/datum/gas_mixture/turf/zone/proc/zone_share(list/connected)
+
+
+/**
+  * Immediately and forcefully takes over another zone, taking them into ourselves.
+  * WARNING: This makes no attempt at verifying if the merging is valid.
+  * DO NOT USE THIS PROC UNLESS YOU KNOW WHAT YOU ARE DOING!
+  */
+/datum/gas_mixture/turf/zone/proc/force_zone_merge(datum/gas_mixture/turf/zone/other)
+	if(length(other.turfs) > length(turfs))
+		return other.force_zone_merge(src)
+	// just in case
+	invalid = TRUE
+	other.invalid = TRUE
+	// gas mixture merge
+	merge(other)
+	volume += other.volume
+	// turfs can't be in two zones at once
+	turfs += other.turfs
+	// get rid of zones between us and them, but not any other zone.
+	var/datum/zone_edge/E
+	for(var/i in edges)
+		E = i
+		if(((E.zone_1 == src) && (E.zone_2 == other)) || ((E.zone_2 == src) && (E.zone_1) == other))
+	#warn WIP
+	// finally, reset the turfs to point to us and dispose of the other
+	var/list/L = other.turfs
+	var/turf/T
+	for(var/i in L)
+		T = i
+		T.air_zone = src
+	qdel(other, TRUE, TRUE)
+
 /*
 
 Overview:

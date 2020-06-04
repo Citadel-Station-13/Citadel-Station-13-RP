@@ -1,3 +1,22 @@
+/**
+  * Atmospherics - Zone Edge
+  *
+  * Zone edges represent connections from one zone to another, and are what handles airflow.
+  */
+/datum/zone_edge
+	/// First zone, in no particular order
+	var/datum/gas_mixture/turf/zone/zone_1
+	/// Second zone, in no particular order
+	var/datum/gas_mixture/turf/zone/zone_2
+
+
+
+
+
+
+
+
+
 /*
 
 Overview:
