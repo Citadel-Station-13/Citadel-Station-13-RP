@@ -8,17 +8,17 @@
 	return ..()
 
 /datum/controller/subsystem/persistence/proc/SavePanicBunker()
-	var/json_file = file("data/PB_bypass.json")
+	var/json_file = file(PERSISTENCE_FILE_BUNKER_PASSTHROUGH)
 	var/list/file_data = list()
-	file_data["data"] = GLOB.PB_bypass
+	file_data["data"] = GLOB.bunker_passthrough
 	fdel(json_file)
 	WRITE_FILE(json_file,json_encode(file_data))
 
 /datum/controller/subsystem/persistence/proc/LoadPanicBunker()
-	var/bunker_path = file(PERSISTENCE_FILE_PB_bypass)
+	var/bunker_path = file(PERSISTENCE_FILE_BUNKER_PASSTHROUGH)
 	if(fexists(bunker_path))
 		var/list/json = json_decode(file2text(bunker_path))
-		GLOB.PB_bypass = json["data"]
-		for(var/ckey in GLOB.PB_bypass)
-			if(daysSince(GLOB.PB_bypass[ckey]) >= CONFIG_GET(number/max_bunker_days))
-				GLOB.PB_bypass -= ckey
+		GLOB.bunker_passthrough = json["data"]
+		for(var/ckey in GLOB.bunker_passthrough)
+			if(daysSince(GLOB.bunker_passthrough[ckey]) >= CONFIG_GET(number/max_bunker_days))
+				GLOB.bunker_passthrough -= ckey

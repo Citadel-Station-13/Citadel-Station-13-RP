@@ -1,3 +1,5 @@
+GLOBAL_LIST_EMPTY(bunker_passthrough)
+
 /client/proc/panicbunker()
 	set category = "Server"
 	set name = "Toggle Panic Bunker"
