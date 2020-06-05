@@ -107,7 +107,7 @@
 
 /obj/item/pickaxe/icepick //Cannot actually lobotomize people. Yet.
 	name = "icepick"
-	desc = "A simple icepick, for all your digging, climbing, and lobotomizing needs."'
+	desc = "A simple icepick, for all your digging, climbing, and lobotomizing needs."
 	slot_flags = SLOT_BELT
 	force = 12
 	throwforce = 15 //Discount shuriken.
