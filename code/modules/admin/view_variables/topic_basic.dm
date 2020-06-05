@@ -65,13 +65,14 @@
 		var/list/lst = get_callproc_args()
 		if(!lst)
 			return
+		lst.Insert(1, result)
 		var/datumname = "error"
 		if(result in componentsubtypes)
 			datumname = "component"
-			target._AddComponent(list(result) + lst)
+			target._AddComponent(lst)
 		else
 			datumname = "element"
-			target._AddElement(list(result) + lst)
+			target._AddElement(lst)
 		log_admin("[key_name(usr)] has added [result] [datumname] to [key_name(src)].")
 		message_admins("<span class='notice'>[key_name_admin(usr)] has added [result] [datumname] to [key_name_admin(src)].</span>")
 	if(href_list[VV_HK_CALLPROC])
