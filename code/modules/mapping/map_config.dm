@@ -41,7 +41,7 @@
 	var/minetype = "lavaland"
 */
 
-	var/maptype = MAP_TYPE_STATION //This should be used to adjust ingame behavior depending on the specific type of map being played. For instance, if an overmap were added, it'd be appropriate for it to only generate with a MAP_TYPE_SHIP
+//	var/maptype = MAP_TYPE_STATION //This should be used to adjust ingame behavior depending on the specific type of map being played. For instance, if an overmap were added, it'd be appropriate for it to only generate with a MAP_TYPE_SHIP
 
 /*
 	var/announcertype = "standard" //Determines the announcer the map uses. standard uses the default announcer, classic, but has a random chance to use other similarly-themed announcers, like medibot
@@ -179,7 +179,7 @@
 
 	if ("orientation" in json)
 		orientation = json["orientation"]
-		if(!(orientation in GLOB.cardinals))
+		if(!(orientation in GLOB.cardinal))
 			orientation = SOUTH
 
 	if("persistence_id" in json)

@@ -2,7 +2,7 @@ SUBSYSTEM_DEF(persistence)
 	name = "Persistence"
 	init_order = INIT_ORDER_PERSISTENCE
 	flags = SS_NO_FIRE
-	/// The directory to write to for per-map persistence.
+	/// The directory to write to for per-map persistence. If null, the current map shouldn't be persisted to/from.
 	var/current_map_directory
 
 /datum/controller/subsystem/persistence/Initialize()
@@ -30,4 +30,6 @@ SUBSYSTEM_DEF(persistence)
   * Sets our current_map_directory to corrospond to the current map.
   */
 /datum/controller/subsystem/persistence/proc/SetMapDirectory()
-	current_map_directory = "[PERSISTENCE_MAP_ROOT_DIRECTORY]/[SSmapping.config.persistence_directory]"
+	if(!SSmapping.config.persistence_id)
+		return			// map doesn't support persistence.
+	current_map_directory = "[PERSISTENCE_MAP_ROOT_DIRECTORY]/[SSmapping.config.persistence_id]"
