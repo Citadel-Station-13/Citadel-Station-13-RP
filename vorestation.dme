@@ -2170,7 +2170,7 @@
 #include "code\modules\keybindings\bindings_client.dm"
 #include "code\modules\keybindings\focus.dm"
 #include "code\modules\keybindings\setup.dm"
-#include "code\modules\keybindings\keybind\__DEFINES.dm"
+#include "code\modules\keybindings\keybind\__defines.dm"
 #include "code\modules\keybindings\keybind\_keybind.dm"
 #include "code\modules\keybindings\keybind\admin.dm"
 #include "code\modules\keybindings\keybind\carbon.dm"

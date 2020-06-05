@@ -440,7 +440,7 @@ SUBSYSTEM_DEF(ticker)
 		send2irc("Server", "A round of [mode.name] just ended.")
 		world.TgsTargetedChatBroadcast("The round has ended.", FALSE)
 
-		SSpersistence.CollectData()
+		SSpersistence.SavePersistence()
 		ready_for_reboot = TRUE
 		standard_reboot()
 

@@ -1,12 +1,12 @@
-/datum/subsystem/persistence/LoadPersistence()
+/datum/controller/subsystem/persistence/LoadPersistence()
 	LoadObjects()
 	return ..()
 
-/datum/subsystem/persistence/SavePersistence()
+/datum/controller/subsystem/persistence/SavePersistence()
 	SaveObjects()
 	return ..()
 
-/datum/subsystem/persistence/LoadObjects()
+/datum/controller/subsystem/persistence/proc/LoadObjects()
 	var/jsonfile = file("[current_map_directory]/PERSISTENCE_FILE_OBJECTS")
 	var/list/data = json_decode(file2text(jsonfile))
 	var/datum/element/persistence/P = SSdcs.GetElement(/datum/element/persistence)
@@ -15,7 +15,7 @@
 		CRASH("FATAL: COULD NOT GRAB PERSISTENCE ELEMENT FOR OBJECT LOAD.")
 	P.DeserializeAndInstantiateAll(data)
 
-/datum/subsystem/persistence/SaveObjects()
+/datum/controller/subsystem/persistence/proc/SaveObjects()
 	var/jsonfile = file("[current_map_directory]/PERSISTENCE_FILE_OBJECTS")
 	var/list/data = GetObjectData()
 	if(!islist(data))
@@ -24,7 +24,7 @@
 	fdel(jsonfile)
 	WRITE_FILE(jsonfile, json_encode(data))
 
-/datum/subsystem/persistence/proc/GetObjectData()
+/datum/controller/subsystem/persistence/proc/GetObjectData()
 	var/datum/element/persistence/P = SSdcs.GetElement(/datum/element/persistence)
 	if(!P)
 		return "COULD NOT FIND ELEMENT"
