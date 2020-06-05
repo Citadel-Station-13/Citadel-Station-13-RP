@@ -4,27 +4,42 @@ SUBSYSTEM_DEF(mapping)
 	init_order = INIT_ORDER_MAPPING
 	flags = SS_NO_FIRE
 
-	var/list/map_templates = list()
-	var/dmm_suite/maploader = null
+	/// The current map config datum the round is using
+	var/datum/map_config/config
+	/// The next map to load
+	var/datum/map_config/next_map_config
+
+	/// Cached map name for statpanel
+	var/stat_map_name = "Loading..."
+
+	/// Lookup list for random generated IDs.
+	var/list/random_generated_ids_by_original = list()
+	/// next id for separating obfuscated ids.
+	var/obfuscation_next_id = 1
+	/// "secret" key
+	var/obfuscation_secret
+
+//dlete dis once #39770 is resolved
+/datum/controller/subsystem/mapping/proc/HACK_LoadMapConfig()
+	if(!config)
+#ifdef FORCE_MAP
+		config = load_map_config(FORCE_MAP)
+#else
+		config = load_map_config(error_if_missing = FALSE)
+#endif
+	stat_map_name = config.map_name
+
+/datum/controller/subsystem/mapping/PreInit()
+	if(!obfuscation_secret)
+		obfuscation_secret = md5(GUID())		//HAH! Guess this!
 
 /datum/controller/subsystem/mapping/Initialize(timeofday)
+	HACK_LoadMapConfig()
 	if(subsystem_initialized)
 		return
-	world.max_z_changed() // This is to set up the player z-level list, maxz hasn't actually changed (probably)
-	maploader = new()
-	load_map_templates()
-
-	if(config_legacy.generate_map)
-		// Map-gen is still very specific to the map, however putting it here should ensure it loads in the correct order.
-		if(GLOB.using_map.perform_map_generation())
-			GLOB.using_map.refresh_mining_turfs()
-
-
-/datum/controller/subsystem/mapping/proc/load_map_templates()
-	for(var/T in subtypesof(/datum/map_template))
-		var/datum/map_template/template = T
-		if(!(initial(template.mappath))) // If it's missing the actual path its probably a base type or being used for inheritence.
-			continue
-		template = new T()
-		map_templates[template.name] = template
-	return TRUE
+	if(config.defaulted)
+		var/old_config = config
+		config = global.config.defaultmap
+		if(!config || config.defaulted)
+			to_chat(world, "<span class='boldannounce'>Unable to load next or default map config, defaulting to Tethermap</span>")
+			config = old_config
