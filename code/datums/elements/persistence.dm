@@ -25,7 +25,10 @@
 		var/turf/location = get_turf(A)
 		if(!A || !guid || !location)
 			continue
-		. += list(A.serialize_list(), guid, list(location.x, location.y, location.z), "[A.type]")
+		var/list/datalist = A.serialize_list()
+		if(!datalist)
+			continue
+		. += list(datalist, guid, list(location.x, location.y, location.z), "[A.type]")
 
 /**
   * Instantiates all objects from a data list and attaches to them.

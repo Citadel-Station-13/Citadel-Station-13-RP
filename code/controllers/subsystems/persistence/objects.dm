@@ -7,6 +7,8 @@
 	return ..()
 
 /datum/controller/subsystem/persistence/proc/LoadObjects()
+	if(!current_map_directory)
+		return
 	var/jsonfile = file("[current_map_directory]/PERSISTENCE_FILE_OBJECTS")
 	var/list/data = json_decode(file2text(jsonfile))
 	var/datum/element/persistence/P = SSdcs.GetElement(/datum/element/persistence)
@@ -16,6 +18,8 @@
 	P.DeserializeAndInstantiateAll(data)
 
 /datum/controller/subsystem/persistence/proc/SaveObjects()
+	if(!current_map_directory)
+		return
 	var/jsonfile = file("[current_map_directory]/PERSISTENCE_FILE_OBJECTS")
 	var/list/data = GetObjectData()
 	if(!islist(data))
