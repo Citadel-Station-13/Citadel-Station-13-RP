@@ -9,7 +9,9 @@
 /datum/controller/subsystem/persistence/proc/LoadObjects()
 	if(!current_map_directory)
 		return
-	var/jsonfile = file("[current_map_directory]/PERSISTENCE_FILE_OBJECTS")
+	var/jsonfile = file("[current_map_directory]/[PERSISTENCE_FILENAME_OBJECTS]")
+	if(!jsonfile)
+		return
 	var/list/data = json_decode(file2text(jsonfile))
 	var/datum/element/persistence/P = SSdcs.GetElement(/datum/element/persistence)
 	if(!P)
@@ -20,7 +22,7 @@
 /datum/controller/subsystem/persistence/proc/SaveObjects()
 	if(!current_map_directory)
 		return
-	var/jsonfile = file("[current_map_directory]/PERSISTENCE_FILE_OBJECTS")
+	var/jsonfile = file("[current_map_directory]/[PERSISTENCE_FILENAME_OBJECTS]")
 	var/list/data = GetObjectData()
 	if(!islist(data))
 		to_chat(world, "<span class='boldwarning'>Persistence subsystem failed to save objects! Object data not modified. ERROR: [data || "!UNKNOWN!"]</span>")
@@ -29,7 +31,7 @@
 	WRITE_FILE(jsonfile, json_encode(data))
 
 /datum/controller/subsystem/persistence/proc/GetObjectData()
-	var/datum/element/persistence/P = SSdcs.GetElement(/datum/element/persistence)
+	var/datum/element/persistence/P = SSdcs.GetElement(list(/datum/element/persistence))
 	if(!P)
 		return "COULD NOT FIND ELEMENT"
 	var/list/returnlist = P.SerializeAll()

@@ -68,10 +68,10 @@
 		var/datumname = "error"
 		if(result in componentsubtypes)
 			datumname = "component"
-			target.AddComponent(result, lst)
+			target.AddComponent(list(result) + lst)
 		else
 			datumname = "element"
-			target.AddElement(result, lst)
+			target.AddElement(list(result) + lst)
 		log_admin("[key_name(usr)] has added [result] [datumname] to [key_name(src)].")
 		message_admins("<span class='notice'>[key_name_admin(usr)] has added [result] [datumname] to [key_name_admin(src)].</span>")
 	if(href_list[VV_HK_CALLPROC])
