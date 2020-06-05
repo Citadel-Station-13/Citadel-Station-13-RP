@@ -437,6 +437,10 @@ SUBSYSTEM_DEF(ticker)
 		if(blackbox)
 			blackbox.save_all_data_to_sql()
 
+		send2irc("Server", "A round of [mode.name] just ended.")
+		world.TgsTargetedChatBroadcast("The round has ended.", FALSE)
+
+		SSpersistence.SavePersistence()
 		ready_for_reboot = TRUE
 		standard_reboot()
 
