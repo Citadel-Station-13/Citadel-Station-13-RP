@@ -155,7 +155,7 @@
   * * options - associative list of options to use. Not yet particularly used/standardized, but can be easily implemented.
   */
 /datum/proc/serialize_list(list/options)
-	return
+	return list()
 
 /**
   * Takes a data list in and loads data into ourselves. Persistence elements currently use this.
@@ -165,7 +165,7 @@
   * * options - associatve list of options to use. Not yet particularly used/standardized, but can be easily implemented.
   */
 /datum/proc/deserialize_list(list/data, list/options)
-	return
+	return list()
 
 ///Serializes into JSON. Does not encode type.
 /datum/proc/serialize_json(list/options)
