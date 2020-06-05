@@ -8340,6 +8340,7 @@
 	dir = 4;
 	pixel_x = -28
 	},
+/obj/item/book/manual/the_humanized_mice,
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "qW" = (
@@ -17653,6 +17654,7 @@
 /obj/structure/table/steel,
 /obj/item/stack/medical/splint/ghetto,
 /obj/random/technology_scanner,
+/obj/item/book/manual/the_humanized_mice,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/atmos)
 "Ic" = (
