@@ -28,7 +28,7 @@
 		var/list/datalist = A.serialize_list()
 		if(!datalist)
 			continue
-		. += list(datalist, guid, list(location.x, location.y, location.z), "[A.type]")
+		. += list(list(datalist, guid, list(location.x, location.y, location.z), "[A.type]"))
 
 /**
   * Instantiates all objects from a data list and attaches to them.
@@ -36,7 +36,7 @@
 /datum/element/persistence/proc/DeserializeAndInstantiateAll(list/data)
 	for(var/i in data)
 		var/list/L = i
-		if(!istype(L) || (length(L) < 3))
+		if(!istype(L) || (length(L) < 4))
 			continue
 		var/list/datumdata = L[1]
 		var/guid = L[2]
