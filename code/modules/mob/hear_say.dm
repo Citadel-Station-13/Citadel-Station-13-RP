@@ -98,13 +98,13 @@
 // Checks if the mob's own name is included inside message.  Handles both first and last names.
 /mob/proc/check_mentioned(var/message)
 	var/not_included = list("a", "the", "of", "in", "for", "through", "throughout", "therefore", "here", "there", "then", "now", "I", "you", "they", "he", "she", "by")
-	var/list/valid_names = splittext(real_name, " ") // Should output list("John", "Doe") as an example.
+	var/list/valid_names = splittext_char(real_name, " ") // Should output list("John", "Doe") as an example.
 	valid_names -= not_included
-	var/list/nicknames = splittext(nickname, " ")
+	var/list/nicknames = splittext_char(nickname, " ")
 	valid_names += nicknames
 	valid_names += special_mentions()
 	for(var/name in valid_names)
-		if(findtext(message, regex("\\b[name]\\b", "i"))) // This is to stop 'ai' from triggering if someone says 'wait'.
+		if(findtext_char(message, regex("\\b[name]\\b", "i"))) // This is to stop 'ai' from triggering if someone says 'wait'.
 			return TRUE
 	return FALSE
 
@@ -132,11 +132,11 @@
 	var/second = re.Find(message, first + 1) // Then the second.
 	while(first && second && i)
 		// Calculate how far foward the second char is, as the first replacetext() will displace it.
-		var/length_increase = length("<[html]>") - 1
+		var/length_increase = length_char("<[html]>") - 1
 
 		// Now replace both.
-		message = replacetext(message, char, "<[html]>", first, first + 1)
-		message = replacetext(message, char, "</[html]>", second + length_increase, second + length_increase + 1)
+		message = replacetext_char(message, char, "<[html]>", first, first + 1)
+		message = replacetext_char(message, char, "</[html]>", second + length_increase, second + length_increase + 1)
 
 		// Check again to see if we need to keep going.
 		first = re.Find(message)
@@ -296,7 +296,7 @@
 		message = "<B>[speaker]</B> [verb], \"[message]\""
 	else
 		var/adverb
-		var/length = length(message) * pick(0.8, 0.9, 1.0, 1.1, 1.2)	//Adds a little bit of fuzziness
+		var/length = length_char(message) * pick(0.8, 0.9, 1.0, 1.1, 1.2)	//Adds a little bit of fuzziness
 		switch(length)
 			if(0 to 12)		adverb = " briefly"
 			if(12 to 30)	adverb = " a short message"
@@ -311,13 +311,13 @@
 	var/heard = ""
 	if(prob(15))
 		var/list/punctuation = list(",", "!", ".", ";", "?")
-		var/list/messages = splittext(message, " ")
+		var/list/messages = splittext_char(message, " ")
 		var/R = rand(1, messages.len)
 		var/heardword = messages[R]
-		if(copytext(heardword,1, 1) in punctuation)
-			heardword = copytext(heardword,2)
-		if(copytext(heardword,-1) in punctuation)
-			heardword = copytext(heardword,1,length(heardword))
+		if(copytext_char(heardword,1, 1) in punctuation)
+			heardword = copytext_char(heardword,2)
+		if(copytext_char(heardword,-1) in punctuation)
+			heardword = copytext_char(heardword,1,length_char(heardword))
 		heard = "<span class = 'game_say'>...You hear something about...[heardword]</span>"
 
 	else
