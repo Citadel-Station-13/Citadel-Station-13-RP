@@ -115,7 +115,7 @@
 	item_state = "spickaxe" //im lazy fuck u
 	w_class = ITEMSIZE_SMALL
 	matter = list(DEFAULT_WALL_MATERIAL = 2750, "titanium" = 2000) 
-	digspeed = 15 //More expensive than a diamond pick, a lot smaller but decently slower.
+	digspeed = 25 //More expensive than a diamond pick, a lot smaller but decently slower.
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
 	attack_verb = list("mined", "pierced", "stabbed", "attacked")
 	drill_verb = "picking"
