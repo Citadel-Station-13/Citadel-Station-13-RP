@@ -286,8 +286,6 @@
 		var/ks2 = H.keyslot2
 		blob.mob_radio.keyslot1 = H.keyslot1
 		blob.mob_radio.keyslot2 = H.keyslot2
-		H.keyslot1 = ks1
-		H.keyslot2 = ks2
 		if(H.adhoc_fallback)
 			blob.mob_radio.adhoc_fallback = TRUE
 		blob.mob_radio.recalculateChannels()
@@ -403,9 +401,12 @@
 
 	if(blob.prev_left_hand) put_in_l_hand(blob.prev_left_hand) //The restore for when reforming.
 	if(blob.prev_right_hand) put_in_r_hand(blob.prev_right_hand)
-
+	
+	for(var/obj/item/radio/headset/H in contents)
+		H.keyslot1 = blob.mob_radio.keyslot1
+		H.keyslot2 = blob.mob_radio.keyslot2
 	Life(1) //Fix my blindness right meow //Has to be moved up here, there exists a circumstance where blob could be deleted without vore organs moving right.
-
+	
 	//Get rid of friend blob
 	qdel(blob)
 
