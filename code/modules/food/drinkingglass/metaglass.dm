@@ -612,15 +612,6 @@ Drinks Data
 /datum/reagent/ethanol/wine/champagne
 	glass_icon_state = "champagneglass"
 
-/datum/reagent/ethanol/alcsassafras
-	glass_icon_state = "sassafras_alc_glass"
-
-/datum/reagent/drink/soda/sassafras
-	glass_icon_state = "sassafras_glass"
-
-/datum/reagent/drink/soda/sarsaparilla
-	glass_icon_state = "sarsaparilla_glass"
-
 /datum/reagent/ethanol/newsheriff
 	glass_icon_state = "newsheriff"
 

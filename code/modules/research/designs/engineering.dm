@@ -6,7 +6,7 @@
 
 /datum/design/item/tool/experimental_welder
 	name = "Experimental welding tool"
-	desc = "A welding tool that generate fuel for itself."
+	desc = "A welding tool that generates fuel for itself."
 	id = "expwelder"
 	req_tech = list(TECH_ENGINEERING = 4, TECH_PHORON = 3, TECH_MATERIAL = 4)
 	materials = list(DEFAULT_WALL_MATERIAL = 70, "glass" = 120, "phoron" = 100)
@@ -30,6 +30,15 @@
 	materials = list(DEFAULT_WALL_MATERIAL = 300, "silver" = 100)
 	build_path = /obj/item/tool/crowbar/power
 	sort_string = "NAAAC"
+
+/datum/design/item/tool/switchtool
+	name = "Switchtool"
+	desc = "A combined wirecutter, screwdriver, crowbar, wrench and multitool. The small size makes it somewhat slower at work."
+	id = "switchtool"
+	req_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 4)
+	materials = list(DEFAULT_WALL_MATERIAL = 4000, "glass" = 2000)
+	build_path = /obj/item/switchtool
+	sort_string = "NAAAD"
 
 // Other devices
 

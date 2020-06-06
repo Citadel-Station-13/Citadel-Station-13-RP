@@ -71,3 +71,22 @@
 /datum/category_item/underwear/top/straplessbinder
 	name = "Binder Strapless"
 	icon_state = "straplessbinder_s"
+
+/datum/category_item/underwear/top/chastbra
+	name = "Chastity Bra"
+	icon_state = "chastbra"
+
+/datum/category_item/underwear/top/pasties
+	name = "Pasties"
+	icon_state = "pasties"
+	has_color = TRUE
+
+/datum/category_item/underwear/top/pasties_alt
+	name = "Pasties alt, X"
+	icon_state = "pasties_alt"
+	has_color = TRUE
+
+/datum/category_item/underwear/top/babydoll_lingerie
+	name = "Babydoll Lingerie"
+	icon_state = "babydoll_lingerie"
+	has_color = TRUE
