@@ -125,6 +125,11 @@
 // Replaces a character inside message with html tags.  Note that html var must not include brackets.
 // Will not create an open html tag if it would not have a closing one.
 /proc/encode_html_emphasis(var/message, var/char, var/html)
+	var/regex/search = regex("([REGEX_QUOTE(char)])(\[\\S\]\[\\w\\W\]*?\[\\S\])([REGEX_QUOTE(char)])", "g")
+	return search.Replace_char(message, "<[html]>$2$3$4</[html]>")
+	//var/regex = {"(\|)([\S][\w\W]*?[\S])(\|)"}
+	//return replacetext_char(message, "(\\[REGEX_QUOTE(char)])(\[\\S\]\[\\w\\W\]*?\[\\S\])(\\[REGEX_QUOTE(char)])", "<[html]>$2$3$4</[html]>")
+/*
 	var/i = 20 // Infinite loop safety.
 	var/pattern = "(?<!<)\\" + char
 	var/regex/re = regex(pattern,"i") // This matches results which do not have a < next to them, to avoid stripping slashes from closing html tags.
@@ -145,6 +150,7 @@
 	if(!i)
 		CRASH("Possible infinite loop occured in encode_html_emphasis().")
 	return message
+*/
 
 /mob/proc/hear_radio(var/message, var/verb="says", var/datum/language/language=null, var/part_a, var/part_b, var/part_c, var/mob/speaker = null, var/hard_to_hear = 0, var/vname ="")
 
