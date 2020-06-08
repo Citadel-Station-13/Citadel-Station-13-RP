@@ -119,12 +119,11 @@
 /mob/proc//proc/say_emphasis(input)
 	var/static/regex/italics = regex("|(\\b.*?\\b)|", "g")
 	input = replacetext_char(input, italics, "<i>$1</i>")
-	var/static/regex/bold = regex("+(\\b.*?\\b)+", "g")
+	var/static/regex/bold = regex("\\+(\\b.*?\\b)\\+", "g")
 	input = replacetext_char(input, bold, "<b>$1</b>")
-	var/static/regex/underline = regex("_(\\B.*?\\B)_", "g")
+	var/static/regex/underline = regex("_(\\B.*\\B)_", "g")
 	input = replacetext_char(input, underline, "<u>$1</u>")
 	return input
-
 
 /mob/proc/hear_radio(var/message, var/verb="says", var/datum/language/language=null, var/part_a, var/part_b, var/part_c, var/mob/speaker = null, var/hard_to_hear = 0, var/vname ="")
 
