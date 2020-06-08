@@ -116,18 +116,15 @@
 	return list("AI") // AI door!
 
 // Converts specific characters, like +, |, and _ to formatted output.
-/mob/proc/say_emphasis(var/message)
-	message = encode_html_emphasis(message, "|", "i")
-	message = encode_html_emphasis(message, "+", "b")
-	message = encode_html_emphasis(message, "_", "u")
-	return message
+/mob/proc//proc/say_emphasis(input)
+	var/static/regex/italics = regex("|(\\b.*?\\b)|", "g")
+	input = replacetext_char(input, italics, "<i>$1</i>")
+	var/static/regex/bold = regex("+(\\b.*?\\b)+", "g")
+	input = replacetext_char(input, bold, "<b>$1</b>")
+	var/static/regex/underline = regex("_(\\B.*?\\B)_", "g")
+	input = replacetext_char(input, underline, "<u>$1</u>")
+	return input
 
-// Replaces a character inside message with html tags.  Note that html var must not include brackets.
-// Will not create an open html tag if it would not have a closing one.
-/proc/encode_html_emphasis(var/message, var/char, var/html)
-	//(\|)(\b.*\b)(\|)
-	var/regex/search = regex("([REGEX_QUOTE(char)])(\\b.*\\b)([REGEX_QUOTE(char)])", "g")
-	return search.Replace_char(message, "<[html]>$2</[html]>")
 
 /mob/proc/hear_radio(var/message, var/verb="says", var/datum/language/language=null, var/part_a, var/part_b, var/part_c, var/mob/speaker = null, var/hard_to_hear = 0, var/vname ="")
 
