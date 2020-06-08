@@ -28,9 +28,8 @@
 		tally += (health_deficiency / 25)
 
 	if(can_feel_pain())
-		if(!(CE_SPEEDBOOST in chem_effects)) //Hyperzine stops pain slowdown
-			if(halloss >= 10)
-				tally += (halloss / 10) //halloss shouldn't slow you down if you can't even feel it
+		if(halloss >= 10)
+			tally += (halloss / 10) //halloss shouldn't slow you down if you can't even feel it
 
 	var/hungry = (500 - nutrition)/5 // So overeat would be 100 and default level would be 80
 	if (hungry >= 70)
@@ -93,10 +92,7 @@
 	tally += calculate_turf_slowdown(T, direct)
 
 	// Item related slowdown.
-	if(!(CE_SPEEDBOOST in chem_effects)) //Hyperzine ignores item slowdown
-		var/item_tally = calculate_item_encumbrance()
-		item_tally *= species.item_slowdown_mod
-		tally += item_tally
+	var/item_tally = calculate_item_encumbrance()
 
 	/* removed - kevinz000. A system will eventually be reintroduced to do this, but for the moment I'd rather this Not be a thing.
 	// Dragging heavy objects will also slow you down, similar to above.
@@ -110,10 +106,19 @@
 			item_tally = max(item_tally, their_slowdown) // If our slowdown is less than theirs, then we become as slow as them (before species modifires).
 	*/
 
+	item_tally *= species.item_slowdown_mod
+
+	tally += item_tally
+
 	if(CE_SLOWDOWN in chem_effects)
 		if (tally >= 0 )
 			tally = (tally + tally/4) //Add a quarter of penalties on top.
 		tally += chem_effects[CE_SLOWDOWN]
+
+	if(CE_SPEEDBOOST in chem_effects)
+		if (tally >= 0)	// cut any penalties in half
+			tally = tally/2
+		tally -= chem_effects[CE_SPEEDBOOST]	// give 'em a buff on top.
 
 	return max(HUMAN_LOWEST_SLOWDOWN, tally + . + config_legacy.human_delay)	// Minimum return should be the same as force_max_speed
 
