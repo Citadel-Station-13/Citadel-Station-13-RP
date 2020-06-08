@@ -197,6 +197,7 @@
 	edge = 1
 	force_wielded = 23 //A fair bit less than the fireaxe.
 	attack_verb = list("attacked", "smashed", "crushed", "wacked", "pounded")
+	armor_penetration = 50
 
 /obj/item/material/twohanded/sledgehammer/update_held_icon()
 	var/mob/living/M = loc
