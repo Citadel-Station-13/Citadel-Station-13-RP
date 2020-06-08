@@ -237,7 +237,7 @@
 	layer = ABOVE_TURF_LAYER
 	active_power_usage = 60000	//60 kW , It's more specialized than the standalone recharger (guns, batons, and flashlights only) so make it more powerful
 	efficiency = 60000
-	allowed_devices = list(/obj/item/gun/energy, /obj/item/gun/magnetic, /obj/item/melee/baton, /obj/item/flashlight, /obj/item/cell/device)
+	allowed_devices = list(/obj/item/gun/energy, /obj/item/gun/magnetic, /obj/item/melee/baton, /obj/item/flashlight, /obj/item/cell/device, /obj/item/ammo_casing/microbattery, /obj/item/ammo_magazine/cell_mag, /obj/item/gun/projectile/cell_loaded)
 	icon_state_charged = "wrecharger2"
 	icon_state_charging = "wrecharger1"
 	icon_state_idle = "wrecharger0"
