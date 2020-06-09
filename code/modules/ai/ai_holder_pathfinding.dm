@@ -43,7 +43,7 @@
 	ai_log("get_path() : Entering.",AI_LOG_DEBUG)
 	forget_path()
 
-	var/list/new_path = SSpathfinding.AStar_pathfind(holder, get_turf(holder), target, null, PATHFINDING_HEURISTIC_BYOND, max_node_depth = 100, max_path_distance = max_distance, min_target_distance = get_to, null, queue = PATHFINDING_QUEUE_DEFAULT, holder.IGetID, exclude)
+	var/list/new_path = SSpathfinding.AStar_pathfind(holder, get_turf(holder), target, null, PATHFINDING_HEURISTIC_BYOND, max_node_depth = 100, max_path_distance = max_distance, min_target_distance = get_to, null, queue = PATHFINDING_QUEUE_DEFAULT, holder.IGetID(), exclude)
 
 	if(length(new_path))
 		path = new_path

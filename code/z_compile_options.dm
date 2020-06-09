@@ -74,3 +74,5 @@ VORESTATION CRAP
 	#define USING_MAP_DATUM /datum/map
 	#define MAP_OVERRIDE 1
 #endif
+
+#define PATHFINDING_DEBUG				// if this is defined, janky debug systems will be enabled for path finding and add a load of overhead for no reason. So don't enable this unless you're debugging.
