@@ -14,7 +14,7 @@
 	var/list/adm = get_admin_counts()
 	var/list/allmins = adm["total"]
 	var/status = "Admins: [allmins.len] (Active: [english_list(adm["present"])] AFK: [english_list(adm["afk"])] Stealth: [english_list(adm["stealth"])] Skipped: [english_list(adm["noflags"])]). "
-	status += "Players: [GLOB.clients.len]" //(Active: [get_active_player_count(0,1,0)]). Mode: [SSSSticker.mode ? SSSSticker.mode.name : "Not started"]."
+	status += "Players: [GLOB.clients.len]" //(Active: [get_active_player_count(0,1,0)]). Mode: [SSticker.mode ? SSticker.mode.name : "Not started"]."
 	return status
 
 /datum/tgs_chat_command/irccheck
@@ -28,8 +28,7 @@
 		return
 	last_irc_check = rtod
 	var/server = null		//CONFIG_GET(string/server)
-	//return "[round_id ? "Round #[round_id]: " : ""][clients.len] players on [SSmapping.config_legacy.map_name], Mode: [master_mode]; Round [SSSSticker.HasRoundStarted() ? (SSSSticker.IsRoundInProgress() ? "Active" : "Finishing") : "Starting"] -- [server ? server : "[world.internet_address]:[world.port]"]"
-	var/current_state
+	var/current_state = "pregame"
 	switch(SSticker.current_state)
 		if(GAME_STATE_PREGAME)
 			current_state = "pregame"
@@ -39,7 +38,8 @@
 			current_state = "active"
 		if(GAME_STATE_FINISHED)
 			current_state = "finishing"
-	return "[GLOB.clients.len] players on [GLOB.using_map.name], Mode: [master_mode]; round [current_state] -- Duration [roundduration2text()] -- [server ? server : "[world.internet_address]:[world.port]"]"
+	// [SSticker.HasRoundStarted() ? (SSticker.IsRoundInProgress() ? "Active" : "Finishing") : "Starting"] <-- Actual roud thing
+	return "[GLOB.round_id ? "Round #[GLOB.round_id]: " : ""][GLOB.clients.len] players on [SSmapping.config.map_name]; Round [current_state] -- [server ? server : "[world.internet_address]:[world.port]"]"
 
 /datum/tgs_chat_command/ahelp
 	name = "ahelp"
@@ -92,7 +92,7 @@ GLOBAL_LIST(round_end_notifiees)
 	admin_only = TRUE
 
 /datum/tgs_chat_command/endnotify/Run(datum/tgs_chat_user/sender, params)
-	//if(!SSSSticker.IsRoundInProgress() && SSSSticker.HasRoundStarted())
+	//if(!SSticker.IsRoundInProgress() && SSticker.HasRoundStarted())
 	if(SSticker.current_state == GAME_STATE_FINISHED)
 		return "[sender.mention], the round has already ended!"
 	LAZYINITLIST(GLOB.round_end_notifiees)

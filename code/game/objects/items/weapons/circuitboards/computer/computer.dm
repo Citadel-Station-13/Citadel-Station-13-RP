@@ -34,6 +34,7 @@
 	name = T_BOARD("command and communications console")
 	build_path = /obj/machinery/computer/communications
 	origin_tech = list(TECH_DATA = 2, TECH_MAGNET = 2)
+	var/lastTimeUsed = 0
 
 /obj/item/circuitboard/card
 	name = T_BOARD("ID card modification console")

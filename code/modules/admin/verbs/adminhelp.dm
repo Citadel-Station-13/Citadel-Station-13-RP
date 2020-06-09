@@ -591,7 +591,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 			.["present"] += X
 
 /proc/send2irc_adminless_only(source, msg, requiredflags = R_BAN)
-	var/list/adm = get_admin_counts()
+	var/list/adm = get_admin_counts(requiredflags)
 	var/list/activemins = adm["present"]
 	. = activemins.len
 	if(. <= 0)
@@ -605,6 +605,23 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		else
 			final = "[msg] - All admins stealthed\[[english_list(stealthmins)]\], AFK\[[english_list(afkmins)]\], or lacks +BAN\[[english_list(powerlessmins)]\]! Total: [allmins.len] "
 		send2irc(source,final)
+		send2otherserver(source,final)
+
+/proc/send2otherserver(source,msg,type = "Ahelp")
+	var/comms_key = config_legacy.comms_key  //CONFIG_GET(string/comms_key)
+	if(!comms_key)
+		return
+	var/list/message = list()
+	message["message_sender"] = source
+	message["message"] = msg
+	message["source"] = "([CONFIG_GET(string/cross_comms_name)])"
+	message["key"] = comms_key
+	message += type
+
+	var/list/servers = CONFIG_GET(keyed_list/cross_server)
+	for(var/I in servers)
+		world.Export("[servers[I]]?[list2params(message)]")
+
 
 /proc/ircadminwho()
 	var/list/message = list("Admins: ")

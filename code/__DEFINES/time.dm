@@ -25,5 +25,5 @@
 #define WORLDTIME2TEXT(format) GAMETIMESTAMP(format, world.time)
 #define WORLDTIMEOFDAY2TEXT(format) GAMETIMESTAMP(format, world.timeofday)
 #define TIME_STAMP(format, showds) showds ? "[WORLDTIMEOFDAY2TEXT(format)]:[world.timeofday % 10]" : WORLDTIMEOFDAY2TEXT(format)
-#define STATION_TIME(display_only, wtime) ((((wtime - SSSSticker.round_start_time) * SSSSticker.station_time_rate_multiplier) + SSSSticker.gametime_offset) % 864000) - (display_only? GLOB.timezoneOffset : 0)
+#define STATION_TIME(display_only, wtime) ((((wtime - SSticker.round_start_time) * 1) + 0) % 864000) - (display_only? GLOB.timezoneOffset : 0) //1 = SSticker.station_time_rate_multiplier, 0 = SSticker.gametime_offset. i'm lazy
 #define STATION_TIME_TIMESTAMP(format, wtime) time2text(STATION_TIME(TRUE, wtime), format)

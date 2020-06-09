@@ -82,16 +82,17 @@
 
 /datum/world_topic/ahelp_relay/Run(list/input)
 	relay_msg_admins("<span class='adminnotice'><b><font color=red>HELP: </font> [input["source"]] [input["message_sender"]]: [input["message"]]</b></span>")
-
+*/
 /datum/world_topic/comms_console
 	keyword = "Comms_Console"
 	require_comms_key = TRUE
 
 /datum/world_topic/comms_console/Run(list/input)
-	minor_announce(input["message"], "Incoming message from [input["message_sender"]]")
-	for(var/obj/machinery/computer/communications/CM in GLOB.machines)
+	// minor_announce(input["message"], "Incoming message from [input["message_sender"]]")
+	global_announcer.autosay("Incoming message from [input["message_sender"]]: [input["message"]]", ANNOUNCER_NAME) //minor_announce hack.
+	for(var/obj/machinery/computer/communications/CM in machines)
 		CM.overrideCooldown()
-
+/*
 /datum/world_topic/news_report
 	keyword = "News_Report"
 	require_comms_key = TRUE
@@ -153,7 +154,7 @@
 	.["enter"] = config_legacy.enter_allowed
 	.["vote"] = config_legacy.allow_vote_mode
 	.["ai"] = config_legacy.allow_ai
-	.["host"] = host || null
+	.["host"] = host ? host : world.host ? world.host : null
 	.["round_id"] = GLOB.round_id
 	.["players"] = GLOB.clients.len
 	.["revision"] = GLOB.revdata.commit
@@ -163,23 +164,23 @@
 	var/list/presentmins = adm["present"]
 	var/list/afkmins = adm["afk"]
 	.["admins"] = presentmins.len + afkmins.len //equivalent to the info gotten from adminwho
-	//.["gamestate"] = SSSSticker.current_state
+	.["gamestate"] = SSticker.current_state
 
-	//.["map_name"] = SSmapping.config?.map_name || "Loading..."
+	.["map_name"] = SSmapping.config?.map_name || "Loading..."
 
-	//if(key_valid)
-		//.["active_players"] = get_active_player_count()
-		/*
-		if(SSSSticker.HasRoundStarted())
-			.["real_mode"] = SSSSticker.mode.name
+	if(key_valid)
+		// .["active_players"] = get_active_player_count()
+		
+		if(SSticker.current_state >= GAME_STATE_PLAYING) //.HasRoundStarted())
+			.["real_mode"] = SSticker.mode.name
 			// Key-authed callers may know the truth behind the "secret"
-		*/
 
 	.["security_level"] = get_security_level()
-//	.["round_duration"] = SSSSticker ? round((world.time-SSSSticker.round_start_time)/10) : 0
-//	// Amount of world's ticks in seconds, useful for calculating round duration
-	.["stationtime"] = stationtime2text()
-	.["roundduration"] = roundduration2text()
+	.["round_duration"] = SSticker ? round((world.time - SSticker.round_start_time)/10) : 0
+	// Amount of world's ticks in seconds, useful for calculating round duration
+
+	.["stationtime"] = stationtime2text() 		//oldcode. Formatted (hh:mm)
+	.["roundduration"] = roundduration2text() 	//oldcode. Formatted (hh:mm)
 
 	//Time dilation stats.
 	.["time_dilation_current"] = SStime_track.time_dilation_current
@@ -191,7 +192,7 @@
 	if(SSshuttle && SSshuttle.emergency)
 		.["shuttle_mode"] = SSshuttle.emergency.mode
 		// Shuttle status, see /__DEFINES/stat.dm
-		.["shuttle_timer"] = SSshuttle.emergency.timeLeft()
+		.["shuttle_timer"] = SSshuttle.emergency.timeLeft() //ALT: SSemergencyshuttle.estimate_arrival_time()
 		// Shuttle timer, in seconds
 	*/
 

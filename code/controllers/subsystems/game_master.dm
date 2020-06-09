@@ -57,15 +57,12 @@ SUBSYSTEM_DEF(gamemaster)
 		return FALSE
 	if(ignore_time_restrictions)
 		return TRUE
-	// Last minute antagging is bad for humans to do, so the GM will respect the start and end of the round.
-	var/mills = round_duration_in_ticks
-	var/mins = round((mills % 36000) / 600)
-	var/hours = round(mills / 36000)
-
-	if(hours < 1 && mins <= 20) // Don't do anything for the first twenty minutes of the round.
+	// Don't do anything for the first twenty minutes of the round.
+	if(world.time <= (SSticker.round_start_time * (20 MINUTES))) 
 		log_debug("Game Master unable to start event: It is too early.")
 		return FALSE
-	if(hours >= 2 && mins >= 40) // Don't do anything in the last twenty minutes of the round, as well.
+	// Don't do anything in the last 2 hours and 20 of the round, as well.
+	if(world.time >= (SSticker.round_start_time * ((2 HOURS) * (20 MINUTES))))
 		log_debug("Game Master unable to start event: It is too late.")
 		return FALSE
 	return TRUE
@@ -89,20 +86,18 @@ SUBSYSTEM_DEF(gamemaster)
 			log_debug("[choice.name] was chosen by the Game Master, and is now being ran.")
 			run_action(choice)
 
-/datum/controller/subsystem/gamemaster/proc/run_action(var/datum/gm_action/action)
+/datum/controller/subsystem/gamemaster/proc/run_action(datum/gm_action/action)
 	action.set_up()
 	action.start()
 	action.announce()
 	if(action.chaotic)
 		danger += action.chaotic
 	if(action.length)
-		spawn(action.length)
-			action.end()
+		addtimer(CALLBACK(action, /datum/gm_action/proc/end), action.length)
 	next_action = world.time + rand(15 MINUTES, 30 MINUTES)
 	last_department_used = action.departments[1]
 
-
-/datum/controller/subsystem/gamemaster/proc/decide_best_action(var/list/most_active_departments)
+/datum/controller/subsystem/gamemaster/proc/decide_best_action(list/most_active_departments)
 	if(!most_active_departments.len) // Server's empty?
 		log_debug("Game Master failed to find any active departments.")
 		return list()

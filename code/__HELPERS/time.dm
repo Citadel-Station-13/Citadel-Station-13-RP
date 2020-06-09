@@ -24,11 +24,12 @@ var/next_station_date_change = 1 DAY
 
 #define duration2stationtime(time) time2text(station_time_in_ticks + time, "hh:mm")
 #define worldtime2stationtime(time) time2text(roundstart_hour HOURS + time, "hh:mm")
-#define round_duration_in_ticks (round_start_time ? world.time - round_start_time : 0)
+#define round_duration_in_ticks (SSticker.round_start_time ? world.time - SSticker.round_start_time : 0)
 #define station_time_in_ticks (roundstart_hour HOURS + round_duration_in_ticks)
 
 /proc/stationtime2text()
-	return time2text(station_time_in_ticks, "hh:mm")
+	return STATION_TIME_TIMESTAMP("hh:mm", station_time_in_ticks)
+	// return time2text(station_time_in_ticks, "hh:mm")
 
 /proc/stationdate2text()
 	var/update_time = FALSE
@@ -41,14 +42,31 @@ var/next_station_date_change = 1 DAY
 		station_date = num2text((text2num(time2text(timeofday, "YYYY"))+544)) + "-" + time2text(timeofday, "MM-DD")
 	return station_date
 
+/proc/roundduration2text()
+	return SSticker ? time2text(round((world.time - SSticker.round_start_time)/10), "hh:mm") : "00:00"
+	// if(!round_start_time)
+	// 	return "00:00"
+	// if(last_round_duration && world.time < next_duration_update)
+	// 	return last_round_duration
+
+	// var/mills = round_duration_in_ticks // 1/10 of a second, not real milliseconds but whatever
+	// //var/secs = ((mills % 36000) % 600) / 10 //Not really needed, but I'll leave it here for refrence.. or something
+	// var/mins = round((mills % 36000) / 600)
+	// var/hours = round(mills / 36000)
+
+	// mins = mins < 10 ? add_zero(mins, 1) : mins
+	// hours = hours < 10 ? add_zero(hours, 1) : hours
+
+	// last_round_duration = "[hours]:[mins]"
+	// next_duration_update = world.time + 1 MINUTES
+	// return last_round_duration
+
 //Compatability thing
 /proc/time_stamp()
-	return SQLtime() 
+	return SQLtime()
 
-/proc/gameTimestamp(format = "hh:mm:ss", wtime=null)
-	if(!wtime)
-		wtime = world.time
-	return time2text(wtime - GLOB.timezoneOffset, format)
+/proc/gameTimestamp(format = "hh:mm:ss", wtime = world.time) //UTC all the logs!
+	return GAMETIMESTAMP(format, wtime) //time2text(wtime - GLOB.timezoneOffset, format)
 
 /* Returns 1 if it is the selected month and day */
 /proc/isDay(month, day)
