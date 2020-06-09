@@ -42,9 +42,10 @@
 /datum/ai_holder/proc/get_path(var/turf/target,var/get_to = 1, var/max_distance = world.view*6)
 	ai_log("get_path() : Entering.",AI_LOG_DEBUG)
 	forget_path()
-	var/list/new_path = AStar(get_turf(holder.loc), target, astar_adjacent_proc, /turf/proc/Distance, min_target_dist = get_to, max_node_depth = max_distance, id = holder.IGetID(), exclude = obstacles)
 
-	if(new_path && new_path.len)
+	var/list/new_path = SSpathfinding.AStar_pathfind(holder, get_turf(holder), target, null, PATHFINDING_HEURISTIC_BYOND, max_node_depth = 100, max_path_distance = max_distance, min_target_distance = get_to, null, queue = PATHFINDING_QUEUE_DEFAULT, holder.IGetID, exclude)
+
+	if(length(new_path))
 		path = new_path
 		ai_log("get_path() : Made new path.",AI_LOG_DEBUG)
 		if(path_display)
