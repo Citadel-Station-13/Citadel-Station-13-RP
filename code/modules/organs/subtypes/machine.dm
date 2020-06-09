@@ -6,9 +6,9 @@
 	parent_organ = BP_TORSO
 	vital = 1
 
-/obj/item/organ/internal/cell/New()
+/obj/item/organ/internal/cell/Initialize()
 	robotize()
-	..()
+	. = ..()
 
 /obj/item/organ/internal/cell/replaced()
 	..()
@@ -37,13 +37,13 @@
 		stored_mmi = null
 	return ..()
 
-/obj/item/organ/internal/mmi_holder/New(var/mob/living/carbon/human/new_owner, var/internal)
-	..(new_owner, internal)
+/obj/item/organ/internal/mmi_holder/Initialize(mob/living/carbon/human/new_owner, /internal)
+	. = ..()
 	var/mob/living/carbon/human/dummy/mannequin/M = new_owner
 	if(istype(M))
 		return
 	stored_mmi = new brain_type(src)
-	sleep(-1)
+	sleep(-1) //this is evil.
 	update_from_mmi()
 
 /obj/item/organ/internal/mmi_holder/proc/update_from_mmi()

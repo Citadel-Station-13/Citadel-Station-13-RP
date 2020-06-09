@@ -219,8 +219,8 @@
 /obj/item/organ/external/update_health()
 	damage = min(max_damage, (brute_dam + burn_dam))
 
-/obj/item/organ/external/New(var/mob/living/carbon/holder)
-	..(holder, 0)
+/obj/item/organ/external/Initialize(mob/living/carbon/holder)
+	. = ..()
 	if(owner)
 		replaced(owner)
 		sync_colour_to_human(owner)

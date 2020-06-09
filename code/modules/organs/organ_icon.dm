@@ -61,7 +61,7 @@ var/global/list/limb_icon_cache = list()
 	var/has_eye_color = owner.species.appearance_flags & HAS_EYE_COLOR
 	if((should_have_eyes || has_eye_color) && eye_icon)
 		var/obj/item/organ/internal/eyes/eyes = owner.internal_organs_by_name[O_EYES]
-		var/icon/eyes_icon = new/icon(eye_icon_location, eye_icon)
+		var/icon/eyes_icon = new /icon(eye_icon_location, eye_icon)
 		//Should have eyes
 		if(should_have_eyes)
 			//And we have them
