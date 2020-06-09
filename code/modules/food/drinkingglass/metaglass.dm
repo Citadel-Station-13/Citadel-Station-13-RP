@@ -612,11 +612,23 @@ Drinks Data
 /datum/reagent/ethanol/wine/champagne
 	glass_icon_state = "champagneglass"
 
-/datum/reagent/ethanol/alcsassafras
-	glass_icon_state = "sassafras_alc_glass"
+/datum/reagent/ethanol/newsheriff
+	glass_icon_state = "newsheriff"
 
-/datum/reagent/drink/soda/sassafras
-	glass_icon_state = "sassafras_glass"
+/datum/reagent/ethanol/thehuckleberry
+	glass_icon_state = "thehuckleberry"
 
-/datum/reagent/drink/soda/sarsaparilla
-	glass_icon_state = "sarsaparilla_glass"
+/datum/reagent/ethanol/quickdraw
+	glass_icon_state = "quickdraw"
+
+/datum/reagent/ethanol/dmhand
+	glass_icon_state = "dmhand"
+
+/datum/reagent/ethanol/snakeoil
+	glass_icon_state = "snakeoil"
+
+/datum/reagent/ethanol/highnoon
+	glass_icon_state = "highnoon"
+
+/datum/reagent/ethanol/bloodmeridian
+	glass_icon_state = "bloodmeridian"

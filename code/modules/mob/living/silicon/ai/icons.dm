@@ -137,8 +137,9 @@ var/list/datum/ai_icon/ai_icons
 
 /datum/ai_icon/rainbow
 	name = "Rainbow"
-	alive_icon = "ai-clown"
+	alive_icon = "ai-rainbow"
 	alive_light = "#E50213"
+	dead_icon = "ai-rainbow_dead"
 
 /datum/ai_icon/smiley
 	name = "Smiley"
@@ -183,7 +184,6 @@ var/list/datum/ai_icon/ai_icons
 	dead_icon = "ai-eager-crash"
 
 //Eros Research Platform Ports
-
 /datum/ai_icon/clown2
 	name = "Honk"
 	alive_icon = "ai-clown2"
@@ -211,12 +211,10 @@ var/list/datum/ai_icon/ai_icons
 	alive_icon = "ai-serithi"
 	dead_icon = "ai-serithi-crash"
 
-/*
 /datum/ai_icon/alien
 	name = "Xenomorph"
 	alive_icon = "ai-alien"
 	dead_icon = "ai-alien-crash"
-*/
 
 /datum/ai_icon/syndicat
 	name = "Syndi-cat"
@@ -227,7 +225,7 @@ var/list/datum/ai_icon/ai_icons
 	alive_icon = "ai-wasp"
 
 /datum/ai_icon/sheltered
-	name = "Doctor"
+	name = "Sheltered"
 	alive_icon = "ai-sheltered"
 
 /datum/ai_icon/fabulous
@@ -258,3 +256,39 @@ var/list/datum/ai_icon/ai_icons
 /datum/ai_icon/godfrey
 	name = "Godfrey"
 	alive_icon = "ai-godfrey"
+//End of Eros Research Platform Ports
+
+//Drof's Ports
+/datum/ai_icon/gondola
+	name = "Gondola"
+	alive_icon = "ai-gondola"
+
+/datum/ai_icon/jackfrost //Hee Ho!
+	name = "Jack Frost"
+	alive_icon = "ai-jackfrost"
+
+/datum/ai_icon/mothman
+	name = "Mothman"
+	alive_icon = "ai-mothman"
+
+/datum/ai_icon/thinking
+	name = "Ponderous"
+	alive_icon = "ai-:thinking:"
+	dead_icon = "ai-:thinking:_dead"
+
+/datum/ai_icon/fourleaves
+	name = "Four Leaves"
+	alive_icon = "ai-4chan"
+
+/datum/ai_icon/terminal
+	name = "Terminal"
+	alive_icon = "ai-terminal"
+
+/datum/ai_icon/cheerful
+	name ="Cheerful"
+	alive_icon = "ai-cheerful"
+
+/datum/ai_icon/stern
+	name = "Stern"
+	alive_icon = "ai-stern"
+//End of Drof's Ports

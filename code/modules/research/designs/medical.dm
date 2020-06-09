@@ -70,6 +70,15 @@
 	build_path = /obj/item/surgical/bone_clamp
 	sort_string = "KAABA"
 
+/datum/design/item/medical/switchtool
+	name = "Surgical Multi-tool"
+	desc = "A set of compact surgical instruments housed in a small handle, allowing surgical proccedures on the go."
+	id = "surgery_switchtool"
+	req_tech = list(TECH_BIO = 4, TECH_MATERIAL = 5, TECH_MAGNET = 4, TECH_DATA = 4)
+	materials = list (DEFAULT_WALL_MATERIAL = 12500, "glass" = 7500, "silver" = 2500)
+	build_path = /obj/item/switchtool/surgery
+	sort_string = "KAABA"
+
 /datum/design/item/medical/medical_analyzer
 	name = "health analyzer"
 	desc = "A hand-held body scanner able to distinguish vital signs of the subject."

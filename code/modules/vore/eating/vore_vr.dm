@@ -1,24 +1,3 @@
-
-/*
-VVVVVVVV           VVVVVVVV     OOOOOOOOO     RRRRRRRRRRRRRRRRR   EEEEEEEEEEEEEEEEEEEEEE
-V::::::V           V::::::V   OO:::::::::OO   R::::::::::::::::R  E::::::::::::::::::::E
-V::::::V           V::::::V OO:::::::::::::OO R::::::RRRRRR:::::R E::::::::::::::::::::E
-V::::::V           V::::::VO:::::::OOO:::::::ORR:::::R     R:::::REE::::::EEEEEEEEE::::E
- V:::::V           V:::::V O::::::O   O::::::O  R::::R     R:::::R  E:::::E       EEEEEE
-  V:::::V         V:::::V  O:::::O     O:::::O  R::::R     R:::::R  E:::::E
-   V:::::V       V:::::V   O:::::O     O:::::O  R::::RRRRRR:::::R   E::::::EEEEEEEEEE
-    V:::::V     V:::::V    O:::::O     O:::::O  R:::::::::::::RR    E:::::::::::::::E
-     V:::::V   V:::::V     O:::::O     O:::::O  R::::RRRRRR:::::R   E:::::::::::::::E
-      V:::::V V:::::V      O:::::O     O:::::O  R::::R     R:::::R  E::::::EEEEEEEEEE
-       V:::::V:::::V       O:::::O     O:::::O  R::::R     R:::::R  E:::::E
-        V:::::::::V        O::::::O   O::::::O  R::::R     R:::::R  E:::::E       EEEEEE
-         V:::::::V         O:::::::OOO:::::::ORR:::::R     R:::::REE::::::EEEEEEEE:::::E
-          V:::::V           OO:::::::::::::OO R::::::R     R:::::RE::::::::::::::::::::E
-           V:::V              OO:::::::::OO   R::::::R     R:::::RE::::::::::::::::::::E
-            VVV                 OOOOOOOOO     RRRRRRRR     RRRRRRREEEEEEEEEEEEEEEEEEEEEE
-
--Aro <3 */
-
 #define VORE_VERSION	2	//This is a Define so you don't have to worry about magic numbers.
 
 //
@@ -43,14 +22,14 @@ V::::::V           V::::::VO:::::::OOO:::::::ORR:::::R     R:::::REE::::::EEEEEE
 
 /datum/vore_preferences
 	//Actual preferences
-	var/digestable = TRUE
-	var/devourable = TRUE
-	var/feeding = TRUE
+	var/digestable = FALSE
+	var/devourable = FALSE
+	var/feeding = FALSE
 	var/digest_leave_remains = FALSE
-	var/allowmobvore = TRUE
+	var/allowmobvore = FALSE
 	var/list/belly_prefs = list()
 	var/vore_taste = "nothing in particular"
-	var/permit_healbelly = TRUE
+	var/permit_healbelly = FALSE
 	var/can_be_drop_prey = FALSE
 	var/can_be_drop_pred = FALSE
 

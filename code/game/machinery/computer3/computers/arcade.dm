@@ -22,7 +22,8 @@
 							/obj/item/toy/prize/seraph						= 1,
 							/obj/item/toy/prize/mauler						= 1,
 							/obj/item/toy/prize/odysseus					= 1,
-							/obj/item/toy/prize/phazon						= 1
+							/obj/item/toy/prize/phazon						= 1,
+							/obj/item/toy/cowgirlprize						= 1
 							)
 
 /obj/item/part/computer/toybox/allow_attackby(var/obj/item/I, var/mob/user)

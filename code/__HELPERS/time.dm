@@ -100,33 +100,5 @@ GLOBAL_VAR_INIT(rollovercheck_last_timeofday, 0)
 		hourT = " and [hour] hour[(hour != 1)? "s":""]"
 	return "[day] day[(day != 1)? "s":""][hourT][minuteT][secondT]"
 
-// Hook things
-var/next_duration_update = 0
-var/last_round_duration = 0
-var/round_start_time = 0
-
-/proc/roundduration2text()
-	if(!round_start_time)
-		return "00:00"
-	if(last_round_duration && world.time < next_duration_update)
-		return last_round_duration
-
-	var/mills = round_duration_in_ticks // 1/10 of a second, not real milliseconds but whatever
-	//var/secs = ((mills % 36000) % 600) / 10 //Not really needed, but I'll leave it here for refrence.. or something
-	var/mins = round((mills % 36000) / 600)
-	var/hours = round(mills / 36000)
-
-	mins = mins < 10 ? add_zero(mins, 1) : mins
-	hours = hours < 10 ? add_zero(hours, 1) : hours
-
-	last_round_duration = "[hours]:[mins]"
-	next_duration_update = world.time + 1 MINUTES
-	return last_round_duration
-
-/hook/roundstart/proc/start_timer()
-	round_start_time = world.time
-	return TRUE
-
-/hook/startup/proc/set_roundstart_hour()
-	roundstart_hour = pick(2,7,12,17)
-	return TRUE
+/proc/daysSince(realtimev)
+	return round((world.realtime - realtimev) / (24 HOURS))

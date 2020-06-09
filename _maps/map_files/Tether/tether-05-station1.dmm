@@ -5707,6 +5707,7 @@
 	dir = 4
 	},
 /obj/random/maintenance,
+/obj/item/paicard,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_library)
 "alv" = (
@@ -23808,6 +23809,11 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor,
 /area/construction/observation)
+"nXR" = (
+/obj/structure/table/woodentable,
+/obj/item/paicard,
+/turf/simulated/floor/wood,
+/area/hallway/station/atrium)
 "nYc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -37080,7 +37086,7 @@ acm
 acH
 ada
 adk
-adm
+nXR
 adn
 acH
 acm

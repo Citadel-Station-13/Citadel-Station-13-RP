@@ -297,6 +297,8 @@ note dizziness decrements automatically in the mob's Life() proc.
 	return TRUE //Found an item, doing item attack animation.
 
 /mob/proc/spin(spintime, speed)
+	if(speed < world.tick_lag)
+		return		// no.
 	spawn()
 		var/D = dir
 		while(spintime >= speed)
@@ -312,4 +314,3 @@ note dizziness decrements automatically in the mob's Life() proc.
 					D = NORTH
 			setDir(D)
 			spintime -= speed
-	return

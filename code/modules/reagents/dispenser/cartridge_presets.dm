@@ -47,6 +47,7 @@
 	mead		spawn_reagent = "mead"
 	bitters		spawn_reagent = "bitters"
 	cider		spawn_reagent = "cider"
+	alcsassafras	spawn_reagent = "alcsassafras"
 
 	// Bar, soft
 	ice			spawn_reagent = "ice"
