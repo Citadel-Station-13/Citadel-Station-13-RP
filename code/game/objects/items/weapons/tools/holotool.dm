@@ -50,7 +50,7 @@
 	if(deployed)
 		deployed.resolve_attackby(A, user, params, attack_modifier = 1)
 		if(deployed.loc != src)
-			deployed.forcemove(src)
+			deployed.forceMove(src)
 			undeploy()
 			return ..()
 		return
