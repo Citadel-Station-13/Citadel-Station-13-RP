@@ -149,9 +149,6 @@
 	var/datum/poster/design = NT_poster_designs[serial_number]
 	set_poster(design)
 
-	..(newloc, placement_dir, serial, itemtype)
-
-
 /obj/structure/sign/poster/proc/set_poster(datum/poster/design)
 	name = "[initial(name)] - [design.name]"
 	desc = "[initial(desc)] [design.desc]"

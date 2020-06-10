@@ -42,24 +42,9 @@ var/next_station_date_change = 1 DAY
 		station_date = num2text((text2num(time2text(timeofday, "YYYY"))+544)) + "-" + time2text(timeofday, "MM-DD")
 	return station_date
 
+//Compatability shenanigans. Does not cache the time
 /proc/roundduration2text()
-	return SSticker ? time2text(round((world.time - SSticker.round_start_time)/10), "hh:mm") : "00:00"
-	// if(!round_start_time)
-	// 	return "00:00"
-	// if(last_round_duration && world.time < next_duration_update)
-	// 	return last_round_duration
-
-	// var/mills = round_duration_in_ticks // 1/10 of a second, not real milliseconds but whatever
-	// //var/secs = ((mills % 36000) % 600) / 10 //Not really needed, but I'll leave it here for refrence.. or something
-	// var/mins = round((mills % 36000) / 600)
-	// var/hours = round(mills / 36000)
-
-	// mins = mins < 10 ? add_zero(mins, 1) : mins
-	// hours = hours < 10 ? add_zero(hours, 1) : hours
-
-	// last_round_duration = "[hours]:[mins]"
-	// next_duration_update = world.time + 1 MINUTES
-	// return last_round_duration
+	return (SSticker?.round_start_time) ? time2text(round((world.time - SSticker.round_start_time)/10), "hh:mm") : "00:00"
 
 //Compatability thing
 /proc/time_stamp()
