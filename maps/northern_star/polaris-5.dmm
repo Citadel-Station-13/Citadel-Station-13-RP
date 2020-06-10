@@ -85,8 +85,7 @@
 /obj/item/extinguisher,
 /obj/machinery/alarm{
 	dir = 8;
-	pixel_x = 25;
-	pixel_y = 0
+	pixel_x = 25
 	},
 /turf/simulated/floor/plating,
 /area/outpost/research/hallway/toxins_hallway)
@@ -127,7 +126,6 @@
 	},
 /obj/machinery/newscaster{
 	layer = 3.3;
-	pixel_x = 0;
 	pixel_y = 30
 	},
 /obj/item/tool/crowbar,
@@ -142,8 +140,7 @@
 	department = "Science";
 	departmentType = 2;
 	name = "Science Requests Console";
-	pixel_x = 30;
-	pixel_y = 0
+	pixel_x = 30
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/mixing)
@@ -162,8 +159,7 @@
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/firealarm{
 	dir = 8;
-	pixel_x = -24;
-	pixel_y = 0
+	pixel_x = -24
 	},
 /turf/simulated/floor/tiled/dark,
 /area/outpost/research/tox_store)
@@ -257,7 +253,6 @@
 	},
 /obj/machinery/status_display{
 	layer = 4;
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/white,
@@ -367,8 +362,7 @@
 	},
 /obj/machinery/light{
 	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	icon_state = "tube1"
 	},
 /obj/effect/floor_decal/corner/purple{
 	dir = 9
@@ -650,7 +644,6 @@
 /area/outpost/research/tox_store)
 "bK" = (
 /obj/structure/extinguisher_cabinet{
-	pixel_x = 0;
 	pixel_y = -29
 	},
 /turf/simulated/floor/tiled,
@@ -718,8 +711,7 @@
 	},
 /obj/machinery/alarm{
 	dir = 8;
-	pixel_x = 25;
-	pixel_y = 0
+	pixel_x = 25
 	},
 /obj/machinery/light{
 	dir = 4;
@@ -821,8 +813,7 @@
 	},
 /obj/machinery/status_display{
 	layer = 4;
-	pixel_x = 32;
-	pixel_y = 0
+	pixel_x = 32
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/mixing)
@@ -951,7 +942,6 @@
 	icon_state = "space";
 	layer = 4;
 	name = "EXTERNAL AIRLOCK";
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction,
@@ -1017,7 +1007,6 @@
 	id_tag = "tox_airlock_control";
 	tag_interior_door = "tox_airlock_interior";
 	pixel_x = -24;
-	pixel_y = 0;
 	tag_chamber_sensor = "tox_airlock_sensor"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -1133,7 +1122,6 @@
 	},
 /obj/machinery/status_display{
 	layer = 4;
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/white,
@@ -1513,8 +1501,7 @@
 	layer = 4;
 	name = "Test Chamber Telescreen";
 	network = list("Toxins Test Area");
-	pixel_x = 32;
-	pixel_y = 0
+	pixel_x = 32
 	},
 /obj/effect/floor_decal/industrial/warning/corner{
 	icon_state = "warningcorner";
@@ -1689,7 +1676,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 24
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -1789,8 +1775,7 @@
 	layer = 4;
 	name = "Test Chamber Telescreen";
 	network = list("Toxins Test Area");
-	pixel_x = 32;
-	pixel_y = 0
+	pixel_x = 32
 	},
 /obj/machinery/light{
 	dir = 4;
@@ -1828,8 +1813,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/airless,
 /area/outpost/research/test_area)
@@ -1843,8 +1827,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/blue,
 /obj/machinery/light_switch{
-	pixel_x = -36;
-	pixel_y = 0
+	pixel_x = -36
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/mixing)
@@ -1963,8 +1946,7 @@
 	icon_state = "space";
 	layer = 4;
 	name = "EXTERNAL AIRLOCK";
-	pixel_x = -30;
-	pixel_y = 0
+	pixel_x = -30
 	},
 /obj/structure/disposalpipe/trunk{
 	dir = 1
@@ -2000,8 +1982,7 @@
 	layer = 4;
 	name = "Test Chamber Telescreen";
 	network = list("Toxins Test Area");
-	pixel_x = 32;
-	pixel_y = 0
+	pixel_x = 32
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
@@ -2072,8 +2053,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/structure/cable/blue{
 	d1 = 4;
@@ -2182,8 +2162,7 @@
 	},
 /obj/machinery/newscaster{
 	layer = 3.3;
-	pixel_x = -30;
-	pixel_y = 0
+	pixel_x = -30
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/research/toxins_misc_lab)
@@ -2215,8 +2194,7 @@
 /area/outpost/research/toxins_misc_lab)
 "eq" = (
 /obj/machinery/light/small{
-	dir = 8;
-	pixel_x = 0
+	dir = 8
 	},
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/mine/explored)
@@ -2283,8 +2261,7 @@
 /obj/machinery/microwave,
 /obj/machinery/status_display{
 	layer = 4;
-	pixel_x = -32;
-	pixel_y = 0
+	pixel_x = -32
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/research/toxins_misc_lab)
@@ -2316,7 +2293,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 24
 	},
 /obj/structure/cable/blue{
@@ -2334,7 +2310,6 @@
 	frequency = 1379;
 	master_tag = "toxins_airlock";
 	name = "interior access button";
-	pixel_x = 0;
 	pixel_y = 26;
 	req_one_access = list(8,13,65)
 	},
@@ -2362,7 +2337,6 @@
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
 	frequency = 1379;
 	id_tag = "toxins_airlock";
-	pixel_x = 0;
 	pixel_y = 25;
 	tag_airpump = "toxins_pump";
 	tag_chamber_sensor = "toxins_sensor";
@@ -2372,7 +2346,6 @@
 /obj/machinery/airlock_sensor{
 	frequency = 1379;
 	id_tag = "toxins_sensor";
-	pixel_x = 0;
 	pixel_y = -25
 	},
 /obj/machinery/light/small,
@@ -2460,7 +2433,6 @@
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/extinguisher_cabinet{
-	pixel_x = 0;
 	pixel_y = -29
 	},
 /turf/simulated/floor/tiled,
@@ -2501,8 +2473,7 @@
 /obj/item/storage/box/donkpockets,
 /obj/machinery/firealarm{
 	dir = 8;
-	pixel_x = -24;
-	pixel_y = 0
+	pixel_x = -24
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/research/toxins_misc_lab)
@@ -2605,7 +2576,6 @@
 /obj/machinery/embedded_controller/radio/airlock/access_controller{
 	id_tag = "toxins_airlock_control";
 	name = "Toxins Access Console";
-	pixel_x = 0;
 	pixel_y = -28;
 	tag_exterior_door = "toxins_airlock_exterior";
 	tag_interior_door = "toxins_airlock_interior"
@@ -3011,7 +2981,6 @@
 	master_tag = "toxins_airlock_control";
 	name = "Toxins Access Button";
 	pixel_x = 26;
-	pixel_y = 0;
 	req_access = list(7)
 	},
 /turf/simulated/floor/tiled/white,
@@ -3055,7 +3024,6 @@
 /obj/machinery/button/remote/blast_door{
 	id = "xenobio1";
 	name = "Containment Blast Doors";
-	pixel_x = 0;
 	pixel_y = 4;
 	req_access = list(55)
 	},
@@ -3110,7 +3078,6 @@
 /obj/machinery/button/remote/blast_door{
 	id = "xenobio2";
 	name = "Containment Blast Doors";
-	pixel_x = 0;
 	pixel_y = 4;
 	req_access = list(55)
 	},
@@ -3476,7 +3443,6 @@
 /obj/machinery/button/remote/blast_door{
 	id = "xenobio3";
 	name = "Containment Blast Doors";
-	pixel_x = 0;
 	pixel_y = 4;
 	req_access = list(55)
 	},
@@ -3720,7 +3686,6 @@
 "hw" = (
 /obj/machinery/smartfridge/secure/extract,
 /obj/structure/sign/deathsposal{
-	pixel_x = 0;
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled/white,
@@ -3976,7 +3941,6 @@
 	frequency = 1379;
 	master_tag = "xeno_airlock_control";
 	name = "Xenobiology Access Button";
-	pixel_x = 0;
 	pixel_y = -26;
 	req_access = list(55)
 	},
@@ -4148,8 +4112,7 @@
 	},
 /obj/machinery/light{
 	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	icon_state = "tube1"
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/xenobiology)
@@ -4199,14 +4162,12 @@
 	id = "xenobiodivid";
 	name = "Divider Switch";
 	pixel_x = 38;
-	pixel_y = 0;
 	req_access = list(55)
 	},
 /obj/structure/sink{
 	dir = 4;
 	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /obj/structure/cable/blue{
 	d2 = 8;
@@ -4381,7 +4342,6 @@
 /obj/machinery/button/remote/blast_door{
 	id = "xenobio4";
 	name = "Containment Blast Doors";
-	pixel_x = 0;
 	pixel_y = 4;
 	req_access = list(55)
 	},
@@ -4563,7 +4523,6 @@
 	department = "Science";
 	departmentType = 2;
 	name = "Science Requests Console";
-	pixel_x = 0;
 	pixel_y = 30
 	},
 /turf/simulated/floor/tiled,
@@ -4822,7 +4781,6 @@
 /obj/machinery/button/remote/blast_door{
 	id = "xenobio6";
 	name = "Containment Blast Doors";
-	pixel_x = 0;
 	pixel_y = 4;
 	req_access = list(55)
 	},
@@ -4844,7 +4802,6 @@
 	desc = "A remote control-switch for a door to space.";
 	id = "xenobioout6";
 	name = "Containment Release Switch";
-	pixel_x = 0;
 	pixel_y = -28;
 	req_access = list(55)
 	},
@@ -4873,7 +4830,6 @@
 /obj/machinery/button/remote/blast_door{
 	id = "xenobio5";
 	name = "Containment Blast Doors";
-	pixel_x = 0;
 	pixel_y = 4;
 	req_access = list(55)
 	},
@@ -5029,8 +4985,7 @@
 /area/outpost/research/xenobiology)
 "jw" = (
 /obj/structure/extinguisher_cabinet{
-	pixel_x = 25;
-	pixel_y = 0
+	pixel_x = 25
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/xenobiology)
@@ -5237,8 +5192,7 @@
 	},
 /obj/machinery/alarm{
 	dir = 8;
-	pixel_x = 25;
-	pixel_y = 0
+	pixel_x = 25
 	},
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/white,
@@ -5256,7 +5210,6 @@
 /obj/structure/closet/crate,
 /obj/machinery/status_display{
 	layer = 4;
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/dark,
@@ -5531,7 +5484,6 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/machinery/status_display{
 	layer = 4;
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/wood,
@@ -5569,7 +5521,6 @@
 /obj/structure/reagent_dispensers/fueltank,
 /obj/machinery/status_display{
 	layer = 4;
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled,
@@ -5881,8 +5832,7 @@
 /area/outpost/research/longtermstorage)
 "ls" = (
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/outpost/research/longtermstorage)
@@ -5967,8 +5917,7 @@
 	},
 /obj/machinery/light{
 	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	icon_state = "tube1"
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/dock)
@@ -6067,8 +6016,7 @@
 "lP" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/sign/nosmoking_2{
-	pixel_x = -32;
-	pixel_y = 0
+	pixel_x = -32
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/research/longtermstorage)
@@ -6354,13 +6302,10 @@
 /obj/machinery/conveyor_switch{
 	id = "anolongstorage";
 	name = "conveyor switch";
-	pixel_x = 0;
-	pixel_y = 0;
 	req_access = list(65)
 	},
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/research/tempstorage)
@@ -6368,8 +6313,6 @@
 /obj/machinery/conveyor_switch{
 	id = "anolongstorage";
 	name = "conveyor switch";
-	pixel_x = 0;
-	pixel_y = 0;
 	req_access = list(65)
 	},
 /turf/simulated/floor/tiled/asteroid_steel/airless,
@@ -6492,8 +6435,7 @@
 "mP" = (
 /obj/machinery/status_display{
 	layer = 4;
-	pixel_x = 32;
-	pixel_y = 0
+	pixel_x = 32
 	},
 /turf/simulated/floor/wood,
 /area/outpost/research/dorms)
@@ -6660,7 +6602,6 @@
 "nj" = (
 /obj/machinery/newscaster{
 	layer = 3.3;
-	pixel_x = 0;
 	pixel_y = -27
 	},
 /obj/item/radio/intercom{
@@ -6704,8 +6645,7 @@
 	pixel_y = -25
 	},
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /turf/simulated/floor/carpet/blue,
 /area/outpost/research/dorms)
@@ -6827,8 +6767,6 @@
 /obj/machinery/conveyor_switch{
 	id = "anotempload";
 	name = "conveyor switch";
-	pixel_x = 0;
-	pixel_y = 0;
 	req_access = list(65)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -6846,8 +6784,6 @@
 /obj/machinery/conveyor_switch{
 	id = "anotempload";
 	name = "conveyor switch";
-	pixel_x = 0;
-	pixel_y = 0;
 	req_access = list(65)
 	},
 /turf/simulated/floor/tiled/asteroid_steel/airless,
@@ -6905,7 +6841,6 @@
 	dir = 8
 	},
 /obj/structure/closet/hydrant{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/white,
@@ -6962,11 +6897,9 @@
 	},
 /obj/machinery/light{
 	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	icon_state = "tube1"
 	},
 /obj/structure/closet/hydrant{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled,
@@ -7142,7 +7075,6 @@
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	frequency = 1380;
 	id_tag = "research_outpost_dock";
-	pixel_x = 0;
 	pixel_y = 30;
 	req_one_access = list(13,48);
 	tag_airpump = "research_outpost_pump";
@@ -7161,7 +7093,6 @@
 /area/outpost/research/dock)
 "oc" = (
 /obj/machinery/computer/guestpass{
-	pixel_x = 0;
 	pixel_y = 30
 	},
 /turf/simulated/floor/tiled/white,
@@ -7232,7 +7163,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 24
 	},
 /obj/structure/cable/blue{
@@ -7328,7 +7258,6 @@
 	},
 /obj/machinery/status_display{
 	layer = 4;
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /obj/machinery/space_heater,
@@ -7439,7 +7368,6 @@
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
 	frequency = 1379;
 	id_tag = "research_airlock";
-	pixel_x = 0;
 	pixel_y = 25;
 	tag_airpump = "research_pump";
 	tag_chamber_sensor = "research_sensor";
@@ -7589,8 +7517,7 @@
 	},
 /obj/machinery/status_display{
 	layer = 4;
-	pixel_x = 32;
-	pixel_y = 0
+	pixel_x = 32
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/dock)
@@ -7995,7 +7922,6 @@
 /obj/machinery/airlock_sensor{
 	frequency = 1380;
 	id_tag = "research_outpost_sensor";
-	pixel_x = 0;
 	pixel_y = -25
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -8177,8 +8103,7 @@
 /obj/item/clothing/gloves/sterile/latex,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/structure/sign/nosmoking_2{
-	pixel_x = 32;
-	pixel_y = 0
+	pixel_x = 32
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/hallway/mid)
@@ -8318,7 +8243,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 24
 	},
 /obj/structure/cable/blue{
@@ -8436,7 +8360,6 @@
 /obj/machinery/airlock_sensor{
 	frequency = 1379;
 	id_tag = "research_sensor";
-	pixel_x = 0;
 	pixel_y = -25
 	},
 /obj/machinery/light/small,
@@ -8498,8 +8421,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/structure/sign/securearea{
 	desc = "A warning sign which reads 'KEEP CLEAR OF DOCKING AREA'.";
-	name = "KEEP CLEAR: DOCKING AREA";
-	pixel_y = 0
+	name = "KEEP CLEAR: DOCKING AREA"
 	},
 /turf/simulated/floor/plating,
 /area/outpost/research/dock)
@@ -8534,8 +8456,7 @@
 /obj/effect/floor_decal/corner/purple/full,
 /obj/machinery/light{
 	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	icon_state = "tube1"
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/dock)
@@ -8711,7 +8632,6 @@
 	},
 /obj/machinery/status_display{
 	layer = 4;
-	pixel_x = 0;
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled,
@@ -8944,7 +8864,6 @@
 	dir = 1
 	},
 /obj/structure/sign/nosmoking_2{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/white,
@@ -9055,8 +8974,7 @@
 /obj/effect/floor_decal/corner/beige/full,
 /obj/machinery/firealarm{
 	dir = 8;
-	pixel_x = -24;
-	pixel_y = 0
+	pixel_x = -24
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/analysis)
@@ -9105,8 +9023,7 @@
 	},
 /obj/machinery/alarm{
 	dir = 8;
-	pixel_x = 25;
-	pixel_y = 0
+	pixel_x = 25
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/analysis)
@@ -9116,8 +9033,7 @@
 /obj/item/tool/crowbar,
 /obj/machinery/newscaster{
 	layer = 3.3;
-	pixel_x = -30;
-	pixel_y = 0
+	pixel_x = -30
 	},
 /obj/item/radio/intercom{
 	dir = 1;
@@ -9252,13 +9168,11 @@
 /obj/machinery/alarm{
 	dir = 4;
 	icon_state = "alarm0";
-	pixel_x = -22;
-	pixel_y = 0
+	pixel_x = -22
 	},
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 24
 	},
 /obj/structure/cable/blue{
@@ -9305,8 +9219,7 @@
 /obj/effect/floor_decal/corner/beige/full,
 /obj/machinery/light{
 	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	icon_state = "tube1"
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/analysis)
@@ -9367,8 +9280,7 @@
 	},
 /obj/machinery/status_display{
 	layer = 4;
-	pixel_x = 32;
-	pixel_y = 0
+	pixel_x = 32
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/analysis)
@@ -9409,8 +9321,7 @@
 	},
 /obj/machinery/status_display{
 	layer = 4;
-	pixel_x = -32;
-	pixel_y = 0
+	pixel_x = -32
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/anomaly)
@@ -9492,8 +9403,7 @@
 /obj/machinery/alarm{
 	dir = 4;
 	icon_state = "alarm0";
-	pixel_x = -22;
-	pixel_y = 0
+	pixel_x = -22
 	},
 /obj/structure/table/standard,
 /obj/item/storage/box/monkeycubes,
@@ -10335,8 +10245,7 @@
 	},
 /obj/machinery/status_display{
 	layer = 4;
-	pixel_x = 32;
-	pixel_y = 0
+	pixel_x = 32
 	},
 /turf/simulated/floor,
 /area/outpost/research/anomaly)
@@ -10366,8 +10275,7 @@
 /obj/structure/sign/securearea{
 	desc = "A warning sign which reads 'HIGH VOLTAGE'";
 	icon_state = "shock";
-	name = "HIGH VOLTAGE";
-	pixel_y = 0
+	name = "HIGH VOLTAGE"
 	},
 /turf/simulated/wall,
 /area/outpost/research/power)
@@ -10386,7 +10294,6 @@
 /obj/machinery/light,
 /obj/machinery/status_display{
 	layer = 4;
-	pixel_x = 0;
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled,
@@ -10398,7 +10305,6 @@
 	},
 /obj/machinery/newscaster{
 	layer = 3.3;
-	pixel_x = 0;
 	pixel_y = -27
 	},
 /turf/simulated/floor/tiled,
@@ -10411,8 +10317,7 @@
 "ub" = (
 /obj/machinery/light{
 	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	icon_state = "tube1"
 	},
 /obj/machinery/alarm{
 	dir = 1;
@@ -10791,8 +10696,7 @@
 /area/outpost/research/power)
 "uK" = (
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/outpost/research/power)
@@ -10818,8 +10722,7 @@
 /obj/machinery/alarm/monitor/isolation{
 	alarm_id = "isolation_one";
 	dir = 8;
-	pixel_x = 22;
-	pixel_y = 0
+	pixel_x = 22
 	},
 /turf/simulated/floor/tiled/dark,
 /area/outpost/research/isolation_a)
@@ -10845,8 +10748,7 @@
 /obj/machinery/alarm/monitor/isolation{
 	alarm_id = "isolation_two";
 	dir = 8;
-	pixel_x = 22;
-	pixel_y = 0
+	pixel_x = 22
 	},
 /turf/simulated/floor/tiled/dark,
 /area/outpost/research/isolation_b)
@@ -10872,8 +10774,7 @@
 /obj/machinery/alarm/monitor/isolation{
 	alarm_id = "isolation_three";
 	dir = 8;
-	pixel_x = 22;
-	pixel_y = 0
+	pixel_x = 22
 	},
 /turf/simulated/floor/tiled/dark,
 /area/outpost/research/isolation_c)
@@ -11043,8 +10944,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
 	dir = 4
@@ -11061,7 +10961,6 @@
 	},
 /obj/machinery/status_display{
 	layer = 4;
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/white,
@@ -11086,7 +10985,6 @@
 /obj/machinery/vending/snack,
 /obj/machinery/status_display{
 	layer = 4;
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/dark,
@@ -11241,7 +11139,6 @@
 /obj/machinery/firealarm{
 	dir = 2;
 	layer = 3.3;
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/white,
@@ -11279,8 +11176,7 @@
 /obj/machinery/airlock_sensor{
 	frequency = 1380;
 	id_tag = "mining_outpost_sensor";
-	pixel_x = -28;
-	pixel_y = 0
+	pixel_x = -28
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 9
@@ -11302,7 +11198,6 @@
 	frequency = 1380;
 	id_tag = "mining_outpost_airlock";
 	pixel_x = 28;
-	pixel_y = 0;
 	req_one_access = list(13,48);
 	tag_airpump = "mining_outpost_pump";
 	tag_chamber_sensor = "mining_outpost_sensor";
@@ -11334,7 +11229,6 @@
 /obj/machinery/firealarm{
 	dir = 2;
 	layer = 3.3;
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /turf/simulated/floor/wood,
@@ -11639,8 +11533,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -11874,7 +11767,6 @@
 /area/outpost/mining_main/north_hall)
 "wT" = (
 /obj/machinery/newscaster{
-	pixel_x = 0;
 	pixel_y = -30
 	},
 /obj/item/radio/intercom{
@@ -11932,8 +11824,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -11950,8 +11841,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/mine/explored)
@@ -12028,7 +11918,6 @@
 	},
 /obj/machinery/status_display{
 	layer = 4;
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled,
@@ -12068,8 +11957,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -12106,7 +11994,6 @@
 /area/outpost/mining_main/north_hall)
 "xw" = (
 /obj/structure/closet/hydrant{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /obj/machinery/power/apc{
@@ -12284,7 +12171,6 @@
 	frequency = 1379;
 	id_tag = "meoutpost_main_airlock";
 	pixel_x = -25;
-	pixel_y = 0;
 	req_access = newlist();
 	req_one_access = list(10,48,65);
 	tag_airpump = "meoutpost_main_pump";
@@ -12298,8 +12184,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1;
@@ -12311,8 +12196,7 @@
 /area/outpost/engineering/mining/hallway)
 "xN" = (
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9;
@@ -12321,8 +12205,7 @@
 /obj/machinery/airlock_sensor{
 	frequency = 1379;
 	id_tag = "meoutpost_main_sensor";
-	pixel_x = 25;
-	pixel_y = 0
+	pixel_x = 25
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/engineering/mining/hallway)
@@ -12331,8 +12214,7 @@
 /area/outpost/engineering/mining/atmospherics)
 "xP" = (
 /obj/machinery/light/small{
-	dir = 8;
-	pixel_x = 0
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/north_hall)
@@ -12600,8 +12482,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -12620,8 +12501,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -12643,7 +12523,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 24
 	},
 /obj/structure/cable/blue{
@@ -12822,8 +12701,7 @@
 /obj/structure/sign/securearea{
 	desc = "A warning sign which reads 'HIGH VOLTAGE'";
 	icon_state = "shock";
-	name = "HIGH VOLTAGE";
-	pixel_y = 0
+	name = "HIGH VOLTAGE"
 	},
 /turf/simulated/wall,
 /area/outpost/mining_main/maintenance)
@@ -12873,8 +12751,7 @@
 /area/outpost/mining_main/refinery)
 "yK" = (
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/mine/explored)
@@ -12910,8 +12787,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9;
@@ -12933,8 +12809,7 @@
 /area/outpost/engineering/mining/hallway)
 "yQ" = (
 /obj/structure/sign/vacuum{
-	pixel_x = 32;
-	pixel_y = 0
+	pixel_x = 32
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/engineering/mining/hallway)
@@ -13086,8 +12961,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
@@ -13211,8 +13085,7 @@
 /obj/structure/sink{
 	dir = 4;
 	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /obj/machinery/alarm{
 	frequency = 1441;
@@ -13281,7 +13154,6 @@
 /obj/structure/sign/securearea{
 	desc = "A warning sign which reads 'MOVING PARTS'.";
 	name = "\improper MOVING PARTS";
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /obj/machinery/light{
@@ -13381,8 +13253,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
@@ -13403,8 +13274,7 @@
 	},
 /obj/machinery/light{
 	dir = 4;
-	icon_state = "tube1";
-	pixel_x = 0
+	icon_state = "tube1"
 	},
 /obj/machinery/camera/network/engineering_outpost{
 	c_tag = "ENG - Outpost Mining Main";
@@ -13412,8 +13282,7 @@
 	},
 /obj/machinery/status_display{
 	layer = 4;
-	pixel_x = 32;
-	pixel_y = 0
+	pixel_x = 32
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/engineering/mining/hallway)
@@ -13499,7 +13368,6 @@
 	id = "miningdorm2";
 	name = "Door Bolt Control";
 	pixel_x = 25;
-	pixel_y = 0;
 	specialfunctions = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -13614,12 +13482,10 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 24
 	},
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/outpost/engineering/mining/telecomms)
@@ -13752,7 +13618,6 @@
 "AI" = (
 /obj/machinery/status_display{
 	layer = 4;
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled,
@@ -13765,7 +13630,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 24
 	},
 /obj/machinery/light{
@@ -13902,8 +13766,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/structure/dispenser/oxygen,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -13967,8 +13830,7 @@
 "Bc" = (
 /obj/machinery/alarm{
 	dir = 4;
-	pixel_x = -25;
-	pixel_y = 0
+	pixel_x = -25
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -13984,7 +13846,6 @@
 /obj/machinery/firealarm{
 	dir = 2;
 	layer = 3.3;
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled,
@@ -13998,7 +13859,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 24
 	},
 /obj/structure/cable/blue{
@@ -14193,8 +14053,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -14252,14 +14111,12 @@
 /obj/machinery/light,
 /obj/machinery/status_display{
 	layer = 4;
-	pixel_x = 0;
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/dorms)
 "BD" = (
 /obj/structure/extinguisher_cabinet{
-	pixel_x = 0;
 	pixel_y = -30
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -14379,8 +14236,7 @@
 /area/outpost/mining_main/refinery)
 "BO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9;
-	pixel_y = 0
+	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -14447,7 +14303,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 24
 	},
 /turf/simulated/floor/plating,
@@ -14707,12 +14562,10 @@
 	id = "miningdorm3";
 	name = "Door Bolt Control";
 	pixel_x = 25;
-	pixel_y = 0;
 	specialfunctions = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9;
-	pixel_y = 0
+	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/carpet,
@@ -14722,12 +14575,10 @@
 	id = "miningdorm1";
 	name = "Door Bolt Control";
 	pixel_x = 25;
-	pixel_y = 0;
 	specialfunctions = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9;
-	pixel_y = 0
+	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/carpet,
@@ -14759,7 +14610,6 @@
 "CB" = (
 /obj/machinery/firealarm{
 	dir = 1;
-	pixel_x = 0;
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/dark,
@@ -14854,8 +14704,7 @@
 /area/outpost/engineering/mining/power)
 "CK" = (
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /obj/machinery/floodlight,
 /turf/simulated/floor/plating,
@@ -14896,8 +14745,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/status_display{
 	layer = 4;
-	pixel_x = 32;
-	pixel_y = 0
+	pixel_x = 32
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/dorms)
@@ -14905,7 +14753,6 @@
 /obj/structure/sign/securearea{
 	desc = "A warning sign which reads 'MOVING PARTS'.";
 	name = "\improper MOVING PARTS";
-	pixel_x = 0;
 	pixel_y = -32
 	},
 /obj/machinery/light,
@@ -15146,7 +14993,6 @@
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
 	frequency = 1377;
 	id_tag = "mcontrol";
-	pixel_x = 0;
 	pixel_y = 28;
 	tag_airpump = "mvent";
 	tag_chamber_sensor = "msensor";
@@ -15167,7 +15013,6 @@
 /obj/machinery/airlock_sensor{
 	frequency = 1377;
 	id_tag = "msensor";
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled,
@@ -15757,8 +15602,7 @@
 /area/outpost/mining_main/eva)
 "EJ" = (
 /obj/item/stack/flag/green{
-	pixel_x = -4;
-	pixel_y = 0
+	pixel_x = -4
 	},
 /obj/item/stack/flag/red,
 /obj/item/stack/flag/yellow{
@@ -15771,7 +15615,6 @@
 /obj/structure/reagent_dispensers/fueltank,
 /obj/machinery/status_display{
 	layer = 4;
-	pixel_x = 0;
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled/dark,
@@ -15802,7 +15645,6 @@
 /obj/structure/table/steel,
 /obj/machinery/status_display{
 	layer = 4;
-	pixel_x = 0;
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled,
@@ -15877,8 +15719,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/airless{
 	icon_state = "asteroidplating2"
@@ -15920,8 +15761,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/effect/floor_decal/industrial/warning/dust{
 	 icon_state = "warning_dust";
@@ -15933,8 +15773,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/airless{
 	icon_state = "asteroidplating2"
@@ -15977,8 +15816,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/engineering/hallway)
@@ -16039,16 +15877,14 @@
 "Fu" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/outpost/engineering/kitchen)
 "Fv" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/machinery/light/small{
-	dir = 8;
-	pixel_x = 0
+	dir = 8
 	},
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/outpost/engineering/kitchen)
@@ -16061,8 +15897,7 @@
 /obj/machinery/airlock_sensor{
 	frequency = 1379;
 	id_tag = "eoutpost_main_sensor";
-	pixel_x = -25;
-	pixel_y = 0
+	pixel_x = -25
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/engineering/hallway)
@@ -16070,8 +15905,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/engineering/hallway)
@@ -16150,7 +15984,6 @@
 	frequency = 1379;
 	id_tag = "eoutpost_main_airlock";
 	pixel_x = -25;
-	pixel_y = 0;
 	req_access = list(10);
 	tag_airpump = "eoutpost_main_pump";
 	tag_chamber_sensor = "eoutpost_main_sensor";
@@ -16167,8 +16000,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/engineering/hallway)
@@ -16268,8 +16100,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/engineering/hallway)
@@ -16308,15 +16139,13 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /turf/simulated/floor,
 /area/outpost/engineering/telecomms)
 "FV" = (
 /obj/structure/sign/vacuum{
-	pixel_x = -32;
-	pixel_y = 0
+	pixel_x = -32
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/engineering/hallway)
@@ -16334,8 +16163,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/engineering/hallway)
@@ -16346,8 +16174,7 @@
 "FY" = (
 /obj/structure/cable{
 	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
+	icon_state = "0-2"
 	},
 /obj/machinery/power/apc{
 	dir = 8;
@@ -16418,8 +16245,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/supply{
 	dir = 4
@@ -16441,8 +16267,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
 	 icon_state = "intact-scrubbers";
@@ -16454,8 +16279,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -16470,8 +16294,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -16512,8 +16335,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -16588,8 +16410,7 @@
 "Gu" = (
 /obj/machinery/light{
 	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	icon_state = "tube1"
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/engineering/hallway)
@@ -16601,8 +16422,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -16671,7 +16491,6 @@
 /area/outpost/engineering/atmospherics)
 "GF" = (
 /obj/structure/extinguisher_cabinet{
-	pixel_x = 0;
 	pixel_y = -28
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
@@ -16717,8 +16536,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/machinery/alarm{
 	dir = 8;
@@ -16761,8 +16579,7 @@
 "GO" = (
 /obj/machinery/light{
 	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	icon_state = "tube1"
 	},
 /turf/simulated/floor,
 /area/outpost/engineering/atmospherics)
@@ -16789,8 +16606,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -16896,7 +16712,6 @@
 /area/outpost/engineering/hallway)
 "He" = (
 /obj/structure/extinguisher_cabinet{
-	pixel_x = 0;
 	pixel_y = 28
 	},
 /turf/simulated/floor/tiled,
@@ -17011,8 +16826,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -17049,7 +16863,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled,
@@ -17063,8 +16876,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/camera/network/engineering_outpost{
 	c_tag = "ENG - Outpost Power Supply"
@@ -17145,16 +16957,14 @@
 /obj/structure/sign/securearea{
 	desc = "A warning sign which reads 'COMPRESSED GAS'.";
 	name = "COMPRESSED GAS";
-	pixel_x = -32;
-	pixel_y = 0
+	pixel_x = -32
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 4
 	},
 /obj/machinery/light{
 	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	icon_state = "tube1"
 	},
 /obj/machinery/meter,
 /turf/simulated/floor,
@@ -17201,8 +17011,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
 /area/outpost/engineering/atmospherics)
@@ -17210,8 +17019,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -17250,8 +17058,7 @@
 	},
 /obj/machinery/light{
 	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	icon_state = "tube1"
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/engineering/hallway)
@@ -17259,8 +17066,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -17272,8 +17078,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -17288,8 +17093,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
@@ -17301,8 +17105,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/structure/cable{
 	d1 = 2;
@@ -17321,8 +17124,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/glass_engineering{
 	name = "Engineering Outpost Solars";
@@ -17341,8 +17143,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -17356,8 +17157,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -17481,8 +17281,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/light{
 	dir = 1
@@ -17498,8 +17297,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -17516,7 +17314,6 @@
 	broadcasting = 0;
 	listening = 1;
 	name = "Station Intercom (General)";
-	pixel_x = 0;
 	pixel_y = -28
 	},
 /turf/simulated/floor/tiled,
@@ -17634,7 +17431,6 @@
 "Iy" = (
 /obj/machinery/firealarm{
 	dir = 1;
-	pixel_x = 0;
 	pixel_y = -24
 	},
 /obj/machinery/camera/network/engineering_outpost{
@@ -17783,8 +17579,7 @@
 	},
 /obj/machinery/light{
 	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	icon_state = "tube1"
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/engineering/solars)
@@ -17828,8 +17623,7 @@
 "Ja" = (
 /obj/structure/cable{
 	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
+	icon_state = "0-2"
 	},
 /obj/machinery/power/apc{
 	dir = 4;
@@ -17846,8 +17640,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -17863,8 +17656,7 @@
 	},
 /obj/structure/cable{
 	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
+	icon_state = "0-2"
 	},
 /obj/machinery/power/apc{
 	dir = 8;
@@ -17918,8 +17710,7 @@
 	dir = 8
 	},
 /obj/structure/sign/vacuum{
-	pixel_x = -32;
-	pixel_y = 0
+	pixel_x = -32
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/engineering/kitchen)
@@ -17968,8 +17759,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -17984,8 +17774,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -18018,8 +17807,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -18054,8 +17842,7 @@
 /area/outpost/engineering/rest)
 "Jt" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9;
-	pixel_y = 0
+	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -18067,7 +17854,6 @@
 /obj/item/flashlight/lamp,
 /obj/machinery/firealarm{
 	dir = 1;
-	pixel_x = 0;
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
@@ -18126,12 +17912,10 @@
 	},
 /obj/structure/mirror{
 	dir = 4;
-	pixel_x = -32;
-	pixel_y = 0
+	pixel_x = -32
 	},
 /obj/machinery/firealarm{
 	dir = 1;
-	pixel_x = 0;
 	pixel_y = -24
 	},
 /obj/machinery/light,
@@ -18232,7 +18016,6 @@
 /obj/structure/table/standard,
 /obj/item/storage/box/donkpockets,
 /obj/structure/extinguisher_cabinet{
-	pixel_x = 0;
 	pixel_y = -28
 	},
 /obj/item/reagent_containers/food/drinks/bottle/small/beer,
@@ -18280,7 +18063,6 @@
 	},
 /obj/item/storage/firstaid/regular,
 /obj/structure/extinguisher_cabinet{
-	pixel_x = 0;
 	pixel_y = -28
 	},
 /obj/item/roller,
@@ -18326,7 +18108,6 @@
 	frequency = 1379;
 	id_tag = "eoutpost_solar_airlock";
 	pixel_x = 30;
-	pixel_y = 0;
 	req_access = list(10);
 	tag_airpump = "eoutpost_solar_pump";
 	tag_chamber_sensor = "eoutpost_solar_sensor";
@@ -18336,7 +18117,6 @@
 /obj/machinery/airlock_sensor{
 	frequency = 1379;
 	id_tag = "eoutpost_solar_sensor";
-	pixel_x = 0;
 	pixel_y = 25
 	},
 /obj/machinery/camera/network/engineering_outpost{
@@ -18397,8 +18177,7 @@
 /obj/machinery/airlock_sensor{
 	frequency = 1380;
 	id_tag = "eoutpost_solar_sensor";
-	pixel_x = 25;
-	pixel_y = 0
+	pixel_x = 25
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/engineering/hallway)
@@ -18458,8 +18237,7 @@
 	},
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/outpost/engineering/kitchen)
@@ -18470,15 +18248,13 @@
 	},
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/machinery/light/small{
-	dir = 8;
-	pixel_x = 0
+	dir = 8
 	},
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/outpost/engineering/kitchen)
 "Kh" = (
 /obj/machinery/light/small{
-	dir = 8;
-	pixel_x = 0
+	dir = 8
 	},
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 1;
@@ -18501,7 +18277,6 @@
 	frequency = 1380;
 	id_tag = "edock_airlock";
 	pixel_x = 30;
-	pixel_y = 0;
 	req_access = list(10);
 	tag_airpump = "edock_pump";
 	tag_chamber_sensor = "edock_sensor";
@@ -18555,8 +18330,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/structure/sign/securearea{
 	desc = "A warning sign which reads 'KEEP CLEAR OF DOCKING AREA'.";
-	name = "KEEP CLEAR: DOCKING AREA";
-	pixel_y = 0
+	name = "KEEP CLEAR: DOCKING AREA"
 	},
 /turf/simulated/floor/plating,
 /area/outpost/engineering/hallway)
@@ -18574,7 +18348,6 @@
 	master_tag = "edock_airlock";
 	name = "exterior access button";
 	pixel_x = -26;
-	pixel_y = 0;
 	req_access = list(10)
 	},
 /turf/simulated/floor/tiled,
@@ -18600,8 +18373,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/structure/sign/securearea{
 	desc = "A warning sign which reads 'KEEP CLEAR OF DOCKING AREA'.";
-	name = "KEEP CLEAR: DOCKING AREA";
-	pixel_y = 0
+	name = "KEEP CLEAR: DOCKING AREA"
 	},
 /turf/simulated/floor/plating,
 /area/outpost/engineering/hallway)

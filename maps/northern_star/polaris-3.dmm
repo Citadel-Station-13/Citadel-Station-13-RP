@@ -776,7 +776,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 24
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
@@ -806,7 +805,6 @@
 /obj/machinery/firealarm{
 	dir = 2;
 	layer = 3.3;
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /turf/simulated/floor/plating,
@@ -916,7 +914,6 @@
 /obj/machinery/firealarm{
 	dir = 2;
 	layer = 3.3;
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/dark,
@@ -952,8 +949,7 @@
 "cP" = (
 /obj/item/radio/intercom{
 	name = "Station Intercom (General)";
-	pixel_x = -29;
-	pixel_y = 0
+	pixel_x = -29
 	},
 /turf/simulated/floor/tiled,
 /area/tcommsat/computer)
@@ -963,8 +959,7 @@
 	},
 /obj/item/radio/intercom{
 	name = "General Listening Channel";
-	pixel_x = 28;
-	pixel_y = 0
+	pixel_x = 28
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
@@ -1214,8 +1209,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
 /area/tcomsat)
@@ -1257,8 +1251,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
 /area/tcomsat)
@@ -1270,8 +1263,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -1282,8 +1274,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/hatch{
 	name = "Telecoms Control Room";
@@ -1299,12 +1290,10 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9;
-	pixel_y = 0
+	dir = 9
 	},
 /turf/simulated/floor/tiled,
 /area/tcommsat/computer)
@@ -1312,8 +1301,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
 /area/tcommsat/computer)
@@ -1548,7 +1536,6 @@
 	frequency = 1381;
 	id_tag = "server_access_airlock";
 	name = "Server Access Airlock";
-	pixel_x = 0;
 	pixel_y = 25;
 	tag_airpump = "server_access_pump";
 	tag_chamber_sensor = "server_access_sensor";
@@ -1629,8 +1616,7 @@
 	},
 /obj/structure/cable{
 	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
+	icon_state = "0-2"
 	},
 /obj/structure/cable,
 /obj/structure/cable{
@@ -1765,7 +1751,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 24
 	},
 /turf/simulated/floor/bluegrid{
@@ -1779,8 +1764,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/black,
 /turf/simulated/floor/bluegrid{
@@ -1794,8 +1778,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
@@ -1983,8 +1966,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/structure/table/standard,
 /obj/machinery/recharger,
@@ -2011,8 +1993,7 @@
 	},
 /obj/structure/lattice,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9;
-	pixel_y = 0
+	dir = 9
 	},
 /turf/space,
 /area/tcomsat)
@@ -2087,8 +2068,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9;
-	pixel_y = 0
+	dir = 9
 	},
 /turf/simulated/floor/tiled,
 /area/tcomsat)
@@ -2244,8 +2224,7 @@
 /area/tcomsat)
 "fm" = (
 /obj/structure/sign/nosmoking_2{
-	pixel_x = -32;
-	pixel_y = 0
+	pixel_x = -32
 	},
 /obj/machinery/light{
 	icon_state = "tube1";
@@ -2317,8 +2296,7 @@
 /area/tcommsat/chamber)
 "fu" = (
 /obj/structure/sign/nosmoking_2{
-	pixel_x = 32;
-	pixel_y = 0
+	pixel_x = 32
 	},
 /obj/machinery/light{
 	dir = 4
@@ -2370,8 +2348,7 @@
 /area/tcomsat)
 "fz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9;
-	pixel_y = 0
+	dir = 9
 	},
 /turf/simulated/floor,
 /area/tcomsat)
@@ -2382,8 +2359,7 @@
 /obj/item/stock_parts/subspace/amplifier,
 /obj/item/radio/intercom{
 	name = "Station Intercom (General)";
-	pixel_x = 29;
-	pixel_y = 0
+	pixel_x = 29
 	},
 /obj/machinery/light/small{
 	dir = 4
@@ -2394,13 +2370,11 @@
 /obj/structure/sign/securearea{
 	desc = "A warning sign which reads 'LETHAL TURRETS'. Enter at your own risk!";
 	name = "LETHAL TURRETS";
-	pixel_x = -32;
-	pixel_y = 0
+	pixel_x = -32
 	},
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 24
 	},
 /obj/structure/cable{
@@ -2504,8 +2478,7 @@
 /obj/item/stock_parts/subspace/ansible,
 /obj/machinery/alarm{
 	dir = 8;
-	pixel_x = 25;
-	pixel_y = 0
+	pixel_x = 25
 	},
 /turf/simulated/floor,
 /area/tcomsat)
@@ -2670,8 +2643,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/structure/cable{
 	d1 = 1;
@@ -2719,8 +2691,7 @@
 /obj/structure/sign/securearea{
 	desc = "A warning sign which reads 'LETHAL TURRETS'. Enter at your own risk!";
 	name = "LETHAL TURRETS";
-	pixel_x = 32;
-	pixel_y = 0
+	pixel_x = 32
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -2743,8 +2714,7 @@
 /obj/structure/sign/securearea{
 	desc = "A warning sign which reads 'LETHAL TURRETS'. Enter at your own risk!";
 	name = "LETHAL TURRETS";
-	pixel_x = 32;
-	pixel_y = 0
+	pixel_x = 32
 	},
 /obj/machinery/alarm{
 	frequency = 1441;
@@ -2792,8 +2762,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
@@ -2811,8 +2780,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
 /area/tcomfoyer)
@@ -2834,8 +2802,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9;
-	pixel_y = 0
+	dir = 9
 	},
 /turf/simulated/floor/tiled,
 /area/tcomsat)
@@ -2891,8 +2858,7 @@
 /obj/structure/sign/securearea{
 	desc = "A warning sign which reads 'LETHAL TURRETS'. Enter at your own risk!";
 	name = "LETHAL TURRETS";
-	pixel_x = -32;
-	pixel_y = 0
+	pixel_x = -32
 	},
 /obj/machinery/firealarm{
 	dir = 1;
@@ -3177,8 +3143,7 @@
 	icon_state = "1-4"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9;
-	pixel_y = 0
+	dir = 9
 	},
 /obj/structure/cable{
 	d1 = 1;
@@ -3191,8 +3156,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
 /area/tcommsat/entrance)
@@ -3242,8 +3206,7 @@
 "hk" = (
 /obj/structure/cable{
 	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
+	icon_state = "0-2"
 	},
 /obj/machinery/power/apc{
 	dir = 4;
@@ -3284,7 +3247,6 @@
 	frequency = 1381;
 	id_tag = "telecoms_airlock";
 	tag_interior_door = "telecoms_inner";
-	pixel_x = 0;
 	pixel_y = -25;
 	req_access = list(13);
 	tag_chamber_sensor = "telecoms_sensor"
@@ -3441,8 +3403,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/entrance)
@@ -3462,8 +3423,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
@@ -3472,8 +3432,7 @@
 /obj/item/radio/intercom{
 	dir = 4;
 	name = "Station Intercom (General)";
-	pixel_x = 21;
-	pixel_y = 0
+	pixel_x = 21
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/entrance)
