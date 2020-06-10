@@ -186,8 +186,7 @@
 	command = "cycle_exterior";
 	frequency = 1380;
 	master_tag = "mining_airlock_sb";
-	pixel_x = 25;
-	pixel_y = 0
+	pixel_x = 25
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/steel,
@@ -464,8 +463,7 @@
 	command = "cycle_interior";
 	frequency = 1380;
 	master_tag = "mining_airlock_sb";
-	pixel_x = 25;
-	pixel_y = 0
+	pixel_x = 25
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/steel,
@@ -621,8 +619,7 @@
 "bM" = (
 /obj/machinery/light{
 	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	icon_state = "tube1"
 	},
 /turf/simulated/floor/wood,
 /area/outpost/mining_main/main)
@@ -813,8 +810,7 @@
 /obj/machinery/airlock_sensor{
 	frequency = 1380;
 	id_tag = "mining_sb_sensor";
-	pixel_x = 25;
-	pixel_y = 0
+	pixel_x = 25
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/outpost/mining_main/main)
@@ -931,8 +927,7 @@
 "cz" = (
 /obj/machinery/light{
 	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	icon_state = "tube1"
 	},
 /obj/structure/table/reinforced,
 /obj/item/storage/bag/ore,
@@ -2061,8 +2056,7 @@
 /area/mine/explored/high)
 "fu" = (
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /turf/simulated/floor/bluegrid,
 /area/outpost/mining_main/main)
@@ -2332,8 +2326,7 @@
 /obj/item/stack/cable_coil/random,
 /obj/machinery/light{
 	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	icon_state = "tube1"
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_misc_lab)
@@ -2586,8 +2579,7 @@
 "gO" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/light/small{
-	dir = 8;
-	pixel_x = 0
+	dir = 8
 	},
 /obj/machinery/portable_atmospherics/powered/scrubber,
 /turf/simulated/floor/tiled/techmaint,
@@ -2670,7 +2662,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 28
 	},
 /obj/structure/cable{
@@ -2781,7 +2772,6 @@
 /obj/machinery/firealarm{
 	dir = 2;
 	layer = 3.3;
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /obj/effect/floor_decal/industrial/warning/corner,
@@ -2971,7 +2961,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 24
 	},
 /obj/structure/cable{
@@ -2996,7 +2985,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 24
 	},
 /obj/structure/cable{
@@ -3230,7 +3218,6 @@
 /obj/machinery/firealarm{
 	dir = 2;
 	layer = 3.3;
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/white,
@@ -3323,8 +3310,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/outpost/research/isolation_a{
@@ -3623,8 +3609,7 @@
 	},
 /obj/machinery/light{
 	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	icon_state = "tube1"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/anomaly)
@@ -3658,7 +3643,6 @@
 /obj/item/flashlight/lamp,
 /obj/machinery/firealarm{
 	dir = 1;
-	pixel_x = 0;
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/dark,
@@ -3856,8 +3840,7 @@
 	},
 /obj/machinery/light{
 	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	icon_state = "tube1"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/anomaly)
@@ -4050,8 +4033,7 @@
 /obj/item/glass_extra/straw,
 /obj/machinery/light{
 	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	icon_state = "tube1"
 	},
 /obj/structure/table/standard,
 /turf/simulated/floor/wood,
@@ -4487,8 +4469,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/glass_science{
 	name = "Toxins Lab"
@@ -4753,7 +4734,6 @@
 	},
 /obj/machinery/firealarm{
 	dir = 1;
-	pixel_x = 0;
 	pixel_y = -26
 	},
 /obj/effect/floor_decal/corner/purple{
@@ -4810,7 +4790,6 @@
 /obj/machinery/firealarm{
 	dir = 2;
 	layer = 3.3;
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/steel,
@@ -4945,8 +4924,7 @@
 	},
 /obj/machinery/light{
 	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	icon_state = "tube1"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -5098,8 +5076,7 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/anomaly_container,
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/outpost/research/anomaly_storage)
@@ -5130,8 +5107,7 @@
 	},
 /obj/machinery/light{
 	dir = 4;
-	icon_state = "tube1";
-	pixel_x = 0
+	icon_state = "tube1"
 	},
 /obj/structure/table/reinforced,
 /obj/machinery/computer/atmoscontrol/laptop{
@@ -5382,8 +5358,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/firedoor/glass,
@@ -5514,8 +5489,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/effect/floor_decal/corner/purple{
 	dir = 5
@@ -5818,8 +5792,7 @@
 /area/outpost/research/power)
 "nG" = (
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /obj/structure/reagent_dispensers/watertank,
 /obj/machinery/alarm{
@@ -6076,7 +6049,6 @@
 	frequency = 1380;
 	id_tag = "fore_research_outpost_airlock";
 	name = "research outpost fore airlock controller";
-	pixel_x = 0;
 	pixel_y = 25;
 	tag_airpump = "fore_research_outpost_pump";
 	tag_chamber_sensor = "fore_research_outpost_sensor";
@@ -6132,8 +6104,7 @@
 	},
 /obj/machinery/light{
 	dir = 4;
-	icon_state = "tube1";
-	pixel_x = 0
+	icon_state = "tube1"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/hallway)
@@ -6188,7 +6159,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 24
 	},
 /obj/structure/cable{
@@ -6230,8 +6200,7 @@
 /obj/item/clothing/head/helmet/space/anomaly,
 /obj/machinery/light{
 	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	icon_state = "tube1"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/exp_prep)
@@ -6447,7 +6416,6 @@
 /obj/machinery/firealarm{
 	dir = 2;
 	layer = 3.3;
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /obj/structure/cable{
@@ -6461,8 +6429,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/outpost/research/isolation_b{
@@ -6487,7 +6454,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 24
 	},
 /obj/structure/cable{
