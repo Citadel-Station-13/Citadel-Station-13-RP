@@ -130,21 +130,36 @@
 			pixel_x = -32
 			pixel_y = 0
 
-/obj/structure/sign/poster/Initialize()
-	. = ..()
 	if (poster_type)
 		var/path = text2path(poster_type)
 		var/datum/poster/design = new path
 		set_poster(design)
 
-/obj/structure/sign/poster/proc/set_poster(var/datum/poster/design)
+// NT poster subtype.
+/obj/structure/sign/poster/nanotrasen
+	roll_type = /obj/item/contraband/poster/nanotrasen
+
+/obj/structure/sign/poster/nanotrasen/Initialize(newloc, placement_dir = NONE, serial = null, itemtype = /obj/item/contraband/poster/nanotrasen)
+	. = ..()
+	
+	if(!serial)
+		serial = rand(1, NT_poster_designs.len)
+
+	serial_number = serial
+	var/datum/poster/design = NT_poster_designs[serial_number]
+	set_poster(design)
+
+	..(newloc, placement_dir, serial, itemtype)
+
+
+/obj/structure/sign/poster/proc/set_poster(datum/poster/design)
 	name = "[initial(name)] - [design.name]"
 	desc = "[initial(desc)] [design.desc]"
 	icon_state = design.icon_state // poster[serial_number]
 
 	poster_set = TRUE
 
-/obj/structure/sign/poster/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/sign/poster/attackby(obj/item/W, mob/user)
 	if(W.is_wirecutter())
 		playsound(src.loc, W.usesound, 100, 1)
 		if(ruined)
@@ -155,13 +170,11 @@
 			roll_and_drop(user.loc)
 		return
 
-/obj/structure/sign/poster/attack_hand(mob/user as mob)
-
+/obj/structure/sign/poster/attack_hand(mob/user)
 	if(ruined)
 		return
 
 	if(alert("Do I want to rip the poster from the wall?","You think...","Yes","No") == "Yes")
-
 		if(ruined || !user.Adjacent(src))
 			return
 
@@ -185,17 +198,3 @@
 	// Description suffix
 	var/desc=""
 	var/icon_state=""
-
-// NT poster subtype.
-/obj/structure/sign/poster/nanotrasen
-	roll_type = /obj/item/contraband/poster/nanotrasen
-
-/obj/structure/sign/poster/nanotrasen/New(var/newloc, var/placement_dir=null, var/serial=null, var/itemtype = /obj/item/contraband/poster/nanotrasen)
-	if(!serial)
-		serial = rand(1, NT_poster_designs.len)
-
-	serial_number = serial
-	var/datum/poster/design = NT_poster_designs[serial_number]
-	set_poster(design)
-
-	..(newloc, placement_dir, serial, itemtype)
