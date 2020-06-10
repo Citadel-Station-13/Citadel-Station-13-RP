@@ -575,8 +575,7 @@
 /area/awaymission/zoo/tradeship)
 "bK" = (
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /turf/simulated/shuttle/floor/black,
 /area/awaymission/zoo/tradeship)
@@ -857,7 +856,6 @@
 	pixel_y = 6
 	},
 /obj/item/storage/box/masks{
-	pixel_x = 0;
 	pixel_y = 0
 	},
 /obj/item/storage/box/gloves{
@@ -1037,8 +1035,7 @@
 "dd" = (
 /obj/machinery/light{
 	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	icon_state = "tube1"
 	},
 /turf/simulated/shuttle/floor/black,
 /area/awaymission/zoo/tradeship)
@@ -1300,7 +1297,6 @@
 /obj/item/clothing/gloves/sterile,
 /obj/item/clothing/mask/surgical,
 /obj/item/surgical/retractor{
-	pixel_x = 0;
 	pixel_y = 6
 	},
 /obj/item/surgical/scalpel,
@@ -1522,7 +1518,6 @@
 /area/awaymission/zoo/tradeship)
 "ev" = (
 /obj/structure/mirror{
-	pixel_x = 0;
 	pixel_y = 28
 	},
 /turf/simulated/shuttle/floor/black,
@@ -1852,7 +1847,6 @@
 /obj/machinery/button/remote/blast_door{
 	id = "trade";
 	name = "Shop Shutters";
-	pixel_x = 0;
 	pixel_y = -26
 	},
 /turf/simulated/shuttle/floor/black,
@@ -2045,8 +2039,7 @@
 /obj/structure/closet/crate/solar,
 /obj/machinery/light{
 	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	icon_state = "tube1"
 	},
 /turf/simulated/shuttle/floor/black,
 /area/awaymission/zoo/tradeship)
@@ -2375,8 +2368,7 @@
 	},
 /obj/machinery/light{
 	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	icon_state = "tube1"
 	},
 /turf/simulated/shuttle/floor/darkred,
 /area/awaymission/zoo/syndieship)
@@ -2587,7 +2579,6 @@
 "ht" = (
 /obj/structure/closet/secure_closet/medical_wall{
 	pixel_x = -32;
-	pixel_y = 0;
 	req_access = list(150)
 	},
 /obj/item/stack/medical/splint,
@@ -2726,8 +2717,7 @@
 	},
 /obj/machinery/light{
 	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	icon_state = "tube1"
 	},
 /turf/simulated/shuttle/floor/darkred,
 /area/awaymission/zoo/syndieship)
@@ -2759,7 +2749,6 @@
 "hN" = (
 /obj/machinery/flasher{
 	id = "syndieflash";
-	pixel_x = 0;
 	pixel_y = 28
 	},
 /obj/machinery/light/small{
@@ -2772,7 +2761,6 @@
 	desc = "Talk through this. Evilly";
 	frequency = 1213;
 	name = "Syndicate Intercom";
-	pixel_x = 0;
 	pixel_y = -32;
 	subspace_transmission = 1;
 	syndie = 1
@@ -2824,8 +2812,7 @@
 "hW" = (
 /obj/machinery/light{
 	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	icon_state = "tube1"
 	},
 /turf/simulated/shuttle/floor/darkred,
 /area/awaymission/zoo/syndieship)
@@ -2870,7 +2857,6 @@
 	id = "syndieflash";
 	name = "Flasher";
 	pixel_x = 27;
-	pixel_y = 0;
 	
 	},
 /turf/simulated/shuttle/floor/darkred,
@@ -2906,8 +2892,7 @@
 	},
 /obj/machinery/light{
 	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	icon_state = "tube1"
 	},
 /turf/simulated/shuttle/floor/darkred,
 /area/awaymission/zoo/syndieship)
@@ -2963,8 +2948,7 @@
 "im" = (
 /obj/machinery/light{
 	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	icon_state = "tube1"
 	},
 /obj/machinery/sleeper{
 	dir = 8
@@ -3022,8 +3006,7 @@
 /obj/item/clothing/gloves/yellow,
 /obj/machinery/light{
 	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	icon_state = "tube1"
 	},
 /turf/simulated/shuttle/floor/darkred,
 /area/awaymission/zoo/syndieship)
@@ -3188,8 +3171,7 @@
 /obj/item/multitool,
 /obj/machinery/light{
 	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	icon_state = "tube1"
 	},
 /turf/simulated/shuttle/floor/darkred,
 /area/awaymission/zoo/syndieship)
@@ -3250,8 +3232,7 @@
 /obj/item/weldingtool,
 /obj/machinery/light{
 	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	icon_state = "tube1"
 	},
 /turf/simulated/shuttle/floor/darkred,
 /area/awaymission/zoo/syndieship)
@@ -3293,12 +3274,10 @@
 /obj/structure/sink{
 	dir = 4;
 	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /obj/structure/closet/secure_closet/medical_wall{
 	pixel_x = 32;
-	pixel_y = 0;
 	req_access = list(150)
 	},
 /obj/item/tank/anesthetic,
@@ -4059,8 +4038,7 @@
 /obj/structure/sink{
 	dir = 4;
 	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /turf/simulated/floor/tiled/white,
 /area/awaymission/zoo)
@@ -8435,7 +8413,6 @@
 	pixel_y = 6
 	},
 /obj/item/storage/box/masks{
-	pixel_x = 0;
 	pixel_y = 0
 	},
 /obj/item/storage/box/gloves{
@@ -8497,7 +8474,6 @@
 /obj/item/clothing/gloves/sterile,
 /obj/item/clothing/mask/surgical,
 /obj/item/surgical/retractor{
-	pixel_x = 0;
 	pixel_y = 6
 	},
 /obj/item/surgical/scalpel,
@@ -8962,8 +8938,7 @@
 "xl" = (
 /obj/structure/cable{
 	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
+	icon_state = "0-2"
 	},
 /obj/machinery/power/solar/fake,
 /turf/simulated/floor/airless{
@@ -8987,8 +8962,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/structure/cable{
 	d1 = 1;
@@ -9016,8 +8990,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/zoo/solars)
@@ -9053,8 +9026,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/zoo/solars)
@@ -9062,8 +9034,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/structure/cable{
 	d1 = 1;
@@ -9106,8 +9077,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/zoo/solars)
@@ -9133,8 +9103,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/zoo/solars)

@@ -47,8 +47,7 @@
 "an" = (
 /obj/structure/cable{
 	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
+	icon_state = "0-2"
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/power/smes/buildable,
@@ -247,8 +246,7 @@
 	},
 /obj/structure/mirror{
 	dir = 4;
-	pixel_x = -32;
-	pixel_y = 0
+	pixel_x = -32
 	},
 /turf/simulated/floor/tiled/white,
 /area/awaymission/carpfarm/base)
@@ -566,9 +564,7 @@
 	desc = "A warning sign which reads 'EXTERNAL AIRLOCK'";
 	icon_state = "space";
 	layer = 4;
-	name = "EXTERNAL AIRLOCK";
-	pixel_x = 0;
-	pixel_y = 0
+	name = "EXTERNAL AIRLOCK"
 	},
 /turf/simulated/wall/iron,
 /area/awaymission/carpfarm/base)
@@ -620,7 +616,6 @@
 	frequency = 1375;
 	id_tag = "carp_airlock";
 	pixel_x = -28;
-	pixel_y = 0;
 	req_access = null;
 	tag_airpump = "carp_pump";
 	tag_chamber_sensor = "carp_sensor";

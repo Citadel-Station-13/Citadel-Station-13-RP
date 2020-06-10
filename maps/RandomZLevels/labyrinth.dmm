@@ -779,8 +779,7 @@
 	},
 /obj/structure/mirror{
 	dir = 4;
-	pixel_x = -32;
-	pixel_y = 0
+	pixel_x = -32
 	},
 /turf/unsimulated/floor{
 	icon_state = "freezerfloor"
@@ -1286,8 +1285,7 @@
 /area/awaymission/labyrinth/arrival)
 "dg" = (
 /obj/structure/ladder{
-	icon_state = "ladder10";
-	pixel_y = 0
+	icon_state = "ladder10"
 	},
 /turf/unsimulated/floor{
 	icon_state = "asteroid_dug"
