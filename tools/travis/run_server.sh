@@ -5,7 +5,8 @@ tools/deploy.sh travis_test
 mkdir travis_test/config
 
 #test config
-cp tools/travis/travis_config.txt travis_test/config/config.txt
+# cp tools/travis/travis_config.txt travis_test/config/config.txt
+cp tools/travis/travis_config.txt travis_test/config/legacy/config.txt #config without ruins.
 
 cd travis_test
 ln -s $HOME/libmariadb/libmariadb.so libmariadb.so
