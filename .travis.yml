@@ -1,49 +1,86 @@
-#pretending we're C because otherwise ruby will initialize, even with "language: dm".
-language: c
+language: generic
+os: linux
+dist: xenial
 sudo: false
 
-env:
-  global:
-    - BYOND_MAJOR="513"
-    - BYOND_MINOR="1513"
-    - MACRO_COUNT=4
-  matrix:
-    - TEST_DEFINE="MAP_TEST" TEST_FILE="code/_map_tests.dm" RUN="0"
-    - TEST_DEFINE="AWAY_MISSION_TEST" TEST_FILE="code/_away_mission_tests.dm" RUN="0"
-    - TEST_DEFINE="UNIT_TEST" TEST_FILE="code/_unit_tests.dm" RUN="1"
+branches:
+  except:
+  - ___TGS3TempBranch
+  - ___TGSTempBranch
 
-cache:
-  directories:
-    - $HOME/BYOND-${BYOND_MAJOR}.${BYOND_MINOR}
+jobs:
+  include:
+    - name: "Run Linters"
+      addons:
+        apt:
+          packages:
+            - python3
+            - python3-pip
+            - python3-setuptools
+            - pcregrep
+            - rustc
+            - cargo
+      cache:
+        directories:
+          - $HOME/SpacemanDMM
+      install:
+        - tools/travis/install_build_tools.sh
+        - tools/travis/install_spaceman_dmm.sh dreamchecker
+      script:
+        - tools/travis/check_filedirs.sh vorestation.dme
+        - tools/travis/check_changelogs.sh
+        - find . -name "*.php" -print0 | xargs -0 -n1 php -l
+        - find . -name "*.json" -not -path "*/node_modules/*" -print0 | xargs -0 python3 ./tools/json_verifier.py
+        #- tools/travis/build_tgui.sh
+        - tools/travis/check_grep.sh
+        #- python3 tools/travis/check_line_endings.py
+        - ~/dreamchecker
 
-addons:
-  apt:
-    packages:
-      - libc6-i386
-      - libgcc1:i386
-      - libstdc++6:i386
-      - libssl-dev:i386
+    - name: "Compile All Maps"
+      addons:
+        apt:
+          packages:
+            - libstdc++6:i386
+      cache:
+        directories:
+          - $HOME/BYOND
+      install:
+        - tools/travis/install_byond.sh
+        - source $HOME/BYOND/byond/bin/byondsetup
+      before_script:
+        - tools/travis/template_dm_generator.py
+      script:
+        - tools/travis/dm.sh -DTRAVISBUILDING -DTRAVISTESTING -DALL_MAPS vorestation.dme
 
-before_script:
-  - chmod +x ./install-byond.sh
-  - ./install-byond.sh
-
-install:
-  - pip install --user PyYaml -q
-  - pip install --user beautifulsoup4 -q
-
-script:
-  - shopt -s globstar
-  - (! grep 'step_[xy]' maps/**/*.dmm)
-  - (! grep -Pn '( |\t|;|{)tag( ?)=' maps/**/*.dmm)
-  - (! find nano/templates/ -type f -exec md5sum {} + | sort | uniq -D -w 32 | grep nano)
-  - (! grep -En "<\s*span\s+class\s*=\s*('[^'>]+|[^'>]+')\s*>" **/*.dm)
-  - (! grep 'maps\\.*test.*' *.dme)
-  #- md5sum -c - <<< "88490b460c26947f5ec1ab1bb9fa9f17 *html/changelogs/example.yml"
-  - (num=`grep -E '\\\\(red|blue|green|black|b|i[^mc])' **/*.dm | wc -l`; echo "$num escapes (expecting ${MACRO_COUNT} or less)"; [ $num -le ${MACRO_COUNT} ])
-  - source $HOME/BYOND-${BYOND_MAJOR}.${BYOND_MINOR}/byond/bin/byondsetup
-  # Run our test
-  - echo "#define ${TEST_DEFINE} 1" > ${TEST_FILE}
-  - DreamMaker vorestation.dme
-  - if [ $RUN -eq 1 ]; then DreamDaemon vorestation.dmb -close -trusted -verbose -params "test-run&log-directory=travis" -core 2>&1 | tee log.txt; fi
-  - if [ $RUN -eq 1 ]; then grep "All Unit Tests Passed" log.txt; fi
+    - name: "Compile and Run Tests"
+      addons:
+        mariadb: '10.2'
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - libstdc++6:i386
+            - gcc-multilib
+            - g++-7
+            - g++-7-multilib
+            - libmariadb-client-lgpl-dev:i386
+            - libmariadbd-dev
+      cache:
+        directories:
+          - $HOME/BYOND
+          - $HOME/libmariadb
+      install:
+        - tools/travis/install_byond.sh
+        - source $HOME/BYOND/byond/bin/byondsetup
+        - tools/travis/install_libmariadb.sh
+        - tools/travis/install_rust_g.sh
+      before_script:
+        - mysql -u root -e 'CREATE DATABASE tg_travis;'
+        - mysql -u root tg_travis < SQL/tgstation_schema.sql
+        - mysql -u root -e 'CREATE DATABASE tg_travis_prefixed;'
+        - mysql -u root tg_travis_prefixed < SQL/tgstation_schema_prefixed.sql
+        - tools/travis/build_bsql.sh
+      script:
+        - tools/travis/dm.sh -DTRAVISBUILDING vorestation.dme || travis_terminate 1
+        - tools/travis/run_server.sh
+        #add this when traves building is a true! MAP_TEST, AWAY_MISSION_TEST, UNIT_TEST
