@@ -1,0 +1,25 @@
+//include unit test files in this module in this ifdef
+//Keep this sorted alphabetically
+
+//move these fucks to _maps
+#ifdef ALL_MAPS
+	#define MAP_TEST TRUE
+	#ifdef TRAVISBUILDING
+		#define AWAY_MISSION_TEST TRUE
+	#endif
+#endif
+
+#ifdef UNIT_TESTS
+// #include "anchored_mobs.dm"
+#include "component_tests.dm"
+#include "loadout_tests.dm"
+#include "map_tests.dm"
+// #include "reagent_id_typos.dm"
+// #include "reagent_recipe_collisions.dm"
+#include "spawn_humans.dm"
+#include "subsystem_init.dm"
+#include "timer_sanity.dm"
+#include "unit_test.dm" //this is needed for unit tests to work!
+#include "vore_tests.dm"
+#include "zas_tests.dm"
+#endif

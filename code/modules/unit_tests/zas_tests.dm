@@ -3,11 +3,10 @@
 #define UT_NORMAL_COLD 3
 
 /datum/unit_test/zas_area_test
-	name = "ZAS: Area Test Template"
 	var/area_path = null
 	var/expectation = UT_NORMAL
 
-/datum/unit_test/zas_area_test/proc/test_air_in_area(var/test_area, var/expectation = UT_NORMAL)
+/datum/unit_test/zas_area_test/proc/test_air_in_area(test_area, expectation = UT_NORMAL)
 	var/test_result = list("result" = 0, "msg" = "")
 
 	var/area/A = locate(test_area)
@@ -31,12 +30,10 @@
 		var/temp = GM.temperature
 
 		switch(expectation)
-
 			if(UT_VACUUM)
 				if(pressure > 10)
 					test_result["msg"] = "Pressure out of bounds: [pressure] | [t_msg]"
 					return test_result
-
 
 			if(UT_NORMAL || UT_NORMAL_COLD)
 				if(abs(pressure - ONE_ATMOSPHERE) > 10)
@@ -44,13 +41,11 @@
 					return test_result
 
 				if(expectation == UT_NORMAL)
-
 					if(abs(temp - T20C) > 10)
 						test_result["msg"] = "Temperature out of bounds: [temp] | [t_msg]"
 						return test_result
 
 				if(expectation == UT_NORMAL_COLD)
-
 					if(temp > 120)
 						test_result["msg"] = "Temperature out of bounds: [temp] | [t_msg]"
 						return test_result
@@ -65,28 +60,23 @@
 
 	return test_result
 
-/datum/unit_test/zas_area_test/start_test()
+/datum/unit_test/zas_area_test/Run()
 	var/list/test = test_air_in_area(area_path, expectation)
 
 	if(isnull(test))
-		fail("Check Runtimed")
+		Fail("Check Runtimed")
 
-	if(test["result"] == 1)
-		pass(test["msg"])
-	else
-		fail(test["msg"])
-	return 1
+	if(test["result"] != 1)
+		Fail(test["msg"])
+	return TRUE
 
 /datum/unit_test/zas_area_test/supply_centcomm
-	name = "ZAS: Supply Shuttle (CentCom)"
 	area_path = /area/supply/dock
 
 /datum/unit_test/zas_area_test/emergency_shuttle
-	name = "ZAS: Emergency Shuttle"
 	area_path = /area/shuttle/escape/centcom
 
 /datum/unit_test/zas_area_test/ai_chamber
-	name = "ZAS: AI Chamber"
 	area_path = /area/ai
 
 // VOREStation Edit - We don't have this anymore - Tether
@@ -95,7 +85,6 @@
 // 	area_path = /area/shuttle/mining/station
 
 /datum/unit_test/zas_area_test/cargo_maint
-	name = "ZAS: Cargo Maintenance"
 	area_path = /area/maintenance/cargo
 
 // VOREStation Edit - We don't have this anymore - Tether
@@ -104,18 +93,18 @@
 // 	area_path = /area/shuttle/constructionsite/station
 
 /datum/unit_test/zas_area_test/virology
-	name = "ZAS: Virology"
 	area_path = /area/medical/virology
 
 /datum/unit_test/zas_area_test/xenobio
-	name = "ZAS: Xenobiology"
 	area_path = /area/rnd/xenobiology
 
 /datum/unit_test/zas_area_test/mining_area
-	name = "ZAS: Mining Area (Vacuum)"
 	area_path = /area/mine/explored
 	expectation = UT_VACUUM
 
 /datum/unit_test/zas_area_test/cargo_bay
-	name = "ZAS: Cargo Bay"
 	area_path = /area/quartermaster/storage
+
+#undef UT_NORMAL
+#undef UT_VACUUM
+#undef UT_NORMAL_COLD

@@ -205,11 +205,11 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	sortTim(subsystems, /proc/cmp_subsystem_display)
 
 	// Set world options.
-	#if UNIT_TEST
-	world.sleep_offline = 0
-	#else
-	world.sleep_offline = 1
-	#endif
+#ifdef UNIT_TESTS
+	world.sleep_offline = FALSE
+#else
+	world.sleep_offline = TRUE
+#endif
 
 	world.fps = config_legacy.fps
 	var/initialized_tod = REALTIMEOFDAY

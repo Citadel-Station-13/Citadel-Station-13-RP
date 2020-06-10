@@ -1,4 +1,3 @@
-
 /proc/log_admin(text)
 	admin_log.Add(text)
 	if (config_legacy.log_admin)
@@ -131,9 +130,6 @@
 
 /proc/log_misc(text)
 	WRITE_LOG(GLOB.world_game_log, "MISC: [text]")
-
-/proc/log_unit_test(text)
-	log_world("## UNIT_TEST: [text]")
 
 /proc/report_progress(var/progress_message)
 	admin_notice("<span class='boldannounce'>[progress_message]</span>", R_DEBUG)

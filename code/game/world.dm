@@ -1,24 +1,16 @@
-//Byond is a shit. That's why this is here.
-/*
-	The initialization of the game happens roughly like this:
+// #define RESTART_COUNTER_PATH "data/round_counter.txt"
 
-	1. All global variables are initialized (including the global_init instance).
-	2. The map is initialized, and map objects are created.
-	3. world/New() runs, creating the process scheduler (and the old master controller) and spawning their setup.
-	4. processScheduler/setup() runs, creating all the processes. game_controller/setup() runs, calling initialize() on all movable atoms in the world.
-	5. The gameSSticker is created.
-
-*/
-
+// GLOBAL_VAR(restart_counter)
 GLOBAL_VAR_INIT(tgs_initialized, FALSE)
 
 GLOBAL_VAR(topic_status_lastcache)
 GLOBAL_LIST(topic_status_cache)
 
 /world/New()
+	var/extools = world.GetConfig("env", "EXTOOLS_DLL") || "./byond-extools.dll"
+	if (fexists(extools))
+		call(extools, "maptick_initialize")()
 	enable_debugger()
-
-	make_datum_reference_lists()
 
 	log_world("World loaded at [TIME_STAMP("hh:mm:ss", FALSE)]!")
 
@@ -26,6 +18,8 @@ GLOBAL_LIST(topic_status_cache)
 
 	var/tempfile = "data/logs/config_error.[GUID()].log"	//temporary file used to record errors with loading config, moved to log directory once logging is set
 	GLOB.config_error_log = GLOB.world_href_log = GLOB.world_runtime_log = GLOB.world_map_error_log = GLOB.world_attack_log = GLOB.world_game_log = tempfile
+
+	make_datum_reference_lists()	//initialises global lists for referencing frequently used datums (so that we only ever do it once)
 
 	GLOB.revdata = new
 
@@ -51,6 +45,18 @@ GLOBAL_LIST(topic_status_cache)
 
 	GLOB.timezoneOffset = text2num(time2text(0,"hh")) * 36000
 
+	// if(fexists(RESTART_COUNTER_PATH))
+	// 	GLOB.restart_counter = text2num(trim(file2text(RESTART_COUNTER_PATH)))
+	// 	fdel(RESTART_COUNTER_PATH)
+
+	if(NO_INIT_PARAMETER in params)
+		return
+
+	// Master.Initialize(10, FALSE, TRUE)
+
+	if(TEST_RUN_PARAMETER in params)
+		HandleTestRun()
+
 	callHook("startup")
 	//Emergency Fix
 	load_mods()
@@ -59,11 +65,6 @@ GLOBAL_LIST(topic_status_cache)
 	src.update_status()
 
 	. = ..()
-
-#if UNIT_TEST
-	log_unit_test("Unit Tests Enabled.  This will destroy the world when testing is complete.")
-	log_unit_test("If you did not intend to enable this please check code/__defines/unit_testing.dm")
-#endif
 
 	// Set up roundstart seed list.
 	plant_controller = new()
@@ -90,13 +91,8 @@ GLOBAL_LIST(topic_status_cache)
 	//Must be done now, otherwise ZAS zones and lighting overlays need to be recreated.
 	createRandomZlevel()
 
-	Master.Initialize(10, FALSE)
-
-#if UNIT_TEST
-	spawn(1)
-		initialize_unit_tests()
-#endif
-
+	Master.Initialize(10, FALSE, TRUE)
+	
 	spawn(3000)		//so we aren't adding to the round-start lag
 		if(config_legacy.ToRban)
 			ToRban_autoupdate()
@@ -113,6 +109,20 @@ GLOBAL_LIST(topic_status_cache)
 		world.log = file("[GLOB.log_directory]/dd.log") //not all runtimes trigger world/Error, so this is the only way to ensure we can see all of them.
 #endif
 	GLOB.tgs_initialized = TRUE
+
+/world/proc/HandleTestRun()
+	//trigger things to run the whole process
+	Master.sleep_offline_after_initializations = FALSE
+	SSticker.start_immediately = TRUE
+	CONFIG_SET(number/round_end_countdown, 0)
+	addtimer(CALLBACK(GLOBAL_PROC, /proc/RunUnitTests), 15 SECOND)
+// 	var/datum/callback/cb
+// #ifdef UNIT_TESTS
+// 	cb = CALLBACK(GLOBAL_PROC, /proc/RunUnitTests)
+// #else
+// 	cb = VARSET_CALLBACK(SSticker, force_ending, TRUE)
+// #endif
+// 	SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, /proc/addtimer, cb, 10 SECONDS)
 
 /world/proc/SetupExternalRsc()
 #if (PRELOAD_RSC == 0)
@@ -155,6 +165,10 @@ GLOBAL_LIST(topic_status_cache)
 	GLOB.world_runtime_log = "[GLOB.log_directory]/runtime.log"
 	GLOB.subsystem_log = "[GLOB.log_directory]/subsystem.log"
 
+#ifdef UNIT_TESTS
+	GLOB.test_log = file("[GLOB.log_directory]/tests.log")
+	start_log(GLOB.test_log)
+#endif
 	start_log(GLOB.world_game_log)
 	start_log(GLOB.world_attack_log)
 	start_log(GLOB.world_href_log)
@@ -205,6 +219,27 @@ GLOBAL_LIST(topic_status_cache)
 	handler = new handler()
 	return handler.TryRun(input)
 
+/world/proc/FinishTestRun()
+	set waitfor = FALSE
+	var/list/fail_reasons
+	if(GLOB)
+		if(GLOB.total_runtimes != 0)
+			fail_reasons = list("Total runtimes: [GLOB.total_runtimes]")
+#ifdef UNIT_TESTS
+		if(GLOB.failed_any_test)
+			LAZYADD(fail_reasons, "Unit Tests failed!")
+#endif
+		if(!GLOB.log_directory)
+			LAZYADD(fail_reasons, "Missing GLOB.log_directory!")
+	else
+		fail_reasons = list("Missing GLOB!")
+	if(!fail_reasons)
+		text2file("Success!", "[GLOB.log_directory]/clean_run.lk")
+	else
+		log_world("Test run failed!\n[fail_reasons.Join("\n")]")
+	sleep(0)	//yes, 0, this'll let Reboot finish and prevent byond memes
+	qdel(src)	//shut it down
+
 /world/Reboot(reason = 0, fast_track = FALSE)
 	if (reason || fast_track) //special reboot, do none of the normal stuff
 		if (usr)
@@ -221,11 +256,9 @@ GLOBAL_LIST(topic_status_cache)
 
 	TgsReboot()
 
-/*
 	if(TEST_RUN_PARAMETER in params)
 		FinishTestRun()
 		return
-*/
 
 /*
 	if(TgsAvailable())
