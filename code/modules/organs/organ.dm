@@ -60,8 +60,8 @@ var/list/organ_cache = list()
 /obj/item/organ/proc/update_health()
 	return
 
-/obj/item/organ/Initialize(mob/living/carbon/holder, internal)
-	. = ..()
+/obj/item/organ/New(mob/living/carbon/holder, internal)
+	..(holder)
 	create_reagents(5)
 	if(!max_damage)
 		max_damage = min_broken_damage * 2

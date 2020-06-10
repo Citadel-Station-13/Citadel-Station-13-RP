@@ -219,15 +219,14 @@
 /obj/item/organ/external/update_health()
 	damage = min(max_damage, (brute_dam + burn_dam))
 
-/obj/item/organ/external/Initialize(mob/living/carbon/holder)
-	. = ..()
+/obj/item/organ/external/New(mob/living/carbon/holder)
+	..(holder, 0)
 	if(owner)
 		replaced(owner)
 		sync_colour_to_human(owner)
-	spawn(1)
-		get_icon()
+	addtimer(CALLBACK(src, .proc/get_icon), 1)
 
-/obj/item/organ/external/replaced(var/mob/living/carbon/human/target)
+/obj/item/organ/external/replaced(mob/living/carbon/human/target)
 	owner = target
 	forceMove(owner)
 	if(istype(owner))
