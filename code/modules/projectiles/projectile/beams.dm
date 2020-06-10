@@ -257,3 +257,15 @@
 	damage = 30
 	agony = 15
 	eyeblur = 2
+
+/obj/item/projectile/beam/excavation
+	name = "excavation beam"
+	icon_state = "emitter"
+	fire_sound = 'sound/weapons/emitter.ogg'
+	light_color = "#00CC33"
+	damage = 20 //mining tool
+	excavation_amount = 500	// 1 shot to dig a standard rock turf. Made for mining.
+
+	muzzle_type = /obj/effect/projectile/muzzle/emitter
+	tracer_type = /obj/effect/projectile/tracer/emitter
+	impact_type = /obj/effect/projectile/impact/emitter
