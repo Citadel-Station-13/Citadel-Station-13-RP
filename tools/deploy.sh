@@ -12,9 +12,9 @@ fi
 mkdir -p \
     $1/_maps \
     $1/sound/instruments \
-	$1/config/names \
-	$1/config/legacy\
-	$1/code/game/machinery
+    $1/config/names \
+    $1/config/legacy\
+    $1/code/game/machinery
     # $1/icons \
     # $1/sound/chatter \
     # $1/sound/voice/complionator \
@@ -31,9 +31,9 @@ cp -r _maps/* $1/_maps/
 # cp -r sound/chatter/* $1/sound/chatter/
 # cp -r sound/voice/complionator/* $1/sound/voice/complionator/
 cp -r sound/instruments/* $1/sound/instruments/
-cp -r config/names/* $1/config/names
-cp -r config/legacy/* $1/config/legacy
-cp code/game/machinery/jukebox.json
+cp -r config/names/* $1/config/names/
+cp -r config/legacy/* $1/config/legacy/
+cp code/game/machinery/jukebox.json $1/code/game/machinery/
 # cp -r strings/* $1/strings/
 
 #remove .dm files from _maps

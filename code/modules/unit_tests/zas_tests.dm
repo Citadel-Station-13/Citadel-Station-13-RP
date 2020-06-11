@@ -6,13 +6,15 @@
 	var/area_path = null
 	var/expectation = UT_NORMAL
 
-/datum/unit_test/zas_area_test/proc/test_air_in_area(test_area, expectation = UT_NORMAL)
+/datum/unit_test/zas_area_test/proc/test_air_in_area(area/test_area, expectation = UT_NORMAL)
 	var/test_result = list("result" = 0, "msg" = "")
-
 	var/area/A = locate(test_area)
 
+	if(istype(src, /datum/unit_test/zas_area_test)) //hacky, but it works!
+		return test_result
+
 	if(!istype(A, test_area))
-		test_result["msg"] = "Unable to get [test_area]"
+		test_result["msg"] = "Unable to get test area: [test_area]"
 		return test_result
 
 	var/list/GM_checked = list()

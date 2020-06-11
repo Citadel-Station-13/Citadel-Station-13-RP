@@ -27,12 +27,15 @@
 	return output_wrong
 
 // Useful when doing floating point fun.
-/datum/unit_test/integrated_circuits/floor/assess()
+/datum/unit_test/integrated_circuits/floor/assess(round = TRUE)
 	. = ..(TRUE)
 
 /datum/unit_test/integrated_circuits/Run()
+	if(istype(src, /datum/unit_test/integrated_circuits) || istype(src, /datum/unit_test/integrated_circuits/floor)) //skip this
+		return TRUE
+
 	if(!circuit_type)
-		Fail("One of the unit test did not supply a circuit_type path.")
+		Fail("[src] did not supply a circuit_type path.")
 		return TRUE
 
 	// Build the circuit

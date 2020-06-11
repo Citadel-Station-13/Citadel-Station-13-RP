@@ -18,7 +18,7 @@ GLOBAL_VAR(test_log)
 /datum/unit_test
 	//Bit of metadata for the future maybe
 	var/list/procs_tested
-	
+
 	//usable vars
 	var/turf/run_loc_bottom_left
 	var/turf/run_loc_top_right
@@ -75,3 +75,6 @@ GLOBAL_VAR(test_log)
 		CHECK_TICK
 
 	// SSticker.force_ending = TRUE
+	universe_has_ended = TRUE //assume the test is a resonant cascade.
+	SSticker.post_game = TRUE //shh, this is bad i know
+	SSticker.round_process()
