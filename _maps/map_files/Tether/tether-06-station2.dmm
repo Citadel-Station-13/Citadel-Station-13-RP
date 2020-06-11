@@ -6969,9 +6969,7 @@
 	pixel_x = -3;
 	pixel_y = 3
 	},
-/obj/item/circuitboard/jukebox{
-	pixel_y = 0
-	},
+/obj/item/circuitboard/jukebox,
 /obj/item/circuitboard/message_monitor{
 	pixel_x = 3;
 	pixel_y = -3
@@ -13989,9 +13987,7 @@
 	pixel_x = 5;
 	pixel_y = 5
 	},
-/obj/item/storage/firstaid/toxin{
-	pixel_y = 0
-	},
+/obj/item/storage/firstaid/toxin,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -14302,9 +14298,7 @@
 	pixel_x = 5;
 	pixel_y = 5
 	},
-/obj/item/storage/firstaid/o2{
-	pixel_y = 0
-	},
+/obj/item/storage/firstaid/o2,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
@@ -14317,9 +14311,7 @@
 	pixel_x = 5;
 	pixel_y = 5
 	},
-/obj/item/storage/firstaid/fire{
-	pixel_y = 0
-	},
+/obj/item/storage/firstaid/fire,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -14352,9 +14344,7 @@
 /area/medical/biostorage)
 "yz" = (
 /obj/structure/table/steel,
-/obj/item/paper_bin{
-	pixel_y = 0
-	},
+/obj/item/paper_bin,
 /obj/item/pen/red{
 	pixel_x = -1;
 	pixel_y = -3
@@ -14775,9 +14765,7 @@
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/storage/box/masks{
-	pixel_y = 0
-	},
+/obj/item/storage/box/masks,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/paleblue/border,
 /obj/effect/floor_decal/borderfloor/corner2{
@@ -16711,9 +16699,7 @@
 	pixel_x = 4;
 	pixel_y = 6
 	},
-/obj/item/storage/box/masks{
-	pixel_y = 0
-	},
+/obj/item/storage/box/masks,
 /obj/item/storage/box/gloves{
 	pixel_x = 3;
 	pixel_y = 4

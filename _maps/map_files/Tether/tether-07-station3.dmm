@@ -5656,9 +5656,7 @@
 	pixel_x = -4;
 	pixel_y = 8
 	},
-/obj/item/tape_recorder{
-	pixel_y = 0
-	},
+/obj/item/tape_recorder,
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
@@ -8583,9 +8581,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/item/tape_recorder{
-	pixel_y = 0
-	},
+/obj/item/tape_recorder,
 /obj/item/megaphone,
 /obj/structure/table/reinforced,
 /turf/simulated/floor/tiled,
@@ -16113,9 +16109,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/upper)
 "zJ" = (
-/obj/structure/sign/poster{
-	pixel_y = 0
-	},
+/obj/structure/sign/poster,
 /turf/simulated/wall,
 /area/quartermaster/qm)
 "zK" = (
@@ -20243,9 +20237,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/obj/item/storage/firstaid/regular{
-	pixel_y = 0
-	},
+/obj/item/storage/firstaid/regular,
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
 "GT" = (
@@ -28154,9 +28146,7 @@
 /obj/structure/table/standard,
 /obj/item/healthanalyzer,
 /obj/item/healthanalyzer,
-/obj/item/storage/firstaid/regular{
-	pixel_y = 0
-	},
+/obj/item/storage/firstaid/regular,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)

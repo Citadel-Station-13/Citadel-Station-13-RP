@@ -12724,9 +12724,7 @@
 /area/crew_quarters/bar)
 "wx" = (
 /obj/structure/table/steel,
-/obj/machinery/recharger{
-	pixel_y = 0
-	},
+/obj/machinery/recharger,
 /obj/machinery/alarm{
 	dir = 1;
 	pixel_y = -25
@@ -13222,9 +13220,7 @@
 /turf/simulated/floor/carpet,
 /area/library)
 "xk" = (
-/obj/machinery/librarycomp{
-	pixel_y = 0
-	},
+/obj/machinery/librarycomp,
 /obj/machinery/light/small{
 	dir = 8
 	},
@@ -13563,9 +13559,7 @@
 /area/rnd/reception_desk)
 "xO" = (
 /obj/structure/table/standard,
-/obj/machinery/recharger{
-	pixel_y = 0
-	},
+/obj/machinery/recharger,
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
@@ -14599,9 +14593,7 @@
 /area/library)
 "zm" = (
 /obj/structure/table/woodentable,
-/obj/item/tape_recorder{
-	pixel_y = 0
-	},
+/obj/item/tape_recorder,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
@@ -14901,12 +14893,8 @@
 /area/rnd/reception_desk)
 "zJ" = (
 /obj/structure/table/standard,
-/obj/item/disk/tech_disk{
-	pixel_y = 0
-	},
-/obj/item/disk/tech_disk{
-	pixel_y = 0
-	},
+/obj/item/disk/tech_disk,
+/obj/item/disk/tech_disk,
 /obj/item/disk/design_disk,
 /obj/item/disk/design_disk,
 /obj/item/reagent_containers/dropper{
@@ -15254,9 +15242,7 @@
 /area/rnd/hallway)
 "Ao" = (
 /obj/structure/table/glass,
-/obj/machinery/recharger{
-	pixel_y = 0
-	},
+/obj/machinery/recharger,
 /obj/machinery/camera/network/research{
 	dir = 1
 	},
@@ -15277,9 +15263,7 @@
 /area/rnd/hallway)
 "Ap" = (
 /obj/structure/table/glass,
-/obj/machinery/recharger{
-	pixel_y = 0
-	},
+/obj/machinery/recharger,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
@@ -15378,9 +15362,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
 "Av" = (
-/obj/machinery/bookbinder{
-	pixel_y = 0
-	},
+/obj/machinery/bookbinder,
 /turf/simulated/floor/wood,
 /area/library)
 "Aw" = (

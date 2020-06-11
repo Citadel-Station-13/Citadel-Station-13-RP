@@ -2395,9 +2395,7 @@
 /obj/item/stock_parts/console_screen,
 /obj/item/stock_parts/matter_bin,
 /obj/item/stock_parts/matter_bin,
-/obj/machinery/recharger{
-	pixel_y = 0
-	},
+/obj/machinery/recharger,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 5
 	},
@@ -3073,12 +3071,8 @@
 "fk" = (
 /obj/item/folder/white,
 /obj/structure/table/standard,
-/obj/item/disk/tech_disk{
-	pixel_y = 0
-	},
-/obj/item/disk/tech_disk{
-	pixel_y = 0
-	},
+/obj/item/disk/tech_disk,
+/obj/item/disk/tech_disk,
 /obj/item/disk/design_disk,
 /obj/item/disk/design_disk,
 /obj/item/reagent_containers/dropper{
@@ -3267,9 +3261,7 @@
 /area/centcom/control)
 "fC" = (
 /obj/structure/table/standard,
-/obj/machinery/recharger{
-	pixel_y = 0
-	},
+/obj/machinery/recharger,
 /obj/item/flash,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
@@ -4691,9 +4683,7 @@
 /obj/structure/table/rack,
 /obj/item/clothing/gloves/arm_guard/laserproof,
 /obj/item/clothing/shoes/leg_guard/laserproof,
-/obj/item/clothing/suit/armor/laserproof{
-	pixel_y = 0
-	},
+/obj/item/clothing/suit/armor/laserproof,
 /obj/item/clothing/head/helmet/laserproof,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/camera/network/crescent,
@@ -4706,9 +4696,7 @@
 /obj/structure/table/rack,
 /obj/item/clothing/gloves/arm_guard/laserproof,
 /obj/item/clothing/shoes/leg_guard/laserproof,
-/obj/item/clothing/suit/armor/laserproof{
-	pixel_y = 0
-	},
+/obj/item/clothing/suit/armor/laserproof,
 /obj/item/clothing/head/helmet/laserproof,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
@@ -6875,9 +6863,7 @@
 	pixel_x = -4;
 	pixel_y = 8
 	},
-/obj/item/tape_recorder{
-	pixel_y = 0
-	},
+/obj/item/tape_recorder,
 /turf/unsimulated/floor{
 	icon_state = "vault";
 	dir = 5
@@ -6925,9 +6911,7 @@
 	pixel_x = 5;
 	pixel_y = 5
 	},
-/obj/item/reagent_containers/glass/beaker/cryoxadone{
-	pixel_y = 0
-	},
+/obj/item/reagent_containers/glass/beaker/cryoxadone,
 /obj/item/reagent_containers/glass/beaker/cryoxadone{
 	pixel_x = 7;
 	pixel_y = 1
@@ -8185,9 +8169,7 @@
 /area/centcom/security)
 "oK" = (
 /obj/structure/table/standard,
-/obj/item/tape_recorder{
-	pixel_y = 0
-	},
+/obj/item/tape_recorder,
 /obj/item/megaphone,
 /obj/item/packageWrap,
 /obj/item/storage/box,
