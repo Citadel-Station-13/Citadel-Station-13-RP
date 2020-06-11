@@ -31,9 +31,6 @@
 	. = ..(TRUE)
 
 /datum/unit_test/integrated_circuits/Run()
-	if(istype(src, /datum/unit_test/integrated_circuits) || istype(src, /datum/unit_test/integrated_circuits/floor)) //skip this
-		return TRUE
-
 	if(!circuit_type)
 		Fail("[src] did not supply a circuit_type path.")
 		return TRUE

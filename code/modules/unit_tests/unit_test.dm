@@ -50,8 +50,8 @@ GLOBAL_VAR(test_log)
 
 /proc/RunUnitTests()
 	CHECK_TICK
-
-	for(var/I in subtypesof(/datum/unit_test))
+	var/list/bl_test = list(/datum/unit_test/zas_area_test, /datum/unit_test/integrated_circuits, /datum/unit_test/integrated_circuits/floor)
+	for(var/I in subtypesof(/datum/unit_test) - bl_test)
 		var/datum/unit_test/test = new I
 
 		GLOB.current_test = test

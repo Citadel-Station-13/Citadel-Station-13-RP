@@ -60,9 +60,6 @@
 	return test_result
 
 /datum/unit_test/zas_area_test/Run()
-	if(istype(src, /datum/unit_test/zas_area_test)) //hacky, but it works!
-		return TRUE
-
 	var/list/test = test_air_in_area(area_path, expectation)
 
 	if(!test["result"])
