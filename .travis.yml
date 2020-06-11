@@ -83,4 +83,3 @@ jobs:
       script:
         - tools/travis/dm.sh -DTRAVISBUILDING vorestation.dme || travis_terminate 1
         - tools/travis/run_server.sh
-        #add this when traves building is a true! MAP_TEST, AWAY_MISSION_TEST, UNIT_TEST

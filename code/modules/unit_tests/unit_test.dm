@@ -46,8 +46,6 @@ GLOBAL_VAR(test_log)
 	if(!istext(reason))
 		reason = "FORMATTED: [reason != null ? reason : "NULL"]"
 
-	reason = "[ASCII_RED][reason][ASCII_RESET]"
-
 	LAZYADD(fail_reasons, reason)
 
 /proc/RunUnitTests()
