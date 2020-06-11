@@ -282,8 +282,6 @@
 			drop_from_inventory(magboots)
 
 	for(var/obj/item/radio/headset/H in things_to_not_drop)
-		var/ks1 = H.keyslot1
-		var/ks2 = H.keyslot2
 		blob.mob_radio.keyslot1 = H.keyslot1
 		blob.mob_radio.keyslot2 = H.keyslot2
 		if(H.adhoc_fallback)
