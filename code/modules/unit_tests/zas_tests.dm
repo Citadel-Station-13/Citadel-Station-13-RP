@@ -7,11 +7,8 @@
 	var/expectation = UT_NORMAL
 
 /datum/unit_test/zas_area_test/proc/test_air_in_area(area/test_area, expectation = UT_NORMAL)
-	var/test_result = list("result" = 0, "msg" = "")
+	var/test_result = list("result" = FALSE, "msg" = "")
 	var/area/A = locate(test_area)
-
-	if(istype(src, /datum/unit_test/zas_area_test)) //hacky, but it works!
-		return test_result
 
 	if(!istype(A, test_area))
 		test_result["msg"] = "Unable to get test area: [test_area]"
@@ -55,7 +52,7 @@
 		GM_checked.Add(GM)
 
 	if(GM_checked.len)
-		test_result["result"] = 1
+		test_result["result"] = TRUE
 		test_result["msg"] = "Checked [GM_checked.len] zones"
 	else
 		test_result["msg"] = "No zones checked."
@@ -63,13 +60,14 @@
 	return test_result
 
 /datum/unit_test/zas_area_test/Run()
+	if(istype(src, /datum/unit_test/zas_area_test)) //hacky, but it works!
+		return TRUE
+
 	var/list/test = test_air_in_area(area_path, expectation)
 
-	if(isnull(test))
-		Fail("Check Runtimed")
-
-	if(test["result"] != 1)
+	if(!test["result"])
 		Fail(test["msg"])
+
 	return TRUE
 
 /datum/unit_test/zas_area_test/supply_centcomm

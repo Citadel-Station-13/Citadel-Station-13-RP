@@ -12,10 +12,10 @@ fi
 mkdir -p \
     $1/_maps \
     $1/sound/instruments \
+    $1/icons/obj \
     $1/config/names \
     $1/config/legacy\
     $1/code/game/machinery
-    # $1/icons \
     # $1/sound/chatter \
     # $1/sound/voice/complionator \
     # $1/strings
@@ -27,6 +27,7 @@ fi
 
 cp vorestation.dmb vorestation.rsc $1/
 cp -r _maps/* $1/_maps/
+cp icons/obj/card_cit.dmi $1/icons/obj/
 # cp icons/default_title.dmi $1/icons/
 # cp -r sound/chatter/* $1/sound/chatter/
 # cp -r sound/voice/complionator/* $1/sound/voice/complionator/

@@ -104,15 +104,14 @@
 /datum/unit_test/active_edges
 
 /datum/unit_test/active_edges/Run()
-	var/active_edges = air_master.active_edges.len
+	if(!LAZYLEN(air_master.active_edges))
+		return TRUE
+
 	var/list/edge_log = list()
-	if(active_edges)
-		for(var/connection_edge/E in air_master.active_edges)
-			edge_log += "Active Edge [E] ([E.type])"
-			for(var/turf/T in E.connecting_turfs)
-				edge_log += " - Connecting Turf [T] at ([T.x], [T.y], [T.z])"
+	for(var/connection_edge/E in air_master.active_edges)
+		edge_log += "Active Edge [E] ([E.type])"
+		for(var/turf/T in E.connecting_turfs)
+			edge_log += " - Connecting Turf [T] at ([T.x], [T.y], [T.z])"
 
-	if(active_edges)
-		Fail("Maps contained [active_edges] active edges at round-start.\n" + edge_log.Join("\n"))
-
+	Fail("Maps contained [LAZYLEN(air_master.active_edges)] active edges at round-start.\n" + edge_log.Join("\n"))
 	return TRUE

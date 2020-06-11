@@ -46,6 +46,8 @@ GLOBAL_VAR(test_log)
 	if(!istext(reason))
 		reason = "FORMATTED: [reason != null ? reason : "NULL"]"
 
+	reason = "[ASCII_RED][reason][ASCII_RESET]"
+
 	LAZYADD(fail_reasons, reason)
 
 /proc/RunUnitTests()
@@ -63,7 +65,7 @@ GLOBAL_VAR(test_log)
 		GLOB.current_test = null
 		GLOB.failed_any_test |= !test.succeeded
 
-		var/list/log_entry = list("[test.succeeded ? "PASS" : "FAIL"]: [I] [duration / 10]s")
+		var/list/log_entry = list("[test.succeeded ? "[ASCII_GREEN]PASS" : "[ASCII_RED]FAIL"]: [I] [duration / 10]s[ASCII_RESET]")
 		var/list/fail_reasons = test.fail_reasons
 
 		qdel(test)
