@@ -5,8 +5,7 @@ tools/deploy.sh travis_test
 # mkdir travis_test/config deploy builds this because we have to load legacy thing
 
 #test config
-# cp tools/travis/travis_config.txt travis_test/config/config.txt
-#config without ruins.
+# cp tools/travis/travis_config.txt travis_test/config/config.txt\
 cp tools/travis/legacy_travis_config.txt travis_test/config/legacy/dbconfig.txt
 cp tools/travis/legacy_travis_config.txt travis_test/config/legacy/forumdbconfig.txt
 
