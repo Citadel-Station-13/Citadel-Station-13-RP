@@ -11,13 +11,13 @@ fi
 
 mkdir -p \
     $1/_maps \
-    # $1/icons \
-    # $1/sound/chatter \
-    # $1/sound/voice/complionator \
     $1/sound/instruments \
 	$1/config/names \
 	$1/config/entries \
 	$1/config/legacy
+    # $1/icons \
+    # $1/sound/chatter \
+    # $1/sound/voice/complionator \
     # $1/strings
 
 if [ -d ".git" ]; then
