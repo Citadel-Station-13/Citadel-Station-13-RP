@@ -279,6 +279,22 @@ var/list/flooring_types
 	icon_base = "freezer"
 	build_type = /obj/item/stack/tile/floor/freezer
 
+/decl/flooring/wmarble
+	name = "marble floor"
+	desc = "Very regal white marble flooring."
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_base = "lightmarble"
+	build_type = /obj/item/stack/tile/wmarble
+	flags = TURF_REMOVE_CROWBAR
+
+/decl/flooring/bmarble
+	name = "marble floor"
+	desc = "Very regal black marble flooring."
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_base = "darkmarble"
+	build_type = /obj/item/stack/tile/bmarble
+	flags = TURF_REMOVE_CROWBAR
+
 /decl/flooring/wood
 	name = "wooden floor"
 	desc = "Polished redwood planks."
