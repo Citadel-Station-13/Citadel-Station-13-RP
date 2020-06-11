@@ -291,7 +291,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 24
 	},
 /obj/structure/cable/green{
@@ -364,7 +363,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 24
 	},
 /obj/structure/cable/green{
@@ -394,7 +392,6 @@
 /obj/machinery/firealarm{
 	dir = 2;
 	layer = 3.3;
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /obj/structure/cable/green{
@@ -588,8 +585,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9;
-	pixel_y = 0
+	dir = 9
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/break_room)
@@ -656,8 +652,7 @@
 "bu" = (
 /obj/machinery/light{
 	dir = 4;
-	icon_state = "tube1";
-	pixel_x = 0
+	icon_state = "tube1"
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/supply{
 	dir = 9
@@ -909,7 +904,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 24
 	},
 /obj/structure/cable/green{
@@ -1017,7 +1011,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 24
 	},
 /obj/machinery/light_switch{
@@ -1090,7 +1083,6 @@
 	frequency = 1379;
 	master_tag = "mining_outpost_airlock";
 	name = "Mining Outpost Access Button";
-	pixel_x = 0;
 	pixel_y = 24;
 	req_access = list(48,54)
 	},
@@ -1193,7 +1185,6 @@
 	frequency = 1379;
 	master_tag = "mining_outpost_airlock";
 	name = "Mining Outpost Access Button";
-	pixel_x = 0;
 	pixel_y = 24;
 	req_access = list(48,54)
 	},
@@ -1307,7 +1298,6 @@
 "cv" = (
 /obj/machinery/embedded_controller/radio/airlock/phoron{
 	id_tag = "mining_outpost_airlock";
-	pixel_x = 0;
 	pixel_y = -25
 	},
 /obj/machinery/airlock_sensor/phoron{

@@ -98,8 +98,7 @@
 /obj/machinery/vending/wallmed1{
 	layer = 3.3;
 	name = "Emergency NanoMed";
-	pixel_x = 28;
-	pixel_y = 0
+	pixel_x = 28
 	},
 /obj/machinery/light{
 	dir = 4
@@ -346,7 +345,6 @@
 	frequency = 1380;
 	id_tag = "specops_shuttle_fore";
 	name = "forward docking hatch controller";
-	pixel_x = 0;
 	pixel_y = -25;
 	tag_door = "specops_shuttle_fore_hatch"
 	},
@@ -549,7 +547,6 @@
 	frequency = 1380;
 	id_tag = "specops_shuttle_port";
 	name = "port docking hatch controller";
-	pixel_x = 0;
 	pixel_y = -25;
 	tag_door = "specops_shuttle_port_hatch"
 	},
@@ -1225,7 +1222,6 @@
 	frequency = 1380;
 	id_tag = "specops_centcom_dock";
 	name = "docking port controller";
-	pixel_x = 0;
 	pixel_y = 25;
 	req_one_access = list(103);
 	tag_door = "specops_centcom_dock_door"
@@ -2653,8 +2649,7 @@
 /obj/item/stock_parts/scanning_module,
 /obj/machinery/light{
 	dir = 4;
-	icon_state = "tube1";
-	pixel_x = 0
+	icon_state = "tube1"
 	},
 /obj/item/clothing/glasses/omnihud/rnd,
 /obj/effect/floor_decal/borderfloorwhite{
@@ -3079,11 +3074,9 @@
 /obj/item/folder/white,
 /obj/structure/table/standard,
 /obj/item/disk/tech_disk{
-	pixel_x = 0;
 	pixel_y = 0
 	},
 /obj/item/disk/tech_disk{
-	pixel_x = 0;
 	pixel_y = 0
 	},
 /obj/item/disk/design_disk,
@@ -3122,7 +3115,6 @@
 /obj/structure/table/standard,
 /obj/structure/reagent_dispensers/acid{
 	density = 0;
-	pixel_x = 0;
 	pixel_y = -30
 	},
 /obj/item/storage/toolbox/mechanical{
@@ -3431,9 +3423,7 @@
 	},
 /obj/effect/floor_decal/borderfloorwhite/corner2{
 	dir = 5;
-	icon_state = "borderfloorcorner2_white";
-	pixel_x = 0;
-	pixel_y = 0
+	icon_state = "borderfloorcorner2_white"
 	},
 /obj/effect/floor_decal/corner/purple/bordercorner2{
 	dir = 4
@@ -4070,8 +4060,7 @@
 /obj/structure/table/marble,
 /obj/item/book/manual/chef_recipes,
 /obj/item/reagent_containers/food/condiment/small/saltshaker{
-	pixel_x = -3;
-	pixel_y = 0
+	pixel_x = -3
 	},
 /obj/item/reagent_containers/food/condiment/small/peppermill{
 	pixel_x = 3
@@ -4166,7 +4155,6 @@
 /obj/machinery/button/remote/blast_door{
 	id = "ArmouryC5";
 	name = "Armoury Access";
-	pixel_x = 0;
 	pixel_y = -28;
 	req_access = list(3)
 	},
@@ -4179,7 +4167,6 @@
 /obj/machinery/button/remote/blast_door{
 	id = "ArmouryC4";
 	name = "Armoury Access";
-	pixel_x = 0;
 	pixel_y = -28;
 	req_access = list(3)
 	},
@@ -4487,7 +4474,6 @@
 /obj/machinery/button/remote/blast_door{
 	id = "ArmouryC4";
 	name = "Armoury Access";
-	pixel_x = 0;
 	pixel_y = 28;
 	req_access = list(3)
 	},
@@ -4706,7 +4692,6 @@
 /obj/item/clothing/gloves/arm_guard/laserproof,
 /obj/item/clothing/shoes/leg_guard/laserproof,
 /obj/item/clothing/suit/armor/laserproof{
-	pixel_x = 0;
 	pixel_y = 0
 	},
 /obj/item/clothing/head/helmet/laserproof,
@@ -4722,7 +4707,6 @@
 /obj/item/clothing/gloves/arm_guard/laserproof,
 /obj/item/clothing/shoes/leg_guard/laserproof,
 /obj/item/clothing/suit/armor/laserproof{
-	pixel_x = 0;
 	pixel_y = 0
 	},
 /obj/item/clothing/head/helmet/laserproof,
@@ -5220,7 +5204,6 @@
 /obj/machinery/button/remote/blast_door{
 	id = "HEAVY";
 	name = "SHIT IS LIT";
-	pixel_x = 0;
 	pixel_y = -28;
 	req_access = list(3)
 	},
@@ -5301,7 +5284,6 @@
 /obj/machinery/button/remote/blast_door{
 	id = "ArmouryC2";
 	name = "Armoury Access";
-	pixel_x = 0;
 	pixel_y = -28;
 	req_access = list(3)
 	},
@@ -5491,7 +5473,6 @@
 /obj/item/reagent_containers/dropper,
 /obj/structure/table/glass,
 /obj/structure/reagent_dispensers/virusfood{
-	pixel_x = 0;
 	pixel_y = 28
 	},
 /obj/effect/floor_decal/borderfloorwhite{
@@ -6282,8 +6263,7 @@
 /obj/structure/sink{
 	dir = 4;
 	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
@@ -6946,7 +6926,6 @@
 	pixel_y = 5
 	},
 /obj/item/reagent_containers/glass/beaker/cryoxadone{
-	pixel_x = 0;
 	pixel_y = 0
 	},
 /obj/item/reagent_containers/glass/beaker/cryoxadone{
@@ -6999,9 +6978,7 @@
 	},
 /obj/effect/floor_decal/borderfloorwhite/corner2{
 	dir = 5;
-	icon_state = "borderfloorcorner2_white";
-	pixel_x = 0;
-	pixel_y = 0
+	icon_state = "borderfloorcorner2_white"
 	},
 /obj/effect/floor_decal/corner/paleblue/bordercorner2{
 	dir = 5
@@ -7155,9 +7132,7 @@
 "mS" = (
 /obj/machinery/shower{
 	dir = 4;
-	icon_state = "shower";
-	pixel_x = 0;
-	pixel_y = 0
+	icon_state = "shower"
 	},
 /obj/effect/floor_decal/industrial/warning{
 	icon_state = "warning";
@@ -7299,8 +7274,7 @@
 	},
 /obj/effect/floor_decal/borderfloor/corner2{
 	dir = 4;
-	icon_state = "borderfloorcorner2";
-	pixel_y = 0
+	icon_state = "borderfloorcorner2"
 	},
 /obj/effect/floor_decal/corner/blue/bordercorner2{
 	dir = 4
@@ -7540,7 +7514,6 @@
 "nB" = (
 /obj/machinery/button/remote/blast_door{
 	name = "Armoury Access";
-	pixel_x = 0;
 	pixel_y = -28;
 	req_access = list(3);
 	id = "ArmouryC"
@@ -7567,7 +7540,6 @@
 "nD" = (
 /obj/machinery/button/remote/blast_door{
 	name = "Armoury Access";
-	pixel_x = 0;
 	pixel_y = -28;
 	req_access = list(3);
 	id = "ArmouryC"
@@ -7795,9 +7767,7 @@
 	},
 /obj/effect/floor_decal/borderfloorwhite/corner2{
 	dir = 5;
-	icon_state = "borderfloorcorner2_white";
-	pixel_x = 0;
-	pixel_y = 0
+	icon_state = "borderfloorcorner2_white"
 	},
 /obj/effect/floor_decal/corner/paleblue/bordercorner2{
 	dir = 4
@@ -8057,8 +8027,7 @@
 /obj/machinery/camera/network/crescent,
 /obj/machinery/flasher{
 	id = "CellC1";
-	pixel_x = -28;
-	pixel_y = 0
+	pixel_x = -28
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/holding)
@@ -8122,8 +8091,7 @@
 	},
 /obj/effect/floor_decal/borderfloor/corner2{
 	dir = 4;
-	icon_state = "borderfloorcorner2";
-	pixel_y = 0
+	icon_state = "borderfloorcorner2"
 	},
 /obj/effect/floor_decal/corner/blue/bordercorner2{
 	dir = 4
@@ -9002,8 +8970,7 @@
 	},
 /obj/effect/floor_decal/borderfloor/corner2{
 	dir = 4;
-	icon_state = "borderfloorcorner2";
-	pixel_y = 0
+	icon_state = "borderfloorcorner2"
 	},
 /obj/effect/floor_decal/corner/blue/bordercorner2{
 	dir = 4
@@ -9053,8 +9020,7 @@
 	},
 /obj/effect/floor_decal/borderfloor/corner2{
 	dir = 4;
-	icon_state = "borderfloorcorner2";
-	pixel_y = 0
+	icon_state = "borderfloorcorner2"
 	},
 /obj/effect/floor_decal/corner/blue/bordercorner2{
 	dir = 4
@@ -9133,8 +9099,7 @@
 /obj/structure/sink{
 	dir = 4;
 	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 6
@@ -9541,7 +9506,6 @@
 	pixel_y = 8
 	},
 /obj/item/reagent_containers/food/drinks/glass2/square{
-	pixel_x = 0;
 	pixel_y = 8
 	},
 /obj/item/reagent_containers/food/drinks/glass2/square{
@@ -9553,7 +9517,6 @@
 	pixel_y = 4
 	},
 /obj/item/reagent_containers/food/drinks/glass2/square{
-	pixel_x = 0;
 	pixel_y = 4
 	},
 /obj/item/reagent_containers/food/drinks/glass2/square{
@@ -10161,8 +10124,7 @@
 	})
 "sC" = (
 /obj/structure/closet/hydrant{
-	pixel_x = -30;
-	pixel_y = 0
+	pixel_x = -30
 	},
 /obj/item/storage/firstaid/o2{
 	layer = 2.8;
@@ -10322,8 +10284,7 @@
 /obj/structure/sink{
 	dir = 4;
 	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /turf/unsimulated/floor{
 	icon_state = "freezerfloor";
@@ -10465,7 +10426,6 @@
 	icon_state = "intercom";
 	listening = 1;
 	name = "Station Intercom (Security)";
-	pixel_x = 0;
 	pixel_y = 27
 	},
 /turf/unsimulated/floor/steel,
@@ -10483,8 +10443,7 @@
 	},
 /obj/effect/floor_decal/borderfloor/corner2{
 	dir = 4;
-	icon_state = "borderfloorcorner2";
-	pixel_y = 0
+	icon_state = "borderfloorcorner2"
 	},
 /obj/effect/floor_decal/corner/blue/bordercorner2{
 	dir = 4
@@ -10564,8 +10523,7 @@
 	},
 /obj/effect/floor_decal/borderfloor/corner2{
 	dir = 4;
-	icon_state = "borderfloorcorner2";
-	pixel_y = 0
+	icon_state = "borderfloorcorner2"
 	},
 /obj/effect/floor_decal/corner/blue/bordercorner2{
 	dir = 4
@@ -12034,7 +11992,6 @@
 /area/centcom/security)
 "vX" = (
 /obj/machinery/newscaster/security_unit{
-	pixel_x = 0;
 	pixel_y = 30
 	},
 /obj/structure/table/reinforced,
@@ -12056,7 +12013,6 @@
 /obj/machinery/status_display{
 	density = 0;
 	layer = 4;
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /obj/machinery/vending/security,
@@ -12099,7 +12055,6 @@
 	icon_state = "intercom";
 	listening = 1;
 	name = "Station Intercom (Security)";
-	pixel_x = 0;
 	pixel_y = 27
 	},
 /obj/machinery/photocopier,
@@ -12222,7 +12177,6 @@
 	icon_state = "intercom";
 	listening = 1;
 	name = "Station Intercom (Security)";
-	pixel_x = 0;
 	pixel_y = 27
 	},
 /turf/unsimulated/floor{
@@ -12347,9 +12301,7 @@
 	},
 /obj/effect/floor_decal/borderfloorwhite/corner2{
 	dir = 5;
-	icon_state = "borderfloorcorner2_white";
-	pixel_x = 0;
-	pixel_y = 0
+	icon_state = "borderfloorcorner2_white"
 	},
 /obj/effect/floor_decal/borderfloorwhite/corner2{
 	dir = 6
@@ -12698,7 +12650,6 @@
 	icon_state = "intercom";
 	listening = 1;
 	name = "Station Intercom (Security)";
-	pixel_x = 0;
 	pixel_y = 27
 	},
 /turf/unsimulated/floor{
@@ -13992,7 +13943,6 @@
 	pixel_y = 8
 	},
 /obj/item/reagent_containers/food/drinks/glass2/square{
-	pixel_x = 0;
 	pixel_y = 8
 	},
 /obj/item/reagent_containers/food/drinks/glass2/square{
@@ -14004,7 +13954,6 @@
 	pixel_y = 4
 	},
 /obj/item/reagent_containers/food/drinks/glass2/square{
-	pixel_x = 0;
 	pixel_y = 4
 	},
 /obj/item/reagent_containers/food/drinks/glass2/square{
@@ -14761,7 +14710,6 @@
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/snacks/toastedsandwich{
 	pixel_w = 0;
-	pixel_x = 0;
 	pixel_y = 10
 	},
 /turf/unsimulated/floor/steel{
@@ -15202,7 +15150,6 @@
 	icon_state = "intercom";
 	listening = 1;
 	name = "Station Intercom (Security)";
-	pixel_x = 0;
 	pixel_y = 27
 	},
 /turf/unsimulated/floor{
@@ -15284,7 +15231,6 @@
 	icon_state = "intercom";
 	listening = 1;
 	name = "Station Intercom (Security)";
-	pixel_x = 0;
 	pixel_y = 27
 	},
 /turf/unsimulated/floor{
@@ -15570,8 +15516,7 @@
 /obj/structure/table/marble,
 /obj/item/book/manual/chef_recipes,
 /obj/item/reagent_containers/food/condiment/small/saltshaker{
-	pixel_x = -3;
-	pixel_y = 0
+	pixel_x = -3
 	},
 /obj/item/reagent_containers/food/condiment/small/peppermill{
 	pixel_x = 3
@@ -16148,8 +16093,7 @@
 /obj/structure/sink{
 	dir = 4;
 	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /turf/unsimulated/floor{
 	icon_state = "freezer"
@@ -16324,7 +16268,6 @@
 	icon_state = "intercom";
 	listening = 1;
 	name = "Station Intercom (Security)";
-	pixel_x = 0;
 	pixel_y = 27
 	},
 /turf/unsimulated/floor{
@@ -16390,8 +16333,7 @@
 "CL" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 1
@@ -16403,8 +16345,7 @@
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 1
@@ -16428,8 +16369,7 @@
 /obj/machinery/computer/security,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 1
@@ -16440,8 +16380,7 @@
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 1
@@ -16461,8 +16400,7 @@
 /obj/machinery/computer/communications,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 1
@@ -16472,8 +16410,7 @@
 "CQ" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 1
@@ -16485,8 +16422,7 @@
 "CR" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 1
@@ -16497,8 +16433,7 @@
 "CS" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 1
@@ -16570,16 +16505,14 @@
 "CW" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
-	icon_state = "borderfloor";
-	pixel_x = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 8
 	},
 /obj/effect/floor_decal/borderfloor/corner2{
 	dir = 10;
-	icon_state = "borderfloorcorner2";
-	pixel_x = 0
+	icon_state = "borderfloorcorner2"
 	},
 /obj/effect/floor_decal/corner/blue/bordercorner2{
 	dir = 10
@@ -16806,8 +16739,7 @@
 	},
 /obj/structure/mirror{
 	dir = 4;
-	pixel_x = -32;
-	pixel_y = 0
+	pixel_x = -32
 	},
 /turf/unsimulated/floor{
 	icon_state = "freezer"
@@ -16823,8 +16755,7 @@
 /obj/structure/sink{
 	dir = 4;
 	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /obj/structure/mirror{
 	pixel_x = 29

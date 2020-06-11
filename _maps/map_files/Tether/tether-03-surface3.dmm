@@ -42,7 +42,6 @@
 /obj/machinery/firealarm{
 	dir = 2;
 	layer = 3.3;
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -182,8 +181,7 @@
 /obj/machinery/alarm{
 	dir = 4;
 	icon_state = "alarm0";
-	pixel_x = -22;
-	pixel_y = 0
+	pixel_x = -22
 	},
 /obj/random/junk,
 /turf/simulated/floor/wood,
@@ -648,7 +646,6 @@
 /obj/item/roller,
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/machinery/newscaster{
-	pixel_x = 0;
 	pixel_y = 30
 	},
 /turf/simulated/floor/tiled/dark,
@@ -665,7 +662,6 @@
 /obj/machinery/firealarm{
 	dir = 2;
 	layer = 3.3;
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /obj/item/gun/energy/stunrevolver,
@@ -713,7 +709,6 @@
 /obj/machinery/firealarm{
 	dir = 2;
 	layer = 3.3;
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled,
@@ -787,7 +782,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 28
 	},
 /obj/structure/cable/green{
@@ -841,7 +835,6 @@
 /obj/machinery/firealarm{
 	dir = 2;
 	layer = 3.3;
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /turf/simulated/floor/carpet/blue,
@@ -1106,8 +1099,7 @@
 /obj/machinery/alarm{
 	dir = 4;
 	icon_state = "alarm0";
-	pixel_x = -22;
-	pixel_y = 0
+	pixel_x = -22
 	},
 /obj/item/gun/energy/taser,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -1327,8 +1319,7 @@
 	dir = 8
 	},
 /obj/machinery/status_display{
-	pixel_x = 32;
-	pixel_y = 0
+	pixel_x = 32
 	},
 /turf/simulated/floor/carpet/blue,
 /area/tether/surfacebase/security/breakroom)
@@ -1475,8 +1466,7 @@
 /obj/item/communicator,
 /obj/machinery/light{
 	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	icon_state = "tube1"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/gateway/prep_room)
@@ -1596,8 +1586,7 @@
 /obj/item/radio/intercom/department/security{
 	dir = 4;
 	icon_state = "secintercom";
-	pixel_x = 24;
-	pixel_y = 0
+	pixel_x = 24
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/common)
@@ -1657,8 +1646,7 @@
 /obj/machinery/alarm{
 	dir = 4;
 	icon_state = "alarm0";
-	pixel_x = -22;
-	pixel_y = 0
+	pixel_x = -22
 	},
 /obj/structure/table/rack,
 /obj/random/maintenance/clean,
@@ -1720,8 +1708,7 @@
 	department = "Medical Department";
 	departmentType = 3;
 	name = "Medical RC";
-	pixel_x = -30;
-	pixel_y = 0
+	pixel_x = -30
 	},
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/triage)
@@ -1794,14 +1781,12 @@
 /obj/machinery/firealarm{
 	dir = 2;
 	layer = 3.3;
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/reading_room)
 "dC" = (
 /obj/machinery/newscaster{
-	pixel_x = 0;
 	pixel_y = 30
 	},
 /turf/simulated/floor/wood,
@@ -1816,7 +1801,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 28
 	},
 /obj/structure/cable/green{
@@ -1930,8 +1914,7 @@
 /obj/machinery/alarm{
 	dir = 4;
 	icon_state = "alarm0";
-	pixel_x = -22;
-	pixel_y = 0
+	pixel_x = -22
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/common)
@@ -1994,8 +1977,7 @@
 	},
 /obj/machinery/light{
 	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	icon_state = "tube1"
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/breakroom)
@@ -2038,8 +2020,7 @@
 /area/vacant/vacant_site2)
 "eb" = (
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /obj/structure/cable/green{
 	d1 = 1;
@@ -2401,8 +2382,7 @@
 /obj/machinery/alarm{
 	dir = 4;
 	icon_state = "alarm0";
-	pixel_x = -22;
-	pixel_y = 0
+	pixel_x = -22
 	},
 /obj/structure/disposalpipe/trunk{
 	dir = 4
@@ -2999,8 +2979,7 @@
 	},
 /obj/machinery/light{
 	dir = 4;
-	icon_state = "tube1";
-	pixel_x = 0
+	icon_state = "tube1"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/gateway/prep_room)
@@ -3034,8 +3013,7 @@
 	},
 /obj/machinery/flasher{
 	id = "Drunk Tank";
-	pixel_x = -28;
-	pixel_y = 0
+	pixel_x = -28
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/common)
@@ -3141,7 +3119,6 @@
 	dir = 10
 	},
 /obj/machinery/newscaster{
-	pixel_x = 0;
 	pixel_y = 30
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -3485,8 +3462,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -3526,8 +3502,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
@@ -3637,8 +3612,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9;
-	pixel_y = 0
+	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -3906,8 +3880,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals6{
 	dir = 8
@@ -3996,8 +3969,7 @@
 /obj/structure/sink{
 	dir = 4;
 	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/recreation_area_restroom)
@@ -4008,8 +3980,7 @@
 /obj/machinery/alarm{
 	dir = 4;
 	icon_state = "alarm0";
-	pixel_x = -22;
-	pixel_y = 0
+	pixel_x = -22
 	},
 /obj/structure/bed/chair{
 	dir = 4
@@ -4127,7 +4098,6 @@
 	},
 /obj/machinery/firealarm{
 	dir = 1;
-	pixel_x = 0;
 	pixel_y = -25
 	},
 /turf/simulated/floor/tiled,
@@ -4204,8 +4174,7 @@
 	},
 /obj/machinery/computer/guestpass{
 	dir = 4;
-	pixel_x = -28;
-	pixel_y = 0
+	pixel_x = -28
 	},
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/lobby)
@@ -4272,8 +4241,7 @@
 	},
 /obj/machinery/station_map{
 	dir = 4;
-	pixel_x = -32;
-	pixel_y = 0
+	pixel_x = -32
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_three)
@@ -4331,8 +4299,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals_central1{
 	dir = 8
@@ -4546,8 +4513,7 @@
 	},
 /obj/machinery/firealarm{
 	dir = 8;
-	pixel_x = -24;
-	pixel_y = 0
+	pixel_x = -24
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_three)
@@ -4705,7 +4671,6 @@
 /obj/machinery/firealarm{
 	dir = 2;
 	layer = 3.3;
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -5080,7 +5045,6 @@
 /obj/machinery/firealarm{
 	dir = 2;
 	layer = 3.3;
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -5123,7 +5087,6 @@
 /obj/machinery/firealarm{
 	dir = 2;
 	layer = 3.3;
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled,
@@ -5222,7 +5185,6 @@
 /area/tether/surfacebase/atrium_three)
 "iY" = (
 /obj/machinery/newscaster{
-	pixel_x = 0;
 	pixel_y = 30
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -5406,7 +5368,6 @@
 /obj/machinery/firealarm{
 	dir = 2;
 	layer = 3.3;
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /obj/effect/floor_decal/corner/black/diagonal,
@@ -5539,8 +5500,7 @@
 /obj/machinery/alarm{
 	dir = 4;
 	icon_state = "alarm0";
-	pixel_x = -22;
-	pixel_y = 0
+	pixel_x = -22
 	},
 /obj/effect/floor_decal/corner/lightgrey{
 	dir = 10
@@ -5568,8 +5528,7 @@
 /area/tether/surfacebase/atrium_three)
 "jw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9;
-	pixel_y = 0
+	dir = 9
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_three)
@@ -5626,8 +5585,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor/glass/hidden/steel,
 /turf/simulated/floor/tiled,
@@ -5659,8 +5617,7 @@
 	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9;
-	pixel_y = 0
+	dir = 9
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_three)
@@ -5880,8 +5837,7 @@
 /area/tether/surfacebase/atrium_three)
 "kd" = (
 /obj/machinery/status_display{
-	pixel_x = 32;
-	pixel_y = 0
+	pixel_x = 32
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -6060,8 +6016,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lightgrey/border,
@@ -6128,7 +6083,6 @@
 	},
 /obj/machinery/firealarm{
 	dir = 1;
-	pixel_x = 0;
 	pixel_y = -25
 	},
 /turf/simulated/floor/tiled,
@@ -6342,8 +6296,7 @@
 /area/hydroponics)
 "kO" = (
 /obj/item/reagent_containers/food/condiment/small/saltshaker{
-	pixel_x = -3;
-	pixel_y = 0
+	pixel_x = -3
 	},
 /obj/item/reagent_containers/food/condiment/small/peppermill{
 	pixel_x = 3
@@ -6428,8 +6381,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
@@ -6652,8 +6604,7 @@
 /obj/machinery/alarm{
 	dir = 4;
 	icon_state = "alarm0";
-	pixel_x = -22;
-	pixel_y = 0
+	pixel_x = -22
 	},
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/atrium_three)
@@ -6758,7 +6709,6 @@
 /obj/machinery/firealarm{
 	dir = 2;
 	layer = 3.3;
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/freezer,
@@ -6779,7 +6729,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 28
 	},
 /obj/structure/cable{
@@ -6820,8 +6769,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
@@ -6897,7 +6845,6 @@
 /obj/machinery/firealarm{
 	dir = 2;
 	layer = 3.3;
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled,
@@ -7136,8 +7083,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/structure/cable{
 	d1 = 2;
@@ -7381,8 +7327,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
@@ -7672,7 +7617,6 @@
 "nq" = (
 /obj/machinery/computer/security/telescreen/entertainment{
 	icon_state = "frame";
-	pixel_x = 0;
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled/steel,
@@ -7733,8 +7677,7 @@
 	},
 /obj/machinery/light{
 	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	icon_state = "tube1"
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
@@ -7760,8 +7703,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
@@ -7824,8 +7766,7 @@
 "nK" = (
 /obj/machinery/computer/guestpass{
 	dir = 4;
-	pixel_x = -28;
-	pixel_y = 0
+	pixel_x = -28
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -7870,7 +7811,6 @@
 "nO" = (
 /obj/machinery/firealarm{
 	dir = 1;
-	pixel_x = 0;
 	pixel_y = -25
 	},
 /obj/structure/bed/chair/wood{
@@ -7911,7 +7851,6 @@
 "nR" = (
 /obj/machinery/firealarm{
 	dir = 1;
-	pixel_x = 0;
 	pixel_y = -25
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -7988,8 +7927,7 @@
 /obj/machinery/alarm{
 	dir = 4;
 	icon_state = "alarm0";
-	pixel_x = -22;
-	pixel_y = 0
+	pixel_x = -22
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
@@ -8032,8 +7970,7 @@
 "of" = (
 /obj/machinery/light{
 	dir = 4;
-	icon_state = "tube1";
-	pixel_x = 0
+	icon_state = "tube1"
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
@@ -8082,8 +8019,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9;
-	pixel_y = 0
+	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/floor_decal/steeldecal/steel_decals7{
@@ -8149,8 +8085,7 @@
 /obj/structure/table/glass,
 /obj/machinery/light{
 	dir = 4;
-	icon_state = "tube1";
-	pixel_x = 0
+	icon_state = "tube1"
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/pool)
@@ -8540,8 +8475,7 @@
 /obj/machinery/alarm{
 	dir = 4;
 	icon_state = "alarm0";
-	pixel_x = -22;
-	pixel_y = 0
+	pixel_x = -22
 	},
 /turf/simulated/floor/grass,
 /area/hydroponics/cafegarden)
@@ -8653,7 +8587,6 @@
 /obj/machinery/firealarm{
 	dir = 2;
 	layer = 3.3;
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -8702,8 +8635,7 @@
 /obj/machinery/shower{
 	dir = 4;
 	icon_state = "shower";
-	pixel_x = 5;
-	pixel_y = 0
+	pixel_x = 5
 	},
 /obj/structure/curtain/open/shower,
 /turf/simulated/floor/tiled/white,
@@ -8727,8 +8659,7 @@
 /obj/machinery/shower{
 	dir = 8;
 	icon_state = "shower";
-	pixel_x = -5;
-	pixel_y = 0
+	pixel_x = -5
 	},
 /obj/structure/curtain/open/shower,
 /turf/simulated/floor/tiled/white,
@@ -8765,8 +8696,7 @@
 "pC" = (
 /obj/machinery/light{
 	dir = 4;
-	icon_state = "tube1";
-	pixel_x = 0
+	icon_state = "tube1"
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -8800,8 +8730,7 @@
 /area/maintenance/bar)
 "pE" = (
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /obj/effect/floor_decal/techfloor{
 	dir = 4
@@ -8844,8 +8773,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
@@ -9015,8 +8943,7 @@
 	},
 /obj/structure/lattice,
 /obj/machinery/light/small{
-	dir = 8;
-	pixel_x = 0
+	dir = 8
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/open,
@@ -9273,8 +9200,7 @@
 	},
 /obj/machinery/light{
 	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	icon_state = "tube1"
 	},
 /obj/structure/closet/hydrant{
 	pixel_x = -32
@@ -9538,8 +9464,7 @@
 "qM" = (
 /obj/machinery/light{
 	dir = 4;
-	icon_state = "tube1";
-	pixel_x = 0
+	icon_state = "tube1"
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
@@ -9735,8 +9660,7 @@
 	},
 /obj/machinery/computer/guestpass{
 	dir = 4;
-	pixel_x = -28;
-	pixel_y = 0
+	pixel_x = -28
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
@@ -9781,8 +9705,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_three)
@@ -10073,7 +9996,6 @@
 /obj/machinery/firealarm{
 	dir = 2;
 	layer = 3.3;
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled,
@@ -10110,7 +10032,6 @@
 /obj/machinery/firealarm{
 	dir = 2;
 	layer = 3.3;
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /obj/structure/bed/chair/comfy/black,
@@ -10247,7 +10168,6 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/newscaster{
-	pixel_x = 0;
 	pixel_y = 30
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -10538,8 +10458,7 @@
 	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9;
-	pixel_y = 0
+	dir = 9
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -11041,8 +10960,7 @@
 /obj/machinery/atmospherics/pipe/zpipe/up/scrubbers,
 /obj/machinery/atmospherics/pipe/zpipe/up/supply,
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /obj/structure/cable{
 	icon_state = "16-0"
@@ -11346,7 +11264,6 @@
 	dir = 1;
 	id = "bar";
 	name = "Bar shutters";
-	pixel_x = 0;
 	pixel_y = -25
 	},
 /obj/machinery/light,
@@ -11358,8 +11275,7 @@
 /obj/machinery/computer/guestpass{
 	icon_state = "guest";
 	dir = 8;
-	pixel_x = 27;
-	pixel_y = 0
+	pixel_x = 27
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
@@ -11369,7 +11285,6 @@
 	},
 /obj/machinery/firealarm{
 	dir = 1;
-	pixel_x = 0;
 	pixel_y = -25
 	},
 /obj/machinery/light,
@@ -11382,8 +11297,7 @@
 	dir = 4
 	},
 /obj/machinery/newscaster{
-	pixel_x = 27;
-	pixel_y = 0
+	pixel_x = 27
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
@@ -11429,8 +11343,7 @@
 /obj/machinery/alarm{
 	dir = 4;
 	icon_state = "alarm0";
-	pixel_x = -22;
-	pixel_y = 0
+	pixel_x = -22
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/floor_decal/rust,
@@ -11575,8 +11488,7 @@
 /obj/machinery/alarm{
 	dir = 4;
 	icon_state = "alarm0";
-	pixel_x = -22;
-	pixel_y = 0
+	pixel_x = -22
 	},
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/bar_backroom)
@@ -11587,8 +11499,7 @@
 /obj/machinery/computer/guestpass{
 	icon_state = "guest";
 	dir = 8;
-	pixel_x = 27;
-	pixel_y = 0
+	pixel_x = 27
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
@@ -11676,7 +11587,6 @@
 /obj/machinery/firealarm{
 	dir = 2;
 	layer = 3.3;
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /obj/effect/floor_decal/techfloor{
@@ -11687,12 +11597,10 @@
 "uv" = (
 /obj/structure/table/steel,
 /obj/item/integrated_electronics/debugger{
-	pixel_x = -5;
-	pixel_y = 0
+	pixel_x = -5
 	},
 /obj/item/integrated_electronics/wirer{
-	pixel_x = 5;
-	pixel_y = 0
+	pixel_x = 5
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /obj/effect/floor_decal/techfloor{
@@ -11785,7 +11693,6 @@
 /obj/machinery/firealarm{
 	dir = 2;
 	layer = 3.3;
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -11970,8 +11877,7 @@
 	pixel_x = 3
 	},
 /obj/item/reagent_containers/food/condiment/small/saltshaker{
-	pixel_x = -3;
-	pixel_y = 0
+	pixel_x = -3
 	},
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/bar)
@@ -12721,12 +12627,10 @@
 "wo" = (
 /obj/structure/table/steel,
 /obj/item/integrated_electronics/debugger{
-	pixel_x = -5;
-	pixel_y = 0
+	pixel_x = -5
 	},
 /obj/item/integrated_electronics/wirer{
-	pixel_x = 5;
-	pixel_y = 0
+	pixel_x = 5
 	},
 /obj/machinery/camera/network/research{
 	dir = 1
@@ -12748,8 +12652,7 @@
 "wq" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
@@ -13022,8 +12925,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -13181,8 +13083,7 @@
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
-	icon_state = "borderfloor";
-	pixel_x = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
@@ -13316,8 +13217,7 @@
 	pixel_y = -5
 	},
 /obj/item/storage/briefcase{
-	pixel_x = 3;
-	pixel_y = 0
+	pixel_x = 3
 	},
 /turf/simulated/floor/carpet,
 /area/library)
@@ -13326,8 +13226,7 @@
 	pixel_y = 0
 	},
 /obj/machinery/light/small{
-	dir = 8;
-	pixel_y = 0
+	dir = 8
 	},
 /obj/structure/table/woodentable,
 /turf/simulated/floor/carpet,
@@ -13358,8 +13257,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -13414,8 +13312,7 @@
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
-	icon_state = "borderfloor";
-	pixel_x = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
@@ -13502,8 +13399,7 @@
 /obj/item/stock_parts/manipulator,
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
-	icon_state = "borderfloor";
-	pixel_x = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
@@ -13517,14 +13413,12 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 28
 	},
 /obj/effect/floor_decal/industrial/warning/corner,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
@@ -13538,8 +13432,7 @@
 /obj/effect/floor_decal/industrial/warning,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
@@ -13553,8 +13446,7 @@
 /obj/effect/floor_decal/industrial/warning,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
@@ -13565,7 +13457,6 @@
 /obj/machinery/firealarm{
 	dir = 2;
 	layer = 3.3;
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /obj/effect/floor_decal/industrial/warning/corner{
@@ -13574,8 +13465,7 @@
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
@@ -13599,7 +13489,6 @@
 	pixel_x = 30
 	},
 /obj/machinery/newscaster{
-	pixel_x = 0;
 	pixel_y = 30
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -13691,8 +13580,7 @@
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
-	icon_state = "borderfloor";
-	pixel_x = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 6
@@ -13736,8 +13624,7 @@
 	dir = 5
 	},
 /obj/structure/sign/department/sci{
-	pixel_x = -32;
-	pixel_y = 0
+	pixel_x = -32
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
@@ -13751,7 +13638,6 @@
 /obj/machinery/firealarm{
 	dir = 2;
 	layer = 3.3;
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -13773,8 +13659,7 @@
 	},
 /obj/machinery/disposal,
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/library)
@@ -13850,8 +13735,7 @@
 "yc" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
-	icon_state = "borderfloor";
-	pixel_x = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
@@ -13907,8 +13791,7 @@
 "yg" = (
 /obj/structure/table/marble,
 /obj/item/reagent_containers/food/condiment/small/saltshaker{
-	pixel_x = -3;
-	pixel_y = 0
+	pixel_x = -3
 	},
 /obj/item/reagent_containers/food/condiment/small/peppermill{
 	pixel_x = 3
@@ -13923,13 +13806,11 @@
 /obj/machinery/alarm{
 	dir = 4;
 	icon_state = "alarm0";
-	pixel_x = -22;
-	pixel_y = 0
+	pixel_x = -22
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
-	icon_state = "borderfloor";
-	pixel_x = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
@@ -13991,8 +13872,7 @@
 /obj/item/stock_parts/capacitor,
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
-	icon_state = "borderfloor";
-	pixel_x = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
@@ -14040,8 +13920,7 @@
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
-	icon_state = "borderfloor";
-	pixel_x = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
@@ -14464,8 +14343,7 @@
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
-	icon_state = "borderfloor";
-	pixel_x = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
@@ -14520,8 +14398,7 @@
 /obj/machinery/disposal,
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
-	icon_state = "borderfloor";
-	pixel_x = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
@@ -14590,8 +14467,7 @@
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
-	icon_state = "borderfloor";
-	pixel_x = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
@@ -14688,8 +14564,7 @@
 /obj/machinery/space_heater,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atrium)
@@ -14731,7 +14606,6 @@
 	dir = 1
 	},
 /obj/machinery/newscaster{
-	pixel_x = 0;
 	pixel_y = -28
 	},
 /obj/item/retail_scanner/civilian{
@@ -15012,7 +14886,6 @@
 /obj/structure/table/standard,
 /obj/structure/reagent_dispensers/acid{
 	density = 0;
-	pixel_x = 0;
 	pixel_y = -30
 	},
 /obj/item/hand_labeler,
@@ -15029,11 +14902,9 @@
 "zJ" = (
 /obj/structure/table/standard,
 /obj/item/disk/tech_disk{
-	pixel_x = 0;
 	pixel_y = 0
 	},
 /obj/item/disk/tech_disk{
-	pixel_x = 0;
 	pixel_y = 0
 	},
 /obj/item/disk/design_disk,
@@ -15121,7 +14992,6 @@
 /area/library)
 "zR" = (
 /obj/machinery/newscaster{
-	pixel_x = 0;
 	pixel_y = 28
 	},
 /turf/simulated/floor/wood,
@@ -15146,8 +15016,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -15192,8 +15061,7 @@
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
@@ -15215,8 +15083,7 @@
 "Ab" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
@@ -15243,7 +15110,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 28
 	},
 /obj/structure/cable/green{
@@ -15273,8 +15139,7 @@
 /area/library)
 "Ag" = (
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/library)
@@ -15285,8 +15150,7 @@
 /obj/structure/bed/chair/comfy/black,
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
-	icon_state = "borderfloor";
-	pixel_x = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
@@ -15320,8 +15184,7 @@
 /obj/machinery/alarm{
 	dir = 4;
 	icon_state = "alarm0";
-	pixel_x = -22;
-	pixel_y = 0
+	pixel_x = -22
 	},
 /obj/machinery/firealarm{
 	dir = 1;
@@ -15454,8 +15317,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
-	icon_state = "borderfloor";
-	pixel_x = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
@@ -15526,8 +15388,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -15786,8 +15647,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
-	icon_state = "borderfloor";
-	pixel_x = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
@@ -15800,8 +15660,7 @@
 	},
 /obj/machinery/computer/guestpass{
 	dir = 4;
-	pixel_x = -28;
-	pixel_y = 0
+	pixel_x = -28
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
@@ -15977,8 +15836,7 @@
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
@@ -16028,8 +15886,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
@@ -16072,8 +15929,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -16082,8 +15938,7 @@
 	dir = 5
 	},
 /obj/machinery/light/small{
-	dir = 8;
-	pixel_x = 0
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atrium)
@@ -16249,8 +16104,7 @@
 /obj/machinery/recharge_station,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
@@ -16270,8 +16124,7 @@
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
@@ -16382,8 +16235,7 @@
 /area/rnd/hallway)
 "BJ" = (
 /obj/structure/sign/department/sci{
-	pixel_x = -32;
-	pixel_y = 0
+	pixel_x = -32
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -16639,8 +16491,7 @@
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
-	icon_state = "borderfloor";
-	pixel_x = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
@@ -16686,8 +16537,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
@@ -16737,8 +16587,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/maintenance/engi{
@@ -17068,8 +16917,7 @@
 /obj/machinery/shower{
 	dir = 4;
 	icon_state = "shower";
-	pixel_x = 2;
-	pixel_y = 0
+	pixel_x = 2
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 5
@@ -17111,8 +16959,7 @@
 /obj/structure/sink{
 	dir = 4;
 	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /obj/machinery/firealarm{
 	dir = 1;
@@ -17166,7 +17013,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 28
 	},
 /obj/machinery/alarm{
@@ -17207,8 +17053,7 @@
 /obj/machinery/alarm{
 	dir = 4;
 	icon_state = "alarm0";
-	pixel_x = -22;
-	pixel_y = 0
+	pixel_x = -22
 	},
 /turf/simulated/floor/wood,
 /area/library)
@@ -17243,8 +17088,7 @@
 	name = "bookcase (Fiction)"
 	},
 /obj/machinery/light/small{
-	dir = 8;
-	pixel_y = 0
+	dir = 8
 	},
 /turf/simulated/floor/wood,
 /area/library)
@@ -17610,8 +17454,7 @@
 /obj/structure/table/woodentable,
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
-	icon_state = "borderfloor";
-	pixel_x = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
@@ -17628,8 +17471,7 @@
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
-	icon_state = "borderfloor";
-	pixel_x = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
@@ -17672,8 +17514,7 @@
 /obj/structure/reagent_dispensers/water_cooler/full,
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
-	icon_state = "borderfloor";
-	pixel_x = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
@@ -17724,16 +17565,14 @@
 /obj/machinery/alarm{
 	dir = 4;
 	icon_state = "alarm0";
-	pixel_x = -22;
-	pixel_y = 0
+	pixel_x = -22
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
-	icon_state = "borderfloor";
-	pixel_x = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
@@ -17775,13 +17614,11 @@
 /obj/machinery/firealarm{
 	dir = 2;
 	layer = 3.3;
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
@@ -17809,8 +17646,7 @@
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
@@ -17847,13 +17683,11 @@
 	department = "Robotics";
 	departmentType = 2;
 	name = "Robotics RC";
-	pixel_x = 0;
 	pixel_y = 30
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
@@ -17995,8 +17829,7 @@
 "DN" = (
 /obj/structure/table/marble,
 /obj/item/reagent_containers/food/condiment/small/saltshaker{
-	pixel_x = -3;
-	pixel_y = 0
+	pixel_x = -3
 	},
 /obj/item/reagent_containers/food/condiment/small/peppermill{
 	pixel_x = 3
@@ -18171,8 +18004,7 @@
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
@@ -18186,8 +18018,7 @@
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
@@ -18253,8 +18084,7 @@
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
@@ -18276,13 +18106,11 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 28
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
@@ -18336,8 +18164,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
-	icon_state = "borderfloor";
-	pixel_x = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
@@ -18455,8 +18282,7 @@
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
-	icon_state = "borderfloor";
-	pixel_x = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
@@ -18492,7 +18318,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 28
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -18739,8 +18564,7 @@
 /obj/machinery/vending/snack,
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
-	icon_state = "borderfloor";
-	pixel_x = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
@@ -18751,14 +18575,12 @@
 /obj/machinery/alarm{
 	dir = 4;
 	icon_state = "alarm0";
-	pixel_x = -22;
-	pixel_y = 0
+	pixel_x = -22
 	},
 /obj/machinery/vending/coffee,
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
-	icon_state = "borderfloor";
-	pixel_x = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
@@ -18820,7 +18642,6 @@
 	},
 /obj/structure/reagent_dispensers/acid{
 	density = 0;
-	pixel_x = 0;
 	pixel_y = -30
 	},
 /obj/effect/floor_decal/borderfloor,
@@ -18856,8 +18677,7 @@
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
-	icon_state = "borderfloor";
-	pixel_x = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
@@ -18939,8 +18759,7 @@
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
-	icon_state = "borderfloor";
-	pixel_x = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
@@ -19021,7 +18840,6 @@
 /area/hallway/lower/third_south)
 "Fh" = (
 /obj/machinery/newscaster{
-	pixel_x = 0;
 	pixel_y = 30
 	},
 /obj/structure/disposalpipe/segment{
@@ -19043,7 +18861,6 @@
 /obj/machinery/firealarm{
 	dir = 2;
 	layer = 3.3;
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /obj/structure/disposalpipe/segment{
@@ -19081,8 +18898,7 @@
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
-	icon_state = "borderfloor";
-	pixel_x = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
@@ -19186,8 +19002,7 @@
 /area/hallway/lower/third_south)
 "Fr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9;
-	pixel_y = 0
+	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/door/firedoor/glass/hidden/steel,
@@ -19294,7 +19109,6 @@
 /area/hallway/lower/third_south)
 "Fy" = (
 /obj/machinery/newscaster{
-	pixel_x = 0;
 	pixel_y = 30
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -19322,7 +19136,6 @@
 /obj/machinery/firealarm{
 	dir = 2;
 	layer = 3.3;
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -19380,13 +19193,11 @@
 /obj/machinery/alarm{
 	dir = 4;
 	icon_state = "alarm0";
-	pixel_x = -22;
-	pixel_y = 0
+	pixel_x = -22
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
-	icon_state = "borderfloor";
-	pixel_x = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
@@ -19412,8 +19223,7 @@
 /obj/machinery/disposal,
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
-	icon_state = "borderfloor";
-	pixel_x = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
@@ -19436,8 +19246,7 @@
 /area/rnd/research/testingrange)
 "FJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9;
-	pixel_y = 0
+	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -19482,8 +19291,7 @@
 /obj/structure/sink{
 	dir = 4;
 	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /obj/structure/mirror{
 	pixel_x = 27
@@ -19534,7 +19342,6 @@
 /area/library)
 "FR" = (
 /obj/item/radio/intercom{
-	pixel_x = 0;
 	pixel_y = -28
 	},
 /turf/simulated/floor/wood,
@@ -19566,8 +19373,7 @@
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
-	icon_state = "borderfloor";
-	pixel_x = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
@@ -19755,8 +19561,7 @@
 /obj/structure/flora/pottedplant/stoutbush,
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
-	icon_state = "borderfloor";
-	pixel_x = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
@@ -19783,7 +19588,6 @@
 	breach_detection = 0;
 	dir = 8;
 	pixel_x = 25;
-	pixel_y = 0;
 	report_danger_level = 0
 	},
 /turf/simulated/floor/wood,
@@ -19807,8 +19611,7 @@
 /obj/machinery/alarm{
 	dir = 4;
 	icon_state = "alarm0";
-	pixel_x = -22;
-	pixel_y = 0
+	pixel_x = -22
 	},
 /obj/structure/cable/green{
 	d1 = 1;
@@ -19916,8 +19719,7 @@
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
-	icon_state = "borderfloor";
-	pixel_x = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
@@ -20193,8 +19995,7 @@
 	},
 /obj/machinery/light{
 	dir = 4;
-	icon_state = "tube1";
-	pixel_x = 0
+	icon_state = "tube1"
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
@@ -20202,8 +20003,7 @@
 /obj/structure/sink{
 	dir = 4;
 	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /obj/structure/mirror{
 	pixel_x = 27
@@ -20408,8 +20208,7 @@
 "HF" = (
 /obj/machinery/light{
 	dir = 4;
-	icon_state = "tube1";
-	pixel_x = 0
+	icon_state = "tube1"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
@@ -20502,8 +20301,7 @@
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
@@ -20548,13 +20346,11 @@
 /obj/machinery/camera/network/research,
 /obj/structure/flora/pottedplant/stoutbush,
 /obj/structure/sign/department/robo{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
@@ -20574,8 +20370,7 @@
 	},
 /obj/machinery/alarm{
 	dir = 8;
-	pixel_x = 22;
-	pixel_y = 0
+	pixel_x = 22
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
@@ -20672,8 +20467,7 @@
 /obj/machinery/cell_charger,
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
-	icon_state = "borderfloor";
-	pixel_x = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
@@ -20883,8 +20677,7 @@
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
-	icon_state = "borderfloor";
-	pixel_x = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
@@ -21055,13 +20848,11 @@
 "IN" = (
 /obj/structure/flora/pottedplant/stoutbush,
 /obj/structure/sign/department/robo{
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
@@ -21082,7 +20873,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 28
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -21097,7 +20887,6 @@
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
 	id_tag = "tether_pad_airlock";
-	pixel_x = 0;
 	pixel_y = 28;
 	tag_door = "tether_pad_hatch"
 	},
@@ -21136,8 +20925,7 @@
 /obj/machinery/alarm{
 	dir = 4;
 	icon_state = "alarm0";
-	pixel_x = -22;
-	pixel_y = 0
+	pixel_x = -22
 	},
 /obj/machinery/light{
 	dir = 8;
@@ -21145,8 +20933,7 @@
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
-	icon_state = "borderfloor";
-	pixel_x = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
@@ -21203,8 +20990,7 @@
 	},
 /obj/machinery/light{
 	dir = 4;
-	icon_state = "tube1";
-	pixel_x = 0
+	icon_state = "tube1"
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/tether/surfacebase/shuttle_pad)
@@ -21224,8 +21010,7 @@
 "Jd" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
@@ -21341,7 +21126,6 @@
 	frequency = 1380;
 	id_tag = "tether_shuttle";
 	pixel_x = 25;
-	pixel_y = 0;
 	tag_door = "tether_shuttle_hatch"
 	},
 /turf/simulated/shuttle/floor/black,
@@ -21356,8 +21140,7 @@
 	},
 /obj/machinery/light{
 	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	icon_state = "tube1"
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/tether/surface)
@@ -21414,7 +21197,6 @@
 	dir = 1;
 	id = "hangarsurface";
 	name = "Engine Repair Bay";
-	pixel_x = 0;
 	pixel_y = -25
 	},
 /turf/simulated/floor/reinforced,
@@ -21422,8 +21204,7 @@
 "JD" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
@@ -21642,7 +21423,6 @@
 	},
 /obj/machinery/firealarm{
 	dir = 1;
-	pixel_x = 0;
 	pixel_y = -25
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -21735,8 +21515,7 @@
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
@@ -21800,8 +21579,7 @@
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
-	icon_state = "borderfloor";
-	pixel_x = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
@@ -21979,8 +21757,7 @@
 	dir = 4
 	},
 /obj/structure/sign/department/sci{
-	pixel_x = -32;
-	pixel_y = 0
+	pixel_x = -32
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/shuttle_pad)
@@ -22145,7 +21922,6 @@
 /obj/machinery/light,
 /obj/machinery/computer/security/telescreen/entertainment{
 	icon_state = "frame";
-	pixel_x = 0;
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled/dark,
@@ -22432,8 +22208,7 @@
 /obj/machinery/shower{
 	dir = 4;
 	icon_state = "shower";
-	pixel_x = 2;
-	pixel_y = 0
+	pixel_x = 2
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
@@ -22461,8 +22236,7 @@
 /obj/structure/sink{
 	dir = 4;
 	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
@@ -22570,8 +22344,7 @@
 /obj/structure/sink{
 	dir = 4;
 	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /obj/structure/mirror{
 	pixel_x = 27
@@ -22595,7 +22368,6 @@
 "Mv" = (
 /obj/machinery/firealarm{
 	dir = 1;
-	pixel_x = 0;
 	pixel_y = -25
 	},
 /turf/simulated/floor/tiled,
@@ -22764,7 +22536,6 @@
 	breach_detection = 0;
 	dir = 8;
 	pixel_x = 25;
-	pixel_y = 0;
 	report_danger_level = 0
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -22825,8 +22596,7 @@
 /area/tether/surfacebase/public_garden_three)
 "NR" = (
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /obj/machinery/recharge_station,
 /turf/simulated/floor/tiled/white,
@@ -23053,7 +22823,6 @@
 "Pd" = (
 /obj/machinery/firealarm{
 	dir = 1;
-	pixel_x = 0;
 	pixel_y = -25
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -23227,8 +22996,7 @@
 /area/tether/surfacebase/public_garden_three)
 "Qf" = (
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /obj/structure/toilet{
 	dir = 1
@@ -23265,8 +23033,7 @@
 "Qi" = (
 /obj/machinery/alarm{
 	dir = 4;
-	pixel_x = -23;
-	pixel_y = 0
+	pixel_x = -23
 	},
 /turf/simulated/floor/plating,
 /area/vacant/vacant_shop)
@@ -23504,8 +23271,7 @@
 	},
 /obj/machinery/alarm{
 	dir = 8;
-	pixel_x = 22;
-	pixel_y = 0
+	pixel_x = 22
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
@@ -23517,7 +23283,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 28
 	},
 /obj/structure/cable/green{
@@ -23573,8 +23338,7 @@
 /area/crew_quarters/barrestroom)
 "RQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9;
-	pixel_y = 0
+	dir = 9
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/barrestroom)
@@ -23605,8 +23369,7 @@
 "RX" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/lime/border{
 	dir = 1
@@ -23641,8 +23404,7 @@
 /obj/structure/sink{
 	dir = 4;
 	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
@@ -24000,7 +23762,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 28
 	},
 /obj/structure/cable{
@@ -24163,8 +23924,7 @@
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/lime/border{
 	dir = 1
@@ -24192,8 +23952,7 @@
 /obj/machinery/computer/arcade/orion_trail,
 /obj/machinery/alarm{
 	dir = 8;
-	pixel_x = 22;
-	pixel_y = 0
+	pixel_x = 22
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
@@ -24310,8 +24069,7 @@
 "WT" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/lime/border{
 	dir = 1
@@ -24456,7 +24214,6 @@
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
 	id_tag = "expshuttle_surface3pad";
-	pixel_x = 0;
 	pixel_y = 28;
 	tag_door = "tether_pad_hatch"
 	},
@@ -24787,8 +24544,7 @@
 "ZD" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	icon_state = "borderfloor"
 	},
 /obj/effect/floor_decal/corner/lime/border{
 	dir = 1
