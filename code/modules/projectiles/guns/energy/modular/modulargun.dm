@@ -15,12 +15,13 @@
 	var/obj/item/modularlaser/capacitor/lasercap
 	var/obj/item/modularlaser/cooling/lasercooler
 	var/obj/item/modularlaser/controller/circuit
-
+	firemodes = list()
 	var/emp_vuln = TRUE
 
 /obj/item/gun/energy/modular/proc/generatefiremodes() //Accepts no args. Checks the gun's current components and generates projectile types, firemode costs and max burst. Should be called after changing parts or part values.
 	if(!circuit || !primarycore || !laserlens || !lasercap || !lasercooler)
 		return FALSE //cannot work
+	firemodes = list()
 	var/burstmode = circuit.maxburst //Max burst controlled by the laser control circuit.
 	var/obj/item/projectile/beammode = primarycore.beamtype //Primary mode fire type.
 	var/chargecost = primarycore.beamcost * lasercap.costmod //Cost for primary fire.
@@ -33,18 +34,18 @@
 	var/chargecost_special = 120
 	var/obj/item/projectile/beammode_lethal
 	var/obj/item/projectile/beammode_special
-	if(secondarycore) //Secondary firemode
+	if(cores > 1) //Secondary firemode
 		beammode_lethal = secondarycore.beamtype
 		chargecost_lethal = secondarycore.beamcost * lasercap.costmod
 		chargecost_lethal += lasercooler.costadd
-	if(tertiarycore) //Tertiary firemode
+	if(cores == 3) //Tertiary firemode
 		beammode_special = tertiarycore.beamtype
 		chargecost_special = tertiarycore.beamcost * lasercap.costmod
 		chargecost_special += lasercooler.costadd
 	var/maxburst = circuit.maxburst //Max burst.
 	emp_vuln = circuit.robust //is the circuit strong enough to dissipate EMPs?
 	switch(cores)
-		if("1") //this makes me sick but ill ask if there's a better way to do this
+		if(1) //this makes me sick but ill ask if there's a better way to do this
 			if(chargecost < 0)
 				chargecost = 0
 			if(scatter)
@@ -56,11 +57,12 @@
 					new /datum/firemode(src, list("mode_name=[maxburst] shot [primarycore.firename]", projectile_type=beammode, charge_cost = chargecost, burst = maxburst))
 					)
 				return TRUE
-			firemodes = list(
+			else
+				firemodes = list(
 					new /datum/firemode(src, list(mode_name=primarycore.firename, projectile_type=beammode, charge_cost = chargecost))
 					)
-			return TRUE
-		if("2")
+				return TRUE
+		if(2)
 			if(chargecost < 0)
 				chargecost = 0
 			if(chargecost_lethal < 0)
@@ -78,12 +80,13 @@
 					new /datum/firemode(src, list(mode_name="[maxburst] shot [secondarycore.firename]", projectile_type=beammode_lethal, charge_cost = chargecost_lethal, burst = maxburst))
 					)
 				return TRUE
-			firemodes = list(
+			else
+				firemodes = list(
 					new /datum/firemode(src, list(mode_name=primarycore.firename, projectile_type=beammode, charge_cost = chargecost)),
 					new /datum/firemode(src, list(mode_name=secondarycore.firename, projectile_type=beammode_lethal, charge_cost = chargecost_lethal))
 					)
-			return TRUE
-		if("3")
+				return TRUE
+		if(3)
 			if(chargecost < 0)
 				chargecost = 0
 			if(chargecost_lethal < 0)
@@ -107,12 +110,13 @@
 					new /datum/firemode(src, list(mode_name="[maxburst] shot [tertiarycore.firename]", projectile_type=beammode_special, charge_cost = chargecost_special, burst = maxburst))
 					)
 				return TRUE
-			firemodes = list(
+			else
+				firemodes = list(
 				new /datum/firemode(src, list(mode_name=primarycore.firename, projectile_type=beammode, charge_cost = chargecost)),
 				new /datum/firemode(src, list(mode_name=secondarycore.firename, projectile_type=beammode_lethal, charge_cost = chargecost_lethal)),
 				new /datum/firemode(src, list(mode_name=tertiarycore.firename, projectile_type=beammode_special, charge_cost = chargecost_special)),
 				)
-			return TRUE
+				return TRUE
 
 /obj/item/gun/energy/modular/emp_act(severity)
 	if(!emp_vuln)
@@ -251,6 +255,7 @@
 	beamtype = /obj/item/projectile/beam/stun
 	scatterbeam = /obj/item/projectile/scatter/stun
 	beamcost = 240
+	firename = "stun"
 
 /obj/item/modularlaser/lasermedium/stun/weak
 	name = "low-power stun beam medium"
@@ -258,6 +263,7 @@
 	beamtype = /obj/item/projectile/beam/stun/weak
 	scatterbeam = /obj/item/projectile/scatter/stun/weak
 	beamcost = 120
+	firename = "weak stun"
 
 /obj/item/modularlaser/lasermedium/net
 	name = "entangling beam medium"
@@ -265,6 +271,7 @@
 	beamtype = /obj/item/projectile/beam/energy_net
 	scatterbeam = /obj/item/projectile/scatter/energy_net
 	beamcost = 1200 //hefty cost.
+	firename = "energy net"
 
 /obj/item/modularlaser/lasermedium/electrode
 	name = "electrode projector tube"
@@ -272,6 +279,7 @@
 	beamtype = /obj/item/projectile/energy/electrode/strong
 	scatterbeam = /obj/item/projectile/scatter/stun/electrode
 	beamcost = 240
+	firename = "electrode stun"
 
 /obj/item/modularlaser/lasermedium/laser
 	name = "laser beam medium"
@@ -279,6 +287,7 @@
 	beamtype = /obj/item/projectile/beam/stun
 	scatterbeam = /obj/item/projectile/scatter/stun
 	beamcost = 240
+	firename = "lethal"
 
 /obj/item/modularlaser/lasermedium/laser/weak
 	name = "low-power laser beam medium"
@@ -286,6 +295,7 @@
 	beamtype = /obj/item/projectile/beam/weaklaser
 	scatterbeam = /obj/item/projectile/scatter/laser/weak
 	beamcost = 60
+	firename = "weak laser"
 
 /obj/item/modularlaser/lasermedium/laser/sniper
 	name = "focused laser beam medium"
@@ -293,6 +303,7 @@
 	beamtype = /obj/item/projectile/beam/sniper
 	scatterbeam = /obj/item/projectile/beam/sniper //no shotgun snipers. you can have shotgun cannons though!
 	beamcost = 300
+	firename = "focused laser"
 
 /obj/item/modularlaser/lasermedium/laser/heavy
 	name = "robust beam medium"
@@ -300,6 +311,7 @@
 	beamtype = /obj/item/projectile/beam/heavylaser
 	scatterbeam = /obj/item/projectile/scatter/laser/heavylaser
 	beamcost = 600
+	firename = "heavy laser"
 
 /obj/item/modularlaser/lasermedium/laser/cannon
 	name = "uranium-235 excited medium"
@@ -307,12 +319,14 @@
 	beamtype = /obj/item/projectile/beam/heavylaser/cannon
 	scatterbeam = /obj/item/projectile/scatter/laser/heavylaser/cannon
 	beamcost = 800
+	firename = "cannon beam"
 
 /obj/item/modularlaser/lasermedium/laser/xray
 	name = "xraser beam medium"
 	desc = "Allows a modular energy gun to fire exotic x-ray beams."
 	beamtype = /obj/item/projectile/beam/gamma
 	scatterbeam = /obj/item/projectile/scatter/gamma
+	firename = "xraser"
 
 /obj/item/modularlaser/lasermedium/laser/pulse //Badmin only.
 	name = "pulse beam medium"
@@ -320,6 +334,7 @@
 	beamtype = /obj/item/projectile/beam/pulse
 	scatterbeam = /obj/item/projectile/scatter/laser/pulse //haha fuck
 	beamcost = 240
+	firename = "DESTROY"
 
 /obj/item/modularlaser/lasermedium/dig
 	name = "excavation beam medium"
@@ -327,6 +342,7 @@
 	beamtype = /obj/item/projectile/beam/excavation
 	scatterbeam = /obj/item/projectile/scatter/excavation
 	beamcost = 480 //big cost. Going to want to bring this one down.
+	firename = "excavate"
 
 /obj/item/modularlaser/lasermedium/lightning
 	name = "electric beam medium"
@@ -334,13 +350,7 @@
 	beamtype = /obj/item/projectile/beam/shock
 	scatterbeam = /obj/item/projectile/scatter/shock
 	beamcost = 300
-
-/obj/item/modularlaser/lasermedium/lightning
-	name = "electric beam medium"
-	desc = "Allows a modular energy gun to fire lightning!"
-	beamtype = /obj/item/projectile/beam/shock
-	scatterbeam = /obj/item/projectile/scatter/shock
-	beamcost = 300
+	firename = "tesla"
 
 /obj/item/modularlaser/lasermedium/hook
 	name = "energy grappler projection tube"
@@ -348,6 +358,7 @@
 	beamtype = /obj/item/projectile/energy/hook
 	scatterbeam = /obj/item/projectile/energy/hook
 	beamcost = 400
+	firename = "graviton grapple"
 
 /obj/item/modularlaser/lasermedium/phase
 	name = "phase projection tube"
@@ -355,6 +366,7 @@
 	beamtype = /obj/item/projectile/energy/phase/heavy
 	scatterbeam = /obj/item/projectile/scatter/phase
 	beamcost = 80
+	firename = "phase"
 
 //////////////////////////////////////////////////
 //Lenses
