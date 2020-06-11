@@ -8,6 +8,7 @@ tools/deploy.sh travis_test
 # cp tools/travis/travis_config.txt travis_test/config/config.txt\
 cp tools/travis/legacy_travis_config.txt travis_test/config/legacy/dbconfig.txt
 cp tools/travis/legacy_travis_config.txt travis_test/config/legacy/forumdbconfig.txt
+cp tools/travis/legacy_travis_config_2.txt travis_test/config/legacy/config.txt
 
 cd travis_test
 ln -s $HOME/libmariadb/libmariadb.so libmariadb.so
