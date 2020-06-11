@@ -13,7 +13,6 @@ mkdir -p \
     $1/_maps \
     $1/sound/instruments \
 	$1/config/names \
-	$1/config/entries \
 	$1/config/legacy
     # $1/icons \
     # $1/sound/chatter \
@@ -32,7 +31,6 @@ cp -r _maps/* $1/_maps/
 # cp -r sound/voice/complionator/* $1/sound/voice/complionator/
 cp -r sound/instruments/* $1/sound/instruments/
 cp -r config/names/* $1/config/names
-cp -r config/entries/* $1/config/entries
 cp -r config/legacy/* $1/config/legacy
 # cp -r strings/* $1/strings/
 
