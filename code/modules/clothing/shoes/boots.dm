@@ -74,7 +74,7 @@
 	icon_state = "winterboots_sci"
 
 /obj/item/clothing/shoes/boots/winter/command
-	name = "colony director's winter boots"
+	name = "Facility Director's winter boots"
 	desc = "A pair of winter boots. They're lined with dark fur, and trimmed in the colours of superiority."
 	icon_state = "winterboots_cap"
 

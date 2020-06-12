@@ -72,11 +72,11 @@
 
 
 /datum/gear/uniform/plascapalt
-	display_name = "alternate colony director helmet (phoronoid)"
+	display_name = "alternate Facility Director helmet (phoronoid)"
 	path = /obj/item/clothing/head/helmet/space/plasman/sec/captain/alt
 	sort_category = "Xenowear"
 	whitelisted = SPECIES_PLASMAMAN
-	allowed_roles = list("Colony Director")
+	allowed_roles = list("Facility Director")
 
 /datum/gear/uniform/plashosalt1
 	display_name = "alternate head of security helmet 1 (phoronoid)"
