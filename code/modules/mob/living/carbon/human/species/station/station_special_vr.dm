@@ -361,9 +361,9 @@
 	set desc = "Changes the gases we need to breathe."
 	set category = "Abilities"
 
-	var/resp_biomorph = input(C, "How should we adapt our respiration?") as null|anything in list("oxgygen", "phoron", "nitrogen", "carbon_dioxide")
-	to_chat(C,"You begin modifying your internal structure!")
-	if(do_after(C,15 SECONDS))
+	var/resp_biomorph = input(H, "How should we adapt our respiration?") as null|anything in list("oxgygen", "phoron", "nitrogen", "carbon_dioxide")
+	to_chat(H,"You begin modifying your internal structure!")
+	if(do_after(H,15 SECONDS))
 		switch(resp_biomorph)
 			if("oxygen")
 				species.breath_type = "oxygen"
@@ -385,9 +385,9 @@
 	set desc = "Changes our core body temperature."
 	set category = "Abilities"
 
-	var/biothermic_adapt = input(C, "How should we modify our core temperature?") as null|anything in list("warm-blooded", "cold-blooded", "hot-blooded")
-	to_chat(C,"You begin modifying your internal structure!")
-	if(do_after(C,15 SECONDS))
+	var/biothermic_adapt = input(H, "How should we modify our core temperature?") as null|anything in list("warm-blooded", "cold-blooded", "hot-blooded")
+	to_chat(H,"You begin modifying your internal structure!")
+	if(do_after(H,15 SECONDS))
 		switch(biothermic_adapt)
 			if("warm-blooded")
 				species.cold_discomfort_level = 285
