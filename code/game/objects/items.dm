@@ -93,6 +93,7 @@
 	var/icon/default_worn_icon	//Default on-mob icon
 	var/worn_layer				//Default on-mob layer
 
+	var/deploytype = null	//Deploytype for switchtools. Only really used on switchtool subtype items, but this is on a general item level in case admins want to do some wierd fucky shit with custom switchtools.
 /obj/item/Initialize(mapload)
 	. = ..()
 	//Potential memory optimization: Making embed chance a getter if unset.
@@ -852,7 +853,6 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 /obj/item/proc/is_wirecutter()
 	return FALSE
 
-// These next three might bug out or runtime, unless someone goes back and finds a way to generalize their specific code
 /obj/item/proc/is_cable_coil()
 	return FALSE
 

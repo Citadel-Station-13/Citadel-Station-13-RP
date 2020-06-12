@@ -8629,6 +8629,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/item/paicard,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/locker)
 "apO" = (
@@ -14822,6 +14823,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 8
 	},
+/obj/item/paicard,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/locker/laundry_arrival)
 "aAF" = (

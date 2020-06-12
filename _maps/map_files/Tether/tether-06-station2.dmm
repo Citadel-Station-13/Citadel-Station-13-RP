@@ -3239,6 +3239,7 @@
 	dir = 4
 	},
 /obj/structure/table/woodentable,
+/obj/item/book/manual/the_humanized_mice,
 /turf/simulated/floor/wood,
 /area/crew_quarters/medbreak)
 "ff" = (
@@ -18826,6 +18827,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
 	},
+/obj/item/paicard,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tether/station/public_meeting_room)
 "Pl" = (
