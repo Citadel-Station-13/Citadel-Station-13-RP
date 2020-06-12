@@ -60,7 +60,8 @@
 		/obj/item/clothing/gloves/yellow = 2,
 		/obj/item/storage/toolbox/electrical = 3,
 		/obj/item/module/power_control = 3,
-		/obj/item/multitool = 3)
+		/obj/item/multitool = 3,
+		/obj/item/inducer = 1)
 
 
 /obj/structure/closet/secure_closet/engineering_welding
