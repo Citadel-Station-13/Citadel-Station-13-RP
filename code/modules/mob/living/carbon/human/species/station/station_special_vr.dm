@@ -380,14 +380,14 @@
 				species.breath_type = "carbon_dioxide"
 				species.exhale_type = "oxygen"
 
-/mob/living/carbon/human/proc/biothermic_adapt(var/mob/living/carbon/human/H)
+/mob/living/carbon/human/proc/biothermic_adapt(var/mob/living/carbon/human/H, var/mob/living/carbon/human/C)
 	set name = "Biothermic Adaptation"
 	set desc = "Changes our core body temperature."
 	set category = "Abilities"
 
-	var/biothermic_adapt = input(H, "How should we modify our core temperature?") as null|anything in list("warm-blooded", "cold-blooded", "hot-blooded")
-	to_chat(H,"You begin modifying your internal structure!")
-	if(do_after(H,15 SECONDS))
+	var/biothermic_adapt = input(C, "How should we modify our core temperature?") as null|anything in list("warm-blooded", "cold-blooded", "hot-blooded")
+	to_chat(C,"You begin modifying your internal structure!")
+	if(do_after(C,15 SECONDS))
 		switch(biothermic_adapt)
 			if("warm-blooded")
 				species.cold_discomfort_level = 285
