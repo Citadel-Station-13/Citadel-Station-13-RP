@@ -61,3 +61,12 @@
 /datum/category_item/underwear/socks/leggings
 	name = "Leggings"
 	icon_state = "leggings"
+
+/datum/category_item/underwear/socks/cfishnet
+	name = "Dyed Fishnet"
+	icon_state = "c_fishnet"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/pantyhose_rip
+	name = "Ripped Pantyhose"
+	icon_state = "pantyhose_ripped"

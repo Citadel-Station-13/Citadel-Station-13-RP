@@ -356,14 +356,14 @@
 
 //Verbs Follow
 
-/mob/living/carbon/human/proc/resp_biomorph(var/mob/living/carbon/human/H)
+/mob/living/carbon/human/proc/resp_biomorph(var/mob/living/carbon/human/H, var/mob/living/carbon/human/C)
 	set name = "Respiratory Biomorph"
 	set desc = "Changes the gases we need to breathe."
 	set category = "Abilities"
 
-	var/resp_biomorph = input(H, "How should we adapt our respiration?") as null|anything in list("oxgygen", "phoron", "nitrogen", "carbon_dioxide")
-	to_chat(H,"You begin modifying your internal structure!")
-	if(do_after(H,15 SECONDS))
+	var/resp_biomorph = input(C, "How should we adapt our respiration?") as null|anything in list("oxgygen", "phoron", "nitrogen", "carbon_dioxide")
+	to_chat(C,"You begin modifying your internal structure!")
+	if(do_after(C,15 SECONDS))
 		switch(resp_biomorph)
 			if("oxygen")
 				species.breath_type = "oxygen"
