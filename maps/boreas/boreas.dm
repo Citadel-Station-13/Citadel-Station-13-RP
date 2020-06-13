@@ -9,7 +9,7 @@
 	#include "boreas_shuttle_defs.dm"
 	#include "boreas_shuttles.dm"
 	#include "boreas_telecomms.dm"
-//	#include "boreas_boreas.dm"
+	#include "boreas_boreas.dm"
 
 	#include "boreas-u.dmm"
 	#include "boreas-1.dmm"
