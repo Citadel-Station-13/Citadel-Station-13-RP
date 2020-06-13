@@ -113,5 +113,7 @@
 		for(var/turf/T in E.connecting_turfs)
 			edge_log += " - Connecting Turf [T] at ([T.x], [T.y], [T.z])"
 
-	Fail("Maps contained [LAZYLEN(air_master.active_edges)] active edges at round-start.\n" + edge_log.Join("\n"))
+	log_test("Maps contained [LAZYLEN(air_master.active_edges)] active edges at round-start.\n" + edge_log.Join("\n"))
+	log_test("[ASCII_YELLOW]This ZAS test (active_edges) does not count as a failure, but please fix these if possible![ASCII_RESET]")
+
 	return TRUE
