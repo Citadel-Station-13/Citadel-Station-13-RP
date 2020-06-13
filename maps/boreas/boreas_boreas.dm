@@ -54,18 +54,18 @@ var/datum/planet/boreas/planet_boreas = null
 
 		if(0.50 to 0.70) // Sunrise/set
 			low_brightness = 0.8
-			low_color = "#CC3300"
+			low_color = "#A46494"
 
 			high_brightness = 0.9
-			high_color = "#FF9933"
+			high_color = "#DD8D91"
 			min = 0.50
 
 		if(0.70 to 1.00) // Noon
 			low_brightness = 0.9
-			low_color = "#DDDDDD"
+			low_color = "#CAE9fFE"
 
 			high_brightness = 1.0
-			high_color = "#FFFFFF"
+			high_color = "#A1C5E9"
 			min = 0.70
 
 	var/lerp_weight = (abs(min - sun_position)) * 4
