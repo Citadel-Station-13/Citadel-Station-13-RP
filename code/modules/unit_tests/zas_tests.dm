@@ -63,8 +63,8 @@
 	var/list/test = test_air_in_area(area_path, expectation)
 
 	if(!test["result"])
-		log_test(test["msg"])
-		log_test("[ASCII_YELLOW]This ZAS test does not count as a failure, but please fix these if possible![ASCII_RESET]")
+		Fail(test["msg"])
+
 	return TRUE
 
 /datum/unit_test/zas_area_test/supply_centcomm
