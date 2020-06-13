@@ -191,7 +191,7 @@
 	if(!istype(shade_organ))
 		return
 
-	shade_organ.dark_energy = CLAMP(new_energy, 0, get_max_energy(H))
+	shade_organ.dark_energy = clamp(new_energy, 0, get_max_energy(H))
 
 /datum/species/shadekin/proc/set_max_energy(var/mob/living/carbon/human/H, var/new_max_energy)
 	var/obj/item/organ/internal/brain/shadekin/shade_organ = H.internal_organs_by_name[O_BRAIN]

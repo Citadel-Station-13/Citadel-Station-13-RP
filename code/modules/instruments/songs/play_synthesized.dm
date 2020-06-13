@@ -52,8 +52,8 @@
 						if(!num)		//it's an accidental
 							accents[key] = oct_acc		//if they misspelled it/fucked up that's on them lmao, no safety checks.
 						else	//octave
-							octaves[key] = CLAMP(num, octave_min, octave_max)
-					compiled_chord += CLAMP((note_offset_lookup[key] + octaves[key] * 12 + accent_lookup[accents[key]]), key_min, key_max)
+							octaves[key] = clamp(num, octave_min, octave_max)
+					compiled_chord += clamp((note_offset_lookup[key] + octaves[key] * 12 + accent_lookup[accents[key]]), key_min, key_max)
 			compiled_chord += tempodiv		//this goes last
 			if(length(compiled_chord))
 				compiled_chords[++compiled_chords.len] = compiled_chord
@@ -62,7 +62,7 @@
 
 /datum/song/proc/playkey_synth(key)
 	if(can_noteshift)
-		key = CLAMP(key + note_shift, key_min, key_max)
+		key = clamp(key + note_shift, key_min, key_max)
 	if((world.time - MUSICIAN_HEARCHECK_MINDELAY) > last_hearcheck)
 		do_hearcheck()
 	var/datum/instrument_key/K = using_instrument.samples[num2text(key)]			//See how fucking easy it is to make a number text? You don't need a complicated 9 line proc!
