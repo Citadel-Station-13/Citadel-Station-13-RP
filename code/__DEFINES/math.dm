@@ -50,8 +50,6 @@
 // Cosecant
 #define CSC(x) (1 / sin(x))
 
-#define ATAN2(x, y) ( !(x) && !(y) ? 0 : (y) >= 0 ? arccos((x) / sqrt((x)*(x) + (y)*(y))) : -arccos((x) / sqrt((x)*(x) + (y)*(y))) )
-
 // Greatest Common Divisor - Euclid's algorithm
 /proc/GCD(a, b)
 	return b ? GCD(b, (a) % (b)) : a

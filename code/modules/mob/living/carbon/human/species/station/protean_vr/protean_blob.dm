@@ -273,13 +273,11 @@
 		drop_from_inventory(I)
 
 
-	if(slot_gloves && istype(slot_gloves, /obj/item/clothing/gloves/gauntlets/rig)) //drop RIGsuit gauntlets to avoid fucky wucky-ness.
-		var/obj/item/clothing/gloves/riggloves = slot_gloves
-			drop_from_inventory(riggloves)
+	if(istype(slot_gloves, /obj/item/clothing/gloves/gauntlets/rig)) //drop RIGsuit gauntlets to avoid fucky wucky-ness.
+		drop_from_inventory(slot_gloves)
 
-	if(slot_shoes && istype(slot_shoes, /obj/item/clothing/shoes/magboots)) //drop magboots because they're super heavy. also drops RIGsuit boots because they're magboot subtypes.
-		var/obj/item/clothing/shoes/magboots = slot_shoes
-			drop_from_inventory(magboots)
+	if(istype(slot_shoes, /obj/item/clothing/shoes/magboots)) //drop magboots because they're super heavy. also drops RIGsuit boots because they're magboot subtypes.
+		drop_from_inventory(slot_shoes)
 
 	for(var/obj/item/radio/headset/H in things_to_not_drop)
 		var/ks1 = H.keyslot1
@@ -401,12 +399,12 @@
 
 	if(blob.prev_left_hand) put_in_l_hand(blob.prev_left_hand) //The restore for when reforming.
 	if(blob.prev_right_hand) put_in_r_hand(blob.prev_right_hand)
-	
+
 	for(var/obj/item/radio/headset/H in contents)
 		H.keyslot1 = blob.mob_radio.keyslot1
 		H.keyslot2 = blob.mob_radio.keyslot2
 	Life(1) //Fix my blindness right meow //Has to be moved up here, there exists a circumstance where blob could be deleted without vore organs moving right.
-	
+
 	//Get rid of friend blob
 	qdel(blob)
 
