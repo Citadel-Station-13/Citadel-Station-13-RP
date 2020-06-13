@@ -278,7 +278,7 @@
 			NextToken() //skip open parenthesis, already found
 			var/loops = 0
 
-			for()
+			while(TRUE)
 				loops++
 				if(loops>=1000)
 					CRASH("Something TERRIBLE has gone wrong in ParseFunctionExpression ;__;")

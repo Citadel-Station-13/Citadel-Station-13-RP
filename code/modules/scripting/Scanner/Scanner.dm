@@ -205,9 +205,8 @@
 	Reads a symbol into a token.
 */
 		ReadSymbol()
-			var
-				char=copytext(code, codepos, codepos+1)
-				buf
+			var/char = copytext(code, codepos, codepos+1)
+			var/buf
 
 			while(options.symbols.Find(buf+char))
 				buf+=char
