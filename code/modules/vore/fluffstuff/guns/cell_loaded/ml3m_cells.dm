@@ -31,7 +31,7 @@
 
 /obj/item/projectile/beam/medical_cell/brute/on_hit(var/mob/living/carbon/human/target)
 	if(istype(target, /mob/living/carbon/human))
-		target.adjustBruteLoss(-5)
+		target.adjustBruteLoss(-10)
 	else
 		return 1
 
@@ -43,7 +43,7 @@
 
 /obj/item/projectile/beam/medical_cell/burn/on_hit(var/mob/living/carbon/human/target)
 	if(istype(target, /mob/living/carbon/human))
-		target.adjustFireLoss(-5)
+		target.adjustFireLoss(-10)
 	else
 		return 1
 
@@ -83,7 +83,7 @@
 
 /obj/item/projectile/beam/medical_cell/toxin/on_hit(var/mob/living/carbon/human/target)
 	if(istype(target, /mob/living/carbon/human))
-		target.adjustToxLoss(-5)
+		target.adjustToxLoss(-10)
 	else
 		return 1
 
@@ -98,7 +98,7 @@
 		target.adjustBruteLoss(-2.5)
 		target.adjustFireLoss(-2.5)
 		target.adjustToxLoss(-2.5)
-		target.adjustOxyLoss(-10)
+		target.adjustOxyLoss(-20)
 	else
 		return 1
 
@@ -123,7 +123,7 @@
 
 /obj/item/projectile/beam/medical_cell/brute2/on_hit(var/mob/living/carbon/human/target)
 	if(istype(target, /mob/living/carbon/human))
-		target.adjustBruteLoss(-10)
+		target.adjustBruteLoss(-20)
 	else
 		return 1
 
@@ -135,7 +135,7 @@
 
 /obj/item/projectile/beam/medical_cell/burn2/on_hit(var/mob/living/carbon/human/target)
 	if(istype(target, /mob/living/carbon/human))
-		target.adjustFireLoss(-10)
+		target.adjustFireLoss(-20)
 	else
 		return 1
 
@@ -253,7 +253,7 @@
 
 /obj/item/projectile/beam/medical_cell/brute3/on_hit(var/mob/living/carbon/human/target)
 	if(istype(target, /mob/living/carbon/human))
-		target.adjustBruteLoss(-20)
+		target.adjustBruteLoss(-40)
 	else
 		return 1
 
@@ -265,7 +265,7 @@
 
 /obj/item/projectile/beam/medical_cell/burn3/on_hit(var/mob/living/carbon/human/target)
 	if(istype(target, /mob/living/carbon/human))
-		target.adjustFireLoss(-20)
+		target.adjustFireLoss(-40)
 	else
 		return 1
 
@@ -277,7 +277,7 @@
 
 /obj/item/projectile/beam/medical_cell/toxin3/on_hit(var/mob/living/carbon/human/target)
 	if(istype(target, /mob/living/carbon/human))
-		target.adjustToxLoss(-20)
+		target.adjustToxLoss(-40)
 	else
 		return 1
 

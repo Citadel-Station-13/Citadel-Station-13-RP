@@ -7,7 +7,7 @@ GLOBAL_VAR(topic_status_lastcache)
 GLOBAL_LIST(topic_status_cache)
 
 /world/New()
-	var/extools = world.GetConfig("env", "EXTOOLS_DLL") || "./byond-extools.dll"
+	var/extools = world.GetConfig("env", "EXTOOLS_DLL") || (world.system_type == MS_WINDOWS ? "./byond-extools.dll" : "./libbyond-extools.so")
 	if (fexists(extools))
 		call(extools, "maptick_initialize")()
 	enable_debugger()
@@ -92,7 +92,7 @@ GLOBAL_LIST(topic_status_cache)
 	createRandomZlevel()
 
 	Master.Initialize(10, FALSE, TRUE)
-	
+
 	spawn(3000)		//so we aren't adding to the round-start lag
 		if(config_legacy.ToRban)
 			ToRban_autoupdate()
