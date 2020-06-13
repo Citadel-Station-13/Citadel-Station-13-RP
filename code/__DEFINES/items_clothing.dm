@@ -196,4 +196,5 @@
 
 // Hair Defines
 #define HAIR_VERY_SHORT (1<<0)
-#define HAIR_TIEABLE (1<<1)
+//yes, (1<<1) or 2 is missing
+#define HAIR_TIEABLE (1<<2)

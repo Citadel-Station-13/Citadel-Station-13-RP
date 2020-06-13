@@ -64,9 +64,9 @@
 		return
 	// if(!usr.canUseTopic(src))
 	// 	return
-	
+
 	if(GLOB.using_map && !(src.z in GLOB.using_map.contact_levels))
-		to_chat(usr, "<span class='boldannounce'>Unable to establish a connection</span>: You're too far away from the station!")		
+		to_chat(usr, "<span class='boldannounce'>Unable to establish a connection</span>: You're too far away from the station!")
 		return
 
 	usr.set_machine(src)
@@ -99,7 +99,7 @@
 					// if(prob(25))
 					// 	for(var/mob/living/silicon/ai/AI in active_ais())
 					// 		SEND_SOUND(AI, sound('sound/machines/terminal_alert.ogg', volume = 10)) //Very quiet for balance reasons
-					
+
 		if("logout")
 			authenticated = 0
 			// playsound(src, 'sound/machines/terminal_off.ogg', 50, 0)
@@ -131,6 +131,7 @@
 				var/_security_level = num2seclevel(security_level)
 				log_game("[key_name(usr)] has changed the security level to [_security_level] with [src] at [AREACOORD(usr)].")
 				message_admins("[ADMIN_LOOKUPFLW(usr)] has changed the security level to [_security_level] with [src] at [AREACOORD(usr)].")
+				say_dead_direct("<span class='deadsay'><span class='name'>[usr.real_name]</span> has changed the security level to [_security_level] with [src] at <span class='name'>[get_area_name(usr, TRUE)]</span>.</span>", usr)
 				// deadchat_broadcast("<span class='deadsay'><span class='name'>[usr.real_name]</span> has changed the security level to [_security_level] with [src] at <span class='name'>[get_area_name(usr, TRUE)]</span>.</span>", usr)
 				switch(security_level)
 					if(SEC_LEVEL_GREEN)
@@ -167,7 +168,7 @@
 					to_chat(usr, "<span class='warning'>Arrays recycling.  Please stand by.</span>")
 					// playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, 0)
 					return
-				var/input = sanitize(input("Please choose a message to transmit to allied stations.  Please be aware that this process is very expensive, and abuse will lead to... termination.", "Send a message to an allied station.", ""))
+				var/input = stripped_multiline_input(usr, "Please choose a message to transmit to allied stations.  Please be aware that this process is very expensive, and abuse will lead to... termination.", "Send a message to an allied station.", "")
 				if(!input || !(usr in view(1,src)) || !checkCCcooldown())
 					return
 				// playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, 0)
@@ -177,6 +178,7 @@
 				// usr.log_talk(input, LOG_SAY, tag="message to the other server")
 				message_admins("[ADMIN_LOOKUPFLW(usr)] has sent a message to the other server.")
 				// deadchat_broadcast("<span class='deadsay bold'>[usr.real_name] has sent an outgoing message to the other station(s).</span>", usr)
+				say_dead_direct("<span class='deadsay bold'>[usr.real_name] has sent an outgoing message to the other station(s).</span>", usr)
 				CM.lastTimeUsed = world.time
 
 		if("callshuttle")
@@ -228,7 +230,7 @@
 			state = STATE_STATUSDISPLAY
 		if("securitylevel")
 			tmp_alertlevel = text2num( href_list["newalertlevel"] )
-			if(!tmp_alertlevel) 
+			if(!tmp_alertlevel)
 				tmp_alertlevel = 0
 			state = STATE_CONFIRM_LEVEL
 		if("changeseclevel")
@@ -258,7 +260,7 @@
 				if(!checkCCcooldown())
 					to_chat(usr, "<span class='warning'>Arrays recycling.  Please stand by.</span>")
 					return
-				var/input = sanitize(input("Please choose a message to transmit to [GLOB.using_map.boss_short] via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination.  Transmission does not guarantee a response. There is a 30 second delay before you may send another message, be clear, full and concise.", "To abort, send an empty message.", ""))
+				var/input = stripped_input(usr, "Please choose a message to transmit to [GLOB.using_map.boss_short] via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination.  Transmission does not guarantee a response.", "Send a message to CentCom. There is a 30 second delay before you may send another message, be clear, full and concise.", "")
 				if(!input || !(usr in view(1,src)) || !checkCCcooldown())
 					return
 				CentCom_announce(input, usr)
@@ -268,7 +270,8 @@
 				// 		SEND_SOUND(X, sound('sound/effects/printer.ogg'))
 				// 	window_flash(X, ignorepref = FALSE)
 				log_game("[key_name(usr)] has made an IA [GLOB.using_map.boss_short] announcement: [input]")
-				// deadchat_broadcast("<span class='deadsay'><span class='name'>[usr.real_name]</span> has messaged CentCom, \"[input]\" at <span class='name'>[get_area_name(usr, TRUE)]</span>.</span>", usr)
+				say_dead_direct("<span class='deadsay'><span class='name'>[usr.real_name]</span> has messaged [GLOB.using_map.boss_short], \"[input]\" at <span class='name'>[get_area_name(usr, TRUE)]</span>.</span>", usr)
+				// deadchat_broadcast("<span class='deadsay'><span class='name'>[usr.real_name]</span> has messaged [GLOB.using_map.boss_short], \"[input]\" at <span class='name'>[get_area_name(usr, TRUE)]</span>.</span>", usr)
 				CM.lastTimeUsed = world.time
 
 
@@ -279,7 +282,7 @@
 					to_chat(usr, "<span class='warning'>Arrays recycling.  Please stand by.</span>")
 					// playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, 0)
 					return
-				var/input = sanitize(input(usr, "Please choose a message to transmit to \[ABNORMAL ROUTING CORDINATES\] via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination. Transmission does not guarantee a response. There is a 30 second delay before you may send another message, be clear, full and concise.", "To abort, send an empty message.", ""))
+				var/input = stripped_input(usr, "Please choose a message to transmit to \[ABNORMAL ROUTING COORDINATES\] via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination. Transmission does not guarantee a response. There is a 30 second delay before you may send another message, be clear, full and concise.", "Send a message to /??????/.", "")
 				if(!input || !(usr in view(1,src)) || !checkCCcooldown())
 					return
 				// playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, 0)
@@ -290,6 +293,7 @@
 				// 		SEND_SOUND(X, sound('sound/effects/printer.ogg'))
 				// 	window_flash(X, ignorepref = FALSE)
 				log_game("[key_name(usr)] has made an illegal announcement: [input]")
+				say_dead_direct("<span class='deadsay'><span class='name'>[usr.real_name]</span> has messaged the Syndicate, \"[input]\" at <span class='name'>[get_area_name(usr, TRUE)]</span>.</span>", usr)
 				// deadchat_broadcast("<span class='deadsay'><span class='name'>[usr.real_name]</span> has messaged the Syndicate, \"[input]\" at <span class='name'>[get_area_name(usr, TRUE)]</span>.</span>", usr)
 				CM.lastTimeUsed = world.time
 
@@ -561,6 +565,7 @@
 	// SScommunications.make_announcement(user, is_silicon, input)
 	crew_announcement.announcer = auth_id
 	crew_announcement.Announce(input)
+	say_dead_direct("<span class='deadsay'><span class='name'>[user.real_name]</span> made an priority announcement from <span class='name'>[get_area_name(usr, TRUE)]</span>.</span>", user)
 	// deadchat_broadcast("<span class='deadsay'><span class='name'>[user.real_name]</span> made an priority announcement from <span class='name'>[get_area_name(usr, TRUE)]</span>.</span>", user)
 
 /obj/machinery/computer/communications/proc/post_status(command, data1, data2)
@@ -603,7 +608,7 @@
 		to_chat(user, "The emergency shuttle may not be sent at this time. Please try again later.")
 		return
 
-	if(world.time < (10 MINUTES)) // Ten minute grace period to let the game get going without lolmetagaming. -- TLE
+	if(world.time < (10 MINUTES)) // Ten minute grace period to let the game get going without people speedruning central any%
 		to_chat(user, "The emergency shuttle is refueling. Please wait another [DisplayTimeText((10 MINUTES) - (world.time - SSticker.round_start_time))] before trying again.")
 		return
 
@@ -674,7 +679,7 @@
 /proc/cancel_call_proc(mob/user)
 	if(!SSticker || !SSemergencyshuttle || !SSemergencyshuttle.can_recall())
 		return
-	if((SSticker.mode.name == "blob")||(SSticker.mode.name == "Meteor"))
+	if(SSticker.mode.name == "blob" || SSticker.mode.name == "Meteor")
 		return
 
 	if(!SSemergencyshuttle.going_to_centcom()) //check that shuttle isn't already heading to CentCom

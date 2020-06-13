@@ -5,9 +5,9 @@
 	var/article  // If non-null, overrides a/an/some in all cases
 
 	var/flags = NONE // We're still using flag_0
-//	var/interaction_flags_atom = NONE
+	// var/interaction_flags_atom = NONE
 	var/datum/reagents/reagents = null
-	
+
 	/*
 	//This atom's HUD (med/sec, etc) images. Associative list.
 	var/list/image/hud_list = null
@@ -41,7 +41,7 @@
 	/*
 	var/rad_flags = NONE // Will move to flags_1 when i can be arsed to
 	var/rad_insulation = RAD_NO_INSULATION
-	
+
 	///The custom materials this atom is made of, used by a lot of things like furniture, walls, and floors (if I finish the functionality, that is.)
 	var/list/custom_materials
 	///Bitfield for how the atom handles materials.
@@ -69,7 +69,7 @@
 	var/was_bloodied
 	var/blood_color
 	var/last_bumped = 0
-	var/pass_flags = NONE //movable moves, however normal atmos don't
+	var/pass_flags = NONE //movable moves, however normal atoms don't
 	var/throwpass = 0
 	var/germ_level = GERM_LEVEL_AMBIENT // The higher the germ level, the more germ on the atom.
 	var/simulated = 1 //filter for actions - used by lighting overlays

@@ -30,9 +30,7 @@
  * Vorestation specific?
  */
 // Reads L or an empty list if L is not a list.  Note: Does NOT assign, L may be an expression.
-#define SANITIZE_TO_LIST(L) ( islist(L) ? L : list(L) )
-
-#define SAFEPICK(L) (length(L)? pick(L) : null)
+#define SANITIZE_TO_LIST(L) (islist(L) ? L : list(L))
 #define SAFEACCESS(L, I) (isnum(I)? (SAFEINDEXACCESS(L, I)) : ((I in L)? L[I] : null))
 #define SAFEINDEXACCESS(L, I) (ISINRANGE(I, 1, length(L))? L[I] : null)
 /* HEY! Move this to the istype.dm things!!! */
@@ -44,7 +42,7 @@
 #define VARSET_TO_LIST_IF(L, V, C...) if(L && (C)) L[#V] = V
 
 /*
- * Misc 
+ * Misc
  */
 
 /// Passed into BINARY_INSERT to compare keys
@@ -119,6 +117,7 @@
 	return
 
 //Return either pick(list) or null if list is not of type /list or is empty
+// #define SAFEPICK(L) (length(L)? pick(L) : null) <-- use if you aren't using callbacks on /anything/, including SDQL queries
 /proc/safepick(list/L)
 	if(LAZYLEN(L))
 		return pick(L)

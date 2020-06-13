@@ -12,9 +12,9 @@
 #define HIDING      (1<<5)
 #define PASSEMOTES  (1<<6) // Mob has a cortical borer or holders inside of it that need to see emotes.
 
-#define GODMODE     (1<<8)
-#define FAKEDEATH   (1<<9) // Replaces stuff like changeling.changeling_fakedeath.
-#define DISFIGURED  (1<<10) // Set but never checked. Remove this sometime and replace occurences with the appropriate organ code
+#define GODMODE     (1<<12) //0x1000 == (1<<12)
+#define FAKEDEATH   (1<<13) // Replaces stuff like changeling.changeling_fakedeath.
+#define DISFIGURED  (1<<14) // Set but never checked. Remove this sometime and replace occurences with the appropriate organ code
 
 // Grab levels.
 #define GRAB_PASSIVE    1
