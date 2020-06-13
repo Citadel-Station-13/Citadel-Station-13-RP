@@ -225,6 +225,9 @@ two tiles on initialization, and which way a cliff is facing may change during m
 		var/obj/item/clothing/shoes/shoes = H.shoes
 		if(shoes && shoes.rock_climbing)
 			return ..() // Do the other checks too.
+		var/obj/item/held = H.get_active_hand()
+		if(held && istype(held, /obj/item/pickaxe/icepick))
+			return ..() //climb rock wall with ice pick. Makes sense.
 
 	to_chat(user, span("warning", "\The [src] is too steep to climb unassisted."))
 	return FALSE
