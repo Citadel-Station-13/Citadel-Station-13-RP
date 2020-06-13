@@ -356,7 +356,7 @@
 
 //Verbs Follow
 
-/mob/living/carbon/human/proc/resp_biomorph(var/mob/living/carbon/human/H)
+/mob/living/carbon/human/proc/resp_biomorph(var/mob/living/carbon/human/H, var/mob/living/carbon/human/C)
 	set name = "Respiratory Biomorph"
 	set desc = "Changes the gases we need to breathe."
 	set category = "Abilities"
@@ -380,7 +380,7 @@
 				species.breath_type = "carbon_dioxide"
 				species.exhale_type = "oxygen"
 
-/mob/living/carbon/human/proc/biothermic_adapt(var/mob/living/carbon/human/H)
+/mob/living/carbon/human/proc/biothermic_adapt(var/mob/living/carbon/human/H, var/mob/living/carbon/human/C)
 	set name = "Biothermic Adaptation"
 	set desc = "Changes our core body temperature."
 	set category = "Abilities"

@@ -237,3 +237,20 @@
 		spawn(0)
 			qdel(src)
 		return
+
+//Dolly Below
+
+/obj/structure/bed/chair/wheelchair/dolly
+	name = "transport dolly"
+	desc = "The safest way to transport high-risk patients."
+	icon_state = "wheelchair_dolly"
+
+/obj/structure/bed/chair/wheelchair/dolly/setDir()
+	..()
+	overlays = null
+	var/image/O = image(icon = 'icons/obj/furniture.dmi', icon_state = "d_overlay", layer = FLY_LAYER, dir = src.dir)
+	overlays += O
+	if(has_buckled_mobs())
+		for(var/A in buckled_mobs)
+			var/mob/living/L = A
+			L.setDir(dir)
