@@ -188,9 +188,8 @@
 	Reads characters separated by an item in <delim> into a token.
 */
 		ReadWord()
-			var
-				char=copytext(code, codepos, codepos+1)
-				buf
+			var/char = copytext(code, codepos, codepos+1)
+			var/buf
 			while(!delim.Find(char) && codepos<=length(code))
 				buf+=char
 				char=copytext(code, ++codepos, codepos+1)
