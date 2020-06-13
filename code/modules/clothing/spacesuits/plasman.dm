@@ -58,7 +58,7 @@
 
 /obj/item/clothing/suit/space/plasman/sec/captain
 	icon_state = "plasmaman_suitcaptain"
-	desc = "A suit designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. This one is armored for the Colony Director!"
+	desc = "A suit designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. This one is armored for the Facility Director!"
 
 /obj/item/clothing/head/helmet/space/plasman/sec
 	icon_state = "plasmaman_helmetsecurity"
@@ -76,7 +76,7 @@
 
 /obj/item/clothing/head/helmet/space/plasman/sec/captain
 	icon_state = "plasmaman_helmetcaptain"
-	desc = "A helmet designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. This one is armored for the Colony Director!"
+	desc = "A helmet designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. This one is armored for the Facility Director!"
 
 //
 // MEDICAL
