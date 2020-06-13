@@ -30,6 +30,7 @@
  * Vorestation specific?
  */
 // Reads L or an empty list if L is not a list.  Note: Does NOT assign, L may be an expression.
+#define SAFEPICK(L) safepick(L) //compatability reasons.
 #define SANITIZE_TO_LIST(L) (islist(L) ? L : list(L))
 #define SAFEACCESS(L, I) (isnum(I)? (SAFEINDEXACCESS(L, I)) : ((I in L)? L[I] : null))
 #define SAFEINDEXACCESS(L, I) (ISINRANGE(I, 1, length(L))? L[I] : null)
