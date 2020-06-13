@@ -55,9 +55,7 @@
 	return 1
 */
 /datum/job/cyborg/equip_backpack(var/mob/living/carbon/human/H)
-	if(!H)	return 0
-	return 1
-	return 1
+	return H? TRUE : FALSE
 
 /datum/job/cyborg/equip_preview(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/cardborg(H), slot_wear_suit)
