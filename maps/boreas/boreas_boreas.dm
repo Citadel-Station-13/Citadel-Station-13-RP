@@ -1,11 +1,11 @@
-/var/datum/planet/boreas/planet_boreas = null
+var/datum/planet/boreas/planet_boreas = null
 
 /datum/time/boreas
 	seconds_in_day = 3 HOURS
 
 /datum/planet/boreas
-	name = "Boreas(TEMP)"
-	desc = "TBD"
+	name = "Boreas"
+	desc = "A frigid wasteland pockmarked by crust breaches revealing molten phoron."
 	current_time = new /datum/time/boreas()
 	expected_z_levels = list(
 						Z_LEVEL_SURFACE_UNDER,
@@ -100,7 +100,7 @@
 
 
 /datum/weather_holder/boreas
-	temperature = -149
+	temperature = 130
 	allowed_weather_types = list(
 		WEATHER_CLEAR		= new /datum/weather/boreas/clear(),
 		WEATHER_OVERCAST	= new /datum/weather/boreas/overcast(),
@@ -113,14 +113,14 @@
 		WEATHER_BLOOD_MOON	= new /datum/weather/boreas/blood_moon()
 		)
 	roundstart_weather_chances = list(
-		WEATHER_CLEAR		= 30,
-		WEATHER_OVERCAST	= 30,
-		WEATHER_LIGHT_SNOW	= 20,
-		WEATHER_SNOW		= 5,
-		WEATHER_BLIZZARD	= 5,
-		WEATHER_RAIN		= 5,
-		WEATHER_STORM		= 2.5,
-		WEATHER_HAIL		= 2.5
+		WEATHER_CLEAR		= 15,
+		WEATHER_OVERCAST	= 25,
+		WEATHER_LIGHT_SNOW	= 30,
+		WEATHER_SNOW		= 10,
+		WEATHER_BLIZZARD	= 10,
+		WEATHER_RAIN		= 0,
+		WEATHER_STORM		= 0,
+		WEATHER_HAIL		= 10
 		)
 
 /datum/weather/boreas
@@ -147,10 +147,10 @@
 	light_modifier = 0.8
 	transition_chances = list(
 		WEATHER_CLEAR = 25,
-		WEATHER_OVERCAST = 50,
-		WEATHER_LIGHT_SNOW = 10,
-		WEATHER_SNOW = 5,
-		WEATHER_RAIN = 5,
+		WEATHER_OVERCAST = 45,
+		WEATHER_LIGHT_SNOW = 15,
+		WEATHER_SNOW = 10,
+		WEATHER_RAIN = 0,
 		WEATHER_HAIL = 5
 		)
 	observed_message = "It is overcast, all you can see are clouds."
