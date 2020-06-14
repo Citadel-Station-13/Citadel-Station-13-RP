@@ -152,7 +152,7 @@ Class Procs:
 			T.create_fire(firelevel_multiplier)
 
 	var/list/returned = air.get_turf_graphics()
-	if(length(returned) || length(turf_graphics))
+	if(!(returned ~= turf_graphics))
 		var/list/removed = turf_graphics - returned
 		var/list/added = returned - turf_graphics
 		for(var/turf/simulated/T in contents)
