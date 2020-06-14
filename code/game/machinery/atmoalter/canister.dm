@@ -88,13 +88,10 @@
 	name = "Canister \[CO2\]"
 	icon_state = "black"
 	canister_color = "black"
-/obj/machinery/portable_atmospherics/canister/empty/sleeping_agent
+/obj/machinery/portable_atmospherics/canister/empty/nitrous_oxide
 	name = "Canister \[N2O\]"
 	icon_state = "redws"
 	canister_color = "redws"
-
-
-
 
 /obj/machinery/portable_atmospherics/canister/proc/check_change()
 	var/old_flag = update_flag

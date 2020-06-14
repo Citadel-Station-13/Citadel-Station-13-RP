@@ -4123,7 +4123,6 @@
 "hC" = (
 /obj/machinery/atmospherics/trinary/atmos_filter/m_filter{
 	filter_type = 0;
-	filtered_out = list("phoron")
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
@@ -4303,7 +4302,6 @@
 "hT" = (
 /obj/machinery/atmospherics/trinary/atmos_filter/m_filter{
 	filter_type = 3;
-	filtered_out = list("carbon_dioxide")
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
@@ -4476,7 +4474,7 @@
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "im" = (
-/obj/machinery/portable_atmospherics/canister/empty/sleeping_agent,
+/obj/machinery/portable_atmospherics/canister/empty/nitrous_oxide,
 /obj/machinery/atmospherics/pipe/simple/visible/black,
 /obj/machinery/atmospherics/portables_connector{
 	dir = 8

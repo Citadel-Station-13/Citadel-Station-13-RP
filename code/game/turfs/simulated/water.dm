@@ -43,7 +43,7 @@
 			water_breath.temperature = above_air.temperature
 			return water_breath
 		else
-			var/gasid = "carbon_dioxide"
+			var/gasid = /datum/gas/carbon_dioxide
 			if(ishuman(L))
 				var/mob/living/carbon/human/H = L
 				if(H.species && H.species.exhale_type)

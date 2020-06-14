@@ -238,8 +238,7 @@
 	//Create gas mixture to hold data for passing
 	var/datum/gas_mixture/GM = new
 
-	GM.adjust_multi("oxygen", oxygen, "carbon_dioxide", carbon_dioxide, "nitrogen", nitrogen, "phoron", phoron)
-	GM.temperature = temperature
+	GM.copy_from_turf(src)
 
 	return GM
 
@@ -292,9 +291,8 @@
 		return air
 
 /turf/proc/make_air()
-	air = new/datum/gas_mixture
-	air.temperature = temperature
-	air.adjust_multi("oxygen", oxygen, "carbon_dioxide", carbon_dioxide, "nitrogen", nitrogen, "phoron", phoron)
+	air = new /datum/gas_mixture
+	air.copy_from_turf(src)
 	air.group_multiplier = 1
 	air.volume = CELL_VOLUME
 

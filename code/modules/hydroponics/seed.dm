@@ -269,7 +269,7 @@
 			origin_turf.visible_message("<span class='danger'>The [thrown.name] splatters against [target]!</span>")
 		qdel(thrown)
 
-/datum/seed/proc/handle_environment(var/turf/current_turf, var/datum/gas_mixture/environment, var/light_supplied, var/check_only)
+/datum/seed/proc/handle_environment(var/turf/current_turf, var/datum/gas_mixture_old/environment, var/light_supplied, var/check_only)
 
 	var/health_change = 0
 	// Handle gas consumption.
@@ -416,12 +416,12 @@
 
 	if(prob(5))
 		consume_gasses = list()
-		var/gas = pick("oxygen","nitrogen","phoron","carbon_dioxide")
+		var/gas = pick(/datum/gas/oxygen,/datum/gas/nitrogen,/datum/gas/phoron,/datum/gas/carbon_dioxide)
 		consume_gasses[gas] = rand(3,9)
 
 	if(prob(5))
 		exude_gasses = list()
-		var/gas = pick("oxygen","nitrogen","phoron","carbon_dioxide")
+		var/gas = pick(/datum/gas/oxygen,/datum/gas/nitrogen,/datum/gas/phoron,/datum/gas/carbon_dioxide)
 		exude_gasses[gas] = rand(3,9)
 
 	chems = list()

@@ -437,13 +437,13 @@
 	if(species.breath_type)
 		breath_type = species.breath_type
 	else
-		breath_type = "oxygen"
+		breath_type = /datum/gas/oxygen
 	inhaling = breath.gas[breath_type]
 
 	if(species.poison_type)
 		poison_type = species.poison_type
 	else
-		poison_type = "phoron"
+		poison_type = /datum/gas/phoron
 	poison = breath.gas[poison_type]
 
 	if(species.exhale_type)

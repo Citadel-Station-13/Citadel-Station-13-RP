@@ -256,7 +256,7 @@
 						else
 							var/list/nicename = null
 							var/list/tankcheck = null
-							var/breathes = "oxygen"    //default, we'll check later
+							var/breathes = /datum/gas/oxygen  //default, we'll check later
 							var/list/contents = list()
 							var/from = "on"
 
@@ -285,28 +285,28 @@
 										continue					//in it, so we're going to believe the tank is what it says it is
 									switch(breathes)
 																		//These tanks we're sure of their contents
-										if("nitrogen") 							//So we're a bit more picky about them.
+										if(/datum/gas/nitrogen) 							//So we're a bit more picky about them.
 
 											if(t.air_contents.gas[/datum/gas/nitrogen] && !t.air_contents.gas[/datum/gas/oxygen])
 												contents.Add(t.air_contents.gas[/datum/gas/nitrogen])
 											else
 												contents.Add(0)
 
-										if ("oxygen")
+										if (/datum/gas/oxygen)
 											if(t.air_contents.gas[/datum/gas/oxygen] && !t.air_contents.gas[/datum/gas/phoron])
 												contents.Add(t.air_contents.gas[/datum/gas/oxygen])
 											else
 												contents.Add(0)
 
 										// No races breath this, but never know about downstream servers.
-										if ("carbon_dioxide")
+										if (/datum/gas/carbon_dioxide)
 											if(t.air_contents.gas[/datum/gas/carbon_dioxide] && !t.air_contents.gas[/datum/gas/phoron])
 												contents.Add(t.air_contents.gas[/datum/gas/carbon_dioxide])
 											else
 												contents.Add(0)
 
 										// And here's for the Vox
-										if ("phoron")
+										if (/datum/gas/phoron)
 											if(t.air_contents.gas[/datum/gas/phoron] && !t.air_contents.gas[/datum/gas/oxygen])
 												contents.Add(t.air_contents.gas[/datum/gas/phoron])
 											else

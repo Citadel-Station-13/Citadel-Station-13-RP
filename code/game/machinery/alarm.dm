@@ -856,7 +856,7 @@ FIRE ALARM
 				if("delta")	set_light(l_range = 4, l_power = 0.9, l_color = "#FF6633")
 		add_overlay("overlay_[seclevel]")
 
-/obj/machinery/firealarm/fire_act(datum/gas_mixture/air, temperature, volume)
+/obj/machinery/firealarm/fire_act(datum/gas_mixture_old/air, temperature, volume)
 	if(detecting)
 		if(temperature > T0C + 200)
 			alarm()			// added check of detector status here

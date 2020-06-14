@@ -18,9 +18,9 @@
 	selects_bodytype = TRUE
 
 	body_temperature = T20C
-	breath_type = "carbon_dioxide"
-	poison_type = "phoron"
-	exhale_type = "oxygen"
+	breath_type = /datum/gas/carbon_dioxide
+	poison_type = /datum/gas/phoron
+	exhale_type = /datum/gas/oxygen
 
 	// Heat and cold resistances are 20 degrees broader on the level 1 range, level 2 is default, level 3 is much weaker, halfway between L2 and normal L3.
 	// Essentially, they can tolerate a broader range of comfortable temperatures, but suffer more at extremes.
