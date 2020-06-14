@@ -19,7 +19,7 @@
 
 // Decide which area will be targeted!
 /datum/event/atmos_leak/setup()
-	var/gas_choices = list("carbon_dioxide", "sleeping_agent") // Annoying
+	var/gas_choices = list(/datum/gas/carbon_dioxide, /datum/gas/nitrous_oxide) // Annoying
 	if(severity >= EVENT_LEVEL_MODERATE)
 		gas_choices += "phoron" // Dangerous
 	// if(severity >= EVENT_LEVEL_MAJOR)

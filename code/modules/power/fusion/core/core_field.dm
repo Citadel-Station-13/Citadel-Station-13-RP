@@ -298,8 +298,8 @@
 	var/turf/T = get_turf(src)
 	if(istype(T))
 		var/datum/gas_mixture/plasma = new
-		plasma.adjust_gas("oxygen", (size*100), 0)
-		plasma.adjust_gas("phoron", (size*100), 0)
+		plasma.adjust_gas(/datum/gas/oxygen, (size*100), 0)
+		plasma.adjust_gas(/datum/gas/phoron, (size*100), 0)
 		plasma.temperature = (plasma_temperature/2)
 		plasma.update_values()
 		T.assume_air(plasma)
@@ -625,8 +625,8 @@
 		var/turf/TT = get_turf(pick(turfs_in_range))
 		if(istype(TT))
 			var/datum/gas_mixture/plasma = new
-			plasma.adjust_gas("oxygen", (size*100), 0)
-			plasma.adjust_gas("phoron", (size*100), 0)
+			plasma.adjust_gas(/datum/gas/oxygen, (size*100), 0)
+			plasma.adjust_gas(/datum/gas/phoron, (size*100), 0)
 			plasma.temperature = (plasma_temperature/2)
 			plasma.update_values()
 			TT.assume_air(plasma)
@@ -641,8 +641,8 @@
 	var/turf/TT = get_turf(owned_core)
 	if(istype(TT))
 		var/datum/gas_mixture/plasma = new
-		plasma.adjust_gas("oxygen", (size*100), 0)
-		plasma.adjust_gas("phoron", (size*100), 0)
+		plasma.adjust_gas(/datum/gas/oxygen, (size*100), 0)
+		plasma.adjust_gas(/datum/gas/phoron, (size*100), 0)
 		plasma.temperature = (plasma_temperature/2)
 		plasma.update_values()
 		TT.assume_air(plasma)

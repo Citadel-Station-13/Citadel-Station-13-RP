@@ -250,7 +250,7 @@
 		else if(SA_pp > 0.15)
 			if(prob(20))
 				spawn(0) H.emote(pick("giggle", "laugh"))
-		breath.adjust_gas("sleeping_agent", -breath.gas[/datum/gas/nitrous_oxide]/6, update = 0) //update after
+		breath.adjust_gas(/datum/gas/nitrous_oxide, -breath.gas[/datum/gas/nitrous_oxide]/6, update = 0) //update after
 
 	// Were we able to breathe?
 	if (failed_inhale || failed_exhale)

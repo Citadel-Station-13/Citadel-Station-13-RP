@@ -368,21 +368,21 @@ update_flag
 /obj/machinery/portable_atmospherics/canister/phoron/New()
 	..()
 
-	src.air_contents.adjust_gas("phoron", MolesForPressure())
+	src.air_contents.adjust_gas(/datum/gas/phoron, MolesForPressure())
 	src.update_icon()
 	return 1
 
 /obj/machinery/portable_atmospherics/canister/oxygen/New()
 	..()
 
-	src.air_contents.adjust_gas("oxygen", MolesForPressure())
+	src.air_contents.adjust_gas(/datum/gas/oxygen, MolesForPressure())
 	src.update_icon()
 	return 1
 
 /obj/machinery/portable_atmospherics/canister/oxygen/prechilled/New()
 	..()
 
-	src.air_contents.adjust_gas("oxygen", MolesForPressure())
+	src.air_contents.adjust_gas(/datum/gas/oxygen, MolesForPressure())
 	src.air_contents.temperature = 80
 	src.update_icon()
 	return 1
@@ -390,7 +390,7 @@ update_flag
 /obj/machinery/portable_atmospherics/canister/sleeping_agent/New()
 	..()
 
-	air_contents.adjust_gas("sleeping_agent", MolesForPressure())
+	air_contents.adjust_gas(/datum/gas/nitrous_oxide, MolesForPressure())
 	src.update_icon()
 	return 1
 
@@ -411,13 +411,13 @@ update_flag
 
 	..()
 
-	src.air_contents.adjust_gas("nitrogen", MolesForPressure())
+	src.air_contents.adjust_gas(/datum/gas/nitrogen, MolesForPressure())
 	src.update_icon()
 	return 1
 
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide/New()
 	..()
-	src.air_contents.adjust_gas("carbon_dioxide", MolesForPressure())
+	src.air_contents.adjust_gas(/datum/gas/carbon_dioxide, MolesForPressure())
 	src.update_icon()
 	return 1
 
@@ -434,19 +434,19 @@ update_flag
 // Special types used for engine setup admin verb, they contain double amount of that of normal canister.
 /obj/machinery/portable_atmospherics/canister/nitrogen/engine_setup/New()
 	..()
-	src.air_contents.adjust_gas("nitrogen", MolesForPressure())
+	src.air_contents.adjust_gas(/datum/gas/nitrogen, MolesForPressure())
 	src.update_icon()
 	return 1
 
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide/engine_setup/New()
 	..()
-	src.air_contents.adjust_gas("carbon_dioxide", MolesForPressure())
+	src.air_contents.adjust_gas(/datum/gas/carbon_dioxide, MolesForPressure())
 	src.update_icon()
 	return 1
 
 /obj/machinery/portable_atmospherics/canister/phoron/engine_setup/New()
 	..()
-	src.air_contents.adjust_gas("phoron", MolesForPressure())
+	src.air_contents.adjust_gas(/datum/gas/phoron, MolesForPressure())
 	src.update_icon()
 	return 1
 

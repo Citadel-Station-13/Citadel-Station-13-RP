@@ -85,7 +85,7 @@
 
 /obj/item/tank/jetpack/void/Initialize()
 	. = ..()
-	air_contents.adjust_gas("oxygen", (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
+	air_contents.adjust_gas(/datum/gas/oxygen, (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
 
 /obj/item/tank/jetpack/oxygen
 	name = "jetpack (oxygen)"
@@ -95,7 +95,7 @@
 
 /obj/item/tank/jetpack/oxygen/Initialize()
 	. = ..()
-	air_contents.adjust_gas("oxygen", (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
+	air_contents.adjust_gas(/datum/gas/oxygen, (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
 
 /obj/item/tank/jetpack/carbondioxide
 	name = "jetpack (carbon dioxide)"
@@ -106,7 +106,7 @@
 
 /obj/item/tank/jetpack/carbondioxide/Initialize()
 	. = ..()
-	air_contents.adjust_gas("carbon_dioxide", (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
+	air_contents.adjust_gas(/datum/gas/carbon_dioxide, (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
 
 /obj/item/tank/jetpack/rig
 	name = "jetpack"
