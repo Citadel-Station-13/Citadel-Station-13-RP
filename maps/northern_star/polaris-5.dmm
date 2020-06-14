@@ -639,7 +639,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/outpost/research/tox_store)
 "bI" = (
-/obj/machinery/portable_atmospherics/casniter/nitrous_oxide,
+/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/outpost/research/tox_store)
@@ -754,7 +754,7 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/hallway/toxins_hallway)
 "bV" = (
-/obj/machinery/portable_atmospherics/casniter/nitrous_oxide,
+/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/dark,
@@ -10660,7 +10660,7 @@
 /turf/simulated/floor/tiled,
 /area/outpost/research/anomaly)
 "ux" = (
-/obj/machinery/portable_atmospherics/casniter/nitrous_oxide,
+/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/light,
 /turf/simulated/floor/tiled,

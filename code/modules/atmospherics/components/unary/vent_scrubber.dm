@@ -116,7 +116,7 @@
 		"filter_n2" = (/datum/gas/nitrogen in scrubbing_gas),
 		"filter_co2" = (/datum/gas/carbon_dioxide in scrubbing_gas),
 		"filter_phoron" = (/datum/gas/phoron in scrubbing_gas),
-		"filter_n2o" = (/datum/gas/n2o in scrubbing_gas),
+		"filter_n2o" = (/datum/gas/nitrous_oxide in scrubbing_gas),
 		"filter_fuel" = (/datum/gas/volatile_fuel in scrubbing_gas),
 		"sigtype" = "status"
 	)

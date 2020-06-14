@@ -384,7 +384,7 @@ update_flag
 	src.update_icon()
 	return 1
 
-/obj/machinery/portable_atmospherics/casniter/nitrous_oxide/New()
+/obj/machinery/portable_atmospherics/canister/nitrous_oxide/New()
 	..()
 
 	air_contents.adjust_gas(/datum/gas/nitrous_oxide, MolesForPressure())
@@ -392,7 +392,7 @@ update_flag
 	return 1
 
 //Dirty way to fill room with gas. However it is a bit easier to do than creating some floor/engine/n2o -rastaf0
-/obj/machinery/portable_atmospherics/casniter/nitrous_oxide/roomfiller/New()
+/obj/machinery/portable_atmospherics/canister/nitrous_oxide/roomfiller/New()
 	..()
 	air_contents.gas[/datum/gas/nitrous_oxide] = 9*4000
 	spawn(10)

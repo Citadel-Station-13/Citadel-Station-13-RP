@@ -9340,7 +9340,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
 "axi" = (
-/obj/machinery/portable_atmospherics/casniter/nitrous_oxide,
+/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
 "axj" = (
@@ -13958,7 +13958,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/xenobiology/xenoflora_storage)
 "aHl" = (
-/obj/machinery/portable_atmospherics/casniter/nitrous_oxide,
+/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/xenobiology/xenoflora_storage)
 "aHm" = (

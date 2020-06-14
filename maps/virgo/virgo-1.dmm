@@ -87579,7 +87579,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "dhm" = (
-/obj/machinery/portable_atmospherics/casniter/nitrous_oxide,
+/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
@@ -87589,7 +87589,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "dhn" = (
-/obj/machinery/portable_atmospherics/casniter/nitrous_oxide,
+/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
 /obj/machinery/light{
 	icon_state = "tube1";
 	dir = 4
@@ -92519,7 +92519,7 @@
 /turf/simulated/floor/reinforced/n20,
 /area/engineering/atmos)
 "drl" = (
-/obj/machinery/portable_atmospherics/casniter/nitrous_oxide,
+/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
 /turf/simulated/floor/reinforced/n20,
 /area/engineering/atmos)
 "drm" = (

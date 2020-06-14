@@ -1,8 +1,10 @@
+/turf
+	var/needs_air_update = FALSE
+	var/datum/gas_mixture/air
+
 /turf/simulated
 	var/zone/zone
 	var/open_directions
-	var/needs_air_update = FALSE
-	var/datum/gas_mixture/air
 	/// Do we show gas overlays?
 	var/allow_gas_overlays = TRUE
 

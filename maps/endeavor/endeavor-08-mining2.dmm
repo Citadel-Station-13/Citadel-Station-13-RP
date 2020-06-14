@@ -5033,7 +5033,7 @@
 /area/outpost/research/anomaly_storage)
 "lW" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/portable_atmospherics/casniter/nitrous_oxide,
+/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
 /turf/simulated/floor/tiled/techmaint,
 /area/outpost/research/anomaly_storage)
 "lX" = (
