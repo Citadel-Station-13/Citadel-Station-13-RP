@@ -245,7 +245,7 @@
 
 	pressure_dangerlevel = get_danger_level(environment_pressure, TLV["pressure"])
 	oxygen_dangerlevel = get_danger_level(environment.gas[/datum/gas/oxygen]*partial_pressure, TLV["oxygen"])
-	co2_dangerlevel = get_danger_level(environment.gas[/datum/gas/carbon_dioxide]]*partial_pressure, TLV["carbon dioxide"])
+	co2_dangerlevel = get_danger_level(environment.gas[/datum/gas/carbon_dioxide]*partial_pressure, TLV["carbon dioxide"])
 	phoron_dangerlevel = get_danger_level(environment.gas[/datum/gas/phoron]*partial_pressure, TLV["phoron"])
 	temperature_dangerlevel = get_danger_level(environment.temperature, TLV["temperature"])
 	other_dangerlevel = get_danger_level(other_moles*partial_pressure, TLV["other"])
