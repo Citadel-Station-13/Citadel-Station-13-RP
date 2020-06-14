@@ -532,19 +532,19 @@
 "bt" = (
 /obj/machinery/door/airlock/multi_tile/glass,
 /turf/simulated/shuttle/floor/black{
-	initial_gas_string = "n2=16.95;phoron=76.2751;co2=12.7125;TEMP=293.15"
+	initial_gas_mix = "n2=16.95;phoron=76.2751;co2=12.7125;TEMP=293.15"
 	},
 /area/tether/surfacebase/crash)
 "bu" = (
 /turf/simulated/shuttle/floor/black{
-	initial_gas_string = "n2=16.95;phoron=76.2751;co2=12.7125;TEMP=293.15"
+	initial_gas_mix = "n2=16.95;phoron=76.2751;co2=12.7125;TEMP=293.15"
 	},
 /area/tether/surfacebase/crash)
 "bv" = (
 /obj/structure/closet/crate/secure/weapon,
 /obj/random/weapon,
 /turf/simulated/shuttle/floor/black{
-	initial_gas_string = "n2=16.95;phoron=76.2751;co2=12.7125;TEMP=293.15"
+	initial_gas_mix = "n2=16.95;phoron=76.2751;co2=12.7125;TEMP=293.15"
 	},
 /area/tether/surfacebase/crash)
 "bw" = (
@@ -761,7 +761,7 @@
 	icon_state = "plant-09";
 	name = "Esteban";
 	pixel_y = 8;
-	
+
 	},
 /turf/simulated/shuttle/floor/black/virgo3b,
 /area/tether/surfacebase/outside/wilderness)
@@ -822,14 +822,14 @@
 "ck" = (
 /obj/structure/table/standard,
 /turf/simulated/shuttle/floor/black{
-	initial_gas_string = "n2=16.95;phoron=76.2751;co2=12.7125;TEMP=293.15"
+	initial_gas_mix = "n2=16.95;phoron=76.2751;co2=12.7125;TEMP=293.15"
 	},
 /area/tether/surfacebase/crash)
 "cl" = (
 /obj/structure/table/standard,
 /obj/item/storage/toolbox/mechanical,
 /turf/simulated/shuttle/floor/black{
-	initial_gas_string = "n2=16.95;phoron=76.2751;co2=12.7125;TEMP=293.15"
+	initial_gas_mix = "n2=16.95;phoron=76.2751;co2=12.7125;TEMP=293.15"
 	},
 /area/tether/surfacebase/crash)
 "cm" = (

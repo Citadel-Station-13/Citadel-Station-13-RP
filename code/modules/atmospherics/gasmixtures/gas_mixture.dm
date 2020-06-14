@@ -437,13 +437,10 @@
 /datum/gas_mixture/proc/copy_from_turf(turf/model)
 	parse_gas_string(model.initial_gas_mix)
 
-	/*		Is this needed? Who knows - kevinz000
 	//acounts for changes in temperature
 	var/turf/model_parent = model.parent_type
 	if(model.temperature != initial(model.temperature) || model.temperature != initial(model_parent.temperature))
 		temperature = model.temperature
-	*/
-	temperature = model.temperature
 
 	return TRUE
 

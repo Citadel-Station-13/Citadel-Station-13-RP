@@ -12530,7 +12530,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Server Base";
-	initial_gas_string = "n2=500;TEMP=80"
+	initial_gas_mix = "n2=500;TEMP=80"
 	},
 /area/server)
 "xR" = (
@@ -12540,7 +12540,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Server Base";
-	initial_gas_string = "n2=500;TEMP=80"
+	initial_gas_mix = "n2=500;TEMP=80"
 	},
 /area/server)
 "xS" = (
@@ -12550,7 +12550,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Server Base";
-	initial_gas_string = "n2=500;TEMP=80"
+	initial_gas_mix = "n2=500;TEMP=80"
 	},
 /area/server)
 "xT" = (
@@ -12889,7 +12889,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Server Base";
-	initial_gas_string = "n2=500;TEMP=80"
+	initial_gas_mix = "n2=500;TEMP=80"
 	},
 /area/server)
 "yv" = (
@@ -12901,7 +12901,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Server Base";
-	initial_gas_string = "n2=500;TEMP=80"
+	initial_gas_mix = "n2=500;TEMP=80"
 	},
 /area/server)
 "yw" = (
@@ -12920,7 +12920,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Server Base";
-	initial_gas_string = "n2=500;TEMP=80"
+	initial_gas_mix = "n2=500;TEMP=80"
 	},
 /area/server)
 "yx" = (

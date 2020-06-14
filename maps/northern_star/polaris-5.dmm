@@ -16136,7 +16136,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	initial_gas_string = "n2=82.1472;o2=21.8366;TEMP=293.15"
+	initial_gas_mix = "n2=82.1472;o2=21.8366;TEMP=293.15"
 	},
 /area/outpost/engineering/telecomms)
 "FF" = (
@@ -16211,7 +16211,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	initial_gas_string = "n2=82.1472;o2=21.8366;TEMP=293.15"
+	initial_gas_mix = "n2=82.1472;o2=21.8366;TEMP=293.15"
 	},
 /area/outpost/engineering/telecomms)
 "FM" = (
@@ -16247,7 +16247,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	initial_gas_string = "n2=82.1472;o2=21.8366;TEMP=293.15"
+	initial_gas_mix = "n2=82.1472;o2=21.8366;TEMP=293.15"
 	},
 /area/outpost/engineering/telecomms)
 "FO" = (
