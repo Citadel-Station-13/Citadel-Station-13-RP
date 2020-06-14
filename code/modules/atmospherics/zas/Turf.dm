@@ -244,18 +244,8 @@
 
 /turf/remove_air(amount as num)
 	var/datum/gas_mixture/GM = new
-
-	var/sum = oxygen + carbon_dioxide + nitrogen + phoron
-	if(sum>0)
-		GM.gas[/datum/gas/oxygen] = (oxygen/sum)*amount
-		GM.gas[/datum/gas/carbon_dioxide] = (carbon_dioxide/sum)*amount
-		GM.gas[/datum/gas/nitrogen] = (nitrogen/sum)*amount
-		GM.gas[/datum/gas/phoron] = (phoron/sum)*amount
-
-	GM.temperature = temperature
-	GM.update_values()
-
-	return GM
+	GM.copy_from_turf(src)
+	return GM.remove(amount)
 
 /turf/simulated/assume_air(datum/gas_mixture/giver)
 	var/datum/gas_mixture/my_air = return_air()

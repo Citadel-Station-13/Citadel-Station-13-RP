@@ -90,6 +90,7 @@
 #include "code\__DEFINES\ZAS.dm"
 #include "code\__DEFINES\admin\keybindings.dm"
 #include "code\__DEFINES\atmospherics\atmospheres.dm"
+#include "code\__DEFINES\atmospherics\constants.dm"
 #include "code\__DEFINES\atmospherics\flags.dm"
 #include "code\__DEFINES\atmospherics\gas_strings.dm"
 #include "code\__DEFINES\color\colour_priority.dm"

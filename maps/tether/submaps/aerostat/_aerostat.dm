@@ -101,8 +101,8 @@
 // -- Turfs -- //
 
 //Turfmakers
-#define VIRGO2_SET_ATMOS	initial_gas_mix="[ATMOSPHERE_ID_VIRGO2]"
-#define VIRGO2_TURF_CREATE(x)	x/virgo2/initial_gas_mix="[ATMOSPHERE_ID_VIRGO2]";x/virgo2/color="#eacd7c"
+#define VIRGO2_SET_ATMOS	initial_gas_mix=ATMOSPHERE_ID_VIRGO2
+#define VIRGO2_TURF_CREATE(x)	x/virgo2/initial_gas_mix=ATMOSPHERE_ID_VIRGO2;x/virgo2/color="#eacd7c"
 
 /turf/unsimulated/floor/sky/virgo2_sky
 	name = "virgo 2 atmosphere"

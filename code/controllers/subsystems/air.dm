@@ -279,8 +279,8 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 /datum/controller/subsystem/air/generate_atmospheres()
 	generated_atmospheres = list()
 	for(var/T in subtypesof(/datum/atmosphere))
-		var/datum/atmosphere/atmostype = T
-		generated_atmospheres["[initial(atmostype.id)]" || "[T]"] = new atmostype
+		var/datum/atmosphere/A = new T
+		generated_atmospheres[A.id] = A
 
 /**
   * Preprocess a gas string, replacing it with a specific atmosphere's if necessary.
@@ -288,7 +288,7 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 /datum/controller/subsystem/air/proc/preprocess_gas_string(gas_string)
 	if(!generated_atmospheres)
 		generate_atmos()
-	if(!generated_atmospheres[gas_string])
+	if(!generated_atmospheres["[gas_string]")
 		return gas_string
 	var/datum/atmosphere/mix = generated_atmospheres[gas_string]
 	return mix.gas_string

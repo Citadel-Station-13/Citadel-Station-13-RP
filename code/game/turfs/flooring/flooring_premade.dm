@@ -276,8 +276,7 @@
 	initial_flooring = /decl/flooring/tiling/steel_dirty
 
 /turf/simulated/floor/tiled/steel/airless
-	oxygen = 0
-	nitrogen = 0
+	initial_gas_mix = GAS_STRING_VACCUM
 
 /turf/simulated/floor/tiled/asteroid_steel
 	icon_state = "asteroidfloor"
@@ -285,8 +284,7 @@
 
 /turf/simulated/floor/tiled/asteroid_steel/airless
 	name = "plating"
-	oxygen = 0
-	nitrogen = 0
+	initial_gas_mix = GAS_STRING_VACCUM
 
 /turf/simulated/floor/tiled/white
 	name = "white floor"

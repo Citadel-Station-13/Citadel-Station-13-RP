@@ -147,7 +147,7 @@ GLOBAL_LIST_INIT(meta_gas_by_flag, meta_gas_by_flag_list())
 	name = "Oxygen"
 	specific_heat = 20
 	molar_mass = 0.032
-	flags = GAS_FLAG_OXIDIZER
+	gas_flags = GAS_FLAG_OXIDIZER
 
 /datum/gas/nitrogen
 	id = "n2"
@@ -177,7 +177,7 @@ GLOBAL_LIST_INIT(meta_gas_by_flag, meta_gas_by_flag_list())
 
 	moles_visible = 0.7
 
-	flags = GAS_FLAG_FUEL | GAS_FLAG_FUSION_FUEL | GAS_FLAG_CONTAMINANT
+	gas_flags = GAS_FLAG_FUEL | GAS_FLAG_FUSION_FUEL | GAS_FLAG_CONTAMINANT
 
 /datum/gas/volatile_fuel
 	id = "volatile_fuel"
@@ -185,7 +185,7 @@ GLOBAL_LIST_INIT(meta_gas_by_flag, meta_gas_by_flag_list())
 	specific_heat = 253	// J/(mol*K)	C8H18 gasoline. Isobaric, but good enough.
 	molar_mass = 0.114	// kg/mol. 		same.
 
-	flags = GAS_FLAG_FUEL
+	gas_flags = GAS_FLAG_FUEL
 
 /datum/gas/nitrous_oxide
 	id = "n2o"
