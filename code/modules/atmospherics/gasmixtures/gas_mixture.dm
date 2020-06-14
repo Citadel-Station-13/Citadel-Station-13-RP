@@ -6,6 +6,7 @@
 	var/temperature = 0
 
 	//Sum of all the gas moles in this mix.  Updated by update_values()
+	// DO NOT USE - Planned to be phased out. Use TOTAL_MOLES().
 	var/total_moles = 0
 	//Volume of this mix.
 	var/volume = CELL_VOLUME
@@ -196,11 +197,12 @@
 	GAS_GARBAGE_COLLECT(gas)
 	TOTAL_MOLES(gas, total_moles)
 
-
 //Returns the pressure of the gas mix.  Only accurate if there have been no gas modifications since update_values() has been called.
 /datum/gas_mixture/proc/return_pressure()
 	if(volume)
-		return total_moles * R_IDEAL_GAS_EQUATION * temperature / volume
+		var/total
+		TOTAL_MOLES(gas, total)
+		return (total * R_IDEAL_GAS_EQUATION * temperature) / volume
 	return 0
 
 //Removes moles from the gas mixture and returns a gas_mixture containing the removed air.

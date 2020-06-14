@@ -279,7 +279,10 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 /datum/controller/subsystem/air/proc/generate_atmospheres()
 	generated_atmospheres = list()
 	for(var/T in subtypesof(/datum/atmosphere))
-		var/datum/atmosphere/A = new T
+		var/datum/atmosphere/A = T
+		if(initial(A.abstract_type) == T)
+			continue
+		A = new T
 		generated_atmospheres[A.id] = A
 
 /**
