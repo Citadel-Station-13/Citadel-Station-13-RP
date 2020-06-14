@@ -1,14 +1,9 @@
-# SQL_ENABLED this is in the game.txt
 ADDRESS 127.0.0.1
 PORT 3306
-
-## old configs
 DATABASE tg_travis
 LOGIN root
 PASSWORD
 
-## new configs
-# FEEDBACK_TABLEPREFIX
 FEEDBACK_DATABASE tg_travis
 FEEDBACK_LOGIN root
 FEEDBACK_PASSWORD

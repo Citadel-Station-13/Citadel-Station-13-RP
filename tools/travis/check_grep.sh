@@ -35,7 +35,7 @@ if grep '\W\/turf\s*[,\){]' _maps/**/*.dmm; then
 fi;
 if grep '^/*var/' code/**/*.dm; then
     echo "Unmanaged global var use detected in code, please use the helpers."
-    st=1
+    # st=1 annoy the coders instead of failing
 fi;
 # if grep -i 'centcomm' code/**/*.dm; then
 #     echo "Misspelling(s) of CENTCOM detected in code, please remove the extra M(s)."
@@ -47,8 +47,10 @@ fi;
 # fi;
 if grep -E '\\\\(red|blue|green|black|b|i[^mc])' code/**/*.dm; then
 	num=`grep -E '\\\\(red|blue|green|black|b|i[^mc])' code/**/*.dm | wc -l`; #bad? yes
-	echo "$num escapes (expecting 4 or less) in the code, please fix this."
-	st=1
+	if [ $num -le 4 ]; then
+		echo "$num escapes (expecting 4 or less) in the code, please fix this."
+		st=1
+	fi;
 fi;
 
 exit $st
