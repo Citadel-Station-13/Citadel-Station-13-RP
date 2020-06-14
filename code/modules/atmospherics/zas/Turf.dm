@@ -4,12 +4,6 @@
 /turf/var/needs_air_update = 0
 /turf/var/datum/gas_mixture/air
 
-/turf/simulated/proc/update_graphic(list/graphic_add = null, list/graphic_remove = null)
-	if(LAZYLEN(graphic_add))
-		add_overlay(graphic_add, priority = TRUE)
-	if(LAZYLEN(graphic_remove))
-		cut_overlay(graphic_remove, priority = TRUE)
-
 /turf/proc/update_air_properties()
 	var/block = c_airblock(src)
 	if(block & AIR_BLOCKED)

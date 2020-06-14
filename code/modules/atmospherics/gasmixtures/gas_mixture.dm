@@ -41,6 +41,7 @@
 	if(moles > 0 && abs(temperature - temp) > MINIMUM_TEMPERATURE_DELTA_TO_CONSIDER)
 		var/self_heat_capacity = heat_capacity()
 		var/giver_heat_capacity = GLOB.meta_gas_specific_heats[gasid] * moles
+
 		var/combined_heat_capacity = giver_heat_capacity + self_heat_capacity
 		if(combined_heat_capacity != 0)
 			temperature = (temp * giver_heat_capacity + temperature * self_heat_capacity) / combined_heat_capacity
@@ -321,29 +322,20 @@
 /datum/gas_mixture/proc/react()
 	zburn(null, force_burn=0, no_check=0) //could probably just call zburn() here with no args but I like being explicit.
 
-
-//Rechecks the gas_mixture and adjusts the graphic list if needed.
-//Two lists can be passed by reference if you need know specifically which graphics were added and removed.
-/datum/gas_mixture/proc/check_tile_graphic(list/graphic_add = null, list/graphic_remove = null)
-	var/list/cur_graphic = graphic // Cache for sanic speed
-	for(var/g in GLOB.meta_gas_visibility)
-		if(cur_graphic && cur_graphic.Find(gas_data.tile_overlay[g]))
-			//Overlay is already applied for this gas, check if it's still valid.
-			if(gas[g] <= GLOB.meta_gas_visibility[g])
-				LAZYADD(graphic_remove, gas_data.tile_overlay[g])
-		else
-			//Overlay isn't applied for this gas, check if it's valid and needs to be added.
-			if(gas[g] > GLOB.meta_gas_visibility[g])
-				LAZYADD(graphic_add, gas_data.tile_overlay[g])
-
-	. = 0
-	//Apply changes
-	if(LAZYLEN(graphic_add))
-		LAZYADD(graphic, graphic_add)
-		. = 1
-	if(LAZYLEN(graphic_remove))
-		LAZYREMOVE(graphic, graphic_remove)
-		. = 1
+/**
+  * Returns a list of vis_contents graphics for the gases we contain.
+  */
+/datum/gas_mixture/proc/get_turf_graphics()
+	. = list()
+	var/list/gases = src.gas
+	var/list/no_overlay_typecache = GLOB.meta_gas_typecache_no_overlays
+	for(var/id in gases)
+		if(no_overlay_typecache[id])
+			continue
+		var/moles = gases[id]
+		var/list/gas_overlays = GLOB.meta_gas_overlays[id]
+		if(gas_overlays && moles > GLOB.meta_gas_visibility[id])
+			. += gas_overlay[min(FACTOR_GAS_VISIBLE_MAX, CEILING(moles / MOLES_GAS_VISIBLE_STEP, 1))]
 
 //Shares gas with another gas_mixture based on the amount of connecting tiles and a fixed lookup table.
 /datum/gas_mixture/proc/share_ratio(datum/gas_mixture/other, connecting_tiles, share_size = null, one_way = 0)
@@ -452,6 +444,41 @@
 	temperature = model.temperature
 
 	return TRUE
+
+//Simpler version of merge(), adjusts gas amounts directly and doesn't account for temperature or group_multiplier.
+/datum/gas_mixture/proc/add(datum/gas_mixture/right_side)
+	for(var/g in right_side.gas)
+		gas[g] += right_side.gas[g]
+
+	update_values()
+	return 1
+
+
+//Simpler version of remove(), adjusts gas amounts directly and doesn't account for group_multiplier.
+/datum/gas_mixture/proc/subtract(datum/gas_mixture/right_side)
+	for(var/g in right_side.gas)
+		gas[g] -= right_side.gas[g]
+
+	update_values()
+	return 1
+
+
+//Multiply all gas amounts by a factor.
+/datum/gas_mixture/proc/multiply(factor)
+	for(var/g in gas)
+		gas[g] *= factor
+
+	update_values()
+	return 1
+
+
+//Divide all gas amounts by a factor.
+/datum/gas_mixture/proc/divide(factor)
+	for(var/g in gas)
+		gas[g] /= factor
+
+	update_values()
+	return 1
 
 /**
   * Copies from a specially formatted gas string, taking on its gas values as our own as well as their temperature.

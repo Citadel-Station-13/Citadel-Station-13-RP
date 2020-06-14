@@ -24,6 +24,8 @@ GLOBAL_LIST_INIT(meta_gas_flags, meta_gas_flag_list())
 GLOBAL_LIST_INIT(meta_gas_by_flag, meta_gas_by_flag_list())
 /// Gas molar mass by gas
 GLOBAL_LIST_INIT(meta_gas_molar_mass, meta_gas_molar_mass_list())
+/// Typecache of gases with no overlays
+GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_list())
 
 /proc/meta_gas_heat_list()
 	. = subtypesof(/datum/gas)
@@ -82,7 +84,7 @@ GLOBAL_LIST_INIT(meta_gas_molar_mass, meta_gas_molar_mass_list())
 	. = subtypesof(/datum/gas)
 	for(var/gas_path in .)
 		var/datum/gas/gas = gas_path
-		.[gas_path] = initial(gas.flags)
+		.[gas_path] = initial(gas.gas_flags)
 
 /proc/meta_gas_by_flag_list()
 	. = list()
@@ -106,6 +108,13 @@ GLOBAL_LIST_INIT(meta_gas_molar_mass, meta_gas_molar_mass_list())
 	for(var/gas_path in gases)
 		var/datum/gas/G = gas_path
 		.[gas_path] = initial(G.molar_mass)
+
+/proc/meta_gas_typecache_no_overlays_list()
+	. = list()
+	for(var/gastype in subtypesof(/datum/gas))
+		var/datum/gas/gasvar = gastype
+		if (!initial(gasvar.gas_overlay))
+			.[gastype] = TRUE
 
 // Visual overlay
 /obj/effect/overlay/gas
