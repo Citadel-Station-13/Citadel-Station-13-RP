@@ -10,7 +10,6 @@
 #define DEBUG
 // END_PREFERENCES
 // BEGIN_INCLUDE
-#include "__DEFINES\atmospherics\air_status.dm"
 #include "code\_away_mission_tests.dm"
 #include "code\_macros.dm"
 #include "code\_map_tests.dm"
@@ -92,6 +91,8 @@
 #include "code\__DEFINES\xenoarcheaology.dm"
 #include "code\__DEFINES\ZAS.dm"
 #include "code\__DEFINES\admin\keybindings.dm"
+#include "code\__DEFINES\atmospherics\air_status.dm"
+#include "code\__DEFINES\atmospherics\atmos_pass.dm"
 #include "code\__DEFINES\atmospherics\atmospheres.dm"
 #include "code\__DEFINES\atmospherics\constants.dm"
 #include "code\__DEFINES\atmospherics\flags.dm"
@@ -1621,7 +1622,7 @@
 #include "code\modules\atmospherics\pipes\vent.dm"
 #include "code\modules\atmospherics\zas\_docs.dm"
 #include "code\modules\atmospherics\zas\Airflow.dm"
-#include "code\modules\atmospherics\zas\Atom.dm"
+#include "code\modules\atmospherics\zas\atom.dm"
 #include "code\modules\atmospherics\zas\Connection.dm"
 #include "code\modules\atmospherics\zas\ConnectionManager.dm"
 #include "code\modules\atmospherics\zas\Controller.dm"
