@@ -45,12 +45,5 @@ fi;
 #     echo "Misspelling(s) of CENTCOM detected in maps, please remove the extra M(s)."
 #     st=1
 # fi;
-if grep -E '\\\\(red|blue|green|black|b|i[^mc])' code/**/*.dm; then
-	num=`grep -E '\\\\(red|blue|green|black|b|i[^mc])' code/**/*.dm | wc -l`; #bad? yes
-	if [ $num -le 4 ]; then
-		echo "$num escapes (expecting 4 or less) in the code, please fix this."
-		st=1
-	fi;
-fi;
 
 exit $st
