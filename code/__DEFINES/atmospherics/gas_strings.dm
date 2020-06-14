@@ -23,6 +23,8 @@
 #define GAS_STRING_TYR						"co2=17;TEMP=405"
 /// Firnir
 #define GAS_STRING_FIRNIR					"co2=4.9;TEMP=570"
+/// Snow turfs
+#define GAS_STRING_TURF_SNOW "o2=25.3;101.2;TEMP=213.15"
 
 // Atmospherics primary gas tanks
 /// Atmospherics N2O gas tank

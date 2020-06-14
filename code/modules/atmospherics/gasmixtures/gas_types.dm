@@ -22,6 +22,8 @@ GLOBAL_LIST_INIT(meta_gas_id_lookup, meta_gas_id_lookup_list())
 GLOBAL_LIST_INIT(meta_gas_flags, meta_gas_flag_list())
 /// Gases by gas flag
 GLOBAL_LIST_INIT(meta_gas_by_flag, meta_gas_by_flag_list())
+/// Gas molar mass by gas
+GLOBAL_LIST_INIT(meta_gas_molar_mass, meta_gas_molar_mass_list())
 
 /proc/meta_gas_heat_list()
 	. = subtypesof(/datum/gas)
@@ -97,6 +99,13 @@ GLOBAL_LIST_INIT(meta_gas_by_flag, meta_gas_by_flag_list())
 			if(gas_flags & i)
 				// add to list
 				LAZYADD(.["[i]"], gas_path)
+
+/proc/meta_gas_molar_mass_list()
+	. = list()
+	var/list/gases = subtypesof(/datum/gas)
+	for(var/gas_path in gases)
+		var/datum/gas/G = gas_path
+		.[gas_path] = initial(G.molar_mass)
 
 // Visual overlay
 /obj/effect/overlay/gas
