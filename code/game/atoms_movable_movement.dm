@@ -244,7 +244,7 @@
 				M.locationTransitForceMove(destination, recurse_levels - 1)
 			else
 				M.doLocationTransitForceMove(destination)
-			buckle_mob(M, force = TRUE)
+			buckle_mob(M, forced = TRUE)
 
 // until movement rework
 /mob/locationTransitForceMove(atom/destination, recurse_levels = 0)

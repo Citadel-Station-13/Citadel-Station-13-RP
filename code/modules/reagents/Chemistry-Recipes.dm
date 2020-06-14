@@ -2578,6 +2578,56 @@
 	required_reagents = list("sugar" = 1, "rum" = 2)
 	result_amount = 3
 
+/datum/chemical_reaction/drinks/newsheriff
+	name = "New Sheriff"
+	id = "newsheriff"
+	result = "newsheriff"
+	required_reagents = list("sassafras" = 1, "whiskey" = 1, "cognac" = 1)
+	result_amount = 3
+
+/datum/chemical_reaction/drinks/thehuckleberry
+	name = "The Huckleberry"
+	id = "thehuckleberry"
+	result = "thehuckleberry"
+	required_reagents = list("sarsaparilla" = 1, "berryjuice" = 1, "whiskey" = 1)
+	result_amount = 3
+
+/datum/chemical_reaction/drinks/quickdraw
+	name = "Quickdraw"
+	id = "quickdraw"
+	result = "quickdraw"
+	required_reagents = list("sarsaparilla" = 1, "rum" = 1, "bitters" = 1)
+	reaction_sound = "sound/weapons/gunshot/gunshot.ogg"
+	result_amount = 3
+
+/datum/chemical_reaction/drinks/dmhand
+	name = "Dead Man's Hand"
+	id = "dmhand"
+	result = "dmhand"
+	required_reagents = list("sassafras" = 1, "whiskey" = 2, "rum" = 2)
+	result_amount = 5
+
+/datum/chemical_reaction/drinks/snakeoil
+	name = "Snake Oil"
+	id = "snakeoil"
+	result = "snakeoil"
+	required_reagents = list("sarsaparilla" = 1, "grenadine" = 1, "absinthe" = 1, "phoron" = 1, "fuel" = 1)
+	result_amount = 3
+
+/datum/chemical_reaction/drinks/highnoon
+	name = "High Noon"
+	id = "highnoon"
+	result = "highnoon"
+	required_reagents = list("sassafras" = 1, "gold" = 2, "whiskey" = 2)
+	result_amount = 5
+
+/datum/chemical_reaction/drinks/bloodmeridian
+	name = "Blood Meridian"
+	id = "bloodmeridian"
+	result = "bloodmeridian"
+	required_reagents = list("sassafras" = 1, "vodkatonic" = 1, "blood" = 3, "egg" = 1, "bluecuracao" = 1)
+	result_amount = 5
+
 ////////////////////////////////
 /// End of booze drinks list///
 ///////////////////////////////

@@ -66,6 +66,7 @@
 		/obj/item/analyzer/plant_analyzer,
 		/obj/item/extinguisher/mini,
 		/obj/item/duct_tape_roll,
+		/obj/item/switchtool,
 		/obj/item/integrated_electronics/wirer,
 		/obj/item/integrated_electronics/debugger, //Vorestation edit adding debugger to toolbelt can hold list
 		)
@@ -136,6 +137,7 @@
 		/obj/item/flashlight,
 		/obj/item/cell/device,
 		/obj/item/extinguisher/mini,
+		/obj/item/switchtool/surgery,
 		/obj/item/storage/quickdraw/syringe_case
 		)
 
@@ -275,6 +277,7 @@
 		/obj/item/healthanalyzer,
 		/obj/item/geiger,
 		/obj/item/gps,
+		/obj/item/switchtool,
 		/obj/item/ano_scanner
 		)
 

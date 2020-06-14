@@ -59,6 +59,7 @@ var/list/global/tank_gauge_cache = list()
 
 /obj/item/tank/Initialize()
 	. = ..()
+	START_PROCESSING(SSobj, src)
 
 	src.init_proxy()
 	src.air_contents = new /datum/gas_mixture()
@@ -78,13 +79,6 @@ var/list/global/tank_gauge_cache = list()
 		qdel(TTV)
 
 	. = ..()
-
-/obj/item/weapon/tank/equipped() // Note that even grabbing into a hand calls this, so it should be fine as a 'has a player touched this'
-	. = ..()
-	// An attempt at optimization. There are MANY tanks during rounds that will never get touched.
-	// Don't see why any of those would explode spontaneously. So only tanks that players touch get processed.
-	// This could be optimized more, but it's a start!
-	START_PROCESSING(SSobj, src) // This has a built in safety to avoid multi-processing
 
 /obj/item/tank/examine(mob/user)
 	. = ..(user, 0)
@@ -507,7 +501,7 @@ var/list/global/tank_gauge_cache = list()
 
 			var/release_ratio = 0.002
 			if(tank_pressure)
-				release_ratio = CLAMP(0.002, sqrt(max(tank_pressure-env_pressure,0)/tank_pressure),1)
+				release_ratio = clamp(0.002, sqrt(max(tank_pressure-env_pressure,0)/tank_pressure),1)
 
 			var/datum/gas_mixture/leaked_gas = air_contents.remove_ratio(release_ratio)
 			//dynamic air release based on ambient pressure

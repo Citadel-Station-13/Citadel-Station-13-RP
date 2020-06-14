@@ -48,7 +48,6 @@
 	desc = "Tastes like... well, you know."
 
 /obj/item/reagent_containers/food/snacks/meat/chicken
-	name = "chicken"
 	icon = 'icons/obj/food.dmi'
 	icon_state = "chickenbreast"
 	cooked_icon = "chickenbreast_cooked"

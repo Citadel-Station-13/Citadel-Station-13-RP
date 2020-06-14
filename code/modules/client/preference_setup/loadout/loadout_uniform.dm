@@ -295,9 +295,9 @@
 	path = /obj/item/clothing/under/dress/dress_fire
 
 /datum/gear/uniform/uniform_captain
-	display_name = "uniform, colony director's dress"
+	display_name = "uniform, Facility Director's dress"
 	path = /obj/item/clothing/under/dress/dress_cap
-	allowed_roles = list("Colony Director")
+	allowed_roles = list("Facility Director")
 
 /datum/gear/uniform/corpdetsuit
 	display_name = "uniform, corporate (Detective)"
@@ -518,7 +518,7 @@
 /datum/gear/uniform/sifguard/command
 	display_name = "uniform, crew (command)"
 	path = /obj/item/clothing/under/solgov/utility/sifguard/officer/crew
-	allowed_roles = list("Head of Security","Colony Director","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer")
+	allowed_roles = list("Head of Security","Facility Director","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer")
 
 /datum/gear/uniform/fleet/medical
 	display_name = "uniform, coveralls (medical)"
@@ -551,7 +551,7 @@
 /datum/gear/uniform/fleet/command
 	display_name = "uniform, coveralls (command)"
 	path = /obj/item/clothing/under/solgov/utility/fleet/command
-	allowed_roles = list("Head of Security","Colony Director","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer")
+	allowed_roles = list("Head of Security","Facility Director","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer")
 
 /datum/gear/uniform/marine/medical
 	display_name = "uniform, fatigues (medical)"
@@ -584,7 +584,7 @@
 /datum/gear/uniform/marine/command
 	display_name = "uniform, fatigues (command)"
 	path = /obj/item/clothing/under/solgov/utility/marine/command
-	allowed_roles = list("Head of Security","Colony Director","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer")
+	allowed_roles = list("Head of Security","Facility Director","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer")
 
 /datum/gear/uniform/marine/green
 	display_name = "uniform, fatigues (green)"
@@ -712,3 +712,7 @@ datum/gear/uniform/fiendsuit
 datum/gear/uniform/fienddress
 	display_name = "Fiendish Dress"
 	path = /obj/item/clothing/under/fienddress
+	
+datum/gear/uniform/leotard
+	display_name = "Black leotard"
+	path = /obj/item/clothing/under/leotard

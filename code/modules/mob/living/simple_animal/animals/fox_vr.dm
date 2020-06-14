@@ -175,9 +175,9 @@
 //Captain fox
 /mob/living/simple_mob/fox/fluff/Renault
 	name = "Renault"
-	desc = "Renault, the Colony Director's trustworthy fox. I wonder what it says?"
+	desc = "Renault, the Facility Director's trustworthy fox. I wonder what it says?"
 	tt_desc = "Vulpes nobilis"
-	befriend_job = "Colony Director"
+	befriend_job = "Facility Director"
 
 /mob/living/simple_mob/fox/fluff/Renault/init_vore()
 	..()

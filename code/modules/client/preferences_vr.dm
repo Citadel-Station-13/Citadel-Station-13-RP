@@ -6,7 +6,7 @@ datum/preferences
 //Why weren't these in game toggles already?
 /client/verb/toggle_eating_noises()
 	set name = "Eating Noises"
-	set category = "Preferences"
+	set category = "Vore"
 	set desc = "Toggles Vore Eating noises."
 
 	var/pref_path = /datum/client_preference/eating_noises
@@ -22,7 +22,7 @@ datum/preferences
 
 /client/verb/toggle_digestion_noises()
 	set name = "Digestion Noises"
-	set category = "Preferences"
+	set category = "Vore"
 	set desc = "Toggles Vore Digestion noises."
 
 	var/pref_path = /datum/client_preference/digestion_noises

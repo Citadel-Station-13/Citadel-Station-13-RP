@@ -9,7 +9,6 @@
 	var/next_move_dir_sub
 
 // Set a client's focus to an object and override these procs on that object to let it handle keypresses
-
 /datum/proc/key_down(key, client/user) // Called when a key is pressed down initially
 	return
 
@@ -30,20 +29,30 @@
 		erase_output = "[erase_output];[macro_name].parent=null"
 	winset(src, null, erase_output)
 
-/client/proc/set_macros()
+/client/proc/apply_macro_set(name, list/macroset)
+	ASSERT(name)
+	ASSERT(islist(macroset))
+	winclone(src, "default", name)
+	for(var/i in 1 to length(macroset))
+		var/key = macroset[i]
+		var/command = macroset[key]
+		winset(src, "[name]-[REF(key)]", "parent=[name];name=[key];command=[command]")
+
+/client/proc/set_macros(datum/preferences/prefs_override = prefs)
 	set waitfor = FALSE
 
 	keys_held.Cut()
 
 	erase_all_macros()
 
-	var/list/macro_set = SSinput.macro_set
-	for(var/k in 1 to length(macro_set))
-		var/key = macro_set[k]
-		var/command = macro_set[key]
-		winset(src, "default-[REF(key)]", "parent=default;name=[key];command=[command]")
+	apply_macro_set(SKIN_MACROSET_HOTKEYS, SSinput.macroset_hotkey)
+	apply_macro_set(SKIN_MACROSET_CLASSIC_HOTKEYS, SSinput.macroset_classic_hotkey)
+	apply_macro_set(SKIN_MACROSET_CLASSIC_INPUT, SSinput.macroset_classic_input)
 
-	if(prefs.hotkeys)
-		winset(src, null, "input.focus=true input.background-color=[COLOR_INPUT_ENABLED]")
+	set_hotkeys_preference()
+
+/client/proc/set_hotkeys_preference(datum/preferences/prefs_override = prefs)
+	if(prefs_override.hotkeys)
+		winset(src, null, "map.focus=true input.background-color=[COLOR_INPUT_DISABLED] mainwindow.macro=[SKIN_MACROSET_HOTKEYS]")
 	else
-		winset(src, null, "input.focus=true input.background-color=[COLOR_INPUT_DISABLED]")
+		winset(src, null, "input.focus=true input.background-color=[COLOR_INPUT_ENABLED] mainwindow.macro=[SKIN_MACROSET_CLASSIC_INPUT]")

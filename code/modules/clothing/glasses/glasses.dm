@@ -537,7 +537,6 @@ BLIND     // can't see anything
 		update_clothing_icon()
 		usr.update_action_buttons()
 
-// April 2020 Drof's Additions Begin Below
 /obj/item/clothing/glasses/jamjar
 	name = "jamjar glasses"
 	desc = "A staple of the neo-otaku's wardrobe."
@@ -554,13 +553,10 @@ BLIND     // can't see anything
 	toggleable = 1
 	action_button_name = "Toggle Out/In"
 
-/obj/item/clothing/glasses/sunglasses/whiteblindfold
+/obj/item/clothing/glasses/sunglasses/blindfold/whiteblindfold
 	name = "white blindfold"
 	desc = "A white blindfold that covers the eyes, preventing sight."
 	icon_state = "blindfoldwhite"
-	item_state_slots = list(slot_r_hand_str = "blindfold", slot_l_hand_str = "blindfold")
-	flash_protection = FLASH_PROTECTION_MAJOR
-	vision_flags = BLIND
 
 /obj/item/clothing/glasses/redglasses
 	name = "red glasses"

@@ -95,7 +95,7 @@
 	icon_state = "securitypack"
 
 /obj/item/storage/backpack/captain
-	name = "colony director's backpack"
+	name = "Facility Director's backpack"
 	desc = "It's a special backpack made exclusively for officers."
 	icon_state = "captainpack"
 
@@ -157,7 +157,7 @@
 	icon_state = "duffle_syndieammo"
 
 /obj/item/storage/backpack/dufflebag/captain
-	name = "colony director's dufflebag"
+	name = "Facility Director's dufflebag"
 	desc = "A large dufflebag for holding extra captainly goods."
 	icon_state = "duffle_captain"
 
@@ -252,7 +252,7 @@
 	icon_state = "satchel_hyd"
 
 /obj/item/storage/backpack/satchel/cap
-	name = "colony director's satchel"
+	name = "Facility Director's satchel"
 	desc = "An exclusive satchel for officers."
 	icon_state = "satchel-cap"
 	item_state_slots = list(slot_r_hand_str = "captainpack", slot_l_hand_str = "captainpack")

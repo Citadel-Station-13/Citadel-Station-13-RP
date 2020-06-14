@@ -841,10 +841,10 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	return
 
 /mob/proc/AdjustLosebreath(amount)
-	losebreath = CLAMP(0, losebreath + amount, 25)
+	losebreath = clamp(0, losebreath + amount, 25)
 
 /mob/proc/SetLosebreath(amount)
-	losebreath = CLAMP(0, amount, 25)
+	losebreath = clamp(0, amount, 25)
 
 /mob/proc/get_species()
 	return ""
@@ -1015,6 +1015,38 @@ mob/proc/yank_out_object()
 /mob/verb/westfaceperm()
 	set hidden = 1
 	set_face_dir(client.client_dir(WEST))
+
+/mob/verb/eastshift()
+	set hidden = TRUE
+	if(!canface())
+		return FALSE
+	if(pixel_x <= 16)
+		pixel_x++
+		is_shifted = TRUE
+
+/mob/verb/westshift()
+	set hidden = TRUE
+	if(!canface())
+		return FALSE
+	if(pixel_x >= -16)
+		pixel_x--
+		is_shifted = TRUE
+
+/mob/verb/northshift()
+	set hidden = TRUE
+	if(!canface())
+		return FALSE
+	if(pixel_y <= 16)
+		pixel_y++
+		is_shifted = TRUE
+
+/mob/verb/southshift()
+	set hidden = TRUE
+	if(!canface())
+		return FALSE
+	if(pixel_y >= -16)
+		pixel_y--
+		is_shifted = TRUE
 
 /mob/proc/adjustEarDamage()
 	return

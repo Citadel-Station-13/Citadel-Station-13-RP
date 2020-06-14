@@ -92,6 +92,23 @@
 			message = "squishes."
 			m_type = 1
 
+		// SHRIEK VOXXY ONLY
+		if ("shriekloud")
+			if(src.species.name != SPECIES_VOX)
+				to_chat(src, "<span class='warning'>You aren't ear piercingly vocal enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/shrieksneeze.ogg', 50, 0)
+			message = "gives a short sharp shriek!"
+			m_type = 1
+
+		if ("shriekshort")
+			if(src.species.name != SPECIES_VOX)
+				to_chat(src, "<span class='warning'>You aren't noisy enough!</span>")
+				return
+			playsound(src.loc, 'sound/voice/shriekcough.ogg', 50, 0)
+			message = "gives a short, quieter shriek!"
+			m_type = 1
+
 
 		if ("blink")
 			message = "blinks."
@@ -784,10 +801,10 @@
 				message = "makes a light spitting noise, a poor attempt at a whistle."
 
 		if ("help")
-			to_chat(src, "blink, blink_r, blush, bow-(none)/mob, burp, choke, chuckle, clap, collapse, cough, cry, custom, deathgasp, drool, eyebrow, fastsway/qwag, \
-					frown, gasp, giggle, glare-(none)/mob, grin, groan, grumble, handshake, hug-(none)/mob, laugh, look-(none)/mob, moan, mumble, nod, pale, point-atom, \
-					raise, salute, scream, sneeze, shake, shiver, shrug, sigh, signal-#1-10, slap-(none)/mob, smile, sneeze, sniff, snore, stare-(none)/mob, stopsway/swag, sway/wag, swish, tremble, twitch, \
-					twitch_v, vomit, whimper, wink, yawn. Synthetics: beep, buzz, yes, no, rcough, rsneeze, ping")
+			to_chat(src, "awoo, bark, blink, blink_r, blush, bow-(none)/mob, burp, chirp, choke, chuckle, clap, collapse, cough, cry, custom, deathgasp, drool, eyebrow, fastsway/qwag, \
+					flip, frown, gasp, giggle, glare-(none)/mob, grin, groan, grumble, handshake, hiss, hug-(none)/mob, laugh, look-(none)/mob, merp, moan, mumble, nod, nya, pale, peep, point-atom, \
+					raise, salute, scream, sneeze, shake, shiver, shrug, sigh, signal-#1-10, slap-(none)/mob, smile, sneeze, sniff, snore, stare-(none)/mob, stopsway/swag, squeak, sway/wag, swish, tremble, twitch, \
+					twitch_v, vomit, weh, whimper, wink, yawn. Synthetics: beep, buzz, yes, no, rcough, rsneeze, ping. Vox: shriekshort, shriekloud")
 
 		else
 			to_chat(src, "<font color='blue'>Unusable emote '[act]'. Say *help or *vhelp for a list.</font>") //VOREStation Edit, mention *vhelp for Virgo-specific emotes located in emote_vr.dm.

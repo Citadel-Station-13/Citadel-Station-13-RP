@@ -347,7 +347,7 @@ End Citadel Change */
 	if(iscarbon(M) && !M.isSynthetic())
 		var/message = pick("Oh god, it smells disgusting here.", "What is that stench?", "That's an awful odor.")
 		to_chat(M,"<span class='alien'>[message]</span>")
-		if(prob(CLAMP(amount, 5, 90)))
+		if(prob(clamp(amount, 5, 90)))
 			var/mob/living/L = M
 			L.vomit()
 	return ..()
@@ -1882,6 +1882,32 @@ End Citadel Change */
 	glass_icon = DRINK_ICON_NOISY
 	glass_special = list(DRINK_FIZZ)
 
+/datum/reagent/drink/soda/sarsaparilla
+	name = "CC's Homemade Sarsaparilla"
+	id = "sarsaparilla"
+	description = "The Cyan Cowgirl rides again!"
+	taste_description = "earthy vanilla and harsh bubbles"
+	color = "#503301"
+	adj_temp = -2
+
+	glass_name = "CC's Homemade Sarsaparilla"
+	glass_desc = "Real girls drink from the bottle."
+	glass_icon = DRINK_ICON_NOISY
+	glass_special = list(DRINK_FIZZ)
+
+/datum/reagent/drink/soda/sassafras
+	name = "CC's Famous Root Beer"
+	id = "sassafras"
+	description = "Feel nostalgia for a range you never rode."
+	taste_description = "bitter licorice and sweet vanilla"
+	color = "#312003"
+	adj_temp = -2
+
+	glass_name = "CC's Famous Root Beer"
+	glass_desc = "Wet your whistle!"
+	glass_icon = DRINK_ICON_NOISY
+	glass_special = list(DRINK_FIZZ)
+
 /* Alcohol */
 
 // Basic
@@ -2174,6 +2200,27 @@ End Citadel Change */
 	glass_name = "wine"
 	glass_desc = "A very classy looking drink."
 
+/datum/reagent/ethanol/peppermintschnapps
+	name = "Peppermint Schnapps"
+	id = "schnapps_pep"
+	description = "A flavoured grain liqueur with a fresh, minty taste."
+	taste_description = "minty"
+	strength = 90
+
+/datum/reagent/ethanol/peachschnapps
+	name = "Peppermint Schnapps"
+	id = "schnapps_pea"
+	description = "A flavoured grain liqueur with a fresh, peachy taste."
+	taste_description = "peachy"
+	strength = 90
+
+/datum/reagent/ethanol/lemonadeschnapps
+	name = "Lemonade Schnapps"
+	id = "schnapps_lem"
+	description = "A flavoured grain liqueur with a fresh, lemony taste."
+	taste_description = "lemony"
+	strength = 90
+
 /datum/reagent/ethanol/wine/champagne
 	name = "Champagne"
 	id = "champagne"
@@ -2196,13 +2243,6 @@ End Citadel Change */
 	glass_name = "cider"
 	glass_desc = "The second most Irish drink."
 	glass_special = list(DRINK_FIZZ)
-
-/datum/reagent/ethanol/peppermintschnapps
-	name = "Peppermint Schnapps"
-	id = "schnapps_pep"
-	description = "A flavoured grain liqueur with a fresh, minty taste."
-	taste_description = "peachy"
-	strength = 90
 
 // Cocktails
 
@@ -3573,6 +3613,93 @@ End Citadel Change */
 	taste_description = "rum and sugar"
 	strength = 70
 	targ_temp = 300
+
+/datum/reagent/ethanol/alcsassafras
+	name = "CC's Hard Rootbeer"
+	id = "alcsassafras"
+	description = "Doesn't matter if you're drunk when you have a horse to take you home!"
+	taste_description = "bitter vanilla with a sharp burn"
+	strength = 20
+
+	glass_name = "CC's Hard Rootbeer"
+	glass_desc = "You'd better carry two guns if you're gonna keep drinking these!"
+	glass_icon = DRINK_ICON_NOISY
+	glass_special = list(DRINK_FIZZ)
+
+/datum/reagent/ethanol/newsheriff
+	name = "New Sheriff"
+	id = "newsheriff"
+	description = "A drink to make your saddles blaze!"
+	taste_description = "an earthy kick with a lingering burn"
+	strength = 35
+
+	glass_name = "New Sheriff"
+	glass_desc = "A drink to make your saddles blaze!"
+
+/datum/reagent/ethanol/thehuckleberry
+	name = "The Huckleberry"
+	id = "thehuckleberry"
+	description = "If I thought you weren't my best customer, I just don't think I could bear it."
+	taste_description = "sweet fruits masking barrel-aged wit"
+	strength = 20
+	adj_temp = -10
+
+	glass_name = "The Huckleberry"
+	glass_desc = "If I thought you weren't my best customer, I just don't think I could bear it."
+
+/datum/reagent/ethanol/quickdraw
+	name = "Quickdraw"
+	id = "quickdraw"
+	description = "Nobody was faster than Beauregard. Nobody could outdraw him. Nobody could aim as true as old Jack. If he died, Nobody saw him."
+	taste_description = "aged herbs and gunsmoke"
+	strength = 35
+
+	glass_name = "Quickdraw"
+	glass_desc = "Nobody was faster than Beauregard. Nobody could outdraw him. Nobody could aim as true as old Jack. If he died, Nobody saw him."
+
+/datum/reagent/ethanol/dmhand
+	name = "Dead Man's Hand"
+	id = "dmhand"
+	description = "If you find yourself drinking this during a game of poker, keep your back to the wall."
+	taste_description = "a pair of classics and a licorice surprise"
+	strength = 35
+
+	glass_name = "Dead Man's Hand"
+	glass_desc = "If you find yourself drinking this during a game of poker, keep your back to the wall."
+
+/datum/reagent/ethanol/snakeoil
+	name = "Snake Oil"
+	id = "snakeoil"
+	description = "A 'healthy' potion with a bite! Now with 56% less Arsenic."
+	taste_description = "sour alcohol and something metallic"
+	strength = 75
+	druggy = 15
+	toxicity = 2
+	adj_temp = 5
+
+	glass_name = "Snake Oil"
+	glass_desc = "A 'healthy' potion with a bite! Now with 56% less Arsenic."
+
+/datum/reagent/ethanol/highnoon
+	name = "High Noon"
+	id = "highnoon"
+	description = "There's two kinds of people here on the Frontier, partner. Those with guns, and those who drink. You drink."
+	taste_description = "aged whiskey and earthy metals"
+	strength = 30
+	adj_temp = 2
+
+	glass_name = "High Noon"
+	glass_desc = "There's two kinds of people here on the Frontier, partner. Those with guns, and those who drink. You drink."
+
+/datum/reagent/ethanol/bloodmeridian
+	name = "Blood Meridian"
+	id = "bloodmeridian"
+	description = "The perfect drink for when you want to dance and fiddle all night. Does it work? You be The Judge."
+	taste_description = "lingering regret, gunpowder, and blood"
+	strength = 50
+
+	glass_name = "Blood Meridian"
+	glass_desc = "The perfect drink for when you want to dance and fiddle all night. Does it work? You be The Judge."
 
 ///////////////////////////////////////////////
 //// End of list for drinks for bartenders ////

@@ -13,22 +13,22 @@
 			var/temp = winget(client, "input", "text")
 			if(findtextEx(temp, "Say \"", 1, 7) && length(temp) > 5)	//case sensitive means
 
-				temp = replacetext(temp, ";", "")	//general radio
+				temp = replacetext_char(temp, ";", "")	//general radio
 
-				if(findtext(trim_left(temp), ":", 6, 7))	//dept radio
-					temp = copytext(trim_left(temp), 8)
+				if(findtext_char(trim_left(temp), ":", 6, 7))	//dept radio
+					temp = copytext_char(trim_left(temp), 8)
 					virgin = 0
 
 				if(virgin)
-					temp = copytext(trim_left(temp), 6)	//normal speech
+					temp = copytext_char(trim_left(temp), 6)	//normal speech
 					virgin = 0
 
-				while(findtext(trim_left(temp), ":", 1, 2))	//dept radio again (necessary)
-					temp = copytext(trim_left(temp), 3)
+				while(findtext_char(trim_left(temp), ":", 1, 2))	//dept radio again (necessary)
+					temp = copytext_char(trim_left(temp), 3)
 
-				if(findtext(temp, "*", 1, 2))	//emotes
+				if(findtext_char(temp, "*", 1, 2))	//emotes
 					return
-				temp = copytext(trim_left(temp), 1, rand(5,8))
+				temp = copytext_char(trim_left(temp), 1, rand(5,8))
 
 				var/trimmed = trim_left(temp)
 				if(length(trimmed))
@@ -125,7 +125,7 @@
 
 /mob/living/carbon/human/say_quote(var/message, var/datum/language/speaking = null)
 	var/verb = "says"
-	var/ending = copytext(message, length(message))
+	var/ending = copytext_char(message, length(message))
 
 	if(speaking)
 		verb = speaking.get_spoken_verb(ending)

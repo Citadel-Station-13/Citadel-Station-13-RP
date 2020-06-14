@@ -14,7 +14,7 @@
 	attack_verb = list("stamped")
 
 /obj/item/stamp/captain
-	name = "colony director's rubber stamp"
+	name = "Facility Director's rubber stamp"
 	icon_state = "stamp-cap"
 
 /obj/item/stamp/hop
