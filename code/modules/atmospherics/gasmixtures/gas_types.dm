@@ -123,7 +123,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	anchored = TRUE  // should only appear in vis_contents, but to be safe
 	layer = FLY_LAYER
 	appearance_flags = TILE_BOUND
-	vis_flags = NONE
+	// vis_flags = NONE			boomers won't update their clients, fine.
 
 /obj/effect/overlay/gas/New(state, alph)
 	. = ..()
