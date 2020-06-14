@@ -205,14 +205,16 @@ Class Procs:
 
 	if(istype(B))
 		for(var/connection_edge/zone/edge in A.edges)
-			if(edge.contains_zone(B)) return edge
+			if(edge.contains_zone(B))
+				return edge
 		var/connection_edge/edge = new/connection_edge/zone(A,B)
 		edges.Add(edge)
 		edge.recheck()
 		return edge
 	else
 		for(var/connection_edge/unsimulated/edge in A.edges)
-			if(has_same_air(edge.B,B)) return edge
+			if(has_same_air(edge.B,B))
+				return edge
 		var/connection_edge/edge = new/connection_edge/unsimulated(A,B)
 		edges.Add(edge)
 		edge.recheck()

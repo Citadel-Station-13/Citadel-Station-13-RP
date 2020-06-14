@@ -218,7 +218,7 @@
 
 /obj/item/tank/stasis/nitro_cryo/Initialize()
 	. = ..()
-	src.air_contents.adjust_gas_temp("nitrogen", (3*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*TN60C), TN60C)
+	src.air_contents.adjust_gas_temp(/datum/gas/nitrogen, (3*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*TN60C), TN60C)
 
 //co2
 /obj/item/tank/carbon_dioxide

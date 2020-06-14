@@ -35,8 +35,9 @@
 
 	for(var/turf/simulated/T in world)
 		T.air = null
-		T.vis_contents -= T.zone.turf_graphics
-		T.zone = null
+		if(T.zone)
+			T.vis_contents -= T.zone.turf_graphics
+			T.zone = null
 
 	to_chat(usr, "\[4/5\] - All turfs reset to roundstart values.")
 
