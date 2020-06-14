@@ -43,13 +43,13 @@
 			var/total_moles = air_sample.total_moles
 			if(total_moles > 0)
 				if(output&4)
-					signal.data["oxygen"] = round(100*air_sample.gas["oxygen"]/total_moles,0.1)
+					signal.data["oxygen"] = round(100*air_sample.gas[/datum/gas/oxygen]/total_moles,0.1)
 				if(output&8)
-					signal.data["phoron"] = round(100*air_sample.gas["phoron"]/total_moles,0.1)
+					signal.data["phoron"] = round(100*air_sample.gas[/datum/gas/phoron]/total_moles,0.1)
 				if(output&16)
-					signal.data["nitrogen"] = round(100*air_sample.gas["nitrogen"]/total_moles,0.1)
+					signal.data["nitrogen"] = round(100*air_sample.gas[/datum/gas/nitrogen]/total_moles,0.1)
 				if(output&32)
-					signal.data["carbon_dioxide"] = round(100*air_sample.gas["carbon_dioxide"]/total_moles,0.1)
+					signal.data["carbon_dioxide"] = round(100*air_sample.gas[/datum/gas/carbon_dioxide]/total_moles,0.1)
 			else
 				signal.data["oxygen"] = 0
 				signal.data["phoron"] = 0

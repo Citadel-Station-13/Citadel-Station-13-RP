@@ -67,7 +67,7 @@
 
 	var/datum/gas_mixture_old/G = air_contents.remove(num)
 
-	var/allgases = G.gas["carbon_dioxide"] + G.gas["nitrogen"] + G.gas["oxygen"] + G.gas["phoron"]
+	var/allgases = G.gas[/datum/gas/carbon_dioxide] + G.gas[/datum/gas/nitrogen] + G.gas[/datum/gas/oxygen] + G.gas[/datum/gas/phoron]
 	if(allgases >= 0.005)
 		return 1
 
@@ -132,7 +132,7 @@
 
 	var/datum/gas_mixture_old/G = pressure_vessel.air_contents.remove(num)
 
-	var/allgases = G.gas["carbon_dioxide"] + G.gas["nitrogen"] + G.gas["oxygen"] + G.gas["phoron"]
+	var/allgases = G.gas[/datum/gas/carbon_dioxide] + G.gas[/datum/gas/nitrogen] + G.gas[/datum/gas/oxygen] + G.gas[/datum/gas/phoron]
 	if(allgases >= 0.005)
 		return 1
 	qdel(G)

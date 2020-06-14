@@ -287,28 +287,28 @@
 																		//These tanks we're sure of their contents
 										if("nitrogen") 							//So we're a bit more picky about them.
 
-											if(t.air_contents.gas["nitrogen"] && !t.air_contents.gas["oxygen"])
-												contents.Add(t.air_contents.gas["nitrogen"])
+											if(t.air_contents.gas[/datum/gas/nitrogen] && !t.air_contents.gas[/datum/gas/oxygen])
+												contents.Add(t.air_contents.gas[/datum/gas/nitrogen])
 											else
 												contents.Add(0)
 
 										if ("oxygen")
-											if(t.air_contents.gas["oxygen"] && !t.air_contents.gas["phoron"])
-												contents.Add(t.air_contents.gas["oxygen"])
+											if(t.air_contents.gas[/datum/gas/oxygen] && !t.air_contents.gas[/datum/gas/phoron])
+												contents.Add(t.air_contents.gas[/datum/gas/oxygen])
 											else
 												contents.Add(0)
 
 										// No races breath this, but never know about downstream servers.
 										if ("carbon_dioxide")
-											if(t.air_contents.gas["carbon_dioxide"] && !t.air_contents.gas["phoron"])
-												contents.Add(t.air_contents.gas["carbon_dioxide"])
+											if(t.air_contents.gas[/datum/gas/carbon_dioxide] && !t.air_contents.gas[/datum/gas/phoron])
+												contents.Add(t.air_contents.gas[/datum/gas/carbon_dioxide])
 											else
 												contents.Add(0)
 
 										// And here's for the Vox
 										if ("phoron")
-											if(t.air_contents.gas["phoron"] && !t.air_contents.gas["oxygen"])
-												contents.Add(t.air_contents.gas["phoron"])
+											if(t.air_contents.gas[/datum/gas/phoron] && !t.air_contents.gas[/datum/gas/oxygen])
+												contents.Add(t.air_contents.gas[/datum/gas/phoron])
 											else
 												contents.Add(0)
 
