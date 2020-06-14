@@ -7,7 +7,7 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the Colony Director"
+	supervisors = "the Facility Director"
 	selection_color = "#AD6BAD"
 	idtype = /obj/item/card/id/science/head
 	req_admin_notify = 1

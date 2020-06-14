@@ -52177,7 +52177,7 @@
 /area/bridge_hallway)
 "bTP" = (
 /obj/machinery/door/airlock/command{
-	name = "Colony Director's Quarters";
+	name = "Facility Director's Quarters";
 	req_access = list(20)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -54270,7 +54270,7 @@
 	dir = 1
 	},
 /obj/effect/landmark/start{
-	name = "Colony Director"
+	name = "Facility Director"
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
@@ -54282,8 +54282,9 @@
 	broadcasting = 0;
 	dir = 4;
 	listening = 1;
-	name = "Colony Director's Intercom";
-	pixel_x = 21
+	name = "Facility Director's Intercom";
+	pixel_x = 21;
+	pixel_y = 0
 	},
 /obj/structure/table/woodentable,
 /obj/item/folder/blue_captain,
@@ -54924,7 +54925,7 @@
 /obj/item/megaphone,
 /obj/machinery/requests_console{
 	announcementConsole = 1;
-	department = "Colony Director's Desk";
+	department = "Facility Director's Desk";
 	departmentType = 5;
 	name = "Station Administrator RC";
 	pixel_x = 30
@@ -56894,7 +56895,7 @@
 "ccy" = (
 /obj/machinery/door/airlock/command{
 	id_tag = "captaindoor";
-	name = "Colony Director's Office";
+	name = "Facility Director's Office";
 	req_access = list(20)
 	},
 /obj/structure/disposalpipe/segment,

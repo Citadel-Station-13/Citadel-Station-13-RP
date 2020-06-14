@@ -3384,7 +3384,7 @@
 	dir = 6
 	},
 /obj/effect/landmark/start{
-	name = "Colony Director"
+	name = "Facility Director"
 	},
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/wood,
@@ -3434,7 +3434,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock/command{
 	id_tag = null;
-	name = "Colony Director's Bedroom";
+	name = "Facility Director's Bedroom";
 	req_access = list(20);
 	req_one_access = newlist()
 	},
@@ -3452,7 +3452,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/landmark/start{
-	name = "Colony Director"
+	name = "Facility Director"
 	},
 /turf/simulated/floor/carpet/blucarpet,
 /area/crew_quarters/captain)
@@ -5501,7 +5501,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/command{
 	id_tag = "captaindoor";
-	name = "Colony Director's Office";
+	name = "Facility Director's Office";
 	req_access = list(20);
 	req_one_access = newlist()
 	},
@@ -7752,7 +7752,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/start{
-	name = "Colony Director"
+	name = "Facility Director"
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)

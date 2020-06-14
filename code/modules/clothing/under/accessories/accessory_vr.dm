@@ -183,6 +183,20 @@
 	overlay_state = "collar_holo_overlay"
 	matter = list(DEFAULT_WALL_MATERIAL = 50)
 
+/obj/item/clothing/accessory/collar/silvercolor
+	name = "Dyeable Silver tag collar"
+	desc = "A collar for your little pets... or the big ones."
+	icon_state = "collar_blk_colorized"
+	item_state = "collar_blk_colorized_overlay"
+	overlay_state = "collar_blk_colorized_overlay"
+
+/obj/item/clothing/accessory/collar/cowbell
+	name = "Cowbell collar"
+	desc = "A collar for your little pets... or the big ones."
+	icon_state = "collar_cowbell"
+	item_state = "collar_cowbell_overlay"
+	overlay_state = "collar_cowbell_overlay"
+
 //TFF 17/6/19 - public loadout addition: Indigestible Holocollar
 /obj/item/clothing/accessory/collar/holo/indigestible
 	name = "Holo-collar"

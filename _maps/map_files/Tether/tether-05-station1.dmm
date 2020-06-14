@@ -18327,7 +18327,7 @@
 	dir = 6
 	},
 /obj/effect/landmark/start{
-	name = "Colony Director"
+	name = "Facility Director"
 	},
 /obj/item/storage/secure/safe{
 	pixel_x = -28
@@ -19675,7 +19675,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/command{
 	id_tag = "captaindoor";
-	name = "Colony Director's Office";
+	name = "Facility Director's Office";
 	req_access = list(20)
 	},
 /turf/simulated/floor/tiled/dark,
@@ -20121,7 +20121,7 @@
 	},
 /obj/machinery/door/airlock/command{
 	id_tag = "captaindoor";
-	name = "Colony Director's Office";
+	name = "Facility Director's Office";
 	req_access = list(20)
 	},
 /obj/machinery/door/firedoor/glass,
@@ -20273,7 +20273,7 @@
 /obj/structure/table/woodentable,
 /obj/machinery/computer/skills,
 /obj/item/perfect_tele{
-	desc = "Seems absurd, doesn't it? Yet, here we are. This handheld device is capable of producing bluespace teleportation beacons, and can be activated to translocate the user or a target of their choice to any linked beacon. This one is the Colony Director's.";
+	desc = "Seems absurd, doesn't it? Yet, here we are. This handheld device is capable of producing bluespace teleportation beacons, and can be activated to translocate the user or a target of their choice to any linked beacon. This one is the Facility Director's.";
 	name = "director's translocator"
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -20470,7 +20470,7 @@
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/command{
-	name = "Colony Director's Quarters";
+	name = "Facility Director's Quarters";
 	req_access = list(20)
 	},
 /obj/machinery/door/blast/regular{
@@ -20478,7 +20478,7 @@
 	dir = 4;
 	icon_state = "pdoor0";
 	id = "cd-blast";
-	name = "Colony Director Lockdown";
+	name = "Facility Director Lockdown";
 	opacity = 0
 	},
 /obj/structure/disposalpipe/segment{
@@ -20587,7 +20587,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/dogbed{
-	desc = "A bed made just for the Colony Director's fox.";
+	desc = "A bed made just for the Facility Director's fox.";
 	name = "Renault's Bed"
 	},
 /mob/living/simple_mob/animal/passive/fox/renault,
@@ -20627,7 +20627,7 @@
 	},
 /obj/item/card/id/gold/captain/spare,
 /obj/machinery/door/window/brigdoor/westright{
-	name = "Colony Director's Storage";
+	name = "Facility Director's Storage";
 	req_access = list(20)
 	},
 /turf/simulated/floor/wood,
@@ -22602,7 +22602,7 @@
 "hFL" = (
 /obj/machinery/button/remote/blast_door{
 	id = "cd-blast";
-	name = "Colony Director Lockdown"
+	name = "Facility Director Lockdown"
 	},
 /turf/simulated/wall/r_wall,
 /area/crew_quarters/captain)
@@ -25031,7 +25031,7 @@
 	},
 /obj/structure/window/reinforced,
 /obj/machinery/door/window/brigdoor/eastright{
-	name = "Colony Director's Voidsuit";
+	name = "Facility Director's Voidsuit";
 	req_access = list(20)
 	},
 /obj/item/clothing/suit/space/void/captain,

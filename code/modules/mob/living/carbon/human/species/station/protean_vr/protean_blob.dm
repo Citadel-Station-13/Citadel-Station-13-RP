@@ -273,13 +273,11 @@
 		drop_from_inventory(I)
 
 
-	if(slot_gloves && istype(slot_gloves, /obj/item/clothing/gloves/gauntlets/rig)) //drop RIGsuit gauntlets to avoid fucky wucky-ness.
-		var/obj/item/clothing/gloves/riggloves = slot_gloves
-			drop_from_inventory(riggloves)
+	if(istype(slot_gloves, /obj/item/clothing/gloves/gauntlets/rig)) //drop RIGsuit gauntlets to avoid fucky wucky-ness.
+		drop_from_inventory(slot_gloves)
 
-	if(slot_shoes && istype(slot_shoes, /obj/item/clothing/shoes/magboots)) //drop magboots because they're super heavy. also drops RIGsuit boots because they're magboot subtypes.
-		var/obj/item/clothing/shoes/magboots = slot_shoes
-			drop_from_inventory(magboots)
+	if(istype(slot_shoes, /obj/item/clothing/shoes/magboots)) //drop magboots because they're super heavy. also drops RIGsuit boots because they're magboot subtypes.
+		drop_from_inventory(slot_shoes)
 
 	for(var/obj/item/radio/headset/H in things_to_not_drop)
 		blob.mob_radio.keyslot1 = H.keyslot1

@@ -155,15 +155,15 @@
 	preserve_item = 1
 
 /obj/item/card/id/gold/captain
-	name = "\improper Colony Director's ID"
-	assignment = "Colony Director"
-	rank = "Colony Director"
+	name = "\improper Facility Director's ID"
+	assignment = "Facility Director"
+	rank = "Facility Director"
 	job_access_type = /datum/job/captain
 
 /obj/item/card/id/gold/captain/spare
-	name = "\improper Colony Director's spare ID"
+	name = "\improper Facility Director's spare ID"
 	desc = "The spare ID of the High Lord himself."
-	registered_name = "Colony Director"
+	registered_name = "Facility Director"
 	icon_state = "gold-id-alternate"
 	job_access_type = /datum/job/captain
 
