@@ -782,7 +782,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 6;
 	icon_state = "intact";
-
+	
 	},
 /turf/simulated/floor/plating,
 /area/tcomsat)
@@ -802,7 +802,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
 	dir = 1;
 	icon_state = "map";
-
+	
 	},
 /obj/machinery/meter,
 /obj/machinery/firealarm{
@@ -886,7 +886,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 5;
 	icon_state = "intact";
-
+	
 	},
 /turf/simulated/floor/plating,
 /area/tcomsat)
@@ -1030,7 +1030,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5;
 	icon_state = "intact";
-
+	
 	},
 /turf/simulated/floor/tiled,
 /area/tcommsat/computer)
@@ -1038,7 +1038,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4;
 	icon_state = "intact";
-
+	
 	},
 /turf/simulated/floor/tiled,
 /area/tcommsat/computer)
@@ -1049,7 +1049,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4;
 	icon_state = "intact";
-
+	
 	},
 /turf/simulated/floor/tiled,
 /area/tcommsat/computer)
@@ -1064,7 +1064,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10;
 	icon_state = "intact";
-
+	
 	},
 /turf/simulated/floor/tiled,
 /area/tcommsat/computer)
@@ -1514,7 +1514,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5;
 	icon_state = "intact";
-
+	
 	},
 /obj/machinery/airlock_sensor/airlock_exterior{
 	frequency = 1381;
