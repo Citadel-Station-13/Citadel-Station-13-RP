@@ -47,6 +47,7 @@
 	mead		spawn_reagent = "mead"
 	bitters		spawn_reagent = "bitters"
 	cider		spawn_reagent = "cider"
+	alcsassafras	spawn_reagent = "alcsassafras"
 
 	// Bar, soft
 	ice			spawn_reagent = "ice"
@@ -63,6 +64,8 @@
 	lime		spawn_reagent = "limejuice"
 	watermelon	spawn_reagent = "watermelonjuice"
 	lemon		spawn_reagent = "lemonjuice"
+	sarsaparilla	spawn_reagent = "sarsaparilla"
+	sassafras	spawn_reagent = "sassafras"
 
 	// Bar, coffee
 	coffee		spawn_reagent = "coffee"

@@ -51,6 +51,9 @@
 	if(modifiers["shift"] && modifiers["ctrl"])
 		CtrlShiftClickOn(A)
 		return 1
+	if(modifiers["shift"] && modifiers["middle"])
+		ShiftMiddleClickOn(A)
+		return 1
 	if(modifiers["middle"])
 		MiddleClickOn(A)
 		return 1
@@ -230,6 +233,10 @@
 	return
 */
 
+/mob/proc/ShiftMiddleClickOn(atom/A)
+	pointed(A)
+	return
+
 /*
 	Shift click
 	For most mobs, examine.
@@ -323,6 +330,8 @@
 // Simple helper to face what you clicked on, in case it should be needed in more than one place
 /mob/proc/face_atom(var/atom/A)
 	if(!A || !x || !y || !A.x || !A.y)
+		return
+	if(!canmove)
 		return
 	var/dx = A.x - x
 	var/dy = A.y - y

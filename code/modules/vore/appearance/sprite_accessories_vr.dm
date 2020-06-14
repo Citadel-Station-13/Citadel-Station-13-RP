@@ -412,6 +412,86 @@
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 
+/datum/sprite_accessory/ears/moth_antenna_fluff_gothic
+	name = "gothic moth antennae and fluff"
+	desc = ""
+	icon_state = "moth_antenna_fluff_goth"
+
+/datum/sprite_accessory/ears/moth_antenna_fluff_lovers
+	name = "lovers moth antennae and fluff"
+	desc = ""
+	icon_state = "moth_antenna_fluff_lovers"
+
+/datum/sprite_accessory/ears/moth_antenna_fluff_plain
+	name = "plain moth antennae and fluff"
+	desc = ""
+	icon_state = "moth_antenna_fluff_plain"
+
+/datum/sprite_accessory/ears/moth_antenna_fluff_red
+	name = "red moth antennae and fluff"
+	desc = ""
+	icon_state = "moth_antenna_fluff_red"
+
+/datum/sprite_accessory/ears/moth_antenna_fluff_royal
+	name = "royal moth antennae and fluff"
+	desc = ""
+	icon_state = "moth_antenna_fluff_royal"
+
+/datum/sprite_accessory/ears/moth_antenna_fluff_burnt
+	name = "burnt moth antennae and fluff"
+	desc = ""
+	icon_state = "moth_antenna_fluff_burnt"
+
+/datum/sprite_accessory/ears/moth_antenna_fluff_deathhead
+	name = "death's-head hawkmoth antennae and fluff"
+	desc = ""
+	icon_state = "moth_antenna_fluff_deathhead"
+
+/datum/sprite_accessory/ears/moth_antenna_fluff_firewatch
+	name = "firewatch moth antennae and fluff"
+	desc = ""
+	icon_state = "moth_antenna_fluff_firewatch"
+
+/datum/sprite_accessory/ears/moth_antenna_fluff_jungle
+	name = "jungle moth antennae and fluff"
+	desc = ""
+	icon_state = "moth_antenna_fluff_jungle"
+
+/datum/sprite_accessory/ears/moth_antenna_fluff_moonfly
+	name = "moonfly moth antennae and fluff"
+	desc = ""
+	icon_state = "moth_antenna_fluff_moonfly"
+
+/datum/sprite_accessory/ears/moth_antenna_fluff_oakworm
+	name = "oakworm moth antennae and fluff"
+	desc = ""
+	icon_state = "moth_antenna_fluff_oakworm"
+
+/datum/sprite_accessory/ears/moth_antenna_fluff_poison
+	name = "poison moth antennae and fluff"
+	desc = ""
+	icon_state = "moth_antenna_fluff_poison"
+
+/datum/sprite_accessory/ears/moth_antenna_fluff_ragged
+	name = "ragged moth antennae and fluff"
+	desc = ""
+	icon_state = "moth_antenna_fluff_ragged"
+
+/datum/sprite_accessory/ears/moth_antenna_fluff_snowy
+	name = "snowy moth antennae and fluff"
+	desc = ""
+	icon_state = "moth_antenna_fluff_snowy"
+
+/datum/sprite_accessory/ears/moth_antenna_fluff_witchwing
+	name = "witchwing moth antennae and fluff"
+	desc = ""
+	icon_state = "moth_antenna_fluff_witchwing"
+
+/datum/sprite_accessory/ears/moth_antenna_fluff_whitefly
+	name = "whitefly moth antennae and fluff"
+	desc = ""
+	icon_state = "moth_antenna_fluff_whitefly"
+
 
 // Special snowflake ears go below here.
 
@@ -426,13 +506,12 @@
 	desc = ""
 	icon_state = "lilimoth_antennae"
 	ckeys_allowed = list("kira72")
-
+/*
 /datum/sprite_accessory/ears/molenar_deathclaw
-	name = "deathclaw ears (Molenar)"
+	name = "deathclaw ears"
 	desc = ""
 	icon_state = "molenar-deathclaw"
-	ckeys_allowed = list("molenar")
-
+*/
 /datum/sprite_accessory/ears/miria_fluffdragon
 	name = "fluffdragon ears (Miria Masters)"
 	desc = ""
@@ -642,69 +721,104 @@
 	icon_state = "moth_full"
 
 /datum/sprite_accessory/wing/moth_royal
-	name = "royal moth antenna and wings"
+	name = "royal moth wings"
 	desc = ""
 	icon_state = "moth_royal"
 
 /datum/sprite_accessory/wing/moth_red
-	name = "red moth antenna and wings"
+	name = "red moth wings"
 	desc = ""
 	icon_state = "moth_red"
 
 /datum/sprite_accessory/wing/moth_gothic
-	name = "gothic moth antenna and wings"
+	name = "gothic moth wings"
 	desc = ""
 	icon_state = "moth_gothic"
 
 /datum/sprite_accessory/wing/moth_lover
-	name = "lover moth antenna and wings"
+	name = "lover moth wings"
 	desc = ""
 	icon_state = "moth_lover"
 
 /datum/sprite_accessory/wing/moth_monarch
-	name = "monarch moth antenna and wings"
+	name = "monarch moth wings"
 	desc = ""
 	icon_state = "moth_monarch"
 
-/datum/sprite_accessory/wing/moth_burned
-	name = "burned moth antenna and wings"
+/datum/sprite_accessory/wing/moth_burnt
+	name = "burnt moth wings"
 	desc = ""
-	icon_state = "moth_burned"
+	icon_state = "moth_burnt"
 
 /datum/sprite_accessory/wing/moth_white
-	name = "white moth antenna and wings"
+	name = "white moth wings"
 	desc = ""
 	icon_state = "moth_white"
 
 /datum/sprite_accessory/wing/moth_firewatch
-	name = "firewatch moth antenna and wings"
+	name = "firewatch moth wings"
 	desc = ""
 	icon_state = "moth_firewatch"
 
 /datum/sprite_accessory/wing/moth_deathhead
-	name = "death moth antenna and wings"
+	name = "death's-head hawkmoth wings"
 	desc = ""
 	icon_state = "moth_deathhead"
 
 /datum/sprite_accessory/wing/moth_poison
-	name = "poison antenna and wings"
+	name = "poison moth wings"
 	desc = ""
 	icon_state = "moth_poison"
 
 /datum/sprite_accessory/wing/moth_ragged
-	name = "ragged moth antenna and wings"
+	name = "ragged moth wings"
 	desc = ""
 	icon_state = "moth_ragged"
 
 /datum/sprite_accessory/wing/moth_moonfly
-	name = "moonfly moth antenna and wings"
+	name = "moonfly moth wings"
 	desc = ""
 	icon_state = "moth_moonfly"
 
 /datum/sprite_accessory/wing/moth_snowy
-	name = "snowy moth antenna and wings"
+	name = "snowy moth wings"
 	desc = ""
 	icon_state = "moth_snowy"
+
+/datum/sprite_accessory/wing/moth_witchwing
+	name = "witchwing moth wings"
+	desc = ""
+	icon_state = "moth_witchwing"
+
+/datum/sprite_accessory/wing/moth_oakworm
+	name = "oakworm moth wings"
+	desc = ""
+	icon_state = "moth_oakworm"
+
+/datum/sprite_accessory/wing/moth_jungle
+	name = "jungle moth wings"
+	desc = ""
+	icon_state = "moth_jungle"
+
+/datum/sprite_accessory/wing/moth_luna
+	name = "luna moth wings"
+	desc = ""
+	icon_state = "moth_luna"
+
+/datum/sprite_accessory/wing/moth_atlas
+	name = "atlas moth wings"
+	desc = ""
+	icon_state = "moth_atlas"
+
+/datum/sprite_accessory/wing/moth_plain
+	name = "plain moth wings"
+	desc = ""
+	icon_state = "moth_plain"
+
+/datum/sprite_accessory/wing/moth_whitefly
+	name = "whitefly moth wings"
+	desc = ""
+	icon_state = "moth_whitefly"
 
 /datum/sprite_accessory/wing/kerena
 	name = "wingwolf wings (Kerena)"
@@ -723,6 +837,14 @@
 	icon_state = "nevrean_s"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/wing/robo
+	name = "Robotic Wings"
+	desc = ""
+	icon_state = "Drago_wing"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
 
 /*
 ////////////////////////////
@@ -1680,3 +1802,11 @@
 	icon_state = "lizard_tail_spiked"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/tail/robo_tail
+	name = "Robo Dragon Tail"
+	desc = ""
+	icon_state = "robo_dragon"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+	extra_overlay = "robodragon_b"

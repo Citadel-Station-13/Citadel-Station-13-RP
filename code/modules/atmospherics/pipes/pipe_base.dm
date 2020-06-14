@@ -8,7 +8,7 @@
 	var/volume = 0
 
 	layer = PIPES_LAYER
-	use_power = 0
+	use_power = USE_POWER_OFF
 
 	pipe_flags = 0 // Does not have PIPING_DEFAULT_LAYER_ONLY flag.
 

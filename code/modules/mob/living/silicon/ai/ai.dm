@@ -297,7 +297,7 @@ var/list/ai_verbs_default = list(
 /obj/machinery/ai_powersupply
 	name="Power Supply"
 	active_power_usage=50000 // Station AIs use significant amounts of power. This, when combined with charged SMES should mean AI lasts for 1hr without external power.
-	use_power = 2
+	use_power = USE_POWER_ACTIVE
 	power_channel = EQUIP
 	var/mob/living/silicon/ai/powered_ai = null
 	invisibility = 100
@@ -311,7 +311,7 @@ var/list/ai_verbs_default = list(
 		forceMove(powered_ai.loc)
 
 	..()
-	use_power(1) // Just incase we need to wake up the power system.
+	use_power(USE_POWER_IDLE) // Just incase we need to wake up the power system.
 
 /obj/machinery/ai_powersupply/Destroy()
 	. = ..()
@@ -325,14 +325,14 @@ var/list/ai_verbs_default = list(
 		qdel(src)
 		return
 	if(powered_ai.APU_power)
-		use_power = 0
+		update_use_power(USE_POWER_OFF)
 		return
 	if(!powered_ai.anchored)
 		loc = powered_ai.loc
-		use_power = 0
+		update_use_power(USE_POWER_OFF)
 		use_power(50000) // Less optimalised but only called if AI is unwrenched. This prevents usage of wrenching as method to keep AI operational without power. Intellicard is for that.
 	if(powered_ai.anchored)
-		use_power = 2
+		update_use_power(USE_POWER_ACTIVE)
 
 /mob/living/silicon/ai/proc/pick_icon()
 	set category = "AI Settings"
@@ -597,20 +597,20 @@ var/list/ai_verbs_default = list(
 			qdel(dummy)
 			holo_icon = new_holo
 
-		else //A premade from the dmi
+		else //A premade list from the dmi
 			var/icon_list[] = list(
-				"default",
-				"floating face",
-				"singularity",
-				"drone",
+				"synthetic male",
+				"synthetic female",
+				"watcher",
+				"overseer",
 				"carp",
-				"spider",
-				"bear",
-				"slime",
-				"ian",
-				"runtime",
-				"poly",
-				"pun pun",
+				"corgi",
+				"mothman",
+				"unnerving creature",
+				"assistance core",
+				"void horror",
+				"lucky leaves",
+				"true captain",
 				"male human",
 				"female human",
 				"male unathi",
@@ -620,36 +620,46 @@ var/list/ai_verbs_default = list(
 				"male tesharii",
 				"female tesharii",
 				"male skrell",
-				"female skrell"
+				"female skrell",
+				"pun pun",
+				"singularity",
+				"drone",
+				"spider",
+				"bear",
+				"slime",
+				"runtime",
+				"poly",
+				"gondola"
+
 			)
-			input = input("Please select a hologram:") as null|anything in icon_list
+			input = input("Please select a hologram:") as null|anything in icon_list //Holoprojection list
 			if(input)
 				qdel(holo_icon)
 				switch(input)
-					if("default")
-						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holo1"))
-					if("floating face")
-						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holo2"))
-					if("singularity")
-						holo_icon = getHologramIcon(icon('icons/obj/singularity.dmi',"singularity_s1"))
-					if("drone")
-						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"drone0"))
+					if("synthetic male")
+						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holo-male"))
+					if("synthetic female")
+						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holo-female"))
+					if("watcher")
+						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holo-watcher"))
+					if("overseer")
+						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holo-overseer"))
 					if("carp")
-						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holo4"))
-					if("spider")
-						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"nurse"))
-					if("bear")
-						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"brownbear"))
-					if("slime")
-						holo_icon = getHologramIcon(icon('icons/mob/slimes.dmi',"cerulean adult slime"))
-					if("ian")
-						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"corgi"))
-					if("runtime")
-						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"cat"))
-					if("poly")
-						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"parrot_fly"))
-					if("pun pun")
-						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"punpun"))
+						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holo-carp"))
+					if("corgi")
+						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holo-corgi"))
+					if("mothman")
+						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holo-moth"))
+					if("unnerving creature")
+						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holo-creature"))
+					if("assistance core")
+						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holo-core"))
+					if("void horror")
+						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holo-horror"))
+					if("lucky leaves")
+						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holo-leaves"))
+					if("true captain")
+						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holo-truecaptain"))
 					if("male human")
 						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holohumm"))
 					if("female human")
@@ -670,6 +680,25 @@ var/list/ai_verbs_default = list(
 						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holoskrm"))
 					if("female skrell")
 						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holoskrf"))
+					if("pun pun")
+						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"punpun"))
+					if("singularity")
+						holo_icon = getHologramIcon(icon('icons/obj/singularity.dmi',"singularity_s1"))
+					if("drone")
+						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"drone0"))
+					if("spider")
+						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"nurse"))
+					if("bear")
+						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"brownbear"))
+					if("slime")
+						holo_icon = getHologramIcon(icon('icons/mob/slimes.dmi',"cerulean adult slime"))
+					if("runtime")
+						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"cat"))
+					if("poly")
+						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"parrot_fly"))
+					if("gondola")
+						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"gondola"))
+
 
 //Toggles the luminosity and applies it by re-entereing the camera.
 /mob/living/silicon/ai/proc/toggle_camera_light()

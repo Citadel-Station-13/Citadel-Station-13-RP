@@ -3,7 +3,7 @@
 	desc = "It's used to monitor rooms."
 	icon = 'icons/obj/monitors_vr.dmi' //VOREStation Edit - New Icons
 	icon_state = "camera"
-	use_power = 2
+	use_power = USE_POWER_ACTIVE
 	idle_power_usage = 5
 	active_power_usage = 10
 	plane = MOB_PLANE
@@ -380,13 +380,9 @@
 	return null
 
 /proc/near_range_camera(var/mob/M)
-
 	for(var/obj/machinery/camera/C in range(4, M))
 		if(C.can_use())	// check if camera disabled
 			return C
-			break
-
-	return null
 
 /obj/machinery/camera/proc/weld(var/obj/item/weldingtool/WT, var/mob/user)
 

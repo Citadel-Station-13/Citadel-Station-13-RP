@@ -295,9 +295,9 @@
 	path = /obj/item/clothing/under/dress/dress_fire
 
 /datum/gear/uniform/uniform_captain
-	display_name = "uniform, colony director's dress"
+	display_name = "uniform, Facility Director's dress"
 	path = /obj/item/clothing/under/dress/dress_cap
-	allowed_roles = list("Colony Director")
+	allowed_roles = list("Facility Director")
 
 /datum/gear/uniform/corpdetsuit
 	display_name = "uniform, corporate (Detective)"
@@ -488,38 +488,37 @@
 // NEW UNIFORMS BEGIN HERE
 /datum/gear/uniform/sifguard
 	display_name = "uniform, crew"
-	path = /obj/item/clothing/under/solgov/utility/sifguard
+	path = /obj/item/clothing/under/solgov/utility/sifguard/crew
 
 /datum/gear/uniform/sifguard/medical
 	display_name = "uniform, crew (medical)"
-	path = /obj/item/clothing/under/solgov/utility/sifguard/medical
+	path = /obj/item/clothing/under/solgov/utility/sifguard/crew/medical
 	allowed_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Paramedic","Geneticist","Field Medic")
 
 /datum/gear/uniform/sifguard/science
 	display_name = "uniform, crew (science)"
-	path = /obj/item/clothing/under/solgov/utility/sifguard/research
+	path = /obj/item/clothing/under/solgov/utility/sifguard/crew/research
 	allowed_roles = list("Research Director","Scientist","Roboticist","Xenobiologist")
 
 /datum/gear/uniform/sifguard/engineering
 	display_name = "uniform, crew (engineering)"
-	path = /obj/item/clothing/under/solgov/utility/sifguard/engineering
+	path = /obj/item/clothing/under/solgov/utility/sifguard/crew/engineering
 	allowed_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer")
 
 /datum/gear/uniform/sifguard/supply
 	display_name = "uniform, crew (supply)"
-	path = /obj/item/clothing/under/solgov/utility/sifguard/supply
+	path = /obj/item/clothing/under/solgov/utility/sifguard/crew/supply
 	allowed_roles = list("Quartermaster","Cargo Technician","Shaft Miner")
 
 /datum/gear/uniform/sifguard/security
 	display_name = "uniform, crew (security)"
-	path = /obj/item/clothing/under/solgov/utility/sifguard/security
-	cost = 2
+	path = /obj/item/clothing/under/solgov/utility/sifguard/crew/security
 	allowed_roles = list("Security Officer","Head of Security","Warden","Detective")
 
 /datum/gear/uniform/sifguard/command
 	display_name = "uniform, crew (command)"
-	path = /obj/item/clothing/under/solgov/utility/sifguard/command
-	allowed_roles = list("Head of Security","Colony Director","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer")
+	path = /obj/item/clothing/under/solgov/utility/sifguard/officer/crew
+	allowed_roles = list("Head of Security","Facility Director","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer")
 
 /datum/gear/uniform/fleet/medical
 	display_name = "uniform, coveralls (medical)"
@@ -552,7 +551,7 @@
 /datum/gear/uniform/fleet/command
 	display_name = "uniform, coveralls (command)"
 	path = /obj/item/clothing/under/solgov/utility/fleet/command
-	allowed_roles = list("Head of Security","Colony Director","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer")
+	allowed_roles = list("Head of Security","Facility Director","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer")
 
 /datum/gear/uniform/marine/medical
 	display_name = "uniform, fatigues (medical)"
@@ -585,7 +584,7 @@
 /datum/gear/uniform/marine/command
 	display_name = "uniform, fatigues (command)"
 	path = /obj/item/clothing/under/solgov/utility/marine/command
-	allowed_roles = list("Head of Security","Colony Director","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer")
+	allowed_roles = list("Head of Security","Facility Director","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer")
 
 /datum/gear/uniform/marine/green
 	display_name = "uniform, fatigues (green)"
@@ -713,3 +712,7 @@ datum/gear/uniform/fiendsuit
 datum/gear/uniform/fienddress
 	display_name = "Fiendish Dress"
 	path = /obj/item/clothing/under/fienddress
+	
+datum/gear/uniform/leotard
+	display_name = "Black leotard"
+	path = /obj/item/clothing/under/leotard

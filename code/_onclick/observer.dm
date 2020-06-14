@@ -8,7 +8,7 @@
 			return
 
 	// Things you might plausibly want to follow
-	if(ismovableatom(A))
+	if(ismovable(A))
 		ManualFollow(A)
 
 	// Otherwise jump
@@ -31,6 +31,10 @@
 /mob/observer/dead/ClickOn(var/atom/A, var/params)
 	if(client.buildmode)
 		build_click(src, client.buildmode, params, A)
+		return
+	var/list/modifiers = params2list(params)
+	if(modifiers["shift"] && modifiers["middle"])
+		ShiftMiddleClickOn(A)
 		return
 	if(!canClick()) return
 	setClickCooldown(4)

@@ -67,7 +67,7 @@
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	anchored = 1
-	use_power = 0
+	use_power = USE_POWER_OFF
 	req_access = list(access_engine_equip)
 	var/area/area
 	var/areastring = null
@@ -198,6 +198,9 @@
 		hacker.hacked_apcs -= src
 
 	return ..()
+
+/obj/machinery/power/apc/get_cell()
+	return cell
 
 // APCs are pixel-shifted, so they need to be updated.
 /obj/machinery/power/apc/setDir(new_dir)
@@ -1175,7 +1178,6 @@
 // defines a state machine, returns the new state
 obj/machinery/power/apc/proc/autoset(var/cur_state, var/on)
 	switch(cur_state)
-		if(POWERCHAN_OFF); //autoset will never turn on a channel set to off
 		if(POWERCHAN_OFF_AUTO)
 			if(on == 1)
 				return POWERCHAN_ON_AUTO

@@ -32,8 +32,8 @@
 	var/datum/gas_mixture/faketank
 	var/faketank_integrity
 
-/obj/machinery/bomb_tester/New()
-	..()
+/obj/machinery/bomb_tester/Initialize()
+	.=..()
 	default_apply_parts()
 	RefreshParts()
 	faketank = new
@@ -201,7 +201,7 @@
 
 	if(href_list["set_can_pressure"])
 		var/change = text2num(href_list["set_can_pressure"])
-		sim_canister_output = CLAMP(sim_canister_output+change, ONE_ATMOSPHERE/10, ONE_ATMOSPHERE*10)
+		sim_canister_output = clamp(sim_canister_output+change, ONE_ATMOSPHERE/10, ONE_ATMOSPHERE*10)
 
 	if(href_list["start_sim"])
 		start_simulating()
@@ -210,7 +210,7 @@
 
 /obj/machinery/bomb_tester/proc/start_simulating()
 	simulating = 1
-	update_use_power(2)
+	update_use_power(USE_POWER_ACTIVE)
 	simulation_started = world.time
 	update_icon()
 	switch(sim_mode)
@@ -350,7 +350,7 @@
 
 /obj/machinery/bomb_tester/proc/simulation_finish(cancelled = 0)
 	simulating = 0
-	update_use_power(1)
+	update_use_power(USE_POWER_IDLE)
 	update_icon()
 	if(test_canister && test_canister.anchored && !test_canister.connected_port)
 		test_canister.anchored = 0

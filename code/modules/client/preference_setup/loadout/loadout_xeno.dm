@@ -185,12 +185,12 @@
 /datum/gear/uniform/dept/undercoat/command
 	display_name = "command undercoat (Teshari)"
 	path = /obj/item/clothing/under/seromi/undercoat/jobs/command
-	allowed_roles = list("Colony Director","Head of Personnel","Head of Security","Chief Engineer","Chief Medical Officer","Research Director")
+	allowed_roles = list("Facility Director","Head of Personnel","Head of Security","Chief Engineer","Chief Medical Officer","Research Director")
 
 /datum/gear/uniform/dept/undercoat/command_g
 	display_name = "command undercoat - gold buttons (Teshari)"
 	path = /obj/item/clothing/under/seromi/undercoat/jobs/command_g
-	allowed_roles = list("Colony Director","Head of Personnel","Head of Security","Chief Engineer","Chief Medical Officer","Research Director")
+	allowed_roles = list("Facility Director","Head of Personnel","Head of Security","Chief Engineer","Chief Medical Officer","Research Director")
 
 /datum/gear/uniform/dept/undercoat/cmo
 	display_name = "chief medical officer undercoat (Teshari)"
@@ -279,7 +279,7 @@
 /datum/gear/suit/dept/cloak/command
 	display_name = "command cloak (Teshari)"
 	path = /obj/item/clothing/suit/storage/seromi/cloak/jobs/command
-	allowed_roles = list("Colony Director","Head of Personnel","Head of Security","Chief Engineer","Chief Medical Officer","Research Director")
+	allowed_roles = list("Facility Director","Head of Personnel","Head of Security","Chief Engineer","Chief Medical Officer","Research Director")
 
 /datum/gear/suit/dept/cloak/cmo
 	display_name = "chief medical officer cloak (Teshari)"
@@ -360,5 +360,41 @@
 /datum/gear/uniform/voxcivassistant
 	display_name = "vox pressure suit (assistant)"
 	path = /obj/item/clothing/under/pressuresuit/voxcivassistant
+	sort_category = "Xenowear"
+	whitelisted = SPECIES_VOX
+
+/datum/gear/uniform/voxcivbartender
+	display_name = "vox pressure suit (bartender)"
+	path = /obj/item/clothing/under/pressuresuit/voxcivbartender
+	sort_category = "Xenowear"
+	whitelisted = SPECIES_VOX
+
+/datum/gear/uniform/voxcivchef
+	display_name = "vox pressure suit (chef)"
+	path = /obj/item/clothing/under/pressuresuit/voxcivchef
+	sort_category = "Xenowear"
+	whitelisted = SPECIES_VOX
+	
+/datum/gear/uniform/voxcivchaplain
+	display_name = "vox pressure suit (chaplain)"
+	path = /obj/item/clothing/under/pressuresuit/voxcivchaplain
+	sort_category = "Xenowear"
+	whitelisted = SPECIES_VOX
+	
+/datum/gear/uniform/voxcivlibrarian
+	display_name = "vox pressure suit (librarian)"
+	path = /obj/item/clothing/under/pressuresuit/voxcivlibrarian
+	sort_category = "Xenowear"
+	whitelisted = SPECIES_VOX
+
+/datum/gear/uniform/simonpants
+	display_name = "simon pants (Vox)"
+	path = /obj/item/clothing/under/vox/simonpants
+	sort_category = "Xenowear"
+	whitelisted = SPECIES_VOX
+
+/datum/gear/suit/simonjacket
+	display_name = "simon jacket (Vox)"
+	path = /obj/item/clothing/suit/simonjacket
 	sort_category = "Xenowear"
 	whitelisted = SPECIES_VOX

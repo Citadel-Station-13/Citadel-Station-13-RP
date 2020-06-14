@@ -71,7 +71,7 @@
 	channels = list("Command" = 1, "Service" = 0)
 
 /obj/item/encryptionkey/heads/captain
-	name = "colony director's encryption key"
+	name = "Facility Director's encryption key"
 	icon_state = "cap_cypherkey"
 	channels = list("Command" = 1, "Security" = 1, "Engineering" = 0, "Science" = 0, "Medical" = 0, "Supply" = 0, "Service" = 0)
 

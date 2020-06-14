@@ -47,7 +47,7 @@
 	return TRUE
 
 /datum/keybinding/mob/stop_pulling
-	hotkey_keys = list("H", "Delete")
+	hotkey_keys = list("J", "Delete")
 	name = "stop_pulling"
 	full_name = "Stop pulling"
 	description = ""
@@ -125,7 +125,7 @@
 	return TRUE
 
 /datum/keybinding/mob/ooc
-	hotkey_keys = list("Unbound")
+	hotkey_keys = list("O")
 	name = "ooc"
 	full_name = "OOC"
 	description = "Says something in global OOC"

@@ -27,3 +27,10 @@
 
 /obj/item/material/twohanded/baseballbat/diamond/New(var/newloc)
 	..(newloc,"diamond")
+
+/obj/item/material/twohanded/penbat
+	name = "penetrator"
+	desc = "The letter E has been lovingly engraved into the handle. When this wobbles, it sounds exactly like shame."
+	icon_state = "penbat0"
+	base_icon = "penbat0"
+	default_material = "plastic"

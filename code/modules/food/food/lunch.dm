@@ -51,7 +51,9 @@ var/list/lunchables_drinks_ = list(/obj/item/reagent_containers/food/drinks/cans
                                    /obj/item/reagent_containers/food/drinks/cans/iced_tea,
                                    /obj/item/reagent_containers/food/drinks/cans/grape_juice,
                                    /obj/item/reagent_containers/food/drinks/cans/tonic,
-                                   /obj/item/reagent_containers/food/drinks/cans/sodawater)
+                                   /obj/item/reagent_containers/food/drinks/cans/sodawater,
+                                   /obj/item/reagent_containers/food/drinks/bottle/small/sassafras,
+                                   /obj/item/reagent_containers/food/drinks/bottle/small/sarsaparilla)
 
 // This default list is a bit different, it contains items we don't want
 var/list/lunchables_drink_reagents_ = list(/datum/reagent/drink/nothing,

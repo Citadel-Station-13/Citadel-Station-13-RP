@@ -3432,7 +3432,7 @@ END CITADEL CHANGE */
 
 /obj/item/reagent_containers/food/snacks/liquidvitamin/Initialize()
 	..()
-	reagents.add_reagent("flour", 20)
+	reagents.add_reagent("nutriflour", 20)
 	reagents.add_reagent("tricordrazine", 5)
 	reagents.add_reagent("paracetamol", 5)
 	reagents.add_reagent("enzyme", 1)
@@ -4684,14 +4684,14 @@ END CITADEL CHANGE */
 		item.reagents.trans_to_holder(returningitem.reagents, item.reagents.total_volume) //Old chip to new chip
 		if(item.icon_state == "chip_half")
 			returningitem.icon_state = "[returningitem.icon_state]_half"
-			returningitem.bitesize = CLAMP(returningitem.reagents.total_volume,1,10)
+			returningitem.bitesize = clamp(returningitem.reagents.total_volume,1,10)
 		else if(prob(1))
 			memed = 1
 			to_chat(user, "You scoop up some dip with the chip, but mid-scoop, the chip breaks off into the dreadful abyss of dip, never to be seen again...")
 			returningitem.icon_state = "[returningitem.icon_state]_half"
-			returningitem.bitesize = CLAMP(returningitem.reagents.total_volume,1,10)
+			returningitem.bitesize = clamp(returningitem.reagents.total_volume,1,10)
 		else
-			returningitem.bitesize = CLAMP(returningitem.reagents.total_volume*0.5,1,10)
+			returningitem.bitesize = clamp(returningitem.reagents.total_volume*0.5,1,10)
 		qdel(item)
 		reagents.trans_to_holder(returningitem.reagents, bitesize) //Dip to new chip
 		user.put_in_hands(returningitem)

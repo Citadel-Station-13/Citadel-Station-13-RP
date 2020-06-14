@@ -146,7 +146,7 @@
 			if(mob.client.view != world.view) // If mob moves while zoomed in with device, unzoom them.
 				for(var/obj/item/item in mob.contents)
 					if(item.zoom)
-						item.zoom()
+						item.zoom(user = mob)
 						break
 // end
 
@@ -490,8 +490,6 @@
 	if(world.time < last_turn)
 		return FALSE
 	if(stat == DEAD || stat == UNCONSCIOUS)
-		return FALSE
-	if(anchored)
 		return FALSE
 	if(transforming)
 		return FALSE

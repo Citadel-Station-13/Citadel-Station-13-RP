@@ -170,7 +170,7 @@
 	src.current_camera = C
 	if(current_camera)
 		current_camera.camera_computers_using_this.Add(src)
-		use_power = 2
+		update_use_power(USE_POWER_ACTIVE)
 		var/mob/living/L = current_camera.loc
 		if(istype(L))
 			L.tracking_initiated()
@@ -182,7 +182,7 @@
 		if(istype(L))
 			L.tracking_cancelled()
 	current_camera = null
-	use_power = 1
+	use_power = USE_POWER_IDLE
 
 //Camera control: mouse.
 /atom/DblClick()
@@ -251,6 +251,17 @@
 	circuit = /obj/item/circuitboard/security/tv
 	light_color = "#3848B3"
 	light_power_on = 0.5
+
+/obj/machinery/computer/security/wooden_tv/service
+	name = "security camera monitor"
+	desc = "An old TV hooked into the stations entertainment network."
+	icon_state = "television"
+	icon_keyboard = null
+	icon_screen = "detective_tv"
+	network = list(NETWORK_THUNDER)
+	circuit = /obj/item/circuitboard/security/telescreen/entertainment
+	light_color = "#3848B3"
+	light_power_on = 0.9
 
 /obj/machinery/computer/security/mining
 	name = "outpost camera monitor"

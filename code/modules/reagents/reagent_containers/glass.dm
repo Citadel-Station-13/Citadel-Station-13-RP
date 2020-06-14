@@ -200,7 +200,7 @@
 	name = "large beaker"
 	desc = "A large beaker."
 	icon_state = "beakerlarge"
-	matter = list("glass" = 5000)
+	matter = list("glass" = 1000)
 	volume = 120
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,25,30,60,120)

@@ -83,7 +83,14 @@ Buildable meters
 		if(PIPING_LAYER_SUPPLY)
 			color = PIPE_COLOR_BLUE
 			name = "[initial(fakeA.name)] supply fitting"
+		if(PIPING_LAYER_FUEL)
+			color = PIPE_COLOR_YELLOW
+			name = "[initial(fakeA.name)] fuel fitting"
+		if(PIPING_LAYER_AUX)
+			color = PIPE_COLOR_CYAN
+			name = "[initial(fakeA.name)] aux fitting"
 	// Or if we were to do it the TG way...
+	//we don't do it the tg way
 	// pixel_x = PIPE_PIXEL_OFFSET_X(piping_layer)
 	// pixel_y = PIPE_PIXEL_OFFSET_Y(piping_layer)
 	// layer = initial(layer) + PIPE_LAYER_OFFSET(piping_layer)

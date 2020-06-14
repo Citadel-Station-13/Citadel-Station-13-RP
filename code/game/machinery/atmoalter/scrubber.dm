@@ -136,7 +136,7 @@
 		. = 1
 	if (href_list["volume_adj"])
 		var/diff = text2num(href_list["volume_adj"])
-		volume_rate = CLAMP(volume_rate+diff, minrate, maxrate)
+		volume_rate = clamp(volume_rate+diff, minrate, maxrate)
 		. = 1
 	update_icon()
 
@@ -150,7 +150,7 @@
 	volume = 500000
 	volume_rate = 7000
 
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 50		//internal circuitry, friction losses and stuff
 	active_power_usage = 1000	// Blowers running
 	power_rating = 100000	//100 kW ~ 135 HP
@@ -195,7 +195,7 @@
 		update_use_power(new_use_power)
 	if(!on)
 		return
-	
+
 	var/power_draw = -1
 
 	var/datum/gas_mixture/environment = loc.return_air()

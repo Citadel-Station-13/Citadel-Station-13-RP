@@ -58,15 +58,14 @@ var/list/global/tank_gauge_cache = list()
 
 
 /obj/item/tank/Initialize()
-	..()
+	. = ..()
+	START_PROCESSING(SSobj, src)
 
 	src.init_proxy()
 	src.air_contents = new /datum/gas_mixture()
 	src.air_contents.volume = volume //liters
 	src.air_contents.temperature = T20C
-	START_PROCESSING(SSobj, src)
 	update_gauge()
-	return
 
 /obj/item/tank/Destroy()
 	QDEL_NULL(air_contents)
@@ -502,7 +501,7 @@ var/list/global/tank_gauge_cache = list()
 
 			var/release_ratio = 0.002
 			if(tank_pressure)
-				release_ratio = CLAMP(0.002, sqrt(max(tank_pressure-env_pressure,0)/tank_pressure),1)
+				release_ratio = clamp(0.002, sqrt(max(tank_pressure-env_pressure,0)/tank_pressure),1)
 
 			var/datum/gas_mixture/leaked_gas = air_contents.remove_ratio(release_ratio)
 			//dynamic air release based on ambient pressure

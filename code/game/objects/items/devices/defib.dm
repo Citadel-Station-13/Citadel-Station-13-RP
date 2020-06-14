@@ -381,7 +381,7 @@
 	if(!H.client && !H.teleop)
 		for(var/mob/observer/dead/ghost in player_list)
 			if(ghost.mind == H.mind)
-				to_chat(ghost, "<b><font color = #330033><font size = 3>Someone is attempting to resuscitate you. Re-enter your body if you want to be revived!</b> (Verbs -> Ghost -> Re-enter corpse)</font></font>")
+				ghost.notify_revive("Someone is trying to resuscitate you. Re-enter your body if you want to be revived!", 'sound/effects/genetics.ogg')
 				break
 
 	//beginning to place the paddles on patient's chest to allow some time for people to move away to stop the process
@@ -503,7 +503,7 @@
 	var/obj/item/organ/internal/brain/brain = H.internal_organs_by_name[O_BRAIN]
 	if(!brain) return //no brain
 
-	var/brain_damage = CLAMP((deadtime - DEFIB_TIME_LOSS)/(DEFIB_TIME_LIMIT - DEFIB_TIME_LOSS)*brain.max_damage, H.getBrainLoss(), brain.max_damage)
+	var/brain_damage = clamp((deadtime - DEFIB_TIME_LOSS)/(DEFIB_TIME_LIMIT - DEFIB_TIME_LOSS)*brain.max_damage, H.getBrainLoss(), brain.max_damage)
 	H.setBrainLoss(brain_damage)
 
 /obj/item/shockpaddles/proc/make_announcement(var/message, var/msg_class)

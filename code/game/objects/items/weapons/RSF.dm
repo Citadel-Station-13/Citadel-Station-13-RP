@@ -9,7 +9,7 @@ RSF
 	desc = "A device used to rapidly deploy service items."
 	description_info = "Control Clicking on the device will allow you to choose the glass it dispenses when in the proper mode."
 	icon = 'icons/obj/tools.dmi'
-	icon_state = "rcd"
+	icon_state = "rsf"
 	opacity = 0
 	density = 0
 	anchored = 0.0

@@ -9,7 +9,7 @@
 	cache_lifespan = 7
 	hub = "Exadv1.spacestation13"
 	hub_password = "kMZy3U5jJHSiBQjr"
-	name = "Citadel Station 13 RP"
+	name = "Citadel Station 13 - HRP"
 	status = "ERROR: Default status"
 	visibility = TRUE
 	fps = 20

@@ -905,3 +905,21 @@ obj/item/clothing/suit/kamishimo
 	name = "bridge officer parade jacket"
 	desc = "For those times when you need to properly look like you aren't a glorified assistant."
 	icon_state = "ecdress_ofcr"
+
+/obj/item/clothing/suit/mr_snuggles
+	name = "Mr. Snuggles Suit"
+	desc = "A padded suit for restraining patients without bumming everyone out!"
+	icon_state = "mr_snuggles"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
+
+	var/resist_time = 4800	// Eight minutes.
+
+/obj/item/clothing/suit/mrs_snuggles
+	name = "Mrs. Snuggles Suit"
+	desc = "A padded suit for restraining patients without bumming everyone out!"
+	icon_state = "mrs_snuggles"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
+
+	var/resist_time = 4800	// Eight minutes.

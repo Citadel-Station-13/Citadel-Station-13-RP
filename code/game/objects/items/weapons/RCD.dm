@@ -5,6 +5,10 @@
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "rcd"
 	item_state = "rcd"
+	item_icons = list(
+		slot_l_hand_str = 'icons/mob/items/lefthand.dmi',
+		slot_r_hand_str = 'icons/mob/items/righthand.dmi',
+	)
 	flags = NOBLUDGEON
 	force = 10
 	throwforce = 10
@@ -27,17 +31,44 @@
 	var/window_type = /obj/structure/window/reinforced/full
 	var/material_to_use = DEFAULT_WALL_MATERIAL // So badmins can make RCDs that print diamond walls.
 	var/make_rwalls = FALSE // If true, when building walls, they will be reinforced.
+	var/ammostate
+	var/list/effects = list()
+
+	var/static/image/radial_image_airlock = image(icon = 'icons/mob/radial.dmi', icon_state = "airlock")
+	var/static/image/radial_image_decon = image(icon= 'icons/mob/radial.dmi', icon_state = "delete")
+	var/static/image/radial_image_grillewind = image(icon = 'icons/mob/radial.dmi', icon_state = "grillewindow")
+	var/static/image/radial_image_floorwall = image(icon = 'icons/mob/radial.dmi', icon_state = "wallfloor")
 
 /obj/item/rcd/Initialize()
 	src.spark_system = new /datum/effect_system/spark_spread
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
+	update_icon()
 	return ..()
 
 /obj/item/rcd/Destroy()
 	QDEL_NULL(spark_system)
 	spark_system = null
 	return ..()
+
+/obj/item/rcd/update_icon()
+	var/nearest_ten = round((stored_matter/max_stored_matter)*10, 1)
+
+	//Just to prevent updates every use
+	if(ammostate == nearest_ten)
+		return //No change
+	ammostate = nearest_ten
+
+	cut_overlays()
+
+	//Main sprite update
+	if(!nearest_ten)
+		icon_state = "[initial(icon_state)]_empty"
+	else
+		icon_state = "[initial(icon_state)]"
+
+	add_overlay("[initial(icon_state)]_charge[nearest_ten]")
+
 
 /obj/item/rcd/examine(mob/user)
 	..()
@@ -51,35 +82,101 @@
 /obj/item/rcd/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/rcd_ammo))
 		var/obj/item/rcd_ammo/cartridge = W
-		if((stored_matter + cartridge.remaining) > max_stored_matter)
-			to_chat(user, span("warning", "The RCD can't hold that many additional matter-units."))
+		var/can_store = min(max_stored_matter - stored_matter, cartridge.remaining)
+		if(can_store <= 0)
+			to_chat(user, span("warning", "There's either no space or \the [cartridge] is empty!"))
 			return FALSE
-		stored_matter += cartridge.remaining
-		user.drop_from_inventory(W)
-		qdel(W)
+		stored_matter += can_store
+		cartridge.remaining -= can_store
+		if(!cartridge.remaining)
+			to_chat(user, span("warning", "\The [cartridge] dissolves as it empties of compressed matter."))
+			user.drop_from_inventory(W)
+			qdel(W)
 		playsound(src.loc, 'sound/machines/click.ogg', 50, 1)
 		to_chat(user, span("notice", "The RCD now holds [stored_matter]/[max_stored_matter] matter-units."))
+		update_icon()
 		return TRUE
 	return ..()
 
+/obj/item/rcd/proc/check_menu(mob/living/user)
+	if(!istype(user))
+		return FALSE
+	if(user.incapacitated() || !user.Adjacent(src))
+		return FALSE
+	return TRUE
+
 // Changes which mode it is on.
 /obj/item/rcd/attack_self(mob/living/user)
-	if(mode_index >= modes.len) // Shouldn't overflow unless someone messes with it in VV poorly but better safe than sorry.
-		mode_index = 1
-	else
-		mode_index++
-
-	to_chat(user, span("notice", "Changed mode to '[modes[mode_index]]'."))
-	playsound(src.loc, 'sound/effects/pop.ogg', 50, 0)
-
-	if(prob(20))
-		src.spark_system.start()
+	..()
+	var/list/choices = list(
+		"Airlock" = radial_image_airlock,
+		"Deconstruct" = radial_image_decon,
+		"Grilles & Windows" = radial_image_grillewind,
+		"Floors & Walls" = radial_image_floorwall
+	)
+	/* We don't have these features yet
+	if(upgrade & RCD_UPGRADE_FRAMES)
+		choices += list(
+		"Machine Frames" = image(icon = 'icons/mob/radial.dmi', icon_state = "machine"),
+		"Computer Frames" = image(icon = 'icons/mob/radial.dmi', icon_state = "computer_dir"),
+		)
+	if(upgrade & RCD_UPGRADE_SILO_LINK)
+		choices += list(
+		"Silo Link" = image(icon = 'icons/obj/mining.dmi', icon_state = "silo"),
+		)
+	if(mode == RCD_AIRLOCK)
+		choices += list(
+		"Change Access" = image(icon = 'icons/mob/radial.dmi', icon_state = "access"),
+		"Change Airlock Type" = image(icon = 'icons/mob/radial.dmi', icon_state = "airlocktype")
+		)
+	else if(mode == RCD_WINDOWGRILLE)
+		choices += list(
+			"Change Window Type" = image(icon = 'icons/mob/radial.dmi', icon_state = "windowtype")
+		)
+	*/
+	var/choice = show_radial_menu(user, src, choices, custom_check = CALLBACK(src, .proc/check_menu, user), require_near = TRUE, tooltips = TRUE)
+	if(!check_menu(user))
+		return
+	switch(choice)
+		if("Floors & Walls")
+			mode_index = modes.Find(RCD_FLOORWALL)
+		if("Airlock")
+			mode_index = modes.Find(RCD_AIRLOCK)
+		if("Deconstruct")
+			mode_index = modes.Find(RCD_DECONSTRUCT)
+		if("Grilles & Windows")
+			mode_index = modes.Find(RCD_WINDOWGRILLE)
+		/* We don't have these features yet
+		if("Machine Frames")
+			mode = RCD_MACHINE
+		if("Computer Frames")
+			mode = RCD_COMPUTER
+			change_computer_dir(user)
+			return
+		if("Change Access")
+			change_airlock_access(user)
+			return
+		if("Change Airlock Type")
+			change_airlock_setting(user)
+			return
+		if("Change Window Type")
+			toggle_window_type(user)
+			return
+		if("Silo Link")
+			toggle_silo_link(user)
+			return
+		*/
+		else
+			return
+	playsound(src, 'sound/effects/pop.ogg', 50, FALSE)
+	to_chat(user, "<span class='notice'>You change RCD's mode to '[choice]'.</span>")
 
 // Removes resources if the RCD can afford it.
 /obj/item/rcd/proc/consume_resources(amount)
 	if(!can_afford(amount))
 		return FALSE
 	stored_matter -= amount
+	update_icon()
 	return TRUE
 
 // Useful for testing before actually paying (e.g. before a do_after() ).
@@ -118,6 +215,7 @@
 		rcd_beam = beam_origin.Beam(A, icon_state = "rped_upgrade", time = max(true_delay, 5))
 	busy = TRUE
 
+	perform_effect(A, true_delay) //VOREStation Add
 	if(do_after(user, true_delay, target = A))
 		busy = FALSE
 		// Doing another check in case we lost matter during the delay for whatever reason.
@@ -146,7 +244,11 @@
 	name = "shipwright's rapid construction device"
 	desc = "A device used to rapidly build and deconstruct. This version creates a stronger variant of wall, often \
 	used in the construction of hulls for starships. Reload with compressed matter cartridges."
+	icon_state = "swrcd"
+	item_state = "ircd"
 	material_to_use = MAT_STEELHULL
+	can_remove_rwalls = TRUE
+	make_rwalls = TRUE
 
 /obj/item/rcd/shipwright/loaded/Initialize()
 	stored_matter = max_stored_matter
@@ -204,6 +306,9 @@
 	var/obj/item/cell/cell = get_cell()
 	return cell.checked_use(amount * electric_cost_coefficent)
 
+/obj/item/rcd/electric/update_icon()
+	return
+
 /obj/item/rcd/electric/display_resources()
 	var/obj/item/cell/cell = get_cell()
 	if(cell)
@@ -257,12 +362,23 @@
 // RCDs for RIGs.
 /obj/item/rcd/electric/mounted/rig
 
+// Old method for swapping modes as there is no way to bring up the radial.
+/obj/item/rcd/electric/mounted/rig/attack_self(mob/living/user)
+	if(mode_index >= modes.len) // Shouldn't overflow unless someone messes with it in VV poorly but better safe than sorry.
+		mode_index = 1
+	else
+		mode_index++
+
+	to_chat(user, span("notice", "Changed mode to '[modes[mode_index]]'."))
+	playsound(src.loc, 'sound/effects/pop.ogg', 50, 0)
+
+	if(prob(20))
+		src.spark_system.start()
 
 // RCDs for Mechs.
 /obj/item/rcd/electric/mounted/mecha
 	ranged = TRUE
 	toolspeed = 0.5
-
 
 // Infinite use RCD for debugging/adminbuse.
 /obj/item/rcd/debug
@@ -296,9 +412,15 @@
 /obj/item/rcd_ammo
 	name = "compressed matter cartridge"
 	desc = "Highly compressed matter for the RCD."
-	icon = 'icons/obj/ammo.dmi'
-	icon_state = "rcd"
+	icon = 'icons/obj/tools.dmi'
+	icon_state = "rcdammo"
 	item_state = "rcdammo"
+	item_icons = list(
+		slot_l_hand_str = 'icons/mob/items/lefthand.dmi',
+		slot_r_hand_str = 'icons/mob/items/righthand.dmi',
+	)
+
+
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MATERIAL = 2)
 	matter = list(DEFAULT_WALL_MATERIAL = 30000,"glass" = 15000)
@@ -310,3 +432,68 @@
 	matter = list(DEFAULT_WALL_MATERIAL = 45000,"glass" = 22500)
 	origin_tech = list(TECH_MATERIAL = 4)
 	remaining = RCD_MAX_CAPACITY
+
+/obj/item/rcd_ammo/examine(mob/user)
+	..()
+	to_chat(user, display_resources())
+
+// Used to show how much stuff (matter units, cell charge, etc) is left inside.
+/obj/item/rcd_ammo/proc/display_resources()
+	return "It currently holds [remaining]/[initial(remaining)] matter-units."
+
+// RCD Construction Effects
+
+/obj/item/rcd/proc/perform_effect(var/atom/A, var/time_taken)
+	effects[A] = new /obj/effect/constructing_effect(get_turf(A), time_taken, modes[mode_index])
+
+/obj/item/rcd/use_rcd(atom/A, mob/living/user)
+	. = ..()
+	cleanup_effect(A)
+
+/obj/item/rcd/proc/cleanup_effect(var/atom/A)
+	if(A in effects)
+		qdel(effects[A])
+		effects -= A
+
+/obj/effect/constructing_effect
+	icon = 'icons/effects/effects_rcd.dmi'
+	icon_state = ""
+	plane = TURF_PLANE
+	layer = ABOVE_TURF_LAYER
+	anchored = TRUE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	var/status = 0
+	var/delay = 0
+
+/obj/effect/constructing_effect/Initialize(mapload, rcd_delay, rcd_status)
+	. = ..()
+	status = rcd_status
+	delay = rcd_delay
+	if (status == RCD_DECONSTRUCT)
+		addtimer(CALLBACK(src, /atom/.proc/update_icon), 11)
+		delay -= 11
+		icon_state = "rcd_end_reverse"
+	else
+		update_icon()
+
+/obj/effect/constructing_effect/update_icon()
+	icon_state = "rcd"
+	if (delay < 10)
+		icon_state += "_shortest"
+	else if (delay < 20)
+		icon_state += "_shorter"
+	else if (delay < 37)
+		icon_state += "_short"
+	if (status == RCD_DECONSTRUCT)
+		icon_state += "_reverse"
+
+/obj/effect/constructing_effect/proc/end_animation()
+	if (status == RCD_DECONSTRUCT)
+		qdel(src)
+	else
+		icon_state = "rcd_end"
+		addtimer(CALLBACK(src, .proc/end), 15)
+
+/obj/effect/constructing_effect/proc/end()
+	qdel(src)
+

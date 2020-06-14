@@ -42,7 +42,7 @@
 	heat_level_3 = 1150
 
 	flags =  NO_SCAN | NO_MINOR_CUT | NO_INFECT
-	spawn_flags = SPECIES_IS_WHITELISTED | SPECIES_CAN_JOIN
+	spawn_flags = SPECIES_IS_WHITELISTED | SPECIES_CAN_JOIN | SPECIES_WHITELIST_SELECTABLE
 
 	flesh_color = "#FFC896"
 	blood_color = "#A10808"
@@ -191,7 +191,7 @@
 	if(!istype(shade_organ))
 		return
 
-	shade_organ.dark_energy = CLAMP(new_energy, 0, get_max_energy(H))
+	shade_organ.dark_energy = clamp(new_energy, 0, get_max_energy(H))
 
 /datum/species/shadekin/proc/set_max_energy(var/mob/living/carbon/human/H, var/new_max_energy)
 	var/obj/item/organ/internal/brain/shadekin/shade_organ = H.internal_organs_by_name[O_BRAIN]

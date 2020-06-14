@@ -10,7 +10,7 @@
 	density = 1
 	anchored = 0
 
-	use_power = 0 //is powered directly from cables
+	use_power = USE_POWER_OFF //is powered directly from cables
 	active_power_usage = 150 KILOWATTS  //BIG POWER
 	idle_power_usage = 500
 
@@ -20,8 +20,8 @@
 	var/target_temp = T20C
 	var/mode = MODE_IDLE
 
-/obj/machinery/power/thermoregulator/New()
-	..()
+/obj/machinery/power/thermoregulator/Initialize()
+	.=..()
 	default_apply_parts()
 
 /obj/machinery/power/thermoregulator/examine(mob/user)

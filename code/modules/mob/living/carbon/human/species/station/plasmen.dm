@@ -18,7 +18,7 @@
 	blood_color = "#FC2BC5"
 
 	flags = NO_SCAN | NO_MINOR_CUT
-	spawn_flags = SPECIES_IS_WHITELISTED | SPECIES_CAN_JOIN
+	spawn_flags = SPECIES_IS_WHITELISTED | SPECIES_CAN_JOIN | SPECIES_WHITELIST_SELECTABLE
 	appearance_flags = HAS_EYE_COLOR
 
 	show_ssd = "completely motionless"
@@ -105,7 +105,7 @@
 		if("Head of Security")
 			suit=/obj/item/clothing/suit/space/plasman/sec/hos
 			helm=/obj/item/clothing/head/helmet/space/plasman/sec/hos
-		if("Colony Director")
+		if("Facility Director")
 			suit=/obj/item/clothing/suit/space/plasman/sec/captain
 			helm=/obj/item/clothing/head/helmet/space/plasman/sec/captain
 		if("Head of Personnel")

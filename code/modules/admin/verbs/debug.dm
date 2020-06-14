@@ -288,7 +288,7 @@
 			id.icon_state = "gold"
 			id.access = get_all_accesses().Copy()
 			id.registered_name = H.real_name
-			id.assignment = "Colony Director"
+			id.assignment = "Facility Director"
 			id.name = "[id.registered_name]'s ID Card ([id.assignment])"
 			H.equip_to_slot_or_del(id, slot_wear_id)
 			H.update_inv_wear_id()
@@ -539,7 +539,7 @@
 					Pump.air2.gas["nitrogen"] = 3750	//The contents of 2 canisters.
 					Pump.air2.temperature = 50
 					Pump.air2.update_values()
-				Pump.use_power=1
+				Pump.update_use_power(USE_POWER_IDLE)
 				Pump.target_pressure = 4500
 				Pump.update_icon()
 
