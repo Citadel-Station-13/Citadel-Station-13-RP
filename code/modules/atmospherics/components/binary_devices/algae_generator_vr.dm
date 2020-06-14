@@ -30,7 +30,7 @@
 	var/recent_moles_transferred = 0
 	var/ui_error = null // For error messages to show up in nano ui.
 
-	var/datum/gas_mixture_old/internal = new()
+	var/datum/gas_mixture/internal = new()
 	var/const/input_gas = "carbon_dioxide"
 	var/const/output_gas = "oxygen"
 

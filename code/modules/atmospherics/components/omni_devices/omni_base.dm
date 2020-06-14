@@ -100,7 +100,7 @@
 	var/int_pressure = 0
 	for(var/datum/omni_port/P in ports)
 		int_pressure += P.air.return_pressure()
-	var/datum/gas_mixture_old/env_air = loc.return_air()
+	var/datum/gas_mixture/env_air = loc.return_air()
 	if((int_pressure - env_air.return_pressure()) > 2*ONE_ATMOSPHERE)
 		return 0
 	return 1

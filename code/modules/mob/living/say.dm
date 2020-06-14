@@ -36,18 +36,18 @@ var/list/department_radio_keys = list(
 
 	  //kinda localization -- rastaf0
 	  //same keys as above, but on russian keyboard layout. This file uses cp1251 as encoding.
-	  ":ê" = "right ear",	".ê" = "right ear",
-	  ":ä" = "left ear",	".ä" = "left ear",
-	  ":ø" = "intercom",	".ø" = "intercom",
-	  ":ð" = "department",	".ð" = "department",
-	  ":ñ" = "Command",		".ñ" = "Command",
-	  ":ò" = "Science",		".ò" = "Science",
-	  ":ü" = "Medical",		".ü" = "Medical",
-	  ":ó" = "Engineering",	".ó" = "Engineering",
-	  ":û" = "Security",	".û" = "Security",
-	  ":ö" = "whisper",		".ö" = "whisper",
-	  ":å" = "Mercenary",	".å" = "Mercenary",
-	  ":é" = "Supply",		".é" = "Supply",
+	  ":ï¿½" = "right ear",	".ï¿½" = "right ear",
+	  ":ï¿½" = "left ear",	".ï¿½" = "left ear",
+	  ":ï¿½" = "intercom",	".ï¿½" = "intercom",
+	  ":ï¿½" = "department",	".ï¿½" = "department",
+	  ":ï¿½" = "Command",		".ï¿½" = "Command",
+	  ":ï¿½" = "Science",		".ï¿½" = "Science",
+	  ":ï¿½" = "Medical",		".ï¿½" = "Medical",
+	  ":ï¿½" = "Engineering",	".ï¿½" = "Engineering",
+	  ":ï¿½" = "Security",	".ï¿½" = "Security",
+	  ":ï¿½" = "whisper",		".ï¿½" = "whisper",
+	  ":ï¿½" = "Mercenary",	".ï¿½" = "Mercenary",
+	  ":ï¿½" = "Supply",		".ï¿½" = "Supply",
 )
 
 
@@ -313,7 +313,7 @@ proc/get_radio_key_from_channel(var/channel)
 	var/turf/T = get_turf(src)
 	if(T)
 		//Air is too thin to carry sound at all, contact speech only
-		var/datum/gas_mixture_old/environment = T.return_air()
+		var/datum/gas_mixture/environment = T.return_air()
 		var/pressure = (environment)? environment.return_pressure() : 0
 		if(pressure < SOUND_MINIMUM_PRESSURE)
 			message_range = 1

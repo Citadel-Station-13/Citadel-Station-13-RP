@@ -164,7 +164,7 @@
 	var/turf/T = get_turf(B)
 	if(!T)
 		return
-	var/datum/gas_mixture_old/env = T.return_air()
+	var/datum/gas_mixture/env = T.return_air()
 	if(env)
 		env.add_thermal_energy(10 * 1000)
 
@@ -438,7 +438,7 @@
 	if(!istype(T))
 		return
 	T.freeze_floor()
-	var/datum/gas_mixture_old/env = T.return_air()
+	var/datum/gas_mixture/env = T.return_air()
 	if(env)
 		env.add_thermal_energy(-10 * 1000)
 

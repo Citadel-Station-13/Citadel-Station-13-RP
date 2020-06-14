@@ -73,7 +73,7 @@
 /datum/species/plasmaman/handle_environment_special(var/mob/living/carbon/human/H)
 	var/turf/T = H.loc
 	if(!T) return
-	var/datum/gas_mixture_old/environment = T.return_air()
+	var/datum/gas_mixture/environment = T.return_air()
 	if(!environment) return
 	var/enviroment_bad = 0 //In case they're ever set on fire while wearing a spacesuit, we don't want the message that they're reacting with the atmosphere.
 

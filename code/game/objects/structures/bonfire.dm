@@ -149,7 +149,7 @@
 	return TRUE
 
 /obj/structure/bonfire/proc/check_oxygen()
-	var/datum/gas_mixture_old/G = loc.return_air()
+	var/datum/gas_mixture/G = loc.return_air()
 	if(G.gas[/datum/gas/oxygen] < 1)
 		return FALSE
 	return TRUE
@@ -228,10 +228,10 @@
 	if(burning)
 		var/W = get_fuel_amount()
 		if(W >= 5)
-			var/datum/gas_mixture_old/env = loc.return_air()
+			var/datum/gas_mixture/env = loc.return_air()
 			if(env && abs(env.temperature - set_temperature) > 0.1)
 				var/transfer_moles = 0.25 * env.total_moles
-				var/datum/gas_mixture_old/removed = env.remove(transfer_moles)
+				var/datum/gas_mixture/removed = env.remove(transfer_moles)
 
 				if(removed)
 					var/heat_transfer = removed.get_thermal_energy_change(set_temperature)
@@ -242,7 +242,7 @@
 
 				env.merge(removed)
 
-/obj/structure/bonfire/fire_act(datum/gas_mixture_old/air, exposed_temperature, exposed_volume)
+/obj/structure/bonfire/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	ignite()
 
 /obj/structure/bonfire/water_act(amount)
@@ -333,7 +333,7 @@
 	return FALSE
 
 /obj/structure/fireplace/proc/check_oxygen()
-	var/datum/gas_mixture_old/G = loc.return_air()
+	var/datum/gas_mixture/G = loc.return_air()
 	if(G.gas[/datum/gas/oxygen] < 1)
 		return FALSE
 	return TRUE
@@ -394,10 +394,10 @@
 	if(burning)
 		var/W = get_fuel_amount()
 		if(W >= 5)
-			var/datum/gas_mixture_old/env = loc.return_air()
+			var/datum/gas_mixture/env = loc.return_air()
 			if(env && abs(env.temperature - set_temperature) > 0.1)
 				var/transfer_moles = 0.25 * env.total_moles
-				var/datum/gas_mixture_old/removed = env.remove(transfer_moles)
+				var/datum/gas_mixture/removed = env.remove(transfer_moles)
 
 				if(removed)
 					var/heat_transfer = removed.get_thermal_energy_change(set_temperature)
@@ -408,7 +408,7 @@
 
 				env.merge(removed)
 
-/obj/structure/fireplace/fire_act(datum/gas_mixture_old/air, exposed_temperature, exposed_volume)
+/obj/structure/fireplace/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	ignite()
 
 /obj/structure/fireplace/water_act(amount)

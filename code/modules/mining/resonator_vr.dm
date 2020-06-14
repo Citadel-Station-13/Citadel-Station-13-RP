@@ -86,11 +86,11 @@
 		qdel(src)
 		return
 	// Otherwise we damage mobs!  Boost damage if low tempreature
-	var/datum/gas_mixture_old/environment = T.return_air()
+	var/datum/gas_mixture/environment = T.return_air()
 	if(environment.temperature < 250)
 		name = "strong resonance field"
 		resonance_damage = 50
-	
+
 	for(var/mob/living/L in src.loc)
 		if(creator)
 			add_attack_logs(creator, L, "used a resonator field on")

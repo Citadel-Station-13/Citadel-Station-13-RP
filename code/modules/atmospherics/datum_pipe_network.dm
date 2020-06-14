@@ -1,7 +1,7 @@
 var/global/list/datum/pipe_network/pipe_networks = list()	// TODO - Move into SSmachines
 
 /datum/pipe_network
-	var/list/datum/gas_mixture_old/gases = list() //All of the gas_mixtures continuously connected in this network
+	var/list/datum/gas_mixture/gases = list() //All of the gas_mixtures continuously connected in this network
 	var/volume = 0	//caches the total volume for atmos machines to use in gas calculations
 
 	var/list/obj/machinery/atmospherics/normal_members = list()
@@ -9,7 +9,7 @@ var/global/list/datum/pipe_network/pipe_networks = list()	// TODO - Move into SS
 		//membership roster to go through for updates and what not
 
 	var/update = 1
-	//var/datum/gas_mixture_old/air_transient = null
+	//var/datum/gas_mixture/air_transient = null
 
 /datum/pipe_network/Destroy()
 	STOP_PROCESSING_PIPENET(src)
@@ -79,7 +79,7 @@ var/global/list/datum/pipe_network/pipe_networks = list()	// TODO - Move into SS
 	for(var/datum/pipeline/line_member in line_members)
 		gases += line_member.air
 
-	for(var/datum/gas_mixture_old/air in gases)
+	for(var/datum/gas_mixture/air in gases)
 		volume += air.volume
 
 /datum/pipe_network/proc/reconcile_air()

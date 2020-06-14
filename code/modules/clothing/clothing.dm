@@ -469,7 +469,7 @@
 		var/mob/M = src.loc
 		M.update_inv_wear_mask()
 
-/obj/item/clothing/mask/proc/filter_air(datum/gas_mixture_old/air)
+/obj/item/clothing/mask/proc/filter_air(datum/gas_mixture/air)
 	return
 
 ///////////////////////////////////////////////////////////////////////

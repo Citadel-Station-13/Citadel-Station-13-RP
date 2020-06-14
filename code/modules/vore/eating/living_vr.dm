@@ -485,16 +485,16 @@
 
 /obj/belly/return_air_for_internal_lifeform()
 	//Free air until someone wants to code processing it for reals from predbreaths
-	var/datum/gas_mixture_old/belly_air/air = new(1000)
+	var/datum/gas_mixture/belly_air/air = new(1000)
 	return air
 
 // This is about 0.896m^3 of atmosphere
-/datum/gas_mixture_old/belly_air
+/datum/gas_mixture/belly_air
     volume = 2500
     temperature = 293.150
     total_moles = 104
 
-/datum/gas_mixture_old/belly_air/New()
+/datum/gas_mixture/belly_air/New()
     . = ..()
     gas = list(
         "oxygen" = 21,

@@ -509,7 +509,7 @@
 		return
 
 	var/list/aircontents
-	var/datum/gas_mixture_old/environment = T.return_air()
+	var/datum/gas_mixture/environment = T.return_air()
 	var/pressure = environment.return_pressure()
 	var/total_moles = environment.total_moles
 

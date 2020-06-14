@@ -207,7 +207,7 @@
 	if(!can_pump())
 		return 0
 
-	var/datum/gas_mixture_old/environment = return_air() // VOREStation Edit - Use our own proc
+	var/datum/gas_mixture/environment = return_air() // VOREStation Edit - Use our own proc
 
 	var/power_draw = -1
 
@@ -235,7 +235,7 @@
 
 	return 1
 
-/obj/machinery/atmospherics/unary/vent_pump/proc/get_pressure_delta(datum/gas_mixture_old/environment)
+/obj/machinery/atmospherics/unary/vent_pump/proc/get_pressure_delta(datum/gas_mixture/environment)
 	var/pressure_delta = DEFAULT_PRESSURE_DELTA
 	var/environment_pressure = environment.return_pressure()
 

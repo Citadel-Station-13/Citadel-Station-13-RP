@@ -32,7 +32,7 @@
 	//var/use_internal_tank = 0
 	//var/internal_tank_valve = ONE_ATMOSPHERE
 	//var/obj/machinery/portable_atmospherics/canister/internal_tank
-	//var/datum/gas_mixture_old/cabin_air
+	//var/datum/gas_mixture/cabin_air
 	//var/obj/machinery/atmospherics/portables_connector/connected_port = null
 
 	var/obj/item/radio/radio = null
@@ -165,7 +165,7 @@
 			if(mecha.internal_tank)
 				if(mecha.internal_tank.return_pressure()>mecha.internal_tank.maximum_pressure && !(mecha.hasInternalDamage(MECHA_INT_TANK_BREACH)))
 					mecha.setInternalDamage(MECHA_INT_TANK_BREACH)
-				var/datum/gas_mixture_old/int_tank_air = mecha.internal_tank.return_air()
+				var/datum/gas_mixture/int_tank_air = mecha.internal_tank.return_air()
 				if(int_tank_air && int_tank_air.return_volume()>0) //heat the air_contents
 					int_tank_air.temperature = min(6000+T0C, int_tank_air.temperature+rand(10,15))
 			if(mecha.cabin_air && mecha.cabin_air.return_volume()>0)
@@ -176,8 +176,8 @@
 			mecha.pr_int_temp_processor.stop()
 		if(mecha.hasInternalDamage(MECHA_INT_TANK_BREACH)) //remove some air from internal tank
 			if(mecha.internal_tank)
-				var/datum/gas_mixture_old/int_tank_air = mecha.internal_tank.return_air()
-				var/datum/gas_mixture_old/leaked_gas = int_tank_air.remove_ratio(0.10)
+				var/datum/gas_mixture/int_tank_air = mecha.internal_tank.return_air()
+				var/datum/gas_mixture/leaked_gas = int_tank_air.remove_ratio(0.10)
 				if(mecha.loc && hascall(mecha.loc,"assume_air"))
 					mecha.loc.assume_air(leaked_gas)
 				else

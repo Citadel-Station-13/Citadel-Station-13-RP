@@ -17,7 +17,7 @@
 	if(!istype(T) || T.return_air().return_pressure() > (WARNING_HIGH_PRESSURE - 10))
 		return
 
-	var/datum/gas_mixture_old/stank = new
+	var/datum/gas_mixture/stank = new
 	ADD_GAS(/datum/gas/miasma, stank.gases)
 	stank.gases[/datum/gas/miasma][MOLES] = amount
 	stank.temperature = BODYTEMP_NORMAL // otherwise we have gas below 2.7K which will break our lag generator

@@ -113,7 +113,7 @@
 					colour = rgb(red, green, blue)
 
 			if(!colour2 && !T.density)
-				var/datum/gas_mixture_old/environment = T.return_air()
+				var/datum/gas_mixture/environment = T.return_air()
 				var/turf_total = environment.total_moles()
 				//var/turf_total = T.co2 + T.oxygen + T.poison + T.sl_gas + T.n2
 
@@ -194,7 +194,7 @@
 						sense = 0
 
 					if("/turf/simulated/floor/tiled", "/turf/simulated/floor/reinforced")
-						var/datum/gas_mixture_old/environment = T.return_air()
+						var/datum/gas_mixture/environment = T.return_air()
 						var/turf_total = environment.total_moles
 						var/t1 = turf_total / MOLES_CELLSTANDARD * 175
 

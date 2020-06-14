@@ -1,4 +1,4 @@
-/turf/simulated/floor/proc/adjacent_fire_act_vr(turf/simulated/floor/adj_turf, datum/gas_mixture_old/adj_air, adj_temp, adj_volume)
+/turf/simulated/floor/proc/adjacent_fire_act_vr(turf/simulated/floor/adj_turf, datum/gas_mixture/adj_air, adj_temp, adj_volume)
 	for(var/obj/machinery/door/D in src) //makes doors next to fire affected by fire
 		D.fire_act(adj_air, adj_temp, adj_volume)
 
@@ -14,7 +14,7 @@
 /obj/machinery/door/airlock/hatch
 	heat_proof = 1
 
-/obj/machinery/door/fire_act(datum/gas_mixture_old/air, exposed_temperature, exposed_volume)
+/obj/machinery/door/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	var/maxtemperature = 1800 //same as a normal steel wall
 	var/destroytime = 20 //effectively gives an airlock 200HP between breaking and completely disintegrating
 	if(heat_proof)
@@ -96,7 +96,7 @@
 
 	return FALSE
 
-/obj/machinery/door/blast/regular/fire_act(datum/gas_mixture_old/air, exposed_temperature, exposed_volume)
+/obj/machinery/door/blast/regular/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	return // blast doors are immune to fire completely.
 
 /obj/machinery/door/blast/regular/

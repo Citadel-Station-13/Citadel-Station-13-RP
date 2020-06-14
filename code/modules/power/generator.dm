@@ -96,8 +96,8 @@ GLOBAL_LIST_EMPTY(all_turbines)
 
 	updateDialog()
 
-	var/datum/gas_mixture_old/air1 = circ1.return_transfer_air()
-	var/datum/gas_mixture_old/air2 = circ2.return_transfer_air()
+	var/datum/gas_mixture/air1 = circ1.return_transfer_air()
+	var/datum/gas_mixture/air2 = circ2.return_transfer_air()
 
 	lastgen2 = lastgen1
 	lastgen1 = 0

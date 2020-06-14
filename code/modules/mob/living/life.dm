@@ -10,7 +10,7 @@
 	if(machine && !CanMouseDrop(machine, src))
 		machine = null
 
-	var/datum/gas_mixture_old/environment = loc.return_air()
+	var/datum/gas_mixture/environment = loc.return_air()
 
 	//handle_modifiers() // Do this early since it might affect other things later. //VOREStation Edit
 
@@ -80,7 +80,7 @@
 /mob/living/proc/handle_random_events()
 	return
 
-/mob/living/proc/handle_environment(var/datum/gas_mixture_old/environment)
+/mob/living/proc/handle_environment(var/datum/gas_mixture/environment)
 	return
 
 /mob/living/proc/handle_stomach()

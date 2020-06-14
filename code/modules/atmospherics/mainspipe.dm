@@ -8,7 +8,7 @@ obj/machinery/atmospherics/pipe/mains_component
 		parent_pipe = loc
 
 	check_pressure(pressure)
-		var/datum/gas_mixture_old/environment = loc.loc.return_air()
+		var/datum/gas_mixture/environment = loc.loc.return_air()
 
 		var/pressure_difference = pressure - environment.return_pressure()
 
@@ -79,7 +79,7 @@ obj/machinery/atmospherics/mains_pipe
 			burst()
 
 	proc/check_pressure(pressure)
-		var/datum/gas_mixture_old/environment = loc.return_air()
+		var/datum/gas_mixture/environment = loc.return_air()
 
 		var/pressure_difference = pressure - environment.return_pressure()
 

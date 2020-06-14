@@ -23,7 +23,7 @@
 				src.hotspot_expose(1000,CELL_VOLUME)
 	return
 
-/turf/simulated/floor/fire_act(datum/gas_mixture_old/air, exposed_temperature, exposed_volume)
+/turf/simulated/floor/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 
 	var/temp_destroy = get_damage_temperature()
 	if(!burnt && prob(5))
@@ -37,7 +37,7 @@
 /turf/simulated/floor/proc/get_damage_temperature()
 	return flooring ? flooring.damage_temperature : null
 
-/turf/simulated/floor/adjacent_fire_act(turf/simulated/floor/adj_turf, datum/gas_mixture_old/adj_air, adj_temp, adj_volume)
+/turf/simulated/floor/adjacent_fire_act(turf/simulated/floor/adj_turf, datum/gas_mixture/adj_air, adj_temp, adj_volume)
 	var/dir_to = get_dir(src, adj_turf)
 
 	for(var/obj/structure/window/W in src)

@@ -25,7 +25,7 @@
 	spawn(0)
 		S.start()
 
-	var/datum/gas_mixture_old/env = src.loc.return_air()
+	var/datum/gas_mixture/env = src.loc.return_air()
 	if(env)
 		if (reagents.total_volume > 750)
 			env.temperature = 0

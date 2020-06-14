@@ -355,7 +355,7 @@
 
 		if(atmos_comp)
 			var/turf/T = get_turf(src)
-			var/datum/gas_mixture_old/env = T.return_air()
+			var/datum/gas_mixture/env = T.return_air()
 			if(env)
 				my_mob.minbodytemp = env.temperature * 0.8
 				my_mob.maxbodytemp = env.temperature * 1.2

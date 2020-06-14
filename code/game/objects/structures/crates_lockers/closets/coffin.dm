@@ -161,8 +161,8 @@
 		var/mob/living/carbon/human/H = L
 		if(H.species && H.species.exhale_type)
 			gasid = H.species.exhale_type
-	var/datum/gas_mixture_old/grave_breath = new()
-	var/datum/gas_mixture_old/above_air = return_air()
+	var/datum/gas_mixture/grave_breath = new()
+	var/datum/gas_mixture/above_air = return_air()
 	grave_breath.adjust_gas(gasid, BREATH_MOLES)
 	grave_breath.temperature = (above_air.temperature) - 30	//Underground
 	return grave_breath

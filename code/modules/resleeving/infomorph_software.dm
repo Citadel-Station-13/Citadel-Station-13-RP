@@ -254,7 +254,7 @@
 			data["temperatureC"] = 0
 			data["gas"] = list()
 		else
-			var/datum/gas_mixture_old/env = T.return_air()
+			var/datum/gas_mixture/env = T.return_air()
 			data["reading"] = 1
 			var/pres = env.return_pressure() * 10
 			data["pressure"] = "[round(pres/10)].[pres%10]"

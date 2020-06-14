@@ -79,12 +79,12 @@
 		turn_off()
 		return
 
-	var/datum/gas_mixture_old/env = loc.return_air()
+	var/datum/gas_mixture/env = loc.return_air()
 	if(!env || abs(env.temperature - target_temp) < 1)
 		change_mode(MODE_IDLE)
 		return
 
-	var/datum/gas_mixture_old/removed = env.remove_ratio(0.99)
+	var/datum/gas_mixture/removed = env.remove_ratio(0.99)
 	if(!removed)
 		change_mode(MODE_IDLE)
 		return
@@ -139,9 +139,9 @@
 	if(!anchored || !powernet)
 		return
 	var/power_avail = draw_power(active_power_usage*10)
-	var/datum/gas_mixture_old/env = loc.return_air()
+	var/datum/gas_mixture/env = loc.return_air()
 	if(env)
-		var/datum/gas_mixture_old/removed = env.remove_ratio(0.99)
+		var/datum/gas_mixture/removed = env.remove_ratio(0.99)
 		if(removed)
 			removed.add_thermal_energy(power_avail*5)
 			env.merge(removed)

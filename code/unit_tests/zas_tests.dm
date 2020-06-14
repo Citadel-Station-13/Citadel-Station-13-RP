@@ -26,7 +26,7 @@
 
 		var/t_msg = "Turf: [T] |  Location: [T.x] // [T.y] // [T.z]"
 
-		var/datum/gas_mixture_old/GM = T.return_air()
+		var/datum/gas_mixture/GM = T.return_air()
 		var/pressure = GM.return_pressure()
 		var/temp = GM.temperature
 

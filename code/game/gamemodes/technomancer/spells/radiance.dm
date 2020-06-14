@@ -29,8 +29,8 @@
 
 /obj/item/spell/radiance/process()
 	var/turf/T = get_turf(src)
-	var/datum/gas_mixture_old/removed = null
-	var/datum/gas_mixture_old/env = null
+	var/datum/gas_mixture/removed = null
+	var/datum/gas_mixture/env = null
 	var/adjusted_power = calculate_spell_power(power)
 
 	if(!istype(T, /turf/space))

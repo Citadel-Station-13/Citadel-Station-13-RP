@@ -53,7 +53,7 @@
 
 	var/power_draw = -1
 
-	var/datum/gas_mixture_old/environment = loc.return_air()
+	var/datum/gas_mixture/environment = loc.return_air()
 
 	var/pressure_delta
 	var/output_volume

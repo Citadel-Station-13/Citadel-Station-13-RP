@@ -113,7 +113,7 @@
 	if(stat & (NOPOWER|BROKEN) || !use_power)
 		return 0
 
-	var/datum/gas_mixture_old/environment = loc.return_air()
+	var/datum/gas_mixture/environment = loc.return_air()
 
 	var/power_draw = -1
 
@@ -145,7 +145,7 @@
 
 	return 1
 
-/obj/machinery/atmospherics/binary/dp_vent_pump/proc/get_pressure_delta(datum/gas_mixture_old/environment)
+/obj/machinery/atmospherics/binary/dp_vent_pump/proc/get_pressure_delta(datum/gas_mixture/environment)
 	var/pressure_delta = DEFAULT_PRESSURE_DELTA
 	var/environment_pressure = environment.return_pressure()
 

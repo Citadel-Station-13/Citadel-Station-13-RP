@@ -32,7 +32,7 @@
 	air1.volume = 400
 
 /obj/machinery/atmospherics/binary/circulator/proc/return_transfer_air()
-	var/datum/gas_mixture_old/removed
+	var/datum/gas_mixture/removed
 	if(anchored && !(stat&BROKEN) && network1)
 		var/input_starting_pressure = air1.return_pressure()
 		var/output_starting_pressure = air2.return_pressure()

@@ -621,7 +621,7 @@
 		to_chat(usr, "<span class='notice'>It is cryogenically frozen.</span>")
 	if(mechanical)
 		var/turf/T = loc
-		var/datum/gas_mixture_old/environment
+		var/datum/gas_mixture/environment
 
 		var/environment_type
 		if(closed_system && (connected_port || holding) && air_contents)

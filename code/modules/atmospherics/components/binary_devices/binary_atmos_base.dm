@@ -3,8 +3,8 @@
 	initialize_directions = SOUTH|NORTH
 	use_power = USE_POWER_IDLE
 
-	var/datum/gas_mixture_old/air1
-	var/datum/gas_mixture_old/air2
+	var/datum/gas_mixture/air1
+	var/datum/gas_mixture/air2
 
 	var/datum/pipe_network/network1
 	var/datum/pipe_network/network2

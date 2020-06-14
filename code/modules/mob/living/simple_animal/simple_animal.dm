@@ -474,7 +474,7 @@
 	if(istype(A,/turf))
 		var/turf/T = A
 
-		var/datum/gas_mixture_old/Environment = T.return_air()
+		var/datum/gas_mixture/Environment = T.return_air()
 
 		if(Environment)
 

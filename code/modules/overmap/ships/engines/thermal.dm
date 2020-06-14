@@ -71,7 +71,7 @@
 			on = !on
 			return 0
 
-		var/datum/gas_mixture_old/removed = air_contents.remove(transfer_moles)
+		var/datum/gas_mixture/removed = air_contents.remove(transfer_moles)
 
 		loc.assume_air(removed)
 		if(air_contents.temperature > PHORON_MINIMUM_BURN_TEMPERATURE)

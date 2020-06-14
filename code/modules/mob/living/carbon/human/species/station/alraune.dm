@@ -111,14 +111,14 @@
 	//They don't have lungs so breathe() will just return. Instead, they breathe through their skin.
 	//This is mostly normal breath code with some tweaks that apply to their particular biology.
 
-	var/datum/gas_mixture_old/breath = null
+	var/datum/gas_mixture/breath = null
 	var/fullysealed = FALSE //if they're wearing a fully sealed suit, their internals take priority.
 	var/environmentalair = FALSE //if no sealed suit, internals take priority in low pressure environements
 
 	if(H.wear_suit && (H.wear_suit.min_pressure_protection = 0) && H.head && (H.head.min_pressure_protection = 0))
 		fullysealed = TRUE
 	else // find out if local gas mixture is enough to override use of internals
-		var/datum/gas_mixture_old/environment = H.loc.return_air()
+		var/datum/gas_mixture/environment = H.loc.return_air()
 		var/envpressure = environment.return_pressure()
 		if(envpressure >= hazard_low_pressure)
 			environmentalair = TRUE
@@ -128,7 +128,7 @@
 
 	if(!breath) //No breath from internals so let's try to get air from our location
 		// cut-down version of get_breath_from_environment - notably, gas masks provide no benefit
-		var/datum/gas_mixture_old/environment2
+		var/datum/gas_mixture/environment2
 		if(H.loc)
 			environment2 = H.loc.return_air_for_internal_lifeform(H)
 

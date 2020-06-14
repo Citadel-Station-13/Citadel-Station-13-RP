@@ -154,8 +154,8 @@ Pipelines + Other Objects -> Pipe network
 	return null
 
 /obj/machinery/atmospherics/proc/can_unwrench()
-	var/datum/gas_mixture_old/int_air = return_air()
-	var/datum/gas_mixture_old/env_air = loc.return_air()
+	var/datum/gas_mixture/int_air = return_air()
+	var/datum/gas_mixture/env_air = loc.return_air()
 	if((int_air.return_pressure()-env_air.return_pressure()) > 2*ONE_ATMOSPHERE)
 		return 0
 	return 1

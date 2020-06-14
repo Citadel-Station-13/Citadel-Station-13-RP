@@ -57,7 +57,7 @@
 	var/use_internal_tank = 0
 	var/internal_tank_valve = ONE_ATMOSPHERE
 	var/obj/machinery/portable_atmospherics/canister/internal_tank
-	var/datum/gas_mixture_old/cabin_air
+	var/datum/gas_mixture/cabin_air
 	var/obj/machinery/atmospherics/portables_connector/connected_port = null
 
 	var/obj/item/radio/radio = null
@@ -727,7 +727,7 @@
 	check_for_internal_damage(list(MECHA_INT_FIRE,MECHA_INT_TEMP_CONTROL,MECHA_INT_CONTROL_LOST,MECHA_INT_SHORT_CIRCUIT),1)
 	return
 
-/obj/mecha/fire_act(datum/gas_mixture_old/air, exposed_temperature, exposed_volume)
+/obj/mecha/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	if(exposed_temperature>src.max_temperature)
 		src.log_message("Exposed to dangerous temperature.",1)
 		src.take_damage(5,"fire")
@@ -1001,7 +1001,7 @@
 	if(use_internal_tank)
 		. =  cabin_air.return_pressure()
 	else
-		var/datum/gas_mixture_old/t_air = get_turf_air()
+		var/datum/gas_mixture/t_air = get_turf_air()
 		if(t_air)
 			. = t_air.return_pressure()
 	return
@@ -1012,7 +1012,7 @@
 	if(use_internal_tank)
 		. = cabin_air.temperature
 	else
-		var/datum/gas_mixture_old/t_air = get_turf_air()
+		var/datum/gas_mixture/t_air = get_turf_air()
 		if(t_air)
 			. = t_air.temperature
 	return
@@ -1274,7 +1274,7 @@
 	/*
 		if(ishuman(occupant) && (return_pressure() > HAZARD_HIGH_PRESSURE))
 			use_internal_tank = 0
-			var/datum/gas_mixture_old/environment = get_turf_air()
+			var/datum/gas_mixture/environment = get_turf_air()
 			if(environment)
 				var/env_pressure = environment.return_pressure()
 				var/pressure_delta = (cabin.return_pressure() - env_pressure)
@@ -1285,7 +1285,7 @@
 					transfer_moles = pressure_delta*environment.volume/(cabin.return_temperature() * R_IDEAL_GAS_EQUATION)
 
 			//Actually transfer the gas
-					var/datum/gas_mixture_old/removed = cabin.air_contents.remove(transfer_moles)
+					var/datum/gas_mixture/removed = cabin.air_contents.remove(transfer_moles)
 					loc.assume_air(removed)
 
 			occupant.SetStunned(5)

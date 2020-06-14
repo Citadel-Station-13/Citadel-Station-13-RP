@@ -147,7 +147,7 @@
 	log_and_message_admins("[src] ignited due to a chain reaction with an explosion.")
 	ignite()
 
-/mob/living/simple_animal/slime/dark_purple/fire_act(datum/gas_mixture_old/air, temperature, volume)
+/mob/living/simple_animal/slime/dark_purple/fire_act(datum/gas_mixture/air, temperature, volume)
 	log_and_message_admins("[src] ignited due to exposure to fire.")
 	ignite()
 
@@ -202,7 +202,7 @@
 			delta *= cold_factor
 			L.bodytemperature = max(50, L.bodytemperature + delta)
 	var/turf/T = get_turf(src)
-	var/datum/gas_mixture_old/env = T.return_air()
+	var/datum/gas_mixture/env = T.return_air()
 	if(env)
 		env.add_thermal_energy(-10 * 1000)
 
@@ -625,7 +625,7 @@
 	log_and_message_admins("[src] exploded due to a chain reaction with another explosion.")
 	explode()
 
-/mob/living/simple_animal/slime/oil/fire_act(datum/gas_mixture_old/air, temperature, volume)
+/mob/living/simple_animal/slime/oil/fire_act(datum/gas_mixture/air, temperature, volume)
 	log_and_message_admins("[src] exploded due to exposure to fire.")
 	explode()
 

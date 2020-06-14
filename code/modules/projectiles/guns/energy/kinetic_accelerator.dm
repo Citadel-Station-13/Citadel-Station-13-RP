@@ -70,7 +70,7 @@
 	var/turf/proj_turf = get_turf(src)
 	if(!isturf(proj_turf))
 		return
-	var/datum/gas_mixture_old/environment = proj_turf.return_air()
+	var/datum/gas_mixture/environment = proj_turf.return_air()
 	if(environment.temperature > 250)
 		BB.name = "weakened [BB.name]"
 		BB.damage *= BB.pressure_decrease

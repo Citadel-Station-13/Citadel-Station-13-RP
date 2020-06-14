@@ -122,7 +122,7 @@
 	var/data[0]
 
 	data["integrity_percentage"] = round(get_integrity())
-	var/datum/gas_mixture_old/env = null
+	var/datum/gas_mixture/env = null
 	if(!isnull(src.loc) && !istype(src.loc, /turf/space))
 		env = src.loc.return_air()
 
@@ -266,8 +266,8 @@
 				"You [anchored ? "secure" : "unsecure"] the bolts holding [src] to the floor.", \
 				"You hear a ratchet.")
 
-/obj/machinery/power/fission/proc/equalize(datum/gas_mixture_old/env, var/efficiency)
-	var/datum/gas_mixture_old/sharer = env.remove(efficiency * env.total_moles)
+/obj/machinery/power/fission/proc/equalize(datum/gas_mixture/env, var/efficiency)
+	var/datum/gas_mixture/sharer = env.remove(efficiency * env.total_moles)
 	var/our_heatcap = heat_capacity()
 	var/share_heatcap = sharer.heat_capacity()
 
@@ -287,9 +287,9 @@
 	for(var/i=1,i<=pipes.len,i++)
 		var/obj/machinery/atmospherics/pipe/pipe = pipes[i]
 		if(istype(pipe, /obj/machinery/atmospherics/pipe))
-			var/datum/gas_mixture_old/env = pipe.return_air()
+			var/datum/gas_mixture/env = pipe.return_air()
 			if(!isnull(env))
-				var/datum/gas_mixture_old/removed = env.remove(gasefficiency * env.total_moles)
+				var/datum/gas_mixture/removed = env.remove(gasefficiency * env.total_moles)
 				var/env_heatcap = env.heat_capacity()
 				total_heatcap += env_heatcap
 				total_energy += (env.temperature * env_heatcap)
@@ -304,9 +304,9 @@
 	for(var/i=1,i<=pipes.len,i++)
 		var/obj/machinery/atmospherics/pipe/pipe = pipes[i]
 		if(istype(pipe, /obj/machinery/atmospherics/pipe))
-			var/datum/gas_mixture_old/env = pipe.return_air()
+			var/datum/gas_mixture/env = pipe.return_air()
 			if(!isnull(env))
-				var/datum/gas_mixture_old/removed = env.remove(gasefficiency * env.total_moles)
+				var/datum/gas_mixture/removed = env.remove(gasefficiency * env.total_moles)
 				if(!isnull(removed))
 					removed.temperature += (new_temperature - removed.temperature)
 					removed.temperature = between(0, removed.temperature, REACTOR_TEMPERATURE_CUTOFF)

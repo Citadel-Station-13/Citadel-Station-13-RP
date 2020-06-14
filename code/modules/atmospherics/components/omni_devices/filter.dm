@@ -62,8 +62,8 @@
 	if(!..())
 		return 0
 
-	var/datum/gas_mixture_old/output_air = output.air	//BYOND doesn't like referencing "output.air.return_pressure()" so we need to make a direct reference
-	var/datum/gas_mixture_old/input_air = input.air		// it's completely happy with them if they're in a loop though i.e. "P.air.return_pressure()"... *shrug*
+	var/datum/gas_mixture/output_air = output.air	//BYOND doesn't like referencing "output.air.return_pressure()" so we need to make a direct reference
+	var/datum/gas_mixture/input_air = input.air		// it's completely happy with them if they're in a loop though i.e. "P.air.return_pressure()"... *shrug*
 
 	//Figure out the amount of moles to transfer
 	var/transfer_moles = (set_flow_rate/input_air.volume)*input_air.total_moles

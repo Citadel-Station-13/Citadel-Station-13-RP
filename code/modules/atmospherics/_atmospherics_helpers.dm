@@ -25,7 +25,7 @@
 //Moves gas from one gas_mixture to another and returns the amount of power needed (assuming 1 second), or -1 if no gas was pumped.
 //transfer_moles - Limits the amount of moles to transfer. The actual amount of gas moved may also be limited by available_power, if given.
 //available_power - the maximum amount of power that may be used when moving gas. If null then the transfer is not limited by power.
-/proc/pump_gas(var/obj/machinery/M, var/datum/gas_mixture_old/source, var/datum/gas_mixture_old/sink, var/transfer_moles = null, var/available_power = null)
+/proc/pump_gas(var/obj/machinery/M, var/datum/gas_mixture/source, var/datum/gas_mixture/sink, var/transfer_moles = null, var/available_power = null)
 	if (source.total_moles < MINIMUM_MOLES_TO_PUMP) //if we cant transfer enough gas just stop to avoid further processing
 		return -1
 
@@ -57,7 +57,7 @@
 		var/obj/machinery/portable_atmospherics/P = M
 		P.last_flow_rate = (transfer_moles/source.total_moles)*source.volume //group_multiplier gets divided out here
 
-	var/datum/gas_mixture_old/removed = source.remove(transfer_moles)
+	var/datum/gas_mixture/removed = source.remove(transfer_moles)
 	if (!removed) //Just in case
 		return -1
 
@@ -68,7 +68,7 @@
 	return power_draw
 
 //Gas 'pumping' proc for the case where the gas flow is passive and driven entirely by pressure differences (but still one-way).
-/proc/pump_gas_passive(var/obj/machinery/M, var/datum/gas_mixture_old/source, var/datum/gas_mixture_old/sink, var/transfer_moles = null)
+/proc/pump_gas_passive(var/obj/machinery/M, var/datum/gas_mixture/source, var/datum/gas_mixture/sink, var/transfer_moles = null)
 	if (source.total_moles < MINIMUM_MOLES_TO_PUMP) //if we cant transfer enough gas just stop to avoid further processing
 		return -1
 
@@ -94,7 +94,7 @@
 		var/obj/machinery/portable_atmospherics/P = M
 		P.last_flow_rate = (transfer_moles/source.total_moles)*source.volume //group_multiplier gets divided out here
 
-	var/datum/gas_mixture_old/removed = source.remove(transfer_moles)
+	var/datum/gas_mixture/removed = source.remove(transfer_moles)
 	if(!removed) //Just in case
 		return -1
 	sink.merge(removed)
@@ -106,7 +106,7 @@
 //filtering - A list of gasids to be scrubbed from source
 //total_transfer_moles - Limits the amount of moles to scrub. The actual amount of gas scrubbed may also be limited by available_power, if given.
 //available_power - the maximum amount of power that may be used when scrubbing gas. If null then the scrubbing is not limited by power.
-/proc/scrub_gas(var/obj/machinery/M, var/list/filtering, var/datum/gas_mixture_old/source, var/datum/gas_mixture_old/sink, var/total_transfer_moles = null, var/available_power = null)
+/proc/scrub_gas(var/obj/machinery/M, var/list/filtering, var/datum/gas_mixture/source, var/datum/gas_mixture/sink, var/total_transfer_moles = null, var/available_power = null)
 	if (source.total_moles < MINIMUM_MOLES_TO_FILTER) //if we cant transfer enough gas just stop to avoid further processing
 		return -1
 
@@ -177,7 +177,7 @@
 //filtering - A list of gasids to be filtered. These gasses get moved to sink_filtered, while the other gasses get moved to sink_clean.
 //total_transfer_moles - Limits the amount of moles to input. The actual amount of gas filtered may also be limited by available_power, if given.
 //available_power - the maximum amount of power that may be used when filtering gas. If null then the filtering is not limited by power.
-/proc/filter_gas(var/obj/machinery/M, var/list/filtering, var/datum/gas_mixture_old/source, var/datum/gas_mixture_old/sink_filtered, var/datum/gas_mixture_old/sink_clean, var/total_transfer_moles = null, var/available_power = null)
+/proc/filter_gas(var/obj/machinery/M, var/list/filtering, var/datum/gas_mixture/source, var/datum/gas_mixture/sink_filtered, var/datum/gas_mixture/sink_clean, var/total_transfer_moles = null, var/available_power = null)
 	if (source.total_moles < MINIMUM_MOLES_TO_FILTER) //if we cant transfer enough gas just stop to avoid further processing
 		return -1
 
@@ -222,7 +222,7 @@
 		var/obj/machinery/portable_atmospherics/P = M
 		P.last_flow_rate = (total_transfer_moles/source.total_moles)*source.volume //group_multiplier gets divided out here
 
-	var/datum/gas_mixture_old/removed = source.remove(total_transfer_moles)
+	var/datum/gas_mixture/removed = source.remove(total_transfer_moles)
 	if (!removed) //Just in case
 		return -1
 
@@ -249,7 +249,7 @@
 //For omni devices. Instead filtering is an associative list mapping gasids to gas mixtures.
 //I don't like the copypasta, but I decided to keep both versions of gas filtering as filter_gas is slightly faster (doesn't create as many temporary lists, doesn't call update_values() as much)
 //filter_gas can be removed and replaced with this proc if need be.
-/proc/filter_gas_multi(var/obj/machinery/M, var/list/filtering, var/datum/gas_mixture_old/source, var/datum/gas_mixture_old/sink_clean, var/total_transfer_moles = null, var/available_power = null)
+/proc/filter_gas_multi(var/obj/machinery/M, var/list/filtering, var/datum/gas_mixture/source, var/datum/gas_mixture/sink_clean, var/total_transfer_moles = null, var/available_power = null)
 	if (source.total_moles < MINIMUM_MOLES_TO_FILTER) //if we cant transfer enough gas just stop to avoid further processing
 		return -1
 
@@ -264,7 +264,7 @@
 			continue
 
 		if (g in filtering)
-			var/datum/gas_mixture_old/sink_filtered = filtering[g]
+			var/datum/gas_mixture/sink_filtered = filtering[g]
 			specific_power_gas[g] = calculate_specific_power_gas(g, source, sink_filtered)/ATMOS_FILTER_EFFICIENCY
 			total_filterable_moles += source.gas[g]
 		else
@@ -295,7 +295,7 @@
 		var/obj/machinery/portable_atmospherics/P = M
 		P.last_flow_rate = (total_transfer_moles/source.total_moles)*source.volume //group_multiplier gets divided out here
 
-	var/datum/gas_mixture_old/removed = source.remove(total_transfer_moles)
+	var/datum/gas_mixture/removed = source.remove(total_transfer_moles)
 	if (!removed) //Just in case
 		return -1
 
@@ -305,7 +305,7 @@
 		var/power_used = specific_power_gas[g]*removed.gas[g]
 
 		if (g in filtering)
-			var/datum/gas_mixture_old/sink_filtered = filtering[g]
+			var/datum/gas_mixture/sink_filtered = filtering[g]
 			//use update=0. All the filtered gasses are supposed to be added simultaneously, so we update after the for loop.
 			sink_filtered.adjust_gas_temp(g, removed.gas[g], removed.temperature, update=1)
 			removed.adjust_gas(g, -removed.gas[g], update=0)
@@ -317,7 +317,7 @@
 	removed.update_values()
 
 	var/power_draw = unfiltered_power_used
-	for (var/datum/gas_mixture_old/sink_filtered in filtered_power_used)
+	for (var/datum/gas_mixture/sink_filtered in filtered_power_used)
 		power_draw += filtered_power_used[sink_filtered]
 
 	sink_clean.merge(removed)
@@ -326,7 +326,7 @@
 
 //Similar deal as the other atmos process procs.
 //mix_sources maps input gas mixtures to mix ratios. The mix ratios MUST add up to 1.
-/proc/mix_gas(var/obj/machinery/M, var/list/mix_sources, var/datum/gas_mixture_old/sink, var/total_transfer_moles = null, var/available_power = null)
+/proc/mix_gas(var/obj/machinery/M, var/list/mix_sources, var/datum/gas_mixture/sink, var/total_transfer_moles = null, var/available_power = null)
 	if (!mix_sources.len)
 		return -1
 
@@ -335,7 +335,7 @@
 	var/total_input_volume = 0		//for flow rate calculation
 	var/total_input_moles = 0		//for flow rate calculation
 	var/list/source_specific_power = list()
-	for (var/datum/gas_mixture_old/source in mix_sources)
+	for (var/datum/gas_mixture/source in mix_sources)
 		if (source.total_moles < MINIMUM_MOLES_TO_FILTER)
 			return -1	//either mix at the set ratios or mix no gas at all
 
@@ -377,14 +377,14 @@
 		P.last_flow_rate = (total_transfer_moles/total_input_moles)*total_input_volume //group_multiplier gets divided out here
 
 	var/total_power_draw = 0
-	for (var/datum/gas_mixture_old/source in mix_sources)
+	for (var/datum/gas_mixture/source in mix_sources)
 		var/mix_ratio = mix_sources[source]
 		if (!mix_ratio)
 			continue
 
 		var/transfer_moles = total_transfer_moles * mix_ratio
 
-		var/datum/gas_mixture_old/removed = source.remove(transfer_moles)
+		var/datum/gas_mixture/removed = source.remove(transfer_moles)
 
 		var/power_draw = transfer_moles * source_specific_power[source]
 		total_power_draw += power_draw
@@ -398,7 +398,7 @@
 */
 
 //Calculates the amount of power needed to move one mole from source to sink.
-/proc/calculate_specific_power(datum/gas_mixture_old/source, datum/gas_mixture_old/sink)
+/proc/calculate_specific_power(datum/gas_mixture/source, datum/gas_mixture/sink)
 	//Calculate the amount of energy required
 	var/air_temperature = (sink.temperature > 0)? sink.temperature : source.temperature
 	var/specific_entropy = sink.specific_entropy() - source.specific_entropy() //sink is gaining moles, source is loosing
@@ -411,7 +411,7 @@
 	return specific_power
 
 //Calculates the amount of power needed to move one mole of a certain gas from source to sink.
-/proc/calculate_specific_power_gas(var/gasid, datum/gas_mixture_old/source, datum/gas_mixture_old/sink)
+/proc/calculate_specific_power_gas(var/gasid, datum/gas_mixture/source, datum/gas_mixture/sink)
 	//Calculate the amount of energy required
 	var/air_temperature = (sink.temperature > 0)? sink.temperature : source.temperature
 	var/specific_entropy = sink.specific_entropy_gas(gasid) - source.specific_entropy_gas(gasid) //sink is gaining moles, source is loosing
@@ -426,7 +426,7 @@
 //Calculates the APPROXIMATE amount of moles that would need to be transferred to change the pressure of sink by pressure_delta
 //If set, sink_volume_mod adjusts the effective output volume used in the calculation. This is useful when the output gas_mixture is
 //part of a pipenetwork, and so it's volume isn't representative of the actual volume since the gas will be shared across the pipenetwork when it processes.
-/proc/calculate_transfer_moles(datum/gas_mixture_old/source, datum/gas_mixture_old/sink, var/pressure_delta, var/sink_volume_mod=0)
+/proc/calculate_transfer_moles(datum/gas_mixture/source, datum/gas_mixture/sink, var/pressure_delta, var/sink_volume_mod=0)
 	if(source.temperature == 0 || source.total_moles == 0) return 0
 
 	var/output_volume = (sink.volume * sink.group_multiplier) + sink_volume_mod
@@ -444,7 +444,7 @@
 	return pressure_delta*output_volume/(air_temperature * R_IDEAL_GAS_EQUATION)
 
 //Calculates the APPROXIMATE amount of moles that would need to be transferred to bring source and sink to the same pressure
-/proc/calculate_equalize_moles(datum/gas_mixture_old/source, datum/gas_mixture_old/sink)
+/proc/calculate_equalize_moles(datum/gas_mixture/source, datum/gas_mixture/sink)
 	if(source.temperature == 0) return 0
 
 	//Make the approximation that the sink temperature is unchanged after transferring gas

@@ -522,7 +522,7 @@
 			continue
 
 	// Now make it very cold.
-	var/datum/gas_mixture_old/env = T.return_air()
+	var/datum/gas_mixture/env = T.return_air()
 	if(env)
 		// This is most likely physically impossible but when has that stopped slimes before?
 		env.add_thermal_energy(-10 * 1000 * 1000) // For a moderately sized room this doesn't actually lower it that much.

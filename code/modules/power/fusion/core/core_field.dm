@@ -127,7 +127,7 @@
 
 	// Take some gas up from our environment.
 	var/added_particles = FALSE
-	var/datum/gas_mixture_old/uptake_gas = owned_core.loc.return_air()
+	var/datum/gas_mixture/uptake_gas = owned_core.loc.return_air()
 	if(uptake_gas)
 		uptake_gas = uptake_gas.remove_by_flag(XGM_GAS_FUSION_FUEL, rand(50,100))
 	if(uptake_gas && uptake_gas.total_moles)
@@ -297,7 +297,7 @@
 	// Create our plasma field and dump it into our environment.
 	var/turf/T = get_turf(src)
 	if(istype(T))
-		var/datum/gas_mixture_old/plasma = new
+		var/datum/gas_mixture/plasma = new
 		plasma.adjust_gas("oxygen", (size*100), 0)
 		plasma.adjust_gas("phoron", (size*100), 0)
 		plasma.temperature = (plasma_temperature/2)
@@ -527,7 +527,7 @@
 //Somehow fixing the radiation issue managed to break this, but moving it to it's own proc seemed to have fixed it. I don't know.
 /obj/effect/fusion_em_field/proc/temp_dump()
 	if(owned_core && owned_core.loc)
-		var/datum/gas_mixture_old/environment = owned_core.loc.return_air()
+		var/datum/gas_mixture/environment = owned_core.loc.return_air()
 		if(environment && environment.temperature < (T0C+FUSION_MAX_ENVIRO_HEAT))
 			environment.add_thermal_energy(plasma_temperature*5000)
 			check_instability()
@@ -624,7 +624,7 @@
 	for(var/loopcount = 1 to 10)
 		var/turf/TT = get_turf(pick(turfs_in_range))
 		if(istype(TT))
-			var/datum/gas_mixture_old/plasma = new
+			var/datum/gas_mixture/plasma = new
 			plasma.adjust_gas("oxygen", (size*100), 0)
 			plasma.adjust_gas("phoron", (size*100), 0)
 			plasma.temperature = (plasma_temperature/2)
@@ -640,7 +640,7 @@
 	empulse(owned_core, 10, 15)
 	var/turf/TT = get_turf(owned_core)
 	if(istype(TT))
-		var/datum/gas_mixture_old/plasma = new
+		var/datum/gas_mixture/plasma = new
 		plasma.adjust_gas("oxygen", (size*100), 0)
 		plasma.adjust_gas("phoron", (size*100), 0)
 		plasma.temperature = (plasma_temperature/2)

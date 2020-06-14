@@ -313,9 +313,9 @@
 	var/cooling_power = 40
 
 /obj/structure/closet/crate/freezer/return_air()
-	var/datum/gas_mixture_old/gas = (..())
+	var/datum/gas_mixture/gas = (..())
 	if(!gas)	return null
-	var/datum/gas_mixture_old/newgas = new/datum/gas_mixture_old()
+	var/datum/gas_mixture/newgas = new/datum/gas_mixture()
 	newgas.copy_from(gas)
 	if(newgas.temperature <= target_temp)	return
 

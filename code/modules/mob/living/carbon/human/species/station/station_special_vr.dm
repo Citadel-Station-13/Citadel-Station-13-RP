@@ -126,7 +126,7 @@
 
 	//Cold/pressure effects when not regenerating
 	else
-		var/datum/gas_mixture_old/environment = H.loc.return_air()
+		var/datum/gas_mixture/environment = H.loc.return_air()
 		var/pressure2 = environment.return_pressure()
 		var/adjusted_pressure2 = H.calculate_affecting_pressure(pressure2)
 

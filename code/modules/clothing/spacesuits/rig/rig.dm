@@ -407,7 +407,7 @@
 	if(istype(T, /turf/space))
 		return 0	//space has no temperature, this just makes sure the cooling unit works in space
 
-	var/datum/gas_mixture_old/environment = T.return_air()
+	var/datum/gas_mixture/environment = T.return_air()
 	if (!environment)
 		return 0
 
@@ -440,7 +440,7 @@
 	var/mob/living/carbon/human/H = loc
 
 	var/turf/T = get_turf(src)
-	var/datum/gas_mixture_old/environment = T.return_air()
+	var/datum/gas_mixture/environment = T.return_air()
 	var/efficiency = 1 - H.get_pressure_weakness(environment.return_pressure())	// You need to have a good seal for effective cooling
 	var/env_temp = get_environment_temperature()						//wont save you from a fire
 	var/temp_adj = min(H.bodytemperature - max(thermostat, env_temp), max_cooling)

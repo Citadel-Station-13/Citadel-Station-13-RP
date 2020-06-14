@@ -40,15 +40,15 @@
 	if(!input1 || !input2)
 		return
 
-	var/datum/gas_mixture_old/air1 = input1.return_exchange_air()
-	var/datum/gas_mixture_old/air2 = input2.return_exchange_air()
+	var/datum/gas_mixture/air1 = input1.return_exchange_air()
+	var/datum/gas_mixture/air2 = input2.return_exchange_air()
 
 
 	lastgen = 0
 
 	if(air1 && air2)
-		var/datum/gas_mixture_old/hot_air = air1
-		var/datum/gas_mixture_old/cold_air = air2
+		var/datum/gas_mixture/hot_air = air1
+		var/datum/gas_mixture/cold_air = air2
 		if(hot_air.temperature < cold_air.temperature)
 			hot_air = air2
 			cold_air = air1
