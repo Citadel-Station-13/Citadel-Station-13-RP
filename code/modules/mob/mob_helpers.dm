@@ -290,9 +290,9 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 		var/x
 		for(x=0; x<duration, x++)
 			if(aiEyeFlag)
-				M.client.eye = locate(dd_range(1,oldeye.loc.x+rand(-strength,strength),world.maxx),dd_range(1,oldeye.loc.y+rand(-strength,strength),world.maxy),oldeye.loc.z)
+				M.client.eye = locate(clamp(oldeye.loc.x+rand(-strength,strength),1,world.maxx),clamp(oldeye.loc.y+rand(-strength,strength),world.maxy),1,oldeye.loc.z)
 			else
-				M.client.eye = locate(dd_range(1,M.loc.x+rand(-strength,strength),world.maxx),dd_range(1,M.loc.y+rand(-strength,strength),world.maxy),M.loc.z)
+				M.client.eye = locate(clamp(M.loc.x+rand(-strength,strength),1,world.maxx),clamp(M.loc.y+rand(-strength,strength),world.maxy),1,M.loc.z)
 			sleep(1)
 		M.client.eye=oldeye
 		M.shakecamera = 0
