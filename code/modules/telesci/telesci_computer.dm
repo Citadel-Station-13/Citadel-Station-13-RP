@@ -172,7 +172,7 @@
 		return
 
 	if(telepad)
-		var/trueDistance = CLAMP(distance + distance_off, 1, get_max_allowed_distance())
+		var/trueDistance = clamp(distance + distance_off, 1, get_max_allowed_distance())
 		var/trueRotation = rotation + rotation_off
 
 		var/datum/projectile_data/proj_data = simple_projectile_trajectory(telepad.x, telepad.y, trueRotation, trueDistance)
@@ -282,7 +282,7 @@
 			updateDialog()
 
 /obj/machinery/computer/telescience/proc/teleport(mob/user)
-	distance = CLAMP(distance, 0, get_max_allowed_distance())
+	distance = clamp(distance, 0, get_max_allowed_distance())
 	if(rotation == null || distance == null || z_co == null)
 		temp_msg = "ERROR!<BR>Set a distance, rotation and sector."
 		return
@@ -319,14 +319,14 @@
 		var/new_rot = input("Please input desired bearing in degrees.", name, rotation) as num
 		if(..()) // Check after we input a value, as they could've moved after they entered something
 			return
-		rotation = CLAMP(new_rot, -900, 900)
+		rotation = clamp(new_rot, -900, 900)
 		rotation = round(rotation, 0.01)
 
 	if(href_list["setdistance"])
 		var/new_pow = input("Please input desired distance in meters.", name, rotation) as num
 		if(..()) // Check after we input a value, as they could've moved after they entered something
 			return
-		distance = CLAMP(new_pow, 1, get_max_allowed_distance())
+		distance = clamp(new_pow, 1, get_max_allowed_distance())
 		distance = FLOOR(distance, 1)
 
 	if(href_list["setz"])
