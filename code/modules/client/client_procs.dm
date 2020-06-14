@@ -47,7 +47,7 @@
 	// Localhost connections get full admin rights and a special rank
 	else if(isnull(address) || (address in list("127.0.0.1", "::1")))
 		holder = new /datum/admins("!localhost!", ALL, ckey)
-		holder.associate(ckey)
+		holder.associate(src)
 
 	//preferences datum - also holds some persistant data for the client (because we may as well keep these datums to a minimum)
 	prefs = preferences_datums[ckey]
