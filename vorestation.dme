@@ -260,7 +260,6 @@
 #include "code\controllers\subsystems\transfer.dm"
 #include "code\controllers\subsystems\turbolift.dm"
 #include "code\controllers\subsystems\vote.dm"
-#include "code\controllers\subsystems\wind.dm"
 #include "code\controllers\subsystems\xenoarch.dm"
 #include "code\controllers\subsystems\persistence\_persistence.dm"
 #include "code\controllers\subsystems\persistence\bunker.dm"

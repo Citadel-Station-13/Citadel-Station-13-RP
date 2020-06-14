@@ -10,13 +10,13 @@ SUBSYSTEM_DEF(air)
 	name = "Air"
 	init_order = INIT_ORDER_AIR
 	priority = FIRE_PRIORITY_AIR
-	wait = 5
+	wait = 2 SECONDS // seconds (We probably can speed this up actually)
 	flags = SS_BACKGROUND // TODO - Should this really be background? It might be important.
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
+	var/static/list/part_names = list("turfs", "edges", "fire zones", "hotspots", "zones")
+
 	/// Associative id = datum list of generated /datum/atmosphere's.
 	var/list/generated_atmospheres
-
-	var/static/list/part_names = list("turfs", "edges", "fire zones", "hotspots", "zones")
 
 	var/cost_turfs = 0
 	var/cost_edges = 0
@@ -37,8 +37,6 @@ SUBSYSTEM_DEF(air)
 	air_master = src
 
 /datum/controller/subsystem/air/Initialize(timeofday)
-	generate_atmospheres()
-
 	report_progress("Processing Geometry...")
 
 	current_cycle = 0
@@ -271,6 +269,10 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 	next_fire = world.time + wait
 	can_fire = TRUE // Unpause
 
+//
+// The procs from the ZAS Air Controller are in ZAS/Controller.dm
+//
+
 /**
   * Initializes all subtypes of /datum/atmosphere and indexes them by key.
   */
@@ -290,10 +292,6 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 		return gas_string
 	var/datum/atmosphere/mix = generated_atmospheres[gas_string]
 	return mix.gas_string
-
-//
-// The procs from the ZAS Air Controller are in ZAS/Controller.dm
-//
 
 #undef SSAIR_TURFS
 #undef SSAIR_EDGES
