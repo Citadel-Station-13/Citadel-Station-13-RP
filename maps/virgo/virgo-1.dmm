@@ -799,7 +799,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1;
 	icon_state = "map";
-	
+
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 5
@@ -856,7 +856,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1;
 	icon_state = "map";
-	
+
 	},
 /turf/simulated/floor,
 /area/maintenance/library)
@@ -920,7 +920,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9;
 	icon_state = "intact";
-	
+
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 6
@@ -952,7 +952,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5;
 	icon_state = "intact";
-	
+
 	},
 /obj/structure/closet/emcloset,
 /turf/simulated/floor,
@@ -1921,7 +1921,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 5;
 	icon_state = "intact";
-	
+
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 10
@@ -2056,7 +2056,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "plant-06";
 	pixel_y = 8;
-	
+
 	},
 /obj/structure/table/woodentable,
 /turf/simulated/floor/lino,
@@ -4430,7 +4430,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/floor/tiled,
 /area/maintenance/chapel)
@@ -4471,7 +4471,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1;
 	icon_state = "map";
-	
+
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 9
@@ -4833,7 +4833,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5;
 	icon_state = "intact";
-	
+
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 10
@@ -9924,7 +9924,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1;
 	icon_state = "map";
-	
+
 	},
 /obj/machinery/meter,
 /obj/machinery/light/small{
@@ -12520,7 +12520,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9;
 	icon_state = "intact";
-	
+
 	},
 /obj/structure/cable/green{
 	d1 = 1;
@@ -16233,7 +16233,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 9;
 	icon_state = "intact";
-	
+
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 6
@@ -17486,7 +17486,7 @@
 	pixel_x = -6;
 	pixel_y = -36;
 	req_access = list(2);
-	
+
 	},
 /obj/machinery/button/remote/blast_door{
 	id = "Prison Gate";
@@ -25184,7 +25184,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4;
 	icon_state = "intact";
-	
+
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/universal,
 /turf/simulated/floor/tiled,
@@ -25193,7 +25193,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/floor/tiled,
 /area/maintenance/engineering/pumpstation)
@@ -25530,7 +25530,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/floor/tiled,
 /area/maintenance/engineering/pumpstation)
@@ -25544,7 +25544,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4;
 	icon_state = "intact";
-	
+
 	},
 /obj/machinery/computer/station_alert,
 /turf/simulated/floor/tiled,
@@ -25571,7 +25571,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/pumpstation)
@@ -26187,7 +26187,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 9;
 	icon_state = "intact";
-	
+
 	},
 /obj/structure/cable{
 	d1 = 1;
@@ -28255,7 +28255,7 @@
 /obj/effect/decal/cleanable/cobweb2{
 	icon_state = "spiderling";
 	name = "dead spider";
-	
+
 	},
 /turf/simulated/floor,
 /area/maintenance/medbay_fore)
@@ -30848,7 +30848,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10;
 	icon_state = "intact";
-	
+
 	},
 /obj/machinery/light/small{
 	dir = 1
@@ -31621,7 +31621,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8;
 	icon_state = "map";
-	
+
 	},
 /obj/machinery/meter,
 /obj/structure/cable/green{
@@ -31645,7 +31645,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9;
 	icon_state = "intact";
-	
+
 	},
 /obj/structure/cable/green{
 	d1 = 4;
@@ -32350,7 +32350,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9;
 	icon_state = "intact";
-	
+
 	},
 /obj/machinery/firealarm{
 	dir = 1;
@@ -33376,7 +33376,7 @@
 	icon_state = "plant-09";
 	name = "Steve";
 	pixel_y = 15;
-	
+
 	},
 /obj/effect/floor_decal/industrial/warning/corner,
 /turf/simulated/floor/tiled/dark,
@@ -34706,7 +34706,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8;
 	icon_state = "map";
-	
+
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -34772,7 +34772,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9;
 	icon_state = "intact";
-	
+
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
@@ -36399,7 +36399,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow{
 	dir = 9;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/disposal)
@@ -38711,7 +38711,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/red{
 	dir = 6;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virology)
@@ -40657,7 +40657,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow{
 	dir = 9;
 	icon_state = "intact";
-	
+
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -44379,7 +44379,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow{
 	dir = 5;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/floor,
 /area/maintenance/research)
@@ -47057,7 +47057,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow{
 	dir = 9;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/floor/tiled/dark,
 /area/medical/virologyaccess)
@@ -50395,7 +50395,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow{
 	dir = 5;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/floor,
 /area/maintenance/research)
@@ -50447,7 +50447,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow{
 	dir = 9;
 	icon_state = "intact";
-	
+
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -54939,7 +54939,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5;
 	icon_state = "intact";
-	
+
 	},
 /obj/structure/closet/crate,
 /obj/effect/floor_decal/industrial/warning{
@@ -54955,7 +54955,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1;
 	icon_state = "map";
-	
+
 	},
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/steel,
@@ -54982,7 +54982,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9;
 	icon_state = "intact";
-	
+
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 6
@@ -55590,7 +55590,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 6;
 	icon_state = "intact";
-	
+
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -55934,7 +55934,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "plant-01";
 	pixel_y = 10;
-	
+
 	},
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
@@ -56426,7 +56426,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 5;
 	icon_state = "intact";
-	
+
 	},
 /obj/machinery/light/small,
 /turf/simulated/floor,
@@ -56534,7 +56534,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5;
 	icon_state = "intact";
-	
+
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -57036,7 +57036,7 @@
 /obj/effect/decal/cleanable/cobweb2{
 	icon_state = "spiderling";
 	name = "dead spider";
-	
+
 	},
 /turf/simulated/floor,
 /area/maintenance/medbay_aft)
@@ -57630,7 +57630,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow{
 	dir = 5;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/escape/medical_escape_pod_hallway)
@@ -59089,7 +59089,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 5;
 	icon_state = "intact";
-	
+
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 10
@@ -61318,7 +61318,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
 	dir = 8;
 	icon_state = "map";
-	
+
 	},
 /obj/machinery/meter,
 /obj/effect/floor_decal/industrial/warning{
@@ -61330,7 +61330,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 10;
 	icon_state = "intact";
-	
+
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 5
@@ -73306,7 +73306,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 5;
 	icon_state = "intact";
-	
+
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 10
@@ -73334,7 +73334,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4;
 	icon_state = "intact";
-	
+
 	},
 /obj/machinery/meter,
 /turf/simulated/floor,
@@ -73343,7 +73343,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 10;
 	icon_state = "intact";
-	
+
 	},
 /obj/machinery/floodlight,
 /turf/simulated/floor,
@@ -75210,7 +75210,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 9;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/floor,
 /area/maintenance/bar)
@@ -79365,7 +79365,7 @@
 	},
 /obj/structure/flora/pottedplant{
 	icon_state = "plant-20";
-	
+
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/foyer)
@@ -81905,7 +81905,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/floor,
 /area/maintenance/evahallway)
@@ -81945,7 +81945,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/floor,
 /area/maintenance/bar)
@@ -81958,7 +81958,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10;
 	icon_state = "intact";
-	
+
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -82492,7 +82492,7 @@
 "cXk" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "plant-20";
-	
+
 	},
 /obj/effect/floor_decal/corner/blue/full,
 /turf/simulated/floor/tiled,
@@ -82547,7 +82547,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8;
 	icon_state = "map";
-	
+
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor,
@@ -82641,7 +82641,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4;
 	icon_state = "map";
-	
+
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -82964,7 +82964,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 10;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
@@ -83077,7 +83077,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/foyer)
@@ -83085,7 +83085,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 10;
 	icon_state = "intact";
-	
+
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
@@ -83197,7 +83197,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8;
 	icon_state = "map";
-	
+
 	},
 /turf/simulated/floor,
 /area/maintenance/evahallway)
@@ -83245,7 +83245,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4;
 	icon_state = "map";
-	
+
 	},
 /turf/simulated/floor,
 /area/maintenance/bar)
@@ -83407,7 +83407,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/wall/r_wall,
 /area/engineering/atmos)
@@ -83415,7 +83415,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4;
 	icon_state = "intact";
-	
+
 	},
 /obj/structure/lattice,
 /turf/simulated/mineral/floor/ignore_mapgen,
@@ -83424,7 +83424,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4;
 	icon_state = "intact";
-	
+
 	},
 /obj/structure/window/reinforced{
 	dir = 8
@@ -84066,7 +84066,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/red{
 	dir = 10;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/foyer)
@@ -84334,7 +84334,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/wall/r_wall,
 /area/engineering/atmos)
@@ -84383,7 +84383,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
@@ -84392,7 +84392,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
@@ -84400,7 +84400,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4;
 	icon_state = "intact";
-	
+
 	},
 /obj/machinery/atmospherics/binary/pump{
 	dir = 1
@@ -84412,7 +84412,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
@@ -84421,7 +84421,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
@@ -84429,7 +84429,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
@@ -84438,7 +84438,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4;
 	icon_state = "intact";
-	
+
 	},
 /obj/structure/cable{
 	d1 = 1;
@@ -85026,7 +85026,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4;
 	icon_state = "intact";
-	
+
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -85038,7 +85038,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4;
 	icon_state = "intact";
-	
+
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -85049,7 +85049,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4;
 	icon_state = "intact";
-	
+
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass_atmos{
@@ -85065,7 +85065,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4;
 	icon_state = "intact";
-	
+
 	},
 /obj/machinery/alarm{
 	pixel_y = 22
@@ -85079,7 +85079,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4;
 	icon_state = "intact";
-	
+
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -85090,7 +85090,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4;
 	icon_state = "intact";
-	
+
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -85107,7 +85107,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4;
 	icon_state = "intact";
-	
+
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
@@ -85124,7 +85124,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4;
 	icon_state = "intact";
-	
+
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -85139,7 +85139,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4;
 	icon_state = "intact";
-	
+
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -85151,7 +85151,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4;
 	icon_state = "intact";
-	
+
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -85162,7 +85162,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4;
 	icon_state = "intact";
-	
+
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass_engineering{
@@ -85178,7 +85178,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4;
 	icon_state = "intact";
-	
+
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/red,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -85190,7 +85190,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 9;
 	icon_state = "intact";
-	
+
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -85433,7 +85433,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/entry/port)
@@ -85577,7 +85577,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/entry/port)
@@ -85754,7 +85754,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1;
 	icon_state = "map";
-	
+
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/entry/starboard)
@@ -85894,7 +85894,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/entry/starboard)
@@ -87135,7 +87135,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8;
 	icon_state = "map";
-	
+
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/entry/port)
@@ -87279,7 +87279,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/entry/port)
@@ -87579,7 +87579,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "dhm" = (
-/obj/machinery/portable_atmospherics/canister/sleeping_agent,
+/obj/machinery/portable_atmospherics/casniter/nitrous_oxide,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
@@ -87589,7 +87589,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "dhn" = (
-/obj/machinery/portable_atmospherics/canister/sleeping_agent,
+/obj/machinery/portable_atmospherics/casniter/nitrous_oxide,
 /obj/machinery/light{
 	icon_state = "tube1";
 	dir = 4
@@ -88083,7 +88083,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 5;
 	icon_state = "intact";
-	
+
 	},
 /obj/structure/window/reinforced{
 	dir = 8
@@ -89140,7 +89140,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/red{
 	dir = 5;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/wall/r_wall,
 /area/engineering/workshop)
@@ -89508,7 +89508,7 @@
 /obj/effect/floor_decal/corner/white{
 	dir = 9;
 	icon_state = "corner_white";
-	
+
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/entry/D4)
@@ -89518,7 +89518,7 @@
 /obj/effect/floor_decal/corner/white{
 	dir = 9;
 	icon_state = "corner_white";
-	
+
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/entry/D4)
@@ -89641,7 +89641,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 9;
 	icon_state = "intact";
-	
+
 	},
 /obj/machinery/meter,
 /turf/simulated/floor/tiled,
@@ -89650,7 +89650,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 5;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
@@ -89679,7 +89679,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 10;
 	icon_state = "intact";
-	
+
 	},
 /obj/machinery/meter,
 /turf/simulated/floor/tiled,
@@ -89962,7 +89962,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4;
 	icon_state = "map";
-	
+
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -89975,7 +89975,7 @@
 /obj/effect/floor_decal/corner/white{
 	dir = 6;
 	icon_state = "corner_white";
-	
+
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/entry/D1)
@@ -91100,7 +91100,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 9;
 	icon_state = "intact";
-	
+
 	},
 /obj/structure/window/reinforced,
 /obj/machinery/door/firedoor/border_only,
@@ -91143,7 +91143,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 9;
 	icon_state = "intact";
-	
+
 	},
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
@@ -91359,7 +91359,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 5;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/floor,
 /area/maintenance/engineering)
@@ -92241,7 +92241,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4;
 	icon_state = "map";
-	
+
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/entry/D1)
@@ -92519,7 +92519,7 @@
 /turf/simulated/floor/reinforced/n20,
 /area/engineering/atmos)
 "drl" = (
-/obj/machinery/portable_atmospherics/canister/sleeping_agent,
+/obj/machinery/portable_atmospherics/casniter/nitrous_oxide,
 /turf/simulated/floor/reinforced/n20,
 /area/engineering/atmos)
 "drm" = (
@@ -92694,7 +92694,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8;
 	icon_state = "map";
-	
+
 	},
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 1
@@ -92765,7 +92765,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1;
 	icon_state = "map";
-	
+
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/entry/D1)
@@ -92821,7 +92821,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1;
 	icon_state = "map";
-	
+
 	},
 /obj/machinery/embedded_controller/radio/airlock/docking_port_multi{
 	frequency = 1380;
@@ -92885,7 +92885,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4;
 	icon_state = "map";
-	
+
 	},
 /obj/effect/floor_decal/industrial/warning/corner,
 /turf/simulated/floor/tiled,
@@ -92940,7 +92940,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8;
 	icon_state = "map";
-	
+
 	},
 /obj/effect/floor_decal/industrial/warning/corner{
 	icon_state = "warningcorner";
@@ -92995,7 +92995,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1;
 	icon_state = "map";
-	
+
 	},
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
 	frequency = 1379;
@@ -93056,7 +93056,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1;
 	icon_state = "map";
-	
+
 	},
 /obj/effect/floor_decal/industrial/loading{
 	icon_state = "loadingarea";
@@ -93099,7 +93099,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4;
 	icon_state = "map";
-	
+
 	},
 /obj/effect/floor_decal/industrial/warning{
 	icon_state = "warning";
@@ -93366,7 +93366,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/entry/D1)
@@ -93451,7 +93451,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9;
 	icon_state = "intact";
-	
+
 	},
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled,
@@ -93542,7 +93542,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/entry/D3)
@@ -93622,7 +93622,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/entry/D4)
@@ -94805,7 +94805,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4;
 	icon_state = "map";
-	
+
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -95152,7 +95152,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9;
 	icon_state = "intact";
-	
+
 	},
 /obj/structure/cable{
 	d1 = 4;
@@ -95169,7 +95169,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5;
 	icon_state = "intact";
-	
+
 	},
 /obj/effect/floor_decal/industrial/warning/corner,
 /obj/structure/cable{
@@ -95183,7 +95183,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10;
 	icon_state = "intact";
-	
+
 	},
 /obj/effect/floor_decal/industrial/warning,
 /obj/machinery/access_button{
@@ -95815,7 +95815,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10;
 	icon_state = "intact";
-	
+
 	},
 /obj/machinery/light/small{
 	dir = 1
@@ -95948,7 +95948,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/entry/D4)
@@ -96054,7 +96054,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4;
 	icon_state = "map";
-	
+
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 5
@@ -96337,7 +96337,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8;
 	icon_state = "map";
-	
+
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/entry/D1)
@@ -96491,7 +96491,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4;
 	icon_state = "map";
-	
+
 	},
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4
@@ -96502,7 +96502,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8;
 	icon_state = "map";
-	
+
 	},
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 1
@@ -96641,7 +96641,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4;
 	icon_state = "map";
-	
+
 	},
 /obj/effect/floor_decal/industrial/warning{
 	icon_state = "warning";
@@ -97937,7 +97937,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_airlock)
@@ -97962,7 +97962,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4;
 	icon_state = "map";
-	
+
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 5
@@ -98083,7 +98083,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4;
 	icon_state = "map";
-	
+
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/entry/D1)
@@ -98246,7 +98246,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4;
 	icon_state = "intact";
-	
+
 	},
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor,
@@ -98810,7 +98810,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4;
 	icon_state = "intact";
-	
+
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -98821,7 +98821,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4;
 	icon_state = "intact";
-	
+
 	},
 /obj/machinery/button/remote/blast_door{
 	desc = "A remote control-switch for the engine control room blast doors.";
@@ -99658,7 +99658,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
@@ -99678,7 +99678,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4;
 	icon_state = "intact";
-	
+
 	},
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/plating,
@@ -99778,7 +99778,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8;
 	icon_state = "map";
-	
+
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/entry/D1)
@@ -99799,7 +99799,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10;
 	icon_state = "intact";
-	
+
 	},
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	frequency = 1380;
@@ -99848,7 +99848,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4;
 	icon_state = "map";
-	
+
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 5
@@ -99869,7 +99869,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8;
 	icon_state = "map";
-	
+
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/entry/D3)
@@ -99902,7 +99902,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/entry/D3)
@@ -99939,7 +99939,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8;
 	icon_state = "map";
-	
+
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -99950,7 +99950,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10;
 	icon_state = "intact";
-	
+
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -100058,7 +100058,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
@@ -100969,7 +100969,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 9;
 	icon_state = "intact";
-	
+
 	},
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8

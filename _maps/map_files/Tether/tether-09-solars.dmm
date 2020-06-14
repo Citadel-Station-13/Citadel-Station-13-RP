@@ -4394,7 +4394,7 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/rnd/outpost/heating)
 "ie" = (
-/obj/machinery/portable_atmospherics/canister/sleeping_agent,
+/obj/machinery/portable_atmospherics/casniter/nitrous_oxide,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 1
@@ -4422,7 +4422,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/outpost/storage)
 "ig" = (
-/obj/machinery/portable_atmospherics/canister/sleeping_agent,
+/obj/machinery/portable_atmospherics/casniter/nitrous_oxide,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 1

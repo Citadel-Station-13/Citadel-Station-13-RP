@@ -12679,7 +12679,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "awV" = (
-/obj/machinery/portable_atmospherics/canister/sleeping_agent,
+/obj/machinery/portable_atmospherics/casniter/nitrous_oxide,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
@@ -14276,7 +14276,7 @@
 /turf/simulated/wall/r_wall,
 /area/crew_quarters/sleep/Dorm_5)
 "azG" = (
-/obj/machinery/portable_atmospherics/canister/sleeping_agent,
+/obj/machinery/portable_atmospherics/casniter/nitrous_oxide,
 /obj/machinery/light/small,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/techmaint,
@@ -18304,7 +18304,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/xenobiology/xenoflora_storage)
 "aHl" = (
-/obj/machinery/portable_atmospherics/canister/sleeping_agent,
+/obj/machinery/portable_atmospherics/casniter/nitrous_oxide,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/xenobiology/xenoflora_storage)
 "aHm" = (
@@ -18985,7 +18985,7 @@
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/showers)
 "aIH" = (
-/obj/machinery/portable_atmospherics/canister/sleeping_agent,
+/obj/machinery/portable_atmospherics/casniter/nitrous_oxide,
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
 "aII" = (
@@ -32088,7 +32088,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden)
 "iWU" = (
-/obj/machinery/portable_atmospherics/canister/sleeping_agent,
+/obj/machinery/portable_atmospherics/casniter/nitrous_oxide,
 /turf/simulated/floor/reinforced/n20,
 /area/engineering/atmos)
 "jec" = (

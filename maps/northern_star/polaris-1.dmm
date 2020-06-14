@@ -87679,7 +87679,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "dil" = (
-/obj/machinery/portable_atmospherics/canister/sleeping_agent,
+/obj/machinery/portable_atmospherics/casniter/nitrous_oxide,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
@@ -87689,7 +87689,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "dim" = (
-/obj/machinery/portable_atmospherics/canister/sleeping_agent,
+/obj/machinery/portable_atmospherics/casniter/nitrous_oxide,
 /obj/machinery/light{
 	icon_state = "tube1";
 	dir = 4
@@ -92495,7 +92495,7 @@
 /turf/simulated/floor/reinforced/n20,
 /area/engineering/atmos)
 "drQ" = (
-/obj/machinery/portable_atmospherics/canister/sleeping_agent,
+/obj/machinery/portable_atmospherics/casniter/nitrous_oxide,
 /turf/simulated/floor/reinforced/n20,
 /area/engineering/atmos)
 "drR" = (
