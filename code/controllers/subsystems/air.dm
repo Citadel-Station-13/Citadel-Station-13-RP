@@ -288,7 +288,8 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 /datum/controller/subsystem/air/proc/preprocess_gas_string(gas_string)
 	if(!generated_atmospheres)
 		generate_atmospheres()
-	if(!generated_atmospheres["[gas_string]"])
+	gas_string = "[gas_string]"
+	if(!generated_atmospheres[gas_string])
 		return gas_string
 	var/datum/atmosphere/mix = generated_atmospheres[gas_string]
 	return mix.gas_string

@@ -1578,6 +1578,7 @@
 #include "code\modules\atmospherics\datum_pipeline.dm"
 #include "code\modules\atmospherics\mainspipe.dm"
 #include "code\modules\atmospherics\atmosphere\_atmosphere.dm"
+#include "code\modules\atmospherics\atmosphere\planet.dm"
 #include "code\modules\atmospherics\components\portables_connector.dm"
 #include "code\modules\atmospherics\components\tvalve.dm"
 #include "code\modules\atmospherics\components\valve.dm"
