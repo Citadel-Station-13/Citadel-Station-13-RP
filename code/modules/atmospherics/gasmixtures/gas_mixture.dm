@@ -40,7 +40,7 @@
 
 	if(moles > 0 && abs(temperature - temp) > MINIMUM_TEMPERATURE_DELTA_TO_CONSIDER)
 		var/self_heat_capacity = heat_capacity()
-		var/giver_heat_capacity = GLOB.gas_meta_specific_heat[gasid] * moles
+		var/giver_heat_capacity = GLOB.meta_gas_specific_heat[gasid] * moles
 		var/combined_heat_capacity = giver_heat_capacity + self_heat_capacity
 		if(combined_heat_capacity != 0)
 			temperature = (temp * giver_heat_capacity + temperature * self_heat_capacity) / combined_heat_capacity
@@ -127,7 +127,7 @@
 /datum/gas_mixture/proc/heat_capacity()
 	. = 0
 	for(var/g in gas)
-		. += GLOB.gas_meta_specific_heat[g] * gas[g]
+		. += GLOB.meta_gas_specific_heat[g] * gas[g]
 	. *= group_multiplier
 
 
@@ -181,8 +181,8 @@
 		return SPECIFIC_ENTROPY_VACUUM	//that gas isn't here
 
 	//group_multiplier gets divided out in volume/gas[gasid] - also, V/(m*T) = R/(partial pressure)
-	var/molar_mass = GLOB.gas_meta_molar_mass[gasid]
-	var/specific_heat = GLOB.gas_meta_specific_heat[gasid]
+	var/molar_mass = GLOB.meta_gas_molar_mass[gasid]
+	var/specific_heat = GLOB.meta_gas_specific_heat[gasid]
 	return R_IDEAL_GAS_EQUATION * ( log( (IDEAL_GAS_ENTROPY_CONSTANT*volume/(gas[gasid] * temperature)) * (molar_mass*specific_heat*temperature)**(2/3) + 1 ) +  15 )
 
 	//alternative, simpler equation
@@ -331,14 +331,14 @@
 //Two lists can be passed by reference if you need know specifically which graphics were added and removed.
 /datum/gas_mixture/proc/check_tile_graphic(list/graphic_add = null, list/graphic_remove = null)
 	var/list/cur_graphic = graphic // Cache for sanic speed
-	for(var/g in GLOB.gas_meta_visibility)
+	for(var/g in GLOB.meta_gas_visibility)
 		if(cur_graphic && cur_graphic.Find(gas_data.tile_overlay[g]))
 			//Overlay is already applied for this gas, check if it's still valid.
-			if(gas[g] <= GLOB.gas_meta_visibility[g])
+			if(gas[g] <= GLOB.meta_gas_visibility[g])
 				LAZYADD(graphic_remove, gas_data.tile_overlay[g])
 		else
 			//Overlay isn't applied for this gas, check if it's valid and needs to be added.
-			if(gas[g] > GLOB.gas_meta_visibility[g])
+			if(gas[g] > GLOB.meta_gas_visibility[g])
 				LAZYADD(graphic_add, gas_data.tile_overlay[g])
 
 	. = 0

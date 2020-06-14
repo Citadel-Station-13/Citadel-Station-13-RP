@@ -276,7 +276,7 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 /**
   * Initializes all subtypes of /datum/atmosphere and indexes them by key.
   */
-/datum/controller/subsystem/air/generate_atmospheres()
+/datum/controller/subsystem/air/proc/generate_atmospheres()
 	generated_atmospheres = list()
 	for(var/T in subtypesof(/datum/atmosphere))
 		var/datum/atmosphere/A = new T
@@ -288,7 +288,7 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 /datum/controller/subsystem/air/proc/preprocess_gas_string(gas_string)
 	if(!generated_atmospheres)
 		generate_atmos()
-	if(!generated_atmospheres["[gas_string]")
+	if(!generated_atmospheres["[gas_string]"])
 		return gas_string
 	var/datum/atmosphere/mix = generated_atmospheres[gas_string]
 	return mix.gas_string

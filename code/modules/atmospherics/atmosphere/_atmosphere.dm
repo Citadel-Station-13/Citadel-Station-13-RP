@@ -81,7 +81,6 @@
 	// Now finally lets make that string
 	var/list/gas_string_builder = list()
 	for(var/i in gaslist)
-		var/list/gas = gaslist[i]
-		gas_string_builder += "[gas[GAS_META][META_GAS_ID]]=[gas[MOLES]]"
+		gas_string_builder += "[GLOB.meta_gas_ids[i]]=[gaslist[i]]"
 	gas_string_builder += "TEMP=[gasmix.temperature]"
 	gas_string = gas_string_builder.Join(";")

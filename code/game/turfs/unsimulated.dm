@@ -1,7 +1,7 @@
 /turf/unsimulated
 	name = "command"
 
-	air_status = AIR_STATUS_IMMUTABLE
+	//air_status = AIR_STATUS_IMMUTABLE
 
 	initial_gas_mix = GAS_STRING_STP
 

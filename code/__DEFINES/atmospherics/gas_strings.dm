@@ -10,6 +10,20 @@
 /// Nitrogen only standard atmosphere. Kikiyaya voxxies!
 #define GAS_STRING_STP_NITROGEN				"n2=104;TEMP=293.15"
 
+// Turf snowflakes
+/// currently used for deserts
+#define GAS_STRING_STP_HOT					"o2=22;n2=82;TEMP=310.92"
+/// Mars/Magni
+#define GAS_STRING_MAGNI					"co2=91.99;TEMP=202"
+/// Sif
+#define GAS_STRING_SIF						"o2=20.726;n2=93.783;TEMP=243.15"
+/// Sif alt
+#define GAS_STRING_SIF_ALT					"o2=20.726;n2=93.783;TEMP=310.92"
+/// Tyr
+#define GAS_STRING_TYR						"co2=17;TEMP=405"
+/// Firnir
+#define GAS_STRING_FIRNIR					"co2=4.9;TEMP=570"
+
 // Atmospherics primary gas tanks
 /// Atmospherics N2O gas tank
 #define GAS_STRING_PRIMARY_TANK_N2O							"n2=100000;TEMP=293.15"
