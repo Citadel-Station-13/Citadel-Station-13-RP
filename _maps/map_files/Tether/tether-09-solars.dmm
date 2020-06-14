@@ -4486,7 +4486,6 @@
 "in" = (
 /obj/machinery/atmospherics/trinary/atmos_filter/m_filter{
 	filter_type = 4;
-	filtered_out = list("sleeping_agent")
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)

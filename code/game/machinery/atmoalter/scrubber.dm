@@ -17,10 +17,18 @@
 	var/minrate = 0
 	var/maxrate = 10 * ONE_ATMOSPHERE
 
-	var/list/scrubbing_gas = list("phoron", "carbon_dioxide", "sleeping_agent", "volatile_fuel")
+	var/list/scrubbing_gas = list(/datum/gas/carbon_dioxide, /datum/gas/volatile_fuel, /datum/gas/phoron, /datum/gas/nitrous_oxide)
 
 /obj/machinery/portable_atmospherics/powered/scrubber/New()
 	..()
+	for(var/i in scrubbing_gas)
+		if(!ispath(i))
+			scrubbing_gas -= i
+			var/path = gas_id2path(i)
+			if(!path)
+				stack_trace("Invalid gas id [i]")
+			else
+				scrubbing_gas += path
 	cell = new/obj/item/cell/apc(src)
 
 /obj/machinery/portable_atmospherics/powered/scrubber/emp_act(severity)
@@ -56,7 +64,7 @@
 	var/power_draw = -1
 
 	if(on && cell && cell.charge)
-		var/datum/gas_mixture/environment
+		var/datum/gas_mixture_old/environment
 		if(holding)
 			environment = holding.air_contents
 		else
@@ -198,7 +206,7 @@
 
 	var/power_draw = -1
 
-	var/datum/gas_mixture/environment = loc.return_air()
+	var/datum/gas_mixture_old/environment = loc.return_air()
 
 	var/transfer_moles = min(1, volume_rate/environment.volume)*environment.total_moles
 
