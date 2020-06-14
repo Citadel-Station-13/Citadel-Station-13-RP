@@ -21,7 +21,7 @@ GLOBAL_LIST_INIT(meta_gas_id_lookup, meta_gas_id_lookup_list())
 /// Gas flags by gas
 GLOBAL_LIST_INIT(meta_gas_flags, meta_gas_flag_list())
 /// Gases by gas flag
-GLOBAL_LIST_INIT(meta_gas_by_lag, meta_gas_by_flag_list())
+GLOBAL_LIST_INIT(meta_gas_by_flag, meta_gas_by_flag_list())
 
 /proc/meta_gas_heat_list()
 	. = subtypesof(/datum/gas)

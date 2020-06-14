@@ -55,7 +55,7 @@
 
 /datum/gm_action/atmos_leak/announce()
 	if(target_area)
-		command_announcement.Announce("Warning, hazardous [gas_data.name[gas_type]] gas leak detected in \the [target_area], evacuate the area.", "Hazard Alert")
+		command_announcement.Announce("Warning, hazardous [GLOB.meta_gas_names[gas_type]] gas leak detected in \the [target_area], evacuate the area.", "Hazard Alert")
 
 /datum/gm_action/atmos_leak/start()
 	if(!target_turf)
