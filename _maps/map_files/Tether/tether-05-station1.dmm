@@ -335,7 +335,7 @@
 	p_open = 0
 	},
 /turf/simulated/floor/reinforced/nitrogen{
-	nitrogen = 82.1472
+	initial_gas_mix = "nitrogen=82.17;TEMP=293.15"
 	},
 /area/engineering/engine_room)
 "aaR" = (
@@ -547,7 +547,7 @@
 /area/construction/observation)
 "abj" = (
 /turf/simulated/floor/reinforced/nitrogen{
-	nitrogen = 82.1472
+	initial_gas_mix = "n2=82.17;TEMP=293.15"
 	},
 /area/engineering/engine_room)
 "abk" = (

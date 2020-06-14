@@ -1717,7 +1717,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "ep" = (
@@ -1750,7 +1750,7 @@
 "er" = (
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "es" = (
@@ -1766,7 +1766,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "et" = (
@@ -1779,7 +1779,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/black,
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "eu" = (
@@ -1791,7 +1791,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "ev" = (
@@ -1808,14 +1808,14 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "ew" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black,
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "ex" = (
@@ -1829,7 +1829,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "ey" = (
@@ -1846,12 +1846,12 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "ez" = (
 /turf/simulated/floor/tiled/dark{
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "eA" = (
@@ -1862,13 +1862,13 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "eB" = (
 /obj/machinery/pda_multicaster/prebuilt,
 /turf/simulated/floor/tiled/dark{
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "eC" = (
@@ -1901,7 +1901,7 @@
 "eE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black,
 /turf/simulated/floor/tiled/dark{
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "eF" = (
@@ -1993,19 +1993,19 @@
 "eN" = (
 /obj/machinery/telecomms/server/presets/service,
 /turf/simulated/floor/tiled/dark{
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "eO" = (
 /obj/machinery/telecomms/server/presets/supply,
 /turf/simulated/floor/tiled/dark{
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "eP" = (
 /obj/machinery/telecomms/server/presets/unused,
 /turf/simulated/floor/tiled/dark{
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "eQ" = (
@@ -2024,13 +2024,13 @@
 "eR" = (
 /obj/machinery/telecomms/server/presets/common,
 /turf/simulated/floor/tiled/dark{
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "eS" = (
 /obj/machinery/telecomms/server/presets/engineering,
 /turf/simulated/floor/tiled/dark{
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "eT" = (
@@ -2173,7 +2173,7 @@
 /obj/machinery/telecomms/hub/preset,
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "fi" = (
@@ -2215,50 +2215,50 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "fn" = (
 /obj/machinery/telecomms/bus/preset_two,
 /turf/simulated/floor/tiled/dark{
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "fo" = (
 /obj/machinery/telecomms/processor/preset_two,
 /turf/simulated/floor/tiled/dark{
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "fp" = (
 /obj/machinery/telecomms/relay/preset/telecomms,
 /turf/simulated/floor/tiled/dark{
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "fq" = (
 /obj/machinery/telecomms/broadcaster/preset_right,
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "fr" = (
 /obj/machinery/telecomms/bus/preset_four,
 /turf/simulated/floor/tiled/dark{
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "fs" = (
 /obj/machinery/telecomms/relay/preset/station,
 /turf/simulated/floor/tiled/dark{
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "ft" = (
 /obj/machinery/telecomms/processor/preset_four,
 /turf/simulated/floor/tiled/dark{
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "fu" = (
@@ -2271,7 +2271,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "fv" = (
@@ -2301,7 +2301,7 @@
 /obj/machinery/telecomms/receiver/preset_right,
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "fy" = (
@@ -2369,25 +2369,25 @@
 "fD" = (
 /obj/machinery/telecomms/processor/preset_one,
 /turf/simulated/floor/tiled/dark{
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "fE" = (
 /obj/machinery/telecomms/bus/preset_one,
 /turf/simulated/floor/tiled/dark{
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "fF" = (
 /obj/machinery/telecomms/processor/preset_three,
 /turf/simulated/floor/tiled/dark{
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "fG" = (
 /obj/machinery/telecomms/bus/preset_three,
 /turf/simulated/floor/tiled/dark{
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "fH" = (
@@ -2468,13 +2468,13 @@
 "fQ" = (
 /obj/machinery/telecomms/server/presets/medical,
 /turf/simulated/floor/tiled/dark{
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "fR" = (
 /obj/machinery/telecomms/server/presets/science,
 /turf/simulated/floor/tiled/dark{
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "fS" = (
@@ -2482,7 +2482,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/dark{
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "fT" = (
@@ -2490,7 +2490,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled/dark{
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "fU" = (
@@ -2498,13 +2498,13 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled/dark{
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "fV" = (
 /obj/machinery/telecomms/server/presets/command,
 /turf/simulated/floor/tiled/dark{
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "fW" = (
@@ -2512,13 +2512,13 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/dark{
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "fX" = (
 /obj/machinery/telecomms/server/presets/security,
 /turf/simulated/floor/tiled/dark{
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "fY" = (
@@ -2542,7 +2542,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "ga" = (
@@ -2553,7 +2553,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "gb" = (
@@ -2572,7 +2572,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "gc" = (

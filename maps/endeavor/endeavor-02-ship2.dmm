@@ -4291,7 +4291,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/server)
 "iJ" = (
@@ -4306,7 +4306,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/server)
 "iL" = (
@@ -4319,7 +4319,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/server)
 "iM" = (
@@ -4353,7 +4353,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/server)
 "iP" = (
@@ -4380,7 +4380,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/server)
 "iR" = (
@@ -10764,7 +10764,7 @@
 "vy" = (
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/server)
 "vz" = (

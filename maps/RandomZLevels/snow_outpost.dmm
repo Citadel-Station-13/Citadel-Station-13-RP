@@ -194,7 +194,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/awaymission/snow_outpost/outpost)
 "aL" = (
@@ -219,14 +219,14 @@
 "aQ" = (
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/awaymission/snow_outpost/outpost)
 "aR" = (
 /obj/structure/AIcore,
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/awaymission/snow_outpost/outpost)
 "aS" = (
@@ -568,7 +568,7 @@
 /mob/living/simple_mob/humanoid/merc/ranged/space,
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	initial_gas_string = "n2=100;TEMP=80"
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/awaymission/snow_outpost/outpost)
 "bV" = (
