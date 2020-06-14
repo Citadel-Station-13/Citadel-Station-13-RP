@@ -107,7 +107,7 @@
 	var/turf/T = get_turf(src)
 	if(!T)
 		return SUPERMATTER_ERROR
-	var/datum/gas_mixture_old/air = T.return_air()
+	var/datum/gas_mixture/air = T.return_air()
 	if(!air)
 		return SUPERMATTER_ERROR
 
@@ -134,7 +134,7 @@
 	var/turf/T = get_turf(src)
 	if(!istype(T))
 		return
-	var/datum/gas_mixture_old/air = T.return_air()
+	var/datum/gas_mixture/air = T.return_air()
 	if(!air)
 		return 0
 	return round((air.total_moles / air.group_multiplier) / 23.1, 0.01)
@@ -258,8 +258,8 @@
 		soundloop.volume = min(round(power/10)+1, 20)
 
 	//Ok, get the air from the turf
-	var/datum/gas_mixture_old/removed = null
-	var/datum/gas_mixture_old/env = null
+	var/datum/gas_mixture/removed = null
+	var/datum/gas_mixture/env = null
 
 	//ensure that damage doesn't increase too quickly due to super high temperatures resulting from no coolant, for example. We dont want the SM exploding before anyone can react.
 	//We want the cap to scale linearly with power (and explosion_point). Let's aim for a cap of 5 at power = 300 (based on testing, equals roughly 5% per SM alert announcement).
@@ -370,7 +370,7 @@
 	var/data[0]
 
 	data["integrity_percentage"] = round(get_integrity())
-	var/datum/gas_mixture_old/env = null
+	var/datum/gas_mixture/env = null
 	if(!istype(src.loc, /turf/space))
 		env = src.loc.return_air()
 

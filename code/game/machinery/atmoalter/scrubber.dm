@@ -64,7 +64,7 @@
 	var/power_draw = -1
 
 	if(on && cell && cell.charge)
-		var/datum/gas_mixture_old/environment
+		var/datum/gas_mixture/environment
 		if(holding)
 			environment = holding.air_contents
 		else
@@ -206,7 +206,7 @@
 
 	var/power_draw = -1
 
-	var/datum/gas_mixture_old/environment = loc.return_air()
+	var/datum/gas_mixture/environment = loc.return_air()
 
 	var/transfer_moles = min(1, volume_rate/environment.volume)*environment.total_moles
 
