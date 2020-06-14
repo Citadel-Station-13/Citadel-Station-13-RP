@@ -158,7 +158,7 @@ obj/var/contaminated = 0
 	CACHE_VSC_PROP(atmos_vsc, /atmos/phoron/contamination, clothing_contamination)
 	//Items that are in phoron, but not on a mob, can still be contaminated.
 	if(istype(I) && clothing_contamination && I.can_contaminate())
-		var/datum/gas_mixture_old/env = return_air(1)
+		var/datum/gas_mixture/env = return_air(1)
 		if(!env)
 			return
 		for(var/g in env.gas)

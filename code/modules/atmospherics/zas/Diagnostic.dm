@@ -1,4 +1,20 @@
+client/proc/ZoneTick()
+	set category = "Debug"
+	set name = "Process Atmos"
+	set desc = "Manually run a single tick of the air subsystem"
 
+	// TODO - This might be a useful diagnostic tool.  However its complicated to do with StonedMC
+	// Therefore it is left unimplemented for now until its use actually becomes required. ~Leshana
+	/*
+	if(!check_rights(R_DEBUG)) return
+
+	var/result = air_master.Tick()
+	if(result)
+		to_chat(src, "Successfully Processed.")
+
+	else
+		to_chat(src, "Failed to process! ([air_master.tick_progress])")
+	*/
 
 client/proc/Zone_Info(turf/T as null|turf)
 	set category = "Debug"
@@ -7,7 +23,7 @@ client/proc/Zone_Info(turf/T as null|turf)
 			T:zone:dbg_data(src)
 		else
 			to_chat(mob, "No zone here.")
-			var/datum/gas_mixture_old/mix = T.return_air()
+			var/datum/gas_mixture/mix = T.return_air()
 			to_chat(mob, "[mix.return_pressure()] kPa [mix.temperature]C")
 			for(var/g in mix.gas)
 				to_chat(mob, "[g]: [mix.gas[g]]\n")

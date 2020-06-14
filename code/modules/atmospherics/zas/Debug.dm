@@ -1,13 +1,3 @@
-#ifdef ZAS_DEBUG
-
-
-
-
-
-
-
-#endif
-
 var/image/assigned = image('icons/Testing/Zone.dmi', icon_state = "assigned")
 var/image/created = image('icons/Testing/Zone.dmi', icon_state = "created")
 var/image/merged = image('icons/Testing/Zone.dmi', icon_state = "merged")

@@ -1,15 +1,3 @@
-/atom
-	/**
-	  * Whether or not air can flow past us.
-	  * THIS IS DIFFERENT FROM /turf/var/air_status!
-	  * Values in [code/__DEFINES/atmospherics/air_pass.dm]
-	  * A WARNING ON MOVABLES:
-	  * Movable atoms will automatically update their turfs when they are deleted if they block air
-	  * HOWEVER, in the interest of performance, they do not do so when they move automatically.
-	  * If you make an atom that blocks air and moves while blocking air, you need to manually handle that behavior
-	  * Usually with air_update_turf().
-	  */
-	var/CanAtmosPass = ATMOS_PASS_YES
 
 
 /atom/var/pressure_resistance = ONE_ATMOSPHERE
