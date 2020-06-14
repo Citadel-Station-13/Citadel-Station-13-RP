@@ -43,4 +43,4 @@
 	SSair.RebootZAS()
 
 	to_chat(usr, "\[5/5\] - ZAS Rebooted")
-	world << "<span class = 'danger'>Atmosphere restart completed in <b>[(world.timeofday - current_time)/10]</b> seconds.</span>"
+	to_chat(world, "<span class = 'danger'>Atmosphere restart completed in <b>[(world.timeofday - current_time)/10]</b> seconds.</span>")

@@ -11,8 +11,7 @@ VIRGO3B_TURF_CREATE(/turf/simulated/floor)
 
 /turf/simulated/floor/virgo3b_indoors
 	VIRGO3B_SET_ATMOS
-/turf/simulated/floor/virgo3b_indoors/update_graphic(list/graphic_add = null, list/graphic_remove = null)
-	return 0
+	allow_gas_overlays = FALSE
 
 VIRGO3B_TURF_CREATE(/turf/simulated/floor/reinforced)
 VIRGO3B_TURF_CREATE(/turf/simulated/floor/tiled/steel_dirty)

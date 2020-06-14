@@ -130,7 +130,6 @@ Class Procs:
 /zone/proc/rebuild()
 	if(invalid) return //Short circuit for explosions where rebuild is called many times over.
 	c_invalidate()
-	var/list/air_graphic = air.graphic // Cache for sanic speed
 	for(var/turf/simulated/T in contents)
 		T.vis_contents -= turf_graphics
 		//T.dbg(invalid_zone)
@@ -152,7 +151,7 @@ Class Procs:
 		if(istype(T))
 			T.create_fire(firelevel_multiplier)
 
-	var/list/returned = air.get_tile_graphics()
+	var/list/returned = air.get_turf_graphics()
 	if(length(returned) || length(turf_graphics))
 		var/list/removed = turf_graphics - returned
 		var/list/added = returned - turf_graphics
