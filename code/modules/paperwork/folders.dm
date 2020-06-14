@@ -23,7 +23,7 @@
 	icon_state = "folder_white"
 
 /obj/item/folder/blue_captain
-	desc = "A blue folder with Colony Director markings."
+	desc = "A blue folder with Facility Director markings."
 	icon_state = "folder_captain"
 
 /obj/item/folder/blue_hop

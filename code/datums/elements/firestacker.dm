@@ -9,7 +9,7 @@
 
 /datum/element/firestacker/Attach(datum/target, amount)
 	. = ..()
-	if(!ismovableatom(target))
+	if(!ismovable(target))
 		return ELEMENT_INCOMPATIBLE
 	RegisterSignal(target, COMSIG_MOVABLE_IMPACT, .proc/impact)
 	if(isitem(target))

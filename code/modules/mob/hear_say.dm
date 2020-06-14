@@ -98,13 +98,13 @@
 // Checks if the mob's own name is included inside message.  Handles both first and last names.
 /mob/proc/check_mentioned(var/message)
 	var/not_included = list("a", "the", "of", "in", "for", "through", "throughout", "therefore", "here", "there", "then", "now", "I", "you", "they", "he", "she", "by")
-	var/list/valid_names = splittext(real_name, " ") // Should output list("John", "Doe") as an example.
+	var/list/valid_names = splittext_char(real_name, " ") // Should output list("John", "Doe") as an example.
 	valid_names -= not_included
-	var/list/nicknames = splittext(nickname, " ")
+	var/list/nicknames = splittext_char(nickname, " ")
 	valid_names += nicknames
 	valid_names += special_mentions()
 	for(var/name in valid_names)
-		if(findtext(message, regex("\\b[name]\\b", "i"))) // This is to stop 'ai' from triggering if someone says 'wait'.
+		if(findtext_char(message, regex("\\b[name]\\b", "i"))) // This is to stop 'ai' from triggering if someone says 'wait'.
 			return TRUE
 	return FALSE
 
@@ -116,35 +116,14 @@
 	return list("AI") // AI door!
 
 // Converts specific characters, like +, |, and _ to formatted output.
-/mob/proc/say_emphasis(var/message)
-	message = encode_html_emphasis(message, "|", "i")
-	message = encode_html_emphasis(message, "+", "b")
-	message = encode_html_emphasis(message, "_", "u")
-	return message
-
-// Replaces a character inside message with html tags.  Note that html var must not include brackets.
-// Will not create an open html tag if it would not have a closing one.
-/proc/encode_html_emphasis(var/message, var/char, var/html)
-	var/i = 20 // Infinite loop safety.
-	var/pattern = "(?<!<)\\" + char
-	var/regex/re = regex(pattern,"i") // This matches results which do not have a < next to them, to avoid stripping slashes from closing html tags.
-	var/first = re.Find(message) // Find first occurance.
-	var/second = re.Find(message, first + 1) // Then the second.
-	while(first && second && i)
-		// Calculate how far foward the second char is, as the first replacetext() will displace it.
-		var/length_increase = length("<[html]>") - 1
-
-		// Now replace both.
-		message = replacetext(message, char, "<[html]>", first, first + 1)
-		message = replacetext(message, char, "</[html]>", second + length_increase, second + length_increase + 1)
-
-		// Check again to see if we need to keep going.
-		first = re.Find(message)
-		second = re.Find(message, first + 1)
-		i--
-	if(!i)
-		CRASH("Possible infinite loop occured in encode_html_emphasis().")
-	return message
+/mob/proc/say_emphasis(input)
+	var/static/regex/italics = regex("\\|(?=\\S)(.*?)(?=\\S)\\|", "g")
+	input = replacetext_char(input, italics, "<i>$1</i>")
+	var/static/regex/bold = regex("\\+(?=\\S)(.*?)(?=\\S)\\+", "g")
+	input = replacetext_char(input, bold, "<b>$1</b>")
+	var/static/regex/underline = regex("_(?=\\S)(.*?)(?=\\S)_", "g")
+	input = replacetext_char(input, underline, "<u>$1</u>")
+	return input
 
 /mob/proc/hear_radio(var/message, var/verb="says", var/datum/language/language=null, var/part_a, var/part_b, var/part_c, var/mob/speaker = null, var/hard_to_hear = 0, var/vname ="")
 
@@ -296,7 +275,7 @@
 		message = "<B>[speaker]</B> [verb], \"[message]\""
 	else
 		var/adverb
-		var/length = length(message) * pick(0.8, 0.9, 1.0, 1.1, 1.2)	//Adds a little bit of fuzziness
+		var/length = length_char(message) * pick(0.8, 0.9, 1.0, 1.1, 1.2)	//Adds a little bit of fuzziness
 		switch(length)
 			if(0 to 12)		adverb = " briefly"
 			if(12 to 30)	adverb = " a short message"
@@ -311,13 +290,13 @@
 	var/heard = ""
 	if(prob(15))
 		var/list/punctuation = list(",", "!", ".", ";", "?")
-		var/list/messages = splittext(message, " ")
+		var/list/messages = splittext_char(message, " ")
 		var/R = rand(1, messages.len)
 		var/heardword = messages[R]
-		if(copytext(heardword,1, 1) in punctuation)
-			heardword = copytext(heardword,2)
-		if(copytext(heardword,-1) in punctuation)
-			heardword = copytext(heardword,1,length(heardword))
+		if(copytext_char(heardword,1, 1) in punctuation)
+			heardword = copytext_char(heardword,2)
+		if(copytext_char(heardword,-1) in punctuation)
+			heardword = copytext_char(heardword,1,length_char(heardword))
 		heard = "<span class = 'game_say'>...You hear something about...[heardword]</span>"
 
 	else

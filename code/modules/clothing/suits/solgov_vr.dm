@@ -106,6 +106,6 @@
 	armor = list(melee = 50, bullet = 40, laser = 40, energy = 25, bomb = 25, bio = 0, rad = 0)
 
 /obj/item/clothing/suit/dress/expedition/command/cd
-	name = "colony director's dress jacket"
+	name = "Facility Director's dress jacket"
 	desc = "A grey dress jacket, adorned with gold trim and buttons. Makes those wearing it look powerful."
 	icon_state = "greydress_com"

@@ -105,7 +105,7 @@
 				var/static/regex/size_mult = new/regex("\\d+")
 				if(size_mult.Find(msg))
 					var/resizing_value = text2num(size_mult.match)
-					H.resize(CLAMP(resizing_value/100 , 0.25, 2))
+					H.resize(clamp(resizing_value/100 , 0.25, 2))
 
 
 

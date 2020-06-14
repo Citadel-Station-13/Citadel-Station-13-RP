@@ -31,7 +31,6 @@ var/list/wireColours = list("red", "blue", "green", "darkred", "orange", "brown"
 	src.holder = holder
 	if(!istype(holder, holder_type))
 		CRASH("Our holder is null/the wrong type!")
-		return
 
 	// Generate new wires
 	if(random)
@@ -126,7 +125,7 @@ var/list/wireColours = list("red", "blue", "green", "darkred", "orange", "brown"
 					to_chat(L, "<span class='error'>You need wirecutters!</span>")
 
 			else if(href_list["pulse"])
-				if(istype(I, /obj/item/multitool))
+				if(I.is_multitool())
 					var/colour = href_list["pulse"]
 					PulseColour(colour)
 					playsound(holder, 'sound/weapons/empty.ogg', 20, 1)
@@ -150,13 +149,13 @@ var/list/wireColours = list("red", "blue", "green", "darkred", "orange", "brown"
 						to_chat(L, "<span class='error'>You need a remote signaller!</span>")
 
 			else if(href_list["rename"]) //add the ability to rename doors via multitool
-				if(istype(I, /obj/item/multitool))
+				if(I.is_multitool())
 					RenameDoor(src)
 				else
 					to_chat(L, "<span class='error'>You need a multitool!</span>")
 
 			else if(href_list["description"]) // and describe them!
-				if(istype(I, /obj/item/multitool))
+				if(I.is_multitool())
 					DescribeDoor(src)
 				else
 					to_chat(L, "<span class='error'>You need a multitool!</span>")

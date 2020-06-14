@@ -51284,7 +51284,7 @@
 	},
 /obj/item/card/id/captains_spare,
 /obj/machinery/door/window/brigdoor/westright{
-	name = "Colony Director's Storage";
+	name = "Facility Director's Storage";
 	req_access = list(20)
 	},
 /turf/simulated/floor/wood,
@@ -52583,7 +52583,7 @@
 /area/bridge_hallway)
 "bTc" = (
 /obj/machinery/door/airlock/command{
-	name = "Colony Director's Quarters";
+	name = "Facility Director's Quarters";
 	req_access = list(20)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -53606,7 +53606,7 @@
 	broadcasting = 0;
 	dir = 4;
 	listening = 1;
-	name = "Colony Director's Intercom";
+	name = "Facility Director's Intercom";
 	pixel_x = 21;
 	pixel_y = 0
 	},
@@ -54713,7 +54713,7 @@
 	dir = 1
 	},
 /obj/effect/landmark/start{
-	name = "Colony Director"
+	name = "Facility Director"
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
@@ -55287,7 +55287,7 @@
 /obj/structure/table/woodentable,
 /obj/machinery/computer/skills,
 /obj/item/perfect_tele{
-	desc = "Seems absurd, doesn't it? Yet, here we are. Generally considered dangerous contraband unless the user has permission from Central Command. This one is the Colony Director's, and they are authorized to use it.";
+	desc = "Seems absurd, doesn't it? Yet, here we are. Generally considered dangerous contraband unless the user has permission from Central Command. This one is the Facility Director's, and they are authorized to use it.";
 	name = "director's translocator"
 	},
 /turf/simulated/floor/wood,
@@ -55309,7 +55309,7 @@
 /obj/item/megaphone,
 /obj/machinery/requests_console{
 	announcementConsole = 1;
-	department = "Colony Director's Desk";
+	department = "Facility Director's Desk";
 	departmentType = 5;
 	name = "Station Administrator RC";
 	pixel_x = 30;
@@ -57363,7 +57363,7 @@
 "cbz" = (
 /obj/machinery/door/airlock/command{
 	id_tag = "captaindoor";
-	name = "Colony Director's Office";
+	name = "Facility Director's Office";
 	req_access = list(20)
 	},
 /obj/structure/disposalpipe/segment,

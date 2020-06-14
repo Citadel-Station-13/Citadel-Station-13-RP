@@ -4618,6 +4618,7 @@
 	dir = 9
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7,
+/obj/machinery/vending/giftvendor,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_three)
 "ir" = (
@@ -16826,6 +16827,7 @@
 	icon_state = "bsposter4";
 	pixel_y = 32
 	},
+/obj/item/storage/box/freezer,
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
@@ -20489,9 +20491,8 @@
 /obj/structure/table/standard,
 /obj/item/defib_kit/jumper_kit,
 /obj/item/storage/box/gloves,
-/obj/item/storage/box/bodybags{
-	pixel_x = -1;
-	pixel_y = -2
+/obj/item/storage/box/masks{
+	pixel_y = 5
 	},
 /turf/simulated/floor/tiled/white,
 /area/assembly/robotics)

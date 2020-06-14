@@ -558,8 +558,8 @@
 	toysay = "Dude, I see colors..."
 
 /obj/item/toy/figure/captain
-	name = "Colony Director action figure"
-	desc = "A \"Space Life\" brand Colony Director action figure."
+	name = "Facility Director action figure"
+	desc = "A \"Space Life\" brand Facility Director action figure."
 	icon_state = "captain"
 	toysay = "How do I open this display case?"
 
@@ -1205,6 +1205,40 @@
 	icon_state = "rat_plush"
 	pokephrase = "Squeak!"
 
+/obj/item/toy/plushie/cyancowgirl
+	name = "cyan cowgirl"
+	icon_state = "cyancowgirl"
+	pokephrase = "Yee Haw!"
+
+/obj/item/toy/plushie/bear_grizzly
+	name = "Grizzly Bear"
+	icon_state = "bear_grizzly"
+	pokephrase = "Grrrowl!"
+
+/obj/item/toy/plushie/bear_polar
+	name = "Polar Bear"
+	icon_state = "bear_polar"
+	pokephrase = "Rrrrrh!"
+
+/obj/item/toy/plushie/bear_soda
+	name = "Soda Bear"
+	icon_state = "bear_soda"
+	pokephrase = "Consume!"
+
+/obj/item/toy/plushie/bear_bloody
+	name = "Bloody Bear"
+	icon_state = "bear_bloody"
+	pokephrase = "ROOOOOAAARRR!"
+
+/obj/item/toy/plushie/bear_panda
+	name = "Panda Bear"
+	icon_state = "bear_panda"
+	pokephrase = "Grrrhh!"
+
+/obj/item/toy/plushie/bear_space
+	name = "Space Bear"
+	icon_state = "bear_space"
+	pokephrase = "Mission is Grrrreen!"
 
 //Toy cult sword
 /obj/item/toy/cultsword
@@ -1367,6 +1401,25 @@
 		var/message = pick("You can't stop me, Owl!", "My plan is flawless! The vault is mine!", "Caaaawwww!", "You will never catch me!")
 		to_chat(user, "<span class='notice'>You pull the string on the [src].</span>")
 		//playsound(user, 'sound/misc/caw.ogg', 25, 1)
+		visible_message("<span class='danger'>[message]</span>")
+		cooldown = 1
+		spawn(30) cooldown = 0
+		return
+	..()
+
+/obj/item/toy/cowgirlprize
+	name = "cyan cowgirl action figure"
+	desc = "A detailed miniature figure based on the 'Cyan Cowgirl', fastest gun on the Frontier."
+	icon = 'icons/obj/toy.dmi'
+	icon_state = "cowgirlprize"
+	w_class = ITEMSIZE_SMALL
+	var/cooldown = 0
+
+/obj/item/toy/cowgirlprize/attack_self(mob/user)
+	if(!cooldown) //for the sanity of everyone
+		var/message = pick("Yee haw!", "Enjoy my signature CC Root Beer, y'all!", "Shuck 'em up!", "What in tarnation?")
+		to_chat(user, "<span class='notice'>You pull the string on the [src].</span>")
+		//playsound(user, 'sound/misc/click.ogg', 20, 1)
 		visible_message("<span class='danger'>[message]</span>")
 		cooldown = 1
 		spawn(30) cooldown = 0

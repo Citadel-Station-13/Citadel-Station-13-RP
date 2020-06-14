@@ -94,7 +94,7 @@ GLOBAL_VAR_INIT(sound_distance_offscreen, 7)
 		distance *= distance_multiplier
 
 		// Extra falloff if sound is offscreen from world's default view.
-		S.volume *= (1 - CLAMP(((max(distance - GLOB.sound_distance_offscreen, 0) * GLOB.sound_offscreen_falloff_factor)/100), 0, 1))
+		S.volume *= (1 - clamp(((max(distance - GLOB.sound_distance_offscreen, 0) * GLOB.sound_offscreen_falloff_factor)/100), 0, 1))
 
 		var/pressure_factor = 1
 		if(pressure_affected)

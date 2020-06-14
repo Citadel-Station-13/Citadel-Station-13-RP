@@ -26,6 +26,7 @@
 	melee_damage_upper = 10
 	attacktext = list("slashed")
 
+	aquatic_movement = 1
 	min_oxy = 0
 	max_oxy = 0
 	min_tox = 0
@@ -57,13 +58,17 @@
 //Constructor allows passing the human to sync damages
 /mob/living/simple_mob/protean_blob/New(var/newloc, var/mob/living/carbon/human/H)
 	..()
+	mob_radio = new(src)
+	myid = new(src)
 	if(H)
 		humanform = H
 		updatehealth()
 		refactory = locate() in humanform.internal_organs
 		verbs |= /mob/living/proc/ventcrawl
 		verbs |= /mob/living/proc/hide
+		verbs |= /mob/living/simple_mob/protean_blob/proc/useradio
 		verbs |= /mob/living/simple_mob/protean_blob/proc/appearanceswitch
+
 	else
 		update_icon()
 
@@ -132,6 +137,9 @@
 		humanform.adjustBruteLoss(amount)
 	else
 		..()
+
+/mob/living/simple_mob/protean_blob/ventcrawl_carry()
+	return TRUE //proteans can have literally any small inside them and should still be able to ventcrawl regardless.
 
 /mob/living/simple_mob/protean_blob/adjustFireLoss(var/amount)
 	if(humanform)
@@ -265,13 +273,26 @@
 		drop_from_inventory(I)
 
 
-	if(slot_gloves && istype(slot_gloves, /obj/item/clothing/gloves/gauntlets/rig)) //drop RIGsuit gauntlets to avoid fucky wucky-ness.
-		var/obj/item/clothing/gloves/riggloves = slot_gloves
-			drop_from_inventory(riggloves)
+	if(istype(slot_gloves, /obj/item/clothing/gloves/gauntlets/rig)) //drop RIGsuit gauntlets to avoid fucky wucky-ness.
+		drop_from_inventory(slot_gloves)
 
-	if(slot_shoes && istype(slot_shoes, /obj/item/clothing/shoes/magboots)) //drop magboots because they're super heavy. also drops RIGsuit boots because they're magboot subtypes.
-		var/obj/item/clothing/shoes/magboots = slot_shoes
-			drop_from_inventory(magboots)
+	if(istype(slot_shoes, /obj/item/clothing/shoes/magboots)) //drop magboots because they're super heavy. also drops RIGsuit boots because they're magboot subtypes.
+		drop_from_inventory(slot_shoes)
+
+	for(var/obj/item/radio/headset/H in things_to_not_drop)
+		blob.mob_radio.keyslot1 = H.keyslot1
+		blob.mob_radio.keyslot2 = H.keyslot2
+		if(H.adhoc_fallback)
+			blob.mob_radio.adhoc_fallback = TRUE
+		blob.mob_radio.recalculateChannels()
+
+	for(var/obj/item/pda/P in things_to_not_drop)
+		if(P.id)
+			var/obj/item/card/id/PID = P.id
+			blob.myid.access += PID.access
+
+	for(var/obj/item/card/id/I in things_to_not_drop)
+		blob.myid.access += I.access
 
 	if(w_uniform && istype(w_uniform,/obj/item/clothing)) //No webbings tho. We do this after in case a suit was in the way
 		var/obj/item/clothing/uniform = w_uniform
@@ -321,6 +342,14 @@
 		if(istype(I, /obj/item/holder))
 			root.remove_from_mob(I)
 
+/mob/living/simple_mob/protean_blob/proc/useradio()
+	set name = "Utilize Radio"
+	set desc = "Allows a protean blob to interact with its internal radio."
+	set category = "Abilities"
+
+	if(mob_radio)
+		mob_radio.ui_interact(src, state = interactive_state)
+
 /mob/living/carbon/human/proc/nano_outofblob(var/mob/living/simple_mob/protean_blob/blob)
 	if(!istype(blob))
 		return
@@ -369,6 +398,9 @@
 	if(blob.prev_left_hand) put_in_l_hand(blob.prev_left_hand) //The restore for when reforming.
 	if(blob.prev_right_hand) put_in_r_hand(blob.prev_right_hand)
 
+	for(var/obj/item/radio/headset/H in contents)
+		H.keyslot1 = blob.mob_radio.keyslot1
+		H.keyslot2 = blob.mob_radio.keyslot2
 	Life(1) //Fix my blindness right meow //Has to be moved up here, there exists a circumstance where blob could be deleted without vore organs moving right.
 
 	//Get rid of friend blob

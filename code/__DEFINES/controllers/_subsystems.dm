@@ -84,6 +84,7 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define INIT_ORDER_CHEMISTRY		18
 #define INIT_ORDER_AI				-22
 #define INIT_ORDER_OPENSPACE		-50
+#define INIT_ORDER_PERSISTENCE		-95
 
 
 // Subsystem fire priority, from lowest to highest priority

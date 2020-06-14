@@ -105,7 +105,7 @@
 		if("Head of Security")
 			suit=/obj/item/clothing/suit/space/plasman/sec/hos
 			helm=/obj/item/clothing/head/helmet/space/plasman/sec/hos
-		if("Colony Director")
+		if("Facility Director")
 			suit=/obj/item/clothing/suit/space/plasman/sec/captain
 			helm=/obj/item/clothing/head/helmet/space/plasman/sec/captain
 		if("Head of Personnel")

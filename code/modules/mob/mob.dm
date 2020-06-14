@@ -841,10 +841,10 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	return
 
 /mob/proc/AdjustLosebreath(amount)
-	losebreath = CLAMP(0, losebreath + amount, 25)
+	losebreath = clamp(0, losebreath + amount, 25)
 
 /mob/proc/SetLosebreath(amount)
-	losebreath = CLAMP(0, amount, 25)
+	losebreath = clamp(0, amount, 25)
 
 /mob/proc/get_species()
 	return ""
