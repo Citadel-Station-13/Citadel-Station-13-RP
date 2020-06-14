@@ -7,7 +7,7 @@
 
 	// Atmospherics / ZAS Environmental
 	/// Initial air contents, as a specially formatted gas string.
-	var/initial_gas_mix = GASSTRING_TURF_DEFAULT
+	var/initial_gas_mix = GAS_STRING_TURF_DEFAULT
 	// End
 
 	//Properties for airtight tiles (/wall)

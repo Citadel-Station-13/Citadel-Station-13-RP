@@ -193,8 +193,8 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 /datum/computer/file/embedded_program/airlock/phoron/New(var/obj/machinery/embedded_controller/M)
 	..(M)
 	memory["chamber_sensor_phoron"] = 0
-	memory["external_sensor_pressure"] = VIRGO3B_ONE_ATMOSPHERE
-	memory["external_sensor_phoron"] = VIRGO3B_MOL_PHORON
+	memory["external_sensor_pressure"] = 82.4
+	memory["external_sensor_phoron"] = 72.2
 	memory["internal_sensor_phoron"] = 0
 	memory["scrubber_status"] = "unknown"
 	memory["target_phoron"] = 0.1

@@ -162,6 +162,6 @@ obj/var/contaminated = 0
 		if(!env)
 			return
 		for(var/g in env.gas)
-			if(GLOB.meta_gas_flags[g] & XGM_GAS_CONTAMINANT && env.gas[g] > GLOB.meta_gas_visibility[g] + 1)
+			if(GLOB.meta_gas_flags[g] & GAS_FLAG_CONTAMINANT && env.gas[g] > GLOB.meta_gas_visibility[g] + 1)
 				I.contaminate()
 				break

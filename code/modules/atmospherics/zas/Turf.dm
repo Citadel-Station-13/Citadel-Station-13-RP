@@ -1,8 +1,10 @@
-/turf/simulated/var/zone/zone
-/turf/simulated/var/open_directions
-
-/turf/var/needs_air_update = 0
-/turf/var/datum/gas_mixture/air
+/turf/simulated
+	var/zone/zone
+	var/open_directions
+	var/needs_air_update = FALSE
+	var/datum/gas_mixture/air
+	/// Do we show gas overlays?
+	var/allow_gas_overlays = TRUE
 
 /turf/proc/update_air_properties()
 	var/block = c_airblock(src)

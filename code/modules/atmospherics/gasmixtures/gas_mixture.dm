@@ -485,7 +485,7 @@
   */
 /datum/gas_mixture/proc/parse_gas_string(gas_string)
 	gas_string = SSair.preprocess_gas_string(gas_string)
-	var/list/gases = src.gases
+	var/list/gases = src.gas
 	var/list/gas = params2list(gas_string)
 	if(gas["TEMP"])
 		temperature = text2num(gas["TEMP"])
