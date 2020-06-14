@@ -3,9 +3,9 @@
 // (
 
 #define NUM_E 2.71828183
-		//JUST WHY IS PI USED
-#define M_PI						3.1416 //WHY THE FUCK DID THESE PEOPLE NAME THEIR PIPE DISP. NAME /PI REEEE
-#define INFINITY				1e31	//closer then enough
+
+#define M_PI					(3.14159265)
+#define INFINITY				(1.#INF)	//closer then enough
 
 #define SHORT_REAL_LIMIT 16777216
 
@@ -16,15 +16,14 @@
 #define TICK_USAGE_TO_MS(starting_tickusage) (TICK_DELTA_TO_MS(TICK_USAGE_REAL - starting_tickusage))
 
 #define PERCENT(val) (round((val)*100, 0.1))
-
-#define CLAMP01(x) clamp(x, 0, 1) // 513 compatability overides this
+#define CLAMP01(x) (clamp(x, 0, 1))
 
 //time of day but automatically adjusts to the server going into the next day within the same round.
 //for when you need a reliable time number that doesn't depend on byond time.
 #define REALTIMEOFDAY (world.timeofday + (MIDNIGHT_ROLLOVER * MIDNIGHT_ROLLOVER_CHECK))
 #define MIDNIGHT_ROLLOVER_CHECK ( GLOB.rollovercheck_last_timeofday != world.timeofday ? update_midnight_rollover() : GLOB.midnight_rollovers )
 
-#define SIGN(x) ( (x) != 0 ? (x) / abs(x) : 0 )
+#define SIGN(x) ( (x)!=0 ? (x) / abs(x) : 0 )
 
 #define CEILING(x, y) ( -round(-(x) / (y)) * (y) )
 
@@ -32,7 +31,7 @@
 #define FLOOR(x, y) ( round((x) / (y)) * (y) )
 
 // Similar to clamp but the bottom rolls around to the top and vice versa. min is inclusive, max is exclusive
-#define WRAP(val, min, max) clamp(( min == max ? min : (val) - (round(((val) - (min))/((max) - (min))) * ((max) - (min))) ),min,max-1)
+#define WRAP(val, min, max) ( min == max ? min : (val) - (round(((val) - (min))/((max) - (min))) * ((max) - (min))) )
 
 // Real modulus that handles decimals
 #define MODULUS(x, y) ( (x) - (y) * round((x) / (y)) )
@@ -47,11 +46,13 @@
 #define CSC(x) (1 / sin(x))
 
 // Greatest Common Divisor - Euclid's algorithm
-/proc/Gcd(a, b)
-	return b ? Gcd(b, (a) % (b)) : a
+/proc/GCD(a, b)
+	return b ? GCD(b, (a) % (b)) : a
 
 // Least Common Multiple
-#define Lcm(a, b) (abs(a) / Gcd(a, b) * abs(b))
+#define LCM(a, b) (abs(a) / GCD(a, b) * abs(b))
+
+#define IS_CARDINAL(x) ((x & (x - 1)) == 0)
 
 #define INVERSE(x) ( 1/(x) )
 
@@ -68,7 +69,7 @@
 #define ISINRANGE(val, min, max) (min <= val && val <= max)
 
 // Same as above, exclusive.
-#define ISINRANGE_EX(val, min, max) (min < val && val < max)
+#define ISINRANGE_EX(val, min, max) (min < val && val > max)
 
 #define ISINTEGER(x) (round(x) == x)
 
@@ -82,6 +83,12 @@
 // Returns the nth root of x.
 #define ROOT(n, x) ((x) ** (1 / (n)))
 
+/proc/Mean(...)
+	var/sum = 0
+	for(var/val in args)
+		sum += val
+	return sum / args.len
+
 // The quadratic formula. Returns a list with the solutions, or an empty list
 // if they are imaginary.
 /proc/SolveQuadratic(a, b, c)
@@ -89,16 +96,20 @@
 	. = list()
 	var/d		= b*b - 4 * a * c
 	var/bottom  = 2 * a
+	// Return if the roots are imaginary.
 	if(d < 0)
 		return
 	var/root = sqrt(d)
 	. += (-b + root) / bottom
+	// If discriminant == 0, there would be two roots at the same position.
 	if(!d)
 		return
 	. += (-b - root) / bottom
 
+	// 180 / Pi ~ 57.2957795
 #define TODEGREES(radians) ((radians) * 57.2957795)
 
+	// Pi / 180 ~ 0.0174532925
 #define TORADIANS(degrees) ((degrees) * 0.0174532925)
 
 // Will filter out extra rotations and negative rotations
@@ -195,17 +206,7 @@
 
 	return list(region_x1 & region_x2, region_y1 & region_y2)
 
-#define EXP_DISTRIBUTION(desired_mean) ( -(1/(1/desired_mean)) * log(rand(1, 1000) * 0.001) )
-
-#define LORENTZ_DISTRIBUTION(x, s) ( s*tan(TODEGREES(PI*(rand()-0.5))) + x )
-#define LORENTZ_CUMULATIVE_DISTRIBUTION(x, y, s) ( (1/PI)*TORADIANS(arctan((x-y)/s)) + 1/2 )
-
-#define RULE_OF_THREE(a, b, x) ((a*x)/b)
 // )
-
-#define MANHATTAN_DISTANCE(a, b) (abs(a.x - b.x) + abs(a.y - b.y))
-
-#define LOGISTIC_FUNCTION(L,k,x,x_0) (L/(1+(NUM_E**(-k*(x-x_0)))))
 
 /// Make sure something is a boolean TRUE/FALSE 1/0 value, since things like bitfield & bitflag doesn't always give 1s and 0s.
 #define FORCE_BOOLEAN(x) ((x)? TRUE : FALSE)
@@ -213,12 +214,5 @@
 //VORESTATION SPECIFIC.
 #define RAND_F(LOW, HIGH) (rand()*(HIGH-LOW) + LOW)
 
-#define IS_CARDINAL(x) ((x & (x - 1)) == 0)
-
 //Vector Algebra
-#define SQUAREDNORM(x, y) (x*x+y*y)
-#define NORM(x, y) (sqrt(SQUAREDNORM(x,y)))
-#define ISPOWEROFTWO(x) ((x & (x - 1)) == 0)
 #define ROUNDUPTOPOWEROFTWO(x) (2 ** -round(-log(2,x)))
-
-#define DEFAULT(a, b) (a? a : b)

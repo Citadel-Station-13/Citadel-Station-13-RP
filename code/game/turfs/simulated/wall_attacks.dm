@@ -131,8 +131,7 @@
 
 /turf/simulated/wall/attackby(obj/item/W, mob/user)
 	user.setClickCooldown(user.get_attack_speed(W))
-
-	if(!user.IsAdvancedToolUser()) //HOW did byond NOT see this (langserver caught it)
+	if (!user)
 		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
 		return
 

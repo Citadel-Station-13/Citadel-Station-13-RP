@@ -221,7 +221,7 @@ Turf and target are separate in case you want to teleport some distance from a t
 			ID.registered_name = newname
 			ID.name = "[newname]'s ID Card ([ID.assignment])"
 			done_search_id = TRUE
-			
+
 		if(istype(A, /obj/item/pda) && !done_search_pda)
 			var/obj/item/pda/PDA = A
 			if(PDA.owner != oldname)
@@ -1633,7 +1633,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 //Takes: Area type as text string or as typepath OR an instance of the area.
 //Returns: A list of all areas of that type in the world. (or blank list if empty!)
 /proc/get_areas(area/areatype)
-	if(!areatype) 
+	if(!areatype)
 		return null
 	if(istext(areatype))
 		areatype = text2path(areatype)
@@ -1652,7 +1652,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 /proc/get_area_turfs(area/areatype)
 	if(!areatype)
 		return null
-	if(istext(areatype)) 
+	if(istext(areatype))
 		areatype = text2path(areatype)
 	if(isarea(areatype))
 		var/area/areatemp = areatype
@@ -1662,15 +1662,15 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	for(var/area/N in all_areas)
 		if(!istype(N, areatype))
 			continue
-		for(var/turf/T in N) 
+		for(var/turf/T in N)
 			. += T
 
 //Takes: Area type as text string or as typepath OR an instance of the area.
 //Returns: A list of all atoms	(objs, turfs, mobs) in areas of that type of that type in the world.
 /proc/get_area_all_atoms(area/areatype)
-	if(!areatype) 
+	if(!areatype)
 		return null
-	if(istext(areatype)) 
+	if(istext(areatype))
 		areatype = text2path(areatype)
 	if(isarea(areatype))
 		var/area/areatemp = areatype
@@ -1699,7 +1699,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 //       Movement based on lower left corner. Tiles that do not fit
 //		 into the new area will not be moved.
 /area/proc/move_contents_to(area/A, turftoleave = null, direction = null) //dunno where to ship
-	if(!A || !src) 
+	if(!A || !src)
 		return 0
 
 	var/list/turfs_src = get_area_turfs(src.type)
@@ -2102,23 +2102,23 @@ proc/is_hot(obj/item/W as obj)
 	return max(min(middle, high), low)
 
 /proc/LinkBlocked(turf/A, turf/B)
-	if(A == null || B == null) 
+	if(A == null || B == null)
 		return TRUE
 	var/adir = get_dir(A,B)
 	var/rdir = get_dir(B,A)
 	if((adir & (NORTH|SOUTH)) && (adir & (EAST|WEST)))	//	diagonal
 		var/iStep = get_step(A,adir&(NORTH|SOUTH))
-		if(!LinkBlocked(A,iStep) && !LinkBlocked(iStep,B)) 
+		if(!LinkBlocked(A,iStep) && !LinkBlocked(iStep,B))
 			return FALSE
 
 		var/pStep = get_step(A,adir&(EAST|WEST))
-		if(!LinkBlocked(A,pStep) && !LinkBlocked(pStep,B)) 
+		if(!LinkBlocked(A,pStep) && !LinkBlocked(pStep,B))
 			return FALSE
 		return TRUE
 
-	if(DirBlocked(A,adir)) 
+	if(DirBlocked(A,adir))
 		return TRUE
-	if(DirBlocked(B,rdir)) 
+	if(DirBlocked(B,rdir))
 		return TRUE
 	return FALSE
 
@@ -2139,7 +2139,7 @@ proc/is_hot(obj/item/W as obj)
 				return TRUE
 			if((dir & EAST) && (D.dir & (NORTH|SOUTH)))
 				return TRUE
-		else 
+		else
 			return TRUE	// it's a real, air blocking door
 	return FALSE
 

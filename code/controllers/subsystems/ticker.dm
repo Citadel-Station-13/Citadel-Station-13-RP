@@ -391,7 +391,7 @@ SUBSYSTEM_DEF(ticker)
 	var/captainless=1
 	for(var/mob/living/carbon/human/player in player_list)
 		if(player && player.mind && player.mind.assigned_role)
-			if(player.mind.assigned_role == "Colony Director")
+			if(player.mind.assigned_role == "Facility Director")
 				captainless=0
 			if(!player_is_antag(player.mind, only_offstation_roles = 1))
 				SSjobs.EquipRank(player, player.mind.assigned_role, 0)
@@ -401,7 +401,7 @@ SUBSYSTEM_DEF(ticker)
 	if(captainless)
 		for(var/mob/M in player_list)
 			if(!istype(M,/mob/new_player))
-				to_chat(M, "Colony Directorship not forced on anyone.")
+				to_chat(M, "Facility Directorship not forced on anyone.")
 
 
 /datum/controller/subsystem/ticker/proc/round_process()

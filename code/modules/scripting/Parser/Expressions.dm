@@ -39,13 +39,13 @@
 	if(top>=input)
 		return REDUCE
 	return SHIFT
-		
+
 /*
 	Proc: GetExpression
 	Takes a token expected to represent a value and returns an <expression> node.
 */
 /n_Parser/nS_Parser/proc/GetExpression(token/T)
-	if(!T) 
+	if(!T)
 		return
 	if(istype(T, /node/expression))
 		return T
@@ -91,18 +91,18 @@
 	- <GetUnaryOperator()>
 */
 /n_Parser/nS_Parser/proc/GetOperator(O, type=/node/expression/operator, list/L)
-	if(istype(O, type)) 
+	if(istype(O, type))
 		return O		//O is already the desired type
-	if(istype(O, /token)) 
+	if(istype(O, /token))
 		O = O:value //sets O to text
 	if(istext(O))										//sets O to path
-		if(L.Find(O)) 
+		if(L.Find(O))
 			O = L[O]
-		else 
+		else
 			return null
 	if(ispath(O))
 		O=new O						//catches path from last check
-	else 
+	else
 		return null								//Unknown type
 	return O
 
@@ -262,7 +262,7 @@
 			src.expecting = OPERATOR
 		NextToken()
 
-	while(opr.Top()) 
+	while(opr.Top())
 		Reduce(opr, val) 		//Reduce the value stack completely
 	. = val.Pop()               //Return what should be the last value on the stack
 	if(val.Top())               //

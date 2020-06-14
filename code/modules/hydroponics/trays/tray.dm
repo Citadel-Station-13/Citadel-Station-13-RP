@@ -364,7 +364,7 @@
 		return
 
 	// Check if we should even bother working on the current seed datum.
-	if(seed.mutants && seed.mutants.len && severity > 1)
+	if(length(seed.mutants) && severity > 1)
 		mutate_species()
 		return
 

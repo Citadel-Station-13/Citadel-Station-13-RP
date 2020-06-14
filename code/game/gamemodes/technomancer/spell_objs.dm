@@ -1,4 +1,4 @@
-// See construct_spells.dm for BITFLAGS
+// See spells.dm for BITFLAGS
 
 /obj/item/spell
 	name = "glowing particles"

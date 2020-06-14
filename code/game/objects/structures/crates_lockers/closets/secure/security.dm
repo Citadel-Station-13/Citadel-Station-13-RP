@@ -1,5 +1,5 @@
 /obj/structure/closet/secure_closet/captains
-	name = "colony director's locker"
+	name = "Facility Director's locker"
 	icon_state = "capsecure1"
 	icon_closed = "capsecure"
 	icon_locked = "capsecure1"

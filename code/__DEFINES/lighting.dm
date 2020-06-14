@@ -72,8 +72,8 @@
 //Lighting values used by the station lights
 #define LIGHT_COLOR_FLUORESCENT_TUBE "#E0EFFF"
 #define LIGHT_COLOR_FLUORESCENT_FLASHLIGHT "#CDDDFF"
-#define LIGHT_COLOR_INCANDESCENT_TUBE "#FFFEB8"
-#define LIGHT_COLOR_INCANDESCENT_BULB "#FFDDBB"
+#define LIGHT_COLOR_INCANDESCENT_TUBE "#E0EFF0"
+#define LIGHT_COLOR_INCANDESCENT_BULB "#FFFEB8"
 #define LIGHT_COLOR_INCANDESCENT_FLASHLIGHT "#FFCC66"
 
 //vars from lighting vr, uncommented due to duplicate defintion

@@ -513,7 +513,7 @@ steam.start() -- spawns the effect
 		if(flashing && flashing_factor)
 			flash = (amount / 4) * flashing_factor
 
-		explosion(location, 
+		explosion(location,
 			round(min(devst, BOMBCAP_DVSTN_RADIUS)), round(min(heavy, BOMBCAP_HEAVY_RADIUS)),
 			round(min(light, BOMBCAP_LIGHT_RADIUS)), round(min(flash, BOMBCAP_FLASH_RADIUS))
 		)

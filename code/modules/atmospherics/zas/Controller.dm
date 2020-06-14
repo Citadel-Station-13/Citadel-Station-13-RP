@@ -99,7 +99,7 @@ Class Procs:
 	ASSERT(isturf(B))
 	#endif
 	var/ablock = A.c_airblock(B)
-	if(ablock == BLOCKED) 
+	if(ablock == BLOCKED)
 		return BLOCKED
 	return ablock | B.c_airblock(A)
 
@@ -145,8 +145,8 @@ Class Procs:
 			merge(A.zone,B.zone)
 			return
 
-	var/a_to_b = get_dir(A,B)
-	var/b_to_a = get_dir(B,A)
+	var/a_to_b = get_dir(A, B)
+	var/b_to_a = get_dir(B, A)
 
 	if(!A.connections)
 		A.connections = new

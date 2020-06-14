@@ -204,7 +204,7 @@
 	Reads a symbol into a token.
 */
 		ReadSymbol()
-			var/char=copytext(code, codepos, codepos+1)
+			var/char = copytext(code, codepos, codepos+1)
 			var/buf
 
 			while(options.symbols.Find(buf+char))
@@ -220,9 +220,9 @@
 	Reads a number into a token.
 */
 		ReadNumber()
-			var/char=copytext(code, codepos, codepos+1)
+			var/char = copytext(code, codepos, codepos+1)
 			var/buf
-			var/dec=0
+			var/dec = 0
 
 			while(options.IsDigit(char) || (char=="." && !dec))
 				if(char==".") dec=1
@@ -242,9 +242,9 @@
 */
 
 		ReadComment()
-			var/char=copytext(code, codepos, codepos+1)
-			var/nextchar=copytext(code, codepos+1, codepos+2)
-			var/charstring = char+nextchar
+			var/char = copytext(code, codepos, codepos+1)
+			var/nextchar = copytext(code, codepos+1, codepos+2)
+			var/charstring = char + nextchar
 			var/comm = 1
 					// 1: single-line comment
 					// 2: multi-line comment

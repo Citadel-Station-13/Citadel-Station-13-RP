@@ -452,7 +452,7 @@
 		return
 	if(character.mind.role_alt_title) //vorestation specific
 		rank = character.mind.role_alt_title
-	
+
 	//"%PERSON, %RANK, will arrive at the station shortly"
 	global_announcer.autosay("[character.real_name], [rank], [join_message].", "Arrivals Announcement Computer")
 	//var/obj/machinery/announcement_system/announcer = pick(GLOB.announcement_systems)
@@ -724,7 +724,6 @@
 
 	return list("mobs" = mobs, "objs" = objs)
 
-/**/
 /proc/MixColors(const/list/colors)
 	var/list/reds = list()
 	var/list/blues = list()
