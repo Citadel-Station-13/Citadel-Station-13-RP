@@ -8,9 +8,7 @@
 "ac" = (
 /turf/simulated/mineral{
 	name = "Mountain Wall";
-	nitrogen = 82.1472;
-	oxygen = 21.8366;
-	temperature = 393.15
+	initial_gas_string = "n2=82.1472;o2=21.8366;TEMP=393.15"
 	},
 /area/awaymission/labs/cave)
 "ad" = (
@@ -450,9 +448,7 @@
 "bz" = (
 /turf/simulated/mineral{
 	name = "Mountain Wall";
-	nitrogen = 82.1472;
-	oxygen = 21.8366;
-	temperature = 393.15
+	initial_gas_string = "n2=82.1472;o2=21.8366;TEMP=393.15"
 	},
 /area/awaymission/desert{
 	dynamic_lighting = 1;

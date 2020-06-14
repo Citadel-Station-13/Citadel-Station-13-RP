@@ -182,7 +182,7 @@
 	p_open = 0
 	},
 /turf/simulated/floor/reinforced/nitrogen{
-	nitrogen = 82.1472
+	initial_gas_string = "n2=82.1472;TEMP=293.15"
 	},
 /area/engineering/engine_room)
 "aG" = (
@@ -229,7 +229,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/reinforced/nitrogen{
-	nitrogen = 82.1472
+	initial_gas_string = "n2=82.1472;TEMP=293.15"
 	},
 /area/engineering/engine_room)
 "aM" = (
@@ -254,7 +254,7 @@
 	use_power = 1
 	},
 /turf/simulated/floor/reinforced/nitrogen{
-	nitrogen = 82.1472
+	initial_gas_string = "n2=82.1472;TEMP=293.15"
 	},
 /area/engineering/engine_room)
 "aO" = (
@@ -356,7 +356,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/reinforced/nitrogen{
-	nitrogen = 82.1472
+	initial_gas_string = "n2=82.1472;TEMP=293.15"
 	},
 /area/engineering/engine_room)
 "aX" = (
@@ -379,7 +379,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/reinforced/nitrogen{
-	nitrogen = 82.1472
+	initial_gas_string = "n2=82.1472;TEMP=293.15"
 	},
 /area/engineering/engine_room)
 "aZ" = (
@@ -513,7 +513,7 @@
 	volume_rate = 700
 	},
 /turf/simulated/floor/reinforced/nitrogen{
-	nitrogen = 82.1472
+	initial_gas_string = "n2=82.1472;TEMP=293.15"
 	},
 /area/engineering/engine_room)
 "bi" = (
@@ -523,7 +523,7 @@
 	},
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/reinforced/nitrogen{
-	nitrogen = 82.1472
+	initial_gas_string = "n2=82.1472;TEMP=293.15"
 	},
 /area/engineering/engine_room)
 "bj" = (
@@ -539,7 +539,7 @@
 	output = 63
 	},
 /turf/simulated/floor/reinforced/nitrogen{
-	nitrogen = 82.1472
+	initial_gas_string = "n2=82.1472;TEMP=293.15"
 	},
 /area/engineering/engine_room)
 "bk" = (

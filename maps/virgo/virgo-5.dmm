@@ -16161,7 +16161,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	nitrogen = 82.1472;
+	initial_gas_string = "n2=82.1472;TEMP=293.15";
 	oxygen = 21.8366;
 	temperature = 293.15
 	},
@@ -16255,7 +16255,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	nitrogen = 82.1472;
+	initial_gas_string = "n2=82.1472;TEMP=293.15";
 	oxygen = 21.8366;
 	temperature = 293.15
 	},
@@ -16279,7 +16279,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	nitrogen = 82.1472;
+	initial_gas_string = "n2=82.1472;TEMP=293.15";
 	oxygen = 21.8366;
 	temperature = 293.15
 	},
@@ -18931,8 +18931,7 @@
 /area/shuttle/belter/station)
 "KT" = (
 /turf/simulated/shuttle/floor/black{
-	nitrogen = 0;
-	oxygen = 0
+	initial_gas_string = "TEMP=2.7"
 	},
 /area/shuttle/belter/station)
 "KU" = (
@@ -18951,21 +18950,18 @@
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/black{
-	nitrogen = 0;
-	oxygen = 0
+	initial_gas_string = "TEMP=2.7"
 	},
 /area/shuttle/belter/station)
 "KX" = (
 /turf/simulated/shuttle/floor/red{
-	nitrogen = 0;
-	oxygen = 0
+	initial_gas_string = "TEMP=2.7"
 	},
 /area/shuttle/belter/station)
 "KY" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/simulated/shuttle/floor/red{
-	nitrogen = 0;
-	oxygen = 0
+	initial_gas_string = "TEMP=2.7"
 	},
 /area/shuttle/belter/station)
 "KZ" = (
@@ -18975,8 +18971,7 @@
 	pixel_y = 4
 	},
 /turf/simulated/shuttle/floor/red{
-	nitrogen = 0;
-	oxygen = 0
+	initial_gas_string = "TEMP=2.7"
 	},
 /area/shuttle/belter/station)
 "La" = (
@@ -18987,8 +18982,7 @@
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/red{
-	nitrogen = 0;
-	oxygen = 0
+	initial_gas_string = "TEMP=2.7"
 	},
 /area/shuttle/belter/station)
 "Lb" = (
@@ -18999,8 +18993,7 @@
 	dir = 2
 	},
 /turf/simulated/shuttle/floor/red{
-	nitrogen = 0;
-	oxygen = 0
+	initial_gas_string = "TEMP=2.7"
 	},
 /area/shuttle/belter/station)
 "Ld" = (
@@ -19023,22 +19016,19 @@
 	tag_door = "belter_hatch"
 	},
 /turf/simulated/shuttle/floor/red{
-	nitrogen = 0;
-	oxygen = 0
+	initial_gas_string = "TEMP=2.7"
 	},
 /area/shuttle/belter/station)
 "Lf" = (
 /obj/machinery/light,
 /turf/simulated/shuttle/floor/black{
-	nitrogen = 0;
-	oxygen = 0
+	initial_gas_string = "TEMP=2.7"
 	},
 /area/shuttle/belter/station)
 "Lg" = (
 /obj/machinery/computer/shuttle_control/belter,
 /turf/simulated/shuttle/floor/red{
-	nitrogen = 0;
-	oxygen = 0
+	initial_gas_string = "TEMP=2.7"
 	},
 /area/shuttle/belter/station)
 "Lh" = (
@@ -19046,8 +19036,7 @@
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/red{
-	nitrogen = 0;
-	oxygen = 0
+	initial_gas_string = "TEMP=2.7"
 	},
 /area/shuttle/belter/station)
 "Li" = (
@@ -19056,8 +19045,7 @@
 	},
 /obj/machinery/light,
 /turf/simulated/shuttle/floor/red{
-	nitrogen = 0;
-	oxygen = 0
+	initial_gas_string = "TEMP=2.7"
 	},
 /area/shuttle/belter/station)
 "Lj" = (
