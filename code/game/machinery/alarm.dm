@@ -71,7 +71,7 @@
 	var/datum/radio_frequency/radio_connection
 
 	var/list/TLV = list()
-	var/list/trace_gas = list("sleeping_agent", "volatile_fuel") //list of other gases that this air alarm is able to detect
+	var/list/trace_gas = list(/datum/gas/nitrous_oxide, /datum/gas/volatile_fuel) //list of other gases that this air alarm is able to detect
 
 	var/danger_level = 0
 	var/pressure_dangerlevel = 0
@@ -150,7 +150,7 @@
 	var/turf/simulated/location = src.loc
 	if(!istype(location))	return//returns if loc is not simulated
 
-	var/datum/gas_mixture_old/environment = location.return_air()
+	var/datum/gas_mixture/environment = location.return_air()
 
 	//Handle temperature adjustment here.
 	handle_heating_cooling(environment)
@@ -185,7 +185,7 @@
 
 	return
 
-/obj/machinery/alarm/proc/handle_heating_cooling(var/datum/gas_mixture_old/environment)
+/obj/machinery/alarm/proc/handle_heating_cooling(var/datum/gas_mixture/environment)
 	if(!regulating_temperature)
 		//check for when we should start adjusting temperature
 		if(!get_danger_level(target_temperature, TLV["temperature"]) && abs(environment.temperature - target_temperature) > 2.0)
@@ -210,7 +210,7 @@
 		if(target_temperature < T0C + MIN_TEMPERATURE)
 			target_temperature = T0C + MIN_TEMPERATURE
 
-		var/datum/gas_mixture_old/gas
+		var/datum/gas_mixture/gas
 		gas = environment.remove(0.25 * environment.total_moles)
 		if(gas)
 
@@ -235,7 +235,7 @@
 
 			environment.merge(gas)
 
-/obj/machinery/alarm/proc/overall_danger_level(var/datum/gas_mixture_old/environment)
+/obj/machinery/alarm/proc/overall_danger_level(var/datum/gas_mixture/environment)
 	var/partial_pressure = R_IDEAL_GAS_EQUATION * environment.temperature/environment.volume
 	var/environment_pressure = environment.return_pressure()
 
@@ -244,9 +244,9 @@
 		other_moles += environment.gas[g] //this is only going to be used in a partial pressure calc, so we don't need to worry about group_multiplier here.
 
 	pressure_dangerlevel = get_danger_level(environment_pressure, TLV["pressure"])
-	oxygen_dangerlevel = get_danger_level(environment.gas["oxygen"]*partial_pressure, TLV["oxygen"])
-	co2_dangerlevel = get_danger_level(environment.gas["carbon_dioxide"]*partial_pressure, TLV["carbon dioxide"])
-	phoron_dangerlevel = get_danger_level(environment.gas["phoron"]*partial_pressure, TLV["phoron"])
+	oxygen_dangerlevel = get_danger_level(environment.gas[/datum/gas/oxygen]*partial_pressure, TLV["oxygen"])
+	co2_dangerlevel = get_danger_level(environment.gas[/datum/gas/carbon_dioxide]]*partial_pressure, TLV["carbon dioxide"])
+	phoron_dangerlevel = get_danger_level(environment.gas[/datum/gas/phoron]*partial_pressure, TLV["phoron"])
 	temperature_dangerlevel = get_danger_level(environment.temperature, TLV["temperature"])
 	other_dangerlevel = get_danger_level(other_moles*partial_pressure, TLV["other"])
 
@@ -269,7 +269,7 @@
 	if(breach_detection	== 0)
 		return 0
 
-	var/datum/gas_mixture_old/environment = location.return_air()
+	var/datum/gas_mixture/environment = location.return_air()
 	var/environment_pressure = environment.return_pressure()
 	var/pressure_levels = TLV["pressure"]
 
@@ -506,7 +506,7 @@
 
 /obj/machinery/alarm/proc/populate_status(var/data)
 	var/turf/location = get_turf(src)
-	var/datum/gas_mixture_old/environment = location.return_air()
+	var/datum/gas_mixture/environment = location.return_air()
 	var/total = environment.total_moles
 
 	var/list/environment_data = new
@@ -514,9 +514,9 @@
 	if(total)
 		var/pressure = environment.return_pressure()
 		environment_data[++environment_data.len] = list("name" = "Pressure", "value" = pressure, "unit" = "kPa", "danger_level" = pressure_dangerlevel)
-		environment_data[++environment_data.len] = list("name" = "Oxygen", "value" = environment.gas["oxygen"] / total * 100, "unit" = "%", "danger_level" = oxygen_dangerlevel)
-		environment_data[++environment_data.len] = list("name" = "Carbon dioxide", "value" = environment.gas["carbon_dioxide"] / total * 100, "unit" = "%", "danger_level" = co2_dangerlevel)
-		environment_data[++environment_data.len] = list("name" = "Toxins", "value" = environment.gas["phoron"] / total * 100, "unit" = "%", "danger_level" = phoron_dangerlevel)
+		environment_data[++environment_data.len] = list("name" = "Oxygen", "value" = environment.gas[/datum/gas/oxygen] / total * 100, "unit" = "%", "danger_level" = oxygen_dangerlevel)
+		environment_data[++environment_data.len] = list("name" = "Carbon dioxide", "value" = environment.gas[/datum/gas/carbon_dioxide] / total * 100, "unit" = "%", "danger_level" = co2_dangerlevel)
+		environment_data[++environment_data.len] = list("name" = "Toxins", "value" = environment.gas[/datum/gas/phoron] / total * 100, "unit" = "%", "danger_level" = phoron_dangerlevel)
 		environment_data[++environment_data.len] = list("name" = "Temperature", "value" = environment.temperature, "unit" = "K ([round(environment.temperature - T0C, 0.1)]C)", "danger_level" = temperature_dangerlevel)
 	data["total_danger"] = danger_level
 	data["environment"] = environment_data
