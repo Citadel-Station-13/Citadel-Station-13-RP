@@ -215,4 +215,5 @@
 #define RAND_F(LOW, HIGH) (rand()*(HIGH-LOW) + LOW)
 
 //Vector Algebra
+#define ISPOWEROFTWO(x) ((x & (x - 1)) == 0)
 #define ROUNDUPTOPOWEROFTWO(x) (2 ** -round(-log(2,x)))
