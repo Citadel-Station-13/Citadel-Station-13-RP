@@ -565,17 +565,17 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 		addtimer(CALLBACK(src,.verb/fit_viewport,10)) //Delayed to avoid wingets from Login calls.
 	*/
 
-mob/proc/MayRespawn()
-	return 0
+/mob/proc/MayRespawn()
+	return FALSE
 
-client/proc/MayRespawn()
+/client/proc/MayRespawn()
 	if(mob)
 		return mob.MayRespawn()
 
 	// Something went wrong, client is usually kicked or transfered to a new mob at this point
-	return 0
+	return FALSE
 
-client/verb/character_setup()
+/client/verb/character_setup()
 	set name = "Character Setup"
 	set category = "Preferences"
 	if(prefs)
@@ -584,7 +584,7 @@ client/verb/character_setup()
 /client/proc/findJoinDate()
 	var/list/http = world.Export("http://byond.com/members/[ckey]?format=text")
 	if(!http)
-		log_world("Failed to connect to byond age check for [ckey]")
+		log_world("Failed to connect to byond member page to age check [ckey]")
 		return
 	var/F = file2text(http["CONTENT"])
 	if(F)
