@@ -153,7 +153,7 @@
 	exclaim_verb = "squeaks loudly"
 	colour = "say_quote"
 	key = "e"	// Squeak squeak squeee squik
-	machine_understands = 1
+	machine_understands = 0
 	syllables = list ("sque", "uik", "squeak", "squee", "eak", "eek", "uek", "squik",
 			"squeek", "sq", "eek", "squeee", "ee", "ek", "ak", "ueak", "squea")
 
