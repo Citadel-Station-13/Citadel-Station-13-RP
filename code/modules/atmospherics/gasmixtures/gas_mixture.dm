@@ -346,7 +346,8 @@
 	var/ratio = sharing_lookup_table[6]
 
 	var/size = max(1, group_multiplier)
-	if(isnull(share_size)) share_size = max(1, other.group_multiplier)
+	if(isnull(share_size))
+		share_size = max(1, other.group_multiplier)
 
 	var/full_heat_capacity = heat_capacity()
 	var/s_full_heat_capacity = other.heat_capacity()
