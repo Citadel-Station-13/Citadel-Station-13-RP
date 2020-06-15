@@ -38,6 +38,7 @@
 #include "Geyser2.dmm"
 #include "Geyser3.dmm"
 #include "Cliff1.dmm"
+#include "cultmine.dmm"
 #endif
 
 // The 'mountains' is the mining z-level, and has a lot of caves.
@@ -340,3 +341,9 @@
 	mappath = 'maps/submaps/surface_submaps/mountains/CrashedMedShuttle1_vr.dmm'	//VOREStation Edit
 	cost = 20
 	fixed_orientation = TRUE
+
+/datum/map_template/surface/mountains/deep/cultmine
+	name = "Cult Mine"
+	desc = "A mining operation that found more than it bargained for."
+	mappath = 'maps/submaps/surface_submaps/mountains/cultmine.dmm'
+	cost = 10
