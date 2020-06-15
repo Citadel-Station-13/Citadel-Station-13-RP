@@ -58,14 +58,15 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 // Subsystems shutdown in the reverse of the order they initialize in
 // The numbers just define the ordering, they are meaningless otherwise.
 
-#define INIT_ORDER_FAIL2TOPIC		101
-#define INIT_ORDER_INPUT			100
-#define INIT_ORDER_SOUNDS			95
-#define INIT_ORDER_JOBS				85
-#define INIT_ORDER_GARBAGE			70
-#define INIT_ORDER_SERVER_MAINT		65
+#define INIT_ORDER_FAIL2TOPIC		99
+#define INIT_ORDER_GARBAGE			95 //why isn't this a priority?
+#define INIT_ORDER_SERVER_MAINT		91
+#define INIT_ORDER_INPUT			90
+#define INIT_ORDER_SOUNDS			85
+#define INIT_ORDER_JOBS				70
 #define INIT_ORDER_TIMER			60
 #define INIT_ORDER_INSTRUMENTS		50
+#define INIT_ORDER_CHEMISTRY		21 // Load before map to stop "chem id not found" issues (this SS maps the id's)
 #define INIT_ORDER_MAPPING			20  // VOREStation Edit
 #define INIT_ORDER_ALARMS			18
 #define INIT_ORDER_DECALS			16
@@ -76,15 +77,16 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define INIT_ORDER_LIGHTING 		0
 #define INIT_ORDER_AIR				-1
 #define INIT_ORDER_PLANETS			-4
+#define INIT_ORDER_ASSETS			-4
 #define INIT_ORDER_HOLOMAPS			-5
 #define INIT_ORDER_OVERLAY			-6
 #define INIT_ORDER_TICKER			-10
 #define INIT_ORDER_XENOARCH			-20
 #define INIT_ORDER_CIRCUIT			-21
-#define INIT_ORDER_CHEMISTRY		18
 #define INIT_ORDER_AI				-22
 #define INIT_ORDER_OPENSPACE		-50
 #define INIT_ORDER_PERSISTENCE		-95
+#define INIT_ORDER_CHAT				-100 //Should be last to ensure chat remains smooth during init.
 
 
 // Subsystem fire priority, from lowest to highest priority
@@ -106,7 +108,8 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define FIRE_PRIORITY_PLANETS		75
 #define FIRE_PRIORITY_INSTRUMENTS	90
 #define FIRE_PRIORITY_MACHINES		100
-#define FIRE_PRIORITY_PROJECTILES	150
+#define FIRE_PRIORITY_PROJECTILES	200
+#define FIRE_PRIORITY_CHAT			400
 #define FIRE_PRIORITY_OVERLAYS		500
 #define FIRE_PRIORITY_INPUT			1000		//never drop input
 

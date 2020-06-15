@@ -14,19 +14,85 @@
 		/datum/asset/simple/fontawesome
 	)
 */
-/datum/asset/simple/nanoui_old
+
+/datum/asset/group/nanoui //gonna port tgui-next and kill this shitui
+	children = list(
+		// /datum/asset/simple/jquery, //fuckers bundled jquery on it
+		/datum/asset/simple/nanoui_js,
+		/datum/asset/simple/nanoui_css,
+		/datum/asset/simple/nanoui_templates
+	)
+
+/datum/asset/simple/nanoui_templates
+	for(var/filename in flist("nano/templates/")) //not the kind of flist you think.
+		if(copytext(filename, length(filename)) == "/") // filenames which end in "/" are actually directories, which we want to ignore
+			continue
+		if(!fexists(path + filename))
+			continue
+		if(findtext(filename, ".txt")) //ignore txt
+			continue
+		assets[filename] = path
+
+/datum/asset/simple/nanoui_js
 	assets = list(
-		'search.js' = 'html/search.js',
-		'panels.css' = 'html/panels.css',
+		'libraries-old.min.js' = 'nano/js/libraries-old.min.js',
+		'libraries.min.js' = 'nano/js/libraries.min.js',
+		'nano_base_callbacks.js' = 'nano/js/nano_base_callbacks.js',
+		'nano_base_helpers.js' = 'nano/js/nano_base_helpers.js',
+		'nano_state.js' = 'nano/js/nano_state.js',
+		'nano_state_default.js' = 'nano/js/nano_state_default.js',
+		'nano_state_manager.js' = 'nano/js/nano_state_manager.js',
+		'nano_template.js' = 'nano/js/nano_template.js',
+		'nano_utility.js' = 'nano/js/nano_utility.js'
+	)
+
+/datum/asset/simple/nanoui_css
+	assets = list(
+		'icons.css' = 'nano/css/icons.css',
+		'layout_basic.css' = 'nano/css/layout_basic.css',
+		'layout_default.css' = 'nano/css/layout_default.css',
+		'shared.css' = 'nano/css/shared.css',
+		'shared_vr.css' = 'nano/css/shared_vr.css'
+	)
+
+/datum/asset/simple/nanoui_images
+	assets = list(
+		'c_charging.gif' = 'nano/images/c_charging.gif',
+		'c_discharging.gif' = 'nano/images/c_discharging.gif',
+		'c_max.gif' = 'nano/images/c_max.gif',
+		'nanomapBackground.png' = 'nano/images/nanomapBackground.png',
+		'pills32.png' = 'nano/images/pills32.png', //ARGH. WHY AREN'T YOU A SPRITESHEET
+		'uiBackground.png' = 'nano/images/uiBackground.png',
+		'uiBackground-Syndicate.png' = 'nano/images/uiBackground-Syndicate.png',
+		'uiBasicBackground.png' = 'nano/images/uiBasicBackground.png',
+		'uiIcons16.png' = 'nano/images/uiIcons16.png',
+		'uiIcons16Green.png' = 'nano/images/uiIcons16Green.png',
+		'uiIcons16Red.png' = 'nano/images/uiIcons16Red.png',
+		'uiIcons24.png' = 'nano/images/uiIcons24.png',
+		'uiIcons64.png' = 'nano/images/uiIcons64.png',
+		'uiLinkPendingIcon.gif' = 'nano/images/uiLinkPendingIcon.gif',
+		'uiMaskBackground.png' = 'nano/images/uiMaskBackground.png',
+		'uiNoticeBackground.png' = 'nano/images/uiNoticeBackground.png',
+		'uiTitleFluff.png' = 'nano/images/uiTitleFluff.png',
+		'uiTitleFluff-Syndicate.png' = 'nano/images/uiTitleFluff-Syndicate.png',
+	)
+
+/datum/asset/simple/nanoui_images/register()
+	for(var/i = 1 to 10) //lazily build the paths.
+		assets['nanomap_z[i].png'] = 'nano/images/nanomap_z[i].png'
+	..() //then ship it.
+
+/datum/asset/simple/nanoui_misc
+	assets = list(
 		'loading.gif' = 'html/images/loading.gif',
 		'no_image32.png' = 'html/images/no_image32.png'
 	)
-/datum/asset/simple/nanoui_old/register()
-	for(var/i = 1 to 14) //lazily build the icons.
-		assets['sos_[i].png'] = 'icons/spideros_icons/sos_[i].png'
 
+/datum/asset/simple/nanoui_misc/register()
+	for(var/i = 1 to 14) //lazily build the paths.
+		assets['sos_[i].png'] = 'icons/spideros_icons/sos_[i].png'
 	..() //then ship it.
-/*
+
 /datum/asset/simple/headers
 	assets = list(
 		"alarm_green.gif" 			= 'icons/program_icons/alarm_green.gif',
@@ -57,7 +123,7 @@
 		"smmon_6.gif" 				= 'icons/program_icons/smmon_6.gif'
 		//"borg_mon.gif"				= 'icons/program_icons/borg_mon.gif'
 	)
-*/
+
 /* uncomment if you're porting the new ntnet app
 /datum/asset/simple/radar_assets
 	assets = list(

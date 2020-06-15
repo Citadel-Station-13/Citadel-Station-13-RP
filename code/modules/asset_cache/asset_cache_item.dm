@@ -1,6 +1,6 @@
 /**
 	* # asset_cache_item
-	* 
+	*
 	* An internal datum containing info on items in the asset cache. Mainly used to cache md5 info for speed.
 **/
 /datum/asset_cache_item
@@ -16,6 +16,6 @@
 		md5 = md5(fcopy_rsc(file))
 		if (!md5)
 			CRASH("invalid asset sent to asset cache")
-		debug_world_log("asset cache unexpected success of second fcopy_rsc")
+		log_debug("asset cache unexpected success of second fcopy_rsc") //debug_world_log
 	src.name = name
 	resource = file

@@ -11,8 +11,8 @@ Note: If your code uses output() with assets you will need to call asset_flush o
 //When sending mutiple assets, how many before we give the client a quaint little sending resources message
 #define ASSET_CACHE_TELL_CLIENT_AMOUNT 8
 
-//This proc sends the asset to the client, but only if it needs it.
-//This proc blocks(sleeps) unless verify is set to false
+/// This proc sends the asset to the client, but only if it needs it.
+/// This proc blocks(sleeps) unless verify is set to false
 /proc/send_asset(client/client, asset_name)
 	return send_asset_list(client, list(asset_name))
 
