@@ -1375,7 +1375,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored)
 "cG" = (
 /obj/structure/cable/heavyduty{
@@ -1385,7 +1385,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored)
 "cH" = (
 /obj/structure/cable/heavyduty{
@@ -1395,7 +1395,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored)
 "cI" = (
 /obj/structure/cable/heavyduty{
@@ -1405,14 +1405,14 @@
 	dir = 8
 	},
 /obj/structure/catwalk,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored)
 "cJ" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored)
 "cK" = (
 /obj/structure/cable/heavyduty{
@@ -1422,7 +1422,7 @@
 	dir = 4
 	},
 /obj/structure/catwalk,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored)
 "cL" = (
 /obj/structure/cable/heavyduty{
@@ -1434,7 +1434,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored)
 "cM" = (
 /obj/structure/cable/heavyduty{
@@ -1446,7 +1446,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored)
 "cN" = (
 /obj/structure/cable/heavyduty{
@@ -1459,13 +1459,13 @@
 	dir = 8
 	},
 /obj/structure/railing,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored)
 "cO" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored)
 "cP" = (
 /obj/effect/floor_decal/rust,
@@ -1479,7 +1479,7 @@
 	icon_state = "1-2";
 	id = "surface-solars"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored)
 "cS" = (
 /obj/machinery/light/small,
