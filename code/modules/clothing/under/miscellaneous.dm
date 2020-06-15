@@ -169,13 +169,13 @@
 	icon_state = "gentlesuit_skirt"
 
 /obj/item/clothing/under/gimmick/rank/captain/suit
-	name = "colony director's suit"
+	name = "Facility Director's suit"
 	desc = "A green suit and yellow necktie. Exemplifies authority."
 	icon_state = "green_suit"
 	item_state_slots = list(slot_r_hand_str = "centcom", slot_l_hand_str = "centcom")
 
 /obj/item/clothing/under/gimmick/rank/captain/suit/skirt
-	name = "colony director's skirt suit"
+	name = "Facility Director's skirt suit"
 	icon_state = "green_suit_skirt"
 
 /obj/item/clothing/under/gimmick/rank/head_of_personnel/suit
@@ -321,8 +321,9 @@
 	desc = "A gold-lined white robe. It gives off uncomfortable cult vibes, but fancy."
 	icon_state = "whitegoldrobe"
 
-//Dresses --------------------------------------------
-
+/*
+ * dress
+ */
 /obj/item/clothing/under/dress
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 
@@ -399,8 +400,8 @@
 	item_state_slots = list(slot_r_hand_str = "dress_white", slot_l_hand_str = "dress_white")
 
 /obj/item/clothing/under/dress/dress_cap
-	name = "colony director's dress uniform"
-	desc = "Feminine fashion for the style conscious Colony Director."
+	name = "Facility Director's dress uniform"
+	desc = "Feminine fashion for the style conscious Facility Director."
 	icon_state = "dress_cap"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 
@@ -457,8 +458,9 @@
 	desc = "A simple black dress adorned in fake purple lilacs."
 	icon_state = "lilacdress"
 
-//Wedding Dresses --------------------------------------------
-
+/*
+ * wedding stuff
+ */
 /obj/item/clothing/under/wedding
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS
 
@@ -506,8 +508,8 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 
 /obj/item/clothing/under/captainformal
-	name = "colony director's formal uniform"
-	desc = "A Colony Director's formal-wear, for special occasions."
+	name = "Facility Director's formal uniform"
+	desc = "A Facility Director's formal-wear, for special occasions."
 	icon_state = "captain_formal"
 	item_state_slots = list(slot_r_hand_str = "lawyer_blue", slot_l_hand_str = "lawyer_blue")
 
@@ -710,10 +712,9 @@
 	desc = "A short, red dress with a black belt. Fancy."
 	icon_state = "darkreddress"
 
-
-//Swimsuit --------------------------------------------
-
-
+/*
+ * swimsuit
+ */
 /obj/item/clothing/under/swimsuit/
 	siemens_coefficient = 1
 	body_parts_covered = 0
@@ -773,10 +774,9 @@
 	desc = "No honest man would wear this abomination."
 	icon_state = "mankini"
 
-
-//Pyjamas --------------------------------------------
-
-
+/*
+ * pyjamas
+ */
 /obj/item/clothing/under/bluepyjamas
 	name = "blue pyjamas"
 	desc = "Slightly old-fashioned sleepwear."
@@ -791,7 +791,9 @@
 	item_state_slots = list(slot_r_hand_str = "red", slot_l_hand_str = "red")
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 
-//Misc Uniforms --------------------------------------------
+/*
+ *Misc Uniforms
+ */
 
 /obj/item/clothing/under/aether
 	name = "\improper Aether jumpsuit"
