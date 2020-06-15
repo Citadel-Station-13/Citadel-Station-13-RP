@@ -496,7 +496,7 @@
 
 /datum/gas_mixture/belly_air/New()
     . = ..()
-    gas = list(
+    gases = list(
         /datum/gas/oxygen = 21,
         /datum/gas/nitrogen = 79)
 

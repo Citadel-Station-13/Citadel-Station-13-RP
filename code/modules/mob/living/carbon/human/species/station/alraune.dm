@@ -173,9 +173,9 @@
 	var/failed_inhale = 0
 	var/failed_exhale = 0
 
-	inhaling = breath.gas[breath_type]
-	poison = breath.gas[poison_type]
-	exhaling = breath.gas[exhale_type]
+	inhaling = breath.gases[breath_type]
+	poison = breath.gases[poison_type]
+	exhaling = breath.gases[exhale_type]
 
 	var/inhale_pp = (inhaling/breath.total_moles)*breath_pressure
 	var/toxins_pp = (poison/breath.total_moles)*breath_pressure
@@ -233,8 +233,8 @@
 		H.phoron_alert = 0
 
 	// If there's some other shit in the air lets deal with it here.
-	if(breath.gas[/datum/gas/nitrous_oxide])
-		var/SA_pp = (breath.gas[/datum/gas/nitrous_oxide] / breath.total_moles) * breath_pressure
+	if(breath.gases[/datum/gas/nitrous_oxide])
+		var/SA_pp = (breath.gases[/datum/gas/nitrous_oxide] / breath.total_moles) * breath_pressure
 
 		// Enough to make us paralysed for a bit
 		if(SA_pp > SA_para_min)
@@ -250,7 +250,7 @@
 		else if(SA_pp > 0.15)
 			if(prob(20))
 				spawn(0) H.emote(pick("giggle", "laugh"))
-		breath.adjust_gas(/datum/gas/nitrous_oxide, -breath.gas[/datum/gas/nitrous_oxide]/6, update = 0) //update after
+		breath.adjust_gas(/datum/gas/nitrous_oxide, -breath.gases[/datum/gas/nitrous_oxide]/6, update = 0) //update after
 
 	// Were we able to breathe?
 	if (failed_inhale || failed_exhale)

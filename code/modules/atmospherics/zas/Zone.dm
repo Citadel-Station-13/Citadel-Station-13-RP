@@ -167,10 +167,10 @@ Class Procs:
 
 /zone/proc/dbg_data(mob/M)
 	M << name
-	for(var/g in air.gas)
-		to_chat(M, "[GLOB.meta_gas_names[g]]: [air.gas[g]]")
+	for(var/g in air.gases)
+		to_chat(M, "[GLOB.meta_gas_names[g]]: [air.gases[g]]")
 	M << "P: [air.return_pressure()] kPa V: [air.volume]L T: [air.temperature]�K ([air.temperature - T0C]�C)"
-	M << "O2 per N2: [(air.gas[/datum/gas/nitrogen] ? air.gas[/datum/gas/oxygen]/air.gas[/datum/gas/nitrogen] : "N/A")] Moles: [air.total_moles]"
+	M << "O2 per N2: [(air.gases[/datum/gas/nitrogen] ? air.gases[/datum/gas/oxygen]/air.gases[/datum/gas/nitrogen] : "N/A")] Moles: [air.total_moles]"
 	to_chat(M, "Simulated: [contents.len] ([air.group_multiplier])")
 	//M << "Unsimulated: [unsimulated_contents.len]"
 	//M << "Edges: [edges.len]"

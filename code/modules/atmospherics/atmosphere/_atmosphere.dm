@@ -40,7 +40,7 @@
 	// We make the string from a gasmix in this proc because gases need to calculate their pressure
 	var/datum/gas_mixture/gasmix = new
 	gasmix.volume = CELL_VOLUME
-	var/list/gaslist = gasmix.gas
+	var/list/gaslist = gasmix.gases
 	gasmix.temperature = rand(minimum_temp, maximum_temp)
 	for(var/gaspath in base_gases)
 		gaslist[gaspath] = base_gases[gaspath]
@@ -80,7 +80,7 @@
 			while(gasmix.return_pressure() > target_pressure)
 				gaslist[gastype] -= gaslist[gastype] * 0.01
 			gaslist[gastype] = FLOOR(gaslist[gastype], 0.01)
-	GAS_GARBAGE_COLLECT(gasmix.gas)
+	GAS_GARBAGE_COLLECT(gasmix.gases)
 
 	// Now finally lets make that string
 	var/list/gas_string_builder = list()

@@ -229,8 +229,8 @@
 	var/pressure = mixture.return_pressure()
 	var/total_moles = mixture.total_moles
 	var desc = "Canister filled to [round(pressure,0.1)] kPa with gas mixture:\n"
-	for(var/gas in mixture.gas)
-		desc += "<br>- [GLOB.meta_gas_names[gas]]: [round((mixture.gas[gas] / total_moles) * 100)]%\n"
+	for(var/gas in mixture.gases)
+		desc += "<br>- [GLOB.meta_gas_names[gas]]: [round((mixture.gases[gas] / total_moles) * 100)]%\n"
 	return desc
 
 /datum/supply_demand_order/gas/match_item(var/obj/machinery/portable_atmospherics/canister)
@@ -243,9 +243,9 @@
 		log_debug("supply_demand event: canister fails to match [canmix.return_pressure()] kPa < [mixture.return_pressure()] kPa")
 		return
 	// Make sure ratios are equal
-	for(var/gas in mixture.gas)
-		var/targetPercent = round((mixture.gas[gas] / mixture.total_moles) * 100)
-		var/canPercent = round((canmix.gas[gas] / canmix.total_moles) * 100)
+	for(var/gas in mixture.gases)
+		var/targetPercent = round((mixture.gases[gas] / mixture.total_moles) * 100)
+		var/canPercent = round((canmix.gases[gas] / canmix.total_moles) * 100)
 		if(abs(targetPercent-canPercent) > 1)
 			log_debug("supply_demand event: canister fails to match because '[gas]': [canPercent] != [targetPercent]")
 			return // Fail!
@@ -327,7 +327,7 @@
 	for(var/i in 1 to differentTypes)
 		var/gasId = pick(unpickedTypes)
 		unpickedTypes -= gasId
-		mixture.gas[gasId] = (rand(1,1000) * mixture.volume) / (R_IDEAL_GAS_EQUATION * mixture.temperature)
+		mixture.gases[gasId] = (rand(1,1000) * mixture.volume) / (R_IDEAL_GAS_EQUATION * mixture.temperature)
 	mixture.update_values()
 	var/datum/supply_demand_order/gas/O = new(qty = 1)
 	O.mixture = mixture

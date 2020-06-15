@@ -190,11 +190,11 @@
 	..()
 
 /obj/machinery/portable_atmospherics/proc/log_open()
-	if(air_contents.gas.len == 0)
+	if(air_contents.gases.len == 0)
 		return
 
 	var/gases = ""
-	for(var/gas in air_contents.gas)
+	for(var/gas in air_contents.gases)
 		if(gases)
 			gases += ", [gas]"
 		else

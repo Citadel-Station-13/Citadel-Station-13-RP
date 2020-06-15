@@ -87,8 +87,8 @@
 	var/t = "<font color='blue'>Coordinates: [T.x],[T.y],[T.z]\n</font>"
 	t += "<font color='red'>Temperature: [env.temperature]\n</font>"
 	t += "<font color='red'>Pressure: [env.return_pressure()]kPa\n</font>"
-	for(var/g in env.gas)
-		t += "<font color='blue'>[g]: [env.gas[g]] / [env.gas[g] * R_IDEAL_GAS_EQUATION * env.temperature / env.volume]kPa\n</font>"
+	for(var/g in env.gases)
+		t += "<font color='blue'>[g]: [env.gases[g]] / [env.gases[g] * R_IDEAL_GAS_EQUATION * env.temperature / env.volume]kPa\n</font>"
 
 	usr.show_message(t, 1)
 	feedback_add_details("admin_verb","ASL") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -484,7 +484,7 @@
 		if(Rad.anchored)
 			if(!Rad.P)
 				var/obj/item/tank/phoron/Phoron = new/obj/item/tank/phoron(Rad)
-				Phoron.air_contents.gas[/datum/gas/phoron] = 70
+				Phoron.air_contents.gases[/datum/gas/phoron] = 70
 				Rad.drainratio = 0
 				Rad.P = Phoron
 				Phoron.loc = Rad
@@ -523,7 +523,7 @@
 
 				var/obj/item/tank/phoron/Phoron = new/obj/item/tank/phoron(Rad)
 
-				Phoron.air_contents.gas[/datum/gas/phoron] = 29.1154	//This is a full tank if you filled it from a canister
+				Phoron.air_contents.gases[/datum/gas/phoron] = 29.1154	//This is a full tank if you filled it from a canister
 				Rad.P = Phoron
 
 				Phoron.loc = Rad
@@ -536,7 +536,7 @@
 				var/obj/machinery/atmospherics/binary/pump/Pump = M
 				if(Pump.name == "Engine Feed" && response == "Setup Completely")
 					found_the_pump = 1
-					Pump.air2.gas[/datum/gas/nitrogen] = 3750	//The contents of 2 canisters.
+					Pump.air2.gases[/datum/gas/nitrogen] = 3750	//The contents of 2 canisters.
 					Pump.air2.temperature = 50
 					Pump.air2.update_values()
 				Pump.update_use_power(USE_POWER_IDLE)
@@ -564,7 +564,7 @@
 	if(!found_the_pump && response == "Setup Completely")
 		to_chat(src, "<font color='red'>Unable to locate air supply to fill up with coolant, adding some coolant around the supermatter</font>")
 		var/turf/simulated/T = SM.loc
-		T.zone.air.gas[/datum/gas/nitrogen] += 450
+		T.zone.air.gases[/datum/gas/nitrogen] += 450
 		T.zone.air.temperature = 50
 		T.zone.air.update_values()
 

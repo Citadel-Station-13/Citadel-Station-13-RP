@@ -374,8 +374,8 @@
 	results += "Pressure: [round(pressure,0.1)] kPa"
 	if(G.total_moles)
 		results += "<br>Temperature: [round(G.temperature-T0C)]&deg;C"
-		for(var/mix in G.gas)
-			results += "<br>[GLOB.meta_gas_names[mix]]: [round((G.gas[mix] / G.total_moles) * 100)]%"
+		for(var/mix in G.gases)
+			results += "<br>[GLOB.meta_gas_names[mix]]: [round((G.gases[mix] / G.total_moles) * 100)]%"
 
 	return results
 

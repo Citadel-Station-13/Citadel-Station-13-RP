@@ -438,17 +438,17 @@
 		breath_type = species.breath_type
 	else
 		breath_type = /datum/gas/oxygen
-	inhaling = breath.gas[breath_type]
+	inhaling = breath.gases[breath_type]
 
 	if(species.poison_type)
 		poison_type = species.poison_type
 	else
 		poison_type = /datum/gas/phoron
-	poison = breath.gas[poison_type]
+	poison = breath.gases[poison_type]
 
 	if(species.exhale_type)
 		exhale_type = species.exhale_type
-		exhaling = breath.gas[exhale_type]
+		exhaling = breath.gases[exhale_type]
 	else
 		exhaling = 0
 
@@ -521,8 +521,8 @@
 		phoron_alert = 0
 
 	// If there's some other shit in the air lets deal with it here.
-	if(breath.gas[/datum/gas/nitrous_oxide])
-		var/SA_pp = (breath.gas[/datum/gas/nitrous_oxide] / breath.total_moles) * breath_pressure
+	if(breath.gases[/datum/gas/nitrous_oxide])
+		var/SA_pp = (breath.gases[/datum/gas/nitrous_oxide] / breath.total_moles) * breath_pressure
 
 		// Enough to make us paralysed for a bit
 		if(SA_pp > SA_para_min)
@@ -538,7 +538,7 @@
 		else if(SA_pp > 0.15)
 			if(prob(20))
 				spawn(0) emote(pick("giggle", "laugh"))
-		breath.adjust_gas(/datum/gas/nitrous_oxide, -breath.gas[/datum/gas/nitrous_oxide]/6, update = 0) //update after
+		breath.adjust_gas(/datum/gas/nitrous_oxide, -breath.gases[/datum/gas/nitrous_oxide]/6, update = 0) //update after
 
 	// Were we able to breathe?
 	if (failed_inhale || failed_exhale)
@@ -615,8 +615,8 @@
 	var/adjusted_pressure = calculate_affecting_pressure(pressure)
 
 	//Check for contaminants before anything else because we don't want to skip it.
-	for(var/g in environment.gas)
-		if(GLOB.meta_gas_flags[g] & GAS_FLAG_CONTAMINANT && environment.gas[g] > GLOB.meta_gas_visibility[g] + 1)
+	for(var/g in environment.gases)
+		if(GLOB.meta_gas_flags[g] & GAS_FLAG_CONTAMINANT && environment.gases[g] > GLOB.meta_gas_visibility[g] + 1)
 			pl_effects()
 			break
 

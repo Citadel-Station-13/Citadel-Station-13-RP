@@ -22,7 +22,7 @@
 	// Remove all gases from all pipenets
 	for(var/datum/pipe_network/PN in pipe_networks)
 		for(var/datum/gas_mixture/G in PN.gases)
-			G.gas = list()
+			G.gases = list()
 			G.update_values()
 
 	to_chat(usr, "\[2/5\] - All pipenets purged of gas.")

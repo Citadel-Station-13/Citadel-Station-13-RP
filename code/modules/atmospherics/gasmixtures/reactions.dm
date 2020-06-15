@@ -17,11 +17,11 @@
 		var/total_oxidizers = 0
 
 		//*** Get the fuel and oxidizer amounts
-		for(var/g in gas)
+		for(var/g in gases)
 			if(GLOB.meta_gas_flags[g] & GAS_FLAG_FUEL)
-				gas_fuel += gas[g]
+				gas_fuel += gases[g]
 			if(GLOB.meta_gas_flags[g] & GAS_FLAG_OXIDIZER)
-				total_oxidizers += gas[g]
+				total_oxidizers += gases[g]
 		gas_fuel *= group_multiplier
 		total_oxidizers *= group_multiplier
 
@@ -103,8 +103,8 @@
 
 datum/gas_mixture/proc/check_recombustability(list/fuel_objs)
 	. = 0
-	for(var/g in gas)
-		if(GLOB.meta_gas_flags[g] & GAS_FLAG_OXIDIZER && gas[g] >= 0.1)
+	for(var/g in gases)
+		if(GLOB.meta_gas_flags[g] & GAS_FLAG_OXIDIZER && gases[g] >= 0.1)
 			. = 1
 			break
 
@@ -115,16 +115,16 @@ datum/gas_mixture/proc/check_recombustability(list/fuel_objs)
 		return 1
 
 	. = 0
-	for(var/g in gas)
-		if(GLOB.meta_gas_flags[g] & GAS_FLAG_FUEL && gas[g] >= 0.1)
+	for(var/g in gases)
+		if(GLOB.meta_gas_flags[g] & GAS_FLAG_FUEL && gases[g] >= 0.1)
 			. = 1
 			break
 
 /datum/gas_mixture/proc/check_combustability(obj/effect/decal/cleanable/liquid_fuel/liquid=null)
 	. = 0
 	CACHE_VSC_PROP(atmos_vsc, /atmos/fire/consumption_rate, fire_consumption_rate)
-	for(var/g in gas)
-		if(GLOB.meta_gas_flags[g] & GAS_FLAG_OXIDIZER && QUANTIZE(gas[g] * fire_consumption_rate) >= 0.1)
+	for(var/g in gases)
+		if(GLOB.meta_gas_flags[g] & GAS_FLAG_OXIDIZER && QUANTIZE(gases[g] * fire_consumption_rate) >= 0.1)
 			. = 1
 			break
 
@@ -135,8 +135,8 @@ datum/gas_mixture/proc/check_recombustability(list/fuel_objs)
 		return 1
 
 	. = 0
-	for(var/g in gas)
-		if(GLOB.meta_gas_flags[g] & GAS_FLAG_FUEL && QUANTIZE(gas[g] * fire_consumption_rate) >= 0.005)
+	for(var/g in gases)
+		if(GLOB.meta_gas_flags[g] & GAS_FLAG_FUEL && QUANTIZE(gases[g] * fire_consumption_rate) >= 0.005)
 			. = 1
 			break
 

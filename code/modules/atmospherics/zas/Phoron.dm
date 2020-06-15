@@ -161,7 +161,7 @@ obj/var/contaminated = 0
 		var/datum/gas_mixture/env = return_air(1)
 		if(!env)
 			return
-		for(var/g in env.gas)
-			if(GLOB.meta_gas_flags[g] & GAS_FLAG_CONTAMINANT && env.gas[g] > GLOB.meta_gas_visibility[g] + 1)
+		for(var/g in env.gases)
+			if(GLOB.meta_gas_flags[g] & GAS_FLAG_CONTAMINANT && env.gases[g] > GLOB.meta_gas_visibility[g] + 1)
 				I.contaminate()
 				break

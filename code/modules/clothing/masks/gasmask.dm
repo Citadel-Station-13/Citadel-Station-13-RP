@@ -18,9 +18,9 @@
 	var/datum/gas_mixture/gas_filtered = new
 
 	for(var/g in filtered_gases)
-		if(air.gas[g])
-			gas_filtered.gas[g] = air.gas[g] * gas_filter_strength
-			air.gas[g] -= gas_filtered.gas[g]
+		if(air.gases[g])
+			gas_filtered.gases[g] = air.gases[g] * gas_filter_strength
+			air.gases[g] -= gas_filtered.gases[g]
 
 	air.update_values()
 	gas_filtered.update_values()

@@ -23,7 +23,7 @@ obj/machinery/airlock_sensor/phoron/process()
 	if(on)
 		var/datum/gas_mixture/air_sample = return_air()
 		var/pressure = round(air_sample.return_pressure(), 0.1)
-		var/phoron = (/datum/gas/phoron in air_sample.gas) ? round(air_sample.gas[/datum/gas/phoron], 0.1) : 0
+		var/phoron = (/datum/gas/phoron in air_sample.gases) ? round(air_sample.gases[/datum/gas/phoron], 0.1) : 0
 
 		if(abs(pressure - previousPressure) > 0.1 || previousPressure == null || abs(phoron - previousPhoron) > 0.1 || previousPhoron == null)
 			var/datum/signal/signal = new

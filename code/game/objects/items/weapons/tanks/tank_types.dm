@@ -21,7 +21,7 @@
 	air_contents.adjust_gas(/datum/gas/oxygen, (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
 
 /obj/item/tank/oxygen/examine(mob/user)
-	if(..(user, 0) && air_contents.gas[/datum/gas/oxygen] < 10)
+	if(..(user, 0) && air_contents.gases[/datum/gas/oxygen] < 10)
 		to_chat(user, text("<span class='warning'>The meter on \the [src] indicates you are almost out of oxygen!</span>"))
 		//playsound(usr, 'sound/effects/alert.ogg', 50, 1)
 
@@ -44,8 +44,8 @@
 /obj/item/tank/anesthetic/Initialize()
 	. = ..()
 
-	air_contents.gas[/datum/gas/oxygen] = (3*ONE_ATMOSPHERE)*70/(R_IDEAL_GAS_EQUATION*T20C) * O2STANDARD
-	air_contents.gas[/datum/gas/nitrous_oxide] = (3*ONE_ATMOSPHERE)*70/(R_IDEAL_GAS_EQUATION*T20C) * N2STANDARD
+	air_contents.gases[/datum/gas/oxygen] = (3*ONE_ATMOSPHERE)*70/(R_IDEAL_GAS_EQUATION*T20C) * O2STANDARD
+	air_contents.gases[/datum/gas/nitrous_oxide] = (3*ONE_ATMOSPHERE)*70/(R_IDEAL_GAS_EQUATION*T20C) * N2STANDARD
 	air_contents.update_values()
 
 /*
@@ -57,7 +57,7 @@
 	icon_state = "oxygen"
 
 /obj/item/tank/air/examine(mob/user)
-	if(..(user, 0) && air_contents.gas[/datum/gas/oxygen] < 1 && loc==user)
+	if(..(user, 0) && air_contents.gases[/datum/gas/oxygen] < 1 && loc==user)
 		to_chat(user, "<span class='danger'>The meter on the [src.name] indicates you are almost out of air!</span>")
 		user << sound('sound/effects/alert.ogg')
 
@@ -132,7 +132,7 @@
 	src.air_contents.adjust_gas(/datum/gas/oxygen, (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
 
 /obj/item/tank/emergency/oxygen/examine(mob/user)
-	if(..(user, 0) && air_contents.gas[/datum/gas/oxygen] < 0.2 && loc==user)
+	if(..(user, 0) && air_contents.gases[/datum/gas/oxygen] < 0.2 && loc==user)
 		to_chat(user, text("<span class='danger'>The meter on the [src.name] indicates you are almost out of air!</span>"))
 		user << sound('sound/effects/alert.ogg')
 
@@ -205,7 +205,7 @@
 	src.air_contents.adjust_gas(/datum/gas/nitrogen, (3*ONE_ATMOSPHERE)*70/(R_IDEAL_GAS_EQUATION*T20C))
 
 /obj/item/tank/nitrogen/examine(mob/user)
-	if(..(user, 0) && air_contents.gas[/datum/gas/nitrogen] < 10)
+	if(..(user, 0) && air_contents.gases[/datum/gas/nitrogen] < 10)
 		to_chat(user, text("<span class='danger'>The meter on \the [src] indicates you are almost out of nitrogen!</span>"))
 		//playsound(user, 'sound/effects/alert.ogg', 50, 1)
 
@@ -248,6 +248,6 @@
 	src.air_contents.adjust_gas(/datum/gas/carbon_dioxide, (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
 
 /obj/item/tank/emergency/carbon_dioxide/examine(mob/user)
-	if(..(user, 0) && air_contents.gas[/datum/gas/carbon_dioxide] < 0.2 && loc==user)
+	if(..(user, 0) && air_contents.gases[/datum/gas/carbon_dioxide] < 0.2 && loc==user)
 		to_chat(user, text("<span class='danger'>The meter on the [src.name] indicates you are almost out of air!</span>"))
 		user << sound('sound/effects/alert.ogg')
