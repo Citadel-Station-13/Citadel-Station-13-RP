@@ -1,24 +1,21 @@
-
 /*********************************
 For the main html chat area
 *********************************/
 
-/*
 //Precaching a bunch of shit
 GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of icons for the browser output
-*/
 
 //On client, created on login
 /datum/chatOutput
 	var/client/owner	 //client ref
 	var/total_checks = 0
 	var/last_check = 0
-	var/loaded       = TRUE // Has the client loaded the browser output area?
+	var/loaded       = FALSE // Has the client loaded the browser output area?
 	var/list/messageQueue //If they haven't loaded chat, this is where messages will go until they do
 	var/cookieSent   = FALSE // Has the client sent a cookie for analysis
 	var/broken       = FALSE
 	var/list/connectionHistory //Contains the connection history passed from chat cookie
-	var/adminMusicVolume = 75 //This is for the Play Global Sound verb
+	var/adminMusicVolume = 25 //This is for the Play Global Sound verb
 
 /datum/chatOutput/New(client/C)
 	owner = C
@@ -64,8 +61,8 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 	// Arguments are in the form "param[paramname]=thing"
 	var/list/params = list()
 	for(var/key in href_list)
-		if(length(key) > 7 && findtext(key, "param")) // 7 is the amount of characters in the basic param key template.
-			var/param_name = copytext(key, 7, -1)
+		if(length_char(key) > 7 && findtext(key, "param")) // 7 is the amount of characters in the basic param key template.
+			var/param_name = copytext_char(key, 7, -1)
 			var/item       = href_list[key]
 
 			params[param_name] = item
@@ -87,6 +84,14 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 		if("setMusicVolume")
 			data = setMusicVolume(arglist(params))
 
+		// if("colorPresetPost") //User just swapped color presets in their goonchat preferences. Do we do anything else?
+		// 	switch(href_list["preset"])
+		// 		if("light")
+		// 			owner.force_white_theme()
+		// 		if("dark" || "normal")
+		// 			owner.force_dark_theme()
+
+
 	if(data)
 		ehjax_send(data = data)
 
@@ -100,17 +105,16 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 	loaded = TRUE
 	showChat()
 
-	/*
+
 	for(var/message in messageQueue)
 		// whitespace has already been handled by the original to_chat
 		to_chat(owner, message, handle_whitespace=FALSE)
-	*/
 
 	messageQueue = null
 	sendClientData()
 
-	//do not convert to to_chat()
-	to_chat(owner, "<span class=\"userdanger\">Failed to load fancy chat, reverting to old chat. Certain features won't work.</span>")
+	//do not convert to to_chat().
+	SEND_TEXT(owner, "<span class=\"userdanger\">Failed to load fancy chat, reverting to old chat. Certain features won't work.</span>")
 
 /datum/chatOutput/proc/showChat()
 	winset(owner, "output", "is-visible=false")
@@ -122,7 +126,7 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 	C << output("[data]", "[window]:ehjaxCallback")
 
 /datum/chatOutput/proc/sendMusic(music, pitch)
-	if(!findtext(music, is_http_protocol))
+	if(!findtext(music, is_http_protocol)) //global this
 		return
 	var/list/music_data = list("adminMusic" = url_encode(url_encode(music)))
 	if(pitch)
@@ -134,7 +138,7 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 
 /datum/chatOutput/proc/setMusicVolume(volume = "")
 	if(volume)
-		adminMusicVolume = min(max(text2num(volume), 0), 100)
+		adminMusicVolume = clamp(text2num(volume), 0, 100)
 
 //Sends client connection details to the chat to handle and save
 /datum/chatOutput/proc/sendClientData()
@@ -180,7 +184,7 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 				var/list/row = src.connectionHistory[i]
 				if (!row || row.len < 3 || (!row["ckey"] || !row["compid"] || !row["ip"])) //Passed malformed history object
 					return
-				if (world.IsBanned(row["ckey"], row["compid"], row["ip"], real_bans_only=TRUE))
+				if (world.IsBanned(row["ckey"], row["ip"], row["compid"], real_bans_only=TRUE))
 					found = row
 					break
 				CHECK_TICK
@@ -189,7 +193,7 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 			if (found.len > 0)
 				//TODO: add a new evasion ban for the CURRENT client details, using the matched row details
 				message_admins("[key_name(src.owner)] has a cookie from a banned account! (Matched: [found["ckey"]], [found["ip"]], [found["compid"]])")
-				log_admin("[key_name(owner)] has a cookie from a banned account! (Matched: [found["ckey"]], [found["ip"]], [found["compid"]])")
+				log_admin_private("[key_name(owner)] has a cookie from a banned account! (Matched: [found["ckey"]], [found["ip"]], [found["compid"]])")
 
 	cookieSent = TRUE
 
@@ -202,8 +206,8 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 	log_world("\[[time2text(world.realtime, "YYYY-MM-DD hh:mm:ss")]\] Client: [(src.owner.key ? src.owner.key : src.owner)] triggered JS error: [error]")
 
 //Global chat procs
-/proc/to_chat(target, message, handle_whitespace=TRUE)
-	if(!target)
+/proc/to_chat_immediate(target, message, handle_whitespace=TRUE)
+	if(!target || !message)
 		return
 
 	//Ok so I did my best but I accept that some calls to this will be for shit like sound and images
@@ -229,9 +233,7 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 
 	if(islist(target))
 		// Do the double-encoding outside the loop to save nanoseconds
-#ifdef GOONCHAT_ENABLED
 		var/twiceEncoded = url_encode(url_encode(message))
-#endif
 		for(var/I in target)
 			var/client/C = CLIENT_FROM_VAR(I) //Grab us a client if possible
 
@@ -241,7 +243,6 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 			//Send it to the old style output window.
 			SEND_TEXT(C, original_message)
 
-#ifdef GOONCHAT_ENABLED
 			if(!C.chatOutput || C.chatOutput.broken) // A player who hasn't updated his skin file.
 				continue
 
@@ -251,7 +252,6 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 				continue
 
 			C << output(twiceEncoded, "browseroutput:output")
-#endif
 	else
 		var/client/C = CLIENT_FROM_VAR(target) //Grab us a client if possible
 
@@ -261,7 +261,6 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 		//Send it to the old style output window.
 		SEND_TEXT(C, original_message)
 
-#ifdef GOONCHAT_ENABLED
 		if(!C.chatOutput || C.chatOutput.broken) // A player who hasn't updated his skin file.
 			return
 
@@ -272,4 +271,15 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 
 		// url_encode it TWICE, this way any UTF-8 characters are able to be decoded by the Javascript.
 		C << output(url_encode(url_encode(message)), "browseroutput:output")
-#endif
+
+/proc/to_chat(target, message, handle_whitespace = TRUE)
+	if(Master.current_runlevel == RUNLEVEL_INIT || !SSchat?.subsystem_initialized) //who fucking named this subsystem_initialized instead of initialized?
+		to_chat_immediate(target, message, handle_whitespace)
+		return
+	SSchat.queue(target, message, handle_whitespace)
+
+// /datum/chatOutput/proc/swaptolightmode() //Dark mode light mode stuff. Yell at KMC if this breaks! (See darkmode.dm for documentation)
+// 	owner.force_white_theme()
+
+// /datum/chatOutput/proc/swaptodarkmode()
+// 	owner.force_dark_theme()

@@ -31,6 +31,9 @@
 	SEND_TEXT(world.log, text)
 #endif
 
+/proc/log_asset(text)
+	WRITE_LOG(GLOB.world_asset_log, "ASSET: [text]")
+
 /proc/log_topic(text)
 	WRITE_LOG(GLOB.world_game_log, "TOPIC: [text]")
 

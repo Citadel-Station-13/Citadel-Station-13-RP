@@ -6,7 +6,6 @@
 ******************************************/
 
 //DEBUG STUFF
-var triggerError = attachErrorHandler('chatDebug', true);
 var escaper = encodeURIComponent || escape;
 var decoder = decodeURIComponent || unescape;
 window.onerror = function(msg, url, line, col, error) {
@@ -30,11 +29,12 @@ var opts = {
 	'scrollSnapTolerance': 10, //If within x pixels of bottom
 	'clickTolerance': 10, //Keep focus if outside x pixels of mousedown position on mouseup
 	'imageRetryDelay': 50, //how long between attempts to reload images (in ms)
-	'imageRetryLimit': 50, //how many attempts should we make? 
+	'imageRetryLimit': 50, //how many attempts should we make?
 	'popups': 0, //Amount of popups opened ever
 	'wasd': false, //Is the user in wasd mode?
 	'priorChatHeight': 0, //Thing for height-resizing detection
 	'restarting': false, //Is the round restarting?
+	// 'colorPreset': 0, 	// index in the color presets list.
 
 	//Options menu
 	'selectedSubLoop': null, //Contains the interval loop for closing the selected sub menu
@@ -65,12 +65,20 @@ var opts = {
 	'volumeUpdateDelay': 5000, //Time from when the volume updates to data being sent to the server
 	'volumeUpdating': false, //True if volume update function set to fire
 	'updatedVolume': 0, //The volume level that is sent to the server
-	
+
 	'defaultMusicVolume': 25,
 
 	'messageCombining': true,
 
 };
+
+// Array of names for chat display color presets.
+// If not set to normal, a CSS file `browserOutput_${name}.css` will be added to the head.
+// var colorPresets = [
+// 	'normal',
+// 	'light',
+// 	'dark'
+// ]
 
 function clamp(val, min, max) {
 	return Math.max(min, Math.min(val, max))
@@ -94,6 +102,12 @@ if (typeof String.prototype.trim !== 'function') {
 		return this.replace(/^\s+|\s+$/g, '');
 	};
 }
+
+// function updateColorPreset() {
+// 	var el = $("#colorPresetLink")[0];
+// 	el.href = "browserOutput_"+colorPresets[opts.colorPreset]+".css";
+// 	runByond('?_src_=chat&proc=colorPresetPost&preset='+colorPresets[opts.colorPreset]);
+// }
 
 // Linkify the contents of a node, within its parent.
 function linkify(parent, insertBefore, text) {
@@ -158,7 +172,16 @@ function byondDecode(message) {
 	// The replace for + is because FOR SOME REASON, BYOND replaces spaces with a + instead of %20, and a plus with %2b.
 	// Marvelous.
 	message = message.replace(/\+/g, "%20");
-	message = decoder(message);
+	try {
+		// This is a workaround for the above not always working when BYOND's shitty url encoding breaks. (byond bug id:2399401)
+		if (decodeURIComponent) {
+			message = decodeURIComponent(message);
+		} else {
+			throw new Error("Easiest way to trigger the fallback")
+		}
+	} catch (err) {
+		message = unescape(message);
+	}
 	return message;
 }
 
@@ -205,7 +228,7 @@ function highlightTerms(el) {
 							console.log(newWord)
 					}
 					newText += newWord || words[w].replace("<", "&lt;");
-					newText += w >= words.length ? '' : ' ';
+					newText += w >= words.length - 1 ? '' : ' ';
 				}
 			} else { //Every other type of element
 				newText += outerHTML(el.childNodes[c]);
@@ -245,96 +268,41 @@ function output(message, flag) {
 
 	message = byondDecode(message).trim();
 
-	//The behemoth of filter-code (for Admin message filters)
-	//Note: This is proooobably hella inefficient
-	var filteredOut = false;
-	if (opts.hasOwnProperty('showMessagesFilters') && !opts.showMessagesFilters['All'].show) {
-		//Get this filter type (defined by class on message)
-		var messageHtml = $.parseHTML(message),
-			messageClasses;
-		if (opts.hasOwnProperty('filterHideAll') && opts.filterHideAll) {
-			var internal = false;
-			messageClasses = (!!$(messageHtml).attr('class') ? $(messageHtml).attr('class').split(/\s+/) : false);
-			if (messageClasses) {
-				for (var i = 0; i < messageClasses.length; i++) { //Every class
-					if (messageClasses[i] == 'internal') {
-						internal = true;
-						break;
-					}
-				}
-			}
-			if (!internal) {
-				filteredOut = 'All';
-			}
-		} else {
-			//If the element or it's child have any classes
-			if (!!$(messageHtml).attr('class') || !!$(messageHtml).children().attr('class')) {
-				messageClasses = $(messageHtml).attr('class').split(/\s+/);
-				if (!!$(messageHtml).children().attr('class')) {
-					messageClasses = messageClasses.concat($(messageHtml).children().attr('class').split(/\s+/));
-				}
-				var tempCount = 0;
-				for (var i = 0; i < messageClasses.length; i++) { //Every class
-					var thisClass = messageClasses[i];
-					$.each(opts.showMessagesFilters, function(key, val) { //Every filter
-						if (key !== 'All' && val.show === false && typeof val.match != 'undefined') {
-							for (var i = 0; i < val.match.length; i++) {
-								var matchClass = val.match[i];
-								if (matchClass == thisClass) {
-									filteredOut = key;
-									break;
-								}
-							}
-						}
-						if (filteredOut) return false;
-					});
-					if (filteredOut) break;
-					tempCount++;
-				}
-			} else {
-				if (!opts.showMessagesFilters['Misc'].show) {
-					filteredOut = 'Misc';
-				}
-			}
-		}
-	}
-
 	//Stuff we do along with appending a message
 	var atBottom = false;
-	if (!filteredOut) {
-		var bodyHeight = $('body').height();
-		var messagesHeight = $messages.outerHeight();
-		var scrollPos = $('body,html').scrollTop();
+	var bodyHeight = $('body').height();
+	var messagesHeight = $messages.outerHeight();
+	var scrollPos = $('body,html').scrollTop();
 
-		//Should we snap the output to the bottom?
-		if (bodyHeight + scrollPos >= messagesHeight - opts.scrollSnapTolerance) {
-			atBottom = true;
-			if ($('#newMessages').length) {
-				$('#newMessages').remove();
+	//Should we snap the output to the bottom?
+	if (bodyHeight + scrollPos >= messagesHeight - opts.scrollSnapTolerance) {
+		atBottom = true;
+		if ($('#newMessages').length) {
+			$('#newMessages').remove();
+		}
+	//If not, put the new messages box in
+	} else {
+		if ($('#newMessages').length) {
+			var messages = $('#newMessages .number').text();
+			messages = parseInt(messages);
+			messages++;
+			$('#newMessages .number').text(messages);
+			if (messages == 2) {
+				$('#newMessages .messageWord').append('s');
 			}
-		//If not, put the new messages box in
 		} else {
-			if ($('#newMessages').length) {
-				var messages = $('#newMessages .number').text();
-				messages = parseInt(messages);
-				messages++;
-				$('#newMessages .number').text(messages);
-				if (messages == 2) {
-					$('#newMessages .messageWord').append('s');
-				}
-			} else {
-				$messages.after('<a href="#" id="newMessages"><span class="number">1</span> new <span class="messageWord">message</span> <i class="icon-double-angle-down"></i></a>');
-			}
+			$messages.after('<a href="#" id="newMessages"><span class="number">1</span> new <span class="messageWord">message</span> <i class="icon-double-angle-down"></i></a>');
 		}
 	}
+
 
 	opts.messageCount++;
 
 	//Pop the top message off if history limit reached
-	if (opts.messageCount >= opts.messageLimit) {
-		$messages.children('div.entry:first-child').remove();
-		opts.messageCount--; //I guess the count should only ever equal the limit
-	}
+	//if (opts.messageCount >= opts.messageLimit) {
+		//$messages.children('div.entry:first-child').remove();
+		//opts.messageCount--; //I guess the count should only ever equal the limit
+	//}
 
 	// Create the element - if combining is off, we use it, and if it's on, we
 	// might discard it bug need to check its text content. Some messages vary
@@ -372,11 +340,6 @@ function output(message, flag) {
 		//Actually append the message
 		entry.className = 'entry';
 
-		if (filteredOut) {
-			entry.className += ' hidden';
-			entry.setAttribute('data-filter', filteredOut);
-		}
-
 		$last_message = trimmed_message;
 		$messages[0].appendChild(entry);
 		$(entry).find("img.icon").error(iconError);
@@ -401,7 +364,7 @@ function output(message, flag) {
 		}
 	}
 
-	if (!filteredOut && atBottom) {
+	if (atBottom) {
 		$('body,html').scrollTop($messages.outerHeight());
 	}
 }
@@ -421,7 +384,7 @@ function setCookie(cname, cvalue, exdays) {
 	var d = new Date();
 	d.setTime(d.getTime() + (exdays*24*60*60*1000));
 	var expires = 'expires='+d.toUTCString();
-	document.cookie = cname + '=' + cvalue + '; ' + expires;
+	document.cookie = cname + '=' + cvalue + '; ' + expires + "; path=/";
 }
 
 function getCookie(cname) {
@@ -522,15 +485,6 @@ function ehjaxCallback(data) {
 				handleClientData(data.clientData.ckey, data.clientData.ip, data.clientData.compid);
 			}
 			sendVolumeUpdate();
-		} else if (data.firebug) {
-			if (data.trigger) {
-				internalOutput('<span class="internal boldnshit">Loading firebug console, triggered by '+data.trigger+'...</span>', 'internal');
-			} else {
-				internalOutput('<span class="internal boldnshit">Loading firebug console...</span>', 'internal');
-			}
-			var firebugEl = document.createElement('script');
-			firebugEl.src = 'https://getfirebug.com/firebug-lite-debug.js';
-			document.body.appendChild(firebugEl);
 		} else if (data.adminMusic) {
 			if (typeof data.adminMusic === 'string') {
 				var adminMusic = byondDecode(data.adminMusic);
@@ -661,6 +615,7 @@ $(function() {
 		'shighlightColor': getCookie('highlightcolor'),
 		'smusicVolume': getCookie('musicVolume'),
 		'smessagecombining': getCookie('messagecombining'),
+		// 'scolorPreset': getCookie('colorpreset'),
 	};
 
 	if (savedConfig.sfontSize) {
@@ -696,6 +651,13 @@ $(function() {
 		opts.highlightColor = savedConfig.shighlightColor;
 		internalOutput('<span class="internal boldnshit">Loaded highlight color of: '+savedConfig.shighlightColor+'</span>', 'internal');
 	}
+
+	// if (savedConfig.scolorPreset) {
+	// 	opts.colorPreset = Number(savedConfig.scolorPreset);
+	// 	updateColorPreset();
+	// 	internalOutput('<span class="internal boldnshit">Loaded color preset of: '+colorPresets[opts.colorPreset]+'</span>', 'internal');
+	// }
+
 	if (savedConfig.smusicVolume) {
 		var newVolume = clamp(savedConfig.smusicVolume, 0, 100);
 		$('#adminMusic').prop('volume', newVolume / 100);
@@ -707,7 +669,7 @@ $(function() {
 	else{
 		$('#adminMusic').prop('volume', opts.defaultMusicVolume / 100);
 	}
-	
+
 	if (savedConfig.smessagecombining) {
 		if (savedConfig.smessagecombining == 'false') {
 			opts.messageCombining = false;
@@ -715,8 +677,6 @@ $(function() {
 			opts.messageCombining = true;
 		}
 	}
-
-
 	(function() {
 		var dataCookie = getCookie('connData');
 		if (dataCookie) {
@@ -883,7 +843,6 @@ $(function() {
 	$('#toggleOptions').click(function(e) {
 		handleToggleClick($subOptions, $(this));
 	});
-
 	$('#toggleAudio').click(function(e) {
 		handleToggleClick($subAudio, $(this));
 	});
@@ -1033,7 +992,14 @@ $(function() {
 		$messages.empty();
 		opts.messageCount = 0;
 	});
-	
+
+	// $('#changeColorPreset').click(function() {
+	// 	opts.colorPreset = (opts.colorPreset+1) % colorPresets.length;
+	// 	updateColorPreset();
+	// 	setCookie('colorpreset', opts.colorPreset, 365);
+	// 	internalOutput('<span class="internal boldnshit">Changed color preset to: '+colorPresets[opts.colorPreset]);
+	// });
+
 	$('#musicVolumeSpan').hover(function() {
 		$('#musicVolumeText').addClass('hidden');
 		$('#musicVolume').removeClass('hidden');
@@ -1060,9 +1026,9 @@ $(function() {
 	});
 
 	$('img.icon').error(iconError);
-	
-	
-		
+
+
+
 
 	/*****************************************
 	*
