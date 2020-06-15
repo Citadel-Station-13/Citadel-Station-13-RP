@@ -278,7 +278,6 @@
 /area/tether_away/alienship)
 "bP" = (
 /obj/structure/prop/alien/computer{
-	icon_state = "console-c";
 	dir = 4
 	},
 /turf/simulated/shuttle/floor/alien,
@@ -291,7 +290,6 @@
 /area/tether_away/alienship)
 "bR" = (
 /obj/structure/prop/alien/computer{
-	icon_state = "console-c";
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/alien,
@@ -385,21 +383,18 @@
 /area/tether_away/alienship)
 "cl" = (
 /obj/structure/prop/alien/computer/camera{
-	icon_state = "camera";
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/alien,
 /area/tether_away/alienship)
 "cm" = (
 /obj/structure/prop/alien/computer/camera{
-	icon_state = "camera";
 	dir = 4
 	},
 /turf/simulated/shuttle/floor/alien,
 /area/tether_away/alienship)
 "cn" = (
 /obj/structure/prop/alien/computer/camera{
-	icon_state = "camera";
 	dir = 8
 	},
 /turf/simulated/shuttle/floor/alien,
@@ -7316,12 +7311,12 @@ af
 af
 ae
 ac
-ae
-ae
-ae
-ae
-ae
-ae
+ab
+ab
+ab
+ab
+ab
+ab
 ab
 ac
 ae
@@ -7356,7 +7351,7 @@ af
 af
 ad
 ac
-ae
+ab
 aa
 aa
 aa
@@ -7498,7 +7493,7 @@ af
 af
 cF
 ac
-ae
+ab
 aa
 aa
 aa
@@ -7640,7 +7635,7 @@ af
 af
 cj
 ac
-ae
+ab
 aa
 aa
 aa
@@ -7782,7 +7777,7 @@ af
 af
 ad
 ac
-ae
+ab
 aa
 aa
 aa
@@ -7924,7 +7919,7 @@ af
 af
 aX
 ac
-ae
+ab
 aa
 aa
 aa
@@ -13564,12 +13559,12 @@ af
 af
 ae
 ac
-ae
-ae
-ae
-ae
-ae
-ae
+ab
+ab
+ab
+ab
+ab
+ab
 ab
 ac
 ae

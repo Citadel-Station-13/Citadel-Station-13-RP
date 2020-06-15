@@ -22072,7 +22072,7 @@
 /obj/machinery/camera/network/mining{
 	dir = 8
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/tether/surfacebase/outside/outside3)
 "MB" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -22096,7 +22096,7 @@
 "MK" = (
 /obj/structure/catwalk,
 /obj/machinery/camera/network/mining,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/tether/surfacebase/outside/outside3)
 "MO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -22560,7 +22560,7 @@
 "Pz" = (
 /obj/structure/catwalk,
 /obj/machinery/shield_diffuser,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/maintenance/bar/catwalk)
 "PA" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -22740,7 +22740,7 @@
 /obj/machinery/light/spot{
 	dir = 1
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/maintenance/bar/catwalk)
 "Qu" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -22958,7 +22958,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/maintenance/bar/catwalk)
 "Rz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -23539,7 +23539,7 @@
 /obj/machinery/light/spot{
 	dir = 8
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/maintenance/bar/catwalk)
 "VF" = (
 /obj/machinery/light{
@@ -23713,7 +23713,7 @@
 /area/tether/surfacebase/reading_room)
 "WR" = (
 /obj/structure/catwalk,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/maintenance/bar/catwalk)
 "WS" = (
 /obj/machinery/door/firedoor,
@@ -23734,7 +23734,7 @@
 "Xh" = (
 /obj/structure/catwalk,
 /obj/machinery/camera/network/northern_star,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/maintenance/bar/catwalk)
 "Xk" = (
 /obj/structure/railing,
@@ -30870,14 +30870,14 @@ ac
 ac
 ac
 ac
-KL
-MJ
+JW
+Ak
 Mw
-MJ
-MJ
-MJ
-MJ
-MJ
+Ak
+Ak
+Ak
+Ak
+Ak
 Pi
 ab
 ab
@@ -31019,7 +31019,7 @@ Dx
 Dx
 Dx
 Dx
-MJ
+Ak
 Pi
 ab
 ab
@@ -31161,7 +31161,7 @@ Hk
 Dx
 Dx
 Dx
-MJ
+Ak
 Pi
 ab
 ab
@@ -31303,7 +31303,7 @@ Hk
 Dx
 Dx
 Dx
-MJ
+Ak
 Pi
 ab
 ab
@@ -31445,7 +31445,7 @@ Il
 Dx
 Dx
 Dx
-MJ
+Ak
 Pi
 ab
 ab
@@ -31587,7 +31587,7 @@ Hk
 Dx
 Dx
 Dx
-MJ
+Ak
 Pi
 ab
 ab
@@ -31871,7 +31871,7 @@ Hk
 Dx
 Dx
 Dx
-MJ
+Ak
 Pi
 ab
 ab
@@ -32156,7 +32156,7 @@ Dx
 Dx
 Dx
 Ak
-dG
+Ak
 Bz
 ab
 ab

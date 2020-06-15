@@ -409,7 +409,7 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "aaU" = (
 /turf/simulated/wall,
@@ -422,7 +422,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "aaW" = (
 /obj/structure/cable/green{
@@ -31119,7 +31119,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "frE" = (
 /obj/effect/floor_decal/techfloor{
@@ -31147,7 +31147,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "fEQ" = (
 /obj/effect/floor_decal/borderfloor{
@@ -31567,7 +31567,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "kdT" = (
 /obj/structure/cable/cyan{
@@ -32137,6 +32137,16 @@
 "qIr" = (
 /turf/simulated/floor/reinforced/airmix,
 /area/engineering/atmos)
+"qJu" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/outside/outside1)
 "qMQ" = (
 /obj/effect/floor_decal/rust,
 /obj/random/junk,
@@ -33227,7 +33237,7 @@ aaa
 "}
 (3,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -33369,7 +33379,7 @@ aaa
 "}
 (4,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -33511,7 +33521,7 @@ aaa
 "}
 (5,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -33653,7 +33663,7 @@ aaa
 "}
 (6,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -33795,7 +33805,7 @@ aaa
 "}
 (7,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -33937,7 +33947,7 @@ aaa
 "}
 (8,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -34079,7 +34089,7 @@ aaa
 "}
 (9,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -34221,7 +34231,7 @@ aaa
 "}
 (10,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -34363,7 +34373,7 @@ aaa
 "}
 (11,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -34505,7 +34515,7 @@ aaa
 "}
 (12,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -34647,7 +34657,7 @@ aaa
 "}
 (13,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -34789,7 +34799,7 @@ aaa
 "}
 (14,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -34931,7 +34941,7 @@ aaa
 "}
 (15,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -35073,7 +35083,7 @@ aaa
 "}
 (16,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -35215,7 +35225,7 @@ aaa
 "}
 (17,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -35357,7 +35367,7 @@ aaa
 "}
 (18,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -35499,7 +35509,7 @@ aaa
 "}
 (19,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -35641,7 +35651,7 @@ aaa
 "}
 (20,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -35783,7 +35793,7 @@ aaa
 "}
 (21,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -35925,7 +35935,7 @@ aaa
 "}
 (22,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -36067,7 +36077,7 @@ aaa
 "}
 (23,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -36209,7 +36219,7 @@ aaa
 "}
 (24,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -36351,7 +36361,7 @@ aaa
 "}
 (25,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -36493,7 +36503,7 @@ aaa
 "}
 (26,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -36635,7 +36645,7 @@ aaa
 "}
 (27,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -36777,7 +36787,7 @@ aaa
 "}
 (28,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -36919,7 +36929,7 @@ aaa
 "}
 (29,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -37061,7 +37071,7 @@ aaa
 "}
 (30,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -37203,7 +37213,7 @@ aaa
 "}
 (31,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -37345,7 +37355,7 @@ aaa
 "}
 (32,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -37487,7 +37497,7 @@ aaa
 "}
 (33,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -37629,7 +37639,7 @@ aaa
 "}
 (34,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -37771,7 +37781,7 @@ aaa
 "}
 (35,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -37913,7 +37923,7 @@ aaa
 "}
 (36,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -38055,7 +38065,7 @@ aaa
 "}
 (37,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -38197,7 +38207,7 @@ aaa
 "}
 (38,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -38339,7 +38349,7 @@ aaa
 "}
 (39,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -38481,7 +38491,7 @@ aaa
 "}
 (40,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -38623,7 +38633,7 @@ aaa
 "}
 (41,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -38765,7 +38775,7 @@ aaa
 "}
 (42,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -38907,7 +38917,7 @@ aaa
 "}
 (43,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -39049,7 +39059,7 @@ aaa
 "}
 (44,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -39191,7 +39201,7 @@ aaa
 "}
 (45,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -39333,7 +39343,7 @@ aaa
 "}
 (46,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -39475,7 +39485,7 @@ aaa
 "}
 (47,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -39617,7 +39627,7 @@ aaa
 "}
 (48,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -39759,7 +39769,7 @@ aaa
 "}
 (49,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -39901,7 +39911,7 @@ aaa
 "}
 (50,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -40043,7 +40053,7 @@ aaa
 "}
 (51,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -40185,7 +40195,7 @@ aaa
 "}
 (52,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -40327,7 +40337,7 @@ aaa
 "}
 (53,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -40469,7 +40479,7 @@ aaa
 "}
 (54,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -40611,7 +40621,7 @@ aaa
 "}
 (55,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -40753,7 +40763,7 @@ aaa
 "}
 (56,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -40895,7 +40905,7 @@ aaa
 "}
 (57,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -41037,7 +41047,7 @@ aaa
 "}
 (58,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -41179,7 +41189,7 @@ aaa
 "}
 (59,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -41321,7 +41331,7 @@ aaa
 "}
 (60,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -41463,7 +41473,7 @@ aaa
 "}
 (61,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -41605,7 +41615,7 @@ aaa
 "}
 (62,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -41747,7 +41757,7 @@ aaa
 "}
 (63,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -41889,7 +41899,7 @@ aaa
 "}
 (64,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -42031,7 +42041,7 @@ aaa
 "}
 (65,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -42173,7 +42183,7 @@ clb
 "}
 (66,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -42315,7 +42325,7 @@ aaa
 "}
 (67,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -42457,7 +42467,7 @@ aaa
 "}
 (68,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -42599,7 +42609,7 @@ aaa
 "}
 (69,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
@@ -42741,7 +42751,7 @@ aaa
 "}
 (70,1,1) = {"
 aaa
-aEu
+qJu
 aad
 aad
 aad
