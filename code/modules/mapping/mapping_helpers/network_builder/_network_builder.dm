@@ -17,7 +17,7 @@
 		stack_trace("WARNING: [type] network building helper found check_duplicates() conflict [conflict] in its location.!")
 		return INITIALIZE_HINT_QDEL
 	if(!mapload)
-		if(GLOB.Debug2)
+		if(Debug2)
 			custom_spawned = TRUE
 			return INITIALIZE_HINT_NORMAL
 		else

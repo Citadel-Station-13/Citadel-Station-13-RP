@@ -5,6 +5,7 @@
 		for(var/A in neigbours)
 			neigbours[A] = src
 
+/*
 /datum/space_level/proc/set_neigbours(list/L)
 	for(var/datum/space_transition_point/P in L)
 		if(P.x == xi)
@@ -141,3 +142,4 @@
 
 				var/turf/place = locate(S.destination_x, S.destination_y, S.destination_z)
 				S.AddComponent(/datum/component/mirage_border, place, mirage_dir)
+*/

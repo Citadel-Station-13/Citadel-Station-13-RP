@@ -16,8 +16,6 @@
 	name = "Misc"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_SEALED
 
-	ztraits = list()
-
 /datum/map_template/tether_lateload/tether_ships
 	name = "Tether - Ships"
 	desc = "Ship transit map and whatnot."
