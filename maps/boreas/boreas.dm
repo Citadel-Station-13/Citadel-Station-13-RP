@@ -14,6 +14,7 @@
 	#include "boreas-u.dmm"
 	#include "boreas-1.dmm"
 	#include "boreas-2.dmm"
+	#include "boreas-misc.dmm"
 
 
 	#define USING_MAP_DATUM /datum/map/boreas
