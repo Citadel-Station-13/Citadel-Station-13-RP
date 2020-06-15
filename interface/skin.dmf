@@ -27,64 +27,6 @@ menu "menu"
 		category = "&File"
 		saved-params = "is-checked"
 	elem 
-		name = "&Icons"
-		command = ""
-		saved-params = "is-checked"
-	elem "stretch"
-		name = "&Stretch to fit"
-		command = ".winset \"mapwindow.map.icon-size=0\""
-		category = "&Icons"
-		is-checked = true
-		can-check = true
-		group = "size"
-		saved-params = "is-checked"
-	elem "icon128"
-		name = "&128x128"
-		command = ".winset \"mapwindow.map.icon-size=128\""
-		category = "&Icons"
-		can-check = true
-		group = "size"
-		saved-params = "is-checked"
-	elem "icon96"
-		name = "&96x96"
-		command = ".winset \"mapwindow.map.icon-size=96\""
-		category = "&Icons"
-		can-check = true
-		group = "size"
-		saved-params = "is-checked"
-	elem "icon64"
-		name = "&64x64"
-		command = ".winset \"mapwindow.map.icon-size=64\""
-		category = "&Icons"
-		can-check = true
-		group = "size"
-		saved-params = "is-checked"
-	elem "icon48"
-		name = "&48x48"
-		command = ".winset \"mapwindow.map.icon-size=48\""
-		category = "&Icons"
-		can-check = true
-		group = "size"
-		saved-params = "is-checked"
-	elem "icon32"
-		name = "&32x32"
-		command = ".winset \"mapwindow.map.icon-size=32\""
-		category = "&Icons"
-		can-check = true
-		group = "size"
-		saved-params = "is-checked"
-	elem 
-		name = ""
-		command = ""
-		category = "&Icons"
-		saved-params = "is-checked"
-	elem "textmode"
-		name = "&Text"
-		command = ".winset \"menu.textmode.is-checked=true?mapwindow.map.text-mode=true:mapwindow.map.text-mode=false\""
-		category = "&Icons"
-		can-check = true
-		saved-params = "is-checked"
-	elem 
 		name = "&Help"
 		command = ""
 		saved-params = "is-checked"
@@ -187,22 +129,18 @@ window "mainwindow"
 		size = 1024x768
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Citadel Station 13"
 		icon = 'icons\\ss13_64.png'
 		macro = "default"
 		menu = "menu"
-		outer-size = 1046x879
-		inner-size = 1024x793
 	elem "mainvsplit"
 		type = CHILD
 		pos = 3,0
 		size = 1018x746
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = none
 		saved-params = "splitter"
 		right = "rpane"
 		is-vert = true
@@ -222,7 +160,6 @@ window "mainwindow"
 		size = 30x20
 		anchor1 = 100,100
 		anchor2 = none
-		background-color = none
 		saved-params = "is-checked"
 		text = "Chat"
 		command = ".winset \"saybutton.is-checked=true?input.command=\"!say \\\"\" macrobutton.is-checked=false:input.command=\""
@@ -233,7 +170,6 @@ window "mainwindow"
 		size = 999x999
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		is-visible = false
 		saved-params = ""
 
@@ -299,87 +235,111 @@ window "outputwindow"
 window "rpane"
 	elem "rpane"
 		type = MAIN
-		pos = 372,0
-		size = 640x480
+		pos = 281,0
+		size = 704x655
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
+		statusbar = false
 		is-pane = true
+		outer-size = 704x655
+		inner-size = 688x616
 	elem "rpanewindow"
 		type = CHILD
 		pos = 0,-3
 		size = 640x499
 		anchor1 = 0,0
 		anchor2 = 100,100
+		background-color = none
 		saved-params = "splitter"
 		right = "outputwindow"
 		is-vert = false
-	elem "github"
+	elem "report-issue"
 		type = BUTTON
-		pos = 392,0
-		size = 60x16
+		pos = 396,8
+		size = 76x24
 		anchor1 = none
 		anchor2 = none
+		font-size = 8
+		background-color = none
+		saved-params = "is-checked"
+		text = "Report Issue"
+		command = "report-issue"
+		group = "rpanemode"
+	elem "github"
+		type = BUTTON
+		pos = 336,8
+		size = 60x24
+		anchor1 = none
+		anchor2 = none
+		background-color = none
 		saved-params = "is-checked"
 		text = "GitHub"
 		command = "github"
 		group = "rpanemode"
 	elem "mapb"
 		type = BUTTON
-		pos = 332,0
-		size = 60x16
+		pos = 496,8
+		size = 60x24
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "is-checked"
 		text = "Map"
 		command = "map"
 		group = "rpanemode"
 	elem "rulesb"
 		type = BUTTON
-		pos = 272,0
-		size = 60x16
+		pos = 156,8
+		size = 60x24
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "is-checked"
 		text = "Rules"
 		command = "rules"
 		group = "rpanemode"
 	elem "changelog"
 		type = BUTTON
-		pos = 488,0
-		size = 67x16
+		pos = 88,8
+		size = 67x24
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "is-checked"
 		text = "Changelog"
 		command = "Changelog"
 		group = "rpanemode"
 	elem "forumb"
 		type = BUTTON
-		pos = 212,0
-		size = 60x16
+		pos = 276,8
+		size = 60x24
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "is-checked"
 		text = "Forum"
 		command = "forum"
 		group = "rpanemode"
 	elem "wikib"
 		type = BUTTON
-		pos = 152,0
-		size = 60x16
+		pos = 216,8
+		size = 60x24
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "is-checked"
 		text = "Wiki"
 		command = "wiki"
 		group = "rpanemode"
 	elem "textb"
 		type = BUTTON
-		pos = 0,0
+		pos = 4,8
 		size = 60x16
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		is-visible = false
 		saved-params = "is-checked"
 		text = "Text"
@@ -389,10 +349,11 @@ window "rpane"
 		button-type = pushbox
 	elem "browseb"
 		type = BUTTON
-		pos = 560,0
-		size = 60x16
+		pos = 556,8
+		size = 60x24
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		is-visible = false
 		saved-params = "is-checked"
 		text = "Browser"
@@ -401,10 +362,11 @@ window "rpane"
 		button-type = pushbox
 	elem "infob"
 		type = BUTTON
-		pos = 64,0
+		pos = 4,24
 		size = 60x16
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		is-visible = false
 		saved-params = "is-checked"
 		text = "Info"
@@ -417,6 +379,7 @@ window "rpane"
 		size = 1x1
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = ""
 
 window "browserwindow"
@@ -445,11 +408,12 @@ window "infowindow"
 	elem "infowindow"
 		type = MAIN
 		pos = 281,0
-		size = 640x480
+		size = 656x538
 		anchor1 = none
 		anchor2 = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Info"
+		statusbar = false
 		is-pane = true
 	elem "info"
 		type = INFO

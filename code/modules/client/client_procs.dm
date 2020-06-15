@@ -1,49 +1,183 @@
+	////////////
+	//SECURITY//
+	////////////
+#define UPLOAD_LIMIT		1048576	//Restricts client uploads to the server to 1MB //Could probably do with being lower.
+
+GLOBAL_LIST_INIT(blacklisted_builds, list(
+	"1407" = "bug preventing client display overrides from working leads to clients being able to see things/mobs they shouldn't be able to see",
+	"1408" = "bug preventing client display overrides from working leads to clients being able to see things/mobs they shouldn't be able to see",
+	"1428" = "bug causing right-click menus to show too many verbs that's been fixed in version 1429",
+))
+
+#define LIMITER_SIZE	5
+#define CURRENT_SECOND	1
+#define SECOND_COUNT	2
+#define CURRENT_MINUTE	3
+#define MINUTE_COUNT	4
+#define ADMINSWARNED_AT	5
+/*
+	When somebody clicks a link in game, this Topic is called first.
+	It does the stuff in this proc and  then is redirected to the Topic() proc for the src=[0xWhatever]
+	(if specified in the link). ie locate(hsrc).Topic()
+
+	Such links can be spoofed.
+
+	Because of this certain things MUST be considered whenever adding a Topic() for something:
+		- Can it be fed harmful values which could cause runtimes?
+		- Is the Topic call an admin-only thing?
+		- If so, does it have checks to see if the person who called it (usr.client) is an admin?
+		- Are the processes being called by Topic() particularly laggy?
+		- If so, is there any protection against somebody spam-clicking a link?
+	If you have any  questions about this stuff feel free to ask. ~Carn
+*/
+
+/client/Topic(href, href_list, hsrc)
+	if(!usr || usr != mob)	//stops us calling Topic for somebody else's client. Also helps prevent usr=null
+		return
+
+	var/asset_cache_job
+	if(href_list["asset_cache_confirm_arrival"])
+		asset_cache_job = asset_cache_confirm_arrival(href_list["asset_cache_confirm_arrival"])
+		if (!asset_cache_job)
+			return
+
+	var/mtl = config_legacy.minute_topic_limit		//CONFIG_GET(number/minute_topic_limit)
+	if (!holder && mtl)
+		var/minute = round(world.time, 600)
+		if (!topiclimiter)
+			topiclimiter = new(LIMITER_SIZE)
+		if (minute != topiclimiter[CURRENT_MINUTE])
+			topiclimiter[CURRENT_MINUTE] = minute
+			topiclimiter[MINUTE_COUNT] = 0
+		topiclimiter[MINUTE_COUNT] += 1
+		if (topiclimiter[MINUTE_COUNT] > mtl)
+			var/msg = "Your previous action was ignored because you've done too many in a minute."
+			if (minute != topiclimiter[ADMINSWARNED_AT]) //only one admin message per-minute. (if they spam the admins can just boot/ban them)
+				topiclimiter[ADMINSWARNED_AT] = minute
+				msg += " Administrators have been informed."
+				log_game("[key_name(src)] Has hit the per-minute topic limit of [mtl] topic calls in a given game minute")
+				message_admins("[ADMIN_LOOKUPFLW(src)] [ADMIN_KICK(usr)] Has hit the per-minute topic limit of [mtl] topic calls in a given game minute")
+			to_chat(src, "<span class='danger'>[msg]</span>")
+			return
+
+	var/stl = config_legacy.second_topic_limit		//CONFIG_GET(number/second_topic_limit)
+	if (!holder && stl)
+		var/second = round(world.time, 10)
+		if (!topiclimiter)
+			topiclimiter = new(LIMITER_SIZE)
+		if (second != topiclimiter[CURRENT_SECOND])
+			topiclimiter[CURRENT_SECOND] = second
+			topiclimiter[SECOND_COUNT] = 0
+		topiclimiter[SECOND_COUNT] += 1
+		if (topiclimiter[SECOND_COUNT] > stl)
+			to_chat(src, "<span class='danger'>Your previous action was ignored because you've done too many in a second</span>")
+			return
+
+
+	//Logs all hrefs, except chat pings
+	if(!(href_list["_src_"] == "chat" && href_list["proc"] == "ping" && LAZYLEN(href_list) == 2))
+		log_href("[src] (usr:[usr]\[[COORD(usr)]\]) : [hsrc ? "[hsrc] " : ""][href]")
+
+	//byond bug ID:2256651
+	if (asset_cache_job && (asset_cache_job in completed_asset_jobs))
+		to_chat(src, "<span class='danger'>An error has been detected in how your client is receiving resources. Attempting to correct.... (If you keep seeing these messages you might want to close byond and reconnect)</span>")
+		src << browse("...", "window=asset_cache_browser")
+		return
+	if (href_list["asset_cache_preload_data"])
+		asset_cache_preload_data(href_list["asset_cache_preload_data"])
+		return
+
+	//Admin PM
+	if(href_list["priv_msg"])
+		var/client/C = locate(href_list["priv_msg"])
+		if(ismob(C)) 		//Old stuff can feed-in mobs instead of clients
+			var/mob/M = C
+			C = M.client
+		cmd_admin_pm(C,null)
+		return
+
+	if(href_list["irc_msg"])
+		if(!holder && received_irc_pm < world.time - 6000) //Worse they can do is spam IRC for 10 minutes
+			to_chat(usr, "<span class='warning'>You are no longer able to use this, it's been more then 10 minutes since an admin on IRC has responded to you</span>")
+			return
+		if(mute_irc)
+			to_chat(usr, "<span class='warning'You cannot use this as your client has been muted from sending messages to the admins on IRC</span>")
+			return
+		send2adminirc(href_list["irc_msg"])
+		return
+
+	switch(href_list["_src_"])
+		if("holder")
+			hsrc = holder
+		if("usr")
+			hsrc = mob
+		// if("mentor") // CITADEL
+		// 	hsrc = mentor_datum // CITADEL END
+		if("prefs")
+			// if (inprefs)
+				// return
+			// inprefs = TRUE
+			. = prefs.process_link(usr,href_list)
+			// inprefs = FALSE
+			return
+		if("vars")
+			return view_var_Topic(href,href_list,hsrc)
+		if("chat")
+			return chatOutput.Topic(href, href_list)
+
+	if (hsrc)
+		var/datum/real_src = hsrc
+		if(QDELETED(real_src))
+			return
+
+	..()	//redirect to hsrc.Topic()
+
 //This stops files larger than UPLOAD_LIMIT being sent from client to server via input(), client.Import() etc.
 /client/AllowUpload(filename, filelength)
 	if(filelength > UPLOAD_LIMIT)
 		to_chat(src, "<font color='red'>Error: AllowUpload(): File Upload too large. Upload Limit: [UPLOAD_LIMIT/1024]KiB.</font>")
-		return 0
-/*	//Don't need this at the moment. But it's here if it's needed later.
-	//Helps prevent multiple files being uploaded at once. Or right after eachother.
-	var/time_to_wait = fileaccess_timer - world.time
-	if(time_to_wait > 0)
-		to_chat(src, "<font color='red'>Error: AllowUpload(): Spam prevention. Please wait [round(time_to_wait/10)] seconds.</font>")
-		return 0
-	fileaccess_timer = world.time + FTPDELAY	*/
-	return 1
+		return FALSE
+	return TRUE
 
 
 	///////////
 	//CONNECT//
 	///////////
+#if (PRELOAD_RSC == 0)
+GLOBAL_LIST_EMPTY(external_rsc_urls)
+#endif
+
 /client/New(TopicData)
-	TopicData = null							//Prevent calls to client.Topic from connect
+	// world.SetConfig("APP/admin", ckey, "role=admin")			//CITADEL EDIT - Allows admins to reboot in OOM situations
+	var/tdata = TopicData //save this for later use
 	chatOutput = new /datum/chatOutput(src)
+	TopicData = null							//Prevent calls to client.Topic from connect
 
 	if(!(connection in list("seeker", "web")))					//Invalid connection type.
 		return null
 
-	if(!config_legacy.guests_allowed && IsGuestKey(key))
-		alert(src,"This server doesn't allow guest accounts to play. Please go to http://www.byond.com/ and register for a key.","Guest","OK")
-		del(src)
-		return
+	// if(!config_legacy.guests_allowed && IsGuestKey(key))
+	// 	alert(src,"This server doesn't allow guest accounts to play. Please go to https://secure.byond.com and register for a key.","Guest","OK")
+	// 	del(src)
+	// 	return
 
 	to_chat(src, "<font color='red'>If the title screen is black, resources are still downloading. Please be patient until the title screen appears.</font>")
-
 
 	GLOB.clients += src
 	GLOB.directory[ckey] = src
 
 	GLOB.ahelp_tickets.ClientLogin(src)
-
+	var/connecting_admin = FALSE //because de-admined admins connecting should be treated like admins.
 	//Admin Authorisation
-	var/connecting_admin = FALSE
 	holder = admin_datums[ckey]
 	if(holder)
-		admins += src
+		GLOB.admins |= src //HEY! Go use this soon!
+		admins |= src
 		holder.owner = src
 		connecting_admin = TRUE
-
+	// else if(GLOB.deadmins[ckey])
+	// 	verbs += /client/proc/readmin
+	// 	connecting_admin = TRUE
 	// Localhost connections get full admin rights and a special rank
 	else if(isnull(address) || (address in list("127.0.0.1", "::1")))
 		holder = new /datum/admins("!localhost!", ALL, ckey)
@@ -51,11 +185,43 @@
 
 	//preferences datum - also holds some persistant data for the client (because we may as well keep these datums to a minimum)
 	prefs = preferences_datums[ckey]
+
 	if(!prefs)
 		prefs = new /datum/preferences(src)
 		preferences_datums[ckey] = prefs
+
+	if(SSinput.subsystem_initialized)
+		set_macros()
+	update_movement_keys(prefs)
+
 	prefs.last_ip = address				//these are gonna be used for banning
 	prefs.last_id = computer_id			//these are gonna be used for banning
+
+	var/full_version = "[byond_version].[byond_build ? byond_build : "xxx"]"
+	log_access("Login: [key_name(src)] from [address ? address : "localhost"]-[computer_id] || BYOND v[full_version]")
+
+	var/alert_mob_dupe_login = FALSE
+	// if(CONFIG_GET(flag/log_access)) log the wizardry
+	for(var/I in GLOB.clients)
+		if(!I || I == src)
+			continue
+		var/client/C = I
+		if(C.key && (C.key != key) )
+			var/matches
+			if( (C.address == address) )
+				matches += "IP ([address])"
+			if( (C.computer_id == computer_id) )
+				if(matches)
+					matches += " and "
+				matches += "ID ([computer_id])"
+				alert_mob_dupe_login = TRUE
+			if(matches)
+				if(C)
+					message_admins("<font color='red'><B>Notice: </B><font color='blue'>[key_name_admin(src)] has the same [matches] as [key_name_admin(C)].</font>")
+					log_access("Notice: [key_name(src)] has the same [matches] as [key_name(C)].")
+				else
+					message_admins("<font color='red'><B>Notice: </B><font color='blue'>[key_name_admin(src)] has the same [matches] as [key_name_admin(C)] (no longer logged in). </font>")
+					log_access("Notice: [key_name(src)] has the same [matches] as [key_name(C)] (no longer logged in).")
 
 	. = ..()	//calls mob.Login()
 
@@ -77,6 +243,16 @@
 				qdel(src)
 				return
 
+	chatOutput.start() // Starts the chat
+
+	if(alert_mob_dupe_login)
+		spawn()
+			alert(mob, "You have logged in already with another key this round, please log out of this one NOW or risk being banned!")
+
+	connection_time = world.time
+	connection_realtime = world.realtime
+	connection_timeofday = world.timeofday
+	winset(src, null, "command=\".configure graphics-hwmode on\"") //RTX ON
 	prefs.sanitize_preferences()
 
 	if(custom_event_msg && custom_event_msg != "")
@@ -90,34 +266,13 @@
 		add_admin_verbs()
 		admin_memo_show()
 
-	if(SSinput.subsystem_initialized)
-		set_macros()
-		update_movement_keys()
-
-	chatOutput.start() // Starts the chat
-
-	connection_time = world.time
-	connection_realtime = world.realtime
-	connection_timeofday = world.timeofday
-	winset(src, null, "command=\".configure graphics-hwmode on\"")
-
 	log_client_to_db()
 
-	send_resources()
-	SSnanoui.send_resources(src)
 
 	if(!void)
 		void = new()
 		void.MakeGreed()
 	screen += void
-
-	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
-		to_chat(src, "<span class='info'>You have unread updates in the changelog.</span>")
-		winset(src, "rpane.changelog", "background-color=#eaeaea;font-style=bold")
-		if(config_legacy.aggressive_changelog)
-			src.changes()
-
-	hook_vr("client_new",list(src)) //VOREStation Code
 
 	if(config_legacy.paranoia_logging)
 		if(isnum(player_age) && player_age == -1)
@@ -125,23 +280,116 @@
 		if(isnum(account_age) && account_age <= 2)
 			log_and_message_admins("PARANOIA: [key_name(src)] has a very new BYOND account ([account_age] days).")
 
+	send_resources()
+
+	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
+		to_chat(src, "<span class='info'>You have unread updates in the changelog.</span>")
+		if(config_legacy.aggressive_changelog) //CONFIG_GET(flag/aggressive_changelog))
+			changelog()
+		else
+			winset(src, "rpane.changelog", "font-style=bold") //infowindow
+
+
+	hook_vr("client_new",list(src)) //VOREStation Code
+
+	var/list/topmenus = GLOB.menulist[/datum/verbs/menu]
+	for (var/thing in topmenus)
+		var/datum/verbs/menu/topmenu = thing
+		var/topmenuname = "[topmenu]"
+		if (topmenuname == "[topmenu.type]")
+			var/list/tree = splittext(topmenuname, "/")
+			topmenuname = tree[tree.len]
+		winset(src, "[topmenu.type]", "parent=menu;name=[url_encode(topmenuname)]")
+		var/list/entries = topmenu.Generate_list(src)
+		for (var/child in entries)
+			winset(src, "[child]", "[entries[child]]")
+			if (!ispath(child, /datum/verbs/menu))
+				var/procpath/verbpath = child
+				if (verbpath.name[1] != "@")
+					new child(src)
+
+	for (var/thing in prefs.menuoptions)
+		var/datum/verbs/menu/menuitem = GLOB.menulist[thing]
+		if (menuitem)
+			menuitem.Load_checked(src)
+
+	// Master.UpdateTickRate()
+
 	//////////////
 	//DISCONNECT//
 	//////////////
 /client/Del()
-	if(!gc_destroyed)
-		Destroy() //Clean up signals and timers.
-	return ..()
-
-/client/Destroy()
+	log_access("Logout: [key_name(src)]")
 	if(holder)
 		holder.owner = null
-		admins -= src
+		GLOB.admins -= src
+		admins -= src //old admin arry
+
 	GLOB.ahelp_tickets.ClientLogout(src)
 	GLOB.directory -= ckey
 	GLOB.clients -= src
-	..()
+	return ..()
+
+/client/Destroy()
 	return QDEL_HINT_HARDDEL_NOW
+
+#undef UPLOAD_LIMIT
+
+//checks if a client is afk
+//3000 frames = 5 minutes
+/client/proc/is_afk(duration = 3000) //CONFIG_GET(number/inactivity_period)
+	if(inactivity > duration)
+		return inactivity
+	return FALSE
+
+//send resources to the client. It's here in its own proc so we can move it around easiliy if need be
+/client/proc/send_resources()
+#if (PRELOAD_RSC == 0)
+	var/static/next_external_rsc = 0
+	if(GLOB.external_rsc_urls && GLOB.external_rsc_urls.len)
+		next_external_rsc = WRAP(next_external_rsc+1, 1, GLOB.external_rsc_urls.len+1)
+		preload_rsc = GLOB.external_rsc_urls[next_external_rsc]
+#endif
+	//get the common files. There is a reason on why this is not using the asset system
+	getFiles(
+		'html/search.js',
+		'html/panels.css',
+		'html/browser/common.css',
+		'html/browser/scannernew.css'
+		// 'html/browser/playeroptions.css',
+		)
+	spawn (10) //removing this spawn causes all clients to not get verbs.
+
+		//load info on what assets the client has
+		src << browse('code/modules/asset_cache/validate_assets.html', "window=asset_cache_browser")
+
+		//Precache the client with all other assets slowly, so as to not block other browse() calls
+		getFilesSlow(src, SSassets.preload, register_asset = FALSE)
+		addtimer(CALLBACK(GLOBAL_PROC, /proc/getFilesSlow, src, SSassets.preload, FALSE), 5 SECONDS)
+
+		#if (PRELOAD_RSC == 0)
+		// for (var/name in GLOB.vox_sounds)
+		// 	var/file = GLOB.vox_sounds[name]
+		// 	Export("##action=load_rsc", file)
+		// 	stoplag()
+		// for (var/name in GLOB.vox_sounds_male)
+		// 	var/file = GLOB.vox_sounds_male[name]
+		// 	Export("##action=load_rsc", file)
+		// 	stoplag()
+		#endif
+
+/client/vv_edit_var(var_name, var_value)
+	switch (var_name)
+		if ("holder")
+			return FALSE
+		if ("ckey")
+			return FALSE
+		if ("key")
+			return FALSE
+		if("view")
+			change_view(var_value)
+			return TRUE
+	. = ..()
 
 // here because it's similar to below
 
@@ -279,15 +527,8 @@
 	var/DBQuery/query_accesslog = dbcon.NewQuery("INSERT INTO `erro_connection_log`(`id`,`datetime`,`serverip`,`ckey`,`ip`,`computerid`) VALUES(null,Now(),'[serverip]','[sql_ckey]','[sql_ip]','[sql_computerid]');")
 	query_accesslog.Execute()
 
-#undef TOPIC_SPAM_DELAY
-#undef UPLOAD_LIMIT
-#undef MIN_CLIENT_VERSION
 
-//checks if a client is afk
-//3000 frames = 5 minutes
-/client/proc/is_afk(duration=3000)
-	if(inactivity > duration)	return inactivity
-	return 0
+
 
 // Byond seemingly calls stat, each tick.
 // Calling things each tick can get expensive real quick.
@@ -302,71 +543,6 @@
 
 /client/proc/last_activity_seconds()
 	return inactivity / 10
-
-//send resources to the client. It's here in its own proc so we can move it around easiliy if need be
-/client/proc/send_resources()
-
-	getFiles(
-		'html/search.js',
-		'html/panels.css',
-		'html/images/loading.gif',
-		'html/images/ntlogo.png',
-		'html/images/sglogo.png',
-		'html/images/talisman.png',
-		'html/images/paper_bg.png',
-		'html/images/no_image32.png',
-		'icons/pda_icons/pda_atmos.png',
-		'icons/pda_icons/pda_back.png',
-		'icons/pda_icons/pda_bell.png',
-		'icons/pda_icons/pda_blank.png',
-		'icons/pda_icons/pda_boom.png',
-		'icons/pda_icons/pda_bucket.png',
-		'icons/pda_icons/pda_crate.png',
-		'icons/pda_icons/pda_cuffs.png',
-		'icons/pda_icons/pda_eject.png',
-		'icons/pda_icons/pda_exit.png',
-		'icons/pda_icons/pda_flashlight.png',
-		'icons/pda_icons/pda_honk.png',
-		'icons/pda_icons/pda_mail.png',
-		'icons/pda_icons/pda_medical.png',
-		'icons/pda_icons/pda_menu.png',
-		'icons/pda_icons/pda_mule.png',
-		'icons/pda_icons/pda_notes.png',
-		'icons/pda_icons/pda_power.png',
-		'icons/pda_icons/pda_rdoor.png',
-		'icons/pda_icons/pda_reagent.png',
-		'icons/pda_icons/pda_refresh.png',
-		'icons/pda_icons/pda_scanner.png',
-		'icons/pda_icons/pda_signaler.png',
-		'icons/pda_icons/pda_status.png',
-		'icons/spideros_icons/sos_1.png',
-		'icons/spideros_icons/sos_2.png',
-		'icons/spideros_icons/sos_3.png',
-		'icons/spideros_icons/sos_4.png',
-		'icons/spideros_icons/sos_5.png',
-		'icons/spideros_icons/sos_6.png',
-		'icons/spideros_icons/sos_7.png',
-		'icons/spideros_icons/sos_8.png',
-		'icons/spideros_icons/sos_9.png',
-		'icons/spideros_icons/sos_10.png',
-		'icons/spideros_icons/sos_11.png',
-		'icons/spideros_icons/sos_12.png',
-		'icons/spideros_icons/sos_13.png',
-		'icons/spideros_icons/sos_14.png'
-		)
-
-/client/vv_edit_var(var_name, var_value)
-	switch (var_name)
-		if ("holder")
-			return FALSE
-		if ("ckey")
-			return FALSE
-		if ("key")
-			return FALSE
-		if("view")
-			change_view(var_value)
-			return TRUE
-	. = ..()
 
 /client/proc/change_view(new_size)
 	if (isnull(new_size))

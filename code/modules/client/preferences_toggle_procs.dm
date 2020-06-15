@@ -143,7 +143,14 @@
 
 	toggle_preference(pref_path)
 
-	to_chat(src,"You will [ (is_preference_enabled(pref_path)) ? "now" : "no longer"] hear MIDIs from admins.")
+	if(is_preference_enabled(pref_path))
+		to_chat(usr, "You will now hear any sounds uploaded by admins.")
+	else
+		to_chat(usr, "You will no longer hear sounds uploaded by admins")
+		usr.stop_sound_channel(CHANNEL_ADMIN)
+		var/client/C = usr.client
+		if(C && C.chatOutput && !C.chatOutput.broken && C.chatOutput.loaded)
+			C.chatOutput.stopMusic()
 
 	SScharacter_setup.queue_preferences_save(prefs)
 
@@ -158,7 +165,12 @@
 
 	toggle_preference(pref_path)
 
-	to_chat(src,"You will [ (is_preference_enabled(pref_path)) ? "now" : "no longer"] hear ambient noise.")
+	if(is_preference_enabled(pref_path))
+		to_chat(usr, "You will now hear ambient sounds.")
+	else
+		to_chat(usr, "You will no longer hear ambient sounds.")
+		usr.stop_sound_channel(CHANNEL_AMBIENCE) //weird that the server does not stop these
+		usr.stop_sound_channel(CHANNEL_BUZZ)
 
 	SScharacter_setup.queue_preferences_save(prefs)
 
@@ -224,20 +236,20 @@
 
 	feedback_add_details("admin_verb","TBeSpecial") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/verb/toggle_air_pump_hum() 
-	set name = "Toggle Air Pump Noise" 
-	set category = "Preferences" 
-	set desc = "Toggles Air Pumps humming" 
+/client/verb/toggle_air_pump_hum()
+	set name = "Toggle Air Pump Noise"
+	set category = "Preferences"
+	set desc = "Toggles Air Pumps humming"
 
-	var/pref_path = /datum/client_preference/air_pump_noise 
+	var/pref_path = /datum/client_preference/air_pump_noise
 
-	toggle_preference(pref_path) 
+	toggle_preference(pref_path)
 
-	to_chat(src, "You will [ (is_preference_enabled(pref_path)) ? "now" : "no longer"] hear air pumps hum, start, and stop.") 
+	to_chat(src, "You will [ (is_preference_enabled(pref_path)) ? "now" : "no longer"] hear air pumps hum, start, and stop.")
 
-	SScharacter_setup.queue_preferences_save(prefs) 
+	SScharacter_setup.queue_preferences_save(prefs)
 
-	feedback_add_details("admin_verb","TAirPumpNoise") 
+	feedback_add_details("admin_verb","TAirPumpNoise")
 
 /client/verb/toggle_safe_firing()
 	set name = "Toggle Gun Firing Intent Requirement"
