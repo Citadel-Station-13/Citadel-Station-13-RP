@@ -345,19 +345,23 @@
 	path = /obj/item/clothing/under/rank/head_of_security/navyblue
 	allowed_roles = list("Head of Security")
 
-/datum/gear/uniform/shortplaindress
-	display_name = "plain dress"
-	path = /obj/item/clothing/under/dress/white3
-
-/datum/gear/uniform/shortplaindress/New()
-	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+/datum/gear/uniform/whitedress
+	display_name = "white wedding dress"
+	path = /obj/item/clothing/under/dress/white
 
 /datum/gear/uniform/longdress
 	display_name = "long dress"
 	path = /obj/item/clothing/under/dress/white2
 
 /datum/gear/uniform/longdress/New()
+	..()
+	gear_tweaks = list(gear_tweak_free_color_choice)
+
+/datum/gear/uniform/shortplaindress
+	display_name = "plain dress"
+	path = /obj/item/clothing/under/dress/white3
+
+/datum/gear/uniform/shortplaindress/New()
 	..()
 	gear_tweaks = list(gear_tweak_free_color_choice)
 
@@ -372,10 +376,28 @@
 /datum/gear/uniform/reddress
 	display_name = "red dress with belt"
 	path = /obj/item/clothing/under/dress/darkred
-
+/*
 /datum/gear/uniform/whitewedding
 	display_name= "white wedding dress"
 	path = /obj/item/clothing/under/wedding/bride_white
+*/
+
+/datum/gear/uniform/wedding
+	display_name = "Wedding Dress selection"
+	path = /obj/item/clothing/under/wedding
+
+/datum/gear/uniform/wedding/New()
+	..()
+	var/list/weddings = list()
+	for(var/wedding in typesof(/obj/item/clothing/under/wedding))
+		var/obj/item/clothing/under/wedding/wedding_type = wedding
+		weddings[initial(wedding_type.name)] = wedding_type
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(weddings, /proc/cmp_text_asc, TRUE))
+
+
+/datum/gear/uniform/suit/reallyblack
+	display_name = "executive suit"
+	path = /obj/item/clothing/under/suit_jacket/really_black
 
 /datum/gear/uniform/skirts
 	display_name = "executive skirt"
@@ -712,7 +734,7 @@ datum/gear/uniform/fiendsuit
 datum/gear/uniform/fienddress
 	display_name = "Fiendish Dress"
 	path = /obj/item/clothing/under/fienddress
-	
+
 datum/gear/uniform/leotard
 	display_name = "Black leotard"
 	path = /obj/item/clothing/under/leotard

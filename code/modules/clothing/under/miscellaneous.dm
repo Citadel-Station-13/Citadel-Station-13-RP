@@ -321,9 +321,8 @@
 	desc = "A gold-lined white robe. It gives off uncomfortable cult vibes, but fancy."
 	icon_state = "whitegoldrobe"
 
-/*
- * dress
- */
+//Dresses --------------------------------------------
+
 /obj/item/clothing/under/dress
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 
@@ -458,9 +457,8 @@
 	desc = "A simple black dress adorned in fake purple lilacs."
 	icon_state = "lilacdress"
 
-/*
- * wedding stuff
- */
+//Wedding Dresses --------------------------------------------
+
 /obj/item/clothing/under/wedding
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS
 
@@ -712,9 +710,10 @@
 	desc = "A short, red dress with a black belt. Fancy."
 	icon_state = "darkreddress"
 
-/*
- * swimsuit
- */
+
+//Swimsuit --------------------------------------------
+
+
 /obj/item/clothing/under/swimsuit/
 	siemens_coefficient = 1
 	body_parts_covered = 0
@@ -774,9 +773,10 @@
 	desc = "No honest man would wear this abomination."
 	icon_state = "mankini"
 
-/*
- * pyjamas
- */
+
+//Pyjamas --------------------------------------------
+
+
 /obj/item/clothing/under/bluepyjamas
 	name = "blue pyjamas"
 	desc = "Slightly old-fashioned sleepwear."
@@ -791,9 +791,7 @@
 	item_state_slots = list(slot_r_hand_str = "red", slot_l_hand_str = "red")
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 
-/*
- *Misc Uniforms
- */
+//Misc Uniforms --------------------------------------------
 
 /obj/item/clothing/under/aether
 	name = "\improper Aether jumpsuit"
