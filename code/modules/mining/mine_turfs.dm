@@ -16,12 +16,10 @@ var/list/mining_overlay_cache = list()
 	var/sand_icon_state = "asteroid"
 	var/rock_icon_state = "rock"
 	var/random_icon = 0
-	oxygen = 0
-	nitrogen = 0
+	initial_gas_mix = GAS_STRING_VACCUM
 	opacity = 1
 	density = 1
 	blocks_air = 1
-	temperature = T0C
 
 	can_dirty = FALSE
 

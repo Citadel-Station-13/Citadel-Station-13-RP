@@ -33,19 +33,15 @@
 
 	to_chat(usr, "\[3/5\] - All ZAS Zones removed.")
 
-	var/list/unsorted_overlays = list()
-	for(var/id in gas_data.tile_overlay)
-		unsorted_overlays |= gas_data.tile_overlay[id]
-
-
 	for(var/turf/simulated/T in world)
 		T.air = null
-		T.overlays.Remove(unsorted_overlays)
-		T.zone = null
+		if(T.zone)
+			T.vis_contents -= T.zone.turf_graphics
+			T.zone = null
 
 	to_chat(usr, "\[4/5\] - All turfs reset to roundstart values.")
 
 	SSair.RebootZAS()
 
 	to_chat(usr, "\[5/5\] - ZAS Rebooted")
-	world << "<span class = 'danger'>Atmosphere restart completed in <b>[(world.timeofday - current_time)/10]</b> seconds.</span>"
+	to_chat(world, "<span class = 'danger'>Atmosphere restart completed in <b>[(world.timeofday - current_time)/10]</b> seconds.</span>")
