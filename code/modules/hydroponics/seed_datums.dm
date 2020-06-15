@@ -1055,8 +1055,8 @@
 	name = "spineapple"
 	seed_name = "spineapple"
 	display_name = "spineapple"
-	kitchen_tag = "pineapple"
-	chems = list("nutriment" = list(1,5), "enzyme" = list(1,5), "pineapplejuice" = list(1, 20))
+	kitchen_tag = "spineapple"
+	chems = list("nutriment" = list(3,5), "enzyme" = list(3,5), "pineapplejuice" = list(15, 20))
 
 /datum/seed/spineapple/New()
 	..()

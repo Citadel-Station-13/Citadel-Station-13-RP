@@ -61,9 +61,9 @@
 
 	catalogue_data = list(/datum/category_item/catalogue/fauna/xenochimera)
 
-	breath_type = "oxygen"
-	poison_type = "phoron"
-	exhale_type = "carbon_dioxide"
+	breath_type = /datum/gas/oxygen
+	poison_type = /datum/gas/phoron
+	exhale_type = /datum/gas/carbon_dioxide
 
 	hazard_high_pressure = HAZARD_HIGH_PRESSURE
 	warning_high_pressure = WARNING_HIGH_PRESSURE
@@ -356,31 +356,38 @@
 
 //Verbs Follow
 
-/mob/living/carbon/human/proc/resp_biomorph(var/mob/living/carbon/human/H)
+/mob/living/carbon/human/proc/resp_biomorph(var/mob/living/carbon/human/H, var/mob/living/carbon/human/C)
 	set name = "Respiratory Biomorph"
 	set desc = "Changes the gases we need to breathe."
 	set category = "Abilities"
 
-	var/resp_biomorph = input(H, "How should we adapt our respiration?") as null|anything in list("oxgygen", "phoron", "nitrogen", "carbon_dioxide")
+	var/list/gas_choices = list(
+		"oxygen" = /datum/gas/oxygen,
+		"phoron" = /datum/gas/phoron,
+		"nitrogen" = /datum/gas/nitrogen,
+		"carbon dioxide" = /datum/gas/carbon_dioxide
+	)
+	var/choice = input(H, "How should we adapt our respiration?") as null|anything in gas_choices
+	var/resp_biomorph = gas_choices[choice]
 	to_chat(H,"You begin modifying your internal structure!")
 	if(do_after(H,15 SECONDS))
 		switch(resp_biomorph)
-			if("oxygen")
-				species.breath_type = "oxygen"
-				species.poison_type = "phoron"
-				species.exhale_type = "carbon_dioxide"
-			if("phoron")
-				species.breath_type = "phoron"
-				species.poison_type = "oxygen"
-				species.exhale_type = "nitrogen"
-			if("nitrogen")
-				species.breath_type = "nitrogen"
-				species.poison_type = "carbon_dioxide"
-			if("carbon_dioxide")
-				species.breath_type = "carbon_dioxide"
-				species.exhale_type = "oxygen"
+			if(/datum/gas/oxygen)
+				species.breath_type = /datum/gas/oxygen
+				species.poison_type = /datum/gas/phoron
+				species.exhale_type = /datum/gas/carbon_dioxide
+			if(/datum/gas/phoron)
+				species.breath_type = /datum/gas/phoron
+				species.poison_type = /datum/gas/oxygen
+				species.exhale_type = /datum/gas/nitrogen
+			if(/datum/gas/nitrogen)
+				species.breath_type = /datum/gas/nitrogen
+				species.poison_type = /datum/gas/carbon_dioxide
+			if(/datum/gas/carbon_dioxide)
+				species.breath_type = /datum/gas/carbon_dioxide
+				species.exhale_type = /datum/gas/oxygen
 
-/mob/living/carbon/human/proc/biothermic_adapt(var/mob/living/carbon/human/H)
+/mob/living/carbon/human/proc/biothermic_adapt(var/mob/living/carbon/human/H, var/mob/living/carbon/human/C)
 	set name = "Biothermic Adaptation"
 	set desc = "Changes our core body temperature."
 	set category = "Abilities"

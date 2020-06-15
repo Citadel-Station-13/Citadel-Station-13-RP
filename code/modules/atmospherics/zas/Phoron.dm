@@ -66,7 +66,7 @@ obj/var/contaminated = 0
 		return
 
 	//Burn skin if exposed.
-	if(skin_burns && (species.breath_type != "phoron"))
+	if(skin_burns && (species.breath_type != /datum/gas/phoron))
 		if(!pl_head_protected() || !pl_suit_protected())
 			burn_skin(0.75)
 			if(prob(20))
@@ -74,7 +74,7 @@ obj/var/contaminated = 0
 			updatehealth()
 
 	//Burn eyes if exposed.
-	if(eye_burns && species.breath_type && (species.breath_type != "phoron"))		//VOREStation Edit: those who don't breathe
+	if(eye_burns && species.breath_type && (species.breath_type != /datum/gas/phoron))		//VOREStation Edit: those who don't breathe
 		var/burn_eyes = 1
 
 		//Check for protective glasses
@@ -98,7 +98,7 @@ obj/var/contaminated = 0
 			burn_eyes()
 
 	//Genetic Corruption
-	if(genetic_corruption && (species.breath_type != "phoron"))
+	if(genetic_corruption && (species.breath_type != /datum/gas/phoron))
 		if(rand(1,10000) < genetic_corruption)
 			randmutb(src)
 			to_chat(src, "<span class='danger'>High levels of toxins cause you to spontaneously mutate!</span>")
@@ -162,6 +162,6 @@ obj/var/contaminated = 0
 		if(!env)
 			return
 		for(var/g in env.gas)
-			if(gas_data.flags[g] & XGM_GAS_CONTAMINANT && env.gas[g] > gas_data.overlay_limit[g] + 1)
+			if(GLOB.meta_gas_flags[g] & GAS_FLAG_CONTAMINANT && env.gas[g] > GLOB.meta_gas_visibility[g] + 1)
 				I.contaminate()
 				break

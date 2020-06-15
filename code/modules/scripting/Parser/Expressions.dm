@@ -181,9 +181,8 @@
 	- <ParseParamExpression()>
 */
 		ParseExpression(list/end=list(/token/end), list/ErrChars=list("{", "}"))
-			var/stack
-				opr=new
-				val=new
+			var/stack/opr = new
+			var/stack/val = new
 			src.expecting=VALUE
 			for()
 				if(EndOfExpression(end))
@@ -278,7 +277,7 @@
 			NextToken() //skip open parenthesis, already found
 			var/loops = 0
 
-			for()
+			while(TRUE)
 				loops++
 				if(loops>=1000)
 					CRASH("Something TERRIBLE has gone wrong in ParseFunctionExpression ;__;")

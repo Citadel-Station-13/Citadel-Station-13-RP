@@ -177,13 +177,13 @@
 
 
 /obj/item/radio/headset/heads/captain
-	name = "colony director's headset"
+	name = "Facility Director's headset"
 	desc = "The headset of the boss."
 	icon_state = "com_headset"
 	ks2type = /obj/item/encryptionkey/heads/captain
 
 /obj/item/radio/headset/heads/captain/alt
-	name = "colony director's bowman headset"
+	name = "Facility Director's bowman headset"
 	desc = "The headset of the boss."
 	icon_state = "com_headset_alt"
 	ks2type = /obj/item/encryptionkey/heads/captain
@@ -259,13 +259,13 @@
 
 /obj/item/radio/headset/heads/hop
 	name = "head of personnel's headset"
-	desc = "The headset of the guy who will one day be Colony Director."
+	desc = "The headset of the guy who will one day be Facility Director."
 	icon_state = "com_headset"
 	ks2type = /obj/item/encryptionkey/heads/hop
 
 /obj/item/radio/headset/heads/hop/alt
 	name = "head of personnel's bowman headset"
-	desc = "The headset of the guy who will one day be Colony Director."
+	desc = "The headset of the guy who will one day be Facility Director."
 	icon_state = "com_headset_alt"
 	ks2type = /obj/item/encryptionkey/heads/hop
 

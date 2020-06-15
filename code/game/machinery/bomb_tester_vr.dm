@@ -201,7 +201,7 @@
 
 	if(href_list["set_can_pressure"])
 		var/change = text2num(href_list["set_can_pressure"])
-		sim_canister_output = CLAMP(sim_canister_output+change, ONE_ATMOSPHERE/10, ONE_ATMOSPHERE*10)
+		sim_canister_output = clamp(sim_canister_output+change, ONE_ATMOSPHERE/10, ONE_ATMOSPHERE*10)
 
 	if(href_list["start_sim"])
 		start_simulating()
@@ -375,7 +375,7 @@
 	if(G.total_moles)
 		results += "<br>Temperature: [round(G.temperature-T0C)]&deg;C"
 		for(var/mix in G.gas)
-			results += "<br>[gas_data.name[mix]]: [round((G.gas[mix] / G.total_moles) * 100)]%"
+			results += "<br>[GLOB.meta_gas_names[mix]]: [round((G.gas[mix] / G.total_moles) * 100)]%"
 
 	return results
 

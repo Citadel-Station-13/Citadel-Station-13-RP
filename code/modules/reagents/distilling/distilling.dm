@@ -169,7 +169,7 @@
 
 		if("adjust temp")
 			target_temp = input("Choose a target temperature.", "Temperature.", T20C) as num
-			target_temp = CLAMP(target_temp, min_temp, max_temp)
+			target_temp = clamp(target_temp, min_temp, max_temp)
 
 	update_icon()
 
@@ -263,7 +263,7 @@
 					shift_mod = 1
 				else if(current_temp > target_temp)
 					shift_mod = -1
-				current_temp = CLAMP(round((current_temp + 1 * shift_mod) + (rand(-5, 5) / 10)), min_temp, max_temp)
+				current_temp = clamp(round((current_temp + 1 * shift_mod) + (rand(-5, 5) / 10)), min_temp, max_temp)
 				use_power(power_rating * CELLRATE)
 		else if(connected_port && avg_pressure > 1000)
 			current_temp = round((current_temp + avg_temp) / 2)

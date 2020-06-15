@@ -77,7 +77,7 @@
 	if(!environment) return
 	var/enviroment_bad = 0 //In case they're ever set on fire while wearing a spacesuit, we don't want the message that they're reacting with the atmosphere.
 
-	if(environment.gas["oxygen"] > 0.5)
+	if(environment.gas[/datum/gas/oxygen] > 0.5)
 		if(H.wear_suit && istype(H.wear_suit,/obj/item/clothing/suit/space) && H.head && istype(H.head,/obj/item/clothing/head/helmet/space)) // now any airtight spessuit works for them. which means exploration voidsuits work :O
 			return
 		H.adjust_fire_stacks(2)
@@ -105,7 +105,7 @@
 		if("Head of Security")
 			suit=/obj/item/clothing/suit/space/plasman/sec/hos
 			helm=/obj/item/clothing/head/helmet/space/plasman/sec/hos
-		if("Colony Director")
+		if("Facility Director")
 			suit=/obj/item/clothing/suit/space/plasman/sec/captain
 			helm=/obj/item/clothing/head/helmet/space/plasman/sec/captain
 		if("Head of Personnel")

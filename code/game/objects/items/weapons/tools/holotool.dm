@@ -47,10 +47,12 @@
 	var/static/radial_sword = image(icon = 'icons/obj/weapons.dmi', icon_state = "blade")
 
 /obj/item/switchtool/resolve_attackby(atom/A, mob/user, params, attack_modifier = 1)
-	if(istype(A, /obj/item/storage))//we place automatically
-		return ..()
 	if(deployed)
 		deployed.resolve_attackby(A, user, params, attack_modifier = 1)
+		if(deployed.loc != src)
+			deployed.forceMove(src)
+			undeploy()
+			return ..()
 		return
 	..()
 

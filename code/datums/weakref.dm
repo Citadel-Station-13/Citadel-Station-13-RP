@@ -17,6 +17,7 @@
 	reference = REF(thing)
 
 /datum/weakref/Destroy()
+	. = ..()
 	return QDEL_HINT_LETMELIVE	//Let BYOND autoGC thiswhen nothing is using it anymore.
 
 /datum/weakref/proc/resolve()
