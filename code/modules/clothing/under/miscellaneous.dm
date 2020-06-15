@@ -169,13 +169,13 @@
 	icon_state = "gentlesuit_skirt"
 
 /obj/item/clothing/under/gimmick/rank/captain/suit
-	name = "Facility Director's suit"
+	name = "colony director's suit"
 	desc = "A green suit and yellow necktie. Exemplifies authority."
 	icon_state = "green_suit"
 	item_state_slots = list(slot_r_hand_str = "centcom", slot_l_hand_str = "centcom")
 
 /obj/item/clothing/under/gimmick/rank/captain/suit/skirt
-	name = "Facility Director's skirt suit"
+	name = "colony director's skirt suit"
 	icon_state = "green_suit_skirt"
 
 /obj/item/clothing/under/gimmick/rank/head_of_personnel/suit
@@ -400,8 +400,8 @@
 	item_state_slots = list(slot_r_hand_str = "dress_white", slot_l_hand_str = "dress_white")
 
 /obj/item/clothing/under/dress/dress_cap
-	name = "Facility Director's dress uniform"
-	desc = "Feminine fashion for the style conscious Facility Director."
+	name = "colony director's dress uniform"
+	desc = "Feminine fashion for the style conscious Colony Director."
 	icon_state = "dress_cap"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 
@@ -508,8 +508,8 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 
 /obj/item/clothing/under/captainformal
-	name = "Facility Director's formal uniform"
-	desc = "A Facility Director's formal-wear, for special occasions."
+	name = "colony director's formal uniform"
+	desc = "A Colony Director's formal-wear, for special occasions."
 	icon_state = "captain_formal"
 	item_state_slots = list(slot_r_hand_str = "lawyer_blue", slot_l_hand_str = "lawyer_blue")
 
