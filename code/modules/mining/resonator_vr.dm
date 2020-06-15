@@ -90,7 +90,7 @@
 	if(environment.temperature < 250)
 		name = "strong resonance field"
 		resonance_damage = 50
-	
+
 	for(var/mob/living/L in src.loc)
 		if(creator)
 			add_attack_logs(creator, L, "used a resonator field on")

@@ -205,26 +205,31 @@ Class Procs:
 
 	if(istype(B))
 		for(var/connection_edge/zone/edge in A.edges)
-			if(edge.contains_zone(B)) return edge
+			if(edge.contains_zone(B))
+				return edge
 		var/connection_edge/edge = new/connection_edge/zone(A,B)
 		edges.Add(edge)
 		edge.recheck()
 		return edge
 	else
 		for(var/connection_edge/unsimulated/edge in A.edges)
-			if(has_same_air(edge.B,B)) return edge
+			if(has_same_air(edge.B,B))
+				return edge
 		var/connection_edge/edge = new/connection_edge/unsimulated(A,B)
 		edges.Add(edge)
 		edge.recheck()
 		return edge
 
 /datum/controller/subsystem/air/proc/has_same_air(turf/A, turf/B)
+	return A.initial_gas_mix == B.initial_gas_mix		// bad idea but fuck it.
+/*
 	if(A.oxygen != B.oxygen) return 0
 	if(A.nitrogen != B.nitrogen) return 0
 	if(A.phoron != B.phoron) return 0
 	if(A.carbon_dioxide != B.carbon_dioxide) return 0
 	if(A.temperature != B.temperature) return 0
 	return 1
+*/
 
 /datum/controller/subsystem/air/proc/remove_edge(connection_edge/E)
 	edges.Remove(E)

@@ -104,9 +104,9 @@
 
 	// Environment tolerance/life processes vars.
 	var/reagent_tag											//Used for metabolizing reagents.
-	var/breath_type = "oxygen"								// Non-oxygen gas breathed, if any.
-	var/poison_type = "phoron"								// Poisonous air.
-	var/exhale_type = "carbon_dioxide"						// Exhaled gas type.
+	var/breath_type = /datum/gas/oxygen								// Non-oxygen gas breathed, if any.
+	var/poison_type = /datum/gas/phoron								// Poisonous air.
+	var/exhale_type = /datum/gas/carbon_dioxide						// Exhaled gas type.
 
 	var/body_temperature = 310.15							// Species will try to stabilize at this temperature. (also affects temperature processing)
 
@@ -282,7 +282,7 @@
 	//If not synth, they get an air tank (if they breathe)
 	if(!synth && breath_type)
 		//Create a tank (if such a thing exists for this species)
-		var/tanktext = "/obj/item/tank/emergency/" + "[breath_type]"
+		var/tanktext = "/obj/item/tank/emergency/" + GLOB.meta_gas_ids[breath_type]
 		var/obj/item/tank/emergency/tankpath //Will force someone to come look here if they ever alter this path.
 		if(extendedtank)
 			tankpath = text2path(tanktext + "/engi")

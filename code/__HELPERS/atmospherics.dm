@@ -21,7 +21,7 @@
 		var/total_moles = mixture.total_moles
 		results += "<span class='notice'>Pressure: [round(pressure,0.1)] kPa</span>"
 		for(var/mix in mixture.gas)
-			results += "<span class='notice'>[gas_data.name[mix]]: [round((mixture.gas[mix] / total_moles) * 100)]%</span>"
+			results += "<span class='notice'>[GLOB.meta_gas_names[mix]]: [round((mixture.gas[mix] / total_moles) * 100)]%</span>"
 		results += "<span class='notice'>Temperature: [round(mixture.temperature-T0C)]&deg;C</span>"
 	else
 		results += "<span class='notice'>\The [target] is empty!</span>"
@@ -54,16 +54,16 @@
 
 /obj/machinery/atmospherics/trinary/atmos_filter/atmosanalyze(var/mob/user)
 	return atmosanalyzer_scan(src, src.air1, user)
-	
+
 /obj/machinery/atmospherics/trinary/mixer/atmosanalyze(var/mob/user)
 	return atmosanalyzer_scan(src, src.air3, user)
-	
+
 /obj/machinery/atmospherics/omni/atmos_filter/atmosanalyze(var/mob/user)
 	return atmosanalyzer_scan(src, src.input.air, user)
-	
+
 /obj/machinery/atmospherics/omni/mixer/atmosanalyze(var/mob/user)
 	return atmosanalyzer_scan(src, src.output.air, user)
-	
+
 /obj/machinery/meter/atmosanalyze(var/mob/user)
 	var/datum/gas_mixture/mixture = null
 	if(src.target)

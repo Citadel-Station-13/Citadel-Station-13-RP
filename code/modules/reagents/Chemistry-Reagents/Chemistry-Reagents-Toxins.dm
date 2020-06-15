@@ -95,9 +95,9 @@
 /datum/reagent/toxin/hydrophoron/touch_turf(var/turf/simulated/T)
 	if(!istype(T))
 		return
-	T.assume_gas("phoron", CEILING(volume/2, 1), T20C)
+	T.assume_gas(/datum/gas/phoron, CEILING(volume/2, 1), T20C)
 	for(var/turf/simulated/floor/target_tile in range(0,T))
-		target_tile.assume_gas("phoron", volume/2, 400+T0C)
+		target_tile.assume_gas(/datum/gas/phoron, volume/2, 400+T0C)
 		spawn (0) target_tile.hotspot_expose(700, 400)
 	remove_self(volume)
 
@@ -152,7 +152,7 @@
 /datum/reagent/toxin/phoron/touch_turf(var/turf/simulated/T, var/amount)
 	if(!istype(T))
 		return
-	T.assume_gas("volatile_fuel", amount, T20C)
+	T.assume_gas(/datum/gas/volatile_fuel, amount, T20C)
 	remove_self(amount)
 
 /datum/reagent/toxin/cyanide //Fast and Lethal

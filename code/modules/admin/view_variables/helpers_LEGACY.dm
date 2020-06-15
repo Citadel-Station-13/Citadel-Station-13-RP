@@ -65,12 +65,4 @@
 /obj/get_view_variables_options_legacy()
 	return ..() + {"
 		<option value='?_src_=vars;delall=\ref[src]'>Delete all of type</option>
-		<option value='?_src_=vars;explode=\ref[src]'>Trigger explosion</option>
-		<option value='?_src_=vars;emp=\ref[src]'>Trigger EM pulse</option>
-		"}
-
-/turf/get_view_variables_options_legacy()
-	return ..() + {"
-		<option value='?_src_=vars;explode=\ref[src]'>Trigger explosion</option>
-		<option value='?_src_=vars;emp=\ref[src]'>Trigger EM pulse</option>
 		"}

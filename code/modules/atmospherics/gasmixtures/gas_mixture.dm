@@ -6,6 +6,7 @@
 	var/temperature = 0
 
 	//Sum of all the gas moles in this mix.  Updated by update_values()
+	// DO NOT USE - Planned to be phased out. Use TOTAL_MOLES().
 	var/total_moles = 0
 	//Volume of this mix.
 	var/volume = CELL_VOLUME
@@ -40,7 +41,8 @@
 
 	if(moles > 0 && abs(temperature - temp) > MINIMUM_TEMPERATURE_DELTA_TO_CONSIDER)
 		var/self_heat_capacity = heat_capacity()
-		var/giver_heat_capacity = gas_data.specific_heat[gasid] * moles
+		var/giver_heat_capacity = GLOB.meta_gas_specific_heats[gasid] * moles
+
 		var/combined_heat_capacity = giver_heat_capacity + self_heat_capacity
 		if(combined_heat_capacity != 0)
 			temperature = (temp * giver_heat_capacity + temperature * self_heat_capacity) / combined_heat_capacity
@@ -127,7 +129,7 @@
 /datum/gas_mixture/proc/heat_capacity()
 	. = 0
 	for(var/g in gas)
-		. += gas_data.specific_heat[g] * gas[g]
+		. += GLOB.meta_gas_specific_heats[g] * gas[g]
 	. *= group_multiplier
 
 
@@ -181,8 +183,8 @@
 		return SPECIFIC_ENTROPY_VACUUM	//that gas isn't here
 
 	//group_multiplier gets divided out in volume/gas[gasid] - also, V/(m*T) = R/(partial pressure)
-	var/molar_mass = gas_data.molar_mass[gasid]
-	var/specific_heat = gas_data.specific_heat[gasid]
+	var/molar_mass = GLOB.meta_gas_molar_mass[gasid]
+	var/specific_heat = GLOB.meta_gas_specific_heats[gasid]
 	return R_IDEAL_GAS_EQUATION * ( log( (IDEAL_GAS_ENTROPY_CONSTANT*volume/(gas[gasid] * temperature)) * (molar_mass*specific_heat*temperature)**(2/3) + 1 ) +  15 )
 
 	//alternative, simpler equation
@@ -192,20 +194,16 @@
 
 //Updates the total_moles count and trims any empty gases.
 /datum/gas_mixture/proc/update_values()
-	total_moles = 0
-	for(var/g in gas)
-		if(gas[g] <= 0)
-			gas -= g
-		else
-			total_moles += gas[g]
-
+	GAS_GARBAGE_COLLECT(gas)
+	TOTAL_MOLES(gas, total_moles)
 
 //Returns the pressure of the gas mix.  Only accurate if there have been no gas modifications since update_values() has been called.
 /datum/gas_mixture/proc/return_pressure()
 	if(volume)
-		return total_moles * R_IDEAL_GAS_EQUATION * temperature / volume
+		var/total
+		TOTAL_MOLES(gas, total)
+		return (total * R_IDEAL_GAS_EQUATION * temperature) / volume
 	return 0
-
 
 //Removes moles from the gas mixture and returns a gas_mixture containing the removed air.
 /datum/gas_mixture/proc/remove(amount)
@@ -261,13 +259,13 @@
 
 	var/sum = 0
 	for(var/g in gas)
-		if(gas_data.flags[g] & flag)
+		if(GLOB.meta_gas_flags[g] & flag)
 			sum += gas[g]
 
 	var/datum/gas_mixture/removed = new
 
 	for(var/g in gas)
-		if(gas_data.flags[g] & flag)
+		if(GLOB.meta_gas_flags[g] & flag)
 			removed.gas[g] = QUANTIZE((gas[g] / sum) * amount)
 			gas[g] -= removed.gas[g] / group_multiplier
 
@@ -326,66 +324,20 @@
 /datum/gas_mixture/proc/react()
 	zburn(null, force_burn=0, no_check=0) //could probably just call zburn() here with no args but I like being explicit.
 
-
-//Rechecks the gas_mixture and adjusts the graphic list if needed.
-//Two lists can be passed by reference if you need know specifically which graphics were added and removed.
-/datum/gas_mixture/proc/check_tile_graphic(list/graphic_add = null, list/graphic_remove = null)
-	var/list/cur_graphic = graphic // Cache for sanic speed
-	for(var/g in gas_data.overlay_limit)
-		if(cur_graphic && cur_graphic.Find(gas_data.tile_overlay[g]))
-			//Overlay is already applied for this gas, check if it's still valid.
-			if(gas[g] <= gas_data.overlay_limit[g])
-				LAZYADD(graphic_remove, gas_data.tile_overlay[g])
-		else
-			//Overlay isn't applied for this gas, check if it's valid and needs to be added.
-			if(gas[g] > gas_data.overlay_limit[g])
-				LAZYADD(graphic_add, gas_data.tile_overlay[g])
-
-	. = 0
-	//Apply changes
-	if(LAZYLEN(graphic_add))
-		LAZYADD(graphic, graphic_add)
-		. = 1
-	if(LAZYLEN(graphic_remove))
-		LAZYREMOVE(graphic, graphic_remove)
-		. = 1
-
-
-//Simpler version of merge(), adjusts gas amounts directly and doesn't account for temperature or group_multiplier.
-/datum/gas_mixture/proc/add(datum/gas_mixture/right_side)
-	for(var/g in right_side.gas)
-		gas[g] += right_side.gas[g]
-
-	update_values()
-	return 1
-
-
-//Simpler version of remove(), adjusts gas amounts directly and doesn't account for group_multiplier.
-/datum/gas_mixture/proc/subtract(datum/gas_mixture/right_side)
-	for(var/g in right_side.gas)
-		gas[g] -= right_side.gas[g]
-
-	update_values()
-	return 1
-
-
-//Multiply all gas amounts by a factor.
-/datum/gas_mixture/proc/multiply(factor)
-	for(var/g in gas)
-		gas[g] *= factor
-
-	update_values()
-	return 1
-
-
-//Divide all gas amounts by a factor.
-/datum/gas_mixture/proc/divide(factor)
-	for(var/g in gas)
-		gas[g] /= factor
-
-	update_values()
-	return 1
-
+/**
+  * Returns a list of vis_contents graphics for the gases we contain.
+  */
+/datum/gas_mixture/proc/get_turf_graphics()
+	. = list()
+	var/list/gases = src.gas
+	var/list/no_overlay_typecache = GLOB.meta_gas_typecache_no_overlays
+	for(var/id in gases)
+		if(no_overlay_typecache[id])
+			continue
+		var/moles = gases[id]
+		var/list/gas_overlays = GLOB.meta_gas_overlays[id]
+		if(gas_overlays && moles > GLOB.meta_gas_visibility[id])
+			. += gas_overlays[min(FACTOR_GAS_VISIBLE_MAX, CEILING(moles / MOLES_GAS_VISIBLE_STEP, 1))]
 
 //Shares gas with another gas_mixture based on the amount of connecting tiles and a fixed lookup table.
 /datum/gas_mixture/proc/share_ratio(datum/gas_mixture/other, connecting_tiles, share_size = null, one_way = 0)
@@ -394,7 +346,8 @@
 	var/ratio = sharing_lookup_table[6]
 
 	var/size = max(1, group_multiplier)
-	if(isnull(share_size)) share_size = max(1, other.group_multiplier)
+	if(isnull(share_size))
+		share_size = max(1, other.group_multiplier)
 
 	var/full_heat_capacity = heat_capacity()
 	var/s_full_heat_capacity = other.heat_capacity()
@@ -478,3 +431,71 @@
 			gasmix.multiply(gasmix.volume)
 
 	return 1
+
+/**
+  * Sets our gas/temperature equal to a turf's initial gas mix.
+  */
+/datum/gas_mixture/proc/copy_from_turf(turf/model)
+	parse_gas_string(model.initial_gas_mix)
+
+	//acounts for changes in temperature
+	var/turf/model_parent = model.parent_type
+	if(model.temperature != initial(model.temperature) || model.temperature != initial(model_parent.temperature))
+		temperature = model.temperature
+
+	return TRUE
+
+//Simpler version of merge(), adjusts gas amounts directly and doesn't account for temperature or group_multiplier.
+/datum/gas_mixture/proc/add(datum/gas_mixture/right_side)
+	for(var/g in right_side.gas)
+		gas[g] += right_side.gas[g]
+
+	update_values()
+	return 1
+
+
+//Simpler version of remove(), adjusts gas amounts directly and doesn't account for group_multiplier.
+/datum/gas_mixture/proc/subtract(datum/gas_mixture/right_side)
+	for(var/g in right_side.gas)
+		gas[g] -= right_side.gas[g]
+
+	update_values()
+	return 1
+
+
+//Multiply all gas amounts by a factor.
+/datum/gas_mixture/proc/multiply(factor)
+	for(var/g in gas)
+		gas[g] *= factor
+
+	update_values()
+	return 1
+
+
+//Divide all gas amounts by a factor.
+/datum/gas_mixture/proc/divide(factor)
+	for(var/g in gas)
+		gas[g] /= factor
+
+	update_values()
+	return 1
+
+/**
+  * Copies from a specially formatted gas string, taking on its gas values as our own as well as their temperature.
+  */
+/datum/gas_mixture/proc/parse_gas_string(gas_string)
+	gas_string = SSair.preprocess_gas_string(gas_string)
+	var/list/gases = src.gas
+	var/list/gas = params2list(gas_string)
+	if(gas["TEMP"])
+		temperature = text2num(gas["TEMP"])
+		gas -= "TEMP"
+	gases.Cut()
+	for(var/id in gas)
+		var/path = id
+		if(!ispath(path))
+			path = gas_id2path(path) //a lot of these strings can't have embedded expressions (especially for mappers), so support for IDs needs to stick around
+		gases[path] = text2num(gas[id])
+	//archive()
+	update_values()
+	return TRUE

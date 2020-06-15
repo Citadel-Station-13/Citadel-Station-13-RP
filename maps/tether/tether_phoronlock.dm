@@ -23,7 +23,7 @@ obj/machinery/airlock_sensor/phoron/process()
 	if(on)
 		var/datum/gas_mixture/air_sample = return_air()
 		var/pressure = round(air_sample.return_pressure(), 0.1)
-		var/phoron = ("phoron" in air_sample.gas) ? round(air_sample.gas["phoron"], 0.1) : 0
+		var/phoron = (/datum/gas/phoron in air_sample.gas) ? round(air_sample.gas[/datum/gas/phoron], 0.1) : 0
 
 		if(abs(pressure - previousPressure) > 0.1 || previousPressure == null || abs(phoron - previousPhoron) > 0.1 || previousPhoron == null)
 			var/datum/signal/signal = new
@@ -193,8 +193,8 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 /datum/computer/file/embedded_program/airlock/phoron/New(var/obj/machinery/embedded_controller/M)
 	..(M)
 	memory["chamber_sensor_phoron"] = 0
-	memory["external_sensor_pressure"] = VIRGO3B_ONE_ATMOSPHERE
-	memory["external_sensor_phoron"] = VIRGO3B_MOL_PHORON
+	memory["external_sensor_pressure"] = 82.4
+	memory["external_sensor_phoron"] = 72.2
 	memory["internal_sensor_phoron"] = 0
 	memory["scrubber_status"] = "unknown"
 	memory["target_phoron"] = 0.1

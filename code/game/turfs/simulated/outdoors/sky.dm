@@ -7,10 +7,7 @@
 	outdoors = TRUE
 
 	// Assume there's a vacuum for the purposes of avoiding active edges at initialization, as well as ZAS fun if a window breaks.
-	oxygen = 0
-	carbon_dioxide = 0
-	nitrogen = 0
-	phoron = 0
+	initial_gas_mix = GAS_STRING_VACCUM
 
 /turf/simulated/sky/Initialize()
 	. = ..()
@@ -28,8 +25,6 @@
 
 /turf/simulated/sky/west
 	dir = WEST
-
-
 
 /turf/simulated/sky/moving
 	icon_state = "sky_fast"
