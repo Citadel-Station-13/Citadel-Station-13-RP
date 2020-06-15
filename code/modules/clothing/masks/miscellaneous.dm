@@ -169,7 +169,7 @@
 	body_parts_covered = HEAD|FACE|EYES
 	w_class = ITEMSIZE_SMALL
 	siemens_coefficient = 0.9
-	
+
 /obj/item/clothing/mask/nock_scarab
 	name = "nock mask (blue, scarab)"
 	desc = "To Nock followers, masks symbolize rebirth and a new persona. Damaging the wearer's mask is generally considered an attack on their person itself."
@@ -288,3 +288,98 @@
 	desc = "A fine black bandana with nanotech lining and a skull emblem. Can be worn on the head or face."
 	icon_state = "bandskull"
 	item_state_slots = list(slot_r_hand_str = "bandskull", slot_l_hand_str = "bandskull")
+
+#define REBREATHER_PROCESS_CHECK if(prob(80)) return
+
+/obj/item/clothing/mask/rebreather
+	name = "personal rebreather"
+	desc = "A rebreather that heats up local atmosphere to safe temperatures."
+	icon_state = "fullgas"
+	item_state_slots = list(slot_r_hand_str = "swat", slot_l_hand_str = "swat")
+	var/obj/item/cell/device/cell //cell used
+	var/rechecktick = 0
+	var/chargeuse = 0
+	var/localtemp
+
+/obj/item/clothing/mask/rebreather/Initialize()
+	if(!cell)
+		cell = new
+	..()
+
+/obj/item/clothing/mask/rebreather/attack_self(mob/user)
+	evaluatepoweruse(user)
+	if(rebreathing)
+		rebreathing = FALSE
+		to_chat(user, "<span class='notice'>You disable the temperature compensator device.</span>")
+		STOP_PROCESSING(SSobj, src)
+	else if(cell && cell.charge > chargeuse)
+		START_PROCESSING(SSobj, src)
+		rebreathing = TRUE
+		to_chat(user, "<span class='notice'>You activate the temperature compensator device.</span>")
+
+/obj/item/clothing/mask/rebreather/proc/evauluatepoweruse(mob/wearer)
+	if(localtemp)
+		var/CU = (293-localtemp)/100
+		if(CU =< 0)
+			CU = 1
+		chargeuse = CU
+		REBREATHER_PROCESS_CHECK
+		var/flavormsg = pick(1,2,3)
+		switch(flavormsg)
+			if(1)
+				to_chat(wearer, "The [name]'s intake fans whirr.")
+			if(2)
+				to_chat(wearer, "The [name]'s auxillary heating coils click.")
+			if(3)
+				to_chat(wearer, "The [name]'s expansion release vent opens with a quiet hiss.")
+
+/obj/item/clothing/mask/rebreather/process()
+	rechecktick ++
+	if(rechecktick >= 15)
+		evaluatepoweruse()
+		rechecktick = 0
+	if(!cell || cell.charge < chargeuse)
+		rebreathing = FALSE
+		to_chat(user, "<span class='warning'>The [name]'s constant hum stops suddenly!</span>")
+		STOP_PROCESSING(SSobj, src)
+
+/obj/item/clothing/mask/rebreather/attack_hand(mob/user as mob)
+	if(user.get_inactive_hand() == src)
+		if(cell)
+			cell.update_icon()
+			user.put_in_hands(cell)
+			cell = null
+			to_chat(user, "<span class='notice'>You remove the cell from the [src].</span>")
+			playsound(src, 'sound/machines/button.ogg', 30, 1, 0)
+			on = 0
+			update_icon()
+			return
+		..()
+	else
+		return ..()
+
+/obj/item/flashlight/attackby(obj/item/W, mob/user as mob)
+	if(rebreathing)
+		if(istype(W, /obj/item/cell))
+			if(istype(W, /obj/item/cell/device))
+				if(!cell)
+					user.drop_item()
+					W.loc = src
+					cell = W
+					to_chat(user, "<span class='notice'>You install a cell in \the [src].</span>")
+					playsound(src, 'sound/machines/button.ogg', 30, 1, 0)
+					update_icon()
+				else
+					to_chat(user, "<span class='notice'>\The [src] already has a cell.</span>")
+			else
+				to_chat(user, "<span class='notice'>\The [src] cannot use that type of cell.</span>")
+	else
+		to_chat(user, "<span class='notice'>\The [src] cannot be modified while on!.</span>")
+
+/obj/item/clothing/mask/rebreather/filter_air(datum/gas_mixture/air)
+	localtemp = air.temperature
+	if(air.temperature < 303)
+		return FALSE
+	..()
+
+#undef REBREATHER_PROCESS_CHECK

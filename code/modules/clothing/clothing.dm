@@ -461,6 +461,7 @@
 		)
 
 	var/voicechange = 0
+	var/rebreathing = FALSE
 	var/list/say_messages
 	var/list/say_verbs
 
@@ -470,6 +471,8 @@
 		M.update_inv_wear_mask()
 
 /obj/item/clothing/mask/proc/filter_air(datum/gas_mixture/air)
+	if(rebreathing)
+		air.temperature = 293 //wow ok
 	return
 
 ///////////////////////////////////////////////////////////////////////
