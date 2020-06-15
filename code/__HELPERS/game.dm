@@ -444,7 +444,7 @@
 	var/message = "<span class='game deadsay'><span class='name'>\
 		[character.real_name]</span> ([rank]) has arrived at the station at \
 		<span class='name'>[A.name]</span>.</span>"
-	say_dead_direct(message, follow_target = character)
+	say_dead_direct(message, character)
 	//deadchat_broadcast(message, follow_target = character, message_type=DEADCHAT_ARRIVALRATTLE)
 	if((!global_announcer) || (!character.mind)) //GLOB.announcement_systems.len
 		return
