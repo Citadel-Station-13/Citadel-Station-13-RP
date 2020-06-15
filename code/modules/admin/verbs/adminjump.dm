@@ -58,11 +58,11 @@
 	if (config_legacy.allow_admin_jump)
 		if(src.mob)
 			var/mob/A = src.mob
-			var/atom/A = locate(tx, ty, tz)
-			if(!A)
+			var/turf/T = locate(tx, ty, tz)
+			if(!T)
 				to_chat(src, "<span class='warning'>[tx], [ty], [tz] does not exist!</span>")
 				return
-			A.forceMove(locate(tx, ty, tz))
+			A.forceMove(T)
 			feedback_add_details("admin_verb","JC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 		message_admins("[key_name_admin(usr)] jumped to coordinates [tx], [ty], [tz]")
 
