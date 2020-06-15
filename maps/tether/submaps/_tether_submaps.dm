@@ -10,9 +10,13 @@
 
 	associated_map_datum = /datum/map_z_level/tether_lateload/ships
 
+	ztraits = list()
+
 /datum/map_z_level/tether_lateload/misc
 	name = "Misc"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_SEALED
+
+	ztraits = list()
 
 /datum/map_template/tether_lateload/tether_ships
 	name = "Tether - Ships"
@@ -20,6 +24,8 @@
 	mappath = 'tether_ships.dmm'
 
 	associated_map_datum = /datum/map_z_level/tether_lateload/ships
+
+	ztraits = list()
 
 /datum/map_z_level/tether_lateload/ships
 	name = "Ships"
@@ -31,6 +37,8 @@
 	name = "Tether - Underdark"
 	desc = "Mining, but harder."
 	mappath = 'tether_underdark.dmm'
+
+	ztraits = list(ZTRAIT_MINING = TRUE, ZTRAIT_GRAVITY = TRUE)
 
 	associated_map_datum = /datum/map_z_level/tether_lateload/underdark
 
@@ -82,6 +90,8 @@
 	mappath = 'beach/beach.dmm'
 	associated_map_datum = /datum/map_z_level/tether_lateload/away_beach
 
+	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
+
 /datum/map_z_level/tether_lateload/away_beach
 	name = "Away Mission - Desert Beach"
 	z = Z_LEVEL_BEACH
@@ -91,6 +101,8 @@
 	desc = "The beach away mission's cave."
 	mappath = 'beach/cave.dmm'
 	associated_map_datum = /datum/map_z_level/tether_lateload/away_beach_cave
+
+	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
 
 /datum/map_template/tether_lateload/away_beach_cave/on_map_loaded(z)
 	. = ..()
@@ -116,6 +128,8 @@
 	mappath = 'alienship/alienship.dmm'
 	associated_map_datum = /datum/map_z_level/tether_lateload/away_alienship
 
+	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
+
 /datum/map_z_level/tether_lateload/away_alienship
 	name = "Away Mission - Alien Ship"
 	z = Z_LEVEL_ALIENSHIP
@@ -128,6 +142,8 @@
 	mappath = 'aerostat/aerostat.dmm'
 	associated_map_datum = /datum/map_z_level/tether_lateload/away_aerostat
 
+	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
+
 /datum/map_z_level/tether_lateload/away_aerostat
 	name = "Away Mission - Aerostat"
 	z = Z_LEVEL_AEROSTAT
@@ -137,6 +153,8 @@
 	desc = "The surface from the Virgo 2 Aerostat."
 	mappath = 'aerostat/surface.dmm'
 	associated_map_datum = /datum/map_z_level/tether_lateload/away_aerostat_surface
+
+	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
 
 /datum/map_template/tether_lateload/away_aerostat_surface/on_map_loaded(z)
 	. = ..()
