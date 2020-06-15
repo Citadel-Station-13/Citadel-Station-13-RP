@@ -358,7 +358,7 @@
 	else
 		return ..()
 
-/obj/item/flashlight/attackby(obj/item/W, mob/user as mob)
+/obj/item/clothing/mask/rebreather/attackby(obj/item/W, mob/user as mob)
 	if(rebreathing)
 		if(istype(W, /obj/item/cell))
 			if(istype(W, /obj/item/cell/device))
