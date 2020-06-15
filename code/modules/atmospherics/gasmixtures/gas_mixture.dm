@@ -8,6 +8,7 @@
 	  * Associative list for gas typepath = moles
 	  */
 	var/list/gases
+
 	//Temperature in Kelvin of this gas mix.
 	var/temperature = 0
 
@@ -19,12 +20,14 @@
 	//Size of the group this gas_mixture is representing.  1 for singletons.
 	var/group_multiplier = 1
 
-	//List of active tile overlays for this gas_mixture.  Updated by check_tile_graphic()
-	var/list/graphic
+	/// Used by gas reactions to pass results to us.
+	var/list/reaction_results = list()
 
-/datum/gas_mixture/New(vol = CELL_VOLUME)
-	volume = vol
-	gases = list()
+/datum/gas_mixture/New(volume)
+	if (!isnull(volume))
+		src.volume = volume
+
+	//PV = nRT
 
 //Takes a gas string and the amount of moles to adjust by.  Calls update_values() if update isn't 0.
 /datum/gas_mixture/proc/adjust_gas(gasid, moles, update = 1)
@@ -326,9 +329,61 @@
 
 	return 1
 
+/datum/gas_mixture/proc/react(datum/holder)
+	. = NO_REACTION
+	var/list/cached_gases = gases
+	if(!length(cached_gases))
+		return
+	var/list/reactions = list()
+	for(var/datum/gas_reaction/G in SSair.gas_reactions)
+		if(!G.major_gas || cached_gases[G.major_gas])
+			reactions += G
+	if(!length(reactions))
+		return
+	reaction_results = new
+	var/temp = temperature
+	var/ener = THERMAL_ENERGY(src)
 
-/datum/gas_mixture/proc/react()
-	zburn(null, force_burn=0, no_check=0) //could probably just call zburn() here with no args but I like being explicit.
+	reaction_loop:
+		for(var/r in reactions)
+			var/datum/gas_reaction/reaction = r
+			// special
+			if(reaction.special_check && !reaction.special_req_check())
+				continue
+			// temperature
+			if(min_temperature && ((min_temperature > temp) || (max_temperature < temp))))
+				continue
+			// energy
+			if(min_energy && ((min_energy > ener) || (max_energy < ener)))
+				continue
+			//gas by flag, expensive as hell
+			if(min_gas_by_flag)
+				var/list/flags = min_gas_by_flag | max_gas_by_flag
+				for(var/flag in flags)
+					TOTAL_MOLES_BY_FLAG(cached_gases, flags[flag], text2num(flag))
+				for(var/flag in min_gas_by_flag)
+					if(flags[flag] < min_gas_by_flag[flag])
+						continue reaction_loop
+				for(var/flag in max_gas_by_flag)
+					if(flags[flag] > max_gas_by_flag[flag])
+						continue reaction_loop
+			// gas by typepath
+			if(min_gas_by_type)
+				for(var/gas in min_gas_by_type)
+					if(cached_gases[gas] < min_gas_by_type[gas])
+						continue reaction_loop
+				for(var/gas in max_gas_by_type)
+					if(cached_gases[gas] > max_gas_by_type[gas])
+						continue reaction_loop
+			// At this point, all reactions are met.
+			. |= reaction.react(src, holder)
+			if (. & STOP_REACTIONS)
+				break
+
+	if(.)
+		update_values()
+		// update_values man bad
+		//GAS_GARBAGE_COLLECT(gases)
 
 /**
   * Returns a list of vis_contents graphics for the gases we contain.

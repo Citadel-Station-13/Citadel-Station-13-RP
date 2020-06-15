@@ -18,6 +18,9 @@ SUBSYSTEM_DEF(air)
 	/// Associative id = datum list of generated /datum/atmosphere's.
 	var/list/generated_atmospheres
 
+	/// Singletons of atmospherics reactions, sorted by priority.
+	var/list/datum/gas_reaction/gas_reactions = list()
+
 	var/cost_turfs = 0
 	var/cost_edges = 0
 	var/cost_firezones = 0
@@ -37,6 +40,8 @@ SUBSYSTEM_DEF(air)
 	air_master = src
 
 /datum/controller/subsystem/air/Initialize(timeofday)
+	gas_reactions = init_gas_reactions()
+
 	report_progress("Processing Geometry...")
 
 	current_cycle = 0

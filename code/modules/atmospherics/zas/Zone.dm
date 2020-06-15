@@ -74,7 +74,8 @@ Class Procs:
 		var/obj/effect/decal/cleanable/liquid_fuel/fuel = locate() in T
 		fire_tiles.Add(T)
 		air_master.active_fire_zones |= src
-		if(fuel) fuel_objs += fuel
+		if(fuel)
+			fuel_objs += fuel
 	if(T.allow_gas_overlays)
 		T.vis_contents += turf_graphics
 

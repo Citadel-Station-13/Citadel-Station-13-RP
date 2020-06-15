@@ -1,3 +1,83 @@
+//All defines used in reactions are located in ..\__DEFINES\reactions.dm
+
+/proc/init_gas_reactions()
+	. = list()
+
+	for(var/r in subtypesof(/datum/gas_reaction))
+		var/datum/gas_reaction/reaction = r
+		if(initial(reaction.exclude))
+			continue
+		reaction = new r
+		var/datum/gas/reaction_key
+		for (var/req in reaction.min_requirements)
+			if (ispath(req))
+				var/datum/gas/req_gas = req
+				if (!reaction_key || initial(reaction_key.rarity) > initial(req_gas.rarity))
+					reaction_key = req_gas
+		reaction.major_gas = reaction_key
+		. += reaction
+	sortTim(., /proc/cmp_gas_reaction)
+
+/proc/cmp_gas_reaction(datum/gas_reaction/a, datum/gas_reaction/b) // compares lists of reactions by the maximum priority contained within the list
+	return b.priority - a.priority
+
+/datum/gas_reaction
+	//regarding the requirements lists: the minimum or maximum requirements must be non-zero.
+	//when in doubt, use MINIMUM_MOLE_COUNT.
+	/// Minimum temperature in Kelvin for this reaction to happen. If this is unset, temperature isn't checked at all.
+	var/min_temperature
+	/// Maximum temperature in Kelvin for this reaction to happen.
+	var/max_temperature
+	/// Minimum thermal energy for this reaction to happen. If this is unset, thermal energy isn't checked at all.
+	var/min_energy
+	/// Maximum thermal energy for this reaction to happen.
+	var/max_energy
+	/// Min gas by flag for this reaction to happen. Avoid this if at all possible, this is expensive. list("[flag]" = moles)
+	var/list/min_gas_by_flag
+	/// Ditto
+	var/list/max_gas_by_flag
+	/// Min gas by typepath for this reaction to happen. list(typepath = moles)
+	var/list/min_gas_by_type
+	/// Ditto
+	var/list/max_gas_by_type
+	/// Should special_req_check() be called? Do not use this unless necessary, proccalls are expensive.
+	var/special_check = FALSE
+	/// The highest rarity gas used in this reaction, used to filter out some reactions early. If this is unset, it will not be checked.
+	var/major_gas
+	/// Exclude from processing.
+	var/exclude = FALSE
+	///lower numbers are checked/react later than higher numbers. if two reactions have the same priority they may happen in either order
+	var/priority = 100
+	var/name = "reaction"
+	var/id = "r"
+
+/datum/gas_reaction/New()
+	init_reqs()
+
+/datum/gas_reaction/proc/init_reqs()
+
+/**
+  * Special requirement check, return TRUE to pass. Only checked if [special_check] is set to TRUE.
+  */
+/datum/gas_reaction/proc/special_req_check(datum/gas_mixture/air, datum/holder)
+
+/**
+  * Reacts. AT this point, it's more or less ensured that our requirements have been met.
+  * Returns NO_REACTION, REACTING, or STOP_REACTING.
+  * @params
+  * * datum/gas_mixture/air - the gas mixture we're reacting from
+  * * datum/holder - the thing holding the reaction. This can be a turf, a zone, any atom with gas holders, a datum/pipeline or pipe network, etc. Only zones are implemented as of now.
+  */
+/datum/gas_reaction/proc/react(datum/gas_mixture/air, datum/holder)
+	return NO_REACTION
+
+
+
+
+
+/datum/gas_mixture/proc/react()
+	zburn(null, force_burn=0, no_check=0) //could probably just call zburn() here with no args but I like being explicit.
+
 //Returns the firelevel
 /datum/gas_mixture/proc/zburn(zone/zone, force_burn, no_check = 0)
 	CACHE_VSC_PROP(atmos_vsc, /atmos/fire/firelevel_multiplier, firelevel_multiplier)
@@ -19,9 +99,9 @@
 		//*** Get the fuel and oxidizer amounts
 		for(var/g in gases)
 			if(GLOB.meta_gas_flags[g] & GAS_FLAG_FUEL)
-				gas_fuel += gases[g]
+				gas_fuel += gas[g]
 			if(GLOB.meta_gas_flags[g] & GAS_FLAG_OXIDIZER)
-				total_oxidizers += gases[g]
+				total_oxidizers += gas[g]
 		gas_fuel *= group_multiplier
 		total_oxidizers *= group_multiplier
 
@@ -104,7 +184,7 @@
 datum/gas_mixture/proc/check_recombustability(list/fuel_objs)
 	. = 0
 	for(var/g in gases)
-		if(GLOB.meta_gas_flags[g] & GAS_FLAG_OXIDIZER && gases[g] >= 0.1)
+		if(GLOB.meta_gas_flags[g] & GAS_FLAG_OXIDIZER && gas[g] >= 0.1)
 			. = 1
 			break
 
@@ -116,7 +196,7 @@ datum/gas_mixture/proc/check_recombustability(list/fuel_objs)
 
 	. = 0
 	for(var/g in gases)
-		if(GLOB.meta_gas_flags[g] & GAS_FLAG_FUEL && gases[g] >= 0.1)
+		if(GLOB.meta_gas_flags[g] & GAS_FLAG_FUEL && gas[g] >= 0.1)
 			. = 1
 			break
 
@@ -124,7 +204,7 @@ datum/gas_mixture/proc/check_recombustability(list/fuel_objs)
 	. = 0
 	CACHE_VSC_PROP(atmos_vsc, /atmos/fire/consumption_rate, fire_consumption_rate)
 	for(var/g in gases)
-		if(GLOB.meta_gas_flags[g] & GAS_FLAG_OXIDIZER && QUANTIZE(gases[g] * fire_consumption_rate) >= 0.1)
+		if(GLOB.meta_gas_flags[g] & GAS_FLAG_OXIDIZER && QUANTIZE(gas[g] * fire_consumption_rate) >= 0.1)
 			. = 1
 			break
 
@@ -136,7 +216,7 @@ datum/gas_mixture/proc/check_recombustability(list/fuel_objs)
 
 	. = 0
 	for(var/g in gases)
-		if(GLOB.meta_gas_flags[g] & GAS_FLAG_FUEL && QUANTIZE(gases[g] * fire_consumption_rate) >= 0.005)
+		if(GLOB.meta_gas_flags[g] & GAS_FLAG_FUEL && QUANTIZE(gas[g] * fire_consumption_rate) >= 0.005)
 			. = 1
 			break
 
