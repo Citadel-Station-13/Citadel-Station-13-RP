@@ -884,7 +884,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/medical/morgue)
 "bz" = (
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/medical{
 	id_tag = "MedicalResleeving";
 	name = "Resleeving Lab";
@@ -1071,7 +1070,6 @@
 /area/medical/ward)
 "bR" = (
 /obj/structure/grille,
-/obj/machinery/door/firedoor/glass,
 /obj/structure/window/reinforced/polarized{
 	dir = 10;
 	icon_state = "fwindow";
@@ -1376,7 +1374,6 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay)
 "cz" = (
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/medical{
 	name = "Morgue";
 	req_access = list(6)
@@ -1577,7 +1574,6 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay)
 "cQ" = (
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass_medical{
 	name = "Staff Room";
 	req_access = list(5)
@@ -1586,7 +1582,6 @@
 /area/medical/ward)
 "cR" = (
 /obj/structure/grille,
-/obj/machinery/door/firedoor/glass,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced/polarized{
 	dir = 10;
@@ -1735,7 +1730,6 @@
 /area/medical/patients_rooms)
 "dg" = (
 /obj/structure/grille,
-/obj/machinery/door/firedoor/glass,
 /obj/structure/window/reinforced/polarized{
 	dir = 10;
 	icon_state = "fwindow";
@@ -1836,7 +1830,6 @@
 "do" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced,
-/obj/machinery/door/firedoor/glass,
 /obj/structure/window/reinforced/polarized{
 	dir = 10;
 	icon_state = "fwindow";
@@ -2546,7 +2539,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "eA" = (
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/research{
 	name = "Xenobiology Lab";
 	req_access = list();
@@ -2865,7 +2857,6 @@
 /turf/simulated/floor,
 /area/crew_quarters/heads/hor)
 "eT" = (
-/obj/machinery/door/firedoor/glass,
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable/green{
 	d1 = 1;
@@ -3091,7 +3082,6 @@
 "fi" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/research{
 	name = "Xenobiology Lab";
 	req_access = list();
@@ -5084,7 +5074,6 @@
 /turf/simulated/wall/r_wall,
 /area/security/warden)
 "if" = (
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/security{
 	name = "Armory Storage";
 	req_access = list(3);
@@ -5093,7 +5082,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
 "ig" = (
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
@@ -5111,7 +5099,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
 "ih" = (
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/regular{
 	dir = 4;
 	icon_state = "pdoor1";
@@ -5661,7 +5648,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
 "iV" = (
-/obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor,
@@ -5725,7 +5711,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
@@ -5946,7 +5931,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
 "jA" = (
-/obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green{
 	d2 = 2;
 	icon_state = "0-2"
@@ -6044,7 +6028,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
 "jG" = (
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -6180,7 +6163,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
 "jR" = (
-/obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green,
 /obj/structure/cable/green{
 	d2 = 8;
@@ -6237,7 +6219,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
 "jU" = (
-/obj/machinery/door/firedoor/glass,
 /obj/structure/table/reinforced,
 /obj/machinery/door/window/brigdoor/westleft{
 	dir = 1;
@@ -6625,7 +6606,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
 "kH" = (
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -6664,7 +6644,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
 "kL" = (
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/security{
 	name = "Equipment Storage";
 	req_access = newlist()
@@ -6764,7 +6743,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/range)
 "kV" = (
-/obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor,
@@ -6841,7 +6819,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/range)
 "lc" = (
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock/glass_security{
@@ -6938,7 +6915,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass_research{
 	name = "Xenoflora Research";
 	req_access = list(55)
@@ -7366,7 +7342,6 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay)
 "lZ" = (
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/medical{
 	name = "Recovery Room";
 	step_y = 0;
@@ -7856,7 +7831,6 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay)
 "mC" = (
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass_medical{
 	name = "Staff Room";
 	req_access = list(5)
@@ -8110,7 +8084,6 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay)
 "nb" = (
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass_medical{
 	name = "Staff Room";
 	req_access = list(5)
@@ -8638,7 +8611,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/sleep/Dorm_9)
 "oh" = (
@@ -8670,7 +8642,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/sleep/Dorm_10)
 "oj" = (
@@ -9012,7 +8983,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/sleep/Dorm_10{
 	name = "\improper Dormitory Room 11"
@@ -9036,7 +9006,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/sleep/Dorm_10{
 	name = "\improper Dormitory Room 12"
@@ -9406,7 +9375,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/sleep/Dorm_10{
 	name = "\improper Dormitory Room 13"
@@ -9430,7 +9398,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/sleep/Dorm_10{
 	name = "\improper Dormitory Room 14"
@@ -9753,7 +9720,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
@@ -9847,7 +9813,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/sleep/Dorm_10{
 	name = "\improper Dormitory Room 15"
@@ -9871,7 +9836,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/sleep/Dorm_10{
 	name = "\improper Dormitory Room 16"
@@ -10047,6 +10011,7 @@
 	name = "south bump";
 	pixel_y = -24
 	},
+/obj/structure/cable/green,
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/secondary/civilian_hallway_mid)
 "qB" = (
@@ -10124,6 +10089,12 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/secondary/civilian_hallway_mid)
+"rE" = (
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/hallway/secondary/civilian_hallway_mid)
 "sx" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -10154,7 +10125,7 @@
 /turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/recreation_area)
 "tb" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -10164,6 +10135,25 @@
 /obj/item/book/bundle/custom_library/fiction,
 /turf/simulated/floor/wood/sif,
 /area/library)
+"tr" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/hallway/secondary/civilian_hallway_mid)
 "tF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -10202,11 +10192,6 @@
 	},
 /turf/simulated/floor/wood/sif,
 /area/library)
-"wg" = (
-/obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
-/obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
-/turf/simulated/floor/tiled/monotile,
-/area/crew_quarters/recreation_area)
 "wx" = (
 /turf/simulated/floor/tiled/monotile,
 /area/boreas/surfacebase/outside)
@@ -10255,7 +10240,11 @@
 /area/library)
 "AD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
+	icon_state = "intact-supply";
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/recreation_area)
@@ -10331,6 +10320,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/external)
+"Gx" = (
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/crew_quarters/recreation_area)
 "Hj" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/structure/cable/green{
@@ -10341,7 +10337,6 @@
 /turf/simulated/floor/wood/sif,
 /area/library)
 "Ho" = (
-/obj/machinery/door/airlock,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/monotile,
@@ -10388,6 +10383,9 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
+"KC" = (
+/turf/simulated/open/boreas,
+/area/crew_quarters/recreation_area)
 "KM" = (
 /obj/structure/table/woodentable,
 /obj/item/dice/d20,
@@ -10418,11 +10416,8 @@
 /turf/simulated/floor/tiled,
 /area/rnd/external)
 "LM" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
+	dir = 4
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/recreation_area)
@@ -10508,12 +10503,19 @@
 	},
 /turf/simulated/floor/plating,
 /area/rnd/external)
+"Ru" = (
+/turf/simulated/floor,
+/area/boreas/surfacebase/outside)
 "RB" = (
 /turf/simulated/floor/wood/sif,
 /area/library)
 "RQ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/recreation_area)
 "Sb" = (
@@ -10560,9 +10562,8 @@
 /turf/simulated/floor/wood/sif,
 /area/library)
 "Tm" = (
-/obj/machinery/door/airlock,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/recreation_area)
 "TD" = (
@@ -10601,12 +10602,8 @@
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/recreation_area)
 "VU" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	icon_state = "intact-supply";
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 6
+/obj/machinery/atmospherics/unary/vent_scrubber{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/recreation_area)
@@ -10657,16 +10654,15 @@
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/lounge)
 "YC" = (
-/obj/machinery/atmospherics/unary/vent_scrubber{
-	dir = 8
-	},
+/obj/machinery/door/airlock,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/recreation_area)
 "Zs" = (
-/obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 4
-	},
+/obj/machinery/door/airlock,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/recreation_area)
 
@@ -59459,11 +59455,11 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
+eU
+eU
+eU
+eU
+eU
 aa
 aa
 aa
@@ -59781,11 +59777,11 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
+eU
+eU
+eU
+eU
+eU
 aa
 aa
 aa
@@ -60103,11 +60099,11 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
+eU
+eU
+eU
+eU
+eU
 aa
 aa
 aa
@@ -60425,11 +60421,11 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
+eU
+eU
+eU
+eU
+eU
 aa
 aa
 aa
@@ -60747,11 +60743,11 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
+eU
+eU
+eU
+eU
+eU
 aa
 aa
 aa
@@ -63015,7 +63011,7 @@ aa
 aa
 aa
 aa
-aa
+Pb
 aj
 aj
 ef
@@ -63336,7 +63332,7 @@ aa
 aa
 aa
 aa
-aa
+Pb
 ef
 ef
 ef
@@ -63657,7 +63653,7 @@ aa
 aa
 aa
 aa
-aa
+Pb
 ef
 fO
 fO
@@ -63978,7 +63974,7 @@ aa
 aa
 aa
 aa
-aa
+Pb
 ef
 fO
 gF
@@ -64299,7 +64295,7 @@ aa
 aa
 aa
 aa
-aa
+Pb
 ef
 ef
 fO
@@ -64620,9 +64616,9 @@ aa
 aa
 aa
 aa
-aa
+Pb
 aj
-aj
+ef
 ef
 fO
 gH
@@ -64942,9 +64938,9 @@ aa
 aa
 aa
 aa
-aa
+Pb
 aj
-aj
+ef
 ef
 fO
 gI
@@ -65264,9 +65260,9 @@ aa
 aa
 aa
 aa
-aa
+Pb
 aj
-aj
+ef
 fO
 gm
 gJ
@@ -65586,9 +65582,9 @@ aa
 aa
 aa
 aa
-aa
+Pb
 aj
-aj
+ef
 fO
 gn
 gK
@@ -65908,9 +65904,9 @@ aa
 aa
 aa
 aa
-aa
+Pb
 aj
-aj
+ef
 fP
 go
 gL
@@ -66230,9 +66226,9 @@ aa
 aa
 aa
 aa
-aa
+Pb
 aj
-aj
+ef
 fQ
 gp
 gM
@@ -66552,9 +66548,9 @@ aa
 aa
 aa
 aa
-aa
+Pb
 aj
-aj
+ef
 fQ
 gp
 gN
@@ -66874,9 +66870,9 @@ aa
 aa
 aa
 aa
-aa
+Pb
 aj
-aj
+ef
 fR
 gp
 gO
@@ -67196,9 +67192,9 @@ aa
 aa
 aa
 aa
-aa
+Pb
 aj
-aj
+ef
 fS
 gp
 gP
@@ -67518,9 +67514,9 @@ aa
 aa
 aa
 aa
-aa
+Pb
 aj
-aj
+ef
 fT
 gp
 gQ
@@ -67840,9 +67836,9 @@ aa
 aa
 aa
 aa
-aa
+Pb
 aj
-aj
+ef
 fU
 gp
 gM
@@ -68162,9 +68158,9 @@ aa
 aa
 aa
 aa
-aa
+Pb
 aj
-aj
+ef
 fV
 gq
 gR
@@ -68484,9 +68480,9 @@ aa
 aa
 aa
 aa
-aa
+Pb
 aj
-aj
+ef
 fW
 gr
 gS
@@ -68806,9 +68802,9 @@ aa
 aa
 aa
 aa
-aa
+Pb
 aj
-aj
+ef
 fO
 fO
 fO
@@ -69128,8 +69124,8 @@ aa
 aa
 aa
 aa
-aa
-aa
+Pb
+Pb
 ef
 ef
 ef
@@ -69451,8 +69447,8 @@ aa
 aa
 aa
 aa
-aa
-aa
+Pb
+Pb
 ef
 PB
 PB
@@ -69774,9 +69770,9 @@ aa
 aa
 aa
 aa
-aa
-aa
-aj
+Pb
+Pb
+ef
 PB
 PB
 PB
@@ -70097,9 +70093,9 @@ aa
 aa
 aa
 aa
-aa
-aa
-aj
+Pb
+Pb
+ef
 PB
 PB
 PB
@@ -70420,26 +70416,26 @@ aa
 aa
 aa
 aa
-aa
-aa
-aj
-aj
-aj
-aj
-aj
-aj
-aj
-aj
-aj
-aj
-aj
-aj
-aj
-aj
-aj
-aj
-aj
-aj
+Pb
+Pb
+ef
+ef
+ef
+ef
+ef
+ef
+ef
+ef
+ef
+ef
+ef
+ef
+ef
+ef
+ef
+ef
+ef
+ef
 aj
 aj
 aj
@@ -70743,25 +70739,25 @@ aa
 aa
 aa
 aa
-aa
 Pb
-wx
-wx
-wx
-wx
-wx
-wx
-wx
-wx
-wx
-wx
-wx
-wx
-wx
-wx
-wx
-wx
-wx
+jZ
+jZ
+jZ
+jZ
+jZ
+jZ
+jZ
+jZ
+jZ
+jZ
+jZ
+jZ
+jZ
+jZ
+jZ
+jZ
+jZ
+jZ
 Pb
 aa
 aa
@@ -74272,7 +74268,7 @@ cs
 BL
 qw
 ds
-ds
+rE
 wx
 wx
 wx
@@ -75558,7 +75554,7 @@ bX
 ce
 cj
 bO
-qy
+tr
 qA
 dr
 aa
@@ -80406,13 +80402,13 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
 aa
 aa
 aa
@@ -80728,13 +80724,13 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
 aa
 aa
 aa
@@ -81021,8 +81017,8 @@ aa
 aa
 aa
 aa
-aa
-km
+Pb
+Cx
 Cx
 Cx
 Cx
@@ -81050,13 +81046,13 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
 aa
 aa
 aa
@@ -81343,8 +81339,8 @@ aa
 aa
 aa
 aa
-aa
-km
+Pb
+Cx
 Cx
 Cx
 Cx
@@ -81372,13 +81368,13 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
 aa
 aa
 aa
@@ -81665,8 +81661,8 @@ aa
 aa
 aa
 aa
-aa
-km
+Pb
+Cx
 Cx
 Cx
 Cx
@@ -81694,13 +81690,13 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
 aa
 aa
 aa
@@ -81987,8 +81983,7 @@ aa
 aa
 aa
 aa
-aa
-km
+Pb
 km
 km
 km
@@ -81999,6 +81994,7 @@ km
 km
 km
 km
+KC
 aa
 aa
 aa
@@ -82010,20 +82006,20 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
 aa
 aa
 aa
@@ -82309,8 +82305,7 @@ aa
 aa
 aa
 aa
-aa
-km
+Pb
 Cx
 Ni
 Cx
@@ -82321,6 +82316,7 @@ Cx
 Ni
 Cx
 km
+KC
 aa
 aa
 aa
@@ -82332,20 +82328,20 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
 aa
 aa
 aa
@@ -82631,18 +82627,18 @@ aa
 aa
 aa
 aa
-aa
-km
+Pb
 Cx
-AD
+tb
 Cx
 km
 VN
 km
 Cx
-AD
+tb
 Cx
 km
+KC
 aa
 aa
 aa
@@ -82654,20 +82650,20 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
 aa
 aa
 aa
@@ -82953,18 +82949,18 @@ aa
 aa
 aa
 aa
-aa
-km
+Pb
 Cx
-VU
+AD
 Ii
+YC
 Tm
-wg
+Zs
 Ho
 RQ
-LM
 Cx
 km
+KC
 aa
 aa
 aa
@@ -82976,20 +82972,20 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
 aa
 aa
 aa
@@ -83275,18 +83271,18 @@ aa
 aa
 aa
 aa
-aa
-km
+Pb
 Cx
-tb
+LM
 Cx
 km
 VN
 km
 Cx
-tb
+LM
 Cx
 km
+KC
 aa
 aa
 aa
@@ -83298,20 +83294,20 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
 aa
 aa
 aa
@@ -83597,18 +83593,18 @@ aa
 aa
 aa
 aa
-aa
-km
+Pb
 Cx
-YC
+VU
 Cx
 km
 VN
 km
 Cx
-YC
+VU
 Cx
 km
+KC
 aa
 aa
 aa
@@ -83620,20 +83616,20 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
 aa
 aa
 aa
@@ -83919,8 +83915,7 @@ aa
 aa
 aa
 aa
-aa
-km
+Pb
 km
 km
 km
@@ -83931,6 +83926,7 @@ km
 km
 km
 km
+KC
 aa
 aa
 aa
@@ -83942,20 +83938,20 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
 aa
 aa
 aa
@@ -84241,8 +84237,7 @@ aa
 aa
 aa
 aa
-aa
-km
+Pb
 Cx
 Ni
 Cx
@@ -84253,6 +84248,7 @@ Cx
 Ni
 Cx
 km
+KC
 aa
 aa
 aa
@@ -84264,20 +84260,20 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
 aa
 aa
 aa
@@ -84563,18 +84559,18 @@ aa
 aa
 aa
 aa
-aa
-km
+Pb
 Cx
-AD
+tb
 Cx
 km
 VN
 km
 Cx
-AD
+tb
 Cx
 km
+KC
 aa
 aa
 aa
@@ -84586,20 +84582,20 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
 aa
 aa
 aa
@@ -84885,43 +84881,43 @@ aa
 aa
 aa
 aa
-aa
-km
+Pb
 Cx
-VU
+AD
 Ii
+YC
 Tm
-wg
+Zs
 Ho
 RQ
-LM
 Cx
 km
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+KC
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
 aa
 aa
 aa
@@ -85207,43 +85203,43 @@ aa
 aa
 aa
 aa
-aa
-km
+Pb
 Cx
-tb
+LM
 Cx
 km
 VN
 km
 Cx
-tb
+LM
 Cx
 km
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+KC
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
 aa
 aa
 aa
@@ -85529,42 +85525,42 @@ aa
 aa
 aa
 aa
-aa
-km
+Pb
 Cx
-YC
+VU
 Cx
 km
 VN
 km
 Cx
-YC
+VU
 Cx
 km
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+KC
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
 aa
 aa
 aa
@@ -85851,8 +85847,7 @@ aa
 aa
 aa
 aa
-aa
-km
+Pb
 km
 km
 km
@@ -85863,30 +85858,31 @@ km
 km
 km
 km
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+KC
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
 aa
 aa
 aa
@@ -86173,8 +86169,7 @@ aa
 aa
 aa
 aa
-aa
-km
+Pb
 Cx
 Ni
 Cx
@@ -86185,30 +86180,31 @@ Cx
 Ni
 Cx
 km
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+KC
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
 aa
 aa
 aa
@@ -86495,42 +86491,42 @@ aa
 aa
 aa
 aa
-aa
-km
+Pb
 Cx
-AD
+tb
 Cx
 km
 VN
 km
 Cx
-AD
+tb
 Cx
 km
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+KC
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
 aa
 aa
 aa
@@ -86817,42 +86813,42 @@ aa
 aa
 aa
 aa
-aa
-km
+Pb
 Cx
-VU
+AD
 Ii
+YC
 Tm
-wg
+Zs
 Ho
 RQ
-LM
 Cx
 km
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+KC
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
 aa
 aa
 aa
@@ -87139,18 +87135,18 @@ aa
 aa
 aa
 aa
-aa
-km
+Pb
 Cx
-tb
+LM
 Cx
 km
 VN
 km
 Cx
-tb
+LM
 Cx
 km
+KC
 aa
 aa
 aa
@@ -87163,18 +87159,18 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
 aa
 aa
 aa
@@ -87461,18 +87457,18 @@ aa
 aa
 aa
 aa
-aa
-km
+Pb
 Cx
-YC
+VU
 Cx
 km
 VN
 km
 Cx
-YC
+VU
 Cx
 km
+KC
 aa
 aa
 aa
@@ -87485,18 +87481,18 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
 aa
 aa
 aa
@@ -87783,8 +87779,7 @@ aa
 aa
 aa
 aa
-aa
-km
+Pb
 km
 km
 km
@@ -87795,6 +87790,7 @@ km
 km
 km
 km
+KC
 aa
 aa
 aa
@@ -87807,18 +87803,18 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
 aa
 aa
 aa
@@ -88105,8 +88101,7 @@ aa
 aa
 aa
 aa
-aa
-km
+Pb
 Cx
 Ni
 Cx
@@ -88117,6 +88112,7 @@ Cx
 Ni
 Cx
 km
+KC
 aa
 aa
 aa
@@ -88129,18 +88125,18 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
+Ru
 aa
 aa
 aa
@@ -88427,18 +88423,18 @@ aa
 aa
 aa
 aa
-aa
-km
+Pb
 Cx
-AD
+tb
 Cx
 km
 VN
 km
 Cx
-AD
+tb
 Cx
 km
+KC
 aa
 aa
 aa
@@ -88749,18 +88745,18 @@ aa
 aa
 aa
 aa
-aa
-km
+Pb
 Cx
-VU
+AD
 Ii
-Tm
+YC
+Gx
 Zs
 Ho
 RQ
-LM
 Cx
 km
+KC
 aa
 aa
 aa
@@ -89071,18 +89067,18 @@ aa
 aa
 aa
 aa
-aa
-km
+Pb
 Cx
-tb
-Cx
-km
-tb
-km
-Cx
-tb
+LM
 Cx
 km
+LM
+km
+Cx
+LM
+Cx
+km
+KC
 aa
 aa
 aa
@@ -89393,18 +89389,18 @@ aa
 aa
 aa
 aa
-aa
-km
+Pb
 Cx
-YC
-Cx
-km
-YC
-km
-Cx
-YC
+VU
 Cx
 km
+VU
+km
+Cx
+VU
+Cx
+km
+KC
 aa
 aa
 aa
@@ -89715,7 +89711,7 @@ aa
 aa
 aa
 aa
-aa
+Pb
 km
 km
 km
@@ -89726,7 +89722,7 @@ km
 km
 km
 km
-km
+KC
 aa
 aa
 aa

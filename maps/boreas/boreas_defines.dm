@@ -4,7 +4,7 @@
 
 #define BOREAS_PER_N2		0.74 //percent
 #define BOREAS_PER_O2		0.18
-#define BOREAS_PER_N2O		0.00 //Currently no capacity to 'start' a turf with this. See turf.dm
+#define BOREAS_PER_N2O		0.00
 #define BOREAS_PER_CO2		0.07
 #define BOREAS_PER_PHORON	0.00
 
