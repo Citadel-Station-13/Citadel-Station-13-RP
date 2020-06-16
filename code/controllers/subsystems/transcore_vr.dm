@@ -25,7 +25,7 @@ SUBSYSTEM_DEF(transcore)
 	var/datum/transhuman/mind_record/list/backed_up = list()	// All known mind records, indexed by MR.mindname/mind.name
 	var/datum/transhuman/mind_record/list/has_left = list()		// Why do we even have this?
 	var/datum/transhuman/body_record/list/body_scans = list()	// All known body records, indexed by BR.mydna.name
-	var/list/obj/item/implant/backup/list/implants = list()	// All OPERATING implants that are being ticked
+	var/list/obj/item/implant/backup/implants = list()	// All OPERATING implants that are being ticked
 
 	var/list/current_run = list()
 
@@ -167,14 +167,14 @@ SUBSYSTEM_DEF(transcore)
 		global_announcer.autosay("[name] is past-due for a mind backup.", "TransCore Oversight", "Medical")
 
 // Called from mind_record to add itself to the transcore.
-/datum/controller/subsystem/transcore/proc/add_backup(var/datum/transhuman/mind_record/MR)
+/datum/controller/subsystem/transcore/proc/add_backup(datum/transhuman/mind_record/MR)
 	ASSERT(MR)
 	backed_up[MR.mindname] = MR
 	backed_up = sortTim(backed_up, /proc/cmp_text_asc, TRUE)
 	subsystem_log("Added [MR.mindname] to transcore DB.")
 
 // Remove a mind_record from the backup-checking list.  Keeps track of it in has_left // Why do we do that? ~Leshana
-/datum/controller/subsystem/transcore/proc/stop_backup(var/datum/transhuman/mind_record/MR)
+/datum/controller/subsystem/transcore/proc/stop_backup(datum/transhuman/mind_record/MR)
 	ASSERT(MR)
 	has_left[MR.mindname] = MR
 	backed_up.Remove("[MR.mindname]")
@@ -182,20 +182,20 @@ SUBSYSTEM_DEF(transcore)
 	subsystem_log("Put [MR.mindname] in transcore suspended DB.")
 
 // Called from body_record to add itself to the transcore.
-/datum/controller/subsystem/transcore/proc/add_body(var/datum/transhuman/body_record/BR)
+/datum/controller/subsystem/transcore/proc/add_body(datum/transhuman/body_record/BR)
 	ASSERT(BR)
 	body_scans[BR.mydna.name] = BR
 	body_scans = sortTim(body_scans, /proc/cmp_text_asc, TRUE)
 	subsystem_log("Added [BR.mydna.name] to transcore body DB.")
 
 // Remove a body record from the database (Usually done when someone cryos)  // Why? ~Leshana
-/datum/controller/subsystem/transcore/proc/remove_body(var/datum/transhuman/body_record/BR)
+/datum/controller/subsystem/transcore/proc/remove_body(datum/transhuman/body_record/BR)
 	ASSERT(BR)
 	body_scans.Remove("[BR.mydna.name]")
 	subsystem_log("Removed [BR.mydna.name] from transcore body DB.")
 
 // Moves all mind records from the databaes into the disk and shuts down all backup canary processing.
-/datum/controller/subsystem/transcore/proc/core_dump(var/obj/item/disk/transcore/disk)
+/datum/controller/subsystem/transcore/proc/core_dump(obj/item/disk/transcore/disk)
 	ASSERT(disk)
 	global_announcer.autosay("An emergency core dump has been initiated!", "TransCore Oversight", "Command")
 	global_announcer.autosay("An emergency core dump has been initiated!", "TransCore Oversight", "Medical")
