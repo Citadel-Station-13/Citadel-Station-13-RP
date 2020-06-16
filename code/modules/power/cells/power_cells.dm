@@ -5,20 +5,11 @@
 	maxcharge = 500
 	matter = list(DEFAULT_WALL_MATERIAL = 700, "glass" = 40)
 
-/obj/item/cell/crap/empty/New()
-	..()
-	charge = 0
-
 /obj/item/cell/secborg
 	name = "security borg rechargable D battery"
 	origin_tech = list(TECH_POWER = 0)
 	maxcharge = 600	//600 max charge / 100 charge per shot = six shots
 	matter = list(DEFAULT_WALL_MATERIAL = 700, "glass" = 40)
-
-/obj/item/cell/secborg/empty/New()
-	..()
-	charge = 0
-	update_icon()
 
 /obj/item/cell/apc
 	name = "heavy-duty power cell"
@@ -33,11 +24,6 @@
 	maxcharge = 10000
 	matter = list(DEFAULT_WALL_MATERIAL = 700, "glass" = 60)
 
-/obj/item/cell/high/empty/New()
-	..()
-	charge = 0
-	update_icon()
-
 /obj/item/cell/super
 	name = "super-capacity power cell"
 	origin_tech = list(TECH_POWER = 5)
@@ -45,22 +31,12 @@
 	maxcharge = 20000
 	matter = list(DEFAULT_WALL_MATERIAL = 700, "glass" = 70)
 
-/obj/item/cell/super/empty/New()
-	..()
-	charge = 0
-	update_icon()
-
 /obj/item/cell/hyper
 	name = "hyper-capacity power cell"
 	origin_tech = list(TECH_POWER = 6)
 	icon_state = "hpcell"
 	maxcharge = 30000
 	matter = list(DEFAULT_WALL_MATERIAL = 700, "glass" = 80)
-
-/obj/item/cell/hyper/empty/New()
-	..()
-	charge = 0
-	update_icon()
 
 /obj/item/cell/infinite
 	name = "infinite-capacity power cell!"
