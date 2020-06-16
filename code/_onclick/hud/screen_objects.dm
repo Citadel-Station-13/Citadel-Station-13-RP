@@ -261,7 +261,7 @@
 							var/list/tanks = list()
 							// first, hand
 							locnames += "in your hand"
-							tanks += get_active_hand()
+							tanks += C.get_active_hand()
 							// yes, the above can result in duplicates.
 							// snowflake rig handling, second highest priority
 							if(istype(C.back, /obj/item/rig))
@@ -294,18 +294,18 @@
 							else
 								// right/left hands
 								locnames += "in your right hand"
-								tanks += H.r_hand
+								tanks += C.r_hand
 								locnames += "in your left hand"
-								tanks += H.l_hand
+								tanks += C.l_hand
 								// back
 								locnames += "on your back"
-								tanks += H.back
+								tanks += C.back
 							// no more hugbox and stupid "smart" checks. take the first one we can find and use it. they can use active hand to override if needed.
 							for(var/index = 1 to length(tanks))
 								if(!istype(tanks[index], /obj/item/tank))
 									continue
 								C.internal = tanks[index]
-								to_chat(C, "<span class='notice'>You are now running on internals from [tank] on your [locnames[index]]</span>")
+								to_chat(C, "<span class='notice'>You are now running on internals from [tanks[index]] on your [locnames[index]]</span>")
 								if(C.internals)
 									C.internals.icon_state = "internal1"
 								return
