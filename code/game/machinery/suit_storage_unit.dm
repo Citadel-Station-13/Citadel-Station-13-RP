@@ -402,9 +402,9 @@
 
 	if(OCCUPANT.client)
 		if(user != OCCUPANT)
-			OCCUPANT << "<font color='blue'>The machine kicks you out!</font>"
+			to_chat(OCCUPANT, "<font color='blue'>The machine kicks you out!</font>")
 		if(user.loc != src.loc)
-			OCCUPANT << "<font color='blue'>You leave the not-so-cozy confines of the SSU.</font>"
+			to_chat(OCCUPANT, "<font color='blue'>You leave the not-so-cozy confines of the SSU.</font>")
 
 		OCCUPANT.client.eye = OCCUPANT.client.mob
 		OCCUPANT.client.perspective = MOB_PERSPECTIVE
@@ -477,8 +477,8 @@
 		to_chat(user, "<font color='blue'>You [panelopen ? "open up" : "close"] the unit's maintenance panel.</font>")
 		updateUsrDialog()
 		return
-	if(istype(I, /obj/item/weapon/grab))
-		var/obj/item/weapon/grab/G = I
+	if(istype(I, /obj/item/grab))
+		var/obj/item/grab/G = I
 		if(!(ismob(G.affecting)))
 			return
 		if(!isopen)
@@ -586,9 +586,9 @@
 	var/electrified = 0
 
 	//Departments that the cycler can paint suits to look like.
-	var/list/departments = list("Engineering","Mining","Medical","Security","Atmos","HAZMAT","Construction","Biohazard","Emergency Medical Response","Crowd Control","Director")
+	var/list/departments = list("Engineering","Mining","Medical","Security","Atmos","HAZMAT","Construction","Biohazard","Emergency Medical Response","Crowd Control","Director","Head of Security")
 	//Species that the suits can be configured to fit.
-	var/list/species = list(SPECIES_HUMAN,SPECIES_SKRELL,SPECIES_UNATHI,SPECIES_TAJ, SPECIES_TESHARI, "Nevrean", "Akula", "Sergal", "Flatland Zorren", "Highlander Zorren", "Vulpkanin", "Promethean", "Xenomorph Hybrid", "Xenochimera","Vasilissan", "Rapala") //VORESTATION EDIT
+	var/list/species = list(SPECIES_HUMAN,SPECIES_SKRELL,SPECIES_UNATHI,SPECIES_TAJ, SPECIES_TESHARI, "Nevrean", "Akula", "Sergal", "Flatland Zorren", "Highlander Zorren", "Vulpkanin", "Promethean", "Xenomorph Hybrid", "Xenochimera","Vasilissan", "Rapala", "Vox") //VORESTATION EDIT
 
 	var/target_department
 	var/target_species
@@ -648,7 +648,7 @@
 	model_text = "Exploration"
 	departments = list("Exploration","Old Exploration")
 
-/obj/machinery/suit_cycler/exploreration/initialize()
+/obj/machinery/suit_cycler/exploration/Initialize()
 	species -= SPECIES_TESHARI
 	return ..()
 
@@ -664,6 +664,13 @@
 	departments = list("Director")
 	species = list(SPECIES_HUMAN,SPECIES_SKRELL,SPECIES_UNATHI,SPECIES_TAJ, "Vulpkanin")
 
+/obj/machinery/suit_cycler/headofsecurity
+	name = "Head of Security suit cycler"
+	model_text = "Head of Security"
+	req_access = list(access_hos)
+	departments = list("Head of Security")
+	species = list(SPECIES_HUMAN,SPECIES_UNATHI,SPECIES_TAJ, "Vulpkanin")
+
 /obj/machinery/suit_cycler/attack_ai(mob/user as mob)
 	return attack_hand(user)
 
@@ -674,13 +681,13 @@
 			return
 
 	//Hacking init.
-	if(istype(I, /obj/item/device/multitool) || I.is_wirecutter())
+	if(istype(I, /obj/item/multitool) || I.is_wirecutter())
 		if(panel_open)
 			attack_hand(user)
 		return
 	//Other interface stuff.
-	if(istype(I, /obj/item/weapon/grab))
-		var/obj/item/weapon/grab/G = I
+	if(istype(I, /obj/item/grab))
+		var/obj/item/grab/G = I
 
 		if(!(ismob(G.affecting)))
 			return
@@ -774,7 +781,7 @@
 	//Clear the access reqs, disable the safeties, and open up all paintjobs.
 	to_chat(user, "<span class='danger'>You run the sequencer across the interface, corrupting the operating protocols.</span>")
 	departments = list("Engineering","Mining","Medical","Security","Atmos","HAZMAT","Construction","Biohazard","Crowd Control","Emergency Medical Response","^%###^%$", "Charring")
-	species = list(SPECIES_HUMAN,SPECIES_SKRELL,SPECIES_UNATHI,SPECIES_TAJ, SPECIES_TESHARI, "Nevrean", "Akula", "Sergal", "Flatland Zorren", "Highlander Zorren", "Vulpkanin", "Promethean", "Xenomorph Hybrid", "Vasilissan", "Rapala") //VORESTATION EDIT
+	species = list(SPECIES_HUMAN,SPECIES_SKRELL,SPECIES_UNATHI,SPECIES_TAJ, SPECIES_TESHARI, "Nevrean", "Akula", "Sergal", "Flatland Zorren", "Highlander Zorren", "Vulpkanin", "Promethean", "Xenomorph Hybrid", "Vasilissan", "Rapala", "Vox") //VORESTATION EDIT
 
 	emagged = 1
 	safeties = 0
@@ -965,7 +972,7 @@
 /obj/machinery/suit_cycler/proc/eject_occupant(mob/user as mob)
 
 	if(locked || active)
-		user << "<span class='warning'>The cycler is locked.</span>"
+		to_chat(user, "<span class='warning'>The cycler is locked.</span>")
 		return
 
 	if(!occupant)
@@ -1173,13 +1180,24 @@
 				suit.item_state_slots[slot_l_hand_str] = "sec_voidsuitTG"
 		if("Director")
 			if(helmet)
-				helmet.name = "colony director's voidsuit helmet"
+				helmet.name = "Facility Director's voidsuit helmet"
 				helmet.icon_state = "capvoid"
 				helmet.item_state= "capvoid"
 			if(suit)
-				suit.name = "colony director's voidsuit"
+				suit.name = "Facility Director's voidsuit"
 				suit.icon_state = "capsuit_void"
 				suit.item_state = "capsuit_void"
+				suit.item_state_slots[slot_r_hand_str] = "sec_voidsuitTG"
+				suit.item_state_slots[slot_l_hand_str] = "sec_voidsuitTG"
+		if("Head of Security")
+			if(helmet)
+				helmet.name = "head of security's protosuit helmet"
+				helmet.icon_state = "hosproto"
+				helmet.item_state= "hosproto"
+			if(suit)
+				suit.name = "head of security's protosuit"
+				suit.icon_state = "hosproto_void"
+				suit.item_state = "hosproto_void"
 				suit.item_state_slots[slot_r_hand_str] = "sec_voidsuitTG"
 				suit.item_state_slots[slot_l_hand_str] = "sec_voidsuitTG"
 

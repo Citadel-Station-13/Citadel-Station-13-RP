@@ -5,53 +5,11 @@
 	icon = 'modular_citadel/icons/obj/kitchen.dmi'
 
 //code/game/machinery/newscaster.dm
-/obj/item/weapon/newspaper
+/obj/item/newspaper
 	icon = 'modular_citadel/icons/obj/bureaucracy.dmi'
 
-//code/game/objects/items/weapons/storage/boxes.dm
-/obj/item/weapon/storage/box
-	icon = 'modular_citadel/icons/obj/storage.dmi'
-
-/obj/item/weapon/storage/box/blanks
-	icon = 'icons/obj/storage.dmi'
-
-/obj/item/weapon/storage/box/beanbags
-	icon = 'icons/obj/storage.dmi'
-
-/obj/item/weapon/storage/box/shotgunammo
-	icon = 'icons/obj/storage.dmi'
-
-/obj/item/weapon/storage/box/shotgunshells
-	icon = 'icons/obj/storage.dmi'
-
-/obj/item/weapon/storage/box/flashshells
-	icon = 'icons/obj/storage.dmi'
-
-/obj/item/weapon/storage/box/stunshells
-	icon = 'icons/obj/storage.dmi'
-
-/obj/item/weapon/storage/box/practiceshells
-	icon = 'icons/obj/storage.dmi'
-
-/obj/item/weapon/storage/box/empshells
-	icon = 'icons/obj/storage.dmi'
-
-/obj/item/weapon/storage/box/pillbottles
+/obj/item/storage/box/pillbottles
 	icon_state = "pillbox"
-
-/obj/item/weapon/storage/box/lights
-	icon = 'modular_citadel/icons/obj/storage.dmi'
-
-//code/game/objects/items/weapons/storage/firstaid.dm
-/obj/item/weapon/storage/firstaid/surgery
-	icon = 'modular_citadel/icons/obj/storage.dmi'
-
-//code/game/objects/items/weapons/storage/toolbox.dm
-/obj/item/weapon/storage/toolbox
-	icon = 'modular_citadel/icons/obj/storage.dmi'
-
-/obj/item/weapon/storage/toolbox/lunchbox
-	icon = 'icons/obj/storage.dmi'
 
 //code/game/objects/structures/crates_lockers/closets.dm
 /obj/structure/closet
@@ -63,11 +21,11 @@
 
 //code/game/objects/structures/crates_lockers/crates.dm
 /obj/structure/closet/crate
-	icon = 'modular_citadel/icons/obj/storage.dmi'
+	icon = 'icons/obj/storage.dmi'
 
 //code/game/objects/structures/tank_dispenser.dm
 /obj/structure/dispenser
-	icon = 'modular_citadel/icons/obj/objects.dmi'
+	icon = 'icons/obj/objects.dmi'
 
 //code/game/objects/structures/under_wardrobe.dm
 /obj/structure/undies_wardrobe
@@ -85,11 +43,11 @@
 	icon = 'modular_citadel/icons/obj/bureaucracy.dmi'
 
 //code/modules/paperwork/paperbin.dm
-/obj/item/weapon/paper_bin
+/obj/item/paper_bin
 	icon = 'modular_citadel/icons/obj/bureaucracy.dmi'
 
 //code/modules/paperwork/pen.dm
-/obj/item/weapon/pen
+/obj/item/pen
 	icon = 'modular_citadel/icons/obj/bureaucracy.dmi'
 
 //code/modules/paperwork/photocopier.dm
@@ -97,7 +55,7 @@
 	icon = 'modular_citadel/icons/obj/library.dmi'
 
 //code/modules/paperwork/stamps.dm
-/obj/item/weapon/stamp
+/obj/item/stamp
 	icon = 'modular_citadel/icons/obj/bureaucracy.dmi'
 
 //code/modules/reagents/dispenser/dispenser2.dm
@@ -113,24 +71,6 @@
 
 /obj/machinery/chemical_dispenser/bar_coffee
 	icon = 'icons/obj/chemical.dmi'
-
-//code/modules/reagents/reagent_dispenser.dm
-/obj/structure/reagent_dispensers/watertank
-	icon = 'modular_citadel/icons/obj/objects.dmi'
-
-/obj/structure/reagent_dispensers/fueltank
-	icon = 'modular_citadel/icons/obj/objects.dmi'
-
-/obj/structure/reagent_dispensers/water_cooler
-	icon = 'modular_citadel/icons/obj/vending.dmi'
-
-
-//code/modules/recycling/sortingmachinery.dm
-/obj/structure/bigDelivery
-	icon = 'modular_citadel/icons/obj/storage.dmi'
-
-/obj/item/smallDelivery
-	icon = 'modular_citadel/icons/obj/storage.dmi'
 
 //code/modules/paperwork/faxmachine.dm
 /obj/machinery/photocopier/faxmachine
@@ -193,13 +133,9 @@
 /obj/machinery/vending/wallmed_airlock
 	icon = 'icons/obj/vending_vr.dmi'
 
-//code/game/objects/items/devices/PDA/PDA.dm
-/obj/item/weapon/storage/box/PDAs
-	icon = 'modular_citadel/icons/obj/storage.dmi'
-
 //Fixes missing RSF icon.
 //code/game/objects/items/weapons/RSF.dm
-/obj/item/weapon/rsf
+/obj/item/rsf
 	icon = 'icons/obj/tools.dmi'
 
 //code/modules/economy/atm.dm
@@ -207,30 +143,26 @@
 	icon = 'modular_citadel/icons/obj/terminals.dmi'
 
 //code/game/objects/items/weapons/storage/briefcase.dm
-/obj/item/weapon/storage/briefcase
-	icon = 'modular_citadel/icons/obj/storage.dmi'
+/obj/item/storage/briefcase
 	item_icons = list(
 		slot_l_hand_str = 'modular_citadel/icons/mob/items/lefthand_storage.dmi',
 		slot_r_hand_str = 'modular_citadel/icons/mob/items/righthand_storage.dmi',
 		)
 
-/obj/item/weapon/storage/briefcase/clutch
-	icon = 'icons/obj/storage.dmi'
+/obj/item/storage/briefcase/clutch
 	item_icons = list(
 		slot_l_hand_str = 'icons/mob/items/lefthand_storage.dmi',
 		slot_r_hand_str = 'icons/mob/items/righthand_storage.dmi',
 		)
 
-/obj/item/weapon/storage/briefcase/inflatable
-	icon = 'icons/obj/storage.dmi'
+/obj/item/storage/briefcase/inflatable
 	item_icons = list(
 		slot_l_hand_str = 'icons/mob/items/lefthand_storage.dmi',
 		slot_r_hand_str = 'icons/mob/items/righthand_storage.dmi',
 		)
 
 //code/game/objects/items/weapons/storage/secure.dm
-/obj/item/weapon/storage/secure/briefcase
-	icon = 'modular_citadel/icons/obj/storage.dmi'
+/obj/item/storage/secure/briefcase
 	item_icons = list(
 		slot_l_hand_str = 'modular_citadel/icons/mob/items/lefthand_storage.dmi',
 		slot_r_hand_str = 'modular_citadel/icons/mob/items/righthand_storage.dmi',

@@ -7,9 +7,9 @@
 	icon_override = 'modular_citadel/icons/mob/plasmeme/suit.dmi'
 	desc = "A suit designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. Seems like it doesn't protect from much else."
 	slowdown = 1
-	item_flags = STOPPRESSUREDAMAGE | AIRTIGHT
+	item_flags = AIRTIGHT
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 100, rad = 20)
-	allowed = list(/obj/item/weapon/tank)
+	allowed = list(/obj/item/tank)
 	can_breach = 0 // w h y ?
 	valid_accessory_slots = (\
 		ACCESSORY_SLOT_UTILITY\
@@ -32,7 +32,7 @@
 	icon_state = "plasmaman_helmet"
 	icon_override = 'modular_citadel/icons/mob/plasmeme/helmet.dmi'
 	desc = "A helmet designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. Comes with a little light built in!"
-	item_flags = STOPPRESSUREDAMAGE | AIRTIGHT | FLEXIBLEMATERIAL
+	item_flags = AIRTIGHT | FLEXIBLEMATERIAL
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 100, rad = 20)
 	light_overlay = "plasmaman_overlay"
 
@@ -58,7 +58,7 @@
 
 /obj/item/clothing/suit/space/plasman/sec/captain
 	icon_state = "plasmaman_suitcaptain"
-	desc = "A suit designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. This one is armored for the Colony Director!"
+	desc = "A suit designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. This one is armored for the Facility Director!"
 
 /obj/item/clothing/head/helmet/space/plasman/sec
 	icon_state = "plasmaman_helmetsecurity"
@@ -76,7 +76,7 @@
 
 /obj/item/clothing/head/helmet/space/plasman/sec/captain
 	icon_state = "plasmaman_helmetcaptain"
-	desc = "A helmet designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. This one is armored for the Colony Director!"
+	desc = "A helmet designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. This one is armored for the Facility Director!"
 
 //
 // MEDICAL

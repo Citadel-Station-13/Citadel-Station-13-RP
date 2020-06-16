@@ -1,0 +1,6 @@
+author: "Enzo-Leon"
+delete-after: True
+changes: 
+  - rscadd: "TechPriest Sprite"
+  - rscadd: "TechPriest Robe spawns in Chapel."
+  - rscadd: "TechPriest Robe added to costume crate, and expensive special crate."

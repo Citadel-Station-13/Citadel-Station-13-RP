@@ -25,7 +25,7 @@ var/list/blobs = list()
 	update_icon()
 	if(!integrity)
 		integrity = max_integrity
-	set_dir(pick(cardinal))
+	setDir(pick(cardinal))
 	blobs += src
 	consume_tile()
 
@@ -46,9 +46,8 @@ var/list/blobs = list()
 		color = null
 		set_light(0)
 
-/obj/structure/blob/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
-	if(air_group || (height==0))
-		return TRUE
+// Blob tiles are not actually dense so we need Special Code(tm).
+/obj/structure/blob/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover) && mover.checkpass(PASSBLOB))
 		return TRUE
 	else if(istype(mover, /mob/living))
@@ -57,12 +56,9 @@ var/list/blobs = list()
 			return TRUE
 	else if(istype(mover, /obj/item/projectile))
 		var/obj/item/projectile/P = mover
-		if(P.firer && P.firer.faction == "blob")
+		if(istype(P.firer) && P.firer.faction == "blob")
 			return TRUE
-		return FALSE
-	else
-		return FALSE
-//	return ..()
+	return FALSE
 
 /obj/structure/blob/examine(mob/user)
 	..()
@@ -199,7 +195,7 @@ var/list/blobs = list()
 
 /obj/structure/blob/proc/blob_attack_animation(atom/A = null, controller) //visually attacks an atom
 	var/obj/effect/temporary_effect/blob_attack/O = new /obj/effect/temporary_effect/blob_attack(src.loc)
-	O.set_dir(dir)
+	O.setDir(dir)
 	if(controller)
 		var/mob/observer/blob/BO = controller
 		O.color = BO.blob_type.color
@@ -218,11 +214,11 @@ var/list/blobs = list()
 	if(controller)
 		B.overmind = controller
 	B.update_icon()
-	B.set_dir(dir)
+	B.setDir(dir)
 	qdel(src)
 	return B
 
-/obj/structure/blob/attackby(var/obj/item/weapon/W, var/mob/user)
+/obj/structure/blob/attackby(var/obj/item/W, var/mob/user)
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	playsound(loc, 'sound/effects/attackblob.ogg', 50, 1)
 	visible_message("<span class='danger'>\The [src] has been attacked with \the [W][(user ? " by [user]." : ".")]</span>")
@@ -257,7 +253,7 @@ var/list/blobs = list()
 	if(!P)
 		return
 
-	if(P.firer && P.firer.faction == "blob")
+	if(istype(P.firer) && P.firer.faction == "blob")
 		return
 
 	var/damage = P.get_structure_damage() // So tasers don't hurt the blob.

@@ -3,7 +3,7 @@
 //m_type == 2 --> audible
 /mob/proc/custom_emote(var/m_type=1,var/message = null,var/range=world.view)
 	if(stat || !use_me && usr == src)
-		src << "You are unable to emote."
+		to_chat(src, "You are unable to emote.")
 		return
 
 	var/muzzled = is_muzzled()
@@ -52,19 +52,26 @@
 				if(O)
 					O.see_emote(src, message, m_type)
 
+// Shortcuts for above proc
+/mob/proc/visible_emote(var/act_desc)
+	custom_emote(1, act_desc)
+
+/mob/proc/audible_emote(var/act_desc)
+	custom_emote(2, act_desc)
+
 /mob/proc/emote_dead(var/message)
 
 	if(client.prefs.muted & MUTE_DEADCHAT)
-		src << "<span class='danger'>You cannot send deadchat emotes (muted).</span>"
+		to_chat(src, "<span class='danger'>You cannot send deadchat emotes (muted).</span>")
 		return
 
 	if(!is_preference_enabled(/datum/client_preference/show_dsay))
-		src << "<span class='danger'>You have deadchat muted.</span>"
+		to_chat(src, "<span class='danger'>You have deadchat muted.</span>")
 		return
 
 	if(!src.client.holder)
-		if(!config.dsay_allowed)
-			src << "<span class='danger'>Deadchat is globally muted.</span>"
+		if(!config_legacy.dsay_allowed)
+			to_chat(src, "<span class='danger'>Deadchat is globally muted.</span>")
 			return
 
 

@@ -10,6 +10,10 @@
 	name = "Tether Debug Space"
 	requires_power = 0
 
+/area/maintenance/bar/catwalk
+	name = "Bar Maintenance Catwalk"
+	icon_state = "maint_bar"
+
 // Tether Areas itself
 /area/tether/surfacebase/tether
 	icon = 'icons/turf/areas_vr.dmi'
@@ -26,6 +30,8 @@
 	delay_time = 2 SECONDS
 	forced_ambience = list('sound/music/elevator.ogg')
 	dynamic_lighting = FALSE //Temporary fix for elevator lighting
+
+	requires_power = FALSE
 
 /area/turbolift/tether/transit
 	name = "tether (midway)"
@@ -74,10 +80,12 @@
 /area/vacant/vacant_restaurant_upper
 	name = "\improper Vacant Restaurant"
 	icon_state = "vacant_site"
+	flags = null
 
 /area/vacant/vacant_restaurant_lower
 	name = "\improper Vacant Restaurant"
 	icon_state = "vacant_site"
+	flags = null
 
 /area/engineering/engineering_airlock
 	name = "\improper Engineering Airlock"
@@ -94,3 +102,7 @@
 /area/vacant/vacant_office
 	name = "\improper Vacant Office"
 	icon_state = "vacant_site"
+
+/area/medical/psych_ward
+	name = "\improper Psych Ward"
+	icon_state = "psych_ward"

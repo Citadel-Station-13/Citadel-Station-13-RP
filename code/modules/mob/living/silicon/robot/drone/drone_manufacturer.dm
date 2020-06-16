@@ -11,7 +11,7 @@
 
 	density = 1
 	anchored = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 20
 	active_power_usage = 5000
 
@@ -34,9 +34,6 @@
 	fabricator_tag = "Upper Level Mining"
 	drone_type = /mob/living/silicon/robot/drone/mining
 
-/obj/machinery/drone_fabricator/New()
-	..()
-
 /obj/machinery/drone_fabricator/power_change()
 	..()
 	if (stat & NOPOWER)
@@ -44,7 +41,7 @@
 
 /obj/machinery/drone_fabricator/process()
 
-	if(ticker.current_state < GAME_STATE_PLAYING)
+	if(SSticker.current_state < GAME_STATE_PLAYING)
 		return
 
 	if(stat & NOPOWER || !produce_drones)
@@ -57,22 +54,22 @@
 
 	icon_state = "drone_fab_active"
 	var/elapsed = world.time - time_last_drone
-	drone_progress = round((elapsed/config.drone_build_time)*100)
+	drone_progress = round((elapsed/config_legacy.drone_build_time)*100)
 
 	if(drone_progress >= 100)
 		visible_message("\The [src] voices a strident beep, indicating a drone chassis is prepared.")
 
 /obj/machinery/drone_fabricator/examine(mob/user)
 	..(user)
-	if(produce_drones && drone_progress >= 100 && istype(user,/mob/observer/dead) && config.allow_drone_spawn && count_drones() < config.max_maint_drones)
-		user << "<BR><B>A drone is prepared. Select 'Join As Drone' from the Ghost tab to spawn as a maintenance drone.</B>"
+	if(produce_drones && drone_progress >= 100 && istype(user,/mob/observer/dead) && config_legacy.allow_drone_spawn && count_drones() < config_legacy.max_maint_drones)
+		to_chat(user, "<BR><B>A drone is prepared. Select 'Join As Drone' from the Ghost tab to spawn as a maintenance drone.</B>")
 
 /obj/machinery/drone_fabricator/proc/create_drone(var/client/player)
 
 	if(stat & NOPOWER)
 		return
 
-	if(!produce_drones || !config.allow_drone_spawn || count_drones() >= config.max_maint_drones)
+	if(!produce_drones || !config_legacy.allow_drone_spawn || count_drones() >= config_legacy.max_maint_drones)
 		return
 
 	if(player && !istype(player.mob,/mob/observer/dead))
@@ -98,12 +95,12 @@
 	set name = "Join As Drone"
 	set desc = "If there is a powered, enabled fabricator in the game world with a prepared chassis, join as a maintenance drone."
 
-	if(ticker.current_state < GAME_STATE_PLAYING)
-		src << "<span class='danger'>The game hasn't started yet!</span>"
+	if(SSticker.current_state < GAME_STATE_PLAYING)
+		to_chat(src, "<span class='danger'>The game hasn't started yet!</span>")
 		return
 
-	if(!(config.allow_drone_spawn))
-		src << "<span class='danger'>That verb is not currently permitted.</span>"
+	if(!(config_legacy.allow_drone_spawn))
+		to_chat(src, "<span class='danger'>That verb is not currently permitted.</span>")
 		return
 
 	if (!src.stat)
@@ -113,14 +110,14 @@
 		return 0 //something is terribly wrong
 
 	if(jobban_isbanned(src,"Cyborg"))
-		usr << "<span class='danger'>You are banned from playing synthetics and cannot spawn as a drone.</span>"
+		to_chat(usr, "<span class='danger'>You are banned from playing synthetics and cannot spawn as a drone.</span>")
 		return
 
 	if(!MayRespawn(1))
 		return
 
 	var/deathtime = world.time - src.timeofdeath
-	var/deathtimeminutes = round(deathtime / 600)
+	var/deathtimeminutes = round(deathtime / (1 MINUTE))
 	var/pluralcheck = "minute"
 	if(deathtimeminutes == 0)
 		pluralcheck = ""
@@ -128,11 +125,11 @@
 		pluralcheck = " [deathtimeminutes] minute and"
 	else if(deathtimeminutes > 1)
 		pluralcheck = " [deathtimeminutes] minutes and"
-	var/deathtimeseconds = round((deathtime - deathtimeminutes * 600) / 10,1)
+	var/deathtimeseconds = round((deathtime - deathtimeminutes * 1 MINUTE) / 10,1)
 
-	if (deathtime < 3000)
-		usr << "You have been dead for[pluralcheck] [deathtimeseconds] seconds."
-		usr << "You must wait 5 minutes to respawn as a drone!"
+	if (deathtime < 5 MINUTES)
+		to_chat(usr, "You have been dead for[pluralcheck] [deathtimeseconds] seconds.")
+		to_chat(usr, "You must wait 5 minutes to respawn as a drone!")
 		return
 
 	var/list/all_fabricators = list()
@@ -143,7 +140,7 @@
 			all_fabricators[DF.fabricator_tag] = DF
 
 	if(!all_fabricators.len)
-		src << "<span class='danger'>There are no available drone spawn points, sorry.</span>"
+		to_chat(src, "<span class='danger'>There are no available drone spawn points, sorry.</span>")
 		return
 
 	var/choice = input(src,"Which fabricator do you wish to use?") as null|anything in all_fabricators

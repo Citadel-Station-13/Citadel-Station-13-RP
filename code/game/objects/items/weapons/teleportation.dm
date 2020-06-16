@@ -7,7 +7,7 @@
 /*
  * Locator
  */
-/obj/item/weapon/locator
+/obj/item/locator
 	name = "locator"
 	desc = "Used to track those with locater implants."
 	icon = 'icons/obj/device.dmi'
@@ -16,7 +16,6 @@
 	var/frequency = 1451
 	var/broadcasting = null
 	var/listening = 1.0
-	flags = CONDUCT
 	w_class = ITEMSIZE_SMALL
 	item_state = "electronic"
 	throw_speed = 4
@@ -24,7 +23,7 @@
 	origin_tech = list(TECH_MAGNET = 1)
 	matter = list(DEFAULT_WALL_MATERIAL = 400)
 
-/obj/item/weapon/locator/attack_self(mob/user as mob)
+/obj/item/locator/attack_self(mob/user as mob)
 	user.set_machine(src)
 	var/dat
 	if (src.temp)
@@ -43,13 +42,13 @@ Frequency:
 	onclose(user, "radio")
 	return
 
-/obj/item/weapon/locator/Topic(href, href_list)
+/obj/item/locator/Topic(href, href_list)
 	..()
 	if (usr.stat || usr.restrained())
 		return
 	var/turf/current_location = get_turf(usr)//What turf is the user on?
 	if(!current_location||current_location.z==2)//If turf was not found or they're on z level 2.
-		usr << "The [src] is malfunctioning."
+		to_chat(usr, "The [src] is malfunctioning.")
 		return
 	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))))
 		usr.set_machine(src)
@@ -60,7 +59,7 @@ Frequency:
 			if (sr)
 				src.temp += "<B>Located Beacons:</B><BR>"
 
-				for(var/obj/item/device/radio/beacon/W in GLOB.all_beacons)
+				for(var/obj/item/radio/beacon/W in GLOB.all_beacons)
 					if (W.frequency == src.frequency)
 						var/turf/tr = get_turf(W)
 						if (tr.z == sr.z && tr)
@@ -78,7 +77,7 @@ Frequency:
 							src.temp += "[W.code]-[dir2text(get_dir(sr, tr))]-[direct]<BR>"
 
 				src.temp += "<B>Extranneous Signals:</B><BR>"
-				for (var/obj/item/weapon/implant/tracking/W in GLOB.all_tracking_implants)
+				for (var/obj/item/implant/tracking/W in GLOB.all_tracking_implants)
 					if (!W.implanted || !(istype(W.loc,/obj/item/organ/external) || ismob(W.loc) || W.malfunction))
 						continue
 
@@ -117,7 +116,7 @@ Frequency:
 /*
  * Hand-tele
  */
-/obj/item/weapon/hand_tele
+/obj/item/hand_tele
 	name = "hand tele"
 	desc = "A portable item using blue-space technology."
 	icon = 'icons/obj/device.dmi'
@@ -131,14 +130,23 @@ Frequency:
 	matter = list(DEFAULT_WALL_MATERIAL = 10000)
 	preserve_item = 1
 
-/obj/item/weapon/hand_tele/attack_self(mob/user as mob)
+/obj/item/hand_tele/attack_self(mob/user as mob)
 	var/turf/current_location = get_turf(user)//What turf is the user on?
-	if(!current_location || current_location.z in using_map.admin_levels || current_location.block_tele)//If turf was not found or they're on z level 2 or >7 which does not currently exist.
-		user << "<span class='notice'>\The [src] is malfunctioning.</span>"
+	if(!current_location || current_location.z in GLOB.using_map.admin_levels || current_location.block_tele)//If turf was not found or they're on z level 2 or >7 which does not currently exist.
+		to_chat(user, "<span class='notice'>\The [src] is malfunctioning.</span>")
 		return
 	var/list/L = list(  )
 	for(var/obj/machinery/teleport/hub/R in machines)
-		var/obj/machinery/computer/teleporter/com = locate(/obj/machinery/computer/teleporter, locate(R.x - 2, R.y, R.z))
+		var/obj/machinery/computer/teleporter/com
+		var/obj/machinery/teleport/station/station
+		for(var/direction in cardinal)
+			station = locate(/obj/machinery/teleport/station, get_step(R, direction))
+			if(station)
+				for(direction in cardinal)
+					com = locate(/obj/machinery/computer/teleporter, get_step(station, direction))
+					if(com)
+						break
+				break
 		if (istype(com, /obj/machinery/computer/teleporter) && com.locked && !com.one_time_use)
 			if(R.icon_state == "tele1")
 				L["[com.id] (Active)"] = com.locked

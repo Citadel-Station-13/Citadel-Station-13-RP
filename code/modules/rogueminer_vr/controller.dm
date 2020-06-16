@@ -54,22 +54,22 @@ var/datum/controller/rogue/rm_controller = new()
 	)
 
 	///// Monster Lists /////
-	var/mobs = list(
-		"tier1" = list(/mob/living/simple_animal/hostile/carp, /mob/living/simple_animal/hostile/goose),
+	var/mobs = list(/*
+		"tier1" = list(/mob/living/simple_mob/animal/space/carp, /mob/living/simple_mob/animal/space/goose),
 
-		"tier2" = list(/mob/living/simple_animal/hostile/carp, /mob/living/simple_animal/hostile/goose),
+		"tier2" = list(/mob/living/simple_mob/animal/space/carp, /mob/living/simple_mob/animal/space/goose),
 
-		"tier3" = list(/mob/living/simple_animal/hostile/carp, /mob/living/simple_animal/hostile/goose,
-						/mob/living/simple_animal/hostile/bear, /mob/living/simple_animal/hostile/carp/strong),
+		"tier3" = list(/mob/living/simple_mob/animal/space/carp, /mob/living/simple_mob/animal/space/goose,
+						/mob/living/simple_mob/animal/space/bear, /mob/living/simple_mob/animal/space/carp/strong),
 
-		"tier4" = list(/mob/living/simple_animal/hostile/carp, /mob/living/simple_animal/hostile/goose, /mob/living/simple_animal/hostile/bear,
-						/mob/living/simple_animal/hostile/carp/strong, /mob/living/simple_animal/hostile/carp/pike/weak),
+		"tier4" = list(/mob/living/simple_mob/animal/space/carp, /mob/living/simple_mob/animal/space/goose, /mob/living/simple_mob/animal/space/bear,
+						/mob/living/simple_mob/animal/space/carp/strong, /mob/living/simple_mob/animal/space/carp/pike/weak),
 
-		"tier5" = list(/mob/living/simple_animal/hostile/carp, /mob/living/simple_animal/hostile/bear, /mob/living/simple_animal/hostile/carp/pike/weak,
-						/mob/living/simple_animal/hostile/carp/strong, /mob/living/simple_animal/hostile/carp/pike),
+		"tier5" = list(/mob/living/simple_mob/animal/space/carp, /mob/living/simple_mob/animal/space/bear, /mob/living/simple_mob/animal/space/carp/pike/weak,
+						/mob/living/simple_mob/animal/space/carp/strong, /mob/living/simple_mob/animal/space/carp/pike),
 
-		"tier6" = list(/mob/living/simple_animal/hostile/bear, /mob/living/simple_animal/hostile/carp/strong,
-						/mob/living/simple_animal/hostile/carp/pike, /mob/living/simple_animal/hostile/carp/pike/weak)
+		"tier6" = list(/mob/living/simple_mob/animal/space/bear, /mob/living/simple_mob/animal/space/carp/strong,
+						/mob/living/simple_mob/animal/space/carp/pike, /mob/living/simple_mob/animal/space/carp/pike/weak)*/ //VORESTATION AI TEMPORARY REMOVAL
 	)
 
 /datum/controller/rogue/New()
@@ -79,7 +79,7 @@ var/datum/controller/rogue/rm_controller = new()
 	//decay() //Decay removed for now, since people aren't getting high scores as it is.
 
 /datum/controller/rogue/proc/decay(var/manual = 0)
-	world.log << "RM(stats): DECAY on controller from [difficulty] to [difficulty+(RM_DIFF_DECAY_AMT)] min 100." //DEBUG code for playtest stats gathering.
+	log_world("RM(stats): DECAY on controller from [difficulty] to [difficulty+(RM_DIFF_DECAY_AMT)] min 100.") //DEBUG code for playtest stats gathering.
 	adjust_difficulty(RM_DIFF_DECAY_AMT)
 
 	if(!manual) //If it was called manually somehow, then don't start the timer, just decay now.
@@ -90,7 +90,7 @@ var/datum/controller/rogue/rm_controller = new()
 /datum/controller/rogue/proc/dbg(var/message)
 	ASSERT(message) //I want a stack trace if there's no message
 	if(debugging)
-		world.log << "[message]"
+		log_world("[message]")
 
 /datum/controller/rogue/proc/adjust_difficulty(var/amt)
 	ASSERT(amt)
@@ -156,7 +156,7 @@ var/datum/controller/rogue/rm_controller = new()
 		ZM_target = pick(clean_zones)
 
 	if(ZM_target)
-		world.log << "RM(stats): SCORING [ready_zones.len] zones (if unscored)." //DEBUG code for playtest stats gathering.
+		log_world("RM(stats): SCORING [ready_zones.len] zones (if unscored).") //DEBUG code for playtest stats gathering.
 		for(var/datum/rogue/zonemaster/ZM_toscore in ready_zones) //Score all the zones first.
 			if(ZM_toscore.scored) continue
 			ZM_toscore.score_zone()

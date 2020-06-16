@@ -1,4 +1,4 @@
-/mob/living/simple_animal/cat/fluff/Runtime/init_vore()
+/mob/living/simple_mob/cat/fluff/Runtime/init_vore()
 	..()
 	var/obj/belly/B = vore_selected
 	B.name = "Stomach"
@@ -31,14 +31,14 @@
 		"Your form begins to slowly soften and break apart, rounding out Runtime's swollen belly. The carnivorous cat rumbles and purrs happily at the feeling of such a filling meal.")
 
 // Ascian's Tactical Kitten
-/obj/item/weapon/holder/cat/fluff/tabiranth
+/obj/item/holder/cat/fluff/tabiranth
 	name = "Spirit"
 	desc = "A small, inquisitive feline, who constantly seems to investigate his surroundings."
 	gender = MALE
 	icon_state = "kitten"
 	w_class = ITEMSIZE_SMALL
 
-/mob/living/simple_animal/cat/fluff/tabiranth
+/mob/living/simple_mob/cat/fluff/tabiranth
 	name = "Spirit"
 	desc = "A small, inquisitive feline, who constantly seems to investigate his surroundings."
 	icon = 'icons/mob/custom_items_mob.dmi'
@@ -47,7 +47,7 @@
 	icon_living = "kitten"
 	icon_dead = "kitten" //Teleports out
 	gender = MALE
-	holder_type = /obj/item/weapon/holder/cat/fluff/tabiranth
+	holder_type = /obj/item/holder/cat/fluff/tabiranth
 	var/friend_name = "Ascian"
 	digestable = 0
 	meat_amount = 0
@@ -55,7 +55,7 @@
 	health = 50
 
 //Emergency teleport - Until a spriter makes something better
-/mob/living/simple_animal/cat/fluff/tabiranth/death(gibbed, deathmessage = "teleports away!")
+/mob/living/simple_mob/cat/fluff/tabiranth/death(gibbed, deathmessage = "teleports away!")
 	overlays = list()
 	icon_state = ""
 	flick("kphaseout",src)

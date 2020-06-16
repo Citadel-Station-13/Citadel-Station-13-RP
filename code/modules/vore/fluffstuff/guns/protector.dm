@@ -1,8 +1,9 @@
 // -------------- Protector -------------
-/obj/item/weapon/gun/energy/protector
-	name = "\improper KHI-98a \'Protector\'"
-	desc = "The KHI-98a is the first firearm custom-designed for Nanotrasen by KHI. It features a powerful stun mode, and \
+/obj/item/gun/energy/protector
+	name = "small energy gun"
+	desc = "The KHI-98a 'Protector' is the first firearm custom-designed for Nanotrasen by KHI. It features a powerful stun mode, and \
 	an alert-level-locked lethal mode, only usable on code blue and higher. It also features an integrated flashlight!"
+	catalogue_data = list()///datum/category_item/catalogue/information/organization/khi)
 
 	description_info = "This gun can only be fired in lethal mode while on higher security alert levels. It is legal for sec to carry for this reason, since it cannot be used for lethal force until SOP allows it, in essence."
 	description_fluff = "The first 'commission' from a Kitsuhana citizen for NanoTrasen, this gun has a wireless connection to the computer's datacore to ensure it can't be used without authorization from heads of staff who have raised the alert level. Until then, *click*!"
@@ -36,7 +37,7 @@
 
 	var/emagged = FALSE
 
-/obj/item/weapon/gun/energy/protector/special_check(mob/user)
+/obj/item/gun/energy/protector/special_check(mob/user)
 	if(!emagged && mode_name == "lethal" && get_security_level() == "green")
 		to_chat(user,"<span class='warning'>The trigger refuses to depress while on the lethal setting under security level green!</span>")
 		return FALSE
@@ -44,7 +45,7 @@
 	return ..()
 
 
-/obj/item/weapon/gun/energy/protector/emag_act(var/remaining_charges,var/mob/user)
+/obj/item/gun/energy/protector/emag_act(var/remaining_charges,var/mob/user)
 	..()
 	if(!emagged)
 		emagged = TRUE
@@ -53,7 +54,7 @@
 	return TRUE
 
 //Update icons from /tg/, so fancy! Use this more!
-/obj/item/weapon/gun/energy/protector/update_icon()
+/obj/item/gun/energy/protector/update_icon()
 	overlays.Cut()
 	var/ratio = 0
 
@@ -72,7 +73,7 @@
 			itemState += "[modifystate]"
 		*/
 	if(power_supply)
-		ratio = Ceiling((power_supply.charge / power_supply.maxcharge) * charge_sections)
+		ratio = CEILING(((power_supply.charge / power_supply.maxcharge) * charge_sections), 1)
 
 		if(power_supply.charge < charge_cost)
 			overlays += "[icon_state]_empty"
@@ -104,15 +105,6 @@
 	icon_state = "omnilaser" //A little more cyan
 	light_color = "#00C6FF"
 	agony = 50 //Normal is 40 when this was set
-	muzzle_type = /obj/effect/projectile/laser_omni/muzzle
-	tracer_type = /obj/effect/projectile/laser_omni/tracer
-	impact_type = /obj/effect/projectile/laser_omni/impact
-
-//R&D Design
-/datum/design/item/weapon/protector
-	desc = "The 'Protector' is an advanced energy gun that cannot be fired in lethal mode on low security alert levels, but features DNA locking and a powerful stun."
-	id = "protector"
-	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3, TECH_MAGNET = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 4000, "glass" = 2000, "silver" = 1000)
-	build_path = /obj/item/weapon/gun/energy/protector
-	sort_string = "TAADA"
+	muzzle_type = /obj/effect/projectile/muzzle/laser_omni
+	tracer_type = /obj/effect/projectile/tracer/laser_omni
+	impact_type = /obj/effect/projectile/impact/laser_omni

@@ -30,7 +30,7 @@ var/global/repository/radiation/radiation_repository = new()
 	else
 		rad_power = new_power
 		if(!flat)
-			range = min(round(sqrt(rad_power / config.radiation_lower_limit)), 31)  // R = rad_power / dist**2 - Solve for dist
+			range = min(round(sqrt(rad_power / config_legacy.radiation_lower_limit)), 31)  // R = rad_power / dist**2 - Solve for dist
 
 // Ray trace from all active radiation sources to T and return the strongest effect.
 /repository/radiation/proc/get_rads_at_turf(var/turf/T)
@@ -61,7 +61,7 @@ var/global/repository/radiation/radiation_repository = new()
 			origin = get_step_towards(origin, T) //Raytracing
 			if(!(origin in resistance_cache)) //Only get the resistance if we don't already know it.
 				origin.calc_rad_resistance()
-			working = max((working - (origin.cached_rad_resistance * config.radiation_resistance_multiplier)), 0)
+			working = max((working - (origin.cached_rad_resistance * config_legacy.radiation_resistance_multiplier)), 0)
 			if(working <= .)
 				break // Already affected by a stronger source (or its zero...)
 		. = max((working * (1 / (dist ** 2))), .) //Butchered version of the inverse square law. Works for this purpose
@@ -114,7 +114,7 @@ var/global/repository/radiation/radiation_repository = new()
 			cached_rad_resistance += O.rad_resistance
 
 		else if(O.density) //So open doors don't get counted
-			var/material/M = O.get_material()
+			var/datum/material/M = O.get_material()
 			if(!M)	continue
 			cached_rad_resistance += M.weight + M.radiation_resistance
 	// Looks like storing the contents length is meant to be a basic check if the cache is stale due to items enter/exiting.  Better than nothing so I'm leaving it as is. ~Leshana
@@ -122,7 +122,12 @@ var/global/repository/radiation/radiation_repository = new()
 
 /turf/simulated/wall/calc_rad_resistance()
 	radiation_repository.resistance_cache[src] = (length(contents) + 1)
-	cached_rad_resistance = (density ? material.weight + material.radiation_resistance : 0)
+	var/temp_rad_resistance
+	temp_rad_resistance += material.weight + material.radiation_resistance
+	temp_rad_resistance += girder_material.weight + girder_material.radiation_resistance
+	if(reinf_material)
+		temp_rad_resistance += reinf_material.weight + reinf_material.radiation_resistance
+	cached_rad_resistance = (density ? temp_rad_resistance : 0)
 
 /obj
 	var/rad_resistance = 0  // Allow overriding rad resistance

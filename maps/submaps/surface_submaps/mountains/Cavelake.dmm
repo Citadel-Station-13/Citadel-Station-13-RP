@@ -19,14 +19,14 @@
 /turf/simulated/floor/outdoors/rocks,
 /area/submap/Cavelake)
 "g" = (
-/mob/living/simple_animal/giant_crab,
+/mob/living/simple_mob/animal/sif/hooligan_crab,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/Cavelake)
 "h" = (
 /turf/simulated/floor/water,
 /area/submap/Cavelake)
 "i" = (
-/mob/living/simple_animal/fish/perch,
+/mob/living/simple_mob/animal/passive/fish/perch,
 /turf/simulated/floor/water,
 /area/submap/Cavelake)
 "j" = (
@@ -34,7 +34,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/Cavelake)
 "k" = (
-/mob/living/simple_animal/fish/trout,
+/mob/living/simple_mob/animal/passive/fish/trout,
 /turf/simulated/floor/water,
 /area/submap/Cavelake)
 "l" = (
@@ -42,15 +42,15 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/Cavelake)
 "m" = (
-/obj/effect/decal/remains/mouse,
-/turf/simulated/mineral/floor/ignore_mapgen,
-/area/submap/Cavelake)
-"r" = (
 /obj/random/mob/sif,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/Cavelake)
-"B" = (
+"n" = (
 /obj/item/clothing/mask/snorkel,
+/turf/simulated/mineral/floor/ignore_mapgen,
+/area/submap/Cavelake)
+"o" = (
+/obj/effect/decal/remains/mouse,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/Cavelake)
 
@@ -295,7 +295,7 @@ h
 f
 f
 d
-m
+o
 d
 d
 d
@@ -492,11 +492,11 @@ d
 d
 c
 c
-r
+m
 d
 d
 d
-B
+n
 f
 h
 h

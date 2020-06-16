@@ -13,7 +13,7 @@
 	if(my_vehicle)
 		to_chat(user, "<span class='notice'>It seems to contain \the [my_vehicle].</span>")
 
-/obj/structure/vehiclecage/initialize()
+/obj/structure/vehiclecage/Initialize()
 	. = ..()
 	if(my_vehicle_type)
 		my_vehicle = new my_vehicle_type(src)
@@ -27,7 +27,7 @@
 	to_chat(user, "<span class='notice'>You need a wrench to take this apart!</span>")
 	return
 
-/obj/structure/vehiclecage/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/structure/vehiclecage/attackby(obj/item/W as obj, mob/user as mob)
 	var/turf/T = get_turf(src)
 	if(!T)
 		to_chat(user, "<span class='notice'>You can't open this here!</span>")
@@ -82,7 +82,7 @@
 
 	update_icon()
 
-/obj/structure/vehiclecage/proc/disassemble(obj/item/weapon/W as obj, mob/user as mob)
+/obj/structure/vehiclecage/proc/disassemble(obj/item/W as obj, mob/user as mob)
 	var/turf/T = get_turf(src)
 	new /obj/item/stack/material/steel(src.loc, 5)
 

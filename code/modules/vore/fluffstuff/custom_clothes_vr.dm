@@ -220,17 +220,17 @@ END OF CITADEL CHANGES */
 	blood_overlay_type = "coat"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 	allowed = list(
-				/obj/item/weapon/tank/emergency/oxygen,
-				/obj/item/device/flashlight,
-				/obj/item/weapon/gun/energy,
-				/obj/item/weapon/gun/projectile,
+				/obj/item/tank/emergency/oxygen,
+				/obj/item/flashlight,
+				/obj/item/gun/energy,
+				/obj/item/gun/projectile,
 				/obj/item/ammo_magazine,
 				/obj/item/ammo_casing,
-//				/obj/item/weapon/storage/fancy/shotgun_ammo,
-				/obj/item/weapon/melee/baton,
-				/obj/item/weapon/handcuffs,
-//				/obj/item/device/detective_scanner,
-				/obj/item/device/taperecorder)
+//				/obj/item/storage/fancy/shotgun_ammo,
+				/obj/item/melee/baton,
+				/obj/item/handcuffs,
+//				/obj/item/detective_scanner,
+				/obj/item/tape_recorder)
 	armor = list(melee = 50, bullet = 15, laser = 25, energy = 10, bomb = 0, bio = 0, rad = 0)
 	var/unbuttoned = 0
 
@@ -290,17 +290,17 @@ END OF CITADEL CHANGES */
 	blood_overlay_type = "coat"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 	allowed = list(
-				/obj/item/weapon/tank/emergency/oxygen,
-				/obj/item/device/flashlight,
-				/obj/item/weapon/gun/energy,
-				/obj/item/weapon/gun/projectile,
+				/obj/item/tank/emergency/oxygen,
+				/obj/item/flashlight,
+				/obj/item/gun/energy,
+				/obj/item/gun/projectile,
 				/obj/item/ammo_magazine,
 				/obj/item/ammo_casing,
-//				/obj/item/weapon/storage/fancy/shotgun_ammo,
-				/obj/item/weapon/melee/baton,
-				/obj/item/weapon/handcuffs,
-//				/obj/item/device/detective_scanner,
-				/obj/item/device/taperecorder)
+//				/obj/item/storage/fancy/shotgun_ammo,
+				/obj/item/melee/baton,
+				/obj/item/handcuffs,
+//				/obj/item/detective_scanner,
+				/obj/item/tape_recorder)
 	armor = list(melee = 50, bullet = 15, laser = 25, energy = 10, bomb = 0, bio = 0, rad = 0)
 
 	//Variants
@@ -505,7 +505,7 @@ END OF CITADEL CHANGE */
 /obj/item/clothing/suit/storage/det_suit/fluff/tas_coat
 	name = "Armored Colony coat"
 	desc = "Dark green and grey colored sleeveless long coat with two thick metal shoulder pads. has seen some wear and tear, with noticeable patches in the fabric, scratches on the shoulder pads, but with a clean patch on the left upper chest. It has a red NT marked on the right shoulder pad and red Security on the left. "
-	allowed = list(/obj/item/weapon/gun,/obj/item/weapon/reagent_containers/spray/pepper,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs,/obj/item/device/flashlight/maglight,/obj/item/clothing/head/helmet)
+	allowed = list(/obj/item/gun,/obj/item/reagent_containers/spray/pepper,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/flashlight/maglight,/obj/item/clothing/head/helmet)
 
 	icon = 'icons/vore/custom_clothes_vr.dmi'
 	icon_state = "tasaldcoat"
@@ -565,7 +565,7 @@ END OF CITADEL CHANGE */
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.02
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank)
+	allowed = list(/obj/item/flashlight,/obj/item/tank)
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
 	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
@@ -692,9 +692,6 @@ END OF CITADEL CHANGES */
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	item_state = "rig-hos_mob"
 
-	//Slightly improved security voidsuit, which when made, was:
-	//armor = list(melee = 50, bullet = 25, laser = 25, energy = 5, bomb = 45, bio = 100, rad = 10)
-	armor = list("melee" = 60, "bullet" = 35, "laser" = 35, "energy" = 15, "bomb" = 50, "bio" = 100, "rad" = 10)
 	species_restricted = null
 
 //HOS Hardsuit Helmet
@@ -723,7 +720,7 @@ END OF CITADEL CHANGES */
 	icon_override = 'icons/mob/head.dmi'
 	item_state = "hoscap"
 END OF CITADEL CHANGE */
-/obj/item/weapon/storage/belt/utility/fluff/vulpine
+/obj/item/storage/belt/utility/fluff/vulpine
 	name = "vulpine belt"
 	desc = "A tool-belt in Atmos colours."
 
@@ -735,15 +732,16 @@ END OF CITADEL CHANGE */
 
 	storage_slots = 9
 
-/obj/item/weapon/storage/belt/utility/fluff/vulpine/New()
-	..()
-	new /obj/item/weapon/tool/screwdriver(src)
-	new /obj/item/weapon/tool/wrench(src)
-	new /obj/item/weapon/weldingtool(src)
-	new /obj/item/weapon/tool/crowbar(src)
-	new /obj/item/weapon/tool/wirecutters(src)
-	new /obj/item/device/multitool(src)
+/obj/item/storage/belt/utility/fluff/vulpine/PopulateContents()
+	. = ..()
+	new /obj/item/tool/screwdriver(src)
+	new /obj/item/tool/wrench(src)
+	new /obj/item/weldingtool(src)
+	new /obj/item/tool/crowbar(src)
+	new /obj/item/tool/wirecutters(src)
+	new /obj/item/multitool(src)
 	new /obj/item/stack/cable_coil(src, 30, "red")
+
 /* CITADEL CHANGE - Removes Virgo Fluff
 // molenar:Giliana Gamish
 /obj/item/clothing/suit/storage/toggle/labcoat/fluff/molenar
@@ -808,7 +806,7 @@ END OF CITADEL CHANGE */
 		if(H.head == src)
 			H.update_inv_head()
 
-/obj/item/weapon/rig/light/hacker/fluff/aronai
+/obj/item/rig/light/hacker/fluff/aronai
 	name = "KHI-99-AAR suit module"
 	suit_type = "nano"
 	desc = "A thin collapsable spacesuit for synths from Kitsuhana Heavy Industries."
@@ -816,7 +814,7 @@ END OF CITADEL CHANGE */
 	armor = list(melee = 25, bullet = 15, laser = 15, energy = 60, bomb = 30, bio = 70, rad = 100)
 	air_type = null //No O2 tank, why would it have one?
 
-	cell_type =  /obj/item/weapon/cell/hyper
+	cell_type =  /obj/item/cell/hyper
 	req_access = list(access_medical)
 
 	initial_modules = list(
@@ -863,7 +861,7 @@ END OF CITADEL CHANGE */
 
 	armor = list(melee = 50, bullet = 40, laser = 45, energy = 25, bomb = 50, bio = 100, rad = 50) //These values were taken from the combat rigs and adjusted to be weaker than said rigs.
 	slowdown = 0
-	allowed = list(/obj/item/weapon/gun,/obj/item/device/flashlight,/obj/item/weapon/tank,/obj/item/device/suit_cooling_unit,/obj/item/weapon/melee/baton)
+	allowed = list(/obj/item/gun,/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/melee/baton)
 	w_class = ITEMSIZE_NORMAL
 
 	icon = 'icons/vore/custom_clothes_vr.dmi'
@@ -906,6 +904,7 @@ END OF CITADEL CHANGES */
 /obj/item/clothing/under/rank/khi
 	name = "Delete Me"
 	desc = "Why did you spawn this one? Dork."
+	//catalogue_data = list(/datum/category_item/catalogue/information/organization/khi)
 	sensor_mode = 3
 
 	icon = 'icons/vore/custom_clothes_vr.dmi'
@@ -987,7 +986,7 @@ END OF CITADEL CHANGES */
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	item_state = "octavgentlecoat_mob"
 	blood_overlay_type = "coat"
-	allowed = list(/obj/item/weapon/tank/emergency/oxygen, /obj/item/device/flashlight,/obj/item/weapon/gun/energy,/obj/item/weapon/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs,/obj/item/weapon/storage/fancy/cigarettes,/obj/item/weapon/flame/lighter,/obj/item/device/taperecorder,/obj/item/device/uv_light)
+	allowed = list(/obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
 
 //bwoincognito:Octavious Ward
 /obj/item/clothing/under/det/fluff/octavious
@@ -1136,7 +1135,7 @@ END OF CITADEL CHANGES */
 	item_state = "chococoat_on"
 	icon_state = "chococoat"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
-	allowed = list (/obj/item/weapon/material/knife)
+	allowed = list (/obj/item/material/knife)
 
 //KiwiDaNinja: Chakat Taiga
 /obj/item/clothing/under/fluff/taiga
@@ -1281,14 +1280,24 @@ END OF CITADEL CHANGES */
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 	permeability_coefficient = 0.50
 	allowed = list(
-		/obj/item/device/flashlight, /obj/item/device/analyzer,
-		/obj/item/device/radio, /obj/item/weapon/tank/emergency/oxygen,
-		/obj/item/weapon/reagent_containers/hypospray, /obj/item/device/healthanalyzer,
-		/obj/item/weapon/reagent_containers/dropper,/obj/item/weapon/reagent_containers/syringe,
-		/obj/item/weapon/reagent_containers/glass/bottle,/obj/item/weapon/reagent_containers/glass/beaker,
-		/obj/item/weapon/reagent_containers/pill,/obj/item/weapon/storage/pill_bottle
+		/obj/item/flashlight, /obj/item/analyzer,
+		/obj/item/radio, /obj/item/tank/emergency/oxygen,
+		/obj/item/reagent_containers/hypospray, /obj/item/healthanalyzer,
+		/obj/item/reagent_containers/dropper,/obj/item/reagent_containers/syringe,
+		/obj/item/reagent_containers/glass/bottle,/obj/item/reagent_containers/glass/beaker,
+		/obj/item/reagent_containers/pill,/obj/item/storage/pill_bottle
 		)
 	armor = list(melee = 20, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 20, rad = 25)
+
+/obj/item/clothing/suit/storage/trek/ds9/equipped()
+	..()
+	var/mob/living/carbon/human/H = loc
+	if(istype(H) && H.wear_suit == src)
+		if(H.species.name == "Vox")
+			icon_override = 'icons/mob/species/vox/suit.dmi'
+		else
+			icon_override = 'icons/vore/custom_clothes_vr.dmi'
+	update_clothing_icon()
 
 /obj/item/clothing/suit/storage/trek/ds9/admiral // Only for adminuz
 	name = "Admiral Overcoat"
@@ -1303,15 +1312,45 @@ END OF CITADEL CHANGES */
 	icon_state = "trek_command"
 	item_state = "trek_ds9_command"
 
+/obj/item/clothing/under/rank/trek/command/ds9/equipped() // Cit change to take into account weirdness with defines. When put on it forces the correct sprite sheet. However when removed it shows a missing sprite for either uniform or suit depending on if it's the overcoat or uniform. Don't know how to fix
+	..()
+	var/mob/living/carbon/human/H = loc
+	if(istype(H) && H.w_uniform == src)
+		if(H.species.name == "Vox")
+			icon_override = 'icons/mob/species/vox/uniform.dmi'
+		else
+			icon_override = 'icons/vore/custom_clothes_vr.dmi'
+	update_clothing_icon()
+
 /obj/item/clothing/under/rank/trek/engsec/ds9
 	desc = "The uniform worn by operations officers of the 2380s."
 	icon_state = "trek_engsec"
 	item_state = "trek_ds9_engsec"
 
+/obj/item/clothing/under/rank/trek/engsec/ds9/equipped() // Cit change, ditto
+	..()
+	var/mob/living/carbon/human/H = loc
+	if(istype(H) && H.w_uniform == src)
+		if(H.species.name == "Vox")
+			icon_override = 'icons/mob/species/vox/uniform.dmi'
+		else
+			icon_override = 'icons/vore/custom_clothes_vr.dmi'
+	update_clothing_icon()
+
 /obj/item/clothing/under/rank/trek/medsci/ds9
 	desc = "The uniform undershit worn by medsci officers of the 2380s."
 	icon_state = "trek_medsci"
 	item_state = "trek_ds9_medsci"
+
+/obj/item/clothing/under/rank/trek/medsci/ds9/equipped() // Cit change, ditto
+	..()
+	var/mob/living/carbon/human/H = loc
+	if(istype(H) && H.w_uniform == src)
+		if(H.species.name == "Vox")
+			icon_override = 'icons/mob/species/vox/uniform.dmi'
+		else
+			icon_override = 'icons/vore/custom_clothes_vr.dmi'
+	update_clothing_icon()
 
 //For general use maybe
 /obj/item/clothing/under/batter //I guess we're going OFF limits.
@@ -1524,6 +1563,14 @@ END OF CITADEL CHANGES */
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	item_state = "gnshorts"
 
+/obj/item/clothing/under/fluff/v_nanovest
+	name = "Varmacorp nanovest"
+	desc = "A nifty little vest optimized for nanite contact."
+	icon = 'icons/vore/custom_clothes_vr.dmi'
+	icon_state = "nanovest"
+	icon_override = 'icons/vore/custom_clothes_vr.dmi'
+	item_state = "nanovest"
+
 //General use
 /obj/item/clothing/suit/storage/fluff/loincloth
 	name = "Loincloth"
@@ -1596,12 +1643,12 @@ END OF CITADEL CHANGES */
 	siemens_coefficient = 0.9
 
 //BeyondMyLife: Ne'tra Ky'ram
-/obj/item/weapon/storage/backpack/messenger/sec/fluff/kilano
+/obj/item/storage/backpack/messenger/sec/fluff/kilano
 	name = "Ne'tra's security bag"
 	desc = "A security Satchel containing Ne'tra Ky'rams Security gear."
 
 //BeyondMyLife: Ne'tra Ky'ram
-/obj/item/weapon/storage/belt/security/fluff/kilano
+/obj/item/storage/belt/security/fluff/kilano
 	name = "black and gold security belt"
 	desc = "A Black and Gold security belt, somewhat resembling something you must've seen in a comic years ago."
 	icon = 'icons/vore/custom_clothes_vr.dmi'
@@ -1758,6 +1805,11 @@ END OF CITADEL CHANGES */
 
 	icon = 'icons/vore/custom_clothes_vr.dmi'
 	icon_state = "vietsi_ring"
+
+/obj/item/clothing/gloves/ring/seal/signet/fluff/vietsi/change_name(var/signet_name = "Unknown")
+	name = "[signet_name]'s Bone Signet Ring"
+	desc = "A signet ring belonging to [signet_name], carved from the bones of something long extinct, as a ward against bad luck."
+
 /* CITADEL CHANGE - Removes Virgo Fluff
 /obj/item/clothing/head/helmet/space/void/security/hasd
 	name = "HASD EVA faceplate"
@@ -1773,7 +1825,7 @@ END OF CITADEL CHANGES */
 	mob_can_equip(var/mob/living/carbon/human/H, slot, disable_warning = 0)
 		if(..())
 			if(H.ckey != "silencedmp5a5")
-				H << "<span class='warning'>...The faceplate is clearly not made for your anatomy, thus, does not fit.</span>"
+				to_chat(H, "<span class='warning'>...The faceplate is clearly not made for your anatomy, thus, does not fit.</span>")
 				return 0
 			else
 				return 1
@@ -1816,6 +1868,122 @@ END OF CITADEL CHANGES */
 
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	item_state = "sweater_annie"
+
+	slot_flags = SLOT_OCLOTHING | SLOT_TIE
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	w_class = ITEMSIZE_NORMAL
+	slot = ACCESSORY_SLOT_OVER
+
+//General definition for bracer items. No icons.
+/obj/item/clothing/accessory/bracer
+	name = "bracer"
+	desc = "A bracer."
+	icon_state = null
+	item_state = null
+	icon_override = null
+	slot_flags = SLOT_GLOVES | SLOT_TIE
+	w_class = ITEMSIZE_SMALL
+	slot = ACCESSORY_SLOT_ARMBAND
+
+//AegisOA:Xander Bevin
+//WanderingDeviant:S'thasha Tavakdavi
+/obj/item/clothing/accessory/bracer/fluff/xander_sthasha
+	name = "Plasteel Bracer"
+	desc = "A sturdy arm-guard of polished plasteel that sports gold trimming, silver tribal-looping etchings, and a single cut diamond set into its side. Attached to one's forearm with a small, magnetic clasp."
+	icon = 'icons/vore/custom_items_vr.dmi'
+	icon_state = "bracer_xander_sthasha"
+	icon_override = 'icons/vore/custom_onmob_vr.dmi'
+	item_state = "bracer_xander_sthasha"
+
+/obj/item/clothing/accessory/bracer/fluff/xander_sthasha/digest_act(var/atom/movable/item_storage = null)
+	return FALSE
+
+/obj/item/clothing/accessory/bracer/fluff/xander_sthasha/gurgle_contaminate(var/atom/movable/item_storage = null)
+	return FALSE
+
+//Heroman3003:Lauren Zackson
+/obj/item/clothing/accessory/collar/fluff/goldenstring
+	name = "golden string"
+	desc = "It appears to just be a length of gold-colored string attached to a simple plastic clasp, meant to be worn around the neck"
+	icon = 'icons/vore/custom_items_vr.dmi'
+	icon_override = 'icons/vore/custom_onmob_vr.dmi'
+	icon_state = "goldenstring"
+	item_state = "goldenstring"
+	w_class = ITEMSIZE_TINY
+	slot_flags = SLOT_TIE
+
+//Chaoko99: Aika Hisakawa
+/obj/item/clothing/suit/fluff/blue_trimmed_coat
+	name = "blue-trimmed greatcoat"
+	desc = "A heavy, form-obscuring coat with gilded buttons and azure trim."
+	icon = 'icons/vore/custom_clothes_vr.dmi'
+	icon_state = "aika_coat"
+
+	icon_override = 'icons/vore/custom_clothes_vr.dmi'
+	item_state = "aika_coat_mob"
+	flags_inv = HIDEJUMPSUIT | HIDETIE
+
+	item_icons = list(
+		slot_l_hand_str = 'icons/vore/custom_clothes_vr.dmi',
+		slot_r_hand_str = 'icons/vore/custom_clothes_vr.dmi',
+		)
+	item_state_slots = list(slot_r_hand_str = "aika_coat_mob_r", slot_l_hand_str = "aika_coat_mob_l")
+
+//Burrito Justice: Jayda Wilson
+/obj/item/clothing/under/solgov/utility/sifguard/medical/fluff
+	desc = "The utility uniform of the Society of Universal Cartographers, made from biohazard resistant material. This is an older issuing of the uniform, with integrated department markings."
+
+	icon = 'icons/vore/custom_clothes_vr.dmi'
+	icon_override = 'icons/vore/custom_clothes_vr.dmi'
+
+	icon_state = "blackutility_med"
+	worn_state = "blackutility_med"
+	item_state = "blackutility_med"
+
+	rolled_down = 0
+	rolled_sleeves = 0
+	starting_accessories = null
+	item_icons = list()
+
+//Vorrarkul: Melanie Farmer
+/obj/item/clothing/under/fluff/slime_skeleton
+	name = "Melanie's Skeleton"
+	desc = "The skeleton of a promethean, still covered in residual slime. Upon closer inspection, they're not even real bones!"
+
+	icon = 'icons/vore/custom_clothes_vr.dmi'
+	icon_override = 'icons/vore/custom_clothes_vr.dmi'
+
+	icon_state = "melanie_skeleton"
+	item_state = "melanie_skeleton_mob"
+
+	body_parts_covered = 0
+
+	species_restricted = list("exclude", SPECIES_TESHARI)
+
+/obj/item/clothing/under/fluff/slime_skeleton/mob_can_equip(M as mob, slot)
+	if(!..())
+		return 0
+
+	if(istype(M,/mob/living/carbon/human))
+		var/mob/living/carbon/human/H = M
+		if(!(H.get_species() == SPECIES_PROMETHEAN))	//Only wearable by slimes, since species_restricted actually checks bodytype, not species
+			return 0
+
+	return 1
+
+/obj/item/clothing/under/fluff/slime_skeleton/digest_act(var/atom/movable/item_storage = null)
+	return FALSE	//Indigestible
+
+//Bacon12366:Elly Brown
+/obj/item/clothing/accessory/sweater/fluff/star
+	name = "Star Sweater"
+	desc = "It's a white long sweater with a big yellow star at the chest. It seems like it's made of a soft material."
+
+	icon = 'icons/vore/custom_clothes_vr.dmi'
+	icon_state = "star_sweater"
+
+	icon_override = 'icons/vore/custom_clothes_vr.dmi'
+	item_state = "star_sweater"
 
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS

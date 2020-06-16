@@ -38,7 +38,7 @@
 	data["hide_smes_details"] = hide_SMES_details
 	data["hide_breakers"] = hide_breakers
 
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "rcon.tmpl", "RCON Console", 600, 400, state = state)
 		ui.set_initial_data(data)
@@ -78,7 +78,7 @@
 				toggle = breaker
 		if(toggle)
 			if(toggle.update_locked)
-				usr << "The breaker box was recently toggled. Please wait before toggling it again."
+				to_chat(usr, "The breaker box was recently toggled. Please wait before toggling it again.")
 			else
 				toggle.auto_toggle()
 	if(href_list["hide_smes"])

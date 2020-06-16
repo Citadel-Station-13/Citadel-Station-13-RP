@@ -16,7 +16,7 @@
 /obj/structure/closet/walllocker/emerglocker
 	name = "emergency locker"
 	desc = "A wall mounted locker with emergency supplies."
-	var/list/spawnitems = list(/obj/item/weapon/tank/emergency/oxygen,/obj/item/clothing/mask/breath,/obj/item/weapon/tool/crowbar/red)
+	var/list/spawnitems = list(/obj/item/tank/emergency/oxygen,/obj/item/clothing/mask/breath,/obj/item/tool/crowbar/red)
 	var/amount = 2 // spawns each items X times.
 	icon_state = "emerg"
 
@@ -24,17 +24,17 @@
 	src.attack_hand(user)
 	return
 
-/obj/structure/closet/walllocker/emerglocker/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/structure/closet/walllocker/emerglocker/attackby(obj/item/W as obj, mob/user as mob)
 	return
 
 /obj/structure/closet/walllocker/emerglocker/attack_hand(mob/user as mob)
 	if (istype(user, /mob/living/silicon/ai))	//Added by Strumpetplaya - AI shouldn't be able to
 		return									//activate emergency lockers.  This fixes that.  (Does this make sense, the AI can't call attack_hand, can it? --Mloc)
 	if(!amount)
-		usr << "<spawn class='notice'>It's empty.."
+		to_chat(usr, "<spawn class='notice'>It's empty..")
 		return
 	if(amount)
-		usr << "<spawn class='notice'>You take out some items from \the [src]."
+		to_chat(usr, "<spawn class='notice'>You take out some items from \the [src].")
 		for(var/path in spawnitems)
 			new path(src.loc)
 		amount--

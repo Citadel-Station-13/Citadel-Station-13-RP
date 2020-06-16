@@ -53,7 +53,7 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 	name = "Messaging Server"
 	density = 1
 	anchored = 1.0
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 100
 
@@ -137,19 +137,19 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 
 /obj/machinery/message_server/attack_hand(user as mob)
 //	user << "<font color='blue'>There seem to be some parts missing from this server. They should arrive on the station in a few days, give or take a few CentCom delays.</font>"
-	user << "You toggle PDA message passing from [active ? "On" : "Off"] to [active ? "Off" : "On"]"
+	to_chat(user, "You toggle PDA message passing from [active ? "On" : "Off"] to [active ? "Off" : "On"]")
 	active = !active
 	update_icon()
 
 	return
 
-/obj/machinery/message_server/attackby(obj/item/weapon/O as obj, mob/living/user as mob)
+/obj/machinery/message_server/attackby(obj/item/O as obj, mob/living/user as mob)
 	if (active && !(stat & (BROKEN|NOPOWER)) && (spamfilter_limit < MESSAGE_SERVER_DEFAULT_SPAM_LIMIT*2) && \
-		istype(O,/obj/item/weapon/circuitboard/message_monitor))
+		istype(O,/obj/item/circuitboard/message_monitor))
 		spamfilter_limit += round(MESSAGE_SERVER_DEFAULT_SPAM_LIMIT / 2)
 		user.drop_item()
 		qdel(O)
-		user << "You install additional memory and processors into message server. Its filtering capabilities been enhanced."
+		to_chat(user, "You install additional memory and processors into message server. Its filtering capabilities been enhanced.")
 	else
 		..(O, user)
 
@@ -168,6 +168,11 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 	var/variable
 	var/value
 	var/details
+
+/datum/feedback_variable/vv_edit_var(var_name, var_value)
+	if(var_name == NAMEOF(src, variable) || var_name == NAMEOF(src, value) || var_name == NAMEOF(src, details))
+		return FALSE
+	return ..()
 
 /datum/feedback_variable/New(var/param_variable,var/param_value = 0)
 	variable = param_variable
@@ -228,7 +233,7 @@ var/obj/machinery/blackbox_recorder/blackbox
 	name = "Blackbox Recorder"
 	density = 1
 	anchored = 1.0
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 100
 	var/list/messages = list()		//Stores messages of non-standard frequencies
@@ -319,6 +324,15 @@ var/obj/machinery/blackbox_recorder/blackbox
 
 	feedback_set_details("round_end","[time2text(world.realtime)]") //This one MUST be the last one that gets set.
 
+/obj/machinery/blackbox_recorder/vv_edit_var(var_name, var_value)
+	var/static/list/blocked_vars		//hacky as fuck kill me
+	if(!blocked_vars)
+		var/obj/machinery/M = new
+		var/list/parent_vars = M.vars.Copy()
+		blocked_vars = vars.Copy() - parent_vars
+	if(var_name in blocked_vars)
+		return FALSE
+	return ..()
 
 //This proc is only to be called at round end.
 /obj/machinery/blackbox_recorder/proc/save_all_data_to_sql()

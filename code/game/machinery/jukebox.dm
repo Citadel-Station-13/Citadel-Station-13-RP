@@ -16,10 +16,10 @@
 	anchored = 1
 	density = 1
 	power_channel = EQUIP
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 100
-	circuit = /obj/item/weapon/circuitboard/jukebox
+	circuit = /obj/item/circuitboard/jukebox
 
 	// Vars for hacking
 	var/datum/wires/jukebox/wires = null
@@ -30,6 +30,8 @@
 	var/max_queue_len = 3						// How many songs are we allowed to queue up?
 	var/list/queue = list()
 	//VOREStation Add End
+	var/current_genre = "Electronic" //What is our current genre?
+	var/list/genres = list("Classical and Orchestral", "Country and Western", "Disco, Funk, Soul, and R&B", "Electronic", "Folk and Indie", "Hip-Hop and Rap", "Jazz", "Metal", "Pop", "Rock") //Avaliable genres.
 	var/datum/track/current_track
 	var/list/datum/track/tracks = list(
 		new/datum/track("Beyond", 'sound/ambience/ambispace.ogg'),
@@ -52,11 +54,14 @@
 		new/datum/track("Russkiy rep Diskoteka", 'sound/music/russianrapdisco.ogg')
 	)
 
+	// Only visible if emagged
+	var/list/datum/track/emag_tracks = list(
+	)
+
+
 /obj/machinery/media/jukebox/New()
-	..()
+	. = ..()
 	default_apply_parts()
-	wires = new/datum/wires/jukebox(src)
-	update_icon()
 
 /obj/machinery/media/jukebox/Destroy()
 	qdel(wires)
@@ -64,14 +69,21 @@
 	..()
 
 // On initialization, copy our tracks from the global list
-/obj/machinery/media/jukebox/initialize()
+/obj/machinery/media/jukebox/Initialize()
 	. = ..()
+	wires = new/datum/wires/jukebox(src)
+	update_icon()
 	if(LAZYLEN(all_jukebox_tracks)) //Global list has tracks
 		tracks.Cut()
 		secret_tracks.Cut()
+		emag_tracks.Cut()
 		for(var/datum/track/T in all_jukebox_tracks) //Load them
+			if(!T.jukebox)
+				continue
 			if(T.secret)
 				secret_tracks |= T
+			if(T.emag)
+				emag_tracks |=T
 			else
 				tracks |= T
 	else if(!LAZYLEN(tracks)) //We don't even have default tracks
@@ -141,7 +153,7 @@
 		return
 	if(W.is_wirecutter())
 		return wires.Interact(user)
-	if(istype(W, /obj/item/device/multitool))
+	if(istype(W, /obj/item/multitool))
 		return wires.Interact(user)
 	if(W.is_wrench())
 		if(playing)
@@ -203,6 +215,9 @@
 		if(istype(T))
 			current_track = T
 			StartPlaying()
+	else if(href_list["change_genre"])
+		var/new_genre = input("Choose Genre", "Genre Selection") in genres
+		current_genre = new_genre
 	else if(href_list["loopmode"])
 		var/newval = text2num(href_list["loopmode"])
 		loop_mode = sanitize_inlist(newval, list(JUKEMODE_NEXT, JUKEMODE_RANDOM, JUKEMODE_REPEAT_SONG, JUKEMODE_PLAY_ONCE), loop_mode)
@@ -215,21 +230,21 @@
 		StopPlaying()
 	else if(href_list["play"])
 		if(emagged)
-			playsound(src.loc, 'sound/items/AirHorn.ogg', 100, 1)
-			for(var/mob/living/carbon/M in ohearers(6, src))
-				if(M.get_ear_protection() >= 2)
-					continue
-				M.sleeping = 0
-				M.stuttering += 20
-				M.ear_deaf += 30
-				M.Weaken(3)
-				if(prob(30))
-					M.Stun(10)
-					M.Paralyse(4)
-				else
-					M.make_jittery(500)
-			spawn(15)
-				explode()
+			//playsound(src.loc, 'sound/items/AirHorn.ogg', 100, 1)
+			//for(var/mob/living/carbon/M in ohearers(6, src))
+				//if(M.get_ear_protection() >= 2)
+					//continue
+				//M.sleeping = 0
+				//M.stuttering += 20
+				//M.ear_deaf += 30
+				//M.Weaken(3)
+				//if(prob(30))
+					//M.Stun(10)
+					//M.Paralyse(4)
+				//else
+					//M.make_jittery(500)
+			//spawn(15)
+				//explode()
 		else if(current_track == null)
 			to_chat(usr, "No track selected.")
 		else
@@ -259,13 +274,17 @@
 			data["current_track"] = current_track.toNanoList()
 		data["percent"] = playing ? min(100, round(world.time - media_start_time) / current_track.duration) : 0;
 
+		data["current_genre"] = current_genre
+
 		var/list/nano_tracks = new
 		for(var/datum/track/T in tracks)
+			if(T.genre != current_genre)
+				continue
 			nano_tracks[++nano_tracks.len] = T.toNanoList()
 		data["tracks"] = nano_tracks
 
 	// update the ui if it exists, returns null if no ui is passed/found
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "jukebox.tmpl", title, 450, 600)
 		ui.set_initial_data(data)
@@ -284,7 +303,7 @@
 
 	explosion(src.loc, 0, 0, 1, rand(1,2), 1)
 
-	var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(3, 1, src)
 	s.start()
 
@@ -313,13 +332,19 @@
 	if(!emagged)
 		emagged = 1
 		StopPlaying()
-		visible_message("<span class='danger'>\The [src] makes a fizzling sound.</span>")
+	else
+		StopPlaying()
+		visible_message("<span class='notice'>\The [src] abruptly stops and reboots itself, but nothing else happens.</span>")
+		return 1
+	if (emagged == 1)
+		tracks.Add(emag_tracks)
+		visible_message("<span class='notice'>\The [src] abruptly stops before rebooting itself. A notice flashes on the screen indicating new songs have been added to the tracklist.</span>")
 		update_icon()
 		return 1
 
 /obj/machinery/media/jukebox/proc/StopPlaying()
 	playing = 0
-	update_use_power(1)
+	update_use_power(USE_POWER_IDLE)
 	update_icon()
 	start_stop_song()
 
@@ -327,7 +352,7 @@
 	if(!current_track)
 		return
 	playing = 1
-	update_use_power(2)
+	update_use_power(USE_POWER_ACTIVE)
 	update_icon()
 	start_stop_song()
 	updateDialog()

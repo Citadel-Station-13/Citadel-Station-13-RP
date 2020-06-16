@@ -7,6 +7,7 @@
 	density = 1
 	anchored = 0
 
+// this is banned, use temporary-visual - kevinz000
 /obj/effect/temporary_effect
 	name = "self deleting effect"
 	desc = "How are you examining what which cannot be seen?"
@@ -14,11 +15,10 @@
 	invisibility = 0
 	var/time_to_die = 10 SECONDS // Afer which, it will delete itself.
 
-/obj/effect/temporary_effect/New()
-	..()
+/obj/effect/temporary_effect/Initialize(mapload)
+	. = ..()
 	if(time_to_die)
-		spawn(time_to_die)
-			qdel(src)
+		QDEL_IN(src, time_to_die)
 
 // Shown really briefly when attacking with axes.
 /obj/effect/temporary_effect/cleave_attack
@@ -34,7 +34,7 @@
 	pixel_x = -32
 	pixel_y = -32
 
-/obj/effect/temporary_effect/cleave_attack/initialize() // Makes the slash fade smoothly. When completely transparent it should qdel itself.
+/obj/effect/temporary_effect/cleave_attack/Initialize() // Makes the slash fade smoothly. When completely transparent it should qdel itself.
 	. = ..()
 	animate(src, alpha = 0, time = time_to_die - 1)
 
@@ -44,7 +44,7 @@
 	icon_state = "shuttle_warning_still"
 	time_to_die = 4.9 SECONDS
 
-/obj/effect/temporary_effect/shuttle_landing/initialize()
+/obj/effect/temporary_effect/shuttle_landing/Initialize()
 	flick("shuttle_warning", src) // flick() forces the animation to always begin at the start.
 	. = ..()
 
@@ -60,7 +60,7 @@
 	time_to_die = 1 SECOND
 	pixel_x = -32
 
-/obj/effect/temporary_effect/lightning_strike/initialize()
+/obj/effect/temporary_effect/lightning_strike/Initialize()
 	icon_state += "[rand(1,2)]" // To have two variants of lightning sprites.
 	animate(src, alpha = 0, time = time_to_die - 1)
 	. = ..()

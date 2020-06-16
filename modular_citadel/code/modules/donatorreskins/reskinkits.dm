@@ -28,5 +28,5 @@
 /obj/item/reskin_kit/stunsword
 	name = "stunsword kit"
 	desc = "A modkit for making a stunbaton into a wicked stunsword. Remove cell before use."
-	product = /obj/item/weapon/melee/baton/stunsword //what it makes
-	fromitem = /obj/item/weapon/melee/baton/loaded // sec lockers use this, doesnt work on others.
+	product = /obj/item/melee/baton/stunsword //what it makes
+	fromitem = /obj/item/melee/baton/loaded // sec lockers use this, doesnt work on others.

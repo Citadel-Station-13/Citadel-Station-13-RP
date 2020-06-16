@@ -18,11 +18,6 @@
 	sort_order = 2
 	category_item_type = /datum/category_item/player_setup_item/skills
 
-/datum/category_group/player_setup_category/occupation_preferences
-	name = "Occupation"
-	sort_order = 3
-	category_item_type = /datum/category_item/player_setup_item/occupation
-
 /datum/category_group/player_setup_category/appearance_preferences
 	name = "Antagonism"
 	sort_order = 4
@@ -40,7 +35,7 @@
 */ //VOREStation Removal End
 /datum/category_group/player_setup_category/global_preferences
 	name = "Global"
-	sort_order = 6 //VOREStation Edit due to above commented out
+	sort_order = 6
 	category_item_type = /datum/category_item/player_setup_item/player_global
 
 /****************************
@@ -167,10 +162,6 @@
 		. += "[PI.content(user)]<br>"
 	. += "</td></tr></table>"
 
-/datum/category_group/player_setup_category/occupation_preferences/content(var/mob/user)
-	for(var/datum/category_item/player_setup_item/PI in items)
-		. += "[PI.content(user)]<br>"
-
 /**********************
 * Category Item Setup *
 **********************/
@@ -237,6 +228,7 @@
 		return 1
 
 	. = OnTopic(href, href_list, usr)
+
 	if(. & TOPIC_UPDATE_PREVIEW)
 		pref_mob.client.prefs.preview_icon = null
 	if(. & TOPIC_REFRESH)

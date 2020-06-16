@@ -19,7 +19,7 @@
 		return
 
 	if(user.bombing_core)
-		user << "***** CORE SELF-DESTRUCT SEQUENCE ABORTED *****"
+		to_chat(user, "***** CORE SELF-DESTRUCT SEQUENCE ABORTED *****")
 		user.bombing_core = 0
 		return
 
@@ -32,15 +32,15 @@
 
 	user.bombing_core = 1
 
-	user << "***** CORE SELF-DESTRUCT SEQUENCE ACTIVATED *****"
-	user << "Use command again to cancel self-destruct. Destroying in 15 seconds."
+	to_chat(user, "***** CORE SELF-DESTRUCT SEQUENCE ACTIVATED *****")
+	to_chat(user, "Use command again to cancel self-destruct. Destroying in 15 seconds.")
 	var/timer = 15
 	while(timer)
 		sleep(10)
 		timer--
 		if(!user || !user.bombing_core)
 			return
-		user << "** [timer] **"
+		to_chat(user, "** [timer] **")
 	explosion(user.loc, 3,6,12,24)
 	qdel(user)
 
@@ -68,14 +68,14 @@
 	set name = "Destroy Station"
 	set desc = "Activates or deactivates self destruct sequence of this station. Sequence takes two minutes, and if you are shut down before timer reaches zero it will be cancelled."
 	var/mob/living/silicon/ai/user = usr
-	var/obj/item/device/radio/radio = new/obj/item/device/radio()
+	var/obj/item/radio/radio = new/obj/item/radio()
 
 
 	if(!ability_prechecks(user, 0, 0))
 		return
 
 	if(user.system_override != 2)
-		user << "You do not have access to self-destruct system."
+		to_chat(user, "You do not have access to self-destruct system.")
 		return
 
 	if(user.bombing_station)
@@ -87,8 +87,8 @@
 		return
 	if(!ability_prechecks(user, 0, 0))
 		return
-	user << "***** STATION SELF-DESTRUCT SEQUENCE INITIATED *****"
-	user << "Self-destructing in 2 minutes. Use this command again to abort."
+	to_chat(user, "***** STATION SELF-DESTRUCT SEQUENCE INITIATED *****")
+	to_chat(user, "Self-destructing in 2 minutes. Use this command again to abort.")
 	user.bombing_station = 1
 	set_security_level("delta")
 	radio.autosay("Self destruct sequence has been activated. Self-destructing in 120 seconds.", "Self-Destruct Control")
@@ -105,9 +105,9 @@
 			radio.autosay("Self destructing now. Have a nice day.", "Self-Destruct Control")
 		timer--
 
-	if(ticker)
-		ticker.station_explosion_cinematic(0,null)
-		if(ticker.mode)
-			ticker.mode:station_was_nuked = 1
+	if(SSticker)
+		SSticker.station_explosion_cinematic(0,null)
+		if(SSticker.mode)
+			SSticker.mode:station_was_nuked = 1
 
 

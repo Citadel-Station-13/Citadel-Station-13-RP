@@ -8,7 +8,7 @@
 	var/ore_key
 	var/image/scanner_image
 
-/obj/effect/mineral/New(var/newloc, var/ore/M)
+/obj/effect/mineral/New(var/newloc, var/datum/ore/M)
 	..(newloc)
 	name = "[M.display_name] deposit"
 	ore_key = M.name
@@ -18,9 +18,9 @@
 
 /obj/effect/mineral/proc/get_scan_overlay()
 	if(!scanner_image)
-		var/ore/O = ore_data[ore_key]
+		var/datum/ore/O = ore_data[ore_key]
 		if(O)
 			scanner_image = image(icon, loc = get_turf(src), icon_state = (O.scan_icon ? O.scan_icon : icon_state))
 		else
-			world << "No ore data for [src]!"
+			to_chat(world, "No ore data for [src]!")
 	return scanner_image

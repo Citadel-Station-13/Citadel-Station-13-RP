@@ -1,4 +1,4 @@
-/mob/living/simple_animal/hostile/pirate
+/mob/living/simple_mob/hostile/pirate
 	name = "Pirate"
 	desc = "Does what he wants cause a pirate is free."
 	tt_desc = "E Homo sapiens"
@@ -46,11 +46,11 @@
 	max_n2 = 0
 	unsuitable_atoms_damage = 15
 
-	loot_list = list(/obj/item/weapon/melee/energy/sword/pirate = 100)
+	loot_list = list(/obj/item/melee/energy/sword/pirate = 100)
 
 	var/corpse = /obj/effect/landmark/mobcorpse/pirate
 
-/mob/living/simple_animal/hostile/pirate/ranged
+/mob/living/simple_mob/hostile/pirate/ranged
 	name = "Pirate Gunner"
 	icon_state = "pirateranged"
 	icon_living = "pirateranged"
@@ -60,11 +60,11 @@
 	projectiletype = /obj/item/projectile/beam
 	projectilesound = 'sound/weapons/laser.ogg'
 
-	loot_list = list(/obj/item/weapon/gun/energy/laser = 100)
+	loot_list = list(/obj/item/gun/energy/laser = 100)
 
 	corpse = /obj/effect/landmark/mobcorpse/pirate/ranged
 
-/mob/living/simple_animal/hostile/pirate/death()
+/mob/living/simple_mob/hostile/pirate/death()
 	..()
 	if(corpse)
 		new corpse (src.loc)

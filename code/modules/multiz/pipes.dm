@@ -2,32 +2,31 @@
 // parent class for pipes //
 ////////////////////////////
 obj/machinery/atmospherics/pipe/zpipe
-		icon = 'icons/obj/structures.dmi'
-		icon_state = "up"
+	icon = 'icons/obj/structures.dmi'
+	icon_state = "up"
 
-		name = "upwards pipe"
-		desc = "A pipe segment to connect upwards."
+	name = "upwards pipe"
+	desc = "A pipe segment to connect upwards."
 
-		volume = 70
+	volume = 70
 
-		dir = SOUTH
-		initialize_directions = SOUTH
+	dir = SOUTH
+	initialize_directions = SOUTH
 
-		construction_type = /obj/item/pipe/directional
-		pipe_state = "cap"
+	construction_type = /obj/item/pipe/directional
+	pipe_state = "cap"
 
-		// node1 is the connection on the same Z
-		// node2 is the connection on the other Z
+	// node1 is the connection on the same Z
+	// node2 is the connection on the other Z
 
-		var/minimum_temperature_difference = 300
-		var/thermal_conductivity = 0 //WALL_HEAT_TRANSFER_COEFFICIENT No
+	var/minimum_temperature_difference = 300
+	var/thermal_conductivity = 0 //WALL_HEAT_TRANSFER_COEFFICIENT No
 
-		var/maximum_pressure = 70*ONE_ATMOSPHERE
-		var/fatigue_pressure = 55*ONE_ATMOSPHERE
-		alert_pressure = 55*ONE_ATMOSPHERE
+	var/maximum_pressure = 70*ONE_ATMOSPHERE
+	var/fatigue_pressure = 55*ONE_ATMOSPHERE
+	alert_pressure = 55*ONE_ATMOSPHERE
 
-
-		level = 1
+	level = 1
 
 /obj/machinery/atmospherics/pipe/zpipe/New()
 	..()
@@ -81,16 +80,16 @@ obj/machinery/atmospherics/pipe/zpipe/check_pressure(pressure)
 obj/machinery/atmospherics/pipe/zpipe/proc/burst()
 	src.visible_message("<span class='warning'>\The [src] bursts!</span>");
 	playsound(src.loc, 'sound/effects/bang.ogg', 25, 1)
-	var/datum/effect/effect/system/smoke_spread/smoke = new
+	var/datum/effect_system/smoke_spread/smoke = new
 	smoke.set_up(1,0, src.loc, 0)
 	smoke.start()
 	qdel(src) // NOT qdel.
 
 obj/machinery/atmospherics/pipe/zpipe/proc/normalize_dir()
 	if(dir == (NORTH|SOUTH))
-		set_dir(NORTH)
+		setDir(NORTH)
 	else if(dir == (EAST|WEST))
-		set_dir(EAST)
+		setDir(EAST)
 
 obj/machinery/atmospherics/pipe/zpipe/Destroy()
 	if(node1)
@@ -190,7 +189,7 @@ obj/machinery/atmospherics/pipe/zpipe/down/atmos_init()
 
 
 	var/turf/T = src.loc			// hide if turf is not intact
-	hide(!T.is_plating())
+	if(level == 1 && !T.is_plating()) hide(1)	// but respect level
 
 ///////////////////////
 // supply/scrubbers  //
@@ -216,6 +215,27 @@ obj/machinery/atmospherics/pipe/zpipe/up/supply
 	icon_connect_type = "-supply"
 	color = PIPE_COLOR_BLUE
 
+obj/machinery/atmospherics/pipe/zpipe/up/fuel
+	icon_state = "up-fuel"
+	name = "upwards fuel pipe"
+	desc = "A fuel pipe segment to connect upwards."
+	connect_types = CONNECT_TYPE_FUEL
+	piping_layer = PIPING_LAYER_FUEL
+	layer = PIPES_FUEL_LAYER
+	icon_connect_type = "-fuel"
+	color = PIPE_COLOR_YELLOW
+
+obj/machinery/atmospherics/pipe/zpipe/up/aux
+	icon_state = "up-aux"
+	name = "upwards aux pipe"
+	desc = "A aux pipe segment to connect upwards."
+	connect_types = CONNECT_TYPE_AUX
+	piping_layer = PIPING_LAYER_AUX
+	layer = PIPES_AUX_LAYER
+	icon_connect_type = "-aux"
+	color = PIPE_COLOR_CYAN
+
+
 obj/machinery/atmospherics/pipe/zpipe/down/scrubbers
 	icon_state = "down-scrubbers"
 	name = "downwards scrubbers pipe"
@@ -235,3 +255,23 @@ obj/machinery/atmospherics/pipe/zpipe/down/supply
 	layer = PIPES_SUPPLY_LAYER
 	icon_connect_type = "-supply"
 	color = PIPE_COLOR_BLUE
+
+obj/machinery/atmospherics/pipe/zpipe/down/fuel
+	icon_state = "down-fuel"
+	name = "downwards fuel pipe"
+	desc = "A fuel pipe segment to connect downwards."
+	connect_types = CONNECT_TYPE_FUEL
+	piping_layer = PIPING_LAYER_FUEL
+	layer = PIPES_FUEL_LAYER
+	icon_connect_type = "-fuel"
+	color = PIPE_COLOR_YELLOW
+
+obj/machinery/atmospherics/pipe/zpipe/down/aux
+	icon_state = "down-aux"
+	name = "upwards aux pipe"
+	desc = "A aux pipe segment to connect upwards."
+	connect_types = CONNECT_TYPE_AUX
+	piping_layer = PIPING_LAYER_AUX
+	layer = PIPES_AUX_LAYER
+	icon_connect_type = "-aux"
+	color = PIPE_COLOR_CYAN

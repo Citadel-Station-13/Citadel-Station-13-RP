@@ -2,26 +2,14 @@
 	The global hud:
 	Uses the same visual objects for all players.
 */
-var/datum/global_hud/global_hud = new()
-var/list/global_huds = list(
-		global_hud.druggy,
-		global_hud.blurry,
-		global_hud.whitense,
-		global_hud.vimpaired,
-		global_hud.darkMask,
-		global_hud.centermarker,
-		global_hud.nvg,
-		global_hud.thermal,
-		global_hud.meson,
-		global_hud.science,
-		global_hud.material,
-		global_hud.holomap
-		)
 
-/datum/hud/var/obj/screen/grab_intent
-/datum/hud/var/obj/screen/hurt_intent
-/datum/hud/var/obj/screen/disarm_intent
-/datum/hud/var/obj/screen/help_intent
+GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
+
+/datum/hud
+	var/obj/screen/grab_intent
+	var/obj/screen/hurt_intent
+	var/obj/screen/disarm_intent
+	var/obj/screen/help_intent
 
 /datum/global_hud
 	var/obj/screen/druggy
@@ -189,7 +177,7 @@ var/list/global_huds = list(
 	var/action_buttons_hidden = 0
 	var/list/slot_info
 
-datum/hud/New(mob/owner)
+/datum/hud/New(mob/owner)
 	mymob = owner
 	instantiate()
 	..()
@@ -316,8 +304,6 @@ datum/hud/New(mob/owner)
 		mymob.instantiate_hud(src)
 	else if(isalien(mymob))
 		larva_hud()
-	else if(isslime(mymob))
-		slime_hud()
 	else if(isAI(mymob))
 		ai_hud()
 	else if(isobserver(mymob))
@@ -334,11 +320,11 @@ datum/hud/New(mob/owner)
 	set hidden = 1
 
 	if(!hud_used)
-		usr << "<span class='warning'>This mob type does not use a HUD.</span>"
+		to_chat(usr, "<span class='warning'>This mob type does not use a HUD.</span>")
 		return
 
 	if(!ishuman(src))
-		usr << "<span class='warning'>Inventory hiding is currently only supported for human mobs, sorry.</span>"
+		to_chat(usr, "<span class='warning'>Inventory hiding is currently only supported for human mobs, sorry.</span>")
 		return
 
 	if(!client) return

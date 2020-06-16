@@ -19,7 +19,7 @@
 ///////////////////////////////
 
 /proc/pick_meteor_start(var/startSide = pick(cardinal))
-	var/startLevel = pick(using_map.station_levels - using_map.sealed_levels)
+	var/startLevel = pick(GLOB.using_map.station_levels - GLOB.using_map.sealed_levels)
 	var/pickedstart = spaceDebrisStartLoc(startSide, startLevel)
 
 	return list(startLevel, pickedstart)
@@ -102,7 +102,7 @@
 	var/heavy = 0
 	var/z_original
 
-	var/meteordrop = /obj/item/weapon/ore/iron
+	var/meteordrop = /obj/item/ore/iron
 	var/dropamt = 2
 
 	// How much damage it does to walls, using take_damage().
@@ -148,7 +148,7 @@
 		else
 			die(0)
 
-/obj/effect/meteor/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
+/obj/effect/meteor/CanAllowThrough(atom/movable/mover, turf/target)
 	return istype(mover, /obj/effect/meteor) ? 1 : ..()
 
 /obj/effect/meteor/proc/ram_turf(var/turf/T)
@@ -182,8 +182,8 @@
 /obj/effect/meteor/ex_act()
 	return
 
-/obj/effect/meteor/attackby(obj/item/weapon/W as obj, mob/user as mob, params)
-	if(istype(W, /obj/item/weapon/pickaxe))
+/obj/effect/meteor/attackby(obj/item/W as obj, mob/user as mob, params)
+	if(istype(W, /obj/item/pickaxe))
 		qdel(src)
 		return
 	..()
@@ -217,7 +217,7 @@
 	pass_flags = PASSTABLE | PASSGRILLE
 	hits = 1
 	hitpwr = 3
-	meteordrop = /obj/item/weapon/ore/glass
+	meteordrop = /obj/item/ore/glass
 	wall_power = 50
 
 // Medium-sized meteors aren't very special and can be stopped easily by r-walls.
@@ -251,7 +251,7 @@
 	icon_state = "flaming"
 	hits = 5
 	heavy = 1
-	meteordrop = /obj/item/weapon/ore/phoron
+	meteordrop = /obj/item/ore/phoron
 	wall_power = 100
 
 /obj/effect/meteor/flaming/meteor_effect(var/explode)
@@ -264,7 +264,7 @@
 	name = "glowing meteor"
 	icon_state = "glowing"
 	heavy = 1
-	meteordrop = /obj/item/weapon/ore/uranium
+	meteordrop = /obj/item/ore/uranium
 	wall_power = 75
 
 
@@ -273,14 +273,14 @@
 	if(explode)
 		explosion(src.loc, devastation_range = 0, heavy_impact_range = 0, light_impact_range = 4, flash_range = 6, adminlog = 0)
 	new /obj/effect/decal/cleanable/greenglow(get_turf(src))
-	radiation_repository.radiate(src, 50)
+	SSradiation.radiate(src, 50)
 
 // This meteor fries toasters.
 /obj/effect/meteor/emp
 	name = "conducting meteor"
 	icon_state = "glowing_blue"
 	desc = "Hide your floppies!"
-	meteordrop = /obj/item/weapon/ore/osmium
+	meteordrop = /obj/item/ore/osmium
 	dropamt = 3
 	wall_power = 80
 
@@ -298,7 +298,7 @@
 	hits = 30
 	hitpwr = 1
 	heavy = 1
-	meteordrop = /obj/item/weapon/ore/phoron
+	meteordrop = /obj/item/ore/phoron
 	wall_power = 150
 
 /obj/effect/meteor/tunguska/meteor_effect(var/explode)

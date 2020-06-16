@@ -30,7 +30,7 @@
 	output +="<hr>"
 	output += "<p><a href='byond://?src=\ref[src];show_preferences=1'>Character Setup</A></p>"
 
-	if(!ticker || ticker.current_state <= GAME_STATE_PREGAME)
+	if(!SSticker || SSticker.current_state <= GAME_STATE_PREGAME)
 		if(ready)
 			output += "<p>\[ <span class='linkOn'><b>Ready</b></span> | <a href='byond://?src=\ref[src];ready=0'>Not Ready</a> \]</p>"
 		else
@@ -77,15 +77,20 @@
 /mob/new_player/Stat()
 	..()
 
-	if(statpanel("Lobby") && ticker)
-		if(ticker.hide_mode)
-			stat("Game Mode:", "Secret")
-		else
-			if(ticker.hide_mode == 0)
-				stat("Game Mode:", "[config.mode_names[master_mode]]") // Old setting for showing the game mode
-
-		if(ticker.current_state == GAME_STATE_PREGAME)
-			stat("Time To Start:", "[ticker.pregame_timeleft][round_progressing ? "" : " (DELAYED)"]")
+	if(SSticker.current_state == GAME_STATE_PREGAME)
+		if(statpanel("Status"))
+			if(SSticker.hide_mode)
+				stat("Game Mode:", "Secret")
+			else
+				if(SSticker.hide_mode == 0)
+					stat("Game Mode:", "[config_legacy.mode_names[master_mode]]") // Old setting for showing the game mode
+			var/time_remaining = SSticker.GetTimeLeft()
+			if(time_remaining > 0)
+				stat(null, "Time To Start: [round(time_remaining/10)]s")
+			else if(time_remaining == -10)
+				stat(null, "Time To Start: DELAYED")
+			else
+				stat(null, "Time To Start: SOON")
 			stat("Players: [totalPlayers]", "Players Ready: [totalPlayersReady]")
 			totalPlayers = 0
 			totalPlayersReady = 0
@@ -102,7 +107,7 @@
 		return 1
 
 	if(href_list["ready"])
-		if(!ticker || ticker.current_state <= GAME_STATE_PREGAME) // Make sure we don't ready up after the round has started
+		if(!SSticker || SSticker.current_state <= GAME_STATE_PREGAME) // Make sure we don't ready up after the round has started
 			ready = text2num(href_list["ready"])
 		else
 			ready = 0
@@ -114,14 +119,14 @@
 
 	if(href_list["observe"])
 
-		if(alert(src,"Are you sure you wish to observe? You will have to wait three minutes before being able to respawn!","Player Setup","Yes","No") == "Yes") //Citadelstation edit
+		if(alert(src,"Are you sure you wish to observe? You will have to wait 60 seconds before being able to respawn!","Player Setup","Yes","No") == "Yes") //Vorestation edit - Rykka corrected to 60 seconds to match current spawn time
 			if(!client)	return 1
 
 			//Make a new mannequin quickly, and allow the observer to take the appearance
 			var/mob/living/carbon/human/dummy/mannequin = new()
 			client.prefs.dress_preview_mob(mannequin)
 			var/mob/observer/dead/observer = new(mannequin)
-			observer.forceMove(null) //Let's not stay in our doomed mannequin
+			observer.moveToNullspace() //Let's not stay in our doomed mannequin
 			qdel(mannequin)
 
 			spawning = 1
@@ -144,7 +149,7 @@
 				client.prefs.real_name = random_name(client.prefs.identifying_gender)
 			observer.real_name = client.prefs.real_name
 			observer.name = observer.real_name
-			if(!client.holder && !config.antag_hud_allowed)           // For new ghosts we remove the verb from even showing up if it's not allowed.
+			if(!client.holder && !config_legacy.antag_hud_allowed)           // For new ghosts we remove the verb from even showing up if it's not allowed.
 				observer.verbs -= /mob/observer/dead/verb/toggle_antagHUD        // Poor guys, don't know what they are missing!
 			observer.key = key
 			qdel(src)
@@ -153,12 +158,12 @@
 
 	if(href_list["late_join"])
 
-		if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
-			usr << "<font color='red'>The round is either not ready, or has already finished...</font>"
+		if(!SSticker || SSticker.current_state != GAME_STATE_PLAYING)
+			to_chat(usr, "<font color='red'>The round is either not ready, or has already finished...</font>")
 			return
 /*
 		if(client.prefs.species != "Human" && !check_rights(R_ADMIN, 0)) //VORESTATION EDITS: THE COMMENTED OUT AREAS FROM LINE 154 TO 178
-			if (config.usealienwhitelist)
+			if (config_legacy.usealienwhitelist)
 				if(!is_alien_whitelisted(src, client.prefs.species))
 					src << alert("You are currently not whitelisted to Play [client.prefs.species].")
 					return 0
@@ -169,19 +174,21 @@
 		ViewManifest()
 
 	if(href_list["SelectedJob"])
-	
+
+		/* Vorestation Removal Start
 		//Prevents people rejoining as same character.
 		for (var/mob/living/carbon/human/C in mob_list)
 			var/char_name = client.prefs.real_name
 			if(char_name == C.real_name)
-				usr << "<span class='notice'>There is a character that already exists with the same name - <b>[C.real_name]</b>, please join with a different one, or use Quit the Round with the previous character.</span>" //VOREStation Edit
+				to_chat(usr, "<span class='notice'>There is a character that already exists with the same name - <b>[C.real_name]</b>, please join with a different one, or use Quit the Round with the previous character.</span>") //VOREStation Edit
 				return
+		*/ //Vorestation Removal End
 
-		if(!config.enter_allowed)
-			usr << "<span class='notice'>There is an administrative lock on entering the game!</span>"
+		if(!config_legacy.enter_allowed)
+			to_chat(usr, "<span class='notice'>There is an administrative lock on entering the game!</span>")
 			return
-		else if(ticker && ticker.mode && ticker.mode.explosion_in_progress)
-			usr << "<span class='danger'>The station is currently exploding. Joining would go poorly.</span>"
+		else if(SSticker && SSticker.mode && SSticker.mode.explosion_in_progress)
+			to_chat(usr, "<span class='danger'>The station is currently exploding. Joining would go poorly.</span>")
 			return
 /*
 		if(!is_alien_whitelisted(src, all_species[client.prefs.species]))
@@ -231,7 +238,7 @@
 			var/sql = "INSERT INTO erro_privacy VALUES (null, Now(), '[src.ckey]', '[option]')"
 			var/DBQuery/query_insert = dbcon.NewQuery(sql)
 			query_insert.Execute()
-			usr << "<b>Thank you for your vote!</b>"
+			to_chat(usr, "<b>Thank you for your vote!</b>")
 			usr << browse(null,"window=privacypoll")
 
 	if(!ready && href_list["preference"])
@@ -269,7 +276,7 @@
 				var/id_max = text2num(href_list["maxid"])
 
 				if( (id_max - id_min) > 100 )	//Basic exploit prevention
-					usr << "The option ID difference is too big. Please contact administration or the database admin."
+					to_chat(usr, "The option ID difference is too big. Please contact administration or the database admin.")
 					return
 
 				for(var/optionid = id_min; optionid <= id_max; optionid++)
@@ -288,7 +295,7 @@
 				var/id_max = text2num(href_list["maxoptionid"])
 
 				if( (id_max - id_min) > 100 )	//Basic exploit prevention
-					usr << "The option ID difference is too big. Please contact administration or the database admin."
+					to_chat(usr, "The option ID difference is too big. Please contact administration or the database admin.")
 					return
 
 				for(var/optionid = id_min; optionid <= id_max; optionid++)
@@ -309,7 +316,7 @@
 	var/savefile/F = get_server_news()
 	if(F)
 		client.prefs.lastnews = md5(F["body"])
-		client.prefs.save_preferences()
+		SScharacter_setup.queue_preferences_save(client.prefs)
 
 		var/dat = "<html><body><center>"
 		dat += "<h1>[F["title"]]</h1>"
@@ -323,7 +330,7 @@
 		popup.open()
 
 /mob/new_player/proc/IsJobAvailable(rank)
-	var/datum/job/job = job_master.GetJob(rank)
+	var/datum/job/job = SSjobs.GetJob(rank)
 	if(!job)	return 0
 	if(!job.is_position_available()) return 0
 	if(jobban_isbanned(src,rank))	return 0
@@ -333,14 +340,14 @@
 	return 1
 
 
-/mob/new_player/proc/AttemptLateSpawn(rank,var/spawning_at)
+/mob/new_player/proc/AttemptLateSpawn(rank, spawning_at)
 	if (src != usr)
 		return 0
-	if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
-		usr << "<font color='red'>The round is either not ready, or has already finished...</font>"
+	if(SSticker.current_state != GAME_STATE_PLAYING)
+		to_chat(usr, "<font color='red'>The round is either not ready, or has already finished...</font>")
 		return 0
-	if(!config.enter_allowed)
-		usr << "<span class='notice'>There is an administrative lock on entering the game!</span>"
+	if(!config_legacy.enter_allowed)
+		to_chat(usr, "<span class='notice'>There is an administrative lock on entering the game!</span>")
 		return 0
 	if(!IsJobAvailable(rank))
 		src << alert("[rank] is not available. Please try another.")
@@ -350,7 +357,7 @@
 		return 0
 
 	//Find our spawning point.
-	var/list/join_props = job_master.LateSpawn(client, rank)
+	var/list/join_props = SSjobs.LateSpawn(client, rank)
 	var/turf/T = join_props["turf"]
 	var/join_message = join_props["msg"]
 
@@ -360,10 +367,10 @@
 	spawning = 1
 	close_spawn_windows()
 
-	job_master.AssignRole(src, rank, 1)
+	SSjobs.AssignRole(src, rank, 1)
 
 	var/mob/living/character = create_character(T)	//creates the human and transfers vars and mind
-	character = job_master.EquipRank(character, rank, 1)					//equips the human
+	character = SSjobs.EquipRank(character, rank, 1)					//equips the human
 	UpdateFactionList(character)
 
 	// AIs don't need a spawnpoint, they must spawn at an empty core
@@ -378,27 +385,27 @@
 		character.loc = C.loc
 
 		AnnounceCyborg(character, rank, "has been transferred to the empty core in \the [character.loc.loc]")
-		ticker.mode.latespawn(character)
+		SSticker.mode.latespawn(character)
 
 		qdel(C)
 		qdel(src)
 		return
 
 	// Equip our custom items only AFTER deploying to spawn points eh?
-	equip_custom_items(character)
+	//equip_custom_items(character)	//VOREStation Removal
 
 	//character.apply_traits() //VOREStation Removal
 
 	// Moving wheelchair if they have one
 	if(character.buckled && istype(character.buckled, /obj/structure/bed/chair/wheelchair))
 		character.buckled.loc = character.loc
-		character.buckled.set_dir(character.dir)
+		character.buckled.setDir(character.dir)
 
-	ticker.mode.latespawn(character)
+	SSticker.mode.latespawn(character)
 
 	if(character.mind.assigned_role != "Cyborg")
 		data_core.manifest_inject(character)
-		ticker.minds += character.mind//Cyborgs and AIs handle this in the transform proc.	//TODO!!!!! ~Carn
+		SSticker.minds += character.mind//Cyborgs and AIs handle this in the transform proc.	//TODO!!!!! ~Carn
 
 		//Grab some data from the character prefs for use in random news procs.
 
@@ -409,7 +416,7 @@
 	qdel(src)
 
 /mob/new_player/proc/AnnounceCyborg(var/mob/living/character, var/rank, var/join_message)
-	if (ticker.current_state == GAME_STATE_PLAYING)
+	if (SSticker.current_state == GAME_STATE_PLAYING)
 		if(character.mind.role_alt_title)
 			rank = character.mind.role_alt_title
 		// can't use their name here, since cyborg namepicking is done post-spawn, so we'll just say "A new Cyborg has arrived"/"A new Android has arrived"/etc.
@@ -422,18 +429,18 @@
 	dat += "<b>Welcome, [name].<br></b>"
 	dat += "Round Duration: [roundduration2text()]<br>"
 
-	if(emergency_shuttle) //In case NanoTrasen decides reposess CentCom's shuttles.
-		if(emergency_shuttle.going_to_centcom()) //Shuttle is going to CentCom, not recalled
+	if(SSemergencyshuttle) //In case NanoTrasen decides reposess CentCom's shuttles.
+		if(SSemergencyshuttle.going_to_centcom()) //Shuttle is going to CentCom, not recalled
 			dat += "<font color='red'><b>The station has been evacuated.</b></font><br>"
-		if(emergency_shuttle.online())
-			if (emergency_shuttle.evac)	// Emergency shuttle is past the point of no recall
+		if(SSemergencyshuttle.online())
+			if (SSemergencyshuttle.evac)	// Emergency shuttle is past the point of no recall
 				dat += "<font color='red'>The station is currently undergoing evacuation procedures.</font><br>"
 			else						// Crew transfer initiated
 				dat += "<font color='red'>The station is currently undergoing crew transfer procedures.</font><br>"
 
 	dat += "Choose from the following open/valid positions:<br>"
 	dat += "<a href='byond://?src=\ref[src];hidden_jobs=1'>[show_hidden_jobs ? "Hide":"Show"] Hidden Jobs.</a><br>"
-	for(var/datum/job/job in job_master.occupations)
+	for(var/datum/job/job in SSjobs.occupations)
 		if(job && IsJobAvailable(job.title))
 			// Checks for jobs with minimum age requirements
 			if(job.minimum_character_age && (client.prefs.age < job.minimum_character_age))
@@ -455,14 +462,8 @@
 
 
 /mob/new_player/proc/create_character(var/turf/T)
-	if (!attempt_vr(src,"spawn_checks_vr",list())) return 0 // VOREStation Insert
-	//CITADEL EDITS START HERE - gives a big ol' "lol nope" to skids trying to spawn in as proteans
-	if(client.prefs.species)
-		var/datum/species/diosmio = all_species[client.prefs.species]
-		if(!is_alien_whitelisted(src, diosmio))
-			to_chat(src, "<span class='warning'>You aren't whitelisted for your selected species.</span>")
-			return
-	//END OF CIT CHANGES
+	if (!attempt_vr(src,"spawn_checks_vr",list()))
+		return 0 // VOREStation Insert
 	spawning = 1
 	close_spawn_windows()
 
@@ -484,7 +485,7 @@
 
 	new_character.lastarea = get_area(T)
 
-	if(ticker.random_players)
+	if(SSticker.random_players)
 		new_character.gender = pick(MALE, FEMALE)
 		client.prefs.real_name = random_name(new_character.gender)
 		client.prefs.randomize_appearance_and_body_for(new_character)

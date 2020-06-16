@@ -42,7 +42,7 @@
 		return
 
 	if(stat || paralysis || stunned || weakened || lying || restrained() || buckled)
-		src << "You cannot tackle someone in your current state."
+		to_chat(src, "You cannot tackle someone in your current state.")
 		return
 
 	var/list/choices = list()
@@ -61,7 +61,7 @@
 		return
 
 	if(stat || paralysis || stunned || weakened || lying || restrained() || buckled)
-		src << "You cannot tackle in your current state."
+		to_chat(src, "You cannot tackle in your current state.")
 		return
 
 	last_special = world.time + 50
@@ -103,17 +103,17 @@
 	var/mob/M = targets[target]
 
 	if(istype(M, /mob/observer/dead) || M.stat == DEAD)
-		src << "Not even a [src.species.name] can speak to the dead."
+		to_chat(src, "Not even a [src.species.name] can speak to the dead.")
 		return
 
 	log_say("(COMMUNE to [key_name(M)]) [text]",src)
 
-	M << "<font color='blue'>Like lead slabs crashing into the ocean, alien thoughts drop into your mind: [text]</font>"
+	to_chat(M, "<font color='blue'>Like lead slabs crashing into the ocean, alien thoughts drop into your mind: [text]</font>")
 	if(istype(M,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
 		if(H.species.name == src.species.name)
 			return
-		H << "<font color='red'>Your nose begins to bleed...</font>"
+		to_chat(H, "<font color='red'>Your nose begins to bleed...</font>")
 		H.drip(1)
 
 /mob/living/carbon/human/proc/regurgitate()
@@ -137,8 +137,8 @@
 	var/msg = sanitize(input("Message:", "Psychic Whisper") as text|null)
 	if(msg)
 		log_say("(PWHISPER to [key_name(M)]) [msg]", src)
-		M << "<font color='green'>You hear a strange, alien voice in your head... <i>[msg]</i></font>"
-		src << "<font color='green'>You said: \"[msg]\" to [M]</font>"
+		to_chat(M, "<font color='green'>You hear a strange, alien voice in your head... <i>[msg]</i></font>")
+		to_chat(src, "<font color='green'>You said: \"[msg]\" to [M]</font>")
 	return
 
 /mob/living/carbon/human/proc/diona_split_nymph()
@@ -151,7 +151,7 @@
 	var/turf/T = get_turf(src)
 
 	var/mob/living/carbon/alien/diona/S = new(T)
-	S.set_dir(dir)
+	S.setDir(dir)
 	transfer_languages(src, S)
 
 	if(mind)
@@ -166,13 +166,13 @@
 		nymphs++
 		D.forceMove(T)
 		transfer_languages(src, D, WHITELISTED|RESTRICTED)
-		D.set_dir(pick(NORTH, SOUTH, EAST, WEST))
+		D.setDir(pick(NORTH, SOUTH, EAST, WEST))
 
 	if(nymphs < number_of_resulting_nymphs)
 		for(var/i in nymphs to (number_of_resulting_nymphs - 1))
 			var/mob/M = new /mob/living/carbon/alien/diona(T)
 			transfer_languages(src, M, WHITELISTED|RESTRICTED)
-			M.set_dir(pick(NORTH, SOUTH, EAST, WEST))
+			M.setDir(pick(NORTH, SOUTH, EAST, WEST))
 
 
 	for(var/obj/item/W in src)
@@ -189,7 +189,7 @@
 
 	if(stat == DEAD) return
 
-	src << "<span class='notice'>Performing self-diagnostic, please wait...</span>"
+	to_chat(src, "<span class='notice'>Performing self-diagnostic, please wait...</span>")
 	sleep(50)
 	var/output = "<span class='notice'>Self-Diagnostic Results:\n</span>"
 
@@ -226,17 +226,17 @@
 	set category = "Abilities"
 
 	if(incapacitated())
-		src << "<span class='warning'>You need to recover before you can use this ability.</span>"
+		to_chat(src, "<span class='warning'>You need to recover before you can use this ability.</span>")
 		return
 	if(world.time < next_sonar_ping)
-		src << "<span class='warning'>You need another moment to focus.</span>"
+		to_chat(src, "<span class='warning'>You need another moment to focus.</span>")
 		return
 	if(is_deaf() || is_below_sound_pressure(get_turf(src)))
-		src << "<span class='warning'>You are for all intents and purposes currently deaf!</span>"
+		to_chat(src, "<span class='warning'>You are for all intents and purposes currently deaf!</span>")
 		return
 	next_sonar_ping += 10 SECONDS
 	var/heard_something = FALSE
-	src << "<span class='notice'>You take a moment to listen in to your environment...</span>"
+	to_chat(src, "<span class='notice'>You take a moment to listen in to your environment...</span>")
 	for(var/mob/living/L in range(client.view, src))
 		var/turf/T = get_turf(L)
 		if(!T || L == src || L.stat == DEAD || is_below_sound_pressure(T))
@@ -263,7 +263,7 @@
 		feedback += "</span>"
 		src << jointext(feedback,null)
 	if(!heard_something)
-		src << "<span class='notice'>You hear no movement but your own.</span>"
+		to_chat(src, "<span class='notice'>You hear no movement but your own.</span>")
 
 /mob/living/carbon/human/proc/regenerate()
 	set name = "Regenerate"
@@ -285,24 +285,18 @@
 	if(do_after(src,delay_length))
 		nutrition -= 200
 
-		for(var/organ_tag in src.species.has_organ)
-			var/obj/item/organ/internal/I = src.internal_organs_by_name[organ_tag]
-			if(I && I.damage > 0)
-				I.damage = max(I.damage - 30, 0) // Repair functionally half of a dead internal organ.
-				to_chat(src, span("notice", "You feel a soothing sensation within your [I.name]..."))
-			if(!I)
-				var/organ_path = src.species.has_organ[organ_tag]
-				var/obj/item/organ/internal/IO = new organ_path(src,1)
-				if(organ_tag != IO.organ_tag)
-					warning("[IO.type] has a default organ tag \"[IO.organ_tag]\" that differs from the species' organ tag \"[organ_tag]\". Updating organ_tag to match.")
-				IO.organ_tag = organ_tag
-				IO.damage = 30 // starts off as half-damaged, need to regen again to heal it
-				src.internal_organs_by_name[organ_tag] = IO
-				to_chat(src, span("notice", "You feel a soothing sensation as your missing [IO.name] reforms."))
+		for(var/obj/item/organ/I in internal_organs)
+			if(I.robotic >= ORGAN_ROBOT) // No free robofix.
+				continue
+			if(I.damage > 0)
+				I.damage = max(I.damage - 30, 0) //Repair functionally half of a dead internal organ.
+				I.status = 0	// Wipe status, as it's being regenerated from possibly dead.
+				to_chat(src, "<span class='notice'>You feel a soothing sensation within your [I.name]...</span>")
 
 		// Replace completely missing limbs.
 		for(var/limb_type in src.species.has_limbs)
 			var/obj/item/organ/external/E = src.organs_by_name[limb_type]
+
 			if(E && E.disfigured)
 				E.disfigured = 0
 			if(E && (E.is_stump() || (E.status & (ORGAN_DESTROYED|ORGAN_DEAD|ORGAN_MUTATED))))
@@ -315,8 +309,19 @@
 				var/obj/item/organ/O = new limb_path(src)
 				organ_data["descriptor"] = O.name
 				to_chat(src, "<span class='notice'>You feel a slithering sensation as your [O.name] reform.</span>")
-		UpdateAppearance()
-		sync_organ_dna()
+
+				var/agony_to_apply = round(0.66 * O.max_damage) // 66% of the limb's health is converted into pain.
+				src.apply_damage(agony_to_apply, HALLOSS)
+
+		for(var/organtype in species.has_organ) // Replace completely missing internal organs. -After- external ones, so they all should exist.
+			if(!src.internal_organs_by_name[organtype])
+				var/organpath = species.has_organ[organtype]
+				var/obj/item/organ/Int = new organpath(src, TRUE)
+
+				Int.rejuvenate(TRUE)
+
+		handle_organs() // Update everything
+
 		update_icons_body()
 		active_regen = FALSE
 	else

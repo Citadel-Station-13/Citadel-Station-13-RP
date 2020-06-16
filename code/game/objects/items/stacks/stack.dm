@@ -16,7 +16,7 @@
 	var/list/datum/stack_recipe/recipes
 	var/singular_name
 	var/amount = 1
-	var/max_amount //also see stack recipes initialisation, param "max_res_amount" must be equal to this max_amount
+	var/max_amount = 50 //also see stack recipes initialisation, param "max_res_amount" must be equal to this max_amount
 	var/stacktype //determines whether different stack types can merge
 	var/build_type = null //used when directly applied to a turf
 	var/uses_charge = 0
@@ -24,14 +24,25 @@
 	var/list/datum/matter_synth/synths = null
 	var/no_variants = TRUE // Determines whether the item should update it's sprites based on amount.
 
-/obj/item/stack/New(var/loc, var/amount=null)
-	..()
-	if (!stacktype)
+	var/pass_color = FALSE // Will the item pass its own color var to the created item? Dyed cloth, wood, etc.
+	var/strict_color_stacking = FALSE // Will the stack merge with other stacks that are different colors? (Dyed cloth, wood, etc)
+
+/obj/item/stack/Initialize(mapload, new_amount, merge = TRUE)
+	if(new_amount != null)
+		amount = new_amount
+	var/safety = 51			//badmin safety check :^)
+	if((amount > max_amount) && max_amount)
+		while(--safety && (amount > max_amount))
+			amount -= max_amount
+			new type(loc, max_amount, FALSE)
+	if(!stacktype)
 		stacktype = type
-	if (amount)
-		src.amount = amount
+	. = ..()
+	if(merge)
+		for(var/obj/item/stack/S in loc)
+			if(S.stacktype == stacktype)
+				merge(S)
 	update_icon()
-	return
 
 /obj/item/stack/Destroy()
 	if(uses_charge)
@@ -53,11 +64,11 @@
 		item_state = initial(icon_state)
 
 /obj/item/stack/examine(mob/user)
-	if(..(user, 1))
-		if(!uses_charge)
-			user << "There are [src.amount] [src.singular_name]\s in the stack."
-		else
-			user << "There is enough charge for [get_amount()]."
+	. = ..()
+	if(!uses_charge)
+		to_chat(user, "There are [amount] [singular_name]\s in the stack.")
+	else
+		to_chat(user, "There is enough charge for [get_amount()].")
 
 /obj/item/stack/attack_self(mob/user as mob)
 	list_recipes(user)
@@ -123,41 +134,49 @@
 
 	if (!can_use(required))
 		if (produced>1)
-			user << "<span class='warning'>You haven't got enough [src] to build \the [produced] [recipe.title]\s!</span>"
+			to_chat(user, "<span class='warning'>You haven't got enough [src] to build \the [produced] [recipe.title]\s!</span>")
 		else
-			user << "<span class='warning'>You haven't got enough [src] to build \the [recipe.title]!</span>"
+			to_chat(user, "<span class='warning'>You haven't got enough [src] to build \the [recipe.title]!</span>")
 		return
 
 	if (recipe.one_per_turf && (locate(recipe.result_type) in user.loc))
-		user << "<span class='warning'>There is another [recipe.title] here!</span>"
+		to_chat(user, "<span class='warning'>There is another [recipe.title] here!</span>")
 		return
 
 	if (recipe.on_floor && !isfloor(user.loc))
-		user << "<span class='warning'>\The [recipe.title] must be constructed on the floor!</span>"
+		to_chat(user, "<span class='warning'>\The [recipe.title] must be constructed on the floor!</span>")
 		return
 
 	if (recipe.time)
-		user << "<span class='notice'>Building [recipe.title] ...</span>"
+		to_chat(user, "<span class='notice'>Building [recipe.title] ...</span>")
 		if (!do_after(user, recipe.time))
 			return
 
 	if (use(required))
 		var/atom/O
-		if(recipe.use_material)
-			O = new recipe.result_type(user.loc, recipe.use_material)
+		if(ispath(recipe.result_type, /obj/item/stack))
+			O = new recipe.result_type(user.drop_location(), produced)
+		else if(recipe.use_material)
+			O = new recipe.result_type(user.drop_location(), recipe.use_material)
 		else
-			O = new recipe.result_type(user.loc)
-		O.set_dir(user.dir)
+			O = new recipe.result_type(user.drop_location())
+		O.setDir(user.dir)
 		O.add_fingerprint(user)
 
-		if (istype(O, /obj/item/stack))
-			var/obj/item/stack/S = O
-			S.amount = produced
-			S.add_to_stacks(user)
-
-		if (istype(O, /obj/item/weapon/storage)) //BubbleWrap - so newly formed boxes are empty
+		if (istype(O, /obj/item/storage)) //BubbleWrap - so newly formed boxes are empty
 			for (var/obj/item/I in O)
 				qdel(I)
+
+		if ((pass_color || recipe.pass_color))
+			if(!color)
+				if(recipe.use_material)
+					var/datum/material/MAT = get_material_by_name(recipe.use_material)
+					if(MAT.icon_colour)
+						O.color = MAT.icon_colour
+				else
+					return
+			else
+				O.color = color
 
 /obj/item/stack/Topic(href, href_list)
 	..()
@@ -194,6 +213,14 @@
 	if (get_amount() < used)
 		return 0
 	return 1
+
+/**
+  * Can we merge with this stack?
+  */
+/obj/item/stack/proc/can_merge(obj/item/stack/other)
+	if(!istype(other))
+		return FALSE
+	return other.stacktype == stacktype
 
 /obj/item/stack/proc/use(var/used)
 	if (!can_use(used))
@@ -240,8 +267,11 @@
 /obj/item/stack/proc/transfer_to(obj/item/stack/S, var/tamount=null, var/type_verified)
 	if (!get_amount())
 		return 0
-	if ((stacktype != S.stacktype) && !type_verified)
+	if (!can_merge(S) && !type_verified)
 		return 0
+	if ((strict_color_stacking || S.strict_color_stacking) && S.color != color)
+		return 0
+
 	if (isnull(tamount))
 		tamount = src.get_amount()
 
@@ -309,25 +339,35 @@
 			continue
 		var/transfer = src.transfer_to(item)
 		if (transfer)
-			user << "<span class='notice'>You add a new [item.singular_name] to the stack. It now contains [item.amount] [item.singular_name]\s.</span>"
+			to_chat(user, "<span class='notice'>You add a new [item.singular_name] to the stack. It now contains [item.amount] [item.singular_name]\s.</span>")
 		if(!amount)
 			break
 
 /obj/item/stack/attack_hand(mob/user as mob)
-	if (user.get_inactive_hand() == src)
-		var/N = input("How many stacks of [src] would you like to split off?  There are currently [amount].", "Split stacks", 1) as num|null
-		if(N)
-			var/obj/item/stack/F = src.split(N)
-			if (F)
-				user.put_in_hands(F)
-				src.add_fingerprint(user)
-				F.add_fingerprint(user)
-				spawn(0)
-					if (src && usr.machine==src)
-						src.interact(usr)
+	if(user.get_inactive_hand() == src)
+		change_stack(user, 1)
 	else
-		..()
-	return
+		return ..()
+
+/obj/item/stack/Crossed(obj/o)
+	if(can_merge(o) && !o.throwing)
+		merge(o)
+	. = ..()
+
+/obj/item/stack/proc/merge(obj/item/stack/S) //Merge src into S, as much as possible
+	if(QDELETED(S) || QDELETED(src) || (S == src)) //amusingly this can cause a stack to consume itself, let's not allow that.
+		return
+	var/transfer = get_amount()
+	if(S.uses_charge)
+		transfer = min(transfer, S.get_max_amount() - S.get_amount())
+	else
+		transfer = min(transfer, S.max_amount - S.amount)
+	if(pulledby)
+		pulledby.start_pulling(S)
+	S.copy_evidences(src)
+	use(transfer, TRUE)
+	S.add(transfer)
+	return transfer
 
 /obj/item/stack/attackby(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/stack))
@@ -342,6 +382,61 @@
 	else
 		return ..()
 
+/obj/item/stack/AltClick(mob/living/user)
+	. = ..()
+	if(!istype(user) || !in_range(user, src) || !user.canmove)
+		return
+	attempt_split_stack(user)
+
+/obj/item/stack/proc/attempt_split_stack(mob/living/user)
+	if(uses_charge)
+		return
+	else
+		if(zero_amount())
+			return
+		//get amount from user
+		var/max = get_amount()
+		var/stackmaterial = round(input(user,"How many sheets do you wish to take out of this stack? (Maximum  [max])") as null|num)
+		max = get_amount()
+		stackmaterial = min(max, stackmaterial)
+		if(stackmaterial == null || stackmaterial <= 0 || !in_range(user, src) || !user.canmove)
+			return TRUE
+		else
+			change_stack(user, stackmaterial)
+			to_chat(user, "<span class='notice'>You take [stackmaterial] sheets out of the stack</span>")
+		return TRUE
+
+/obj/item/stack/proc/change_stack(mob/user, amount)
+	if(!use(amount, TRUE, FALSE))
+		return FALSE
+	var/obj/item/stack/F = new type(user? user : drop_location(), amount, FALSE)
+	. = F
+	F.copy_evidences(src)
+	if(user)
+		if(!user.put_in_hands(F, merge_stacks = FALSE))
+			F.forceMove(user.drop_location())
+		add_fingerprint(user)
+		F.add_fingerprint(user)
+	zero_amount()
+
+/obj/item/stack/proc/zero_amount()
+	if(uses_charge)
+		return get_amount() <= 0
+	if(amount < 1)
+		qdel(src)
+		return TRUE
+	return FALSE
+
+/obj/item/stack/proc/copy_evidences(obj/item/stack/from)
+	if(from.blood_DNA)
+		blood_DNA = from.blood_DNA.Copy()
+	if(from.fingerprints)
+		fingerprints = from.fingerprints.Copy()
+	if(from.fingerprintshidden)
+		fingerprintshidden = from.fingerprintshidden.Copy()
+	if(from.fingerprintslast)
+		fingerprintslast = from.fingerprintslast
+
 /*
  * Recipe datum
  */
@@ -355,8 +450,9 @@
 	var/one_per_turf = 0
 	var/on_floor = 0
 	var/use_material
+	var/pass_color
 
-	New(title, result_type, req_amount = 1, res_amount = 1, max_res_amount = 1, time = 0, one_per_turf = 0, on_floor = 0, supplied_material = null)
+	New(title, result_type, req_amount = 1, res_amount = 1, max_res_amount = 1, time = 0, one_per_turf = 0, on_floor = 0, supplied_material = null, pass_stack_color)
 		src.title = title
 		src.result_type = result_type
 		src.req_amount = req_amount
@@ -366,6 +462,7 @@
 		src.one_per_turf = one_per_turf
 		src.on_floor = on_floor
 		src.use_material = supplied_material
+		src.pass_color = pass_stack_color
 
 /*
  * Recipe list datum

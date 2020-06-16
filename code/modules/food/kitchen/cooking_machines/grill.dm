@@ -30,9 +30,9 @@
 	playsound(src, 'sound/machines/click.ogg', 40, 1)
 	update_icon()
 
-/obj/machinery/appliance/grill/initialize()
+/obj/machinery/appliance/grill/Initialize()
 	. = ..()
-	cooking_objs += new /datum/cooking_item(new /obj/item/weapon/reagent_containers/cooking_container(src))
+	cooking_objs += new /datum/cooking_item(new /obj/item/reagent_containers/cooking_container(src))
 	cooking = 0
 
 /obj/machinery/appliance/grill/has_space(var/obj/item/I)
@@ -47,26 +47,27 @@
 
 //Container is not removable
 /obj/machinery/appliance/grill/removal_menu(var/mob/user)
-	if (can_remove_items(user))
-		var/list/menuoptions = list()
-		for (var/a in cooking_objs)
-			var/datum/cooking_item/CI = a
-			if (CI.container)
-				if (!CI.container.check_contents())
-					user << "There's nothing in the [src] you can remove!"
-					return
+	if (!can_remove_items(user)) return 0
 
-				for (var/obj/item/I in CI.container)
-					menuoptions[I.name] = I
+	var/datum/cooking_item/CI = cooking_objs[1]
 
-		var/selection = input(user, "Which item would you like to remove? If you want to remove chemicals, use an empty beaker.", "Remove ingredients") as null|anything in menuoptions
-		if (selection)
-			var/obj/item/I = menuoptions[selection]
-			if (!user || !user.put_in_hands(I))
-				I.forceMove(get_turf(src))
-			update_icon()
-		return 1
-	return 0
+	var/list/menuoptions = list()
+	if (CI.container)
+		if (!CI.container.check_contents())
+			to_chat(user, "There's nothing in the [src] you can remove!")
+			return
+
+		for (var/obj/item/I in CI.container)
+			menuoptions[I.name] = I
+
+	var/selection = input(user, "Which item would you like to remove? If you want to remove chemicals, use an empty beaker.", "Remove ingredients") as null|anything in menuoptions
+	if (selection)
+		var/obj/item/I = menuoptions[selection]
+		if (!user || !user.put_in_hands(I))
+			I.forceMove(get_turf(src))
+		if (cooking_objs[1].container.check_contents() == 0) //Are we empty now? Can we stop doing cooking ticks?
+			cooking_objs[1].reset()							 //Great, we are. Let's reset the container.
+	return 1
 
 /obj/machinery/appliance/grill/update_icon()
 	if (!stat)

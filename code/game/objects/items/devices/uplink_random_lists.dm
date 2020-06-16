@@ -22,7 +22,7 @@ var/datum/uplink_random_selection/all_uplink_selection = new/datum/uplink_random
 	items = list()
 	all_items = list()
 
-/datum/uplink_random_selection/proc/get_random_item(var/telecrystals, obj/item/device/uplink/U, var/list/bought_items, var/items_override = 0)
+/datum/uplink_random_selection/proc/get_random_item(var/telecrystals, obj/item/uplink/U, var/list/bought_items, var/items_override = 0)
 	var/const/attempts = 50
 
 	for(var/i = 0; i < attempts; i++)
@@ -74,7 +74,7 @@ var/datum/uplink_random_selection/all_uplink_selection = new/datum/uplink_random
 	items += new/datum/uplink_random_item(/datum/uplink_item/item/stealth_items/chameleon_kit)
 	items += new/datum/uplink_random_item(/datum/uplink_item/item/stealth_items/chameleon_projector)
 	items += new/datum/uplink_random_item(/datum/uplink_item/item/stealth_items/voice)
-	items += new/datum/uplink_random_item(/datum/uplink_item/item/stealth_items/camera_floppy, 10, 0)
+	//items += new/datum/uplink_random_item(/datum/uplink_item/item/stealth_items/camera_floppy, 10, 0)
 
 	items += new/datum/uplink_random_item(/datum/uplink_item/item/armor/heavy_vest)
 	items += new/datum/uplink_random_item(/datum/uplink_item/item/armor/combat)
@@ -115,5 +115,5 @@ var/datum/uplink_random_selection/all_uplink_selection = new/datum/uplink_random
 
 /proc/debug_uplink_item_assoc_list()
 	for(var/key in uplink.items_assoc)
-		world << "[key] - [uplink.items_assoc[key]]"
+		to_chat(world, "[key] - [uplink.items_assoc[key]]")
 #endif

@@ -22,10 +22,8 @@
 	update_icon()
 	return ..(loc)
 
-/obj/effect/blob/CanPass(var/atom/movable/mover, vra/turf/target, var/height = 0, var/air_group = 0)
-	if(air_group || height == 0)
-		return 1
-	return 0
+/obj/effect/blob/CanAllowThrough(var/atom/movable/mover, vra/turf/target)
+	return FALSE
 
 /obj/effect/blob/ex_act(var/severity)
 	switch(severity)
@@ -42,7 +40,7 @@
 	else
 		icon_state = "blob_damaged"
 
-/obj/effect/blob/proc/take_damage(var/damage)
+/obj/effect/blob/take_damage(var/damage)	// VOREStation Edit
 	health -= damage
 	if(health < 0)
 		playsound(loc, 'sound/effects/splat.ogg', 50, 1)
@@ -135,7 +133,7 @@
 			take_damage(Proj.damage / fire_resist)
 	return 0
 
-/obj/effect/blob/attackby(var/obj/item/weapon/W, var/mob/user)
+/obj/effect/blob/attackby(var/obj/item/W, var/mob/user)
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	playsound(loc, 'sound/effects/attackblob.ogg', 50, 1)
 	visible_message("<span class='danger'>\The [src] has been attacked with \the [W][(user ? " by [user]." : ".")]</span>")
@@ -143,7 +141,7 @@
 	switch(W.damtype)
 		if("fire")
 			damage = (W.force / fire_resist)
-			if(istype(W, /obj/item/weapon/weldingtool))
+			if(istype(W, /obj/item/weldingtool))
 				playsound(src, W.usesound, 100, 1)
 		if("brute")
 			damage = (W.force / brute_resist)
@@ -167,11 +165,11 @@
 	return
 
 /obj/effect/blob/core/New(loc)
-	processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 	return ..(loc)
 
 /obj/effect/blob/core/Destroy()
-	processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 	return ..()
 
 /obj/effect/blob/core/process()
@@ -207,5 +205,5 @@
 	else
 		icon_state = "blob_damaged"
 
-/obj/effect/blob/shield/CanPass(var/atom/movable/mover, var/turf/target, var/height = 0, var/air_group = 0)
+/obj/effect/blob/shield/CanAllowThrough(var/atom/movable/mover, var/turf/target)
 	return !density

@@ -6,6 +6,7 @@
  * /obj/item/rig_module/shield
  * /obj/item/rig_module/fabricator
  * /obj/item/rig_module/mounted/energy_blade
+ * /obj/item/rig_module/armblade
  * /obj/item/rig_module/device/flash */
 
 /obj/item/rig_module/device/flash
@@ -14,7 +15,7 @@
 	icon_state = "flash"
 	interface_name = "mounted flash"
 	interface_desc = "Stuns your target by blinding them with a bright light."
-	device_type = /obj/item/device/flash
+	device_type = /obj/item/flash
 
 /obj/item/rig_module/grenade_launcher
 
@@ -30,9 +31,9 @@
 	var/fire_distance = 10
 
 	charges = list(
-		list("flashbang",   "flashbang",   /obj/item/weapon/grenade/flashbang,  3),
-		list("smoke bomb",  "smoke bomb",  /obj/item/weapon/grenade/smokebomb,  3),
-		list("EMP grenade", "EMP grenade", /obj/item/weapon/grenade/empgrenade, 3),
+		list("flashbang",   "flashbang",   /obj/item/grenade/flashbang,  3),
+		list("smoke bomb",  "smoke bomb",  /obj/item/grenade/smokebomb,  3),
+		list("EMP grenade", "EMP grenade", /obj/item/grenade/empgrenade, 3),
 		)
 
 /obj/item/rig_module/grenade_launcher/accepts_item(var/obj/item/input_device, var/mob/living/user)
@@ -51,10 +52,10 @@
 		return 0
 
 	if(accepted_item.charges >= 5)
-		user << "<span class='danger'>Another grenade of that type will not fit into the module.</span>"
+		to_chat(user, "<span class='danger'>Another grenade of that type will not fit into the module.</span>")
 		return 0
 
-	user << "<font color='blue'><b>You slot \the [input_device] into the suit module.</b></font>"
+	to_chat(user, "<font color='blue'><b>You slot \the [input_device] into the suit module.</b></font>")
 	user.drop_from_inventory(input_device)
 	qdel(input_device)
 	accepted_item.charges++
@@ -71,7 +72,7 @@
 	var/mob/living/carbon/human/H = holder.wearer
 
 	if(!charge_selected)
-		H << "<span class='danger'>You have not selected a grenade type.</span>"
+		to_chat(H, "<span class='danger'>You have not selected a grenade type.</span>")
 		return 0
 
 	var/datum/rig_charge/charge = charges[charge_selected]
@@ -80,14 +81,27 @@
 		return 0
 
 	if(charge.charges <= 0)
-		H << "<span class='danger'>Insufficient grenades!</span>"
+		to_chat(H, "<span class='danger'>Insufficient grenades!</span>")
 		return 0
 
 	charge.charges--
-	var/obj/item/weapon/grenade/new_grenade = new charge.product_type(get_turf(H))
+	var/obj/item/grenade/new_grenade = new charge.product_type(get_turf(H))
 	H.visible_message("<span class='danger'>[H] launches \a [new_grenade]!</span>")
 	new_grenade.activate(H)
 	new_grenade.throw_at(target,fire_force,fire_distance)
+
+/obj/item/rig_module/grenade_launcher/smoke
+	name = "mounted smoke-bomb launcher"
+	desc = "A shoulder-mounted smoke-bomb dispenser."
+
+	interface_name = "integrated smoke-bomb launcher"
+	interface_desc = "Discharges loaded smoke-bombs against the wearer's location."
+
+	fire_force = 15
+
+	charges = list(
+		list("smoke bomb",  "smoke bomb",  /obj/item/grenade/smokebomb,  6)
+		)
 
 /obj/item/rig_module/mounted
 
@@ -103,8 +117,8 @@
 	interface_name = "mounted laser cannon"
 	interface_desc = "A shoulder-mounted cell-powered laser cannon."
 
-	var/gun_type = /obj/item/weapon/gun/energy/lasercannon/mounted
-	var/obj/item/weapon/gun/gun
+	var/gun_type = /obj/item/gun/energy/lasercannon/mounted
+	var/obj/item/gun/gun
 
 /obj/item/rig_module/mounted/New()
 	..()
@@ -131,7 +145,7 @@
 	interface_name = "mounted energy gun"
 	interface_desc = "A forearm-mounted suit-powered energy gun."
 
-	gun_type = /obj/item/weapon/gun/energy/gun/mounted
+	gun_type = /obj/item/gun/energy/gun/mounted
 
 /obj/item/rig_module/mounted/taser
 
@@ -147,7 +161,7 @@
 	interface_name = "mounted taser"
 	interface_desc = "A shoulder-mounted cell-powered taser."
 
-	gun_type = /obj/item/weapon/gun/energy/taser/mounted
+	gun_type = /obj/item/gun/energy/taser/mounted
 
 /obj/item/rig_module/mounted/energy_blade
 
@@ -168,12 +182,12 @@
 	active_power_cost = 10
 	passive_power_cost = 0
 
-	gun_type = /obj/item/weapon/gun/energy/crossbow/ninja
+	gun_type = /obj/item/gun/energy/crossbow/ninja
 
 /obj/item/rig_module/mounted/energy_blade/process()
 
 	if(holder && holder.wearer)
-		if(!(locate(/obj/item/weapon/melee/energy/blade) in holder.wearer))
+		if(!(locate(/obj/item/melee/energy/blade) in holder.wearer))
 			deactivate()
 			return 0
 
@@ -186,11 +200,11 @@
 	var/mob/living/M = holder.wearer
 
 	if(M.l_hand && M.r_hand)
-		M << "<span class='danger'>Your hands are full.</span>"
+		to_chat(M, "<span class='danger'>Your hands are full.</span>")
 		deactivate()
 		return
 
-	var/obj/item/weapon/melee/energy/blade/blade = new(M)
+	var/obj/item/melee/energy/blade/blade = new(M)
 	blade.creator = M
 	M.put_in_hands(blade)
 
@@ -203,7 +217,7 @@
 	if(!M)
 		return
 
-	for(var/obj/item/weapon/melee/energy/blade/blade in M.contents)
+	for(var/obj/item/melee/energy/blade/blade in M.contents)
 		M.drop_from_inventory(blade)
 		qdel(blade)
 
@@ -221,7 +235,7 @@
 	interface_name = "death blossom launcher"
 	interface_desc = "An integrated microfactory that produces poisoned throwing stars from thin air and electricity."
 
-	var/fabrication_type = /obj/item/weapon/material/star/ninja
+	var/fabrication_type = /obj/item/material/star/ninja
 	var/fire_force = 30
 	var/fire_distance = 10
 
@@ -239,11 +253,77 @@
 		firing.throw_at(target,fire_force,fire_distance)
 	else
 		if(H.l_hand && H.r_hand)
-			H << "<span class='danger'>Your hands are full.</span>"
+			to_chat(H, "<span class='danger'>Your hands are full.</span>")
 		else
 			var/obj/item/new_weapon = new fabrication_type()
 			new_weapon.forceMove(H)
-			H << "<font color='blue'><b>You quickly fabricate \a [new_weapon].</b></font>"
+			to_chat(H, "<font color='blue'><b>You quickly fabricate \a [new_weapon].</b></font>")
 			H.put_in_hands(new_weapon)
 
 	return 1
+
+/obj/item/rig_module/armblade
+	name = "retractable armblade"
+	desc = "A retractable arm-mounted blade in an equally retractable scabbard that fits in standardized hardsuit mounts. Attaches to the user's forearm."
+	icon_state = "armblade"
+	toggleable = TRUE
+	disruptive = FALSE
+
+	interface_name = "retractable armblade"
+	interface_desc = "An attached armblade fitted to the wearer's arm of choice."
+
+	activate_string = "Extend Blade"
+	deactivate_string = "Retract Blade"
+	var/obj/item/material/knife/machete/armblade/rig/held_blade
+
+/obj/item/rig_module/armblade/Initialize()
+	. = ..()
+	held_blade = new /obj/item/material/knife/machete/armblade/rig
+	held_blade.storing_module = src
+
+/obj/item/rig_module/armblade/process()
+
+	if(holder && holder.wearer)
+		if(!(locate(/obj/item/material/knife/machete/armblade) in holder.wearer))
+			deactivate()
+			return 0
+
+	return ..()
+
+/obj/item/rig_module/armblade/activate()
+
+	..()
+
+	var/mob/living/M = holder.wearer
+	var/datum/gender/TU = gender_datums[M.get_visible_gender()]
+
+	if(M.l_hand && M.r_hand)
+		to_chat(M, "<span class='danger'>Your hands are full.</span>")
+		deactivate()
+		return
+	if(M.a_intent == INTENT_HARM)
+		M.visible_message(
+			"<span class='danger'>[M] throws [TU.his] arm out, extending \the [held_blade] from \the [holder] with a click!</span>",
+			"<span class='danger'>You throw your arm out, extending \the [held_blade] from \the [holder] with a click!</span>",
+			"<span class='notice'>You hear a threatening hiss and a click.</span>"
+			)
+	else
+		M.visible_message(
+			"<span class='notice'>[M] extends \the [held_blade] from \the [holder] with a click!</span>",
+			"<span class='notice'>You extend \the [held_blade] from \the [holder] with a click!</span>",
+			"<span class='notice'>You hear a hiss and a click.</span>")
+
+	playsound(src, 'modular_citadel/sound/items/helmetdeploy.ogg', 40, 1)
+	M.put_in_hands(held_blade)
+
+/obj/item/rig_module/armblade/deactivate()
+
+	..()
+
+	var/mob/living/M = holder.wearer
+
+	if(!M)
+		return
+
+	for(var/obj/item/material/knife/machete/armblade/stabby in M.contents)
+		M.drop_from_inventory(stabby)

@@ -113,7 +113,7 @@
 	var/mob/living/carbon/human/H = M
 	var/obj/item/organ/external/affected = H.get_organ(user.zone_sel.selecting)
 	if(affected)
-		for(var/datum/surgery_step/S in surgery_steps)
+		for(var/datum/surgery_step/S in GLOB.surgery_steps)
 			if(!affected.open && S.req_open)
 				return 0
 	return 0
@@ -121,13 +121,13 @@
 /obj/item/proc/do_surgery(mob/living/carbon/M, mob/living/user)
 	if(!istype(M))
 		return 0
-	if (user.a_intent == I_HURT)	//check for Hippocratic Oath
+	if (user.a_intent == INTENT_HARM)	//check for Hippocratic Oath
 		return 0
 	var/zone = user.zone_sel.selecting
 	if(zone in M.op_stage.in_progress) //Can't operate on someone repeatedly.
-		user << "<span class='warning'>You can't operate on this area while surgery is already in progress.</span>"
+		to_chat(user, "<span class='warning'>You can't operate on this area while surgery is already in progress.</span>")
 		return 1
-	for(var/datum/surgery_step/S in surgery_steps)
+	for(var/datum/surgery_step/S in GLOB.surgery_steps)
 		//check if tool is right or close enough and if this step is possible
 		if(S.tool_quality(src))
 			var/step_is_valid = S.can_use(user, M, zone, src)
@@ -166,21 +166,11 @@
 				return	1	  												//don't want to do weapony things after surgery
 	return 0
 
-/proc/sort_surgeries()
-	var/gap = surgery_steps.len
-	var/swapped = 1
-	while (gap > 1 || swapped)
-		swapped = 0
-		if(gap > 1)
-			gap = round(gap / 1.247330950103979)
-		if(gap < 1)
-			gap = 1
-		for(var/i = 1; gap + i <= surgery_steps.len; i++)
-			var/datum/surgery_step/l = surgery_steps[i]		//Fucking hate
-			var/datum/surgery_step/r = surgery_steps[gap+i]	//how lists work here
-			if(l.priority < r.priority)
-				surgery_steps.Swap(i, gap + i)
-				swapped = 1
+/proc/initialize_surgeries()
+	. = list()
+	for(var/path in subtypesof(/datum/surgery_step))
+		. += new path
+	sortTim(., cmp = /proc/cmp_surgery_priority_asc)
 
 /datum/surgery_status/
 	var/eyes	=	0

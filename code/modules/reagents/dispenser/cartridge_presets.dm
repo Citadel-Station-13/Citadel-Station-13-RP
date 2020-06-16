@@ -1,4 +1,4 @@
-/obj/item/weapon/reagent_containers/chem_disp_cartridge
+/obj/item/reagent_containers/chem_disp_cartridge
 	small
 		volume = CARTRIDGE_VOLUME_SMALL
 
@@ -30,6 +30,7 @@
 	ethanol		spawn_reagent = "ethanol"
 	sacid		spawn_reagent = "sacid"
 	tungsten	spawn_reagent = "tungsten"
+	calcium		spawn_reagent = "calcium"
 
 	// Bar, alcoholic
 	beer		spawn_reagent = "beer"
@@ -39,12 +40,14 @@
 	vodka		spawn_reagent = "vodka"
 	gin			spawn_reagent = "gin"
 	rum			spawn_reagent = "rum"
-	tequila		spawn_reagent = "tequila"
+	tequila		spawn_reagent = "tequilla"
 	vermouth	spawn_reagent = "vermouth"
 	cognac		spawn_reagent = "cognac"
 	ale			spawn_reagent = "ale"
 	mead		spawn_reagent = "mead"
 	bitters		spawn_reagent = "bitters"
+	cider		spawn_reagent = "cider"
+	alcsassafras	spawn_reagent = "alcsassafras"
 
 	// Bar, soft
 	ice			spawn_reagent = "ice"
@@ -61,6 +64,8 @@
 	lime		spawn_reagent = "limejuice"
 	watermelon	spawn_reagent = "watermelonjuice"
 	lemon		spawn_reagent = "lemonjuice"
+	sarsaparilla	spawn_reagent = "sarsaparilla"
+	sassafras	spawn_reagent = "sassafras"
 
 	// Bar, coffee
 	coffee		spawn_reagent = "coffee"

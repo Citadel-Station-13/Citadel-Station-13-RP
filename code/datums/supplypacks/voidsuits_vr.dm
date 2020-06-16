@@ -4,7 +4,7 @@
 			/obj/item/clothing/head/helmet/space/void/atmos = 3,
 			/obj/item/clothing/mask/breath = 3,
 			/obj/item/clothing/shoes/magboots = 3,
-			/obj/item/weapon/tank/oxygen = 3,
+			/obj/item/tank/oxygen = 3,
 			)
 
 /datum/supply_pack/voidsuits/engineering
@@ -13,7 +13,7 @@
 			/obj/item/clothing/head/helmet/space/void/engineering = 3,
 			/obj/item/clothing/mask/breath = 3,
 			/obj/item/clothing/shoes/magboots = 3,
-			/obj/item/weapon/tank/oxygen = 3
+			/obj/item/tank/oxygen = 3
 			)
 
 /datum/supply_pack/voidsuits/medical
@@ -22,7 +22,7 @@
 			/obj/item/clothing/head/helmet/space/void/medical = 3,
 			/obj/item/clothing/mask/breath = 3,
 			/obj/item/clothing/shoes/magboots = 3,
-			/obj/item/weapon/tank/oxygen = 3
+			/obj/item/tank/oxygen = 3
 			)
 
 /datum/supply_pack/voidsuits/medical/alt
@@ -31,7 +31,7 @@
 			/obj/item/clothing/head/helmet/space/void/medical/alt = 3,
 			/obj/item/clothing/mask/breath = 3,
 			/obj/item/clothing/shoes/magboots = 3,
-			/obj/item/weapon/tank/oxygen = 3
+			/obj/item/tank/oxygen = 3
 			)
 
 /datum/supply_pack/voidsuits/security
@@ -40,7 +40,7 @@
 			/obj/item/clothing/head/helmet/space/void/security = 3,
 			/obj/item/clothing/mask/breath = 3,
 			/obj/item/clothing/shoes/magboots = 3,
-			/obj/item/weapon/tank/oxygen = 3
+			/obj/item/tank/oxygen = 3
 			)
 
 /datum/supply_pack/voidsuits/security/crowd
@@ -49,7 +49,7 @@
 			/obj/item/clothing/head/helmet/space/void/security/riot = 3,
 			/obj/item/clothing/mask/breath = 3,
 			/obj/item/clothing/shoes/magboots = 3,
-			/obj/item/weapon/tank/oxygen = 3
+			/obj/item/tank/oxygen = 3
 			)
 
 /datum/supply_pack/voidsuits/security/alt
@@ -58,7 +58,7 @@
 			/obj/item/clothing/head/helmet/space/void/security/alt = 3,
 			/obj/item/clothing/mask/breath = 3,
 			/obj/item/clothing/shoes/magboots = 3,
-			/obj/item/weapon/tank/oxygen = 3
+			/obj/item/tank/oxygen = 3
 			)
 
 /datum/supply_pack/voidsuits/supply
@@ -67,7 +67,7 @@
 			/obj/item/clothing/suit/space/void/mining = 3,
 			/obj/item/clothing/head/helmet/space/void/mining = 3,
 			/obj/item/clothing/mask/breath = 3,
-			/obj/item/weapon/tank/oxygen = 3
+			/obj/item/tank/oxygen = 3
 			)
 
 /datum/supply_pack/voidsuits/explorer
@@ -77,10 +77,10 @@
 			/obj/item/clothing/head/helmet/space/void/exploration = 3,
 			/obj/item/clothing/mask/breath = 3,
 			/obj/item/clothing/shoes/magboots = 3,
-			/obj/item/weapon/tank/oxygen = 3
+			/obj/item/tank/oxygen = 3
 			)
 	cost = 50
-	containertype = "/obj/structure/closet/crate/secure"
+	containertype = /obj/structure/closet/crate/secure
 	containername = "Exploration voidsuit crate"
 	access = access_explorer
 
@@ -91,9 +91,9 @@
 			/obj/item/clothing/head/helmet/space/void/pilot = 1,
 			/obj/item/clothing/mask/breath = 1,
 			/obj/item/clothing/shoes/magboots = 1,
-			/obj/item/weapon/tank/oxygen = 1
+			/obj/item/tank/oxygen = 1
 			)
 	cost = 20
-	containertype = "/obj/structure/closet/crate/secure"
+	containertype = /obj/structure/closet/crate/secure
 	containername = "Pilot voidsuit crate"
 	access = access_pilot

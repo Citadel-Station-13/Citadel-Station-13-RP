@@ -24,15 +24,15 @@
 				if(O.started_as_observer)
 					continue // They are just a pure observer, ignore
 			// Died and were not cloned - Respawn at centcomm
-			persist_interround_data(Player, using_map.spawnpoint_died)
+			persist_interround_data(Player, GLOB.using_map.spawnpoint_died)
 		else
 			var/turf/playerTurf = get_turf(Player)
 			if(isAdminLevel(playerTurf.z))
 				// Evac'd - Next round they arrive on the shuttle.
-				persist_interround_data(Player, using_map.spawnpoint_left)
+				persist_interround_data(Player, GLOB.using_map.spawnpoint_left)
 			else
 				// Stayed on station, go to dorms
-				persist_interround_data(Player, using_map.spawnpoint_stayed)
+				persist_interround_data(Player, GLOB.using_map.spawnpoint_stayed)
 	return 1
 
 /**
@@ -40,7 +40,7 @@
  */
 /proc/prep_for_persist(var/mob/persister)
 	if(!istype(persister))
-		crash_with("Persist (P4P): Given non-mob [persister].")
+		stack_trace("Persist (P4P): Given non-mob [persister].")
 		return
 
 	// Find out of this mob is a proper mob!
@@ -74,7 +74,7 @@
 
 /proc/persist_interround_data(var/mob/occupant, var/datum/spawnpoint/new_spawn_point_type)
 	if(!istype(occupant))
-		crash_with("Persist (PID): Given non-mob [occupant].")
+		stack_trace("Persist (PID): Given non-mob [occupant].")
 		return
 
 	var/datum/preferences/prefs = prep_for_persist(occupant)
@@ -225,7 +225,7 @@
 */
 /proc/persist_nif_data(var/mob/living/carbon/human/H,var/datum/preferences/prefs)
 	if(!istype(H))
-		crash_with("Persist (NIF): Given a nonhuman: [H]")
+		stack_trace("Persist (NIF): Given a nonhuman: [H]")
 		return
 
 	if(!prefs)
@@ -235,18 +235,18 @@
 		WARNING("Persist (NIF): [H] has no prefs datum, skipping")
 		return
 
-	var/obj/item/device/nif/nif = H.nif
+	var/obj/item/nif/nif = H.nif
 
 	//If they have one, and if it's not installing without an owner, because
 	//Someone who joins and immediately leaves again (wrong job choice, maybe)
 	//should keep it even though it was probably doing the quick-calibrate, and their
 	//owner will have been pre-set during the constructor.
 	if(nif && !(nif.stat == NIF_INSTALLING && !nif.owner))
-		prefs.nif_path = nif.type
+		prefs.nif_id = nif.id
 		prefs.nif_durability = nif.durability
 		prefs.nif_savedata = nif.save_data.Copy()
 	else
-		prefs.nif_path = null
+		prefs.nif_id = null
 		prefs.nif_durability = null
 		prefs.nif_savedata = null
 

@@ -17,7 +17,7 @@
 
 	var/const/climb_time = 2 SECONDS
 
-/obj/structure/ladder/initialize()
+/obj/structure/ladder/Initialize()
 	. = ..()
 	// the upper will connect to the lower
 	if(allowed_directions & DOWN) //we only want to do the top one, as it will initialize the ones before it.
@@ -68,6 +68,10 @@
 	if(target_ladder)
 		M.forceMove(get_turf(target_ladder))
 
+/obj/structure/ladder/attack_robot(var/mob/M)
+	attack_hand(M)
+	return
+
 /obj/structure/ladder/proc/getTargetLadder(var/mob/M)
 	if((!target_up && !target_down) || (target_up && !istype(target_up.loc, /turf) || (target_down && !istype(target_down.loc,/turf))))
 		to_chat(M, "<span class='notice'>\The [src] is incomplete and can't be climbed.</span>")
@@ -107,9 +111,9 @@
 		if(!A.CanPass(M, M.loc, 1.5, 0))
 			to_chat(M, "<span class='notice'>\The [A] is blocking \the [src].</span>")
 			return FALSE
-	return M.Move(T)
+	return M.forceMove(T) //VOREStation Edit - Fixes adminspawned ladders
 
-/obj/structure/ladder/CanPass(obj/mover, turf/source, height, airflow)
+/obj/structure/ladder/CanAllowThrough(obj/mover, turf/source, height, airflow)
 	return airflow || !density
 
 /obj/structure/ladder/update_icon()
@@ -131,8 +135,9 @@
 	opacity = 0
 	anchored = 1
 	flags = ON_BORDER
+	layer = STAIRS_LAYER
 
-/obj/structure/stairs/initialize()
+/obj/structure/stairs/Initialize(mapload)
 	. = ..()
 	for(var/turf/turf in locs)
 		var/turf/simulated/open/above = GetAbove(turf)
@@ -148,19 +153,18 @@
 	. = ..()
 
 /obj/structure/stairs/Bumped(atom/movable/A)
+	. = ..()
 	// This is hackish but whatever.
 	var/turf/target = get_step(GetAbove(A), dir)
-	if(target.Enter(A, src)) // Pass src to be ignored to avoid infinate loop
-		A.forceMove(target)
-		if(isliving(A))
-			var/mob/living/L = A
-			if(L.pulling)
-				L.pulling.forceMove(target)
+	for(var/i in A.getLocationTransitForceMoveTargets(target))		//make sure they can all go through.
+		if(!target.Enter(i, src))
+			return
+	A.locationTransitForceMove(target)
 
 /obj/structure/stairs/proc/upperStep(var/turf/T)
 	return (T == loc)
 
-/obj/structure/stairs/CanPass(obj/mover, turf/source, height, airflow)
+/obj/structure/stairs/CanAllowThrough(obj/mover, turf/source, height, airflow)
 	return airflow || !density
 
 // type paths to make mapping easier.

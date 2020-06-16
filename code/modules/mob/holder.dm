@@ -1,7 +1,5 @@
-var/list/holder_mob_icon_cache = list()
-
 //Helper object for picking dionaea (and other creatures) up.
-/obj/item/weapon/holder
+/obj/item/holder
 	name = "holder"
 	desc = "You shouldn't ever see this."
 	icon = 'icons/obj/objects.dmi'
@@ -19,26 +17,27 @@ var/list/holder_mob_icon_cache = list()
 		slot_r_hand_str = 'icons/mob/items/righthand_holder.dmi',
 		)
 	pixel_y = 8
+	var/static/list/holder_mob_icon_cache = list()
 	var/mob/living/held_mob
 
-/obj/item/weapon/holder/New()
-	..()
-	processing_objects.Add(src)
+/obj/item/holder/Initialize(mapload)
+	. = ..()
+	START_PROCESSING(SSobj, src)
 
-/obj/item/weapon/holder/Destroy()
-	processing_objects.Remove(src)
+/obj/item/holder/Destroy()
+	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/weapon/holder/process()
+/obj/item/holder/process()
 	update_state()
 	drop_items()
 
-/obj/item/weapon/holder/dropped()
+/obj/item/holder/dropped()
 	..()
 	spawn(1)
 		update_state()
 
-/obj/item/weapon/holder/proc/update_state()
+/obj/item/holder/proc/update_state()
 	if(!(contents.len))
 		qdel(src)
 	else if(isturf(loc))
@@ -48,29 +47,29 @@ var/list/holder_mob_icon_cache = list()
 			held_mob = null
 		qdel(src)
 
-/obj/item/weapon/holder/proc/drop_items()
+/obj/item/holder/proc/drop_items()
 	for(var/atom/movable/M in contents)
 		if(M == held_mob)
 			continue
 		M.forceMove(get_turf(src))
 
-/obj/item/weapon/holder/onDropInto(var/atom/movable/AM)
+/obj/item/holder/onDropInto(var/atom/movable/AM)
 	if(ismob(loc))   // Bypass our holding mob and drop directly to its loc
 		return loc.loc
 	return ..()
 
-/obj/item/weapon/holder/GetID()
+/obj/item/holder/GetID()
 	for(var/mob/M in contents)
 		var/obj/item/I = M.GetIdCard()
 		if(I)
 			return I
 	return null
 
-/obj/item/weapon/holder/GetAccess()
+/obj/item/holder/GetAccess()
 	var/obj/item/I = GetID()
 	return I ? I.GetAccess() : ..()
 
-/obj/item/weapon/holder/proc/sync(var/mob/living/M)
+/obj/item/holder/proc/sync(var/mob/living/M)
 	dir = 2
 	overlays.Cut()
 	icon = M.icon
@@ -88,23 +87,46 @@ var/list/holder_mob_icon_cache = list()
 			H.update_inv_r_hand()
 
 //Mob specific holders.
-/obj/item/weapon/holder/diona
+/obj/item/holder/diona
 	origin_tech = list(TECH_MAGNET = 3, TECH_BIO = 5)
 	slot_flags = SLOT_HEAD | SLOT_OCLOTHING | SLOT_HOLSTER
 
-/obj/item/weapon/holder/drone
+/obj/item/holder/drone
 	origin_tech = list(TECH_MAGNET = 3, TECH_ENGINEERING = 5)
 
-/obj/item/weapon/holder/pai
+/obj/item/holder/pai
 	origin_tech = list(TECH_DATA = 2)
 
-/obj/item/weapon/holder/mouse
+/obj/item/holder/mouse
 	w_class = ITEMSIZE_TINY
 
-/obj/item/weapon/holder/borer
+/obj/item/holder/borer
 	origin_tech = list(TECH_BIO = 6)
 
-/obj/item/weapon/holder/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/item/holder/leech
+	color = "#003366"
+	origin_tech = list(TECH_BIO = 5, TECH_PHORON = 2)
+
+/obj/item/holder/fish
+	attack_verb = list("fished", "disrespected", "smacked", "smackereled")
+	hitsound = 'sound/effects/slime_squish.ogg'
+	slot_flags = SLOT_HOLSTER
+	origin_tech = list(TECH_BIO = 3)
+
+/obj/item/holder/protoblob
+	slot_flags = SLOT_HEAD | SLOT_OCLOTHING | SLOT_HOLSTER
+
+/obj/item/holder/fish/afterattack(var/atom/target, var/mob/living/user, proximity)
+	if(!target)
+		return
+	if(!proximity)
+		return
+	if(isliving(target))
+		var/mob/living/L = target
+		if(prob(10))
+			L.Stun(2)
+
+/obj/item/holder/attackby(obj/item/W as obj, mob/user as mob)
 	for(var/mob/M in src.contents)
 		M.attackby(W,user)
 
@@ -113,7 +135,7 @@ var/list/holder_mob_icon_cache = list()
 
 /mob/living/MouseDrop(var/atom/over_object)
 	var/mob/living/carbon/human/H = over_object
-	if(holder_type && issmall(src) && istype(H) && !H.lying && Adjacent(H) && (src.a_intent == I_HELP && H.a_intent == I_HELP)) //VOREStation Edit
+	if(holder_type && issmall(src) && istype(H) && !H.lying && Adjacent(H) && (src.a_intent == INTENT_HELP && H.a_intent == INTENT_HELP)) //VOREStation Edit
 		if(!issmall(H) || !istype(src, /mob/living/carbon/human))
 			get_scooped(H, (usr == src))
 		return
@@ -129,28 +151,28 @@ var/list/holder_mob_icon_cache = list()
 	else
 		if(grabber.incapacitated()) return
 
-	var/obj/item/weapon/holder/H = new holder_type(get_turf(src))
+	var/obj/item/holder/H = new holder_type(get_turf(src))
 	H.held_mob = src
 	src.forceMove(H)
 	grabber.put_in_hands(H)
 
 	if(self_grab)
-		grabber << "<span class='notice'>\The [src] clambers onto you!</span>"
-		src << "<span class='notice'>You climb up onto \the [grabber]!</span>"
+		to_chat(grabber, "<span class='notice'>\The [src] clambers onto you!</span>")
+		to_chat(src, "<span class='notice'>You climb up onto \the [grabber]!</span>")
 		grabber.equip_to_slot_if_possible(H, slot_back, 0, 1)
 	else
-		grabber << "<span class='notice'>You scoop up \the [src]!</span>"
-		src << "<span class='notice'>\The [grabber] scoops you up!</span>"
+		to_chat(grabber, "<span class='notice'>You scoop up \the [src]!</span>")
+		to_chat(src, "<span class='notice'>\The [grabber] scoops you up!</span>")
 
 	H.sync(src)
 	return H
 
-/obj/item/weapon/holder/human
+/obj/item/holder/human
 	icon = 'icons/mob/holder_complex.dmi'
 	var/list/generate_for_slots = list(slot_l_hand_str, slot_r_hand_str, slot_back_str)
 	slot_flags = SLOT_BACK
 
-/obj/item/weapon/holder/human/sync(var/mob/living/M)
+/obj/item/holder/human/sync(var/mob/living/M)
 
 	// Generate appropriate on-mob icons.
 	var/mob/living/carbon/human/owner = M

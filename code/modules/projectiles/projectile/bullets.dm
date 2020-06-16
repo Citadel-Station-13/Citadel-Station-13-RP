@@ -1,7 +1,7 @@
 /obj/item/projectile/bullet
 	name = "bullet"
 	icon_state = "bullet"
-	fire_sound = 'sound/weapons/gunshot/gunshot_strong.ogg'
+	fire_sound = 'sound/weapons/Gunshot4.ogg'
 	damage = 60
 	damage_type = BRUTE
 	nodamage = 0
@@ -10,7 +10,7 @@
 	sharp = 1
 	var/mob_passthrough_check = 0
 
-	muzzle_type = /obj/effect/projectile/bullet/muzzle
+	muzzle_type = /obj/effect/projectile/muzzle/bullet
 
 /obj/item/projectile/bullet/on_hit(var/atom/target, var/blocked = 0)
 	if (..(target, blocked))
@@ -64,50 +64,56 @@
 
 /* short-casing projectiles, like the kind used in pistols or SMGs */
 
-/obj/item/projectile/bullet/pistol
-	fire_sound = 'sound/weapons/gunshot/gunshot_pistol.ogg'
+/obj/item/projectile/bullet/pistol // 9mm pistols and most SMGs. Sacrifice power for capacity.
+	fire_sound = 'sound/weapons/gunshot2.ogg'
 	damage = 20
 
 /obj/item/projectile/bullet/pistol/ap
 	damage = 15
 	armor_penetration = 30
 
-/obj/item/projectile/bullet/pistol/medium
+/obj/item/projectile/bullet/pistol/hp
+	damage = 25
+	armor_penetration = -50
+
+/obj/item/projectile/bullet/pistol/medium // .45 (and maybe .40 if it ever gets added) caliber security pistols. Balance between capacity and power.
+	fire_sound = 'sound/weapons/gunshot3.ogg' // Snappier sound.
 	damage = 25
 
 /obj/item/projectile/bullet/pistol/medium/ap
 	damage = 20
 	armor_penetration = 15
 
-/obj/item/projectile/bullet/pistol/medium/hollow
+/obj/item/projectile/bullet/pistol/medium/hp
 	damage = 30
 	armor_penetration = -50
 
-/obj/item/projectile/bullet/pistol/strong //revolvers and matebas
-	fire_sound = 'sound/weapons/gunshot/gunshot_strong.ogg'
+/obj/item/projectile/bullet/pistol/strong // .357 and .44 caliber stuff. High power pistols like the Mateba or Desert Eagle. Sacrifice capacity for power.
+	fire_sound = 'sound/weapons/gunshot4.ogg'
 	damage = 60
 
-/obj/item/projectile/bullet/pistol/rubber/strong //"rubber" bullets for revolvers and matebas
-	fire_sound = 'sound/weapons/gunshot/gunshot_strong.ogg'
+/obj/item/projectile/bullet/pistol/rubber/strong // "Rubber" bullets for high power pistols.
+	fire_sound = 'sound/weapons/gunshot3.ogg' // Rubber shots have less powder, but these still have more punch than normal rubber shot.
 	damage = 10
 	agony = 60
 	embed_chance = 0
 	sharp = 0
 	check_armour = "melee"
 
-/obj/item/projectile/bullet/pistol/rubber //"rubber" bullets
+/obj/item/projectile/bullet/pistol/rubber // "Rubber" bullets for all other pistols.
 	name = "rubber bullet"
 	damage = 5
 	agony = 40
 	embed_chance = 0
 	sharp = 0
 	check_armour = "melee"
+	fire_sound ='sound/weapons/Gunshot_pathetic.ogg' // Rubber shots have less powder in the casing.
 
 /* shotgun projectiles */
 
 /obj/item/projectile/bullet/shotgun
 	name = "slug"
-	fire_sound = 'sound/weapons/gunshot/shotgun.ogg'
+	fire_sound = 'sound/weapons/Gunshot_shotgun.ogg'
 	damage = 50
 	armor_penetration = 15
 
@@ -123,7 +129,7 @@
 //Overall less damage than slugs in exchange for more damage at very close range and more embedding
 /obj/item/projectile/bullet/pellet/shotgun
 	name = "shrapnel"
-	fire_sound = 'sound/weapons/gunshot/shotgun.ogg'
+	fire_sound = 'sound/weapons/Gunshot_shotgun.ogg'
 	damage = 13
 	pellets = 6
 	range_step = 1
@@ -138,7 +144,7 @@
 //EMP shotgun 'slug', it's basically a beanbag that pops a tiny emp when it hits. //Not currently used
 /obj/item/projectile/bullet/shotgun/ion
 	name = "ion slug"
-	fire_sound = 'sound/weapons/Laser.ogg'
+	fire_sound = 'sound/weapons/Laser.ogg' // Really? We got nothing better than this?
 	damage = 15
 	embed_chance = 0
 	sharp = 0
@@ -155,36 +161,41 @@
 /* "Rifle" rounds */
 
 /obj/item/projectile/bullet/rifle
-	fire_sound = 'sound/weapons/gunshot/gunshot3.ogg'
+	fire_sound = 'sound/weapons/Gunshot_generic_rifle.ogg'
 	armor_penetration = 15
 	penetrating = 1
 
 /obj/item/projectile/bullet/rifle/a762
-	fire_sound = 'sound/weapons/gunshot/gunshot2.ogg'
+	fire_sound = 'sound/weapons/Gunshot_heavy.ogg'
 	damage = 35
+
+/obj/item/projectile/bullet/rifle/a762/sniper // Hitscan specifically for sniper ammo; to be implimented at a later date, probably for the SVD. -Ace
+	fire_sound = 'sound/weapons/Gunshot_sniper.ogg'
+	hitscan = 1 //so the ammo isn't useless as a sniper weapon
 
 /obj/item/projectile/bullet/rifle/a762/ap
 	damage = 30
 	armor_penetration = 50 // At 30 or more armor, this will do more damage than standard rounds.
 
-/obj/item/projectile/bullet/rifle/a762/hollow
+/obj/item/projectile/bullet/rifle/a762/hp
 	damage = 40
 	armor_penetration = -50
 	penetrating = 0
 
-/obj/item/projectile/bullet/rifle/a762/hunter // Optimized for killing simple animals and not people, because Balance.
+/obj/item/projectile/bullet/rifle/a762/hunter // Optimized for killing simple animals and not people, because Balance(tm)
 	damage = 20
 	SA_bonus_damage = 50 // 70 total on animals.
 	SA_vulnerability = SA_ANIMAL
 
 /obj/item/projectile/bullet/rifle/a545
+	fire_sound = 'sound/weapons/Gunshot_light.ogg'
 	damage = 25
 
 /obj/item/projectile/bullet/rifle/a545/ap
 	damage = 20
 	armor_penetration = 50 // At 40 or more armor, this will do more damage than standard rounds.
 
-/obj/item/projectile/bullet/rifle/a545/hollow
+/obj/item/projectile/bullet/rifle/a545/hp
 	damage = 35
 	armor_penetration = -50
 	penetrating = 0
@@ -194,8 +205,8 @@
 	SA_bonus_damage = 35 // 50 total on animals.
 	SA_vulnerability = SA_ANIMAL
 
-/obj/item/projectile/bullet/rifle/a145
-	fire_sound = 'sound/weapons/gunshot/sniper.ogg'
+/obj/item/projectile/bullet/rifle/a145 // 14.5×114mm is bigger than a .50 BMG round.
+	fire_sound = 'sound/weapons/Gunshot_cannon.ogg' // This is literally an anti-tank rifle caliber. It better sound like a fucking cannon.
 	damage = 80
 	stun = 3
 	weaken = 3
@@ -246,35 +257,22 @@
 	incendiary = 2
 	flammability = 4
 	agony = 30
-	kill_count = 4
+	range = 4
 	vacuum_traversal = 0
 
 /obj/item/projectile/bullet/incendiary/flamethrower/large
 	damage = 15
-	kill_count = 6
+	range = 6
 
-/obj/item/projectile/bullet/blank
-	invisibility = 101
-	damage = 1
-	embed_chance = 0
+/* Practice rounds and blanks */
 
-/* Practice */
-
-/obj/item/projectile/bullet/pistol/practice
+/obj/item/projectile/bullet/practice
 	damage = 5
 
-/obj/item/projectile/bullet/rifle/practice
-	damage = 5
-	penetrating = 0
-
-/obj/item/projectile/bullet/shotgun/practice
-	name = "practice"
-	damage = 5
-
-/obj/item/projectile/bullet/pistol/cap
+/obj/item/projectile/bullet/pistol/cap // Just the primer, such as a cap gun.
 	name = "cap"
 	damage_type = HALLOSS
-	fire_sound = null
+	fire_sound = 'sound/effects/snap.ogg'
 	damage = 0
 	nodamage = 1
 	embed_chance = 0
@@ -286,131 +284,15 @@
 	loc = null
 	qdel(src)
 
-/* Pepperball Rounds */
-/obj/item/projectile/bullet/pistol/pepperball
-	name = "pepperball"
+/obj/item/projectile/bullet/blank
+	name = "blank"
+	damage_type = HALLOSS
+	fire_sound = 'sound/weapons/Gunshot_generic_rifle.ogg' // Blanks still make loud noises.
 	damage = 0
-	agony = 0
+	nodamage = 1
 	embed_chance = 0
 	sharp = 0
-	nodamage = 1
 
-/obj/item/projectile/bullet/pistol/pepperball/on_hit(var/atom/target, var/blocked = 0, var/alien)
-	..()
-	var/eyes_covered = 0
-	var/mouth_covered = 0
-
-	var/head_covered = 0
-	var/arms_covered = 0 //These are used for the effects on slime-based species.
-	var/legs_covered = 0
-	var/hands_covered = 0
-	var/feet_covered = 0
-	var/chest_covered = 0
-	var/groin_covered = 0
-
-	var/obj/item/safe_thing = null
-
-	var/effective_strength = 5
-	if(!istype(target, /mob/living/carbon/human))
-		return
-	if(alien == IS_SKRELL)	//Larger eyes means bigger targets.
-		effective_strength = 8
-
-	if(alien == IS_ALRAUNE) //cit change: plants find the base form tasty, still mildly inconvenient to be affected by this.
-		effective_strength = 4
-	var/mob/living/carbon/human/M = target
-	if(istype(target, /mob/living/carbon/human))
-		var/mob/living/carbon/human/H = M
-		if(!H.can_feel_pain())
-			return
-		if(H.head)
-			if(H.head.body_parts_covered & EYES)
-				eyes_covered = 1
-				safe_thing = H.head
-			if((H.head.body_parts_covered & FACE) && !(H.head.item_flags & FLEXIBLEMATERIAL))
-				mouth_covered = 1
-				safe_thing = H.head
-		if(H.wear_mask)
-			if(!eyes_covered && H.wear_mask.body_parts_covered & EYES)
-				eyes_covered = 1
-				safe_thing = H.wear_mask
-			if(!mouth_covered && (H.wear_mask.body_parts_covered & FACE) && !(H.wear_mask.item_flags & FLEXIBLEMATERIAL))
-				mouth_covered = 1
-				safe_thing = H.wear_mask
-		if(H.glasses && H.glasses.body_parts_covered & EYES)
-			if(!eyes_covered)
-				eyes_covered = 1
-				if(!safe_thing)
-					safe_thing = H.glasses
-		if(alien == IS_SLIME)
-			for(var/obj/item/clothing/C in H.worn_clothing)
-				if(C.body_parts_covered & HEAD)
-					head_covered = 1
-				if(C.body_parts_covered & UPPER_TORSO)
-					chest_covered = 1
-				if(C.body_parts_covered & LOWER_TORSO)
-					groin_covered = 1
-				if(C.body_parts_covered & LEGS)
-					legs_covered = 1
-				if(C.body_parts_covered & ARMS)
-					arms_covered = 1
-				if(C.body_parts_covered & HANDS)
-					hands_covered = 1
-				if(C.body_parts_covered & FEET)
-					feet_covered = 1
-				if(head_covered && chest_covered && groin_covered && legs_covered && arms_covered && hands_covered && feet_covered)
-					break
-	if(eyes_covered && mouth_covered)
-		to_chat(M, "<span class='warning'>Your [safe_thing] protects you from the pepperball!</span>")
-		if(alien != IS_SLIME)
-			return
-	else if(eyes_covered)
-		to_chat(M, "<span class='warning'>Your [safe_thing] protects you from most of the pepperball!</span>")
-		to_chat(M, "<span class='warning'>Oh god, it burns!</span>")
-		M.eye_blurry = max(M.eye_blurry, effective_strength * 3)
-		M.Blind(effective_strength)
-		M.apply_effect(6 * effective_strength, AGONY, 0)
-		if(alien != IS_SLIME)
-			return
-	else if(mouth_covered) // Mouth cover is better than eye cover
-		to_chat(M, "<span class='warning'>Your [safe_thing] protects your face from the pepperball!</span>")
-		M.eye_blurry = max(M.eye_blurry, effective_strength)
-		if(alien != IS_SLIME)
-			return
-	else// Oh dear :D
-		to_chat(M, "<span class='warning'>Your eyes are affected by the pepperball!</span>")
-		to_chat(M, "<span class='warning'>Oh god, it burns!</span>")
-		M.eye_blurry = max(M.eye_blurry, effective_strength * 5)
-		M.Blind(effective_strength * 4)
-		M.apply_effect(6 * effective_strength, AGONY, 0)
-		if(alien != IS_SLIME)
-			return
-	if(alien == IS_SLIME)
-		if(!head_covered)
-			if(prob(33))
-				to_chat(M, "<span class='warning'>The exposed flesh on your head burns!</span>")
-			M.apply_effect(5 * effective_strength, AGONY, 0)
-		if(!chest_covered)
-			if(prob(33))
-				to_chat(M, "<span class='warning'>The exposed flesh on your chest burns!</span>")
-			M.apply_effect(5 * effective_strength, AGONY, 0)
-		if(!groin_covered && prob(75))
-			if(prob(33))
-				to_chat(M, "<span class='warning'>The exposed flesh on your groin burns!</span>")
-			M.apply_effect(3 * effective_strength, AGONY, 0)
-		if(!arms_covered && prob(45))
-			if(prob(33))
-				to_chat(M, "<span class='warning'>The exposed flesh on your arms burns!</span>")
-			M.apply_effect(3 * effective_strength, AGONY, 0)
-		if(!legs_covered && prob(45))
-			if(prob(33))
-				to_chat(M, "<span class='warning'>The exposed flesh on your legs burns!</span>")
-			M.apply_effect(3 * effective_strength, AGONY, 0)
-		if(!hands_covered && prob(20))
-			if(prob(33))
-				to_chat(M, "<span class='warning'>The exposed flesh on your hands burns!</span>")
-			M.apply_effect(effective_strength / 2, AGONY, 0)
-		if(!feet_covered && prob(20))
-			if(prob(33))
-				to_chat(M, "<span class='warning'>The exposed flesh on your feet burns!</span>")
-			M.apply_effect(effective_strength / 2, AGONY, 0)
+/obj/item/projectile/bullet/blank/cap/process()
+	loc = null
+	qdel(src)

@@ -15,7 +15,7 @@
 	var/created_name = null
 
 /obj/structure/ladder_assembly/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/weapon/pen))
+	if(istype(W, /obj/item/pen))
 		var/t = sanitizeSafe(input(user, "Enter the name for the ladder.", "Ladder Name", src.created_name), MAX_NAME_LEN)
 		if(in_range(src, user))
 			created_name = t
@@ -41,8 +41,8 @@
 				to_chat(user, "<span class='warning'>\The [src] needs to be unwelded.</span>")
 		return
 
-	if(istype(W, /obj/item/weapon/weldingtool))
-		var/obj/item/weapon/weldingtool/WT = W
+	if(istype(W, /obj/item/weldingtool))
+		var/obj/item/weldingtool/WT = W
 		switch(state)
 			if(CONSTRUCTION_UNANCHORED)
 				to_chat(user, "<span class='warning'>The refinforcing bolts need to be secured.</span>")
@@ -70,7 +70,7 @@
 						state = CONSTRUCTION_WRENCHED
 						to_chat(user, "You cut \the [src] free from the floor.")
 				else
-					user << "<span class='warning'>You need more welding fuel to complete this task.</span>"
+					to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
 		return
 
 // Try to construct this into a real stairway.
@@ -106,26 +106,26 @@
 	if(below)
 		var/obj/structure/ladder/L = new(get_turf(below))
 		L.allowed_directions = UP
-		if(below.created_name) L.name = below.created_name
-		L.initialize()
+		if(below.created_name)
+			L.name = below.created_name
 		qdel(below)
 
 	if(me)
 		var/obj/structure/ladder/L = new(get_turf(me))
 		L.allowed_directions = (below ? DOWN : 0) | (above ? UP : 0)
-		if(me.created_name) L.name = me.created_name
-		L.initialize()
+		if(me.created_name)
+			L.name = me.created_name
 		qdel(me)
 
 	if(above)
 		var/obj/structure/ladder/L = new(get_turf(above))
 		L.allowed_directions = DOWN
-		if(above.created_name) L.name = above.created_name
-		L.initialize()
+		if(above.created_name)
+			L.name = above.created_name
 		qdel(above)
 
 // Make them constructable in hand
-/material/steel/generate_recipes()
+/datum/material/steel/generate_recipes()
 	..()
 	recipes += new/datum/stack_recipe("ladder assembly", /obj/structure/ladder_assembly, 4, time = 50, one_per_turf = 1, on_floor = 1)
 

@@ -38,12 +38,12 @@ Buildable meters
  * @param loc Location
  * @pipe_type
  */
-/obj/item/pipe/initialize(var/mapload, var/_pipe_type, var/_dir, var/obj/machinery/atmospherics/make_from)
+/obj/item/pipe/Initialize(var/mapload, var/_pipe_type, var/_dir, var/obj/machinery/atmospherics/make_from)
 	if(make_from)
 		make_from_existing(make_from)
 	else
 		pipe_type = _pipe_type
-		set_dir(_dir)
+		setDir(_dir)
 
 	update()
 	pixel_x += rand(-5, 5)
@@ -51,7 +51,7 @@ Buildable meters
 	return ..()
 
 /obj/item/pipe/proc/make_from_existing(obj/machinery/atmospherics/make_from)
-	set_dir(make_from.dir)
+	setDir(make_from.dir)
 	pipename = make_from.name
 	if(make_from.req_access)
 		src.req_access = make_from.req_access
@@ -83,7 +83,14 @@ Buildable meters
 		if(PIPING_LAYER_SUPPLY)
 			color = PIPE_COLOR_BLUE
 			name = "[initial(fakeA.name)] supply fitting"
+		if(PIPING_LAYER_FUEL)
+			color = PIPE_COLOR_YELLOW
+			name = "[initial(fakeA.name)] fuel fitting"
+		if(PIPING_LAYER_AUX)
+			color = PIPE_COLOR_CYAN
+			name = "[initial(fakeA.name)] aux fitting"
 	// Or if we were to do it the TG way...
+	//we don't do it the tg way
 	// pixel_x = PIPE_PIXEL_OFFSET_X(piping_layer)
 	// pixel_y = PIPE_PIXEL_OFFSET_Y(piping_layer)
 	// layer = initial(layer) + PIPE_LAYER_OFFSET(piping_layer)
@@ -104,40 +111,40 @@ Buildable meters
 	do_a_flip()
 
 /obj/item/pipe/proc/do_a_flip()
-	set_dir(turn(dir, -180))
+	setDir(turn(dir, -180))
 	fixdir()
 
 /obj/item/pipe/trinary/flippable/do_a_flip()
-	// set_dir(turn(dir, flipped ? 45 : -45))
+	// setDir(turn(dir, flipped ? 45 : -45))
 	// TG has a magic icon set with the flipped versions in the diagonals.
 	// We may switch to this later, but for now gotta do some magic.
 	mirrored = !mirrored
 	var/obj/machinery/atmospherics/fakeA = pipe_type
 	icon_state = "[initial(fakeA.pipe_state)][mirrored ? "m" : ""]"
 
-/obj/item/pipe/verb/rotate()
+/obj/item/pipe/verb/rotate_clockwise()
 	set category = "Object"
-	set name = "Rotate Pipe"
+	set name = "Rotate Pipe Clockwise"
 	set src in view(1)
 
 	if ( usr.stat || usr.restrained() || !usr.canmove )
 		return
 
-	set_dir(turn(src.dir, -90)) // Rotate clockwise
+	setDir(turn(src.dir, -90)) // Rotate clockwise
 	fixdir()
 
 // If you want to disable pipe dir changing when pulled, uncomment this
 // /obj/item/pipe/Move()
 // 	var/old_dir = dir
 // 	. = ..()
-// 	set_dir(old_dir) //pipes changing direction when moved is just annoying and buggy
+// 	setDir(old_dir) //pipes changing direction when moved is just annoying and buggy
 
 // Don't let pulling a pipe straighten it out.
 /obj/item/pipe/binary/bendable/Move()
 	var/old_bent = !IS_CARDINAL(dir)
 	. = ..()
 	if(old_bent && IS_CARDINAL(dir))
-		set_dir(turn(src.dir, -45))
+		setDir(turn(src.dir, -45))
 
 //Helper to clean up dir
 /obj/item/pipe/proc/fixdir()
@@ -145,16 +152,16 @@ Buildable meters
 
 /obj/item/pipe/binary/fixdir()
 	if(dir == SOUTH)
-		set_dir(NORTH)
+		setDir(NORTH)
 	else if(dir == WEST)
-		set_dir(EAST)
+		setDir(EAST)
 
 /obj/item/pipe/trinary/flippable/fixdir()
 	if(dir in cornerdirs)
-		set_dir(turn(dir, 45))
+		setDir(turn(dir, 45))
 
 /obj/item/pipe/attack_self(mob/user)
-	set_dir(turn(dir,-90))
+	setDir(turn(dir,-90))
 	fixdir()
 
 //called when a turf is attacked with a pipe item
@@ -165,12 +172,12 @@ Buildable meters
 	else
 		return ..()
 
-/obj/item/pipe/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
+/obj/item/pipe/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if(W.is_wrench())
 		return wrench_act(user, W)
 	return ..()
 
-/obj/item/pipe/proc/wrench_act(var/mob/living/user, var/obj/item/weapon/tool/wrench/W)
+/obj/item/pipe/proc/wrench_act(var/mob/living/user, var/obj/item/tool/wrench/W)
 	if(!isturf(loc))
 		return TRUE
 
@@ -208,7 +215,7 @@ Buildable meters
 	qdel(src)
 
 /obj/item/pipe/proc/build_pipe(obj/machinery/atmospherics/A)
-	A.set_dir(dir)
+	A.setDir(dir)
 	A.init_dir()
 	if(pipename)
 		A.name = pipename
@@ -254,12 +261,12 @@ Buildable meters
 	w_class = ITEMSIZE_LARGE
 	var/piping_layer = PIPING_LAYER_DEFAULT
 
-/obj/item/pipe_meter/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
+/obj/item/pipe_meter/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if(W.is_wrench())
 		return wrench_act(user, W)
 	return ..()
 
-/obj/item/pipe_meter/proc/wrench_act(var/mob/living/user, var/obj/item/weapon/tool/wrench/W)
+/obj/item/pipe_meter/proc/wrench_act(var/mob/living/user, var/obj/item/tool/wrench/W)
 	var/obj/machinery/atmospherics/pipe/pipe
 	for(var/obj/machinery/atmospherics/pipe/P in loc)
 		if(P.piping_layer == piping_layer)

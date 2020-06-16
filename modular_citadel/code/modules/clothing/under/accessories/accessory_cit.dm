@@ -2,9 +2,9 @@
 // Allows collars to be renamed with pen.
 //
 
-/obj/item/clothing/accessory/collar/attackby(obj/item/weapon/P as obj, mob/user as mob)
+/obj/item/clothing/accessory/collar/attackby(obj/item/P as obj, mob/user as mob)
 	. = ..()
-	if(istype(P, /obj/item/weapon/pen))
+	if(istype(P, /obj/item/pen))
 		to_chat(user,"<span class='notice'>You write on [name]'s tag.</span>")
 		var/str = copytext(reject_bad_text(input(user,"Tag text?","Set tag","")),1,MAX_NAME_LEN)
 

@@ -6,7 +6,7 @@
 	anchored = 1
 	density = 1
 	var/obj/machinery/computer3/laptop/vended/newlap = null
-	var/obj/item/device/laptop/relap = null
+	var/obj/item/laptop/relap = null
 	var/vendmode = 0
 
 	var/cardreader = 0
@@ -25,8 +25,8 @@
 	return
 
 
-/obj/machinery/lapvend/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	var/obj/item/weapon/card/id/I = W.GetID()
+/obj/machinery/lapvend/attackby(obj/item/W as obj, mob/user as mob)
+	var/obj/item/card/id/I = W.GetID()
 
 	if(default_unfasten_wrench(user, W, 20))
 		return
@@ -34,21 +34,21 @@
 	if(vendmode == 1 && I)
 		scan_id(I, W)
 		vendmode = 0
-		GLOB.nanomanager.update_uis(src)
+		SSnanoui.update_uis(src)
 	if(vendmode == 2 && I)
 		if(reimburse_id(I, W))
 			vendmode = 0
-			GLOB.nanomanager.update_uis(src)
+			SSnanoui.update_uis(src)
 	if(vendmode == 0)
-		if(istype(W, /obj/item/device/laptop))
-			var/obj/item/device/laptop/L = W
+		if(istype(W, /obj/item/laptop))
+			var/obj/item/laptop/L = W
 			relap = L
 			calc_reimburse(L)
 			usr.drop_item()
 			L.loc = src
 			vendmode = 2
 			to_chat(user, "<span class='notice'>You slot your [L.name] into \The [src.name]</span>")
-			GLOB.nanomanager.update_uis(src)
+			SSnanoui.update_uis(src)
 	else
 		..()
 
@@ -77,7 +77,7 @@
 	data["power"] = power
 	data["total"] = total()
 
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "laptop_vendor.tmpl", src.name, 480, 425)
 		ui.set_initial_data(data)
@@ -136,7 +136,7 @@
 			vendmode = 0
 
 	src.add_fingerprint(usr)
-	GLOB.nanomanager.update_uis(src)
+	SSnanoui.update_uis(src)
 
 /obj/machinery/lapvend/proc/vend()
 	if(cardreader > 0)
@@ -165,7 +165,7 @@
 
 	newlap.spawn_parts()
 
-/obj/machinery/lapvend/proc/scan_id(var/obj/item/weapon/card/id/C, var/obj/item/I)
+/obj/machinery/lapvend/proc/scan_id(var/obj/item/card/id/C, var/obj/item/I)
 	visible_message("<span class='info'>\The [usr] swipes \the [I] through \the [src].</span>")
 	var/datum/money_account/CH = get_account(C.associated_account_number)
 	if(!CH)
@@ -178,15 +178,15 @@
 			if(D)
 				transfer_and_vend(D, C)
 			else
-				to_chat(usr, "\icon[src]<span class='warning'>Unable to access vendor account. Please record the machine ID and call [using_map.boss_short] Support.</span>")
+				to_chat(usr, "\icon[src]<span class='warning'>Unable to access vendor account. Please record the machine ID and call [GLOB.using_map.boss_short] Support.</span>")
 		else
-			to_chat(usr, "\icon[src]<span class='warning'>Unable to access vendor account. Please record the machine ID and call [using_map.boss_short] Support.</span>")
+			to_chat(usr, "\icon[src]<span class='warning'>Unable to access vendor account. Please record the machine ID and call [GLOB.using_map.boss_short] Support.</span>")
 	else
 		transfer_and_vend(CH, C)
 
 
 // Transfers money and vends the laptop.
-/obj/machinery/lapvend/proc/transfer_and_vend(var/datum/money_account/D, var/obj/item/weapon/card/C)
+/obj/machinery/lapvend/proc/transfer_and_vend(var/datum/money_account/D, var/obj/item/card/C)
 	var/transaction_amount = total()
 	if(transaction_amount <= D.money)
 
@@ -256,7 +256,7 @@
 
 	return total
 
-/obj/machinery/lapvend/proc/choose_progs(var/obj/item/weapon/card/id/C)
+/obj/machinery/lapvend/proc/choose_progs(var/obj/item/card/id/C)
 	if(access_security in C.access)
 		newlap.spawn_files += (/datum/file/program/secure_data)
 		newlap.spawn_files += (/datum/file/camnet_key)
@@ -289,7 +289,7 @@
 	newlap.spawn_files += (/datum/file/program/security/hidden)
 	newlap.update_spawn_files()
 
-/obj/machinery/lapvend/proc/calc_reimburse(var/obj/item/device/laptop/L)
+/obj/machinery/lapvend/proc/calc_reimburse(var/obj/item/laptop/L)
 	if(istype(L.stored_computer.cardslot,/obj/item/part/computer/cardslot))
 		cardreader = 1
 	if(istype(L.stored_computer.cardslot,/obj/item/part/computer/cardslot/dual))
@@ -306,14 +306,14 @@
 		network = 2
 	if(istype(L.stored_computer.net,/obj/item/part/computer/networking/cable))
 		network = 3
-	if(istype(L.stored_computer.battery, /obj/item/weapon/cell/high))
+	if(istype(L.stored_computer.battery, /obj/item/cell/high))
 		power = 1
-	if(istype(L.stored_computer.battery, /obj/item/weapon/cell/super))
+	if(istype(L.stored_computer.battery, /obj/item/cell/super))
 		power = 2
 
 
 
-/obj/machinery/lapvend/proc/reimburse_id(var/obj/item/weapon/card/id/C, var/obj/item/I)
+/obj/machinery/lapvend/proc/reimburse_id(var/obj/item/card/id/C, var/obj/item/I)
 	visible_message("<span class='info'>\The [usr] swipes \the [I] through \the [src].</span>")
 	var/datum/money_account/CH = get_account(C.associated_account_number)
 	if(!CH)
@@ -327,10 +327,10 @@
 				transfer_and_reimburse(D)
 				return 1
 			else
-				to_chat(usr, "\icon[src]<span class='warning'>Unable to access vendor account. Please record the machine ID and call [using_map.boss_short] Support.</span>")
+				to_chat(usr, "\icon[src]<span class='warning'>Unable to access vendor account. Please record the machine ID and call [GLOB.using_map.boss_short] Support.</span>")
 				return 0
 		else
-			to_chat(usr, "\icon[src]<span class='warning'>Unable to access vendor account. Please record the machine ID and call [using_map.boss_short] Support.</span>")
+			to_chat(usr, "\icon[src]<span class='warning'>Unable to access vendor account. Please record the machine ID and call [GLOB.using_map.boss_short] Support.</span>")
 			return 0
 	else
 		transfer_and_reimburse(CH)

@@ -1,7 +1,7 @@
 // -------------- Pummeler -------------
-/obj/item/weapon/gun/energy/pummeler
-	name = "\improper PML9 \'Pummeler\'"
-	desc = "For when you want to get that pesky marketing guy out of your face ASAP. The pummeler fires one HUGE \
+/obj/item/gun/energy/pummeler
+	name = "hypersonic gun"
+	desc = "For when you want to get that pesky marketing guy out of your face ASAP. The PML9 'Pummeler' fires one HUGE \
 	sonic blast in the direction of fire, throwing the target away from you at high speed. Now you can REALLY \
 	turn up the bass to max."
 
@@ -34,7 +34,7 @@
 	check_armour = "melee"
 	embed_chance = 0
 	vacuum_traversal = 0
-	kill_count = 6 //Scary name, but just deletes the projectile after this range
+	range = 6 //Scary name, but just deletes the projectile after this range
 
 /obj/item/projectile/pummel/on_hit(var/atom/movable/target, var/blocked = 0)
 	if(isliving(target))
@@ -46,12 +46,3 @@
 		L.throw_at(get_edge_target_turf(L, throwdir), rand(3,6), 10)
 
 		return 1
-
-//R&D Design
-/datum/design/item/weapon/pummeler
-	desc = "With the 'Pummeler', punt anyone you don't like out of the room!"
-	id = "pummeler"
-	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3, TECH_MAGNET = 5)
-	materials = list(DEFAULT_WALL_MATERIAL = 3000, "glass" = 3000, "uranium" = 1000)
-	build_path = /obj/item/weapon/gun/energy/pummeler
-	sort_string = "TAADC"

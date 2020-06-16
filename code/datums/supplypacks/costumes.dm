@@ -13,7 +13,7 @@
 /datum/supply_pack/costumes/wizard
 	name = "Wizard costume"
 	contains = list(
-			/obj/item/weapon/staff,
+			/obj/item/staff,
 			/obj/item/clothing/suit/wizrobe/fake,
 			/obj/item/clothing/shoes/sandal,
 			/obj/item/clothing/head/wizard/fake
@@ -21,6 +21,14 @@
 	cost = 20
 	containertype = /obj/structure/closet/crate
 	containername = "Wizard costume crate"
+
+/datum/supply_pack/costumes/techpriest
+	name = "Tech Priest robes"
+	contains = list(
+		/obj/item/clothing/suit/storage/hooded/techpriest = 2)
+	cost = 150
+	containertype = /obj/structure/closet/crate
+	containername = "Tech Priest crate"
 
 /datum/supply_pack/randomised/costumes/hats
 	num_contained = 4
@@ -80,7 +88,8 @@
 			/obj/item/clothing/suit/chef,
 			/obj/item/clothing/suit/storage/apron/overalls,
 			/obj/item/clothing/under/redcoat,
-			/obj/item/clothing/under/kilt
+			/obj/item/clothing/under/kilt,
+			/obj/item/clothing/suit/storage/hooded/techpriest
 			)
 	name = "Costumes crate"
 	cost = 10
@@ -118,7 +127,7 @@ datum/supply_pack/costumes/witch
 			/obj/item/clothing/suit/wizrobe/marisa/fake,
 			/obj/item/clothing/shoes/sandal,
 			/obj/item/clothing/head/wizard/marisa/fake,
-			/obj/item/weapon/staff/broom
+			/obj/item/staff/broom
 			)
 
 /datum/supply_pack/randomised/costumes/costume_hats

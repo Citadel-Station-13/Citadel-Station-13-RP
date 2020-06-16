@@ -50,7 +50,7 @@ var/global/datum/locations/milky_way/all_locations = new()
 	for(var/datum/locations/a in contents)
 		world << "[a]\n[a.parent ? "Located in [a.parent]\n" : ""][a.desc]"
 		a.show_contents()
-	world << "\n"
+	to_chat(world, "\n")
 
 /datum/locations/proc/count_locations()
 	var/i = 0

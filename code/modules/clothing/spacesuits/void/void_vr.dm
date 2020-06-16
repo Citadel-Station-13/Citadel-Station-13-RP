@@ -18,7 +18,8 @@
 		"Highlander Zorren" 	= 'icons/mob/species/fox/helmet_vr.dmi',
 		"Vulpkanin"				= 'icons/mob/species/vulpkanin/helmet.dmi',
 		"Promethean"			= 'icons/mob/species/skrell/helmet.dmi',
-		"Xenomorph Hybrid"		= 'icons/mob/species/unathi/helmet.dmi'
+		"Xenomorph Hybrid"		= 'icons/mob/species/unathi/helmet.dmi',
+		"Vox"					= 'icons/mob/species/vox/helmet.dmi'
 		)
 
 	sprite_sheets_obj = list(
@@ -33,7 +34,8 @@
 		"Highlander Zorren"	= 'icons/obj/clothing/species/fox/hats.dmi',
 		"Vulpkanin"			= 'icons/obj/clothing/species/vulpkanin/hats.dmi',
 		"Promethean"		= 'icons/obj/clothing/species/skrell/hats.dmi',
-		"Xenomorph Hybrid"	= 'icons/obj/clothing/species/unathi/hats.dmi'
+		"Xenomorph Hybrid"	= 'icons/obj/clothing/species/unathi/hats.dmi',
+		"Vox"				= 'icons/obj/clothing/species/vox/hats.dmi'
 		)
 
 /obj/item/clothing/suit/space/void
@@ -49,7 +51,8 @@
 		"Highlander Zorren" 	= 'icons/mob/species/fox/suit_vr.dmi',
 		"Vulpkanin"				= 'icons/mob/species/vulpkanin/suit.dmi',
 		"Promethean"			= 'icons/mob/species/skrell/suit.dmi',
-		"Xenomorph Hybrid"		= 'icons/mob/species/unathi/suit.dmi'
+		"Xenomorph Hybrid"		= 'icons/mob/species/unathi/suit.dmi',
+		"Vox"					= 'icons/mob/species/vox/suit.dmi'
 		)
 
 
@@ -65,7 +68,8 @@
 		"Flatland Zorren"	= 'icons/obj/clothing/species/fennec/suits.dmi',
 		"Highlander Zorren"	= 'icons/obj/clothing/species/fox/suits.dmi',
 		"Vulpkanin"			= 'icons/obj/clothing/species/vulpkanin/suits.dmi',
-		"Promethean"		= 'icons/obj/clothing/species/skrell/suits.dmi'
+		"Promethean"		= 'icons/obj/clothing/species/skrell/suits.dmi',
+		"Vox"				= 'icons/obj/clothing/species/vox/suits.dmi'
 		)
 
 	// This is a hack to prevent the item_state variable on the suits from taking effect
@@ -92,9 +96,10 @@
 		SPECIES_XENOCHIMERA,
 		SPECIES_XENOHYBRID,
 		SPECIES_ZORREN_FLAT,
-		SPECIES_ZORREN_HIGH
+		SPECIES_ZORREN_HIGH,
+		SPECIES_VOX
 	)
-/obj/item/clothing/suit/space/void/explorer/initialize()
+/obj/item/clothing/suit/space/void/explorer/Initialize()
 	. = ..()
 	sprite_sheets += sprite_sheets_refit
 
@@ -116,8 +121,9 @@
 		SPECIES_XENOCHIMERA,
 		SPECIES_XENOHYBRID,
 		SPECIES_ZORREN_FLAT,
-		SPECIES_ZORREN_HIGH
+		SPECIES_ZORREN_HIGH,
+		SPECIES_VOX
 	)
-/obj/item/clothing/head/helmet/space/void/explorer/initialize()
+/obj/item/clothing/head/helmet/space/void/explorer/Initialize()
 	. = ..()
 	sprite_sheets += sprite_sheets_refit

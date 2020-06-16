@@ -74,7 +74,6 @@ var/list/flooring_types
 		'sound/effects/footstep/snow4.ogg',
 		'sound/effects/footstep/snow5.ogg'))
 
-
 /decl/flooring/snow/snow2
 	name = "snow"
 	desc = "A layer of many tiny bits of frozen water. It's hard to tell how deep it is."
@@ -282,6 +281,22 @@ var/list/flooring_types
 	desc = "Don't slip."
 	icon_base = "freezer"
 	build_type = /obj/item/stack/tile/floor/freezer
+
+/decl/flooring/wmarble
+	name = "marble floor"
+	desc = "Very regal white marble flooring."
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_base = "lightmarble"
+	build_type = /obj/item/stack/tile/wmarble
+	flags = TURF_REMOVE_CROWBAR
+
+/decl/flooring/bmarble
+	name = "marble floor"
+	desc = "Very regal black marble flooring."
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_base = "darkmarble"
+	build_type = /obj/item/stack/tile/bmarble
+	flags = TURF_REMOVE_CROWBAR
 
 /decl/flooring/wood
 	name = "wooden floor"

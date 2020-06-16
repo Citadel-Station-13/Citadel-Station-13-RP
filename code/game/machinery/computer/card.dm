@@ -7,9 +7,9 @@
 	icon_screen = "id"
 	light_color = "#0099ff"
 	req_access = list(access_change_ids)
-	circuit = /obj/item/weapon/circuitboard/card
-	var/obj/item/weapon/card/id/scan = null
-	var/obj/item/weapon/card/id/modify = null
+	circuit = /obj/item/circuitboard/card
+	var/obj/item/card/id/scan = null
+	var/obj/item/card/id/modify = null
 	var/mode = 0.0
 	var/printing = null
 
@@ -55,7 +55,7 @@
 		to_chat(usr, "There is nothing to remove from the console.")
 	return
 
-/obj/machinery/computer/card/attackby(obj/item/weapon/card/id/id_card, mob/user)
+/obj/machinery/computer/card/attackby(obj/item/card/id/id_card, mob/user)
 	if(!istype(id_card))
 		return ..()
 
@@ -68,7 +68,7 @@
 		id_card.forceMove(src)
 		modify = id_card
 
-	GLOB.nanomanager.update_uis(src)
+	SSnanoui.update_uis(src)
 	attack_hand(user)
 
 /obj/machinery/computer/card/attack_ai(var/mob/user as mob)
@@ -108,7 +108,7 @@
 				list("cat" = "Science", "jobs" = format_jobs(science_positions)),
 				list("cat" = "Security", "jobs" = format_jobs(security_positions)),
 				list("cat" = "Cargo", "jobs" = format_jobs(cargo_positions)),
-				list("cat" = "Planetside", "jobs" = format_jobs(planet_positions)),
+				list("cat" = "Exploration", "jobs" = format_jobs(planet_positions)), //VOREStation Edit
 				list("cat" = "Civilian", "jobs" = format_jobs(civilian_positions)),
 				list("cat" = "CentCom", "jobs" = format_jobs(get_all_centcom_jobs()))
 			)
@@ -139,7 +139,7 @@
 
 		data["regions"] = regions
 
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "identification_computer.tmpl", src.name, 600, 700)
 		ui.set_initial_data(data)
@@ -164,7 +164,7 @@
 					modify = null
 			else
 				var/obj/item/I = usr.get_active_hand()
-				if (istype(I, /obj/item/weapon/card/id) && usr.unEquip(I))
+				if (istype(I, /obj/item/card/id) && usr.unEquip(I))
 					I.forceMove(src)
 					modify = I
 
@@ -180,7 +180,7 @@
 					scan = null
 			else
 				var/obj/item/I = usr.get_active_hand()
-				if (istype(I, /obj/item/weapon/card/id))
+				if (istype(I, /obj/item/card/id))
 					usr.drop_item()
 					I.forceMove(src)
 					scan = I
@@ -235,7 +235,7 @@
 						modify.registered_name = temp_name
 					else
 						src.visible_message("<span class='notice'>[src] buzzes rudely.</span>")
-			GLOB.nanomanager.update_uis(src)
+			SSnanoui.update_uis(src)
 
 		if ("account")
 			if (is_authenticated())
@@ -243,7 +243,7 @@
 				if ((modify == t2 && (in_range(src, usr) || (istype(usr, /mob/living/silicon))) && istype(loc, /turf)))
 					var/account_num = text2num(href_list["account"])
 					modify.associated_account_number = account_num
-			GLOB.nanomanager.update_uis(src)
+			SSnanoui.update_uis(src)
 
 		if ("mode")
 			mode = text2num(href_list["mode_target"])
@@ -253,9 +253,9 @@
 				printing = 1
 				spawn(50)
 					printing = null
-					GLOB.nanomanager.update_uis(src)
+					SSnanoui.update_uis(src)
 
-					var/obj/item/weapon/paper/P = new(loc)
+					var/obj/item/paper/P = new(loc)
 					if (mode)
 						P.name = text("crew manifest ([])", stationtime2text())
 						P.info = {"<h4>Crew Manifest</h4>
@@ -279,19 +279,20 @@
 
 		if ("terminate")
 			if (is_authenticated())
-				modify.assignment = "Terminated"
+				modify.assignment = "Dismissed"	//VOREStation Edit: setting adjustment
 				modify.access = list()
 
 				callHook("terminate_employee", list(modify))
 
 	if (modify)
 		modify.name = text("[modify.registered_name]'s ID Card ([modify.assignment])")
+		modify.lost_access = list()	//VOREStation addition: reset the lost access upon any modifications
 
 	return 1
 
 /obj/machinery/computer/card/centcom
 	name = "\improper CentCom ID card modification console"
-	circuit = /obj/item/weapon/circuitboard/card/centcom
+	circuit = /obj/item/circuitboard/card/centcom
 	req_access = list(access_cent_captain)
 
 

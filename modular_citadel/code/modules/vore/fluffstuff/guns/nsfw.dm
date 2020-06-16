@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/projectile/nsfw
+/obj/item/gun/projectile/nsfw
 	name = "Hephaestus Hydra"
 	desc = "The Hydra is a recent product from Hephaestus Industries, offering such a variety of fire modes that combatants will not know what to expect."
 
@@ -49,11 +49,11 @@
 /obj/item/ammo_casing/nsfw_batt/grow
 	name = "Hydra microbattery - GROW"
 */
-/obj/item/weapon/storage/secure/briefcase/nsfw_pack
+/obj/item/storage/secure/briefcase/nsfw_pack
 	name = "\improper Hephaestus Hydra gun kit"
 	desc = "A gun case for the Hephaestus Hydra."
 
 
-/obj/item/weapon/storage/secure/briefcase/nsfw_pack_hos
+/obj/item/storage/secure/briefcase/nsfw_pack_hos
 	name = "\improper Hephaestus Hydra gun kit"
 	desc = "A gun case for the Hephaestus Hydra."

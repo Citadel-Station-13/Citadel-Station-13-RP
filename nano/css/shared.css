@@ -190,6 +190,10 @@ h4 {
     background: #ea0000;
 }
 
+.greenButton {
+	background: #00aa00;
+}
+
 .yellowButton {
     background: #cacc00;
 }
@@ -670,7 +674,7 @@ th.Silicon {
 }
 
 .toxin {
-    color: green;
+    color: lime;
 }
 
 .oxyloss {

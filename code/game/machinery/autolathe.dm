@@ -5,10 +5,10 @@
 	icon_state = "autolathe"
 	density = 1
 	anchored = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 2000
-	circuit = /obj/item/weapon/circuitboard/autolathe
+	circuit = /obj/item/circuitboard/autolathe
 	var/datum/category_collection/autolathe/machine_recipes
 	var/list/stored_material =  list(DEFAULT_WALL_MATERIAL = 0, "glass" = 0)
 	var/list/storage_capacity = list(DEFAULT_WALL_MATERIAL = 0, "glass" = 0)
@@ -28,11 +28,11 @@
 	..()
 	wires = new(src)
 	component_parts = list()
-	component_parts += new /obj/item/weapon/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/weapon/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/weapon/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
-	component_parts += new /obj/item/weapon/stock_parts/console_screen(src)
+	component_parts += new /obj/item/stock_parts/matter_bin(src)
+	component_parts += new /obj/item/stock_parts/matter_bin(src)
+	component_parts += new /obj/item/stock_parts/matter_bin(src)
+	component_parts += new /obj/item/stock_parts/manipulator(src)
+	component_parts += new /obj/item/stock_parts/console_screen(src)
 	RefreshParts()
 
 /obj/machinery/autolathe/Destroy()
@@ -84,16 +84,17 @@
 			else
 				//Make sure it's buildable and list requires resources.
 				for(var/material in R.resources)
-					var/sheets = round(stored_material[material]/round(R.resources[material]*mat_efficiency))
+					var/coeff = (R.no_scale ? 1 : mat_efficiency) //stacks are unaffected by production coefficient
+					var/sheets = round(stored_material[material]/round(R.resources[material]*coeff))
 					if(isnull(max_sheets) || max_sheets > sheets)
 						max_sheets = sheets
-					if(!isnull(stored_material[material]) && stored_material[material] < round(R.resources[material]*mat_efficiency))
+					if(!isnull(stored_material[material]) && stored_material[material] < round(R.resources[material]*coeff))
 						can_make = 0
 					if(!comma)
 						comma = 1
 					else
 						material_string += ", "
-					material_string += "[round(R.resources[material] * mat_efficiency)] [material]"
+					material_string += "[round(R.resources[material] * coeff)] [material]"
 				material_string += ".<br></td>"
 				//Build list of multipliers for sheets.
 				if(R.is_stack)
@@ -135,7 +136,7 @@
 
 	if(panel_open)
 		//Don't eat multitools or wirecutters used on an open lathe.
-		if(istype(O, /obj/item/device/multitool) || O.is_wirecutter())
+		if(istype(O, /obj/item/multitool) || O.is_wirecutter())
 			attack_hand(user)
 			return
 
@@ -249,25 +250,26 @@
 			return
 
 		busy = 1
-		update_use_power(2)
+		update_use_power(USE_POWER_ACTIVE)
 
 		//Check if we still have the materials.
+		var/coeff = (making.no_scale ? 1 : mat_efficiency) //stacks are unaffected by production coefficient
 		for(var/material in making.resources)
 			if(!isnull(stored_material[material]))
-				if(stored_material[material] < round(making.resources[material] * mat_efficiency) * multiplier)
+				if(stored_material[material] < round(making.resources[material] * coeff) * multiplier)
 					return
 
 		//Consume materials.
 		for(var/material in making.resources)
 			if(!isnull(stored_material[material]))
-				stored_material[material] = max(0, stored_material[material] - round(making.resources[material] * mat_efficiency) * multiplier)
+				stored_material[material] = max(0, stored_material[material] - round(making.resources[material] * coeff) * multiplier)
 
 		update_icon() // So lid closes
 
 		sleep(build_time)
 
 		busy = 0
-		update_use_power(1)
+		update_use_power(USE_POWER_IDLE)
 		update_icon() // So lid opens
 
 		//Sanity check.
@@ -275,9 +277,13 @@
 
 		//Create the desired item.
 		var/obj/item/I = new making.path(src.loc)
-		if(multiplier > 1 && istype(I, /obj/item/stack))
-			var/obj/item/stack/S = I
-			S.amount = multiplier
+		if(multiplier > 1)
+			if(istype(I, /obj/item/stack))
+				var/obj/item/stack/S = I
+				S.amount = multiplier
+			else
+				for(multiplier; multiplier > 1; --multiplier) // Create multiple items if it's not a stack.
+					new making.path(src.loc)
 
 	updateUsrDialog()
 
@@ -296,19 +302,19 @@
 	..()
 	var/mb_rating = 0
 	var/man_rating = 0
-	for(var/obj/item/weapon/stock_parts/matter_bin/MB in component_parts)
+	for(var/obj/item/stock_parts/matter_bin/MB in component_parts)
 		mb_rating += MB.rating
-	for(var/obj/item/weapon/stock_parts/manipulator/M in component_parts)
+	for(var/obj/item/stock_parts/manipulator/M in component_parts)
 		man_rating += M.rating
 
 	storage_capacity[DEFAULT_WALL_MATERIAL] = mb_rating  * 25000
 	storage_capacity["glass"] = mb_rating  * 12500
 	build_time = 50 / man_rating
-	mat_efficiency = 1.1 - man_rating * 0.1// Normally, price is 1.25 the amount of material, so this shouldn't go higher than 0.8. Maximum rating of parts is 3
+	mat_efficiency = 1.1 - man_rating * 0.1// Normally, price is 1.25 the amount of material, so this shouldn't go higher than 0.6. Maximum rating of parts is 5
 
 /obj/machinery/autolathe/dismantle()
 	for(var/mat in stored_material)
-		var/material/M = get_material_by_name(mat)
+		var/datum/material/M = get_material_by_name(mat)
 		if(!istype(M))
 			continue
 		var/obj/item/stack/material/S = new M.stack_type(get_turf(src))

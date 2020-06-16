@@ -12,26 +12,27 @@
 	var/client/owner_c = null //They'll be dead when we message them probably.
 	var/state = 0 //0 - New, 1 - Dead, 2 - Signaling, 3 - Recovering (same as iconstates)
 
-/obj/item/clothing/accessory/collar/lifecrystal/New()
-	..()
+/obj/item/clothing/accessory/collar/lifecrystal/Initialize(mapload)
+	. = ..()
 	update_state(1)
 
 /obj/item/clothing/accessory/collar/lifecrystal/Destroy() //Waitwaitwait
 	if(state == 1)
 		process() //Nownownow
+	STOP_PROCESSING(SSobj, src)
 	return ..() //Okfine
 
 /obj/item/clothing/accessory/collar/lifecrystal/process()
 	check_owner()
 	if((state > 1) || !owner)
-		processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 
 /obj/item/clothing/accessory/collar/lifecrystal/attack_self(mob/user as mob)
 	owner = user	//We're paired to this guy
 	owner_c = user.client	//This is his client
 	check_owner()
 	to_chat(user, "<span class='notice'>The [name] glows pleasantly blue.</span>")
-	processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 
 /obj/item/clothing/accessory/collar/lifecrystal/proc/check_owner()
 	//He's dead, jim

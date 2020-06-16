@@ -14,15 +14,18 @@ var/list/floor_decals = list()
 	if(newcolour) color = newcolour
 	..(newloc)
 
-/obj/effect/floor_decal/initialize()
+/obj/effect/floor_decal/Initialize()
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/effect/floor_decal/LateInitialize()
 	add_to_turf_decals()
-	initialized = TRUE
-	return INITIALIZE_HINT_QDEL
+	qdel(src)
 
 // This is a separate proc from initialize() to facilitiate its caching and other stuff.  Look into it someday.
 /obj/effect/floor_decal/proc/add_to_turf_decals()
 	if(supplied_dir)
-		set_dir(supplied_dir) // TODO - Why can't this line be done in initialize/New()?
+		setDir(supplied_dir) // TODO - Why can't this line be done in initialize/New()?
 	var/turf/T = get_turf(src)
 	if(istype(T, /turf/simulated/floor) || istype(T, /turf/unsimulated/floor) || istype(T, /turf/simulated/shuttle/floor))
 		var/cache_key = "[alpha]-[color]-[dir]-[icon_state]-[T.layer]"
@@ -40,13 +43,12 @@ var/list/floor_decals = list()
 /obj/effect/floor_decal/reset
 	name = "reset marker"
 
-/obj/effect/floor_decal/reset/initialize()
+/obj/effect/floor_decal/reset/LateInitialize()
 	var/turf/T = get_turf(src)
 	if(T.decals && T.decals.len)
 		T.decals.Cut()
 		T.update_icon()
-	initialized = TRUE
-	return INITIALIZE_HINT_QDEL
+	qdel(src)
 
 /obj/effect/floor_decal/corner
 	icon_state = "corner_white"
@@ -469,8 +471,8 @@ var/list/floor_decals = list()
 /obj/effect/floor_decal/corner/grey/bordercorner
 	icon_state = "bordercolorcorner"
 
-/obj/effect/floor_decal/corner/grey/bordercorner
-	icon_state = "bordercolorcorner"
+/obj/effect/floor_decal/corner/grey/bordercorner2
+	icon_state = "bordercolorcorner2"
 
 /obj/effect/floor_decal/corner/grey/borderfull
 	icon_state = "bordercolorfull"

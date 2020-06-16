@@ -127,7 +127,7 @@
 /var/const/access_captain = 20
 /datum/access/captain
 	id = access_captain
-	desc = "Colony Director"
+	desc = "Facility Director"
 	region = ACCESS_REGION_COMMAND
 
 /var/const/access_all_personal_lockers = 21
@@ -256,7 +256,12 @@
 	desc = "Quartermaster"
 	region = ACCESS_REGION_SUPPLY
 
-// /var/const/free_access_id = 43
+/var/const/access_network = 42
+/datum/access/network
+	id = access_network
+	desc = "Station Network"
+	region = ACCESS_REGION_RESEARCH
+
 // /var/const/free_access_id = 43
 // /var/const/free_access_id = 44
 

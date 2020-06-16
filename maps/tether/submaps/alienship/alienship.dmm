@@ -23,7 +23,7 @@
 /area/tether_away/alienship)
 "ah" = (
 /turf/simulated/shuttle/floor/alienplating,
-/area/shuttle/excursion/away_alienship)
+/area/shuttle/excursion/tether_dockarm)
 "ai" = (
 /obj/machinery/door/airlock/alien/locked,
 /turf/simulated/shuttle/floor/alienplating,
@@ -120,17 +120,17 @@
 /turf/simulated/shuttle/floor/alien,
 /area/tether_away/alienship)
 "aB" = (
-/obj/item/weapon/cell/device/weapon/recharge/alien,
+/obj/item/cell/device/weapon/recharge/alien,
 /turf/simulated/shuttle/floor/alienplating,
 /area/tether_away/alienship)
 "aC" = (
-/obj/item/device/gps,
+/obj/item/gps,
 /obj/structure/table/alien,
 /turf/simulated/shuttle/floor/alienplating,
 /area/tether_away/alienship)
 "aD" = (
 /obj/structure/table/alien,
-/obj/item/weapon/cell/device/weapon/recharge/alien,
+/obj/item/cell/device/weapon/recharge/alien,
 /turf/simulated/shuttle/floor/alienplating,
 /area/tether_away/alienship)
 "aE" = (
@@ -138,86 +138,86 @@
 /area/tether_away/alienship/equip_dump)
 "aF" = (
 /obj/structure/closet/crate,
-/obj/item/device/multitool,
-/obj/item/weapon/tool/wrench,
-/obj/item/device/radio,
+/obj/item/multitool,
+/obj/item/tool/wrench,
+/obj/item/radio,
 /turf/simulated/shuttle/floor/alien,
 /area/tether_away/alienship)
 "aG" = (
 /obj/structure/closet/crate,
-/obj/item/weapon/tool/crowbar,
-/obj/item/weapon/weldingtool,
+/obj/item/tool/crowbar,
+/obj/item/weldingtool,
 /turf/simulated/shuttle/floor/alien,
 /area/tether_away/alienship)
 "aH" = (
 /obj/structure/closet/crate,
-/obj/item/weapon/tool/crowbar,
-/obj/item/weapon/tool/screwdriver,
-/obj/item/weapon/tool/wirecutters,
-/obj/item/weapon/weldingtool,
-/obj/item/weapon/storage/firstaid,
+/obj/item/tool/crowbar,
+/obj/item/tool/screwdriver,
+/obj/item/tool/wirecutters,
+/obj/item/weldingtool,
+/obj/item/storage/firstaid,
 /turf/simulated/shuttle/floor/alienplating,
 /area/tether_away/alienship)
 "aI" = (
 /obj/structure/table/alien,
-/obj/item/weapon/storage/belt/utility/alien/full,
+/obj/item/storage/belt/utility/alien/full,
 /turf/simulated/shuttle/floor/alienplating,
 /area/tether_away/alienship)
 "aJ" = (
 /obj/structure/closet/crate,
-/obj/item/device/multitool,
-/obj/item/weapon/tool/screwdriver,
-/obj/item/weapon/tool/wirecutters,
-/obj/item/weapon/tool/wrench,
+/obj/item/multitool,
+/obj/item/tool/screwdriver,
+/obj/item/tool/wirecutters,
+/obj/item/tool/wrench,
 /turf/simulated/shuttle/floor/alien,
 /area/tether_away/alienship)
 "aK" = (
 /obj/structure/closet/crate,
-/obj/item/weapon/tool/crowbar/power,
-/obj/item/weapon/tool/wrench,
+/obj/item/tool/crowbar/power,
+/obj/item/tool/wrench,
 /turf/simulated/shuttle/floor/alien,
 /area/tether_away/alienship)
 "aL" = (
 /obj/structure/closet/crate,
-/obj/item/device/multitool,
-/obj/item/weapon/tool/screwdriver,
-/obj/item/weapon/weldingtool,
-/obj/item/weapon/storage/firstaid/regular,
-/obj/item/weapon/reagent_containers/food/snacks/liquidfood,
-/obj/item/weapon/reagent_containers/food/snacks/liquidfood,
+/obj/item/multitool,
+/obj/item/tool/screwdriver,
+/obj/item/weldingtool,
+/obj/item/storage/firstaid/regular,
+/obj/item/reagent_containers/food/snacks/liquidfood,
+/obj/item/reagent_containers/food/snacks/liquidfood,
 /turf/simulated/shuttle/floor/alien,
 /area/tether_away/alienship)
 "aM" = (
 /obj/structure/closet/crate,
-/obj/item/weapon/tool/crowbar/red,
-/obj/item/weapon/tool/screwdriver/power,
-/obj/item/weapon/tool/wirecutters,
+/obj/item/tool/crowbar/red,
+/obj/item/tool/screwdriver/power,
+/obj/item/tool/wirecutters,
 /turf/simulated/shuttle/floor/alien,
 /area/tether_away/alienship)
 "aN" = (
 /obj/structure/closet/crate,
-/obj/item/device/multitool,
-/obj/item/weapon/tool/wirecutters,
-/obj/item/device/radio,
-/obj/item/weapon/weldingtool,
+/obj/item/multitool,
+/obj/item/tool/wirecutters,
+/obj/item/radio,
+/obj/item/weldingtool,
 /turf/simulated/shuttle/floor/alienplating,
 /area/tether_away/alienship)
 "aO" = (
-/obj/item/device/radio,
+/obj/item/radio,
 /turf/simulated/shuttle/floor/alienplating,
 /area/tether_away/alienship)
 "aP" = (
 /obj/effect/decal/remains/xeno,
-/obj/item/device/radio,
+/obj/item/radio,
 /turf/simulated/shuttle/floor/alien,
 /area/tether_away/alienship)
 "aQ" = (
-/obj/item/device/radio,
+/obj/item/radio,
 /turf/simulated/shuttle/floor/alien,
 /area/tether_away/alienship)
 "aR" = (
 /obj/structure/table/alien,
-/obj/item/weapon/reagent_containers/food/drinks/glass2/pint{
+/obj/item/reagent_containers/food/drinks/glass2/pint{
 	desc = "There's a permanent colored stain around the inside, as if it held a liquid for a very, very long time.";
 	name = "ancient pint glass"
 	},
@@ -248,12 +248,12 @@
 /area/tether_away/alienship)
 "aX" = (
 /obj/structure/closet/alien,
-/obj/item/weapon/reagent_containers/hypospray/autoinjector/alien,
+/obj/item/reagent_containers/hypospray/autoinjector/alien,
 /turf/simulated/shuttle/floor/alienplating,
 /area/tether_away/alienship)
 "aY" = (
 /obj/structure/table/alien,
-/obj/item/weapon/reagent_containers/hypospray/autoinjector/alien,
+/obj/item/reagent_containers/hypospray/autoinjector/alien,
 /turf/simulated/shuttle/floor/alienplating,
 /area/tether_away/alienship)
 "bJ" = (
@@ -278,7 +278,6 @@
 /area/tether_away/alienship)
 "bP" = (
 /obj/structure/prop/alien/computer{
-	icon_state = "console-c";
 	dir = 4
 	},
 /turf/simulated/shuttle/floor/alien,
@@ -291,7 +290,6 @@
 /area/tether_away/alienship)
 "bR" = (
 /obj/structure/prop/alien/computer{
-	icon_state = "console-c";
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/alien,
@@ -328,7 +326,7 @@
 /area/tether_away/alienship)
 "ca" = (
 /obj/structure/table/alien,
-/obj/item/weapon/paper/alien{
+/obj/item/paper/alien{
 	icon_state = "alienpaper_words";
 	info = "\[i]This tablet has a large collection of symbols that you've never seen before outside this ship. You have no hope of figuring out what any of the mean...\[/i]"
 	},
@@ -344,17 +342,17 @@
 /area/tether_away/alienship)
 "cd" = (
 /obj/structure/table/alien,
-/obj/item/weapon/surgical/FixOVein/alien,
+/obj/item/surgical/FixOVein/alien,
 /turf/simulated/shuttle/floor/alien,
 /area/tether_away/alienship)
 "ce" = (
 /obj/structure/table/alien,
-/obj/item/weapon/surgical/bone_clamp/alien,
+/obj/item/surgical/bone_clamp/alien,
 /turf/simulated/shuttle/floor/alien,
 /area/tether_away/alienship)
 "cf" = (
 /obj/structure/table/alien,
-/obj/item/weapon/paper/alien{
+/obj/item/paper/alien{
 	icon_state = "alienpaper_words";
 	info = "\[i]This tablet has a large collection of symbols that you've never seen before outside this ship. You have no hope of figuring out what any of the mean...\[/i]"
 	},
@@ -362,7 +360,7 @@
 /area/tether_away/alienship)
 "cg" = (
 /obj/structure/table/alien,
-/obj/item/weapon/surgical/circular_saw/alien,
+/obj/item/surgical/circular_saw/alien,
 /turf/simulated/shuttle/floor/alien,
 /area/tether_away/alienship)
 "ch" = (
@@ -376,7 +374,7 @@
 /area/tether_away/alienship)
 "cj" = (
 /obj/structure/closet/alien,
-/obj/item/weapon/paper/alien,
+/obj/item/paper/alien,
 /turf/simulated/shuttle/floor/alienplating,
 /area/tether_away/alienship)
 "ck" = (
@@ -385,21 +383,18 @@
 /area/tether_away/alienship)
 "cl" = (
 /obj/structure/prop/alien/computer/camera{
-	icon_state = "camera";
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/alien,
 /area/tether_away/alienship)
 "cm" = (
 /obj/structure/prop/alien/computer/camera{
-	icon_state = "camera";
 	dir = 4
 	},
 /turf/simulated/shuttle/floor/alien,
 /area/tether_away/alienship)
 "cn" = (
 /obj/structure/prop/alien/computer/camera{
-	icon_state = "camera";
 	dir = 8
 	},
 /turf/simulated/shuttle/floor/alien,
@@ -427,7 +422,7 @@
 /area/tether_away/alienship)
 "cu" = (
 /obj/structure/table/alien,
-/obj/item/device/multitool/alien,
+/obj/item/multitool/alien,
 /turf/simulated/shuttle/floor/alienplating,
 /area/tether_away/alienship)
 "cv" = (
@@ -442,12 +437,12 @@
 /area/tether_away/alienship)
 "cx" = (
 /obj/structure/table/alien,
-/obj/item/weapon/surgical/hemostat/alien,
+/obj/item/surgical/hemostat/alien,
 /turf/simulated/shuttle/floor/alien,
 /area/tether_away/alienship)
 "cy" = (
 /obj/structure/table/alien,
-/obj/item/weapon/storage/belt/utility/alien/full,
+/obj/item/storage/belt/utility/alien/full,
 /turf/simulated/shuttle/floor/alien,
 /area/tether_away/alienship)
 "cz" = (
@@ -465,7 +460,7 @@
 /area/tether_away/alienship)
 "cC" = (
 /obj/structure/table/alien,
-/obj/item/weapon/surgical/cautery/alien,
+/obj/item/surgical/cautery/alien,
 /turf/simulated/shuttle/floor/alien,
 /area/tether_away/alienship)
 "cD" = (
@@ -474,69 +469,69 @@
 /area/tether_away/alienship)
 "cE" = (
 /obj/structure/table/alien,
-/obj/item/weapon/surgical/hemostat/alien,
+/obj/item/surgical/hemostat/alien,
 /turf/simulated/shuttle/floor/alienplating,
 /area/tether_away/alienship)
 "cF" = (
 /obj/structure/closet/alien,
-/obj/item/weapon/gun/energy/alien,
+/obj/item/gun/energy/alien,
 /turf/simulated/shuttle/floor/alienplating,
 /area/tether_away/alienship)
 "cG" = (
 /obj/structure/table/alien,
-/obj/item/weapon/surgical/bone_clamp/alien,
+/obj/item/surgical/bone_clamp/alien,
 /turf/simulated/shuttle/floor/alienplating,
 /area/tether_away/alienship)
 "cH" = (
-/obj/item/device/multitool/alien,
+/obj/item/multitool/alien,
 /turf/simulated/shuttle/floor/alien,
 /area/tether_away/alienship)
 "cI" = (
-/obj/item/weapon/cell/device/weapon/recharge/alien,
+/obj/item/cell/device/weapon/recharge/alien,
 /obj/structure/table/alien,
-/obj/item/weapon/weldingtool/alien,
+/obj/item/weldingtool/alien,
 /turf/simulated/shuttle/floor/alienplating,
 /area/tether_away/alienship)
 "cJ" = (
-/obj/item/weapon/cell/device/weapon/recharge/alien,
+/obj/item/cell/device/weapon/recharge/alien,
 /obj/structure/table/alien,
 /turf/simulated/shuttle/floor/alienplating,
 /area/tether_away/alienship)
 "cL" = (
 /obj/structure/table/alien,
-/obj/item/weapon/tool/crowbar/alien,
+/obj/item/tool/crowbar/alien,
 /turf/simulated/shuttle/floor/alienplating,
 /area/tether_away/alienship)
 "cM" = (
-/obj/item/weapon/tool/screwdriver/alien,
+/obj/item/tool/screwdriver/alien,
 /turf/simulated/shuttle/floor/alien,
 /area/tether_away/alienship)
 "cO" = (
 /obj/structure/table/alien,
-/obj/item/weapon/surgical/scalpel/alien,
+/obj/item/surgical/scalpel/alien,
 /turf/simulated/shuttle/floor/alien,
 /area/tether_away/alienship)
 "cP" = (
 /obj/structure/table/alien,
-/obj/item/weapon/surgical/retractor/alien,
+/obj/item/surgical/retractor/alien,
 /turf/simulated/shuttle/floor/alienplating,
 /area/tether_away/alienship)
 "cQ" = (
 /obj/structure/table/alien,
-/obj/item/device/gps,
+/obj/item/gps,
 /turf/simulated/shuttle/floor/alienplating,
 /area/tether_away/alienship)
 "cR" = (
-/obj/item/device/gps,
+/obj/item/gps,
 /turf/simulated/shuttle/floor/alienplating,
 /area/tether_away/alienship)
 "cS" = (
 /obj/structure/table/alien,
-/obj/item/weapon/gun/energy/alien,
+/obj/item/gun/energy/alien,
 /turf/simulated/shuttle/floor/alienplating,
 /area/tether_away/alienship)
 "cT" = (
-/obj/item/device/gps,
+/obj/item/gps,
 /turf/simulated/shuttle/floor/alien,
 /area/tether_away/alienship)
 "da" = (
@@ -549,11 +544,11 @@
 /turf/simulated/shuttle/floor/alienplating,
 /area/tether_away/alienship)
 "gG" = (
-/obj/item/weapon/reagent_containers/food/snacks/liquidfood,
+/obj/item/reagent_containers/food/snacks/liquidfood,
 /turf/simulated/shuttle/floor/alienplating,
 /area/tether_away/alienship)
 "nr" = (
-/obj/item/weapon/storage/firstaid,
+/obj/item/storage/firstaid,
 /turf/simulated/shuttle/floor/alien,
 /area/tether_away/alienship)
 "us" = (
@@ -567,12 +562,8 @@
 /obj/item/trash/liquidfood,
 /turf/simulated/shuttle/floor/alien,
 /area/tether_away/alienship)
-"DW" = (
-/obj/item/trash/liquidfood,
-/turf/simulated/shuttle/floor/alienplating,
-/area/shuttle/excursion/away_alienship)
 "Rx" = (
-/obj/item/weapon/reagent_containers/food/snacks/liquidfood,
+/obj/item/reagent_containers/food/snacks/liquidfood,
 /turf/simulated/shuttle/floor/alien,
 /area/tether_away/alienship)
 "YP" = (
@@ -7320,12 +7311,12 @@ af
 af
 ae
 ac
-ae
-ae
-ae
-ae
-ae
-ae
+ab
+ab
+ab
+ab
+ab
+ab
 ab
 ac
 ae
@@ -7360,7 +7351,7 @@ af
 af
 ad
 ac
-ae
+ab
 aa
 aa
 aa
@@ -7502,7 +7493,7 @@ af
 af
 cF
 ac
-ae
+ab
 aa
 aa
 aa
@@ -7644,7 +7635,7 @@ af
 af
 cj
 ac
-ae
+ab
 aa
 aa
 aa
@@ -7786,7 +7777,7 @@ af
 af
 ad
 ac
-ae
+ab
 aa
 aa
 aa
@@ -7928,7 +7919,7 @@ af
 af
 aX
 ac
-ae
+ab
 aa
 aa
 aa
@@ -8597,15 +8588,15 @@ ac
 ae
 ac
 ac
-ab
-aa
-aa
 ac
-af
 ac
-aa
-aa
-ab
+ac
+ag
+ak
+ag
+ac
+ac
+ac
 ac
 ac
 ae
@@ -8738,17 +8729,17 @@ ac
 ae
 ae
 ac
-ab
-ab
-aa
-aa
-ac
 af
-ac
-aa
-aa
-ab
-ab
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
 ac
 ae
 ae
@@ -8880,17 +8871,17 @@ ae
 ae
 ac
 ac
-ab
-aa
-aa
-aa
-ac
 af
-ac
-aa
-aa
-aa
-ab
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+af
 ac
 ac
 ae
@@ -9021,19 +9012,19 @@ ae
 ae
 ac
 ac
-ab
-ab
-aa
-aa
-aa
-ac
 af
-ac
-aa
-aa
-aa
-ab
-ab
+af
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+af
+af
 ac
 ac
 ae
@@ -9162,21 +9153,21 @@ ae
 ae
 ac
 ac
-ab
-ab
-ac
-ac
-ac
-ac
-ag
-ak
-ag
-ac
-ac
-ac
-ac
-ac
-ab
+af
+af
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+af
+af
 ac
 ac
 ae
@@ -9303,23 +9294,23 @@ ae
 ae
 ac
 ac
-ab
-ab
-ac
-ac
 af
 af
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
 af
 af
-af
-af
-af
-af
-af
-af
-ac
-ac
-ab
 ac
 ac
 ae
@@ -9444,25 +9435,25 @@ ae
 ae
 ac
 ac
-ab
-ab
-ac
-ac
 af
 af
-aE
-aE
-aE
-aE
-aE
-aE
-aE
-aE
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
 af
 af
-ac
-ac
-ab
 ac
 ac
 ae
@@ -9585,10 +9576,6 @@ ae
 ac
 ac
 ac
-ab
-ab
-ac
-ac
 af
 af
 ae
@@ -9600,12 +9587,16 @@ ae
 ae
 ae
 ae
-aE
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
 uA
 uA
-ac
-ac
-ab
 ac
 ac
 ac
@@ -9725,11 +9716,7 @@ ac
 ac
 ac
 ac
-ab
-ab
-ab
-ac
-ac
+af
 af
 af
 ae
@@ -9737,19 +9724,23 @@ ae
 ae
 ae
 ae
+ae
+ae
+ae
 ah
 ah
 ah
 ah
 ah
 ah
-DW
+ah
+ae
+ae
+ae
+ae
 af
-aR
-ac
-ab
-ab
-ab
+af
+cc
 ac
 ac
 ac
@@ -9866,13 +9857,12 @@ ac
 ac
 ab
 ab
-ab
-ab
-aa
-ac
 ac
 af
-af
+ae
+ae
+ae
+ae
 ah
 ah
 ah
@@ -9886,13 +9876,14 @@ ah
 ah
 ah
 ah
+ae
 aE
+gv
+ae
+ae
+ae
 aR
 ac
-aa
-aa
-ab
-ab
 ab
 ab
 ac
@@ -10008,12 +9999,11 @@ ab
 ab
 ab
 aa
-aa
-aa
-aa
 ac
 af
-af
+ae
+ae
+ae
 ah
 ah
 ah
@@ -10028,13 +10018,14 @@ ah
 ah
 ah
 ah
+ae
 aE
+ae
+ae
+ae
+ae
 aR
 ac
-aa
-aa
-aa
-aa
 aa
 ab
 ab
@@ -10150,12 +10141,11 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
 ac
 af
 ae
+ae
+ae
 ah
 ah
 ah
@@ -10170,13 +10160,14 @@ ah
 ah
 ah
 ae
+ae
 aE
+ae
+ae
+ae
+ae
 aR
 ac
-aa
-aa
-aa
-aa
 aa
 aa
 aa
@@ -10292,12 +10283,11 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
 ag
 af
 ae
+ae
+ae
 ah
 ah
 ah
@@ -10310,15 +10300,16 @@ ah
 ah
 ah
 ah
+ae
 ae
 ae
 aE
+ae
+ae
+ae
+ae
 uA
 ag
-ac
-ac
-ac
-ac
 ac
 ac
 ac
@@ -10434,11 +10425,10 @@ af
 af
 af
 af
-af
-af
-af
 am
 af
+ae
+ae
 ae
 ah
 ah
@@ -10452,15 +10442,16 @@ ah
 ah
 ah
 ah
+ae
+ae
+ae
+ae
+ae
 ae
 ae
 ae
 af
 an
-af
-af
-af
-af
 af
 af
 af
@@ -10576,11 +10567,10 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
 ag
 af
+ae
+ae
 ae
 ah
 ah
@@ -10595,14 +10585,15 @@ ah
 ah
 ah
 ah
+ae
 ae
 aE
+ae
+ae
+ae
+ae
 af
 ag
-ac
-ac
-ac
-ac
 ac
 ac
 ac
@@ -10718,12 +10709,11 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
 ac
 af
 ae
+ae
+ae
 ah
 ah
 ah
@@ -10738,13 +10728,14 @@ ah
 ah
 ah
 ae
+ae
 aE
+ae
+ae
+ae
+ae
 aR
 ac
-aa
-aa
-aa
-aa
 aa
 aa
 aa
@@ -10860,12 +10851,11 @@ ab
 ab
 ab
 aa
-aa
-aa
-aa
 ac
 af
-af
+ae
+ae
+ae
 ah
 ah
 ah
@@ -10880,13 +10870,14 @@ ah
 ah
 ah
 ah
+ae
 aE
+ae
+ae
+ae
+ae
 aR
 ac
-aa
-aa
-aa
-aa
 aa
 ab
 ab
@@ -11002,13 +10993,12 @@ ac
 ac
 ab
 ab
-ab
-ab
-aa
-ac
 ac
 af
-af
+ae
+ae
+ae
+ae
 ah
 ah
 ah
@@ -11023,12 +11013,13 @@ ah
 ah
 ah
 ae
+ae
+ae
+ae
+ae
+ae
 aR
 ac
-aa
-aa
-ab
-ab
 ab
 ab
 ac
@@ -11145,11 +11136,7 @@ ac
 ac
 ac
 ac
-ab
-ab
-ab
-ac
-ac
+af
 af
 af
 ae
@@ -11157,6 +11144,9 @@ ae
 ae
 ae
 ae
+ae
+ae
+ae
 ah
 ah
 ah
@@ -11164,12 +11154,13 @@ ah
 ah
 ah
 ah
+ae
+ae
+ae
+ae
 af
-aR
-ac
-ab
-ab
-ab
+af
+cc
 ac
 ac
 ac
@@ -11289,10 +11280,6 @@ ae
 ac
 ac
 ac
-ab
-ab
-ac
-ac
 af
 af
 ae
@@ -11305,11 +11292,15 @@ ae
 ae
 ae
 ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
 af
 af
-ac
-ac
-ab
 ac
 ac
 ac
@@ -11432,10 +11423,6 @@ ae
 ae
 ac
 ac
-ab
-ab
-ac
-ac
 af
 af
 ae
@@ -11446,11 +11433,15 @@ ae
 ae
 ae
 ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
 af
 af
-ac
-ac
-ab
 ac
 ac
 ae
@@ -11575,23 +11566,23 @@ ae
 ae
 ac
 ac
-ab
-ab
-ac
-ac
 af
 af
-af
-af
-af
-af
-af
-af
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
 af
 uA
-ac
-ac
-ab
 ac
 ac
 ae
@@ -11718,21 +11709,21 @@ ae
 ae
 ac
 ac
-ab
-ab
-ac
-ac
-ac
-ac
-ag
-aj
-ag
-ac
-ac
-ac
-ac
-ac
-ab
+af
+af
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+af
+af
 ac
 ac
 ae
@@ -11861,19 +11852,19 @@ ae
 ae
 ac
 ac
-ab
-ab
-aa
-aa
-aa
-ac
 af
-ac
-aa
-aa
-aa
-ab
-ab
+af
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+af
+af
 ac
 ac
 ae
@@ -12004,17 +11995,17 @@ ae
 ae
 ac
 ac
-ab
-aa
-aa
-aa
-ac
 af
-ac
-aa
-aa
-aa
-ab
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+af
 ac
 ac
 ae
@@ -12146,17 +12137,17 @@ ac
 ae
 ae
 ac
-ab
-ab
-aa
-aa
-ac
 af
-ac
-aa
-aa
-ab
-ab
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
 ac
 ae
 ae
@@ -12289,15 +12280,15 @@ ac
 ae
 ac
 ac
-ab
-aa
-aa
 ac
-af
 ac
-aa
-aa
-ab
+ac
+ag
+aj
+ag
+ac
+ac
+ac
 ac
 ac
 ae
@@ -13040,7 +13031,7 @@ af
 af
 ad
 ac
-ae
+ab
 aa
 aa
 aa
@@ -13182,7 +13173,7 @@ af
 af
 bV
 ac
-ae
+ab
 aa
 aa
 aa
@@ -13324,7 +13315,7 @@ af
 af
 ad
 ac
-ae
+ab
 aa
 aa
 aa
@@ -13466,7 +13457,7 @@ af
 af
 ad
 ac
-ae
+ab
 aa
 aa
 aa
@@ -13568,12 +13559,12 @@ af
 af
 ae
 ac
-ae
-ae
-ae
-ae
-ae
-ae
+ab
+ab
+ab
+ab
+ab
+ab
 ab
 ac
 ae
@@ -13608,7 +13599,7 @@ af
 af
 aX
 ac
-ae
+ab
 aa
 aa
 aa

@@ -13,14 +13,14 @@
 		return
 	//src.add_fingerprint(user)	//shouldn't need fingerprints just for looking at it.
 	if(!allowed(user))
-		user << "<font color='red'>Access Denied.</font>"
+		to_chat(user, "<font color='red'>Access Denied.</font>")
 		return 1
 
 	ui_interact(user)
 
 /obj/machinery/computer/shuttle_control/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/data[0]
-	var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_tag]
+	var/datum/shuttle/ferry/shuttle = SSshuttle.shuttles[shuttle_tag]
 	if (!istype(shuttle))
 		return
 
@@ -57,7 +57,7 @@
 		"can_force" = shuttle.can_force(),
 	)
 
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 
 	if (!ui)
 		ui = new(user, src, ui_key, "shuttle_control_console.tmpl", "[shuttle_tag] Shuttle Control", 470, 310)
@@ -72,7 +72,7 @@
 	usr.set_machine(src)
 	src.add_fingerprint(usr)
 
-	var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_tag]
+	var/datum/shuttle/ferry/shuttle = SSshuttle.shuttles[shuttle_tag]
 	if (!istype(shuttle))
 		return
 
@@ -88,7 +88,7 @@
 		req_access = list()
 		req_one_access = list()
 		hacked = 1
-		user << "You short out the console's ID checking system. It's now available to everyone!"
+		to_chat(user, "You short out the console's ID checking system. It's now available to everyone!")
 		return 1
 
 /obj/machinery/computer/shuttle_control/bullet_act(var/obj/item/projectile/Proj)

@@ -1,30 +1,8 @@
-//cast_method flags, needs to be up to date with Technomancer's. They were, for some reason, not working outside it.
-#define CAST_USE		1	// Clicking the spell in your hand.
-#define CAST_MELEE		2	// Clicking an atom in melee range.
-#define CAST_RANGED		4	// Clicking an atom beyond melee range.
-#define CAST_THROW		8	// Throwing the spell and hitting an atom.
-#define CAST_COMBINE	16	// Clicking another spell with this spell.
-#define CAST_INNATE		32	// Activates upon verb usage, used for mobs without hands.
-
-//Aspects
-#define ASPECT_FIRE			"fire" 		//Damage over time and raising body-temp.  Firesuits protect from this.
-#define ASPECT_FROST		"frost"		//Slows down the affected, also involves imbedding with icicles.  Winter coats protect from this.
-#define ASPECT_SHOCK		"shock"		//Energy-expensive, usually stuns.  Insulated armor protects from this.
-#define ASPECT_AIR			"air"		//Mostly involves manipulation of atmos, useless in a vacuum.  Magboots protect from this.
-#define ASPECT_FORCE		"force" 	//Manipulates gravity to push things away or towards a location.
-#define ASPECT_TELE			"tele"		//Teleportation of self, other objects, or other people.
-#define ASPECT_DARK			"dark"		//Makes all those photons vanish using magic-- WITH SCIENCE.  Used for sneaky stuff.
-#define ASPECT_LIGHT		"light"		//The opposite of dark, usually blinds, makes holo-illusions, or makes laser lightshows.
-#define ASPECT_BIOMED		"biomed"	//Mainly concerned with healing and restoration.
-#define ASPECT_EMP			"emp"		//Unused now.
-#define ASPECT_UNSTABLE		"unstable"	//Heavily RNG-based, causes instability to the victim.
-#define ASPECT_CHROMATIC	"chromatic"	//Used to combine with other spells.
-#define ASPECT_UNHOLY		"unholy"	//Involves the dead, blood, and most things against divine beings.
 
 //////////////////////////////Construct Spells/////////////////////////
 
 proc/findNullRod(var/atom/target)
-	if(istype(target,/obj/item/weapon/nullrod))
+	if(istype(target,/obj/item/nullrod))
 		return 1
 	else if(target.contents)
 		for(var/atom/A in target.contents)
@@ -114,7 +92,7 @@ proc/findNullRod(var/atom/target)
 	invocation_type = SpI_NONE
 	range = 0
 
-	summon_type = list(/obj/item/device/soulstone)
+	summon_type = list(/obj/item/soulstone)
 
 	hud_state = "const_stone"
 	override_base = "const"
@@ -192,6 +170,7 @@ proc/findNullRod(var/atom/target)
 	icon_state = "m_shield_cult"
 	light_color = "#B40000"
 	light_range = 2
+	invisibility = 0
 
 /obj/effect/forcefield/cult/cultify()
 	return
@@ -296,9 +275,9 @@ proc/findNullRod(var/atom/target)
 				M.forceMove(destination)
 				if(M != user)
 					prey = 1
-		user << "<span class='sinister'>You warp back to Nar-Sie[prey ? " along with your prey":""].</span>"
+		to_chat(user, "<span class='sinister'>You warp back to Nar-Sie[prey ? " along with your prey":""].</span>")
 	else
-		user << "<span class='danger'>...something's wrong!</span>"//There shouldn't be an instance of Harvesters when Nar-Sie isn't in the world.
+		to_chat(user, "<span class='danger'>...something's wrong!</span>")//There shouldn't be an instance of Harvesters when Nar-Sie isn't in the world.
 */
 
 /spell/targeted/fortify
@@ -392,7 +371,7 @@ proc/findNullRod(var/atom/target)
 
 	charge_max = 10
 
-	var/obj/item/weapon/spell/construct/spell_obj = null //This is the var that determines what Technomancer-style spell is put into their hands.
+	var/obj/item/spell/construct/spell_obj = null //This is the var that determines what Technomancer-style spell is put into their hands.
 
 /spell/targeted/construct_advanced/cast(list/targets, mob/living/user)
 	if(!findNullRod(user))
@@ -403,7 +382,7 @@ proc/findNullRod(var/atom/target)
 	desc = "Fire a searing beam of darkness at your foes."
 
 	hud_state = "const_beam"
-	spell_obj = /obj/item/weapon/spell/construct/projectile/inverted_beam
+	spell_obj = /obj/item/spell/construct/projectile/inverted_beam
 
 /spell/targeted/construct_advanced/mend_acolyte
 	name = "Mend Acolyte"
@@ -412,7 +391,7 @@ proc/findNullRod(var/atom/target)
 	charge_max = 100
 
 	hud_state = "const_mend"
-	spell_obj = /obj/item/weapon/spell/construct/mend_occult
+	spell_obj = /obj/item/spell/construct/mend_occult
 
 /spell/targeted/construct_advanced/agonizing_sphere
 	name = "Sphere of Agony"
@@ -421,7 +400,7 @@ proc/findNullRod(var/atom/target)
 	charge_max = 100
 
 	hud_state = "const_harvest"
-	spell_obj = /obj/item/weapon/spell/construct/spawner/agonizing_sphere
+	spell_obj = /obj/item/spell/construct/spawner/agonizing_sphere
 
 /spell/targeted/construct_advanced/slam
 	name = "Slam"
@@ -430,7 +409,7 @@ proc/findNullRod(var/atom/target)
 	charge_max = 300
 
 	hud_state = "const_fist"
-	spell_obj = /obj/item/weapon/spell/construct/slam
+	spell_obj = /obj/item/spell/construct/slam
 
 /*
  *
@@ -442,7 +421,7 @@ proc/findNullRod(var/atom/target)
  * Base advanced construct spell types.
  */
 
-/obj/item/weapon/spell/construct //Energy costs are in units of blood, in the event a cultist gets one of these.
+/obj/item/spell/construct //Energy costs are in units of blood, in the event a cultist gets one of these.
 	name = "unholy energy"
 	desc = "Your hands appear to be screaming. This is a debug text, you should probably tell a developer!"
 	icon = 'icons/obj/spells.dmi'
@@ -463,7 +442,7 @@ proc/findNullRod(var/atom/target)
 	cast_sound = null			// Sound file played when this is used.
 	var/last_castcheck = null	// The last time this spell was cast.
 
-/obj/item/weapon/spell/construct/New()
+/obj/item/spell/construct/New()
 	//..() //This kills the spell, because super on this calls the default spell's New, which checks for a core. Can't have that.
 	if(isliving(loc))
 		owner = loc
@@ -471,25 +450,25 @@ proc/findNullRod(var/atom/target)
 		qdel(src)
 	update_icon()
 
-/obj/item/weapon/spell/construct/adjust_instability(var/amount) //The only drawback to the boons of the geometer is the use of a mortal's blood as fuel. Constructs have already paid that price long ago.
+/obj/item/spell/construct/adjust_instability(var/amount) //The only drawback to the boons of the geometer is the use of a mortal's blood as fuel. Constructs have already paid that price long ago.
 	return
 
-/obj/item/weapon/spell/construct/run_checks()
+/obj/item/spell/construct/run_checks()
 	if(owner)
-		if((iscultist(owner) || istype(owner, /mob/living/simple_animal/construct)) && (world.time >= (last_castcheck + cooldown))) //Are they a cultist or a construct, and has the cooldown time passed?
+		if((iscultist(owner) || istype(owner, /mob/living/simple_mob/construct)) && (world.time >= (last_castcheck + cooldown))) //Are they a cultist or a construct, and has the cooldown time passed?
 			last_castcheck = world.time
 			return 1
 	return 0
 
-/obj/item/weapon/spell/construct/pay_energy(var/amount)
+/obj/item/spell/construct/pay_energy(var/amount)
 	if(owner)
-		if(istype(owner, /mob/living/simple_animal/construct))
+		if(istype(owner, /mob/living/simple_mob/construct))
 			return 1
 		if(iscultist(owner) && pay_blood(amount))
 			return 1
 	return 0
 
-/obj/item/weapon/spell/construct/proc/pay_blood(var/amount) //If, for some reason, this is put into the hands of a cultist, by a talisnam or whatever.
+/obj/item/spell/construct/proc/pay_blood(var/amount) //If, for some reason, this is put into the hands of a cultist, by a talisnam or whatever.
 	if(ishuman(owner))
 		var/mob/living/carbon/human/H = owner
 		if(!H.should_have_organ(O_HEART))
@@ -498,15 +477,15 @@ proc/findNullRod(var/atom/target)
 			return 1
 	return 0
 
-/obj/item/weapon/spell/construct/afterattack(atom/target, mob/user, proximity_flag, click_parameters) //Not overriding it caused runtimes, because cooldown checked for core.
+/obj/item/spell/construct/afterattack(atom/target, mob/user, proximity_flag, click_parameters) //Not overriding it caused runtimes, because cooldown checked for core.
 	if(!run_checks())
 		return
 	if(!proximity_flag)
 		if(cast_methods & CAST_RANGED)
 			on_ranged_cast(target, user)
 	else
-		if(istype(target, /obj/item/weapon/spell))
-			var/obj/item/weapon/spell/spell = target
+		if(istype(target, /obj/item/spell))
+			var/obj/item/spell/spell = target
 			if(spell.cast_methods & CAST_COMBINE)
 				spell.on_combine_cast(src, user)
 				return
@@ -519,7 +498,7 @@ proc/findNullRod(var/atom/target)
 		user.setClickCooldown(effective_cooldown)
 		flick("cooldown_[effective_cooldown]",src)
 
-/obj/item/weapon/spell/construct/projectile //This makes me angry, but we need the template, and we can't use it because special check overrides on the base.
+/obj/item/spell/construct/projectile //This makes me angry, but we need the template, and we can't use it because special check overrides on the base.
 	name = "construct projectile template"
 	icon_state = "generic"
 	desc = "This is a generic template that shoots projectiles.  If you can read this, the game broke!"
@@ -529,21 +508,22 @@ proc/findNullRod(var/atom/target)
 	var/fire_sound = null
 	var/energy_cost_per_shot = 5
 
-/obj/item/weapon/spell/construct/projectile/on_ranged_cast(atom/hit_atom, mob/living/user)
+/obj/item/spell/construct/projectile/on_ranged_cast(atom/hit_atom, mob/living/user)
 	if(set_up(hit_atom, user))
 		var/obj/item/projectile/new_projectile = make_projectile(spell_projectile, user)
-		new_projectile.launch(hit_atom)
+		new_projectile.old_style_target(hit_atom)
+		new_projectile.fire()
 		log_and_message_admins("has casted [src] at \the [hit_atom].")
 		if(fire_sound)
 			playsound(get_turf(src), fire_sound, 75, 1)
 		return 1
 	return 0
 
-/obj/item/weapon/spell/construct/projectile/proc/make_projectile(obj/item/projectile/projectile_type, mob/living/user)
+/obj/item/spell/construct/projectile/proc/make_projectile(obj/item/projectile/projectile_type, mob/living/user)
 	var/obj/item/projectile/P = new projectile_type(get_turf(user))
 	return P
 
-/obj/item/weapon/spell/construct/projectile/proc/set_up(atom/hit_atom, mob/living/user)
+/obj/item/spell/construct/projectile/proc/set_up(atom/hit_atom, mob/living/user)
 	if(spell_projectile)
 		if(pay_energy(energy_cost_per_shot))
 			if(pre_shot_delay)
@@ -558,14 +538,14 @@ proc/findNullRod(var/atom/target)
 			return TRUE // No delay, no need to check.
 	return FALSE
 
-/obj/item/weapon/spell/construct/spawner
+/obj/item/spell/construct/spawner
 	name = "spawner template"
 	desc = "If you see me, someone messed up."
 	icon_state = "darkness"
 	cast_methods = CAST_RANGED
 	var/obj/effect/spawner_type = null
 
-/obj/item/weapon/spell/construct/spawner/on_ranged_cast(atom/hit_atom, mob/user)
+/obj/item/spell/construct/spawner/on_ranged_cast(atom/hit_atom, mob/user)
 	var/turf/T = get_turf(hit_atom)
 	if(T)
 		new spawner_type(T)
@@ -575,7 +555,7 @@ proc/findNullRod(var/atom/target)
 
 //Harvester Laser.
 
-/obj/item/weapon/spell/construct/projectile/inverted_beam
+/obj/item/spell/construct/projectile/inverted_beam
 	name = "inversion beam"
 	icon_state = "generic"
 	desc = "Your manipulators fire searing beams of inverted light."
@@ -597,29 +577,29 @@ proc/findNullRod(var/atom/target)
 	light_power = -2
 	light_color = "#FFFFFF"
 
-	muzzle_type = /obj/effect/projectile/inversion/muzzle
-	tracer_type = /obj/effect/projectile/inversion/tracer
-	impact_type = /obj/effect/projectile/inversion/impact
+	muzzle_type = /obj/effect/projectile/muzzle/inversion
+	tracer_type = /obj/effect/projectile/tracer/inversion
+	impact_type = /obj/effect/projectile/impact/inversion
 
 //Harvester Pain Orb
 
-/obj/item/weapon/spell/construct/spawner/agonizing_sphere
+/obj/item/spell/construct/spawner/agonizing_sphere
 	name = "sphere of agony"
 	desc = "Call forth a portal to a dimension of naught but pain at your target."
 
-	spawner_type = /obj/effect/temporary_effect/pulsar/agonizing_sphere
+	spawner_type = /obj/effect/temporary_effect/pulse/agonizing_sphere
 
-/obj/item/weapon/spell/construct/spawner/agonizing_sphere/on_ranged_cast(atom/hit_atom, mob/user)
+/obj/item/spell/construct/spawner/agonizing_sphere/on_ranged_cast(atom/hit_atom, mob/user)
 	if(within_range(hit_atom) && pay_energy(10))
 		..()
 
-/obj/item/weapon/spell/construct/spawner/agonizing_sphere/on_throw_cast(atom/hit_atom, mob/user)
+/obj/item/spell/construct/spawner/agonizing_sphere/on_throw_cast(atom/hit_atom, mob/user)
 	pay_energy(5)
 	if(isliving(hit_atom))
 		var/mob/living/L = hit_atom
 		L.add_modifier(/datum/modifier/agonize, 10 SECONDS)
 
-/obj/effect/temporary_effect/pulsar/agonizing_sphere
+/obj/effect/temporary_effect/pulse/agonizing_sphere
 	name = "agonizing sphere"
 	desc = "A portal to some hellish place. Its screams wrack your body with pain.."
 	icon_state = "red_static_sphere"
@@ -628,23 +608,19 @@ proc/findNullRod(var/atom/target)
 	light_power = 5
 	light_color = "#FF0000"
 	pulses_remaining = 10
+	pulse_delay = 1 SECOND
 
-/obj/effect/temporary_effect/pulsar/agonizing_sphere/pulse_loop()
-	while(pulses_remaining)
-		sleep(1 SECONDS)
-		spawn()
-			for(var/mob/living/L in view(4,src))
-				if(!iscultist(L) && !istype(L, /mob/living/simple_animal/construct))
-					L.add_modifier(/datum/modifier/agonize, 2 SECONDS)
-					if(L.isSynthetic())
-						to_chat(L, "<span class='cult'>Your chassis warps as the [src] pulses!</span>")
-						L.adjustFireLoss(4)
-		pulses_remaining--
-	qdel(src)
+/obj/effect/temporary_effect/pulse/agonizing_sphere/on_pulse()
+	for(var/mob/living/L in view(4,src))
+		if(!iscultist(L) && !istype(L, /mob/living/simple_mob/construct))
+			L.add_modifier(/datum/modifier/agonize, 2 SECONDS)
+			if(L.isSynthetic())
+				to_chat(L, "<span class='cult'>Your chassis warps as the [src] pulses!</span>")
+				L.adjustFireLoss(4)
 
 //Artificer Heal
 
-/obj/item/weapon/spell/construct/mend_occult
+/obj/item/spell/construct/mend_occult
 	name = "mend acolyte"
 	desc = "Mend the wounds of a cultist, or construct, over time."
 	icon_state = "mend_wounds"
@@ -653,14 +629,14 @@ proc/findNullRod(var/atom/target)
 	light_color = "#FF5C5C"
 	light_power = -2
 
-/obj/item/weapon/spell/construct/mend_occult/on_melee_cast(atom/hit_atom, mob/living/user, def_zone)
+/obj/item/spell/construct/mend_occult/on_melee_cast(atom/hit_atom, mob/living/user, def_zone)
 	if(isliving(hit_atom))
 		var/mob/living/L = hit_atom
 		L.add_modifier(/datum/modifier/mend_occult, 150)
 	qdel(src)
 
-//Juggernaut + Behemoth Slam
-/obj/item/weapon/spell/construct/slam
+//Juggernaut Slam
+/obj/item/spell/construct/slam
 	name = "slam"
 	desc = "Empower your FIST, to send an opponent flying."
 	icon_state = "toggled_old"
@@ -670,10 +646,10 @@ proc/findNullRod(var/atom/target)
 	light_power = -2
 	cooldown = 15
 
-/obj/item/weapon/spell/construct/slam/on_melee_cast(atom/hit_atom, mob/living/user, def_zone)
+/obj/item/spell/construct/slam/on_melee_cast(atom/hit_atom, mob/living/user, def_zone)
 	var/attack_message = "slams"
-	if(istype(user, /mob/living/simple_animal))
-		var/mob/living/simple_animal/S = user
+	if(istype(user, /mob/living/simple_mob))
+		var/mob/living/simple_mob/S = user
 		attack_message = pick(S.attacktext)
 	if(isliving(hit_atom))
 		var/mob/living/L = hit_atom

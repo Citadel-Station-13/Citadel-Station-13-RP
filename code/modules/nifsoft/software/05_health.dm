@@ -2,7 +2,7 @@
 	name = "Medichines"
 	desc = "An internal swarm of nanites to make sure you stay in good shape and to promote healing, or to preserve you if you are critically injured."
 	list_pos = NIF_ORGANIC_HEAL
-	cost = 2500
+	cost = 1250
 	p_drain = 0.05
 	a_drain = 0.1 //This is messed with manually below.
 	wear = 2
@@ -45,7 +45,7 @@
 				mode = 3
 				if(!ishuman(H.loc)) //Not notified in case of vore, for gameplay purposes.
 					var/turf/T = get_turf(H)
-					var/obj/item/device/radio/headset/a = new /obj/item/device/radio/headset/heads/captain(null)
+					var/obj/item/radio/headset/a = new /obj/item/radio/headset/heads/captain(null)
 					a.autosay("[H.real_name] has been put in emergency stasis, located at ([T.x],[T.y],[T.z])!", "[H.real_name]'s NIF", "Medical")
 					qdel(a)
 
@@ -75,7 +75,7 @@
 	name = "Medichines"
 	desc = "A swarm of mechanical repair nanites, able to repair relatively minor damage to synthetic bodies. Large repairs must still be performed manually."
 	list_pos = NIF_SYNTH_HEAL
-	cost = 2500
+	cost = 1250
 	p_drain = 0.05
 	a_drain = 0.00 //This is manually drained below.
 	wear = 2
@@ -128,7 +128,7 @@
 	name = "Respirocytes"
 	desc = "Nanites simulating red blood cells will filter and recycle oxygen for a short time, preventing suffocation in hostile environments. NOTE: Only capable of supplying OXYGEN."
 	list_pos = NIF_SPAREBREATH
-	cost = 650
+	cost = 325
 	p_drain = 0.05
 	a_drain = 0.1
 	wear = 2
@@ -175,7 +175,7 @@
 	proc/resp_breath()
 		if(!active) return null
 		var/datum/gas_mixture/breath = new(BREATH_VOLUME)
-		breath.adjust_gas("oxygen", BREATH_MOLES)
+		breath.adjust_gas(/datum/gas/oxygen, BREATH_MOLES)
 		breath.temperature = T20C
 		return breath
 
@@ -183,7 +183,7 @@
 	name = "Mind Backup"
 	desc = "Backup your mind on the go. Stores a one-time sync of your current mindstate upon activation."
 	list_pos = NIF_BACKUP
-	cost = 250
+	cost = 125
 
 	activate()
 		if((. = ..()))

@@ -10,7 +10,7 @@ var/global/list/rad_collectors = list()
 	density = 1
 	req_access = list(access_engine_equip)
 //	use_power = 0
-	var/obj/item/weapon/tank/phoron/P = null
+	var/obj/item/tank/phoron/P = null
 	var/last_power = 0
 	var/last_power_new = 0
 	var/active = 0
@@ -32,16 +32,16 @@ var/global/list/rad_collectors = list()
 
 
 	if(P && active)
-		var/rads = radiation_repository.get_rads_at_turf(get_turf(src))
+		var/rads = SSradiation.get_rads_at_turf(get_turf(src))
 		if(rads)
 			receive_pulse(rads * 5) //Maths is hard
 
 	if(P)
-		if(P.air_contents.gas["phoron"] == 0)
+		if(P.air_contents.gas[/datum/gas/phoron] == 0)
 			investigate_log("<font color='red'>out of fuel</font>.","singulo")
 			eject()
 		else
-			P.air_contents.adjust_gas("phoron", -0.001*drainratio)
+			P.air_contents.adjust_gas(/datum/gas/phoron, -0.001*drainratio)
 	return
 
 
@@ -51,7 +51,7 @@ var/global/list/rad_collectors = list()
 			toggle_power()
 			user.visible_message("[user.name] turns the [src.name] [active? "on":"off"].", \
 			"You turn the [src.name] [active? "on":"off"].")
-			investigate_log("turned [active?"<font color='green'>on</font>":"<font color='red'>off</font>"] by [user.key]. [P?"Fuel: [round(P.air_contents.gas["phoron"]/0.29)]%":"<font color='red'>It is empty</font>"].","singulo")
+			investigate_log("turned [active?"<font color='green'>on</font>":"<font color='red'>off</font>"] by [user.key]. [P?"Fuel: [round(P.air_contents.gas[/datum/gas/phoron]/0.29)]%":"<font color='red'>It is empty</font>"].","singulo")
 			return
 		else
 			to_chat(user, "<font color='red'>The controls are locked!</font>")
@@ -59,7 +59,7 @@ var/global/list/rad_collectors = list()
 
 
 /obj/machinery/power/rad_collector/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/weapon/tank/phoron))
+	if(istype(W, /obj/item/tank/phoron))
 		if(!src.anchored)
 			to_chat(user, "<font color='red'>The [src] needs to be secured to the floor first.</font>")
 			return 1
@@ -89,7 +89,7 @@ var/global/list/rad_collectors = list()
 		else
 			disconnect_from_network()
 		return 1
-	else if(istype(W, /obj/item/weapon/card/id)||istype(W, /obj/item/device/pda))
+	else if(istype(W, /obj/item/card/id)||istype(W, /obj/item/pda))
 		if (src.allowed(user))
 			if(active)
 				src.locked = !src.locked
@@ -116,7 +116,7 @@ var/global/list/rad_collectors = list()
 
 /obj/machinery/power/rad_collector/proc/eject()
 	locked = 0
-	var/obj/item/weapon/tank/phoron/Z = src.P
+	var/obj/item/tank/phoron/Z = src.P
 	if (!Z)
 		return
 	Z.loc = get_turf(src)
@@ -130,7 +130,7 @@ var/global/list/rad_collectors = list()
 /obj/machinery/power/rad_collector/proc/receive_pulse(var/pulse_strength)
 	if(P && active)
 		var/power_produced = 0
-		power_produced = P.air_contents.gas["phoron"]*pulse_strength*20
+		power_produced = P.air_contents.gas[/datum/gas/phoron]*pulse_strength*20
 		add_avail(power_produced)
 		last_power_new = power_produced
 		return

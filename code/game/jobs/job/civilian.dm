@@ -9,9 +9,9 @@
 	spawn_positions = 2
 	supervisors = "the head of personnel"
 	selection_color = "#515151"
-	idtype = /obj/item/weapon/card/id/civilian/bartender
-	access = list(access_hydroponics, access_bar, access_kitchen, access_iff_station)
-	minimal_access = list(access_bar, access_iff_station)
+	idtype = /obj/item/card/id/civilian/bartender
+	access = list(access_hydroponics, access_bar, access_kitchen)
+	minimal_access = list(access_bar)
 
 	outfit_type = /decl/hierarchy/outfit/job/service/bartender
 	alt_titles = list("Barista" = /decl/hierarchy/outfit/job/service/bartender/barista)
@@ -27,9 +27,9 @@
 	spawn_positions = 2
 	supervisors = "the head of personnel"
 	selection_color = "#515151"
-	idtype = /obj/item/weapon/card/id/civilian/chef
-	access = list(access_hydroponics, access_bar, access_kitchen, access_iff_station)
-	minimal_access = list(access_kitchen, access_iff_station)
+	idtype = /obj/item/card/id/civilian/chef
+	access = list(access_hydroponics, access_bar, access_kitchen)
+	minimal_access = list(access_kitchen)
 
 	outfit_type = /decl/hierarchy/outfit/job/service/chef
 	alt_titles = list("Cook")
@@ -44,9 +44,9 @@
 	spawn_positions = 1
 	supervisors = "the head of personnel"
 	selection_color = "#515151"
-	idtype = /obj/item/weapon/card/id/civilian/botanist
-	access = list(access_hydroponics, access_bar, access_kitchen, access_iff_station)
-	minimal_access = list(access_hydroponics, access_iff_station)
+	idtype = /obj/item/card/id/civilian/botanist
+	access = list(access_hydroponics, access_bar, access_kitchen)
+	minimal_access = list(access_hydroponics)
 
 	outfit_type = /decl/hierarchy/outfit/job/service/gardener
 	alt_titles = list("Gardener")
@@ -63,10 +63,10 @@
 	spawn_positions = 1
 	supervisors = "the head of personnel"
 	selection_color = "#7a4f33"
-	idtype = /obj/item/weapon/card/id/cargo/head
+	idtype = /obj/item/card/id/cargo/head
 	economic_modifier = 5
-	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station, access_iff_station)
-	minimal_access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station, access_iff_station)
+	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station)
+	minimal_access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station)
 
 	ideal_character_age = 40
 
@@ -83,9 +83,9 @@
 	spawn_positions = 2
 	supervisors = "the quartermaster and the head of personnel"
 	selection_color = "#9b633e"
-	idtype = /obj/item/weapon/card/id/cargo/cargo_tech
-	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_mining, access_mining_station, access_iff_station)
-	minimal_access = list(access_maint_tunnels, access_cargo, access_cargo_bot, access_mailsorting, access_iff_station)
+	idtype = /obj/item/card/id/cargo/cargo_tech
+	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_mining, access_mining_station)
+	minimal_access = list(access_maint_tunnels, access_cargo, access_cargo_bot, access_mailsorting)
 
 	outfit_type = /decl/hierarchy/outfit/job/cargo/cargo_tech
 
@@ -99,10 +99,10 @@
 	spawn_positions = 3
 	supervisors = "the quartermaster and the head of personnel"
 	selection_color = "#9b633e"
-	idtype = /obj/item/weapon/card/id/cargo/mining
+	idtype = /obj/item/card/id/cargo/mining
 	economic_modifier = 5
-	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_mining, access_mining_station, access_iff_station)
-	minimal_access = list(access_mining, access_mining_station, access_mailsorting, access_iff_station)
+	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_mining, access_mining_station)
+	minimal_access = list(access_mining, access_mining_station, access_mailsorting)
 
 	outfit_type = /decl/hierarchy/outfit/job/cargo/mining
 	alt_titles = list("Drill Technician")
@@ -118,9 +118,9 @@
 	spawn_positions = 2
 	supervisors = "the head of personnel"
 	selection_color = "#515151"
-	idtype = /obj/item/weapon/card/id/civilian/janitor
-	access = list(access_janitor, access_maint_tunnels, access_iff_station)
-	minimal_access = list(access_janitor, access_maint_tunnels, access_iff_station)
+	idtype = /obj/item/card/id/civilian/janitor
+	access = list(access_janitor, access_maint_tunnels)
+	minimal_access = list(access_janitor, access_maint_tunnels)
 
 	outfit_type = /decl/hierarchy/outfit/job/service/janitor
 	alt_titles = list("Custodian")
@@ -132,13 +132,13 @@
 	department = "Civilian"
 	department_flag = CIVILIAN
 	faction = "Station"
-	total_positions = 2 // VOREStation Edit. Original number is 1.
-	spawn_positions = 2 // VOREStation Edit. Original number is 1.
+	total_positions = 1
+	spawn_positions = 1
 	supervisors = "the head of personnel"
 	selection_color = "#515151"
-	idtype = /obj/item/weapon/card/id/civilian/librarian
-	access = list(access_library, access_maint_tunnels, access_iff_station)
-	minimal_access = list(access_library, access_iff_station)
+	idtype = /obj/item/card/id/civilian/librarian
+	access = list(access_library, access_maint_tunnels)
+	minimal_access = list(access_library)
 
 	outfit_type = /decl/hierarchy/outfit/job/librarian
 	alt_titles = list("Journalist", "Writer")
@@ -154,10 +154,10 @@
 	spawn_positions = 2
 	supervisors = "company officials and Corporate Regulations"
 	selection_color = "#515151"
-	idtype = /obj/item/weapon/card/id/civilian/internal_affairs_agent
+	idtype = /obj/item/card/id/civilian/internal_affairs_agent
 	economic_modifier = 7
-	access = list(access_lawyer, access_sec_doors, access_maint_tunnels, access_heads, access_iff_station)
-	minimal_access = list(access_lawyer, access_sec_doors, access_heads, access_iff_station)
+	access = list(access_lawyer, access_sec_doors, access_maint_tunnels, access_heads)
+	minimal_access = list(access_lawyer, access_sec_doors, access_heads)
 	minimal_player_age = 7
 
 	outfit_type = /decl/hierarchy/outfit/job/internal_affairs_agent

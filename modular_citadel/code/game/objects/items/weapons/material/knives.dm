@@ -1,56 +1,56 @@
-/obj/item/weapon/material/butterfly/plasteel
+/obj/item/material/butterfly/plasteel
   default_material = "plasteel"
 
-/obj/item/weapon/material/butterfly/durasteel
+/obj/item/material/butterfly/durasteel
   default_material = "durasteel"
 
-/obj/item/weapon/material/butterfly/switchblade/plasteel
+/obj/item/material/butterfly/switchblade/plasteel
   default_material = "plasteel"
 
-/obj/item/weapon/material/butterfly/switchblade/durasteel
+/obj/item/material/butterfly/switchblade/durasteel
   default_material = "durasteel"
 
-/obj/item/weapon/material/butterfly/boxcutter/plasteel
+/obj/item/material/butterfly/boxcutter/plasteel
   default_material = "plasteel"
 
-/obj/item/weapon/material/butterfly/boxcutter/durasteel
+/obj/item/material/butterfly/boxcutter/durasteel
   default_material = "durasteel"
 
-/obj/item/weapon/material/knife/tacknife/plasteel
+/obj/item/material/knife/tacknife/plasteel
   default_material = "plasteel"
 
-/obj/item/weapon/material/knife/tacknife/durasteel
+/obj/item/material/knife/tacknife/durasteel
   default_material = "durasteel"
 
-/obj/item/weapon/material/knife/tacknife/combatknife/plasteel
+/obj/item/material/knife/tacknife/combatknife/plasteel
   default_material = "plasteel"
 
-/obj/item/weapon/material/knife/tacknife/combatknife/durasteel
+/obj/item/material/knife/tacknife/combatknife/durasteel
   default_material = "durasteel"
 
-/obj/item/weapon/material/knife/hook/plasteel
+/obj/item/material/knife/hook/plasteel
   default_material = "plasteel"
 
-/obj/item/weapon/material/knife/hook/durasteel
+/obj/item/material/knife/hook/durasteel
   default_material = "durasteel"
 
-/obj/item/weapon/material/knife/ritual/plasteel
+/obj/item/material/knife/ritual/plasteel
   default_material = "plasteel"
 
-/obj/item/weapon/material/knife/ritual/durasteel
+/obj/item/material/knife/ritual/durasteel
   default_material = "durasteel"
 
-/obj/item/weapon/material/knife/butch/plasteel
+/obj/item/material/knife/butch/plasteel
   default_material = "plasteel"
 
-/obj/item/weapon/material/knife/butch/durasteel
+/obj/item/material/knife/butch/durasteel
   default_material = "durasteel"
 
-/obj/item/weapon/material/knife/machete/durasteel
+/obj/item/material/knife/machete/durasteel
   default_material = "durasteel"
 
-/obj/item/weapon/material/knife/machete/deluxe/durasteel
+/obj/item/material/knife/machete/deluxe/durasteel
   default_material = "durasteel"
 
-/obj/item/weapon/material/knife/tacknife/survival/durasteel
+/obj/item/material/knife/tacknife/survival/durasteel
   default_material = "durasteel"

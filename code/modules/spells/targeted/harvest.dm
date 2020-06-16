@@ -40,5 +40,5 @@
 					prey = 1
 		user << "<span class='sinister'>You warp back to Nar-Sie[prey ? " along with your prey":""].</span>"
 	else
-		user << "<span class='danger'>...something's wrong!</span>"//There shouldn't be an instance of Harvesters when Nar-Sie isn't in the world.
+		to_chat(user, "<span class='danger'>...something's wrong!</span>")//There shouldn't be an instance of Harvesters when Nar-Sie isn't in the world.
 */

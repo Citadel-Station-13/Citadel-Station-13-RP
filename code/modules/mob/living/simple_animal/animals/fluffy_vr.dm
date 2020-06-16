@@ -1,4 +1,4 @@
-/mob/living/simple_animal/fluffy
+/mob/living/simple_mob/fluffy
 	name = "Fluffy"
 	desc = "It's a pink Diyaab! It seems to be very tame and quiet."
 	icon = 'icons/mob/animal_vr.dmi'
@@ -26,9 +26,9 @@
 	emote_see = list("puffs its fur out", "shakes its fur", "stares directly at you")
 
 	meat_amount = 1
-	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat
+	meat_type = /obj/item/reagent_containers/food/snacks/meat
 
-/mob/living/simple_animal/fluffy/Life()
+/mob/living/simple_mob/fluffy/Life()
 	. = ..()
 	if(!. || ai_inactive) return
 

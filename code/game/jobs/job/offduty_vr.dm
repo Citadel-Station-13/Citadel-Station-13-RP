@@ -3,7 +3,7 @@
 //
 
 /datum/job/offduty_civilian
-	title = "Off-Duty Worker"
+	title = "Off-duty Worker"
 	latejoin_only = TRUE
 	timeoff_factor = -1
 	total_positions = -1
@@ -11,9 +11,9 @@
 	department = "Civilian"
 	supervisors = "nobody! Enjoy your time off"
 	selection_color = "#9b633e"
-	access = list(access_maint_tunnels, access_iff_station)
-	minimal_access = list(access_maint_tunnels, access_iff_station)
-	outfit_type = /decl/hierarchy/outfit/job/assistant
+	access = list(access_maint_tunnels)
+	minimal_access = list(access_maint_tunnels)
+	outfit_type = /decl/hierarchy/outfit/job/assistant/worker
 
 /datum/job/offduty_cargo
 	title = "Off-duty Cargo"
@@ -24,9 +24,9 @@
 	department = "Cargo"
 	supervisors = "nobody! Enjoy your time off"
 	selection_color = "#9b633e"
-	access = list(access_maint_tunnels, access_iff_station)
-	minimal_access = list(access_maint_tunnels, access_iff_station)
-	outfit_type = /decl/hierarchy/outfit/job/assistant
+	access = list(access_maint_tunnels)
+	minimal_access = list(access_maint_tunnels)
+	outfit_type = /decl/hierarchy/outfit/job/assistant/cargo
 
 /datum/job/offduty_engineering
 	title = "Off-duty Engineer"
@@ -37,9 +37,9 @@
 	department = "Engineering"
 	supervisors = "nobody! Enjoy your time off"
 	selection_color = "#5B4D20"
-	access = list(access_maint_tunnels, access_external_airlocks, access_construction, access_iff_station)
-	minimal_access = list(access_maint_tunnels, access_external_airlocks, access_iff_station)
-	outfit_type = /decl/hierarchy/outfit/job/assistant
+	access = list(access_maint_tunnels, access_external_airlocks, access_construction)
+	minimal_access = list(access_maint_tunnels, access_external_airlocks)
+	outfit_type = /decl/hierarchy/outfit/job/assistant/engineer
 
 /datum/job/offduty_medical
 	title = "Off-duty Medic"
@@ -50,9 +50,9 @@
 	department = "Medical"
 	supervisors = "nobody! Enjoy your time off"
 	selection_color = "#013D3B"
-	access = list(access_maint_tunnels, access_external_airlocks, access_iff_station)
-	minimal_access = list(access_maint_tunnels, access_external_airlocks, access_iff_station)
-	outfit_type = /decl/hierarchy/outfit/job/assistant
+	access = list(access_maint_tunnels, access_external_airlocks)
+	minimal_access = list(access_maint_tunnels, access_external_airlocks)
+	outfit_type = /decl/hierarchy/outfit/job/assistant/medic
 
 /datum/job/offduty_science
 	title = "Off-duty Scientist"
@@ -63,9 +63,9 @@
 	department = "Science"
 	supervisors = "nobody! Enjoy your time off"
 	selection_color = "#633D63"
-	access = list(access_maint_tunnels, access_iff_station)
-	minimal_access = list(access_maint_tunnels, access_iff_station)
-	outfit_type = /decl/hierarchy/outfit/job/assistant
+	access = list(access_maint_tunnels)
+	minimal_access = list(access_maint_tunnels)
+	outfit_type = /decl/hierarchy/outfit/job/assistant/scientist
 
 /datum/job/offduty_security
 	title = "Off-duty Officer"
@@ -76,21 +76,6 @@
 	department = "Security"
 	supervisors = "nobody! Enjoy your time off"
 	selection_color = "#601C1C"
-	access = list(access_maint_tunnels, access_iff_station)
-	minimal_access = list(access_maint_tunnels, access_iff_station)
-	outfit_type = /decl/hierarchy/outfit/job/assistant
-
-/////////// CITADEL STATION ADDITION
-/datum/job/offduty_command
-	title = "Off-duty CO"
-	latejoin_only = TRUE
-	timeoff_factor = -1
-	total_positions = -1
-	faction = "Station"
-	department = "Command"
-	supervisors = "nobody! Enjoy your time off"
-	selection_color = "#2F2F7F"
-	access = list(access_maint_tunnels, access_external_airlocks, access_iff_station)
-	minimal_access = list(access_maint_tunnels, access_external_airlocks, access_iff_station)
-	outfit_type = /decl/hierarchy/outfit/job/assistant
-//////////// END ADDITION
+	access = list(access_maint_tunnels)
+	minimal_access = list(access_maint_tunnels)
+	outfit_type = /decl/hierarchy/outfit/job/assistant/officer

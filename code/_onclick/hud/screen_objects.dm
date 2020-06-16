@@ -38,8 +38,8 @@
 
 /obj/screen/close/Click()
 	if(master)
-		if(istype(master, /obj/item/weapon/storage))
-			var/obj/item/weapon/storage/S = master
+		if(istype(master, /obj/item/storage))
+			var/obj/item/storage/S = master
 			S.close(usr)
 	return 1
 
@@ -70,7 +70,7 @@
 	name = "grab"
 
 /obj/screen/grab/Click()
-	var/obj/item/weapon/grab/G = master
+	var/obj/item/grab/G = master
 	G.s_click(src)
 	return 1
 
@@ -205,18 +205,12 @@
 				if(iscarbon(usr))
 					var/mob/living/carbon/C = usr
 					if(C.legcuffed)
-						C << "<span class='notice'>You are legcuffed! You cannot run until you get [C.legcuffed] removed!</span>"
+						to_chat(C, "<span class='notice'>You are legcuffed! You cannot run until you get [C.legcuffed] removed!</span>")
 						C.m_intent = "walk"	//Just incase
 						C.hud_used.move_intent.icon_state = "walking"
 						return 1
 				var/mob/living/L = usr
-				switch(L.m_intent)
-					if("run")
-						L.m_intent = "walk"
-						L.hud_used.move_intent.icon_state = "walking"
-					if("walk")
-						L.m_intent = "run"
-						L.hud_used.move_intent.icon_state = "running"
+				L.toggle_move_intent()
 		if("m_intent")
 			if(!usr.m_int)
 				switch(usr.m_intent)
@@ -245,7 +239,7 @@
 				if(!C.stat && !C.stunned && !C.paralysis && !C.restrained())
 					if(C.internal)
 						C.internal = null
-						C << "<span class='notice'>No longer running on internals.</span>"
+						to_chat(C, "<span class='notice'>No longer running on internals.</span>")
 						if(C.internals)
 							C.internals.icon_state = "internal0"
 					else
@@ -257,12 +251,12 @@
 								no_mask = 1
 
 						if(no_mask)
-							C << "<span class='notice'>You are not wearing a suitable mask or helmet.</span>"
+							to_chat(C, "<span class='notice'>You are not wearing a suitable mask or helmet.</span>")
 							return 1
 						else
 							var/list/nicename = null
 							var/list/tankcheck = null
-							var/breathes = "oxygen"    //default, we'll check later
+							var/breathes = /datum/gas/oxygen  //default, we'll check later
 							var/list/contents = list()
 							var/from = "on"
 
@@ -276,45 +270,45 @@
 								tankcheck = list(C.r_hand, C.l_hand, C.back)
 
 							// Rigs are a fucking pain since they keep an air tank in nullspace.
-							if(istype(C.back,/obj/item/weapon/rig))
-								var/obj/item/weapon/rig/rig = C.back
+							if(istype(C.back,/obj/item/rig))
+								var/obj/item/rig/rig = C.back
 								if(rig.air_supply && !rig.offline)
 									from = "in"
 									nicename |= "hardsuit"
 									tankcheck |= rig.air_supply
 
 							for(var/i=1, i<tankcheck.len+1, ++i)
-								if(istype(tankcheck[i], /obj/item/weapon/tank))
-									var/obj/item/weapon/tank/t = tankcheck[i]
+								if(istype(tankcheck[i], /obj/item/tank))
+									var/obj/item/tank/t = tankcheck[i]
 									if (!isnull(t.manipulated_by) && t.manipulated_by != C.real_name && findtext(t.desc,breathes))
 										contents.Add(t.air_contents.total_moles)	//Someone messed with the tank and put unknown gasses
 										continue					//in it, so we're going to believe the tank is what it says it is
 									switch(breathes)
 																		//These tanks we're sure of their contents
-										if("nitrogen") 							//So we're a bit more picky about them.
+										if(/datum/gas/nitrogen) 							//So we're a bit more picky about them.
 
-											if(t.air_contents.gas["nitrogen"] && !t.air_contents.gas["oxygen"])
-												contents.Add(t.air_contents.gas["nitrogen"])
+											if(t.air_contents.gas[/datum/gas/nitrogen] && !t.air_contents.gas[/datum/gas/oxygen])
+												contents.Add(t.air_contents.gas[/datum/gas/nitrogen])
 											else
 												contents.Add(0)
 
-										if ("oxygen")
-											if(t.air_contents.gas["oxygen"] && !t.air_contents.gas["phoron"])
-												contents.Add(t.air_contents.gas["oxygen"])
+										if (/datum/gas/oxygen)
+											if(t.air_contents.gas[/datum/gas/oxygen] && !t.air_contents.gas[/datum/gas/phoron])
+												contents.Add(t.air_contents.gas[/datum/gas/oxygen])
 											else
 												contents.Add(0)
 
 										// No races breath this, but never know about downstream servers.
-										if ("carbon dioxide")
-											if(t.air_contents.gas["carbon_dioxide"] && !t.air_contents.gas["phoron"])
-												contents.Add(t.air_contents.gas["carbon_dioxide"])
+										if (/datum/gas/carbon_dioxide)
+											if(t.air_contents.gas[/datum/gas/carbon_dioxide] && !t.air_contents.gas[/datum/gas/phoron])
+												contents.Add(t.air_contents.gas[/datum/gas/carbon_dioxide])
 											else
 												contents.Add(0)
 
 										// And here's for the Vox
-										if ("phoron")
-											if(t.air_contents.gas["phoron"] && !t.air_contents.gas["oxygen"])
-												contents.Add(t.air_contents.gas["phoron"])
+										if (/datum/gas/phoron)
+											if(t.air_contents.gas[/datum/gas/phoron] && !t.air_contents.gas[/datum/gas/oxygen])
+												contents.Add(t.air_contents.gas[/datum/gas/phoron])
 											else
 												contents.Add(0)
 
@@ -338,7 +332,7 @@
 							//We've determined the best container now we set it as our internals
 
 							if(best)
-								C << "<span class='notice'>You are now running on internals from [tankcheck[best]] [from] your [nicename[best]].</span>"
+								to_chat(C, "<span class='notice'>You are now running on internals from [tankcheck[best]] [from] your [nicename[best]].</span>")
 								C.internal = tankcheck[best]
 
 
@@ -346,20 +340,20 @@
 								if(C.internals)
 									C.internals.icon_state = "internal1"
 							else
-								C << "<span class='notice'>You don't have a[breathes=="oxygen" ? "n oxygen" : addtext(" ",breathes)] tank.</span>"
+								to_chat(C, "<span class='notice'>You don't have a[breathes=="oxygen" ? "n oxygen" : addtext(" ",breathes)] tank.</span>")
 		if("act_intent")
 			usr.a_intent_change("right")
-		if(I_HELP)
-			usr.a_intent = I_HELP
+		if(INTENT_HELP)
+			usr.a_intent = INTENT_HELP
 			usr.hud_used.action_intent.icon_state = "intent_help"
-		if(I_HURT)
-			usr.a_intent = I_HURT
+		if(INTENT_HARM)
+			usr.a_intent = INTENT_HARM
 			usr.hud_used.action_intent.icon_state = "intent_harm"
-		if(I_GRAB)
-			usr.a_intent = I_GRAB
+		if(INTENT_GRAB)
+			usr.a_intent = INTENT_GRAB
 			usr.hud_used.action_intent.icon_state = "intent_grab"
-		if(I_DISARM)
-			usr.a_intent = I_DISARM
+		if(INTENT_DISARM)
+			usr.a_intent = INTENT_DISARM
 			usr.hud_used.action_intent.icon_state = "intent_disarm"
 
 		if("pull")
@@ -386,7 +380,7 @@
 					R.hud_used.toggle_show_robot_modules()
 					return 1
 				else
-					R << "You haven't selected a module yet."
+					to_chat(R, "You haven't selected a module yet.")
 
 		if("radio")
 			if(issilicon(usr))
@@ -402,7 +396,7 @@
 					R.uneq_active()
 					R.hud_used.update_robot_modules_display()
 				else
-					R << "You haven't selected a module yet."
+					to_chat(R, "You haven't selected a module yet.")
 
 		if("module1")
 			if(istype(usr, /mob/living/silicon/robot))

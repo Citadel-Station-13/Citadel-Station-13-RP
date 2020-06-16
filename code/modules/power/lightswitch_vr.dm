@@ -58,10 +58,10 @@
 	var/x_offset = 26
 	var/y_offset = 26
 
-/obj/structure/construction/initialize(var/mapload, var/ndir, var/building = FALSE)
+/obj/structure/construction/Initialize(var/mapload, var/ndir, var/building = FALSE)
 	. = ..()
 	if(ndir)
-		set_dir(ndir)
+		setDir(ndir)
 	if(x_offset)
 		pixel_x = (dir & 3) ? 0 : (dir == EAST ? -x_offset : x_offset)
 	if(y_offset)
@@ -81,11 +81,11 @@
 /obj/structure/construction/update_icon()
 	icon_state = "[base_icon][stage]"
 
-/obj/structure/construction/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/structure/construction/attackby(obj/item/W as obj, mob/user as mob)
 	add_fingerprint(user)
-	if(istype(W, /obj/item/weapon/weldingtool))
+	if(istype(W, /obj/item/weldingtool))
 		if(stage == FRAME_UNFASTENED)
-			var/obj/item/weapon/weldingtool/WT = W
+			var/obj/item/weldingtool/WT = W
 			if(!WT.remove_fuel(0, user))
 				to_chat(user, "<span class='warning'>\The [src] must be on to complete this task.</span>")
 				return

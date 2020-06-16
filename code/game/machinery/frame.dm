@@ -42,7 +42,7 @@
 /datum/frame/frame_types/conveyor
 	name = "Conveyor"
 	frame_class = FRAME_CLASS_MACHINE
-	circuit = /obj/item/weapon/circuitboard/conveyor
+	circuit = /obj/item/circuitboard/conveyor
 
 /datum/frame/frame_types/photocopier
 	name = "Photocopier"
@@ -67,7 +67,7 @@
 /datum/frame/frame_types/mass_driver
 	name = "Mass Driver"
 	frame_class = FRAME_CLASS_MACHINE
-	circuit = /obj/item/weapon/circuitboard/mass_driver
+	circuit = /obj/item/circuitboard/mass_driver
 
 /datum/frame/frame_types/holopad
 	name = "Holopad"
@@ -87,14 +87,25 @@
 /datum/frame/frame_types/recharger
 	name = "Recharger"
 	frame_class = FRAME_CLASS_MACHINE
-	circuit = /obj/item/weapon/circuitboard/recharger
+	circuit = /obj/item/circuitboard/recharger
+	frame_size = 3
+
+/datum/frame/frame_types/cell_charger
+	name = "Heavy-Duty Cell Charger"
+	frame_class = FRAME_CLASS_MACHINE
+	circuit = /obj/item/circuitboard/cell_charger
 	frame_size = 3
 
 /datum/frame/frame_types/grinder
 	name = "Grinder"
 	frame_class = FRAME_CLASS_MACHINE
-	circuit = /obj/item/weapon/circuitboard/grinder
+	circuit = /obj/item/circuitboard/grinder
 	frame_size = 3
+
+/datum/frame/frame_types/reagent_distillery
+	name = "Distillery"
+	frame_class = FRAME_CLASS_MACHINE
+	frame_size = 4
 
 /datum/frame/frame_types/display
 	name = "Display"
@@ -129,7 +140,7 @@
 /datum/frame/frame_types/wall_charger
 	name = "Wall Charger"
 	frame_class = FRAME_CLASS_MACHINE
-	circuit = /obj/item/weapon/circuitboard/recharger/wrecharger
+	circuit = /obj/item/circuitboard/recharger/wrecharger
 	frame_size = 3
 	frame_style = FRAME_STYLE_WALL
 	x_offset = 32
@@ -180,13 +191,13 @@
 //////////////////////////////
 
 /obj/structure/frame
-	anchored = 0
+	anchored = FALSE
 	name = "frame"
 	icon = 'icons/obj/stock_parts.dmi'
 	icon_state = "machine_0"
 	var/state = FRAME_PLACED
-	var/obj/item/weapon/circuitboard/circuit = null
-	var/need_circuit = 1
+	var/obj/item/circuitboard/circuit = null
+	var/need_circuit = TRUE
 	var/datum/frame/frame_types/frame_type = new /datum/frame/frame_types/machine
 
 	var/list/components = null
@@ -195,8 +206,8 @@
 
 /obj/structure/frame/computer //used for maps
 	frame_type = new /datum/frame/frame_types/computer
-	anchored = 1
-	density = 1
+	anchored = TRUE
+	density = TRUE
 
 /obj/structure/frame/examine(mob/user)
 	..()
@@ -236,7 +247,7 @@
 		state = FRAME_PLACED
 
 		if(dir)
-			set_dir(dir)
+			setDir(dir)
 
 		if(loc)
 			src.loc = loc
@@ -248,14 +259,14 @@
 			pixel_y = (dir & 3)? (dir == NORTH ? -frame_type.y_offset : frame_type.y_offset) : 0
 
 		if(frame_type.circuit)
-			need_circuit = 0
+			need_circuit = FALSE
 			circuit = new frame_type.circuit(src)
 
 	if(frame_type.name == "Computer")
-		density = 1
+		density = TRUE
 
 	if(frame_type.frame_class == FRAME_CLASS_MACHINE)
-		density = 1
+		density = TRUE
 
 	update_icon()
 
@@ -265,7 +276,7 @@
 			to_chat(user, "<span class='notice'>You start to wrench the frame into place.</span>")
 			playsound(src.loc, P.usesound, 50, 1)
 			if(do_after(user, 20 * P.toolspeed))
-				anchored = 1
+				anchored = TRUE
 				if(!need_circuit && circuit)
 					state = FRAME_FASTENED
 					check_components()
@@ -278,11 +289,11 @@
 			playsound(src, P.usesound, 50, 1)
 			if(do_after(user, 20 * P.toolspeed))
 				to_chat(user, "<span class='notice'>You unfasten the frame.</span>")
-				anchored = 0
+				anchored = FALSE
 
-	else if(istype(P, /obj/item/weapon/weldingtool))
+	else if(istype(P, /obj/item/weldingtool))
 		if(state == FRAME_PLACED)
-			var/obj/item/weapon/weldingtool/WT = P
+			var/obj/item/weldingtool/WT = P
 			if(WT.remove_fuel(0, user))
 				playsound(src.loc, P.usesound, 50, 1)
 				if(do_after(user, 20 * P.toolspeed))
@@ -295,9 +306,9 @@
 				to_chat(user, "The welding tool must be on to complete this task.")
 				return
 
-	else if(istype(P, /obj/item/weapon/circuitboard) && need_circuit && !circuit)
+	else if(istype(P, /obj/item/circuitboard) && need_circuit && !circuit)
 		if(state == FRAME_PLACED && anchored)
-			var/obj/item/weapon/circuitboard/B = P
+			var/obj/item/circuitboard/B = P
 			var/datum/frame/frame_types/board_type = B.board_type
 			if(board_type.name == frame_type.name)
 				playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
@@ -374,7 +385,7 @@
 				var/obj/machinery/B = new circuit.build_path(src.loc)
 				B.pixel_x = pixel_x
 				B.pixel_y = pixel_y
-				B.set_dir(dir)
+				B.setDir(dir)
 				circuit.construct(B)
 				circuit.loc = null
 				B.circuit = circuit
@@ -388,7 +399,7 @@
 				var/obj/machinery/B = new circuit.build_path(src.loc)
 				B.pixel_x = pixel_x
 				B.pixel_y = pixel_y
-				B.set_dir(dir)
+				B.setDir(dir)
 				circuit.construct(B)
 				circuit.loc = null
 				B.circuit = circuit
@@ -401,7 +412,7 @@
 				var/obj/machinery/B = new circuit.build_path(src.loc)
 				B.pixel_x = pixel_x
 				B.pixel_y = pixel_y
-				B.set_dir(dir)
+				B.setDir(dir)
 				circuit.construct(B)
 				circuit.loc = null
 				B.circuit = circuit
@@ -426,7 +437,7 @@
 					to_chat(user, "<span class='notice'>There are no components to remove.</span>")
 				else
 					to_chat(user, "<span class='notice'>You remove the components.</span>")
-					for(var/obj/item/weapon/W in components)
+					for(var/obj/item/W in components)
 						W.forceMove(src.loc)
 					check_components()
 					update_desc()
@@ -569,38 +580,38 @@
 
 	update_icon()
 
-/obj/structure/frame/verb/rotate()
+/obj/structure/frame/verb/rotate_counterclockwise()
 	set name = "Rotate Frame Counter-Clockwise"
 	set category = "Object"
 	set src in oview(1)
 
 	if(usr.incapacitated())
-		return 0
+		return FALSE
 
 	if(anchored)
 		to_chat(usr, "It is fastened to the floor therefore you can't rotate it!")
-		return 0
+		return FALSE
 
-	set_dir(turn(dir, 90))
+	src.setDir(turn(src.dir, 90))
 
 	to_chat(usr, "<span class='notice'>You rotate the [src] to face [dir2text(dir)]!</span>")
 
 	return
 
 
-/obj/structure/frame/verb/revrotate()
+/obj/structure/frame/verb/rotate_clockwise()
 	set name = "Rotate Frame Clockwise"
 	set category = "Object"
 	set src in oview(1)
 
 	if(usr.incapacitated())
-		return 0
+		return FALSE
 
 	if(anchored)
 		to_chat(usr, "It is fastened to the floor therefore you can't rotate it!")
-		return 0
+		return FALSE
 
-	set_dir(turn(dir, 270))
+	src.setDir(turn(src.dir, 270))
 
 	to_chat(usr, "<span class='notice'>You rotate the [src] to face [dir2text(dir)]!</span>")
 

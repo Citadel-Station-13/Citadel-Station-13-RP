@@ -17,7 +17,7 @@
 		"plant-13"
 	)
 
-/obj/machinery/holoplant/initialize()
+/obj/machinery/holoplant/Initialize()
 	. = ..()
 	activate()
 
@@ -48,13 +48,13 @@
 	plant = prepare_icon(emagged ? "emagged" : null)
 	overlays += plant
 	set_light(2)
-	use_power = 2
+	use_power = USE_POWER_ACTIVE
 
 /obj/machinery/holoplant/proc/deactivate()
 	overlays -= plant
 	QDEL_NULL(plant)
 	set_light(0)
-	use_power = 0
+	use_power = USE_POWER_OFF
 
 /obj/machinery/holoplant/power_change()
 	..()
@@ -101,5 +101,5 @@
 
 /obj/machinery/holoplant/shipped
 	anchored = FALSE
-/obj/machinery/holoplant/shipped/initialize()
+/obj/machinery/holoplant/shipped/Initialize()
 	. = ..()

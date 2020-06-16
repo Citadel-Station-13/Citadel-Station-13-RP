@@ -6,7 +6,7 @@
 	density = 0
 	anchored = 1
 	layer = TURF_LAYER + 0.1
-	circuit = /obj/item/weapon/circuitboard/mech_recharger
+	circuit = /obj/item/circuitboard/mech_recharger
 
 	var/obj/mecha/charging = null
 	var/charge = 45
@@ -15,11 +15,11 @@
 /obj/machinery/mech_recharger/New()
 	..()
 	component_parts = list()
-	component_parts += new /obj/item/weapon/stock_parts/capacitor(src)
-	component_parts += new /obj/item/weapon/stock_parts/capacitor(src)
-	component_parts += new /obj/item/weapon/stock_parts/scanning_module(src)
-	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
-	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
+	component_parts += new /obj/item/stock_parts/capacitor(src)
+	component_parts += new /obj/item/stock_parts/capacitor(src)
+	component_parts += new /obj/item/stock_parts/scanning_module(src)
+	component_parts += new /obj/item/stock_parts/manipulator(src)
+	component_parts += new /obj/item/stock_parts/manipulator(src)
 	RefreshParts()
 
 /obj/machinery/mech_recharger/Crossed(var/obj/mecha/M)
@@ -36,13 +36,13 @@
 	..()
 	charge = 0
 	repair = -5
-	for(var/obj/item/weapon/stock_parts/P in component_parts)
-		if(istype(P, /obj/item/weapon/stock_parts/capacitor))
+	for(var/obj/item/stock_parts/P in component_parts)
+		if(istype(P, /obj/item/stock_parts/capacitor))
 			charge += P.rating * 20
-		if(istype(P, /obj/item/weapon/stock_parts/scanning_module))
+		if(istype(P, /obj/item/stock_parts/scanning_module))
 			charge += P.rating * 5
 			repair += P.rating
-		if(istype(P, /obj/item/weapon/stock_parts/manipulator))
+		if(istype(P, /obj/item/stock_parts/manipulator))
 			repair += P.rating * 2
 
 /obj/machinery/mech_recharger/process()
@@ -53,7 +53,7 @@
 		stop_charging()
 		return
 	var/done = FALSE
-	if(charging.cell)	
+	if(charging.cell)
 		var/t = min(charge, charging.cell.maxcharge - charging.cell.charge)
 		if(t > 0)
 			charging.give_power(t)

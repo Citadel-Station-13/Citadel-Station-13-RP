@@ -81,4 +81,76 @@
 	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
 	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
 
+/obj/item/clothing/under/donator/huni
+	name = "KHI Uniform"
+	desc = "Free Trade Union attire for one not specialized in a particular role. Durable and stylish."
+	icon_state = "blackuni"
+	item_state = "blackuni"
+	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
+	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
 
+/obj/item/clothing/head/donator/hberet
+	name = "USDF Beret"
+	desc = "United Sol Defense Force headwear for formal occasions, this one is quite battered, much like its wearer."
+	icon_state = "blackberet"
+	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
+	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
+	item_state_slots = list(slot_r_hand_str = "blackberet", slot_l_hand_str = "blackberet")
+	body_parts_covered = HEAD
+
+/obj/item/clothing/head/donator/woolhat //ckey vfivesix. delete this later
+	name = "Army Garrison Cap"
+	desc = "A vintage wool cap, neatly shaven down the grain, adorning a golden oak leaf on its left half."
+	icon_state = "woolhat"
+	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
+	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
+
+/obj/item/clothing/under/carcharodon
+	name = "Carcharodon Suit"
+	desc = "A hardened leather maillot meant to be worn under denim shorts and chaps. This suit was cut specifically to aid flexibility without sacrificing protection. A small tag bearing an embroidered 'K' is the only manufacturer's mark."
+	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
+	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
+	icon_state = "carcharodon"
+	item_state = "carcharodon"
+	item_icons = list(slot_r_hand_str = 'modular_citadel/icons/mob/inhands/clothing_right.dmi', slot_l_hand_str = 'modular_citadel/icons/mob/inhands/clothing_left.dmi')
+	rolled_sleeves = -1
+	rolled_down = -1
+
+/obj/item/clothing/under/carcharodon/verb/switchsprite()
+    set name = "Reconfigure Suit"
+    set category = "Object"
+    set src in usr
+    if(!istype(usr, /mob/living))
+        return
+    if(usr.stat)
+        return
+    to_chat(usr, "You rearrange the suit's configuration.")
+    if(worn_state == "carcharodon_s")
+        worn_state = "carcharodon_d_s"
+    if(worn_state == "carcharodon_d_s")
+        worn_state = "carcharodon_s"
+
+/obj/item/clothing/under/mantleofheaven
+	name = "Mantle of the Heavens"
+	desc = "A flowing nanosilk kimono, black with a pattern of swallows in silver thread. The interior is lined with a sleek orange synthetic fiber. This garment was cut specifically to maximize ventilation without sacrificing style nor mobility. A small tag bearing an embroidered 'K' is the only manufacturer's mark."
+	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
+	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
+	icon_state = "mantleofheaven"
+	item_state = "mantleofheaven"
+	item_icons = list(slot_r_hand_str = 'modular_citadel/icons/mob/inhands/clothing_right.dmi', slot_l_hand_str = 'modular_citadel/icons/mob/inhands/clothing_left.dmi')
+	rolled_sleeves = -1
+	rolled_down = -1
+
+/obj/item/clothing/under/mantleofheaven/verb/switchsprite()
+    set name = "Reconfigure Suit"
+    set category = "Object"
+    set src in usr
+    if(!istype(usr, /mob/living))
+        return
+    if(usr.stat)
+        return
+    to_chat(usr, "You rearrange the suit's configuration.")
+    if(worn_state == "mantleofheaven_s")
+        worn_state = "mantleofheaven_d_s"
+    if(worn_state == "mantleofheaven_d_s")
+        worn_state = "mantleofheaven_s"

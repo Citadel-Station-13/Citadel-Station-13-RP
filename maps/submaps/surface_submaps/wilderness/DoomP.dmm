@@ -12,9 +12,7 @@
 /turf/simulated/floor/outdoors/grass/sif/forest,
 /area/submap/DoomP)
 "ae" = (
-/mob/living/simple_animal/hostile/viscerator{
-	returns_home = 1
-	},
+/mob/living/simple_mob/mechanical/viscerator,
 /turf/template_noop,
 /area/submap/DoomP)
 "af" = (
@@ -29,9 +27,7 @@
 /turf/simulated/floor/outdoors/grass/sif/forest,
 /area/submap/DoomP)
 "ai" = (
-/mob/living/simple_animal/hostile/viscerator{
-	returns_home = 1
-	},
+/mob/living/simple_mob/mechanical/viscerator,
 /turf/simulated/floor/outdoors/grass/sif/forest,
 /area/submap/DoomP)
 "aj" = (
@@ -107,6 +103,13 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
+/turf/simulated/floor/tiled,
+/area/submap/DoomP)
+"aA" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/mob/living/simple_mob/humanoid/merc/ranged/smg/poi,
 /turf/simulated/floor/tiled,
 /area/submap/DoomP)
 "aB" = (
@@ -256,7 +259,7 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/mob/living/simple_animal/hostile/syndicate/melee/poi,
+/mob/living/simple_mob/humanoid/merc/melee/sword/poi,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/submap/DoomP)
 "aU" = (
@@ -325,7 +328,7 @@
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 8
 	},
-/mob/living/simple_animal/hostile/syndicate/ranged/laser/poi,
+/mob/living/simple_mob/humanoid/merc/ranged/laser/poi,
 /turf/simulated/floor/tiled,
 /area/submap/DoomP)
 "bh" = (
@@ -355,23 +358,23 @@
 /area/submap/DoomP)
 "bn" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/box/syndie_kit/spy,
+/obj/item/storage/box/syndie_kit/spy,
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/DoomP)
 "bo" = (
 /obj/structure/table/rack,
-/obj/item/weapon/storage/box/smokes,
+/obj/item/storage/box/smokes,
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/DoomP)
 "bp" = (
 /obj/structure/table/rack,
-/obj/item/weapon/storage/box/handcuffs,
+/obj/item/storage/box/handcuffs,
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/DoomP)
 "bq" = (
 /obj/structure/table/rack,
-/obj/item/weapon/cell/device/weapon,
-/obj/item/weapon/cell/device/weapon,
+/obj/item/cell/device/weapon,
+/obj/item/cell/device/weapon,
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/DoomP)
 "br" = (
@@ -381,14 +384,14 @@
 /area/submap/DoomP)
 "bs" = (
 /obj/structure/table/rack,
-/obj/item/weapon/gun/projectile/contender,
+/obj/item/gun/projectile/contender,
 /obj/item/ammo_magazine/s357,
 /obj/item/ammo_magazine/s357,
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/DoomP)
 "bt" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet,
+/obj/item/bedsheet,
 /obj/item/toy/plushie/spider,
 /obj/effect/floor_decal/corner/lime/full{
 	dir = 8
@@ -404,7 +407,7 @@
 /area/submap/DoomP)
 "bv" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet,
+/obj/item/bedsheet,
 /obj/effect/floor_decal/corner/lime{
 	dir = 5
 	},
@@ -412,7 +415,7 @@
 /area/submap/DoomP)
 "bw" = (
 /obj/structure/table/standard,
-/obj/item/device/flashlight/lamp,
+/obj/item/flashlight/lamp,
 /obj/effect/floor_decal/corner/lime{
 	dir = 5
 	},
@@ -524,16 +527,9 @@
 /obj/structure/lattice,
 /turf/simulated/floor/outdoors/grass/sif/forest,
 /area/submap/DoomP)
-"ta" = (
-/mob/living/simple_animal/hostile/syndicate/melee/poi,
+"bL" = (
+/mob/living/simple_mob/humanoid/merc/melee/sword/poi,
 /turf/simulated/floor/tiled/techfloor,
-/area/submap/DoomP)
-"ND" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/mob/living/simple_animal/hostile/syndicate/ranged/poi,
-/turf/simulated/floor/tiled,
 /area/submap/DoomP)
 
 (1,1,1) = {"
@@ -2054,7 +2050,7 @@ ad
 ad
 ad
 at
-ND
+aA
 aO
 aN
 be
@@ -2184,7 +2180,7 @@ aN
 be
 at
 bp
-ta
+bL
 at
 ac
 af

@@ -12,10 +12,10 @@
 	icon_keyboard = "tech_key"
 	icon_screen = "request"
 	light_color = "#315ab4"
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 250
 	active_power_usage = 500
-	circuit = /obj/item/weapon/circuitboard/roguezones
+	circuit = /obj/item/circuitboard/roguezones
 
 	var/debug = 0
 	var/debug_scans = 0
@@ -23,7 +23,7 @@
 	var/legacy_zone = 0 //Disable scanning and whatnot.
 	var/obj/machinery/computer/shuttle_control/belter/shuttle_control
 
-/obj/machinery/computer/roguezones/initialize()
+/obj/machinery/computer/roguezones/Initialize()
 	. = ..()
 	shuttle_control = locate(/obj/machinery/computer/shuttle_control/belter)
 
@@ -79,7 +79,7 @@
 	// Permit emergency recall of the shuttle if its stranded in a zone with just dead people.
 	data["can_recall_shuttle"] = (shuttle_control && shuttle_control.z == BELT_Z && !curZoneOccupied)
 
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "zone_console.tmpl", src.name, 600, 400)
 		ui.set_initial_data(data)
@@ -100,7 +100,7 @@
 				failsafe_shuttle_recall()
 
 	src.add_fingerprint(usr)
-	GLOB.nanomanager.update_uis(src)
+	SSnanoui.update_uis(src)
 
 /obj/machinery/computer/roguezones/proc/scan_for_new_zone()
 	if(scanning) return
@@ -117,7 +117,7 @@
 	var/datum/rogue/zonemaster/ZM_target = rm_controller.prepare_new_zone()
 
 	//Update shuttle destination.
-	var/datum/shuttle/ferry/S = shuttle_controller.shuttles["Belter"]
+	var/datum/shuttle/ferry/S = SSshuttle.shuttles["Belter"]
 	S.area_offsite = ZM_target.myshuttle
 
 	//Re-enable shuttle.
@@ -146,10 +146,10 @@
 	if(rm_controller.current_zone && rm_controller.current_zone.is_occupied())
 		return // Not usable if shuttle is in occupied zone
 	// Okay do it
-	var/datum/shuttle/ferry/S = shuttle_controller.shuttles["Belter"]
+	var/datum/shuttle/ferry/S = SSshuttle.shuttles["Belter"]
 	S.launch(usr)
 
-/obj/item/weapon/circuitboard/roguezones
+/obj/item/circuitboard/roguezones
 	name = T_BOARD("asteroid belt scanning computer")
 	build_path = /obj/machinery/computer/roguezones
 	origin_tech = list(TECH_DATA = 3, TECH_BLUESPACE = 1)
@@ -159,7 +159,7 @@
 #undef TRANSIT_Z
 #undef BELT_Z
 
-/obj/item/weapon/paper/rogueminer
+/obj/item/paper/rogueminer
 	name = "R-38 Scanner Console Guide"
 	info = {"<h4>Getting Started</h4>
 	Congratulations, your station has purchased the R-38 industrial asteroid belt scanner!<br>

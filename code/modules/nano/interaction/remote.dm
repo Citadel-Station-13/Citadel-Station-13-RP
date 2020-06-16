@@ -18,7 +18,7 @@
 	src.remoter_state = null
 
 	// Force an UI update before we go, ensuring that any windows we may have opened for the remote target closes.
-	GLOB.nanomanager.update_uis(remote_target.nano_container())
+	SSnanoui.update_uis(remote_target.nano_container())
 	remote_target = null
 	return ..()
 
@@ -27,7 +27,7 @@
 		return STATUS_CLOSE
 
 	if(src_object != remote_target)
-		error("remote - Unexpected src_object: Expected '[remote_target]'/[remote_target.type], was '[src_object]'/[src_object.type]")
+		log_world("remote - Unexpected src_object: Expected '[remote_target]'/[remote_target.type], was '[src_object]'/[src_object.type]")
 
 	// This checks if src_object is powered, etc.
 	// The interactive state is otherwise simplistic and only returns STATUS_INTERACTIVE and never checks distances, etc.

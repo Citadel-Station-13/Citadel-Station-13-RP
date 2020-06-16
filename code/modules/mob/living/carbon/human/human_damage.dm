@@ -17,7 +17,7 @@
 	health = getMaxHealth() - getOxyLoss() - getToxLoss() - getCloneLoss() - total_burn - total_brute
 
 	//TODO: fix husking
-	if( ((getMaxHealth() - total_burn) < config.health_threshold_dead) && stat == DEAD)
+	if( ((getMaxHealth() - total_burn) < config_legacy.health_threshold_dead) && stat == DEAD)
 		ChangeToHusk()
 	return
 
@@ -124,7 +124,7 @@
 			if(!isnull(M.incoming_healing_percent))
 				amount *= M.incoming_healing_percent
 		heal_overall_damage(-amount, 0, include_robo)
-	BITSET(hud_updateflag, HEALTH_HUD)
+	ENABLE_BITFIELD(hud_updateflag, HEALTH_HUD)
 
 //'include_robo' only applies to healing, for legacy purposes, as all damage typically hurts both types of organs
 /mob/living/carbon/human/adjustFireLoss(var/amount,var/include_robo)
@@ -142,7 +142,7 @@
 			if(!isnull(M.incoming_healing_percent))
 				amount *= M.incoming_healing_percent
 		heal_overall_damage(0, -amount, include_robo)
-	BITSET(hud_updateflag, HEALTH_HUD)
+	ENABLE_BITFIELD(hud_updateflag, HEALTH_HUD)
 
 /mob/living/carbon/human/proc/adjustBruteLossByPart(var/amount, var/organ_name, var/obj/damage_source = null)
 	amount = amount*species.brute_mod
@@ -164,7 +164,7 @@
 			//if you don't want to heal robot organs, they you will have to check that yourself before using this proc.
 			O.heal_damage(-amount, 0, internal=0, robo_repair=(O.robotic >= ORGAN_ROBOT))
 
-	BITSET(hud_updateflag, HEALTH_HUD)
+	ENABLE_BITFIELD(hud_updateflag, HEALTH_HUD)
 
 /mob/living/carbon/human/proc/adjustFireLossByPart(var/amount, var/organ_name, var/obj/damage_source = null)
 	amount = amount*species.burn_mod
@@ -186,7 +186,7 @@
 			//if you don't want to heal robot organs, they you will have to check that yourself before using this proc.
 			O.heal_damage(0, -amount, internal=0, robo_repair=(O.robotic >= ORGAN_ROBOT))
 
-	BITSET(hud_updateflag, HEALTH_HUD)
+	ENABLE_BITFIELD(hud_updateflag, HEALTH_HUD)
 
 /mob/living/carbon/human/Stun(amount)
 	if(HULK in mutations)	return
@@ -252,22 +252,22 @@
 			if (candidates.len)
 				var/obj/item/organ/external/O = pick(candidates)
 				O.mutate()
-				src << "<span class = 'notice'>Something is not right with your [O.name]...</span>"
+				to_chat(src, "<span class = 'notice'>Something is not right with your [O.name]...</span>")
 				return
 	else
 		if (prob(heal_prob))
 			for (var/obj/item/organ/external/O in organs)
 				if (O.status & ORGAN_MUTATED)
 					O.unmutate()
-					src << "<span class = 'notice'>Your [O.name] is shaped normally again.</span>"
+					to_chat(src, "<span class = 'notice'>Your [O.name] is shaped normally again.</span>")
 					return
 
 	if (getCloneLoss() < 1)
 		for (var/obj/item/organ/external/O in organs)
 			if (O.status & ORGAN_MUTATED)
 				O.unmutate()
-				src << "<span class = 'notice'>Your [O.name] is shaped normally again.</span>"
-	BITSET(hud_updateflag, HEALTH_HUD)
+				to_chat(src, "<span class = 'notice'>Your [O.name] is shaped normally again.</span>")
+	ENABLE_BITFIELD(hud_updateflag, HEALTH_HUD)
 
 // Defined here solely to take species flags into account without having to recast at mob/living level.
 /mob/living/carbon/human/getOxyLoss()
@@ -333,7 +333,7 @@
 	var/obj/item/organ/external/picked = pick(parts)
 	if(picked.heal_damage(brute,burn))
 		UpdateDamageIcon()
-		BITSET(hud_updateflag, HEALTH_HUD)
+		ENABLE_BITFIELD(hud_updateflag, HEALTH_HUD)
 	updatehealth()
 
 
@@ -349,7 +349,7 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 	var/obj/item/organ/external/picked = pick(parts)
 	if(picked.take_damage(brute,burn,sharp,edge))
 		UpdateDamageIcon()
-		BITSET(hud_updateflag, HEALTH_HUD)
+		ENABLE_BITFIELD(hud_updateflag, HEALTH_HUD)
 	updatehealth()
 
 
@@ -372,7 +372,7 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 
 		parts -= picked
 	updatehealth()
-	BITSET(hud_updateflag, HEALTH_HUD)
+	ENABLE_BITFIELD(hud_updateflag, HEALTH_HUD)
 	if(update)	UpdateDamageIcon()
 
 // damage MANY external organs, in random order
@@ -392,7 +392,7 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 
 		parts -= picked
 	updatehealth()
-	BITSET(hud_updateflag, HEALTH_HUD)
+	ENABLE_BITFIELD(hud_updateflag, HEALTH_HUD)
 	if(update)	UpdateDamageIcon()
 
 
@@ -419,7 +419,7 @@ This function restores all organs.
 	if(istype(E, /obj/item/organ/external))
 		if (E.heal_damage(brute, burn))
 			UpdateDamageIcon()
-			BITSET(hud_updateflag, HEALTH_HUD)
+			ENABLE_BITFIELD(hud_updateflag, HEALTH_HUD)
 	else
 		return 0
 	return
@@ -434,7 +434,7 @@ This function restores all organs.
 
 /mob/living/carbon/human/apply_damage(var/damage = 0, var/damagetype = BRUTE, var/def_zone = null, var/blocked = 0, var/soaked = 0, var/sharp = 0, var/edge = 0, var/obj/used_weapon = null)
 	if(Debug2)
-		world.log << "## DEBUG: human/apply_damage() was called on [src], with [damage] damage, an armor value of [blocked], and a soak value of [soaked]."
+		log_world("## DEBUG: human/apply_damage() was called on [src], with [damage] damage, an armor value of [blocked], and a soak value of [soaked].")
 
 	var/obj/item/organ/external/organ = null
 	if(isorgan(def_zone))
@@ -447,7 +447,7 @@ This function restores all organs.
 	if((damagetype != BRUTE) && (damagetype != BURN))
 		if(damagetype == HALLOSS)
 			if((damage > 25 && prob(20)) || (damage > 50 && prob(60)))
-				if(organ && organ.organ_can_feel_pain() && !isbelly(loc) && !istype(loc, /obj/item/device/dogborg/sleeper)) //VOREStation Add
+				if(organ && organ.organ_can_feel_pain() && !isbelly(loc) && !istype(loc, /obj/item/dogborg/sleeper)) //VOREStation Add
 					emote("scream")
 		..(damage, damagetype, def_zone, blocked, soaked)
 		return 1
@@ -471,7 +471,7 @@ This function restores all organs.
 		damage -= soaked
 
 	if(Debug2)
-		world.log << "## DEBUG: [src] was hit for [damage]."
+		log_world("## DEBUG: [src] was hit for [damage].")
 
 	switch(damagetype)
 		if(BRUTE)
@@ -501,5 +501,5 @@ This function restores all organs.
 
 	// Will set our damageoverlay icon to the next level, which will then be set back to the normal level the next mob.Life().
 	updatehealth()
-	BITSET(hud_updateflag, HEALTH_HUD)
+	ENABLE_BITFIELD(hud_updateflag, HEALTH_HUD)
 	return 1

@@ -23,7 +23,7 @@ obj/machinery/airlock_sensor/phoron/process()
 	if(on)
 		var/datum/gas_mixture/air_sample = return_air()
 		var/pressure = round(air_sample.return_pressure(), 0.1)
-		var/phoron = ("phoron" in air_sample.gas) ? round(air_sample.gas["phoron"], 0.1) : 0
+		var/phoron = (/datum/gas/phoron in air_sample.gas) ? round(air_sample.gas[/datum/gas/phoron], 0.1) : 0
 
 		if(abs(pressure - previousPressure) > 0.1 || previousPressure == null || abs(phoron - previousPhoron) > 0.1 || previousPhoron == null)
 			var/datum/signal/signal = new
@@ -50,7 +50,7 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 	var/frequency = 0
 	var/datum/radio_frequency/radio_connection
 
-/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/initialize()
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/Initialize()
 	. = ..()
 	if(frequency)
 		set_frequency(frequency)
@@ -91,13 +91,35 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 	radio_connection.post_signal(src, signal, radio_filter = RADIO_AIRLOCK)
 	return 1
 
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock		//Special scrubber with bonus inbuilt heater
+	volume_rate = 40000
+	active_power_usage = 2000
+	var/target_temp = T20C
+	var/heating_power = 150000
+
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock/process()
+	..()
+
+	if(on)
+		var/datum/gas_mixture/env = loc.return_air()
+		if(env && abs(env.temperature - target_temp) > 0.1)
+			var/datum/gas_mixture/removed = env.remove_ratio(0.99)
+			if(removed)
+				var/heat_transfer = removed.get_thermal_energy_change(target_temp)
+				removed.add_thermal_energy(min(heating_power,heat_transfer))
+				env.merge(removed)
+
+		var/transfer_moles = min(1, volume_rate/env.volume)*env.total_moles
+		for(var/i=1 to 3)	//Scrubs 4 times as fast
+			scrub_gas(src, scrubbing_gas, env, air_contents, transfer_moles, active_power_usage)
+
 //
 // PHORON LOCK CONTROLLER
 //
 /obj/machinery/embedded_controller/radio/airlock/phoron
 	var/tag_scrubber
 
-/obj/machinery/embedded_controller/radio/airlock/phoron/initialize()
+/obj/machinery/embedded_controller/radio/airlock/phoron/Initialize()
 	. = ..()
 	program = new/datum/computer/file/embedded_program/airlock/phoron(src)
 
@@ -116,7 +138,7 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 		"processing" = program.memory["processing"]
 	)
 
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "phoron_airlock_console.tmpl", name, 470, 290)
 		ui.set_initial_data(data)
@@ -171,11 +193,11 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 /datum/computer/file/embedded_program/airlock/phoron/New(var/obj/machinery/embedded_controller/M)
 	..(M)
 	memory["chamber_sensor_phoron"] = 0
-	memory["external_sensor_pressure"] = VIRGO3B_ONE_ATMOSPHERE
-	memory["external_sensor_phoron"] = VIRGO3B_MOL_PHORON
+	memory["external_sensor_pressure"] = 82.4
+	memory["external_sensor_phoron"] = 72.2
 	memory["internal_sensor_phoron"] = 0
 	memory["scrubber_status"] = "unknown"
-	memory["target_phoron"] = 0.25
+	memory["target_phoron"] = 0.1
 	memory["secure"] = 1
 
 	if (istype(M, /obj/machinery/embedded_controller/radio/airlock/phoron))	//if our controller is an airlock controller than we can auto-init our tags

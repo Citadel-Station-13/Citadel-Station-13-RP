@@ -2,7 +2,7 @@
 // Size Gun
 //
 
-/obj/item/weapon/gun/energy/sizegun
+/obj/item/gun/energy/sizegun
 	name = "size gun" //I have no idea why this was called shrink ray when this increased and decreased size.
 	desc = "A highly advanced ray gun with a knob on the side to adjust the size you desire. Warning: Do not insert into mouth."
 	icon = 'icons/obj/gun_vr.dmi'
@@ -22,33 +22,33 @@
 			fire_sound		= 'sound/weapons/pulse3.ogg'
 		))
 
-/obj/item/weapon/gun/energy/sizegun/New()
-	..()
-	verbs += /obj/item/weapon/gun/energy/sizegun/proc/select_size
+/obj/item/gun/energy/sizegun/Initialize(mapload)
+	. = ..()
+	verbs += /obj/item/gun/energy/sizegun/proc/select_size
 
-/obj/item/weapon/gun/energy/sizegun/attack_self(mob/user)
+/obj/item/gun/energy/sizegun/attack_self(mob/user)
 	. = ..()
 	select_size()
 
-/obj/item/weapon/gun/energy/sizegun/consume_next_projectile()
+/obj/item/gun/energy/sizegun/consume_next_projectile()
 	. = ..()
 	var/obj/item/projectile/beam/sizelaser/G = .
 	if(istype(G))
 		G.set_size = size_set_to
 
-/obj/item/weapon/gun/energy/sizegun/proc/select_size()
+/obj/item/gun/energy/sizegun/proc/select_size()
 	set name = "Select Size"
 	set category = "Object"
 	set src in view(1)
 
 	var/size_select = input("Put the desired size (25-200%)", "Set Size", size_set_to*100) as num
 	if(size_select>200 || size_select<25)
-		usr << "<span class='notice'>Invalid size.</span>"
+		to_chat(usr, "<span class='notice'>Invalid size.</span>")
 		return
 	size_set_to = (size_select/100)
 	usr << "<span class='notice'>You set the size to [size_select]%</span>"
 
-/obj/item/weapon/gun/energy/sizegun/examine(mob/user)
+/obj/item/gun/energy/sizegun/examine(mob/user)
 	..()
 	var/size_examine = (size_set_to*100)
 	user << "<span class='info'>It is currently set at [size_examine]%</span>"
@@ -65,9 +65,9 @@
 	check_armour = "laser"
 	var/set_size = 1 //Let's default to 100%
 
-	muzzle_type = /obj/effect/projectile/xray/muzzle
-	tracer_type = /obj/effect/projectile/xray/tracer
-	impact_type = /obj/effect/projectile/xray/impact
+	muzzle_type = /obj/effect/projectile/muzzle/xray
+	tracer_type = /obj/effect/projectile/tracer/xray
+	impact_type = /obj/effect/projectile/impact/xray
 
 	on_hit(var/atom/target)
 		var/mob/living/M = target
@@ -82,3 +82,11 @@
 			H.updateicon()
 		else
 			return 1
+
+
+/obj/item/projectile/beam/sizelaser/shrink
+	set_size = 0.5 //50% of current size
+
+
+/obj/item/projectile/beam/sizelaser/grow
+	set_size = 2.0 //200% of current size

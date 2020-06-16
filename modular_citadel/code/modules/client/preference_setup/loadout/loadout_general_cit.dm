@@ -10,4 +10,4 @@
 	for(var/tball in typesof(/obj/item/toy/tennis) - typesof(/obj/item/toy/tennis/rainbow))
 		var/obj/item/toy/tennis/ball_type = tball
 		tennis_balls[initial(ball_type.name)] = ball_type
-	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(tennis_balls))
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(tennis_balls, /proc/cmp_text_asc, TRUE))

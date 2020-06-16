@@ -27,12 +27,12 @@ var/datum/antagonist/xenos/xenomorphs
 		xenomorphs = src
 
 /datum/antagonist/xenos/attempt_random_spawn()
-	if(config.aliens_allowed) ..()
+	if(config_legacy.aliens_allowed) ..()
 
 /datum/antagonist/xenos/proc/get_vents()
 	var/list/vents = list()
 	for(var/obj/machinery/atmospherics/unary/vent_pump/temp_vent in machines)
-		if(!temp_vent.welded && temp_vent.network && temp_vent.loc.z in using_map.station_levels)
+		if(!temp_vent.welded && temp_vent.network && temp_vent.loc.z in GLOB.using_map.station_levels)
 			if(temp_vent.network.normal_members.len > 50)
 				vents += temp_vent
 	return vents

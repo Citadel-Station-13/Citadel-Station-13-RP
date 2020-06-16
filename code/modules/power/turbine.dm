@@ -28,7 +28,7 @@
 	icon_state = "compressor"
 	anchored = TRUE
 	density = TRUE
-	circuit = /obj/item/weapon/circuitboard/machine/power_compressor
+	circuit = /obj/item/circuitboard/machine/power_compressor
 	var/obj/machinery/power/turbine/turbine
 	var/datum/gas_mixture/gas_contained
 	var/turf/simulated/inturf
@@ -46,7 +46,7 @@
 	icon_state = "turbine"
 	anchored = TRUE
 	density = TRUE
-	circuit = /obj/item/weapon/circuitboard/machine/power_turbine
+	circuit = /obj/item/circuitboard/machine/power_turbine
 	var/obj/machinery/compressor/compressor
 	var/turf/simulated/outturf
 	var/lastgen
@@ -57,25 +57,25 @@
 	desc = "A computer to remotely control a gas turbine."
 	icon_keyboard = "tech_key"
 	icon_screen = "turbinecomp"
-	circuit = /obj/item/weapon/circuitboard/turbine_control
+	circuit = /obj/item/circuitboard/turbine_control
 	var/obj/machinery/compressor/compressor
 	var/list/obj/machinery/door/blast/doors
 	var/id = 0
 	var/door_status = 0
 
-/obj/item/weapon/circuitboard/machine/power_compressor
+/obj/item/circuitboard/machine/power_compressor
 	name = T_BOARD("power compressor")
 	build_path = /obj/machinery/compressor
 	board_type = new /datum/frame/frame_types/machine
 	origin_tech = list(TECH_MATERIAL = 4, TECH_POWER = 2)
-	req_components = list(/obj/item/stack/cable_coil = 5, /obj/item/weapon/stock_parts/manipulator = 6)
+	req_components = list(/obj/item/stack/cable_coil = 5, /obj/item/stock_parts/manipulator = 6)
 
-/obj/item/weapon/circuitboard/machine/power_turbine
+/obj/item/circuitboard/machine/power_turbine
 	name = T_BOARD("power turbine")
 	build_path = /obj/machinery/power/turbine
 	board_type = new /datum/frame/frame_types/machine
 	origin_tech = list(TECH_ENGINEERING = 2, TECH_POWER = 4)
-	req_components = list(/obj/item/stack/cable_coil = 5, /obj/item/weapon/stock_parts/capacitor = 6)
+	req_components = list(/obj/item/stack/cable_coil = 5, /obj/item/stock_parts/capacitor = 6)
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Compressor
@@ -85,7 +85,7 @@
 #define COMPFRICTION 5e5
 #define COMPSTARTERLOAD 2800
 
-/obj/machinery/compressor/initialize()
+/obj/machinery/compressor/Initialize()
 	. = ..()
 	default_apply_parts()
 	gas_contained = new()
@@ -95,10 +95,8 @@
 		stat |= BROKEN
 
 // When anchored, don't let air past us.
-/obj/machinery/compressor/CanPass(atom/movable/mover, turf/target, height=1.5, air_group = 0)
-	if(!height || air_group)
-		return !anchored
-	return !density
+/obj/machinery/compressor/CanZASPass(turf/T, is_zone)
+	return anchored ? ATMOS_PASS_NO : ATMOS_PASS_YES
 
 /obj/machinery/compressor/proc/locate_machinery()
 	if(turbine)
@@ -109,7 +107,7 @@
 
 /obj/machinery/compressor/RefreshParts()
 	var/E = 0
-	for(var/obj/item/weapon/stock_parts/manipulator/M in component_parts)
+	for(var/obj/item/stock_parts/manipulator/M in component_parts)
 		E += M.rating
 	efficiency = E / 6
 
@@ -124,14 +122,14 @@
 		return
 	if(default_deconstruction_crowbar(user, W))
 		return
-	if(istype(W, /obj/item/device/multitool))
+	if(istype(W, /obj/item/multitool))
 		var/new_ident = input("Enter a new ident tag.", name, comp_id) as null|text
 		if(new_ident && user.Adjacent(src))
 			comp_id = new_ident
 		return
 	return ..()
 
-/obj/machinery/compressor/default_unfasten_wrench(var/mob/user, var/obj/item/weapon/W, var/time = 20)
+/obj/machinery/compressor/default_unfasten_wrench(var/mob/user, var/obj/item/W, var/time = 20)
 	if((. = ..()))
 		turbine = null
 		if(anchored)
@@ -194,7 +192,7 @@
 #define TURBGENQ 100000
 #define TURBGENG 0.8
 
-/obj/machinery/power/turbine/initialize()
+/obj/machinery/power/turbine/Initialize()
 	. = ..()
 	default_apply_parts()
 	// The outlet is pointed at the direction of the turbine component
@@ -205,7 +203,7 @@
 
 /obj/machinery/power/turbine/RefreshParts()
 	var/P = 0
-	for(var/obj/item/weapon/stock_parts/capacitor/C in component_parts)
+	for(var/obj/item/stock_parts/capacitor/C in component_parts)
 		P += C.rating
 	productivity = P / 6
 
@@ -229,7 +227,7 @@
 		return
 	return ..()
 
-/obj/machinery/power/turbine/default_unfasten_wrench(var/mob/user, var/obj/item/weapon/W, var/time = 20)
+/obj/machinery/power/turbine/default_unfasten_wrench(var/mob/user, var/obj/item/W, var/time = 20)
 	if((. = ..()))
 		compressor = null
 		if(anchored)
@@ -318,7 +316,7 @@
 // Turbine Computer
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/obj/machinery/computer/turbine_computer/initialize()
+/obj/machinery/computer/turbine_computer/Initialize()
 	. = ..()
 	return INITIALIZE_HINT_LATELOAD
 
@@ -337,7 +335,7 @@
 			doors += P
 
 /obj/machinery/computer/turbine_computer/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/device/multitool))
+	if(istype(W, /obj/item/multitool))
 		var/new_ident = input("Enter a new ident tag.", name, id) as null|text
 		if(new_ident && user.Adjacent(src))
 			id = new_ident
@@ -365,7 +363,7 @@
 		data["temp"] = compressor.gas_contained.temperature
 
 	// update the ui if it exists, returns null if no ui is passed/found
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		// the ui does not exist, so we'll create a new() one
         // for a list of parameters and their descriptions see the code docs in \code\modules\nano\nanoui.dm

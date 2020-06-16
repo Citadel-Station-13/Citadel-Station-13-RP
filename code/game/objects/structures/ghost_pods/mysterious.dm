@@ -15,7 +15,7 @@
 /obj/structure/ghost_pod/manual/corgi/create_occupant(var/mob/M)
 	lightning_strike(get_turf(src), cosmetic = TRUE)
 	density = FALSE
-	var/mob/living/simple_animal/corgi/R = new(get_turf(src))
+	var/mob/living/simple_mob/animal/passive/dog/corgi/R = new(get_turf(src))
 	if(M.mind)
 		M.mind.transfer_to(R)
 	to_chat(M, "<span class='notice'>You are a <b>Corgi</b>! Woof!</span>")
@@ -39,7 +39,7 @@
 
 /obj/structure/ghost_pod/manual/cursedblade/create_occupant(var/mob/M)
 	density = FALSE
-	var/obj/item/weapon/melee/cursedblade/R = new(get_turf(src))
+	var/obj/item/melee/cursedblade/R = new(get_turf(src))
 	to_chat(M, "<span class='notice'>You are a <b>Cursed Sword</b>, discovered by a hapless explorer. \
 	You were once an explorer yourself, when one day you discovered a strange sword made from a red crystal. As soon as you touched it,\
 	your body was reduced to ashes and your soul was cursed to remain trapped in the blade forever. \

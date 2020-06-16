@@ -118,8 +118,8 @@ var/global/datum/controller/plants/plant_controller // Set in New().
 
 	if(survive_on_station)
 		if(seed.consume_gasses)
-			seed.consume_gasses["phoron"] = null
-			seed.consume_gasses["carbon_dioxide"] = null
+			seed.consume_gasses[/datum/gas/phoron] = null
+			seed.consume_gasses[/datum/gas/carbon_dioxide] = null
 		if(seed.chems && !isnull(seed.chems["pacid"]))
 			seed.chems["pacid"] = null // Eating through the hull will make these plants completely inviable, albeit very dangerous.
 			seed.chems -= null // Setting to null does not actually remove the entry, which is weird.
@@ -131,7 +131,7 @@ var/global/datum/controller/plants/plant_controller // Set in New().
 		seed.set_trait(TRAIT_HIGHKPA_TOLERANCE,200)
 	return seed
 
-/datum/controller/plants/proc/process()
+/datum/controller/plants/process()
 	processing = 1
 	spawn(0)
 		set background = 1

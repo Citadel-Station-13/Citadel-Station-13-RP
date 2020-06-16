@@ -16,14 +16,14 @@ var/bomb_set
 	var/code = ""
 	var/yes_code = 0.0
 	var/safety = 1.0
-	var/obj/item/weapon/disk/nuclear/auth = null
+	var/obj/item/disk/nuclear/auth = null
 	var/list/wires = list()
 	var/light_wire
 	var/safety_wire
 	var/timing_wire
 	var/removal_stage = 0 // 0 is no removal, 1 is covers removed, 2 is covers open,
 	                      // 3 is sealant open, 4 is unwrenched, 5 is removed from bolts.
-	use_power = 0
+	use_power = USE_POWER_OFF
 
 /obj/machinery/nuclearbomb/New()
 	..()
@@ -54,7 +54,7 @@ var/bomb_set
 				attack_hand(M)
 	return
 
-/obj/machinery/nuclearbomb/attackby(obj/item/weapon/O as obj, mob/user as mob)
+/obj/machinery/nuclearbomb/attackby(obj/item/O as obj, mob/user as mob)
 	if(O.is_screwdriver())
 		playsound(src, O.usesound, 50, 1)
 		add_fingerprint(user)
@@ -78,13 +78,13 @@ var/bomb_set
 			flick("nuclearbombc", src)
 
 		return
-	if(O.is_wirecutter() || istype(O, /obj/item/device/multitool))
+	if(O.is_wirecutter() || istype(O, /obj/item/multitool))
 		if(opened == 1)
 			nukehack_win(user)
 		return
 
 	if(extended)
-		if(istype(O, /obj/item/weapon/disk/nuclear))
+		if(istype(O, /obj/item/disk/nuclear))
 			usr.drop_item()
 			O.loc = src
 			auth = O
@@ -94,9 +94,9 @@ var/bomb_set
 	if(anchored)
 		switch(removal_stage)
 			if(0)
-				if(istype(O,/obj/item/weapon/weldingtool))
+				if(istype(O,/obj/item/weldingtool))
 
-					var/obj/item/weapon/weldingtool/WT = O
+					var/obj/item/weldingtool/WT = O
 					if(!WT.isOn()) return
 					if(WT.get_fuel() < 5) // uses up 5 fuel.
 						to_chat(user, "<span class='warning'>You need more fuel to complete this task.</span>")
@@ -122,9 +122,9 @@ var/bomb_set
 				return
 
 			if(2)
-				if(istype(O,/obj/item/weapon/weldingtool))
+				if(istype(O,/obj/item/weldingtool))
 
-					var/obj/item/weapon/weldingtool/WT = O
+					var/obj/item/weldingtool/WT = O
 					if(!WT.isOn()) return
 					if(WT.get_fuel() < 5) // uses up 5 fuel.
 						to_chat(user, "<span class='warning'>You need more fuel to complete this task.</span>")
@@ -239,7 +239,7 @@ obj/machinery/nuclearbomb/proc/nukehack_win(mob/user as mob)
 		if(href_list["act"])
 			var/temp_wire = href_list["wire"]
 			if(href_list["act"] == "pulse")
-				if(!istype(usr.get_active_hand(), /obj/item/device/multitool))
+				if(!istype(usr.get_active_hand(), /obj/item/multitool))
 					to_chat(usr, "You need a multitool!")
 				else
 					if(wires[temp_wire])
@@ -286,7 +286,7 @@ obj/machinery/nuclearbomb/proc/nukehack_win(mob/user as mob)
 				auth = null
 			else
 				var/obj/item/I = usr.get_active_hand()
-				if(istype(I, /obj/item/weapon/disk/nuclear))
+				if(istype(I, /obj/item/disk/nuclear))
 					usr.drop_item()
 					I.loc = src
 					auth = I
@@ -372,34 +372,34 @@ obj/machinery/nuclearbomb/proc/nukehack_win(mob/user as mob)
 	if(!lighthack)
 		icon_state = "nuclearbomb3"
 	playsound(src,'sound/machines/Alarm.ogg',100,0,5)
-	if(ticker && ticker.mode)
-		ticker.mode.explosion_in_progress = 1
+	if(SSticker && SSticker.mode)
+		SSticker.mode.explosion_in_progress = 1
 	sleep(100)
 
 	var/off_station = 0
 	var/turf/bomb_location = get_turf(src)
-	if(bomb_location && (bomb_location.z in using_map.station_levels))
+	if(bomb_location && (bomb_location.z in GLOB.using_map.station_levels))
 		if((bomb_location.x < (128-NUKERANGE)) || (bomb_location.x > (128+NUKERANGE)) || (bomb_location.y < (128-NUKERANGE)) || (bomb_location.y > (128+NUKERANGE)))
 			off_station = 1
 	else
 		off_station = 2
 
-	if(ticker)
-		if(ticker.mode && ticker.mode.name == "Mercenary")
+	if(SSticker)
+		if(SSticker.mode && SSticker.mode.name == "Mercenary")
 			var/obj/machinery/computer/shuttle_control/multi/syndicate/syndie_location = locate(/obj/machinery/computer/shuttle_control/multi/syndicate)
 			if(syndie_location)
-				ticker.mode:syndies_didnt_escape = (syndie_location.z > 1 ? 0 : 1)	//muskets will make me change this, but it will do for now
-			ticker.mode:nuke_off_station = off_station
-		ticker.station_explosion_cinematic(off_station,null)
-		if(ticker.mode)
-			ticker.mode.explosion_in_progress = 0
-			world << "<B>The station was destoyed by the nuclear blast!</B>"
+				SSticker.mode:syndies_didnt_escape = (syndie_location.z > 1 ? 0 : 1)	//muskets will make me change this, but it will do for now
+			SSticker.mode:nuke_off_station = off_station
+		SSticker.station_explosion_cinematic(off_station,null)
+		if(SSticker.mode)
+			SSticker.mode.explosion_in_progress = 0
+			to_chat(world, "<B>The station was destoyed by the nuclear blast!</B>")
 
-			ticker.mode.station_was_nuked = (off_station<2)	//offstation==1 is a draw. the station becomes irradiated and needs to be evacuated.
+			SSticker.mode.station_was_nuked = (off_station<2)	//offstation==1 is a draw. the station becomes irradiated and needs to be evacuated.
 															//kinda shit but I couldn't  get permission to do what I wanted to do.
 
-			if(!ticker.mode.check_finished())//If the mode does not deal with the nuke going off so just reboot because everyone is stuck as is
-				world << "<B>Resetting in 30 seconds!</B>"
+			if(!SSticker.mode.check_finished())//If the mode does not deal with the nuke going off so just reboot because everyone is stuck as is
+				to_chat(world, "<B>Resetting in 30 seconds!</B>")
 
 				feedback_set_details("end_error","nuke - unhandled ending")
 
@@ -411,16 +411,16 @@ obj/machinery/nuclearbomb/proc/nukehack_win(mob/user as mob)
 				return
 	return
 
-/obj/item/weapon/disk/nuclear/New()
+/obj/item/disk/nuclear/New()
 	..()
 	nuke_disks |= src
 
-/obj/item/weapon/disk/nuclear/Destroy()
+/obj/item/disk/nuclear/Destroy()
 	if(!nuke_disks.len && blobstart.len > 0)
-		var/obj/D = new /obj/item/weapon/disk/nuclear(pick(blobstart))
+		var/obj/D = new /obj/item/disk/nuclear(pick(blobstart))
 		message_admins("[src], the last authentication disk, has been destroyed. Spawning [D] at ([D.x], [D.y], [D.z]).")
 		log_game("[src], the last authentication disk, has been destroyed. Spawning [D] at ([D.x], [D.y], [D.z]).")
 	..()
 
-/obj/item/weapon/disk/nuclear/touch_map_edge()
+/obj/item/disk/nuclear/touch_map_edge()
 	qdel(src)

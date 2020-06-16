@@ -3,7 +3,6 @@
 	desc = "Some rods. Can be used for building, or something."
 	singular_name = "metal rod"
 	icon_state = "rods"
-	flags = CONDUCT
 	w_class = ITEMSIZE_NORMAL
 	force = 9.0
 	throwforce = 15.0
@@ -40,8 +39,8 @@ var/global/list/datum/stack_recipe/rods_recipes = list( \
 	new/datum/stack_recipe("catwalk", /obj/structure/catwalk, 2, time = 80, one_per_turf = 1, on_floor = 1))
 
 /obj/item/stack/rods/attackby(obj/item/W as obj, mob/user as mob)
-	if (istype(W, /obj/item/weapon/weldingtool))
-		var/obj/item/weapon/weldingtool/WT = W
+	if (istype(W, /obj/item/weldingtool))
+		var/obj/item/weldingtool/WT = W
 
 		if(get_amount() < 2)
 			to_chat(user, "<span class='warning'>You need at least two rods to do this.</span>")
@@ -60,7 +59,7 @@ var/global/list/datum/stack_recipe/rods_recipes = list( \
 				user.put_in_hands(new_item)
 		return
 
-	if (istype(W, /obj/item/weapon/tape_roll))
+	if (istype(W, /obj/item/duct_tape_roll))
 		var/obj/item/stack/medical/splint/ghetto/new_splint = new(get_turf(user))
 		new_splint.add_fingerprint(user)
 

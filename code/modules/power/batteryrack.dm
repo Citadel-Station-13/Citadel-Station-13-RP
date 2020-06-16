@@ -9,7 +9,7 @@
 	input_level_max = 0
 	output_level_max = 0
 	icon_state = "gsmes"
-	circuit = /obj/item/weapon/circuitboard/batteryrack
+	circuit = /obj/item/circuitboard/batteryrack
 	var/cells_amount = 0
 	var/capacitors_amount = 0
 	var/global/list/br_cache = null
@@ -22,9 +22,9 @@
 //Maybe this should be moved up to obj/machinery
 /obj/machinery/power/smes/batteryrack/proc/add_parts()
 	component_parts = list()
-	component_parts += new /obj/item/weapon/cell/high
-	component_parts += new /obj/item/weapon/cell/high
-	component_parts += new /obj/item/weapon/cell/high
+	component_parts += new /obj/item/cell/high
+	component_parts += new /obj/item/cell/high
+	component_parts += new /obj/item/cell/high
 	return
 
 
@@ -32,14 +32,14 @@
 	capacitors_amount = 0
 	cells_amount = 0
 	var/max_level = 0 //for both input and output
-	for(var/obj/item/weapon/stock_parts/capacitor/CP in component_parts)
+	for(var/obj/item/stock_parts/capacitor/CP in component_parts)
 		max_level += CP.rating
 		capacitors_amount++
 	input_level_max = 50000 + max_level * 20000
 	output_level_max = 50000 + max_level * 20000
 
 	var/C = 0
-	for(var/obj/item/weapon/cell/PC in component_parts)
+	for(var/obj/item/cell/PC in component_parts)
 		C += PC.maxcharge
 		cells_amount++
 	capacity = C * 40   //Basic cells are such crap. Hyper cells needed to get on normal SMES levels.
@@ -75,24 +75,26 @@
 	return round(4 * charge/(capacity ? capacity : 5e6))
 
 
-/obj/machinery/power/smes/batteryrack/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob) //these can only be moved by being reconstructed, solves having to remake the powernet.
+/obj/machinery/power/smes/batteryrack/attackby(var/obj/item/W as obj, var/mob/user as mob) //these can only be moved by being reconstructed, solves having to remake the powernet.
 	..() //SMES attackby for now handles screwdriver, cable coils and wirecutters, no need to repeat that here
 	if(open_hatch)
-
 		if(W.is_crowbar())
-			if(charge < (capacity/100))
-				if(output_attempt || input_attempt)
-					to_chat(user, "<span class='warning'>Turn off \the [src] before dismantling it.</span>")
-					return
-				if(terminal)
-					to_chat(user, "<span class='warning'>You have to disassemble the terminal first!</span>")
-					return
-				return dismantle()
+			if (charge < (capacity / 100))
+				if (!output_attempt && !input_attempt)
+					playsound(src, W.usesound, 50, 1)
+					var/obj/structure/frame/M = new /obj/structure/frame(src.loc)
+					M.frame_type = "machine"
+					M.state = 2
+					M.icon_state = "machine_1"
+					for(var/obj/I in component_parts)
+						I.loc = src.loc
+					qdel(src)
+					return 1
+				else
+					to_chat(user, "<span class='warning'>Turn off the [src] before dismantling it.</span>")
 			else
-				to_chat(user, "<span class='warning'>Better let \the [src] discharge before dismantling it.</span>")
-				return
-
-		else if ((istype(W, /obj/item/weapon/stock_parts/capacitor) && (capacitors_amount < 5)) || (istype(W, /obj/item/weapon/cell) && (cells_amount < 5)))
+				to_chat(user, "<span class='warning'>Better let [src] discharge before dismantling it.</span>")
+		else if ((istype(W, /obj/item/stock_parts/capacitor) && (capacitors_amount < 5)) || (istype(W, /obj/item/cell) && (cells_amount < 5)))
 			if (charge < (capacity / 100))
 				if (!output_attempt && !input_attempt)
 					user.drop_item()
@@ -115,15 +117,15 @@
 /obj/machinery/power/smes/batteryrack/makeshift
 	name = "makeshift PSU"
 	desc = "A rack of batteries connected by a mess of wires posing as a PSU."
-	circuit = /obj/item/weapon/circuitboard/ghettosmes
+	circuit = /obj/item/circuitboard/ghettosmes
 	var/overcharge_percent = 0
 
 
 /obj/machinery/power/smes/batteryrack/makeshift/add_parts()
 	component_parts = list()
-	component_parts += new /obj/item/weapon/cell/high
-	component_parts += new /obj/item/weapon/cell/high
-	component_parts += new /obj/item/weapon/cell/high
+	component_parts += new /obj/item/cell/high
+	component_parts += new /obj/item/cell/high
+	component_parts += new /obj/item/cell/high
 	return
 
 

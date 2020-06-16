@@ -48,12 +48,11 @@
 	shuttle_name = "Excursion Shuttle"
 	destinations = list(/datum/shuttle_destination/excursion/virgo2orbit, /datum/shuttle_destination/excursion/aerostat)
 
-/obj/away_mission_init/aerostat/initialize()
+/obj/away_mission_init/aerostat/Initialize()
 	/*seed_submaps(list(Z_LEVEL_AEROSTAT_SURFACE), 50, /area/tether_away/aerostat/surface/unexplored, /datum/map_template/virgo2)
 	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_AEROSTAT_SURFACE, world.maxx, world.maxy)
 	new /datum/random_map/noise/ore/virgo2(null, 1, 1, Z_LEVEL_AEROSTAT_SURFACE, 64, 64)*/
 
-	initialized = TRUE
 	return INITIALIZE_HINT_QDEL
 
 /obj/tether_away_spawner/aerostat_inside
@@ -62,12 +61,12 @@
 	atmos_comp = TRUE
 	prob_spawn = 100
 	prob_fall = 50
-	guard = 20
+	//guard = 20
 	mobs_to_pick_from = list(
-		/mob/living/simple_animal/hostile/hivebot/range = 3,
-		/mob/living/simple_animal/hostile/hivebot/range/ion = 3,
-		/mob/living/simple_animal/hostile/hivebot/range/laser = 3,
-		/mob/living/simple_animal/hostile/corrupthound = 1
+		/mob/living/simple_mob/mechanical/hivebot/ranged_damage/basic = 3,
+		/mob/living/simple_mob/mechanical/hivebot/ranged_damage/ion = 1,
+		/mob/living/simple_mob/mechanical/hivebot/ranged_damage/laser = 3,
+		/mob/living/simple_mob/vore/aggressive/corrupthound = 1
 	)
 
 /obj/tether_away_spawner/aerostat_surface
@@ -75,12 +74,12 @@
 	faction = "aerostat_surface"
 	atmos_comp = TRUE
 	prob_spawn = 100
-	prob_fall = 50
-	guard = 20
+	prob_fall = 30
+	//guard = 20
 	mobs_to_pick_from = list(
-		/mob/living/simple_animal/hostile/jelly = 3,
-		/mob/living/simple_animal/hostile/viscerator = 2,
-		/mob/living/simple_animal/hostile/corrupthound = 1
+		/mob/living/simple_mob/animal/space/jelly = 1,
+		/mob/living/simple_mob/mechanical/viscerator = 1,
+		/mob/living/simple_mob/vore/aggressive/corrupthound = 1
 	)
 
 /obj/structure/old_roboprinter
@@ -101,27 +100,9 @@
 
 // -- Turfs -- //
 
-//Atmosphere properties
-#define VIRGO2_ONE_ATMOSPHERE	312.1 //kPa
-#define VIRGO2_AVG_TEMP			612 //kelvin
-
-#define VIRGO2_PER_N2		0.10 //percent
-#define VIRGO2_PER_O2		0.03
-#define VIRGO2_PER_N2O		0.00 //Currently no capacity to 'start' a turf with this. See turf.dm
-#define VIRGO2_PER_CO2		0.87
-#define VIRGO2_PER_PHORON	0.00
-
-//Math only beyond this point
-#define VIRGO2_MOL_PER_TURF		(VIRGO2_ONE_ATMOSPHERE*CELL_VOLUME/(VIRGO2_AVG_TEMP*R_IDEAL_GAS_EQUATION))
-#define VIRGO2_MOL_N2			(VIRGO2_MOL_PER_TURF * VIRGO2_PER_N2)
-#define VIRGO2_MOL_O2			(VIRGO2_MOL_PER_TURF * VIRGO2_PER_O2)
-#define VIRGO2_MOL_N2O			(VIRGO2_MOL_PER_TURF * VIRGO2_PER_N2O)
-#define VIRGO2_MOL_CO2			(VIRGO2_MOL_PER_TURF * VIRGO2_PER_CO2)
-#define VIRGO2_MOL_PHORON		(VIRGO2_MOL_PER_TURF * VIRGO2_PER_PHORON)
-
 //Turfmakers
-#define VIRGO2_SET_ATMOS	nitrogen=VIRGO2_MOL_N2;oxygen=VIRGO2_MOL_O2;carbon_dioxide=VIRGO2_MOL_CO2;phoron=VIRGO2_MOL_PHORON;temperature=VIRGO2_AVG_TEMP
-#define VIRGO2_TURF_CREATE(x)	x/virgo2/nitrogen=VIRGO2_MOL_N2;x/virgo2/oxygen=VIRGO2_MOL_O2;x/virgo2/carbon_dioxide=VIRGO2_MOL_CO2;x/virgo2/phoron=VIRGO2_MOL_PHORON;x/virgo2/temperature=VIRGO2_AVG_TEMP;x/virgo2/color="#eacd7c"
+#define VIRGO2_SET_ATMOS	initial_gas_mix=ATMOSPHERE_ID_VIRGO2
+#define VIRGO2_TURF_CREATE(x)	x/virgo2/initial_gas_mix=ATMOSPHERE_ID_VIRGO2;x/virgo2/color="#eacd7c"
 
 /turf/unsimulated/floor/sky/virgo2_sky
 	name = "virgo 2 atmosphere"
@@ -129,7 +110,7 @@
 	color = "#eacd7c"
 	VIRGO2_SET_ATMOS
 
-/turf/unsimulated/floor/sky/virgo2_sky/initialize()
+/turf/unsimulated/floor/sky/virgo2_sky/Initialize()
 	skyfall_levels = list(z+1)
 	. = ..()
 
@@ -152,7 +133,7 @@ VIRGO2_TURF_CREATE(/turf/simulated/mineral)
 	if(mineral)
 		return
 
-	var/mineral_name = pickweight(list("uranium" = 5, "platinum" = 10, "hematite" = 5, "carbon" = 5, "diamond" = 10, "gold" = 20, "silver" = 20, "phoron" = 5))
+	var/mineral_name = pickweight(list("marble" = 5, "uranium" = 5, "platinum" = 10, "hematite" = 5, "carbon" = 5, "diamond" = 10, "gold" = 20, "silver" = 20, "lead" = 10, "verdantium" = 5))
 
 	if(mineral_name && (mineral_name in ore_data))
 		mineral = ore_data[mineral_name]
@@ -167,6 +148,7 @@ VIRGO2_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
 
 /area/shuttle/excursion/away_aerostat
 	name = "\improper Excursion Shuttle - Aerostat"
+	base_turf = /turf/unsimulated/floor/sky/virgo2_sky
 
 // The aerostat shuttle
 /area/shuttle/aerostat/docked
@@ -187,6 +169,14 @@ VIRGO2_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
 
 /area/tether_away/aerostat/inside
 	name = "\improper Away Mission - Aerostat Inside"
+	icon_state = "crew_quarters"
+	base_turf = /turf/simulated/floor/plating/virgo2
+	requires_power = TRUE
+	dynamic_lighting = TRUE
+	forced_ambience = list('sound/ambience/tension/tension.ogg', 'sound/ambience/tension/argitoth.ogg', 'sound/ambience/tension/burning_terror.ogg')
+
+/area/tether_away/aerostat/solars
+	name = "\improper Away Mission - Aerostat Solars"
 	icon_state = "crew_quarters"
 	base_turf = /turf/simulated/floor/plating/virgo2
 	dynamic_lighting = TRUE

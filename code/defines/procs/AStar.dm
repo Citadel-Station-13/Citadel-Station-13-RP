@@ -39,7 +39,7 @@ length to avoid portals or something i guess?? Not that they're counted right no
 
 PriorityQueue
 	var/list/queue
-	var/proc/comparison_function
+	var/comparison_function
 
 	New(compare)
 		queue = list()

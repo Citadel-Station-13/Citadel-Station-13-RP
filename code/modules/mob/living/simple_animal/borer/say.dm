@@ -1,4 +1,4 @@
-/mob/living/simple_animal/borer/say(var/message)
+/mob/living/simple_mob/animal/borer/say(var/message)
 
 	message = sanitize(message)
 	message = capitalize(message)
@@ -14,7 +14,7 @@
 
 	if (src.client)
 		if(client.prefs.muted & MUTE_IC)
-			src << "<font color='red'>You cannot speak in IC (muted).</font>"
+			to_chat(src, "<font color='red'>You cannot speak in IC (muted).</font>")
 			return
 
 	if (copytext(message, 1, 2) == "*")
@@ -27,11 +27,11 @@
 
 	if(!host)
 		//TODO: have this pick a random mob within 3 tiles to speak for the borer.
-		src << "You have no host to speak to."
+		to_chat(src, "You have no host to speak to.")
 		return //No host, no audible speech.
 
-	src << "You drop words into [host]'s mind: \"[message]\""
-	host << "Your own thoughts speak: \"[message]\""
+	to_chat(src, "You drop words into [host]'s mind: \"[message]\"")
+	to_chat(host, "Your own thoughts speak: \"[message]\"")
 
 	for (var/mob/M in player_list)
 		if (istype(M, /mob/new_player))

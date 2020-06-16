@@ -11,12 +11,12 @@
 	density = TRUE
 	anchored = TRUE
 
-	var/obj/item/weapon/card/id/inserted_id	// Inserted ID card, for points
+	var/obj/item/card/id/inserted_id	// Inserted ID card, for points
 
 	var/obj/machinery/mineral/processing_unit/machine = null
 	var/show_all_ores = FALSE
 
-/obj/machinery/mineral/processing_unit_console/initialize()
+/obj/machinery/mineral/processing_unit_console/Initialize()
 	. = ..()
 	src.machine = locate(/obj/machinery/mineral/processing_unit) in range(5, src)
 	if (machine)
@@ -36,7 +36,7 @@
 	interact(user)
 
 /obj/machinery/mineral/processing_unit_console/attackby(var/obj/item/I, var/mob/user)
-	if(istype(I, /obj/item/weapon/card/id))
+	if(istype(I, /obj/item/card/id))
 		if(!powered())
 			return
 		if(!inserted_id && user.unEquip(I))
@@ -69,9 +69,11 @@
 
 	for(var/ore in machine.ores_processing)
 
-		if(!machine.ores_stored[ore] && !show_all_ores) continue
-		var/ore/O = ore_data[ore]
-		if(!O) continue
+		if(!machine.ores_stored[ore] && !show_all_ores)
+			continue
+		var/datum/ore/O = ore_data[ore]
+		if(!O)
+			continue
 		dat += "<tr><td width = 40><b>[capitalize(O.display_name)]</b></td><td width = 30>[machine.ores_stored[ore]]</td><td width = 100>"
 		if(machine.ores_processing[ore])
 			switch(machine.ores_processing[ore])
@@ -133,7 +135,7 @@
 				else
 					to_chat(usr, "<span class='warning'>Required access not found.</span>")
 		else if(href_list["choice"] == "insert")
-			var/obj/item/weapon/card/id/I = usr.get_active_hand()
+			var/obj/item/card/id/I = usr.get_active_hand()
 			if(istype(I))
 				usr.drop_item()
 				I.forceMove(src)
@@ -154,6 +156,8 @@
 	density = TRUE
 	anchored = TRUE
 	light_range = 3
+	speed_process = TRUE
+	var/tick = 0
 	var/obj/machinery/mineral/input = null
 	var/obj/machinery/mineral/output = null
 	var/obj/machinery/mineral/console = null
@@ -171,10 +175,13 @@
 		"phoron" = 15,
 		"silver" = 16,
 		"gold" = 18,
+		"marble" = 20,
 		"uranium" = 30,
 		"diamond" = 50,
 		"platinum" = 40,
-		"mhydrogen" = 40)
+		"lead" = 40,
+		"mhydrogen" = 40,
+		"verdantium" = 60)
 
 /obj/machinery/mineral/processing_unit/New()
 	..()
@@ -186,13 +193,13 @@
 
 	// TODO - Initializing this here is insane. Put it in global lists init or something. ~Leshana
 	if(!ore_data || !ore_data.len)
-		for(var/oretype in typesof(/ore)-/ore)
-			var/ore/OD = new oretype()
+		for(var/oretype in typesof(/datum/ore)-/datum/ore)
+			var/datum/ore/OD = new oretype()
 			ore_data[OD.name] = OD
 			ores_processing[OD.name] = 0
 			ores_stored[OD.name] = 0
 
-/obj/machinery/mineral/processing_unit/initialize()
+/obj/machinery/mineral/processing_unit/Initialize()
 	. = ..()
 	// TODO - Eschew input/output machinery and just use dirs ~Leshana
 	//Locate our output and input machinery.
@@ -213,10 +220,11 @@
 		return
 
 	var/list/tick_alloys = list()
+	tick++
 
 	//Grab some more ore to process this tick.
 	for(var/i = 0,i<sheets_per_tick,i++)
-		var/obj/item/weapon/ore/O = locate() in input.loc
+		var/obj/item/ore/O = locate() in input.loc
 		if(!O) break
 		if(!isnull(ores_stored[O.material]))
 			ores_stored[O.material]++
@@ -234,7 +242,7 @@
 
 		if(ores_stored[metal] > 0 && ores_processing[metal] != 0)
 
-			var/ore/O = ore_data[metal]
+			var/datum/ore/O = ore_data[metal]
 
 			if(!O) continue
 
@@ -273,10 +281,10 @@
 
 			else if(ores_processing[metal] == PROCESS_COMPRESS && O.compresses_to) //Compressing.
 
-				var/can_make = Clamp(ores_stored[metal],0,sheets_per_tick-sheets)
+				var/can_make = clamp(ores_stored[metal],0,sheets_per_tick-sheets)
 				if(can_make%2>0) can_make--
 
-				var/material/M = get_material_by_name(O.compresses_to)
+				var/datum/material/M = get_material_by_name(O.compresses_to)
 
 				if(!istype(M) || !can_make || ores_stored[metal] < 1)
 					continue
@@ -288,9 +296,9 @@
 
 			else if(ores_processing[metal] == PROCESS_SMELT && O.smelts_to) //Smelting.
 
-				var/can_make = Clamp(ores_stored[metal],0,sheets_per_tick-sheets)
+				var/can_make = clamp(ores_stored[metal],0,sheets_per_tick-sheets)
 
-				var/material/M = get_material_by_name(O.smelts_to)
+				var/datum/material/M = get_material_by_name(O.smelts_to)
 				if(!istype(M) || !can_make || ores_stored[metal] < 1)
 					continue
 
@@ -301,11 +309,13 @@
 			else
 				ores_stored[metal]--
 				sheets++
-				new /obj/item/weapon/ore/slag(output.loc)
+				new /obj/item/ore/slag(output.loc)
 		else
 			continue
 
-	console.updateUsrDialog()
+	if(!(tick % 10))
+		console.updateUsrDialog()
+		tick = 0
 
 #undef PROCESS_NONE
 #undef PROCESS_SMELT

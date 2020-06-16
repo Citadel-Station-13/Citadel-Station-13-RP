@@ -1,3 +1,4 @@
+
 /*********************************
 For the main html chat area
 *********************************/
@@ -10,6 +11,8 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 //On client, created on login
 /datum/chatOutput
 	var/client/owner	 //client ref
+	var/total_checks = 0
+	var/last_check = 0
 	var/loaded       = TRUE // Has the client loaded the browser output area?
 	var/list/messageQueue //If they haven't loaded chat, this is where messages will go until they do
 	var/cookieSent   = FALSE // Has the client sent a cookie for analysis
@@ -107,7 +110,7 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 	sendClientData()
 
 	//do not convert to to_chat()
-	owner << "<span class=\"userdanger\">Failed to load fancy chat, reverting to old chat. Certain features won't work.</span>"
+	to_chat(owner, "<span class=\"userdanger\">Failed to load fancy chat, reverting to old chat. Certain features won't work.</span>")
 
 /datum/chatOutput/proc/showChat()
 	winset(owner, "output", "is-visible=false")
@@ -145,6 +148,18 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 
 //Called by client, sent data to investigate (cookie history so far)
 /datum/chatOutput/proc/analyzeClientData(cookie = "")
+	//Spam check
+	if(world.time  >  last_check + (3 SECONDS))
+		last_check = world.time
+		total_checks = 0
+
+	total_checks += 1
+
+	if(total_checks > SPAM_TRIGGER_AUTOMUTE)
+		message_admins("[key_name(owner)] kicked for goonchat topic spam")
+		qdel(owner)
+		return
+
 	if(!cookie)
 		return
 
@@ -153,13 +168,22 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 		if (connData && islist(connData) && connData.len > 0 && connData["connData"])
 			connectionHistory = connData["connData"] //lol fuck
 			var/list/found = new()
-			for(var/i in connectionHistory.len to 1 step -1)
+			if(connectionHistory.len > 5)
+				message_admins("[key_name(src.owner)] was kicked for an invalid ban cookie)")
+				qdel(owner)
+				return
+
+			for(var/i in min(connectionHistory.len, 5) to 1 step -1)
+				if(QDELETED(owner))
+					//he got cleaned up before we were done
+					return
 				var/list/row = src.connectionHistory[i]
 				if (!row || row.len < 3 || (!row["ckey"] || !row["compid"] || !row["ip"])) //Passed malformed history object
 					return
 				if (world.IsBanned(row["ckey"], row["compid"], row["ip"], real_bans_only=TRUE))
 					found = row
 					break
+				CHECK_TICK
 
 			//Uh oh this fucker has a history of playing on a banned account!!
 			if (found.len > 0)
@@ -177,7 +201,6 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 /datum/chatOutput/proc/debug(error)
 	log_world("\[[time2text(world.realtime, "YYYY-MM-DD hh:mm:ss")]\] Client: [(src.owner.key ? src.owner.key : src.owner)] triggered JS error: [error]")
 
-/*
 //Global chat procs
 /proc/to_chat(target, message, handle_whitespace=TRUE)
 	if(!target)
@@ -206,7 +229,9 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 
 	if(islist(target))
 		// Do the double-encoding outside the loop to save nanoseconds
+#ifdef GOONCHAT_ENABLED
 		var/twiceEncoded = url_encode(url_encode(message))
+#endif
 		for(var/I in target)
 			var/client/C = CLIENT_FROM_VAR(I) //Grab us a client if possible
 
@@ -216,6 +241,7 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 			//Send it to the old style output window.
 			SEND_TEXT(C, original_message)
 
+#ifdef GOONCHAT_ENABLED
 			if(!C.chatOutput || C.chatOutput.broken) // A player who hasn't updated his skin file.
 				continue
 
@@ -225,6 +251,7 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 				continue
 
 			C << output(twiceEncoded, "browseroutput:output")
+#endif
 	else
 		var/client/C = CLIENT_FROM_VAR(target) //Grab us a client if possible
 
@@ -234,6 +261,7 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 		//Send it to the old style output window.
 		SEND_TEXT(C, original_message)
 
+#ifdef GOONCHAT_ENABLED
 		if(!C.chatOutput || C.chatOutput.broken) // A player who hasn't updated his skin file.
 			return
 
@@ -244,4 +272,4 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 
 		// url_encode it TWICE, this way any UTF-8 characters are able to be decoded by the Javascript.
 		C << output(url_encode(url_encode(message)), "browseroutput:output")
-*/
+#endif

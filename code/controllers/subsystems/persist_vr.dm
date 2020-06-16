@@ -16,7 +16,7 @@ SUBSYSTEM_DEF(persist)
 
 // Do PTO Accruals
 /datum/controller/subsystem/persist/proc/update_department_hours(var/resumed = FALSE)
-	if(!config.time_off)
+	if(!config_legacy.time_off)
 		return
 
 	establish_db_connection()
@@ -52,7 +52,7 @@ SUBSYSTEM_DEF(persist)
 			dept_hours[J.department] = wait_in_hours
 
 		//Cap it
-		dept_hours[J.department] = min(config.pto_cap, dept_hours[J.department])
+		dept_hours[J.department] = min(config_legacy.pto_cap, dept_hours[J.department])
 
 
 		// Okay we figured it out, lets update database!
@@ -72,10 +72,10 @@ SUBSYSTEM_DEF(persist)
 	if(R) // We found someone with a record.
 		var/recorded_rank = R.fields["real_rank"]
 		if(recorded_rank)
-			. = job_master.GetJob(recorded_rank)
+			. = SSjobs.GetJob(recorded_rank)
 			if(.) return
 
 	// They have a custom title, aren't crew, or someone deleted their record, so we need a fallback method.
 	// Let's check the mind.
 	if(M.mind && M.mind.assigned_role)
-		. = job_master.GetJob(M.mind.assigned_role)
+		. = SSjobs.GetJob(M.mind.assigned_role)

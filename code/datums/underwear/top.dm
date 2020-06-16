@@ -63,3 +63,45 @@
 	name = "Striped Bra"
 	icon_state = "striped_bra"
 	has_color = TRUE
+
+/datum/category_item/underwear/top/binder
+	name = "Binder"
+	icon_state = "binder_s"
+
+/datum/category_item/underwear/top/straplessbinder
+	name = "Binder Strapless"
+	icon_state = "straplessbinder_s"
+
+/datum/category_item/underwear/top/chastbra
+	name = "Chastity Bra"
+	icon_state = "chastbra"
+
+/datum/category_item/underwear/top/pasties
+	name = "Pasties"
+	icon_state = "pasties"
+	has_color = TRUE
+
+/datum/category_item/underwear/top/pasties_alt
+	name = "Pasties alt, X"
+	icon_state = "pasties_alt"
+	has_color = TRUE
+
+/datum/category_item/underwear/top/babydoll_lingerie
+	name = "Babydoll Lingerie"
+	icon_state = "babydoll_lingerie"
+	has_color = TRUE
+
+/datum/category_item/underwear/top/cfishnet
+	name = "Dyed Fishnet top"
+	icon_state = "c_fishnet_body"
+	has_color = TRUE
+
+/datum/category_item/underwear/top/cfishnet_sleeve
+	name = "Dyed Fishnet with sleeves"
+	icon_state = "c_fishnet_sleeves"
+	has_color = TRUE
+
+/datum/category_item/underwear/top/cfishnet_glove
+	name = "Dyed Fishnet with gloves"
+	icon_state = "c_fishnet_gloves"
+	has_color = TRUE

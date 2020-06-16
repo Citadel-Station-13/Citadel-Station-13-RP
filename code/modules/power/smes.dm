@@ -11,8 +11,8 @@
 	icon_state = "smes"
 	density = 1
 	anchored = 1
-	use_power = 0
-	circuit = /obj/item/weapon/circuitboard/smes
+	use_power = USE_POWER_OFF
+	circuit = /obj/item/circuitboard/smes
 
 	var/capacity = 5e6 // maximum charge
 	var/charge = 1e6 // actual charge
@@ -230,7 +230,7 @@
 	to_chat(user, "<span class='notice'>You start adding cable to the [src].</span>")
 	if(do_after(user, 50))
 		terminal = new /obj/machinery/power/terminal(tempLoc)
-		terminal.set_dir(tempDir)
+		terminal.setDir(tempDir)
 		terminal.master = src
 		terminal.connect_to_network()
 		return 0
@@ -252,7 +252,7 @@
 	ui_interact(user)
 
 
-/obj/machinery/power/smes/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
+/obj/machinery/power/smes/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if(W.is_screwdriver())
 		if(!open_hatch)
 			open_hatch = 1
@@ -298,7 +298,7 @@
 				playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
 				if(do_after(user, 50 * W.toolspeed))
 					if (prob(50) && electrocute_mob(usr, terminal.powernet, terminal))
-						var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+						var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 						s.set_up(5, 1, src)
 						s.start()
 						building_terminal = 0
@@ -345,7 +345,7 @@
 		data["outputting"] = 0			// smes is not outputting
 
 	// update the ui if it exists, returns null if no ui is passed/found
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		// the ui does not exist, so we'll create a new() one
         // for a list of parameters and their descriptions see the code docs in \code\modules\nano\nanoui.dm
@@ -408,12 +408,12 @@
 
 
 /obj/machinery/power/smes/proc/ion_act()
-	if(src.z in using_map.station_levels)
+	if(src.z in GLOB.using_map.station_levels)
 		if(prob(1)) //explosion
 			for(var/mob/M in viewers(src))
 				M.show_message("<font color='red'>The [src.name] is making strange noises!</font>", 3, "<font color='red'>You hear sizzling electronics.</font>", 2)
 			sleep(10*pick(4,5,6,7,10,14))
-			var/datum/effect/effect/system/smoke_spread/smoke = new /datum/effect/effect/system/smoke_spread()
+			var/datum/effect_system/smoke_spread/smoke = new /datum/effect_system/smoke_spread()
 			smoke.set_up(3, 0, src.loc)
 			smoke.attach(src)
 			smoke.start()
@@ -421,7 +421,7 @@
 			qdel(src)
 			return
 		if(prob(15)) //Power drain
-			var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 			s.set_up(3, 1, src)
 			s.start()
 			if(prob(25))
@@ -433,7 +433,7 @@
 			else
 				emp_act(4)
 		if(prob(5)) //smoke only
-			var/datum/effect/effect/system/smoke_spread/smoke = new /datum/effect/effect/system/smoke_spread()
+			var/datum/effect_system/smoke_spread/smoke = new /datum/effect_system/smoke_spread()
 			smoke.set_up(3, 0, src.loc)
 			smoke.attach(src)
 			smoke.start()
@@ -480,17 +480,17 @@
 /obj/machinery/power/smes/buildable/main/process()
 
 	percentfull = 100.0*charge/capacity
-	
+
 	if(percentfull > 30)
 		solarcheck1 = FALSE
 		solarcheck2 = FALSE
 		solarcheck3 = FALSE
-		
+
 	if(percentfull > 20)
 		enginecheck1 = FALSE
 		enginecheck2 = FALSE
 		enginecheck3 = FALSE
-		
+
 	if(percentfull < 30 && percentfull > 20  && charge < lastcharge)
 		switch(checkselect)
 			if(1)

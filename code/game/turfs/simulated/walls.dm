@@ -5,7 +5,8 @@
 	icon_state = "generic"
 	opacity = 1
 	density = 1
-	blocks_air = 1
+	blocks_air = TRUE
+//	air_status = AIR_STATUS_BLOCK
 	thermal_conductivity = WALL_HEAT_TRANSFER_COEFFICIENT
 	heat_capacity = 312500 //a little over 5 cm thick , 312500 for 1 m by 2.5 m by 0.25 m plasteel wall
 
@@ -14,9 +15,9 @@
 	var/global/damage_overlays[16]
 	var/active
 	var/can_open = 0
-	var/material/girder_material
-	var/material/material
-	var/material/reinf_material
+	var/datum/material/girder_material
+	var/datum/material/material
+	var/datum/material/reinf_material
 	var/last_state
 	var/construction_stage
 
@@ -27,8 +28,8 @@
 	for(var/obj/O in src)
 		O.hide(1)
 
-/turf/simulated/wall/New(var/newloc, var/materialtype, var/rmaterialtype, var/girdertype)
-	..(newloc)
+/turf/simulated/wall/Initialize(mapload, materialtype, rmaterialtype, girdertype)
+	. = ..()
 	icon_state = "blank"
 	if(!materialtype)
 		materialtype = DEFAULT_WALL_MATERIAL
@@ -39,13 +40,13 @@
 	if(!isnull(rmaterialtype))
 		reinf_material = get_material_by_name(rmaterialtype)
 	update_material()
-
-	processing_turfs |= src
+	if(material?.radioactivity || reinf_material?.radioactivity || girder_material?.radioactivity)
+		START_PROCESSING(SSturfs, src)
 
 /turf/simulated/wall/Destroy()
-	processing_turfs -= src
-	dismantle_wall(null,null,1)
-	..()
+	STOP_PROCESSING(SSturfs, src)
+	dismantle_wall(null, null, TRUE)
+	return ..()
 
 /turf/simulated/wall/process()
 	// Calling parent will kill processing
@@ -154,7 +155,7 @@
 	visible_message("<span class='danger'>\The [src] spontaneously combusts!.</span>") //!!OH SHIT!!
 	return
 
-/turf/simulated/wall/proc/take_damage(dam)
+/turf/simulated/wall/take_damage(dam)
 	if(dam)
 		damage = max(0, damage + dam)
 		update_damage()
@@ -275,7 +276,7 @@
 	if(!total_radiation)
 		return
 
-	radiation_repository.radiate(src, total_radiation)
+	SSradiation.radiate(src, total_radiation)
 	return total_radiation
 
 /turf/simulated/wall/proc/burn(temperature)
@@ -288,7 +289,7 @@
 			for(var/obj/machinery/door/airlock/phoron/D in range(3,src))
 				D.ignite(temperature/4)
 
-/turf/simulated/wall/rcd_values(mob/living/user, obj/item/weapon/rcd/the_rcd, passed_mode)
+/turf/simulated/wall/rcd_values(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	if(material.integrity > 1000) // Don't decon things like elevatorium.
 		return FALSE
 	if(reinf_material && !the_rcd.can_remove_rwalls) // Gotta do it the old fashioned way if your RCD can't.
@@ -305,7 +306,7 @@
 			)
 	return FALSE
 
-/turf/simulated/wall/rcd_act(mob/living/user, obj/item/weapon/rcd/the_rcd, passed_mode)
+/turf/simulated/wall/rcd_act(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	if(passed_mode == RCD_DECONSTRUCT)
 		to_chat(user, span("notice", "You deconstruct \the [src]."))
 		ChangeTurf(/turf/simulated/floor/airless, preserve_outdoors = TRUE)

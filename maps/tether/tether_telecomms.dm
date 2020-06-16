@@ -8,21 +8,33 @@
 	listening_level = Z_LEVEL_SURFACE_LOW
 	autolinkers = list("tbl_relay")
 
+/obj/machinery/telecomms/relay/preset/centcom/tether/base_low
+	listening_level = Z_LEVEL_SURFACE_LOW
+
 /obj/machinery/telecomms/relay/preset/tether/base_mid
 	id = "Base Relay 2"
 	listening_level = Z_LEVEL_SURFACE_MID
 	autolinkers = list("tbm_relay")
+
+/obj/machinery/telecomms/relay/preset/centcom/tether/base_mid
+	listening_level = Z_LEVEL_SURFACE_MID
 
 /obj/machinery/telecomms/relay/preset/tether/base_high
 	id = "Base Relay 3"
 	listening_level = Z_LEVEL_SURFACE_HIGH
 	autolinkers = list("tbh_relay")
 
-// cit edit - fuck you guys
-/obj/machinery/telecomms/relay/preset/tether/transit
-	id = "Tether Midpoint Relay"
+/obj/machinery/telecomms/relay/preset/centcom/tether/base_high
+	listening_level = Z_LEVEL_SURFACE_HIGH
+
+//Some coverage for midpoint
+/obj/machinery/telecomms/relay/preset/tether/midpoint
+	id = "Midpoint Relay"
 	listening_level = Z_LEVEL_TRANSIT
 	autolinkers = list("tmp_relay")
+
+/obj/machinery/telecomms/relay/preset/centcom/tether/midpoint
+	listening_level = Z_LEVEL_TRANSIT
 
 // The station of course needs relays fluff-wise to connect to ground station. But again, no multi-z so, we need one for each z level.
 /obj/machinery/telecomms/relay/preset/tether/station_low
@@ -30,25 +42,40 @@
 	listening_level = Z_LEVEL_SPACE_LOW
 	autolinkers = list("tsl_relay")
 
+/obj/machinery/telecomms/relay/preset/centcom/tether/station_low
+	listening_level = Z_LEVEL_SPACE_LOW
+
 /obj/machinery/telecomms/relay/preset/tether/station_mid
 	id = "Station Relay 2"
 	listening_level = Z_LEVEL_SPACE_MID
 	autolinkers = list("tsm_relay")
+
+/obj/machinery/telecomms/relay/preset/centcom/tether/station_mid
+	listening_level = Z_LEVEL_SPACE_MID
 
 /obj/machinery/telecomms/relay/preset/tether/station_high
 	id = "Station Relay 3"
 	listening_level = Z_LEVEL_SPACE_HIGH
 	autolinkers = list("tsh_relay")
 
+/obj/machinery/telecomms/relay/preset/centcom/tether/station_high
+	listening_level = Z_LEVEL_SPACE_HIGH
+
 /obj/machinery/telecomms/relay/preset/tether/sci_outpost
 	id = "Science Outpost Relay"
 	listening_level = Z_LEVEL_SOLARS
 	autolinkers = list("sci_o_relay")
 
+/obj/machinery/telecomms/relay/preset/centcom/tether/sci_outpost
+	listening_level = Z_LEVEL_SOLARS
+
 /obj/machinery/telecomms/relay/preset/underdark
 	id = "Mining Underground Relay"
 	listening_level = Z_LEVEL_UNDERDARK
 	autolinkers = list("ud_relay")
+
+/obj/machinery/telecomms/relay/preset/centcom/underdark
+	listening_level = Z_LEVEL_UNDERDARK
 
 // #### Hub ####
 /obj/machinery/telecomms/hub/preset/tether
@@ -121,10 +148,10 @@
 		num2text(EXP_FREQ) = list(access_explorer)
 	)
 
-/obj/item/device/multitool/tether_buffered
+/obj/item/multitool/tether_buffered
 	name = "pre-linked multitool (tether hub)"
-	desc = "This multitool has already been linked to the Tether telecomms hub and can be used to link multiple machines to the hub, including relays." //cit edit - it's not one use
+	desc = "This multitool has already been linked to the Tether telecomms hub and can be used to configure one (1) relay."
 
-/obj/item/device/multitool/tether_buffered/initialize()
+/obj/item/multitool/tether_buffered/Initialize()
 	. = ..()
 	buffer = locate(/obj/machinery/telecomms/hub/preset/tether)

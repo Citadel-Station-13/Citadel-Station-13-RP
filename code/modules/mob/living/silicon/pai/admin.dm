@@ -7,12 +7,12 @@
 		return
 
 	if(!pai_key)
-		var/client/C = input("Select client") as null|anything in clients
+		var/client/C = input("Select client") as null|anything in GLOB.clients
 		if(!C) return
 		pai_key = C.key
 
 	log_and_message_admins("made a pAI with key=[pai_key] at ([t.x],[t.y],[t.z])")
-	var/obj/item/device/paicard/card = new(t)
+	var/obj/item/paicard/card = new(t)
 	var/mob/living/silicon/pai/pai = new(card)
 	pai.key = pai_key
 	card.setPersonality(pai)

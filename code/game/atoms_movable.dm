@@ -1,12 +1,36 @@
 /atom/movable
 	layer = OBJ_LAYER
-	appearance_flags = TILE_BOUND|PIXEL_SCALE
-	var/last_move = null
+	appearance_flags = TILE_BOUND|PIXEL_SCALE|KEEP_TOGETHER
+	/// Whatever we're pulling.
+	var/atom/movable/pulling
+	/// If false makes [CanPass][/atom/proc/CanPass] call [CanPassThrough][/atom/movable/proc/CanPassThrough] on this type instead of using default behaviour
+	var/generic_canpass = TRUE
+	/// 0: not doing a diagonal move. 1 and 2: doing the first/second step of the diagonal move
+	var/moving_diagonally = 0
+	/// attempt to resume grab after moving instead of before. This is what atom/movable is pulling us during move-from-pulling.
+	var/atom/movable/moving_from_pull
+	/// Direction of our last move.
+	var/last_move = NONE
+	/// Which direction we're drifting
+	var/inertia_dir = NONE
+	/// Only set while drifting, last location we were while drifting
+	var/atom/inertia_last_loc
+	/// If we're moving from no-grav drifting
+	var/inertia_moving = FALSE
+	/// Next world.time we should move from no-grav drifting
+	var/inertia_next_move = 0
+	/// Delay between each drifting move.
+	var/inertia_move_delay = 5
+	/// Movement types, see __DEFINES/flags/movement.dm
+	var/movement_type = GROUND
+	/// The orbiter component of the thing we're orbiting.
+	var/datum/component/orbiter/orbiting
+	/// Our default glide_size.
+	var/default_glide_size = 0
+
 	var/anchored = 0
-	// var/elevation = 2    - not used anywhere
 	var/move_speed = 10
 	var/l_move_time = 1
-	var/last_move_time = 0 // Need this for some TGMC code to work nicely. Totally not l_move_time :^)
 	var/m_flag = 1
 	var/throwing = 0
 	var/thrower
@@ -16,7 +40,8 @@
 	var/moved_recently = 0
 	var/mob/pulledby = null
 	var/item_state = null // Used to specify the item state for the on-mob overlays.
-	var/icon_scale = 1 // Used to scale icons up or down in update_transform().
+	var/icon_scale_x = 1 // Used to scale icons up or down horizonally in update_transform().
+	var/icon_scale_y = 1 // Used to scale icons up or down vertically in update_transform().
 	var/icon_rotation = 0 // Used to rotate icons in update_transform()
 	var/old_x = 0
 	var/old_y = 0
@@ -34,7 +59,7 @@
 	if(opacity && isturf(loc))
 		un_opaque = loc
 
-	loc = null
+	moveToNullspace()
 	if(un_opaque)
 		un_opaque.recalc_atom_opacity()
 	if (pulledby)
@@ -43,54 +68,14 @@
 		pulledby = null
 	QDEL_NULL(riding_datum) //VOREStation Add
 
-/atom/movable/Bump(var/atom/A, yes)
-	if(src.throwing)
-		src.throw_impact(A)
-		src.throwing = 0
+/atom/movable/CanAllowThrough(atom/movable/mover, turf/target)
+	. = ..()
+	if(locs && locs.len >= 2)	// If something is standing on top of us, let them pass.
+		if(mover.loc in locs)
+			. = TRUE
+	return .
 
-	spawn(0)
-		if ((A && yes))
-			A.last_bumped = world.time
-			A.Bumped(src)
-		return
-	..()
-	return
-
-/atom/movable/proc/forceMove(atom/destination)
-	if(loc == destination)
-		return 0
-	var/is_origin_turf = isturf(loc)
-	var/is_destination_turf = isturf(destination)
-	// It is a new area if:
-	//  Both the origin and destination are turfs with different areas.
-	//  When either origin or destination is a turf and the other is not.
-	var/is_new_area = (is_origin_turf ^ is_destination_turf) || (is_origin_turf && is_destination_turf && loc.loc != destination.loc)
-
-	var/atom/origin = loc
-	loc = destination
-
-	if(origin)
-		origin.Exited(src, destination)
-		if(is_origin_turf)
-			for(var/atom/movable/AM in origin)
-				AM.Uncrossed(src)
-			if(is_new_area && is_origin_turf)
-				origin.loc.Exited(src, destination)
-
-	if(destination)
-		destination.Entered(src, origin)
-		if(is_destination_turf) // If we're entering a turf, cross all movable atoms
-			for(var/atom/movable/AM in loc)
-				if(AM != src)
-					AM.Crossed(src)
-			if(is_new_area && is_destination_turf)
-				destination.loc.Entered(src, origin)
-
-	Moved(origin)
-
-	last_move_time = world.time
-
-	return 1
+/////////////////////////////////////////////////////////////////
 
 //called when src is thrown into hit_atom
 /atom/movable/proc/throw_impact(atom/hit_atom, var/speed)
@@ -125,7 +110,7 @@
 				// Special handling of windows, which are dense but block only from some directions
 				if(istype(A, /obj/structure/window))
 					var/obj/structure/window/W = A
-					if (!W.is_full_window() && !(turn(src.last_move, 180) & A.dir))
+					if (!W.is_fulltile() && !(turn(src.last_move, 180) & A.dir))
 						continue
 				// Same thing for (closed) windoors, which have the same problem
 				else if(istype(A, /obj/machinery/door/window) && !(turn(src.last_move, 180) & A.dir))
@@ -238,10 +223,10 @@
 	return
 
 /atom/movable/proc/touch_map_edge()
-	if(z in using_map.sealed_levels)
+	if(z in GLOB.using_map.sealed_levels)
 		return
 
-	if(config.use_overmap)
+	if(config_legacy.use_overmap)
 		overmap_spacetravel(get_turf(src), src)
 		return
 
@@ -265,8 +250,8 @@
 			y = TRANSITIONEDGE + 1
 			x = rand(TRANSITIONEDGE + 2, world.maxx - TRANSITIONEDGE - 2)
 
-		if(ticker && istype(ticker.mode, /datum/game_mode/nuclear)) //only really care if the game mode is nuclear
-			var/datum/game_mode/nuclear/G = ticker.mode
+		if(SSticker && istype(SSticker.mode, /datum/game_mode/nuclear)) //only really care if the game mode is nuclear
+			var/datum/game_mode/nuclear/G = SSticker.mode
 			G.check_nuke_disks()
 
 		spawn(0)
@@ -274,7 +259,7 @@
 
 //by default, transition randomly to another zlevel
 /atom/movable/proc/get_transit_zlevel()
-	var/list/candidates = using_map.accessible_z_levels.Copy()
+	var/list/candidates = GLOB.using_map.accessible_z_levels.Copy()
 	candidates.Remove("[src.z]")
 
 	if(!candidates.len)
@@ -283,15 +268,30 @@
 
 /atom/movable/proc/update_transform()
 	var/matrix/M = matrix()
-	M.Scale(icon_scale)
+	M.Scale(icon_scale_x, icon_scale_y)
 	M.Turn(icon_rotation)
 	src.transform = M
 
 // Use this to set the object's scale.
-/atom/movable/proc/adjust_scale(new_scale)
-	icon_scale = new_scale
+/atom/movable/proc/adjust_scale(new_scale_x, new_scale_y)
+	if(isnull(new_scale_y))
+		new_scale_y = new_scale_x
+	if(new_scale_x != 0)
+		icon_scale_x = new_scale_x
+	if(new_scale_y != 0)
+		icon_scale_y = new_scale_y
 	update_transform()
 
 /atom/movable/proc/adjust_rotation(new_rotation)
 	icon_rotation = new_rotation
 	update_transform()
+
+// Called when touching a lava tile.
+/atom/movable/proc/lava_act()
+	fire_act(null, 10000, 1000)
+
+/**
+  * Sets our movement type.
+  */
+/atom/movable/proc/set_movement_type(new_movetype)
+	movement_type = new_movetype

@@ -5,20 +5,20 @@
 	icon_state = "coolanttank"
 	amount_per_transfer_from_this = 10
 
-/obj/structure/reagent_dispensers/coolanttank/initialize()
-	..()
+/obj/structure/reagent_dispensers/coolanttank/Initialize()
+	. = ..()
 	reagents.add_reagent("coolant", 1000)
 
 /obj/structure/reagent_dispensers/coolanttank/bullet_act(var/obj/item/projectile/Proj)
 	if(Proj.get_structure_damage())
-		if(!istype(Proj ,/obj/item/projectile/beam/lastertag) && !istype(Proj ,/obj/item/projectile/beam/practice) ) // TODO: make this not terrible
+		if(!istype(Proj ,/obj/item/projectile/beam/lasertag) && !istype(Proj ,/obj/item/projectile/beam/practice) ) // TODO: make this not terrible
 			explode()
 
 /obj/structure/reagent_dispensers/coolanttank/ex_act()
 	explode()
 
 /obj/structure/reagent_dispensers/coolanttank/proc/explode()
-	var/datum/effect/effect/system/smoke_spread/S = new /datum/effect/effect/system/smoke_spread
+	var/datum/effect_system/smoke_spread/S = new /datum/effect_system/smoke_spread
 	S.set_up(5, 0, src.loc)
 
 	playsound(src.loc, 'sound/effects/smoke.ogg', 50, 1, -3)

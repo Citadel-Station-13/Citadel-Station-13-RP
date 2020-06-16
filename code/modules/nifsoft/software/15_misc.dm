@@ -2,7 +2,7 @@
 	name = "APC Connector"
 	desc = "A small attachment that allows synthmorphs to recharge themselves from APCs."
 	list_pos = NIF_APCCHARGE
-	cost = 1250
+	cost = 625
 	wear = 2
 	applies_to = NIF_SYNTHETIC
 	tick_flags = NIF_ACTIVETICK
@@ -40,21 +40,21 @@
 				deactivate()
 				return FALSE
 
-/*/datum/nifsoft/pressure
+/datum/nifsoft/pressure
 	name = "Pressure Seals"
 	desc = "Creates pressure seals around important synthetic components to protect them from vacuum. Almost impossible on organics."
 	list_pos = NIF_PRESSURE
-	cost = 1750
+	cost = 875
 	a_drain = 0.5
 	wear = 3
 	applies_to = NIF_SYNTHETIC
-	other_flags = (NIF_O_PRESSURESEAL)*/ // disables redundant NIF, synthetics no longer require this
+	other_flags = (NIF_O_PRESSURESEAL)
 
 /datum/nifsoft/heatsinks
 	name = "Heat Sinks"
 	desc = "Advanced heat sinks for internal heat storage of heat on a synth until able to vent it in atmosphere."
 	list_pos = NIF_HEATSINK
-	cost = 1450
+	cost = 725
 	a_drain = 0.25
 	wear = 3
 	var/used = 0
@@ -71,7 +71,7 @@
 				return FALSE
 
 	stat_text()
-		return "[active ? "Active" : "Disabled"] (Stored Heat: [Floor(used/20)]%)"
+		return "[active ? "Active" : "Disabled"] (Stored Heat: [FLOOR((used/20), 1)]%)"
 
 	life()
 		if((. = ..()))
@@ -127,16 +127,14 @@
 	name = "Mass Alteration"
 	desc = "A system that allows one to change their size, through drastic mass rearrangement. Causes significant wear when installed."
 	list_pos = NIF_SIZECHANGE
-	cost = 750
-	wear = 3
+	cost = 375
+	wear = 6
 
 	activate()
 		if((. = ..()))
-			var/new_size = input("Put the desired size (25-200%)", "Set Size", 200) as num|null
-			if(isnull(new_size))
-				return
+			var/new_size = input("Put the desired size (25-200%)", "Set Size", 200) as num
 
-			if (!IsInRange(new_size,25,200))
+			if (!ISINRANGE(new_size,25,200))
 				to_chat(nif.human,"<span class='notice'>The safety features of the NIF Program prevent you from choosing this size.</span>")
 				return
 			else
@@ -169,7 +167,7 @@
 	name = "World Bender"
 	desc = "Alters your perception of various objects in the world. Only has one setting for now: displaying all your crewmates as farm animals."
 	list_pos = NIF_WORLDBEND
-	cost = 200
+	cost = 100
 	a_drain = 0.01
 
 	activate()

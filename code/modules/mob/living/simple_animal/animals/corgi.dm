@@ -1,5 +1,5 @@
 //Corgi
-/mob/living/simple_animal/corgi
+/mob/living/simple_mob/corgi
 	name = "corgi"
 	real_name = "corgi"
 	desc = "It's a corgi."
@@ -27,13 +27,13 @@
 	emote_see = list("shakes its head", "shivers")
 
 	meat_amount = 3
-	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat/corgi
+	meat_type = /obj/item/reagent_containers/food/snacks/meat/corgi
 
 	var/obj/item/inventory_head
 	var/obj/item/inventory_back
 
 //IAN! SQUEEEEEEEEE~
-/mob/living/simple_animal/corgi/Ian
+/mob/living/simple_mob/corgi/Ian
 	name = "Ian"
 	real_name = "Ian"	//Intended to hold the name without altering it.
 	gender = MALE
@@ -44,7 +44,7 @@
 	response_disarm = "bops"
 	response_harm   = "kicks"
 
-/mob/living/simple_animal/corgi/Ian/Life()
+/mob/living/simple_mob/corgi/Ian/Life()
 	..()
 
 	//Not replacing with SA FollowTarget mechanics because Ian behaves... very... specifically.
@@ -60,7 +60,7 @@
 			if( !movement_target || !(movement_target.loc in oview(src, 3)) )
 				movement_target = null
 				stop_automated_movement = 0
-				for(var/obj/item/weapon/reagent_containers/food/snacks/S in oview(src,3))
+				for(var/obj/item/reagent_containers/food/snacks/S in oview(src,3))
 					if(isturf(S.loc) || ishuman(S.loc))
 						movement_target = S
 						break
@@ -74,15 +74,15 @@
 
 				if(movement_target)		//Not redundant due to sleeps, Item can be gone in 6 decisecomds
 					if (movement_target.loc.x < src.x)
-						set_dir(WEST)
+						setDir(WEST)
 					else if (movement_target.loc.x > src.x)
-						set_dir(EAST)
+						setDir(EAST)
 					else if (movement_target.loc.y < src.y)
-						set_dir(SOUTH)
+						setDir(SOUTH)
 					else if (movement_target.loc.y > src.y)
-						set_dir(NORTH)
+						setDir(NORTH)
 					else
-						set_dir(SOUTH)
+						setDir(SOUTH)
 
 					if(isturf(movement_target.loc) )
 						UnarmedAttack(movement_target)
@@ -93,27 +93,27 @@
 			visible_emote(pick("dances around","chases their tail"))
 			spawn(0)
 				for(var/i in list(1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2))
-					set_dir(i)
+					setDir(i)
 					sleep(1)
 
-/obj/item/weapon/reagent_containers/food/snacks/meat/corgi
+/obj/item/reagent_containers/food/snacks/meat/corgi
 	name = "corgi meat"
 	desc = "Tastes like... well, you know..."
 
-/mob/living/simple_animal/corgi/attackby(var/obj/item/O as obj, var/mob/user as mob)  //Marker -Agouri
-	if(istype(O, /obj/item/weapon/newspaper))
+/mob/living/simple_mob/corgi/attackby(var/obj/item/O as obj, var/mob/user as mob)  //Marker -Agouri
+	if(istype(O, /obj/item/newspaper))
 		if(!stat)
 			for(var/mob/M in viewers(user, null))
 				if ((M.client && !( M.blinded )))
 					M.show_message("<font color='blue'>[user] baps [name] on the nose with the rolled up [O]</font>")
 			spawn(0)
 				for(var/i in list(1,2,4,8,4,2,1,2))
-					set_dir(i)
+					setDir(i)
 					sleep(1)
 	else
 		..()
 
-/mob/living/simple_animal/corgi/regenerate_icons()
+/mob/living/simple_mob/corgi/regenerate_icons()
 	overlays = list()
 
 	if(inventory_head)
@@ -137,7 +137,7 @@
 	return
 
 
-/mob/living/simple_animal/corgi/puppy
+/mob/living/simple_mob/corgi/puppy
 	name = "corgi puppy"
 	real_name = "corgi"
 	desc = "It's a corgi puppy."
@@ -146,15 +146,15 @@
 	icon_dead = "puppy_dead"
 
 //pupplies cannot wear anything.
-/mob/living/simple_animal/corgi/puppy/Topic(href, href_list)
+/mob/living/simple_mob/corgi/puppy/Topic(href, href_list)
 	if(href_list["remove_inv"] || href_list["add_inv"])
-		usr << "<font color='red'>You can't fit this on [src]</font>"
+		to_chat(usr, "<font color='red'>You can't fit this on [src]</font>")
 		return
 	..()
 
 
 //LISA! SQUEEEEEEEEE~
-/mob/living/simple_animal/corgi/Lisa
+/mob/living/simple_mob/corgi/Lisa
 	name = "Lisa"
 	real_name = "Lisa"
 	gender = FEMALE
@@ -169,13 +169,13 @@
 	var/puppies = 0
 
 //Lisa already has a cute bow!
-/mob/living/simple_animal/corgi/Lisa/Topic(href, href_list)
+/mob/living/simple_mob/corgi/Lisa/Topic(href, href_list)
 	if(href_list["remove_inv"] || href_list["add_inv"])
 		to_chat(usr, "<font color='red'>[src] already has a cute bow!</font>")
 		return
 	..()
 
-/mob/living/simple_animal/corgi/Lisa/Life()
+/mob/living/simple_mob/corgi/Lisa/Life()
 	..()
 
 	if(!stat && !resting && !buckled)
@@ -185,7 +185,7 @@
 			var/alone = 1
 			var/ian = 0
 			for(var/mob/M in oviewers(7, src))
-				if(istype(M, /mob/living/simple_animal/corgi/Ian))
+				if(istype(M, /mob/living/simple_mob/corgi/Ian))
 					if(M.client)
 						alone = 0
 						break
@@ -197,18 +197,19 @@
 			if(alone && ian && puppies < 4)
 				if(near_camera(src) || near_camera(ian))
 					return
-				new /mob/living/simple_animal/corgi/puppy(loc)
+				new /mob/living/simple_mob/corgi/puppy(loc)
 
 
 		if(prob(1))
 			visible_emote(pick("dances around","chases her tail"))
 			spawn(0)
 				for(var/i in list(1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2))
-					set_dir(i)
+					setDir(i)
 					sleep(1)
 
+
 //Technically this should be like, its own file or something or a subset of dog but whatever. Not a coder.
-/mob/living/simple_animal/corgi/tamaskan
+/mob/living/simple_mob/corgi/tamaskan
 	name = "tamaskan"
 	real_name = "tamaskan"
 	desc = "It's a tamaskan."
@@ -218,7 +219,7 @@
 
 	retaliate = 1 //Tamaskans are bigass dogs, okay?
 
-/mob/living/simple_animal/corgi/tamaskan/spice
+/mob/living/simple_mob/corgi/tamaskan/spice
 	name = "Spice"
 	real_name = "Spice"	//Intended to hold the name without altering it.
 	gender = FEMALE

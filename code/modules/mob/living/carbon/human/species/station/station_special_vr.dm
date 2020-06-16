@@ -10,15 +10,21 @@
 	icobase = 'icons/mob/human_races/r_xenochimera.dmi'
 	deform = 'icons/mob/human_races/r_def_xenochimera.dmi'
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
+	rarity_value = 4
 	darksight = 8		//critters with instincts to hide in the dark need to see in the dark - about as good as tajara.
 	slowdown = -0.2		//scuttly, but not as scuttly as a tajara or a teshari.
 	brute_mod = 0.8		//About as tanky to brute as a Unathi. They'll probably snap and go feral when hurt though.
 	burn_mod =  1.15	//As vulnerable to burn as a Tajara.
+	radiation_mod = 1.15	//To help simulate the volatility of a living 'viral' cluster.
+	metabolic_rate = 1.4
+	hunger_factor = 0.4
+	metabolism = 0.012
 	base_species = "Xenochimera"
 	selects_bodytype = TRUE
 
 	num_alternate_languages = 2
 	secondary_langs = list("Sol Common")
+
 	//color_mult = 1 //It seemed to work fine in testing, but I've been informed it's unneeded.
 	tail = "tail" //Scree's tail. Can be disabled in the vore tab by choosing "hide species specific tail sprite"
 	icobase_tail = 1
@@ -29,9 +35,19 @@
 		/mob/living/carbon/human/proc/succubus_drain_finalize,
 		/mob/living/carbon/human/proc/succubus_drain_lethal,
 		/mob/living/carbon/human/proc/bloodsuck,
+		/mob/living/carbon/human/proc/tie_hair,
 		/mob/living/proc/shred_limb,
 		/mob/living/proc/flying_toggle,
-		/mob/living/proc/start_wings_hovering) //Xenochimera get all the special verbs since they can't select traits.
+		/mob/living/proc/start_wings_hovering,
+		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/proc/eat_trash,
+		/mob/living/proc/glow_toggle,
+		/mob/living/proc/glow_color,
+		/mob/living/carbon/human/proc/lick_wounds ,
+		/mob/living/carbon/human/proc/resp_biomorph,
+		/mob/living/carbon/human/proc/biothermic_adapt,
+		/mob/living/carbon/human/proc/atmos_biomorph,
+		/mob/living/carbon/human/proc/vocal_biomorph) //Xenochimera get all the special verbs since they can't select traits.
 
 	virus_immune = 1 // They practically ARE one.
 	min_age = 18
@@ -41,31 +57,61 @@
 	Widely known for their voracious nature and violent tendencies when stressed or left unfed for long periods of time. \
 	Most, if not all chimeras possess the ability to undergo some type of regeneration process, at the cost of energy."
 
+	wikilink = "https://wiki.vore-station.net/Xenochimera"
+
+	catalogue_data = list(/datum/category_item/catalogue/fauna/xenochimera)
+
+	breath_type = /datum/gas/oxygen
+	poison_type = /datum/gas/phoron
+	exhale_type = /datum/gas/carbon_dioxide
+
+	hazard_high_pressure = HAZARD_HIGH_PRESSURE
+	warning_high_pressure = WARNING_HIGH_PRESSURE
+	warning_low_pressure = WARNING_LOW_PRESSURE
 	hazard_low_pressure = -1 //Prevents them from dying normally in space. Special code handled below.
+	safe_pressure = ONE_ATMOSPHERE
+
 	cold_level_1 = -1     // All cold debuffs are handled below in handle_environment_special
 	cold_level_2 = -1
 	cold_level_3 = -1
 
+	cold_discomfort_level = 285
+	cold_discomfort_strings = list(
+		"You feel chilly.",
+		"You shiver suddenly.",
+		"Your chilly flesh stands out in goosebumps."
+		)
+
+	heat_discomfort_level = 315
+	heat_discomfort_strings = list(
+		"You feel sweat drip down your neck.",
+		"You feel uncomfortably warm.",
+		"Your skin prickles in the heat."
+		)
+
 	//primitive_form = "Farwa"
 
-	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED //Whitelisted as restricted is broken.
+	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE//Whitelisted as restricted is broken.
 	flags = NO_SCAN | NO_INFECT //Dying as a chimera is, quite literally, a death sentence. Well, if it wasn't for their revive, that is.
 	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
-	has_organ = list(    //Same organ list as tajarans.
-		O_HEART =    /obj/item/organ/internal/heart,
-		O_LUNGS =    /obj/item/organ/internal/lungs,
-		O_VOICE = 		/obj/item/organ/internal/voicebox,
-		O_LIVER =    /obj/item/organ/internal/liver,
-		O_KIDNEYS =  /obj/item/organ/internal/kidneys,
-		O_BRAIN =    /obj/item/organ/internal/brain,
-		O_EYES =     /obj/item/organ/internal/eyes
+	has_organ = list(
+		O_HEART =    /obj/item/organ/internal/heart/xenochimera,
+		O_LUNGS =    /obj/item/organ/internal/lungs/xenochimera,
+		O_VOICE = 		/obj/item/organ/internal/voicebox/xenochimera,
+		O_LIVER =    /obj/item/organ/internal/liver/xenochimera,
+		O_KIDNEYS =  /obj/item/organ/internal/kidneys/xenochimera,
+		O_BRAIN =    /obj/item/organ/internal/brain/xenochimera,
+		O_EYES =     /obj/item/organ/internal/eyes/xenochimera,
+		O_STOMACH =		/obj/item/organ/internal/stomach/xenochimera,
+		O_INTESTINE =	/obj/item/organ/internal/intestine/xenochimera
 		)
 
 	flesh_color = "#AFA59E"
 	base_color 	= "#333333"
 	blood_color = "#14AD8B"
 
+	reagent_tag = IS_CHIMERA
 
 /datum/species/xenochimera/handle_environment_special(var/mob/living/carbon/human/H)
 	//If they're KO'd/dead, they're probably not thinking a lot about much of anything.
@@ -73,7 +119,7 @@
 		handle_feralness(H)
 
 	//While regenerating
-	if(H.reviving && H.reviving != REVIVING_COOLDOWN)
+	if(H.revive_ready == REVIVING_NOW || H.revive_ready == REVIVING_DONE)
 		H.weakened = 5
 		H.canmove = 0
 		H.does_not_breathe = TRUE
@@ -308,6 +354,96 @@
 	return real.race_key
 
 
+//Verbs Follow
+
+/mob/living/carbon/human/proc/resp_biomorph(var/mob/living/carbon/human/H, var/mob/living/carbon/human/C)
+	set name = "Respiratory Biomorph"
+	set desc = "Changes the gases we need to breathe."
+	set category = "Abilities"
+
+	var/list/gas_choices = list(
+		"oxygen" = /datum/gas/oxygen,
+		"phoron" = /datum/gas/phoron,
+		"nitrogen" = /datum/gas/nitrogen,
+		"carbon dioxide" = /datum/gas/carbon_dioxide
+	)
+	var/choice = input(H, "How should we adapt our respiration?") as null|anything in gas_choices
+	var/resp_biomorph = gas_choices[choice]
+	to_chat(H,"You begin modifying your internal structure!")
+	if(do_after(H,15 SECONDS))
+		switch(resp_biomorph)
+			if(/datum/gas/oxygen)
+				species.breath_type = /datum/gas/oxygen
+				species.poison_type = /datum/gas/phoron
+				species.exhale_type = /datum/gas/carbon_dioxide
+			if(/datum/gas/phoron)
+				species.breath_type = /datum/gas/phoron
+				species.poison_type = /datum/gas/oxygen
+				species.exhale_type = /datum/gas/nitrogen
+			if(/datum/gas/nitrogen)
+				species.breath_type = /datum/gas/nitrogen
+				species.poison_type = /datum/gas/carbon_dioxide
+			if(/datum/gas/carbon_dioxide)
+				species.breath_type = /datum/gas/carbon_dioxide
+				species.exhale_type = /datum/gas/oxygen
+
+/mob/living/carbon/human/proc/biothermic_adapt(var/mob/living/carbon/human/H, var/mob/living/carbon/human/C)
+	set name = "Biothermic Adaptation"
+	set desc = "Changes our core body temperature."
+	set category = "Abilities"
+
+	var/biothermic_adapt = input(H, "How should we modify our core temperature?") as null|anything in list("warm-blooded", "cold-blooded", "hot-blooded")
+	to_chat(H,"You begin modifying your internal structure!")
+	if(do_after(H,15 SECONDS))
+		switch(biothermic_adapt)
+			if("warm-blooded")
+				species.cold_discomfort_level = 285
+				species.heat_discomfort_level = 315
+			if("cold-blooded")
+				species.cold_discomfort_level = T0C+21
+			if("hot-blooded")
+				species.heat_discomfort_level = T0C+19
+
+/mob/living/carbon/human/proc/atmos_biomorph(var/mob/living/carbon/human/H)
+	set name = "Atmospheric Biomorph"
+	set desc = "Changes our sensitivity to atmospheric pressure."
+	set category = "Abilities"
+
+	var/atmos_biomorph = input(H, "How should we adapt our rigidity?") as null|anything in list("flexible", "compact", "elastic")
+	to_chat(H,"You begin modifying your internal structure!")
+	if(do_after(H,15 SECONDS))
+		switch(atmos_biomorph)
+			if("flexible")
+				species.warning_low_pressure = WARNING_LOW_PRESSURE
+				species.hazard_low_pressure = -1
+				species.warning_high_pressure = WARNING_HIGH_PRESSURE
+				species.hazard_high_pressure = HAZARD_HIGH_PRESSURE
+			if("rigid")
+				species.warning_low_pressure = 50
+				species.hazard_low_pressure = -1
+			if("elastic")
+				species.warning_high_pressure = WARNING_HIGH_PRESSURE + 50
+				species.hazard_high_pressure = HAZARD_HIGH_PRESSURE + 100
+
+/mob/living/carbon/human/proc/vocal_biomorph(var/mob/living/carbon/human/H)
+	set name = "Vocalization Biomorph"
+	set desc = "Changes our speech pattern."
+	set category = "Abilities"
+
+	var/vocal_biomorph = input(H, "How should we adjust our speech?") as null|anything in list("common", "unathi", "tajaran")
+	to_chat(H, "You begin modifying your internal structure!")
+	if(do_after(H,15 SECONDS))
+		switch(vocal_biomorph)
+			if("common")
+				return
+			if("unathi")
+				species.autohiss_basic_map = list("s" = list("ss", "sss", "ssss"))
+				species.autohiss_extra_map = list("x" = list("ks", "kss", "ksss"))
+				species.autohiss_exempt = "Sinta'unathi"
+			if("tajaran")
+				species.autohiss_basic_map = list("r" = list("rr", "rrr", "rrrr"))
+				species.autohiss_exempt = "Siik"
+
 /////////////////////
 /////SPIDER RACE/////
 /////////////////////
@@ -323,13 +459,15 @@
 	burn_mod =  1.15	//15% burn damage increase. They're spiders. Aerosol can+lighter = dead spiders.
 
 	num_alternate_languages = 2
-	secondary_langs = list("Sol Common")
+	secondary_langs = list(LANGUAGE_VESPINAE)
 	color_mult = 1
 	tail = "tail" //Spider tail.
 	icobase_tail = 1
 
 	inherent_verbs = list(
-		/mob/proc/weaveWebBindings)
+		/mob/proc/weaveWebBindings,
+		/mob/living/carbon/human/proc/tie_hair
+		)
 
 	min_age = 18
 	max_age = 80
@@ -339,6 +477,10 @@
 	from their mandible lined mouths.  They are a recent discovery by Nanotrasen, only being discovered roughly seven years ago.  \
 	Before they were found they built great cities out of their silk, being united and subjugated in warring factions under great Star Queens  \
 	Who forced the working class to build huge, towering cities to attempt to reach the stars, which they worship as gems of great spiritual and magical significance."
+
+	wikilink = "https://wiki.vore-station.net/Vasilissans"
+
+	catalogue_data = list(/datum/category_item/catalogue/fauna/vasilissan)
 
 	hazard_low_pressure = 20 //Prevents them from dying normally in space. Special code handled below.
 	cold_level_1 = -1    // All cold debuffs are handled below in handle_environment_special
@@ -372,3 +514,63 @@
 			H.eye_blurry = 5
 		H.shock_stage = min(H.shock_stage + coldshock, 160) //cold hurts and gives them pain messages, eventually weakening and paralysing, but doesn't damage.
 		return
+
+/datum/species/werebeast
+	name = SPECIES_WEREBEAST
+	name_plural = "Werebeasts"
+	icobase = 'icons/mob/human_races/r_werebeast.dmi'
+	deform = 'icons/mob/human_races/r_def_werebeast.dmi'
+	icon_template = 'icons/mob/human_races/r_werebeast.dmi'
+	tail = "tail"
+	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
+	total_health = 200
+	brute_mod = 0.85
+	burn_mod = 0.85
+	metabolic_rate = 2
+	item_slowdown_mod = 0.25
+	hunger_factor = 0.4
+	darksight = 8
+	mob_size = MOB_LARGE
+	num_alternate_languages = 3
+	secondary_langs = list(LANGUAGE_CANILUNZT)
+	name_language = LANGUAGE_CANILUNZT
+	primitive_form = "Wolpin"
+	color_mult = 1
+
+	min_age = 18
+	max_age = 200
+
+	blurb = "Big buff werewolves. These are a limited functionality event species that are not balanced for regular gameplay. Adminspawn only."
+
+	wikilink="N/A"
+
+	catalogue_data = list(/datum/category_item/catalogue/fauna/vulpkanin)
+
+	spawn_flags		 = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
+	appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_EYE_COLOR
+	inherent_verbs = list(
+		/mob/living/proc/shred_limb,
+		/mob/living/proc/eat_trash)
+
+	flesh_color = "#AFA59E"
+	base_color = "#777777"
+
+	heat_discomfort_strings = list(
+		"Your fur prickles in the heat.",
+		"You feel uncomfortably warm.",
+		"Your overheated skin itches."
+		)
+
+	has_limbs = list(
+		BP_TORSO =  list("path" = /obj/item/organ/external/chest),
+		BP_GROIN =  list("path" = /obj/item/organ/external/groin),
+		BP_HEAD =   list("path" = /obj/item/organ/external/head/vr/werebeast),
+		BP_L_ARM =  list("path" = /obj/item/organ/external/arm),
+		BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right),
+		BP_L_LEG =  list("path" = /obj/item/organ/external/leg),
+		BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right),
+		BP_L_HAND = list("path" = /obj/item/organ/external/hand),
+		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right),
+		BP_L_FOOT = list("path" = /obj/item/organ/external/foot),
+		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right)
+		)
