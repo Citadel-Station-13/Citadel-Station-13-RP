@@ -44,6 +44,8 @@ GLOBAL_LIST(topic_status_cache)
 
 	config_legacy.post_load()
 
+	LoadVerbs(/datum/verbs/menu)
+
 	if(config && config_legacy.server_name != null && config_legacy.server_suffix && world.port > 0)
 		// dumb and hardcoded but I don't care~
 		config_legacy.server_name += " #[(world.port % 1000) / 100]"

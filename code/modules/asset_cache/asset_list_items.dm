@@ -16,66 +16,66 @@
 */
 
 /datum/asset/group/nanoui //gonna port tgui-next and kill this shitui
+	// /datum/asset/simple/jquery, //fuckers bundled jquery on it
 	children = list(
-		// /datum/asset/simple/jquery, //fuckers bundled jquery on it
 		/datum/asset/simple/nanoui_js,
 		/datum/asset/simple/nanoui_css,
 		/datum/asset/simple/nanoui_templates
 	)
 
-/datum/asset/simple/nanoui_templates
-	var/list/files = flist("nano/templates/") //sigh
-	for(var/filename in files) //not the kind of flist you think.
-		if(copytext(filename, length(filename)) == "/") // filenames which end in "/" are actually directories, which we want to ignore
+/datum/asset/simple/nanoui_templates/register()
+	for(var/fname in flist("nano/templates/")) //not the kind of flist you think.
+		if(copytext(fname, length(fname)) == "/") // filenames which end in "/" are actually directories, which we want to ignore
 			continue
-		if(!fexists(path + filename))
+		if(!fexists("nano/templates/[fname]"))
 			continue
-		if(findtext(filename, ".txt")) //ignore txt
+		if(findtext(fname, ".txt")) //ignore txt
 			continue
-		assets[filename] = path
+		assets[fname] = "nano/templates/[fname]"
+	..()
 
 /datum/asset/simple/nanoui_js
 	assets = list(
-		'libraries-old.min.js' 		= 'nano/js/libraries-old.min.js',
-		'libraries.min.js' 			= 'nano/js/libraries.min.js',
-		'nano_base_callbacks.js' 	= 'nano/js/nano_base_callbacks.js',
-		'nano_base_helpers.js' 		= 'nano/js/nano_base_helpers.js',
-		'nano_state.js' 			= 'nano/js/nano_state.js',
-		'nano_state_default.js' 	= 'nano/js/nano_state_default.js',
-		'nano_state_manager.js' 	= 'nano/js/nano_state_manager.js',
-		'nano_template.js' 			= 'nano/js/nano_template.js',
-		'nano_utility.js' 			= 'nano/js/nano_utility.js'
+		"libraries-old.min.js" 		= 'nano/js/libraries-old.min.js',
+		"libraries.min.js" 			= 'nano/js/libraries.min.js',
+		"nano_base_callbacks.js" 	= 'nano/js/nano_base_callbacks.js',
+		"nano_base_helpers.js" 		= 'nano/js/nano_base_helpers.js',
+		"nano_state.js" 			= 'nano/js/nano_state.js',
+		"nano_state_default.js" 	= 'nano/js/nano_state_default.js',
+		"nano_state_manager.js" 	= 'nano/js/nano_state_manager.js',
+		"nano_template.js" 			= 'nano/js/nano_template.js',
+		"nano_utility.js" 			= 'nano/js/nano_utility.js'
 	)
 
 /datum/asset/simple/nanoui_css
 	assets = list(
-		'icons.css' 			= 'nano/css/icons.css',
-		'layout_basic.css' 		= 'nano/css/layout_basic.css',
-		'layout_default.css' 	= 'nano/css/layout_default.css',
-		'shared.css' 			= 'nano/css/shared.css',
-		'shared_vr.css' 		= 'nano/css/shared_vr.css'
+		"icons.css" 			= 'nano/css/icons.css',
+		"layout_basic.css" 		= 'nano/css/layout_basic.css',
+		"layout_default.css" 	= 'nano/css/layout_default.css',
+		"shared.css" 			= 'nano/css/shared.css',
+		"shared_vr.css" 		= 'nano/css/shared_vr.css'
 	)
 
 /datum/asset/simple/nanoui_images
 	assets = list(
-		'c_charging.gif' 				= 'nano/images/c_charging.gif',
-		'c_discharging.gif' 			= 'nano/images/c_discharging.gif',
-		'c_max.gif'						= 'nano/images/c_max.gif',
-		'nanomapBackground.png' 		= 'nano/images/nanomapBackground.png',
-		'pills32.png' 					= 'nano/images/pills32.png', //ARGH. WHY AREN'T YOU A SPRITESHEET
-		'uiBackground.png' 				= 'nano/images/uiBackground.png',
-		'uiBackground-Syndicate.png' 	= 'nano/images/uiBackground-Syndicate.png',
-		'uiBasicBackground.png' 		= 'nano/images/uiBasicBackground.png',
-		'uiIcons16.png' 				= 'nano/images/uiIcons16.png',
-		'uiIcons16Green.png' 			= 'nano/images/uiIcons16Green.png',
-		'uiIcons16Red.png' 				= 'nano/images/uiIcons16Red.png',
-		'uiIcons24.png' 				= 'nano/images/uiIcons24.png',
-		'uiIcons64.png' 				= 'nano/images/uiIcons64.png',
-		'uiLinkPendingIcon.gif' 		= 'nano/images/uiLinkPendingIcon.gif',
-		'uiMaskBackground.png' 			= 'nano/images/uiMaskBackground.png',
-		'uiNoticeBackground.png' 		= 'nano/images/uiNoticeBackground.png',
-		'uiTitleFluff.png' 				= 'nano/images/uiTitleFluff.png',
-		'uiTitleFluff-Syndicate.png' 	= 'nano/images/uiTitleFluff-Syndicate.png',
+		"c_charging.gif" 				= 'nano/images/c_charging.gif',
+		"c_discharging.gif" 			= 'nano/images/c_discharging.gif',
+		"c_max.gif"						= 'nano/images/c_max.gif',
+		"nanomapBackground.png" 		= 'nano/images/nanomapBackground.png',
+		"pills32.png" 					= 'nano/images/pills32.png', //ARGH. WHY AREN'T YOU A SPRITESHEET
+		"uiBackground.png" 				= 'nano/images/uiBackground.png',
+		"uiBackground-Syndicate.png" 	= 'nano/images/uiBackground-Syndicate.png',
+		"uiBasicBackground.png" 		= 'nano/images/uiBasicBackground.png',
+		"uiIcons16.png" 				= 'nano/images/uiIcons16.png',
+		"uiIcons16Green.png" 			= 'nano/images/uiIcons16Green.png',
+		"uiIcons16Red.png" 				= 'nano/images/uiIcons16Red.png',
+		"uiIcons24.png" 				= 'nano/images/uiIcons24.png',
+		"uiIcons64.png" 				= 'nano/images/uiIcons64.png',
+		"uiLinkPendingIcon.gif" 		= 'nano/images/uiLinkPendingIcon.gif',
+		"uiMaskBackground.png" 			= 'nano/images/uiMaskBackground.png',
+		"uiNoticeBackground.jpg" 		= 'nano/images/uiNoticeBackground.jpg',
+		"uiTitleFluff.png" 				= 'nano/images/uiTitleFluff.png',
+		"uiTitleFluff-Syndicate.png" 	= 'nano/images/uiTitleFluff-Syndicate.png'
 	)
 
 /datum/asset/simple/nanoui_images/register()
@@ -85,8 +85,8 @@
 
 /datum/asset/simple/nanoui_misc
 	assets = list(
-		'loading.gif' 		= 'html/images/loading.gif',
-		'no_image32.png' 	= 'html/images/no_image32.png'
+		"loading.gif" 		= 'html/images/loading.gif',
+		"no_image32.png" 	= 'html/images/no_image32.png'
 	)
 
 /datum/asset/simple/nanoui_misc/register()
@@ -171,30 +171,30 @@
 
 /datum/asset/simple/pda_spritesheet_old
 	assets = list(
-		'pda_atmos.png' 		= 'icons/pda_icons/pda_atmos.png',
-		'pda_back.png' 			= 'icons/pda_icons/pda_back.png',
-		'pda_bell.png' 			= 'icons/pda_icons/pda_bell.png',
-		'pda_blank.png' 		= 'icons/pda_icons/pda_blank.png',
-		'pda_boom.png' 			= 'icons/pda_icons/pda_boom.png',
-		'pda_bucket.png' 		= 'icons/pda_icons/pda_bucket.png',
-		'pda_crate.png' 		= 'icons/pda_icons/pda_crate.png',
-		'pda_cuffs.png' 		= 'icons/pda_icons/pda_cuffs.png',
-		'pda_eject.png' 		= 'icons/pda_icons/pda_eject.png',
-		'pda_exit.png'			= 'icons/pda_icons/pda_exit.png',
-		'pda_flashlight.png' 	= 'icons/pda_icons/pda_flashlight.png',
-		'pda_honk.png' 			= 'icons/pda_icons/pda_honk.png',
-		'pda_mail.png' 			= 'icons/pda_icons/pda_mail.png',
-		'pda_medical.png' 		= 'icons/pda_icons/pda_medical.png',
-		'pda_menu.png' 			= 'icons/pda_icons/pda_menu.png',
-		'pda_mule.png' 			= 'icons/pda_icons/pda_mule.png',
-		'pda_notes.png' 		= 'icons/pda_icons/pda_notes.png',
-		'pda_power.png' 		= 'icons/pda_icons/pda_power.png',
-		'pda_rdoor.png' 		= 'icons/pda_icons/pda_rdoor.png',
-		'pda_reagent.png' 		= 'icons/pda_icons/pda_reagent.png',
-		'pda_refresh.png' 		= 'icons/pda_icons/pda_refresh.png',
-		'pda_scanner.png' 		= 'icons/pda_icons/pda_scanner.png',
-		'pda_signaler.png' 		= 'icons/pda_icons/pda_signaler.png',
-		'pda_status.png' 		= 'icons/pda_icons/pda_status.png'
+		"pda_atmos.png" 		= 'icons/pda_icons/pda_atmos.png',
+		"pda_back.png" 			= 'icons/pda_icons/pda_back.png',
+		"pda_bell.png" 			= 'icons/pda_icons/pda_bell.png',
+		"pda_blank.png" 		= 'icons/pda_icons/pda_blank.png',
+		"pda_boom.png" 			= 'icons/pda_icons/pda_boom.png',
+		"pda_bucket.png" 		= 'icons/pda_icons/pda_bucket.png',
+		"pda_crate.png" 		= 'icons/pda_icons/pda_crate.png',
+		"pda_cuffs.png" 		= 'icons/pda_icons/pda_cuffs.png',
+		"pda_eject.png" 		= 'icons/pda_icons/pda_eject.png',
+		"pda_exit.png"			= 'icons/pda_icons/pda_exit.png',
+		"pda_flashlight.png" 	= 'icons/pda_icons/pda_flashlight.png',
+		"pda_honk.png" 			= 'icons/pda_icons/pda_honk.png',
+		"pda_mail.png" 			= 'icons/pda_icons/pda_mail.png',
+		"pda_medical.png" 		= 'icons/pda_icons/pda_medical.png',
+		"pda_menu.png" 			= 'icons/pda_icons/pda_menu.png',
+		"pda_mule.png" 			= 'icons/pda_icons/pda_mule.png',
+		"pda_notes.png" 		= 'icons/pda_icons/pda_notes.png',
+		"pda_power.png" 		= 'icons/pda_icons/pda_power.png',
+		"pda_rdoor.png" 		= 'icons/pda_icons/pda_rdoor.png',
+		"pda_reagent.png" 		= 'icons/pda_icons/pda_reagent.png',
+		"pda_refresh.png" 		= 'icons/pda_icons/pda_refresh.png',
+		"pda_scanner.png" 		= 'icons/pda_icons/pda_scanner.png',
+		"pda_signaler.png" 		= 'icons/pda_icons/pda_signaler.png',
+		"pda_status.png" 		= 'icons/pda_icons/pda_status.png'
 	)
 /*
 /datum/asset/spritesheet/simple/paper
@@ -219,10 +219,10 @@
 */
 /datum/asset/simple/paper_spritesheet_old
 	assets = list(
-		'ntlogo.png' 	= 'html/images/ntlogo.png',
-		'sglogo.png' 	= 'html/images/sglogo.png',
-		'talisman.png' 	= 'html/images/talisman.png',
-		'paper_bg.png' 	= 'html/images/paper_bg.png'
+		"ntlogo.png" 	= 'html/images/ntlogo.png',
+		"sglogo.png" 	= 'html/images/sglogo.png',
+		"talisman.png" 	= 'html/images/talisman.png',
+		"paper_bg.png" 	= 'html/images/paper_bg.png'
 	)
 /*
 /datum/asset/simple/IRV
@@ -254,10 +254,10 @@
 		"burn-exclamation.png" = 'html/burn-exclamation.png',
 		"chevron.png" = 'html/chevron.png',
 		"chevron-expand.png" = 'html/chevron-expand.png',
-		"scales.png" = 'html/scales.png',
-		"coding.png" = 'html/coding.png',
-		"ban.png" = 'html/ban.png',
-		"chrome-wrench.png" = 'html/chrome-wrench.png',
+//		"scales.png" = 'html/scales.png',
+//		"coding.png" = 'html/coding.png',
+//		"ban.png" = 'html/ban.png',
+//		"chrome-wrench.png" = 'html/chrome-wrench.png',
 		"changelog.css" = 'html/changelog.css'
 	)
 
