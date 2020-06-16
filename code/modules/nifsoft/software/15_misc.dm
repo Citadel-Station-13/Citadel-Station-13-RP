@@ -23,8 +23,9 @@
 
 			H.visible_message("<span class='warning'>Thin snakelike tendrils grow from [H] and connect to \the [apc].</span>","<span class='notice'>Thin snakelike tendrils grow from you and connect to \the [apc].</span>")
 
-	deactivate()
-		if((. = ..()))
+	deactivate(force = FALSE)
+		. = ..()
+		if(.)
 			apc = null
 
 	life()
@@ -153,12 +154,7 @@
 
 			nif.human.Stun(10)
 
-			spawn(0)
-				deactivate()
-
-	deactivate()
-		if((. = ..()))
-			return TRUE
+			deactivate()
 
 	stat_text()
 		return "Change Size"
@@ -180,7 +176,7 @@
 				H.display_alt_appearance("animals", justme)
 				alt_farmanimals += nif.human
 
-	deactivate()
+	deactivate(force = FALSE)
 		if((. = ..()))
 			var/list/justme = list(nif.human)
 			for(var/human in human_mob_list)

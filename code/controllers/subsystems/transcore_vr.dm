@@ -25,7 +25,7 @@ SUBSYSTEM_DEF(transcore)
 	var/datum/transhuman/mind_record/list/backed_up = list()	// All known mind records, indexed by MR.mindname/mind.name
 	var/datum/transhuman/mind_record/list/has_left = list()		// Why do we even have this?
 	var/datum/transhuman/body_record/list/body_scans = list()	// All known body records, indexed by BR.mydna.name
-	var/obj/item/implant/backup/list/implants = list()	// All OPERATING implants that are being ticked
+	var/list/obj/item/implant/backup/list/implants = list()	// All OPERATING implants that are being ticked
 
 	var/list/current_run = list()
 
