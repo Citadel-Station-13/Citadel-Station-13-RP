@@ -400,3 +400,11 @@
 		return
 	breath_initial_temp = air.temperature
 	air.temperature = max(targettemp, air.temperature)
+	// potentially shitcode, let's filter out EVERYTHING but oxygen
+	var/datum/gas_mixture/out = new
+	out.gases = air.gases	// give them our list
+	air.gases = list()		// IMPORTANT: wipe our list
+	if(out.gases[datum/gas/oxygen])		//if they have oxy
+		air.gases[/datum/gas/oxygen] = out.gases[/datum/gas/oxygen]		//take it from them
+		out.gases -= /datum/gas/oxygen	// remove theirs
+	return out		//put the filtered out in environment
