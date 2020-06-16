@@ -78,6 +78,9 @@ require only minor tweaks.
 #define ZTRAIT_UP "Up"
 #define ZTRAIT_DOWN "Down"
 
+// string - level name
+#define ZTRAIT_NAME "Name"
+
 // enum - how space transitions should affect this level
 #define ZTRAIT_LINKAGE "Linkage"
 	// UNAFFECTED if absent - no space transitions
