@@ -469,6 +469,10 @@
 		var/mob/M = src.loc
 		M.update_inv_wear_mask()
 
+/**
+  * Filters an air mixture for breathing. Acts DIRECTLY on air mixture.
+  * Returns a gas_mixture or null. If a gas mixture is returned, it will be released to the environment.
+  */
 /obj/item/clothing/mask/proc/filter_air(datum/gas_mixture/air)
 	return
 
