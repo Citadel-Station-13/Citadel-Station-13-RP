@@ -103,7 +103,7 @@
 /obj/item/tank/vox/Initialize()
 	..()
 
-	air_contents.adjust_gas(/datum/gas/phoron, (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
+	air_contents.adjust_gas(/datum/gas/phoron, (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
 	return
 
 /*
