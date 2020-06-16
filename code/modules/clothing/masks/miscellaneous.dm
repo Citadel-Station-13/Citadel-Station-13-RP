@@ -289,8 +289,6 @@
 	icon_state = "bandskull"
 	item_state_slots = list(slot_r_hand_str = "bandskull", slot_l_hand_str = "bandskull")
 
-#define REBREATHER_PROCESS_CHECK if(prob(80)) return
-
 /obj/item/clothing/mask/rebreather
 	name = "personal rebreather"
 	desc = "A rebreather that heats up local atmosphere to safe temperatures."
@@ -323,7 +321,8 @@
 		if(CU =< 0)
 			CU = 1
 		chargeuse = CU
-		REBREATHER_PROCESS_CHECK
+		if(prob(90))
+			return
 		var/flavormsg = pick(1,2,3)
 		switch(flavormsg)
 			if(1)
@@ -381,5 +380,3 @@
 	if(air.temperature < 303)
 		return FALSE
 	..()
-
-#undef REBREATHER_PROCESS_CHECK
