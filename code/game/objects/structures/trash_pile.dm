@@ -246,7 +246,7 @@
 					prob(1);/obj/item/sleevemate,
 				//	prob(1);/obj/item/bodysnatcher, //VORECode default probability, 0.2%
 					prob(1);/obj/item/beartrap,
-					prob(1);/obj/item/cell/hyper, // Changed to hyper because empty cells no longer exist
+					prob(1);/obj/item/cell/hyper/empty,
 				//	prob(1);/obj/item/disk/nifsoft/compliance, //VORECode default probability, 0.2%
 					prob(1);/obj/item/material/knife/tacknife,
 					prob(1);/obj/item/clothing/accessory/storage/brown_vest,
