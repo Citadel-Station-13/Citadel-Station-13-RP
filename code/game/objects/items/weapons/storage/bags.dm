@@ -128,16 +128,12 @@
 		O.attackby(src, user)
 
 /obj/item/storage/bag/ore/equipped(mob/user)
-	..()
-	if(user.get_inventory_slot(src) in list(slot_wear_suit, slot_l_hand, slot_l_hand, slot_belt)) //Basically every place they can go. Makes sure it doesn't unregister if moved to other slots.
-		RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/autoload)
+	. = ..()
+	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/autoload)
 
 /obj/item/storage/bag/ore/dropped(mob/user)
-	..()
-	if(user.get_inventory_slot(src) in list(slot_wear_suit, slot_l_hand, slot_l_hand, slot_belt)) //See above. This should really be a define.
-		RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/autoload, override = TRUE)
-	else
-		UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
+	. = ..()
+	UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 
 /obj/item/storage/bag/ore/proc/autoload(datum/source, atom/oldLoc, dir, forced)
 	var/obj/item/ore/O = locate() in get_turf(src)
