@@ -826,9 +826,7 @@
 /area/submap/cave/cultmine)
 "db" = (
 /obj/effect/decal/cleanable/dirt,
-/mob/living/simple_mob/construct/shade{
-	hostile = 1
-	},
+/mob/living/simple_mob/construct/shade,
 /turf/simulated/floor/tiled/freezer,
 /area/submap/cave/cultmine)
 "dc" = (
