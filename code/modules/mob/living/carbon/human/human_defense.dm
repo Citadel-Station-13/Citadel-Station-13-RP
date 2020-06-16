@@ -538,14 +538,6 @@ emp_act
 	var/penetrated_dam = max(0,(damage - SS.breach_threshold))
 	if(penetrated_dam) SS.create_breaches(damtype, penetrated_dam)
 
-//Anal Werewolf here, had to add this in to get shit working for the map, basically this is to allow the IFF system from TGMC to work, needed for some items.
-/mob/living/carbon/human/proc/get_target_lock(unique_access)
-	var/obj/item/weapon/card/id/C = wear_id
-	if(!istype(C)) C = get_active_hand()
-	if(!istype(C)) return
-	if(!(unique_access in C.access)) return
-	return 1
-
 /mob/living/carbon/human/reagent_permeability()
 	var/perm = 0
 
