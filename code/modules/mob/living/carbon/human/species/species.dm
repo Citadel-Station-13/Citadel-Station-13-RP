@@ -263,6 +263,13 @@
 /datum/species/proc/sanitize_name(var/name, var/robot = 0)
 	return sanitizeName(name, MAX_NAME_LEN, robot)
 
+GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
+	/datum/gas/oxygen = /obj/item/tank/emergency/oxygen,
+	/datum/gas/nitrogen = /obj/item/tank/emergency/nitrogen,
+	/datum/gas/phoron = /obj/item/tank/emergency/phoron,
+	/datum/gas/carbon_dioxide = /obj/item/tank/emergency/carbon_dioxide
+))
+
 /datum/species/proc/equip_survival_gear(var/mob/living/carbon/human/H,var/extendedtank = 0,var/comprehensive = 0)
 	var/boxtype = /obj/item/storage/box/survival //Default survival box
 
@@ -282,7 +289,7 @@
 	//If not synth, they get an air tank (if they breathe)
 	if(!synth && breath_type)
 		//Create a tank (if such a thing exists for this species)
-		var/tanktext = "/obj/item/tank/emergency/" + GLOB.meta_gas_ids[breath_type]
+		var/tanktext = GLOB.species_oxygen_tank_by_gas[breath_type]
 		var/obj/item/tank/emergency/tankpath //Will force someone to come look here if they ever alter this path.
 		if(extendedtank)
 			tankpath = text2path(tanktext + "/engi")
@@ -294,6 +301,8 @@
 
 		if(tankpath)
 			new tankpath(box)
+		else
+			stack_trace("Could not find a tank path for breath type [breath_type]
 
 	//If they are synth, they get a smol battery
 	else if(synth)
