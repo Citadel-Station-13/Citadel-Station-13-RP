@@ -390,7 +390,7 @@
 /area/engineering/lower/breakroom)
 "bb" = (
 /turf/simulated/wall/r_wall,
-/area/boreas/surfacebase/outside)
+/area/maintenance/substation/engineering)
 "bc" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -406,7 +406,7 @@
 	icon_state = "0-4"
 	},
 /turf/simulated/floor,
-/area/boreas/surfacebase/outside)
+/area/maintenance/substation/engineering)
 "bd" = (
 /obj/machinery/vending/snack,
 /turf/simulated/floor/tiled/dark,
@@ -1870,7 +1870,7 @@
 	icon_state = "0-8"
 	},
 /turf/simulated/floor,
-/area/boreas/surfacebase/outside)
+/area/maintenance/substation/engineering)
 "dK" = (
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 5
@@ -3087,7 +3087,7 @@
 	req_one_access = list(10)
 	},
 /turf/simulated/floor,
-/area/engineering/hallway)
+/area/maintenance/substation/engineering)
 "fw" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4
@@ -9466,7 +9466,7 @@
 	RCon_tag = "Engineering Substation Bypass"
 	},
 /turf/simulated/floor,
-/area/boreas/surfacebase/outside)
+/area/maintenance/substation/engineering)
 "qF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -9540,7 +9540,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor,
-/area/boreas/surfacebase/outside)
+/area/maintenance/substation/engineering)
 "qK" = (
 /obj/effect/floor_decal/borderfloor/corner,
 /obj/effect/floor_decal/corner/yellow/bordercorner,
@@ -10938,7 +10938,7 @@
 	d2 = 4
 	},
 /turf/simulated/floor,
-/area/boreas/surfacebase/outside)
+/area/maintenance/substation/engineering)
 "tx" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -10997,7 +10997,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor,
-/area/boreas/surfacebase/outside)
+/area/maintenance/substation/engineering)
 "tB" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 4
@@ -14260,7 +14260,7 @@
 	opacity = 0
 	},
 /turf/simulated/floor,
-/area/boreas/surfacebase/outside)
+/area/maintenance/substation/engineering)
 "yO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	icon_state = "intact-scrubbers";
@@ -14300,7 +14300,7 @@
 	pixel_y = -32
 	},
 /turf/simulated/floor,
-/area/boreas/surfacebase/outside)
+/area/maintenance/substation/engineering)
 "yR" = (
 /obj/machinery/alarm{
 	dir = 1;
@@ -14311,11 +14311,11 @@
 	dir = 1
 	},
 /turf/simulated/floor,
-/area/boreas/surfacebase/outside)
+/area/maintenance/substation/engineering)
 "yS" = (
 /obj/machinery/light/small,
 /turf/simulated/floor,
-/area/boreas/surfacebase/outside)
+/area/maintenance/substation/engineering)
 "yT" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -14751,7 +14751,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor,
-/area/boreas/surfacebase/outside)
+/area/maintenance/substation/cargo)
 "Aj" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -14791,11 +14791,11 @@
 	icon_state = "16-0"
 	},
 /turf/simulated/floor,
-/area/boreas/surfacebase/outside)
+/area/maintenance/substation/cargo)
 "CZ" = (
 /obj/structure/stairs/south,
 /turf/simulated/floor,
-/area/boreas/surfacebase/outside)
+/area/maintenance/substation/cargo)
 "Ee" = (
 /obj/machinery/power/sensor{
 	name = "Powernet Sensor - Cargo Subgrid";
@@ -14814,7 +14814,10 @@
 	icon_state = "0-2"
 	},
 /turf/simulated/floor,
-/area/boreas/surfacebase/outside)
+/area/maintenance/substation/cargo)
+"Hf" = (
+/turf/simulated/wall,
+/area/maintenance/substation/cargo)
 "HC" = (
 /obj/structure/cable/green{
 	d2 = 4;
@@ -14831,6 +14834,10 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor,
+/area/maintenance/substation/cargo)
+"Kv" = (
+/obj/machinery/light,
+/turf/simulated/floor/plating/external,
 /area/boreas/surfacebase/outside)
 "Lf" = (
 /obj/machinery/alarm{
@@ -14839,7 +14846,7 @@
 	pixel_y = 0
 	},
 /turf/simulated/floor,
-/area/boreas/surfacebase/outside)
+/area/maintenance/substation/cargo)
 "Lx" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -14847,7 +14854,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor,
-/area/boreas/surfacebase/outside)
+/area/maintenance/substation/cargo)
 "MG" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -14862,13 +14869,13 @@
 	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor,
-/area/boreas/surfacebase/outside)
+/area/maintenance/substation/cargo)
 "NF" = (
 /obj/machinery/power/breakerbox/activated{
 	RCon_tag = "Cargo Substation Bypass"
 	},
 /turf/simulated/floor,
-/area/boreas/surfacebase/outside)
+/area/maintenance/substation/cargo)
 "NW" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	icon_state = "warningcorner";
@@ -14880,7 +14887,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor,
-/area/boreas/surfacebase/outside)
+/area/maintenance/substation/cargo)
 "Ok" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -14899,7 +14906,7 @@
 /area/boreas/surfacebase/outside)
 "Ol" = (
 /turf/simulated/floor,
-/area/boreas/surfacebase/outside)
+/area/maintenance/substation/cargo)
 "Os" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -14908,6 +14915,15 @@
 	},
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor,
+/area/maintenance/substation/cargo)
+"QV" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/light,
+/turf/simulated/floor/plating/external,
 /area/boreas/surfacebase/outside)
 "RN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -14928,6 +14944,12 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor,
+/area/maintenance/substation/cargo)
+"Uh" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/plating/external,
 /area/boreas/surfacebase/outside)
 "Um" = (
 /obj/machinery/power/terminal,
@@ -14939,7 +14961,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor,
-/area/boreas/surfacebase/outside)
+/area/maintenance/substation/cargo)
 "VC" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -14950,7 +14972,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor,
-/area/boreas/surfacebase/outside)
+/area/maintenance/substation/cargo)
 "VL" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -14972,7 +14994,7 @@
 	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor,
-/area/boreas/surfacebase/outside)
+/area/maintenance/substation/cargo)
 "Xe" = (
 /obj/machinery/power/smes/buildable{
 	charge = 0;
@@ -14987,7 +15009,7 @@
 	icon_state = "0-8"
 	},
 /turf/simulated/floor,
-/area/boreas/surfacebase/outside)
+/area/maintenance/substation/cargo)
 "Zy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	icon_state = "intact-scrubbers";
@@ -53788,11 +53810,11 @@ cb
 cb
 cb
 cb
-cb
-cb
+bb
+bb
 fv
-cb
-cb
+bb
+bb
 cb
 cb
 cb
@@ -54114,7 +54136,7 @@ bb
 bc
 qJ
 yQ
-gq
+bb
 gI
 hg
 hH
@@ -54436,7 +54458,7 @@ bb
 dJ
 tw
 yR
-gq
+bb
 gI
 hh
 hH
@@ -54758,7 +54780,7 @@ bb
 qE
 tA
 yS
-gq
+bb
 gJ
 gJ
 gJ
@@ -55080,7 +55102,7 @@ bb
 bb
 yN
 bb
-gq
+bb
 gK
 gJ
 gJ
@@ -57052,7 +57074,7 @@ sS
 sS
 sS
 zn
-bE
+Kv
 aa
 aa
 aa
@@ -60242,7 +60264,7 @@ bE
 bE
 bE
 bE
-bE
+Uh
 bE
 bE
 bE
@@ -60261,7 +60283,7 @@ bE
 bE
 bE
 bE
-bE
+Uh
 bE
 bE
 bE
@@ -62809,7 +62831,7 @@ aa
 aa
 bE
 rN
-bE
+Kv
 aa
 aa
 bE
@@ -62827,7 +62849,7 @@ bE
 aa
 bE
 rN
-bE
+Kv
 aa
 aa
 aa
@@ -70555,7 +70577,7 @@ bE
 aa
 bE
 rN
-bE
+Kv
 aa
 aa
 aa
@@ -70859,7 +70881,7 @@ aa
 aa
 bE
 rN
-bE
+Kv
 aa
 aa
 bE
@@ -72477,7 +72499,7 @@ bE
 bE
 bE
 bE
-bE
+Uh
 bE
 bE
 bE
@@ -72493,7 +72515,7 @@ bE
 bE
 bE
 bE
-bE
+Uh
 bE
 bE
 bE
@@ -72514,7 +72536,7 @@ bE
 bE
 bE
 bE
-bE
+Uh
 bE
 bE
 bE
@@ -75725,7 +75747,7 @@ aa
 aa
 aa
 bE
-VL
+QV
 aa
 aa
 aa
@@ -77299,7 +77321,7 @@ eI
 cM
 bE
 rN
-bE
+Kv
 aa
 aa
 aa
@@ -82487,7 +82509,7 @@ aa
 aa
 aa
 bE
-VL
+QV
 aa
 aa
 aa
@@ -84742,12 +84764,12 @@ aa
 aa
 bE
 VL
-gC
-gC
-gC
-gC
-gC
-gC
+Hf
+Hf
+Hf
+Hf
+Hf
+Hf
 aa
 aa
 aa
@@ -85064,12 +85086,12 @@ aa
 aa
 bE
 VL
-gC
+Hf
 HC
 Os
 NF
 BP
-gC
+Hf
 aa
 aa
 aa
@@ -85391,7 +85413,7 @@ zG
 Um
 Xe
 VC
-gC
+Hf
 aa
 aa
 aa
@@ -85713,7 +85735,7 @@ TT
 NW
 Ee
 Lx
-gC
+Hf
 aa
 aa
 aa
@@ -86030,12 +86052,12 @@ aa
 aa
 bE
 bE
-gC
+Hf
 Ol
 Lf
 CZ
 Ol
-gC
+Hf
 aa
 aa
 aa
@@ -86352,12 +86374,12 @@ aa
 aa
 aa
 aa
-gC
-gC
-gC
-gC
-gC
-gC
+Hf
+Hf
+Hf
+Hf
+Hf
+Hf
 aa
 aa
 aa
