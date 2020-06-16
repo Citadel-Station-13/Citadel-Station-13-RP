@@ -289,20 +289,20 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	//If not synth, they get an air tank (if they breathe)
 	if(!synth && breath_type)
 		//Create a tank (if such a thing exists for this species)
-		var/tanktext = GLOB.species_oxygen_tank_by_gas[breath_type]
-		var/obj/item/tank/emergency/tankpath //Will force someone to come look here if they ever alter this path.
+		var/given_path = GLOB.species_oxygen_tank_by_gas[breath_type]
+		var/tankpath
 		if(extendedtank)
-			tankpath = text2path(tanktext + "/engi")
+			tankpath = text2path("[given_path]" + "/engi")
 			if(!tankpath) //Is it just that there's no /engi?
-				tankpath = text2path(tanktext + "/double")
+				tankpath = text2path("[given_path]" + "/double")
 
 		if(!tankpath)
-			tankpath = text2path(tanktext)
+			tankpath = text2path(given_path)
 
 		if(tankpath)
 			new tankpath(box)
 		else
-			stack_trace("Could not find a tank path for breath type [breath_type]
+			stack_trace("Could not find a tank path for breath type [breath_type], given path was [given_path].")
 
 	//If they are synth, they get a smol battery
 	else if(synth)
