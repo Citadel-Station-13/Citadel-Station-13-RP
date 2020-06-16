@@ -86,13 +86,13 @@ var/obj/screen/robot_inventory
 	action_intent = using
 
 //Cell
-	mymob.cells = new /obj/screen()
-	mymob.cells.icon = ui_style
-	mymob.cells.icon_state = "charge-empty"
-	mymob.cells.alpha = ui_alpha
-	mymob.cells.name = "cell"
-	mymob.cells.screen_loc = ui_toxin
-	src.other += mymob.cells
+	mymob:cells = new /obj/screen()
+	mymob:cells.icon = ui_style
+	mymob:cells.icon_state = "charge-empty"
+	mymob:cells.alpha = ui_alpha
+	mymob:cells.name = "cell"
+	mymob:cells.screen_loc = ui_toxin
+	src.other += mymob:cells
 
 //Health
 	mymob.healths = new /obj/screen()
@@ -195,7 +195,7 @@ var/obj/screen/robot_inventory
 
 	mymob.client.screen = list()
 
-	mymob.client.screen += list( mymob.throw_icon, mymob.zone_sel, mymob.oxygen, mymob.fire, mymob.hands, mymob.healths, mymob.cells, mymob.pullin, robot_inventory, mymob.gun_setting_icon)
+	mymob.client.screen += list( mymob.throw_icon, mymob.zone_sel, mymob.oxygen, mymob.fire, mymob.hands, mymob.healths, mymob:cells, mymob.pullin, robot_inventory, mymob.gun_setting_icon)
 	mymob.client.screen += src.adding + src.other
 	mymob.client.screen += mymob.client.void
 
