@@ -557,7 +557,7 @@
 "tP" = (/obj/structure/table/rack,/obj/effect/floor_decal/industrial/outline/yellow,/obj/item/storage/box/sniperammo,/obj/item/storage/box/sniperammo,/obj/item/storage/box/sniperammo,/obj/item/storage/box/sniperammo,/turf/unsimulated/floor{icon_state = "vault"; dir = 5},/area/centcom/security)
 "tS" = (/turf/unsimulated/floor{icon_state = "vault"; dir = 5},/area/tdome/tdome1)
 "tT" = (/obj/structure/table/rack,/obj/item/storage/box/frags,/obj/effect/floor_decal/industrial/outline/yellow,/turf/unsimulated/floor{icon_state = "vault"; dir = 5},/area/centcom/security)
-"tU" = (/obj/machinery/door/airlock/glass_external{frequency = 1380; icon_state = "door_locked"; id_tag = "escape_shuttle_hatch_offsite"; locked = 1; name = "Shuttle Hatch"},/turf/simulated/shuttle/floor/yellow,/area/shuttle/escape/centcom{base_turf = /turf/unsimulated/floor/techfloor_grid})
+"tU" = (/obj/machinery/door/airlock/glass_external{frequency = 1380; icon_state = "door_locked"; id_tag = "escape_shuttle_hatch_offsite", "escape_shuttle_hatch_station"; locked = 1; name = "Shuttle Hatch"},/turf/simulated/shuttle/floor/yellow,/area/shuttle/escape/centcom{base_turf = /turf/unsimulated/floor/techfloor_grid})
 "tW" = (/obj/machinery/vending/fitness,/turf/unsimulated/floor{icon_state = "steel"},/area/centcom/bathroom)
 "ub" = (/obj/structure/table/rack,/obj/item/gun/energy/pulse_rifle,/obj/item/gun/energy/pulse_rifle,/obj/item/gun/energy/pulse_rifle,/obj/item/gun/energy/pulse_rifle,/obj/item/gun/energy/pulse_rifle,/obj/item/gun/energy/pulse_rifle,/obj/item/storage/secure/briefcase/nsfw_pack,/turf/unsimulated/floor{icon_state = "dark"},/area/centcom/specops)
 "ue" = (/turf/unsimulated/floor/steel{icon_state = "white"},/area/centcom/bathroom)
