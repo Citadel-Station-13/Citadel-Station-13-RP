@@ -82,7 +82,7 @@
 
 /turf/simulated/floor/outdoors/snow/path/fourway
 	name = "path"
-	icon_state = "Snow Path-H"
+	icon_state = "Snow Path-4"
 
 /turf/simulated/floor/outdoors/snow/path/end
 	name = "path"
