@@ -24,8 +24,8 @@
 	)
 
 /datum/asset/simple/nanoui_templates
-	var/list/f_list = flist(nano/templates/) //sigh
-	for(var/filename in f_list) //not the kind of flist you think.
+	var/list/files = flist("nano/templates/") //sigh
+	for(var/filename in files) //not the kind of flist you think.
 		if(copytext(filename, length(filename)) == "/") // filenames which end in "/" are actually directories, which we want to ignore
 			continue
 		if(!fexists(path + filename))
