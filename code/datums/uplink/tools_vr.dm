@@ -12,9 +12,9 @@
 	path = /obj/item/tank/emergency/phoron/double
 
 /datum/uplink_item/item/tools/suitcooler
-	name = "Emergency Suit Cooler"
+	name = "Suit Cooler"
 	item_cost = 2
-	path = /obj/item/suit_cooling_unit/emergency
+	path = /obj/item/suit_cooling_unit
 
 /datum/uplink_item/item/tools/basiclaptop
 	name = "Laptop (Basic)"
