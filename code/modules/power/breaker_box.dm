@@ -30,6 +30,7 @@
 
 /obj/machinery/power/breakerbox/Initialize()
 	. = ..()
+	wires = new(src)
 	default_apply_parts()
 
 /obj/machinery/power/breakerbox/activated
