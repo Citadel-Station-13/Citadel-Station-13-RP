@@ -297,7 +297,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 				tankpath = text2path("[given_path]" + "/double")
 
 		if(!tankpath)
-			tankpath = text2path(given_path)
+			tankpath = given_path
 
 		if(tankpath)
 			new tankpath(box)
