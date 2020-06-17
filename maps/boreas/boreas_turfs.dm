@@ -11,8 +11,7 @@ BOREAS_TURF_CREATE(/turf/simulated/floor)
 
 /turf/simulated/floor/boreas_indoors
 	BOREAS_SET_ATMOS
-/turf/simulated/floor/boreas_indoors/update_graphic(list/graphic_add = null, list/graphic_remove = null)
-	return 0
+	allow_gas_overlays = FALSE
 
 BOREAS_TURF_CREATE(/turf/simulated/floor/reinforced)
 BOREAS_TURF_CREATE(/turf/simulated/floor/tiled/steel_dirty)
