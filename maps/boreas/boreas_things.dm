@@ -5,7 +5,7 @@
 
 //Special map objects
 /obj/effect/landmark/map_data/boreas
-    height = 7
+    height = 3
 
 /obj/machinery/atmospherics/unary/vent_pump/positive
 	use_power = 1

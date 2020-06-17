@@ -1,5 +1,5 @@
 ////////////////////////////////////////
-// Boreas custom shuttle implemnetations
+// Boreas custom shuttle implementations
 ////////////////////////////////////////
 
 /obj/machinery/computer/shuttle_control/boreas_backup
