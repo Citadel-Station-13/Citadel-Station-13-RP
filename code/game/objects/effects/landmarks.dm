@@ -167,29 +167,38 @@
 /obj/effect/landmark/endgameexit
 	name = "bluespacerift"
 
-/obj/effect/landmark/start/jobs/assistant
-	name = "Assistant"
+/obj/effect/landmark/start/jobs/heads/captain
+	name = "Facility Director"
 
-/obj/effect/landmark/start/jobs/cargotech
-	name = "Cargo Technician"
+/obj/effect/landmark/start/jobs/heads/hop
+	name = "Head of Personnel"
 
-/obj/effect/landmark/start/jobs/quartermaster
-	name = "Quartermaster"
+/obj/effect/landmark/start/jobs/heads/hos
+	name = "Head of Security"
 
-/obj/effect/landmark/start/jobs/shaftminer
-	name = "Shaft Miner"
+/obj/effect/landmark/start/jobs/heads/ce
+	name = "Chief Engineer"
+
+/obj/effect/landmark/start/jobs/heads/rd
+	name = "Research Director"
+
+/obj/effect/landmark/start/jobs/heads/cmo
+	name = "Chief Medical Officer"
+
+/obj/effect/landmark/start/jobs/secretary
+	name = "Command Secretary"
 
 /obj/effect/landmark/start/jobs/engineer
 	name = "Station Engineer"
 
 /obj/effect/landmark/start/jobs/atmostech
-	name = "JoinLateGateway"
+	name = "Atmospheric Technician"
 
-/obj/effect/landmark/start/jobs/chiefengi
-	name = "Chief Engineer"
-
-/obj/effect/landmark/start/jobs/medicaldoc
+/obj/effect/landmark/start/jobs/doctor
 	name = "Medical Doctor"
+
+/obj/effect/landmark/start/jobs/geneticist
+	name = "Geneticist"
 
 /obj/effect/landmark/start/jobs/psyche
 	name = "Psychiatrist"
@@ -200,17 +209,80 @@
 /obj/effect/landmark/start/jobs/paramed
 	name = "Paramedic"
 
-/obj/effect/landmark/start/jobs/cmo
-	name = "Chief Medical Officer"
+/obj/effect/landmark/start/jobs/fieldmed
+	name = "Field Medic"
 
-/obj/effect/landmark/start/jobs/viro
-	name = "Virologist"
+/obj/effect/landmark/start/jobs/scientist
+	name = "Scientist"
+
+/obj/effect/landmark/start/jobs/robo
+	name = "Roboticist"
+
+/obj/effect/landmark/start/jobs/xenobio
+	name = "Xenobiologist"
+
+/obj/effect/landmark/start/jobs/explorer
+	name = "Explorer"
+
+/obj/effect/landmark/start/jobs/pathfinder
+	name = "Pathfinder"
+
+/obj/effect/landmark/start/jobs/heads/QM //Let me believe
+	name = "Quartermaster"
+
+/obj/effect/landmark/start/jobs/cargotech
+	name = "Cargo Technician"
+
+/obj/effect/landmark/start/jobs/miner
+	name = "Shaft Miner"
+
+/obj/effect/landmark/start/jobs/bartender
+	name = "Bartender"
+
+/obj/effect/landmark/start/jobs/botanist
+	name = "Botanist"
+
+/obj/effect/landmark/start/jobs/chef
+	name = "Chef"
+
+/obj/effect/landmark/start/jobs/janitor
+	name = "Janitor"
+
+/obj/effect/landmark/start/jobs/librarian
+	name = "Librarian"
+
+/obj/effect/landmark/start/jobs/lawyer
+	name = "Lawyer"
+
+/obj/effect/landmark/start/jobs/chaplain
+	name = "Chaplain"
+
+/obj/effect/landmark/start/jobs/pilot
+	name = "Pilot"
+
+/obj/effect/landmark/start/jobs/visitor
+	name = "Visitor"
+
+/obj/effect/landmark/start/jobs/intern
+	name = "Intern"
+
+/obj/effect/landmark/start/jobs/warden
+	name = "Warden"
+
+/obj/effect/landmark/start/jobs/detective
+	name = "Detective"
+
+/obj/effect/landmark/start/jobs/secoff
+	name = "Security Officer"
+
+/obj/effect/landmark/start/jobs/ai
+	name = "AI"
 
 /obj/effect/landmark/start/jobs/cyborg
 	name = "Cyborg"
 
-/obj/effect/landmark/start/jobs/ai
-	name = "AI"
+/obj/effect/landmark/start/jobs/pai
+	name = "pAI"
 
 /obj/effect/landmark/virtual_reality
 	name = "virtual_reality"
