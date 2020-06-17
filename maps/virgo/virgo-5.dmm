@@ -631,7 +631,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/outpost/research/tox_store)
 "bG" = (
-/obj/machinery/portable_atmospherics/canister/sleeping_agent,
+/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/outpost/research/tox_store)
@@ -746,7 +746,7 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/hallway/toxins_hallway)
 "bT" = (
-/obj/machinery/portable_atmospherics/canister/sleeping_agent,
+/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/dark,
@@ -6175,7 +6175,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10;
 	icon_state = "intact";
-	
+
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -6398,7 +6398,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4;
 	icon_state = "map";
-	
+
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -6896,7 +6896,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4;
 	icon_state = "map";
-	
+
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 5
@@ -7625,7 +7625,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4;
 	icon_state = "map";
-	
+
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/research/hallway/starboard)
@@ -7691,7 +7691,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9;
 	icon_state = "intact";
-	
+
 	},
 /obj/machinery/airlock_sensor{
 	frequency = 1380;
@@ -10143,7 +10143,7 @@
 /turf/simulated/floor/tiled,
 /area/outpost/research/anomaly)
 "tG" = (
-/obj/machinery/portable_atmospherics/canister/sleeping_agent,
+/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
@@ -10462,7 +10462,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
 	dir = 6;
 	icon_state = "intact-scrubbers";
-	
+
 	},
 /turf/simulated/floor/airless{
 	icon_state = "asteroidplating2"
@@ -10481,7 +10481,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
 	dir = 9;
 	icon_state = "intact-scrubbers";
-	
+
 	},
 /turf/simulated/floor/airless{
 	icon_state = "asteroidplating2"
@@ -10725,7 +10725,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1;
 	icon_state = "map";
-	
+
 	},
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/north_hall)
@@ -10733,7 +10733,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1;
 	icon_state = "map";
-	
+
 	},
 /obj/machinery/airlock_sensor{
 	frequency = 1380;
@@ -10756,7 +10756,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10;
 	icon_state = "intact";
-	
+
 	},
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	frequency = 1380;
@@ -10873,7 +10873,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9;
 	icon_state = "intact";
-	
+
 	},
 /obj/structure/window/reinforced,
 /turf/simulated/floor/plating,
@@ -11044,7 +11044,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "plant-06";
 	pixel_y = 8;
-	
+
 	},
 /turf/simulated/floor/tiled/dark,
 /area/outpost/mining_main/break_room)
@@ -11762,7 +11762,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5;
 	icon_state = "intact";
-	
+
 	},
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
 	frequency = 1379;
@@ -11788,7 +11788,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1;
 	icon_state = "map";
-	
+
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -11802,7 +11802,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9;
 	icon_state = "intact";
-	
+
 	},
 /obj/machinery/airlock_sensor{
 	frequency = 1379;
@@ -12388,7 +12388,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9;
 	icon_state = "intact";
-	
+
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -12438,7 +12438,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4;
 	icon_state = "intact";
-	
+
 	},
 /obj/machinery/atmospherics/binary/pump{
 	dir = 2
@@ -12450,7 +12450,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/floor/plating,
 /area/outpost/engineering/mining/atmospherics)
@@ -14699,7 +14699,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4;
 	icon_state = "map";
-	
+
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/eva)
@@ -15595,7 +15595,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/engineering/mining/hallway)
@@ -16161,7 +16161,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	nitrogen = 82.1472;
+	initial_gas_mix = "n2=82.1472;TEMP=293.15";
 	oxygen = 21.8366;
 	temperature = 293.15
 	},
@@ -16170,7 +16170,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1;
 	icon_state = "map";
-	
+
 	},
 /obj/structure/cable{
 	d1 = 1;
@@ -16184,7 +16184,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5;
 	icon_state = "intact";
-	
+
 	},
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
 	frequency = 1379;
@@ -16203,7 +16203,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9;
 	icon_state = "intact";
-	
+
 	},
 /obj/machinery/camera/network/engineering_outpost{
 	c_tag = "ENG - Outpost Airlock";
@@ -16255,7 +16255,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	nitrogen = 82.1472;
+	initial_gas_mix = "n2=82.1472;TEMP=293.15";
 	oxygen = 21.8366;
 	temperature = 293.15
 	},
@@ -16279,7 +16279,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	nitrogen = 82.1472;
+	initial_gas_mix = "n2=82.1472;TEMP=293.15";
 	oxygen = 21.8366;
 	temperature = 293.15
 	},
@@ -16996,7 +16996,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4;
 	icon_state = "intact";
-	
+
 	},
 /obj/machinery/alarm{
 	dir = 4;
@@ -17012,7 +17012,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/wall/r_wall,
 /area/outpost/engineering/atmospherics)
@@ -17020,7 +17020,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9;
 	icon_state = "intact";
-	
+
 	},
 /obj/machinery/light,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -17032,7 +17032,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1;
 	icon_state = "map";
-	
+
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -17485,7 +17485,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 6;
 	icon_state = "intact";
-	
+
 	},
 /obj/machinery/meter,
 /turf/simulated/floor,
@@ -17494,7 +17494,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/engineering/hallway)
@@ -17502,7 +17502,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10;
 	icon_state = "intact";
-	
+
 	},
 /obj/structure/cable{
 	d1 = 4;
@@ -17815,7 +17815,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 6;
 	icon_state = "intact";
-	
+
 	},
 /obj/machinery/light{
 	dir = 8;
@@ -17835,7 +17835,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4;
 	icon_state = "intact";
-	
+
 	},
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -17922,7 +17922,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
 	dir = 8;
 	icon_state = "map";
-	
+
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/engineering/solars)
@@ -18332,7 +18332,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
 	dir = 8;
 	icon_state = "map";
-	
+
 	},
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -18432,7 +18432,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10;
 	icon_state = "intact";
-	
+
 	},
 /obj/machinery/airlock_sensor{
 	frequency = 1380;
@@ -18476,7 +18476,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 5;
 	icon_state = "intact";
-	
+
 	},
 /turf/simulated/floor,
 /area/outpost/engineering/solars)
@@ -18931,8 +18931,7 @@
 /area/shuttle/belter/station)
 "KT" = (
 /turf/simulated/shuttle/floor/black{
-	nitrogen = 0;
-	oxygen = 0
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/belter/station)
 "KU" = (
@@ -18951,21 +18950,18 @@
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/black{
-	nitrogen = 0;
-	oxygen = 0
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/belter/station)
 "KX" = (
 /turf/simulated/shuttle/floor/red{
-	nitrogen = 0;
-	oxygen = 0
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/belter/station)
 "KY" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/simulated/shuttle/floor/red{
-	nitrogen = 0;
-	oxygen = 0
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/belter/station)
 "KZ" = (
@@ -18975,8 +18971,7 @@
 	pixel_y = 4
 	},
 /turf/simulated/shuttle/floor/red{
-	nitrogen = 0;
-	oxygen = 0
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/belter/station)
 "La" = (
@@ -18987,8 +18982,7 @@
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/red{
-	nitrogen = 0;
-	oxygen = 0
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/belter/station)
 "Lb" = (
@@ -18999,8 +18993,7 @@
 	dir = 2
 	},
 /turf/simulated/shuttle/floor/red{
-	nitrogen = 0;
-	oxygen = 0
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/belter/station)
 "Ld" = (
@@ -19023,22 +19016,19 @@
 	tag_door = "belter_hatch"
 	},
 /turf/simulated/shuttle/floor/red{
-	nitrogen = 0;
-	oxygen = 0
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/belter/station)
 "Lf" = (
 /obj/machinery/light,
 /turf/simulated/shuttle/floor/black{
-	nitrogen = 0;
-	oxygen = 0
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/belter/station)
 "Lg" = (
 /obj/machinery/computer/shuttle_control/belter,
 /turf/simulated/shuttle/floor/red{
-	nitrogen = 0;
-	oxygen = 0
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/belter/station)
 "Lh" = (
@@ -19046,8 +19036,7 @@
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/red{
-	nitrogen = 0;
-	oxygen = 0
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/belter/station)
 "Li" = (
@@ -19056,8 +19045,7 @@
 	},
 /obj/machinery/light,
 /turf/simulated/shuttle/floor/red{
-	nitrogen = 0;
-	oxygen = 0
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/belter/station)
 "Lj" = (

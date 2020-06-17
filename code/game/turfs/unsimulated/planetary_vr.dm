@@ -1,41 +1,12 @@
-//Atmosphere properties
-#define VIRGO3B_ONE_ATMOSPHERE	82.4 //kPa
-#define VIRGO3B_AVG_TEMP	234 //kelvin
-#define BOREAS_ONE_ATMOSPHERE	44.4 //kPa
-#define BOREAS_AVG_TEMP	124 //kelvin
-
-#define VIRGO3B_PER_N2		0.16 //percent
-#define VIRGO3B_PER_O2		0.00
-#define VIRGO3B_PER_N2O		0.00 //Currently no capacity to 'start' a turf with this. See turf.dm
-#define VIRGO3B_PER_CO2		0.12
-#define VIRGO3B_PER_PHORON	0.72
-#define BOREAS_PER_N2		0.74 //percent
-#define BOREAS_PER_O2		0.18
-#define BOREAS_PER_N2O		0.00 //Currently no capacity to 'start' a turf with this. See turf.dm
-#define BOREAS_PER_CO2		0.07
-#define BOREAS_PER_PHORON	0.01
-
-//Math only beyond this point
-#define VIRGO3B_MOL_PER_TURF	(VIRGO3B_ONE_ATMOSPHERE*CELL_VOLUME/(VIRGO3B_AVG_TEMP*R_IDEAL_GAS_EQUATION))
-#define VIRGO3B_MOL_N2			(VIRGO3B_MOL_PER_TURF * VIRGO3B_PER_N2)
-#define VIRGO3B_MOL_O2			(VIRGO3B_MOL_PER_TURF * VIRGO3B_PER_O2)
-#define VIRGO3B_MOL_N2O			(VIRGO3B_MOL_PER_TURF * VIRGO3B_PER_N2O)
-#define VIRGO3B_MOL_CO2			(VIRGO3B_MOL_PER_TURF * VIRGO3B_PER_CO2)
-#define VIRGO3B_MOL_PHORON		(VIRGO3B_MOL_PER_TURF * VIRGO3B_PER_PHORON)
-#define BOREAS_MOL_PER_TURF	(BOREAS_ONE_ATMOSPHERE*CELL_VOLUME/(BOREAS_AVG_TEMP*R_IDEAL_GAS_EQUATION))
-#define BOREAS_MOL_N2			(BOREAS_MOL_PER_TURF * BOREAS_PER_N2)
-#define BOREAS_MOL_O2			(BOREAS_MOL_PER_TURF * BOREAS_PER_O2)
-#define BOREAS_MOL_N2O			(BOREAS_MOL_PER_TURF * BOREAS_PER_N2O)
-#define BOREAS_MOL_CO2			(BOREAS_MOL_PER_TURF * BOREAS_PER_CO2)
-#define BOREAS_MOL_PHORON		(BOREAS_MOL_PER_TURF * BOREAS_PER_PHORON)
 
 //Turfmakers
-#define VIRGO3B_SET_ATMOS	nitrogen=VIRGO3B_MOL_N2;oxygen=VIRGO3B_MOL_O2;carbon_dioxide=VIRGO3B_MOL_CO2;phoron=VIRGO3B_MOL_PHORON;temperature=VIRGO3B_AVG_TEMP
-#define VIRGO3B_TURF_CREATE(x)	x/virgo3b/nitrogen=VIRGO3B_MOL_N2;x/virgo3b/oxygen=VIRGO3B_MOL_O2;x/virgo3b/carbon_dioxide=VIRGO3B_MOL_CO2;x/virgo3b/phoron=VIRGO3B_MOL_PHORON;x/virgo3b/temperature=VIRGO3B_AVG_TEMP;x/virgo3b/outdoors=TRUE;x/virgo3b/update_graphic(list/graphic_add = null, list/graphic_remove = null) return 0
-#define VIRGO3B_TURF_CREATE_UN(x)	x/virgo3b/nitrogen=VIRGO3B_MOL_N2;x/virgo3b/oxygen=VIRGO3B_MOL_O2;x/virgo3b/carbon_dioxide=VIRGO3B_MOL_CO2;x/virgo3b/phoron=VIRGO3B_MOL_PHORON;x/virgo3b/temperature=VIRGO3B_AVG_TEMP
-#define BOREAS_SET_ATMOS	nitrogen=BOREAS_MOL_N2;oxygen=BOREAS_MOL_O2;carbon_dioxide=BOREAS_MOL_CO2;phoron=BOREAS_MOL_PHORON;temperature=BOREAS_AVG_TEMP
-#define BOREAS_TURF_CREATE(x)	x/boreas/nitrogen=BOREAS_MOL_N2;x/boreas/oxygen=BOREAS_MOL_O2;x/boreas/carbon_dioxide=BOREAS_MOL_CO2;x/boreas/phoron=BOREAS_MOL_PHORON;x/boreas/temperature=BOREAS_AVG_TEMP;x/boreas/outdoors=TRUE;x/boreas/update_graphic(list/graphic_add = null, list/graphic_remove = null) return 0
-#define BOREAS_TURF_CREATE_UN(x)	x/boreas/nitrogen=BOREAS_MOL_N2;x/boreas/oxygen=BOREAS_MOL_O2;x/boreas/carbon_dioxide=BOREAS_MOL_CO2;x/boreas/phoron=BOREAS_MOL_PHORON;x/boreas/temperature=BOREAS_AVG_TEMP
+#define BOREAS_SET_ATMOS	initial_gas_mix=ATMOSPHERE_ID_BOREAS
+#define BOREAS_TURF_CREATE(x)	x/boreas/initial_gas_mix=ATMOSPHERE_ID_BOREAS;x/boreas/outdoors=TRUE;x/boreas/allow_gas_overlays = FALSE
+#define BOREAS_TURF_CREATE_UN(x)	x/boreas/initial_gas_mix=ATMOSPHERE_ID_BOREAS
+
+#define VIRGO3B_SET_ATMOS	initial_gas_mix=ATMOSPHERE_ID_VIRGO3B
+#define VIRGO3B_TURF_CREATE(x)	x/virgo3b/initial_gas_mix=ATMOSPHERE_ID_VIRGO3B;x/virgo3b/outdoors=TRUE;x/virgo3b/allow_gas_overlays = FALSE
+#define VIRGO3B_TURF_CREATE_UN(x)	x/virgo3b/initial_gas_mix=ATMOSPHERE_ID_VIRGO3B
 
 // This is a wall you surround the area of your "planet" with, that makes the atmosphere inside stay within bounds, even if canisters
 // are opened or other strange things occur.

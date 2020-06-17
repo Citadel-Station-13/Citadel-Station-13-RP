@@ -484,7 +484,7 @@
 		if(Rad.anchored)
 			if(!Rad.P)
 				var/obj/item/tank/phoron/Phoron = new/obj/item/tank/phoron(Rad)
-				Phoron.air_contents.gas["phoron"] = 70
+				Phoron.air_contents.gas[/datum/gas/phoron] = 70
 				Rad.drainratio = 0
 				Rad.P = Phoron
 				Phoron.loc = Rad
@@ -523,7 +523,7 @@
 
 				var/obj/item/tank/phoron/Phoron = new/obj/item/tank/phoron(Rad)
 
-				Phoron.air_contents.gas["phoron"] = 29.1154	//This is a full tank if you filled it from a canister
+				Phoron.air_contents.gas[/datum/gas/phoron] = 29.1154	//This is a full tank if you filled it from a canister
 				Rad.P = Phoron
 
 				Phoron.loc = Rad
@@ -536,7 +536,7 @@
 				var/obj/machinery/atmospherics/binary/pump/Pump = M
 				if(Pump.name == "Engine Feed" && response == "Setup Completely")
 					found_the_pump = 1
-					Pump.air2.gas["nitrogen"] = 3750	//The contents of 2 canisters.
+					Pump.air2.gas[/datum/gas/nitrogen] = 3750	//The contents of 2 canisters.
 					Pump.air2.temperature = 50
 					Pump.air2.update_values()
 				Pump.update_use_power(USE_POWER_IDLE)
@@ -564,7 +564,7 @@
 	if(!found_the_pump && response == "Setup Completely")
 		to_chat(src, "<font color='red'>Unable to locate air supply to fill up with coolant, adding some coolant around the supermatter</font>")
 		var/turf/simulated/T = SM.loc
-		T.zone.air.gas["nitrogen"] += 450
+		T.zone.air.gas[/datum/gas/nitrogen] += 450
 		T.zone.air.temperature = 50
 		T.zone.air.update_values()
 
