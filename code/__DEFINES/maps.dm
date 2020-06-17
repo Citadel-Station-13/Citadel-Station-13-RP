@@ -93,6 +93,9 @@ require only minor tweaks.
 // string - type path of the z-level's baseturf (defaults to space)
 #define ZTRAIT_BASETURF "Baseturf"
 
+/// Default gas string. Use for things like setting planetary gasmixtures and such. ATMOSPHERE_ID_USE_ZTRAIT to have a turf use it.
+#define ZTRAIT_DEFAULT_ATMOS "Default Gas String"
+
 // default trait definitions, used by SSmapping
 #define ZTRAITS_CENTCOM list(ZTRAIT_CENTCOM = TRUE)
 #define ZTRAITS_STATION list(ZTRAIT_LINKAGE = CROSSLINKED, ZTRAIT_STATION = TRUE)
