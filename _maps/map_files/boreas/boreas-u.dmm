@@ -15475,6 +15475,9 @@
 "Tu" = (
 /turf/simulated/floor,
 /area/boreas/surfacebase/outside)
+"Tw" = (
+/turf/simulated/floor/outdoors/snow,
+/area/boreas/surfacebase/outside)
 "TT" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -24017,7 +24020,7 @@ aa
 aa
 aa
 aa
-aa
+Tw
 aa
 aa
 aa
