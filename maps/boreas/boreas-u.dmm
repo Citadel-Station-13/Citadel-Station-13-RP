@@ -5251,6 +5251,8 @@
 	d2 = 0;
 	icon_state = "16-0"
 	},
+/obj/machinery/atmospherics/pipe/zpipe/up/scrubbers,
+/obj/machinery/atmospherics/pipe/zpipe/up/supply,
 /turf/simulated/floor/plating/external,
 /area/maintenance/lower)
 "jq" = (
@@ -7969,8 +7971,8 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/storage)
 "nV" = (
-/obj/machinery/portable_atmospherics/canister/sleeping_agent,
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/storage)
 "nW" = (
@@ -8844,9 +8846,9 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/processing)
 "pF" = (
-/obj/machinery/portable_atmospherics/canister/sleeping_agent,
 /obj/machinery/light/small,
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/storage)
 "pG" = (
@@ -13531,7 +13533,7 @@
 /turf/simulated/floor/reinforced/n20,
 /area/engineering/atmos/processing)
 "xJ" = (
-/obj/machinery/portable_atmospherics/canister/sleeping_agent,
+/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
 /turf/simulated/floor/reinforced/n20,
 /area/engineering/atmos/processing)
 "xK" = (
