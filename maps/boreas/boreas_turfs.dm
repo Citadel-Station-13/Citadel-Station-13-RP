@@ -31,26 +31,19 @@ BOREAS_TURF_CREATE(/turf/simulated/floor/outdoors/grass/sif)
 // Overriding these for the sake of submaps that use them on other planets.
 // This means that mining on boreas base and space is oxygen-generating, but solars and mining should use the boreas subtype
 /turf/simulated/mineral
-	oxygen = MOLES_O2STANDARD
-	nitrogen = MOLES_N2STANDARD
-	temperature	= T20C
+	initial_gas_mix = GAS_STRING_STP
+
 /turf/simulated/floor/outdoors
-	oxygen = MOLES_O2STANDARD
-	nitrogen = MOLES_N2STANDARD
-	temperature	= T20C
+	initial_gas_mix = GAS_STRING_STP
+
 /turf/simulated/floor/water
-	oxygen = MOLES_O2STANDARD
-	nitrogen = MOLES_N2STANDARD
-	temperature	= T20C
+	initial_gas_mix = GAS_STRING_STP
 
 /turf/simulated/mineral/vacuum
-	oxygen = 0
-	nitrogen = 0
-	temperature	= TCMB
+	initial_gas_mix = GAS_STRING_VACCUM
+
 /turf/simulated/mineral/floor/vacuum
-	oxygen = 0
-	nitrogen = 0
-	temperature	= TCMB
+	initial_gas_mix = GAS_STRING_VACCUM
 
 BOREAS_TURF_CREATE(/turf/simulated/mineral)
 BOREAS_TURF_CREATE(/turf/simulated/mineral/floor)
