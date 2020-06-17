@@ -82,3 +82,8 @@
 	name = "Chastity Cage"
 	icon_state = "chastcage"
 	has_color = TRUE
+
+/datum/category_item/underwear/bottom/cfishnet_bottom
+	name = "Dyed Fishnets"
+	icon_state = "c_fishnet_lower"
+	has_color = TRUE

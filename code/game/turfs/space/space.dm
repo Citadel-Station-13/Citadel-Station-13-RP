@@ -4,7 +4,7 @@
 	icon_state = "0"
 	dynamic_lighting = 0
 
-	temperature = T20C
+	initial_gas_mix = GAS_STRING_VACCUM
 	thermal_conductivity = OPEN_HEAT_TRANSFER_COEFFICIENT
 	can_build_into_floor = TRUE
 	var/keep_sprite = FALSE

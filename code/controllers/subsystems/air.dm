@@ -15,6 +15,9 @@ SUBSYSTEM_DEF(air)
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 	var/static/list/part_names = list("turfs", "edges", "fire zones", "hotspots", "zones")
 
+	/// Associative id = datum list of generated /datum/atmosphere's.
+	var/list/generated_atmospheres
+
 	var/cost_turfs = 0
 	var/cost_edges = 0
 	var/cost_firezones = 0
@@ -269,6 +272,30 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 //
 // The procs from the ZAS Air Controller are in ZAS/Controller.dm
 //
+
+/**
+  * Initializes all subtypes of /datum/atmosphere and indexes them by key.
+  */
+/datum/controller/subsystem/air/proc/generate_atmospheres()
+	generated_atmospheres = list()
+	for(var/T in subtypesof(/datum/atmosphere))
+		var/datum/atmosphere/A = T
+		if(initial(A.abstract_type) == T)
+			continue
+		A = new T
+		generated_atmospheres[A.id] = A
+
+/**
+  * Preprocess a gas string, replacing it with a specific atmosphere's if necessary.
+  */
+/datum/controller/subsystem/air/proc/preprocess_gas_string(gas_string)
+	if(!generated_atmospheres)
+		generate_atmospheres()
+	gas_string = "[gas_string]"
+	if(!generated_atmospheres[gas_string])
+		return gas_string
+	var/datum/atmosphere/mix = generated_atmospheres[gas_string]
+	return mix.gas_string
 
 #undef SSAIR_TURFS
 #undef SSAIR_EDGES

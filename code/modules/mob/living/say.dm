@@ -36,18 +36,18 @@ var/list/department_radio_keys = list(
 
 	  //kinda localization -- rastaf0
 	  //same keys as above, but on russian keyboard layout. This file uses cp1251 as encoding.
-	  ":ê" = "right ear",	".ê" = "right ear",
-	  ":ä" = "left ear",	".ä" = "left ear",
-	  ":ø" = "intercom",	".ø" = "intercom",
-	  ":ð" = "department",	".ð" = "department",
-	  ":ñ" = "Command",		".ñ" = "Command",
-	  ":ò" = "Science",		".ò" = "Science",
-	  ":ü" = "Medical",		".ü" = "Medical",
-	  ":ó" = "Engineering",	".ó" = "Engineering",
-	  ":û" = "Security",	".û" = "Security",
-	  ":ö" = "whisper",		".ö" = "whisper",
-	  ":å" = "Mercenary",	".å" = "Mercenary",
-	  ":é" = "Supply",		".é" = "Supply",
+	  ":ï¿½" = "right ear",	".ï¿½" = "right ear",
+	  ":ï¿½" = "left ear",	".ï¿½" = "left ear",
+	  ":ï¿½" = "intercom",	".ï¿½" = "intercom",
+	  ":ï¿½" = "department",	".ï¿½" = "department",
+	  ":ï¿½" = "Command",		".ï¿½" = "Command",
+	  ":ï¿½" = "Science",		".ï¿½" = "Science",
+	  ":ï¿½" = "Medical",		".ï¿½" = "Medical",
+	  ":ï¿½" = "Engineering",	".ï¿½" = "Engineering",
+	  ":ï¿½" = "Security",	".ï¿½" = "Security",
+	  ":ï¿½" = "whisper",		".ï¿½" = "whisper",
+	  ":ï¿½" = "Mercenary",	".ï¿½" = "Mercenary",
+	  ":ï¿½" = "Supply",		".ï¿½" = "Supply",
 )
 
 
@@ -94,7 +94,7 @@ proc/get_radio_key_from_channel(var/channel)
 	var/whispering = message_data[3]
 	. = 0
 
-	if((HULK in mutations) && health >= 25 && length(message))
+	if((HULK in mutations) && health >= 25 && length_char(message))
 		message = "[uppertext(message)]!!!"
 		verb = pick("yells","roars","hollers")
 		whispering = 0
@@ -157,20 +157,20 @@ proc/get_radio_key_from_channel(var/channel)
 	var/message_mode = parse_message_mode(message, "headset")
 
 	//Maybe they are using say/whisper to do a quick emote, so do those
-	switch(copytext(message,1,2))
-		if("*") return emote(copytext(message,2))
-		if("^") return custom_emote(1, copytext(message,2))
+	switch(copytext_char(message,1,2))
+		if("*") return emote(copytext_char(message,2))
+		if("^") return custom_emote(1, copytext_char(message,2))
 
 	//Parse the radio code and consume it
 	if (message_mode)
 		if (message_mode == "headset")
-			message = copytext(message,2)	//it would be really nice if the parse procs could do this for us.
+			message = copytext_char(message,2)	//it would be really nice if the parse procs could do this for us.
 		else if (message_mode == "whisper")
 			whispering = 1
 			message_mode = null
-			message = copytext(message,3)
+			message = copytext_char(message,3)
 		else
-			message = copytext(message,3)
+			message = copytext_char(message,3)
 
 	//Clean up any remaining space on the left
 	message = trim_left(message)
@@ -193,7 +193,7 @@ proc/get_radio_key_from_channel(var/channel)
 		message = new_message
 
 	if(speaking)
-		message = copytext(message,2+length(speaking.key))
+		message = copytext_char(message,2+length_char(speaking.key))
 
 	//HIVEMIND languages always send to all people with that language
 	if(speaking && (speaking.flags & HIVEMIND))
@@ -283,7 +283,7 @@ proc/get_radio_key_from_channel(var/channel)
 
 	//VOREStation edit - allows for custom say verbs, overriding all other say-verb types- e.g. "says loudly" instead of "shouts"
 	//You'll still stammer if injured or slur if drunk, but it won't have those specific words
-	var/ending = copytext(message, length(message))
+	var/ending = copytext_char(message, length_char(message))
 
 	if(custom_whisper && whispering)
 		verb = "[custom_whisper]"

@@ -265,7 +265,7 @@
 			var/gases[0]
 			for(var/g in env.gas)
 				var/gas[0]
-				gas["name"] = gas_data.name[g]
+				gas["name"] = GLOB.meta_gas_names[g]
 				gas["percent"] = round((env.gas[g] / t_moles) * 100)
 				gases[++gases.len] = gas
 			data["gas"] = gases

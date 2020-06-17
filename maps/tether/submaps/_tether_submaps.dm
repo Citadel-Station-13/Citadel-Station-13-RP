@@ -10,6 +10,8 @@
 
 	associated_map_datum = /datum/map_z_level/tether_lateload/ships
 
+	ztraits = list()
+
 /datum/map_z_level/tether_lateload/misc
 	name = "Misc"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_SEALED
@@ -21,6 +23,8 @@
 
 	associated_map_datum = /datum/map_z_level/tether_lateload/ships
 
+	ztraits = list()
+
 /datum/map_z_level/tether_lateload/ships
 	name = "Ships"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_SEALED
@@ -31,6 +35,8 @@
 	name = "Tether - Underdark"
 	desc = "Mining, but harder."
 	mappath = 'tether_underdark.dmm'
+
+	ztraits = list(ZTRAIT_MINING = TRUE, ZTRAIT_GRAVITY = TRUE)
 
 	associated_map_datum = /datum/map_z_level/tether_lateload/underdark
 
@@ -82,6 +88,8 @@
 	mappath = 'beach/beach.dmm'
 	associated_map_datum = /datum/map_z_level/tether_lateload/away_beach
 
+	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
+
 /datum/map_z_level/tether_lateload/away_beach
 	name = "Away Mission - Desert Beach"
 	z = Z_LEVEL_BEACH
@@ -91,6 +99,8 @@
 	desc = "The beach away mission's cave."
 	mappath = 'beach/cave.dmm'
 	associated_map_datum = /datum/map_z_level/tether_lateload/away_beach_cave
+
+	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
 
 /datum/map_template/tether_lateload/away_beach_cave/on_map_loaded(z)
 	. = ..()
@@ -116,6 +126,8 @@
 	mappath = 'alienship/alienship.dmm'
 	associated_map_datum = /datum/map_z_level/tether_lateload/away_alienship
 
+	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
+
 /datum/map_z_level/tether_lateload/away_alienship
 	name = "Away Mission - Alien Ship"
 	z = Z_LEVEL_ALIENSHIP
@@ -128,6 +140,8 @@
 	mappath = 'aerostat/aerostat.dmm'
 	associated_map_datum = /datum/map_z_level/tether_lateload/away_aerostat
 
+	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
+
 /datum/map_z_level/tether_lateload/away_aerostat
 	name = "Away Mission - Aerostat"
 	z = Z_LEVEL_AEROSTAT
@@ -137,6 +151,8 @@
 	desc = "The surface from the Virgo 2 Aerostat."
 	mappath = 'aerostat/surface.dmm'
 	associated_map_datum = /datum/map_z_level/tether_lateload/away_aerostat_surface
+
+	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
 
 /datum/map_template/tether_lateload/away_aerostat_surface/on_map_loaded(z)
 	. = ..()
@@ -361,14 +377,14 @@
 				my_mob.maxbodytemp = env.temperature * 1.2
 
 				var/list/gaslist = env.gas
-				my_mob.min_oxy = gaslist["oxygen"] * 0.8
-				my_mob.min_tox = gaslist["phoron"] * 0.8
-				my_mob.min_n2 = gaslist["nitrogen"] * 0.8
-				my_mob.min_co2 = gaslist["carbon_dioxide"] * 0.8
-				my_mob.max_oxy = gaslist["oxygen"] * 1.2
-				my_mob.max_tox = gaslist["phoron"] * 1.2
-				my_mob.max_n2 = gaslist["nitrogen"] * 1.2
-				my_mob.max_co2 = gaslist["carbon_dioxide"] * 1.2
+				my_mob.min_oxy = gaslist[/datum/gas/oxygen] * 0.8
+				my_mob.min_tox = gaslist[/datum/gas/phoron] * 0.8
+				my_mob.min_n2 = gaslist[/datum/gas/nitrogen] * 0.8
+				my_mob.min_co2 = gaslist[/datum/gas/carbon_dioxide] * 0.8
+				my_mob.max_oxy = gaslist[/datum/gas/oxygen] * 1.2
+				my_mob.max_tox = gaslist[/datum/gas/phoron] * 1.2
+				my_mob.max_n2 = gaslist[/datum/gas/nitrogen] * 1.2
+				my_mob.max_co2 = gaslist[/datum/gas/carbon_dioxide] * 1.2
 /* //VORESTATION AI TEMPORARY REMOVAL
 		if(guard)
 			my_mob.returns_home = TRUE

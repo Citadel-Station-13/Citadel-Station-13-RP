@@ -1,7 +1,7 @@
 var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 
 /datum/job/captain
-	title = "Colony Director"
+	title = "Facility Director"
 	flag = CAPTAIN
 	department = "Command"
 	head_position = 1
@@ -22,7 +22,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	ideal_character_age = 70 // Old geezer captains ftw
 
 	outfit_type = /decl/hierarchy/outfit/job/captain
-	alt_titles = list("Site Manager", "Overseer")
+	alt_titles = list("Site Manager", "Overseer", "Director of Operations")
 
 /*
 /datum/job/captain/equip(var/mob/living/carbon/human/H)
@@ -42,7 +42,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the Colony Director"
+	supervisors = "the Facility Director"
 	selection_color = "#2F2F7F"
 	idtype = /obj/item/card/id/silver/hop
 	req_admin_notify = 1

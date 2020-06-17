@@ -46,7 +46,7 @@
 /obj/machinery/photocopier/faxmachine/ce
 	department = "Chief Engineer's Office"
 /obj/machinery/photocopier/faxmachine/cap
-	department = "Colony Director's Office"
+	department = "Facility Director's Office"
 /obj/machinery/photocopier/faxmachine/rd
 	department = "Research Director's Office"
 /obj/machinery/photocopier/faxmachine/hop
