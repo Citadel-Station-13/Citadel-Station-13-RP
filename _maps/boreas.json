@@ -6,7 +6,7 @@
         "boreas-1.dmm",
         "boreas-2.dmm",
         "boreas-misc.dmm",
-        "boreas-colony.dmm",
+        "boreas-colony.dmm"
    ],
    "traits":[
       {
@@ -33,7 +33,7 @@
       },
       {
          "Down":-1,
-        "Up":1,
+         "Up":1,
          "Station":true,
          "Linkage":null,
          "Gravity":true,
