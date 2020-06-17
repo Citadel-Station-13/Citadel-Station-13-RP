@@ -1,25 +1,6 @@
-//Atmosphere properties
-#define BOREAS_ONE_ATMOSPHERE	98.3 //kPa
-#define BOREAS_AVG_TEMP	143 //kelvin
-
-#define BOREAS_PER_N2		0.74 //percent
-#define BOREAS_PER_O2		0.18
-#define BOREAS_PER_N2O		0.00
-#define BOREAS_PER_CO2		0.07
-#define BOREAS_PER_PHORON	0.00
-
-//Math only beyond this point
-#define BOREAS_MOL_PER_TURF	(BOREAS_ONE_ATMOSPHERE*CELL_VOLUME/(BOREAS_AVG_TEMP*R_IDEAL_GAS_EQUATION))
-#define BOREAS_MOL_N2			(BOREAS_MOL_PER_TURF * BOREAS_PER_N2)
-#define BOREAS_MOL_O2			(BOREAS_MOL_PER_TURF * BOREAS_PER_O2)
-#define BOREAS_MOL_N2O			(BOREAS_MOL_PER_TURF * BOREAS_PER_N2O)
-#define BOREAS_MOL_CO2			(BOREAS_MOL_PER_TURF * BOREAS_PER_CO2)
-#define BOREAS_MOL_PHORON		(BOREAS_MOL_PER_TURF * BOREAS_PER_PHORON)
-
-//Turfmakers
-#define BOREAS_SET_ATMOS	nitrogen=BOREAS_MOL_N2;oxygen=BOREAS_MOL_O2;carbon_dioxide=BOREAS_MOL_CO2;phoron=BOREAS_MOL_PHORON;temperature=BOREAS_AVG_TEMP
-#define BOREAS_TURF_CREATE(x)	x/boreas/nitrogen=BOREAS_MOL_N2;x/boreas/oxygen=BOREAS_MOL_O2;x/boreas/carbon_dioxide=BOREAS_MOL_CO2;x/boreas/phoron=BOREAS_MOL_PHORON;x/boreas/temperature=BOREAS_AVG_TEMP;x/boreas/outdoors=TRUE;x/boreas/update_graphic(list/graphic_add = null, list/graphic_remove = null) return 0
-#define BOREAS_TURF_CREATE_UN(x)	x/boreas/nitrogen=BOREAS_MOL_N2;x/boreas/oxygen=BOREAS_MOL_O2;x/boreas/carbon_dioxide=BOREAS_MOL_CO2;x/boreas/phoron=BOREAS_MOL_PHORON;x/boreas/temperature=BOREAS_AVG_TEMP
+#define BOREAS_SET_ATMOS	initial_gas_mix=ATMOSPHERE_ID_BOREAS
+#define BOREAS_TURF_CREATE(x)	x/boreas/initial_gas_mix=ATMOSPHERE_ID_BOREAS;x/boreas/outdoors=TRUE;x/boreas/allow_gas_overlays = FALSE
+#define BOREAS_TURF_CREATE_UN(x)	x/boreas/initial_gas_mix=ATMOSPHERE_ID_BOREAS
 
 //Normal map defs
 #define Z_LEVEL_SURFACE_UNDER				1
