@@ -55,11 +55,11 @@
 							NETWORK_INTERROGATION
 							)
 
-/*	allowed_spawns = list("Tram Station","Gateway","Cryogenic Storage","Cyborg Storage")
-	spawnpoint_died = /datum/spawnpoint/tram
-	spawnpoint_left = /datum/spawnpoint/tram
+	allowed_spawns = list("Cryogenic Storage","Cyborg Storage")
+	spawnpoint_died = /datum/spawnpoint/cryo
+	spawnpoint_left = /datum/spawnpoint/cryo
 	spawnpoint_stayed = /datum/spawnpoint/cryo
-
+/*
 	meteor_strike_areas = list(/area/boreas/surfacebase/outside/outside3)
 
 	unit_test_exempt_areas = list(

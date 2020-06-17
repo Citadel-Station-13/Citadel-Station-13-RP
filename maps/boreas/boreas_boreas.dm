@@ -1,7 +1,7 @@
 var/datum/planet/boreas/planet_boreas = null
 
 /datum/time/boreas
-	seconds_in_day = 3 HOURS
+	seconds_in_day = 8 HOURS
 
 /datum/planet/boreas
 	name = "Boreas"
@@ -107,7 +107,7 @@ var/datum/planet/boreas/planet_boreas = null
 		WEATHER_LIGHT_SNOW	= new /datum/weather/boreas/light_snow(),
 		WEATHER_SNOW		= new /datum/weather/boreas/snow(),
 		WEATHER_BLIZZARD	= new /datum/weather/boreas/blizzard(),
-		WEATHER_RAIN		= new /datum/weather/boreas/rain(),
+//		WEATHER_RAIN		= new /datum/weather/boreas/rain(),
 		WEATHER_STORM		= new /datum/weather/boreas/storm(),
 		WEATHER_HAIL		= new /datum/weather/boreas/hail(),
 		WEATHER_BLOOD_MOON	= new /datum/weather/boreas/blood_moon()
@@ -118,7 +118,7 @@ var/datum/planet/boreas/planet_boreas = null
 		WEATHER_LIGHT_SNOW	= 30,
 		WEATHER_SNOW		= 10,
 		WEATHER_BLIZZARD	= 10,
-		WEATHER_RAIN		= 0,
+//		WEATHER_RAIN		= 0,
 		WEATHER_STORM		= 0,
 		WEATHER_HAIL		= 10
 		)
@@ -236,7 +236,7 @@ var/datum/planet/boreas/planet_boreas = null
 				if(istype(T))
 					if(istype(T, /turf/simulated/floor/outdoors) && prob(50))
 						T.chill()
-
+/*
 /datum/weather/boreas/rain
 	name = "rain"
 	icon_state = "rain"
@@ -280,7 +280,7 @@ var/datum/planet/boreas/planet_boreas = null
 			L.water_act(1)
 			if(show_message)
 				to_chat(L, effect_message)
-
+*/
 /datum/weather/boreas/storm
 	name = "storm"
 	icon_state = "storm"
