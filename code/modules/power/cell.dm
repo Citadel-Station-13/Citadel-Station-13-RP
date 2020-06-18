@@ -31,7 +31,7 @@
 
 /obj/item/cell/Initialize(mapload)
 	. = ..()
-	if(!isnull(charge))
+	if(isnull(charge))
 		charge = maxcharge
 	update_icon()
 	if(self_recharge)
