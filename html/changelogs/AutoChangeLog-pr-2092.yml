@@ -1,0 +1,4 @@
+author: "Nethaufer"
+delete-after: True
+changes: 
+  - bugfix: "Cells appear empty when fabricated with no energy"
