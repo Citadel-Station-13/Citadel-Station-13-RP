@@ -1,25 +1,7 @@
-//Atmosphere properties
-#define NERADA8_ONE_ATMOSPHERE	126.8 //kPa
-#define NERADA8_AVG_TEMP	200 //kelvin
-
-#define NERADA8_PER_N2		0.75 //percent
-#define NERADA8_PER_O2		0.22
-#define NERADA8_PER_N2O		0.00 //Currently no capacity to 'start' a turf with this. See turf.dm
-#define NERADA8_PER_CO2		0.03
-#define NERADA8_PER_PHORON	0.00
-
-//Math only beyond this point
-#define NERADA8_MOL_PER_TURF	(NERADA8_ONE_ATMOSPHERE*CELL_VOLUME/(NERADA8_AVG_TEMP*R_IDEAL_GAS_EQUATION))
-#define NERADA8_MOL_N2			(NERADA8_MOL_PER_TURF * NERADA8_PER_N2)
-#define NERADA8_MOL_O2			(NERADA8_MOL_PER_TURF * NERADA8_PER_O2)
-#define NERADA8_MOL_N2O			(NERADA8_MOL_PER_TURF * NERADA8_PER_N2O)
-#define NERADA8_MOL_CO2			(NERADA8_MOL_PER_TURF * NERADA8_PER_CO2)
-#define NERADA8_MOL_PHORON		(NERADA8_MOL_PER_TURF * NERADA8_PER_PHORON)
-
 //Turfmakers
-#define NERADA8_SET_ATMOS	nitrogen=NERADA8_MOL_N2;oxygen=NERADA8_MOL_O2;carbon_dioxide=NERADA8_MOL_CO2;phoron=NERADA8_MOL_PHORON;temperature=NERADA8_AVG_TEMP
-#define NERADA8_TURF_CREATE(x)	x/nerada8/nitrogen=NERADA8_MOL_N2;x/nerada8/oxygen=NERADA8_MOL_O2;x/nerada8/carbon_dioxide=NERADA8_MOL_CO2;x/nerada8/phoron=NERADA8_MOL_PHORON;x/nerada8/temperature=NERADA8_AVG_TEMP;x/nerada8/outdoors=TRUE;x/nerada8/update_graphic(list/graphic_add = null, list/graphic_remove = null) return 0
-#define NERADA8_TURF_CREATE_UN(x)	x/nerada8/nitrogen=NERADA8_MOL_N2;x/nerada8/oxygen=NERADA8_MOL_O2;x/nerada8/carbon_dioxide=NERADA8_MOL_CO2;x/nerada8/phoron=NERADA8_MOL_PHORON;x/nerada8/temperature=NERADA8_AVG_TEMP
+#define NERADA8_SET_ATMOS	initial_gas_mix = ATMOSPHERE_ID_NERADA8
+#define NERADA8_TURF_CREATE(x)	x/nerada8/initial_gas_mix = ATMOSPHERE_ID_NERADA8;x/nerada8/outdoors=TRUE;x/nerada8/allow_gas_overlays = FALSE
+#define NERADA8_TURF_CREATE_UN(x)	x/nerada8/initial_gas_mix=ATMOSPHERE_ID_NERADA8
 
 //Normal map defs
 #define Z_LEVEL_SURFACE_MAIN				1

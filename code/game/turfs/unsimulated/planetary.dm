@@ -56,9 +56,10 @@
 	initial_gas_mix = GAS_STRING_STP_HOT
 
 /turf/unsimulated/wall/planetary/penumbra
-	oxygen = 0.22
+	initial_gas_mix = GAS_STRING_TURF_NERADA8
+	/*oxygen = 0.22
 	nitrogen = 0.75
 	carbon_dioxide = 0.03
 	temperature = 234
-	blocks_air = 1
+	blocks_air = 1*/
 
