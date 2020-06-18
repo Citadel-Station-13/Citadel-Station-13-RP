@@ -1,6 +1,21 @@
 /********************
 * Devices and Tools *
 ********************/
+/datum/uplink_item/item/tools/oxygen
+	name = "Emergency Oxygen Tank"
+	item_cost = 2
+	path = /obj/item/tank/emergency/oxygen/double
+
+/datum/uplink_item/item/tools/phoron
+	name = "Emergency Phoron Tank"
+	item_cost = 2
+	path = /obj/item/tank/emergency/phoron/double
+
+/datum/uplink_item/item/tools/suitcooler
+	name = "Suit Cooler"
+	item_cost = 2
+	path = /obj/item/suit_cooling_unit
+
 /datum/uplink_item/item/tools/basiclaptop
 	name = "Laptop (Basic)"
 	item_cost = 5
@@ -40,3 +55,4 @@
 	name = "Survival Capsule (Bar)"
 	item_cost = 80
 	path = /obj/item/survivalcapsule/luxurybar
+

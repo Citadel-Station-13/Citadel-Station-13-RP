@@ -331,8 +331,8 @@
 				return
 
 			for(var/turf/simulated/target_turf in view(2, T))
-				target_turf.assume_gas("volatile_fuel", 33, 1500+T0C)
-				target_turf.assume_gas("oxygen", 66, 1500+T0C)
+				target_turf.assume_gas(/datum/gas/volatile_fuel, 33, 1500+T0C)
+				target_turf.assume_gas(/datum/gas/oxygen, 66, 1500+T0C)
 				spawn(0)
 					target_turf.hotspot_expose(1500+T0C, 400)
 

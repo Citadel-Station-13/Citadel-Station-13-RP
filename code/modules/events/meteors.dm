@@ -37,7 +37,7 @@
 			command_announcement.Announce("\The [station_name()] has cleared the meteor shower", "Meteor Alert")
 
 /datum/event/meteor_wave/proc/get_meteors()
-	if(EVENT_LEVEL_MAJOR)
+	if(severity == EVENT_LEVEL_MAJOR)
 		if(prob(10))
 			return meteors_catastrophic
 		else

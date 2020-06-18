@@ -191,6 +191,4 @@
 
 // -- Turfs -- //
 /turf/simulated/shuttle/floor/alienplating/vacuum
-	oxygen = 0
-	nitrogen = 0
-	temperature = TCMB
+	initial_gas_mix = GAS_STRING_VACCUM

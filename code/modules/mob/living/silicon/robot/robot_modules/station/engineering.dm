@@ -190,25 +190,19 @@
 	src.modules += new /obj/item/pipe_dispenser(src)
 	src.modules += new /obj/item/gripper/circuit(src)
 	src.emag 	 = new /obj/item/dogborg/pounce(src)
-	src.modules += new /obj/item/pipe_dispenser(src)
 
 	//Painfully slow charger regen but high capacity. Also starts with low amount.
-	var/datum/matter_synth/metal = new /datum/matter_synth/metal()
+	var/datum/matter_synth/metal = new /datum/matter_synth/metal(40000)
 	metal.name = "Steel reserves"
-	metal.max_energy = 50000
-	metal.energy = 10000
-	var/datum/matter_synth/glass = new /datum/matter_synth/glass()
+	var/datum/matter_synth/glass = new /datum/matter_synth/glass(40000)
 	glass.name = "Glass reserves"
-	glass.max_energy = 50000
-	glass.energy = 10000
-	var/datum/matter_synth/wood = new /datum/matter_synth/wood()
+	var/datum/matter_synth/wood = new /datum/matter_synth/wood(40000)
 	wood.name = "Wood reserves"
-	wood.max_energy = 50000
-	wood.energy = 10000
-	var/datum/matter_synth/plastic = new /datum/matter_synth/plastic()
+	var/datum/matter_synth/plastic = new /datum/matter_synth/plastic(40000)
 	plastic.name = "Plastic reserves"
-	plastic.max_energy = 50000
-	plastic.energy = 10000
+	var/datum/matter_synth/plasteel = new /datum/matter_synth/plasteel(20000)
+	plasteel.name = "Plasteel reserves"
+
 	var/datum/matter_synth/water = new /datum/matter_synth(500)
 	water.name = "Water reserves"
 	water.recharge_rate = 0
@@ -217,7 +211,7 @@
 	var/datum/matter_synth/wire = new /datum/matter_synth/wire()
 	synths += metal
 	synths += glass
-	//synths += plasteel
+	synths += plasteel
 	synths += wood
 	synths += plastic
 	synths += wire
@@ -258,6 +252,10 @@
 	var/obj/item/stack/tile/floor/cyborg/S = new /obj/item/stack/tile/floor/cyborg(src)
 	S.synths = list(metal)
 	src.modules += S
+
+	var/obj/item/stack/tile/roofing/cyborg/CT = new /obj/item/stack/tile/roofing/cyborg(src)
+	CT.synths = list(metal)
+	src.modules += CT
 
 	var/obj/item/stack/material/cyborg/glass/reinforced/RG = new (src)
 	RG.synths = list(metal, glass)

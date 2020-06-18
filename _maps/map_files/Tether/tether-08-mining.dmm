@@ -15,7 +15,6 @@
 /area/mine/explored)
 "ae" = (
 /obj/structure/railing{
-	icon_state = "railing0";
 	dir = 4
 	},
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
@@ -35,7 +34,6 @@
 /area/mine/explored)
 "ah" = (
 /obj/structure/railing{
-	icon_state = "railing0";
 	dir = 1
 	},
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
@@ -177,7 +175,6 @@
 /area/outpost/mining_main/storage)
 "aG" = (
 /obj/machinery/power/apc{
-	dir = 2;
 	name = "south bump";
 	pixel_y = -32
 	},
@@ -291,7 +288,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 24
 	},
 /obj/structure/cable/green{
@@ -364,7 +360,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 24
 	},
 /obj/structure/cable/green{
@@ -392,9 +387,7 @@
 	dir = 4
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	layer = 3.3;
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /obj/structure/cable/green{
@@ -588,8 +581,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9;
-	pixel_y = 0
+	dir = 9
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/break_room)
@@ -655,9 +647,7 @@
 /area/outpost/mining_main/maintenance)
 "bu" = (
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1";
-	pixel_x = 0
+	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/supply{
 	dir = 9
@@ -851,7 +841,6 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 8
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -909,7 +898,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 24
 	},
 /obj/structure/cable/green{
@@ -926,7 +914,6 @@
 "bQ" = (
 /obj/structure/closet/firecloset,
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 2;
 	frequency = 1379;
 	id_tag = "mining_outpost_airlock_pump"
 	},
@@ -957,7 +944,6 @@
 /area/outpost/mining_main/maintenance)
 "bU" = (
 /obj/machinery/power/terminal{
-	icon_state = "term";
 	dir = 4
 	},
 /obj/structure/cable/green{
@@ -973,7 +959,6 @@
 /area/outpost/mining_main/maintenance)
 "bV" = (
 /obj/machinery/power/smes/buildable{
-	charge = 0;
 	RCon_tag = "Substation - Mining Outpost"
 	},
 /obj/structure/cable/green{
@@ -1017,7 +1002,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 24
 	},
 /obj/machinery/light_switch{
@@ -1090,7 +1074,6 @@
 	frequency = 1379;
 	master_tag = "mining_outpost_airlock";
 	name = "Mining Outpost Access Button";
-	pixel_x = 0;
 	pixel_y = 24;
 	req_access = list(48,54)
 	},
@@ -1189,11 +1172,9 @@
 "cj" = (
 /obj/machinery/access_button{
 	command = "cycle_exterior";
-	dir = 2;
 	frequency = 1379;
 	master_tag = "mining_outpost_airlock";
 	name = "Mining Outpost Access Button";
-	pixel_x = 0;
 	pixel_y = 24;
 	req_access = list(48,54)
 	},
@@ -1307,7 +1288,6 @@
 "cv" = (
 /obj/machinery/embedded_controller/radio/airlock/phoron{
 	id_tag = "mining_outpost_airlock";
-	pixel_x = 0;
 	pixel_y = -25
 	},
 /obj/machinery/airlock_sensor/phoron{
@@ -1342,7 +1322,6 @@
 	dir = 8
 	},
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
@@ -1396,7 +1375,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored)
 "cG" = (
 /obj/structure/cable/heavyduty{
@@ -1406,7 +1385,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored)
 "cH" = (
 /obj/structure/cable/heavyduty{
@@ -1416,7 +1395,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored)
 "cI" = (
 /obj/structure/cable/heavyduty{
@@ -1426,14 +1405,14 @@
 	dir = 8
 	},
 /obj/structure/catwalk,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored)
 "cJ" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored)
 "cK" = (
 /obj/structure/cable/heavyduty{
@@ -1443,7 +1422,7 @@
 	dir = 4
 	},
 /obj/structure/catwalk,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored)
 "cL" = (
 /obj/structure/cable/heavyduty{
@@ -1455,7 +1434,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored)
 "cM" = (
 /obj/structure/cable/heavyduty{
@@ -1467,7 +1446,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored)
 "cN" = (
 /obj/structure/cable/heavyduty{
@@ -1480,13 +1459,13 @@
 	dir = 8
 	},
 /obj/structure/railing,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored)
 "cO" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored)
 "cP" = (
 /obj/effect/floor_decal/rust,
@@ -1500,7 +1479,7 @@
 	icon_state = "1-2";
 	id = "surface-solars"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored)
 "cS" = (
 /obj/machinery/light/small,

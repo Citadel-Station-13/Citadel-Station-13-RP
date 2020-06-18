@@ -69,6 +69,7 @@ SUBSYSTEM_DEF(circuit)
 		/obj/item/electronic_assembly/large/arm,
 		/obj/item/electronic_assembly/large/tall,
 		/obj/item/electronic_assembly/large/industrial,
+		/obj/item/electronic_assembly/large/vendor,
 		/obj/item/electronic_assembly/drone/default,
 		/obj/item/electronic_assembly/drone/arms,
 		/obj/item/electronic_assembly/drone/secbot,

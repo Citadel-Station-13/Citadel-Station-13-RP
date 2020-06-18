@@ -127,3 +127,19 @@
 /datum/uplink_item/item/ammo/cell
 	name = "weapon cell"
 	path = /obj/item/cell/device/weapon
+
+/datum/uplink_item/item/ammo/highcell
+	name = "High capacity cell"
+	path = /obj/item/cell/high
+	item_cost = 15
+
+/datum/uplink_item/item/ammo/supercell
+	name = "Super capacity cell"
+	path = /obj/item/cell/super
+	item_cost = 30
+/* Cell type not present on Cit
+/datum/uplink_item/item/ammo/voidcell
+	name = "Void cell"
+	path = /obj/item/cell/device/recharge/alien/hybrid
+	item_cost = DEFAULT_TELECRYSTAL_AMOUNT * 1.5
+*/

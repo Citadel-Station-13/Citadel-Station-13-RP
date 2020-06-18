@@ -42,15 +42,16 @@
 	..()
 	switch(filter_type)
 		if(0) //removing hydrocarbons
-			filtered_out = list("phoron")
+			filtered_out += /datum/gas/phoron
+			filtered_out += /datum/gas/volatile_fuel
 		if(1) //removing O2
-			filtered_out = list("oxygen")
+			filtered_out += /datum/gas/oxygen
 		if(2) //removing N2
-			filtered_out = list("nitrogen")
+			filtered_out += /datum/gas/nitrogen
 		if(3) //removing CO2
-			filtered_out = list("carbon_dioxide")
+			filtered_out += /datum/gas/carbon_dioxide
 		if(4)//removing N2O
-			filtered_out = list("sleeping_agent")
+			filtered_out += /datum/gas/nitrous_oxide
 
 	air1.volume = ATMOS_DEFAULT_VOLUME_FILTER
 	air2.volume = ATMOS_DEFAULT_VOLUME_FILTER
@@ -167,16 +168,16 @@
 		filtered_out.Cut()	//no need to create new lists unnecessarily
 		switch(filter_type)
 			if(0) //removing hydrocarbons
-				filtered_out += "phoron"
-				filtered_out += "oxygen_agent_b"
+				filtered_out += /datum/gas/phoron
+				filtered_out += /datum/gas/volatile_fuel
 			if(1) //removing O2
-				filtered_out += "oxygen"
+				filtered_out += /datum/gas/oxygen
 			if(2) //removing N2
-				filtered_out += "nitrogen"
+				filtered_out += /datum/gas/nitrogen
 			if(3) //removing CO2
-				filtered_out += "carbon_dioxide"
+				filtered_out += /datum/gas/carbon_dioxide
 			if(4)//removing N2O
-				filtered_out += "sleeping_agent"
+				filtered_out += /datum/gas/nitrous_oxide
 
 	if (href_list["temp"])
 		src.temp = null
