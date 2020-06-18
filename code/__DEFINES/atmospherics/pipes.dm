@@ -1,4 +1,4 @@
-
+// Pipe colors
 #define	PIPE_COLOR_GREY		"#ffffff"	//yes white is grey
 #define	PIPE_COLOR_RED		"#ff0000"
 #define	PIPE_COLOR_BLUE		"#0000ff"

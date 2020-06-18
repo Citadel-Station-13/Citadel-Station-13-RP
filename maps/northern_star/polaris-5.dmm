@@ -639,7 +639,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/outpost/research/tox_store)
 "bI" = (
-/obj/machinery/portable_atmospherics/canister/sleeping_agent,
+/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/outpost/research/tox_store)
@@ -754,7 +754,7 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/hallway/toxins_hallway)
 "bV" = (
-/obj/machinery/portable_atmospherics/canister/sleeping_agent,
+/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/dark,
@@ -10660,7 +10660,7 @@
 /turf/simulated/floor/tiled,
 /area/outpost/research/anomaly)
 "ux" = (
-/obj/machinery/portable_atmospherics/canister/sleeping_agent,
+/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
@@ -16136,9 +16136,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	nitrogen = 82.1472;
-	oxygen = 21.8366;
-	temperature = 293.15
+	initial_gas_mix = "n2=82.1472;o2=21.8366;TEMP=293.15"
 	},
 /area/outpost/engineering/telecomms)
 "FF" = (
@@ -16213,9 +16211,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	nitrogen = 82.1472;
-	oxygen = 21.8366;
-	temperature = 293.15
+	initial_gas_mix = "n2=82.1472;o2=21.8366;TEMP=293.15"
 	},
 /area/outpost/engineering/telecomms)
 "FM" = (
@@ -16251,9 +16247,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	nitrogen = 82.1472;
-	oxygen = 21.8366;
-	temperature = 293.15
+	initial_gas_mix = "n2=82.1472;o2=21.8366;TEMP=293.15"
 	},
 /area/outpost/engineering/telecomms)
 "FO" = (

@@ -1,0 +1,14 @@
+author: "Zandario"
+delete-after: True
+changes: 
+  - rscadd: "Wedding Dress Selection in Loadout"
+  - rscadd: "Executive Suit in Loadout"
+  - tweak: "Teshari Captain uniforms now use their respective item (for now)"
+  - tweak: "Changed old Circuit glove to captain as it should be (Who the fuck did that)"
+  - tweak: "Some of the sprite names in icons/mob/species/seromi/uniform.dmi were changed to allow some of these fixes."
+  - bugfix: "Teshari Colorable Long Dress exists again"
+  - imageadd: "Teshari Hudpatches"
+  - imageadd: "Teshari Ring Sprites"
+  - imageadd: "Circuitry Glove for Teshari"
+  - imageadd: "Colorable Teshari Hair Flower"
+  - imageadd: "Teshari Waistcoat and Charcoal Jacket (First set, more will be done)"

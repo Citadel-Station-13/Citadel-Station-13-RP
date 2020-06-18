@@ -202,8 +202,7 @@
 	icon_state = "plating"
 
 /turf/simulated/shuttle/plating/airless
-	oxygen = 0
-	nitrogen = 0
+	initial_gas_mix = GAS_STRING_VACCUM
 
 //For 'carrying' otherwise empty turfs or stuff in space turfs with you or having holes in the floor or whatever.
 /turf/simulated/shuttle/plating/carry
@@ -229,14 +228,12 @@
 	icon_state = "carry_ingame"
 
 /turf/simulated/shuttle/plating/skipjack //Skipjack plating
-	oxygen = 0
-	nitrogen = MOLES_N2STANDARD + MOLES_O2STANDARD
+	initial_gas_mix = GAS_STRING_STP_NITROGEN
 
 /turf/simulated/shuttle/floor/skipjack //Skipjack floors
 	name = "skipjack floor"
 	icon_state = "floor_dred"
-	oxygen = 0
-	nitrogen = MOLES_N2STANDARD + MOLES_O2STANDARD
+	initial_gas_mix = GAS_STRING_STP_NITROGEN
 
 /turf/simulated/shuttle/floor/voidcraft
 	name = "voidcraft tiles"

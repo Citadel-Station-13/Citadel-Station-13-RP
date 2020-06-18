@@ -5,8 +5,7 @@
 	maxcharge = 500
 	matter = list(DEFAULT_WALL_MATERIAL = 700, "glass" = 40)
 
-/obj/item/cell/crap/empty/New()
-	..()
+/obj/item/cell/crap/empty
 	charge = 0
 
 /obj/item/cell/secborg
@@ -15,8 +14,7 @@
 	maxcharge = 600	//600 max charge / 100 charge per shot = six shots
 	matter = list(DEFAULT_WALL_MATERIAL = 700, "glass" = 40)
 
-/obj/item/cell/secborg/empty/New()
-	..()
+/obj/item/cell/secborg/empty
 	charge = 0
 
 /obj/item/cell/apc
@@ -32,8 +30,7 @@
 	maxcharge = 10000
 	matter = list(DEFAULT_WALL_MATERIAL = 700, "glass" = 60)
 
-/obj/item/cell/high/empty/New()
-	..()
+/obj/item/cell/high/empty
 	charge = 0
 
 /obj/item/cell/super
@@ -43,8 +40,7 @@
 	maxcharge = 20000
 	matter = list(DEFAULT_WALL_MATERIAL = 700, "glass" = 70)
 
-/obj/item/cell/super/empty/New()
-	..()
+/obj/item/cell/super/empty
 	charge = 0
 
 /obj/item/cell/hyper
@@ -54,8 +50,7 @@
 	maxcharge = 30000
 	matter = list(DEFAULT_WALL_MATERIAL = 700, "glass" = 80)
 
-/obj/item/cell/hyper/empty/New()
-	..()
+/obj/item/cell/hyper/empty
 	charge = 0
 
 /obj/item/cell/infinite
