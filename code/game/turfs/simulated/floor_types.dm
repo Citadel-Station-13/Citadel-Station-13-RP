@@ -202,7 +202,7 @@
 	icon_state = "plating"
 
 /turf/simulated/shuttle/plating/airless
-	initial_gas_mix = GAS_STRING_VACCUM
+	initial_gas_mix = GAS_STRING_VACUUM
 
 //For 'carrying' otherwise empty turfs or stuff in space turfs with you or having holes in the floor or whatever.
 /turf/simulated/shuttle/plating/carry
