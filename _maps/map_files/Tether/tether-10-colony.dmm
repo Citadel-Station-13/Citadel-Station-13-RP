@@ -3059,11 +3059,9 @@
 "fl" = (
 /obj/structure/table/standard,
 /obj/item/cell/high{
-	charge = 100;
 	maxcharge = 15000
 	},
 /obj/item/cell/high{
-	charge = 100;
 	maxcharge = 15000
 	},
 /obj/machinery/cell_charger,
@@ -3235,7 +3233,6 @@
 	name = "robotics parts"
 	},
 /obj/item/cell/high{
-	charge = 100;
 	maxcharge = 15000;
 	pixel_x = 5;
 	pixel_y = -5
@@ -3249,19 +3246,16 @@
 	pixel_y = 4
 	},
 /obj/item/cell/high{
-	charge = 100;
 	maxcharge = 15000;
 	pixel_x = 5;
 	pixel_y = -5
 	},
 /obj/item/cell/high{
-	charge = 100;
 	maxcharge = 15000;
 	pixel_x = 5;
 	pixel_y = -5
 	},
 /obj/item/cell/high{
-	charge = 100;
 	maxcharge = 15000;
 	pixel_x = 5;
 	pixel_y = -5
