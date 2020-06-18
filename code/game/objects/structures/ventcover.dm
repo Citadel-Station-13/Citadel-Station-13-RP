@@ -11,10 +11,10 @@
 	plane = PLATING_PLANE
 	//	flags = CONDUCT
 
-/obj/structure/ventcover/initialize()
+/obj/structure/ventcover/Initialize()
 	. = ..()
 
-	if(!(istype(src.loc, /turf/space) || istype(src.loc, /turf/simulated/open) || istype(src.loc, /turf/simulated/mineral) || istype(src.loc, /turf/simulated/icerock)))
+	if(!(istype(src.loc, /turf/space) || istype(src.loc, /turf/simulated/open) || istype(src.loc, /turf/simulated/mineral)))
 		return INITIALIZE_HINT_QDEL
 
 	for(var/obj/structure/ventcover/VENT in src.loc)
@@ -48,29 +48,26 @@
 		var/turf/T = get_turf(src)
 		T.attackby(C, user) //BubbleWrap - hand this off to the underlying turf instead
 		return
-
-/obj/structure/ventcover/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(istype(W,/obj/item/weapon/weldingtool))
-		var/obj/item/weapon/weldingtool/WT = W
+	if(istype(C, /obj/item/weldingtool))
+		var/obj/item/weldingtool/WT = C
 		if(WT.welding == 1)
-			if(WT.remove_fuel(0,user))
-				user << "<span class='notice'>Slicing off plating...</span>"
-			new /obj/item/stack/rods
-			new /obj/item/stack/rods
+			if(WT.remove_fuel(0, user))
+				to_chat(user, "<span class='notice'>Slicing lattice joints ...</span>")
+			new /obj/item/stack/rods(src.loc)
 			qdel(src)
 		else
 			to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
-	if(W.is_crowbar())
+	if(istype(C, /obj/item/tool/crowbar))
 		to_chat(user, "<span class='notice'>You start prying [open? "closed":"open"] the vent cover...</span>")
-		playsound(src, W.usesound, 100, 1)
-		if(do_after(user, 5 SECONDS * W.toolspeed))
+		playsound(src, C.usesound, 100, 1)
+		if(do_after(user, 5 SECONDS * C.toolspeed))
 			open = !open
 			to_chat(user, "<span class='notice'>You pry [open? "open":"close"] the cover.</span>")
 			update_icon()
-	if(W.is_screwdriver())
+	if(istype(C, /obj/item/tool/screwdriver))
 		to_chat(user, "<span class='notice'>You start to [open? "closed":"open"] the vent cover...</span>")
-		playsound(src, W.usesound, 20, 1)
-		if(do_after(user, 10 SECONDS * W.toolspeed))
+		playsound(src, C.usesound, 20, 1)
+		if(do_after(user, 10 SECONDS * C.toolspeed))
 			open = !open
 			to_chat(user, "<span class='notice'>You [open? "open":"close"] the cover.</span>")
 			update_icon()

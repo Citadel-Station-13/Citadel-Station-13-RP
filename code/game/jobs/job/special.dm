@@ -95,7 +95,7 @@
 	idtype = /obj/item/card/id/civilian/clown
 	economic_modifier = 1
 	access = list()
-	minimal_access = list(access_iff_station)
+	minimal_access = list()
 	alt_titles = list("Comedian","Jester")
 	whitelist_only = 1
 	latejoin_only = 1
@@ -114,7 +114,7 @@
 	idtype = /obj/item/card/id/civilian/mime
 	economic_modifier = 1
 	access = list()
-	minimal_access = list(access_iff_station)
+	minimal_access = list()
 	alt_titles = list("Performer","Interpretive Dancer")
 	whitelist_only = 1
 	latejoin_only = 1

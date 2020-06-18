@@ -15,10 +15,12 @@
 	name = "protoshuttle control console"
 	shuttle_tag = "Proto"
 
+/*
 /obj/machinery/computer/shuttle_control/cruiser_shuttle
 	name = "cruiser shuttle control console"
 	shuttle_tag = "Cruiser Shuttle"
 	req_one_access = list(access_heads)
+*/
 
 //
 // "Tram" Emergency Shuttler
@@ -63,9 +65,10 @@
 //
 // The backup tether shuttle uses experimental engines and can degrade and/or crash!
 //
+/* //Disabling the crash mechanics per request
 /datum/shuttle/ferry/tether_backup
 	crash_message = "Tether shuttle distress signal received. Shuttle location is approximately 200 meters from tether base."
-	category = /datum/shuttle/ferry/tether_backup // So shuttle_controller.dm doesn't try and instantiate this type as an acutal mapped in shuttle.
+	category = /datum/shuttle/ferry/tether_backup // So SSshuttle.dm doesn't try and instantiate this type as an acutal mapped in shuttle.
 	var/list/engines = list()
 	var/obj/machinery/computer/shuttle_control/tether_backup/computer
 
@@ -139,7 +142,7 @@
 	else
 		wear += rand(5,20)
 
-/obj/structure/shuttle/engine/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/structure/shuttle/engine/attackby(obj/item/W as obj, mob/user as mob)
 	src.add_fingerprint(user)
 	if(repair_welder(user, W))
 		return
@@ -147,7 +150,7 @@
 
 //TODO require a multitool to diagnose and open engine panels or something
 
-/obj/structure/shuttle/engine/proc/repair_welder(var/mob/user, var/obj/item/weapon/weldingtool/WT)
+/obj/structure/shuttle/engine/proc/repair_welder(var/mob/user, var/obj/item/weldingtool/WT)
 	if(!istype(WT))
 		return 0
 	if(wear <= 20)
@@ -166,6 +169,7 @@
 	wear = 20
 	update_icon()
 	return 1
+*/
 
 ////////////////////////////////////////
 //////// Excursion Shuttle /////////////

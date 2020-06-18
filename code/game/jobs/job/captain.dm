@@ -60,13 +60,13 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 			            access_all_personal_lockers, access_maint_tunnels, access_bar, access_janitor, access_construction, access_morgue,
 			            access_crematorium, access_kitchen, access_cargo, access_cargo_bot, access_mailsorting, access_qm, access_hydroponics, access_lawyer,
 			            access_chapel_office, access_library, access_research, access_mining, access_heads_vault, access_mining_station,
-			            access_hop, access_RC_announce, access_keycard_auth, access_gateway, access_iff_station)
+			            access_hop, access_RC_announce, access_keycard_auth, access_gateway)
 	minimal_access = list(access_security, access_sec_doors, access_brig, access_forensics_lockers,
 			            access_medical, access_engine, access_change_ids, access_ai_upload, access_eva, access_heads,
 			            access_all_personal_lockers, access_maint_tunnels, access_bar, access_janitor, access_construction, access_morgue,
 			            access_crematorium, access_kitchen, access_cargo, access_cargo_bot, access_mailsorting, access_qm, access_hydroponics, access_lawyer,
 			            access_chapel_office, access_library, access_research, access_mining, access_heads_vault, access_mining_station,
-			            access_hop, access_RC_announce, access_keycard_auth, access_gateway, access_iff_station)
+			            access_hop, access_RC_announce, access_keycard_auth, access_gateway)
 
 /datum/job/secretary
 	title = "Command Secretary"
@@ -83,8 +83,8 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	minimal_player_age = 5
 	economic_modifier = 7
 
-	access = list(access_heads, access_keycard_auth, access_iff_station)
-	minimal_access = list(access_heads, access_keycard_auth, access_iff_station)
+	access = list(access_heads, access_keycard_auth)
+	minimal_access = list(access_heads, access_keycard_auth)
 	alt_titles = list("Bridge Officer")
 
 	outfit_type = /decl/hierarchy/outfit/job/secretary

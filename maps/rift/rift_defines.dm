@@ -1,32 +1,15 @@
 //Atmosphere properties
-#define LYTHIOS43C_ONE_ATMOSPHERE	76.9 //kPa
-#define LYTHIOS43C_AVG_TEMP	 116.15 //kelvin
-
-#define LYTHIOS43C_PER_N2		0.64
-#define LYTHIOS43C_PER_O2		0.32
-#define LYTHIOS43C_PER_N2O		0.00
-#define LYTHIOS43C_PER_CO2		0.04
-#define LYTHIOS43C_PER_PHORON	0.00
-
-//Math only beyond this point
-#define LYTHIOS43C_MOL_PER_TURF	(LYTHIOS43C_ONE_ATMOSPHERE*CELL_VOLUME/(LYTHIOS43C_AVG_TEMP*R_IDEAL_GAS_EQUATION))
-#define LYTHIOS43C_MOL_N2			(LYTHIOS43C_MOL_PER_TURF * LYTHIOS43C_PER_N2)
-#define LYTHIOS43C_MOL_O2			(LYTHIOS43C_MOL_PER_TURF * LYTHIOS43C_PER_O2)
-#define LYTHIOS43C_MOL_N2O			(LYTHIOS43C_MOL_PER_TURF * LYTHIOS43C_PER_N2O)
-#define LYTHIOS43C_MOL_CO2			(LYTHIOS43C_MOL_PER_TURF * LYTHIOS43C_PER_CO2)
-#define LYTHIOS43C_MOL_PHORON		(LYTHIOS43C_MOL_PER_TURF * LYTHIOS43C_PER_PHORON)
-
-//Turfmakers
-#define LYTHIOS43C_SET_ATMOS	nitrogen=LYTHIOS43C_MOL_N2;oxygen=LYTHIOS43C_MOL_O2;carbon_dioxide=LYTHIOS43C_MOL_CO2;phoron=LYTHIOS43C_MOL_PHORON;temperature=LYTHIOS43C_AVG_TEMP
-#define LYTHIOS43C_TURF_CREATE(x)	x/lythios43c/nitrogen=LYTHIOS43C_MOL_N2;x/lythios43c/oxygen=LYTHIOS43C_MOL_O2;x/lythios43c/carbon_dioxide=LYTHIOS43C_MOL_CO2;x/lythios43c/phoron=LYTHIOS43C_MOL_PHORON;x/lythios43c/temperature=LYTHIOS43C_AVG_TEMP;x/lythios43c/outdoors=TRUE;x/lythios43c/update_graphic(list/graphic_add = null, list/graphic_remove = null) return 0
-#define LYTHIOS43C_TURF_CREATE_UN(x)	x/lythios43c/nitrogen=LYTHIOS43C_MOL_N2;x/lythios43c/oxygen=LYTHIOS43C_MOL_O2;x/lythios43c/carbon_dioxide=LYTHIOS43C_MOL_CO2;x/lythios43c/phoron=LYTHIOS43C_MOL_PHORON;x/lythios43c/temperature=LYTHIOS43C_AVG_TEMP
+#define LYTHIOS43C_SET_ATMOS	initial_gas_mix = ATMOSPHERE_ID_LYTHIOS43C
+#define LYTHIOS43C_TURF_CREATE(x)	x/lythios43c/initial_gas_mix = ATMOSPHERE_ID_LYTHIOS43C;x/lythios43c/outdoors=TRUE;x/lythios43c/allow_gas_overlays = FALSE
+#define LYTHIOS43C_TURF_CREATE_UN(x)	x/lythios43c/initial_gas_mix=ATMOSPHERE_ID_LYTHIOS43C
 
 //Normal map defs
 #define Z_LEVEL_UNDERGROUND_DEEP			1
 #define Z_LEVEL_UNDERGROUND					2
 #define Z_LEVEL_SURFACE_LOW					3
 #define Z_LEVEL_SURFACE_MID					4
-#define Z_LEVEL_TRANSIT						5
+#define Z_LEVEL_SURFACE_HIGH				5
+#define Z_LEVEL_TRANSIT						6
 
 /datum/map/rift
 	name = "Rift"

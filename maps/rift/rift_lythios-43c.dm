@@ -74,7 +74,7 @@ var/datum/planet/lythios43c/planet_lythios43c = null
 	if(weather_holder && weather_holder.current_weather)
 		weather_light_modifier = weather_holder.current_weather.light_modifier
 
-	var/new_brightness = (Interpolate(low_brightness, high_brightness, weight = lerp_weight) ) * weather_light_modifier
+	var/new_brightness = (LERP(low_brightness, high_brightness, lerp_weight) ) * weather_light_modifier
 
 	var/new_color = null
 	if(weather_holder && weather_holder.current_weather && weather_holder.current_weather.light_color)
@@ -90,9 +90,9 @@ var/datum/planet/lythios43c/planet_lythios43c = null
 		var/high_g = high_color_list[2]
 		var/high_b = high_color_list[3]
 
-		var/new_r = Interpolate(low_r, high_r, weight = lerp_weight)
-		var/new_g = Interpolate(low_g, high_g, weight = lerp_weight)
-		var/new_b = Interpolate(low_b, high_b, weight = lerp_weight)
+		var/new_r = LERP(low_r, high_r, lerp_weight)
+		var/new_g = LERP(low_g, high_g, lerp_weight)
+		var/new_b = LERP(low_b, high_b, lerp_weight)
 
 		new_color = rgb(new_r, new_g, new_b)
 
@@ -239,7 +239,11 @@ var/datum/planet/lythios43c/planet_lythios43c = null
 	flight_failure_modifier = 15
 	timer_low_bound = 2
 	timer_high_bound = 5
-	effect_message = "<span class='warning'>The hail smacks into you!</span>"
+	effect_message = list(
+		"<I>Small chunks of ice clatter to the ground around you.</I>",
+		"<I>Little pellets of ice sweep at you seemingly from all sides.</I>",
+		"<I>The stream of hail thickens for a moment and temporarily obscures your vision.</I>"
+	)
 
 	transition_chances = list(
 		WEATHER_SNOW = 40,
@@ -251,42 +255,31 @@ var/datum/planet/lythios43c/planet_lythios43c = null
 	transition_messages = list(
 		"Ice begins to fall from the sky.",
 		"It begins to hail.",
-		"An intense chill is felt, and chunks of ice start to fall from the sky, towards you."
+		"An intense chill washes over you as chunks of ice start to fall from the sky."
 	)
 
 /datum/weather/lythios43c/hail/process_effects()
 	..()
-	for(var/humie in human_mob_list)
-		var/mob/living/carbon/human/H = humie
+	for(var/humie in living_mob_list)
+		var/mob/living/H = humie
 		if(H.z in holder.our_planet.expected_z_levels)
 			var/turf/T = get_turf(H)
 			if(!T.outdoors)
 				continue // They're indoors, so no need to pelt them with ice.
 
 			// If they have an open umbrella, it'll guard from hail
-			var/obj/item/weapon/melee/umbrella/U
-			if(istype(H.get_active_hand(), /obj/item/weapon/melee/umbrella))
+			var/obj/item/melee/umbrella/U
+			if(istype(H.get_active_hand(), /obj/item/melee/umbrella))
 				U = H.get_active_hand()
-			else if(istype(H.get_inactive_hand(), /obj/item/weapon/melee/umbrella))
+			else if(istype(H.get_inactive_hand(), /obj/item/melee/umbrella))
 				U = H.get_inactive_hand()
 			if(U && U.open)
 				if(show_message)
-					to_chat(H, "<span class='notice'>Hail patters onto your umbrella.</span>")
+					to_chat(H, pick(effect_message))
 				continue
 
-			var/target_zone = pick(BP_ALL)
-			var/amount_blocked = H.run_armor_check(target_zone, "melee")
-			var/amount_soaked = H.get_armor_soak(target_zone, "melee")
+//removed needless damage code that spammed the user. if they're outside on this planet, they can withstand the useless damage that was here.
 
-			var/damage = rand(1,3)
-
-			if(amount_blocked >= 30)
-				continue // No need to apply damage. Hardhats are 30. They should probably protect you from hail on your head.
-				//Voidsuits are likewise 40, and riot, 80. Clothes are all less than 30.
-
-			if(amount_soaked >= damage)
-				continue // No need to apply damage.
-
-			H.apply_damage(damage, BRUTE, target_zone, amount_blocked, amount_soaked, used_weapon = "hail")
 			if(show_message)
-				to_chat(H, effect_message)
+				to_chat(H, pick(effect_message))
+

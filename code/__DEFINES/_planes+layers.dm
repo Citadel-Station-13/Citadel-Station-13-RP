@@ -125,12 +125,7 @@ What is the naming convention for planes or layers?
 #define PLANE_CH_SPECIAL		23 //Special role icon (revhead or w/e)
 #define PLANE_CH_STATUS_OOC		24 //OOC status hud for spooks
 
-
-#define BELOW_FULLSCREEN_LAYER	31 //Lifesign detector blip
-
-
 #define PLANE_MESONS			32 //Stuff seen with mesons, like open ceilings. This is 30 for downstreams.
-
 
 #define PLANE_ADMIN2			33 //Purely for shenanigans (above lighting)
 

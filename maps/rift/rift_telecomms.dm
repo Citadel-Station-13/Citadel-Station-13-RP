@@ -108,6 +108,6 @@
 	name = "pre-linked multitool (rift hub)"
 	desc = "This multitool has already been linked to the Atlas telecomms hub and can be used to link multiple machines to the hub, including relays." //cit edit - it's not one use
 
-/obj/item/device/multitool/tether_buffered/initialize()
+/obj/item/multitool/tether_buffered/Initialize()
 	. = ..()
 	buffer = locate(/obj/machinery/telecomms/hub/preset/rift)

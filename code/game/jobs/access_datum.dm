@@ -384,12 +384,6 @@
 	desc = "Medical Equipment"
 	region = ACCESS_REGION_MEDBAY
 
-/var/const/access_iff_station = 70
-/datum/access/iff_station
-	id = access_iff_station
-	desc = "Identification friend or foe"
-	region = ACCESS_REGION_GENERAL
-
 /******************
 * Central Command *
 ******************/
@@ -458,7 +452,6 @@
 /*******
 * Misc *
 *******/
-
 /var/const/access_synth = 199
 /datum/access/synthetic
 	id = access_synth

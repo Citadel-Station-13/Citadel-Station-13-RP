@@ -1,5 +1,6 @@
 // Pathfinder's machete
 
+/*
 /obj/item/weapon/melee/energy/machete
 	name = "energy machete"
 	desc = "Light, concealable and especially favoured for artic survival, it features a sleek, robust design. While stylish, it is not the most practical and it somehow manages to look and feel like a toy. Features a telescoping energy emitter designed to be collapsed for storage."
@@ -49,3 +50,4 @@
 		playsound(user.loc, 'sound/weapons/blade1.ogg', 50, 1)
 		return 1
 	return 0
+*/
