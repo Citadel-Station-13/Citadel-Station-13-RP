@@ -83,7 +83,7 @@ SUBSYSTEM_DEF(circuit)
 		/obj/item/implant/integrated_circuit,
 		/obj/item/clothing/under/circuitry,
 		/obj/item/clothing/gloves/circuitry,
-		/obj/item/clothing/ewatch/circuitry,
+		/obj/item/clothing/gloves/ewatch,
 		/obj/item/clothing/glasses/circuitry,
 		/obj/item/clothing/shoes/circuitry,
 		/obj/item/clothing/head/circuitry,
