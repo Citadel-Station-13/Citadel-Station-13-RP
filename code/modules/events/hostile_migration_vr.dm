@@ -26,11 +26,11 @@
 		if(LOC_KITCHEN)
 			spawn_area_type = /area/crew_quarters/kitchen
 			locstring = "kitchen"
-			spawncount = rand(7 * severity, 12 * severity)
+			spawncount = rand(6 * severity, 10 * severity)
 		if(LOC_LIBRARY)
 			spawn_area_type = /area/library
 			locstring = "library"
-			spawncount = rand(9 * severity, 15 * severity)
+			spawncount = rand(9 * severity, 12 * severity)
 		if(LOC_HYDRO)
 			spawn_area_type = /area/hydroponics
 			locstring = "hydroponics bay"
@@ -38,7 +38,7 @@
 		if(LOC_TETHER)
 			spawn_area_type = /area/tether/surfacebase
 			locstring = "tether surface halls"
-			spawncount = rand(15 * severity, 20 * severity)
+			spawncount = rand(18 * severity, 23 * severity)
 		if(LOC_RESEARCH)
 			spawn_area_type = /area/rnd
 			locstring = "research and development"

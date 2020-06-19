@@ -14,9 +14,9 @@
 			var/turf/simulated/floor/T = pick(turfs)
 			var/datum/seed/seed = plant_controller.create_random_seed(1)
 			seed.set_trait(TRAIT_SPREAD,2)             // So it will function properly as vines.
-			seed.set_trait(TRAIT_POTENCY,rand(potency_min, potency_max)) // 70-100 potency will help guarantee a wide spread and powerful effects.
+			seed.set_trait(TRAIT_POTENCY,rand(potency_min, potency_max))
 			seed.set_trait(TRAIT_MATURATION,rand(maturation_min, maturation_max))
-			seed.set_trait(TRAIT_CARNIVOROUS,rand(5, 20)) // VINES WERE A BIT TOO MURDERHAPPY AT 80~100!!
+			seed.set_trait(TRAIT_CARNIVOROUS,rand(0, 20)) // VINES WERE A BIT TOO MURDERHAPPY AT 80~100!!
 			seed.display_name = "strange plants" //more thematic for the vine infestation event
 
 			//make vine zero start off fully matured
@@ -56,7 +56,7 @@
 	mouse_opacity = 2
 
 	var/health = 15
-	var/max_health = 50
+	var/max_health = 95 - TRAIT_POTENCY
 	var/growth_threshold = 0
 	var/growth_type = 1
 	var/max_growth = 0
@@ -171,11 +171,11 @@
 			max_growth--
 	max_growth = max(1,max_growth)
 	if(growth_type > 0)
-		if(TRAIT_POTENCY >= 40 && TRAIT_POTENCY < 50)
+		if(max_health > 40)
 			icon_state = "vines-[growth]"
-		else if(TRAIT_POTENCY >= 50 && TRAIT_POTENCY < 60)
+		else if(max_health <= 40 > 30)
 			icon_state = "mass-[growth]"
-		else if(TRAIT_POTENCY >= 60 && TRAIT_POTENCY < 70)
+		else if(max_health <= 30 > 20)
 			icon_state = "worms"
 		else
 			icon_state = "mold-[growth]"
