@@ -150,8 +150,8 @@
 
 	// cyborgs produced by Robotize get an automatic power cell
 	O.cell = new(O)
-	O.cell.maxcharge = 7500
-	O.cell.charge = 7500
+	O.cell.maxcharge = 10000
+	O.cell.charge = 10000
 
 
 	O.gender = gender
