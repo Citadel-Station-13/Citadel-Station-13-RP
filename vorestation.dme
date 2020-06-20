@@ -1900,6 +1900,7 @@
 #include "code\modules\economy\price_list.dm"
 #include "code\modules\economy\retail_scanner.dm"
 #include "code\modules\economy\TradeDestinations.dm"
+#include "code\modules\emoji\emoji_parse.dm"
 #include "code\modules\entopics_vr\alternate_appearance.dm"
 #include "code\modules\entopics_vr\entopics.dm"
 #include "code\modules\error_handler\error_handler.dm"

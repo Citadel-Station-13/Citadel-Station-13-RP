@@ -57,7 +57,7 @@
 		var/datum/lore/codex/checked = current_page
 		output = "<b>[checked.name]</b>"
 		while(checked.parent)
-			output = "<a href='?src=\ref[src];target=\ref[checked.parent]'>[checked.parent.name]</a> \> [output]"
+			output = "<a href='?src=[REF(src)];target=[REF(checked.parent)]'>[checked.parent.name]</a> \> [output]"
 			checked = checked.parent
 		return output
 
@@ -78,15 +78,7 @@
 	if(!current_page)
 		generate_pages()
 
-	user << browse_rsc('html/browser/codex.css', "codex.css")
-
-	var/dat
-	dat =  "<head>"
-	dat += "<title>[holder.name] ([current_page.name])</title>"
-	dat += "<link rel='stylesheet' href='codex.css' />"
-	dat += "</head>"
-
-	dat += "<body>"
+	var/dat = ""
 	dat += "[get_tree_position()]<br>"
 	dat += "[make_search_bar()]<br>"
 	dat += "<center>"
@@ -99,18 +91,21 @@
 		dat += "<div class='button-group'>"
 		var/datum/lore/codex/category/C = current_page
 		for(var/datum/lore/codex/child in C.children)
-			dat += "<a href='?src=\ref[src];target=\ref[child]' class='button'>[child.name]</a>"
+			dat += "<a href='?src=[REF(src)];target=[REF(child)]' class='button'>[child.name]</a>"
 		dat += "</div>"
 	dat += "<hr>"
 	if(history.len - 1)
-		dat += "<br><a href='?src=\ref[src];go_back=1'>\[Go Back\]</a>"
+		dat += "<br><a href='?src=[REF(src)];go_back=1'>\[Go Back\]</a>"
 	if(current_page.parent)
-		dat += "<br><a href='?src=\ref[src];go_to_parent=1'>\[Go Up\]</a>"
+		dat += "<br><a href='?src=[REF(src)];go_to_parent=1'>\[Go Up\]</a>"
 	if(current_page != home)
-		dat += "<br><a href='?src=\ref[src];go_to_home=1'>\[Go To Home\]</a>"
-	dat += "</center></body>"
-	user << browse(dat, "window=the_empress_protects;size=600x550")
-	onclose(user, "the_empress_protects", src)
+		dat += "<br><a href='?src=[REF(src)];go_to_home=1'>\[Go To Home\]</a>"
+	dat += "</center>"
+
+	var/datum/browser/popup = new(user, "the_empress_protects", "[holder.name] ([current_page.name])", 600, 550)
+	popup.add_stylesheet("codex", "html/browser/codex.css")
+	popup.set_content(dat)
+	popup.open() //popup.open(FALSE)
 
 /datum/codex_tree/Topic(href, href_list)
 	. = ..()

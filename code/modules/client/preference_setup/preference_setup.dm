@@ -86,7 +86,7 @@
 		if(PS == selected_category)
 			dat += "[PS.name] "	// TODO: Check how to properly mark a href/button selected in a classic browser window
 		else
-			dat += "<a href='?src=\ref[src];category=\ref[PS]'>[PS.name]</a> "
+			dat += "<a href='?src=[REF(src)];category=[REF(PS)]'>[PS.name]</a> "
 	return dat
 
 /datum/category_collection/player_setup_collection/proc/content(var/mob/user)
@@ -102,7 +102,7 @@
 
 	if(href_list["category"])
 		var/category = locate(href_list["category"])
-		if(category && category in categories)
+		if(category && (category in categories))
 			selected_category = category
 		. = 1
 

@@ -69,7 +69,7 @@
 		if(tgalert(src, message, "Report Issue","Yes","No")!="Yes")
 			return
 		var/static/issue_template = file2text(".github/ISSUE_TEMPLATE.md")
-		var/servername = CONFIG_GET(string/servername)
+		var/servername = config_legacy.server //CONFIG_GET(string/servername)
 		var/url_params = "Reporting client version: [byond_version]\n\n[issue_template]"
 		if(GLOB.round_id || servername)
 			url_params = "Issue reported from [GLOB.round_id ? " Round ID: [GLOB.round_id][servername ? " ([servername])" : ""]" : servername]\n\n[url_params]"
@@ -210,19 +210,5 @@ Any-Mode: (hotkey doesn't need to be on)
 	src << browse('html/changelog.html', "window=changes;size=675x650")
 	if(prefs.lastchangelog != GLOB.changelog_hash)
 		prefs.lastchangelog = GLOB.changelog_hash
-		SScharacter_setup.queue_preferences_save(prefs) //??
 		prefs.save_preferences()
 		winset(src, "infowindow.changelog", "font-style=;")
-
-/client/verb/map()
-	set name = "Map"
-	set desc = "See the map."
-	set hidden = 1
-
-	if(config_legacy.mapurl)
-		if(alert("This will open the map in your browser. Are you sure?",,"Yes","No")!="Yes")
-			return
-		src << link(config_legacy.mapurl)
-	else
-		to_chat(src, "<span class='danger'>The map URL is not set in the server configuration.</span>")
-	return

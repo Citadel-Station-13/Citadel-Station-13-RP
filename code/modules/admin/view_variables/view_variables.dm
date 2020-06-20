@@ -99,7 +99,9 @@
 	var/html = {"
 <html>
 	<head>
+		<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
 		<title>[title]</title>
+		<!-- <link rel="stylesheet" type="text/css" href="view_variables.css"> -->
 		<style>
 			body {
 				font-family: Verdana, sans-serif;
@@ -134,7 +136,6 @@
 				}
 				return "";
 			}
-
 			// main search functionality
 			var last_filter = "";
 			function updateSearch() {

@@ -254,10 +254,10 @@
 		"burn-exclamation.png" = 'html/burn-exclamation.png',
 		"chevron.png" = 'html/chevron.png',
 		"chevron-expand.png" = 'html/chevron-expand.png',
-//		"scales.png" = 'html/scales.png',
-//		"coding.png" = 'html/coding.png',
-//		"ban.png" = 'html/ban.png',
-//		"chrome-wrench.png" = 'html/chrome-wrench.png',
+		"scales.png" = 'html/scales.png',
+		"coding.png" = 'html/coding.png',
+		"ban.png" = 'html/ban.png',
+		"chrome-wrench.png" = 'html/chrome-wrench.png',
 		"changelog.css" = 'html/changelog.css'
 	)
 
@@ -265,7 +265,7 @@
 	children = list(
 		/datum/asset/simple/jquery,
 		/datum/asset/simple/goonchat,
-		// /datum/asset/spritesheet/goonchat,
+		/datum/asset/spritesheet/goonchat,
 		/datum/asset/simple/fontawesome
 	)
 
@@ -292,7 +292,7 @@
 		"font-awesome.css"    = 'html/font-awesome/css/all.min.css',
 		"v4shim.css"          = 'html/font-awesome/css/v4-shims.min.css'
 	)
-/*
+
 /datum/asset/spritesheet/goonchat
 	name = "chat"
 
@@ -300,17 +300,17 @@
 	InsertAll("emoji", 'icons/emoji.dmi')
 
 	// pre-loading all lanugage icons also helps to avoid meta
-	InsertAll("language", 'icons/misc/language.dmi')
+	//InsertAll("language", 'icons/misc/language.dmi')
 	// catch languages which are pulling icons from another file
-	for(var/path in typesof(/datum/language))
-		var/datum/language/L = path
-		var/icon = initial(L.icon)
-		if (icon != 'icons/misc/language.dmi')
-			var/icon_state = initial(L.icon_state)
-			Insert("language-[icon_state]", icon, icon_state=icon_state)
+	//for(var/path in typesof(/datum/language))
+	//	var/datum/language/L = path
+	//	var/icon = initial(L.icon)
+	//	if (icon != 'icons/misc/language.dmi')
+	//		var/icon_state = initial(L.icon_state)
+	//		Insert("language-[icon_state]", icon, icon_state=icon_state)
 
 	..()
-*/
+
 /*
 /datum/asset/simple/permissions
 	assets = list(

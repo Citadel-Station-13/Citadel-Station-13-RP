@@ -1,6 +1,4 @@
 /datum/preferences
-	/// Custom Keybindings
-	var/list/key_bindings = list()
 	/// Hotkeys mode
 	var/hotkeys = TRUE
 

@@ -55,21 +55,37 @@
 			save_character()
 			return 0
 
+	//general preferences
+	S["lastchangelog"]		>> lastchangelog
+	S["menuoptions"]		>> menuoptions
+	S["auto_fit_viewport"]	>> auto_fit_viewport
+	//Old prefcode.
 	player_setup.load_preferences(S)
+	//Sanitize
+	lastchangelog	= sanitize_text(lastchangelog, initial(lastchangelog))
+	menuoptions		= SANITIZE_LIST(menuoptions)
+	auto_fit_viewport	= sanitize_integer(auto_fit_viewport, FALSE, TRUE, initial(auto_fit_viewport))
 	return 1
 
 /datum/preferences/proc/save_preferences()
-	if(!path)				return 0
+	if(!path)
+		return 0
 	if(world.time < saveprefcooldown)
 		if(istype(client))
 			to_chat(client, "<span class='warning'>You're attempting to save your preferences a little too fast. Wait half a second, then try again.</span>")
 		return 0
 	saveprefcooldown = world.time + PREF_SAVELOAD_COOLDOWN
 	var/savefile/S = new /savefile(path)
-	if(!S)					return 0
+	if(!S)
+		return 0
 	S.cd = "/"
 
-	S["version"] << savefile_version
+	WRITE_FILE(S["version"] , SAVEFILE_VERSION_MAX)		//updates (or failing that the sanity checks) will ensure data is not invalid at load. Assume up-to-date
+	//general preferences
+	WRITE_FILE(S["lastchangelog"], lastchangelog)
+	WRITE_FILE(S["menuoptions"], menuoptions)
+	WRITE_FILE(S["auto_fit_viewport"], auto_fit_viewport)
+	//hurr durr savefile
 	player_setup.save_preferences(S)
 	return 1
 
@@ -104,25 +120,33 @@
 	return 1
 
 /datum/preferences/proc/save_character()
-	if(!path)				return 0
+	if(!path)
+		return 0
 	if(world.time < savecharcooldown)
 		if(istype(client))
 			to_chat(client, "<span class='warning'>You're attempting to save your character a little too fast. Wait half a second, then try again.</span>")
 		return 0
 	savecharcooldown = world.time + PREF_SAVELOAD_COOLDOWN
 	var/savefile/S = new /savefile(path)
-	if(!S)					return 0
+	if(!S)
+		return 0
 	S.cd = "/character[default_slot]"
 
+	//Trust me, one day you will need this*
+	WRITE_FILE(S["version"]			, SAVEFILE_VERSION_MAX)	//load_character will sanitize any bad data, so assume up-to-date.)
 	player_setup.save_character(S)
 	return 1
 
 /datum/preferences/proc/overwrite_character(slot)
-	if(!path)				return 0
-	if(!fexists(path))		return 0
+	if(!path)
+		return 0
+	if(!fexists(path))
+		return 0
 	var/savefile/S = new /savefile(path)
-	if(!S)					return 0
-	if(!slot)	slot = default_slot
+	if(!S)
+		return 0
+	if(!slot)
+		slot = default_slot
 	if(slot != SAVE_RESET)
 		slot = sanitize_integer(slot, 1, config_legacy.character_slots, initial(default_slot))
 		if(slot != default_slot)
@@ -139,3 +163,17 @@
 
 #undef SAVEFILE_VERSION_MAX
 #undef SAVEFILE_VERSION_MIN
+#define TESTING_1 TRUE
+#ifdef TESTING_1
+//DEBUG
+//Some crude tools for testing savefiles
+//path is the savefile path
+/client/verb/savefile_export(path as text)
+	var/savefile/S = new /savefile(path)
+	S.ExportText("/",file("[path].txt"))
+//path is the savefile path
+/client/verb/savefile_import(path as text)
+	var/savefile/S = new /savefile(path)
+	S.ImportText("/",file("[path].txt"))
+
+#endif

@@ -149,17 +149,17 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 
 /client/New(TopicData)
 	// world.SetConfig("APP/admin", ckey, "role=admin")			//CITADEL EDIT - Allows admins to reboot in OOM situations
-	var/tdata = TopicData //save this for later use
+	//var/tdata = TopicData //save this for later use
 	chatOutput = new /datum/chatOutput(src)
 	TopicData = null							//Prevent calls to client.Topic from connect
 
 	if(!(connection in list("seeker", "web")))					//Invalid connection type.
 		return null
 
-	// if(!config_legacy.guests_allowed && IsGuestKey(key))
-	// 	alert(src,"This server doesn't allow guest accounts to play. Please go to https://secure.byond.com and register for a key.","Guest","OK")
-	// 	del(src)
-	// 	return
+	if(!config_legacy.guests_allowed && IsGuestKey(key))
+		alert(src, "This server doesn't allow guest accounts to play. Please go to https://secure.byond.com and register for a key.","Guest","OK")
+		qdel(src)
+		return
 
 	to_chat(src, "<font color='red'>If the title screen is black, resources are still downloading. Please be patient until the title screen appears.</font>")
 
@@ -268,11 +268,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 
 	log_client_to_db()
 
-
-	if(!void)
-		void = new()
-		void.MakeGreed()
-	screen += void
+	add_verbs_from_config()
 
 	if(config_legacy.paranoia_logging)
 		if(isnum(player_age) && player_age == -1)
@@ -281,13 +277,15 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 			log_and_message_admins("PARANOIA: [key_name(src)] has a very new BYOND account ([account_age] days).")
 
 	send_resources()
+	generate_clickcatcher()
+	apply_clickcatcher()
 
 	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
 		to_chat(src, "<span class='info'>You have unread updates in the changelog.</span>")
 		if(config_legacy.aggressive_changelog) //CONFIG_GET(flag/aggressive_changelog))
 			changelog()
 		else
-			winset(src, "rpane.changelog", "font-style=bold") //infowindow
+			winset(src, "infowindow.changelog", "font-style=bold")
 
 
 	hook_vr("client_new",list(src)) //VOREStation Code
@@ -333,6 +331,72 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 /client/Destroy()
 	return QDEL_HINT_HARDDEL_NOW
 
+/client/Click(atom/object, atom/location, control, params)
+	var/ab = FALSE
+	var/list/L = params2list(params)
+	if (object && object == middragatom && L["left"])
+		ab = max(0, 5 SECONDS-(world.time-middragtime)*0.1)
+	var/mcl = config_legacy.minute_click_limit		//CONFIG_GET(number/minute_click_limit)
+	if (!holder && mcl)
+		var/minute = round(world.time, 600)
+		if (!clicklimiter)
+			clicklimiter = new(LIMITER_SIZE)
+		if (minute != clicklimiter[CURRENT_MINUTE])
+			clicklimiter[CURRENT_MINUTE] = minute
+			clicklimiter[MINUTE_COUNT] = 0
+		clicklimiter[MINUTE_COUNT] += 1+(ab)
+		if (clicklimiter[MINUTE_COUNT] > mcl)
+			var/msg = "Your previous click was ignored because you've done too many in a minute."
+			if (minute != clicklimiter[ADMINSWARNED_AT]) //only one admin message per-minute. (if they spam the admins can just boot/ban them)
+				clicklimiter[ADMINSWARNED_AT] = minute
+
+				msg += " Administrators have been informed."
+				if (ab)
+					log_game("[key_name(src)] is using the middle click aimbot exploit")
+					message_admins("[ADMIN_LOOKUPFLW(src)] [ADMIN_KICK(usr)] is using the middle click aimbot exploit</span>")
+					add_system_note("aimbot", "Is using the middle click aimbot exploit")
+				//	log_click(object, location, control, params, src, "lockout (spam - minute ab c [ab] s [middragtime])", TRUE)
+				//else
+				//	log_click(object, location, control, params, src, "lockout (spam - minute)", TRUE)
+				log_game("[key_name(src)] Has hit the per-minute click limit of [mcl] clicks in a given game minute")
+				message_admins("[ADMIN_LOOKUPFLW(src)] [ADMIN_KICK(usr)] Has hit the per-minute click limit of [mcl] clicks in a given game minute")
+			to_chat(src, "<span class='danger'>[msg]</span>")
+			return
+
+	var/scl = config_legacy.second_click_limit		//CONFIG_GET(number/second_click_limit)
+	if (!holder && scl)
+		var/second = round(world.time, 10)
+		if (!clicklimiter)
+			clicklimiter = new(LIMITER_SIZE)
+		if (second != clicklimiter[CURRENT_SECOND])
+			clicklimiter[CURRENT_SECOND] = second
+			clicklimiter[SECOND_COUNT] = 0
+		clicklimiter[SECOND_COUNT] += 1+(!!ab)
+		if (clicklimiter[SECOND_COUNT] > scl)
+			to_chat(src, "<span class='danger'>Your previous click was ignored because you've done too many in a second</span>")
+			return
+
+	if(ab) //Citadel edit, things with stuff.
+		//log_click(object, location, control, params, src, "dropped (ab c [ab] s [middragtime])", TRUE)
+		return
+
+	//if(prefs.log_clicks)
+	//	log_click(object, location, control, params, src)
+
+	if (prefs.hotkeys)
+		// If hotkey mode is enabled, then clicking the map will automatically
+		// unfocus the text bar. This removes the red color from the text bar
+		// so that the visual focus indicator matches reality.
+		winset(src, null, "input.background-color=[COLOR_INPUT_DISABLED]")
+
+	return ..()
+
+/client/proc/add_verbs_from_config()
+	//if(CONFIG_GET(flag/see_own_notes))
+	//	verbs += /client/proc/self_notes
+	//if(CONFIG_GET(flag/use_exp_tracking))
+	//	verbs += /client/proc/self_playtime
+
 #undef UPLOAD_LIMIT
 
 //checks if a client is afk
@@ -367,7 +431,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 		getFilesSlow(src, SSassets.preload, register_asset = FALSE)
 		addtimer(CALLBACK(GLOBAL_PROC, /proc/getFilesSlow, src, SSassets.preload, FALSE), 5 SECONDS)
 
-		#if (PRELOAD_RSC == 0)
+		//#if (PRELOAD_RSC == 0)
 		// for (var/name in GLOB.vox_sounds)
 		// 	var/file = GLOB.vox_sounds[name]
 		// 	Export("##action=load_rsc", file)
@@ -376,7 +440,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 		// 	var/file = GLOB.vox_sounds_male[name]
 		// 	Export("##action=load_rsc", file)
 		// 	stoplag()
-		#endif
+		//#endif
 
 /client/vv_edit_var(var_name, var_value)
 	switch (var_name)
@@ -391,8 +455,53 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 			return TRUE
 	. = ..()
 
-// here because it's similar to below
+/client/proc/rescale_view(change, min, max)
+	var/viewscale = getviewsize(view)
+	var/x = viewscale[1]
+	var/y = viewscale[2]
+	x = clamp(x+change, min, max)
+	y = clamp(y+change, min,max)
+	change_view("[x]x[y]")
 
+/client/proc/change_view(new_size) //yes, this does work!
+	if (isnull(new_size))
+		CRASH("change_view called without argument.")
+
+//CIT CHANGES START HERE - makes change_view change DEFAULT_VIEW to 15x15 depending on preferences
+//	if(prefs && CONFIG_GET(string/default_view))
+//		if(!prefs.widescreenpref && new_size == CONFIG_GET(string/default_view))
+	if(!new_size)
+		new_size = "15x15"
+//END OF CIT CHANGES
+
+	//var/list/old_view = getviewsize(view)
+	view = new_size
+	var/list/actualview = getviewsize(view)
+	apply_clickcatcher(actualview)
+	mob.reload_fullscreen()
+	//if (isliving(mob))
+	//	var/mob/living/M = mob
+	//	M.update_damage_hud()
+	if (prefs.auto_fit_viewport)
+		fit_viewport()
+	//SEND_SIGNAL(mob, COMSIG_MOB_CLIENT_CHANGE_VIEW, src, old_view, actualview)
+
+/client/proc/generate_clickcatcher()
+	if(!void)
+		void = new()
+		screen += void
+
+/client/proc/apply_clickcatcher(list/actualview)
+	generate_clickcatcher()
+	if(!actualview)
+		actualview = getviewsize(view)
+	void.UpdateGreed(actualview[1],actualview[2])
+
+/client/proc/AnnouncePR(announcement)
+	//if(prefs && prefs.chat_toggles & CHAT_PULLR)
+	to_chat(src, announcement)
+
+// here because it's similar to below
 /client/proc/add_system_note(system_ckey, message)
 	notes_add(ckey, message)
 /*
@@ -544,27 +653,6 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 /client/proc/last_activity_seconds()
 	return inactivity / 10
 
-/client/proc/change_view(new_size)
-	if (isnull(new_size))
-		CRASH("change_view called without argument.")
-
-	/*
-	if(prefs && !prefs.widescreenpref && new_size == CONFIG_GET(string/default_view))
-		new_size = CONFIG_GET(string/default_view_square)
-	*/
-
-	view = new_size
-
-	/*
-	apply_clickcatcher()
-	mob.reload_fullscreen()
-	if (isliving(mob))
-		var/mob/living/M = mob
-		M.update_damage_hud()
-	if (prefs.auto_fit_viewport)
-		addtimer(CALLBACK(src,.verb/fit_viewport,10)) //Delayed to avoid wingets from Login calls.
-	*/
-
 /mob/proc/MayRespawn()
 	return FALSE
 
@@ -593,7 +681,3 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 			. = R.group[1]
 		else
 			CRASH("Age check regex failed for [src.ckey]")
-
-/client/proc/AnnouncePR(announcement)
-	//if(prefs && prefs.chat_toggles & CHAT_PULLR)
-	to_chat(src, announcement)
