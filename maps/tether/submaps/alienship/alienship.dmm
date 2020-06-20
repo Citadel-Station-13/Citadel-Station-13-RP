@@ -23,7 +23,7 @@
 /area/tether_away/alienship)
 "ah" = (
 /turf/simulated/shuttle/floor/alienplating,
-/area/shuttle/excursion/tether_dockarm)
+/area/shuttle/excursion/away_alienship)
 "ai" = (
 /obj/machinery/door/airlock/alien/locked,
 /turf/simulated/shuttle/floor/alienplating,
