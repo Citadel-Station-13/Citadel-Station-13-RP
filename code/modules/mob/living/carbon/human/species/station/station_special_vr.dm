@@ -156,6 +156,10 @@
 	//To reduce distant object references
 	var/feral = H.feral
 
+//Are we in danger of ferality?
+	var/danger = FALSE
+	var/feral_state = FALSE
+
 //Handle feral triggers and pre-feral messages
 	if(!feral && (hungry || shock || jittery))
 
@@ -166,12 +170,15 @@
 					to_chat(H,"<span class='info'>You feel rather hungry. It might be a good idea to find some some food...</span>")
 				if(100 to 150)
 					to_chat(H,"<span class='warning'>You feel like you're going to snap and give in to your hunger soon... It would be for the best to find some [pick("food","prey")] to eat...</span>")
+					danger = TRUE
 
 		// Going feral due to hunger
 		else if(H.nutrition < 100 && !isbelly(H.loc))
 			to_chat(H,"<span class='danger'><big>Something in your mind flips, your instincts taking over, no longer able to fully comprehend your surroundings as survival becomes your primary concern - you must feed, survive, there is nothing else. Hunt. Eat. Hide. Repeat.</big></span>")
 			log_and_message_admins("has gone feral due to hunger.", H)
 			feral = 5
+			danger = TRUE
+			feral_state = TRUE
 			if(!H.stat)
 				H.emote("twitch")
 
@@ -184,6 +191,8 @@
 					to_chat(H,"<span class='danger'><big>The pain! It stings! Got to get away! Your instincts take over, urging you to flee, to hide, to go to ground, get away from here...</big></span>")
 					log_and_message_admins("has gone feral due to halloss.", H)
 					feral = 5
+					danger = TRUE
+					feral_state = TRUE
 					if(!H.stat)
 						H.emote("twitch")
 
@@ -191,6 +200,8 @@
 			else if(prob(min(10,(0.1 * H.traumatic_shock))))
 				to_chat(H,"<span class='danger'><big>Your fight-or-flight response kicks in, your injuries too much to simply ignore - you need to flee, to hide, survive at all costs - or destroy whatever is threatening you.</big></span>")
 				feral = 5
+				danger = TRUE
+				feral_state = TRUE
 				log_and_message_admins("has gone feral due to injury.", H)
 				if(!H.stat)
 					H.emote("twitch")
@@ -199,27 +210,35 @@
 		else if(jittery)
 			to_chat(H,"<span class='warning'><big>Suddenly, something flips - everything that moves is... potential prey. A plaything. This is great! Time to hunt!</big></span>")
 			feral = 5
+			danger = TRUE
+			feral_state = TRUE
 			log_and_message_admins("has gone feral due to jitteriness.", H)
 			if(!H.stat)
 				H.emote("twitch")
 
-// Handle being feral
+	// Handle being feral
 	if(feral)
+		//we're feral
+		feral_state = TRUE
 
 		//Shock due to mostly halloss. More feral.
 		if(shock && 2.5*H.halloss >= H.traumatic_shock)
+			danger = TRUE
 			feral = max(feral, H.halloss)
 
 		//Shock due to mostly injury. More feral.
 		else if(shock)
+			danger = TRUE
 			feral = max(feral, H.traumatic_shock * 2)
 
 		//Still jittery? More feral.
 		if(jittery)
+			danger = TRUE
 			feral = max(feral, H.jitteriness-100)
 
 		//Still hungry? More feral.
 		if(H.feral + H.nutrition < 150)
+			danger = TRUE
 			feral++
 		else
 			feral = max(0,--feral)
@@ -229,8 +248,10 @@
 
 		//Did we just finish being feral?
 		if(!feral)
+			feral_state = FALSE
 			to_chat(H,"<span class='info'>Your thoughts start clearing, your feral urges having passed - for the time being, at least.</span>")
 			log_and_message_admins("is no longer feral.", H)
+			update_xenochimera_hud(H, danger, feral_state)
 			return
 
 		//If they lose enough health to hit softcrit, handle_shock() will keep resetting this. Otherwise, pissed off critters will lose shock faster than they gain it.
@@ -239,6 +260,7 @@
 		//Handle light/dark areas
 		var/turf/T = get_turf(H)
 		if(!T)
+			update_xenochimera_hud(H, danger, feral_state)
 			return //Nullspace
 		var/darkish = T.get_lumcount() <= 0.1
 
@@ -260,6 +282,7 @@
 					H.handle_feral()
 
 			//And bail
+			update_xenochimera_hud(H, danger, feral_state)
 			return
 
 		// In the darkness or "hidden". No need for custom scene-protection checks as it's just an occational infomessage.
@@ -306,6 +329,8 @@
 				else
 					to_chat(H,"<span class='danger'>Confusing sights and sounds and smells surround you, this place is wrong, confusing, frightening. You need to hide, go to ground...</span>")
 
+	// HUD update time
+	update_xenochimera_hud(H, danger, feral_state)
 
 /datum/species/xenochimera/proc/produceCopy(var/datum/species/to_copy,var/list/traits,var/mob/living/carbon/human/H)
 	ASSERT(to_copy)
@@ -352,6 +377,21 @@
 /datum/species/xenochimera/get_race_key()
 	var/datum/species/real = all_species[base_species]
 	return real.race_key
+
+/datum/species/xenochimera/proc/update_xenochimera_hud(var/mob/living/carbon/human/H, var/danger, var/feral)
+	if(H.xenochimera_danger_display)
+		H.xenochimera_danger_display.invisibility = 0
+		if(danger && feral)
+			H.xenochimera_danger_display.icon_state = "danger11"
+		else if(danger && !feral)
+			H.xenochimera_danger_display.icon_state = "danger10"
+		else if(!danger && feral)
+			H.xenochimera_danger_display.icon_state = "danger01"
+		else
+			H.xenochimera_danger_display.icon_state = "danger00"
+
+	return
+
 
 
 //Verbs Follow
