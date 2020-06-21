@@ -45,7 +45,7 @@
 			var/datum/computer/file/embedded_program/docking/C = locate(controller_tag)
 
 			if(!istype(C))
-				warning("warning: shuttle with docking tag [controller_tag] could not find it's controller!")
+				warning("warning: shuttle with docking tag [controller_tag] could not find its controller!")
 			else
 				destination_dock_controllers[destination] = C
 

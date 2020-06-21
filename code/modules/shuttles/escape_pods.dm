@@ -18,7 +18,7 @@
 	if(docking_controller)
 		var/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/controller_master = docking_controller.master
 		if(!istype(controller_master))
-			warning("warning: escape pod with docking tag [docking_controller_tag] could not find it's controller master!")
+			warning("warning: escape pod with docking tag [docking_controller_tag] could not find its controller master!")
 		else
 			controller_master.pod = src
 
