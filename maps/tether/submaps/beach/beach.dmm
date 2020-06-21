@@ -309,7 +309,7 @@
 /area/tether_away/beach/jungle)
 "bm" = (
 /turf/simulated/floor/beach/sand/desert,
-/area/shuttle/excursion/tether_dockarm)
+/area/shuttle/excursion/away_beach)
 "bp" = (
 /turf/simulated/floor/beach/sand,
 /area/tether_away/beach/jungle)
