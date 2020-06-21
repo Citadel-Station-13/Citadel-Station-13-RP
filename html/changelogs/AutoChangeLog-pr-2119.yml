@@ -1,0 +1,10 @@
+author: "Zandario"
+delete-after: True
+changes: 
+  - rscadd: "Colorable Teshari Undercoats"
+  - rscadd: "Colorable Teshari Cloaks"
+  - rscadd: "Two sets of colorable full-body Teshari coats (can be toggled open)"
+  - rscadd: "Colorable Teshari Labcoat (which weren't in use for some reason)"
+  - rscadd: "Rest of the Smocks to the Smock Selection"
+  - rscadd: "Made a Centcom uniform for Tesh just in case ;)"
+  - bugfix: "Reverted the name changes I did to a couple sprites as it was a temporary fix."
