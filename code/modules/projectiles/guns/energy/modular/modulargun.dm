@@ -1,11 +1,12 @@
-//modular weapons 2, lolman360 style. shitcode ahead, be warned.
+//modular weapons 2. shitcode ahead, be warned.
 
 /obj/item/gun/energy/modular
-	name = "modular weapon"
-	desc = "This object should never exist. Contact your God, the Maker has made a mistake."
+	name = "the very concept of a modular weapon"
+	desc = "An idea, given physical form? Contact your God, the Maker has made a mistake."
 	icon_state = "mod_pistol"
 	cell_type = /obj/item/cell/device/weapon
 	charge_cost = 120
+	projectile_type=/obj/item/projectile/beam//was this my issue the entire fucming time
 	var/cores = 1//How many lasing cores can we support?
 	var/assembled = 1 //Are we open?
 	var/obj/item/modularlaser/lasermedium/primarycore //Lasing medium core.
@@ -18,11 +19,32 @@
 	firemodes = list()
 	var/emp_vuln = TRUE
 
+/obj/item/gun/energy/modular/verb/debugtogglefiremode()
+	set name = "Debug Do The Gun Generate Firemode"
+	set category = "Object"
+	src.generatefiremodes()
+
 /obj/item/gun/energy/modular/proc/generatefiremodes() //Accepts no args. Checks the gun's current components and generates projectile types, firemode costs and max burst. Should be called after changing parts or part values.
-	if(!circuit || !primarycore || !laserlens || !lasercap || !lasercooler)
-		return FALSE //cannot work
+
+
+	if(!circuit)
+		to_chat(world, "The modular weapon at [src.loc] is missing a circuit.")
+		return
+	if(!primarycore)
+		to_chat(world, "The modular weapon at [src.loc] is missing a main core.")
+		return
+	if(!laserlens)
+		to_chat(world, "The modular weapon at [src.loc] is missing a lens.")
+		return
+	if(!lasercooler)
+		to_chat(world, "The modular weapon at [src.loc] is missing a cooler.")
+		return
+	if(!lasercap)
+		to_chat(world, "The modular weapon at [src.loc] is missing a lasercap.")
+		return
 	firemodes = list()
 	var/burstmode = circuit.maxburst //Max burst controlled by the laser control circuit.
+	to_chat(world, "The modular weapon at [src.loc] has begun generating a firemode.")
 	var/obj/item/projectile/beammode = primarycore.beamtype //Primary mode fire type.
 	var/chargecost = primarycore.beamcost * lasercap.costmod //Cost for primary fire.
 	chargecost += lasercooler.costadd //Cooler adds a flat amount post capacitor based on firedelay mod. Can be negative.
@@ -38,12 +60,13 @@
 		beammode_lethal = secondarycore.beamtype
 		chargecost_lethal = secondarycore.beamcost * lasercap.costmod
 		chargecost_lethal += lasercooler.costadd
-	if(cores == 3) //Tertiary firemode
+	if(cores == 3) //Tertiary firemodes
 		beammode_special = tertiarycore.beamtype
 		chargecost_special = tertiarycore.beamcost * lasercap.costmod
 		chargecost_special += lasercooler.costadd
 	var/maxburst = circuit.maxburst //Max burst.
 	emp_vuln = circuit.robust //is the circuit strong enough to dissipate EMPs?
+	to_chat(world, "The modular weapon at [src.loc] has a max burst of [burstmode], a primary beam type of [beammode], a chargecost of [chargecost], a scatter of [scatter], a firedelay of [fire_delay], a burstdelay of [burst_delay], an accuracy of [accuracy], a chargecost of core 2 [chargecost_lethal], a beamtype of core 2 [beammode_lethal], a chargecost of core 3 [chargecost_special], a beamtype of core 3 [beammode_special]")
 	switch(cores)
 		if(1) //this makes me sick but ill ask if there's a better way to do this
 			if(chargecost < 0)
@@ -124,12 +147,12 @@
 	return ..()
 
 /obj/item/gun/energy/modular/special_check(mob/user)
-	..()
+	. = ..()
 	if(!circuit || !primarycore || !laserlens || !lasercap || !lasercooler)
 		return FALSE //cannot work
-		to_chat(user, "<span class='warning'>The gun is missing parts!</span>")
+		to_chat(world, "<span class='warning'>The gun is missing parts!</span>")
 	if(!assembled)
-		to_chat(user, "<span class='warning'>The gun is open!</span>")
+		to_chat(world, "<span class='warning'>The gun is open!</span>")
 		return FALSE
 
 /obj/item/gun/energy/modular/attackby(obj/item/O, mob/user)
@@ -228,6 +251,13 @@
 				return
 	..()
 
+/obj/item/gun/energy/modular/twocore
+	name = "bicore modular weapon"
+	cores = 2
+
+/obj/item/gun/energy/modular/threecore
+	name = "tricore modular weapon"
+	cores = 3
 //parts
 /obj/item/modularlaser
 	name = "modular laser part"
