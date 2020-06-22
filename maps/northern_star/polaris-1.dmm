@@ -29822,9 +29822,7 @@
 /obj/machinery/r_n_d/server/robotics,
 /turf/simulated/floor/bluegrid{
 	name = "Server Base";
-	nitrogen = 500;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=500;TEMP=80"
 	},
 /area/server)
 "bfP" = (
@@ -29835,9 +29833,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Server Base";
-	nitrogen = 500;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=500;TEMP=80"
 	},
 /area/server)
 "bfQ" = (
@@ -31447,9 +31443,7 @@
 /obj/machinery/r_n_d/server/core,
 /turf/simulated/floor/bluegrid{
 	name = "Server Base";
-	nitrogen = 500;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=500;TEMP=80"
 	},
 /area/server)
 "biK" = (
@@ -31468,9 +31462,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Server Base";
-	nitrogen = 500;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=500;TEMP=80"
 	},
 /area/server)
 "biL" = (
@@ -52707,7 +52699,7 @@
 /area/bridge_hallway)
 "bTP" = (
 /obj/machinery/door/airlock/command{
-	name = "Colony Director's Quarters";
+	name = "Facility Director's Quarters";
 	req_access = list(20)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -54817,7 +54809,7 @@
 	dir = 1
 	},
 /obj/effect/landmark/start{
-	name = "Colony Director"
+	name = "Facility Director"
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
@@ -54829,7 +54821,7 @@
 	broadcasting = 0;
 	dir = 4;
 	listening = 1;
-	name = "Colony Director's Intercom";
+	name = "Facility Director's Intercom";
 	pixel_x = 21;
 	pixel_y = 0
 	},
@@ -55476,7 +55468,7 @@
 /obj/item/megaphone,
 /obj/machinery/requests_console{
 	announcementConsole = 1;
-	department = "Colony Director's Desk";
+	department = "Facility Director's Desk";
 	departmentType = 5;
 	name = "Station Administrator RC";
 	pixel_x = 30;
@@ -57467,7 +57459,7 @@
 "ccy" = (
 /obj/machinery/door/airlock/command{
 	id_tag = "captaindoor";
-	name = "Colony Director's Office";
+	name = "Facility Director's Office";
 	req_access = list(20)
 	},
 /obj/structure/disposalpipe/segment,
@@ -87679,7 +87671,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "dil" = (
-/obj/machinery/portable_atmospherics/canister/sleeping_agent,
+/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
@@ -87689,7 +87681,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "dim" = (
-/obj/machinery/portable_atmospherics/canister/sleeping_agent,
+/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
 /obj/machinery/light{
 	icon_state = "tube1";
 	dir = 4
@@ -92495,7 +92487,7 @@
 /turf/simulated/floor/reinforced/n20,
 /area/engineering/atmos)
 "drQ" = (
-/obj/machinery/portable_atmospherics/canister/sleeping_agent,
+/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
 /turf/simulated/floor/reinforced/n20,
 /area/engineering/atmos)
 "drR" = (
@@ -101113,7 +101105,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/reinforced/nitrogen{
-	nitrogen = 82.1472
+	initial_gas_mix = "n2=82.1472;TEMP=293.15"
 	},
 /area/engineering/engine_room)
 "dGR" = (
@@ -101127,7 +101119,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/reinforced/nitrogen{
-	nitrogen = 82.1472
+	initial_gas_mix = "n2=82.1472;TEMP=293.15"
 	},
 /area/engineering/engine_room)
 "dGS" = (
@@ -101151,7 +101143,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/reinforced/nitrogen{
-	nitrogen = 82.1472
+	initial_gas_mix = "n2=82.1472;TEMP=293.15"
 	},
 /area/engineering/engine_room)
 "dGT" = (
@@ -101233,7 +101225,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/reinforced/nitrogen{
-	nitrogen = 82.1472
+	initial_gas_mix = "n2=82.1472;TEMP=293.15"
 	},
 /area/engineering/engine_room)
 "dHc" = (
@@ -101254,7 +101246,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/reinforced/nitrogen{
-	nitrogen = 82.1472
+	initial_gas_mix = "n2=82.1472;TEMP=293.15"
 	},
 /area/engineering/engine_room)
 "dHe" = (
@@ -101315,7 +101307,7 @@
 "dHk" = (
 /obj/effect/floor_decal/industrial/warning/cee,
 /turf/simulated/floor/reinforced/nitrogen{
-	nitrogen = 82.1472
+	initial_gas_mix = "n2=82.1472;TEMP=293.15"
 	},
 /area/engineering/engine_room)
 "dHl" = (
@@ -101328,7 +101320,7 @@
 	},
 /obj/effect/floor_decal/industrial/warning/cee,
 /turf/simulated/floor/reinforced/nitrogen{
-	nitrogen = 82.1472
+	initial_gas_mix = "n2=82.1472;TEMP=293.15"
 	},
 /area/engineering/engine_room)
 "dHn" = (

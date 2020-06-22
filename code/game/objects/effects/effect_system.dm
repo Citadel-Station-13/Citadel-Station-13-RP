@@ -406,7 +406,7 @@ steam.start() -- spawns the effect
 /datum/effect_system/ion_trail_follow/start()
 	if(on)
 		return
-	if(!ismovableatom(holder))
+	if(!ismovable(holder))
 		return
 	START_PROCESSING(SSfastprocess, src)
 	on = TRUE

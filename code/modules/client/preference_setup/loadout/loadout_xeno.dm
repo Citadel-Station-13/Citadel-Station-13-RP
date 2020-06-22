@@ -150,6 +150,10 @@
 	sort_category = "Xenowear"
 	cost = 1
 
+/datum/gear/shoes/footwraps/New()
+	..()
+	gear_tweaks = list(gear_tweak_free_color_choice)
+
 /datum/gear/uniform/cohesionsuits
 	display_name = "cohesion suit selection (Promethean)"
 	path = /obj/item/clothing/under/cohesion
@@ -185,12 +189,12 @@
 /datum/gear/uniform/dept/undercoat/command
 	display_name = "command undercoat (Teshari)"
 	path = /obj/item/clothing/under/seromi/undercoat/jobs/command
-	allowed_roles = list("Colony Director","Head of Personnel","Head of Security","Chief Engineer","Chief Medical Officer","Research Director")
+	allowed_roles = list("Facility Director","Head of Personnel","Head of Security","Chief Engineer","Chief Medical Officer","Research Director")
 
 /datum/gear/uniform/dept/undercoat/command_g
 	display_name = "command undercoat - gold buttons (Teshari)"
 	path = /obj/item/clothing/under/seromi/undercoat/jobs/command_g
-	allowed_roles = list("Colony Director","Head of Personnel","Head of Security","Chief Engineer","Chief Medical Officer","Research Director")
+	allowed_roles = list("Facility Director","Head of Personnel","Head of Security","Chief Engineer","Chief Medical Officer","Research Director")
 
 /datum/gear/uniform/dept/undercoat/cmo
 	display_name = "chief medical officer undercoat (Teshari)"
@@ -279,7 +283,7 @@
 /datum/gear/suit/dept/cloak/command
 	display_name = "command cloak (Teshari)"
 	path = /obj/item/clothing/suit/storage/seromi/cloak/jobs/command
-	allowed_roles = list("Colony Director","Head of Personnel","Head of Security","Chief Engineer","Chief Medical Officer","Research Director")
+	allowed_roles = list("Facility Director","Head of Personnel","Head of Security","Chief Engineer","Chief Medical Officer","Research Director")
 
 /datum/gear/suit/dept/cloak/cmo
 	display_name = "chief medical officer cloak (Teshari)"
@@ -356,7 +360,7 @@
 	path = /obj/item/clothing/glasses/aerogelgoggles
 	whitelisted = SPECIES_TESHARI
 	sort_category = "Xenowear"
-	
+
 /datum/gear/uniform/voxcivassistant
 	display_name = "vox pressure suit (assistant)"
 	path = /obj/item/clothing/under/pressuresuit/voxcivassistant
@@ -374,13 +378,13 @@
 	path = /obj/item/clothing/under/pressuresuit/voxcivchef
 	sort_category = "Xenowear"
 	whitelisted = SPECIES_VOX
-	
+
 /datum/gear/uniform/voxcivchaplain
 	display_name = "vox pressure suit (chaplain)"
 	path = /obj/item/clothing/under/pressuresuit/voxcivchaplain
 	sort_category = "Xenowear"
 	whitelisted = SPECIES_VOX
-	
+
 /datum/gear/uniform/voxcivlibrarian
 	display_name = "vox pressure suit (librarian)"
 	path = /obj/item/clothing/under/pressuresuit/voxcivlibrarian
@@ -398,3 +402,63 @@
 	path = /obj/item/clothing/suit/simonjacket
 	sort_category = "Xenowear"
 	whitelisted = SPECIES_VOX
+
+/datum/gear/uniform/smockcolor
+	display_name = "smock, recolorable (Teshari)"
+	path = /obj/item/clothing/under/seromi/smock/white
+	whitelisted = SPECIES_TESHARI
+	sort_category = "Xenowear"
+
+/datum/gear/uniform/smockcolor/New()
+	..()
+	gear_tweaks = list(gear_tweak_free_color_choice)
+
+/datum/gear/uniform/undercoatcolor
+	display_name = "undercoat, recolorable (Teshari)"
+	path = /obj/item/clothing/under/seromi/undercoat/standard/white_grey
+	whitelisted = SPECIES_TESHARI
+	sort_category = "Xenowear"
+
+/datum/gear/uniform/undercoatcolor/New()
+	..()
+	gear_tweaks = list(gear_tweak_free_color_choice)
+
+/datum/gear/suit/cloakcolor
+	display_name = "cloak, recolorable (Teshari)"
+	path = /obj/item/clothing/suit/storage/seromi/cloak/standard/white_grey
+	whitelisted = SPECIES_TESHARI
+	sort_category = "Xenowear"
+
+/datum/gear/suit/cloakcolor/New()
+	..()
+	gear_tweaks = list(gear_tweak_free_color_choice)
+
+/datum/gear/suit/labcoat_tesh
+	display_name = "labcoat, colorable (Teshari)"
+	path = /obj/item/clothing/suit/storage/toggle/labcoat/teshari
+	whitelisted = SPECIES_TESHARI
+	sort_category = "Xenowear"
+
+/datum/gear/suit/labcoat_tesh/New()
+	..()
+	gear_tweaks = list(gear_tweak_free_color_choice)
+
+/datum/gear/suit/teshcoat
+	display_name = "small black coat, recolorable stripes (Teshari)"
+	path = /obj/item/clothing/suit/storage/toggle/tesharicoat
+	whitelisted = SPECIES_TESHARI
+	sort_category = "Xenowear"
+
+/datum/gear/suit/teshcoat/New()
+	..()
+	gear_tweaks = list(gear_tweak_free_color_choice)
+
+/datum/gear/suit/teshcoatwhite
+	display_name = "smallcoat, recolorable (Teshari)"
+	path = /obj/item/clothing/suit/storage/toggle/tesharicoatwhite
+	whitelisted = SPECIES_TESHARI
+	sort_category = "Xenowear"
+
+/datum/gear/suit/teshcoatwhite/New()
+	..()
+	gear_tweaks = list(gear_tweak_free_color_choice)

@@ -5,10 +5,8 @@
 	icon = 'icons/turf/snow_new.dmi'
 	icon_state = "snow"
 
-	oxygen = MOLES_O2STANDARD * 1.15
-	nitrogen = MOLES_N2STANDARD * 1.15
+	initial_gas_mix = GAS_STRING_TURF_SNOW
 
-	temperature = TN60C
 	var/list/crossed_dirs = list()
 
 #define FOOTSTEP_SPRITE_AMT 2

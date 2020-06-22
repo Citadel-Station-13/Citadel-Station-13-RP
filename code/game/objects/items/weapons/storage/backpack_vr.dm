@@ -1,7 +1,7 @@
 /obj/item/storage/backpack/saddlebag
 	name = "Horse Saddlebags"
 	desc = "A saddle that holds items. Seems slightly bulky."
-	icon = 'icons/obj/storage.dmi'
+	icon = 'icons/obj/clothing/backpack.dmi'
 	icon_override = 'icons/mob/back_vr.dmi'
 	item_state = "saddlebag"
 	icon_state = "saddlebag"
@@ -33,7 +33,7 @@
 /obj/item/storage/backpack/saddlebag_common //Shared bag for other taurs with sturdy backs
 	name = "Taur Saddlebags"
 	desc = "A saddle that holds items. Seems slightly bulky."
-	icon = 'icons/obj/storage.dmi'
+	icon = 'icons/obj/clothing/backpack.dmi'
 	icon_override = 'icons/mob/back_vr.dmi'
 	item_state = "saddlebag"
 	icon_state = "saddlebag"
@@ -108,7 +108,7 @@
 /obj/item/storage/backpack/saddlebag_common/robust //Shared bag for other taurs with sturdy backs
 	name = "Robust Saddlebags"
 	desc = "A saddle that holds items. Seems robust."
-	icon = 'icons/obj/storage.dmi'
+	icon = 'icons/obj/clothing/backpack.dmi'
 	icon_override = 'icons/mob/back_vr.dmi'
 	item_state = "robustsaddle"
 	icon_state = "robustsaddle"
@@ -117,7 +117,7 @@
 /obj/item/storage/backpack/saddlebag_common/vest //Shared bag for other taurs with sturdy backs
 	name = "Taur Duty Vest"
 	desc = "An armored vest with the armor modules replaced with various handy compartments with decent storage capacity. Useless for protection though."
-	icon = 'icons/obj/storage.dmi'
+	icon = 'icons/obj/clothing/backpack.dmi'
 	icon_override = 'icons/mob/back_vr.dmi'
 	item_state = "taurvest"
 	icon_state = "taurvest"

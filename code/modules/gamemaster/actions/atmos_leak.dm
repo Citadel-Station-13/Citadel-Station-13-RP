@@ -22,11 +22,11 @@
 	EVENT_LEVEL_MAJOR = 3
 	)
 
-	var/gas_choices = list("carbon_dioxide", "sleeping_agent") // Annoying
+	var/gas_choices = list(/datum/gas/carbon_dioxide, /datum/gas/nitrous_oxide) // Annoying
 	if(severity >= EVENT_LEVEL_MODERATE)
-		gas_choices += "phoron" // Dangerous
+		gas_choices += /datum/gas/phoron // Dangerous
 	if(severity >= EVENT_LEVEL_MAJOR)
-		gas_choices += "volatile_fuel" // Dangerous and no default atmos setup!
+		gas_choices += /datum/gas/volatile_fuel // Dangerous and no default atmos setup!
 	gas_type = pick(gas_choices)
 
 	var/list/area/grand_list_of_areas = get_station_areas(excluded)
@@ -55,7 +55,7 @@
 
 /datum/gm_action/atmos_leak/announce()
 	if(target_area)
-		command_announcement.Announce("Warning, hazardous [gas_data.name[gas_type]] gas leak detected in \the [target_area], evacuate the area.", "Hazard Alert")
+		command_announcement.Announce("Warning, hazardous [GLOB.meta_gas_names[gas_type]] gas leak detected in \the [target_area], evacuate the area.", "Hazard Alert")
 
 /datum/gm_action/atmos_leak/start()
 	if(!target_turf)

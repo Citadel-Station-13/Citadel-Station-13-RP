@@ -10,7 +10,7 @@
 
 /obj/item/tank/emergency/phoron/double/New()
 	..()
-	air_contents.adjust_gas("phoron", (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
+	air_contents.adjust_gas(/datum/gas/phoron, (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
 
 //New icons
 /obj/item/tank/oxygen
@@ -85,6 +85,7 @@
 	icon_override = 'icons/mob/belt_vr.dmi'
 	icon_state = "emergency_phoron_vox"
 	gauge_icon = "indicator_smalltank"
+	volume = 6
 	gauge_cap = 3
 
 /obj/item/tank/nitrogen

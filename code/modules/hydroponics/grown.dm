@@ -236,6 +236,12 @@
 					new /obj/item/reagent_containers/food/snacks/soydope(get_turf(src))
 					qdel(src)
 					return
+				else if(!isnull(seed.chems["pineapplejuice"]))
+					to_chat(user, "You slice \the [src] into slices.")
+					for(var/i=i;i<=4;i++)
+						new /obj/item/reagent_containers/food/snacks/pineapple_ring(get_turf(src))
+					qdel(src)
+					return
 				else if(seed.get_trait(TRAIT_FLESH_COLOUR))
 					to_chat(user, "You slice up \the [src].")
 					var/slices = rand(3,5)

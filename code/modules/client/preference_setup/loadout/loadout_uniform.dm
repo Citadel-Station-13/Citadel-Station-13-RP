@@ -295,9 +295,9 @@
 	path = /obj/item/clothing/under/dress/dress_fire
 
 /datum/gear/uniform/uniform_captain
-	display_name = "uniform, colony director's dress"
+	display_name = "uniform, Facility Director's dress"
 	path = /obj/item/clothing/under/dress/dress_cap
-	allowed_roles = list("Colony Director")
+	allowed_roles = list("Facility Director")
 
 /datum/gear/uniform/corpdetsuit
 	display_name = "uniform, corporate (Detective)"
@@ -345,19 +345,23 @@
 	path = /obj/item/clothing/under/rank/head_of_security/navyblue
 	allowed_roles = list("Head of Security")
 
-/datum/gear/uniform/shortplaindress
-	display_name = "plain dress"
-	path = /obj/item/clothing/under/dress/white3
-
-/datum/gear/uniform/shortplaindress/New()
-	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+/datum/gear/uniform/whitedress
+	display_name = "white wedding dress"
+	path = /obj/item/clothing/under/dress/white
 
 /datum/gear/uniform/longdress
 	display_name = "long dress"
 	path = /obj/item/clothing/under/dress/white2
 
 /datum/gear/uniform/longdress/New()
+	..()
+	gear_tweaks = list(gear_tweak_free_color_choice)
+
+/datum/gear/uniform/shortplaindress
+	display_name = "plain dress"
+	path = /obj/item/clothing/under/dress/white3
+
+/datum/gear/uniform/shortplaindress/New()
 	..()
 	gear_tweaks = list(gear_tweak_free_color_choice)
 
@@ -372,10 +376,28 @@
 /datum/gear/uniform/reddress
 	display_name = "red dress with belt"
 	path = /obj/item/clothing/under/dress/darkred
-
+/*
 /datum/gear/uniform/whitewedding
 	display_name= "white wedding dress"
 	path = /obj/item/clothing/under/wedding/bride_white
+*/
+
+/datum/gear/uniform/wedding
+	display_name = "Wedding Dress selection"
+	path = /obj/item/clothing/under/wedding
+
+/datum/gear/uniform/wedding/New()
+	..()
+	var/list/weddings = list()
+	for(var/wedding in typesof(/obj/item/clothing/under/wedding))
+		var/obj/item/clothing/under/wedding/wedding_type = wedding
+		weddings[initial(wedding_type.name)] = wedding_type
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(weddings, /proc/cmp_text_asc, TRUE))
+
+
+/datum/gear/uniform/suit/reallyblack
+	display_name = "executive suit"
+	path = /obj/item/clothing/under/suit_jacket/really_black
 
 /datum/gear/uniform/skirts
 	display_name = "executive skirt"
@@ -518,7 +540,7 @@
 /datum/gear/uniform/sifguard/command
 	display_name = "uniform, crew (command)"
 	path = /obj/item/clothing/under/solgov/utility/sifguard/officer/crew
-	allowed_roles = list("Head of Security","Colony Director","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer")
+	allowed_roles = list("Head of Security","Facility Director","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer")
 
 /datum/gear/uniform/fleet/medical
 	display_name = "uniform, coveralls (medical)"
@@ -551,7 +573,7 @@
 /datum/gear/uniform/fleet/command
 	display_name = "uniform, coveralls (command)"
 	path = /obj/item/clothing/under/solgov/utility/fleet/command
-	allowed_roles = list("Head of Security","Colony Director","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer")
+	allowed_roles = list("Head of Security","Facility Director","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer")
 
 /datum/gear/uniform/marine/medical
 	display_name = "uniform, fatigues (medical)"
@@ -584,7 +606,7 @@
 /datum/gear/uniform/marine/command
 	display_name = "uniform, fatigues (command)"
 	path = /obj/item/clothing/under/solgov/utility/marine/command
-	allowed_roles = list("Head of Security","Colony Director","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer")
+	allowed_roles = list("Head of Security","Facility Director","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer")
 
 /datum/gear/uniform/marine/green
 	display_name = "uniform, fatigues (green)"
@@ -712,7 +734,7 @@ datum/gear/uniform/fiendsuit
 datum/gear/uniform/fienddress
 	display_name = "Fiendish Dress"
 	path = /obj/item/clothing/under/fienddress
-	
+
 datum/gear/uniform/leotard
 	display_name = "Black leotard"
 	path = /obj/item/clothing/under/leotard

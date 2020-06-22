@@ -42,8 +42,8 @@
 
 	gluttonous = 1
 
-	breath_type = "phoron"
-	poison_type = "oxygen"
+	breath_type = /datum/gas/phoron
+	poison_type = /datum/gas/oxygen
 	siemens_coefficient = 0.2
 
 	flags = NO_SCAN

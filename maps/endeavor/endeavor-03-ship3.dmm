@@ -668,7 +668,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock/command{
 	id_tag = "captaindoor";
-	name = "Colony Director's Office";
+	name = "Facility Director's Office";
 	req_access = list(20);
 	req_one_access = newlist()
 	},
@@ -9195,7 +9195,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/command{
 	id_tag = null;
-	name = "Colony Director's Restroom";
+	name = "Facility Director's Restroom";
 	req_access = list(20)
 	},
 /turf/simulated/floor/tiled/freezer,
