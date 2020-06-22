@@ -1015,8 +1015,8 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 1
 	},
-/obj/structure/closet/secure_closet/guncabinet/excursion{
-	name = "mining weaponry cabinet";
+/obj/structure/closet/secure_closet/guncabinet/phase{
+	name = "mining weapon cabinet";
 	req_one_access = list(48)
 	},
 /turf/simulated/floor/tiled,
