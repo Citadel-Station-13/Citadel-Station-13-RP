@@ -25,26 +25,19 @@
 	src.generatefiremodes()
 
 /obj/item/gun/energy/modular/proc/generatefiremodes() //Accepts no args. Checks the gun's current components and generates projectile types, firemode costs and max burst. Should be called after changing parts or part values.
-
-
 	if(!circuit)
-		to_chat(world, "The modular weapon at [src.loc] is missing a circuit.")
 		return
 	if(!primarycore)
-		to_chat(world, "The modular weapon at [src.loc] is missing a main core.")
 		return
 	if(!laserlens)
-		to_chat(world, "The modular weapon at [src.loc] is missing a lens.")
 		return
 	if(!lasercooler)
-		to_chat(world, "The modular weapon at [src.loc] is missing a cooler.")
 		return
 	if(!lasercap)
-		to_chat(world, "The modular weapon at [src.loc] is missing a lasercap.")
 		return
 	firemodes = list()
 	var/burstmode = circuit.maxburst //Max burst controlled by the laser control circuit.
-	to_chat(world, "The modular weapon at [src.loc] has begun generating a firemode.")
+	//to_chat(world, "The modular weapon at [src.loc] has begun generating a firemode.")
 	var/obj/item/projectile/beammode = primarycore.beamtype //Primary mode fire type.
 	var/chargecost = primarycore.beamcost * lasercap.costmod //Cost for primary fire.
 	chargecost += lasercooler.costadd //Cooler adds a flat amount post capacitor based on firedelay mod. Can be negative.
@@ -66,7 +59,7 @@
 		chargecost_special += lasercooler.costadd
 	var/maxburst = circuit.maxburst //Max burst.
 	emp_vuln = circuit.robust //is the circuit strong enough to dissipate EMPs?
-	to_chat(world, "The modular weapon at [src.loc] has a max burst of [burstmode], a primary beam type of [beammode], a chargecost of [chargecost], a scatter of [scatter], a firedelay of [fire_delay], a burstdelay of [burst_delay], an accuracy of [accuracy], a chargecost of core 2 [chargecost_lethal], a beamtype of core 2 [beammode_lethal], a chargecost of core 3 [chargecost_special], a beamtype of core 3 [beammode_special]")
+	//to_chat(world, "The modular weapon at [src.loc] has a max burst of [burstmode], a primary beam type of [beammode], a chargecost of [chargecost], a scatter of [scatter], a firedelay of [fire_delay], a burstdelay of [burst_delay], an accuracy of [accuracy], a chargecost of core 2 [chargecost_lethal], a beamtype of core 2 [beammode_lethal], a chargecost of core 3 [chargecost_special], a beamtype of core 3 [beammode_special]")
 	switch(cores)
 		if(1) //this makes me sick but ill ask if there's a better way to do this
 			if(chargecost < 0)
@@ -150,9 +143,9 @@
 	. = ..()
 	if(!circuit || !primarycore || !laserlens || !lasercap || !lasercooler)
 		return FALSE //cannot work
-		to_chat(world, "<span class='warning'>The gun is missing parts!</span>")
+		to_chat(user, "<span class='warning'>The gun is missing parts!</span>")
 	if(!assembled)
-		to_chat(world, "<span class='warning'>The gun is open!</span>")
+		to_chat(user, "<span class='warning'>The gun is open!</span>")
 		return FALSE
 
 /obj/item/gun/energy/modular/attackby(obj/item/O, mob/user)
@@ -258,6 +251,45 @@
 /obj/item/gun/energy/modular/threecore
 	name = "tricore modular weapon"
 	cores = 3
+
+/obj/item/gun/energy/modular/basic
+	name = "modular energy pistol"
+	desc = "A basic, compact, modular energy weapon. The fire controller and power control unit are integral to the frame and are thus unremovable."
+	lasercap = /obj/item/modularlaser/capacitor/simple/integral
+	circuit = /obj/item/modularlaser/controller/basic/integral
+
+/obj/item/gun/energy/modular/basic/Initialize()
+	..()
+	lasercap = new(src)
+	circuit = new(src)
+
+/obj/item/gun/energy/modular/advanced
+	name = "advanced modular energy pistol"
+	desc = "A basic, compact, modular energy weapon. All parts are modular in this version."
+
+/obj/item/gun/energy/modular/carbine
+	name = "modular energy carbine"
+	desc = "A basic modular energy weapon. This carbine has the capability to mount two cores but relies on an aircooling system."
+	var/cores = 2
+	icon_state = "mod_carbine"
+	lasercooler = /obj/item/modularlaser/cooling/lame/integral
+
+/obj/item/gun/energy/modular/carbine/Initialize()
+	..()
+	lasercooler = new(src)
+
+/obj/item/gun/energy/modular/rifle
+	name = "modular energy rifle"
+	desc = "A basic modular energy weapon. This rifle has the capability to mount two cores."
+	cores = 2
+	icon_state = "mod_carbine"
+	w_class = ITEMSIZE_LARGE
+
+/obj/item/gun/energy/modular/rifle/tribeam
+	name = "tribeam modular energy rifle"
+	desc = "An advanced modular energy weapon. This rifle has the capability to mount three cores."
+	cores = 3
+
 //parts
 /obj/item/modularlaser
 	name = "modular laser part"
@@ -531,6 +563,14 @@
 	name = "basic modular cooling system"
 	desc = "A basic air-cooling system for a modular energy weapon."
 
+/obj/item/modularlaser/cooling/lame
+	name = "compact modular cooling system"
+	desc = "A tiny air-cooling system for a modular energy weapon."
+	delaymod = 1.1
+
+/obj/item/modularlaser/cooling/lame/integral
+	removable = FALSE
+
 /obj/item/modularlaser/cooling/efficient
 	name = "heat recovery cooling system"
 	desc = "A cooling system that uses heat from firing to generate some power. Needs time between shots to work."
@@ -568,6 +608,11 @@
 /obj/item/modularlaser/controller/basic
 	name = "weapon fire control unit"
 	desc = "A basic weapon firing system. Controls the power supply and energy emitter in order to make the gun go pew."
+
+/obj/item/modularlaser/controller/basic/integral
+	name = "integral fire control unit"
+	desc = "A basic weapon firing system. Controls the power supply and energy emitter in order to make the gun go pew. Should not be able to be removed."
+	removable = FALSE
 
 /obj/item/modularlaser/controller/twoburst
 	name = "AN-94 burst controller"
