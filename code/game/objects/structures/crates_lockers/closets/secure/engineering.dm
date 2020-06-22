@@ -34,7 +34,8 @@
 		/obj/item/gps/engineering/ce,
 		/obj/item/reagent_containers/spray/windowsealant,//VOREStation Add
 		/obj/item/pipe_dispenser, //Citadel Addition
-		/obj/item/shield_diffuser) //Citadel Addition
+		/obj/item/shield_diffuser,
+		/obj/item/switchtool/holo/CE) //Citadel Addition
 
 /obj/structure/closet/secure_closet/engineering_chief/Initialize()
 	if(prob(50))
@@ -59,7 +60,8 @@
 		/obj/item/clothing/gloves/yellow = 2,
 		/obj/item/storage/toolbox/electrical = 3,
 		/obj/item/module/power_control = 3,
-		/obj/item/multitool = 3)
+		/obj/item/multitool = 3,
+		/obj/item/inducer = 1)
 
 
 /obj/structure/closet/secure_closet/engineering_welding

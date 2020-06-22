@@ -368,7 +368,7 @@
 	warning_low_pressure = 300   // Low pressure warning.
 	hazard_low_pressure = 220     // Dangerously low pressure.
 	safe_pressure = 400
-	poison_type = "nitrogen"      // technically it's a partial pressure thing but IDK if we can emulate that
+	poison_type = /datum/gas/nitrogen      // technically it's a partial pressure thing but IDK if we can emulate that
 
 	genders = list(FEMALE, PLURAL) //females are polyp-producing, infertile females and males are nigh-identical
 

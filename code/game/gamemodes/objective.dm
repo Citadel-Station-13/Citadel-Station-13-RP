@@ -427,11 +427,11 @@ datum/objective/steal
 	var/target_name
 
 	var/global/possible_items[] = list(
-		"the Colony Director's antique laser gun" = /obj/item/gun/energy/captain,
+		"the Facility Director's antique laser gun" = /obj/item/gun/energy/captain,
 		"a hand teleporter" = /obj/item/hand_tele,
 		"an RCD" = /obj/item/rcd,
 		"a jetpack" = /obj/item/tank/jetpack,
-		"a colony director's jumpsuit" = /obj/item/clothing/under/rank/captain,
+		"a Facility Director's jumpsuit" = /obj/item/clothing/under/rank/captain,
 		"a functional AI" = /obj/item/aicard,
 		"a pair of magboots" = /obj/item/clothing/shoes/magboots,
 		"the station blueprints" = /obj/item/blueprints,
@@ -445,7 +445,7 @@ datum/objective/steal
 		"a head of security's jumpsuit" = /obj/item/clothing/under/rank/head_of_security,
 		"a head of personnel's jumpsuit" = /obj/item/clothing/under/rank/head_of_personnel,
 		"the hypospray" = /obj/item/reagent_containers/hypospray/vial,
-		"the colony director's pinpointer" = /obj/item/pinpointer,
+		"the Facility Director's pinpointer" = /obj/item/pinpointer,
 		"an ablative armor vest" = /obj/item/clothing/suit/armor/laserproof,
 	)
 
@@ -504,7 +504,7 @@ datum/objective/steal
 
 				for(var/obj/item/I in all_items) //Check for phoron tanks
 					if(istype(I, steal_target))
-						found_amount += (target_name=="28 moles of phoron (full tank)" ? (I:air_contents:gas["phoron"]) : (I:amount))
+						found_amount += (target_name=="28 moles of phoron (full tank)" ? (I:air_contents:gas[/datum/gas/phoron]) : (I:amount))
 				return found_amount>=target_amount
 
 			if("50 coins (in bag)")

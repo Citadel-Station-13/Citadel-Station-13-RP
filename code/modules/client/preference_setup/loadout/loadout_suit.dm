@@ -6,6 +6,14 @@
 	sort_category = "Suits and Overwear"
 	cost = 2
 
+/datum/gear/suit/apron_white
+	display_name = "apron, colorable"
+	path = /obj/item/clothing/suit/storage/apron/white
+
+/datum/gear/suit/apron_white/New()
+	..()
+	gear_tweaks = list(gear_tweak_free_color_choice)
+
 /datum/gear/suit/greatcoat
 	display_name = "greatcoat"
 	path = /obj/item/clothing/suit/greatcoat
@@ -241,9 +249,9 @@ datum/gear/suit/duster
 	allowed_roles = list("Quartermaster")
 
 /datum/gear/suit/roles/poncho/cloak/captain
-	display_name = "cloak, colony director"
+	display_name = "cloak, Facility Director"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/captain
-	allowed_roles = list("Colony Director")
+	allowed_roles = list("Facility Director")
 
 /datum/gear/suit/roles/poncho/cloak/hop
 	display_name = "cloak, head of personnel"
@@ -336,9 +344,9 @@ datum/gear/suit/duster
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat
 
 /datum/gear/suit/wintercoat/captain
-	display_name = "winter coat, colony director"
+	display_name = "winter coat, Facility Director"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/captain
-	allowed_roles = list("Colony Director")
+	allowed_roles = list("Facility Director")
 
 /datum/gear/suit/wintercoat/security
 	display_name = "winter coat, security"
@@ -487,7 +495,7 @@ datum/gear/suit/duster
 /datum/gear/suit/snowsuit/command
 	display_name = "snowsuit, command"
 	path = /obj/item/clothing/suit/storage/snowsuit/command
-	allowed_roles = list("Colony Director","Research Director","Head of Personnel","Head of Security","Chief Engineer","Command Secretary")
+	allowed_roles = list("Facility Director","Research Director","Head of Personnel","Head of Security","Chief Engineer","Command Secretary")
 
 /datum/gear/suit/snowsuit/security
 	display_name = "snowsuit, security"

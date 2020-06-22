@@ -11,7 +11,7 @@
 
 #ifdef DEBUG_MEDIAPLAYER
 #define MP_DEBUG(x) owner << x
-#warning Please comment out #define DEBUG_MEDIAPLAYER before committing.
+#warn Please comment out #define DEBUG_MEDIAPLAYER before committing.
 #else
 #define MP_DEBUG(x)
 #endif
@@ -149,7 +149,7 @@
 	if (url != targetURL || abs(targetStartTime - start_time) > 1 || abs(targetVolume - source_volume) > 0.1 /* 10% */)
 		url = targetURL
 		start_time = targetStartTime
-		source_volume = CLAMP(targetVolume, 0, 1)
+		source_volume = clamp(targetVolume, 0, 1)
 		send_update()
 
 /datum/media_manager/proc/stop_music()

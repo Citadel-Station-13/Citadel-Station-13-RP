@@ -85,7 +85,7 @@
 		/obj/item/clothing/head/beret,
 		/obj/item/reagent_containers/food/drinks/bottle/bottleofnothing,
 		/obj/item/clothing/shoes/black,
-		/*/obj/item/toy/crayon/mime*/) //Need to track down the code for crayons before adding this back in
+		/obj/item/toy/crayon/mime) //Need to track down the code for crayons before adding this back in
 
 //joanrisu:Joan Risu
 /obj/item/storage/backpack/dufflebag/sec/fluff/joanrisu

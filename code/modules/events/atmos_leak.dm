@@ -19,7 +19,7 @@
 
 // Decide which area will be targeted!
 /datum/event/atmos_leak/setup()
-	var/gas_choices = list("carbon_dioxide", "sleeping_agent") // Annoying
+	var/gas_choices = list(/datum/gas/carbon_dioxide, /datum/gas/nitrous_oxide) // Annoying
 	if(severity >= EVENT_LEVEL_MODERATE)
 		gas_choices += "phoron" // Dangerous
 	// if(severity >= EVENT_LEVEL_MAJOR)
@@ -52,7 +52,7 @@
 		return
 
 /datum/event/atmos_leak/announce()
-	command_announcement.Announce("Warning, hazardous [gas_data.name[gas_type]] gas leak detected in \the [target_area], evacuate the area and contain the damage!", "Hazard Alert")
+	command_announcement.Announce("Warning, hazardous [GLOB.meta_gas_names[gas_type]] gas leak detected in \the [target_area], evacuate the area and contain the damage!", "Hazard Alert")
 
 /datum/event/atmos_leak/start()
 	// Okay, time to actually put the gas in the room!

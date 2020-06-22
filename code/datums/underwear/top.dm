@@ -90,3 +90,18 @@
 	name = "Babydoll Lingerie"
 	icon_state = "babydoll_lingerie"
 	has_color = TRUE
+
+/datum/category_item/underwear/top/cfishnet
+	name = "Dyed Fishnet top"
+	icon_state = "c_fishnet_body"
+	has_color = TRUE
+
+/datum/category_item/underwear/top/cfishnet_sleeve
+	name = "Dyed Fishnet with sleeves"
+	icon_state = "c_fishnet_sleeves"
+	has_color = TRUE
+
+/datum/category_item/underwear/top/cfishnet_glove
+	name = "Dyed Fishnet with gloves"
+	icon_state = "c_fishnet_gloves"
+	has_color = TRUE

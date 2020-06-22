@@ -17,10 +17,18 @@
 	var/minrate = 0
 	var/maxrate = 10 * ONE_ATMOSPHERE
 
-	var/list/scrubbing_gas = list("phoron", "carbon_dioxide", "sleeping_agent", "volatile_fuel")
+	var/list/scrubbing_gas = list(/datum/gas/carbon_dioxide, /datum/gas/volatile_fuel, /datum/gas/phoron, /datum/gas/nitrous_oxide)
 
 /obj/machinery/portable_atmospherics/powered/scrubber/New()
 	..()
+	for(var/i in scrubbing_gas)
+		if(!ispath(i))
+			scrubbing_gas -= i
+			var/path = gas_id2path(i)
+			if(!path)
+				stack_trace("Invalid gas id [i]")
+			else
+				scrubbing_gas += path
 	cell = new/obj/item/cell/apc(src)
 
 /obj/machinery/portable_atmospherics/powered/scrubber/emp_act(severity)
@@ -136,7 +144,7 @@
 		. = 1
 	if (href_list["volume_adj"])
 		var/diff = text2num(href_list["volume_adj"])
-		volume_rate = CLAMP(volume_rate+diff, minrate, maxrate)
+		volume_rate = clamp(volume_rate+diff, minrate, maxrate)
 		. = 1
 	update_icon()
 

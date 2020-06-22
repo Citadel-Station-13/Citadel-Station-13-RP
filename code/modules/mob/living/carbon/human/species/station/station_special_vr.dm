@@ -10,15 +10,21 @@
 	icobase = 'icons/mob/human_races/r_xenochimera.dmi'
 	deform = 'icons/mob/human_races/r_def_xenochimera.dmi'
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
+	rarity_value = 4
 	darksight = 8		//critters with instincts to hide in the dark need to see in the dark - about as good as tajara.
 	slowdown = -0.2		//scuttly, but not as scuttly as a tajara or a teshari.
 	brute_mod = 0.8		//About as tanky to brute as a Unathi. They'll probably snap and go feral when hurt though.
 	burn_mod =  1.15	//As vulnerable to burn as a Tajara.
+	radiation_mod = 1.15	//To help simulate the volatility of a living 'viral' cluster.
+	metabolic_rate = 1.4
+	hunger_factor = 0.4
+	metabolism = 0.012
 	base_species = "Xenochimera"
 	selects_bodytype = TRUE
 
 	num_alternate_languages = 2
 	secondary_langs = list("Sol Common")
+
 	//color_mult = 1 //It seemed to work fine in testing, but I've been informed it's unneeded.
 	tail = "tail" //Scree's tail. Can be disabled in the vore tab by choosing "hide species specific tail sprite"
 	icobase_tail = 1
@@ -33,7 +39,15 @@
 		/mob/living/proc/shred_limb,
 		/mob/living/proc/flying_toggle,
 		/mob/living/proc/start_wings_hovering,
-		/mob/living/carbon/human/proc/tie_hair) //Xenochimera get all the special verbs since they can't select traits.
+		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/proc/eat_trash,
+		/mob/living/proc/glow_toggle,
+		/mob/living/proc/glow_color,
+		/mob/living/carbon/human/proc/lick_wounds ,
+		/mob/living/carbon/human/proc/resp_biomorph,
+		/mob/living/carbon/human/proc/biothermic_adapt,
+		/mob/living/carbon/human/proc/atmos_biomorph,
+		/mob/living/carbon/human/proc/vocal_biomorph) //Xenochimera get all the special verbs since they can't select traits.
 
 	virus_immune = 1 // They practically ARE one.
 	min_age = 18
@@ -47,10 +61,33 @@
 
 	catalogue_data = list(/datum/category_item/catalogue/fauna/xenochimera)
 
+	breath_type = /datum/gas/oxygen
+	poison_type = /datum/gas/phoron
+	exhale_type = /datum/gas/carbon_dioxide
+
+	hazard_high_pressure = HAZARD_HIGH_PRESSURE
+	warning_high_pressure = WARNING_HIGH_PRESSURE
+	warning_low_pressure = WARNING_LOW_PRESSURE
 	hazard_low_pressure = -1 //Prevents them from dying normally in space. Special code handled below.
+	safe_pressure = ONE_ATMOSPHERE
+
 	cold_level_1 = -1     // All cold debuffs are handled below in handle_environment_special
 	cold_level_2 = -1
 	cold_level_3 = -1
+
+	cold_discomfort_level = 285
+	cold_discomfort_strings = list(
+		"You feel chilly.",
+		"You shiver suddenly.",
+		"Your chilly flesh stands out in goosebumps."
+		)
+
+	heat_discomfort_level = 315
+	heat_discomfort_strings = list(
+		"You feel sweat drip down your neck.",
+		"You feel uncomfortably warm.",
+		"Your skin prickles in the heat."
+		)
 
 	//primitive_form = "Farwa"
 
@@ -58,16 +95,16 @@
 	flags = NO_SCAN | NO_INFECT //Dying as a chimera is, quite literally, a death sentence. Well, if it wasn't for their revive, that is.
 	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
-	has_organ = list(    //Same organ list as tajarans.
-		O_HEART =    /obj/item/organ/internal/heart,
-		O_LUNGS =    /obj/item/organ/internal/lungs,
-		O_VOICE = 		/obj/item/organ/internal/voicebox,
-		O_LIVER =    /obj/item/organ/internal/liver,
-		O_KIDNEYS =  /obj/item/organ/internal/kidneys,
-		O_BRAIN =    /obj/item/organ/internal/brain,
-		O_EYES =     /obj/item/organ/internal/eyes,
-		O_STOMACH =		/obj/item/organ/internal/stomach,
-		O_INTESTINE =	/obj/item/organ/internal/intestine
+	has_organ = list(
+		O_HEART =    /obj/item/organ/internal/heart/xenochimera,
+		O_LUNGS =    /obj/item/organ/internal/lungs/xenochimera,
+		O_VOICE = 		/obj/item/organ/internal/voicebox/xenochimera,
+		O_LIVER =    /obj/item/organ/internal/liver/xenochimera,
+		O_KIDNEYS =  /obj/item/organ/internal/kidneys/xenochimera,
+		O_BRAIN =    /obj/item/organ/internal/brain/xenochimera,
+		O_EYES =     /obj/item/organ/internal/eyes/xenochimera,
+		O_STOMACH =		/obj/item/organ/internal/stomach/xenochimera,
+		O_INTESTINE =	/obj/item/organ/internal/intestine/xenochimera
 		)
 
 	flesh_color = "#AFA59E"
@@ -119,6 +156,10 @@
 	//To reduce distant object references
 	var/feral = H.feral
 
+//Are we in danger of ferality?
+	var/danger = FALSE
+	var/feral_state = FALSE
+
 //Handle feral triggers and pre-feral messages
 	if(!feral && (hungry || shock || jittery))
 
@@ -129,12 +170,15 @@
 					to_chat(H,"<span class='info'>You feel rather hungry. It might be a good idea to find some some food...</span>")
 				if(100 to 150)
 					to_chat(H,"<span class='warning'>You feel like you're going to snap and give in to your hunger soon... It would be for the best to find some [pick("food","prey")] to eat...</span>")
+					danger = TRUE
 
 		// Going feral due to hunger
 		else if(H.nutrition < 100 && !isbelly(H.loc))
 			to_chat(H,"<span class='danger'><big>Something in your mind flips, your instincts taking over, no longer able to fully comprehend your surroundings as survival becomes your primary concern - you must feed, survive, there is nothing else. Hunt. Eat. Hide. Repeat.</big></span>")
 			log_and_message_admins("has gone feral due to hunger.", H)
 			feral = 5
+			danger = TRUE
+			feral_state = TRUE
 			if(!H.stat)
 				H.emote("twitch")
 
@@ -147,6 +191,8 @@
 					to_chat(H,"<span class='danger'><big>The pain! It stings! Got to get away! Your instincts take over, urging you to flee, to hide, to go to ground, get away from here...</big></span>")
 					log_and_message_admins("has gone feral due to halloss.", H)
 					feral = 5
+					danger = TRUE
+					feral_state = TRUE
 					if(!H.stat)
 						H.emote("twitch")
 
@@ -154,6 +200,8 @@
 			else if(prob(min(10,(0.1 * H.traumatic_shock))))
 				to_chat(H,"<span class='danger'><big>Your fight-or-flight response kicks in, your injuries too much to simply ignore - you need to flee, to hide, survive at all costs - or destroy whatever is threatening you.</big></span>")
 				feral = 5
+				danger = TRUE
+				feral_state = TRUE
 				log_and_message_admins("has gone feral due to injury.", H)
 				if(!H.stat)
 					H.emote("twitch")
@@ -162,27 +210,35 @@
 		else if(jittery)
 			to_chat(H,"<span class='warning'><big>Suddenly, something flips - everything that moves is... potential prey. A plaything. This is great! Time to hunt!</big></span>")
 			feral = 5
+			danger = TRUE
+			feral_state = TRUE
 			log_and_message_admins("has gone feral due to jitteriness.", H)
 			if(!H.stat)
 				H.emote("twitch")
 
-// Handle being feral
+	// Handle being feral
 	if(feral)
+		//we're feral
+		feral_state = TRUE
 
 		//Shock due to mostly halloss. More feral.
 		if(shock && 2.5*H.halloss >= H.traumatic_shock)
+			danger = TRUE
 			feral = max(feral, H.halloss)
 
 		//Shock due to mostly injury. More feral.
 		else if(shock)
+			danger = TRUE
 			feral = max(feral, H.traumatic_shock * 2)
 
 		//Still jittery? More feral.
 		if(jittery)
+			danger = TRUE
 			feral = max(feral, H.jitteriness-100)
 
 		//Still hungry? More feral.
 		if(H.feral + H.nutrition < 150)
+			danger = TRUE
 			feral++
 		else
 			feral = max(0,--feral)
@@ -192,8 +248,10 @@
 
 		//Did we just finish being feral?
 		if(!feral)
+			feral_state = FALSE
 			to_chat(H,"<span class='info'>Your thoughts start clearing, your feral urges having passed - for the time being, at least.</span>")
 			log_and_message_admins("is no longer feral.", H)
+			update_xenochimera_hud(H, danger, feral_state)
 			return
 
 		//If they lose enough health to hit softcrit, handle_shock() will keep resetting this. Otherwise, pissed off critters will lose shock faster than they gain it.
@@ -202,6 +260,7 @@
 		//Handle light/dark areas
 		var/turf/T = get_turf(H)
 		if(!T)
+			update_xenochimera_hud(H, danger, feral_state)
 			return //Nullspace
 		var/darkish = T.get_lumcount() <= 0.1
 
@@ -223,6 +282,7 @@
 					H.handle_feral()
 
 			//And bail
+			update_xenochimera_hud(H, danger, feral_state)
 			return
 
 		// In the darkness or "hidden". No need for custom scene-protection checks as it's just an occational infomessage.
@@ -269,6 +329,8 @@
 				else
 					to_chat(H,"<span class='danger'>Confusing sights and sounds and smells surround you, this place is wrong, confusing, frightening. You need to hide, go to ground...</span>")
 
+	// HUD update time
+	update_xenochimera_hud(H, danger, feral_state)
 
 /datum/species/xenochimera/proc/produceCopy(var/datum/species/to_copy,var/list/traits,var/mob/living/carbon/human/H)
 	ASSERT(to_copy)
@@ -316,6 +378,111 @@
 	var/datum/species/real = all_species[base_species]
 	return real.race_key
 
+/datum/species/xenochimera/proc/update_xenochimera_hud(var/mob/living/carbon/human/H, var/danger, var/feral)
+	if(H.xenochimera_danger_display)
+		H.xenochimera_danger_display.invisibility = 0
+		if(danger && feral)
+			H.xenochimera_danger_display.icon_state = "danger11"
+		else if(danger && !feral)
+			H.xenochimera_danger_display.icon_state = "danger10"
+		else if(!danger && feral)
+			H.xenochimera_danger_display.icon_state = "danger01"
+		else
+			H.xenochimera_danger_display.icon_state = "danger00"
+
+	return
+
+
+
+//Verbs Follow
+
+/mob/living/carbon/human/proc/resp_biomorph(var/mob/living/carbon/human/H, var/mob/living/carbon/human/C)
+	set name = "Respiratory Biomorph"
+	set desc = "Changes the gases we need to breathe."
+	set category = "Abilities"
+
+	var/list/gas_choices = list(
+		"oxygen" = /datum/gas/oxygen,
+		"phoron" = /datum/gas/phoron,
+		"nitrogen" = /datum/gas/nitrogen,
+		"carbon dioxide" = /datum/gas/carbon_dioxide
+	)
+	var/choice = input(H, "How should we adapt our respiration?") as null|anything in gas_choices
+	var/resp_biomorph = gas_choices[choice]
+	to_chat(H,"You begin modifying your internal structure!")
+	if(do_after(H,15 SECONDS))
+		switch(resp_biomorph)
+			if(/datum/gas/oxygen)
+				species.breath_type = /datum/gas/oxygen
+				species.poison_type = /datum/gas/phoron
+				species.exhale_type = /datum/gas/carbon_dioxide
+			if(/datum/gas/phoron)
+				species.breath_type = /datum/gas/phoron
+				species.poison_type = /datum/gas/oxygen
+				species.exhale_type = /datum/gas/nitrogen
+			if(/datum/gas/nitrogen)
+				species.breath_type = /datum/gas/nitrogen
+				species.poison_type = /datum/gas/carbon_dioxide
+			if(/datum/gas/carbon_dioxide)
+				species.breath_type = /datum/gas/carbon_dioxide
+				species.exhale_type = /datum/gas/oxygen
+
+/mob/living/carbon/human/proc/biothermic_adapt(var/mob/living/carbon/human/H, var/mob/living/carbon/human/C)
+	set name = "Biothermic Adaptation"
+	set desc = "Changes our core body temperature."
+	set category = "Abilities"
+
+	var/biothermic_adapt = input(H, "How should we modify our core temperature?") as null|anything in list("warm-blooded", "cold-blooded", "hot-blooded")
+	to_chat(H,"You begin modifying your internal structure!")
+	if(do_after(H,15 SECONDS))
+		switch(biothermic_adapt)
+			if("warm-blooded")
+				species.cold_discomfort_level = 285
+				species.heat_discomfort_level = 315
+			if("cold-blooded")
+				species.cold_discomfort_level = T0C+21
+			if("hot-blooded")
+				species.heat_discomfort_level = T0C+19
+
+/mob/living/carbon/human/proc/atmos_biomorph(var/mob/living/carbon/human/H)
+	set name = "Atmospheric Biomorph"
+	set desc = "Changes our sensitivity to atmospheric pressure."
+	set category = "Abilities"
+
+	var/atmos_biomorph = input(H, "How should we adapt our rigidity?") as null|anything in list("flexible", "compact", "elastic")
+	to_chat(H,"You begin modifying your internal structure!")
+	if(do_after(H,15 SECONDS))
+		switch(atmos_biomorph)
+			if("flexible")
+				species.warning_low_pressure = WARNING_LOW_PRESSURE
+				species.hazard_low_pressure = -1
+				species.warning_high_pressure = WARNING_HIGH_PRESSURE
+				species.hazard_high_pressure = HAZARD_HIGH_PRESSURE
+			if("rigid")
+				species.warning_low_pressure = 50
+				species.hazard_low_pressure = -1
+			if("elastic")
+				species.warning_high_pressure = WARNING_HIGH_PRESSURE + 50
+				species.hazard_high_pressure = HAZARD_HIGH_PRESSURE + 100
+
+/mob/living/carbon/human/proc/vocal_biomorph(var/mob/living/carbon/human/H)
+	set name = "Vocalization Biomorph"
+	set desc = "Changes our speech pattern."
+	set category = "Abilities"
+
+	var/vocal_biomorph = input(H, "How should we adjust our speech?") as null|anything in list("common", "unathi", "tajaran")
+	to_chat(H, "You begin modifying your internal structure!")
+	if(do_after(H,15 SECONDS))
+		switch(vocal_biomorph)
+			if("common")
+				return
+			if("unathi")
+				species.autohiss_basic_map = list("s" = list("ss", "sss", "ssss"))
+				species.autohiss_extra_map = list("x" = list("ks", "kss", "ksss"))
+				species.autohiss_exempt = "Sinta'unathi"
+			if("tajaran")
+				species.autohiss_basic_map = list("r" = list("rr", "rrr", "rrrr"))
+				species.autohiss_exempt = "Siik"
 
 /////////////////////
 /////SPIDER RACE/////

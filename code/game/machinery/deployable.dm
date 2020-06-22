@@ -101,6 +101,7 @@ Barricades
 			CheckHealth()
 
 /obj/structure/barricade/CanAllowThrough(atom/movable/mover, turf/target)//So bullets will fly over and stuff.
+	. = ..()
 	if(istype(mover) && mover.checkpass(PASSTABLE))
 		return TRUE
 	return FALSE
