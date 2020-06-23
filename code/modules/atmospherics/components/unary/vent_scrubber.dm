@@ -234,10 +234,10 @@
 	else if(signal.data["toggle_tox_scrub"])
 		toggle += /datum/gas/phoron
 
-	if(!isnull(signal.data["n2o_scrub"]) && text2num(signal.data["n2o_scrub"]) != (/datum/gas/volatile_fuel in scrubbing_gas))
-		toggle += /datum/gas/volatile_fuel
+	if(!isnull(signal.data["n2o_scrub"]) && text2num(signal.data["n2o_scrub"]) != (/datum/gas/nitrous_oxide in scrubbing_gas))
+		toggle += /datum/gas/nitrous_oxide
 	else if(signal.data["toggle_n2o_scrub"])
-		toggle += /datum/gas/volatile_fuel
+		toggle += /datum/gas/nitrous_oxide
 
 	if(!isnull(signal.data["fuel_scrub"]) && text2num(signal.data["fuel_scrub"]) != (/datum/gas/volatile_fuel in scrubbing_gas))
 		toggle += /datum/gas/volatile_fuel
