@@ -254,6 +254,7 @@
 /obj/item/modularlaser
 	name = "modular laser part"
 	desc = "I shouldn't exist."
-	icon = 'icons/obj/device_alt.dmi'
-	icon_state = "modkit"
+	icon = 'icons/obj/device.dmi'
+	icon_state = "health"
+	item_state = "healthanalyzer"
 	var/removable = TRUE
