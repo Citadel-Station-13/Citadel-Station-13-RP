@@ -147,7 +147,7 @@
 		item_records = attached.item_records
 	else
 		to_chat(world,"<span class='danger'>[src] at [x],[y],[z] cannot find the unit above it!</span>")
-/*
+
 // Tram departure cryo doors that turn into ordinary airlock doors at round end
 /obj/machinery/cryopod/robot/door/tram
 	name = "\improper Tram Station"
@@ -163,7 +163,7 @@
 	on_store_visible_message_2 = "to the colony"
 	time_till_despawn = 10 SECONDS
 	spawnpoint_type = /datum/spawnpoint/tram
-
+/*
 /obj/machinery/cryopod/robot/door/tram/process()
 	if(emergency_shuttle.online() || emergency_shuttle.returned())
 		// Transform into a door!  But first despawn anyone inside
@@ -176,7 +176,7 @@
 		qdel(src)
 	// Otherwise just operate normally
 	return ..()
-
+*/
 /obj/machinery/cryopod/robot/door/tram/Bumped(var/atom/movable/AM)
 	if(!ishuman(AM))
 		return
@@ -208,7 +208,7 @@ var/global/list/latejoin_tram   = list()
 /datum/spawnpoint/tram/New()
 	..()
 	turfs = latejoin_tram
-
+/*
 //
 // Holodorms
 

@@ -19,7 +19,8 @@ BOREAS_TURF_CREATE(/turf/simulated/floor/tiled/steel_dirty)
 BOREAS_TURF_CREATE(/turf/simulated/floor/outdoors/dirt)
 BOREAS_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
 BOREAS_TURF_CREATE(/turf/simulated/floor/outdoors/grass/sif)
-/turf/simulated/floor/outdoors/grass/sif
+/turf/simulated/floor/outdoors/snow/boreas
+	BOREAS_SET_ATMOS
 	turf_layers = list(
 		/turf/simulated/floor/outdoors/rocks/boreas,
 		/turf/simulated/floor/outdoors/dirt/boreas

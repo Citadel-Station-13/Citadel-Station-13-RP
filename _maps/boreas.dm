@@ -1,1 +1,1 @@
-#define FORCEMAP "_maps/boreas.json"
+#define FORCE_MAP "_maps/boreas.json"

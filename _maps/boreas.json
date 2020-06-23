@@ -22,7 +22,7 @@
         "Station":true,
         "Linkage":null,
         "Gravity":true,
-        "Baseturf":"/turf/simulated/floor/outdoors/snow"
+        "Baseturf":"/turf/simulated/floor/outdoors/snow/boreas"
       },
       {
         "Down":-1,
@@ -45,8 +45,7 @@
         "Linkage":null,
         "Gravity":true,
         "Baseturf":"/turf/space"
-      }
-      
+      }  
    ],
    "minetype":"none"
 }

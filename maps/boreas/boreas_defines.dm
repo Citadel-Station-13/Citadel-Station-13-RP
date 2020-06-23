@@ -55,7 +55,7 @@
 							NETWORK_INTERROGATION
 							)
 
-	allowed_spawns = list("Cryogenic Storage","Cyborg Storage")
+	allowed_spawns = list("Tram Station","Gateway","Cryogenic Storage","Cyborg Storage")
 	spawnpoint_died = /datum/spawnpoint/cryo
 	spawnpoint_left = /datum/spawnpoint/cryo
 	spawnpoint_stayed = /datum/spawnpoint/cryo
