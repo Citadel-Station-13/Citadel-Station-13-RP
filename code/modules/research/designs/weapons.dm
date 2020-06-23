@@ -600,143 +600,143 @@
 /datum/design/item/modweaponnodule/advlens
 	name = "advanced lens"
 	id = "advlens"
-	req_tech =
-	materials =
+	req_tech = list(TECH_MATERIAL = 6)
+	materials = (MAT_GLASS = 8000, MAT_SILVER = 3000)
 	build_path = /obj/item/modularlaser/lens/advanced
 	sort_string = "MAVEQ"
 
 /datum/design/item/modweaponnodule/superlens
 	name = "superior lens"
 	id = "superlens"
-	req_tech =
-	materials =
+	req_tech =  list(TECH_MATERIAL = 9)
+	materials = (MAT_GLASS = 8000, MAT_SILVER = 3000, MAT_DURASTEEL = 2000)
 	build_path = /obj/item/modularlaser/lens/super
 	sort_string = "MAVER"
 
 /datum/design/item/modweaponnodule/scatterlens
 	name = "scatter lens"
 	id = "scatterlens"
-	req_tech =
-	materials =
+	req_tech = list(TECH_MATERIAL = 6)
+	materials = (MAT_GLASS = 8000, MAT_SILVER = 3000)
 	build_path = /obj/item/modularlaser/lens/scatter
 	sort_string = "MAVES"
 
 /datum/design/item/modweaponnodule/advscatterlens
 	name = "advanced scatter lens"
 	id = "advscatterlens"
-	req_tech =
-	materials =
+	req_tech = list(TECH_MATERIAL = 9)
+	materials = (MAT_GLASS = 8000, MAT_SILVER = 3000, MAT_VERDANTIUM = 2000)
 	build_path = /obj/item/modularlaser/lens/scatter/adv
 	sort_string = "MAVET"
 
 /datum/design/item/modweaponnodule/basiccap
 	name = "basic capacitor"
 	id = "basiccap"
-	req_tech =
-	materials =
+	req_tech = list(TECH_POWER = 2)
+	materials = list(DEFAULT_WALL_MATERIAL = 1000, MAT_GLASS = 1000)
 	build_path = /obj/item/modularlaser/capacitor/basic
 	sort_string = "MAVEV"
 
 /datum/design/item/modweaponnodule/ecocap
 	name = "efficient capacitor"
 	id = "ecocap"
-	req_tech =
-	materials =
+	req_tech = list(TECH_POWER = 4)
+	materials = list(DEFAULT_WALL_MATERIAL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500)
 	build_path = /obj/item/modularlaser/capacitor/eco
 	sort_string = "MAVEW"
 
 /datum/design/item/modweaponnodule/supereco
-	name = "economical capacito"
+	name = "economical capacitor"
 	id = "superecocap"
-	req_tech =
-	materials =
+	req_tech = list(TECH_POWER = 6)
+	materials = list(DEFAULT_WALL_MATERIAL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500)
 	build_path = /obj/item/modularlaser/capacitor/eco/super
 	sort_string = "MAVEX"
 
 /datum/design/item/modweaponnodule/quickcap
 	name = "high throughput capactior"
 	id = "quickcap"
-	req_tech =
-	materials =
+	req_tech = list(TECH_POWER = 8)
+	materials = list(DEFAULT_WALL_MATERIAL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500)
 	build_path = /obj/item/modularlaser/capacitor/speed
 	sort_string = "MAVEY"
 
 /datum/design/item/modweaponnodule/advqcap
 	name = "very high throughput capactior"
 	id = "advqcap"
-	req_tech =
-	materials =
+	req_tech = list(TECH_POWER = 8)
+	materials = list(DEFAULT_WALL_MATERIAL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500, MAT_VERDANTIUM = 300)
 	build_path = /obj/item/modularlaser/capacitor/speed/advanced
 	sort_string = "MAVEZ"
 
 /datum/design/item/modweaponnodule/basicac
 	name = "cooling system"
 	id = "basicac"
-	req_tech =
-	materials =
+	req_tech = list(TECH_ENGINEERING = 2)
+	materials = list(DEFAULT_WALL_MATERIAL = 1000, MAT_GLASS = 1000)
 	build_path = /obj/item/modularlaser/cooling/basic
 	sort_string = "MAVFA"
 
 /datum/design/item/modweaponnodule/recoverac
 	name = "regenerative cooling system"
 	id = "recoverac"
-	req_tech =
-	materials =
+	req_tech = list(TECH_ENGINEERING = 4)
+	materials = list(DEFAULT_WALL_MATERIAL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500)
 	build_path = /obj/item/modularlaser/cooling/efficient
 	sort_string = "MAVFB"
 
 /datum/design/item/modweaponnodule/fastac
 	name = "high-power regenerative cooling system"
 	id = "fastac"
-	req_tech =
-	materials =
+	req_tech = list(TECH_ENGINEERING = 7)
+	materials = list(DEFAULT_WALL_MATERIAL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500, MAT_VERDANTIUM = 300)
 	build_path = /obj/item/modularlaser/cooling/eco/super
 	sort_string = "MAVFC"
 
 /datum/design/item/modweaponnodule/superac
 	name = "supercharged cooling system"
 	id = "superac"
-	req_tech =
-	materials =
+	req_tech = list(TECH_ENGINEERING = 4)
+	materials = list(DEFAULT_WALL_MATERIAL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500)
 	build_path = /obj/item/modularlaser/cooling/speed
 	sort_string = "MAVFD"
 
 /datum/design/item/modweaponnodule/bestac
 	name = "hypercharged cooling system"
 	id = "hyperac"
-	req_tech =
-	materials =
+	req_tech = list(TECH_ENGINEERING = 7)
+	materials = list(DEFAULT_WALL_MATERIAL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500, MAT_VERDANTIUM = 300)
 	build_path = /obj/item/modularlaser/cooling/speed/adv
 	sort_string = "MAVFE"
 
 /datum/design/item/modweaponnodule/modcontrol
 	name = "controller"
 	id = "modcontrol"
-	req_tech =
-	materials =
+	req_tech = list(TECH_DATA = 2)
+	materials = list(DEFAULT_WALL_MATERIAL = 1000, MAT_GLASS = 1000)
 	build_path = /obj/item/modularlaser/controller/basic
 	sort_string = "MAVFF"
 
 /datum/design/item/modweaponnodule/an94
 	name = "AN-94 patterned fire controller"
 	id = "an94"
-	req_tech =
-	materials =
+	req_tech = list(TECH_DATA = 5, TECH_COMBAT = 3)
+	materials = list(DEFAULT_WALL_MATERIAL = 1000, MAT_GLASS = 1000)
 	build_path = /obj/item/modularlaser/controller/twoburst
 	sort_string = "MAVFG"
 
 /datum/design/item/modweaponnodule/threecontrol
 	name = "burst FCU"
 	id = "threecontrol"
-	req_tech =
-	materials =
+	req_tech = list(TECH_DATA = 5, TECH_COMBAT = 3)
+	materials = list(DEFAULT_WALL_MATERIAL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500)
 	build_path = /obj/item/modularlaser/controller/threeburst
 	sort_string = "MAVFH"
 
 /datum/design/item/modweaponnodule/fivecontrol
 	name = "quintburst FCU"
 	id = "fivecontrol"
-	req_tech =
-	materials =
+	req_tech = list(TECH_DATA = 5, TECH_COMBAT = 4)
+	materials = list(DEFAULT_WALL_MATERIAL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500)
 	build_path = /obj/item/modularlaser/controller/fiveburst
 	sort_string = "MAVFI"
