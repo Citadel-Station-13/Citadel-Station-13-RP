@@ -282,7 +282,7 @@
 	name = "modular energy rifle"
 	desc = "A basic modular energy weapon. This rifle has the capability to mount two cores."
 	cores = 2
-	icon_state = "mod_carbine"
+	icon_state = "mod_rifle"
 	w_class = ITEMSIZE_LARGE
 
 /obj/item/gun/energy/modular/rifle/tribeam
@@ -341,7 +341,7 @@
 	cores = 2
 	battery_lock = TRUE
 	cell_type = /obj/item/cell/device/weapon/recharge/captain
-	icon_state = "mod_cannon"
+	icon_state = "modnuc"
 	w_class = ITEMSIZE_HUGE
 	circuit = /obj/item/modularlaser/controller/basic/integral
 
