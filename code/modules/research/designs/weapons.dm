@@ -601,7 +601,7 @@
 	name = "advanced lens"
 	id = "advlens"
 	req_tech = list(TECH_MATERIAL = 6)
-	materials = (MAT_GLASS = 8000, MAT_SILVER = 3000)
+	materials = list(MAT_GLASS = 8000, MAT_SILVER = 3000)
 	build_path = /obj/item/modularlaser/lens/advanced
 	sort_string = "MAVEQ"
 
@@ -609,7 +609,7 @@
 	name = "superior lens"
 	id = "superlens"
 	req_tech =  list(TECH_MATERIAL = 9)
-	materials = (MAT_GLASS = 8000, MAT_SILVER = 3000, MAT_DURASTEEL = 2000)
+	materials = list(MAT_GLASS = 8000, MAT_SILVER = 3000, MAT_DURASTEEL = 2000)
 	build_path = /obj/item/modularlaser/lens/super
 	sort_string = "MAVER"
 
@@ -617,7 +617,7 @@
 	name = "scatter lens"
 	id = "scatterlens"
 	req_tech = list(TECH_MATERIAL = 6)
-	materials = (MAT_GLASS = 8000, MAT_SILVER = 3000)
+	materials = list(MAT_GLASS = 8000, MAT_SILVER = 3000)
 	build_path = /obj/item/modularlaser/lens/scatter
 	sort_string = "MAVES"
 
@@ -625,7 +625,7 @@
 	name = "advanced scatter lens"
 	id = "advscatterlens"
 	req_tech = list(TECH_MATERIAL = 9)
-	materials = (MAT_GLASS = 8000, MAT_SILVER = 3000, MAT_VERDANTIUM = 2000)
+	materials = list(MAT_GLASS = 8000, MAT_SILVER = 3000, MAT_VERDANTIUM = 2000)
 	build_path = /obj/item/modularlaser/lens/scatter/adv
 	sort_string = "MAVET"
 
@@ -690,7 +690,7 @@
 	id = "fastac"
 	req_tech = list(TECH_ENGINEERING = 7)
 	materials = list(DEFAULT_WALL_MATERIAL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500, MAT_VERDANTIUM = 300)
-	build_path = /obj/item/modularlaser/cooling/eco/super
+	build_path = /obj/item/modularlaser/cooling/efficient/super
 	sort_string = "MAVFC"
 
 /datum/design/item/modweaponnodule/superac
