@@ -270,7 +270,7 @@
 /obj/item/gun/energy/modular/carbine
 	name = "modular energy carbine"
 	desc = "A basic modular energy weapon. This carbine has the capability to mount two cores but relies on an aircooling system."
-	var/cores = 2
+	cores = 2
 	icon_state = "mod_carbine"
 	lasercooler = /obj/item/modularlaser/cooling/lame/integral
 
@@ -289,6 +289,64 @@
 	name = "tribeam modular energy rifle"
 	desc = "An advanced modular energy weapon. This rifle has the capability to mount three cores."
 	cores = 3
+
+/obj/item/gun/energy/modular/compact
+	name = "compact modular energy pistol"
+	desc = "A compact energy pistol that can fit into a pocket. However, only the laser core can be replaced. All the other components are purpose-built for their size and are integrated into the frame."
+	lasercooler = /obj/item/modularlaser/cooling/lame/integral
+	lasercap = /obj/item/modularlaser/capacitor/simple/integral
+	circuit = /obj/item/modularlaser/controller/basic/integral
+	laserlens = /obj/item/modularlaser/lens/lame/integral
+
+/obj/item/gun/energy/modular/compact/Initialize()
+	..()
+	lasercap = new(src)
+	circuit = new(src)
+	lasercooler = new(src)
+	laserlens = new(src)
+
+/obj/item/gun/energy/modular/rifle/scatter
+	name = "modular energy scattergun"
+	desc = "A sophisticated modular energy weapon. This scattergun has the capability to mount two cores, and mounts a complex refracting lens to scatter most shots."
+	laserlens = /obj/item/modularlaser/lens/scatter/hyper/integral
+
+/obj/item/gun/energy/modular/rifle/scatter/Initialize()
+	..()
+	laserlens = new(src)
+
+/obj/item/gun/energy/modular/cannon
+	name = "modular energy cannon"
+	desc = "A huge, semi-modular energy cannon. Can mount three cores, and utilizes a robust power handler and circuitry combined with an integral large cell."
+	cores = 3
+	battery_lock = TRUE
+	cell_type = /obj/item/cell/device/weapon/modcannon
+	icon_state = "mod_cannon"
+	w_class = ITEMSIZE_HUGE
+	lasercap = /obj/item/modularlaser/capacitor/cannon
+	circuit = /obj/item/modularlaser/controller/basic/integral
+
+/obj/item/gun/energy/modular/cannon/Initialize()
+	..()
+	lasercap = new(src)
+	circuit = new(src)
+
+/obj/item/cell/device/weapon/modcannon
+	charge = 4800
+	maxcharge = 4800
+
+/obj/item/gun/energy/modular/nuke
+	name = "advanced modular energy gun"
+	desc = "A huge, semi-modular energy weapon. Can mount two cores, and utilizes an advanced power handler coupled with an integral RTG."
+	cores = 2
+	battery_lock = TRUE
+	cell_type = /obj/item/cell/device/weapon/recharge/captain
+	icon_state = "mod_cannon"
+	w_class = ITEMSIZE_HUGE
+	circuit = /obj/item/modularlaser/controller/basic/integral
+
+/obj/item/gun/energy/modular/cannon/Initialize()
+	..()
+	circuit = new(src)
 
 //parts
 /obj/item/modularlaser
@@ -444,6 +502,15 @@
 	name = "basic modular lens"
 	desc = "A basic lens with no drawbacks or upsides."
 
+/obj/item/modularlaser/lens/lame
+	name = "weaksauce modular lens"
+	desc = "A shitty lens with drawbacks."
+	accuracy = -5
+
+/obj/item/modularlaser/lens/lame/integral
+	name = "weaksauce integral modular lens"
+	removable = FALSE
+
 /obj/item/modularlaser/lens/advanced
 	name = "advanced modular lens"
 	desc = "An advanced metamaterial lens that focuses beams more accurately."
@@ -479,6 +546,9 @@
 	name = "supermaterial refracting modular lens"
 	desc = "A bleeding-edge metamaterial lens that splits beams."
 	accuracy = 0
+
+/obj/item/modularlaser/lens/scatter/hyper/integral
+	removable = FALSE
 
 /obj/item/modularlaser/lens/scatter/admin
 	name = "nanomachined refracting modular lens"
@@ -549,6 +619,10 @@
 	desc = "A power handler for a modular energy weapon that is efficient, and has no delay between shots."
 	costmod = 1
 	firedelay = 0
+
+/obj/item/modularlaser/capacitor/cannon
+	firedelay = 3
+	removable = FALSE
 
 ///////////////////////////////////////////////////////
 //Cooling
