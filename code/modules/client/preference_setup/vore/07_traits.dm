@@ -49,7 +49,7 @@
 	if(!pref.neu_traits) pref.neu_traits = list()
 	if(!pref.neg_traits) pref.neg_traits = list()
 
-	pref.blood_color = sanitize_hexcolor(pref.blood_color, default="#A10808")
+	pref.blood_color = sanitize_hexcolor(pref.blood_color, default = "#A10808")
 
 	if(!pref.traits_cheating)
 		pref.starting_trait_points = STARTING_SPECIES_POINTS
@@ -87,15 +87,16 @@
 		var/S = pref.custom_base ? pref.custom_base : "Human"
 		var/datum/species/custom/new_CS = CS.produceCopy(S, pref.pos_traits + pref.neu_traits + pref.neg_traits, character)
 
-		//Statistics for this would be nice
-		var/english_traits = english_list(new_CS.traits, and_text = ";", comma_text = ";")
-		log_game("TRAITS [pref.client_ckey]/([character]) with: [english_traits]") //Terrible 'fake' key_name()... but they aren't in the same entity yet
-		
 		//Any additional non-trait settings can be applied here
 		new_CS.blood_color = pref.blood_color
 
+		if(pref.species == SPECIES_CUSTOM)
+			//Statistics for this would be nice
+			var/english_traits = english_list(new_CS.traits, and_text = ";", comma_text = ";")
+			log_game("TRAITS [pref.client_ckey]/([character]) with: [english_traits]") //Terrible 'fake' key_name()... but they aren't in the same entity yet
+
 /datum/category_item/player_setup_item/vore/traits/content(var/mob/user)
-	. += "<b>Custom Species</b> "
+	. += "<b>Custom Species Name:</b> "
 	. += "<a href='?src=\ref[src];custom_species=1'>[pref.custom_species ? pref.custom_species : "-Input Name-"]</a><br>"
 
 	var/datum/species/selected_species = all_species[pref.species]
@@ -168,7 +169,7 @@
 	else if(href_list["blood_color"])
 		var/color_choice = input("Pick a blood color (does not apply to synths)","Blood Color",pref.blood_color) as color
 		if(color_choice)
-			pref.blood_color = sanitize_hexcolor(color_choice, default="#A10808")
+			pref.blood_color = sanitize_hexcolor(color_choice, default = "#A10808")
 		return TOPIC_REFRESH
 
 	else if(href_list["blood_reset"])

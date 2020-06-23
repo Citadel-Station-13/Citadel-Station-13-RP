@@ -207,8 +207,8 @@
 		if(istype(thing, /obj/structure/snowman/spider)) //Snow spiders are also spooky so people can be assholes with those too.
 			fear_amount += 1
 
-		if(istype(thing, /mob/living/simple_animal/hostile/giant_spider)) // Actual giant spiders are the scariest of them all.
-			var/mob/living/simple_animal/hostile/giant_spider/S = thing
+		if(istype(thing, /mob/living/simple_mob/animal/giant_spider)) // Actual giant spiders are the scariest of them all.
+			var/mob/living/simple_mob/animal/giant_spider/S = thing
 			if(S.stat == DEAD) // Dead giant spiders are less scary than alive ones.
 				fear_amount += 4
 			else
@@ -425,14 +425,18 @@
 		if(istype(thing, /obj/item/clothing/head/collectable/slime)) // Some hats are spooky so people can be assholes with them.
 			fear_amount += 1
 
-		if(istype(thing, /mob/living/simple_animal/slime)) // An actual predatory specimen!
-			var/mob/living/simple_animal/slime/S = thing
+		if(istype(thing, /mob/living/simple_mob/slime)) // An actual predatory specimen!
+			var/mob/living/simple_mob/slime/S = thing
 			if(S.stat == DEAD) // Dead slimes are somewhat less spook.
 				fear_amount += 4
-			if(S.is_adult == TRUE) //big boy
-				fear_amount += 8
+			if(istype(S, /mob/living/simple_mob/slime/xenobio))
+				var/mob/living/simple_mob/slime/xenobio/X = S
+				if(X.is_adult == TRUE) //big boy
+					fear_amount += 8
+				else
+					fear_amount += 6
 			else
-				fear_amount += 6
+				fear_amount += 10 // It's huge and feral.
 
 		if(istype(thing, /mob/living/carbon/human))
 			var/mob/living/carbon/human/S = thing
@@ -487,7 +491,7 @@
 
 	for(var/atom/thing in view(5, holder)) // See haemophobia for why this is 5.
 
-		if(istype(thing, /obj/item/weapon/reagent_containers/syringe))
+		if(istype(thing, /obj/item/reagent_containers/syringe))
 			fear_amount += 4
 
 		if(istype(thing, /obj/machinery/iv_drip))
@@ -497,16 +501,16 @@
 			else
 				fear_amount += 6
 
-		if(istype(thing, /obj/item/weapon/reagent_containers/hypospray))
+		if(istype(thing, /obj/item/reagent_containers/hypospray))
 			fear_amount += 2 //Needle doesn't look as intimidating.
 
-		if(istype(thing, /obj/item/weapon/reagent_containers/hypospray/autoinjector)) //Don't know if I need to define autoinjectors too. Meh.
+		if(istype(thing, /obj/item/reagent_containers/hypospray/autoinjector)) //Don't know if I need to define autoinjectors too. Meh.
 			fear_amount += 3
 
 		if(istype(thing, /obj/item/rig_module/chem_dispenser))
 			fear_amount += 5
 
-		if(istype(thing, /obj/item/weapon/storage/box/syringes))
+		if(istype(thing, /obj/item/storage/box/syringes))
 			fear_amount += 2
 
 		if(istype(thing, /obj/item/mecha_parts/mecha_equipment/tool/syringe_gun))
@@ -515,18 +519,18 @@
 		if(istype(thing, /obj/machinery/sleep_console)) //Sleepers got them needles in them.
 			fear_amount += 4
 
-		if(istype(thing, /obj/item/weapon/implanter))
+		if(istype(thing, /obj/item/implanter))
 			fear_amount += 8 //Very big needle.
 
-		if(istype(thing, /obj/item/weapon/gun/launcher/syringe))
+		if(istype(thing, /obj/item/gun/launcher/syringe))
 			fear_amount += 6
 
 		if(istype(thing, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = thing
-			if(H.l_hand && istype(H.l_hand, /obj/item/weapon/reagent_containers/syringe) || H.r_hand && istype(H.r_hand, /obj/item/weapon/reagent_containers/syringe))
+			if(H.l_hand && istype(H.l_hand, /obj/item/reagent_containers/syringe) || H.r_hand && istype(H.r_hand, /obj/item/reagent_containers/syringe))
 				fear_amount += 10
 
-			if(H.l_ear && istype(H.l_ear, /obj/item/weapon/reagent_containers/syringe) || H.r_ear && istype(H.r_ear, /obj/item/weapon/reagent_containers/syringe))
+			if(H.l_ear && istype(H.l_ear, /obj/item/reagent_containers/syringe) || H.r_ear && istype(H.r_ear, /obj/item/reagent_containers/syringe))
 				fear_amount +=10
 
 

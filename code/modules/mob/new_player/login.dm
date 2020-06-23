@@ -8,15 +8,15 @@ var/obj/effect/lobby_image = new /obj/effect/lobby_image
 	screen_loc = "1,1"
 
 /obj/effect/lobby_image/Initialize()
-	icon = using_map.lobby_icon
+	icon = GLOB.using_map.lobby_icon
 	var/known_icon_states = icon_states(icon)
-	for(var/lobby_screen in using_map.lobby_screens)
+	for(var/lobby_screen in GLOB.using_map.lobby_screens)
 		if(!(lobby_screen in known_icon_states))
 			log_world("Lobby screen '[lobby_screen]' did not exist in the icon set [icon].")
-			using_map.lobby_screens -= lobby_screen
+			GLOB.using_map.lobby_screens -= lobby_screen
 
-	if(using_map.lobby_screens.len)
-		icon_state = pick(using_map.lobby_screens)
+	if(GLOB.using_map.lobby_screens.len)
+		icon_state = pick(GLOB.using_map.lobby_screens)
 	else
 		icon_state = known_icon_states[1]
 	. = ..()
@@ -27,7 +27,7 @@ var/obj/effect/lobby_image = new /obj/effect/lobby_image
 /mob/new_player/Login()
 	update_Login_details()	//handles setting lastKnownIP and computer_id for use by the ban systems as well as checking for multikeying
 
-	var/motd = global.config.motd
+	var/motd = config.motd
 	if(motd)
 		to_chat(src, "<div class=\"motd\">[motd]</div>", handle_whitespace=FALSE)
 
@@ -47,3 +47,5 @@ var/obj/effect/lobby_image = new /obj/effect/lobby_image
 		if(client)
 			handle_privacy_poll()
 			client.playtitlemusic()
+
+	SEND_SIGNAL(src, COMSIG_MOB_CLIENT_LOGIN, client)

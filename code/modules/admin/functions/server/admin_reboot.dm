@@ -10,8 +10,8 @@
 		options += "Server Restart (Kill and restart DD)";
 
 	var/rebootconfirm
-	//if(SSticker.admin_delay_notice)
-	//	if(alert(usr, "Are you sure you want to reboot? An admin has already delayed the round end for the following reason: [SSticker.admin_delay_notice]", "Confirmation", "Yes", "No") == "Yes")
+	//if(SSSSticker.admin_delay_notice)
+	//	if(alert(usr, "Are you sure you want to reboot? An admin has already delayed the round end for the following reason: [SSSSticker.admin_delay_notice]", "Confirmation", "Yes", "No") == "Yes")
 	if(alert(usr, "Are you sure you want to reboot?", "Confirmation", "Yes", "No") == "Yes")
 		rebootconfirm = TRUE
 	if(rebootconfirm)
@@ -21,9 +21,9 @@
 			var/init_by = "Initiated by [usr && usr.client && usr.client.holder && usr.client.holder.fakekey ? "Admin" : usr.key]."
 			switch(result)
 				if("Regular Restart")
-					//SSticker.Reboot(init_by, "admin reboot - by [usr.key] [usr.client.holder.fakekey ? "(stealth)" : ""]", 10)
+					//SSSSticker.Reboot(init_by, "admin reboot - by [usr.key] [usr.client.holder.fakekey ? "(stealth)" : ""]", 10)
 					//POLARIS CODE REE
-					to_chat(world, "<span class='danger'>Rebooting world in 1 second! Initiated by [init_by]</span>")
+					to_chat(world, "<span class='danger'>Rebooting world in 1 second! [init_by]</span>")
 					spawn(10)
 						world.Reboot()
 				if("Hard Restart (No Delay, No Feeback Reason)")

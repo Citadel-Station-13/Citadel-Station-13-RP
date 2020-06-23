@@ -25,6 +25,7 @@
 	density = 1
 	anchored = 1
 	opacity = 0
+	can_atmos_pass = ATMOS_PASS_DENSITY
 
 	icon = 'icons/obj/inflatable.dmi'
 	icon_state = "wall"
@@ -39,9 +40,6 @@
 /obj/structure/inflatable/Destroy()
 	update_nearby_tiles()
 	return ..()
-
-/obj/structure/inflatable/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
-	return 0
 
 /obj/structure/inflatable/bullet_act(var/obj/item/projectile/Proj)
 	var/proj_damage = Proj.get_structure_damage()
@@ -73,7 +71,7 @@
 		add_fingerprint(user)
 		return
 
-/obj/structure/inflatable/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/structure/inflatable/attackby(obj/item/W as obj, mob/user as mob)
 	if(!istype(W)) return
 
 	if (can_puncture(W))
@@ -139,6 +137,13 @@
 		user.visible_message("<span class='danger'>[user] [attack_verb] at [src]!</span>")
 	return 1
 
+/obj/structure/inflatable/take_damage(var/damage)
+	health -= damage
+	if(health <= 0)
+		visible_message("<span class='danger'>The [src] deflates!</span>")
+		spawn(1) puncture()
+	return 1
+
 /obj/item/inflatable/door/
 	name = "inflatable door"
 	desc = "A folded membrane which rapidly expands into a simple door on activation."
@@ -168,9 +173,7 @@
 /obj/structure/inflatable/door/attack_hand(mob/user as mob)
 	return TryToSwitchState(user)
 
-/obj/structure/inflatable/door/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
-	if(air_group)
-		return state
+/obj/structure/inflatable/door/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover, /obj/effect/beam))
 		return !opacity
 	return !density
@@ -244,7 +247,7 @@
 	icon_state = "folded_wall_torn"
 
 	attack_self(mob/user)
-		user << "<span class='notice'>The inflatable wall is too torn to be inflated!</span>"
+		to_chat(user, "<span class='notice'>The inflatable wall is too torn to be inflated!</span>")
 		add_fingerprint(user)
 
 /obj/item/inflatable/door/torn
@@ -254,10 +257,10 @@
 	icon_state = "folded_door_torn"
 
 	attack_self(mob/user)
-		user << "<span class='notice'>The inflatable door is too torn to be inflated!</span>"
+		to_chat(user, "<span class='notice'>The inflatable door is too torn to be inflated!</span>")
 		add_fingerprint(user)
 
-/obj/item/weapon/storage/briefcase/inflatable
+/obj/item/storage/briefcase/inflatable
 	name = "inflatable barrier box"
 	desc = "Contains inflatable walls and doors."
 	icon_state = "inf_box"

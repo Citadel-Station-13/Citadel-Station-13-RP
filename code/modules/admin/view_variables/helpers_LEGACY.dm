@@ -1,16 +1,6 @@
 
 /datum/proc/get_view_variables_header_legacy()
-	return "<b>[src]</b>"
-
-/atom/get_view_variables_header_legacy()
-	return {"
-		<a href='?_src_=vars;datumedit=\ref[src];varnameedit=name'><b>[src]</b></a>
-		<br><font size='1'>
-		<a href='?_src_=vars;rotatedatum=\ref[src];rotatedir=left'><<</a>
-		<a href='?_src_=vars;datumedit=\ref[src];varnameedit=dir'>[dir2text(dir)]</a>
-		<a href='?_src_=vars;rotatedatum=\ref[src];rotatedir=right'>>></a>
-		</font>
-		"}
+	return ""
 
 /mob/living/get_view_variables_header_legacy()
 	return {"
@@ -75,12 +65,4 @@
 /obj/get_view_variables_options_legacy()
 	return ..() + {"
 		<option value='?_src_=vars;delall=\ref[src]'>Delete all of type</option>
-		<option value='?_src_=vars;explode=\ref[src]'>Trigger explosion</option>
-		<option value='?_src_=vars;emp=\ref[src]'>Trigger EM pulse</option>
-		"}
-
-/turf/get_view_variables_options_legacy()
-	return ..() + {"
-		<option value='?_src_=vars;explode=\ref[src]'>Trigger explosion</option>
-		<option value='?_src_=vars;emp=\ref[src]'>Trigger EM pulse</option>
 		"}

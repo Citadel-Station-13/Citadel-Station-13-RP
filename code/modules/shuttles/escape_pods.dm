@@ -4,9 +4,9 @@
 
 /datum/shuttle/ferry/escape_pod/New()
 	move_time = move_time + rand(-30, 60)
-	if(name in emergency_shuttle.escape_pods)
+	if(name in SSshuttle.escape_pods)
 		CRASH("An escape pod with the name '[name]' has already been defined.")
-	emergency_shuttle.escape_pods[name] = src
+	SSshuttle.escape_pods[name] = src
 	..()
 
 /datum/shuttle/ferry/escape_pod/init_docking_controllers()
@@ -18,7 +18,7 @@
 	if(docking_controller)
 		var/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/controller_master = docking_controller.master
 		if(!istype(controller_master))
-			warning("warning: escape pod with docking tag [docking_controller_tag] could not find it's controller master!")
+			warning("warning: escape pod with docking tag [docking_controller_tag] could not find its controller master!")
 		else
 			controller_master.pod = src
 
@@ -51,11 +51,11 @@
 		"override_enabled" = docking_program.override_enabled,
 		"door_state" = 	docking_program.memory["door_status"]["state"],
 		"door_lock" = 	docking_program.memory["door_status"]["lock"],
-		"can_force" = pod.can_force() || (emergency_shuttle.departed && pod.can_launch()),	//allow players to manually launch ahead of time if the shuttle leaves
+		"can_force" = pod.can_force() || (SSemergencyshuttle.departed && pod.can_launch()),	//allow players to manually launch ahead of time if the shuttle leaves
 		"is_armed" = pod.arming_controller.armed,
 	)
 
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 
 	if (!ui)
 		ui = new(user, src, ui_key, "escape_pod_console.tmpl", name, 470, 290)
@@ -72,7 +72,7 @@
 	if("force_launch")
 		if (pod.can_force())
 			pod.force_launch(src)
-		else if (emergency_shuttle.departed && pod.can_launch())	//allow players to manually launch ahead of time if the shuttle leaves
+		else if (SSemergencyshuttle.departed && pod.can_launch())	//allow players to manually launch ahead of time if the shuttle leaves
 			pod.launch(src)
 
 	return 0
@@ -102,7 +102,7 @@
 		"armed" = armed,
 	)
 
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 
 	if (!ui)
 		ui = new(user, src, ui_key, "escape_pod_berth_console.tmpl", name, 470, 290)
@@ -112,7 +112,7 @@
 
 /obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod_berth/emag_act(var/remaining_charges, var/mob/user)
 	if (!emagged)
-		user << "<span class='notice'>You emag the [src], arming the escape pod!</span>"
+		to_chat(user, "<span class='notice'>You emag the [src], arming the escape pod!</span>")
 		emagged = 1
 		if (istype(docking_program, /datum/computer/file/embedded_program/docking/simple/escape_pod))
 			var/datum/computer/file/embedded_program/docking/simple/escape_pod/P = docking_program

@@ -6,6 +6,7 @@
 	var/global/list/blockedturfs =  list(
 		/turf/space,
 		/turf/simulated/floor/outdoors,
+		/turf/simulated/sky,
 	)
 
 /obj/machinery/shield_gen/external/advanced

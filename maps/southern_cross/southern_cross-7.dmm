@@ -203,10 +203,15 @@
 	tag_door = "arrivals_shuttle_hatch"
 	},
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
+	icon_state = "floor_red"
 	},
 /area/shuttle/arrival/pre_game)
 "aH" = (
+/turf/simulated/shuttle/floor{
+	icon_state = "floor_red"
+	},
+/area/shuttle/arrival/pre_game)
+"aI" = (
 /obj/structure/showcase{
 	desc = "So that's how the shuttle moves on its own.";
 	icon = 'icons/mob/AI.dmi';
@@ -214,12 +219,7 @@
 	name = "Arrivals Announcement Computer"
 	},
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
-	},
-/area/shuttle/arrival/pre_game)
-"aI" = (
-/turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
+	icon_state = "floor_red"
 	},
 /area/shuttle/arrival/pre_game)
 "aJ" = (
@@ -241,18 +241,18 @@
 /turf/space,
 /area/space)
 "aL" = (
-/obj/machinery/computer/shuttle_control/arrivals,
-/turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
-	},
-/area/shuttle/arrival/pre_game)
-"aM" = (
 /obj/machinery/light,
 /obj/structure/bed/chair{
 	dir = 8
 	},
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
+	icon_state = "floor_red"
+	},
+/area/shuttle/arrival/pre_game)
+"aM" = (
+/obj/machinery/computer/shuttle_control/arrivals,
+/turf/simulated/shuttle/floor{
+	icon_state = "floor_red"
 	},
 /area/shuttle/arrival/pre_game)
 "aN" = (
@@ -261,7 +261,7 @@
 	dir = 4
 	},
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
+	icon_state = "floor_red"
 	},
 /area/shuttle/arrival/pre_game)
 "aO" = (
@@ -272,7 +272,7 @@
 	pixel_y = 15
 	},
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
+	icon_state = "floor_red"
 	},
 /area/shuttle/arrival/pre_game)
 "aP" = (
@@ -310,6 +310,11 @@
 /area/shuttle/arrival/pre_game)
 "aX" = (
 /obj/structure/closet/emcloset,
+/obj/item/radio/intercom{
+	dir = 8;
+	name = "Station Intercom (General)";
+	pixel_x = -21
+	},
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/arrival/pre_game)
 "aY" = (
@@ -520,7 +525,7 @@
 /area/shuttle/arrival/pre_game)
 "bx" = (
 /obj/structure/table/standard,
-/obj/item/weapon/book/codex/lore/vir,
+/obj/item/book/codex/lore/vir,
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/arrival/pre_game)
 "by" = (
@@ -531,7 +536,7 @@
 /area/shuttle/arrival/pre_game)
 "bz" = (
 /obj/structure/table/standard,
-/obj/item/weapon/book/codex/corp_regs,
+/obj/item/book/codex/corp_regs,
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/arrival/pre_game)
 "bA" = (
@@ -559,6 +564,15 @@
 	dir = 1
 	},
 /turf/simulated/shuttle/plating/airless,
+/area/shuttle/arrival/pre_game)
+"bE" = (
+/obj/structure/closet/emcloset,
+/obj/item/radio/intercom{
+	dir = 4;
+	name = "Station Intercom (General)";
+	pixel_x = 21
+	},
+/turf/simulated/shuttle/floor/white,
 /area/shuttle/arrival/pre_game)
 "bG" = (
 /turf/simulated/sky/moving/north,
@@ -18112,7 +18126,7 @@ ac
 ab
 aF
 aF
-aL
+aM
 aR
 aY
 be
@@ -18369,7 +18383,7 @@ ac
 ab
 aF
 aG
-aM
+aL
 aS
 aZ
 be
@@ -18625,8 +18639,8 @@ ac
 ac
 ab
 aF
-aH
 aI
+aH
 aT
 ba
 be
@@ -18882,7 +18896,7 @@ ac
 ac
 ab
 aF
-aI
+aH
 aN
 aF
 bb
@@ -19399,7 +19413,7 @@ ab
 aF
 aF
 aF
-aX
+bE
 be
 be
 bl
@@ -19409,7 +19423,7 @@ bn
 bl
 be
 be
-aX
+bE
 bA
 bC
 ab

@@ -21,7 +21,7 @@
 	to_chat(user, "<span class='notice'>You need a crowbar to pry this open!</span>")
 	return
 
-/obj/structure/largecrate/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/structure/largecrate/attackby(obj/item/W as obj, mob/user as mob)
 	var/turf/T = get_turf(src)
 	if(!T)
 		to_chat(user, "<span class='notice'>You can't open this here!</span>")
@@ -47,7 +47,7 @@
 	desc = "It comes in a box for the fabricator's sake. Where does the wood come from? ... And why is it lighter?"
 	icon_state = "mulecrate"
 
-/obj/structure/largecrate/hoverpod/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/structure/largecrate/hoverpod/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_crowbar())
 		var/obj/item/mecha_parts/mecha_equipment/ME
 		var/obj/mecha/working/hoverpod/H = new (loc)
@@ -82,39 +82,32 @@
 	starts_with = list(/obj/structure/vehiclecage/quadtrailer)
 
 /obj/structure/largecrate/animal
-	icon_state = "mulecrate"
+	icon_state = "lisacrate"	//VOREStation Edit
 
 /obj/structure/largecrate/animal/mulebot
 	name = "Mulebot crate"
+	icon_state = "mulecrate"	//VOREStation Edit
 	starts_with = list(/mob/living/bot/mulebot)
 
 /obj/structure/largecrate/animal/corgi
 	name = "corgi carrier"
-	starts_with = list(/mob/living/simple_animal/corgi)
+	starts_with = list(/mob/living/simple_mob/animal/passive/dog/corgi)
 
 /obj/structure/largecrate/animal/cow
 	name = "cow crate"
-	starts_with = list(/mob/living/simple_animal/cow)
+	starts_with = list(/mob/living/simple_mob/animal/passive/cow)
 
 /obj/structure/largecrate/animal/goat
 	name = "goat crate"
-	starts_with = list(/mob/living/simple_animal/retaliate/goat)
+	starts_with = list(/mob/living/simple_mob/animal/goat)
 
 /obj/structure/largecrate/animal/cat
 	name = "cat carrier"
-	starts_with = list(/mob/living/simple_animal/cat)
+	starts_with = list(/mob/living/simple_mob/animal/passive/cat)
 
 /obj/structure/largecrate/animal/cat/bones
-	starts_with = list(/mob/living/simple_animal/cat/fluff/bones)
+	starts_with = list(/mob/living/simple_mob/animal/passive/cat/bones)
 
 /obj/structure/largecrate/animal/chick
 	name = "chicken crate"
-	starts_with = list(/mob/living/simple_animal/chick = 5)
-
-/obj/structure/largecrate/animal/carp
-	name = "space carp crate"
-	starts_with = list(/obj/random/mob/carp = 3)
-
-/obj/structure/largecrate/animal/spiders
-	name = "spider crate"
-	starts_with = list(/obj/random/mob/spider = 3)
+	starts_with = list(/mob/living/simple_mob/animal/passive/chick = 5)

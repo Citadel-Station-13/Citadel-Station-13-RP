@@ -5,21 +5,21 @@
 	icon_keyboard = "tech_key"
 	icon_screen = "alert:0"
 	light_color = "#e6ffff"
-	circuit = /obj/item/weapon/circuitboard/stationalert_engineering
+	circuit = /obj/item/circuitboard/stationalert_engineering
 	var/datum/nano_module/alarm_monitor/alarm_monitor
 	var/monitor_type = /datum/nano_module/alarm_monitor/engineering
 
 /obj/machinery/computer/station_alert/security
 	monitor_type = /datum/nano_module/alarm_monitor/security
-	circuit = /obj/item/weapon/circuitboard/stationalert_security
+	circuit = /obj/item/circuitboard/stationalert_security
 
 /obj/machinery/computer/station_alert/all
 	monitor_type = /datum/nano_module/alarm_monitor/all
-	circuit = /obj/item/weapon/circuitboard/stationalert_all
+	circuit = /obj/item/circuitboard/stationalert_all
 
 /obj/machinery/computer/station_alert/Initialize()
 	alarm_monitor = new monitor_type(src)
-	alarm_monitor.register_alarm(src, /obj/machinery/computer/station_alert/update_icon)
+	alarm_monitor.register_alarm(src, /atom/proc/update_icon)
 	. = ..()
 
 /obj/machinery/computer/station_alert/Destroy()

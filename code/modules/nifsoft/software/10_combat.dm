@@ -87,7 +87,7 @@ var/global/datum/unarmed_attack/hardclaws/unarmed_hardclaws = new()
 
 			var/mob/living/carbon/human/H = nif.human
 			H.adjustHalLoss(30)
-			var/obj/item/weapon/gun/energy/gun/martin/dazzle/dgun = new(get_turf(H))
+			var/obj/item/gun/energy/gun/martin/dazzle/dgun = new(get_turf(H))
 			H.put_in_hands(dgun)
 			nif.notify("Weapon deployed!",TRUE)
 			used = TRUE
@@ -95,7 +95,7 @@ var/global/datum/unarmed_attack/hardclaws/unarmed_hardclaws = new()
 				uninstall()
 
 //The gun to go with this implant
-/obj/item/weapon/gun/energy/gun/martin/dazzle
+/obj/item/gun/energy/gun/martin/dazzle
 	name = "Microlaser"
 	desc = "A tiny nanofabricated laser."
 

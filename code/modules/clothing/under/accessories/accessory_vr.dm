@@ -6,6 +6,7 @@
 	slot_flags = SLOT_TIE | SLOT_OCLOTHING
 	icon = 'icons/obj/clothing/collars_vr.dmi'
 	icon_override = 'icons/obj/clothing/collars_vr.dmi'
+	var/writtenon = 0
 
 /obj/item/clothing/accessory/collar/silver
 	name = "Silver tag collar"
@@ -27,6 +28,23 @@
 	icon_state = "collar_bell"
 	item_state = "collar_bell_overlay"
 	overlay_state = "collar_bell_overlay"
+	var/jingled = 0
+
+/obj/item/clothing/accessory/collar/bell/verb/jinglebell()
+	set name = "Jingle Bell"
+	set category = "Object"
+	set src in usr
+	if(!istype(usr, /mob/living)) return
+	if(usr.stat) return
+
+	if(!jingled)
+		usr.audible_message("[usr] jingles the [src]'s bell.")
+		jingled = 1
+		addtimer(CALLBACK(src, .proc/jingledreset), 50)
+	return
+
+/obj/item/clothing/accessory/collar/bell/proc/jingledreset()
+		jingled = 0
 
 /obj/item/clothing/accessory/collar/shock
 	name = "Shock collar"
@@ -39,7 +57,7 @@
 	var/code = 2
 	var/datum/radio_frequency/radio_connection
 
-/obj/item/clothing/accessory/collar/shock/New()
+/obj/item/clothing/accessory/collar/shock/Initialize()
 	..()
 	radio_connection = radio_controller.add_object(src, frequency, RADIO_CHAT) // Makes it so you don't need to change the frequency off of default for it to work.
 
@@ -56,7 +74,7 @@
 /obj/item/clothing/accessory/collar/shock/Topic(href, href_list)
 	if(usr.stat || usr.restrained())
 		return
-	if(((istype(usr, /mob/living/carbon/human) && ((!( ticker ) || (ticker && ticker.mode != "monkey")) && usr.contents.Find(src))) || (usr.contents.Find(master) || (in_range(src, usr) && istype(loc, /turf)))))
+	if(((istype(usr, /mob/living/carbon/human) && ((!( SSticker ) || (SSticker && SSticker.mode != "monkey")) && usr.contents.Find(src))) || (usr.contents.Find(master) || (in_range(src, usr) && istype(loc, /turf)))))
 		usr.set_machine(src)
 		if(href_list["freq"])
 			var/new_frequency = sanitize_frequency(frequency + text2num(href_list["freq"]))
@@ -111,7 +129,7 @@
 		if(ismob(loc.loc))
 			M = loc.loc // This is about as terse as I can make my solution to the whole 'collar won't work when attached as accessory' thing.
 		to_chat(M,"<span class='danger'>You feel a sharp shock!</span>")
-		var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(3, 1, M)
 		s.start()
 		M.Weaken(10)
@@ -165,9 +183,39 @@
 	overlay_state = "collar_holo_overlay"
 	matter = list(DEFAULT_WALL_MATERIAL = 50)
 
+/obj/item/clothing/accessory/collar/silvercolor
+	name = "Dyeable Silver tag collar"
+	desc = "A collar for your little pets... or the big ones."
+	icon_state = "collar_blk_colorized"
+	item_state = "collar_blk_colorized_overlay"
+	overlay_state = "collar_blk_colorized_overlay"
 
-/obj/item/clothing/accessory/collar/holo/attack_self(mob/user as mob)
-	to_chat(user,"<span class='notice'>[name]'s interface is projected onto your hand.</span>")
+/obj/item/clothing/accessory/collar/cowbell
+	name = "Cowbell collar"
+	desc = "A collar for your little pets... or the big ones."
+	icon_state = "collar_cowbell"
+	item_state = "collar_cowbell_overlay"
+	overlay_state = "collar_cowbell_overlay"
+
+//TFF 17/6/19 - public loadout addition: Indigestible Holocollar
+/obj/item/clothing/accessory/collar/holo/indigestible
+	name = "Holo-collar"
+	desc = "A special variety of the holo-collar that seems to be made of a very durable fabric that fits around the neck."
+	icon_state = "collar_holo"
+	item_state = "collar_holo_overlay"
+	overlay_state = "collar_holo_overlay"
+//Make indigestible
+/obj/item/clothing/accessory/collar/holo/indigestible/digest_act(var/atom/movable/item_storage = null)
+	return FALSE
+
+/obj/item/clothing/accessory/collar/attack_self(mob/user as mob)
+	if(istype(src,/obj/item/clothing/accessory/collar/holo))
+		to_chat(user,"<span class='notice'>[name]'s interface is projected onto your hand.</span>")
+	else
+		if(writtenon)
+			to_chat(user,"<span class='notice'>You need a pen or a screwdriver to edit the tag on this collar.</span>")
+			return
+		to_chat(user,"<span class='notice'>You adjust the [name]'s tag.</span>")
 
 	var/str = copytext(reject_bad_text(input(user,"Tag text?","Set tag","")),1,MAX_NAME_LEN)
 
@@ -177,10 +225,65 @@
 		desc = initial(desc)
 	else
 		to_chat(user,"<span class='notice'>You set the [name]'s tag to '[str]'.</span>")
-		name = initial(name) + " ([str])"
-		desc = initial(desc) + " The tag says \"[str]\"."
+		initialize_tag(str)
 
-//Machete Holsters moved to holster.dm, where it belongs - peesh
+/obj/item/clothing/accessory/collar/proc/initialize_tag(var/tag)
+		name = initial(name) + " ([tag])"
+		desc = initial(desc) + " \"[tag]\" has been engraved on the tag."
+		writtenon = 1
+
+/obj/item/clothing/accessory/collar/holo/initialize_tag(var/tag)
+		..()
+		desc = initial(desc) + " The tag says \"[tag]\"."
+
+/obj/item/clothing/accessory/collar/attackby(obj/item/I, mob/user)
+	if(istype(src,/obj/item/clothing/accessory/collar/holo))
+		return
+
+	if(istype(I,/obj/item/tool/screwdriver))
+		update_collartag(user, I, "scratched out", "scratch out", "engraved")
+		return
+
+	if(istype(I,/obj/item/pen))
+		update_collartag(user, I, "crossed out", "cross out", "written")
+		return
+
+	to_chat(user,"<span class='notice'>You need a pen or a screwdriver to edit the tag on this collar.</span>")
+
+/obj/item/clothing/accessory/collar/proc/update_collartag(mob/user, obj/item/I, var/erasemethod, var/erasing, var/writemethod)
+	if(!(istype(user.get_active_hand(),I)) || !(istype(user.get_inactive_hand(),src)) || (user.stat))
+		return
+
+	var/str = copytext(reject_bad_text(input(user,"Tag text?","Set tag","")),1,MAX_NAME_LEN)
+
+	if(!str || !length(str))
+		if(!writtenon)
+			to_chat(user,"<span class='notice'>You don't write anything.</span>")
+		else
+			to_chat(user,"<span class='notice'>You [erasing] the words with the [I].</span>")
+			name = initial(name)
+			desc = initial(desc) + " The tag has had the words [erasemethod]."
+	else
+		if(!writtenon)
+			to_chat(user,"<span class='notice'>You write '[str]' on the tag with the [I].</span>")
+			name = initial(name) + " ([str])"
+			desc = initial(desc) + " \"[str]\" has been [writemethod] on the tag."
+			writtenon = 1
+		else
+			to_chat(user,"<span class='notice'>You [erasing] the words on the tag with the [I], and write '[str]'.</span>")
+			name = initial(name) + " ([str])"
+			desc = initial(desc) + " Something has been [erasemethod] on the tag, and it now has \"[str]\" [writemethod] on it."
+
+//Machete Holsters
+/obj/item/clothing/accessory/holster/machete
+	name = "machete sheath"
+	desc = "A handsome synthetic leather sheath with matching belt."
+	icon_state = "holster_machete"
+	slot = ACCESSORY_SLOT_WEAPON
+	concealed_holster = 0
+	can_hold = list(/obj/item/material/knife/machete)
+	//sound_in = 'sound/effects/holster/sheathin.ogg'
+	//sound_out = 'sound/effects/holster/sheathout.ogg'
 
 //Medals
 

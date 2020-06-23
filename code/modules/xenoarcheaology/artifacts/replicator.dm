@@ -7,7 +7,7 @@
 
 	idle_power_usage = 100
 	active_power_usage = 1000
-	use_power = 1
+	use_power = USE_POWER_IDLE
 
 	var/spawn_progress_time = 0
 	var/max_spawn_time = 50
@@ -26,45 +26,45 @@
 	/obj/item/roller,
 	/obj/structure/closet/crate,
 	/obj/structure/closet/acloset,
-	/mob/living/simple_animal/hostile/mimic/crate,
-	/mob/living/simple_animal/hostile/viscerator,
-	/mob/living/simple_animal/hostile/hivebot,
-	/obj/item/device/analyzer,
-	/obj/item/device/camera,
-	/obj/item/device/flash,
-	/obj/item/device/flashlight,
-	/obj/item/device/healthanalyzer,
-	/obj/item/device/multitool,
-	/obj/item/device/paicard,
-	/obj/item/device/radio,
-	/obj/item/device/radio/headset,
-	/obj/item/device/radio/beacon,
-	/obj/item/weapon/autopsy_scanner,
-	/obj/item/weapon/bikehorn,
-	/obj/item/weapon/surgical/bonesetter,
-	/obj/item/weapon/material/knife/butch,
-	/obj/item/weapon/caution,
-	/obj/item/weapon/caution/cone,
-	/obj/item/weapon/tool/crowbar,
-	/obj/item/weapon/clipboard,
-	/obj/item/weapon/cell,
-	/obj/item/weapon/surgical/circular_saw,
-	/obj/item/weapon/material/knife/machete/hatchet,
-	/obj/item/weapon/handcuffs,
-	/obj/item/weapon/surgical/hemostat,
-	/obj/item/weapon/material/knife,
-	/obj/item/weapon/flame/lighter,
-	/obj/item/weapon/light/bulb,
-	/obj/item/weapon/light/tube,
-	/obj/item/weapon/pickaxe,
-	/obj/item/weapon/pickaxe/shovel,
-	/obj/item/weapon/weldingtool,
-	/obj/item/weapon/tool/wirecutters,
-	/obj/item/weapon/tool/wrench,
-	/obj/item/weapon/tool/screwdriver,
-	/obj/item/weapon/grenade/chem_grenade/cleaner,
-	/obj/item/weapon/grenade/chem_grenade/metalfoam)
+	/mob/living/simple_mob/mechanical/viscerator,
+	/mob/living/simple_mob/mechanical/hivebot,
+	/obj/item/analyzer,
+	/obj/item/camera,
+	/obj/item/flash,
+	/obj/item/flashlight,
+	/obj/item/healthanalyzer,
+	/obj/item/multitool,
+	/obj/item/paicard,
+	/obj/item/radio,
+	/obj/item/radio/headset,
+	/obj/item/radio/beacon,
+	/obj/item/autopsy_scanner,
+	/obj/item/bikehorn,
+	/obj/item/surgical/bonesetter,
+	/obj/item/material/knife/butch,
+	/obj/item/caution,
+	/obj/item/caution/cone,
+	/obj/item/tool/crowbar,
+	/obj/item/clipboard,
+	/obj/item/cell,
+	/obj/item/surgical/circular_saw,
+	/obj/item/material/knife/machete/hatchet,
+	/obj/item/handcuffs,
+	/obj/item/surgical/hemostat,
+	/obj/item/material/knife,
+	/obj/item/flame/lighter,
+	/obj/item/light/bulb,
+	/obj/item/light/tube,
+	/obj/item/pickaxe,
+	/obj/item/shovel,
+	/obj/item/weldingtool,
+	/obj/item/tool/wirecutters,
+	/obj/item/tool/wrench,
+	/obj/item/tool/screwdriver,
+	/obj/item/grenade/chem_grenade/cleaner,
+	/obj/item/grenade/chem_grenade/metalfoam)
 
+//	/mob/living/simple_mob/mimic/crate,	// Vorestation edit //VORESTATION AI TEMPORARY REMOVAL, REPLACE BACK IN LIST WHEN FIXED
 	var/quantity = rand(5, 15)
 	for(var/i=0, i<quantity, i++)
 		var/button_desc = "a [pick("yellow","purple","green","blue","red","orange","white")], "
@@ -105,7 +105,7 @@
 			max_spawn_time = rand(30,100)
 
 			if(!spawning_types.len || !stored_materials.len)
-				use_power = 1
+				update_use_power(USE_POWER_IDLE)
 				icon_state = "borgcharger0(old)"
 
 		else if(prob(5))
@@ -124,7 +124,7 @@
 
 	user << browse(dat, "window=alien_replicator")
 
-/obj/machinery/replicator/attackby(obj/item/weapon/W as obj, mob/living/user as mob)
+/obj/machinery/replicator/attackby(obj/item/W as obj, mob/living/user as mob)
 	if(!W.canremove || !user.canUnEquip(W)) //No armblades, no grabs. No other-thing-I-didn't-think-of.
 		to_chat(user, "<span class='notice'>You cannot put \the [W] into the machine.</span>")
 		return
@@ -146,7 +146,7 @@
 
 				spawning_types.Add(construction[construction[index]])
 				spawn_progress_time = 0
-				use_power = 2
+				update_use_power(USE_POWER_ACTIVE)
 				icon_state = "borgcharger1(old)"
 			else
 				visible_message(fail_message)

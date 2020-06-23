@@ -33,7 +33,7 @@
 		)
 
 /mob/living/simple_animal/slime/orange/post_attack(mob/living/L, intent)
-	if(intent != I_HELP)
+	if(intent != INTENT_HELP)
 		L.adjust_fire_stacks(1)
 		if(prob(25))
 			L.IgniteMob()
@@ -138,7 +138,7 @@
 /mob/living/simple_animal/slime/dark_purple/proc/ignite()
 	visible_message("<span class='danger'>\The [src] erupts in an inferno!</span>")
 	for(var/turf/simulated/target_turf in view(2, src))
-		target_turf.assume_gas("phoron", 30, 1500+T0C)
+		target_turf.assume_gas(/datum/gas/phoron, 30, 1500+T0C)
 		spawn(0)
 			target_turf.hotspot_expose(1500+T0C, 400)
 	qdel(src)
@@ -158,7 +158,7 @@
 	else
 		..()
 
-/mob/living/simple_animal/slime/dark_purple/attackby(var/obj/item/weapon/W, var/mob/user)
+/mob/living/simple_animal/slime/dark_purple/attackby(var/obj/item/W, var/mob/user)
 	if(istype(W) && W.force && W.damtype == BURN)
 		log_and_message_admins("[src] ignited due to being hit with a burning weapon ([W]) by [key_name(user)].")
 		ignite()
@@ -217,7 +217,8 @@
 	the ferocity of other apex predators in this region of Sif. As such, it is a very invasive species."
 	description_info = "This slime makes other entities near it feel much colder, and is more resilient to the cold. It also has learned advanced combat tactics from \
 	having to endure the harsh world outside its lab. Note that processing this large slime will give six cores."
-	icon_scale = 2
+	icon_scale_x = 2
+	icon_scale_y = 2
 	optimal_combat = TRUE // Gotta be sharp to survive out there.
 	rabid = TRUE
 	rainbow_core_candidate = FALSE
@@ -325,9 +326,9 @@
 		to_chat(src, "<span class='warning'>There wasn't an unoccupied spot to teleport to.</span>")
 		return FALSE
 
-	var/datum/effect/effect/system/spark_spread/s1 = new /datum/effect/effect/system/spark_spread
+	var/datum/effect_system/spark_spread/s1 = new /datum/effect_system/spark_spread
 	s1.set_up(5, 1, T)
-	var/datum/effect/effect/system/spark_spread/s2 = new /datum/effect/effect/system/spark_spread
+	var/datum/effect_system/spark_spread/s2 = new /datum/effect_system/spark_spread
 	s2.set_up(5, 1, target_turf)
 
 
@@ -373,7 +374,7 @@
 	..() // Do regular attacks.
 
 	if(istype(L))
-		if(a_intent == I_HURT)
+		if(a_intent == INTENT_HARM)
 			visible_message("<span class='danger'>\The [src] sends \the [L] flying with the impact!</span>")
 			playsound(src, "punch", 50, 1)
 			L.Weaken(1)
@@ -499,7 +500,7 @@
 	..()
 
 /mob/living/simple_animal/slime/green/proc/irradiate()
-	radiation_repository.radiate(src, rads)
+	SSradiation.radiate(src, rads)
 
 
 /mob/living/simple_animal/slime/pink
@@ -611,10 +612,10 @@
 		if(src) // Delete ourselves if the explosion didn't do it.
 			qdel(src)
 
-/mob/living/simple_animal/slime/oil/post_attack(var/mob/living/L, var/intent = I_HURT)
+/mob/living/simple_animal/slime/oil/post_attack(var/mob/living/L, var/intent = INTENT_HARM)
 	if(!rabid)
 		return ..()
-	if(intent == I_HURT || intent == I_GRAB)
+	if(intent == INTENT_HARM || intent == INTENT_GRAB)
 		say(pick("Sacrifice...!", "Sssss...", "Boom...!"))
 		sleep(2 SECOND)
 		log_and_message_admins("[src] has suicide-bombed themselves while trying to kill \the [L].")
@@ -635,7 +636,7 @@
 	else
 		..()
 
-/mob/living/simple_animal/slime/oil/attackby(var/obj/item/weapon/W, var/mob/user)
+/mob/living/simple_animal/slime/oil/attackby(var/obj/item/W, var/mob/user)
 	if(istype(W) && W.force && W.damtype == BURN)
 		log_and_message_admins("[src] exploded due to being hit with a burning weapon ([W]) by [key_name(user)].")
 		explode()

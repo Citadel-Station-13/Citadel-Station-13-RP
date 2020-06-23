@@ -1,4 +1,4 @@
-/mob/living/simple_animal/horse
+/mob/living/simple_mob/horse
 	name = "horse"
 	desc = "Don't look it in the mouth."
 	tt_desc = "Equus ferus caballus"
@@ -29,7 +29,7 @@
 	emote_see = list("shakes its head", "stamps a hoof", "looks around")
 
 	meat_amount = 4
-	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat
+	meat_type = /obj/item/reagent_containers/food/snacks/meat
 
 	max_buckled_mobs = 1 //Yeehaw
 	can_buckle = TRUE
@@ -38,7 +38,7 @@
 	mount_offset_x = 0
 
 // Activate Noms!
-/mob/living/simple_animal/horse
+/mob/living/simple_mob/horse
 	vore_active = 1
 	vore_icons = SA_ICON_LIVING
 

@@ -30,7 +30,6 @@
 	desc = "Lucky suit jacket."
 	icon_state = "checkered_jacket"
 
-
 /obj/item/clothing/accessory/chaps
 	name = "brown chaps"
 	desc = "A pair of loose, brown leather chaps."
@@ -51,7 +50,7 @@
 	item_state = "classicponcho"
 	icon_override = 'icons/mob/ties.dmi'
 	var/fire_resist = T0C+100
-	allowed = list(/obj/item/weapon/tank/emergency/oxygen)
+	allowed = list(/obj/item/tank/emergency/oxygen)
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
@@ -62,6 +61,18 @@
 	sprite_sheets = list(
 		"Teshari" = 'icons/mob/species/seromi/suit.dmi'
 		)
+
+/obj/item/clothing/accessory/poncho/equipped() //Solution for race-specific sprites for an accessory which is also a suit. Suit icons break if you don't use icon override which then also overrides race-specific sprites.
+	..()
+	var/mob/living/carbon/human/H = loc
+	if(istype(H) && H.wear_suit == src)
+		if(H.species.name == "Teshari")
+			icon_override = 'icons/mob/species/seromi/suit.dmi'
+		else if(H.species.name == "Vox")
+			icon_override = 'icons/mob/species/vox/ties.dmi'
+		else
+			icon_override = 'icons/mob/ties.dmi'
+		update_clothing_icon()
 
 /obj/item/clothing/accessory/poncho/green
 	name = "green poncho"
@@ -164,8 +175,8 @@
 	item_state = "hoscloak"
 
 /obj/item/clothing/accessory/poncho/roles/cloak/captain
-	name = "colony director's cloak"
-	desc = "An elaborate cloak meant to be worn by the colony director."
+	name = "Facility Director's cloak"
+	desc = "An elaborate cloak meant to be worn by the Facility Director."
 	icon_state = "capcloak"
 	item_state = "capcloak"
 
@@ -217,6 +228,13 @@
 	icon_state = "medcloak"
 	item_state = "medcloak"
 
+
+/obj/item/clothing/accessory/poncho/roles/cloak/custom //A colorable cloak
+	name = "cloak"
+	desc = "A simple, bland cloak."
+	icon_state = "cloak"
+	item_state = "cloak"
+
 /obj/item/clothing/accessory/hawaii
 	name = "flower-pattern shirt"
 	desc = "You probably need some welder googles to look at this."
@@ -246,7 +264,7 @@
 	item_state = "vest"
 	icon_override = 'icons/mob/ties.dmi'
 	item_state_slots = list(slot_r_hand_str = "wcoat", slot_l_hand_str = "wcoat")
-	allowed = list(/obj/item/weapon/pen, /obj/item/weapon/paper, /obj/item/device/flashlight, /obj/item/weapon/tank/emergency/oxygen, /obj/item/weapon/storage/fancy/cigarettes, /obj/item/weapon/storage/box/matches, /obj/item/weapon/reagent_containers/food/drinks/flask)
+	allowed = list(/obj/item/pen, /obj/item/paper, /obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask)
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
@@ -342,3 +360,61 @@
 	name = "Christmas turtleneck"
 	desc = "A really cheesy holiday sweater, it actually kinda itches."
 	icon_state = "turtleneck_winterred"
+
+/obj/item/clothing/accessory/sweater/uglyxmas
+	name = "ugly Christmas sweater"
+	desc = "A gift that probably should've stayed in the back of the closet."
+	icon_state = "uglyxmas"
+
+/obj/item/clothing/accessory/sweater/flowersweater
+	name = "flowery sweater"
+	desc =  "An oversized and flowery pink sweater."
+	icon_state = "flowersweater"
+
+/obj/item/clothing/accessory/sweater/redneck
+	name = "red turtleneck"
+	desc = "A comfortable turtleneck in a dark red."
+	icon_state = "turtleneck_red"
+
+/obj/item/clothing/accessory/sweater/combat
+	name = "green combat sweater"
+	desc = "Look like an off duty soldier with this green sweater!"
+	icon_state = "combatsweater"
+
+/obj/item/clothing/accessory/sweater/combatblack
+	name = "black combat sweater"
+	desc = "Look like an off duty soldier with this black sweater!"
+	icon_state = "ubacblack"
+
+/obj/item/clothing/accessory/sweater/combatblue
+	name = "blue combat sweater"
+	desc = "Look like an off duty soldier with this bue sweater!"
+	icon_state = "ubacblue"
+
+/obj/item/clothing/accessory/sweater/syndi
+	name = "slim fit sweater"
+	desc = "A slim fit sweater! It seems robust."
+	icon_state = "syndicatesweater"
+//***
+// End of sweaters
+//***
+
+/obj/item/clothing/accessory/cowledvest
+	name = "cowled vest"
+	desc = "A body warmer for the 26th century."
+	icon_state = "cowled_vest"
+
+/obj/item/clothing/accessory/asymmetric
+	name = "blue asymmetrical jacket"
+	desc = "Insultingly avant-garde in prussian blue."
+	icon_state = "asym_blue"
+
+/obj/item/clothing/accessory/asymmetric/purple
+	name = "purple asymmetrical jacket"
+	desc = "Insultingly avant-garde in mauve."
+	icon_state = "asym_purple"
+
+/obj/item/clothing/accessory/asymmetric/green
+	name = "green asymmetrical jacket"
+	desc = "Insultingly avant-garde in aqua."
+	icon_state = "asym_green"

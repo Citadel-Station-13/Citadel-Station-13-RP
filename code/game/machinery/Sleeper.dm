@@ -6,10 +6,10 @@
 	anchored = 1 //About time someone fixed this.
 	density = 1 //VOREStation Edit - Big console
 	dir = 8
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 40
 	interact_offline = 1
-	circuit = /obj/item/weapon/circuitboard/sleeper_console
+	circuit = /obj/item/circuitboard/sleeper_console
 
 /obj/machinery/sleep_console/New()
 	..()
@@ -118,7 +118,7 @@
 			break
 	data["stasis"] = stasis_level_name
 
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
 		ui = new(user, src, ui_key, "sleeper.tmpl", "Sleeper UI", 600, 600, state = state)
 		ui.set_initial_data(data)
@@ -165,33 +165,33 @@
 	icon_state = "sleeper_0"
 	density = 1
 	anchored = 1
-	circuit = /obj/item/weapon/circuitboard/sleeper
+	circuit = /obj/item/circuitboard/sleeper
 	var/mob/living/carbon/human/occupant = null
 	var/list/available_chemicals = list()
 	var/list/base_chemicals = list("inaprovaline" = "Inaprovaline", "paracetamol" = "Paracetamol", "anti_toxin" = "Dylovene", "dexalin" = "Dexalin")
-	var/obj/item/weapon/reagent_containers/glass/beaker = null
+	var/obj/item/reagent_containers/glass/beaker = null
 	var/filtering = 0
 	var/pumping = 0
 	var/obj/machinery/sleep_console/console
 	var/stasis_level = 0 //Every 'this' life ticks are applied to the mob (when life_ticks%stasis_level == 1)
 	var/stasis_choices = list("Complete (1%)" = 100, "Deep (10%)" = 10, "Moderate (20%)" = 5, "Light (50%)" = 2, "None (100%)" = 0)
 
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 15
 	active_power_usage = 200 //builtin health analyzer, dialysis machine, injectors.
 
 /obj/machinery/sleeper/New()
 	..()
-	beaker = new /obj/item/weapon/reagent_containers/glass/beaker/large(src)
+	beaker = new /obj/item/reagent_containers/glass/beaker/large(src)
 	component_parts = list()
-	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
-	component_parts += new /obj/item/weapon/stock_parts/scanning_module(src)
-	component_parts += new /obj/item/weapon/reagent_containers/glass/beaker(src)
-	component_parts += new /obj/item/weapon/reagent_containers/glass/beaker(src)
-	component_parts += new /obj/item/weapon/reagent_containers/glass/beaker(src)
-	component_parts += new /obj/item/weapon/reagent_containers/syringe(src)
-	component_parts += new /obj/item/weapon/reagent_containers/syringe(src)
-	component_parts += new /obj/item/weapon/reagent_containers/syringe(src)
+	component_parts += new /obj/item/stock_parts/manipulator(src)
+	component_parts += new /obj/item/stock_parts/scanning_module(src)
+	component_parts += new /obj/item/reagent_containers/glass/beaker(src)
+	component_parts += new /obj/item/reagent_containers/glass/beaker(src)
+	component_parts += new /obj/item/reagent_containers/glass/beaker(src)
+	component_parts += new /obj/item/reagent_containers/syringe(src)
+	component_parts += new /obj/item/reagent_containers/syringe(src)
+	component_parts += new /obj/item/reagent_containers/syringe(src)
 	component_parts += new /obj/item/stack/material/glass/reinforced(src, 2)
 
 	RefreshParts()
@@ -210,8 +210,8 @@
 	idle_power_usage = initial(idle_power_usage)
 	active_power_usage = initial(active_power_usage)
 
-	for(var/obj/item/weapon/stock_parts/P in component_parts)
-		if(istype(P, /obj/item/weapon/stock_parts/capacitor))
+	for(var/obj/item/stock_parts/P in component_parts)
+		if(istype(P, /obj/item/stock_parts/capacitor))
 			cap_rating += P.rating
 
 	cap_rating = max(1, round(cap_rating / 2))
@@ -220,8 +220,8 @@
 	active_power_usage /= cap_rating
 
 	if(!limited)
-		for(var/obj/item/weapon/stock_parts/P in component_parts)
-			if(istype(P, /obj/item/weapon/stock_parts/manipulator))
+		for(var/obj/item/stock_parts/P in component_parts)
+			if(istype(P, /obj/item/stock_parts/manipulator))
 				man_rating += P.rating - 1
 
 		var/list/new_chemicals = list()
@@ -282,12 +282,12 @@
 
 /obj/machinery/sleeper/attackby(var/obj/item/I, var/mob/user)
 	add_fingerprint(user)
-	if(istype(I, /obj/item/weapon/grab))
-		var/obj/item/weapon/grab/G = I
+	if(istype(I, /obj/item/grab))
+		var/obj/item/grab/G = I
 		if(G.affecting)
 			go_in(G.affecting, user)
 		return
-	if(istype(I, /obj/item/weapon/reagent_containers/glass))
+	if(istype(I, /obj/item/reagent_containers/glass))
 		if(!beaker)
 			beaker = I
 			user.drop_item()
@@ -371,6 +371,9 @@
 	if(!ishuman(M))
 		to_chat(user, "<span class='warning'>\The [src] is not designed for that organism!</span>")
 		return
+	if(M.buckled)
+		to_chat(user, "<span class='warning'>[M == user? "You are" : "[M] is"] buckled to something!</span>")
+		return
 	if(M == user)
 		visible_message("\The [user] starts climbing into \the [src].")
 	else
@@ -380,12 +383,8 @@
 		if(occupant)
 			to_chat(user, "<span class='warning'>\The [src] is already occupied.</span>")
 			return
-		M.stop_pulling()
-		if(M.client)
-			M.client.perspective = EYE_PERSPECTIVE
-			M.client.eye = src
-		M.loc = src
-		update_use_power(2)
+		M.forceMove(src)
+		update_use_power(USE_POWER_ACTIVE)
 		occupant = M
 		update_icon()
 
@@ -405,7 +404,7 @@
 		if(A in component_parts)
 			continue
 		A.loc = src.loc
-	update_use_power(1)
+	update_use_power(USE_POWER_IDLE)
 	update_icon()
 	toggle_filter()
 	toggle_pump()

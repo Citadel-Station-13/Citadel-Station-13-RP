@@ -11,7 +11,7 @@
 	var/strength = 10 //How weakened targets are when flashed.
 	var/base_state = "mflash"
 	anchored = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	flags = PROXMOVE
 
@@ -34,7 +34,7 @@
 //		sd_SetLuminosity(0)
 
 //Don't want to render prison breaks impossible
-/obj/machinery/flasher/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/machinery/flasher/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wirecutter())
 		add_fingerprint(user)
 		disable = !disable
@@ -101,7 +101,7 @@
 		if((M.m_intent != "walk") && (anchored))
 			flash()
 
-/obj/machinery/flasher/portable/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/machinery/flasher/portable/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench())
 		add_fingerprint(user)
 		anchored = !anchored

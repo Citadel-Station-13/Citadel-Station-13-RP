@@ -17,22 +17,22 @@
 
 	light_x = 2
 	max_contents = 5
-	container_type = /obj/item/weapon/reagent_containers/cooking_container/oven
+	container_type = /obj/item/reagent_containers/cooking_container/oven
 
 	stat = POWEROFF	//Starts turned off
 
 	var/open = 1
 
 	output_options = list(
-		"Pizza" = /obj/item/weapon/reagent_containers/food/snacks/variable/pizza,
-		"Bread" = /obj/item/weapon/reagent_containers/food/snacks/variable/bread,
-		"Pie" = /obj/item/weapon/reagent_containers/food/snacks/variable/pie,
-		"Cake" = /obj/item/weapon/reagent_containers/food/snacks/variable/cake,
-		"Hot Pocket" = /obj/item/weapon/reagent_containers/food/snacks/variable/pocket,
-		"Kebab" = /obj/item/weapon/reagent_containers/food/snacks/variable/kebab,
-		"Waffles" = /obj/item/weapon/reagent_containers/food/snacks/variable/waffles,
-		"Cookie" = /obj/item/weapon/reagent_containers/food/snacks/variable/cookie,
-		"Donut" = /obj/item/weapon/reagent_containers/food/snacks/variable/donut
+		"Pizza" = /obj/item/reagent_containers/food/snacks/variable/pizza,
+		"Bread" = /obj/item/reagent_containers/food/snacks/variable/bread,
+		"Pie" = /obj/item/reagent_containers/food/snacks/variable/pie,
+		"Cake" = /obj/item/reagent_containers/food/snacks/variable/cake,
+		"Hot Pocket" = /obj/item/reagent_containers/food/snacks/variable/pocket,
+		"Kebab" = /obj/item/reagent_containers/food/snacks/variable/kebab,
+		"Waffles" = /obj/item/reagent_containers/food/snacks/variable/waffles,
+		"Cookie" = /obj/item/reagent_containers/food/snacks/variable/cookie,
+		"Donut" = /obj/item/reagent_containers/food/snacks/variable/donut
 	)
 
 
@@ -62,11 +62,11 @@
 		return
 
 	if (!usr.IsAdvancedToolUser())
-		usr << "You lack the dexterity to do that."
+		to_chat(usr, "You lack the dexterity to do that.")
 		return
 
 	if (!Adjacent(usr))
-		usr << "You can't reach the [src] from there, get closer!"
+		to_chat(usr, "You can't reach the [src] from there, get closer!")
 		return
 
 	if (open)
@@ -82,7 +82,7 @@
 
 /obj/machinery/appliance/cooker/oven/can_insert(var/obj/item/I, var/mob/user)
 	if (!open)
-		user << "<span class='warning'>You can't put anything in while the door is closed!</span>"
+		to_chat(user, "<span class='warning'>You can't put anything in while the door is closed!</span>")
 		return 0
 
 	else
@@ -100,7 +100,7 @@
 
 /obj/machinery/appliance/cooker/oven/can_remove_items(var/mob/user)
 	if (!open)
-		user << "<span class='warning'>You can't take anything out while the door is closed!</span>"
+		to_chat(user, "<span class='warning'>You can't take anything out while the door is closed!</span>")
 		return 0
 
 	else

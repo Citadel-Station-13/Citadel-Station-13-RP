@@ -23,7 +23,7 @@ datum/objective
 
 	proc/find_target()
 		var/list/possible_targets = list()
-		for(var/datum/mind/possible_target in ticker.minds)
+		for(var/datum/mind/possible_target in SSticker.minds)
 			if(possible_target != owner && ishuman(possible_target.current) && (possible_target.current.stat != 2))
 				possible_targets += possible_target
 		if(possible_targets.len > 0)
@@ -31,7 +31,7 @@ datum/objective
 
 
 	proc/find_target_by_role(role, role_type=0)//Option sets either to check assigned role or special role. Default to assigned.
-		for(var/datum/mind/possible_target in ticker.minds)
+		for(var/datum/mind/possible_target in SSticker.minds)
 			if((possible_target != owner) && ishuman(possible_target.current) && ((role_type ? possible_target.special_role : possible_target.assigned_role) == role) )
 				target = possible_target
 				break
@@ -130,7 +130,7 @@ datum/objective/anti_revolution/demote
 		..()
 		if(target && target.current)
 			var/datum/gender/T = gender_datums[target.current.get_visible_gender()]
-			explanation_text = "[target.current.real_name], the [target.assigned_role]  has been classified as harmful to [using_map.company_name]'s goals. Demote [T.him] to assistant."
+			explanation_text = "[target.current.real_name], the [target.assigned_role]  has been classified as harmful to [GLOB.using_map.company_name]'s goals. Demote [T.him] to assistant."
 		else
 			explanation_text = "Free Objective"
 		return target
@@ -139,16 +139,16 @@ datum/objective/anti_revolution/demote
 		..(role, role_type)
 		if(target && target.current)
 			var/datum/gender/T = gender_datums[target.current.get_visible_gender()]
-			explanation_text = "[target.current.real_name], the [!role_type ? target.assigned_role : target.special_role] has been classified as harmful to [using_map.company_name]'s goals. Demote [T.him] to assistant."
+			explanation_text = "[target.current.real_name], the [!role_type ? target.assigned_role : target.special_role] has been classified as harmful to [GLOB.using_map.company_name]'s goals. Demote [T.him] to assistant."
 		else
 			explanation_text = "Free Objective"
 		return target
 
 	check_completion()
 		if(target && target.current && istype(target,/mob/living/carbon/human))
-			var/obj/item/weapon/card/id/I = target.current:wear_id
-			if(istype(I, /obj/item/device/pda))
-				var/obj/item/device/pda/P = I
+			var/obj/item/card/id/I = target.current:wear_id
+			if(istype(I, /obj/item/pda))
+				var/obj/item/pda/P = I
 				I = P.id
 
 			if(!istype(I)) return 1
@@ -226,7 +226,7 @@ datum/objective/hijack
 	check_completion()
 		if(!owner.current || owner.current.stat)
 			return 0
-		if(!emergency_shuttle.returned())
+		if(!SSemergencyshuttle.returned())
 			return 0
 		if(issilicon(owner.current))
 			return 0
@@ -248,7 +248,7 @@ datum/objective/block
 	check_completion()
 		if(!istype(owner.current, /mob/living/silicon))
 			return 0
-		if(!emergency_shuttle.returned())
+		if(!SSemergencyshuttle.returned())
 			return 0
 		if(!owner.current)
 			return 0
@@ -266,7 +266,7 @@ datum/objective/silence
 	explanation_text = "Do not allow anyone to escape the station.  Only allow the shuttle to be called when everyone is dead and your story is the only one left."
 
 	check_completion()
-		if(!emergency_shuttle.returned())
+		if(!SSemergencyshuttle.returned())
 			return 0
 
 		for(var/mob/living/player in player_list)
@@ -291,7 +291,7 @@ datum/objective/escape
 			return 0
 		if(isbrain(owner.current))
 			return 0
-		if(!emergency_shuttle.returned())
+		if(!SSemergencyshuttle.returned())
 			return 0
 		if(!owner.current || owner.current.stat ==2)
 			return 0
@@ -427,34 +427,34 @@ datum/objective/steal
 	var/target_name
 
 	var/global/possible_items[] = list(
-		"the Colony Director's antique laser gun" = /obj/item/weapon/gun/energy/captain,
-		"a hand teleporter" = /obj/item/weapon/hand_tele,
-		"an RCD" = /obj/item/weapon/rcd,
-		"a jetpack" = /obj/item/weapon/tank/jetpack,
-		"a colony director's jumpsuit" = /obj/item/clothing/under/rank/captain,
-		"a functional AI" = /obj/item/device/aicard,
+		"the Facility Director's antique laser gun" = /obj/item/gun/energy/captain,
+		"a hand teleporter" = /obj/item/hand_tele,
+		"an RCD" = /obj/item/rcd,
+		"a jetpack" = /obj/item/tank/jetpack,
+		"a Facility Director's jumpsuit" = /obj/item/clothing/under/rank/captain,
+		"a functional AI" = /obj/item/aicard,
 		"a pair of magboots" = /obj/item/clothing/shoes/magboots,
 		"the station blueprints" = /obj/item/blueprints,
 		"a nasa voidsuit" = /obj/item/clothing/suit/space/void,
-		"28 moles of phoron (full tank)" = /obj/item/weapon/tank,
+		"28 moles of phoron (full tank)" = /obj/item/tank,
 		"a sample of slime extract" = /obj/item/slime_extract,
-		"a piece of corgi meat" = /obj/item/weapon/reagent_containers/food/snacks/meat/corgi,
+		"a piece of corgi meat" = /obj/item/reagent_containers/food/snacks/meat/corgi,
 		"a research director's jumpsuit" = /obj/item/clothing/under/rank/research_director,
 		"a chief engineer's jumpsuit" = /obj/item/clothing/under/rank/chief_engineer,
 		"a chief medical officer's jumpsuit" = /obj/item/clothing/under/rank/chief_medical_officer,
 		"a head of security's jumpsuit" = /obj/item/clothing/under/rank/head_of_security,
 		"a head of personnel's jumpsuit" = /obj/item/clothing/under/rank/head_of_personnel,
-		"the hypospray" = /obj/item/weapon/reagent_containers/hypospray/vial,
-		"the colony director's pinpointer" = /obj/item/weapon/pinpointer,
+		"the hypospray" = /obj/item/reagent_containers/hypospray/vial,
+		"the Facility Director's pinpointer" = /obj/item/pinpointer,
 		"an ablative armor vest" = /obj/item/clothing/suit/armor/laserproof,
 	)
 
 	var/global/possible_items_special[] = list(
-		/*"nuclear authentication disk" = /obj/item/weapon/disk/nuclear,*///Broken with the change to nuke disk making it respawn on z level change.
-		"nuclear gun" = /obj/item/weapon/gun/energy/gun/nuclear,
-		"diamond drill" = /obj/item/weapon/pickaxe/diamonddrill,
-		"bag of holding" = /obj/item/weapon/storage/backpack/holding,
-		"hyper-capacity cell" = /obj/item/weapon/cell/hyper,
+		/*"nuclear authentication disk" = /obj/item/disk/nuclear,*///Broken with the change to nuke disk making it respawn on z level change.
+		"nuclear gun" = /obj/item/gun/energy/gun/nuclear,
+		"diamond drill" = /obj/item/pickaxe/diamonddrill,
+		"bag of holding" = /obj/item/storage/backpack/holding,
+		"hyper-capacity cell" = /obj/item/cell/hyper,
 		"10 diamonds" = /obj/item/stack/material/diamond,
 		"50 gold bars" = /obj/item/stack/material/gold,
 		"25 refined uranium bars" = /obj/item/stack/material/uranium,
@@ -504,22 +504,22 @@ datum/objective/steal
 
 				for(var/obj/item/I in all_items) //Check for phoron tanks
 					if(istype(I, steal_target))
-						found_amount += (target_name=="28 moles of phoron (full tank)" ? (I:air_contents:gas["phoron"]) : (I:amount))
+						found_amount += (target_name=="28 moles of phoron (full tank)" ? (I:air_contents:gas[/datum/gas/phoron]) : (I:amount))
 				return found_amount>=target_amount
 
 			if("50 coins (in bag)")
-				var/obj/item/weapon/moneybag/B = locate() in all_items
+				var/obj/item/moneybag/B = locate() in all_items
 
 				if(B)
 					var/target = text2num(target_name)
 					var/found_amount = 0.0
-					for(var/obj/item/weapon/coin/C in B)
+					for(var/obj/item/coin/C in B)
 						found_amount++
 					return found_amount>=target
 
 			if("a functional AI")
 
-				for(var/obj/item/device/aicard/C in all_items) //Check for ai card
+				for(var/obj/item/aicard/C in all_items) //Check for ai card
 					for(var/mob/living/silicon/ai/M in C)
 						if(istype(M, /mob/living/silicon/ai) && M.stat != 2) //See if any AI's are alive inside that card.
 							return 1
@@ -561,7 +561,7 @@ datum/objective/download
 			return 0
 
 		var/current_amount
-		var/obj/item/weapon/rig/S
+		var/obj/item/rig/S
 		if(istype(owner.current,/mob/living/carbon/human))
 			var/mob/living/carbon/human/H = owner.current
 			S = H.back
@@ -612,13 +612,13 @@ datum/objective/capture
 /datum/objective/absorb
 	proc/gen_amount_goal(var/lowbound = 4, var/highbound = 6)
 		target_amount = rand (lowbound,highbound)
-		if (ticker)
+		if (SSticker)
 			var/n_p = 1 //autowin
-			if (ticker.current_state == GAME_STATE_SETTING_UP)
+			if (SSticker.current_state == GAME_STATE_SETTING_UP)
 				for(var/mob/new_player/P in player_list)
 					if(P.client && P.ready && P.mind!=owner)
 						n_p ++
-			else if (ticker.current_state == GAME_STATE_PLAYING)
+			else if (SSticker.current_state == GAME_STATE_PLAYING)
 				for(var/mob/living/carbon/human/P in player_list)
 					if(P.client && !(P.mind.changeling) && P.mind!=owner)
 						n_p ++
@@ -644,7 +644,7 @@ datum/objective/heist/kidnap
 		var/list/possible_targets = list()
 		var/list/priority_targets = list()
 
-		for(var/datum/mind/possible_target in ticker.minds)
+		for(var/datum/mind/possible_target in SSticker.minds)
 			if(possible_target != owner && ishuman(possible_target.current) && (possible_target.current.stat != 2) && (!possible_target.special_role))
 				possible_targets += possible_target
 				for(var/role in roles)
@@ -699,19 +699,19 @@ datum/objective/heist/loot
 				target_amount = 1
 				loot = "a nuclear bomb"
 			if(5)
-				target = /obj/item/weapon/gun
+				target = /obj/item/gun
 				target_amount = 6
 				loot = "six guns"
 			if(6)
-				target = /obj/item/weapon/gun/energy
+				target = /obj/item/gun/energy
 				target_amount = 4
 				loot = "four energy guns"
 			if(7)
-				target = /obj/item/weapon/gun/energy/laser
+				target = /obj/item/gun/energy/laser
 				target_amount = 2
 				loot = "two laser guns"
 			if(8)
-				target = /obj/item/weapon/gun/energy/ionrifle
+				target = /obj/item/gun/energy/ionrifle
 				target_amount = 1
 				loot = "an ion gun"
 
@@ -808,7 +808,7 @@ datum/objective/heist/salvage
 
 /datum/objective/borer_survive/check_completion()
 	if(owner)
-		var/mob/living/simple_animal/borer/B = owner
+		var/mob/living/simple_mob/animal/borer/B = owner
 		if(istype(B) && B.stat < 2 && B.host && B.host.stat < 2) return 1
 	return 0
 
@@ -817,7 +817,7 @@ datum/objective/heist/salvage
 
 /datum/objective/borer_reproduce/check_completion()
 	if(owner && owner.current)
-		var/mob/living/simple_animal/borer/B = owner.current
+		var/mob/living/simple_mob/animal/borer/B = owner.current
 		if(istype(B) && B.has_reproduced) return 1
 	return 0
 

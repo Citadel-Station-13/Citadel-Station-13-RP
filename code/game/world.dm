@@ -6,27 +6,33 @@
 	2. The map is initialized, and map objects are created.
 	3. world/New() runs, creating the process scheduler (and the old master controller) and spawning their setup.
 	4. processScheduler/setup() runs, creating all the processes. game_controller/setup() runs, calling initialize() on all movable atoms in the world.
-	5. The gameticker is created.
+	5. The gameSSticker is created.
 
 */
+
+GLOBAL_VAR_INIT(tgs_initialized, FALSE)
 
 GLOBAL_VAR(topic_status_lastcache)
 GLOBAL_LIST(topic_status_cache)
 
 /world/New()
+	var/extools = world.GetConfig("env", "EXTOOLS_DLL") || (world.system_type == MS_WINDOWS ? "./byond-extools.dll" : "./libbyond-extools.so")
+	if (fexists(extools))
+		call(extools, "maptick_initialize")()
 	enable_debugger()
+
+	make_datum_reference_lists()
 
 	log_world("World loaded at [TIME_STAMP("hh:mm:ss", FALSE)]!")
 
 	SetupExternalRsc()
 
 	var/tempfile = "data/logs/config_error.[GUID()].log"	//temporary file used to record errors with loading config, moved to log directory once logging is set
-	GLOB.config_error_log = GLOB.world_href_log = GLOB.world_runtime_log = GLOB.world_attack_log = GLOB.world_game_log = tempfile
-
-
-	TgsNew(minimum_required_security_level = TGS_SECURITY_TRUSTED)
+	GLOB.config_error_log = GLOB.world_href_log = GLOB.world_runtime_log = GLOB.world_map_error_log = GLOB.world_attack_log = GLOB.world_game_log = tempfile
 
 	GLOB.revdata = new
+
+	InitTgs()
 
 	config.Load(params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])
 
@@ -72,8 +78,8 @@ GLOBAL_LIST(topic_status_cache)
 	load_map_templates()
 
 	if(config_legacy.generate_map)
-		if(using_map.perform_map_generation())
-			using_map.refresh_mining_turfs()
+		if(GLOB.using_map.perform_map_generation())
+			GLOB.using_map.refresh_mining_turfs()
 
 	// Create frame types.
 	populate_frame_types()
@@ -87,17 +93,10 @@ GLOBAL_LIST(topic_status_cache)
 	//Must be done now, otherwise ZAS zones and lighting overlays need to be recreated.
 	createRandomZlevel()
 
-	processScheduler = new
-	master_controller = new /datum/controller/game_controller()
-
-	processScheduler.deferSetupFor(/datum/controller/process/ticker)
-	processScheduler.setup()
-
 	Master.Initialize(10, FALSE)
 
-	spawn(1)
-		master_controller.setup()
 #if UNIT_TEST
+	spawn(1)
 		initialize_unit_tests()
 #endif
 
@@ -109,9 +108,18 @@ GLOBAL_LIST(topic_status_cache)
 
 	return
 
+/world/proc/InitTgs()
+	TgsNew(new /datum/tgs_event_handler/impl, TGS_SECURITY_TRUSTED)
+	GLOB.revdata.load_tgs_info()
+#ifdef USE_CUSTOM_ERROR_HANDLER
+	if (TgsAvailable())
+		world.log = file("[GLOB.log_directory]/dd.log") //not all runtimes trigger world/Error, so this is the only way to ensure we can see all of them.
+#endif
+	GLOB.tgs_initialized = TRUE
+
 /world/proc/SetupExternalRsc()
 #if (PRELOAD_RSC == 0)
-	GLOB.external_rsc_urls = world.file2list("[global.config.directory]/external_rsc_urls.txt","\n")
+	GLOB.external_rsc_urls = world.file2list("[global.config_legacy.directory]/external_rsc_urls.txt","\n")
 	var/i=1
 	while(i<=GLOB.external_rsc_urls.len)
 		if(GLOB.external_rsc_urls[i])
@@ -146,6 +154,7 @@ GLOBAL_LIST(topic_status_cache)
 	GLOB.world_attack_log = "[GLOB.log_directory]/attack.log"
 	GLOB.world_href_log = "[GLOB.log_directory]/hrefs.log"
 	GLOB.world_qdel_log = "[GLOB.log_directory]/qdel.log"
+	GLOB.world_map_error_log = "[GLOB.log_directory]/map_errors.log"
 	GLOB.world_runtime_log = "[GLOB.log_directory]/runtime.log"
 	GLOB.subsystem_log = "[GLOB.log_directory]/subsystem.log"
 
@@ -153,6 +162,7 @@ GLOBAL_LIST(topic_status_cache)
 	start_log(GLOB.world_attack_log)
 	start_log(GLOB.world_href_log)
 	start_log(GLOB.world_qdel_log)
+	start_log(GLOB.world_map_error_log)
 	start_log(GLOB.world_runtime_log)
 	start_log(GLOB.subsystem_log)
 
@@ -207,7 +217,6 @@ GLOBAL_LIST(topic_status_cache)
 	else
 		to_chat(world, "<span class='boldannounce'>Rebooting world...</span>")
 		//POLARIS START
-		processScheduler.stop()
 		if(blackbox)
 			blackbox.save_all_data_to_sql()
 		//END
@@ -292,7 +301,7 @@ GLOBAL_LIST(topic_status_cache)
 
 				var/ckey = copytext(line, 1, length(line)+1)
 				var/datum/admins/D = new /datum/admins(title, rights, ckey)
-				D.associate(directory[ckey])
+				D.associate(GLOB.directory[ckey])
 
 /world/proc/load_mentors()
 	if(config_legacy.admin_legacy_system)
@@ -312,7 +321,7 @@ GLOBAL_LIST(topic_status_cache)
 
 				var/ckey = copytext(line, 1, length(line)+1)
 				var/datum/admins/D = new /datum/admins(title, rights, ckey)
-				D.associate(directory[ckey])
+				D.associate(GLOB.directory[ckey])
 
 /world/proc/update_status()
 	var/s = ""
@@ -327,13 +336,13 @@ GLOBAL_LIST(topic_status_cache)
 	s += "Citadel"  //Replace this with something else. Or ever better, delete it and uncomment the game version.	CITADEL CHANGE - modifies hub entry to match main
 	s += "</a>"
 	s += ")\]" //CITADEL CHANGE - encloses the server title in brackets to make the hub entry fancier
-	s += "<br><small>Roleplay focused 18+ server featuring furries and more. Based on heavily modified VOREstation code.</small><br>" //CITADEL CHANGE - adds an educational fact to the hub entry!
+	s += "<br><small><a href='https://discord.gg/citadelstation'>Roleplay focused 18+ server with extensive species choices.</a></small></br>" //CITADEL CHANGE - adds an educational fact to the hub entry!
 
 	s += ")"
 
 	var/list/features = list()
 
-	if(ticker)
+	if(SSticker)
 		if(master_mode)
 			features += master_mode
 	else
@@ -377,11 +386,11 @@ var/failed_old_db_connections = 0
 
 /hook/startup/proc/connectDB()
 	if(!config_legacy.sql_enabled)
-		world.log << "SQL connection disabled in config_legacy."
+		log_world("SQL connection disabled in config_legacy.")
 	else if(!setup_database_connection())
-		world.log << "Your server failed to establish a connection with the feedback database."
+		log_world("Your server failed to establish a connection with the feedback database.")
 	else
-		world.log << "Feedback database connection established."
+		log_world("Feedback database connection established.")
 	return 1
 
 proc/setup_database_connection()
@@ -421,11 +430,11 @@ proc/establish_db_connection()
 
 /hook/startup/proc/connectOldDB()
 	if(!config_legacy.sql_enabled)
-		world.log << "SQL connection disabled in config_legacy."
+		log_world("SQL connection disabled in config_legacy.")
 	else if(!setup_old_database_connection())
-		world.log << "Your server failed to establish a connection with the SQL database."
+		log_world("Your server failed to establish a connection with the SQL database.")
 	else
-		world.log << "SQL database connection established."
+		log_world("SQL database connection established.")
 	return 1
 
 //These two procs are for the old database, while it's being phased out. See the tgstation.sql file in the SQL folder for more information.
@@ -478,3 +487,16 @@ proc/establish_old_db_connection()
 		hub_password = "kMZy3U5jJHSiBQjr"
 	else
 		hub_password = "SORRYNOPASSWORD"
+
+// Things to do when a new z-level was just made.
+/world/proc/max_z_changed()
+	if(!istype(GLOB.players_by_zlevel, /list))
+		GLOB.players_by_zlevel = new /list(world.maxz, 0)
+	while(GLOB.players_by_zlevel.len < world.maxz)
+		GLOB.players_by_zlevel.len++
+		GLOB.players_by_zlevel[GLOB.players_by_zlevel.len] = list()
+
+// Call this to make a new blank z-level, don't modify maxz directly.
+/world/proc/increment_max_z()
+	maxz++
+	max_z_changed()

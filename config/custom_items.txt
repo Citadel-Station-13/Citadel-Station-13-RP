@@ -19,7 +19,7 @@
 # {
 # ckey: zuhayr
 # character_name: Jane Doe
-# item_path: /obj/item/device/kit/paint
+# item_path: /obj/item/kit/paint
 # item_name: APLU customisation kit
 # item_desc: A customisation kit with all the parts needed to turn an APLU into a "Titan's Fist" model.
 # kit_name: APLU "Titan's Fist"
@@ -31,7 +31,7 @@
 # {
 # ckey: zuhayr
 # character_name: Jane Doe
-# item_path: /obj/item/device/kit/suit
+# item_path: /obj/item/kit/suit
 # item_name: salvage suit customisation kit
 # item_desc: A customisation kit with all the parts needed to convert a suit.
 # kit_name: salvage
@@ -44,13 +44,13 @@
 {
 ckey: 1r1s
 character_name: Zippy Shanks
-item_path: /obj/item/weapon/melee/fluff/holochain/Zippy
+item_path: /obj/item/melee/fluff/holochain/Zippy
 }
 
 {
 ckey: 1r1s
 character_name: Malady Blanche
-item_path: /obj/item/weapon/material/twohanded/fluff/riding_crop/malady
+item_path: /obj/item/material/twohanded/fluff/riding_crop/malady
 }
 
 # ######## A CKEYS
@@ -63,7 +63,7 @@ item_path: /obj/item/clothing/head/helmet/hos/fluff/lethe
 {
 ckey: argobargsoup
 character_name: Lynn Shady
-item_path: /obj/item/device/flashlight/pen/fluff/lynn
+item_path: /obj/item/flashlight/pen/fluff/lynn
 }
 
 {
@@ -85,14 +85,14 @@ item_desc: A medical jacket straight from Central Command.
 {
 ckey: arokha
 character_name: Aronai Kadigan
-item_path: /obj/item/weapon/card/id/centcom/station/fluff/aronai
+item_path: /obj/item/card/id/centcom/station/fluff/aronai
 }
 
 Weapon Box. Permit Expired
 {
 ckey: aerowing
 character_name: Sebastian Aji
-item_path: /obj/item/weapon/storage/box/fluff/sebastian_aji
+item_path: /obj/item/storage/box/fluff/sebastian_aji
 }
 
 # ######## B CKEYS
@@ -105,7 +105,7 @@ item_path: /obj/item/clothing/under/fluff/sakura_hokkaido_kimono
 {
 ckey: beyondmylife
 character_name: Cassandra Selone
-item_path: /obj/item/weapon/storage/box/fluff/cassandra
+item_path: /obj/item/storage/box/fluff/cassandra
 }
 
 {
@@ -123,7 +123,7 @@ item_path: /obj/item/clothing/gloves/fluff/kilano
 {
 ckey: beyondmylife
 character_name: Ne'tra Ky'ram
-item_path: /obj/item/weapon/storage/box/fluff/kilano
+item_path: /obj/item/storage/box/fluff/kilano
 req_access: 1
 }
 
@@ -137,13 +137,13 @@ item_desc: This soviet uniform has seen considerable use over the years, it's ra
 {
 ckey: bwoincognito
 character_name: Tasald Corlethian
-item_path: /obj/item/weapon/storage/box/fluff/tasald
+item_path: /obj/item/storage/box/fluff/tasald
 }
 
 {
 ckey: bwoincognito
 character_name: Octavious Ward
-item_path: /obj/item/weapon/storage/box/fluff/octavious
+item_path: /obj/item/storage/box/fluff/octavious
 }
 
 {
@@ -156,13 +156,13 @@ item_path: /obj/item/clothing/under/utility/sifguard/medical
 {
 ckey: cockatricexl
 character_name: James Holder
-item_path: /obj/item/weapon/disk/data
+item_path: /obj/item/disk/data
 }
 
 {
 ckey: cameron653
 character_name: Jasmine Lizden
-item_path: /obj/item/weapon/implanter/reagent_generator/jasmine
+item_path: /obj/item/implanter/reagent_generator/jasmine
 }
 
 {
@@ -181,7 +181,7 @@ item_path: /obj/item/clothing/head/fluff/pink_tiara
 {
 ckey: deepindigo
 character_name: Amina Dae-Kouri
-item_path: /obj/item/weapon/storage/bible/fluff/amina
+item_path: /obj/item/storage/bible/fluff/amina
 }
 
 {
@@ -194,7 +194,7 @@ item_path: /obj/item/clothing/accessory/medal/silver/security/fluff/dhael
 #{
 #ckey: dhaeleena
 #character_name: Dhaeleena M'iar
-#item_path: /obj/item/weapon/gun/projectile/revolver/mateba/fluff/dhael
+#item_path: /obj/item/gun/projectile/revolver/mateba/fluff/dhael
 #}
 #
 #{
@@ -212,19 +212,19 @@ item_path: /obj/item/clothing/accessory/medal/medical
 {
 ckey: dickfreedomjohnson
 character_name: Elliot Richards
-item_path: /obj/item/weapon/storage/belt/champion
+item_path: /obj/item/storage/belt/champion
 }
 
 {
 ckey: drakefrostpaw
 character_name: Drake Frostpaw
-item_path: /obj/item/weapon/storage/box/fluff/drake
+item_path: /obj/item/storage/box/fluff/drake
 }
 
 {
 ckey: draycu
 character_name: Theseus
-item_path: /obj/item/weapon/coin/diamond
+item_path: /obj/item/coin/diamond
 item_name: theseus' diamond coin
 item_desc: An engraved coin made of diamond. On the side for heads is printed the year 2541, along with the letter T. On the side for tails, the letter Y can be seen.
 }
@@ -232,7 +232,7 @@ item_desc: An engraved coin made of diamond. On the side for heads is printed th
 {
 ckey: draycu
 character_name: Schae Yonra
-item_path: /obj/item/weapon/storage/box/fluff/yonra
+item_path: /obj/item/storage/box/fluff/yonra
 }
 
 # ######## E CKEYS
@@ -247,7 +247,7 @@ item_path: /obj/item/weapon/storage/box/fluff/yonra
 #{
 #ckey: eekasqueak
 #character_name: Serkii Miishy
-#item_path: /obj/item/weapon/gun/energy/stunrevolver
+#item_path: /obj/item/gun/energy/stunrevolver
 #}
 
 {
@@ -280,7 +280,7 @@ item_path: /obj/item/clothing/accessory/medal/bronze_heart
 {
 ckey:Gowst
 character_name: Eldi Moljir
-item_path: /obj/item/weapon/implanter/reagent_generator/eldi
+item_path: /obj/item/implanter/reagent_generator/eldi
 }
 
 # ######## H CKEYS
@@ -288,25 +288,25 @@ item_path: /obj/item/weapon/implanter/reagent_generator/eldi
 {
 ckey: hottokeeki
 character_name: Belle Day
-item_path: /obj/item/weapon/gun/energy/sizegun
+item_path: /obj/item/gun/energy/sizegun
 }
 
 {
 ckey: hottokeeki
 character_name: Belle Day
-item_path: /obj/item/weapon/gun/energy/netgun
+item_path: /obj/item/gun/energy/netgun
 }
 
 {
 ckey: hottokeeki
 character_name: Belle Day
-item_path: /obj/item/weapon/implanter/reagent_generator/belle
+item_path: /obj/item/implanter/reagent_generator/belle
 }
 
 #{
 #ckey: hzdonut
 #character_name: Jesse Soemmer
-#item_path: /obj/item/weapon/gun/projectile/revolver/fluff/jesselemat
+#item_path: /obj/item/gun/projectile/revolver/fluff/jesselemat
 #}
 #
 #{
@@ -338,7 +338,7 @@ item_path: /obj/item/borg/upgrade/modkit/chassis_mod/kai
 {
 ckey: ivymoomoo
 character_name: Ivy Baladeva
-item_path: /obj/item/weapon/storage/backpack/messenger/sec/fluff/ivymoomoo
+item_path: /obj/item/storage/backpack/messenger/sec/fluff/ivymoomoo
 }
 
 # ######## J CKEYS
@@ -346,13 +346,13 @@ item_path: /obj/item/weapon/storage/backpack/messenger/sec/fluff/ivymoomoo
 {
 ckey: jacknoir413
 character_name: Mor Xaina
-item_path: /obj/item/weapon/storage/box/fluff/morxaina
+item_path: /obj/item/storage/box/fluff/morxaina
 }
 
 {
 ckey: jacknoir413
 character_name: Areax Third
-item_path: /obj/item/weapon/storage/backpack/fluff/stunstaff
+item_path: /obj/item/storage/backpack/fluff/stunstaff
 req_titles: Security Officer, Warden, Head of Security
 }
 
@@ -371,7 +371,7 @@ item_path: /obj/item/clothing/head/fluff/hairflowerpin
 {
 ckey: jemli
 character_name: Cirra Mayhem
-item_path: /obj/item/weapon/storage/box/fluff/cirra
+item_path: /obj/item/storage/box/fluff/cirra
 }
 
 {
@@ -383,7 +383,7 @@ item_path: /obj/item/clothing/head/fedora/fluff/jemli
 {
 ckey: jertheace
 character_name: Jeremiah Acacius
-item_path: /obj/item/weapon/gun/projectile/shotgun/pump/USDF/fluff/ace
+item_path: /obj/item/gun/projectile/shotgun/pump/USDF/fluff/ace
 req_access = 58
 }
 
@@ -415,13 +415,13 @@ item_path: /obj/item/clothing/suit/armor/tactical/officer/fluff/ace
 {
 ckey: joanrisu
 character_name: Joan Risu
-item_path: /obj/item/weapon/storage/backpack/dufflebag/sec/fluff/joanrisu
+item_path: /obj/item/storage/backpack/dufflebag/sec/fluff/joanrisu
 }
 
 {
 ckey: joanrisu
 character_name: Katarina Eine
-item_path: /obj/item/weapon/storage/backpack/dufflebag/sec/fluff/katarina
+item_path: /obj/item/storage/backpack/dufflebag/sec/fluff/katarina
 }
 
 {
@@ -433,7 +433,7 @@ item_path: /obj/item/clothing/head/fluff/threetail
 {
 ckey: joey4298
 character_name: Emoticon
-item_path: /obj/item/weapon/storage/box/fluff/emoticon
+item_path: /obj/item/storage/box/fluff/emoticon
 }
 
 {
@@ -457,13 +457,13 @@ item_path: /obj/item/clothing/accessory/medal/heroism
 {
 ckey: john.wayne9392
 character_name: Harmony Pretchl
-item_path: /obj/item/device/modkit_conversion/fluff/harmonysuit
+item_path: /obj/item/modkit_conversion/fluff/harmonysuit
 }
 
 {
 ckey: john.wayne9392
 character_name: Harmony Pretchl
-item_path: /obj/item/device/modkit_conversion/fluff/harmonyspace
+item_path: /obj/item/modkit_conversion/fluff/harmonyspace
 }
 
 # ######## K CKEYS
@@ -488,7 +488,7 @@ item_path: /obj/item/clothing/head/fluff/ketrai
 {
 ckey: kiraalitruss
 character_name: Amaya Rahl
-item_path: /obj/item/weapon/card/id/fluff/amaya
+item_path: /obj/item/card/id/fluff/amaya
 }
 
 {
@@ -518,13 +518,13 @@ item_path: /obj/item/clothing/under/fluff/taiga
 #{
 #ckey: kligor
 #character_name: Andy Gettemy
-#item_path: /obj/item/device/pda_mod/fluff/kligor
+#item_path: /obj/item/pda_mod/fluff/kligor
 #}
 
 {
 ckey: konabird
 character_name: Rischi
-item_path: /obj/item/weapon/implanter/reagent_generator/rischi
+item_path: /obj/item/implanter/reagent_generator/rischi
 }
 
 {
@@ -539,26 +539,26 @@ item_path: /obj/item/clothing/accessory/medal/nobel_science/fluff/ashley
 #{
 #ckey: luminescentring
 #character_name: Briana Moore
-#item_path: /obj/item/weapon/storage/box/fluff/briana_moore
+#item_path: /obj/item/storage/box/fluff/briana_moore
 #}
 
 {
 ckey: luminescentring
 character_name: Briana Moore
-item_path: /obj/item/weapon/storage/backpack/messenger/black/fluff/briana
+item_path: /obj/item/storage/backpack/messenger/black/fluff/briana
 }
 
 {
 ckey: Lycanthorph
 character_name: Savannah Dixon
-item_path: /obj/item/weapon/implanter/reagent_generator/savannah
+item_path: /obj/item/implanter/reagent_generator/savannah
 }
 
 # ######## M CKEYS
 {
 ckey: mewchild
 character_name: Phi Vietsi
-item_path: /obj/item/weapon/storage/box/fluff/vietsi
+item_path: /obj/item/storage/box/fluff/vietsi
 }
 
 {
@@ -583,7 +583,7 @@ item_path: /obj/item/clothing/head/fluff/molenar2
 #{
 #ckey: molenar
 #character_name: Kari Akiren
-#item_path: /obj/item/weapon/gun/projectile/shotgun/pump/rifle/fluff/kari_akiren
+#item_path: /obj/item/gun/projectile/shotgun/pump/rifle/fluff/kari_akiren
 #}
 #
 #{
@@ -595,7 +595,7 @@ item_path: /obj/item/clothing/head/fluff/molenar2
 {
 ckey: myryan
 character_name: Myryan Karnage-Cunningham
-item_path: /obj/item/weapon/storage/belt/utility/fluff/vulpine
+item_path: /obj/item/storage/belt/utility/fluff/vulpine
 }
 
 {
@@ -641,7 +641,7 @@ item_path: /obj/item/clothing/accessory/sweater/fluff/annie
 {
 ckey: orbisa
 character_name: Richard D'angelo
-item_path: /obj/item/weapon/melee/fluff/holochain
+item_path: /obj/item/melee/fluff/holochain
 }
 
 # ######## P CKEYS
@@ -655,7 +655,7 @@ item_path: /obj/item/clothing/accessory/permit/gun/fluff/sorrel_cavalet
 {
 ckey: pawoverlord
 character_name: Sorrel Cavalet
-item_path: /obj/item/weapon/gun/projectile/colt
+item_path: /obj/item/gun/projectile/colt
 item_desc: "A cheap Martian knock-off of a Colt M1911. It has the word 'Cavalet' etched on the side. Uses .45 rounds."
 }
 
@@ -668,12 +668,12 @@ item_path: /obj/item/clothing/accessory/medal/silver/unity
 {
 ckey: pontifexminimus
 character_name: Lucius Null
-item_path: /obj/item/weapon/fluff/dragor_dot
+item_path: /obj/item/fluff/dragor_dot
 }
 {
 ckey: pontifexminimus
 character_name: Lucia Null
-item_path: /obj/item/weapon/fluff/dragor_dot
+item_path: /obj/item/fluff/dragor_dot
 }
 
 # ######## Q CKEYS
@@ -690,7 +690,7 @@ item_path: /obj/item/weapon/fluff/dragor_dot
 #{
 #ckey: Razerwing
 #character_name: Archer Maximus
-#item_path: /obj/item/weapon/gun/projectile/colt/fluff/archercolt
+#item_path: /obj/item/gun/projectile/colt/fluff/archercolt
 #}
 
 # ######## S CKEYS
@@ -727,7 +727,7 @@ item_path: /obj/item/clothing/under/rank/security/fluff/formalsec
 {
 ckey: scree
 character_name: Scree
-item_path: /obj/item/device/modkit_conversion/fluff/screekit
+item_path: /obj/item/modkit_conversion/fluff/screekit
 }
 
 {
@@ -759,14 +759,14 @@ item_path: /obj/item/clothing/glasses/sunglasses/fluff/alfonso
 #{
 #ckey: silencedmp5a5
 #character_name: Serdykov Antoz
-#item_path: /obj/item/weapon/storage/box/fluff/serdykov_antoz
+#item_path: /obj/item/storage/box/fluff/serdykov_antoz
 #req_access = 1
 #}
 
 {
 ckey: silencedmp5a5
 character_name: NT-HASD #556
-item_path: /obj/item/device/modkit_conversion/hasd
+item_path: /obj/item/modkit_conversion/hasd
 req_access = 1
 }
 
@@ -779,7 +779,7 @@ item_path: /obj/item/clothing/under/sexyclown
 {
 ckey: silvertalismen
 character_name: Evian
-item_path: /obj/item/weapon/implanter/reagent_generator/evian
+item_path: /obj/item/implanter/reagent_generator/evian
 }
 
 {
@@ -791,25 +791,25 @@ item_path: /obj/item/clothing/mask/gas/sexyclown
 {
 ckey: silvertalismen
 character_name: Tasy Ruffles
-item_path: /obj/item/device/pda/clown
+item_path: /obj/item/pda/clown
 }
 
 {
 ckey: Swat43
 character_name: Fortune Bloise
-item_path: /obj/item/weapon/storage/backpack/satchel/fluff/swat43bag
+item_path: /obj/item/storage/backpack/satchel/fluff/swat43bag
 }
 
 {
 ckey: stobarico
 character_name: Alexis Bloise
-item_path: /obj/item/weapon/cane/wand
+item_path: /obj/item/cane/wand
 }
 
 {
 ckey: SpoopyLizz
 character_name: Roiz Lizden
-item_path: /obj/item/weapon/implanter/reagent_generator/roiz
+item_path: /obj/item/implanter/reagent_generator/roiz
 }
 
 {
@@ -840,7 +840,7 @@ item_path: /obj/item/clothing/accessory/medal/silver/unity
 {
 ckey: techtypes
 character_name: Lasshseeki Korss
-item_path: /obj/item/weapon/implant/language/eal
+item_path: /obj/item/implant/language/eal
 }
 
 {
@@ -858,7 +858,7 @@ item_path: /obj/item/clothing/head/fluff/runac
 {
 ckey: tabiranth
 character_name: Ascian
-item_path: /obj/item/weapon/grenade/spawnergrenade/spirit
+item_path: /obj/item/grenade/spawnergrenade/spirit
 }
 
 # ######## U CKEYS
@@ -871,7 +871,7 @@ item_path: /obj/item/clothing/glasses/fluff/science_proper
 {
 ckey: verkister
 character_name: Cameron Eggbert
-item_path: /obj/item/weapon/disk/limb/eggnerdltd
+item_path: /obj/item/disk/limb/eggnerdltd
 }
 {
 ckey: verkister
@@ -886,7 +886,7 @@ item_path: /obj/item/clothing/suit/storage/hazardvest/fluff/verin
 {
 ckey: vorrarkul
 character_name: Lucina Dakarim
-item_path: /obj/item/device/pda/heads/cmo/fluff/lucinapda
+item_path: /obj/item/pda/heads/cmo/fluff/lucinapda
 }
 
 {
@@ -916,7 +916,7 @@ item_path: /obj/item/clothing/suit/chococoat
 {
 ckey: vorrarkul
 character_name: Theodora Lindt
-item_path: /obj/item/weapon/implanter/reagent_generator/vorrarkul
+item_path: /obj/item/implanter/reagent_generator/vorrarkul
 }
 
 {
@@ -947,7 +947,7 @@ item_path: /obj/item/clothing/mask/gas/sexymime
 #{
 #ckey: warbrand2
 #character_name: Brandy draca
-#item_path: /obj/item/device/pda_mod/fluff/warbrand2
+#item_path: /obj/item/pda_mod/fluff/warbrand2
 #}
 
 {
@@ -971,19 +971,19 @@ item_path: /obj/item/clothing/glasses/omnihud/med/fluff/wickedtemphud
 {
 ckey: wickedtemp
 character_name: Chakat Tempest Venesare
-item_path: /obj/item/weapon/reagent_containers/hypospray/vial/tempest
+item_path: /obj/item/reagent_containers/hypospray/vial/tempest
 }
 
 {
 ckey: wickedtemp
 character_name: Chakat Tempest Venesare
-item_path: /obj/item/weapon/storage/backpack/saddlebag/tempest
+item_path: /obj/item/storage/backpack/saddlebag/tempest
 }
 
 {
 ckey: wickedtemp
 character_name: Chakat Tempest Venesare
-item_path: /obj/item/weapon/implanter/reagent_generator/tempest
+item_path: /obj/item/implanter/reagent_generator/tempest
 }
 
 # ######## X CKEYS
@@ -991,13 +991,13 @@ item_path: /obj/item/weapon/implanter/reagent_generator/tempest
 {
 ckey: Xsdew
 character_name: Penelope Allen
-item_path: /obj/item/weapon/storage/box/fluff/penelope
+item_path: /obj/item/storage/box/fluff/penelope
 }
 
 {
 ckey: Xennith
 character_name: Amy Lessen
-item_path: /obj/item/weapon/card/id/fluff/xennith
+item_path: /obj/item/card/id/fluff/xennith
 }
 
 {
@@ -1011,7 +1011,7 @@ item_path: /obj/item/clothing/accessory/medal/silver/unity
 {
 ckey: zekesturm
 character_name: Sarah Arachi Lacecraft
-item_path: /obj/item/device/modkit_single/fluff/zekechimera
+item_path: /obj/item/modkit_single/fluff/zekechimera
 }
 
 {
@@ -1029,5 +1029,5 @@ item_path: /obj/item/clothing/head/fluff/zao
 {
 ckey: zodiacshadow
 character_name: Nehi Maximus
-item_path: /obj/item/device/radio/headset/fluff/zodiacshadow
+item_path: /obj/item/radio/headset/fluff/zodiacshadow
 }

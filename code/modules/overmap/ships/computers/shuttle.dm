@@ -12,28 +12,28 @@
 	. = ..()
 	home = map_sectors["[z]"]
 	shuttle_tag = "[shuttle_tag]-[z]"
-	if(!shuttle_controller.shuttles[shuttle_tag])
+	if(!SSshuttle.shuttles[shuttle_tag])
 		var/datum/shuttle/ferry/shuttle = new()
 		shuttle.warmup_time = 10
 		shuttle.area_station = locate(landing_type)
 		shuttle.area_offsite = shuttle.area_station
-		shuttle_controller.shuttles[shuttle_tag] = shuttle
-		shuttle_controller.process_shuttles += shuttle
+		SSshuttle.shuttles[shuttle_tag] = shuttle
+		SSshuttle.process_shuttles += shuttle
 		testing("Exploration shuttle '[shuttle_tag]' at z-level [z] successfully added.")
 
 //Sets destination to new sector. Can be null.
 /obj/machinery/computer/shuttle_control/explore/proc/update_destination(var/obj/effect/map/D)
 	destination = D
-	if(destination && shuttle_controller.shuttles[shuttle_tag])
-		var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_tag]
+	if(destination && SSshuttle.shuttles[shuttle_tag])
+		var/datum/shuttle/ferry/shuttle = SSshuttle.shuttles[shuttle_tag]
 		shuttle.area_offsite = destination.shuttle_landing
 		testing("Shuttle controller [shuttle_tag] now sends shuttle to [destination]")
-		shuttle_controller.shuttles[shuttle_tag] = shuttle
+		SSshuttle.shuttles[shuttle_tag] = shuttle
 
 //Gets all sectors with landing zones in shuttle's range
 /obj/machinery/computer/shuttle_control/explore/proc/get_possible_destinations()
 	var/list/res = list()
-	var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_tag]
+	var/datum/shuttle/ferry/shuttle = SSshuttle.shuttles[shuttle_tag]
 	for (var/obj/effect/map/S in orange(shuttle.range, home))
 		if(S.shuttle_landing)
 			res += S
@@ -41,12 +41,12 @@
 
 //Checks if current destination is still reachable
 /obj/machinery/computer/shuttle_control/explore/proc/check_destination()
-	var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_tag]
+	var/datum/shuttle/ferry/shuttle = SSshuttle.shuttles[shuttle_tag]
 	return shuttle && destination && get_dist(home, destination) <= shuttle.range
 
 /obj/machinery/computer/shuttle_control/explore/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/data[0]
-	var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_tag]
+	var/datum/shuttle/ferry/shuttle = SSshuttle.shuttles[shuttle_tag]
 	if (!istype(shuttle))
 		return
 
@@ -103,7 +103,7 @@
 		"can_force" = can_go && shuttle.can_force(),
 	)
 
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 
 	if (!ui)
 		ui = new(user, src, ui_key, "shuttle_control_console_exploration.tmpl", "[shuttle_tag] Shuttle Control", 470, 310)
@@ -118,7 +118,7 @@
 	usr.set_machine(src)
 	src.add_fingerprint(usr)
 
-	var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_tag]
+	var/datum/shuttle/ferry/shuttle = SSshuttle.shuttles[shuttle_tag]
 	if (!istype(shuttle))
 		return
 

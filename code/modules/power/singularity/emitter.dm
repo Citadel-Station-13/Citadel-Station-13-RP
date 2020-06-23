@@ -10,7 +10,7 @@
 	req_access = list(access_engine_equip)
 	var/id = null
 
-	use_power = 0	//uses powernet power, not APC power
+	use_power = USE_POWER_OFF	//uses powernet power, not APC power
 	active_power_usage = 30000	//30 kW laser. I guess that means 30 kJ per shot.
 
 	var/active = 0
@@ -30,15 +30,15 @@
 	var/integrity = 80
 
 
-/obj/machinery/power/emitter/verb/rotate()
-	set name = "Rotate"
+/obj/machinery/power/emitter/verb/rotate_clockwise()
+	set name = "Rotate Emitter Clockwise"
 	set category = "Object"
 	set src in oview(1)
 
 	if (src.anchored || usr:stat)
-		usr << "It is fastened to the floor!"
+		to_chat(usr, "It is fastened to the floor!")
 		return 0
-	src.setDir(turn(src.dir, 90))
+	src.setDir(turn(src.dir, 270))
 	return 1
 
 /obj/machinery/power/emitter/Initialize()
@@ -136,13 +136,14 @@
 
 		playsound(src.loc, 'sound/weapons/emitter.ogg', 25, 1)
 		if(prob(35))
-			var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 			s.set_up(5, 1, src)
 			s.start()
 
 		var/obj/item/projectile/beam/emitter/A = get_emitter_beam()
 		A.damage = round(power_per_shot/EMITTER_DAMAGE_POWER_TRANSFER)
-		A.launch( get_step(src.loc, src.dir) )
+		A.firer = src
+		A.fire(dir2angle(dir))
 
 /obj/machinery/power/emitter/attackby(obj/item/W, mob/user)
 
@@ -170,8 +171,8 @@
 				to_chat(user, "<span class='warning'>\The [src] needs to be unwelded from the floor.</span>")
 		return
 
-	if(istype(W, /obj/item/weapon/weldingtool))
-		var/obj/item/weapon/weldingtool/WT = W
+	if(istype(W, /obj/item/weldingtool))
+		var/obj/item/weldingtool/WT = W
 		if(active)
 			to_chat(user, "Turn off [src] first.")
 			return
@@ -225,7 +226,7 @@
 				to_chat(user, "<span class='warning'>You don't have enough sheets to repair this! You need at least [amt] sheets.</span>")
 				return
 
-	if(istype(W, /obj/item/weapon/card/id) || istype(W, /obj/item/device/pda))
+	if(istype(W, /obj/item/card/id) || istype(W, /obj/item/pda))
 		if(emagged)
 			to_chat(user, "<span class='warning'>The lock seems to be broken.</span>")
 			return

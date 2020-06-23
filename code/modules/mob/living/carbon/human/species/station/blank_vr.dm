@@ -19,12 +19,14 @@
 	blurb = "This is a custom species where you can assign various species traits to them as you wish, to \
 	create a (hopefully) balanced species. You will see the options to customize them on the VORE tab once \
 	you select and set this species as your species. Please look at the VORE tab if you select this species."
+	catalogue_data = list(/datum/category_item/catalogue/fauna/custom_species)
 
 	name_language = null // Use the first-name last-name generator rather than a language scrambler
 	min_age = 18
 	max_age = 200
 	health_hud_intensity = 2
 	num_alternate_languages = 3
+	assisted_langs = list(LANGUAGE_EAL, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/tie_hair
 		)
@@ -119,15 +121,15 @@
 	/* Example, from Vox:
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/breath(H), slot_wear_mask)
 	if(H.backbag == 1)
-		H.equip_to_slot_or_del(new /obj/item/weapon/tank/vox(H), slot_back)
-		H.equip_to_slot_or_del(new /obj/item/weapon/storage/box/vox(H), slot_r_hand)
+		H.equip_to_slot_or_del(new /obj/item/tank/vox(H), slot_back)
+		H.equip_to_slot_or_del(new /obj/item/storage/box/vox(H), slot_r_hand)
 		H.internal = H.back
 	else
-		H.equip_to_slot_or_del(new /obj/item/weapon/tank/vox(H), slot_r_hand)
-		H.equip_to_slot_or_del(new /obj/item/weapon/storage/box/vox(H.back), slot_in_backpack)
+		H.equip_to_slot_or_del(new /obj/item/tank/vox(H), slot_r_hand)
+		H.equip_to_slot_or_del(new /obj/item/storage/box/vox(H.back), slot_in_backpack)
 		H.internal = H.r_hand
-	H.internal = locate(/obj/item/weapon/tank) in H.contents
-	if(istype(H.internal,/obj/item/weapon/tank) && H.internals)
+	H.internal = locate(/obj/item/tank) in H.contents
+	if(istype(H.internal,/obj/item/tank) && H.internals)
 		H.internals.icon_state = "internal1"
 	*/
 	return ..()

@@ -22,14 +22,14 @@
 /area/submap/crashedcontainmentshuttle)
 "ah" = (
 /obj/structure/grille,
-/obj/item/weapon/material/shard{
+/obj/item/material/shard{
 	icon_state = "medium"
 	},
 /turf/simulated/floor/plating,
 /area/submap/crashedcontainmentshuttle)
 "ai" = (
 /obj/structure/grille,
-/obj/item/weapon/material/shard{
+/obj/item/material/shard{
 	icon_state = "medium"
 	},
 /turf/simulated/mineral/floor/ignore_mapgen,
@@ -45,13 +45,13 @@
 /turf/simulated/floor/plating,
 /area/submap/crashedcontainmentshuttle)
 "al" = (
-/obj/item/weapon/material/shard{
+/obj/item/material/shard{
 	icon_state = "medium"
 	},
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/crashedcontainmentshuttle)
 "am" = (
-/obj/item/weapon/material/shard,
+/obj/item/material/shard,
 /turf/template_noop,
 /area/submap/crashedcontainmentshuttle)
 "an" = (
@@ -66,16 +66,16 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/crashedcontainmentshuttle)
 "aq" = (
-/obj/item/weapon/material/shard,
+/obj/item/material/shard,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/crashedcontainmentshuttle)
 "ar" = (
 /obj/structure/grille,
-/obj/item/weapon/material/shard,
+/obj/item/material/shard,
 /turf/simulated/floor/plating,
 /area/submap/crashedcontainmentshuttle)
 "as" = (
-/obj/item/weapon/material/shard,
+/obj/item/material/shard,
 /turf/simulated/floor/plating,
 /area/submap/crashedcontainmentshuttle)
 "at" = (
@@ -96,7 +96,7 @@
 /area/submap/crashedcontainmentshuttle)
 "ax" = (
 /obj/item/frame/mirror,
-/obj/item/weapon/material/shard{
+/obj/item/material/shard{
 	icon_state = "medium"
 	},
 /turf/simulated/shuttle/wall/dark,
@@ -114,10 +114,6 @@
 "aA" = (
 /obj/structure/closet/medical_wall,
 /turf/simulated/shuttle/wall/dark,
-/area/submap/crashedcontainmentshuttle)
-"aB" = (
-/obj/structure/largecrate/animal/crashedshuttle,
-/turf/simulated/shuttle/floor/red,
 /area/submap/crashedcontainmentshuttle)
 "aC" = (
 /turf/simulated/mineral/floor/ignore_mapgen,
@@ -159,19 +155,19 @@
 	density = 0;
 	icon_state = "brokengrille"
 	},
-/obj/item/weapon/material/shard{
+/obj/item/material/shard{
 	icon_state = "medium"
 	},
 /obj/item/stack/rods,
 /turf/simulated/floor/plating,
 /area/submap/crashedcontainmentshuttle)
 "aL" = (
-/obj/item/weapon/circuitboard/broken,
+/obj/item/circuitboard/broken,
 /turf/simulated/shuttle/floor/black,
 /area/submap/crashedcontainmentshuttle)
 "aM" = (
 /obj/structure/frame,
-/obj/item/weapon/circuitboard/broken,
+/obj/item/circuitboard/broken,
 /turf/simulated/shuttle/floor/black,
 /area/submap/crashedcontainmentshuttle)
 "aN" = (
@@ -181,7 +177,7 @@
 "aO" = (
 /obj/structure/closet/walllocker/emerglocker/north,
 /obj/structure/frame,
-/obj/item/weapon/circuitboard/broken,
+/obj/item/circuitboard/broken,
 /turf/simulated/shuttle/floor/white,
 /area/submap/crashedcontainmentshuttle)
 "aP" = (
@@ -230,7 +226,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/submap/crashedcontainmentshuttle)
 "aX" = (
-/obj/item/weapon/circuitboard/broken,
+/obj/item/circuitboard/broken,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/crashedcontainmentshuttle)
 "aY" = (
@@ -259,7 +255,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/crashedcontainmentshuttle)
 "be" = (
-/obj/item/weapon/material/knife/ritual,
+/obj/item/material/knife/ritual,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/crashedcontainmentshuttle)
 "bf" = (
@@ -278,13 +274,13 @@
 /turf/simulated/shuttle/floor/yellow,
 /area/submap/crashedcontainmentshuttle)
 "bi" = (
-/obj/item/weapon/circuitboard/broken,
+/obj/item/circuitboard/broken,
 /obj/effect/decal/remains/human,
-/obj/item/weapon/gun/energy/laser,
+/obj/item/gun/energy/laser,
 /turf/simulated/shuttle/floor/black,
 /area/submap/crashedcontainmentshuttle)
 "bj" = (
-/obj/item/device/gps/internal/poi,
+/obj/item/gps/internal/poi,
 /turf/simulated/shuttle/floor/red,
 /area/submap/crashedcontainmentshuttle)
 "bk" = (
@@ -314,7 +310,7 @@
 /turf/simulated/shuttle/floor/yellow,
 /area/submap/crashedcontainmentshuttle)
 "bq" = (
-/obj/item/weapon/circuitboard/broken,
+/obj/item/circuitboard/broken,
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
@@ -351,7 +347,7 @@
 /turf/simulated/shuttle/floor/red,
 /area/submap/crashedcontainmentshuttle)
 "bw" = (
-/obj/item/weapon/material/knife/ritual,
+/obj/item/material/knife/ritual,
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/shuttle/floor/red,
 /area/submap/crashedcontainmentshuttle)
@@ -443,7 +439,7 @@
 	},
 /obj/effect/gibspawner/generic,
 /obj/effect/decal/remains/human,
-/obj/item/weapon/card/id/syndicate{
+/obj/item/card/id/syndicate{
 	age = "\\42";
 	blood_type = "\\O+";
 	desc = "A strange ID card.";
@@ -458,7 +454,7 @@
 "bO" = (
 /obj/effect/decal/cleanable/liquid_fuel,
 /obj/effect/decal/remains/human,
-/obj/item/weapon/flame/lighter/random,
+/obj/item/flame/lighter/random,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/crashedcontainmentshuttle)
 
@@ -798,7 +794,7 @@ bI
 ad
 aS
 af
-aB
+af
 bL
 ac
 ad

@@ -24,13 +24,13 @@
 
 	paint_color = "#ffffff"
 
-	var/datum/effect/effect/system/ion_trail_follow/ion
+	var/datum/effect_system/ion_trail_follow/ion
 	var/kickstand = 1
 
 /obj/vehicle/bike/New()
 	..()
-	cell = new /obj/item/weapon/cell/high(src)
-	ion = new /datum/effect/effect/system/ion_trail_follow()
+	cell = new /obj/item/cell/high(src)
+	ion = new /datum/effect_system/ion_trail_follow()
 	ion.set_up(src)
 	turn_off()
 	icon_state = "[bike_icon]_off"
@@ -45,8 +45,8 @@
 	paint_color = rgb(rand(1,255),rand(1,255),rand(1,255))
 	..()
 
-/obj/vehicle/bike/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/device/multitool) && open)
+/obj/vehicle/bike/attackby(obj/item/W as obj, mob/user as mob)
+	if(istype(W, /obj/item/multitool) && open)
 		var/new_paint = input("Please select paint color.", "Paint Color", paint_color) as color|null
 		if(new_paint)
 			paint_color = new_paint
@@ -58,6 +58,9 @@
 	set name = "Toggle Engine"
 	set category = "Vehicle"
 	set src in view(0)
+
+	if(!isliving(usr) || ismouse(usr))
+		return
 
 	if(usr.incapacitated()) return
 
@@ -72,6 +75,9 @@
 	set name = "Toggle Kickstand"
 	set category = "Vehicle"
 	set src in view(0)
+
+	if(!isliving(usr) || ismouse(usr))
+		return
 
 	if(usr.incapacitated()) return
 

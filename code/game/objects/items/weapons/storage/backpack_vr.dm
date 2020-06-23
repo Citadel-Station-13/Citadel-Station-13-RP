@@ -1,7 +1,7 @@
-/obj/item/weapon/storage/backpack/saddlebag
+/obj/item/storage/backpack/saddlebag
 	name = "Horse Saddlebags"
 	desc = "A saddle that holds items. Seems slightly bulky."
-	icon = 'icons/obj/storage_vr.dmi'
+	icon = 'icons/obj/clothing/backpack.dmi'
 	icon_override = 'icons/mob/back_vr.dmi'
 	item_state = "saddlebag"
 	icon_state = "saddlebag"
@@ -19,21 +19,21 @@
 					slowdown = initial(slowdown)
 				return 1
 			else
-				H << "<span class='warning'>[no_message]</span>"
+				to_chat(H, "<span class='warning'>[no_message]</span>")
 				return 0
 
 /* If anyone wants to make some... this is how you would.
-/obj/item/weapon/storage/backpack/saddlebag/spider
+/obj/item/storage/backpack/saddlebag/spider
 	name = "Drider Saddlebags"
 	item_state = "saddlebag_drider"
 	icon_state = "saddlebag_drider"
 	var/taurtype = /datum/sprite_accessory/tail/taur/spider
 */
 
-/obj/item/weapon/storage/backpack/saddlebag_common //Shared bag for other taurs with sturdy backs
+/obj/item/storage/backpack/saddlebag_common //Shared bag for other taurs with sturdy backs
 	name = "Taur Saddlebags"
 	desc = "A saddle that holds items. Seems slightly bulky."
-	icon = 'icons/obj/storage_vr.dmi'
+	icon = 'icons/obj/clothing/backpack.dmi'
 	icon_override = 'icons/mob/back_vr.dmi'
 	item_state = "saddlebag"
 	icon_state = "saddlebag"
@@ -102,22 +102,22 @@
 					slowdown = initial(slowdown)
 				return 1
 			else
-				H << "<span class='warning'>[no_message]</span>"
+				to_chat(H, "<span class='warning'>[no_message]</span>")
 				return 0
 
-/obj/item/weapon/storage/backpack/saddlebag_common/robust //Shared bag for other taurs with sturdy backs
+/obj/item/storage/backpack/saddlebag_common/robust //Shared bag for other taurs with sturdy backs
 	name = "Robust Saddlebags"
 	desc = "A saddle that holds items. Seems robust."
-	icon = 'icons/obj/storage_vr.dmi'
+	icon = 'icons/obj/clothing/backpack.dmi'
 	icon_override = 'icons/mob/back_vr.dmi'
 	item_state = "robustsaddle"
 	icon_state = "robustsaddle"
 	icon_base = "robustsaddle"
 
-/obj/item/weapon/storage/backpack/saddlebag_common/vest //Shared bag for other taurs with sturdy backs
+/obj/item/storage/backpack/saddlebag_common/vest //Shared bag for other taurs with sturdy backs
 	name = "Taur Duty Vest"
 	desc = "An armored vest with the armor modules replaced with various handy compartments with decent storage capacity. Useless for protection though."
-	icon = 'icons/obj/storage_vr.dmi'
+	icon = 'icons/obj/clothing/backpack.dmi'
 	icon_override = 'icons/mob/back_vr.dmi'
 	item_state = "taurvest"
 	icon_state = "taurvest"
@@ -125,7 +125,12 @@
 	max_storage_space = INVENTORY_STANDARD_SPACE
 	slowdown = 0
 
-/obj/item/weapon/storage/backpack/dufflebag/fluff //Black dufflebag without syndie buffs.
+/obj/item/storage/backpack/dufflebag/fluff //Black dufflebag without syndie buffs.
 	name = "plain black dufflebag"
 	desc = "A large dufflebag for holding extra tactical supplies."
 	icon_state = "duffle_syndie"
+
+/obj/item/storage/backpack
+	sprite_sheets = list(
+		SPECIES_TESHARI = 'icons/mob/species/seromi/back.dmi',
+		SPECIES_WEREBEAST = 'icons/mob/species/werebeast/back.dmi')

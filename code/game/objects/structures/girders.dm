@@ -25,12 +25,12 @@
 
 /obj/structure/girder/Destroy()
 	if(girder_material.products_need_process())
-		processing_objects -= src
+		STOP_PROCESSING(SSobj, src)
 	. = ..()
 
 /obj/structure/girder/process()
 	if(!radiate())
-		processing_objects -= src
+		STOP_PROCESSING(SSobj, src)
 		return
 
 /obj/structure/girder/proc/radiate()
@@ -38,7 +38,7 @@
 	if(!total_radiation)
 		return
 
-	radiation_repository.radiate(src, total_radiation)
+	SSradiation.radiate(src, total_radiation)
 	return total_radiation
 
 
@@ -53,16 +53,16 @@
 	if(applies_material_colour)
 		color = girder_material.icon_colour
 	if(girder_material.products_need_process()) //Am I radioactive or some other? Process me!
-		processing_objects |= src
-	else if(src in processing_objects) //If I happened to be radioactive or s.o. previously, and am not now, stop processing.
-		processing_objects -= src
+		START_PROCESSING(SSobj, src)
+	else if(datum_flags & DF_ISPROCESSING) //If I happened to be radioactive or s.o. previously, and am not now, stop processing.
+		STOP_PROCESSING(SSobj, src)
 
 /obj/structure/girder/get_material()
 	return girder_material
 
 /obj/structure/girder/update_icon()
 	if(anchored)
-		icon_state = "girder"
+		icon_state = initial(icon_state)
 	else
 		icon_state = "displaced"
 
@@ -83,8 +83,8 @@
 	health = (displaced_health - round(current_damage / 4))
 	cover = 25
 
-/obj/structure/girder/attack_generic(var/mob/user, var/damage, var/attack_message = "smashes apart", var/wallbreaker)
-	if(!damage || !wallbreaker)
+/obj/structure/girder/attack_generic(var/mob/user, var/damage, var/attack_message = "smashes apart")
+	if(damage < STRUCTURE_MIN_DAMAGE_THRESHOLD)
 		return 0
 	user.do_attack_animation(src)
 	visible_message("<span class='danger'>[user] [attack_message] the [src]!</span>")
@@ -159,14 +159,14 @@
 				to_chat(user, "<span class='notice'>You secured the girder!</span>")
 				reset_girder()
 
-	else if(istype(W, /obj/item/weapon/pickaxe/plasmacutter))
+	else if(istype(W, /obj/item/pickaxe/plasmacutter))
 		to_chat(user, "<span class='notice'>Now slicing apart the girder...</span>")
 		if(do_after(user,30 * W.toolspeed))
 			if(!src) return
 			to_chat(user, "<span class='notice'>You slice apart the girder!</span>")
 			dismantle()
 
-	else if(istype(W, /obj/item/weapon/pickaxe/diamonddrill))
+	else if(istype(W, /obj/item/pickaxe/diamonddrill))
 		to_chat(user, "<span class='notice'>You drill through the girder!</span>")
 		dismantle()
 
@@ -212,7 +212,7 @@
 	else
 		return ..()
 
-/obj/structure/girder/proc/take_damage(var/damage)
+/obj/structure/girder/take_damage(var/damage)
 	health -= damage
 	if(health <= 0)
 		dismantle()
@@ -320,6 +320,7 @@
 	name = "column"
 	icon= 'icons/obj/cult.dmi'
 	icon_state= "cultgirder"
+	max_health = 250
 	health = 250
 	cover = 70
 	girder_material = "cult"
@@ -343,19 +344,26 @@
 			to_chat(user, "<span class='notice'>You dissasembled the girder!</span>")
 			dismantle()
 
-	else if(istype(W, /obj/item/weapon/pickaxe/plasmacutter))
+	else if(istype(W, /obj/item/pickaxe/plasmacutter))
 		to_chat(user, "<span class='notice'>Now slicing apart the girder...</span>")
 		if(do_after(user,30 * W.toolspeed))
 			to_chat(user, "<span class='notice'>You slice apart the girder!</span>")
 		dismantle()
 
-	else if(istype(W, /obj/item/weapon/pickaxe/diamonddrill))
+	else if(istype(W, /obj/item/pickaxe/diamonddrill))
 		to_chat(user, "<span class='notice'>You drill through the girder!</span>")
 		new /obj/effect/decal/remains/human(get_turf(src))
 		dismantle()
 
+/obj/structure/girder/resin
+	name = "soft girder"
+	icon_state = "girder_resin"
+	max_health = 225
+	health = 225
+	cover = 60
+	girder_material = "resin"
 
-/obj/structure/girder/rcd_values(mob/living/user, obj/item/weapon/rcd/the_rcd, passed_mode)
+/obj/structure/girder/rcd_values(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	var/turf/simulated/T = get_turf(src)
 	if(!istype(T) || T.density)
 		return FALSE
@@ -380,7 +388,7 @@
 			)
 	return FALSE
 
-/obj/structure/girder/rcd_act(mob/living/user, obj/item/weapon/rcd/the_rcd, passed_mode)
+/obj/structure/girder/rcd_act(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	var/turf/simulated/T = get_turf(src)
 	if(!istype(T) || T.density) // Should stop future bugs of people bringing girders to centcom and RCDing them, or somehow putting a girder on a durasteel wall and deconning it.
 		return FALSE

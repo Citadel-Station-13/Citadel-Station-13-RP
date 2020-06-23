@@ -149,7 +149,7 @@
 		nutrition = 0
 		adjustToxLoss(rand(1,3))
 		if (client && prob(5))
-			src << "<span class='danger'>You are starving!</span>"
+			to_chat(src, "<span class='danger'>You are starving!</span>")
 
 	else if (nutrition >= get_grow_nutrition() && amount_grown < 10)
 		nutrition -= 20
@@ -291,7 +291,7 @@
 		if(Target.Adjacent(src))
 			if(istype(Target, /mob/living/silicon)) // Glomp the silicons
 				if(!Atkcool)
-					a_intent = I_HURT
+					a_intent = INTENT_HARM
 					UnarmedAttack(Target)
 					Atkcool = 1
 					spawn(45)
@@ -305,12 +305,12 @@
 					spawn(45)
 						Atkcool = 0
 
-					a_intent = I_DISARM
+					a_intent = INTENT_DISARM
 					UnarmedAttack(Target)
 
 			else
 				if(!Atkcool)
-					a_intent = I_GRAB
+					a_intent = INTENT_GRAB
 					UnarmedAttack(Target)
 
 		else if(Target in view(7, src))
@@ -328,9 +328,9 @@
 				frenemy = S
 		if (frenemy && prob(1))
 			if (frenemy.colour == colour)
-				a_intent = I_HELP
+				a_intent = INTENT_HELP
 			else
-				a_intent = I_HURT
+				a_intent = INTENT_HARM
 			UnarmedAttack(frenemy)
 
 	var/sleeptime = movement_delay()
@@ -342,10 +342,10 @@
 /mob/living/carbon/slime/proc/handle_speech_and_mood()
 	//Mood starts here
 	var/newmood = ""
-	a_intent = I_HELP
+	a_intent = INTENT_HELP
 	if (rabid || attacked)
 		newmood = "angry"
-		a_intent = I_HURT
+		a_intent = INTENT_HARM
 	else if (Target) newmood = "mischevous"
 
 	if (!newmood)

@@ -9,11 +9,11 @@
 				var/output = replacetext(config_legacy.wikisearchurl, "%s", url_encode(query))
 				src << link(output)
 			else
-				src << "<span class='warning'> The wiki search URL is not set in the server configuration.</span>"
+				to_chat(src, "<span class='warning'> The wiki search URL is not set in the server configuration.</span>")
 		else
 			src << link(config_legacy.wikiurl)
 	else
-		src << "<span class='warning'>The wiki URL is not set in the server configuration.</span>"
+		to_chat(src, "<span class='warning'>The wiki URL is not set in the server configuration.</span>")
 		return
 
 /client/verb/forum()
@@ -25,7 +25,7 @@
 			return
 		src << link(config_legacy.forumurl)
 	else
-		src << "<span class='warning'>The forum URL is not set in the server configuration.</span>"
+		to_chat(src, "<span class='warning'>The forum URL is not set in the server configuration.</span>")
 		return
 
 /client/verb/rules()
@@ -38,7 +38,7 @@
 			return
 		src << link(config_legacy.rulesurl)
 	else
-		src << "<span class='danger'>The rules URL is not set in the server configuration.</span>"
+		to_chat(src, "<span class='danger'>The rules URL is not set in the server configuration.</span>")
 	return
 
 /client/verb/map()
@@ -51,7 +51,7 @@
 			return
 		src << link(config_legacy.mapurl)
 	else
-		src << "<span class='danger'>The map URL is not set in the server configuration.</span>"
+		to_chat(src, "<span class='danger'>The map URL is not set in the server configuration.</span>")
 	return
 
 /client/verb/github()
@@ -64,7 +64,7 @@
 			return
 		src << link(CONFIG_GET(string/githuburl))
 	else
-		src << "<span class='danger'>The GitHub URL is not set in the server configuration.</span>"
+		to_chat(src, "<span class='danger'>The GitHub URL is not set in the server configuration.</span>")
 	return
 
 /client/verb/hotkeys_help()
@@ -188,14 +188,3 @@ Any-Mode: (hotkey doesn't need to be on)
 		src << other
 	if(holder)
 		src << admin
-
-// Set the DreamSeeker input macro to the type appropriate for its mob
-/client/proc/set_hotkeys_macro(macro_name = "macro", hotkey_macro_name = "hotkeymode", hotkeys_enabled = null)
-	// If hotkeys mode was not specified, fall back to choice of default in client preferences.
-	if(isnull(hotkeys_enabled))
-		hotkeys_enabled = is_preference_enabled(/datum/client_preference/hotkeys_default)
-
-	if(hotkeys_enabled)
-		winset(src, null, "mainwindow.macro=[hotkey_macro_name] hotkey_toggle.is-checked=true mapwindow.map.focus=true")
-	else
-		winset(src, null, "mainwindow.macro=[macro_name] hotkey_toggle.is-checked=false input.focus=true")

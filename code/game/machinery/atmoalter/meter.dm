@@ -9,7 +9,7 @@
 	power_channel = ENVIRON
 	var/frequency = 0
 	var/id
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 15
 
 /obj/machinery/meter/Initialize()
@@ -119,7 +119,7 @@
 			qdel(src)
 			return
 
-	if(istype(W, /obj/item/device/multitool))
+	if(istype(W, /obj/item/multitool))
 		for(var/obj/machinery/atmospherics/pipe/P in loc)
 			pipes_on_turf |= P
 		if(!pipes_on_turf.len)
@@ -137,5 +137,5 @@
 /obj/machinery/meter/turf/select_target()
 	return loc
 
-/obj/machinery/meter/turf/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
+/obj/machinery/meter/turf/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	return

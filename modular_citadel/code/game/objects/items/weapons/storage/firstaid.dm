@@ -1,4 +1,4 @@
 // Cit adds First aid Kits to belts
 
-/obj/item/weapon/storage/firstaid
+/obj/item/storage/firstaid
   slot_flags = SLOT_BELT

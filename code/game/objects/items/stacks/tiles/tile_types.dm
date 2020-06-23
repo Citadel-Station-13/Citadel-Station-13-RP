@@ -113,7 +113,6 @@
 	throwforce = 15.0
 	throw_speed = 5
 	throw_range = 20
-	flags = CONDUCT
 	no_variants = FALSE
 
 /obj/item/stack/tile/floor/red
@@ -199,8 +198,40 @@
 	flags = 0
 	no_variants = FALSE
 
+/obj/item/stack/tile/wmarble
+	name = "light marble tile"
+	singular_name = "light marble tile"
+	desc = "Some white marble tiles used for flooring."
+	icon_state = "tile-wmarble"
+	force = 6.0
+	throwforce = 15.0
+	throw_speed = 5
+	throw_range = 20
+	flags = 0
+	no_variants = FALSE
+
+/obj/item/stack/tile/bmarble
+	name = "dark marble tile"
+	singular_name = "dark marble tile"
+	desc = "Some black marble tiles used for flooring."
+	icon_state = "tile-bmarble"
+	force = 6.0
+	throwforce = 15.0
+	throw_speed = 5
+	throw_range = 20
+	flags = 0
+	no_variants = FALSE
+
 /obj/item/stack/tile/roofing
 	name = "roofing"
 	singular_name = "roofing"
 	desc = "A section of roofing material. You can use it to repair the ceiling, or expand it."
 	icon_state = "techtile_grid"
+
+/obj/item/stack/tile/roofing/cyborg
+	name = "roofing synthesizer"
+	desc = "A device that makes roofing tiles."
+	uses_charge = 1
+	charge_costs = list(250)
+	stacktype = /obj/item/stack/tile/roofing
+	build_type = /obj/item/stack/tile/roofing

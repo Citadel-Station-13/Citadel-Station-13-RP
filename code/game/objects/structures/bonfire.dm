@@ -150,7 +150,7 @@
 
 /obj/structure/bonfire/proc/check_oxygen()
 	var/datum/gas_mixture/G = loc.return_air()
-	if(G.gas["oxygen"] < 1)
+	if(G.gas[/datum/gas/oxygen] < 1)
 		return FALSE
 	return TRUE
 
@@ -159,14 +159,14 @@
 	if(burning)
 		burning = FALSE
 		update_icon()
-		processing_objects -= src
+		STOP_PROCESSING(SSobj, src)
 		visible_message("<span class='notice'>\The [src] stops burning.</span>")
 
 /obj/structure/bonfire/proc/ignite()
 	if(!burning && get_fuel_amount())
 		burning = TRUE
 		update_icon()
-		processing_objects += src
+		START_PROCESSING(SSobj, src)
 		visible_message("<span class='warning'>\The [src] starts burning!</span>")
 
 /obj/structure/bonfire/proc/burn()
@@ -334,7 +334,7 @@
 
 /obj/structure/fireplace/proc/check_oxygen()
 	var/datum/gas_mixture/G = loc.return_air()
-	if(G.gas["oxygen"] < 1)
+	if(G.gas[/datum/gas/oxygen] < 1)
 		return FALSE
 	return TRUE
 
@@ -342,14 +342,14 @@
 	if(burning)
 		burning = FALSE
 		update_icon()
-		processing_objects -= src
+		STOP_PROCESSING(SSobj, src)
 		visible_message("<span class='notice'>\The [src] stops burning.</span>")
 
 /obj/structure/fireplace/proc/ignite()
 	if(!burning && get_fuel_amount())
 		burning = TRUE
 		update_icon()
-		processing_objects += src
+		START_PROCESSING(SSobj, src)
 		visible_message("<span class='warning'>\The [src] starts burning!</span>")
 
 /obj/structure/fireplace/proc/burn()

@@ -57,16 +57,14 @@
 "an" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spider,
-/obj/item/weapon/material/shard,
+/obj/item/material/shard,
 /turf/simulated/floor/tiled/steel,
 /area/submap/BoomBase)
 "ao" = (
 /turf/simulated/floor/tiled/steel,
 /area/submap/BoomBase)
 "ap" = (
-/mob/living/simple_animal/hostile/giant_spider/phorogenic{
-	returns_home = 1
-	},
+/mob/living/simple_mob/animal/giant_spider/phorogenic,
 /turf/simulated/floor/tiled/steel,
 /area/submap/BoomBase)
 "aq" = (
@@ -77,13 +75,13 @@
 /area/submap/BoomBase)
 "ar" = (
 /obj/machinery/portable_atmospherics/canister/empty/phoron,
-/obj/item/weapon/material/shard,
+/obj/item/material/shard,
 /turf/simulated/floor/tiled/steel{
 	 icon_state = "steel_dirty"
 	},
 /area/submap/BoomBase)
 "as" = (
-/obj/item/weapon/material/shard,
+/obj/item/material/shard,
 /turf/simulated/floor/plating,
 /area/submap/BoomBase)
 "at" = (
@@ -163,9 +161,7 @@
 /area/submap/BoomBase)
 "aK" = (
 /obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/hostile/giant_spider/phorogenic{
-	returns_home = 1
-	},
+/mob/living/simple_mob/animal/giant_spider/phorogenic,
 /turf/simulated/floor/tiled/steel,
 /area/submap/BoomBase)
 "aL" = (
@@ -179,8 +175,8 @@
 "aN" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table/standard,
-/obj/item/weapon/tank/phoron,
-/obj/item/weapon/fuel_assembly/phoron,
+/obj/item/tank/phoron,
+/obj/item/fuel_assembly/phoron,
 /turf/simulated/floor/tiled/steel,
 /area/submap/BoomBase)
 "aO" = (
@@ -191,17 +187,17 @@
 	},
 /area/submap/BoomBase)
 "aP" = (
-/obj/item/weapon/material/shard,
+/obj/item/material/shard,
 /turf/simulated/floor/tiled/steel{
 	 icon_state = "steel_dirty"
 	},
 /area/submap/BoomBase)
 "aQ" = (
-/obj/item/device/transfer_valve,
+/obj/item/transfer_valve,
 /turf/simulated/floor/outdoors/rocks,
 /area/submap/BoomBase)
 "aR" = (
-/obj/item/weapon/material/shard,
+/obj/item/material/shard,
 /turf/template_noop,
 /area/submap/BoomBase)
 "aS" = (
@@ -214,7 +210,7 @@
 /area/submap/BoomBase)
 "aU" = (
 /obj/effect/spider/stickyweb,
-/obj/item/weapon/material/shard,
+/obj/item/material/shard,
 /turf/simulated/floor/tiled/steel,
 /area/submap/BoomBase)
 "aV" = (

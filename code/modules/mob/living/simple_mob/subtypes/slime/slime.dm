@@ -153,7 +153,7 @@
 
 // Clicked on by empty hand.
 /mob/living/simple_mob/slime/attack_hand(mob/living/L)
-	if(L.a_intent == I_GRAB && hat)
+	if(L.a_intent == INTENT_GRAB && hat)
 		remove_hat(L)
 	else
 		..()
@@ -164,8 +164,16 @@
 		give_hat(I, user)
 		return
 
+	//VOREStation Edit Start
+	var/can_miss = TRUE
+	for(var/item_type in allowed_attack_types)
+		if(istype(I, item_type))
+			can_miss = FALSE
+			break
+	//VOREStation Edit End
+
 	// Otherwise they're probably fighting the slime.
-	if(prob(25))
+	if(prob(25) && can_miss)	//VOREStation Edit
 		visible_message(span("warning", "\The [user]'s [I] passes right through \the [src]!"))
 		user.setClickCooldown(user.get_attack_speed(I))
 		return

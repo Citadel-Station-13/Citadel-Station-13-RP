@@ -4,7 +4,7 @@
 	icon_state = "wm_10"
 	density = 1
 	anchored = 1.0
-	circuit = /obj/item/weapon/circuitboard/washing
+	circuit = /obj/item/circuitboard/washing
 	var/state = 1
 	//1 = empty, open door
 	//2 = empty, closed door
@@ -28,9 +28,9 @@
 /obj/machinery/washing_machine/New()
 	..()
 	component_parts = list()
-	component_parts += new /obj/item/weapon/stock_parts/motor(src)
-	component_parts += new /obj/item/weapon/stock_parts/gear(src)
-	component_parts += new /obj/item/weapon/stock_parts/gear(src)
+	component_parts += new /obj/item/stock_parts/motor(src)
+	component_parts += new /obj/item/stock_parts/gear(src)
+	component_parts += new /obj/item/stock_parts/gear(src)
 	RefreshParts()
 
 /obj/machinery/washing_machine/verb/start()
@@ -42,7 +42,7 @@
 		return
 
 	if(state != 4)
-		usr << "The washing machine cannot run in this state."
+		to_chat(usr, "The washing machine cannot run in this state.")
 		return
 
 	if(locate(/mob,washing))
@@ -50,6 +50,7 @@
 	else
 		state = 5
 	update_icon()
+	playsound(src, 'sound/items/washingmachine.ogg', 50, 1, 1)
 	sleep(200)
 	for(var/atom/A in washing)
 		A.clean_blood()
@@ -82,7 +83,7 @@
 /obj/machinery/washing_machine/update_icon()
 	icon_state = "wm_[state][panel_open]"
 
-/obj/machinery/washing_machine/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/machinery/washing_machine/attackby(obj/item/W as obj, mob/user as mob)
 	if(state == 2 && washing.len < 1)
 		if(default_deconstruction_screwdriver(user, W))
 			return
@@ -93,7 +94,7 @@
 	/*if(W.is_screwdriver())
 		panel = !panel
 		user << "<span class='notice'>You [panel ? "open" : "close"] the [src]'s maintenance panel</span>"*/
-	if(istype(W,/obj/item/weapon/pen/crayon) || istype(W,/obj/item/weapon/stamp))
+	if(istype(W,/obj/item/pen/crayon) || istype(W,/obj/item/stamp))
 		if(state in list(	1, 3, 6))
 			if(!crayon)
 				user.drop_item()
@@ -103,9 +104,9 @@
 				..()
 		else
 			..()
-	else if(istype(W,/obj/item/weapon/grab))
+	else if(istype(W,/obj/item/grab))
 		if((state == 1) && hacked)
-			var/obj/item/weapon/grab/G = W
+			var/obj/item/grab/G = W
 			if(ishuman(G.assailant) && iscorgi(G.affecting))
 				G.affecting.loc = src
 				qdel(G)
@@ -114,10 +115,10 @@
 			..()
 
 	else if(is_type_in_list(W, disallowed_types))
-		user << "<span class='warning'>You can't fit \the [W] inside.</span>"
+		to_chat(user, "<span class='warning'>You can't fit \the [W] inside.</span>")
 		return
 
-	else if(istype(W, /obj/item/clothing) || istype(W, /obj/item/weapon/bedsheet))
+	else if(istype(W, /obj/item/clothing) || istype(W, /obj/item/bedsheet))
 		if(washing.len < 5)
 			if(state in list(1, 3))
 				user.drop_item()
@@ -125,9 +126,9 @@
 				washing += W
 				state = 3
 			else
-				user << "<span class='notice'>You can't put the item in right now.</span>"
+				to_chat(user, "<span class='notice'>You can't put the item in right now.</span>")
 		else
-			user << "<span class='notice'>The washing machine is full.</span>"
+			to_chat(user, "<span class='notice'>The washing machine is full.</span>")
 	else
 		..()
 	update_icon()
@@ -151,7 +152,7 @@
 			washing.Cut()
 			state = 1
 		if(5)
-			user << "<span class='warning'>The [src] is busy.</span>"
+			to_chat(user, "<span class='warning'>The [src] is busy.</span>")
 		if(6)
 			state = 7
 		if(7)

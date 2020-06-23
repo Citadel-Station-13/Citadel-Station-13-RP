@@ -42,7 +42,7 @@
 /datum/chemical_reaction/dontcrossthebeams/on_reaction(var/datum/reagents/holder, var/created_volume)
 	var/location = get_turf(holder.my_atom)
 	playsound(location, 'sound/weapons/gauss_shoot.ogg', 50, 1)
-	var/datum/effect/effect/system/grav_pull/s = new /datum/effect/effect/system/grav_pull
+	var/datum/effect_system/grav_pull/s = new /datum/effect_system/grav_pull
 	s.set_up(3, 3, location)
 	s.start()
 	holder.clear_reagents()
@@ -58,7 +58,8 @@
 		var/mob/living/carbon/human/H = holder.my_atom
 		if(H.stat == DEAD && (/mob/living/carbon/human/proc/reconstitute_form in H.verbs)) //no magical regen for non-regenners, and can't force the reaction on live ones
 			if(H.hasnutriment()) // make sure it actually has the conditions to revive
-				if(!H.reviving) // if it's not reviving, start doing so
+				if(H.revive_ready >= 1) // if it's not reviving, start doing so
+					H.revive_ready = REVIVING_READY // overrides the normal cooldown
 					H.visible_message("<span class='info'>[H] shudders briefly, then relaxes, faint movements stirring within.</span>")
 					H.chimera_regenerate()
 				else if (/mob/living/carbon/human/proc/hatch in H.verbs)// already reviving, check if they're ready to hatch
@@ -101,7 +102,7 @@
 	name = "Vermicetol"
 	id = "vermicetol"
 	result = "vermicetol"
-	required_reagents = list("kelotane" = 1, "dermaline" = 1, "shockchem" = 1, "phoron" = 0.1)
+	required_reagents = list("bicaridine" = 2, "shockchem" = 1, "phoron" = 0.1)
 	catalysts = list("phoron" = 5)
 	result_amount = 3
 
@@ -142,7 +143,7 @@
 	result_amount = 1
 	on_reaction(var/datum/reagents/holder)
 
-		var/list/borks = typesof(/obj/item/weapon/reagent_containers/food/snacks) - /obj/item/weapon/reagent_containers/food/snacks // BORK BORK BORK
+		var/list/borks = typesof(/obj/item/reagent_containers/food/snacks) - /obj/item/reagent_containers/food/snacks // BORK BORK BORK
 
 		playsound(get_turf(holder.my_atom), 'sound/effects/phasein.ogg', 100, 1)
 /* Removed at some point, unsure what to replace with
@@ -213,7 +214,7 @@
 	on_reaction(var/datum/reagents/holder)
 		for(var/mob/O in viewers(get_turf(holder.my_atom), null))
 			O.show_message(text("<span class='warning'> The contents of the slime core harden and begin to emit a warm, bright light.</span>"), 1)
-		var/obj/item/device/flashlight/slime/F = new /obj/item/device/flashlight/slime
+		var/obj/item/flashlight/slime/F = new /obj/item/flashlight/slime
 		F.loc = get_turf(holder.my_atom)
 
 
@@ -241,7 +242,7 @@
 		playsound(get_turf(holder.my_atom), 'sound/effects/phasein.ogg', 100, 1)
 		for(var/mob/living/M in range (get_turf(holder.my_atom), 7))
 			M.bodytemperature -= 140
-			M << "<span class='notice'> You suddenly feel a chill!</span>"
+			to_chat(M, "<span class='notice'> You suddenly feel a chill!</span>")
 
 
 
@@ -268,7 +269,7 @@
 		sleep(50)
 		var/turf/location = get_turf(holder.my_atom.loc)
 		for(var/turf/simulated/floor/target_tile in range(0,location))
-			target_tile.assume_gas("phoron", 25, 1400)
+			target_tile.assume_gas(/datum/gas/phoron, 25, 1400)
 			spawn (0) target_tile.hotspot_expose(700, 400)
 
 
@@ -290,7 +291,7 @@
 	required_reagents = list("phoron" = 10, "bicaridine" = 10, "kelotane" = 10, "inaprovaline" = 10, "slimejelly" = 10)
 	on_reaction(var/datum/reagents/holder, var/created_volume)
 		for (var/mob/living/carbon/C in viewers(get_turf(holder.my_atom), null))
-			C << "<span class='notice'>A wave of energy suddenly invigorates you.</span>"
+			to_chat(C, "<span class='notice'>A wave of energy suddenly invigorates you.</span>")
 			C.adjustBruteLoss(-25)
 			C.adjustFireLoss(-25)
 			C.adjustToxLoss(-25)
@@ -309,7 +310,7 @@
 
 
 
-
+/* //VORESTATION AI TEMPORARY REMOVAL
 /datum/chemical_reaction/slimevore
 	name = "Slime Vore" // Hostile vore mobs only
 	id = "m_tele"
@@ -317,11 +318,11 @@
 	required_reagents = list("phoron" = 20, "nutriment" = 20, "sugar" = 20, "mutationtoxin" = 20) //Can't do slime jelly as it'll conflict with another, but mutation toxin will do.
 	result_amount = 1
 	on_reaction(var/datum/reagents/holder)
-		var/mob_path = /mob/living/simple_animal
+		var/mob_path = /mob/living/simple_mob
 		var/blocked = list(
-			/mob/living/simple_animal/hostile/mimic,
-			/mob/living/simple_animal/hostile/alien/queen,
-			/mob/living/simple_animal/shadekin
+			/mob/living/simple_mob/hostile/mimic,
+			/mob/living/simple_mob/animal/space/alien/queen,
+			/mob/living/simple_mob/shadekin
 			)//exclusion list for things you don't want the reaction to create.
 		var/list/voremobs = typesof(mob_path) - mob_path - blocked // list of possible hostile mobs
 
@@ -334,9 +335,16 @@
 		var/spawn_count = rand(1,3)
 		for(var/i = 1, i <= spawn_count, i++)
 			var/chosen = pick(voremobs)
-			var/mob/living/simple_animal/hostile/C = new chosen
+			var/mob/living/simple_mob/hostile/C = new chosen
 			C.faction = "slimesummon"
 			C.loc = get_turf(holder.my_atom)
 			if(prob(50))
 				for(var/j = 1, j <= rand(1, 3), j++)
 					step(C, pick(NORTH,SOUTH,EAST,WEST))
+*/
+
+/datum/chemical_reaction/food/syntiflesh
+	required_reagents = list("blood" = 5, "clonexadone" = 1)
+
+/datum/chemical_reaction/biomass
+	result_amount = 6	// Roughly 120u per phoron sheet

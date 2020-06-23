@@ -22,7 +22,7 @@ var/list/all_technomancer_assistance = typesof(/datum/technomancer/assistance) -
 	var/enhancement_desc = null
 	var/spell_power_desc = null
 
-/obj/item/weapon/technomancer_catalog
+/obj/item/technomancer_catalog
 	name = "catalog"
 	desc = "A \"book\" featuring a holographic display, metal cover, and miniaturized teleportation device, allowing the user to \
 	requisition various things from.. where ever they came from."
@@ -41,12 +41,12 @@ var/list/all_technomancer_assistance = typesof(/datum/technomancer/assistance) -
 	var/spell_tab = ALL_SPELLS
 	var/show_scepter_text = 0
 
-/obj/item/weapon/technomancer_catalog/apprentice
+/obj/item/technomancer_catalog/apprentice
 	name = "apprentice's catalog"
 	budget = 700
 	max_budget = 700
 
-/obj/item/weapon/technomancer_catalog/master //for badmins, I suppose
+/obj/item/technomancer_catalog/master //for badmins, I suppose
 	name = "master's catalog"
 	budget = 2000
 	max_budget = 2000
@@ -55,21 +55,21 @@ var/list/all_technomancer_assistance = typesof(/datum/technomancer/assistance) -
 // Proc: bind_to_owner()
 // Parameters: 1 (new_owner - mob that the book is trying to bind to)
 // Description: Links the catalog to hopefully the technomancer, so that only they can access it.
-/obj/item/weapon/technomancer_catalog/proc/bind_to_owner(var/mob/living/carbon/human/new_owner)
+/obj/item/technomancer_catalog/proc/bind_to_owner(var/mob/living/carbon/human/new_owner)
 	if(!owner && technomancers.is_antagonist(new_owner.mind))
 		owner = new_owner
 
 // Proc: New()
 // Parameters: 0
 // Description: Sets up the catalog, as shown below.
-/obj/item/weapon/technomancer_catalog/New()
+/obj/item/technomancer_catalog/New()
 	..()
 	set_up()
 
 // Proc: set_up()
 // Parameters: 0
 // Description: Instantiates all the catalog datums for everything that can be bought.
-/obj/item/weapon/technomancer_catalog/proc/set_up()
+/obj/item/technomancer_catalog/proc/set_up()
 	if(!spell_instances.len)
 		for(var/S in all_technomancer_spells)
 			spell_instances += new S()
@@ -83,7 +83,7 @@ var/list/all_technomancer_assistance = typesof(/datum/technomancer/assistance) -
 		for(var/A in all_technomancer_assistance)
 			assistance_instances += new A()
 
-/obj/item/weapon/technomancer_catalog/apprentice/set_up()
+/obj/item/technomancer_catalog/apprentice/set_up()
 	..()
 	for(var/datum/technomancer/assistance/apprentice/A in assistance_instances)
 		assistance_instances.Remove(A)
@@ -92,7 +92,7 @@ var/list/all_technomancer_assistance = typesof(/datum/technomancer/assistance) -
 // Parameters: 1 (category - the category link to display)
 // Description: Shows an href link to go to a spell subcategory if the category is not already selected, otherwise is bold, to reduce
 // code duplicating.
-/obj/item/weapon/technomancer_catalog/proc/show_categories(var/category)
+/obj/item/technomancer_catalog/proc/show_categories(var/category)
 	if(category)
 		if(spell_tab != category)
 			return "<a href='byond://?src=\ref[src];spell_category=[category]'>[category]</a>"
@@ -102,11 +102,11 @@ var/list/all_technomancer_assistance = typesof(/datum/technomancer/assistance) -
 // Proc: attack_self()
 // Parameters: 1 (user - the mob clicking on the catalog)
 // Description: Shows an HTML window, to buy equipment and spells, if the user is the legitimate owner.  Otherwise it cannot be used.
-/obj/item/weapon/technomancer_catalog/attack_self(mob/user)
+/obj/item/technomancer_catalog/attack_self(mob/user)
 	if(!user)
 		return 0
 	if(owner && user != owner)
-		user << "<span class='danger'>\The [src] knows that you're not the original owner, and has locked you out of it!</span>"
+		to_chat(user, "<span class='danger'>\The [src] knows that you're not the original owner, and has locked you out of it!</span>")
 		return 0
 	else if(!owner)
 		bind_to_owner(user)
@@ -266,7 +266,7 @@ var/list/all_technomancer_assistance = typesof(/datum/technomancer/assistance) -
 // Proc: Topic()
 // Parameters: 2 (href - don't know, href_list - the choice that the person using the interface above clicked on.)
 // Description: Acts upon clicks on links for the catalog, if they are the rightful owner.
-/obj/item/weapon/technomancer_catalog/Topic(href, href_list)
+/obj/item/technomancer_catalog/Topic(href, href_list)
 	..()
 	var/mob/living/carbon/human/H = usr
 
@@ -276,7 +276,7 @@ var/list/all_technomancer_assistance = typesof(/datum/technomancer/assistance) -
 		return 1 //why does this return 1?
 
 	if(H != owner)
-		H << "\The [src] won't allow you to do that, as you don't own \the [src]!"
+		to_chat(H, "\The [src] won't allow you to do that, as you don't own \the [src]!")
 		return
 
 	if(loc == H || (in_range(src, H) && istype(loc, /turf)))
@@ -293,21 +293,21 @@ var/list/all_technomancer_assistance = typesof(/datum/technomancer/assistance) -
 					new_spell = spell
 					break
 
-			var/obj/item/weapon/technomancer_core/core = null
-			if(istype(H.back, /obj/item/weapon/technomancer_core))
+			var/obj/item/technomancer_core/core = null
+			if(istype(H.back, /obj/item/technomancer_core))
 				core = H.back
 
 			if(new_spell && core)
 				if(new_spell.cost <= budget)
 					if(!core.has_spell(new_spell))
 						budget -= new_spell.cost
-						H << "<span class='notice'>You have just bought [new_spell.name].</span>"
+						to_chat(H, "<span class='notice'>You have just bought [new_spell.name].</span>")
 						core.add_spell(new_spell.obj_path, new_spell.name, new_spell.ability_icon_state)
 					else //We already own it.
-						H << "<span class='danger'>You already have [new_spell.name]!</span>"
+						to_chat(H, "<span class='danger'>You already have [new_spell.name]!</span>")
 						return
 				else //Can't afford.
-					H << "<span class='danger'>You can't afford that!</span>"
+					to_chat(H, "<span class='danger'>You can't afford that!</span>")
 					return
 
 		// This needs less copypasta.
@@ -321,22 +321,22 @@ var/list/all_technomancer_assistance = typesof(/datum/technomancer/assistance) -
 			if(desired_object)
 				if(desired_object.cost <= budget)
 					budget -= desired_object.cost
-					H << "<span class='notice'>You have just bought \a [desired_object.name].</span>"
+					to_chat(H, "<span class='notice'>You have just bought \a [desired_object.name].</span>")
 					var/obj/O = new desired_object.obj_path(get_turf(H))
 					technomancer_belongings.Add(O) // Used for the Track spell.
 
 				else //Can't afford.
-					H << "<span class='danger'>You can't afford that!</span>"
+					to_chat(H, "<span class='danger'>You can't afford that!</span>")
 					return
 
 
 		if(href_list["refund_functions"])
 			var/turf/T = get_turf(H)
-			if(T.z in using_map.player_levels)
-				H << "<span class='danger'>You can only refund at your base, it's too late now!</span>"
+			if(T.z in GLOB.using_map.player_levels)
+				to_chat(H, "<span class='danger'>You can only refund at your base, it's too late now!</span>")
 				return
-			var/obj/item/weapon/technomancer_core/core = null
-			if(istype(H.back, /obj/item/weapon/technomancer_core))
+			var/obj/item/technomancer_core/core = null
+			if(istype(H.back, /obj/item/technomancer_core))
 				core = H.back
 			if(core)
 				for(var/obj/spellbutton/spell in core.spells)
@@ -347,9 +347,9 @@ var/list/all_technomancer_assistance = typesof(/datum/technomancer/assistance) -
 							break
 		attack_self(H)
 
-/obj/item/weapon/technomancer_catalog/attackby(var/atom/movable/AM, var/mob/user)
+/obj/item/technomancer_catalog/attackby(var/atom/movable/AM, var/mob/user)
 	var/turf/T = get_turf(user)
-	if(T.z in using_map.player_levels)
+	if(T.z in GLOB.using_map.player_levels)
 		to_chat(user, "<span class='danger'>You can only refund at your base, it's too late now!</span>")
 		return
 	for(var/datum/technomancer/equipment/E in equipment_instances + assistance_instances)
@@ -362,8 +362,8 @@ var/list/all_technomancer_assistance = typesof(/datum/technomancer/assistance) -
 				to_chat(user, "<span class='notice'>You've refunded \the [AM].</span>")
 
 				// We sadly need to do special stuff here or else people who refund cores with spells will lose points permanently.
-				if(istype(AM, /obj/item/weapon/technomancer_core))
-					var/obj/item/weapon/technomancer_core/core = AM
+				if(istype(AM, /obj/item/technomancer_core))
+					var/obj/item/technomancer_core/core = AM
 					for(var/obj/spellbutton/spell in core.spells)
 						for(var/datum/technomancer/spell/spell_datum in spell_instances)
 							if(spell_datum.obj_path == spell.spellpath)

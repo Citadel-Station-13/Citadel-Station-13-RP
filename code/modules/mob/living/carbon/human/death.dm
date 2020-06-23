@@ -61,11 +61,11 @@
 
 	//Handle brain slugs.
 	var/obj/item/organ/external/Hd = get_organ(BP_HEAD)
-	var/mob/living/simple_animal/borer/B
+	var/mob/living/simple_mob/animal/borer/B
 
 	if(Hd)
 		for(var/I in Hd.implants)
-			if(istype(I,/mob/living/simple_animal/borer))
+			if(istype(I,/mob/living/simple_mob/animal/borer))
 				B = I
 	if(B)
 		if(!B.ckey && ckey && B.controlling)
@@ -84,9 +84,9 @@
 	if(!gibbed && species.death_sound)
 		playsound(loc, species.death_sound, 80, 1, 1)
 
-	if(ticker && ticker.mode)
+	if(SSticker && SSticker.mode)
 		sql_report_death(src)
-		ticker.mode.check_win()
+		SSticker.mode.check_win()
 
 	if(wearing_rig)
 		wearing_rig.notify_ai("<span class='danger'>Warning: user death event. Mobility control passed to integrated intelligence system.</span>")

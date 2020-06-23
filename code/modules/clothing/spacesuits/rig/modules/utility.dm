@@ -40,7 +40,7 @@
 	suit_overlay_inactive = "plasmacutter"
 	use_power_cost = 0.5
 
-	device_type = /obj/item/weapon/pickaxe/plasmacutter
+	device_type = /obj/item/pickaxe/plasmacutter
 
 /obj/item/rig_module/device/healthscanner
 	name = "health scanner module"
@@ -49,7 +49,7 @@
 	interface_name = "health scanner"
 	interface_desc = "Shows an informative health readout when used on a subject."
 
-	device_type = /obj/item/device/healthanalyzer
+	device_type = /obj/item/healthanalyzer
 
 /obj/item/rig_module/device/drill
 	name = "hardsuit drill mount"
@@ -61,7 +61,7 @@
 	suit_overlay_inactive = "mounted-drill"
 	use_power_cost = 0.1
 
-	device_type = /obj/item/weapon/pickaxe/diamonddrill
+	device_type = /obj/item/pickaxe/diamonddrill
 
 /obj/item/rig_module/device/anomaly_scanner
 	name = "hardsuit anomaly scanner"
@@ -72,7 +72,7 @@
 	engage_string = "Begin Scan"
 	usable = 1
 	selectable = 0
-	device_type = /obj/item/device/ano_scanner
+	device_type = /obj/item/ano_scanner
 
 /obj/item/rig_module/device/orescanner
 	name = "ore scanner module"
@@ -83,13 +83,13 @@
 	engage_string = "Begin Scan"
 	usable = 1
 	selectable = 0
-	device_type = /obj/item/weapon/mining_scanner
+	device_type = /obj/item/mining_scanner
 
 /obj/item/rig_module/device/orescanner/advanced
 	name = "advanced ore scanner module"
 	desc = "A sleeker, yet still somewhat clunky ore scanner."
 	interface_name = "adv. ore detector"
-	device_type = /obj/item/weapon/mining_scanner/advanced
+	device_type = /obj/item/mining_scanner/advanced
 
 /obj/item/rig_module/device/rcd
 	name = "RCD mount"
@@ -100,7 +100,7 @@
 	usable = 1
 	engage_string = "Configure RCD"
 
-	device_type = /obj/item/weapon/rcd/electric/mounted/rig
+	device_type = /obj/item/rcd/electric/mounted/rig
 
 /obj/item/rig_module/device/New()
 	..()
@@ -176,7 +176,7 @@
 		return 0
 
 	if(!input_item.reagents || !input_item.reagents.total_volume)
-		user << "\The [input_item] is empty."
+		to_chat(user, "\The [input_item] is empty.")
 		return 0
 
 	// Magical chemical filtration system, do not question it.
@@ -198,9 +198,9 @@
 				break
 
 	if(total_transferred)
-		user << "<font color='blue'>You transfer [total_transferred] units into the suit reservoir.</font>"
+		to_chat(user, "<font color='blue'>You transfer [total_transferred] units into the suit reservoir.</font>")
 	else
-		user << "<span class='danger'>None of the reagents seem suitable.</span>"
+		to_chat(user, "<span class='danger'>None of the reagents seem suitable.</span>")
 	return 1
 
 /obj/item/rig_module/chem_dispenser/engage(atom/target)
@@ -211,7 +211,7 @@
 	var/mob/living/carbon/human/H = holder.wearer
 
 	if(!charge_selected)
-		H << "<span class='danger'>You have not selected a chemical type.</span>"
+		to_chat(H, "<span class='danger'>You have not selected a chemical type.</span>")
 		return 0
 
 	var/datum/rig_charge/charge = charges[charge_selected]
@@ -221,7 +221,7 @@
 
 	var/chems_to_use = 10
 	if(charge.charges <= 0)
-		H << "<span class='danger'>Insufficient chems!</span>"
+		to_chat(H, "<span class='danger'>Insufficient chems!</span>")
 		return 0
 	else if(charge.charges < chems_to_use)
 		chems_to_use = charge.charges
@@ -236,8 +236,8 @@
 		target_mob = H
 
 	if(target_mob != H)
-		H << "<span class='danger'>You inject [target_mob] with [chems_to_use] unit\s of [charge.display_name].</span>"
-	target_mob << "<span class='danger'>You feel a rushing in your veins as [chems_to_use] unit\s of [charge.display_name] [chems_to_use == 1 ? "is" : "are"] injected.</span>"
+		to_chat(H, "<span class='danger'>You inject [target_mob] with [chems_to_use] unit\s of [charge.display_name].</span>")
+	to_chat(target_mob, "<span class='danger'>You feel a rushing in your veins as [chems_to_use] unit\s of [charge.display_name] [chems_to_use == 1 ? "is" : "are"] injected.</span>")
 	target_mob.reagents.add_reagent(charge.display_name, chems_to_use)
 
 	charge.charges -= chems_to_use
@@ -327,17 +327,17 @@
 		if("Enable")
 			active = 1
 			voice_holder.active = 1
-			usr << "<font color='blue'>You enable the speech synthesiser.</font>"
+			to_chat(usr, "<font color='blue'>You enable the speech synthesiser.</font>")
 		if("Disable")
 			active = 0
 			voice_holder.active = 0
-			usr << "<font color='blue'>You disable the speech synthesiser.</font>"
+			to_chat(usr, "<font color='blue'>You disable the speech synthesiser.</font>")
 		if("Set Name")
 			var/raw_choice = sanitize(input(usr, "Please enter a new name.")  as text|null, MAX_NAME_LEN)
 			if(!raw_choice)
 				return 0
 			voice_holder.voice = raw_choice
-			usr << "<font color='blue'>You are now mimicking <B>[voice_holder.voice]</B>.</font>"
+			to_chat(usr, "<font color='blue'>You are now mimicking <B>[voice_holder.voice]</B>.</font>")
 	return 1
 
 /obj/item/rig_module/maneuvering_jets
@@ -360,7 +360,7 @@
 	interface_name = "maneuvering jets"
 	interface_desc = "An inbuilt EVA maneuvering system that runs off the rig air supply."
 
-	var/obj/item/weapon/tank/jetpack/rig/jets
+	var/obj/item/tank/jetpack/rig/jets
 
 /obj/item/rig_module/maneuvering_jets/engage()
 	if(!..())
@@ -431,9 +431,9 @@
 	active_power_cost = 0
 	passive_power_cost = 0
 
-	gun = /obj/item/weapon/reagent_containers/spray/cleaner
+	gun = /obj/item/reagent_containers/spray/cleaner
 
-//obj/item/weapon/reagent_containers/spray/cleaner
+//obj/item/reagent_containers/spray/cleaner
 //	spary =
 
 /obj/item/rig_module/mounted/engage(atom/target)
@@ -451,7 +451,7 @@
 /obj/item/rig_module/mounted/mop/process()
 
 	if(holder && holder.wearer)
-		if(!(locate(/obj/item/weapon/mop_deploy) in holder.wearer))
+		if(!(locate(/obj/item/mop_deploy) in holder.wearer))
 			deactivate()
 			return 0
 
@@ -464,11 +464,11 @@
 	var/mob/living/M = holder.wearer
 
 	if(M.l_hand && M.r_hand)
-		M << "<span class='danger'>Your hands are full.</span>"
+		to_chat(M, "<span class='danger'>Your hands are full.</span>")
 		deactivate()
 		return
 
-	var/obj/item/weapon/mop_deploy/blade = new(M)
+	var/obj/item/mop_deploy/blade = new(M)
 	blade.creator = M
 	M.put_in_hands(blade)
 
@@ -481,7 +481,7 @@
 	if(!M)
 		return
 
-	for(var/obj/item/weapon/mop_deploy/blade in M.contents)
+	for(var/obj/item/mop_deploy/blade in M.contents)
 		M.drop_from_inventory(blade)
 		qdel(blade)
 
@@ -502,7 +502,7 @@
 	var/fire_distance = 10
 
 	charges = list(
-		list("cleaner grenade",   "cleaner grenade",   /obj/item/weapon/grenade/chem_grenade/cleaner,  9),
+		list("cleaner grenade",   "cleaner grenade",   /obj/item/grenade/chem_grenade/cleaner,  9),
 		)
 
 /obj/item/rig_module/cleaner_launcher/accepts_item(var/obj/item/input_device, var/mob/living/user)
@@ -521,10 +521,10 @@
 		return 0
 
 	if(accepted_item.charges >= 5)
-		user << "<span class='danger'>Another grenade of that type will not fit into the module.</span>"
+		to_chat(user, "<span class='danger'>Another grenade of that type will not fit into the module.</span>")
 		return 0
 
-	user << "<font color='blue'><b>You slot \the [input_device] into the suit module.</b></font>"
+	to_chat(user, "<font color='blue'><b>You slot \the [input_device] into the suit module.</b></font>")
 	user.drop_from_inventory(input_device)
 	qdel(input_device)
 	accepted_item.charges++
@@ -541,7 +541,7 @@
 	var/mob/living/carbon/human/H = holder.wearer
 
 	if(!charge_selected)
-		H << "<span class='danger'>You have not selected a grenade type.</span>"
+		to_chat(H, "<span class='danger'>You have not selected a grenade type.</span>")
 		return 0
 
 	var/datum/rig_charge/charge = charges[charge_selected]
@@ -550,11 +550,11 @@
 		return 0
 
 	if(charge.charges <= 0)
-		H << "<span class='danger'>Insufficient grenades!</span>"
+		to_chat(H, "<span class='danger'>Insufficient grenades!</span>")
 		return 0
 
 	charge.charges--
-	var/obj/item/weapon/grenade/new_grenade = new charge.product_type(get_turf(H))
+	var/obj/item/grenade/new_grenade = new charge.product_type(get_turf(H))
 	H.visible_message("<span class='danger'>[H] launches \a [new_grenade]!</span>")
 	new_grenade.activate(H)
 	new_grenade.throw_at(target,fire_force,fire_distance)
@@ -568,7 +568,7 @@
 	engage_string = "Dispense"
 	usable = 1
 	selectable = 0
-	device_type = /obj/item/weapon/paper_bin
+	device_type = /obj/item/paper_bin
 
 /obj/item/rig_module/device/paperdispenser/engage(atom/target)
 
@@ -587,7 +587,7 @@
 	interface_desc = "Signatures with style(tm)."
 	engage_string = "Change color"
 	usable = 1
-	device_type = /obj/item/weapon/pen/multi
+	device_type = /obj/item/pen/multi
 
 /obj/item/rig_module/device/stamp
 	name = "mounted internal affairs stamp"
@@ -602,8 +602,8 @@
 
 /obj/item/rig_module/device/stamp/New()
 	..()
-	iastamp = new /obj/item/weapon/stamp/internalaffairs(src)
-	deniedstamp = new /obj/item/weapon/stamp/denied(src)
+	iastamp = new /obj/item/stamp/internalaffairs(src)
+	deniedstamp = new /obj/item/stamp/denied(src)
 	device = iastamp
 
 /obj/item/rig_module/device/stamp/engage(atom/target)
@@ -613,10 +613,10 @@
 	if(!target)
 		if(device == iastamp)
 			device = deniedstamp
-			holder.wearer << "<span class='notice'>Switched to denied stamp.</span>"
+			to_chat(holder.wearer, "<span class='notice'>Switched to denied stamp.</span>")
 		else if(device == deniedstamp)
 			device = iastamp
-			holder.wearer << "<span class='notice'>Switched to internal affairs stamp.</span>"
+			to_chat(holder.wearer, "<span class='notice'>Switched to internal affairs stamp.</span>")
 		return 1
 
 /obj/item/rig_module/sprinter
@@ -630,7 +630,7 @@
 	disruptable = 1
 	disruptive = 0
 
-	use_power_cost = 50
+	use_power_cost = 0
 	active_power_cost = 5
 	passive_power_cost = 0
 	module_cooldown = 30
@@ -648,9 +648,9 @@
 
 	var/mob/living/carbon/human/H = holder.wearer
 
-	H << "<font color='blue'><b>You activate the suit's sprint mode.</b></font>"
+	to_chat(H, "<font color='blue'><b>You activate the suit's sprint mode.</b></font>")
 
-	holder.slowdown = initial(holder.slowdown) - sprint_speed
+	holder.slowdown -= sprint_speed
 
 /obj/item/rig_module/sprinter/deactivate()
 
@@ -659,6 +659,6 @@
 
 	var/mob/living/carbon/human/H = holder.wearer
 
-	H << "<span class='danger'>Your hardsuit returns to normal speed.</span>"
+	to_chat(H, "<span class='danger'>Your hardsuit returns to normal speed.</span>")
 
-	holder.slowdown = initial(holder.slowdown)
+	holder.slowdown += sprint_speed

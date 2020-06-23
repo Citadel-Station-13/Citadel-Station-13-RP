@@ -83,7 +83,14 @@ Buildable meters
 		if(PIPING_LAYER_SUPPLY)
 			color = PIPE_COLOR_BLUE
 			name = "[initial(fakeA.name)] supply fitting"
+		if(PIPING_LAYER_FUEL)
+			color = PIPE_COLOR_YELLOW
+			name = "[initial(fakeA.name)] fuel fitting"
+		if(PIPING_LAYER_AUX)
+			color = PIPE_COLOR_CYAN
+			name = "[initial(fakeA.name)] aux fitting"
 	// Or if we were to do it the TG way...
+	//we don't do it the tg way
 	// pixel_x = PIPE_PIXEL_OFFSET_X(piping_layer)
 	// pixel_y = PIPE_PIXEL_OFFSET_Y(piping_layer)
 	// layer = initial(layer) + PIPE_LAYER_OFFSET(piping_layer)
@@ -115,9 +122,9 @@ Buildable meters
 	var/obj/machinery/atmospherics/fakeA = pipe_type
 	icon_state = "[initial(fakeA.pipe_state)][mirrored ? "m" : ""]"
 
-/obj/item/pipe/verb/rotate()
+/obj/item/pipe/verb/rotate_clockwise()
 	set category = "Object"
-	set name = "Rotate Pipe"
+	set name = "Rotate Pipe Clockwise"
 	set src in view(1)
 
 	if ( usr.stat || usr.restrained() || !usr.canmove )
@@ -165,12 +172,12 @@ Buildable meters
 	else
 		return ..()
 
-/obj/item/pipe/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
+/obj/item/pipe/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if(W.is_wrench())
 		return wrench_act(user, W)
 	return ..()
 
-/obj/item/pipe/proc/wrench_act(var/mob/living/user, var/obj/item/weapon/tool/wrench/W)
+/obj/item/pipe/proc/wrench_act(var/mob/living/user, var/obj/item/tool/wrench/W)
 	if(!isturf(loc))
 		return TRUE
 
@@ -254,12 +261,12 @@ Buildable meters
 	w_class = ITEMSIZE_LARGE
 	var/piping_layer = PIPING_LAYER_DEFAULT
 
-/obj/item/pipe_meter/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
+/obj/item/pipe_meter/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if(W.is_wrench())
 		return wrench_act(user, W)
 	return ..()
 
-/obj/item/pipe_meter/proc/wrench_act(var/mob/living/user, var/obj/item/weapon/tool/wrench/W)
+/obj/item/pipe_meter/proc/wrench_act(var/mob/living/user, var/obj/item/tool/wrench/W)
 	var/obj/machinery/atmospherics/pipe/pipe
 	for(var/obj/machinery/atmospherics/pipe/P in loc)
 		if(P.piping_layer == piping_layer)

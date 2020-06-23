@@ -82,7 +82,7 @@
 		files += hdd.files
 	if(floppy && floppy.inserted)
 		files += floppy.inserted.files
-	if(cardslot && istype(cardslot.reader,/obj/item/weapon/card/data))
+	if(cardslot && istype(cardslot.reader,/obj/item/card/data))
 		files += cardslot.reader:files
 	if(!ispath(typekey))
 		return files
@@ -106,7 +106,7 @@
 	switch(errorcode)
 		if(PROG_CRASH)
 			if(usr)
-				usr << "<span class='warning'>The program crashed!</span>"
+				to_chat(usr, "<span class='warning'>The program crashed!</span>")
 				usr << browse(null,"\ref[src]")
 				Reset()
 
@@ -138,7 +138,7 @@
 
 		else
 			if(usr)
-				usr << "<span class='warning'>The program crashed!</span>"
+				to_chat(usr, "<span class='warning'>The program crashed!</span>")
 				usr << browse(null,"\ref[src]")
 				testing("computer/Crash() - unknown error code [errorcode]")
 				Reset()

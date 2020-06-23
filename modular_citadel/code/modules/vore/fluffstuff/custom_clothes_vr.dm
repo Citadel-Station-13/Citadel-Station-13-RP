@@ -1,4 +1,4 @@
-/obj/item/weapon/rig/light/hacker/fluff/aronai
+/obj/item/rig/light/hacker/fluff/aronai
 	name = "FTU Suit Module"
 	desc = "A collapsible void-suit for synthetics from the Free Trade Union."
 

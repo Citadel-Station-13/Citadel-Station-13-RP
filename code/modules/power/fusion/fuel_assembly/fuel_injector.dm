@@ -7,16 +7,16 @@ var/list/fuel_injectors = list()
 	density = 1
 	anchored = 0
 	req_access = list(access_engine)
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 500
 
-	circuit = /obj/item/weapon/circuitboard/fusion_injector
+	circuit = /obj/item/circuitboard/fusion_injector
 
 	var/fuel_usage = 0.0001
 	var/id_tag
 	var/injecting = 0
-	var/obj/item/weapon/fuel_assembly/cur_assembly
+	var/obj/item/fuel_assembly/cur_assembly
 
 /obj/machinery/fusion_fuel_injector/Initialize()
 	. = ..()
@@ -42,13 +42,13 @@ var/list/fuel_injectors = list()
 
 /obj/machinery/fusion_fuel_injector/attackby(obj/item/W, mob/user)
 
-	if(istype(W, /obj/item/device/multitool))
+	if(istype(W, /obj/item/multitool))
 		var/new_ident = input("Enter a new ident tag.", "Fuel Injector", id_tag) as null|text
 		if(new_ident && user.Adjacent(src))
 			id_tag = new_ident
 		return
 
-	if(istype(W, /obj/item/weapon/fuel_assembly))
+	if(istype(W, /obj/item/fuel_assembly))
 
 		if(injecting)
 			to_chat(user, "<span class='warning'>Shut \the [src] off before playing with the fuel rod!</span>")
@@ -68,7 +68,7 @@ var/list/fuel_injectors = list()
 		cur_assembly = W
 		return
 
-	if(W.is_wrench() || W.is_screwdriver() || W.is_crowbar() || istype(W, /obj/item/weapon/storage/part_replacer))
+	if(W.is_wrench() || W.is_screwdriver() || W.is_crowbar() || istype(W, /obj/item/storage/part_replacer))
 		if(injecting)
 			to_chat(user, "<span class='warning'>Shut \the [src] off first!</span>")
 			return
@@ -103,13 +103,13 @@ var/list/fuel_injectors = list()
 	if(!injecting && cur_assembly)
 		icon_state = "injector1"
 		injecting = 1
-		use_power = 1
+		update_use_power(USE_POWER_IDLE)
 
 /obj/machinery/fusion_fuel_injector/proc/StopInjecting()
 	if(injecting)
 		injecting = 0
 		icon_state = "injector0"
-		use_power = 0
+		update_use_power(USE_POWER_OFF)
 
 /obj/machinery/fusion_fuel_injector/proc/Inject()
 	if(!injecting)
@@ -134,22 +134,22 @@ var/list/fuel_injectors = list()
 	else
 		StopInjecting()
 
-/obj/machinery/fusion_fuel_injector/verb/rotate_clock()
+/obj/machinery/fusion_fuel_injector/verb/rotate_clockwise()
 	set category = "Object"
-	set name = "Rotate Generator (Clockwise)"
+	set name = "Rotate Generator Clockwise"
 	set src in view(1)
 
 	if (usr.incapacitated() || usr.restrained()  || anchored)
 		return
 
-	src.dir = turn(src.dir, -90)
+	src.setDir(turn(src.dir, 270))
 
-/obj/machinery/fusion_fuel_injector/verb/rotate_anticlock()
+/obj/machinery/fusion_fuel_injector/verb/rotate_counterclockwise()
 	set category = "Object"
-	set name = "Rotate Generator (Counter-clockwise)"
+	set name = "Rotate Generator Counterclockwise"
 	set src in view(1)
 
 	if (usr.incapacitated() || usr.restrained()  || anchored)
 		return
 
-	src.dir = turn(src.dir, 90)
+	src.setDir(turn(src.dir, 90))

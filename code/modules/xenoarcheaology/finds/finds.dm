@@ -14,20 +14,23 @@
 	clearance_range = rand(4, 12)
 	dissonance_spread = rand(1500, 2500) / 100
 
-/obj/item/weapon/ore/strangerock
+/obj/item/strangerock
 	name = "Strange rock"
 	desc = "Seems to have some unusal strata evident throughout it."
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	icon_state = "strange"
+	var/datum/geosample/geologic_data
 	origin_tech = list(TECH_MATERIAL = 5)
 
-/obj/item/weapon/ore/strangerock/Initialize(mapload, inside_item_type = 0)
-	. = ..()
-	if(inside_item_type)
-		new /obj/item/weapon/archaeological_find(src, new_item_type = inside_item_type)
+/obj/item/strangerock/New(loc, var/inside_item_type = 0)
+	pixel_x = rand(0,16)-8
+	pixel_y = rand(0,8)-8
 
-/obj/item/weapon/ore/strangerock/attackby(var/obj/item/I, var/mob/user)
-	if(istype(I, /obj/item/weapon/pickaxe/brush))
+	if(inside_item_type)
+		new /obj/item/archaeological_find(src, new_item_type = inside_item_type)
+
+/obj/item/strangerock/attackby(var/obj/item/I, var/mob/user)
+	if(istype(I, /obj/item/pickaxe/brush))
 		var/obj/item/inside = locate() in src
 		if(inside)
 			inside.loc = get_turf(src)
@@ -37,8 +40,8 @@
 		qdel(src)
 		return
 
-	if(istype(I, /obj/item/weapon/weldingtool))
-		var/obj/item/weapon/weldingtool/W = I
+	if(istype(I, /obj/item/weldingtool))
+		var/obj/item/weldingtool/W = I
 		if(W.isOn())
 			if(W.get_fuel() >= 2)
 				var/obj/item/inside = locate() in src
@@ -54,8 +57,8 @@
 				W.remove_fuel(1)
 			return
 
-	else if(istype(I, /obj/item/device/core_sampler))
-		var/obj/item/device/core_sampler/S = I
+	else if(istype(I, /obj/item/core_sampler))
+		var/obj/item/core_sampler/S = I
 		S.sample_item(src, user)
 		return
 

@@ -978,6 +978,12 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "entry_D2"
 	base_turf = /turf/space
 
+/area/hallway/secondary/entry/D2/arrivals
+	name = "\improper Shuttle Dock Hallway - Dock Two"
+	icon_state = "entry_D2"
+	base_turf = /turf/space
+	requires_power = 0
+
 /area/hallway/secondary/entry/D3
 	name = "\improper Shuttle Dock Hallway - Dock Three"
 	icon_state = "entry_D3"
@@ -1073,7 +1079,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	sound_env = MEDIUM_SOFTFLOOR
 
 /area/crew_quarters/captain
-	name = "\improper Command - Colony Director's Office"
+	name = "\improper Command - Facility Director's Office"
 	icon_state = "captain"
 	sound_env = MEDIUM_SOFTFLOOR
 

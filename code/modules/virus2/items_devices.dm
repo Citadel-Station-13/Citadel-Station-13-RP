@@ -1,14 +1,13 @@
 ///////////////ANTIBODY SCANNER///////////////
 
-/obj/item/device/antibody_scanner
+/obj/item/antibody_scanner
 	name = "antibody scanner"
 	desc = "Scans living beings for antibodies in their blood."
 	icon_state = "health"
 	w_class = ITEMSIZE_SMALL
 	item_state = "electronic"
-	flags = CONDUCT
 
-/obj/item/device/antibody_scanner/attack(mob/M as mob, mob/user as mob)
+/obj/item/antibody_scanner/attack(mob/M as mob, mob/user as mob)
 	if(!istype(M,/mob/living/carbon/))
 		report("Scan aborted: Incompatible target.", user)
 		return
@@ -30,12 +29,12 @@
 	else
 		report("Antibodies detected: [antigens2string(C.antibodies)]", user)
 
-/obj/item/device/antibody_scanner/proc/report(var/text, mob/user as mob)
-	user << "<font color='blue'>\icon[src] \The [src] beeps,</font> \"<font color='blue'>[text]</font>\""
+/obj/item/antibody_scanner/proc/report(var/text, mob/user as mob)
+	to_chat(user, "<font color='blue'>\icon[src] \The [src] beeps,</font> \"<font color='blue'>[text]</font>\"")
 
 ///////////////VIRUS DISH///////////////
 
-/obj/item/weapon/virusdish
+/obj/item/virusdish
 	name = "virus dish"
 	icon = 'icons/obj/items.dmi'
 	icon_state = "implantcase-b"
@@ -45,33 +44,33 @@
 	var/info = 0
 	var/analysed = 0
 
-/obj/item/weapon/virusdish/random
+/obj/item/virusdish/random
 	name = "virus sample"
 
-/obj/item/weapon/virusdish/random/Initialize(mapload)
+/obj/item/virusdish/random/Initialize(mapload)
 	. = ..()
 	virus2 = new /datum/disease2/disease
 	virus2.makerandom()
 	growth = rand(5, 50)
 
-/obj/item/weapon/virusdish/attackby(var/obj/item/weapon/W as obj,var/mob/living/carbon/user as mob)
-	if(istype(W,/obj/item/weapon/hand_labeler) || istype(W,/obj/item/weapon/reagent_containers/syringe))
+/obj/item/virusdish/attackby(var/obj/item/W as obj,var/mob/living/carbon/user as mob)
+	if(istype(W,/obj/item/hand_labeler) || istype(W,/obj/item/reagent_containers/syringe))
 		return
 	..()
 	if(prob(50))
-		user << "<span class='danger'>\The [src] shatters!</span>"
+		to_chat(user, "<span class='danger'>\The [src] shatters!</span>")
 		if(virus2.infectionchance > 0)
 			for(var/mob/living/carbon/target in view(1, get_turf(src)))
 				if(airborne_can_reach(get_turf(src), get_turf(target)))
 					infect_virus2(target, src.virus2)
 		qdel(src)
 
-/obj/item/weapon/virusdish/examine(mob/user)
+/obj/item/virusdish/examine(mob/user)
 	..()
 	if(basic_info)
 		user << "[basic_info] : <a href='?src=\ref[src];info=1'>More Information</a>"
 
-/obj/item/weapon/virusdish/Topic(href, href_list)
+/obj/item/virusdish/Topic(href, href_list)
 	. = ..()
 	if(.) return 1
 
@@ -79,23 +78,23 @@
 		usr << browse(info, "window=info_\ref[src]")
 		return 1
 
-/obj/item/weapon/ruinedvirusdish
+/obj/item/ruinedvirusdish
 	name = "ruined virus sample"
 	icon = 'icons/obj/items.dmi'
 	icon_state = "implantcase-b"
 	desc = "The bacteria in the dish are completely dead."
 
-/obj/item/weapon/ruinedvirusdish/attackby(var/obj/item/weapon/W as obj,var/mob/living/carbon/user as mob)
-	if(istype(W,/obj/item/weapon/hand_labeler) || istype(W,/obj/item/weapon/reagent_containers/syringe))
+/obj/item/ruinedvirusdish/attackby(var/obj/item/W as obj,var/mob/living/carbon/user as mob)
+	if(istype(W,/obj/item/hand_labeler) || istype(W,/obj/item/reagent_containers/syringe))
 		return ..()
 
 	if(prob(50))
-		user << "\The [src] shatters!"
+		to_chat(user, "\The [src] shatters!")
 		qdel(src)
 
 ///////////////GNA DISK///////////////
 
-/obj/item/weapon/diseasedisk
+/obj/item/diseasedisk
 	name = "blank GNA disk"
 	icon = 'icons/obj/cloning.dmi'
 	icon_state = "datadisk0"
@@ -105,7 +104,7 @@
 	var/stage = 1
 	var/analysed = 1
 
-/obj/item/weapon/diseasedisk/premade/Initialize(mapload)
+/obj/item/diseasedisk/premade/Initialize(mapload)
 	. = ..()
 	name = "blank GNA disk (stage: [stage])"
 	effect = new /datum/disease2/effectholder

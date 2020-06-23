@@ -14,6 +14,7 @@
 	var/ui_style_vr = FALSE //Do we use our hud icons?
 	var/sitting = FALSE
 	var/bellyup = FALSE
+	does_spin = FALSE
 	var/vr_icons = list(
 					   "handy-hydro",
 					   "handy-service",
@@ -32,13 +33,27 @@
 					   "mechoid-Janitor",
 					   "mechoid-Combat",
 					   "mechoid-Combat-roll",
+					   "mechoid-Combat-shield",
 					   "Noble-CLN",
 					   "Noble-SRV",
 					   "Noble-DIG",
 					   "Noble-MED",
 					   "Noble-SEC",
 					   "Noble-ENG",
-					   "Noble-STD"
+					   "Noble-STD",
+					   "zoomba-standard",
+					   "zoomba-clerical",
+					   "zoomba-engineering",
+					   "zoomba-janitor",
+					   "zoomba-medical",
+					   "zoomba-crisis",
+					   "zoomba-miner",
+					   "zoomba-research",
+					   "zoomba-security",
+					   "zoomba-service",
+					   "zoomba-combat",
+					   "zoomba-combat-roll",
+					   "zoomba-combat-shield"
 					   )					//List of all used sprites that are in robots_vr.dmi
 
 
@@ -74,9 +89,9 @@
 			add_overlay("[module_sprites[icontype]]-sleeper_g")
 		if(sleeper_r == TRUE)
 			add_overlay("[module_sprites[icontype]]-sleeper_r")
-		if(istype(module_active,/obj/item/weapon/gun/energy/laser/mounted))
+		if(istype(module_active,/obj/item/gun/energy/laser/mounted))
 			add_overlay("laser")
-		if(istype(module_active,/obj/item/weapon/gun/energy/taser/mounted/cyborg))
+		if(istype(module_active,/obj/item/gun/energy/taser/mounted/cyborg))
 			add_overlay("taser")
 		if(lights_on)
 			add_overlay("eyes-[module_sprites[icontype]]-lights")
@@ -125,7 +140,7 @@
 								cleaned_human.shoes.clean_blood()
 								cleaned_human.update_inv_shoes(0)
 							cleaned_human.clean_blood(1)
-							cleaned_human << "<span class='warning'>[src] cleans your face!</span>"
+							to_chat(cleaned_human, "<span class='warning'>[src] cleans your face!</span>")
 	return
 
 /mob/living/silicon/robot/proc/vr_sprite_check()
@@ -142,7 +157,7 @@
 	set name = "Refill Extinguisher"
 	set category = "Object"
 	var/datum/matter_synth/water = water_res
-	for(var/obj/item/weapon/extinguisher/E in module.modules)
+	for(var/obj/item/extinguisher/E in module.modules)
 		if(E.reagents.total_volume < E.max_water)
 			if(water && water.energy > 0)
 				var/amount = E.max_water - E.reagents.total_volume
@@ -156,19 +171,13 @@
 
 //RIDING
 /datum/riding/dogborg
-	keytype = /obj/item/weapon/material/twohanded/fluff/riding_crop // Crack!
+	keytype = /obj/item/material/twohanded/fluff/riding_crop // Crack!
 	nonhuman_key_exemption = FALSE	// If true, nonhumans who can't hold keys don't need them, like borgs and simplemobs.
 	key_name = "a riding crop"		// What the 'keys' for the thing being rided on would be called.
 	only_one_driver = TRUE			// If true, only the person in 'front' (first on list of riding mobs) can drive.
 
 /datum/riding/dogborg/handle_vehicle_layer()
-	if(ridden.has_buckled_mobs())
-		if(ridden.dir != NORTH)
-			ridden.layer = ABOVE_MOB_LAYER
-		else
-			ridden.layer = initial(ridden.layer)
-	else
-		ridden.layer = initial(ridden.layer)
+	ridden.layer = initial(ridden.layer)
 
 /datum/riding/dogborg/ride_check(mob/living/M)
 	var/mob/living/L = ridden
@@ -187,10 +196,10 @@
 	var/scale = L.size_multiplier
 
 	var/list/values = list(
-		"[NORTH]" = list(0, 8*scale, ABOVE_MOB_LAYER),
-		"[SOUTH]" = list(0, 8*scale, BELOW_MOB_LAYER),
-		"[EAST]" = list(-5*scale, 8*scale, ABOVE_MOB_LAYER),
-		"[WEST]" = list(5*scale, 8*scale, ABOVE_MOB_LAYER))
+		"[NORTH]" = list(0, 10*scale, ABOVE_MOB_LAYER),
+		"[SOUTH]" = list(0, 10*scale, BELOW_MOB_LAYER),
+		"[EAST]" = list(-5*scale, 10*scale, ABOVE_MOB_LAYER),
+		"[WEST]" = list(5*scale, 10*scale, ABOVE_MOB_LAYER))
 
 	return values
 
@@ -263,3 +272,10 @@
 		return
 	if(buckle_mob(M))
 		visible_message("<span class='notice'>[M] starts riding [name]!</span>")
+
+/mob/living/silicon/robot/onTransitZ(old_z, new_z)
+	if(shell)
+		if(deployed && GLOB.using_map.ai_shell_restricted && !(new_z in GLOB.using_map.ai_shell_allowed_levels))
+			to_chat(src,"<span class='warning'>Your connection with the shell is suddenly interrupted!</span>")
+			undeploy()
+	..()

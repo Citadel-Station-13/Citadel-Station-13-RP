@@ -6,8 +6,8 @@ ALERT_GREEN All threats to the station have passed. Security may not have weapon
 ALERT_BLUE_UPTO The station has received reliable information about possible hostile activity on the station. Security staff may have weapons visible, random searches are permitted.
 ALERT_BLUE_DOWNTO The immediate threat has passed. Security may no longer have weapons drawn at all times, but may continue to have them visible. Random searches are still allowed.
 ALERT_RED_UPTO There is an immediate serious threat to the station. Security may have weapons unholstered at all times. Random searches are allowed and advised.
-ALERT_RED_DOWNTO The self-destruct mechanism has been deactivated, there is still however an immediate serious threat to the station. Security may have weapons unholstered at all times, random searches are allowed and advised.
-ALERT_DELTA The station's self-destruct mechanism has been engaged. All crew are instructed to obey all instructions given by heads of staff. Any violations of these orders can be punished by death. This is not a drill.
+ALERT_RED_DOWNTO The station is no longer under threat of imminent destruction, but there is still an immediate serious threat to the station. Security may have weapons unholstered at all times, random searches are allowed and advised.
+ALERT_DELTA The station is under immediate threat of imminent destruction! All crew are instructed to obey all instructions given by heads of staff. Any violations of these orders can result up to and including termination. This is not a drill.
 
 ## Add a # infront of this if you want to use the SQL based admin system, the legacy system uses admins.txt. You need to set up your database to use the SQL based system.
 ADMIN_LEGACY_SYSTEM
@@ -124,6 +124,12 @@ PROBABILITY LIZARD 1
 PROBABILITY INTRIGUE 1
 PROBABILITY VISITORS 1
 
+## Overrides for required number of readied up players for a gamemode to be able to start can be defined here.
+## If it is unset, it will default to the requirement set by the gamemode datum.
+## Note that this does not control the required amount of antags for a gamemode, and so a lower number may still fail to start if not enough people want to be antags.
+## By default, this overrides the voted gamemode requirement. To override the requirement for Secret, append '_SECRET' to the end of the first word.
+## The format to use is REQUIRED_PLAYERS[_SECRET] [gamemode tag] [number of readies needed], for example, "REQUIRED_PLAYERS TRAITOR 1", or "REQUIRED_PLAYERS_SECRET MERCENARY 10".
+
 ## Hash out to disable random events during the round.
 ALLOW_RANDOM_EVENTS
 
@@ -215,12 +221,12 @@ GUEST_BAN
 # FORUMURL http://example.com
 
 ## Wiki address
-# WIKIURL http://example.com
+WIKIURL https://citadel-station.net/wiki_rp/index.php?title=Main_Page
 
 ## Wiki search path
 ## Set this to whatever path your wiki uses to search for articles
 ## Use %s to mark where the search query should be inserted
-# WIKISEARCHURL http://example.com/index.php?title=Special%3ASearch&search=%s
+WIKISEARCHURL https://citadel-station.net/wiki_rp/index.php?search=%s&title=Special%3ASearch&go=Go
 
 ## GitHub address
 # GITHUBURL https://github.com/example-user/example-repository
@@ -243,8 +249,8 @@ GUEST_BAN
 
 ## Remove the # to allow special 'Easter-egg' events on special holidays such as seasonal holidays and stuff like 'Talk Like a Pirate Day' :3 YAARRR
 ALLOW_HOLIDAYS
-##Defines the ticklag for the world.  0.6 is the normal one, 0.5 is smoother
-TICKLAG 0.6
+##Defines the ticklag for the world.
+TICKLAG 0.5
 
 ## Defines if Tick Compensation is used.  It results in a minor slowdown of movement of all mobs, but attempts to result in a level movement speed across all ticks.  Recommended if tickrate is lowered.
 TICKCOMP 0
@@ -410,6 +416,9 @@ ENGINE_MAP Supermatter Engine,Edison's Bane
 # If 'time off' system is on, controls whether or not players can switch on/off duty midround using timeclocks
 # PTO_JOB_CHANGE
 
+# Forbids players from joining if they have no set General flavor text
+# REQUIRE_FLAVOR
+
 # Applies a limit to the number of assistants and visitors respectively
 # LIMIT_INTERNS 6
 # LIMIT_VISITORS 6
@@ -427,3 +436,17 @@ ENGINE_MAP Supermatter Engine,Edison's Bane
 ## Submap rotation is an experimental feature and can cause bugs and weirdness if certain objects inside the submap are coded poorly.
 ## Submaps can still be rotated when loading manually with the admin verbs, if desired.
 # RANDOM_SUBMAP_ORIENTATION
+
+## Uncomment to allow the AI job to use 'AI Shells', a new type of borg that lets the AI hop into and out of them at will.
+## This has some balance implications, and so it might not be desirable for all servers.
+# ALLOW_AI_SHELLS
+
+## Uncomment to provide the AI with one free AI Shell at roundstart. Requires ALLOW_AI_SHELLS to also be uncommented.
+## This is intended for low-pop servers, where robotics might rarely be staffed.
+## Note that this will make it possible for the AI to 'bootstrap' more AI Shells on their own by using the science module. If this is not acceptable for your server, you should not uncomment this.
+## The landmark object that spawns the shell will also need to be mapped in for this to work.
+# GIVE_FREE_AI_SHELL
+
+## Uncomment to allow specific solar control computers to set themselves up.
+## This requires solar controller computers in the map to be set up to use it, with the auto_start variable.
+# AUTOSTART_SOLARS

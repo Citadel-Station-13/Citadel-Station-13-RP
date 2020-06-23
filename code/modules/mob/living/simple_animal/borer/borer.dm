@@ -1,4 +1,4 @@
-/mob/living/simple_animal/borer
+/mob/living/simple_mob/animal/borer
 	name = "cortical borer"
 	real_name = "cortical borer"
 	desc = "A small, quivering sluglike creature."
@@ -13,7 +13,7 @@
 	icon_living = "brainslug"
 	icon_dead = "brainslug_dead"
 	speed = 5
-	a_intent = I_HURT
+	a_intent = INTENT_HARM
 	stop_automated_movement = 1
 	status_flags = CANPUSH
 	attacktext = list("nipped")
@@ -21,7 +21,7 @@
 	wander = 0
 	pass_flags = PASSTABLE
 	universal_understand = 1
-	holder_type = /obj/item/weapon/holder/borer
+	holder_type = /obj/item/holder/borer
 
 	var/used_dominate
 	var/chemicals = 10                      // Chemicals used for reproduction and spitting neurotoxin.
@@ -35,16 +35,17 @@
 
 	can_be_antagged = TRUE
 
-/mob/living/simple_animal/borer/roundstart
+/mob/living/simple_mob/animal/borer/roundstart
 	roundstart = 1
 
-/mob/living/simple_animal/borer/Login()
+/mob/living/simple_mob/animal/borer/Login()
 	..()
 	if(mind)
 		borers.add_antagonist(mind)
 
-/mob/living/simple_animal/borer/Initialize(mapload)
-	. = ..()
+/mob/living/simple_mob/animal/borer/New()
+	..()
+
 	add_language("Cortical Link")
 	verbs += /mob/living/proc/ventcrawl
 	verbs += /mob/living/proc/hide
@@ -53,7 +54,7 @@
 	if(!roundstart)
 		request_player()
 
-/mob/living/simple_animal/borer/Life()
+/mob/living/simple_mob/animal/borer/Life()
 
 	..()
 
@@ -64,16 +65,16 @@
 			if(host.reagents.has_reagent("sugar"))
 				if(!docile)
 					if(controlling)
-						host << "<font color='blue'>You feel the soporific flow of sugar in your host's blood, lulling you into docility.</font>"
+						to_chat(host, "<font color='blue'>You feel the soporific flow of sugar in your host's blood, lulling you into docility.</font>")
 					else
-						src << "<font color='blue'>You feel the soporific flow of sugar in your host's blood, lulling you into docility.</font>"
+						to_chat(src, "<font color='blue'>You feel the soporific flow of sugar in your host's blood, lulling you into docility.</font>")
 					docile = 1
 			else
 				if(docile)
 					if(controlling)
-						host << "<font color='blue'>You shake off your lethargy as the sugar leaves your host's blood.</font>"
+						to_chat(host, "<font color='blue'>You shake off your lethargy as the sugar leaves your host's blood.</font>")
 					else
-						src << "<font color='blue'>You shake off your lethargy as the sugar leaves your host's blood.</font>"
+						to_chat(src, "<font color='blue'>You shake off your lethargy as the sugar leaves your host's blood.</font>")
 					docile = 0
 
 			if(chemicals < 250)
@@ -81,7 +82,7 @@
 			if(controlling)
 
 				if(docile)
-					host << "<font color='blue'>You are feeling far too docile to continue controlling your host...</font>"
+					to_chat(host, "<font color='blue'>You are feeling far too docile to continue controlling your host...</font>")
 					host.release_control()
 					return
 
@@ -91,19 +92,19 @@
 				if(prob(host.brainloss/20))
 					host.say("*[pick(list("blink","blink_r","choke","aflap","drool","twitch","twitch_v","gasp"))]")
 
-/mob/living/simple_animal/borer/Stat()
+/mob/living/simple_mob/animal/borer/Stat()
 	..()
 	statpanel("Status")
 
-	if(emergency_shuttle)
-		var/eta_status = emergency_shuttle.get_status_panel_eta()
+	if(SSemergencyshuttle)
+		var/eta_status = SSemergencyshuttle.get_status_panel_eta()
 		if(eta_status)
 			stat(null, eta_status)
 
 	if (client.statpanel == "Status")
 		stat("Chemicals", chemicals)
 
-/mob/living/simple_animal/borer/proc/detatch()
+/mob/living/simple_mob/animal/borer/proc/detatch()
 
 	if(!host || !controlling) return
 
@@ -154,7 +155,7 @@
 
 	qdel(host_brain)
 
-/mob/living/simple_animal/borer/proc/leave_host()
+/mob/living/simple_mob/animal/borer/proc/leave_host()
 
 	if(!host) return
 
@@ -172,7 +173,7 @@
 	return
 
 //Procs for grabbing players.
-/mob/living/simple_animal/borer/proc/request_player()
+/mob/living/simple_mob/animal/borer/proc/request_player()
 	for(var/mob/observer/dead/O in player_list)
 		if(jobban_isbanned(O, "Borer"))
 			continue
@@ -180,7 +181,7 @@
 			if(O.client.prefs.be_special & BE_ALIEN)
 				question(O.client)
 
-/mob/living/simple_animal/borer/proc/question(var/client/C)
+/mob/living/simple_mob/animal/borer/proc/question(var/client/C)
 	spawn(0)
 		if(!C)	return
 		var/response = alert(C, "A cortical borer needs a player. Are you interested?", "Cortical borer request", "Yes", "No", "Never for this round")
@@ -191,7 +192,7 @@
 		else if (response == "Never for this round")
 			C.prefs.be_special ^= BE_ALIEN
 
-/mob/living/simple_animal/borer/proc/transfer_personality(var/client/candidate)
+/mob/living/simple_mob/animal/borer/proc/transfer_personality(var/client/candidate)
 
 	if(!candidate || !candidate.mob || !candidate.mob.mind)
 		return
@@ -204,10 +205,10 @@
 		src.mind.assigned_role = "Cortical Borer"
 		src.mind.special_role = "Cortical Borer"
 
-	src << "<span class='notice'>You are a cortical borer!</span> You are a brain slug that worms its way \
+	to_chat(src, "<span class='notice'>You are a cortical borer!</span> You are a brain slug that worms its way \
 	into the head of its victim. Use stealth, persuasion and your powers of mind control to keep you, \
-	your host and your eventual spawn safe and warm."
-	src << "You can speak to your victim with <b>say</b>, to other borers with <b>say :x</b>, and use your Abilities tab to access powers."
+	your host and your eventual spawn safe and warm.")
+	to_chat(src, "You can speak to your victim with <b>say</b>, to other borers with <b>say :x</b>, and use your Abilities tab to access powers.")
 
-/mob/living/simple_animal/borer/cannot_use_vents()
+/mob/living/simple_mob/animal/borer/cannot_use_vents()
 	return

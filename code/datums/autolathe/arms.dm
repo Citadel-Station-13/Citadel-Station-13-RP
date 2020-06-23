@@ -1,6 +1,6 @@
 /datum/category_item/autolathe/arms/syringegun_ammo
 	name = "syringe gun cartridge"
-	path =/obj/item/weapon/syringe_cartridge
+	path =/obj/item/syringe_cartridge
 
 ////////////////
 /*Ammo casings*/
@@ -70,12 +70,12 @@
 	hidden = 1
 
 /datum/category_item/autolathe/arms/tommymag
-	name = "Tommygun magazine (.45)"
+	name = "Tommy Gun magazine (.45)"
 	path =/obj/item/ammo_magazine/m45tommy
 	hidden = 1
 
 /datum/category_item/autolathe/arms/tommydrum
-	name = "Tommygun drum magazine (.45)"
+	name = "Tommy Gun drum magazine (.45)"
 	path =/obj/item/ammo_magazine/m45tommydrum
 	hidden = 1
 
@@ -159,19 +159,19 @@
 	name = "rifle magazine (5.45mm practice)"
 	path =/obj/item/ammo_magazine/m545/practice
 
-/datum/category_item/autolathe/arms/rifle_545_hunter
+/*/datum/category_item/autolathe/arms/rifle_545_hunter //VOREStation Edit Start. By request of Ace
 	name = "rifle magazine (5.45mm hunting)"
-	path =/obj/item/ammo_magazine/m545/hunter
+	path =/obj/item/ammo_magazine/m545/hunter*/ //VOREStation Edit End.
 
 /datum/category_item/autolathe/arms/machinegun_545
 	name = "machinegun box magazine (5.45)"
 	path =/obj/item/ammo_magazine/m545saw
 	hidden = 1
 
-/datum/category_item/autolathe/arms/machinegun_545_hunter
+/*/datum/category_item/autolathe/arms/machinegun_545_hunter //VOREStation Edit Start. By request of Ace
 	name = "machinegun box magazine (5.45 hunting)"
 	path =/obj/item/ammo_magazine/m545saw/hunter
-	hidden = 1
+	hidden = 1*/ //VOREStation Edit End.
 
 /////// 7.62
 
@@ -234,13 +234,13 @@
 	hidden = 1
 
 /datum/category_item/autolathe/arms/tommymag
-	name = "Tommygun magazine (.45)"
+	name = "Tommy Gun magazine (.45)"
 	path =/obj/item/ammo_magazine/m45tommy/empty
 	category = "Arms and Ammunition"
 	hidden = 1
 
 /datum/category_item/autolathe/arms/tommydrum
-	name = "Tommygun drum magazine (.45)"
+	name = "Tommy Gun drum magazine (.45)"
 	path =/obj/item/ammo_magazine/m45tommydrum/empty
 	category = "Arms and Ammunition"
 	hidden = 1
@@ -406,9 +406,9 @@
 	path =/obj/item/ammo_magazine/clip/c762
 	hidden = 1
 
-/datum/category_item/autolathe/arms/rifle_clip_762_hunter
+/*/datum/category_item/autolathe/arms/rifle_clip_762_hunter //VOREStation Edit Start. By request of Ace
 	name = "ammo clip (7.62mm hunting)"
-	path =/obj/item/ammo_magazine/clip/c762/hunter
+	path =/obj/item/ammo_magazine/clip/c762/hunter*/ //VOREStation Edit End.
 
 /datum/category_item/autolathe/arms/rifle_clip_762_practice
 	name = "ammo clip (7.62mm practice)"
@@ -421,10 +421,10 @@
 
 /datum/category_item/autolathe/arms/tacknife
 	name = "tactical knife"
-	path =/obj/item/weapon/material/knife/tacknife
+	path =/obj/item/material/knife/tacknife
 	hidden = 1
 
 /datum/category_item/autolathe/arms/flamethrower
 	name = "flamethrower"
-	path =/obj/item/weapon/flamethrower/full
+	path =/obj/item/flamethrower/full
 	hidden = 1

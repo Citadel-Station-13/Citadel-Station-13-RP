@@ -319,14 +319,14 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 				continue // Are they indoors?
 
 			// If they have an open umbrella, it'll guard from rain
-			if(istype(L.get_active_hand(), /obj/item/weapon/melee/umbrella))
-				var/obj/item/weapon/melee/umbrella/U = L.get_active_hand()
+			if(istype(L.get_active_hand(), /obj/item/melee/umbrella))
+				var/obj/item/melee/umbrella/U = L.get_active_hand()
 				if(U.open)
 					if(show_message)
 						to_chat(L, "<span class='notice'>Rain patters softly onto your umbrella.</span>")
 					continue
-			else if(istype(L.get_inactive_hand(), /obj/item/weapon/melee/umbrella))
-				var/obj/item/weapon/melee/umbrella/U = L.get_inactive_hand()
+			else if(istype(L.get_inactive_hand(), /obj/item/melee/umbrella))
+				var/obj/item/melee/umbrella/U = L.get_inactive_hand()
 				if(U.open)
 					if(show_message)
 						to_chat(L, "<span class='notice'>Rain patters softly onto your umbrella.</span>")
@@ -375,14 +375,14 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 
 			// Lazy wind code
 			if(prob(10))
-				if(istype(L.get_active_hand(), /obj/item/weapon/melee/umbrella))
-					var/obj/item/weapon/melee/umbrella/U = L.get_active_hand()
+				if(istype(L.get_active_hand(), /obj/item/melee/umbrella))
+					var/obj/item/melee/umbrella/U = L.get_active_hand()
 					if(U.open)
 						to_chat(L, "<span class='danger'>You struggle to keep hold of your umbrella!</span>")
 						L.Stun(20)	// This is not nearly as long as it seems
 						playsound(L, 'sound/effects/rustle1.ogg', 100, 1)	// Closest sound I've got to "Umbrella in the wind"
-				else if(istype(L.get_inactive_hand(), /obj/item/weapon/melee/umbrella))
-					var/obj/item/weapon/melee/umbrella/U = L.get_inactive_hand()
+				else if(istype(L.get_inactive_hand(), /obj/item/melee/umbrella))
+					var/obj/item/melee/umbrella/U = L.get_inactive_hand()
 					if(U.open)
 						to_chat(L, "<span class='danger'>A gust of wind yanks the umbrella from your hand!</span>")
 						playsound(L, 'sound/effects/rustle1.ogg', 100, 1)
@@ -391,14 +391,14 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 						U.throw_at(get_edge_target_turf(U, pick(alldirs)), 8, 1, L)
 
 			// If they have an open umbrella, it'll guard from rain
-			if(istype(L.get_active_hand(), /obj/item/weapon/melee/umbrella))
-				var/obj/item/weapon/melee/umbrella/U = L.get_active_hand()
+			if(istype(L.get_active_hand(), /obj/item/melee/umbrella))
+				var/obj/item/melee/umbrella/U = L.get_active_hand()
 				if(U.open)
 					if(show_message)
 						to_chat(L, pick(effect_message))
 					continue
-			else if(istype(L.get_inactive_hand(), /obj/item/weapon/melee/umbrella))
-				var/obj/item/weapon/melee/umbrella/U = L.get_inactive_hand()
+			else if(istype(L.get_inactive_hand(), /obj/item/melee/umbrella))
+				var/obj/item/melee/umbrella/U = L.get_inactive_hand()
 				if(U.open)
 					if(show_message)
 						to_chat(L, pick(effect_message))
@@ -456,10 +456,10 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 				continue // They're indoors, so no need to pelt them with ice.
 
 			// If they have an open umbrella, it'll guard from hail
-			var/obj/item/weapon/melee/umbrella/U
-			if(istype(H.get_active_hand(), /obj/item/weapon/melee/umbrella))
+			var/obj/item/melee/umbrella/U
+			if(istype(H.get_active_hand(), /obj/item/melee/umbrella))
 				U = H.get_active_hand()
-			else if(istype(H.get_inactive_hand(), /obj/item/weapon/melee/umbrella))
+			else if(istype(H.get_inactive_hand(), /obj/item/melee/umbrella))
 				U = H.get_inactive_hand()
 			if(U && U.open)
 				if(show_message)

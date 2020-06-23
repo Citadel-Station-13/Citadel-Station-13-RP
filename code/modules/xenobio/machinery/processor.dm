@@ -13,7 +13,7 @@
 	var/monkeys_recycled = 0
 	description_info = "Clickdrag dead slimes or monkeys to it to insert them.  It will make a new monkey cube for every four monkeys it processes."
 
-/obj/item/weapon/circuitboard/processor
+/obj/item/circuitboard/processor
 	name = T_BOARD("slime processor")
 	build_path = /obj/machinery/processor
 	origin_tech = list(TECH_DATA = 2, TECH_BIO = 2)
@@ -70,7 +70,7 @@
 		sleep(1 SECONDS)
 
 	while(monkeys_recycled >= 4)
-		new /obj/item/weapon/reagent_containers/food/snacks/monkeycube(get_turf(src))
+		new /obj/item/reagent_containers/food/snacks/monkeycube(get_turf(src))
 		playsound(src.loc, 'sound/effects/splat.ogg', 50, 1)
 		monkeys_recycled -= 4
 		sleep(1 SECOND)
@@ -79,8 +79,8 @@
 	playsound(src.loc, 'sound/machines/ding.ogg', 50, 1)
 
 /obj/machinery/processor/proc/extract(var/atom/movable/AM)
-	if(istype(AM, /mob/living/simple_animal/slime))
-		var/mob/living/simple_animal/slime/S = AM
+	if(istype(AM, /mob/living/simple_mob/slime))
+		var/mob/living/simple_mob/slime/S = AM
 		while(S.cores)
 			new S.coretype(get_turf(src))
 			playsound(src.loc, 'sound/effects/splat.ogg', 50, 1)
@@ -98,8 +98,8 @@
 		sleep(1 SECOND)
 
 /obj/machinery/processor/proc/can_insert(var/atom/movable/AM)
-	if(istype(AM, /mob/living/simple_animal/slime))
-		var/mob/living/simple_animal/slime/S = AM
+	if(istype(AM, /mob/living/simple_mob/slime))
+		var/mob/living/simple_mob/slime/S = AM
 		if(S.stat != DEAD)
 			return FALSE
 		return TRUE

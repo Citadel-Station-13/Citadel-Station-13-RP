@@ -1,4 +1,5 @@
-/mob/living/carbon/New()
+/mob/living/carbon/Initialize()
+	. = ..()
 	//setup reagent holders
 	bloodstr = new/datum/reagents/metabolism/bloodstream(500, src)
 	ingested = new/datum/reagents/metabolism/ingested(500, src)
@@ -6,7 +7,6 @@
 	reagents = bloodstr
 	if (!default_language && species_language)
 		default_language = all_languages[species_language]
-	..()
 
 /mob/living/carbon/Life()
 	..()
@@ -33,46 +33,6 @@
 	touching.clear_reagents()
 	..()
 
-/mob/living/carbon/Move(NewLoc, direct)
-	. = ..()
-	if(.)
-		if(src.nutrition && src.stat != 2)
-			src.nutrition -= DEFAULT_HUNGER_FACTOR/10
-			if(src.m_intent == "run")
-				src.nutrition -= DEFAULT_HUNGER_FACTOR/10
-		if((FAT in src.mutations) && src.m_intent == "run" && src.bodytemperature <= 360)
-			src.bodytemperature += 2
-
-		// Moving around increases germ_level faster
-		if(germ_level < GERM_LEVEL_MOVE_CAP && prob(8))
-			germ_level++
-/* VOREStation Removal - Needless duplicate feature
-/mob/living/carbon/relaymove(var/mob/living/user, direction)
-	if((user in src.stomach_contents) && istype(user))
-		if(user.last_special <= world.time)
-			user.last_special = world.time + 50
-			src.visible_message("<span class='danger'>You hear something rumbling inside [src]'s stomach...</span>")
-			var/obj/item/I = user.get_active_hand()
-			if(I && I.force)
-				var/d = rand(round(I.force / 4), I.force)
-				if(istype(src, /mob/living/carbon/human))
-					var/mob/living/carbon/human/H = src
-					var/obj/item/organ/external/organ = H.get_organ(BP_TORSO)
-					if (istype(organ))
-						if(organ.take_damage(d, 0))
-							H.UpdateDamageIcon()
-					H.updatehealth()
-				else
-					src.take_organ_damage(d)
-				user.visible_message("<span class='danger'>[user] attacks [src]'s stomach wall with the [I.name]!</span>")
-				playsound(user.loc, 'sound/effects/attackblob.ogg', 50, 1)
-
-				if(prob(src.getBruteLoss() - 50))
-					for(var/atom/movable/A in stomach_contents)
-						A.loc = loc
-						stomach_contents.Remove(A)
-					src.gib()
-*/
 /mob/living/carbon/gib()
 	for(var/mob/M in src)
 		if(M in src.stomach_contents)
@@ -91,7 +51,7 @@
 		if (H.hand)
 			temp = H.organs_by_name["l_hand"]
 		if(temp && !temp.is_usable())
-			H << "<font color='red'>You can't use your [temp.name]</font>"
+			to_chat(H, "<font color='red'>You can't use your [temp.name]</font>")
 			return
 
 	return
@@ -131,7 +91,7 @@
 			if(31 to INFINITY)
 				Weaken(10) //This should work for now, more is really silly and makes you lay there forever
 
-	var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(5, 1, loc)
 	s.start()
 
@@ -232,7 +192,7 @@
 				src.sleeping = max(0,src.sleeping-5)
 				if(src.sleeping == 0)
 					src.resting = 0
-				if(istype(H)) H.in_stasis = 0 //VOREStation Add - Just In Case // Citadel change - Check types if you typecast!
+				if(H) H.in_stasis = 0 //VOREStation Add - Just In Case
 				M.visible_message("<span class='notice'>[M] shakes [src] trying to wake [T.him] up!</span>", \
 									"<span class='notice'>You shake [src] trying to wake [T.him] up!</span>")
 			else
@@ -343,26 +303,26 @@
 	set category = "IC"
 
 	if(usr.sleeping)
-		usr << "<font color='red'>You are already sleeping</font>"
+		to_chat(usr, "<font color='red'>You are already sleeping</font>")
 		return
 	if(alert(src,"You sure you want to sleep for a while?","Sleep","Yes","No") == "Yes")
 		usr.sleeping = 20 //Short nap
 
-/mob/living/carbon/Bump(var/atom/movable/AM, yes)
-	if(now_pushing || !yes)
+/mob/living/carbon/Bump(atom/A)
+	if(now_pushing)
 		return
 	..()
-	if(istype(AM, /mob/living/carbon) && prob(10))
-		src.spread_disease_to(AM, "Contact")
+	if(istype(A, /mob/living/carbon) && prob(10))
+		spread_disease_to(A, "Contact")
 
 /mob/living/carbon/cannot_use_vents()
 	return
 
 /mob/living/carbon/slip(var/slipped_on,stun_duration=8)
-	if(buckled || weakened)
+	if(buckled)
 		return 0
 	stop_pulling()
-	src << "<span class='warning'>You slipped on [slipped_on]!</span>"
+	to_chat(src, "<span class='warning'>You slipped on [slipped_on]!</span>")
 	playsound(src.loc, 'sound/misc/slip.ogg', 50, 1, -3)
 	Weaken(FLOOR(stun_duration/2, 1))
 	return 1
@@ -374,11 +334,15 @@
 		chem_effects[effect] = magnitude
 
 /mob/living/carbon/get_default_language()
-	if(default_language && can_speak(default_language))
-		return default_language
+	if(default_language)
+		if(can_speak(default_language))
+			return default_language
+		else
+			return all_languages[LANGUAGE_GIBBERISH]
 
 	if(!species)
 		return null
+
 	return species.default_language ? all_languages[species.default_language] : null
 
 /mob/living/carbon/proc/should_have_organ(var/organ_check)
@@ -388,3 +352,8 @@
 	if(isSynthetic())
 		return 0
 	return !(species.flags & NO_PAIN)
+
+/mob/living/carbon/needs_to_breathe()
+	if(does_not_breathe)
+		return FALSE
+	return ..()

@@ -1,4 +1,4 @@
-/mob/living/simple_animal/corgi/show_inv(mob/user as mob)
+/mob/living/simple_mob/corgi/show_inv(mob/user as mob)
 	user.set_machine(src)
 	if(user.stat) return
 
@@ -16,16 +16,16 @@
 	onclose(user, "mob[real_name]")
 	return
 
-/mob/living/simple_animal/corgi/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/mob/living/simple_mob/corgi/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(inventory_head && inventory_back)
 		//helmet and armor = 100% protection
 		if( istype(inventory_head,/obj/item/clothing/head/helmet) && istype(inventory_back,/obj/item/clothing/suit/armor) )
 			if( O.force )
-				usr << "<span class='warning'>This animal is wearing too much armor. You can't cause them any damage.</span>"
+				to_chat(usr, "<span class='warning'>This animal is wearing too much armor. You can't cause them any damage.</span>")
 				for (var/mob/M in viewers(src, null))
 					M.show_message("<span class='warning'><B>[user] hits [src] with the [O], however [src] is too armored.</B></span>")
 			else
-				usr << "<span class='warning'>This animal is wearing too much armor. You can't reach its skin.</span>"
+				to_chat(usr, "<span class='warning'>This animal is wearing too much armor. You can't reach its skin.</span>")
 				for (var/mob/M in viewers(src, null))
 					M.show_message("<span class='warning'>[user] gently taps [src] with the [O].</span>")
 			if(prob(15))
@@ -33,7 +33,7 @@
 			return
 	..()
 
-/mob/living/simple_animal/corgi/Topic(href, href_list)
+/mob/living/simple_mob/corgi/Topic(href, href_list)
 	if(usr.stat) return
 
 	//Removing from inventory
@@ -72,12 +72,12 @@
 			return
 		var/add_to = href_list["add_inv"]
 		if(!usr.get_active_hand())
-			usr << "<span class='warning'>You have nothing in your hand to put on its [add_to].</span>"
+			to_chat(usr, "<span class='warning'>You have nothing in your hand to put on its [add_to].</span>")
 			return
 		switch(add_to)
 			if("head")
 				if(inventory_head)
-					usr << "<span class='warning'>It's is already wearing something.</span>"
+					to_chat(usr, "<span class='warning'>It's is already wearing something.</span>")
 					return
 				else
 					place_on_head(usr.get_active_hand())
@@ -87,7 +87,7 @@
 						return
 
 					var/list/allowed_types = list(
-						/obj/item/weapon/bedsheet,
+						/obj/item/bedsheet,
 						/obj/item/clothing/glasses/sunglasses,
 						/obj/item/clothing/head/caphat,
 						/obj/item/clothing/head/that,
@@ -115,7 +115,7 @@
 					)
 
 					if( ! ( item_to_add.type in allowed_types ) )
-						usr << "<span class='warning'>It doesn't seem too keen on wearing that item.</span>"
+						to_chat(usr, "<span class='warning'>It doesn't seem too keen on wearing that item.</span>")
 						return
 
 					usr.drop_item()
@@ -124,7 +124,7 @@
 
 			if("back")
 				if(inventory_back)
-					usr << "<span class='warning'>It's already wearing something.</span>"
+					to_chat(usr, "<span class='warning'>It's already wearing something.</span>")
 					return
 				else
 					var/obj/item/item_to_add = usr.get_active_hand()
@@ -136,11 +136,11 @@
 
 					var/list/allowed_types = list(
 						/obj/item/clothing/suit/armor/vest,
-						/obj/item/device/radio
+						/obj/item/radio
 					)
 
 					if( ! ( item_to_add.type in allowed_types ) )
-						usr << "<span class='warning'>This object won't fit.</span>"
+						to_chat(usr, "<span class='warning'>This object won't fit.</span>")
 						return
 
 					usr.drop_item()
@@ -150,7 +150,7 @@
 	else
 		..()
 
-/mob/living/simple_animal/corgi/proc/place_on_head(obj/item/item_to_add)
+/mob/living/simple_mob/corgi/proc/place_on_head(obj/item/item_to_add)
 	item_to_add.loc = src
 	src.inventory_head = item_to_add
 	regenerate_icons()
@@ -203,7 +203,7 @@
 		if(/obj/item/clothing/head/wizard/fake,	/obj/item/clothing/head/wizard,	/obj/item/clothing/head/collectable/wizard)
 			name = "Grandwizard [real_name]"
 			speak = list("YAP", "Woof!", "Bark!", "AUUUUUU", "EI  NATH!")
-		if(/obj/item/weapon/bedsheet)
+		if(/obj/item/bedsheet)
 			name = "\improper Ghost"
 			speak = list("WoooOOOooo~","AUUUUUUUUUUUUUUUUUU")
 			emote_see = list("stumbles around", "shivers")

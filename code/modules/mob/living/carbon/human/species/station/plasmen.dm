@@ -18,7 +18,7 @@
 	blood_color = "#FC2BC5"
 
 	flags = NO_SCAN | NO_MINOR_CUT
-	spawn_flags = SPECIES_IS_WHITELISTED | SPECIES_CAN_JOIN
+	spawn_flags = SPECIES_IS_WHITELISTED | SPECIES_CAN_JOIN | SPECIES_WHITELIST_SELECTABLE
 	appearance_flags = HAS_EYE_COLOR
 
 	show_ssd = "completely motionless"
@@ -37,8 +37,8 @@
 	flash_mod =     2
 	chemOD_mod =	1 // turns out this is just damage
 
-	breath_type = "phoron"
-	poison_type = "oxygen"
+	breath_type = /datum/gas/phoron
+	poison_type = /datum/gas/oxygen
 	siemens_coefficient = 1
 
 	speech_bubble_appearance = "phoron"
@@ -77,7 +77,7 @@
 	if(!environment) return
 	var/enviroment_bad = 0 //In case they're ever set on fire while wearing a spacesuit, we don't want the message that they're reacting with the atmosphere.
 
-	if(environment.gas["oxygen"] > 0.5)
+	if(environment.gas[/datum/gas/oxygen] > 0.5)
 		if(H.wear_suit && istype(H.wear_suit,/obj/item/clothing/suit/space) && H.head && istype(H.head,/obj/item/clothing/head/helmet/space)) // now any airtight spessuit works for them. which means exploration voidsuits work :O
 			return
 		H.adjust_fire_stacks(2)
@@ -95,7 +95,7 @@
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/breath(H), slot_wear_mask)
 
-	switch(H.mind.assigned_role)
+	switch(H.mind?.assigned_role)
 		if("Security Officer","Detective")
 			suit=/obj/item/clothing/suit/space/plasman/sec
 			helm=/obj/item/clothing/head/helmet/space/plasman/sec
@@ -105,7 +105,7 @@
 		if("Head of Security")
 			suit=/obj/item/clothing/suit/space/plasman/sec/hos
 			helm=/obj/item/clothing/head/helmet/space/plasman/sec/hos
-		if("Colony Director")
+		if("Facility Director")
 			suit=/obj/item/clothing/suit/space/plasman/sec/captain
 			helm=/obj/item/clothing/head/helmet/space/plasman/sec/captain
 		if("Head of Personnel")
@@ -132,7 +132,7 @@
 		if("Medical Doctor","Paramedic","Psychiatrist")
 			suit=/obj/item/clothing/suit/space/plasman/med
 			helm=/obj/item/clothing/head/helmet/space/plasman/med
-		if("Search and Rescue")
+		if("Field Medic")
 			suit=/obj/item/clothing/suit/space/plasman/med/rescue
 			helm=/obj/item/clothing/head/helmet/space/plasman/med/rescue
 		if("Chemist")
@@ -170,15 +170,15 @@
 			helm=/obj/item/clothing/head/helmet/space/plasman/mime
 	H.equip_to_slot_or_del(new suit(H), slot_wear_suit)
 	H.equip_to_slot_or_del(new helm(H), slot_head)
-	H.equip_to_slot_or_del(new /obj/item/weapon/extinguisher/mini/plasman(H), slot_r_hand)
+	H.equip_to_slot_or_del(new /obj/item/extinguisher/mini/plasman(H), slot_r_hand)
 	if(H.backbag == 1)
-		H.equip_to_slot_or_del(new /obj/item/weapon/tank/vox(H), slot_back)
+		H.equip_to_slot_or_del(new /obj/item/tank/vox(H), slot_back)
 		H.internal = H.back
 	else
-		H.equip_to_slot_or_del(new /obj/item/weapon/tank/vox(H), slot_s_store)
+		H.equip_to_slot_or_del(new /obj/item/tank/vox(H), slot_s_store)
 		H.internal = H.s_store
-	H.internal = locate(/obj/item/weapon/tank) in H.contents
-	if(istype(H.internal,/obj/item/weapon/tank) && H.internals)
+	H.internal = locate(/obj/item/tank) in H.contents
+	if(istype(H.internal,/obj/item/tank) && H.internals)
 		H.internals.icon_state = "internal1"
 	spawn(2)
 		if(H.head && !istype(H.head,/obj/item/clothing/head/helmet/space/plasman))
@@ -192,6 +192,6 @@
 			H.equip_to_slot_or_del(new suit(H), slot_wear_suit)
 			if(H.on_fire)
 				H.ExtinguishMob()
-			H.equip_to_slot_or_del(new /obj/item/weapon/tank/vox(H), slot_s_store)
+			H.equip_to_slot_or_del(new /obj/item/tank/vox(H), slot_s_store)
 			H.internal = H.s_store
 			H.internals.icon_state = "internal1"

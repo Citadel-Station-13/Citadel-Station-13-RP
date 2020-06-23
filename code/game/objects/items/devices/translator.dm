@@ -1,5 +1,5 @@
 //Universal translator
-/obj/item/device/universal_translator
+/obj/item/universal_translator
 	name = "handheld translator"
 	desc = "This handy device appears to translate the languages it hears into onscreen text for a user."
 	icon = 'icons/obj/device.dmi'
@@ -13,7 +13,7 @@
 	var/listening = 0
 	var/datum/language/langset
 
-/obj/item/device/universal_translator/attack_self(mob/user)
+/obj/item/universal_translator/attack_self(mob/user)
 	if(!listening) //Turning ON
 		langset = input(user,"Translate to which of your languages?","Language Selection") as null|anything in user.languages
 		if(langset)
@@ -34,7 +34,7 @@
 		icon_state = "[initial(icon_state)]"
 		to_chat(user, "<span class='notice'>You disable \the [src].</span>")
 
-/obj/item/device/universal_translator/hear_talk(var/mob/speaker, var/message, var/vrb, var/datum/language/language)
+/obj/item/universal_translator/hear_talk(var/mob/speaker, var/message, var/vrb, var/datum/language/language)
 	if(!listening || !istype(speaker))
 		return
 
@@ -73,12 +73,11 @@
 			to_chat(L, "<i><b>[src]</b> translates, </i>\"<span class='[langset.colour]'>[message]</span>\"")
 
 		//They don't understand the output language
-		/*else
-			to_chat(L, "<i><b>[src]</b> translates, </i>\"<span class='[langset.colour]'>[langset.scramble(message)]</span>\"")*/
-			//not much of a 'universal translator' with this else clause.
+		else
+			to_chat(L, "<i><b>[src]</b> translates, </i>\"<span class='[langset.colour]'>[langset.scramble(message)]</span>\"")
 
 //Let's try an ear-worn version
-/obj/item/device/universal_translator/ear
+/obj/item/universal_translator/ear
 	name = "translator earpiece"
 	desc = "This handy device appears to translate the languages it hears into another language for a user."
 	icon_state = "earpiece"

@@ -28,7 +28,7 @@ var/list/infomorph_emotions = list(
 	can_pull_size = ITEMSIZE_SMALL
 	can_pull_mobs = MOB_PULL_SMALLER
 
-	idcard_type = /obj/item/weapon/card/id
+	idcard_type = /obj/item/card/id
 	var/idaccessible = 0
 
 	var/network = NETWORK_NORTHERN_STAR
@@ -36,9 +36,9 @@ var/list/infomorph_emotions = list(
 
 	var/ram = 30	// Used as currency to purchase different abilities
 	var/list/software = list()
-	var/obj/item/device/sleevecard/card	// The card we inhabit
-	var/obj/item/device/radio/sleevecard/radio		// Our primary radio
-	var/obj/item/device/universal_translator/translator
+	var/obj/item/sleevecard/card	// The card we inhabit
+	var/obj/item/radio/sleevecard/radio		// Our primary radio
+	var/obj/item/universal_translator/translator
 
 	var/chassis = null   // A record of your chosen chassis.
 	var/global/list/possible_chassis = list(
@@ -56,7 +56,7 @@ var/list/infomorph_emotions = list(
 		"Feline" = list("purrs","yowls","meows")
 		)
 
-	var/obj/item/weapon/pai_cable/cable		// The cable we produce and use when door or camera jacking
+	var/obj/item/pai_cable/cable		// The cable we produce and use when door or camera jacking
 	var/silence_time			// Timestamp when we were silenced (normally via EMP burst), set to null after silence has faded
 
 // Various software-specific vars
@@ -71,9 +71,9 @@ var/list/infomorph_emotions = list(
 	var/hackprogress = 0				// Possible values: 0 - 1000, >= 1000 means the hack is complete and will be reset upon next check
 	var/hack_aborted = 0
 
-	var/obj/item/radio/integrated/signal/sradio					// AI's signaller
-	var/obj/item/device/communicator/integrated/communicator	// Our integrated communicator.
-	var/obj/item/device/pda/ai/pai/pda							// Our integrated PDA
+	var/obj/item/integated_radio/signal/sradio					// AI's signaller
+	var/obj/item/communicator/integrated/communicator	// Our integrated communicator.
+	var/obj/item/pda/ai/pai/pda							// Our integrated PDA
 
 	var/medical_cannotfind = 0
 	var/datum/data/record/medicalActive1		// Datacore record declarations for record software
@@ -83,7 +83,7 @@ var/list/infomorph_emotions = list(
 	var/datum/data/record/securityActive1		// Could probably just combine all these into one
 	var/datum/data/record/securityActive2
 
-/mob/living/silicon/infomorph/New(var/obj/item/device/sleevecard/SC, var/name = "Unknown")
+/mob/living/silicon/infomorph/New(var/obj/item/sleevecard/SC, var/name = "Unknown")
 	ASSERT(SC)
 	name = "[initial(name)] ([name])"
 	src.forceMove(SC)
@@ -140,7 +140,7 @@ var/list/infomorph_emotions = list(
 	return 0
 
 /mob/living/silicon/infomorph/restrained()
-	if(istype(src.loc,/obj/item/device/sleevecard))
+	if(istype(src.loc,/obj/item/sleevecard))
 		return 0
 	..()
 
@@ -154,7 +154,7 @@ var/list/infomorph_emotions = list(
 	// 20% chance to kill
 
 	src.silence_time = world.timeofday + 120 * 10		// Silence for 2 minutes
-	src << "<font color=green><b>Communication circuit overload. Shutting down and reloading communication circuits - speech and messaging functionality will be unavailable until the reboot is complete.</b></font>"
+	to_chat(src, "<font color=green><b>Communication circuit overload. Shutting down and reloading communication circuits - speech and messaging functionality will be unavailable until the reboot is complete.</b></font>")
 	if(prob(20))
 		var/turf/T = get_turf_or_move(src.loc)
 		for (var/mob/M in viewers(T))
@@ -187,8 +187,8 @@ var/list/infomorph_emotions = list(
 	medicalActive1 = null
 	medicalActive2 = null
 	medical_cannotfind = 0
-	GLOB.nanomanager.update_uis(src)
-	usr << "<span class='notice'>You reset your record-viewing software.</span>"
+	SSnanoui.update_uis(src)
+	to_chat(usr, "<span class='notice'>You reset your record-viewing software.</span>")
 
 /*
 /mob/living/silicon/infomorph/proc/switchCamera(var/obj/machinery/camera/C)
@@ -290,7 +290,7 @@ var/list/infomorph_emotions = list(
 	resting = 0
 
 	// If we are being held, handle removing our holder from their inv.
-	var/obj/item/weapon/holder/H = loc
+	var/obj/item/holder/H = loc
 	if(istype(H))
 		var/mob/living/M = H.loc
 		if(istype(M))
@@ -337,12 +337,12 @@ var/list/infomorph_emotions = list(
 
 	resting = !resting
 	icon_state = resting ? "[chassis]_rest" : "[chassis]"
-	src << "<span class='notice'>You are now [resting ? "resting" : "getting up"]</span>"
+	to_chat(src, "<span class='notice'>You are now [resting ? "resting" : "getting up"]</span>")
 
 	canmove = !resting
 
 ////////////////// ATTACKBY, HAND, SELF etc
-/mob/living/silicon/infomorph/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/mob/living/silicon/infomorph/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.force)
 		visible_message("<span class='danger'>[user.name] attacks [src] with [W]!</span>")
 		src.adjustBruteLoss(W.force)
@@ -357,23 +357,23 @@ var/list/infomorph_emotions = list(
 	visible_message("<span class='danger'>[user.name] boops [src] on the head.</span>")
 	close_up()
 
-/mob/living/silicon/infomorph/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	var/obj/item/weapon/card/id/ID = W.GetID()
+/mob/living/silicon/infomorph/attackby(obj/item/W as obj, mob/user as mob)
+	var/obj/item/card/id/ID = W.GetID()
 	if(ID)
 		if (idaccessible == 1)
 			switch(alert(user, "Do you wish to add access to [src] or remove access from [src]?",,"Add Access","Remove Access", "Cancel"))
 				if("Add Access")
 					idcard.access |= ID.access
-					user << "<span class='notice'>You add the access from the [W] to [src].</span>"
+					to_chat(user, "<span class='notice'>You add the access from the [W] to [src].</span>")
 					return
 				if("Remove Access")
 					idcard.access = null
-					user << "<span class='notice'>You remove the access from [src].</span>"
+					to_chat(user, "<span class='notice'>You remove the access from [src].</span>")
 					return
 				if("Cancel")
 					return
-		else if (istype(W, /obj/item/weapon/card/id) && idaccessible == 0)
-			user << "<span class='notice'>[src] is not accepting access modifcations at this time.</span>"
+		else if (istype(W, /obj/item/card/id) && idaccessible == 0)
+			to_chat(user, "<span class='notice'>[src] is not accepting access modifcations at this time.</span>")
 			return
 
 //////////////////// MISC VERBS
@@ -384,11 +384,11 @@ var/list/infomorph_emotions = list(
 
 	if(idaccessible == 0)
 		idaccessible = 1
-		src << "<span class='notice'>You allow access modifications.</span>"
+		to_chat(src, "<span class='notice'>You allow access modifications.</span>")
 
 	else
 		idaccessible = 0
-		src << "<span class='notice'>You block access modfications.</span>"
+		to_chat(src, "<span class='notice'>You block access modfications.</span>")
 
 /mob/living/silicon/infomorph/verb/wipe_software()
 	set name = "Suspend Self"
@@ -423,15 +423,15 @@ var/list/infomorph_emotions = list(
 
 /mob/living/silicon/infomorph/say(var/msg)
 	if(silence_time)
-		src << "<font color=green>Communication circuits remain uninitialized.</font>"
+		to_chat(src, "<font color=green>Communication circuits remain uninitialized.</font>")
 	else
 		..(msg)
 
 /mob/living/silicon/infomorph/handle_message_mode(message_mode, message, verb, speaking, used_radios, alt_name)
 	switch(message_mode)
 		if("headset")
-			if(radio && istype(radio,/obj/item/device/radio))
-				var/obj/item/device/radio/R = radio
+			if(radio && istype(radio,/obj/item/radio))
+				var/obj/item/radio/R = radio
 				R.talk_into(src,message,null,verb,speaking)
 				used_radios += radio
 
@@ -448,7 +448,7 @@ var/global/list/default_infomorph_software = list()
 		var/datum/infomorph_software/P = new type()
 		if(infomorph_software_by_key[P.id])
 			var/datum/infomorph_software/O = infomorph_software_by_key[P.id]
-			world << "<span class='warning'>Infomorph software module [P.name] has the same key as [O.name]!</span>"
+			to_chat(world, "<span class='warning'>Infomorph software module [P.name] has the same key as [O.name]!</span>")
 			r = 0
 			continue
 		infomorph_software_by_key[P.id] = P
@@ -509,7 +509,7 @@ var/global/list/default_infomorph_software = list()
 	data["emotions"] = emotions
 	data["current_emotion"] = card.current_emotion
 
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open, key_state)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open, key_state)
 	if (!ui)
 		ui = new(user, src, ui_key, "pai_interface.tmpl", "Card Software Interface", 450, 600, state = key_state)
 		ui.set_initial_data(data)
@@ -594,7 +594,7 @@ var/global/list/default_infomorph_software = list()
 	if(silence_time)
 		if(world.timeofday >= silence_time)
 			silence_time = null
-			src << "<font color=green>Communication circuit reinitialized. Speech and messaging functionality restored.</font>"
+			to_chat(src, "<font color=green>Communication circuit reinitialized. Speech and messaging functionality restored.</font>")
 
 	handle_statuses()
 

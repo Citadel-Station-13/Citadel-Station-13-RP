@@ -9,7 +9,6 @@ var/global/datum/datacore/data_core = null
 var/global/list/all_areas                = list()
 var/global/list/machines                 = list()	// ALL Machines, wether processing or not.
 var/global/list/processing_machines      = list()	// TODO - Move into SSmachines
-var/global/list/processing_objects       = list()
 var/global/list/processing_power_items   = list()	// TODO - Move into SSmachines
 var/global/list/active_diseases          = list()
 var/global/list/hud_icon_reference       = list()
@@ -35,7 +34,6 @@ var/list/hit_appends	= list("-OOF", "-ACK", "-UGH", "-HRNK", "-HURGH", "-GLORF")
 // var/const/starsys_name	= "Vir"
 var/const/game_version	= "Citadel Station RP"
 var/game_year			= (text2num(time2text(world.realtime, "YYYY")) + 544)
-var/round_progressing = 1
 
 var/master_mode       = "extended" // "extended"
 var/secret_force_mode = "secret"   // if this is anything but "secret", the secret rotation will forceably choose this mode.
@@ -86,7 +84,6 @@ var/list/reverse_dir = list( // reverse_dir[dir] = reverse of dir
 )
 
 var/datum/configuration_legacy/config_legacy      = null
-var/datum/sun/sun                   = null
 
 var/list/combatlog = list()
 var/list/IClog     = list()
@@ -102,8 +99,8 @@ var/datum/moduletypes/mods = new()
 
 var/gravity_is_on = 1
 
-var/datum/event_manager/event_manager	= new() // Event Manager, the manager for events.
-var/datum/game_master/game_master = new() // Game Master, an AI for choosing events.
+var/join_motd = null
+
 var/datum/metric/metric = new() // Metric datum, used to keep track of the round.
 
 var/list/awaydestinations = list() // Away missions. A list of landmarks that the warpgate can take you to.
@@ -167,9 +164,9 @@ var/static/list/scarySounds = list(
 var/max_explosion_range = 14
 
 // Announcer intercom, because too much stuff creates an intercom for one message then hard del()s it.
-var/global/obj/item/device/radio/intercom/omni/global_announcer = new /obj/item/device/radio/intercom/omni(null)
+var/global/obj/item/radio/intercom/omni/global_announcer = new /obj/item/radio/intercom/omni(null)
 
-var/list/station_departments = list("Command", "Medical", "Engineering", "Science", "Security", "Cargo", "Civilian")
+var/list/station_departments = list("Command", "Medical", "Engineering", "Science", "Security", "Cargo", "Exploration", "Civilian") //VOREStation Edit
 
 //Icons for in-game HUD glasses. Why don't we just share these a little bit?
 var/static/icon/ingame_hud = icon('icons/mob/hud.dmi')

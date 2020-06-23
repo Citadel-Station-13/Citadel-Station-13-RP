@@ -20,7 +20,7 @@
 
 	for(var/client/C in admins)
 		if(C.is_preference_enabled(/datum/client_preference/debug/show_debug_logs))
-			C << "DEBUG: [text]"
+			to_chat(C, "DEBUG: [text]")
 
 /proc/log_game(text)
 	if (config_legacy.log_game)
@@ -44,21 +44,36 @@
 	if (config_legacy.log_say)
 		WRITE_LOG(GLOB.world_game_log, "SAY: [speaker.simple_info_line()]: [html_decode(text)]")
 
+	//Log the message to in-game dialogue logs, as well.
+	if(speaker.client)
+		speaker.dialogue_log += "<b>([time_stamp()])</b> (<b>[speaker]/[speaker.client]</b>) <u>SAY:</u> - <span style=\"color:#32cd32\">[text]</span>"
+		GLOB.round_text_log += "<b>([time_stamp()])</b> (<b>[speaker]/[speaker.client]</b>) <u>SAY:</u> - <span style=\"color:#32cd32\">[text]</span>"
+
 /proc/log_ooc(text, client/user)
 	if (config_legacy.log_ooc)
 		WRITE_LOG(GLOB.world_game_log, "OOC: [user.simple_info_line()]: [html_decode(text)]")
+
+	GLOB.round_text_log += "<b>([time_stamp()])</b> (<b>[user]</b>) <u>OOC:</u> - <span style=\"color:blue\"><b>[text]</b></span>"
 
 /proc/log_aooc(text, client/user)
 	if (config_legacy.log_ooc)
 		WRITE_LOG(GLOB.world_game_log, "AOOC: [user.simple_info_line()]: [html_decode(text)]")
 
+	GLOB.round_text_log += "<b>([time_stamp()])</b> (<b>[user]</b>) <u>AOOC:</u> - <span style=\"color:red\"><b>[text]</b></span>"
+
 /proc/log_looc(text, client/user)
 	if (config_legacy.log_ooc)
 		WRITE_LOG(GLOB.world_game_log, "LOOC: [user.simple_info_line()]: [html_decode(text)]")
 
+	GLOB.round_text_log += "<b>([time_stamp()])</b> (<b>[user]</b>) <u>LOOC:</u> - <span style=\"color:orange\"><b>[text]</b></span>"
+
 /proc/log_whisper(text, mob/speaker)
 	if (config_legacy.log_whisper)
 		WRITE_LOG(GLOB.world_game_log, "WHISPER: [speaker.simple_info_line()]: [html_decode(text)]")
+
+	if(speaker.client)
+		speaker.dialogue_log += "<b>([time_stamp()])</b> (<b>[speaker]/[speaker.client]</b>) <u>SAY:</u> - <span style=\"color:gray\"><i>[text]</i></span>"
+		GLOB.round_text_log += "<b>([time_stamp()])</b> (<b>[speaker]/[speaker.client]</b>) <u>SAY:</u> - <span style=\"color:gray\"><i>[text]</i></span>"
 
 /proc/log_access(text)
 	WRITE_LOG(GLOB.world_game_log, "ACCESS: [text]")
@@ -66,6 +81,10 @@
 /proc/log_emote(text, mob/speaker)
 	if (config_legacy.log_emote)
 		WRITE_LOG(GLOB.world_game_log, "EMOTE: [speaker.simple_info_line()]: [html_decode(text)]")
+
+	if(speaker.client)
+		speaker.dialogue_log += "<b>([time_stamp()])</b> (<b>[speaker]/[speaker.client]</b>) <u>EMOTE:</u> - <span style=\"color:#CCBADC\">[text]</span>"
+		GLOB.round_text_log += "<b>([time_stamp()])</b> (<b>[speaker]/[speaker.client]</b>) <u>EMOTE:</u> - <span style=\"color:#CCBADC\">[text]</span>"
 
 /proc/log_attack(attacker, defender, message)
 	if (config_legacy.log_attack)
@@ -87,6 +106,10 @@
 	if (config_legacy.log_say)
 		WRITE_LOG(GLOB.world_game_log, "DEADCHAT: [speaker.simple_info_line()]: [html_decode(text)]")
 
+	speaker.dialogue_log += "<b>([time_stamp()])</b> (<b>[speaker]/[speaker.client]</b>) <u>DEADSAY:</u> - <span style=\"color:green\">[text]</span>"
+	GLOB.round_text_log += "<font size=1><span style=\"color:#7e668c\"><b>([time_stamp()])</b> (<b>[src]/[speaker.client]</b>) <u>DEADSAY:</u> - [text]</span></font>"
+
+
 /proc/log_ghostemote(text, mob/speaker)
 	if (config_legacy.log_emote)
 		WRITE_LOG(GLOB.world_game_log, "DEADEMOTE: [speaker.simple_info_line()]: [html_decode(text)]")
@@ -99,6 +122,9 @@
 	if (config_legacy.log_pda)
 		WRITE_LOG(GLOB.world_game_log, "PDA: [speaker.simple_info_line()]: [html_decode(text)]")
 
+	speaker.dialogue_log += "<b>([time_stamp()])</b> (<b>[speaker]/[speaker.client]</b>) <u>MSG:</u> - <span style=\"color:[COLOR_GREEN]\">[text]</span>"
+	GLOB.round_text_log += "<b>([time_stamp()])</b> (<b>[speaker]/[speaker.client]</b>) <u>MSG:</u> - <span style=\"color:[COLOR_GREEN]\">[text]</span>"
+
 /proc/log_error(text)
 	world.log << text
 	WRITE_LOG(GLOB.world_runtime_log, "RUNTIME: [text]")
@@ -107,7 +133,7 @@
 	WRITE_LOG(GLOB.world_game_log, "MISC: [text]")
 
 /proc/log_unit_test(text)
-	world.log << "## UNIT_TEST: [text]"
+	log_world("## UNIT_TEST: [text]")
 
 /proc/report_progress(var/progress_message)
 	admin_notice("<span class='boldannounce'>[progress_message]</span>", R_DEBUG)

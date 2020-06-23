@@ -57,7 +57,7 @@
 	desc = "A complicated piece of technology which converts bodily nutriments of a host into electricity."
 	extended_desc = "The siphon generates 10W of energy, so long as the siphon exists inside a biological entity.  The entity will feel an increased \
 	appetite and will need to eat more often due to this.  This device will fail if used inside synthetic entities."
-	icon_state = "setup_implant"
+	icon_state = "implant_power"
 	complexity = 10
 	origin_tech = list(TECH_POWER = 4, TECH_ENGINEERING = 4, TECH_DATA = 4, TECH_BIO = 5)
 	spawn_flags = IC_SPAWN_RESEARCH
@@ -69,8 +69,8 @@
 
 /obj/item/integrated_circuit/passive/power/metabolic_siphon/handle_passive_energy()
 	var/mob/living/carbon/human/host = null
-	if(assembly && istype(assembly, /obj/item/device/electronic_assembly/implant))
-		var/obj/item/device/electronic_assembly/implant/implant_assembly = assembly
+	if(assembly && istype(assembly, /obj/item/electronic_assembly/implant))
+		var/obj/item/electronic_assembly/implant/implant_assembly = assembly
 		if(implant_assembly.implant.imp_in)
 			host = implant_assembly.implant.imp_in
 	if(host && test_validity(host))
@@ -82,8 +82,6 @@
 	desc = "A small circuit designed to be connected to an internal power wire inside a synthetic entity."
 	extended_desc = "The siphon generates 10W of energy, so long as the siphon exists inside a synthetic entity.  The entity need to recharge \
 	more often due to this.  This device will fail if used inside organic entities."
-	icon_state = "setup_implant"
-	complexity = 10
 	origin_tech = list(TECH_POWER = 3, TECH_ENGINEERING = 4, TECH_DATA = 3)
 	spawn_flags = IC_SPAWN_RESEARCH
 

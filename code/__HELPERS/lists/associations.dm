@@ -26,6 +26,27 @@
 		input[input[i]] = null
 	return input
 
+/proc/deep_list2params(list/deep_list)
+	var/list/L = list()
+	for(var/i in deep_list)
+		var/key = i
+		if(isnum(key))
+			L += "[key]"
+			continue
+		if(islist(key))
+			key = deep_list2params(key)
+		else if(!istext(key))
+			key = "[REF(key)]"
+		L += "[key]"
+		var/value = deep_list[key]
+		if(!isnull(value))
+			if(islist(value))
+				value = deep_list2params(value)
+			else if(!(istext(key) || isnum(key)))
+				value = "[REF(value)]"
+			L["[key]"] = "[value]"
+	return list2params(L)
+
 //takes an input_key, as text, and the list of keys already used, outputting a replacement key in the format of "[input_key] ([number_of_duplicates])" if it finds a duplicate
 //use this for lists of things that might have the same name, like mobs or objects, that you plan on giving to a player as input
 /proc/avoid_assoc_duplicate_keys(input_key, list/used_key_list)

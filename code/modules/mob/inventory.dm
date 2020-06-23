@@ -19,7 +19,7 @@ var/list/slot_equipment_priority = list( \
 	)
 
 /mob
-	var/obj/item/weapon/storage/s_active = null // Even ghosts can/should be able to peek into boxes on the ground
+	var/obj/item/storage/s_active = null // Even ghosts can/should be able to peek into boxes on the ground
 
 //This proc is called whenever someone clicks an inventory ui slot.
 /mob/proc/attack_ui(var/slot)
@@ -56,7 +56,7 @@ var/list/slot_equipment_priority = list( \
 
 		else
 			if(!disable_warning)
-				src << "<font color='red'>You are unable to equip that.</font>" //Only print if del_on_fail is false
+				to_chat(src, "<font color='red'>You are unable to equip that.</font>") //Only print if del_on_fail is false
 		return 0
 
 	equip_to_slot(W, slot, redraw_mob) //This proc should not ever fail.
@@ -108,7 +108,7 @@ var/list/slot_equipment_priority = list( \
 	for(var/i in possible)
 		if(!i)
 			continue
-		var/obj/item/weapon/storage/S = i
+		var/obj/item/storage/S = i
 		if(!istype(S))
 			continue
 		if(S.can_be_inserted(src, TRUE))

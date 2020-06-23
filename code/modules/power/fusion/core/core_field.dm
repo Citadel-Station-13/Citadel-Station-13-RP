@@ -117,7 +117,7 @@
 	catcher.SetSize(7)
 	particle_catchers.Add(catcher)
 
-	processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 
 /obj/effect/fusion_em_field/process()
 	//make sure the field generator is still intact
@@ -129,7 +129,7 @@
 	var/added_particles = FALSE
 	var/datum/gas_mixture/uptake_gas = owned_core.loc.return_air()
 	if(uptake_gas)
-		uptake_gas = uptake_gas.remove_by_flag(XGM_GAS_FUSION_FUEL, rand(50,100))
+		uptake_gas = uptake_gas.remove_by_flag(GAS_FLAG_FUSION_FUEL, rand(50,100))
 	if(uptake_gas && uptake_gas.total_moles)
 		for(var/gasname in uptake_gas.gas)
 			if(uptake_gas.gas[gasname]*10 > dormant_reactant_quantities[gasname])
@@ -298,8 +298,8 @@
 	var/turf/T = get_turf(src)
 	if(istype(T))
 		var/datum/gas_mixture/plasma = new
-		plasma.adjust_gas("oxygen", (size*100), 0)
-		plasma.adjust_gas("phoron", (size*100), 0)
+		plasma.adjust_gas(/datum/gas/oxygen, (size*100), 0)
+		plasma.adjust_gas(/datum/gas/phoron, (size*100), 0)
 		plasma.temperature = (plasma_temperature/2)
 		plasma.update_values()
 		T.assume_air(plasma)
@@ -313,7 +313,7 @@
 	radiation += plasma_temperature/2
 	plasma_temperature = 0
 
-	radiation_repository.radiate(src, radiation)
+	SSradiation.radiate(src, radiation)
 	Radiate()
 
 /obj/effect/fusion_em_field/proc/Radiate()
@@ -496,7 +496,7 @@
 	if(owned_core)
 		owned_core.owned_field = null
 		owned_core = null
-	processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
 /obj/effect/fusion_em_field/bullet_act(var/obj/item/projectile/Proj)
@@ -522,7 +522,7 @@
 
 //Reaction radiation is fairly buggy and there's at least three procs dealing with radiation here, this is to ensure constant radiation output.
 /obj/effect/fusion_em_field/proc/radiation_scale()
-	radiation_repository.radiate(src, 2 + plasma_temperature / PLASMA_TEMP_RADIATION_DIVISIOR)
+	SSradiation.radiate(src, 2 + plasma_temperature / PLASMA_TEMP_RADIATION_DIVISIOR)
 
 //Somehow fixing the radiation issue managed to break this, but moving it to it's own proc seemed to have fixed it. I don't know.
 /obj/effect/fusion_em_field/proc/temp_dump()
@@ -625,8 +625,8 @@
 		var/turf/TT = get_turf(pick(turfs_in_range))
 		if(istype(TT))
 			var/datum/gas_mixture/plasma = new
-			plasma.adjust_gas("oxygen", (size*100), 0)
-			plasma.adjust_gas("phoron", (size*100), 0)
+			plasma.adjust_gas(/datum/gas/oxygen, (size*100), 0)
+			plasma.adjust_gas(/datum/gas/phoron, (size*100), 0)
 			plasma.temperature = (plasma_temperature/2)
 			plasma.update_values()
 			TT.assume_air(plasma)
@@ -641,8 +641,8 @@
 	var/turf/TT = get_turf(owned_core)
 	if(istype(TT))
 		var/datum/gas_mixture/plasma = new
-		plasma.adjust_gas("oxygen", (size*100), 0)
-		plasma.adjust_gas("phoron", (size*100), 0)
+		plasma.adjust_gas(/datum/gas/oxygen, (size*100), 0)
+		plasma.adjust_gas(/datum/gas/phoron, (size*100), 0)
 		plasma.temperature = (plasma_temperature/2)
 		plasma.update_values()
 		TT.assume_air(plasma)

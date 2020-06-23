@@ -17,11 +17,11 @@
 		return // Already eatting someone.
 	if(!client) // AI controlled.
 		if( (!target_mob.lying && prob(60 + (power_charge * 4) ) || (!target_mob.lying && optimal_combat) )) // "Smart" slimes always stun first.
-			a_intent = I_DISARM // Stun them first.
+			a_intent = INTENT_DISARM // Stun them first.
 		else if(can_consume(target_mob) && target_mob.lying)
-			a_intent = I_GRAB // Then eat them.
+			a_intent = INTENT_GRAB // Then eat them.
 		else
-			a_intent = I_HURT // Otherwise robust them.
+			a_intent = INTENT_HARM // Otherwise robust them.
 	ai_log("PunchTarget() will [a_intent] [target_mob]",2)
 	..()
 
@@ -120,14 +120,14 @@
 				return
 
 		switch(a_intent)
-			if(I_HELP)
+			if(INTENT_HELP)
 				ai_log("DoPunch() against [L], helping.",2)
 				L.visible_message("<span class='notice'>[src] gently pokes [L]!</span>",
 				"<span class='notice'>[src] gently pokes you!</span>")
 				do_attack_animation(L)
 				post_attack(L, a_intent)
 
-			if(I_DISARM)
+			if(INTENT_DISARM)
 				ai_log("DoPunch() against [L], disarming.",2)
 				var/stun_power = between(0, power_charge + rand(0, 3), 10)
 
@@ -147,7 +147,7 @@
 						L.buckled.unbuckle_mob() // To prevent an exploit where being buckled prevents slimes from jumping on you.
 					L.stuttering = max(L.stuttering, stun_power)
 
-					var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+					var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 					s.set_up(5, 1, L)
 					s.start()
 
@@ -170,12 +170,12 @@
 				L.updatehealth()
 				return L
 
-			if(I_GRAB)
+			if(INTENT_GRAB)
 				ai_log("DoPunch() against [L], grabbing.",2)
 				start_consuming(L)
 				post_attack(L, a_intent)
 
-			if(I_HURT)
+			if(INTENT_HARM)
 				ai_log("DoPunch() against [L], hurting.",2)
 				var/damage_to_do = rand(melee_damage_lower, melee_damage_upper)
 				var/armor_modifier = abs((L.getarmor(null, "bio") / 100) - 1)
@@ -201,8 +201,8 @@
 		var/obj/mecha/M = L
 		M.attack_generic(src, rand(melee_damage_lower, melee_damage_upper), pick(attacktext))
 
-/mob/living/simple_animal/slime/proc/post_attack(var/mob/living/L, var/intent = I_HURT)
-	if(intent != I_HELP)
+/mob/living/simple_animal/slime/proc/post_attack(var/mob/living/L, var/intent = INTENT_HARM)
+	if(intent != INTENT_HELP)
 		if(L.reagents && L.can_inject() && reagent_injected)
 			L.reagents.add_reagent(reagent_injected, injection_amount)
 
@@ -263,7 +263,7 @@
 			stop_consumption()
 			step_away(src,M)
 	else
-		if(M.a_intent == I_HELP)
+		if(M.a_intent == INTENT_HELP)
 			if(hat)
 				remove_hat(M)
 			else

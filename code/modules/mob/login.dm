@@ -40,7 +40,7 @@
 		client.fps = 0 // Results in using the server FPS
 
 	next_move = 1
-	disconnect_time = null				//clear the disconnect time
+	disconnect_time = null				//VOREStation Addition: clear the disconnect time
 	sight |= SEE_SELF
 	..()
 
@@ -66,8 +66,11 @@
 	plane_holder.set_ao(VIS_OBJS, ao_enabled)
 	plane_holder.set_ao(VIS_MOBS, ao_enabled)
 
-	//set macro to normal incase it was overriden (like cyborg currently does)
-	client.set_hotkeys_macro("macro", "hotkeymode")
-
 	if(!client.tooltips)
 		client.tooltips = new(client)
+
+	var/turf/T = get_turf(src)
+	if(isturf(T))
+		update_client_z(T.z)
+
+	SEND_SIGNAL(src, COMSIG_MOB_CLIENT_LOGIN, client)

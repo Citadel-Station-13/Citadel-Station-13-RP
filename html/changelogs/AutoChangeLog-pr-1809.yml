@@ -1,0 +1,6 @@
+author: "drofoljaelisglis"
+delete-after: True
+changes: 
+  - rscadd: "Emagging the jukebox now will unlock new songs."
+  - tweak: "Sorted all of the songs on the jukebox alphabetically."
+  - config: "Moved jukebox.txt and jukebox.json out of config so that it's not necessary to do a config update every time that the tracklist is updated."

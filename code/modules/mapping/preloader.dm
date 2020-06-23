@@ -29,7 +29,7 @@ GLOBAL_DATUM_INIT(_preloader, /datum/map_preloader, new)
 			GLOB.dirty_vars += message
 		#endif
 		what.vars[attribute] = value
-/*
+
 /area/template_noop
 	name = "Area Passthrough"
 	icon = 'icons/map/maploader_objects.dmi'
@@ -39,7 +39,7 @@ GLOBAL_DATUM_INIT(_preloader, /datum/map_preloader, new)
 	name = "Turf Passthrough"
 	icon = 'icons/map/maploader_objects.dmi'
 	icon_state = "turf_noop"
-*/
+
 /*		No sane way to implement.
 /atom/template_no_annihilate
 	name = "Block In-Load Tile Annihilation"

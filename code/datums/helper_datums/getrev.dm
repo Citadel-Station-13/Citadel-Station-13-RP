@@ -5,30 +5,31 @@
 	var/list/testmerge = list()
 
 /datum/getrev/New()
+	commit = rustg_git_revparse("HEAD")
+	if(commit)
+		date = rustg_git_commit_date(commit)
+	originmastercommit = rustg_git_revparse("origin/master")
+
+/datum/getrev/proc/load_tgs_info()
 	testmerge = world.TgsTestMerges()
 	var/datum/tgs_revision_information/revinfo = world.TgsRevision()
 	if(revinfo)
 		commit = revinfo.commit
 		originmastercommit = revinfo.origin_commit
-	else
-		commit = rustg_git_revparse("HEAD")
-		if(commit)
-			date = rustg_git_commit_date(commit)
-		originmastercommit = rustg_git_revparse("origin/master")
+		date = rustg_git_commit_date(commit)
 
 	// goes to DD log and config_error.txt
 	log_world(get_log_message())
 
 /datum/getrev/proc/get_log_message()
 	var/list/msg = list()
-	msg += "Running Citadel RP revision: [date]"
+	msg += "Running /tg/ revision: [date]"
 	if(originmastercommit)
 		msg += "origin/master: [originmastercommit]"
 
 	for(var/line in testmerge)
 		var/datum/tgs_revision_information/test_merge/tm = line
 		msg += "Test merge active of PR #[tm.number] commit [tm.pull_request_commit]"
-		//SSblackbox.record_feedback("associative", "testmerged_prs", 1, list("number" = "[tm.number]", "commit" = "[tm.pull_request_commit]", "title" = "[tm.title]", "author" = "[tm.author]"))
 
 	if(commit && commit != originmastercommit)
 		msg += "HEAD: [commit]"
@@ -90,7 +91,7 @@
 	msg += "Allow Midround Antagonists: [length(CONFIG_GET(keyed_list/midround_antag))] of [config.modes.len] roundtypes"
 	if(CONFIG_GET(flag/show_game_type_odds))
 		var/list/probabilities = CONFIG_GET(keyed_list/probability)
-		if(SSticker.IsRoundInProgress())
+		if(SSSSticker.IsRoundInProgress())
 			var/prob_sum = 0
 			var/current_odds_differ = FALSE
 			var/list/probs = list()
@@ -102,7 +103,7 @@
 				var/ctag = initial(M.config_tag)
 				if(!(ctag in probabilities))
 					continue
-				if((min_pop[ctag] && (min_pop[ctag] > SSticker.totalPlayersReady)) || (max_pop[ctag] && (max_pop[ctag] < SSticker.totalPlayersReady)) || (initial(M.required_players) > SSticker.totalPlayersReady))
+				if((min_pop[ctag] && (min_pop[ctag] > SSSSticker.totalPlayersReady)) || (max_pop[ctag] && (max_pop[ctag] < SSSSticker.totalPlayersReady)) || (initial(M.required_players) > SSSSticker.totalPlayersReady))
 					current_odds_differ = TRUE
 					continue
 				probs[ctag] = 1

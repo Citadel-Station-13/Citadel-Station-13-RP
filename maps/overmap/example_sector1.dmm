@@ -88,7 +88,7 @@
 /area/tcommsat/computer)
 "ap" = (
 /obj/structure/stool/bed,
-/obj/item/weapon/bedsheet/green,
+/obj/item/bedsheet/green,
 /turf/simulated/floor,
 /area/tcommsat/computer)
 "aq" = (
@@ -99,7 +99,7 @@
 /area/tcommsat/computer)
 "ar" = (
 /obj/structure/stool/bed,
-/obj/item/weapon/bedsheet/brown,
+/obj/item/bedsheet/brown,
 /turf/simulated/floor,
 /area/tcommsat/computer)
 "as" = (
@@ -112,7 +112,7 @@
 /area/tcommsat/computer)
 "at" = (
 /obj/structure/stool/bed,
-/obj/item/weapon/bedsheet/red,
+/obj/item/bedsheet/red,
 /turf/simulated/floor,
 /area/tcommsat/computer)
 "au" = (
@@ -186,8 +186,8 @@
 	network = list("Tcomsat")
 	},
 /obj/structure/table/standard,
-/obj/item/weapon/folder/yellow,
-/obj/item/weapon/folder/yellow,
+/obj/item/folder/yellow,
+/obj/item/folder/yellow,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -195,8 +195,8 @@
 /area/tcommsat/computer)
 "aE" = (
 /obj/structure/table/standard,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen/blue{
+/obj/item/paper_bin,
+/obj/item/pen/blue{
 	pixel_x = -3;
 	pixel_y = 2
 	},
@@ -204,17 +204,17 @@
 /area/tcommsat/computer)
 "aF" = (
 /obj/structure/table/standard,
-/obj/item/device/flashlight/lamp,
+/obj/item/flashlight/lamp,
 /turf/simulated/floor,
 /area/tcommsat/computer)
 "aG" = (
-/obj/item/weapon/syntiflesh{
+/obj/item/syntiflesh{
 	name = "Cuban Pete-Meat"
 	},
 /turf/simulated/floor/engine,
 /area/tcommsat/computer)
 "aH" = (
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	name = "Station Intercom (General)";
 	pixel_x = -29;
 	pixel_y = 0
@@ -266,7 +266,7 @@
 /turf/space,
 /area/tcomsat)
 "aO" = (
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 8;
 	name = "Station Intercom (General)";
 	pixel_x = -28
@@ -283,7 +283,7 @@
 /obj/machinery/computer/telecomms/monitor{
 	network = "tcommsat"
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	anyai = 1;
 	freerange = 1;
 	name = "General Listening Channel";
@@ -294,7 +294,7 @@
 /area/tcommsat/computer)
 "aR" = (
 /obj/structure/stool/bed,
-/obj/item/weapon/bedsheet/orange,
+/obj/item/bedsheet/orange,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -397,10 +397,10 @@
 /turf/simulated/floor,
 /area/tcommsat/computer)
 "be" = (
-/obj/item/weapon/syntiflesh{
+/obj/item/syntiflesh{
 	name = "Cuban Pete-Meat"
 	},
-/obj/item/weapon/spacecash/c1,
+/obj/item/spacecash/c1,
 /turf/simulated/floor/engine,
 /area/tcommsat/computer)
 "bf" = (
@@ -425,7 +425,7 @@
 /area/tcommsat/computer)
 "bi" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/fancy/cigarettes,
+/obj/item/storage/fancy/cigarettes,
 /turf/simulated/floor,
 /area/tcommsat/computer)
 "bj" = (
@@ -595,7 +595,7 @@
 /turf/simulated/floor,
 /area/tcommsat/computer)
 "bx" = (
-/obj/item/weapon/cigbutt,
+/obj/item/cigbutt,
 /obj/machinery/light,
 /turf/simulated/floor,
 /area/tcommsat/computer)
@@ -678,7 +678,7 @@
 	dir = 8
 	},
 /obj/structure/table/standard,
-/obj/item/device/multitool,
+/obj/item/multitool,
 /obj/structure/sign/electricshock{
 	pixel_x = -32
 	},
@@ -916,9 +916,7 @@
 "ce" = (
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	nitrogen = 100;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "cf" = (
@@ -934,9 +932,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	nitrogen = 100;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "cg" = (
@@ -949,9 +945,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	nitrogen = 100;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "ch" = (
@@ -963,9 +957,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	nitrogen = 100;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "ci" = (
@@ -989,27 +981,21 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	nitrogen = 100;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "cj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	nitrogen = 100;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "ck" = (
 /turf/simulated/floor/bluegrid{
 	icon_state = "dark";
 	name = "Mainframe Floor";
-	nitrogen = 100;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "cl" = (
@@ -1047,9 +1033,7 @@
 /turf/simulated/floor/bluegrid{
 	icon_state = "dark";
 	name = "Mainframe Floor";
-	nitrogen = 100;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "cp" = (
@@ -1061,9 +1045,7 @@
 /turf/simulated/floor/bluegrid{
 	icon_state = "dark";
 	name = "Mainframe Floor";
-	nitrogen = 100;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "cq" = (
@@ -1136,9 +1118,7 @@
 	dir = 1;
 	icon_state = "vault";
 	name = "Mainframe floor";
-	nitrogen = 100;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "cw" = (
@@ -1149,9 +1129,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	nitrogen = 100;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "cx" = (
@@ -1160,9 +1138,7 @@
 	dir = 4;
 	icon_state = "vault";
 	name = "Mainframe floor";
-	nitrogen = 100;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "cy" = (
@@ -1171,9 +1147,7 @@
 	dir = 4;
 	icon_state = "vault";
 	name = "Mainframe floor";
-	nitrogen = 100;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "cz" = (
@@ -1189,16 +1163,16 @@
 /area/tcomsat)
 "cA" = (
 /obj/structure/table/standard,
-/obj/item/weapon/stock_parts/micro_laser,
-/obj/item/weapon/stock_parts/manipulator,
-/obj/item/weapon/stock_parts/manipulator,
-/obj/item/weapon/stock_parts/manipulator,
-/obj/item/weapon/stock_parts/manipulator,
-/obj/item/weapon/stock_parts/capacitor,
-/obj/item/weapon/stock_parts/micro_laser/high,
-/obj/item/weapon/stock_parts/micro_laser/high,
-/obj/item/weapon/stock_parts/micro_laser/high,
-/obj/item/weapon/stock_parts/micro_laser/high,
+/obj/item/stock_parts/micro_laser,
+/obj/item/stock_parts/manipulator,
+/obj/item/stock_parts/manipulator,
+/obj/item/stock_parts/manipulator,
+/obj/item/stock_parts/manipulator,
+/obj/item/stock_parts/capacitor,
+/obj/item/stock_parts/micro_laser/high,
+/obj/item/stock_parts/micro_laser/high,
+/obj/item/stock_parts/micro_laser/high,
+/obj/item/stock_parts/micro_laser/high,
 /turf/simulated/floor,
 /area/tcomsat)
 "cB" = (
@@ -1216,14 +1190,14 @@
 /area/tcomsat)
 "cC" = (
 /obj/structure/rack,
-/obj/item/weapon/circuitboard/telecomms/processor,
-/obj/item/weapon/circuitboard/telecomms/processor,
-/obj/item/weapon/circuitboard/telecomms/receiver,
-/obj/item/weapon/circuitboard/telecomms/server,
-/obj/item/weapon/circuitboard/telecomms/server,
-/obj/item/weapon/circuitboard/telecomms/bus,
-/obj/item/weapon/circuitboard/telecomms/bus,
-/obj/item/weapon/circuitboard/telecomms/broadcaster,
+/obj/item/circuitboard/telecomms/processor,
+/obj/item/circuitboard/telecomms/processor,
+/obj/item/circuitboard/telecomms/receiver,
+/obj/item/circuitboard/telecomms/server,
+/obj/item/circuitboard/telecomms/server,
+/obj/item/circuitboard/telecomms/bus,
+/obj/item/circuitboard/telecomms/bus,
+/obj/item/circuitboard/telecomms/broadcaster,
 /turf/simulated/floor,
 /area/tcomsat)
 "cD" = (
@@ -1266,9 +1240,7 @@
 	dir = 1;
 	icon_state = "vault";
 	name = "Mainframe floor";
-	nitrogen = 100;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "cH" = (
@@ -1277,9 +1249,7 @@
 	dir = 4;
 	icon_state = "vault";
 	name = "Mainframe floor";
-	nitrogen = 100;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "cI" = (
@@ -1329,9 +1299,9 @@
 /area/tcomsat)
 "cM" = (
 /obj/structure/table/standard,
-/obj/item/weapon/stock_parts/subspace/treatment,
-/obj/item/weapon/stock_parts/subspace/treatment,
-/obj/item/weapon/stock_parts/subspace/treatment,
+/obj/item/stock_parts/subspace/treatment,
+/obj/item/stock_parts/subspace/treatment,
+/obj/item/stock_parts/subspace/treatment,
 /turf/simulated/floor,
 /area/tcomsat)
 "cN" = (
@@ -1339,9 +1309,9 @@
 /area/tcomsat)
 "cO" = (
 /obj/structure/table/standard,
-/obj/item/weapon/stock_parts/subspace/analyzer,
-/obj/item/weapon/stock_parts/subspace/analyzer,
-/obj/item/weapon/stock_parts/subspace/analyzer,
+/obj/item/stock_parts/subspace/analyzer,
+/obj/item/stock_parts/subspace/analyzer,
+/obj/item/stock_parts/subspace/analyzer,
 /turf/simulated/floor,
 /area/tcomsat)
 "cP" = (
@@ -1368,9 +1338,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	nitrogen = 100;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "cS" = (
@@ -1379,9 +1347,7 @@
 	dir = 1;
 	icon_state = "vault";
 	name = "Mainframe floor";
-	nitrogen = 100;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "cT" = (
@@ -1390,9 +1356,7 @@
 	dir = 1;
 	icon_state = "vault";
 	name = "Mainframe floor";
-	nitrogen = 100;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "cU" = (
@@ -1400,9 +1364,7 @@
 /turf/simulated/floor/bluegrid{
 	icon_state = "dark";
 	name = "Mainframe Floor";
-	nitrogen = 100;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "cV" = (
@@ -1414,9 +1376,7 @@
 /obj/machinery/telecomms/hub/preset,
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	nitrogen = 100;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "cW" = (
@@ -1425,9 +1385,7 @@
 /turf/simulated/floor/bluegrid{
 	icon_state = "dark";
 	name = "Mainframe Floor";
-	nitrogen = 100;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "cX" = (
@@ -1436,9 +1394,7 @@
 	dir = 4;
 	icon_state = "vault";
 	name = "Mainframe floor";
-	nitrogen = 100;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "cY" = (
@@ -1447,9 +1403,7 @@
 	dir = 4;
 	icon_state = "vault";
 	name = "Mainframe floor";
-	nitrogen = 100;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "cZ" = (
@@ -1462,9 +1416,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	nitrogen = 100;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "da" = (
@@ -1521,10 +1473,10 @@
 /area/tcomsat)
 "de" = (
 /obj/structure/table/standard,
-/obj/item/weapon/stock_parts/subspace/amplifier,
-/obj/item/weapon/stock_parts/subspace/amplifier,
-/obj/item/weapon/stock_parts/subspace/amplifier,
-/obj/item/device/radio/intercom{
+/obj/item/stock_parts/subspace/amplifier,
+/obj/item/stock_parts/subspace/amplifier,
+/obj/item/stock_parts/subspace/amplifier,
+/obj/item/radio/intercom{
 	name = "Station Intercom (General)";
 	pixel_x = 29;
 	pixel_y = 0
@@ -1540,9 +1492,7 @@
 	dir = 1;
 	icon_state = "vault";
 	name = "Mainframe floor";
-	nitrogen = 100;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "dg" = (
@@ -1551,9 +1501,7 @@
 	dir = 1;
 	icon_state = "vault";
 	name = "Mainframe floor";
-	nitrogen = 100;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "dh" = (
@@ -1562,9 +1510,7 @@
 	dir = 1;
 	icon_state = "vault";
 	name = "Mainframe floor";
-	nitrogen = 100;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "di" = (
@@ -1573,9 +1519,7 @@
 	dir = 4;
 	icon_state = "vault";
 	name = "Mainframe floor";
-	nitrogen = 100;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "dj" = (
@@ -1584,9 +1528,7 @@
 	dir = 4;
 	icon_state = "vault";
 	name = "Mainframe floor";
-	nitrogen = 100;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "dk" = (
@@ -1595,9 +1537,7 @@
 	dir = 4;
 	icon_state = "vault";
 	name = "Mainframe floor";
-	nitrogen = 100;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "dl" = (
@@ -1623,14 +1563,14 @@
 /turf/simulated/floor/plating,
 /area/tcomsat)
 "dn" = (
-/obj/item/weapon/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/mechanical,
 /turf/simulated/floor,
 /area/tcomsat)
 "do" = (
 /obj/structure/table/standard,
-/obj/item/weapon/stock_parts/subspace/ansible,
-/obj/item/weapon/stock_parts/subspace/ansible,
-/obj/item/weapon/stock_parts/subspace/ansible,
+/obj/item/stock_parts/subspace/ansible,
+/obj/item/stock_parts/subspace/ansible,
+/obj/item/stock_parts/subspace/ansible,
 /turf/simulated/floor,
 /area/tcomsat)
 "dp" = (
@@ -1645,24 +1585,24 @@
 /area/tcomsat)
 "dq" = (
 /obj/structure/table/standard,
-/obj/item/weapon/stock_parts/subspace/transmitter,
-/obj/item/weapon/stock_parts/subspace/transmitter,
+/obj/item/stock_parts/subspace/transmitter,
+/obj/item/stock_parts/subspace/transmitter,
 /turf/simulated/floor,
 /area/tcomsat)
 "dr" = (
 /obj/structure/table/standard,
-/obj/item/weapon/stock_parts/subspace/filter,
-/obj/item/weapon/stock_parts/subspace/filter,
-/obj/item/weapon/stock_parts/subspace/filter,
-/obj/item/weapon/stock_parts/subspace/filter,
-/obj/item/weapon/stock_parts/subspace/filter,
+/obj/item/stock_parts/subspace/filter,
+/obj/item/stock_parts/subspace/filter,
+/obj/item/stock_parts/subspace/filter,
+/obj/item/stock_parts/subspace/filter,
+/obj/item/stock_parts/subspace/filter,
 /turf/simulated/floor,
 /area/tcomsat)
 "ds" = (
 /obj/structure/table/standard,
-/obj/item/weapon/stock_parts/subspace/crystal,
-/obj/item/weapon/stock_parts/subspace/crystal,
-/obj/item/weapon/stock_parts/subspace/crystal,
+/obj/item/stock_parts/subspace/crystal,
+/obj/item/stock_parts/subspace/crystal,
+/obj/item/stock_parts/subspace/crystal,
 /turf/simulated/floor,
 /area/tcomsat)
 "dt" = (
@@ -1671,9 +1611,7 @@
 	dir = 1;
 	icon_state = "vault";
 	name = "Mainframe floor";
-	nitrogen = 100;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "du" = (
@@ -1682,9 +1620,7 @@
 	dir = 1;
 	icon_state = "vault";
 	name = "Mainframe floor";
-	nitrogen = 100;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "dv" = (
@@ -1694,9 +1630,7 @@
 /turf/simulated/floor/bluegrid{
 	icon_state = "dark";
 	name = "Mainframe Floor";
-	nitrogen = 100;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "dw" = (
@@ -1707,9 +1641,7 @@
 /turf/simulated/floor/bluegrid{
 	icon_state = "dark";
 	name = "Mainframe Floor";
-	nitrogen = 100;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "dx" = (
@@ -1718,9 +1650,7 @@
 	dir = 4;
 	icon_state = "vault";
 	name = "Mainframe floor";
-	nitrogen = 100;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "dy" = (
@@ -1729,9 +1659,7 @@
 	dir = 4;
 	icon_state = "vault";
 	name = "Mainframe floor";
-	nitrogen = 100;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "dz" = (
@@ -1770,9 +1698,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	nitrogen = 100;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "dD" = (
@@ -1789,9 +1715,7 @@
 /obj/machinery/light,
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	nitrogen = 100;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "dE" = (
@@ -1807,9 +1731,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	nitrogen = 100;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
 "dF" = (
@@ -2240,7 +2162,7 @@
 /turf/simulated/wall/r_wall,
 /area/tcommsat/entrance)
 "ev" = (
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	broadcasting = 0;
 	listening = 1;
 	name = "Station Intercom (General)";
@@ -2554,7 +2476,7 @@
 	},
 /area/tcommsat/entrance)
 "fa" = (
-/obj/item/weapon/cell,
+/obj/item/cell,
 /turf/simulated/floor,
 /area/tcommsat/entrance)
 "fb" = (
@@ -2650,7 +2572,7 @@
 /turf/simulated/floor,
 /area/tcommsat/entrance)
 "fh" = (
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	name = "Station Intercom (General)";
 	pixel_x = 29;
 	pixel_y = 0
@@ -2673,8 +2595,8 @@
 /area/tcommsat/entrance)
 "fk" = (
 /obj/structure/closet/crate,
-/obj/item/device/aicard,
-/obj/item/device/multitool,
+/obj/item/aicard,
+/obj/item/multitool,
 /obj/machinery/camera{
 	c_tag = "Entrance South";
 	dir = 1;

@@ -6,29 +6,29 @@
 	icon_state = "dnaopen"
 	anchored = 1
 	density = 1
-	circuit = /obj/item/weapon/circuitboard/dna_analyzer
+	circuit = /obj/item/circuitboard/dna_analyzer
 
-	var/obj/item/weapon/forensics/swab/bloodsamp = null
+	var/obj/item/forensics/swab/bloodsamp = null
 	var/closed = 0
 	var/scanning = 0
 	var/scanner_progress = 0
-	var/scanner_rate = 2.50
+	var/scanner_rate = 5
 	var/last_process_worldtime = 0
 	var/report_num = 0
 
 /obj/machinery/dnaforensics/New()
 	component_parts = list()
-	component_parts += new /obj/item/weapon/stock_parts/console_screen(src)
-	component_parts += new /obj/item/weapon/stock_parts/micro_laser(src)
-	component_parts += new /obj/item/weapon/stock_parts/scanning_module(src)
-	component_parts += new /obj/item/weapon/stock_parts/scanning_module(src)
+	component_parts += new /obj/item/stock_parts/console_screen(src)
+	component_parts += new /obj/item/stock_parts/micro_laser(src)
+	component_parts += new /obj/item/stock_parts/scanning_module(src)
+	component_parts += new /obj/item/stock_parts/scanning_module(src)
 	RefreshParts()
 	..()
 
 /obj/machinery/dnaforensics/attackby(var/obj/item/W, mob/user as mob)
 
 	if(bloodsamp)
-		user << "<span class='warning'>There is already a sample in the machine.</span>"
+		to_chat(user, "<span class='warning'>There is already a sample in the machine.</span>")
 		return
 
 	if(closed)
@@ -38,17 +38,17 @@
 			if(default_deconstruction_crowbar(user, W))
 				return
 		else
-			user << "<span class='warning'>Open the cover before inserting the sample.</span>"
+			to_chat(user, "<span class='warning'>Open the cover before inserting the sample.</span>")
 		return
 
-	var/obj/item/weapon/forensics/swab/swab = W
+	var/obj/item/forensics/swab/swab = W
 	if(istype(swab) && swab.is_used())
 		user.unEquip(W)
 		src.bloodsamp = swab
 		swab.loc = src
-		user << "<span class='notice'>You insert \the [W] into \the [src].</span>"
+		to_chat(user, "<span class='notice'>You insert \the [W] into \the [src].</span>")
 	else
-		user << "<span class='warning'>\The [src] only accepts used swabs.</span>"
+		to_chat(user, "<span class='warning'>\The [src] only accepts used swabs.</span>")
 		return
 
 /obj/machinery/dnaforensics/ui_interact(mob/user, ui_key = "main",var/datum/nanoui/ui = null)
@@ -61,7 +61,7 @@
 	data["bloodsamp_desc"] = (bloodsamp ? (bloodsamp.desc ? bloodsamp.desc : "No information on record.") : "")
 	data["lidstate"] = closed
 
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data)
 	if (!ui)
 		ui = new(user, src, ui_key, "dnaforensics.tmpl", "QuikScan DNA Analyzer", 540, 326)
 		ui.set_initial_data(data)
@@ -83,12 +83,12 @@
 				if(closed == 1)
 					scanner_progress = 0
 					scanning = 1
-					usr << "<span class='notice'>Scan initiated.</span>"
+					to_chat(usr, "<span class='notice'>Scan initiated.</span>")
 					update_icon()
 				else
-					usr << "<span class='notice'>Please close sample lid before initiating scan.</span>"
+					to_chat(usr, "<span class='notice'>Please close sample lid before initiating scan.</span>")
 			else
-				usr << "<span class='warning'>Insert an item to scan.</span>"
+				to_chat(usr, "<span class='warning'>Insert an item to scan.</span>")
 
 	if(href_list["ejectItem"])
 		if(bloodsamp)
@@ -118,9 +118,9 @@
 	src.visible_message("<span class='notice'>\icon[src] makes an insistent chime.</span>", 2)
 	update_icon()
 	if(bloodsamp)
-		var/obj/item/weapon/paper/P = new(src)
+		var/obj/item/paper/P = new(src)
 		P.name = "[src] report #[++report_num]: [bloodsamp.name]"
-		P.stamped = list(/obj/item/weapon/stamp)
+		P.stamped = list(/obj/item/stamp)
 		P.overlays = list("paper_stamped")
 		//dna data itself
 		var/data = "No scan information available."
@@ -153,7 +153,7 @@
 		return
 
 	if(scanning)
-		usr << "<span class='warning'>You can't do that while [src] is scanning!</span>"
+		to_chat(usr, "<span class='warning'>You can't do that while [src] is scanning!</span>")
 		return
 
 	closed = !closed

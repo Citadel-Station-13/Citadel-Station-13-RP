@@ -18,7 +18,7 @@
 //	return list()
 
 /atom/movable/proc/GetAccess()
-	var/obj/item/weapon/card/id/id = GetIdCard()
+	var/obj/item/card/id/id = GetIdCard()
 	return id ? id.GetAccess() : list()
 
 /obj/proc/GetID()
@@ -107,35 +107,35 @@
 	if(!priv_all_access)
 		priv_all_access = get_access_ids()
 
-	return priv_all_access
+	return priv_all_access.Copy()
 
 /var/list/priv_station_access
 /proc/get_all_station_access()
 	if(!priv_station_access)
 		priv_station_access = get_access_ids(ACCESS_TYPE_STATION)
 
-	return priv_station_access
+	return priv_station_access.Copy()
 
 /var/list/priv_centcom_access
 /proc/get_all_centcom_access()
 	if(!priv_centcom_access)
 		priv_centcom_access = get_access_ids(ACCESS_TYPE_CENTCOM)
 
-	return priv_centcom_access
+	return priv_centcom_access.Copy()
 
 /var/list/priv_syndicate_access
 /proc/get_all_syndicate_access()
 	if(!priv_syndicate_access)
 		priv_syndicate_access = get_access_ids(ACCESS_TYPE_SYNDICATE)
 
-	return priv_syndicate_access
+	return priv_syndicate_access.Copy()
 
 /var/list/priv_private_access
 /proc/get_all_private_access()
 	if(!priv_private_access)
 		priv_private_access = get_access_ids(ACCESS_TYPE_PRIVATE)
 
-	return priv_syndicate_access
+	return priv_syndicate_access.Copy()
 
 /var/list/priv_region_access
 /proc/get_region_accesses(var/code)
@@ -149,7 +149,8 @@
 				priv_region_access["[A.region]"] = list()
 			priv_region_access["[A.region]"] += A.id
 
-	return priv_region_access["[code]"]
+	var/list/L = priv_region_access["[code]"]
+	return L.Copy()
 
 /proc/get_region_accesses_name(var/code)
 	switch(code)
@@ -178,6 +179,10 @@
 
 /proc/get_centcom_access_desc(A)
 	return get_access_desc(A)
+
+/proc/get_access_by_id(id)
+	var/list/AS = get_all_access_datums_by_id()
+	return AS[id]
 
 /proc/get_all_jobs()
 	var/list/all_jobs = list()
@@ -224,7 +229,7 @@
 
 proc/FindNameFromID(var/mob/living/carbon/human/H)
 	ASSERT(istype(H))
-	var/obj/item/weapon/card/id/C = H.GetIdCard()
+	var/obj/item/card/id/C = H.GetIdCard()
 	if(C)
 		return C.registered_name
 
@@ -232,10 +237,10 @@ proc/get_all_job_icons() //For all existing HUD icons
 	return joblist + list("Prisoner")
 
 /obj/proc/GetJobName() //Used in secHUD icon generation
-	var/obj/item/weapon/card/id/I = GetID()
+	var/obj/item/card/id/I = GetID()
 
 	if(I)
-		if(istype(I,/obj/item/weapon/card/id/centcom))
+		if(istype(I,/obj/item/card/id/centcom))
 			return "Centcom"
 
 		var/job_icons = get_all_job_icons()

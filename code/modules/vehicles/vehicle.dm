@@ -31,7 +31,7 @@
 	var/powered = 0		//set if vehicle is powered and should use fuel when moving
 	var/move_delay = 1	//set this to limit the speed of the vehicle
 
-	var/obj/item/weapon/cell/cell
+	var/obj/item/cell/cell
 	var/charge_use = 5	//set this to adjust the amount of power the vehicle uses per move
 
 	var/paint_color = "#666666" //For vehicles with special paint overlays.
@@ -113,8 +113,8 @@
 	else
 		return 0
 
-/obj/vehicle/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/weapon/hand_labeler))
+/obj/vehicle/attackby(obj/item/W as obj, mob/user as mob)
+	if(istype(W, /obj/item/hand_labeler))
 		return
 	if(mechanical)
 		if(W.is_screwdriver())
@@ -126,10 +126,10 @@
 		else if(W.is_crowbar() && cell && open)
 			remove_cell(user)
 
-		else if(istype(W, /obj/item/weapon/cell) && !cell && open)
+		else if(istype(W, /obj/item/cell) && !cell && open)
 			insert_cell(W, user)
-		else if(istype(W, /obj/item/weapon/weldingtool))
-			var/obj/item/weapon/weldingtool/T = W
+		else if(istype(W, /obj/item/weldingtool))
+			var/obj/item/weldingtool/T = W
 			if(T.welding)
 				if(health < maxhealth)
 					if(open)
@@ -159,6 +159,10 @@
 /obj/vehicle/bullet_act(var/obj/item/projectile/Proj)
 	health -= Proj.get_structure_damage()
 	..()
+	healthcheck()
+
+/obj/vehicle/proc/adjust_health(amount)
+	health = between(0, health + amount, maxhealth)
 	healthcheck()
 
 /obj/vehicle/ex_act(severity)
@@ -287,7 +291,7 @@
 		turn_on()
 		return
 
-/obj/vehicle/proc/insert_cell(var/obj/item/weapon/cell/C, var/mob/living/carbon/human/H)
+/obj/vehicle/proc/insert_cell(var/obj/item/cell/C, var/mob/living/carbon/human/H)
 	if(!mechanical)
 		return
 	if(cell)
@@ -413,6 +417,15 @@
 	visible_message("<span class='danger'>[user] [attack_message] the [src]!</span>")
 	user.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name]</font>")
 	user.do_attack_animation(src)
+	src.health -= damage
+	if(mechanical && prob(10))
+		new /obj/effect/decal/cleanable/blood/oil(src.loc)
+	spawn(1) healthcheck()
+	return 1
+
+/obj/vehicle/take_damage(var/damage)
+	if(!damage)
+		return
 	src.health -= damage
 	if(mechanical && prob(10))
 		new /obj/effect/decal/cleanable/blood/oil(src.loc)

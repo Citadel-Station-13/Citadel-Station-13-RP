@@ -1,6 +1,16 @@
 /mob/proc/say()
 	return
 
+/mob/proc/whisper_wrapper()
+	var/message = input("","whisper (text)") as text|null
+	if(message)
+		whisper(message)
+
+/mob/proc/subtle_wrapper()
+	var/message = input("","subtle (text)") as message|null
+	if(message)
+		me_verb_subtle(message)
+
 /mob/verb/whisper(message as text)
 	set name = "Whisper"
 	set category = "IC"
@@ -19,10 +29,14 @@
 	set category = "IC"
 
 	if(say_disabled)	//This is here to try to identify lag problems
-		usr << "<font color='red'>Speech is currently admin-disabled.</font>"
+		to_chat(usr, "<font color='red'>Speech is currently admin-disabled.</font>")
 		return
 
+	//VOREStation Edit Start
+	if(muffled)
+		return me_verb_subtle(message)
 	message = sanitize_or_reflect(message,src) //VOREStation Edit - Reflect too-long messages (within reason)
+	//VOREStation Edit End
 
 	set_typing_indicator(FALSE)
 	if(use_me)
@@ -32,7 +46,7 @@
 
 /mob/proc/say_dead(var/message)
 	if(say_disabled)	//This is here to try to identify lag problems
-		usr << "<span class='danger'>Speech is currently admin-disabled.</span>"
+		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
 		return
 
 	if(!client)
@@ -40,11 +54,11 @@
 
 	if(!src.client.holder)
 		if(!config_legacy.dsay_allowed)
-			src << "<span class='danger'>Deadchat is globally muted.</span>"
+			to_chat(src, "<span class='danger'>Deadchat is globally muted.</span>")
 			return
 
 	if(!is_preference_enabled(/datum/client_preference/show_dsay))
-		usr << "<span class='danger'>You have deadchat muted.</span>"
+		to_chat(usr, "<span class='danger'>You have deadchat muted.</span>")
 		return
 
 	message = say_emphasis(message)
@@ -92,15 +106,13 @@
 */
 
 /mob/proc/say_quote(var/message, var/datum/language/speaking = null)
-        var/verb = "says"
-        var/ending = copytext(message, length(message))
-        if(ending=="!")
-                verb=pick("exclaims","shouts","yells")
-        else if(ending=="?")
-                verb="asks"
-
-        return verb
-
+	var/verb = "says"
+	var/ending = copytext_char(message, length_char(message))
+	if(ending=="!")
+		verb=pick("exclaims","shouts","yells")
+	else if(ending=="?")
+		verb="asks"
+	return verb
 
 /mob/proc/emote(var/act, var/type, var/message)
 	if(act == "me")
@@ -115,7 +127,7 @@
 	return get_turf(src)
 
 /mob/proc/say_test(var/text)
-	var/ending = copytext(text, length(text))
+	var/ending = copytext_char(text, length_char(text))
 	if (ending == "?")
 		return "1"
 	else if (ending == "!")
@@ -126,11 +138,11 @@
 //returns the message mode string or null for no message mode.
 //standard mode is the mode returned for the special ';' radio code.
 /mob/proc/parse_message_mode(var/message, var/standard_mode="headset")
-	if(length(message) >= 1 && copytext(message,1,2) == ";")
+	if(length_char(message) >= 1 && copytext_char(message,1,2) == ";")
 		return standard_mode
 
-	if(length(message) >= 2)
-		var/channel_prefix = copytext(message, 1 ,3)
+	if(length_char(message) >= 2)
+		var/channel_prefix = copytext_char(message, 1 ,3)
 		return department_radio_keys[channel_prefix]
 
 	return null
@@ -138,14 +150,16 @@
 //parses the language code (e.g. :j) from text, such as that supplied to say.
 //returns the language object only if the code corresponds to a language that src can speak, otherwise null.
 /mob/proc/parse_language(var/message)
-	var/prefix = copytext(message,1,2)
-	if(length(message) >= 1 && prefix == "!")
+	var/prefix = copytext_char(message,1,2)
+	// This is for audible emotes
+	if(length_char(message) >= 1 && prefix == "!")
 		return all_languages["Noise"]
 
-	if(length(message) >= 2 && is_language_prefix(prefix))
-		var/language_prefix = lowertext(copytext(message, 2 ,3))
+	if(length_char(message) >= 2 && is_language_prefix(prefix))
+		var/language_prefix = lowertext(copytext_char(message, 2 ,3))
 		var/datum/language/L = language_keys[language_prefix]
 		if (can_speak(L))
 			return L
-
+		else
+			return all_languages[LANGUAGE_GIBBERISH]
 	return null

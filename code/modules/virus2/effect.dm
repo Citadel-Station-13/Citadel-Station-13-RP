@@ -79,20 +79,21 @@
 /datum/disease2/effect/gibbingtons/activate(var/mob/living/carbon/mob,var/multiplier)
 	// Probabilities have been tweaked to kill in ~2-3 minutes, giving 5-10 messages.
 	// Probably needs more balancing, but it's better than LOL U GIBBED NOW, especially now that viruses can potentially have no signs up until Gibbingtons.
+	// Tweaking this further cause WTF for a "~2-3 minutes" window god damn holy hell.
 	mob.adjustBruteLoss(10*multiplier)
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
 		var/obj/item/organ/external/O = pick(H.organs)
 		if(prob(25))
-			mob << "<span class='warning'>Your [O.name] feels as if it might burst!</span>"
-		if(prob(10))
+			to_chat(mob, "<span class='warning'>Your [O.name] feels as if it might burst!</span>")
+		if(prob(3))
 			spawn(50)
 				if(O)
 					O.droplimb(0,DROPLIMB_BLUNT)
 	else
 		if(prob(75))
-			mob << "<span class='warning'>Your whole body feels like it might fall apart!</span>"
-		if(prob(10))
+			to_chat(mob, "<span class='warning'>Your whole body feels like it might fall apart!</span>")
+		if(prob(3))
 			mob.adjustBruteLoss(25*multiplier)
 
 /datum/disease2/effect/radian
@@ -101,8 +102,9 @@
 	maxm = 3
 	badness = 2
 
+// Nerfing the value of the base rad to adjust and not cause immediate rad poisoning to a crew member.
 /datum/disease2/effect/radian/activate(var/mob/living/carbon/mob,var/multiplier)
-	mob.apply_effect(2*multiplier, IRRADIATE, check_protection = 0)
+	mob.apply_effect(1.10*multiplier, IRRADIATE, check_protection = 0)
 
 /datum/disease2/effect/deaf
 	name = "Deafness"
@@ -112,6 +114,8 @@
 /datum/disease2/effect/deaf/activate(var/mob/living/carbon/mob,var/multiplier)
 	mob.ear_deaf += 20
 
+// This will either be removed cause, god damn why do we need to have stuff that changes a person's model to something.
+// Going to make this similar to gibbingtons' to make sure it's not an instant monkifying
 /datum/disease2/effect/monkey
 	name = "Genome Regression"
 	stage = 4
@@ -120,8 +124,16 @@
 /datum/disease2/effect/monkey/activate(var/mob/living/carbon/mob,var/multiplier)
 	if(istype(mob,/mob/living/carbon/human))
 		var/mob/living/carbon/human/h = mob
-		h.monkeyize()
+		if(prob(25))
+			to_chat(mob, "<span class='warning'> You feel as if your body is trying to rapidly regress...</span>")
+		if(prob(3))
+			h.monkeyize()
+	else
+		to_chat(mob, "<span class='warning'>You feel an odd attraction to consume banana's...</span>")
 
+
+
+// Yeah no just turning this to constant ticking oxyloss from a dying windpipe with the name
 /datum/disease2/effect/suicide
 	name = "Windpipe Contraction"
 	stage = 4
@@ -129,20 +141,20 @@
 
 /datum/disease2/effect/suicide/activate(var/mob/living/carbon/mob,var/multiplier)
 	var/datum/gender/TM = gender_datums[mob.get_visible_gender()]
-	mob.suiciding = 30
-	//instead of killing them instantly, just put them at -175 health and let 'em gasp for a while
-	viewers(mob) << "<font color='red'><b>[mob.name] is holding [TM.his] breath. It looks like [TM.he] [TM.is] trying to commit suicide.</b></font>"
-	mob.adjustOxyLoss(175 - mob.getToxLoss() - mob.getFireLoss() - mob.getBruteLoss() - mob.getOxyLoss())
-	mob.updatehealth()
+	if(prob(25))
+		viewers(mob) << "<font color='red'><b>[mob.name] is holding [TM.his] breath. It looks like [TM.his] ability to breath [TM.is] constricted!</b></font>"
+		mob.apply_damage(15, OXY)
 
+// Nerfing from 15 to 10
 /datum/disease2/effect/killertoxins
 	name = "Autoimmune Reponse"
 	stage = 4
 	badness = 2
 
 /datum/disease2/effect/killertoxins/activate(var/mob/living/carbon/mob,var/multiplier)
-	mob.adjustToxLoss(15*multiplier)
+	mob.adjustToxLoss(10*multiplier)
 
+// DNA Damage
 /datum/disease2/effect/dna
 	name = "Catastrophic DNA Degeneration"
 	stage = 4
@@ -165,7 +177,7 @@
 		var/obj/item/organ/external/E = H.organs_by_name[organ]
 		if (!(E.status & ORGAN_DEAD))
 			E.status |= ORGAN_DEAD
-			H << "<span class='notice'>You can't feel your [E.name] anymore...</span>"
+			to_chat(H, "<span class='notice'>You can't feel your [E.name] anymore...</span>")
 			for (var/obj/item/organ/external/C in E.children)
 				C.status |= ORGAN_DEAD
 		H.update_icons_body()
@@ -180,6 +192,7 @@
 				C.status &= ~ORGAN_DEAD
 		H.update_icons_body()
 
+// Added a delay into how fast this will act
 /datum/disease2/effect/internalorgan
 	name = "Organ Shutdown"
 	stage = 4
@@ -191,8 +204,11 @@
 		var/organ = pick(list("heart","kidney","liver", "lungs"))
 		var/obj/item/organ/internal/O = H.organs_by_name[organ]
 		if (O.robotic != ORGAN_ROBOT)
-			O.damage += (5*multiplier)
-			H << "<span class='notice'>You feel a cramp in your guts.</span>"
+			if(prob(15))
+				O.damage += (5*multiplier)
+				to_chat(H, "<span class='notice'>You feel a cramp in your guts.</span>")
+			else
+				to_chat(H, "<span class='warning'>You feel like doom is coming.. you should head to medical!</span>")
 
 /datum/disease2/effect/immortal
 	name = "Hyperaccelerated Aging"
@@ -211,15 +227,33 @@
 /datum/disease2/effect/immortal/deactivate(var/mob/living/carbon/mob,var/multiplier)
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
-		H << "<span class='notice'>You suddenly feel hurt and old...</span>"
+		to_chat(H, "<span class='notice'>You suddenly feel hurt and old...</span>")
 		H.age += 8
 	var/backlash_amt = 5*multiplier
 	mob.apply_damages(backlash_amt,backlash_amt,backlash_amt,backlash_amt)
+
+/datum/disease2/effect/better_bones
+	name = "Better Bones"
+	stage = 4
+	chance_maxm = 10
+
+/datum/disease2/effect/better_bones/activate(var/mob/living/carbon/mob,var/multiplier)
+	if(istype(mob, /mob/living/carbon/human))
+		var/mob/living/carbon/human/H = mob
+		for (var/obj/item/organ/external/E in H.organs)
+			E.min_broken_damage = max(5, E.min_broken_damage + 30)
+
+/datum/disease2/effect/better_bones/deactivate(var/mob/living/carbon/mob,var/multiplier)
+	if(istype(mob, /mob/living/carbon/human))
+		var/mob/living/carbon/human/H = mob
+		for (var/obj/item/organ/external/E in H.organs)
+			E.min_broken_damage = initial(E.min_broken_damage)
 
 /datum/disease2/effect/bones
 	name = "Brittle Bones"
 	stage = 4
 	badness = 2
+
 /datum/disease2/effect/bones/activate(var/mob/living/carbon/mob,var/multiplier)
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
@@ -242,15 +276,53 @@
 		var/mob/living/carbon/human/H = mob
 		var/obj/item/organ/external/O = pick(H.organs)
 		if(prob(25))
-			mob << "<span class='warning'>It feels like your [O.name] is on fire and your blood is boiling!</span>"
+			to_chat(mob, "<span class='warning'>It feels like your [O.name] is on fire and your blood is boiling!</span>")
 			H.adjust_fire_stacks(1)
 		if(prob(10))
-			mob << "<span class='warning'>Flames erupt from your skin, your entire body is burning!</span>"
+			to_chat(mob, "<span class='warning'>Flames erupt from your skin, your entire body is burning!</span>")
 			H.adjust_fire_stacks(2)
 			H.IgniteMob()
 
+// Upgraded Chem Synth. Provided only good meds to heal a patient
+/datum/disease2/effect/improved_chem_synthesis
+	name = "Improved Chemical Synthesis"
+	stage = 4
+	chance_maxm = 45
+
+/datum/disease2/effect/improved_chem_synthesis/generate(c_data)
+	if(c_data)
+		data = c_data
+	else
+		data = pick("bicaridine", "kelotane", "anti_toxin", "tricordrazine")
+	var/datum/reagent/R = SSchemistry.chemical_reagents[data]
+	name = "[initial(name)] ([initial(R.name)])"
+
+/datum/disease2/effect/improved_chem_synthesis/activate(var/mob/living/carbon/mob,var/multiplier)
+	if (mob.reagents.get_reagent_amount(data) < 5)
+		mob.reagents.add_reagent(data, 4)
+
+
 
 ////////////////////////STAGE 3/////////////////////////////////
+
+// Organ Repair
+/datum/disease2/effect/organ_repair
+	name = "Minor Organ Repair"
+	stage = 3
+	chance_maxm = 20
+
+/datum/disease2/effect/organ_repair/generate(c_data)
+	if(c_data)
+		data = c_data
+	else
+		data = "peridaxon"
+	var/datum/reagent/R = data
+	name = "[initial(name)] ([initial(R.name)])"
+
+/datum/disease2/effect/organ_repair/activate(var/mob/living/carbon/mob,var/multiplier)
+	if (mob.reagents.get_reagent_amount(data) < 8)
+		to_chat(mob, "<span class='notice'>You feel like your insides relaxed and you feel healthier after.</span>")
+		mob.reagents.add_reagent(data, 3)
 
 /datum/disease2/effect/toxins
 	name = "Hyperacidity"
@@ -319,7 +391,7 @@
 	stage = 3
 
 /datum/disease2/effect/confusion/activate(var/mob/living/carbon/mob,var/multiplier)
-	mob << "<span class='notice'>You have trouble telling right and left apart all of a sudden.</span>"
+	to_chat(mob, "<span class='notice'>You have trouble telling right and left apart all of a sudden.</span>")
 	mob.Confuse(10)
 
 /datum/disease2/effect/mutation
@@ -354,7 +426,7 @@
 		data = pick("bicaridine", "kelotane", "anti_toxin", "inaprovaline", "space_drugs", "sugar",
 					"tramadol", "dexalin", "cryptobiolin", "impedrezene", "hyperzine", "ethylredoxrazine",
 					"mindbreaker", "glucose")
-	var/datum/reagent/R = chemical_reagents_list[data]
+	var/datum/reagent/R = SSchemistry.chemical_reagents[data]
 	name = "[initial(name)] ([initial(R.name)])"
 
 /datum/disease2/effect/chem_synthesis/activate(var/mob/living/carbon/mob,var/multiplier)
@@ -383,6 +455,19 @@
 
 /datum/disease2/effect/scream/activate(var/mob/living/carbon/mob,var/multiplier)
 	mob.say("*scream")
+
+// Will provide energy to the user
+/datum/disease2/effect/energy_boost
+	name = "Increased Energy"
+	stage = 2
+	chance_maxm = 30
+
+/datum/disease2/effect/energy_boost/activate(var/mob/living/carbon/mob,var/multiplier)
+	if(prob(30))
+		if(mob.drowsyness < 10)
+			mob.drowsyness = 0
+		else
+			mob.drowsyness -= 8
 
 /datum/disease2/effect/drowsness
 	name = "Excessive Sleepiness"
@@ -442,7 +527,7 @@
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
 		if(H.species.name == SPECIES_HUMAN && !(H.h_style == "Bald") && !(H.h_style == "Balding Hair"))
-			H << "<span class='danger'>Your hair starts to fall out in clumps...</span>"
+			to_chat(H, "<span class='danger'>Your hair starts to fall out in clumps...</span>")
 			spawn(50)
 				H.h_style = "Balding Hair"
 				H.update_hair()
@@ -452,7 +537,7 @@
 	stage = 2
 
 /datum/disease2/effect/stimulant/activate(var/mob/living/carbon/mob,var/multiplier)
-	mob << "<span class='notice'>You feel a rush of energy inside you!</span>"
+	to_chat(mob, "<span class='notice'>You feel a rush of energy inside you!</span>")
 	if (mob.reagents.get_reagent_amount("hyperzine") < 10)
 		mob.reagents.add_reagent("hyperzine", 4)
 	if (prob(30))
@@ -466,7 +551,7 @@
 /datum/disease2/effect/ringing/activate(var/mob/living/carbon/mob,var/multiplier)
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
-		H << "<span class='notice'>You hear an awful ringing in your ears.</span>"
+		to_chat(H, "<span class='notice'>You hear an awful ringing in your ears.</span>")
 		H << 'sound/weapons/flash.ogg'
 
 /datum/disease2/effect/vomiting
@@ -475,11 +560,65 @@
 	chance_maxm = 15
 
 /datum/disease2/effect/vomiting/activate(var/mob/living/carbon/mob,var/multiplier)
-	mob << "<span class='notice'>Your stomach churns!</span>"
+	to_chat(mob, "<span class='notice'>Your stomach churns!</span>")
 	if (prob(50))
 		mob.say("*vomit")
 
+// Feeds protein slowly over time.
+/datum/disease2/effect/protein_synthesis
+	name = "Protein Synthesis"
+	stage = 2
+	chance_maxm = 15
+
+/datum/disease2/effect/protein_synthesis/generate(c_data)
+	if(c_data)
+		data = c_data
+	else
+		data = "protein"
+	var/datum/reagent/R = data
+	name = "[initial(name)] ([initial(R.name)])"
+
+/datum/disease2/effect/protein_synthesis/activate(var/mob/living/carbon/mob,var/multiplier)
+	if (mob.reagents.get_reagent_amount(data) < 30)
+		mob.reagents.add_reagent(data, 5)
+
+// Feeds nutriment slowly over time.
+/datum/disease2/effect/nutriment_synthesis
+	name = "Nutriment Synthesis"
+	stage = 2
+	chance_maxm = 15
+
+/datum/disease2/effect/nutriment_synthesis/generate(c_data)
+	if(c_data)
+		data = c_data
+	else
+		data = "protein"
+	var/datum/reagent/R = data
+	name = "[initial(name)] ([initial(R.name)])"
+
+/datum/disease2/effect/nutriment_synthesis/activate(var/mob/living/carbon/mob,var/multiplier)
+	if (mob.reagents.get_reagent_amount(data) < 30)
+		mob.reagents.add_reagent(data, 5)
+
 ////////////////////////STAGE 1/////////////////////////////////
+
+// Feeds sugar VERY slowly over time.
+/datum/disease2/effect/sugar_synthesis
+	name = "Sugar Synthesis"
+	stage = 1
+	chance_maxm = 5
+
+/datum/disease2/effect/sugar_synthesis/generate(c_data)
+	if(c_data)
+		data = c_data
+	else
+		data = "sugar"
+	var/datum/reagent/R = data
+	name = "[initial(name)] ([initial(R.name)])"
+
+/datum/disease2/effect/sugar_synthesis/activate(var/mob/living/carbon/mob,var/multiplier)
+	if (mob.reagents.get_reagent_amount(data) < 30)
+		mob.reagents.add_reagent(data, 5)
 
 /datum/disease2/effect/sneeze
 	name = "Sneezing"
@@ -505,7 +644,7 @@
 	stage = 1
 
 /datum/disease2/effect/gunck/activate(var/mob/living/carbon/mob,var/multiplier)
-	mob << "<span class='warning'>Mucous runs down the back of your throat.</span>"
+	to_chat(mob, "<span class='warning'>Mucous runs down the back of your throat.</span>")
 
 /datum/disease2/effect/drool
 	name = "Salivary Gland Stimulation"

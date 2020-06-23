@@ -12,17 +12,17 @@
 /proc/is_on_same_plane_or_station(var/z1, var/z2)
 	if(z1 == z2)
 		return 1
-	if((z1 in using_map.station_levels) &&	(z2 in using_map.station_levels))
+	if((z1 in GLOB.using_map.station_levels) &&	(z2 in GLOB.using_map.station_levels))
 		return 1
 	return 0
 
 /proc/max_default_z_level()
 	var/max_z = 0
-	for(var/z in using_map.station_levels)
+	for(var/z in GLOB.using_map.station_levels)
 		max_z = max(z, max_z)
-	for(var/z in using_map.admin_levels)
+	for(var/z in GLOB.using_map.admin_levels)
 		max_z = max(z, max_z)
-	for(var/z in using_map.player_levels)
+	for(var/z in GLOB.using_map.player_levels)
 		max_z = max(z, max_z)
 	return max_z
 
@@ -67,17 +67,42 @@
 
 	return heard
 
+/proc/get_hearers_in_view(R, atom/source)
+	var/turf/T = get_turf(source)
+	. = list()
+	if(!T)
+		return
+	var/list/processing = list()
+	if(R == 0)
+		processing += T.contents
+	else
+		var/lum = T.luminosity
+		T.luminosity = 6
+		var/list/cached_view = view(R, T)
+		for(var/mob/M in cached_view)
+			processing += M
+		for(var/obj/O in cached_view)
+			processing += O
+		T.luminosity = lum
+	var/i = 0
+	while(i < length(processing))
+		var/atom/A = processing[++i]
+		if(A.flags & HEAR)
+			. += A
+			SEND_SIGNAL(A, COMSIG_ATOM_HEARER_IN_VIEW, processing, .)
+		processing += A.contents
+
 /proc/isStationLevel(var/level)
-	return level in using_map.station_levels
+	return level in GLOB.using_map.station_levels
 
 /proc/isNotStationLevel(var/level)
 	return !isStationLevel(level)
 
 /proc/isPlayerLevel(var/level)
-	return level in using_map.player_levels
+	return level in GLOB.using_map.player_levels
 
 /proc/isAdminLevel(var/level)
-	return level in using_map.admin_levels
+	return level in GLOB.using_map.admin_levels
 
 /proc/isNotAdminLevel(var/level)
 	return !isAdminLevel(level)
@@ -218,17 +243,17 @@
 	return hear
 
 
-/proc/get_mobs_in_radio_ranges(var/list/obj/item/device/radio/radios)
+/proc/get_mobs_in_radio_ranges(var/list/obj/item/radio/radios)
 
 	set background = 1
 
 	. = list()
 	// Returns a list of mobs who can hear any of the radios given in @radios
 	var/list/speaker_coverage = list()
-	for(var/obj/item/device/radio/R in radios)
+	for(var/obj/item/radio/R in radios)
 		if(R)
 			//Cyborg checks. Receiving message uses a bit of cyborg's charge.
-			var/obj/item/device/radio/borg/BR = R
+			var/obj/item/radio/borg/BR = R
 			if(istype(BR) && BR.myborg)
 				var/mob/living/silicon/robot/borg = BR.myborg
 				var/datum/robot_component/CO = borg.get_component("radio")
@@ -301,8 +326,6 @@
 			objs |= obj
 
 	return list("mobs" = mobs, "objs" = objs)
-
-#define SIGN(X) ((X<0)?-1:1)
 
 proc
 	inLineOfSight(X1,Y1,X2,Y2,Z=1,PX1=16.5,PY1=16.5,PX2=16.5,PY2=16.5)
@@ -426,7 +449,7 @@ proc/isInSight(var/atom/A, var/atom/B)
 
 /proc/Show2Group4Delay(obj/O, list/group, delay=0)
 	if(!isobj(O))	return
-	if(!group)	group = clients
+	if(!group)	group = GLOB.clients
 	for(var/client/C in group)
 		C.screen += O
 	if(delay)

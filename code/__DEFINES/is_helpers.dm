@@ -21,7 +21,7 @@
 
 #define isclothing(A) (istype(A, /obj/item/clothing))
 
-#define isstorage(A)	istype(A, /obj/item/weapon/storage)
+#define isstorage(A)	istype(A, /obj/item/storage)
 
 #define isstructure(A) (istype(A, /obj/structure))
 
@@ -49,7 +49,7 @@
 
 #define iscarbon(A) istype(A, /mob/living/carbon)
 
-#define iscorgi(A) istype(A, /mob/living/simple_animal/corgi)
+#define iscorgi(A) istype(A, /mob/living/simple_mob/animal/passive/dog/corgi)
 
 #define isEye(A) istype(A, /mob/observer/eye)
 
@@ -71,8 +71,8 @@
 
 #define isvoice(A) istype(A, /mob/living/voice)
 
-#define isslime(A) istype(A, /mob/living/simple_animal/slime)
+#define isslime(A) istype(A, /mob/living/simple_mob/slime)
 
 #define isbot(A) istype(A, /mob/living/bot)
 
-#define isxeno(A) istype(A, /mob/living/simple_animal/xeno)
+#define isxeno(A) istype(A, /mob/living/simple_mob/xeno)

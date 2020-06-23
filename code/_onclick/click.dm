@@ -51,6 +51,9 @@
 	if(modifiers["shift"] && modifiers["ctrl"])
 		CtrlShiftClickOn(A)
 		return 1
+	if(modifiers["shift"] && modifiers["middle"])
+		ShiftMiddleClickOn(A)
+		return 1
 	if(modifiers["middle"])
 		MiddleClickOn(A)
 		return 1
@@ -76,7 +79,7 @@
 		if(!locate(/turf) in list(A, A.loc)) // Prevents inventory from being drilled
 			return
 		var/obj/mecha/M = loc
-		return M.click_action(A, src)
+		return M.click_action(A, src, params)
 
 	if(restrained())
 		setClickCooldown(10)
@@ -103,7 +106,7 @@
 	var/sdepth = A.storage_depth(src)
 	if((!isturf(A) && A == loc) || (sdepth <= MAX_STORAGE_REACH))
 		if(W)
-			var/resolved = W.resolve_attackby(A, src)
+			var/resolved = W.resolve_attackby(A, src, params)
 			if(!resolved && A && W)
 				W.afterattack(A, src, 1, params) // 1 indicates adjacency
 		else
@@ -113,6 +116,19 @@
 
 		trigger_aiming(TARGET_CAN_CLICK)
 		return 1
+
+	// VOREStation Addition Start: inbelly item interaction
+	if(isbelly(loc) && (loc == A.loc))
+		if(W)
+			var/resolved = W.resolve_attackby(A, src, params)
+			if(!resolved && A && W)
+				W.afterattack(A, src, 1, params) // 1: clicking something Adjacent
+		else
+			if(ismob(A)) // No instant mob attacking
+				setClickCooldown(get_attack_speed())
+			UnarmedAttack(A, 1)
+		return
+	// VOREStation Addition End
 
 	if(!isturf(loc)) // This is going to stop you from telekinesing from inside a closet, but I don't shed many tears for that
 		return
@@ -124,7 +140,7 @@
 		if(A.Adjacent(src) || (W && W.attack_can_reach(src, A, W.reach)) ) // see adjacent.dm
 			if(W)
 				// Return 1 in attackby() to prevent afterattack() effects (when safely moving items for example)
-				var/resolved = W.resolve_attackby(A,src)
+				var/resolved = W.resolve_attackby(A, src, params)
 				if(!resolved && A && W)
 					W.afterattack(A, src, 1, params) // 1: clicking something Adjacent
 			else
@@ -169,6 +185,10 @@
 
 /mob/living/UnarmedAttack(var/atom/A, var/proximity_flag)
 
+	if(!SSticker)
+		to_chat(src, "You cannot attack people before the game has started.")
+		return 0
+
 	if(stat)
 		return 0
 
@@ -184,7 +204,7 @@
 */
 /mob/proc/RangedAttack(var/atom/A, var/params)
 	if(!mutations.len) return
-	if((LASER in mutations) && a_intent == I_HURT)
+	if((LASER in mutations) && a_intent == INTENT_HARM)
 		LaserEyes(A) // moved into a proc below
 	else if(TK in mutations)
 		if(get_dist(src, A) > tk_maxrange)
@@ -212,6 +232,10 @@
 /atom/proc/MiddleClick(var/mob/M as mob)
 	return
 */
+
+/mob/proc/ShiftMiddleClickOn(atom/A)
+	pointed(A)
+	return
 
 /*
 	Shift click
@@ -244,19 +268,21 @@
 	Alt click
 	Unused except for AI
 */
-/mob/proc/AltClickOn(var/atom/A)
-	A.AltClick(src)
-	return
+/mob/proc/AltClickOn(atom/A)
+	if(!A.AltClick(src))
+		altclick_listed_turf(A)
+
+/mob/proc/altclick_listed_turf(atom/A)
+	var/turf/T = get_turf(A)
+	if(T == A.loc || T == A)
+		if(T == listed_turf)
+			listed_turf = null
+		else if(TurfAdjacent(T))
+			listed_turf = T
+			client.statpanel = T.name
 
 /atom/proc/AltClick(var/mob/user)
-	var/turf/T = get_turf(src)
-	if(T && user.TurfAdjacent(T))
-		if(user.listed_turf == T)
-			user.listed_turf = null
-		else
-			user.listed_turf = T
-			user.client.statpanel = "Turf"
-	return 1
+	return FALSE
 
 /mob/proc/TurfAdjacent(var/turf/T)
 	return T.AdjacentQuick(src)
@@ -278,10 +304,10 @@
 	Laser Eyes: as the name implies, handles this since nothing else does currently
 	face_atom: turns the mob towards what you clicked on
 */
-/mob/proc/LaserEyes(atom/A)
+/mob/proc/LaserEyes(atom/A, params)
 	return
 
-/mob/living/LaserEyes(atom/A)
+/mob/living/LaserEyes(atom/A, params)
 	setClickCooldown(4)
 	var/turf/T = get_turf(src)
 
@@ -289,31 +315,42 @@
 	LE.icon = 'icons/effects/genetics.dmi'
 	LE.icon_state = "eyelasers"
 	playsound(usr.loc, 'sound/weapons/taser2.ogg', 75, 1)
-	LE.launch(A)
-/mob/living/carbon/human/LaserEyes()
+	LE.firer = src
+	LE.preparePixelProjectile(A, src, params)
+	LE.fire()
+
+/mob/living/carbon/human/LaserEyes(atom/A, params)
 	if(nutrition>0)
 		..()
 		nutrition = max(nutrition - rand(1,5),0)
 		handle_regular_hud_updates()
 	else
-		src << "<span class='warning'>You're out of energy!  You need food!</span>"
+		to_chat(src, "<span class='warning'>You're out of energy!  You need food!</span>")
 
 // Simple helper to face what you clicked on, in case it should be needed in more than one place
 /mob/proc/face_atom(var/atom/A)
-	if(!A || !x || !y || !A.x || !A.y) return
+	if(!A || !x || !y || !A.x || !A.y)
+		return
+	if(!canmove)
+		return
 	var/dx = A.x - x
 	var/dy = A.y - y
-	if(!dx && !dy) return
+	if(!dx && !dy)
+		return
 
 	var/direction
 	if(abs(dx) < abs(dy))
-		if(dy > 0)	direction = NORTH
-		else		direction = SOUTH
+		if(dy > 0)
+			direction = NORTH
+		else
+			direction = SOUTH
 	else
-		if(dx > 0)	direction = EAST
-		else		direction = WEST
+		if(dx > 0)
+			direction = EAST
+		else
+			direction = WEST
 	if(direction != dir)
-		facedir(direction)
+		setDir(direction)
 
 /obj/screen/click_catcher
 	icon = 'icons/mob/screen_gen.dmi'

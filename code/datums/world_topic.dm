@@ -46,7 +46,7 @@
 
 /datum/world_topic/ping/Run(list/input)
 	. = 0
-	for (var/client/C in clients)
+	for (var/client/C in GLOB.clients)
 		++.
 
 /datum/world_topic/playing
@@ -72,7 +72,7 @@
 			return
 
 	var/final_composed = "<span class='announce'>PR: [input[keyword]]</span>"
-	for(var/client/C in clients)
+	for(var/client/C in GLOB.clients)
 		C.AnnouncePR(final_composed)
 
 /*
@@ -155,7 +155,7 @@
 	.["ai"] = config_legacy.allow_ai
 	.["host"] = host || null
 	.["round_id"] = GLOB.round_id
-	.["players"] = clients.len
+	.["players"] = GLOB.clients.len
 	.["revision"] = GLOB.revdata.commit
 	.["revision_date"] = GLOB.revdata.date
 
@@ -163,20 +163,20 @@
 	var/list/presentmins = adm["present"]
 	var/list/afkmins = adm["afk"]
 	.["admins"] = presentmins.len + afkmins.len //equivalent to the info gotten from adminwho
-	//.["gamestate"] = SSticker.current_state
+	//.["gamestate"] = SSSSticker.current_state
 
 	//.["map_name"] = SSmapping.config?.map_name || "Loading..."
 
 	//if(key_valid)
 		//.["active_players"] = get_active_player_count()
 		/*
-		if(SSticker.HasRoundStarted())
-			.["real_mode"] = SSticker.mode.name
+		if(SSSSticker.HasRoundStarted())
+			.["real_mode"] = SSSSticker.mode.name
 			// Key-authed callers may know the truth behind the "secret"
 		*/
 
 	.["security_level"] = get_security_level()
-//	.["round_duration"] = SSticker ? round((world.time-SSticker.round_start_time)/10) : 0
+//	.["round_duration"] = SSSSticker ? round((world.time-SSSSticker.round_start_time)/10) : 0
 //	// Amount of world's ticks in seconds, useful for calculating round duration
 	.["stationtime"] = stationtime2text()
 	.["roundduration"] = roundduration2text()

@@ -1,10 +1,24 @@
 //Airless versions of shuttle floor tiles.
 /turf/simulated/shuttle/floor/airless
-	oxygen = 0
-	nitrogen = 0
-	temperature = TCMB
+	initial_gas_mix = GAS_STRING_VACCUM
 
 /turf/simulated/shuttle/plating/airless
-	oxygen = 0
-	nitrogen = 0
-	temperature = TCMB
+	initial_gas_mix = GAS_STRING_VACCUM
+
+/turf/simulated/shuttle/floor/white/airless
+	initial_gas_mix = GAS_STRING_VACCUM
+
+/turf/simulated/shuttle/floor/yellow/airless
+	initial_gas_mix = GAS_STRING_VACCUM
+
+/turf/simulated/shuttle/floor/purple/airless
+	initial_gas_mix = GAS_STRING_VACCUM
+
+/turf/simulated/shuttle/floor/red/airless
+	initial_gas_mix = GAS_STRING_VACCUM
+
+/turf/simulated/shuttle/floor/darkred/airless
+	initial_gas_mix = GAS_STRING_VACCUM
+
+/turf/simulated/shuttle/floor/black/airless
+	initial_gas_mix = GAS_STRING_VACCUM

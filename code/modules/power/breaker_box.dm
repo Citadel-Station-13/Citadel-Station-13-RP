@@ -13,12 +13,13 @@
 	var/icon_state_off = "bbox_off"
 	density = 1
 	anchored = 1
-	circuit = /obj/item/weapon/circuitboard/breakerbox
+	circuit = /obj/item/circuitboard/breakerbox
 	var/on = 0
 	var/busy = 0
 	var/directions = list(1,2,4,8,5,6,9,10)
 	var/RCon_tag = "NO_TAG"
 	var/update_locked = 0
+	var/datum/wires/breakerbox/wires
 
 /obj/machinery/power/breakerbox/Destroy()
 	for(var/obj/structure/cable/C in src.loc)
@@ -29,6 +30,7 @@
 
 /obj/machinery/power/breakerbox/Initialize()
 	. = ..()
+	wires = new(src)
 	default_apply_parts()
 
 /obj/machinery/power/breakerbox/activated
@@ -89,8 +91,8 @@
 			update_locked = 0
 	busy = 0
 
-/obj/machinery/power/breakerbox/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
-	if(istype(W, /obj/item/device/multitool))
+/obj/machinery/power/breakerbox/attackby(var/obj/item/W as obj, var/mob/user as mob)
+	if(istype(W, /obj/item/multitool))
 		var/newtag = input(user, "Enter new RCON tag. Use \"NO_TAG\" to disable RCON or leave empty to cancel.", "SMES RCON system") as text
 		if(newtag)
 			RCon_tag = newtag
@@ -104,6 +106,8 @@
 		return
 	if(default_part_replacement(user, W))
 		return
+	if(W.is_multitool() || W.is_wirecutter() && panel_open)
+		wires.Interact(user)
 
 /obj/machinery/power/breakerbox/proc/set_state(var/state)
 	on = state

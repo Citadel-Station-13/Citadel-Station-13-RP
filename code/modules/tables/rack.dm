@@ -6,6 +6,7 @@
 	can_plate = 0
 	can_reinforce = 0
 	flipped = -1
+	item_pixel_place = FALSE
 
 /obj/structure/table/rack/Initialize(mapload)
 	. = ..()
@@ -23,6 +24,6 @@
 		color = material.icon_colour
 	return
 
-/obj/structure/table/rack/holorack/dismantle(obj/item/weapon/wrench/W, mob/user)
-	user << "<span class='warning'>You cannot dismantle \the [src].</span>"
+/obj/structure/table/rack/holorack/dismantle(obj/item/wrench/W, mob/user)
+	to_chat(user, "<span class='warning'>You cannot dismantle \the [src].</span>")
 	return

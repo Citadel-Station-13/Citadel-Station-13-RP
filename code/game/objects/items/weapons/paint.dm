@@ -3,7 +3,7 @@
 
 var/global/list/cached_icons = list()
 
-/obj/item/weapon/reagent_containers/glass/paint
+/obj/item/reagent_containers/glass/paint
 	desc = "It's a paint bucket."
 	name = "paint bucket"
 	icon = 'icons/obj/items.dmi'
@@ -37,7 +37,7 @@ var/global/list/cached_icons = list()
 		else if (paint_type == "black")
 			reagents.add_reagent("carbon", volume/5)
 		else
-			reagents.add_reagent("crayon_dust_[paint_type]", volume/5)
+			reagents.add_reagent("marker_ink_[paint_type]", volume/5)
 		reagents.handle_reactions()
 
 	red

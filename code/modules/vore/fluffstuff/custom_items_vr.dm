@@ -13,7 +13,7 @@
 
 /* TEMPLATE
 //ckey:Character Name
-/obj/item/weapon/fluff/charactername
+/obj/item/fluff/charactername
 	name = ""
 	desc = ""
 
@@ -26,7 +26,7 @@
 */
 
 //For general use
-/obj/item/device/modkit_conversion
+/obj/item/modkit_conversion
 	name = "modification kit"
 	desc = "A kit containing all the needed tools and parts to modify a suit and helmet."
 	icon = 'icons/vore/custom_items_vr.dmi'
@@ -38,7 +38,7 @@
 	var/to_suit = /obj/item/clothing/suit/cardborg
 
 	//Conversion proc
-/obj/item/device/modkit_conversion/afterattack(obj/O, mob/user as mob)
+/obj/item/modkit_conversion/afterattack(obj/O, mob/user as mob)
 	var/flag
 	var/to_type
 	if(istype(O,from_helmet))
@@ -65,16 +65,17 @@
 	parts &= ~flag
 	if(!parts)
 		qdel(src)
-/* CITADEL CHANGE - Removes this fluff stuff
+
+/*
 //JoanRisu:Joan Risu
-/obj/item/weapon/flame/lighter/zippo/fluff/joan
+/obj/item/flame/lighter/zippo/fluff/joan
 	name = "Federation Zippo Lighter"
 	desc = "A red zippo lighter with the United Federation Logo on it."
 	icon = 'icons/vore/custom_items_vr.dmi'
 	icon_state = "joanzip"
 
 //JoanRisu:Joan Risu
-/obj/item/weapon/sword/fluff/joanaria
+/obj/item/sword/fluff/joanaria
 	name = "Aria"
 	desc = "A beautifully crafted rapier owned by Joan Risu. It has a thin blade and is used for quick attacks."
 	icon = 'icons/vore/custom_items_vr.dmi'
@@ -88,7 +89,7 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 
 
-/obj/item/weapon/sword/fluff/joanaria/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+/obj/item/sword/fluff/joanaria/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 
 	if(default_parry_check(user, attacker, damage_source) && prob(75))
 		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
@@ -97,11 +98,12 @@
 	return 0
 
 //joanrisu:Katarina Eine
-/obj/item/weapon/material/knife/tacknife/combatknife/fluff/katarina
+/obj/item/material/knife/tacknife/combatknife/fluff/katarina
 	name = "tactical Knife"
 	desc = "A tactical knife with a small butterly engraved on the blade."
+*/
 
-/obj/item/weapon/material/knife/tacknife/combatknife/fluff/katarina/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+/obj/item/material/knife/tacknife/combatknife/fluff/katarina/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 
 	if(default_parry_check(user, attacker, damage_source) && prob(75))
 		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
@@ -110,16 +112,16 @@
 	return 0
 
 //For General use
-/obj/item/weapon/sword/fluff/joanaria/scisword
+/obj/item/sword/fluff/joanaria/scisword
 	name = "Scissor Blade"
 	desc = "A sword that can not only cut down your enemies, it can also cut fabric really neatly"
 	icon = 'icons/vore/custom_items_vr.dmi'
 	icon_state = "scisword"
 	origin_tech = "materials=7"
 
-
+/*
 //john.wayne9392:Harmony Prechtl
-/obj/item/weapon/twohanded/fireaxe/fluff/mjollnir
+/obj/item/twohanded/fireaxe/fluff/mjollnir
 	name = "Mjollnir"
 	desc = "Large hammer that looks like it can do a great deal of damage if properly used."
 	icon = 'icons/vore/custom_items_vr.dmi'
@@ -128,7 +130,7 @@
 	attack_verb = list("attacked", "hammered", "smashed", "slammed", "crushed")
 
 //JoanRisu:Joan Risu
-/obj/item/weapon/card/id/centcom/station/fluff/joanbadge
+/obj/item/card/id/centcom/station/fluff/joanbadge
 	name = "Faded Badge"
 	desc = "A faded badge, backed with leather, that reads 'NT Security Force' across the front."
 	icon = 'icons/vore/custom_items_vr.dmi'
@@ -137,26 +139,26 @@
 	assignment = "Centcom Officer"
 
 
-/obj/item/weapon/card/id/centcom/station/fluff/joanbadge/attack_self(mob/user as mob)
+/obj/item/card/id/centcom/station/fluff/joanbadge/attack_self(mob/user as mob)
 	if(isliving(user))
 		user.visible_message("<span class='warning'>[user] flashes their golden security badge.\nIt reads:NT Security.</span>","<span class='warning'>You display the faded badge.\nIt reads: NT Security.</span>")
 
-/obj/item/weapon/card/id/centcom/station/fluff/joanbadge/attack(mob/living/carbon/human/M, mob/living/user)
+/obj/item/card/id/centcom/station/fluff/joanbadge/attack(mob/living/carbon/human/M, mob/living/user)
 	if(isliving(user))
 		user.visible_message("<span class='warning'>[user] invades [M]'s personal space, thrusting [src] into their face insistently.</span>","<span class='warning'>You invade [M]'s personal space, thrusting [src] into their face insistently.</span>")
 
 //JoanRisu:Joan Risu
-/obj/item/device/pda/heads/hos/joanpda
+/obj/item/pda/heads/hos/joanpda
 	icon = 'icons/vore/custom_items_vr.dmi'
 	icon_state = "pda-joan"
 
 //Vorrarkul:Lucina Dakarim
-/obj/item/device/pda/heads/cmo/lucinapda
+/obj/item/pda/heads/cmo/fluff/lucinapda
 	icon = 'icons/vore/custom_items_vr.dmi'
 	icon_state = "pda-lucina"
 
 //john.wayne9392:Harmony Prechtl
-/obj/item/device/modkit_conversion/fluff/harmonyspace
+/obj/item/modkit_conversion/fluff/harmonyspace
 	name = "Harmony's captain space suit modkit"
 	desc = "A kit containing all the needed tools and parts to modify a Captain's hardsuit. It has green and yellow parts inside."
 
@@ -169,7 +171,7 @@
 	to_suit = /obj/item/clothing/suit/armor/captain/fluff/harmsuit
 
 //john.wayne9392:Harmony Prechtl
-/obj/item/device/modkit_conversion/fluff/harmonysuit
+/obj/item/modkit_conversion/fluff/harmonysuit
 	name = "Harmony's captain suit modkit"
 	desc = "A sewing kit containing all the needed tools and fabric to modify a Captain's suit and hat. It has green and yellow fabrics inside."
 
@@ -182,7 +184,7 @@
 	to_suit = /obj/item/clothing/under/rank/captain/fluff/harmuniform
 
 //scree:Scree
-/obj/item/device/modkit_conversion/fluff/screekit
+/obj/item/modkit_conversion/fluff/screekit
 	name = "Scree's hardsuit modification kit"
 	desc = "A kit containing all the needed tools and parts to modify a hardsuit for a specific user. This one looks like it's fitted for a winged creature."
 
@@ -193,9 +195,10 @@
 	from_suit = /obj/item/clothing/suit/space/void
 	to_helmet = /obj/item/clothing/head/helmet/space/void/engineering/hazmat/fluff/screehelm
 	to_suit = /obj/item/clothing/suit/space/void/engineering/hazmat/fluff/screespess
-END OF CITADEL CHANGES */
+*/
+
 //General Use
-/obj/item/weapon/flag
+/obj/item/flag
 	name = "Nanotrasen Banner"
 	desc = "I pledge allegiance to the flag of a megacorporation in space."
 
@@ -205,16 +208,16 @@ END OF CITADEL CHANGES */
 	icon_override = 'icons/vore/custom_items_vr.dmi'
 	item_state = "Flag_Nanotrasen_mob"
 
-/obj/item/weapon/flag/attack_self(mob/user as mob)
+/obj/item/flag/attack_self(mob/user as mob)
 	if(isliving(user))
 		user.visible_message("<span class='warning'>[user] waves their Banner around!</span>","<span class='warning'>You wave your Banner around.</span>")
 
-/obj/item/weapon/flag/attack(mob/living/carbon/human/M, mob/living/user)
+/obj/item/flag/attack(mob/living/carbon/human/M, mob/living/user)
 	if(isliving(user))
 		user.visible_message("<span class='warning'>[user] invades [M]'s personal space, thrusting [src] into their face insistently.</span>","<span class='warning'>You invade [M]'s personal space, thrusting [src] into their face insistently.</span>")
 
 
-/obj/item/weapon/flag/federation
+/obj/item/flag/federation
 	name = "Federation Banner"
 	desc = "Space, The Final Frontier. Sorta. Just go with it and say the damn oath."
 
@@ -224,7 +227,7 @@ END OF CITADEL CHANGES */
 	icon_override = 'icons/vore/custom_items_vr.dmi'
 	item_state = "flag_federation_mob"
 
-/obj/item/weapon/flag/xcom
+/obj/item/flag/xcom
 	name = "Alien Combat Command Banner"
 	desc = "A banner bearing the symbol of a task force fighting an unknown alien power."
 
@@ -234,7 +237,7 @@ END OF CITADEL CHANGES */
 	icon_override = 'icons/vore/custom_items_vr.dmi'
 	item_state = "flag_xcom_mob"
 
-/obj/item/weapon/flag/advent
+/obj/item/flag/advent
 	name = "ALIEN Coalition Banner"
 	desc = "A banner belonging to traitors who work for an unknown alien power."
 
@@ -244,19 +247,19 @@ END OF CITADEL CHANGES */
 	icon_override = 'icons/vore/custom_items_vr.dmi'
 	item_state = "flag_advent_mob"
 
-/* CITADEL CHANGE - Goodbye Virgo Fluff
+
 //Vorrakul: Kaitlyn Fiasco
 /obj/item/toy/plushie/mouse/fluff
 	name = "Mouse Plushie"
 	desc = "A plushie of a delightful mouse! What was once considered a vile rodent is now your very best friend."
 	slot_flags = SLOT_HEAD
-	icon_state = "mouse_brown"
+	icon_state = "mouse_brown"	//TFF 12/11/19 - Change sprite to not look dead. Heck you for that choice! >:C
 	item_state = "mouse_brown_head"
 	icon = 'icons/vore/custom_items_vr.dmi'
 	icon_override = 'icons/vore/custom_items_vr.dmi'
 
 //zodiacshadow: ?
-/obj/item/device/radio/headset/fluff/zodiacshadow
+/obj/item/radio/headset/fluff/zodiacshadow
 	name = "Nehi's 'phones"
 	desc = "A pair of old-fashioned purple headphones for listening to music that also double as an NT-approved headset; they connect nicely to any standard PDA. One side is engraved with the letters NEHI, the other having an elaborate inscription of the words \"My voice is my weapon of choice\" in a fancy font. A modern polymer allows switching between modes to either allow one to hear one's surroundings or to completely block them out."
 
@@ -268,7 +271,7 @@ END OF CITADEL CHANGES */
 
 
 // OrbisA: Richard D'angelo
-/obj/item/weapon/melee/fluff/holochain
+/obj/item/melee/fluff/holochain
 	name = "Holographic Chain"
 	desc = "A High Tech solution to simple perversions. It has a red leather handle and the initials R.D. on the silver base."
 
@@ -278,41 +281,31 @@ END OF CITADEL CHANGES */
 	icon_override = 'icons/vore/custom_items_vr.dmi'
 	item_state = "holochain_mob"
 
-	flags = CONDUCT | NOBLOODY
+	flags = NOBLOODY
 	slot_flags = SLOT_BELT
 	force = 10
 	throwforce = 3
 	w_class = ITEMSIZE_NORMAL
 	damtype = HALLOSS
 	attack_verb = list("flogged", "whipped", "lashed", "disciplined", "chastised", "flayed")
-END OF CITADEL CHANGE */
+
 //General use
-/obj/item/weapon/melee/fluff/holochain/mass
-	name = "holographic chain"
-	desc = "A mass produced holographic chain. It has faux leather and an aluminium base, but still stings like an original."
-	icon = 'icons/vore/custom_items_vr.dmi'
-	icon_state = "holochain"
-	icon_override = 'icons/vore/custom_items_vr.dmi'
-	item_state = "holochain_mob"
-	flags = CONDUCT | NOBLOODY
-	slot_flags = SLOT_BELT
+/obj/item/melee/fluff/holochain/mass
+	desc = "A mass produced version of the original. It has faux leather and an aluminium base, but still stings like the original."
 	force = 8
-	throwforce = 3
-	w_class = ITEMSIZE_NORMAL
-	damtype = HALLOSS
 	attack_verb = list("flogged", "whipped", "lashed", "flayed")
 
-/* CITADEL CHANGE - Goodbye Virgo Fluff
+
 // joey4298:Emoticon
-/obj/item/device/fluff/id_kit_mime
+/obj/item/fluff/id_kit_mime
 	name = "Mime ID reprinter"
 	desc = "Stick your ID in one end and it'll print a new ID out the other!"
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "labeler1"
 
-/obj/item/device/fluff/id_kit_mime/afterattack(obj/O, mob/user as mob)
+/obj/item/fluff/id_kit_mime/afterattack(obj/O, mob/user as mob)
 	var/new_icon = "mime"
-	if(istype(O,/obj/item/weapon/card/id) && O.icon_state != new_icon)
+	if(istype(O,/obj/item/card/id) && O.icon_state != new_icon)
 		//O.icon = icon // just in case we're using custom sprite paths with fluff items.
 		O.icon_state = new_icon // Changes the icon without changing the access.
 		playsound(user.loc, 'sound/items/polaroid2.ogg', 100, 1)
@@ -326,12 +319,12 @@ END OF CITADEL CHANGE */
 		return
 
 //arokha:Aronai Kadigan - Centcom ID (Medical dept)
-/obj/item/weapon/card/id/centcom/station/fluff/aronai
+/obj/item/card/id/centcom/station/fluff/aronai
 	registered_name = "CONFIGURE ME"
 	assignment = "CC Medical"
 	var/configured = 0
 
-/obj/item/weapon/card/id/centcom/station/fluff/aronai/attack_self(mob/user as mob)
+/obj/item/card/id/centcom/station/fluff/aronai/attack_self(mob/user as mob)
 	if(configured)
 		return ..()
 
@@ -342,7 +335,7 @@ END OF CITADEL CHANGE */
 	to_chat(user, "<span class='notice'>Card settings set.</span>")
 
 //Swat43:Fortune Bloise
-/obj/item/weapon/storage/backpack/satchel/fluff/swat43bag
+/obj/item/storage/backpack/satchel/fluff/swat43bag
 	name = "Coloured Satchel"
 	desc = "That's a coloured satchel with red stripes, with a heart and ripley logo on each side."
 	icon = 'icons/vore/custom_items_vr.dmi'
@@ -388,7 +381,7 @@ END OF CITADEL CHANGE */
 
 /*
 //SilencedMP5A5:Serdykov Antoz
-/obj/item/device/modkit_conversion/fluff/serdykit
+/obj/item/modkit_conversion/fluff/serdykit
 	name = "Serdykov's armor modification kit"
 	desc = "A kit containing all the needed tools and parts to modify a armor vest and helmet for a specific user. This one looks like it's fitted for a wolf-taur."
 
@@ -446,7 +439,7 @@ END OF CITADEL CHANGE */
 /obj/item/clothing/accessory/collar/khcrystal/process()
 	check_owner()
 	if((state > 1) || !owner)
-		processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 
 /obj/item/clothing/accessory/collar/khcrystal/attack_self(mob/user as mob)
 	if(state > 0) //Can't re-pair, one time only, for security reasons.
@@ -457,7 +450,7 @@ END OF CITADEL CHANGE */
 	owner_c = user.client	//This is his client
 	update_state(1)
 	to_chat(user, "<span class='notice'>The [name] glows pleasantly blue.</span>")
-	processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 
 /obj/item/clothing/accessory/collar/khcrystal/proc/check_owner()
 	//He's dead, jim
@@ -477,7 +470,7 @@ END OF CITADEL CHANGE */
 	icon_state = "[initial(icon_state)][tostate]"
 	update_icon()
 
-/obj/item/weapon/paper/khcrystal_manual
+/obj/item/paper/khcrystal_manual
 	name = "KH-LC91-1 manual"
 	info = {"<h4>KH-LC91-1 Life Crystal</h4>
 	<h5>Usage</h5>
@@ -516,50 +509,48 @@ END OF CITADEL CHANGE */
 	<i>\[AM WARNING\]</i>
 	<p>This device contains antimatter. Please consult all local regulations when travelling to ensure compliance with local laws.</p>"}
 
-/obj/item/weapon/storage/box/khcrystal
+/obj/item/storage/box/khcrystal
 	name = "life crystal case"
 	icon = 'icons/vore/custom_items_vr.dmi'
 	icon_state = "khlifebox"
 	desc = "This case can only hold the KH-LC91-1 and a manual."
 	item_state_slots = list(slot_r_hand_str = "syringe_kit", slot_l_hand_str = "syringe_kit")
 	storage_slots = 2
-	can_hold = list(/obj/item/weapon/paper/khcrystal_manual, /obj/item/clothing/accessory/collar/khcrystal)
+	can_hold = list(/obj/item/paper/khcrystal_manual, /obj/item/clothing/accessory/collar/khcrystal)
 	max_storage_space = ITEMSIZE_COST_SMALL * 2
 	w_class = ITEMSIZE_SMALL
 
-/obj/item/weapon/storage/box/khcrystal/New()
+/obj/item/storage/box/khcrystal/New()
 	..()
-	new /obj/item/weapon/paper/khcrystal_manual(src)
+	new /obj/item/paper/khcrystal_manual(src)
 	new /obj/item/clothing/accessory/collar/khcrystal(src)
-END OF CITADEL CHANGES */
-/obj/item/weapon/cane/fluff
+
+/obj/item/cane/fluff
 	name = "cane"
 	desc = "A cane used by a true gentlemen. Or a clown."
 	icon = 'icons/vore/custom_items_vr.dmi'
 	icon_state = "browncane"
 	item_icons = list (slot_r_hand_str = 'icons/vore/custom_items_vr.dmi', slot_l_hand_str = 'icons/vore/custom_items_vr.dmi')
 	item_state_slots = list(slot_r_hand_str = "browncanemob_r", slot_l_hand_str = "browncanemob_l")
-	flags = CONDUCT
 	force = 5.0
 	throwforce = 7.0
 	w_class = ITEMSIZE_SMALL
 	matter = list(DEFAULT_WALL_MATERIAL = 50)
 	attack_verb = list("bludgeoned", "whacked", "disciplined", "thrashed")
-/* CITADEL CHANGE - Goodbye Virgo Fluff
-/obj/item/weapon/cane/fluff/tasald
+
+/obj/item/cane/fluff/tasald
 	name = "Ornate Walking Cane"
 	desc = "An elaborately made custom walking stick with a dark wooding core, a crimson red gemstone on its head and a steel cover around the bottom. you'd probably hear someone using this down the hall."
 	icon = 'icons/vore/custom_items_vr.dmi'
 
 //Stobarico - Alexis Bloise
-/obj/item/weapon/cane/wand
+/obj/item/cane/wand
     name = "Ancient wand"
-    desc = "A really old looking wand with floating parts and cyan crystals, wich seem to radiate a cyan glow. The wand has a golden plaque on the side that would say Corncobble, but it is covered by a sticker saying Bloise."
+    desc = "A really old looking wand with floating parts and cyan crystals, wich seem to radiate a cyan glow. The wand has a golden plaque on the side that would say Corncobble, but it is covered by a sSSticker saying Bloise."
     icon = 'icons/vore/custom_items_vr.dmi'
     icon_state = "alexiswand"
     item_icons = list (slot_r_hand_str = 'icons/vore/custom_items_vr.dmi', slot_l_hand_str = 'icons/vore/custom_items_vr.dmi')
     item_state_slots = list(slot_r_hand_str = "alexiswandmob_r", slot_l_hand_str = "alexiswandmob_l")
-    flags = CONDUCT
     force = 1.0
     throwforce = 2.0
     w_class = ITEMSIZE_SMALL
@@ -569,28 +560,28 @@ END OF CITADEL CHANGES */
     var/last_use = 0
     var/cooldown = 30
 
-/obj/item/weapon/cane/wand/attack_self(mob/user)
+/obj/item/cane/wand/attack_self(mob/user)
     if(last_use + cooldown >= world.time)
         return
     playsound(loc, 'sound/weapons/sparkle.ogg', 50, 1)
     user.visible_message("<span class='warning'> [user] swings their wand.</span>")
-    var/datum/effect/effect/system/spark_spread/s = new
+    var/datum/effect_system/spark_spread/s = new
     s.set_up(3, 1, src)
     s.start()
     last_use = world.time
     qdel ()
 
-/obj/item/device/fluff/id_kit_ivy
+/obj/item/fluff/id_kit_ivy
 	name = "Holo-ID reprinter"
 	desc = "Stick your ID in one end and it'll print a new ID out the other!"
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "labeler1"
 
-/obj/item/device/fluff/id_kit_ivy/afterattack(obj/O, mob/user as mob)
+/obj/item/fluff/id_kit_ivy/afterattack(obj/O, mob/user as mob)
 	var/new_icon_state = "ivyholoid"
 	var/new_icon = 'icons/vore/custom_items_vr.dmi'
 	var/new_desc = "Its a thin screen showing ID information, but it seems to be flickering."
-	if(istype(O,/obj/item/weapon/card/id) && O.icon_state != new_icon)
+	if(istype(O,/obj/item/card/id) && O.icon_state != new_icon)
 		O.icon = new_icon
 		O.icon_state = new_icon_state // Changes the icon without changing the access.
 		O.desc = new_desc
@@ -605,7 +596,7 @@ END OF CITADEL CHANGES */
 		return
 
 //WickedTempest: Chakat Tempest
-/obj/item/weapon/reagent_containers/hypospray/vial/tempest
+/obj/item/reagent_containers/hypospray/vial/tempest
 	name = "Tempest's Hypospray"
 	desc = "A custom-made MKII hypospray belonging to Chakat Tempest. There's small print engraved on the handle: A medicine-cat has no time for doubt. Act now, act swiftly."
 	icon = 'icons/vore/custom_items_vr.dmi'
@@ -613,7 +604,7 @@ END OF CITADEL CHANGES */
 	icon_state = "temphypo"
 
 //WickedTempest: Chakat Tempest
-/obj/item/weapon/storage/backpack/saddlebag/tempest
+/obj/item/storage/backpack/saddlebag/tempest
 	name = "Tempest's Saddlebags"
 	desc = "A custom-made set of saddlebags, tailored to Chakat Tempest's exact dimensions, and taste in color! One one side, there's small print stitched in: ...to carry the weight of any responsibility, burden or task."
 	icon = 'icons/vore/custom_items_vr.dmi'
@@ -624,9 +615,63 @@ END OF CITADEL CHANGES */
 	slowdown = 0
 	taurtype = /datum/sprite_accessory/tail/taur/feline/tempest
 	no_message = "These saddlebags seem to be fitted for someone else, and keep slipping off!"
+	action_button_name = "Toggle Mlembulance Mode"
+	var/ambulance = FALSE
+	var/datum/looping_sound/ambulance/soundloop
+	var/ambulance_state = FALSE
+	var/ambulance_last_switch = 0
+
+/obj/item/storage/backpack/saddlebag/tempest/Initialize()
+	soundloop = new(list(src), FALSE)
+	return ..()
+
+/obj/item/storage/backpack/saddlebag/tempest/Destroy()
+	QDEL_NULL(soundloop)
+	return ..()
+
+/obj/item/storage/backpack/saddlebag/tempest/ui_action_click()
+	ambulance = !(ambulance)
+	if(ambulance)
+		START_PROCESSING(SSobj, src)
+		item_state = "tempestsaddlebag-amb"
+		icon_state = "tempestbag-amb"
+		if (ismob(loc))
+			var/mob/M = loc
+			M.update_inv_back()
+		ambulance_state = FALSE
+		set_light(2, 1, "#FF0000")
+		soundloop.start()
+	else
+		item_state = "tempestsaddlebag"
+		icon_state = "tempestbag"
+		if (ismob(loc))
+			var/mob/M = loc
+			M.update_inv_back()
+		set_light(0)
+		soundloop.stop()
+
+/obj/item/storage/backpack/saddlebag/tempest/process()
+	if(!ambulance)
+		STOP_PROCESSING(SSobj, src)
+		return
+	if(world.time - ambulance_last_switch > 15)
+		ambulance_state = !(ambulance_state)
+		var/newlight = "#FF0000"
+		if(ambulance_state)
+			newlight = "#0000FF"
+		if (ismob(loc))
+			var/mob/M = loc
+			M.update_inv_back()
+		set_light(2, 1, newlight)
+		ambulance_last_switch = world.time
+
+/datum/looping_sound/ambulance
+	mid_sounds = list('sound/items/amulanceweeoo.ogg'=1)
+	mid_length = 20
+	volume = 25
 
 //WickedTempest: Chakat Tempest
-/obj/item/weapon/implant/reagent_generator/tempest
+/obj/item/implant/reagent_generator/tempest
 	generated_reagents = list("milk" = 2)
 	reagent_name = "milk"
 	usable_volume = 1000
@@ -639,12 +684,12 @@ END OF CITADEL CHANGES */
 	verb_name = "Milk"
 	verb_desc = "Grab Tempest's nipples and milk them into a container! May cause blushing and groaning."
 
-/obj/item/weapon/implanter/reagent_generator/tempest
-	implant_type = /obj/item/weapon/implant/reagent_generator/tempest
+/obj/item/implanter/reagent_generator/tempest
+	implant_type = /obj/item/implant/reagent_generator/tempest
 
 
 //Hottokeeki: Belle Day
-/obj/item/weapon/implant/reagent_generator/belle
+/obj/item/implant/reagent_generator/belle
 	generated_reagents = list("milk" = 2)
 	reagent_name = "milk"
 	usable_volume = 5000
@@ -657,12 +702,12 @@ END OF CITADEL CHANGES */
 	verb_name = "Milk"
 	verb_desc = "Obtain Belle's milk and put it into a container! May cause blushing and groaning, or arousal."
 
-/obj/item/weapon/implanter/reagent_generator/belle
-	implant_type = /obj/item/weapon/implant/reagent_generator/belle
+/obj/item/implanter/reagent_generator/belle
+	implant_type = /obj/item/implant/reagent_generator/belle
 
 //Gowst: Eldi Moljir
 //Eldi iz coolest elf-dorf.
-/obj/item/weapon/implant/reagent_generator/eldi
+/obj/item/implant/reagent_generator/eldi
 	name = "lactation implant"
 	desc = "This is an implant that allows the user to lactate."
 	generated_reagents = list("milk" = 2)
@@ -677,11 +722,11 @@ END OF CITADEL CHANGES */
 	verb_name = "Milk"
 	verb_desc = "Grab Eldi's breasts and milk her, storing her fresh, warm milk in a container. This will undoubtedly turn her on."
 
-/obj/item/weapon/implanter/reagent_generator/eldi
-	implant_type = /obj/item/weapon/implant/reagent_generator/eldi
+/obj/item/implanter/reagent_generator/eldi
+	implant_type = /obj/item/implant/reagent_generator/eldi
 
 //Vorrarkul: Theodora Lindt
-/obj/item/weapon/implant/reagent_generator/vorrarkul
+/obj/item/implant/reagent_generator/vorrarkul
 	generated_reagents = list("chocolate_milk" = 2)
 	reagent_name = "chocalate milk"
 	usable_volume = 1000
@@ -694,11 +739,11 @@ END OF CITADEL CHANGES */
 	verb_name = "Milk"
 	verb_desc = "Grab Theodora's breasts and extract delicious chocolate milk from them!"
 
-/obj/item/weapon/implanter/reagent_generator/vorrarkul
-	implant_type = /obj/item/weapon/implant/reagent_generator/vorrarkul
+/obj/item/implanter/reagent_generator/vorrarkul
+	implant_type = /obj/item/implant/reagent_generator/vorrarkul
 
 //Lycanthorph: Savannah Dixon
-/obj/item/weapon/implant/reagent_generator/savannah
+/obj/item/implant/reagent_generator/savannah
 	generated_reagents = list("milk" = 2)
 	reagent_name = "milk"
 	usable_volume = 1000
@@ -711,14 +756,14 @@ END OF CITADEL CHANGES */
 	verb_name = "Milk"
 	verb_desc = "Grab Savannah's breasts and extract sweet milk from them!"
 
-/obj/item/weapon/implanter/reagent_generator/savannah
-	implant_type = /obj/item/weapon/implant/reagent_generator/savannah
+/obj/item/implanter/reagent_generator/savannah
+	implant_type = /obj/item/implant/reagent_generator/savannah
 
 //SpoopyLizz: Roiz Lizden
 //I made this! Woo!
 //implant
 //--------------------
-/obj/item/weapon/implant/reagent_generator/roiz
+/obj/item/implant/reagent_generator/roiz
 	name = "egg laying implant"
 	desc = "This is an implant that allows the user to lay eggs."
 	generated_reagents = list("egg" = 2)
@@ -735,14 +780,14 @@ END OF CITADEL CHANGES */
 	random_emote = list("hisses softly with a blush on his face", "yelps in embarrassment", "grunts a little")
 	assigned_proc = /mob/living/carbon/human/proc/use_reagent_implant_roiz
 
-/obj/item/weapon/implant/reagent_generator/roiz/post_implant(mob/living/carbon/source)
-	processing_objects += src
+/obj/item/implant/reagent_generator/roiz/post_implant(mob/living/carbon/source)
+	START_PROCESSING(SSobj, src)
 	to_chat(source, "<span class='notice'>You implant [source] with \the [src].</span>")
 	source.verbs |= assigned_proc
 	return 1
 
-/obj/item/weapon/implanter/reagent_generator/roiz
-	implant_type = /obj/item/weapon/implant/reagent_generator/roiz
+/obj/item/implanter/reagent_generator/roiz
+	implant_type = /obj/item/implant/reagent_generator/roiz
 
 /mob/living/carbon/human/proc/use_reagent_implant_roiz()
 	set name = "Lay Egg"
@@ -757,17 +802,18 @@ END OF CITADEL CHANGES */
 	if(usr.incapacitated() || usr.stat > CONSCIOUS)
 		return
 
-	var/obj/item/weapon/implant/reagent_generator/roiz/rimplant
-	for(var/I in contents)
-		if(istype(I, /obj/item/weapon/implant/reagent_generator))
-			rimplant = I
-			break
+	var/obj/item/implant/reagent_generator/roiz/rimplant
+	for(var/obj/item/organ/external/E in organs)
+		for(var/obj/item/implant/I in E.implants)
+			if(istype(I, /obj/item/implant/reagent_generator))
+				rimplant = I
+				break
 	if (rimplant)
 		if(rimplant.reagents.total_volume <= rimplant.transfer_amount)
 			to_chat(src, "<span class='notice'>[pick(rimplant.empty_message)]</span>")
 			return
 
-		new /obj/item/weapon/reagent_containers/food/snacks/egg/roiz(get_turf(src))
+		new /obj/item/reagent_containers/food/snacks/egg/roiz(get_turf(src))
 
 		var/index = rand(0,3)
 
@@ -786,7 +832,7 @@ END OF CITADEL CHANGES */
 		rimplant.reagents.remove_any(rimplant.transfer_amount)
 
 //Cameron653: Jasmine Lizden
-/obj/item/weapon/implant/reagent_generator/jasmine
+/obj/item/implant/reagent_generator/jasmine
 	name = "egg laying implant"
 	desc = "This is an implant that allows the user to lay eggs."
 	generated_reagents = list("egg" = 2)
@@ -803,14 +849,14 @@ END OF CITADEL CHANGES */
 	random_emote = list("hisses softly with a blush on her face", "bites down on her lower lip", "lets out a light huff")
 	assigned_proc = /mob/living/carbon/human/proc/use_reagent_implant_jasmine
 
-/obj/item/weapon/implant/reagent_generator/jasmine/post_implant(mob/living/carbon/source)
-	processing_objects += src
+/obj/item/implant/reagent_generator/jasmine/post_implant(mob/living/carbon/source)
+	START_PROCESSING(SSobj, src)
 	to_chat(source, "<span class='notice'>You implant [source] with \the [src].</span>")
 	source.verbs |= assigned_proc
 	return 1
 
-/obj/item/weapon/implanter/reagent_generator/jasmine
-	implant_type = /obj/item/weapon/implant/reagent_generator/jasmine
+/obj/item/implanter/reagent_generator/jasmine
+	implant_type = /obj/item/implant/reagent_generator/jasmine
 
 /mob/living/carbon/human/proc/use_reagent_implant_jasmine()
 	set name = "Lay Egg"
@@ -825,17 +871,18 @@ END OF CITADEL CHANGES */
 	if(usr.incapacitated() || usr.stat > CONSCIOUS)
 		return
 
-	var/obj/item/weapon/implant/reagent_generator/jasmine/rimplant
-	for(var/I in contents)
-		if(istype(I, /obj/item/weapon/implant/reagent_generator))
-			rimplant = I
-			break
+	var/obj/item/implant/reagent_generator/jasmine/rimplant
+	for(var/obj/item/organ/external/E in organs)
+		for(var/obj/item/implant/I in E.implants)
+			if(istype(I, /obj/item/implant/reagent_generator))
+				rimplant = I
+				break
 	if (rimplant)
 		if(rimplant.reagents.total_volume <= rimplant.transfer_amount)
 			to_chat(src, "<span class='notice'>[pick(rimplant.empty_message)]</span>")
 			return
 
-		new /obj/item/weapon/reagent_containers/food/snacks/egg/roiz(get_turf(src))
+		new /obj/item/reagent_containers/food/snacks/egg/roiz(get_turf(src))
 
 		var/index = rand(0,3)
 
@@ -854,7 +901,7 @@ END OF CITADEL CHANGES */
 		rimplant.reagents.remove_any(rimplant.transfer_amount)
 
 //Draycu: Schae Yonra
-/obj/item/weapon/implant/reagent_generator/yonra
+/obj/item/implant/reagent_generator/yonra
 	name = "egg laying implant"
 	desc = "This is an implant that allows the user to lay eggs."
 	generated_reagents = list("egg" = 2)
@@ -871,14 +918,14 @@ END OF CITADEL CHANGES */
 	random_emote = list("hisses softly with a blush on her face", "yelps in embarrassment", "grunts a little")
 	assigned_proc = /mob/living/carbon/human/proc/use_reagent_implant_yonra
 
-/obj/item/weapon/implant/reagent_generator/yonra/post_implant(mob/living/carbon/source)
-	processing_objects += src
+/obj/item/implant/reagent_generator/yonra/post_implant(mob/living/carbon/source)
+	START_PROCESSING(SSobj, src)
 	to_chat(source, "<span class='notice'>You implant [source] with \the [src].</span>")
 	source.verbs |= assigned_proc
 	return 1
 
-/obj/item/weapon/implanter/reagent_generator/yonra
-	implant_type = /obj/item/weapon/implant/reagent_generator/yonra
+/obj/item/implanter/reagent_generator/yonra
+	implant_type = /obj/item/implant/reagent_generator/yonra
 
 /mob/living/carbon/human/proc/use_reagent_implant_yonra()
 	set name = "Lay Egg"
@@ -893,17 +940,18 @@ END OF CITADEL CHANGES */
 	if(usr.incapacitated() || usr.stat > CONSCIOUS)
 		return
 
-	var/obj/item/weapon/implant/reagent_generator/yonra/rimplant
-	for(var/I in contents)
-		if(istype(I, /obj/item/weapon/implant/reagent_generator))
-			rimplant = I
-			break
+	var/obj/item/implant/reagent_generator/yonra/rimplant
+	for(var/obj/item/organ/external/E in organs)
+		for(var/obj/item/implant/I in E.implants)
+			if(istype(I, /obj/item/implant/reagent_generator))
+				rimplant = I
+				break
 	if (rimplant)
 		if(rimplant.reagents.total_volume <= rimplant.transfer_amount)
 			to_chat(src, "<span class='notice'>[pick(rimplant.empty_message)]</span>")
 			return
 
-		new /obj/item/weapon/reagent_containers/food/snacks/egg/teshari(get_turf(src))
+		new /obj/item/reagent_containers/food/snacks/egg/teshari(get_turf(src))
 
 		var/index = rand(0,3)
 
@@ -921,7 +969,7 @@ END OF CITADEL CHANGES */
 
 		rimplant.reagents.remove_any(rimplant.transfer_amount)
 
-/obj/item/weapon/reagent_containers/food/snacks/egg/teshari
+/obj/item/reagent_containers/food/snacks/egg/teshari
 	name = "teshari egg"
 	desc = "It's a large teshari egg."
 	icon = 'icons/vore/custom_items_vr.dmi'
@@ -929,16 +977,16 @@ END OF CITADEL CHANGES */
 	filling_color = "#FDFFD1"
 	volume = 12
 
-/obj/item/weapon/reagent_containers/food/snacks/egg/teshari/New()
+/obj/item/reagent_containers/food/snacks/egg/teshari/New()
 	..()
 	reagents.add_reagent("egg", 10)
 	bitesize = 2
 
-/obj/item/weapon/reagent_containers/food/snacks/egg/teshari/tesh2
+/obj/item/reagent_containers/food/snacks/egg/teshari/tesh2
 	icon_state = "tesh_egg_2"
 
 //Konabird: Rischi
-/obj/item/weapon/implant/reagent_generator/rischi
+/obj/item/implant/reagent_generator/rischi
 	name = "egg laying implant"
 	desc = "This is an implant that allows the user to lay eggs."
 	generated_reagents = list("egg" = 2)
@@ -955,14 +1003,14 @@ END OF CITADEL CHANGES */
 	random_emote = list("trembles and huffs, panting from the exertion.", "sees what has happened and covers her face with both hands!", "whimpers softly, her legs shivering, knees pointed inward from the feeling.")
 	assigned_proc = /mob/living/carbon/human/proc/use_reagent_implant_rischi
 
-/obj/item/weapon/implant/reagent_generator/rischi/post_implant(mob/living/carbon/source)
-	processing_objects += src
+/obj/item/implant/reagent_generator/rischi/post_implant(mob/living/carbon/source)
+	START_PROCESSING(SSobj, src)
 	to_chat(source, "<span class='notice'>You implant [source] with \the [src].</span>")
 	source.verbs |= assigned_proc
 	return 1
 
-/obj/item/weapon/implanter/reagent_generator/rischi
-	implant_type = /obj/item/weapon/implant/reagent_generator/rischi
+/obj/item/implanter/reagent_generator/rischi
+	implant_type = /obj/item/implant/reagent_generator/rischi
 
 /mob/living/carbon/human/proc/use_reagent_implant_rischi()
 	set name = "Lay Egg"
@@ -977,17 +1025,18 @@ END OF CITADEL CHANGES */
 	if(usr.incapacitated() || usr.stat > CONSCIOUS)
 		return
 
-	var/obj/item/weapon/implant/reagent_generator/rischi/rimplant
-	for(var/I in contents)
-		if(istype(I, /obj/item/weapon/implant/reagent_generator))
-			rimplant = I
-			break
+	var/obj/item/implant/reagent_generator/rischi/rimplant
+	for(var/obj/item/organ/external/E in organs)
+		for(var/obj/item/implant/I in E.implants)
+			if(istype(I, /obj/item/implant/reagent_generator))
+				rimplant = I
+				break
 	if (rimplant)
 		if(rimplant.reagents.total_volume <= rimplant.transfer_amount)
 			to_chat(src, "<span class='notice'>[pick(rimplant.empty_message)]</span>")
 			return
 
-		new /obj/item/weapon/reagent_containers/food/snacks/egg/teshari/tesh2(get_turf(src))
+		new /obj/item/reagent_containers/food/snacks/egg/teshari/tesh2(get_turf(src))
 
 		var/index = rand(0,3)
 
@@ -1006,7 +1055,7 @@ END OF CITADEL CHANGES */
 		rimplant.reagents.remove_any(rimplant.transfer_amount)
 
 /*
-/obj/item/weapon/implant/reagent_generator/pumila_nectar //Bugged. Two implants at once messes things up.
+/obj/item/implant/reagent_generator/pumila_nectar //Bugged. Two implants at once messes things up.
 	generated_reagents = list("honey" = 2)
 	reagent_name = "honey"
 	usable_volume = 5000
@@ -1018,12 +1067,12 @@ END OF CITADEL CHANGES */
 	verb_name = "Extract Honey"
 	verb_desc = "Obtain pumila's nectar and put it into a container!"
 
-/obj/item/weapon/implanter/reagent_generator/pumila_nectar
-	implant_type = /obj/item/weapon/implant/reagent_generator/pumila_nectar
+/obj/item/implanter/reagent_generator/pumila_nectar
+	implant_type = /obj/item/implant/reagent_generator/pumila_nectar
 */
 //Egg item
 //-------------
-/obj/item/weapon/reagent_containers/food/snacks/egg/roiz
+/obj/item/reagent_containers/food/snacks/egg/roiz
 	name = "lizard egg"
 	desc = "It's a large lizard egg."
 	icon = 'icons/vore/custom_items_vr.dmi'
@@ -1031,14 +1080,14 @@ END OF CITADEL CHANGES */
 	filling_color = "#FDFFD1"
 	volume = 12
 
-/obj/item/weapon/reagent_containers/food/snacks/egg/roiz/New()
+/obj/item/reagent_containers/food/snacks/egg/roiz/New()
 	..()
 	reagents.add_reagent("egg", 9)
 	bitesize = 2
 
-/obj/item/weapon/reagent_containers/food/snacks/egg/roiz/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(istype( W, /obj/item/weapon/pen/crayon ))
-		var/obj/item/weapon/pen/crayon/C = W
+/obj/item/reagent_containers/food/snacks/egg/roiz/attackby(obj/item/W as obj, mob/user as mob)
+	if(istype( W, /obj/item/pen/crayon ))
+		var/obj/item/pen/crayon/C = W
 		var/clr = C.colourName
 
 		if(!(clr in list("blue","green","mime","orange","purple","rainbow","red","yellow")))
@@ -1054,31 +1103,31 @@ END OF CITADEL CHANGES */
 	else
 		..()
 
-/obj/item/weapon/reagent_containers/food/snacks/friedegg/roiz
+/obj/item/reagent_containers/food/snacks/friedegg/roiz
 	name = "fried lizard egg"
 	desc = "A large, fried lizard egg, with a touch of salt and pepper. It looks rather chewy."
 	icon = 'icons/vore/custom_items_vr.dmi'
 	icon_state = "friedegg"
 	volume = 12
 
-/obj/item/weapon/reagent_containers/food/snacks/friedegg/roiz/New()
+/obj/item/reagent_containers/food/snacks/friedegg/roiz/New()
 	..()
 	reagents.add_reagent("protein", 9)
 	bitesize = 2
 
-/obj/item/weapon/reagent_containers/food/snacks/boiledegg/roiz
+/obj/item/reagent_containers/food/snacks/boiledegg/roiz
 	name = "boiled lizard egg"
 	desc = "A hard boiled lizard egg. Be careful, a lizard detective may hatch!"
 	icon = 'icons/vore/custom_items_vr.dmi'
 	icon_state = "egg_roiz"
 	volume = 12
 
-/obj/item/weapon/reagent_containers/food/snacks/boiledegg/roiz/New()
+/obj/item/reagent_containers/food/snacks/boiledegg/roiz/New()
 	..()
 	reagents.add_reagent("protein", 6)
 	bitesize = 2
 
-/obj/item/weapon/reagent_containers/food/snacks/chocolateegg/roiz
+/obj/item/reagent_containers/food/snacks/chocolateegg/roiz
 	name = "chocolate lizard egg"
 	desc = "Such huge, sweet, fattening food. You feel gluttonous just looking at it."
 	icon = 'icons/vore/custom_items_vr.dmi'
@@ -1088,7 +1137,7 @@ END OF CITADEL CHANGES */
 	nutriment_desc = list("chocolate" = 5)
 	volume = 18
 
-/obj/item/weapon/reagent_containers/food/snacks/chocolateegg/roiz/New()
+/obj/item/reagent_containers/food/snacks/chocolateegg/roiz/New()
 	..()
 	reagents.add_reagent("sugar", 6)
 	reagents.add_reagent("coco", 6)
@@ -1096,7 +1145,7 @@ END OF CITADEL CHANGES */
 	bitesize = 2
 
 //PontifexMinimus: Lucius/Lucia Null
-/obj/item/weapon/fluff/dragor_dot
+/obj/item/fluff/dragor_dot
 	name = "supplemental battery"
 	desc = "A tiny supplemental battery for powering something or someone synthetic."
 	icon = 'icons/vore/custom_items_vr.dmi'
@@ -1109,18 +1158,18 @@ END OF CITADEL CHANGES */
 		else
 			return
 //LuminescentRing: Briana Moore
-/obj/item/weapon/storage/backpack/messenger/black/fluff/briana
+/obj/item/storage/backpack/messenger/black/fluff/briana
 	name = "2561 graduation bag"
 	desc = "A black leather bag with names scattered around in red embroidery, it says 'Pride State Academy' on the top. "
 
 //DeepIndigo: Amina Dae-Kouri
-/obj/item/weapon/storage/bible/fluff/amina
+/obj/item/storage/bible/fluff/amina
 	name = "New Space Pioneer's Bible"
 	desc = "A New Space Pioneer's Bible. This one says it was printed in 2492. The name 'Eric Hayvers' is written on the inside of the cover, crossed out. \
 	Under it is written 'Kouri, Amina, Marine Unit 14, Fifth Echelon. Service number NTN-5528928522372'"
 
 //arokha:Amaya Rahl - Custom ID (Medical dept)
-/obj/item/weapon/card/id/fluff/amaya
+/obj/item/card/id/fluff/amaya
 	registered_name = "CONFIGURE ME"
 	assignment = "CONFIGURE ME"
 	var/configured = 0
@@ -1130,7 +1179,7 @@ END OF CITADEL CHANGES */
 	desc = "A primarily blue ID with a holographic 'WAH' etched onto its back. The letters do not obscure anything important on the card. It is shiny and it feels very bumpy."
 	var/title_strings = list("Amaya Rahl's Wah-identification card", "Amaya Rahl's Wah-ID card")
 
-/obj/item/weapon/card/id/fluff/amaya/attack_self(mob/user as mob)
+/obj/item/card/id/fluff/amaya/attack_self(mob/user as mob)
 	if(configured == 1)
 		return ..()
 
@@ -1148,16 +1197,16 @@ END OF CITADEL CHANGES */
 	configured = 1
 	to_chat(user, "<span class='notice'>Card settings set.</span>")
 
-/obj/item/weapon/card/id/fluff/amaya/attackby(obj/item/I as obj, mob/user as mob)
-	if(istype(I, /obj/item/weapon/card/id) && !accessset)
-		var/obj/item/weapon/card/id/O = I
+/obj/item/card/id/fluff/amaya/attackby(obj/item/I as obj, mob/user as mob)
+	if(istype(I, /obj/item/card/id) && !accessset)
+		var/obj/item/card/id/O = I
 		access |= O.access
 		to_chat(user, "<span class='notice'>You copy the access from \the [I] to \the [src].</span>")
 		user.drop_from_inventory(I)
 		qdel(I)
 		accessset = 1
 	..()
-END OF CITADEL CHANGES */
+
 //General use, Verk felt like sharing.
 /obj/item/clothing/glasses/fluff/science_proper
 	name = "Aesthetic Science Goggles"
@@ -1202,54 +1251,58 @@ END OF CITADEL CHANGES */
 	slot = ACCESSORY_SLOT_DECOR
 
 //The perfect adminboos device?
-/obj/item/device/perfect_tele
+/obj/item/perfect_tele
 	name = "personal translocator"
-	desc = "Seems absurd, doesn't it? Yet, here we are. This handheld device is capable of producing bluespace teleportation beacons, and can be activated to translocate the user or a target of their choice to any linked beacon."
+	desc = "Seems absurd, doesn't it? Yet, here we are. Generally considered dangerous contraband unless the user has permission from Central Command."
 	icon = 'icons/obj/device_alt.dmi'
 	icon_state = "hand_tele"
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 5, TECH_ILLEGAL = 7)
 
-	var/obj/item/weapon/cell/device/weapon/power_source
+	var/cell_type = /obj/item/cell/device/weapon
+	var/obj/item/cell/power_source
 	var/charge_cost = 800 // cell/device/weapon has 2400
 
 	var/list/beacons = list()
 	var/ready = 1
 	var/beacons_left = 3
 	var/failure_chance = 5 //Percent
-	var/obj/item/device/perfect_tele_beacon/destination
-	var/datum/effect/effect/system/spark_spread/spk
+	var/obj/item/perfect_tele_beacon/destination
+	var/datum/effect_system/spark_spread/spk
 	var/list/warned_users = list()
 	var/list/logged_events = list()
 
-/obj/item/device/perfect_tele/Initialize(mapload)
-	. = ..()
+/obj/item/perfect_tele/New()
+	..()
 	flags |= NOBLUDGEON
-	power_source = new (src)
+	if(cell_type)
+		power_source = new cell_type(src)
+	else
+		power_source = new /obj/item/cell/device(src)
 	spk = new(src)
 	spk.set_up(5, 0, src)
 	spk.attach(src)
 
-/obj/item/device/perfect_tele/Destroy()
+/obj/item/perfect_tele/Destroy()
 	// Must clear the beacon's backpointer or we won't GC. Someday maybe do something nicer even.
-	for(var/obj/item/device/perfect_tele_beacon/B in beacons)
+	for(var/obj/item/perfect_tele_beacon/B in beacons)
 		B.tele_hand = null
 	beacons.Cut()
 	QDEL_NULL(power_source)
 	QDEL_NULL(spk)
 	return ..()
 
-/obj/item/device/perfect_tele/update_icon()
+/obj/item/perfect_tele/update_icon()
 	if(!power_source)
 		icon_state = "[initial(icon_state)]_o"
-	else if(ready && power_source.check_charge(charge_cost))
+	else if(ready && (power_source.check_charge(charge_cost) || power_source.fully_charged()))
 		icon_state = "[initial(icon_state)]"
 	else
 		icon_state = "[initial(icon_state)]_w"
 
 	..()
 
-/obj/item/device/perfect_tele/attack_hand(mob/user)
+/obj/item/perfect_tele/attack_hand(mob/user)
 	if(user.get_inactive_hand() == src && power_source)
 		to_chat(user,"<span class='notice'>You eject \the [power_source] from \the [src].</span>")
 		user.put_in_hands(power_source)
@@ -1258,7 +1311,7 @@ END OF CITADEL CHANGES */
 	else
 		return ..()
 
-/obj/item/device/perfect_tele/attack_self(mob/user)
+/obj/item/perfect_tele/attack_self(mob/user)
 	if(!(user.ckey in warned_users))
 		warned_users |= user.ckey
 		alert(user,"This device can be easily used to break ERP preferences due to the nature of teleporting \
@@ -1282,7 +1335,7 @@ END OF CITADEL CHANGES */
 				alert("No duplicate names, please. '[new_name]' exists already.","Error")
 				return
 
-			var/obj/item/device/perfect_tele_beacon/nb = new(get_turf(src))
+			var/obj/item/perfect_tele_beacon/nb = new(get_turf(src))
 			nb.tele_name = new_name
 			nb.tele_hand = src
 			nb.creator = user.ckey
@@ -1303,8 +1356,8 @@ END OF CITADEL CHANGES */
 		else
 			return
 
-/obj/item/device/perfect_tele/attackby(obj/W, mob/user)
-	if(istype(W,/obj/item/weapon/cell/device/weapon) && !power_source)
+/obj/item/perfect_tele/attackby(obj/W, mob/user)
+	if(istype(W,cell_type) && !power_source)
 		power_source = W
 		power_source.update_icon() //Why doesn't a cell do this already? :|
 		user.unEquip(power_source)
@@ -1312,8 +1365,8 @@ END OF CITADEL CHANGES */
 		to_chat(user,"<span class='notice'>You insert \the [power_source] into \the [src].</span>")
 		update_icon()
 
-	else if(istype(W,/obj/item/device/perfect_tele_beacon))
-		var/obj/item/device/perfect_tele_beacon/tb = W
+	else if(istype(W,/obj/item/perfect_tele_beacon))
+		var/obj/item/perfect_tele_beacon/tb = W
 		if(tb.tele_name in beacons)
 			to_chat(user,"<span class='notice'>You re-insert \the [tb] into \the [src].</span>")
 			beacons -= tb.tele_name
@@ -1326,14 +1379,14 @@ END OF CITADEL CHANGES */
 	else
 		..()
 
-/obj/item/device/perfect_tele/proc/teleport_checks(mob/living/target,mob/living/user)
+/obj/item/perfect_tele/proc/teleport_checks(mob/living/target,mob/living/user)
 	//Uhhuh, need that power source
 	if(!power_source)
 		to_chat(user,"<span class='warning'>\The [src] has no power source!</span>")
 		return FALSE
 
 	//Check for charge
-	if(!power_source.check_charge(charge_cost))
+	if((!power_source.check_charge(charge_cost)) && (!power_source.fully_charged()))
 		to_chat(user,"<span class='warning'>\The [src] does not have enough power left!</span>")
 		return FALSE
 
@@ -1364,10 +1417,13 @@ END OF CITADEL CHANGES */
 	//No, you can't port to or from away missions. Stupidly complicated check.
 	var/turf/uT = get_turf(user)
 	var/turf/dT = get_turf(destination)
+	var/list/dat = list()
+	dat["z_level_detection"] = GLOB.using_map.get_map_levels(uT.z, TRUE)
+
 	if(!uT || !dT)
 		return FALSE
 
-	if( (uT.z != dT.z) && ( (uT.z > max_default_z_level() ) || (dT.z > max_default_z_level()) ) )
+	if( (uT.z != dT.z) && (!(dT.z in dat["z_level_detection"])) )
 		to_chat(user,"<span class='warning'>\The [src] can't teleport you that far!</span>")
 		return FALSE
 
@@ -1378,7 +1434,7 @@ END OF CITADEL CHANGES */
 	//Seems okay to me!
 	return TRUE
 
-/obj/item/device/perfect_tele/afterattack(mob/living/target, mob/living/user, proximity)
+/obj/item/perfect_tele/afterattack(mob/living/target, mob/living/user, proximity)
 	//No, you can't teleport people from over there.
 	if(!proximity)
 		return
@@ -1432,7 +1488,7 @@ END OF CITADEL CHANGES */
 	phase_in(target,get_turf(target))
 
 	//And any friends!
-	for(var/obj/item/weapon/grab/G in target.contents)
+	for(var/obj/item/grab/G in target.contents)
 		if(G.affecting && (G.state >= GRAB_AGGRESSIVE))
 
 			//Phase-out effect for grabbed person
@@ -1453,7 +1509,7 @@ END OF CITADEL CHANGES */
 
 	logged_events["[world.time]"] = "[user] teleported [target] to [real_dest] [televored ? "(Belly: [lowertext(real_dest.name)])" : null]"
 
-/obj/item/device/perfect_tele/proc/phase_out(var/mob/M,var/turf/T)
+/obj/item/perfect_tele/proc/phase_out(var/mob/M,var/turf/T)
 
 	if(!M || !T)
 		return
@@ -1463,7 +1519,7 @@ END OF CITADEL CHANGES */
 	playsound(T, "sparks", 50, 1)
 	anim(T,M,'icons/mob/mob.dmi',,"phaseout",,M.dir)
 
-/obj/item/device/perfect_tele/proc/phase_in(var/mob/M,var/turf/T)
+/obj/item/perfect_tele/proc/phase_in(var/mob/M,var/turf/T)
 
 	if(!M || !T)
 		return
@@ -1475,7 +1531,7 @@ END OF CITADEL CHANGES */
 	spk.set_up(5, 0, src)
 	spk.attach(src)
 
-/obj/item/device/perfect_tele_beacon
+/obj/item/perfect_tele_beacon
 	name = "translocator beacon"
 	desc = "That's unusual."
 	icon = 'icons/obj/device_alt.dmi'
@@ -1483,20 +1539,20 @@ END OF CITADEL CHANGES */
 	w_class = ITEMSIZE_TINY
 
 	var/tele_name
-	var/obj/item/device/perfect_tele/tele_hand
+	var/obj/item/perfect_tele/tele_hand
 	var/creator
 	var/warned_users = list()
 
-/obj/item/device/perfect_tele_beacon/Initialize(mapload)
-	. = ..()
+/obj/item/perfect_tele_beacon/New()
+	..()
 	flags |= NOBLUDGEON
 
-/obj/item/device/perfect_tele_beacon/Destroy()
+/obj/item/perfect_tele_beacon/Destroy()
 	tele_name = null
 	tele_hand = null
 	return ..()
 
-/obj/item/device/perfect_tele_beacon/attack_hand(mob/user)
+/obj/item/perfect_tele_beacon/attack_hand(mob/user)
 	if((user.ckey != creator) && !(user.ckey in warned_users))
 		warned_users |= user.ckey
 		var/choice = alert(user,"This device is a translocator beacon. Having it on your person may mean that anyone \
@@ -1508,7 +1564,7 @@ END OF CITADEL CHANGES */
 
 	..()
 
-/obj/item/device/perfect_tele_beacon/attack_self(mob/user)
+/obj/item/perfect_tele_beacon/attack_self(mob/user)
 	if(!isliving(user))
 		return
 	var/mob/living/L = user
@@ -1523,20 +1579,65 @@ END OF CITADEL CHANGES */
 				user.visible_message("<span class='warning'>[user] eats a telebeacon!</span>","You eat the the beacon!")
 
 // A single-beacon variant for use by miners (or whatever)
-/obj/item/device/perfect_tele/one_beacon
+/obj/item/perfect_tele/one_beacon
 	name = "mini-translocator"
-	desc = "A more limited translocator with a single beacon, useful for some things, like setting the mining department on fire accidentally."
+	desc = "A more limited translocator with a single beacon, useful for some things, like setting the mining department on fire accidentally. Legal for use in the pursuit of NanoTrasen interests, namely mining and exploration."
 	icon_state = "minitrans"
 	beacons_left = 1 //Just one
-	charge_cost = 2400 //One per
+	cell_type = /obj/item/cell/device
+	origin_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 5)
 
-/obj/item/device/perfect_tele/one_beacon/teleport_checks(mob/living/target,mob/living/user)
+/*
+/obj/item/perfect_tele/one_beacon/teleport_checks(mob/living/target,mob/living/user)
 	var/turf/T = get_turf(destination)
 	if(T && user.z != T.z)
 		to_chat(user,"<span class='warning'>\The [src] is too far away from the beacon. Try getting closer first!</span>")
 		return FALSE
 	return ..()
-/* CITADEL CHANGE - Removes Virgo Fluff
+*/
+
+/obj/item/perfect_tele/admin
+	name = "alien translocator"
+	desc = "This strange device allows one to teleport people and objects across large distances."
+
+	cell_type = /obj/item/cell/device/weapon/recharge/alien
+	charge_cost = 400
+	beacons_left = 6
+	failure_chance = 0 //Percent
+
+/obj/item/perfect_tele/admin/teleport_checks(mob/living/target,mob/living/user)
+	//Uhhuh, need that power source
+	if(!power_source)
+		to_chat(user,"<span class='warning'>\The [src] has no power source!</span>")
+		return FALSE
+
+	//Check for charge
+	if((!power_source.check_charge(charge_cost)) && (!power_source.fully_charged()))
+		to_chat(user,"<span class='warning'>\The [src] does not have enough power left!</span>")
+		return FALSE
+
+	//Only mob/living need apply.
+	if(!istype(user) || !istype(target))
+		return FALSE
+
+	//No, you can't teleport buckled people.
+	if(target.buckled)
+		to_chat(user,"<span class='warning'>The target appears to be attached to something...</span>")
+		return FALSE
+
+	//No, you can't teleport if it's not ready yet.
+	if(!ready)
+		to_chat(user,"<span class='warning'>\The [src] is still recharging!</span>")
+		return FALSE
+
+	//No, you can't teleport if there's no destination.
+	if(!destination)
+		to_chat(user,"<span class='warning'>\The [src] doesn't have a current valid destination set!</span>")
+		return FALSE
+
+	//Seems okay to me!
+	return TRUE
+
 //InterroLouis: Ruda Lizden
 /obj/item/clothing/accessory/badge/holo/detective/ruda
 	name = "Hisstective's Badge"
@@ -1564,7 +1665,7 @@ END OF CITADEL CHANGES */
 		else
 			user.visible_message("<span class='notice'>[user] displays their [src].\nIt reads: [badge_string].</span>","<span class='notice'>You display your [src]. It reads: [badge_string].</span>")
 
-/obj/item/weapon/card/id/fluff/xennith
+/obj/item/card/id/fluff/xennith
 	name = "\improper Amy Lessen's Central Command ID (Xenobiology Director)"
 	desc = "This ID card identifies Dr. Amelie Lessen as the founder and director of the NanoTrasen Xenobiology Research Department, circa 2553."
 	icon_state = "centcom"
@@ -1575,17 +1676,17 @@ END OF CITADEL CHANGES */
 	blood_type = "O-"
 	sex = "Female"
 
-/obj/item/weapon/fluff/injector //Injectors. Custom item used to explain wild changes in a mob's body or chemistry.
+/obj/item/fluff/injector //Injectors. Custom item used to explain wild changes in a mob's body or chemistry.
 	name = "Injector"
 	desc = "Some type of injector."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "dnainjector"
 
-/obj/item/weapon/fluff/injector/monkey
+/obj/item/fluff/injector/monkey
 	name = "Lesser Form Injector"
 	desc = "Turn the user into their lesser, more primal form."
 
-/obj/item/weapon/fluff/injector/monkey/attack(mob/living/M, mob/living/user)
+/obj/item/fluff/injector/monkey/attack(mob/living/M, mob/living/user)
 
 	if(usr == M) //Is the person using it on theirself?
 		if(ishuman(M)) //If so, monkify them.
@@ -1595,11 +1696,11 @@ END OF CITADEL CHANGES */
 	else //If not, do nothing.
 		to_chat(user,"<span class='warning'>You are unable to inject other people.</span>")
 
-/obj/item/weapon/fluff/injector/numb_bite
+/obj/item/fluff/injector/numb_bite
 	name = "Numbing Venom Injector"
 	desc = "Injects the user with a high dose of some type of chemical, causing any chemical glands they have to kick into overdrive and create the production of a numbing enzyme that is injected via bites.."
 
-/obj/item/weapon/fluff/injector/numb_bite/attack(mob/living/M, mob/living/user)
+/obj/item/fluff/injector/numb_bite/attack(mob/living/M, mob/living/user)
 
 	if(usr == M) //Is the person using it on theirself?
 		if(ishuman(M)) //Give them numbing bites.
@@ -1608,10 +1709,10 @@ END OF CITADEL CHANGES */
 			qdel(src) //One time use.
 	else //If not, do nothing.
 		to_chat(user,"<span class='warning'>You are unable to inject other people.</span>")
-		END OF CITADEL CHANGES */
+
 //For 2 handed fluff weapons.
-/obj/item/weapon/material/twohanded/fluff //Twohanded fluff items.
-	name = "fluff item"
+/obj/item/material/twohanded/fluff //Twohanded fluff items.
+	name = "fluff."
 	desc = "This object is so fluffy. Just from the sight of it, you know that either something went wrong or someone spawned the incorrect item."
 	icon = 'icons/vore/custom_items_vr.dmi'
 	item_icons = list(
@@ -1619,11 +1720,11 @@ END OF CITADEL CHANGES */
 				slot_r_hand_str = 'icons/vore/custom_items_right_hand_vr.dmi',
 				)
 
-/obj/item/weapon/material/twohanded/fluff/New(var/newloc)
+/obj/item/material/twohanded/fluff/New(var/newloc)
 	..(newloc," ") //See materials_vr_dmi for more information as to why this is a blank space.
 
 //General use.
-/obj/item/weapon/material/twohanded/fluff/riding_crop
+/obj/item/material/twohanded/fluff/riding_crop
 	name = "riding crop"
 	desc = "A steel rod, a little over a foot long with a widened grip and a thick, leather patch at the end. Made to smack naughty submissives."
 	//force_wielded = 0.05 //Stings, but does jack shit for damage, provided you don't hit someone 100 times. 1 damage with hardness of 60.
@@ -1634,15 +1735,14 @@ END OF CITADEL CHANGES */
 	base_icon = "riding_crop"
 	icon_state = "riding_crop0"
 	attack_verb = list("cropped","spanked","swatted","smacked","peppered")
-/* CITADEL CHANGE - Removes Virgo Fluff
 //1R1S: Malady Blanche
-/obj/item/weapon/material/twohanded/fluff/riding_crop/malady
+/obj/item/material/twohanded/fluff/riding_crop/malady
 	name = "Malady's riding crop"
 	desc = "An infernum made riding crop with Malady Blanche engraved in the shaft. It's a little worn from how many butts it has spanked."
 
 
 //SilverTalisman: Evian
-/obj/item/weapon/implant/reagent_generator/evian
+/obj/item/implant/reagent_generator/evian
 	emote_descriptor = list("an egg right out of Evian's lower belly!", "into Evian' belly firmly, forcing him to lay an egg!", "Evian really tight, who promptly lays an egg!")
 	var/verb_descriptor = list("squeezes", "pushes", "hugs")
 	var/self_verb_descriptor = list("squeeze", "push", "hug")
@@ -1651,14 +1751,14 @@ END OF CITADEL CHANGES */
 	random_emote = list("hisses softly with a blush on his face", "yelps in embarrassment", "grunts a little")
 	assigned_proc = /mob/living/carbon/human/proc/use_reagent_implant_evian
 
-/obj/item/weapon/implant/reagent_generator/evian/post_implant(mob/living/carbon/source)
-	processing_objects += src
+/obj/item/implant/reagent_generator/evian/post_implant(mob/living/carbon/source)
+	START_PROCESSING(SSobj, src)
 	to_chat(source, "<span class='notice'>You implant [source] with \the [src].</span>")
 	source.verbs |= assigned_proc
 	return 1
 
-/obj/item/weapon/implanter/reagent_generator/evian
-	implant_type = /obj/item/weapon/implant/reagent_generator/evian
+/obj/item/implanter/reagent_generator/evian
+	implant_type = /obj/item/implant/reagent_generator/evian
 
 /mob/living/carbon/human/proc/use_reagent_implant_evian()
 	set name = "Lay Egg"
@@ -1673,17 +1773,18 @@ END OF CITADEL CHANGES */
 	if(usr.incapacitated() || usr.stat > CONSCIOUS)
 		return
 
-	var/obj/item/weapon/implant/reagent_generator/evian/rimplant
-	for(var/I in contents)
-		if(istype(I, /obj/item/weapon/implant/reagent_generator))
-			rimplant = I
-			break
+	var/obj/item/implant/reagent_generator/evian/rimplant
+	for(var/obj/item/organ/external/E in organs)
+		for(var/obj/item/implant/I in E.implants)
+			if(istype(I, /obj/item/implant/reagent_generator))
+				rimplant = I
+				break
 	if (rimplant)
 		if(rimplant.reagents.total_volume <= rimplant.transfer_amount)
 			to_chat(src, "<span class='notice'>[pick(rimplant.empty_message)]</span>")
 			return
 
-		new /obj/item/weapon/reagent_containers/food/snacks/egg/roiz/evian(get_turf(src)) //Roiz/evian so it gets all the functionality
+		new /obj/item/reagent_containers/food/snacks/egg/roiz/evian(get_turf(src)) //Roiz/evian so it gets all the functionality
 
 		var/index = rand(0,3)
 
@@ -1701,20 +1802,20 @@ END OF CITADEL CHANGES */
 
 		rimplant.reagents.remove_any(rimplant.transfer_amount)
 
-/obj/item/weapon/reagent_containers/food/snacks/egg/roiz/evian
+/obj/item/reagent_containers/food/snacks/egg/roiz/evian
 	name = "dragon egg"
 	desc = "A quite large dragon egg!"
 	icon_state = "egg_roiz_yellow"
 
 
-/obj/item/weapon/reagent_containers/food/snacks/egg/roiz/evian/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(istype( W, /obj/item/weapon/pen/crayon)) //No coloring these ones!
+/obj/item/reagent_containers/food/snacks/egg/roiz/evian/attackby(obj/item/W as obj, mob/user as mob)
+	if(istype( W, /obj/item/pen/crayon)) //No coloring these ones!
 		return
 	else
 		..()
 
 //jacknoir413:Areax Third
-/obj/item/weapon/melee/baton/fluff/stunstaff
+/obj/item/melee/baton/fluff/stunstaff
 	name = "Electrostaff"
 	desc = "Six-foot long staff from dull, rugged metal, with two thin spikes protruding from each end. Small etching near to the middle of it reads 'Children Of Nyx Facilities: Product No. 12'."
 	icon = 'icons/vore/custom_items_vr.dmi'
@@ -1734,13 +1835,13 @@ END OF CITADEL CHANGES */
 	var/wielded = 0
 	var/base_name = "stunstaff"
 
-/obj/item/weapon/melee/baton/fluff/stunstaff/New()
+/obj/item/melee/baton/fluff/stunstaff/New()
 	..()
-	bcell = new/obj/item/weapon/cell/device/weapon(src)
+	bcell = new/obj/item/cell/device/weapon(src)
 	update_icon()
 	return
 
-/obj/item/weapon/melee/baton/fluff/stunstaff/update_held_icon()
+/obj/item/melee/baton/fluff/stunstaff/update_held_icon()
 	var/mob/living/M = loc
 	if(istype(M) && !issmall(M) && M.item_is_in_hands(src) && !M.hands_are_full())
 		wielded = 1
@@ -1754,14 +1855,14 @@ END OF CITADEL CHANGES */
 	update_icon()
 	..()
 
-/obj/item/weapon/melee/baton/fluff/stunstaff/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+/obj/item/melee/baton/fluff/stunstaff/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	if(wielded && default_parry_check(user, attacker, damage_source) && prob(30))
 		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
 		playsound(user.loc, 'sound/weapons/punchmiss.ogg', 50, 1)
 		return 1
 	return 0
 
-/obj/item/weapon/melee/baton/fluff/stunstaff/update_icon()
+/obj/item/melee/baton/fluff/stunstaff/update_icon()
 	icon_state = "[base_icon][wielded][status]"
 	item_state = icon_state
 	if(status==1)
@@ -1769,28 +1870,28 @@ END OF CITADEL CHANGES */
 	else
 		set_light(0)
 
-/obj/item/weapon/melee/baton/fluff/stunstaff/dropped()
+/obj/item/melee/baton/fluff/stunstaff/dropped()
 	..()
 	if(wielded)
 		wielded = 0
 		spawn(0)
 			update_held_icon()
 
-/obj/item/weapon/melee/baton/fluff/stunstaff/attack_self(mob/user)
+/obj/item/melee/baton/fluff/stunstaff/attack_self(mob/user)
 	if(bcell && bcell.charge > hitcost)
 		status = !status
-		user << "<span class='notice'>[src] is now [status ? "on" : "off"].</span>"
+		to_chat(user, "<span class='notice'>[src] is now [status ? "on" : "off"].</span>")
 		if(status == 0)
 			playsound(user, 'sound/weapons/saberoff.ogg', 50, 1)
 		else
 			playsound(user, 'sound/weapons/saberon.ogg', 50, 1)
 	else
 		status = 0
-		user << "<span class='warning'>[src] is out of charge.</span>"
+		to_chat(user, "<span class='warning'>[src] is out of charge.</span>")
 	update_held_icon()
 	add_fingerprint(user)
 
-/obj/item/weapon/storage/backpack/fluff/stunstaff
+/obj/item/storage/backpack/fluff/stunstaff
 	name = "Electrostaff sheath"
 	icon = 'icons/vore/custom_items_vr.dmi'
 	icon_state = "holster_stunstaff"
@@ -1798,21 +1899,21 @@ END OF CITADEL CHANGES */
 	slot_flags = SLOT_BACK
 	item_icons = list(slot_back_str = 'icons/vore/custom_onmob_vr.dmi', slot_l_hand_str = 'icons/vore/custom_items_left_hand_vr.dmi', slot_r_hand_str = 'icons/vore/custom_items_right_hand_vr.dmi')
 
-	can_hold = list(/obj/item/weapon/melee/baton/fluff/stunstaff)
+	can_hold = list(/obj/item/melee/baton/fluff/stunstaff)
 
 	w_class = ITEMSIZE_HUGE
 	max_w_class = ITEMSIZE_HUGE
 	max_storage_space = 16
 
-/obj/item/weapon/storage/backpack/fluff/stunstaff/New()
+/obj/item/storage/backpack/fluff/stunstaff/New()
 	..()
-	new /obj/item/weapon/melee/baton/fluff/stunstaff(src)
-END OF CITADEL CHANGES */
+	new /obj/item/melee/baton/fluff/stunstaff(src)
+
 
 /*
  * Awoo Sword
  */
-/obj/item/weapon/melee/fluffstuff
+/obj/item/melee/fluffstuff
 	var/active = 0
 	var/active_force
 	var/active_throwforce
@@ -1821,7 +1922,7 @@ END OF CITADEL CHANGES */
 	sharp = 0
 	edge = 0
 
-/obj/item/weapon/melee/fluffstuff/proc/activate(mob/living/user)
+/obj/item/melee/fluffstuff/proc/activate(mob/living/user)
 	if(active)
 		return
 	active = 1
@@ -1833,7 +1934,7 @@ END OF CITADEL CHANGES */
 	w_class = active_w_class
 	playsound(user, 'sound/weapons/sparkle.ogg', 50, 1)
 
-/obj/item/weapon/melee/fluffstuff/proc/deactivate(mob/living/user)
+/obj/item/melee/fluffstuff/proc/deactivate(mob/living/user)
 	if(!active)
 		return
 	playsound(user, 'sound/weapons/sparkle.ogg', 50, 1)
@@ -1845,7 +1946,7 @@ END OF CITADEL CHANGES */
 	edge = initial(edge)
 	w_class = initial(w_class)
 
-/obj/item/weapon/melee/fluffstuff/attack_self(mob/living/user as mob)
+/obj/item/melee/fluffstuff/attack_self(mob/living/user as mob)
 	if (active)
 		if ((CLUMSY in user.mutations) && prob(50))
 			user.visible_message("<span class='danger'>\The [user] accidentally cuts \himself with \the [src].</span>",\
@@ -1863,14 +1964,14 @@ END OF CITADEL CHANGES */
 	add_fingerprint(user)
 	return
 
-/obj/item/weapon/melee/fluffstuff/suicide_act(mob/user)
+/obj/item/melee/fluffstuff/suicide_act(mob/user)
 	var/tempgender = "[user.gender == MALE ? "he's" : user.gender == FEMALE ? "she's" : "they are"]"
 	if(active)
 		user.visible_message(pick("<span class='danger'>\The [user] is slitting \his stomach open with \the [src]! It looks like [tempgender] trying to commit seppuku.</span>",\
 			"<span class='danger'>\The [user] is falling on \the [src]! It looks like [tempgender] trying to commit suicide.</span>"))
 		return (BRUTELOSS|FIRELOSS)
 
-/obj/item/weapon/melee/fluffstuff/wolfgirlsword
+/obj/item/melee/fluffstuff/wolfgirlsword
 	name = "Wolfgirl Sword Replica"
 	desc = "A replica of a large, scimitar-like sword with a dull edge. Ceremonial... until it isn't."
 	icon = 'icons/obj/weapons_vr.dmi'
@@ -1887,15 +1988,15 @@ END OF CITADEL CHANGES */
 	origin_tech = list(TECH_MATERIAL = 2, TECH_COMBAT = 1)
 	item_icons = list(slot_l_hand_str = 'icons/mob/items/lefthand_melee_vr.dmi', slot_r_hand_str = 'icons/mob/items/righthand_melee_vr.dmi', slot_back_str = 'icons/vore/custom_items_vr.dmi', slot_wear_suit_str = 'icons/vore/custom_items_vr.dmi')
 	var/active_state = "wolfgirlsword"
-	allowed = list(/obj/item/weapon/shield/fluff/wolfgirlshield)
+	allowed = list(/obj/item/shield/fluff/wolfgirlshield)
 	damtype = HALLOSS
 
-/obj/item/weapon/melee/fluffstuff/wolfgirlsword/dropped(var/mob/user)
+/obj/item/melee/fluffstuff/wolfgirlsword/dropped(var/mob/user)
 	..()
 	if(!istype(loc,/mob))
 		deactivate(user)
 
-/obj/item/weapon/melee/fluffstuff/wolfgirlsword/activate(mob/living/user)
+/obj/item/melee/fluffstuff/wolfgirlsword/activate(mob/living/user)
 	if(!active)
 		to_chat(user, "<span class='notice'>The [src] is now sharpened. It will cut!</span>")
 
@@ -1907,15 +2008,16 @@ END OF CITADEL CHANGES */
 	damtype = BRUTE
 
 
-/obj/item/weapon/melee/fluffstuff/wolfgirlsword/deactivate(mob/living/user)
+/obj/item/melee/fluffstuff/wolfgirlsword/deactivate(mob/living/user)
 	if(active)
 		to_chat(user, "<span class='notice'>The [src] grows dull!</span>")
 	..()
 	attack_verb = list("bapped", "thwapped", "bonked", "whacked")
 	icon_state = initial(icon_state)
-/* CITADEL CHANGES - Removes Virgo Fluff
+
+/*
 //SilencedMP5A5 - Serdykov Antoz
-/obj/item/device/modkit_conversion/hasd
+/obj/item/modkit_conversion/hasd
 	name = "HASD EVA modification kit"
 	desc = "A kit containing all the needed tools and parts to modify a suit and helmet into something a HASD unit can use for EVA operations."
 	icon = 'icons/vore/custom_items_vr.dmi'
@@ -1925,6 +2027,7 @@ END OF CITADEL CHANGES */
 	from_suit = /obj/item/clothing/suit/space/void/security
 	to_helmet = /obj/item/clothing/head/helmet/space/void/security/hasd
 	to_suit = /obj/item/clothing/suit/space/void/security/hasd
+*/
 
 //InterroLouis - Kai Highlands
 /obj/item/borg/upgrade/modkit/chassis_mod/kai
@@ -1937,17 +2040,17 @@ END OF CITADEL CHANGES */
 	var/chassis_desc = "A self recharging, ranged mining tool that does increased damage in low temperature. Capable of holding up to six slots worth of mod kits. It seems to have been painted an ugly green, and has a small image of a bird scratched crudely into the stock."
 	var/chassis_icon_file = 'icons/vore/custom_guns_vr.dmi'
 
-/obj/item/borg/upgrade/modkit/chassis_mod/kai/install(obj/item/weapon/gun/energy/kinetic_accelerator/KA, mob/user)
+/obj/item/borg/upgrade/modkit/chassis_mod/kai/install(obj/item/gun/energy/kinetic_accelerator/KA, mob/user)
 	KA.desc = chassis_desc
 	KA.icon = chassis_icon_file
 	..()
-/obj/item/borg/upgrade/modkit/chassis_mod/kai/uninstall(obj/item/weapon/gun/energy/kinetic_accelerator/KA)
+/obj/item/borg/upgrade/modkit/chassis_mod/kai/uninstall(obj/item/gun/energy/kinetic_accelerator/KA)
 	KA.desc = initial(KA.desc)
 	KA.icon = initial(KA.icon)
 	..()
 
 //ArgobargSoup:Lynn Shady
-/obj/item/device/flashlight/pen/fluff/lynn
+/obj/item/flashlight/pen/fluff/lynn
 	name = "Lynn's penlight"
 	desc = "A personalized penlight, a bit bulkier than the standard model.  Blue, with a medical cross on it, and the name Lynn Shady engraved in gold."
 
@@ -1958,4 +2061,38 @@ END OF CITADEL CHANGES */
 /obj/item/clothing/accessory/medal/nobel_science/fluff/ashley
 	name = "nobel sciences award"
 	desc = "A bronze medal which represents significant contributions to the field of science or engineering, this one has Ashley Kifer engraved on it."
-END OF CITADEL CHANGES */
+
+//lm40 - Kenzie Houser
+/obj/item/reagent_containers/hypospray/vial/kenzie
+	name = "gold-trimmed hypospray"
+	desc = "A gold-trimmed MKII hypospray. The name 'Kenzie Houser' is engraved on the side."
+	icon = 'icons/vore/custom_items_vr.dmi'
+	icon_state = "kenziehypo"
+
+//Semaun - Viktor Solothurn
+/obj/item/reagent_containers/food/drinks/flask/vacuumflask/fluff/viktor
+	name = "flask of expensive alcohol"
+	desc = "A standard vacuum-flask filled with good and expensive drink."
+
+/obj/item/reagent_containers/food/drinks/flask/vacuumflask/fluff/viktor/Initialize()
+	..()
+	reagents.add_reagent("pwine", 60)
+
+//RadiantAurora: Tiemli Kroto
+/obj/item/clothing/glasses/welding/tiemgogs
+   name = "custom-fitted welding goggles"
+   desc = "A pair of thick, custom-fitted goggles with LEDs above the lenses. Ruggedly engraved below the lenses is the name 'Tiemli Kroto'."
+
+   icon = 'icons/vore/custom_items_vr.dmi'
+   icon_state = "tiemgogs"
+
+   icon_override = 'icons/vore/custom_clothes_vr.dmi'
+   icon_state = "tiemgogs"
+
+/obj/item/clothing/glasses/welding/tiemgogs/mob_can_equip(var/mob/living/carbon/human/H, slot, disable_warning = 0)
+   if(..())
+      if(H.ckey != "radiantaurora")
+         to_chat(H, "<span class='warning'>These don't look like they were made to fit you...</span>")
+         return 0
+      else
+         return 1

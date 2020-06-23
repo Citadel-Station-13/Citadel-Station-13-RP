@@ -17,32 +17,33 @@
 		/obj/item/clothing/head/welding,
 		/obj/item/clothing/gloves/yellow,
 		/obj/item/clothing/shoes/brown,
-		/obj/item/weapon/cartridge/ce,
-		/obj/item/device/radio/headset/heads/ce,
-		/obj/item/device/radio/headset/heads/ce/alt,
-		/obj/item/weapon/storage/toolbox/mechanical,
+		/obj/item/cartridge/ce,
+		/obj/item/radio/headset/heads/ce,
+		/obj/item/radio/headset/heads/ce/alt,
+		/obj/item/storage/toolbox/mechanical,
 		/obj/item/clothing/suit/storage/hazardvest,
 		/obj/item/clothing/mask/gas,
-		/obj/item/device/multitool,
-		/obj/item/weapon/storage/belt/utility/chief/full,
-		/obj/item/device/flash,
-		/obj/item/device/t_scanner/upgraded,
-		/obj/item/taperoll/engineering,
+		/obj/item/multitool,
+		/obj/item/storage/belt/utility/chief/full,
+		/obj/item/flash,
+		/obj/item/t_scanner/upgraded,
+		/obj/item/barrier_tape_roll/engineering,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/engineering,
 		/obj/item/clothing/shoes/boots/winter/engineering,
-		/obj/item/weapon/tank/emergency/oxygen/engi,
-		/obj/item/device/gps/engineering/ce,
-		/obj/item/weapon/reagent_containers/spray/windowsealant,//VOREStation Add
-		/obj/item/weapon/pipe_dispenser, //Citadel Addition
-		/obj/item/weapon/shield_diffuser) //Citadel Addition
+		/obj/item/tank/emergency/oxygen/engi,
+		/obj/item/gps/engineering/ce,
+		/obj/item/reagent_containers/spray/windowsealant,//VOREStation Add
+		/obj/item/pipe_dispenser, //Citadel Addition
+		/obj/item/shield_diffuser,
+		/obj/item/switchtool/holo/CE) //Citadel Addition
 
 /obj/structure/closet/secure_closet/engineering_chief/Initialize()
 	if(prob(50))
-		starts_with += /obj/item/weapon/storage/backpack/industrial
+		starts_with += /obj/item/storage/backpack/industrial
 	else
-		starts_with += /obj/item/weapon/storage/backpack/satchel/eng
+		starts_with += /obj/item/storage/backpack/satchel/eng
 	if(prob(50))
-		starts_with += /obj/item/weapon/storage/backpack/dufflebag/eng
+		starts_with += /obj/item/storage/backpack/dufflebag/eng
 	return ..()
 
 /obj/structure/closet/secure_closet/engineering_electrical
@@ -57,9 +58,10 @@
 
 	starts_with = list(
 		/obj/item/clothing/gloves/yellow = 2,
-		/obj/item/weapon/storage/toolbox/electrical = 3,
-		/obj/item/weapon/module/power_control = 3,
-		/obj/item/device/multitool = 3)
+		/obj/item/storage/toolbox/electrical = 3,
+		/obj/item/module/power_control = 3,
+		/obj/item/multitool = 3,
+		/obj/item/inducer = 1)
 
 
 /obj/structure/closet/secure_closet/engineering_welding
@@ -74,8 +76,8 @@
 
 	starts_with = list(
 		/obj/item/clothing/head/welding = 3,
-		/obj/item/weapon/weldingtool/largetank = 3,
-		/obj/item/weapon/weldpack = 3,
+		/obj/item/weldingtool/largetank = 3,
+		/obj/item/weldpack = 3,
 		/obj/item/clothing/glasses/welding = 3)
 
 /obj/structure/closet/secure_closet/engineering_personal
@@ -90,28 +92,29 @@
 
 	starts_with = list(
 		/obj/item/clothing/accessory/storage/brown_vest,
-		/obj/item/weapon/storage/toolbox/mechanical,
-		/obj/item/device/radio/headset/headset_eng,
-		/obj/item/device/radio/headset/headset_eng/alt,
+		/obj/item/storage/toolbox/mechanical,
+		/obj/item/radio/headset/headset_eng,
+		/obj/item/radio/headset/headset_eng/alt,
 		/obj/item/clothing/suit/storage/hazardvest,
 		/obj/item/clothing/mask/gas,
 		/obj/item/clothing/glasses/meson,
-		/obj/item/weapon/cartridge/engineering,
-		/obj/item/taperoll/engineering,
+		/obj/item/cartridge/engineering,
+		/obj/item/barrier_tape_roll/engineering,
+		/obj/item/clothing/head/hardhat,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/engineering,
 		/obj/item/clothing/shoes/boots/winter/engineering,
-		/obj/item/weapon/tank/emergency/oxygen/engi,
-		/obj/item/device/gps/engineering,
-		/obj/item/weapon/reagent_containers/spray/windowsealant, //VOREStation Add
-		/obj/item/weapon/shield_diffuser) //Citadel Addition
+		/obj/item/tank/emergency/oxygen/engi,
+		/obj/item/gps/engineering,
+		/obj/item/reagent_containers/spray/windowsealant, //VOREStation Add
+		/obj/item/shield_diffuser) //Citadel Addition
 
 /obj/structure/closet/secure_closet/engineering_personal/Initialize()
 	if(prob(50))
-		starts_with += /obj/item/weapon/storage/backpack/industrial
+		starts_with += /obj/item/storage/backpack/industrial
 	else
-		starts_with += /obj/item/weapon/storage/backpack/satchel/eng
+		starts_with += /obj/item/storage/backpack/satchel/eng
 	if(prob(50))
-		starts_with += /obj/item/weapon/storage/backpack/dufflebag/eng
+		starts_with += /obj/item/storage/backpack/dufflebag/eng
 	return ..()
 
 
@@ -128,26 +131,28 @@
 	starts_with = list(
 		/obj/item/clothing/accessory/storage/brown_vest,
 		/obj/item/clothing/suit/fire/firefighter,
-		/obj/item/device/flashlight,
-		/obj/item/weapon/extinguisher,
-		/obj/item/device/radio/headset/headset_eng,
-		/obj/item/device/radio/headset/headset_eng/alt,
+		/obj/item/clothing/head/hardhat/red,
+		/obj/item/flashlight,
+		/obj/item/extinguisher,
+		///obj/item/clamp,	//VOREStation Removal: without leaks those are pointless,
+		/obj/item/radio/headset/headset_eng,
+		/obj/item/radio/headset/headset_eng/alt,
 		/obj/item/clothing/suit/storage/hazardvest,
 		/obj/item/clothing/mask/gas,
-		/obj/item/weapon/cartridge/atmos,
-		/obj/item/taperoll/atmos,
+		/obj/item/cartridge/atmos,
+		/obj/item/barrier_tape_roll/atmos,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/engineering/atmos,
 		/obj/item/clothing/shoes/boots/winter/atmos,
-		/obj/item/weapon/tank/emergency/oxygen/engi,
-		/obj/item/device/gps/engineering/atmos,
-		/obj/item/weapon/pipe_dispenser,
-		/obj/item/weapon/shield_diffuser) //Citadel Addition
+		/obj/item/tank/emergency/oxygen/engi,
+		/obj/item/gps/engineering/atmos,
+		/obj/item/pipe_dispenser,
+		/obj/item/shield_diffuser) //Citadel Addition
 
 /obj/structure/closet/secure_closet/atmos_personal/Initialize()
 	if(prob(50))
-		starts_with += /obj/item/weapon/storage/backpack/industrial
+		starts_with += /obj/item/storage/backpack/industrial
 	else
-		starts_with += /obj/item/weapon/storage/backpack/satchel/eng
+		starts_with += /obj/item/storage/backpack/satchel/eng
 	if(prob(50))
-		starts_with += /obj/item/weapon/storage/backpack/dufflebag/eng
+		starts_with += /obj/item/storage/backpack/dufflebag/eng
 	return ..()

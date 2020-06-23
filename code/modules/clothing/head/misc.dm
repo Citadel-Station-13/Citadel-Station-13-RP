@@ -263,7 +263,7 @@
 	name = "fedora"
 	desc = "A brown fedora - either the cornerstone of a reporter's style or a poor attempt at looking cool, depending on the person wearing it."
 	icon_state = "detective"
-	allowed = list(/obj/item/weapon/reagent_containers/food/snacks/candy_corn, /obj/item/weapon/pen)
+	allowed = list(/obj/item/reagent_containers/food/snacks/candy_corn, /obj/item/pen)
 
 /obj/item/clothing/head/fedora/grey
 	icon_state = "detective2"
@@ -414,3 +414,43 @@
 	desc = "Keeps hair out of the way for important... jobs."
 	icon_state = "maid"
 	body_parts_covered = 0
+
+/obj/item/clothing/head/maangtikka
+	name = "maang tikka"
+	desc = "A jeweled headpiece originating in India."
+	icon_state = "maangtikka"
+	body_parts_covered = 0
+
+/obj/item/clothing/head/jingasa
+	name = "jingasa"
+	desc = "A wide, flat rain hat originally from Japan."
+	icon_state = "jingasa"
+	body_parts_covered = 0
+	item_state_slots = list(slot_r_hand_str = "taq", slot_l_hand_str = "taq")
+
+/obj/item/clothing/head/cowl
+	name = "black cowl"
+	desc = "A gold-lined black cowl. It gives off uncomfortable cult vibes, but fancy."
+	icon_state = "cowl"
+	body_parts_covered = 0
+
+/obj/item/clothing/head/cowl
+	name = "white cowl"
+	desc = "A gold-lined white cowl. It gives off uncomfortable cult vibes, but fancy."
+	icon_state = "whitecowl"
+	body_parts_covered = 0
+
+/obj/item/clothing/head/bohat
+	name = "bridge officer hat"
+	desc = "For a person with no authority who takes themselves very seriously."
+	icon_state = "bridgeofficersoft"
+
+/obj/item/clothing/head/parahat
+	name = "paramedic cap"
+	desc = "For a person who really needs a raise."
+	icon_state = "paramedicsoft"
+
+/obj/item/clothing/head/bocap
+	name = "bridge officer cap"
+	desc = "For a person with no authority who takes themselves very VERY seriously."
+	icon_state = "bridgeofficerhard"

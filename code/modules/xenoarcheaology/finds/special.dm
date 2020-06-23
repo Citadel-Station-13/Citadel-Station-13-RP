@@ -1,13 +1,13 @@
 //endless reagents!
-/obj/item/weapon/reagent_containers/glass/replenishing
+/obj/item/reagent_containers/glass/replenishing
 	var/spawning_id
 
-/obj/item/weapon/reagent_containers/glass/replenishing/Initialize(mapload)
+/obj/item/reagent_containers/glass/replenishing/Initialize(mapload)
 	. = ..()
-	processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 	spawning_id = pick("blood","holywater","lube","stoxin","ethanol","ice","glycerol","fuel","cleaner")
 
-/obj/item/weapon/reagent_containers/glass/replenishing/process()
+/obj/item/reagent_containers/glass/replenishing/process()
 	reagents.add_reagent(spawning_id, 0.3)
 
 //a talking gas mask!
@@ -18,7 +18,7 @@
 
 /obj/item/clothing/mask/gas/poltergeist/Initialize(mapload)
 	. = ..()
-	processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 
 /obj/item/clothing/mask/gas/poltergeist/process()
 	if(heard_talk.len && istype(loc, /mob/living) && prob(10))
@@ -35,7 +35,7 @@
 
 //a vampiric statuette
 //todo: cult integration
-/obj/item/weapon/vampiric
+/obj/item/vampiric
 	name = "statuette"
 	icon_state = "statuette"
 	icon = 'icons/obj/xenoarchaeology.dmi'
@@ -48,11 +48,11 @@
 	var/wight_check_index = 1
 	var/list/shadow_wights = list()
 
-/obj/item/weapon/vampiric/Initialize(mapload)
+/obj/item/vampiric/Initialize(mapload)
 	. = ..()
-	processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 
-/obj/item/weapon/vampiric/process()
+/obj/item/vampiric/process()
 	//see if we've identified anyone nearby
 	if(world.time - last_bloodcall > bloodcall_interval && nearby_mobs.len)
 		var/mob/living/carbon/human/M = pop(nearby_mobs)
@@ -81,7 +81,7 @@
 	if(charges >= 3)
 		if(prob(5))
 			charges -= 1
-			var/spawn_type = pick(/mob/living/simple_animal/hostile/creature/vore)  // Vorestation Edit
+			var/spawn_type = pick(/mob/living/simple_mob/creature)
 			new spawn_type(pick(view(1,src)))
 			playsound(loc, pick('sound/hallucinations/growl1.ogg','sound/hallucinations/growl2.ogg','sound/hallucinations/growl3.ogg'), 50, 1, -3)
 
@@ -110,12 +110,12 @@
 		else if(get_dist(W, src) > 10)
 			shadow_wights.Remove(wight_check_index)
 
-/obj/item/weapon/vampiric/hear_talk(mob/M as mob, text)
+/obj/item/vampiric/hear_talk(mob/M as mob, text)
 	..()
 	if(world.time - last_bloodcall >= bloodcall_interval && M in view(7, src))
 		bloodcall(M)
 
-/obj/item/weapon/vampiric/proc/bloodcall(var/mob/living/carbon/human/M)
+/obj/item/vampiric/proc/bloodcall(var/mob/living/carbon/human/M)
 	last_bloodcall = world.time
 	if(istype(M))
 		playsound(loc, pick('sound/hallucinations/wail.ogg','sound/hallucinations/veryfar_noise.ogg','sound/hallucinations/far_noise.ogg'), 50, 1, -3)
@@ -123,7 +123,7 @@
 
 		var/target = pick(M.organs_by_name)
 		M.apply_damage(rand(5, 10), BRUTE, target)
-		M << "<font color='red'>The skin on your [parse_zone(target)] feels like it's ripping apart, and a stream of blood flies out.</font>"
+		to_chat(M, "<font color='red'>The skin on your [parse_zone(target)] feels like it's ripping apart, and a stream of blood flies out.</font>")
 		var/obj/effect/decal/cleanable/blood/splatter/animated/B = new(M.loc)
 		B.target_turf = pick(range(1, src))
 		B.blood_DNA = list()
@@ -137,8 +137,8 @@
 
 /obj/effect/decal/cleanable/blood/splatter/animated/Initialize(mapload)
 	. = ..()
-	processing_objects.Add(src)
 	loc_last_process = loc
+	START_PROCESSING(SSobj, src)
 
 /obj/effect/decal/cleanable/blood/splatter/animated/process()
 	if(target_turf && loc != target_turf)
@@ -168,7 +168,7 @@
 
 /obj/effect/shadow_wight/Initialize(mapload)
 	. = ..()
-	processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 
 /obj/effect/shadow_wight/process()
 	if(loc)
@@ -192,7 +192,7 @@
 			M.sleeping = max(M.sleeping,rand(5,10))
 			loc = null
 	else
-		processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 
 /obj/effect/shadow_wight/Bump(atom/obstacle)
 	. = ..()

@@ -9,7 +9,7 @@
 
 /datum/supply_pack/atmos/inflatable
 	name = "Inflatable barriers"
-	contains = list(/obj/item/weapon/storage/briefcase/inflatable = 3)
+	contains = list(/obj/item/storage/briefcase/inflatable = 3)
 	cost = 20
 	containertype = /obj/structure/closet/crate/engineering
 	containername = "Inflatable Barrier Crate"
@@ -50,13 +50,13 @@
 	access = access_atmospherics
 	contains = list(/obj/machinery/portable_atmospherics/canister/phoron)
 
-/datum/supply_pack/atmos/canister_sleeping_agent
+/datum/supply_pack/atmos/canister_nitrous_oxide
 	name = "N2O gas canister"
 	cost = 15
 	containername = "N2O gas canister crate"
 	containertype = /obj/structure/closet/crate/secure/large
 	access = access_atmospherics
-	contains = list(/obj/machinery/portable_atmospherics/canister/sleeping_agent)
+	contains = list(/obj/machinery/portable_atmospherics/canister/nitrous_oxide)
 
 /datum/supply_pack/atmos/canister_carbon_dioxide
 	name = "Carbon dioxide gas canister"
@@ -86,7 +86,7 @@
 	name = "Internals crate"
 	contains = list(
 			/obj/item/clothing/mask/gas = 3,
-			/obj/item/weapon/tank/air = 3
+			/obj/item/tank/air = 3
 			)
 	cost = 10
 	containertype = /obj/structure/closet/crate/internals
@@ -95,10 +95,10 @@
 /datum/supply_pack/atmos/evacuation
 	name = "Emergency equipment"
 	contains = list(
-			/obj/item/weapon/storage/toolbox/emergency = 2,
+			/obj/item/storage/toolbox/emergency = 2,
 			/obj/item/clothing/suit/storage/hazardvest = 2,
 			/obj/item/clothing/suit/storage/vest = 2,
-			/obj/item/weapon/tank/emergency/oxygen/engi = 4,
+			/obj/item/tank/emergency/oxygen/engi = 4,
 			/obj/item/clothing/suit/space/emergency = 4,
 			/obj/item/clothing/head/helmet/space/emergency = 4,
 			/obj/item/clothing/mask/gas = 4

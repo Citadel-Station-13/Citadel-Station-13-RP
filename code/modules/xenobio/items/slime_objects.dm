@@ -9,7 +9,7 @@
 
 /obj/item/slime_cube/attack_self(mob/user as mob)
 	if(!searching)
-		user << "<span class='warning'>You stare at the slimy cube, watching as some activity occurs.</span>"
+		to_chat(user, "<span class='warning'>You stare at the slimy cube, watching as some activity occurs.</span>")
 		icon_state = "slime cube active"
 		searching = 1
 		request_player()
@@ -101,7 +101,7 @@
 	safe_blink(AM, 14)
 	qdel(src)
 
-/obj/item/weapon/disposable_teleporter/slime
+/obj/item/disposable_teleporter/slime
 	name = "greater slime crystal"
 	desc = "A larger, gooier crystal."
 	description_info = "This will teleport you to a specific area once, when used in-hand."
@@ -114,7 +114,7 @@
 
 
 // Very filling food.
-/obj/item/weapon/reagent_containers/food/snacks/slime
+/obj/item/reagent_containers/food/snacks/slime
 	name = "slimy clump"
 	desc = "A glob of slime that is thick as honey.  For the brave Xenobiologist."
 	icon_state = "honeycomb"
@@ -123,6 +123,6 @@
 	nutriment_amt = 25 // Very filling.
 	nutriment_desc = list("slime" = 10, "sweetness" = 10, "bliss" = 5)
 
-/obj/item/weapon/reagent_containers/food/snacks/slime/Initialize()
-	..()
+/obj/item/reagent_containers/food/snacks/slime/Initialize()
+	. = ..()
 	bitesize = 5

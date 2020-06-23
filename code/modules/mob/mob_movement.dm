@@ -1,81 +1,11 @@
-/mob/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
-	if(air_group || (height==0)) return 1
+/mob/proc/applyMoveCooldown(amount)
+	move_delay = max(move_delay, world.time + amount)
 
-	if(ismob(mover))
-		var/mob/moving_mob = mover
-		if ((other_mobs && moving_mob.other_mobs))
-			return 1
-		return (!mover.density || !density || lying)
-	else
-		return (!mover.density || !density || lying)
-	return
-
-/mob/proc/setMoveCooldown(var/timeout)
-	if(client)
-		client.move_delay = max(world.time + timeout, client.move_delay)
-
-/client/North()
-	..()
-
-
-/client/South()
-	..()
-
-
-/client/West()
-	..()
-
-
-/client/East()
-	..()
-
+/mob/proc/check_move_cooldown()
+	return move_delay <= world.time
 
 /client/proc/client_dir(input, direction=-1)
 	return turn(input, direction*dir2angle(dir))
-
-/client/Northeast()
-	diagonal_action(NORTHEAST)
-/client/Northwest()
-	diagonal_action(NORTHWEST)
-/client/Southeast()
-	diagonal_action(SOUTHEAST)
-/client/Southwest()
-	diagonal_action(SOUTHWEST)
-
-/client/proc/diagonal_action(direction)
-	switch(client_dir(direction, 1))
-		if(NORTHEAST)
-			swap_hand()
-			return
-		if(SOUTHEAST)
-			attack_self()
-			return
-		if(SOUTHWEST)
-			if(isliving(usr))
-				var/mob/living/carbon/C = usr
-				C.toggle_throw_mode()
-			else
-				usr << "<font color='red'>This mob type cannot throw items.</font>"
-			return
-		if(NORTHWEST)
-			if(isliving(usr))
-				var/mob/living/carbon/C = usr
-				if(!C.get_active_hand())
-					usr << "<font color='red'>You have nothing to drop in your hand.</font>"
-					return
-				drop_item()
-			else
-				usr << "<font color='red'>This mob type cannot drop items.</font>"
-			return
-
-//This gets called when you press the delete button.
-/client/verb/delete_key_pressed()
-	set hidden = 1
-
-	if(!usr.pulling)
-		usr << "<font color='blue'>You are not pulling anything.</font>"
-		return
-	usr.stop_pulling()
 
 /client/verb/swap_hand()
 	set hidden = 1
@@ -86,8 +16,6 @@
 		var/mob/living/silicon/robot/R = mob
 		R.cycle_modules()
 	return
-
-
 
 /client/verb/attack_self()
 	set hidden = 1
@@ -100,81 +28,17 @@
 	set hidden = 1
 	if(!istype(mob, /mob/living/carbon))
 		return
-	if (!mob.stat && isturf(mob.loc) && !mob.restrained())
-		mob:toggle_throw_mode()
-	else
-		return
+	var/mob/living/carbon/C = mob
+	C.toggle_throw_mode()
 
 
 /client/verb/drop_item()
 	set hidden = 1
-	if(!isrobot(mob) && mob.stat == CONSCIOUS && isturf(mob.loc))
+	if(!isrobot(mob) && mob.stat == CONSCIOUS && (isturf(mob.loc) || isbelly(mob.loc)))	// VOREStation Edit: dropping in bellies
 		return mob.drop_item()
 	return
 
 
-/client/Center()
-	/* No 3D movement in 2D spessman game. dir 16 is Z Up
-	if (isobj(mob.loc))
-		var/obj/O = mob.loc
-		if (mob.canmove)
-			return O.relaymove(mob, 16)
-	*/
-	return
-
-//This proc should never be overridden elsewhere at /atom/movable to keep directions sane.
-/atom/movable/Move(newloc, direct)
-	if (direct & (direct - 1))
-		if (direct & 1)
-			if (direct & 4)
-				if (step(src, NORTH))
-					step(src, EAST)
-				else
-					if (step(src, EAST))
-						step(src, NORTH)
-			else
-				if (direct & 8)
-					if (step(src, NORTH))
-						step(src, WEST)
-					else
-						if (step(src, WEST))
-							step(src, NORTH)
-		else
-			if (direct & 2)
-				if (direct & 4)
-					if (step(src, SOUTH))
-						step(src, EAST)
-					else
-						if (step(src, EAST))
-							step(src, SOUTH)
-				else
-					if (direct & 8)
-						if (step(src, SOUTH))
-							step(src, WEST)
-						else
-							if (step(src, WEST))
-								step(src, SOUTH)
-	else
-		var/atom/A = src.loc
-
-		var/olddir = dir //we can't override this without sacrificing the rest of movable/New()
-		. = ..()
-		if(direct != olddir)
-			dir = olddir
-			setDir(direct)
-
-		src.move_speed = world.time - src.l_move_time
-		src.l_move_time = world.time
-		src.m_flag = 1
-		if ((A != src.loc && A && A.z == src.z))
-			src.last_move = get_dir(A, src.loc)
-		if(.)
-			Moved(A, direct)
-	return
-
-// Called on a successful Move().
-/atom/movable/proc/Moved(atom/oldloc)
-	return
 
 /client/proc/Move_object(direct)
 	if(mob && mob.control_object)
@@ -186,197 +50,271 @@
 			mob.control_object.forceMove(get_step(mob.control_object,direct))
 	return
 
+/// until movespeed modifiersare done - kevinz000
+/mob/proc/movement_delay()
+	return 0
+
+#define MOVEMENT_DELAY_BUFFER 0.75
+#define MOVEMENT_DELAY_BUFFER_DELTA 1.25
+
+/**
+  * Move a client in a direction
+  *
+  * Huge proc, has a lot of functionality
+  *
+  * Mostly it will despatch to the mob that you are the owner of to actually move
+  * in the physical realm
+  *
+  * Things that stop you moving as a mob:
+  * * world time being less than your next move_delay
+  * * not being in a mob, or that mob not having a loc
+  * * missing the n and direction parameters
+  * * being in remote control of an object (calls Moveobject instead)
+  * * being dead (it ghosts you instead)
+  *
+  * Things that stop you moving as a mob living (why even have OO if you're just shoving it all
+  * in the parent proc with istype checks right?):
+  * * having incorporeal_move set (calls Process_Incorpmove() instead)
+  * * being grabbed
+  * * being buckled  (relaymove() is called to the buckled atom instead)
+  * * having your loc be some other mob (relaymove() is called on that mob instead)
+  * * Not having MOBILITY_MOVE
+  * * Failing Process_Spacemove() call
+  *
+  * At this point, if the mob is is confused, then a random direction and target turf will be calculated for you to travel to instead
+  *
+  * Now the parent call is made (to the byond builtin move), which moves you
+  *
+  * Some final move delay calculations (doubling if you moved diagonally successfully)
+  *
+  * if mob throwing is set I believe it's unset at this point via a call to finalize
+  *
+  * Finally if you're pulling an object and it's dense, you are turned 180 after the move
+  * (if you ask me, this should be at the top of the move so you don't dance around)
+  *
+  */
 
 /client/Move(n, direct)
-	if(!mob)
-		return // Moved here to avoid nullrefs below
-
-	if(mob.control_object)	Move_object(direct)
-
-	if(mob.incorporeal_move && isobserver(mob))
-		Process_Incorpmove(direct)
-		return
-
-	if(moving)	return 0
-
-	if(world.time < move_delay)	return
-
-	if(locate(/obj/effect/stop/, mob.loc))
-		for(var/obj/effect/stop/S in mob.loc)
-			if(S.victim == mob)
-				return
-
-	if(mob.stat==DEAD && isliving(mob) && !mob.forbid_seeing_deadchat)
+	if(!mob?.loc)
+		return FALSE
+	if(!mob.check_move_cooldown()) //do not move anything ahead of this check please
+		return FALSE
+	else
+		next_move_dir_add = 0
+		next_move_dir_sub = 0
+	var/old_move_delay = mob.move_delay		// IMPORTANT - mob move cooldown vs client.
+	mob.move_delay = world.time + world.tick_lag //this is here because Move() can now be called mutiple times per tick
+	if(!n || !direct)
+		return FALSE
+	if(mob.transforming)
+		return FALSE	//This is sota the goto stop mobs from moving var
+	if(mob.control_object)
+		return Move_object(direct)
+	if(!isliving(mob))
+		return mob.Move(n, direct)
+	if((mob.stat == DEAD) && isliving(mob) && !mob.forbid_seeing_deadchat)
 		mob.ghostize()
-		return
+		return FALSE
+
+/*
+	if(mob.force_moving)
+		return FALSE
+*/
+
+	var/mob/living/L = mob  //Already checked for isliving earlier
+	if(L.incorporeal_move)	//Move though walls
+		Process_Incorpmove(direct)
+		return FALSE
+
+/*
+	if(mob.remote_control)					//we're controlling something, our movement is relayed to it
+		return mob.remote_control.relaymove(mob, direct)
+*/
 
 	// handle possible Eye movement
 	if(mob.eyeobj)
 		return mob.EyeMove(n,direct)
 
-	if(mob.transforming)	return//This is sota the goto stop mobs from moving var
+/*
+	if(isAI(mob))
+		return AIMove(n,direct,mob)
+*/
 
+// inherited shitcode, tear out when possible
 	if(isliving(mob))
-		var/mob/living/L = mob
-		if(L.incorporeal_move)//Move though walls
-			Process_Incorpmove(direct)
-			return
 		if(mob.client)
 			if(mob.client.view != world.view) // If mob moves while zoomed in with device, unzoom them.
 				for(var/obj/item/item in mob.contents)
 					if(item.zoom)
-						item.zoom()
+						item.zoom(user = mob)
 						break
-				/*
-				if(locate(/obj/item/weapon/gun/energy/sniperrifle, mob.contents))		// If mob moves while zoomed in with sniper rifle, unzoom them.
-					var/obj/item/weapon/gun/energy/sniperrifle/s = locate() in mob
-					if(s.zoom)
-						s.zoom()
-				if(locate(/obj/item/device/binoculars, mob.contents))		// If mob moves while zoomed in with binoculars, unzoom them.
-					var/obj/item/device/binoculars/b = locate() in mob
-					if(b.zoom)
-						b.zoom()
-				*/
+// end
 
-	if(Process_Grab())	return
+	if(Process_Grab()) //are we restrained by someone's grip?
+		return
+
+	if(mob.buckled)							//if we're buckled to something, tell it we moved.
+		return mob.buckled.relaymove(mob, direct)
 
 	if(!mob.canmove)
 		return
 
-	//if(istype(mob.loc, /turf/space) || (mob.flags & NOGRAV))
-	//	if(!mob.Process_Spacemove(0))	return 0
+/*	// pending mobility flags
+	if(!(L.mobility_flags & MOBILITY_MOVE))
+		return FALSE
+*/
 
-	if(!mob.lastarea)
-		mob.lastarea = get_area(mob.loc)
-
-	if((istype(mob.loc, /turf/space)) || (mob.lastarea.has_gravity == 0))
-		if(!mob.Process_Spacemove(0))	return 0
-
-	if(isobj(mob.loc) || ismob(mob.loc))//Inside an object, tell it we moved
+	if(isobj(mob.loc) || ismob(mob.loc))	//Inside an object, tell it we moved
 		var/atom/O = mob.loc
 		return O.relaymove(mob, direct)
 
-	if(isturf(mob.loc))
+	if(!mob.Process_Spacemove(direct))
+		return FALSE
 
-		if(mob.restrained())//Why being pulled while cuffed prevents you from moving
-			for(var/mob/M in range(mob, 1))
-				if(M.pulling == mob)
-					if(!M.restrained() && M.stat == 0 && M.canmove && mob.Adjacent(M))
-						src << "<font color='blue'>You're restrained! You can't move!</font>"
-						return 0
-					else
-						M.stop_pulling()
+// shitcode, rip out when possible
+/*
+	if((istype(mob.loc, /turf/space)) || (mob.lastarea.has_gravity == 0))
+		if(!mob.Process_Spacemove(0))	return 0
+*/
 
-		if(mob.pinned.len)
-			src << "<font color='blue'>You're pinned to a wall by [mob.pinned[1]]!</font>"
-			return 0
+	if(!mob.lastarea)
+		mob.lastarea = get_area(mob.loc)
+// end
 
-		move_delay = world.time//set move delay
+/*
+	//We are now going to move
+	var/add_delay = mob.cached_multiplicative_slowdown
+	if(old_move_delay + (add_delay*MOVEMENT_DELAY_BUFFER_DELTA) + MOVEMENT_DELAY_BUFFER > world.time)
+		move_delay = old_move_delay
+	else
+		move_delay = world.time
 
-		switch(mob.m_intent)
-			if("run")
-				if(mob.drowsyness > 0)
-					move_delay += 6
-				move_delay += config_legacy.run_speed
-			if("walk")
-				move_delay += config_legacy.walk_speed
-		move_delay += mob.movement_delay()
+	if(L.confused)
+		var/newdir = 0
+		if(L.confused > 40)
+			newdir = pick(GLOB.alldirs)
+		else if(prob(L.confused * 1.5))
+			newdir = angle2dir(dir2angle(direct) + pick(90, -90))
+		else if(prob(L.confused * 3))
+			newdir = angle2dir(dir2angle(direct) + pick(45, -45))
+		if(newdir)
+			direct = newdir
+			n = get_step(L, direct)
 
-		if(istype(mob.buckled, /obj/vehicle) || istype(mob.buckled, /mob))	//VOREStation Edit: taur riding. I think.
-			//manually set move_delay for vehicles so we don't inherit any mob movement penalties
-			//specific vehicle move delays are set in code\modules\vehicles\vehicle.dm
-			move_delay = world.time
-			//drunk driving
-			if(mob.confused && prob(20)) //vehicles tend to keep moving in the same direction
-				direct = turn(direct, pick(90, -90))
-			return mob.buckled.relaymove(mob,direct)
+	. = ..()
+*/
 
-		if(istype(mob.machine, /obj/machinery))
-			if(mob.machine.relaymove(mob,direct))
-				return
+// no instead we're using polariscode
+	// added code
+	var/move_delay_add_grab = 0
+	var/add_delay = mob.movement_delay(n, direct)
+	if(old_move_delay + (add_delay*MOVEMENT_DELAY_BUFFER_DELTA) + MOVEMENT_DELAY_BUFFER > world.time)
+		mob.move_delay = old_move_delay
+	else
+		mob.move_delay = world.time
+	//
 
-		if(mob.pulledby || mob.buckled) // Wheelchair driving!
-			if(istype(mob.loc, /turf/space))
-				return // No wheelchair driving in space
-			if(istype(mob.pulledby, /obj/structure/bed/chair/wheelchair))
-				return mob.pulledby.relaymove(mob, direct)
-			else if(istype(mob.buckled, /obj/structure/bed/chair/wheelchair))
-				if(ishuman(mob))
-					var/mob/living/carbon/human/driver = mob
-					var/obj/item/organ/external/l_hand = driver.get_organ("l_hand")
-					var/obj/item/organ/external/r_hand = driver.get_organ("r_hand")
-					if((!l_hand || l_hand.is_stump()) && (!r_hand || r_hand.is_stump()))
-						return // No hands to drive your chair? Tough luck!
-				//drunk wheelchair driving
-				else if(mob.confused)
-					switch(mob.m_intent)
-						if("run")
-							if(prob(50))	direct = turn(direct, pick(90, -90))
-						if("walk")
-							if(prob(25))	direct = turn(direct, pick(90, -90))
-				move_delay += 2
-				return mob.buckled.relaymove(mob,direct)
+	if(mob.restrained() && mob.pulledby)//Why being pulled while cuffed prevents you from moving
+		to_chat(src, "<span class='warning'>You're restrained! You can't move!</span>")
+		return FALSE
 
-		//We are now going to move
-		moving = 1
-		//Something with pulling things
-		if(locate(/obj/item/weapon/grab, mob))
-			move_delay = max(move_delay, world.time + 7)
-			var/list/L = mob.ret_grab()
-			if(istype(L, /list))
-				if(L.len == 2)
-					L -= mob
-					var/mob/M = L[1]
-					if(M)
-						if ((get_dist(mob, M) <= 1 || M.loc == mob.loc))
-							var/turf/T = mob.loc
-							. = ..()
-							if (isturf(M.loc))
-								var/diag = get_dir(mob, M)
-								if ((diag - 1) & diag)
-								else
-									diag = null
-								if ((get_dist(mob, M) > 1 || diag))
-									step(M, get_dir(M.loc, T))
-				else
-					for(var/mob/M in L)
-						M.other_mobs = 1
-						if(mob != M)
-							M.animate_movement = 3
-					for(var/mob/M in L)
-						spawn( 0 )
-							step(M, direct)
-							return
-						spawn( 1 )
-							M.other_mobs = null
-							M.animate_movement = 2
-							return
+	if(length(mob.pinned))
+		to_chat(src, "<font color='blue'>You're pinned to a wall by [mob.pinned[1]]!</font>")
+		return FALSE
 
-		else
-			if(mob.confused)
+	if(mob.pulledby || mob.buckled) // Wheelchair driving!		//this is shitcode
+		if(istype(mob.loc, /turf/space))
+			return // No wheelchair driving in space
+		if(istype(mob.pulledby, /obj/structure/bed/chair/wheelchair))
+			return mob.pulledby.relaymove(mob, direct)
+		else if(istype(mob.buckled, /obj/structure/bed/chair/wheelchair))
+			if(ishuman(mob))
+				var/mob/living/carbon/human/driver = mob
+				var/obj/item/organ/external/l_hand = driver.get_organ("l_hand")
+				var/obj/item/organ/external/r_hand = driver.get_organ("r_hand")
+				if((!l_hand || l_hand.is_stump()) && (!r_hand || r_hand.is_stump()))
+					return // No hands to drive your chair? Tough luck!
+			//drunk wheelchair driving
+			else if(mob.confused)
 				switch(mob.m_intent)
 					if("run")
-						if(prob(75))
-							direct = turn(direct, pick(90, -90))
-							n = get_step(mob, direct)
+						if(prob(50))	direct = turn(direct, pick(90, -90))
 					if("walk")
-						if(prob(25))
-							direct = turn(direct, pick(90, -90))
-							n = get_step(mob, direct)
-			. = mob.SelfMove(n, direct)
+						if(prob(25))	direct = turn(direct, pick(90, -90))
+			add_delay += 2
+			return mob.buckled.relaymove(mob,direct)
 
-		for (var/obj/item/weapon/grab/G in mob)
-			if (G.state == GRAB_NECK)
-				mob.setDir(reverse_dir[direct])
-			G.adjust_position()
-		for (var/obj/item/weapon/grab/G in mob.grabbed_by)
-			G.adjust_position()
+	//We are now going to move
+	//Something with pulling things
+	if(locate(/obj/item/grab, mob))
+		move_delay_add_grab = 7
+		var/list/grabbed = mob.ret_grab()
+		if(grabbed)
+			if(grabbed.len == 2)
+				grabbed -= mob
+				var/mob/M = grabbed[1]
+				if(M)
+					if ((get_dist(mob, M) <= 1 || M.loc == mob.loc))
+						var/turf/T = mob.loc
+						. = ..()
+						if (isturf(M.loc))
+							var/diag = get_dir(mob, M)
+							if ((diag - 1) & diag)
+							else
+								diag = null
+							if ((get_dist(mob, M) > 1 || diag))
+								step(M, get_dir(M.loc, T))
+			else
+				for(var/mob/M in grabbed)
+					M.other_mobs = 1
+					if(mob != M)
+						M.animate_movement = 3
+				for(var/mob/M in grabbed)
+					spawn( 0 )
+						step(M, direct)
+						return
+					spawn( 1 )
+						M.other_mobs = null
+						M.animate_movement = 2
+						return
 
-		moving = 0
+	else
+		if(mob.confused)
+			switch(mob.m_intent)
+				if("run")
+					if(prob(75))
+						direct = turn(direct, pick(90, -90))
+						n = get_step(mob, direct)
+				if("walk")
+					if(prob(25))
+						direct = turn(direct, pick(90, -90))
+						n = get_step(mob, direct)
+		. = mob.SelfMove(n, direct)
+	for (var/obj/item/grab/G in mob)
+		if (G.state == GRAB_NECK)
+			mob.setDir(reverse_dir[direct])
+		G.adjust_position()
+	for (var/obj/item/grab/G in mob.grabbed_by)
+		G.adjust_position()
 
-		return .
+//////////////////////end
+	add_delay = max(add_delay, move_delay_add_grab)
 
-	return
+	if((direct & (direct - 1)) && mob.loc == n) //moved diagonally successfully
+		add_delay *= 2
+	mob.move_delay += add_delay
+/*
+	if(.) // If mob is null here, we deserve the runtime
+		if(mob.throwing)
+			mob.throwing.finalize(FALSE)
+*/
+
+/*
+	var/atom/movable/P = mob.pulling
+	if(P && !ismob(P) && P.density)
+		mob.setDir(turn(mob.dir, 180))
+*/
+
 
 /mob/proc/SelfMove(turf/n, direct)
 	return Move(n, direct)
@@ -391,12 +329,10 @@
 	switch(mob.incorporeal_move)
 		if(1)
 			var/turf/T = get_step(mob, direct)
-			if(mob.check_holy(T))
-				mob << "<span class='warning'>You cannot get past holy grounds while you are in this plane of existence!</span>"
+			if(!T)
 				return
-			else
-				mob.forceMove(get_step(mob, direct))
-				mob.dir = direct
+			mob.forceMove(get_step(mob, direct))
+			mob.setDir(direct)
 		if(2)
 			if(prob(50))
 				var/locx
@@ -458,26 +394,13 @@
 ///Called by /client/Move()
 ///For moving in space
 ///Return 1 for movement 0 for none
-/mob/proc/Process_Spacemove(var/check_drift = 0)
-
-	if(!Check_Dense_Object()) //Nothing to push off of so end here
-		update_floating(0)
-		return 0
-
-	update_floating(1)
-
-	if(restrained()) //Check to see if we can do things
-		return 0
-
-	//Check to see if we slipped
-	if(prob(Process_Spaceslipping(0)) && !buckled) //Cit change, removes spaceslipping.
-		src << "<font color='blue'><B>You slipped!</B></font>"
-		src.inertia_dir = src.last_move
-		step(src, src.inertia_dir)
-		return 0
-	//If not then we can reset inertia and move
-	inertia_dir = 0
-	return 1
+/mob/Process_Spacemove(direction)
+	. = ..()
+	if(.)
+		return
+	if(Check_Dense_Object())
+		update_floating(TRUE)
+		return TRUE
 
 /mob/proc/Check_Dense_Object() //checks for anything to push off in the vicinity. also handles magboots on gravity-less floors tiles
 
@@ -536,16 +459,11 @@
 
 /mob/proc/update_gravity()
 	return
-/*
-// The real Move() proc is above, but touching that massive block just to put this in isn't worth it.
-/mob/Move(var/newloc, var/direct)
-	. = ..(newloc, direct)
-	if(.)
-		post_move(newloc, direct)
-*/
+
 // Called when a mob successfully moves.
 // Would've been an /atom/movable proc but it caused issues.
 /mob/Moved(atom/oldloc)
+	. = ..()
 	for(var/obj/O in contents)
 		O.on_loc_moved(oldloc)
 
@@ -553,23 +471,64 @@
 /obj/proc/on_loc_moved(atom/oldloc)
 	return
 
-/obj/item/weapon/storage/on_loc_moved(atom/oldloc)
+/obj/item/storage/on_loc_moved(atom/oldloc)
 	for(var/obj/O in contents)
 		O.on_loc_moved(oldloc)
 
-/client/verb/moveup()
-	set name = ".moveup"
-	set instant = 1
-	Move(get_step(mob, NORTH), NORTH)
-/client/verb/movedown()
-	set name = ".movedown"
-	set instant = 1
-	Move(get_step(mob, SOUTH), SOUTH)
-/client/verb/moveright()
-	set name = ".moveright"
-	set instant = 1
-	Move(get_step(mob, EAST), EAST)
-/client/verb/moveleft()
-	set name = ".moveleft"
-	set instant = 1
-	Move(get_step(mob, WEST), WEST)
+// facing verbs
+/**
+  * Returns true if a mob can turn to face things
+  *
+  * Conditions:
+  * * client.last_turn > world.time
+  * * not dead or unconcious
+  * * not anchored
+  * * no transform not set
+  * * we are not restrained
+  */
+/mob/proc/canface()
+	if(world.time < last_turn)
+		return FALSE
+	if(stat == DEAD || stat == UNCONSCIOUS)
+		return FALSE
+	if(transforming)
+		return FALSE
+	if(restrained())
+		return FALSE
+	return TRUE
+
+///Hidden verb to turn east
+/mob/verb/eastface()
+	set hidden = TRUE
+	if(!canface())
+		return FALSE
+	setDir(EAST)
+	last_turn = world.time + MOB_FACE_DIRECTION_DELAY
+	return TRUE
+
+///Hidden verb to turn west
+/mob/verb/westface()
+	set hidden = TRUE
+	if(!canface())
+		return FALSE
+	setDir(WEST)
+	last_turn = world.time + MOB_FACE_DIRECTION_DELAY
+	return TRUE
+
+///Hidden verb to turn north
+/mob/verb/northface()
+	set hidden = TRUE
+	if(!canface())
+		return FALSE
+	setDir(NORTH)
+	last_turn = world.time + MOB_FACE_DIRECTION_DELAY
+	return TRUE
+
+///Hidden verb to turn south
+/mob/verb/southface()
+	set hidden = TRUE
+	if(!canface())
+		return FALSE
+	setDir(SOUTH)
+	last_turn = world.time + MOB_FACE_DIRECTION_DELAY
+	return TRUE

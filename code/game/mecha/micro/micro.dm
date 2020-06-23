@@ -1,3 +1,11 @@
+/obj/mecha
+	var/max_micro_utility_equip = 0
+	var/max_micro_weapon_equip = 0
+	var/list/micro_utility_equipment = new
+	var/list/micro_weapon_equipment = new
+
+
+
 /obj/mecha/micro
 	icon = 'icons/mecha/micro.dmi'
 	force = 10 //still a robot
@@ -9,6 +17,13 @@
 	var/list/destroyable_obj = list(/obj/mecha, /obj/structure/window, /obj/structure/grille, /turf/simulated/wall)
 	internal_damage_threshold = 50
 	maint_access = 0
+	max_hull_equip = 1
+	max_weapon_equip = 0
+	max_utility_equip = 0
+	max_universal_equip = 0
+	max_special_equip = 1
+	max_micro_utility_equip = 1
+	max_micro_weapon_equip = 1
 	//add_req_access = 0
 	//operation_req_access = list(access_hos)
 	damage_absorption = list("brute"=1,"fire"=1,"bullet"=1,"laser"=1,"energy"=1,"bomb"=1)
@@ -21,7 +36,7 @@
 	if(!melee_can_hit || !istype(target, /atom)) return
 	if(istype(target, /mob/living))
 		var/mob/living/M = target
-		if(src.occupant.a_intent == I_HURT)
+		if(src.occupant.a_intent == INTENT_HARM)
 			playsound(src, 'sound/weapons/punch4.ogg', 50, 1)
 			if(damtype == "brute")
 				step_away(M,src,15)
@@ -106,7 +121,7 @@
 /obj/mecha/micro/move_inside()
 	var/mob/living/carbon/C = usr
 	if (C.size_multiplier >= 0.5)
-		C << "<span class='warning'>You can't fit in this suit!</span>"
+		to_chat(C, "<span class='warning'>You can't fit in this suit!</span>")
 		return
 	else
 		..()
@@ -114,7 +129,7 @@
 /obj/mecha/micro/move_inside_passenger()
 	var/mob/living/carbon/C = usr
 	if (C.size_multiplier >= 0.5)
-		C << "<span class='warning'>You can't fit in this suit!</span>"
+		to_chat(C, "<span class='warning'>You can't fit in this suit!</span>")
 		return
 	else
 		..()

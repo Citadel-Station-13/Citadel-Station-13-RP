@@ -1,6 +1,10 @@
 /obj/mecha/medical/odysseus/
 	desc = "These exosuits are developed and produced by Vey-Med. (&copy; All rights reserved)."
 	name = "Odysseus"
+	catalogue_data = list(
+		/datum/category_item/catalogue/technology/odysseus,
+		/datum/category_item/catalogue/information/organization/vey_med
+		)
 	icon_state = "odysseus"
 	initial_icon = "odysseus"
 	step_in = 2
@@ -45,7 +49,7 @@
 		var/perspective = input("Select a perspective type.",
                       "Client perspective",
                       occupant.client.perspective) in list(MOB_PERSPECTIVE,EYE_PERSPECTIVE)
-		world << "[perspective]"
+		to_chat(world, "[perspective]")
 		occupant.client.perspective = perspective
 		return
 
@@ -57,7 +61,7 @@
 			occupant.client.eye = src
 		else
 			occupant.client.eye = occupant
-		world << "[occupant.client.eye]"
+		to_chat(world, "[occupant.client.eye]")
 		return
 */
 
@@ -68,15 +72,15 @@
 
 //	process_hud(var/mob/M) //TODO VIS
 /*
-		world<< "view(M)"
+		to_chat(world, "view(M)")
 		for(var/mob/mob in view(M))
-			world << "[mob]"
-		world<< "view(M.client)"
+			to_chat(world, "[mob]")
+		to_chat(world, "view(M.client)")
 		for(var/mob/mob in view(M.client))
-			world << "[mob]"
-		world<< "view(M.loc)"
+			to_chat(world, "[mob]")
+		to_chat(world, "view(M.loc)")
 		for(var/mob/mob in view(M.loc))
-			world << "[mob]"
+			to_chat(world, "[mob]")
 
 
 		if(!M || M.stat || !(M in view(M)))	return
@@ -109,7 +113,7 @@
 			else if(foundVirus)
 				holder.icon_state = "hudill"
 			else if(patient.has_brain_worms())
-				var/mob/living/simple_animal/borer/B = patient.has_brain_worms()
+				var/mob/living/simple_mob/animal/borer/B = patient.has_brain_worms()
 				if(B.controlling)
 					holder.icon_state = "hudbrainworm"
 				else
@@ -119,7 +123,7 @@
 
 			C.images += holder
 */
-/obj/mecha/medical/odysseus/loaded/New()
+/obj/mecha/medical/odysseus/loaded/Initialize()
 	..()
 	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/tool/sleeper
 	ME.attach(src)

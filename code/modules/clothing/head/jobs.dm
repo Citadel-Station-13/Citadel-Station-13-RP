@@ -7,13 +7,13 @@
 
 //Captain
 /obj/item/clothing/head/caphat
-	name = "colony director's hat"
+	name = "Facility Director's hat"
 	icon_state = "captain"
 	desc = "It's good being the king."
 	body_parts_covered = 0
 
 /obj/item/clothing/head/caphat/cap
-	name = "colony director's cap"
+	name = "Facility Director's cap"
 	desc = "You fear to wear it for the negligence it brings."
 	icon_state = "capcap"
 
@@ -136,7 +136,7 @@
 	name = "fedora"
 	desc = "A brown fedora - either the cornerstone of a detective's style or a poor attempt at looking cool, depending on the person wearing it."
 	icon_state = "detective"
-	allowed = list(/obj/item/weapon/reagent_containers/food/snacks/candy_corn, /obj/item/weapon/pen)
+	allowed = list(/obj/item/reagent_containers/food/snacks/candy_corn, /obj/item/pen)
 	armor = list(melee = 10, bullet = 10, laser = 15, energy = 10, bomb = 0, bio = 0, rad = 0)
 	siemens_coefficient = 0.9
 	valid_accessory_slots = null

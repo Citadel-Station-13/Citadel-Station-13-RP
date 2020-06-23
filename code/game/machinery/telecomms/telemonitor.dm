@@ -14,7 +14,7 @@
 	var/screen = 0				// the screen number:
 	var/list/machinelist = list()	// the machines located by the computer
 	var/obj/machinery/telecomms/SelectedMachine
-	circuit = /obj/item/weapon/circuitboard/comm_monitor
+	circuit = /obj/item/circuitboard/comm_monitor
 
 	var/network = "NULL"		// the network to probe
 
@@ -128,6 +128,6 @@
 	if(!emagged)
 		playsound(src.loc, 'sound/effects/sparks4.ogg', 75, 1)
 		emagged = 1
-		user << "<span class='notice'>You you disable the security protocols</span>"
+		to_chat(user, "<span class='notice'>You you disable the security protocols</span>")
 		src.updateUsrDialog()
 		return 1

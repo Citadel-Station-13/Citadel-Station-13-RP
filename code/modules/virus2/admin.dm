@@ -7,15 +7,16 @@
 		if(!check_rights(R_ADMIN|R_SPAWN)) return
 
 		usr << "Infection chance: [infectionchance]; Speed: [speed]; Spread type: [spreadtype]"
-		usr << "Affected species: [english_list(affected_species)]"
-		usr << "Effects:"
+		to_chat(usr, "Affected species: [english_list(affected_species)]")
+		to_chat(usr, "Effects:")
 		for(var/datum/disease2/effectholder/E in effects)
 			usr << "[E.stage]: [E.effect.name]; chance=[E.chance]; multiplier=[E.multiplier]"
 		usr << "Antigens: [antigens2string(antigen)]; Resistance: [resistance]"
 
 		return 1
 
-/datum/disease2/disease/get_view_variables_header_legacy()
+/*
+/datum/disease2/disease/vv_get_header()
 	. = list()
 	for(var/datum/disease2/effectholder/E in effects)
 		. += "[E.stage]: [E.effect.name]"
@@ -24,10 +25,11 @@
 		[jointext(., "<br>")]</font>
 	"}
 
-/datum/disease2/disease/get_view_variables_options_legacy()
+/datum/disease2/disease/get_view_variables_options()
 	return ..() + {"
 		<option value='?src=\ref[src];info=1'>Show info</option>
 	"}
+*/
 
 /datum/admins/var/datum/virus2_editor/virus2_editor_datum = new
 /client/proc/virus2_editor()

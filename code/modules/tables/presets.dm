@@ -58,6 +58,23 @@
 	material = get_material_by_name("wood")
 	..()
 
+/obj/structure/table/sifwoodentable
+	icon_state = "plain_preview"
+	color = "#824B28"
+
+/obj/structure/table/sifwoodentable/New()
+	material = get_material_by_name("alien wood")
+	..()
+
+/obj/structure/table/sifwooden_reinforced
+	icon_state = "reinf_preview"
+	color = "#824B28"
+
+/obj/structure/table/sifwooden_reinforced/New()
+	material = get_material_by_name("alien wood")
+	reinforced = get_material_by_name(DEFAULT_WALL_MATERIAL)
+	..()
+
 /obj/structure/table/gamblingtable
 	icon_state = "gamble_preview"
 
@@ -112,7 +129,7 @@
 	verbs -= /obj/structure/table/proc/do_put
 	..()
 
-/obj/structure/table/alien/dismantle(obj/item/weapon/wrench/W, mob/user)
+/obj/structure/table/alien/dismantle(obj/item/wrench/W, mob/user)
 	to_chat(user, "<span class='warning'>You cannot dismantle \the [src].</span>")
 	return
 
@@ -176,6 +193,18 @@
 /obj/structure/table/bench/wooden/New()
 	material = get_material_by_name("wood")
 	..()
+
+/obj/structure/table/bench/sifwooden
+	icon_state = "plain_preview"
+	color = "#824B28"
+
+/obj/structure/table/bench/sifwooden/New()
+	material = get_material_by_name("alien wood")
+	..()
+
+/obj/structure/table/bench/sifwooden/padded
+	icon_state = "padded_preview"
+	carpeted = 1
 
 /obj/structure/table/bench/padded
 	icon_state = "padded_preview"

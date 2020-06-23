@@ -36,7 +36,7 @@
 /datum/gear/eyes/security
 	display_name = "Security HUD (Security)"
 	path = /obj/item/clothing/glasses/hud/security
-	allowed_roles = list("Security Officer","Head of Security","Warden")
+	allowed_roles = list("Security Officer","Head of Security","Warden", "Detective")
 
 /datum/gear/eyes/security/prescriptionsec
 	display_name = "Security HUD, prescription (Security)"
@@ -57,7 +57,7 @@
 /datum/gear/eyes/medical
 	display_name = "Medical HUD (Medical)"
 	path = /obj/item/clothing/glasses/hud/health
-	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist", "Psychiatrist", "Search and Rescue")
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist", "Psychiatrist", "Field Medic")
 
 /datum/gear/eyes/medical/prescriptionmed
 	display_name = "Medical HUD, prescription (Medical)"
@@ -72,12 +72,12 @@
 	path = /obj/item/clothing/glasses/hud/health/aviator/prescription
 
 /datum/gear/eyes/meson
-	display_name = "Optical Meson Scanners (Engineering, Science)"
+	display_name = "Optical Meson Scanners (Engineering, Science, Mining)"
 	path = /obj/item/clothing/glasses/meson
-	allowed_roles = list("Station Engineer","Chief Engineer","Atmospheric Technician", "Scientist", "Research Director")
+	allowed_roles = list("Station Engineer","Chief Engineer","Atmospheric Technician", "Scientist", "Research Director", "Shaft Miner")
 
 /datum/gear/eyes/meson/prescription
-	display_name = "Optical Meson Scanners, prescription (Engineering, Science)"
+	display_name = "Optical Meson Scanners, prescription (Engineering, Science, Mining)"
 	path = /obj/item/clothing/glasses/meson/prescription
 
 /datum/gear/eyes/material
@@ -90,11 +90,11 @@
 	path = /obj/item/clothing/glasses/material/prescription
 
 /datum/gear/eyes/meson/aviator
-	display_name = "Optical Meson Aviators, (Engineering, Science)"
+	display_name = "Optical Meson Aviators, (Engineering, Science, Mining)"
 	path = /obj/item/clothing/glasses/meson/aviator
 
 /datum/gear/eyes/meson/aviator/prescription
-	display_name = "Optical Meson Aviators, prescription (Engineering, Science)"
+	display_name = "Optical Meson Aviators, prescription (Engineering, Science, Mining)"
 	path = /obj/item/clothing/glasses/meson/aviator/prescription
 
 /datum/gear/eyes/glasses/fakesun
@@ -108,7 +108,7 @@
 /datum/gear/eyes/sun
 	display_name = "Sunglasses (Security/Command)"
 	path = /obj/item/clothing/glasses/sunglasses
-	allowed_roles = list("Security Officer","Head of Security","Warden","Colony Director","Head of Personnel","Quartermaster","Internal Affairs Agent","Detective")
+	allowed_roles = list("Security Officer","Head of Security","Warden","Facility Director","Head of Personnel","Quartermaster","Internal Affairs Agent","Detective")
 
 /datum/gear/eyes/sun/shades
 	display_name = "Sunglasses, fat (Security/Command)"
@@ -125,3 +125,54 @@
 /datum/gear/eyes/circuitry
 	display_name = "goggles, circuitry (empty)"
 	path = /obj/item/clothing/glasses/circuitry
+
+/datum/gear/eyes/glasses/rimless
+	display_name = "Glasses, rimless"
+	path = /obj/item/clothing/glasses/rimless
+
+/datum/gear/eyes/glasses/prescriptionrimless
+	display_name = "Glasses, prescription rimless"
+	path = /obj/item/clothing/glasses/regular/rimless
+
+/datum/gear/eyes/glasses/thin
+	display_name = "Glasses, thin frame"
+	path = /obj/item/clothing/glasses/thin
+
+/datum/gear/eyes/glasses/prescriptionthin
+	display_name = "Glasses, prescription thin frame"
+	path = /obj/item/clothing/glasses/regular/thin
+
+// April 2020 Drof's Additions Begin Below
+/datum/gear/eyes/jamjar
+	display_name = "jamjar glasses"
+	path = /obj/item/clothing/glasses/jamjar
+
+/datum/gear/eyes/jensenshades
+	display_name = "augmented shades"
+	path = /obj/item/clothing/glasses/augmentedshades
+
+/datum/gear/eyes/whiteblindfold
+	display_name = "white blindfold"
+	path = /obj/item/clothing/glasses/sunglasses/blindfold/whiteblindfold
+
+/datum/gear/eyes/redglasses
+	display_name = "red glasses"
+	path = /obj/item/clothing/glasses/redglasses
+
+/datum/gear/eyes/badglasses
+	display_name = "poorly made glasses"
+	path = /obj/item/clothing/glasses/badglasses
+
+/datum/gear/eyes/orangeglasses
+	display_name = "orange glasses"
+	path = /obj/item/clothing/glasses/orangeglasses
+
+/datum/gear/eyes/medical/eyepatch
+	display_name = "Medical HUD Eyepatch"
+	path = /obj/item/clothing/glasses/hud/health/eyepatch
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist", "Psychiatrist", "Field Medic")
+
+/datum/gear/eyes/meson/eyepatch
+	display_name = "Optical Meson Eyepatch (Engineering, Science, Mining)"
+	path = /obj/item/clothing/glasses/hud/health/eyepatch
+	allowed_roles = list("Station Engineer","Chief Engineer","Atmospheric Technician", "Scientist", "Research Director", "Shaft Miner")

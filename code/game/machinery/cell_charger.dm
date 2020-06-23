@@ -4,18 +4,18 @@
 	icon = 'icons/obj/power.dmi'
 	icon_state = "ccharger0"
 	anchored = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 5
 	active_power_usage = 60000	//60 kW. (this the power drawn when charging)
 	var/efficiency = 60000 //will provide the modified power rate when upgraded
 	power_channel = EQUIP
-	var/obj/item/weapon/cell/charging = null
+	var/obj/item/cell/charging = null
 	var/chargelevel = -1
-	circuit = /obj/item/weapon/circuitboard/cell_charger
+	circuit = /obj/item/circuitboard/cell_charger
 
 /obj/machinery/cell_charger/New()
 	component_parts = list()
-	component_parts += new /obj/item/weapon/stock_parts/capacitor(src)
+	component_parts += new /obj/item/stock_parts/capacitor(src)
 	component_parts += new /obj/item/stack/cable_coil(src, 5)
 	RefreshParts()
 	..()
@@ -46,12 +46,12 @@
 	if(charging)
 		to_chat(user, "Current charge: [charging.charge] / [charging.maxcharge]")
 
-/obj/machinery/cell_charger/attackby(obj/item/weapon/W, mob/user)
+/obj/machinery/cell_charger/attackby(obj/item/W, mob/user)
 	if(stat & BROKEN)
 		return
 
-	if(istype(W, /obj/item/weapon/cell) && anchored)
-		if(istype(W, /obj/item/weapon/cell/device))
+	if(istype(W, /obj/item/cell) && anchored)
+		if(istype(W, /obj/item/cell/device))
 			to_chat(user, "<span class='warning'>\The [src] isn't fitted for that type of cell.</span>")
 			return
 		if(charging)
@@ -88,7 +88,7 @@
 
 /obj/machinery/cell_charger/attack_hand(mob/user)
 	add_fingerprint(user)
-	
+
 	if(charging)
 		usr.put_in_hands(charging)
 		charging.add_fingerprint(user)
@@ -119,29 +119,29 @@
 /obj/machinery/cell_charger/process()
 	//world << "ccpt [charging] [stat]"
 	if((stat & (BROKEN|NOPOWER)) || !anchored)
-		update_use_power(0)
+		update_use_power(USE_POWER_OFF)
 		return
 
 	if(charging && !charging.fully_charged())
 		charging.give(efficiency*CELLRATE)
-		update_use_power(2)
+		update_use_power(USE_POWER_ACTIVE)
 
 		update_icon()
 	else
-		update_use_power(1)
+		update_use_power(USE_POWER_IDLE)
 
 
 /obj/machinery/cell_charger/RefreshParts()
 	var/E = 0
-	for(var/obj/item/weapon/stock_parts/capacitor/C in component_parts)
+	for(var/obj/item/stock_parts/capacitor/C in component_parts)
 		E += C.rating
-	efficiency = active_power_usage * (1+(E-1)*0.5)
+	efficiency = active_power_usage * (1+(E-1)*0.5) * 10
 
 //cit change starts
 /obj/item/cell_charger_kit
 	name = "cell charger kit"
 	desc = "A box with the parts for a heavy-duty cell charger inside of it. Use it in-hand to deploy a cell charger."
-	icon = 'modular_citadel/icons/obj/storage.dmi'
+	icon = 'icons/obj/storage.dmi'
 	icon_state = "box"
 	item_icons = list(
 		slot_l_hand_str = 'icons/mob/items/lefthand_storage.dmi',

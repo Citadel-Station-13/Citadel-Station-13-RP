@@ -331,7 +331,7 @@
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/holodorm/source_basic)
 "bg" = (
-/obj/item/weapon/beach_ball,
+/obj/item/beach_ball,
 /turf/simulated/floor/holofloor/beach/sand,
 /area/holodeck/holodorm/source_beach)
 "bh" = (
@@ -602,12 +602,12 @@
 /turf/simulated/floor/holofloor/beach/sand,
 /area/holodeck/source_beach)
 "cc" = (
-/obj/item/weapon/beach_ball,
+/obj/item/beach_ball,
 /turf/simulated/floor/holofloor/beach/sand,
 /area/holodeck/source_beach)
 "cd" = (
-/obj/item/weapon/towel/random,
-/obj/item/weapon/melee/umbrella/random,
+/obj/item/towel/random,
+/obj/item/melee/umbrella/random,
 /turf/simulated/floor/holofloor/beach/sand,
 /area/holodeck/source_beach)
 "ce" = (
@@ -616,12 +616,12 @@
 /turf/simulated/floor/holofloor/beach/sand,
 /area/holodeck/source_beach)
 "cf" = (
-/obj/item/weapon/towel/random,
+/obj/item/towel/random,
 /obj/item/clothing/glasses/sunglasses,
 /turf/simulated/floor/holofloor/beach/sand,
 /area/holodeck/source_beach)
 "cg" = (
-/obj/item/weapon/inflatable_duck,
+/obj/item/inflatable_duck,
 /turf/simulated/floor/holofloor/beach/sand,
 /area/holodeck/source_beach)
 "ch" = (
@@ -841,7 +841,7 @@
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_basketball)
 "cI" = (
-/obj/item/weapon/beach_ball/holoball,
+/obj/item/beach_ball/holoball,
 /obj/effect/floor_decal/corner/green{
 	dir = 5
 	},
@@ -1114,8 +1114,8 @@
 /obj/item/clothing/head/helmet/thunderdome,
 /obj/item/clothing/suit/armor/tdome/red,
 /obj/item/clothing/suit/armor/tdome/red,
-/obj/item/weapon/holo/esword/red,
-/obj/item/weapon/holo/esword/red,
+/obj/item/holo/esword/red,
+/obj/item/holo/esword/red,
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_thunderdomecourt)
 "dr" = (
@@ -1126,8 +1126,8 @@
 /obj/item/clothing/head/helmet/thunderdome,
 /obj/item/clothing/suit/armor/tdome/green,
 /obj/item/clothing/suit/armor/tdome/green,
-/obj/item/weapon/holo/esword/green,
-/obj/item/weapon/holo/esword/green,
+/obj/item/holo/esword/green,
+/obj/item/holo/esword/green,
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_thunderdomecourt)
 "ds" = (
@@ -1222,7 +1222,7 @@
 /turf/simulated/shuttle/plating,
 /area/supply/dock)
 "dJ" = (
-/mob/living/simple_animal/hostile/mimic/crate,
+/mob/living/simple_mob/hostile/mimic/crate,
 /turf/unsimulated/floor/steel,
 /area/centcom/suppy)
 "dK" = (
@@ -1492,9 +1492,9 @@
 /area/virtual_reality/yacht)
 "eB" = (
 /obj/structure/table/steel,
-/obj/item/weapon/storage/box/lights/mixed,
-/obj/item/weapon/storage/box/lights/mixed,
-/obj/item/weapon/storage/box/lights/mixed,
+/obj/item/storage/box/lights/mixed,
+/obj/item/storage/box/lights/mixed,
+/obj/item/storage/box/lights/mixed,
 /turf/simulated/floor/plating,
 /area/virtual_reality/yacht)
 "eC" = (
@@ -1525,7 +1525,7 @@
 /turf/simulated/floor/tiled/freezer,
 /area/virtual_reality/yacht)
 "eH" = (
-/obj/item/weapon/stool/padded,
+/obj/item/stool/padded,
 /turf/simulated/floor/holofloor/lino,
 /area/virtual_reality/yacht)
 "eI" = (
@@ -1537,28 +1537,28 @@
 /area/virtual_reality/yacht)
 "eJ" = (
 /obj/structure/closet/crate/freezer,
-/obj/item/weapon/reagent_containers/food/snacks/dough,
-/obj/item/weapon/reagent_containers/food/snacks/dough,
-/obj/item/weapon/reagent_containers/food/snacks/dough,
-/obj/item/weapon/reagent_containers/food/snacks/dough,
-/obj/item/weapon/reagent_containers/food/snacks/dough,
-/obj/item/weapon/reagent_containers/food/snacks/dough,
-/obj/item/weapon/reagent_containers/food/snacks/dough,
-/obj/item/weapon/reagent_containers/food/snacks/dough,
-/obj/item/weapon/reagent_containers/food/snacks/dough,
-/obj/item/weapon/reagent_containers/food/snacks/dough,
-/obj/item/weapon/reagent_containers/food/snacks/dough,
-/obj/item/weapon/reagent_containers/food/snacks/dough,
-/obj/item/weapon/reagent_containers/food/snacks/dough,
-/obj/item/weapon/reagent_containers/food/snacks/dough,
-/obj/item/weapon/reagent_containers/food/snacks/dough,
-/obj/item/weapon/reagent_containers/food/snacks/doughslice,
-/obj/item/weapon/reagent_containers/food/snacks/doughslice,
-/obj/item/weapon/reagent_containers/food/snacks/doughslice,
-/obj/item/weapon/reagent_containers/food/snacks/doughslice,
-/obj/item/weapon/reagent_containers/food/snacks/doughslice,
-/obj/item/weapon/reagent_containers/food/snacks/doughslice,
-/obj/item/weapon/reagent_containers/food/snacks/doughslice,
+/obj/item/reagent_containers/food/snacks/dough,
+/obj/item/reagent_containers/food/snacks/dough,
+/obj/item/reagent_containers/food/snacks/dough,
+/obj/item/reagent_containers/food/snacks/dough,
+/obj/item/reagent_containers/food/snacks/dough,
+/obj/item/reagent_containers/food/snacks/dough,
+/obj/item/reagent_containers/food/snacks/dough,
+/obj/item/reagent_containers/food/snacks/dough,
+/obj/item/reagent_containers/food/snacks/dough,
+/obj/item/reagent_containers/food/snacks/dough,
+/obj/item/reagent_containers/food/snacks/dough,
+/obj/item/reagent_containers/food/snacks/dough,
+/obj/item/reagent_containers/food/snacks/dough,
+/obj/item/reagent_containers/food/snacks/dough,
+/obj/item/reagent_containers/food/snacks/dough,
+/obj/item/reagent_containers/food/snacks/doughslice,
+/obj/item/reagent_containers/food/snacks/doughslice,
+/obj/item/reagent_containers/food/snacks/doughslice,
+/obj/item/reagent_containers/food/snacks/doughslice,
+/obj/item/reagent_containers/food/snacks/doughslice,
+/obj/item/reagent_containers/food/snacks/doughslice,
+/obj/item/reagent_containers/food/snacks/doughslice,
 /turf/simulated/floor/tiled/freezer,
 /area/virtual_reality/yacht)
 "eK" = (
@@ -1570,14 +1570,14 @@
 /obj/random/cash,
 /obj/random/cash,
 /obj/random/cash,
-/obj/item/weapon/spacecash/c200,
-/obj/item/weapon/spacecash/c100,
-/obj/item/weapon/spacecash/c500,
+/obj/item/spacecash/c200,
+/obj/item/spacecash/c100,
+/obj/item/spacecash/c500,
 /turf/simulated/floor/tiled/steel,
 /area/virtual_reality/yacht)
 "eL" = (
 /obj/structure/table/steel,
-/obj/item/device/flashlight,
+/obj/item/flashlight,
 /turf/simulated/floor/plating,
 /area/virtual_reality/yacht)
 "eM" = (
@@ -1714,7 +1714,7 @@
 /area/virtual_reality/yacht)
 "fo" = (
 /obj/structure/bed/double/padded,
-/obj/item/weapon/bedsheet/orangedouble,
+/obj/item/bedsheet/orangedouble,
 /turf/simulated/floor/wood,
 /area/virtual_reality/yacht)
 "fp" = (
@@ -1890,9 +1890,9 @@
 /obj/random/cash,
 /obj/random/cash,
 /obj/random/cash,
-/obj/item/weapon/spacecash/c1000,
-/obj/item/weapon/spacecash/c1000,
-/obj/item/weapon/spacecash/c500,
+/obj/item/spacecash/c1000,
+/obj/item/spacecash/c1000,
+/obj/item/spacecash/c500,
 /turf/simulated/floor/tiled/steel,
 /area/virtual_reality/yacht)
 "fP" = (
@@ -1911,9 +1911,9 @@
 /area/virtual_reality/yacht)
 "fR" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/spacecash/c1000,
-/obj/item/weapon/spacecash/c1000,
-/obj/item/weapon/spacecash/c500,
+/obj/item/spacecash/c1000,
+/obj/item/spacecash/c1000,
+/obj/item/spacecash/c500,
 /obj/machinery/light/small{
 	dir = 4;
 	pixel_y = 0
@@ -1971,7 +1971,7 @@
 /area/virtual_reality/yacht)
 "fY" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/flame/candle,
+/obj/item/flame/candle,
 /turf/simulated/floor/wood,
 /area/virtual_reality/yacht)
 "fZ" = (
@@ -2024,15 +2024,15 @@
 /area/virtual_reality/yacht)
 "gh" = (
 /obj/structure/table/standard,
-/obj/item/weapon/material/knife/plastic,
-/obj/item/weapon/material/kitchen/rollingpin,
+/obj/item/material/knife/plastic,
+/obj/item/material/kitchen/rollingpin,
 /turf/simulated/floor/tiled/white,
 /area/virtual_reality/yacht)
 "gi" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/reagent_containers/food/condiment/small/peppermill,
-/obj/item/weapon/material/kitchen/utensil/fork,
-/obj/item/weapon/material/kitchen/utensil/spoon,
+/obj/item/reagent_containers/food/condiment/small/peppermill,
+/obj/item/material/kitchen/utensil/fork,
+/obj/item/material/kitchen/utensil/spoon,
 /turf/simulated/floor/wood,
 /area/virtual_reality/yacht)
 "gj" = (
@@ -2136,7 +2136,7 @@
 /area/virtual_reality/yacht)
 "gC" = (
 /obj/structure/janitorialcart,
-/obj/item/weapon/mop,
+/obj/item/mop,
 /turf/simulated/floor/tiled/techmaint,
 /area/virtual_reality/yacht)
 "gD" = (
@@ -2145,15 +2145,15 @@
 /area/virtual_reality/yacht)
 "gE" = (
 /obj/structure/closet/jcloset,
-/obj/item/device/lightreplacer,
-/obj/item/device/lightreplacer,
-/obj/item/weapon/soap/deluxe,
-/obj/item/weapon/soap/deluxe,
-/obj/item/weapon/soap/deluxe,
-/obj/item/weapon/soap/deluxe,
-/obj/item/weapon/storage/box/lights/mixed,
-/obj/item/weapon/storage/box/lights/mixed,
-/obj/item/weapon/reagent_containers/glass/bucket,
+/obj/item/lightreplacer,
+/obj/item/lightreplacer,
+/obj/item/soap/deluxe,
+/obj/item/soap/deluxe,
+/obj/item/soap/deluxe,
+/obj/item/soap/deluxe,
+/obj/item/storage/box/lights/mixed,
+/obj/item/storage/box/lights/mixed,
+/obj/item/reagent_containers/glass/bucket,
 /turf/simulated/floor/tiled/techmaint,
 /area/virtual_reality/yacht)
 "gF" = (
@@ -2163,7 +2163,7 @@
 /area/virtual_reality/yacht)
 "gG" = (
 /obj/structure/table/steel,
-/obj/item/weapon/reagent_containers/glass/bucket,
+/obj/item/reagent_containers/glass/bucket,
 /turf/simulated/floor/tiled/techmaint,
 /area/virtual_reality/yacht)
 "gH" = (
@@ -2174,42 +2174,42 @@
 /area/virtual_reality/yacht)
 "gI" = (
 /obj/structure/table/standard,
-/obj/item/weapon/soap/deluxe,
+/obj/item/soap/deluxe,
 /obj/effect/mist/mapped/moving,
 /turf/simulated/floor/tiled/freezer,
 /area/virtual_reality/yacht)
 "gJ" = (
 /obj/structure/table/standard,
-/obj/item/weapon/soap/deluxe,
+/obj/item/soap/deluxe,
 /obj/effect/mist/mapped/moving,
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/freezer,
 /area/virtual_reality/yacht)
 "gK" = (
 /obj/structure/closet/jcloset,
-/obj/item/device/lightreplacer,
-/obj/item/device/lightreplacer,
-/obj/item/weapon/soap/deluxe,
-/obj/item/weapon/soap/deluxe,
-/obj/item/weapon/soap/deluxe,
-/obj/item/weapon/storage/box/lights/mixed,
-/obj/item/weapon/storage/box/lights/mixed,
-/obj/item/weapon/reagent_containers/glass/bucket,
+/obj/item/lightreplacer,
+/obj/item/lightreplacer,
+/obj/item/soap/deluxe,
+/obj/item/soap/deluxe,
+/obj/item/soap/deluxe,
+/obj/item/storage/box/lights/mixed,
+/obj/item/storage/box/lights/mixed,
+/obj/item/reagent_containers/glass/bucket,
 /turf/simulated/floor/tiled/techmaint,
 /area/virtual_reality/yacht)
 "gL" = (
 /obj/structure/bed/double/padded,
-/obj/item/weapon/bedsheet/reddouble,
+/obj/item/bedsheet/reddouble,
 /turf/simulated/floor/wood,
 /area/virtual_reality/yacht)
 "gM" = (
 /obj/structure/bed/double/padded,
-/obj/item/weapon/bedsheet/browndouble,
+/obj/item/bedsheet/browndouble,
 /turf/simulated/floor/wood,
 /area/virtual_reality/yacht)
 "gN" = (
 /obj/structure/bed/double/padded,
-/obj/item/weapon/bedsheet/bluedouble,
+/obj/item/bedsheet/bluedouble,
 /turf/simulated/floor/wood,
 /area/virtual_reality/yacht)
 "gO" = (
@@ -2233,23 +2233,23 @@
 	pixel_y = 0
 	},
 /obj/structure/closet/crate/freezer,
-/obj/item/weapon/reagent_containers/food/snacks/cutlet,
-/obj/item/weapon/reagent_containers/food/snacks/cutlet,
-/obj/item/weapon/reagent_containers/food/snacks/cutlet,
-/obj/item/weapon/reagent_containers/food/snacks/cutlet,
-/obj/item/weapon/reagent_containers/food/snacks/cutlet,
-/obj/item/weapon/reagent_containers/food/snacks/cutlet,
-/obj/item/weapon/reagent_containers/food/snacks/cutlet,
-/obj/item/weapon/reagent_containers/food/snacks/cutlet,
-/obj/item/weapon/reagent_containers/food/snacks/meat,
-/obj/item/weapon/reagent_containers/food/snacks/meat,
-/obj/item/weapon/reagent_containers/food/snacks/meat,
-/obj/item/weapon/reagent_containers/food/snacks/meat,
-/obj/item/weapon/reagent_containers/food/snacks/meat,
-/obj/item/weapon/reagent_containers/food/snacks/meat,
-/obj/item/weapon/reagent_containers/food/snacks/meat,
-/obj/item/weapon/reagent_containers/food/snacks/meat,
-/obj/item/weapon/reagent_containers/food/snacks/meat,
+/obj/item/reagent_containers/food/snacks/cutlet,
+/obj/item/reagent_containers/food/snacks/cutlet,
+/obj/item/reagent_containers/food/snacks/cutlet,
+/obj/item/reagent_containers/food/snacks/cutlet,
+/obj/item/reagent_containers/food/snacks/cutlet,
+/obj/item/reagent_containers/food/snacks/cutlet,
+/obj/item/reagent_containers/food/snacks/cutlet,
+/obj/item/reagent_containers/food/snacks/cutlet,
+/obj/item/reagent_containers/food/snacks/meat,
+/obj/item/reagent_containers/food/snacks/meat,
+/obj/item/reagent_containers/food/snacks/meat,
+/obj/item/reagent_containers/food/snacks/meat,
+/obj/item/reagent_containers/food/snacks/meat,
+/obj/item/reagent_containers/food/snacks/meat,
+/obj/item/reagent_containers/food/snacks/meat,
+/obj/item/reagent_containers/food/snacks/meat,
+/obj/item/reagent_containers/food/snacks/meat,
 /turf/simulated/floor/tiled/freezer,
 /area/virtual_reality/yacht)
 "gQ" = (
@@ -2288,32 +2288,32 @@
 /area/virtual_reality/yacht)
 "gW" = (
 /obj/structure/closet/crate/freezer,
-/obj/item/weapon/reagent_containers/food/snacks/sliceable/cheesewheel,
-/obj/item/weapon/reagent_containers/food/snacks/sliceable/cheesewheel,
-/obj/item/weapon/reagent_containers/food/snacks/sliceable/cheesewheel,
-/obj/item/weapon/reagent_containers/food/snacks/sliceable/cheesewheel,
-/obj/item/weapon/reagent_containers/food/snacks/sliceable/cheesewheel,
-/obj/item/weapon/reagent_containers/food/snacks/cheesewedge,
-/obj/item/weapon/reagent_containers/food/snacks/cheesewedge,
-/obj/item/weapon/reagent_containers/food/snacks/cheesewedge,
-/obj/item/weapon/reagent_containers/food/snacks/cheesewedge,
-/obj/item/weapon/reagent_containers/food/snacks/cheesewedge,
-/obj/item/weapon/reagent_containers/food/snacks/cheesewedge,
-/obj/item/weapon/reagent_containers/food/snacks/cheesewedge,
-/obj/item/weapon/reagent_containers/food/snacks/cheesewedge,
-/obj/item/weapon/reagent_containers/food/snacks/cheesewedge,
+/obj/item/reagent_containers/food/snacks/sliceable/cheesewheel,
+/obj/item/reagent_containers/food/snacks/sliceable/cheesewheel,
+/obj/item/reagent_containers/food/snacks/sliceable/cheesewheel,
+/obj/item/reagent_containers/food/snacks/sliceable/cheesewheel,
+/obj/item/reagent_containers/food/snacks/sliceable/cheesewheel,
+/obj/item/reagent_containers/food/snacks/cheesewedge,
+/obj/item/reagent_containers/food/snacks/cheesewedge,
+/obj/item/reagent_containers/food/snacks/cheesewedge,
+/obj/item/reagent_containers/food/snacks/cheesewedge,
+/obj/item/reagent_containers/food/snacks/cheesewedge,
+/obj/item/reagent_containers/food/snacks/cheesewedge,
+/obj/item/reagent_containers/food/snacks/cheesewedge,
+/obj/item/reagent_containers/food/snacks/cheesewedge,
+/obj/item/reagent_containers/food/snacks/cheesewedge,
 /turf/simulated/floor/tiled/freezer,
 /area/virtual_reality/yacht)
 "gX" = (
-/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/vegetablepizza,
-/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/vegetablepizza,
-/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/vegetablepizza,
-/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/margherita,
-/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/margherita,
-/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/margherita,
-/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/meatpizza,
-/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/meatpizza,
-/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/meatpizza,
+/obj/item/reagent_containers/food/snacks/sliceable/pizza/vegetablepizza,
+/obj/item/reagent_containers/food/snacks/sliceable/pizza/vegetablepizza,
+/obj/item/reagent_containers/food/snacks/sliceable/pizza/vegetablepizza,
+/obj/item/reagent_containers/food/snacks/sliceable/pizza/margherita,
+/obj/item/reagent_containers/food/snacks/sliceable/pizza/margherita,
+/obj/item/reagent_containers/food/snacks/sliceable/pizza/margherita,
+/obj/item/reagent_containers/food/snacks/sliceable/pizza/meatpizza,
+/obj/item/reagent_containers/food/snacks/sliceable/pizza/meatpizza,
+/obj/item/reagent_containers/food/snacks/sliceable/pizza/meatpizza,
 /turf/simulated/floor/tiled/freezer,
 /area/virtual_reality/yacht)
 "gY" = (
@@ -2321,7 +2321,7 @@
 /obj/machinery/door/window/northright{
 	name = "Kitchen"
 	},
-/obj/item/weapon/reagent_containers/food/snacks/sugarcookie,
+/obj/item/reagent_containers/food/snacks/sugarcookie,
 /turf/simulated/floor/tiled/white,
 /area/virtual_reality/yacht)
 "gZ" = (
@@ -2332,9 +2332,9 @@
 /area/virtual_reality/yacht)
 "ha" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/reagent_containers/food/condiment/small/saltshaker,
-/obj/item/weapon/material/kitchen/utensil/fork,
-/obj/item/weapon/material/kitchen/utensil/spoon,
+/obj/item/reagent_containers/food/condiment/small/saltshaker,
+/obj/item/material/kitchen/utensil/fork,
+/obj/item/material/kitchen/utensil/spoon,
 /turf/simulated/floor/wood,
 /area/virtual_reality/yacht)
 

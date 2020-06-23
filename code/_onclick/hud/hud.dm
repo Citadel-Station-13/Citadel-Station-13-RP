@@ -177,7 +177,7 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	var/action_buttons_hidden = 0
 	var/list/slot_info
 
-datum/hud/New(mob/owner)
+/datum/hud/New(mob/owner)
 	mymob = owner
 	instantiate()
 	..()
@@ -304,8 +304,6 @@ datum/hud/New(mob/owner)
 		mymob.instantiate_hud(src)
 	else if(isalien(mymob))
 		larva_hud()
-	else if(isslime(mymob))
-		slime_hud()
 	else if(isAI(mymob))
 		ai_hud()
 	else if(isobserver(mymob))
@@ -322,11 +320,11 @@ datum/hud/New(mob/owner)
 	set hidden = 1
 
 	if(!hud_used)
-		usr << "<span class='warning'>This mob type does not use a HUD.</span>"
+		to_chat(usr, "<span class='warning'>This mob type does not use a HUD.</span>")
 		return
 
 	if(!ishuman(src))
-		usr << "<span class='warning'>Inventory hiding is currently only supported for human mobs, sorry.</span>"
+		to_chat(usr, "<span class='warning'>Inventory hiding is currently only supported for human mobs, sorry.</span>")
 		return
 
 	if(!client) return

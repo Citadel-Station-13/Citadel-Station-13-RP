@@ -1,4 +1,3 @@
-#define GOONCHAT_ENABLED FALSE
 
 /*********************************
 For the main html chat area
@@ -111,7 +110,7 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 	sendClientData()
 
 	//do not convert to to_chat()
-	owner << "<span class=\"userdanger\">Failed to load fancy chat, reverting to old chat. Certain features won't work.</span>"
+	to_chat(owner, "<span class=\"userdanger\">Failed to load fancy chat, reverting to old chat. Certain features won't work.</span>")
 
 /datum/chatOutput/proc/showChat()
 	winset(owner, "output", "is-visible=false")
@@ -218,7 +217,7 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 		return
 
 	if(target == world)
-		target = clients
+		target = GLOB.clients
 
 	var/original_message = message
 	//Some macros remain in the string even after parsing and fuck up the eventual output
@@ -230,7 +229,7 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 
 	if(islist(target))
 		// Do the double-encoding outside the loop to save nanoseconds
-#if GOONCHAT_ENABLED
+#ifdef GOONCHAT_ENABLED
 		var/twiceEncoded = url_encode(url_encode(message))
 #endif
 		for(var/I in target)
@@ -242,7 +241,7 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 			//Send it to the old style output window.
 			SEND_TEXT(C, original_message)
 
-#if GOONCHAT_ENABLED
+#ifdef GOONCHAT_ENABLED
 			if(!C.chatOutput || C.chatOutput.broken) // A player who hasn't updated his skin file.
 				continue
 
@@ -262,7 +261,7 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 		//Send it to the old style output window.
 		SEND_TEXT(C, original_message)
 
-#if GOONCHAT_ENABLED
+#ifdef GOONCHAT_ENABLED
 		if(!C.chatOutput || C.chatOutput.broken) // A player who hasn't updated his skin file.
 			return
 

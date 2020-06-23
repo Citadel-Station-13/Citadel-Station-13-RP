@@ -13,11 +13,11 @@
 
 /datum/talking_atom/proc/init()
 	if(holder_atom)
-		processing_objects.Add(src)
+		START_PROCESSING(SSobj, src)
 
 /datum/talking_atom/process()
 	if(!holder_atom)
-		processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 
 	else if(heard_words.len >= 1 && world.time > last_talk_time + talk_interval && prob(talk_chance))
 		SaySomething()
@@ -60,10 +60,10 @@
 		spawn(2)
 			SaySomething(pick(seperate))
 
-/*/obj/item/weapon/talkingcrystal/proc/debug()
+/*/obj/item/talkingcrystal/proc/debug()
 	//set src in view()
 	for(var/v in heard_words)
-		world << "[uppertext(v)]"
+		to_chat(world, "[uppertext(v)]")
 		var/list/d = heard_words["[v]"]
 		for(var/X in d)
 			world << "[X]"*/
@@ -118,5 +118,5 @@
 			listening|=M
 
 	for(var/mob/M in listening)
-		M << "\icon[holder_atom] <b>[holder_atom]</b> reverberates, \"<font color='blue'>[msg]</font>\""
+		to_chat(M, "\icon[holder_atom] <b>[holder_atom]</b> reverberates, \"<font color='blue'>[msg]</font>\"")
 	last_talk_time = world.time

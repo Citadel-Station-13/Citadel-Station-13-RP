@@ -1,16 +1,4 @@
-/client/var/inquisitive_ghost = 1
-/mob/observer/dead/verb/toggle_inquisition() // warning: unexpected inquisition
-	set name = "Toggle Inquisitiveness"
-	set desc = "Sets whether your ghost examines everything on click by default"
-	set category = "Ghost"
-	if(!client) return
-	client.inquisitive_ghost = !client.inquisitive_ghost
-	if(client.inquisitive_ghost)
-		src << "<span class='notice'>You will now examine everything you click on.</span>"
-	else
-		src << "<span class='notice'>You will no longer examine things you click on.</span>"
-
-/mob/observer/dead/DblClickOn(var/atom/A, var/params)
+/mob/observer/dead/DblClickOn(atom/A, params)
 	if(client.buildmode)
 		build_click(src, client.buildmode, params, A)
 		return
@@ -20,16 +8,33 @@
 			return
 
 	// Things you might plausibly want to follow
-	if(istype(A,/atom/movable))
+	if(ismovable(A))
 		ManualFollow(A)
+
 	// Otherwise jump
-	else
-		following = null
+	else if(A.loc)
 		forceMove(get_turf(A))
+//		update_parallax_contents()
+
+/client/var/inquisitive_ghost = 1
+/mob/observer/dead/verb/toggle_inquisition() // warning: unexpected inquisition
+	set name = "Toggle Inquisitiveness"
+	set desc = "Sets whether your ghost examines everything on click by default"
+	set category = "Ghost"
+	if(!client) return
+	client.inquisitive_ghost = !client.inquisitive_ghost
+	if(client.inquisitive_ghost)
+		to_chat(src, "<span class='notice'>You will now examine everything you click on.</span>")
+	else
+		to_chat(src, "<span class='notice'>You will no longer examine things you click on.</span>")
 
 /mob/observer/dead/ClickOn(var/atom/A, var/params)
 	if(client.buildmode)
 		build_click(src, client.buildmode, params, A)
+		return
+	var/list/modifiers = params2list(params)
+	if(modifiers["shift"] && modifiers["middle"])
+		ShiftMiddleClickOn(A)
 		return
 	if(!canClick()) return
 	setClickCooldown(4)
@@ -61,13 +66,13 @@
 	if(awaygate)
 		user.loc = awaygate.loc
 	else
-		user << "[src] has no destination."
+		to_chat(user, "[src] has no destination.")
 
 /obj/machinery/gateway/centeraway/attack_ghost(mob/user as mob)
 	if(stationgate)
 		user.loc = stationgate.loc
 	else
-		user << "[src] has no destination."
+		to_chat(user, "[src] has no destination.")
 
 // -------------------------------------------
 // This was supposed to be used by adminghosts

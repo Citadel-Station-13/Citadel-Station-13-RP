@@ -6,14 +6,14 @@
 	not true mind control, but merely pheromone synthesis for living animals, and electronic hacking for simple robots.  The green web \
 	around the entity is merely a hologram used to allow the user to know if the creature is safe or not."
 	cost = 100
-	obj_path = /obj/item/weapon/spell/control
+	obj_path = /obj/item/spell/control
 	ability_icon_state = "tech_control"
 	category = UTILITY_SPELLS
 
 /mob/living/carbon/human/proc/technomancer_control()
-	place_spell_in_hand(/obj/item/weapon/spell/control)
+	place_spell_in_hand(/obj/item/spell/control)
 
-/obj/item/weapon/spell/control
+/obj/item/spell/control
 	name = "control"
 	icon_state = "control"
 	desc = "Now you can command your own army!"
@@ -21,105 +21,82 @@
 	aspect = ASPECT_BIOMED //Not sure if this should be something else.
 	var/image/control_overlay = null
 	var/list/controlled_mobs = list()
-	var/list/allowed_mobs = list(
-		/mob/living/bot,
-		/mob/living/simple_animal/cat,
-		/mob/living/simple_animal/chick,
-		/mob/living/simple_animal/chicken,
-		/mob/living/simple_animal/corgi,
-		/mob/living/simple_animal/cow,
-		/mob/living/simple_animal/crab,
-		/mob/living/simple_animal/lizard,
-		/mob/living/simple_animal/mouse,
-		/mob/living/simple_animal/parrot,
-		/mob/living/simple_animal/slime,
-//		/mob/living/simple_animal/adultslime,
-		/mob/living/simple_animal/tindalos,
-		/mob/living/simple_animal/yithian,
-		/mob/living/simple_animal/hostile/scarybat,
-		/mob/living/simple_animal/hostile/viscerator,
-		/mob/living/simple_animal/hostile/malf_drone,
-		/mob/living/simple_animal/hostile/giant_spider,
-		/mob/living/simple_animal/hostile/hivebot,
-		/mob/living/simple_animal/retaliate/diyaab, //Doubt these will get used but might as well,
-		/mob/living/simple_animal/hostile/savik,
-		/mob/living/simple_animal/hostile/shantak
-		)
+	var/allowed_mob_classes = MOB_CLASS_ANIMAL|MOB_CLASS_SYNTHETIC
 
 //This unfortunately is gonna be rather messy due to the various mobtypes involved.
-/obj/item/weapon/spell/control/proc/select(var/mob/living/L)
-	if(!(is_type_in_list(L, allowed_mobs)))
-		return 0
+/obj/item/spell/control/proc/select(var/mob/living/L)
+	if(!(L.mob_class & allowed_mob_classes))
+		return FALSE
 
-	if(istype(L, /mob/living/simple_animal))
-		var/mob/living/simple_animal/SA = L
-		SA.ai_inactive = 1
-		SA.friends |= src.owner
-		SA.stance = STANCE_IDLE
+	if(!L.has_AI())
+		return FALSE
 
-	L.overlays |= control_overlay
+	var/datum/ai_holder/AI = L.ai_holder
+	AI.hostile = FALSE // The Technomancer chooses the target, not the AI.
+	AI.retaliate = TRUE
+	AI.wander = FALSE
+	AI.forget_everything()
+
+	if(istype(L, /mob/living/simple_mob))
+		var/mob/living/simple_mob/SM = L
+		SM.friends |= src.owner
+
+	L.add_overlay(control_overlay, TRUE)
 	controlled_mobs |= L
 
-/obj/item/weapon/spell/control/proc/deselect(var/mob/living/L)
+/obj/item/spell/control/proc/deselect(var/mob/living/L)
 	if(!(L in controlled_mobs))
-		return 0
+		return FALSE
 
-	if(istype(L, /mob/living/simple_animal))
-		var/mob/living/simple_animal/SA = L
-		SA.ai_inactive = 1
-		if(istype(SA, /mob/living/simple_animal/hostile))
-			var/mob/living/simple_animal/hostile/SAH = SA
-			SAH.friends.Remove(owner)
+	if(L.has_AI())
+		var/datum/ai_holder/AI = L.ai_holder
+		AI.hostile = initial(AI.hostile)
+		AI.retaliate = initial(AI.retaliate)
+		AI.wander = initial(AI.wander)
+		AI.forget_everything()
 
-	L.overlays.Remove(control_overlay)
+	if(istype(L, /mob/living/simple_mob))
+		var/mob/living/simple_mob/SM = L
+		SM.friends -= owner
+
+	L.cut_overlay(control_overlay, TRUE)
 	controlled_mobs.Remove(L)
 
-/obj/item/weapon/spell/control/proc/move_all(turf/T)
-	for(var/mob/living/living in controlled_mobs)
-		if(living.stat)
-			deselect(living)
-			continue
-		if(istype(living, /mob/living/simple_animal))
-			var/mob/living/simple_animal/SA = living
-			SA.target_mob = null
-			SA.stance = STANCE_IDLE
-			walk_towards(SA,T,SA.speed)
-		else
-			walk_towards(living,T,5)
-
-/obj/item/weapon/spell/control/proc/attack_all(mob/target)
+/obj/item/spell/control/proc/move_all(turf/T)
 	for(var/mob/living/L in controlled_mobs)
-		if(L.stat)
+		if(!L.has_AI() || L.stat)
 			deselect(L)
 			continue
-		if(istype(L, /mob/living/simple_animal/hostile))
-			var/mob/living/simple_animal/hostile/SAH
-			SAH.target_mob = target
-		else if(istype(L, /mob/living/bot))
-			var/mob/living/bot/B = L
-			B.UnarmedAttack(L)
+		L.ai_holder.give_destination(T, 0, TRUE)
 
-/obj/item/weapon/spell/control/New()
+/obj/item/spell/control/proc/attack_all(mob/target)
+	for(var/mob/living/L in controlled_mobs)
+		if(!L.has_AI() || L.stat)
+			deselect(L)
+			continue
+		L.ai_holder.give_target(target)
+
+/obj/item/spell/control/Initialize()
 	control_overlay = image('icons/obj/spells.dmi',"controlled")
-	..()
+	return ..()
 
-/obj/item/weapon/spell/control/Destroy()
-	for(var/mob/living/simple_animal/hostile/SM in controlled_mobs)
-		deselect(SM)
+/obj/item/spell/control/Destroy()
+	for(var/mob/living/L in controlled_mobs)
+		deselect(L)
 	controlled_mobs = list()
 	return ..()
 
-/obj/item/weapon/spell/control/on_use_cast(mob/living/user)
+/obj/item/spell/control/on_use_cast(mob/living/user)
 	if(controlled_mobs.len != 0)
 		var/choice = alert(user,"Would you like to release control of the entities you are controlling?  They won't be friendly \
 		to you anymore if you do this, so be careful.","Release Control?","No","Yes")
 		if(choice == "Yes")
 			for(var/mob/living/L in controlled_mobs)
 				deselect(L)
-			user << "<span class='notice'>You've released control of all entities you had in control.</span>"
+			to_chat(user, "<span class='notice'>You've released control of all entities you had in control.</span>")
 
 
-/obj/item/weapon/spell/control/on_ranged_cast(atom/hit_atom, mob/living/user)
+/obj/item/spell/control/on_ranged_cast(atom/hit_atom, mob/living/user)
 	if(isliving(hit_atom))
 		var/mob/living/L = hit_atom
 		if(L == user && !controlled_mobs.len)
@@ -127,21 +104,24 @@
 			trying to use it on yourself, perhaps you're an exception?  Regardless, nothing happens.</span>"
 			return 0
 
-		if(is_type_in_list(L, allowed_mobs))
+		if(L.mob_class & allowed_mob_classes)
 			if(!(L in controlled_mobs)) //Selecting
 				if(L.client)
-					user << "<span class='danger'>\The [L] seems to resist you!</span>"
+					to_chat(user, "<span class='danger'>\The [L] seems to resist you!</span>")
 					return 0
+				if(!L.has_AI())
+					to_chat(user, span("warning", "\The [L] seems too dim for this to work on them."))
+					return FALSE
 				if(pay_energy(500))
 					select(L)
-					user << "<span class='notice'>\The [L] is now under your (limited) control.</span>"
+					to_chat(user, "<span class='notice'>\The [L] is now under your (limited) control.</span>")
 			else //Deselect them
 				deselect(L)
-				user << "<span class='notice'>You free \the [L] from your grasp.</span>"
+				to_chat(user, "<span class='notice'>You free \the [L] from your grasp.</span>")
 
 		else //Let's attack
 			if(!controlled_mobs.len)
-				user << "<span class='warning'>You have no entities under your control to command.</span>"
+				to_chat(user, "<span class='warning'>You have no entities under your control to command.</span>")
 				return 0
 			if(pay_energy(25 * controlled_mobs.len))
 				attack_all(L)
@@ -155,7 +135,7 @@
 	else if(isturf(hit_atom))
 		var/turf/T = hit_atom
 		if(!controlled_mobs.len)
-			user << "<span class='warning'>You have no entities under your control to command.</span>"
+			to_chat(user, "<span class='warning'>You have no entities under your control to command.</span>")
 			return 0
 		if(pay_energy(10 * controlled_mobs.len))
 			move_all(T)

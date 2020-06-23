@@ -17,7 +17,7 @@
 	endWhen = 1800 // Aproximately 1 hour in master controller ticks, refined by end_time
 
 /datum/event/supply_demand/setup()
-	my_department = "[using_map.company_name] Supply Division" // Can't have company name in initial value (not const)
+	my_department = "[GLOB.using_map.company_name] Supply Division" // Can't have company name in initial value (not const)
 	end_time = world.time + 1 HOUR + (severity * 30 MINUTES)
 	running_demand_events += src
 	// Decide what items are requried!
@@ -41,7 +41,7 @@
 		choose_bar_items(rand(5, 10)) // Really? Well add drinks. If a crew can't even get the bar open they suck.
 
 /datum/event/supply_demand/announce()
-	var/message = "[using_map.company_short] is comparing accounts and the bean counters found our division "
+	var/message = "[GLOB.using_map.company_short] is comparing accounts and the bean counters found our division "
 	if(severity <= EVENT_LEVEL_MUNDANE)
 		message += "is a few items short. "
 	else if(severity == EVENT_LEVEL_MODERATE)
@@ -72,7 +72,7 @@
 	// Check if the crew succeeded or failed!
 	if(required_items.len == 0)
 		// Success!
-		supply_controller.points += 100 * severity
+		SSsupply.points += 100 * severity
 		var/msg = "Great work! With those items you delivered our inventory levels all match up. "
 		msg += "[capitalize(pick(first_names_female))] from accounting will have nothing to complain about. "
 		msg += "I think you'll find a little something in your supply account."
@@ -86,7 +86,7 @@
 			message += req.describe() + "<br>"
 		for (var/obj/machinery/computer/communications/C in machines)
 			if(C.operable())
-				var/obj/item/weapon/paper/P = new /obj/item/weapon/paper( C.loc )
+				var/obj/item/paper/P = new /obj/item/paper( C.loc )
 				P.name = "'[my_department] Mission Summary'"
 				P.info = message
 				P.update_space(P.info)
@@ -206,12 +206,12 @@
 /datum/supply_demand_order/reagent/match_item(var/atom/I)
 	if(!I.reagents)
 		return
-	if(!istype(I, /obj/item/weapon/reagent_containers))
+	if(!istype(I, /obj/item/reagent_containers))
 		return
 	var/amount_to_take = min(I.reagents.get_reagent_amount(reagent_id), qty_need)
 	if(amount_to_take >= 1)
 		I.reagents.remove_reagent(reagent_id, amount_to_take, safety = 1)
-		qty_need = CEILING(qty_need - amount_to_take, 1)
+		qty_need = CEILING((qty_need - amount_to_take), 1)
 		return 1
 	else
 		log_debug("supply_demand event: not taking reagent '[reagent_id]': [amount_to_take]")
@@ -230,7 +230,7 @@
 	var/total_moles = mixture.total_moles
 	var desc = "Canister filled to [round(pressure,0.1)] kPa with gas mixture:\n"
 	for(var/gas in mixture.gas)
-		desc += "<br>- [gas_data.name[gas]]: [round((mixture.gas[gas] / total_moles) * 100)]%\n"
+		desc += "<br>- [GLOB.meta_gas_names[gas]]: [round((mixture.gas[gas] / total_moles) * 100)]%\n"
 	return desc
 
 /datum/supply_demand_order/gas/match_item(var/obj/machinery/portable_atmospherics/canister)
@@ -282,7 +282,7 @@
 	var/list/medicineReagents = list()
 	for(var/path in typesof(/datum/chemical_reaction) - /datum/chemical_reaction)
 		var/datum/chemical_reaction/CR = path // Stupid casting required for reading
-		var/datum/reagent/R = chemical_reagents_list[initial(CR.result)]
+		var/datum/reagent/R = SSchemistry.chemical_reagents[initial(CR.result)]
 		if(R && R.scannable)
 			medicineReagents += R
 	for(var/i in 1 to differentTypes)
@@ -296,7 +296,7 @@
 	var/list/drinkReagents = list()
 	for(var/path in typesof(/datum/chemical_reaction) - /datum/chemical_reaction)
 		var/datum/chemical_reaction/CR = path // Stupid casting required for reading
-		var/datum/reagent/R = chemical_reagents_list[initial(CR.result)]
+		var/datum/reagent/R = SSchemistry.chemical_reagents[initial(CR.result)]
 		if(istype(R, /datum/reagent/drink) || istype(R, /datum/reagent/ethanol))
 			drinkReagents += R
 	for(var/i in 1 to differentTypes)

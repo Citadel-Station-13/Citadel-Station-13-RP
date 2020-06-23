@@ -1,4 +1,4 @@
-/mob/living/simple_animal/hostile/russian
+/mob/living/simple_mob/hostile/russian
 	name = "russian"
 	desc = "For the Motherland!"
 	tt_desc = "E Homo sapiens"
@@ -43,11 +43,11 @@
 	max_n2 = 0
 	unsuitable_atoms_damage = 15
 
-	loot_list = list(/obj/item/weapon/material/knife = 100)
+	loot_list = list(/obj/item/material/knife = 100)
 
 	var/corpse = /obj/effect/landmark/mobcorpse/russian
 
-/mob/living/simple_animal/hostile/russian/ranged
+/mob/living/simple_mob/hostile/russian/ranged
 	icon_state = "russianranged"
 	icon_living = "russianranged"
 
@@ -56,11 +56,11 @@
 	casingtype = /obj/item/ammo_casing/spent
 	projectilesound = 'sound/weapons/Gunshot.ogg'
 
-	loot_list = list(/obj/item/weapon/gun/projectile/revolver/mateba = 100)
+	loot_list = list(/obj/item/gun/projectile/revolver/mateba = 100)
 
 	corpse = /obj/effect/landmark/mobcorpse/russian/ranged
 
-/mob/living/simple_animal/hostile/russian/death()
+/mob/living/simple_mob/hostile/russian/death()
 	..()
 	if(corpse)
 		new corpse (src.loc)

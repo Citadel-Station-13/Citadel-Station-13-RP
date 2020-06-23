@@ -10,7 +10,7 @@
 	icon_state = "tracker"
 	anchored = 1
 	density = 1
-	use_power = 0
+	use_power = USE_POWER_OFF
 
 	var/id = 0
 	var/sun_angle = 0		// sun angle as set by sun datum
@@ -57,7 +57,7 @@
 	if(powernet && (powernet == control.powernet)) //update if we're still in the same powernet
 		control.cdir = angle
 
-/obj/machinery/power/tracker/attackby(var/obj/item/weapon/W, var/mob/user)
+/obj/machinery/power/tracker/attackby(var/obj/item/W, var/mob/user)
 
 	if(W.is_crowbar())
 		playsound(src.loc, 'sound/machines/click.ogg', 50, 1)
@@ -75,7 +75,7 @@
 
 // Tracker Electronic
 
-/obj/item/weapon/tracker_electronics
+/obj/item/tracker_electronics
 
 	name = "tracker electronics"
 	icon = 'icons/obj/doors/door_assembly.dmi'

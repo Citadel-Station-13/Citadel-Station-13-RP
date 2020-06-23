@@ -16,7 +16,7 @@ var/datum/antagonist/ninja/ninjas
 	hard_cap = 1
 	hard_cap_round = 3
 
-	id_type = /obj/item/weapon/card/id/syndicate
+	id_type = /obj/item/card/id/syndicate
 
 /datum/antagonist/ninja/New()
 	..()
@@ -86,7 +86,7 @@ var/datum/antagonist/ninja/ninjas
 		return 0
 	var/directive = generate_ninja_directive("heel")
 	player.store_memory("<B>Directive:</B> <span class='danger'>[directive]</span><br>")
-	player << "<b>Remember your directive:</b> [directive]."
+	to_chat(player, "<b>Remember your directive:</b> [directive].")
 
 /datum/antagonist/ninja/update_antag_mob(var/datum/mind/player)
 	..()
@@ -103,13 +103,13 @@ var/datum/antagonist/ninja/ninjas
 	if(!..())
 		return 0
 
-	var/obj/item/device/radio/R = new /obj/item/device/radio/headset(player)
+	var/obj/item/radio/R = new /obj/item/radio/headset(player)
 	player.equip_to_slot_or_del(R, slot_l_ear)
 	player.equip_to_slot_or_del(new /obj/item/clothing/under/color/black(player), slot_w_uniform)
-	player.equip_to_slot_or_del(new /obj/item/device/flashlight(player), slot_belt)
+	player.equip_to_slot_or_del(new /obj/item/flashlight(player), slot_belt)
 	create_id("Infiltrator", player)
 
-	var/obj/item/weapon/rig/light/ninja/ninjasuit = new(get_turf(player))
+	var/obj/item/rig/light/ninja/ninjasuit = new(get_turf(player))
 	ninjasuit.seal_delay = 0
 	player.put_in_hands(ninjasuit)
 	player.equip_to_slot_or_del(ninjasuit,slot_back)
@@ -117,8 +117,8 @@ var/datum/antagonist/ninja/ninjas
 		ninjasuit.toggle_seals(src,1)
 		ninjasuit.seal_delay = initial(ninjasuit.seal_delay)
 
-	if(istype(player.back,/obj/item/weapon/rig))
-		var/obj/item/weapon/rig/rig = player.back
+	if(istype(player.back,/obj/item/rig))
+		var/obj/item/rig/rig = player.back
 		if(rig.air_supply)
 			player.internal = rig.air_supply
 
@@ -126,10 +126,10 @@ var/datum/antagonist/ninja/ninjas
 		if(player.internal)
 			player.internals.icon_state = "internal1"
 		else
-			player << "<span class='danger'>You forgot to turn on your internals! Quickly, toggle the valve!</span>"
+			to_chat(player, "<span class='danger'>You forgot to turn on your internals! Quickly, toggle the valve!</span>")
 
 /datum/antagonist/ninja/proc/generate_ninja_directive(side)
-	var/directive = "[side=="face"?"[using_map.company_name]":"A criminal syndicate"] is your employer. "//Let them know which side they're on.
+	var/directive = "[side=="face"?"[GLOB.using_map.company_name]":"A criminal syndicate"] is your employer. "//Let them know which side they're on.
 	switch(rand(1,19))
 		if(1)
 			directive += "The Spider Clan must not be linked to this operation. Remain hidden and covert when possible."
@@ -140,7 +140,7 @@ var/datum/antagonist/ninja/ninjas
 		if(4)
 			directive += "The Spider Clan absolutely cannot be linked to this operation. Eliminate witnesses at your discretion."
 		if(5)
-			directive += "We are currently negotiating with [using_map.company_name] [using_map.boss_name]. Prioritize saving human lives over ending them."
+			directive += "We are currently negotiating with [GLOB.using_map.company_name] [GLOB.using_map.boss_name]. Prioritize saving human lives over ending them."
 		if(6)
 			directive += "We are engaged in a legal dispute over [station_name()]. If a laywer is present on board, force their cooperation in the matter."
 		if(7)
@@ -148,7 +148,7 @@ var/datum/antagonist/ninja/ninjas
 		if(8)
 			directive += "Let no one question the mercy of the Spider Clan. Ensure the safety of all non-essential personnel you encounter."
 		if(9)
-			directive += "A free agent has proposed a lucrative business deal. Implicate [using_map.company_name] involvement in the operation."
+			directive += "A free agent has proposed a lucrative business deal. Implicate [GLOB.using_map.company_name] involvement in the operation."
 		if(10)
 			directive += "Our reputation is on the line. Harm as few civilians and innocents as possible."
 		if(11)
@@ -156,14 +156,14 @@ var/datum/antagonist/ninja/ninjas
 		if(12)
 			directive += "We are currently negotiating with a mercenary leader. Disguise assassinations as suicide or other natural causes."
 		if(13)
-			directive += "Some disgruntled [using_map.company_name] employees have been supportive of our operations. Be wary of any mistreatment by command staff."
+			directive += "Some disgruntled [GLOB.using_map.company_name] employees have been supportive of our operations. Be wary of any mistreatment by command staff."
 		if(14)
 			var/xenorace = pick(SPECIES_UNATHI, SPECIES_TAJ, SPECIES_SKRELL)
 			directive += "A group of [xenorace] radicals have been loyal supporters of the Spider Clan. Favor [xenorace] crew whenever possible."
 		if(15)
 			directive += "The Spider Clan has recently been accused of religious insensitivity. Attempt to speak with the Chaplain and prove these accusations false."
 		if(16)
-			directive += "The Spider Clan has been bargaining with a competing prosthetics manufacturer. Try to shine [using_map.company_name] prosthetics in a bad light."
+			directive += "The Spider Clan has been bargaining with a competing prosthetics manufacturer. Try to shine [GLOB.using_map.company_name] prosthetics in a bad light."
 		if(17)
 			directive += "The Spider Clan has recently begun recruiting outsiders. Consider suitable candidates and assess their behavior amongst the crew."
 		if(18)

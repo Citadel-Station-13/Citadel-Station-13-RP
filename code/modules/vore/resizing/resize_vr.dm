@@ -20,7 +20,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 
 // Define holder_type on types we want to be scoop-able
 /mob/living/carbon/human
-	holder_type = /obj/item/weapon/holder/micro
+	holder_type = /obj/item/holder/micro
 
 // The reverse lookup of player_sizes_list, number to name.
 /proc/player_size_name(var/size_multiplier)
@@ -132,15 +132,15 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 	if(!istype(M))
 		return 0
 	if(isanimal(M))
-		var/mob/living/simple_animal/SA = M
+		var/mob/living/simple_mob/SA = M
 		if(!SA.has_hands)
 			return 0
 	if(M.buckled)
 		to_chat(usr,"<span class='notice'>You have to unbuckle \the [M] before you pick them up.</span>")
 		return 0
 	if(size_diff >= 0.50)
-		holder_type = /obj/item/weapon/holder/micro
-		var/obj/item/weapon/holder/m_holder = get_scooped(M)
+		holder_type = /obj/item/holder/micro
+		var/obj/item/holder/m_holder = get_scooped(M)
 		holder_type = holder_default
 		if (m_holder)
 			return 1
@@ -218,22 +218,28 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 	var/mob/living/carbon/human/H
 	if(ishuman(src))
 		H = src
+	else
+		//If we're not human, can't do the steppy
+		return FALSE
 
 	var/mob/living/carbon/human/Ht
 	if(ishuman(tmob))
 		Ht = tmob
+	else
+		//If they're not human, steppy shouldn't happen
+		return FALSE
 
 	//Depending on intent...
 	switch(a_intent)
 
 		//src stepped on someone with disarm intent
-		if(I_DISARM)
+		if(INTENT_DISARM)
 			// If bigger than them by at least 0.75, move onto them and print message.
 			if((get_effective_size() - tmob.get_effective_size()) >= 0.75)
 				now_pushing = 0
 				forceMove(tmob.loc)
 
-				//Running on I_DISARM
+				//Running on INTENT_DISARM
 				if(m_intent == "run")
 					tmob.resting = 1 //Force them down to the ground.
 
@@ -251,7 +257,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 						to_chat(src,STEP_TEXT_OWNER("<span class='danger'>[tail.msg_owner_disarm_run]</span>"))
 						to_chat(tmob,STEP_TEXT_PREY("<span class='danger'>[tail.msg_prey_disarm_run]</span>"))
 
-				//Walking on I_DISARM
+				//Walking on INTENT_DISARM
 				else
 					//Perform some HALLOSS damage to the smaller.
 					var/size_damage_multiplier = (src.size_multiplier - tmob.size_multiplier)
@@ -276,12 +282,12 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 				//Return true, the sizediff was enough that we handled it.
 				return TRUE
 
-			//Not enough sizediff for I_DISARM to do anything.
+			//Not enough sizediff for INTENT_DISARM to do anything.
 			else
 				return FALSE
 
 		//src stepped on someone with harm intent
-		if(I_HURT)
+		if(INTENT_HARM)
 			// If bigger than them by at least 0.75, move onto them and print message.
 			if((get_effective_size() - tmob.get_effective_size()) >= 0.75)
 				now_pushing = 0
@@ -292,7 +298,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 				var/damage = (rand(1,3)* size_damage_multiplier) //Rand 1-3 multiplied by 1 min or 1.75 max. 1 min 5.25 max damage to each limb.
 				var/calculated_damage = damage/2 //This will sting, but not kill. Does .5 to 2.625 damage, randomly, to each limb.
 
-				//Running on I_HURT
+				//Running on INTENT_HARM
 				if(m_intent == "run")
 
 					//Not a human, or not a taur, generic message only
@@ -313,7 +319,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 						Ht.drip(0.1)
 						add_attack_logs(src,tmob,"Crushed underfoot (run, about [calculated_damage] damage)")
 
-				//Walking on I_HURT
+				//Walking on INTENT_HARM
 				else
 					//Multiplies the above damage by 3.5. This means a min of 1.75 damage, or a max of 9.1875. damage to each limb, depending on size and RNG.
 					calculated_damage *= 3.5
@@ -339,12 +345,12 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 				//Return true, the sizediff was enough that we handled it.
 				return TRUE
 
-			//Not enough sizediff for I_HURT to do anything.
+			//Not enough sizediff for INTENT_HARM to do anything.
 			else
 				return FALSE
 
 		//src stepped on someone with grab intent
-		if(I_GRAB)
+		if(INTENT_GRAB)
 			// If bigger than them by at least 0.50, move onto them and print message.
 			if((get_effective_size() - tmob.get_effective_size()) >= 0.50)
 				now_pushing = 0
@@ -382,7 +388,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 				//Return true, the sizediff was enough that we handled it.
 				return TRUE
 
-			//Not enough sizediff for I_GRAB to do anything.
+			//Not enough sizediff for INTENT_GRAB to do anything.
 			else
 				return FALSE
 

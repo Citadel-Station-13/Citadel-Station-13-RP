@@ -1,12 +1,13 @@
 
-var/datum/map/using_map = new USING_MAP_DATUM
+GLOBAL_DATUM_INIT(using_map, /datum/map, new USING_MAP_DATUM)
+
 var/list/all_maps = list()
 
 /hook/startup/proc/initialise_map_list()
 	for(var/type in typesof(/datum/map) - /datum/map)
 		var/datum/map/M
-		if(type == using_map.type)
-			M = using_map
+		if(type == GLOB.using_map.type)
+			M = GLOB.using_map
 			M.setup_map()
 		else
 			M = new type
@@ -30,11 +31,13 @@ var/list/all_maps = list()
 	var/list/contact_levels = list() // Z-levels that can be contacted from the station, for eg announcements
 	var/list/player_levels = list()  // Z-levels a character can typically reach
 	var/list/sealed_levels = list()  // Z-levels that don't allow random transit at edge
+	var/list/xenoarch_exempt_levels = list()	//Z-levels exempt from xenoarch finds and digsites spawning.
 	var/list/empty_levels = null     // Empty Z-levels that may be used for various things (currently used by bluespace jump)
 
 	var/list/map_levels              // Z-levels available to various consoles, such as the crew monitor (when that gets coded in). Defaults to station_levels if unset.
 	var/list/base_turf_by_z = list() // Custom base turf by Z-level. Defaults to world.turf for unlisted Z-levels
 
+	var/list/usable_email_tlds = list("freemail.nt")
 	//This list contains the z-level numbers which can be accessed via space travel and the percentile chances to get there.
 	var/list/accessible_z_levels = list()
 
@@ -57,10 +60,13 @@ var/list/all_maps = list()
 	var/list/holomap_legend_x = list()
 	var/list/holomap_legend_y = list()
 	var/list/meteor_strike_areas	// VOREStation Edit - Areas meteor strikes may choose to hit.
+	var/ai_shell_restricted = FALSE			//VOREStation Addition - are there z-levels restricted?
+	var/ai_shell_allowed_levels = list()	//VOREStation Addition - which z-levels ARE we allowed to visit?
 
 	var/station_name  = "BAD Station"
 	var/station_short = "Baddy"
 	var/dock_name     = "THE PirateBay"
+	var/dock_type     = "station"	//VOREStation Edit - for a list of valid types see the switch block in air_traffic.dm at line 148
 	var/boss_name     = "Captain Roger"
 	var/boss_short    = "Cap'"
 	var/company_name  = "BadMan"
@@ -71,12 +77,16 @@ var/list/all_maps = list()
 	var/shuttle_leaving_dock
 	var/shuttle_called_message
 	var/shuttle_recall_message
+	var/shuttle_name  = "NAS |Hawking|"	//VS ADD
 	var/emergency_shuttle_docked_message
 	var/emergency_shuttle_leaving_dock
 	var/emergency_shuttle_called_message
 	var/emergency_shuttle_recall_message
 
 	var/list/station_networks = list() 		// Camera networks that will show up on the console.
+	var/list/secondary_networks = list()	// Camera networks that exist, but don't show on regular camera monitors.
+
+	var/bot_patrolling = TRUE				// Determines if this map supports automated bot patrols
 
 	var/allowed_spawns = list("Arrivals Shuttle","Gateway", "Cryogenic Storage", "Cyborg Storage")
 
@@ -117,21 +127,18 @@ var/list/all_maps = list()
 
 // Used to apply various post-compile procedural effects to the map.
 /datum/map/proc/refresh_mining_turfs()
-
-	set background = 1
-	set waitfor = 0
-
 	// Update all turfs to ensure everything looks good post-generation. Yes,
 	// it's brute-forcey, but frankly the alternative is a mine turf rewrite.
-	for(var/turf/simulated/mineral/M in turfs) // Ugh.
+	for(var/turf/simulated/mineral/M in world) // Ugh.
 		M.update_icon()
+		CHECK_TICK
 
 /datum/map/proc/get_network_access(var/network)
 	return 0
 
 // By default transition randomly to another zlevel
 /datum/map/proc/get_transit_zlevel(var/current_z_level)
-	var/list/candidates = using_map.accessible_z_levels.Copy()
+	var/list/candidates = GLOB.using_map.accessible_z_levels.Copy()
 	candidates.Remove(num2text(current_z_level))
 
 	if(!candidates.len)
@@ -140,7 +147,7 @@ var/list/all_maps = list()
 
 /datum/map/proc/get_empty_zlevel()
 	if(empty_levels == null)
-		world.maxz++
+		world.increment_max_z()
 		empty_levels = list(world.maxz)
 	return pick(empty_levels)
 
@@ -185,7 +192,7 @@ var/list/all_maps = list()
 	if(flags & MAP_LEVEL_CONTACT) map.contact_levels += z
 	if(flags & MAP_LEVEL_PLAYER) map.player_levels += z
 	if(flags & MAP_LEVEL_SEALED) map.sealed_levels += z
-	if(flags & MAP_LEVEL_XENOARCH_EXEMPT) map.xenoarch_exempt_levels += z	//VOREStation Edit : excluse some z-levels from xenoarch spawns
+	if(flags & MAP_LEVEL_XENOARCH_EXEMPT) map.xenoarch_exempt_levels += z
 	if(flags & MAP_LEVEL_EMPTY)
 		if(!map.empty_levels) map.empty_levels = list()
 		map.empty_levels += z
@@ -209,11 +216,11 @@ var/list/all_maps = list()
 	LIST_NUMERIC_SET(map.holomap_legend_y, z, holomap_legend_y)
 
 /datum/map_z_level/Destroy(var/force)
-	crash_with("Attempt to delete a map_z_level instance [log_info_line(src)]")
+	stack_trace("Attempt to delete a map_z_level instance [log_info_line(src)]")
 	if(!force)
 		return QDEL_HINT_LETMELIVE // No.
-	if (using_map.zlevels["[z]"] == src)
-		using_map.zlevels -= "[z]"
+	if (GLOB.using_map.zlevels["[z]"] == src)
+		GLOB.using_map.zlevels -= "[z]"
 	return ..()
 
 // Access check is of the type requires one. These have been carefully selected to avoid allowing the janitor to see channels he shouldn't

@@ -1,6 +1,6 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:32
 
-//TODO: Make these simple_animals
+//TODO: Make these simple_mobs
 /*	//Commented out as reference for future reproduction methods, or addition later if needed. - Mech
 var/const/MIN_IMPREGNATION_TIME = 100 //time it takes to impregnate someone
 var/const/MAX_IMPREGNATION_TIME = 150
@@ -38,7 +38,7 @@ var/const/MAX_ACTIVE_TIME = 400
 	Attach(M)
 
 /obj/item/clothing/mask/facehugger/New()
-	if(config.aliens_allowed)
+	if(config_legacy.aliens_allowed)
 		..()
 	else
 		qdel(src)
@@ -47,11 +47,11 @@ var/const/MAX_ACTIVE_TIME = 400
 	..(user)
 	switch(stat)
 		if(DEAD,UNCONSCIOUS)
-			user << "<span class='danger'><b>[src] is not moving.</b></span>"
+			to_chat(user, "<span class='danger'><b>[src] is not moving.</b></span>")
 		if(CONSCIOUS)
-			user << "<span class='danger'><b>[src] seems to be active.</b></span>"
+			to_chat(user, "<span class='danger'><b>[src] seems to be active.</b></span>")
 	if (sterile)
-		user << "<span class='danger'><b>It looks like the proboscis has been removed.</b></span>"
+		to_chat(user, "<span class='danger'><b>It looks like the proboscis has been removed.</b></span>")
 	return
 
 /obj/item/clothing/mask/facehugger/attackby(obj/item/I, mob/user)

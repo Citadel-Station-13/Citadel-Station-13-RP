@@ -1,2 +1,2 @@
-/obj/item/device/flash
-	halloss_per_flash = 22
+/obj/item/flash
+	can_break = FALSE // Can the flash break?

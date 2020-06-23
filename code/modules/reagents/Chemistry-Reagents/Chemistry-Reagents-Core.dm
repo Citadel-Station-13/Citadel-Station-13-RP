@@ -159,8 +159,8 @@
 		T.wet_floor(1)
 
 /datum/reagent/water/touch_obj(var/obj/O, var/amount)
-	if(istype(O, /obj/item/weapon/reagent_containers/food/snacks/monkeycube))
-		var/obj/item/weapon/reagent_containers/food/snacks/monkeycube/cube = O
+	if(istype(O, /obj/item/reagent_containers/food/snacks/monkeycube))
+		var/obj/item/reagent_containers/food/snacks/monkeycube/cube = O
 		if(!cube.wrapped)
 			cube.Expand()
 	else
@@ -169,8 +169,8 @@
 /datum/reagent/water/touch_mob(var/mob/living/L, var/amount)
 	if(istype(L))
 		// First, kill slimes.
-		if(istype(L, /mob/living/simple_animal/slime))
-			var/mob/living/simple_animal/slime/S = L
+		if(istype(L, /mob/living/simple_mob/slime))
+			var/mob/living/simple_mob/slime/S = L
 			S.adjustToxLoss(15 * amount)
 			S.visible_message("<span class='warning'>[S]'s flesh sizzles where the water touches it!</span>", "<span class='danger'>Your flesh burns in the water!</span>")
 

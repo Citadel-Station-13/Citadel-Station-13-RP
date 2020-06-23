@@ -1,0 +1,4 @@
+author: "lolman360"
+delete-after: True
+changes: 
+  - balance: "Rebalanced protean resists/siemens, increasing the blobform threshold so they don't blobform after touching a shocked door, and allowed them to store certain items while blobforming (accessories, boots that aren't magboots, gloves that aren't rig gloves)"

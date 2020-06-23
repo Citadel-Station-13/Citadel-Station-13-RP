@@ -3,28 +3,29 @@
 	desc = "This item type is used to spawn random objects at round-start"
 	icon = 'icons/misc/mark.dmi'
 	icon_state = "rup"
-	var/spawn_nothing_percentage = 0 // this variable determines the likelyhood that this random object will not spawn anything
+	/// How likely it is we will spawn nothing.
+	var/spawn_nothing_percentage = 0
+	/// Whether or not we drop on our turf or our loc.
+	var/drop_get_turf = TRUE
 
-// creates a new object and deletes itself
-/obj/random/New()
-	..()
-	spawn()
-		if(istype(src.loc, /obj/structure/loot_pile)) //Spawning from a lootpile is weird, need to wait until we're out of it to do our work.
-			while(istype(src.loc, /obj/structure/loot_pile))
-				sleep(1)
-		if (!prob(spawn_nothing_percentage))
-			spawn_item()
-		qdel(src)
+/obj/random/Initialize(mapload)
+	. = ..()
+	if(!prob(spawn_nothing_percentage))
+		spawn_item()
+	return INITIALIZE_HINT_QDEL
 
 // this function should return a specific item to spawn
 /obj/random/proc/item_to_spawn()
-	return 0
+	return
+
+/obj/random/drop_location()
+	return drop_get_turf? get_turf(src) : ..()
 
 // creates the random item
 /obj/random/proc/spawn_item()
 	var/build_path = item_to_spawn()
 
-	var/atom/A = new build_path(src.loc)
+	var/atom/A = new build_path(drop_location())
 	if(pixel_x || pixel_y)
 		A.pixel_x = pixel_x
 		A.pixel_y = pixel_y
@@ -33,12 +34,12 @@ var/list/random_junk_
 var/list/random_useful_
 /proc/get_random_useful_type()
 	if(!random_useful_)
-		random_useful_ = subtypesof(/obj/item/weapon/pen/crayon)
-		random_useful_ += /obj/item/weapon/pen
-		random_useful_ += /obj/item/weapon/pen/blue
-		random_useful_ += /obj/item/weapon/pen/red
-		random_useful_ += /obj/item/weapon/pen/multi
-		random_useful_ += /obj/item/weapon/storage/box/matches
+		random_useful_ = subtypesof(/obj/item/pen/crayon)
+		random_useful_ += /obj/item/pen
+		random_useful_ += /obj/item/pen/blue
+		random_useful_ += /obj/item/pen/red
+		random_useful_ += /obj/item/pen/multi
+		random_useful_ += /obj/item/storage/box/matches
 		random_useful_ += /obj/item/stack/material/cardboard
 	return pick(random_useful_)
 
@@ -48,14 +49,14 @@ var/list/random_useful_
 	if(prob(70)) // Misc. junk
 		if(!random_junk_)
 			random_junk_ = subtypesof(/obj/item/trash)
-			random_junk_ += typesof(/obj/item/weapon/cigbutt)
+			random_junk_ += typesof(/obj/item/cigbutt)
 			random_junk_ += /obj/effect/decal/cleanable/spiderling_remains
 			random_junk_ += /obj/effect/decal/remains/mouse
 			random_junk_ += /obj/effect/decal/remains/robot
-			random_junk_ += /obj/item/weapon/paper/crumpled
+			random_junk_ += /obj/item/paper/crumpled
 			random_junk_ += /obj/item/inflatable/torn
 			random_junk_ += /obj/effect/decal/cleanable/molten_item
-			random_junk_ += /obj/item/weapon/material/shard
+			random_junk_ += /obj/item/material/shard
 
 			random_junk_ -= /obj/item/trash/plate
 			random_junk_ -= /obj/item/trash/snack_bowl

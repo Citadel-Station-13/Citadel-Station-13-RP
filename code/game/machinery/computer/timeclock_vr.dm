@@ -14,22 +14,23 @@
 	light_power_on = 0.5
 	layer = ABOVE_WINDOW_LAYER
 	density = FALSE
-	circuit = /obj/item/weapon/circuitboard/timeclock
+	circuit = /obj/item/circuitboard/timeclock
 	clicksound = null
 
-	var/obj/item/weapon/card/id/card // Inserted Id card
-	var/obj/item/device/radio/intercom/announce	// Integreated announcer
+	var/obj/item/card/id/card // Inserted Id card
+	var/obj/item/radio/intercom/announce	// Integreated announcer
 
 
-/obj/machinery/computer/timeclock/New()
-	announce = new /obj/item/device/radio/intercom(src)
-	..()
+/obj/machinery/computer/timeclock/Initialize(mapload)
+	. = ..()
+	announce = new /obj/item/radio/intercom(src)
 
 /obj/machinery/computer/timeclock/Destroy()
 	if(card)
 		card.forceMove(get_turf(src))
 		card = null
-	. = ..()
+	QDEL_NULL(announce)
+	return ..()
 
 /obj/machinery/computer/timeclock/update_icon()
 	if(inoperable())
@@ -50,11 +51,11 @@
 		set_light(light_range_on, light_power_on)
 
 /obj/machinery/computer/timeclock/attackby(obj/I, mob/user)
-	if(istype(I, /obj/item/weapon/card/id))
+	if(istype(I, /obj/item/card/id))
 		if(!card && user.unEquip(I))
 			I.forceMove(src)
 			card = I
-			GLOB.nanomanager.update_uis(src)
+			SSnanoui.update_uis(src)
 			update_icon()
 		else if(card)
 			to_chat(user, "<span class='warning'>There is already ID card inside.</span>")
@@ -80,7 +81,7 @@
 	if(card)
 		data["card"] = "[card]"
 		data["assignment"] = card.assignment
-		var/datum/job/job = job_master.GetJob(card.rank)
+		var/datum/job/job = SSjobs.GetJob(card.rank)
 		if (job)
 			data["job_datum"] = list(
 				"title" = job.title,
@@ -94,7 +95,7 @@
 			if(job && job.timeoff_factor < 0) // Currently are Off Duty, so gotta lookup what on-duty jobs are open
 				data["job_choices"] = getOpenOnDutyJobs(user, job.department)
 
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "timeclock_vr.tmpl", capitalize(src.name), 500, 520)
 		ui.set_initial_data(data)
@@ -112,7 +113,7 @@
 			card = null
 		else
 			var/obj/item/I = usr.get_active_hand()
-			if (istype(I, /obj/item/weapon/card/id) && usr.unEquip(I))
+			if (istype(I, /obj/item/card/id) && usr.unEquip(I))
 				I.forceMove(src)
 				card = I
 		update_icon()
@@ -139,7 +140,7 @@
 
 /obj/machinery/computer/timeclock/proc/getOpenOnDutyJobs(var/mob/user, var/department)
 	var/list/available_jobs = list()
-	for(var/datum/job/job in job_master.occupations)
+	for(var/datum/job/job in SSjobs.occupations)
 		if(job && job.is_position_available() && !job.whitelist_only && !jobban_isbanned(user,job.title) && job.player_old_enough(user.client))
 			if(job.department == department && !job.disallow_jobhop && job.timeoff_factor > 0)
 				available_jobs += job.title
@@ -150,14 +151,14 @@
 
 /obj/machinery/computer/timeclock/proc/makeOnDuty(var/newjob)
 	var/datum/job/foundjob = null
-	for(var/datum/job/job in job_master.occupations)
+	for(var/datum/job/job in SSjobs.occupations)
 		if(newjob == job.title)
 			foundjob = job
 			break
 		if(newjob in job.alt_titles)
 			foundjob = job
 			break
-	if(!newjob in getOpenOnDutyJobs(usr, job_master.GetJob(card.rank).department))
+	if(!newjob in getOpenOnDutyJobs(usr, SSjobs.GetJob(card.rank).department))
 		return
 	if(foundjob && card)
 		card.access = foundjob.get_access()
@@ -176,7 +177,7 @@
 
 /obj/machinery/computer/timeclock/proc/makeOffDuty()
 	var/datum/job/foundjob = null
-	for(var/datum/job/job in job_master.occupations)
+	for(var/datum/job/job in SSjobs.occupations)
 		if(card.rank == job.title)
 			foundjob = job
 			break
@@ -186,7 +187,7 @@
 	if(real_dept && real_dept == "Command")
 		real_dept = "Civilian"
 	var/datum/job/ptojob = null
-	for(var/datum/job/job in job_master.occupations)
+	for(var/datum/job/job in SSjobs.occupations)
 		if(job.department == real_dept && job.timeoff_factor < 0)
 			ptojob = job
 			break
@@ -231,10 +232,10 @@
 	else
 		return TRUE
 
-/obj/item/weapon/card/id
+/obj/item/card/id
 	var/last_job_switch
 
-/obj/item/weapon/card/id/New()
+/obj/item/card/id/New()
 	.=..()
 	last_job_switch = world.time
 

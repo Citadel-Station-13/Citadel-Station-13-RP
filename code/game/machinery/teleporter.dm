@@ -3,7 +3,7 @@
 	desc = "Used to control a linked teleportation Hub and Station."
 	icon_keyboard = "teleport_key"
 	icon_screen = "teleport"
-	circuit = /obj/item/weapon/circuitboard/teleporter
+	circuit = /obj/item/circuitboard/teleporter
 	dir = 4
 	var/obj/item/locked = null
 	var/id = null
@@ -14,7 +14,7 @@
 	id = "[rand(1000, 9999)]"
 	..()
 	underlays.Cut()
-	underlays += image('icons/obj/stationobjs.dmi', icon_state = "telecomp-wires")
+	underlays += image('icons/obj/stationobjs_vr.dmi', icon_state = "telecomp-wires")	//VOREStation Edit: different direction for wires to account for dirs
 	return
 
 /obj/machinery/computer/teleporter/Initialize()
@@ -39,8 +39,8 @@
 		hub.com = src
 
 /obj/machinery/computer/teleporter/attackby(I as obj, mob/living/user as mob)
-	if(istype(I, /obj/item/weapon/card/data/))
-		var/obj/item/weapon/card/data/C = I
+	if(istype(I, /obj/item/card/data/))
+		var/obj/item/card/data/C = I
 		if(stat & (NOPOWER|BROKEN) & (C.function != "teleporter"))
 			attack_hand()
 
@@ -69,7 +69,7 @@
 				for(var/obj/machinery/teleport/hub/H in range(1))
 					var/amount = rand(2,5)
 					for(var/i=0;i<amount;i++)
-						new /mob/living/simple_animal/hostile/carp(get_turf(H))
+						new /mob/living/simple_mob/animal/space/carp(get_turf(H))
 				//
 			else
 				for(var/mob/O in hearers(src, null))
@@ -95,11 +95,11 @@
 	var/list/L = list()
 	var/list/areaindex = list()
 
-	for(var/obj/item/device/radio/beacon/R in GLOB.all_beacons)
+	for(var/obj/item/radio/beacon/R in GLOB.all_beacons)
 		var/turf/T = get_turf(R)
 		if(!T)
 			continue
-		if(!(T.z in using_map.player_levels))
+		if(!(T.z in GLOB.using_map.player_levels))
 			continue
 		var/tmpname = T.loc.name
 		if(areaindex[tmpname])
@@ -108,7 +108,7 @@
 			areaindex[tmpname] = 1
 		L[tmpname] = R
 
-	for (var/obj/item/weapon/implant/tracking/I in GLOB.all_tracking_implants)
+	for (var/obj/item/implant/tracking/I in GLOB.all_tracking_implants)
 		if(!I.implanted || !ismob(I.loc))
 			continue
 		else
@@ -171,10 +171,10 @@
 	icon_state = "tele0"
 	dir = 4
 	var/accurate = 0
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 2000
-	circuit = /obj/item/weapon/circuitboard/teleporter_hub
+	circuit = /obj/item/circuitboard/teleporter_hub
 	var/obj/machinery/computer/teleporter/com
 
 /obj/machinery/teleport/hub/New()
@@ -183,14 +183,14 @@
 	underlays += image('icons/obj/stationobjs.dmi', icon_state = "tele-wires")
 
 	component_parts = list()
-	component_parts += new /obj/item/weapon/stock_parts/scanning_module(src)
-	component_parts += new /obj/item/weapon/stock_parts/scanning_module(src)
-	component_parts += new /obj/item/weapon/stock_parts/scanning_module(src)
-	component_parts += new /obj/item/weapon/stock_parts/scanning_module(src)
-	component_parts += new /obj/item/weapon/stock_parts/micro_laser(src)
-	component_parts += new /obj/item/weapon/stock_parts/micro_laser(src)
-	component_parts += new /obj/item/weapon/stock_parts/micro_laser(src)
-	component_parts += new /obj/item/weapon/stock_parts/micro_laser(src)
+	component_parts += new /obj/item/stock_parts/scanning_module(src)
+	component_parts += new /obj/item/stock_parts/scanning_module(src)
+	component_parts += new /obj/item/stock_parts/scanning_module(src)
+	component_parts += new /obj/item/stock_parts/scanning_module(src)
+	component_parts += new /obj/item/stock_parts/micro_laser(src)
+	component_parts += new /obj/item/stock_parts/micro_laser(src)
+	component_parts += new /obj/item/stock_parts/micro_laser(src)
+	component_parts += new /obj/item/stock_parts/micro_laser(src)
 	component_parts += new /obj/item/stack/cable_coil(src, 10)
 	RefreshParts()
 
@@ -218,7 +218,7 @@
 			com.one_time_use = 0
 			com.locked = null
 	else
-		var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(5, 1, src)
 		s.start()
 		accurate = 1
@@ -231,30 +231,30 @@
 	if(istype(M, /obj/effect))
 		qdel(M)
 		return
-	if(istype(M, /obj/item/weapon/disk/nuclear)) // Don't let nuke disks get teleported --NeoFite
+	if(istype(M, /obj/item/disk/nuclear)) // Don't let nuke disks get teleported --NeoFite
 		for(var/mob/O in viewers(M, null))
 			O.show_message(text("<span class='danger'>The [] bounces off of the portal!</span>", M.name), 1)
 		return
 	if(istype(M, /mob/living))
 		var/mob/living/MM = M
-		if(MM.check_contents_for(/obj/item/weapon/disk/nuclear))
-			MM << "<span class='warning'>Something you are carrying seems to be unable to pass through the portal. Better drop it if you want to go through.</span>"
+		if(MM.check_contents_for(/obj/item/disk/nuclear))
+			to_chat(MM, "<span class='warning'>Something you are carrying seems to be unable to pass through the portal. Better drop it if you want to go through.</span>")
 			return
 	var/disky = 0
 	for (var/atom/O in M.contents) //I'm pretty sure this accounts for the maximum amount of container in container stacking. --NeoFite
-		if(istype(O, /obj/item/weapon/storage) || istype(O, /obj/item/weapon/gift))
+		if(istype(O, /obj/item/storage) || istype(O, /obj/item/gift))
 			for (var/obj/OO in O.contents)
-				if(istype(OO, /obj/item/weapon/storage) || istype(OO, /obj/item/weapon/gift))
+				if(istype(OO, /obj/item/storage) || istype(OO, /obj/item/gift))
 					for (var/obj/OOO in OO.contents)
-						if(istype(OOO, /obj/item/weapon/disk/nuclear))
+						if(istype(OOO, /obj/item/disk/nuclear))
 							disky = 1
-				if(istype(OO, /obj/item/weapon/disk/nuclear))
+				if(istype(OO, /obj/item/disk/nuclear))
 					disky = 1
-		if(istype(O, /obj/item/weapon/disk/nuclear))
+		if(istype(O, /obj/item/disk/nuclear))
 			disky = 1
 		if(istype(O, /mob/living))
 			var/mob/living/MM = O
-			if(MM.check_contents_for(/obj/item/weapon/disk/nuclear))
+			if(MM.check_contents_for(/obj/item/disk/nuclear))
 				disky = 1
 	if(disky)
 		for(var/mob/P in viewers(M, null))
@@ -264,25 +264,25 @@
 //Bags of Holding cause bluespace teleportation to go funky. --NeoFite
 	if(istype(M, /mob/living))
 		var/mob/living/MM = M
-		if(MM.check_contents_for(/obj/item/weapon/storage/backpack/holding))
-			MM << "<span class='warning'>The Bluespace interface on your Bag of Holding interferes with the teleport!</span>"
+		if(MM.check_contents_for(/obj/item/storage/backpack/holding))
+			to_chat(MM, "<span class='warning'>The Bluespace interface on your Bag of Holding interferes with the teleport!</span>")
 			precision = rand(1,100)
-	if(istype(M, /obj/item/weapon/storage/backpack/holding))
+	if(istype(M, /obj/item/storage/backpack/holding))
 		precision = rand(1,100)
 	for (var/atom/O in M.contents) //I'm pretty sure this accounts for the maximum amount of container in container stacking. --NeoFite
-		if(istype(O, /obj/item/weapon/storage) || istype(O, /obj/item/weapon/gift))
+		if(istype(O, /obj/item/storage) || istype(O, /obj/item/gift))
 			for (var/obj/OO in O.contents)
-				if(istype(OO, /obj/item/weapon/storage) || istype(OO, /obj/item/weapon/gift))
+				if(istype(OO, /obj/item/storage) || istype(OO, /obj/item/gift))
 					for (var/obj/OOO in OO.contents)
-						if(istype(OOO, /obj/item/weapon/storage/backpack/holding))
+						if(istype(OOO, /obj/item/storage/backpack/holding))
 							precision = rand(1,100)
-				if(istype(OO, /obj/item/weapon/storage/backpack/holding))
+				if(istype(OO, /obj/item/storage/backpack/holding))
 					precision = rand(1,100)
-		if(istype(O, /obj/item/weapon/storage/backpack/holding))
+		if(istype(O, /obj/item/storage/backpack/holding))
 			precision = rand(1,100)
 		if(istype(O, /mob/living))
 			var/mob/living/MM = O
-			if(MM.check_contents_for(/obj/item/weapon/storage/backpack/holding))
+			if(MM.check_contents_for(/obj/item/storage/backpack/holding))
 				precision = rand(1,100)
 
 	var/turf/destturf = get_turf(destination)
@@ -306,7 +306,7 @@
 	M.loc = tmploc
 	sleep(2)
 
-	var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(5, 1, M)
 	s.start()
 	return
@@ -319,10 +319,10 @@
 	dir = 4
 	var/active = 0
 	var/engaged = 0
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 2000
-	circuit = /obj/item/weapon/circuitboard/teleporter_station
+	circuit = /obj/item/circuitboard/teleporter_station
 	var/obj/machinery/teleport/hub/com
 
 /obj/machinery/teleport/station/New()
@@ -331,13 +331,13 @@
 	overlays += image('icons/obj/stationobjs.dmi', icon_state = "controller-wires")
 
 	component_parts = list()
-	component_parts += new /obj/item/weapon/stock_parts/console_screen(src)
-	component_parts += new /obj/item/weapon/stock_parts/capacitor(src)
-	component_parts += new /obj/item/weapon/stock_parts/capacitor(src)
+	component_parts += new /obj/item/stock_parts/console_screen(src)
+	component_parts += new /obj/item/stock_parts/capacitor(src)
+	component_parts += new /obj/item/stock_parts/capacitor(src)
 	component_parts += new /obj/item/stack/cable_coil(src, 10)
 	RefreshParts()
 
-/obj/machinery/teleport/station/attackby(var/obj/item/weapon/W)
+/obj/machinery/teleport/station/attackby(var/obj/item/W)
 	attack_hand()
 
 /obj/machinery/teleport/station/attack_ai()
@@ -356,8 +356,8 @@
 	if(com)
 		com.icon_state = "tele1"
 		use_power(5000)
-		update_use_power(2)
-		com.update_use_power(2)
+		update_use_power(USE_POWER_ACTIVE)
+		com.update_use_power(USE_POWER_ACTIVE)
 		for(var/mob/O in hearers(src, null))
 			O.show_message("<span class='notice'>Teleporter engaged!</span>", 2)
 	add_fingerprint(usr)
@@ -371,8 +371,8 @@
 	if(com)
 		com.icon_state = "tele0"
 		com.accurate = 0
-		com.update_use_power(1)
-		update_use_power(1)
+		com.update_use_power(USE_POWER_IDLE)
+		update_use_power(USE_POWER_IDLE)
 		for(var/mob/O in hearers(src, null))
 			O.show_message("<span class='notice'>Teleporter disengaged!</span>", 2)
 	add_fingerprint(usr)

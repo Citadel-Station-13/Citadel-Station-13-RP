@@ -24,7 +24,7 @@
 	var/do_glow = 1
 
 	speed = -1
-	a_intent = I_HURT
+	a_intent = INTENT_HARM
 	stop_automated_movement = 1
 
 	status_flags = CANPUSH
@@ -78,8 +78,8 @@
 	if(!path || !ispath(path))
 		return 0
 
-	//var/obj/item/weapon/spell/S = new path(src)
-	var/obj/item/weapon/spell/construct/S = new path(src)
+	//var/obj/item/spell/S = new path(src)
+	var/obj/item/spell/construct/S = new path(src)
 
 	//No hands needed for innate casts.
 	if(S.cast_methods & CAST_INNATE)
@@ -87,12 +87,12 @@
 			S.on_innate_cast(src)
 
 	if(l_hand && r_hand) //Make sure our hands aren't full.
-		if(istype(r_hand, /obj/item/weapon/spell)) //If they are full, perhaps we can still be useful.
-			var/obj/item/weapon/spell/r_spell = r_hand
+		if(istype(r_hand, /obj/item/spell)) //If they are full, perhaps we can still be useful.
+			var/obj/item/spell/r_spell = r_hand
 			if(r_spell.aspect == ASPECT_CHROMATIC) //Check if we can combine the new spell with one in our hands.
 				r_spell.on_combine_cast(S, src)
-		else if(istype(l_hand, /obj/item/weapon/spell))
-			var/obj/item/weapon/spell/l_spell = l_hand
+		else if(istype(l_hand, /obj/item/spell))
+			var/obj/item/spell/l_spell = l_hand
 			if(l_spell.aspect == ASPECT_CHROMATIC) //Check the other hand too.
 				l_spell.on_combine_cast(S, src)
 		else //Welp
@@ -131,7 +131,7 @@
 		add_glow()
 
 /mob/living/simple_animal/construct/death()
-	new /obj/item/weapon/ectoplasm (src.loc)
+	new /obj/item/ectoplasm (src.loc)
 	..(null,"collapses in a shattered heap.")
 	ghostize()
 	qdel(src)
@@ -224,7 +224,7 @@
 		if(!(istype(P, /obj/item/projectile/energy) || istype(P, /obj/item/projectile/beam)))
 			visible_message("<span class='danger'>The [P.name] bounces off of [src]'s shell!</span>", \
 						"<span class='userdanger'>The [P.name] bounces off of [src]'s shell!</span>")
-			new /obj/item/weapon/material/shard/shrapnel(src.loc)
+			new /obj/item/material/shard/shrapnel(src.loc)
 			if(!(P.damage_type == BRUTE || P.damage_type == BURN))
 				projectile_dam_type = BRUTE
 				incoming_damage = round(incoming_damage / 4) //Damage from strange sources is converted to brute for physical projectiles, though severely decreased.

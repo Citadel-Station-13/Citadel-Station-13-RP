@@ -268,12 +268,14 @@
 	var/client_missing = 0		//How long the client has been missing
 	universal_understand = TRUE
 
-	var/obj/item/device/nif/nif
+	var/obj/item/nif/nif
 	var/datum/nifsoft/soulcatcher/soulcatcher
+	var/identifying_gender
 
 /mob/living/carbon/brain/caught_soul/Login()
 	..()
 	plane_holder.set_vis(VIS_AUGMENTED, TRUE)
+	identifying_gender = client.prefs.identifying_gender
 
 /mob/living/carbon/brain/caught_soul/Destroy()
 	if(soulcatcher)
@@ -367,7 +369,7 @@
 			return
 		if (src.client)
 			if (client.prefs.muted & MUTE_IC)
-				src << "<span class='warning'>You cannot send IC messages (muted).</span>"
+				to_chat(src, "<span class='warning'>You cannot send IC messages (muted).</span>")
 				return
 		if (stat)
 			return
@@ -407,7 +409,7 @@
 	real_name = brainmob.real_name	//And the OTHER name
 
 	forceMove(get_turf(parent_human))
-	GLOB.moved_event.register(parent_human, src, /mob/observer/eye/ar_soul/proc/human_moved)
+	RegisterSignal(parent_human, COMSIG_MOVABLE_MOVED, .proc/human_moved)
 
 	//Time to play dressup
 	if(brainmob.client.prefs)
@@ -422,7 +424,7 @@
 
 /mob/observer/eye/ar_soul/Destroy()
 	if(parent_human) //It's POSSIBLE they've been deleted before the NIF somehow
-		GLOB.moved_event.unregister(parent_human, src)
+		UnregisterSignal(parent_human, COMSIG_MOVABLE_MOVED)
 		parent_human = null
 	return ..()
 

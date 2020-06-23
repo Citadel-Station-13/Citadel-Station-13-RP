@@ -18,7 +18,6 @@
 		//OTHER//
 		/////////
 	var/datum/preferences/prefs = null
-	var/move_delay		= 1
 	var/moving			= null
 	var/adminobs		= null
 	var/area			= null
@@ -36,7 +35,7 @@
 		//SECURITY//
 		////////////
 	// comment out the line below when debugging locally to enable the options & messages menu
-	//control_freak = 1
+	//control_freak = CONTROL_FREAK_ALL
 
 	var/received_irc_pm = -99999
 	var/irc_admin			//IRC admin that spoke with them last.

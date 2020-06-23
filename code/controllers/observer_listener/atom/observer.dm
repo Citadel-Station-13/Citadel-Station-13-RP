@@ -4,11 +4,6 @@
 	var/list/observer_events
 
 /atom/Destroy()
-	var/list/destroy_listeners = get_listener_list_from_event(OBSERVER_EVENT_DESTROY)
-	if(destroy_listeners)
-		for(var/destroy_listener in destroy_listeners)
-			call(destroy_listener, destroy_listeners[destroy_listener])(src)
-
 	for(var/list/listeners in observer_events)
 		listeners.Cut()
 

@@ -32,7 +32,7 @@
 
 /obj/machinery/appliance/grill/Initialize()
 	. = ..()
-	cooking_objs += new /datum/cooking_item(new /obj/item/weapon/reagent_containers/cooking_container(src))
+	cooking_objs += new /datum/cooking_item(new /obj/item/reagent_containers/cooking_container(src))
 	cooking = 0
 
 /obj/machinery/appliance/grill/has_space(var/obj/item/I)
@@ -54,7 +54,7 @@
 	var/list/menuoptions = list()
 	if (CI.container)
 		if (!CI.container.check_contents())
-			user << "There's nothing in the [src] you can remove!"
+			to_chat(user, "There's nothing in the [src] you can remove!")
 			return
 
 		for (var/obj/item/I in CI.container)

@@ -23,11 +23,11 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/swordcave)
 "h" = (
-/mob/living/simple_animal/hostile/faithless/cult,
+/mob/living/simple_mob/faithless/cult,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/swordcave)
 "i" = (
-/obj/item/device/gps/explorer,
+/obj/item/gps/explorer/on,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/swordcave)
 "j" = (
@@ -35,7 +35,11 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/swordcave)
 "k" = (
-/mob/living/simple_animal/hostile/scarybat/cult,
+/mob/living/simple_mob/animal/space/bats,
+/turf/simulated/mineral/floor/ignore_mapgen,
+/area/submap/cave/swordcave)
+"l" = (
+/mob/living/simple_mob/animal/space/bats/cult,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/swordcave)
 
@@ -356,7 +360,7 @@ c
 c
 c
 c
-k
+l
 c
 c
 c
@@ -535,7 +539,7 @@ c
 c
 c
 c
-k
+l
 c
 c
 c
@@ -586,7 +590,7 @@ d
 c
 c
 c
-k
+l
 c
 c
 c
@@ -663,7 +667,7 @@ e
 c
 c
 c
-k
+l
 c
 c
 c
@@ -841,7 +845,7 @@ c
 c
 c
 c
-k
+l
 c
 c
 d
@@ -934,7 +938,7 @@ c
 c
 c
 c
-k
+l
 c
 c
 c
@@ -1009,7 +1013,7 @@ d
 c
 c
 c
-k
+l
 c
 c
 c
@@ -1192,7 +1196,7 @@ c
 c
 c
 c
-k
+l
 c
 c
 c
@@ -1223,7 +1227,7 @@ e
 c
 c
 c
-k
+l
 c
 c
 c
@@ -1439,7 +1443,7 @@ c
 c
 c
 c
-k
+l
 c
 c
 c
@@ -1479,7 +1483,7 @@ d
 c
 c
 c
-k
+l
 c
 c
 c

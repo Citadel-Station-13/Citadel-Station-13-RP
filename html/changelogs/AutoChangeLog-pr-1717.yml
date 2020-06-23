@@ -1,0 +1,6 @@
+author: "Enzo-Leon"
+delete-after: True
+changes: 
+  - rscadd: "Re-added foam fireaxe."
+  - bugfix: "Fixed the Fireaxe to no longer spawn as a steel fireaxe in the brig. It will now show up and handle as a proper foam fireaxe."
+  - code_imp: "updated twohanded.cm files to properly handle and spawn a correct foam fireaxe in the game when needed."

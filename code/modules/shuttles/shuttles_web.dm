@@ -129,12 +129,12 @@
 			return
 		autopilot = TRUE
 		autopilot_delay = initial(autopilot_delay)
-		shuttle_controller.process_shuttles += src
+		SSshuttle.process_shuttles += src
 	else
 		if(!autopilot)
 			return
 		autopilot = FALSE
-		shuttle_controller.process_shuttles -= src
+		SSshuttle.process_shuttles -= src
 
 /datum/shuttle/web_shuttle/proc/autopilot_say(message) // Makes the autopilot 'talk' to the passengers.
 	var/padded_message = "<span class='game say'><span class='name'>shuttle autopilot</span> states, \"[message]\"</span>"
@@ -147,7 +147,7 @@
 	var/new_name = input(user, "Please enter a new name for this vessel. Note that you can only set its name once, so choose wisely.", "Rename Shuttle", visible_name) as null|text
 	var/sanitized_name = sanitizeName(new_name, MAX_NAME_LEN, TRUE)
 	if(sanitized_name)
-		can_rename = FALSE
+		//can_rename = FALSE //VOREStation Removal
 		to_chat(user, "<span class='notice'>You've renamed the vessel to '[sanitized_name]'.</span>")
 		message_admins("[key_name_admin(user)] renamed shuttle '[visible_name]' to '[sanitized_name]'.")
 		visible_name = sanitized_name
@@ -186,7 +186,7 @@
 			log_debug("[my_area] shuttle computer couldn't find [lost] sensor!")
 
 /obj/machinery/computer/shuttle_control/web/attackby(obj/I, mob/user)
-	var/datum/shuttle/web_shuttle/shuttle = shuttle_controller.shuttles[shuttle_tag]
+	var/datum/shuttle/web_shuttle/shuttle = SSshuttle.shuttles[shuttle_tag]
 	if(shuttle && istype(I,/obj/item/clothing/head/pilot))
 		var/obj/item/clothing/head/pilot/H = I
 		H.shuttle_comp = src
@@ -208,7 +208,7 @@
 
 	/*
 	// If nanoUI falls over and you want a non-nanoUI UI, feel free to uncomment this section.
-	var/datum/shuttle/web_shuttle/WS = shuttle_controller.shuttles[shuttle_tag]
+	var/datum/shuttle/web_shuttle/WS = SSshuttle.shuttles[shuttle_tag]
 	if(!istype(WS))
 		message_admins("ERROR: Shuttle computer ([src]) ([shuttle_tag]) could not find their shuttle in the shuttles list.")
 		return
@@ -272,7 +272,7 @@
 /obj/machinery/computer/shuttle_control/web/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/data[0]
 	var/list/routes[0]
-	var/datum/shuttle/web_shuttle/shuttle = shuttle_controller.shuttles[shuttle_tag]
+	var/datum/shuttle/web_shuttle/shuttle = SSshuttle.shuttles[shuttle_tag]
 	if(!istype(shuttle))
 		return
 
@@ -350,7 +350,7 @@
 		"sensors" = sensors
 	)
 
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 
 	if(!ui)
 		ui = new(user, src, ui_key, "flight.tmpl", "[shuttle.visible_name] Flight Computer", 500, 500)
@@ -366,7 +366,7 @@
 	usr.set_machine(src)
 	src.add_fingerprint(usr)
 
-	var/datum/shuttle/web_shuttle/WS = shuttle_controller.shuttles[shuttle_tag]
+	var/datum/shuttle/web_shuttle/WS = SSshuttle.shuttles[shuttle_tag]
 	if(!istype(WS))
 		message_admins("ERROR: Shuttle computer ([src]) ([shuttle_tag]) could not find their shuttle in the shuttles list.")
 		return
@@ -375,7 +375,7 @@
 		ui_interact(usr)
 
 	if (WS.moving_status != SHUTTLE_IDLE)
-		usr << "<font color='blue'>[WS.visible_name] is busy moving.</font>"
+		to_chat(usr, "<font color='blue'>[WS.visible_name] is busy moving.</font>")
 		return
 
 	if(href_list["rename_command"])
@@ -417,7 +417,7 @@
 			return
 
 		if((WS.last_move + WS.cooldown) > world.time)
-			usr << "<font color='red'>The ship's drive is inoperable while the engines are charging.</font>"
+			to_chat(usr, "<font color='red'>The ship's drive is inoperable while the engines are charging.</font>")
 			return
 
 		var/index = text2num(href_list["traverse"])
@@ -474,11 +474,11 @@
 
 /obj/shuttle_connector/Initialize()
 	. = ..()
-	SSshuttles.OnDocksInitialized(CALLBACK(src, .proc/setup_routes))
+	SSshuttle.OnDocksInitialized(CALLBACK(src, .proc/setup_routes))
 
 /obj/shuttle_connector/proc/setup_routes()
 	if(destinations && shuttle_name)
-		var/datum/shuttle/web_shuttle/ES = shuttle_controller.shuttles[shuttle_name]
+		var/datum/shuttle/web_shuttle/ES = SSshuttle.shuttles[shuttle_name]
 		var/datum/shuttle_web_master/WM = ES.web_master
 
 		for(var/new_dest in destinations)
@@ -514,10 +514,10 @@
 	var/total_moles = environment.total_moles
 
 	if(total_moles)
-		var/o2_level = environment.gas["oxygen"]/total_moles
-		var/n2_level = environment.gas["nitrogen"]/total_moles
-		var/co2_level = environment.gas["carbon_dioxide"]/total_moles
-		var/phoron_level = environment.gas["phoron"]/total_moles
+		var/o2_level = environment.gas[/datum/gas/oxygen]/total_moles
+		var/n2_level = environment.gas[/datum/gas/nitrogen]/total_moles
+		var/co2_level = environment.gas[/datum/gas/carbon_dioxide]/total_moles
+		var/phoron_level = environment.gas[/datum/gas/phoron]/total_moles
 		var/unknown_level =  1-(o2_level+n2_level+co2_level+phoron_level)
 		aircontents = list(\
 			"pressure" = "[round(pressure,0.1)]",\

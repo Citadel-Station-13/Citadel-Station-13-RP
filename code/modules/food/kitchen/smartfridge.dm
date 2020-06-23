@@ -6,11 +6,12 @@
 	icon_state = "smartfridge"
 	density = 1
 	anchored = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 5
 	active_power_usage = 100
 	flags = NOREACT
 	var/max_n_of_items = 999 // Sorry but the BYOND infinite loop detector doesn't look things over 1000. //VOREStation Edit - Non-global
+	//var/global/max_n_of_items = 999 // Sorry but the BYOND infinite loop detector doesn't look things over 1000.
 	var/icon_on = "smartfridge"
 	var/icon_off = "smartfridge-off"
 	var/icon_panel = "smartfridge-panel"
@@ -42,7 +43,7 @@
 	return ..()
 
 /obj/machinery/smartfridge/proc/accept_check(var/obj/item/O as obj)
-	if(istype(O,/obj/item/weapon/reagent_containers/food/snacks/grown/) || istype(O,/obj/item/seeds/))
+	if(istype(O,/obj/item/reagent_containers/food/snacks/grown/) || istype(O,/obj/item/seeds/))
 		return 1
 	return 0
 
@@ -80,11 +81,11 @@
 	req_one_access = list(access_medical,access_chemistry)
 
 /obj/machinery/smartfridge/secure/medbay/accept_check(var/obj/item/O as obj)
-	if(istype(O,/obj/item/weapon/reagent_containers/glass/))
+	if(istype(O,/obj/item/reagent_containers/glass/))
 		return 1
-	if(istype(O,/obj/item/weapon/storage/pill_bottle/))
+	if(istype(O,/obj/item/storage/pill_bottle/))
 		return 1
-	if(istype(O,/obj/item/weapon/reagent_containers/pill/))
+	if(istype(O,/obj/item/reagent_containers/pill/))
 		return 1
 	return 0
 
@@ -97,9 +98,9 @@
 	icon_off = "smartfridge_virology-off"
 
 /obj/machinery/smartfridge/secure/virology/accept_check(var/obj/item/O as obj)
-	if(istype(O,/obj/item/weapon/reagent_containers/glass/beaker/vial/))
+	if(istype(O,/obj/item/reagent_containers/glass/beaker/vial/))
 		return 1
-	if(istype(O,/obj/item/weapon/virusdish/))
+	if(istype(O,/obj/item/virusdish/))
 		return 1
 	return 0
 
@@ -108,7 +109,7 @@
 	desc = "A refrigerated storage unit for medicine and chemical storage."
 
 /obj/machinery/smartfridge/chemistry/accept_check(var/obj/item/O as obj)
-	if(istype(O,/obj/item/weapon/storage/pill_bottle) || istype(O,/obj/item/weapon/reagent_containers))
+	if(istype(O,/obj/item/storage/pill_bottle) || istype(O,/obj/item/reagent_containers))
 		return 1
 	return 0
 
@@ -122,7 +123,7 @@
 	desc = "A refrigerated storage unit for tasty tasty alcohol."
 
 /obj/machinery/smartfridge/drinks/accept_check(var/obj/item/O as obj)
-	if(istype(O,/obj/item/weapon/reagent_containers/glass) || istype(O,/obj/item/weapon/reagent_containers/food/drinks) || istype(O,/obj/item/weapon/reagent_containers/food/condiment))
+	if(istype(O,/obj/item/reagent_containers/glass) || istype(O,/obj/item/reagent_containers/food/drinks) || istype(O,/obj/item/reagent_containers/food/condiment))
 		return 1
 
 /obj/machinery/smartfridge/drying_rack
@@ -135,8 +136,8 @@
 	icon_panel = "drying_rack-panel"
 
 /obj/machinery/smartfridge/drying_rack/accept_check(var/obj/item/O as obj)
-	if(istype(O, /obj/item/weapon/reagent_containers/food/snacks/))
-		var/obj/item/weapon/reagent_containers/food/snacks/S = O
+	if(istype(O, /obj/item/reagent_containers/food/snacks/))
+		var/obj/item/reagent_containers/food/snacks/S = O
 		if (S.dried_type)
 			return 1
 	return 0
@@ -168,7 +169,7 @@
 
 /obj/machinery/smartfridge/drying_rack/proc/dry()
 	for(var/datum/stored_item/I in item_records)
-		for(var/obj/item/weapon/reagent_containers/food/snacks/S in I.instances)
+		for(var/obj/item/reagent_containers/food/snacks/S in I.instances)
 			if(S.dry) continue
 			if(S.dried_type == S.type)
 				S.dry = 1
@@ -215,13 +216,13 @@
 		overlays.Cut()
 		if(panel_open)
 			overlays += image(icon, icon_panel)
-		GLOB.nanomanager.update_uis(src)
+		SSnanoui.update_uis(src)
 		return
 
 	if(wrenchable && default_unfasten_wrench(user, O, 20))
 		return
 
-	if(istype(O, /obj/item/device/multitool) || O.is_wirecutter())
+	if(istype(O, /obj/item/multitool) || O.is_wirecutter())
 		if(panel_open)
 			attack_hand(user)
 		return
@@ -236,8 +237,8 @@
 		user.visible_message("<span class='notice'>[user] has added \the [O] to \the [src].</span>", "<span class='notice'>You add \the [O] to \the [src].</span>")
 
 
-	else if(istype(O, /obj/item/weapon/storage/bag))
-		var/obj/item/weapon/storage/bag/P = O
+	else if(istype(O, /obj/item/storage/bag))
+		var/obj/item/storage/bag/P = O
 		var/plants_loaded = 0
 		for(var/obj/G in P.contents)
 			if(accept_check(G))
@@ -249,8 +250,8 @@
 			if(P.contents.len > 0)
 				to_chat(user, "<span class='notice'>Some items are refused.</span>")
 
-	else if(istype(O, /obj/item/weapon/gripper)) // Grippers. ~Mechoid.
-		var/obj/item/weapon/gripper/B = O	//B, for Borg.
+	else if(istype(O, /obj/item/gripper)) // Grippers. ~Mechoid.
+		var/obj/item/gripper/B = O	//B, for Borg.
 		if(!B.wrapped)
 			to_chat(user, "\The [B] is not holding anything.")
 			return
@@ -281,11 +282,11 @@
 		var/datum/stored_item/item = new/datum/stored_item(src, O.type, O.name)
 		item.add_product(O)
 		item_records.Add(item)
-	GLOB.nanomanager.update_uis(src)
+	SSnanoui.update_uis(src)
 
 /obj/machinery/smartfridge/proc/vend(datum/stored_item/I)
 	I.get_product(get_turf(src))
-	GLOB.nanomanager.update_uis(src)
+	SSnanoui.update_uis(src)
 
 /obj/machinery/smartfridge/attack_ai(mob/user as mob)
 	attack_hand(user)
@@ -320,7 +321,7 @@
 	if(items.len > 0)
 		data["contents"] = items
 
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
 		ui = new(user, src, ui_key, "smartfridge.tmpl", src.name, 400, 500)
 		ui.set_initial_data(data)
@@ -330,7 +331,7 @@
 	if(..()) return 0
 
 	var/mob/user = usr
-	var/datum/nanoui/ui = GLOB.nanomanager.get_open_ui(user, src, "main")
+	var/datum/nanoui/ui = SSnanoui.get_open_ui(user, src, "main")
 
 	src.add_fingerprint(user)
 

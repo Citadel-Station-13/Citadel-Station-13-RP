@@ -13,12 +13,12 @@
 	adjust_solar_output(1.5)
 
 /datum/event/solar_storm/proc/adjust_solar_output(var/mult = 1)
-	if(isnull(base_solar_gen_rate)) base_solar_gen_rate = solar_gen_rate
-	solar_gen_rate = mult * base_solar_gen_rate
+	if(isnull(base_solar_gen_rate)) base_solar_gen_rate = GLOB.solar_gen_rate
+	GLOB.solar_gen_rate = mult * base_solar_gen_rate
 
 
 /datum/event/solar_storm/start()
-	command_announcement.Announce("The solar storm has reached the station. Please refain from EVA and remain inside the station until it has passed.", "Anomaly Alert")
+	command_announcement.Announce("The solar storm has reached the station. Please refrain from EVA and remain inside the station until it has passed.", "Anomaly Alert")
 	adjust_solar_output(5)
 
 

@@ -55,7 +55,7 @@
 /area/mine/unexplored/high)
 "am" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/mechanical,
 /obj/item/clothing/head/welding,
 /obj/item/clothing/gloves/black,
 /turf/simulated/floor/tiled/steel_grid,
@@ -257,7 +257,7 @@
 /area/outpost/mining_main/main)
 "aR" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/storage/firstaid/adv,
+/obj/item/storage/firstaid/adv,
 /obj/machinery/light{
 	icon_state = "tube1";
 	dir = 8
@@ -281,14 +281,14 @@
 /area/outpost/mining_main/main)
 "aV" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/mechanical,
 /obj/machinery/light,
 /turf/simulated/floor/plating/external,
 /area/outpost/mining_main/main)
 "aW" = (
 /obj/structure/table/reinforced,
 /obj/machinery/cell_charger,
-/obj/item/weapon/cell/high,
+/obj/item/cell/high,
 /turf/simulated/floor/plating/external,
 /area/outpost/mining_main/main)
 "aX" = (
@@ -525,9 +525,9 @@
 /turf/simulated/floor/plating/external,
 /area/outpost/mining_main/main)
 "bx" = (
-/obj/item/weapon/storage/toolbox/mechanical,
-/obj/item/weapon/storage/box/flare,
-/obj/item/weapon/storage/firstaid/regular,
+/obj/item/storage/toolbox/mechanical,
+/obj/item/storage/box/flare,
+/obj/item/storage/firstaid/regular,
 /obj/structure/closet/crate,
 /turf/simulated/floor/plating/external,
 /area/outpost/mining_main/main)
@@ -539,7 +539,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/main)
 "bz" = (
-/obj/item/weapon/stool/padded,
+/obj/item/stool/padded,
 /obj/effect/floor_decal/corner/grey/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/outpost/mining_main/main)
@@ -688,7 +688,7 @@
 /area/outpost/mining_main/main)
 "bX" = (
 /obj/structure/bed/double/padded,
-/obj/item/weapon/bedsheet/bluedouble,
+/obj/item/bedsheet/bluedouble,
 /turf/simulated/floor/wood,
 /area/outpost/mining_main/main)
 "bY" = (
@@ -716,26 +716,26 @@
 "cc" = (
 /obj/effect/floor_decal/corner/black/diagonal,
 /obj/structure/table/reinforced,
-/obj/item/weapon/material/knife/plastic,
+/obj/item/material/knife/plastic,
 /turf/simulated/floor/tiled/white,
 /area/outpost/mining_main/main)
 "cd" = (
 /obj/effect/floor_decal/corner/black/diagonal,
 /obj/structure/table/reinforced,
-/obj/item/weapon/material/kitchen/utensil/spoon/plastic,
-/obj/item/weapon/material/kitchen/utensil/spoon/plastic,
-/obj/item/weapon/material/kitchen/utensil/spoon/plastic,
-/obj/item/weapon/material/kitchen/utensil/spoon/plastic,
-/obj/item/weapon/material/kitchen/utensil/fork/plastic{
+/obj/item/material/kitchen/utensil/spoon/plastic,
+/obj/item/material/kitchen/utensil/spoon/plastic,
+/obj/item/material/kitchen/utensil/spoon/plastic,
+/obj/item/material/kitchen/utensil/spoon/plastic,
+/obj/item/material/kitchen/utensil/fork/plastic{
 	pixel_x = 5
 	},
-/obj/item/weapon/material/kitchen/utensil/fork/plastic{
+/obj/item/material/kitchen/utensil/fork/plastic{
 	pixel_x = 5
 	},
-/obj/item/weapon/material/kitchen/utensil/fork/plastic{
+/obj/item/material/kitchen/utensil/fork/plastic{
 	pixel_x = 5
 	},
-/obj/item/weapon/material/kitchen/utensil/fork/plastic{
+/obj/item/material/kitchen/utensil/fork/plastic{
 	pixel_x = 5
 	},
 /turf/simulated/floor/tiled/white,
@@ -880,7 +880,7 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/mining_main/main)
 "cr" = (
-/obj/item/weapon/stool/padded,
+/obj/item/stool/padded,
 /obj/effect/floor_decal/corner/grey/diagonal,
 /obj/machinery/light{
 	dir = 1
@@ -889,24 +889,24 @@
 /area/outpost/mining_main/main)
 "cs" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/storage/firstaid/regular,
+/obj/item/storage/firstaid/regular,
 /obj/item/stack/nanopaste,
 /turf/simulated/floor/tiled/white,
 /area/outpost/mining_main/main)
 "ct" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/storage/firstaid/o2,
+/obj/item/storage/firstaid/o2,
 /turf/simulated/floor/tiled/white,
 /area/outpost/mining_main/main)
 "cu" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/storage/firstaid/clotting,
+/obj/item/storage/firstaid/clotting,
 /turf/simulated/floor/tiled/white,
 /area/outpost/mining_main/main)
 "cv" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/pickaxe,
-/obj/item/weapon/pickaxe,
+/obj/item/pickaxe,
+/obj/item/pickaxe,
 /turf/simulated/floor/tiled/steel,
 /area/outpost/mining_main/main)
 "cw" = (
@@ -935,8 +935,8 @@
 	pixel_y = 0
 	},
 /obj/structure/table/reinforced,
-/obj/item/weapon/storage/bag/ore,
-/obj/item/weapon/storage/bag/ore,
+/obj/item/storage/bag/ore,
+/obj/item/storage/bag/ore,
 /turf/simulated/floor/tiled/steel,
 /area/outpost/mining_main/main)
 "cA" = (
@@ -1057,9 +1057,9 @@
 /area/outpost/mining_main/main)
 "cR" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/tool/screwdriver,
-/obj/item/weapon/tool/wrench,
-/obj/item/weapon/tool/crowbar/red,
+/obj/item/tool/screwdriver,
+/obj/item/tool/wrench,
+/obj/item/tool/crowbar/red,
 /turf/simulated/floor/tiled/freezer,
 /area/outpost/mining_main/main)
 "cS" = (
@@ -1404,7 +1404,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/outpost/mining_main/main)
 "dG" = (
-/obj/item/weapon/storage/laundry_basket,
+/obj/item/storage/laundry_basket,
 /obj/structure/table/reinforced,
 /turf/simulated/floor/tiled/steel,
 /area/outpost/mining_main/main)
@@ -1437,8 +1437,8 @@
 /area/outpost/mining_main/main)
 "dK" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/reagent_containers/syringe/inaprovaline,
-/obj/item/weapon/reagent_containers/syringe/inaprovaline,
+/obj/item/reagent_containers/syringe/inaprovaline,
+/obj/item/reagent_containers/syringe/inaprovaline,
 /turf/simulated/floor/tiled/white,
 /area/outpost/mining_main/main)
 "dL" = (
@@ -1533,12 +1533,12 @@
 /area/outpost/mining_main/main)
 "dY" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/ore/iron,
+/obj/item/ore/iron,
 /turf/simulated/floor/tiled/steel,
 /area/outpost/mining_main/main)
 "dZ" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/cell/high,
+/obj/item/cell/high,
 /turf/simulated/floor/tiled/steel,
 /area/outpost/mining_main/main)
 "ea" = (
@@ -1730,7 +1730,7 @@
 	dir = 4
 	},
 /obj/structure/table/reinforced,
-/obj/item/weapon/storage/box/bodybags,
+/obj/item/storage/box/bodybags,
 /turf/simulated/floor/tiled/white,
 /area/outpost/mining_main/main)
 "ey" = (
@@ -1739,8 +1739,8 @@
 	dir = 4
 	},
 /obj/structure/table/reinforced,
-/obj/item/weapon/mop,
-/obj/item/weapon/reagent_containers/glass/bucket,
+/obj/item/mop,
+/obj/item/reagent_containers/glass/bucket,
 /obj/structure/sink{
 	dir = 8;
 	icon_state = "sink";
@@ -1842,13 +1842,13 @@
 /turf/simulated/floor/wood,
 /area/outpost/mining_main/main)
 "eN" = (
-/obj/item/device/paicard,
+/obj/item/paicard,
 /obj/structure/table/woodentable,
 /turf/simulated/floor/wood,
 /area/outpost/mining_main/main)
 "eO" = (
 /obj/structure/table/reinforced,
-/obj/item/device/communicator,
+/obj/item/communicator,
 /turf/simulated/floor/tiled/steel,
 /area/outpost/mining_main/main)
 "eP" = (
@@ -1900,19 +1900,19 @@
 /area/outpost/mining_main/main)
 "eV" = (
 /obj/structure/bed/double/padded,
-/obj/item/weapon/bedsheet/browndouble,
+/obj/item/bedsheet/browndouble,
 /turf/simulated/floor/wood,
 /area/outpost/mining_main/main)
 "eW" = (
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/corner/black/diagonal,
-/obj/item/weapon/reagent_containers/food/drinks/cans/dr_gibb,
+/obj/item/reagent_containers/food/drinks/cans/dr_gibb,
 /turf/simulated/floor/tiled/white,
 /area/outpost/mining_main/main)
 "eX" = (
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/corner/grey/diagonal,
-/obj/item/weapon/storage/box/glasses/meta,
+/obj/item/storage/box/glasses/meta,
 /obj/machinery/chemical_dispenser/bar_soft/full{
 	pixel_x = 28
 	},
@@ -1920,12 +1920,12 @@
 /area/outpost/mining_main/main)
 "eY" = (
 /obj/structure/bed/double/padded,
-/obj/item/weapon/bedsheet/greendouble,
+/obj/item/bedsheet/greendouble,
 /turf/simulated/floor/wood,
 /area/outpost/mining_main/main)
 "eZ" = (
 /obj/structure/bed/double/padded,
-/obj/item/weapon/bedsheet/reddouble,
+/obj/item/bedsheet/reddouble,
 /turf/simulated/floor/wood,
 /area/outpost/mining_main/main)
 "fa" = (
@@ -1969,7 +1969,7 @@
 /area/outpost/mining_main/main)
 "ff" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/dice/d20,
+/obj/item/dice/d20,
 /turf/simulated/floor/wood,
 /area/outpost/mining_main/main)
 "fg" = (
@@ -1981,7 +1981,7 @@
 /area/outpost/mining_main/main)
 "fh" = (
 /obj/structure/table/woodentable,
-/obj/item/device/flashlight/lamp/green,
+/obj/item/flashlight/lamp/green,
 /turf/simulated/floor/wood,
 /area/outpost/mining_main/main)
 "fi" = (
@@ -2307,7 +2307,7 @@
 	},
 /obj/machinery/vending/phoronresearch{
 	name = "Toximate 2556";
-	products = list(/obj/item/device/transfer_valve = 3, /obj/item/device/assembly/timer = 6, /obj/item/device/assembly/signaler = 6, /obj/item/device/assembly/prox_sensor = 6, /obj/item/device/assembly/igniter = 12)
+	products = list(/obj/item/transfer_valve = 3, /obj/item/assembly/timer = 6, /obj/item/assembly/signaler = 6, /obj/item/assembly/prox_sensor = 6, /obj/item/assembly/igniter = 12)
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_misc_lab)
@@ -2327,7 +2327,7 @@
 	dir = 9
 	},
 /obj/structure/table/standard,
-/obj/item/weapon/tool/wirecutters,
+/obj/item/tool/wirecutters,
 /obj/item/stack/cable_coil/random,
 /obj/item/stack/cable_coil/random,
 /obj/machinery/light{
@@ -2349,7 +2349,7 @@
 /area/outpost/research/hallway)
 "gh" = (
 /obj/structure/closet/excavation,
-/obj/item/weapon/pickaxe,
+/obj/item/pickaxe,
 /obj/item/clothing/glasses/science,
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/exp_prep)
@@ -2695,7 +2695,7 @@
 /obj/effect/floor_decal/corner/purple{
 	dir = 5
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	pixel_y = 24;
 	req_access = list()
 	},
@@ -2708,8 +2708,8 @@
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/structure/table/standard,
-/obj/item/weapon/tool/wrench,
-/obj/item/device/analyzer,
+/obj/item/tool/wrench,
+/obj/item/analyzer,
 /obj/structure/extinguisher_cabinet{
 	dir = 1;
 	icon_state = "extinguisher_closed";
@@ -3440,8 +3440,8 @@
 /area/outpost/research/anomaly)
 "iw" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen,
+/obj/item/paper_bin,
+/obj/item/pen,
 /obj/item/clothing/glasses/science,
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -3655,7 +3655,7 @@
 /area/outpost/research/anomaly)
 "iT" = (
 /obj/structure/table/reinforced,
-/obj/item/device/flashlight/lamp,
+/obj/item/flashlight/lamp,
 /obj/machinery/firealarm{
 	dir = 1;
 	pixel_x = 0;
@@ -3685,8 +3685,8 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/table/reinforced,
-/obj/item/weapon/tool/crowbar,
-/obj/item/device/multitool,
+/obj/item/tool/crowbar,
+/obj/item/multitool,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 4;
@@ -3836,7 +3836,7 @@
 /area/outpost/research/toxins_misc_lab)
 "jm" = (
 /obj/structure/table/reinforced,
-/obj/item/device/flashlight/lamp,
+/obj/item/flashlight/lamp,
 /turf/simulated/floor/tiled/dark,
 /area/outpost/research/isolation_b{
 	name = "Research Outpost Anomaly Lab - Containment Two"
@@ -4016,7 +4016,7 @@
 /turf/simulated/floor/plating/external,
 /area/outpost/mining_main/main)
 "jJ" = (
-/obj/item/weapon/material/shard,
+/obj/item/material/shard,
 /turf/simulated/floor/plating/external,
 /area/outpost/mining_main/main)
 "jK" = (
@@ -4040,14 +4040,14 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_misc_lab)
 "jN" = (
-/obj/item/weapon/storage/box/glasses/meta,
-/obj/item/weapon/glass_extra/straw,
-/obj/item/weapon/glass_extra/straw,
-/obj/item/weapon/glass_extra/straw,
-/obj/item/weapon/glass_extra/straw,
-/obj/item/weapon/glass_extra/straw,
-/obj/item/weapon/glass_extra/straw,
-/obj/item/weapon/glass_extra/straw,
+/obj/item/storage/box/glasses/meta,
+/obj/item/glass_extra/straw,
+/obj/item/glass_extra/straw,
+/obj/item/glass_extra/straw,
+/obj/item/glass_extra/straw,
+/obj/item/glass_extra/straw,
+/obj/item/glass_extra/straw,
+/obj/item/glass_extra/straw,
 /obj/machinery/light{
 	dir = 8;
 	icon_state = "tube1";
@@ -4088,12 +4088,12 @@
 /area/outpost/research/hallway)
 "jS" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/reagent_containers/glass/bucket,
+/obj/item/reagent_containers/glass/bucket,
 /obj/item/stack/nanopaste,
-/obj/item/weapon/anobattery,
-/obj/item/weapon/anobattery,
-/obj/item/weapon/anobattery,
-/obj/item/weapon/anobattery,
+/obj/item/anobattery,
+/obj/item/anobattery,
+/obj/item/anobattery,
+/obj/item/anobattery,
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/anomaly)
 "jT" = (
@@ -4183,10 +4183,10 @@
 /area/outpost/research/toxins_misc_lab)
 "kc" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/tool/wrench,
-/obj/item/weapon/weldingtool,
+/obj/item/tool/wrench,
+/obj/item/weldingtool,
 /obj/item/clothing/glasses/welding,
-/obj/item/weapon/tool/screwdriver,
+/obj/item/tool/screwdriver,
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/anomaly)
 "kd" = (
@@ -4405,8 +4405,8 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_misc_lab)
 "kB" = (
-/obj/item/weapon/reagent_containers/glass/bucket,
-/obj/item/weapon/mop,
+/obj/item/reagent_containers/glass/bucket,
+/obj/item/mop,
 /obj/structure/table/standard,
 /obj/structure/cable{
 	d1 = 1;
@@ -4467,7 +4467,7 @@
 	pixel_x = -26;
 	pixel_y = -8
 	},
-/obj/item/weapon/stool/padded,
+/obj/item/stool/padded,
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_misc_lab)
 "kH" = (
@@ -4514,9 +4514,9 @@
 "kM" = (
 /obj/effect/floor_decal/corner/purple/full,
 /obj/structure/table/standard,
-/obj/item/device/assembly_holder/timer_igniter,
-/obj/item/device/assembly_holder/timer_igniter,
-/obj/item/device/assembly_holder/timer_igniter,
+/obj/item/assembly_holder/timer_igniter,
+/obj/item/assembly_holder/timer_igniter,
+/obj/item/assembly_holder/timer_igniter,
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_misc_lab)
 "kN" = (
@@ -4534,7 +4534,7 @@
 /area/outpost/research/toxins_misc_lab)
 "kO" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/weapon/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/mechanical,
 /obj/structure/closet/crate,
 /obj/fiftyspawner/steel,
 /obj/fiftyspawner/steel,
@@ -4767,7 +4767,7 @@
 	dir = 9
 	},
 /obj/structure/table/standard,
-/obj/item/weapon/tank/phoron,
+/obj/item/tank/phoron,
 /obj/machinery/alarm{
 	dir = 4;
 	icon_state = "alarm0";
@@ -5015,7 +5015,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/hallway)
 "lT" = (
-/obj/item/weapon/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/mechanical,
 /obj/structure/closet/crate,
 /obj/machinery/light/small{
 	icon_state = "bulb1";
@@ -5033,7 +5033,7 @@
 /area/outpost/research/anomaly_storage)
 "lW" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/portable_atmospherics/canister/sleeping_agent,
+/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
 /turf/simulated/floor/tiled/techmaint,
 /area/outpost/research/anomaly_storage)
 "lX" = (
@@ -5217,9 +5217,9 @@
 	dir = 10
 	},
 /obj/structure/table/standard,
-/obj/item/weapon/weldingtool,
+/obj/item/weldingtool,
 /obj/item/clothing/glasses/welding,
-/obj/item/weapon/tool/wrench,
+/obj/item/tool/wrench,
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_misc_lab)
 "mt" = (
@@ -5968,12 +5968,12 @@
 	})
 "nY" = (
 /obj/structure/table/rack,
-/obj/item/weapon/storage/belt/archaeology,
+/obj/item/storage/belt/archaeology,
 /obj/item/clothing/gloves/sterile/latex,
 /obj/item/clothing/suit/space/anomaly,
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/head/helmet/space/anomaly,
-/obj/item/weapon/storage/belt/archaeology,
+/obj/item/storage/belt/archaeology,
 /obj/item/clothing/gloves/sterile/latex,
 /obj/item/clothing/suit/space/anomaly,
 /obj/item/clothing/mask/breath,
@@ -6041,10 +6041,10 @@
 /area/outpost/research/hallway)
 "oh" = (
 /obj/structure/table/rack,
-/obj/item/device/suit_cooling_unit,
-/obj/item/device/suit_cooling_unit,
-/obj/item/device/suit_cooling_unit,
-/obj/item/device/suit_cooling_unit,
+/obj/item/suit_cooling_unit,
+/obj/item/suit_cooling_unit,
+/obj/item/suit_cooling_unit,
+/obj/item/suit_cooling_unit,
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/exp_prep)
 "oi" = (
@@ -6056,10 +6056,10 @@
 /area/outpost/research/anomaly)
 "oj" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/storage/excavation,
-/obj/item/weapon/pickaxe,
-/obj/item/weapon/tool/wrench,
-/obj/item/device/measuring_tape,
+/obj/item/storage/excavation,
+/obj/item/pickaxe,
+/obj/item/tool/wrench,
+/obj/item/measuring_tape,
 /obj/item/stack/flag/yellow,
 /obj/item/stack/flag/green,
 /obj/item/stack/flag/red,
@@ -6148,7 +6148,7 @@
 /area/outpost/research/hallway)
 "oq" = (
 /obj/structure/table/reinforced,
-/obj/item/device/universal_translator,
+/obj/item/universal_translator,
 /obj/effect/floor_decal/industrial/warning{
 	icon_state = "warning";
 	dir = 1
@@ -6218,12 +6218,12 @@
 /area/outpost/research/hallway)
 "ox" = (
 /obj/structure/table/rack,
-/obj/item/weapon/storage/belt/archaeology,
+/obj/item/storage/belt/archaeology,
 /obj/item/clothing/gloves/sterile/latex,
 /obj/item/clothing/suit/space/anomaly,
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/head/helmet/space/anomaly,
-/obj/item/weapon/storage/belt/archaeology,
+/obj/item/storage/belt/archaeology,
 /obj/item/clothing/gloves/sterile/latex,
 /obj/item/clothing/suit/space/anomaly,
 /obj/item/clothing/mask/breath,
@@ -6350,7 +6350,7 @@
 /area/outpost/research/exp_prep)
 "oH" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/book/manual/excavation,
+/obj/item/book/manual/excavation,
 /turf/simulated/floor/tiled/monotile,
 /area/outpost/research/exp_prep)
 "oI" = (
@@ -6556,16 +6556,16 @@
 /area/outpost/research/hallway)
 "pd" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/storage/box/nifsofts_arfs_mining_synth{
+/obj/item/storage/box/nifsofts_arfs_mining_synth{
 	pixel_x = 5;
 	pixel_y = 5
 	},
-/obj/item/weapon/storage/box/nifsofts_arfs_mining,
+/obj/item/storage/box/nifsofts_arfs_mining,
 /turf/simulated/floor/tiled/steel,
 /area/outpost/mining_main/main)
 "pe" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/box/nifsofts_arfs_science_synth{
+/obj/item/storage/box/nifsofts_arfs_science_synth{
 	pixel_x = 5;
 	pixel_y = 5
 	},

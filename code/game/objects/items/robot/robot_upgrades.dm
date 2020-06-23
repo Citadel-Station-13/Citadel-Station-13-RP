@@ -25,18 +25,9 @@
 	require_module = 1
 
 /obj/item/borg/upgrade/reset/action(var/mob/living/silicon/robot/R)
-	if(..()) return 0
-	R.transform_with_anim() //VOREStation edit: sprite animation
-	R.uneq_all()
-	R.modtype = initial(R.modtype)
-	R.hands.icon_state = initial(R.hands.icon_state)
-
-	R.notify_ai(ROBOT_NOTIFICATION_MODULE_RESET, R.module.name)
-	R.module.Reset(R)
-	qdel(R.module)
-	R.module = null
-	R.updatename("Default")
-
+	if(..())
+		return 0
+	R.module_reset()
 	return 1
 
 /obj/item/borg/upgrade/rename
@@ -115,7 +106,7 @@
 		to_chat(usr, "There's no mounting point for the module!")
 		return 0
 
-	var/obj/item/weapon/gun/energy/taser/mounted/cyborg/T = locate() in R.module
+	var/obj/item/gun/energy/taser/mounted/cyborg/T = locate() in R.module
 	if(!T)
 		T = locate() in R.module.contents
 	if(!T)
@@ -144,14 +135,14 @@
 /obj/item/borg/upgrade/jetpack/action(var/mob/living/silicon/robot/R)
 	if(..()) return 0
 
-	var/obj/item/weapon/tank/jetpack/carbondioxide/T = locate() in R.module
+	var/obj/item/tank/jetpack/carbondioxide/T = locate() in R.module
 	if(!T)
 		T = locate() in R.module.contents
 	if(!T)
 		T = locate() in R.module.modules
 	if(!T)
-		R.module.modules += new/obj/item/weapon/tank/jetpack/carbondioxide(R.module)
-		for(var/obj/item/weapon/tank/jetpack/carbondioxide in R.module.modules)
+		R.module.modules += new/obj/item/tank/jetpack/carbondioxide(R.module)
+		for(var/obj/item/tank/jetpack/carbondioxide in R.module.modules)
 			R.internals = src
 		return 1
 	if(T)
@@ -169,13 +160,13 @@
 /obj/item/borg/upgrade/advhealth/action(var/mob/living/silicon/robot/R)
 	if(..()) return 0
 
-	var/obj/item/device/healthanalyzer/advanced/T = locate() in R.module
+	var/obj/item/healthanalyzer/advanced/T = locate() in R.module
 	if(!T)
 		T = locate() in R.module.contents
 	if(!T)
 		T = locate() in R.module.modules
 	if(!T)
-		R.module.modules += new/obj/item/device/healthanalyzer/advanced(R.module)
+		R.module.modules += new/obj/item/healthanalyzer/advanced(R.module)
 		return 1
 	if(T)
 		to_chat(R, "Upgrade mounting error!  No suitable hardpoint detected!")
@@ -218,5 +209,6 @@
 	R.add_language(LANGUAGE_SCHECHI, 1)
 	R.add_language(LANGUAGE_ROOTLOCAL, 1)
 	R.add_language(LANGUAGE_TERMINUS, 1)
+	R.add_language(LANGUAGE_ZADDAT, 1)
 
 	return 1

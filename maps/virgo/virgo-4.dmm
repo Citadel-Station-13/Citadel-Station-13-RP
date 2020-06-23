@@ -30,7 +30,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/mine/explored)
 "ai" = (
-/obj/item/weapon/circuitboard/teleporter,
+/obj/item/circuitboard/teleporter,
 /turf/simulated/floor/airless,
 /area/mine/explored)
 "aj" = (
@@ -69,7 +69,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/mine/unexplored)
 "as" = (
-/obj/item/weapon/ore,
+/obj/item/ore,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/mine/unexplored)
 "at" = (
@@ -96,7 +96,7 @@
 /area/wreck/main)
 "az" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/reagent_containers/syringe/antiviral,
+/obj/item/reagent_containers/syringe/antiviral,
 /obj/item/stack/rods,
 /turf/simulated/floor/airless,
 /area/wreck/main)
@@ -105,7 +105,7 @@
 /area/shuttle/awaymission/oldengbase)
 "aB" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/surgical/scalpel/laser3,
+/obj/item/surgical/scalpel/laser3,
 /turf/simulated/floor/tiled/airless,
 /area/wreck/main)
 "aC" = (
@@ -121,11 +121,11 @@
 /turf/simulated/floor/airless,
 /area/wreck/main)
 "aF" = (
-/obj/item/weapon/ore,
+/obj/item/ore,
 /turf/simulated/floor/airless,
 /area/wreck/main)
 "aG" = (
-/obj/item/weapon/surgical/circular_saw,
+/obj/item/surgical/circular_saw,
 /turf/simulated/floor/tiled/airless,
 /area/wreck/main)
 "aH" = (
@@ -154,7 +154,7 @@
 /turf/simulated/floor/airless,
 /area/wreck/main)
 "aN" = (
-/obj/item/weapon/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/mechanical,
 /turf/simulated/floor/airless,
 /area/wreck/main)
 "aO" = (
@@ -177,7 +177,7 @@
 /turf/simulated/floor/tiled/white/airless,
 /area/wreck/main)
 "aS" = (
-/obj/item/weapon/material/shard/shrapnel,
+/obj/item/material/shard/shrapnel,
 /turf/simulated/floor/airless,
 /area/wreck/main)
 "aT" = (
@@ -196,7 +196,7 @@
 /turf/simulated/floor/tiled/white/airless,
 /area/wreck/main)
 "aW" = (
-/obj/item/weapon/ore,
+/obj/item/ore,
 /obj/item/stack/rods,
 /turf/simulated/floor/airless,
 /area/wreck/main)
@@ -213,16 +213,16 @@
 /turf/simulated/floor/tiled/airless,
 /area/wreck/main)
 "ba" = (
-/obj/item/device/flashlight/flare,
+/obj/item/flashlight/flare,
 /turf/simulated/floor/tiled/airless,
 /area/wreck/main)
 "bb" = (
 /obj/item/stack/material/wood,
 /obj/item/stack/material/wood,
 /obj/structure/ore_box,
-/obj/item/weapon/ore/iron,
-/obj/item/weapon/ore/iron,
-/obj/item/weapon/ore/iron,
+/obj/item/ore/iron,
+/obj/item/ore/iron,
+/obj/item/ore/iron,
 /turf/simulated/floor/airless,
 /area/wreck/main)
 "bc" = (
@@ -267,7 +267,7 @@
 /turf/simulated/floor/reinforced/phoron,
 /area/wreck/main)
 "bg" = (
-/obj/item/device/gps,
+/obj/item/gps,
 /turf/simulated/floor/tiled/airless,
 /area/wreck/main)
 "bh" = (
@@ -275,7 +275,7 @@
 /turf/simulated/floor/airless,
 /area/wreck/main)
 "bi" = (
-/obj/item/weapon/circuitboard/broken,
+/obj/item/circuitboard/broken,
 /turf/simulated/floor/tiled/airless,
 /area/wreck/main)
 "bj" = (
@@ -283,7 +283,7 @@
 /turf/simulated/floor/tiled/airless,
 /area/wreck/main)
 "bk" = (
-/obj/item/weapon/ore,
+/obj/item/ore,
 /turf/simulated/floor/tiled/white/airless,
 /area/wreck/main)
 "bl" = (
@@ -297,7 +297,7 @@
 /area/wreck/main)
 "bn" = (
 /obj/structure/table/rack,
-/obj/item/weapon/tank/jetpack/void,
+/obj/item/tank/jetpack/void,
 /obj/item/clothing/suit/space/syndicate/green,
 /obj/item/clothing/head/helmet/space/syndicate/green,
 /turf/simulated/floor/tiled/airless,
@@ -308,7 +308,7 @@
 /area/wreck/main)
 "bp" = (
 /obj/structure/table/rack,
-/obj/item/weapon/material/shard/shrapnel,
+/obj/item/material/shard/shrapnel,
 /turf/simulated/floor/tiled/airless,
 /area/wreck/main)
 "bq" = (
@@ -324,7 +324,7 @@
 /turf/simulated/floor/tiled/airless,
 /area/wreck/main)
 "bs" = (
-/obj/item/weapon/tank/oxygen/yellow,
+/obj/item/tank/oxygen/yellow,
 /turf/simulated/floor/tiled/airless,
 /area/wreck/main)
 "bt" = (
@@ -347,12 +347,12 @@
 /area/wreck/main)
 "bx" = (
 /obj/item/frame/apc,
-/obj/item/weapon/module/power_control,
-/obj/item/weapon/material/shard/shrapnel,
+/obj/item/module/power_control,
+/obj/item/material/shard/shrapnel,
 /turf/simulated/floor/tiled/white/airless,
 /area/wreck/main)
 "by" = (
-/obj/item/device/flashlight/glowstick,
+/obj/item/flashlight/glowstick,
 /turf/simulated/floor/tiled/airless,
 /area/wreck/main)
 "bz" = (
@@ -506,7 +506,7 @@
 /area/wreck/main)
 "bX" = (
 /obj/effect/decal/mecha_wreckage/mauler,
-/obj/item/weapon/material/shard/shrapnel,
+/obj/item/material/shard/shrapnel,
 /turf/simulated/floor/airless,
 /area/wreck/main)
 "bY" = (
@@ -520,11 +520,11 @@
 /area/wreck/main)
 "ca" = (
 /obj/structure/table/rack,
-/obj/item/weapon/storage/toolbox/syndicate,
+/obj/item/storage/toolbox/syndicate,
 /turf/simulated/floor/airless,
 /area/wreck/main)
 "cb" = (
-/obj/item/weapon/circuitboard/teleporter,
+/obj/item/circuitboard/teleporter,
 /turf/simulated/floor/tiled/white/airless,
 /area/wreck/main)
 "cc" = (
@@ -634,8 +634,8 @@
 	density = 0;
 	icon_state = "brokengrille"
 	},
-/obj/item/weapon/material/shard,
-/obj/item/weapon/material/shard{
+/obj/item/material/shard,
+/obj/item/material/shard{
 	icon_state = "medium"
 	},
 /turf/simulated/floor/airless,
@@ -678,7 +678,7 @@
 /turf/simulated/floor,
 /area/outpost/abandoned)
 "cx" = (
-/obj/item/weapon/material/shard/shrapnel,
+/obj/item/material/shard/shrapnel,
 /turf/simulated/floor/airless,
 /area/outpost/abandoned)
 "cy" = (
@@ -1003,10 +1003,10 @@
 /area/outpost/abandoned)
 "dg" = (
 /obj/structure/table/rack,
-/obj/item/weapon/pickaxe,
-/obj/item/weapon/pickaxe,
-/obj/item/weapon/pickaxe,
-/obj/item/weapon/pickaxe,
+/obj/item/pickaxe,
+/obj/item/pickaxe,
+/obj/item/pickaxe,
+/obj/item/pickaxe,
 /turf/simulated/floor,
 /area/outpost/abandoned)
 "dh" = (
@@ -1285,7 +1285,7 @@
 	d2 = 4
 	},
 /obj/item/frame/apc,
-/obj/item/weapon/module/power_control,
+/obj/item/module/power_control,
 /turf/simulated/floor,
 /area/outpost/abandoned)
 "dS" = (
@@ -1625,7 +1625,7 @@
 /turf/simulated/floor/tiled,
 /area/outpost/abandoned)
 "ev" = (
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	broadcasting = 0;
 	listening = 1;
 	name = "Station Intercom (General)";
@@ -1770,7 +1770,7 @@
 /area/outpost/abandoned)
 "eO" = (
 /obj/structure/bed/padded,
-/obj/item/weapon/bedsheet/orange,
+/obj/item/bedsheet/orange,
 /turf/simulated/floor/tiled,
 /area/outpost/abandoned)
 "eP" = (
@@ -2137,7 +2137,7 @@
 /area/outpost/abandoned)
 "fA" = (
 /obj/structure/table/standard,
-/obj/item/weapon/stock_parts/motor,
+/obj/item/stock_parts/motor,
 /turf/simulated/floor/tiled,
 /area/outpost/abandoned)
 "fB" = (
@@ -2169,7 +2169,7 @@
 /area/outpost/abandoned)
 "fE" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/firstaid/regular,
+/obj/item/storage/firstaid/regular,
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 0;
 	pixel_y = -28
@@ -2232,7 +2232,7 @@
 	density = 0;
 	icon_state = "brokengrille"
 	},
-/obj/item/weapon/material/shard{
+/obj/item/material/shard{
 	icon_state = "medium"
 	},
 /turf/simulated/floor/airless,
@@ -2442,7 +2442,7 @@
 /turf/simulated/shuttle/plating,
 /area/houseboat)
 "gh" = (
-/obj/item/weapon/bedsheet/hos,
+/obj/item/bedsheet/hos,
 /obj/structure/bed,
 /turf/simulated/floor/wood,
 /area/houseboat/guest_room)
@@ -2566,11 +2566,11 @@
 /turf/simulated/shuttle/floor/white,
 /area/houseboat/medical)
 "gA" = (
-/obj/item/weapon/storage/firstaid/regular{
+/obj/item/storage/firstaid/regular{
 	pixel_x = -2;
 	pixel_y = 4
 	},
-/obj/item/weapon/storage/firstaid/regular{
+/obj/item/storage/firstaid/regular{
 	pixel_x = -2;
 	pixel_y = 4
 	},
@@ -2580,37 +2580,37 @@
 /obj/item/bodybag/cryobag{
 	pixel_x = 5
 	},
-/obj/item/weapon/storage/firstaid/o2{
+/obj/item/storage/firstaid/o2{
 	layer = 2.8;
 	pixel_x = 4;
 	pixel_y = 6
 	},
-/obj/item/weapon/storage/box/masks{
+/obj/item/storage/box/masks{
 	pixel_x = 0;
 	pixel_y = 0
 	},
-/obj/item/weapon/storage/box/gloves{
+/obj/item/storage/box/gloves{
 	pixel_x = 3;
 	pixel_y = 4
 	},
-/obj/item/weapon/storage/firstaid/toxin,
-/obj/item/weapon/storage/firstaid/fire{
+/obj/item/storage/firstaid/toxin,
+/obj/item/storage/firstaid/fire{
 	layer = 2.9;
 	pixel_x = 2;
 	pixel_y = 3
 	},
-/obj/item/weapon/storage/firstaid/adv{
+/obj/item/storage/firstaid/adv{
 	pixel_x = -2
 	},
-/obj/item/weapon/reagent_containers/blood/empty,
-/obj/item/weapon/reagent_containers/blood/OMinus,
-/obj/item/weapon/reagent_containers/blood/OMinus,
-/obj/item/weapon/reagent_containers/blood/OMinus,
-/obj/item/weapon/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/empty,
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
 /obj/structure/closet/medical_wall{
 	pixel_y = 32
 	},
-/obj/item/weapon/storage/box/body_record_disk,
+/obj/item/storage/box/body_record_disk,
 /turf/simulated/shuttle/floor/white,
 /area/houseboat/medical)
 "gB" = (
@@ -2648,11 +2648,11 @@
 /turf/simulated/floor/wood,
 /area/houseboat/guest_room)
 "gH" = (
-/obj/item/weapon/paper_bin{
+/obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 8
 	},
-/obj/item/weapon/pen{
+/obj/item/pen{
 	pixel_y = 4
 	},
 /obj/structure/table/glass,
@@ -2689,7 +2689,7 @@
 "gK" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/recharger,
-/obj/item/weapon/storage/toolbox/syndicate,
+/obj/item/storage/toolbox/syndicate,
 /turf/simulated/shuttle/floor/black,
 /area/houseboat/robotics)
 "gL" = (
@@ -2822,7 +2822,7 @@
 	icon_state = "tube1";
 	pixel_x = 0
 	},
-/obj/item/weapon/stool/padded,
+/obj/item/stool/padded,
 /turf/simulated/shuttle/floor/black,
 /area/houseboat/dining_area)
 "gY" = (
@@ -2845,7 +2845,7 @@
 	icon_state = "warning";
 	dir = 1
 	},
-/obj/item/weapon/stool/padded,
+/obj/item/stool/padded,
 /turf/simulated/shuttle/floor/black,
 /area/houseboat/robotics)
 "hc" = (
@@ -2872,8 +2872,8 @@
 /area/houseboat/medical)
 "hg" = (
 /obj/machinery/optable,
-/obj/item/weapon/storage/firstaid/surgery,
-/obj/item/weapon/tank/anesthetic,
+/obj/item/storage/firstaid/surgery,
+/obj/item/tank/anesthetic,
 /obj/item/clothing/mask/breath/medical,
 /turf/simulated/shuttle/floor/white,
 /area/houseboat/medical)
@@ -3008,15 +3008,15 @@
 /obj/structure/closet/crate{
 	name = "gaming stuff"
 	},
-/obj/item/weapon/dice/d4,
-/obj/item/weapon/dice,
-/obj/item/weapon/dice/d8,
-/obj/item/weapon/dice/d10,
-/obj/item/weapon/dice/d12,
-/obj/item/weapon/dice/d100,
-/obj/item/weapon/deck/cards,
-/obj/item/weapon/deck/cah,
-/obj/item/weapon/deck/cah/black,
+/obj/item/dice/d4,
+/obj/item/dice,
+/obj/item/dice/d8,
+/obj/item/dice/d10,
+/obj/item/dice/d12,
+/obj/item/dice/d100,
+/obj/item/deck/cards,
+/obj/item/deck/cah,
+/obj/item/deck/cah/black,
 /turf/simulated/shuttle/floor/black,
 /area/houseboat/common_area)
 "hy" = (
@@ -3054,11 +3054,11 @@
 /area/houseboat/teleporter)
 "hC" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/paper_bin{
+/obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 8
 	},
-/obj/item/weapon/pen{
+/obj/item/pen{
 	pixel_y = 4
 	},
 /turf/simulated/shuttle/floor/black,
@@ -3068,8 +3068,8 @@
 /obj/machinery/newscaster{
 	pixel_x = 32
 	},
-/obj/item/weapon/gun/projectile/khi/pistol,
-/obj/item/device/perfect_tele,
+/obj/item/gun/projectile/khi/pistol,
+/obj/item/perfect_tele,
 /turf/simulated/shuttle/floor/black,
 /area/houseboat/bridge)
 "hE" = (
@@ -3080,9 +3080,9 @@
 	pixel_x = 28
 	},
 /obj/structure/closet/crate,
-/obj/item/weapon/gun/energy/gun,
-/obj/item/weapon/gun/energy/ionrifle,
-/obj/item/weapon/gun/energy/sizegun,
+/obj/item/gun/energy/gun,
+/obj/item/gun/energy/ionrifle,
+/obj/item/gun/energy/sizegun,
 /turf/simulated/shuttle/floor/black,
 /area/houseboat/toilet)
 "hF" = (
@@ -3260,7 +3260,7 @@
 /area/houseboat/common_area)
 "ie" = (
 /obj/structure/table/gamblingtable,
-/obj/item/device/perfect_tele,
+/obj/item/perfect_tele,
 /turf/simulated/floor/wood,
 /area/houseboat/common_area)
 "if" = (
@@ -3333,8 +3333,8 @@
 /area/houseboat/bridge)
 "is" = (
 /obj/structure/table/standard,
-/obj/item/weapon/soap,
-/obj/item/weapon/towel{
+/obj/item/soap,
+/obj/item/towel{
 	color = "#0000FF"
 	},
 /obj/machinery/light,
@@ -3344,10 +3344,10 @@
 /obj/structure/closet{
 	name = "custodial"
 	},
-/obj/item/weapon/reagent_containers/spray/cleaner,
-/obj/item/weapon/reagent_containers/glass/bucket,
-/obj/item/weapon/mop,
-/obj/item/weapon/storage/box/lights/mixed,
+/obj/item/reagent_containers/spray/cleaner,
+/obj/item/reagent_containers/glass/bucket,
+/obj/item/mop,
+/obj/item/storage/box/lights/mixed,
 /turf/simulated/shuttle/floor/black,
 /area/houseboat/neck)
 "iu" = (
@@ -3734,7 +3734,7 @@
 /turf/simulated/floor/carpet,
 /area/houseboat/cap_room)
 "js" = (
-/obj/item/weapon/handcuffs,
+/obj/item/handcuffs,
 /obj/item/clothing/suit/straight_jacket,
 /obj/structure/closet,
 /turf/simulated/floor/wood,
@@ -3859,18 +3859,18 @@
 /area/houseboat/office)
 "jM" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/paper_bin{
+/obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 8
 	},
-/obj/item/weapon/pen{
+/obj/item/pen{
 	pixel_y = 4
 	},
 /turf/simulated/floor/carpet,
 /area/houseboat/office)
 "jN" = (
 /obj/structure/table/woodentable,
-/obj/item/device/laptop,
+/obj/item/laptop,
 /turf/simulated/floor/carpet,
 /area/houseboat/office)
 "jO" = (
@@ -3923,19 +3923,19 @@
 /area/houseboat/airlock)
 "jT" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/device/suit_cooling_unit,
+/obj/item/suit_cooling_unit,
 /turf/simulated/shuttle/floor/yellow,
 /area/houseboat/engineering)
 "jU" = (
 /obj/structure/table/steel_reinforced,
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/tank/jetpack/oxygen,
-/obj/item/weapon/tank/air,
+/obj/item/tank/jetpack/oxygen,
+/obj/item/tank/air,
 /turf/simulated/shuttle/floor/yellow,
 /area/houseboat/engineering)
 "jV" = (
 /obj/structure/bed/double,
-/obj/item/weapon/bedsheet/captaindouble,
+/obj/item/bedsheet/captaindouble,
 /turf/simulated/floor/wood,
 /area/houseboat/cap_room)
 "jW" = (
@@ -4121,15 +4121,15 @@
 /area/houseboat/engineering)
 "km" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/device/multitool,
-/obj/item/weapon/rcd,
-/obj/item/weapon/rcd_ammo,
-/obj/item/weapon/rcd_ammo,
+/obj/item/multitool,
+/obj/item/rcd,
+/obj/item/rcd_ammo,
+/obj/item/rcd_ammo,
 /turf/simulated/shuttle/floor/yellow,
 /area/houseboat/engineering)
 "kn" = (
 /obj/structure/table/gamblingtable,
-/obj/item/weapon/book/codex,
+/obj/item/book/codex,
 /turf/simulated/floor/wood,
 /area/houseboat/common_area)
 

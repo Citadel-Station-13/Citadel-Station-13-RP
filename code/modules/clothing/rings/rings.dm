@@ -4,6 +4,7 @@
 	name = "engagement ring"
 	desc = "An engagement ring. It certainly looks expensive."
 	icon_state = "diamond"
+	item_state = "diamond_s"
 
 /obj/item/clothing/gloves/ring/engagement/attack_self(mob/user)
 	user.visible_message("<span class='warning'>\The [user] gets down on one knee, presenting \the [src].</span>","<span class='warning'>You get down on one knee, presenting \the [src].</span>")

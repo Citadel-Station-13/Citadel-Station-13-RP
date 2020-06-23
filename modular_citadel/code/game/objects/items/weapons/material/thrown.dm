@@ -1,5 +1,5 @@
-/obj/item/weapon/material/star/plasteel
+/obj/item/material/star/plasteel
   default_material = "plasteel"
 
-/obj/item/weapon/material/star/durasteel
+/obj/item/material/star/durasteel
   default_material = "durasteel"

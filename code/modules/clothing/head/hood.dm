@@ -14,7 +14,7 @@
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/head/hood/winter/captain
-	name = "colony director's winter hood"
+	name = "Facility Director's winter hood"
 	armor = list(melee = 20, bullet = 15, laser = 20, energy = 10, bomb = 15, bio = 0, rad = 0)
 
 /obj/item/clothing/head/hood/winter/security
@@ -41,9 +41,6 @@
 
 /obj/item/clothing/head/hood/winter/cargo
 	name = "cargo winter hood"
-
-/obj/item/clothing/head/hood/techpriest
-	name = "techpriest hood"
 
 /obj/item/clothing/head/hood/winter/miner
 	name = "mining winter hood"
@@ -72,3 +69,8 @@
 	desc = "A hood that looks just like a corgi's head, it won't guarantee dog biscuits."
 	icon_state = "ian"
 	item_state_slots = list(slot_r_hand_str = "ian", slot_l_hand_str = "ian") //Does not exist -S2-
+
+
+/obj/item/clothing/head/hood/techpriest
+	name = "tech priest hood"
+	icon_state = "techpriesth"

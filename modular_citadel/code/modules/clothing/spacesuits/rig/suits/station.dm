@@ -1,4 +1,4 @@
-/obj/item/weapon/rig/medical/equipped
+/obj/item/rig/medical/equipped
 
 	initial_modules = list(
 		/obj/item/rig_module/maneuvering_jets,

@@ -1,0 +1,5 @@
+author: "Enzo-Leon"
+delete-after: True
+changes: 
+  - tweak: "Sounds more in-line with alert upgrades and downgrades"
+  - server: "updated delta alert and downgrade to red alert to provide more use for it."

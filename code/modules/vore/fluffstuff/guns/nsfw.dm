@@ -1,5 +1,5 @@
 // -------------- NSFW -------------
-/obj/item/weapon/gun/projectile/nsfw
+/obj/item/gun/projectile/nsfw
 	name = "KHI-102b \'NSFW\'"
 	desc = "Variety is the spice of life! The 'Nanotech Selectable-Fire Weapon' is an unholy hybrid of an ammo-driven \
 	energy weapon that allows the user to mix and match their own fire modes. Up to three combinations of \
@@ -30,7 +30,7 @@
 	var/max_charge = 0
 	charge_sections = 5
 
-/obj/item/weapon/gun/projectile/nsfw/consume_next_projectile()
+/obj/item/gun/projectile/nsfw/consume_next_projectile()
 	if(chambered && ammo_magazine)
 		var/obj/item/ammo_casing/nsfw_batt/batt = chambered
 		if(batt.shots_left)
@@ -45,7 +45,7 @@
 
 	return null
 
-/obj/item/weapon/gun/projectile/nsfw/proc/update_charge()
+/obj/item/gun/projectile/nsfw/proc/update_charge()
 	charge_left = 0
 	max_charge = 0
 
@@ -63,7 +63,7 @@
 				charge_left += bullet.shots_left
 				max_charge += initial(bullet.shots_left)
 
-/obj/item/weapon/gun/projectile/nsfw/proc/switch_to(obj/item/ammo_casing/nsfw_batt/new_batt)
+/obj/item/gun/projectile/nsfw/proc/switch_to(obj/item/ammo_casing/nsfw_batt/new_batt)
 	if(ishuman(loc))
 		if(chambered && new_batt.type == chambered.type)
 			to_chat(loc,"<span class='warning'>\The [src] is now using the next [new_batt.type_name] power cell.</span>")
@@ -74,7 +74,7 @@
 	update_charge()
 	update_icon()
 
-/obj/item/weapon/gun/projectile/nsfw/attack_self(mob/user)
+/obj/item/gun/projectile/nsfw/attack_self(mob/user)
 	if(!chambered)
 		return
 
@@ -93,7 +93,7 @@
 			switch_to(next_batt)
 			break
 /*
-/obj/item/weapon/gun/projectile/nsfw/special_check(mob/user)
+/obj/item/gun/projectile/nsfw/special_check(mob/user)
 	if(!chambered)
 		return
 
@@ -103,16 +103,16 @@
 
 	return TRUE
 */
-/obj/item/weapon/gun/projectile/nsfw/load_ammo(var/obj/item/A, mob/user)
+/obj/item/gun/projectile/nsfw/load_ammo(var/obj/item/A, mob/user)
 	. = ..()
 	if(ammo_magazine && ammo_magazine.stored_ammo.len)
 		switch_to(ammo_magazine.stored_ammo[1])
 
-/obj/item/weapon/gun/projectile/nsfw/unload_ammo(mob/user, var/allow_dump=1)
+/obj/item/gun/projectile/nsfw/unload_ammo(mob/user, var/allow_dump=1)
 	chambered = null
 	return ..()
 
-/obj/item/weapon/gun/projectile/nsfw/update_icon()
+/obj/item/gun/projectile/nsfw/update_icon()
 	update_charge()
 
 	cut_overlays()
@@ -338,26 +338,26 @@
 	type_name = "<span style='color:#fc0fdc;font-weight:bold;'>GROW</span>"
 	projectile_type = /obj/item/projectile/beam/growlaser
 */
-/obj/item/weapon/storage/secure/briefcase/nsfw_pack
+/obj/item/storage/secure/briefcase/nsfw_pack
 	name = "\improper KHI-102b \'NSFW\' gun kit"
 	desc = "A storage case for a multi-purpose handgun. Variety hour!"
 	max_w_class = ITEMSIZE_NORMAL
 
-/obj/item/weapon/storage/secure/briefcase/nsfw_pack/PopulateContents()
+/obj/item/storage/secure/briefcase/nsfw_pack/PopulateContents()
 	. = ..()
-	new /obj/item/weapon/gun/projectile/nsfw(src)
+	new /obj/item/gun/projectile/nsfw(src)
 	new /obj/item/ammo_magazine/nsfw_mag(src)
 	for(var/path in subtypesof(/obj/item/ammo_casing/nsfw_batt))
 		new path(src)
 
-/obj/item/weapon/storage/secure/briefcase/nsfw_pack_hos
+/obj/item/storage/secure/briefcase/nsfw_pack_hos
 	name = "\improper KHI-102b \'NSFW\' gun kit"
 	desc = "A storage case for a multi-purpose handgun. Variety hour!"
 	max_w_class = ITEMSIZE_NORMAL
 
-/obj/item/weapon/storage/secure/briefcase/nsfw_pack_hos/PopulateContents()
+/obj/item/storage/secure/briefcase/nsfw_pack_hos/PopulateContents()
 	. = ..()
-	new /obj/item/weapon/gun/projectile/nsfw(src)
+	new /obj/item/gun/projectile/nsfw(src)
 	new /obj/item/ammo_magazine/nsfw_mag(src)
 	new /obj/item/ammo_casing/nsfw_batt/lethal(src)
 	new /obj/item/ammo_casing/nsfw_batt/lethal(src)

@@ -19,7 +19,7 @@
 		set_light(2, 2, color)
 
 /turf/unsimulated/floor/sky/Entered(atom/movable/AM,atom/oldloc)
-	. = ..()
+	..()
 	if(!does_skyfall)
 		return //We don't do that
 	if(isobserver(AM))
@@ -28,6 +28,11 @@
 		return //Being thrown over, not fallen yet
 	if(!(AM.can_fall()))
 		return // Phased shifted kin should not fall
+	if(istype(AM, /obj/item/projectile))
+		return // pewpew should not fall out of the sky. pew.
+	if(istype(AM, /obj/effect/projectile))
+		return // ...neither should the effects be falling
+
 	var/mob/living/L
 	if(isliving(AM))
 		L = AM

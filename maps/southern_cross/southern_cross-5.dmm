@@ -34,7 +34,7 @@
 /area/derelict/ship)
 "ah" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/firstaid/regular{
+/obj/item/storage/firstaid/regular{
 	pixel_x = 6;
 	pixel_y = -5
 	},
@@ -58,7 +58,7 @@
 /turf/space,
 /area/derelict/ship)
 "ak" = (
-/obj/item/weapon/surgical/scalpel,
+/obj/item/surgical/scalpel,
 /turf/simulated/shuttle/floor/white,
 /area/derelict/ship)
 "al" = (
@@ -115,11 +115,11 @@
 /turf/simulated/shuttle/floor/white,
 /area/derelict/ship)
 "at" = (
-/obj/item/device/multitool,
+/obj/item/multitool,
 /turf/simulated/shuttle/floor/white,
 /area/derelict/ship)
 "au" = (
-/obj/item/weapon/cell{
+/obj/item/cell{
 	charge = 100;
 	maxcharge = 15000
 	},
@@ -183,7 +183,7 @@
 /turf/simulated/shuttle/plating,
 /area/derelict/ship)
 "aD" = (
-/obj/item/weapon/bedsheet,
+/obj/item/bedsheet,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
@@ -208,7 +208,7 @@
 /area/space)
 "aH" = (
 /obj/structure/table/standard,
-/obj/item/weapon/gun/energy/retro,
+/obj/item/gun/energy/retro,
 /turf/simulated/shuttle/floor/white,
 /area/derelict/ship)
 "aI" = (
@@ -233,7 +233,7 @@
 /area/derelict/ship)
 "aK" = (
 /obj/structure/table/standard,
-/obj/item/weapon/tank/oxygen,
+/obj/item/tank/oxygen,
 /turf/simulated/shuttle/floor/white,
 /area/derelict/ship)
 "aL" = (
@@ -258,7 +258,7 @@
 /area/derelict/ship)
 "aN" = (
 /obj/structure/table/standard,
-/obj/item/device/analyzer,
+/obj/item/analyzer,
 /turf/simulated/shuttle/floor/white,
 /area/derelict/ship)
 "aO" = (
@@ -269,7 +269,7 @@
 /area/derelict/ship)
 "aP" = (
 /obj/structure/table/standard,
-/obj/item/weapon/tool/screwdriver,
+/obj/item/tool/screwdriver,
 /obj/machinery/light,
 /turf/simulated/shuttle/floor/white,
 /area/derelict/ship)
@@ -278,7 +278,7 @@
 /turf/simulated/shuttle/floor/white,
 /area/derelict/ship)
 "aT" = (
-/obj/item/weapon/bedsheet,
+/obj/item/bedsheet,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -318,13 +318,13 @@
 /turf/simulated/shuttle/floor/white,
 /area/derelict/ship)
 "aZ" = (
-/obj/item/weapon/material/shard{
+/obj/item/material/shard{
 	icon_state = "medium"
 	},
 /turf/simulated/shuttle/floor/white,
 /area/derelict/ship)
 "ba" = (
-/obj/item/weapon/material/shard,
+/obj/item/material/shard,
 /obj/structure/bed/chair,
 /turf/simulated/shuttle/floor/white,
 /area/derelict/ship)
@@ -345,10 +345,10 @@
 /area/derelict/ship)
 "be" = (
 /obj/structure/table/rack,
-/obj/item/weapon/tank/emergency/oxygen,
-/obj/item/weapon/tank/emergency/oxygen,
-/obj/item/weapon/tank/emergency/oxygen,
-/obj/item/weapon/tank/emergency/oxygen,
+/obj/item/tank/emergency/oxygen,
+/obj/item/tank/emergency/oxygen,
+/obj/item/tank/emergency/oxygen,
+/obj/item/tank/emergency/oxygen,
 /turf/simulated/shuttle/floor/white,
 /area/derelict/ship)
 "bf" = (
@@ -360,7 +360,7 @@
 /area/derelict/ship)
 "bg" = (
 /obj/structure/table/rack,
-/obj/item/weapon/storage/toolbox/syndicate,
+/obj/item/storage/toolbox/syndicate,
 /turf/simulated/shuttle/floor/white,
 /area/derelict/ship)
 "bh" = (
@@ -412,7 +412,7 @@
 /area/derelict/ship)
 "bo" = (
 /obj/structure/table/standard,
-/obj/item/device/radio/off,
+/obj/item/radio/off,
 /turf/simulated/shuttle/floor/white,
 /area/derelict/ship)
 "bp" = (
@@ -422,7 +422,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen/vacuum,
 /area/mine/explored)
 "br" = (
-/obj/item/weapon/ore,
+/obj/item/ore,
 /turf/simulated/mineral/floor/ignore_mapgen/vacuum,
 /area/mine/explored)
 "bs" = (
@@ -449,13 +449,13 @@
 /area/wreck/ufoship)
 "by" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/reagent_containers/syringe/antiviral,
+/obj/item/reagent_containers/syringe/antiviral,
 /obj/item/stack/rods,
 /turf/simulated/floor/airless,
 /area/wreck/ufoship)
 "bz" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/surgical/scalpel/laser3,
+/obj/item/surgical/scalpel/laser3,
 /turf/simulated/floor/tiled/airless,
 /area/wreck/ufoship)
 "bA" = (
@@ -475,7 +475,7 @@
 /turf/simulated/floor/airless,
 /area/wreck/ufoship)
 "bE" = (
-/obj/item/weapon/ore,
+/obj/item/ore,
 /turf/simulated/floor/airless,
 /area/wreck/ufoship)
 "bF" = (
@@ -483,7 +483,7 @@
 /turf/simulated/floor/airless,
 /area/wreck/ufoship)
 "bG" = (
-/obj/item/weapon/surgical/circular_saw,
+/obj/item/surgical/circular_saw,
 /turf/simulated/floor/tiled/airless,
 /area/wreck/ufoship)
 "bH" = (
@@ -508,7 +508,7 @@
 /turf/simulated/floor/airless,
 /area/wreck/ufoship)
 "bM" = (
-/obj/item/weapon/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/mechanical,
 /turf/simulated/floor/airless,
 /area/wreck/ufoship)
 "bN" = (
@@ -531,7 +531,7 @@
 /turf/simulated/floor/tiled/white/airless,
 /area/wreck/ufoship)
 "bR" = (
-/obj/item/weapon/material/shard/shrapnel,
+/obj/item/material/shard/shrapnel,
 /turf/simulated/floor/airless,
 /area/wreck/ufoship)
 "bS" = (
@@ -543,7 +543,7 @@
 /turf/simulated/floor/tiled/white/airless,
 /area/wreck/ufoship)
 "bU" = (
-/obj/item/weapon/ore,
+/obj/item/ore,
 /obj/item/stack/rods,
 /turf/simulated/floor/airless,
 /area/wreck/ufoship)
@@ -560,16 +560,16 @@
 /turf/simulated/floor/tiled/airless,
 /area/wreck/ufoship)
 "bY" = (
-/obj/item/device/flashlight/flare,
+/obj/item/flashlight/flare,
 /turf/simulated/floor/tiled/airless,
 /area/wreck/ufoship)
 "bZ" = (
 /obj/item/stack/material/wood,
 /obj/item/stack/material/wood,
 /obj/structure/ore_box,
-/obj/item/weapon/ore/iron,
-/obj/item/weapon/ore/iron,
-/obj/item/weapon/ore/iron,
+/obj/item/ore/iron,
+/obj/item/ore/iron,
+/obj/item/ore/iron,
 /turf/simulated/floor/airless,
 /area/wreck/ufoship)
 "ca" = (
@@ -608,7 +608,7 @@
 /turf/simulated/floor/reinforced/phoron,
 /area/wreck/ufoship)
 "cd" = (
-/obj/item/device/gps,
+/obj/item/gps,
 /turf/simulated/floor/tiled/airless,
 /area/wreck/ufoship)
 "ce" = (
@@ -616,7 +616,7 @@
 /turf/simulated/floor/airless,
 /area/wreck/ufoship)
 "cf" = (
-/obj/item/weapon/circuitboard/broken,
+/obj/item/circuitboard/broken,
 /turf/simulated/floor/tiled/airless,
 /area/wreck/ufoship)
 "cg" = (
@@ -624,7 +624,7 @@
 /turf/simulated/floor/tiled/airless,
 /area/wreck/ufoship)
 "ch" = (
-/obj/item/weapon/ore,
+/obj/item/ore,
 /turf/simulated/floor/tiled/white/airless,
 /area/wreck/ufoship)
 "ci" = (
@@ -642,14 +642,14 @@
 /area/wreck/ufoship)
 "cl" = (
 /obj/structure/table/rack,
-/obj/item/weapon/tank/jetpack/void,
+/obj/item/tank/jetpack/void,
 /obj/item/clothing/suit/space/syndicate/green,
 /obj/item/clothing/head/helmet/space/syndicate/green,
 /turf/simulated/floor/tiled/airless,
 /area/wreck/ufoship)
 "cm" = (
 /obj/structure/table/rack,
-/obj/item/weapon/material/shard/shrapnel,
+/obj/item/material/shard/shrapnel,
 /turf/simulated/floor/tiled/airless,
 /area/wreck/ufoship)
 "cn" = (
@@ -665,7 +665,7 @@
 /turf/simulated/floor/tiled/airless,
 /area/wreck/ufoship)
 "cp" = (
-/obj/item/weapon/tank/oxygen/yellow,
+/obj/item/tank/oxygen/yellow,
 /turf/simulated/floor/tiled/airless,
 /area/wreck/ufoship)
 "cq" = (
@@ -692,15 +692,15 @@
 /area/wreck/ufoship)
 "cv" = (
 /obj/item/frame/apc,
-/obj/item/weapon/module/power_control,
-/obj/item/weapon/material/shard/shrapnel,
+/obj/item/module/power_control,
+/obj/item/material/shard/shrapnel,
 /turf/simulated/floor/tiled/white/airless,
 /area/wreck/ufoship)
 "cw" = (
 /turf/simulated/wall/r_wall,
 /area/wreck/ufoship)
 "cx" = (
-/obj/item/device/flashlight/glowstick,
+/obj/item/flashlight/glowstick,
 /turf/simulated/floor/tiled/airless,
 /area/wreck/ufoship)
 "cy" = (
@@ -784,7 +784,7 @@
 /turf/simulated/floor/reinforced/phoron,
 /area/wreck/ufoship)
 "cK" = (
-/obj/item/weapon/cell/super,
+/obj/item/cell/super,
 /turf/simulated/floor/tiled/airless,
 /area/wreck/ufoship)
 "cL" = (
@@ -814,7 +814,7 @@
 /area/wreck/ufoship)
 "cQ" = (
 /obj/effect/decal/mecha_wreckage/mauler,
-/obj/item/weapon/material/shard/shrapnel,
+/obj/item/material/shard/shrapnel,
 /turf/simulated/floor/airless,
 /area/wreck/ufoship)
 "cR" = (
@@ -824,11 +824,11 @@
 /area/wreck/ufoship)
 "cS" = (
 /obj/structure/table/rack,
-/obj/item/weapon/storage/toolbox/syndicate,
+/obj/item/storage/toolbox/syndicate,
 /turf/simulated/floor/airless,
 /area/wreck/ufoship)
 "cT" = (
-/obj/item/weapon/circuitboard/teleporter,
+/obj/item/circuitboard/teleporter,
 /turf/simulated/floor/tiled/white/airless,
 /area/wreck/ufoship)
 "cU" = (
@@ -840,7 +840,7 @@
 /turf/simulated/floor/tiled/airless,
 /area/wreck/ufoship)
 "cW" = (
-/obj/item/weapon/ore,
+/obj/item/ore,
 /turf/space,
 /area/space)
 "cX" = (

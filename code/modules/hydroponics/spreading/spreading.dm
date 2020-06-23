@@ -1,7 +1,7 @@
 #define DEFAULT_SEED "glowshroom"
 #define VINE_GROWTH_STAGES 5
 
-/proc/spacevine_infestation(var/potency_min=70, var/potency_max=100, var/maturation_min=5, var/maturation_max=15)
+/proc/spacevine_infestation(var/potency_min=40, var/potency_max=80, var/maturation_min=5, var/maturation_max=15)
 	spawn() //to stop the secrets panel hanging
 		var/list/turf/simulated/floor/turfs = list() //list of all the empty floor turfs in the hallway areas
 		for(var/areapath in typesof(/area/hallway))
@@ -16,6 +16,7 @@
 			seed.set_trait(TRAIT_SPREAD,2)             // So it will function properly as vines.
 			seed.set_trait(TRAIT_POTENCY,rand(potency_min, potency_max)) // 70-100 potency will help guarantee a wide spread and powerful effects.
 			seed.set_trait(TRAIT_MATURATION,rand(maturation_min, maturation_max))
+			seed.set_trait(TRAIT_CARNIVOROUS,rand(5, 20)) // VINES WERE A BIT TOO MURDERHAPPY AT 80~100!!
 			seed.display_name = "strange plants" //more thematic for the vine infestation event
 
 			//make vine zero start off fully matured
@@ -54,10 +55,10 @@
 	pass_flags = PASSTABLE
 	mouse_opacity = 2
 
-	var/health = 10
-	var/max_health = 100
+	var/health = 15
+	var/max_health = 50
 	var/growth_threshold = 0
-	var/growth_type = 0
+	var/growth_type = 1
 	var/max_growth = 0
 	var/list/neighbors = list()
 	var/obj/effect/plant/parent
@@ -92,7 +93,7 @@
 	if(!plant_controller)
 		sleep(250) // ugly hack, should mean roundstart plants are fine. TODO initialize perhaps?
 	if(!plant_controller)
-		world << "<span class='danger'>Plant controller does not exist and [src] requires it. Aborting.</span>"
+		to_chat(world, "<span class='danger'>Plant controller does not exist and [src] requires it. Aborting.</span>")
 		qdel(src)
 		return
 
@@ -109,14 +110,6 @@
 		max_growth = VINE_GROWTH_STAGES
 		growth_threshold = max_health/VINE_GROWTH_STAGES
 		icon = 'icons/obj/hydroponics_vines.dmi'
-		growth_type = 2 // Vines by default.
-		if(seed.get_trait(TRAIT_CARNIVOROUS) >= 2)
-			growth_type = 1 // WOOOORMS.
-		else if(!(seed.seed_noun in list("seeds","pits")))
-			if(seed.seed_noun == "nodes")
-				growth_type = 3 // Biomass
-			else
-				growth_type = 4 // Mold
 	else
 		max_growth = seed.growth_stages
 		growth_threshold = max_health/seed.growth_stages
@@ -124,9 +117,9 @@
 	if(max_growth > 2 && prob(50))
 		max_growth-- //Ensure some variation in final sprite, makes the carpet of crap look less wonky.
 
-	mature_time = world.time + seed.get_trait(TRAIT_MATURATION) + 15 //prevent vines from maturing until at least a few seconds after they've been created.
+	mature_time = world.time + seed.get_trait(TRAIT_MATURATION) + 25 //prevent vines from maturing until at least a few seconds after they've been created.
 	spread_chance = seed.get_trait(TRAIT_POTENCY)
-	spread_distance = ((growth_type>0) ? round(spread_chance*0.6) : round(spread_chance*0.3))
+	spread_distance = ((growth_type>0) ? round(spread_chance*0.72) : round(spread_chance*0.50))
 	update_icon()
 
 // Plants will sometimes be spawned in the turf adjacent to the one they need to end up in, for the sake of correct dir/etc being set.
@@ -178,15 +171,14 @@
 			max_growth--
 	max_growth = max(1,max_growth)
 	if(growth_type > 0)
-		switch(growth_type)
-			if(1)
-				icon_state = "worms"
-			if(2)
-				icon_state = "vines-[growth]"
-			if(3)
-				icon_state = "mass-[growth]"
-			if(4)
-				icon_state = "mold-[growth]"
+		if(TRAIT_POTENCY >= 40 && TRAIT_POTENCY < 50)
+			icon_state = "vines-[growth]"
+		else if(TRAIT_POTENCY >= 50 && TRAIT_POTENCY < 60)
+			icon_state = "mass-[growth]"
+		else if(TRAIT_POTENCY >= 60 && TRAIT_POTENCY < 70)
+			icon_state = "worms"
+		else
+			icon_state = "mold-[growth]"
 	else
 		icon_state = "[seed.get_trait(TRAIT_PLANT_ICON)]-[growth]"
 
@@ -235,23 +227,23 @@
 	floor = 1
 	return 1
 
-/obj/effect/plant/attackby(var/obj/item/weapon/W, var/mob/user)
+/obj/effect/plant/attackby(var/obj/item/W, var/mob/user)
 
 	user.setClickCooldown(user.get_attack_speed(W))
 	plant_controller.add_plant(src)
 
-	if(W.is_wirecutter() || istype(W, /obj/item/weapon/surgical/scalpel))
+	if(W.is_wirecutter() || istype(W, /obj/item/surgical/scalpel))
 		if(sampled)
-			user << "<span class='warning'>\The [src] has already been sampled recently.</span>"
+			to_chat(user, "<span class='warning'>\The [src] has already been sampled recently.</span>")
 			return
 		if(!is_mature())
-			user << "<span class='warning'>\The [src] is not mature enough to yield a sample yet.</span>"
+			to_chat(user, "<span class='warning'>\The [src] is not mature enough to yield a sample yet.</span>")
 			return
 		if(!seed)
-			user << "<span class='warning'>There is nothing to take a sample from.</span>"
+			to_chat(user, "<span class='warning'>There is nothing to take a sample from.</span>")
 			return
 		if(sampled)
-			user << "<span class='danger'>You cannot take another sample from \the [src].</span>"
+			to_chat(user, "<span class='danger'>You cannot take another sample from \the [src].</span>")
 			return
 		if(prob(70))
 			sampled = 1

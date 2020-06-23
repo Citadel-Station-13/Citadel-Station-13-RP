@@ -36,9 +36,6 @@
 /mob/living/silicon/isSynthetic()
 	return 1
 
-/mob/living/carbon/human/isPromethean()
-	return 1
-
 /mob/proc/isMonkey()
 	return 0
 
@@ -56,6 +53,9 @@ proc/isdeaf(A)
 
 /mob/proc/break_cloak()
 	return
+
+/mob/proc/is_cloaked()
+	return FALSE
 
 proc/hasorgans(A) // Fucking really??
 	return ishuman(A)
@@ -84,10 +84,6 @@ proc/getsensorlevel(A)
 
 /proc/is_admin(var/mob/user)
 	return check_rights(R_ADMIN, 0, user) != 0
-
-
-/proc/hsl2rgb(h, s, l)
-	return //TODO: Implement
 
 /*
 	Miss Chance
@@ -140,13 +136,15 @@ proc/getsensorlevel(A)
 		if(target.buckled || target.lying)
 			return zone
 		// if your target is being grabbed aggressively by someone you cannot miss either
-		for(var/obj/item/weapon/grab/G in target.grabbed_by)
+		for(var/obj/item/grab/G in target.grabbed_by)
 			if(G.state >= GRAB_AGGRESSIVE)
 				return zone
 
 	var/miss_chance = 10
 	if (zone in base_miss_chance)
 		miss_chance = base_miss_chance[zone]
+	if (zone == "eyes" || zone == "mouth")
+		miss_chance = base_miss_chance["head"]
 	miss_chance = max(miss_chance + miss_chance_mod, 0)
 	if(prob(miss_chance))
 		if(prob(70))
@@ -158,7 +156,7 @@ proc/getsensorlevel(A)
 /proc/stars(n, pr)
 	if (pr == null)
 		pr = 25
-	if (pr <= 0)
+	if (pr < 0)
 		return null
 	else
 		if (pr >= 100)
@@ -292,9 +290,9 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 		var/x
 		for(x=0; x<duration, x++)
 			if(aiEyeFlag)
-				M.client.eye = locate(dd_range(1,oldeye.loc.x+rand(-strength,strength),world.maxx),dd_range(1,oldeye.loc.y+rand(-strength,strength),world.maxy),oldeye.loc.z)
+				M.client.eye = locate(clamp(oldeye.loc.x+rand(-strength,strength), 1, world.maxx), clamp(oldeye.loc.y+rand(-strength,strength), 1, world.maxy), oldeye.loc.z)
 			else
-				M.client.eye = locate(dd_range(1,M.loc.x+rand(-strength,strength),world.maxx),dd_range(1,M.loc.y+rand(-strength,strength),world.maxy),M.loc.z)
+				M.client.eye = locate(clamp(M.loc.x+rand(-strength,strength), 1, world.maxx), clamp(M.loc.y+rand(-strength,strength), 1, world.maxy), M.loc.z)
 			sleep(1)
 		M.client.eye=oldeye
 		M.shakecamera = 0
@@ -311,20 +309,20 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 	return 0
 
 //converts intent-strings into numbers and back
-var/list/intents = list(I_HELP,I_DISARM,I_GRAB,I_HURT)
+var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 /proc/intent_numeric(argument)
 	if(istext(argument))
 		switch(argument)
-			if(I_HELP)		return 0
-			if(I_DISARM)	return 1
-			if(I_GRAB)		return 2
+			if(INTENT_HELP)		return 0
+			if(INTENT_DISARM)	return 1
+			if(INTENT_GRAB)		return 2
 			else			return 3
 	else
 		switch(argument)
-			if(0)			return I_HELP
-			if(1)			return I_DISARM
-			if(2)			return I_GRAB
-			else			return I_HURT
+			if(0)			return INTENT_HELP
+			if(1)			return INTENT_DISARM
+			if(2)			return INTENT_GRAB
+			else			return INTENT_HARM
 
 //change a mob's act-intent. Input the intent as a string such as "help" or use "right"/"left
 /mob/verb/a_intent_change(input as text)
@@ -333,28 +331,28 @@ var/list/intents = list(I_HELP,I_DISARM,I_GRAB,I_HURT)
 
 	if(isliving(src) && !isrobot(src))
 		switch(input)
-			if(I_HELP,I_DISARM,I_GRAB,I_HURT)
+			if(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 				a_intent = input
-			if("right")
+			if(INTENT_HOTKEY_RIGHT)
 				a_intent = intent_numeric((intent_numeric(a_intent)+1) % 4)
-			if("left")
+			if(INTENT_HOTKEY_LEFT)
 				a_intent = intent_numeric((intent_numeric(a_intent)+3) % 4)
 		if(hud_used && hud_used.action_intent)
 			hud_used.action_intent.icon_state = "intent_[a_intent]"
 
 	else if(isrobot(src))
 		switch(input)
-			if(I_HELP)
-				a_intent = I_HELP
-			if(I_HURT)
-				a_intent = I_HURT
-			if("right","left")
+			if(INTENT_HELP)
+				a_intent = INTENT_HELP
+			if(INTENT_HARM)
+				a_intent = INTENT_HARM
+			if(INTENT_HOTKEY_RIGHT, INTENT_HOTKEY_LEFT)
 				a_intent = intent_numeric(intent_numeric(a_intent) - 3)
 		if(hud_used && hud_used.action_intent)
-			if(a_intent == I_HURT)
-				hud_used.action_intent.icon_state = I_HURT
+			if(a_intent == INTENT_HARM)
+				hud_used.action_intent.icon_state = INTENT_HARM
 			else
-				hud_used.action_intent.icon_state = I_HELP
+				hud_used.action_intent.icon_state = INTENT_HELP
 
 proc/is_blind(A)
 	if(istype(A, /mob/living/carbon))
@@ -421,7 +419,21 @@ proc/is_blind(A)
 					else										// Everyone else (dead people who didn't ghost yet, etc.)
 						lname = name
 				lname = "<span class='name'>[lname]</span> "
-			M << "<span class='deadsay'>" + create_text_tag("dead", "DEAD:", M.client) + " [lname][follow][message]</span>"
+			to_chat(M, "<span class='deadsay'>" + create_text_tag("dead", "DEAD:", M.client) + " [lname][follow][message]</span>")
+
+/proc/say_dead_object(var/message, var/obj/subject = null)
+	for(var/mob/M in player_list)
+		if(M.client && ((!istype(M, /mob/new_player) && M.stat == DEAD) || (M.client.holder && M.client.holder.rights)) && M.is_preference_enabled(/datum/client_preference/show_dsay))
+			var/follow
+			var/lname = "Game Master"
+			if(M.forbid_seeing_deadchat && !M.client.holder)
+				continue
+
+			if(subject)
+				lname = "[subject.name] ([subject.x],[subject.y],[subject.z])"
+
+			lname = "<span class='name'>[lname]</span> "
+			to_chat(M, "<span class='deadsay'>" + create_text_tag("event_dead", "EVENT:", M.client) + " [lname][follow][message]</span>")
 
 //Announces that a ghost has joined/left, mainly for use with wizards
 /proc/announce_ghost_joinleave(O, var/joined_ghosts = 1, var/message = "")
@@ -500,24 +512,24 @@ proc/is_blind(A)
 		return SAFE_PERP
 
 	//Agent cards lower threatlevel.
-	var/obj/item/weapon/card/id/id = GetIdCard()
-	if(id && istype(id, /obj/item/weapon/card/id/syndicate))
+	var/obj/item/card/id/id = GetIdCard()
+	if(id && istype(id, /obj/item/card/id/syndicate))
 		threatcount -= 2
 	// A proper	CentCom id is hard currency.
-	else if(id && istype(id, /obj/item/weapon/card/id/centcom))
+	else if(id && istype(id, /obj/item/card/id/centcom))
 		return SAFE_PERP
 
 	if(check_access && !access_obj.allowed(src))
 		threatcount += 4
 
 	if(auth_weapons && !access_obj.allowed(src))
-		if(istype(l_hand, /obj/item/weapon/gun) || istype(l_hand, /obj/item/weapon/melee))
+		if(istype(l_hand, /obj/item/gun) || istype(l_hand, /obj/item/melee))
 			threatcount += 4
 
-		if(istype(r_hand, /obj/item/weapon/gun) || istype(r_hand, /obj/item/weapon/melee))
+		if(istype(r_hand, /obj/item/gun) || istype(r_hand, /obj/item/melee))
 			threatcount += 4
 
-		if(istype(belt, /obj/item/weapon/gun) || istype(belt, /obj/item/weapon/melee))
+		if(istype(belt, /obj/item/gun) || istype(belt, /obj/item/melee))
 			threatcount += 2
 
 		if(species.name != SPECIES_HUMAN)
@@ -537,19 +549,17 @@ proc/is_blind(A)
 
 	return threatcount
 
-/mob/living/simple_animal/assess_perp(var/obj/access_obj, var/check_access, var/auth_weapons, var/check_records, var/check_arrest)
+/mob/living/simple_mob/assess_perp(var/obj/access_obj, var/check_access, var/auth_weapons, var/check_records, var/check_arrest)
 	var/threatcount = ..()
 	if(. == SAFE_PERP)
 		return SAFE_PERP
 
-	if(!istype(src, /mob/living/simple_animal/retaliate/goat))
-		if(hostile)
-			if(faction != "neutral") // Otherwise Runtime gets killed.
-				threatcount += 4
+	if(has_AI() && ai_holder.hostile && faction != "neutral") // Otherwise Runtime gets killed.
+		threatcount += 4
 	return threatcount
 
 // Beepsky will (try to) only beat 'bad' slimes.
-/mob/living/simple_animal/slime/assess_perp(var/obj/access_obj, var/check_access, var/auth_weapons, var/check_records, var/check_arrest)
+/mob/living/simple_mob/slime/xenobio/assess_perp(var/obj/access_obj, var/check_access, var/auth_weapons, var/check_records, var/check_arrest)
 	var/threatcount = 0
 
 	if(stat == DEAD)
@@ -568,8 +578,10 @@ proc/is_blind(A)
 	if(victim)
 		threatcount += 4
 */
-	if(rabid)
-		threatcount = 10
+	if(has_AI())
+		var/datum/ai_holder/simple_mob/xenobio_slime/AI = ai_holder
+		if(AI.rabid)
+			threatcount = 10
 
 	return threatcount
 

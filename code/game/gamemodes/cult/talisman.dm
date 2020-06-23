@@ -1,4 +1,4 @@
-/obj/item/weapon/paper/talisman
+/obj/item/paper/talisman
 	icon_state = "paper_talisman"
 	origin_tech = list(TECH_ARCANE = 4)
 	var/imbue = null
@@ -30,7 +30,7 @@
 				if("blind")
 					call(/obj/effect/rune/proc/blind)()
 				if("runestun")
-					user << "<span class='warning'>To use this talisman, attack your target directly.</span>"
+					to_chat(user, "<span class='warning'>To use this talisman, attack your target directly.</span>")
 					return
 				if("supply")
 					supply()
@@ -40,7 +40,7 @@
 					qdel(src)
 			return
 		else
-			user << "You see strange symbols on the paper. Are they supposed to mean something?"
+			to_chat(user, "You see strange symbols on the paper. Are they supposed to mean something?")
 			return
 
 
@@ -84,29 +84,29 @@
 		if (href_list["rune"])
 			switch(href_list["rune"])
 				if("newtome")
-					var/obj/item/weapon/paper/talisman/T = new /obj/item/weapon/paper/talisman(get_turf(usr))
+					var/obj/item/paper/talisman/T = new /obj/item/paper/talisman(get_turf(usr))
 					T.imbue = "newtome"
 				if("teleport")
-					var/obj/item/weapon/paper/talisman/T = new /obj/item/weapon/paper/talisman(get_turf(usr))
+					var/obj/item/paper/talisman/T = new /obj/item/paper/talisman(get_turf(usr))
 					T.imbue = "[pick("ire", "ego", "nahlizet", "certum", "veri", "jatkaa", "balaq", "mgar", "karazet", "geeri", "orkan", "allaq")]"
 					T.info = "[T.imbue]"
 				if("emp")
-					var/obj/item/weapon/paper/talisman/T = new /obj/item/weapon/paper/talisman(get_turf(usr))
+					var/obj/item/paper/talisman/T = new /obj/item/paper/talisman(get_turf(usr))
 					T.imbue = "emp"
 				if("conceal")
-					var/obj/item/weapon/paper/talisman/T = new /obj/item/weapon/paper/talisman(get_turf(usr))
+					var/obj/item/paper/talisman/T = new /obj/item/paper/talisman(get_turf(usr))
 					T.imbue = "conceal"
 				if("communicate")
-					var/obj/item/weapon/paper/talisman/T = new /obj/item/weapon/paper/talisman(get_turf(usr))
+					var/obj/item/paper/talisman/T = new /obj/item/paper/talisman(get_turf(usr))
 					T.imbue = "communicate"
 				if("runestun")
-					var/obj/item/weapon/paper/talisman/T = new /obj/item/weapon/paper/talisman(get_turf(usr))
+					var/obj/item/paper/talisman/T = new /obj/item/paper/talisman(get_turf(usr))
 					T.imbue = "runestun"
 				if("armor")
-					var/obj/item/weapon/paper/talisman/T = new /obj/item/weapon/paper/talisman(get_turf(usr))
+					var/obj/item/paper/talisman/T = new /obj/item/paper/talisman(get_turf(usr))
 					T.imbue = "armor"
 				if("soulstone")
-					new /obj/item/device/soulstone(get_turf(usr))
+					new /obj/item/soulstone(get_turf(usr))
 				if("construct")
 					new /obj/structure/constructshell/cult(get_turf(usr))
 			src.uses--
@@ -114,6 +114,6 @@
 		return
 
 
-/obj/item/weapon/paper/talisman/supply
+/obj/item/paper/talisman/supply
 	imbue = "supply"
 	uses = 5

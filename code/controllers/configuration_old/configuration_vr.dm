@@ -9,6 +9,7 @@
 	var/limit_interns = -1 //Unlimited by default
 	var/limit_visitors = -1 //Unlimited by default
 	var/pto_cap = 100 //Hours
+	var/require_flavor = FALSE
 
 /hook/startup/proc/read_vs_config()
 	var/list/Lines = file2list("config/legacy/config.txt")
@@ -41,8 +42,6 @@
 				config_legacy.chat_webhook_key = value
 			if ("engine_map")
 				config_legacy.engine_map = splittext(value, ",")
-			if ("fax_export_dir")
-				config_legacy.fax_export_dir = value
 			if ("items_survive_digestion")
 				config_legacy.items_survive_digestion = 1
 			if ("limit_interns")
@@ -55,4 +54,6 @@
 				config_legacy.time_off = TRUE
 			if ("pto_job_change")
 				config_legacy.pto_job_change = TRUE
+			if ("require_flavor")
+				config_legacy.require_flavor = TRUE
 	return 1

@@ -1,0 +1,4 @@
+author: "Nethaufer"
+delete-after: True
+changes: 
+  - imageadd: "Changed pump and scrubber sprites to versions made by Keekenox"

@@ -8,7 +8,7 @@
 //rotation_speed: how fast to rotate (how many ds should it take for a rotation to complete)
 //rotation_segments: the resolution of the orbit circle, less = a more block circle, this can be used to produce hexagons (6 segments) triangles (3 segments), and so on, 36 is the best default.
 //pre_rotation: Chooses to rotate src 90 degress towards the orbit dir (clockwise/anticlockwise), useful for things to go "head first" like ghosts
-/datum/component/orbiter/Initialize(atom/movable/orbiter, radius, clockwise, rotation_speed, rotation_segments, pre_rotation)
+/datum/component/orbiter/Initialize(atom/movable/orbiter, radius, clockwise, rotation_speed, rotation_segments, pre_rotation, actually_orbit = TRUE)
 	if(!istype(orbiter) || !isatom(parent) || isarea(parent))
 		return COMPONENT_INCOMPATIBLE
 
@@ -17,17 +17,19 @@
 	var/atom/master = parent
 	master.orbiters = src
 
-	begin_orbit(orbiter, radius, clockwise, rotation_speed, rotation_segments, pre_rotation)
+	begin_orbit(orbiter, radius, clockwise, rotation_speed, rotation_segments, pre_rotation, actually_orbit)
 
 /datum/component/orbiter/RegisterWithParent()
+	. = ..()
 	var/atom/target = parent
-	while(ismovableatom(target))
+	while(ismovable(target))
 		RegisterSignal(target, COMSIG_MOVABLE_MOVED, .proc/move_react)
 		target = target.loc
 
 /datum/component/orbiter/UnregisterFromParent()
+	. = ..()
 	var/atom/target = parent
-	while(ismovableatom(target))
+	while(ismovable(target))
 		UnregisterSignal(target, COMSIG_MOVABLE_MOVED)
 		target = target.loc
 
@@ -39,9 +41,9 @@
 	orbiters = null
 	return ..()
 
-/datum/component/orbiter/InheritComponent(datum/component/orbiter/newcomp, original, list/arguments)
-	if(arguments)
-		begin_orbit(arglist(arguments))
+/datum/component/orbiter/InheritComponent(datum/component/orbiter/newcomp, original, atom/movable/orbiter, radius, clockwise, rotation_speed, rotation_segments, pre_rotation, actually_orbit = TRUE)
+	if(!newcomp)
+		begin_orbit(arglist(args.Copy(3)))
 		return
 	// The following only happens on component transfers
 	orbiters += newcomp.orbiters
@@ -51,7 +53,7 @@
 		return COMPONENT_INCOMPATIBLE
 	move_react()
 
-/datum/component/orbiter/proc/begin_orbit(atom/movable/orbiter, radius, clockwise, rotation_speed, rotation_segments, pre_rotation)
+/datum/component/orbiter/proc/begin_orbit(atom/movable/orbiter, radius, clockwise, rotation_speed, rotation_segments, pre_rotation, actually_orbit = TRUE)
 	if(orbiter.orbiting)
 		if(orbiter.orbiting == src)
 			orbiter.orbiting.end_orbit(orbiter, TRUE)
@@ -59,26 +61,26 @@
 			orbiter.orbiting.end_orbit(orbiter)
 	orbiters[orbiter] = TRUE
 	orbiter.orbiting = src
+	orbiter.start_orbit(src)
 	RegisterSignal(orbiter, COMSIG_MOVABLE_MOVED, .proc/orbiter_move_react)
-	var/matrix/initial_transform = matrix(orbiter.transform)
+	if(actually_orbit)
+		var/matrix/initial_transform = matrix(orbiter.transform)
 
-	// Head first!
-	if(pre_rotation)
-		var/matrix/M = matrix(orbiter.transform)
-		var/pre_rot = 90
-		if(!clockwise)
-			pre_rot = -90
-		M.Turn(pre_rot)
-		orbiter.transform = M
+		// Head first!
+		if(pre_rotation)
+			var/matrix/M = matrix(orbiter.transform)
+			var/pre_rot = 90
+			if(!clockwise)
+				pre_rot = -90
+			M.Turn(pre_rot)
+			orbiter.transform = M
 
-	var/matrix/shift = matrix(orbiter.transform)
-	shift.Translate(0, radius)
-	orbiter.transform = shift
-
-	orbiter.SpinAnimation(rotation_speed, -1, clockwise, rotation_segments, parallel = FALSE)
-
-	//we stack the orbits up client side, so we can assign this back to normal server side without it breaking the orbit
-	orbiter.transform = initial_transform
+		var/matrix/shift = matrix(orbiter.transform)
+		shift.Translate(0, radius)
+		orbiter.transform = shift
+		orbiter.SpinAnimation(rotation_speed, -1, clockwise, rotation_segments, parallel = FALSE)
+		//we stack the orbits up client side, so we can assign this back to normal server side without it breaking the orbit
+		orbiter.transform = initial_transform
 	orbiter.forceMove(get_turf(parent))
 	to_chat(orbiter, "<span class='notice'>Now orbiting [parent].</span>")
 
@@ -109,12 +111,12 @@
 	// These are prety rarely activated, how often are you following something in a bag?
 	if(oldloc && !isturf(oldloc)) // We used to be registered to it, probably
 		var/atom/target = oldloc
-		while(ismovableatom(target))
+		while(ismovable(target))
 			UnregisterSignal(target, COMSIG_MOVABLE_MOVED)
 			target = target.loc
 	if(orbited?.loc && orbited.loc != newturf) // We want to know when anything holding us moves too
 		var/atom/target = orbited.loc
-		while(ismovableatom(target))
+		while(ismovable(target))
 			RegisterSignal(target, COMSIG_MOVABLE_MOVED, .proc/move_react, TRUE)
 			target = target.loc
 
@@ -135,15 +137,17 @@
 	end_orbit(orbiter)
 
 /////////////////////
-
-/atom/movable/proc/orbit(atom/A, radius = 10, clockwise = FALSE, rotation_speed = 20, rotation_segments = 36, pre_rotation = TRUE)
+/atom/movable/proc/orbit(atom/A, radius = 10, clockwise = FALSE, rotation_speed = 20, rotation_segments = 36, pre_rotation = TRUE, actually_orbit = TRUE)
 	if(!istype(A) || !get_turf(A) || A == src)
 		return
 
-	return A.AddComponent(/datum/component/orbiter, src, radius, clockwise, rotation_speed, rotation_segments, pre_rotation)
+	return A.AddComponent(/datum/component/orbiter, src, radius, clockwise, rotation_speed, rotation_segments, pre_rotation, actually_orbit)
+
+/atom/movable/proc/start_orbit(datum/component/orbiter/orbits)
+	return
 
 /atom/movable/proc/stop_orbit(datum/component/orbiter/orbits)
-	return // We're just a simple hook
+	return
 
 /atom/proc/transfer_observers_to(atom/target)
 	if(!orbiters || !istype(target) || !get_turf(target) || target == src)
