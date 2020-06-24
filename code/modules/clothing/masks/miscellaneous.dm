@@ -359,7 +359,7 @@
 	cell.use(power_use)
 	if(!cell.charge)
 		turn_off(null, TRUE)
-	if(isliving(loc) && prob(5))
+	if(isliving(loc) && prob(1))
 		give_flavor_feedback(loc)
 
 /obj/item/clothing/mask/rebreather/attack_hand(mob/living/user)
