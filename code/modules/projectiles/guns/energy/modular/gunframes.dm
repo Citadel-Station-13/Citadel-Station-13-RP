@@ -40,6 +40,7 @@
 	name = "compact modular energy pistol"
 	desc = "A compact energy pistol that can fit into a pocket. However, only the laser core can be replaced. All the other components are purpose-built for their size and are integrated into the frame."
 	icon_state = "taserblue"
+	w_class = ITEMSIZE_SMALL
 	lasercooler = /obj/item/modularlaser/cooling/lame/integral
 	lasercap = /obj/item/modularlaser/capacitor/simple/integral
 	circuit = /obj/item/modularlaser/controller/basic/integral
