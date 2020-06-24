@@ -181,3 +181,9 @@
 	sort_category = "Donator"
 	path = /obj/item/toy/kepytw
 	ckeywhitelist = list("kepytw")
+
+/datum/gear/donator/chaoterobe
+	display_name = "Chaote Robe"
+	sort_category = "Donator"
+	path = /obj/item/clothing/suit/storage/hooded/techpriest/chaos
+	ckeywhitelist = list("blackmajor") //loburd
