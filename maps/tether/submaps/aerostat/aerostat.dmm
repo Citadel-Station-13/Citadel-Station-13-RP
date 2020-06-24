@@ -811,7 +811,7 @@
 /area/shuttle/aerostat/docked)
 "ck" = (
 /turf/unsimulated/floor/sky/virgo2_sky,
-/area/shuttle/excursion/tether_dockarm)
+/area/shuttle/excursion/away_aerostat)
 "cl" = (
 /obj/machinery/light,
 /turf/simulated/shuttle/floor/yellow,
