@@ -263,7 +263,7 @@
 	icon_state = "emitter"
 	fire_sound = 'sound/weapons/emitter.ogg'
 	light_color = "#00CC33"
-	damage = 20 //mining tool
+	damage = 1 //mining tool
 	excavation_amount = 500	// 1 shot to dig a standard rock turf. Made for mining.
 
 	muzzle_type = /obj/effect/projectile/muzzle/emitter

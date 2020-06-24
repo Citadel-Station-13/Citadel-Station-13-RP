@@ -177,6 +177,9 @@
 			circuit = null
 		generatefiremodes()
 	if(istype(O, /obj/item/modularlaser))
+		if(assembled == TRUE)
+			to_chat(user, "<span class='warning'>Open the [src] first!</span>")
+			return
 		var/obj/item/modularlaser/ML = O
 		if(istype(ML,/obj/item/modularlaser/lasermedium))
 			var/obj/item/modularlaser/lasermedium/med = ML

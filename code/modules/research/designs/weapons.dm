@@ -568,7 +568,7 @@
 /datum/design/item/modweaponnodule/lightning
 	name = "lightning arc tube"
 	id = "lightning"
-	req_tech = list(TECH_MAGNET = 8, TECH_POWER = 8)
+	req_tech = list(TECH_MAGNET = 6, TECH_POWER = 7)
 	materials = list(DEFAULT_WALL_MATERIAL = 8000, MAT_GLASS = 8000, MAT_SILVER = 4000, MAT_GOLD = 4000)
 	build_path = /obj/item/modularlaser/lasermedium/lightning
 	sort_string = "MAVEL"
@@ -576,7 +576,7 @@
 /datum/design/item/modweaponnodule/hook
 	name = "graviton grapple tube"
 	id = "hook"
-	req_tech = list(TECH_ARCANE = 7, TECH_POWER = 2)
+	req_tech = list(TECH_ARCANE = 4, TECH_POWER = 2)
 	materials =list(DEFAULT_WALL_MATERIAL = 8000, MAT_GLASS = 8000, MAT_MORPHIUM = 4000, MAT_VERDANTIUM = 4000)
 	build_path = /obj/item/modularlaser/lasermedium/hook
 	sort_string = "MAVEM"

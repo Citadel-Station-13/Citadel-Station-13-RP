@@ -6,8 +6,8 @@
 
 /obj/item/gun/energy/modular/basic/Initialize()
 	..()
-	lasercap = new(src)
-	circuit = new(src)
+	lasercap = new lasercap(src)
+	circuit = new circuit(src)
 
 /obj/item/gun/energy/modular/advanced
 	name = "advanced modular energy pistol"
@@ -22,7 +22,7 @@
 
 /obj/item/gun/energy/modular/carbine/Initialize()
 	..()
-	lasercooler = new(src)
+	lasercooler = new lasercooler(src)
 
 /obj/item/gun/energy/modular/rifle
 	name = "modular energy rifle"
@@ -47,10 +47,10 @@
 
 /obj/item/gun/energy/modular/compact/Initialize()
 	..()
-	lasercap = new(src)
-	circuit = new(src)
-	lasercooler = new(src)
-	laserlens = new(src)
+	lasercap = new lasercap(src)
+	circuit = new circuit(src)
+	lasercooler = new lasercooler(src)
+	laserlens = new laserlens(src)
 
 /obj/item/gun/energy/modular/rifle/scatter
 	name = "modular energy scattergun"
@@ -59,7 +59,7 @@
 
 /obj/item/gun/energy/modular/rifle/scatter/Initialize()
 	..()
-	laserlens = new(src)
+	laserlens = new laserlens(src)
 
 /obj/item/gun/energy/modular/cannon
 	name = "modular energy cannon"
@@ -74,8 +74,8 @@
 
 /obj/item/gun/energy/modular/cannon/Initialize()
 	..()
-	lasercap = new(src)
-	circuit = new(src)
+	lasercap = new lasercap(src)
+	circuit = new circuit(src)
 
 /obj/item/cell/device/weapon/modcannon
 	charge = 4800
@@ -93,4 +93,4 @@
 
 /obj/item/gun/energy/modular/cannon/Initialize()
 	..()
-	circuit = new(src)
+	circuit = new circuit(src)

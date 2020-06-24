@@ -45,8 +45,8 @@
 /obj/item/modularlaser/lasermedium/laser
 	name = "laser beam medium"
 	desc = "Allows a modular energy gun to fire basic laser beams."
-	beamtype = /obj/item/projectile/beam/stun
-	scatterbeam = /obj/item/projectile/scatter/stun
+	beamtype = /obj/item/projectile/beam
+	scatterbeam = /obj/item/projectile/scatter/laser
 	beamcost = 240
 	firename = "lethal"
 
@@ -102,7 +102,7 @@
 	desc = "Allows a modular energy gun to fire excavation laser beams. Yours is the beam that will pierce the heavens!"
 	beamtype = /obj/item/projectile/beam/excavation
 	scatterbeam = /obj/item/projectile/scatter/excavation
-	beamcost = 480 //big cost. Going to want to bring this one down.
+	beamcost = 12
 	firename = "excavate"
 
 /obj/item/modularlaser/lasermedium/lightning
