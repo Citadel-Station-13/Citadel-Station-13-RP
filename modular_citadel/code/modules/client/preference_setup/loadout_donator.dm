@@ -177,7 +177,7 @@
 	ckeywhitelist = list("hjorthorn")
 
 /datum/gear/donator/kepytw
-	display_name = "Teshari Hatcling Care Kit"
+	display_name = "Teshari Hatchling Care Kit"
 	sort_category = "Donator"
 	path = /obj/item/toy/kepytw
 	ckeywhitelist = list("kepytw")

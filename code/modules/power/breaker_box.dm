@@ -19,6 +19,7 @@
 	var/directions = list(1,2,4,8,5,6,9,10)
 	var/RCon_tag = "NO_TAG"
 	var/update_locked = 0
+	var/datum/wires/breakerbox/wires
 
 /obj/machinery/power/breakerbox/Destroy()
 	for(var/obj/structure/cable/C in src.loc)
@@ -29,6 +30,7 @@
 
 /obj/machinery/power/breakerbox/Initialize()
 	. = ..()
+	wires = new(src)
 	default_apply_parts()
 
 /obj/machinery/power/breakerbox/activated
@@ -104,6 +106,8 @@
 		return
 	if(default_part_replacement(user, W))
 		return
+	if(W.is_multitool() || W.is_wirecutter() && panel_open)
+		wires.Interact(user)
 
 /obj/machinery/power/breakerbox/proc/set_state(var/state)
 	on = state
