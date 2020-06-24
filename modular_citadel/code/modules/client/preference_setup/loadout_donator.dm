@@ -186,4 +186,4 @@
 	display_name = "Chaote Robe"
 	sort_category = "Donator"
 	path = /obj/item/clothing/suit/storage/hooded/techpriest/chaos
-	ckeywhitelist = list("blackmajor") //loburd
+	ckeywhitelist = list("loburd")
