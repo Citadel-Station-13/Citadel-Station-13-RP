@@ -28,7 +28,7 @@
 
 // Atmospherics primary gas tanks
 /// Atmospherics N2O gas tank
-#define GAS_STRING_PRIMARY_TANK_N2O							"n2=100000;TEMP=293.15"
+#define GAS_STRING_PRIMARY_TANK_N2O							"n2o=100000;TEMP=293.15"
 /// Atmospherics CO2 gas tank
 #define GAS_STRING_PRIMARY_TANK_CO2							"co2=50000;TEMP=293.15"
 /// Atmospherics phoron gas tank
