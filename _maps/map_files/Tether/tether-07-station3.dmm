@@ -23430,7 +23430,6 @@
 /turf/simulated/open,
 /area/medical/surgery_hallway)
 "My" = (
-/obj/structure/flora/pottedplant/stoutbush,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 9
 	},
@@ -23444,12 +23443,12 @@
 /obj/machinery/camera/network/medbay{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/white,
-/area/crew_quarters/heads/cmo)
-"Mz" = (
 /obj/structure/filingcabinet/chestdrawer{
 	dir = 1
 	},
+/turf/simulated/floor/tiled/white,
+/area/crew_quarters/heads/cmo)
+"Mz" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
 	},
@@ -23458,6 +23457,11 @@
 	},
 /obj/machinery/alarm{
 	pixel_y = 22
+	},
+/obj/structure/table/glass,
+/obj/machinery/computer/skills{
+	pixel_x = -6;
+	pixel_y = -3
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/heads/cmo)
@@ -23472,10 +23476,6 @@
 	},
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 1
-	},
-/obj/machinery/computer/skills{
-	pixel_x = -6;
-	pixel_y = -3
 	},
 /obj/machinery/requests_console{
 	announcementConsole = 1;
@@ -23515,6 +23515,8 @@
 /obj/item/book/manual/standard_operating_procedure,
 /obj/item/healthanalyzer/improved,
 /obj/item/storage/fancy/vials,
+/obj/item/clothing/mask/surgical,
+/obj/item/storage/secure/briefcase/ml3m_pack_cmo,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/heads/cmo)
 "MD" = (
@@ -24305,6 +24307,7 @@
 /obj/effect/floor_decal/corner/paleblue/bordercorner2{
 	dir = 6
 	},
+/obj/structure/flora/pottedplant/stoutbush,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/heads/cmo)
 "ND" = (
