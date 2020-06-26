@@ -11128,10 +11128,6 @@
 /obj/effect/floor_decal/corner/black/diagonal,
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/kitchen)
-"tQ" = (
-/obj/machinery/light,
-/turf/simulated/wall,
-/area/crew_quarters/bar)
 "tR" = (
 /obj/machinery/firealarm{
 	dir = 1;
@@ -22964,6 +22960,9 @@
 	id = "barsign1";
 	pixel_x = -7;
 	pixel_y = -26
+	},
+/obj/machinery/light{
+	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
@@ -40850,7 +40849,7 @@ sr
 UU
 Qp
 QE
-tQ
+rJ
 rJ
 ac
 ac
