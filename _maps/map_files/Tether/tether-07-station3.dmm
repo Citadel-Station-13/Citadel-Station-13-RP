@@ -1995,7 +1995,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hos)
 "ds" = (
 /turf/simulated/floor/wood,
@@ -2013,7 +2013,7 @@
 	pixel_y = -32
 	},
 /obj/item/book/manual/standard_operating_procedure,
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hos)
 "dv" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
@@ -2478,7 +2478,7 @@
 	icon_state = "1-8"
 	},
 /obj/machinery/hologram/holopad,
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hos)
 "em" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -5574,7 +5574,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hos)
 "jn" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -5591,7 +5591,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
 "jo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -5729,10 +5729,8 @@
 /turf/simulated/floor/tiled,
 /area/security/hallwayaux)
 "jB" = (
-/mob/living/simple_mob/animal/passive/bird/parrot/poly{
-	desc = "It's Poly! Wait.. wasn't he the chief engineers pet...?"
-	},
-/turf/simulated/floor/tiled/dark,
+/mob/living/simple_mob/animal/passive/dog/pug/SirPogsley,
+/turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
 "jC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -6083,7 +6081,7 @@
 	dir = 4;
 	pixel_x = -28
 	},
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hos)
 "ki" = (
 /obj/structure/closet/crate,
@@ -6174,15 +6172,17 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hos)
 "kt" = (
+/obj/structure/disposalpipe/segment,
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/dark,
+/obj/structure/dogbed,
+/turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hos)
 "ku" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -6330,7 +6330,7 @@
 /obj/machinery/camera/network/security{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
 "kG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -18740,6 +18740,8 @@
 /turf/simulated/floor/tiled,
 /area/tether/station/stairs_three)
 "EG" = (
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/corner/paleblue/border,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 8
 	},
@@ -18750,6 +18752,8 @@
 /area/medical/reception)
 "EH" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/corner/paleblue/border,
 /turf/simulated/floor/wood/sif,
 /area/medical/reception)
 "EI" = (
@@ -18784,6 +18788,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals6{
 	dir = 1
 	},
+/obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
 "EN" = (
@@ -19127,14 +19132,16 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/photocopier,
 /obj/structure/window/reinforced{
 	dir = 1
+	},
+/obj/structure/filingcabinet/medical{
+	desc = "A large cabinet with hard copy medical records.";
+	name = "Medical Records"
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
 "Fw" = (
-/obj/machinery/hologram/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
@@ -19144,6 +19151,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/machinery/photocopier,
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
 "Fx" = (
@@ -19185,6 +19193,12 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 8
 	},
 /turf/simulated/floor/wood/sif,
 /area/medical/reception)
@@ -19611,9 +19625,12 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/structure/bed/chair/office/light,
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
 "Gp" = (
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/corner/paleblue/border,
 /turf/simulated/floor/wood/sif,
 /area/medical/reception)
 "Gq" = (
@@ -19957,13 +19974,29 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
 	},
-/obj/structure/filingcabinet/medical{
-	desc = "A large cabinet with hard copy medical records.";
-	name = "Medical Records"
-	},
 /obj/machinery/firealarm{
 	dir = 8;
 	pixel_x = -24
+	},
+/obj/structure/table/glass,
+/obj/item/paper{
+	desc = "";
+	info = "Bodies designed on the design console must be saved to a disk, provided on the front desk counter, then placed into the resleeving console for printing.";
+	name = "Body Designer Note"
+	},
+/obj/item/sleevemate,
+/obj/item/storage/box/body_record_disk,
+/obj/item/radio{
+	pixel_x = 4;
+	pixel_y = -4
+	},
+/obj/item/radio{
+	pixel_x = 4;
+	pixel_y = -4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
@@ -19972,8 +20005,11 @@
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
+	dir = 4
+	},
+/obj/structure/table/glass,
+/obj/machinery/computer/med_data/laptop{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
@@ -19986,6 +20022,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
 "GX" = (
@@ -19999,11 +20036,23 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 1
 	},
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 9
+	},
 /turf/simulated/floor/wood/sif,
 /area/medical/reception)
 "GY" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorwhite/corner{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/bordercorner{
+	dir = 1
 	},
 /turf/simulated/floor/wood/sif,
 /area/medical/reception)
@@ -20434,21 +20483,9 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 10
 	},
-/obj/structure/table/glass,
-/obj/item/storage/box/body_record_disk,
-/obj/item/paper{
-	desc = "";
-	info = "Bodies designed on the design console must be saved to a disk, provided on the front desk counter, then placed into the resleeving console for printing.";
-	name = "Body Designer Note"
-	},
-/obj/item/sleevemate,
-/obj/item/radio{
-	pixel_x = 4;
-	pixel_y = -4
-	},
-/obj/item/radio{
-	pixel_x = 4;
-	pixel_y = -4
+/obj/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
@@ -20465,10 +20502,6 @@
 	dir = 1;
 	pixel_y = -22
 	},
-/obj/structure/disposalpipe/trunk{
-	dir = 1
-	},
-/obj/machinery/disposal,
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
 "HO" = (
@@ -20488,15 +20521,17 @@
 "HP" = (
 /obj/effect/floor_decal/corner/paleblue/bordercorner2,
 /obj/effect/floor_decal/corner/paleblue/bordercorner2,
-/obj/effect/floor_decal/borderfloorwhite,
-/obj/effect/floor_decal/borderfloorwhite/corner2,
-/obj/effect/floor_decal/corner/paleblue/bordercorner2,
-/obj/effect/floor_decal/corner/paleblue/border,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
 /obj/structure/bed/chair/comfy/black{
 	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 10
 	},
 /turf/simulated/floor/wood/sif,
 /area/medical/reception)
@@ -27303,6 +27338,15 @@
 "Tf" = (
 /turf/simulated/mineral/floor/vacuum,
 /area/space)
+"Tp" = (
+/obj/effect/floor_decal/borderfloorwhite/corner{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue/bordercorner{
+	dir = 8
+	},
+/turf/simulated/floor/wood/sif,
+/area/medical/reception)
 "Tr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -27555,6 +27599,15 @@
 	},
 /turf/simulated/open,
 /area/medical/psych_ward)
+"Uv" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 8
+	},
+/turf/simulated/floor/wood/sif,
+/area/medical/reception)
 "Uy" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 8
@@ -36439,9 +36492,9 @@ Bs
 Cm
 Dl
 DQ
-Gp
+Tp
 Fz
-Gp
+Uv
 GY
 HQ
 Iy
@@ -37115,7 +37168,7 @@ iR
 cq
 jm
 dr
-dr
+kt
 el
 kh
 ks
@@ -37256,11 +37309,11 @@ iF
 iR
 cs
 jn
-jB
+ds
 jM
 jW
 jM
-kt
+kv
 kF
 je
 lf
@@ -37540,7 +37593,7 @@ bu
 iR
 cq
 jp
-ds
+jB
 jO
 cO
 eE
