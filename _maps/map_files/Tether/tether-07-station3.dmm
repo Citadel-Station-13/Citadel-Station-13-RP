@@ -27143,7 +27143,7 @@
 	},
 /obj/structure/window/reinforced,
 /turf/simulated/floor/plating,
-/area/mine/explored/upper_level)
+/area/medical/exam_room)
 "Sn" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -27288,7 +27288,7 @@
 	pixel_y = 4
 	},
 /turf/simulated/floor/carpet/blue,
-/area/mine/explored/upper_level)
+/area/medical/exam_room)
 "SW" = (
 /turf/simulated/mineral/vacuum,
 /area/space)
@@ -27369,7 +27369,7 @@
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/pink/border,
 /turf/simulated/floor/wood,
-/area/mine/explored/upper_level)
+/area/medical/exam_room)
 "Tu" = (
 /obj/machinery/light,
 /obj/effect/floor_decal/steeldecal/steel_decals4,
@@ -27392,7 +27392,7 @@
 	name = "Medical Forms"
 	},
 /turf/simulated/floor/wood,
-/area/mine/explored/upper_level)
+/area/medical/exam_room)
 "Tz" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 10
@@ -27876,10 +27876,10 @@
 	dir = 8
 	},
 /turf/simulated/floor/wood,
-/area/mine/explored/upper_level)
+/area/medical/exam_room)
 "VC" = (
 /turf/simulated/wall,
-/area/mine/explored/upper_level)
+/area/medical/exam_room)
 "VE" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 5
@@ -28216,9 +28216,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
-"Xe" = (
-/turf/simulated/floor/carpet/blue,
-/area/mine/explored/upper_level)
 "Xf" = (
 /obj/effect/floor_decal/borderfloorwhite/corner,
 /obj/effect/floor_decal/corner/brown/bordercorner,
@@ -28317,7 +28314,7 @@
 	pixel_y = 4
 	},
 /turf/simulated/floor/wood,
-/area/mine/explored/upper_level)
+/area/medical/exam_room)
 "XG" = (
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled,
@@ -28670,7 +28667,7 @@
 	pixel_y = 5
 	},
 /turf/simulated/floor/wood,
-/area/mine/explored/upper_level)
+/area/medical/exam_room)
 "Zk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -37725,7 +37722,7 @@ Px
 PR
 Qr
 Qr
-Xe
+Qr
 Tt
 Sk
 vt
