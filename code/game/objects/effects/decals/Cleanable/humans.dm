@@ -52,7 +52,7 @@ var/global/list/image/splatter_cache=list()
 					if (B.blood_DNA)
 						blood_DNA |= B.blood_DNA.Copy()
 					qdel(B)
-	addtimer(CALLBACK(src, .dry), DRYING_TIME * (amount + 1))
+	addtimer(CALLBACK(src, .proc/dry), DRYING_TIME * (amount + 1))
 
 /obj/effect/decal/cleanable/blood/update_icon()
 	if(basecolor == "rainbow")
