@@ -103,6 +103,8 @@
 
 /obj/structure/bed/chair/wheelchair/Move()
 	..()
+	if(world.time < last_active_move + move_delay)
+		return
 	if(has_buckled_mobs())
 		for(var/A in buckled_mobs)
 			var/mob/living/occupant = A
@@ -124,6 +126,7 @@
 			else
 				if (occupant && (src.loc != occupant.loc))
 					src.forceMove(occupant.loc) // Failsafe to make sure the wheelchair stays beneath the occupant after driving
+		last_active_move = world.time
 
 /obj/structure/bed/chair/wheelchair/attack_hand(mob/living/user as mob)
 	if (pulling_along)
