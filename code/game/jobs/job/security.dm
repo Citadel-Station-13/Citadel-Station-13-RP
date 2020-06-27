@@ -54,8 +54,8 @@
 	supervisors = "the head of security"
 	selection_color = "#601C1C"
 	idtype = /obj/item/card/id/security/detective
-	access = list(access_security, access_sec_doors, access_forensics_lockers, access_morgue, access_maint_tunnels, access_eva, access_external_airlocks)
-	minimal_access = list(access_security, access_sec_doors, access_forensics_lockers, access_morgue, access_maint_tunnels, access_eva, access_external_airlocks)
+	access = list(access_security, access_medical, access_engine, access_research, access_sec_doors, access_forensics_lockers, access_morgue, access_maint_tunnels, access_eva, access_external_airlocks)
+	minimal_access = list(access_security, access_engine, access_research, access_medical, access_sec_doors, access_forensics_lockers, access_morgue, access_maint_tunnels, access_eva, access_external_airlocks)
 	economic_modifier = 5
 	minimal_player_age = 3
 	outfit_type = /decl/hierarchy/outfit/job/security/detective
@@ -73,8 +73,8 @@
 	selection_color = "#601C1C"
 	idtype = /obj/item/card/id/security/officer
 	economic_modifier = 4
-	access = list(access_security, access_eva, access_sec_doors, access_brig, access_maint_tunnels, access_morgue, access_external_airlocks)
-	minimal_access = list(access_security, access_eva, access_sec_doors, access_brig, access_maint_tunnels, access_external_airlocks)
+	access = list(access_security, access_engine, access_research, access_medical, access_eva, access_sec_doors, access_brig, access_maint_tunnels, access_morgue, access_external_airlocks)
+	minimal_access = list(access_security, access_engine, access_research, access_medical, access_eva, access_sec_doors, access_brig, access_maint_tunnels, access_external_airlocks)
 	minimal_player_age = 3
 	outfit_type = /decl/hierarchy/outfit/job/security/officer
 	alt_titles = list("Junior Officer")

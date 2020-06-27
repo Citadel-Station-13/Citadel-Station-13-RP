@@ -16014,6 +16014,13 @@
 /obj/item/radio/intercom{
 	pixel_y = -24
 	},
+/obj/structure/table/rack,
+/obj/item/tank/oxygen{
+	pixel_y = -4
+	},
+/obj/item/tank/oxygen{
+	pixel_y = -4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/medical/medbay_emt_bay)
 "Bv" = (
@@ -16022,6 +16029,8 @@
 /obj/structure/closet/fireaxecabinet{
 	pixel_y = -32
 	},
+/obj/structure/table/rack,
+/obj/item/rig/medical/equipped,
 /turf/simulated/floor/tiled/dark,
 /area/medical/medbay_emt_bay)
 "Bw" = (
