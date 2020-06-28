@@ -290,6 +290,8 @@
 		attached_lock.controller_lock = 0
 		attached_lock.stored_dna = list()
 		return 1
+	if(pin)
+		pin.emag_act(remaining_charges, user)
 
 /obj/item/gun/MouseDrop(obj/over_object as obj)
 	if(!canremove)

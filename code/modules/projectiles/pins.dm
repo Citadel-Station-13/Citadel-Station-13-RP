@@ -41,15 +41,6 @@
 			else
 				to_chat(user, "<span class ='notice'>This firearm already has a firing pin installed.</span>")
 
-/obj/item/firing_pin/emag_act(mob/user)
-	. = ..()
-	if(emagged)
-		to_chat(user, "<span class='notice'>It's already emagged.</span>")
-		return
-	emagged = 1
-	to_chat(user, "<span class='notice'>You override the authentication mechanism.</span>")
-	return TRUE
-
 /obj/item/firing_pin/proc/gun_insert(mob/living/user, obj/item/gun/G)
 	user.drop_item()
 	forceMove(G)
@@ -198,6 +189,13 @@
 		return FALSE
 	return TRUE
 
+//Allows swiping an armoury access ID on an explorer locked gun to unlock it
+/obj/item/gun/attackby(obj/item/I, mob/user)
+	if((istype(I, /obj/item/card/id)) && pin)
+		pin.attackby(I, user)
+	else
+		return ..()
+
 /obj/item/firing_pin/explorer/attackby(obj/item/card/ID, mob/user)
 	..()
 	if(check_access(ID))
@@ -207,10 +205,10 @@
 		to_chat(user, "<span class='warning'>Access denied.</span>")
 	user.visible_message("<span class='notice'>[user] swipes \the [ID] against \the [src].</span>")
 
-//Allows swiping an armoury access ID on an explorer locked gun to unlock it
-/obj/item/gun/attackby(obj/item/I, mob/user)
-	..()
-	if((istype(I, /obj/item/card)) && pin)
-		pin.attackby(I, user)
-	else
-		return ..()
+/obj/item/firing_pin/emag_act(var/remaining_charges, var/mob/user)
+	if(emagged)
+		to_chat(user, "<span class='notice'>It's already emagged.</span>")
+		return
+	emagged = 1
+	to_chat(user, "<span class='notice'>You override the authentication mechanism.</span>")
+	return TRUE
