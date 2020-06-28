@@ -6,6 +6,8 @@
 #define Z_LEVEL_SURFACE_UNDER				1
 #define Z_LEVEL_SURFACE_LOW					2
 #define Z_LEVEL_SURFACE_MID					3
+#define Z_LEVEL_CENTCOM						4
+#define Z_LEVEL_MISC						5
 
 /datum/map/boreas
 	name = "Boreas"
@@ -86,14 +88,12 @@
 		)
 
 	lateload_single_pick = null //Nothing right now.
+*/
 
 /datum/map/boreas/perform_map_generation()
 
-	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_SURFACE_MINE, world.maxx, world.maxy) // Create the mining Z-level.
-	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_SURFACE_MINE, 64, 64)         // Create the mining ore distribution map.
-
-	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_SOLARS, world.maxx, world.maxy) // Create the mining Z-level.
-	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_SOLARS, 64, 64)         // Create the mining ore distribution map.
+	new /datum/random_map/automata/cave_system/(null, 1, 1, Z_LEVEL_SURFACE_UNDER, world.maxx, world.maxy) // Create the mining Z-level.
+	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_SURFACE_UNDER, world.maxx, world.maxy)         // Create the mining ore distribution map.
 
 	return 1
 
@@ -101,95 +101,13 @@
 /datum/map/boreas/get_map_levels(var/srcz, var/long_range = TRUE)
 	if (long_range && (srcz in map_levels))
 		return map_levels
-	else if (srcz == Z_LEVEL_TRANSIT)
-		return list() // Nothing on transit!
-	else if (srcz >= Z_LEVEL_SURFACE_LOW && srcz <= Z_LEVEL_SPACE_HIGH)
+	else if (srcz >= Z_LEVEL_SURFACE_UNDER && srcz <= Z_LEVEL_SURFACE_MID)
 		return list(
+			Z_LEVEL_SURFACE_UNDER,
 			Z_LEVEL_SURFACE_LOW,
-			Z_LEVEL_SURFACE_MID,
-			Z_LEVEL_SURFACE_HIGH,
-			Z_LEVEL_SPACE_LOW,
-			Z_LEVEL_SPACE_MID,
-			Z_LEVEL_SPACE_HIGH)
+			Z_LEVEL_SURFACE_MID)
 	else
 		return list(srcz) //may prevent runtimes, but more importantly gives gps units a shortwave-esque function
-
-// For making the 6-in-1 holomap, we calculate some offsets
-#define TETHER_MAP_SIZE 140 // Width and height of compiled in boreas z levels.
-#define TETHER_HOLOMAP_CENTER_GUTTER 40 // 40px central gutter between columns
-#define TETHER_HOLOMAP_MARGIN_X ((HOLOMAP_ICON_SIZE - (2*TETHER_MAP_SIZE) - TETHER_HOLOMAP_CENTER_GUTTER) / 2) // 100
-#define TETHER_HOLOMAP_MARGIN_Y ((HOLOMAP_ICON_SIZE - (3*TETHER_MAP_SIZE)) / 2) // 60
-
-// We have a bunch of stuff common to the station z levels
-/datum/map_z_level/boreas/station
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_XENOARCH_EXEMPT
-	holomap_legend_x = 220
-	holomap_legend_y = 160
-
-/datum/map_z_level/boreas/station/surface_low
-	z = Z_LEVEL_SURFACE_LOW
-	name = "Surface 1"
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
-	base_turf = /turf/simulated/floor/outdoors/rocks/boreas
-	holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
-	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*0
-
-/datum/map_z_level/boreas/station/surface_mid
-	z = Z_LEVEL_SURFACE_MID
-	name = "Surface 2"
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
-	base_turf = /turf/simulated/open
-	holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
-	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*1
-
-/datum/map_z_level/boreas/station/surface_high
-	z = Z_LEVEL_SURFACE_HIGH
-	name = "Surface 3"
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
-	base_turf = /turf/simulated/open
-	holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
-	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*2
-
-/datum/map_z_level/boreas/transit
-	z = Z_LEVEL_TRANSIT
-	name = "Transit"
-	flags = MAP_LEVEL_SEALED|MAP_LEVEL_PLAYER|MAP_LEVEL_CONTACT|MAP_LEVEL_XENOARCH_EXEMPT
-
-/datum/map_z_level/boreas/station/space_low
-	z = Z_LEVEL_SPACE_LOW
-	name = "Asteroid 1"
-	base_turf = /turf/space
-	transit_chance = 33
-	holomap_offset_x = HOLOMAP_ICON_SIZE - TETHER_HOLOMAP_MARGIN_X - TETHER_MAP_SIZE
-	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*0
-
-/datum/map_z_level/boreas/station/space_mid
-	z = Z_LEVEL_SPACE_MID
-	name = "Asteroid 2"
-	base_turf = /turf/simulated/open
-	transit_chance = 33
-	holomap_offset_x = HOLOMAP_ICON_SIZE - TETHER_HOLOMAP_MARGIN_X - TETHER_MAP_SIZE
-	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*1
-
-/datum/map_z_level/boreas/station/space_high
-	z = Z_LEVEL_SPACE_HIGH
-	name = "Asteroid 3"
-	base_turf = /turf/simulated/open
-	transit_chance = 33
-	holomap_offset_x = HOLOMAP_ICON_SIZE - TETHER_HOLOMAP_MARGIN_X - TETHER_MAP_SIZE
-	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*2
-
-/datum/map_z_level/boreas/mine
-	z = Z_LEVEL_SURFACE_MINE
-	name = "Mining Outpost"
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
-	base_turf = /turf/simulated/floor/outdoors/rocks/boreas
-
-/datum/map_z_level/boreas/solars
-	z = Z_LEVEL_SOLARS
-	name = "Solar Field"
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
-	base_turf = /turf/simulated/floor/outdoors/rocks/boreas
 
 /datum/map_z_level/boreas/colony
 	z = Z_LEVEL_CENTCOM
@@ -200,45 +118,3 @@
 	z = Z_LEVEL_MISC
 	name = "Misc"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_XENOARCH_EXEMPT
-
-/*
-/datum/map_z_level/boreas/wilderness
-	name = "Wilderness"
-	flags = MAP_LEVEL_PLAYER
-	var/activated = 0
-	var/list/frozen_mobs = list()
-
-/datum/map_z_level/boreas/wilderness/proc/activate_mobs()
-	if(activated && !length(frozen_mobs))
-		return
-	activated = 1
-	for(var/mob/living/simple_animal/M in frozen_mobs)
-		M.life_disabled = 0
-		frozen_mobs -= M
-	frozen_mobs.Cut()
-
-/datum/map_z_level/boreas/wilderness/wild_1
-	z = Z_LEVEL_SURFACE_WILDERNESS_1
-
-/datum/map_z_level/boreas/wilderness/wild_2
-	z = Z_LEVEL_SURFACE_WILDERNESS_2
-
-/datum/map_z_level/boreas/wilderness/wild_3
-	z = Z_LEVEL_SURFACE_WILDERNESS_3
-
-/datum/map_z_level/boreas/wilderness/wild_4
-	z = Z_LEVEL_SURFACE_WILDERNESS_4
-
-/datum/map_z_level/boreas/wilderness/wild_5
-	z = Z_LEVEL_SURFACE_WILDERNESS_5
-
-/datum/map_z_level/boreas/wilderness/wild_6
-	z = Z_LEVEL_SURFACE_WILDERNESS_6
-
-/datum/map_z_level/boreas/wilderness/wild_crash
-	z = Z_LEVEL_SURFACE_WILDERNESS_CRASH
-
-/datum/map_z_level/boreas/wilderness/wild_ruins
-	z = Z_LEVEL_SURFACE_WILDERNESS_RUINS
-*/
-*/

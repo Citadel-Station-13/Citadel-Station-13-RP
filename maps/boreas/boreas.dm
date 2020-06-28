@@ -3,7 +3,6 @@
 	#include "boreas_defines.dm"
 	#include "boreas_turfs.dm"
 	#include "boreas_things.dm"
-//	#include "boreas_phoronlock.dm"
 	#include "boreas_areas.dm"
 	#include "boreas_areas2.dm"
 	#include "boreas_shuttle_defs.dm"

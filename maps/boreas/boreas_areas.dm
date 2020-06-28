@@ -21,12 +21,6 @@
 	icon = 'icons/turf/areas_vr.dmi'
 	icon_state = "boreas3"
 
-// Elevator areas.
-/area/turbolift
-	delay_time = 2 SECONDS
-	forced_ambience = list('sound/music/elevator.ogg')
-	dynamic_lighting = FALSE //Temporary fix for elevator lighting
-
 /area/vacant/vacant_restaurant_upper
 	name = "\improper Vacant Restaurant"
 	icon_state = "vacant_site"
