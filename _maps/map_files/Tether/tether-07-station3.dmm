@@ -20056,7 +20056,7 @@
 	dir = 4
 	},
 /obj/machinery/door/window/westleft{
-	req_one_access = access(5)
+	req_one_access = list(5)
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 8
