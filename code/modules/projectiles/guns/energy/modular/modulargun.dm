@@ -99,11 +99,11 @@
 				return TRUE
 		if(3)
 			if(chargecost < 0)
-				chargecost = 0
+				chargecost = 1
 			if(chargecost_lethal < 0)
-				chargecost_lethal = 0
+				chargecost_lethal = 1
 			if(chargecost_special < 0)
-				chargecost_special = 0
+				chargecost_special = 1
 			if(scatter)
 				beammode = primarycore.scatterbeam
 				beammode_lethal = secondarycore.scatterbeam
