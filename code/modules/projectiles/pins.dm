@@ -198,18 +198,19 @@
 		return FALSE
 	return TRUE
 
+/obj/item/firing_pin/explorer/attackby(obj/item/card/ID, mob/user)
+	..()
+	if(check_access(ID))
+		locked = !locked
+		to_chat(user, "<span class='warning'>You [locked ? "enable" : "disable"] the safety lock on \the [src].</span>")
+	else
+		to_chat(user, "<span class='warning'>Access denied.</span>")
+	user.visible_message("<span class='notice'>[user] swipes \the [ID] against \the [src].</span>")
+
 //Allows swiping an armoury access ID on an explorer locked gun to unlock it
 /obj/item/gun/attackby(obj/item/I, mob/user)
 	..()
-	if(istype(pin,/obj/item/firing_pin/explorer))
-		var/obj/item/firing_pin/explorer/pinny = pin
-		var/obj/item/card/id/id = I.GetID()
-		if(istype(id))
-			if(pinny.check_access(id))
-				pinny.locked = !pinny.locked
-				to_chat(user, "<span class='warning'>You [pinny.locked ? "enable" : "disable"] the safety lock on \the [src].</span>")
-			else
-				to_chat(user, "<span class='warning'>Access denied.</span>")
-			user.visible_message("<span class='notice'>[user] swipes \the [I] against \the [src].</span>")
+	if((istype(I, /obj/item/card)) && pin)
+		pin.attackby(I, user)
 	else
 		return ..()
