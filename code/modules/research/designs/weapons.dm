@@ -394,3 +394,40 @@
 	materials = list(DEFAULT_WALL_MATERIAL = 5000, "glass" = 5000, "uranium" = 2000, "phoron" = 2000, "diamond" = 500)
 	build_path = /obj/item/ammo_casing/microbattery/combat/stripper
 	sort_string = "MAVCG"
+
+//Firing pins to shoot your guns with
+/datum/design/item/pin/AssembleDesignName()
+	..()
+	name = "Weapon firing pin ([item_name])"
+
+/datum/design/item/pin/test
+	name = "Testing range"
+	id = "test_range_pin"
+	req_tech = list(TECH_MATERIAL = 3, TECH_POWER = 2, TECH_COMBAT = 2)
+	materials = list(DEFAULT_WALL_MATERIAL = 1000)
+	build_path = /obj/item/firing_pin/test_range
+	sort_string = "MAVDA"
+
+/datum/design/item/pin/mindshield
+	name = "Loyalty"
+	id = "loyalty_pin"
+	req_tech = list(TECH_MATERIAL = 3, TECH_BIO = 3, TECH_POWER = 4, TECH_COMBAT = 4)
+	materials = list(DEFAULT_WALL_MATERIAL = 1000, "glass" = 500, "phoron" = 500, "gold" = 500)
+	build_path = /obj/item/firing_pin/implant/mindshield
+	sort_string = "MAVDB"
+
+/datum/design/item/pin/explorer
+	name = "Exploration"
+	id = "explorer_pin"
+	req_tech = list(TECH_MATERIAL = 3, TECH_POWER = 2, TECH_COMBAT = 2)
+	materials = list(DEFAULT_WALL_MATERIAL = 1000, "glass" = 500)
+	build_path = /obj/item/firing_pin/explorer
+	sort_string = "MAVDC"
+
+/datum/design/item/pin/dna
+	name = "DNA"
+	id = "dna_pin"
+	req_tech = list(TECH_MATERIAL = 3, TECH_BIO = 4, TECH_POWER = 3, TECH_COMBAT = 3)
+	materials = list(DEFAULT_WALL_MATERIAL = 1000, "glass" = 500, "uranium" = 500)
+	build_path = /obj/item/firing_pin/dna
+	sort_string = "MAVDD"

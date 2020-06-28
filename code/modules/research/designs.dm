@@ -70,4 +70,7 @@ other types of metals and chemistry for reagents).
 	if(C)
 		C.charge = 0
 		I.update_icon()
+	if(istype(I, /obj/item/gun))
+		var/obj/item/gun/G = I
+		G.pin = null
 	return I

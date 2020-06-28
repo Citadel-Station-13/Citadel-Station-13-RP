@@ -6341,6 +6341,7 @@
 /obj/machinery/keycard_auth{
 	pixel_y = -28
 	},
+/obj/item/storage/box/firingpins,
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
 "kH" = (
@@ -27409,6 +27410,12 @@
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless,
 /area/space)
+"TG" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/storage/box/firingpins,
+/obj/item/storage/box/firingpins,
+/turf/simulated/floor/tiled/dark,
+/area/security/armory/red)
 "TK" = (
 /obj/machinery/light/flicker,
 /turf/simulated/floor/tiled/kafel_full{
@@ -34588,7 +34595,7 @@ ai
 ai
 az
 gC
-bR
+TG
 Rn
 gC
 Rz
