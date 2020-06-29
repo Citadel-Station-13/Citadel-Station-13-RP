@@ -124,6 +124,7 @@
 		/obj/item/clothing/mask/gas,
 		/obj/item/clothing/suit/storage/toggle/fr_jacket,
 		/obj/item/clothing/suit/storage/toggle/labcoat/emt,
+		/obj/item/clothing/under/bodysuitemt,
 		/obj/item/radio/headset/headset_med/alt,
 		/obj/item/cartridge/medical,
 		/obj/item/storage/briefcase/inflatable,
