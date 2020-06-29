@@ -106,6 +106,16 @@
 /area/tether/surfacebase/emergency_storage/atrium
 	name = "\improper Atrium Emergency Storage"
 
+// UnderTether
+/area/tether/under/static_area
+	icon_state = "ut_s"
+	name = "\improper UT Static"
+
+/area/tether/under/poi
+	icon_state = "ut_poi"
+	name = "improper UT POI"
+
+
 // Main mining area
 /area/tether/surfacebase/mining_main
 	icon_state = "outpost_mine_main"

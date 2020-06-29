@@ -32205,6 +32205,9 @@
 /obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/public_garden_maintenence)
+"qSK" = (
+/turf/simulated/open,
+/area/maintenance/lower/research)
 "qUC" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade,
@@ -43230,9 +43233,9 @@ agM
 agM
 aib
 aEU
-aah
-aah
-aah
+adK
+adK
+adK
 aah
 aEU
 ale
@@ -43373,7 +43376,7 @@ agV
 aip
 aEU
 aEU
-aEU
+qSK
 aEU
 aah
 aEU

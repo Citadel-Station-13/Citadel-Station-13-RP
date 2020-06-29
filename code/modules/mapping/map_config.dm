@@ -18,6 +18,7 @@
 	var/map_name = "Tether"
 	var/map_path = "map_files/tether"
 	var/map_file = list(
+	"tether-00-undermaint.dmm",
 	"tether-01-surface1.dmm",
 	"tether-02-surface2.dmm",
 	"tether-03-surface3.dmm",
