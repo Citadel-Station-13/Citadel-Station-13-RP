@@ -308,3 +308,42 @@
 /obj/structure/mob_spawner/mouse_nest/get_death_report(var/mob/living/L)
 	..()
 	last_spawn = rand(world.time - spawn_delay, world.time)
+
+
+// Rat version
+
+/obj/structure/mob_spawner/rat_nest
+	name = "trash"
+	desc = "A small heap of trash, perfect for mice to nest in."
+	icon = 'icons/obj/trash_piles.dmi'
+	icon_state = "randompile"
+	spawn_types = list(/mob/living/simple_mob/animal/passive/mouse/rat)
+	simultaneous_spawns = 3
+	destructible = 1
+	spawn_delay = 0.1 HOUR
+
+/obj/structure/mob_spawner/rat_nest/New()
+	..()
+	last_spawn = rand(world.time - spawn_delay, world.time)
+	icon_state = pick(
+		"pile1",
+		"pile2",
+		"pilechair",
+		"piletable",
+		"pilevending",
+		"brtrashpile",
+		"microwavepile",
+		"rackpile",
+		"boxfort",
+		"trashbag",
+		"brokecomp")
+
+/obj/structure/mob_spawner/rat_nest/do_spawn(var/mob_path)
+	. = ..()
+	var/atom/A = get_holder_at_turf_level(src)
+	A.visible_message("[.] crawls out of \the [src].")
+
+/obj/structure/mob_spawner/rat_nest/get_death_report(var/mob/living/L)
+	..()
+	last_spawn = rand(world.time - spawn_delay, world.time)
+

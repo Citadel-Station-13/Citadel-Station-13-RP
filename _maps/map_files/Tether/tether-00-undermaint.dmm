@@ -1,0 +1,462 @@
+"ai" = (/obj/effect/decal/cleanable/dirt,/obj/item/trash,/turf/simulated/floor/plating,/area/space)
+"ap" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/space)
+"au" = (/obj/effect/decal/cleanable/dirt,/obj/structure/mob_spawner/mouse_nest,/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/space)
+"aF" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/effect/decal/cleanable/dirt,/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/space)
+"aJ" = (/obj/effect/decal/cleanable/dirt,/obj/structure/barricade,/turf/simulated/floor/plating,/area/space)
+"bz" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"bJ" = (/obj/structure/closet/crate,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"bP" = (/obj/machinery/atmospherics/pipe/manifold/hidden/supply{dir = 1},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 10},/turf/simulated/floor/tiled/techfloor,/area/space)
+"bU" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/structure/catwalk,/obj/machinery/door/airlock/maintenance/common,/turf/simulated/floor/plating,/area/space)
+"cu" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"cH" = (/obj/item/modular_computer/console,/turf/simulated/floor/tiled/techfloor,/area/space)
+"cX" = (/obj/structure/catwalk,/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/space)
+"cY" = (/obj/structure/table,/turf/simulated/floor/tiled/techfloor,/area/space)
+"dK" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/vending/loadout/clothing,/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif,/area/space)
+"dO" = (/obj/structure/table/woodentable,/obj/item/storage/bible,/turf/simulated/floor/wood/sif,/area/space)
+"ea" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/cobweb,/obj/structure/mob_spawner/mouse_nest,/turf/simulated/floor/tiled/techfloor,/area/space)
+"ee" = (/obj/machinery/atmospherics/pipe/manifold/hidden/supply{dir = 8},/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{dir = 8},/obj/structure/catwalk,/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/space)
+"eh" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/structure/catwalk,/obj/item/trash,/turf/simulated/floor/plating,/area/space)
+"ej" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"ek" = (/obj/structure/cable{d2 = 2; icon_state = "0-2"},/obj/structure/cable{icon_state = "0-8"},/obj/structure/cable{d2 = 4; icon_state = "0-4"},/obj/machinery/power/terminal{dir = 1},/turf/simulated/floor/tiled/techfloor,/area/space)
+"es" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/blood,/turf/simulated/floor/wood/sif,/area/space)
+"ew" = (/obj/structure/closet/secure_closet/freezer/fridge,/obj/item/reagent_containers/food/snacks/pie,/obj/item/reagent_containers/food/snacks/pie,/obj/item/reagent_containers/food/snacks/baguette,/obj/item/seeds/bananaseed,/obj/effect/decal/remains,/turf/simulated/floor/plating,/area/space)
+"ey" = (/obj/structure/table,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/wood/sif,/area/space)
+"eF" = (/obj/structure/reagent_dispensers/watertank,/turf/simulated/floor/plating,/area/space)
+"eG" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/item/trash,/turf/simulated/floor/plating,/area/space)
+"eP" = (/obj/machinery/power/smes,/turf/simulated/floor/tiled/techfloor,/area/space)
+"fr" = (/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif/broken,/area/space)
+"fF" = (/obj/structure/catwalk,/obj/machinery/door/airlock/maintenance/common,/obj/structure/barricade,/turf/simulated/floor/plating,/area/space)
+"fI" = (/obj/structure/table/steel,/obj/item/handcuffs/legcuffs/fuzzy,/turf/simulated/floor/plating,/area/space)
+"gd" = (/obj/effect/decal/cleanable/dirt,/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"gB" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/effect/decal/cleanable/dirt,/obj/structure/barricade,/turf/simulated/floor/plating,/area/space)
+"hy" = (/obj/machinery/power/port_gen/pacman,/obj/structure/cable,/turf/simulated/floor/tiled/techfloor,/area/space)
+"hD" = (/obj/structure/table/woodentable,/obj/item/pickaxe/hand,/turf/simulated/floor/plating,/area/space)
+"hE" = (/obj/structure/barricade,/turf/simulated/floor/plating,/area/space)
+"hY" = (/obj/machinery/light/small{dir = 8; icon_state = "bulb1"},/turf/simulated/floor/plating,/area/space)
+"ii" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"ik" = (/obj/structure/ladder/up,/turf/simulated/floor/plating,/area/space)
+"io" = (/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/turf/simulated/floor/plating,/area/space)
+"iM" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/turf/simulated/floor/plating,/area/space)
+"iO" = (/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,/obj/machinery/atmospherics/pipe/manifold/hidden/supply,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"iW" = (/obj/structure/mob_spawner/mouse_nest,/turf/simulated/floor/plating,/area/space)
+"iX" = (/turf/simulated/floor/wood/sif,/area/space)
+"ji" = (/obj/random/junk,/turf/simulated/floor/tiled/techfloor,/area/space)
+"jk" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/wood/sif,/area/space)
+"jw" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 10},/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/space)
+"jD" = (/obj/effect/decal/cleanable/dirt,/obj/random/junk,/turf/simulated/floor/plating,/area/space)
+"jR" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"jZ" = (/obj/effect/decal/cleanable/dirt,/obj/structure/table/woodentable,/obj/item/pickaxe/hand,/turf/simulated/floor/plating,/area/space)
+"kc" = (/obj/effect/spider/stickyweb/dark,/obj/structure/barricade,/turf/simulated/floor/tiled/techfloor,/area/space)
+"km" = (/obj/effect/decal/cleanable/dirt,/obj/structure/closet/crate/plastic,/obj/item/reagent_containers/food/drinks/bottle/bottleofnothing,/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif/broken,/area/space)
+"kn" = (/obj/random/junk,/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif,/area/space)
+"kq" = (/obj/effect/decal/cleanable/dirt,/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/turf/simulated/floor/plating,/area/space)
+"kH" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"kL" = (/obj/structure/table/steel,/obj/item/melee/baton/cattleprod,/turf/simulated/floor/plating,/area/space)
+"kT" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/unary/vent_scrubber/on,/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif,/area/space)
+"lg" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/turf/simulated/floor/plating,/area/space)
+"li" = (/obj/machinery/atmospherics/pipe/manifold/hidden/supply,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/techfloor,/area/space)
+"lm" = (/obj/item/storage/fancy/blackcandle_box,/obj/structure/table/woodentable,/obj/effect/decal/cleanable/cobweb,/turf/simulated/floor/plating,/area/space)
+"mE" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/turf/simulated/floor/plating,/area/space)
+"mH" = (/obj/effect/decal/cleanable/blood,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"mQ" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/turf/simulated/floor/plating,/area/space)
+"mV" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/door/airlock/maintenance/common,/turf/simulated/floor/plating,/area/space)
+"nb" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/structure/catwalk,/turf/simulated/floor/plating,/area/space)
+"nc" = (/obj/structure/table/bench,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/wood/sif/broken,/area/space)
+"ng" = (/obj/effect/decal/cleanable/blood,/turf/simulated/floor/plating,/area/space)
+"nk" = (/turf/simulated/floor/plating,/area/space)
+"nU" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/structure/catwalk,/turf/simulated/floor/plating,/area/space)
+"nW" = (/obj/structure/barricade,/turf/simulated/floor/tiled/techfloor,/area/space)
+"on" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"oQ" = (/obj/effect/decal/cleanable/dirt,/obj/structure/closet,/obj/item/clothing/gloves/light_brown,/obj/item/flashlight/color/yellow,/obj/item/storage/box/flare,/turf/simulated/floor/tiled/techfloor,/area/space)
+"oT" = (/obj/machinery/vending/loadout,/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif,/area/space)
+"oU" = (/obj/machinery/light/small,/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/space)
+"oY" = (/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"pg" = (/obj/effect/decal/cleanable/dirt,/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/turf/simulated/floor/plating,/area/space)
+"ph" = (/obj/effect/decal/cleanable/dirt,/obj/item/seeds/bananaseed,/obj/effect/decal/remains,/turf/simulated/floor/plating,/area/space)
+"pi" = (/obj/structure/table/bench/sifwooden,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"pn" = (/obj/structure/closet/crate,/obj/random/firstaid,/turf/simulated/floor/plating,/area/space)
+"po" = (/obj/effect/decal/cleanable/dirt,/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"pz" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/item/trash,/turf/simulated/floor/plating,/area/space)
+"pB" = (/obj/machinery/atmospherics/pipe/manifold/hidden/supply{dir = 8},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 5},/turf/simulated/floor/plating,/area/space)
+"pD" = (/obj/machinery/door/airlock/maintenance/common,/obj/structure/barricade,/turf/simulated/floor/plating,/area/space)
+"pF" = (/turf/simulated/wall/iron{can_open = 1},/area/space)
+"pI" = (/obj/effect/decal/cleanable/dirt,/obj/effect/spider/stickyweb/dark,/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/space)
+"pR" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/item/bananapeel,/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/space)
+"pS" = (/obj/effect/decal/cleanable/cobweb2,/turf/simulated/floor/plating,/area/space)
+"pZ" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/turf/simulated/floor/plating,/area/space)
+"qi" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 10},/turf/simulated/floor/plating,/area/space)
+"qo" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"qr" = (/obj/machinery/atmospherics/pipe/zpipe/up/scrubbers,/obj/machinery/atmospherics/pipe/zpipe/up/supply,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/techfloor,/area/space)
+"qK" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"qP" = (/obj/machinery/vending/magivend,/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/space)
+"qR" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif,/area/space)
+"qV" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/structure/catwalk,/turf/simulated/floor/plating,/area/space)
+"qX" = (/obj/effect/decal/cleanable/dirt,/obj/structure/catwalk,/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/manifold/hidden/supply{dir = 4},/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{dir = 4},/turf/simulated/floor/plating,/area/space)
+"ra" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/structure/catwalk,/obj/item/trash,/turf/simulated/floor/plating,/area/space)
+"rg" = (/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif,/area/space)
+"rk" = (/obj/structure/cable{icon_state = "2-8"},/turf/simulated/floor/tiled/techfloor,/area/space)
+"rt" = (/obj/structure/table/steel,/obj/item/toy/plushie/bear_bloody,/turf/simulated/floor/plating,/area/space)
+"rw" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"rD" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/structure/catwalk,/obj/machinery/door/airlock/maintenance/common,/obj/structure/barricade,/turf/simulated/floor/plating,/area/space)
+"rK" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/unary/vent_pump/on{dir = 4},/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif,/area/space)
+"rS" = (/obj/effect/decal/cleanable/dirt,/obj/structure/table/steel,/obj/item/bikehorn,/obj/item/instrument/bikehorn,/obj/item/instrument/accordion,/turf/simulated/floor/wood/sif,/area/space)
+"rW" = (/obj/effect/decal/cleanable/dirt,/obj/structure/table/bench/wooden,/turf/simulated/floor/plating,/area/space)
+"se" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"sj" = (/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/turf/simulated/floor/plating,/area/space)
+"so" = (/obj/item/trash,/obj/effect/decal/cleanable/cobweb,/turf/simulated/floor/tiled/techfloor,/area/space)
+"sq" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 5},/turf/simulated/floor/plating,/area/space)
+"sv" = (/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/space)
+"sy" = (/obj/structure/table/steel,/obj/item/soap,/turf/simulated/floor/wood/sif/broken,/area/space)
+"sR" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/turf/simulated/floor/wood/sif/broken,/area/space)
+"sW" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/turf/simulated/floor/plating,/area/space)
+"sX" = (/obj/effect/decal/cleanable/dirt,/obj/structure/barricade,/turf/simulated/floor/tiled/techfloor,/area/space)
+"tg" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/door/airlock/maintenance/common,/obj/structure/barricade,/turf/simulated/floor/plating,/area/space)
+"tq" = (/obj/structure/closet/crate,/turf/simulated/floor/tiled/techfloor,/area/space)
+"tB" = (/obj/effect/decal/cleanable/blood,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"tL" = (/obj/item/trash,/turf/simulated/floor/plating,/area/space)
+"tQ" = (/obj/machinery/light/small{dir = 1; icon_state = "bulb1"},/turf/simulated/floor/tiled/techfloor,/area/space)
+"uk" = (/obj/machinery/light/small{dir = 1},/turf/simulated/floor/tiled/techfloor,/area/space)
+"uz" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"vg" = (/obj/structure/reagent_dispensers/fueltank,/turf/simulated/floor/plating,/area/space)
+"vn" = (/obj/effect/decal/cleanable/blood,/turf/simulated/floor/wood/sif/broken,/area/space)
+"vx" = (/obj/structure/closet/crate,/turf/simulated/floor/plating,/area/space)
+"vB" = (/obj/effect/decal/cleanable/cobweb,/obj/structure/mob_spawner/rat_nest,/turf/simulated/floor/plating,/area/space)
+"vW" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/effect/decal/cleanable/dirt,/obj/structure/catwalk,/turf/simulated/floor/plating,/area/space)
+"vZ" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 5},/obj/random/junk,/obj/item/seeds/bananaseed,/turf/simulated/floor/tiled/techfloor,/area/space)
+"wj" = (/obj/effect/decal/remains,/turf/simulated/floor/tiled/techfloor,/area/space)
+"wz" = (/obj/structure/table/steel,/obj/item/surgical/scalpel,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"wL" = (/obj/random/junk,/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/space)
+"wP" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/effect/spider/stickyweb/dark,/turf/simulated/floor/plating,/area/space)
+"wU" = (/obj/machinery/door/airlock,/obj/structure/barricade,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/turf/simulated/floor/plating,/area/space)
+"xa" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/structure/catwalk,/obj/random/junk,/turf/simulated/floor/plating,/area/space)
+"xd" = (/obj/machinery/door/airlock/maintenance/common,/obj/structure/barricade,/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/space)
+"xe" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"xj" = (/turf/simulated/mineral,/area/space)
+"xp" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"xr" = (/obj/effect/decal/cleanable/dirt,/obj/random/junk,/turf/simulated/floor/wood/sif/broken,/area/space)
+"xw" = (/obj/structure/table/woodentable,/obj/item/pickaxe/hand,/turf/simulated/floor/tiled/techfloor,/area/space)
+"xy" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/space)
+"xD" = (/obj/effect/decal/cleanable/dirt,/obj/structure/mob_spawner/mouse_nest,/turf/simulated/floor/tiled/techfloor,/area/space)
+"yd" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/techfloor,/area/space)
+"yv" = (/obj/item/trash,/obj/random/junk,/turf/simulated/floor/plating,/area/space)
+"yD" = (/obj/effect/decal/cleanable/dirt,/obj/structure/mob_spawner/mouse_nest,/turf/simulated/floor/wood/sif,/area/space)
+"yM" = (/obj/machinery/atmospherics/unary/vent_scrubber/on{dir = 1},/turf/simulated/floor/plating,/area/space)
+"yP" = (/obj/effect/decal/cleanable/dirt,/obj/item/seeds/bananaseed,/turf/simulated/floor/tiled/techfloor,/area/space)
+"yY" = (/obj/structure/table/bench,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"zf" = (/turf/simulated/floor/wood/sif/broken,/area/space)
+"zp" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/effect/decal/cleanable/dirt,/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/space)
+"zq" = (/obj/machinery/door/airlock/maintenance/common,/obj/structure/barricade,/turf/simulated/floor/tiled/techfloor,/area/space)
+"zx" = (/obj/structure/table/steel,/obj/item/handcuffs/cable,/turf/simulated/floor/plating,/area/space)
+"zz" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/random/junk,/turf/simulated/floor/tiled/techfloor,/area/space)
+"zI" = (/obj/effect/decal/cleanable/dirt,/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif/broken,/area/space)
+"zM" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/blood,/turf/simulated/floor/plating,/area/space)
+"An" = (/obj/structure/catwalk,/obj/item/trash,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"Ar" = (/obj/effect/decal/cleanable/cobweb2,/obj/structure/reagent_dispensers/fueltank,/turf/simulated/floor/plating,/area/space)
+"At" = (/obj/machinery/atmospherics/pipe/manifold/hidden/supply,/obj/effect/decal/cleanable/dirt,/obj/structure/closet,/obj/item/clothing/gloves/light_brown,/obj/item/flashlight/color/yellow,/obj/item/storage/box/flare,/turf/simulated/floor/tiled/techfloor,/area/space)
+"Av" = (/obj/structure/closet/crate,/obj/random/ammo,/turf/simulated/floor/plating,/area/space)
+"Ay" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/turf/simulated/floor/tiled/techfloor,/area/space)
+"AC" = (/obj/structure/reagent_dispensers/watertank,/turf/simulated/floor/tiled/techfloor,/area/space)
+"AF" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{dir = 8},/obj/machinery/atmospherics/pipe/manifold/hidden/supply{dir = 8},/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/space)
+"AG" = (/obj/machinery/light/small,/turf/simulated/floor/tiled/techfloor,/area/space)
+"AM" = (/obj/structure/table/bench/wooden,/turf/simulated/floor/tiled/techfloor,/area/space)
+"AN" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/structure/catwalk,/turf/simulated/floor/plating,/area/space)
+"Ba" = (/obj/item/seeds/bananaseed,/turf/simulated/floor/tiled/techfloor,/area/space)
+"Bd" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/structure/catwalk,/obj/machinery/door/airlock/maintenance/common,/obj/structure/barricade,/turf/simulated/floor/plating,/area/space)
+"Bj" = (/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/turf/simulated/floor/plating,/area/space)
+"Bl" = (/obj/machinery/power/apc{dir = 8; name = "west bump"; pixel_x = -28},/obj/structure/cable,/obj/machinery/light/small{dir = 8; icon_state = "bulb1"},/turf/simulated/floor/tiled/techfloor,/area/space)
+"Bt" = (/obj/structure/cable{d2 = 2; icon_state = "0-2"},/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"Bw" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 6},/turf/simulated/floor/tiled/techfloor,/area/space)
+"Bx" = (/obj/effect/decal/cleanable/dirt,/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/structure/barricade,/turf/simulated/floor/plating,/area/space)
+"BK" = (/obj/effect/spider/stickyweb/dark,/turf/simulated/floor/tiled/techfloor,/area/space)
+"BO" = (/obj/machinery/atmospherics/pipe/manifold/hidden/supply,/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,/obj/structure/catwalk,/turf/simulated/floor/plating,/area/space)
+"BS" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/manifold/hidden/supply,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"BX" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/turf/simulated/floor/tiled/techfloor,/area/space)
+"BZ" = (/obj/machinery/door/airlock,/obj/structure/barricade,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/space)
+"Cd" = (/obj/effect/spider/stickyweb/dark,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"Ci" = (/obj/item/trash,/obj/effect/spider/stickyweb/dark,/turf/simulated/floor/plating,/area/space)
+"Cm" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/turf/simulated/floor/plating,/area/space)
+"Cn" = (/obj/machinery/light/small{dir = 4; icon_state = "bulb1"},/turf/simulated/floor/plating,/area/space)
+"Ct" = (/obj/effect/spider/stickyweb/dark,/turf/simulated/floor/plating,/area/space)
+"CA" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/turf/simulated/floor/plating,/area/space)
+"CC" = (/obj/structure/mob_spawner/rat_nest,/turf/simulated/floor/plating,/area/space)
+"CD" = (/obj/machinery/light/small{dir = 4; icon_state = "bulb1"},/turf/simulated/floor/tiled/techfloor,/area/space)
+"CW" = (/obj/structure/table/steel,/obj/item/instrument/trombone,/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif,/area/space)
+"De" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/turf/simulated/floor/plating,/area/space)
+"Di" = (/obj/structure/catwalk,/turf/simulated/floor/plating,/area/space)
+"DA" = (/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{dir = 4},/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"DD" = (/obj/item/trash,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"Ed" = (/obj/structure/table/bench/sifwooden,/turf/simulated/floor/wood/sif/broken,/area/space)
+"Eg" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/structure/catwalk,/obj/machinery/door/airlock/maintenance/common,/obj/structure/barricade,/turf/simulated/floor/plating,/area/space)
+"El" = (/obj/structure/table,/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/space)
+"Ep" = (/obj/structure/catwalk,/obj/item/trash,/turf/simulated/floor/plating,/area/space)
+"Es" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/turf/simulated/floor/plating,/area/space)
+"Eu" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/door/airlock/maintenance/common,/obj/structure/barricade,/turf/simulated/floor/plating,/area/space)
+"ED" = (/obj/structure/table/steel,/obj/item/instrument/saxophone,/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif/broken,/area/space)
+"EH" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"EP" = (/obj/structure/table/steel,/obj/item/lipstick/random,/obj/item/lipstick/random,/turf/simulated/floor/wood/sif,/area/space)
+"ES" = (/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/turf/simulated/floor/plating,/area/space)
+"Fb" = (/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/techfloor,/area/space)
+"Fj" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/space)
+"FD" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"FW" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"FZ" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"Go" = (/obj/item/seeds/bananaseed,/turf/unsimulated/mineral/virgo3b,/area/space)
+"Gw" = (/obj/effect/decal/cleanable/dirt,/obj/structure/closet/crate,/turf/simulated/floor/plating,/area/space)
+"GG" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"GU" = (/obj/structure/table/woodentable,/turf/simulated/floor/tiled/techfloor,/area/space)
+"GZ" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/light/small{dir = 1},/turf/simulated/floor/tiled/techfloor,/area/space)
+"Ha" = (/obj/machinery/power/port_gen/pacman,/turf/simulated/floor/plating,/area/space)
+"Hg" = (/obj/structure/table/steel,/obj/item/instrument/violin,/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif,/area/space)
+"Hh" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/structure/catwalk,/obj/structure/catwalk,/turf/simulated/floor/plating,/area/space)
+"Hk" = (/obj/machinery/atmospherics/pipe/manifold/hidden/supply{dir = 4},/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{dir = 4},/turf/simulated/floor/plating,/area/space)
+"Hq" = (/turf/simulated/floor/tiled/techfloor,/area/space)
+"HB" = (/obj/structure/stairs/east,/turf/simulated/floor/plating,/area/space)
+"HF" = (/obj/structure/table/steel,/obj/item/handcuffs/cable,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"Id" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/effect/decal/cleanable/dirt,/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/space)
+"Iv" = (/obj/effect/spider/stickyweb/dark,/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/space)
+"IH" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 6},/turf/simulated/floor/plating,/area/space)
+"IK" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif,/area/space)
+"IN" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/unary/vent_scrubber/on,/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif,/area/space)
+"Jc" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/turf/simulated/floor/plating,/area/space)
+"Jd" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/turf/simulated/floor/plating,/area/space)
+"Jl" = (/turf/unsimulated/mineral/virgo3b,/area/space)
+"Jo" = (/obj/structure/table/woodentable,/obj/item/modular_computer/tablet,/obj/effect/decal/cleanable/cobweb2,/turf/simulated/floor/plating,/area/space)
+"Jz" = (/obj/structure/table/woodentable,/obj/item/flashlight/lamp,/turf/simulated/floor/tiled/techfloor,/area/space)
+"JT" = (/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/blood,/turf/simulated/floor/plating,/area/space)
+"JU" = (/obj/machinery/vending/sovietsoda,/turf/simulated/floor/plating,/area/space)
+"JX" = (/obj/structure/barricade,/obj/machinery/door/airlock/maintenance/common,/turf/simulated/floor/plating,/area/space)
+"JY" = (/obj/effect/decal/cleanable/blood,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"Kg" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 9},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 9},/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif,/area/space)
+"KA" = (/turf/simulated/wall/iron,/area/space)
+"KJ" = (/obj/structure/cable{d1 = 2; d2 = 4; icon_state = "2-4"},/turf/simulated/floor/tiled/techfloor,/area/space)
+"KS" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/remains,/turf/simulated/floor/plating,/area/space)
+"KT" = (/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/wood/sif/broken,/area/space)
+"KW" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/cobweb,/turf/simulated/floor/tiled/techfloor,/area/space)
+"Lb" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/light/small{dir = 4; icon_state = "bulb1"},/turf/simulated/floor/plating,/area/space)
+"Lc" = (/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/turf/simulated/floor/plating,/area/space)
+"Le" = (/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{dir = 8},/turf/simulated/floor/tiled/techfloor,/area/space)
+"Lq" = (/obj/structure/closet/crate/plastic,/turf/simulated/floor/plating,/area/space)
+"Lx" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/cobweb2,/turf/simulated/floor/plating,/area/space)
+"LM" = (/obj/structure/catwalk,/obj/structure/barricade,/obj/machinery/door/airlock/maintenance/common,/turf/simulated/floor/plating,/area/space)
+"LO" = (/obj/effect/decal/cleanable/dirt,/obj/structure/closet/crate/mimic/dangerous,/obj/random/alcohol,/obj/random/ammo,/obj/effect/decal/remains,/turf/simulated/floor/plating,/area/space)
+"LT" = (/obj/structure/table/bench,/turf/simulated/floor/wood/sif,/area/space)
+"LX" = (/obj/structure/closet/coffin/comfy,/obj/item/trash,/turf/simulated/floor/plating,/area/space)
+"LY" = (/obj/machinery/light/small{dir = 8; icon_state = "bulb1"},/turf/simulated/floor/tiled/techfloor,/area/space)
+"LZ" = (/obj/effect/spider/stickyweb/dark,/obj/effect/decal/remains,/turf/simulated/floor/plating,/area/space)
+"Mo" = (/obj/structure/closet/crate/plastic,/obj/item/trash,/obj/item/trash,/obj/effect/decal/remains,/turf/simulated/floor/plating,/area/space)
+"Mu" = (/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/space)
+"Mw" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/space)
+"MM" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"MY" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"Ni" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/turf/simulated/floor/plating,/area/space)
+"Nq" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/turf/simulated/floor/plating,/area/space)
+"Ny" = (/obj/effect/decal/cleanable/dirt,/obj/random/junk,/turf/simulated/floor/tiled/techfloor,/area/space)
+"ND" = (/obj/structure/table/steel,/obj/item/instrument/guitar,/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif,/area/space)
+"NL" = (/obj/effect/decal/cleanable/dirt,/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"NR" = (/obj/structure/bed,/obj/effect/decal/cleanable/blood,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"NT" = (/obj/structure/grille,/obj/structure/window/basic/full,/turf/simulated/floor/tiled/techfloor,/area/space)
+"NZ" = (/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/wood/sif,/area/space)
+"Oa" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/space)
+"Pg" = (/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"Po" = (/obj/structure/table/steel,/obj/item/clothing/mask/muzzle,/turf/simulated/floor/plating,/area/space)
+"PA" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"PB" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 10},/obj/structure/catwalk,/obj/structure/catwalk,/turf/simulated/floor/plating,/area/space)
+"PJ" = (/obj/random/junk,/turf/simulated/floor/wood/sif/broken,/area/space)
+"PO" = (/obj/machinery/vending/loadout/costume,/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif,/area/space)
+"Qb" = (/obj/effect/spider/stickyweb/dark,/obj/effect/spider/stickyweb/dark,/turf/simulated/floor/plating,/area/space)
+"Qm" = (/obj/effect/decal/cleanable/blood,/turf/simulated/floor/tiled/techfloor,/area/space)
+"Qt" = (/obj/effect/decal/cleanable/dirt,/obj/structure/table,/turf/simulated/floor/tiled/techfloor,/area/space)
+"QC" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/structure/barricade,/obj/machinery/door/airlock/maintenance/common,/turf/simulated/floor/plating,/area/space)
+"QF" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/machinery/door/airlock/maintenance/common,/obj/structure/barricade,/turf/simulated/floor/plating,/area/space)
+"QH" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 9},/obj/machinery/atmospherics/pipe/simple/hidden/supply,/turf/simulated/floor/plating,/area/space)
+"QI" = (/obj/structure/closet/crate/mimic/dangerous,/obj/effect/decal/cleanable/cobweb2,/obj/random/alcohol,/obj/effect/decal/remains,/turf/simulated/floor/plating,/area/space)
+"QL" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/turf/simulated/floor/tiled/techfloor,/area/space)
+"RI" = (/obj/structure/catwalk,/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"RP" = (/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/item/trash,/turf/simulated/floor/plating,/area/space)
+"RU" = (/obj/effect/decal/cleanable/dirt,/obj/effect/spider/stickyweb/dark,/turf/simulated/floor/plating,/area/space)
+"Sl" = (/obj/effect/rune,/obj/effect/decal/remains,/obj/effect/gibspawner,/turf/simulated/floor/wood/sif,/area/space)
+"Sv" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/techfloor,/area/space)
+"SJ" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"SN" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/structure/catwalk,/turf/simulated/floor/plating,/area/space)
+"SZ" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/remains,/turf/simulated/floor/tiled/techfloor,/area/space)
+"Th" = (/obj/effect/decal/cleanable/dirt,/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/space)
+"Tm" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/random/junk,/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif,/area/space)
+"TQ" = (/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{dir = 1},/turf/simulated/floor/plating,/area/space)
+"TU" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif/broken,/area/space)
+"Ua" = (/obj/machinery/door/airlock/maintenance/common,/turf/simulated/floor/plating,/area/space)
+"Uv" = (/obj/structure/table/woodentable,/obj/item/reagent_containers/food/drinks/bottle/holywater,/turf/simulated/floor/plating,/area/space)
+"UL" = (/obj/structure/table/bench/sifwooden,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/wood/sif/broken,/area/space)
+"UM" = (/obj/structure/mob_spawner/mouse_nest,/turf/simulated/floor/tiled/techfloor,/area/space)
+"UR" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 10},/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif/broken,/area/space)
+"Va" = (/obj/effect/decal/cleanable/dirt,/obj/effect/spider/stickyweb/dark,/turf/simulated/floor/tiled/techfloor,/area/space)
+"Vb" = (/obj/effect/decal/cleanable/dirt,/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif,/area/space)
+"Ve" = (/obj/effect/decal/cleanable/blood,/turf/simulated/floor/wood/sif,/area/space)
+"Vj" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/turf/simulated/floor/plating,/area/space)
+"Vp" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/effect/decal/cleanable/dirt,/obj/structure/catwalk,/turf/simulated/floor/plating,/area/space)
+"Vq" = (/obj/machinery/atmospherics/unary/vent_pump/on{dir = 4},/obj/machinery/light/small,/obj/structure/closet,/obj/item/clothing/gloves/light_brown,/obj/item/flashlight/color/yellow,/obj/item/storage/box/flare,/turf/simulated/floor/plating,/area/space)
+"Vr" = (/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"VE" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/turf/simulated/floor/plating,/area/space)
+"VH" = (/obj/item/seeds/bananaseed,/turf/simulated/wall/iron,/area/space)
+"VM" = (/obj/machinery/light/small,/turf/simulated/floor/plating,/area/space)
+"VP" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"VU" = (/obj/random/junk,/turf/simulated/floor/plating,/area/space)
+"VW" = (/obj/structure/table/bench/sifwooden,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/wood/sif,/area/space)
+"VX" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/random/junk,/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif,/area/space)
+"WE" = (/obj/effect/decal/cleanable/dirt,/obj/structure/table,/obj/item/seeds/bananaseed,/turf/simulated/floor/tiled/techfloor,/area/space)
+"WH" = (/obj/effect/decal/remains,/turf/simulated/floor/plating,/area/space)
+"WI" = (/obj/effect/decal/cleanable/dirt,/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/turf/simulated/floor/plating,/area/space)
+"WR" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"XU" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/structure/barricade,/obj/machinery/door/airlock/maintenance/common,/turf/simulated/floor/plating,/area/space)
+"XX" = (/obj/effect/decal/cleanable/dirt,/obj/structure/mob_spawner/rat_nest,/turf/simulated/floor/plating,/area/space)
+"Ya" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/space)
+"Yr" = (/obj/structure/table/bench,/turf/simulated/floor/wood/sif/broken,/area/space)
+"YG" = (/obj/structure/table/bench,/obj/random/junk,/turf/simulated/floor/plating,/area/space)
+"YK" = (/obj/structure/table,/turf/simulated/floor/plating,/area/space)
+"YL" = (/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/obj/random/junk,/turf/simulated/floor/plating,/area/space)
+"YQ" = (/obj/structure/table/woodentable,/obj/item/flame/candle/candelabra,/turf/simulated/floor/wood/sif,/area/space)
+"Zd" = (/obj/structure/table/bench/sifwooden,/obj/item/trash,/turf/simulated/floor/wood/sif,/area/space)
+"Zr" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/turf/simulated/floor/tiled/techfloor,/area/space)
+"ZM" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/structure/catwalk,/obj/structure/barricade,/turf/simulated/floor/plating,/area/space)
+
+(1,1,1) = {"
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkJlJl
+JlJlnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkJlJl
+JlJlKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKApDKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAnknknknknknkJlJl
+JlJlKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAzqKAKAKAKAKAKAKAKAKAKAKAKAKAKAKAxjxjKAKAKAKAKAKAKAKAUaKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAeaHaGZGwnknkoYjDGZrWJoKAKAxjxjxjtLxjxjxjhEoYLxxjKAKAKWRUXXnknknkFbFbCtnkArKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKABtBwEsTQoYsqlglgoYFbJzKAKAxjxjxjWRnkhEnkoYxjaiKSKAKAFbIHpZVEBjEppZBjioVroYKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKABlPAKAsWKAKAKAKAKAiMLbKAKAxjxjoYWRxjxjxjxjxjXXXXKAKAnkpzoYWRnkoYHqnkaiDiCtKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKANySvKAsWoYukQthDKAiMHqKAKAKAKAhEKAKAKAKAKAKAKAKAKAKAnkpooYKAKAKAKAKAnkESoYKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAFbQLKAPAHqFbnkAMKAsWoYKAKAsooYHqFbHqnkFbACHqaioYpShERUgdoYKAnknknkKAHqRPoYKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkpDpDHqDAKAhYnkikqrCnKApBnkzqpDCmVjWINiWIxeFZpgpgVjNLNLBxWIqXHqKAnknknkKAHqDioYpDnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAoYiMnkLeAyEsQHFbKAkHVUKAKAFboYHqoYoYFbaJoYFbtLoYoYaJoYsjRUKAnknknkKAHqVroYKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAHqiMnkyMoQVqAtqiKAmQoYKAKAKAKAKAKAKAKAKAKAKAKAKAKAKARUJcCtKAKAKAKAKAnkESCtKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAhYZrKAKAKAKAKAmQKAoYCDKAKAlmCCiXxriXnkiXiXiXnkLXKAKANqJcCtnkaJHqHqnkoYESCtKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnksvsvsvsvsvsvsvsvsvsvVHVHElvZxyxyapbPlglioYHqcYKAKAUvnknkNZKTnkzfNZiXngnkKAKARUVrPgioBjDieGVELcRIRUKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnksvsvsvsvsvsvsvsvsvsvVHVHWEEloUyPBaJdxDoYVMcYjZKAKAYKnkiXNZeydOYQKTNZjDoYKAKARUCiRUwPCtHqsXoYVaXXRUKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAVHVHVHVHsvVHVHVHVHVHVHVHVHVHVHVHVHiMKAKAKAKAKAKAKAYKnkzfiXKTSlKTNZNZoYGwKAKAKAKAKAKAKApDKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAnknknknknknkJlJl
+JlJlKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAVHVHVHVHxdVHVHVHVHVHVHVHVHVHVHVHVHqVKAKAKAKAKAKAKAoYnkiXNZNZKTNZesNZoYWRKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAJlGoGoVHsvFjpIVHEDNDHgCWVHewrgqPVHwLvWhEKAJlJlJlKAKARUnkYGpiULNZLTZdYrnkzMKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAJlGoGoVHyPOaIvVHrgVbThVXVHrgMwoTVHIvqVFbKAJlJlJlKAKAVUnkiXNZiXeszfoYjkoYnkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAJlGoGoVHIvaFyPVHfrkTThfrVHauINPOVHBaqVoYKAJlJlJlKAKAWRnkzfiXvnnkoYiXjkoYoYKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAKAVHVHVHIvIdThVHVbTmVbVbVHrKURdKVHsvvWCtKAKAKAKAKAKAoYzMncyYVWiXZdYrEdnkzMKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAHqphpIIvIvcXsvVHrKjwzIrgVHwLIKkmVHBaiMFbnkRUoYCCKAKAnkoYVenkzfiXVeiXiXnknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknkUanknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlnknknknknknknknknknknknknknknknknknknknknknknknknknkpDDizpzpMucXcXBaVHfrAFqRpRBZTUKgknVHsveeVpCAGGGGEspDBdlgonrankDiPBDinkEpJTDifFnknknknknknknknknknknknknkJXnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKACtVaoYnknkFDHqKAyDsRNZPJKAEPsyrSKAhEiizzyPnkRUnkKAKACtVUoYnknknUHqnkoYnkCCKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAKAKAKAKAFbJcoYKAKAwUKAKAKAKAKAKAKACtANaJKAKAKAKAKAKAKAKAKAKAhEZMnWKAKAKAKAKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAJlJlJlKAFbJcnknkCtJdFbnkHqCtnkhECtoYANoYKAJlJlJlKAKAJlJlJlKACtehVUKAJlJlJlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAJlJlJlKAHqDiVrVrVrBOSNSNSNSNSNSNnbDeHkVUKAJlJlJlKAKAJlJlJlKAnkqVnkKAJlJlJlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAJlJlJlKACCDioYRUoYHqWHRUFbHqoYhEoYnkANHqKAJlJlJlKAKAJlJlJlKAjiiMnkKAJlJlJlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKApDKAKAKAKAKAKAKAKAKAKAKAKAXUKAKAKAKAKAKAKAJlJlJlKAKAbUKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAnknknknknknkJlJl
+JlJlKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAJlJlJlKAKAmVKAKAKAKAKAKAKAKAKAKAKAKALMKAKAJlJlJlKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAJlJlJlKACCMMpSKAvBnkVUJUtLAvLqQIKAhEseLxKAJlJlJlKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAJlJlJlKAoYmEyvKAnkHqnknknknkHqnkKAnkxasXKAJlJlJlKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAJlJlJlKADDmEoYKAKAKAKAKAHqHqnktLKAnkDiHqKAJlJlJlKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAJlJlJlKARUJdnkKAnknknkKAnknkVUnkKAnkDiHqKAKAKAKAKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAJlJlJlKANyMMoYhEnkHqHqKAhEKAKAnkKAhEVrHqCtCtnkXXKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkKAJlJlJlKAoYMMnkKAnktLnknknkvgKAnkKACtVrDiVrYLPgDinknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAJlJlJlKAHqmEtLKAeFnknknkHqnkKAVUKACtnknkoYjDoYnkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAKAKAKAKAHqFDCtKAKAKAKAhEtLhEKAKAKAKADiKAKAKAKAKAKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAMoVUCthEoYDinkNyRUBKnknknknkvxtLnkhEDihEnkvxRUoYKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKALOFbSZnWWRAnVrFWFWlgxepZpZgBxePgFWVrAnnkoYoYoYjDKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKACCHqVakcVUkqCtoYjDCtnkRUnknkCtoYRUnknknknkRUCtCCKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAEuKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAnknknknknknkJlJl
+JlJlKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKArDKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAHqtQHqHqNTANNTHqHqtQHqKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAHqHqePHqNTANNTHqePHqHqKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAHqKJekrkNTqVNTKJekrkHqKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAHqhyhyhyNTqVNThyhyhyHqKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKALYHqHqHqHqqVHqHqHqHqCDKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkqVnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKALYHqHqHqHqqVHqHqHqHqCDKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAHqHqcHKAHqANHqKAcHHqHqKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAHqHqAMKAHqANHqKAAMHqHqKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAHqHqHqKALYANCDKAHqHqHqKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAGUJzGUKAHqANHqKAGUJzGUKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAEgKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAnknknknknknkJlJl
+JlJlKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAtgKAKAKAKAKAKAKAKAKAKAKAKAJXKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAJlJlJlKAoYVroYnkHqHqiWKAKAJlJlJlKACtJdvxKAJlJlJlKAKAiWHqnkHqHqHqHqHqHqHqHqKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAJlJlJlKACtRIrwVEVrHqCtKAKAJlJlJlKACtSJnkKAJlJlJlKAKAHqKAFbnkHqKAKAKAKAWRnkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAJlJlJlKACtRUnkFbDiQbCtKAKAJlJlJlKACtVPWRKAJlJlJlKAKAHqtQSZoYHqnkHBKAKAoYFbKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAKAKAKAKAKAKAKAnkEHnknkKAKAKAKAKAKAnkbziWKAKAKAKAKAKAnkWRWRydnkKAKAKAKAoYHqKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAiWngnkoYpnCtKAnkxpnkCdWHoYpnvgeFHqoYbzoYoYnkoYnkKAKAHqWRYaoYHqJzxwxwGUoYHqKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkKAnkngwjnkoYRUpFWRBSuzcucuDenbHhnbnbjRiOqKonqKejqKQFQCBXCAMYydnkHqAMnknkHqHqJXnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnkoYHqnkoYCtKAHqHqoYbJoYCtoYDinkHqFbLZnkoYRUoYoYKAKAHqnkoYydHqoYnknkHqoYFbKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAzxmHydtBYaCtKAKAKAKAKAKAKAKAfFKAKAKAKAKAKAKAKAKAKAKAnkFbnknknkWRoYFbHqoYHqKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAHFoYNRqoWRRUKAJlJlJlJlKAKAnkVroYnkCtCtoYKAJlJlJlKAKAHqAGnkWHHqydWRoYHqnknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAwzJYoYFbQmnkKAJlJlJlJlKAKAnkVrVrDiVrDioYKAJlJlJlKAKAHqKAUMoYoYnknkoYHqnkHqKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKArtkLPofInknkKAJlJlJlJlKAKAiWoYCdnknkDinkKAJlJlJlKAKAnkAGnknkHqHqtqnkoQVqAtKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAKAKAKAKAKAKAKAKAKAKAKAKAKAUaKAKAKAKAKAKAKAKAKAKAKAKAJXKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAnknknknknknkJlJl
+JlJlKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAnknknknknknkJlJl
+JlJlKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAnknknknknknkJlJl
+JlJlKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAnknknknknknkJlJl
+JlJlKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
+JlJlKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAnknknknknknkJlJl
+JlJlnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkJlJl
+JlJlnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkJlJl
+JlJlnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkJlJl
+JlJlnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+"}

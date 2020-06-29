@@ -1191,4 +1191,3 @@
 					/obj/item/storage/box/wormcan = 12,
 					/obj/item/material/fishing_net = 40,
 					/obj/item/stack/cable_coil/random = 4)
-

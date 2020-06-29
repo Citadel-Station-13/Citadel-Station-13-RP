@@ -5613,6 +5613,9 @@
 	},
 /obj/structure/catwalk,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/signnew/danger{
+	pixel_x = -32
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/research)
 "ajY" = (
@@ -22711,6 +22714,15 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
+"bcU" = (
+/obj/machinery/door/airlock/maintenance/common,
+/obj/structure/barricade,
+/obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/public_garden_maintenence)
 "bcV" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -23280,6 +23292,8 @@
 	},
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/public_garden)
 "bfn" = (
@@ -26822,6 +26836,8 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/public_garden_maintenence)
 "bLV" = (
@@ -30876,6 +30892,18 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/public_garden_maintenence)
+"dol" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade,
+/obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/lower/public_garden_maintenence)
 "dyb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/bone/skull/unathi,
@@ -30968,6 +30996,8 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 1
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden)
 "ejt" = (
@@ -31222,6 +31252,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_one)
+"gib" = (
+/obj/structure/catwalk,
+/obj/structure/sign/signnew/danger{
+	pixel_y = 32
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/lower/public_garden_maintenence)
 "giX" = (
 /obj/machinery/air_sensor{
 	frequency = 1441;
@@ -31480,6 +31517,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/surfacebase/public_garden_one)
+"iUV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/stairs/east,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/research)
 "iVY" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -32162,6 +32205,17 @@
 /obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/public_garden_maintenence)
+"qUC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/lower/public_garden_maintenence)
 "ram" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
@@ -32221,6 +32275,17 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"rvx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/lower/public_garden_maintenence)
 "rwd" = (
 /obj/machinery/light_construct{
 	dir = 8
@@ -32664,6 +32729,12 @@
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_one)
+"uLJ" = (
+/obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/public_garden_maintenence)
 "uLU" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -32719,6 +32790,19 @@
 /obj/effect/floor_decal/corner/grey/border,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/visitor_laundry)
+"vBA" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/visible/supply,
+/obj/structure/catwalk,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/signnew/danger{
+	pixel_x = -32
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/lower/research)
 "vCB" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -32779,6 +32863,18 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_one)
+"vPl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/remains,
+/obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/lower/public_garden_maintenence)
 "vQD" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable/green{
@@ -32788,6 +32884,11 @@
 	},
 /turf/simulated/floor/wood,
 /area/vacant/vacant_bar)
+"vVq" = (
+/obj/structure/ladder,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/public_garden_maintenence)
 "vZw" = (
 /obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/steeldecal/steel_decals_central1{
@@ -32875,6 +32976,18 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"xBi" = (
+/obj/effect/decal/cleanable/cobweb2,
+/obj/machinery/atmospherics/pipe/zpipe/down/supply,
+/obj/machinery/atmospherics/pipe/zpipe/down/scrubbers,
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/structure/lattice,
+/turf/simulated/open,
+/area/maintenance/lower/public_garden_maintenence)
 "xED" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -32899,6 +33012,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden)
+"xHr" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/airlock/maintenance/common,
+/obj/structure/barricade,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/research)
 "xLU" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -32942,12 +33061,6 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -32958,6 +33071,8 @@
 	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lightgrey/border,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden)
 
@@ -39233,10 +39348,10 @@ aah
 aah
 aah
 aah
-aah
-aah
 vkK
-pxT
+vkK
+vkK
+gib
 gUX
 gUy
 wzH
@@ -39375,13 +39490,13 @@ aah
 aah
 aah
 aah
-aah
-aah
 vkK
-pxT
-pxT
-pxT
-pxT
+qUC
+bcU
+uLJ
+uLJ
+uLJ
+uLJ
 bKM
 bfg
 egX
@@ -39516,9 +39631,9 @@ aah
 aah
 aah
 aah
-aah
-aah
-aah
+vkK
+vkK
+dol
 vkK
 vkK
 mpN
@@ -39658,10 +39773,10 @@ aah
 aah
 aah
 aah
-aah
-aah
-aah
-aah
+vkK
+vVq
+rvx
+vkK
 aah
 wFT
 dbc
@@ -39800,10 +39915,10 @@ aad
 aah
 aah
 aah
-aah
-aah
-aah
-aah
+vkK
+xBi
+vPl
+vkK
 aah
 aVT
 hcP
@@ -39942,10 +40057,10 @@ aad
 aah
 aah
 aah
-aah
-aah
-aah
-aah
+vkK
+vkK
+vkK
+vkK
 aah
 wFT
 wFT
@@ -43257,9 +43372,9 @@ agM
 agV
 aip
 aEU
-aah
-aah
-aah
+aEU
+aEU
+aEU
 aah
 aEU
 ale
@@ -43399,9 +43514,9 @@ agM
 agW
 ais
 aEU
-aah
-aah
-aah
+aEU
+anh
+aEU
 aah
 aEU
 alq
@@ -43541,9 +43656,9 @@ agM
 agZ
 aij
 aEU
-aah
-aah
-aah
+aEU
+iUV
+aEU
 aah
 aEU
 alq
@@ -43683,9 +43798,9 @@ agM
 ahf
 aij
 aEU
-aah
-aah
-aah
+aEU
+anh
+aEU
 aah
 aEU
 ale
@@ -43826,7 +43941,7 @@ aEU
 aiH
 aEU
 aEU
-aEU
+xHr
 aEU
 aEU
 aEU
@@ -43967,7 +44082,7 @@ agh
 ahh
 aiI
 aiU
-ajc
+vBA
 ajc
 ajX
 akC

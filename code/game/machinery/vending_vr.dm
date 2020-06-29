@@ -524,6 +524,7 @@
 					/obj/item/clothing/mask/surgical = 200)
 	premium = list(/obj/item/bedsheet/rainbow = 1)
 	contraband = list(/obj/item/clothing/mask/gas/clown_hat = 1)
+
 /obj/machinery/vending/loadout/clothing
 	name = "General Jump"
 	desc = "A special vendor using compressed matter cartridges to store large amounts of clothing."
@@ -867,6 +868,7 @@
 					/obj/item/storage/backpack/satchel = 100)
 	premium = list(/obj/item/clothing/under/color/rainbow = 1)
 	contraband = list(/obj/item/clothing/under/rank/clown = 1)
+
 /obj/machinery/vending/loadout/gadget
 	name = "Chips Co."
 	desc = "A special vendor for devices and gadgets."
@@ -916,6 +918,7 @@
 					/obj/item/clothing/glasses/omnihud = 100)
 	premium = list(/obj/item/perfect_tele/one_beacon = 1)
 	contraband = list(/obj/item/disk/nifsoft/compliance = 1)
+
 /obj/machinery/vending/loadout/loadout_misc
 	name = "Bits and Bobs"
 	desc = "A special vendor for things and also stuff!"
@@ -945,6 +948,7 @@
 					/obj/item/melee/umbrella/random = 100)
 	premium = list(/obj/item/toy/bosunwhistle = 1)
 	contraband = list(/obj/item/toy/katana = 1)
+
 /obj/machinery/vending/loadout/overwear
 	name = "Big D's Best"
 	desc = "A special vendor using compressed matter cartridges to store large amounts of overwear!"
@@ -1128,6 +1132,7 @@
 					/obj/item/clothing/suit/storage/seromi/cloak/standard/white_grey = 200)
 	premium = list(/obj/item/clothing/suit/imperium_monk = 3)
 	contraband = list(/obj/item/toy/katana = 1)
+
 /obj/machinery/vending/loadout/costume
 	name = "Thespian's Delight"
 	desc = "Sometimes nerds need costumes!"
