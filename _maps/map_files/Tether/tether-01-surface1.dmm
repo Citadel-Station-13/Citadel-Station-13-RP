@@ -30892,18 +30892,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/public_garden_maintenence)
-"dol" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/barricade,
-/obj/structure/catwalk,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/lower/public_garden_maintenence)
 "dyb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/bone/skull/unathi,
@@ -31517,12 +31505,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/surfacebase/public_garden_one)
-"iUV" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/stairs/east,
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plating,
-/area/maintenance/lower/research)
 "iVY" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -32210,7 +32192,6 @@
 /area/maintenance/lower/research)
 "qUC" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/barricade,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
@@ -39636,7 +39617,7 @@ aah
 aah
 vkK
 vkK
-dol
+rvx
 vkK
 vkK
 mpN
@@ -43091,9 +43072,9 @@ bPI
 agM
 aib
 aEU
-aah
-aah
-aah
+aEU
+aEU
+aEU
 aah
 aEU
 akZ
@@ -43233,9 +43214,9 @@ agM
 agM
 aib
 aEU
-adK
-adK
-adK
+aEU
+qSK
+aEU
 aah
 aEU
 ale
@@ -43518,7 +43499,7 @@ agW
 ais
 aEU
 aEU
-anh
+qSK
 aEU
 aah
 aEU
@@ -43660,7 +43641,7 @@ agZ
 aij
 aEU
 aEU
-iUV
+qSK
 aEU
 aah
 aEU
@@ -43802,7 +43783,7 @@ ahf
 aij
 aEU
 aEU
-anh
+ani
 aEU
 aah
 aEU

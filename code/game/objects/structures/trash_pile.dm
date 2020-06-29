@@ -274,6 +274,115 @@
 	else
 		return produce_beta_item()
 
+//// UNDER TETHER TRASH PILE
+
+obj/structure/trash_pile/under_tether
+	name = "old trash pile"
+	desc = "A heap of garbage that has been here for ages, but maybe there's something interesting inside still?"
+	icon = 'icons/obj/trash_piles.dmi'
+	icon_state = "randompile"
+	density = 1
+	anchored = 1.0
+
+	var/obj/structure/mob_spawner/rat_nest/rat_nest = null
+
+/obj/structure/trash_pile/under_tether/Initialize()
+	. = ..()
+	icon_state = pick(
+		"pile1",
+		"pile2",
+		"pilechair",
+		"piletable",
+		"pilevending",
+		"brtrashpile",
+		"microwavepile",
+		"rackpile",
+		"boxfort",
+		"trashbag",
+		"brokecomp")
+	rat_nest = new(src)
+
+/obj/structure/trash_pile/under_tether/Destroy()
+	qdel(rat_nest)
+	rat_nest = null
+	return ..()
+
+/obj/structure/trash_pile/under_tether/attackby(obj/item/W as obj, mob/user as mob)
+	var/w_type = W.type
+	if(w_type in allocated_gamma)
+		to_chat(user,"<span class='notice'>You feel \the [W] slip from your hand, and disappear into the trash pile.</span>")
+		user.unEquip(W)
+		W.forceMove(src)
+		allocated_gamma -= w_type
+		unique_gamma += w_type
+		qdel(W)
+
+	else
+		return ..()
+
+/obj/structure/trash_pile/under_tether/attack_generic(mob/user)
+	//Simple Animal
+	if(isanimal(user))
+		var/mob/living/L = user
+		//They're in it, and want to get out.
+		if(L.loc == src)
+			var/choice = alert("Do you want to exit \the [src]?","Un-Hide?","Exit","Stay")
+			if(choice == "Exit")
+				if(L == hider)
+					hider = null
+				L.forceMove(get_turf(src))
+		else if(!hider)
+			var/choice = alert("Do you want to hide in \the [src]?","Un-Hide?","Hide","Stay")
+			if(choice == "Hide" && !hider) //Check again because PROMPT
+				L.forceMove(src)
+				hider = L
+	else
+		return ..()
+
+/obj/structure/trash_pile/under_tether/attack_hand(mob/user)
+	//Human mob
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		H.visible_message("[user] searches through \the [src].","<span class='notice'>You search through \the [src].</span>")
+		if(hider)
+			to_chat(hider,"<span class='warning'>[user] is searching the trash pile you're in!</span>")
+
+		//Do the searching
+		if(do_after(user,rand(4 SECONDS,6 SECONDS),src))
+
+			//If there was a hider, chance to reveal them
+			if(hider && prob(50))
+				to_chat(hider,"<span class='danger'>You've been discovered!</span>")
+				hider.forceMove(get_turf(src))
+				hider = null
+				to_chat(user,"<span class='danger'>Some sort of creature leaps out of \the [src]!</span>")
+
+			//You already searched this one bruh
+			else if(user.ckey in searchedby)
+				to_chat(H,"<span class='warning'>There's nothing else for you in \the [src]!</span>")
+
+			//You found an item!
+			else
+				var/luck = rand(1,100)
+				var/obj/item/I
+				if(luck <= chance_alpha)
+					I = produce_alpha_item()
+				else if(luck <= chance_alpha+chance_beta)
+					I = produce_beta_item()
+				else if(luck <= chance_alpha+chance_beta+chance_gamma)
+					I = produce_gamma_item()
+
+				//We either have an item to hand over or we don't, at this point!
+				if(I)
+					searchedby += user.ckey
+					I.forceMove(get_turf(src))
+					to_chat(H,"<span class='notice'>You found \a [I]!</span>")
+
+	else
+		return ..()
+
+// Mouse Nest Varient
+
 /obj/structure/mob_spawner/mouse_nest
 	name = "trash"
 	desc = "A small heap of trash, perfect for mice to nest in."
@@ -314,11 +423,11 @@
 
 /obj/structure/mob_spawner/rat_nest
 	name = "trash"
-	desc = "A small heap of trash, perfect for mice to nest in."
+	desc = "A small heap of trash, perfect for rats to nest in."
 	icon = 'icons/obj/trash_piles.dmi'
 	icon_state = "randompile"
 	spawn_types = list(/mob/living/simple_mob/animal/passive/mouse/rat)
-	simultaneous_spawns = 3
+	simultaneous_spawns = 2
 	destructible = 1
 	spawn_delay = 0.1 HOUR
 

@@ -1,506 +1,745 @@
-"ai" = (/obj/effect/decal/cleanable/dirt,/obj/item/trash,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"ap" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"au" = (/obj/effect/decal/cleanable/dirt,/obj/structure/mob_spawner/mouse_nest,/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"aF" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/effect/decal/cleanable/dirt,/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"ah" = (/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/random/trash,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"ai" = (/obj/structure/outcrop/uranium,/turf/simulated/floor/beach/sand,/area/tether/under/static_area)
+"aj" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/structure/catwalk,/obj/machinery/light/small{dir = 1},/turf/simulated/floor/plating,/area/tether/under/static_area)
+"ao" = (/obj/machinery/floodlight,/turf/simulated/floor/beach/sand,/area/tether/under/static_area)
+"ap" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/turf/simulated/floor/plating,/area/tether/under/static_area)
+"as" = (/obj/structure/table/rack,/obj/effect/decal/cleanable/dirt,/obj/random/underdark,/obj/random/drinkbottle,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"ay" = (/obj/structure/table/woodentable,/obj/random/rigsuit,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"aF" = (/obj/structure/trash_pile/under_tether,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "aJ" = (/obj/effect/decal/cleanable/dirt,/obj/structure/barricade,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"aW" = (/obj/structure/closet/crate/mimic/dangerous,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"bv" = (/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"aW" = (/obj/structure/closet/crate/mimic/dangerous,/obj/random/unidentified_medicine,/obj/random/underdark,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"aX" = (/obj/structure/sign/department/medbay{pixel_x = -32},/obj/effect/spider/stickyweb,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"aY" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"be" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"bl" = (/obj/effect/decal/cleanable/dirt,/obj/random/humanoidremains,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"bt" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/effect/decal/cleanable/dirt,/obj/random/humanoidremains,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"bv" = (/obj/random/trash,/obj/effect/decal/cleanable/dirt,/obj/effect/spider/stickyweb,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "bz" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"bB" = (/obj/effect/spider/stickyweb/dark,/obj/item/seeds/bananaseed,/obj/machinery/light/small{dir = 8; icon_state = "bulb1"},/turf/simulated/floor/plating,/area/tether/under/static_area)
-"bJ" = (/obj/structure/closet/crate,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"bB" = (/obj/machinery/light/small{dir = 8; icon_state = "bulb1"},/obj/effect/spider/stickyweb,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"bH" = (/obj/structure/table/steel,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"bJ" = (/obj/structure/closet/crate,/obj/effect/decal/cleanable/dirt,/obj/random/maintenance,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"bK" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/turf/simulated/floor/plating,/area/tether/under/static_area)
 "bP" = (/obj/machinery/atmospherics/pipe/manifold/hidden/supply{dir = 1},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 10},/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
 "bU" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/structure/catwalk,/obj/machinery/door/airlock/maintenance/common,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"co" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/unary/vent_pump/on{dir = 4},/obj/item/seeds/bananaseed,/obj/machinery/alarm{dir = 4; pixel_x = -23},/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
+"cf" = (/turf/simulated/floor/tiled/old_tile/blue,/area/tether/under/static_area)
+"co" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/unary/vent_pump/on{dir = 4},/obj/machinery/alarm{dir = 4; pixel_x = -23},/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
 "cu" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"cw" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/structure/catwalk,/obj/random/junk,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "cH" = (/obj/item/modular_computer/console,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
-"cX" = (/obj/structure/catwalk,/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"cJ" = (/obj/structure/table/rack,/obj/effect/decal/cleanable/dirt,/obj/random/alcohol,/obj/random/maintenance,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"cN" = (/obj/structure/closet/crate,/obj/random/trash,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"cT" = (/obj/structure/table/steel,/turf/simulated/floor/tiled/old_tile/blue,/area/tether/under/static_area)
+"cW" = (/obj/machinery/alarm{frequency = 1441; pixel_y = 22},/obj/random/trash,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"cX" = (/obj/effect/spider/stickyweb,/obj/effect/spider/stickyweb,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "cY" = (/obj/structure/table,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
 "cZ" = (/obj/structure/barricade,/obj/machinery/door/airlock/maintenance/common,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"dK" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/vending/loadout/clothing,/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
+"dy" = (/obj/structure/table/bench/sifwooden,/obj/random/junk,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
+"dK" = (/obj/structure/outcrop/diamond,/turf/simulated/floor/beach/sand,/area/tether/under/static_area)
+"dN" = (/obj/effect/decal/cleanable/dirt,/obj/structure/closet/crate,/obj/structure/sign/mining{pixel_y = 32},/turf/simulated/floor/plating,/area/tether/under/static_area)
 "dO" = (/obj/structure/table/woodentable,/obj/item/storage/bible,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
 "ea" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/cobweb,/obj/structure/mob_spawner/mouse_nest,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
-"ee" = (/obj/machinery/atmospherics/pipe/manifold/hidden/supply{dir = 8},/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{dir = 8},/obj/structure/catwalk,/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"ee" = (/obj/machinery/atmospherics/pipe/manifold/hidden/supply{dir = 8},/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{dir = 8},/obj/structure/catwalk,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "eh" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/structure/catwalk,/obj/item/trash,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"ei" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/door/firedoor/glass,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "ej" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"ek" = (/obj/structure/cable{d2 = 2; icon_state = "0-2"},/obj/structure/cable{icon_state = "0-8"},/obj/structure/cable{d2 = 4; icon_state = "0-4"},/obj/machinery/power/terminal{dir = 1},/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"ek" = (/obj/structure/cable{d2 = 2; icon_state = "0-2"},/obj/structure/cable{icon_state = "0-8"},/obj/structure/cable{d2 = 4; icon_state = "0-4"},/obj/machinery/power/terminal{dir = 1},/obj/effect/decal/cleanable/greenglow,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"ep" = (/obj/effect/decal/cleanable/dirt,/obj/random/maintenance,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "es" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/blood,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
-"ew" = (/obj/structure/closet/secure_closet/freezer/fridge,/obj/item/reagent_containers/food/snacks/pie,/obj/item/reagent_containers/food/snacks/pie,/obj/item/reagent_containers/food/snacks/baguette,/obj/item/seeds/bananaseed,/obj/effect/decal/remains,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"ev" = (/obj/structure/catwalk,/obj/random/trash,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"ew" = (/obj/structure/closet/secure_closet/freezer/fridge,/obj/item/reagent_containers/food/snacks/pie,/obj/item/reagent_containers/food/snacks/pie,/obj/item/reagent_containers/food/snacks/baguette,/obj/effect/decal/remains,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "ey" = (/obj/structure/table,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
 "eF" = (/obj/structure/reagent_dispensers/watertank,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"eG" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/item/trash,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"eP" = (/obj/machinery/power/smes,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
-"fr" = (/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif/broken,/area/tether/under/static_area)
-"fv" = (/obj/structure/table/woodentable,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"eG" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/random/junk,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"eP" = (/obj/machinery/power/smes,/obj/effect/decal/cleanable/greenglow,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"fg" = (/obj/item/reagent_containers/food/snacks/pie,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"fp" = (/obj/structure/closet/secure_closet/freezer/fridge,/obj/effect/decal/remains,/obj/item/reagent_containers/food/snacks/meat/human,/obj/item/reagent_containers/food/snacks/meat/human,/obj/item/reagent_containers/food/snacks/meat/human,/obj/machinery/light/small{dir = 1},/obj/item/reagent_containers/food/snacks/meat/human,/turf/simulated/floor/tiled/freezer,/area/tether/under/static_area)
+"fr" = (/obj/effect/decal/cleanable/dirt,/obj/item/reagent_containers/food/snacks/baguette,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"fv" = (/obj/structure/table/woodentable,/obj/random/soap,/obj/random/toolbox,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"fz" = (/obj/structure/mob_spawner/mouse_nest,/turf/simulated/floor/beach/sand,/area/tether/under/static_area)
+"fA" = (/obj/structure/loot_pile/mecha/ripley/random_sprite,/turf/simulated/floor/beach/sand,/area/tether/under/static_area)
 "fF" = (/obj/structure/catwalk,/obj/machinery/door/airlock/maintenance/common,/obj/structure/barricade,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "fI" = (/obj/structure/table/steel,/obj/item/handcuffs/legcuffs/fuzzy,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"fZ" = (/obj/machinery/door/airlock/maintenance/common,/obj/structure/barricade,/turf/simulated/floor/plating,/area/tether/under/poi)
+"fZ" = (/obj/structure/closet/crate/mimic/dangerous,/obj/random/multiple/underdark/treasure,/obj/effect/decal/remains/human,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"ga" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "gd" = (/obj/effect/decal/cleanable/dirt,/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "gl" = (/turf/simulated/floor/plating,/area/tether/under/poi)
 "go" = (/obj/structure/barricade,/turf/simulated/floor/beach/sand,/area/tether/under/static_area)
 "gB" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/effect/decal/cleanable/dirt,/obj/structure/barricade,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"gD" = (/obj/effect/decal/cleanable/dirt,/obj/structure/trash_pile/under_tether,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"gL" = (/obj/structure/table/rack,/obj/random/junk,/obj/item/broken_device/random,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "gX" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/light/small,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
+"gZ" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/structure/catwalk,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"hf" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/turf/simulated/floor/plating,/area/tether/under/static_area)
+"hg" = (/obj/random/mouseremains,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "hj" = (/obj/machinery/door/airlock/maintenance/common,/obj/structure/barricade,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"hq" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/structure/barricade,/obj/machinery/door/airlock/maintenance/common,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"hq" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/door/airlock/maintenance/common,/obj/machinery/door/firedoor/glass,/obj/structure/barricade,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "hv" = (/turf/simulated/wall/iron,/area/tether/under/poi)
-"hy" = (/obj/machinery/power/port_gen/pacman,/obj/structure/cable,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"hy" = (/obj/machinery/power/port_gen/pacman,/obj/structure/cable,/obj/effect/decal/cleanable/greenglow,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"hz" = (/obj/random/mre,/obj/structure/table/rack,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"hA" = (/obj/structure/barricade,/obj/machinery/door/airlock/maintenance/common,/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/turf/simulated/floor/plating,/area/tether/under/static_area)
 "hD" = (/obj/structure/table/woodentable,/obj/item/pickaxe/hand,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "hE" = (/obj/structure/barricade,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"hF" = (/obj/random/trash,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
 "hY" = (/obj/machinery/light/small{dir = 8; icon_state = "bulb1"},/turf/simulated/floor/plating,/area/tether/under/static_area)
+"ig" = (/obj/structure/catwalk,/obj/random/powercell,/obj/structure/table/rack,/obj/random/maintenance,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "ii" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "ik" = (/obj/structure/ladder/up,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"im" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "io" = (/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/turf/simulated/floor/plating,/area/tether/under/static_area)
+"is" = (/obj/random/fishing_junk,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"iI" = (/obj/effect/decal/cleanable/dirt,/obj/random/humanoidremains,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "iM" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "iO" = (/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,/obj/machinery/atmospherics/pipe/manifold/hidden/supply,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "iW" = (/obj/structure/mob_spawner/mouse_nest,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "iX" = (/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
+"jb" = (/obj/effect/decal/cleanable/dirt,/obj/structure/extinguisher_cabinet{pixel_x = 25},/turf/simulated/floor/plating,/area/tether/under/static_area)
 "ji" = (/obj/random/junk,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"jj" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 6},/obj/structure/catwalk,/obj/random/junk,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "jk" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
-"jw" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 10},/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"jl" = (/obj/vehicle/bike/random,/turf/simulated/floor/beach/sand,/area/tether/under/static_area)
+"jo" = (/obj/structure/closet/crate,/obj/random/underdark,/obj/random/handgun,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"jw" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 10},/turf/simulated/floor/plating,/area/tether/under/static_area)
 "jD" = (/obj/effect/decal/cleanable/dirt,/obj/random/junk,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "jR" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"jT" = (/obj/structure/sign/signnew/danger{pixel_y = 32},/turf/simulated/floor/plating,/area/tether/under/static_area)
 "jZ" = (/obj/effect/decal/cleanable/dirt,/obj/structure/table/woodentable,/obj/item/pickaxe/hand,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "kc" = (/obj/effect/spider/stickyweb/dark,/obj/structure/barricade,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
-"km" = (/obj/effect/decal/cleanable/dirt,/obj/structure/closet/crate/plastic,/obj/item/reagent_containers/food/drinks/bottle/bottleofnothing,/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif/broken,/area/tether/under/static_area)
-"kn" = (/obj/random/junk,/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
+"kd" = (/obj/random/multiple/underdark/treasure,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"km" = (/obj/effect/decal/cleanable/dirt,/obj/structure/closet/crate/plastic,/obj/item/reagent_containers/food/drinks/bottle/bottleofnothing,/turf/simulated/floor/wood/sif/broken,/area/tether/under/static_area)
+"kn" = (/obj/random/junk,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
 "kq" = (/obj/effect/decal/cleanable/dirt,/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"kw" = (/obj/structure/closet/crate,/obj/random/tool,/turf/simulated/floor/beach/sand,/area/tether/under/static_area)
+"kx" = (/obj/structure/table,/turf/simulated/floor/wood/sif/broken,/area/tether/under/static_area)
 "kH" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "kL" = (/obj/structure/table/steel,/obj/item/melee/baton/cattleprod,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "kR" = (/obj/machinery/light/small{dir = 1},/turf/simulated/floor/plating,/area/tether/under/static_area)
-"kT" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/unary/vent_scrubber/on,/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
+"kT" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/unary/vent_scrubber/on,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
+"kU" = (/obj/structure/table/bench/steel,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"lb" = (/obj/structure/table/woodentable,/obj/random/multiple/underdark/treasure,/obj/random/maintenance,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
 "lg" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/turf/simulated/floor/plating,/area/tether/under/static_area)
 "li" = (/obj/machinery/atmospherics/pipe/manifold/hidden/supply,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"ll" = (/obj/effect/gibspawner/generic,/turf/simulated/floor/tiled/freezer,/area/tether/under/static_area)
 "lm" = (/obj/item/storage/fancy/blackcandle_box,/obj/structure/table/woodentable,/obj/effect/decal/cleanable/cobweb,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"lu" = (/obj/structure/extinguisher_cabinet{pixel_x = 25},/turf/simulated/floor/wood/sif/broken,/area/tether/under/static_area)
 "ly" = (/obj/machinery/alarm{frequency = 1441; pixel_y = 22},/turf/simulated/floor/plating,/area/tether/under/static_area)
-"mq" = (/obj/item/seeds/bananaseed,/obj/machinery/light/small{dir = 1},/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
+"lE" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/structure/catwalk,/obj/machinery/light/small{dir = 1},/turf/simulated/floor/plating,/area/tether/under/static_area)
+"lM" = (/obj/structure/barricade,/obj/machinery/door/airlock/maintenance/common,/obj/structure/barricade,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"md" = (/obj/structure/table/woodentable,/obj/machinery/chemical_dispenser/bar_alc/full,/turf/simulated/floor/wood/sif/broken,/area/tether/under/static_area)
+"mj" = (/obj/structure/table/rack,/obj/random/toolbox,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"mq" = (/obj/machinery/light/small{dir = 1},/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
 "mv" = (/obj/random/junk,/obj/structure/table/rack,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"mA" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/effect/decal/cleanable/dirt,/obj/random/trash,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"mC" = (/obj/machinery/door/airlock/maintenance/int,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "mE" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "mH" = (/obj/effect/decal/cleanable/blood,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"mP" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/structure/closet/secure_closet/freezer/fridge,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "mQ" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"mU" = (/obj/structure/trash_pile/under_tether,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
 "mV" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/door/airlock/maintenance/common,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"mX" = (/obj/structure/table/steel,/obj/random/mre,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"mZ" = (/obj/structure/catwalk,/obj/random/junk,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"na" = (/obj/structure/table/steel,/obj/random/mre,/turf/simulated/floor/tiled/old_tile/blue,/area/tether/under/static_area)
 "nb" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/structure/catwalk,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "nc" = (/obj/structure/table/bench,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/wood/sif/broken,/area/tether/under/static_area)
 "ng" = (/obj/effect/decal/cleanable/blood,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"nk" = (/turf/simulated/floor/plating,/area/space)
+"ns" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/vending/loadout/costume,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"nw" = (/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/obj/random/trash,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"nx" = (/obj/machinery/door/airlock/maintenance/common,/obj/structure/barricade,/obj/structure/catwalk,/obj/machinery/door/firedoor/glass,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"nG" = (/obj/structure/closet/crate,/obj/random/underdark,/obj/random/maintenance,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"nK" = (/obj/effect/decal/cleanable/dirt,/obj/random/humanoidremains,/obj/effect/spider/stickyweb,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"nM" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/structure/catwalk,/obj/random/trash,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"nR" = (/obj/machinery/door/airlock/maintenance/common,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/turf/simulated/floor/plating,/area/tether/under/static_area)
 "nU" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/structure/catwalk,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "nW" = (/obj/structure/barricade,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"oe" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/structure/catwalk,/obj/random/junk,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "oi" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/blood,/obj/machinery/light/small{dir = 4; icon_state = "bulb1"},/turf/simulated/floor/plating,/area/tether/under/static_area)
 "on" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"oM" = (/obj/structure/mob_spawner/rat_nest,/turf/simulated/floor/beach/sand,/area/tether/under/static_area)
+"oM" = (/obj/structure/trash_pile/under_tether,/turf/simulated/floor/beach/sand,/area/tether/under/static_area)
 "oQ" = (/obj/effect/decal/cleanable/dirt,/obj/structure/closet,/obj/item/clothing/gloves/light_brown,/obj/item/flashlight/color/yellow,/obj/item/storage/box/flare,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
-"oT" = (/obj/machinery/vending/loadout,/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
-"oU" = (/obj/machinery/light/small,/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"oT" = (/obj/machinery/vending/loadout,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
+"oU" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/effect/spider/stickyweb,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"oV" = (/obj/effect/decal/cleanable/dirt,/obj/random/humanoidremains,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
 "oY" = (/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"oZ" = (/obj/item/instrument/accordion,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "pg" = (/obj/effect/decal/cleanable/dirt,/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/turf/simulated/floor/plating,/area/tether/under/static_area)
-"ph" = (/obj/effect/decal/cleanable/dirt,/obj/item/seeds/bananaseed,/obj/effect/decal/remains,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"ph" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/remains,/obj/effect/spider/stickyweb,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "pi" = (/obj/structure/table/bench/sifwooden,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "pn" = (/obj/structure/closet/crate,/obj/random/firstaid,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "po" = (/obj/effect/decal/cleanable/dirt,/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"pz" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/item/trash,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"ps" = (/obj/machinery/door/airlock/maintenance/common,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"pz" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/random/junk,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "pB" = (/obj/machinery/atmospherics/pipe/manifold/hidden/supply{dir = 8},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 5},/turf/simulated/floor/plating,/area/tether/under/static_area)
-"pD" = (/obj/machinery/door/airlock/maintenance/common,/obj/structure/barricade,/turf/simulated/floor/plating,/area/space)
+"pD" = (/obj/effect/decal/remains/human,/turf/simulated/floor/beach/sand,/area/tether/under/static_area)
 "pF" = (/turf/simulated/wall/iron{can_open = 1},/area/tether/under/static_area)
-"pI" = (/obj/effect/decal/cleanable/dirt,/obj/effect/spider/stickyweb/dark,/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"pR" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/item/bananapeel,/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"pJ" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/structure/catwalk,/obj/random/junk,/obj/random/trash,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"pK" = (/obj/structure/closet/crate/mimic/dangerous,/obj/random/multiple/underdark/treasure,/turf/simulated/floor/beach/sand,/area/tether/under/static_area)
+"pR" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/item/bananapeel,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "pS" = (/obj/effect/decal/cleanable/cobweb2,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "pZ" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/turf/simulated/floor/plating,/area/tether/under/static_area)
+"qa" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/random/trash,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "qi" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 10},/turf/simulated/floor/plating,/area/tether/under/static_area)
 "qo" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"qq" = (/obj/structure/closet/crate,/obj/random/cash,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "qr" = (/obj/machinery/atmospherics/pipe/zpipe/up/scrubbers,/obj/machinery/atmospherics/pipe/zpipe/up/supply,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
 "qA" = (/obj/effect/decal/cleanable/dirt,/obj/structure/table/rack,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"qC" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/random/trash,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "qK" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"qP" = (/obj/machinery/vending/magivend,/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"qR" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
+"qP" = (/obj/machinery/vending/loadout/clothing,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"qR" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
+"qS" = (/obj/structure/sign/warning{pixel_y = -32},/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
 "qV" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/structure/catwalk,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "qX" = (/obj/effect/decal/cleanable/dirt,/obj/structure/catwalk,/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/manifold/hidden/supply{dir = 4},/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{dir = 4},/turf/simulated/floor/plating,/area/tether/under/static_area)
-"ra" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/structure/catwalk,/obj/item/trash,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"rg" = (/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
-"rk" = (/obj/structure/cable{icon_state = "2-8"},/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"ra" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/structure/catwalk,/obj/random/junk,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"rd" = (/obj/machinery/door/airlock/maintenance/int,/obj/structure/barricade,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"rg" = (/obj/effect/decal/remains,/obj/effect/spider/stickyweb,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"rk" = (/obj/structure/cable{icon_state = "2-8"},/obj/effect/decal/cleanable/greenglow,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
 "rt" = (/obj/structure/table/steel,/obj/item/toy/plushie/bear_bloody,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"rw" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"rD" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/structure/catwalk,/obj/machinery/door/airlock/maintenance/common,/obj/structure/barricade,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"rK" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/unary/vent_pump/on{dir = 4},/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
+"ru" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/structure/catwalk,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"rv" = (/obj/effect/decal/cleanable/dirt,/obj/structure/sign/warning{pixel_y = 32},/turf/simulated/floor/plating,/area/tether/under/static_area)
+"rw" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/effect/decal/cleanable/dirt,/obj/structure/barricade,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"rC" = (/obj/effect/decal/cleanable/dirt,/obj/structure/table/woodentable,/obj/machinery/chemical_dispenser/bar_soft/full,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
+"rH" = (/obj/machinery/mineral/mint,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"rK" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/unary/vent_pump/on{dir = 4},/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
 "rS" = (/obj/effect/decal/cleanable/dirt,/obj/structure/table/steel,/obj/item/bikehorn,/obj/item/instrument/bikehorn,/obj/item/instrument/accordion,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
 "rW" = (/obj/effect/decal/cleanable/dirt,/obj/structure/table/bench/wooden,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "se" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "sj" = (/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"so" = (/obj/item/trash,/obj/effect/decal/cleanable/cobweb,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"so" = (/obj/effect/decal/cleanable/cobweb,/obj/random/junk,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
 "sq" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 5},/turf/simulated/floor/plating,/area/tether/under/static_area)
-"sv" = (/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/tether/under/poi)
+"sv" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/effect/decal/cleanable/dirt,/obj/structure/catwalk,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "sy" = (/obj/structure/table/steel,/obj/item/soap,/obj/machinery/light/small,/turf/simulated/floor/wood/sif/broken,/area/tether/under/static_area)
-"sF" = (/obj/machinery/alarm{frequency = 1441; pixel_y = 22},/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"sA" = (/obj/random/junk,/obj/random/maintenance,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"sF" = (/obj/machinery/alarm{frequency = 1441; pixel_y = 22},/obj/effect/decal/cleanable/greenglow,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
 "sR" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/turf/simulated/floor/wood/sif/broken,/area/tether/under/static_area)
 "sS" = (/obj/random/outcrop,/turf/simulated/floor/beach/sand,/area/tether/under/static_area)
+"sV" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/structure/catwalk,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "sW" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "sX" = (/obj/effect/decal/cleanable/dirt,/obj/structure/barricade,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"tc" = (/obj/structure/closet,/obj/random/maintenance,/obj/random/maintenance/cargo,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"tf" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/random/junk,/obj/random/trash,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "tg" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/door/airlock/maintenance/common,/obj/structure/barricade,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"tq" = (/obj/structure/closet/crate,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"tq" = (/obj/structure/closet/crate,/obj/random/maintenance,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"ty" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "tB" = (/obj/effect/decal/cleanable/blood,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"tL" = (/obj/item/trash,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"tH" = (/obj/machinery/vending/boozeomat,/turf/simulated/floor/wood/sif/broken,/area/tether/under/static_area)
+"tL" = (/obj/structure/table/rack,/obj/random/unidentified_medicine,/turf/simulated/floor/beach/sand,/area/tether/under/static_area)
 "tQ" = (/obj/machinery/light/small{dir = 1; icon_state = "bulb1"},/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
 "uk" = (/obj/machinery/light/small{dir = 1},/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
-"un" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/structure/catwalk,/obj/structure/barricade,/obj/machinery/door/airlock/maintenance/common,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"un" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/structure/catwalk,/obj/machinery/door/airlock/maintenance/common,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"uu" = (/obj/structure/table/rack,/obj/random/junk,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"ux" = (/obj/effect/decal/cleanable/dirt,/obj/random/trash,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "uz" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "uF" = (/turf/simulated/floor/beach/sand,/area/tether/under/static_area)
+"uP" = (/obj/effect/decal/cleanable/dirt,/obj/random/humanoidremains,/turf/simulated/floor/wood/sif/broken,/area/tether/under/static_area)
+"uW" = (/obj/structure/catwalk,/obj/machinery/door/airlock/maintenance/common,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "vg" = (/obj/structure/reagent_dispensers/fueltank,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "vn" = (/obj/effect/decal/cleanable/blood,/turf/simulated/floor/wood/sif/broken,/area/tether/under/static_area)
+"vt" = (/obj/random/trash,/turf/simulated/floor/tiled/freezer,/area/tether/under/static_area)
 "vx" = (/obj/structure/closet/crate,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "vB" = (/obj/effect/decal/cleanable/cobweb,/obj/structure/mob_spawner/rat_nest,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"vK" = (/obj/effect/decal/cleanable/dirt,/obj/structure/table/rack,/obj/random/maintenance,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "vW" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/effect/decal/cleanable/dirt,/obj/structure/catwalk,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"vZ" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 5},/obj/random/junk,/obj/item/seeds/bananaseed,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"vZ" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 5},/obj/random/junk,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"wa" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/random/trash,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"we" = (/obj/random/trash,/turf/simulated/floor/wood/sif/broken,/area/tether/under/static_area)
 "wj" = (/obj/effect/decal/remains,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
 "wq" = (/obj/machinery/alarm{dir = 4; pixel_x = -23},/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"wt" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/turf/simulated/floor/plating,/area/tether/under/static_area)
+"wu" = (/obj/machinery/door/airlock/maintenance/common,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/structure/catwalk,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "wz" = (/obj/structure/table/steel,/obj/item/surgical/scalpel,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"wL" = (/obj/random/junk,/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"wP" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/effect/spider/stickyweb/dark,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"wB" = (/obj/effect/decal/cleanable/dirt,/obj/random/junk,/obj/machinery/light/small{dir = 8; icon_state = "bulb1"},/turf/simulated/floor/plating,/area/tether/under/static_area)
+"wE" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 10},/obj/random/trash,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"wL" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/effect/decal/cleanable/dirt,/obj/structure/catwalk,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"wP" = (/obj/effect/spider/stickyweb,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"wQ" = (/mob/living/simple_mob/animal/giant_spider/nurse,/turf/simulated/floor/beach/sand,/area/tether/under/static_area)
 "wU" = (/obj/machinery/door/airlock,/obj/structure/barricade,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"wV" = (/obj/effect/decal/cleanable/dirt,/obj/item/stool/padded,/obj/random/trash,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"wZ" = (/obj/effect/decal/cleanable/dirt,/obj/structure/catwalk,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "xa" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/structure/catwalk,/obj/random/junk,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"xd" = (/obj/machinery/door/airlock/maintenance/common,/obj/structure/barricade,/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"xd" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/structure/catwalk,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "xe" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "xj" = (/turf/simulated/mineral,/area/tether/under/static_area)
+"xn" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/structure/extinguisher_cabinet{pixel_x = 25},/turf/simulated/floor/plating,/area/tether/under/static_area)
 "xp" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "xr" = (/obj/effect/decal/cleanable/dirt,/obj/random/junk,/turf/simulated/floor/wood/sif/broken,/area/tether/under/static_area)
 "xw" = (/obj/structure/table/woodentable,/obj/item/pickaxe/hand,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
-"xy" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"xy" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/structure/catwalk,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "xD" = (/obj/effect/decal/cleanable/dirt,/obj/structure/mob_spawner/mouse_nest,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"xM" = (/obj/structure/table/woodentable,/obj/random/underdark,/obj/random/maintenance,/turf/simulated/floor/wood/sif/broken,/area/tether/under/static_area)
+"xO" = (/obj/random/maintenance,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "yd" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
-"yv" = (/obj/item/trash,/obj/random/junk,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"yD" = (/obj/effect/decal/cleanable/dirt,/obj/structure/mob_spawner/mouse_nest,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
+"ys" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 10},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 10},/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/structure/catwalk,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"yv" = (/obj/structure/closet/crate/mimic/dangerous,/obj/random/underdark,/turf/simulated/floor/beach/sand,/area/tether/under/static_area)
+"yD" = (/obj/effect/decal/cleanable/dirt,/obj/structure/trash_pile/under_tether,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
+"yI" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "yM" = (/obj/machinery/atmospherics/unary/vent_scrubber/on{dir = 1},/turf/simulated/floor/plating,/area/tether/under/static_area)
-"yP" = (/obj/effect/decal/cleanable/dirt,/obj/item/seeds/bananaseed,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"yS" = (/obj/effect/decal/cleanable/dirt,/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/random/junk,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"yW" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/structure/catwalk,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "yY" = (/obj/structure/table/bench,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"za" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/obj/random/humanoidremains,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "zf" = (/turf/simulated/floor/wood/sif/broken,/area/tether/under/static_area)
-"zp" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/effect/decal/cleanable/dirt,/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"zq" = (/obj/machinery/door/airlock/maintenance/common,/obj/structure/barricade,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"zp" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"zq" = (/obj/machinery/door/airlock/maintenance/common,/obj/structure/barricade,/obj/machinery/door/firedoor/glass,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
 "zx" = (/obj/structure/table/steel,/obj/item/handcuffs/cable,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "zz" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/random/junk,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
 "zF" = (/turf/simulated/floor/plating,/area/tether/under/static_area)
-"zI" = (/obj/effect/decal/cleanable/dirt,/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif/broken,/area/tether/under/static_area)
+"zI" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/structure/catwalk,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"zK" = (/obj/random/trash,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
 "zM" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/blood,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"An" = (/obj/structure/catwalk,/obj/item/trash,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"zV" = (/obj/structure/table/steel,/obj/random/firstaid,/turf/simulated/floor/tiled/old_tile/blue,/area/tether/under/static_area)
+"zW" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Af" = (/obj/random/outcrop,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Aj" = (/obj/structure/extinguisher_cabinet{pixel_x = 25},/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"An" = (/obj/structure/closet/crate/mimic/dangerous,/obj/random/multiple/underdark/treasure,/obj/effect/decal/remains/human,/turf/simulated/floor/beach/sand,/area/tether/under/static_area)
 "Ar" = (/obj/effect/decal/cleanable/cobweb2,/obj/structure/reagent_dispensers/fueltank,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "At" = (/obj/machinery/atmospherics/pipe/manifold/hidden/supply,/obj/effect/decal/cleanable/dirt,/obj/structure/closet,/obj/item/clothing/gloves/light_brown,/obj/item/flashlight/color/yellow,/obj/item/storage/box/flare,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
-"Av" = (/obj/structure/closet/crate,/obj/random/ammo,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Au" = (/obj/effect/gibspawner/generic,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/freezer,/area/tether/under/static_area)
+"Av" = (/obj/structure/closet/crate,/obj/random/ammo,/obj/random/cash,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "Ay" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
 "AC" = (/obj/structure/reagent_dispensers/watertank,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
-"AF" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{dir = 8},/obj/machinery/atmospherics/pipe/manifold/hidden/supply{dir = 8},/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"AF" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{dir = 8},/obj/machinery/atmospherics/pipe/manifold/hidden/supply{dir = 8},/turf/simulated/floor/plating,/area/tether/under/static_area)
 "AG" = (/obj/machinery/light/small,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
 "AM" = (/obj/structure/table/bench/wooden,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
 "AN" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/structure/catwalk,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"Ba" = (/obj/item/seeds/bananaseed,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
-"Bd" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/structure/catwalk,/obj/machinery/door/airlock/maintenance/common,/obj/structure/barricade,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"AR" = (/obj/random/junk,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"AS" = (/obj/machinery/light/small{dir = 1},/obj/effect/decal/cleanable/dirt,/obj/effect/spider/stickyweb,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"AV" = (/obj/structure/table/steel,/obj/random/cash,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"Ba" = (/obj/machinery/door/airlock/maintenance/common,/obj/structure/catwalk,/obj/structure/barricade,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Bd" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/structure/catwalk,/obj/machinery/door/airlock/maintenance/common,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "Bj" = (/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/turf/simulated/floor/plating,/area/tether/under/static_area)
 "Bl" = (/obj/machinery/power/apc{dir = 8; name = "west bump"; pixel_x = -28},/obj/structure/cable,/obj/machinery/light/small{dir = 8; icon_state = "bulb1"},/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"Bp" = (/obj/structure/closet/crate/mimic/dangerous,/obj/random/firstaid,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "Bt" = (/obj/structure/cable{d2 = 2; icon_state = "0-2"},/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "Bw" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 6},/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
-"Bx" = (/obj/effect/decal/cleanable/dirt,/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/structure/barricade,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"BK" = (/obj/effect/spider/stickyweb/dark,/obj/machinery/alarm{frequency = 1441; pixel_y = 22},/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"Bx" = (/mob/living/simple_mob/animal/sif/glitterfly/rare,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"BC" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/random/trash,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"BK" = (/mob/living/simple_mob/animal/sif/shantak/retaliate,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
 "BO" = (/obj/machinery/atmospherics/pipe/manifold/hidden/supply,/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,/obj/structure/catwalk,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "BS" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/manifold/hidden/supply,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "BX" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
-"BZ" = (/obj/machinery/door/airlock,/obj/structure/barricade,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"Cd" = (/obj/effect/spider/stickyweb/dark,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"Ci" = (/obj/item/trash,/obj/effect/spider/stickyweb/dark,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"BZ" = (/obj/machinery/door/airlock,/obj/structure/barricade,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Cb" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/random/humanoidremains,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Ci" = (/mob/living/simple_mob/animal/sif/glitterfly/rare,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"Cl" = (/obj/effect/decal/cleanable/dirt,/obj/structure/table/bench/steel,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "Cm" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/turf/simulated/floor/plating,/area/tether/under/static_area)
 "Cn" = (/obj/machinery/light/small{dir = 4; icon_state = "bulb1"},/turf/simulated/floor/plating,/area/tether/under/static_area)
-"Ct" = (/obj/effect/spider/stickyweb/dark,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Cw" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 5},/obj/effect/decal/cleanable/dirt,/obj/structure/catwalk,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "CA" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/turf/simulated/floor/plating,/area/tether/under/static_area)
+"CB" = (/obj/effect/decal/cleanable/dirt,/obj/random/junk,/obj/structure/sign/mining{pixel_y = 32},/turf/simulated/floor/plating,/area/tether/under/static_area)
 "CC" = (/obj/structure/mob_spawner/rat_nest,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "CD" = (/obj/machinery/light/small{dir = 4; icon_state = "bulb1"},/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
-"CW" = (/obj/structure/table/steel,/obj/item/instrument/trombone,/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
+"CE" = (/obj/effect/decal/cleanable/dirt,/obj/structure/table/bench/steel,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"CQ" = (/obj/effect/gibspawner/generic,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
+"CR" = (/obj/structure/closet,/obj/random/drinkbottle,/obj/random/carp_plushie,/obj/random/maintenance/cargo,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"CV" = (/obj/structure/catwalk,/obj/structure/closet/crate,/obj/random/trash,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"CW" = (/obj/structure/table/steel,/obj/item/instrument/trombone,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
+"Dc" = (/obj/structure/closet/crate/mimic/dangerous,/obj/random/firstaid,/obj/random/maintenance,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Dd" = (/obj/machinery/door/airlock/maintenance/common,/obj/structure/barricade,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
 "De" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Dh" = (/obj/structure/catwalk,/obj/random/trash,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "Di" = (/obj/structure/catwalk,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Dn" = (/obj/structure/closet/crate,/obj/random/maintenance,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Do" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/effect/decal/cleanable/dirt,/obj/structure/catwalk,/obj/random/trash,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Ds" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/door/firedoor/glass,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "DA" = (/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{dir = 4},/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"DD" = (/obj/item/trash,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"DD" = (/obj/structure/table/rack,/obj/random/unidentified_medicine,/obj/random/underdark,/turf/simulated/floor/beach/sand,/area/tether/under/static_area)
 "DF" = (/turf/simulated/wall/iron,/area/tether/under/static_area)
+"DQ" = (/obj/machinery/light/small{dir = 8; icon_state = "bulb1"},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"DV" = (/obj/structure/table/woodentable,/obj/random/junk,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
 "DZ" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/alarm{dir = 4; pixel_x = -23},/turf/simulated/floor/plating,/area/tether/under/static_area)
 "Ed" = (/obj/structure/table/bench/sifwooden,/turf/simulated/floor/wood/sif/broken,/area/tether/under/static_area)
-"Eg" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/structure/catwalk,/obj/machinery/door/airlock/maintenance/common,/obj/structure/barricade,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"El" = (/obj/structure/table,/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"Ep" = (/obj/structure/catwalk,/obj/item/trash,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Eg" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/structure/catwalk,/obj/machinery/door/airlock/maintenance/common,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"El" = (/mob/living/simple_mob/animal/sif/sakimm/polar,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"Em" = (/obj/structure/table/steel,/obj/random/firstaid,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Ep" = (/obj/structure/catwalk,/obj/random/junk,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Er" = (/obj/effect/decal/cleanable/dirt,/obj/structure/table/woodentable,/obj/item/reagent_containers/chem_disp_cartridge/mint,/turf/simulated/floor/wood/sif/broken,/area/tether/under/static_area)
 "Es" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/turf/simulated/floor/plating,/area/tether/under/static_area)
-"Eu" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/door/airlock/maintenance/common,/obj/structure/barricade,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"ED" = (/obj/structure/table/steel,/obj/item/instrument/saxophone,/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif/broken,/area/tether/under/static_area)
+"Eu" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/door/airlock/maintenance/common,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Ev" = (/obj/structure/extinguisher_cabinet{pixel_x = 25},/turf/simulated/floor/plating,/area/tether/under/static_area)
+"ED" = (/obj/structure/table/steel,/obj/item/instrument/saxophone,/turf/simulated/floor/wood/sif/broken,/area/tether/under/static_area)
 "EH" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"EP" = (/obj/structure/table/steel,/obj/item/lipstick/random,/obj/item/lipstick/random,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
+"EP" = (/obj/structure/table/steel,/obj/item/lipstick/random,/obj/item/lipstick/random,/obj/random/toolbox,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
+"ER" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/random/trash,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "ES" = (/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"EW" = (/obj/effect/decal/cleanable/dirt,/obj/effect/spider/stickyweb,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "Fb" = (/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
-"Fg" = (/obj/machinery/door/airlock/maintenance/common,/obj/structure/barricade,/obj/structure/catwalk,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"Fj" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Fg" = (/obj/machinery/door/airlock/maintenance/common,/obj/structure/catwalk,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Fj" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Fp" = (/obj/random/trash,/obj/random/humanoidremains,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Fv" = (/obj/random/humanoidremains,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Fy" = (/obj/effect/decal/cleanable/dirt,/obj/structure/sign/warning{pixel_x = -32},/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
 "FA" = (/obj/effect/decal/cleanable/dirt,/obj/random/junk,/obj/machinery/light/small{dir = 1},/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"FB" = (/obj/effect/decal/cleanable/dirt,/obj/structure/closet,/obj/item/clothing/gloves/light_brown,/obj/item/flashlight/color/yellow,/obj/item/storage/box/flare,/obj/item/broken_bottle,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
 "FD" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "FL" = (/obj/effect/decal/cleanable/dirt,/obj/effect/spider/stickyweb/dark,/obj/machinery/light/small{dir = 8},/turf/simulated/floor/plating,/area/tether/under/static_area)
+"FR" = (/obj/structure/barricade,/turf/simulated/floor/water/pool,/area/tether/under/static_area)
 "FW" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "FZ" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Gf" = (/obj/effect/decal/cleanable/dirt,/obj/structure/closet/crate,/obj/random/firstaid,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "Gh" = (/obj/structure/table/rack,/turf/simulated/floor/beach/sand,/area/tether/under/static_area)
-"Go" = (/obj/item/seeds/bananaseed,/turf/unsimulated/mineral/virgo3b,/area/tether/under/static_area)
-"Gs" = (/obj/effect/spider/stickyweb/dark,/obj/machinery/light/small{dir = 8; icon_state = "bulb1"},/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Go" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/machinery/light/small{dir = 8; icon_state = "bulb1"},/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Gs" = (/mob/living/simple_mob/animal/sif/fluffy/silky,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
 "Gw" = (/obj/effect/decal/cleanable/dirt,/obj/structure/closet/crate,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"GG" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"GE" = (/obj/effect/decal/cleanable/dirt,/obj/item/stool/padded,/obj/random/trash,/turf/simulated/floor/wood/sif/broken,/area/tether/under/static_area)
+"GG" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/obj/machinery/vending/loadout,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "GU" = (/obj/structure/table/woodentable,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"GV" = (/obj/machinery/door/airlock/maintenance/common,/obj/structure/barricade,/obj/machinery/door/firedoor/glass,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "GZ" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/light/small{dir = 1},/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
 "Ha" = (/obj/machinery/power/port_gen/pacman,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"Hg" = (/obj/structure/table/steel,/obj/item/instrument/violin,/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
+"Hb" = (/obj/random/junk,/obj/machinery/light/small{dir = 8; icon_state = "bulb1"},/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Hg" = (/obj/structure/table/steel,/obj/item/instrument/violin,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
 "Hh" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/structure/catwalk,/obj/structure/catwalk,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "Hk" = (/obj/machinery/atmospherics/pipe/manifold/hidden/supply{dir = 4},/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{dir = 4},/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Ho" = (/turf/simulated/floor/tiled/freezer,/area/tether/under/static_area)
 "Hq" = (/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"Ht" = (/obj/effect/decal/cleanable/dirt,/obj/effect/gibspawner/generic,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "HB" = (/obj/structure/stairs/east,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"HF" = (/obj/structure/table/steel,/obj/item/handcuffs/cable,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"Id" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/effect/decal/cleanable/dirt,/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"Iv" = (/obj/effect/spider/stickyweb/dark,/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"HE" = (/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/freezer,/area/tether/under/static_area)
+"HF" = (/obj/structure/table/steel,/obj/item/handcuffs/cable,/obj/effect/decal/cleanable/dirt,/obj/machinery/light/small{dir = 8; icon_state = "bulb1"},/turf/simulated/floor/plating,/area/tether/under/static_area)
+"HJ" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/random/trash,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Id" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/effect/decal/cleanable/dirt,/obj/random/trash,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Ii" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/structure/catwalk,/obj/machinery/door/airlock/maintenance/common,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Ij" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/random/trash,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Iu" = (/obj/structure/cable{d2 = 2; icon_state = "0-2"},/obj/structure/cable{icon_state = "0-8"},/obj/machinery/power/terminal{dir = 1},/obj/effect/decal/cleanable/greenglow,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
 "IH" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 6},/turf/simulated/floor/plating,/area/tether/under/static_area)
-"IK" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
-"IN" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/unary/vent_scrubber/on,/obj/item/seeds/bananaseed,/obj/item/bananapeel,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
+"IK" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/random/humanoidremains,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
+"IN" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/unary/vent_scrubber/on,/obj/item/bananapeel,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
 "Jc" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "Jd" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "Jl" = (/turf/unsimulated/mineral/virgo3b,/area/tether/under/static_area)
 "Jo" = (/obj/structure/table/woodentable,/obj/item/modular_computer/tablet,/obj/effect/decal/cleanable/cobweb2,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Jx" = (/obj/item/stool/padded,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "Jz" = (/obj/structure/table/woodentable,/obj/item/flashlight/lamp,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
 "JT" = (/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/blood,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "JU" = (/obj/machinery/vending/sovietsoda,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"JX" = (/obj/structure/barricade,/obj/machinery/door/airlock/maintenance/common,/turf/simulated/floor/plating,/area/space)
+"JX" = (/obj/structure/closet/crate,/turf/simulated/floor/beach/sand,/area/tether/under/static_area)
 "JY" = (/obj/effect/decal/cleanable/blood,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"Kg" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 9},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 9},/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
-"Ku" = (/obj/effect/decal/cleanable/dirt,/obj/item/seeds/bananaseed,/obj/machinery/alarm{dir = 4; pixel_x = -23},/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
-"KA" = (/turf/simulated/wall/iron,/area/space)
-"KJ" = (/obj/structure/cable{d1 = 2; d2 = 4; icon_state = "2-4"},/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
-"KS" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/remains,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Kb" = (/obj/structure/closet/fireaxecabinet{pixel_y = 32},/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Kg" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 9},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 9},/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
+"Kh" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Km" = (/obj/structure/table/rack,/obj/random/maintenance,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"Kq" = (/obj/effect/decal/cleanable/dirt,/obj/random/trash,/turf/simulated/floor/wood/sif/broken,/area/tether/under/static_area)
+"Ku" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/alarm{dir = 4; pixel_x = -23},/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
+"KC" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/random/humanoidremains,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"KE" = (/obj/machinery/atmospherics/pipe/manifold/hidden/supply,/obj/effect/decal/cleanable/dirt,/obj/structure/closet,/obj/item/clothing/gloves/light_brown,/obj/item/flashlight/color/yellow,/obj/item/storage/box/flare,/obj/item/broken_bottle,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"KJ" = (/obj/structure/cable{d1 = 2; d2 = 4; icon_state = "2-4"},/obj/effect/decal/cleanable/greenglow,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"KP" = (/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/obj/structure/closet/crate/mimic/dangerous,/obj/random/multiple/underdark/treasure,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"KS" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/remains,/obj/random/multiple/underdark/treasure,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "KT" = (/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/wood/sif/broken,/area/tether/under/static_area)
 "KW" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/cobweb,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
 "Lb" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/light/small{dir = 4; icon_state = "bulb1"},/turf/simulated/floor/plating,/area/tether/under/static_area)
 "Lc" = (/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/turf/simulated/floor/plating,/area/tether/under/static_area)
 "Le" = (/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{dir = 8},/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
-"Lq" = (/obj/structure/closet/crate/plastic,/obj/random/ammo,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Lm" = (/obj/structure/closet/crate,/obj/random/alcohol,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"Lp" = (/obj/structure/table/rack,/obj/effect/decal/cleanable/dirt,/obj/random/alcohol,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Lq" = (/obj/structure/closet/crate/plastic,/obj/random/ammo,/obj/random/cash,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Lu" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/random/junk,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "Lx" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/cobweb2,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"LC" = (/obj/structure/closet/crate,/obj/random/underdark,/obj/random/ammo,/obj/random/humanoidremains,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"LG" = (/obj/effect/decal/cleanable/dirt,/obj/random/trash,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
 "LJ" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/light/small,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "LM" = (/obj/structure/catwalk,/obj/structure/barricade,/obj/machinery/door/airlock/maintenance/common,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"LN" = (/obj/structure/filingcabinet,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "LO" = (/obj/effect/decal/cleanable/dirt,/obj/structure/closet/crate/mimic/dangerous,/obj/random/alcohol,/obj/random/ammo,/obj/effect/decal/remains,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "LT" = (/obj/structure/table/bench,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
-"LX" = (/obj/structure/closet/coffin/comfy,/obj/item/trash,/obj/random/ammo,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"LV" = (/obj/structure/table/rack,/obj/random/trash,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"LW" = (/obj/effect/decal/cleanable/dirt,/obj/random/trash,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
+"LX" = (/obj/structure/closet/coffin/comfy,/obj/random/ammo,/obj/random/multiple/underdark/treasure,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "LY" = (/obj/machinery/light/small{dir = 8; icon_state = "bulb1"},/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
-"LZ" = (/obj/effect/spider/stickyweb/dark,/obj/effect/decal/remains,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"Mo" = (/obj/structure/closet/crate/plastic,/obj/item/trash,/obj/item/trash,/obj/effect/decal/remains,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"Mu" = (/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"Mw" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"LZ" = (/obj/structure/table/rack,/obj/structure/symbol/sa{pixel_x = -32},/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"Mb" = (/obj/item/stool/padded,/turf/simulated/floor/wood/sif/broken,/area/tether/under/static_area)
+"Mo" = (/obj/structure/closet/crate/plastic,/obj/effect/decal/remains,/obj/random/junk,/obj/random/junk,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Mu" = (/mob/living/simple_mob/animal/sif/leech,/turf/simulated/floor/water/pool,/area/tether/under/static_area)
+"Mv" = (/obj/structure/table/bench/steel,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"Mw" = (/mob/living/simple_mob/animal/sif/savik,/turf/simulated/floor/water/pool,/area/tether/under/static_area)
+"My" = (/obj/machinery/atmospherics/unary/vent_pump/on{dir = 4},/obj/machinery/light/small,/obj/structure/closet,/obj/item/clothing/gloves/light_brown,/obj/item/flashlight/color/yellow,/obj/item/storage/box/flare,/obj/item/broken_bottle,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"MB" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/effect/decal/cleanable/dirt,/obj/random/humanoidremains,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"MK" = (/obj/item/flashlight/flare,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "MM" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"MQ" = (/obj/effect/decal/cleanable/dirt,/obj/structure/sign/signnew/danger{pixel_y = 32},/turf/simulated/floor/plating,/area/tether/under/static_area)
 "MY" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "Ni" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/turf/simulated/floor/plating,/area/tether/under/static_area)
 "Nq" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Nw" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "Ny" = (/obj/effect/decal/cleanable/dirt,/obj/random/junk,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
-"ND" = (/obj/structure/table/steel,/obj/item/instrument/guitar,/obj/item/seeds/bananaseed,/obj/machinery/light/small{dir = 1},/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
+"ND" = (/obj/structure/table/steel,/obj/item/instrument/guitar,/obj/machinery/light/small{dir = 1},/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
 "NJ" = (/obj/structure/closet,/obj/item/pickaxe/hand,/obj/item/pickaxe/hand,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "NL" = (/obj/effect/decal/cleanable/dirt,/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"NN" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/light/small,/obj/random/trash,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "NR" = (/obj/structure/bed,/obj/effect/decal/cleanable/blood,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "NT" = (/obj/structure/grille,/obj/structure/window/basic/full,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"NX" = (/obj/effect/decal/cleanable/dirt,/obj/random/toolbox,/obj/structure/table/rack,/obj/random/mre,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "NZ" = (/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
-"Oa" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Oa" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/random/trash,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Of" = (/obj/machinery/door/airlock/maintenance/common,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/structure/catwalk,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Or" = (/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/obj/random/humanoidremains,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Oy" = (/obj/structure/barricade,/obj/machinery/door/airlock/maintenance/common,/turf/simulated/wall/iron,/area/tether/under/static_area)
+"OD" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"OL" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 5},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 5},/obj/random/junk,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"OQ" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/structure/catwalk,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"OT" = (/obj/structure/catwalk,/obj/random/junk,/obj/random/trash,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "Pg" = (/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "Po" = (/obj/structure/table/steel,/obj/item/clothing/mask/muzzle,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Pq" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/structure/catwalk,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Ps" = (/obj/effect/decal/cleanable/dirt,/obj/structure/sign/warning{pixel_x = 32},/turf/simulated/floor/plating,/area/tether/under/static_area)
 "PA" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"PB" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 10},/obj/structure/catwalk,/obj/structure/catwalk,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"PB" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 10},/obj/structure/catwalk,/obj/structure/catwalk,/obj/random/trash,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"PC" = (/obj/effect/decal/cleanable/dirt,/obj/effect/spider/stickyweb,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
 "PJ" = (/obj/random/junk,/turf/simulated/floor/wood/sif/broken,/area/tether/under/static_area)
-"PO" = (/obj/machinery/vending/loadout/costume,/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
-"Qb" = (/obj/effect/spider/stickyweb/dark,/obj/effect/spider/stickyweb/dark,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"PO" = (/obj/machinery/vending/loadout/costume,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
+"PP" = (/mob/living/simple_mob/horror/bradley{move_speed = 25; movement_cooldown = 0; name = "???"},/turf/simulated/floor/tiled/old_tile/blue,/area/tether/under/static_area)
+"PR" = (/obj/structure/closet/crate,/obj/random/underdark,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Qb" = (/obj/effect/spider/stickyweb,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Qe" = (/obj/structure/table/rack,/obj/random/multiple/underdark/treasure,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Qf" = (/obj/random/trash,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Qh" = (/obj/structure/sign/warning{pixel_y = 32},/turf/simulated/mineral,/area/tether/under/static_area)
+"Qk" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/random/trash,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Ql" = (/obj/structure/catwalk,/obj/structure/table/rack,/obj/effect/decal/cleanable/dirt,/obj/random/multiple/underdark/treasure,/obj/structure/closet/fireaxecabinet{pixel_y = 32},/turf/simulated/floor/plating,/area/tether/under/static_area)
 "Qm" = (/obj/effect/decal/cleanable/blood,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
 "Qs" = (/obj/effect/decal/cleanable/dirt,/obj/structure/table/rack,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "Qt" = (/obj/effect/decal/cleanable/dirt,/obj/structure/table,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"Qx" = (/obj/random/junk,/obj/random/trash,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"QB" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/structure/catwalk,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "QC" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/structure/barricade,/obj/machinery/door/airlock/maintenance/common,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"QF" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/machinery/door/airlock/maintenance/common,/obj/structure/barricade,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"QF" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/machinery/door/airlock/maintenance/common,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"QG" = (/obj/structure/extinguisher_cabinet{pixel_x = 25},/turf/simulated/floor/tiled/old_tile/blue,/area/tether/under/static_area)
 "QH" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 9},/obj/machinery/atmospherics/pipe/simple/hidden/supply,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"QI" = (/obj/structure/closet/crate/mimic/dangerous,/obj/effect/decal/cleanable/cobweb2,/obj/random/alcohol,/obj/effect/decal/remains,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"QL" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
-"Rl" = (/obj/effect/decal/cleanable/dirt,/obj/item/seeds/bananaseed,/obj/item/bananapeel,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
-"RF" = (/obj/item/seeds/bananaseed,/turf/simulated/wall/iron,/area/tether/under/static_area)
+"QI" = (/obj/structure/closet/crate/mimic/dangerous,/obj/effect/decal/cleanable/cobweb2,/obj/random/alcohol,/obj/effect/decal/remains,/obj/random/gun/random,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"QL" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/random/trash,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"QO" = (/obj/structure/closet/secure_closet/freezer/fridge,/obj/effect/decal/remains,/obj/item/reagent_containers/food/snacks/meat/human,/obj/item/reagent_containers/food/snacks/meat/human,/obj/item/reagent_containers/food/snacks/meat/human,/obj/item/reagent_containers/food/snacks/meat/human,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"QP" = (/obj/effect/decal/cleanable/dirt,/obj/structure/table,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"QR" = (/obj/effect/decal/cleanable/dirt,/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/random/trash,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"QW" = (/obj/structure/table/bench/wooden,/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"Rl" = (/obj/effect/decal/cleanable/dirt,/obj/item/bananapeel,/obj/random/junk,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
+"Ro" = (/obj/random/junk,/obj/random/trash,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Ry" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/obj/random/trash,/obj/machinery/vending/loadout/clothing,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "RI" = (/obj/structure/catwalk,/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"RP" = (/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/item/trash,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"RM" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/structure/catwalk,/obj/machinery/door/airlock/maintenance/common,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"RP" = (/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/random/junk,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "RQ" = (/obj/structure/table/rack,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"RS" = (/obj/effect/decal/cleanable/dirt,/obj/effect/gibspawner/generic,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
 "RU" = (/obj/effect/decal/cleanable/dirt,/obj/effect/spider/stickyweb/dark,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"Sl" = (/obj/effect/rune,/obj/effect/decal/remains,/obj/effect/gibspawner,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
+"Sd" = (/obj/structure/barricade,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Sl" = (/obj/effect/rune,/obj/effect/decal/remains,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
 "Sq" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/alarm{frequency = 1441; pixel_y = 22},/turf/simulated/floor/plating,/area/tether/under/static_area)
 "Sv" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"Sw" = (/obj/effect/decal/remains/human,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"SG" = (/obj/random/mouseremains,/turf/simulated/floor/tiled/old_tile/blue,/area/tether/under/static_area)
 "SJ" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "SN" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/structure/catwalk,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "SZ" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/remains,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
-"Th" = (/obj/effect/decal/cleanable/dirt,/obj/item/seeds/bananaseed,/turf/simulated/floor/plating,/area/tether/under/static_area)
-"Tm" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/random/junk,/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
+"Te" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/structure/catwalk,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Tm" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/random/junk,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
+"Tr" = (/obj/structure/catwalk,/obj/random/humanoidremains,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Ty" = (/obj/machinery/light/small{dir = 1; icon_state = "bulb1"},/obj/effect/decal/cleanable/greenglow,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
 "TQ" = (/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{dir = 1},/turf/simulated/floor/plating,/area/tether/under/static_area)
-"TU" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif/broken,/area/tether/under/static_area)
-"Ua" = (/obj/machinery/door/airlock/maintenance/common,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"TU" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/turf/simulated/floor/wood/sif/broken,/area/tether/under/static_area)
+"TV" = (/obj/structure/table/steel,/obj/random/alcohol,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"Ua" = (/obj/machinery/door/airlock/maintenance/common,/turf/simulated/wall/iron,/area/tether/under/static_area)
+"Ul" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/random/trash,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Us" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/random/trash,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "Uv" = (/obj/structure/table/woodentable,/obj/item/reagent_containers/food/drinks/bottle/holywater,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Uw" = (/obj/structure/table/steel,/obj/random/medical/pillbottle,/turf/simulated/floor/tiled/old_tile/blue,/area/tether/under/static_area)
+"UI" = (/obj/machinery/light/small{dir = 1},/turf/simulated/floor/wood/sif/broken,/area/tether/under/static_area)
 "UL" = (/obj/structure/table/bench/sifwooden,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/wood/sif/broken,/area/tether/under/static_area)
 "UM" = (/obj/structure/mob_spawner/mouse_nest,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
-"UR" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 10},/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif/broken,/area/tether/under/static_area)
-"Va" = (/obj/effect/decal/cleanable/dirt,/obj/effect/spider/stickyweb/dark,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
-"Vb" = (/obj/effect/decal/cleanable/dirt,/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
+"UR" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 10},/turf/simulated/floor/wood/sif/broken,/area/tether/under/static_area)
+"Va" = (/obj/effect/spider/stickyweb,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"Vc" = (/obj/machinery/atmospherics/unary/cryo_cell,/turf/simulated/floor/tiled/old_tile/blue,/area/tether/under/static_area)
 "Ve" = (/obj/effect/decal/cleanable/blood,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
+"Vf" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/random/junk,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "Vj" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Vl" = (/obj/structure/table/rack,/obj/effect/decal/cleanable/dirt,/obj/random/ammo,/obj/random/maintenance,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "Vp" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/effect/decal/cleanable/dirt,/obj/structure/catwalk,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "Vq" = (/obj/machinery/atmospherics/unary/vent_pump/on{dir = 4},/obj/machinery/light/small,/obj/structure/closet,/obj/item/clothing/gloves/light_brown,/obj/item/flashlight/color/yellow,/obj/item/storage/box/flare,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "Vr" = (/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Vv" = (/obj/item/stool/padded,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"VC" = (/obj/machinery/light/small{dir = 1},/obj/structure/table/rack,/obj/random/powercell,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "VE" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/turf/simulated/floor/plating,/area/tether/under/static_area)
-"VH" = (/obj/item/seeds/bananaseed,/turf/simulated/wall/iron,/area/tether/under/poi)
+"VL" = (/obj/effect/decal/cleanable/dirt,/obj/structure/table/woodentable,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
 "VM" = (/obj/machinery/light/small,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"VO" = (/obj/effect/decal/cleanable/greenglow,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
 "VP" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "VU" = (/obj/random/junk,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "VW" = (/obj/structure/table/bench/sifwooden,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
-"VX" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/random/junk,/obj/item/seeds/bananaseed,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
+"VX" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/random/junk,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
+"Wb" = (/obj/structure/closet/crate,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
 "Wi" = (/obj/random/junk,/obj/machinery/light/small{dir = 1},/turf/simulated/floor/plating,/area/tether/under/static_area)
-"WE" = (/obj/effect/decal/cleanable/dirt,/obj/structure/table,/obj/item/seeds/bananaseed,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"Wk" = (/obj/effect/decal/cleanable/dirt,/obj/structure/closet/crate,/obj/random/maintenance,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Wr" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/structure/catwalk,/obj/machinery/light/small{dir = 8; icon_state = "bulb1"},/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Ws" = (/obj/structure/table/rack,/obj/random/tool,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
 "WH" = (/obj/effect/decal/remains,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "WI" = (/obj/effect/decal/cleanable/dirt,/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/turf/simulated/floor/plating,/area/tether/under/static_area)
+"WM" = (/obj/structure/closet,/obj/random/drinkbottle,/obj/random/maintenance,/obj/random/maintenance/cargo,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
 "WR" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Xh" = (/obj/machinery/atmospherics/unary/cryo_cell,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Xm" = (/obj/machinery/door/airlock/maintenance/common,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"XB" = (/obj/structure/closet/crate,/obj/random/mre,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"XD" = (/obj/structure/closet/crate,/obj/structure/extinguisher_cabinet{pixel_x = 25},/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"XE" = (/obj/structure/catwalk,/obj/structure/closet/crate,/obj/effect/decal/cleanable/dirt,/obj/random/multiple/underdark/treasure,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"XI" = (/turf/simulated/floor/water/pool,/area/tether/under/static_area)
+"XQ" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "XU" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/structure/barricade,/obj/machinery/door/airlock/maintenance/common,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "XX" = (/obj/effect/decal/cleanable/dirt,/obj/structure/mob_spawner/rat_nest,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"XZ" = (/obj/structure/closet/crate/miningcar,/turf/simulated/floor/beach/sand,/area/tether/under/static_area)
 "Ya" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Yb" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/structure/catwalk,/obj/random/trash,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Yi" = (/obj/random/trash,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"Yl" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/structure/catwalk,/obj/random/junk,/obj/random/trash,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "Yr" = (/obj/structure/table/bench,/turf/simulated/floor/wood/sif/broken,/area/tether/under/static_area)
 "YG" = (/obj/structure/table/bench,/obj/random/junk,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "YK" = (/obj/structure/table,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "YL" = (/obj/structure/catwalk,/obj/effect/decal/cleanable/dirt,/obj/random/junk,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "YQ" = (/obj/structure/table/woodentable,/obj/item/flame/candle/candelabra,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
 "YZ" = (/obj/structure/table/rack,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
-"Zd" = (/obj/structure/table/bench/sifwooden,/obj/item/trash,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
+"Zd" = (/obj/structure/table/bench/sifwooden,/turf/simulated/floor/wood/sif,/area/tether/under/static_area)
+"Zn" = (/obj/structure/filingcabinet/chestdrawer,/turf/simulated/floor/plating,/area/tether/under/static_area)
 "Zr" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
-"ZE" = (/obj/item/seeds/bananaseed,/obj/machinery/alarm{dir = 4; pixel_x = -23},/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
-"ZM" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/structure/catwalk,/obj/structure/barricade,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"ZI" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"ZJ" = (/obj/structure/table/steel,/obj/random/curseditem,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"ZL" = (/obj/structure/table/woodentable,/obj/random/tool,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
+"ZX" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/structure/catwalk,/obj/machinery/light/small{dir = 8; icon_state = "bulb1"},/obj/effect/decal/cleanable/dirt,/obj/random/humanoidremains,/turf/simulated/floor/plating,/area/tether/under/static_area)
+"ZZ" = (/obj/structure/table/steel,/obj/random/medical,/turf/simulated/floor/tiled/techfloor,/area/tether/under/static_area)
 
 (1,1,1) = {"
 JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
 JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
-JlJlnknknknknknknknknknknknknknknknknknknknknknknknknknkzFxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjsSxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkJlJl
-JlJlnknknknknknknknknknknknknknknknknknknknknknknknknknkzFxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjuFuFxjxjxjxjxjxjxjxjsSxjxjxjxjxjxjxjxjxjxjxjsSsSsSxjxjxjxjxjxjsSxjxjxjnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkJlJl
-JlJlKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKADFxjxjxjxjsSxjxjxjxjxjsSxjxjxjxjxjxjxjxjxjxjxjxjuFuFuFuFxjxjxjxjxjuFxjxjxjxjsSuFuFuFxjxjxjuFuFsSxjxjxjxjxjxjxjxjxjxjnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKADFxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjuFxjxjxjxjxjuFsSxjxjxjxjxjxjuFxjxjoMuFuFsSxjxjxjxjxjxjxjxjxjxjnknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKADFxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjuFuFxjuFxjoMuFuFuFxjxjxjDFxjuFuFzFuFuFxjxjxjxjsSxjxjxjxjxjxjxjnknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKADFxjxjxjxjxjxjxjxjxjsSuFuFuFuFgouFuFuFuFxjxjgouFuFuFxjxjuFuFuFuFuFuFxjxjxjxjxjDFxjuFzFzFuFzFxjxjxjxjuFxjxjxjxjxjxjxjnknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKADFxjxjxjxjxjxjxjxjuFuFuFuFuFxjxjuFxjxjuFxjxjuFxjxjuFuFuFuFxjuFuFxjxjxjxjxjxjxjDFzFxjzFuFuFuFuFxjxjxjuFzFzFxjxjxjxjxjnknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKADFxjxjxjxjxjxjxjuFuFxjxjuFxjxjxjxjxjxjuFuFuFuFxjxjsSxjxjxjxjxjuFxjxjxjxjuFgouFDFzFuFzFxjzFuFzFxjxjxjuFzFxjxjxjxjxjxjnknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlnknknknknknknknknknknknknknknknknknknknknknknknknknkzFxjxjxjxjoMuFuFuFxjxjxjuFxjxjxjxjxjuFuFxjxjxjxjxjxjxjxjxjxjxjuFxjxjxjuFuFgouFuFuFuFzFsSuFzFzFzFuFuFuFzFxjxjxjxjxjxjnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKADFxjxjuFuFuFuFuFxjxjxjxjuFxjxjxjxjxjuFuFsSxjxjsSsSxjxjxjxjxjxjuFxjxjuFuFuFgouFDFzFuFuFuFuFuFuFzFxjzFzFxjxjxjxjxjxjxjnknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKADFxjxjuFuFxjuFuFuFxjxjxjsSsSxjxjxjxjgogogoxjxjxjuFxjuFuFuFuFuFuFuFuFuFsSxjxjxjDFuFuFxjxjxjzFzFxjxjCCxjxjxjxjxjxjsSxjnknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKADFxjsSuFxjxjsSsSuFsSxjxjxjsSxjxjxjDFhEDihEDFxjxjuFuFuFuFuFGhoMxjxjxjxjxjxjxjxjDFuFxjxjzFxjxjzFxjxjxjxjxjxjxjxjxjxjxjnknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKADFxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjDFNJDizFDFxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjDFzFxjaWzFzFuFuFxjxjxjxjxjsSxjxjxjxjxjnknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKADFJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlDFfvDiiWDFJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlxjxjnknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKADFDFDFDFDFDFzFDFDFDFDFDFDFDFDFDFDFDFDFFgDFDFDFDFDFDFDFxjxjxjDFDFDFxjDFxjDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAnknknknknknkJlJl
-JlJlKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAhvhvhvhvhvhvglhvhvhvhvhvhvDFDFDFDFDFDFFgDFDFDFDFDFDFxjxjxjxjxjxjxjxjxjxjxjDFxjDFDFDFDFDFDFDFDFDFDFDFDFDFKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAhvglglglglglglglglglglglhvDFeaHaGZGwzFzFoYjDGZrWJoDFDFxjzFxjtLxjxjxjhEoYLxxjxjDFKWRUXXRQzFlyGZFbCtzFArDFKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAhvglglglglglglglglglglglhvDFBtBwEsTQoYsqlglgoYFbJzDFDFxjzFzFWRzFhEzFoYxjaiKSDFDFFbIHpZVEBjEppZBjioVroYDFKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAhvglglglglglglglglglglglhvDFBlPADFsWDFDFDFDFDFiMLbDFxjxjxjoYWRxjxjxjxjxjKSXXDFDFzFpzoYWRzFoYHqzFaiDiCtDFKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAhvglglglglglglglglglglglhvDFNySvDFsWoYukQthDDFiMHqDFDFDFDFhEDFDFDFDFDFDFDFDFDFDFzFpooYDFDFDFDFDFzFESoYDFKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAhvglglglglglglglglglglglhvDFFbQLDFPAHqFbzFAMDFsWoYDFDFsooYHqFbuklyFbACHqaioYpShERUgdoYDFzFzFzFDFHqRPoYDFKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlnknknknknknknknknknknknknknknknknknknknknknknknknknkglglglglglglglglglglglglfZhjHqDADFhYzFikqrCnDFpBzFzqhjCmVjWINiWIxeFZpgpgVjNLNLBxWIqXHqDFzFzFzFDFYZDioYhjnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAhvglglglglglglglglglglglhvDFoYiMzFLeAyEsQHFbDFkHVUDFDFFboYHqoYoYFbaJoYFbtLoYoYaJoYsjRUDFzFzFzFDFHqVroYDFKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAhvglglglglglglglglglglglhvDFwqiMzFyMoQVqAtqiDFmQoYDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFRUJcCtDFDFDFDFDFzFESCtDFKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAhvglglglglglglglglglglglhvDFhYZrDFDFDFDFDFmQDFoYCDDFDFlmCCiXxriXzFiXiXiXzFLXDFDFNqJcCtzFaJukHqzFoYESCtDFKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAhvglsvsvsvsvsvsvsvsvsvsvVHRFElvZxyxyapbPlglioYHqcYDFDFUvzFzFNZKTzFzfNZiXngzFDFDFRUVrPgioBjDieGVELcRIRUDFKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAhvglsvsvsvsvsvsvsvsvsvsvVHRFWEEloUyPBaJdxDoYVMcYjZDFDFYKzFiXNZeydOYQKTNZjDoYDFDFRUCiRUwPCtHqsXoYVaXXRUDFKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAhvhvVHVHVHVHsvVHVHVHVHVHVHRFRFRFRFRFRFhqDFDFDFDFDFDFDFYKzFzfiXKTSlKTNZNZoYGwDFDFDFDFDFDFDFhjDFDFDFDFDFDFKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAnknknknknknkJlJl
-JlJlKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKADFDFRFRFRFRFxdRFRFRFRFRFRFRFRFRFRFRFRFunDFDFDFDFDFDFDFDZzFiXNZNZKTNZesNZoYWRDFhvhvhvhvhvhvglhvhvhvhvhvhvKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKADFJlGoGoRFbvFjpIRFEDNDHgCWRFewmqqPRFwLvWhEDFJlJlJlDFDFFLzFYGpiULNZLTZdYrzFoiDFhvglglglglglglglglglglglhvKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKADFJlGoGoRFyPOaIvRFrgRlThVXRFrgMwoTRFbBqVFbDFJlJlJlDFDFVUzFiXNZiXeszfoYjkoYzFDFhvglglglglglglglglglglglhvKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKADFJlGoGoRFIvaFyPRFfrkTThfrRFauINPORFBaqVoYDFJlJlJlDFDFWRzFzfiXvnzFoYiXjkoYoYDFhvglglglglglglglglglglglhvKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKADFDFRFRFRFIvIdThRFKuTmVbVbRFcoURdKRFbvvWCtDFDFDFDFDFDFoYzMncyYVWiXZdYrEdzFzMDFhvglglglglglglglglglglglhvKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKADFHqphpIIvIvcXbvRFrKjwzIrgRFwLIKkmRFZEiMFbzFRUoYCCDFDFzFoYVezFzfiXVeiXiXzFzFDFhvglglglglglglglglglglglhvKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlnknknknknknknknknknknknknknknknknknknknknknknknknknkhjDizpzpMucXcXBaRFfrAFqRpRBZTUKgknRFbveeVpCAGGGGEshjBdlgonrazFDiPBDizFEpJTDifFglglglglglglglglglglglglglJXnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKADFCtVaoYzFzFFDHqDFyDsRgXPJDFEPsyrSDFhEiizzyPzFRUzFDFDFCtVULJzFzFnUHqzFLJRQCCDFhvglglglglglglglglglglglhvKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKADFDFDFDFDFFbJcoYDFDFwUDFDFDFDFDFDFDFGsANaJDFDFDFDFDFDFDFDFDFDFhEZMnWDFDFDFDFDFhvglglglglglglglglglglglhvKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKADFJlJlJlDFFbJczFzFCtJdGZzFHqCtzFhECtoYANoYDFJlJlJlDFDFJlJlJlDFCtehVUDFJlJlJlJlhvglglglglglglglglglglglhvKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKADFJlJlJlDFHqDiVrVrVrBOSNSNSNSNSNSNnbDeHkVUDFJlJlJlDFDFJlJlJlDFzFqVzFDFJlJlJlJlhvglglglglglglglglglglglhvKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKADFJlJlJlDFCCDioYRUoYHqWHRUFbHqoYhEoYzFANHqDFJlJlJlDFDFJlJlJlDFjiiMzFDFJlJlJlJlhvglglglglglglglglglglglhvKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKADFDFDFDFDFDFhjDFDFDFDFDFDFDFDFDFDFDFDFXUDFDFDFDFDFDFDFJlJlJlDFDFbUDFDFDFDFDFDFhvhvhvhvhvhvglhvhvhvhvhvhvKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAnknknknknknkJlJl
-JlJlKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAhvhvhvhvhvhvglhvhvhvhvhvhvDFJlJlJlDFDFmVDFDFDFDFDFDFDFDFDFDFDFDFLMDFDFJlJlJlDFKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAhvglglglglglglglglglglglhvDFJlJlJlDFCCMMpSDFvBlyWiJUtLAvLqQIDFhEseLxDFJlJlJlDFKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAhvglglglglglglglglglglglhvDFJlJlJlDFoYmEyvDFzFHqzFzFzFzFHqzFDFzFxasXDFJlJlJlDFKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAhvglglglglglglglglglglglhvDFJlJlJlDFDDmEoYDFDFDFDFDFHqHqzFtLDFzFDiHqDFJlJlJlDFKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAhvglglglglglglglglglglglhvDFJlJlJlDFRUJdzFDFzFkRzFDFzFzFVUzFDFzFDiHqDFDFDFDFDFKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAhvglglglglglglglglglglglhvDFJlJlJlDFNyMMoYhEzFHqHqDFhEDFDFzFDFhEVrHqCtCtzFXXDFKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkglglglglglglglglglglglglglDFJlJlJlDFoYMMzFDFzFtLzFzFzFvgDFzFDFCtVrDiVrYLPgDiUanknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAhvglglglglglglglglglglglhvDFJlJlJlDFHqmEtLDFeFzFzFzFHqzFDFmvDFCtzFzFoYjDoYzFDFKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAhvglglglglglglglglglglglhvDFDFDFDFDFHqFDCtDFDFDFDFhEtLhEDFDFDFDFDiDFDFDFDFDFDFKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAhvglglglglglglglglglglglhvDFMoWiCthEoYDizFFARUBKzFzFzFzFvxtLkRhEDihEzFvxRUoYDFKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAhvglglglglglglglglglglglhvDFLOFbSZnWWRAnVrFWFWlgxepZpZgBxePgFWVrAnzFoYoYoYjDDFKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAhvglglglglglglglglglglglhvDFCCHqVakcVUkqCtoYjDCtzFRUzFzFCtoYRUzFzFzFzFRUCtCCDFKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAnknknknknknknknknknknkKAhvhvhvhvhvhvglhvhvhvhvhvhvDFDFDFDFDFDFEuDFDFDFDFDFDFDFDFDFDFDFDFcZDFDFDFDFDFDFKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAnknknknknknkJlJl
-JlJlKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAnknknknknknknknknknknkKAKAKAKAKAKAKAnkKAKAKAKAKAKADFDFDFDFDFDFrDDFDFDFDFDFDFhvhvhvhvhvhvglhvhvhvhvhvhvKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknknknknknknknknknknknknknknkKADFHqtQsFHqNTANNTHqHqtQHqDFhvglglglglglglglglglglglhvKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknknknknknknknknknknknknknknkKADFHqHqePHqNTANNTHqePHqHqDFhvglglglglglglglglglglglhvKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknknknknknknknknknknknknknknkKADFHqKJekrkNTqVNTKJekrkHqDFhvglglglglglglglglglglglhvKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknknknknknknknknknknknknknknkKADFHqhyhyhyNTqVNThyhyhyHqDFhvglglglglglglglglglglglhvKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknknknknknknknknknknknknknknkKADFLYHqHqHqHqqVHqHqHqHqCDDFhvglglglglglglglglglglglhvKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkpDhjDiDiDiDiDiqVDiDiDiDiDihjglglglglglglglglglglglglglnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknknknknknknknknknknknknknknkKADFLYHqHqHqHqqVHqHqHqHqCDDFhvglglglglglglglglglglglhvKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknknknknknknknknknknknknknknkKADFYZHqcHDFHqANHqDFcHHqYZDFhvglglglglglglglglglglglhvKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknknknknknknknknknknknknknknkKADFYZHqAMDFHqANHqDFAMHqYZDFhvglglglglglglglglglglglhvKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknknknknknknknknknknknknknknkKADFHqHqHqDFLYANCDDFHqHqHqDFhvglglglglglglglglglglglhvKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknknknknknknknknknknknknknknkKADFGUJzGUDFHqANHqDFGUJzGUDFhvglglglglglglglglglglglhvKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAJXKAKAKAKAKAKADFDFDFDFDFDFEgDFDFDFDFDFDFhvhvhvhvhvhvglhvhvhvhvhvhvKAnknknknknknknknknknknkKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAnknknknknknkJlJl
-JlJlKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKADFDFDFDFDFDFcZDFDFDFDFDFDFDFDFDFDFDFDFtgDFDFDFDFDFDFDFDFDFDFDFDFcZDFDFDFDFDFDFKAnknknknknknknknknknknkKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKADFJlJlJlDFoYVroYzFYZHqiWDFDFJlJlJlDFCtJdvxDFJlJlJlDFDFiWHqlyHqHqHqHqHqHqHqHqDFKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKADFJlJlJlDFCtRIrwVEVrHqCtDFDFJlJlJlDFCtSJzFDFJlJlJlDFDFHqDFFbzFHqDFDFDFDFWRzFDFKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKADFJlJlJlDFCtRUzFFbDiQbCtDFDFJlJlJlDFCtVPWRDFJlJlJlDFDFHqtQSZoYHqzFHBDFDFoYFbDFKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKADFDFDFDFDFDFDFDFzFEHzFzFDFDFDFDFDFDFzFbziWDFDFDFDFDFDFzFWRWRydzFDFDFDFDFoYHqDFKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKADFiWngRQSqpnCtDFzFxpzFCdWHSqpnvgeFHqoYbzoYoYzFoYzFDFDFHqWRYaoYHqJzxwxwGUoYHqDFKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkDFzFngwjzFoYRUpFWRBSuzcucuDenbHhnbnbjRiOqKonqKejqKQFQCBXCAMYydzFHqAMzFzFHqHqcZnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKADFzFoYHqzFoYCtDFYZHqoYbJoYCtoYDizFHqqALZzFoYRUoYQsDFDFHqzFoYydHqoYzFzFHqoYFbDFKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKADFzxmHydtBYaCtDFDFDFDFDFDFDFDFfFDFDFDFDFDFDFDFDFDFDFDFzFFbzFzFzFWRoYFbHqoYHqDFKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKADFHFoYNRqoWRRUDFJlJlJlJlDFDFRQVroYlyCtCtQsDFJlJlJlDFDFHqAGzFWHHqydWRoYHqzFzFDFKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKADFwzJYoYFbQmzFDFJlJlJlJlDFDFzFVrVrDiVrDioYDFJlJlJlDFDFHqDFUMoYoYzFzFoYHqzFHqDFKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKADFrtkLPofIzFzFDFJlJlJlJlDFDFiWoYCdzFzFDizFDFJlJlJlDFDFzFAGzFzFHqHqtqzFoQVqAtDFKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAKAKAKAKAKAnkKAKAKAKAKAKAKAnknknknknknknknknknknkKAKAKAKAKAKAKAnkKAKAKAKAKAKADFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFUaDFDFDFDFDFDFDFDFDFDFDFDFcZDFDFDFDFDFDFKAnknknknknknknknknknknkKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAnknknknknknkJlJl
-JlJlKAKAKAKAKAKAnkKAKAKAKAKAKAKAnknknknknknknknknknknkKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAnknknknknknknknknknknkKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknknknknknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknknknknknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknknknknknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknknknknknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknknknknknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknknknknknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknknknknknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknknknknknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknknknknknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknknknknknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAnknknknknknknknknknknkKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAnknknknknknkJlJl
-JlJlKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAnknknknknknknknknknknkKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAnknknknknknknknknknknkKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAnknknknknknkJlJl
-JlJlKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAnknknknknknknknknknknkKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAnknknknknknkJlJl
-JlJlKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAKAnknknknknknknknknknknkKAnknknknknknkJlJl
-JlJlKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAKAKAKAKAKAKAnkKAKAKAKAKAKAnknknknknknkJlJl
-JlJlnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkJlJl
-JlJlnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkJlJl
-JlJlnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkJlJl
-JlJlnknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknknkJlJl
+JlJlxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjsSxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjuFxjxjxjxjsSxjxjxjxjxjsSxjxjxjxjxjJlJl
+JlJlxjxjxjxjxjxjxjxjxjxjsSxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjoMxjxjxjxjxjxjxjxjxjsSxjxjxjxjxjxjxjxjxjxjxjsSsSsSxjxjxjxjxjxjsSxjxjxjxjxjxjxjxjxjxjxjxjxjxjuFoMxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjaixjxjuFdKuFxjuFuFuFdKuFuFsSxjxjxjJlJl
+JlJlxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjsSxjxjxjxjxjsSxjxjxjxjxjxjxjxjxjxjxjxjuFuFuFuFxjxjxjxjxjuFxjxjxjxjsSuFuFuFxjxjxjuFuFsSxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjuFxjxjxjxjxjxjxjxjfZxjxjxjxjzFxjxjxjxjxjxjxjxjxjuFuFsSuFuFdKxjuFxjuFuFuFuFaiuFsSxjJlJl
+JlJlxjxjxjsSxjxjxjxjxjxjxjxjxjxjsSxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjuFxjxjxjxjxjuFsSxjxjxjxjxjxjuFxjxjoMpDuFsSxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjsSuFxjxjuFuFuFuFtLuFuFsSuFxjxjxjxjxjxjxjxjxjxjxjxjuFxjxjxjxjxjxjuFxjuFaiuFuFuFuFxjxjJlJl
+JlJlxjxjxjuFxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjuFxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjuFuFxjuFxjoMuFuFuFxjxjxjDFxjuFyvzFuFuFxjxjxjxjsSxjAnuFpDDDuFoMuFuFuFxjxjxjxjxjxjxjuFuFxjxjuFxjuFpDuFuFuFuFuFuFxjxjxjxjxjxjxjzFxjxjxjuFxjuFuFuFpDuFuFuFuFuFuFuFdKxjxjxjJlJl
+JlJlxjxjxjsSxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjsSJXuFuFuFgopDuFuFuFxjxjgouFuFuFxjxjuFpDuFuFuFuFxjxjxjxjxjDFxjuFoYzFuFzFxjxjxjxjuFxjuFuFuFuFuFuFuFxjuFxjxjxjxjxjxjxjxjuFxjxjuFuFuFzFxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjwQuFpDxjxjxjxjxjuFxjxjxjuFuFxjxjxjJlJl
+JlJlxjxjxjuFxjxjxjxjxjxjxjxjxjxjxjsSuFxjxjxjxjxjxjkwuFsSxjxjxjxjuFxjxjxjxjuFuFuFuFuFxjxjuFxjxjuFxjxjuFxjxjuFuFuFuFxjuFuFxjxjxjxjxjxjxjDFzFxjoYuFuFuFuFxjxjxjuFzFzFxjuFuFxjxjxjxjuFuFuFuFuFuFuFuFuFuFuFuFxjxjxjxjxjxjxjxjxjxjxjxjxjoYsSxjxjxjxjxjxjuFuFuFxjxjxjxjxjuFxjuFuFuFuFuFuFxjJlJl
+JlJlxjxjxjxjxjuFsSxjxjxjxjxjxjxjxjxjuFxjxjxjxjxjxjsSuFuFxjxjxjxjxjxjxjxjuFuFxjxjuFxjxjxjxjxjxjuFuFuFuFxjxjsSxjxjxjxjxjuFxjxjxjxjuFgouFDFzFuFzFxjoYuFzFxjxjxjuFzFxjxjoMxjxjxjxjxjuFxjsSuFXZuFuFxjxjxjxjxjxjxjzFAfxjxjxjzFxjxjoYxjxjxjxjxjxjxjxjoYxjfzpDwQxjxjxjxjxjuFxjuFuFuFuFxjuFxjJlJl
+JlJlxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjuFxjxjxjoMuFuFuFxjxjxjuFxjxjxjxjxjXZuFxjxjxjxjxjxjxjxjxjxjxjuFxjxjxjuFuFgouFuFuFuFzFsSuFoYoYoYuFuFuFzFxjxjxjxjxjxjxjxjxjxjxjxjxjxjuFxjuFxjzFxjxjxjxjxjxjxjxjxjxjxjoYxjxjxjzFxjxjxjxjoYxjxjxjxjxjxjxjxjxjuFxjxjuFuFuFuFuFxjJlJl
+JlJlxjxjxjxjxjxjxjuFuFuFuFxjuFuFuFxjxjxjxjxjuFuFxjxjxjuFxjxjuFuFuFuFpDuFxjxjxjxjuFxjxjxjxjxjpDuFsSxjxjsSsSxjxjxjxjxjxjuFxjxjuFuFuFgouFDFzFuFuFuFuFpDuFzFxjzFzFxjxjxjxjxjuFxjxjxjxjxjxjxjxjxjsSuFxjxjzFzFxjxjzFxjxjzFxjxjxjxjzFxjxjxjuFuFxjxjxjxjxjxjxjxjxjxjxjsSuFuFxjxjuFuFuFuFxjxjJlJl
+JlJlxjxjxjsSxjxjxjsSuFuFkwxjuFuFuFxjxjxjuFuFsSuFxjxjxjxjxjxjxjuFuFxjuFuFuFxjxjxjsSsSxjxjxjxjuFgogoxjxjxjuFxjuFsSuFuFuFuFuFuFuFsSxjxjxjDFuFuFxjxjxjzFzFxjxjaFxjxjxjxjxjxjsSxjxjxjxjxjxjxjxjxjuFuFzFzFxjxjxjxjxjxjxjzFxjxjxjuFSwuFuFuFuFsSxjxjxjxjxjxjxjxjxjxjxjuFuFuFuFuFuFuFuFuFuFxjJlJl
+JlJlxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjuFxjxjuFxjxjxjxjxjxjxjxjsSuFxjxjsSsSuFsSxjxjxjsSxjxjxjDFzFVrzFDFxjxjuFuFuFuFuFGhoMxjxjxjxjxjxjxjxjDFuFxjxjzFxjxjzFxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjAfoYxjxjxjxjxjxjxjaFoYoYoYxjxjxjxjxjuFuFxjxjxjxjxjxjxjxjxjxjxjxjuFuFxjxjuFuFuFuFuFxjJlJl
+JlJlxjxjxjxjxjxjuFxjxjxjxjxjxjxjxjxjxjxjuFuFxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjDFNJnwzFDFxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjDFaFxjaWoYoYuFuFxjxjxjxjxjsSxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjoYzFAfxjxjxjxjxjxjxjxjxjxjxjxjxjxjuFuFzFxjxjxjxjxjxjxjxjxjxjuFuFpDxjxjuFuFxjuFxjxjJlJl
+JlJlJlJlJlJlJlsSuFxjJlJlJlJlJlJlxjxjxjxjxjuFxjxjxjxjxjJlJlJlJlJlJlJlzFJlJlJlJlJlJlJlJlJlJlDFfveviWDFJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlxjxjxjxjxjxjuFuFoYoYfZxjxjxjxjxjuFuFuFuFxjxjxjxjxjuFuFuFuFxjJlJl
+JlJlDFDFDFDFDFDFhjDFDFDFDFDFDFDFxjDFxjDFDFxjDFxjxjDFxjDFDFDFDFDFDFDFcZDFDFDFDFDFDFDFDFDFDFDFDFFgDFDFDFDFDFDFDFxjxjxjDFDFDFxjDFxjDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFJlxjxjxjxjxjxjgoxjoYoYzFxjxjxjxjxjsSxjxjxjxjxjxjxjxjuFuFuFxjxjJlJl
+JlJlhvhvhvhvhvhvglhvhvhvhvhvhvDFDFDFxjxjDFDdDFxjDFxjDFDFhvhvhvhvhvhvglhvhvhvhvhvhvDFDFDFDFDFDFnxDFDFDFDFDFDFxjxjxjxjxjxjxjxjxjgDxjDFxjDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFJlxjxjxjxjxjxjuFxjxjxjxjxjxjxjxjxjuFxjxjxjxjxjxjxjxjxjxjxjxjxjJlJl
+JlJlhvglglglglglglglglglglglhvDFxjxjxjoYMQHqQhoYzFxjxjDFhvglglglglglglglglglglglhvDFeaHaGZdNjTzFrvCBGZrWJoDFDFxjzFxjzFxjxjxjhEuxLxxjxjDFKWzFgDRQzFlyGZFbzFzFArDFDFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFDFDFJlxjxjxjxjxjxjuFxjxjxjxjxjxjxjxjxjuFxjxjxjxjxjxjxjxjxjxjxjxjxjJlJl
+JlJlhvglglglglglglglglglglglhvDFxjHqFbydblHqHqzFHqFbxjDFhvglglglglglglglglglglglhvDFBtBwEsTQuxsqqalgoYFbJzDFDFxjVUzFIjzFhEzFoYxjjDKSDFDFFbIHpZVEBjEppZBjioVruxDFDFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFDFDFJlxjxjxjxjxjsSuFuFuFxjxjxjxjxjxjxjuFuFuFuFuFuFoMxjxjsSxjxjxjxjJlJl
+JlJlhvglglglglglglglglglglglhvDFHqHqFbydFbHqzFzFzFFbgDDFhvglglglglglglglglglglglhvDFBlPADFeiDFDFDFDFDFiMLbDFxjxjxjoYWRxjxjxjxjxjKSgDDFDFzFpzoYWRQfoYHqzFjDDizFDFDFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFDFDFJlxjxjxjxjxjuFuFuFuFxjxjxjxjxjxjxjuFxjxjxjxjuFxjxjxjuFxjxjxjxjJlJl
+JlJlhvglglglglglglglglglglglhvDFHqFbFbblblHqFbHqFboYFbDFhvglglglglglglglglglglglhvDFNySvDFsWuxukQthDDFiMAjDFDFDFDFhEDFDFDFDFDFDFDFDFDFDFzFpooYDFDFDFDFDFzFahjbDFDFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFDFDFJlxjxjxjxjxjgogogogoxjxjxjxjxjuFuFuFxjxjxjxjuFxjxjxjuFsSuFoMxjJlJl
+JlJlhvglglglglglglglglglglglhvDFzFHqzFzFzFHqzFHqHqoYoYDFhvglglglglglglglglglglglhvDFFyQLDFPAHqFbzFAMDFsWPsDFDFsooYHqFbukcWFbACHqoYoYpShEzFgdoYDFaFzFkdDFHqRPoYDFDFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFDFDFzFzFxjxjxjuFjluFuFuFpDsSxjgouFuFuFsSxjxjxjxjuFxjxjxjuFuFuFoMxjJlJl
+JlJlglglglglglglglglglglglglglhjDiSNSNhfruzFbKsVSNwZPqhjglglglglglglglglglglglglglGVHqDADFDQMKikqrCnDFpBzFzqXmCmVjQRNiWIxeFZpgySVjNLNLpgQRqXHqDFzFQfQfDFYZDioYhjzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFhEhEzFoYhEhEzFzFuFuFaouFuFuFgogoxjxjxjxjxjxjxjxjuFxjxjxjuFxjxjxjxjJlJl
+JlJlhvglglglglglglglglglglglhvDFHqkUClkUzFqVHqoYzFzFHqDFhvglglglglglglglglglglglhvDFuxiMDFLeAyEsQHFbDFkHVUDFDFLGoYHqoYoYFbaJoYFbzFoYgDaJoYsjzFDFkdzFQfDFHqVroYDFDFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFDFDFoYzFxjxjzFuFpDuFuFfAuFuFxjxjxjxjxjxjxjxjxjxjuFxjxjxjuFxjxjxjxjJlJl
+JlJlhvglglglglglglglglglglglhvDFHqHqoYHqFbTezFHqFbydrHDFhvglglglglglglglglglglglhvDFwqiMDFyMoQVqAtqiDFmQoYDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFzFJczFDFDFDFDFDFzFESzFDFDFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFDFDFxjxjxjxjuFuFuFuFuFuFDDsSxjxjxjxjxjxjxjxjxjxjuFsSuFuFuFxjxjxjxjJlJl
+JlJlhvglglglglglglglglglglglhvDFHqCEMvCEYagZzFHqoYFbXDDFhvglglglglglglglglglglglhvDFhYZrDFDFDFDFDFDsDFoYCDDFDFlmaFiXxriXkRiXiXiXzFLXDFDFNqJczFzFaJukHqzFoYESzFDFDFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFDFDFJlxjxjxjoYxjgogogogoxjxjxjxjxjxjxjxjxjxjxjxjuFxjxjxjuFxjxjxjxjJlJl
+JlJlhvglglglglglglglglglglglhvDFzFoYFbHqzFseHqblHqHqrHDFhvglglglglglglglglglglglhvDFYKvZDeDeapbPlglioYHqcYDFDFUvzFzFNZKTzFzfNZiXngzFDFDFzFVrPgioBjDieGHJLcRIzFDFDFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFDFDFJlxjxjxjoYxjuFuFuFuFxjxjxjxjxjxjxjxjxjuFuFuFuFxjxjxjuFsSxjxjxjJlJl
+JlJlhvglglglglglglglglglglglhvDFtcCRtcWMtcnUHqzFzFHqLmDFhvglglglglglglglglglglglhvDFQtYKVMFbqSJdxDoYVMcYjZDFDFYKzFiXNZeydOYQKTNZjDoYDFDFzFzFzFzFzFHqsXuxHqgDzFDFDFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFDFDFJlxjxjxjxjzFoMuFuFuFuFxjxjxjxjxjxjxjxjuFxjxjxjxjuFxjxjxjxjxjxjJlJl
+JlJlhvhvhvhvhvhvglhvhvhvhvhvhvDFDFDFDFDFDFOfDFDFDFDFDFDFhvhvhvhvhvhvglhvhvhvhvhvhvDFDFDFDFDFDFhqDFDFDFDFDFDFDFYKzFweiXKTSlKqNZNZoYGwDFDFDFDFDFDFDFXmDFDFDFDFDFDFDFDFDFDFDFDFXmDFDFDFDFDFDFDFDFDFDFDFDFXmDFDFDFDFDFDFDFJlxjxjxjxjxjxjxjuFuFuFxjxjxjxjuFxjxjxjgoxjxjxjxjsSxjxjxjxjxjxjJlJl
+JlJlDFDFDFDFDFDFhjDFDFDFDFDFDFDFDFDFDFDFDFFgDFDFDFDFDFDFDFDFDFDFDFDFhjDFDFDFDFDFDFDFDFDFDFDFDFunDFDFJlJlJlDFDFDZzFiXNZNZKTNZesNZoYxnDFhvhvhvhvhvhvglhvhvhvhvhvhvDFDFDFDFDFDFXmDFDFDFDFDFDFhvhvhvhvhvhvglhvhvhvhvhvhvDFJlxjxjxjxjzFzFxjuFuFuFxjxjxjxjpDuFuFuFuFxjxjxjxjuFxjxjxjxjxjxjJlJl
+JlJlDFaFBpQbQfzFFvoYEWcJLpiIoYRozFQbQbzFzFVrPRDFJlJlJlJlJlJlJlJlDFoYFjzFDFEDNDHgCWDFewmqqPDFVUDohEDFJlJlJlDFDFFLzFYGpiULNZLTZdYrzFoiDFhvglglglglglglglglglglglhvDFzFzFzFzFzFzFzFzFzFzFzFDFhvglglglglglglglglglglglhvDFJlxjxjxjxjzFxjxjsSuFuFxjxjxjxjuFxjxjxjuFxjxjxjxjuFxjxjxjxjxjxjJlJl
+JlJlDFEWjjDhxexeWROTFWgaERgaDhVrLuNwyIBCbtxazFDFJlJlJlJlJlJlJlJlDFFbOazFDFiXRloYVXDFiXWRoTDFbBqVFbDFJlJlJlDFDFVUzFiXNZiXeszfoYjkoYzFDFhvglglglglglglglglglglglhvDFzFzFzFzFzFzFzFzFzFzFzFDFhvglglglglglglglglglglglhvDFJlxjxjxjxjzFxjxjuFpDuFuFuFuFuFuFuFxjxjuFpDuFuFuFuFoMxjxjxjxjxjJlJl
+JlJlDFzFJczFoYoYEWQbVUQfQbQbzFQbEWYioYbvQxaYoYDFJlJlJlJlJlJlJlJlDFQbzWLGDFzfkToYzfDFgDINPODFHqqVuxDFJlJlJlDFDFWRzFzfiXvnQfoYiXjkuxoYDFhvglglglglglglglglglglglhvDFzFzFzFzFzFzFzFzFzFzFzFDFhvglglglglglglglglglglglhvDFJlxjxjxjxjxjxjxjuFuFGhxjxjxjxjuFxjxjxjuFxjxjxjpKxjxjxjxjxjxjxjJlJl
+JlJlDFLCtfoYDFDFDFDFDFDFDFDFDFDFDFDFDFDFzFqCoYDFDFDFDFDFDFDFDFDFDFzFIdoYDFKuTmoVNZDFcoURNZDFzFvWzFDFDFDFDFDFDFoYzMncyYVWiXdyYrEdzFzMDFhvglglglglglglglglglglglhvDFzFzFzFzFzFzFzFzFzFzFzFDFhvglglglglglglglglglglglhvDFJlxjxjxjxjxjzFxjxjuFxjxjsSsSxjxjxjxjxjuFxjxjxjxjxjxjxjxjxjxjxjJlJl
+JlJlDFEWimARDFQOfpllDFxrkRKTNZQfzfUIKTDFzFtyWRoYAScXRQDFDFmUphQbQbzFDiEWDFrKjwKTiXDFVUIKkmDFwqiMPCfgQbfraFDFDFzFuxVezFzfiXVeiXiXzFzFDFhvglglglglglglglglglglglhvDFzFzFzFzFzFzFzFzFzFzFzFDFhvglglglglglglglglglglglhvDFhEzFxjxjxjxjzFxjxjgoxjxjsSsSxjxjxjxjxjoMxjxjxjxjxjxjuFxjxjxjxjJlJl
+JlJlDFVlkHEWDFHoYiHEmCNZhFVLRSjkNZuxCQDFzFDhYlCbqKSNbeRMnRevzpwtVrmZDiPCDFzfAFqRpRBZTUKgknDFQfeeVpmPRyGGnsXmBdlgonrazFDiPBDizFDiJTDiuWglglglglglglglglglglglglglXmzFzFzFzFzFzFzFzFzFzFzFXmglglglglglglglglglglglglglhEhEhExjxjxjzFxjxjxjuFxjxjsSsSxjxjxjxjxjxjxjxjxjzFxjxjuFxjxjxjxjJlJl
+JlJlDFoYUsEWDFvtAuoYDFzfLWQPwVVfWRoYluDFQbxpoYEWoYQbzFDFDFzFVaGfQboYFDHqDFyDsRgXPJDFEPsyrSDFhEiizzPCFvQbQbDFDFzFVULJzFzFnUHqzFNNQeaFDFhvglglglglglglglglglglglhvDFzFzFzFzFzFzFzFzFzFzFzFDFhvglglglglglglglglglglglhvDFhEzFxjxjxjhExjxjxjuFxjxjxjxjxjxjxjxjxjxjxjxjzFzFzFxjzFuFxjxjxjJlJl
+JlJlDFaszWFpDFDFDFDFDFEriXkxNZuPzFNZzfDFzFQkVUDFDFDFDFDFDFDFDFDFDFFbQkjDDFDFwUDFDFDFDFDFDFDFzFnMaJDFDFDFDFDFDFDFDFDFDFhEqVnWDFDFDFDFDFhvglglglglglglglglglglglhvDFzFzFzFzFzFzFzFzFzFzFzFDFhvglglglglglglglglglglglhvDFJlxjxjxjxjoYxjuFxjuFxjxjxjxjxjxjxjxjxjzFzFzFzFzFzFzFuFuFxjxjxjJlJl
+JlJlDFEWEWzFnGLVoYgDDFrCMbDVGEuxzFhFzfDFQbFDQbDFJlJlJlJlJlJlJlJlDFFbKhQbnKzFoUGZzFcNzFoZhEzFoYANoYDFJlJlJlJlJlJlJlJlDFzFehVUDFJlJlJlJlhvglglglglglglglglglglglhvDFzFzFzFzFzFzFzFzFzFzFzFDFhvglglglglglglglglglglglhvDFJlxjxjxjxjoYzFuFuFuFxjxjxjxjxjxjxjxjxjzFzFzFxjxjxjxjuFzFzFxjxjJlJl
+JlJlDFDcOLwaNwbtwEEWDFmdoYxMoYKTiXHtKTmCQfFDQbDFJlJlJlJlJlJlJlJlDFWbWRVrVrVrBOSNSNSNSNSNYbnbDeHkVUDFJlJlJlJlJlJlJlJlDFzFqVzFDFJlJlJlJlhvglglglglglglglglglglglhvDFzFzFzFzFzFzFzFzFzFzFzFDFhvglglglglglglglglglglglhvDFJlxjxjxjxjoYuFzFxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjsSuFxjxjxjJlJl
+JlJlDFaFEWzFsAYiVrjoDFtHzfDVMbhFNZoYiXDFFvDiPRDFJlJlJlJlJlJlJlJlDFaFKhoYQbEWVargcXFbzKoYhEuxzFANHqDFJlJlJlJlJlJlJlJlDFjiqCzFDFJlJlJlJlhvglglglglglglglglglglglhvDFzFzFzFzFzFzFzFzFzFzFzFDFhvglglglglglglglglglglglhvDFJlxjxjxjxjxjsSzFxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjxjzFxjxjxjJlJl
+JlJlDFDFDFDFDFDFFgDFDFDFDFDFDFDFDFDFDFDFDFXmDFDFDFDFDFDFDFDFDFDFDFDFpsDFDFDFDFDFDFDFDFDFDFDFDFXUDFDFDFDFDFDFDFJlJlJlDFDFbUDFDFDFDFDFDFhvhvhvhvhvhvglhvhvhvhvhvhvDFDFDFDFDFDFXmDFDFDFDFDFDFhvhvhvhvhvhvglhvhvhvhvhvhvDFJlxjxjxjxjxjxjuFxjxjJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlxjxjxjxjxjJlJl
+JlJlDFDFDFDFDFDFFgDFDFDFDFDFDFhvhvhvhvhvhvglhvhvhvhvhvhvDFDFDFDFDFDFpsDFDFDFDFDFDFhvhvhvhvhvhvglhvhvhvhvhvhvDFJlJlJlDFDFmVDFDFDFDFDFDFDFDFDFDFDFDFLMDFDFJlJlJlDFhvhvhvhvhvhvglhvhvhvhvhvhvDFDFDFDFDFDFXmDFDFDFDFDFDFDFJlxjxjxjxjzFgooMxjxjJlDFhvhvhvhvhvhvhvhvhvhvhvhvhvJlxjxjzFxjxjJlJl
+JlJlDFzFzFzFzFzFANzFzFzFzFzFDFhvglglglglglglglglglglglhvDFxjxjxjxjDFseDFzFVUxjxjDFhvglglglglglglglglglglglhvDFJlJlJlDFCCMBpSDFvBlyWiJUVUAvLqQIDFhEseLxDFJlJlJlDFhvglglglglglglglglglglglhvDFzFzFzFzFzFzFzFzFzFzFzFDFDFJlxjxjxjxjxjxjxjxjxjJlDFhvglglglglglglglglglglglhvJlxjxjzFxjxjJlJl
+JlJlDFzFzFzFzFzFsvzFzFzFzFzFDFhvglglglglglglglglglglglhvDFCCQfoYoYzFsezFoYARzFxjDFhvglglglglglglglglglglglhvDFJlJlJlDFoYmEVUDFzFHqzFzFzFFvHqzFDFzFxasXDFJlJlJlDFhvglglglglglglglglglglglhvDFzFzFzFzFzFzFzFzFzFzFzFDFDFJlxjxjxjxjxjzFxjxjxjJlDFhvglglglglglglglglglglglhvJlxjxjxjxjxjJlJl
+JlJlDFzFzFzFzFzFsvzFzFzFzFzFDFhvglglglglglglglglglglglhvDFDnQfxjxjDFZXDFxjxjoYxjDFhvglglglglglglglglglglglhvDFJlJlJlDFwBmEoYDFDFDFDFDFHqHqzFVUDFzFDiHqDFJlJlJlDFhvglglglglglglglglglglglhvDFzFzFzFzFzFzFzFzFzFzFzFDFDFJlxjxjxjxjxjxjxjxjxjJlDFhvglglglglglglglglglglglhvJlxjxjzFxjxjJlJl
+JlJlDFzFzFzFzFzFwLzFzFzFzFzFDFhvglglglglglglglglglglglhvDFxjoYxjDFDFDiDFDFxjYizFDFhvglglglglglglglglglglglhvDFJlJlJlDFRUJdzFDFhzVCCCDFzFzFVUzFDFhYDizKDFDFDFDFDFhvglglglglglglglglglglglhvDFzFzFzFzFzFzFzFzFzFzFzFDFDFJlxjxjxjxjzFxjxjxjxjJlDFhvglglglglglglglglglglglhvDFxjxjzFuFxjJlJl
+JlJlDFzFzFzFzFzFwZzFzFzFzFzFDFhvglglglglglglglglglglglhvDFDFoYDFDFXEmZQlDFDFYiDFDFhvglglglglglglglglglglglhvDFJlJlJlDFNyMMoYSdzFFbAjDFhEDFDFzFDFhEVrHqzFzFzFXXDFhvglglglglglglglglglglglhvDFzFzFzFzFzFzFzFzFzFzFzFDFDFJlxjxjxjaFzFuFsSxjxjxjDFhvglglglglglglglglglglglhvzFxjxjuFsSxjJlJl
+JlJlDFzFzFzFzFzFDizFzFzFzFzFzFglglglglglglglglglglglglglcZDibeOQlEpJKPVrajnbzaDihjglglglglglglglglglglglglglXmoYoYoYoYWRmAoYDFCCjDoYoYzFvgDFzFDFzFOrDiVrYLPgDiXmglglglglglglglglglglglglglXmzFzFzFzFzFzFzFzFzFzFzFXmXmzFzFzFzFzFzFuFuFzFzFzFhjglglglglglglglglglglglglglzFzFzFuFxjxjJlJl
+JlJlDFzFzFzFzFzFANzFzFzFzFzFDFhvglglglglglglglglglglglhvDFDFoYDFDFCVbzigDFDFzFDFDFhvglglglglglglglglglglglhvDFJlJlJlDFFbmEjDDFeFzFuxzFjizFDFmvDFzFzFzFuxjDoYzFDFhvglglglglglglglglglglglhvDFzFzFzFzFzFzFzFzFzFzFzFDFDFJlxjxjxjaFzFzFxjxjxjxjDFhvglglglglglglglglglglglhvzFxjxjuFxjxjJlJl
+JlJlDFzFzFzFzFzFsvzFzFzFzFzFDFhvglglglglglglglglglglglhvDFxjoYxjDFDFANDFDFxjoYCCDFhvglglglglglglglglglglglhvDFDFDFDFDFHqFDzFDFDFDFDFSdhEhEDFDFDFDFDiDFDFDFDFDFDFhvglglglglglglglglglglglhvDFzFzFzFzFzFzFzFzFzFzFzFDFDFJlxjxjzFxjzFzFxjxjxjJlDFhvglglglglglglglglglglglhvDFxjxjsSxjxjJlJl
+JlJlDFzFzFzFzFzFsvzFzFzFzFzFDFhvglglglglglglglglglglglhvDFxjFpxjxjDFWrDFxjxjzFCCDFhvglglglglglglglglglglglhvDFMoWigLhEuxDizFFAzFHqzFoYzFzFXBVUkRhEDihEzFqqzFoYDFhvglglglglglglglglglglglhvDFzFzFzFzFzFzFzFzFzFzFzFDFDFJlxjxjxjzFuFzFuFxjxjJlDFhvglglglglglglglglglglglhvJlxjxjzFxjxjJlJl
+JlJlDFzFzFzFzFzFwLzFzFzFzFzFDFhvglglglglglglglglglglglhvDFQfARoYzFQfDizFoYYiiIpnDFhvglglglglglglglglglglglhvDFLOFbSZnWWRYLnwFWKCXQxexeUlgBxePgFWnwYLzFjDoYiIjDDFhvglglglglglglglglglglglhvDFzFzFzFzFzFzFzFzFzFzFzFDFDFJlxjzFxjuFzFzFsSxjxjJlDFhvglglglglglglglglglglglhvJlxjuFzFxjxjJlJl
+JlJlDFzFzFzFzFzFDizFzFzFzFzFDFhvglglglglglglglglglglglhvDFCCxjxjxjxjVroYxjxjxjxjDFhvglglglglglglglglglglglhvDFCCHqHqkcVUkqzFNXjDzFzFzFzFzFzFoYzFQfVUzFQfzFzFCCDFhvglglglglglglglglglglglhvDFzFzFzFzFzFzFzFzFzFzFzFDFDFJlxjuFuFzFzFxjuFxjxjJlDFhvglglglglglglglglglglglhvJlxjsSuFxjxjJlJl
+JlJlDFDFDFDFDFDFOfDFDFDFDFDFDFhvhvhvhvhvhvglhvhvhvhvhvhvDFDFDFDFDFDFhjDFDFDFDFDFDFhvhvhvhvhvhvglhvhvhvhvhvhvDFDFDFDFDFDFEuDFDFDFDFDFDFDFDFDFDFDFDFcZDFDFDFDFDFDFhvhvhvhvhvhvglhvhvhvhvhvhvDFDFDFDFDFDFXmDFDFDFDFDFDFDFJlxjzFuFxjSwzFsSxjxjJlDFhvhvhvhvhvhvglhvhvhvhvhvhvJlxjuFxjxjxjJlJl
+JlJlDFDFDFDFDFDFwuDFDFDFDFDFDFDFDFDFDFDFDFzFDFDFDFDFDFDFhvhvhvhvhvhvglhvhvhvhvhvhvDFDFDFDFDFDFhjDFDFDFDFDFDFDFDFDFDFDFDFunDFDFDFDFDFDFhvhvhvhvhvhvglhvhvhvhvhvhvDFDFDFDFDFDFXmDFDFDFDFDFDFhvhvhvhvhvhvglhvhvhvhvhvhvDFJlxjxjuFxjzFzFuFxjxjJlDFDFDFDFDFDFDFXmDFDFDFDFDFDFJlxjxjxjuFxjJlJl
+JlJlDFXhVcVcDFzFsvzFQbQbwPoYDFDFzFzFzFzFzFzFzFzFzFzFzFDFhvglglglglglglglglglglglhvDFzFzFzFzFzFzFzFzFzFzFzFDFDFHqTysFHqNTANNTHqVOtQHqDFhvglglglglglglglglglglglhvDFzFzFzFzFzFzFzFzFzFzFzFDFhvglglglglglglglglglglglhvDFJlxjxjuFxjzFzFuFxjxjJlDFDFzFzFzFzFzFzFzFzFzFzFzFDFJlxjzFzFpDxjJlJl
+JlJlDFzFPPzFDFQbCwxdxdxyysoYDFDFzFzFzFzFzFzFzFzFzFzFzFDFhvglglglglglglglglglglglhvDFzFzFzFzFzFzFzFzFzFzFzFDFDFHqHqePVONTANNTHqePVOHqDFhvglglglglglglglglglglglhvDFzFzFzFzFzFzFzFzFzFzFzFDFhvglglglglglglglglglglglhvDFJlxjxjsSuFzFzFxjxjxjJlDFDFzFzFzFzFzFzFzFzFzFzFzFDFJlxjSwzFuFxjJlJl
+JlJlDFcfcfcfDFQbzFwPoYoYyWoYDFDFzFzFzFzFzFzFzFzFzFzFzFDFhvglglglglglglglglglglglhvDFzFzFzFzFzFzFzFzFzFzFzFDFDFHqKJekHqNTqVNTKJIurkAjDFhvglglglglglglglglglglglhvDFzFzFzFzFzFzFzFzFzFzFzFDFhvglglglglglglglglglglglhvDFJlxjxjxjuFzFuFuFxjxjJlDFDFzFzFzFzFzFzFzFzFzFzFzFDFJlxjzFzFxjxjJlJl
+JlJlDFcfcfQGDFDFDFDFDFzFsvoYDFDFzFzFzFzFzFzFzFzFzFzFzFDFhvglglglglglglglglglglglhvDFzFzFzFzFzFzFzFzFzFzFzFDFDFHqhyhyhyNTqVNThyhyhyHqDFhvglglglglglglglglglglglhvDFzFzFzFDFDFDFDFDFzFzFzFDFhvglglglglglglglglglglglhvDFJlxjzFxjzFzFxjzFxjxjJlDFDFzFzFzFzFzFzFzFzFzFzFzFDFDFxjzFzFuFxjJlJl
+JlJlDFcfcfcfbHKbzFcfrdQbzIzFDFDFzFzFzFzFzFzFzFzFzFzFzFDFhvglglglglglglglglglglglhvDFzFzFzFzFzFzFzFzFzFzFzFDFDFLYHqHqHqHqqVHqHqHqHqCDDFhvglglglglglglglglglglglhvDFzFzFzFDFzFzFzFDFzFzFzFDFhvglglglglglglglglglglglhvDFJlxjxjxjzFzFzFxjxjxjJlDFDFzFzFzFzFzFzFzFzFzFzFzFDFzFxjxjxjxjxjJlJl
+JlJlDFEmcfJxcTcfzFzFDFaXDiDiFgFgDiDiDiDiDiDizFzFzFzFzFhjglglglglglglglglglglglglglhjzFzFzFzFzFzFzFzFzFzFzFXmXmDiDiDiDiDiqVDiDiDiDiDihjglglglglglglglglglglglglglXmzFzFzFDFzFzFzFDFzFzFzFcZglglglglglglglglglglglglgllMzFzFzFuFzFSwxjzFzFzFJlDFDFzFzFzFzFzFzFzFzFzFzFzFXmzFxjxjxjxjxjJlJl
+JlJlDFzVcfJxnacfcfzFDFQbQbzFDFDFzFzFzFzFzFDizFzFzFzFzFDFhvglglglglglglglglglglglhvDFzFzFzFzFzFzFzFzFzFzFzFDFDFLYHqHqHqHqqVHqHqHqHqCDDFhvglglglglglglglglglglglhvDFzFzFzFDFzFzFzFDFzFzFzFDFhvglglglglglglglglglglglhvDFJlxjxjsSuFzFzFzFxjzFJlDFDFzFzFzFzFzFzFzFzFzFzFzFDFzFxjzFuFuFuFJlJl
+JlJlDFUwcfcfUwmXcfcTDFDFDFDFDFDFzFzFzFzFzFDizFzFzFzFzFDFhvglglglglglglglglglglglhvDFzFzFzFzFzFzFzFzFzFzFzFDFDFWsHqcHDFHqANHqDFcHHqWsDFhvglglglglglglglglglglglhvDFDFDFDFDFzFzFzFDFzFzFzFDFhvglglglglglglglglglglglhvDFJlxjxjxjxjzFzFxjzFxjJlDFDFzFzFzFzFzFzFzFzFzFzFzFDFDFxjzFsSsSxjJlJl
+JlJlDFEmcfcfcfcfcfzFzFzFhgcfDFDFzFzFzFzFzFDizFzFzFzFzFDFhvglglglglglglglglglglglhvDFzFzFzFzFzFzFzFzFzFzFzFDFDFmjHqAMDFHqANHqDFAMHqmjDFhvglglglglglglglglglglglhvDFzFzFzFzFzFzFzFDFzFzFzFDFhvglglglglglglglglglglglhvDFJlxjxjxjuFuFxjzFSwxjJlDFDFzFzFzFzFzFzFzFzFzFzFzFDFJlxjzFuFuFxjJlJl
+JlJlDFZncfzFcfcfcfcfSGcfcfzFDFDFzFzFzFzFzFDizFzFzFzFzFDFhvglglglglglglglglglglglhvDFzFzFzFzFzFzFzFzFzFzFzFDFDFHqHqHqDFLYANCDDFHqHqHqDFhvglglglglglglglglglglglhvDFzFzFzFzFzFzFzFDFzFzFzFDFhvglglglglglglglglglglglhvDFJlxjxjxjuFzFxjxjxjxjJlDFDFzFzFzFzFzFzFzFzFzFzFzFDFJlxjxjuFxjxjJlJl
+JlJlDFLNcfcfzFzFzFcfhgzFcfcfDFDFzFzFzFzFzFDizFzFzFzFzFDFhvglglglglglglglglglglglhvDFzFzFzFzFzFzFzFzFzFzFzFDFDFZLJzayDFHqANHqDFZLJzlbDFhvglglglglglglglglglglglhvDFzFzFzFzFzFzFzFDFzFzFzFDFhvglglglglglglglglglglglhvDFJlJlJlJlxjzFxjJlJlJlJlDFDFzFzFzFzFzFzFzFzFzFzFzFDFJlxjuFuFxjxjJlJl
+JlJlDFDFDFDFDFDFhjDFDFDFDFDFDFDFDFDFDFDFDFBaDFDFDFDFDFDFhvhvhvhvhvhvglhvhvhvhvhvhvDFDFDFDFDFDFXmDFDFDFDFDFDFDFDFDFDFDFDFEgDFDFDFDFDFDFhvhvhvhvhvhvglhvhvhvhvhvhvDFzFzFzFzFzFzFzFDFzFzFzFDFhvhvhvhvhvhvglhvhvhvhvhvhvDFDFDFDFDFDFhjDFDFDFDFDFDFDFDFDFDFDFDFXmDFDFDFDFDFDFJlxjzFpDxjxjJlJl
+JlJlhvhvhvhvhvhvglhvhvhvhvhvhvDFDFDFDFDFDFFgDFDFDFDFDFDFDFDFDFDFDFDFhjDFDFDFDFDFDFDFDFDFDFDFDFcZDFDFDFDFDFDFDFDFDFDFDFDFtgDFDFDFDFDFDFDFDFDFDFDFDFcZDFDFDFDFDFDFDFzFzFzFzFzFzFzFDFzFzFzFDFDFDFDFDFDFDFXmDFDFDFDFDFDFDFDFDFDFDFDFzFDFDFDFDFDFDFhvhvhvhvhvhvglhvhvhvhvhvhvJlxjzFuFxjxjJlJl
+JlJlhvglglglglglglglglglglglhvDFzFzFzFzFzFANzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFzFoYYLaJFvKmHqaFDFDFJlJlJlDFzFJdvxDFJlJlJlDFDFiWHqlyHqHqHqHqHqHqHqHqDFDFzFzFzFzFzFzFzFDFzFzFzFDFDFzFzFzFzFzFzFzFzFzFzFzFDFDFzFzFzFzFzFzFzFzFzFzFzFDFhvglglglglglglglglglglglhvJlxjzFxjxjxjJlJl
+JlJlhvglglglglglglglglglglglhvDFzFBxzFzFzFsqSNSNSNOQEszFOQOQQBzFEsCAQBSNOQEsCACACAEsSNCAcwOQzFRIrwVEVrHqzFDFDFJlJlJlDFzFSJzFDFJlJlJlDFDFHqDFFbVUHqDFDFDFDFWRzFDFDFzFzFzFzFzFzFzFDFzFzFzFDFDFzFzFzFzFzFzFzFzFzFzFzFDFDFzFzFzFzFzFzFzFzFzFzFzFDFhvglglglglglglglglglglglhvJlxjuFuFuFxjJlJl
+JlJlhvglglglglglglglglglglglhvDFzFzFzFzFzFzFzFzFzFzFzFzFzFzFBxzFzFzFzFzFzFzFzFzFzFzFzFVUzFzFzFzFhEFbDizFzFDFDFJlJlJlDFhYVPWRDFJlJlJlDFDFHqtQSZoYHqzFHBDFDFoYFbDFDFzFzFzFzFzFzFzFDFzFzFzFDFDFzFzFzFzFzFzFzFzFzFzFzFDFDFzFzFzFzFzFzFzFzFzFzFzFDFhvglglglglglglglglglglglhvJlxjxjxjzFxjJlJl
+JlJlhvglglglglglglglglglglglhvDFHqHqHqHqHqHqHqHqHqHqBKHqHqHqHqHqHqHqHqHqHqHqHqHqDFDFDFDFDFDFDFDFDFzFEHzFxODFDFDFDFDFDFzFbzaFDFDFDFDFDFDFzFWRWRydzFDFDFDFDFoYHqDFDFDFDFDFDFDFDFDFDFzFzFzFDFDFzFzFzFzFzFzFzFzFzFzFzFDFDFzFzFzFzFzFzFzFzFzFzFzFDFhvglglglglglglglglglglglhvDFxjxjxjzFxjJlJl
+JlJlhvglglglglglglglglglglglhvDFHqHqisHqHqisHqHqisHqHqHqHqHqCiHqisHqHqHqCiHqHqHqDFDFiWngRQSqpnzFDFVUxpzFzFWHSqpnvgeFHqoYbzoYoYFvoYEvDFDFHqWRYaoYHqJzxwxwGUoYHqDFDFzFzFzFzFzFzFzFzFzFzFzFDFDFzFzFzFzFzFzFzFzFzFzFzFDFDFzFzFzFzFzFzFzFzFzFzFzFDFhvglglglglglglglglglglglhvzFxjuFsSxjxjJlJl
+JlJlhvglglglglglglglglglglglglcZHqisHqHqHqHqElHqHqHqHqHqisHqHqHqHqHqHqHqHqHqHqAjDFDFzFngwjzFoYzFpFGoBSuzcucuDeoeHhnbnbjRiOqKonqKejqKQFQCBXCAMYydlgZIQWEsDeZIODhAIinbnbDiDenbzFDiDiDiDiDiuWXmzFzFzFzFzFzFzFzFzFzFzFXmXmzFzFzFzFzFzFzFzFzFzFzFXmglglglglglglglglglglglglglzFxjSwzFxjxjJlJl
+JlJlhvglglglglglglglglglglglhvDFHqHqHqisVvHqHqVvHqHqVvHqHqGsHqHqHqHqVvZZHqVvZZHqDFDFHboYHqzFoYCnDFLZHqoYbJoYzFoYTrzFHqqAzFzFWkzFoYQsDFDFHqzFoYydHqoYzFzFHqoYFbDFDFzFzFzFzFzFzFzFzFzFzFzFDFDFzFzFzFzFzFzFzFzFzFzFzFDFDFzFzFzFzFzFzFzFzFzFzFzFDFhvglglglglglglglglglglglhvzFxjzFzFxjsSJlJl
+JlJlhvglglglglglglglglglglglhvDFHqXIXIXIXIXIXIXIXIXIXIXIXIHqisHqisHqVvTVHqVvTVHqDFDFzxmHydtBYazFDFDFDFDFDFDFDFDFfFDFDFDFDFDFDFDFDFDFDFDFzFNyzFzFzFWRoYNyHqoYHqDFDFzFzFzFDFDFDFDFDFDFDFDFDFDFzFzFzFzFzFzFzFzFzFzFzFDFDFzFzFzFzFzFzFzFzFzFzFzFDFhvglglglglglglglglglglglhvDFxjzFzFxjxjJlJl
+JlJlhvglglglglglglglglglglglhvDFXIXIXIMuXIXIXIXIMuXIXIXIXIXIXIHqHqHqVvTVHqVvZJHqDFDFHFoYNRqoWRCnDFJlJlJlJlDFDFuuVroYlyzFzFvKDFJlJlJlDFDFHqAGzFWHHqydWRoYHqzFzFDFDFzFzFzFDFzFzFzFzFzFzFzFDFDFzFzFzFzFzFzFzFzFzFzFzFDFDFzFzFzFzFzFzFzFzFzFzFzFDFhvglglglglglglglglglglglhvJlxjuFuFuFxjJlJl
+JlJlhvglglglglglglglglglglglhvDFXIXIXIXIXIXIXIXIXIXIXIMuXIXIXIXIXIHqVvAVHqVvTVHqDFDFwzJYoYFbQmzFDFJlJlJlJlDFDFHbVrVrDiVrEpepDFJlJlJlDFDFHqDFUMjDoYzFzFoYHqzFHqDFDFzFzFzFDFzFzFzFzFzFzFzFDFDFzFzFzFzFzFzFzFzFzFzFzFDFDFzFzFzFzFzFzFzFzFzFzFzFDFhvglglglglglglglglglglglhvJlxjsSzFzFxjJlJl
+JlJlhvglglglglglglglglglglglhvDFMwXIXIXIXIXIXIXIXIXIXIXIXIXIXIXIXIHqHqHqHqHqHqHqDFDFrtkLPofIzFzFDFJlJlJlJlDFDFaFoYzFzFzFDizFDFJlJlJlDFDFzFAGzFzFHqHqtqzFFBMyKEDFDFzFzFzFDFzFzFzFzFzFzFzFDFDFzFzFzFzFzFzFzFzFzFzFzFDFDFzFzFzFzFzFzFzFzFzFzFzFDFhvglglglglglglglglglglglhvJlxjxjxjxjxjJlJl
+JlJlhvhvhvhvhvhvhvhvhvhvhvhvhvDFDFDFDFFRFRFRDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFUaDFDFDFDFDFDFDFDFDFDFDFDFOyDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFhvhvhvhvhvhvhvhvhvhvhvhvhvDFDFDFDFDFDFJlJl
+JlJlDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFFRFRDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlXIXIJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlXIXIJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlXIXIJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlXIXIJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlXIXIJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlXIXIJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlXIXIJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlXIXIJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlXIXIXIXIJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlXIXIXIJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlXIXIJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
+JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
 JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
 JlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJlJl
 "}
