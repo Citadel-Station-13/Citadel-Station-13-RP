@@ -87,7 +87,7 @@
 GLOBAL_LIST(round_end_notifiees)
 
 /datum/tgs_chat_command/endnotify
-	name = "endnotify"
+	name = "notify"
 	help_text = "Pings the invoker when the round ends"
 	admin_only = FALSE
 
