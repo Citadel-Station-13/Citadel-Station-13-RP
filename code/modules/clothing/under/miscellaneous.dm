@@ -1075,10 +1075,10 @@
 
 /obj/item/clothing/under/bodysuitseccom
 	name = "security command bodysuit"
-	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a dark grey base with striking red and gold coloration.
+	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a dark grey base with striking red and gold coloration."
 	icon_state = "bodysuit_bodysuitseccom"
 
 /obj/item/clothing/under/bodysuitcommand
 	name = "command bodysuit"
-	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a flashy blue base with white and gold coloration.
+	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a flashy blue base with white and gold coloration."
 	icon_state = "bodysuit_command"
