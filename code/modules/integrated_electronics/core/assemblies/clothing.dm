@@ -133,7 +133,7 @@
 	icon_state = "communicator"
 	item_state = "ewatch"
 
-/obj/item/clothing/gloves/circuitry/Initialize()
+/obj/item/clothing/gloves/ewatch/Initialize()
 	setup_integrated_circuit(/obj/item/electronic_assembly/clothing/small)
 	return ..()
 
