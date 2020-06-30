@@ -49,7 +49,7 @@
 	if(!pref.neu_traits) pref.neu_traits = list()
 	if(!pref.neg_traits) pref.neg_traits = list()
 
-	pref.blood_color = sanitize_hexcolor(pref.blood_color, default = "#A10808")
+	pref.blood_color = sanitize_hexcolor(pref.blood_color, 6, TRUE, default = "#A10808")
 
 	if(!pref.traits_cheating)
 		pref.starting_trait_points = STARTING_SPECIES_POINTS
@@ -169,7 +169,7 @@
 	else if(href_list["blood_color"])
 		var/color_choice = input("Pick a blood color (does not apply to synths)","Blood Color",pref.blood_color) as color
 		if(color_choice)
-			pref.blood_color = sanitize_hexcolor(color_choice, default = "#A10808")
+			pref.blood_color = sanitize_hexcolor(color_choice, 6, TRUE, default = "#A10808")
 		return TOPIC_REFRESH
 
 	else if(href_list["blood_reset"])
