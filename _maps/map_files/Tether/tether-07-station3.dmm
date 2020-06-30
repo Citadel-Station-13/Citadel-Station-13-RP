@@ -18567,8 +18567,17 @@
 "Ej" = (
 /obj/machinery/button/windowtint{
 	id = "psych-tint";
-	pixel_x = 24;
+	pixel_x = 23;
+	pixel_y = 2;
 	range = 8
+	},
+/obj/machinery/button/remote/airlock{
+	desc = "A remote control switch for the medbay recovery room door.";
+	dir = 8;
+	id = "mentaldoor_2";
+	name = "Door Switch";
+	pixel_x = 25;
+	pixel_y = -7
 	},
 /turf/simulated/floor/carpet/blue,
 /area/medical/psych)
@@ -24919,7 +24928,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/medical{
-	id_tag = "mentaldoor";
+	id_tag = "mentaldoor_2";
 	name = "Mental Health";
 	req_access = list(64)
 	},
@@ -25367,7 +25376,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/wood,
-/area/medical/exam_room)
+/area/medical/psych)
 "Pa" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -25389,7 +25398,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/wood,
-/area/medical/exam_room)
+/area/medical/psych)
 "Pb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -25412,7 +25421,7 @@
 	pixel_y = 6
 	},
 /turf/simulated/floor/wood,
-/area/medical/exam_room)
+/area/medical/psych)
 "Pc" = (
 /obj/machinery/firealarm{
 	dir = 4;
@@ -25434,7 +25443,7 @@
 	pixel_y = 4
 	},
 /turf/simulated/floor/wood,
-/area/medical/exam_room)
+/area/medical/psych)
 "Pd" = (
 /turf/simulated/wall,
 /area/medical/patient_a)
@@ -25674,7 +25683,7 @@
 	},
 /obj/structure/closet/secure_closet/psych,
 /turf/simulated/floor/wood,
-/area/medical/exam_room)
+/area/medical/psych)
 "Px" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -25685,13 +25694,13 @@
 	dir = 5
 	},
 /turf/simulated/floor/carpet/blue,
-/area/medical/exam_room)
+/area/medical/psych)
 "Py" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
 /turf/simulated/floor/carpet/blue,
-/area/medical/exam_room)
+/area/medical/psych)
 "Pz" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
@@ -25706,7 +25715,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/wood,
-/area/medical/exam_room)
+/area/medical/psych)
 "PA" = (
 /obj/structure/table/glass,
 /obj/machinery/computer/med_data/laptop,
@@ -26026,11 +26035,11 @@
 /obj/structure/table/woodentable,
 /obj/item/toy/plushie/therapy/orange,
 /turf/simulated/floor/wood,
-/area/medical/exam_room)
+/area/medical/psych)
 "PR" = (
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/carpet/blue,
-/area/medical/exam_room)
+/area/medical/psych)
 "PT" = (
 /obj/machinery/alarm{
 	dir = 8;
@@ -26044,7 +26053,7 @@
 	},
 /obj/structure/bed/psych,
 /turf/simulated/floor/wood,
-/area/medical/exam_room)
+/area/medical/psych)
 "PU" = (
 /obj/structure/table/glass,
 /obj/effect/floor_decal/borderfloorwhite{
@@ -26327,8 +26336,16 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/ward)
 "Qr" = (
-/turf/simulated/floor/carpet/blue,
-/area/medical/exam_room)
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/corner/pink/border,
+/obj/structure/bed/chair/office/dark{
+	dir = 1
+	},
+/obj/effect/landmark/start{
+	name = "Psychiatrist"
+	},
+/turf/simulated/floor/wood,
+/area/medical/psych)
 "Qs" = (
 /obj/machinery/status_display{
 	pixel_x = 32
@@ -26343,7 +26360,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/wood,
-/area/medical/exam_room)
+/area/medical/psych)
 "Qt" = (
 /obj/structure/table/glass,
 /obj/item/clipboard,
@@ -26534,7 +26551,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/wood,
-/area/medical/exam_room)
+/area/medical/psych)
 "QJ" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced,
@@ -27190,7 +27207,7 @@
 	},
 /obj/structure/window/reinforced,
 /turf/simulated/floor/plating,
-/area/medical/exam_room)
+/area/medical/psych)
 "Sn" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -27354,7 +27371,7 @@
 	pixel_y = 4
 	},
 /turf/simulated/floor/carpet/blue,
-/area/medical/exam_room)
+/area/medical/psych)
 "SW" = (
 /turf/simulated/mineral/vacuum,
 /area/space)
@@ -27435,7 +27452,7 @@
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/pink/border,
 /turf/simulated/floor/wood,
-/area/medical/exam_room)
+/area/medical/psych)
 "Tu" = (
 /obj/machinery/light,
 /obj/effect/floor_decal/steeldecal/steel_decals4,
@@ -27455,7 +27472,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/wood,
-/area/medical/exam_room)
+/area/medical/psych)
 "Tz" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 10
@@ -27936,10 +27953,7 @@
 	name = "Medical Records"
 	},
 /turf/simulated/floor/wood,
-/area/medical/exam_room)
-"VC" = (
-/turf/simulated/wall,
-/area/medical/exam_room)
+/area/medical/psych)
 "VE" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 5
@@ -28399,12 +28413,8 @@
 	dir = 4
 	},
 /obj/structure/table/woodentable,
-/obj/machinery/computer/med_data/laptop{
-	pixel_x = 6;
-	pixel_y = 4
-	},
 /turf/simulated/floor/wood,
-/area/medical/exam_room)
+/area/medical/psych)
 "XG" = (
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled,
@@ -28500,7 +28510,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/wood,
-/area/medical/exam_room)
+/area/medical/psych)
 "Yn" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -28597,7 +28607,7 @@
 	},
 /obj/structure/bed/chair/comfy/brown,
 /turf/simulated/floor/wood,
-/area/medical/exam_room)
+/area/medical/psych)
 "YC" = (
 /obj/machinery/alarm{
 	dir = 8;
@@ -28767,19 +28777,25 @@
 /obj/effect/floor_decal/corner/pink/border{
 	dir = 6
 	},
-/obj/structure/bed/chair/office/dark{
-	dir = 1
-	},
-/obj/effect/landmark/start{
-	name = "Psychiatrist"
-	},
 /obj/machinery/button/windowtint{
 	id = "exam_room";
 	pixel_x = 26;
 	pixel_y = 5
 	},
+/obj/structure/table/woodentable,
+/obj/machinery/computer/med_data/laptop{
+	dir = 8
+	},
+/obj/machinery/button/remote/airlock{
+	desc = "A remote control switch for the medbay recovery room door.";
+	dir = 8;
+	id = "mentaldoor_2";
+	name = "Door Switch";
+	pixel_x = 28;
+	pixel_y = -4
+	},
 /turf/simulated/floor/wood,
-/area/medical/exam_room)
+/area/medical/psych)
 "Zk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -28903,7 +28919,7 @@
 	},
 /obj/structure/window/reinforced,
 /turf/simulated/floor/plating,
-/area/medical/exam_room)
+/area/medical/psych)
 "ZO" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
@@ -37710,7 +37726,7 @@ QI
 Yk
 VA
 Tx
-VC
+zD
 vs
 vs
 vs
@@ -37848,9 +37864,9 @@ OA
 Pa
 Px
 PR
-Qr
-Qr
-Qr
+Ef
+Ef
+Ef
 Tt
 Sk
 vs
@@ -37989,11 +38005,11 @@ Of
 Oz
 Pb
 Py
-Qr
-Qr
-Qr
+Ef
+Ef
+Ef
 SP
-Tt
+Qr
 ZL
 vt
 vt
@@ -38276,9 +38292,9 @@ Pd
 Pd
 Pd
 Pd
-VC
-VC
-VC
+zD
+zD
+zD
 vt
 vt
 vt
