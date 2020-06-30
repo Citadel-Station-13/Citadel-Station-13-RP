@@ -101,7 +101,7 @@
 	economic_modifier = 6
 	minimal_player_age = 3
 	alt_titles = list("Search and Rescue")
-	access = list(access_medical, access_eva, access_maint_tunnels, access_research, access_external_airlocks, access_explorer, access_morgue)
+	access = list(access_medical, access_eva, access_maint_tunnels, access_research, access_external_airlocks, access_explorer, access_morgue, access_chemistry)
 	minimal_access = list(access_medical, access_explorer, access_morgue, access_research, access_maint_tunnels, access_external_airlocks)
 	outfit_type = /decl/hierarchy/outfit/job/medical/sar
 

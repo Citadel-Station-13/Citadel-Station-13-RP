@@ -18574,7 +18574,7 @@
 /obj/machinery/button/remote/airlock{
 	desc = "A remote control switch for the medbay recovery room door.";
 	dir = 8;
-	id = "mentaldoor_2";
+	id = "mentaldoor";
 	name = "Door Switch";
 	pixel_x = 25;
 	pixel_y = -7
@@ -24928,7 +24928,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/medical{
-	id_tag = "mentaldoor_2";
+	id_tag = "mentaldoor2";
 	name = "Mental Health";
 	req_access = list(64)
 	},
@@ -28789,7 +28789,7 @@
 /obj/machinery/button/remote/airlock{
 	desc = "A remote control switch for the medbay recovery room door.";
 	dir = 8;
-	id = "mentaldoor_2";
+	id = "mentaldoor2";
 	name = "Door Switch";
 	pixel_x = 28;
 	pixel_y = -4
