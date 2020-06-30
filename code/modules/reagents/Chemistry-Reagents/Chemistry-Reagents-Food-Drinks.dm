@@ -954,7 +954,7 @@ End Citadel Change */
 	adj_sleepy = -3
 	adj_temp = 20
 
-	glass_name = "cup of tea"
+	glass_name = "tea"
 	glass_desc = "Tasty black tea, it has antioxidants, it's good for you!"
 
 	cup_icon_state = "cup_tea"
