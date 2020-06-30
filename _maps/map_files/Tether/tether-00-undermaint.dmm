@@ -37,6 +37,10 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/crate/mimic/dangerous,
 /obj/random/tetheraid,
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -23
+	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "ao" = (
@@ -160,6 +164,17 @@
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
+"aZ" = (
+/obj/machinery/light/small{
+	dir = 8;
+	icon_state = "bulb1"
+	},
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -23
+	},
+/turf/simulated/floor/plating,
+/area/tether/under/static_area)
 "bb" = (
 /obj/structure/closet/crate,
 /obj/random/maintenance,
@@ -217,6 +232,12 @@
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
+"bG" = (
+/obj/machinery/door/airlock/maintenance/int,
+/obj/structure/barricade,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/plating,
+/area/tether/under/static_area)
 "bH" = (
 /obj/structure/table/steel,
 /turf/simulated/floor/plating,
@@ -239,6 +260,10 @@
 /obj/machinery/light/small{
 	dir = 8;
 	icon_state = "bulb1"
+	},
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -23
 	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
@@ -281,8 +306,23 @@
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
+"cb" = (
+/obj/random/trash,
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/turf/simulated/floor/plating,
+/area/tether/under/static_area)
 "cf" = (
 /turf/simulated/floor/tiled/old_tile/blue,
+/area/tether/under/static_area)
+"ci" = (
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "cj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -351,6 +391,13 @@
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
+"cE" = (
+/obj/structure/barricade,
+/obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/plating,
+/area/tether/under/static_area)
 "cH" = (
 /obj/item/modular_computer/console,
 /turf/simulated/floor/tiled/techfloor,
@@ -380,6 +427,14 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
+/area/tether/under/static_area)
+"cR" = (
+/obj/effect/decal/cleanable/blood,
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "cT" = (
 /obj/structure/table/steel,
@@ -411,6 +466,13 @@
 /obj/random/trash,
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor/plating,
+/area/tether/under/static_area)
+"dg" = (
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/turf/simulated/floor/wood/sif/broken,
 /area/tether/under/static_area)
 "dh" = (
 /obj/effect/decal/cleanable/dirt,
@@ -480,6 +542,10 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small/emergency{
 	dir = 1
+	},
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
 	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
@@ -636,6 +702,19 @@
 /obj/random/maintenance/clean,
 /turf/simulated/floor/beach/sand,
 /area/tether/under/static_area)
+"fh" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/catwalk,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/turf/simulated/floor/plating,
+/area/tether/under/static_area)
 "fi" = (
 /obj/machinery/light/small{
 	dir = 4;
@@ -701,6 +780,16 @@
 "fK" = (
 /obj/effect/spider/stickyweb,
 /obj/effect/decal/cleanable/blood,
+/turf/simulated/floor/plating,
+/area/tether/under/static_area)
+"fM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/rack,
+/obj/random/maintenance,
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -23
+	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "fR" = (
@@ -800,6 +889,7 @@
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "gX" = (
@@ -856,6 +946,15 @@
 "hm" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/double/padded,
+/turf/simulated/floor/plating,
+/area/tether/under/static_area)
+"ho" = (
+/obj/structure/catwalk,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "hp" = (
@@ -1410,6 +1509,7 @@
 /obj/structure/barricade,
 /obj/machinery/door/airlock/maintenance/common,
 /obj/structure/barricade,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "lN" = (
@@ -1452,12 +1552,17 @@
 "ma" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "mc" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table,
 /obj/effect/spider/stickyweb,
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "md" = (
@@ -1603,6 +1708,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood/sif/broken,
 /area/tether/under/static_area)
+"ne" = (
+/obj/random/humanoidremains,
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/turf/simulated/floor/plating,
+/area/tether/under/static_area)
 "ng" = (
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plating,
@@ -1622,6 +1735,14 @@
 	pixel_x = 32
 	},
 /obj/random/trash,
+/turf/simulated/floor/plating,
+/area/tether/under/static_area)
+"np" = (
+/obj/structure/table/bench/sifwooden,
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "nq" = (
@@ -1685,7 +1806,17 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
+/area/tether/under/static_area)
+"nS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table,
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/turf/simulated/floor/tiled/techfloor,
 /area/tether/under/static_area)
 "nT" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1713,6 +1844,15 @@
 "nW" = (
 /obj/structure/barricade,
 /turf/simulated/floor/tiled/techfloor,
+/area/tether/under/static_area)
+"oa" = (
+/obj/structure/catwalk,
+/obj/effect/decal/cleanable/blood,
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "oe" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -1767,6 +1907,14 @@
 "ov" = (
 /obj/item/storage/firstaid/regular,
 /obj/structure/table/rack,
+/turf/simulated/floor/plating,
+/area/tether/under/static_area)
+"oK" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/catwalk,
+/obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "oL" = (
@@ -2100,6 +2248,10 @@
 "qW" = (
 /obj/structure/closet/crate,
 /obj/random/maintenance/medical,
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -23
+	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "qX" = (
@@ -2394,12 +2546,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock/maintenance/common,
 /obj/structure/barricade,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "ti" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "tj" = (
@@ -2459,10 +2613,35 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/under/static_area)
+"tT" = (
+/obj/machinery/light/small/emergency,
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/turf/simulated/floor/plating,
+/area/tether/under/static_area)
 "tX" = (
 /obj/machinery/atmospherics/pipe/tank/nitrogen,
 /obj/machinery/light/small/emergency{
 	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/tether/under/static_area)
+"tY" = (
+/obj/random/trash,
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/turf/simulated/floor/wood/sif,
+/area/tether/under/static_area)
+"ui" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/random/trash,
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
 	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
@@ -2519,6 +2698,7 @@
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "uR" = (
@@ -2690,6 +2870,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/catwalk,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "wx" = (
@@ -2726,6 +2907,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
+"wH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/turf/simulated/floor/plating,
+/area/tether/under/static_area)
 "wL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -2754,6 +2943,7 @@
 /obj/structure/barricade,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "wV" = (
@@ -2803,6 +2993,15 @@
 "xf" = (
 /obj/random/trash,
 /turf/simulated/floor/tiled/old_tile/white,
+/area/tether/under/static_area)
+"xg" = (
+/obj/structure/catwalk,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -23
+	},
+/turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "xi" = (
 /obj/structure/sink{
@@ -2857,6 +3056,14 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/tether/under/static_area)
+"xC" = (
+/obj/random/trash,
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -23
+	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "xD" = (
@@ -3055,6 +3262,13 @@
 /obj/random/humanoidremains,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
+"zd" = (
+/obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/plating,
+/area/tether/under/static_area)
 "zf" = (
 /turf/simulated/floor/wood/sif/broken,
 /area/tether/under/static_area)
@@ -3118,6 +3332,11 @@
 "zF" = (
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
+"zH" = (
+/obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/plating,
+/area/tether/under/static_area)
 "zI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/catwalk,
@@ -3140,6 +3359,11 @@
 "zO" = (
 /obj/structure/catwalk,
 /obj/effect/spider/stickyweb,
+/turf/simulated/floor/plating,
+/area/tether/under/static_area)
+"zP" = (
+/obj/machinery/door/airlock/maintenance/int,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "zR" = (
@@ -3211,12 +3435,22 @@
 "Au" = (
 /obj/effect/gibspawner/generic,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
 /turf/simulated/floor/tiled/freezer,
 /area/tether/under/static_area)
 "Av" = (
 /obj/structure/closet/crate,
 /obj/random/ammo,
 /obj/random/cash,
+/turf/simulated/floor/plating,
+/area/tether/under/static_area)
+"Aw" = (
+/obj/structure/catwalk,
+/obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "Ay" = (
@@ -3297,7 +3531,15 @@
 	},
 /obj/structure/catwalk,
 /obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
+/area/tether/under/static_area)
+"Be" = (
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -23
+	},
+/turf/simulated/floor/tiled/old_tile/blue,
 /area/tether/under/static_area)
 "Bg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -3446,6 +3688,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "Cb" = (
@@ -3529,6 +3772,13 @@
 /obj/structure/table/bench/steel,
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/under/static_area)
+"CH" = (
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/tether/under/static_area)
 "CL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/catwalk,
@@ -3552,6 +3802,10 @@
 /obj/structure/closet/crate,
 /obj/random/trash,
 /obj/effect/spider/stickyweb,
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "CW" = (
@@ -3567,6 +3821,7 @@
 /area/tether/under/static_area)
 "Dd" = (
 /obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/under/static_area)
 "De" = (
@@ -3708,6 +3963,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/catwalk,
 /obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "El" = (
@@ -3729,6 +3985,10 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/chem_disp_cartridge/mint,
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -23
+	},
 /turf/simulated/floor/wood/sif/broken,
 /area/tether/under/static_area)
 "Es" = (
@@ -3833,9 +4093,19 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/under/static_area)
+"Fe" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spider/stickyweb,
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/turf/simulated/floor/plating,
+/area/tether/under/static_area)
 "Fg" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/structure/catwalk,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "Fj" = (
@@ -3915,6 +4185,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
+"FE" = (
+/obj/effect/spider/stickyweb,
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/turf/simulated/floor/plating,
+/area/tether/under/static_area)
 "FL" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spider/stickyweb/dark,
@@ -3987,6 +4265,10 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/crate,
 /obj/random/firstaid,
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "Gh" = (
@@ -4023,6 +4305,13 @@
 "Gw" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/crate,
+/turf/simulated/floor/plating,
+/area/tether/under/static_area)
+"Gx" = (
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -23
+	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "Gz" = (
@@ -4237,6 +4526,7 @@
 	},
 /obj/structure/catwalk,
 /obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "Ij" = (
@@ -4249,6 +4539,15 @@
 /obj/machinery/atmospherics/pipe/tank/phoron,
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor/plating,
+/area/tether/under/static_area)
+"Il" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/rack,
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/turf/simulated/floor/tiled/techfloor,
 /area/tether/under/static_area)
 "Ip" = (
 /obj/effect/decal/cleanable/dirt,
@@ -4272,6 +4571,14 @@
 	},
 /obj/effect/decal/cleanable/greenglow,
 /turf/simulated/floor/tiled/techfloor,
+/area/tether/under/static_area)
+"Iv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/turf/simulated/floor/wood/sif,
 /area/tether/under/static_area)
 "IA" = (
 /obj/machinery/power/apc{
@@ -4336,6 +4643,15 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/crate/trashcart,
 /obj/random/maintenance,
+/turf/simulated/floor/plating,
+/area/tether/under/static_area)
+"Jh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spider/stickyweb,
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -23
+	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "Jj" = (
@@ -4426,6 +4742,10 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/random/trash,
 /obj/effect/spider/stickyweb,
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "Kg" = (
@@ -4578,6 +4898,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/under/static_area)
+"Lf" = (
+/obj/structure/barricade,
+/obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/plating,
+/area/tether/under/static_area)
 "Lg" = (
 /obj/structure/closet/crate/trashcart,
 /obj/effect/decal/cleanable/dirt,
@@ -4701,6 +5027,13 @@
 /obj/item/stool/padded,
 /turf/simulated/floor/wood/sif/broken,
 /area/tether/under/static_area)
+"Mc" = (
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/turf/simulated/floor/water/pool,
+/area/tether/under/static_area)
 "Mf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -4740,6 +5073,14 @@
 /obj/random/maintenance/security,
 /obj/random/maintenance,
 /obj/effect/spider/stickyweb,
+/turf/simulated/floor/plating,
+/area/tether/under/static_area)
+"Mr" = (
+/obj/effect/spider/stickyweb,
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -23
+	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "Mt" = (
@@ -4801,6 +5142,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "MK" = (
@@ -5023,6 +5365,7 @@
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/catwalk,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "Ol" = (
@@ -5058,6 +5401,7 @@
 "Oy" = (
 /obj/structure/barricade,
 /obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/wall/iron,
 /area/tether/under/static_area)
 "Oz" = (
@@ -5171,6 +5515,10 @@
 /obj/machinery/light/small{
 	dir = 8;
 	icon_state = "bulb1"
+	},
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -23
 	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
@@ -5351,6 +5699,7 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "QG" = (
@@ -5506,6 +5855,7 @@
 	},
 /obj/structure/catwalk,
 /obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "RP" = (
@@ -5559,6 +5909,10 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/random/trash,
 /obj/effect/decal/cleanable/blood,
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "Sd" = (
@@ -5793,7 +6147,16 @@
 /area/tether/under/static_area)
 "Ua" = (
 /obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/wall/iron,
+/area/tether/under/static_area)
+"Ub" = (
+/obj/structure/trash_pile/under_tether,
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "Uf" = (
 /obj/machinery/light/small/emergency{
@@ -5981,6 +6344,7 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "VB" = (
@@ -6068,6 +6432,16 @@
 /obj/random/maintenance,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
+"Wl" = (
+/obj/structure/catwalk,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -23
+	},
+/turf/simulated/floor/plating,
+/area/tether/under/static_area)
 "Wn" = (
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -6078,6 +6452,14 @@
 /obj/effect/spider/stickyweb,
 /mob/living/simple_mob/mechanical/corrupt_maint_drone{
 	faction = "mouse"
+	},
+/turf/simulated/floor/plating,
+/area/tether/under/static_area)
+"Wq" = (
+/obj/random/junk,
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -23
 	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
@@ -6263,6 +6645,7 @@
 "XU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "XV" = (
@@ -6300,6 +6683,14 @@
 /obj/structure/catwalk,
 /obj/random/trash,
 /turf/simulated/floor/plating,
+/area/tether/under/static_area)
+"Ye" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/turf/simulated/floor/tiled/techfloor,
 /area/tether/under/static_area)
 "Yh" = (
 /obj/machinery/atmospherics/pipe/tank/nitrogen,
@@ -6996,7 +7387,7 @@ zF
 LC
 EW
 Vl
-oY
+DZ
 as
 EW
 Dc
@@ -7006,7 +7397,7 @@ DF
 yj
 zF
 Qf
-vK
+fM
 ib
 oY
 gD
@@ -7020,7 +7411,7 @@ Xh
 zF
 cf
 cf
-cf
+Be
 Em
 zV
 Uw
@@ -7577,7 +7968,7 @@ zF
 DF
 Qb
 nb
-aF
+Ub
 DF
 ux
 gD
@@ -7594,7 +7985,7 @@ cf
 mX
 cf
 cf
-zF
+ci
 DF
 hv
 Bl
@@ -7702,7 +8093,7 @@ gl
 hj
 Fv
 WR
-EW
+Fe
 DF
 fp
 Yi
@@ -7989,7 +8380,7 @@ FW
 VU
 DF
 DF
-mC
+zP
 DF
 DF
 DF
@@ -8012,9 +8403,9 @@ DF
 DF
 Qb
 xd
-oY
+wH
 DF
-rd
+bG
 DF
 DF
 DF
@@ -8570,7 +8961,7 @@ DF
 DF
 DF
 DF
-uW
+Aw
 DF
 DF
 DF
@@ -8686,7 +9077,7 @@ DF
 DF
 DF
 DF
-hj
+GV
 DF
 DF
 DF
@@ -8704,7 +9095,7 @@ Vf
 uP
 ux
 KT
-hF
+tY
 DF
 DF
 DF
@@ -8712,7 +9103,7 @@ DF
 DF
 DF
 DF
-uW
+Aw
 DF
 DF
 DF
@@ -8877,7 +9268,7 @@ DF
 DF
 zF
 zF
-zF
+Gx
 Hq
 LY
 Hq
@@ -9010,7 +9401,7 @@ kH
 ty
 Vr
 xE
-oY
+wH
 DF
 DF
 Jl
@@ -9271,7 +9662,7 @@ DF
 DF
 DF
 DF
-mC
+zP
 DF
 DF
 DF
@@ -9414,7 +9805,7 @@ Qb
 zF
 Qb
 Qf
-Fv
+ne
 DF
 DF
 zF
@@ -9432,7 +9823,7 @@ DF
 DF
 Qb
 RH
-oY
+wH
 DF
 DF
 DF
@@ -9557,8 +9948,8 @@ Qk
 FD
 FD
 Di
-Xm
-uW
+zH
+Aw
 mo
 jd
 DI
@@ -9571,7 +9962,7 @@ EW
 Vr
 mA
 uQ
-Xm
+zH
 oY
 xe
 Qb
@@ -9685,7 +10076,7 @@ Hq
 zF
 oY
 Hq
-Hq
+CH
 DF
 DF
 PR
@@ -9879,7 +10270,7 @@ Vv
 XI
 XI
 XI
-XI
+Mc
 DF
 DF
 Jl
@@ -9995,7 +10386,7 @@ oY
 Qb
 oY
 Vr
-EW
+Fe
 DF
 DF
 Nm
@@ -10262,7 +10653,7 @@ DF
 DF
 RQ
 be
-zF
+ci
 DF
 DF
 Jl
@@ -10272,7 +10663,7 @@ DF
 ux
 la
 ux
-mC
+zP
 Qb
 Di
 Qb
@@ -10390,7 +10781,7 @@ DF
 DF
 DF
 DF
-hj
+GV
 DF
 DF
 DF
@@ -10416,7 +10807,7 @@ DF
 DF
 DF
 DF
-uW
+Aw
 DF
 DF
 DF
@@ -10558,7 +10949,7 @@ DF
 DF
 DF
 DF
-Xm
+zH
 DF
 DF
 DF
@@ -11403,8 +11794,8 @@ Qk
 Kh
 WR
 Kh
-ps
-ps
+zd
+zd
 se
 se
 ZX
@@ -11583,7 +11974,7 @@ cY
 TV
 cY
 AV
-Hq
+CH
 DF
 DF
 Qf
@@ -11686,7 +12077,7 @@ DF
 DF
 nK
 Vr
-Qb
+FE
 DF
 DF
 Hq
@@ -11726,8 +12117,8 @@ Hq
 Hq
 Hq
 Hq
-Xm
-Xm
+zH
+zH
 Di
 Vr
 zF
@@ -12262,7 +12653,7 @@ DF
 DF
 DF
 DF
-Xm
+zH
 DF
 DF
 DF
@@ -12427,7 +12818,7 @@ DF
 DF
 zF
 Es
-zF
+Gx
 DF
 DF
 DF
@@ -12560,7 +12951,7 @@ DF
 DF
 zF
 be
-Qf
+xC
 DF
 DF
 Jl
@@ -12826,11 +13217,11 @@ hE
 DF
 DF
 Tr
-JT
+Wl
 Vr
 Vr
 zC
-Fq
+oa
 DF
 DF
 bN
@@ -12844,7 +13235,7 @@ DF
 DF
 EW
 CA
-Fb
+Ye
 DF
 DF
 DF
@@ -12964,7 +13355,7 @@ DF
 DF
 zF
 nb
-ux
+ui
 DF
 DF
 Di
@@ -13263,7 +13654,7 @@ Vr
 DF
 SU
 Vr
-Xm
+zH
 oY
 ty
 MM
@@ -13275,8 +13666,8 @@ kH
 ii
 EA
 oY
-Xm
-cZ
+zH
+cE
 YL
 Vr
 zF
@@ -13438,8 +13829,8 @@ dj
 Hq
 zF
 Hq
-Xm
-Xm
+zH
+zH
 ux
 on
 zF
@@ -13519,7 +13910,7 @@ Fb
 qi
 Ds
 li
-oY
+wH
 DF
 DF
 DF
@@ -13700,7 +14091,7 @@ Qb
 oY
 zF
 lg
-Qt
+nS
 DF
 DF
 Km
@@ -13835,7 +14226,7 @@ DF
 ni
 ux
 PC
-mC
+zP
 Di
 FD
 ii
@@ -13851,7 +14242,7 @@ zF
 zF
 zF
 uz
-oY
+wH
 DF
 Jl
 Jl
@@ -14095,7 +14486,7 @@ DF
 DF
 DF
 DF
-Xm
+zH
 DF
 DF
 DF
@@ -14121,7 +14512,7 @@ DF
 DF
 DF
 DF
-Xm
+zH
 DF
 DF
 DF
@@ -14250,7 +14641,7 @@ DF
 DF
 DF
 DF
-Xm
+zH
 DF
 DF
 DF
@@ -14263,7 +14654,7 @@ DF
 DF
 DF
 DF
-Xm
+zH
 DF
 DF
 DF
@@ -14539,7 +14930,7 @@ DF
 DF
 Wi
 Qy
-Hq
+CH
 DF
 DF
 Ty
@@ -14978,7 +15369,7 @@ Hq
 Hq
 Hq
 LY
-Hq
+CH
 DF
 DF
 zK
@@ -15109,7 +15500,7 @@ BL
 YL
 kq
 Eu
-un
+oK
 AN
 AN
 qV
@@ -15361,7 +15752,7 @@ xj
 DF
 AC
 pg
-oY
+wH
 DF
 jc
 NZ
@@ -15374,7 +15765,7 @@ iX
 Yr
 iX
 zF
-zF
+ci
 DF
 DF
 DF
@@ -15666,7 +16057,7 @@ Jl
 DF
 DF
 ly
-Hq
+CH
 DF
 VC
 Fb
@@ -16553,7 +16944,7 @@ oY
 zF
 zF
 UM
-zF
+ci
 DF
 DF
 DF
@@ -16643,7 +17034,7 @@ DF
 DF
 zF
 Hh
-zF
+ci
 DF
 hv
 Bl
@@ -16968,7 +17359,7 @@ Bl
 Bl
 Bl
 gl
-cZ
+Lf
 Hq
 oY
 zF
@@ -17379,7 +17770,7 @@ Ny
 DF
 qq
 oY
-zF
+ci
 DF
 hv
 Bl
@@ -17774,7 +18165,7 @@ DF
 DF
 DF
 DF
-Xm
+zH
 DF
 DF
 DF
@@ -18054,7 +18445,7 @@ Jl
 DF
 DF
 oY
-Qb
+Mr
 Qb
 EW
 oY
@@ -18081,7 +18472,7 @@ DF
 DF
 aF
 ye
-VU
+Wq
 zF
 hY
 Qf
@@ -18105,13 +18496,13 @@ bL
 aR
 DF
 Bu
-hY
+aZ
 aR
 DF
 DF
 hY
 qu
-hY
+aZ
 DF
 DF
 cK
@@ -18382,15 +18773,15 @@ DF
 DF
 AI
 iX
-ng
+cR
 DF
 hm
 NZ
-oY
+wH
 DF
 zY
 kn
-zf
+dg
 DF
 DF
 oY
@@ -18511,7 +18902,7 @@ Qf
 DF
 RQ
 HC
-Qf
+cb
 DF
 DF
 DF
@@ -18523,15 +18914,15 @@ DF
 DF
 DF
 DF
-mC
+zP
 DF
 DF
 DF
-mC
+zP
 DF
 DF
 DF
-mC
+zP
 DF
 DF
 DF
@@ -18674,13 +19065,13 @@ ux
 KX
 EW
 ya
-NZ
+Iv
 DF
 DF
 Qs
 cu
 Vr
-mC
+zP
 Vr
 YL
 Fk
@@ -18817,8 +19208,8 @@ KT
 Vt
 oY
 Kq
-mC
-mC
+zP
+zP
 EW
 oY
 EW
@@ -18951,7 +19342,7 @@ DF
 DF
 DF
 DF
-mC
+zP
 DF
 DF
 DF
@@ -18967,7 +19358,7 @@ oY
 DF
 DF
 DF
-oY
+wH
 DF
 DF
 Jl
@@ -19049,7 +19440,7 @@ DF
 DF
 oY
 on
-qA
+Il
 DF
 DF
 Jl
@@ -19070,7 +19461,7 @@ yd
 lR
 yb
 Nx
-yb
+np
 DF
 DF
 oY
@@ -19236,7 +19627,7 @@ EW
 Zw
 Qb
 zF
-EW
+Jh
 ux
 Sd
 Qb
@@ -19659,7 +20050,7 @@ DF
 DF
 DF
 DF
-Xm
+zH
 DF
 DF
 DF
@@ -19766,7 +20157,7 @@ Jl
 DF
 DF
 lx
-cq
+fh
 DF
 Jl
 DF
@@ -19942,7 +20333,7 @@ DF
 DF
 DF
 DF
-Qf
+xC
 Di
 TM
 DF
@@ -19956,7 +20347,7 @@ Vr
 Vr
 jD
 oY
-Qf
+xC
 YL
 Vr
 Vr
@@ -20660,7 +21051,7 @@ nM
 RT
 ev
 zF
-hj
+GV
 oY
 DF
 EW
@@ -20808,7 +21199,7 @@ DF
 pa
 YL
 Vr
-Vr
+xg
 Tb
 ux
 Di
@@ -20940,7 +21331,7 @@ Di
 zO
 ev
 Di
-oj
+tT
 DF
 DF
 DF
@@ -21071,7 +21462,7 @@ Fb
 YD
 Hq
 hV
-oj
+tT
 DF
 DF
 DF
@@ -21097,7 +21488,7 @@ Jl
 Jl
 DF
 Nb
-Vr
+ho
 DF
 DF
 Jl
@@ -21518,7 +21909,7 @@ DF
 DF
 DF
 DF
-Xm
+zH
 DF
 DF
 DF
@@ -21608,7 +21999,7 @@ DF
 DF
 DF
 DF
-Xm
+zH
 DF
 DF
 DF
@@ -21621,7 +22012,7 @@ DF
 DF
 DF
 DF
-cZ
+Lf
 DF
 DF
 DF
@@ -21660,7 +22051,7 @@ DF
 DF
 DF
 DF
-Xm
+zH
 DF
 DF
 DF
@@ -21799,7 +22190,7 @@ DF
 DF
 zF
 nw
-Vr
+xg
 si
 Vr
 nw
@@ -23338,7 +23729,7 @@ DF
 DF
 DF
 DF
-hj
+GV
 DF
 DF
 DF
@@ -23782,7 +24173,7 @@ DF
 DF
 EW
 ux
-oY
+wH
 DF
 DF
 nw
@@ -23919,7 +24310,7 @@ zF
 VU
 Qf
 zF
-Qb
+Mr
 Qb
 Qb
 jD
@@ -24214,7 +24605,7 @@ DF
 Vr
 zF
 Qb
-zF
+Gx
 zF
 RQ
 nQ
@@ -24339,7 +24730,7 @@ Bl
 Bl
 Bl
 gl
-Xm
+zH
 oY
 Vr
 nq
@@ -24351,8 +24742,8 @@ DF
 oY
 nw
 Vr
-Xm
-uW
+zH
+Aw
 Di
 Vr
 eS
@@ -24785,7 +25176,7 @@ la
 mC
 DI
 nw
-oj
+tT
 DF
 Jl
 Jl
@@ -25197,7 +25588,7 @@ DF
 DF
 DF
 DF
-Xm
+zH
 DF
 DF
 DF
@@ -25210,7 +25601,7 @@ DF
 DF
 DF
 DF
-Xm
+zH
 DF
 DF
 DF
