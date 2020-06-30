@@ -1,0 +1,40 @@
+"a" = (/turf/simulated/wall/solidrock,/area/space)
+"b" = (/obj/random/trash,/turf/simulated/floor/outdoors/dirt,/area/space)
+"d" = (/obj/random/medical/pillbottle,/turf/simulated/floor/outdoors/dirt,/area/space)
+"h" = (/turf/simulated/floor/outdoors/dirt,/area/space)
+"k" = (/mob/living/simple_mob/animal/passive/mouse/rat,/turf/simulated/floor/outdoors/dirt,/area/space)
+"m" = (/obj/random/medical/lite,/turf/simulated/floor/outdoors/dirt,/area/space)
+"o" = (/obj/effect/floor_decal/rust,/turf/simulated/floor/plating,/area/space)
+"p" = (/turf/simulated/wall/iron{can_open = 1},/area/space)
+"q" = (/obj/random/junk,/turf/simulated/floor/outdoors/dirt,/area/space)
+"w" = (/obj/random/unidentified_medicine/drug_den,/turf/simulated/floor/outdoors/dirt,/area/space)
+"y" = (/obj/effect/floor_decal/rust,/obj/random/trash,/turf/simulated/floor/plating,/area/space)
+"A" = (/obj/random/trash_pile,/turf/simulated/floor/plating,/area/space)
+"D" = (/obj/effect/floor_decal/rust,/obj/random/maintenance/clean,/obj/structure/closet,/obj/random/maintenance/clean,/obj/random/maintenance/clean,/turf/simulated/floor/plating,/area/space)
+"E" = (/turf/simulated/floor/plating,/area/space)
+"G" = (/obj/effect/floor_decal/rust,/obj/random/mob/mouse,/turf/simulated/floor/plating,/area/space)
+"H" = (/obj/random/trash,/obj/effect/spider/stickyweb,/turf/simulated/floor/plating,/area/space)
+"I" = (/obj/random/trash,/turf/simulated/floor/plating,/area/space)
+"K" = (/obj/effect/floor_decal/rust,/obj/effect/spider/stickyweb,/turf/simulated/floor/plating,/area/space)
+"M" = (/obj/random/trash_pile,/turf/simulated/floor/outdoors/dirt,/area/space)
+"P" = (/obj/effect/floor_decal/rust,/obj/random/maintenance/clean,/obj/structure/closet,/obj/random/maintenance/clean,/obj/random/maintenance/clean,/obj/random/medical/lite,/turf/simulated/floor/plating,/area/space)
+"R" = (/turf/simulated/wall/iron,/area/space)
+"S" = (/obj/random/mob/mouse,/turf/simulated/floor/plating,/area/space)
+"T" = (/obj/effect/spider/stickyweb,/turf/simulated/floor/plating,/area/space)
+"V" = (/obj/effect/floor_decal/rust,/obj/random/trash,/obj/effect/spider/stickyweb,/turf/simulated/floor/plating,/area/space)
+
+(1,1,1) = {"
+aaaaaEoRaaaaa
+aaaRAoEaaaaaa
+aaRHKGaaaaaaa
+aaRTRRaaaRRaa
+aaTKaRRaKPRaa
+aEoaaooITKTaa
+EGyEEooRaaooE
+aaaDEERRaaRpa
+aaaaRESRaMdqa
+aaaaRKEaakbaa
+aaaaaKVpwhaaa
+aaaaaaTRmaaaa
+aaaaaaEaaaaaa
+"}

@@ -43,7 +43,6 @@
 	id_hud_icons = 'icons/mob/hud_jobs_vr.dmi' //CITADEL CHANGE: Ignore this line because it's going to be overriden in modular_citadel\maps\tether\tether_defines.dm
 
 	holomap_smoosh = list(list(
-		Z_LEVEL_SURFACE_UNDER, // God.damn.it.
 		Z_LEVEL_SURFACE_LOW,
 		Z_LEVEL_SURFACE_MID,
 		Z_LEVEL_SURFACE_HIGH,
@@ -152,6 +151,7 @@
 
 	lateload_single_pick = null //Nothing right now.
 
+#include "submaps/undertether_pois/_templates.dm"
 /datum/map/tether/perform_map_generation()
 
 	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_SURFACE_MINE, world.maxx, world.maxy) // Create the mining Z-level.
@@ -160,6 +160,8 @@
 	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_SOLARS, world.maxx, world.maxy) // Create the mining Z-level.
 	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_SOLARS, 64, 64)         // Create the mining ore distribution map.
 
+// UnderTether PoI (attempt)
+	seed_submaps(list(Z_LEVEL_SURFACE_UNDER), 100, /area/tether/under/poi, /datum/map_template/undertether)
 	return 1
 
 /datum/planet/virgo3b
@@ -181,7 +183,6 @@
 		return list() //no longer return signals in key transit levels, this means some runtimes from CWCs but
 	else if (srcz >= Z_LEVEL_SURFACE_UNDER && srcz <= Z_LEVEL_SPACE_HIGH)
 		return list(
-			Z_LEVEL_SURFACE_UNDER,
 			Z_LEVEL_SURFACE_LOW,
 			Z_LEVEL_SURFACE_MID,
 			Z_LEVEL_SURFACE_HIGH,
@@ -203,11 +204,13 @@
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_XENOARCH_EXEMPT
 	holomap_legend_x = 220
 	holomap_legend_y = 160
-
+/*
 /datum/map_z_level/tether/station/surface_under
 	z = Z_LEVEL_SURFACE_UNDER
 	name = "Under Maint"
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
+	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER||MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
+	base_turf = /turf/simulated/floor/plating
+*/
 
 /datum/map_z_level/tether/station/surface_low
 	z = Z_LEVEL_SURFACE_LOW
