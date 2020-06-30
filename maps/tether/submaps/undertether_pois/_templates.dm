@@ -2,7 +2,7 @@
 	name = "UnderTether Content"
 	desc = "For seeding submaps in UnderTether"
 	allow_duplicates = TRUE
-	annihilate = TRUE
+	annihilate = FALSE
 
 
 /datum/map_template/undertether/gastanks
