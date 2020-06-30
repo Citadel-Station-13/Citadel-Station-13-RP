@@ -18631,9 +18631,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
-"Ob" = (
-/turf/simulated/floor/plating,
-/area/tether/surfacebase/east_stairs_two)
 "Og" = (
 /obj/machinery/atmospherics/pipe/tank/air,
 /turf/simulated/floor/plating,
@@ -32858,7 +32855,7 @@ xu
 yP
 zs
 zT
-Ob
+Ar
 AP
 rO
 Bt

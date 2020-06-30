@@ -1926,9 +1926,6 @@
 /obj/structure/trash_pile/under_tether,
 /turf/simulated/floor/beach/sand,
 /area/tether/under/static_area)
-"oQ" = (
-/turf/space,
-/area/tether/under/static_area)
 "oS" = (
 /obj/structure/table/woodentable,
 /obj/random/gun/random,
@@ -12768,7 +12765,7 @@ DF
 DF
 DF
 DF
-oQ
+DF
 GV
 DF
 DF
