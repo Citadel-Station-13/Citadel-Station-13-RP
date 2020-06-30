@@ -6,7 +6,7 @@
 	icon_state = "mod_pistol"
 	cell_type = /obj/item/cell/device/weapon
 	charge_cost = 120
-	projectile_type=/obj/item/projectile/beam//was this my issue the entire fucming time
+	projectile_type = /obj/item/projectile
 	var/cores = 1//How many lasing cores can we support?
 	var/assembled = 1 //Are we open?
 	var/obj/item/modularlaser/lasermedium/primarycore //Lasing medium core.
@@ -136,9 +136,21 @@
 
 /obj/item/gun/energy/modular/special_check(mob/user)
 	. = ..()
-	if(!circuit || !primarycore || !laserlens || !lasercap || !lasercooler)
-		return FALSE //cannot work
+	if(!circuit)
 		to_chat(user, "<span class='warning'>The gun is missing parts!</span>")
+		return FALSE
+	if(!primarycore)
+		to_chat(user, "<span class='warning'>The gun is missing parts!</span>")
+		return FALSE
+	if(!laserlens)
+		to_chat(user, "<span class='warning'>The gun is missing parts!</span>")
+		return FALSE
+	if(!lasercooler)
+		to_chat(user, "<span class='warning'>The gun is missing parts!</span>")
+		return FALSE
+	if(!lasercap)
+		to_chat(user, "<span class='warning'>The gun is missing parts!</span>")
+		return FALSE
 	if(!assembled)
 		to_chat(user, "<span class='warning'>The gun is open!</span>")
 		return FALSE
