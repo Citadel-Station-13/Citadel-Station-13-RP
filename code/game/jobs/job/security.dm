@@ -73,8 +73,8 @@
 	selection_color = "#601C1C"
 	idtype = /obj/item/card/id/security/officer
 	economic_modifier = 4
-	access = list(access_security, access_engine, access_research, access_medical, access_eva, access_sec_doors, access_brig, access_maint_tunnels, access_morgue, access_external_airlocks, access_mining)
-	minimal_access = list(access_security, access_engine, access_research, access_medical, access_eva, access_sec_doors, access_brig, access_maint_tunnels, access_external_airlocks, access_mining)
+	access = list(access_security, access_eva, access_sec_doors, access_brig, access_maint_tunnels, access_morgue, access_external_airlocks)
+	minimal_access = list(access_security, access_eva, access_sec_doors, access_brig, access_maint_tunnels, access_external_airlocks)
 	minimal_player_age = 3
 	outfit_type = /decl/hierarchy/outfit/job/security/officer
 	alt_titles = list("Junior Officer")
