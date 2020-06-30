@@ -1,0 +1,328 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/wall/iron,
+/area)
+"b" = (
+/obj/structure/table/standard,
+/obj/item/paper_bin{
+	pixel_y = 3
+	},
+/obj/item/pen,
+/turf/simulated/floor/wood/sif,
+/area)
+"c" = (
+/obj/structure/closet/wardrobe/grey,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area)
+"d" = (
+/obj/structure/table/standard,
+/obj/random/ammo_all,
+/obj/random/ammo_all,
+/obj/random/ammo_all,
+/turf/simulated/floor/wood/sif,
+/area)
+"e" = (
+/obj/item/trash/candy/proteinbar,
+/turf/simulated/floor/tiled/steel_dirty,
+/area)
+"g" = (
+/obj/random/trash,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area)
+"h" = (
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area)
+"j" = (
+/obj/structure/closet/wardrobe/black,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area)
+"o" = (
+/obj/item/trash/chipbasket,
+/turf/simulated/floor/tiled/steel_dirty,
+/area)
+"q" = (
+/obj/random/trash,
+/turf/simulated/floor/wood/sif,
+/area)
+"s" = (
+/obj/structure/simple_door/iron,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area)
+"t" = (
+/obj/item/trash/fancyplate,
+/turf/simulated/floor/tiled/steel_dirty,
+/area)
+"u" = (
+/obj/structure/table/standard,
+/obj/item/flashlight/lamp{
+	on = 0
+	},
+/turf/simulated/floor/wood/sif/broken,
+/area)
+"w" = (
+/obj/structure/table/standard,
+/obj/item/storage/backpack/dufflebag/syndie,
+/obj/structure/loot_pile/surface/medicine_cabinet/fresh{
+	pixel_y = 30
+	},
+/turf/simulated/floor/wood/sif/broken,
+/area)
+"x" = (
+/mob/living/simple_mob/animal/passive/mouse/rat,
+/turf/simulated/floor/wood/sif,
+/area)
+"y" = (
+/obj/structure/bed,
+/turf/simulated/floor/wood/sif,
+/area)
+"A" = (
+/obj/random/trash,
+/obj/structure/bed/chair/office/light,
+/turf/simulated/floor/wood/sif/broken,
+/area)
+"C" = (
+/obj/structure/simple_door/sifwood,
+/turf/simulated/floor/wood/sif/broken,
+/area)
+"D" = (
+/obj/random/trash_pile,
+/turf/simulated/floor/wood/sif/broken,
+/area)
+"E" = (
+/turf/simulated/floor/tiled/steel_dirty,
+/area)
+"I" = (
+/obj/random/trash,
+/turf/simulated/floor/tiled/steel_dirty,
+/area)
+"L" = (
+/obj/structure/simple_door/sifwood,
+/turf/simulated/floor/wood/sif,
+/area)
+"M" = (
+/obj/random/trash_pile,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area)
+"N" = (
+/mob/living/simple_mob/animal/passive/mouse/rat,
+/turf/simulated/floor/wood/sif/broken,
+/area)
+"P" = (
+/obj/machinery/floodlight,
+/turf/simulated/floor/tiled/steel_dirty,
+/area)
+"Q" = (
+/obj/structure/closet/crate/trashcart,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area)
+"R" = (
+/obj/structure/bed,
+/turf/simulated/floor/wood/sif/broken,
+/area)
+"V" = (
+/obj/random/trash,
+/turf/simulated/floor/wood/sif/broken,
+/area)
+"W" = (
+/turf/simulated/floor/wood/sif,
+/area)
+"X" = (
+/mob/living/simple_mob/vore/aggressive/rat,
+/turf/simulated/floor/wood/sif/broken,
+/area)
+
+(1,1,1) = {"
+a
+a
+h
+h
+h
+h
+h
+h
+h
+h
+h
+a
+a
+"}
+(2,1,1) = {"
+a
+h
+h
+a
+a
+a
+a
+a
+a
+a
+h
+h
+a
+"}
+(3,1,1) = {"
+a
+h
+a
+a
+R
+y
+D
+y
+y
+a
+a
+h
+a
+"}
+(4,1,1) = {"
+a
+h
+a
+w
+q
+W
+x
+W
+A
+b
+a
+h
+a
+"}
+(5,1,1) = {"
+a
+h
+a
+d
+N
+W
+X
+W
+x
+u
+a
+h
+a
+"}
+(6,1,1) = {"
+E
+I
+a
+a
+y
+V
+y
+q
+y
+a
+a
+E
+E
+"}
+(7,1,1) = {"
+E
+E
+E
+a
+a
+L
+a
+C
+a
+a
+E
+e
+E
+"}
+(8,1,1) = {"
+E
+E
+E
+E
+E
+E
+E
+E
+E
+E
+E
+E
+E
+"}
+(9,1,1) = {"
+a
+h
+E
+E
+o
+E
+P
+E
+E
+E
+E
+h
+a
+"}
+(10,1,1) = {"
+a
+s
+a
+E
+E
+E
+E
+E
+E
+E
+a
+s
+a
+"}
+(11,1,1) = {"
+a
+h
+h
+a
+h
+E
+E
+t
+h
+a
+j
+h
+a
+"}
+(12,1,1) = {"
+a
+M
+Q
+a
+h
+E
+E
+E
+g
+a
+c
+h
+a
+"}
+(13,1,1) = {"
+a
+a
+a
+a
+a
+E
+E
+E
+a
+a
+a
+a
+a
+"}

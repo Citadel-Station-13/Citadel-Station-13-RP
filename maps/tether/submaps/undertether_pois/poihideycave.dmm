@@ -1,40 +1,305 @@
-"a" = (/turf/simulated/wall/solidrock,/area/space)
-"b" = (/obj/random/trash,/turf/simulated/floor/outdoors/dirt,/area/space)
-"d" = (/obj/random/medical/pillbottle,/turf/simulated/floor/outdoors/dirt,/area/space)
-"h" = (/turf/simulated/floor/outdoors/dirt,/area/space)
-"k" = (/mob/living/simple_mob/animal/passive/mouse/rat,/turf/simulated/floor/outdoors/dirt,/area/space)
-"m" = (/obj/random/medical/lite,/turf/simulated/floor/outdoors/dirt,/area/space)
-"o" = (/obj/effect/floor_decal/rust,/turf/simulated/floor/plating,/area/space)
-"p" = (/turf/simulated/wall/iron{can_open = 1},/area/space)
-"q" = (/obj/random/junk,/turf/simulated/floor/outdoors/dirt,/area/space)
-"w" = (/obj/random/unidentified_medicine/drug_den,/turf/simulated/floor/outdoors/dirt,/area/space)
-"y" = (/obj/effect/floor_decal/rust,/obj/random/trash,/turf/simulated/floor/plating,/area/space)
-"A" = (/obj/random/trash_pile,/turf/simulated/floor/plating,/area/space)
-"D" = (/obj/effect/floor_decal/rust,/obj/random/maintenance/clean,/obj/structure/closet,/obj/random/maintenance/clean,/obj/random/maintenance/clean,/turf/simulated/floor/plating,/area/space)
-"E" = (/turf/simulated/floor/plating,/area/space)
-"G" = (/obj/effect/floor_decal/rust,/obj/random/mob/mouse,/turf/simulated/floor/plating,/area/space)
-"H" = (/obj/random/trash,/obj/effect/spider/stickyweb,/turf/simulated/floor/plating,/area/space)
-"I" = (/obj/random/trash,/turf/simulated/floor/plating,/area/space)
-"K" = (/obj/effect/floor_decal/rust,/obj/effect/spider/stickyweb,/turf/simulated/floor/plating,/area/space)
-"M" = (/obj/random/trash_pile,/turf/simulated/floor/outdoors/dirt,/area/space)
-"P" = (/obj/effect/floor_decal/rust,/obj/random/maintenance/clean,/obj/structure/closet,/obj/random/maintenance/clean,/obj/random/maintenance/clean,/obj/random/medical/lite,/turf/simulated/floor/plating,/area/space)
-"R" = (/turf/simulated/wall/iron,/area/space)
-"S" = (/obj/random/mob/mouse,/turf/simulated/floor/plating,/area/space)
-"T" = (/obj/effect/spider/stickyweb,/turf/simulated/floor/plating,/area/space)
-"V" = (/obj/effect/floor_decal/rust,/obj/random/trash,/obj/effect/spider/stickyweb,/turf/simulated/floor/plating,/area/space)
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/wall/solidrock,
+/area/space)
+"b" = (
+/obj/random/trash,
+/turf/simulated/floor/outdoors/dirt,
+/area/space)
+"d" = (
+/obj/random/medical/pillbottle,
+/turf/simulated/floor/outdoors/dirt,
+/area/space)
+"h" = (
+/turf/simulated/floor/outdoors/dirt,
+/area/space)
+"k" = (
+/mob/living/simple_mob/animal/passive/mouse/rat,
+/turf/simulated/floor/outdoors/dirt,
+/area/space)
+"m" = (
+/obj/random/medical/lite,
+/turf/simulated/floor/outdoors/dirt,
+/area/space)
+"o" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/space)
+"p" = (
+/turf/simulated/wall/iron{
+	can_open = 1
+	},
+/area/space)
+"q" = (
+/obj/random/junk,
+/turf/simulated/floor/outdoors/dirt,
+/area/space)
+"w" = (
+/obj/random/unidentified_medicine/drug_den,
+/turf/simulated/floor/outdoors/dirt,
+/area/space)
+"y" = (
+/obj/effect/floor_decal/rust,
+/obj/random/trash,
+/turf/simulated/floor/plating,
+/area/space)
+"A" = (
+/obj/random/trash_pile,
+/turf/simulated/floor/plating,
+/area/space)
+"D" = (
+/obj/effect/floor_decal/rust,
+/obj/random/maintenance/clean,
+/obj/structure/closet,
+/obj/random/maintenance/clean,
+/obj/random/maintenance/clean,
+/turf/simulated/floor/plating,
+/area/space)
+"E" = (
+/turf/simulated/floor/plating,
+/area/space)
+"G" = (
+/obj/effect/floor_decal/rust,
+/obj/random/mob/mouse,
+/turf/simulated/floor/plating,
+/area/space)
+"H" = (
+/obj/random/trash,
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor/plating,
+/area/space)
+"I" = (
+/obj/random/trash,
+/turf/simulated/floor/plating,
+/area/space)
+"K" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor/plating,
+/area/space)
+"M" = (
+/obj/random/trash_pile,
+/turf/simulated/floor/outdoors/dirt,
+/area/space)
+"P" = (
+/obj/effect/floor_decal/rust,
+/obj/random/maintenance/clean,
+/obj/structure/closet,
+/obj/random/maintenance/clean,
+/obj/random/maintenance/clean,
+/obj/random/medical/lite,
+/turf/simulated/floor/plating,
+/area/space)
+"R" = (
+/turf/simulated/wall/iron,
+/area/space)
+"S" = (
+/obj/random/mob/mouse,
+/turf/simulated/floor/plating,
+/area/space)
+"T" = (
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor/plating,
+/area/space)
+"V" = (
+/obj/effect/floor_decal/rust,
+/obj/random/trash,
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor/plating,
+/area/space)
 
 (1,1,1) = {"
-aaaaaEoRaaaaa
-aaaRAoEaaaaaa
-aaRHKGaaaaaaa
-aaRTRRaaaRRaa
-aaTKaRRaKPRaa
-aEoaaooITKTaa
-EGyEEooRaaooE
-aaaDEERRaaRpa
-aaaaRESRaMdqa
-aaaaRKEaakbaa
-aaaaaKVpwhaaa
-aaaaaaTRmaaaa
-aaaaaaEaaaaaa
+a
+a
+a
+a
+a
+a
+E
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+a
+a
+a
+a
+E
+G
+a
+a
+a
+a
+a
+a
+"}
+(3,1,1) = {"
+a
+a
+R
+R
+T
+o
+y
+a
+a
+a
+a
+a
+a
+"}
+(4,1,1) = {"
+a
+R
+H
+T
+K
+a
+E
+D
+a
+a
+a
+a
+a
+"}
+(5,1,1) = {"
+a
+A
+K
+R
+a
+a
+E
+E
+R
+R
+a
+a
+a
+"}
+(6,1,1) = {"
+E
+o
+G
+R
+R
+o
+o
+E
+E
+K
+K
+a
+a
+"}
+(7,1,1) = {"
+o
+E
+a
+a
+R
+o
+o
+R
+S
+E
+V
+T
+E
+"}
+(8,1,1) = {"
+R
+a
+a
+a
+a
+I
+R
+R
+R
+a
+p
+R
+a
+"}
+(9,1,1) = {"
+a
+a
+a
+a
+K
+T
+a
+a
+a
+a
+w
+m
+a
+"}
+(10,1,1) = {"
+a
+a
+a
+R
+P
+K
+a
+a
+M
+k
+h
+a
+a
+"}
+(11,1,1) = {"
+a
+a
+a
+R
+R
+T
+o
+R
+d
+b
+a
+a
+a
+"}
+(12,1,1) = {"
+a
+a
+a
+a
+a
+a
+o
+p
+q
+a
+a
+a
+a
+"}
+(13,1,1) = {"
+a
+a
+a
+a
+a
+a
+E
+a
+a
+a
+a
+a
+a
 "}

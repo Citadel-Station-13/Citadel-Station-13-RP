@@ -110,11 +110,12 @@
 /area/tether/under/static_area
 	icon_state = "ut_s"
 	name = "\improper UT Static"
-	forced_ambience = list('sound/ambience/tension/burning_terror.ogg', 'sound/ambience/tension/horror.ogg')
+	ambience = list(AMBIENCE_FOREBODING, AMBIENCE_RUINS)
 
 /area/tether/under/poi
 	icon_state = "ut_poi"
 	name = "\improper UT POI"
+		requires_power = 0
 
 
 // Main mining area

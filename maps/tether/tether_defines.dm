@@ -125,7 +125,7 @@
 		/area/tether/surfacebase/emergency_storage/atrium)
 
 	lateload_z_levels = list(
-		list("Tether - Misc","Tether - Ships","Tether - Underdark"), //Stock Tether lateload maps
+		list("Tether - Misc","Tether - Ships","Tether - Underdark","Tether - UnderTether"), //Stock Tether lateload maps
 		list("Alien Ship - Z1 Ship"),
 		list("Desert Planet - Z1 Beach","Desert Planet - Z2 Cave"),
 		list("Remmi Aerostat - Z1 Aerostat","Remmi Aerostat - Z2 Surface")
@@ -151,7 +151,7 @@
 
 	lateload_single_pick = null //Nothing right now.
 
-#include "submaps/undertether_pois/_templates.dm"
+
 /datum/map/tether/perform_map_generation()
 
 	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_SURFACE_MINE, world.maxx, world.maxy) // Create the mining Z-level.
@@ -160,8 +160,6 @@
 	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_SOLARS, world.maxx, world.maxy) // Create the mining Z-level.
 	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_SOLARS, 64, 64)         // Create the mining ore distribution map.
 
-// UnderTether PoI (attempt)
-	seed_submaps(list(Z_LEVEL_SURFACE_UNDER), 100, /area/tether/under/poi, /datum/map_template/undertether)
 	return 1
 
 /datum/planet/virgo3b
@@ -204,13 +202,13 @@
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_XENOARCH_EXEMPT
 	holomap_legend_x = 220
 	holomap_legend_y = 160
-/*
+
 /datum/map_z_level/tether/station/surface_under
 	z = Z_LEVEL_SURFACE_UNDER
 	name = "Under Maint"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER||MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
 	base_turf = /turf/simulated/floor/plating
-*/
+
 
 /datum/map_z_level/tether/station/surface_low
 	z = Z_LEVEL_SURFACE_LOW

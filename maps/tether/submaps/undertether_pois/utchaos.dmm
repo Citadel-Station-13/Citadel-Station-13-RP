@@ -1,0 +1,241 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/wall/iron,
+/area)
+"c" = (
+/turf/simulated/floor/tiled/steel_dirty,
+/area)
+"e" = (
+/obj/item/flame/candle/candelabra/everburn{
+	lit = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area)
+"g" = (
+/obj/effect/rune,
+/obj/random/humanoidremains,
+/obj/item/material/knife/ritual,
+/obj/item/clothing/suit/cultrobes/magusred,
+/obj/item/clothing/head/culthood/magus,
+/turf/simulated/floor/tiled/dark,
+/area)
+"h" = (
+/obj/random/trash_pile,
+/turf/simulated/floor/tiled/dark,
+/area)
+"l" = (
+/obj/structure/simple_door/iron,
+/turf/simulated/floor/tiled/dark,
+/area)
+"t" = (
+/mob/living/simple_mob/creature/cult{
+	name = "Creature"
+	},
+/turf/simulated/floor/tiled/dark,
+/area)
+"x" = (
+/obj/effect/rune,
+/obj/random/humanoidremains,
+/obj/item/clothing/suit/cultrobes,
+/obj/item/clothing/head/helmet/space/cult,
+/turf/simulated/floor/tiled/dark,
+/area)
+"K" = (
+/turf/simulated/floor/tiled/dark,
+/area)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+l
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+h
+c
+c
+c
+c
+K
+c
+c
+c
+c
+h
+a
+"}
+(3,1,1) = {"
+a
+c
+K
+c
+K
+K
+x
+K
+K
+c
+K
+c
+a
+"}
+(4,1,1) = {"
+a
+c
+c
+x
+c
+c
+K
+c
+c
+x
+c
+c
+a
+"}
+(5,1,1) = {"
+a
+c
+K
+c
+e
+c
+t
+c
+e
+c
+K
+c
+a
+"}
+(6,1,1) = {"
+a
+c
+K
+c
+c
+K
+K
+K
+c
+c
+K
+c
+a
+"}
+(7,1,1) = {"
+l
+K
+x
+K
+t
+K
+g
+K
+t
+K
+x
+K
+l
+"}
+(8,1,1) = {"
+a
+c
+K
+c
+c
+K
+K
+K
+c
+c
+K
+c
+a
+"}
+(9,1,1) = {"
+a
+c
+K
+c
+e
+c
+t
+c
+e
+c
+K
+c
+a
+"}
+(10,1,1) = {"
+a
+c
+c
+x
+c
+c
+K
+c
+c
+x
+c
+c
+a
+"}
+(11,1,1) = {"
+a
+c
+K
+c
+K
+K
+x
+K
+K
+c
+K
+c
+a
+"}
+(12,1,1) = {"
+a
+h
+c
+c
+c
+c
+K
+c
+c
+c
+c
+h
+a
+"}
+(13,1,1) = {"
+a
+a
+a
+a
+a
+a
+l
+a
+a
+a
+a
+a
+a
+"}

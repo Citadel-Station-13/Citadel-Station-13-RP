@@ -1,0 +1,313 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/wall/sandstone,
+/area)
+"b" = (
+/obj/random/mob/spider/nurse,
+/turf/simulated/floor/wood/sif,
+/area)
+"f" = (
+/obj/effect/spider/cocoon,
+/obj/effect/spider/stickyweb,
+/obj/fiftyspawner/silver,
+/turf/simulated/floor/wmarble,
+/area)
+"g" = (
+/obj/structure/simple_door/sandstone,
+/turf/simulated/floor/wood/sif,
+/area)
+"h" = (
+/obj/structure/table/marble,
+/obj/effect/spider/cocoon,
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor/wmarble,
+/area)
+"j" = (
+/obj/structure/simple_door/sandstone,
+/turf/simulated/floor/wood/sif/broken,
+/area)
+"m" = (
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor/wood/sif/broken,
+/area)
+"o" = (
+/obj/random/mob/spider,
+/turf/simulated/floor/wood/sif/broken,
+/area)
+"p" = (
+/turf/simulated/floor/wmarble,
+/area)
+"q" = (
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor/wood/sif,
+/area)
+"r" = (
+/turf/simulated/floor/wood/sif/broken,
+/area)
+"t" = (
+/obj/structure/table/marble,
+/obj/item/material/sword,
+/turf/simulated/floor/wmarble,
+/area)
+"u" = (
+/obj/effect/spider/cocoon,
+/obj/effect/spider/stickyweb,
+/mob/living/simple_mob/animal/giant_spider,
+/turf/simulated/floor/wood/sif,
+/area)
+"A" = (
+/obj/effect/spider/stickyweb,
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor/wood/sif/broken,
+/area)
+"G" = (
+/obj/effect/spider/cocoon,
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor/wood/sif/broken,
+/area)
+"I" = (
+/mob/living/simple_mob/animal/giant_spider/thermic,
+/turf/simulated/floor/wmarble,
+/area)
+"K" = (
+/obj/random/mob/spider,
+/turf/simulated/floor/wood/sif,
+/area)
+"L" = (
+/mob/living/simple_mob/animal/giant_spider,
+/turf/simulated/floor/wood/sif,
+/area)
+"O" = (
+/mob/living/simple_mob/animal/giant_spider/pepper,
+/turf/simulated/floor/wmarble,
+/area)
+"P" = (
+/turf/simulated/floor/wood/sif,
+/area)
+"Q" = (
+/mob/living/simple_mob/animal/giant_spider/ion,
+/turf/simulated/floor/wmarble,
+/area)
+"S" = (
+/obj/effect/spider/stickyweb,
+/obj/fiftyspawner/gold,
+/turf/simulated/floor/wmarble,
+/area)
+"T" = (
+/obj/structure/table/marble,
+/obj/item/clothing/suit/armor/medieval/crusader/cross,
+/obj/item/clothing/head/helmet/medieval/crusader/templar,
+/turf/simulated/floor/wmarble,
+/area)
+"U" = (
+/obj/structure/simple_door/silver,
+/turf/simulated/floor/wmarble,
+/area)
+"V" = (
+/obj/effect/spider/cocoon,
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor/wood/sif,
+/area)
+"W" = (
+/turf/simulated/mineral/floor,
+/area)
+"Y" = (
+/mob/living/simple_mob/animal/giant_spider,
+/turf/simulated/floor/wood/sif/broken,
+/area)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+j
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+q
+q
+o
+a
+r
+Y
+b
+P
+G
+m
+u
+a
+"}
+(3,1,1) = {"
+a
+q
+r
+P
+j
+P
+P
+r
+P
+P
+m
+m
+a
+"}
+(4,1,1) = {"
+a
+r
+o
+V
+a
+r
+r
+a
+P
+a
+q
+a
+a
+"}
+(5,1,1) = {"
+a
+j
+a
+a
+a
+a
+a
+P
+P
+P
+V
+q
+a
+"}
+(6,1,1) = {"
+a
+W
+a
+t
+I
+S
+a
+P
+p
+L
+P
+q
+a
+"}
+(7,1,1) = {"
+W
+W
+a
+h
+Q
+p
+U
+p
+p
+p
+p
+P
+g
+"}
+(8,1,1) = {"
+a
+W
+a
+T
+O
+f
+a
+q
+p
+P
+P
+P
+a
+"}
+(9,1,1) = {"
+a
+j
+a
+a
+a
+a
+a
+q
+V
+P
+b
+q
+a
+"}
+(10,1,1) = {"
+a
+r
+P
+V
+a
+r
+r
+a
+q
+a
+q
+a
+a
+"}
+(11,1,1) = {"
+a
+o
+P
+b
+j
+P
+P
+r
+q
+m
+A
+q
+a
+"}
+(12,1,1) = {"
+a
+V
+m
+m
+a
+P
+P
+K
+m
+q
+m
+G
+a
+"}
+(13,1,1) = {"
+a
+a
+a
+a
+a
+a
+g
+a
+a
+a
+a
+a
+a
+"}
