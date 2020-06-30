@@ -14,7 +14,7 @@
 		/area/shuttle,
 		/area/crew_quarters,
 		/area/holodeck,
-		/area/engineering/engine_room
+		/area/engineering/engine_room,
 		/area/tether/under/
 	)
 

@@ -115,7 +115,7 @@
 /area/tether/under/poi
 	icon_state = "ut_poi"
 	name = "\improper UT POI"
-		requires_power = 0
+	requires_power = 0
 
 
 // Main mining area
