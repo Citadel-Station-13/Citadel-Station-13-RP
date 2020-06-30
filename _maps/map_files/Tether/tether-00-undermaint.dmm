@@ -76,7 +76,7 @@
 /area/tether/under/static_area)
 "ay" = (
 /obj/structure/table/woodentable,
-/obj/random/rigsuit,
+/obj/item/circuitboard/smes,
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/under/static_area)
 "aC" = (
@@ -2391,6 +2391,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
+"sf" = (
+/obj/random/rigsuit,
+/obj/structure/closet/crate/mimic/dangerous,
+/turf/simulated/floor/plating,
+/area/tether/under/static_area)
 "si" = (
 /obj/structure/catwalk,
 /obj/effect/decal/cleanable/dirt,
@@ -3019,8 +3024,10 @@
 /area/tether/under/static_area)
 "xo" = (
 /obj/effect/decal/cleanable/greenglow,
-/obj/machinery/power/smes/buildable/point_of_interest,
 /obj/structure/cable,
+/obj/structure/frame{
+	anchored = 1
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/under/static_area)
 "xp" = (
@@ -3441,7 +3448,6 @@
 "Av" = (
 /obj/structure/closet/crate,
 /obj/random/ammo,
-/obj/random/cash,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "Aw" = (
@@ -4923,7 +4929,6 @@
 /area/tether/under/static_area)
 "Lq" = (
 /obj/structure/closet/crate/plastic,
-/obj/random/ammo,
 /obj/random/cash,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
@@ -5532,6 +5537,7 @@
 	dir = 8;
 	icon_state = "bulb1"
 	},
+/obj/random/junk,
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/under/static_area)
 "PA" = (
@@ -5713,7 +5719,6 @@
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "QI" = (
-/obj/structure/closet/crate/mimic/dangerous,
 /obj/effect/decal/cleanable/cobweb2,
 /obj/random/alcohol,
 /obj/effect/decal/remains,
@@ -5927,6 +5932,11 @@
 /obj/structure/closet/cabinet,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
+"Sn" = (
+/obj/machinery/light/small,
+/obj/structure/trash_pile,
+/turf/simulated/floor/tiled/techfloor,
+/area/tether/under/static_area)
 "So" = (
 /obj/machinery/light/small/emergency{
 	dir = 1
@@ -6087,6 +6097,9 @@
 	icon_state = "bulb1"
 	},
 /obj/effect/decal/cleanable/greenglow,
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/under/static_area)
 "TD" = (
@@ -6243,8 +6256,9 @@
 /turf/simulated/floor/wood/sif/broken,
 /area/tether/under/static_area)
 "UM" = (
-/obj/structure/mob_spawner/mouse_nest,
-/turf/simulated/floor/tiled/techfloor,
+/obj/structure/closet/crate/trashcart,
+/obj/random/multiple/underdark/treasure,
+/turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "UR" = (
 /obj/effect/decal/cleanable/dirt,
@@ -6414,6 +6428,7 @@
 /area/tether/under/static_area)
 "Wb" = (
 /obj/structure/closet/crate,
+/obj/random/multiple/underdark/treasure,
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/under/static_area)
 "Wi" = (
@@ -14249,7 +14264,7 @@ Jl
 DF
 DF
 dj
-Hq
+IS
 zF
 AG
 DF
@@ -14768,7 +14783,7 @@ GX
 EW
 zF
 lg
-Ju
+UM
 DF
 DF
 Jl
@@ -15653,7 +15668,7 @@ CD
 Hq
 DF
 DF
-vx
+sf
 zF
 WR
 aF
@@ -16647,7 +16662,7 @@ Bl
 Bl
 hv
 DF
-iW
+QN
 Hq
 Pz
 zF
@@ -16799,7 +16814,7 @@ zF
 Ny
 Hq
 zF
-AG
+Sn
 DF
 DF
 Jl
@@ -16940,7 +16955,7 @@ MY
 oY
 zF
 zF
-UM
+Hq
 ci
 DF
 DF
