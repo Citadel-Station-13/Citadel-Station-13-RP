@@ -632,3 +632,24 @@ Drinks Data
 
 /datum/reagent/ethanol/bloodmeridian
 	glass_icon_state = "bloodmeridian"
+
+/datum/reagent/ethanol/theoutlaw
+	glass_icon_state = "theoutlaw"
+
+/datum/reagent/ethanol/thelawman
+	glass_icon_state = "thelawman"
+
+/datum/reagent/ethanol/hangmansnoose
+	glass_icon_state = "hangmansnoose"
+
+/datum/reagent/ethanol/bigiron
+	glass_icon_state = "bigiron"
+
+/datum/reagent/ethanol/lastcactus
+	glass_icon_state = "lastcactus"
+
+/datum/reagent/ethanol/rootbeerfloat
+	glass_icon_state = "rootbeerfloat"
+
+/datum/reagent/ethanol/thebestboy
+	glass_icon_state = "thebestboy"
