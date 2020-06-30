@@ -15,7 +15,7 @@
 		/area/crew_quarters,
 		/area/holodeck,
 		/area/engineering/engine_room,
-		/area/tether/under
+		/area/tether/under/static_area
 	)
 
 // Decide which area will be targeted!
