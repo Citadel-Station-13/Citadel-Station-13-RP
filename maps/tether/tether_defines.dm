@@ -43,7 +43,7 @@
 	id_hud_icons = 'icons/mob/hud_jobs_vr.dmi' //CITADEL CHANGE: Ignore this line because it's going to be overriden in modular_citadel\maps\tether\tether_defines.dm
 
 	holomap_smoosh = list(list(
-		Z_LEVEL_SURFACE_UNDER, // God
+		Z_LEVEL_SURFACE_UNDER, // God.damn.it.
 		Z_LEVEL_SURFACE_LOW,
 		Z_LEVEL_SURFACE_MID,
 		Z_LEVEL_SURFACE_HIGH,
