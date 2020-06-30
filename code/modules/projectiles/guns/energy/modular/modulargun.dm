@@ -1,4 +1,5 @@
 //modular weapons 2. shitcode ahead, be warned.
+//i'd just like to say nitsah is annoying as FUCK
 
 /obj/item/gun/energy/modular
 	name = "the very concept of a modular weapon"
