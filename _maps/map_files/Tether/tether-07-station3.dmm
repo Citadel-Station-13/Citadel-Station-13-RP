@@ -18312,7 +18312,8 @@
 	dir = 8;
 	pixel_x = -24
 	},
-/obj/structure/bed/chair/comfy/black,
+/obj/structure/dogbed,
+/obj/item/toy/plushie/coffee_fox,
 /turf/simulated/floor/wood/sif,
 /area/medical/reception)
 "DN" = (
