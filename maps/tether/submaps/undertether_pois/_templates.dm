@@ -9,7 +9,6 @@
 	name = "UnderTether Gas Tanks"
 	mappath = 'poigastanks.dmm'
 	cost = 5
-	allow_duplicates = FALSE
 
 /datum/map_template/undertether/hallway
 	name = "UnderTether Hallway"
@@ -25,13 +24,11 @@
 	name = "UnderTether Mech Fight"
 	mappath = 'poimechfight.dmm'
 	cost = 5
-	allow_duplicates = FALSE
 
 /datum/map_template/undertether/crossroads
 	name = "UnderTether Crossroads"
 	mappath = 'crossroads.dmm'
 	cost = 5
-	allow_duplicates = FALSE
 
 /datum/map_template/undertether/hiddendorm2
 	name = "UnderTether Hidden Dorm"
