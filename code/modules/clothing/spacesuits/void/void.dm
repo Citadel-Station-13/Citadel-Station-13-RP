@@ -24,7 +24,7 @@
 		SPECIES_UNATHI = 'icons/obj/clothing/species/unathi/hats.dmi',
 		SPECIES_TAJ = 'icons/obj/clothing/species/tajaran/hats.dmi',
 		SPECIES_SKRELL = 'icons/obj/clothing/species/skrell/hats.dmi',
-		SPECIES_TESHARI = 'icons/obj/clothing/species/seromi/hats.dmi',
+		SPECIES_TESHARI = 'icons/obj/clothing/species/teshari/hats.dmi',
 		SPECIES_VOX = 'icons/obj/clothing/species/vox/hats.dmi'
 		)
 
@@ -54,7 +54,7 @@
 		SPECIES_UNATHI = 'icons/obj/clothing/species/unathi/suits.dmi',
 		SPECIES_TAJ = 'icons/obj/clothing/species/tajaran/suits.dmi',
 		SPECIES_SKRELL = 'icons/obj/clothing/species/skrell/suits.dmi',
-		SPECIES_TESHARI = 'icons/obj/clothing/species/seromi/suits.dmi',
+		SPECIES_TESHARI = 'icons/obj/clothing/species/teshari/suits.dmi',
 		SPECIES_VOX = 'icons/obj/clothing/species/vox/suits.dmi'
 		)
 

@@ -1038,7 +1038,7 @@
 					/obj/item/clothing/suit/varsity/blue = 5,
 					/obj/item/clothing/suit/varsity/brown = 5,
 					/obj/item/clothing/suit/storage/hooded/wintercoat = 5,
-					/obj/item/clothing/suit/storage/seromi/cloak/standard/white_grey = 5)
+					/obj/item/clothing/suit/storage/teshari/cloak/standard/white_grey = 5)
 	prices = list(/obj/item/clothing/suit/storage/apron = 200,
 					/obj/item/clothing/suit/storage/flannel/aqua = 200,
 					/obj/item/clothing/suit/storage/toggle/bomber = 200,
@@ -1125,7 +1125,7 @@
 					/obj/item/clothing/suit/varsity/blue = 200,
 					/obj/item/clothing/suit/varsity/brown = 200,
 					/obj/item/clothing/suit/storage/hooded/wintercoat = 200,
-					/obj/item/clothing/suit/storage/seromi/cloak/standard/white_grey = 200)
+					/obj/item/clothing/suit/storage/teshari/cloak/standard/white_grey = 200)
 	premium = list(/obj/item/clothing/suit/imperium_monk = 3)
 	contraband = list(/obj/item/toy/katana = 1)
 /obj/machinery/vending/loadout/costume

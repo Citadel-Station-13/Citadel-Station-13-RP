@@ -1392,14 +1392,14 @@
 	icon_state = "chimptail_s"
 
 /datum/sprite_accessory/tail/special/seromitail
-	name = "seromi tail"
+	name = "teshari tail"
 	desc = ""
 	icon_state = "seromitail_s"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/special/seromitailfeathered
-	name = "seromi tail w/ feathers"
+	name = "teshari tail w/ feathers"
 	desc = ""
 	icon_state = "seromitail_s"
 	extra_overlay = "seromitail_feathers_s"
@@ -1492,14 +1492,14 @@
 	do_colouration = 1
 
 /datum/sprite_accessory/tail/special/seromitailhc
-	name = "seromi tail, colorable"
+	name = "teshari tail, colorable"
 	desc = ""
 	icon_state = "seromitail_hc_s"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/special/seromitailfeatheredhc
-	name = "seromi tail w/ feathers, colorable"
+	name = "teshari tail w/ feathers, colorable"
 	desc = ""
 	icon_state = "seromitail_feathers_hc_s"
 	do_colouration = 1
