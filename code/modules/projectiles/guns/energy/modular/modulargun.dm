@@ -20,6 +20,10 @@
 	firemodes = list()
 	var/emp_vuln = TRUE
 
+/obj/item/gun/energy/modular/Initialize()
+	..()
+	generatefiremodes()
+
 /obj/item/gun/energy/modular/proc/generatefiremodes() //Accepts no args. Checks the gun's current components and generates projectile types, firemode costs and max burst. Should be called after changing parts or part values.
 	if(!circuit)
 		return
