@@ -28,14 +28,14 @@
 		set_light(0)
 
 /obj/machinery/space_heater/examine(mob/user)
-	..(user)
-
-	to_chat(user, "The heater is [on ? "on" : "off"] and the hatch is [panel_open ? "open" : "closed"].")
-	if(panel_open)
-		to_chat(user, "The power cell is [cell ? "installed" : "missing"].")
+	. = ..()
+	. += "\The [src] is [on ? "on" : "off"], and the hatch is [panel_open ? "open" : "closed"]."
+	if(cell && panel_open)
+		. += "The charge meter reads [cell ? round(cell.percent(), 1) : 0]%."
 	else
-		to_chat(user, "The charge meter reads [cell ? round(cell.percent(),1) : 0]%")
-	return
+		. += "There is no power cell installed."
+	if(in_range(user, src) || isobserver(user))
+		. += "<span class='notice'>The status display reads: Temperature range at <b>[set_temperature - T0C]°C</b>.<br>Heating power at <b>[heating_power*0.001]kJ</b>.<span>" //100%, 75%, 50%, 25% <br>Power consumption at <b>[(efficiency*-0.0025)+150]%</b>.
 
 /obj/machinery/space_heater/powered()
 	if(cell && cell.charge)

@@ -81,32 +81,39 @@ var/list/global/tank_gauge_cache = list()
 	. = ..()
 
 /obj/item/tank/examine(mob/user)
-	. = ..(user, 0)
-	if(.)
-		var/celsius_temperature = air_contents.temperature - T0C
-		var/descriptive
-		switch(celsius_temperature)
-			if(300 to INFINITY)
-				descriptive = "furiously hot"
-			if(100 to 300)
-				descriptive = "hot"
-			if(80 to 100)
-				descriptive = "warm"
-			if(40 to 80)
-				descriptive = "lukewarm"
-			if(20 to 40)
-				descriptive = "room temperature"
-			if(-20 to 20)
-				descriptive = "cold"
-			else
-				descriptive = "bitterly cold"
-		to_chat(user, "<span class='notice'>\The [src] feels [descriptive].</span>")
+	var/obj/icon = src
+	. = ..()
+	if(istype(src.loc, /obj/item/assembly))
+		icon = src.loc
+	if(!in_range(src, user) && !isobserver(user))
+		if (icon == src)
+			. += "<span class='notice'>If you want any more information you'll need to get closer.</span>"
+		return
 
-	if(src.proxyassembly.assembly || wired)
-		to_chat(user, "<span class='warning'>It seems to have [wired? "some wires ": ""][wired && src.proxyassembly.assembly? "and ":""][src.proxyassembly.assembly ? "some sort of assembly ":""]attached to it.</span>")
-	if(src.valve_welded)
-		to_chat(user, "<span class='warning'>\The [src] emergency relief valve has been welded shut!</span>")
+	. += "<span class='notice'>The pressure gauge reads [round(src.air_contents.return_pressure(),0.01)] kPa.</span>"
 
+	var/celsius_temperature = src.air_contents.temperature-T0C
+	var/descriptive
+
+	if (celsius_temperature < 20)
+		descriptive = "cold"
+	else if (celsius_temperature < 40)
+		descriptive = "room temperature"
+	else if (celsius_temperature < 80)
+		descriptive = "lukewarm"
+	else if (celsius_temperature < 100)
+		descriptive = "warm"
+	else if (celsius_temperature < 300)
+		descriptive = "hot"
+	else
+		descriptive = "furiously hot"
+
+	. += "<span class='notice'>It feels [descriptive].</span>"
+
+	if(proxyassembly.assembly || wired)
+		. += "<span class='warning'>It seems to have [wired? "some wires ": ""][wired && src.proxyassembly.assembly? "and ":""][src.proxyassembly.assembly ? "some sort of assembly ":""]attached to it.</span>"
+	if(valve_welded)
+		. += "<span class='warning'>\The [src] emergency relief valve has been welded shut!</span>"
 
 /obj/item/tank/attackby(obj/item/W as obj, mob/user as mob)
 	..()

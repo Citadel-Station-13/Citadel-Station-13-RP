@@ -3,15 +3,16 @@
  * .. Sorry for the shitty path name, I couldnt think of a better one.
  *
  * WARNING: var/icon_type is used for both examine text and sprite name. Please look at the procs below and adjust your sprite names accordingly
+ *		TODO: Cigarette boxes should be ported to this standard
  *
  * Contains:
  *		Donut Box
  *		Egg Box
  *		Candle Box
- *		Crayon Box
  *		Cigarette Box
- *		Vial Box
- *		Box of Chocolates
+ *		Cigar Case
+ *		Heart Shaped Box w/ Chocolates
+ *		Ring Box
  */
 
 /obj/item/storage/fancy/
@@ -26,17 +27,12 @@
 	return
 
 /obj/item/storage/fancy/examine(mob/user)
-	if(!..(user, 1))
-		return
-
-	if(contents.len <= 0)
-		to_chat(user, "There are no [icon_type]s left in the box.")
-	else if(contents.len == 1)
-		to_chat(user, "There is one [icon_type] left in the box.")
+	. = ..()
+	//if(open)
+	if(length(contents) == 1)
+		. += "There is one [icon_type] left."
 	else
-		to_chat(user, "There are [contents.len] [icon_type]s in the box.")
-
-	return
+		. += "There are [contents.len <= 0 ? "no" : "[contents.len]"] [icon_type]s left."
 
 /*
  * Egg Box

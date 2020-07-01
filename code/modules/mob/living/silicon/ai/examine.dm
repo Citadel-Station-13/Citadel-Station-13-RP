@@ -1,42 +1,38 @@
 /mob/living/silicon/ai/examine(mob/user)
-	if(!..(user))
-		return
-
-	var/msg = ""
-	if (src.stat == DEAD)
-		msg += "<span class='deadsay'>It appears to be powered-down.</span>\n"
+	. = list("<span class='info'>*---------*\nThis is [icon2html(src, user)] <EM>[src]</EM>!")
+	if (stat == DEAD)
+		. += "<span class='deadsay'>It appears to be powered-down.</span>"
 	else
-		msg += "<span class='warning'>"
-		if (src.getBruteLoss())
-			if (src.getBruteLoss() < 30)
-				msg += "It looks slightly dented.\n"
+		if (getBruteLoss())
+			if (getBruteLoss() < 30)
+				. += "<span class='warning'>It looks slightly dented.</span>"
 			else
-				msg += "<B>It looks severely dented!</B>\n"
-		if (src.getFireLoss())
-			if (src.getFireLoss() < 30)
-				msg += "It looks slightly charred.\n"
+				. += "<span class='danger'>It looks severely dented!</span>"
+		if (getFireLoss())
+			if (getFireLoss() < 30)
+				. += "<span class='warning'>It looks slightly charred.</span>"
 			else
-				msg += "<B>Its casing is melted and heat-warped!</B>\n"
-		if (src.getOxyLoss() && (aiRestorePowerRoutine != 0 && !APU_power))
-			if (src.getOxyLoss() > 175)
-				msg += "<B>It seems to be running on backup power. Its display is blinking a \"BACKUP POWER CRITICAL\" warning.</B>\n"
-			else if(src.getOxyLoss() > 100)
-				msg += "<B>It seems to be running on backup power. Its display is blinking a \"BACKUP POWER LOW\" warning.</B>\n"
+				. += "<span class='danger'>Its casing is melted and heat-warped!</span>"
+		if (getOxyLoss() && (aiRestorePowerRoutine != 0 && !APU_power))
+			if (getOxyLoss() > 175)
+				. += "<B>It seems to be running on backup power. Its display is blinking a \"BACKUP POWER CRITICAL\" warning.</B>\n"
+			else if(getOxyLoss() > 100)
+				. += "<B>It seems to be running on backup power. Its display is blinking a \"BACKUP POWER LOW\" warning.</B>\n"
 			else
-				msg += "It seems to be running on backup power.\n"
+				. += "It seems to be running on backup power.\n"
 
-		if (src.stat == UNCONSCIOUS)
-			msg += "It is non-responsive and displaying the text: \"RUNTIME: Sensory Overload, stack 26/3\".\n"
-		msg += "</span>"
 		if(deployed_shell)
-			msg += "The wireless networking light is blinking.\n"
-	msg += "*---------*"
+			. += "The wireless networking light is blinking."
+		else if (!client) //hurr durr no malfai thingy !shunted &&
+			. += "[src]Core.exe has stopped responding! NTOS is searching for a solution to the problem..."
+	. += "*---------*</span>"
+
 	if(hardware && (hardware.owner == src))
-		msg += "<br>"
-		msg += hardware.get_examine_desc()
-	user << msg
+		. += "<br>"
+		. += hardware.get_examine_desc()
+
+	// . += ..() this is showlaws when ghost examines
 	user.showLaws(src)
-	return
 
 /mob/proc/showLaws(var/mob/living/silicon/S)
 	return

@@ -73,7 +73,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 	var/list/communicating = list()
 	var/update_ticks = 0
 
-// Proc: New()
+// Proc: New() - Convert this to init()
 // Parameters: None
 // Description: Adds the new communicator to the global list of all communicators, sorts the list, obtains a reference to the Exonet node, then tries to
 //				assign the device to the holder's name automatically in a spectacularly shitty way.
@@ -101,9 +101,9 @@ var/global/list/obj/item/communicator/all_communicators = list()
 // Parameters: user - the user doing the examining
 // Description: Allows the user to click a link when examining to look at video if one is going.
 /obj/item/communicator/examine(mob/user)
-	. = ..(user, 1)
-	if(. && video_source)
-		to_chat(user, "<span class='notice'>It looks like it's on a video call: <a href='?src=\ref[src];watchvideo=1'>\[view\]</a></span>")
+	. = ..()
+	if(in_range(user, src) && video_source)
+		. += "<span class='notice'>It looks like it's on a video call: <a href='?src=[REF(src)];watchvideo=1'>\[view\]</a></span>"
 
 // Proc: initialize_exonet()
 // Parameters: 1 (user - the person the communicator belongs to)
@@ -124,8 +124,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 // Parameters: 1 (user - the person examining the device)
 // Description: Shows all the voice mobs inside the device, and their status.
 /obj/item/communicator/examine(mob/user)
-	if(!..(user))
-		return
+	. = ..()
 
 	var/msg = ""
 	for(var/mob/living/voice/voice in contents)
@@ -144,8 +143,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 		else
 			msg += "<span class='notice'>The device doesn't appear to be transmitting any data.</span>\n"
 		msg += "</span>"
-	to_chat(user, msg)
-	return
+	. += msg
 
 // Proc: emp_act()
 // Parameters: None

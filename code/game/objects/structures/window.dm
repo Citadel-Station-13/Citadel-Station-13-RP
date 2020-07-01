@@ -34,27 +34,44 @@
 		fulltile = TRUE
 
 /obj/structure/window/examine(mob/user)
-	. = ..(user)
+	. = ..()
 
 	if(health == maxhealth)
-		to_chat(user, "<span class='notice'>It looks fully intact.</span>")
+		. += "<span class='notice'>It looks fully intact.</span>"
 	else
 		var/perc = health / maxhealth
 		if(perc > 0.75)
-			to_chat(user, "<span class='notice'>It has a few cracks.</span>")
+			. += "<span class='notice'>It has a few cracks.</span>"
 		else if(perc > 0.5)
-			to_chat(user, "<span class='warning'>It looks slightly damaged.</span>")
+			. += "<span class='warning'>It looks slightly damaged.</span>"
 		else if(perc > 0.25)
-			to_chat(user, "<span class='warning'>It looks moderately damaged.</span>")
+			. += "<span class='warning'>It looks moderately damaged.</span>"
 		else
-			to_chat(user, "<span class='danger'>It looks heavily damaged.</span>")
+			. += "<span class='danger'>It looks heavily damaged.</span>"
 	if(silicate)
 		if (silicate < 30)
-			to_chat(user, "<span class='notice'>It has a thin layer of silicate.</span>")
+			. += "<span class='notice'>It has a thin layer of silicate.</span>"
 		else if (silicate < 70)
-			to_chat(user, "<span class='notice'>It is covered in silicate.</span>")
+			. += "<span class='notice'>It is covered in silicate.</span>"
 		else
-			to_chat(user, "<span class='notice'>There is a thick layer of silicate covering it.</span>")
+			. += "<span class='notice'>There is a thick layer of silicate covering it.</span>"
+
+	// if(electrochromatic_status != NOT_ELECTROCHROMATIC)
+	// 	. += "<span class='notice'>The window has electrochromatic circuitry on it.</span>"
+	if(reinf)
+		if(anchored && state == 2)
+			. += "<span class='notice'>The window is <b>screwed</b> to the frame.</span>"
+		else if(anchored && state == 1)
+			. += "<span class='notice'>The window is <i>unscrewed</i> but <b>pried</b> into the frame.</span>"
+		else if(anchored && state == 0)
+			. += "<span class='notice'>The window is out of the frame, but could be <i>pried</i> in. It is <b>screwed</b> to the floor.</span>"
+		else if(!anchored)
+			. += "<span class='notice'>The window is <i>unscrewed</i> from the floor, and could be deconstructed by <b>wrenching</b>.</span>"
+	else
+		if(anchored)
+			. += "<span class='notice'>The window is <b>screwed</b> to the floor.</span>"
+		else
+			. += "<span class='notice'>The window is <i>unscrewed</i> from the floor, and could be deconstructed by <b>wrenching</b>.</span>"
 
 /obj/structure/window/take_damage(var/damage = 0,  var/sound_effect = 1)
 	var/initialhealth = health

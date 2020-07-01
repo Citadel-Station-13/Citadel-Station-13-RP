@@ -328,14 +328,14 @@
 
 /obj/machinery/door/examine(mob/user)
 	. = ..()
-	if(src.health <= 0)
-		to_chat(user, "\The [src] is broken!")
-	if(src.health < src.maxhealth / 4)
-		to_chat(user, "\The [src] looks like it's about to break!")
-	else if(src.health < src.maxhealth / 2)
-		to_chat(user, "\The [src] looks seriously damaged!")
-	else if(src.health < src.maxhealth * 3/4)
-		to_chat(user, "\The [src] shows signs of damage!")
+	if(health <= 0)
+		. += "<span class='warning'>\The [src] is broken!</span>"
+	if(health < maxhealth / 4)
+		. += "<span class='warning'>\The [src] looks like it's about to break!</span>"
+	else if(health < maxhealth / 2)
+		. += "<span class='warning'>\The [src] looks seriously damaged!</span>"
+	else if(health < maxhealth * 3/4)
+		. += "<span class='warning'>\The [src] shows signs of damage!</span>"
 
 
 /obj/machinery/door/proc/set_broken()

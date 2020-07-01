@@ -65,21 +65,34 @@
 	return
 
 /obj/structure/closet/examine(mob/user)
-	if(..(user, 1) && !opened)
+	. = ..()
+	// if(welded)
+	// 	. += "<span class='notice'>It's <b>welded</b> shut.</span>"
+	if(anchored)
+		. += "<span class='notice'>It is <b>bolted</b> to the ground.</span>"
+	if(opened)
+		. += "<span class='notice'>The parts are <b>welded</b> together.</span>"
+	// else if(secure && !opened)
+	// else if(broken)
+	// 	. += "<span class='notice'>The lock is <b>screwed</b> in.</span>"
+	// else if(secure)
+	// 	. += "<span class='notice'>Alt-click to [locked ? "unlock" : "lock"].</span>"
+
+	if(!opened)
 		var/content_size = 0
 		for(var/obj/item/I in src.contents)
 			if(!I.anchored)
 				content_size += CEILING(I.w_class/2, 1)
 		if(!content_size)
-			to_chat(user, "It is empty.")
+			. += "It is empty."
 		else if(storage_capacity > content_size*4)
-			to_chat(user, "It is barely filled.")
+			. += "It is barely filled."
 		else if(storage_capacity > content_size*2)
-			to_chat(user, "It is less than half full.")
+			. += "It is less than half full."
 		else if(storage_capacity > content_size)
-			to_chat(user, "There is still some free space.")
+			. += "There is still some free space."
 		else
-			to_chat(user, "It is full.")
+			. += "It is full."
 
 /obj/structure/closet/CanAllowThrough(atom/movable/mover, turf/target)
 	if(wall_mounted)

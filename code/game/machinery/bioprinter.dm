@@ -83,13 +83,13 @@
 	component_parts += new /obj/item/stock_parts/manipulator(src)
 	RefreshParts()
 
-/obj/machinery/organ_printer/examine(var/mob/user)
+/obj/machinery/organ_printer/examine(mob/user)
 	. = ..()
 	var/biomass = get_biomass_volume()
 	if(biomass)
-		to_chat(user, "<span class='notice'>It is loaded with [biomass] units of biomass.</span>")
+		. += "<span class='notice'>It is loaded with [biomass] units of biomass.</span>"
 	else
-		to_chat(user, "<span class='notice'>It is not loaded with any biomass.</span>")
+		. += "<span class='notice'>It is not loaded with any biomass.</span>"
 
 /obj/machinery/organ_printer/RefreshParts()
 	// Print Delay updating

@@ -110,8 +110,8 @@
 		choose_colour()
 
 /obj/item/floor_painter/examine(mob/user)
-	..(user)
-	to_chat(user, "It is configured to produce the '[decal]' decal with a direction of '[paint_dir]' using [paint_colour] paint.")
+	. = ..()
+	. += "<span class='notice'>It is configured to produce \the <b>'[decal]'</b> decal with a direction of <b>'[paint_dir]'</b> using [paint_colour] paint.</span>"
 
 /obj/item/floor_painter/verb/choose_colour()
 	set name = "Choose Colour"

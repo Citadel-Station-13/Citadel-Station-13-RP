@@ -24,8 +24,8 @@
 											/obj/item/tool/crowbar/switchy = null,
 											/obj/item/multitool/switchy = null)
 	var/list/obj/item/stored_modules = list()
-	var/obj/item/deployed//what's currently in use
-	var/switchingtype = "basic"//type for update_icon
+	var/obj/item/deployed		//what's currently in use
+	var/switchingtype = "basic"	//type for update_icon
 
 	var/static/radial_driver = image(icon = 'icons/obj/tools.dmi', icon_state = "screwdriver") //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 	var/static/radial_wrench = image(icon = 'icons/obj/tools.dmi', icon_state = "wrench")
@@ -61,9 +61,9 @@
 	for(var/module in start_modules)//making the modules
 		stored_modules |= new module(src)
 
-/obj/item/switchtool/examine()
-	..()
-	to_chat(usr, "This one is capable of holding [get_formatted_modules()].")
+/obj/item/switchtool/examine(mob/user)
+	. = ..()
+	. += "This one is capable of holding [get_formatted_modules()]."
 
 /obj/item/switchtool/attack_self(mob/user)
 	if(!user)

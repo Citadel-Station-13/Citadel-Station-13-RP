@@ -251,30 +251,34 @@
 	addtimer(CALLBACK(src, .proc/update), 5)
 
 /obj/machinery/power/apc/examine(mob/user)
-	if(..(user, 1))
-		if(stat & BROKEN)
-			to_chat(user,"This APC is broken.")
-			return
-		if(opened)
-			if(has_electronics && terminal)
-				to_chat(user,"The cover is [opened==2?"removed":"open"] and [ cell ? "a power cell is installed" : "the power cell is missing"].")
-			else if (!has_electronics && terminal)
-				to_chat(user,"The frame is wired, but the electronics are missing.")
-			else if (has_electronics && !terminal)
-				to_chat(user,"The electronics are installed, but not wired.")
-			else /* if (!has_electronics && !terminal) */
-				to_chat(user,"It's just an empty metal frame.")
+	. = ..()
+	if(stat & BROKEN)
+		return
 
+	if(opened)
+		if(has_electronics && terminal)
+			. += "The cover is [opened==2?"removed":"open"] and the power cell is [ cell ? "installed" : "missing"]."
 		else
-			if (wiresexposed)
-				to_chat(user,"The cover is closed and the wires are exposed.")
-			else if ((locked && emagged) || hacker) //Some things can cause locked && emagged. Malf AI causes hacker.
-				to_chat(user,"The cover is closed, but the panel is unresponsive.")
-			else if(!locked && emagged) //Normal emag does this.
-				to_chat(user,"The cover is closed, but the panel is flashing an error.")
-			else
-				to_chat(user,"The cover is closed.")
+			. += "It's [ !terminal ? "not" : "" ] wired up."
+			. += "The electronics are[!has_electronics?"n't":""] installed."
+		//if(user.Adjacent(src) && integration_cog)
+		//	. += "<span class='warning'>[src]'s innards have been replaced by strange brass machinery!</span>"
+	else
+		if (stat & MAINT)
+			. += "The cover is closed. Something is wrong with it. It doesn't work."
+		// else if (hacker) //malfhack)
+		// 	. += "The cover is broken. It may be hard to force it open."
+		else
+			. += "The cover is closed."
 
+	if (wiresexposed)
+		. += "The cover is closed and the wires are exposed."
+	else if ((locked && emagged) || hacker) //Some things can cause locked && emagged. Malf AI causes hacker.
+		. += "The cover is closed, but the panel is unresponsive."
+	else if(!locked && emagged) //Normal emag does this.
+		. += "The cover is closed, but the panel is flashing an error."
+
+	. += "<span class='notice'>Alt-Click the APC to [ locked ? "unlock" : "lock"] the interface.</span>"
 
 // update the APC icon to show the three base states
 // also add overlays for indicator lights
@@ -685,6 +689,18 @@
 				return src.attack_hand(user)
 			//Placeholder until someone can do take_damage() for APCs or something.
 			to_chat(user,"<span class='notice'>The [src.name] looks too sturdy to bash open with \the [W.name].</span>")
+
+/obj/machinery/power/apc/AltClick(mob/user)
+	. = ..()
+	//if(!user.canUseTopic(src, !area.hasSiliconAccessInArea(user)) || !isturf(loc))
+	//	return
+	//togglelock(user)
+	if(!isturf(loc) || !src.allowed(usr) || !isWireCut(APC_WIRE_IDSCAN))
+		return
+	locked = !locked
+	to_chat(user,"You [ locked ? "lock" : "unlock"] the APC interface.")
+	update_icon()
+	return TRUE
 
 // attack with hand - remove cell (if cover open) or interact with the APC
 

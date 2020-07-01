@@ -46,7 +46,7 @@
 		qdel(src)
 
 /obj/machinery/computer/arcade/proc/prizevend()
-	if(!(contents-circuit).len)
+	if(!length(contents - circuit))
 		var/prizeselect = pickweight(prizes)
 		new prizeselect(src.loc)
 
@@ -54,7 +54,7 @@
 			new	/obj/item/clothing/head/syndicatefake(src.loc)
 
 	else
-		var/atom/movable/prize = pick(contents-circuit)
+		var/atom/movable/prize = pick(contents - circuit)
 		prize.loc = src.loc
 
 /obj/machinery/computer/arcade/attack_ai(mob/user as mob)
@@ -1020,13 +1020,13 @@
 	var/active = 0 //if the ship is on
 
 /obj/item/orion_ship/examine(mob/user)
-	..()
-	if(!(in_range(user, src)))
+	. = ..()
+	if(!in_range(user, src))
 		return
 	if(!active)
-		to_chat(user, span("notice", "There's a little switch on the bottom. It's flipped down."))
+		. += "<span class='notice'>There's a little switch on the bottom. It's flipped down.</span>"
 	else
-		to_chat(user, span("notice", "There's a little switch on the bottom. It's flipped up."))
+		. += "<span class='notice'>There's a little switch on the bottom. It's flipped up.</span>"
 
 /obj/item/orion_ship/attack_self(mob/user)
 	if(active)

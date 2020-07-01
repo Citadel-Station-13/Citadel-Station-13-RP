@@ -78,15 +78,17 @@
 	return get_material_by_name(DEFAULT_WALL_MATERIAL)
 
 /obj/machinery/door/firedoor/examine(mob/user)
-	. = ..(user, 1)
-	if(!. || !density)
-		return
+	. = ..()
+	if(!density)
+		. += "<span class='notice'>It is open, but could be <b>toggled</b> close.</span>"
+	else if(density)
+		. += "<span class='notice'>It is closed, but could be <i>toggled</i> open."
 
+	. +=  "<b>Sensor readings:</b>"
 	if(pdiff >= FIREDOOR_MAX_PRESSURE_DIFF)
-		to_chat(user, "<span class='warning'>WARNING: Current pressure differential is [pdiff]kPa! Opening door may result in injury!</span>")
+		. += "<span class='warning'>WARNING: Current pressure differential is [pdiff]kPa! Opening door may result in injury!</span>"
 
-	to_chat(user, "<b>Sensor readings:</b>")
-	for(var/index = 1; index <= tile_info.len; index++)
+	for(var/index = 1 to 4)//there is only 4 valid dirs for this.
 		var/o = "&nbsp;&nbsp;"
 		switch(index)
 			if(1)
@@ -99,15 +101,12 @@
 				o += "WEST: "
 		if(tile_info[index] == null)
 			o += "<span class='warning'>DATA UNAVAILABLE</span>"
-			to_chat(user, o)
+			. += o
 			continue
-		var/celsius = convert_k2c(tile_info[index][1])
-		var/pressure = tile_info[index][2]
 		o += "<span class='[(dir_alerts[index] & (FIREDOOR_ALERT_HOT|FIREDOOR_ALERT_COLD)) ? "warning" : "color:blue"]'>"
-		o += "[celsius]&deg;C</span> "
-		o += "<span style='color:blue'>"
-		o += "[pressure]kPa</span></li>"
-		to_chat(user, o)
+		o += "[convert_k2c(tile_info[index][1])]&deg;C</span> "
+		o += "<span style='color:blue'>[tile_info[index][2]]kPa</span>"
+		. += o
 
 	if(islist(users_to_open) && users_to_open.len)
 		var/users_to_open_string = users_to_open[1]

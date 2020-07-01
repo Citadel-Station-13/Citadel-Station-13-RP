@@ -11,17 +11,18 @@
 	var/light_y = 0
 	cooking_power = 0
 
-/obj/machinery/appliance/cooker/examine(var/mob/user)
+/obj/machinery/appliance/cooker/examine(mob/user)
 	. = ..()
-	if (.)	//no need to duplicate adjacency check
-		if (!stat)
-			if (temperature < min_temp)
-				to_chat(user, span("warning", "\The [src] is still heating up and is too cold to cook anything yet."))
-			else
-				to_chat(user, span("notice", "It is running at [round(get_efficiency(), 0.1)]% efficiency!"))
-			to_chat(user, "Temperature: [round(temperature - T0C, 0.1)]C / [round(optimal_temp - T0C, 0.1)]C")
+	if(!in_range(user, src))
+		return
+	if(!stat)
+		if (temperature < min_temp)
+			. += "<span class='warning'>\The [src] is still heating up and is too cold to cook anything yet.</span>"
 		else
-			to_chat(user, span("warning", "It is switched off."))
+			. += "<span class='notice'>It is running at [round(get_efficiency(), 0.1)]% efficiency!</span>"
+		. += "Temperature: [round(temperature - T0C, 0.1)]C / [round(optimal_temp - T0C, 0.1)]C"
+	else
+		. += "<span class='warning'>It is switched off.</span>"
 
 /obj/machinery/appliance/cooker/list_contents(var/mob/user)
 	if (cooking_objs.len)

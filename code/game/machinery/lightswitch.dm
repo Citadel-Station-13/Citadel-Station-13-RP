@@ -45,8 +45,10 @@
 		set_light(2, 0.1, on ? "#82FF4C" : "#F86060")
 
 /obj/machinery/light_switch/examine(mob/user)
-	if(..(user, 1))
-		to_chat(user, "A light switch. It is [on? "on" : "off"].")
+	. = ..()
+	if(get_dist(user, src) > 1)
+		return
+	. += "It is [on? "on" : "off"]."
 
 /obj/machinery/light_switch/attack_hand(mob/user)
 

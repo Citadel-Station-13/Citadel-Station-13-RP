@@ -400,8 +400,10 @@
 		return
 
 /obj/item/toy/waterflower/examine(mob/user)
-	if(..(user, 0))
-		user << text("\icon[] [] units of water left!", src, src.reagents.total_volume)
+	. = ..()
+	if(!Adjacent(user))
+		return
+	. += "<span class='notice'><b>[reagents.total_volume]</b> units of water left!</span>"
 
 /*
  * Bosun's whistle

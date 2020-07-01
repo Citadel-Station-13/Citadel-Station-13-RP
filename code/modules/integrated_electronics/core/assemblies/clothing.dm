@@ -47,9 +47,9 @@
 	..()
 
 /obj/item/clothing/examine(mob/user)
+	. = ..()
 	if(IC)
-		IC.examine(user)
-	..()
+		. |= IC.examine(user) //unions works on strings, right?
 
 /obj/item/clothing/attackby(obj/item/I, mob/user)
 	if(IC)

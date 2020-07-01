@@ -18,19 +18,8 @@
 	complexity = number_of_pins
 	..()
 
-/obj/item/integrated_circuit/memory/examine(mob/user)
-	..()
-	var/i
-	for(i = 1, i <= outputs.len, i++)
-		var/datum/integrated_io/O = outputs[i]
-		var/data = "nothing"
-		if(isweakref(O.data))
-			var/datum/d = O.data_as_type(/datum)
-			if(d)
-				data = "[d]"
-		else if(!isnull(O.data))
-			data = O.data
-		to_chat(user, "\The [src] has [data] saved to address [i].")
+//no, you can't just fucking read RW memory dummy!
+//only static memory is allowed to be read
 
 /obj/item/integrated_circuit/memory/do_work()
 	for(var/i = 1 to inputs.len)

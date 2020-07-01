@@ -190,7 +190,7 @@
 
 /obj/item/inducer/attack_self(mob/user)
 	if(opened && cell)
-		user.visible_message("<span class='notice'>[user] removes [cell] from [src]!</span>", "<span class='notice'>You remove [cell].</span>")
+		user.visible_message("[user] removes [cell] from [src]!","<span class='notice'>You remove [cell].</span>")
 		cell.update_icon()
 		user.put_in_hands(cell)
 		cell = null
@@ -198,14 +198,12 @@
 
 /obj/item/inducer/examine(mob/living/M)
 	. = ..()
-	var/dat = ""
 	if(cell)
-		dat += "<br><span class='notice'>Its display shows: [round(cell.charge)] / [cell.maxcharge].</span>"
+		. += "<span class='notice'>Its display shows: [round(cell.charge)]/[cell.maxcharge].</span>"
 	else
-		dat += "<br><span class='notice'>Its display is dark.</span>"
+		. += "<span class='notice'>Its display is dark.</span>"
 	if(opened)
-		dat += "<br><span class='notice'>Its battery compartment is open.</span>"
-	to_chat(M, dat)
+		. += "<span class='notice'>Its battery compartment is open.</span>"
 
 /obj/item/inducer/update_icon()
 	..()

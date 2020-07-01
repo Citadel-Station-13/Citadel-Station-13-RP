@@ -45,14 +45,13 @@
 
 
 /obj/item/grenade/examine(mob/user)
-	if(..(user, 0))
-		if(det_time > 1)
-			to_chat(user, "The timer is set to [det_time/10] seconds.")
-			return
-		if(det_time == null)
-			return
-		to_chat(user, "\The [src] is set for instant detonation.")
-
+	. = ..()
+	if(det_time > 1)
+		. += "<span class='notice'>The timer is set to <b>[det_time/10] second[det_time > 1 ? "s" : ""]</b>.</span>"
+		return
+	if(det_time == null)
+		return
+	. += "<span class='warning'>\The [src] is set for instant detonation.</span>"
 
 /obj/item/grenade/attack_self(mob/user as mob)
 	if(!active)

@@ -148,9 +148,13 @@
 	return 0
 
 /obj/machinery/status_display/examine(mob/user)
-	. = ..(user)
-	if(mode != STATUS_DISPLAY_BLANK && mode != STATUS_DISPLAY_ALERT)
-		to_chat(user, "The display says:<br>\t[sanitize(message1)]<br>\t[sanitize(message2)]")
+	. = ..()
+	if((message1 || message2) && mode != STATUS_DISPLAY_ALERT)
+		. += "The display says:"
+		if (message1)
+			. += "\t<tt>[html_encode(message1)]</tt>"
+		if (message2)
+			. += "\t<tt>[html_encode(message2)]</tt>"
 
 /obj/machinery/status_display/proc/set_message(m1, m2)
 	if(m1)
@@ -247,8 +251,6 @@
 			mode = STATUS_DISPLAY_TIME
 	update()
 
-#undef CHARS_PER_LINE
-#undef FOND_SIZE
 #undef FONT_COLOR
 #undef FONT_STYLE
 #undef SCROLL_SPEED

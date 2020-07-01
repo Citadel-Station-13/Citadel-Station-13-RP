@@ -162,11 +162,12 @@
 
 
 /obj/item/wrapping_paper/examine(mob/user)
-	if(..(user, 1))
-		user << text("There is about [] square units of paper left!", src.amount)
+	. = ..()
+	. += "<span class='notice'>There is about <b>[amount]</b> square units of paper left!"
 
 /obj/item/wrapping_paper/attack(mob/target as mob, mob/user as mob)
-	if (!istype(target, /mob/living/carbon/human)) return
+	if (!istype(target, /mob/living/carbon/human))
+		return
 	var/mob/living/carbon/human/H = target
 
 	if (istype(H.wear_suit, /obj/item/clothing/suit/straight_jacket) || H.stat)

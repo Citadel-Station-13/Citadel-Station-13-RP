@@ -29,8 +29,10 @@
 
 
 /obj/machinery/appliance/cooker/fryer/examine(var/mob/user)
-	if (..())//no need to duplicate adjacency check
-		to_chat(user, "Oil Level: [oil.total_volume]/[optimal_oil]")
+	. = ..()
+	if(!in_range(user, src))
+		return
+	. += "Oil Level: [oil.total_volume]/[optimal_oil]"
 
 /obj/machinery/appliance/cooker/fryer/Initialize(mapload)
 	. = ..()

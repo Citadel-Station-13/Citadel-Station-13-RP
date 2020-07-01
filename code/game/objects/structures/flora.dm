@@ -22,7 +22,7 @@
 	var/list/harvest_loot = null	// Should be an associative list for things to spawn, and their weights. An example would be a branch from a tree.
 
 /obj/structure/flora/Initialize()
-	..()
+	. = ..() //fucking return an init hint dummy
 
 	if(randomize_size)
 		icon_scale_x = rand(min_x_scale * 100, max_x_scale * 100) / 100
@@ -36,9 +36,9 @@
 		max_harvests = max(0, rand(min_harvests, max_harvests)) // Incase you want to weight it more toward 'not harvestable', set min_harvests to a negative value.
 
 /obj/structure/flora/examine(mob/user)
-	. = ..(user)
+	. = ..()
 	if(harvest_count < max_harvests)
-		to_chat(user, "<span class='notice'>\The [src] seems to have something hanging from it.</span>")
+		. += "<span class='notice'>\The [src] seems to have something hanging from it.</span>"
 
 /obj/structure/flora/attackby(var/obj/item/W, var/mob/living/user)
 	if(can_harvest(W))

@@ -117,14 +117,12 @@
 
 
 /obj/item/assembly/examine(mob/user)
-	..(user)
+	. = ..()
 	if((in_range(src, user) || loc == user))
 		if(secured)
-			to_chat(user, "\The [src] is ready!")
+			. += "\The [src] is ready!"
 		else
-			to_chat(user, "\The [src] can be attached!")
-	return
-
+			. += "\The [src] can be attached!"
 
 /obj/item/assembly/attack_self(mob/user as mob)
 	if(!user)	return 0

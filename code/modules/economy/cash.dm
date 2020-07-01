@@ -138,7 +138,7 @@
 	desc = "It's worth 1000 Thalers."
 	worth = 1000
 
-proc/spawn_money(var/sum, spawnloc, mob/living/carbon/human/human_user as mob)
+/proc/spawn_money(sum, spawnloc, mob/living/carbon/human/human_user) //OH THE ECONOMY
 	var/obj/item/spacecash/SC = new (spawnloc)
 
 	SC.set_worth(sum)
@@ -151,11 +151,18 @@ proc/spawn_money(var/sum, spawnloc, mob/living/carbon/human/human_user as mob)
 	icon_state = "efundcard"
 	desc = "A card that holds an amount of money."
 	var/owner_name = "" //So the ATM can set it so the EFTPOS can put a valid name on transactions.
-	attack_self() return  //Don't act
-	attackby()    return  //like actual
-	update_icon() return  //space cash
+
+/obj/item/spacecash/ewallet/attack_self()	//Don't override
+	return  //Don't act
+
+/obj/item/spacecash/ewallet/attackby()		//procs
+	return  //like actual
+
+/obj/item/spacecash/ewallet/update_icon()	//like that
+	return  //space cash
 
 /obj/item/spacecash/ewallet/examine(mob/user)
-	..(user)
-	if (!(user in view(2)) && user!=src.loc) return
-	to_chat(user, "<font color='blue'>Charge card's owner: [src.owner_name]. Thalers remaining: [src.worth].</font>")
+	. = ..()
+	if(!(user in view(2)) && user != src.loc)
+		return
+	. += "<span class='notice'>Charge card's owner: [owner_name]. Thalers remaining: [worth].</span>"

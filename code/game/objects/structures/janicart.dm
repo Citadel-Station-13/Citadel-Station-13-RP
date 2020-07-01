@@ -18,16 +18,13 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 	var/signs = 0	//maximum capacity hardcoded below
 
 
-/obj/structure/janitorialcart/New()
+/obj/structure/janitorialcart/Initialize()
 	create_reagents(300)
-	..()
-
+	. = ..()
 
 /obj/structure/janitorialcart/examine(mob/user)
-	if(..(user, 1))
-		to_chat(user, "[src] \icon[src] contains [reagents.total_volume] unit\s of liquid!")
-	//everything else is visible, so doesn't need to be mentioned
-
+	. = ..()
+	. += "[src] contains [reagents.total_volume] unit\s of liquid!"
 
 /obj/structure/janitorialcart/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/storage/bag/trash) && !mybag)
@@ -186,13 +183,11 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 
 
 /obj/structure/bed/chair/janicart/examine(mob/user)
-	if(!..(user, 1))
-		return
+	. = ..()
 
-	to_chat(user, "\icon[src] This [callme] contains [reagents.total_volume] unit\s of water!")
+	. += "\The [callme] contains [reagents.total_volume] unit\s of water!"
 	if(mybag)
-		to_chat(user, "\A [mybag] is hanging on the [callme].")
-
+		. += "\A [mybag] is hanging on the [callme]."
 
 /obj/structure/bed/chair/janicart/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/mop))

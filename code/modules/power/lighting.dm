@@ -30,7 +30,7 @@ var/global/list/light_type_cache = list()
 	var/fixture_type = /obj/machinery/light
 	var/sheets_refunded = 2
 
-/obj/machinery/light_construct/New(var/atom/newloc, var/newdir, var/building = 0, var/datum/frame/frame_types/frame_type, var/obj/machinery/light/fixture = null)
+/obj/machinery/light_construct/New(atom/newloc, newdir, building = 0, datum/frame/frame_types/frame_type, obj/machinery/light/fixture = null)
 	..(newloc)
 	if(fixture)
 		fixture_type = fixture.type
@@ -51,16 +51,15 @@ var/global/list/light_type_cache = list()
 			icon_state = "tube-empty"
 
 /obj/machinery/light_construct/examine(mob/user)
-	if(!..(user, 2))
-		return
+	. = ..()
 
-	switch(src.stage)
+	switch(stage)
 		if(1)
-			to_chat(user, "It's an empty frame.")
+			. += "It's an empty frame."
 		if(2)
-			to_chat(user, "It's wired.")
+			. += "It's wired."
 		if(3)
-			to_chat(user, "The casing is closed.")
+			. += "The casing is closed."
 
 /obj/machinery/light_construct/attackby(obj/item/W as obj, mob/user as mob)
 	src.add_fingerprint(user)
@@ -84,7 +83,8 @@ var/global/list/light_type_cache = list()
 			return
 
 	if(W.is_wirecutter())
-		if (src.stage != 2) return
+		if (src.stage != 2)
+			return
 		src.stage = 1
 		src.update_icon()
 		new /obj/item/stack/cable_coil(get_turf(src.loc), 1, "red")
@@ -245,10 +245,10 @@ var/global/list/light_type_cache = list()
 	auto_flicker = TRUE
 
 //VOREStation Add - Shadeless!
-/obj/machinery/light/flamp/noshade/New()
+/obj/machinery/light/flamp/noshade/Initialize()
+	. = ..()
 	lamp_shade = 0
 	update(0)
-	..()
 //VOREStation Add End
 
 // create a new lighting fixture
@@ -272,12 +272,11 @@ var/global/list/light_type_cache = list()
 /obj/machinery/light/Destroy()
 	var/area/A = get_area(src)
 	if(A)
-		on = 0
+		on = FALSE
 //		A.update_lights()
 	return ..()
 
 /obj/machinery/light/update_icon()
-
 	switch(status)		// set icon_states
 		if(LIGHT_OK)
 			//VOREStation Edit Start
@@ -404,22 +403,23 @@ var/global/list/light_type_cache = list()
 
 // attempt to set the light's on/off status
 // will not switch on if broken/burned/empty
-/obj/machinery/light/proc/seton(var/s)
+/obj/machinery/light/proc/seton(s)
 	on = (s && status == LIGHT_OK)
 	update()
 
 // examine verb
 /obj/machinery/light/examine(mob/user)
+	. = ..()
 	var/fitting = get_fitting_name()
 	switch(status)
 		if(LIGHT_OK)
-			to_chat(user, "[desc] It is turned [on? "on" : "off"].")
+			. += "It is turned [on? "on" : "off"]."
 		if(LIGHT_EMPTY)
-			to_chat(user, "[desc] The [fitting] has been removed.")
+			. += "The [fitting] has been removed."
 		if(LIGHT_BURNED)
-			to_chat(user, "[desc] The [fitting] is burnt out.")
+			. += "The [fitting] is burnt out."
 		if(LIGHT_BROKEN)
-			to_chat(user, "[desc] The [fitting] has been smashed.")
+			. += "The [fitting] has been smashed."
 
 /obj/machinery/light/proc/get_fitting_name()
 	var/obj/item/light/L = light_type

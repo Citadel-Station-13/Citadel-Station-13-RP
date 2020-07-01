@@ -10,7 +10,7 @@
 	item_icons = list() // No in-hand sprites (for now, anyway, we could totally add some)
 	pixel_y = 0			// Override value from parent.
 
-/obj/item/holder/micro/examine(var/mob/user)
+/obj/item/holder/micro/examine(mob/user)
 	for(var/mob/living/M in contents)
 		M.examine(user)
 

@@ -66,16 +66,17 @@
 		qdel(src)
 
 /obj/item/virusdish/examine(mob/user)
-	..()
+	. = ..()
 	if(basic_info)
-		user << "[basic_info] : <a href='?src=\ref[src];info=1'>More Information</a>"
+		. += "[basic_info] : <a href='?src=[REF(src)];info=1'>More Information</a>"
 
 /obj/item/virusdish/Topic(href, href_list)
 	. = ..()
-	if(.) return 1
+	if(.)
+		return 1
 
 	if(href_list["info"])
-		usr << browse(info, "window=info_\ref[src]")
+		usr << browse(info, "window=info_[REF(src)]")
 		return 1
 
 /obj/item/ruinedvirusdish

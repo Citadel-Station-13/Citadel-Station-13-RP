@@ -196,8 +196,8 @@
 		else
 			playsound(get_turf(src), 'sound/machines/defib_safetyOff.ogg', 75, 0)
 
-/obj/item/shield_projector/examine(var/mob/user)
-	..()
+/obj/item/shield_projector/examine(mob/user)
+	. = ..()
 	if(get_dist(src, user) <= 1)
 		to_chat(user, "\The [src]'s shield matrix is at [round( (shield_health / max_shield_health) * 100, 0.01)]% strength.")
 

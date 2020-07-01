@@ -24,7 +24,7 @@ MRE Stuff
 
 /obj/item/storage/mre/examine(mob/user)
 	. = ..()
-	to_chat(user, meal_desc)
+	. += meal_desc
 
 /obj/item/storage/mre/update_icon()
 	if(opened)

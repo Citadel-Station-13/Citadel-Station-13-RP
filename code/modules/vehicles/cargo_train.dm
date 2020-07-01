@@ -193,21 +193,20 @@
 		return ..()
 
 /obj/vehicle/train/engine/examine(mob/user)
-	if(!..(user, 1))
+	. = ..()
+
+	if(!in_range(src, user))
 		return
 
-	if(!istype(usr, /mob/living/carbon/human))
-		return
-
-	to_chat(user, "The power light is [on ? "on" : "off"].\nThere are[key ? "" : " no"] keys in the ignition.")
-	user << "The charge meter reads [cell? round(cell.percent(), 0.01) : 0]%"
+	. += "The power light is [on ? "on" : "off"].\nThere are[key ? "" : " no"] keys in the ignition."
+	. += "<span class='notice'>The charge meter reads <b>[cell? round(cell.percent(), 0.01) : 0]%</b>.</span>"
 
 /obj/vehicle/train/engine/verb/start_engine()
 	set name = "Start engine"
 	set category = "Vehicle"
 	set src in view(0)
 
-	if(!istype(usr, /mob/living/carbon/human))
+	if(!ishuman(usr))
 		return
 
 	if(on)

@@ -125,8 +125,8 @@
 
 
 /obj/machinery/recharge_station/examine(mob/user)
-	..(user)
-	to_chat(user, "The charge meter reads: [round(chargepercentage())]%")
+	. = ..()
+	. += "<span class='notice'>The charge meter reads: <b>[round(chargepercentage())]%</b>.</span>"
 
 /obj/machinery/recharge_station/proc/chargepercentage()
 	if(!cell)

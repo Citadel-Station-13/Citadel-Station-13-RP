@@ -429,11 +429,10 @@
 	max_walls = 10
 	max_doors = 5
 
-/obj/item/inflatable_dispenser/examine(var/mob/user)
-	if(!..(user))
-		return
-	to_chat(user, "It has [stored_walls] wall segment\s and [stored_doors] door segment\s stored.")
-	to_chat(user, "It is set to deploy [mode ? "doors" : "walls"]")
+/obj/item/inflatable_dispenser/examine(mob/user)
+	. = ..()
+	. += "<span class='notice'>It has <b>[stored_walls]</b> wall segment\s and <b>[stored_doors]</b> door segment\s stored.</span>"
+	. += "<span class='notice'>It is set to deploy [mode ? "doors" : "walls"]</span>"
 
 /obj/item/inflatable_dispenser/attack_self()
 	mode = !mode

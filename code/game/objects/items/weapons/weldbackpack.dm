@@ -143,9 +143,8 @@
 		src.add_fingerprint(usr)
 
 /obj/item/weldpack/examine(mob/user)
-	..(user)
-	user << text("\icon[] [] units of fuel left!", src, src.reagents.total_volume)
-	return
+	. = ..()
+	. += "It contains [reagents.total_volume] unit\s of fuel out of [max_fuel]."
 
 /obj/item/weldpack/survival
 	name = "emergency welding kit"

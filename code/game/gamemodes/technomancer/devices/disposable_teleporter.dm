@@ -23,8 +23,8 @@
 	uses = 1
 
 /obj/item/disposable_teleporter/examine(mob/user)
-	..()
-	to_chat(user, "[uses] uses remaining.")
+	. = ..()
+	. += "<span class='notice'>[uses] uses remaining.</span>"
 
 /obj/item/disposable_teleporter/attack_self(mob/user as mob)
 	if(!uses)

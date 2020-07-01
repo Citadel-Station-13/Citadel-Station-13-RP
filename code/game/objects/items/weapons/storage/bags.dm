@@ -145,7 +145,7 @@
 		gather_all(get_turf(src), ismob(source)? source : null)
 
 /obj/item/storage/bag/ore/examine(mob/user)
-	..()
+	. = ..()
 
 	if(!Adjacent(user)) //Can only check the contents of ore bags if you can physically reach them.
 		return
@@ -154,17 +154,16 @@
 		add_fingerprint(user)
 
 	if(!contents.len)
-		to_chat(user, "It is empty.")
+		. += "It is empty."
 		return
 
 	if(world.time > last_update + 10)
 		update_ore_count()
 		last_update = world.time
 
-	to_chat(user, "<span class='notice'>It holds:</span>")
+	. += "<span class='notice'>It holds:</span>"
 	for(var/ore in stored_ore)
-		to_chat(user, "<span class='notice'>- [stored_ore[ore]] [ore]</span>")
-	return
+		. += "<span class='notice'>- [stored_ore[ore]] [ore]</span>"
 
 /obj/item/storage/bag/ore/open(mob/user as mob) //No opening it for the weird UI of having shit-tons of ore inside it.
 	if(world.time > last_update + 10)

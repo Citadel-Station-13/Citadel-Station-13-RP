@@ -26,13 +26,21 @@
 	return
 
 /obj/machinery/recharger/examine(mob/user)
-	if(!..(user, 5))
+	. = ..()
+	if(!in_range(user, src) && !issilicon(user) && !isobserver(user))
+		. += "<span class='warning'>You're too far away to examine [src]'s contents and display!</span>"
 		return
 
-	to_chat(user, "[charging ? "[charging]" : "Nothing"] is in [src].")
 	if(charging)
-		var/obj/item/cell/C = charging.get_cell()
-		to_chat(user, "Current charge: [C.charge] / [C.maxcharge]")
+		. += {"<span class='notice'>\The [src] contains:</span>
+		<span class='notice'>- \A [charging].</span>"}
+
+	if(!(stat & (NOPOWER|BROKEN)))
+		// . += "<span class='notice'>The status display reads:</span>"
+		// . += "<span class='notice'>- Recharging <b>[recharge_coeff*10]%</b> cell charge per cycle.</span>"
+		if(charging)
+			var/obj/item/cell/C = charging.get_cell()
+			. += "<span class='notice'>- \The [charging]'s cell is at <b>[C.percent()]%</b>.</span>"
 
 /obj/machinery/recharger/attackby(obj/item/G as obj, mob/user as mob)
 	var/allowed = 0

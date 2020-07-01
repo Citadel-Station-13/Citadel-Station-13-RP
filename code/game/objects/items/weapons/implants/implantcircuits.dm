@@ -36,6 +36,7 @@
 	IC.emp_act(severity)
 
 /obj/item/implant/integrated_circuit/examine(mob/user)
+	. = ..() //the fuck is this circuit? powergame circuit?
 	IC.examine(user)
 
 /obj/item/implant/integrated_circuit/attackby(var/obj/item/O, var/mob/user)

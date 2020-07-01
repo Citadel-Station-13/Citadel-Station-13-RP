@@ -50,7 +50,7 @@
 
 /obj/machinery/cablelayer/examine(mob/user)
 	..()
-	to_chat(user, "\The [src]'s cable reel has [cable.amount] length\s left.")
+	. += "<span class='notice'>\The [src]'s cable reel has <b>[cable.amount]</b> length\s left.</span>"
 
 /obj/machinery/cablelayer/proc/load_cable(var/obj/item/stack/cable_coil/CC)
 	if(istype(CC) && CC.amount)

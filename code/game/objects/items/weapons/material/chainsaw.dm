@@ -106,9 +106,11 @@ obj/item/chainsaw/proc/turnOn(mob/user as mob)
 	return reagents.get_reagent_amount("fuel")
 
 /obj/item/chainsaw/examine(mob/user)
-	if(..(user,0))
-		if(max_fuel)
-			to_chat(usr, "<span class = 'notice'>The [src] feels like it contains roughtly [get_fuel()] units of fuel left.</span>")
+	. = ..()
+	if(!in_range(user, src))
+		return
+	if(max_fuel)
+		. += "<span class='notice'>The [src] feels like it contains roughtly <b>[get_fuel()]</b> units of fuel left.</span>"
 
 /obj/item/chainsaw/suicide_act(mob/user)
 	var/datum/gender/TU = gender_datums[user.get_visible_gender()]

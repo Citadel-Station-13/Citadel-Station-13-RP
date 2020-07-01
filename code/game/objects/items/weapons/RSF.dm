@@ -10,13 +10,18 @@ RSF
 	description_info = "Control Clicking on the device will allow you to choose the glass it dispenses when in the proper mode."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "rsf"
+	// lefthand_file = 'icons/mob/inhands/equipment/tools_lefthand.dmi'
+	// righthand_file = 'icons/mob/inhands/equipment/tools_righthand.dmi'
 	opacity = 0
-	density = 0
-	anchored = 0.0
+	density = FALSE
+	anchored = FALSE
+	// item_flags = NOBLUDGEON
+	// armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	var/stored_matter = 30
 	var/mode = 1
-	var/obj/item/reagent_containers/glasstype = /obj/item/reagent_containers/food/drinks/metaglass
+	w_class = WEIGHT_CLASS_NORMAL
 
+	var/obj/item/reagent_containers/glasstype = /obj/item/reagent_containers/food/drinks/metaglass
 	var/list/container_types = list(
 		"metamorphic glass" = /obj/item/reagent_containers/food/drinks/metaglass,
 		"half-pint glass" = /obj/item/reagent_containers/food/drinks/glass2/square,
@@ -30,26 +35,21 @@ RSF
 		"condiment bottle" = /obj/item/reagent_containers/food/condiment
 		)
 
-	w_class = ITEMSIZE_NORMAL
-
 /obj/item/rsf/examine(mob/user)
-	if(..(user, 0))
-		to_chat(user,"<span class='notice'>It currently holds [stored_matter]/30 fabrication-units.</span>")
+	. = ..()
+	. += "<span class='notice'>It currently holds [stored_matter]/30 fabrication-units.</span>"
 
-/obj/item/rsf/attackby(obj/item/W as obj, mob/user as mob)
-	..()
-	if (istype(W, /obj/item/rcd_ammo))
-
-		if ((stored_matter + 10) > 30)
-			to_chat(user, "<span class='warning'>The RSF can't hold any more matter.</span>")
+/obj/item/rsf/attackby(obj/item/W, mob/user, params)
+	if(istype(W, /obj/item/rcd_ammo))
+		if((stored_matter + 10) > 30)
+			to_chat(user, "The RSF can't hold any more matter.")
 			return
-
 		qdel(W)
-
 		stored_matter += 10
 		playsound(src.loc, 'sound/machines/click.ogg', 10, 1)
-		to_chat(user,"<span class='notice'>The RSF now holds [stored_matter]/30 fabrication-units.</span>")
-		return
+		to_chat(user, "The RSF now holds [stored_matter]/30 fabrication-units.")
+	else
+		return ..()
 
 /obj/item/rsf/CtrlClick(mob/living/user)
 	if(!Adjacent(user) || !istype(user))

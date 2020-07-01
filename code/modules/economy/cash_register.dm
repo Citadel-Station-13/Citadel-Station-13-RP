@@ -25,24 +25,25 @@
 
 
 // Claim machine ID
-/obj/machinery/cash_register/New()
+/obj/machinery/cash_register/Initialize()
+	. = ..()
 	machine_id = "[station_name()] RETAIL #[num_financial_terminals++]"
 	cash_stored = rand(10, 70)*10
 	transaction_devices += src // Global reference list to be properly set up by /proc/setup_economy()
 
-
-/obj/machinery/cash_register/examine(mob/user as mob)
-	..(user)
+/obj/machinery/cash_register/examine(mob/user)
+	. = ..()
 	if(cash_open)
 		if(cash_stored)
-			to_chat(user, "It holds [cash_stored] Thaler\s of money.")
+			. += "It holds [cash_stored] Thaler\s of money."
 		else
-			to_chat(user, "It's completely empty.")
+			. += "It's completely empty."
 
 
 /obj/machinery/cash_register/attack_hand(mob/user as mob)
 	// Don't be accessible from the wrong side of the machine
-	if(get_dir(src, user) & reverse_dir[src.dir]) return
+	if(get_dir(src, user) & reverse_dir[src.dir])
+		return
 
 	if(cash_open)
 		if(cash_stored)

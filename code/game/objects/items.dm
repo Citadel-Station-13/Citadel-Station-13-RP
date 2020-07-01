@@ -203,7 +203,9 @@
 	src.loc = T
 
 // See inventory_sizes.dm for the defines.
-/obj/item/examine(mob/user, var/distance = -1)
+/obj/item/examine(mob/user)
+	. = ..()
+
 	var/size
 	switch(src.w_class)
 		if(ITEMSIZE_TINY)
@@ -216,7 +218,9 @@
 			size = "bulky"
 		if(ITEMSIZE_HUGE)
 			size = "huge"
-	return ..(user, distance, "", "It is a [size] item.")
+
+	. += "[gender == PLURAL ? "They are" : "It is"] a [size] item."
+
 
 /obj/item/attack_hand(mob/living/user as mob)
 	if (!user) return

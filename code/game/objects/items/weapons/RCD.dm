@@ -71,8 +71,13 @@
 
 
 /obj/item/rcd/examine(mob/user)
-	..()
-	to_chat(user, display_resources())
+	. = ..()
+	// . += "It currently holds [stored_matter]/[max_stored_matter] matter-units."
+	// if(upgrade & RCD_UPGRADE_FRAMES)
+	// 	. += "It contains the design for machine frames, computer frames and deconstruction."
+	// if(upgrade & RCD_UPGRADE_SIMPLE_CIRCUITS)
+	// 	. += "It contains the design for firelock, air alarm, fire alarm, apc circuits and crap power cells."
+	. += display_resources()
 
 // Used to show how much stuff (matter units, cell charge, etc) is left inside.
 /obj/item/rcd/proc/display_resources()
@@ -434,8 +439,8 @@
 	remaining = RCD_MAX_CAPACITY
 
 /obj/item/rcd_ammo/examine(mob/user)
-	..()
-	to_chat(user, display_resources())
+	. = ..()
+	. += display_resources()
 
 // Used to show how much stuff (matter units, cell charge, etc) is left inside.
 /obj/item/rcd_ammo/proc/display_resources()

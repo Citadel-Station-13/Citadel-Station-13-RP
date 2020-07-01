@@ -772,16 +772,26 @@
 
 
 /obj/item/clothing/under/examine(mob/user)
-	..(user)
-	switch(src.sensor_mode)
+	. = ..()
+	// if(can_adjust)
+	// 	if(adjusted == ALT_STYLE)
+	// 		. += "Alt-click on [src] to wear it normally."
+	// 	else
+	// 		. += "Alt-click on [src] to wear it casually."
+	// if (has_sensor == BROKEN_SENSORS)
+	// 	. += "Its sensors appear to be shorted out."
+	// else if(has_sensor > NO_SENSORS)
+	switch(sensor_mode)
 		if(0)
-			to_chat(user, "Its sensors appear to be disabled.")
+			. += "Its sensors appear to be disabled."
 		if(1)
-			to_chat(user, "Its binary life sensors appear to be enabled.")
+			. += "Its binary life sensors appear to be enabled."
 		if(2)
-			to_chat(user, "Its vital tracker appears to be enabled.")
+			. += "Its vital tracker appears to be enabled."
 		if(3)
-			to_chat(user, "Its vital tracker and tracking beacon appear to be enabled.")
+			. += "Its vital tracker and tracking beacon appear to be enabled."
+	// if(attached_accessory)
+	// 	. += "\A [attached_accessory] is attached to it."
 
 /obj/item/clothing/under/proc/set_sensors(mob/usr as mob)
 	var/mob/M = usr

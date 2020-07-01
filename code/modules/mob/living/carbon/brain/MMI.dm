@@ -194,23 +194,24 @@
 	return	//Doesn't do anything right now because none of the things that can be done to a regular MMI make any sense for these
 
 /obj/item/mmi/digital/examine(mob/user)
-	if(!..(user))
-		return
+	. = ..()
 
-	var/msg = "<span class='info'>*---------*</span>\nThis is \icon[src] \a <EM>[src]</EM>!\n[desc]\n"
+	var/msg = "<span class='info'>*---------*</span>\nThis is [icon2html(src, user)] \a <EM>[src]</EM>!\n[desc]\n"
 	msg += "<span class='warning'>"
 
 	if(src.brainmob && src.brainmob.key)
 		switch(src.brainmob.stat)
 			if(CONSCIOUS)
-				if(!src.brainmob.client)	msg += "It appears to be in stand-by mode.\n" //afk
-			if(UNCONSCIOUS)		msg += "<span class='warning'>It doesn't seem to be responsive.</span>\n"
-			if(DEAD)			msg += "<span class='deadsay'>It appears to be completely inactive.</span>\n"
+				if(!src.brainmob.client)
+					msg += "It appears to be in stand-by mode.\n" //afk
+			if(UNCONSCIOUS)
+				msg += "<span class='warning'>It doesn't seem to be responsive.</span>\n"
+			if(DEAD)
+				msg += "<span class='deadsay'>It appears to be completely inactive.</span>\n"
 	else
 		msg += "<span class='deadsay'>It appears to be completely inactive.</span>\n"
 	msg += "</span><span class='info'>*---------*</span>"
-	user << msg
-	return
+	. += msg
 
 /obj/item/mmi/digital/emp_act(severity)
 	if(!src.brainmob)

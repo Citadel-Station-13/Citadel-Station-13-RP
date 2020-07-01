@@ -17,7 +17,7 @@
 	var/spray_amount = 10	//units of liquid per particle
 	var/max_water = 300
 	var/last_use = 1.0
-	var/safety = 1
+	var/safety = TRUE
 	var/sprite_name = "fire_extinguisher"
 
 /obj/item/extinguisher/mini
@@ -44,8 +44,11 @@
 	reagents.add_reagent("water", max_water)
 
 /obj/item/extinguisher/examine(mob/user)
-	if(..(user, 0))
-		to_chat(user, text("\icon[] [] contains [] units of water left!", src, src.name, src.reagents.total_volume))
+	. = ..()
+	. += "The safety is [safety ? "on" : "off"]."
+
+	// if(reagents.total_volume) no flusing yet
+	// 	. += "<span class='notice'>You can loose its <b>screws</b> to empty it.</span>"
 
 /obj/item/extinguisher/attack_self(mob/user as mob)
 	safety = !safety

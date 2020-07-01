@@ -46,7 +46,7 @@
 		return
 
 /obj/item/assembly/electronic_assembly/examine(mob/user)
-	.=..(user, 1)
+	. = ..()
 	if(EA)
 		for(var/obj/item/integrated_circuit/IC in EA.contents)
 			IC.external_examine(user)

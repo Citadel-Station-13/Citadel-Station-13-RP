@@ -37,8 +37,8 @@
 	return ..()
 
 /obj/machinery/computer/telescience/examine(mob/user)
-	..()
-	to_chat(user, "There are [crystals.len ? crystals.len : "no"] bluespace crystal\s in the crystal slots.")
+	. = ..()
+	. += "<span class='notice'>There are [crystals.len ? "<b>[crystals.len]</b>" : "no"] bluespace crystal\s in the crystal slots.</span>"
 
 /obj/machinery/computer/telescience/Initialize()
 	. = ..()
@@ -141,7 +141,7 @@
 			// Irradiate everyone in telescience!
 			for(var/obj/machinery/telepad/E in machines)
 				var/L = get_turf(E)
-				sparks(target = L)
+				sparks()
 				for(var/mob/living/carbon/human/M in viewers(L, null))
 					M.apply_effect((rand(10, 20)), IRRADIATE, 0)
 					to_chat(M, "<span class='warning'>You feel strange.</span>")

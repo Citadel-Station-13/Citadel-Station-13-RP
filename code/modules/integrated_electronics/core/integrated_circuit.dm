@@ -5,8 +5,10 @@ a creative player the means to solve many problems.  Circuits are held inside an
 
 /obj/item/integrated_circuit/examine(mob/user)
 	interact(user)
-	external_examine(user)
 	. = ..()
+	var/text = external_examine(user)
+	if(text)
+		. += text
 
 // This should be used when someone is examining while the case is opened.
 /obj/item/integrated_circuit/proc/internal_examine(mob/user)
