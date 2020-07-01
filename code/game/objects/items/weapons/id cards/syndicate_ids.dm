@@ -37,10 +37,8 @@
 		switch(alert("Would you like edit the ID, or show it?","Show or Edit?", "Edit","Show"))
 			if("Edit")
 				ui_interact(user)
-			if("Show")
-				..()
-	else
-		..()
+				return
+		..() //default normal show
 
 /obj/item/card/id/syndicate/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/data[0]

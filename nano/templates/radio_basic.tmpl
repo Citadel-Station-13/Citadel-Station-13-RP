@@ -1,4 +1,4 @@
-<!-- 
+<!--
 Title: Basic Radio UI
 Used In File(s): /code/game/objects/item/devices/radio/radio.dm
 -->
@@ -19,92 +19,86 @@ Used In File(s): /code/game/objects/item/devices/radio/radio.dm
 	</style>
 </head>
 
-
+<!-- Order is frequency, radio then channel-->
 
 {{if data.useSyndMode}}
 	{{:helper.syndicateMode()}}
 {{/if}}
-
-<div class="item">
-	<div class="itemLabelWide">
-		Microphone
-	</div>
-	<div class="itemContentMedium">
-		{{if data.mic_cut}}
-			{{:helper.link('On', null, null, 'disabled')}}
-			{{:helper.link('Off', null, null, 'disabled')}}
-		{{else}}
-			{{:helper.link('On', null, {'talk' : 0}, data.mic_status ? 'selected' : null)}}
-			{{:helper.link('Off', null, {'talk' : 1}, data.mic_status ? null : 'selected')}}
-		{{/if}}
-	</div>
-</div>
-
-<div class="item">
-	<div class="itemLabelWide">
-		Speaker
-	</div>
-	<div class="itemContentMedium">
-		{{if data.spk_cut}}
-			{{:helper.link('On', null, null, 'disabled')}}
-			{{:helper.link('Off', null, null, 'disabled')}}
-		{{else}}
-			{{:helper.link('On', null, {'listen' : 0}, data.speaker ? 'selected' : null)}}
-			{{:helper.link('Off', null, {'listen' : 1}, data.speaker ? null : 'selected')}}
-		{{/if}}
-	</div>
-</div>
-
-{{if data.has_subspace}}
+<div class="itemGroup">
 	<div class="item">
-		<div class="itemLabelWide">
+	{{if data.freqlock}}
+	<div class="itemLabel" style="color:light-gray">
+		Frequency:
+	</div>
+	<div class="itemContentMedium">
+		{{:(data.frequency || 1441)/10}} kHz
+	</div>
+	{{else}}
+	<div class="itemLabel" style="color:light-gray">
+		Frequency: {{:(data.frequency || 1441)/10}} kHz
+	</div>
+	<div class="itemContentMedium"> <!-- Just imagine this as a slider -->
+		{{:helper.link('Tune Frequency', null, {'frequency': 1, 'input':1})}}
+	</div>
+	{{/if}}
+	</div>
+</div>
+<div class="itemGroup">
+	<h2>Audio</h2>
+	<div class="item">
+		<div class="itemLabel">
+			Speaker:
+		</div>
+		<div class="itemContent">
+			{{if data.spk_cut}}
+				{{:helper.link(data.listening ? 'On' : 'Off', null, null, 'disabled')}}
+			{{else}}
+				{{:helper.link(data.listening ? 'On' : 'Off', null, {'listen' : 1})}}
+			{{/if}}
+		</div>
+	</div>
+	<div class="item">
+		<div class="itemLabel">
+			Microphone:
+		</div>
+		<div class="itemContent">
+			{{if data.mic_cut}}
+				{{:helper.link(data.broadcasting ? 'On' : 'Off', null, null, 'disabled')}}
+			{{else}}
+				{{:helper.link(data.broadcasting ? 'On' : 'Off', null, {'broadcast' : 1})}}
+			{{/if}}
+		</div>
+	</div>
+	<!-- Due to the nature of this pice of shit, you have to re-open-->
+	<div class="item">
+		<div class="itemLabel">
+			High volume:
+		</div>
+		<div class="itemContentMedium">
+			<!-- fucking nanoui dosen't even convert BOOLEANS into their byond counterparts (1 and o)!!-->
+			{{:helper.link(data.useCommand ? 'On' : 'Off', null, {'command' : 1}, !data.command ? 'disabled' : null)}}
+		</div>
+	</div>
+	{{if data.subspaceSwitchable}}
+	<div class="item">
+		<div class="itemLabel">
 			Subspace Transmission:
 		</div>
 		<div class="itemContentMedium">
-			{{:helper.link('On', null, {'mode' : 1}, data.subspace ? 'selected' : null)}}
-			{{:helper.link('Off', null, {'mode' : 0}, data.subspace ? null : 'selected')}}
+			{{:helper.link(data.subspace ? 'On' : 'Off', null, {'subspace' : 1})}}
 		</div>
 	</div>
-{{/if}}
-		
-{{if data.has_loudspeaker}}
-	<div class="item">
-		<div class="itemLabelWide">
-			Loudspeaker:
-		</div>
-		<div class="itemContentMedium">
-			{{:helper.link('On', null, {'shutup' : 0}, data.loudspeaker ? 'selected' : null)}}
-			{{:helper.link('Off', null, {'shutup' : 1}, data.loudspeaker ? null : 'selected')}}
-		</div>
-	</div>
-{{/if}}
-
-<div class="item">
-	<div class="itemLabelWide">
-		Frequency: {{:data.freq}}
-	</div>
-	<div class="itemContentMedium">
-		{{:helper.link('--', null, {'freq' : -10})}}
-		{{:helper.link('-', null, {'freq' : -2})}}
-		{{:helper.link('+', null, {'freq' : 2})}}
-		{{:helper.link('++', null, {'freq' : 10})}}
-	</div>
+	{{/if}}
 </div>
-
-{{if data.chan_list_len >= 1}}
-	<h3>Channels</h3>
-	<div class="item">
-	{{for data.chan_list}}
-		<div class="itemLabelWide">
-			<span class='{{:value.chan_span}}'>&#9724</span>{{:value.display_name}}
+{{if data.subspace}}
+<div class="itemGroup">
+	<h2>Channels</h2>
+	{{if data.channels}}
+		{{:radiomap(data.channels)}}
+	{{else}}
+		<div class="bad">
+			No encryption keys installed.
 		</div>
-		<div class="itemContentMedium">
-			{{if value.secure_channel}}
-				{{:helper.link('On', null, {'ch_name' : value.chan, 'listen' : value.sec_channel_listen}, value.sec_channel_listen ? null : 'selected')}}
-				{{:helper.link('Off', null, {'ch_name' : value.chan, 'listen' : value.sec_channel_listen}, value.sec_channel_listen ? 'selected' : null)}}
-			{{else}}
-				{{:helper.link('Switch', null, {'spec_freq' : value.chan}, data.rawfreq == value.chan ? 'selected' : null)}}
-			{{/if}}
-		</div>
-	{{/for}}
+	{{/if}}
+</div>
 {{/if}}

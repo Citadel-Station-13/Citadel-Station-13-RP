@@ -258,18 +258,32 @@
 /mob/proc/show_inv(mob/user as mob)
 	return
 
-//mob verbs are faster than object verbs. See http://www.byond.com/forum/?post=1326139&page=2#comment8198716 for why this isn't atom/verb/examine()
-/mob/verb/examinate(atom/A as mob|obj|turf in view())
+//mob verbs are faster than object verbs. See https://secure.byond.com/forum/?post=1326139&page=2#comment8198716 for why this isn't atom/verb/examine()
+/mob/verb/examinate(atom/A as mob|obj|turf in view()) //It used to be oview(12), but I can't really say why
 	set name = "Examine"
 	set category = "IC"
 
-	if((is_blind(src) || usr.stat) && !isobserver(src))
-		to_chat(src, "<span class='notice'>Something is there but you can't see it.</span>")
-		return 1
+	if(isturf(A) && !(sight & SEE_TURFS) && !(A in view(client ? client.view : world.view, src)))
+		// shift-click catcher may issue examinate() calls for out-of-sight turfs
+		return
+
+	if(is_blind(src) && !isobserver(src)) //why are we making observers blind?
+		to_chat(src, "<span class='warning'>Something is there but you can't see it!</span>")
+		return
 
 	face_atom(A)
-	A.examine(src)
+	//var/flags = SEND_SIGNAL(src, COMSIG_MOB_EXAMINATE, A)
+	//if(flags & COMPONENT_DENY_EXAMINATE)
+	//	if(flags & COMPONENT_EXAMINATE_BLIND)
+	//		to_chat(src, "<span class='warning'>Something is there but you can't see it!</span>")
+	//	return
+	var/list/result = A.examine(src)
+	to_chat(src, result.Join("\n"))
 
+//same as above
+//note: ghosts can point, this is intended
+//visible_message will handle invisibility properly
+//overridden here and in /mob/dead/observer for different point span classes and sanity checks
 /mob/verb/pointed(atom/A as mob|obj|turf in view())
 	set name = "Point To"
 	set category = "Object"
@@ -571,7 +585,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 				if(e && H.lying)
 					if((e.status & ORGAN_BROKEN && (!e.splinted || (e.splinted && e.splinted in e.contents && prob(30))) || e.status & ORGAN_BLEEDING) && (H.getBruteLoss() + H.getFireLoss() >= 100))
 						return 1
-						break
 	return 0
 
 /mob/MouseDrop(mob/M as mob)
@@ -622,40 +635,16 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	//This is only called from client/Stat(), let's assume client exists.
 
 	if(statpanel("Status"))
-		//var/list/L = list()
-		stat("Ping", "[round(client.lastping,1)]ms (Avg: [round(client.avgping,1)]ms)")
-		//L += SSmapping.stat_map_name
-		//L += "Round ID: [GLOB.round_id || "NULL"]"
-		// VIRGO START
-		stat("Station Time", stationtime2text())
-		stat("Station Date", stationdate2text())
-		stat("Round Duration", roundduration2text())
-		// VIRGO END
-		stat("Time dilation", SStime_track.stat_time_text)
+		var/list/L = list()
+		L += "Ping: [round(client.lastping,1)]ms (Avg: [round(client.avgping,1)]ms)"
+		L += SSmapping.stat_map_name
+		L += "Round ID: [GLOB.round_id || "NULL"]"
+		// L += SStime_track.stat_time_text //!!ONCE TRAVIS IS MERGED REMOVE THE OLD STATION TIME!!
+		L += "Station Time: [stationtime2text()]"
+		L += "Round Duration: [roundduration2text()]"
+		L += "Time dilation: [SStime_track.stat_time_text]"
 		//L += SSshuttle.emergency_shuttle_stat_text
-		//stat(null, "[L.Join("\n\n")]")
-
-	if(listed_turf && client)
-		if(!TurfAdjacent(listed_turf))
-			listed_turf = null
-		else
-			statpanel(listed_turf.name, null, listed_turf)
-			var/list/overrides = list()
-			for(var/image/I in client.images)
-				if(I.loc && I.loc.loc == listed_turf && I.override)
-					overrides += I.loc
-			for(var/atom/A in listed_turf)
-				if(!A.mouse_opacity)
-					continue
-				if(A.invisibility > see_invisible)
-					continue
-				if(overrides.len && (A in overrides))
-					continue
-/*
-				if(A.IsObscured())
-					continue
-*/
-				statpanel(listed_turf.name, null, A)
+		stat(null, "[L.Join("\n\n")]")
 
 	if(client.holder)
 		if(statpanel("MC"))
@@ -690,6 +679,45 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 					var/datum/SDQL2_query/Q = i
 					Q.generate_stat()
 
+	if(listed_turf && client)
+		if(!TurfAdjacent(listed_turf))
+			listed_turf = null
+		else
+			statpanel(listed_turf.name, null, listed_turf)
+			var/list/overrides = list()
+			for(var/image/I in client.images)
+				if(I.loc && I.loc.loc == listed_turf && I.override)
+					overrides += I.loc
+			for(var/atom/A in listed_turf)
+				if(!A.mouse_opacity)
+					continue
+				if(A.invisibility > see_invisible)
+					continue
+				if(overrides.len && (A in overrides))
+					continue
+				// if(A.IsObscured())
+				// 	continue
+				statpanel(listed_turf.name, null, A)
+
+	if(mind)
+		add_spells_to_statpanel(spell_list) //mind. yep, the client has the spells, not the mind
+		// var/datum/antagonist/changeling/changeling = mind.has_antag_datum(/datum/antagonist/changeling)
+		// if(changeling)
+		// 	add_stings_to_statpanel(changeling.purchasedpowers)
+	// add_spells_to_statpanel(mob_spell_list)
+
+/mob/proc/add_spells_to_statpanel(list/spells)
+	for(var/spell/S in spells) //for(var/obj/effect/proc_holder/spell/S in spells)
+		//if((!S.mobs_blacklist || !S.mobs_blacklist[src]) && (!S.mobs_whitelist || S.mobs_whitelist[src]))
+		if((!S.connected_button) || !statpanel(S.panel))
+			continue //Not showing the noclothes spell
+		switch(S.charge_type)
+			if(Sp_RECHARGE)
+				statpanel("[S.panel]","[S.charge_counter/10.0]/[S.charge_max/10]",S.connected_button)
+			if(Sp_CHARGES)
+				statpanel("[S.panel]","[S.charge_counter]/[S.charge_max]",S.connected_button)
+			if(Sp_HOLDVAR)
+				statpanel("[S.panel]","[S.holder_var_type] [S.holder_var_amount]",S.connected_button)
 
 // Not sure what to call this. Used to check if humans are wearing an AI-controlled exosuit and hence don't need to fall over yet.
 /mob/proc/can_stand_overridden()

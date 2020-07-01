@@ -435,7 +435,7 @@
 		for(var/obj/item/light/L in src.contents)
 			if(L.status == 0)
 				if(LP.uses < LP.max_uses)
-					LP.add_uses(1)
+					LP.AddUses(1)
 					amt_inserted++
 					remove_from_storage(L, T)
 					qdel(L)
@@ -736,10 +736,9 @@
 	..()
 
 /obj/item/storage/trinketbox/examine(mob/user)
-	..()
+	. = ..()
 	if(open && contents.len)
-		var/display_item = contents[1]
-		to_chat(user, "<span class='notice'>\The [src] contains \the [display_item]!</span>")
+		. += "<span class='notice'>\The [src] contains \the [contents[1]]!</span>"
 
 /obj/item/storage/AllowDrop()
 	return TRUE

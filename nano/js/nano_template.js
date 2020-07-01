@@ -5,15 +5,14 @@ var NanoTemplate = function () {
 
     var _templates = {};
     var _compiledTemplates = {};
-	
+
 	var _helpers = {};
 
     var init = function () {
         // We store templateData in the body tag, it's as good a place as any
 		_templateData = $('body').data('templateData');
 
-		if (_templateData == null)
-		{
+		if (_templateData == null){
 			alert('Error: Template data did not load correctly.');
 		}
 
@@ -24,15 +23,13 @@ var NanoTemplate = function () {
         // we count the number of templates for this ui so that we know when they've all been rendered
         var templateCount = Object.size(_templateData);
 
-        if (!templateCount)
-        {
+        if (!templateCount){
             $(document).trigger('templatesLoaded');
             return;
         }
 
         // load markup for each template and register it
-        for (var key in _templateData)
-        {
+        for (var key in _templateData){
             if (!_templateData.hasOwnProperty(key))
             {
                 continue;
@@ -109,12 +106,12 @@ var NanoTemplate = function () {
 		addHelper: function (helperName, helperFunction) {
 			if (!jQuery.isFunction(helperFunction)) {
 				alert('NanoTemplate.addHelper failed to add ' + helperName + ' as it is not a function.');
-				return;	
+				return;
 			}
-			
+
 			_helpers[helperName] = helperFunction;
 		},
-		addHelpers: function (helpers) {		
+		addHelpers: function (helpers) {
 			for (var helperName in helpers) {
 				if (!helpers.hasOwnProperty(helperName))
 				{
@@ -127,9 +124,9 @@ var NanoTemplate = function () {
 			if (helpers.hasOwnProperty(helperName))
 			{
 				delete _helpers[helperName];
-			}	
+			}
 		}
     }
 }();
- 
+
 

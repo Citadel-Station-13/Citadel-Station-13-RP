@@ -1,95 +1,124 @@
 // NanoUtility is the place to store utility functions
-var NanoUtility = function () 
-{
+var NanoUtility = function (){ //this isn't C, this is JS
     var _urlParameters = {}; // This is populated with the base url parameters (used by all links), which is probaby just the "src" parameter
 
 	return {
-        init: function () 
-		{
+        init: function (){
 			var body = $('body'); // We store data in the body tag, it's as good a place as any
-
-			_urlParameters = body.data('urlParameters');
+			_urlParameters = body.data('urlParameters'); //i heard this contains the href too
         },
 		// generate a Byond href, combines _urlParameters with parameters
-		generateHref: function (parameters)
-		{
-			var queryString = '?';
-
-			for (var key in _urlParameters)
-			{
-				if (_urlParameters.hasOwnProperty(key))
-				{
-					if (queryString !== '?')
-					{
-						queryString += ';';
-					}
-					queryString += key + '=' + _urlParameters[key];
-				}
-			}
-
-			for (var key in parameters)
-			{
-				if (parameters.hasOwnProperty(key))
-				{
-					if (queryString !== '?')
-					{
-						queryString += ';';
-					}
-					queryString += key + '=' + parameters[key];
-				}
-			}
-			return queryString;
-		}
+		generateHref: function (parameters){
+			return '?' + buildQueryString(_urlParameters) + '&'+ buildQueryString(parameters);
+		},
     }
-} (); 
+}();
 
-if (typeof jQuery == 'undefined') {  
-	alert('ERROR: Javascript library failed to load!');
+if (typeof jQuery == 'undefined') {
+	alert('ERROR: Javascript library (jQuery) failed to load!');
 }
-if (typeof doT == 'undefined') {  
-	alert('ERROR: Template engine failed to load!');
-}	
+if (typeof doT == 'undefined') {
+	alert('ERROR: Template engine (doT) failed to load!');
+}
 
 (function() {
-	var _alert = window.alert;
-	window.alert = function(str) {
-		window.location = "byond://?nano_err=" + encodeURIComponent(str);
+	window._alert = window.alert;
+	window._console = window.console; //backup c
+	window.alert = function(str) { //catch alert
+		window.location.href = "byond://?" + buildQueryString({"nano_err": str}); //send to backend
 		_alert(str);
+	};
+	window.console.error = function(err){ //and error
+		window.location.href = "byond://?" + buildQueryString({"nano_err": err}); //send to backend
+		_alert(err);
+	}
+	if(!window.console) { //no window console?
+		window.console = {	//create a dummy one
+			log: function(str) {
+				window.location.href = "byond://?" + buildQueryString({"nano_log": str}); //send to backend. and only log it href side because no one logs nanoui
+			}
+		};
 	};
 })();
 
 // All scripts are initialised here, this allows control of init order
-$(document).ready(function () {
+$(document).ready(function() {
 	NanoUtility.init();
 	NanoStateManager.init();
 	NanoTemplate.init();
 });
 
-if (!Array.prototype.indexOf)
-{
-    Array.prototype.indexOf = function(elt /*, from*/)
-    {
-        var len = this.length;
+$.ajaxSetup({
+    cache: false
+});
 
-        var from = Number(arguments[1]) || 0;
-        from = (from < 0)
-            ? Math.ceil(from)
-            : Math.floor(from);
-        if (from < 0)
-            from += len;
-
-        for (; from < len; from++)
-        {
-            if (from in this &&
-                this[from] === elt)
-                return from;
-        }
-        return -1;
-    };
+function buildQueryString(obj) {
+  return Object.keys(obj).map(function (key) {
+    return encodeURIComponent(key) + '=' + encodeURIComponent(obj[key]);
+  }).join('&');
 };
 
-if (!String.prototype.format)
-{
+//<shims>
+// Production steps of ECMA-262, Edition 5, 15.4.4.14
+// Reference: http://es5.github.io/#x15.4.4.14
+if (!Array.prototype.indexOf) {
+  Array.prototype.indexOf = function(searchElement, fromIndex) {
+    "use strict";
+    var k;
+    if (this == null) {
+      throw new TypeError('"this" is null or not defined');
+    }
+    var o = Object(this);
+    var len = o.length >>> 0;
+    if (len === 0) {
+      return -1;
+    }
+    var n = fromIndex | 0;
+    if (n >= len) {
+      return -1;
+    }
+    k = Math.max(n >= 0 ? n : len - Math.abs(n), 0);
+    for (; k < len; k++) {
+      if (k in o && o[k] === searchElement)
+        return k;
+    }
+    return -1;
+  };
+}
+
+// Production steps of ECMA-262, Edition 5, 15.4.4.19
+// Reference: http://es5.github.com/#x15.4.4.19
+if (!Array.prototype.map) {
+	Array.prototype.map = function(callback, thisArg) {
+		var T, A, k;
+		if (this == null) {
+			throw new TypeError(" this is null or not defined");
+		}
+		var O = Object(this);
+		var len = O.length >>> 0;
+		if (typeof callback !== "function") {
+			throw new TypeError(callback + " is not a function");
+		}
+		if (thisArg) {
+				T = thisArg;
+		}
+		A = new Array(len);
+		k = 0;
+		while(k < len) {
+			var kValue, mappedValue;
+			if (k in O) {
+				kValue = O[k];
+				mappedValue = callback.call(T, kValue, k, O);
+				A[k] = mappedValue;
+			}
+			k++;
+		}
+		return A;
+	};
+}
+//</shims>
+
+if (!String.prototype.format){
     String.prototype.format = function (args) {
         var str = this;
         return str.replace(String.prototype.format.regex, function(item) {
@@ -118,14 +147,6 @@ Object.size = function(obj) {
     return size;
 };
 
-if(!window.console) {
-    window.console = {
-        log : function(str) {
-            return false;
-        }
-    };
-};
-
 String.prototype.toTitleCase = function () {
     var smallWords = /^(a|an|and|as|at|but|by|en|for|if|in|of|on|or|the|to|vs?\.?|via)$/i;
 
@@ -144,10 +165,6 @@ String.prototype.toTitleCase = function () {
     });
 };
 
-$.ajaxSetup({
-    cache: false
-});
-
 Function.prototype.inheritsFrom = function (parentClassOrObject) {
     this.prototype = new parentClassOrObject;
     this.prototype.constructor = this;
@@ -161,7 +178,7 @@ if (!String.prototype.trim) {
     };
 }
 
-// Replicate the ckey proc from BYOND
+// Replicate the ckey proc from BYOND (if it does not exist)
 if (!String.prototype.ckey) {
     String.prototype.ckey = function () {
         return this.replace(/\W/g, '').toLowerCase();

@@ -1,3 +1,7 @@
+#define RAD_GEIGER_LOW 5 //100							// Geiger counter sound thresholds
+#define RAD_GEIGER_MEDIUM 20 //500
+#define RAD_GEIGER_HIGH 40 //1000
+
 /datum/looping_sound/geiger
 	mid_sounds = list(
 		list('sound/items/geiger/low1.ogg'=1, 'sound/items/geiger/low2.ogg'=1, 'sound/items/geiger/low3.ogg'=1, 'sound/items/geiger/low4.ogg'=1),
@@ -12,13 +16,13 @@
 /datum/looping_sound/geiger/get_sound(starttime)
 	var/danger
 	switch(last_radiation)
-		if(0 to RAD_LEVEL_MODERATE)
+		if(0 to RAD_GEIGER_LOW)
 			danger = 1
-		if(RAD_LEVEL_MODERATE to RAD_LEVEL_HIGH)
+		if(RAD_GEIGER_LOW to RAD_GEIGER_MEDIUM)
 			danger = 2
-		if(RAD_LEVEL_HIGH to RAD_LEVEL_VERY_HIGH)
+		if(RAD_GEIGER_MEDIUM to RAD_GEIGER_HIGH)
 			danger = 3
-		if(RAD_LEVEL_VERY_HIGH to INFINITY)
+		if(RAD_GEIGER_HIGH to INFINITY)
 			danger = 4
 		else
 			return null
@@ -27,3 +31,7 @@
 /datum/looping_sound/geiger/stop()
 	. = ..()
 	last_radiation = 0
+
+#undef RAD_GEIGER_LOW
+#undef RAD_GEIGER_MEDIUM
+#undef RAD_GEIGER_HIGH

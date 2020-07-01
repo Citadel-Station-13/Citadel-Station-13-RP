@@ -1,33 +1,44 @@
-
-/obj/item/encryptionkey/
+/obj/item/encryptionkey
 	name = "standard encryption key"
 	desc = "An encryption key for a radio headset. Contains cypherkeys."
 	icon = 'icons/obj/radio.dmi'
 	icon_state = "cypherkey"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY //ITEMSIZE_TINY w_class now!
 	slot_flags = SLOT_EARS
-	var/translate_binary = 0
-	var/translate_hive = 0
-	var/syndie = 0
+	var/translate_binary = FALSE
+	var/translate_hive = FALSE
+	var/syndie = FALSE
 	var/list/channels = list()
 
-/obj/item/encryptionkey/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/encryptionkey/Initialize()
+	. = ..()
+	if(!channels.len && (!translate_binary && !translate_hive && !syndie))
+		desc = "An encryption key for a radio headset.  Has no special codes in it. You should probably tell a coder!"
+
+/obj/item/encryptionkey/examine(mob/user)
+	. = ..()
+	if(LAZYLEN(channels))
+		var/list/examine_text_list = list()
+		for(var/i in channels)
+			examine_text_list += "[GLOB.channel_tokens[i]] - [lowertext(i)]"
+
+		. += "<span class='notice'>It can access the following channels; [jointext(examine_text_list, ", ")].</span>"
 
 /obj/item/encryptionkey/syndicate
 	icon_state = "syn_cypherkey"
 	channels = list("Mercenary" = 1)
 	origin_tech = list(TECH_ILLEGAL = 3)
-	syndie = 1//Signifies that it de-crypts Syndicate transmissions
+	syndie = TRUE //Signifies that it de-crypts Syndicate transmissions
 
 /obj/item/encryptionkey/raider
 	icon_state = "cypherkey"
 	channels = list("Raider" = 1)
 	origin_tech = list(TECH_ILLEGAL = 2)
-	syndie = 1
+	syndie = TRUE
 
 /obj/item/encryptionkey/binary
 	icon_state = "bin_cypherkey"
-	translate_binary = 1
+	translate_binary = TRUE
 	origin_tech = list(TECH_ILLEGAL = 3)
 
 /obj/item/encryptionkey/headset_sec
@@ -132,4 +143,7 @@
 	channels = list("Response Team" = 1, "Science" = 1, "Command" = 1, "Medical" = 1, "Engineering" = 1, "Security" = 1, "Supply" = 1, "Service" = 1)
 
 /obj/item/encryptionkey/omni		//Literally only for the admin intercoms
+	name = "\improper Adminbus&trade; brand encryption key"
 	channels = list("Mercenary" = 1, "Raider" = 1, "Response Team" = 1, "Science" = 1, "Command" = 1, "Medical" = 1, "Engineering" = 1, "Security" = 1, "Supply" = 1, "Service" = 1)
+	translate_binary = TRUE
+	syndie = TRUE

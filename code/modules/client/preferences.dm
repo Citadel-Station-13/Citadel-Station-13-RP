@@ -2,7 +2,7 @@
 
 var/list/preferences_datums = list()
 
-datum/preferences
+/datum/preferences
 	//doohickeys for savefiles
 	var/path
 	var/default_slot = 1				//Holder so it doesn't default to slot 1, rather the last one used
@@ -21,14 +21,25 @@ datum/preferences
 	var/loadcharcooldown
 
 	//game-preferences
-	var/lastchangelog = ""				//Saved changlog filesize to detect if there was a change
+	var/lastchangelog = ""				//Saved changlog MD5 to detect if there was a change
 	var/ooccolor = "#010000"			//Whatever this is set to acts as 'reset' color and is thus unusable as an actual custom color
-	var/be_special = 0					//Special role selection
-	var/UI_style = "Midnight"
+
+	//Antag preferences
+	// var/list/be_special = list()		//Special role selection
+	// var/tmp/old_be_special = 0 this is that one bellow
+	var/be_special = 0			//Bitflag version of be_special, used to update old savefiles and nothing more
+								//If it's 0, that's good, if it's anything but 0, the owner of this prefs file's antag choices were,
+								//autocorrected this round, not that you'd need to check that.
+
+
+	var/UI_style = "Midnight" //this should be null
 	var/UI_style_color = "#ffffff"
 	var/UI_style_alpha = 255
 	var/tooltipstyle = "Midnight"		//Style for popup tooltips
 	var/client_fps = 0
+
+	/// Custom Keybindings
+	var/list/key_bindings = list()
 
 	//character preferences
 	var/real_name						//our character's name
@@ -122,6 +133,12 @@ datum/preferences
 
 	var/uplinklocation = "PDA"
 
+	var/list/menuoptions
+
+	var/action_buttons_screen_locs = list()
+
+	var/auto_fit_viewport = TRUE
+
 	// OOC Metadata:
 	var/metadata = ""
 	var/list/ignored_players = list()
@@ -162,7 +179,10 @@ datum/preferences
 	key_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
 	C?.update_movement_keys(src)
 
-/datum/preferences/proc/ZeroSkills(var/forced = 0)
+	menuoptions = list()
+	return
+
+/datum/preferences/proc/ZeroSkills(forced = 0)
 	for(var/V in SKILLS) for(var/datum/skill/S in SKILLS[V])
 		if(!skills.Find(S.ID) || forced)
 			skills[S.ID] = SKILL_NONE
@@ -193,7 +213,8 @@ datum/preferences
 	return CalculateSkillClass(points, age)
 
 /proc/CalculateSkillClass(points, age)
-	if(points <= 0) return "Unconfigured"
+	if(points <= 0)
+		return "Unconfigured"
 	// skill classes describe how your character compares in total points
 	points -= min(round((age - 20) / 2.5), 4) // every 2.5 years after 20, one extra skillpoint
 	if(age > 30)
@@ -215,22 +236,23 @@ datum/preferences
 			return "God"
 
 /datum/preferences/proc/ShowChoices(mob/user)
-	if(!user || !user.client)	return
+	if(!user || !user.client)
+		return
 
 	if(!get_mob_by_key(client_ckey))
 		to_chat(user, "<span class='danger'>No mob exists for the given client!</span>")
 		close_load_dialog(user)
 		return
 
-	var/dat = "<html><body><center>"
+	var/dat = "<center>"
 
 	if(path)
 		dat += "Slot - "
-		dat += "<a href='?src=\ref[src];load=1'>Load slot</a> - "
-		dat += "<a href='?src=\ref[src];save=1'>Save slot</a> - "
-		dat += "<a href='?src=\ref[src];reload=1'>Reload slot</a> - "
-		dat += "<a href='?src=\ref[src];resetslot=1'>Reset slot</a> - "
-		dat += "<a href='?src=\ref[src];copy=1'>Copy slot</a>"
+		dat += "<a href='?src=[REF(src)];load=1'>Load slot</a> - "
+		dat += "<a href='?src=[REF(src)];save=1'>Save slot</a> - "
+		dat += "<a href='?src=[REF(src)];reload=1'>Reload slot</a> - "
+		dat += "<a href='?src=[REF(src)];resetslot=1'>Reset slot</a> - "
+		dat += "<a href='?src=[REF(src)];copy=1'>Copy slot</a>"
 
 	else
 		dat += "Please create an account to save your preferences."
@@ -240,16 +262,15 @@ datum/preferences
 	dat += "<br><HR></center>"
 	dat += player_setup.content(user)
 
-	dat += "</html></body>"
-	//user << browse(dat, "window=preferences;size=635x736")
-	var/datum/browser/popup = new(user, "Character Setup","Character Setup", 800, 800, src)
+//	winshow(user, "preferences_window", TRUE) soon(trade)
+	var/datum/browser/popup = new(user, "preferences_browser-nofancy", "<div align='center'>Character Setup</div>", 640, 770)
 	popup.set_content(dat)
-	popup.open()
+	popup.open() //popup.open(FALSE)
+//	onclose(user, "preferences_window", src)
 
 /datum/preferences/proc/process_link(mob/user, list/href_list)
-	if(!user)	return
-
-	if(!istype(user, /mob/new_player))	return
+	if(!user)
+		return
 
 	if(href_list["preference"] == "open_whitelist_forum")
 		if(config_legacy.forumurl)
@@ -258,9 +279,9 @@ datum/preferences
 			to_chat(user, "<span class='danger'>The forum URL is not set in the server configuration.</span>")
 			return
 	ShowChoices(usr)
-	return 1
+	return TRUE
 
-/datum/preferences/Topic(href, list/href_list)
+/datum/preferences/Topic(href, list/href_list) //use that one above, it's much more secure
 	if(..())
 		return 1
 
@@ -346,7 +367,7 @@ datum/preferences
 	dat += "<hr>"
 	dat += "</center></tt>"
 	//user << browse(dat, "window=saves;size=300x390")
-	panel = new(user, "Character Slots", "Character Slots", 300, 390, src)
+	panel = new(user, "saves", "Character Slots", 300, 390, src)
 	panel.set_content(dat)
 	panel.open()
 

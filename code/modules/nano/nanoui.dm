@@ -357,18 +357,16 @@ nanoui is used to open and update nano browser uis
 	var/url_parameters_json = json_encode(list("src" = "\ref[src]"))
 
 	return {"
-<!DOCTYPE html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<head>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+		<meta http-equiv='X-UA-Compatible' content='IE=edge'>
 		<script type='text/javascript'>
-			function receiveUpdateData(jsonString)
-			{
+			function receiveUpdateData(jsonString){
 				// We need both jQuery and NanoStateManager to be able to recieve data
 				// At the moment any data received before those libraries are loaded will be lost
-				if (typeof NanoStateManager != 'undefined' && typeof jQuery != 'undefined')
-				{
+				if (typeof NanoStateManager != 'undefined' && typeof jQuery != 'undefined'){
 					NanoStateManager.receiveUpdateData(jsonString);
 				}
 				//else
@@ -391,7 +389,7 @@ nanoui is used to open and update nano browser uis
 		</noscript>
 	</body>
 </html>
-	"}
+"}
 
  /**
   * Open this UI

@@ -1,21 +1,25 @@
 /obj/item/radio/headset/centcom
-	name = "centcom radio headset"
-	desc = "The headset of the boss's boss."
+	name = "\improper CentCom headset"
+	desc = "A headset used by the upper echelons of Nanotrasen."
 	icon_state = "cent_headset"
-	item_state = "headset"
-	centComm = 1
-	ks2type = /obj/item/encryptionkey/ert
+	independent = TRUE
+	keyslot = new /obj/item/encryptionkey/headset_com
+	keyslot2 = new /obj/item/encryptionkey/ert
 
 /obj/item/radio/headset/centcom/alt
-	name = "centcom bowman headset"
+	name = "\improper CentCom bowman headset"
+	desc = "A headset especially for emergency response personnel." // Protects ears from flashbangs."
 	icon_state = "com_headset_alt"
+	item_state = "com_headset_alt"
+	bowman = TRUE
 
 /obj/item/radio/headset/nanotrasen
 	name = "\improper NT radio headset"
 	desc = "The headset of a Nanotrasen corporate employee."
 	icon_state = "nt_headset"
-	centComm = 1
-	ks2type = /obj/item/encryptionkey/ert
+	independent = TRUE
+	keyslot = new /obj/item/encryptionkey/headset_com
+	keyslot2 = new /obj/item/encryptionkey/ert
 
 /obj/item/radio/headset
 	sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/species/seromi/ears.dmi',
@@ -26,15 +30,7 @@
 	name = "nonhuman radio implant"
 	desc = "An updated, modular intercom that requires no hands to operate. Takes encryption keys"
 
-/obj/item/radio/headset/mob_headset/receive_range(freq, level)
-		return ..(freq, level)
-
-
-/obj/item/radio/headset/mob_headset/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/state = interactive_state)
-	ui = new(user, src, ui_key, "radio_basic.tmpl", "[name]", 400, 430, state = interactive_state)
-	..()
-
-/obj/item/radio/headset/mob_headset/afterattack(var/atom/movable/target, mob/living/user, proximity)
+/obj/item/radio/headset/mob_headset/afterattack(atom/movable/target, mob/living/user, proximity)
 	if(!proximity)
 		return
 	if(istype(target,/mob/living/simple_mob))

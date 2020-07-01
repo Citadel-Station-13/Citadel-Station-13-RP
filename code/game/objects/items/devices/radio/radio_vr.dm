@@ -2,7 +2,7 @@
 	var/bluespace_radio = FALSE
 
 /obj/item/radio/phone
-	subspace_transmission = 1
+	subspace_transmission = TRUE
 	canhear_range = 0
 	adhoc_fallback = TRUE
 
@@ -10,7 +10,7 @@
 	name = "Medbay Emergency Radio Link"
 	icon_state = "med_walkietalkie"
 	frequency = MED_I_FREQ
-	subspace_transmission = 1
+	subspace_transmission = TRUE
 	adhoc_fallback = TRUE
 
 /obj/item/radio/emergency/Initialize(mapload)

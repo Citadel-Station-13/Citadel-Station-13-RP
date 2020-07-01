@@ -1,9 +1,10 @@
 body
 {
 	background-image: url("paper_bg.png");
+	color: black;
 }
 
-.button-group .button 
+.button-group .button
 {
 	border: 1px solid RoyalBlue;
 	color: black;

@@ -97,28 +97,29 @@ On the map:
 1455 for AI access
 */
 
-var/const/RADIO_LOW_FREQ	= 1200
-var/const/PUBLIC_LOW_FREQ	= 1441
-var/const/PUBLIC_HIGH_FREQ	= 1489
-var/const/RADIO_HIGH_FREQ	= 1600
+var/const/RADIO_LOW_FREQ	= MIN_FREE_FREQ //odd numbers.
+var/const/PUBLIC_LOW_FREQ	= MIN_FREQ
+var/const/PUBLIC_HIGH_FREQ	= MAX_FREQ
+var/const/RADIO_HIGH_FREQ	= MAX_FREE_FREQ //same here, odd numbers only.
 
-var/const/BOT_FREQ	= 1447
-var/const/COMM_FREQ = 1353
-var/const/ERT_FREQ	= 1345
-var/const/AI_FREQ	= 1343
-var/const/DTH_FREQ	= 1341
-var/const/SYND_FREQ = 1213
+
 var/const/RAID_FREQ	= 1277
-var/const/ENT_FREQ	= 1461 //entertainment frequency. This is not a diona exclusive frequency.
+var/const/SYND_FREQ = FREQ_SYNDICATE
+var/const/ERT_FREQ	= FREQ_CENTCOM //1345
+var/const/DTH_FREQ	= 1341 //discount syndie freq
+var/const/AI_FREQ	= FREQ_AI_PRIVATE //was 1343
+var/const/BOT_FREQ	= FREQ_NAV_BEACON //was 1447
 
 // department channels
-var/const/PUB_FREQ = 1459
-var/const/SEC_FREQ = 1359
-var/const/ENG_FREQ = 1357
-var/const/MED_FREQ = 1355
-var/const/SCI_FREQ = 1351
-var/const/SRV_FREQ = 1349
-var/const/SUP_FREQ = 1347
+var/const/ENT_FREQ	= 1461 //entertainment frequency. This is not a diona exclusive frequency.
+var/const/PUB_FREQ = FREQ_COMMON
+var/const/SEC_FREQ = FREQ_SECURITY
+var/const/ENG_FREQ = FREQ_ENGINEERING
+var/const/MED_FREQ = FREQ_MEDICAL
+var/const/COMM_FREQ = FREQ_COMMAND
+var/const/SCI_FREQ = FREQ_SCIENCE
+var/const/SRV_FREQ = FREQ_SERVICE
+var/const/SUP_FREQ = FREQ_SUPPLY
 var/const/EXP_FREQ = 1361
 
 // internal department channels
@@ -154,10 +155,7 @@ var/list/ANTAG_FREQS = list(SYND_FREQ, RAID_FREQ)
 //Department channels, arranged lexically
 var/list/DEPT_FREQS = list(AI_FREQ, COMM_FREQ, ENG_FREQ, ENT_FREQ, MED_FREQ, SEC_FREQ, SCI_FREQ, SRV_FREQ, SUP_FREQ)
 
-#define TRANSMISSION_WIRE	0
-#define TRANSMISSION_RADIO	1
-
-/proc/frequency_span_class(var/frequency)
+/proc/frequency_span_class(frequency)
 	// Antags!
 	if (frequency in ANTAG_FREQS)
 		return "syndradio"
@@ -322,7 +320,7 @@ var/global/datum/controller/radio/radio_controller
 /datum/signal
 	var/obj/source
 
-	var/transmission_method = 0 //unused at the moment
+	var/transmission_method = TRANSMISSION_WIRE //unused at the moment
 	//0 = wire
 	//1 = radio transmission
 	//2 = subspace transmission

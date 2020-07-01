@@ -18,16 +18,22 @@
 	usr.say(message,whispering=1)
 
 /mob/verb/say_verb(message as text)
-	set name = "Say"
+	set name = "say"
 	set category = "IC"
-
+	if(!length(message))
+		return
+	if(say_disabled)	//This is here to try to identify lag problems GLOB.
+		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
+		return
+	// clear_typing_indicator()		// clear it immediately!
 	set_typing_indicator(FALSE)
-	usr.say(message)
+	say(message)
 
 /mob/verb/me_verb(message as message)
 	set name = "Me"
 	set category = "IC"
-
+	if(!length(message))
+		return
 	if(say_disabled)	//This is here to try to identify lag problems
 		to_chat(usr, "<font color='red'>Speech is currently admin-disabled.</font>")
 		return
@@ -44,26 +50,53 @@
 	else
 		usr.emote(message)
 
-/mob/proc/say_dead(var/message)
-	if(say_disabled)	//This is here to try to identify lag problems
+/mob/proc/say_dead(message)
+	var/name = real_name
+	var/alt_name = ""
+
+	if(say_disabled)	//This is here to try to identify lag problems. GLOB!
 		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
 		return
-
-	if(!client)
-		return // Clientless mobs shouldn't be trying to talk in deadchat.
 
 	if(!src.client.holder)
 		if(!config_legacy.dsay_allowed)
 			to_chat(src, "<span class='danger'>Deadchat is globally muted.</span>")
 			return
 
-	if(!is_preference_enabled(/datum/client_preference/show_dsay))
-		to_chat(usr, "<span class='danger'>You have deadchat muted.</span>")
+	var/jb = jobban_isbanned(src, "OOC")
+	if(QDELETED(src))
 		return
 
-	message = say_emphasis(message)
+	if(jb)
+		to_chat(src, "<span class='danger'>You have been banned from deadchat.</span>")
+		return
 
-	say_dead_direct("[pick("complains","moans","whines","laments","blubbers")], <span class='message'>\"[message]\"</span>", src)
+
+
+	if (src.client)
+		if((src.client.prefs.muted & MUTE_DEADCHAT) || !is_preference_enabled(/datum/client_preference/show_dsay))
+			to_chat(src, "<span class='danger'>You cannot talk in deadchat (muted).</span>")
+			return
+
+		if(src.client.handle_spam_prevention(message,MUTE_DEADCHAT))
+			return
+
+	//var/mob/dead/observer/O = src
+	// if(isobserver(src) && O.deadchat_name)
+	// 	name = "[O.deadchat_name]"
+	// else
+	if(mind && mind.name)
+		name = "[mind.name]"
+	else
+		name = real_name
+	if(name != real_name)
+		alt_name = " (died as [real_name])"
+
+	var/spanned = "[say_mod(message)], \"[message]\""
+	// message = emoji_parse(message) only for logging i think...
+	var/rendered = "<span class='game deadsay'><span class='prefix'>DEAD:</span> <span class='name'>[name]</span>[alt_name] <span class='message'>[emoji_parse(spanned)]</span></span>"
+	// log_talk(message, LOG_SAY, tag="DEAD")
+	say_dead_direct(rendered, subject = src) //, speaker_key = key)
 
 /mob/proc/say_understands(var/mob/other,var/datum/language/speaking = null)
 
@@ -96,23 +129,31 @@
 
 	return 0
 
-/*
-   ***Deprecated***
-   let this be handled at the hear_say or hear_radio proc
-   This is left in for robot speaking when humans gain binary channel access until I get around to rewriting
-   robot_talk() proc.
-   There is no language handling build into it however there is at the /mob level so we accept the call
-   for it but just ignore it.
-*/
+//Not depricated anymore.
+/mob/proc/say_quote(message, datum/language/DO_NOT_USE)
+	return say_mod(message)
 
-/mob/proc/say_quote(var/message, var/datum/language/speaking = null)
-	var/verb = "says"
-	var/ending = copytext_char(message, length_char(message))
-	if(ending=="!")
-		verb=pick("exclaims","shouts","yells")
-	else if(ending=="?")
-		verb="asks"
-	return verb
+// /atom/movable/proc/say_quote(input, list/spans=list(speech_span), message_mode)
+// 	if(!input)
+// 		input = "..."
+
+// 	if(copytext_char(input, -2) == "!!")
+// 		spans |= SPAN_YELL
+
+// 	var/spanned = attach_spans(input, spans)
+// 	return "[say_mod(input, message_mode)][spanned ? ", \"[spanned]\"" : ""]"
+// 	// Citadel edit [spanned ? ", \"[spanned]\"" : ""]"
+
+/atom/movable/proc/say_mod(input, message_mode)
+	var/ending = copytext_char(input, -1)
+	if(copytext_char(input, -2) == "!!")
+		return pick("shouts", "yells") //verb_yell
+	else if(ending == "?")
+		return "asks" //verb_ask
+	else if(ending == "!")
+		return pick("exclaims", "shouts", "yells") //verb_exclaim
+	else
+		return "says" //verb_say
 
 /mob/proc/emote(var/act, var/type, var/message)
 	if(act == "me")

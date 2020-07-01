@@ -152,9 +152,10 @@
 		to_chat(user, "<span class='notice'>You short out the security protocols and overload [src]'s cell, priming it to explode in a short time.</span>")
 		spawn(100)
 			to_chat(src, "<span class='danger'>Your cell seems to be outputting a lot of power...</span>")
-		spawn(200)	
+		spawn(200)
 			to_chat(src, "<span class='danger'>Internal heat sensors are spiking! Something is badly wrong with your cell!</span>")
-		spawn(300)	src.explode()
+		spawn(300)
+			src.explode()
 
 /mob/living/simple_mob/spiderbot/proc/transfer_personality(var/obj/item/mmi/M as obj)
 
@@ -291,9 +292,9 @@
 	return 0
 
 /mob/living/simple_mob/spiderbot/examine(mob/user)
-	..(user)
-	if(src.held_item)
-		to_chat(user, "It is carrying \icon[src.held_item] \a [src.held_item].")
+	. = ..()
+	if(held_item)
+		. += "It is carrying \icon[src.held_item] \a [src.held_item]."
 
 /mob/living/simple_mob/spiderbot/cannot_use_vents()
 	return

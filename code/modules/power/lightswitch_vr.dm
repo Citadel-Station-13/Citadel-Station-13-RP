@@ -58,7 +58,7 @@
 	var/x_offset = 26
 	var/y_offset = 26
 
-/obj/structure/construction/Initialize(var/mapload, var/ndir, var/building = FALSE)
+/obj/structure/construction/Initialize(mapload, ndir, building = FALSE)
 	. = ..()
 	if(ndir)
 		setDir(ndir)
@@ -109,7 +109,6 @@
 	else if(W.is_wirecutter())
 		if (stage == FRAME_WIRED)
 			stage = FRAME_FASTENED
-			user.update_examine_panel(src)
 			new /obj/item/stack/cable_coil(get_turf(src), 1, "red")
 			user.visible_message("\The [user] removes the wiring from \the [src].", \
 				"You remove the wiring from \the [src].", "You hear a snip.")
@@ -122,7 +121,6 @@
 			var/obj/item/stack/cable_coil/coil = W
 			if (coil.use(1))
 				stage = FRAME_WIRED
-				user.update_examine_panel(src)
 				user.visible_message("\The [user] adds wires to \the [src].", \
 					"You add wires to \the [src].", "You hear a noise.")
 				playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
@@ -132,14 +130,12 @@
 	else if(W.is_screwdriver())
 		if (stage == FRAME_UNFASTENED)
 			stage = FRAME_FASTENED
-			user.update_examine_panel(src)
 			user.visible_message("\The [user] screws \the [src] i nplace.", \
 				"You screw \the [src] in place.", "You hear a noise.")
 			playsound(src, W.usesound, 75, 1)
 			update_icon()
 		else if (stage == FRAME_FASTENED)
 			stage = FRAME_UNFASTENED
-			user.update_examine_panel(src)
 			user.visible_message("\The [user] unscrews \the [src].", \
 				"You unscrew \the [src].", "You hear a noise.")
 			playsound(src, W.usesound, 75, 1)

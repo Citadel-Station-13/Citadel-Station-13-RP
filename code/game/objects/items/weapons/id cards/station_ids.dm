@@ -3,15 +3,17 @@
 	desc = "A card used to provide ID and determine access across the station."
 	icon_state = "generic-nt"
 	item_state = "card-id"
-
 	sprite_sheets = list(
 		SPECIES_TESHARI = 'icons/mob/species/seromi/id.dmi'
 		)
-
-	var/access = list()
-	var/registered_name = "Unknown" // The name registered_name on the card
 	slot_flags = SLOT_ID | SLOT_EARS
+	var/mining_points = 0	// For redeeming at mining equipment vendors
+	var/survey_points = 0	// For redeeming at explorer equipment vendors.
+	var/access = list()
+	var/registered_name = null // The name registered_name on the card
+	var/assignment = null	//can be alt title or the actual job
 
+	//Legacy shitcode vars bellow!
 	var/age = "\[UNSET\]"
 	var/blood_type = "\[UNSET\]"
 	var/dna_hash = "\[UNSET\]"
@@ -22,47 +24,108 @@
 
 	var/primary_color = rgb(0,0,0) // Obtained by eyedroppering the stripe in the middle of the card
 	var/secondary_color = rgb(0,0,0) // Likewise for the oval in the top-left corner
-
 	var/datum/job/job_access_type = /datum/job/assistant    // Job type to acquire access rights from, if any
-
-	//alt titles are handled a bit weirdly in order to unobtrusively integrate into existing ID system
-	var/assignment = null	//can be alt title or the actual job
 	var/rank = null			//actual job
-	var/dorm = 0			// determines if this ID has claimed a dorm already
+	var/dorm = FALSE			// determines if this ID has claimed a dorm already.
 
-	var/mining_points = 0	// For redeeming at mining equipment vendors
-	var/survey_points = 0	// For redeeming at explorer equipment vendors.
+/obj/item/card/id/Initialize()
+	. = ..()
+	var/datum/job/J = SSjobs.GetJob(rank)
+	if(J)
+		access = J.get_access()
+
+/obj/item/card/id/attack_self(mob/user)
+	if(Adjacent(user))
+		user.visible_message("<span class='notice'>[user] shows you: [icon2html(src, viewers(user))] [src.name]. The assignment on the card: [src.assignment].</span>", \
+					"<span class='notice'>You show \the [src.name].</span>")
+		add_fingerprint(user)
+
+/obj/item/card/id/vv_edit_var(var_name, var_value)
+	. = ..()
+	if(.)
+		switch(var_name)
+			if("assignment","registered_name")
+				update_label()
 
 /obj/item/card/id/examine(mob/user)
-	set src in oview(1)
+	. = ..()
 	if(in_range(usr, src))
 		show(usr)
-		usr << desc
-	else
-		to_chat(usr, "<span class='warning'>It is too far away.</span>")
+	if(mining_points)
+		. += "There's [mining_points] mining equipment redemption point\s loaded onto this card."
+	// if(!bank_support || (bank_support == ID_LOCKED_BANK_ACCOUNT && !registered_account))
+	// 	. += "<span class='info'>This ID has no banking support whatsover, must be an older model...</span>"
+	// else if(registered_account)
+	// 	. += "The account linked to the ID belongs to '[registered_account.account_holder]' and reports a balance of [registered_account.account_balance] cr."
+	// 	if(registered_account.account_job)
+	// 		var/datum/bank_account/D = SSeconomy.get_dep_account(registered_account.account_job.paycheck_department)
+	// 		if(D)
+	// 			. += "The [D.account_holder] reports a balance of [D.account_balance] cr."
+	// 	. += "<span class='info'>Alt-Click the ID to pull money from the linked account in the form of holochips.</span>"
+	// 	. += "<span class='info'>You can insert credits into the linked account by pressing holochips, cash, or coins against the ID.</span>"
+	// 	if(registered_account.account_holder == user.real_name)
+	// 		. += "<span class='boldnotice'>If you lose this ID card, you can reclaim your account by Alt-Clicking a blank ID card while holding it and entering your account ID number.</span>"
+	// else
+	// 	. += "<span class='info'>There is no registered account linked to this card. Alt-Click to add one.</span>"
+
+/obj/item/card/id/GetAccess()
+	return access
+
+/obj/item/card/id/GetID()
+	return src
+
+/*
+Usage:
+update_label()
+	Sets the id name to whatever registered_name and assignment is
+
+update_label("John Doe", "Clowny")
+	Properly formats the name and occupation and sets the id name to the arguments
+*/
+/obj/item/card/id/proc/update_label(newname, newjob)
+	if(newname || newjob)
+		name = "[(!newname)	? "identification card"	: "[newname]'s ID Card"][(!newjob) ? "" : " ([newjob])"]"
+		return
+
+	name = "[(!registered_name)	? "identification card"	: "[registered_name]'s ID Card"][(!assignment) ? "" : " ([assignment])"]"
+
+//About to be depricated, DO NOT USE. Instead, use that one above!
+/obj/item/card/id/proc/update_name()
+	update_label()
 
 /obj/item/card/id/proc/prevent_tracking()
-	return 0
+	return FALSE
 
-/obj/item/card/id/proc/show(mob/user as mob)
-	if(front && side)
-		user << browse_rsc(front, "front.png")
-		user << browse_rsc(side, "side.png")
+/obj/item/card/id/proc/show(mob/user)
+	var/dat = "<table><tr><td>"
+	dat += "Name: [registered_name]<BR>"
+	dat += "Sex: [sex]<BR>"
+	dat += "Age: [age]<BR>"
+	dat += "Rank: [assignment]<BR>"
+	dat += "Fingerprint: [fingerprint_hash]<BR>"
+	dat += "Blood Type: [blood_type]<BR>"
+	dat += "DNA Hash: [dna_hash]</td><BR><BR>"
+	if(front || side)
+		dat += "<td align = center valign = top>Photo:<br>"
+		if(front)
+			dat +="<span style='height:80px;width:80px;border:4px;'>[icon2html(front, user)]</span>"
+		if(side)
+			dat += "<span style='height:80px;width:80px;border:4px;'>[icon2html(side, user)]</span>"
+		dat += "</td>"
+	dat += "</tr></table>"
+
 	var/datum/browser/popup = new(user, "idcard", name, 600, 250)
-	popup.set_content(dat())
-	popup.set_title_image(usr.browse_rsc_icon(src.icon, src.icon_state))
+	popup.set_content(dat)
+	popup.set_title_image(usr.browse_rsc_icon(icon, icon_state))
 	popup.open()
 	return
 
-/obj/item/card/id/proc/update_name()
-	name = "[src.registered_name]'s ID Card ([src.assignment])"
-
-/obj/item/card/id/proc/set_id_photo(var/mob/M)
+/obj/item/card/id/proc/set_id_photo(mob/M)
 	var/icon/charicon = cached_character_icon(M)
-	front = icon(charicon,dir = SOUTH)
-	side = icon(charicon,dir = WEST)
+	front = icon(charicon, dir = SOUTH)
+	side = icon(charicon, dir = WEST)
 
-/mob/proc/set_id_info(var/obj/item/card/id/id_card)
+/mob/proc/set_id_info(obj/item/card/id/id_card)
 	id_card.age = 0
 	id_card.registered_name		= real_name
 	id_card.sex 				= capitalize(gender)
@@ -72,61 +135,27 @@
 		id_card.blood_type		= dna.b_type
 		id_card.dna_hash		= dna.unique_enzymes
 		id_card.fingerprint_hash= md5(dna.uni_identity)
-	id_card.update_name()
+	id_card.update_label()
 
-/mob/living/carbon/human/set_id_info(var/obj/item/card/id/id_card)
+/mob/living/carbon/human/set_id_info(obj/item/card/id/id_card)
 	..()
 	id_card.age = age
-
-/obj/item/card/id/proc/dat()
-	var/dat = ("<table><tr><td>")
-	dat += text("Name: []</A><BR>", registered_name)
-	dat += text("Sex: []</A><BR>\n", sex)
-	dat += text("Age: []</A><BR>\n", age)
-	dat += text("Rank: []</A><BR>\n", assignment)
-	dat += text("Fingerprint: []</A><BR>\n", fingerprint_hash)
-	dat += text("Blood Type: []<BR>\n", blood_type)
-	dat += text("DNA Hash: []<BR><BR>\n", dna_hash)
-	if(front && side)
-		dat +="<td align = center valign = top>Photo:<br><img src=front.png height=80 width=80 border=4><img src=side.png height=80 width=80 border=4></td>"
-	dat += "</tr></table>"
-	return dat
-
-/obj/item/card/id/attack_self(mob/user as mob)
-	user.visible_message("\The [user] shows you: \icon[src] [src.name]. The assignment on the card: [src.assignment]",\
-		"You flash your ID card: \icon[src] [src.name]. The assignment on the card: [src.assignment]")
-
-	src.add_fingerprint(user)
-	return
-
-/obj/item/card/id/GetAccess()
-	return access
-
-/obj/item/card/id/GetID()
-	return src
 
 /obj/item/card/id/verb/read()
 	set name = "Read ID Card"
 	set category = "Object"
 	set src in usr
 
-	usr << text("\icon[] []: The current assignment on the card is [].", src, src.name, src.assignment)
+	to_chat(usr, "[icon2html(src, usr)] [src.name]: The current assignment on the card is [src.assignment].")
 	to_chat(usr, "The blood type on the card is [blood_type].")
 	to_chat(usr, "The DNA hash on the card is [dna_hash].")
 	to_chat(usr, "The fingerprint hash on the card is [fingerprint_hash].")
 	return
 
-/obj/item/card/id/get_worn_icon_state(var/slot_name)
+/obj/item/card/id/get_worn_icon_state(slot_name)
 	if(slot_name == slot_wear_id_str)
 		return "id" //Legacy, just how it is. There's only one sprite.
-
 	return ..()
-
-/obj/item/card/id/Initialize()
-	. = ..()
-	var/datum/job/J = SSjobs.GetJob(rank)
-	if(J)
-		access = J.get_access()
 
 /obj/item/card/id/silver
 	name = "command identification card"
@@ -176,7 +205,8 @@
 
 /obj/item/card/id/synthetic/Initialize()
 	. = ..()
-	access = get_all_station_access().Copy() + access_synth
+	access |= get_all_station_access()
+	access |= access_synth
 
 /obj/item/card/id/centcom
 	name = "\improper CentCom. ID"
@@ -187,7 +217,7 @@
 
 /obj/item/card/id/centcom/Initialize()
 	. = ..()
-	access = get_all_centcom_access().Copy()
+	access |= get_all_centcom_access() //fuck you whoever made those copy
 
 /obj/item/card/id/centcom/station/Initialize()
 	. = ..()

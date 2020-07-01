@@ -234,10 +234,11 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 
 **/
 
-/proc/Broadcast_Message(var/datum/radio_frequency/connection, var/mob/M,
-						var/vmask, var/vmessage, var/obj/item/radio/radio,
-						var/message, var/name, var/job, var/realname, var/vname,
-						var/data, var/compression, var/list/level, var/freq, var/verbage = "says", var/datum/language/speaking = null)
+/proc/Broadcast_Message(datum/radio_frequency/connection, mob/M,
+						vmask, vmessage, obj/item/radio/radio,
+						message, name, job, realname, vname,
+						data, compression, list/level, freq, verbage = "says",
+						datum/language/speaking = null)
 
 
   /* ###### Prepare the radio connection ###### */
@@ -251,7 +252,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 	if(data == 1)
 
 		for (var/obj/item/radio/intercom/R in connection.devices["[RADIO_CHAT]"])
-			if(R.receive_range(display_freq, level) > -1)
+			if(R.can_receive(display_freq, level))
 				radios += R
 
 	// --- Broadcast only to intercoms and station-bounced radios ---
@@ -263,7 +264,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 			if(istype(R, /obj/item/radio/headset) && !R.adhoc_fallback)
 				continue
 
-			if(R.receive_range(display_freq, level) > -1)
+			if(R.can_receive(display_freq, level))
 				radios += R
 
 	// --- Broadcast to antag radios! ---
@@ -272,7 +273,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 		for(var/antag_freq in ANTAG_FREQS)
 			var/datum/radio_frequency/antag_connection = radio_controller.return_frequency(antag_freq)
 			for (var/obj/item/radio/R in antag_connection.devices["[RADIO_CHAT]"])
-				if(R.receive_range(antag_freq, level) > -1)
+				if(R.can_receive(antag_freq, level))
 					radios += R
 
 	// --- Broadcast to ALL radio devices ---
@@ -280,7 +281,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 	else
 
 		for (var/obj/item/radio/R in connection.devices["[RADIO_CHAT]"])
-			if(R.receive_range(display_freq, level) > -1)
+			if(R.can_receive(display_freq, level))
 				radios += R
 
 	// Get a list of mobs who can hear from the radios we collected.
@@ -348,7 +349,8 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 		var/part_b_extra = ""
 		if(data == 3) // intercepted radio message
 			part_b_extra = " <i>(Intercepted)</i>"
-		var/part_a = "<span class='[frequency_span_class(display_freq)]'>\icon[radio]<b>\[[freq_text]\][part_b_extra]</b> <span class='name'>" // goes in the actual output
+
+		var/part_a = "<span class='[frequency_span_class(display_freq)]'>[icon2html(radio, receive)]<b>\[[freq_text]\][part_b_extra]</b> <span class='name'>" // goes in the actual output
 
 		// --- Some more pre-message formatting ---
 		var/part_b = "</span> <span class='message'>" // Tweaked for security headsets -- TLE
@@ -547,7 +549,8 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 		// Create a radio headset for the sole purpose of using its icon
 		var/obj/item/radio/headset/radio = new
 
-		var/part_b = "</span><b> \icon[radio]\[[freq_text]\][part_b_extra]</b> <span class='message'>" // Tweaked for security headsets -- TLE
+		//so apparently, `receive` is mobs. What could go wrong if we send images to objects!
+		var/part_b = "</span><b> [icon2html(radio, receive)]\[[freq_text]\][part_b_extra]</b> <span class='message'>" // Tweaked for security headsets -- TLE
 		var/part_blackbox_b = "</span><b> \[[freq_text]\]</b> <span class='message'>" // Tweaked for security headsets -- TLE
 		var/part_c = "</span></span>"
 

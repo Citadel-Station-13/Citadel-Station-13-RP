@@ -350,11 +350,6 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 
 //Preference save/load cooldown. This is in deciseconds.
 #define PREF_SAVELOAD_COOLDOWN 2 //Should be sufficiently hard to achieve without a broken mouse or autoclicker while still fulfilling its intended goal.
-// Radiation 'levels'. Used for the geiger counter, for visuals and sound. They are in different files so this goes here.
-#define RAD_LEVEL_LOW 0.5 // Around the level at which radiation starts to become harmful
-#define RAD_LEVEL_MODERATE 5
-#define RAD_LEVEL_HIGH 25
-#define RAD_LEVEL_VERY_HIGH 75
 
 #define CLIENT_FROM_VAR(I) (ismob(I) ? I:client : (istype(I, /client) ? I : (istype(I, /datum/mind) ? I:current?:client : null)))
 #define RADIATION_THRESHOLD_CUTOFF 0.1	// Radiation will not affect a tile when below this value.

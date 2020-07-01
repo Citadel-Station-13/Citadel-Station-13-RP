@@ -505,7 +505,7 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 	indoor_sounds_type = /datum/looping_sound/weather/wind/indoors
 
 	// How much radiation a mob gets while on an outside tile.
-	var/direct_rad_low = RAD_LEVEL_LOW
+	var/direct_rad_low = RAD_LEVEL_NORMAL
 	var/direct_rad_high = RAD_LEVEL_MODERATE
 
 	// How much radiation is bursted onto a random tile near a mob.

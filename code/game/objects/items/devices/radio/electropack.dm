@@ -7,19 +7,35 @@
 			slot_r_hand_str = 'icons/mob/items/righthand_storage.dmi',
 			)
 	item_state = "electropack"
-	frequency = 1449
+	frequency = FREQ_ELECTROPACK
 	slot_flags = SLOT_BACK
 	w_class = ITEMSIZE_HUGE
 
 	matter = list(DEFAULT_WALL_MATERIAL = 10000,"glass" = 2500)
 
 	var/code = 2
+	var/shock_cooldown = FALSE
 
-/obj/item/radio/electropack/attack_hand(mob/living/user as mob)
-	if(src == user.back)
-		to_chat(user, "<span class='notice'>You need help taking this off!</span>")
-		return
-	..()
+///obj/item/electropack/suicide_act(mob/living/carbon/user)
+//	user.visible_message("<span class='suicide'>[user] hooks [user.p_them()]self to the electropack and spams the trigger! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+//	return (FIRELOSS)
+
+/obj/item/radio/electropack/Initialize()
+	. = ..()
+	set_frequency(frequency)
+
+/obj/item/electropack/Destroy()
+//	SSradio.remove_object(src, frequency)
+	. = ..()
+
+//ATTACK HAND IGNORING PARENT RETURN VALUE
+/obj/item/radio/electropack/attack_hand(mob/user)
+	if(iscarbon(user))
+		var/mob/living/carbon/C = user
+		if(src == C.back)
+			to_chat(user, "<span class='warning'>You need help taking this off!</span>")
+			return
+	return ..()
 
 /obj/item/radio/electropack/attackby(obj/item/W as obj, mob/user as mob)
 	..()
@@ -43,88 +59,85 @@
 		user.put_in_hands(A)
 		A.add_fingerprint(user)
 
-/obj/item/radio/electropack/Topic(href, href_list)
-	//..()
-	if(usr.stat || usr.restrained())
+/obj/item/radio/electropack/Topic(href, href_list) //THE FUCK IS THIS ROUNDTYPE LOCKED???
+	var/mob/living/carbon/C = usr
+	if(usr.stat || usr.restrained() || C.back == src)
 		return
-	if(((istype(usr, /mob/living/carbon/human) && ((!( SSticker ) || (SSticker && SSticker.mode != "monkey")) && usr.contents.Find(src))) || (usr.contents.Find(master) || (in_range(src, usr) && istype(loc, /turf)))))
-		usr.set_machine(src)
-		if(href_list["freq"])
-			var/new_frequency = sanitize_frequency(frequency + text2num(href_list["freq"]))
-			set_frequency(new_frequency)
-		else
-			if(href_list["code"])
-				code += text2num(href_list["code"])
-				code = round(code)
-				code = min(100, code)
-				code = max(1, code)
-			else
-				if(href_list["power"])
-					on = !( on )
-					icon_state = "electropack[on]"
-		if(!( master ))
-			if(istype(loc, /mob))
-				attack_self(loc)
-			else
-				for(var/mob/M in viewers(1, src))
-					if(M.client)
-						attack_self(M)
-		else
-			if(istype(master.loc, /mob))
-				attack_self(master.loc)
-			else
-				for(var/mob/M in viewers(1, master))
-					if(M.client)
-						attack_self(M)
-	else
+
+	if(!in_range(src, usr)) //usr.canUseTopic(src, BE_CLOSE))
 		usr << browse(null, "window=radio")
+		onclose(usr, "radio")
 		return
+
+	if(href_list["set"])
+		if(href_list["set"] == "freq")
+			var/new_freq = input(usr, "Input a new receiving frequency", "Electropack Frequency", format_frequency(frequency)) as num|null
+			if(!in_range(src, usr)) //!usr.canUseTopic(src, BE_CLOSE))
+				return
+			//new_freq = unformat_frequency(new_freq)
+			new_freq = text2num(new_freq)
+			new_freq *= 10 //basicaly same as that unformat func above!
+			new_freq = sanitize_frequency(new_freq, MIN_FREE_FREQ, MAX_FREQ) //TRUE)
+			set_frequency(new_freq)
+
+		if(href_list["set"] == "code")
+			var/new_code = input(usr, "Input a new receiving code", "Electropack Code", code) as num|null
+			if(!in_range(src, usr)) //usr.canUseTopic(src, BE_CLOSE))
+				return
+			new_code = round(new_code)
+			new_code = clamp(new_code, 1, 100)
+			code = new_code
+
+		if(href_list["set"] == "power")
+			if(!in_range(src, usr)) //usr.canUseTopic(src, BE_CLOSE))
+				return
+			on = !(on)
+			icon_state = "electropack[on]"
+
+	if(usr) //update things
+		attack_self(usr)
 	return
 
 /obj/item/radio/electropack/receive_signal(datum/signal/signal)
-	if(!signal || signal.encryption != code)
+	if(!signal || signal.encryption != code) //huh, signalers send code on enc rather than dat?
 		return
 
-	if(ismob(loc) && on)
-		var/mob/M = loc
-		var/turf/T = M.loc
-		if(istype(T, /turf))
-			if(!M.moved_recently && M.last_move)
-				M.moved_recently = 1
-				step(M, M.last_move)
-				sleep(50)
-				if(M)
-					M.moved_recently = 0
-		to_chat(M, "<span class='danger'>You feel a sharp shock!</span>")
+	if(isliving(loc) && on)
+		if(shock_cooldown == TRUE)
+			return
+		shock_cooldown = TRUE
+		spawn(100)
+			shock_cooldown = FALSE //there is no VSC yet
+		//addtimer(VARSET_CALLBACK(src, shock_cooldown, FALSE), 100)
+		var/mob/living/L = loc
+		step(L, pick(GLOB.cardinal))
+		to_chat(L, "<span class='danger'>You feel a sharp shock!</span>")
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-		s.set_up(3, 1, M)
+		s.set_up(3, 1, L)
 		s.start()
 
-		M.Weaken(10)
+		L.Weaken(10)
 
-	if(master && wires & 1)
+	if(master && (wires & 1))
 		master.receive_signal()
 	return
 
-/obj/item/radio/electropack/attack_self(mob/user as mob, flag1)
-
-	if(!istype(user, /mob/living/carbon/human))
+/obj/item/radio/electropack/attack_self(mob/user)
+	if(!ishuman(user))
 		return
+
 	user.set_machine(src)
-	var/dat = {"<TT>
-<A href='?src=\ref[src];power=1'>Turn [on ? "Off" : "On"]</A><BR>
+	var/dat = {"
+<TT>
+Turned [on ? "On" : "Off"] - <A href='?src=[REF(src)];set=power'>Toggle</A><BR>
 <B>Frequency/Code</B> for electropack:<BR>
 Frequency:
-<A href='byond://?src=\ref[src];freq=-10'>-</A>
-<A href='byond://?src=\ref[src];freq=-2'>-</A> [format_frequency(frequency)]
-<A href='byond://?src=\ref[src];freq=2'>+</A>
-<A href='byond://?src=\ref[src];freq=10'>+</A><BR>
+[format_frequency(src.frequency)]
+<A href='byond://?src=[REF(src)];set=freq'>Set</A><BR>
 
 Code:
-<A href='byond://?src=\ref[src];code=-5'>-</A>
-<A href='byond://?src=\ref[src];code=-1'>-</A> [code]
-<A href='byond://?src=\ref[src];code=1'>+</A>
-<A href='byond://?src=\ref[src];code=5'>+</A><BR>
+[src.code]
+<A href='byond://?src=[REF(src)];set=code'>Set</A><BR>
 </TT>"}
 	user << browse(dat, "window=radio")
 	onclose(user, "radio")

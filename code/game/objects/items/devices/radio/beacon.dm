@@ -11,7 +11,6 @@ GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
 /obj/item/radio/beacon/hear_talk()
 	return
 
-
 /obj/item/radio/beacon/send_hear()
 	return null
 
