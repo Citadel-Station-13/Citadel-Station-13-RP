@@ -40,8 +40,8 @@ var/global/list/image/splatter_cache=list()
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/effect/decal/cleanable/blood/New()
-	..()
+/obj/effect/decal/cleanable/blood/Initialize(mapload)
+	. = ..()
 	update_icon()
 	if(istype(src, /obj/effect/decal/cleanable/blood/gibs))
 		return
@@ -52,16 +52,12 @@ var/global/list/image/splatter_cache=list()
 					if (B.blood_DNA)
 						blood_DNA |= B.blood_DNA.Copy()
 					qdel(B)
-	drytime = world.time + DRYING_TIME * (amount+1)
-	START_PROCESSING(SSobj, src)
-
-/obj/effect/decal/cleanable/blood/process()
-	if(world.time > drytime)
-		dry()
+	addtimer(CALLBACK(src, .proc/dry), DRYING_TIME * (amount + 1))
 
 /obj/effect/decal/cleanable/blood/update_icon()
-	if(basecolor == "rainbow") basecolor = "#[get_random_colour(1)]"
-	color = basecolor
+	if(basecolor == "rainbow")
+		basecolor = "#[get_random_colour(1)]"
+	add_atom_colour(basecolor, FIXED_COLOUR_PRIORITY)
 	if(synthblood)
 		name = "synthetic blood"
 		desc = "It's quite greasy."
@@ -112,9 +108,9 @@ var/global/list/image/splatter_cache=list()
 /obj/effect/decal/cleanable/blood/proc/dry()
 	name = dryname
 	desc = drydesc
-	color = adjust_brightness(color, -50)
+	var/newcolor = adjust_brightness(color, -50)
+	add_atom_colour(newcolor, FIXED_COLOUR_PRIORITY)
 	amount = 0
-	STOP_PROCESSING(SSobj, src)
 
 /obj/effect/decal/cleanable/blood/attack_hand(mob/living/carbon/human/user)
 	..()

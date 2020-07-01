@@ -121,6 +121,12 @@
 
 	if(istype(A, /obj/item/gun/energy) && !charge_guns)
 		to_chat(user, "<span class='alert'>Error unable to interface with device.</span>")
+		recharging = FALSE
+		return FALSE
+
+	if(get_dist(user, A) > 7)
+		to_chat(user, "<span class='warning'>[src] can't reach that far!</span>")
+		recharging = FALSE
 		return FALSE
 
 	//The cell we hopefully eventually find

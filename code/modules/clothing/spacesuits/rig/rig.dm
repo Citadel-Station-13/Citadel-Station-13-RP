@@ -94,6 +94,9 @@
 	var/datum/wires/rig/wires
 	var/datum/effect_system/spark_spread/spark_system
 
+/obj/item/rig/get_cell()
+	return cell
+
 /obj/item/rig/examine(mob/user)
 	. = ..()
 	if(wearer)

@@ -125,6 +125,17 @@
 	setup_integrated_circuit(/obj/item/electronic_assembly/clothing/small)
 	return ..()
 
+// Watch.
+/obj/item/clothing/gloves/ewatch
+	name = "electronic watch"
+	desc = "It's a wearable case for electronics. This one is a digital watch, with an antenna and button array attatched to it.\
+	Practical and stylish!"
+	icon_state = "communicator"
+	item_state = "ewatch"
+
+/obj/item/clothing/gloves/circuitry/Initialize()
+	setup_integrated_circuit(/obj/item/electronic_assembly/clothing/small)
+	return ..()
 
 // Glasses.
 /obj/item/clothing/glasses/circuitry

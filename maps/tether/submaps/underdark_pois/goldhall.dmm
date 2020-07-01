@@ -26,6 +26,35 @@
 /obj/item/ore/bluespace_crystal,
 /turf/simulated/floor/tiled/kafel_full/yellow/virgo3b,
 /area/mine/explored/underdark)
+"p" = (
+/obj/structure/closet/crate,
+/obj/random/gun/random,
+/turf/simulated/floor/tiled/kafel_full/yellow/virgo3b,
+/area/mine/explored/underdark)
+"F" = (
+/obj/tether_away_spawner/underdark_hard,
+/turf/simulated/floor/tiled/kafel_full/yellow/virgo3b,
+/area/mine/explored/underdark)
+"H" = (
+/obj/tether_away_spawner/underdark_normal,
+/turf/simulated/floor/tiled/kafel_full/yellow/virgo3b,
+/area/mine/explored/underdark)
+"L" = (
+/obj/structure/closet/crate/secure/loot,
+/turf/simulated/floor/tiled/kafel_full/yellow/virgo3b,
+/area/mine/explored/underdark)
+"O" = (
+/obj/tether_away_spawner/underdark_boss,
+/turf/simulated/floor/tiled/kafel_full/yellow/virgo3b,
+/area/mine/explored/underdark)
+"P" = (
+/obj/random/outcrop,
+/turf/simulated/floor/tiled/kafel_full/yellow/virgo3b,
+/area/mine/explored/underdark)
+"U" = (
+/obj/structure/trash_pile,
+/turf/simulated/floor/tiled/kafel_full/yellow/virgo3b,
+/area/mine/explored/underdark)
 
 (1,1,1) = {"
 a
@@ -60,7 +89,7 @@ b
 b
 d
 d
-d
+P
 b
 "}
 (4,1,1) = {"
@@ -81,9 +110,9 @@ b
 d
 d
 d
+F
 d
-d
-d
+L
 d
 a
 "}
@@ -101,8 +130,8 @@ a
 "}
 (7,1,1) = {"
 a
-d
-d
+P
+U
 d
 d
 d
@@ -116,7 +145,7 @@ c
 d
 d
 d
-d
+O
 d
 b
 b
@@ -137,14 +166,14 @@ b
 "}
 (10,1,1) = {"
 a
-d
-d
+P
+H
 d
 e
 g
 d
 d
-d
+p
 a
 "}
 (11,1,1) = {"
@@ -164,7 +193,7 @@ a
 b
 d
 d
-d
+H
 d
 d
 d
@@ -180,7 +209,7 @@ d
 d
 d
 d
-d
+H
 b
 "}
 (14,1,1) = {"
@@ -203,7 +232,7 @@ b
 b
 b
 b
-d
+P
 b
 b
 "}

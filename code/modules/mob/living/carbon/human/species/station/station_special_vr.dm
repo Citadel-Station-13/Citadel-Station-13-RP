@@ -61,9 +61,9 @@
 
 	catalogue_data = list(/datum/category_item/catalogue/fauna/xenochimera)
 
-	breath_type = "oxygen"
-	poison_type = "phoron"
-	exhale_type = "carbon_dioxide"
+	breath_type = /datum/gas/oxygen
+	poison_type = /datum/gas/phoron
+	exhale_type = /datum/gas/carbon_dioxide
 
 	hazard_high_pressure = HAZARD_HIGH_PRESSURE
 	warning_high_pressure = WARNING_HIGH_PRESSURE
@@ -156,6 +156,10 @@
 	//To reduce distant object references
 	var/feral = H.feral
 
+//Are we in danger of ferality?
+	var/danger = FALSE
+	var/feral_state = FALSE
+
 //Handle feral triggers and pre-feral messages
 	if(!feral && (hungry || shock || jittery))
 
@@ -166,12 +170,15 @@
 					to_chat(H,"<span class='info'>You feel rather hungry. It might be a good idea to find some some food...</span>")
 				if(100 to 150)
 					to_chat(H,"<span class='warning'>You feel like you're going to snap and give in to your hunger soon... It would be for the best to find some [pick("food","prey")] to eat...</span>")
+					danger = TRUE
 
 		// Going feral due to hunger
 		else if(H.nutrition < 100 && !isbelly(H.loc))
 			to_chat(H,"<span class='danger'><big>Something in your mind flips, your instincts taking over, no longer able to fully comprehend your surroundings as survival becomes your primary concern - you must feed, survive, there is nothing else. Hunt. Eat. Hide. Repeat.</big></span>")
 			log_and_message_admins("has gone feral due to hunger.", H)
 			feral = 5
+			danger = TRUE
+			feral_state = TRUE
 			if(!H.stat)
 				H.emote("twitch")
 
@@ -184,6 +191,8 @@
 					to_chat(H,"<span class='danger'><big>The pain! It stings! Got to get away! Your instincts take over, urging you to flee, to hide, to go to ground, get away from here...</big></span>")
 					log_and_message_admins("has gone feral due to halloss.", H)
 					feral = 5
+					danger = TRUE
+					feral_state = TRUE
 					if(!H.stat)
 						H.emote("twitch")
 
@@ -191,6 +200,8 @@
 			else if(prob(min(10,(0.1 * H.traumatic_shock))))
 				to_chat(H,"<span class='danger'><big>Your fight-or-flight response kicks in, your injuries too much to simply ignore - you need to flee, to hide, survive at all costs - or destroy whatever is threatening you.</big></span>")
 				feral = 5
+				danger = TRUE
+				feral_state = TRUE
 				log_and_message_admins("has gone feral due to injury.", H)
 				if(!H.stat)
 					H.emote("twitch")
@@ -199,27 +210,35 @@
 		else if(jittery)
 			to_chat(H,"<span class='warning'><big>Suddenly, something flips - everything that moves is... potential prey. A plaything. This is great! Time to hunt!</big></span>")
 			feral = 5
+			danger = TRUE
+			feral_state = TRUE
 			log_and_message_admins("has gone feral due to jitteriness.", H)
 			if(!H.stat)
 				H.emote("twitch")
 
-// Handle being feral
+	// Handle being feral
 	if(feral)
+		//we're feral
+		feral_state = TRUE
 
 		//Shock due to mostly halloss. More feral.
 		if(shock && 2.5*H.halloss >= H.traumatic_shock)
+			danger = TRUE
 			feral = max(feral, H.halloss)
 
 		//Shock due to mostly injury. More feral.
 		else if(shock)
+			danger = TRUE
 			feral = max(feral, H.traumatic_shock * 2)
 
 		//Still jittery? More feral.
 		if(jittery)
+			danger = TRUE
 			feral = max(feral, H.jitteriness-100)
 
 		//Still hungry? More feral.
 		if(H.feral + H.nutrition < 150)
+			danger = TRUE
 			feral++
 		else
 			feral = max(0,--feral)
@@ -229,8 +248,10 @@
 
 		//Did we just finish being feral?
 		if(!feral)
+			feral_state = FALSE
 			to_chat(H,"<span class='info'>Your thoughts start clearing, your feral urges having passed - for the time being, at least.</span>")
 			log_and_message_admins("is no longer feral.", H)
+			update_xenochimera_hud(H, danger, feral_state)
 			return
 
 		//If they lose enough health to hit softcrit, handle_shock() will keep resetting this. Otherwise, pissed off critters will lose shock faster than they gain it.
@@ -239,6 +260,7 @@
 		//Handle light/dark areas
 		var/turf/T = get_turf(H)
 		if(!T)
+			update_xenochimera_hud(H, danger, feral_state)
 			return //Nullspace
 		var/darkish = T.get_lumcount() <= 0.1
 
@@ -260,6 +282,7 @@
 					H.handle_feral()
 
 			//And bail
+			update_xenochimera_hud(H, danger, feral_state)
 			return
 
 		// In the darkness or "hidden". No need for custom scene-protection checks as it's just an occational infomessage.
@@ -306,6 +329,8 @@
 				else
 					to_chat(H,"<span class='danger'>Confusing sights and sounds and smells surround you, this place is wrong, confusing, frightening. You need to hide, go to ground...</span>")
 
+	// HUD update time
+	update_xenochimera_hud(H, danger, feral_state)
 
 /datum/species/xenochimera/proc/produceCopy(var/datum/species/to_copy,var/list/traits,var/mob/living/carbon/human/H)
 	ASSERT(to_copy)
@@ -353,6 +378,21 @@
 	var/datum/species/real = all_species[base_species]
 	return real.race_key
 
+/datum/species/xenochimera/proc/update_xenochimera_hud(var/mob/living/carbon/human/H, var/danger, var/feral)
+	if(H.xenochimera_danger_display)
+		H.xenochimera_danger_display.invisibility = 0
+		if(danger && feral)
+			H.xenochimera_danger_display.icon_state = "danger11"
+		else if(danger && !feral)
+			H.xenochimera_danger_display.icon_state = "danger10"
+		else if(!danger && feral)
+			H.xenochimera_danger_display.icon_state = "danger01"
+		else
+			H.xenochimera_danger_display.icon_state = "danger00"
+
+	return
+
+
 
 //Verbs Follow
 
@@ -361,24 +401,31 @@
 	set desc = "Changes the gases we need to breathe."
 	set category = "Abilities"
 
-	var/resp_biomorph = input(H, "How should we adapt our respiration?") as null|anything in list("oxgygen", "phoron", "nitrogen", "carbon_dioxide")
+	var/list/gas_choices = list(
+		"oxygen" = /datum/gas/oxygen,
+		"phoron" = /datum/gas/phoron,
+		"nitrogen" = /datum/gas/nitrogen,
+		"carbon dioxide" = /datum/gas/carbon_dioxide
+	)
+	var/choice = input(H, "How should we adapt our respiration?") as null|anything in gas_choices
+	var/resp_biomorph = gas_choices[choice]
 	to_chat(H,"You begin modifying your internal structure!")
 	if(do_after(H,15 SECONDS))
 		switch(resp_biomorph)
-			if("oxygen")
-				species.breath_type = "oxygen"
-				species.poison_type = "phoron"
-				species.exhale_type = "carbon_dioxide"
-			if("phoron")
-				species.breath_type = "phoron"
-				species.poison_type = "oxygen"
-				species.exhale_type = "nitrogen"
-			if("nitrogen")
-				species.breath_type = "nitrogen"
-				species.poison_type = "carbon_dioxide"
-			if("carbon_dioxide")
-				species.breath_type = "carbon_dioxide"
-				species.exhale_type = "oxygen"
+			if(/datum/gas/oxygen)
+				species.breath_type = /datum/gas/oxygen
+				species.poison_type = /datum/gas/phoron
+				species.exhale_type = /datum/gas/carbon_dioxide
+			if(/datum/gas/phoron)
+				species.breath_type = /datum/gas/phoron
+				species.poison_type = /datum/gas/oxygen
+				species.exhale_type = /datum/gas/nitrogen
+			if(/datum/gas/nitrogen)
+				species.breath_type = /datum/gas/nitrogen
+				species.poison_type = /datum/gas/carbon_dioxide
+			if(/datum/gas/carbon_dioxide)
+				species.breath_type = /datum/gas/carbon_dioxide
+				species.exhale_type = /datum/gas/oxygen
 
 /mob/living/carbon/human/proc/biothermic_adapt(var/mob/living/carbon/human/H, var/mob/living/carbon/human/C)
 	set name = "Biothermic Adaptation"
