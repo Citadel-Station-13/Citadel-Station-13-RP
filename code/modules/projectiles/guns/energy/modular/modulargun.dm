@@ -63,7 +63,7 @@
 	switch(cores)
 		if(1) //this makes me sick but ill ask if there's a better way to do this
 			if(chargecost < 0)
-				chargecost = 0
+				chargecost = 1
 			if(scatter)
 				beammode = primarycore.scatterbeam
 				chargecost *= 2
