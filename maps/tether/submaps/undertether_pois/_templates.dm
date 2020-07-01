@@ -4,27 +4,26 @@
 	allow_duplicates = TRUE
 	annihilate = FALSE
 
-
 /datum/map_template/undertether/gastanks
 	name = "UnderTether Gas Tanks"
 	mappath = 'poigastanks.dmm'
-	cost = 5
+	cost = 20
 
 /datum/map_template/undertether/hallway
 	name = "UnderTether Hallway"
 	mappath = 'poihallway.dmm'
-	cost = 5
+	cost = 20
 
 /datum/map_template/undertether/hideycave
 	name = "UnderTether Hidey Cave"
 	mappath = 'poihideycave.dmm'
-	cost = 5
+	cost = 20
 
 /datum/map_template/undertether/mechfight
 	name = "UnderTether Mech Fight"
 	mappath = 'poimechfight.dmm'
-	cost = 5
-
+	cost = 20
+/*
 /datum/map_template/undertether/crossroads
 	name = "UnderTether Crossroads"
 	mappath = 'crossroads.dmm'
@@ -66,7 +65,6 @@
 	cost = 5
 	allow_duplicates = FALSE
 
-/*
 /datum/map_template/undertether/chaos
 	name = "UnderTether Chaos"
 	mappath = 'utchaos.dmm'

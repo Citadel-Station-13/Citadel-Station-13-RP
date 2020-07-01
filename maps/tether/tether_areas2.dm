@@ -111,10 +111,12 @@
 	icon_state = "ut_s"
 	name = "\improper UT Static"
 	ambience = list(AMBIENCE_FOREBODING, AMBIENCE_RUINS)
+	base_turf = /turf/simulated/floor/plating
 
 /area/tether/under/poi
 	icon_state = "ut_poi"
 	name = "\improper UT POI"
+	base_turf = /turf/simulated/floor/plating
 	requires_power = 0
 
 

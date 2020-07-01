@@ -68,7 +68,8 @@
 
 /datum/map_template/tether_lateload/tether_underdark/on_map_loaded(z)
 	. = ..()
-	seed_submaps(list(Z_LEVEL_SURFACE_UNDER), 40, /area/tether/under/poi, /datum/map_template/undertether)
+	seed_submaps(list(Z_LEVEL_SURFACE_UNDER), 100, /area/tether/under/poi, /datum/map_template/undertether)
+	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_SURFACE_UNDER, 64, 64)         // Create the mining ore distribution map.
 
 /*
 /datum/map_template/tether_lateload/tether_plains
