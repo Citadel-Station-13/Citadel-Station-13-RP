@@ -62,14 +62,12 @@
 
 /datum/map_z_level/tether_lateload/undertether
 	name = "UnderTether"
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_XENOARCH_EXEMPT
-	base_turf = /turf/simulated/floor/plating
+//	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_XENOARCH_EXEMPT
 	z = Z_LEVEL_SURFACE_UNDER
 
 /datum/map_template/tether_lateload/tether_underdark/on_map_loaded(z)
 	. = ..()
-	seed_submaps(list(Z_LEVEL_SURFACE_UNDER), 100, /area/tether/under/poi, /datum/map_template/undertether)
-	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_SURFACE_UNDER, 64, 64)         // Create the mining ore distribution map.
+	seed_submaps(list(Z_LEVEL_SURFACE_UNDER), 80, /area/tether/under/poi, /datum/map_template/undertether)
 
 /*
 /datum/map_template/tether_lateload/tether_plains

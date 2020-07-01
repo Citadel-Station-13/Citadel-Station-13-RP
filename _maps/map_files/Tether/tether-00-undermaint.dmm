@@ -1003,6 +1003,12 @@
 /obj/item/flashlight/lamp,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
+"hO" = (
+/obj/structure/barricade,
+/obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/plating,
+/area/tether/under/poi)
 "hP" = (
 /obj/structure/closet/crate/trashcart,
 /obj/effect/decal/cleanable/dirt,
@@ -1182,9 +1188,6 @@
 /obj/effect/decal/remains,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
-"jq" = (
-/turf/simulated/floor/plating,
-/area/tether/under/poi)
 "jw" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -1270,6 +1273,12 @@
 /obj/random/multiple/underdark/treasure,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
+"ke" = (
+/obj/machinery/door/airlock/maintenance/common,
+/obj/structure/barricade,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/plating,
+/area/tether/under/poi)
 "kg" = (
 /obj/structure/sign/warning{
 	pixel_x = 32
@@ -1498,6 +1507,9 @@
 /obj/random/maintenance/research,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
+"lQ" = (
+/turf/simulated/wall/iron,
+/area/tether/under/poi)
 "lR" = (
 /obj/structure/table/bench/sifwooden,
 /obj/random/unidentified_medicine/fresh_medicine,
@@ -1982,6 +1994,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
+"pu" = (
+/obj/machinery/door/airlock/maintenance/common,
+/obj/structure/barricade,
+/turf/simulated/floor/beach/sand,
+/area/tether/under/poi)
 "pz" = (
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -2765,6 +2782,11 @@
 /obj/structure/trash_pile/under_tether,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
+"vF" = (
+/obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/plating,
+/area/tether/under/poi)
 "vG" = (
 /obj/random/junk,
 /obj/effect/decal/cleanable/blood,
@@ -3551,6 +3573,11 @@
 /obj/random/mouseremains,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
+"Bh" = (
+/obj/machinery/door/airlock/maintenance/common,
+/obj/structure/barricade,
+/turf/simulated/mineral,
+/area/tether/under/poi)
 "Bj" = (
 /obj/structure/catwalk,
 /obj/effect/decal/cleanable/dirt,
@@ -3888,6 +3915,11 @@
 "DF" = (
 /turf/simulated/wall/iron,
 /area/tether/under/static_area)
+"DG" = (
+/obj/structure/barricade,
+/obj/machinery/door/airlock/maintenance/common,
+/turf/simulated/floor/beach/sand,
+/area/tether/under/poi)
 "DI" = (
 /obj/effect/spider/stickyweb,
 /obj/random/junk,
@@ -4717,10 +4749,8 @@
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "Kb" = (
-/obj/structure/closet/fireaxecabinet{
-	pixel_y = 32
-	},
-/turf/simulated/floor/plating,
+/obj/random/outcrop,
+/turf/simulated/mineral,
 /area/tether/under/static_area)
 "Kd" = (
 /obj/structure/sign/mining{
@@ -4959,7 +4989,7 @@
 /obj/structure/barricade,
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
-/area/tether/under/static_area)
+/area/tether/under/poi)
 "LN" = (
 /obj/structure/filingcabinet,
 /turf/simulated/floor/plating,
@@ -5156,6 +5186,9 @@
 /obj/structure/barricade,
 /turf/simulated/floor/beach/sand,
 /area/tether/under/static_area)
+"MS" = (
+/turf/simulated/floor/plating,
+/area/tether/under/poi)
 "MV" = (
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -5211,6 +5244,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
+"Np" = (
+/obj/machinery/door/airlock/maintenance/common,
+/obj/structure/barricade,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/mineral,
+/area/tether/under/poi)
 "Nq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -5636,9 +5675,6 @@
 /obj/structure/catwalk,
 /obj/structure/table/rack,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/fireaxecabinet{
-	pixel_y = 32
-	},
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
@@ -6093,6 +6129,11 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/under/static_area)
+"TA" = (
+/obj/structure/barricade,
+/obj/machinery/door/airlock/maintenance/common,
+/turf/simulated/floor/plating,
+/area/tether/under/poi)
 "TD" = (
 /obj/structure/reagent_dispensers/coolanttank,
 /obj/effect/spider/stickyweb,
@@ -6159,6 +6200,11 @@
 	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
+"Uc" = (
+/obj/structure/catwalk,
+/obj/machinery/door/airlock/maintenance/common,
+/turf/simulated/floor/plating,
+/area/tether/under/poi)
 "Uf" = (
 /obj/machinery/light/small/emergency{
 	dir = 8
@@ -6402,6 +6448,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
+"VQ" = (
+/obj/machinery/door/airlock/maintenance/common,
+/obj/structure/barricade,
+/turf/simulated/floor/plating,
+/area/tether/under/poi)
 "VU" = (
 /obj/random/junk,
 /turf/simulated/floor/plating,
@@ -6612,6 +6663,10 @@
 "XI" = (
 /turf/simulated/floor/water/pool,
 /area/tether/under/static_area)
+"XJ" = (
+/obj/machinery/door/airlock/maintenance/common,
+/turf/simulated/floor/plating,
+/area/tether/under/poi)
 "XN" = (
 /obj/random/trash,
 /obj/effect/decal/cleanable/dirt,
@@ -6811,7 +6866,7 @@
 /turf/simulated/floor/wood/sif,
 /area/tether/under/static_area)
 "Zh" = (
-/turf/unsimulated/mineral/virgo3b,
+/turf/simulated/mineral,
 /area/tether/under/poi)
 "Zj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -7225,8 +7280,8 @@ xj
 xj
 xj
 xj
-Jl
-DF
+xj
+xj
 Zh
 Zh
 Zh
@@ -7367,8 +7422,8 @@ xj
 xj
 xj
 xj
-Jl
-DF
+xj
+xj
 Zh
 Zh
 Zh
@@ -7509,8 +7564,8 @@ xj
 xj
 xj
 xj
-Jl
-DF
+xj
+xj
 Zh
 Zh
 Zh
@@ -7651,8 +7706,8 @@ xj
 sS
 xj
 xj
-Jl
-DF
+xj
+xj
 Zh
 Zh
 Zh
@@ -7793,8 +7848,8 @@ xj
 xj
 xj
 xj
-Jl
-DF
+xj
+xj
 Zh
 Zh
 Zh
@@ -7935,16 +7990,16 @@ xj
 xj
 xj
 xj
-sS
-DF
+Kb
+xj
 Zh
 Zh
 Zh
 Zh
 Zh
-Zh
-Zh
-Zh
+MS
+MS
+MS
 Zh
 Zh
 Zh
@@ -7981,7 +8036,7 @@ zF
 Qb
 Qb
 DF
-Kb
+zF
 cf
 cf
 mX
@@ -7994,9 +8049,9 @@ Zh
 Zh
 Zh
 Zh
-Zh
-Zh
-Zh
+MS
+MS
+MS
 Zh
 Zh
 Zh
@@ -8078,21 +8133,21 @@ xj
 xj
 uF
 uF
-hj
+pu
 Zh
 Zh
 Zh
 Zh
 Zh
-Zh
-jq
-Zh
-Zh
-Zh
+MS
+MS
+MS
 Zh
 Zh
 Zh
-hj
+Zh
+Zh
+Bh
 Fv
 WR
 Fe
@@ -8130,15 +8185,15 @@ cf
 cf
 OI
 zF
-hj
+VQ
 Zh
 Zh
 Zh
 Zh
 Zh
-Zh
-jq
-Zh
+MS
+MS
+MS
 Zh
 Zh
 Zh
@@ -8220,15 +8275,15 @@ sS
 xj
 xj
 xj
-DF
+xj
 Zh
 Zh
 Zh
 Zh
 Zh
-Zh
-Zh
-Zh
+MS
+MS
+MS
 Zh
 Zh
 Zh
@@ -8278,9 +8333,9 @@ Zh
 Zh
 Zh
 Zh
-Zh
-Zh
-Zh
+MS
+MS
+MS
 Zh
 Zh
 Zh
@@ -8361,8 +8416,8 @@ uF
 uF
 xj
 xj
-Jl
-DF
+xj
+xj
 Zh
 Zh
 Zh
@@ -8503,8 +8558,8 @@ uF
 uF
 xj
 xj
-Jl
-DF
+xj
+xj
 Zh
 Zh
 Zh
@@ -8645,8 +8700,8 @@ uF
 kw
 xj
 xj
-Jl
-DF
+xj
+xj
 Zh
 Zh
 Zh
@@ -8787,8 +8842,8 @@ xj
 xj
 xj
 xj
-Jl
-DF
+xj
+xj
 Zh
 Zh
 Zh
@@ -8929,8 +8984,8 @@ uF
 uF
 xj
 xj
-Jl
-DF
+xj
+xj
 Zh
 Zh
 Zh
@@ -9079,7 +9134,7 @@ DF
 DF
 DF
 DF
-GV
+Np
 DF
 DF
 DF
@@ -9131,7 +9186,7 @@ DF
 DF
 DF
 DF
-cZ
+TA
 DF
 DF
 DF
@@ -10775,15 +10830,15 @@ uF
 xj
 xj
 xj
-Jl
+xj
+xj
+DF
+xj
 DF
 DF
 DF
 DF
-DF
-DF
-DF
-GV
+ke
 DF
 DF
 DF
@@ -10822,7 +10877,7 @@ DF
 DF
 DF
 DF
-hj
+VQ
 DF
 DF
 DF
@@ -10917,8 +10972,8 @@ xj
 xj
 xj
 xj
-Jl
-DF
+xj
+xj
 Zh
 Zh
 Zh
@@ -11059,8 +11114,8 @@ xj
 xj
 xj
 xj
-Jl
-DF
+xj
+xj
 Zh
 Zh
 Zh
@@ -11201,8 +11256,8 @@ uF
 xj
 sS
 xj
-Jl
-DF
+xj
+xj
 Zh
 Zh
 Zh
@@ -11343,8 +11398,8 @@ uF
 uF
 uF
 xj
-Jl
-DF
+xj
+xj
 Zh
 Zh
 Zh
@@ -11485,8 +11540,8 @@ uF
 uF
 xj
 xj
-Jl
-DF
+xj
+xj
 Zh
 Zh
 Zh
@@ -11627,16 +11682,16 @@ uF
 xj
 xj
 xj
-Jl
-DF
+xj
+xj
 Zh
 Zh
 Zh
 Zh
 Zh
-Zh
-Zh
-Zh
+MS
+MS
+MS
 Zh
 Zh
 Zh
@@ -11673,9 +11728,9 @@ Zh
 Zh
 Zh
 Zh
-Zh
-Zh
-Zh
+MS
+MS
+MS
 Zh
 Zh
 Zh
@@ -11768,23 +11823,23 @@ uF
 pD
 uF
 sS
-xj
-zF
-cZ
+uF
+uF
+DG
 Zh
 Zh
 Zh
 Zh
 Zh
-Zh
-jq
-Zh
-Zh
-Zh
+MS
+MS
+MS
 Zh
 Zh
 Zh
-hj
+Zh
+Zh
+VQ
 Fj
 Oa
 zW
@@ -11809,21 +11864,21 @@ AN
 Wr
 Di
 Vr
-hj
+VQ
 Zh
 Zh
 Zh
 Zh
 Zh
-Zh
-jq
-Zh
-Zh
-Zh
+MS
+MS
+MS
 Zh
 Zh
 Zh
-hj
+Zh
+Zh
+VQ
 zF
 QB
 zF
@@ -11910,17 +11965,17 @@ uF
 uF
 uF
 sS
+uF
 xj
-Jl
-DF
+xj
 Zh
 Zh
 Zh
 Zh
 Zh
-Zh
-Zh
-Zh
+MS
+MS
+MS
 Zh
 Zh
 Zh
@@ -11957,9 +12012,9 @@ Zh
 Zh
 Zh
 Zh
-Zh
-Zh
-Zh
+MS
+MS
+MS
 Zh
 Zh
 Zh
@@ -12052,9 +12107,9 @@ uF
 xj
 uF
 uF
+uF
 xj
-Jl
-DF
+xj
 Zh
 Zh
 Zh
@@ -12195,8 +12250,8 @@ xj
 xj
 sS
 xj
-Jl
-DF
+xj
+xj
 Zh
 Zh
 Zh
@@ -12337,8 +12392,8 @@ xj
 xj
 xj
 xj
-Jl
-DF
+xj
+xj
 Zh
 Zh
 Zh
@@ -12479,8 +12534,8 @@ xj
 xj
 xj
 xj
-Jl
-DF
+xj
+xj
 Zh
 Zh
 Zh
@@ -12621,8 +12676,8 @@ uF
 sS
 xj
 xj
-Jl
-DF
+xj
+xj
 Zh
 Zh
 Zh
@@ -12771,7 +12826,7 @@ DF
 DF
 DF
 DF
-GV
+ke
 DF
 DF
 DF
@@ -12810,7 +12865,7 @@ DF
 DF
 DF
 DF
-hj
+VQ
 DF
 DF
 DF
@@ -16334,7 +16389,7 @@ DF
 DF
 DF
 DF
-uW
+Uc
 DF
 DF
 DF
@@ -16360,7 +16415,7 @@ DF
 DF
 DF
 DF
-hj
+VQ
 DF
 DF
 DF
@@ -16400,7 +16455,7 @@ DF
 DF
 DF
 DF
-DF
+lQ
 DF
 DF
 DF
@@ -17185,9 +17240,9 @@ Zh
 Zh
 Zh
 Zh
-Zh
-Zh
-Zh
+MS
+MS
+MS
 Zh
 Zh
 Zh
@@ -17211,9 +17266,9 @@ Zh
 Zh
 Zh
 Zh
-Zh
-Zh
-Zh
+MS
+MS
+MS
 Zh
 Zh
 Zh
@@ -17251,9 +17306,9 @@ Zh
 Zh
 Zh
 Zh
-Zh
-Zh
-Zh
+MS
+MS
+MS
 Zh
 Zh
 Zh
@@ -17321,15 +17376,15 @@ DF
 uk
 Di
 Hq
-Xm
+XJ
 Zh
 Zh
 Zh
 Zh
 Zh
-Zh
-jq
-Zh
+MS
+MS
+MS
 Zh
 Zh
 Zh
@@ -17347,21 +17402,21 @@ Di
 Di
 ZC
 VU
-cZ
+TA
 Zh
 Zh
 Zh
 Zh
 Zh
-Zh
-jq
-Zh
-Zh
-Zh
+MS
+MS
+MS
 Zh
 Zh
 Zh
-Lf
+Zh
+Zh
+hO
 Hq
 oY
 zF
@@ -17387,21 +17442,21 @@ xj
 xj
 zF
 zF
-Xm
+XJ
 Zh
 Zh
 Zh
 Zh
 Zh
+MS
+MS
+MS
 Zh
 Zh
 Zh
 Zh
 Zh
-Zh
-Zh
-Zh
-DF
+lQ
 Jl
 Jl
 Jl
@@ -17469,9 +17524,9 @@ Zh
 Zh
 Zh
 Zh
-Zh
-Zh
-Zh
+MS
+MS
+MS
 Zh
 Zh
 Zh
@@ -17495,9 +17550,9 @@ Zh
 Zh
 Zh
 Zh
-Zh
-Zh
-Zh
+MS
+MS
+MS
 Zh
 Zh
 Zh
@@ -17535,9 +17590,9 @@ Zh
 Zh
 Zh
 Zh
-Zh
-Zh
-Zh
+MS
+MS
+MS
 Zh
 Zh
 Zh
@@ -18322,7 +18377,7 @@ DF
 DF
 DF
 DF
-Xm
+XJ
 DF
 DF
 DF
@@ -18388,7 +18443,7 @@ DF
 DF
 DF
 DF
-DF
+lQ
 DF
 DF
 DF
@@ -23582,20 +23637,20 @@ xj
 xj
 xj
 xj
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
+xj
+xj
+xj
+xj
+xj
+xj
 xj
 zF
 xj
-Jl
-Jl
-Jl
-Jl
-Jl
+xj
+xj
+xj
+xj
+xj
 Jl
 Jl
 Jl
@@ -23724,14 +23779,14 @@ xj
 xj
 xj
 xj
-Jl
+xj
 DF
 DF
 DF
 DF
 DF
 DF
-GV
+ke
 DF
 DF
 DF
@@ -23866,7 +23921,7 @@ xj
 xj
 xj
 xj
-Jl
+xj
 Zh
 Zh
 Zh
@@ -24008,7 +24063,7 @@ xj
 xj
 xj
 xj
-Jl
+xj
 Zh
 Zh
 Zh
@@ -24150,7 +24205,7 @@ xj
 xj
 xj
 xj
-Jl
+xj
 Zh
 Zh
 Zh
@@ -24292,7 +24347,7 @@ xj
 xj
 xj
 xj
-Jl
+xj
 Zh
 Zh
 Zh
@@ -24434,7 +24489,7 @@ xj
 xj
 xj
 xj
-Jl
+xj
 Zh
 Zh
 Zh
@@ -24576,15 +24631,15 @@ xj
 xj
 xj
 xj
-Jl
+xj
 Zh
 Zh
 Zh
 Zh
 Zh
-Zh
-Zh
-Zh
+MS
+MS
+MS
 Zh
 Zh
 Zh
@@ -24718,21 +24773,21 @@ xj
 xj
 xj
 xj
-Jl
 Zh
 Zh
 Zh
 Zh
 Zh
 Zh
-jq
+MS
+MS
+MS
 Zh
 Zh
 Zh
 Zh
 Zh
-Zh
-zH
+vF
 oY
 Vr
 nq
@@ -24860,15 +24915,15 @@ zF
 zF
 xj
 xj
-Jl
+xj
 Zh
 Zh
 Zh
 Zh
 Zh
-Zh
-Zh
-Zh
+MS
+MS
+MS
 Zh
 Zh
 Zh
@@ -25002,7 +25057,7 @@ zF
 zF
 xj
 xj
-Jl
+xj
 Zh
 Zh
 Zh
@@ -25144,7 +25199,7 @@ zF
 zF
 xj
 xj
-Jl
+xj
 Zh
 Zh
 Zh
@@ -25286,7 +25341,7 @@ zF
 xj
 xj
 xj
-Jl
+xj
 Zh
 Zh
 Zh
@@ -25428,7 +25483,7 @@ zF
 xj
 xj
 xj
-Jl
+xj
 Zh
 Zh
 Zh
@@ -25570,7 +25625,7 @@ zF
 xj
 xj
 xj
-Jl
+xj
 Zh
 Zh
 Zh
@@ -25712,24 +25767,24 @@ zF
 xj
 xj
 xj
-Jl
-Jl
-Jl
-Jl
-Jl
+xj
+xj
+xj
+xj
+xj
 DF
 zF
-zF
+MS
 zF
 DF
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
+xj
+xj
+xj
+xj
+xj
+xj
+xj
+xj
 DF
 zF
 zF
