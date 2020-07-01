@@ -58,24 +58,18 @@
 	mappath = 'uttomb.dmm'
 	cost = 10
 	allow_duplicates = FALSE
-/*
 /datum/map_template/undertether/chaos
 	name = "UnderTether Chaos"
 	mappath = 'utchaos.dmm'
 	cost = 10
 	allow_duplicates = FALSE
 
-/datum/map_template/undertether/hideycave (((PHORON TILES BAD)))
-	name = "UnderTether Hidey Cave"
-	mappath = 'poihideycave.dmm'
-	cost = 20
-
 /datum/map_template/undertether/kickinthehead
 	name = "UnderTether Kick in the Head"
 	mappath = 'utkickinthehead.dmm'
 	cost = 20
 	allow_duplicates = FALSE
-
+/*
 /datum/map_template/undertether/lavabridge
 	name = "UnderTether Lava Bridge"
 	mappath = 'utlavabridge.dmm'
@@ -93,4 +87,10 @@
 	mappath = 'radioactivepo.dmm'
 	cost = 20
 	allow_duplicates = FALSE
+
+/datum/map_template/undertether/hideycave (((PHORON TILES BAD)))
+	name = "UnderTether Hidey Cave"
+	mappath = 'poihideycave.dmm'
+	cost = 20
+
 */

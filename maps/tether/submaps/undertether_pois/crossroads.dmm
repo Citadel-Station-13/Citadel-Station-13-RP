@@ -23,7 +23,7 @@
 	},
 /obj/machinery/button/remote/airlock{
 	dir = 4;
-	id = UDRR2;
+	id = "UDRR2";
 	pixel_x = -30
 	},
 /turf/simulated/floor/tiled/old_tile/beige,
@@ -41,7 +41,7 @@
 	})
 "h" = (
 /obj/machinery/door/airlock/multi_tile{
-	id_tag = UTRR1
+	id_tag = "UTRR1"
 	},
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/maintenance{
@@ -91,12 +91,6 @@
 	name = "utcrossroads"
 	})
 "p" = (
-/obj/machinery/power/apc/high{
-	chargelevel = 1;
-	dir = 4;
-	name = "Abandoned APC";
-	pixel_y = -30
-	},
 /obj/item/trash/snacktray,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/maintenance{
@@ -121,7 +115,7 @@
 	},
 /obj/machinery/button/remote/airlock{
 	dir = 4;
-	id = UDRR1;
+	id = "UDRR1";
 	pixel_x = -30
 	},
 /turf/simulated/floor/tiled/old_tile/beige,
@@ -130,7 +124,7 @@
 	})
 "s" = (
 /obj/machinery/door/airlock/multi_tile{
-	id_tag = UDRR2
+	id_tag = "UDRR2"
 	},
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/maintenance{
