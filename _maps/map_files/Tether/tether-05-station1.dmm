@@ -14537,7 +14537,6 @@
 	icon_state = "0-8"
 	},
 /obj/structure/table/reinforced,
-/obj/item/storage/box/snakesnackbox,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
 "aQn" = (
@@ -16919,7 +16918,6 @@
 /area/hallway/station/atrium)
 "bfT" = (
 /obj/structure/disposalpipe/segment,
-/mob/living/simple_mob/animal/passive/snake/noodle,
 /turf/simulated/floor/carpet/oracarpet,
 /area/crew_quarters/heads/chief)
 "bfW" = (
@@ -24225,6 +24223,12 @@
 /obj/structure/closet/crate/secure/science,
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/station/explorer_entry)
+"ufh" = (
+/mob/living/simple_mob/animal/passive/bird/parrot/poly{
+	desc = "The CE's tried and true beloved pet to everyone that doesn't wear a headset."
+	},
+/turf/simulated/floor/carpet/oracarpet,
+/area/crew_quarters/heads/chief)
 "ugd" = (
 /obj/machinery/light{
 	dir = 1
@@ -29808,7 +29812,7 @@ aoq
 aLy
 aNg
 aYF
-aRX
+ufh
 aSe
 aRX
 aVz
