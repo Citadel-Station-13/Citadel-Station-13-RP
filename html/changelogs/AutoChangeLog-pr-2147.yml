@@ -1,0 +1,6 @@
+author: "Enzo-Leon"
+delete-after: True
+changes: 
+  - rscadd: "Second Psyche job. New second office."
+  - tweak: "Adjusted access for medical sec and SnR"
+  - balance: "adjusted location of RIG suits for medical and SNR"
