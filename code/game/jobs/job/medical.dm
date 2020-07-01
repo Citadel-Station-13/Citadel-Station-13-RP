@@ -44,7 +44,8 @@
 		"Surgeon" = /decl/hierarchy/outfit/job/medical/doctor/surgeon,
 		"Emergency Physician" = /decl/hierarchy/outfit/job/medical/doctor/emergency_physician,
 		"Nurse" = /decl/hierarchy/outfit/job/medical/doctor/nurse,
-		"Virologist" = /decl/hierarchy/outfit/job/medical/doctor/virologist)
+		"Virologist" = /decl/hierarchy/outfit/job/medical/doctor/virologist,
+		"Medical Resident")
 
 //Chemist is a medical job damnit	//YEAH FUCK YOU SCIENCE	-Pete	//Guys, behave -Erro
 /datum/job/chemist
@@ -92,8 +93,8 @@
 	department = "Medical"
 	department_flag = MEDSCI
 	faction = "Station"
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 2
+	spawn_positions = 2
 	economic_modifier = 5
 	supervisors = "the chief medical officer"
 	selection_color = "#013D3B"
@@ -101,7 +102,10 @@
 	access = list(access_medical, access_medical_equip, access_morgue, access_psychiatrist)
 	minimal_access = list(access_medical, access_medical_equip, access_psychiatrist, access_chemistry)
 	outfit_type = /decl/hierarchy/outfit/job/medical/psychiatrist
-	alt_titles = list("Psychologist" = /decl/hierarchy/outfit/job/medical/psychiatrist/psychologist)
+	alt_titles = list(
+	"Psychologist" = /decl/hierarchy/outfit/job/medical/psychiatrist/psychologist,
+	"Therapist",
+	"Counselor")
 
 /datum/job/paramedic
 	title = "Paramedic"
@@ -109,13 +113,13 @@
 	department = "Medical"
 	department_flag = MEDSCI
 	faction = "Station"
-	total_positions = 2
+	total_positions = 3
 	spawn_positions = 2
 	supervisors = "the chief medical officer"
 	selection_color = "#013D3B"
 	idtype = /obj/item/card/id/medical/paramedic
 	economic_modifier = 4
-	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_eva, access_maint_tunnels, access_external_airlocks, access_psychiatrist)
-	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_eva, access_maint_tunnels, access_external_airlocks)
+	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_eva, access_maint_tunnels, access_external_airlocks, access_psychiatrist, access_mining)
+	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_eva, access_maint_tunnels, access_external_airlocks, access_mining)
 	outfit_type = /decl/hierarchy/outfit/job/medical/paramedic
 	alt_titles = list("Emergency Medical Technician" = /decl/hierarchy/outfit/job/medical/paramedic/emt)
