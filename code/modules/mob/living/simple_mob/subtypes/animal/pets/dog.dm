@@ -96,6 +96,14 @@
 	icon_living = "puppy"
 	icon_dead = "puppy_dead"
 
+/mob/living/simple_mob/animal/passive/dog/pug
+	name = "pug"
+	real_name = "pug"
+	desc = "It's a pug."
+	icon_state = "pug"
+	icon_living = "pug"
+	icon_dead = "pug_dead"
+
 //pupplies cannot wear anything.
 /mob/living/simple_mob/animal/passive/dog/corgi/puppy/Topic(href, href_list)
 	if(href_list["remove_inv"] || href_list["add_inv"])
@@ -107,12 +115,70 @@
 	name = "Bockscar"
 	real_name = "Bockscar"
 
+//Sir Pogsley. (Sec Pet)
+/mob/living/simple_mob/animal/passive/dog/pug/SirPogsley
+	name = "Sir Pogsley"
+	real_name= "Sir Pogsley"
+	gender = MALE
+	desc = "It's the formal and dapper pug of the security bay!"
+	makes_dirt = FALSE
+	var/turns_since_scan = 0
+	var/obj/movement_target
+
+/mob/living/simple_mob/animal/passive/dog/pug/SirPogsley/Life()
+	..()
+
+	//Feeding, chasing food, FOOOOODDDD
+	if(!stat && !resting && !buckled)
+		turns_since_scan++
+		if(turns_since_scan > 5)
+			turns_since_scan = 0
+			if((movement_target) && !(isturf(movement_target.loc) || ishuman(movement_target.loc) ))
+				movement_target = null
+			if( !movement_target || !(movement_target.loc in oview(src, 3)) )
+				movement_target = null
+				for(var/obj/item/reagent_containers/food/snacks/S in oview(src,3))
+					if(isturf(S.loc) || ishuman(S.loc))
+						movement_target = S
+						break
+			if(movement_target)
+				step_to(src,movement_target,1)
+				sleep(3)
+				step_to(src,movement_target,1)
+				sleep(3)
+				step_to(src,movement_target,1)
+
+				if(movement_target)		//Not redundant due to sleeps, Item can be gone in 6 decisecomds
+					if (movement_target.loc.x < src.x)
+						setDir(WEST)
+					else if (movement_target.loc.x > src.x)
+						setDir(EAST)
+					else if (movement_target.loc.y < src.y)
+						setDir(SOUTH)
+					else if (movement_target.loc.y > src.y)
+						setDir(NORTH)
+					else
+						setDir(SOUTH)
+
+					if(isturf(movement_target.loc) )
+						UnarmedAttack(movement_target)
+					else if(ishuman(movement_target.loc) && prob(20))
+						visible_emote("stares at the [movement_target] that [movement_target.loc] has with sad puppy eyes.")
+
+		if(prob(1))
+			visible_emote(pick("dances around","chases their stubby tail"))
+			spawn(0)
+				for(var/i in list(1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2))
+					setDir(i)
+					sleep(1)
+
+
 //IAN! SQUEEEEEEEEE~
 /mob/living/simple_mob/animal/passive/dog/corgi/Ian
 	name = "Ian"
 	real_name = "Ian"	//Intended to hold the name without altering it.
 	gender = MALE
-	desc = "It's a corgi."
+	desc = "This is the HoP's trusty corgi. He does the best he can."
 	var/turns_since_scan = 0
 	var/obj/movement_target
 	makes_dirt = FALSE	//VOREStation edit: no more dirt
