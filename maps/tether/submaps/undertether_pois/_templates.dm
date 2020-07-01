@@ -22,7 +22,7 @@
 	name = "UnderTether Crossroads"
 	mappath = 'crossroads.dmm'
 	cost = 10
-
+/*
 /datum/map_template/undertether/hiddendorm2
 	name = "UnderTether Hidden Dorm"
 	mappath = 'hiddendorm2.dmm'
@@ -69,7 +69,7 @@
 	mappath = 'utkickinthehead.dmm'
 	cost = 20
 	allow_duplicates = FALSE
-/*
+
 /datum/map_template/undertether/lavabridge
 	name = "UnderTether Lava Bridge"
 	mappath = 'utlavabridge.dmm'
