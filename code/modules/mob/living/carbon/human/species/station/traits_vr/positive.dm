@@ -95,8 +95,8 @@
 	var_changes = list("flash_mod" = 0.5)
 
 /datum/trait/winged_flight
-	name = "Winged Flight"
-	desc = "Allows you to fly by using your wings. Don't forget to bring them!"
+	name = "Flight"
+	desc = "Allows you to fly. It's magic, or whatever you fluff it as."
 	cost = 1
 
 /datum/trait/winged_flight/apply(var/datum/species/S,var/mob/living/carbon/human/H)
@@ -117,4 +117,4 @@
 
 /datum/trait/antiseptic_saliva/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..()
-	H.verbs |= /mob/living/carbon/human/proc/lick_wounds 
+	H.verbs |= /mob/living/carbon/human/proc/lick_wounds

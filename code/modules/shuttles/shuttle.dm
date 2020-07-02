@@ -44,7 +44,7 @@
 	if(docking_controller_tag)
 		docking_controller = locate(docking_controller_tag)
 		if(!istype(docking_controller))
-			to_chat(world, "<span class='danger'>warning: shuttle with docking tag [docking_controller_tag] could not find it's controller!</span>")
+			to_chat(world, "<span class='danger'>warning: shuttle with docking tag [docking_controller_tag] could not find its controller!</span>")
 
 // This creates a graphical warning to where the shuttle is about to land, in approximately five seconds.
 /datum/shuttle/proc/create_warning_effect(area/landing_area)

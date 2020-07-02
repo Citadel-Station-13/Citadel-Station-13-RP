@@ -33,9 +33,6 @@
 	var/ghostvision = 1 //is the ghost able to see things humans can't?
 	incorporeal_move = 1
 
-	/// Whether or not our mouse opacity is set to transparent while following.
-	var/mouse_opacity_yield_while_following = TRUE
-
 	var/is_manifest = 0 //If set to 1, the ghost is able to whisper. Usually only set if a cultist drags them through the veil.
 	var/ghost_sprite = null
 	var/global/list/possible_ghost_sprites = list(
@@ -329,16 +326,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	orbit(target, actually_orbit = FALSE)
-
-/mob/observer/dead/start_orbit(datum/component/orbiter/orbits)
-	. = ..()
-	if(mouse_opacity_yield_while_following)
-		mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-
-/mob/observer/dead/stop_orbit(datum/component/orbiter/orbits)
-	. = ..()
-	if(mouse_opacity_yield_while_following)
-		mouse_opacity = initial(mouse_opacity)
 
 /mob/observer/dead/verb/jumptomob(input in getmobs()) //Moves the ghost instead of just changing the ghosts's eye -Nodrak
 	set category = "Ghost"

@@ -215,7 +215,7 @@
 	initial_flooring = /decl/flooring/reinforced
 
 /turf/simulated/floor/reinforced/airless
-	initial_gas_mix = GAS_STRING_VACCUM
+	initial_gas_mix = GAS_STRING_VACUUM
 
 /turf/simulated/floor/reinforced/airmix
 	initial_gas_mix = GAS_STRING_PRIMARY_TANK_AIRMIX
@@ -276,7 +276,7 @@
 	initial_flooring = /decl/flooring/tiling/steel_dirty
 
 /turf/simulated/floor/tiled/steel/airless
-	initial_gas_mix = GAS_STRING_VACCUM
+	initial_gas_mix = GAS_STRING_VACUUM
 
 /turf/simulated/floor/tiled/asteroid_steel
 	icon_state = "asteroidfloor"
@@ -284,7 +284,7 @@
 
 /turf/simulated/floor/tiled/asteroid_steel/airless
 	name = "plating"
-	initial_gas_mix = GAS_STRING_VACCUM
+	initial_gas_mix = GAS_STRING_VACUUM
 
 /turf/simulated/floor/tiled/white
 	name = "white floor"
@@ -324,30 +324,30 @@
 //ATMOS PREMADES
 /turf/simulated/floor/reinforced/airless
 	name = "vacuum floor"
-	initial_gas_mix = GAS_STRING_VACCUM
+	initial_gas_mix = GAS_STRING_VACUUM
 
 /turf/simulated/floor/airless
 	name = "plating"
-	initial_gas_mix = GAS_STRING_VACCUM
+	initial_gas_mix = GAS_STRING_VACUUM
 
 /turf/simulated/floor/tiled/airless
 	name = "floor"
-	initial_gas_mix = GAS_STRING_VACCUM
+	initial_gas_mix = GAS_STRING_VACUUM
 
 /turf/simulated/floor/bluegrid/airless
 	name = "floor"
-	initial_gas_mix = GAS_STRING_VACCUM
+	initial_gas_mix = GAS_STRING_VACUUM
 
 /turf/simulated/floor/greengrid/airless
 	name = "floor"
-	initial_gas_mix = GAS_STRING_VACCUM
+	initial_gas_mix = GAS_STRING_VACUUM
 
 /turf/simulated/floor/greengrid/nitrogen
 	initial_gas_mix = GAS_STRING_STANDARD_NO_OXYGEN
 
 /turf/simulated/floor/tiled/white/airless
 	name = "floor"
-	initial_gas_mix = GAS_STRING_VACCUM
+	initial_gas_mix = GAS_STRING_VACUUM
 
 // Placeholders
 

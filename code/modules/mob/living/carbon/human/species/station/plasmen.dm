@@ -37,8 +37,8 @@
 	flash_mod =     2
 	chemOD_mod =	1 // turns out this is just damage
 
-	breath_type = "phoron"
-	poison_type = "oxygen"
+	breath_type = /datum/gas/phoron
+	poison_type = /datum/gas/oxygen
 	siemens_coefficient = 1
 
 	speech_bubble_appearance = "phoron"

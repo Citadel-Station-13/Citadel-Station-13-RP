@@ -52,7 +52,7 @@
 			gaslist[gaspath] *= mult
 
 	// Now let the random choices begin
-	if(length(base_gases | restricted_gases))
+	if(length(normal_gases) && length(restricted_gases))
 		var/datum/gas/gastype
 		var/amount
 		var/safety = 254
