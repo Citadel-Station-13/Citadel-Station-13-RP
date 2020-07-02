@@ -3530,6 +3530,7 @@
 #include "maps\submaps\surface_submaps\wilderness\wilderness_areas.dm"
 #include "maps\tether\tether.dm"
 #include "maps\tether\tether_phoronlock.dm"
+#include "maps\tether\submaps\_tether_submaps.dm"
 #include "maps\tether\submaps\undertether_pois\_templates.dm"
 #include "maps\~map_system\maps.dm"
 #include "modular_citadel\code\global_cit.dm"

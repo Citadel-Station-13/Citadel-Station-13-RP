@@ -2,6 +2,7 @@
 	name = "UnderTether Content"
 	desc = "For seeding submaps in UnderTether"
 	allow_duplicates = TRUE
+	annihilate = FALSE
 
 /datum/map_template/undertether/gastanks
 	name = "UnderTether Gas Tanks"
@@ -25,49 +26,39 @@
 
 /datum/map_template/undertether/abandonedmedical
 	name = "UnderTether Medical Boss"
-	mappath = "abandonedmedical.dmm"
+	mappath = 'abandonedmedical.dmm'
 	cost = 20
 	allow_duplicates = FALSE
 
 /datum/map_template/undertether/armsstorage
 	name = "UnderTether Arms Storage"
-	mappath = "utarmsstorage.dmm"
+	mappath = 'utarmsstorage.dmm'
 	cost = 20
 	allow_duplicates = FALSE
 
 /datum/map_template/undertether/fishpond
 	name = "UnderTether Fish Pond"
-	mappath = "utfishpond.dmm"
+	mappath = 'utfishpond.dmm'
 	cost = 5
-	allow_duplicates = FALSE
 
 /datum/map_template/undertether/robotstorage
 	name = "UnderTether Robot Storage"
-	mappath = "utrobotstorage.dmm"
+	mappath = 'utrobotstorage.dmm'
 	cost = 10
-	allow_duplicates = FALSE
 
 /datum/map_template/undertether/testchamber
 	name = "UnderTether Test Chamber"
-	mappath = "uttestchamber.dmm"
+	mappath = 'uttestchamber.dmm'
 	cost = 10
-	allow_duplicates = FALSE
 
 /datum/map_template/undertether/tribalcamp
 	name = "UnderTether Tribal Camp"
-	mappath = "uttribalcamp.dmm"
+	mappath = 'uttribalcamp.dmm'
 	cost = 10
-	allow_duplicates = FALSE
-
-/datum/map_template/undertether/wastepond
-	name = "UnderTether Waste Pond"
-	mappath = "utwastepond.dmm"
-	cost = 10
-	allow_duplicates = FALSE
 
 /datum/map_template/undertether/xenopens
 	name = "UnderTether Xenobio Pens"
-	mappath = "utxenopens.dmm"
+	mappath = 'utxenopens.dmm'
 	cost = 10
 	allow_duplicates = FALSE
 

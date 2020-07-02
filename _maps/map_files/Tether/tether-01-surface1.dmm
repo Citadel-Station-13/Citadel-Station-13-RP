@@ -11642,37 +11642,19 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "avE" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/machinery/status_display{
-	pixel_y = 30
-	},
-/obj/effect/floor_decal/corner/lightgrey/border{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7,
-/turf/simulated/floor/tiled,
-/area/tether/surfacebase/atrium_one)
-"avF" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
 /obj/machinery/alarm{
-	pixel_y = 22
+	dir = 8;
+	pixel_x = 24
 	},
-/obj/effect/floor_decal/corner/lightgrey/border{
-	dir = 1
+/turf/simulated/floor/plating,
+/area/maintenance/lower/public_garden_maintenence)
+"avF" = (
+/obj/machinery/alarm{
+	dir = 8;
+	pixel_x = 24
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7,
-/turf/simulated/floor/tiled,
-/area/tether/surfacebase/atrium_one)
+/turf/simulated/floor/tiled/techfloor,
+/area/tether/surfacebase/public_garden)
 "avG" = (
 /obj/machinery/meter,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
@@ -12894,6 +12876,9 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 8
+	},
+/obj/machinery/status_display{
+	pixel_y = -30
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_one)
@@ -21832,6 +21817,9 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
+/obj/machinery/light/small/emergency{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/surfacebase/public_garden)
 "aTX" = (
@@ -22811,21 +22799,8 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_one)
 "bdx" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/lightgrey/border{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7,
-/obj/machinery/firealarm{
-	layer = 3.3;
-	pixel_y = 26
-	},
-/turf/simulated/floor/tiled,
+/obj/machinery/vending/loadout/costume,
+/turf/simulated/floor/wood,
 /area/tether/surfacebase/atrium_one)
 "bdL" = (
 /obj/effect/floor_decal/borderfloor{
@@ -26819,7 +26794,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 5
 	},
-/obj/structure/flora/pottedplant,
+/obj/structure/closet/firecloset,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_one)
 "bMb" = (
@@ -26906,7 +26881,7 @@
 "bMK" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lightgrey/border,
-/obj/structure/closet/firecloset,
+/obj/structure/flora/pottedplant,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_one)
 "bNu" = (
@@ -27176,7 +27151,6 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 6
 	},
-/obj/structure/flora/pottedplant,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_one)
 "bPW" = (
@@ -28117,6 +28091,12 @@
 /obj/item/stool/padded,
 /turf/simulated/floor/lino,
 /area/crew_quarters/visitor_dining)
+"bWJ" = (
+/obj/structure/closet/l3closet/scientist/double,
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/machinery/camera/network/civilian,
+/turf/simulated/floor/tiled,
+/area/maintenance/lower/research)
 "bWQ" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -30825,6 +30805,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_one)
+"cSY" = (
+/obj/machinery/camera/network/civilian,
+/turf/simulated/floor/tiled,
+/area/maintenance/lower/research)
 "cTT" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/oil,
@@ -31187,6 +31171,13 @@
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/mining_main/external)
+"fSZ" = (
+/obj/machinery/firealarm{
+	layer = 3.3;
+	pixel_y = 26
+	},
+/turf/simulated/floor/tiled,
+/area/maintenance/lower/research)
 "fUw" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -31206,6 +31197,9 @@
 /obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
+"fWv" = (
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/atrium_one)
 "fWK" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -31443,6 +31437,24 @@
 /obj/machinery/portable_atmospherics/canister/phoron,
 /turf/simulated/floor/reinforced/phoron,
 /area/engineering/atmos)
+"hCR" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/sign/signnew/danger{
+	pixel_y = -32
+	},
+/turf/simulated/floor/tiled,
+/area/maintenance/lower/research)
 "hHz" = (
 /obj/structure/table/standard,
 /turf/simulated/floor/tiled,
@@ -31455,6 +31467,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"hQt" = (
+/obj/machinery/firealarm{
+	layer = 3.3;
+	pixel_y = 26
+	},
+/obj/machinery/vending/giftvendor,
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/atrium_one)
 "icJ" = (
 /obj/structure/table/bench/padded,
 /turf/simulated/floor/wood,
@@ -31503,14 +31523,23 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
+/obj/machinery/light/small/emergency{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/surfacebase/public_garden)
 "iqD" = (
-/obj/machinery/light/small{
-	dir = 1
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/light/small/emergency,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/research)
+/area/maintenance/lower/public_garden_maintenence)
 "isf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -31586,6 +31615,10 @@
 	},
 /obj/machinery/light/small{
 	dir = 1
+	},
+/obj/machinery/firealarm{
+	layer = 3.3;
+	pixel_y = 26
 	},
 /turf/simulated/floor/tiled,
 /area/maintenance/lower/research)
@@ -31665,7 +31698,8 @@
 	},
 /obj/machinery/access_button/airlock_interior{
 	master_tag = "ut_airlock";
-	pixel_y = -25
+	pixel_y = -25;
+	req_one_access = list(5,10,19,43,44,48,62,47)
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
@@ -31935,9 +31969,9 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "mgc" = (
-/obj/machinery/embedded_controller/radio/airlock/phoron{
+/obj/machinery/embedded_controller/radio/airlock/access_controller{
 	id_tag = "ut_airlock_aux";
-	pixel_y = 30
+	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/surfacebase/public_garden)
@@ -32156,9 +32190,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/sign/signnew/danger{
-	pixel_y = -32
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -32193,7 +32224,7 @@
 	dir = 8;
 	pixel_x = 24
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled,
 /area/maintenance/lower/research)
 "oAC" = (
 /obj/structure/railing{
@@ -32270,6 +32301,12 @@
 "pCg" = (
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/public_garden_one)
+"pHg" = (
+/obj/machinery/camera/network/civilian{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/tether/surfacebase/public_garden)
 "pLu" = (
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
@@ -32382,6 +32419,16 @@
 /obj/structure/railing,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/outside/outside1)
+"qKT" = (
+/obj/machinery/alarm{
+	pixel_y = 22
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/vending/loadout/overwear,
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/atrium_one)
 "qMQ" = (
 /turf/simulated/wall/r_wall,
 /area/tether/surfacebase/public_garden)
@@ -32527,9 +32574,11 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether/surfacebase/mining_main/ore)
 "rXk" = (
-/obj/machinery/light/small,
+/obj/machinery/camera/network/civilian{
+	dir = 9
+	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/research)
+/area/maintenance/lower/public_garden_maintenence)
 "rZr" = (
 /obj/machinery/door/airlock/maintenance/engi{
 	name = "Atmospherics";
@@ -32927,12 +32976,12 @@
 /turf/simulated/floor/tiled,
 /area/hallway/lower/first_west)
 "uBf" = (
-/obj/machinery/embedded_controller/radio/airlock/phoron{
-	id_tag = "ut_airlock";
-	pixel_y = 30
-	},
 /obj/machinery/light/small{
 	dir = 1
+	},
+/obj/machinery/embedded_controller/radio/airlock/access_controller{
+	id_tag = "ut_airlock";
+	pixel_y = 26
 	},
 /turf/simulated/floor/tiled,
 /area/maintenance/lower/research)
@@ -33046,7 +33095,8 @@
 	},
 /obj/machinery/access_button/airlock_interior{
 	master_tag = "ut_airlock_aux";
-	pixel_x = 25
+	pixel_x = 25;
+	req_one_access = list(5,10,19,43,44,48,62,47)
 	},
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/public_garden)
@@ -33236,6 +33286,10 @@
 "xjE" = (
 /obj/structure/closet/l3closet/scientist/double,
 /obj/effect/floor_decal/industrial/outline/blue,
+/obj/machinery/firealarm{
+	layer = 3.3;
+	pixel_y = 26
+	},
 /turf/simulated/floor/tiled,
 /area/maintenance/lower/research)
 "xBi" = (
@@ -40035,7 +40089,7 @@ aah
 aah
 vBA
 vVq
-rvx
+iqD
 vBA
 wFT
 wFT
@@ -40460,8 +40514,8 @@ aad
 aah
 aah
 vBA
-xHr
-xHr
+avE
+rXk
 xHr
 vHb
 yio
@@ -40606,9 +40660,9 @@ vBA
 vBA
 vBA
 qMQ
-yio
+avF
 iqs
-yio
+pHg
 yio
 qMQ
 nFz
@@ -42778,7 +42832,7 @@ auF
 auF
 atW
 atj
-aip
+hCR
 agR
 uBf
 inW
@@ -42922,7 +42976,7 @@ atW
 atj
 kUC
 agR
-xjE
+bWJ
 bUy
 hHz
 agR
@@ -43203,7 +43257,7 @@ blz
 blz
 bAA
 bMK
-agM
+aCc
 aip
 agR
 agR
@@ -43345,7 +43399,7 @@ avC
 avB
 axG
 bPI
-agM
+aCc
 aip
 agR
 oYE
@@ -43480,7 +43534,7 @@ alg
 aah
 aah
 aah
-aah
+agM
 agM
 agM
 bds
@@ -43490,7 +43544,7 @@ agM
 agM
 iZo
 agR
-elb
+cSY
 qSK
 elb
 agR
@@ -43622,10 +43676,10 @@ aah
 aah
 aah
 aah
-aah
-aah
 agM
-avE
+bdx
+fWv
+avK
 aww
 amW
 agM
@@ -43764,10 +43818,10 @@ aah
 aah
 aah
 aah
-aah
-aah
 agM
-avF
+qKT
+fWv
+avK
 avB
 axJ
 agM
@@ -43906,19 +43960,19 @@ aah
 aah
 aah
 aah
-aah
-aah
 agM
-bdx
+hQt
+fWv
+avK
 avB
 bgA
 agM
 agZ
 aip
 agR
-iqD
+gwG
 kmE
-rXk
+gYs
 agR
 aEU
 alq
@@ -44058,9 +44112,9 @@ agM
 ahf
 aip
 agR
-ani
+fSZ
 oAr
-ani
+elb
 agR
 aEU
 ale
