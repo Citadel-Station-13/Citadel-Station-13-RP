@@ -16,12 +16,62 @@
 /datum/map_template/undertether/mechfight
 	name = "UnderTether Mech Fight"
 	mappath = 'poimechfight.dmm'
-	cost = 20
+	cost = 10
 
 /datum/map_template/undertether/crossroads
 	name = "UnderTether Crossroads"
 	mappath = 'crossroads.dmm'
 	cost = 10
+
+/datum/map_template/undertether/abandonedmedical
+	name = "UnderTether Medical Boss"
+	mappath = "abandonedmedical.dmm"
+	cost = 20
+	allow_duplicates = FALSE
+
+/datum/map_template/undertether/armsstorage
+	name = "UnderTether Arms Storage"
+	mappath = "utarmsstorage.dmm"
+	cost = 20
+	allow_duplicates = FALSE
+
+/datum/map_template/undertether/fishpond
+	name = "UnderTether Fish Pond"
+	mappath = "utfishpond.dmm"
+	cost = 5
+	allow_duplicates = FALSE
+
+/datum/map_template/undertether/robotstorage
+	name = "UnderTether Robot Storage"
+	mappath = "utrobotstorage.dmm"
+	cost = 10
+	allow_duplicates = FALSE
+
+/datum/map_template/undertether/testchamber
+	name = "UnderTether Test Chamber"
+	mappath = "uttestchamber.dmm"
+	cost = 10
+	allow_duplicates = FALSE
+
+/datum/map_template/undertether/tribalcamp
+	name = "UnderTether Tribal Camp"
+	mappath = "uttribalcamp.dmm"
+	cost = 10
+	allow_duplicates = FALSE
+
+/datum/map_template/undertether/wastepond
+	name = "UnderTether Waste Pond"
+	mappath = "utwastepond.dmm"
+	cost = 10
+	allow_duplicates = FALSE
+
+/datum/map_template/undertether/xenopens
+	name = "UnderTether Xenobio Pens"
+	mappath = "utxenopens.dmm"
+	cost = 10
+	allow_duplicates = FALSE
+
+
 /*
 /datum/map_template/undertether/hiddendorm2
 	name = "UnderTether Hidden Dorm"

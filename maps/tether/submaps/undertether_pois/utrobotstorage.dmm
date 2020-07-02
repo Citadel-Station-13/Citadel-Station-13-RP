@@ -1,0 +1,437 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/wall/solidrock,
+/area/space)
+"c" = (
+/obj/machinery/light/small/emergency{
+	dir = 1
+	},
+/turf/simulated/floor,
+/area/space)
+"e" = (
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 1e+006
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/mob/living/simple_mob/mechanical/hivebot/ranged_damage/ion,
+/turf/simulated/floor/greengrid,
+/area/space)
+"f" = (
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor,
+/area/space)
+"g" = (
+/obj/random/trash,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"h" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"i" = (
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/space)
+"j" = (
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/space)
+"k" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor,
+/area/space)
+"l" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor,
+/area/space)
+"m" = (
+/obj/random/junk,
+/turf/simulated/floor,
+/area/space)
+"o" = (
+/obj/effect/floor_decal/rust,
+/obj/random/trash_pile,
+/turf/simulated/floor,
+/area/space)
+"p" = (
+/obj/structure/table/steel_reinforced,
+/obj/random/toolbox,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/space)
+"q" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/light/small/emergency,
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor,
+/area/space)
+"r" = (
+/obj/structure/table/steel_reinforced,
+/obj/effect/floor_decal/rust,
+/obj/random/energy,
+/obj/random/energy,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"t" = (
+/obj/random/trash_pile,
+/turf/simulated/floor,
+/area/space)
+"u" = (
+/obj/machinery/door/airlock/highsecurity{
+	name = "SYNTHETIC STORAGE";
+	welded = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"v" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/space)
+"w" = (
+/turf/simulated/floor,
+/area/space)
+"x" = (
+/obj/machinery/light/small/emergency{
+	dir = 4
+	},
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"y" = (
+/obj/structure/table/steel_reinforced,
+/obj/random/tool/power,
+/obj/random/tool/power,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"z" = (
+/obj/machinery/door/airlock/highsecurity{
+	name = "SYNTHETIC STORAGE"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"A" = (
+/obj/structure/sign/warning/secure_area,
+/turf/simulated/wall/r_wall,
+/area/space)
+"B" = (
+/obj/machinery/light/small/emergency{
+	dir = 4
+	},
+/obj/structure/table/steel_reinforced,
+/obj/random/contraband,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/space)
+"C" = (
+/obj/effect/floor_decal/rust,
+/obj/random/junk,
+/turf/simulated/floor,
+/area/space)
+"E" = (
+/obj/effect/floor_decal/rust,
+/obj/random/trash,
+/turf/simulated/floor,
+/area/space)
+"G" = (
+/turf/simulated/wall/r_wall,
+/area/space)
+"H" = (
+/obj/structure/sign/warning/high_voltage,
+/turf/simulated/wall/r_wall,
+/area/space)
+"I" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/spider/stickyweb,
+/obj/random/trash,
+/turf/simulated/floor,
+/area/space)
+"J" = (
+/turf/simulated/wall/iron,
+/area/space)
+"K" = (
+/obj/machinery/door/airlock/highsecurity{
+	name = "SYNTHETIC STORAGE";
+	welded = null
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"L" = (
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"N" = (
+/obj/machinery/light/small/emergency{
+	dir = 4
+	},
+/obj/random/junk,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"O" = (
+/obj/structure/table/steel_reinforced,
+/obj/random/powercell,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/space)
+"P" = (
+/obj/effect/spider/stickyweb,
+/obj/random/trash,
+/turf/simulated/floor,
+/area/space)
+"R" = (
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 1e+006
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/mob/living/simple_mob/mechanical/hivebot/ranged_damage/dot,
+/turf/simulated/floor/greengrid,
+/area/space)
+"S" = (
+/obj/machinery/light/small/emergency{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"T" = (
+/obj/structure/sign/warning/fire,
+/turf/simulated/wall/r_wall,
+/area/space)
+"U" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 1e+006
+	},
+/mob/living/simple_mob/mechanical/hivebot/ranged_damage/siege/emp,
+/turf/simulated/floor/greengrid,
+/area/space)
+"V" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/sign/department/robo{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"W" = (
+/obj/structure/table/steel_reinforced,
+/obj/random/ammo,
+/obj/random/ammo,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/space)
+"X" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/light/small/emergency{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"Y" = (
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 1e+006
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/mob/living/simple_mob/mechanical/hivebot/ranged_damage/siege/fragmentation,
+/turf/simulated/floor/greengrid,
+/area/space)
+
+(1,1,1) = {"
+a
+a
+a
+a
+J
+E
+C
+I
+k
+w
+J
+J
+a
+"}
+(2,1,1) = {"
+a
+a
+a
+a
+J
+G
+G
+G
+G
+P
+o
+J
+J
+"}
+(3,1,1) = {"
+a
+a
+a
+a
+a
+G
+X
+y
+G
+h
+l
+f
+J
+"}
+(4,1,1) = {"
+a
+a
+G
+G
+G
+G
+h
+e
+G
+V
+N
+l
+a
+"}
+(5,1,1) = {"
+a
+a
+G
+W
+v
+G
+z
+H
+G
+K
+A
+k
+a
+"}
+(6,1,1) = {"
+J
+J
+G
+Y
+j
+p
+j
+O
+G
+g
+G
+P
+a
+"}
+(7,1,1) = {"
+w
+I
+G
+L
+L
+L
+L
+L
+u
+L
+G
+w
+f
+"}
+(8,1,1) = {"
+a
+k
+G
+U
+j
+B
+v
+i
+A
+x
+G
+E
+a
+"}
+(9,1,1) = {"
+a
+q
+G
+O
+v
+G
+z
+T
+G
+G
+G
+l
+J
+"}
+(10,1,1) = {"
+a
+w
+G
+G
+G
+G
+L
+R
+G
+f
+w
+m
+J
+"}
+(11,1,1) = {"
+a
+E
+w
+k
+k
+G
+S
+r
+G
+k
+J
+a
+a
+"}
+(12,1,1) = {"
+a
+t
+l
+C
+f
+G
+G
+G
+G
+c
+J
+a
+a
+"}
+(13,1,1) = {"
+a
+a
+J
+J
+l
+l
+w
+w
+E
+w
+a
+a
+a
+"}

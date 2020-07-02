@@ -1,0 +1,435 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/structure/closet/bombclosetsecurity,
+/turf/simulated/floor,
+/area/space)
+"b" = (
+/obj/machinery/door/airlock/hatch,
+/turf/simulated/floor,
+/area/space)
+"c" = (
+/obj/effect/floor_decal/rust,
+/obj/random/trash,
+/turf/simulated/floor,
+/area/space)
+"d" = (
+/obj/effect/floor_decal/rust,
+/obj/random/trash_pile,
+/turf/simulated/floor,
+/area/space)
+"e" = (
+/obj/structure/sign/signnew/explosives,
+/turf/simulated/wall/iron,
+/area/space)
+"f" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor,
+/area/space)
+"g" = (
+/obj/structure/table/standard,
+/obj/item/grenade/empgrenade/low_yield,
+/turf/simulated/floor,
+/area/space)
+"h" = (
+/obj/effect/mine/frag{
+	name = "Old Mine"
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor,
+/area/space)
+"i" = (
+/obj/structure/barricade,
+/turf/simulated/floor,
+/area/space)
+"j" = (
+/turf/simulated/floor,
+/area/space)
+"k" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/mine/frag{
+	name = "Old Mine"
+	},
+/turf/simulated/floor,
+/area/space)
+"l" = (
+/obj/random/junk,
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor,
+/area/space)
+"n" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/light/small/emergency{
+	dir = 8
+	},
+/obj/effect/mine/incendiary{
+	name = "Old Mine"
+	},
+/turf/simulated/floor,
+/area/space)
+"o" = (
+/obj/machinery/light/small/emergency,
+/obj/effect/mine/incendiary{
+	name = "Old Mine"
+	},
+/turf/simulated/floor,
+/area/space)
+"p" = (
+/obj/structure/table/rack/shelf,
+/obj/item/mine/frag,
+/turf/simulated/floor,
+/area/space)
+"r" = (
+/obj/effect/mine/training{
+	name = "Old Mine"
+	},
+/turf/simulated/floor,
+/area/space)
+"s" = (
+/obj/structure/table/standard,
+/obj/structure/table/standard,
+/obj/item/grenade/explosive,
+/obj/item/grenade/explosive,
+/obj/random/trash,
+/turf/simulated/floor,
+/area/space)
+"t" = (
+/turf/simulated/wall/solidrock,
+/area/space)
+"x" = (
+/obj/item/material/shard/shrapnel,
+/obj/effect/floor_decal/rust,
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor,
+/area/space)
+"y" = (
+/obj/structure/table/standard,
+/obj/item/gun/energy/xray,
+/turf/simulated/floor,
+/area/space)
+"A" = (
+/obj/structure/table/rack,
+/obj/item/storage/toolbox/electrical,
+/obj/machinery/light/small/emergency{
+	dir = 1
+	},
+/turf/simulated/floor,
+/area/space)
+"B" = (
+/obj/structure/table/rack/shelf,
+/obj/item/grenade/explosive/frag,
+/obj/item/grenade/explosive/frag,
+/obj/item/grenade/explosive/frag,
+/turf/simulated/floor,
+/area/space)
+"C" = (
+/obj/item/material/shard/shrapnel,
+/obj/effect/floor_decal/rust,
+/obj/random/trash,
+/turf/simulated/floor,
+/area/space)
+"D" = (
+/obj/random/trash,
+/turf/simulated/floor,
+/area/space)
+"F" = (
+/obj/effect/mine/incendiary{
+	name = "Old Mine"
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor,
+/area/space)
+"G" = (
+/obj/item/material/shard/shrapnel,
+/obj/random/trash,
+/turf/simulated/floor,
+/area/space)
+"H" = (
+/turf/simulated/wall/iron,
+/area/space)
+"J" = (
+/obj/structure/table/standard,
+/obj/item/grenade/empgrenade/low_yield,
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor,
+/area/space)
+"K" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/light/small/emergency{
+	dir = 1
+	},
+/obj/random/trash,
+/turf/simulated/floor,
+/area/space)
+"L" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor,
+/area/space)
+"M" = (
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor,
+/area/space)
+"N" = (
+/obj/effect/mine/frag{
+	name = "Old Mine"
+	},
+/turf/simulated/floor,
+/area/space)
+"O" = (
+/obj/effect/mine/training{
+	name = "Old Mine"
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor,
+/area/space)
+"P" = (
+/obj/effect/floor_decal/rust,
+/obj/random/trash,
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor,
+/area/space)
+"Q" = (
+/turf/simulated/wall/r_wall,
+/area/space)
+"R" = (
+/obj/effect/floor_decal/rust,
+/obj/random/junk,
+/turf/simulated/floor,
+/area/space)
+"S" = (
+/obj/random/trash,
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor,
+/area/space)
+"T" = (
+/obj/structure/table/standard,
+/obj/random/ammo,
+/obj/random/ammo,
+/turf/simulated/floor,
+/area/space)
+"U" = (
+/obj/random/trash_pile,
+/turf/simulated/floor,
+/area/space)
+"V" = (
+/obj/random/junk,
+/turf/simulated/floor,
+/area/space)
+"W" = (
+/obj/effect/mine/emp{
+	name = "Old Mine"
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor,
+/area/space)
+"X" = (
+/obj/effect/mine/frag{
+	name = "Old Mine"
+	},
+/obj/structure/table,
+/obj/item/material/shard/shrapnel,
+/turf/simulated/floor,
+/area/space)
+"Z" = (
+/obj/structure/table/standard,
+/obj/random/junk,
+/obj/random/ammo,
+/obj/random/ammo,
+/turf/simulated/floor,
+/area/space)
+
+(1,1,1) = {"
+t
+t
+t
+t
+t
+j
+L
+t
+Q
+J
+s
+g
+a
+"}
+(2,1,1) = {"
+t
+H
+A
+f
+S
+L
+U
+t
+Q
+P
+h
+r
+c
+"}
+(3,1,1) = {"
+t
+j
+L
+R
+M
+t
+t
+t
+Q
+F
+p
+B
+y
+"}
+(4,1,1) = {"
+t
+l
+c
+t
+t
+t
+Q
+Q
+Q
+b
+Q
+Q
+Q
+"}
+(5,1,1) = {"
+t
+M
+o
+e
+t
+Q
+Q
+G
+Q
+W
+Q
+N
+N
+"}
+(6,1,1) = {"
+j
+L
+t
+t
+t
+Q
+T
+k
+b
+P
+Q
+H
+H
+"}
+(7,1,1) = {"
+D
+t
+t
+U
+H
+Q
+X
+c
+Q
+Q
+Q
+e
+K
+"}
+(8,1,1) = {"
+j
+V
+i
+L
+i
+b
+O
+C
+Q
+t
+t
+t
+L
+"}
+(9,1,1) = {"
+t
+L
+t
+d
+H
+Q
+x
+Z
+Q
+t
+t
+R
+j
+"}
+(10,1,1) = {"
+t
+f
+t
+t
+t
+Q
+Q
+Q
+Q
+H
+D
+M
+t
+"}
+(11,1,1) = {"
+t
+f
+M
+t
+t
+t
+e
+t
+t
+t
+j
+t
+t
+"}
+(12,1,1) = {"
+t
+t
+D
+c
+j
+V
+n
+L
+t
+t
+M
+H
+t
+"}
+(13,1,1) = {"
+t
+t
+t
+t
+t
+t
+j
+c
+f
+f
+j
+t
+t
+"}

@@ -1,0 +1,532 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ah" = (
+/obj/structure/table/steel,
+/obj/random/mre,
+/turf/simulated/floor/plating,
+/area/space)
+"bs" = (
+/obj/random/junk,
+/turf/simulated/floor/tiled/old_tile/blue,
+/area/space)
+"cq" = (
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor/plating,
+/area/space)
+"cB" = (
+/obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/catwalk,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/plating,
+/area/space)
+"dD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/random/trash,
+/turf/simulated/floor/plating,
+/area/space)
+"eg" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/catwalk,
+/mob/living/simple_mob/animal/space/bats{
+	base_attack_cooldown = 5;
+	faction = "mouse";
+	health = 50;
+	maxHealth = 50;
+	movement_cooldown = 0
+	},
+/turf/simulated/floor/plating,
+/area/space)
+"fo" = (
+/turf/simulated/floor/tiled/old_tile/blue,
+/area/space)
+"fP" = (
+/obj/machinery/door/airlock/maintenance/common,
+/obj/structure/catwalk,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/plating,
+/area/space)
+"fW" = (
+/obj/structure/table/steel,
+/obj/random/medical/pillbottle,
+/turf/simulated/floor/tiled/old_tile/blue,
+/area/space)
+"ga" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/space)
+"iR" = (
+/obj/effect/decal/cleanable/blood,
+/turf/simulated/floor/tiled/old_tile/blue,
+/area/space)
+"ja" = (
+/obj/structure/extinguisher_cabinet{
+	pixel_x = 25
+	},
+/turf/simulated/floor/tiled/old_tile/blue,
+/area/space)
+"kj" = (
+/obj/effect/decal/cleanable/blood,
+/turf/simulated/floor/plating,
+/area/space)
+"kE" = (
+/obj/structure/closet/crate,
+/obj/random/cash,
+/obj/random/curseditem,
+/obj/item/spacecash/c1000,
+/obj/item/storage/secure/briefcase/ml3m_pack_med,
+/turf/simulated/floor/tiled/old_tile/blue,
+/area/space)
+"lU" = (
+/obj/structure/closet/crate/medical,
+/obj/random/medical/pillbottle,
+/obj/random/drinkbottle,
+/obj/item/storage/firstaid/regular,
+/turf/simulated/floor/tiled/old_tile/blue,
+/area/space)
+"mq" = (
+/obj/machinery/vending/blood,
+/turf/simulated/floor/plating,
+/area/space)
+"mz" = (
+/obj/effect/spider/stickyweb,
+/obj/random/junk,
+/turf/simulated/floor/plating,
+/area/space)
+"nV" = (
+/obj/random/junk,
+/turf/simulated/floor/plating,
+/area/space)
+"oo" = (
+/obj/structure/table/steel,
+/turf/simulated/floor/tiled/old_tile/blue,
+/area/space)
+"ru" = (
+/obj/random/mouseremains,
+/turf/simulated/floor/plating,
+/area/space)
+"rH" = (
+/obj/machinery/door/airlock/maintenance/int{
+	locked = 1
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/plating,
+/area/space)
+"sq" = (
+/turf/simulated/wall/iron,
+/area/space)
+"st" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/space)
+"tC" = (
+/obj/structure/filingcabinet,
+/turf/simulated/floor/plating,
+/area/space)
+"uu" = (
+/obj/random/trash,
+/turf/simulated/floor/plating,
+/area/space)
+"uE" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/space)
+"xa" = (
+/obj/structure/filingcabinet/chestdrawer,
+/turf/simulated/floor/plating,
+/area/space)
+"yY" = (
+/obj/structure/table/steel,
+/obj/machinery/recharger,
+/turf/simulated/floor/tiled/old_tile/blue,
+/area/space)
+"BV" = (
+/obj/machinery/atmospherics/unary/cryo_cell,
+/turf/simulated/floor/plating,
+/area/space)
+"Gf" = (
+/obj/structure/catwalk,
+/obj/random/junk,
+/turf/simulated/floor/plating,
+/area/space)
+"Gq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/turf/simulated/floor/plating,
+/area/space)
+"GJ" = (
+/obj/structure/table/steel,
+/obj/random/medical,
+/turf/simulated/floor/tiled/old_tile/blue,
+/area/space)
+"Ir" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/turf/simulated/floor/plating,
+/area/space)
+"JY" = (
+/turf/simulated/floor/plating,
+/area/space)
+"Ln" = (
+/mob/living/simple_mob/horror/bradley{
+	base_attack_cooldown = 10;
+	health = 450;
+	maxHealth = 450;
+	move_speed = 25;
+	movement_cooldown = 0;
+	name = "???"
+	},
+/turf/simulated/floor/plating,
+/area/space)
+"Lz" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/space)
+"Mh" = (
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/space)
+"Nv" = (
+/obj/effect/spider/stickyweb,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/plating,
+/area/space)
+"Ot" = (
+/obj/structure/table/steel,
+/obj/random/unidentified_medicine/fresh_medicine,
+/turf/simulated/floor/tiled/old_tile/blue,
+/area/space)
+"OR" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/space)
+"PK" = (
+/obj/machinery/atmospherics/unary/cryo_cell,
+/turf/simulated/floor/tiled/old_tile/blue,
+/area/space)
+"Qn" = (
+/obj/structure/table/steel,
+/obj/item/storage/firstaid/regular,
+/turf/simulated/floor/tiled/old_tile/blue,
+/area/space)
+"QD" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/catwalk,
+/obj/random/trash,
+/turf/simulated/floor/plating,
+/area/space)
+"Rd" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/plating,
+/area/space)
+"SM" = (
+/obj/item/stool/padded,
+/turf/simulated/floor/plating,
+/area/space)
+"Te" = (
+/obj/machinery/light/small{
+	dir = 1;
+	icon_state = "bulb1"
+	},
+/turf/simulated/floor/plating,
+/area/space)
+"TH" = (
+/obj/structure/sign/department/medbay{
+	pixel_x = -32
+	},
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor/plating,
+/area/space)
+"Up" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate/mimic/dangerous,
+/obj/random/maintenance/research,
+/turf/simulated/floor/plating,
+/area/space)
+"VZ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/catwalk,
+/obj/random/trash,
+/turf/simulated/floor/plating,
+/area/space)
+"Wa" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/catwalk,
+/obj/effect/decal/cleanable/blood,
+/turf/simulated/floor/plating,
+/area/space)
+"Wh" = (
+/obj/structure/table/steel,
+/turf/simulated/floor/plating,
+/area/space)
+"XA" = (
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/turf/simulated/floor/plating,
+/area/space)
+"YC" = (
+/obj/machinery/door/airlock/maintenance/int{
+	locked = 1
+	},
+/turf/simulated/floor/plating,
+/area/space)
+"YP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/simulated/floor/plating,
+/area/space)
+"ZJ" = (
+/mob/living/simple_mob/horror/bradley{
+	base_attack_cooldown = 10;
+	health = 450;
+	maxHealth = 450;
+	move_speed = 25;
+	movement_cooldown = 0;
+	name = "???"
+	},
+/turf/simulated/floor/tiled/old_tile/blue,
+/area/space)
+
+(1,1,1) = {"
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+"}
+(2,1,1) = {"
+sq
+BV
+JY
+bs
+fo
+fo
+ah
+GJ
+fW
+Wh
+lU
+kE
+sq
+"}
+(3,1,1) = {"
+sq
+PK
+ZJ
+fo
+iR
+fo
+fo
+fo
+fo
+iR
+fo
+fo
+sq
+"}
+(4,1,1) = {"
+sq
+PK
+JY
+fo
+ja
+fo
+SM
+SM
+fo
+fo
+uu
+iR
+sq
+"}
+(5,1,1) = {"
+sq
+sq
+sq
+sq
+sq
+Wh
+yY
+oo
+fW
+iR
+fo
+mq
+sq
+"}
+(6,1,1) = {"
+sq
+JY
+cq
+cq
+sq
+JY
+fo
+fo
+Wh
+fo
+fo
+XA
+sq
+"}
+(7,1,1) = {"
+cB
+Lz
+st
+nV
+sq
+JY
+kj
+fo
+fo
+fo
+iR
+JY
+YC
+"}
+(8,1,1) = {"
+sq
+Te
+VZ
+Nv
+sq
+fo
+JY
+uu
+Ot
+nV
+fo
+fo
+sq
+"}
+(9,1,1) = {"
+sq
+cq
+eg
+Gq
+sq
+rH
+sq
+sq
+sq
+JY
+fo
+ru
+sq
+"}
+(10,1,1) = {"
+sq
+mz
+uE
+YP
+nV
+cq
+TH
+mz
+sq
+JY
+fo
+Ln
+sq
+"}
+(11,1,1) = {"
+sq
+Nv
+OR
+ga
+Wa
+QD
+Mh
+cq
+sq
+ru
+fo
+fo
+sq
+"}
+(12,1,1) = {"
+sq
+Up
+Ir
+dD
+Rd
+JY
+Gf
+kj
+sq
+tC
+xa
+Qn
+sq
+"}
+(13,1,1) = {"
+sq
+sq
+sq
+sq
+sq
+sq
+fP
+sq
+sq
+sq
+sq
+sq
+sq
+"}

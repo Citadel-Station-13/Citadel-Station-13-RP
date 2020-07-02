@@ -1,0 +1,461 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/wall/iron,
+/area/space)
+"b" = (
+/obj/structure/grille/broken,
+/obj/item/material/shard,
+/obj/item/material/shard,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/space)
+"c" = (
+/obj/structure/window/reinforced/tinted,
+/obj/machinery/porta_turret/industrial{
+	desc = "This variant appears to be old and rusty - does it even work anymore?.";
+	installation = /obj/item/gun/energy/lasercannon
+	},
+/turf/simulated/floor/tiled/old_cargo/white,
+/area/space)
+"d" = (
+/obj/random/trash,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/space)
+"e" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor/plating,
+/area/space)
+"f" = (
+/obj/random/trash,
+/turf/simulated/floor/water/deep,
+/area/space)
+"g" = (
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor/tiled/old_cargo/white,
+/area/space)
+"h" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = 18
+	},
+/turf/simulated/floor/plating,
+/area/space)
+"i" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor/tiled/old_cargo/white,
+/area/space)
+"j" = (
+/obj/structure/girder/displaced,
+/turf/simulated/floor/plating,
+/area/space)
+"k" = (
+/obj/machinery/light/small/emergency{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/old_cargo/white,
+/area/space)
+"l" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/simulated/floor/plating,
+/area/space)
+"m" = (
+/obj/machinery/light/small/emergency{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_cargo/white,
+/area/space)
+"n" = (
+/obj/effect/spider/stickyweb,
+/obj/random/trash_pile,
+/turf/simulated/floor/plating,
+/area/space)
+"o" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/simulated/floor/plating,
+/area/space)
+"p" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/spider/stickyweb,
+/obj/random/trash_pile,
+/turf/simulated/floor/plating,
+/area/space)
+"q" = (
+/obj/structure/grille,
+/obj/structure/girder,
+/turf/simulated/floor/water/deep,
+/area/space)
+"r" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/simulated/floor/tiled/old_cargo/white,
+/area/space)
+"s" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = 4
+	},
+/turf/simulated/floor/plating,
+/area/space)
+"u" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/old_cargo/white,
+/area/space)
+"v" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -5;
+	pixel_y = 7
+	},
+/turf/simulated/floor/plating,
+/area/space)
+"w" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/light/small/emergency{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/space)
+"x" = (
+/turf/simulated/floor/water/deep,
+/area/space)
+"y" = (
+/obj/effect/decal/remains/human,
+/obj/item/paper{
+	info = "[The paper appears to be degraded beyond any sort of legibility.]";
+	name = "Old Note"
+	},
+/obj/item/material/knife/tacknife/boot,
+/turf/simulated/floor/plating,
+/area/space)
+"z" = (
+/turf/simulated/floor/plating,
+/area/space)
+"A" = (
+/turf/simulated/wall/solidrock,
+/area/space)
+"B" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/machinery/light/flicker,
+/turf/simulated/floor/tiled/old_cargo/white,
+/area/space)
+"C" = (
+/turf/simulated/floor/tiled/old_cargo/white,
+/area/space)
+"D" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 4
+	},
+/obj/effect/floor_decal/rust,
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor/plating,
+/area/space)
+"E" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/simulated/floor/tiled/old_cargo/white,
+/area/space)
+"F" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/decal/cleanable/blood/gibs,
+/turf/simulated/floor/plating,
+/area/space)
+"G" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor/plating,
+/area/space)
+"H" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_cargo/white,
+/area/space)
+"I" = (
+/obj/random/trash,
+/obj/structure/window/reinforced/tinted{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_cargo/white,
+/area/space)
+"K" = (
+/obj/effect/floor_decal/rust,
+/obj/random/trash_pile,
+/turf/simulated/floor/plating,
+/area/space)
+"L" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/spider/stickyweb,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = 18
+	},
+/turf/simulated/floor/plating,
+/area/space)
+"M" = (
+/obj/structure/sign/science,
+/turf/simulated/wall/iron,
+/area/space)
+"N" = (
+/obj/machinery/light/small/emergency,
+/turf/simulated/floor/water/deep,
+/area/space)
+"O" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/remains/human,
+/turf/simulated/floor/plating,
+/area/space)
+"P" = (
+/obj/structure/table/standard,
+/obj/item/paper_bin,
+/obj/item/pen/fountain,
+/obj/item/book/manual/anomaly_testing,
+/turf/simulated/floor/tiled/old_cargo/white,
+/area/space)
+"Q" = (
+/obj/random/trash,
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor/plating,
+/area/space)
+"R" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/random/trash,
+/turf/simulated/floor/tiled/old_cargo/white,
+/area/space)
+"S" = (
+/obj/structure/sign/warning/lethal_turrets,
+/turf/simulated/wall/iron,
+/area/space)
+"T" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = 18
+	},
+/turf/simulated/floor/tiled/old_cargo/white,
+/area/space)
+"U" = (
+/obj/random/trash,
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor/tiled/old_cargo/white,
+/area/space)
+"V" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = 7
+	},
+/turf/simulated/floor/plating,
+/area/space)
+"W" = (
+/obj/random/trash,
+/turf/simulated/floor/tiled/old_cargo/white,
+/area/space)
+"X" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/space)
+"Y" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_cargo/white,
+/area/space)
+
+(1,1,1) = {"
+n
+Q
+a
+S
+G
+G
+X
+z
+a
+y
+X
+a
+a
+"}
+(2,1,1) = {"
+z
+L
+l
+a
+G
+a
+a
+a
+a
+a
+X
+G
+a
+"}
+(3,1,1) = {"
+v
+a
+V
+m
+W
+C
+d
+x
+x
+a
+o
+p
+a
+"}
+(4,1,1) = {"
+h
+a
+E
+r
+X
+C
+C
+x
+x
+j
+G
+a
+a
+"}
+(5,1,1) = {"
+d
+a
+T
+C
+u
+u
+D
+x
+N
+a
+a
+a
+a
+"}
+(6,1,1) = {"
+s
+a
+F
+C
+x
+x
+x
+x
+x
+e
+P
+B
+M
+"}
+(7,1,1) = {"
+O
+a
+w
+W
+x
+x
+c
+x
+x
+e
+R
+C
+X
+"}
+(8,1,1) = {"
+S
+a
+X
+X
+x
+x
+x
+x
+x
+b
+H
+U
+M
+"}
+(9,1,1) = {"
+A
+a
+C
+C
+I
+Y
+Y
+x
+N
+a
+a
+a
+a
+"}
+(10,1,1) = {"
+A
+a
+i
+k
+C
+r
+C
+x
+x
+g
+g
+a
+A
+"}
+(11,1,1) = {"
+A
+a
+G
+a
+g
+K
+W
+x
+x
+x
+g
+a
+A
+"}
+(12,1,1) = {"
+A
+a
+X
+a
+a
+a
+a
+a
+q
+q
+a
+a
+A
+"}
+(13,1,1) = {"
+A
+a
+X
+X
+X
+z
+X
+S
+f
+f
+f
+A
+A
+"}

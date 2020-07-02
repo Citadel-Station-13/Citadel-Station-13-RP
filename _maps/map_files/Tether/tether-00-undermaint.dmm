@@ -54,7 +54,16 @@
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "aq" = (
-/obj/structure/filingcabinet/chestdrawer,
+/obj/structure/catwalk,
+/obj/effect/decal/cleanable/dirt,
+/obj/random/trash,
+/mob/living/simple_mob/animal/space/bats{
+	base_attack_cooldown = 5;
+	faction = "mouse";
+	health = 50;
+	maxHealth = 50;
+	movement_cooldown = 0
+	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "ar" = (
@@ -69,8 +78,8 @@
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "aw" = (
-/obj/structure/filingcabinet,
-/turf/simulated/floor/plating,
+/obj/structure/outcrop/diamond,
+/turf/simulated/mineral,
 /area/tether/under/static_area)
 "ay" = (
 /obj/structure/table/woodentable,
@@ -147,11 +156,9 @@
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "aX" = (
-/obj/structure/sign/department/medbay{
-	pixel_x = -32
-	},
-/obj/effect/spider/stickyweb,
-/turf/simulated/floor/plating,
+/obj/structure/barricade,
+/obj/random/outcrop,
+/turf/simulated/floor/beach/sand,
 /area/tether/under/static_area)
 "aY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -246,19 +253,36 @@
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
+"bC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate,
+/obj/random/underdark,
+/turf/simulated/floor/plating,
+/area/tether/under/static_area)
 "bD" = (
 /obj/machinery/light/small/emergency,
 /turf/simulated/floor/beach/sand,
 /area/tether/under/static_area)
 "bG" = (
-/obj/machinery/door/airlock/maintenance/int{
-	locked = 1
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_mob/mechanical/corrupt_maint_drone{
+	faction = "mouse"
 	},
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techfloor,
 /area/tether/under/static_area)
 "bH" = (
-/obj/structure/table/steel,
+/obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_mob/animal/space/bats{
+	base_attack_cooldown = 5;
+	faction = "mouse";
+	health = 50;
+	maxHealth = 50;
+	movement_cooldown = 0
+	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "bJ" = (
@@ -316,6 +340,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
+"bW" = (
+/obj/random/trash,
+/mob/living/simple_mob/mechanical/corrupt_maint_drone{
+	faction = "mouse"
+	},
+/turf/simulated/floor/plating,
+/area/tether/under/static_area)
 "bZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -338,7 +369,8 @@
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "cf" = (
-/turf/simulated/floor/tiled/old_tile/blue,
+/obj/structure/outcrop/uranium,
+/turf/simulated/mineral,
 /area/tether/under/static_area)
 "ci" = (
 /obj/machinery/firealarm{
@@ -416,6 +448,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/crate,
 /obj/random/trash,
+/obj/random/ammo,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "cE" = (
@@ -470,9 +503,12 @@
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "cT" = (
-/obj/structure/table/steel,
-/obj/random/unidentified_medicine/fresh_medicine,
-/turf/simulated/floor/tiled/old_tile/blue,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/catwalk,
+/mob/living/simple_mob/mechanical/corrupt_maint_drone{
+	faction = "mouse"
+	},
+/turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "cW" = (
 /obj/random/trash,
@@ -575,6 +611,9 @@
 	},
 /obj/structure/catwalk,
 /obj/effect/decal/cleanable/dirt,
+/mob/living/simple_mob/mechanical/corrupt_maint_drone{
+	faction = "mouse"
+	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "dU" = (
@@ -592,7 +631,7 @@
 "ea" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/cobweb,
-/obj/structure/loot_pile/maint/trash,
+/obj/structure/trash_pile/under_tether,
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/under/static_area)
 "ee" = (
@@ -700,6 +739,7 @@
 /area/tether/under/static_area)
 "eA" = (
 /obj/structure/closet/crate/hydroponics/prespawned,
+/obj/random/ammo,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "eF" = (
@@ -742,6 +782,12 @@
 /obj/structure/table/woodentable,
 /obj/random/unidentified_medicine/fresh_medicine,
 /turf/simulated/floor/plating,
+/area/tether/under/static_area)
+"fd" = (
+/obj/random/underdark,
+/obj/structure/closet/crate,
+/obj/random/underdark,
+/turf/simulated/floor/beach/sand,
 /area/tether/under/static_area)
 "fg" = (
 /obj/structure/closet/crate/miningcar,
@@ -1101,9 +1147,10 @@
 /turf/simulated/floor/wood/sif,
 /area/tether/under/static_area)
 "hI" = (
-/obj/structure/table/steel,
-/obj/machinery/recharger,
-/turf/simulated/floor/tiled/old_tile/blue,
+/mob/living/simple_mob/mechanical/corrupt_maint_drone{
+	faction = "mouse"
+	},
+/turf/simulated/floor/wood/sif,
 /area/tether/under/static_area)
 "hJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/blue{
@@ -1228,6 +1275,14 @@
 /obj/random/unidentified_medicine/fresh_medicine,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
+"iG" = (
+/obj/structure/closet/crate/mimic/dangerous,
+/obj/random/unidentified_medicine,
+/obj/random/unidentified_medicine,
+/obj/random/maintenance,
+/obj/random/maintenance,
+/turf/simulated/floor/plating,
+/area/tether/under/static_area)
 "iI" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/random/humanoidremains,
@@ -1280,9 +1335,8 @@
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "je" = (
-/obj/structure/table/steel,
-/obj/item/storage/firstaid/regular,
-/turf/simulated/floor/tiled/old_tile/blue,
+/obj/random/mob/spider,
+/turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "jf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -1506,6 +1560,16 @@
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor/wood/sif,
 /area/tether/under/static_area)
+"kD" = (
+/mob/living/simple_mob/mechanical/combat_drone{
+	base_attack_cooldown = 2;
+	faction = "mouse";
+	health = 100;
+	maxHealth = 100;
+	movement_cooldown = 0
+	},
+/turf/simulated/floor/beach/sand,
+/area/tether/under/static_area)
 "kG" = (
 /obj/structure/barricade,
 /obj/structure/catwalk,
@@ -1555,6 +1619,7 @@
 "lb" = (
 /obj/structure/table/woodentable,
 /obj/random/maintenance,
+/obj/random/maintenance,
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/under/static_area)
 "ld" = (
@@ -1570,6 +1635,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/decal/cleanable/dirt,
 /obj/random/humanoidremains,
+/mob/living/simple_mob/mechanical/combat_drone{
+	base_attack_cooldown = 2;
+	faction = "mouse";
+	health = 100;
+	maxHealth = 100;
+	movement_cooldown = 0
+	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "lf" = (
@@ -1716,6 +1788,12 @@
 /obj/random/unidentified_medicine/fresh_medicine,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
+"lV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/rack,
+/obj/item/storage/box/donkpockets,
+/turf/simulated/floor/plating,
+/area/tether/under/static_area)
 "lW" = (
 /obj/structure/catwalk,
 /obj/effect/decal/cleanable/dirt,
@@ -1857,6 +1935,13 @@
 /area/tether/under/static_area)
 "mQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/mob/living/simple_mob/animal/space/bats{
+	base_attack_cooldown = 5;
+	faction = "mouse";
+	health = 50;
+	maxHealth = 50;
+	movement_cooldown = 0
+	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "mS" = (
@@ -1902,8 +1987,15 @@
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "na" = (
-/obj/structure/table/steel,
-/turf/simulated/floor/tiled/old_tile/blue,
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_mob/animal/space/bats{
+	base_attack_cooldown = 5;
+	faction = "mouse";
+	health = 50;
+	maxHealth = 50;
+	movement_cooldown = 0
+	},
+/turf/simulated/floor/wood/sif/broken,
 /area/tether/under/static_area)
 "nb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -2285,9 +2377,10 @@
 	},
 /area/tether/under/static_area)
 "pH" = (
-/obj/structure/table/woodentable,
-/obj/random/maintenance,
-/turf/simulated/floor/wood/sif/broken,
+/obj/structure/catwalk,
+/obj/random/junk,
+/obj/random/mob/spider,
+/turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "pJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -2380,6 +2473,8 @@
 "qq" = (
 /obj/structure/closet/crate,
 /obj/random/cash,
+/obj/random/maintenance,
+/obj/random/maintenance,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "qr" = (
@@ -2470,11 +2565,12 @@
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "qN" = (
-/obj/structure/barricade,
-/obj/machinery/door/airlock/maintenance/common,
-/obj/machinery/door/firedoor/glass,
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_mob/mechanical/corrupt_maint_drone{
+	faction = "mouse"
+	},
 /turf/simulated/floor/plating,
-/area/tether/under/poi)
+/area/tether/under/static_area)
 "qP" = (
 /obj/machinery/vending/loadout/clothing,
 /turf/simulated/floor/plating,
@@ -2513,6 +2609,7 @@
 "qW" = (
 /obj/structure/closet/crate,
 /obj/random/maintenance/medical,
+/obj/item/gun/projectile/pistol,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "qX" = (
@@ -2743,10 +2840,8 @@
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "sv" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/catwalk,
+/obj/random/trash,
+/obj/structure/trash_pile/under_tether,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "sy" = (
@@ -2959,6 +3054,23 @@
 	},
 /turf/simulated/floor/wood/sif,
 /area/tether/under/static_area)
+"ug" = (
+/mob/living/simple_mob/animal/space/bats{
+	base_attack_cooldown = 5;
+	faction = "mouse";
+	health = 50;
+	maxHealth = 50;
+	movement_cooldown = 0
+	},
+/mob/living/simple_mob/mechanical/combat_drone{
+	base_attack_cooldown = 2;
+	faction = "mouse";
+	health = 100;
+	maxHealth = 100;
+	movement_cooldown = 0
+	},
+/turf/simulated/floor/beach/sand,
+/area/tether/under/static_area)
 "ui" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/random/trash,
@@ -2995,6 +3107,13 @@
 /obj/structure/catwalk,
 /obj/effect/decal/cleanable/dirt,
 /obj/random/humanoidremains,
+/mob/living/simple_mob/mechanical/combat_drone{
+	base_attack_cooldown = 2;
+	faction = "mouse";
+	health = 100;
+	maxHealth = 100;
+	movement_cooldown = 0
+	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "uu" = (
@@ -3121,7 +3240,17 @@
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "vA" = (
-/obj/machinery/vending/blood,
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_mob/animal/giant_spider/nurse/queen{
+	armor = list("melee" = 30, "bullet" = 10, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 100, "rad" = 100);
+	armor_soak = list("melee" = 20, "bullet" = 10, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0);
+	base_attack_cooldown = 9;
+	health = 650;
+	maxHealth = 650;
+	movement_cooldown = 0;
+	resistance = 0.2;
+	shock_resist = 0.3
+	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "vB" = (
@@ -3238,11 +3367,13 @@
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "wu" = (
-/obj/machinery/door/airlock/maintenance/common,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/catwalk,
-/obj/machinery/door/firedoor/glass,
+/mob/living/simple_mob/mechanical/combat_drone{
+	base_attack_cooldown = 2;
+	faction = "mouse";
+	health = 100;
+	maxHealth = 100;
+	movement_cooldown = 0
+	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "wx" = (
@@ -3347,20 +3478,12 @@
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "xd" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/catwalk,
-/mob/living/simple_mob/animal/space/bats{
-	base_attack_cooldown = 5;
+/mob/living/simple_mob/mechanical/combat_drone{
+	base_attack_cooldown = 2;
 	faction = "mouse";
-	health = 50;
-	maxHealth = 50;
+	health = 100;
+	maxHealth = 100;
 	movement_cooldown = 0
 	},
 /turf/simulated/floor/plating,
@@ -3432,12 +3555,16 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/under/static_area)
 "xy" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
 /obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/mob/living/simple_mob/animal/space/bats{
+	base_attack_cooldown = 5;
+	faction = "mouse";
+	health = 50;
+	maxHealth = 50;
+	movement_cooldown = 0
+	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "xC" = (
@@ -3479,6 +3606,7 @@
 /obj/structure/closet/crate/trashcart,
 /obj/random/maintenance,
 /obj/effect/decal/cleanable/dirt,
+/obj/random/underdark,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "xO" = (
@@ -3526,6 +3654,7 @@
 /obj/structure/closet/crate/mimic/dangerous,
 /obj/random/maintenance,
 /obj/random/maintenance/research,
+/obj/item/gun/projectile/pistol,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "yj" = (
@@ -3541,15 +3670,9 @@
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "ys" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/catwalk,
+/obj/structure/table/rack,
+/obj/random/unidentified_medicine/fresh_medicine,
+/obj/item/storage/box/donkpockets,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "yv" = (
@@ -3579,7 +3702,7 @@
 /area/tether/under/static_area)
 "yD" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/loot_pile/maint/trash,
+/obj/structure/trash_pile/under_tether,
 /turf/simulated/floor/wood/sif,
 /area/tether/under/static_area)
 "yF" = (
@@ -3636,11 +3759,21 @@
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "yW" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
 /obj/structure/catwalk,
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_mob/animal/space/bats{
+	base_attack_cooldown = 5;
+	faction = "mouse";
+	health = 50;
+	maxHealth = 50;
+	movement_cooldown = 0
+	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "yX" = (
@@ -3730,6 +3863,12 @@
 /obj/effect/gibspawner/generic,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
+"zw" = (
+/obj/structure/closet/crate,
+/obj/random/maintenance,
+/obj/random/underdark,
+/turf/simulated/floor/plating,
+/area/tether/under/static_area)
 "zx" = (
 /obj/structure/table/steel,
 /obj/item/handcuffs/cable,
@@ -3758,9 +3897,16 @@
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "zI" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
 /obj/structure/catwalk,
-/obj/random/trash,
+/mob/living/simple_mob/mechanical/corrupt_maint_drone{
+	faction = "mouse"
+	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "zK" = (
@@ -3793,9 +3939,10 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/under/static_area)
 "zV" = (
-/obj/structure/table/steel,
-/obj/random/medical,
-/turf/simulated/floor/tiled/old_tile/blue,
+/obj/structure/catwalk,
+/obj/effect/decal/cleanable/dirt,
+/obj/random/mob/spider,
+/turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "zW" = (
 /obj/structure/catwalk,
@@ -3858,7 +4005,7 @@
 /area/tether/under/static_area)
 "At" = (
 /obj/machinery/light/small/emergency,
-/obj/structure/loot_pile/maint/trash,
+/obj/structure/trash_pile/under_tether,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "Au" = (
@@ -3898,6 +4045,9 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
+	},
+/mob/living/simple_mob/mechanical/corrupt_maint_drone{
+	faction = "mouse"
 	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
@@ -3951,6 +4101,7 @@
 /obj/random/medical/pillbottle,
 /obj/random/crusader_cloak,
 /obj/item/spacecash/c1000,
+/obj/item/gun/projectile/pistol,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "Ba" = (
@@ -4170,6 +4321,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
+"Cp" = (
+/obj/structure/grille/broken,
+/obj/structure/closet/crate,
+/obj/random/ammo,
+/obj/random/ammo,
+/obj/random/ammo,
+/obj/item/gun/projectile/pistol,
+/obj/item/gun/projectile/pistol,
+/turf/simulated/floor/plating,
+/area/tether/under/static_area)
 "Cs" = (
 /obj/machinery/door/airlock/maintenance/engi,
 /obj/machinery/atmospherics/pipe/simple/hidden/blue{
@@ -4178,12 +4339,9 @@
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "Cw" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
-	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/catwalk,
-/turf/simulated/floor/plating,
+/obj/random/mob/spider,
+/turf/simulated/floor/tiled/techfloor,
 /area/tether/under/static_area)
 "Cy" = (
 /obj/structure/grille,
@@ -4247,6 +4405,18 @@
 /obj/structure/catwalk,
 /obj/effect/decal/cleanable/dirt,
 /obj/random/junk,
+/turf/simulated/floor/plating,
+/area/tether/under/static_area)
+"CM" = (
+/obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/random/trash,
+/mob/living/simple_mob/mechanical/corrupt_maint_drone{
+	faction = "mouse"
+	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "CP" = (
@@ -4466,8 +4636,10 @@
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "Em" = (
-/obj/structure/table/steel,
-/obj/random/mre,
+/obj/structure/catwalk,
+/mob/living/simple_mob/mechanical/corrupt_maint_drone{
+	faction = "mouse"
+	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "Ep" = (
@@ -4518,6 +4690,10 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table/rack,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/random/trash,
+/obj/random/trash,
+/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "EC" = (
@@ -4581,6 +4757,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/random/maintenance,
 /obj/structure/closet/crate,
+/obj/random/maintenance,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "EW" = (
@@ -4612,10 +4789,8 @@
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "Fg" = (
-/obj/machinery/door/airlock/maintenance/common,
-/obj/structure/catwalk,
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/plating,
+/obj/structure/ghost_pod/manual/lost_drone,
+/turf/simulated/floor/tiled/techfloor,
 /area/tether/under/static_area)
 "Fj" = (
 /obj/structure/catwalk,
@@ -4799,6 +4974,7 @@
 /obj/structure/sign/hostilefauna{
 	pixel_y = -32
 	},
+/obj/random/ammo,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "Go" = (
@@ -5258,7 +5434,18 @@
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "Jx" = (
-/obj/item/stool/padded,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/catwalk,
+/obj/effect/decal/cleanable/dirt,
+/obj/random/trash,
+/mob/living/simple_mob/animal/space/bats{
+	base_attack_cooldown = 5;
+	faction = "mouse";
+	health = 50;
+	maxHealth = 50;
+	movement_cooldown = 0
+	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "Jz" = (
@@ -5277,9 +5464,13 @@
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "JM" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/catwalk,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/crate/mimic/dangerous,
-/obj/random/maintenance/research,
+/mob/living/simple_mob/mechanical/corrupt_maint_drone{
+	faction = "mouse"
+	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "JO" = (
@@ -5391,11 +5582,14 @@
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "KD" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/decal/cleanable/dirt,
 /obj/structure/catwalk,
-/obj/effect/decal/cleanable/blood,
+/mob/living/simple_mob/mechanical/combat_drone{
+	base_attack_cooldown = 2;
+	faction = "mouse";
+	health = 100;
+	maxHealth = 100;
+	movement_cooldown = 0
+	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "KE" = (
@@ -5578,11 +5772,14 @@
 /turf/simulated/floor/plating,
 /area/tether/under/poi)
 "LN" = (
-/obj/structure/closet/crate,
-/obj/random/cash,
-/obj/random/curseditem,
-/obj/item/spacecash/c1000,
-/turf/simulated/floor/tiled/old_tile/blue,
+/mob/living/simple_mob/mechanical/combat_drone{
+	base_attack_cooldown = 2;
+	faction = "mouse";
+	health = 100;
+	maxHealth = 100;
+	movement_cooldown = 0
+	},
+/turf/simulated/floor/wood/sif,
 /area/tether/under/static_area)
 "LO" = (
 /obj/effect/decal/cleanable/dirt,
@@ -5691,8 +5888,11 @@
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "Mr" = (
-/obj/random/junk,
-/turf/simulated/floor/tiled/old_tile/blue,
+/obj/effect/spider/stickyweb,
+/mob/living/simple_mob/mechanical/corrupt_maint_drone{
+	faction = "mouse"
+	},
+/turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "Mt" = (
 /obj/effect/decal/cleanable/dirt,
@@ -5752,6 +5952,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "MK" = (
@@ -5759,11 +5961,12 @@
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "ML" = (
-/obj/machinery/door/airlock/maintenance/int{
-	locked = 1
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_mob/mechanical/corrupt_maint_drone{
+	faction = "mouse"
 	},
-/turf/simulated/floor/plating,
-/area/tether/under/poi)
+/turf/simulated/floor/wood/sif,
+/area/tether/under/static_area)
 "MM" = (
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -5918,6 +6121,15 @@
 /obj/item/pickaxe/silver,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
+"NK" = (
+/obj/structure/catwalk,
+/obj/effect/decal/cleanable/dirt,
+/obj/random/trash,
+/mob/living/simple_mob/mechanical/corrupt_maint_drone{
+	faction = "mouse"
+	},
+/turf/simulated/floor/plating,
+/area/tether/under/static_area)
 "NL" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/catwalk,
@@ -5973,10 +6185,9 @@
 /area/tether/under/static_area)
 "NU" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/crate,
-/obj/random/mre,
-/obj/random/mre,
-/obj/random/mre,
+/obj/structure/closet/crate/trashcart,
+/obj/random/maintenance,
+/obj/random/maintenance,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "NX" = (
@@ -5985,6 +6196,7 @@
 /obj/structure/table/rack,
 /obj/random/mre,
 /obj/effect/spider/stickyweb,
+/obj/random/ammo,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "NZ" = (
@@ -6084,8 +6296,9 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/under/static_area)
 "OI" = (
-/obj/effect/decal/cleanable/blood,
-/turf/simulated/floor/tiled/old_tile/blue,
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/maintenance/common,
+/turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "OK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -6272,15 +6485,17 @@
 /turf/simulated/floor/wood/sif,
 /area/tether/under/static_area)
 "PP" = (
-/mob/living/simple_mob/horror/bradley{
-	base_attack_cooldown = 10;
-	health = 450;
-	maxHealth = 450;
-	move_speed = 25;
-	movement_cooldown = 0;
-	name = "???"
+/obj/structure/catwalk,
+/obj/effect/decal/cleanable/dirt,
+/obj/random/trash,
+/mob/living/simple_mob/mechanical/combat_drone{
+	base_attack_cooldown = 2;
+	faction = "mouse";
+	health = 100;
+	maxHealth = 100;
+	movement_cooldown = 0
 	},
-/turf/simulated/floor/tiled/old_tile/blue,
+/turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "PQ" = (
 /obj/machinery/door/firedoor/glass,
@@ -6399,10 +6614,16 @@
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "QG" = (
-/obj/structure/extinguisher_cabinet{
-	pixel_x = 25
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_mob/animal/space/bats{
+	base_attack_cooldown = 5;
+	faction = "mouse";
+	health = 50;
+	maxHealth = 50;
+	movement_cooldown = 0
 	},
-/turf/simulated/floor/tiled/old_tile/blue,
+/turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "QH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -6634,8 +6855,9 @@
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "Sn" = (
-/obj/machinery/light/small,
-/obj/structure/loot_pile/maint/trash,
+/obj/structure/barricade,
+/obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/under/static_area)
 "So" = (
@@ -6679,6 +6901,11 @@
 /obj/machinery/light/small/emergency{
 	dir = 8
 	},
+/turf/simulated/floor/plating,
+/area/tether/under/static_area)
+"SB" = (
+/obj/structure/table/rack,
+/obj/random/ammo,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "SG" = (
@@ -6749,6 +6976,9 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/catwalk,
+/mob/living/simple_mob/mechanical/corrupt_maint_drone{
+	faction = "mouse"
+	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "Tg" = (
@@ -6819,6 +7049,13 @@
 	},
 /obj/structure/cable{
 	icon_state = "0-8"
+	},
+/mob/living/simple_mob/mechanical/combat_drone{
+	base_attack_cooldown = 2;
+	faction = "mouse";
+	health = 100;
+	maxHealth = 100;
+	movement_cooldown = 0
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/under/static_area)
@@ -6967,9 +7204,15 @@
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "Uw" = (
-/obj/structure/table/steel,
-/obj/random/medical/pillbottle,
-/turf/simulated/floor/tiled/old_tile/blue,
+/obj/machinery/light/small/emergency,
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/mob/living/simple_mob/mechanical/corrupt_maint_drone{
+	faction = "mouse"
+	},
+/turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "Uz" = (
 /obj/machinery/recharge_station,
@@ -6999,6 +7242,9 @@
 	health = 50;
 	maxHealth = 50;
 	movement_cooldown = 0
+	},
+/mob/living/simple_mob/mechanical/corrupt_maint_drone{
+	faction = "mouse"
 	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
@@ -7039,8 +7285,10 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/under/static_area)
 "Vc" = (
-/obj/machinery/atmospherics/unary/cryo_cell,
-/turf/simulated/floor/tiled/old_tile/blue,
+/obj/structure/table/steel,
+/obj/random/alcohol,
+/obj/random/maintenance,
+/turf/simulated/floor/tiled/techfloor,
 /area/tether/under/static_area)
 "Ve" = (
 /obj/effect/decal/cleanable/blood,
@@ -7140,6 +7388,13 @@
 /obj/random/humanoidremains,
 /obj/effect/gibspawner/generic,
 /obj/effect/spider/stickyweb,
+/mob/living/simple_mob/mechanical/combat_drone{
+	base_attack_cooldown = 2;
+	faction = "mouse";
+	health = 100;
+	maxHealth = 100;
+	movement_cooldown = 0
+	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "VE" = (
@@ -7246,6 +7501,7 @@
 "Wq" = (
 /obj/structure/closet/crate,
 /obj/item/storage/firstaid/regular,
+/obj/item/gun/projectile/pistol,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "Wr" = (
@@ -7326,6 +7582,19 @@
 /obj/structure/table/rack,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
+"WX" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_mob/animal/space/bats{
+	base_attack_cooldown = 5;
+	faction = "mouse";
+	health = 50;
+	maxHealth = 50;
+	movement_cooldown = 0
+	},
+/turf/simulated/floor/plating,
+/area/tether/under/static_area)
 "WY" = (
 /obj/structure/catwalk,
 /obj/effect/decal/cleanable/dirt,
@@ -7349,7 +7618,8 @@
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "Xh" = (
-/obj/machinery/atmospherics/unary/cryo_cell,
+/obj/structure/closet/crate/mimic/dangerous,
+/obj/item/storage/box/donkpockets,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "Xi" = (
@@ -7360,16 +7630,12 @@
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "Xj" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/catwalk,
-/obj/random/trash,
+/obj/structure/closet/crate/mimic/dangerous,
+/obj/random/unidentified_medicine,
+/obj/random/maintenance,
+/obj/random/maintenance,
+/obj/random/maintenance,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "Xl" = (
@@ -7654,11 +7920,14 @@
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "Zn" = (
-/obj/structure/closet/crate/medical,
-/obj/random/medical/pillbottle,
-/obj/random/drinkbottle,
-/obj/item/storage/firstaid/regular,
-/turf/simulated/floor/tiled/old_tile/blue,
+/obj/machinery/light/small{
+	dir = 1;
+	icon_state = "bulb1"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate/mimic/dangerous,
+/obj/random/unidentified_medicine,
+/turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "Zp" = (
 /obj/structure/catwalk,
@@ -8122,20 +8391,20 @@ DF
 DF
 DF
 DF
-DF
-DF
-DF
-DF
-DF
-DF
-DF
-DF
-DF
-DF
-DF
-DF
-DF
 Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+DF
 Zh
 Zh
 Zh
@@ -8264,20 +8533,20 @@ DF
 Jl
 Jl
 DF
-DF
-Xh
-zF
-Mr
-cf
-cf
-Em
-zV
-Uw
-bH
-Zn
-LN
-DF
 Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+DF
 Zh
 Zh
 Zh
@@ -8394,7 +8663,7 @@ OL
 EW
 DF
 DF
-Qf
+sv
 aK
 jf
 qV
@@ -8406,20 +8675,20 @@ DF
 Jl
 Jl
 DF
-DF
-Vc
-PP
-cf
-OI
-cf
-cf
-cf
-cf
-OI
-cf
-cf
-DF
 Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+DF
 Zh
 Zh
 Zh
@@ -8548,20 +8817,20 @@ DF
 DF
 DF
 DF
-DF
-Vc
-zF
-cf
-QG
-cf
-Jx
-Jx
-cf
-cf
-Qf
-OI
-DF
 Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+DF
 Zh
 Zh
 Zh
@@ -8593,7 +8862,7 @@ Vr
 Vr
 jD
 zF
-nw
+NK
 xp
 PA
 Fj
@@ -8690,20 +8959,20 @@ DF
 DF
 DF
 DF
-DF
-DF
-DF
-DF
-DF
-bH
-hI
-na
-Uw
-OI
-cf
-vA
-DF
 Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+DF
 Zh
 Zh
 Zh
@@ -8748,7 +9017,7 @@ oY
 oY
 zF
 hE
-zF
+gM
 HO
 DF
 Jl
@@ -8769,7 +9038,7 @@ Jl
 Jl
 Jl
 Vy
-uF
+sS
 Jl
 Jl
 Jl
@@ -8832,20 +9101,20 @@ ux
 gD
 oY
 DF
-DF
-zF
-Qb
-Qb
-DF
-zF
-cf
-cf
-bH
-cf
-cf
-ci
-DF
 Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+DF
 Zh
 Zh
 Zh
@@ -8867,7 +9136,7 @@ Jl
 xj
 xj
 DF
-xj
+Kb
 xj
 zF
 DF
@@ -8913,7 +9182,7 @@ uF
 uF
 TJ
 uF
-uF
+sS
 Jl
 Jl
 "}
@@ -8967,27 +9236,27 @@ iC
 Qb
 DF
 GX
-cu
+yW
 hp
 DF
 YM
 wL
 bz
 MJ
-wu
-sv
-Cw
-VU
-DF
-zF
-ng
-cf
-cf
-cf
-OI
-zF
-ML
 Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+OI
 Zh
 Zh
 Zh
@@ -9091,7 +9360,7 @@ Zh
 Zh
 Zh
 DF
-oY
+gD
 OT
 Qb
 DF
@@ -9116,20 +9385,20 @@ yg
 nw
 jD
 DF
-DF
-id
-Xj
-wP
-DF
-cf
-zF
-Qf
-cT
-VU
-cf
-cf
-DF
 Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+DF
 Zh
 Zh
 Zh
@@ -9150,11 +9419,11 @@ Jl
 Jl
 xj
 DF
-xj
+aw
 uF
 xj
 uF
-xj
+Kb
 DF
 Jl
 Jl
@@ -9191,7 +9460,7 @@ Jl
 Jl
 Jl
 Jl
-uF
+sS
 uF
 Jl
 uF
@@ -9258,20 +9527,20 @@ Rn
 zi
 oY
 DF
-DF
-Qb
-xd
-wH
-DF
-bG
-DF
-DF
-DF
-zF
-cf
-hg
-DF
 Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+DF
 Zh
 Zh
 Zh
@@ -9400,20 +9669,20 @@ EW
 WL
 EW
 DF
-DF
-DI
-xy
-zM
-VU
-Qb
-aX
-DI
-DF
-zF
-cf
-zF
-DF
 Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+DF
 Zh
 Zh
 Zh
@@ -9476,8 +9745,8 @@ Jl
 Jl
 Jl
 Jl
-uF
-uF
+sS
+sS
 uF
 tW
 uF
@@ -9542,20 +9811,20 @@ XS
 uR
 jD
 DF
-DF
-wP
-ys
-yW
-KD
-zI
-Di
-Qb
-DF
-hg
-cf
-cf
-DF
 Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+DF
 Zh
 Zh
 Zh
@@ -9684,20 +9953,20 @@ yC
 zF
 Qb
 DF
-DF
-JM
-NU
-ux
-oY
-zF
-Ep
-ng
-DF
-aw
-aq
-je
-DF
 Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+DF
 Zh
 Zh
 Zh
@@ -9826,20 +10095,20 @@ DF
 DF
 DF
 DF
-DF
-DF
-DF
-DF
-DF
-DF
-Fg
-DF
-DF
-DF
-DF
-DF
-DF
 Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+DF
 Zh
 Zh
 Zh
@@ -9987,8 +10256,8 @@ DF
 DF
 DF
 DF
-qN
 DF
+Sn
 DF
 DF
 DF
@@ -10093,7 +10362,7 @@ zf
 NZ
 WR
 zF
-zF
+qN
 iX
 NZ
 DF
@@ -10243,7 +10512,7 @@ DF
 Wk
 xc
 EW
-Qb
+BJ
 Qb
 xe
 zF
@@ -10257,7 +10526,7 @@ Qb
 Ti
 kH
 ty
-Vr
+lj
 xE
 wH
 DF
@@ -10266,7 +10535,7 @@ Jl
 Jl
 DF
 DF
-zF
+aF
 zF
 zF
 Hq
@@ -10304,7 +10573,7 @@ Jl
 Ai
 Ai
 xj
-xj
+Kb
 xj
 Ai
 Ai
@@ -10385,7 +10654,7 @@ DF
 Bt
 ev
 MM
-mE
+xy
 FP
 Vr
 JC
@@ -10589,7 +10858,7 @@ Jl
 Jl
 Jl
 Jl
-xj
+Kb
 xj
 Jl
 DF
@@ -10877,7 +11146,7 @@ Jl
 xj
 DF
 DF
-RQ
+SB
 Dp
 zF
 ku
@@ -11162,7 +11431,7 @@ Zh
 Zh
 ku
 zF
-oY
+qN
 oY
 ku
 Zh
@@ -11218,7 +11487,7 @@ Qb
 Fb
 oY
 Hq
-Qb
+BJ
 DF
 DF
 DF
@@ -11304,7 +11573,7 @@ Zh
 MS
 XJ
 zF
-Di
+KD
 oY
 ku
 MS
@@ -11393,7 +11662,7 @@ Qb
 Tk
 Vr
 GH
-GH
+Jx
 MM
 CL
 ii
@@ -11566,7 +11835,7 @@ Jl
 DF
 DF
 TK
-xj
+Kb
 YM
 DF
 DF
@@ -12235,10 +12504,10 @@ xj
 DF
 OQ
 DF
-xj
+Kb
 xj
 oY
-xj
+Kb
 DF
 Zh
 Zh
@@ -12297,7 +12566,7 @@ Zh
 Zh
 Zh
 MS
-zF
+gM
 Nw
 Dn
 ku
@@ -12370,7 +12639,7 @@ DF
 DF
 DF
 DF
-xj
+Kb
 Fb
 xj
 DF
@@ -12663,7 +12932,7 @@ KP
 bz
 AN
 Wr
-Di
+Em
 Vr
 VQ
 Zh
@@ -12829,7 +13098,7 @@ TV
 Hq
 Hq
 cY
-TV
+Vc
 cY
 AV
 CH
@@ -12866,7 +13135,7 @@ Qs
 fn
 WR
 WR
-Di
+KD
 zF
 DF
 Jl
@@ -12946,7 +13215,7 @@ DF
 aj
 DF
 DF
-xj
+aw
 oY
 xj
 DF
@@ -13002,7 +13271,7 @@ ZU
 iR
 oY
 Vr
-iR
+WX
 MV
 Vr
 ux
@@ -13085,7 +13354,7 @@ AR
 xj
 xj
 DF
-nb
+zI
 DF
 xj
 xj
@@ -13136,7 +13405,7 @@ VU
 Xr
 Qf
 zF
-Qf
+bW
 zF
 zF
 zF
@@ -13295,7 +13564,7 @@ oY
 YL
 zF
 DF
-xj
+cf
 zF
 xj
 uF
@@ -13355,7 +13624,7 @@ Hg
 oY
 oY
 oV
-KT
+na
 qR
 gX
 DF
@@ -13365,7 +13634,7 @@ rg
 DF
 DF
 xj
-xj
+Kb
 xj
 zF
 DF
@@ -13441,7 +13710,7 @@ zF
 uF
 uF
 zF
-cm
+ug
 uF
 xj
 xj
@@ -13496,7 +13765,7 @@ DF
 CW
 VX
 zf
-NZ
+yD
 iX
 pR
 PJ
@@ -13715,7 +13984,7 @@ RK
 Qf
 VU
 zF
-zF
+sl
 DF
 hE
 Nw
@@ -13723,9 +13992,9 @@ zF
 DF
 Jl
 Jl
-xj
+cf
 DF
-uF
+fd
 xj
 zF
 xj
@@ -13779,7 +14048,7 @@ DF
 DF
 ew
 iX
-fn
+gD
 rK
 VU
 TU
@@ -13846,7 +14115,7 @@ Jl
 DF
 DF
 zF
-zF
+gM
 zF
 DF
 zF
@@ -13870,7 +14139,7 @@ DF
 uF
 zF
 xj
-xj
+aw
 xj
 Jl
 Jl
@@ -14121,7 +14390,7 @@ bw
 eA
 DF
 DF
-TK
+Zn
 be
 zF
 DF
@@ -14136,7 +14405,7 @@ DF
 zF
 Qf
 zF
-bb
+zw
 Qf
 Qf
 RQ
@@ -14336,7 +14605,7 @@ jT
 ux
 DF
 ux
-Hq
+CG
 MK
 Ay
 FB
@@ -14470,7 +14739,7 @@ uF
 uF
 go
 Vr
-nw
+aq
 ev
 Di
 nx
@@ -14478,7 +14747,7 @@ zF
 sq
 DF
 uk
-Fb
+bG
 ik
 Es
 My
@@ -14517,7 +14786,7 @@ oY
 ty
 MM
 AN
-bz
+JM
 Wn
 lC
 kH
@@ -14626,7 +14895,7 @@ QH
 KE
 DF
 lg
-xD
+GI
 DF
 DF
 hE
@@ -14662,10 +14931,10 @@ dh
 EW
 oY
 zF
-Hq
+CG
 Hq
 OQ
-kK
+NU
 DF
 DF
 aJ
@@ -14699,7 +14968,7 @@ DF
 DF
 zF
 Fu
-zF
+sl
 zF
 Wk
 oY
@@ -14996,7 +15265,7 @@ oY
 Xr
 zF
 EW
-zk
+CM
 oY
 zF
 RQ
@@ -15012,7 +15281,7 @@ zF
 mJ
 Qf
 Js
-Di
+KD
 Tr
 Lr
 EI
@@ -15158,7 +15427,7 @@ aF
 Gj
 DF
 gj
-gj
+Cp
 Hi
 DF
 DF
@@ -15543,7 +15812,7 @@ DF
 DF
 jD
 Ry
-Qs
+lV
 DF
 DF
 Jl
@@ -15566,7 +15835,7 @@ DF
 zF
 Vr
 zF
-xj
+cf
 Zh
 Zh
 Zh
@@ -15650,7 +15919,7 @@ aF
 DF
 DF
 IA
-Hq
+IS
 Hq
 Hq
 LY
@@ -15754,9 +16023,9 @@ xj
 xj
 eM
 VU
-xj
+Kb
 DF
-oY
+gD
 Vj
 oY
 DF
@@ -15894,7 +16163,7 @@ xj
 Jl
 xj
 xj
-xj
+Kb
 zF
 oY
 hE
@@ -16250,7 +16519,7 @@ LR
 Qf
 zF
 zF
-zF
+wu
 zF
 Di
 zF
@@ -16319,13 +16588,13 @@ xj
 xj
 Jl
 DF
-xj
+aw
 xj
 hE
 xj
 DF
 Qf
-xe
+bH
 Fb
 DF
 HM
@@ -16336,7 +16605,7 @@ KT
 NZ
 es
 Qf
-iX
+hI
 iX
 PB
 nU
@@ -16395,7 +16664,7 @@ ii
 mA
 MM
 Di
-zF
+iG
 DF
 DF
 Jl
@@ -16533,7 +16802,7 @@ oY
 ux
 zF
 oY
-oY
+Xj
 oY
 jD
 zF
@@ -16643,12 +16912,12 @@ RV
 NX
 DF
 DF
-Hq
+Fg
 Hq
 KJ
 hy
 Hq
-Di
+KD
 Hq
 DF
 DF
@@ -16699,7 +16968,7 @@ DF
 Jl
 DF
 DF
-oY
+xd
 Vr
 aF
 DF
@@ -16931,7 +17200,7 @@ tQ
 Hq
 rk
 VO
-Hq
+CG
 Di
 Hq
 Hq
@@ -17036,7 +17305,7 @@ gD
 DF
 oY
 NL
-oY
+gD
 DF
 LX
 zF
@@ -17061,7 +17330,7 @@ ng
 DF
 aF
 Aj
-oY
+jK
 hk
 DF
 oY
@@ -17069,7 +17338,7 @@ YH
 DX
 DF
 DF
-Hq
+IS
 Hq
 Aj
 Hq
@@ -17267,7 +17536,7 @@ DF
 Jl
 DF
 DF
-oY
+bC
 Fu
 EB
 xj
@@ -17508,7 +17777,7 @@ Zh
 Zh
 Zh
 DF
-QN
+aF
 Hq
 Pz
 zF
@@ -17626,7 +17895,7 @@ Zh
 DF
 Lq
 Hq
-zF
+wu
 vG
 DF
 DF
@@ -17654,13 +17923,13 @@ tQ
 zF
 Hq
 WR
-WR
+QG
 CA
 zF
 Ny
 Hq
 zF
-Sn
+AG
 DF
 DF
 Jl
@@ -17801,7 +18070,7 @@ MY
 oY
 zF
 zF
-Hq
+CG
 ci
 DF
 DF
@@ -18079,7 +18348,7 @@ DF
 Hq
 zK
 Hq
-zF
+gM
 Hq
 lg
 Hq
@@ -18511,7 +18780,7 @@ Es
 zF
 Ny
 oY
-oY
+qN
 zF
 DF
 DF
@@ -18545,7 +18814,7 @@ DF
 DF
 DF
 DF
-zF
+sl
 Fu
 Qf
 DF
@@ -18592,7 +18861,7 @@ xj
 Jl
 DF
 DF
-zF
+sl
 io
 jD
 zF
@@ -18743,7 +19012,7 @@ Di
 Vr
 RP
 ES
-wZ
+cT
 oY
 DF
 Zh
@@ -18803,7 +19072,7 @@ Jl
 Jl
 Jl
 Jl
-xj
+aw
 xj
 xj
 Jl
@@ -18931,12 +19200,12 @@ DF
 Hq
 zF
 Fb
-Hq
+mU
 kg
 OD
 Fb
 Hq
-zF
+Xh
 Hq
 KE
 DF
@@ -18946,7 +19215,7 @@ Jl
 Jl
 Jl
 xj
-xj
+aw
 xj
 Jl
 Jl
@@ -19091,7 +19360,7 @@ xj
 xj
 xj
 xj
-xj
+aw
 Jl
 Jl
 Jl
@@ -19231,7 +19500,7 @@ Jl
 Jl
 Jl
 xj
-xj
+aw
 xj
 xj
 Jl
@@ -19349,7 +19618,7 @@ vv
 Pt
 DY
 DF
-pH
+xM
 bL
 aR
 DF
@@ -19371,7 +19640,7 @@ Jl
 Jl
 Jl
 Jl
-xj
+aw
 xj
 xj
 xj
@@ -19516,7 +19785,7 @@ xj
 xj
 xj
 xj
-xj
+aw
 Jl
 Jl
 Jl
@@ -19614,7 +19883,7 @@ DF
 DF
 sF
 xe
-oY
+xd
 oY
 ux
 xe
@@ -19630,11 +19899,11 @@ Jl
 DF
 DF
 AI
-iX
+LN
 cR
 DF
 hm
-NZ
+ML
 wH
 DF
 zY
@@ -19654,9 +19923,9 @@ DF
 Jl
 Jl
 Jl
+aw
 xj
-xj
-xj
+aw
 xj
 xj
 Jl
@@ -19803,7 +20072,7 @@ xj
 xj
 xj
 xj
-xj
+aw
 xj
 xj
 xj
@@ -19823,7 +20092,7 @@ Zh
 Zh
 Zh
 DF
-zF
+wu
 zF
 EW
 DF
@@ -19938,7 +20207,7 @@ DF
 Jl
 Jl
 xj
-xj
+Kb
 xj
 xj
 xj
@@ -20082,7 +20351,7 @@ Jl
 xj
 xj
 xj
-xj
+Kb
 xj
 xj
 xj
@@ -20181,7 +20450,7 @@ EW
 DF
 DF
 ux
-Vr
+eS
 EW
 DF
 cl
@@ -20194,7 +20463,7 @@ aF
 DF
 DF
 oY
-Di
+Em
 DF
 DF
 DF
@@ -20230,7 +20499,7 @@ xj
 xj
 Jl
 xj
-xj
+Kb
 xj
 xj
 Jl
@@ -20636,7 +20905,7 @@ Qk
 tj
 im
 YL
-Vr
+eS
 nw
 oY
 DF
@@ -20647,7 +20916,7 @@ DF
 DF
 Jl
 Jl
-xj
+Kb
 xj
 Jl
 Jl
@@ -20795,7 +21064,7 @@ Jl
 Jl
 xj
 xj
-xj
+Kb
 xj
 xj
 xj
@@ -20865,7 +21134,7 @@ Jl
 DF
 DF
 aF
-Vr
+lj
 EW
 DF
 DF
@@ -20932,7 +21201,7 @@ DF
 Jl
 Jl
 xj
-xj
+Kb
 Jl
 Jl
 xj
@@ -21082,7 +21351,7 @@ xj
 xj
 xj
 xj
-xj
+Kb
 xj
 xj
 Jl
@@ -21459,7 +21728,7 @@ Fb
 Qb
 oY
 Yi
-oY
+vA
 bk
 Hq
 fK
@@ -21500,16 +21769,16 @@ DF
 Jl
 Jl
 xj
+Kb
 xj
 xj
 xj
+Kb
+xj
+cf
 xj
 xj
-xj
-xj
-xj
-xj
-xj
+Kb
 xj
 Jl
 Jl
@@ -21590,7 +21859,7 @@ DF
 zF
 zF
 oY
-zF
+je
 oY
 Vr
 wP
@@ -21644,7 +21913,7 @@ Jl
 xj
 xj
 xj
-xj
+cf
 xj
 xj
 xj
@@ -21770,7 +22039,7 @@ DF
 DF
 Vr
 Ep
-nw
+PP
 DF
 DF
 DF
@@ -21797,7 +22066,7 @@ xj
 xj
 xj
 xj
-xj
+Kb
 xj
 xj
 xj
@@ -21807,7 +22076,7 @@ zF
 xj
 xj
 DF
-xj
+Kb
 xj
 xj
 DF
@@ -21889,7 +22158,7 @@ kH
 mo
 mE
 mE
-Vr
+zV
 sW
 ii
 Jd
@@ -22030,7 +22299,7 @@ oY
 zF
 ml
 oY
-Ta
+ys
 mZ
 zF
 wP
@@ -22061,7 +22330,7 @@ Vr
 oY
 ux
 Di
-Vr
+eS
 Vr
 DF
 DF
@@ -22079,7 +22348,7 @@ xj
 xj
 xj
 xj
-xj
+Kb
 xj
 xj
 xj
@@ -22096,7 +22365,7 @@ xj
 xj
 xj
 uF
-Di
+Em
 uF
 DF
 Zh
@@ -22212,6 +22481,7 @@ Jl
 xj
 xj
 xj
+Kb
 xj
 xj
 xj
@@ -22224,23 +22494,22 @@ xj
 xj
 xj
 xj
+Kb
+Kb
 xj
 xj
 xj
 xj
+Kb
 xj
 xj
-xj
-xj
-xj
-xj
-xj
+Kb
 xj
 xj
 cm
 Di
 xj
-xj
+Kb
 Zh
 Zh
 Zh
@@ -22302,7 +22571,7 @@ Hq
 zF
 gx
 zF
-Ep
+pH
 oY
 zF
 ng
@@ -22316,7 +22585,7 @@ zF
 VU
 zF
 Di
-Fb
+Cw
 YD
 Hq
 hV
@@ -22356,7 +22625,7 @@ xj
 xj
 xj
 xj
-xj
+Kb
 xj
 xj
 xj
@@ -22381,7 +22650,7 @@ xj
 DF
 xj
 zF
-xj
+Kb
 xj
 Zh
 Zh
@@ -22662,10 +22931,10 @@ sD
 xj
 xj
 xj
-xj
+Kb
 xj
 zF
-xj
+Kb
 xj
 Zh
 Zh
@@ -22778,7 +23047,7 @@ DF
 Jl
 Jl
 xj
-xj
+cf
 xj
 xj
 xj
@@ -22945,7 +23214,7 @@ uF
 xj
 xj
 xj
-xj
+Kb
 xj
 xj
 Di
@@ -23076,6 +23345,8 @@ xj
 xj
 xj
 xj
+Kb
+Kb
 xj
 xj
 xj
@@ -23084,9 +23355,7 @@ xj
 xj
 xj
 xj
-xj
-xj
-xj
+Kb
 xj
 DF
 xj
@@ -23216,11 +23485,11 @@ xj
 xj
 xj
 xj
+Kb
 xj
 xj
 xj
-xj
-xj
+Kb
 xj
 xj
 xj
@@ -23300,14 +23569,14 @@ xj
 xj
 xj
 xj
+sS
 xj
 xj
 xj
+Kb
 xj
-xj
-xj
-xj
-xj
+sS
+Kb
 xj
 zF
 xj
@@ -23355,20 +23624,20 @@ xj
 xj
 Jl
 xj
+Kb
+Kb
 xj
 xj
 xj
 xj
 xj
+Kb
+Kb
 xj
 xj
 xj
-xj
-xj
-xj
-xj
-xj
-xj
+Kb
+Kb
 xj
 xj
 xj
@@ -23429,6 +23698,12 @@ zF
 xj
 xj
 xj
+Kb
+xj
+Kb
+xj
+xj
+Kb
 xj
 xj
 xj
@@ -23438,16 +23713,10 @@ xj
 xj
 xj
 xj
+sS
 xj
 xj
-xj
-xj
-xj
-xj
-xj
-xj
-xj
-xj
+sS
 xj
 xj
 xj
@@ -23499,7 +23768,7 @@ xj
 xj
 xj
 xj
-xj
+Kb
 xj
 xj
 xj
@@ -24133,7 +24402,7 @@ xj
 xj
 uF
 uF
-go
+aX
 uF
 ao
 uF
@@ -24164,7 +24433,7 @@ xj
 zF
 xj
 xj
-xj
+uF
 xj
 xj
 xj
@@ -24213,9 +24482,9 @@ xj
 xj
 xj
 xj
+Kb
 xj
-xj
-uF
+kD
 uF
 Zh
 Zh
@@ -24307,7 +24576,7 @@ zF
 xj
 xj
 xj
-xj
+cf
 xj
 xj
 xj
@@ -24439,7 +24708,7 @@ xj
 xj
 xj
 xj
-xj
+sS
 xj
 xj
 xj
@@ -24495,7 +24764,7 @@ xj
 sS
 uF
 xj
-xj
+Kb
 xj
 DF
 xj
@@ -24578,7 +24847,7 @@ xj
 xj
 xj
 xj
-xj
+Kb
 xj
 xj
 DF
@@ -24693,12 +24962,12 @@ oY
 oY
 xj
 xj
+Kb
 xj
 xj
 xj
 xj
-xj
-xj
+Kb
 xj
 xj
 xj
@@ -24720,7 +24989,7 @@ sS
 xj
 xj
 xj
-xj
+sS
 xj
 xj
 Zh
@@ -24919,7 +25188,7 @@ xj
 xj
 uF
 uF
-xj
+Kb
 xj
 xj
 uF
@@ -24973,7 +25242,7 @@ uF
 uF
 wQ
 uF
-fz
+uF
 xj
 xj
 xj
@@ -25003,7 +25272,7 @@ xj
 xj
 xj
 xj
-xj
+sS
 xj
 xj
 xj
@@ -25118,7 +25387,7 @@ uF
 pD
 xj
 xj
-xj
+Kb
 xj
 xj
 xj
@@ -25192,7 +25461,7 @@ DF
 Jl
 Jl
 xj
-xj
+aw
 xj
 xj
 xj
@@ -25200,16 +25469,16 @@ wI
 xj
 xj
 xj
-xj
+Kb
 xj
 xj
 Jl
 Jl
 Jl
-xj
+Kb
 xj
 sD
-zF
+sl
 xj
 Zh
 Zh
@@ -25339,7 +25608,7 @@ xj
 xj
 xj
 xj
-xj
+Kb
 xj
 xj
 xj
@@ -25404,7 +25673,7 @@ xj
 xj
 xj
 xj
-xj
+Kb
 uF
 sS
 uF
@@ -25452,7 +25721,7 @@ ex
 oY
 Qb
 zF
-Qb
+Mr
 RK
 VU
 EW
@@ -25477,6 +25746,8 @@ Jl
 Jl
 xj
 xj
+Kb
+Kb
 xj
 xj
 xj
@@ -25489,9 +25760,7 @@ xj
 xj
 xj
 xj
-xj
-xj
-xj
+Kb
 xj
 uF
 zF
@@ -25633,7 +25902,7 @@ xj
 Jl
 Jl
 xj
-xj
+aw
 xj
 zF
 uF
@@ -25760,7 +26029,7 @@ DF
 Jl
 Jl
 xj
-xj
+Kb
 xj
 xj
 xj
@@ -25975,7 +26244,7 @@ uF
 uF
 xj
 xj
-xj
+Kb
 xj
 uF
 xj
@@ -26034,7 +26303,7 @@ la
 mC
 DI
 nw
-tT
+Uw
 DF
 Jl
 Jl
@@ -26046,8 +26315,8 @@ Jl
 xj
 xj
 xj
-xj
-xj
+Kb
+Kb
 xj
 xj
 xj
@@ -26332,10 +26601,10 @@ xj
 xj
 xj
 xj
-xj
-xj
-xj
-xj
+Kb
+Kb
+Kb
+Kb
 Jl
 xj
 sS
@@ -26398,7 +26667,7 @@ xj
 xj
 uF
 xj
-xj
+Kb
 xj
 xj
 xj
@@ -26535,7 +26804,7 @@ uF
 uF
 xj
 uF
-uF
+fz
 uF
 uF
 uF
@@ -26826,7 +27095,7 @@ uF
 uF
 xj
 uF
-uF
+ai
 xj
 xj
 xj
@@ -26969,20 +27238,20 @@ uF
 uF
 uF
 uF
-xj
+Kb
 xj
 xj
 xj
 uF
 uF
 xj
+cf
 xj
 xj
 xj
 xj
 xj
-xj
-xj
+Kb
 xj
 xj
 xj
@@ -27133,7 +27402,7 @@ xj
 xj
 xj
 xj
-xj
+cf
 xj
 xj
 xj
@@ -27255,7 +27524,7 @@ xj
 xj
 xj
 xj
-xj
+Kb
 xj
 xj
 xj

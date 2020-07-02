@@ -1,0 +1,428 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/wall/solidrock,
+/area/space)
+"b" = (
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"c" = (
+/obj/structure/table/standard,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"d" = (
+/obj/effect/floor_decal/rust,
+/mob/living/simple_mob/animal/giant_spider/nurse/hat,
+/turf/simulated/floor,
+/area/space)
+"e" = (
+/obj/effect/floor_decal/rust,
+/mob/living/simple_mob/animal/passive/mouse/rat,
+/turf/simulated/floor,
+/area/space)
+"f" = (
+/obj/effect/floor_decal/rust,
+/obj/random/trash_pile,
+/turf/simulated/floor,
+/area/space)
+"g" = (
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor,
+/area/space)
+"h" = (
+/obj/structure/girder/displaced,
+/turf/simulated/floor,
+/area/space)
+"i" = (
+/obj/effect/floor_decal/rust,
+/obj/random/maintenance/research,
+/turf/simulated/floor,
+/area/space)
+"j" = (
+/obj/random/trash,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"k" = (
+/obj/machinery/door/airlock/maintenance/rnd,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"l" = (
+/obj/effect/decal/remains/xeno,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"m" = (
+/obj/effect/alien/resin/membrane,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"n" = (
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"o" = (
+/obj/structure/girder,
+/turf/simulated/floor,
+/area/space)
+"p" = (
+/obj/structure/grille,
+/turf/simulated/floor/plating,
+/area/space)
+"r" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor,
+/area/space)
+"s" = (
+/obj/item/digestion_remains,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"t" = (
+/obj/effect/floor_decal/rust,
+/obj/random/junk,
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor,
+/area/space)
+"u" = (
+/obj/random/junk,
+/turf/simulated/floor,
+/area/space)
+"v" = (
+/obj/machinery/door/airlock/maintenance/rnd,
+/turf/simulated/floor,
+/area/space)
+"x" = (
+/obj/machinery/light/small/emergency{
+	dir = 1
+	},
+/obj/random/trash_pile,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"y" = (
+/obj/random/trash_pile,
+/turf/simulated/floor,
+/area/space)
+"z" = (
+/obj/structure/girder/displaced,
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor,
+/area/space)
+"A" = (
+/obj/structure/bed,
+/obj/machinery/light/small/emergency{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"B" = (
+/obj/random/trash,
+/turf/simulated/floor,
+/area/space)
+"C" = (
+/obj/item/modular_computer/console{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"D" = (
+/obj/random/maintenance/research,
+/turf/simulated/floor,
+/area/space)
+"E" = (
+/obj/machinery/light/small/emergency{
+	dir = 1
+	},
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor,
+/area/space)
+"F" = (
+/turf/simulated/wall/iron,
+/area/space)
+"G" = (
+/obj/machinery/light/small/emergency{
+	dir = 1
+	},
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"H" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/table/standard,
+/obj/random/contraband,
+/turf/simulated/floor,
+/area/space)
+"I" = (
+/obj/effect/decal/remains/xeno,
+/obj/machinery/light/small/emergency{
+	dir = 1
+	},
+/mob/living/simple_mob/animal/giant_spider/phorogenic,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"J" = (
+/obj/structure/table/standard,
+/obj/random/maintenance/research,
+/obj/random/maintenance/research,
+/obj/machinery/light/small/emergency{
+	dir = 8
+	},
+/turf/simulated/floor,
+/area/space)
+"K" = (
+/obj/item/digestion_remains/ribcage,
+/mob/living/simple_mob/animal/giant_spider/phorogenic,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"L" = (
+/turf/simulated/floor,
+/area/space)
+"M" = (
+/obj/random/junk,
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor,
+/area/space)
+"O" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/table/standard,
+/obj/item/xenoarch_multi_tool,
+/turf/simulated/floor,
+/area/space)
+"Q" = (
+/obj/structure/table,
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"R" = (
+/obj/structure/table,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"S" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor/plating,
+/area/space)
+"T" = (
+/obj/structure/table/standard,
+/obj/random/maintenance/research,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"V" = (
+/obj/random/trash,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"W" = (
+/obj/structure/table/standard,
+/obj/random/contraband,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"X" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/effect/decal/remains/human,
+/obj/item/gun/projectile/derringer,
+/obj/effect/decal/cleanable/blood{
+	pixel_x = 33
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"Y" = (
+/obj/item/digestion_remains/skull/teshari,
+/turf/simulated/floor,
+/area/space)
+"Z" = (
+/obj/effect/alien/resin/membrane,
+/obj/item/digestion_remains/skull/xenohybrid,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+
+(1,1,1) = {"
+F
+r
+r
+F
+F
+F
+L
+F
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+F
+I
+s
+Z
+S
+t
+r
+F
+F
+F
+F
+F
+a
+"}
+(3,1,1) = {"
+r
+m
+K
+L
+k
+b
+V
+R
+C
+J
+W
+F
+a
+"}
+(4,1,1) = {"
+F
+Y
+j
+l
+S
+L
+b
+r
+b
+b
+L
+F
+a
+"}
+(5,1,1) = {"
+F
+F
+F
+F
+F
+x
+b
+O
+H
+T
+Q
+F
+a
+"}
+(6,1,1) = {"
+F
+G
+i
+f
+S
+B
+b
+F
+F
+F
+F
+F
+a
+"}
+(7,1,1) = {"
+h
+r
+n
+b
+v
+r
+u
+F
+a
+a
+a
+r
+L
+"}
+(8,1,1) = {"
+F
+i
+L
+j
+p
+b
+r
+F
+a
+u
+L
+g
+F
+"}
+(9,1,1) = {"
+F
+F
+o
+F
+F
+E
+b
+o
+L
+L
+F
+g
+a
+"}
+(10,1,1) = {"
+r
+A
+L
+L
+S
+g
+b
+h
+r
+a
+a
+z
+a
+"}
+(11,1,1) = {"
+r
+L
+j
+n
+k
+b
+D
+o
+a
+a
+r
+B
+a
+"}
+(12,1,1) = {"
+F
+c
+X
+n
+S
+M
+b
+F
+a
+y
+u
+d
+B
+"}
+(13,1,1) = {"
+F
+r
+F
+F
+F
+F
+r
+F
+B
+e
+B
+r
+L
+"}
