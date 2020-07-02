@@ -1,0 +1,343 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/wall/solidrock,
+/area/space)
+"d" = (
+/obj/effect/floor_decal/rust,
+/obj/random/trash,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"e" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"g" = (
+/obj/structure/loot_pile/mecha/durand,
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/phase,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"h" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/space)
+"j" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"k" = (
+/turf/simulated/floor/reinforced,
+/area/space)
+"m" = (
+/obj/structure/table/gamblingtable,
+/obj/random/coin,
+/obj/random/coin,
+/obj/item/laser_pointer/red,
+/obj/random/coin,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"p" = (
+/obj/structure/mob_spawner/mouse_nest,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"v" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"w" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/table/gamblingtable,
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/riggedlaser,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"y" = (
+/obj/machinery/door/airlock/maintenance_hatch{
+	locked = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"B" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"C" = (
+/obj/structure/closet,
+/obj/random/maintenance/clean,
+/obj/random/maintenance/clean,
+/obj/random/maintenance/clean,
+/obj/random/maintenance/clean,
+/turf/simulated/floor/plating,
+/area/space)
+"D" = (
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"E" = (
+/obj/structure/bed/chair,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"G" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"H" = (
+/obj/random/trash,
+/turf/simulated/floor/reinforced,
+/area/space)
+"I" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"K" = (
+/obj/machinery/door/airlock/maintenance_hatch,
+/turf/simulated/floor/plating,
+/area/space)
+"L" = (
+/obj/structure/loot_pile/mecha/ripley,
+/obj/item/mecha_parts/mecha_equipment/tool/drill,
+/turf/simulated/floor/reinforced,
+/area/space)
+"M" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"N" = (
+/obj/random/trash,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"O" = (
+/obj/random/trash,
+/turf/simulated/floor/plating,
+/area/space)
+"P" = (
+/obj/structure/sign/signnew/explosives,
+/turf/simulated/wall/iron,
+/area/space)
+"Q" = (
+/turf/simulated/wall/iron,
+/area/space)
+"R" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"S" = (
+/turf/simulated/floor/plating,
+/area/space)
+"T" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/simulated/floor/reinforced,
+/area/space)
+"Z" = (
+/obj/structure/mob_spawner/mouse_nest,
+/turf/simulated/floor/plating,
+/area/space)
+
+(1,1,1) = {"
+a
+Q
+Q
+Q
+a
+a
+h
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+a
+O
+h
+h
+h
+h
+S
+S
+O
+S
+Q
+Q
+"}
+(3,1,1) = {"
+a
+S
+S
+Q
+P
+K
+Q
+Q
+Q
+Z
+S
+h
+Q
+"}
+(4,1,1) = {"
+a
+S
+Q
+Q
+N
+G
+R
+Q
+Q
+Q
+Q
+h
+a
+"}
+(5,1,1) = {"
+a
+O
+Q
+N
+M
+g
+T
+e
+I
+p
+Q
+S
+a
+"}
+(6,1,1) = {"
+S
+O
+Q
+M
+k
+k
+k
+e
+B
+w
+Q
+O
+C
+"}
+(7,1,1) = {"
+h
+S
+Q
+k
+H
+k
+k
+e
+N
+v
+Q
+h
+S
+"}
+(8,1,1) = {"
+Q
+a
+Q
+T
+k
+k
+k
+e
+D
+D
+y
+S
+O
+"}
+(9,1,1) = {"
+a
+a
+Q
+k
+L
+k
+R
+e
+M
+j
+P
+h
+a
+"}
+(10,1,1) = {"
+a
+a
+Q
+k
+k
+k
+M
+e
+E
+m
+Q
+h
+Q
+"}
+(11,1,1) = {"
+a
+a
+Q
+Q
+Q
+G
+d
+Q
+Q
+Q
+Q
+S
+Q
+"}
+(12,1,1) = {"
+a
+a
+a
+a
+Q
+K
+P
+Q
+h
+h
+S
+S
+a
+"}
+(13,1,1) = {"
+a
+a
+a
+a
+a
+S
+S
+S
+h
+a
+Q
+a
+a
+"}

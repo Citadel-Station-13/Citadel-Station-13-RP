@@ -10,6 +10,7 @@
 	#include "tether_shuttles.dm"
 	#include "tether_telecomms.dm"
 
+	#include "../../_maps/map_files/Tether/tether-00-undermaint.dmm"
 	#include "../../_maps/map_files/Tether/tether-01-surface1.dmm"
 	#include "../../_maps/map_files/Tether/tether-02-surface2.dmm"
 	#include "../../_maps/map_files/Tether/tether-03-surface3.dmm"

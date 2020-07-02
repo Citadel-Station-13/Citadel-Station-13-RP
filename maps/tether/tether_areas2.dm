@@ -106,6 +106,22 @@
 /area/tether/surfacebase/emergency_storage/atrium
 	name = "\improper Atrium Emergency Storage"
 
+// UnderTether
+/area/tether/under/static_area
+	icon_state = "ut_s"
+	name = "\improper UT Static"
+	ambience = AMBIENCE_GHOSTLY
+	base_turf = /turf/simulated/floor/plating
+
+/area/tether/under/poi
+	icon_state = "ut_poi"
+	name = "\improper UT POI"
+	base_turf = /turf/simulated/floor/plating
+	ambience = AMBIENCE_FOREBODING
+	requires_power = 0
+	dynamic_lighting = 1
+
+
 // Main mining area
 /area/tether/surfacebase/mining_main
 	icon_state = "outpost_mine_main"

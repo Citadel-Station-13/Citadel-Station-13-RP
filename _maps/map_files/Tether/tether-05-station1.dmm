@@ -1252,10 +1252,6 @@
 /obj/structure/table/standard,
 /obj/item/reagent_containers/glass/beaker/large,
 /obj/item/reagent_containers/glass/beaker/large,
-/obj/machinery/reagentgrinder,
-/obj/item/stack/material/phoron{
-	amount = 2
-	},
 /turf/simulated/floor/tiled/white,
 /area/tether/station/explorer_medical)
 "acD" = (
@@ -1684,6 +1680,9 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 9
 	},
+/obj/machinery/iv_drip,
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
 /obj/structure/table/standard,
 /turf/simulated/floor/tiled/white,
 /area/tether/station/explorer_medical)
@@ -1740,10 +1739,6 @@
 	name = "O- Blood Locker";
 	pixel_y = -32
 	},
-/obj/item/reagent_containers/blood/OMinus,
-/obj/item/reagent_containers/blood/OMinus,
-/obj/item/reagent_containers/blood/OMinus,
-/obj/machinery/iv_drip,
 /turf/simulated/floor/tiled/white,
 /area/tether/station/explorer_medical)
 "adF" = (
@@ -1835,6 +1830,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 10
 	},
+/obj/item/rig/medical/equipped,
 /turf/simulated/floor/tiled,
 /area/tether/station/explorer_prep)
 "adN" = (
@@ -14541,6 +14537,7 @@
 	icon_state = "0-8"
 	},
 /obj/structure/table/reinforced,
+/obj/item/storage/box/snakesnackbox,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
 "aQn" = (
@@ -16922,6 +16919,7 @@
 /area/hallway/station/atrium)
 "bfT" = (
 /obj/structure/disposalpipe/segment,
+/mob/living/simple_mob/animal/passive/snake/noodle,
 /turf/simulated/floor/carpet/oracarpet,
 /area/crew_quarters/heads/chief)
 "bfW" = (
@@ -23353,6 +23351,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/tether/station/pathfinder_office)
 "oGh" = (
+/obj/structure/closet/secure_closet/sar,
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/effect/floor_decal/steeldecal/steel_decals9,
 /obj/effect/floor_decal/steeldecal/steel_decals9{
@@ -23367,13 +23366,6 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/structure/closet/secure_closet/sar{
-	req_access = list(5);
-	req_one_access = list(5)
-	},
-/obj/item/storage/box/pillbottles,
-/obj/item/storage/box/autoinjectors,
-/obj/item/storage/bag/chemistry,
 /turf/simulated/floor/tiled/monotile,
 /area/tether/station/explorer_prep)
 "oJC" = (
@@ -24233,12 +24225,6 @@
 /obj/structure/closet/crate/secure/science,
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/station/explorer_entry)
-"ufh" = (
-/mob/living/simple_mob/animal/passive/bird/parrot/poly{
-	desc = "The CE's tried and true beloved pet to everyone that doesn't wear a headset."
-	},
-/turf/simulated/floor/carpet/oracarpet,
-/area/crew_quarters/heads/chief)
 "ugd" = (
 /obj/machinery/light{
 	dir = 1
@@ -24585,10 +24571,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/station/excursion_dock)
 "wbE" = (
-/obj/structure/closet/secure_closet/sar{
-	req_access = list(5);
-	req_one_access = list(5)
-	},
+/obj/structure/closet/secure_closet/sar,
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/effect/floor_decal/steeldecal/steel_decals9,
 /obj/effect/floor_decal/steeldecal/steel_decals9{
@@ -24606,9 +24589,6 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/item/storage/box/pillbottles,
-/obj/item/storage/box/autoinjectors,
-/obj/item/storage/bag/chemistry,
 /turf/simulated/floor/tiled/monotile,
 /area/tether/station/explorer_prep)
 "wcD" = (
@@ -29828,7 +29808,7 @@ aoq
 aLy
 aNg
 aYF
-ufh
+aRX
 aSe
 aRX
 aVz

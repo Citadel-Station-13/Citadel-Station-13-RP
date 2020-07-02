@@ -1,0 +1,430 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/wall/solidrock,
+/area/space)
+"b" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"d" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/mob_spawner/mouse_nest,
+/turf/simulated/floor/plating,
+/area/space)
+"e" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"f" = (
+/obj/structure/girder/displaced,
+/turf/simulated/floor/plating,
+/area/space)
+"g" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"i" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/mob_spawner/mouse_nest,
+/turf/simulated/floor/plating,
+/area/space)
+"j" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/table/rack,
+/obj/random/drinkbottle,
+/turf/simulated/floor/plating,
+/area/space)
+"k" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/closet,
+/obj/random/unidentified_medicine,
+/obj/random/ammo,
+/obj/random/ammo,
+/turf/simulated/floor/plating,
+/area/space)
+"n" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor/plating,
+/area/space)
+"o" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/space)
+"p" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/closet,
+/obj/random/contraband,
+/obj/random/contraband,
+/turf/simulated/floor/plating,
+/area/space)
+"q" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/space)
+"s" = (
+/turf/simulated/wall/iron,
+/area/space)
+"v" = (
+/obj/structure/mob_spawner/mouse_nest,
+/turf/simulated/floor/plating,
+/area/space)
+"w" = (
+/obj/structure/catwalk,
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor/plating,
+/area/space)
+"x" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/space)
+"y" = (
+/obj/structure/catwalk,
+/obj/structure/railing,
+/turf/simulated/floor/plating,
+/area/space)
+"z" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/table/rack,
+/obj/random/contraband,
+/turf/simulated/floor/plating,
+/area/space)
+"B" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/space)
+"D" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"E" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/space)
+"G" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"I" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/space)
+"K" = (
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor/plating,
+/area/space)
+"M" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"N" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/space)
+"O" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing,
+/obj/structure/mob_spawner/mouse_nest,
+/turf/simulated/floor/plating,
+/area/space)
+"P" = (
+/turf/simulated/floor/plating,
+/area/space)
+"Q" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"R" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor/plating,
+/area/space)
+"S" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/closet/crate/mimic/cointoss,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"T" = (
+/obj/structure/girder,
+/turf/simulated/floor/plating,
+/area/space)
+"V" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/closet/crate/mimic/cointoss,
+/turf/simulated/floor/plating,
+/area/space)
+"W" = (
+/obj/structure/catwalk,
+/obj/random/trash,
+/turf/simulated/floor/plating,
+/area/space)
+"X" = (
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/space)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+I
+X
+s
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+a
+a
+a
+a
+s
+X
+w
+a
+a
+a
+a
+a
+"}
+(3,1,1) = {"
+a
+a
+a
+a
+s
+s
+w
+W
+a
+a
+a
+a
+a
+"}
+(4,1,1) = {"
+a
+s
+T
+T
+s
+I
+X
+B
+a
+a
+a
+a
+a
+"}
+(5,1,1) = {"
+a
+i
+S
+n
+b
+X
+W
+D
+s
+s
+a
+a
+a
+"}
+(6,1,1) = {"
+q
+M
+W
+X
+X
+X
+s
+d
+q
+s
+s
+s
+s
+"}
+(7,1,1) = {"
+X
+W
+X
+x
+g
+W
+X
+X
+y
+V
+e
+E
+G
+"}
+(8,1,1) = {"
+Q
+o
+s
+f
+s
+j
+z
+N
+X
+X
+X
+X
+X
+"}
+(9,1,1) = {"
+a
+s
+s
+I
+s
+s
+s
+T
+k
+p
+O
+W
+s
+"}
+(10,1,1) = {"
+a
+s
+v
+I
+s
+a
+a
+a
+s
+s
+T
+R
+s
+"}
+(11,1,1) = {"
+a
+s
+R
+I
+I
+T
+s
+a
+a
+a
+a
+s
+a
+"}
+(12,1,1) = {"
+a
+s
+K
+I
+P
+I
+R
+a
+a
+a
+a
+a
+a
+"}
+(13,1,1) = {"
+a
+s
+s
+s
+a
+P
+P
+R
+a
+a
+a
+a
+a
+"}

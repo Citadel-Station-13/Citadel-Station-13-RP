@@ -1,0 +1,504 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/wall/iron,
+/area/maintenance{
+	name = "utcrossroads"
+	})
+"e" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/maintenance{
+	name = "utcrossroads"
+	})
+"f" = (
+/obj/structure/toilet{
+	pixel_y = 20
+	},
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 15
+	},
+/obj/machinery/button/remote/airlock{
+	dir = 4;
+	id = "UDRR2";
+	pixel_x = -30
+	},
+/turf/simulated/floor/tiled/old_tile/beige,
+/area/maintenance{
+	name = "utcrossroads"
+	})
+"g" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/maintenance{
+	name = "utcrossroads"
+	})
+"h" = (
+/obj/machinery/door/airlock/multi_tile{
+	id_tag = "UTRR1"
+	},
+/turf/simulated/floor/tiled/old_tile/beige,
+/area/maintenance{
+	name = "utcrossroads"
+	})
+"i" = (
+/obj/item/trash/liquidfood,
+/turf/simulated/floor/tiled/old_tile/green,
+/area/maintenance{
+	name = "utcrossroads"
+	})
+"j" = (
+/obj/structure/table/bench/steel,
+/turf/simulated/floor/tiled/old_tile/yellow,
+/area/maintenance{
+	name = "utcrossroads"
+	})
+"k" = (
+/obj/random/trash,
+/turf/simulated/floor/tiled/old_tile/green,
+/area/maintenance{
+	name = "utcrossroads"
+	})
+"l" = (
+/obj/structure/table/standard,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_tile/yellow,
+/area/maintenance{
+	name = "utcrossroads"
+	})
+"n" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/maintenance{
+	name = "utcrossroads"
+	})
+"o" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/maintenance{
+	name = "utcrossroads"
+	})
+"p" = (
+/obj/item/trash/snacktray,
+/turf/simulated/floor/tiled/old_tile/green,
+/area/maintenance{
+	name = "utcrossroads"
+	})
+"q" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/maintenance{
+	name = "utcrossroads"
+	})
+"r" = (
+/obj/structure/toilet{
+	pixel_y = 20
+	},
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 15
+	},
+/obj/machinery/button/remote/airlock{
+	dir = 4;
+	id = "UDRR1";
+	pixel_x = -30
+	},
+/turf/simulated/floor/tiled/old_tile/beige,
+/area/maintenance{
+	name = "utcrossroads"
+	})
+"s" = (
+/obj/machinery/door/airlock/multi_tile{
+	id_tag = "UDRR2"
+	},
+/turf/simulated/floor/tiled/old_tile/beige,
+/area/maintenance{
+	name = "utcrossroads"
+	})
+"t" = (
+/obj/item/ammo_casing/a762,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/maintenance{
+	name = "utcrossroads"
+	})
+"u" = (
+/obj/structure/railing,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/maintenance{
+	name = "utcrossroads"
+	})
+"x" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/maintenance{
+	name = "utcrossroads"
+	})
+"y" = (
+/obj/structure/loot_pile/maint/trash,
+/turf/simulated/floor/tiled/old_tile/yellow,
+/area/maintenance{
+	name = "utcrossroads"
+	})
+"z" = (
+/turf/simulated/floor/tiled/steel_dirty,
+/area/maintenance{
+	name = "utcrossroads"
+	})
+"A" = (
+/turf/simulated/floor/tiled/old_tile/yellow,
+/area/maintenance{
+	name = "utcrossroads"
+	})
+"C" = (
+/turf/simulated/floor/tiled/old_tile/red,
+/area/maintenance{
+	name = "utcrossroads"
+	})
+"E" = (
+/obj/structure/loot_pile/maint/trash,
+/obj/machinery/light/small/flicker{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_tile/beige,
+/area/maintenance{
+	name = "utcrossroads"
+	})
+"F" = (
+/obj/structure/table/standard,
+/obj/item/storage/toolbox/lunchbox/survival,
+/turf/simulated/floor/tiled/old_tile/yellow,
+/area/maintenance{
+	name = "utcrossroads"
+	})
+"G" = (
+/obj/structure/loot_pile/maint/trash,
+/turf/simulated/floor/tiled/old_tile/green,
+/area/maintenance{
+	name = "utcrossroads"
+	})
+"J" = (
+/obj/effect/decal/remains,
+/obj/effect/decal/cleanable/blood,
+/turf/simulated/floor/tiled/old_tile/red,
+/area/maintenance{
+	name = "utcrossroads"
+	})
+"K" = (
+/obj/item/trash/unajerky,
+/obj/machinery/light/small/flicker,
+/turf/simulated/floor/tiled/old_tile/green,
+/area/maintenance{
+	name = "utcrossroads"
+	})
+"L" = (
+/turf/simulated/floor/water/indoors,
+/area/maintenance{
+	name = "utcrossroads"
+	})
+"M" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/maintenance{
+	name = "utcrossroads"
+	})
+"N" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/maintenance{
+	name = "utcrossroads"
+	})
+"O" = (
+/obj/item/trash/candy/proteinbar,
+/turf/simulated/floor/tiled/old_tile/green,
+/area/maintenance{
+	name = "utcrossroads"
+	})
+"P" = (
+/obj/item/ammo_casing/a762{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/old_tile/red,
+/area/maintenance{
+	name = "utcrossroads"
+	})
+"Q" = (
+/obj/effect/decal/mecha_wreckage/hoverpod,
+/turf/simulated/floor/tiled/old_tile/red,
+/area/maintenance{
+	name = "utcrossroads"
+	})
+"R" = (
+/obj/item/ammo_casing/a762{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/maintenance{
+	name = "utcrossroads"
+	})
+"S" = (
+/obj/item/ammo_casing/a762{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/old_tile/red,
+/area/maintenance{
+	name = "utcrossroads"
+	})
+"T" = (
+/obj/effect/decal/remains,
+/obj/effect/decal/cleanable/blood,
+/obj/machinery/light/small/flicker,
+/turf/simulated/floor/tiled/old_tile/red,
+/area/maintenance{
+	name = "utcrossroads"
+	})
+"U" = (
+/turf/simulated/floor/tiled/old_tile/green,
+/area/maintenance{
+	name = "utcrossroads"
+	})
+"V" = (
+/obj/machinery/light/flamp/flicker,
+/turf/simulated/floor/tiled/monotile,
+/area/maintenance{
+	name = "utcrossroads"
+	})
+"W" = (
+/obj/machinery/vending/sovietsoda,
+/turf/simulated/floor/tiled/old_tile/yellow,
+/area/maintenance{
+	name = "utcrossroads"
+	})
+"X" = (
+/obj/item/trash/semki,
+/turf/simulated/floor/tiled/old_tile/green,
+/area/maintenance{
+	name = "utcrossroads"
+	})
+"Z" = (
+/turf/simulated/floor/tiled/old_tile/beige,
+/area/maintenance{
+	name = "utcrossroads"
+	})
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+z
+z
+z
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+r
+h
+Z
+Z
+z
+z
+z
+i
+U
+k
+p
+a
+"}
+(3,1,1) = {"
+a
+a
+a
+E
+Z
+z
+z
+z
+U
+U
+G
+K
+a
+"}
+(4,1,1) = {"
+a
+f
+s
+Z
+z
+z
+n
+z
+z
+k
+U
+O
+a
+"}
+(5,1,1) = {"
+a
+a
+a
+z
+z
+g
+L
+x
+z
+z
+X
+U
+a
+"}
+(6,1,1) = {"
+z
+z
+z
+z
+g
+L
+L
+L
+x
+z
+z
+z
+z
+"}
+(7,1,1) = {"
+z
+z
+z
+u
+L
+L
+V
+L
+L
+o
+z
+z
+z
+"}
+(8,1,1) = {"
+z
+z
+z
+z
+e
+L
+L
+L
+N
+z
+z
+z
+z
+"}
+(9,1,1) = {"
+a
+j
+j
+z
+z
+q
+L
+N
+t
+z
+C
+C
+a
+"}
+(10,1,1) = {"
+a
+l
+F
+A
+z
+z
+M
+z
+R
+C
+C
+J
+a
+"}
+(11,1,1) = {"
+a
+j
+j
+A
+A
+z
+z
+z
+S
+C
+C
+T
+a
+"}
+(12,1,1) = {"
+a
+W
+A
+A
+y
+z
+z
+z
+P
+Q
+C
+C
+a
+"}
+(13,1,1) = {"
+a
+a
+a
+a
+a
+z
+z
+z
+a
+a
+a
+a
+a
+"}

@@ -4,24 +4,25 @@
 #define VIRGO3B_TURF_CREATE_UN(x)	x/virgo3b/initial_gas_mix=ATMOSPHERE_ID_VIRGO3B
 
 //Normal map defs
-#define Z_LEVEL_SURFACE_LOW					1
-#define Z_LEVEL_SURFACE_MID					2
-#define Z_LEVEL_SURFACE_HIGH				3
-#define Z_LEVEL_TRANSIT						4
-#define Z_LEVEL_SPACE_LOW					5
-#define Z_LEVEL_SPACE_MID					6
-#define Z_LEVEL_SPACE_HIGH					7
-#define Z_LEVEL_SURFACE_MINE				8
-#define Z_LEVEL_SOLARS						9
-#define Z_LEVEL_CENTCOM						10
-#define Z_LEVEL_MISC						11
-#define Z_LEVEL_SHIPS						12
-#define Z_LEVEL_UNDERDARK					13
-#define Z_LEVEL_ALIENSHIP					14
-#define Z_LEVEL_BEACH						15
-#define Z_LEVEL_BEACH_CAVE					16
-#define Z_LEVEL_AEROSTAT					17
-#define Z_LEVEL_AEROSTAT_SURFACE			18
+#define Z_LEVEL_SURFACE_UNDER				1
+#define Z_LEVEL_SURFACE_LOW					2
+#define Z_LEVEL_SURFACE_MID					3
+#define Z_LEVEL_SURFACE_HIGH				4
+#define Z_LEVEL_TRANSIT						5
+#define Z_LEVEL_SPACE_LOW					6
+#define Z_LEVEL_SPACE_MID					7
+#define Z_LEVEL_SPACE_HIGH					8
+#define Z_LEVEL_SURFACE_MINE				9
+#define Z_LEVEL_SOLARS						10
+#define Z_LEVEL_CENTCOM						11
+#define Z_LEVEL_MISC						12
+#define Z_LEVEL_SHIPS						13
+#define Z_LEVEL_UNDERDARK					14
+#define Z_LEVEL_ALIENSHIP					15
+#define Z_LEVEL_BEACH						16
+#define Z_LEVEL_BEACH_CAVE					17
+#define Z_LEVEL_AEROSTAT					18
+#define Z_LEVEL_AEROSTAT_SURFACE			19
 
 //Camera networks
 #define NETWORK_TETHER "Tether"
@@ -127,11 +128,12 @@
 		list("Tether - Misc","Tether - Ships","Tether - Underdark"), //Stock Tether lateload maps
 		list("Alien Ship - Z1 Ship"),
 		list("Desert Planet - Z1 Beach","Desert Planet - Z2 Cave"),
-		list("Remmi Aerostat - Z1 Aerostat","Remmi Aerostat - Z2 Surface")
+		list("Remmi Aerostat - Z1 Aerostat","Remmi Aerostat - Z2 Surface"),
 	)
 
 	ai_shell_restricted = TRUE
 	ai_shell_allowed_levels = list(
+		Z_LEVEL_SURFACE_UNDER,
 		Z_LEVEL_SURFACE_LOW,
 		Z_LEVEL_SURFACE_MID,
 		Z_LEVEL_SURFACE_HIGH,
@@ -149,6 +151,7 @@
 
 	lateload_single_pick = null //Nothing right now.
 
+
 /datum/map/tether/perform_map_generation()
 
 	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_SURFACE_MINE, world.maxx, world.maxy) // Create the mining Z-level.
@@ -161,6 +164,7 @@
 
 /datum/planet/virgo3b
 	expected_z_levels = list(
+		Z_LEVEL_SURFACE_UNDER,
 		Z_LEVEL_SURFACE_LOW,
 		Z_LEVEL_SURFACE_MID,
 		Z_LEVEL_SURFACE_HIGH,
@@ -175,7 +179,7 @@
 		return map_levels
 	else if (srcz == Z_LEVEL_SHIPS || srcz == Z_LEVEL_MISC)
 		return list() //no longer return signals in key transit levels, this means some runtimes from CWCs but
-	else if (srcz >= Z_LEVEL_SURFACE_LOW && srcz <= Z_LEVEL_SPACE_HIGH)
+	else if (srcz >= Z_LEVEL_SURFACE_UNDER && srcz <= Z_LEVEL_SPACE_HIGH)
 		return list(
 			Z_LEVEL_SURFACE_LOW,
 			Z_LEVEL_SURFACE_MID,
@@ -198,6 +202,13 @@
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_XENOARCH_EXEMPT
 	holomap_legend_x = 220
 	holomap_legend_y = 160
+
+/datum/map_z_level/tether/station/surface_under
+	z = Z_LEVEL_SURFACE_UNDER
+	name = "Under Maint"
+	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER||MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
+	base_turf = /turf/simulated/floor/plating
+
 
 /datum/map_z_level/tether/station/surface_low
 	z = Z_LEVEL_SURFACE_LOW

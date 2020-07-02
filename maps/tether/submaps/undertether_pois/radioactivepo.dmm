@@ -1,0 +1,409 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/wall/solidrock,
+/area/space)
+"b" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/simulated/floor/plating,
+/area/space)
+"c" = (
+/obj/random/trash,
+/turf/simulated/floor/plating,
+/area/space)
+"d" = (
+/obj/effect/floor_decal/rust,
+/obj/random/trash,
+/turf/simulated/floor/plating,
+/area/space)
+"e" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/space)
+"f" = (
+/turf/simulated/wall/r_lead,
+/area/space)
+"g" = (
+/obj/effect/spider/stickyweb,
+/obj/structure/table/rack/shelf,
+/turf/simulated/floor/plating,
+/area/space)
+"j" = (
+/turf/simulated/floor/plating,
+/area/space)
+"n" = (
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor/plating,
+/area/space)
+"p" = (
+/obj/effect/floor_decal/rust,
+/obj/item/poi/brokenoldreactor,
+/obj/effect/map_effect/radiation_emitter/strong,
+/obj/structure/cable,
+/obj/item/material/shard,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"q" = (
+/obj/structure/mob_spawner/mouse_nest,
+/turf/simulated/floor/plating,
+/area/space)
+"r" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/floor_decal/industrial/warning/dust,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"t" = (
+/obj/structure/door_assembly/door_assembly_mhatch,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"u" = (
+/obj/item/poi/brokenoldreactor,
+/obj/effect/map_effect/radiation_emitter/strong,
+/obj/structure/cable,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"v" = (
+/obj/effect/floor_decal/industrial/warning/dust,
+/obj/effect/floor_decal/rust,
+/obj/item/material/shard,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"w" = (
+/obj/item/geiger,
+/obj/structure/table/rack,
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor/plating,
+/area/space)
+"z" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor/plating,
+/area/space)
+"A" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/table/rack,
+/obj/random/unidentified_medicine/fresh_medicine,
+/obj/random/unidentified_medicine/fresh_medicine,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"B" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 10
+	},
+/obj/effect/floor_decal/rust,
+/obj/item/material/shard,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"D" = (
+/obj/structure/sign/warning/radioactive,
+/turf/simulated/wall/r_lead,
+/area/space)
+"E" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/map_effect/interval/sound_emitter/geiger/ext,
+/obj/effect/floor_decal/industrial/warning/dust,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"F" = (
+/obj/effect/floor_decal/rust,
+/obj/item/clothing/mask/gas/sexyclown,
+/turf/simulated/floor/plating,
+/area/space)
+"H" = (
+/obj/structure/sign/warning/radioactive,
+/turf/simulated/wall,
+/area/space)
+"I" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/floor_decal/industrial/warning/dust,
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"J" = (
+/obj/structure/table/rack/shelf,
+/obj/random/tool,
+/obj/random/tool,
+/turf/simulated/floor/plating,
+/area/space)
+"M" = (
+/obj/structure/table/rack/shelf,
+/turf/simulated/floor/plating,
+/area/space)
+"O" = (
+/obj/structure/sign/warning/radioactive,
+/turf/simulated/wall/iron,
+/area/space)
+"P" = (
+/obj/effect/floor_decal/rust,
+/obj/item/poi/brokenoldreactor,
+/obj/effect/map_effect/radiation_emitter/strong,
+/obj/structure/window/basic{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"R" = (
+/obj/random/projectile/shotgun,
+/obj/effect/floor_decal/industrial/warning/dust,
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"S" = (
+/obj/effect/floor_decal/industrial/warning/dust,
+/obj/random/trash,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"T" = (
+/obj/effect/floor_decal/rust,
+/obj/item/material/shard,
+/obj/structure/barricade,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+"V" = (
+/obj/effect/spider/stickyweb,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/space)
+"W" = (
+/turf/simulated/wall/iron,
+/area/space)
+"Y" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/table/rack,
+/obj/item/clothing/under/hazard,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"Z" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 6
+	},
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/space)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+W
+n
+W
+W
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+a
+F
+e
+W
+W
+n
+n
+n
+d
+a
+a
+a
+"}
+(3,1,1) = {"
+a
+n
+n
+W
+W
+W
+W
+O
+W
+e
+e
+W
+a
+"}
+(4,1,1) = {"
+a
+W
+W
+W
+W
+f
+f
+f
+W
+W
+j
+c
+a
+"}
+(5,1,1) = {"
+V
+V
+w
+W
+A
+f
+E
+f
+f
+W
+j
+q
+a
+"}
+(6,1,1) = {"
+n
+e
+H
+W
+B
+z
+I
+P
+f
+W
+d
+W
+W
+"}
+(7,1,1) = {"
+j
+c
+t
+T
+S
+z
+R
+p
+f
+O
+e
+e
+d
+"}
+(8,1,1) = {"
+e
+j
+O
+W
+Z
+b
+v
+u
+f
+W
+W
+n
+W
+"}
+(9,1,1) = {"
+d
+e
+n
+W
+Y
+f
+r
+f
+f
+W
+n
+n
+W
+"}
+(10,1,1) = {"
+W
+e
+q
+W
+W
+f
+f
+f
+W
+W
+e
+a
+a
+"}
+(11,1,1) = {"
+W
+e
+c
+e
+d
+n
+D
+a
+a
+d
+e
+a
+a
+"}
+(12,1,1) = {"
+W
+g
+J
+M
+W
+n
+n
+n
+j
+e
+a
+a
+a
+"}
+(13,1,1) = {"
+W
+W
+W
+W
+W
+W
+n
+W
+W
+W
+a
+a
+a
+"}

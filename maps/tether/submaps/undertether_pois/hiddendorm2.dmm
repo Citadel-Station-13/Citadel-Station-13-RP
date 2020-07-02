@@ -1,0 +1,557 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/wall/iron,
+/area/maintenance{
+	name = "HD1"
+	})
+"b" = (
+/obj/machinery/door/airlock/maintenance/int{
+	icon_state = "door_locked";
+	id_tag = HD1;
+	locked = 1
+	},
+/turf/simulated/floor,
+/area/maintenance{
+	name = "HD1"
+	})
+"c" = (
+/obj/item/trash/candy,
+/turf/simulated/floor,
+/area/maintenance{
+	name = "HD1"
+	})
+"d" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor,
+/area/maintenance{
+	name = "HD1"
+	})
+"e" = (
+/obj/item/trash/liquidfood,
+/turf/simulated/floor,
+/area/maintenance{
+	name = "HD1"
+	})
+"f" = (
+/obj/structure/bed/chair/sofa/right{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/maintenance{
+	name = "HD1"
+	})
+"h" = (
+/obj/structure/closet/secure_closet/freezer/fridge,
+/obj/item/reagent_containers/food/snacks/liquidfood,
+/obj/item/reagent_containers/food/snacks/liquidfood,
+/obj/item/reagent_containers/food/snacks/liquidfood,
+/obj/item/reagent_containers/food/snacks/liquidprotein,
+/obj/item/reagent_containers/food/snacks/liquidprotein,
+/obj/item/reagent_containers/food/snacks/liquidprotein,
+/obj/item/reagent_containers/food/snacks/liquidvitamin,
+/obj/item/reagent_containers/food/snacks/liquidvitamin,
+/obj/item/reagent_containers/food/snacks/liquidvitamin,
+/turf/simulated/floor,
+/area/maintenance{
+	name = "HD1"
+	})
+"j" = (
+/obj/item/trash/brownies,
+/turf/simulated/floor,
+/area/maintenance{
+	name = "HD1"
+	})
+"k" = (
+/obj/machinery/shower{
+	dir = 1
+	},
+/obj/structure/curtain/open/shower,
+/turf/simulated/floor/tiled/old_tile/beige,
+/area/maintenance{
+	name = "HD1"
+	})
+"l" = (
+/obj/structure/simple_door/wood,
+/turf/simulated/floor/tiled/old_tile/beige,
+/area/maintenance{
+	name = "HD1"
+	})
+"m" = (
+/obj/machinery/space_heater,
+/turf/simulated/floor,
+/area/maintenance{
+	name = "HD1"
+	})
+"n" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor,
+/area/maintenance{
+	name = "HD1"
+	})
+"o" = (
+/obj/machinery/button/remote/airlock{
+	id = HD1
+	},
+/turf/simulated/wall/iron,
+/area/maintenance{
+	name = "HD1"
+	})
+"p" = (
+/obj/structure/toilet{
+	pixel_y = 10
+	},
+/obj/structure/loot_pile/surface/medicine_cabinet/fresh{
+	pixel_y = 30
+	},
+/turf/simulated/floor/tiled/old_tile/beige,
+/area/maintenance{
+	name = "HD1"
+	})
+"q" = (
+/obj/structure/closet/cabinet,
+/obj/item/clothing/under/utility/grey,
+/obj/item/clothing/under/utility/grey,
+/obj/item/clothing/under/utility/grey,
+/obj/item/clothing/shoes/black,
+/obj/item/clothing/shoes/black,
+/obj/item/clothing/shoes/black,
+/turf/simulated/floor/wood,
+/area/maintenance{
+	name = "HD1"
+	})
+"r" = (
+/obj/structure/closet,
+/turf/simulated/floor,
+/area/maintenance{
+	name = "HD1"
+	})
+"s" = (
+/obj/item/trash/liquidvitamin,
+/turf/simulated/floor,
+/area/maintenance{
+	name = "HD1"
+	})
+"t" = (
+/obj/structure/bed/chair/sofa/left{
+	dir = 1
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor,
+/area/maintenance{
+	name = "HD1"
+	})
+"u" = (
+/obj/structure/sink{
+	pixel_y = 30
+	},
+/turf/simulated/floor/tiled/old_tile/beige,
+/area/maintenance{
+	name = "HD1"
+	})
+"w" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor,
+/area/maintenance{
+	name = "HD1"
+	})
+"y" = (
+/obj/structure/table/woodentable,
+/obj/item/reagent_containers/food/drinks/bottle/vodka{
+	pixel_y = 9
+	},
+/obj/item/reagent_containers/food/drinks/bottle/vodka{
+	pixel_x = -5;
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/food/drinks/bottle/vodka{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/turf/simulated/floor/wood,
+/area/maintenance{
+	name = "HD1"
+	})
+"z" = (
+/obj/structure/loot_pile/maint/trash,
+/turf/simulated/floor,
+/area/maintenance{
+	name = "HD1"
+	})
+"A" = (
+/obj/structure/bed,
+/obj/effect/floor_decal/rust,
+/mob/living/simple_mob/humanoid/russian,
+/turf/simulated/floor,
+/area/maintenance{
+	name = "HD1"
+	})
+"B" = (
+/obj/machinery/light/small,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor,
+/area/maintenance{
+	name = "HD1"
+	})
+"C" = (
+/turf/simulated/wall/iron{
+	can_open = 1
+	},
+/area/maintenance{
+	name = "HD1"
+	})
+"D" = (
+/obj/structure/reagent_dispensers/water_cooler/full,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor,
+/area/maintenance{
+	name = "HD1"
+	})
+"E" = (
+/obj/structure/table/woodentable,
+/obj/item/gun/projectile/pirate{
+	caliber = "9mm";
+	pixel_y = 8;
+	projectile_type = /obj/item/projectile/bullet/pistol
+	},
+/obj/item/ammo_casing/a9mm{
+	pixel_y = 4
+	},
+/obj/item/ammo_casing/a9mm{
+	pixel_x = 6
+	},
+/obj/item/ammo_casing/a9mm{
+	pixel_x = -2;
+	pixel_y = -4
+	},
+/obj/item/ammo_casing/a9mm{
+	pixel_x = -2
+	},
+/obj/item/material/butterfly/switchblade,
+/turf/simulated/floor/wood,
+/area/maintenance{
+	name = "HD1"
+	})
+"F" = (
+/turf/simulated/floor/wood,
+/area/maintenance{
+	name = "HD1"
+	})
+"H" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor,
+/area/maintenance{
+	name = "HD1"
+	})
+"I" = (
+/obj/structure/simple_door/wood,
+/turf/simulated/floor,
+/area/maintenance{
+	name = "HD1"
+	})
+"J" = (
+/turf/simulated/floor,
+/area/maintenance{
+	name = "HD1"
+	})
+"K" = (
+/obj/machinery/light/small,
+/turf/simulated/floor/wood,
+/area/maintenance{
+	name = "HD1"
+	})
+"L" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor,
+/area/maintenance{
+	name = "HD1"
+	})
+"M" = (
+/obj/machinery/button/remote/airlock{
+	dir = 1;
+	id = HD1;
+	pixel_y = 5
+	},
+/turf/simulated/wall/iron,
+/area/maintenance{
+	name = "HD1"
+	})
+"O" = (
+/obj/machinery/light/small,
+/turf/simulated/floor/tiled/old_tile/beige,
+/area/maintenance{
+	name = "HD1"
+	})
+"P" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/maintenance{
+	name = "HD1"
+	})
+"Q" = (
+/obj/structure/closet/crate/trashcart,
+/obj/item/cell/apc{
+	charge = 5000
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor,
+/area/maintenance{
+	name = "HD1"
+	})
+"R" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/maintenance{
+	name = "HD1"
+	})
+"S" = (
+/obj/structure/table/woodentable,
+/obj/machinery/microwave{
+	pixel_y = 6
+	},
+/turf/simulated/floor/wood,
+/area/maintenance{
+	name = "HD1"
+	})
+"U" = (
+/obj/machinery/door/airlock/maintenance/common,
+/turf/space,
+/area/maintenance{
+	name = "HD1"
+	})
+"V" = (
+/obj/item/tool/crowbar/red,
+/turf/simulated/floor,
+/area/maintenance{
+	name = "HD1"
+	})
+"W" = (
+/obj/machinery/power/apc/alarms_hidden{
+	cell_type = null;
+	locked = 0;
+	name = "Abandoned APC";
+	pixel_y = 30
+	},
+/turf/simulated/floor,
+/area/maintenance{
+	name = "HD1"
+	})
+"X" = (
+/obj/machinery/light/small,
+/turf/simulated/floor,
+/area/maintenance{
+	name = "HD1"
+	})
+"Y" = (
+/obj/structure/table/rack,
+/obj/item/storage/toolbox/mechanical,
+/turf/simulated/floor,
+/area/maintenance{
+	name = "HD1"
+	})
+
+(1,1,1) = {"
+J
+J
+J
+w
+J
+J
+w
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+J
+V
+J
+n
+w
+w
+J
+a
+E
+F
+a
+k
+a
+"}
+(3,1,1) = {"
+J
+J
+a
+a
+U
+a
+a
+a
+R
+F
+l
+O
+a
+"}
+(4,1,1) = {"
+w
+w
+a
+z
+J
+e
+Y
+a
+q
+K
+a
+u
+a
+"}
+(5,1,1) = {"
+w
+w
+a
+c
+w
+J
+r
+a
+A
+F
+a
+p
+a
+"}
+(6,1,1) = {"
+J
+J
+a
+W
+X
+a
+a
+a
+a
+I
+a
+a
+a
+"}
+(7,1,1) = {"
+J
+J
+a
+w
+w
+C
+b
+F
+F
+w
+a
+w
+w
+"}
+(8,1,1) = {"
+w
+B
+a
+Q
+s
+a
+o
+y
+F
+t
+a
+J
+w
+"}
+(9,1,1) = {"
+J
+J
+U
+J
+w
+C
+a
+S
+F
+f
+a
+H
+J
+"}
+(10,1,1) = {"
+J
+J
+a
+m
+z
+C
+M
+h
+P
+D
+a
+w
+J
+"}
+(11,1,1) = {"
+J
+J
+a
+a
+a
+a
+a
+a
+a
+a
+a
+J
+J
+"}
+(12,1,1) = {"
+J
+J
+w
+J
+w
+j
+L
+J
+w
+J
+J
+d
+J
+"}
+(13,1,1) = {"
+J
+w
+J
+J
+J
+w
+w
+J
+w
+J
+J
+J
+w
+"}

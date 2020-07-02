@@ -1,0 +1,401 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/wall/solidrock,
+/area/space)
+"b" = (
+/obj/random/trash,
+/turf/simulated/mineral/floor/cave,
+/area/space)
+"c" = (
+/obj/item/flame/candle/everburn,
+/turf/simulated/floor/cult,
+/area/space)
+"d" = (
+/obj/structure/bed,
+/obj/effect/spider/stickyweb,
+/turf/simulated/mineral/floor/cave,
+/area/space)
+"e" = (
+/obj/structure/table/woodentable,
+/obj/random/unidentified_medicine/drug_den,
+/turf/simulated/mineral/floor/cave,
+/area/space)
+"f" = (
+/obj/item/material/twohanded/spear,
+/turf/simulated/mineral/floor/cave,
+/area/space)
+"g" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/item/clothing/mask/smokable/cigarette/joint,
+/turf/simulated/mineral/floor/cave,
+/area/space)
+"h" = (
+/obj/effect/decal/cleanable/blood/gibs,
+/obj/effect/spider/stickyweb/dark,
+/turf/simulated/floor/cult,
+/area/space)
+"j" = (
+/obj/structure/bed,
+/obj/item/bedsheet/ian,
+/turf/simulated/mineral/floor/cave,
+/area/space)
+"k" = (
+/obj/random/trash,
+/obj/effect/spider/stickyweb/dark,
+/turf/simulated/mineral/floor/cave,
+/area/space)
+"l" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor,
+/area/space)
+"n" = (
+/obj/item/material/twohanded/spear,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor,
+/area/space)
+"o" = (
+/turf/simulated/mineral/floor/cave,
+/area/space)
+"p" = (
+/obj/item/clothing/suit/imperium_monk,
+/obj/effect/decal/remains/human,
+/turf/simulated/floor,
+/area/space)
+"q" = (
+/obj/random/trash,
+/obj/effect/spider/stickyweb,
+/turf/simulated/mineral/floor/cave,
+/area/space)
+"r" = (
+/obj/structure/table/bench/wooden,
+/turf/simulated/mineral/floor/cave,
+/area/space)
+"s" = (
+/obj/structure/bonfire,
+/turf/simulated/mineral/floor/cave,
+/area/space)
+"t" = (
+/obj/random/junk,
+/turf/simulated/mineral/floor/cave,
+/area/space)
+"w" = (
+/obj/structure/table/bench/wooden,
+/obj/effect/spider/stickyweb,
+/turf/simulated/mineral/floor/cave,
+/area/space)
+"x" = (
+/obj/structure/table/woodentable,
+/obj/item/storage/fancy/cigarettes/jerichos,
+/turf/simulated/mineral/floor/cave,
+/area/space)
+"y" = (
+/obj/machinery/vending/cigarette,
+/turf/simulated/mineral/floor/cave,
+/area/space)
+"z" = (
+/obj/effect/decal/remains/human,
+/obj/item/clothing/suit/unathi/robe,
+/turf/simulated/floor/cult,
+/area/space)
+"B" = (
+/obj/effect/rune,
+/mob/living/simple_mob/animal/goat{
+	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive;
+	desc = "Not known for their pleasant disposition. This one's got suspiciously red eyes."
+	},
+/obj/effect/decal/cleanable/blood/gibs,
+/turf/simulated/floor/cult,
+/area/space)
+"C" = (
+/obj/structure/closet,
+/obj/item/clothing/suit/unathi/robe,
+/obj/item/clothing/suit/unathi/robe,
+/obj/item/clothing/suit/unathi/robe,
+/turf/simulated/mineral/floor/cave,
+/area/space)
+"E" = (
+/obj/structure/barricade,
+/turf/simulated/floor,
+/area/space)
+"F" = (
+/turf/simulated/floor,
+/area/space)
+"H" = (
+/obj/effect/spider/stickyweb/dark,
+/turf/simulated/floor,
+/area/space)
+"I" = (
+/obj/structure/table/woodentable,
+/obj/item/storage/fancy/cigarettes/menthols,
+/turf/simulated/mineral/floor/cave,
+/area/space)
+"J" = (
+/turf/simulated/wall/iron,
+/area/space)
+"K" = (
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor,
+/area/space)
+"L" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/remains/human,
+/obj/item/clothing/suit/unathi/robe,
+/turf/simulated/floor/cult,
+/area/space)
+"N" = (
+/obj/structure/table/woodentable,
+/obj/random/meat,
+/obj/random/meat,
+/obj/random/meat,
+/obj/item/material/knife/butch,
+/turf/simulated/mineral/floor/cave,
+/area/space)
+"O" = (
+/obj/effect/spider/stickyweb,
+/turf/simulated/mineral/floor/cave,
+/area/space)
+"P" = (
+/obj/random/trash,
+/obj/effect/spider/stickyweb/dark,
+/turf/simulated/floor,
+/area/space)
+"Q" = (
+/obj/structure/table/woodentable,
+/obj/item/storage/fancy/cigar/havana,
+/turf/simulated/mineral/floor/cave,
+/area/space)
+"R" = (
+/obj/effect/decal/cleanable/blood/gibs,
+/turf/simulated/mineral/floor/cave,
+/area/space)
+"U" = (
+/obj/effect/spider/stickyweb,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor,
+/area/space)
+"V" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/item/cigbutt/cigarbutt,
+/turf/simulated/mineral/floor/cave,
+/area/space)
+"W" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/remains/human,
+/obj/item/clothing/suit/unathi/robe,
+/turf/simulated/floor,
+/area/space)
+"X" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/obj/item/clothing/mask/smokable/cigarette/joint,
+/turf/simulated/mineral/floor/cave,
+/area/space)
+"Y" = (
+/obj/structure/bed,
+/turf/simulated/mineral/floor/cave,
+/area/space)
+"Z" = (
+/obj/item/cigbutt/cigarbutt,
+/turf/simulated/mineral/floor/cave,
+/area/space)
+
+(1,1,1) = {"
+a
+a
+N
+a
+a
+J
+K
+a
+a
+d
+q
+a
+a
+"}
+(2,1,1) = {"
+a
+o
+r
+f
+a
+a
+K
+J
+a
+C
+t
+Y
+a
+"}
+(3,1,1) = {"
+a
+w
+s
+r
+a
+K
+o
+a
+a
+o
+b
+o
+Y
+"}
+(4,1,1) = {"
+O
+q
+r
+o
+o
+t
+l
+J
+q
+O
+a
+j
+a
+"}
+(5,1,1) = {"
+a
+a
+o
+o
+b
+o
+o
+o
+q
+a
+a
+a
+a
+"}
+(6,1,1) = {"
+J
+a
+K
+a
+a
+J
+t
+l
+o
+J
+F
+J
+a
+"}
+(7,1,1) = {"
+l
+K
+O
+a
+a
+H
+k
+a
+o
+l
+b
+K
+K
+"}
+(8,1,1) = {"
+a
+a
+a
+a
+J
+E
+J
+a
+l
+o
+t
+K
+J
+"}
+(9,1,1) = {"
+a
+a
+R
+n
+P
+h
+a
+a
+J
+o
+a
+a
+a
+"}
+(10,1,1) = {"
+a
+c
+L
+c
+l
+H
+a
+O
+O
+b
+a
+a
+Q
+"}
+(11,1,1) = {"
+a
+p
+B
+z
+a
+a
+a
+l
+t
+Z
+e
+g
+V
+"}
+(12,1,1) = {"
+a
+c
+W
+c
+a
+J
+U
+b
+a
+o
+o
+Z
+X
+"}
+(13,1,1) = {"
+a
+a
+a
+a
+a
+a
+K
+J
+a
+e
+x
+y
+I
+"}
