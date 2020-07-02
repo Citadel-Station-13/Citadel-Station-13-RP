@@ -3268,7 +3268,7 @@
 	dir = 8;
 	icon_state = "bulb1"
 	},
-/turf/space,
+/turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "wE" = (
 /obj/structure/catwalk,
@@ -3948,9 +3948,9 @@
 /area/tether/under/static_area)
 "AY" = (
 /obj/structure/closet/crate,
-/obj/random/handgun,
 /obj/random/medical/pillbottle,
 /obj/random/crusader_cloak,
+/obj/item/spacecash/c1000,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "Ba" = (
@@ -5581,7 +5581,7 @@
 /obj/structure/closet/crate,
 /obj/random/cash,
 /obj/random/curseditem,
-/obj/item/storage/firstaid/clotting,
+/obj/item/spacecash/c1000,
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tether/under/static_area)
 "LO" = (
@@ -6735,7 +6735,7 @@
 /obj/structure/closet/crate,
 /obj/item/storage/box/wormcan/deluxe,
 /obj/item/soap/deluxe,
-/obj/item/spacecash/c1000,
+/obj/item/gun/projectile/pistol,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "Td" = (
@@ -7335,6 +7335,11 @@
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
+"Xd" = (
+/obj/structure/table/rack,
+/obj/item/spacecash/c1000,
+/turf/simulated/floor/plating,
+/area/tether/under/static_area)
 "Xf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -7650,9 +7655,9 @@
 /area/tether/under/static_area)
 "Zn" = (
 /obj/structure/closet/crate/medical,
-/obj/item/storage/secure/briefcase/ml3m_pack_med,
 /obj/random/medical/pillbottle,
 /obj/random/drinkbottle,
+/obj/item/storage/firstaid/regular,
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tether/under/static_area)
 "Zp" = (
@@ -21165,7 +21170,7 @@ ev
 oY
 oY
 QN
-RQ
+Xd
 oS
 aG
 eW
