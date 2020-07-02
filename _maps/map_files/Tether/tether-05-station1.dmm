@@ -1684,9 +1684,6 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 9
 	},
-/obj/machinery/iv_drip,
-/obj/item/reagent_containers/blood/OMinus,
-/obj/item/reagent_containers/blood/OMinus,
 /obj/structure/table/standard,
 /turf/simulated/floor/tiled/white,
 /area/tether/station/explorer_medical)
@@ -1743,6 +1740,10 @@
 	name = "O- Blood Locker";
 	pixel_y = -32
 	},
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
+/obj/machinery/iv_drip,
 /turf/simulated/floor/tiled/white,
 /area/tether/station/explorer_medical)
 "adF" = (
@@ -23367,9 +23368,12 @@
 	dir = 1
 	},
 /obj/structure/closet/secure_closet/sar{
-	req_access = list(5,66);
+	req_access = list(5);
 	req_one_access = list(5)
 	},
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/autoinjectors,
+/obj/item/storage/bag/chemistry,
 /turf/simulated/floor/tiled/monotile,
 /area/tether/station/explorer_prep)
 "oJC" = (
@@ -24582,7 +24586,7 @@
 /area/tether/station/excursion_dock)
 "wbE" = (
 /obj/structure/closet/secure_closet/sar{
-	req_access = list(5,66);
+	req_access = list(5);
 	req_one_access = list(5)
 	},
 /obj/effect/floor_decal/industrial/outline/blue,
@@ -24602,6 +24606,9 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/autoinjectors,
+/obj/item/storage/bag/chemistry,
 /turf/simulated/floor/tiled/monotile,
 /area/tether/station/explorer_prep)
 "wcD" = (
