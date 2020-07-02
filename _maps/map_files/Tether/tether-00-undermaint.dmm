@@ -3268,7 +3268,7 @@
 	dir = 8;
 	icon_state = "bulb1"
 	},
-/turf/simulated/floor/plating,
+/turf/space,
 /area/tether/under/static_area)
 "wE" = (
 /obj/structure/catwalk,
@@ -4738,8 +4738,8 @@
 /area/tether/under/static_area)
 "FT" = (
 /mob/living/simple_mob/animal/giant_spider/nurse/queen{
-	armor = list("melee" = .3, "bullet" = .1, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 100, "rad" = 100);
-	armor_soak = list("melee" = .2, "bullet" = .1, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0);
+	armor = list("melee" = 30, "bullet" = 10, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 100, "rad" = 100);
+	armor_soak = list("melee" = 20, "bullet" = 10, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0);
 	base_attack_cooldown = 9;
 	health = 650;
 	maxHealth = 650;
