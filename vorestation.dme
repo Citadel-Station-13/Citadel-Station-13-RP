@@ -171,6 +171,7 @@
 #include "code\_globalvars\lists\keybindings.dm"
 #include "code\_globalvars\lists\mapping.dm"
 #include "code\_globalvars\lists\medical.dm"
+#include "code\_globalvars\lists\species.dm"
 #include "code\_onclick\_defines.dm"
 #include "code\_onclick\adjacent.dm"
 #include "code\_onclick\ai.dm"
