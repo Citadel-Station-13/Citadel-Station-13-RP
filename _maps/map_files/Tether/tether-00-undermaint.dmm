@@ -640,7 +640,6 @@
 /obj/machinery/power/terminal{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/greenglow,
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/under/static_area)
 "em" = (
@@ -1067,9 +1066,8 @@
 /turf/simulated/floor/wood/sif,
 /area/tether/under/static_area)
 "hy" = (
-/obj/machinery/power/port_gen/pacman,
 /obj/structure/cable,
-/obj/effect/decal/cleanable/greenglow,
+/obj/machinery/power/port_gen/pacman,
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/under/static_area)
 "hz" = (
@@ -2574,7 +2572,6 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/obj/effect/decal/cleanable/greenglow,
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/under/static_area)
 "rt" = (
@@ -3405,7 +3402,6 @@
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "xo" = (
-/obj/effect/decal/cleanable/greenglow,
 /obj/structure/cable,
 /obj/structure/frame{
 	anchored = 1
@@ -3678,6 +3674,7 @@
 "ze" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/random/underdark,
+/obj/structure/closet/crate,
 /turf/simulated/floor/wood/sif,
 /area/tether/under/static_area)
 "zf" = (
@@ -4436,10 +4433,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
-"DZ" = (
-/obj/random/mob/spider,
-/turf/simulated/floor/tiled/techfloor,
-/area/tether/under/static_area)
 "Ec" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/reagent_dispensers/watertank/high,
@@ -5127,7 +5120,6 @@
 /obj/machinery/power/terminal{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/greenglow,
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/under/static_area)
 "Iv" = (
@@ -5422,7 +5414,6 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/obj/effect/decal/cleanable/greenglow,
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/under/static_area)
 "KP" = (
@@ -5669,11 +5660,6 @@
 "Mh" = (
 /obj/structure/catwalk,
 /obj/effect/gibspawner/generic,
-/turf/simulated/floor/plating,
-/area/tether/under/static_area)
-"Ml" = (
-/obj/random/mob/spider,
-/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "Mn" = (
@@ -6746,8 +6732,10 @@
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "Tb" = (
-/obj/random/projectile/random,
 /obj/structure/closet/crate,
+/obj/item/storage/box/wormcan/deluxe,
+/obj/item/soap/deluxe,
+/obj/item/spacecash/c1000,
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "Td" = (
@@ -6829,7 +6817,6 @@
 	dir = 1;
 	icon_state = "bulb1"
 	},
-/obj/effect/decal/cleanable/greenglow,
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
@@ -7182,7 +7169,7 @@
 /turf/simulated/floor/plating,
 /area/tether/under/static_area)
 "VO" = (
-/obj/effect/decal/cleanable/greenglow,
+/obj/structure/cable,
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/under/static_area)
 "VP" = (
@@ -15941,7 +15928,7 @@ SZ
 Va
 DF
 DF
-VO
+Hq
 xo
 ek
 hy
@@ -16084,9 +16071,9 @@ kc
 DF
 DF
 Hq
-VO
 Hq
-hy
+Hq
+VO
 Hq
 Di
 Hq
@@ -16793,10 +16780,10 @@ KC
 jD
 DF
 DF
-VO
+Hq
 eP
 Iu
-hy
+VO
 Hq
 Di
 Hq
@@ -16936,10 +16923,10 @@ Qf
 DF
 DF
 tQ
-VO
+Hq
 rk
-hy
-IS
+VO
+Hq
 Di
 Hq
 Hq
@@ -19179,7 +19166,7 @@ DF
 Jl
 Jl
 Jl
-Jl
+DF
 DF
 DF
 DF
@@ -21616,7 +21603,7 @@ xC
 Di
 Qb
 Hq
-DZ
+Hq
 Qb
 ov
 DF
@@ -21881,7 +21868,7 @@ Jl
 DF
 Cj
 zF
-Ml
+oY
 oY
 wP
 Fj
@@ -22523,7 +22510,7 @@ Jl
 xj
 xj
 uF
-uF
+sS
 uF
 xj
 xj
@@ -22795,7 +22782,7 @@ xj
 xj
 xj
 xj
-xj
+uF
 uF
 sS
 xj
@@ -22806,7 +22793,7 @@ xj
 xj
 xj
 xj
-uF
+sS
 uF
 uF
 xj
@@ -22933,11 +22920,11 @@ xj
 xj
 xj
 xj
-xj
-xj
-xj
-xj
-xj
+sS
+uF
+uF
+uF
+cm
 xj
 xj
 xj
@@ -23075,10 +23062,10 @@ xj
 xj
 xj
 xj
-xj
-xj
-xj
-xj
+uF
+uF
+uF
+sS
 xj
 xj
 xj
@@ -23215,9 +23202,9 @@ xj
 xj
 xj
 xj
-xj
-xj
-xj
+uF
+uF
+uF
 xj
 Jl
 xj
@@ -23356,8 +23343,8 @@ Jl
 xj
 xj
 xj
-xj
-xj
+uF
+uF
 xj
 xj
 xj
@@ -23497,8 +23484,8 @@ Jl
 Jl
 xj
 xj
-xj
-xj
+uF
+uF
 xj
 xj
 xj
@@ -23639,7 +23626,7 @@ Jl
 Jl
 xj
 xj
-xj
+uF
 xj
 xj
 xj
@@ -23780,8 +23767,8 @@ DF
 Jl
 Jl
 xj
-xj
-xj
+sS
+uF
 xj
 xj
 xj
@@ -23922,10 +23909,10 @@ DF
 Jl
 Jl
 xj
+uF
+uF
 xj
-xj
-xj
-xj
+sS
 xj
 Jl
 Jl
@@ -24064,10 +24051,10 @@ DF
 Jl
 Jl
 xj
+sS
+uF
 xj
-xj
-xj
-xj
+uF
 xj
 Jl
 Jl
@@ -24207,9 +24194,9 @@ Jl
 Jl
 xj
 xj
-xj
-xj
-xj
+uF
+uF
+uF
 xj
 Jl
 Jl
@@ -24349,8 +24336,8 @@ Jl
 Jl
 xj
 xj
-xj
-xj
+cm
+uF
 xj
 xj
 Jl
@@ -24491,17 +24478,17 @@ Jl
 Jl
 xj
 xj
+uF
+uF
+uF
+uF
+uF
+uF
 xj
 xj
 xj
-xj
-Jl
-Jl
-xj
-xj
-xj
-xj
-xj
+sS
+uF
 xj
 xj
 xj
@@ -24634,17 +24621,17 @@ Jl
 xj
 xj
 xj
+uF
 xj
 xj
+sS
+uF
+uF
+uF
+uF
 xj
-xj
-xj
-xj
-xj
-xj
-xj
-xj
-xj
+uF
+uF
 xj
 xj
 xj
@@ -24776,21 +24763,21 @@ Jl
 xj
 xj
 xj
+sS
 xj
 xj
 xj
 xj
 xj
-xj
-xj
-xj
-xj
-xj
-xj
-xj
-xj
-xj
-xj
+uF
+uF
+uF
+uF
+uF
+uF
+uF
+uF
+uF
 xj
 uF
 Zh
@@ -24925,14 +24912,14 @@ xj
 xj
 xj
 xj
+uF
+uF
 xj
 xj
 xj
-xj
-xj
-xj
-xj
-xj
+uF
+uF
+uF
 xj
 zF
 Zh
@@ -25074,7 +25061,7 @@ xj
 xj
 xj
 xj
-wI
+uF
 uF
 uF
 Zh
@@ -25216,7 +25203,7 @@ Jl
 Jl
 xj
 xj
-uF
+sD
 zF
 xj
 Zh
@@ -25920,7 +25907,7 @@ xj
 Jl
 Jl
 xj
-xj
+sS
 xj
 Jl
 Jl
@@ -26346,10 +26333,10 @@ xj
 xj
 Jl
 xj
+sS
+uF
 xj
-xj
-xj
-xj
+uF
 Jl
 Jl
 zF
@@ -26488,8 +26475,8 @@ xj
 xj
 Jl
 xj
-xj
-xj
+uF
+sS
 xj
 DF
 Jl
@@ -26921,7 +26908,7 @@ uF
 uF
 uF
 xj
-zF
+sS
 xj
 Zh
 Zh
