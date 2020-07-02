@@ -56,13 +56,13 @@
 #include "undertether_pois/_templates.dm"
 /datum/map_template/tether_lateload/tether_undertether
 	name = "Tether - UnderTether"
-	desc = "Tethers' underground maintenance"
+	desc = "Tether underground maintenance"
 	mappath = "tether-00-undermaint.dmm"
 	associated_map_datum = /datum/map_z_level/tether_lateload/undertether
 
 /datum/map_z_level/tether_lateload/undertether
 	name = "UnderTether"
-//	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_XENOARCH_EXEMPT
+	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_XENOARCH_EXEMPT
 	base_turf = /turf/simulated/mineral
 	z = Z_LEVEL_SURFACE_UNDER
 

@@ -12,7 +12,7 @@
 /datum/map_template/undertether/hallway
 	name = "UnderTether Hallway"
 	mappath = 'poihallway.dmm'
-	cost = 5
+	cost = 10
 
 /datum/map_template/undertether/mechfight
 	name = "UnderTether Mech Fight"
