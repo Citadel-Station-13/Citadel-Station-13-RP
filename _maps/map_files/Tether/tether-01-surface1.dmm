@@ -31978,7 +31978,8 @@
 "mgc" = (
 /obj/machinery/embedded_controller/radio/airlock/access_controller{
 	id_tag = "ut_airlock_aux";
-	pixel_y = 26
+	pixel_y = 26;
+	req_one_access = list(5,10,19,43,44,48,62,47)
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/surfacebase/public_garden)
@@ -32988,7 +32989,8 @@
 	},
 /obj/machinery/embedded_controller/radio/airlock/access_controller{
 	id_tag = "ut_airlock";
-	pixel_y = 26
+	pixel_y = 26;
+	req_one_access = list(5,10,19,43,44,48,62,47)
 	},
 /turf/simulated/floor/tiled,
 /area/maintenance/lower/research)
