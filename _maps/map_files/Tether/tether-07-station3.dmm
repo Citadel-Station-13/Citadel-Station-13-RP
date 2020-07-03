@@ -18807,6 +18807,12 @@
 	},
 /turf/simulated/floor/wood/sif,
 /area/medical/reception)
+"EK" = (
+/obj/effect/landmark/map_data/virgo3b{
+	height = 8
+	},
+/turf/space,
+/area/space)
 "EL" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/wood/sif,
@@ -26666,10 +26672,6 @@
 	base_turf = /turf/simulated/floor/airless;
 	dynamic_lighting = 0
 	})
-"QT" = (
-/obj/effect/landmark/map_data/virgo3b,
-/turf/space,
-/area/space)
 "QU" = (
 /obj/effect/floor_decal/borderfloorblack/full,
 /obj/effect/floor_decal/industrial/hatch/yellow,
@@ -29104,7 +29106,7 @@ aa
 aa
 aa
 aa
-QT
+EK
 "}
 (2,1,1) = {"
 aa

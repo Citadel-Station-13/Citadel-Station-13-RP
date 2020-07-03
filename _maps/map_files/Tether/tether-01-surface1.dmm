@@ -1019,6 +1019,13 @@
 	name = "mining weapon cabinet";
 	req_one_access = list(48)
 	},
+/obj/item/gun/energy/phasegun/pistol,
+/obj/item/gun/energy/phasegun/pistol,
+/obj/item/cell/device/weapon,
+/obj/item/cell/device/weapon,
+/obj/item/clothing/accessory/permit/gun/planetside,
+/obj/item/clothing/accessory/permit/gun/planetside,
+/obj/item/clothing/accessory/permit/gun/planetside,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/mining_main/storage)
 "aca" = (
