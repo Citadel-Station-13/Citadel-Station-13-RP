@@ -65,8 +65,8 @@
 
 /obj/structure/trash_pile/attack_generic(mob/user)
 	//Simple Animal
-	if(isanimal(user))
-		var/mob/living/L = user
+	if(istype(user, mob/living/simple_mob))
+		var/mob/living/simple_mob/L = user
 		//They're in it, and want to get out.
 		if(L.loc == src)
 			var/choice = alert("Do you want to exit \the [src]?","Un-Hide?","Exit","Stay")
