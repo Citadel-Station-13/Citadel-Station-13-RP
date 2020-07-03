@@ -65,7 +65,7 @@
 
 /obj/structure/trash_pile/attack_generic(mob/user)
 	//Simple Animal
-	if(istype(user, mob/living/simple_mob))
+	if(istype(user, /mob/living/simple_mob))
 		var/mob/living/simple_mob/L = user
 		//They're in it, and want to get out.
 		if(L.loc == src)
