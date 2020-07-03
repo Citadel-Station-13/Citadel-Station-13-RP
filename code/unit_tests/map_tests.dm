@@ -1,5 +1,5 @@
 /datum/unit_test/apc_area_test
-	name = "MAP: Area Test APC / Scrubbers / Vents Z level 1"
+	name = "MAP: Area Test APC / Scrubbers / Vents Z level 2"
 
 /datum/unit_test/apc_area_test/start_test()
 	var/list/bad_areas = list()
@@ -39,7 +39,7 @@
 	exempt_from_atmos += GLOB.using_map.unit_test_exempt_from_atmos.Copy()
 	exempt_from_apc += GLOB.using_map.unit_test_exempt_from_apc.Copy()
 
-	var/list/zs_to_test = GLOB.using_map.unit_test_z_levels || list(1) //Either you set it, or you just get z1
+	var/list/zs_to_test = GLOB.using_map.unit_test_z_levels || list(2) //Either you set it, or you just get z1
 
 	for(var/area/A in all_areas)
 		if((A.z in zs_to_test) && !(A.type in exempt_areas))
