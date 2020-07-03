@@ -13,7 +13,8 @@
 /obj/structure/window/reinforced/tinted,
 /obj/machinery/porta_turret/industrial{
 	desc = "This variant appears to be old and rusty - does it even work anymore?.";
-	installation = /obj/item/gun/energy/lasercannon
+	installation = /obj/item/gun/energy/lasercannon;
+	lethal = 1
 	},
 /turf/simulated/floor/tiled/old_cargo/white,
 /area/space)
@@ -96,6 +97,16 @@
 /obj/effect/floor_decal/rust,
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_y = 4
+	},
+/turf/simulated/floor/plating,
+/area/space)
+"t" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/turretid/stun{
+	check_access = 0;
+	lethal = 1;
+	name = "Turret Circuitry";
+	pixel_y = 34
 	},
 /turf/simulated/floor/plating,
 /area/space)
@@ -290,7 +301,7 @@ a
 a
 a
 a
-X
+t
 G
 a
 "}

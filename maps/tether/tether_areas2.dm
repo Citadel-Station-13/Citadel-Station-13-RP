@@ -110,7 +110,7 @@
 /area/tether/under/static_area
 	icon_state = "ut_s"
 	name = "\improper UT Static"
-	ambience = AMBIENCE_GHOSTLY
+	ambience = AMBIENCE_TENSION
 	base_turf = /turf/simulated/floor/plating
 
 /area/tether/under/poi
