@@ -1269,7 +1269,7 @@
 /datum/reagent/ateopine
 	name = "Ateopine"
 	id = "ateopine"
-	description = "Ateopine is a medicine used to treat bradycardia and asystole patients when injected into heart muscle, it is also used to treat nerve gas and insecticide poisoning. Commonly used by emergency teams to resuscitate patients."
+	description = "Ateopine is a medicine used to treat bradycardia and asystole patients when injected into heart muscle. Commonly used by emergency teams to resuscitate patients."
 	taste_description = "astringency"
 	reagent_state = LIQUID
 	color = "#DA00FF"
