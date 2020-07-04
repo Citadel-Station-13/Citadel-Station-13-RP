@@ -211,7 +211,7 @@
 		return TRUE
 
 	var/deadtime = world.time - H.timeofdeath
-	if (deadtime > 15 MINUTES)
+	if (deadtime > 5 MINUTES)
 		return TRUE
 
 	H.updatehealth()
