@@ -1282,6 +1282,7 @@
 	var/mob/living/carbon/human/H = M
 	if(alien != IS_DIONA)
 		M.add_chemical_effect(CE_STABLE, 5)
+		M.adjustBrainLoss(-5 * removed * chem_effective)
 	if(alien == IS_SLIME)
 		chem_effective = 0.25
 		if(M.brainloss >= 10)
@@ -1290,7 +1291,6 @@
 			M.AdjustParalysis(1)
 		if(prob(33))
 			H.Confuse(10)
-	M.adjustBrainLoss(-5 * removed * chem_effective)
 	if(ishuman(M))
 		for(var/obj/item/organ/I in H.internal_organs)
 			if(I.robotic >= ORGAN_ROBOT || !(I.organ_tag in list(O_LUNGS, O_HEART)))
