@@ -182,6 +182,83 @@
 	icon_state = "green"
 	filled_reagents = list("anti_toxin" = 5)
 
+/obj/item/reagent_containers/hypospray/autoinjector/ateopine
+	name = "autoinjector (ateopine)"
+	desc = "A sealed autoinjector system designed for resuscitation of patients whose hearts have stopped."
+	icon_state = "purple"
+	flags = null
+	filled_reagents = list("ateopine" = 5)
+
+/obj/item/reagent_containers/hypospray/autoinjector/ateopine/do_injection(mob/living/carbon/human/H, mob/living/user)
+	. = ..()
+	var/error = can_resus(H)
+	if(error)
+		return // One of the conditions returned true, nothing will happen.
+	if(!H.client && !H.teleop)
+		for(var/mob/observer/dead/ghost in player_list)
+			if(ghost.mind == H.mind)
+				ghost.notify_revive("Someone is trying to resuscitate you. Re-enter your body if you want to be revived!", 'sound/effects/genetics.ogg')
+				break
+	H.visible_message("<span class='warning'>\The [H]'s body convulses.</span>")
+	addtimer(CALLBACK(src, .proc/make_alive, H, user), 80)
+
+/obj/item/reagent_containers/hypospray/autoinjector/ateopine/proc/can_resus(mob/living/carbon/human/H) //This is checked on injection, if it fails we waste an autoinjector
+	if((H.species.flags & NO_SCAN))
+		return TRUE
+	else if(H.isSynthetic())
+		return TRUE
+	else if(H.stat != DEAD)
+		return TRUE
+
+	var/deadtime = world.time - H.timeofdeath
+	if (deadtime > 15 MINUTES)
+		return TRUE
+
+	H.updatehealth()
+	if(H.health + H.getOxyLoss() <= config_legacy.health_threshold_dead || (HUSK in H.mutations) || !H.can_defib)
+		return TRUE
+
+	for(var/organ_tag in H.species.has_organ)
+		var/obj/item/organ/O = H.species.has_organ[organ_tag]
+		var/vital = initial(O.vital) //check for vital organs
+		if(vital)
+			O = H.internal_organs_by_name[organ_tag]
+			if(!O)
+				return TRUE
+			if(O.damage > O.max_damage)
+				return TRUE
+
+	return null
+
+/obj/item/reagent_containers/hypospray/autoinjector/ateopine/proc/make_alive(mob/living/carbon/human/M, mob/living/user)
+//	var/deadtime = world.time - M.timeofdeath
+
+	dead_mob_list.Remove(M)
+	if((M in living_mob_list) || (M in dead_mob_list))
+		log_and_message_admins("Mob [M] was defibbed but already in the living or dead list still!")
+	living_mob_list += M
+
+	M.timeofdeath = 0
+	M.stat = UNCONSCIOUS //Life() can bring them back to consciousness if it needs to.
+	M.failed_last_breath = 0 //So mobs that died of oxyloss don't revive and have perpetual out of breath.
+	M.reload_fullscreen()
+
+	M.emote("gasp")
+	M.Weaken(rand(10,25))
+	M.updatehealth()
+//	apply_brain_damage(M, deadtime) // Ateopine heals brain damage anyway.
+
+	if (M.client && M.stat != DEAD)
+		log_and_message_admins("used \a [src] to revive [key_name(M)].")
+		to_chat(user, "<span class='warning'>Success, they're with us once more.</span>")
+	else if (!M.client && M.stat != DEAD)
+		log_and_message_admins("used \a [src] to revive [key_name(M)] BUT THEY ARE MISSING THEIR CLIENT.") // Hope not.
+		to_chat(user, "<span class='warning'>Success? They're alive but left with a vacant stare...</span>")
+	else if (!M.client && M.stat == DEAD)
+		log_and_message_admins("used \a [src] and FAILED to revive [key_name(M)].")
+		to_chat(user, "<span class='warning'>Failure, they're gone...</span>")
+
+
 // These have a 15u capacity, somewhat higher tech level, and generally more useful chems, but are otherwise the same as the regular autoinjectors.
 /obj/item/reagent_containers/hypospray/autoinjector/biginjector
 	name = "empty hypo"

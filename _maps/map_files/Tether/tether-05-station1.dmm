@@ -23374,6 +23374,8 @@
 /obj/item/storage/box/pillbottles,
 /obj/item/storage/box/autoinjectors,
 /obj/item/storage/bag/chemistry,
+/obj/item/reagent_containers/hypospray/autoinjector/ateopine,
+/obj/item/reagent_containers/hypospray/autoinjector/ateopine,
 /turf/simulated/floor/tiled/monotile,
 /area/tether/station/explorer_prep)
 "oJC" = (
@@ -24609,6 +24611,8 @@
 /obj/item/storage/box/pillbottles,
 /obj/item/storage/box/autoinjectors,
 /obj/item/storage/bag/chemistry,
+/obj/item/reagent_containers/hypospray/autoinjector/ateopine,
+/obj/item/reagent_containers/hypospray/autoinjector/ateopine,
 /turf/simulated/floor/tiled/monotile,
 /area/tether/station/explorer_prep)
 "wcD" = (

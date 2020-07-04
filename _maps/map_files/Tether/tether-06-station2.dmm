@@ -18685,6 +18685,14 @@
 /obj/item/radio{
 	pixel_x = -4
 	},
+/obj/item/reagent_containers/hypospray/autoinjector/ateopine{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/item/reagent_containers/hypospray/autoinjector/ateopine{
+	pixel_x = -2;
+	pixel_y = -2
+	},
 /turf/simulated/floor/tiled/dark,
 /area/medical/medbay_emt_bay)
 "Py" = (

@@ -1266,6 +1266,39 @@
 		M.make_dizzy(5)
 		M.make_jittery(5)
 
+/datum/reagent/ateopine
+	name = "Ateopine"
+	id = "ateopine"
+	description = "Ateopine is a medicine used to treat bradycardia and asystole patients when injected into heart muscle, it is also used to treat nerve gas and insecticide poisoning. Commonly used by emergency teams to resuscitate patients."
+	taste_description = "astringency"
+	reagent_state = LIQUID
+	color = "#DA00FF"
+	metabolism = REM * 1.5
+	overdose = 10
+	scannable = 1
+
+/datum/reagent/ateopine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	var/chem_effective = 1
+	var/mob/living/carbon/human/H = M
+	if(alien != IS_DIONA)
+		M.add_chemical_effect(CE_STABLE, 5)
+	if(alien == IS_SLIME)
+		chem_effective = 0.25
+		if(M.brainloss >= 10)
+			M.Weaken(5)
+		if(dose >= 5 && M.paralysis < 40)
+			M.AdjustParalysis(1)
+		if(prob(33))
+			H.Confuse(10)
+	M.adjustBrainLoss(-5 * removed * chem_effective)
+	if(ishuman(M))
+		for(var/obj/item/organ/I in H.internal_organs)
+			if(I.robotic >= ORGAN_ROBOT || !(I.organ_tag in list(O_LUNGS, O_HEART)))
+				continue
+			if(I.damage > 15) // Fixes their heart and lungs about 5 points or until it hits 15.
+				I.damage = max(I.damage - 1 * removed * chem_effective, 0)
+				H.Confuse(5)
+
 /* Antidepressants */
 
 #define ANTIDEPRESSANT_MESSAGE_DELAY 5*60*10
