@@ -395,3 +395,8 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 
 /// No hitsound define
 #define HITSOUND_UNSET "UNSET"
+
+//world/proc/shelleo
+#define SHELLEO_ERRORLEVEL 1
+#define SHELLEO_STDOUT 2
+#define SHELLEO_STDERR 3

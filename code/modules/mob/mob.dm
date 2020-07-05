@@ -265,11 +265,11 @@
 
 	if(isturf(A) && !(sight & SEE_TURFS) && !(A in view(client ? client.view : world.view, src)))
 		// shift-click catcher may issue examinate() calls for out-of-sight turfs
-		return
+		return FALSE
 
 	if(is_blind(src) && !isobserver(src)) //why are we making observers blind?
 		to_chat(src, "<span class='warning'>Something is there but you can't see it!</span>")
-		return
+		return FALSE
 
 	face_atom(A)
 	//var/flags = SEND_SIGNAL(src, COMSIG_MOB_EXAMINATE, A)
@@ -278,6 +278,8 @@
 	//		to_chat(src, "<span class='warning'>Something is there but you can't see it!</span>")
 	//	return
 	var/list/result = A.examine(src)
+	if(!result)
+		return FALSE
 	to_chat(src, result.Join("\n"))
 
 //same as above
@@ -621,9 +623,9 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 
 /mob/proc/see(message)
 	if(!is_active())
-		return 0
-	src << message
-	return 1
+		return FALSE
+	to_chat(src, message)
+	return TRUE
 
 /mob/proc/show_viewers(message)
 	for(var/mob/M in viewers())
@@ -698,6 +700,29 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 				// if(A.IsObscured())
 				// 	continue
 				statpanel(listed_turf.name, null, A)
+
+	if(client?.desc_holder && statpanel("Examine")) //order matters
+		var/list/desc_holder = client.desc_holder
+
+		stat(null, desc_holder["name"])
+		stat(null, desc_holder["desc"]) //the default examine text.
+
+		var/atom_info = desc_holder["atom_info"]
+		if(atom_info)
+			stat(null,"<span class='info'><b>[atom_info]</b></span>") //Blue, informative text.
+
+		var/atom_interaction = desc_holder["atom_interaction"]
+		if(atom_interaction)
+			for(var/line in atom_interaction)
+				stat(null, "<span class='info'><b>[line]</b></span>")
+
+		var/atom_fluff = desc_holder["atom_fluff"]
+		if(atom_fluff)
+			stat(null,"<font color='#298A08'><b>[atom_fluff]</b></font>") //Yellow, fluff-related text.
+
+		var/atom_antag = desc_holder["atom_antag"]
+		if(atom_antag)
+			stat(null,"<font color='#8A0808'><b>[atom_antag]</b></font>") //Red, malicious antag-related text
 
 	if(mind)
 		add_spells_to_statpanel(spell_list) //mind. yep, the client has the spells, not the mind
@@ -860,7 +885,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/proc/embedded_needs_process()
 	return (embedded.len > 0)
 
-mob/proc/yank_out_object()
+/mob/proc/yank_out_object()
 	set category = "Object"
 	set name = "Yank out object"
 	set desc = "Remove an embedded item at the cost of bleeding and pain."

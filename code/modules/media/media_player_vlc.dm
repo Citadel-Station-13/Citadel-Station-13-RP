@@ -7,6 +7,7 @@ function noErrorMessages () { return true; }
 window.onerror = noErrorMessages;
 function SetMusic(url, time, volume) {
 	var vlc = document.getElementById('player');
+	url = url.match(/https?:\/\/\S+/) || ''; //HTTPS only
 
 	// Stop playing
 	vlc.playlist.stop();

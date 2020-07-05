@@ -126,7 +126,7 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 	C << output("[data]", "[window]:ehjaxCallback")
 
 /datum/chatOutput/proc/sendMusic(music, pitch)
-	if(!findtext(music, is_http_protocol)) //global this
+	if(!findtext(music, GLOB.is_http_protocol)) //global this
 		return
 	var/list/music_data = list("adminMusic" = url_encode(url_encode(music)))
 	if(pitch)

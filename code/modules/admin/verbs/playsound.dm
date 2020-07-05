@@ -9,14 +9,13 @@
 		return
 	var/freq = input(usr, "What frequency would you like the sound to play at?",, 1) as null|num
 	if(!freq)
-		return
-	vol = min(max(vol, 1), 100)
+		freq = 1
+	vol = clamp(vol, 1, 100)
 
 	var/sound/admin_sound = new()
 	admin_sound.file = S
 	admin_sound.priority = 250
-	//admin_sound.channel = CHANNEL_ADMIN
-	admin_sound.channel = 777
+	admin_sound.channel = CHANNEL_ADMIN //you can now **properly** silence adminbus music
 	admin_sound.frequency = freq
 	admin_sound.wait = 1
 	admin_sound.repeat = 0
@@ -35,7 +34,13 @@
 
 	for(var/mob/M in player_list)
 		if(M.is_preference_enabled(/datum/client_preference/play_admin_midis))
-			M << admin_sound
+			var/user_vol = M.client.chatOutput.adminMusicVolume
+			if(user_vol)
+				admin_sound.volume = vol * (user_vol / 100)
+			SEND_SOUND(M, admin_sound)
+			admin_sound.volume = vol
+
+	feedback_add_details("admin_verb","PGS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/play_local_sound(S as sound)
 	set category = "Fun"
@@ -50,18 +55,13 @@
 
 /client/proc/play_web_sound()
 	set category = "Fun"
-	to_chat(src, "Due to the fact that the coder who ported this decided to whip this up in less than an hour, this doesn't work. Use the web sound manual verb with a youtube-dl fetched link.")
-	return
-
-#ifdef RANDOM_BULLSHIT_DEFINE
-	set category = "Fun"
 	set name = "Play Internet Sound"
 	if(!check_rights(R_SOUNDS))
 		return
 
 	var/ytdl = CONFIG_GET(string/invoke_youtubedl)
 	if(!ytdl)
-		to_chat(src, "<span class='boldwarning'>Youtube-dl was not configured, action unavailable</span>") //Check config_legacy.txt for the INVOKE_YOUTUBEDL value
+		to_chat(src, "<span class='boldwarning'>Youtube-dl was not configured, action unavailable</span>") //Check config.txt for the INVOKE_YOUTUBEDL value
 		return
 
 	var/web_sound_input = input("Enter content URL (supported sites only, leave blank to stop playing)", "Play Internet Sound via youtube-dl") as text|null
@@ -72,7 +72,7 @@
 		if(length(web_sound_input))
 
 			web_sound_input = trim(web_sound_input)
-			if(findtext(web_sound_input, ":") && !findtext(web_sound_input, is_http_protocol))
+			if(findtext(web_sound_input, ":") && !findtext(web_sound_input, GLOB.is_http_protocol))
 				to_chat(src, "<span class='boldwarning'>Non-http(s) URIs are not allowed.</span>")
 				to_chat(src, "<span class='warning'>For youtube-dl shortcuts like ytsearch: please use the appropriate full url from the website.</span>")
 				return
@@ -97,14 +97,18 @@
 					if (data["webpage_url"])
 						webpage_url = "<a href=\"[data["webpage_url"]]\">[title]</a>"
 
+					var/freq = input(usr, "What frequency would you like the sound to play at?",, 1) as null|num
+					if(!freq)
+						freq = 1
+					pitch = freq
+
 					var/res = alert(usr, "Show the title of and link to this song to the players?\n[title]",, "No", "Yes", "Cancel")
 					switch(res)
 						if("Yes")
 							to_chat(world, "<span class='boldannounce'>An admin played: [webpage_url]</span>")
 						if("Cancel")
 							return
-
-					SSblackbox.record_feedback("nested tally", "played_url", 1, list("[ckey]", "[web_sound_input]"))
+					//SSblackbox.record_feedback("nested tally", "played_url", 1, list("[ckey]", "[web_sound_input]"))
 					log_admin("[key_name(src)] played web sound: [web_sound_input]")
 					message_admins("[key_name(src)] played web sound: [web_sound_input]")
 			else
@@ -117,7 +121,7 @@
 			web_sound_url = null
 			stop_web_sounds = TRUE
 
-		if(web_sound_url && !findtext(web_sound_url, is_http_protocol))
+		if(web_sound_url && !findtext(web_sound_url, GLOB.is_http_protocol))
 			to_chat(src, "<span class='boldwarning'>BLOCKED: Content URL not using http(s) protocol</span>")
 			to_chat(src, "<span class='warning'>The media provider returned a content URL that isn't using the HTTP or HTTPS protocol</span>")
 			return
@@ -125,14 +129,14 @@
 			for(var/m in player_list)
 				var/mob/M = m
 				var/client/C = M.client
-				if((C.prefs.toggles & SOUND_MIDI) && C.chatOutput && !C.chatOutput.broken && C.chatOutput.loaded)
+				if(is_preference_enabled(/datum/client_preference/play_admin_midis) && C.chatOutput && !C.chatOutput.broken && C.chatOutput.loaded)
 					if(!stop_web_sounds)
 						C.chatOutput.sendMusic(web_sound_url, pitch)
 					else
 						C.chatOutput.stopMusic()
 
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Play Internet Sound")
-#endif
+	//SSblackbox.record_feedback("tally", "admin_verb", 1, "Play Internet Sound")
+	feedback_add_details("admin_verb","PWS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/play_web_sound_manual()
 	set category = "Fun"
@@ -141,34 +145,41 @@
 		return
 
 	var/web_sound_input = input("Enter youtube-dl fetched content URL (supported sites only, leave blank to stop playing)", "Send youtube-dl media link") as text|null
-	if(!istext(web_sound_input))
-		return
-	web_sound_input = trim(web_sound_input)
-	if(!length(web_sound_input))
-		log_admin("[key_name(src)] stopped web sound")
-		message_admins("[key_name(src)] stopped web sound")
-		for(var/m in player_list)
-			var/mob/M = m
-			var/client/C = M.client
-			if(M.is_preference_enabled(/datum/client_preference/play_admin_midis) && C.chatOutput && !C.chatOutput.broken && C.chatOutput.loaded)
-				C.chatOutput.stopMusic()
-		return
-	var/freq = input(usr, "What frequency would you like the sound to play at?",, 1) as null|num
-	if(!freq)
-		return
-	if(web_sound_input && !findtext(web_sound_input, is_http_protocol))
-		to_chat(src, "<span class='boldwarning'>BLOCKED: Content URL not using http(s) protocol</span>")
-		to_chat(src, "<span class='warning'>The media provider returned a content URL that isn't using the HTTP or HTTPS protocol</span>")
-		return
-
-	feedback_add_details("admin_verb","PWSM") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-	log_admin("[key_name(src)] played web sound: [web_sound_input]")
-	message_admins("[key_name(src)] played web sound.")
-	for(var/m in player_list)
-		var/mob/M = m
-		var/client/C = M.client
-		if(M.is_preference_enabled(/datum/client_preference/play_admin_midis) && C.chatOutput && !C.chatOutput.broken && C.chatOutput.loaded)
-			C.chatOutput.sendMusic(web_sound_input, freq)
+	if(istext(web_sound_input))
+		if(!length(web_sound_input))
+			log_admin("[key_name(src)] stopped web sound")
+			message_admins("[key_name(src)] stopped web sound")
+			var/mob/M
+			for(var/i in player_list) //GLOB.
+				M = i
+				M?.client?.chatOutput?.stopMusic()
+			return
+		else
+			if(web_sound_input && !findtext(web_sound_input, GLOB.is_http_protocol))
+				to_chat(src, "<span class='boldwarning'>BLOCKED: Content URL not using http(s) protocol</span>")
+				return
+			var/freq = input(usr, "What frequency would you like the sound to play at?",, 1) as null|num
+			if(isnull(freq))
+				return
+			if(!freq)
+				freq = 1
+			//SSblackbox.record_feedback("nested tally", "played_url", 1, list("[ckey]", "[web_sound_input]"))
+			var/logstr = "[key_name(src)] played web sound at freq [freq]: [web_sound_input]"
+			log_admin(logstr)
+			message_admins(logstr)
+			var/mob/M
+			var/client/C
+			var/datum/chatOutput/O
+			for(var/i in player_list)
+				M = i
+				C = M.client
+				if(!is_preference_enabled(/datum/client_preference/play_admin_midis))//C?.prefs?.toggles & SOUND_MIDI))
+					continue
+				O = C.chatOutput
+				if(!O || O.broken || !O.loaded)
+					continue
+				O.sendMusic(web_sound_input, freq)
+		feedback_add_details("admin_verb","PWSM") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/stop_sounds()
 	set category = "Debug"
@@ -180,18 +191,8 @@
 	message_admins("[key_name_admin(src)] stopped all currently playing sounds.")
 	for(var/mob/M in player_list)
 		if(M.client)
-			M << sound(null)
+			SEND_SOUND(M, sound(null))
 			var/client/C = M.client
 			if(C && C.chatOutput && !C.chatOutput.broken && C.chatOutput.loaded)
 				C.chatOutput.stopMusic()
 	feedback_add_details("admin_verb","SAPS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/client/verb/stop_client_sounds()
-	set name = "Stop Sounds"
-	set category = "Preferences"
-	set desc = "Stop Current Sounds"
-	usr << sound(null)
-	var/client/C = usr.client
-	if(C && C.chatOutput && !C.chatOutput.broken && C.chatOutput.loaded)
-		C.chatOutput.stopMusic()
-	feedback_add_details("preferences_verb","SCS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

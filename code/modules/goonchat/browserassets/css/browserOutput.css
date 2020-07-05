@@ -289,6 +289,8 @@ em						{font-style: normal;	font-weight: bold;}
 .aiprivradio			{color: #ff00ff;}
 .redteamradio           {color: #ff0000;}
 .blueteamradio          {color: #0000ff;}
+.expradio				{color: #555555;} /* exporter comp.*/
+
 
 .yell					{					font-weight: bold;}
 
@@ -299,8 +301,11 @@ h1.alert, h2.alert		{color: #000000;}
 .selecteddna			{color: #ffffff; 	background-color: #001B1B}
 
 .attack					{color: #ff0000;}
+.moderate				{color: #CC0000;} /* moderate compatability */
 .disarm					{color: #990000;}
 .passive				{color: #660000;}
+
+.critical				{color: #ff0000; font-weight: bold; font-size: 150%;} /* critical comatability */
 
 .userdanger				{color: #ff0000;	font-weight: bold; font-size: 185%;}
 .danger					{color: #ff0000;}

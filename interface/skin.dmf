@@ -127,33 +127,6 @@ window "Telecomms IDE"
 		multi-line = true
 		no-command = true
 
-window "browserwindow-DISABLED"
-	elem "browserwindow-DISABLED"
-		type = MAIN
-		pos = 281,0
-		size = 656x538
-		anchor1 = none
-		anchor2 = none
-		background-color = none
-		saved-params = "pos;size;is-minimized;is-maximized"
-		title = "Browser"
-		titlebar = false
-		statusbar = false
-		can-close = false
-		can-minimize = false
-		can-resize = false
-		is-pane = true
-		outer-size = 656x519
-	elem "browser"
-		type = BROWSER
-		pos = 0,0
-		size = 640x499
-		anchor1 = 0,0
-		anchor2 = 100,100
-		background-color = #ffffff
-		is-default = true
-		saved-params = ""
-
 window "mainwindow"
 	elem "mainwindow"
 		type = MAIN
@@ -360,7 +333,6 @@ window "outputwindow"
 		is-visible = false
 		is-disabled = true
 		saved-params = ""
-		auto-format = false
 	elem "output"
 		type = OUTPUT
 		pos = 0,0

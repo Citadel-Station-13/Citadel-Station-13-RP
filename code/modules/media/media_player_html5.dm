@@ -1,24 +1,29 @@
-// IT IS FINALLY TIME.  IT IS HERE.  Converted to HTML5 <audio>  - Leshana
-var/const/PLAYER_HTML5_HTML={"<!DOCTYPE html>
+// Does not work below ie 8. Plus, it only supports mp3(<audio>) mp4(<video>)
+var/const/PLAYER_HTML5_HTML={"
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=11">
-<script type="text/javascript">
-function noErrorMessages () { return true; }
-window.onerror = noErrorMessages;
-function SetMusic(url, time, volume) {
-	var player = document.getElementById('player');
-	// IE can't handle us setting the time before it loads, so we must wait for asychronous load
-	var setTime = function () {
-		player.removeEventListener("canplay", setTime);  // One time only!
-		player.volume = volume;
-		player.currentTime = time;
+	<meta http-equiv="X-UA-Compatible" content="IE=11">
+	<script type="text/javascript">
+	window.onerror = function(){
+		return true
+	}
+	function SetMusic(url, time = 0, volume = 25){
+		var player = document.getElementById('player');
+		url = url.match(/https?:\/\/\S+/) || ''; //HTTPS only
+
+		var setTime = function () {
+			player.removeEventListener("canplay", setTime);  // One time only!
+			player.currentTime = time;
+		}
+		if(url != ""){
+			player.addEventListener("canplay", setTime, false);
+		}
+		player.src = url;
+		player.volume = Math.max(0, Math.min(volume, 100));
 		player.play();
 	}
-	if(url != "") player.addEventListener("canplay", setTime, false);
-	player.src = url;
-}
-</script>
+	</script>
 </head>
 <body>
 	<audio id="player"></audio>

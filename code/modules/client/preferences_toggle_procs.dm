@@ -149,7 +149,7 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Sound, Toggle_Soundscape)()
 	SEND_SOUND(usr, sound(null))
 	var/client/C = usr.client
 	if(C && C.chatOutput && !C.chatOutput.broken && C.chatOutput.loaded)
-		C.chatOutput.stopMusic()
+		C.chatOutput.stopMusic() //dupe available at playsound.dm before
 	feedback_add_details("admin_verb","stopsoundclient") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 

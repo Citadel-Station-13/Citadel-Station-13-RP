@@ -34,7 +34,7 @@ var opts = {
 	'wasd': false, //Is the user in wasd mode?
 	'priorChatHeight': 0, //Thing for height-resizing detection
 	'restarting': false, //Is the round restarting?
-	// 'colorPreset': 0, 	// index in the color presets list.
+	'colorPreset': 0, 	// index in the color presets list.
 
 	//Options menu
 	'selectedSubLoop': null, //Contains the interval loop for closing the selected sub menu
@@ -74,11 +74,11 @@ var opts = {
 
 // Array of names for chat display color presets.
 // If not set to normal, a CSS file `browserOutput_${name}.css` will be added to the head.
-// var colorPresets = [
-// 	'normal',
-// 	'light',
-// 	'dark'
-// ]
+var colorPresets = [
+	'normal',
+	'light',
+	'dark'
+]
 
 function clamp(val, min, max) {
 	return Math.max(min, Math.min(val, max))
@@ -103,11 +103,11 @@ if (typeof String.prototype.trim !== 'function') {
 	};
 }
 
-// function updateColorPreset() {
-// 	var el = $("#colorPresetLink")[0];
-// 	el.href = "browserOutput_"+colorPresets[opts.colorPreset]+".css";
-// 	runByond('?_src_=chat&proc=colorPresetPost&preset='+colorPresets[opts.colorPreset]);
-// }
+function updateColorPreset() {
+	var el = $("#colorPresetLink")[0];
+	el.href = "browserOutput_"+colorPresets[opts.colorPreset]+".css";
+	runByond('?_src_=chat&proc=colorPresetPost&preset='+colorPresets[opts.colorPreset]);
+}
 
 // Linkify the contents of a node, within its parent.
 function linkify(parent, insertBefore, text) {
@@ -615,7 +615,7 @@ $(function() {
 		'shighlightColor': getCookie('highlightcolor'),
 		'smusicVolume': getCookie('musicVolume'),
 		'smessagecombining': getCookie('messagecombining'),
-		// 'scolorPreset': getCookie('colorpreset'),
+		'scolorPreset': getCookie('colorpreset'),
 	};
 
 	if (savedConfig.sfontSize) {
@@ -652,11 +652,11 @@ $(function() {
 		internalOutput('<span class="internal boldnshit">Loaded highlight color of: '+savedConfig.shighlightColor+'</span>', 'internal');
 	}
 
-	// if (savedConfig.scolorPreset) {
-	// 	opts.colorPreset = Number(savedConfig.scolorPreset);
-	// 	updateColorPreset();
-	// 	internalOutput('<span class="internal boldnshit">Loaded color preset of: '+colorPresets[opts.colorPreset]+'</span>', 'internal');
-	// }
+	if (savedConfig.scolorPreset) {
+		opts.colorPreset = Number(savedConfig.scolorPreset);
+		updateColorPreset();
+		internalOutput('<span class="internal boldnshit">Loaded color preset of: '+colorPresets[opts.colorPreset]+'</span>', 'internal');
+	}
 
 	if (savedConfig.smusicVolume) {
 		var newVolume = clamp(savedConfig.smusicVolume, 0, 100);
@@ -993,12 +993,12 @@ $(function() {
 		opts.messageCount = 0;
 	});
 
-	// $('#changeColorPreset').click(function() {
-	// 	opts.colorPreset = (opts.colorPreset+1) % colorPresets.length;
-	// 	updateColorPreset();
-	// 	setCookie('colorpreset', opts.colorPreset, 365);
-	// 	internalOutput('<span class="internal boldnshit">Changed color preset to: '+colorPresets[opts.colorPreset]);
-	// });
+	$('#changeColorPreset').click(function() {
+		opts.colorPreset = (opts.colorPreset+1) % colorPresets.length;
+		updateColorPreset();
+		setCookie('colorpreset', opts.colorPreset, 365);
+		internalOutput('<span class="internal boldnshit">Changed color preset to: '+colorPresets[opts.colorPreset]);
+	});
 
 	$('#musicVolumeSpan').hover(function() {
 		$('#musicVolumeText').addClass('hidden');

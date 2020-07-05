@@ -113,9 +113,9 @@
 	var/client/owner			// Client this is actually running in
 	var/forced=0				// If true, current url overrides area media sources
 	var/playerstyle				// Choice of which player plugin to use
-	var/const/WINDOW_ID = "rpane.mediapanel"	// Which elem in skin.dmf to use
+	var/const/WINDOW_ID = "infowindow.mediapanel"	// Which elem in skin.dmf to use
 
-/datum/media_manager/New(var/client/C)
+/datum/media_manager/New(client/C)
 	ASSERT(istype(C))
 	src.owner = C
 
@@ -142,11 +142,15 @@
 		return
 	if(!owner.is_preference_enabled(/datum/client_preference/play_jukebox) && url != "")
 		return // Don't send anything other than a cancel to people with SOUND_STREAMING pref disabled
+	// if(owner.prefs.media_player == 2) //theoraticaly works
+	// 	owner.chatOutput.sendMusic(url, 1)
+	// 	return TRUE
+	//goonchat override on HTML 5 shenanigans.
 	MP_DEBUG("<span class='good'>Sending update to mediapanel ([url], [(world.time - start_time) / 10], [volume * source_volume])...</span>")
 	owner << output(list2params(list(url, (world.time - start_time) / 10, volume * source_volume)), "[WINDOW_ID]:SetMusic")
 
-/datum/media_manager/proc/push_music(var/targetURL, var/targetStartTime, var/targetVolume)
-	if (url != targetURL || abs(targetStartTime - start_time) > 1 || abs(targetVolume - source_volume) > 0.1 /* 10% */)
+/datum/media_manager/proc/push_music(targetURL, targetStartTime, targetVolume)
+	if (url != targetURL || abs(targetStartTime - start_time) > 1 || abs(targetVolume - source_volume) > 0.1)
 		url = targetURL
 		start_time = targetStartTime
 		source_volume = clamp(targetVolume, 0, 1)
