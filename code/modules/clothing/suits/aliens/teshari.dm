@@ -293,7 +293,7 @@
 	name = "small black coat"
 	desc = "A coat that seems too small to fit a human."
 	icon = 'icons/obj/clothing/species/teshari/suits.dmi'
-	icon_override = 'icons/mob/species/teshari/suit.dmi'
+	icon_override = 'icons/mob/species/teshari/teshari_cloak.dmi'
 	icon_state = "tesharicoat"
 	body_parts_covered = UPPER_TORSO|ARMS|LOWER_TORSO|LEGS
 	species_restricted = list(SPECIES_TESHARI)
@@ -302,7 +302,7 @@
 	name = "small coat"
 	desc = "A coat that seems too small to fit a human."
 	icon = 'icons/obj/clothing/species/teshari/suits.dmi'
-	icon_override = 'icons/mob/species/teshari/suit.dmi'
+	icon_override = 'icons/mob/species/teshari/teshari_cloak.dmi'
 	icon_state = "tesharicoatwhite"
 	body_parts_covered = UPPER_TORSO|ARMS|LOWER_TORSO|LEGS
 	species_restricted = list(SPECIES_TESHARI)
