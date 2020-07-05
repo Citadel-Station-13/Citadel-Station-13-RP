@@ -2,11 +2,65 @@
 // Collars and such like that
 //
 
+/obj/item/clothing/accessory/choker //A colorable, tagless choker
+	name = "plain choker"
+	slot_flags = SLOT_TIE | SLOT_OCLOTHING
+	desc = "A simple, plain choker. Or maybe it's a collar? Use in-hand to customize it."
+	icon = 'icons/obj/clothing/collars_vr.dmi'
+	icon_override = 'icons/mob/collars_vr.dmi'
+	icon_state = "choker_cst"
+	item_state = "choker_cst"
+	overlay_state = "choker_cst"
+	var/customized = 0
+
+/obj/item/clothing/accessory/choker/attack_self(mob/user as mob)
+	if(!customized)
+		var/design = input(user,"Descriptor?","Pick descriptor","") in list("plain","simple","ornate","elegant","opulent")
+		var/material = input(user,"Material?","Pick material","") in list("leather","velvet","lace","fabric","latex","plastic","metal","chain","silver","gold","platinum","steel","bead","ruby","sapphire","emerald","diamond")
+		var/type = input(user,"Type?","Pick type","") in list("choker","collar","necklace")
+		name = "[design] [material] [type]"
+		desc = "A [type], made of [material]. It's rather [design]."
+		customized = 1
+		to_chat(usr,"<span class='notice'>[src] has now been customized.</span>")
+	else
+		to_chat(usr,"<span class='notice'>[src] has already been customized!</span>")
+
 /obj/item/clothing/accessory/collar
 	slot_flags = SLOT_TIE | SLOT_OCLOTHING
 	icon = 'icons/obj/clothing/collars_vr.dmi'
-	icon_override = 'icons/obj/clothing/collars_vr.dmi'
+	icon_override = 'icons/mob/collars_vr.dmi'
+	var/icon_previous_override //yw addition
 	var/writtenon = 0
+
+//ywedit start. forces different sprite sheet on equip
+/obj/item/clothing/accessory/collar/New()
+	..()
+	icon_previous_override = icon_override
+
+/obj/item/clothing/accessory/collar/equipped() //Solution for race-specific sprites for an accessory which is also a suit. Suit icons break if you don't use icon override which then also overrides race-specific sprites.
+	..()
+	setUniqueSpeciesSprite()
+
+/obj/item/clothing/accessory/collar/proc/setUniqueSpeciesSprite()
+	var/mob/living/carbon/human/H = loc
+	if(!istype(H))
+		if(istype(has_suit) && ishuman(has_suit.loc))
+			H = has_suit.loc
+	if(istype(H))
+		if(H.species.name == SPECIES_TESHARI)
+			icon_override = 'icons/mob/species/teshari/collars.dmi'
+		update_clothing_icon()
+
+/obj/item/clothing/accessory/collar/on_attached(var/obj/item/clothing/S, var/mob/user)
+	if(!istype(S))
+		return
+	has_suit = S
+	setUniqueSpeciesSprite()
+	..(S, user)
+
+/obj/item/clothing/accessory/collar/dropped()
+	icon_override = icon_previous_override
+//ywedit end
 
 /obj/item/clothing/accessory/collar/silver
 	name = "Silver tag collar"

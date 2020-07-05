@@ -222,6 +222,11 @@
 	icon_state = "straight_jacket"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
+	//yw edit - Teshari sprite
+	sprite_sheets = list(
+		SPECIES_TESHARI = 'icons/mob/species/teshari/suit.dmi'
+		)
+	//yw edit end
 
 	var/resist_time = 4800	// Eight minutes.
 

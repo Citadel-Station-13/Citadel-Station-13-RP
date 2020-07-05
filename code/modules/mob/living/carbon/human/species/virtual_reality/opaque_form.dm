@@ -83,8 +83,8 @@
 
 /datum/species/shapeshifter/promethean/avatar/teshari
 	name = "Virtual Reality Teshari"
-	icobase = 'icons/mob/human_races/r_seromi.dmi'
-	deform = 'icons/mob/human_races/r_seromi.dmi'
+	icobase = 'icons/mob/human_races/r_teshari.dmi'
+	deform = 'icons/mob/human_races/r_teshari.dmi'
 	appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 	has_limbs = list(
 		BP_TORSO =  list("path" = /obj/item/organ/external/chest),
