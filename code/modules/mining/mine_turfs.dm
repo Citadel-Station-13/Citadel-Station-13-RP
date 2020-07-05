@@ -16,12 +16,10 @@ var/list/mining_overlay_cache = list()
 	var/sand_icon_state = "asteroid"
 	var/rock_icon_state = "rock"
 	var/random_icon = 0
-	oxygen = 0
-	nitrogen = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	opacity = 1
 	density = 1
 	blocks_air = 1
-	temperature = T0C
 
 	can_dirty = FALSE
 
@@ -115,7 +113,7 @@ turf/simulated/mineral/floor/light_corner
 		var/mob/living/silicon/robot/R = M
 		if(R.module)
 			for(var/obj/item/storage/bag/ore/O in list(R.module_state_1, R.module_state_2, R.module_state_3))
-				attackby(O, R)
+				O.autoload(R)
 				return
 
 /turf/simulated/mineral/proc/get_cached_border(var/cache_id, var/direction, var/icon_file, var/icon_state, var/offset = 32)

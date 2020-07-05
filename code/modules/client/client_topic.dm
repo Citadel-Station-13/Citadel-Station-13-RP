@@ -85,7 +85,7 @@
 		if(mute_irc)
 			to_chat(usr, "<span class='warning'You cannot use this as your client has been muted from sending messages to the admins on IRC</span>")
 			return
-		send2adminirc(href_list["irc_msg"])
+		send2irc("AHELP", href_list["irc_msg"])
 		return
 
 	switch(href_list["_src_"])

@@ -11,8 +11,7 @@ VIRGO3B_TURF_CREATE(/turf/simulated/floor)
 
 /turf/simulated/floor/virgo3b_indoors
 	VIRGO3B_SET_ATMOS
-/turf/simulated/floor/virgo3b_indoors/update_graphic(list/graphic_add = null, list/graphic_remove = null)
-	return 0
+	allow_gas_overlays = FALSE
 
 VIRGO3B_TURF_CREATE(/turf/simulated/floor/reinforced)
 VIRGO3B_TURF_CREATE(/turf/simulated/floor/tiled/steel_dirty)
@@ -31,26 +30,19 @@ VIRGO3B_TURF_CREATE(/turf/simulated/floor/outdoors/grass/sif)
 // Overriding these for the sake of submaps that use them on other planets.
 // This means that mining on tether base and space is oxygen-generating, but solars and mining should use the virgo3b subtype
 /turf/simulated/mineral
-	oxygen = MOLES_O2STANDARD
-	nitrogen = MOLES_N2STANDARD
-	temperature	= T20C
+	initial_gas_mix = GAS_STRING_STP
+
 /turf/simulated/floor/outdoors
-	oxygen = MOLES_O2STANDARD
-	nitrogen = MOLES_N2STANDARD
-	temperature	= T20C
+	initial_gas_mix = GAS_STRING_STP
+
 /turf/simulated/floor/water
-	oxygen = MOLES_O2STANDARD
-	nitrogen = MOLES_N2STANDARD
-	temperature	= T20C
+	initial_gas_mix = GAS_STRING_STP
 
 /turf/simulated/mineral/vacuum
-	oxygen = 0
-	nitrogen = 0
-	temperature	= TCMB
+	initial_gas_mix = GAS_STRING_VACUUM
+
 /turf/simulated/mineral/floor/vacuum
-	oxygen = 0
-	nitrogen = 0
-	temperature	= TCMB
+	initial_gas_mix = GAS_STRING_VACUUM
 
 VIRGO3B_TURF_CREATE(/turf/simulated/mineral)
 VIRGO3B_TURF_CREATE(/turf/simulated/mineral/floor)

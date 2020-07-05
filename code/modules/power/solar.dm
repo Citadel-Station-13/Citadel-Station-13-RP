@@ -493,14 +493,14 @@ GLOBAL_LIST_EMPTY(solars_list)
 
 	if(href_list["rate control"])
 		if(href_list["cdir"])
-			src.cdir = dd_range(0,359,(360+src.cdir+text2num(href_list["cdir"]))%360)
+			src.cdir = clamp((360+src.cdir+text2num(href_list["cdir"]))%360, 0, 359)
 			src.targetdir = src.cdir
 			if(track == 2) //manual update, so losing auto-tracking
 				track = 0
 			spawn(1)
 				set_panels(cdir)
 		if(href_list["tdir"])
-			src.trackrate = dd_range(-7200,7200,src.trackrate+text2num(href_list["tdir"]))
+			src.trackrate = clamp(src.trackrate+text2num(href_list["tdir"]), -7200, 7200)
 			if(src.trackrate) nexttime = world.time + 36000/abs(trackrate)
 
 	if(href_list["track"])

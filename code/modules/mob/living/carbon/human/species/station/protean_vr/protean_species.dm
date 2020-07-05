@@ -110,9 +110,20 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 		/mob/living/carbon/human/proc/shapeshifter_select_wings,
 		/mob/living/carbon/human/proc/shapeshifter_select_tail,
 		/mob/living/carbon/human/proc/shapeshifter_select_ears,
-		/mob/living/proc/eat_trash
-		)
-
+		/mob/living/proc/eat_trash,
+		/mob/living/carbon/human/proc/sonar_ping,
+		/mob/living/carbon/human/proc/succubus_drain,
+		/mob/living/carbon/human/proc/succubus_drain_finalize,
+		/mob/living/carbon/human/proc/succubus_drain_lethal,
+		/mob/living/carbon/human/proc/bloodsuck,
+		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/proc/shred_limb,
+		/mob/living/proc/flying_toggle,
+		/mob/living/proc/start_wings_hovering,
+		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/proc/glow_toggle,
+		/mob/living/proc/glow_color,
+		/mob/living/carbon/human/proc/lick_wounds) //prots get all the special verbs since they can't select traits.
 	var/global/list/abilities = list()
 
 	var/monochromatic = FALSE //IGNORE ME
@@ -250,7 +261,7 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 	var/obj/item/organ/internal/nano/refactory/refactory = origin.resolve()
 	if(!istype(refactory) || refactory.status & ORGAN_DEAD || refactory.processingbuffs == FALSE)
 		expire()
-		
+
 	// stops you from consuming materials if the toggle is off
 	if(!refactory.use_stored_material(material_name,material_use) && refactory.processingbuffs == TRUE)
 		expire()

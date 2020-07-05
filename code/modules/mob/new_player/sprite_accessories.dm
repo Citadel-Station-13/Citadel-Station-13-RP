@@ -1613,6 +1613,11 @@
 		icon_state = "backstripe"
 		body_parts = list(BP_TORSO)
 
+	heterochromia
+		name = "Heterochromia (right eye)"
+		icon_state = "heterochromia"
+		body_parts = list(BP_HEAD)
+
 	//Taj specific stuff
 	taj_belly
 		name = "Belly Fur (Taj)"
@@ -1686,6 +1691,20 @@
 		icon_state = "una_scutes"
 		body_parts = list(BP_TORSO)
 		species_allowed = list(SPECIES_UNATHI)
+
+	//Tesh stuff.
+
+	teshi_fluff
+		name = "Underfluff (Teshari)"
+		icon_state = "teshi_fluff"
+		body_parts = list(BP_HEAD, BP_TORSO, BP_GROIN, BP_R_LEG, BP_L_LEG)
+		species_allowed = list(SPECIES_TESHARI)
+
+	teshi_heterochromia
+		name = "Heterochromia (Teshari) (right eye)"
+		icon_state = "teshi_heterochromia"
+		body_parts = list(BP_HEAD)
+		species_allowed = list(SPECIES_TESHARI)
 
 //skin styles - WIP
 //going to have to re-integrate this with surgery

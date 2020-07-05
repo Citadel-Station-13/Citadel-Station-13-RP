@@ -219,7 +219,7 @@
 				amount = "large amounts of "
 			else if (grown_seed.exude_gasses[gas] < 5)
 				amount = "small amounts of "
-			dat += "<br>It will release [amount][gas_data.name[gas]] into the environment."
+			dat += "<br>It will release [amount][GLOB.meta_gas_names[gas]] into the environment."
 
 	if(grown_seed.consume_gasses && grown_seed.consume_gasses.len)
 		for(var/gas in grown_seed.consume_gasses)
@@ -228,7 +228,7 @@
 				amount = "large amounts of "
 			else if (grown_seed.consume_gasses[gas] < 5)
 				amount = "small amounts of "
-			dat += "<br>It will consume [amount][gas_data.name[gas]] from the environment."
+			dat += "<br>It will consume [amount][GLOB.meta_gas_names[gas]] from the environment."
 
 	if(dat)
 		last_data = dat

@@ -4,96 +4,72 @@
 /area/awaymission/snowfield/restricted)
 "ab" = (
 /turf/snow/snow2{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
-	temperature = 243.15
+	initial_gas_mix = "n2=93.7835;o2=20.7263;TEMP=243.15"
 	},
 /area/awaymission/snowfield/restricted)
 "ac" = (
 /obj/effect/blocker,
 /turf/snow/snow2{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
-	temperature = 243.15
+	initial_gas_mix = "n2=93.7835;o2=20.7263;TEMP=243.15"
 	},
 /area/awaymission/snowfield/restricted)
 "ad" = (
 /turf/snow/snow2{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
-	temperature = 243.15
+	initial_gas_mix = "n2=93.7835;o2=20.7263;TEMP=243.15"
 	},
 /area/awaymission/snowfield/outside)
 "ae" = (
 /turf/snow/snow2{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
-	temperature = 243.15
+	initial_gas_mix = "n2=93.7835;o2=20.7263;TEMP=243.15"
 	},
 /area/awaymission/snowfield)
 "af" = (
 /obj/effect/blocker,
 /obj/effect/blocker,
 /turf/snow/snow2{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
-	temperature = 243.15
+	initial_gas_mix = "n2=93.7835;o2=20.7263;TEMP=243.15"
 	},
 /area/awaymission/snowfield/restricted)
 "ag" = (
 /obj/effect/blocker,
 /turf/snow/snow2{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
-	temperature = 243.15
+	initial_gas_mix = "n2=93.7835;o2=20.7263;TEMP=243.15"
 	},
 /area/awaymission/snowfield/outside)
 "ah" = (
 /turf/snow/snow2{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
-	temperature = 243.15
+	initial_gas_mix = "n2=93.7835;o2=20.7263;TEMP=243.15"
 	},
 /area/awaymission/snowfield/base)
 "ai" = (
 /obj/effect/blocker,
 /turf/snow/snow2{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
-	temperature = 243.15
+	initial_gas_mix = "n2=93.7835;o2=20.7263;TEMP=243.15"
 	},
 /area/awaymission/snowfield)
 "aj" = (
 /obj/effect/blocker,
 /obj/effect/blocker,
 /turf/snow/snow2{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
-	temperature = 243.15
+	initial_gas_mix = "n2=93.7835;o2=20.7263;TEMP=243.15"
 	},
 /area/awaymission/snowfield/outside)
 "ak" = (
 /obj/effect/landmark/away,
 /turf/snow/snow2{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
-	temperature = 243.15
+	initial_gas_mix = "n2=93.7835;o2=20.7263;TEMP=243.15"
 	},
 /area/awaymission/snowfield/outside)
 "al" = (
 /obj/effect/landmark/away,
 /turf/snow/snow2{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
-	temperature = 243.15
+	initial_gas_mix = "n2=93.7835;o2=20.7263;TEMP=243.15"
 	},
 /area/awaymission/snowfield/base)
 "am" = (
 /obj/machinery/light/small,
 /turf/snow/snow2{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
-	temperature = 243.15
+	initial_gas_mix = "n2=93.7835;o2=20.7263;TEMP=243.15"
 	},
 /area/awaymission/snowfield/outside)
 "an" = (
@@ -1372,9 +1348,7 @@
 /area/awaymission/snowfield/outside)
 "dT" = (
 /turf/snow/snow2{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
-	temperature = 243.15
+	initial_gas_mix = "n2=93.7835;o2=20.7263;TEMP=243.15"
 	},
 /area/shuttle/awaymission/oldengbase)
 "dU" = (
@@ -1567,9 +1541,7 @@
 /area/awaymission/snowfield/outside)
 "ex" = (
 /turf/simulated/floor/tiled/asteroid_steel{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
-	temperature = 243.15
+	initial_gas_mix = "n2=93.7835;o2=20.7263;TEMP=243.15"
 	},
 /area/awaymission/snowfield/outside)
 "ey" = (
@@ -1578,9 +1550,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/asteroid_steel{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
-	temperature = 243.15
+	initial_gas_mix = "n2=93.7835;o2=20.7263;TEMP=243.15"
 	},
 /area/awaymission/snowfield/outside)
 "ez" = (
@@ -1589,9 +1559,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/asteroid_steel{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
-	temperature = 243.15
+	initial_gas_mix = "n2=93.7835;o2=20.7263;TEMP=243.15"
 	},
 /area/awaymission/snowfield/outside)
 "eA" = (
@@ -1600,9 +1568,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/asteroid_steel{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
-	temperature = 243.15
+	initial_gas_mix = "n2=93.7835;o2=20.7263;TEMP=243.15"
 	},
 /area/awaymission/snowfield/outside)
 "eB" = (
@@ -1614,9 +1580,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/asteroid_steel{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
-	temperature = 243.15
+	initial_gas_mix = "n2=93.7835;o2=20.7263;TEMP=243.15"
 	},
 /area/awaymission/snowfield/outside)
 "eC" = (
@@ -1625,9 +1589,7 @@
 	id = "away_soviet"
 	},
 /turf/simulated/floor/tiled/asteroid_steel{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
-	temperature = 243.15
+	initial_gas_mix = "n2=93.7835;o2=20.7263;TEMP=243.15"
 	},
 /area/awaymission/snowfield/outside)
 "eD" = (
@@ -1636,9 +1598,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/asteroid_steel{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
-	temperature = 243.15
+	initial_gas_mix = "n2=93.7835;o2=20.7263;TEMP=243.15"
 	},
 /area/awaymission/snowfield/outside)
 "eE" = (
@@ -1647,25 +1607,19 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/asteroid_steel{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
-	temperature = 243.15
+	initial_gas_mix = "n2=93.7835;o2=20.7263;TEMP=243.15"
 	},
 /area/awaymission/snowfield/outside)
 "eF" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner,
 /turf/simulated/floor/tiled/asteroid_steel{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
-	temperature = 243.15
+	initial_gas_mix = "n2=93.7835;o2=20.7263;TEMP=243.15"
 	},
 /area/awaymission/snowfield/outside)
 "eG" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /turf/simulated/floor/tiled/asteroid_steel{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
-	temperature = 243.15
+	initial_gas_mix = "n2=93.7835;o2=20.7263;TEMP=243.15"
 	},
 /area/awaymission/snowfield/outside)
 "eH" = (
@@ -1675,9 +1629,7 @@
 	},
 /obj/effect/floor_decal/industrial/warning/dust,
 /turf/simulated/floor/tiled/asteroid_steel{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
-	temperature = 243.15
+	initial_gas_mix = "n2=93.7835;o2=20.7263;TEMP=243.15"
 	},
 /area/awaymission/snowfield/outside)
 "eI" = (
@@ -1687,9 +1639,7 @@
 	},
 /obj/effect/floor_decal/industrial/warning/dust,
 /turf/simulated/floor/tiled/asteroid_steel{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
-	temperature = 243.15
+	initial_gas_mix = "n2=93.7835;o2=20.7263;TEMP=243.15"
 	},
 /area/awaymission/snowfield/outside)
 "eJ" = (
@@ -1699,9 +1649,7 @@
 	},
 /obj/effect/floor_decal/industrial/warning/dust,
 /turf/simulated/floor/tiled/asteroid_steel{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
-	temperature = 243.15
+	initial_gas_mix = "n2=93.7835;o2=20.7263;TEMP=243.15"
 	},
 /area/awaymission/snowfield/outside)
 "eK" = (
@@ -1710,16 +1658,12 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/asteroid_steel{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
-	temperature = 243.15
+	initial_gas_mix = "n2=93.7835;o2=20.7263;TEMP=243.15"
 	},
 /area/awaymission/snowfield/outside)
 "eL" = (
 /turf/simulated/floor/reinforced{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
-	temperature = 243.15
+	initial_gas_mix = "n2=93.7835;o2=20.7263;TEMP=243.15"
 	},
 /area/awaymission/snowfield/outside)
 
