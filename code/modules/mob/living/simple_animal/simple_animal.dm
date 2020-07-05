@@ -482,28 +482,28 @@
 				bodytemperature += ((Environment.temperature - bodytemperature) / 5)
 
 			if(min_oxy)
-				if(Environment.gas["oxygen"] < min_oxy)
+				if(Environment.gas[/datum/gas/oxygen] < min_oxy)
 					atmos_unsuitable = 1
 			if(max_oxy)
-				if(Environment.gas["oxygen"] > max_oxy)
+				if(Environment.gas[/datum/gas/oxygen] > max_oxy)
 					atmos_unsuitable = 1
 			if(min_tox)
-				if(Environment.gas["phoron"] < min_tox)
+				if(Environment.gas[/datum/gas/phoron] < min_tox)
 					atmos_unsuitable = 2
 			if(max_tox)
-				if(Environment.gas["phoron"] > max_tox)
+				if(Environment.gas[/datum/gas/phoron] > max_tox)
 					atmos_unsuitable = 2
 			if(min_n2)
-				if(Environment.gas["nitrogen"] < min_n2)
+				if(Environment.gas[/datum/gas/nitrogen] < min_n2)
 					atmos_unsuitable = 1
 			if(max_n2)
-				if(Environment.gas["nitrogen"] > max_n2)
+				if(Environment.gas[/datum/gas/nitrogen] > max_n2)
 					atmos_unsuitable = 1
 			if(min_co2)
-				if(Environment.gas["carbon_dioxide"] < min_co2)
+				if(Environment.gas[/datum/gas/carbon_dioxide] < min_co2)
 					atmos_unsuitable = 1
 			if(max_co2)
-				if(Environment.gas["carbon_dioxide"] > max_co2)
+				if(Environment.gas[/datum/gas/carbon_dioxide] > max_co2)
 					atmos_unsuitable = 1
 
 	//Atmos effect

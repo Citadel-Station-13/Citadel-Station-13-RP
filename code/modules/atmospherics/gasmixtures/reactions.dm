@@ -18,9 +18,9 @@
 
 		//*** Get the fuel and oxidizer amounts
 		for(var/g in gas)
-			if(gas_data.flags[g] & XGM_GAS_FUEL)
+			if(GLOB.meta_gas_flags[g] & GAS_FLAG_FUEL)
 				gas_fuel += gas[g]
-			if(gas_data.flags[g] & XGM_GAS_OXIDIZER)
+			if(GLOB.meta_gas_flags[g] & GAS_FLAG_OXIDIZER)
 				total_oxidizers += gas[g]
 		gas_fuel *= group_multiplier
 		total_oxidizers *= group_multiplier
@@ -83,9 +83,9 @@
 		var/used_liquid_fuel = min(max(0.25, used_fuel-used_gas_fuel), liquid_fuel)
 
 		//remove_by_flag() and adjust_gas() handle the group_multiplier for us.
-		remove_by_flag(XGM_GAS_OXIDIZER, used_oxidizers)
-		remove_by_flag(XGM_GAS_FUEL, used_gas_fuel)
-		adjust_gas("carbon_dioxide", used_oxidizers)
+		remove_by_flag(GAS_FLAG_OXIDIZER, used_oxidizers)
+		remove_by_flag(GAS_FLAG_FUEL, used_gas_fuel)
+		adjust_gas(/datum/gas/carbon_dioxide, used_oxidizers)
 
 		if(zone)
 			zone.remove_liquidfuel(used_liquid_fuel, !check_combustability())
@@ -104,7 +104,7 @@
 datum/gas_mixture/proc/check_recombustability(list/fuel_objs)
 	. = 0
 	for(var/g in gas)
-		if(gas_data.flags[g] & XGM_GAS_OXIDIZER && gas[g] >= 0.1)
+		if(GLOB.meta_gas_flags[g] & GAS_FLAG_OXIDIZER && gas[g] >= 0.1)
 			. = 1
 			break
 
@@ -116,7 +116,7 @@ datum/gas_mixture/proc/check_recombustability(list/fuel_objs)
 
 	. = 0
 	for(var/g in gas)
-		if(gas_data.flags[g] & XGM_GAS_FUEL && gas[g] >= 0.1)
+		if(GLOB.meta_gas_flags[g] & GAS_FLAG_FUEL && gas[g] >= 0.1)
 			. = 1
 			break
 
@@ -124,7 +124,7 @@ datum/gas_mixture/proc/check_recombustability(list/fuel_objs)
 	. = 0
 	CACHE_VSC_PROP(atmos_vsc, /atmos/fire/consumption_rate, fire_consumption_rate)
 	for(var/g in gas)
-		if(gas_data.flags[g] & XGM_GAS_OXIDIZER && QUANTIZE(gas[g] * fire_consumption_rate) >= 0.1)
+		if(GLOB.meta_gas_flags[g] & GAS_FLAG_OXIDIZER && QUANTIZE(gas[g] * fire_consumption_rate) >= 0.1)
 			. = 1
 			break
 
@@ -136,7 +136,7 @@ datum/gas_mixture/proc/check_recombustability(list/fuel_objs)
 
 	. = 0
 	for(var/g in gas)
-		if(gas_data.flags[g] & XGM_GAS_FUEL && QUANTIZE(gas[g] * fire_consumption_rate) >= 0.005)
+		if(GLOB.meta_gas_flags[g] & GAS_FLAG_FUEL && QUANTIZE(gas[g] * fire_consumption_rate) >= 0.005)
 			. = 1
 			break
 

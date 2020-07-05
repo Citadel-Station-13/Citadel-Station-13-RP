@@ -1,0 +1,4 @@
+author: "JennaSilver"
+delete-after: True
+changes: 
+  - rscadd: "Added type-g electronic assembly (vending machine circuit)"

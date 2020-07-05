@@ -50,19 +50,19 @@
 	else if(!is_mature())
 		to_chat(victim, "<span class='danger'>You push through the vines and feel some minor numbness in your body!</span>")
 		victim.adjustToxLoss(1)
-		attack_mob(victim,1.5)
+		attack_mob(victim,1)
 	else
 		entangle(victim)
 		seed.do_thorns(victim,src)
 		seed.do_sting(victim,pick("r_foot","l_foot","r_leg","l_leg"))
 		if(prob(25))
 			to_chat(victim, "<span class='danger'>You push through the vines and feel some of the thorns rip through your clothing!</span>")
-			victim.adjustToxLoss(rand(2,3))
-			attack_mob(victim,rand(4,7))
+			victim.adjustToxLoss(rand(2,2.5))
+			attack_mob(victim,rand(3,5))
 		else
 			to_chat(victim, "<span class='danger'>You push through the mess of vines and feel a bit of numbness in your body!</span>")
-			victim.adjustToxLoss(rand(1,2))
-			attack_mob(victim,rand(2,4))
+			victim.adjustToxLoss(rand(1,1.5))
+			attack_mob(victim,rand(1,3))
 
 
 /obj/effect/plant/proc/unbuckle()
@@ -122,17 +122,17 @@
 			if(istype(H.shoes, /obj/item/clothing/shoes/magboots) && (H.shoes.item_flags & NOSLIP))
 				can_grab = 0
 		if(can_grab)
-			if(prob(85))
+			if(prob(TRAIT_POTENCY))
 				src.visible_message("<span class='danger'>Tendrils lash out from \the [src] and drag \the [victim] in!</span>")
 				victim.forceMove(src.loc)
 				buckle_mob(victim)
 				victim.setDir(pick(GLOB.cardinals))
 				victim << "<span class='danger'>Tendrils [pick("wind", "tangle", "tighten")] around you!</span>"
-				victim.Weaken(1.5) // Powering up weaken power from .5 (Testing)
+				victim.Weaken(1)
 				victim.adjustToxLoss(rand(0.5,1.25))
 				seed.do_thorns(victim,src)
 			else // Adding a non-grab attack chance since we will be increasing the rate at which the vines check for nearby targets
 				src.visible_message("<span class='danger'>Tendrils lash out from \the [src] and swipe across [victim]!</span>")
-				victim.Weaken(3)
+				victim.Weaken(1.5)
 				victim.adjustToxLoss(rand(1,3.5))
 				attack_mob(victim,rand(2,3.5))

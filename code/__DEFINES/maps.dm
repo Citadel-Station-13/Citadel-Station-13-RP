@@ -78,6 +78,9 @@ require only minor tweaks.
 #define ZTRAIT_UP "Up"
 #define ZTRAIT_DOWN "Down"
 
+// string - level name
+#define ZTRAIT_NAME "Name"
+
 // enum - how space transitions should affect this level
 #define ZTRAIT_LINKAGE "Linkage"
 	// UNAFFECTED if absent - no space transitions
@@ -89,6 +92,9 @@ require only minor tweaks.
 
 // string - type path of the z-level's baseturf (defaults to space)
 #define ZTRAIT_BASETURF "Baseturf"
+
+/// Default gas string. Use for things like setting planetary gasmixtures and such. ATMOSPHERE_ID_USE_ZTRAIT to have a turf use it.
+#define ZTRAIT_DEFAULT_ATMOS "Default Gas String"
 
 // default trait definitions, used by SSmapping
 #define ZTRAITS_CENTCOM list(ZTRAIT_CENTCOM = TRUE)

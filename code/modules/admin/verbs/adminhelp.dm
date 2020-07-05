@@ -623,6 +623,11 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		world.Export("[servers[I]]?[list2params(message)]")
 
 
+/proc/send2irc(msg,msg2)
+	msg = replacetext(replacetext(msg, "\proper", ""), "\improper", "")
+	msg2 = replacetext(replacetext(msg2, "\proper", ""), "\improper", "")
+	world.TgsTargetedChatBroadcast("[msg] | [msg2]", TRUE)
+
 /proc/ircadminwho()
 	var/list/message = list("Admins: ")
 	var/list/admin_keys = list()

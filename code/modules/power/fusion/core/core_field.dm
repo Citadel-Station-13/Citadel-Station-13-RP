@@ -129,7 +129,7 @@
 	var/added_particles = FALSE
 	var/datum/gas_mixture/uptake_gas = owned_core.loc.return_air()
 	if(uptake_gas)
-		uptake_gas = uptake_gas.remove_by_flag(XGM_GAS_FUSION_FUEL, rand(50,100))
+		uptake_gas = uptake_gas.remove_by_flag(GAS_FLAG_FUSION_FUEL, rand(50,100))
 	if(uptake_gas && uptake_gas.total_moles)
 		for(var/gasname in uptake_gas.gas)
 			if(uptake_gas.gas[gasname]*10 > dormant_reactant_quantities[gasname])
@@ -298,8 +298,8 @@
 	var/turf/T = get_turf(src)
 	if(istype(T))
 		var/datum/gas_mixture/plasma = new
-		plasma.adjust_gas("oxygen", (size*100), 0)
-		plasma.adjust_gas("phoron", (size*100), 0)
+		plasma.adjust_gas(/datum/gas/oxygen, (size*100), 0)
+		plasma.adjust_gas(/datum/gas/phoron, (size*100), 0)
 		plasma.temperature = (plasma_temperature/2)
 		plasma.update_values()
 		T.assume_air(plasma)
@@ -514,11 +514,11 @@
 		global_announcer.autosay(warnmessage, "Field Stability Monitor", "Engineering")
 		stable = 0 //we know we're not stable, so let's not state the safe message.
 		sleep(20)
-	return
+		return
 	if(percent_unstable < warnpoint && stable == 0) //The field is stable again. Let's set our safe variable and state the safe message.
 		global_announcer.autosay(stablemessage, "Field Stability Monitor", "Engineering")
 		stable = 1
-	return
+		return
 
 //Reaction radiation is fairly buggy and there's at least three procs dealing with radiation here, this is to ensure constant radiation output.
 /obj/effect/fusion_em_field/proc/radiation_scale()
@@ -625,8 +625,8 @@
 		var/turf/TT = get_turf(pick(turfs_in_range))
 		if(istype(TT))
 			var/datum/gas_mixture/plasma = new
-			plasma.adjust_gas("oxygen", (size*100), 0)
-			plasma.adjust_gas("phoron", (size*100), 0)
+			plasma.adjust_gas(/datum/gas/oxygen, (size*100), 0)
+			plasma.adjust_gas(/datum/gas/phoron, (size*100), 0)
 			plasma.temperature = (plasma_temperature/2)
 			plasma.update_values()
 			TT.assume_air(plasma)
@@ -641,8 +641,8 @@
 	var/turf/TT = get_turf(owned_core)
 	if(istype(TT))
 		var/datum/gas_mixture/plasma = new
-		plasma.adjust_gas("oxygen", (size*100), 0)
-		plasma.adjust_gas("phoron", (size*100), 0)
+		plasma.adjust_gas(/datum/gas/oxygen, (size*100), 0)
+		plasma.adjust_gas(/datum/gas/phoron, (size*100), 0)
 		plasma.temperature = (plasma_temperature/2)
 		plasma.update_values()
 		TT.assume_air(plasma)

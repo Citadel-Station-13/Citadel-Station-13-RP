@@ -1,14 +1,12 @@
-/turf/simulated/var/zone/zone
-/turf/simulated/var/open_directions
+/turf
+	var/needs_air_update = FALSE
+	var/datum/gas_mixture/air
 
-/turf/var/needs_air_update = 0
-/turf/var/datum/gas_mixture/air
-
-/turf/simulated/proc/update_graphic(list/graphic_add = null, list/graphic_remove = null)
-	if(LAZYLEN(graphic_add))
-		add_overlay(graphic_add, priority = TRUE)
-	if(LAZYLEN(graphic_remove))
-		cut_overlay(graphic_remove, priority = TRUE)
+/turf/simulated
+	var/zone/zone
+	var/open_directions
+	/// Do we show gas overlays?
+	var/allow_gas_overlays = TRUE
 
 /turf/proc/update_air_properties()
 	var/block = c_airblock(src)
@@ -238,25 +236,14 @@
 	//Create gas mixture to hold data for passing
 	var/datum/gas_mixture/GM = new
 
-	GM.adjust_multi("oxygen", oxygen, "carbon_dioxide", carbon_dioxide, "nitrogen", nitrogen, "phoron", phoron)
-	GM.temperature = temperature
+	GM.copy_from_turf(src)
 
 	return GM
 
 /turf/remove_air(amount as num)
 	var/datum/gas_mixture/GM = new
-
-	var/sum = oxygen + carbon_dioxide + nitrogen + phoron
-	if(sum>0)
-		GM.gas["oxygen"] = (oxygen/sum)*amount
-		GM.gas["carbon_dioxide"] = (carbon_dioxide/sum)*amount
-		GM.gas["nitrogen"] = (nitrogen/sum)*amount
-		GM.gas["phoron"] = (phoron/sum)*amount
-
-	GM.temperature = temperature
-	GM.update_values()
-
-	return GM
+	GM.copy_from_turf(src)
+	return GM.remove(amount)
 
 /turf/simulated/assume_air(datum/gas_mixture/giver)
 	var/datum/gas_mixture/my_air = return_air()
@@ -292,9 +279,8 @@
 		return air
 
 /turf/proc/make_air()
-	air = new/datum/gas_mixture
-	air.temperature = temperature
-	air.adjust_multi("oxygen", oxygen, "carbon_dioxide", carbon_dioxide, "nitrogen", nitrogen, "phoron", phoron)
+	air = new /datum/gas_mixture
+	air.copy_from_turf(src)
 	air.group_multiplier = 1
 	air.volume = CELL_VOLUME
 

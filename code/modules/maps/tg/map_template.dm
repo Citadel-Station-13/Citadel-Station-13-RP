@@ -30,6 +30,9 @@ var/list/global/map_templates = list()
 
 	var/fixed_orientation = FALSE		//for ruins
 
+	/// Zlevel traits
+	var/list/ztraits
+
 /datum/map_template/New(path = null, rename = null)
 	if(path)
 		mappath = path
@@ -88,7 +91,7 @@ var/list/global/map_templates = list()
 
 	admin_notice("<span class='danger'>Submap initializations finished.</span>", R_DEBUG)
 
-/datum/map_template/proc/load_new_z(var/centered = FALSE, var/orientation = SOUTH)
+/datum/map_template/proc/load_new_z(var/centered = FALSE, var/orientation = SOUTH, list/traits = src.ztraits || list(ZTRAIT_AWAY = TRUE))
 	var/x = 1
 	var/y = 1
 
@@ -99,6 +102,7 @@ var/list/global/map_templates = list()
 	var/list/bounds = maploader.load_map(file(mappath), x, y, no_changeturf = TRUE, orientation=orientation)
 	if(!bounds)
 		return FALSE
+	SSmapping.add_new_zlevel(name, traits)
 
 //	repopulate_sorted_areas()
 

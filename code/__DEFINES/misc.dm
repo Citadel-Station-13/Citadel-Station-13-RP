@@ -9,6 +9,9 @@
 #define TEXT_EAST			"[EAST]"
 #define TEXT_WEST			"[WEST]"
 
+/// world.icon_size
+#define PIXELS 32
+
 //These get to go at the top, because they're special
 //You can use these defines to get the typepath of the currently running proc/verb (yes procs + verbs are objects)
 /* eg:
@@ -24,9 +27,6 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 //define THIS_PROC_TYPE_WEIRD_STR_WITH_ARGS "[THIS_PROC_TYPE_WEIRD]([args.Join(",")])" //Ditto
 
 #define NOT_IMPLEMENTED "NOT_IMPLEMENTED"
-
-//Human Overlays Indexes
-//INSERT DEFS HERE
 
 #define get_turf(A) (get_step(A, 0))
 

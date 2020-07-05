@@ -28,7 +28,7 @@
 		if("delta")
 			level = SEC_LEVEL_DELTA
 
-	//Will not be announced if you try to set to the same level as it already is
+	//Will not be announced if you try to set to the same level as it already is. Also To-Do. Add multi sound support for alerts..
 	if(level >= SEC_LEVEL_GREEN && level <= SEC_LEVEL_DELTA && level != security_level)
 		switch(level)
 			if(SEC_LEVEL_GREEN)
@@ -54,23 +54,22 @@
 				security_level = SEC_LEVEL_ORANGE
 			if(SEC_LEVEL_BLUE)
 				if(security_level < SEC_LEVEL_BLUE)
-					security_announcement_up.Announce("[config_legacy.alert_desc_blue_upto]", "Attention! Alert level elevated to blue")
+					security_announcement_up.Announce("[config_legacy.alert_desc_blue_upto]", "Attention! Alert level elevated to blue", new_sound = 'sound/misc/voybluealert.ogg')
 				else
-					security_announcement_down.Announce("[config_legacy.alert_desc_blue_downto]", "Attention! Alert level lowered to blue")
+					security_announcement_down.Announce("[config_legacy.alert_desc_blue_downto]", "Attention! Alert level lowered to blue", new_sound = 'sound/misc/voybluealert.ogg')
 				security_level = SEC_LEVEL_BLUE
 			if(SEC_LEVEL_RED)
 				if(security_level < SEC_LEVEL_RED)
-					security_announcement_up.Announce("[config_legacy.alert_desc_red_upto]", "Attention! Code red!")
-					security_announcement_up.Announce(new_sound = 'sound/effects/carter_alarm_cut.ogg')
+					security_announcement_up.Announce("[config_legacy.alert_desc_red_upto]", "Attention! Code red!", new_sound = 'sound/misc/voyalert.ogg')
 				else
-					security_announcement_down.Announce("[config_legacy.alert_desc_red_downto]", "Attention! Code red!")
+					security_announcement_down.Announce("[config_legacy.alert_desc_red_downto]", "Attention! Code red!", new_sound = 'sound/misc/voyalert.ogg')
 				security_level = SEC_LEVEL_RED
 				/*	- At the time of commit, setting status displays didn't work properly
 				var/obj/machinery/computer/communications/CC = locate(/obj/machinery/computer/communications,world)
 				if(CC)
 					CC.post_status("alert", "redalert")*/
 			if(SEC_LEVEL_DELTA)
-				security_announcement_up.Announce("[config_legacy.alert_desc_delta]", "Attention! Delta alert level reached!", new_sound = 'sound/effects/siren.ogg')
+				security_announcement_up.Announce("[config_legacy.alert_desc_delta]", "Attention! Delta alert level reached!", new_sound = 'sound/misc/deltakalaxon.ogg')
 				security_level = SEC_LEVEL_DELTA
 
 		var/newlevel = get_security_level()

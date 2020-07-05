@@ -1,0 +1,4 @@
+author: "Zandario"
+delete-after: True
+changes: 
+  - code_imp: "admin_only changed from TRUE -> FALSE on /datum/tgs_chat_command/endnotify"

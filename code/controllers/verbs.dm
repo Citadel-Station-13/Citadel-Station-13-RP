@@ -92,7 +92,6 @@
 	options["LEGACY: radio_controller"] = radio_controller
 	options["LEGACY: paiController"] = paiController
 	options["LEGACY: cameranet"] = cameranet
-	options["LEGACY: gas_data"] = gas_data
 	options["LEGACY: plant_controller"] = plant_controller
 
 	var/pick = input(mob, "Choose a controller to debug/view variables of.", "VV controller:") as null|anything in options
