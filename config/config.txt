@@ -18,4 +18,11 @@ $include entries/lobby.txt
 
 ## Uncomment to enable minimap generation
 MINIMAPS_ENABLED
- 
+
+## System command that invokes youtube-dl, used by Play Internet Sound.
+## You can install youtube-dl with
+## "pip install youtube-dl" if you have pip installed
+## from https://github.com/rg3/youtube-dl/releases
+## or your package manager
+## The default value assumes youtube-dl is in your system PATH
+# INVOKE_YOUTUBEDL youtube-dl

@@ -163,8 +163,7 @@
 
 #undef SAVEFILE_VERSION_MAX
 #undef SAVEFILE_VERSION_MIN
-#define TESTING_1 TRUE
-#ifdef TESTING_1
+#ifdef TESTING
 //DEBUG
 //Some crude tools for testing savefiles
 //path is the savefile path

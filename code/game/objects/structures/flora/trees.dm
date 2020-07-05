@@ -129,15 +129,13 @@
 	adjust_health(-power / 100, TRUE) // Kills most trees in one lightning strike.
 	..()
 
-/obj/structure/flora/tree/get_description_interaction()
-	var/list/results = list()
+/obj/structure/flora/tree/get_description_interaction(mob/user)
+	. = list()
 
 	if(!is_stump)
-		results += "[desc_panel_image("hatchet")]to cut down this tree into logs.  Any sharp and strong weapon will do."
+		. += "[desc_panel_image("hatchet", user)]to cut down this tree into logs.  Any sharp and strong weapon will do."
 
-	results += ..()
-
-	return results
+	. += ..()
 
 // Subtypes.
 

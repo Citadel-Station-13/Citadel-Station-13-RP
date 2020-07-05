@@ -161,13 +161,13 @@ var/list/DEPT_FREQS = list(AI_FREQ, COMM_FREQ, ENG_FREQ, ENT_FREQ, MED_FREQ, SEC
 		return "syndradio"
 	// CentCom channels (deathsquid and ert)
 	if(frequency in CENT_FREQS)
-		return "centradio"
+		return "centcomradio"
 	// command channel
 	if(frequency == COMM_FREQ)
 		return "comradio"
 	// AI private channel
 	if(frequency == AI_FREQ)
-		return "airadio"
+		return "aiprivradio"
 	// department radio formatting (poorly optimized, ugh)
 	if(frequency == SEC_FREQ)
 		return "secradio"
@@ -178,9 +178,9 @@ var/list/DEPT_FREQS = list(AI_FREQ, COMM_FREQ, ENG_FREQ, ENT_FREQ, MED_FREQ, SEC
 	if(frequency == MED_FREQ)
 		return "medradio"
 	if(frequency == SUP_FREQ) // cargo
-		return "supradio"
+		return "suppradio"
 	if(frequency == SRV_FREQ) // service
-		return "srvradio"
+		return "servradio"
 	if(frequency == EXP_FREQ) // explorer
 		return "expradio"
 	if(frequency == ENT_FREQ) // entertainment

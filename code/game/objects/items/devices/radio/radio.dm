@@ -267,17 +267,13 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 /obj/item/radio/Topic(href, href_list)
 	if(..())
 		return
-	to_chat(world, "[href]")
-	to_chat(world, "[href_list["src"] == REF(src) ? "It s me!" : "Nope, not me!"]")
-	for(var/ree in href_list)
-		to_chat(world, "[ree]: [href_list[ree]],")
+
 	usr.set_machine(src)
 	if("frequency" in href_list) //the fuck, why are switches not working?
 		if(freqlock)
 			return
 		var/tune = (frequency + text2num(href_list["freq"])) || MIN_FREQ
-		if(href_list["input"])
-			to_chat(world, "INPUT")
+		if(href_list["input"]) //not access locked now, because that's fucking stupid
 			var/min = format_frequency(freerange ? MIN_FREE_FREQ : MIN_FREQ)
 			var/max = format_frequency(freerange ? MAX_FREE_FREQ : MAX_FREQ)
 			tune = input("Tune frequency ([min]-[max]):", name, format_frequency(frequency)) as null|num //old input
@@ -298,7 +294,6 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	else if("listen" in href_list)
 		// listening = !listening
 		ToggleReception()
-		to_chat(world, "HEY, LISTEN!")
 		. = TRUE
 	else if("broadcast" in href_list)
 		// broadcasting = !broadcasting
@@ -330,12 +325,6 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 		if(A && target)
 			A.ai_actual_track(target)
 		. = TRUE
-
-	// if("spec_freq")
-	// 	var freq = href_list["spec_freq"]
-	// 	if(has_channel_access(usr, freq))
-	// 		set_frequency(text2num(freq))
-	// 	. = TRUE
 
 	if(.)
 		SSnanoui.update_uis(src)

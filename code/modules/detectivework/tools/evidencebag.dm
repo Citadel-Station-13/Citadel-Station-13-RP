@@ -5,9 +5,8 @@
 	desc = "An empty evidence bag."
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "evidenceobj"
-	item_state = null
+	item_state = ""
 	w_class = ITEMSIZE_SMALL
-	var/obj/item/stored_item = null
 
 /obj/item/evidencebag/afterattack(obj/item/I, mob/user,proximity)
 	. = ..()
@@ -50,15 +49,13 @@
 		if(istype(I.loc, /obj/item/storage))	//in a container.
 			var/sdepth = I.storage_depth(user)
 			if (sdepth > MAX_STORAGE_REACH)
+				to_chat(user, "<span class='notice'>Storage depth too much.</span>")
 				return	//too deeply nested to access
 
-			var/obj/item/sdtorage/U = I.loc
+			var/obj/item/storage/U = I.loc
 			user.client.screen -= I
 			U.contents.Remove(I)
-		else if(user.item_is_in_hands(I))
-			user.drop_from_inventory(I)
-		else
-			return
+		user.drop_from_inventory(I) //weird, but it works i guess??
 
 	user.visible_message("[user] puts [I] into [src].", "<span class='notice'>You put [I] inside [src].</span>",\
 	"<span class='italics'>You hear a rustle as someone puts something into a plastic bag.</span>")
@@ -70,13 +67,11 @@
 	in_evidence.layer = FLOAT_LAYER
 	in_evidence.pixel_x = 0
 	in_evidence.pixel_y = 0
-	add_overlay(list(in_evidence)) //requires list!
-	add_overlay(list("evidence"))	//should look nicer for transparent stuff. not really that important, but hey.
+	add_overlay(in_evidence)
+	add_overlay("evidence")	//should look nicer for transparent stuff. not really that important, but hey.
 
 	desc = "An evidence bag containing [I]. [I.desc]"
-	// I.forceMove(src)
-	I.loc = src
-	stored_item = I
+	I.forceMove(src)
 	w_class = I.w_class
 	return TRUE
 

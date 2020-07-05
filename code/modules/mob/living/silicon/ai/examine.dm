@@ -31,12 +31,4 @@
 		. += "<br>"
 		. += hardware.get_examine_desc()
 
-	// . += ..() this is showlaws when ghost examines
-	user.showLaws(src)
-
-/mob/proc/showLaws(var/mob/living/silicon/S)
-	return
-
-/mob/observer/dead/showLaws(var/mob/living/silicon/S)
-	if(antagHUD || is_admin(src))
-		S.laws.show_laws(src)
+	. += ..()

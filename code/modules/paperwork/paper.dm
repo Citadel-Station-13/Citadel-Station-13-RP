@@ -68,18 +68,6 @@
 	desc = "A gift card with a heart on the cover."
 	icon_state = "greetingcard_heart"
 
-/obj/item/paper/card/New()
-	..()
-	pixel_y = rand(-8, 8)
-	pixel_x = rand(-9, 9)
-	stamps = null
-
-	if(info != initial(info))
-		info = html_encode(info)
-		info = replacetext(info, "\n", "<BR>")
-		info = parsepencode(info)
-		return
-
 /obj/item/paper/alien
 	name = "alien tablet"
 	desc = "It looks highly advanced"
@@ -100,25 +88,23 @@
 
 //lipstick wiping is in code/game/objects/items/weapons/cosmetics.dm!
 
-/obj/item/paper/New()
-	..()
+/obj/item/paper/Initialize()
+	. = ..()
 	pixel_y = rand(-8, 8)
 	pixel_x = rand(-9, 9)
-	stamps = ""
+	//update_icon_state()
+	update_icon()
 
-	if(name != "paper")
-		desc = "This is a paper titled '" + name + "'."
+	if(name != "paper" && !istype(src, /obj/item/paper/alien))
+		name = "paper- [name]"
 
 	if(info != initial(info))
 		info = html_encode(info)
 		info = replacetext(info, "\n", "<BR>")
 		info = parsepencode(info)
 
-	spawn(2)
-		update_icon()
-		update_space(info)
-		updateinfolinks()
-		return
+	update_space(info)
+	updateinfolinks()
 
 /obj/item/paper/update_icon()
 	if(icon_state == "paper_talisman")
@@ -135,15 +121,14 @@
 	free_space -= length(strip_html_properly(new_text))
 
 /obj/item/paper/examine(mob/user)
-	..()
-	if(in_range(user, src) || istype(user, /mob/observer/dead))
+	. = ..()
+	if(in_range(user, src) || isobserver(user))
 		show_content(usr)
 	else
-		to_chat(user, "<span class='notice'>You have to go closer if you want to read it.</span>")
-	return
+		. += "<span class='notice'>You have to go closer if you want to read it.</span>"
 
 /obj/item/paper/proc/show_content(var/mob/user, var/forceshow=0)
-	if(!(istype(user, /mob/living/carbon/human) || istype(user, /mob/observer/dead) || istype(user, /mob/living/silicon)) && !forceshow)
+	if(!(ishuman(user) || isobserver(user) || istype(user, /mob/living/silicon)) && !forceshow)
 		user << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[stars(info)][stamps]</BODY></HTML>", "window=[name]")
 		onclose(user, "[name]")
 	else
@@ -155,19 +140,22 @@
 	set category = "Object"
 	set src in usr
 
-	if((CLUMSY in usr.mutations) && prob(50))
-		to_chat(usr, "<span class='warning'>You cut yourself on the paper.</span>")
+	if(usr.incapacitated())// || !usr.is_literate())
 		return
+	if(ishuman(usr))
+		var/mob/living/carbon/human/H = usr
+		if((CLUMSY in H.mutations) && prob(25))
+			to_chat(H, "<span class='warning'>You cut yourself on the paper! Ahhhh! Ahhhhh!</span>")
+			//H.damageoverlaytemp = 9001
+			//H.update_damage_hud()
+			return
 	var/n_name = sanitizeSafe(input(usr, "What would you like to label the paper?", "Paper Labelling", null)  as text, MAX_NAME_LEN)
+	if((loc == usr && usr.stat == CONSCIOUS))
+		name = "paper[(n_name ? text("- '[n_name]'") : null)]"
+	add_fingerprint(usr)
 
-	// We check loc one level up, so we can rename in clipboards and such. See also: /obj/item/photo/rename()
-	if((loc == usr || loc.loc && loc.loc == usr) && usr.stat == 0 && n_name)
-		name = n_name
-		if(n_name != "paper")
-			desc = "This is a paper titled '" + name + "'."
-
-		add_fingerprint(usr)
-	return
+/obj/item/paper/proc/reset_spamflag()
+	spam_flag = FALSE
 
 /obj/item/paper/attack_self(mob/living/user as mob)
 	if(user.a_intent == INTENT_HARM)
@@ -178,17 +166,18 @@
 		info = stars(info,85)
 		user.visible_message("\The [user] crumples \the [src] into a ball!")
 		icon_state = "scrap"
-		return
+		return ..()
+
+	/// ONLY USED FOR APRIL FOOLS
 	user.examinate(src)
 	if(rigged && (Holiday == "April Fool's Day"))
-		if(spam_flag == 0)
-			spam_flag = 1
-			playsound(loc, 'sound/items/bikehorn.ogg', 50, 1)
-			spawn(20)
-				spam_flag = 0
-	return
+		if(!spam_flag)
+			spam_flag = TRUE
+			playsound(loc, 'sound/items/bikehorn.ogg', 50, TRUE)
+			addtimer(CALLBACK(src, .proc/reset_spamflag), 20)
+	. = ..()
 
-/obj/item/paper/attack_ai(var/mob/living/silicon/ai/user as mob)
+/obj/item/paper/attack_ai(mob/living/silicon/ai/user as mob)
 	var/dist
 	if(istype(user) && user.camera) //is AI
 		dist = get_dist(src, user.camera)

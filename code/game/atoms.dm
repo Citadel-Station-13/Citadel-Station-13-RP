@@ -231,10 +231,6 @@
 
 	if(desc)
 		. += desc
-	if(description_fluff)
-		. += description_fluff
-	if(description_info)
-		. += "<span class='info'>[description_info]</span>"
 
 	/*
 	if(custom_materials)

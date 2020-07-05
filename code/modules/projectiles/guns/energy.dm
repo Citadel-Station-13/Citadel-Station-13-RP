@@ -216,15 +216,13 @@
 	START_PROCESSING(SSobj, src)
 	update_icon()
 
-/obj/item/gun/energy/get_description_interaction()
-	var/list/results = list()
+/obj/item/gun/energy/get_description_interaction(mob/user)
+	. = list()
 
 	if(!battery_lock && !self_recharge)
 		if(power_supply)
-			results += "[desc_panel_image("offhand")]to remove the weapon cell."
+			. += "[desc_panel_image("offhand", user)]to remove the weapon cell."
 		else
-			results += "[desc_panel_image("weapon cell")]to add a new weapon cell."
+			. += "[desc_panel_image("weapon cell", user)]to add a new weapon cell."
 
-	results += ..()
-
-	return results
+	. += ..()

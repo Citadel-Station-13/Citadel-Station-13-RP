@@ -63,7 +63,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/card/id/guest/process()
+/obj/item/card/id/guest/process() //yikes, why not use a callback?
 	if(expired == 0 && world.time >= expiration_time)
 		visible_message("<span class='warning'>\The [src] flashes a few times before turning red.</span>")
 		icon_state = "guest_invalid"
@@ -77,6 +77,7 @@
 
 /obj/machinery/computer/guestpass
 	name = "guest pass terminal"
+	desc = "Prints guest passes which guests can use to access areas."
 	icon_state = "guest"
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
@@ -94,8 +95,8 @@
 	var/list/internal_log = list()
 	var/mode = 0  // 0 - making pass, 1 - viewing logs
 
-/obj/machinery/computer/guestpass/New()
-	..()
+/obj/machinery/computer/guestpass/Initialize()
+	. = ..()
 	uid = "[rand(100,999)]-G[rand(10,99)]"
 
 

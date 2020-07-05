@@ -19,7 +19,7 @@
 		if (overall_fireloss < maxHealth * 0.5)
 			. += "<span class='warning'>It looks slightly charred.</span>"
 		else
-			. += "<span class='warning'><B>It looks severely burnt and heat-warped!</B></span>"
+			. += "<span class='warning'>It looks severely burnt and heat-warped!</span>"
 	if (health < -maxHealth*0.5)
 		. += "<span class='warning'>It looks barely operational.</span>"
 	if (fire_stacks < 0)
@@ -35,7 +35,7 @@
 	if(cell && cell.charge <= 0)
 		. += "<span class='warning'>Its battery indicator is blinking red!</span>"
 	if(!has_power)
-		. += "<span class='warning'>It appears to be running on backup power.</span>\n"
+		. += "<span class='warning'>It appears to be running on backup power.</span>"
 	// :COGGERS:
 	// if(is_servant_of_ratvar(src) && get_dist(user, src) <= 1 && !stat) //To counter pseudo-stealth by using headlamps
 	// 	. += "<span class='warning'>Its eyes are glowing a blazing yellow!</span>"
@@ -51,21 +51,23 @@
 		if(DEAD)
 			. += "<span class='deadsay'>It looks like its system is corrupted and requires a reset.</span>"
 
-	. += attempt_vr(src, "examine_bellies_borg", args) //VOREStation Edit
+	var/vor = attempt_vr(src, "examine_bellies_borg", args) //VOREStation Edit
+	if(vor)
+		. += vor
 
 	// VOREStation Edit: Start
 	if(ooc_notes)
-		. += "<span class='deptradio'>OOC Notes:</span> <a href='?src=[REF(src)];ooc_notes=1'>\[View\]</a>\n"
+		. += "<span class='deptradio'>OOC Notes:</span> <a href='?src=[REF(src)];ooc_notes=1'>\[View\]</a>"
 	// VOREStation Edit: End
 
 	if(print_flavor_text())
-		. += "\n[print_flavor_text()]\n"
+		. += "[print_flavor_text()]"
 
 	if(pose)
 		if(findtext(pose, ".", length(pose)) == 0 && findtext(pose, "!", length(pose)) == 0 && findtext(pose, "?", length(pose)) == 0)
 			pose = addtext(pose, ".") //Makes sure all emotes end with a period.
-		. += "\nIt is [pose]"
+		. += "It is [pose]"
 
 	. += "*---------*</span>"
-	user.showLaws(src)
+	//no. make /them/ state laws
 	. += ..()

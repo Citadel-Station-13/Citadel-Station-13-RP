@@ -25,15 +25,15 @@
 		return description_antag
 	return
 
-//DEPRICATED
 // This one is slightly different, in that it must return a list.
-/atom/proc/get_description_interaction()
-	return list()
+/atom/proc/get_description_interaction(mob/user)
+	. = list()
 
-//DEPRICATED
 // Quickly adds the boilerplate code to add an image and padding for the image.
-// /proc/desc_panel_image(icon_state)
-// 	return "\icon[description_icons[icon_state]][EXAMINE_PANEL_PADDING]"
+/proc/desc_panel_image(icon_state, mob/user)
+	if(!(icon_state in description_icons))
+		return "UNKNOWN "
+	return "[icon2html(description_icons[icon_state], user)][EXAMINE_PANEL_PADDING]" //this is only for tool icon and things
 
 /mob/living/get_description_fluff()
 	if(flavor_text) //Get flavor text for the green text.
@@ -44,44 +44,32 @@
 /mob/living/carbon/human/get_description_fluff()
 	return print_flavor_text(0)
 
-/* The examine panel itself DEPRICATED  */
+/client
+	var/list/desc_holder = list()
 
-// /client/var/description_holders[0]
+/client/proc/update_description_holders(mob/user, atom/A, update_antag_info) //user is needed for icon2html
+	var/istate = A.icon_state ? A.icon_state : null //needed because apparently mappers don't use subtypes
+	desc_holder["name"] = "[icon2html(A, user, istate)][EXAMINE_PANEL_PADDING]<font size='4'>[A.name]</font>"
+	desc_holder["desc"] = A.desc //the default examine text.
+	desc_holder["atom_info"] = A.get_description_info()
+	desc_holder["atom_interaction"] = A.get_description_interaction(user)
+	desc_holder["atom_fluff"] = A.get_description_fluff()
+	if(!update_antag_info)
+		return
+	desc_holder["atom_antag"] = A.get_description_antag()
 
-// /client/proc/update_description_holders(atom/A, update_antag_info=0)
-// 	description_holders["info"] = A.get_description_info()
-// 	description_holders["fluff"] = A.get_description_fluff()
-// 	description_holders["antag"] = (update_antag_info)? A.get_description_antag() : ""
-// 	description_holders["interactions"] = A.get_description_interaction()
+//override examinate verb to update description holders when things are examined
+/mob/examinate(atom/A as mob|obj|turf in view())
+	. = ..()
+	if(. == FALSE)
+		client.desc_holder = list()
+	else
+		var/is_antag = ((mind && mind.special_role) || isobserver(src)) //ghosts don't have minds (plus people can just check the code to see this)
+		client.update_description_holders(src, A, is_antag)
 
-// 	description_holders["name"] = "[A.name]"
-// 	description_holders["icon"] = "\icon[A]"
-// 	description_holders["desc"] = A.desc
-
-// /mob/Stat()
-// 	. = ..()
-// 	if(client && statpanel("Examine")) go fuck yourself
-// 		var/description_holders = client.description_holders
-// 		stat(null,"[description_holders["icon"]]    <font size='5'>[description_holders["name"]]</font>") //The name, written in big letters.
-// 		stat(null,"[description_holders["desc"]]") //the default examine text.
-// 		if(description_holders["info"])
-// 			stat(null,"<span class='info'><b>[description_holders["info"]]</b></span>") //Blue, informative text.
-// 		if(description_holders["interactions"])
-// 			for(var/line in description_holders["interactions"])
-// 				stat(null, "<span class='info'><b>[line]</b></span>")
-// 		if(description_holders["fluff"])
-// 			stat(null,"<font color='#298A08'><b>[description_holders["fluff"]]</b></font>") //Yellow, fluff-related text.
-// 		if(description_holders["antag"])
-// 			stat(null,"<font color='#8A0808'><b>[description_holders["antag"]]</b></font>") //Red, malicious antag-related text
-
-// //override examinate verb to update description holders when things are examined
-// /mob/examinate(atom/A as mob|obj|turf in view())
-// 	if(..())
-// 		return 1
-
-// 	update_examine_panel(A)
-
-// /mob/proc/update_examine_panel(var/atom/A)
-// 	if(client)
-// 		var/is_antag = ((mind && mind.special_role) || isobserver(src)) //ghosts don't have minds
-// 		client.update_description_holders(A, is_antag)
+/mob/proc/update_examine_panel(atom/A)
+	if(!A)
+		client.desc_holder = list()
+	else if(client)
+		var/is_antag = ((mind && mind.special_role) || isobserver(src)) //ghosts don't have minds
+		client.update_description_holders(src, A, is_antag)

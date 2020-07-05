@@ -243,17 +243,14 @@
 		else
 			to_chat(user, "<span class='notice'>This cell is not fitted for [src].</span>")
 
-/obj/item/melee/baton/get_description_interaction()
-	var/list/results = list()
-
+/obj/item/melee/baton/get_description_interaction(mob/user)
+	. = list()
 	if(bcell)
-		results += "[desc_panel_image("offhand")]to remove the weapon cell."
+		. += "[desc_panel_image("offhand", user)]to remove the weapon cell."
 	else
-		results += "[desc_panel_image("weapon cell")]to add a new weapon cell."
+		. += "[desc_panel_image("weapon cell", user)]to add a new weapon cell."
 
-	results += ..()
-
-	return results
+	. += ..()
 
 // Rare version of a baton that causes lesser lifeforms to really hate the user and attack them.
 /obj/item/melee/baton/shocker

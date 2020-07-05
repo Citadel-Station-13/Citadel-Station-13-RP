@@ -152,18 +152,18 @@
 		return
 	. = ..()
 
-/obj/structure/construction/get_description_interaction()
+/obj/structure/construction/get_description_interaction(mob/ser)
 	. = list()
 	switch(stage)
 		if(FRAME_UNFASTENED)
 			. += list(
-				"[desc_panel_image("screwdriver")]to continue construction.",
-				"[desc_panel_image("welder")]to deconstruct.")
+				"[desc_panel_image("screwdriver", user)]to continue construction.",
+				"[desc_panel_image("welder", user)]to deconstruct.")
 		if(FRAME_FASTENED)
 			. += list(
-				"[desc_panel_image("cable coil")]to continue construction.",
-				"[desc_panel_image("screwdriver")]to reverse construction.")
+				"[desc_panel_image("cable coil", user)]to continue construction.",
+				"[desc_panel_image("screwdriver", user)]to reverse construction.")
 		if(FRAME_WIRED)
 			. += list(
-				"[desc_panel_image("screwdriver")]to finish construction.",
-				"[desc_panel_image("wirecutters")]to reverse construction.")
+				"[desc_panel_image("screwdriver", user)]to finish construction.",
+				"[desc_panel_image("wirecutters", user)]to reverse construction.")
