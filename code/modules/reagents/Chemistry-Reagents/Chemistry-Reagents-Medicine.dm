@@ -1289,7 +1289,7 @@
 		if(dose >= 5 && M.paralysis < 40)
 			M.AdjustParalysis(1)
 		if(prob(33))
-			H.Confuse(10)
+			M.Confuse(10)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		for(var/obj/item/organ/I in H.internal_organs)

@@ -191,8 +191,8 @@
 
 /obj/item/reagent_containers/hypospray/autoinjector/ateopine/do_injection(mob/living/carbon/human/H, mob/living/user)
 	. = ..()
-    if(!istype(H)
-        return
+	if(!istype(H))
+		return
 	var/error = can_resus(H)
 	if(error)
 		return // One of the conditions returned true, nothing will happen.
