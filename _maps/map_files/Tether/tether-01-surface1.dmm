@@ -31978,11 +31978,11 @@
 "mgc" = (
 /obj/machinery/embedded_controller/radio/airlock/access_controller{
 	id_tag = "ut_airlock_aux";
-	pixel_y = 26;
+	pixel_y = -26;
 	req_one_access = list(5,10,19,43,44,48,62,47)
 	},
-/turf/simulated/floor/tiled/techfloor,
-/area/tether/surfacebase/public_garden)
+/turf/simulated/floor/plating,
+/area/maintenance/lower/public_garden_maintenence)
 "mos" = (
 /obj/item/clothing/suit/storage/seromi/cloak/standard/rainbow,
 /obj/item/clothing/gloves/rainbow,
@@ -32984,9 +32984,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/lower/first_west)
 "uBf" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
+/obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/embedded_controller/radio/airlock/access_controller{
 	id_tag = "ut_airlock";
 	pixel_y = 26;
@@ -40382,10 +40380,10 @@ aah
 aah
 vBA
 xHr
-xHr
+mgc
 vBA
 qMQ
-mgc
+yio
 aTS
 wYi
 wYi
@@ -42843,7 +42841,7 @@ atW
 atj
 hCR
 agR
-uBf
+gwG
 inW
 kuJ
 agR
@@ -43411,7 +43409,7 @@ bPI
 aCc
 aip
 agR
-oYE
+uBf
 oYE
 oYE
 agR
