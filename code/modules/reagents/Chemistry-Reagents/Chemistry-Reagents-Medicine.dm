@@ -1279,7 +1279,6 @@
 
 /datum/reagent/ateopine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	var/chem_effective = 1
-	var/mob/living/carbon/human/H = M
 	if(alien != IS_DIONA)
 		M.add_chemical_effect(CE_STABLE, 5)
 		M.adjustBrainLoss(-5 * removed * chem_effective)
@@ -1292,10 +1291,11 @@
 		if(prob(33))
 			H.Confuse(10)
 	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
 		for(var/obj/item/organ/I in H.internal_organs)
 			if(I.robotic >= ORGAN_ROBOT || !(I.organ_tag in list(O_LUNGS, O_HEART)))
 				continue
-			if(I.damage > 15) // Fixes their heart and lungs about 5 points or until it hits 15.
+			if(I.damage > 10) // Fixes their heart and lungs about 5 points or until it hits 10.
 				I.damage = max(I.damage - 1 * removed * chem_effective, 0)
 				H.Confuse(5)
 

@@ -191,6 +191,8 @@
 
 /obj/item/reagent_containers/hypospray/autoinjector/ateopine/do_injection(mob/living/carbon/human/H, mob/living/user)
 	. = ..()
+    if(!istype(H)
+        return
 	var/error = can_resus(H)
 	if(error)
 		return // One of the conditions returned true, nothing will happen.
@@ -231,7 +233,6 @@
 	return null
 
 /obj/item/reagent_containers/hypospray/autoinjector/ateopine/proc/make_alive(mob/living/carbon/human/M, mob/living/user)
-//	var/deadtime = world.time - M.timeofdeath
 
 	dead_mob_list.Remove(M)
 	if((M in living_mob_list) || (M in dead_mob_list))
@@ -246,7 +247,6 @@
 	M.emote("gasp")
 	M.Weaken(rand(10,25))
 	M.updatehealth()
-//	apply_brain_damage(M, deadtime) // Ateopine heals brain damage anyway.
 
 	if (M.client && M.stat != DEAD)
 		log_and_message_admins("used \a [src] to revive [key_name(M)].")
