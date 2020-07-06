@@ -23372,12 +23372,13 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/structure/closet/secure_closet/sar{
-	req_one_access = list(5)
-	},
 /obj/item/storage/box/autoinjectors,
 /obj/item/storage/bag/chemistry,
 /obj/item/storage/box/pillbottles,
+/obj/structure/closet/secure_closet/sar{
+	req_access = null;
+	req_one_access = list(5)
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/tether/station/explorer_prep)
 "oJC" = (
@@ -24584,6 +24585,7 @@
 /area/tether/station/excursion_dock)
 "wbE" = (
 /obj/structure/closet/secure_closet/sar{
+	req_access = null;
 	req_one_access = list(5)
 	},
 /obj/effect/floor_decal/industrial/outline/blue,
