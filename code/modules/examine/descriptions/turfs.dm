@@ -30,4 +30,3 @@
 				. += "[desc_panel_image("welder", user)]to continue deconstruction."
 			if(0)
 				. += "[desc_panel_image("crowbar", user)]to finish deconstruction."
-	return results

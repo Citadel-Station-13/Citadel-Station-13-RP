@@ -3,14 +3,15 @@ var/const/PLAYER_HTML5_HTML={"
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="X-UA-Compatible" content="IE=11">
-	<script type="text/javascript">
-	window.onerror = function(){
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<script>
+	window.onerror = function(msg, url, line, col, error){
 		return true
 	}
 	function SetMusic(url, time = 0, volume = 25){
 		var player = document.getElementById('player');
-		url = url.match(/https?:\/\/\S+/) || ''; //HTTPS only
+		url = url.match(/https?:\\/\\/\\S+/) || ''; //HTTPS only
 
 		var setTime = function () {
 			player.removeEventListener("canplay", setTime);  // One time only!

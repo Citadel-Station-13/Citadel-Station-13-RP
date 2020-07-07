@@ -152,7 +152,7 @@
 		return
 	. = ..()
 
-/obj/structure/construction/get_description_interaction(mob/ser)
+/obj/structure/construction/get_description_interaction(mob/user)
 	. = list()
 	switch(stage)
 		if(FRAME_UNFASTENED)
