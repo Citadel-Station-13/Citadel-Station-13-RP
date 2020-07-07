@@ -8,6 +8,7 @@
 #define Z_LEVEL_SURFACE_MID					3
 #define Z_LEVEL_CENTCOM						4
 #define Z_LEVEL_MISC						5
+#define Z_LEVEL_MINING						6
 
 /datum/map/boreas
 	name = "Boreas"
@@ -62,24 +63,6 @@
 	spawnpoint_left = /datum/spawnpoint/cryo
 	spawnpoint_stayed = /datum/spawnpoint/cryo
 /*
-	meteor_strike_areas = list(/area/boreas/surfacebase/outside/outside3)
-
-	unit_test_exempt_areas = list(
-		/area/boreas/surfacebase/outside/outside1,
-		/area/vacant/vacant_site,
-		/area/vacant/vacant_site/east,
-		/area/crew_quarters/sleep/Dorm_1/holo,
-		/area/crew_quarters/sleep/Dorm_3/holo,
-		/area/crew_quarters/sleep/Dorm_5/holo,
-		/area/crew_quarters/sleep/Dorm_7/holo)
-	unit_test_exempt_from_atmos = list(
-		/area/engineering/atmos/intake, // Outside,
-		/area/rnd/external, //  Outside,
-		/area/boreas/surfacebase/mining_main/external, // Outside,
-		/area/boreas/surfacebase/mining_main/airlock, //  Its an airlock,
-		/area/boreas/surfacebase/emergency_storage/rnd,
-		/area/boreas/surfacebase/emergency_storage/atrium)
-
 	lateload_z_levels = list(
 		list("Boreas - Misc","Boreas - Ships","Boreas - Underdark"), //Stock Boreas lateload maps
 		list("Alien Ship - Z1 Ship"),
@@ -92,8 +75,8 @@
 
 /datum/map/boreas/perform_map_generation()
 
-	new /datum/random_map/automata/cave_system/(null, 1, 1, Z_LEVEL_SURFACE_UNDER, world.maxx, world.maxy) // Create the mining Z-level.
-	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_SURFACE_UNDER, world.maxx, world.maxy)         // Create the mining ore distribution map.
+	new /datum/random_map/automata/cave_system/(null, 1, 1, Z_LEVEL_MINING, world.maxx, world.maxy) // Create the mining Z-level.
+	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_MINING, world.maxx, world.maxy)         // Create the mining ore distribution map.
 
 	return 1
 
@@ -118,3 +101,9 @@
 	z = Z_LEVEL_MISC
 	name = "Misc"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_XENOARCH_EXEMPT
+
+/datum/map_z_level/boreas/mining
+	z = Z_LEVEL_MINING
+	name = "Mineral Deposit"
+	flags = MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
+	base_turf = /turf/simulated/floor/outdoors/rocks/boreas

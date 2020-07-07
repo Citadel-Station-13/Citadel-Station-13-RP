@@ -6,7 +6,8 @@
         "boreas-1.dmm",
         "boreas-2.dmm",
         "boreas-misc.dmm",
-        "boreas-colony.dmm"
+        "boreas-colony.dmm",
+        "boreas-mining.dmm"
    ],
    "traits":[
       {
@@ -14,7 +15,7 @@
         "Station":true,
         "Linkage":null,
         "Gravity":true,
-        "Baseturf":"/turf/simulated/mineral/cave"
+        "Baseturf":"/turf/simulated/mineral/boreas"
       },
       {
         "Down":-1,
@@ -32,12 +33,12 @@
         "Baseturf":"/turf/simulated/open/boreas"
       },
       {
-         "Down":-1,
-         "Up":1,
-         "Station":true,
-         "Linkage":null,
-         "Gravity":true,
-         "Baseturf":"/turf/space"
+        "Down":-1,
+    	"Up":1,
+	    "Station":true,
+        "Linkage":null,
+        "Gravity":true,
+        "Baseturf":"/turf/space"
       },
       {
         "Up":1,
@@ -45,7 +46,14 @@
         "Linkage":null,
         "Gravity":true,
         "Baseturf":"/turf/space"
-      }  
+      },
+      {
+        "Up":1,
+        "Station":true,
+        "Linkage":null,
+        "Gravity":true,
+        "Baseturf":"/turf/simulated/mineral/boreas"
+      }
    ],
    "minetype":"none"
 }

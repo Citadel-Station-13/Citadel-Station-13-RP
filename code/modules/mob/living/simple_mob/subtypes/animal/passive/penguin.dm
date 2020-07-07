@@ -8,7 +8,7 @@
 
 	maxHealth = 20
 	health = 20
-	minbodytemp = 175 // Same as Sif mobs.
+	minbodytemp = 0 // Same as Sif mobs.
 
 	response_help  = "pets"
 	response_disarm = "pushes aside"

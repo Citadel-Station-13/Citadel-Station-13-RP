@@ -25,6 +25,7 @@
 
 	maxHealth = 175
 	health = 175
+	minbodytemp = 0
 
 	poison_per_bite = 5
 	poison_type = "cryotoxin"

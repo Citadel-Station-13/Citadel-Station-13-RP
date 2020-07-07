@@ -15,6 +15,7 @@
 	#include "../../_maps/map_files/boreas/boreas-2.dmm"
 	#include "../../_maps/map_files/boreas/boreas-misc.dmm"
 	#include "../../_maps/map_files/boreas/boreas-colony.dmm"
+	#include "../../_maps/map_files/boreas/boreas-mining.dmm"
 
 	#define USING_MAP_DATUM /datum/map/boreas
 

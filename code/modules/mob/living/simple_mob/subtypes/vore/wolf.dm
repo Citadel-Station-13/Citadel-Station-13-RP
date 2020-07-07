@@ -21,7 +21,7 @@
 	melee_damage_lower = 5
 	melee_damage_upper = 12
 
-	minbodytemp = 200
+	minbodytemp = 0
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
 

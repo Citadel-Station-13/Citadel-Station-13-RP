@@ -56,7 +56,7 @@
 
 /mob/living/simple_mob/otie/feral //gets the pet2tame feature. starts out hostile tho so get gamblin'
 	name = "mutated feral otie"
-	desc = "The classic bioengineered longdog. No pets. Only bite. This one has mutated from too much time out on the surface of Virgo-3B."
+	desc = "The classic bioengineered longdog. No pets. Only bite. This one has mutated."
 	tt_desc = "Otus phoronis"
 	icon_state = "photie"
 	icon_living = "photie"
@@ -73,6 +73,7 @@
 	max_co2 = 0
 	min_n2 = 0
 	max_n2 = 0
+	minbodytemp = 0
 	has_eye_glow = TRUE
 
 /mob/living/simple_mob/otie/red

@@ -1,40 +1,36 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ab" = (
-/turf/simulated/floor/outdoors/dirt/boreas,
+/turf/simulated/floor/lava/phoron,
 /area/boreas/surfacebase/outside)
 "ac" = (
 /turf/simulated/mineral,
 /area/boreas/surfacebase/outside)
-"ad" = (
-/turf/simulated/floor/outdoors/dirt/boreas,
-/turf/simulated/floor/lava/phoron,
-/area/boreas/surfacebase/outside)
 "ae" = (
 /obj/structure/lattice,
 /obj/structure/grille,
-/turf/simulated/floor/outdoors/dirt/boreas,
+/turf/simulated/floor/lava/phoron,
 /area/boreas/surfacebase/outside)
 "af" = (
 /obj/structure/lattice,
 /obj/structure/grille,
 /turf/simulated/floor/lava/phoron,
-/turf/simulated/floor/outdoors/dirt/boreas,
+/turf/simulated/floor/lava/phoron,
 /area/boreas/surfacebase/outside)
 "ag" = (
 /obj/structure/lattice,
-/turf/simulated/floor/outdoors/dirt/boreas,
+/turf/simulated/floor/lava/phoron,
 /area/boreas/surfacebase/outside)
 "ah" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 6
 	},
-/turf/simulated/floor/outdoors/dirt/boreas,
+/turf/simulated/floor/lava/phoron,
 /area/boreas/surfacebase/outside)
 "ai" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/dirt/boreas,
+/turf/simulated/floor/lava/phoron,
 /area/boreas/surfacebase/outside)
 "aj" = (
 /obj/structure/sign/warning/caution{
@@ -72,7 +68,7 @@
 	dir = 4
 	},
 /obj/structure/lattice,
-/turf/simulated/floor/outdoors/dirt/boreas,
+/turf/simulated/floor/lava/phoron,
 /area/boreas/surfacebase/outside)
 "an" = (
 /turf/unsimulated/wall/planetary/boreas,
@@ -81,43 +77,43 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 10
 	},
-/turf/simulated/floor/outdoors/dirt/boreas,
+/turf/simulated/floor/lava/phoron,
 /area/boreas/surfacebase/outside)
 "ap" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/dirt/boreas,
+/turf/simulated/floor/lava/phoron,
 /area/boreas/surfacebase/outside)
 "aq" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/black{
 	dir = 1
 	},
 /obj/structure/lattice,
-/turf/simulated/floor/outdoors/dirt/boreas,
+/turf/simulated/floor/lava/phoron,
 /area/boreas/surfacebase/outside)
 "ar" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/dirt/boreas,
+/turf/simulated/floor/lava/phoron,
 /area/boreas/surfacebase/outside)
 "as" = (
 /obj/structure/lattice,
 /turf/simulated/floor/lava/phoron,
-/turf/simulated/floor/outdoors/dirt/boreas,
+/turf/simulated/floor/lava/phoron,
 /area/boreas/surfacebase/outside)
 "at" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging,
 /obj/structure/lattice,
-/turf/simulated/floor/outdoors/dirt/boreas,
+/turf/simulated/floor/lava/phoron,
 /area/boreas/surfacebase/outside)
 "au" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 6
 	},
 /obj/structure/lattice,
-/turf/simulated/floor/outdoors/dirt/boreas,
+/turf/simulated/floor/lava/phoron,
 /area/boreas/surfacebase/outside)
 "av" = (
 /turf/simulated/wall,
@@ -285,7 +281,7 @@
 	dir = 9
 	},
 /obj/structure/lattice,
-/turf/simulated/floor/outdoors/dirt/boreas,
+/turf/simulated/floor/lava/phoron,
 /area/boreas/surfacebase/outside)
 "aL" = (
 /turf/simulated/floor/lava/phoron,
@@ -295,22 +291,22 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 5
 	},
-/turf/simulated/floor/outdoors/dirt/boreas,
+/turf/simulated/floor/lava/phoron,
 /area/boreas/surfacebase/outside)
 "aN" = (
 /obj/machinery/atmospherics/pipe/manifold4w/visible/black,
 /obj/structure/lattice,
-/turf/simulated/floor/outdoors/dirt/boreas,
+/turf/simulated/floor/lava/phoron,
 /area/boreas/surfacebase/outside)
 "aO" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 9
 	},
-/turf/simulated/floor/outdoors/dirt/boreas,
+/turf/simulated/floor/lava/phoron,
 /area/boreas/surfacebase/outside)
 "aP" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging,
-/turf/simulated/floor/outdoors/dirt/boreas,
+/turf/simulated/floor/lava/phoron,
 /area/boreas/surfacebase/outside)
 "aQ" = (
 /obj/machinery/vending/cola,
@@ -667,7 +663,7 @@
 	dir = 1
 	},
 /obj/machinery/shield_diffuser,
-/turf/simulated/floor/outdoors/dirt/boreas,
+/turf/simulated/floor/lava/phoron,
 /area/boreas/surfacebase/outside)
 "bE" = (
 /obj/structure/bed/chair{
@@ -3007,14 +3003,14 @@
 	dir = 5
 	},
 /obj/structure/lattice,
-/turf/simulated/floor/outdoors/dirt/boreas,
+/turf/simulated/floor/lava/phoron,
 /area/boreas/surfacebase/outside)
 "fI" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
 	dir = 8
 	},
 /obj/structure/lattice,
-/turf/simulated/floor/outdoors/dirt/boreas,
+/turf/simulated/floor/lava/phoron,
 /area/boreas/surfacebase/outside)
 "fJ" = (
 /obj/structure/grille,
@@ -3321,7 +3317,6 @@
 /obj/effect/floor_decal/steeldecal/steel_decals_central5{
 	dir = 8
 	},
-/obj/effect/landmark/corpse/engineer,
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engine_monitoring)
 "gk" = (
@@ -4808,7 +4803,7 @@
 	dir = 10
 	},
 /obj/structure/lattice,
-/turf/simulated/floor/outdoors/dirt/boreas,
+/turf/simulated/floor/lava/phoron,
 /area/boreas/surfacebase/outside)
 "jc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -14107,6 +14102,18 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor,
 /area/maintenance/substation/engineering)
+"LZ" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/stairs/west{
+	dir = 2;
+	icon_state = ""
+	},
+/turf/simulated/floor/plating/external,
+/area/maintenance/lower)
 "Mf" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -14178,8 +14185,11 @@
 /area/engineering/lower/corridor)
 "Ok" = (
 /turf/simulated/floor/lava/phoron,
-/turf/simulated/floor/outdoors/dirt/boreas,
+/turf/simulated/floor/lava/phoron,
 /area/boreas/surfacebase/outside)
+"On" = (
+/turf/simulated/floor/lava/phoron,
+/area/space)
 "Or" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -41831,7 +41841,7 @@ ab
 ab
 ab
 Ok
-ab
+On
 ab
 ab
 ab
@@ -44236,7 +44246,7 @@ ab
 ab
 Ok
 Ok
-ad
+Ok
 an
 "}
 (93,1,1) = {"
@@ -71814,7 +71824,7 @@ yT
 RN
 JM
 UD
-UD
+LZ
 UD
 Mf
 Cl

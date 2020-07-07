@@ -34,6 +34,7 @@
 	maxHealth = 225
 	health = 225
 	taser_kill = FALSE //You will need more than a peashooter to kill the juggernaut.
+	minbodytemp = 0
 
 	melee_damage_lower = 25
 	melee_damage_upper = 40
