@@ -241,13 +241,11 @@
 	hit()
 	return
 
-/obj/effect/beam/i_beam/Crossed(atom/movable/AM as mob|obj)
+/obj/effect/beam/i_beam/Crossed(atom/movable/AM)
+	. = ..()
 	if(istype(AM, /obj/effect/beam))
 		return
-	spawn(0)
-		hit()
-		return
-	return
+	hit()
 
 /obj/effect/beam/i_beam/Destroy()
 	. = ..()
