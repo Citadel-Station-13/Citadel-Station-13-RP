@@ -1,159 +1,169 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /turf/simulated/wall/solidrock,
-/area/space)
+/area/tether/under/poi)
 "b" = (
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/tether/under/poi)
 "c" = (
 /obj/structure/table/standard,
+/obj/random/maintenance/research,
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/tether/under/poi)
 "d" = (
 /obj/effect/floor_decal/rust,
 /mob/living/simple_mob/animal/giant_spider/nurse/hat,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "e" = (
 /obj/effect/floor_decal/rust,
 /mob/living/simple_mob/animal/passive/mouse/rat,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "f" = (
 /obj/effect/floor_decal/rust,
 /obj/random/trash_pile,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "g" = (
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "h" = (
 /obj/structure/girder/displaced,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "i" = (
 /obj/effect/floor_decal/rust,
 /obj/random/maintenance/research,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "j" = (
 /obj/random/trash,
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/tether/under/poi)
 "k" = (
 /obj/machinery/door/airlock/maintenance/rnd,
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/tether/under/poi)
 "l" = (
 /obj/effect/decal/remains/xeno,
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/tether/under/poi)
 "m" = (
 /obj/effect/alien/resin/membrane,
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/tether/under/poi)
 "n" = (
+/mob/living/simple_mob/animal/giant_spider/ion,
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/tether/under/poi)
 "o" = (
 /obj/structure/girder,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "p" = (
 /obj/structure/grille,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
+"q" = (
+/obj/effect/floor_decal/rust,
+/mob/living/simple_mob/animal/giant_spider/lurker,
+/turf/simulated/floor,
+/area/tether/under/poi)
 "r" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "s" = (
 /obj/item/digestion_remains,
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/tether/under/poi)
 "t" = (
 /obj/effect/floor_decal/rust,
 /obj/random/junk,
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "u" = (
 /obj/random/junk,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "v" = (
 /obj/machinery/door/airlock/maintenance/rnd,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
+"w" = (
+/obj/random/trash,
+/mob/living/simple_mob/animal/giant_spider/webslinger,
+/turf/simulated/floor/tiled/techfloor,
+/area/tether/under/poi)
 "x" = (
 /obj/machinery/light/small/emergency{
 	dir = 1
 	},
-/obj/random/trash_pile,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/tether/under/poi)
 "y" = (
 /obj/random/trash_pile,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "z" = (
 /obj/structure/girder/displaced,
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "A" = (
 /obj/structure/bed,
 /obj/machinery/light/small/emergency{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/tether/under/poi)
 "B" = (
 /obj/random/trash,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "C" = (
 /obj/item/modular_computer/console{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/tether/under/poi)
 "D" = (
 /obj/random/maintenance/research,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "E" = (
 /obj/machinery/light/small/emergency{
 	dir = 1
 	},
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "F" = (
 /turf/simulated/wall/iron,
-/area/space)
+/area/tether/under/poi)
 "G" = (
 /obj/machinery/light/small/emergency{
 	dir = 1
 	},
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/tether/under/poi)
 "H" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/table/standard,
 /obj/random/contraband,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "I" = (
 /obj/effect/decal/remains/xeno,
 /obj/machinery/light/small/emergency{
 	dir = 1
 	},
-/mob/living/simple_mob/animal/giant_spider/phorogenic,
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/tether/under/poi)
 "J" = (
 /obj/structure/table/standard,
 /obj/random/maintenance/research,
@@ -162,54 +172,58 @@
 	dir = 8
 	},
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "K" = (
 /obj/item/digestion_remains/ribcage,
-/mob/living/simple_mob/animal/giant_spider/phorogenic,
+/mob/living/simple_mob/animal/giant_spider/tunneler,
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/tether/under/poi)
 "L" = (
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "M" = (
 /obj/random/junk,
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
+"N" = (
+/turf/simulated/floor/tiled/techfloor,
+/area/tether/under/poi)
 "O" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/table/standard,
 /obj/item/xenoarch_multi_tool,
+/obj/random/maintenance/research,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "Q" = (
 /obj/structure/table,
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/tether/under/poi)
 "R" = (
 /obj/structure/table,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/tether/under/poi)
 "S" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "T" = (
 /obj/structure/table/standard,
 /obj/random/maintenance/research,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/tether/under/poi)
 "V" = (
 /obj/random/trash,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/tether/under/poi)
 "W" = (
 /obj/structure/table/standard,
 /obj/random/contraband,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/tether/under/poi)
 "X" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -220,16 +234,16 @@
 	pixel_x = 33
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/tether/under/poi)
 "Y" = (
 /obj/item/digestion_remains/skull/teshari,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "Z" = (
 /obj/effect/alien/resin/membrane,
 /obj/item/digestion_remains/skull/xenohybrid,
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/tether/under/poi)
 
 (1,1,1) = {"
 F
@@ -284,7 +298,7 @@ l
 S
 L
 b
-r
+q
 b
 b
 L
@@ -384,8 +398,8 @@ a
 (11,1,1) = {"
 r
 L
-j
-n
+w
+N
 k
 b
 D
@@ -400,7 +414,7 @@ a
 F
 c
 X
-n
+N
 S
 M
 b

@@ -1,7 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /turf/simulated/wall/solidrock,
-/area/space)
+/area/tether/under/poi)
 "b" = (
 /obj/structure/railing{
 	dir = 4
@@ -9,14 +9,14 @@
 /obj/structure/railing,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/tether/under/poi)
 "d" = (
 /obj/structure/railing{
 	dir = 4
 	},
 /obj/structure/mob_spawner/mouse_nest,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "e" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/railing{
@@ -24,11 +24,11 @@
 	},
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/tether/under/poi)
 "f" = (
 /obj/structure/girder/displaced,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "g" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/railing,
@@ -37,12 +37,12 @@
 	},
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/tether/under/poi)
 "i" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/mob_spawner/mouse_nest,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "j" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/railing{
@@ -51,7 +51,7 @@
 /obj/structure/table/rack,
 /obj/random/drinkbottle,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "k" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/railing{
@@ -62,20 +62,20 @@
 /obj/random/ammo,
 /obj/random/ammo,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "n" = (
 /obj/structure/railing{
 	dir = 4
 	},
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "o" = (
 /obj/structure/railing{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "p" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/railing{
@@ -85,25 +85,25 @@
 /obj/random/contraband,
 /obj/random/contraband,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "q" = (
 /obj/structure/railing{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "s" = (
 /turf/simulated/wall/iron,
-/area/space)
+/area/tether/under/poi)
 "v" = (
 /obj/structure/mob_spawner/mouse_nest,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "w" = (
 /obj/structure/catwalk,
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "x" = (
 /obj/structure/railing{
 	dir = 8
@@ -113,12 +113,12 @@
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "y" = (
 /obj/structure/catwalk,
 /obj/structure/railing,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "z" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/railing{
@@ -127,7 +127,7 @@
 /obj/structure/table/rack,
 /obj/random/contraband,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "B" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/railing{
@@ -137,35 +137,35 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "D" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/railing{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/tether/under/poi)
 "E" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/railing{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "G" = (
 /obj/structure/railing{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/tether/under/poi)
 "I" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "K" = (
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "M" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/railing,
@@ -173,14 +173,14 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/tether/under/poi)
 "N" = (
 /obj/structure/railing,
 /obj/structure/railing{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "O" = (
 /obj/structure/railing{
 	dir = 8
@@ -188,21 +188,21 @@
 /obj/structure/railing,
 /obj/structure/mob_spawner/mouse_nest,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "P" = (
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "Q" = (
 /obj/structure/railing{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/tether/under/poi)
 "R" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "S" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/railing{
@@ -210,11 +210,11 @@
 	},
 /obj/structure/closet/crate/mimic/cointoss,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/space)
+/area/tether/under/poi)
 "T" = (
 /obj/structure/girder,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "V" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/railing{
@@ -222,16 +222,16 @@
 	},
 /obj/structure/closet/crate/mimic/cointoss,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "W" = (
 /obj/structure/catwalk,
 /obj/random/trash,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "X" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 
 (1,1,1) = {"
 a

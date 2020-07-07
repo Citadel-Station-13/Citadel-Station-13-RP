@@ -1,22 +1,22 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /turf/simulated/wall/solidrock,
-/area/space)
+/area/tether/under/poi)
 "b" = (
 /obj/structure/railing{
 	dir = 1
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "c" = (
 /obj/structure/railing,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "d" = (
 /obj/random/junk,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "e" = (
 /obj/structure/railing,
 /obj/structure/railing{
@@ -25,75 +25,75 @@
 /obj/effect/floor_decal/rust,
 /obj/random/trash_pile,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "g" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "i" = (
 /obj/effect/floor_decal/rust,
 /obj/random/trash,
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "j" = (
 /obj/structure/railing{
 	dir = 1
 	},
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "k" = (
 /obj/machinery/light/small/emergency{
 	dir = 8
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "m" = (
 /turf/simulated/wall/iron,
-/area/space)
+/area/tether/under/poi)
 "n" = (
 /obj/random/trash,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "o" = (
 /obj/effect/floor_decal/rust,
 /obj/random/junk,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "p" = (
 /mob/living/simple_mob/animal/passive/lizard,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "q" = (
 /obj/structure/flora/ausbushes/stalkybush,
-/turf/simulated/floor/water/deep,
-/area/space)
+/turf/simulated/floor/water/deep/indoors,
+/area/tether/under/poi)
 "s" = (
 /obj/machinery/light,
 /mob/living/simple_mob/animal/passive/fish/rockfish,
 /turf/simulated/floor/water/deep,
-/area/space)
+/area/tether/under/poi)
 "t" = (
 /obj/random/fishing_junk,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "u" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "v" = (
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "w" = (
 /obj/effect/spider/stickyweb,
 /obj/random/trash,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "y" = (
-/turf/simulated/floor/water/deep,
-/area/space)
+/turf/simulated/floor/water/deep/indoors,
+/area/tether/under/poi)
 "z" = (
 /obj/structure/railing,
 /obj/structure/railing{
@@ -101,7 +101,7 @@
 	},
 /obj/random/junk,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "A" = (
 /obj/structure/railing{
 	dir = 4
@@ -110,14 +110,14 @@
 	dir = 1
 	},
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "B" = (
 /obj/structure/railing{
 	dir = 4
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "C" = (
 /obj/structure/railing{
 	dir = 4
@@ -127,16 +127,16 @@
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "D" = (
 /mob/living/simple_mob/animal/passive/lizard,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "E" = (
 /obj/structure/flora/ausbushes/sparsegrass,
-/turf/simulated/floor/water/deep,
-/area/space)
+/turf/simulated/floor/water/deep/indoors,
+/area/tether/under/poi)
 "F" = (
 /obj/machinery/light/small/emergency{
 	dir = 8
@@ -144,16 +144,16 @@
 /obj/effect/floor_decal/rust,
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "G" = (
 /obj/machinery/light/small/emergency,
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "I" = (
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "J" = (
 /obj/structure/railing{
 	dir = 1
@@ -161,31 +161,34 @@
 /obj/effect/floor_decal/rust,
 /obj/random/trash_pile,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "K" = (
 /obj/effect/floor_decal/rust,
 /obj/random/trash,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "L" = (
 /obj/random/plushie,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "M" = (
 /obj/effect/spider/stickyweb,
 /obj/random/junk,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "O" = (
 /obj/item/paper/crumpled/bloody{
 	description_info = "Why are you back here?"
 	},
-/turf/simulated/floor/water/deep,
-/area/space)
+/turf/simulated/floor/water/deep/indoors,
+/area/tether/under/poi)
 "P" = (
 /obj/effect/spider/stickyweb/dark,
+/turf/simulated/floor/water/deep/indoors,
+/area/tether/under/poi)
+"Q" = (
 /turf/simulated/floor/water/deep,
-/area/space)
+/area/tether/under/poi)
 "R" = (
 /obj/structure/railing{
 	dir = 8
@@ -194,40 +197,44 @@
 	dir = 1
 	},
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "S" = (
 /obj/structure/railing{
 	dir = 8
 	},
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "T" = (
 /mob/living/simple_mob/animal/passive/lizard,
 /obj/effect/floor_decal/rust,
 /obj/random/trash,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
+"U" = (
+/obj/structure/flora/ausbushes/stalkybush,
+/turf/simulated/floor/water/deep,
+/area/tether/under/poi)
 "V" = (
 /mob/living/simple_mob/animal/passive/fish/rockfish,
-/turf/simulated/floor/water/deep,
-/area/space)
+/turf/simulated/floor/water/deep/indoors,
+/area/tether/under/poi)
 "W" = (
 /obj/structure/railing{
 	dir = 4
 	},
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "Y" = (
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/water/deep,
-/area/space)
+/turf/simulated/floor/water/deep/indoors,
+/area/tether/under/poi)
 "Z" = (
 /obj/structure/grille,
 /obj/structure/girder,
-/turf/simulated/floor/water/deep,
-/area/space)
+/turf/simulated/floor/water/deep/indoors,
+/area/tether/under/poi)
 
 (1,1,1) = {"
 a
@@ -371,7 +378,7 @@ m
 y
 q
 y
-q
+U
 s
 m
 S
@@ -386,8 +393,8 @@ Z
 y
 V
 E
-y
-y
+Q
+Q
 b
 u
 a

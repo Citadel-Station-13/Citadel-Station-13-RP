@@ -1,14 +1,14 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /turf/simulated/wall/iron,
-/area/space)
+/area/tether/under/poi)
 "b" = (
 /obj/structure/grille/broken,
 /obj/item/material/shard,
 /obj/item/material/shard,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "c" = (
 /obj/structure/window/reinforced/tinted,
 /obj/machinery/porta_turret/industrial{
@@ -17,89 +17,89 @@
 	lethal = 1
 	},
 /turf/simulated/floor/tiled/old_cargo/white,
-/area/space)
+/area/tether/under/poi)
 "d" = (
 /obj/random/trash,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "e" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "f" = (
 /obj/random/trash,
 /turf/simulated/floor/water/deep,
-/area/space)
+/area/tether/under/poi)
 "g" = (
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor/tiled/old_cargo/white,
-/area/space)
+/area/tether/under/poi)
 "h" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_y = 18
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "i" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor/tiled/old_cargo/white,
-/area/space)
+/area/tether/under/poi)
 "j" = (
 /obj/structure/girder/displaced,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "k" = (
 /obj/machinery/light/small/emergency{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/old_cargo/white,
-/area/space)
+/area/tether/under/poi)
 "l" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/decal/cleanable/blood/drip,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "m" = (
 /obj/machinery/light/small/emergency{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/old_cargo/white,
-/area/space)
+/area/tether/under/poi)
 "n" = (
 /obj/effect/spider/stickyweb,
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "o" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "p" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/spider/stickyweb,
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "q" = (
 /obj/structure/grille,
 /obj/structure/girder,
 /turf/simulated/floor/water/deep,
-/area/space)
+/area/tether/under/poi)
 "r" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/simulated/floor/tiled/old_cargo/white,
-/area/space)
+/area/tether/under/poi)
 "s" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_y = 4
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "t" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/turretid/stun{
@@ -109,30 +109,30 @@
 	pixel_y = 34
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "u" = (
 /obj/structure/window/reinforced/tinted{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/old_cargo/white,
-/area/space)
+/area/tether/under/poi)
 "v" = (
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = -5;
 	pixel_y = 7
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "w" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/light/small/emergency{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "x" = (
 /turf/simulated/floor/water/deep,
-/area/space)
+/area/tether/under/poi)
 "y" = (
 /obj/effect/decal/remains/human,
 /obj/item/paper{
@@ -141,23 +141,23 @@
 	},
 /obj/item/material/knife/tacknife/boot,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "z" = (
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "A" = (
 /turf/simulated/wall/solidrock,
-/area/space)
+/area/tether/under/poi)
 "B" = (
 /obj/structure/bed/chair{
 	dir = 1
 	},
 /obj/machinery/light/flicker,
 /turf/simulated/floor/tiled/old_cargo/white,
-/area/space)
+/area/tether/under/poi)
 "C" = (
 /turf/simulated/floor/tiled/old_cargo/white,
-/area/space)
+/area/tether/under/poi)
 "D" = (
 /obj/structure/window/reinforced/tinted{
 	dir = 4
@@ -165,39 +165,39 @@
 /obj/effect/floor_decal/rust,
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "E" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/simulated/floor/tiled/old_cargo/white,
-/area/space)
+/area/tether/under/poi)
 "F" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/decal/cleanable/blood/gibs,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "G" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "H" = (
 /obj/structure/bed/chair{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/old_cargo/white,
-/area/space)
+/area/tether/under/poi)
 "I" = (
 /obj/random/trash,
 /obj/structure/window/reinforced/tinted{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/old_cargo/white,
-/area/space)
+/area/tether/under/poi)
 "K" = (
 /obj/effect/floor_decal/rust,
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "L" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/spider/stickyweb,
@@ -205,75 +205,75 @@
 	pixel_y = 18
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "M" = (
 /obj/structure/sign/science,
 /turf/simulated/wall/iron,
-/area/space)
+/area/tether/under/poi)
 "N" = (
 /obj/machinery/light/small/emergency,
 /turf/simulated/floor/water/deep,
-/area/space)
+/area/tether/under/poi)
 "O" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/remains/human,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "P" = (
 /obj/structure/table/standard,
 /obj/item/paper_bin,
 /obj/item/pen/fountain,
 /obj/item/book/manual/anomaly_testing,
 /turf/simulated/floor/tiled/old_cargo/white,
-/area/space)
+/area/tether/under/poi)
 "Q" = (
 /obj/random/trash,
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "R" = (
 /obj/structure/bed/chair{
 	dir = 1
 	},
 /obj/random/trash,
 /turf/simulated/floor/tiled/old_cargo/white,
-/area/space)
+/area/tether/under/poi)
 "S" = (
 /obj/structure/sign/warning/lethal_turrets,
 /turf/simulated/wall/iron,
-/area/space)
+/area/tether/under/poi)
 "T" = (
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_y = 18
 	},
 /turf/simulated/floor/tiled/old_cargo/white,
-/area/space)
+/area/tether/under/poi)
 "U" = (
 /obj/random/trash,
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor/tiled/old_cargo/white,
-/area/space)
+/area/tether/under/poi)
 "V" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_y = 7
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "W" = (
 /obj/random/trash,
 /turf/simulated/floor/tiled/old_cargo/white,
-/area/space)
+/area/tether/under/poi)
 "X" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "Y" = (
 /obj/structure/window/reinforced/tinted{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/old_cargo/white,
-/area/space)
+/area/tether/under/poi)
 
 (1,1,1) = {"
 n

@@ -2,61 +2,61 @@
 "a" = (
 /obj/structure/closet/bombclosetsecurity,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "b" = (
 /obj/machinery/door/airlock/hatch,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "c" = (
 /obj/effect/floor_decal/rust,
 /obj/random/trash,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "d" = (
 /obj/effect/floor_decal/rust,
 /obj/random/trash_pile,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "e" = (
 /obj/structure/sign/signnew/explosives,
 /turf/simulated/wall/iron,
-/area/space)
+/area/tether/under/poi)
 "f" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "g" = (
 /obj/structure/table/standard,
 /obj/item/grenade/empgrenade/low_yield,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "h" = (
 /obj/effect/mine/frag{
 	name = "Old Mine"
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "i" = (
 /obj/structure/barricade,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "j" = (
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "k" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/mine/frag{
 	name = "Old Mine"
 	},
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "l" = (
 /obj/random/junk,
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "n" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/light/small/emergency{
@@ -66,25 +66,25 @@
 	name = "Old Mine"
 	},
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "o" = (
 /obj/machinery/light/small/emergency,
 /obj/effect/mine/incendiary{
 	name = "Old Mine"
 	},
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "p" = (
 /obj/structure/table/rack/shelf,
 /obj/item/mine/frag,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "r" = (
 /obj/effect/mine/training{
 	name = "Old Mine"
 	},
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "s" = (
 /obj/structure/table/standard,
 /obj/structure/table/standard,
@@ -92,21 +92,21 @@
 /obj/item/grenade/explosive,
 /obj/random/trash,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "t" = (
 /turf/simulated/wall/solidrock,
-/area/space)
+/area/tether/under/poi)
 "x" = (
 /obj/item/material/shard/shrapnel,
 /obj/effect/floor_decal/rust,
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "y" = (
 /obj/structure/table/standard,
 /obj/item/gun/energy/xray,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "A" = (
 /obj/structure/table/rack,
 /obj/item/storage/toolbox/electrical,
@@ -114,45 +114,45 @@
 	dir = 1
 	},
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "B" = (
 /obj/structure/table/rack/shelf,
 /obj/item/grenade/explosive/frag,
 /obj/item/grenade/explosive/frag,
 /obj/item/grenade/explosive/frag,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "C" = (
 /obj/item/material/shard/shrapnel,
 /obj/effect/floor_decal/rust,
 /obj/random/trash,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "D" = (
 /obj/random/trash,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "F" = (
 /obj/effect/mine/incendiary{
 	name = "Old Mine"
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "G" = (
 /obj/item/material/shard/shrapnel,
 /obj/random/trash,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "H" = (
 /turf/simulated/wall/iron,
-/area/space)
+/area/tether/under/poi)
 "J" = (
 /obj/structure/table/standard,
 /obj/item/grenade/empgrenade/low_yield,
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "K" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/light/small/emergency{
@@ -160,68 +160,68 @@
 	},
 /obj/random/trash,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "L" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "M" = (
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "N" = (
 /obj/effect/mine/frag{
 	name = "Old Mine"
 	},
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "O" = (
 /obj/effect/mine/training{
 	name = "Old Mine"
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "P" = (
 /obj/effect/floor_decal/rust,
 /obj/random/trash,
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "Q" = (
 /turf/simulated/wall/r_wall,
-/area/space)
+/area/tether/under/poi)
 "R" = (
 /obj/effect/floor_decal/rust,
 /obj/random/junk,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "S" = (
 /obj/random/trash,
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "T" = (
 /obj/structure/table/standard,
 /obj/random/ammo,
 /obj/random/ammo,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "U" = (
 /obj/random/trash_pile,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "V" = (
 /obj/random/junk,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "W" = (
 /obj/effect/mine/emp{
 	name = "Old Mine"
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "X" = (
 /obj/effect/mine/frag{
 	name = "Old Mine"
@@ -229,14 +229,14 @@
 /obj/structure/table,
 /obj/item/material/shard/shrapnel,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 "Z" = (
 /obj/structure/table/standard,
 /obj/random/junk,
 /obj/random/ammo,
 /obj/random/ammo,
 /turf/simulated/floor,
-/area/space)
+/area/tether/under/poi)
 
 (1,1,1) = {"
 t

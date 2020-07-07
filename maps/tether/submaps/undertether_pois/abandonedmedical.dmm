@@ -3,15 +3,15 @@
 /obj/structure/table/steel,
 /obj/random/mre,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "bs" = (
 /obj/random/junk,
 /turf/simulated/floor/tiled/old_tile/blue,
-/area/space)
+/area/tether/under/poi)
 "cq" = (
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "cB" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -19,12 +19,12 @@
 /obj/structure/catwalk,
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "dD" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/random/trash,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "eg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -43,21 +43,21 @@
 	movement_cooldown = 0
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "fo" = (
 /turf/simulated/floor/tiled/old_tile/blue,
-/area/space)
+/area/tether/under/poi)
 "fP" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/structure/catwalk,
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "fW" = (
 /obj/structure/table/steel,
 /obj/random/medical/pillbottle,
 /turf/simulated/floor/tiled/old_tile/blue,
-/area/space)
+/area/tether/under/poi)
 "ga" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -65,21 +65,21 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "iR" = (
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/tiled/old_tile/blue,
-/area/space)
+/area/tether/under/poi)
 "ja" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 25
 	},
 /turf/simulated/floor/tiled/old_tile/blue,
-/area/space)
+/area/tether/under/poi)
 "kj" = (
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "kE" = (
 /obj/structure/closet/crate,
 /obj/random/cash,
@@ -87,45 +87,45 @@
 /obj/item/spacecash/c1000,
 /obj/item/storage/secure/briefcase/ml3m_pack_med,
 /turf/simulated/floor/tiled/old_tile/blue,
-/area/space)
+/area/tether/under/poi)
 "lU" = (
 /obj/structure/closet/crate/medical,
 /obj/random/medical/pillbottle,
 /obj/random/drinkbottle,
 /obj/item/storage/firstaid/regular,
 /turf/simulated/floor/tiled/old_tile/blue,
-/area/space)
+/area/tether/under/poi)
 "mq" = (
 /obj/machinery/vending/blood,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "mz" = (
 /obj/effect/spider/stickyweb,
 /obj/random/junk,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "nV" = (
 /obj/random/junk,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "oo" = (
 /obj/structure/table/steel,
 /turf/simulated/floor/tiled/old_tile/blue,
-/area/space)
+/area/tether/under/poi)
 "ru" = (
 /obj/random/mouseremains,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "rH" = (
 /obj/machinery/door/airlock/maintenance/int{
 	locked = 1
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "sq" = (
 /turf/simulated/wall/iron,
-/area/space)
+/area/tether/under/poi)
 "st" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -133,15 +133,15 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "tC" = (
 /obj/structure/filingcabinet,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "uu" = (
 /obj/random/trash,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "uE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -150,25 +150,25 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "xa" = (
 /obj/structure/filingcabinet/chestdrawer,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "yY" = (
 /obj/structure/table/steel,
 /obj/machinery/recharger,
 /turf/simulated/floor/tiled/old_tile/blue,
-/area/space)
+/area/tether/under/poi)
 "BV" = (
 /obj/machinery/atmospherics/unary/cryo_cell,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "Gf" = (
 /obj/structure/catwalk,
 /obj/random/junk,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "Gq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/firealarm{
@@ -176,12 +176,12 @@
 	pixel_y = -24
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "GJ" = (
 /obj/structure/table/steel,
 /obj/random/medical,
 /turf/simulated/floor/tiled/old_tile/blue,
-/area/space)
+/area/tether/under/poi)
 "Ir" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/crate,
@@ -189,10 +189,10 @@
 /obj/random/mre,
 /obj/random/mre,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "JY" = (
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "Ln" = (
 /mob/living/simple_mob/horror/bradley{
 	base_attack_cooldown = 10;
@@ -203,28 +203,28 @@
 	name = "???"
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "Lz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "Mh" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "Nv" = (
 /obj/effect/spider/stickyweb,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "Ot" = (
 /obj/structure/table/steel,
 /obj/random/unidentified_medicine/fresh_medicine,
 /turf/simulated/floor/tiled/old_tile/blue,
-/area/space)
+/area/tether/under/poi)
 "OR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -236,50 +236,50 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "PK" = (
 /obj/machinery/atmospherics/unary/cryo_cell,
 /turf/simulated/floor/tiled/old_tile/blue,
-/area/space)
+/area/tether/under/poi)
 "Qn" = (
 /obj/structure/table/steel,
 /obj/item/storage/firstaid/regular,
 /turf/simulated/floor/tiled/old_tile/blue,
-/area/space)
+/area/tether/under/poi)
 "QD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/catwalk,
 /obj/random/trash,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "Rd" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "SM" = (
 /obj/item/stool/padded,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "Te" = (
 /obj/machinery/light/small{
 	dir = 1;
 	icon_state = "bulb1"
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "TH" = (
 /obj/structure/sign/department/medbay{
 	pixel_x = -32
 	},
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "Up" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/crate/mimic/dangerous,
 /obj/random/maintenance/research,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "VZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -292,7 +292,7 @@
 /obj/structure/catwalk,
 /obj/random/trash,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "Wa" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -300,29 +300,29 @@
 /obj/structure/catwalk,
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "Wh" = (
 /obj/structure/table/steel,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "XA" = (
 /obj/machinery/firealarm{
 	dir = 1;
 	pixel_y = -24
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "YC" = (
 /obj/machinery/door/airlock/maintenance/int{
 	locked = 1
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "YP" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plating,
-/area/space)
+/area/tether/under/poi)
 "ZJ" = (
 /mob/living/simple_mob/horror/bradley{
 	base_attack_cooldown = 10;
@@ -333,7 +333,7 @@
 	name = "???"
 	},
 /turf/simulated/floor/tiled/old_tile/blue,
-/area/space)
+/area/tether/under/poi)
 
 (1,1,1) = {"
 sq
