@@ -75,6 +75,7 @@
 			new spawn_type(V.loc)
 		var/bossnum = boss_spawn_count
 		while(vents.len > 0 && bossnum > 0)
+			bossnum--
 			var/obj/machinery/atmospherics/unary/vent_pump/V = pick(vents)
 			var/spawn_type = bossrats
 			new spawn_type(V.loc)
