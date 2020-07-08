@@ -52,6 +52,15 @@
 /obj/structure/sign/mining,
 /turf/simulated/shuttle/wall/voidcraft,
 /area/mine/explored/underdark)
+"s" = (
+/obj/tether_away_spawner/underdark_normal,
+/turf/simulated/shuttle/floor/voidcraft/virgo3b,
+/area/mine/explored/underdark)
+"K" = (
+/obj/effect/decal/remains,
+/obj/effect/gibspawner,
+/turf/simulated/mineral/floor/ignore_cavegen/virgo3b,
+/area/mine/explored/underdark)
 
 (1,1,1) = {"
 a
@@ -75,8 +84,8 @@ j
 b
 b
 b
-b
-e
+K
+s
 e
 k
 "}

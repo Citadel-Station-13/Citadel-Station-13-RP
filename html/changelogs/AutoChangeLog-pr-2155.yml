@@ -1,0 +1,4 @@
+author: "Nethaufer"
+delete-after: True
+changes: 
+  - rscadd: "Light replacer to electrical closets"
