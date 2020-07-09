@@ -6,8 +6,8 @@
 	name = "plain choker"
 	slot_flags = SLOT_TIE | SLOT_OCLOTHING
 	desc = "A simple, plain choker. Or maybe it's a collar? Use in-hand to customize it."
-	icon = 'icons/obj/clothing/collars_vr.dmi'
-	icon_override = 'icons/mob/collars_vr.dmi'
+	icon = 'icons/obj/clothing/ties.dmi'
+	icon_override = 'icons/mob/ties.dmi'
 	icon_state = "choker_cst"
 	item_state = "choker_cst"
 	overlay_state = "choker_cst"
@@ -28,7 +28,7 @@
 /obj/item/clothing/accessory/collar
 	slot_flags = SLOT_TIE | SLOT_OCLOTHING
 	icon = 'icons/obj/clothing/collars_vr.dmi'
-	icon_override = 'icons/mob/collars_vr.dmi'
+	icon_override = 'icons/mob/ties.dmi'
 	var/icon_previous_override //yw addition
 	var/writtenon = 0
 
@@ -48,7 +48,7 @@
 			H = has_suit.loc
 	if(istype(H))
 		if(H.species.name == SPECIES_TESHARI)
-			icon_override = 'icons/mob/species/teshari/collars.dmi'
+			icon_override = 'icons/mob/species/teshari/ties.dmi'
 		update_clothing_icon()
 
 /obj/item/clothing/accessory/collar/on_attached(var/obj/item/clothing/S, var/mob/user)

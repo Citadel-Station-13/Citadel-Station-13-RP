@@ -49,23 +49,23 @@
 
 //Dresses
 
-/obj/item/clothing/under/teshari/dress
+/obj/item/clothing/under/teshari/dresssmock
 	name = "small command dress"
 	icon_state = "tesh_dress_cap"
 
-/obj/item/clothing/under/teshari/dress/science
+/obj/item/clothing/under/teshari/dresssmock/science
 	name = "small science dress"
 	icon_state = "tesh_dress_science"
 
-/obj/item/clothing/under/teshari/dress/engine
+/obj/item/clothing/under/teshari/dresssmock/engine
 	name = "small engineering dress"
 	icon_state = "tesh_dress_engine"
 
-/obj/item/clothing/under/teshari/dress/security
+/obj/item/clothing/under/teshari/dresssmock/security
 	name = "small security dress"
 	icon_state = "tesh_dress_security"
 
-/obj/item/clothing/under/teshari/dress/medical
+/obj/item/clothing/under/teshari/dresssmock/medical
 	name = "small command dress"
 	icon_state = "tesh_dress_medical"
 
