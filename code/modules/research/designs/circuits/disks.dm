@@ -12,8 +12,6 @@
 		var/obj/item/weapon/disk/D = build_path
 		if(istype(D, /obj/item/weapon/disk/species))
 			name = "Species Prosthetic design ([item_name])"
-		else if(istype(D, /obj/item/weapon/disk/limb))
-			name = "Transtellar Prosthetic design ([item_name])"
 		else
 			name = "Disk design ([item_name])"
 

@@ -134,17 +134,6 @@ var/const/standard_monitor_styles = "blank=ipc_blank;\
 
 
 
-/datum/robolimb/cenilimicybernetics_teshari
-	company = "Cenilimi Cybernetics"
-	species_cannot_use = list(SPECIES_UNATHI, SPECIES_PROMETHEAN, SPECIES_DIONA, SPECIES_HUMAN, SPECIES_VOX, SPECIES_HUMAN_VATBORN, SPECIES_TAJ, SPECIES_SKRELL, SPECIES_ZADDAT)
-	species_alternates = list(SPECIES_HUMAN = "NanoTrasen")
-	suggested_species = SPECIES_TESHARI
-	desc = "Made by a Teshari-owned company, for Teshari."
-	icon = 'icons/mob/human_races/cyberlimbs/cenilimicybernetics/cenilimicybernetics_teshari.dmi'
-	unavailable_to_build = 1
-
-
-
 /datum/robolimb/bishop
 	company = "Bishop"
 	desc = "This limb has a white polymer casing with blue holo-displays."
@@ -171,6 +160,17 @@ var/const/standard_monitor_styles = "blank=ipc_blank;\
 	unavailable_to_build = 1
 	parts = list(BP_HEAD)
 	monitor_styles = standard_monitor_styles
+
+
+
+/datum/robolimb/cenilimicybernetics_teshari
+	company = "Cenilimi Cybernetics"
+	species_cannot_use = list(SPECIES_UNATHI, SPECIES_PROMETHEAN, SPECIES_DIONA, SPECIES_HUMAN, SPECIES_VOX, SPECIES_HUMAN_VATBORN, SPECIES_TAJ, SPECIES_SKRELL, SPECIES_ZADDAT)
+	species_alternates = list(SPECIES_HUMAN = "NanoTrasen")
+	suggested_species = SPECIES_TESHARI
+	desc = "Made by a Teshari-owned company, for Teshari."
+	icon = 'icons/mob/human_races/cyberlimbs/cenilimicybernetics/cenilimicybernetics_teshari.dmi'
+	unavailable_to_build = 1
 
 
 
@@ -338,10 +338,6 @@ var/const/standard_monitor_styles = "blank=ipc_blank;\
 	robo_brute_mod = 1.05
 	robo_burn_mod = 1.05
 
-// Bus disk for Diona mech parts.
-/obj/item/weapon/disk/limb/veymed/diona
-	company = "Skrellian Exoskeleton"
-
 
 
 /datum/robolimb/wardtakahashi
@@ -446,6 +442,9 @@ var/const/standard_monitor_styles = "blank=ipc_blank;\
 	company = "Bishop"
 	catalogue_data = list(/datum/category_item/catalogue/information/organization/bishop)
 
+/obj/item/disk/limb/cenilimicybernetics
+	company = "Cenilimi Cybernetics"
+
 /obj/item/disk/limb/cybersolutions
 	company = "Cyber Solutions"
 
@@ -464,6 +463,10 @@ var/const/standard_monitor_styles = "blank=ipc_blank;\
 	company = "Vey-Med"
 	catalogue_data = list(/datum/category_item/catalogue/information/organization/vey_med)
 
+// Bus disk for Diona mech parts.
+/obj/item/disk/limb/veymed/diona
+	company = "Skrellian Exoskeleton"
+
 /obj/item/disk/limb/wardtakahashi
 	company = "Ward-Takahashi"
 	catalogue_data = list(/datum/category_item/catalogue/information/organization/ward_takahashi)
@@ -479,6 +482,7 @@ var/const/standard_monitor_styles = "blank=ipc_blank;\
 /obj/item/disk/limb/nanotrasen
 	company = "NanoTrasen"
 	catalogue_data = list(/datum/category_item/catalogue/information/organization/nanotrasen)
+
 
 /obj/item/weapon/disk/species
 	name = "Species Bioprints"
@@ -510,6 +514,3 @@ var/const/standard_monitor_styles = "blank=ipc_blank;\
 
 /obj/item/weapon/disk/species/zaddat
 	species = SPECIES_ZADDAT
-
-/obj/item/weapon/disk/limb/cenilimicybernetics
-	company = "Cenilimi Cybernetics"

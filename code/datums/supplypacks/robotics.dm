@@ -127,7 +127,7 @@
 
 /datum/supply_pack/robotics/robolimbs/cenilimicybernetics
 	name = "Cenilimi Cybernetics robolimb blueprints"
-	contains = list(/obj/item/weapon/disk/limb/cenilimicybernetics)
+	contains = list(/obj/item/disk/limb/cenilimicybernetics)
 	cost = 45
 	containertype = /obj/structure/closet/crate/secure/science
 	containername = "Robolimb blueprints (Cenilimi Cybernetics)"

@@ -488,7 +488,7 @@
 
 /datum/surgery_step/robotics/install_nymph
 	allowed_tools = list(
-	/obj/item/weapon/holder/diona = 100
+	/obj/item/holder/diona = 100
 	)
 
 	min_duration = 60
@@ -498,7 +498,7 @@
 	if(target_zone != BP_TORSO)
 		return
 
-	var/obj/item/weapon/holder/diona/N = tool
+	var/obj/item/holder/diona/N = tool
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 
 	if(!(affected && affected.open == 3))
@@ -540,7 +540,7 @@
 	user.visible_message("<span class='notice'>[user] has installed \the [tool] into [target]'s [affected.name].</span>", \
 	"<span class='notice'>You have installed \the [tool] into [target]'s [affected.name].</span>")
 
-	var/obj/item/weapon/holder/diona/N = tool
+	var/obj/item/holder/diona/N = tool
 	var/obj/item/organ/internal/brain/cephalon/cephalon = new(target, 1)
 	target.internal_organs_by_name["brain"] = cephalon
 	var/mob/living/carbon/alien/diona/D = N.held_mob

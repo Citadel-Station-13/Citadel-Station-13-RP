@@ -11,6 +11,7 @@
 	if(istype(fabricator, /obj/machinery/pros_fabricator))
 		var/obj/machinery/pros_fabricator/prosfab = fabricator
 		var/obj/item/organ/O = new build_path(newloc)
+		if(prosfab.manufacturer)
 			var/datum/robolimb/manf = all_robolimbs[prosfab.manufacturer]
 
 			if(!(O.organ_tag in manf.parts))	// Make sure we're using an actually present icon.
@@ -61,7 +62,7 @@
 				EO.remove_rejuv()
 
 		for(var/obj/item/organ/external/O in H.organs)
-			O.species = all_species[newspecies] //VOREStation Edit with species suggestion above
+			O.species = GLOB.all_species[newspecies] //VOREStation Edit with species suggestion above
 
 			if(!(O.organ_tag in manf.parts))	// Make sure we're using an actually present icon.
 				manf = all_robolimbs["Unbranded"]
