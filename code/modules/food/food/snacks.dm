@@ -5458,3 +5458,29 @@ END CITADEL CHANGE */
 	reagents.trans_to(O, reagents.total_volume)
 	user.drop_from_inventory(src)
 	qdel(src)
+
+/obj/item/reagent_containers/food/snacks/baschbeans
+	name = "Basch's Baked Beans"
+	icon_state = "baschbeans"
+	desc = "In partnership with the Cyan Consumables Corporation, Basch is proud to produce its classic beans in a brand new package. A frontier favorite!"
+	trash = /obj/item/trash/baschbeans
+	filling_color = "#FC6F28"
+	nutriment_amt = 4
+	nutriment_desc = list("beans" = 4)
+
+/obj/item/reagent_containers/food/snacks/baschbeans/Initialize()
+	. = ..()
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/creamcorn
+	name = "Garm n' Bozia's Cream Corn"
+	icon_state = "creamcorn"
+	desc = "This is a formica label. Green is its color. The Cyan Consumables Corporation refuses to reveal where these cans come from."
+	trash = /obj/item/trash/creamcorn
+	filling_color = "#FFFAD4"
+	nutriment_amt = 5
+	nutriment_desc = list("corn" = 5)
+
+/obj/item/reagent_containers/food/snacks/creamcorn/Initialize()
+	. = ..()
+	bitesize = 2
