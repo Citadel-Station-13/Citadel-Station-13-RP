@@ -453,6 +453,8 @@ proc/is_blind(A)
 			C = M.original.client
 
 	if(C)
+		if(!isnull(C.holder?.fakekey))
+			return
 		var/name
 		if(C.mob)
 			var/mob/M = C.mob

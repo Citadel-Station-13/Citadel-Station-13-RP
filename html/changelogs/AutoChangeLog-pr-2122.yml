@@ -1,0 +1,4 @@
+author: "Enzo-Leon"
+delete-after: True
+changes: 
+  - bugfix: "Fixed disposals loop issue, access and MAYBE exploration, again."

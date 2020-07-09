@@ -20,10 +20,6 @@
 			arscreen.ui_interact(nif.human,"main",null,1,nif_state)
 			return TRUE
 
-	deactivate()
-		if((. = ..()))
-			return TRUE
-
 	stat_text()
 		return "Show Monitor"
 
@@ -47,10 +43,6 @@
 	activate()
 		if((. = ..()))
 			arscreen.ui_interact(nif.human,"main",null,1,nif_state)
-			return TRUE
-
-	deactivate()
-		if((. = ..()))
 			return TRUE
 
 	stat_text()

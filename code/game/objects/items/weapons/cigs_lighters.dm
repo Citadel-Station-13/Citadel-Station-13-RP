@@ -638,3 +638,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/flame/lighter/zippo/rainbow
 	name = "\improper rainbow Zippo lighter"
 	icon_state = "rainbowzippo"
+
+/obj/item/flame/lighter/zippo/cowgirl
+	name = "\improper Cyan Cowgirl Zippo lighter"
+	icon_state = "cowzippo"

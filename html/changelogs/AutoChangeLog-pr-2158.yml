@@ -1,0 +1,5 @@
+author: "Enzo-Leon"
+delete-after: True
+changes: 
+  - tweak: "tweaked SNR lockers to ensure access is not messed up. (for reals this time oh god)"
+  - balance: "Added needed chemistry gear for SNR due to chem access being revoked"

@@ -14,6 +14,11 @@
 /obj/effect/decal/cleanable/blood/drip,
 /turf/simulated/floor/outdoors/dirt/virgo3b,
 /area/mine/explored/underdark)
+"e" = (
+/obj/effect/decal/cleanable/cobweb,
+/obj/structure/girder,
+/turf/simulated/floor/outdoors/dirt/virgo3b,
+/area/mine/explored/underdark)
 "f" = (
 /obj/structure/barricade,
 /turf/simulated/floor/outdoors/dirt/virgo3b,
@@ -82,6 +87,22 @@
 /obj/structure/outcrop/diamond,
 /turf/simulated/floor/outdoors/dirt/virgo3b,
 /area/mine/explored/underdark)
+"x" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/remains,
+/turf/simulated/floor/outdoors/dirt/virgo3b,
+/area/mine/explored/underdark)
+"y" = (
+/obj/random/gun/random,
+/obj/effect/decal/cleanable/blood,
+/turf/simulated/floor/outdoors/dirt/virgo3b,
+/area/mine/explored/underdark)
+"V" = (
+/obj/effect/decal/remains/tajaran,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/remains,
+/turf/simulated/floor/outdoors/dirt/virgo3b,
+/area/mine/explored/underdark)
 
 (1,1,1) = {"
 b
@@ -102,10 +123,10 @@ b
 b
 b
 c
-a
+e
 g
 g
-g
+y
 g
 p
 m
@@ -119,10 +140,10 @@ c
 g
 k
 g
-g
+x
 k
 g
-p
+x
 c
 "}
 (4,1,1) = {"
@@ -150,7 +171,7 @@ g
 g
 g
 g
-g
+u
 c
 "}
 (6,1,1) = {"
@@ -177,7 +198,7 @@ g
 g
 g
 g
-g
+k
 g
 c
 "}
@@ -192,7 +213,7 @@ m
 o
 g
 g
-q
+V
 c
 "}
 (9,1,1) = {"
@@ -205,14 +226,14 @@ g
 h
 h
 g
-g
+t
 g
 c
 "}
 (10,1,1) = {"
 c
 g
-g
+k
 u
 g
 m
@@ -234,12 +255,12 @@ g
 h
 g
 g
-g
+u
 c
 "}
 (12,1,1) = {"
 f
-g
+k
 g
 g
 g
@@ -247,7 +268,7 @@ g
 g
 h
 g
-g
+k
 g
 c
 "}
@@ -272,7 +293,7 @@ b
 c
 g
 g
-g
+k
 h
 g
 g

@@ -17,7 +17,7 @@
 		if((. = ..()))
 			mode = 1
 
-	deactivate()
+	deactivate(force = FALSE)
 		if((. = ..()))
 			a_drain = initial(a_drain)
 			mode = initial(mode)
@@ -90,7 +90,7 @@
 		if((. = ..()))
 			mode = 1
 
-	deactivate()
+	deactivate(force = FALSE)
 		if((. = ..()))
 			mode = 0
 
@@ -144,7 +144,7 @@
 		if((. = ..()))
 			nif.notify("Now taking air from reserves.")
 
-	deactivate()
+	deactivate(force = FALSE)
 		if((. = ..()))
 			nif.notify("Now taking air from environment and refilling reserves.")
 
@@ -193,10 +193,6 @@
 			nif.notify("Mind backed up!")
 			nif.use_charge(0.1)
 			deactivate()
-			return TRUE
-
-	deactivate()
-		if((. = ..()))
 			return TRUE
 
 	stat_text()

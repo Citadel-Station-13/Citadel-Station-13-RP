@@ -389,7 +389,7 @@ SUBSYSTEM_DEF(jobs)
 					else
 						permitted = 1
 
-					if(G.whitelisted && !is_alien_whitelisted(H, all_species[G.whitelisted]))
+					if(G.whitelisted && !is_alien_whitelisted(H, GLOB.all_species[G.whitelisted]))
 
 					//if(G.whitelisted && (G.whitelisted != H.species.name || !is_alien_whitelisted(H, G.whitelisted)))
 						permitted = 0
