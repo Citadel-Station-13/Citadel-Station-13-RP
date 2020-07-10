@@ -159,6 +159,9 @@
 	if(!assembled)
 		to_chat(user, "<span class='warning'>The gun is open!</span>")
 		return FALSE
+	if(projectile_type == /obj/item/projectile)
+		to_chat(user, "<span class='warning'>The gun is experiencing a checking error! Open and close the weapon, or try removing all the parts and placing them back in.</span>")
+		return FALSE		
 
 /obj/item/gun/energy/modular/attackby(obj/item/O, mob/user)
 	if(O.is_screwdriver())
