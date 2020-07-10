@@ -954,7 +954,7 @@ End Citadel Change */
 	adj_sleepy = -3
 	adj_temp = 20
 
-	glass_name = "cup of tea"
+	glass_name = "tea"
 	glass_desc = "Tasty black tea, it has antioxidants, it's good for you!"
 
 	cup_icon_state = "cup_tea"
@@ -1907,6 +1907,16 @@ End Citadel Change */
 	glass_desc = "Wet your whistle!"
 	glass_icon = DRINK_ICON_NOISY
 	glass_special = list(DRINK_FIZZ)
+
+/datum/reagent/ethanol/rootbeerfloat
+	name = "Root Beer Float"
+	id = "rootbeerfloat"
+	description = "A classic from Humanity's early days. Soothing, cool, and nostalgic."
+	taste_description = "creamy ice cream with a bubbly and bitter kick"
+	adj_temp = -5
+
+	glass_name = "Root Beer Float"
+	glass_desc = "A classic from Humanity's early days. Soothing, cool, and nostalgic."
 
 /* Alcohol */
 
@@ -3700,6 +3710,70 @@ End Citadel Change */
 
 	glass_name = "Blood Meridian"
 	glass_desc = "The perfect drink for when you want to dance and fiddle all night. Does it work? You be The Judge."
+
+/datum/reagent/ethanol/theoutlaw
+	name = "The Outlaw"
+	id = "theoutlaw"
+	description = "If you're planning to cheat or rob 'em, you gotta be quick. Either on the draw, or on your horse."
+	taste_description = "a violent life on the run"
+	strength = 50
+
+	glass_name = "The Outlaw"
+	glass_desc = "If you're planning to cheat or rob 'em, you gotta be quick. Either on the draw, or on your horse."
+
+/datum/reagent/ethanol/thelawman
+	name = "The Lawman"
+	id = "thelawman"
+	description = "They ran out five men before I took up the badge. Since then I've hung twenty."
+	taste_description = "robust coffee and an open campfire"
+	strength = 65
+	adj_temp = 25
+
+	glass_name = "The Lawman"
+	glass_desc = "They ran out five men before I took up the badge. Since then I've hung twenty."
+
+/datum/reagent/ethanol/hangmansnoose
+	name = "Hangman's Noose"
+	id = "hangmansnoose"
+	description = "To some looking at their final days in a cell, this drink is a better mercy than the gallows. Doesn't make it go down any easier."
+	taste_description = "a dusty rope and blood in the nostrils"
+	strength = 60
+	toxicity = 10
+
+	glass_name = "Hangman's Noose"
+	glass_desc = "To some looking at their final days in a cell, this drink is a better mercy than the gallows. Doesn't make it go down any easier."
+
+/datum/reagent/ethanol/bigiron
+	name = "Big Iron"
+	id = "bigiron"
+	description = "Have this one, partner. Then have nineteen more."
+	taste_description = "a mysterious visit and the red Texas sky"
+	strength = 45
+
+	glass_name = "Big Iron"
+	glass_desc = "Have this one, partner. Then have nineteen more."
+
+/datum/reagent/ethanol/lastcactus
+	name = "Last Cactus"
+	id = "lastcactus"
+	description = "If you can get past its spines, it's filled with cool, clear water."
+	taste_description = "refreshing sweetness and a cold burn"
+	strength = 30
+	adj_temp = -10
+
+	glass_name = "Last Cactus"
+	glass_desc = "If you can get past its spines, it's filled with cool, clear water."
+
+/datum/reagent/ethanol/thebestboy
+	name = "The Best Boy"
+	id = "thebestboy"
+	description = "An eternal tribute to the best crewmember to ever work on Space Station 13. Keep away from washing machines."
+	taste_description = "cool cream, refreshing orange, and strong alcohol"
+	strength = 50
+	adj_temp = -5
+
+	glass_name = "The Best Boy"
+	glass_desc = "An eternal tribute to the best crewmember to ever work on Space Station 13. Keep away from washing machines."
 
 ///////////////////////////////////////////////
 //// End of list for drinks for bartenders ////

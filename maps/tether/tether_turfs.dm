@@ -39,10 +39,10 @@ VIRGO3B_TURF_CREATE(/turf/simulated/floor/outdoors/grass/sif)
 	initial_gas_mix = GAS_STRING_STP
 
 /turf/simulated/mineral/vacuum
-	initial_gas_mix = GAS_STRING_VACCUM
+	initial_gas_mix = GAS_STRING_VACUUM
 
 /turf/simulated/mineral/floor/vacuum
-	initial_gas_mix = GAS_STRING_VACCUM
+	initial_gas_mix = GAS_STRING_VACUUM
 
 VIRGO3B_TURF_CREATE(/turf/simulated/mineral)
 VIRGO3B_TURF_CREATE(/turf/simulated/mineral/floor)

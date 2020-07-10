@@ -49,7 +49,7 @@
 	if(!pref.neu_traits) pref.neu_traits = list()
 	if(!pref.neg_traits) pref.neg_traits = list()
 
-	pref.blood_color = sanitize_hexcolor(pref.blood_color, default = "#A10808")
+	pref.blood_color = sanitize_hexcolor(pref.blood_color, 6, TRUE, default = "#A10808")
 
 	if(!pref.traits_cheating)
 		pref.starting_trait_points = STARTING_SPECIES_POINTS
@@ -73,7 +73,7 @@
 			if(!(path in negative_traits))
 				pref.neg_traits -= path
 
-	var/datum/species/selected_species = all_species[pref.species]
+	var/datum/species/selected_species = GLOB.all_species[pref.species]
 	if(selected_species.selects_bodytype)
 		// Allowed!
 	else if(!pref.custom_base || !(pref.custom_base in custom_species_bases))
@@ -81,7 +81,7 @@
 
 /datum/category_item/player_setup_item/vore/traits/copy_to_mob(var/mob/living/carbon/human/character)
 	character.custom_species	= pref.custom_species
-	var/datum/species/selected_species = all_species[pref.species]
+	var/datum/species/selected_species = GLOB.all_species[pref.species]
 	if(selected_species.selects_bodytype)
 		var/datum/species/custom/CS = character.species
 		var/S = pref.custom_base ? pref.custom_base : "Human"
@@ -99,7 +99,7 @@
 	. += "<b>Custom Species Name:</b> "
 	. += "<a href='?src=\ref[src];custom_species=1'>[pref.custom_species ? pref.custom_species : "-Input Name-"]</a><br>"
 
-	var/datum/species/selected_species = all_species[pref.species]
+	var/datum/species/selected_species = GLOB.all_species[pref.species]
 	if(selected_species.selects_bodytype)
 		. += "<b>Icon Base: </b> "
 		. += "<a href='?src=\ref[src];custom_base=1'>[pref.custom_base ? pref.custom_base : "Human"]</a><br>"
@@ -169,7 +169,7 @@
 	else if(href_list["blood_color"])
 		var/color_choice = input("Pick a blood color (does not apply to synths)","Blood Color",pref.blood_color) as color
 		if(color_choice)
-			pref.blood_color = sanitize_hexcolor(color_choice, default = "#A10808")
+			pref.blood_color = sanitize_hexcolor(color_choice, 6, TRUE, default = "#A10808")
 		return TOPIC_REFRESH
 
 	else if(href_list["blood_reset"])

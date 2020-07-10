@@ -102,6 +102,9 @@
 	var/flight_x_offset = 0
 	var/flight_y_offset = 0
 
+	var/obj/item/firing_pin/pin = /obj/item/firing_pin
+	var/no_pin_required = 0
+
 /obj/item/gun/CtrlClick(mob/user)
 	if(can_flashlight && ishuman(user) && src.loc == usr && !user.incapacitated(INCAPACITATION_ALL))
 		toggle_flashlight()
@@ -134,6 +137,9 @@
 		verbs -= /obj/item/gun/verb/remove_dna
 		verbs -= /obj/item/gun/verb/give_dna
 		verbs -= /obj/item/gun/verb/allow_dna
+
+	if(pin)
+		pin = new pin(src)
 
 /obj/item/gun/update_twohanding()
 	if(one_handed_penalty)
@@ -174,6 +180,8 @@
 		var/mob/living/simple_mob/S = user
 		if(!S.IsHumanoidToolUser(src))
 			return 0
+	if(!handle_pins(user))
+		return 0
 
 	var/mob/living/M = user
 	if(dna_lock && attached_lock.stored_dna)
@@ -282,6 +290,8 @@
 		attached_lock.controller_lock = 0
 		attached_lock.stored_dna = list()
 		return 1
+	if(pin)
+		pin.emag_act(remaining_charges, user)
 
 /obj/item/gun/MouseDrop(obj/over_object as obj)
 	if(!canremove)
@@ -694,7 +704,12 @@
 		recoil = initial(recoil)
 
 /obj/item/gun/examine(mob/user)
-	. = ..()
+	..(user)
+	if(!no_pin_required)
+		if(pin)
+			to_chat(user, "It has \a [pin] installed.")
+		else
+			to_chat(user, "It doesn't have a firing pin installed, and won't fire.")
 	if(firemodes.len > 1)
 		var/datum/firemode/current_mode = firemodes[sel_mode]
 		to_chat(user, "The fire selector is set to [current_mode.name].")
@@ -714,3 +729,16 @@
 
 /obj/item/gun/attack_self(mob/user)
 	switch_firemodes(user)
+
+/obj/item/gun/proc/handle_pins(mob/living/user)
+	if(no_pin_required)
+		return TRUE
+	if(pin)
+		if(pin.pin_auth(user) || (pin.emagged))
+			return 1
+		else
+			pin.auth_fail(user)
+			return 0
+	else
+		to_chat(user, "<span class='warning'>[src]'s trigger is locked. This weapon doesn't have a firing pin installed!</span>")
+	return 0

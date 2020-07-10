@@ -292,7 +292,7 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 	if(!generated_atmospheres)
 		generate_atmospheres()
 	if(gas_string == ATMOSPHERE_ID_USE_ZTRAIT)
-		gas_string = SSmapping.level_trait(T.z, ZTRAIT_DEFAULT_ATMOS) || GAS_STRING_VACCUM
+		gas_string = SSmapping.level_trait(T.z, ZTRAIT_DEFAULT_ATMOS) || GAS_STRING_VACUUM
 	gas_string = "[gas_string]"
 	if(!generated_atmospheres[gas_string])
 		return gas_string

@@ -154,3 +154,16 @@
         worn_state = "mantleofheaven_d_s"
     if(worn_state == "mantleofheaven_d_s")
         worn_state = "mantleofheaven_s"
+
+/obj/item/clothing/suit/storage/hooded/techpriest/chaos
+	name = "chaote robe"
+	desc = "For when you just wanna summon extraplanar horrors or DAKKA DAKKA PUFF."
+	icon_state = "chaospriest"
+	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
+	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
+	hoodtype = /obj/item/clothing/head/hood/techpriest/chaos
+
+/obj/item/clothing/head/hood/techpriest/chaos
+	name = "chaote hood"
+	icon_state = "chaospriesth"
+	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'

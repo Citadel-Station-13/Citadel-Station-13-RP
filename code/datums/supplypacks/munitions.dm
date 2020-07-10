@@ -219,3 +219,11 @@
 	containertype = /obj/structure/closet/crate/secure
 	containername = "Energy ammunition crate"
 	access = access_security
+
+/datum/supply_pack/munitions/firingpins
+	name = "Weapons - Standard firing pins"
+	contains = list(/obj/item/storage/box/firingpins = 3)
+	cost = 10
+	containertype = /obj/structure/closet/crate/secure
+	containername = "Firing pin crate"
+	access = access_armory
