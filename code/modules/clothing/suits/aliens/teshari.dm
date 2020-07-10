@@ -121,6 +121,7 @@
 	item_state = "tesh_cloak_on"
 
 
+
 //Job Cloaks
 
 /obj/item/clothing/suit/storage/teshari/cloak/jobs
@@ -133,7 +134,6 @@
 	desc = "A soft Teshari cloak made for the Facility Director"
 	icon_state = "tesh_cloak_cap"
 	item_state = "tesh_cloak_cap"
-
 
 //Cargo
 
@@ -161,7 +161,6 @@
 	icon_state = "tesh_cloak_comm"
 	item_state = "tesh_cloak_comm"
 
-
 //Engineering
 
 /obj/item/clothing/suit/storage/teshari/cloak/jobs/ce
@@ -181,7 +180,6 @@
 	desc = "A soft Teshari cloak made for the Atmospheric Technician"
 	icon_state = "tesh_cloak_atmos"
 	item_state = "tesh_cloak_atmos"
-
 
 //Medical
 
@@ -221,7 +219,6 @@
 	icon_state = "tesh_cloak_psych"
 	item_state = "tesh_cloak_psych"
 
-
 //Science
 
 /obj/item/clothing/suit/storage/teshari/cloak/jobs/rd
@@ -241,7 +238,6 @@
 	desc = "A soft Teshari cloak made for the Roboticist"
 	icon_state = "tesh_cloak_robo"
 	item_state = "tesh_cloak_robo"
-
 
 //Security
 
@@ -263,7 +259,6 @@
 	icon_state = "tesh_cloak_iaa"
 	item_state = "tesh_cloak_iaa"
 
-
 //Service
 
 /obj/item/clothing/suit/storage/teshari/cloak/jobs/hop
@@ -277,7 +272,6 @@
 	desc = "A soft Teshari cloak made for the Service department"
 	icon_state = "tesh_cloak_serv"
 	item_state = "tesh_cloak_serv"
-
 
 //Misc
 
