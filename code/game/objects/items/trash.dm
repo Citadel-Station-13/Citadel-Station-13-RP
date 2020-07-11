@@ -88,5 +88,16 @@
 	name = "bread tube"
 	icon_state = "tastybread"
 
+/obj/item/trash/baschbeans
+	name = "Basch's Baked Beans"
+	icon_state = "baschbeans"
+
+/obj/item/trash/attack(mob/M as mob, mob/living/user as mob)
+	return
+
+/obj/item/trash/creamcorn
+	name = "Garm n' Bozia's Cream Corn"
+	icon_state = "creamcorn"
+
 /obj/item/trash/attack(mob/M as mob, mob/living/user as mob)
 	return

@@ -3033,6 +3033,7 @@
 #include "code\modules\projectiles\ammunition.dm"
 #include "code\modules\projectiles\dnalocking.dm"
 #include "code\modules\projectiles\gun.dm"
+#include "code\modules\projectiles\pins.dm"
 #include "code\modules\projectiles\projectile.dm"
 #include "code\modules\projectiles\ammunition\magazines.dm"
 #include "code\modules\projectiles\ammunition\magazines_vr.dm"
