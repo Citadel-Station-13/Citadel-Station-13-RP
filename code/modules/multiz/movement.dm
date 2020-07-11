@@ -287,20 +287,14 @@
 
 // Things that prevent objects standing on them from falling into turf below
 /obj/structure/catwalk/CanFallThru(atom/movable/mover as mob|obj, turf/target as turf)
-	if(target.x == x && target.y == y && target.z == z - 1)
-		return FALSE
-	return TRUE
+	return FALSE
 
 // So you'll slam when falling onto a catwalk
 /obj/structure/catwalk/CheckFall(var/atom/movable/falling_atom)
 	return falling_atom.fall_impact(src)
 
 /obj/structure/lattice/CanFallThru(atom/movable/mover as mob|obj, turf/target as turf)
-	if(mover.checkpass(PASSGRILLE))
-		return TRUE
-	if(target.x == x && target.y == y && target.z == z - 1)
-		return FALSE
-	return TRUE
+	return mover.checkpass(PASSGRILLE)
 
 // So you'll slam when falling onto a grille
 /obj/structure/lattice/CheckFall(var/atom/movable/falling_atom)
