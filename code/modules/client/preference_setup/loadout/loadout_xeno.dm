@@ -150,7 +150,7 @@
 /datum/gear/uniform/dresssmock/New()
 	..()
 	var/list/dresssmocks = list()
-	for(var/dresssmock in typesof(/obj/item/clothing/under/teshari/smock))
+	for(var/dresssmock in typesof(/obj/item/clothing/under/teshari/dresssmock))
 		var/obj/item/clothing/under/teshari/dresssmock/dresssmock_type = dresssmock
 		dresssmocks[initial(dresssmock_type.name)] = dresssmock_type
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(dresssmocks, /proc/cmp_text_asc, TRUE))
@@ -229,7 +229,7 @@
 
 /datum/gear/uniform/dept/undercoat/mining
 	display_name = "mining undercoat (Teshari)"
-	path = /obj/item/clothing/accessory/poncho/roles/cloak/mining
+	path = /obj/item/clothing/under/teshari/undercoat/jobs/mining
 	allowed_roles = list("Quartermaster","Shaft Miner")
 
 /datum/gear/uniform/dept/undercoat/security

@@ -43,7 +43,7 @@
 	name = "small rainbow smock"
 	icon_state = "tesh_smock_rainbow"
 
-/obj/item/clothing/under/teshari/smock/uniform
+/obj/item/clothing/under/teshari/smock/cap
 	name = "small command smock"
 	icon_state = "tesh_smock_captain"
 
@@ -198,21 +198,9 @@
 
 //Job Undercoats
 
-/obj/item/clothing/under/teshari/undercoat/jobs
+/obj/item/clothing/under/teshari/undercoat/jobs/
 	icon = 'icons/mob/species/teshari/deptjacket.dmi'
 	icon_override = 'icons/mob/species/teshari/deptjacket.dmi'
-
-/obj/item/clothing/under/teshari/undercoat/jobs/cargo
-	name = "cargo undercoat"
-	desc = "A traditional Teshari garb made for the Cargo department"
-	icon_state = "tesh_uniform_car"
-	item_state = "tesh_uniform_car"
-
-/obj/item/clothing/under/teshari/undercoat/jobs/mining
-	name = "mining undercoat"
-	desc = "A traditional Teshari garb made for Mining"
-	icon_state = "tesh_uniform_mine"
-	item_state = "tesh_uniform_mine"
 
 /obj/item/clothing/under/teshari/undercoat/jobs/cap
 	name = "facility director undercoat"
@@ -262,6 +250,24 @@
 	icon_state = "tesh_uniform_cmo"
 	item_state = "tesh_uniform_cmo"
 
+/obj/item/clothing/under/teshari/undercoat/jobs/qm
+	name = "quartermaster undercoat"
+	desc = "A traditional Teshari garb made for the Quartermaster"
+	icon_state = "tesh_uniform_qm"
+	item_state = "tesh_uniform_qm"
+
+/obj/item/clothing/under/teshari/undercoat/jobs/cargo
+	name = "cargo undercoat"
+	desc = "A traditional Teshari garb made for the Cargo department"
+	icon_state = "tesh_uniform_car"
+	item_state = "tesh_uniform_car"
+
+/obj/item/clothing/under/teshari/undercoat/jobs/mining
+	name = "mining undercoat"
+	desc = "A traditional Teshari garb made for Mining"
+	icon_state = "tesh_uniform_mine"
+	item_state = "tesh_uniform_mine"
+
 /obj/item/clothing/under/teshari/undercoat/jobs/medical
 	name = "medical undercoat"
 	desc = "A traditional Teshari garb made for the Medical department"
@@ -309,12 +315,6 @@
 	desc = "A traditional Teshari garb made for the Security department"
 	icon_state = "tesh_uniform_sec"
 	item_state = "tesh_uniform_sec"
-
-/obj/item/clothing/under/teshari/undercoat/jobs/qm
-	name = "quartermaster undercoat"
-	desc = "A traditional Teshari garb made for the Quartermaster"
-	icon_state = "tesh_uniform_qm"
-	item_state = "tesh_uniform_qm"
 
 /obj/item/clothing/under/teshari/undercoat/jobs/service
 	name = "service undercoat"
