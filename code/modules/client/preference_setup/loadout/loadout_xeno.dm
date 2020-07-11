@@ -92,62 +92,6 @@
 	..()
 	gear_tweaks = list(gear_tweak_free_color_choice)
 
-/datum/gear/uniform/smock
-	display_name = "smock selection (Teshari)"
-	path = /obj/item/clothing/under/teshari/smock
-	whitelisted = SPECIES_TESHARI
-	sort_category = "Xenowear"
-
-/datum/gear/uniform/smock/New()
-	..()
-	var/list/smocks = list()
-	for(var/smock in typesof(/obj/item/clothing/under/teshari/smock))
-		var/obj/item/clothing/under/teshari/smock/smock_type = smock
-		smocks[initial(smock_type.name)] = smock_type
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(smocks, /proc/cmp_text_asc, TRUE))
-
-/datum/gear/uniform/dresssmock
-	display_name = "department dress selection (Teshari)"
-	path = /obj/item/clothing/under/teshari/dresssmock
-	whitelisted = SPECIES_TESHARI
-	sort_category = "Xenowear"
-
-/datum/gear/uniform/dresssmock/New()
-	..()
-	var/list/dresssmocks = list()
-	for(var/dresssmock in typesof(/obj/item/clothing/under/teshari/smock))
-		var/obj/item/clothing/under/teshari/dresssmock/dresssmock_type = dresssmock
-		dresssmocks[initial(dresssmock_type.name)] = dresssmock_type
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(dresssmocks, /proc/cmp_text_asc, TRUE))
-
-/datum/gear/uniform/undercoat
-	display_name = "undercoat selection (Teshari)"
-	path = /obj/item/clothing/under/teshari/undercoat/standard
-	whitelisted = SPECIES_TESHARI
-	sort_category = "Xenowear"
-
-/datum/gear/uniform/undercoat/New()
-	..()
-	var/list/undercoats = list()
-	for(var/undercoat in typesof(/obj/item/clothing/under/teshari/undercoat/standard))
-		var/obj/item/clothing/under/teshari/undercoat/standard/undercoat_type = undercoat
-		undercoats[initial(undercoat_type.name)] = undercoat_type
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(undercoats, /proc/cmp_text_asc, TRUE))
-
-/datum/gear/suit/cloak
-	display_name = "cloak selection (Teshari)"
-	path = /obj/item/clothing/suit/storage/teshari/cloak/standard
-	whitelisted = SPECIES_TESHARI
-	sort_category = "Xenowear"
-
-/datum/gear/suit/cloak/New()
-	..()
-	var/list/cloaks = list()
-	for(var/cloak in typesof(/obj/item/clothing/suit/storage/teshari/cloak/standard))
-		var/obj/item/clothing/suit/storage/teshari/cloak/standard/cloak_type = cloak
-		cloaks[initial(cloak_type.name)] = cloak_type
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(cloaks, /proc/cmp_text_asc, TRUE))
-
 /datum/gear/mask/ipc_monitor
 	display_name = "display monitor (Full Body Prosthetic)"
 	path = /obj/item/clothing/mask/monitor
@@ -182,6 +126,62 @@
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(cohesionsuits, /proc/cmp_text_asc, TRUE))
 
 //TESHARI
+
+/datum/gear/uniform/smock
+	display_name = "smock selection (Teshari)"
+	path = /obj/item/clothing/under/teshari/smock
+	whitelisted = SPECIES_TESHARI
+	sort_category = "Xenowear"
+
+/datum/gear/uniform/smock/New()
+	..()
+	var/list/smocks = list()
+	for(var/smock in typesof(/obj/item/clothing/under/teshari/smock))
+		var/obj/item/clothing/under/teshari/smock/smock_type = smock
+		smocks[initial(smock_type.name)] = smock_type
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(smocks, /proc/cmp_text_asc, TRUE))
+
+/datum/gear/uniform/dresssmock
+	display_name = "department dress selection (Teshari)"
+	path = /obj/item/clothing/under/teshari/dresssmock
+	whitelisted = SPECIES_TESHARI
+	sort_category = "Xenowear"
+
+/datum/gear/uniform/dresssmock/New()
+	..()
+	var/list/dresssmocks = list()
+	for(var/dresssmock in typesof(/obj/item/clothing/under/teshari/smock))
+		var/obj/item/clothing/under/teshari/dresssmock/dresssmock_type = dresssmock
+		dresssmocks[initial(dresssmock_type.name)] = dresssmock_type
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(dresssmocks, /proc/cmp_text_asc, TRUE))
+
+/datum/gear/suit/cloak
+	display_name = "cloak selection (Teshari)"
+	path = /obj/item/clothing/suit/storage/teshari/cloak/standard
+	whitelisted = SPECIES_TESHARI
+	sort_category = "Xenowear"
+
+/datum/gear/suit/cloak/New()
+	..()
+	var/list/cloaks = list()
+	for(var/cloak in typesof(/obj/item/clothing/suit/storage/teshari/cloak/standard))
+		var/obj/item/clothing/suit/storage/teshari/cloak/standard/cloak_type = cloak
+		cloaks[initial(cloak_type.name)] = cloak_type
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(cloaks, /proc/cmp_text_asc, TRUE))
+
+/datum/gear/uniform/undercoat
+	display_name = "undercoat selection (Teshari)"
+	path = /obj/item/clothing/under/teshari/undercoat/standard
+	whitelisted = SPECIES_TESHARI
+	sort_category = "Xenowear"
+
+/datum/gear/uniform/undercoat/New()
+	..()
+	var/list/undercoats = list()
+	for(var/undercoat in typesof(/obj/item/clothing/under/teshari/undercoat/standard))
+		var/obj/item/clothing/under/teshari/undercoat/standard/undercoat_type = undercoat
+		undercoats[initial(undercoat_type.name)] = undercoat_type
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(undercoats, /proc/cmp_text_asc, TRUE))
 
 /datum/gear/uniform/dept
 	whitelisted = SPECIES_TESHARI
@@ -334,12 +334,12 @@
 /datum/gear/suit/dept/cloak/cargo
 	display_name = "cargo cloak (Teshari)"
 	path = /obj/item/clothing/suit/storage/teshari/cloak/jobs/cargo
-	allowed_roles = list("Quartermaster","Cargo Technician")
+	allowed_roles = list("Quartermaster","Shaft Miner" ,"Cargo Technician")
 
 /datum/gear/suit/dept/cloak/mining
 	display_name = "mining cloak (Teshari)"
 	path = /obj/item/clothing/suit/storage/teshari/cloak/jobs/mining
-	allowed_roles = list("Quartermaster","Shaft Miner")
+	allowed_roles = list("Quartermaster","Shaft Miner" ,"Cargo Technician")
 
 /datum/gear/suit/dept/cloak/security
 	display_name = "security cloak (Teshari)"
@@ -407,52 +407,6 @@
 	whitelisted = SPECIES_TESHARI
 	sort_category = "Xenowear"
 
-//VOX
-
-/datum/gear/uniform/voxcivassistant
-	display_name = "vox pressure suit (assistant)"
-	path = /obj/item/clothing/under/pressuresuit/voxcivassistant
-	sort_category = "Xenowear"
-	whitelisted = SPECIES_VOX
-
-/datum/gear/uniform/voxcivbartender
-	display_name = "vox pressure suit (bartender)"
-	path = /obj/item/clothing/under/pressuresuit/voxcivbartender
-	sort_category = "Xenowear"
-	whitelisted = SPECIES_VOX
-
-/datum/gear/uniform/voxcivchef
-	display_name = "vox pressure suit (chef)"
-	path = /obj/item/clothing/under/pressuresuit/voxcivchef
-	sort_category = "Xenowear"
-	whitelisted = SPECIES_VOX
-
-/datum/gear/uniform/voxcivchaplain
-	display_name = "vox pressure suit (chaplain)"
-	path = /obj/item/clothing/under/pressuresuit/voxcivchaplain
-	sort_category = "Xenowear"
-	whitelisted = SPECIES_VOX
-
-/datum/gear/uniform/voxcivlibrarian
-	display_name = "vox pressure suit (librarian)"
-	path = /obj/item/clothing/under/pressuresuit/voxcivlibrarian
-	sort_category = "Xenowear"
-	whitelisted = SPECIES_VOX
-
-/datum/gear/uniform/simonpants
-	display_name = "simon pants (Vox)"
-	path = /obj/item/clothing/under/vox/simonpants
-	sort_category = "Xenowear"
-	whitelisted = SPECIES_VOX
-
-/datum/gear/suit/simonjacket
-	display_name = "simon jacket (Vox)"
-	path = /obj/item/clothing/suit/simonjacket
-	sort_category = "Xenowear"
-	whitelisted = SPECIES_VOX
-
-//TESHARI AGAIN
-
 /datum/gear/uniform/smockcolor
 	display_name = "smock, recolorable (Teshari)"
 	path = /obj/item/clothing/under/teshari/smock/white
@@ -512,3 +466,47 @@
 /datum/gear/suit/teshcoatwhite/New()
 	..()
 	gear_tweaks = list(gear_tweak_free_color_choice)
+
+//VOX
+
+/datum/gear/uniform/voxcivassistant
+	display_name = "vox pressure suit (assistant)"
+	path = /obj/item/clothing/under/pressuresuit/voxcivassistant
+	sort_category = "Xenowear"
+	whitelisted = SPECIES_VOX
+
+/datum/gear/uniform/voxcivbartender
+	display_name = "vox pressure suit (bartender)"
+	path = /obj/item/clothing/under/pressuresuit/voxcivbartender
+	sort_category = "Xenowear"
+	whitelisted = SPECIES_VOX
+
+/datum/gear/uniform/voxcivchef
+	display_name = "vox pressure suit (chef)"
+	path = /obj/item/clothing/under/pressuresuit/voxcivchef
+	sort_category = "Xenowear"
+	whitelisted = SPECIES_VOX
+
+/datum/gear/uniform/voxcivchaplain
+	display_name = "vox pressure suit (chaplain)"
+	path = /obj/item/clothing/under/pressuresuit/voxcivchaplain
+	sort_category = "Xenowear"
+	whitelisted = SPECIES_VOX
+
+/datum/gear/uniform/voxcivlibrarian
+	display_name = "vox pressure suit (librarian)"
+	path = /obj/item/clothing/under/pressuresuit/voxcivlibrarian
+	sort_category = "Xenowear"
+	whitelisted = SPECIES_VOX
+
+/datum/gear/uniform/simonpants
+	display_name = "simon pants (Vox)"
+	path = /obj/item/clothing/under/vox/simonpants
+	sort_category = "Xenowear"
+	whitelisted = SPECIES_VOX
+
+/datum/gear/suit/simonjacket
+	display_name = "simon jacket (Vox)"
+	path = /obj/item/clothing/suit/simonjacket
+	sort_category = "Xenowear"
+	whitelisted = SPECIES_VOX

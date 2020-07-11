@@ -26,7 +26,7 @@
 	blood_color = "#D514F7"
 	flesh_color = "#5F7BB0"
 	base_color = "#001144"
-	tail = "seromitail"
+	tail = "teshtail"
 	//tail_hair = "feathers" //VORESTATION TESHARI TEMPORARY REMOVAL
 	reagent_tag = IS_TESHARI
 
