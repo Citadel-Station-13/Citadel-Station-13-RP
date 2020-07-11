@@ -85,9 +85,6 @@
 		to_chat(src, "You are unable to emote.")
 		return
 
-	var/muzzled = is_muzzled()
-	if(m_type == 2 && muzzled) return
-
 	var/input
 	if(!message)
 		input = sanitize_or_reflect(input(src,"Choose an emote to display.") as text|null, src)
