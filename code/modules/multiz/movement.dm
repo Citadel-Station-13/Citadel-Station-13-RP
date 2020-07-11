@@ -327,6 +327,10 @@
 		var/atom/A = find_fall_target(oldloc, landing)
 		if(special_fall_handle(A) || !A || !A.check_impact(src))
 			return
+		var/mob/living/drop_mob = locate() in landing
+		if(drop_mob && (drop_mob != src)) //Shitload of checks. This is because the game finds various ways to screw me over.
+			if(drop_mob.dropped_onto(src))
+				return
 		fall_impact(A)
 	else
 		locationTransitForceMove(landing)
