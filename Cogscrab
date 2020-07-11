@@ -1,0 +1,35 @@
+////////////////////////////
+//		Cogscrab
+////////////////////////////
+
+/mob/living/simple_mob/construct/cogscrab
+	name = "Cogscrab"
+	real_name = "Cogscrab"
+	construct_type = "cogscrab"
+	desc = "A brass construct resembling a maintnence drone. It whirs with the sounds of countless gears."
+	icon = 'icons/mob/clockwork_mobs.dmi'
+	icon_state = "drone_clock"
+	icon_living = "drone_clock"
+	icon_dead = "drone_clock_dead"
+	maxHealth = 50
+	health = 50
+	movement_cooldown = 0
+	movement_sound = 'sound/effects/servostep.ogg'
+
+	pass_flags = PASSTABLE
+	mob_swap_flags = 0
+	mob_push_flags = 0
+
+	melee_damage_lower = 8
+	melee_damage_upper = 8
+	base_attack_cooldown = 2.5 //Two Attacks a Second?
+	attack_sharp = 1
+	attack_edge = 1
+	attack_sound = 'sound/weapons/bladeslice.ogg'
+	attacktext = list("cut", "sliced")
+
+	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
+
+/mob/living/simple_mob/construct/cogscrab/death()
+	..(null,"collapses into a pile of brass gears.")
+	qdel(src)
