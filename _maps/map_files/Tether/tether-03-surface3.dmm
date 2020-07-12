@@ -14616,7 +14616,6 @@
 /turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
 "zS" = (
-/obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/maintenance/command{
 	req_one_access = list(12)
