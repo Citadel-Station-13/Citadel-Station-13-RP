@@ -21,7 +21,7 @@ SUBSYSTEM_DEF(input)
 /datum/controller/subsystem/input/Initialize()
 	setup_macrosets()
 
-	subsystem_initialized = TRUE
+	initialized = TRUE
 
 	refresh_client_macro_sets()
 
@@ -35,7 +35,7 @@ SUBSYSTEM_DEF(input)
 		"North", "East", "South", "West",
 		"Northeast", "Southeast", "Northwest", "Southwest",
 		"Insert", "Delete", "Ctrl", "Alt", "Shift",
-		/*"F1", "F2", REMOVED - Keep these out unless control freak is enabled.*/ "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12",
+		/* REMOVED - Keep these out unless control freak is enabled. "F1", "F2",*/ "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12",
 		)
 	for(var/key in classic_mode_keys)
 		macroset_classic_input[key] = "\"KeyDown [key]\""
@@ -69,6 +69,21 @@ SUBSYSTEM_DEF(input)
 	macroset_classic_input["F2"] = "ooc"
 
 	// FINALLY, WE CAN DO SOMETHING MORE NORMAL FOR THE SNOWFLAKE-BUT-LESS KEYSET.
+
+	// HAHA - SIKE. Because of BYOND weirdness (tl;dr not specifically binding this way results in potentially duplicate chatboxes when
+	//  conflicts occur with something like say indicator vs say), we're going to snowflake this anyways
+	var/list/hard_binds = list(
+		"O" = "ooc",
+		"T" = "say",
+		"L" = "looc",
+		"M" = "me"
+		)
+	var/list/hard_bind_anti_collision = list()
+	var/list/anti_collision_modifiers = list("Ctrl", "Alt", "Shift", "Ctrl+Alt", "Ctrl+Shift", "Alt+Shift", "Ctrl+Alt+Shift")
+	for(var/key in hard_binds)
+		for(var/modifier in anti_collision_modifiers)
+			hard_bind_anti_collision["[modifier]+[key]"] = ".NONSENSICAL_VERB_THAT_DOES_NOTHING"
+
 	macroset_classic_hotkey = list(
 	"Any" = "\"KeyDown \[\[*\]\]\"",
 	"Any+UP" = "\"KeyUp \[\[*\]\]\"",
@@ -79,6 +94,9 @@ SUBSYSTEM_DEF(input)
 	"F2" = "ooc",
 	"H" = "holster"
 	)
+
+	macroset_classic_hotkey |= hard_binds
+	macroset_classic_hotkey |= hard_bind_anti_collision
 
 	// And finally, the modern set.
 	macroset_hotkey = list(
@@ -91,6 +109,9 @@ SUBSYSTEM_DEF(input)
 	"F2" = "ooc",
 	"H" = "holster"
 	)
+
+	macroset_hotkey |= hard_binds
+	macroset_hotkey |= hard_bind_anti_collision
 
 // Badmins just wanna have fun ♪
 /datum/controller/subsystem/input/proc/refresh_client_macro_sets()
@@ -105,3 +126,8 @@ SUBSYSTEM_DEF(input)
 	for(var/i in 1 to clients.len)
 		var/client/C = clients[i]
 		C.keyLoop()
+
+/// *sigh
+/client/verb/NONSENSICAL_VERB_THAT_DOES_NOTHING()
+	set name = ".NONSENSICAL_VERB_THAT_DOES_NOTHING"
+	set hidden = TRUE
