@@ -73,10 +73,6 @@ SUBSYSTEM_DEF(input)
 	// HAHA - SIKE. Because of BYOND weirdness (tl;dr not specifically binding this way results in potentially duplicate chatboxes when
 	//  conflicts occur with something like say indicator vs say), we're going to snowflake this anyways
 	var/list/hard_binds = list(
-		"O" = "ooc",
-		"T" = "say",
-		"L" = "looc",
-		"M" = "me"
 		)
 	var/list/hard_bind_anti_collision = list()
 	var/list/anti_collision_modifiers = list("Ctrl", "Alt", "Shift", "Ctrl+Alt", "Ctrl+Shift", "Alt+Shift", "Ctrl+Alt+Shift")
