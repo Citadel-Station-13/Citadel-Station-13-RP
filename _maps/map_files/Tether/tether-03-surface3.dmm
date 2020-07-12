@@ -14275,6 +14275,9 @@
 /area/bridge)
 "zp" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atrium)
 "zq" = (
@@ -14618,6 +14621,9 @@
 /obj/machinery/door/airlock/maintenance/command{
 	req_one_access = list(12)
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atrium)
 "zT" = (
@@ -14733,8 +14739,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "Ag" = (
-/obj/item/storage/box/donut,
-/obj/structure/table/reinforced,
+/obj/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "Ah" = (
@@ -21653,6 +21661,17 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hydroponics)
+"LL" = (
+/obj/machinery/recharger/wallcharger{
+	pixel_x = 4;
+	pixel_y = 28
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/bridge)
 "LM" = (
 /obj/structure/table/standard,
 /obj/item/storage/firstaid/surgery,
@@ -21929,6 +21948,21 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hydroponics)
+"Nu" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/junction{
+	dir = 1;
+	dpdir = 11;
+	icon_state = "pipe-j2"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/lower/atrium)
 "Nv" = (
 /obj/item/stool/padded,
 /obj/machinery/alarm{
@@ -36274,7 +36308,7 @@ wk
 wL
 hd
 Cy
-MV
+LL
 Ag
 AM
 Bv
@@ -36700,7 +36734,7 @@ SR
 wM
 xn
 yH
-xn
+Nu
 zU
 Aw
 Bl
