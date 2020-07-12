@@ -84,7 +84,6 @@ SUBSYSTEM_DEF(input)
 	"H" = "holster"
 	)
 
-	macroset_classic_hotkey |= hard_binds
 	macroset_classic_hotkey |= hard_bind_anti_collision
 
 	// And finally, the modern set.
@@ -99,7 +98,6 @@ SUBSYSTEM_DEF(input)
 	"H" = "holster"
 	)
 
-	macroset_hotkey |= hard_binds
 	macroset_hotkey |= hard_bind_anti_collision
 
 // Badmins just wanna have fun ♪
