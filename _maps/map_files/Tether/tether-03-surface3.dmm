@@ -12974,6 +12974,7 @@
 	dir = 1
 	},
 /obj/structure/flora/pottedplant,
+/obj/machinery/camera/network/command,
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "xk" = (
@@ -12985,7 +12986,6 @@
 	dir = 1
 	},
 /obj/structure/flora/pottedplant,
-/obj/machinery/camera/network/command,
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "xm" = (
@@ -13784,6 +13784,23 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
+"yz" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/lightgrey/border,
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 8
+	},
+/obj/machinery/camera/network/northern_star{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/atrium_three)
 "yA" = (
 /obj/machinery/computer/supplycomp{
 	dir = 8
@@ -14264,9 +14281,6 @@
 /obj/item/radio/intercom{
 	dir = 8;
 	pixel_x = -24
-	},
-/obj/machinery/camera/network/command{
-	dir = 4
 	},
 /obj/effect/floor_decal/corner/red/full{
 	dir = 8
@@ -15619,6 +15633,9 @@
 	pixel_y = -24
 	},
 /obj/machinery/light,
+/obj/machinery/camera/network/command{
+	dir = 10
+	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "Bu" = (
@@ -19985,12 +20002,17 @@
 /area/vacant/vacant_shop)
 "Ip" = (
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/silver,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
+	},
+/obj/machinery/door/airlock{
+	name = "Public Heated Pool"
+	},
+/obj/structure/curtain/open/shower{
+	anchored = 1
 	},
 /turf/simulated/floor/tiled,
 /area/vacant/vacant_shop)
@@ -20031,7 +20053,8 @@
 "Iu" = (
 /obj/machinery/alarm{
 	dir = 1;
-	pixel_y = -22
+	pixel_y = -22;
+	target_temperature = 313.15
 	},
 /obj/effect/mist,
 /turf/simulated/floor/wood,
@@ -20135,7 +20158,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/silver{
+/obj/machinery/door/airlock{
 	name = "Public Heated Pool"
 	},
 /turf/simulated/floor/tiled,
@@ -21480,6 +21503,10 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
+/obj/machinery/button/windowtint{
+	id = "aux_bridge";
+	pixel_y = -25
+	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "Lv" = (
@@ -21763,6 +21790,24 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/barrestroom)
+"Mm" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 5
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 6
+	},
+/obj/machinery/camera/network/northern_star{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/atrium_three)
 "Mp" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -22212,7 +22257,6 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/shuttle_pad)
 "OB" = (
-/obj/machinery/light,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lightgrey/border,
 /obj/effect/floor_decal/steeldecal/steel_decals7{
@@ -22344,7 +22388,9 @@
 /obj/machinery/shower{
 	pixel_y = 8
 	},
-/obj/structure/curtain/open/shower,
+/obj/structure/curtain/open/shower{
+	anchored = 1
+	},
 /turf/simulated/floor/tiled/white,
 /area/vacant/vacant_shop)
 "Pv" = (
@@ -22900,6 +22946,17 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/barrestroom)
+"RP" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/polarized/full{
+	id = "aux_bridge"
+	},
+/obj/machinery/door/firedoor,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/bridge)
 "RQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -23600,6 +23657,21 @@
 /obj/machinery/portable_atmospherics/hydroponics/soil,
 /turf/simulated/floor/grass,
 /area/tether/surfacebase/public_garden_three)
+"VU" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/lightgrey/border,
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 8
+	},
+/obj/machinery/light,
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/atrium_three)
 "Wc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -35304,13 +35376,13 @@ jR
 sS
 ha
 tt
-ha
+Mm
 ha
 uF
 vg
 jX
 kx
-Cy
+RP
 Au
 yy
 AM
@@ -35451,8 +35523,8 @@ lh
 uG
 vh
 vE
-wh
-Cy
+kx
+RP
 xk
 zj
 AM
@@ -35594,7 +35666,7 @@ qQ
 vi
 Zg
 OB
-Cy
+RP
 xl
 yA
 AM
@@ -35736,7 +35808,7 @@ uH
 vk
 jM
 wi
-Cy
+RP
 xF
 zi
 AM
@@ -35877,7 +35949,7 @@ lY
 uI
 La
 jM
-wk
+yz
 Cy
 xT
 zj
@@ -36019,7 +36091,7 @@ lY
 uI
 vk
 jM
-wk
+VU
 Cy
 xV
 zk
