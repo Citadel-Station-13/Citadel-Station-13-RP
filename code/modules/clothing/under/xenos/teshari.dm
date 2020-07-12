@@ -49,25 +49,32 @@
 
 //Dresses
 
-/obj/item/clothing/under/teshari/dresssmock
+/obj/item/clothing/under/teshari/dresssmock/command
 	name = "small command dress"
+	icon = 'icons/obj/clothing/species/teshari/uniform.dmi'
+	icon_override = 'icons/mob/species/teshari/teshari_uniform.dmi'
 	icon_state = "tesh_dress_cap"
+	item_state = "tesh_dress_cap"
 
 /obj/item/clothing/under/teshari/dresssmock/science
 	name = "small science dress"
 	icon_state = "tesh_dress_science"
+	item_state = "tesh_dress_science"
 
 /obj/item/clothing/under/teshari/dresssmock/engine
 	name = "small engineering dress"
 	icon_state = "tesh_dress_engine"
+	item_state = "tesh_dress_engine"
 
 /obj/item/clothing/under/teshari/dresssmock/security
 	name = "small security dress"
 	icon_state = "tesh_dress_security"
+	item_state = "tesh_dress_security"
 
 /obj/item/clothing/under/teshari/dresssmock/medical
-	name = "small command dress"
+	name = "small medical dress"
 	icon_state = "tesh_dress_medical"
+	item_state = "tesh_dress_medical"
 
 
 //Standard Undercoats
