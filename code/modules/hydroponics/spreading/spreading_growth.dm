@@ -52,6 +52,14 @@
 		if(smoke.reagents.has_reagent("plantbgone"))
 			die_off()
 			return
+		else if(smoke.reagents.has_reagent("fluorine"))
+			if(prob(40))
+				die_off()
+				return
+		else if(smoke.reagents.has_reagent("chlorine"))
+			if(prob(15))
+				die_off()
+				return
 
 	// Handle life.
 	var/turf/simulated/T = get_turf(src)

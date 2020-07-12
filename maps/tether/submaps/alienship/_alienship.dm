@@ -191,4 +191,4 @@
 
 // -- Turfs -- //
 /turf/simulated/shuttle/floor/alienplating/vacuum
-	initial_gas_mix = GAS_STRING_VACCUM
+	initial_gas_mix = GAS_STRING_VACUUM

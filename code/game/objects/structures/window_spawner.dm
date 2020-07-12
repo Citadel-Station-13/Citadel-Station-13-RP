@@ -7,7 +7,7 @@
 	name = "window grille spawner"
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "wingrille"
-	density = 1
+	density = TRUE
 	anchored = 1.0
 	pressure_resistance = 4*ONE_ATMOSPHERE
 	can_atmos_pass = ATMOS_PASS_NO
@@ -22,9 +22,6 @@
 
 /obj/effect/wingrille_spawn/attack_generic()
 	activate()
-
-/obj/effect/wingrille_spawn/CanAllowThrough(atom/movable/mover, turf/target)
-	return FALSE
 
 /obj/effect/wingrille_spawn/Initialize()
 	. = ..()

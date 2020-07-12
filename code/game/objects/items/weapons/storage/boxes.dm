@@ -480,3 +480,9 @@
 	name = "box of worms"
 	desc = "It's a box filled with worms."
 	starts_with = list(/obj/item/reagent_containers/food/snacks/worm = 10)
+
+/obj/item/storage/box/firingpins
+	name = "box of standard firing pins"
+	desc = "A box full of standard firing pins, to allow newly-developed firearms to operate."
+	icon_state = "firingpins"
+	starts_with = list(/obj/item/firing_pin = 8)

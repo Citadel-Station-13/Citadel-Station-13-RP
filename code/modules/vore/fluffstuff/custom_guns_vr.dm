@@ -782,33 +782,7 @@ END OF CITADEL CHANGES */
 
 /obj/item/gun/energy/frontier/locked
 	desc = "An extraordinarily rugged laser weapon, built to last and requiring effectively no maintenance. Includes a built-in crank charger for recharging away from civilization. This one has a safety interlock that prevents firing while in proximity to the facility."
-	req_access = list(access_armory) //for toggling safety
-	var/locked = 1
-
-/obj/item/gun/energy/frontier/locked/attackby(obj/item/I, mob/user)
-	var/obj/item/card/id/id = I.GetID()
-	if(istype(id))
-		if(check_access(id))
-			locked = !locked
-			to_chat(user, "<span class='warning'>You [locked ? "enable" : "disable"] the safety lock on \the [src].</span>")
-		else
-			to_chat(user, "<span class='warning'>Access denied.</span>")
-		user.visible_message("<span class='notice'>[user] swipes \the [I] against \the [src].</span>")
-	else
-		return ..()
-
-/obj/item/gun/energy/frontier/locked/emag_act(var/remaining_charges,var/mob/user)
-	..()
-	locked = !locked
-	to_chat(user, "<span class='warning'>You [locked ? "enable" : "disable"] the safety lock on \the [src]!</span>")
-
-/obj/item/gun/energy/frontier/locked/special_check(mob/user)
-	if(locked)
-		var/turf/T = get_turf(src)
-		if(T.z in GLOB.using_map.map_levels)
-			to_chat(user, "<span class='warning'>The safety device prevents the gun from firing this close to the facility.</span>")
-			return 0
-	return ..()
+	pin = /obj/item/firing_pin/explorer
 
 //Phaser Carbine - Reskinned phaser
 /obj/item/gun/energy/frontier/locked/carbine

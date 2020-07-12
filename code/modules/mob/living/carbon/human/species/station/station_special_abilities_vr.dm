@@ -792,9 +792,6 @@
 	set category = "Abilities"
 
 	var/mob/living/carbon/human/C = src
-	if(!C.wing_style) //The species var isn't taken into account here, as it's only purpose is to give this proc to a person.
-		to_chat(src, "You cannot fly without wings!!")
-		return
 	if(C.incapacitated(INCAPACITATION_ALL))
 		to_chat(src, "You cannot fly in this state!")
 		return
@@ -816,9 +813,6 @@
 	set category = "Abilities"
 
 	var/mob/living/carbon/human/C = src
-	if(!C.wing_style) //The species var isn't taken into account here, as it's only purpose is to give this proc to a person.
-		to_chat(src, "You don't have wings!")
-		return
 	if(!C.flying)
 		to_chat(src, "You must be flying to hover!")
 		return
