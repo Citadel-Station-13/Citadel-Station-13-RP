@@ -12711,6 +12711,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
+"wI" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/bridge)
 "wJ" = (
 /turf/simulated/wall,
 /area/maintenance/lower/atrium)
@@ -12978,10 +12986,28 @@
 	},
 /obj/structure/flora/pottedplant,
 /obj/machinery/camera/network/command,
+/obj/machinery/status_display{
+	pixel_y = 30
+	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "xk" = (
 /obj/machinery/computer/communications,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "xl" = (
@@ -12989,6 +13015,16 @@
 	dir = 1
 	},
 /obj/structure/flora/pottedplant,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "xm" = (
@@ -13251,6 +13287,11 @@
 	dir = 8
 	},
 /obj/structure/flora/pottedplant,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "xG" = (
@@ -13388,6 +13429,9 @@
 /area/maintenance/lower/atrium)
 "xT" = (
 /obj/machinery/computer/med_data,
+/obj/machinery/status_display{
+	pixel_y = 30
+	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "xU" = (
@@ -14638,6 +14682,11 @@
 /area/maintenance/lower/atrium)
 "zT" = (
 /obj/machinery/hologram/holopad,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "zU" = (
@@ -14964,6 +15013,11 @@
 	dir = 8
 	},
 /obj/structure/flora/pottedplant,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "Av" = (
@@ -15026,6 +15080,11 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
@@ -20030,7 +20089,7 @@
 /obj/machinery/alarm{
 	dir = 1;
 	pixel_y = -22;
-	target_temperature = 313.15
+	target_temperature = 312.15
 	},
 /obj/effect/mist,
 /obj/structure/table/bench/wooden,
@@ -21156,6 +21215,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "KM" = (
@@ -21361,6 +21425,11 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "Li" = (
@@ -22249,6 +22318,21 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/hydroponics/cafegarden)
+"Ot" = (
+/obj/structure/bed/chair,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/bridge)
 "Ou" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -23001,6 +23085,9 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/structure/cable/green{
+	icon_state = "0-2"
+	},
 /turf/simulated/floor/plating,
 /area/bridge)
 "RQ" = (
@@ -23401,6 +23488,9 @@
 /obj/machinery/light/small,
 /obj/effect/mist,
 /obj/structure/table/woodentable,
+/obj/machinery/status_display{
+	pixel_x = -32
+	},
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/sauna)
 "TZ" = (
@@ -24476,6 +24566,17 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
+"ZT" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/bridge)
 
 (1,1,1) = {"
 aa
@@ -35623,10 +35724,10 @@ vE
 Ne
 RP
 xk
-zj
-AM
+ZT
+wI
 zT
-AC
+Ot
 Bq
 Cy
 Sk
