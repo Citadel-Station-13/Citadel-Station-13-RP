@@ -93,22 +93,8 @@
 	set instant = TRUE
 	set hidden = TRUE
 
-	keys_held -= _key
-	var/movement = movement_keys[_key]
-	if(!(next_move_dir_add & movement))
-		next_move_dir_sub |= movement
+	client_keysend_amount += 1
 
-	// We don't do full key for release, because for mod keys you
-	// can hold different keys and releasing any should be handled by the key binding specifically
-	for (var/kb_name in prefs.key_bindings[_key])
-		var/datum/keybinding/kb = GLOB.keybindings_by_name[kb_name]
-		if(kb.can_use(src) && kb.up(src))
-			break
-	holder?.key_up(_key, src)
-	mob.focus?.key_up(_key, src)
-
-// Called every game tick
-/client/keyLoop()
 	var/cache = client_keysend_amount
 
 	if(keysend_tripped && next_keysend_trip_reset <= world.time)
@@ -139,6 +125,22 @@
 		qdel(src)
 		return
 
+	keys_held -= _key
+	var/movement = movement_keys[_key]
+	if(!(next_move_dir_add & movement))
+		next_move_dir_sub |= movement
+
+	// We don't do full key for release, because for mod keys you
+	// can hold different keys and releasing any should be handled by the key binding specifically
+	for (var/kb_name in prefs.key_bindings[_key])
+		var/datum/keybinding/kb = GLOB.keybindings_by_name[kb_name]
+		if(kb.can_use(src) && kb.up(src))
+			break
+	holder?.key_up(_key, src)
+	mob.focus?.key_up(_key, src)
+
+// Called every game tick
+/client/keyLoop()
 	holder?.keyLoop(src)
 	mob.focus?.keyLoop(src)
 
