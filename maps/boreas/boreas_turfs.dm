@@ -39,12 +39,6 @@ BOREAS_TURF_CREATE(/turf/simulated/floor/outdoors/grass/sif)
 /turf/simulated/floor/water
 	initial_gas_mix = GAS_STRING_STP
 
-/turf/simulated/mineral/vacuum
-	initial_gas_mix = GAS_STRING_VACCUM
-
-/turf/simulated/mineral/floor/vacuum
-	initial_gas_mix = GAS_STRING_VACCUM
-
 BOREAS_TURF_CREATE(/turf/simulated/mineral)
 BOREAS_TURF_CREATE(/turf/simulated/mineral/floor)
 	//This proc is responsible for ore generation on surface turfs
