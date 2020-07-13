@@ -76,8 +76,18 @@
 	sound_env = SMALL_SOFTFLOOR
 
 /area/tether/surfacebase/fishing_garden
-	name = "\improper fish garden"
+	name = "\improper Fish Pond"
 	icon_state = "blue"
+
+
+/area/tether/surfacebase/sauna
+	name = "\improper Public Sauna"
+	icon_state = "green"
+
+
+/area/tether/surfacebase/lounge
+	name = "\improper Station Lounge"
+	icon_state = "purple"
 
 // /area/tether/surfacebase/east_stairs_one //This is just part of a lower hallway
 
