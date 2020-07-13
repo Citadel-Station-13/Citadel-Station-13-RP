@@ -139,6 +139,10 @@
 		return FALSE
 	return ..()
 
+/obj/item/gun/energy/modular/AltClick(mob/user)
+	generatefiremodes()
+	to_chat(user, "You hit the reset on the weapon's internal checking system.")
+
 /obj/item/gun/energy/modular/special_check(mob/user)
 	. = ..()
 	if(!circuit)
@@ -161,7 +165,7 @@
 		return FALSE
 	if(projectile_type == /obj/item/projectile)
 		to_chat(user, "<span class='warning'>The gun is experiencing a checking error! Open and close the weapon, or try removing all the parts and placing them back in.</span>")
-		return FALSE		
+		return FALSE
 
 /obj/item/gun/energy/modular/attackby(obj/item/O, mob/user)
 	if(O.is_screwdriver())
