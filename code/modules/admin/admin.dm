@@ -1559,7 +1559,7 @@ datum/admins/var/obj/item/paper/admin/faxreply // var to hold fax replies in
 		dead.alpha = initial(dead.alpha)
 		dead.name = dead.original_name
 	else
-		dead.invisbility = invisibility_maximum
+		dead.invisbility = INVISIBILITY_MAXIMUM
 		dead.alpha = 0
 		dead.original_name = dead.name
 		dead.name = "ghost"
