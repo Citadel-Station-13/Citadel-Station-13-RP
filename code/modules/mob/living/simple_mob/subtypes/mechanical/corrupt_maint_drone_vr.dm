@@ -44,7 +44,7 @@
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	attacktext = list("cut", "sliced")
 
-	var/poison_type = "welder fuel"	// The reagent that gets injected when it attacks.
+	var/poison_type = "fuel"	// The reagent that gets injected when it attacks.
 	var/poison_chance = 35			// Chance for injection to occur.
 	var/poison_per_bite = 5			// Amount added per injection.
 
