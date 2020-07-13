@@ -1557,7 +1557,8 @@ datum/admins/var/obj/item/paper/admin/faxreply // var to hold fax replies in
 	if(!stealthghost || !fakekey)
 		dead.invisibility = initial(dead.invisibility)
 		dead.alpha = initial(dead.alpha)
-		dead.name = dead.original_name
+		if(dead.original_name)
+			dead.name = dead.original_name
 	else
 		dead.invisibility = INVISIBILITY_MAXIMUM
 		dead.alpha = 0
