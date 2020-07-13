@@ -16,8 +16,8 @@
 	dir = 1
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "ac" = (
@@ -45,8 +45,8 @@
 	dir = 1
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "af" = (
@@ -128,7 +128,6 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/restaurant)
@@ -147,9 +146,7 @@
 /area/centcom/medical)
 "as" = (
 /obj/effect/floor_decal/borderfloor{
-	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	dir = 1
 	},
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 1
@@ -163,8 +160,8 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/item/gun/projectile/automatic/l6_saw,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "av" = (
@@ -229,8 +226,8 @@
 	name = "Security"
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "aJ" = (
@@ -265,8 +262,8 @@
 	name = "Thunderdome Blast Door"
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/tdome/tdome1)
 "aO" = (
@@ -276,8 +273,7 @@
 /obj/structure/table/marble,
 /obj/item/book/manual/chef_recipes,
 /obj/item/reagent_containers/food/condiment/small/saltshaker{
-	pixel_x = -3;
-	pixel_y = 0
+	pixel_x = -3
 	},
 /obj/item/reagent_containers/food/condiment/small/peppermill{
 	pixel_x = 3
@@ -301,8 +297,8 @@
 	dir = 6
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "aS" = (
@@ -332,8 +328,8 @@
 	name = "Security"
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Security Arrivals"
@@ -442,8 +438,8 @@
 	req_one_access = list(1)
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Security Arrivals"
@@ -454,15 +450,14 @@
 	},
 /obj/item/folder/yellow_ce,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/command)
 "bE" = (
 /obj/machinery/door_timer/cell_3{
+	id = "CellC2";
 	name = "Cell 2";
-	pixel_y = 29;
-	id = "CellC2"
+	pixel_y = 29
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -471,9 +466,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloor/corner2{
-	dir = 4;
-	icon_state = "borderfloorcorner2";
-	pixel_y = 0
+	dir = 4
 	},
 /obj/effect/floor_decal/corner/blue/bordercorner2{
 	dir = 4
@@ -483,14 +476,12 @@
 "bK" = (
 /obj/machinery/fitness/punching_bag/clown,
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/centcom/bathroom)
 "bN" = (
 /obj/structure/closet/hydrant{
-	pixel_x = -30;
-	pixel_y = 0
+	pixel_x = -30
 	},
 /obj/item/storage/firstaid/o2{
 	layer = 2.8;
@@ -542,7 +533,6 @@
 "bX" = (
 /obj/machinery/door/window/brigdoor{
 	dir = 8;
-	icon_state = "leftsecure";
 	req_access = list(63);
 	req_one_access = newlist()
 	},
@@ -563,8 +553,8 @@
 	req_one_access = list(1)
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "bZ" = (
@@ -577,14 +567,13 @@
 /area/centcom/control)
 "ca" = (
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/medical)
 "cb" = (
 /obj/item/storage/firstaid/combat,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/centcom/control)
@@ -603,12 +592,11 @@
 /area/centcom/main_hall)
 "cf" = (
 /obj/effect/floor_decal/corner/white{
-	icon_state = "corner_white";
 	dir = 10
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/specops)
 "ch" = (
@@ -687,7 +675,6 @@
 "cL" = (
 /obj/structure/kitchenspike,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/centcom/control)
@@ -708,8 +695,8 @@
 	invisibility = 101
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/tdome/tdome1)
 "cQ" = (
@@ -740,8 +727,8 @@
 	dir = 1
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/medical)
 "cX" = (
@@ -764,8 +751,8 @@
 	pixel_y = 4
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/command)
 "dh" = (
@@ -780,8 +767,8 @@
 	},
 /obj/machinery/camera/network/crescent,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "di" = (
@@ -806,8 +793,8 @@
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/mask/breath,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "do" = (
@@ -816,8 +803,8 @@
 	req_access = null
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "dp" = (
@@ -876,8 +863,8 @@
 	},
 /obj/machinery/photocopier,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/command)
 "dw" = (
@@ -914,7 +901,6 @@
 	dir = 9
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/command)
@@ -936,24 +922,22 @@
 /area/centcom/control)
 "dF" = (
 /obj/machinery/button/remote/blast_door{
+	id = "ArmouryC";
 	name = "Armoury Access";
-	pixel_x = 0;
 	pixel_y = -28;
-	req_access = list(3);
-	id = "ArmouryC"
+	req_access = list(3)
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 10
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "dI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 9;
-	icon_state = "intact"
+	dir = 9
 	},
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
@@ -981,9 +965,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloor/corner2{
-	dir = 4;
-	icon_state = "borderfloorcorner2";
-	pixel_y = 0
+	dir = 4
 	},
 /obj/effect/floor_decal/corner/blue/bordercorner2{
 	dir = 4
@@ -1014,7 +996,6 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/command)
@@ -1032,12 +1013,11 @@
 "dV" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Commander";
-	opacity = 1;
 	req_access = list(103)
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/specops)
 "dW" = (
@@ -1065,16 +1045,14 @@
 	check_access = 0;
 	check_anomalies = 0;
 	check_records = 0;
-	check_synth = 0;
-	check_weapons = 0;
 	control_area = "\improper CentCom Security Arrivals";
 	pixel_x = 32;
 	req_access = list(101);
 	req_one_access = list(101)
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Security Arrivals"
@@ -1125,8 +1103,8 @@
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/blue/border,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/command)
 "el" = (
@@ -1148,12 +1126,11 @@
 "eo" = (
 /obj/machinery/door/airlock/centcom{
 	name = "General Access";
-	opacity = 1;
 	req_access = list(101)
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/tdome/tdomeadmin)
 "es" = (
@@ -1170,8 +1147,8 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/camera/network/crescent,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "ev" = (
@@ -1202,7 +1179,6 @@
 "eC" = (
 /obj/effect/floor_decal/carpet,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/restaurant)
@@ -1245,8 +1221,8 @@
 	name = "Axe Supply"
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/tdome/tdome1)
 "eQ" = (
@@ -1265,8 +1241,8 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "eR" = (
@@ -1283,8 +1259,8 @@
 	dir = 4
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "eS" = (
@@ -1382,8 +1358,8 @@
 /obj/item/ammo_magazine/m545saw,
 /obj/item/ammo_magazine/m545saw,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "eV" = (
@@ -1398,8 +1374,8 @@
 /obj/item/gun/energy/ionrifle/pistol,
 /obj/item/gun/energy/ionrifle/pistol,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "eY" = (
@@ -1418,8 +1394,8 @@
 	name = "Armoury"
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "fd" = (
@@ -1464,8 +1440,8 @@
 	name = "Commando"
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "fp" = (
@@ -1515,8 +1491,8 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/item/gun/energy/xray,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "fv" = (
@@ -1528,14 +1504,14 @@
 /obj/item/clothing/head/helmet/space/void/security,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "fz" = (
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/control)
 "fA" = (
@@ -1604,8 +1580,8 @@
 	req_access = list(3)
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "fQ" = (
@@ -1643,18 +1619,14 @@
 	dir = 1
 	},
 /obj/item/radio/intercom{
-	broadcasting = 0;
 	dir = 1;
 	frequency = 1475;
-	icon_state = "intercom";
-	listening = 1;
 	name = "Station Intercom (Security)";
-	pixel_x = 0;
 	pixel_y = 27
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Residential Security"
@@ -1697,8 +1669,8 @@
 /obj/item/clothing/head/helmet/swat,
 /obj/item/gun/energy/laser,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/tdome/tdome1)
 "ge" = (
@@ -1708,8 +1680,8 @@
 /obj/item/healthanalyzer/advanced,
 /obj/item/healthanalyzer/advanced,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/specops)
 "gf" = (
@@ -1731,9 +1703,7 @@
 	dir = 5
 	},
 /obj/effect/floor_decal/borderfloor/corner2{
-	dir = 4;
-	icon_state = "borderfloorcorner2";
-	pixel_y = 0
+	dir = 4
 	},
 /obj/effect/floor_decal/corner/blue/bordercorner2{
 	dir = 4
@@ -1758,8 +1728,8 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "gj" = (
@@ -1776,8 +1746,8 @@
 	dir = 6
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Residential Security"
@@ -1797,8 +1767,8 @@
 	},
 /obj/machinery/camera/network/crescent,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "gm" = (
@@ -1825,8 +1795,8 @@
 	dir = 5
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "gr" = (
@@ -1857,8 +1827,8 @@
 /obj/item/gun/energy/netgun,
 /obj/item/gun/energy/netgun,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "gv" = (
@@ -1869,14 +1839,13 @@
 /obj/item/storage/backpack/dufflebag/syndie/ammo,
 /obj/item/storage/backpack/dufflebag/syndie/ammo,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "gw" = (
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/centcom/bathroom)
 "gy" = (
@@ -1904,8 +1873,8 @@
 /obj/item/gun/energy/laser,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "gD" = (
@@ -1916,8 +1885,8 @@
 "gE" = (
 /obj/effect/wingrille_spawn/reinforced/crescent,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Residential Security"
@@ -1965,9 +1934,7 @@
 /area/centcom/medical)
 "gL" = (
 /obj/structure/table/standard,
-/obj/machinery/recharger{
-	pixel_y = 0
-	},
+/obj/machinery/recharger,
 /obj/item/flash,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
@@ -1990,8 +1957,7 @@
 "gS" = (
 /obj/machinery/fitness/heavy/lifter,
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/centcom/bathroom)
 "gU" = (
@@ -2008,8 +1974,8 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/command)
 "gW" = (
@@ -2055,8 +2021,8 @@
 /obj/item/clothing/accessory/storage/white_drop_pouches,
 /obj/item/clothing/accessory/storage/white_drop_pouches,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/specops)
 "hb" = (
@@ -2076,8 +2042,8 @@
 /obj/item/camera,
 /obj/item/storage/box/ids,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Security Arrivals"
@@ -2094,18 +2060,15 @@
 	pixel_x = -4;
 	pixel_y = 8
 	},
-/obj/item/tape_recorder{
-	pixel_y = 0
-	},
+/obj/item/tape_recorder,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/command)
 "hh" = (
 /obj/item/gun/energy/sizegun,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/centcom/control)
@@ -2119,7 +2082,6 @@
 	dir = 10
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/restaurant)
@@ -2129,8 +2091,8 @@
 	req_access = newlist()
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "hn" = (
@@ -2143,7 +2105,6 @@
 	dir = 4
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/restaurant)
@@ -2178,8 +2139,8 @@
 /obj/effect/floor_decal/industrial/warning,
 /obj/structure/window/reinforced,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/living)
 "hv" = (
@@ -2225,8 +2186,8 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/camera/network/crescent,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "hC" = (
@@ -2276,20 +2237,17 @@
 "hI" = (
 /obj/structure/curtain/open/shower,
 /obj/structure/window/reinforced/tinted{
-	dir = 4;
-	icon_state = "twindow"
+	dir = 4
 	},
 /obj/machinery/shower{
 	pixel_y = 13
 	},
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/centcom/bathroom)
 "hJ" = (
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 9
 	},
 /obj/structure/window/reinforced{
@@ -2307,8 +2265,8 @@
 	opacity = 0
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/living)
 "hK" = (
@@ -2341,8 +2299,8 @@
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/blue/border,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Residential Security"
@@ -2361,19 +2319,18 @@
 	dir = 6
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "hP" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Special Operations";
-	opacity = 1;
 	req_access = list(103)
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/specops)
 "hQ" = (
@@ -2416,8 +2373,7 @@
 /obj/structure/table/marble,
 /obj/item/book/manual/chef_recipes,
 /obj/item/reagent_containers/food/condiment/small/saltshaker{
-	pixel_x = -3;
-	pixel_y = 0
+	pixel_x = -3
 	},
 /obj/item/reagent_containers/food/condiment/small/peppermill{
 	pixel_x = 3
@@ -2431,7 +2387,6 @@
 	dir = 1
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/restaurant)
@@ -2452,8 +2407,8 @@
 	},
 /obj/item/storage/firstaid/adv,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/specops)
 "ib" = (
@@ -2465,8 +2420,8 @@
 /obj/item/gun/projectile/automatic/battlerifle,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "ie" = (
@@ -2487,8 +2442,8 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/medical)
 "ii" = (
@@ -2518,8 +2473,8 @@
 	dir = 4
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "in" = (
@@ -2543,13 +2498,13 @@
 /obj/machinery/button/remote/blast_door{
 	id = "RiotCon";
 	name = "Riot Control";
+	pixel_x = -23;
 	req_access = list(63);
-	req_one_access = list(1);
-	pixel_x = -23
+	req_one_access = list(1)
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "is" = (
@@ -2558,8 +2513,8 @@
 	name = "Heavy Supply"
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/tdome/tdome1)
 "it" = (
@@ -2585,8 +2540,8 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "ix" = (
@@ -2621,8 +2576,8 @@
 	dir = 5
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/command)
 "iC" = (
@@ -2671,8 +2626,8 @@
 	opacity = 0
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/living)
 "iH" = (
@@ -2699,7 +2654,6 @@
 /area/centcom/medical)
 "iK" = (
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 5
 	},
 /turf/unsimulated/floor/steel,
@@ -2710,8 +2664,8 @@
 /obj/item/clothing/shoes/brown,
 /obj/item/melee/energy/axe,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/tdome/tdome1)
 "iS" = (
@@ -2726,7 +2680,6 @@
 	dir = 10
 	},
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 4
 	},
 /turf/unsimulated/floor/steel,
@@ -2743,7 +2696,6 @@
 /obj/structure/table/standard,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
-	icon_state = "borderfloor";
 	pixel_y = -16
 	},
 /obj/item/paper_bin{
@@ -2764,8 +2716,8 @@
 /obj/item/book/manual/security_space_law,
 /obj/item/book/manual/security_space_law,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Security Arrivals"
@@ -2773,7 +2725,6 @@
 "iX" = (
 /obj/structure/table/woodentable,
 /obj/item/flashlight/lamp/green{
-	dir = 2;
 	pixel_x = 10;
 	pixel_y = 12
 	},
@@ -2781,8 +2732,8 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/command)
 "iY" = (
@@ -2800,8 +2751,8 @@
 	dir = 10
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "jc" = (
@@ -2818,7 +2769,6 @@
 	dir = 5
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/control)
@@ -2839,15 +2789,14 @@
 	req_one_access = list(101)
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/command)
 "jf" = (
 /obj/structure/reagent_dispensers/water_cooler/full,
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/centcom/bathroom)
 "jj" = (
@@ -2865,7 +2814,6 @@
 "jk" = (
 /obj/machinery/door/airlock/centcom{
 	name = "General Access";
-	opacity = 1;
 	req_access = list(101)
 	},
 /turf/unsimulated/floor/steel,
@@ -2898,8 +2846,8 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/medical)
 "jr" = (
@@ -2910,18 +2858,14 @@
 /area/centcom/security)
 "js" = (
 /obj/item/radio/intercom{
-	broadcasting = 0;
 	dir = 1;
 	frequency = 1475;
-	icon_state = "intercom";
-	listening = 1;
 	name = "Station Intercom (Security)";
-	pixel_x = 0;
 	pixel_y = 27
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Residential Security"
@@ -2937,8 +2881,8 @@
 	dir = 10
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "ju" = (
@@ -2972,7 +2916,6 @@
 /area/centcom/medical)
 "jy" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	icon_state = "door_closed";
 	dir = 2
 	},
 /turf/unsimulated/floor/steel,
@@ -2985,7 +2928,6 @@
 /area/centcom/control)
 "jB" = (
 /obj/structure/bed/chair/wood/wings{
-	icon_state = "wooden_chair_wings";
 	dir = 1
 	},
 /turf/unsimulated/floor/steel{
@@ -2996,8 +2938,8 @@
 "jD" = (
 /obj/structure/bed/chair,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "jE" = (
@@ -3006,12 +2948,11 @@
 /area/centcom/security)
 "jG" = (
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 9
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "jK" = (
@@ -3042,7 +2983,6 @@
 	pixel_x = 3
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/command)
@@ -3052,8 +2992,8 @@
 /obj/effect/floor_decal/borderfloorblack/corner2,
 /obj/effect/floor_decal/corner/blue/bordercorner2,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "jW" = (
@@ -3062,9 +3002,7 @@
 /area/centcom/holding)
 "jX" = (
 /obj/effect/floor_decal/borderfloor{
-	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	dir = 1
 	},
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 1
@@ -3087,8 +3025,8 @@
 /obj/item/gun/projectile/shotgun/pump/USDF,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "kc" = (
@@ -3109,24 +3047,21 @@
 	dir = 4
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "kj" = (
 /obj/structure/table/rack,
 /obj/item/clothing/gloves/arm_guard/laserproof,
 /obj/item/clothing/shoes/leg_guard/laserproof,
-/obj/item/clothing/suit/armor/laserproof{
-	pixel_x = 0;
-	pixel_y = 0
-	},
+/obj/item/clothing/suit/armor/laserproof,
 /obj/item/clothing/head/helmet/laserproof,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/camera/network/crescent,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "kk" = (
@@ -3142,9 +3077,7 @@
 "km" = (
 /obj/structure/sink{
 	dir = 4;
-	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 6
@@ -3169,8 +3102,8 @@
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/blue/border,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Residential Security"
@@ -3190,8 +3123,8 @@
 /obj/effect/wingrille_spawn/reinforced/crescent,
 /obj/structure/sign/department/commander,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/command)
 "ku" = (
@@ -3203,8 +3136,8 @@
 	},
 /obj/structure/closet/secure_closet/nanotrasen_security,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Residential Security"
@@ -3288,8 +3221,8 @@
 /obj/item/ammo_magazine/m762/ap,
 /obj/item/ammo_magazine/m762/ap,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "kH" = (
@@ -3317,8 +3250,8 @@
 	dir = 10
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Residential Security"
@@ -3329,8 +3262,8 @@
 	name = "Armoury"
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/control)
 "kN" = (
@@ -3355,8 +3288,8 @@
 /obj/item/clothing/glasses/hud/health,
 /obj/item/clothing/glasses/hud/health,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/specops)
 "kP" = (
@@ -3373,8 +3306,8 @@
 "kR" = (
 /obj/machinery/camera/network/crescent,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Residential Security"
@@ -3411,8 +3344,8 @@
 	name = "swat helmet"
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/command)
 "lb" = (
@@ -3430,8 +3363,8 @@
 /obj/item/folder/red_hos,
 /obj/item/pen/multi,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/command)
 "ld" = (
@@ -3469,12 +3402,11 @@
 	name = "Armoury"
 	},
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 1
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "lq" = (
@@ -3499,9 +3431,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloor/corner2{
-	dir = 4;
-	icon_state = "borderfloorcorner2";
-	pixel_y = 0
+	dir = 4
 	},
 /obj/effect/floor_decal/corner/blue/bordercorner2{
 	dir = 4
@@ -3538,8 +3468,8 @@
 "lw" = (
 /obj/machinery/vending/medical,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/specops)
 "lx" = (
@@ -3578,8 +3508,8 @@
 /area/centcom/control)
 "lJ" = (
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Security Arrivals"
@@ -3593,11 +3523,9 @@
 	opacity = 0
 	},
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 9
 	},
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 4
 	},
 /turf/unsimulated/floor/steel,
@@ -3622,8 +3550,8 @@
 /obj/item/storage/backpack/dufflebag/syndie/med,
 /obj/item/storage/backpack/dufflebag/syndie/med,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/specops)
 "lR" = (
@@ -3637,18 +3565,14 @@
 	dir = 9
 	},
 /obj/item/radio/intercom{
-	broadcasting = 0;
 	dir = 1;
 	frequency = 1475;
-	icon_state = "intercom";
-	listening = 1;
 	name = "Station Intercom (Security)";
-	pixel_x = 0;
 	pixel_y = 27
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Residential Security"
@@ -3673,8 +3597,8 @@
 /obj/item/melee/baton/loaded,
 /obj/item/gun/energy/taser,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Security Arrivals"
@@ -3702,9 +3626,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloor/corner2{
-	dir = 4;
-	icon_state = "borderfloorcorner2";
-	pixel_y = 0
+	dir = 4
 	},
 /obj/effect/floor_decal/corner/blue/bordercorner2{
 	dir = 4
@@ -3746,8 +3668,8 @@
 	name = "Thunderdome Axe Supply"
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/tdome/tdomeadmin)
 "mj" = (
@@ -3769,8 +3691,8 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals9,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/medical)
 "mp" = (
@@ -3806,8 +3728,8 @@
 	},
 /obj/effect/floor_decal/carpet,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/command)
 "my" = (
@@ -3821,16 +3743,16 @@
 	dir = 4
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "mz" = (
 /obj/structure/table/woodentable,
 /obj/item/stamp/hos,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/command)
 "mA" = (
@@ -3843,8 +3765,8 @@
 /obj/item/paper_bin,
 /obj/item/pen,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "mF" = (
@@ -3852,8 +3774,8 @@
 	name = "Brig Dormitories"
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "mG" = (
@@ -3929,8 +3851,8 @@
 /area/centcom/command)
 "mR" = (
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/tdome/tdomeadmin)
 "mS" = (
@@ -4049,7 +3971,6 @@
 	pixel_y = 2
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/command)
@@ -4085,9 +4006,9 @@
 /area/centcom/security)
 "ni" = (
 /obj/machinery/door_timer/cell_3{
+	id = "CellC1";
 	name = "Cell 1";
-	pixel_y = 28;
-	id = "CellC1"
+	pixel_y = 28
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -4129,8 +4050,8 @@
 /obj/item/gun/projectile/shotgun/pump,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "nu" = (
@@ -4156,8 +4077,8 @@
 	dir = 9
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "nA" = (
@@ -4184,8 +4105,8 @@
 	dir = 6
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "nF" = (
@@ -4222,8 +4143,8 @@
 	pixel_y = -2
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "nO" = (
@@ -4235,8 +4156,8 @@
 	},
 /obj/structure/closet/crate/bin,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/command)
 "nP" = (
@@ -4260,8 +4181,8 @@
 "nS" = (
 /obj/effect/floor_decal/industrial/outline,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "nT" = (
@@ -4281,7 +4202,6 @@
 /area/centcom/control)
 "nY" = (
 /obj/structure/sink{
-	icon_state = "sink";
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -4308,8 +4228,8 @@
 	dir = 6
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "oc" = (
@@ -4337,8 +4257,8 @@
 	},
 /obj/machinery/computer/skills,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Security Arrivals"
@@ -4401,8 +4321,8 @@
 	dir = 5
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/command)
 "on" = (
@@ -4424,8 +4344,8 @@
 /area/centcom/command)
 "oq" = (
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Residential Security"
@@ -4444,8 +4364,8 @@
 	dir = 10
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/command)
 "os" = (
@@ -4461,8 +4381,8 @@
 /obj/item/storage/box/shotgunammo/large,
 /obj/item/storage/box/shotgunammo/large,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "ot" = (
@@ -4479,11 +4399,11 @@
 	dir = 1
 	},
 /obj/machinery/button/remote/blast_door{
+	id = "turrets";
 	name = "Turret Doors";
 	pixel_x = -23;
 	req_access = list(63);
-	req_one_access = list(1);
-	id = "turrets"
+	req_one_access = list(1)
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -4498,8 +4418,8 @@
 	dir = 10
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "ow" = (
@@ -4525,9 +4445,7 @@
 	dir = 5
 	},
 /obj/effect/floor_decal/borderfloor/corner2{
-	dir = 4;
-	icon_state = "borderfloorcorner2";
-	pixel_y = 0
+	dir = 4
 	},
 /obj/effect/floor_decal/corner/blue/bordercorner2{
 	dir = 4
@@ -4544,7 +4462,6 @@
 	dir = 4
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/control)
@@ -4559,8 +4476,8 @@
 	name = "Security"
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "oE" = (
@@ -4606,8 +4523,8 @@
 	dir = 1
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "oN" = (
@@ -4621,18 +4538,14 @@
 	dir = 9
 	},
 /obj/item/radio/intercom{
-	broadcasting = 0;
 	dir = 1;
 	frequency = 1475;
-	icon_state = "intercom";
-	listening = 1;
 	name = "Station Intercom (Security)";
-	pixel_x = 0;
 	pixel_y = 27
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Security Arrivals"
@@ -4640,9 +4553,7 @@
 "oO" = (
 /obj/machinery/computer/security,
 /obj/effect/floor_decal/borderfloor{
-	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	dir = 1
 	},
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 1
@@ -4658,8 +4569,8 @@
 /obj/item/gun/projectile/automatic/p90,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "oQ" = (
@@ -4670,8 +4581,8 @@
 	},
 /obj/item/storage/box/syringes,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/specops)
 "oR" = (
@@ -4702,7 +4613,6 @@
 /obj/item/flame/lighter/zippo,
 /obj/item/storage/fancy/cigarettes,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/restaurant)
@@ -4746,7 +4656,6 @@
 /obj/item/flame/lighter/zippo,
 /obj/item/storage/fancy/cigarettes,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/restaurant)
@@ -4775,8 +4684,8 @@
 	name = "Thunderdome Blast Door Control"
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/tdome/tdomeadmin)
 "pf" = (
@@ -4790,8 +4699,8 @@
 	dir = 5
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "ph" = (
@@ -4814,8 +4723,8 @@
 	dir = 1
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "pm" = (
@@ -4883,8 +4792,8 @@
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/blue/border,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "py" = (
@@ -4906,14 +4815,14 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "pD" = (
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/command)
 "pF" = (
@@ -4921,7 +4830,6 @@
 	dir = 4
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/command)
@@ -4997,7 +4905,6 @@
 	dir = 5
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/command)
@@ -5023,7 +4930,6 @@
 "qk" = (
 /obj/item/melee/baton/cattleprod,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/centcom/control)
@@ -5105,7 +5011,6 @@
 /obj/structure/table/standard,
 /obj/structure/reagent_dispensers/acid{
 	density = 0;
-	pixel_x = 0;
 	pixel_y = -30
 	},
 /obj/item/storage/toolbox/mechanical{
@@ -5127,10 +5032,7 @@
 	dir = 5
 	},
 /obj/effect/floor_decal/borderfloorwhite/corner2{
-	icon_state = "borderfloorcorner2_white";
-	dir = 5;
-	pixel_x = 0;
-	pixel_y = 0
+	dir = 5
 	},
 /obj/effect/floor_decal/corner/paleblue/bordercorner2{
 	dir = 5
@@ -5163,8 +5065,8 @@
 /area/centcom/medical)
 "qI" = (
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "qJ" = (
@@ -5187,8 +5089,8 @@
 /obj/item/storage/backpack/dufflebag/syndie/med,
 /obj/item/storage/backpack/satchel/sec,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "qK" = (
@@ -5214,9 +5116,7 @@
 "qR" = (
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/borderfloor{
-	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	dir = 1
 	},
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 1
@@ -5280,8 +5180,8 @@
 /obj/item/clothing/head/helmet/space/void/security,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "re" = (
@@ -5296,8 +5196,8 @@
 	name = "tdome2"
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/tdome/tdome1)
 "rg" = (
@@ -5366,7 +5266,6 @@
 /area/centcom/holding)
 "rs" = (
 /obj/structure/sink{
-	icon_state = "sink";
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -5385,7 +5284,6 @@
 /obj/structure/table/reinforced,
 /obj/machinery/door/window/brigdoor{
 	dir = 8;
-	icon_state = "leftsecure";
 	req_access = list(63);
 	req_one_access = newlist()
 	},
@@ -5396,8 +5294,8 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "ru" = (
@@ -5501,8 +5399,8 @@
 	name = "Chemistry Cleaner"
 	},
 /obj/item/reagent_containers/spray/cleaner{
-	name = "Surgery Cleaner";
 	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner";
 	pixel_x = 2;
 	pixel_y = 2
 	},
@@ -5513,9 +5411,7 @@
 "rF" = (
 /obj/structure/sink{
 	dir = 4;
-	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /obj/structure/mirror{
 	pixel_x = 29
@@ -5535,8 +5431,8 @@
 /obj/item/stack/nanopaste,
 /obj/item/storage/firstaid/surgery,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/specops)
 "rH" = (
@@ -5597,7 +5493,6 @@
 	dir = 10
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/control)
@@ -5609,8 +5504,8 @@
 	name = "tdome2"
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/tdome/tdome1)
 "rR" = (
@@ -5625,8 +5520,8 @@
 	},
 /obj/effect/floor_decal/corner/blue/bordercorner2,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Residential Security"
@@ -5645,7 +5540,6 @@
 /area/centcom/control)
 "rW" = (
 /obj/structure/sink{
-	icon_state = "sink";
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -5749,8 +5643,8 @@
 	name = "Security"
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Residential Security"
@@ -5789,8 +5683,8 @@
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Security Arrivals"
@@ -5811,8 +5705,8 @@
 /obj/item/gun/projectile/shotgun/pump/combat,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "sD" = (
@@ -5859,13 +5753,12 @@
 /obj/item/megaphone,
 /obj/machinery/camera/network/crescent,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/command)
 "sN" = (
 /obj/machinery/newscaster/security_unit{
-	pixel_x = 0;
 	pixel_y = 30
 	},
 /obj/structure/table/reinforced,
@@ -5879,16 +5772,16 @@
 	dir = 1
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "sP" = (
 /obj/machinery/chemical_dispenser/ert,
 /obj/item/reagent_containers/glass/beaker/large,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/specops)
 "sQ" = (
@@ -5967,8 +5860,8 @@
 /obj/item/storage/box/flashshells/large,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "tf" = (
@@ -6048,8 +5941,8 @@
 /obj/effect/floor_decal/borderfloorblack/corner2,
 /obj/effect/floor_decal/corner/blue/bordercorner2,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "tq" = (
@@ -6073,8 +5966,8 @@
 /area/centcom/security)
 "ts" = (
 /obj/structure/shuttle/engine/propulsion{
-	icon_state = "burst_r";
-	dir = 8
+	dir = 8;
+	icon_state = "burst_r"
 	},
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/specops/centcom{
@@ -6092,8 +5985,7 @@
 "tv" = (
 /obj/structure/undies_wardrobe,
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/centcom/bathroom)
 "tz" = (
@@ -6159,8 +6051,8 @@
 /obj/item/clothing/head/helmet/swat,
 /obj/item/gun/energy/laser,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/tdome/tdome1)
 "tJ" = (
@@ -6185,7 +6077,6 @@
 	dir = 5
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/control)
@@ -6215,8 +6106,8 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "tO" = (
@@ -6233,14 +6124,14 @@
 /obj/item/storage/box/sniperammo,
 /obj/item/storage/box/sniperammo,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "tS" = (
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/tdome/tdome1)
 "tT" = (
@@ -6248,8 +6139,8 @@
 /obj/item/storage/box/frags,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "tU" = (
@@ -6304,17 +6195,16 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "ug" = (
 /obj/machinery/button/remote/blast_door{
+	id = "ArmouryC";
 	name = "Armoury Access";
-	pixel_x = 0;
 	pixel_y = -28;
-	req_access = list(3);
-	id = "ArmouryC"
+	req_access = list(3)
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 6
@@ -6329,8 +6219,7 @@
 	dir = 4
 	},
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/centcom/bathroom)
 "uj" = (
@@ -6352,7 +6241,6 @@
 	dir = 1
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/command)
@@ -6404,14 +6292,8 @@
 "ux" = (
 /obj/item/folder/white,
 /obj/structure/table/standard,
-/obj/item/disk/tech_disk{
-	pixel_x = 0;
-	pixel_y = 0
-	},
-/obj/item/disk/tech_disk{
-	pixel_x = 0;
-	pixel_y = 0
-	},
+/obj/item/disk/tech_disk,
+/obj/item/disk/tech_disk,
 /obj/item/disk/design_disk,
 /obj/item/disk/design_disk,
 /obj/item/reagent_containers/dropper{
@@ -6444,8 +6326,8 @@
 	dir = 6
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Residential Security"
@@ -6468,8 +6350,8 @@
 	dir = 1
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/command)
 "uF" = (
@@ -6479,8 +6361,8 @@
 "uH" = (
 /obj/machinery/camera/network/crescent,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "uM" = (
@@ -6489,9 +6371,7 @@
 /area/centcom/control)
 "uN" = (
 /obj/machinery/status_display{
-	density = 0;
 	layer = 4;
-	pixel_x = 0;
 	pixel_y = 32
 	},
 /obj/machinery/vending/security,
@@ -6502,14 +6382,13 @@
 	dir = 1
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "uO" = (
 /obj/effect/floor_decal/carpet,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/command)
@@ -6528,8 +6407,8 @@
 	dir = 10
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "uU" = (
@@ -6552,8 +6431,8 @@
 /obj/item/ammo_magazine/m762/ap,
 /obj/item/ammo_magazine/m762/ap,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "uW" = (
@@ -6570,8 +6449,8 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "uX" = (
@@ -6592,8 +6471,8 @@
 	dir = 4
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "uZ" = (
@@ -6630,8 +6509,8 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "vg" = (
@@ -6643,8 +6522,8 @@
 "vh" = (
 /obj/item/stool/padded,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/medical)
 "vi" = (
@@ -6668,14 +6547,12 @@
 "vj" = (
 /obj/structure/bed/roller,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/centcom/control)
 "vn" = (
 /obj/machinery/r_n_d/circuit_imprinter,
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 4
 	},
 /obj/item/book/manual/robotics_cyborgs{
@@ -6699,7 +6576,6 @@
 	dir = 8
 	},
 /obj/structure/flora/pottedplant{
-	icon_state = "plant-01";
 	pixel_y = 10
 	},
 /turf/unsimulated/floor/steel,
@@ -6716,8 +6592,8 @@
 	invisibility = 101
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/tdome/tdome1)
 "vv" = (
@@ -6729,8 +6605,8 @@
 /obj/item/gun/projectile/automatic/pdw,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "vw" = (
@@ -6753,8 +6629,8 @@
 	dir = 1
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "vA" = (
@@ -6768,8 +6644,8 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/command)
 "vB" = (
@@ -6777,8 +6653,8 @@
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/orange/border,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "vC" = (
@@ -6795,8 +6671,8 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Residential Security"
@@ -6829,13 +6705,12 @@
 /obj/structure/table/reinforced,
 /obj/machinery/door/window/brigdoor{
 	dir = 8;
-	icon_state = "leftsecure";
 	req_access = list(63);
 	req_one_access = newlist()
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "vJ" = (
@@ -6844,8 +6719,8 @@
 /obj/effect/floor_decal/borderfloorblack/corner2,
 /obj/effect/floor_decal/corner/blue/bordercorner2,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/command)
 "vL" = (
@@ -6866,8 +6741,8 @@
 	},
 /obj/machinery/camera/network/crescent,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "vP" = (
@@ -6878,7 +6753,6 @@
 /area/centcom/command)
 "vR" = (
 /obj/structure/shuttle/engine/heater{
-	icon_state = "heater";
 	dir = 8
 	},
 /obj/structure/window/reinforced{
@@ -6895,8 +6769,8 @@
 	req_access = list(58)
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/command)
 "vT" = (
@@ -6909,7 +6783,6 @@
 /area/centcom/command)
 "vU" = (
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/centcom/control)
@@ -6926,8 +6799,8 @@
 /obj/item/gun/energy/gun,
 /obj/item/gun/energy/gun,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "vY" = (
@@ -6941,8 +6814,8 @@
 /obj/item/storage/box/donkpockets,
 /obj/item/storage/box/donkpockets,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Security Arrivals"
@@ -6997,8 +6870,8 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/item/gun/projectile/heavysniper,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "wq" = (
@@ -7006,8 +6879,8 @@
 /obj/item/storage/pill_bottle/dice,
 /obj/item/deck/cards,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "ws" = (
@@ -7031,7 +6904,6 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 4
 	},
 /turf/unsimulated/floor/steel,
@@ -7050,8 +6922,8 @@
 /obj/item/melee/energy/sword,
 /obj/item/melee/energy/sword,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "ww" = (
@@ -7060,8 +6932,8 @@
 	pixel_y = -32
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/specops)
 "wy" = (
@@ -7095,8 +6967,8 @@
 	dir = 9
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "wD" = (
@@ -7109,8 +6981,8 @@
 /obj/structure/table/woodentable,
 /obj/item/storage/box/handcuffs,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/command)
 "wE" = (
@@ -7163,8 +7035,8 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "wK" = (
@@ -7174,8 +7046,8 @@
 	},
 /obj/effect/floor_decal/industrial/warning,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "wO" = (
@@ -7197,8 +7069,8 @@
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/mask/breath,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "wQ" = (
@@ -7228,8 +7100,8 @@
 	dir = 6
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "wW" = (
@@ -7268,8 +7140,8 @@
 	},
 /obj/structure/closet/secure_closet/nanotrasen_security,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Residential Security"
@@ -7310,10 +7182,9 @@
 /area/centcom/medical)
 "xn" = (
 /obj/machinery/computer/rdservercontrol{
-	name = "Master R&amp;D Server Controller";
-	icon_state = "computer";
+	badmin = 1;
 	dir = 1;
-	badmin = 1
+	name = "Master R&amp;D Server Controller"
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
@@ -7329,8 +7200,8 @@
 	req_one_access = list(1)
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "xv" = (
@@ -7350,8 +7221,8 @@
 	dir = 10
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Residential Security"
@@ -7399,8 +7270,8 @@
 /obj/item/gun/energy/sniperrifle,
 /obj/item/gun/energy/sniperrifle,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "xE" = (
@@ -7443,7 +7314,6 @@
 "xO" = (
 /obj/structure/table/standard,
 /obj/structure/flora/pottedplant{
-	icon_state = "plant-01";
 	pixel_y = 10
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -7499,16 +7369,16 @@
 	dir = 10
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "xW" = (
 /obj/structure/table/reinforced,
 /obj/item/book/manual/security_space_law,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "xX" = (
@@ -7519,7 +7389,6 @@
 	dir = 1
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/restaurant)
@@ -7548,8 +7417,8 @@
 	dir = 1
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "yb" = (
@@ -7564,7 +7433,6 @@
 /area/centcom/specops)
 "yc" = (
 /obj/structure/shuttle/engine/propulsion{
-	icon_state = "propulsion";
 	dir = 8
 	},
 /turf/simulated/shuttle/plating/airless/carry,
@@ -7600,8 +7468,8 @@
 	dir = 6
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/command)
 "yi" = (
@@ -7624,8 +7492,8 @@
 	req_one_access = list(1)
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "yj" = (
@@ -7648,8 +7516,8 @@
 "yt" = (
 /obj/machinery/cryopod/robot/door/gateway,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/living)
 "yu" = (
@@ -7661,7 +7529,6 @@
 "yw" = (
 /obj/structure/table/reinforced,
 /obj/structure/flora/pottedplant{
-	icon_state = "plant-01";
 	pixel_y = 10
 	},
 /turf/unsimulated/floor/steel,
@@ -7680,7 +7547,6 @@
 	dir = 4
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/command)
@@ -7693,8 +7559,8 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Residential Security"
@@ -7763,8 +7629,8 @@
 	req_one_access = list(101)
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "yO" = (
@@ -7828,8 +7694,8 @@
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/orange/border,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "yT" = (
@@ -7851,8 +7717,8 @@
 /obj/item/storage/belt/medical/emt,
 /obj/item/storage/belt/medical/emt,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/specops)
 "yZ" = (
@@ -7865,8 +7731,7 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals9,
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/centcom/bathroom)
 "zd" = (
@@ -7916,8 +7781,8 @@
 	},
 /obj/item/storage/firstaid/fire,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/specops)
 "zo" = (
@@ -7951,8 +7816,8 @@
 	dir = 1
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "zs" = (
@@ -8000,8 +7865,8 @@
 	dir = 10
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "zB" = (
@@ -8016,10 +7881,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/borderfloorwhite/corner2{
-	icon_state = "borderfloorcorner2_white";
-	dir = 5;
-	pixel_x = 0;
-	pixel_y = 0
+	dir = 5
 	},
 /obj/effect/floor_decal/corner/purple/bordercorner2{
 	dir = 4
@@ -8078,8 +7940,7 @@
 	},
 /obj/machinery/camera/network/crescent,
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/centcom/bathroom)
 "zS" = (
@@ -8099,13 +7960,12 @@
 /obj/machinery/button/remote/blast_door{
 	id = "ArmouryC2";
 	name = "Armoury Access";
-	pixel_x = 0;
 	pixel_y = -28;
 	req_access = list(3)
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Aa" = (
@@ -8139,8 +7999,8 @@
 	dir = 1
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Residential Security"
@@ -8153,7 +8013,6 @@
 /area/centcom/command)
 "Ad" = (
 /obj/structure/bed/chair/wood/wings{
-	icon_state = "wooden_chair_wings";
 	dir = 4
 	},
 /turf/unsimulated/floor/steel{
@@ -8195,14 +8054,13 @@
 	frequency = 1380;
 	id_tag = "specops_centcom_dock";
 	name = "docking port controller";
-	pixel_x = 0;
 	pixel_y = 25;
 	req_one_access = list(103);
 	tag_door = "specops_centcom_dock_door"
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/specops)
 "Ao" = (
@@ -8222,9 +8080,8 @@
 	dir = 4
 	},
 /obj/machinery/computer/operating{
-	name = "Robotics Operating Computer";
-	icon_state = "computer";
-	dir = 1
+	dir = 1;
+	name = "Robotics Operating Computer"
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -8274,8 +8131,8 @@
 	dir = 4
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Residential Security"
@@ -8296,8 +8153,8 @@
 	pixel_y = -2
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "AD" = (
@@ -8312,8 +8169,8 @@
 	req_access = list(63)
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "AG" = (
@@ -8350,8 +8207,8 @@
 /obj/item/extinguisher/mini,
 /obj/item/extinguisher/mini,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/specops)
 "AO" = (
@@ -8399,8 +8256,8 @@
 	dir = 9
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Security Arrivals"
@@ -8425,7 +8282,6 @@
 	},
 /obj/item/pen,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/command)
@@ -8443,8 +8299,8 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "AY" = (
@@ -8476,8 +8332,8 @@
 	name = "tdome1"
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/tdome/tdome1)
 "Bb" = (
@@ -8520,8 +8376,8 @@
 "Bf" = (
 /obj/machinery/chem_master,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/specops)
 "Bg" = (
@@ -8546,8 +8402,8 @@
 	dir = 10
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Bj" = (
@@ -8555,7 +8411,6 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/restaurant)
@@ -8647,8 +8502,8 @@
 	pixel_y = 26
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Security Arrivals"
@@ -8706,7 +8561,6 @@
 /obj/structure/table/glass,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
-	icon_state = "borderfloor";
 	pixel_y = -16
 	},
 /turf/unsimulated/floor/steel,
@@ -8762,8 +8616,7 @@
 	pixel_y = 13
 	},
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/centcom/security)
 "BS" = (
@@ -8783,8 +8636,8 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "BT" = (
@@ -8798,7 +8651,6 @@
 	dir = 4
 	},
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 8
 	},
 /turf/simulated/shuttle/floor{
@@ -8825,8 +8677,8 @@
 	dir = 4
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Security Arrivals"
@@ -8846,7 +8698,6 @@
 /area/centcom/medical)
 "Ce" = (
 /obj/structure/sink{
-	icon_state = "sink";
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -8980,8 +8831,8 @@
 	dir = 6
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/command)
 "Cv" = (
@@ -9006,7 +8857,6 @@
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
-	icon_state = "borderfloor";
 	pixel_y = -16
 	},
 /turf/unsimulated/floor/steel,
@@ -9033,8 +8883,8 @@
 	req_one_access = list(1)
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "CG" = (
@@ -9079,8 +8929,8 @@
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/blue/border,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "CK" = (
@@ -9127,8 +8977,8 @@
 	dir = 1
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Residential Security"
@@ -9161,8 +9011,8 @@
 	},
 /obj/machinery/camera/network/crescent,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/medical)
 "CX" = (
@@ -9254,8 +9104,8 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/medical)
 "Dl" = (
@@ -9271,8 +9121,8 @@
 	dir = 9
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Dm" = (
@@ -9324,7 +9174,6 @@
 	},
 /obj/item/folder/white_cmo,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/command)
@@ -9372,8 +9221,8 @@
 	opacity = 0
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/living)
 "DC" = (
@@ -9387,8 +9236,8 @@
 	dir = 1
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "DI" = (
@@ -9407,8 +9256,8 @@
 /obj/structure/table/reinforced,
 /obj/machinery/computer/skills,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "DM" = (
@@ -9426,10 +9275,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloorwhite/corner2{
-	icon_state = "borderfloorcorner2_white";
-	dir = 5;
-	pixel_x = 0;
-	pixel_y = 0
+	dir = 5
 	},
 /obj/effect/floor_decal/corner/paleblue/bordercorner2{
 	dir = 4
@@ -9448,8 +9294,8 @@
 	pixel_y = 32
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/specops)
 "DR" = (
@@ -9474,8 +9320,8 @@
 /obj/effect/floor_decal/industrial/outline,
 /obj/structure/closet/secure_closet/nanotrasen_security,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "DV" = (
@@ -9501,8 +9347,8 @@
 	req_access = list(63)
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "DX" = (
@@ -9519,8 +9365,8 @@
 /obj/item/ammo_magazine/m9mmt/rubber,
 /obj/item/ammo_magazine/m9mmt/rubber,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Ea" = (
@@ -9529,8 +9375,8 @@
 /obj/effect/floor_decal/borderfloorblack/corner2,
 /obj/effect/floor_decal/corner/orange/bordercorner2,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Eb" = (
@@ -9585,8 +9431,8 @@
 	dir = 9
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Em" = (
@@ -9601,8 +9447,8 @@
 	name = "HEAVY ORDINANCE"
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Et" = (
@@ -9619,8 +9465,8 @@
 	health = 1e+006
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Residential Security"
@@ -9645,8 +9491,8 @@
 	dir = 9
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/command)
 "Ez" = (
@@ -9662,7 +9508,6 @@
 /obj/structure/table/glass,
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
-	icon_state = "borderfloor";
 	pixel_x = 16
 	},
 /obj/item/paper_bin{
@@ -9727,8 +9572,8 @@
 	pixel_y = -2
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "EF" = (
@@ -9743,8 +9588,8 @@
 /obj/item/storage/box/beanbags/large,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "EH" = (
@@ -9755,9 +9600,7 @@
 /area/centcom/bathroom)
 "EI" = (
 /obj/effect/floor_decal/borderfloor{
-	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	dir = 1
 	},
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 1
@@ -9808,7 +9651,6 @@
 /area/centcom/specops)
 "EL" = (
 /obj/structure/bed/chair/wood/wings{
-	icon_state = "wooden_chair_wings";
 	dir = 8
 	},
 /turf/unsimulated/floor/steel{
@@ -9897,8 +9739,8 @@
 	},
 /obj/structure/filingcabinet,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/command)
 "Fb" = (
@@ -9916,8 +9758,8 @@
 	dir = 1
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/living)
 "Fd" = (
@@ -9961,8 +9803,8 @@
 	pixel_y = 12
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/specops)
 "Fk" = (
@@ -9970,8 +9812,7 @@
 	name = "Unit 1"
 	},
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/centcom/security)
 "Fl" = (
@@ -9981,7 +9822,6 @@
 	pixel_y = 8
 	},
 /obj/item/reagent_containers/food/drinks/glass2/square{
-	pixel_x = 0;
 	pixel_y = 8
 	},
 /obj/item/reagent_containers/food/drinks/glass2/square{
@@ -9993,7 +9833,6 @@
 	pixel_y = 4
 	},
 /obj/item/reagent_containers/food/drinks/glass2/square{
-	pixel_x = 0;
 	pixel_y = 4
 	},
 /obj/item/reagent_containers/food/drinks/glass2/square{
@@ -10015,8 +9854,8 @@
 	dir = 4
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Residential Security"
@@ -10034,7 +9873,6 @@
 	dir = 9
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/control)
@@ -10073,13 +9911,12 @@
 /obj/machinery/button/remote/blast_door{
 	id = "ArmouryC4";
 	name = "Armoury Access";
-	pixel_x = 0;
 	pixel_y = -28;
 	req_access = list(3)
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/control)
 "Ft" = (
@@ -10087,7 +9924,6 @@
 	desc = "This is a bed..It says something close to the bottom 'I fuck the cat here too'."
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/centcom/control)
@@ -10100,16 +9936,13 @@
 	pixel_y = 5
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/command)
 "Fx" = (
 /obj/structure/sink{
 	dir = 4;
-	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /turf/unsimulated/floor{
 	icon_state = "freezer"
@@ -10151,8 +9984,8 @@
 	pixel_x = 30
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Security Arrivals"
@@ -10173,7 +10006,6 @@
 	},
 /obj/structure/closet/secure_closet/personal,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/control)
@@ -10192,8 +10024,8 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "FI" = (
@@ -10209,7 +10041,6 @@
 	frequency = 1380;
 	id_tag = "specops_shuttle_fore";
 	name = "forward docking hatch controller";
-	pixel_x = 0;
 	pixel_y = -25;
 	tag_door = "specops_shuttle_fore_hatch"
 	},
@@ -10228,7 +10059,6 @@
 "FN" = (
 /obj/machinery/door_timer/cell_3{
 	id = "CellC3";
-	name = "Cell 3";
 	pixel_x = 31
 	},
 /turf/unsimulated/floor/steel,
@@ -10278,8 +10108,8 @@
 /obj/item/surgical/surgicaldrill,
 /obj/item/autopsy_scanner,
 /obj/item/reagent_containers/spray/cleaner{
-	name = "Surgery Cleaner";
 	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner";
 	pixel_x = 2;
 	pixel_y = 2
 	},
@@ -10326,8 +10156,8 @@
 	dir = 5
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Gg" = (
@@ -10374,8 +10204,8 @@
 "Gn" = (
 /obj/machinery/fitness/punching_bag/clown,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Gp" = (
@@ -10403,8 +10233,8 @@
 "Gx" = (
 /obj/structure/toilet,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Gy" = (
@@ -10422,8 +10252,8 @@
 	name = "General Supply"
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/tdome/tdome1)
 "GC" = (
@@ -10432,8 +10262,8 @@
 /obj/item/gun/energy/lasercannon,
 /obj/item/gun/energy/lasercannon,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "GE" = (
@@ -10447,8 +10277,8 @@
 	dir = 5
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "GF" = (
@@ -10466,8 +10296,8 @@
 	},
 /obj/machinery/camera/network/crescent,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Security Arrivals"
@@ -10485,7 +10315,6 @@
 	dir = 5
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/command)
@@ -10538,8 +10367,8 @@
 /obj/item/melee/baton/loaded,
 /obj/item/melee/energy/sword,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/tdome/tdome1)
 "GQ" = (
@@ -10550,8 +10379,8 @@
 /obj/item/clothing/head/helmet/combat,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "GR" = (
@@ -10574,8 +10403,8 @@
 "GU" = (
 /obj/effect/wingrille_spawn/reinforced/crescent,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "GY" = (
@@ -10590,9 +10419,7 @@
 /area/centcom/bar)
 "GZ" = (
 /obj/effect/floor_decal/borderfloor{
-	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	dir = 1
 	},
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 1
@@ -10672,17 +10499,13 @@
 /area/centcom/living)
 "Hn" = (
 /obj/effect/floor_decal/borderfloor{
-	dir = 8;
-	icon_state = "borderfloor";
-	pixel_x = 0
+	dir = 8
 	},
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 8
 	},
 /obj/effect/floor_decal/borderfloor/corner2{
-	dir = 10;
-	icon_state = "borderfloorcorner2";
-	pixel_x = 0
+	dir = 10
 	},
 /obj/effect/floor_decal/corner/blue/bordercorner2{
 	dir = 10
@@ -10712,7 +10535,6 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/command)
@@ -10729,8 +10551,8 @@
 	req_one_access = newlist()
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Ht" = (
@@ -10741,8 +10563,8 @@
 /obj/item/clothing/head/helmet/bulletproof,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Hu" = (
@@ -10767,8 +10589,8 @@
 /area/centcom/security)
 "HB" = (
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/living)
 "HC" = (
@@ -10862,7 +10684,6 @@
 "HH" = (
 /obj/structure/bed,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/centcom/control)
@@ -10872,8 +10693,8 @@
 	name = "Thunderdome General Supply"
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/tdome/tdomeadmin)
 "HM" = (
@@ -10905,8 +10726,8 @@
 /obj/item/bodybag/cryobag,
 /obj/item/reagent_containers/glass/beaker/large,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/specops)
 "HV" = (
@@ -10915,8 +10736,7 @@
 	dir = 1
 	},
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/centcom/security)
 "HW" = (
@@ -10966,8 +10786,8 @@
 	pixel_y = 26
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Id" = (
@@ -10983,15 +10803,14 @@
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/blue/border,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "If" = (
 /obj/machinery/scale,
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/centcom/bathroom)
 "Ii" = (
@@ -11033,20 +10852,17 @@
 /obj/item/ammo_magazine/m9mmp90,
 /obj/machinery/camera/network/crescent,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Ip" = (
 /obj/structure/sink{
 	dir = 4;
-	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/centcom/bathroom)
 "Iq" = (
@@ -11058,8 +10874,8 @@
 /obj/item/gun/projectile/automatic/bullpup,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Ir" = (
@@ -11107,8 +10923,8 @@
 	},
 /obj/structure/closet/crate/bin,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "IA" = (
@@ -11146,8 +10962,8 @@
 	req_one_access = list(101)
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Residential Security"
@@ -11189,8 +11005,8 @@
 /obj/item/storage/box/trackimp,
 /obj/effect/floor_decal/industrial/outline/grey,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "IM" = (
@@ -11199,8 +11015,8 @@
 	name = "Thunderdome Heavy Supply"
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/tdome/tdomeadmin)
 "IN" = (
@@ -11212,8 +11028,8 @@
 	dir = 10
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "IS" = (
@@ -11269,8 +11085,8 @@
 	dir = 5
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "IX" = (
@@ -11300,8 +11116,8 @@
 /area/centcom/control)
 "Je" = (
 /obj/structure/shuttle/engine/propulsion{
-	icon_state = "burst_l";
-	dir = 8
+	dir = 8;
+	icon_state = "burst_l"
 	},
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/specops/centcom{
@@ -11317,8 +11133,8 @@
 	dir = 9
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/command)
 "Jg" = (
@@ -11326,8 +11142,8 @@
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/blue/border,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Jh" = (
@@ -11349,7 +11165,6 @@
 	},
 /obj/item/folder/blue_captain,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/command)
@@ -11362,8 +11177,8 @@
 	dir = 4
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/command)
 "Jm" = (
@@ -11371,7 +11186,6 @@
 	dir = 1
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/command)
@@ -11399,8 +11213,8 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/camera/network/crescent,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Jw" = (
@@ -11493,8 +11307,8 @@
 	dir = 1
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "JO" = (
@@ -11506,8 +11320,8 @@
 	dir = 10
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/command)
 "JQ" = (
@@ -11521,8 +11335,7 @@
 /obj/machinery/camera/network/crescent,
 /obj/machinery/flasher{
 	id = "CellC1";
-	pixel_x = -28;
-	pixel_y = 0
+	pixel_x = -28
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/holding)
@@ -11540,8 +11353,8 @@
 	dir = 5
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "JY" = (
@@ -11594,18 +11407,6 @@
 	icon_state = "dark"
 	},
 /area/centcom/specops)
-"Ke" = (
-/obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "escape_shuttle_hatch_station";
-	locked = 1;
-	name = "Shuttle Hatch"
-	},
-/turf/simulated/shuttle/floor/yellow,
-/area/shuttle/escape/centcom{
-	base_turf = /turf/unsimulated/floor/techfloor_grid
-	})
 "Kf" = (
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 8
@@ -11644,8 +11445,8 @@
 	pixel_y = 5
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Security Arrivals"
@@ -11668,8 +11469,8 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals9,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/medical)
 "Kn" = (
@@ -11677,8 +11478,8 @@
 /obj/structure/table/rack,
 /obj/item/gun/energy/gun/nuclear,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Ko" = (
@@ -11781,7 +11582,6 @@
 /obj/structure/table/standard,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
-	icon_state = "borderfloor";
 	pixel_y = -16
 	},
 /obj/machinery/photocopier/faxmachine,
@@ -11807,8 +11607,8 @@
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/blue/border,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Residential Security"
@@ -11834,8 +11634,8 @@
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Ld" = (
@@ -11886,7 +11686,6 @@
 	dir = 4
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/restaurant)
@@ -11896,8 +11695,8 @@
 /obj/item/gun/projectile/automatic/z8,
 /obj/item/gun/projectile/automatic/z8,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Ll" = (
@@ -11940,8 +11739,8 @@
 	req_access = list(1)
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Ls" = (
@@ -11970,7 +11769,6 @@
 /area/centcom/restaurant)
 "LC" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	icon_state = "door_closed";
 	dir = 2
 	},
 /turf/unsimulated/floor/steel,
@@ -11980,8 +11778,8 @@
 	dir = 1
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "LG" = (
@@ -12017,8 +11815,8 @@
 	dir = 5
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Residential Security"
@@ -12042,8 +11840,8 @@
 	req_one_access = list(1)
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Security Arrivals"
@@ -12057,7 +11855,6 @@
 	opacity = 0
 	},
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -12073,8 +11870,8 @@
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/blue/border,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Residential Security"
@@ -12100,17 +11897,16 @@
 /obj/structure/table/reinforced,
 /obj/machinery/door/window/brigdoor{
 	dir = 8;
-	icon_state = "leftsecure";
 	req_access = list(63);
 	req_one_access = newlist()
 	},
 /obj/machinery/button/remote/blast_door{
 	id = "residential";
 	name = "Security Doors";
-	req_access = list(63);
-	req_one_access = list(1);
 	pixel_x = 6;
-	pixel_y = -5
+	pixel_y = -5;
+	req_access = list(63);
+	req_one_access = list(1)
 	},
 /obj/item/paper_bin{
 	pixel_x = 1;
@@ -12124,8 +11920,8 @@
 	dir = 9
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Residential Security"
@@ -12168,8 +11964,8 @@
 /obj/item/reagent_containers/food/snacks/liquidfood,
 /obj/item/reagent_containers/food/snacks/liquidfood,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/specops)
 "LW" = (
@@ -12182,7 +11978,6 @@
 "LX" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Private";
-	opacity = 1;
 	req_access = list(105)
 	},
 /turf/unsimulated/floor{
@@ -12203,9 +11998,7 @@
 /area/centcom/main_hall)
 "Me" = (
 /obj/structure/table/standard,
-/obj/item/tape_recorder{
-	pixel_y = 0
-	},
+/obj/item/tape_recorder,
 /obj/item/megaphone,
 /obj/item/packageWrap,
 /obj/item/storage/box,
@@ -12223,17 +12016,14 @@
 /obj/structure/table/glass,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
-	icon_state = "borderfloor";
 	pixel_y = -16
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
-	icon_state = "borderfloor";
 	pixel_x = 16
 	},
 /obj/effect/floor_decal/borderfloor/corner2{
 	dir = 10;
-	icon_state = "borderfloorcorner2";
 	pixel_x = 16
 	},
 /turf/unsimulated/floor/steel,
@@ -12242,13 +12032,12 @@
 /obj/effect/wingrille_spawn/reinforced/crescent,
 /obj/structure/sign/department/interrogation,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Mk" = (
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/restaurant)
@@ -12293,8 +12082,8 @@
 /obj/item/gun/energy/gun/martin,
 /obj/item/gun/energy/gun/martin,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/specops)
 "Ms" = (
@@ -12314,7 +12103,6 @@
 "Mu" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/multi_tile/glass{
-	icon_state = "door_closed";
 	dir = 2
 	},
 /turf/unsimulated/floor/steel{
@@ -12344,8 +12132,8 @@
 	req_one_access = list(1)
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Mx" = (
@@ -12417,7 +12205,6 @@
 "MR" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Commander";
-	opacity = 1;
 	req_access = list(103)
 	},
 /turf/unsimulated/floor/steel{
@@ -12466,8 +12253,8 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/item/ammo_magazine/m95,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "MY" = (
@@ -12478,19 +12265,17 @@
 	},
 /obj/item/storage/firstaid/regular,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/specops)
 "MZ" = (
 /obj/structure/table/glass,
 /obj/structure/flora/pottedplant{
-	icon_state = "plant-01";
 	pixel_y = 10
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
-	icon_state = "borderfloor";
 	pixel_x = 16
 	},
 /turf/unsimulated/floor/steel,
@@ -12510,7 +12295,6 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/control)
@@ -12560,8 +12344,8 @@
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/blue/border,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Security Arrivals"
@@ -12578,9 +12362,7 @@
 "Nv" = (
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/borderfloor{
-	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	dir = 1
 	},
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 1
@@ -12609,7 +12391,6 @@
 /obj/item/reagent_containers/dropper,
 /obj/structure/table/glass,
 /obj/structure/reagent_dispensers/virusfood{
-	pixel_x = 0;
 	pixel_y = 28
 	},
 /obj/effect/floor_decal/borderfloorwhite{
@@ -12630,8 +12411,8 @@
 	dir = 4
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Ny" = (
@@ -12674,8 +12455,8 @@
 	req_one_access = list(1)
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "NF" = (
@@ -12691,8 +12472,8 @@
 	},
 /obj/machinery/camera/network/crescent,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Residential Security"
@@ -12723,9 +12504,7 @@
 "NJ" = (
 /obj/machinery/computer/communications,
 /obj/effect/floor_decal/borderfloor{
-	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
+	dir = 1
 	},
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 1
@@ -12797,8 +12576,8 @@
 	dir = 6
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "NX" = (
@@ -12842,8 +12621,8 @@
 	dir = 9
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Ob" = (
@@ -12860,8 +12639,8 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Oc" = (
@@ -12883,8 +12662,8 @@
 	dir = 4
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Oe" = (
@@ -12919,8 +12698,8 @@
 	},
 /obj/machinery/camera/network/crescent,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Security Arrivals"
@@ -12938,7 +12717,6 @@
 	},
 /obj/item/material/ashtray/glass,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/restaurant)
@@ -12951,8 +12729,8 @@
 "Ol" = (
 /obj/structure/bed/chair/office/dark,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "On" = (
@@ -13007,9 +12785,7 @@
 /obj/item/stock_parts/console_screen,
 /obj/item/stock_parts/matter_bin,
 /obj/item/stock_parts/matter_bin,
-/obj/machinery/recharger{
-	pixel_y = 0
-	},
+/obj/machinery/recharger,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 5
 	},
@@ -13040,8 +12816,7 @@
 	name = "Unisex Showers"
 	},
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/centcom/bathroom)
 "OC" = (
@@ -13095,8 +12870,7 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/centcom/bathroom)
 "OI" = (
@@ -13143,8 +12917,8 @@
 /obj/item/storage/pill_bottle/nutriment,
 /obj/item/storage/pill_bottle/nutriment,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/specops)
 "OW" = (
@@ -13156,7 +12930,6 @@
 	pixel_y = 4
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/command)
@@ -13225,7 +12998,6 @@
 	},
 /obj/item/folder/white_rd,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/command)
@@ -13302,8 +13074,8 @@
 	},
 /obj/machinery/camera/network/crescent,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Residential Security"
@@ -13363,8 +13135,8 @@
 	},
 /obj/machinery/camera/network/crescent,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "PF" = (
@@ -13406,8 +13178,8 @@
 /obj/item/storage/backpack/dufflebag/syndie/ammo,
 /obj/item/storage/backpack/satchel/sec,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "PI" = (
@@ -13419,8 +13191,8 @@
 	dir = 6
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "PL" = (
@@ -13463,8 +13235,8 @@
 	dir = 4
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Residential Security"
@@ -13482,8 +13254,8 @@
 	icon_state = "plant-04"
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "PS" = (
@@ -13523,8 +13295,8 @@
 /obj/item/shield/riot,
 /obj/item/shield/riot,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Qd" = (
@@ -13545,8 +13317,8 @@
 	dir = 6
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Qi" = (
@@ -13564,9 +13336,7 @@
 "Qk" = (
 /obj/structure/sink{
 	dir = 4;
-	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
@@ -13593,8 +13363,8 @@
 /obj/item/melee/baton/loaded,
 /obj/item/melee/energy/sword,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/tdome/tdome1)
 "Qr" = (
@@ -13609,8 +13379,8 @@
 	req_access = list(6)
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/medical)
 "Qz" = (
@@ -13623,15 +13393,15 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/medical)
 "QA" = (
 /obj/effect/wingrille_spawn/reinforced/crescent,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/command)
 "QH" = (
@@ -13649,7 +13419,6 @@
 	dir = 6
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/restaurant)
@@ -13690,7 +13459,6 @@
 /obj/item/flame/lighter/zippo,
 /obj/item/storage/fancy/cigarettes,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/restaurant)
@@ -13717,8 +13485,8 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/item/clothing/suit/storage/vest/tactical,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Ra" = (
@@ -13730,7 +13498,6 @@
 	dir = 6
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/command)
@@ -13795,7 +13562,6 @@
 	frequency = 1380;
 	id_tag = "specops_shuttle_port";
 	name = "port docking hatch controller";
-	pixel_x = 0;
 	pixel_y = -25;
 	tag_door = "specops_shuttle_port_hatch"
 	},
@@ -13810,23 +13576,18 @@
 	dir = 4
 	},
 /obj/item/radio/intercom{
-	broadcasting = 0;
 	dir = 1;
 	frequency = 1475;
-	icon_state = "intercom";
-	listening = 1;
 	name = "Station Intercom (Security)";
-	pixel_x = 0;
 	pixel_y = 27
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Rt" = (
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/command)
@@ -13856,7 +13617,6 @@
 	},
 /obj/item/folder/blue_hop,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/command)
@@ -13923,8 +13683,8 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/dispenser/oxygen,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "RK" = (
@@ -13938,8 +13698,8 @@
 "RL" = (
 /obj/effect/floor_decal/industrial/outline,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Security Arrivals"
@@ -13966,8 +13726,8 @@
 	pixel_y = 26
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "RU" = (
@@ -13981,8 +13741,8 @@
 	opacity = 0
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Security Arrivals"
@@ -14011,21 +13771,20 @@
 	dir = 9
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "RY" = (
 /obj/machinery/button/remote/blast_door{
 	id = "ArmouryC5";
 	name = "Armoury Access";
-	pixel_x = 0;
 	pixel_y = -28;
 	req_access = list(3)
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/control)
 "RZ" = (
@@ -14092,10 +13851,7 @@
 	pixel_x = 5;
 	pixel_y = 5
 	},
-/obj/item/reagent_containers/glass/beaker/cryoxadone{
-	pixel_x = 0;
-	pixel_y = 0
-	},
+/obj/item/reagent_containers/glass/beaker/cryoxadone,
 /obj/item/reagent_containers/glass/beaker/cryoxadone{
 	pixel_x = 7;
 	pixel_y = 1
@@ -14162,8 +13918,8 @@
 /obj/structure/table/reinforced,
 /obj/item/tape_recorder,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "SJ" = (
@@ -14172,8 +13928,8 @@
 	req_access = list(3)
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "SK" = (
@@ -14186,15 +13942,14 @@
 	dir = 6
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/control)
 "SL" = (
 /obj/machinery/camera/network/crescent,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/control)
 "SM" = (
@@ -14202,10 +13957,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/borderfloorwhite/corner2{
-	icon_state = "borderfloorcorner2_white";
-	dir = 5;
-	pixel_x = 0;
-	pixel_y = 0
+	dir = 5
 	},
 /obj/effect/floor_decal/borderfloorwhite/corner2{
 	dir = 6
@@ -14240,8 +13992,8 @@
 	req_one_access = list(19)
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "SU" = (
@@ -14300,15 +14052,14 @@
 	dir = 10
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Tf" = (
 /obj/structure/bed/chair,
 /obj/item/handcuffs,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "dark"
 	},
 /area/centcom/control)
@@ -14359,21 +14110,20 @@
 "Tu" = (
 /obj/machinery/iv_drip,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/specops)
 "Tw" = (
 /obj/machinery/button/remote/blast_door{
 	id = "HEAVY";
 	name = "SHIT IS LIT";
-	pixel_x = 0;
 	pixel_y = -28;
 	req_access = list(3)
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Tx" = (
@@ -14390,8 +14140,8 @@
 /obj/item/ammo_magazine/m9mmt,
 /obj/item/ammo_magazine/m9mmt,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "TA" = (
@@ -14403,8 +14153,8 @@
 	pixel_y = 32
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "TC" = (
@@ -14436,8 +14186,8 @@
 	opacity = 0
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/living)
 "TH" = (
@@ -14471,8 +14221,8 @@
 	dir = 1
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "TW" = (
@@ -14513,7 +14263,6 @@
 	dir = 10
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/command)
@@ -14635,19 +14384,18 @@
 	dir = 1
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Uu" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Teleporter";
-	opacity = 1;
 	req_access = list(103)
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/specops)
 "Uw" = (
@@ -14681,7 +14429,6 @@
 	},
 /obj/item/folder/red_hos,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/command)
@@ -14718,8 +14465,8 @@
 	dir = 6
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "UL" = (
@@ -14735,8 +14482,8 @@
 /obj/item/storage/box/shotgunshells/large,
 /obj/item/storage/box/shotgunshells/large,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "UM" = (
@@ -14744,8 +14491,8 @@
 	name = "Security"
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/command)
 "UN" = (
@@ -14766,8 +14513,8 @@
 "UQ" = (
 /obj/machinery/door/airlock,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "UR" = (
@@ -14798,8 +14545,8 @@
 /obj/item/reagent_containers/hypospray,
 /obj/item/reagent_containers/hypospray,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/specops)
 "UW" = (
@@ -14826,13 +14573,9 @@
 /area/centcom/main_hall)
 "UZ" = (
 /obj/item/radio/intercom{
-	broadcasting = 0;
 	dir = 1;
 	frequency = 1475;
-	icon_state = "intercom";
-	listening = 1;
 	name = "Station Intercom (Security)";
-	pixel_x = 0;
 	pixel_y = 27
 	},
 /obj/machinery/photocopier,
@@ -14852,8 +14595,8 @@
 	dir = 5
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Vc" = (
@@ -14872,8 +14615,8 @@
 	name = "tdome1"
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/tdome/tdome1)
 "Ve" = (
@@ -14889,8 +14632,8 @@
 /obj/item/melee/baton/loaded,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Vf" = (
@@ -14907,18 +14650,15 @@
 	name = "Dhaeleena's Jackboots"
 	},
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/centcom/bathroom)
 "Vi" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Living Quarters";
-	opacity = 1;
 	req_access = list(105)
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/control)
@@ -14942,8 +14682,8 @@
 /obj/item/storage/box/teargas,
 /obj/item/storage/box/teargas,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Vm" = (
@@ -14980,9 +14720,7 @@
 	},
 /obj/item/stock_parts/scanning_module,
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1";
-	pixel_x = 0
+	dir = 4
 	},
 /obj/item/clothing/glasses/omnihud/rnd,
 /obj/effect/floor_decal/borderfloorwhite{
@@ -14995,8 +14733,8 @@
 /area/centcom/control)
 "Vu" = (
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/specops)
 "Vx" = (
@@ -15040,13 +14778,9 @@
 	dir = 1
 	},
 /obj/item/radio/intercom{
-	broadcasting = 0;
 	dir = 1;
 	frequency = 1475;
-	icon_state = "intercom";
-	listening = 1;
 	name = "Station Intercom (Security)";
-	pixel_x = 0;
 	pixel_y = 27
 	},
 /turf/unsimulated/floor/steel,
@@ -15081,8 +14815,8 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "VN" = (
@@ -15101,13 +14835,12 @@
 /obj/machinery/button/remote/blast_door{
 	id = "ArmouryC4";
 	name = "Armoury Access";
-	pixel_x = 0;
 	pixel_y = 28;
 	req_access = list(3)
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "VR" = (
@@ -15122,7 +14855,6 @@
 	dir = 1
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/restaurant)
@@ -15136,8 +14868,8 @@
 	dir = 10
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "VX" = (
@@ -15165,15 +14897,12 @@
 /obj/structure/table/rack,
 /obj/item/clothing/gloves/arm_guard/laserproof,
 /obj/item/clothing/shoes/leg_guard/laserproof,
-/obj/item/clothing/suit/armor/laserproof{
-	pixel_x = 0;
-	pixel_y = 0
-	},
+/obj/item/clothing/suit/armor/laserproof,
 /obj/item/clothing/head/helmet/laserproof,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Wf" = (
@@ -15194,7 +14923,6 @@
 	},
 /obj/structure/bed/chair/comfy/teal,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/command)
@@ -15233,8 +14961,8 @@
 /obj/structure/closet/secure_closet/nanotrasen_warden,
 /obj/item/storage/box/handcuffs,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Wq" = (
@@ -15273,8 +15001,8 @@
 	dir = 4
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/medical)
 "Wz" = (
@@ -15290,7 +15018,6 @@
 "WF" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Special Operations";
-	opacity = 1;
 	req_access = list(103)
 	},
 /turf/unsimulated/floor/steel,
@@ -15345,8 +15072,8 @@
 	dir = 1
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "WO" = (
@@ -15378,7 +15105,6 @@
 	},
 /obj/item/pen,
 /obj/machinery/door/window/brigdoor{
-	icon_state = "leftsecure";
 	dir = 2
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -15392,8 +15118,8 @@
 "WU" = (
 /obj/structure/table/reinforced,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "WZ" = (
@@ -15404,8 +15130,8 @@
 	dir = 1
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/medical)
 "Xb" = (
@@ -15427,8 +15153,8 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Security Arrivals"
@@ -15485,8 +15211,8 @@
 	dir = 6
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Xj" = (
@@ -15590,8 +15316,8 @@
 /obj/item/defib_kit/compact/combat/loaded,
 /obj/item/defib_kit/compact/combat/loaded,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/specops)
 "Xw" = (
@@ -15623,8 +15349,8 @@
 /obj/item/storage/backpack/ert/medical,
 /obj/item/storage/backpack/ert/medical,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/specops)
 "XB" = (
@@ -15635,8 +15361,8 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Residential Security"
@@ -15644,8 +15370,6 @@
 "XC" = (
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/snacks/toastedsandwich{
-	pixel_w = 0;
-	pixel_x = 0;
 	pixel_y = 10
 	},
 /turf/unsimulated/floor/steel{
@@ -15662,8 +15386,8 @@
 	dir = 9
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Residential Security"
@@ -15680,19 +15404,17 @@
 /obj/item/storage/box/stunshells/large,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "XJ" = (
 /obj/structure/sink{
-	icon_state = "sink";
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
 	},
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 5
 	},
 /turf/unsimulated/floor/steel{
@@ -15726,8 +15448,8 @@
 /obj/item/gun/energy/gun,
 /obj/item/shield/riot,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Security Arrivals"
@@ -15737,8 +15459,8 @@
 	pixel_y = 32
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/specops)
 "XY" = (
@@ -15751,8 +15473,8 @@
 /obj/item/clothing/shoes/brown,
 /obj/item/melee/energy/axe,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/tdome/tdome1)
 "Yb" = (
@@ -15760,8 +15482,8 @@
 	name = "Brig Restroom"
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Yc" = (
@@ -15783,8 +15505,8 @@
 /obj/structure/closet/wardrobe/orange,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Yf" = (
@@ -15807,8 +15529,7 @@
 /obj/machinery/vending/wallmed1{
 	layer = 3.3;
 	name = "Emergency NanoMed";
-	pixel_x = 28;
-	pixel_y = 0
+	pixel_x = 28
 	},
 /obj/machinery/light{
 	dir = 4
@@ -15857,8 +15578,8 @@
 	},
 /obj/item/storage/firstaid/o2,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/specops)
 "Yq" = (
@@ -15873,8 +15594,8 @@
 /obj/item/gun/energy/gun/burst,
 /obj/item/gun/energy/gun/burst,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Yt" = (
@@ -15884,7 +15605,6 @@
 	pixel_y = 8
 	},
 /obj/item/reagent_containers/food/drinks/glass2/square{
-	pixel_x = 0;
 	pixel_y = 8
 	},
 /obj/item/reagent_containers/food/drinks/glass2/square{
@@ -15896,7 +15616,6 @@
 	pixel_y = 4
 	},
 /obj/item/reagent_containers/food/drinks/glass2/square{
-	pixel_x = 0;
 	pixel_y = 4
 	},
 /obj/item/reagent_containers/food/drinks/glass2/square{
@@ -15930,8 +15649,8 @@
 	dir = 9
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Yx" = (
@@ -15942,7 +15661,6 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/restaurant)
@@ -15954,17 +15672,15 @@
 	},
 /obj/item/storage/firstaid/toxin,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/specops)
 "Yz" = (
 /obj/machinery/computer/communications,
 /obj/item/radio/intercom{
-	broadcasting = 0;
 	dir = 1;
 	frequency = 1443;
-	listening = 1;
 	name = "Spec Ops Intercom";
 	pixel_y = -28
 	},
@@ -15976,13 +15692,9 @@
 	})
 "YB" = (
 /obj/machinery/shower{
-	dir = 4;
-	icon_state = "shower";
-	pixel_x = 0;
-	pixel_y = 0
+	dir = 4
 	},
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 4
 	},
 /turf/unsimulated/floor/steel{
@@ -16014,8 +15726,8 @@
 	req_access = list(58)
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "YJ" = (
@@ -16026,8 +15738,8 @@
 	dir = 4
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "YL" = (
@@ -16040,15 +15752,13 @@
 /area/centcom/control)
 "YO" = (
 /obj/structure/sink{
-	icon_state = "sink";
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
 	},
 /obj/structure/mirror{
 	dir = 4;
-	pixel_x = -32;
-	pixel_y = 0
+	pixel_x = -32
 	},
 /turf/unsimulated/floor{
 	icon_state = "freezer"
@@ -16105,8 +15815,8 @@
 	dir = 1
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "YZ" = (
@@ -16119,7 +15829,6 @@
 /area/centcom/medical)
 "Zd" = (
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 1
 	},
 /turf/unsimulated/floor/steel,
@@ -16142,8 +15851,8 @@
 /obj/item/gun/energy/gun,
 /obj/item/shield/riot,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security{
 	name = "\improper CentCom Security Arrivals"
@@ -16182,8 +15891,8 @@
 /obj/item/melee/baton/loaded,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "Zl" = (
@@ -16279,8 +15988,8 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/medical)
 "ZA" = (
@@ -16292,7 +16001,6 @@
 	},
 /obj/item/megaphone,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/command)
@@ -16322,8 +16030,8 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/medical)
 "ZJ" = (
@@ -16370,8 +16078,8 @@
 /obj/structure/closet/secure_closet/nanotrasen_security,
 /obj/item/storage/box/handcuffs,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 5
+	dir = 5;
+	icon_state = "vault"
 	},
 /area/centcom/security)
 "ZP" = (
@@ -16411,15 +16119,13 @@
 "ZX" = (
 /obj/structure/curtain/open/shower,
 /obj/structure/window/reinforced/tinted{
-	dir = 4;
-	icon_state = "twindow"
+	dir = 4
 	},
 /obj/machinery/shower{
 	dir = 1
 	},
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/centcom/bathroom)
 "ZY" = (
@@ -16440,7 +16146,6 @@
 	dir = 6
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/centcom/control)
@@ -20512,14 +20217,14 @@ OX
 Pl
 ev
 ev
-Ke
+mS
 Pl
 ev
 Pp
 Pp
 ev
 Pl
-Ke
+mS
 mS
 mS
 Pl

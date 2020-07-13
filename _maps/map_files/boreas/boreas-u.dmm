@@ -2753,9 +2753,6 @@
 /obj/structure/dispenser,
 /turf/simulated/floor/plating,
 /area/engineering/atmos/storage)
-"fl" = (
-/turf/simulated/floor,
-/area/engineering/engine_monitoring)
 "fm" = (
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/borderfloor{
@@ -51860,7 +51857,7 @@ ca
 dn
 dW
 cZ
-fl
+fJ
 fJ
 gf
 fJ
