@@ -409,10 +409,11 @@ proc/is_blind(A)
 				var/mob/observer/dead/DM
 				if(istype(subject, /mob/observer/dead))
 					DM = subject
+				var/anonsay = DM?.is_preference_enabled(/datum/client_preference/anonymous_ghost_chat)
 				if(M.client.holder) 							// What admins see
-					lname = "[keyname][(DM && DM.anonsay) ? "*" : (DM ? "" : "^")] ([name])"
+					lname = "[keyname][(anonsay) ? "*" : (DM ? "" : "^")] ([name])"
 				else
-					if(DM && DM.anonsay)						// If the person is actually observer they have the option to be anonymous
+					if(anonsay)						// If the person is actually observer they have the option to be anonymous
 						lname = "[name]"
 					else if(DM)									// Non-anons
 						lname = "[keyname] ([name])"
