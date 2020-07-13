@@ -230,6 +230,20 @@ var/list/_client_preferences_by_type
 	description ="Hear In-game Instruments"
 	key = "SOUND_INSTRUMENT"
 
+/datum/client_preference/anonymous_ghost_chat
+	description = "Anonymous Ghost Chat"
+	key = "ANON_GHOST_CHAT"
+	enabled_by_default = FALSE
+	enabled_description = "On"
+	disabled_description = "Off"
+
+/datum/client_preference/show_in_advanced_who
+	description = "Show my status in advanced who"
+	key = "SHOW_IN_ADVANCED_WHO"
+	enabled_by_default = TRUE
+	enabled_description = "Visible"
+	disabled_description = "Hidden"
+
 /********************
 * Staff Preferences *
 ********************/
@@ -282,3 +296,10 @@ var/list/_client_preferences_by_type
 	key = "CHAT_RLOOC"
 	enabled_description = "Show"
 	disabled_description = "Hide"
+
+/datum/client_preference/holder/obfuscate_stealth_dsay
+	description = "Obfuscate Stealthmin Dsay"
+	key = "OBFUSCATE_STEALTH_DSAY"
+	enabled_by_default = FALSE
+	enabled_description = "On"
+	disabled_description = "Off"
