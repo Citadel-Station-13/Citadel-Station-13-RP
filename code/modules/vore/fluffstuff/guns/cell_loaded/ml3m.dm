@@ -1,7 +1,7 @@
 // The Gun //
 /obj/item/gun/projectile/cell_loaded/medical
 	name = "cell-loaded medigun"
-	desc = "The ML-3 'Medigun', or ML3M for short, is a powerful cell-based ranged healing device based on the KHI-102b NSFW. \
+	desc = "The ML-3 'Medigun', or ML3M for short, is a powerful cell-based ranged healing device designed by NanoTrasen with a partnership with Vey-Med. \
 	It uses an internal nanite fabricator, powered and controlled by discrete cells, to deliver a variety of effects at range. Up to six combinations of \
 	healing beams can be configured at once, depending on cartridge used. Ammo not included."
 	catalogue_data = list(/datum/category_item/catalogue/information/organization/vey_med)
@@ -12,10 +12,11 @@
 	description_antag = ""
 	origin_tech = list(TECH_MATERIAL = 4, TECH_MAGNET = 2, TECH_BIO = 5)
 	allowed_magazines = list(/obj/item/ammo_magazine/cell_mag/medical)
+	no_pin_required = 1
 
 /obj/item/gun/projectile/cell_loaded/medical/cmo
 	name = "advanced cell-loaded medigun"
-	desc = "This is a variation on the ML-3 'Medigun', a powerful cell-based ranged healing device based on the KHI-102b NSFW. \
+	desc = "This is a variation on the ML-3 'Medigun', a powerful cell-based ranged healing device based on the same model made by NanoTrasen and Vey-Med \
 	It has an extended sight for increased accuracy, and much more comfortable grip. Ammo not included."
 
 	icon_state = "ml3m_cmo"

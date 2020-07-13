@@ -23,6 +23,12 @@
 			if(mended)
 				rig.req_access = initial(rig.req_access)
 				rig.req_one_access = initial(rig.req_one_access)
+		if(RIG_SYSTEM_CONTROL)
+			if(!mended)
+				rig.shock(usr,100) // Intended to keep players from trying to mend in the middle of combat. Second way of getting shocked as pulsing this wire ALSO shocks you.
+			else if(mended)
+				rig.malfunctioning = 0
+				rig.malfunction_delay = 0
 		if(RIG_INTERFACE_SHOCK)
 			rig.electrified = mended ? 0 : -1
 			rig.shock(usr,100)
@@ -42,6 +48,7 @@
 			if(rig.malfunction_delay <= 0)
 				rig.malfunction_delay = 20
 			rig.shock(usr,100)
+			rig.visible_message("\The [rig] beeps stridently as a surge of power runs through it.") // Hints to the fact that if you pulse this while wearing it you get zappoed.
 		if(RIG_INTERFACE_LOCK)
 			rig.interface_locked = !rig.interface_locked
 			rig.visible_message("\The [rig] clicks audibly as the software interface [rig.interface_locked?"darkens":"brightens"].")

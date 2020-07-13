@@ -1,0 +1,4 @@
+author: "Nethaufer"
+delete-after: True
+changes: 
+  - rscadd: "Added function to the control wire of RIGs to allow for removal of malfunctioning and malfunction_delay to an unequipped, otherwise bricked, RIG."

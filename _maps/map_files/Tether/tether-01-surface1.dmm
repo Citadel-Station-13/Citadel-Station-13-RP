@@ -322,7 +322,7 @@
 	dir = 4;
 	id = "mining_interior"
 	},
-/turf/simulated/floor/tiled/techfloor,
+/turf/simulated/floor/plating,
 /area/tether/surfacebase/mining_main/refinery)
 "aaN" = (
 /obj/machinery/conveyor{
@@ -612,11 +612,6 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/mining_main/refinery)
 "abt" = (
-/obj/machinery/mineral/stacking_unit_console{
-	density = 0;
-	layer = 3.3;
-	pixel_y = 30
-	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/tether/surfacebase/mining_main/refinery)
 "abu" = (
@@ -1015,6 +1010,12 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 1
 	},
+/obj/item/clothing/accessory/permit/gun/planetside,
+/obj/item/clothing/accessory/permit/gun/planetside,
+/obj/item/gun/energy/phasegun/pistol,
+/obj/item/gun/energy/phasegun/pistol,
+/obj/item/cell/device/weapon,
+/obj/item/cell/device/weapon,
 /obj/structure/closet/secure_closet/guncabinet/phase{
 	name = "mining weapon cabinet";
 	req_one_access = list(48)

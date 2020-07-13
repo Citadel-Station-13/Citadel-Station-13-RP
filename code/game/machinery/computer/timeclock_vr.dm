@@ -158,7 +158,8 @@
 		if(newjob in job.alt_titles)
 			foundjob = job
 			break
-	if(!newjob in getOpenOnDutyJobs(usr, SSjobs.GetJob(card.rank).department))
+	var/datum/job/cardjob = SSjobs.GetJob(card.rank)
+	if(!(newjob in getOpenOnDutyJobs(usr, cardjob.department)))
 		return
 	if(foundjob && card)
 		card.access = foundjob.get_access()
