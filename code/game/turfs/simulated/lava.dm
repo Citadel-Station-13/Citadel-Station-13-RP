@@ -19,6 +19,8 @@
 	desc = "A pool of molten phoron"
 	description_info = "Liquid phoron is an extremely dangerous form of the usually gaseous state of phoron, as it only forms under extreme heat and pressure."
 	icon_state = "plava"
+	light_range = 5
+	light_power = 0.60
 	light_color = LIGHT_COLOR_PLAVA
 
 /turf/simulated/floor/lava/outdoors
