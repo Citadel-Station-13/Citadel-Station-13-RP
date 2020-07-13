@@ -453,7 +453,7 @@ proc/is_blind(A)
 			C = M.original.client
 
 	if(C)
-		if(!isnull(C.holder?.fakekey))
+		if(!isnull(C.holder?.fakekey) || !C.is_preference_enabled(/datum/client_preference/announce_ghost_joinleave))
 			return
 		var/name
 		if(C.mob)

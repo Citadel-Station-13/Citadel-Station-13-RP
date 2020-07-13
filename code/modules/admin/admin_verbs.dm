@@ -482,7 +482,8 @@ var/list/admin_verbs_event_manager = list(
 /client/proc/admin_ghost()
 	set category = "Admin"
 	set name = "Aghost"
-	if(!holder)	return
+	if(!holder)
+		return
 	if(istype(mob,/mob/observer/dead))
 		//re-enter
 		var/mob/observer/dead/ghost = mob

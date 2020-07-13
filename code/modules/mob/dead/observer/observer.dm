@@ -86,6 +86,9 @@
 		"Beepsky" = "secbot"
 		)
 	var/last_revive_notification = null // world.time of last notification, used to avoid spamming players from defibs or cloners.
+	/// stealthmin vars
+	var/original_name
+
 /mob/observer/dead/New(mob/body)
 	sight |= SEE_TURFS | SEE_MOBS | SEE_OBJS | SEE_SELF
 	see_invisible = SEE_INVISIBLE_OBSERVER
@@ -309,12 +312,12 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	usr.forceMove(pick(get_area_turfs(A)))
 
-/mob/observer/dead/verb/follow(input in getmobs())
+/mob/observer/dead/verb/follow(input in getmobs_ghost_follow())
 	set category = "Ghost"
 	set name = "Follow" // "Haunt"
 	set desc = "Follow and haunt a mob."
 
-	var/target = getmobs()[input]
+	var/target = getmobs_ghost_follow()[input]
 	if(!target)
 		return
 	ManualFollow(target)
@@ -326,13 +329,13 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	orbit(target, actually_orbit = FALSE)
 
-/mob/observer/dead/verb/jumptomob(input in getmobs()) //Moves the ghost instead of just changing the ghosts's eye -Nodrak
+/mob/observer/dead/verb/jumptomob(input in getmobs_ghost_follow()) //Moves the ghost instead of just changing the ghosts's eye -Nodrak
 	set category = "Ghost"
 	set name = "Jump to Mob"
 	set desc = "Teleport to a mob"
 	set popup_menu = FALSE //VOREStation Edit - Declutter.
 	if(istype(usr, /mob/observer/dead)) //Make sure they're an observer!
-		var/target = getmobs()[input]
+		var/target = getmobs_ghost_follow()[input]
 		if (!target)//Make sure we actually have a target
 			return
 		else
