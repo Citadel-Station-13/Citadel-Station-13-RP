@@ -82,6 +82,6 @@
 	w_class = ITEMSIZE_HUGE
 
 
-/obj/item/gun/energy/modular/cannon/Initialize()
+/obj/item/gun/energy/modular/nuke/Initialize()
 	..()
 	circuit = new /obj/item/modularlaser/controller/basic/integral(src)
