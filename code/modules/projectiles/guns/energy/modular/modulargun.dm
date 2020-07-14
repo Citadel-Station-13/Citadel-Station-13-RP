@@ -24,6 +24,22 @@
 	..()
 	generatefiremodes()
 
+/obj/item/gun/energy/modular/examine(mob/user)
+	..()
+	if(primarycore)
+		to_chat(user, "The modular weapon has a [primarycore.name] installed in the primary core slot.")
+	if(secondarycore)
+		to_chat(user, "The modular weapon has a [secondarycore.name] installed in the secondary core slot.")
+	if(tertiarycore)
+		to_chat(user, "The modular weapon has a [tertiarycore.name] installed in the tertiary core slot.")
+	if(laserlens)
+		to_chat(user, "The modular weapon has a [laserlens.name] installed in the lens slot.")
+	if(lasercap)
+		to_chat(user, "The modular weapon has a [lasercap.name] installed in the power handler slot.")
+	if(lasercooler)
+		to_chat(user, "The modular weapon has a [lasercooler.name] installed in the cooling system slot.")
+	if(lasercircuit)
+		to_chat(user, "The modular weapon has a [lasercircuit.name] installed in the fire control slot.")
 /obj/item/gun/energy/modular/proc/generatefiremodes() //Accepts no args. Checks the gun's current components and generates projectile types, firemode costs and max burst. Should be called after changing parts or part values.
 	if(!circuit)
 		return
