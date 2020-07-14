@@ -40,6 +40,7 @@
 		to_chat(user, "The modular weapon has a [lasercooler.name] installed in the cooling system slot.")
 	if(circuit)
 		to_chat(user, "The modular weapon has a [circuit.name] installed in the fire control slot.")
+
 /obj/item/gun/energy/modular/proc/generatefiremodes() //Accepts no args. Checks the gun's current components and generates projectile types, firemode costs and max burst. Should be called after changing parts or part values.
 	if(!circuit)
 		return

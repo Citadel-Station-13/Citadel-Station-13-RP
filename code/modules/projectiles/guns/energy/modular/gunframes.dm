@@ -49,7 +49,6 @@
 /obj/item/gun/energy/modular/rifle/scatter
 	name = "modular energy scattergun"
 	desc = "A sophisticated modular energy weapon. This scattergun has the capability to mount two cores, and mounts a complex refracting lens to scatter most shots."
-	laserlens =
 
 /obj/item/gun/energy/modular/rifle/scatter/Initialize()
 	..()
