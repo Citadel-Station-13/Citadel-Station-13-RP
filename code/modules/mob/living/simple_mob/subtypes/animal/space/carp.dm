@@ -51,7 +51,7 @@
 	attack_sound = 'sound/weapons/bite.ogg'
 	attacktext = list("bitten")
 
-	meat_amount = 1
+	meat_amount = 3
 	meat_type = /obj/item/reagent_containers/food/snacks/carpmeat
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
@@ -88,7 +88,7 @@
 	pixel_x = -16
 	default_pixel_x = -16
 
-	meat_amount = 3
+	meat_amount = 5
 
 
 /mob/living/simple_mob/animal/space/carp/large/huge
