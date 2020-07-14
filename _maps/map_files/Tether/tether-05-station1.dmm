@@ -4556,11 +4556,6 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/light_switch{
-	dir = 4;
-	pixel_x = -28;
-	pixel_y = 12
-	},
 /obj/machinery/power/apc{
 	cell_type = /obj/item/cell/super;
 	dir = 8;
@@ -5080,6 +5075,9 @@
 /obj/effect/landmark/start{
 	name = "Librarian"
 	},
+/obj/machinery/newscaster{
+	pixel_x = 30
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
 "aky" = (
@@ -5210,6 +5208,9 @@
 /obj/item/radio/intercom{
 	pixel_y = -28
 	},
+/obj/machinery/light_switch{
+	pixel_y = -21
+	},
 /turf/simulated/floor/wood,
 /area/library)
 "akQ" = (
@@ -5259,6 +5260,10 @@
 /obj/machinery/light/small,
 /obj/machinery/light_switch{
 	pixel_y = -26
+	},
+/obj/item/flashlight/lamp/green{
+	pixel_x = 1;
+	pixel_y = 5
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
