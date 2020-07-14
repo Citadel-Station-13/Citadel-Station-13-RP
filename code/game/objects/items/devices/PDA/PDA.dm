@@ -74,6 +74,8 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 	if(can_use(usr))
 		remove_pen()
+		return
+	..()
 
 /obj/item/pda/AltClick()
 	if(issilicon(usr))
