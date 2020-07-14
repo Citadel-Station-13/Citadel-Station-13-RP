@@ -41,9 +41,9 @@
 
 /obj/item/gun/energy/modular/compact/Initialize()
 	..()
-	lasercap = new /obj/item/modularlaser/cooling/lame/integral(src)
-	circuit = new /obj/item/modularlaser/capacitor/simple/integral(src)
-	lasercooler = new /obj/item/modularlaser/controller/basic/integral(src)
+	lasercap = new /obj/item/modularlaser/capacitor/simple/integral(src)
+	circuit = new /obj/item/modularlaser/controller/basic/integral(src)
+	lasercooler = new /obj/item/modularlaser/cooling/lame/integral(src)
 	laserlens = new /obj/item/modularlaser/lens/lame/integral(src)
 
 /obj/item/gun/energy/modular/rifle/scatter
