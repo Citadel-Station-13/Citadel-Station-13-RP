@@ -438,16 +438,12 @@ GLOBAL_LIST_EMPTY(PDAs)
 		var/mob/living/carbon/human/H = loc
 		var/pdachoice = H.pdachoice
 		switch(pdachoice)
-			if(1)
-				icon = 'icons/obj/pda.dmi'
-			if(2)
-				icon = 'icons/obj/pda_slim.dmi'
-			if(3)
-				icon = 'icons/obj/pda_old.dmi'
-			if(4)
-				icon = 'icons/obj/pda_rugged.dmi'
-			if(5)
-				icon = 'icons/obj/pda_minimal.dmi'
+			if(1) icon = 'icons/obj/pda.dmi'
+			if(2) icon = 'icons/obj/pda_slim.dmi'
+			if(3) icon = 'icons/obj/pda_old.dmi'
+			if(4) icon = 'icons/obj/pda_rugged.dmi'
+			if(5) icon = 'icons/obj/pda_minimal.dmi'
+			if(6) icon = 'icons/obj/pda_holo.dmi'
 			else
 				icon = 'icons/obj/pda_old.dmi'
 				log_debug("Invalid switch for PDA, defaulting to old PDA icons. [pdachoice] chosen.")
