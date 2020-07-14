@@ -303,17 +303,17 @@
 
 /datum/gear/suit/dept/cloak/hop
 	display_name = "head of personnel cloak (Teshari)"
-	path = /obj/item/clothing/suit/storage/teshari/cloak/jobs/cmo
+	path = /obj/item/clothing/suit/storage/teshari/cloak/jobs/hop
 	allowed_roles = list("Head of Personnel")
 
 /datum/gear/suit/dept/cloak/rd
 	display_name = "research director cloak (Teshari)"
-	path = /obj/item/clothing/suit/storage/teshari/cloak/jobs/cmo
+	path = /obj/item/clothing/suit/storage/teshari/cloak/jobs/rd
 	allowed_roles = list("Research Director")
 
 /datum/gear/suit/dept/cloak/hos
 	display_name = "head of security cloak (Teshari)"
-	path = /obj/item/clothing/suit/storage/teshari/cloak/jobs/cmo
+	path = /obj/item/clothing/suit/storage/teshari/cloak/jobs/hos
 	allowed_roles = list("Head of Security")
 
 /datum/gear/suit/cloak/dept/ce
