@@ -2179,25 +2179,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_misc_lab)
-"dR" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/mauve/border{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 9
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 10
-	},
-/turf/simulated/floor/tiled/steel,
-/area/outpost/research/hallway/resarch_outpost_western_hallway)
 "dS" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -2526,7 +2507,6 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 4
 	},
-/obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
@@ -2663,7 +2643,6 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 4
 	},
-/obj/structure/disposalpipe/segment,
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 9
 	},
@@ -2870,7 +2849,6 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 4
 	},
-/obj/structure/disposalpipe/segment,
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 9
 	},
@@ -3052,7 +3030,6 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 4
 	},
-/obj/structure/disposalpipe/segment,
 /obj/effect/floor_decal/borderfloor/corner2{
 	dir = 5
 	},
@@ -3071,6 +3048,7 @@
 /obj/structure/sign/department/sci{
 	name = "TELE-SCIENCE"
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/wall/r_wall,
 /area/outpost/research/hallway/resarch_outpost_western_hallway)
 "gv" = (
@@ -3231,6 +3209,7 @@
 	name = "Telescience Lab"
 	},
 /obj/machinery/door/firedoor/glass,
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/airless,
 /area/outpost/research/hallway/resarch_outpost_western_hallway)
 "gN" = (
@@ -3380,7 +3359,6 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/materials_lab)
 "hg" = (
-/obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -3437,6 +3415,7 @@
 	name = "Telescience Lab"
 	},
 /obj/machinery/door/firedoor/glass,
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/airless,
 /area/outpost/research/hallway/resarch_outpost_western_hallway)
 "hj" = (
@@ -3613,7 +3592,6 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 4
 	},
-/obj/structure/disposalpipe/segment,
 /obj/effect/floor_decal/borderfloor/corner2{
 	dir = 6
 	},
@@ -3642,8 +3620,7 @@
 	},
 /obj/structure/table/standard,
 /obj/item/toy/plushie/teshari{
-	bound_height = 32;
-	bound_width = 32
+	name = "Birb"
 	},
 /obj/item/radio/intercom{
 	dir = 8;
@@ -3729,7 +3706,6 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 4
 	},
-/obj/structure/disposalpipe/segment,
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 9
 	},
@@ -3806,9 +3782,6 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /obj/effect/floor_decal/steeldecal/steel_decals7,
 /obj/effect/floor_decal/steeldecal/steel_decals7{
@@ -3837,6 +3810,9 @@
 	name = "Southern Outpost Hallway"
 	},
 /obj/machinery/door/firedoor/glass,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/hallway/resarch_outpost_southern_hallway)
 "je" = (
@@ -3845,9 +3821,6 @@
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/floor_decal/steeldecal/steel_decals7,
@@ -3865,9 +3838,6 @@
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	pixel_x = 4
@@ -3888,9 +3858,6 @@
 /obj/effect/floor_decal/corner/mauve/bordercorner{
 	dir = 1
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -3902,6 +3869,11 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 5
 	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/hallway/resarch_outpost_southern_hallway)
 "jj" = (
@@ -3910,9 +3882,6 @@
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7,
 /obj/effect/floor_decal/steeldecal/steel_decals7{
@@ -3929,20 +3898,19 @@
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/hallway/resarch_outpost_southern_hallway)
 "jk" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 10
-	},
-/obj/machinery/light{
-	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/hallway/resarch_outpost_southern_hallway)
@@ -4019,11 +3987,6 @@
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
-	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
 	},
 /obj/structure/cable/green{
 	d1 = 1;
@@ -4158,13 +4121,6 @@
 	},
 /turf/simulated/floor/airless,
 /area/outpost/research/materials_chamber)
-"ka" = (
-/obj/machinery/conveyor{
-	dir = 9;
-	id = "canister_storage"
-	},
-/turf/simulated/floor/plating,
-/area/outpost/research/longtermstorage)
 "kc" = (
 /obj/structure/table/standard,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -4470,6 +4426,8 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/outpost/research/substation)
 "kY" = (
@@ -4535,6 +4493,8 @@
 /obj/machinery/camera/network/research_outpost{
 	dir = 10
 	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/outpost/research/substation)
 "lo" = (
@@ -4735,9 +4695,6 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_misc_lab)
 "ma" = (
-/obj/machinery/conveyor{
-	id = "canister_storage"
-	},
 /turf/simulated/floor/plating,
 /area/outpost/research/longtermstorage)
 "mb" = (
@@ -4797,11 +4754,6 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
@@ -4826,6 +4778,9 @@
 /obj/effect/floor_decal/corner/mauve/bordercorner2{
 	dir = 6
 	},
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/hallway/resarch_outpost_southern_hallway)
 "mh" = (
@@ -4845,7 +4800,7 @@
 /obj/machinery/conveyor{
 	id = "canister_conveyors"
 	},
-/obj/machinery/atmospherics/pipe/tank/nitrous_oxide,
+/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
 /turf/simulated/floor/plating,
 /area/outpost/research/toxins_misc_lab)
 "mk" = (
@@ -5007,6 +4962,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/outpost/research/substation)
 "nb" = (
@@ -5104,6 +5061,11 @@
 	},
 /turf/simulated/floor/carpet/blucarpet,
 /area/outpost/research/crew_quarters/sleep/Dorm_2)
+"nL" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/simulated/floor/plating,
+/area/outpost/research/longtermstorage)
 "nM" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -5230,6 +5192,7 @@
 	dir = 8;
 	pixel_x = 25
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/outpost/research/substation)
 "ol" = (
@@ -5453,7 +5416,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/tank/nitrous_oxide,
+/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
 /turf/simulated/floor/plating,
 /area/outpost/research/toxins_misc_lab)
 "pQ" = (
@@ -5636,10 +5599,6 @@
 	dir = 4;
 	plane = -42
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 10
 	},
@@ -5681,6 +5640,7 @@
 /area/outpost/research/hallway/resarch_outpost_western_hallway)
 "qJ" = (
 /obj/structure/sign/warning/secure_area,
+/obj/structure/disposalpipe/segment,
 /turf/simulated/wall/r_wall,
 /area/outpost/research/hallway/resarch_outpost_western_hallway)
 "qL" = (
@@ -5804,6 +5764,7 @@
 	name = "south bump";
 	pixel_y = -28
 	},
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/outpost/research/substation)
 "rn" = (
@@ -5831,7 +5792,6 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 4
 	},
-/obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8;
 	pixel_y = -4
@@ -6678,12 +6638,10 @@
 /turf/simulated/floor/plating,
 /area/outpost/research/longtermstorage)
 "wm" = (
-/obj/machinery/conveyor{
-	id = "canister_storage"
-	},
 /obj/machinery/camera/network/research_outpost{
 	dir = 9
 	},
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/outpost/research/longtermstorage)
 "wo" = (
@@ -7445,7 +7403,6 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 4
 	},
-/obj/structure/disposalpipe/segment,
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 9
 	},
@@ -7471,6 +7428,8 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/outpost/research/substation)
 "Ab" = (
@@ -8145,6 +8104,11 @@
 	req_access = list(8)
 	},
 /obj/machinery/door/firedoor/glass,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plating,
 /area/outpost/research/toxins_misc_lab)
 "Dq" = (
@@ -8366,18 +8330,20 @@
 /turf/simulated/floor/plating,
 /area/outpost/research/atmospherics)
 "EN" = (
-/obj/machinery/conveyor{
-	dir = 5;
-	id = "canister_storage"
+/obj/structure/window/reinforced/full,
+/obj/structure/grille,
+/obj/machinery/door/firedoor,
+/obj/structure/window/reinforced{
+	dir = 4
 	},
-/obj/structure/window/reinforced,
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
-/area/outpost/research/longtermstorage)
+/area/outpost/research/hallway/resarch_outpost_western_hallway)
 "EQ" = (
 /obj/machinery/conveyor{
 	id = "canister_conveyors"
 	},
-/obj/machinery/atmospherics/pipe/tank/nitrous_oxide,
+/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
 /turf/simulated/floor/plating,
 /area/outpost/research/toxins_misc_lab)
 "ET" = (
@@ -8537,9 +8503,6 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/effect/floor_decal/steeldecal/steel_decals7,
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 4
@@ -8669,12 +8632,14 @@
 /turf/simulated/wall,
 /area/outpost/research/crew_quarters/sleep/Dorm_2)
 "Hm" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/floor_decal/rust,
+/obj/effect/floor_decal/rust,
 /obj/machinery/door/window/brigdoor/northleft{
-	id = "send_canisters"
+	id = "send_canisters";
+	req_access = null;
+	req_one_access = list(47)
 	},
-/obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/outpost/research/toxins_misc_lab)
 "Hn" = (
@@ -8766,6 +8731,7 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/outpost/research/substation)
 "HG" = (
@@ -8963,6 +8929,7 @@
 /area/outpost/research/materials_lab)
 "IG" = (
 /obj/machinery/telecomms/relay/preset/tether/sci_outpost,
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/outpost/research/substation)
 "IJ" = (
@@ -8971,9 +8938,6 @@
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7,
 /obj/effect/floor_decal/steeldecal/steel_decals7{
@@ -9236,6 +9200,9 @@
 /obj/effect/floor_decal/corner/mauve/bordercorner2{
 	dir = 5
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/hallway/resarch_outpost_southern_hallway)
 "Km" = (
@@ -9376,9 +9343,6 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	pixel_x = 4
 	},
@@ -9397,6 +9361,15 @@
 	},
 /turf/simulated/floor/plating,
 /area/outpost/research/substation)
+"KY" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/door/window/brigdoor/northleft{
+	id = "send_canisters";
+	req_access = null;
+	req_one_access = list(47)
+	},
+/turf/simulated/floor/plating,
+/area/outpost/research/toxins_misc_lab)
 "KZ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -9490,9 +9463,6 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /obj/effect/floor_decal/steeldecal/steel_decals7,
 /obj/effect/floor_decal/steeldecal/steel_decals7{
@@ -9534,7 +9504,9 @@
 /area/tether/outpost/solars_outside)
 "LL" = (
 /obj/machinery/door/window/brigdoor/northleft{
-	id = "send_canisters"
+	id = "send_canisters";
+	req_access = null;
+	req_one_access = list(47)
 	},
 /turf/simulated/floor/plating,
 /area/outpost/research/toxins_misc_lab)
@@ -9573,12 +9545,9 @@
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/storage/tools)
 "Ma" = (
-/obj/machinery/conveyor{
-	dir = 10;
-	id = "canister_storage"
-	},
-/turf/simulated/floor/plating,
-/area/outpost/research/longtermstorage)
+/obj/structure/disposalpipe/segment,
+/turf/simulated/wall,
+/area/outpost/research/hallway/resarch_outpost_western_hallway)
 "Me" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 6
@@ -9631,6 +9600,9 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/outpost/research/substation)
 "Mr" = (
@@ -9684,6 +9656,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/outpost/research/substation)
 "MC" = (
@@ -9774,6 +9747,13 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/hallway/resarch_outpost_western_hallway)
+"MW" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/turf/simulated/wall,
+/area/outpost/research/hallway/resarch_outpost_southern_hallway)
 "MY" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -9910,6 +9890,9 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/outpost/research/hallway/resarch_outpost_southern_hallway)
 "Nw" = (
@@ -9932,6 +9915,7 @@
 /turf/simulated/floor/reinforced,
 /area/outpost/research/telescience_lab)
 "NG" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/outpost/research/substation)
 "NI" = (
@@ -10020,10 +10004,6 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/crew_quarters/sleep/Dorm_3)
 "Oa" = (
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
-	},
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -10033,6 +10013,11 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
+	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/plating,
 /area/outpost/research/toxins_misc_lab)
@@ -10181,7 +10166,6 @@
 /turf/simulated/floor/plating,
 /area/outpost/research/materials_chamber)
 "OX" = (
-/obj/structure/disposalpipe/segment,
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
@@ -10464,9 +10448,6 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/effect/floor_decal/steeldecal/steel_decals7,
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 4
@@ -10541,7 +10522,9 @@
 /area/outpost/research/mixing)
 "RG" = (
 /obj/machinery/door/window/brigdoor/northleft{
-	id = "send_canisters"
+	id = "send_canisters";
+	req_access = null;
+	req_one_access = list(47)
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
@@ -10702,6 +10685,9 @@
 	layer = 3.3;
 	pixel_x = 26
 	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/outpost/research/substation)
 "Sr" = (
@@ -10753,7 +10739,6 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 4
 	},
-/obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8;
 	pixel_y = -4
@@ -10886,9 +10871,6 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/effect/floor_decal/steeldecal/steel_decals7,
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 4
@@ -11018,6 +11000,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/outpost/research/toxins_misc_lab)
+"TX" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/simulated/wall,
+/area/outpost/research/hallway/resarch_outpost_southern_hallway)
 "Uc" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
@@ -11321,14 +11309,7 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
-/obj/machinery/conveyor{
-	dir = 6;
-	id = "canister_storage"
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/outpost/research/longtermstorage)
 "VD" = (
@@ -11446,6 +11427,8 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/outpost/research/substation)
 "Wb" = (
@@ -11785,16 +11768,16 @@
 "XW" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/floor_decal/rust,
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
 	},
 /turf/simulated/floor/plating,
 /area/outpost/research/toxins_misc_lab)
@@ -11852,16 +11835,15 @@
 /turf/simulated/floor/plating,
 /area/outpost/research/atmospherics)
 "Yg" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
 /obj/machinery/conveyor{
 	dir = 1;
 	id = "canister_conveyors"
 	},
 /obj/machinery/portable_atmospherics/canister/phoron,
 /obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
@@ -11875,6 +11857,10 @@
 /obj/item/pen,
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/telescience_lab)
+"Yj" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/simulated/floor/plating,
+/area/outpost/research/longtermstorage)
 "Yn" = (
 /obj/structure/particle_accelerator/particle_emitter/center{
 	dir = 4
@@ -11994,6 +11980,7 @@
 /obj/machinery/camera/network/research_outpost{
 	dir = 5
 	},
+/obj/structure/cable/green,
 /turf/simulated/floor/plating,
 /area/outpost/research/atmospherics)
 "Zb" = (
@@ -12094,6 +12081,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/outpost/research/substation)
 "ZT" = (
@@ -26722,7 +26710,7 @@ Aj
 yB
 cQ
 dr
-dR
+fK
 ru
 eQ
 fr
@@ -26865,20 +26853,20 @@ Id
 cT
 Ak
 dU
-dU
-Ak
-Ak
-dU
-dU
-Ak
+EN
+Ma
+Ma
+EN
+EN
+Ma
 gt
 gM
 hi
 qJ
-Ak
-dU
-dU
-VG
+Ma
+EN
+EN
+MW
 IJ
 lY
 Ko
@@ -27020,7 +27008,7 @@ eU
 hV
 ab
 iL
-VG
+TX
 Ro
 Yb
 VG
@@ -27162,7 +27150,7 @@ eU
 dZ
 ir
 ab
-VG
+TX
 Tl
 Vm
 RL
@@ -27304,7 +27292,7 @@ eU
 eU
 ab
 ed
-VG
+TX
 Gr
 HO
 RL
@@ -27872,7 +27860,7 @@ hI
 eU
 ir
 ab
-VG
+TX
 Ly
 zs
 Hl
@@ -28440,7 +28428,7 @@ Rb
 hZ
 ab
 ed
-VG
+TX
 je
 Vm
 Hl
@@ -29008,7 +28996,7 @@ dV
 ab
 dT
 ab
-VG
+TX
 jg
 Nm
 ug
@@ -29150,7 +29138,7 @@ ef
 ef
 ef
 Xo
-VG
+TX
 jj
 jr
 VG
@@ -29576,7 +29564,7 @@ Lz
 Lz
 Lz
 Lz
-VG
+TX
 Do
 yf
 XZ
@@ -30429,7 +30417,7 @@ YC
 YC
 YC
 kx
-RG
+KY
 TV
 XH
 vA
@@ -30571,7 +30559,7 @@ mi
 mi
 mi
 pK
-RG
+KY
 rI
 XH
 zE
@@ -30713,7 +30701,7 @@ oa
 oa
 oa
 rU
-RG
+KY
 KE
 XH
 Rm
@@ -31285,13 +31273,13 @@ OT
 zK
 zP
 Lz
-Ma
+yY
 ma
-ma
-ma
-ma
-ma
-EN
+yY
+yY
+yY
+yY
+yY
 yY
 um
 MK
@@ -31427,15 +31415,15 @@ Dx
 Dx
 kA
 Lz
-ka
 ma
-ma
-ma
+yY
+yY
+Yj
 wm
+yY
+yY
 ma
-ma
-ma
-ma
+nL
 MK
 ab
 aa
