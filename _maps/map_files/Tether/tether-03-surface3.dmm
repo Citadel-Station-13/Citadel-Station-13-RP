@@ -13760,7 +13760,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/window/brigdoor/westright{
 	name = "Research Desk";
-	req_access = list(47)
+	req_access = list(7)
 	},
 /obj/item/deskbell,
 /turf/simulated/floor/tiled/monotile,
@@ -20240,7 +20240,7 @@
 /obj/structure/table/reinforced,
 /obj/machinery/door/window/brigdoor/westright{
 	name = "Research Desk";
-	req_access = list(47)
+	req_access = list(29,47)
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/item/deskbell,
@@ -21759,6 +21759,9 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small{
+	dir = 1
+	},
 /turf/simulated/floor/plating,
 /area/bridge)
 "LM" = (
