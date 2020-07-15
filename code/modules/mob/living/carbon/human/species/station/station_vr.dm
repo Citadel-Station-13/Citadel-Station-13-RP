@@ -404,7 +404,7 @@
 	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
 	min_age = 18
 	wikilink="https://wiki.vore-station.net/Diona"
-
+/*
 /datum/species/teshari
 	mob_size = MOB_MEDIUM
 	spawn_flags = SPECIES_CAN_JOIN
@@ -425,7 +425,7 @@
 		/mob/living/proc/shred_limb,
 		/mob/living/proc/toggle_pass_table,
 		/mob/living/carbon/human/proc/tie_hair)
-
+*/
 /datum/species/shapeshifter/promethean
 	spawn_flags = SPECIES_CAN_JOIN
 	wikilink="https://wiki.vore-station.net/Promethean"

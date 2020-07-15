@@ -38,6 +38,8 @@
 	damage_mask = 'icons/mob/human_races/masks/dam_mask_teshari.dmi'
 	blood_mask = 'icons/mob/human_races/masks/blood_teshari.dmi'
 	suit_storage_icon = 'icons/mob/species/teshari/belt_mirror.dmi'
+	icobase_tail = 1
+	color_mult = 1
 
 	fire_icon_state = "generic" // Humanoid is too big for them and spriting a new one is really annoying.
 
@@ -122,7 +124,10 @@
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/sonar_ping,
-		/mob/living/proc/hide
+		/mob/living/proc/hide,
+		/mob/living/proc/shred_limb,
+		/mob/living/proc/toggle_pass_table,
+		/mob/living/carbon/human/proc/tie_hair
 		)
 
 	descriptors = list(
