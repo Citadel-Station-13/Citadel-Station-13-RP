@@ -323,8 +323,8 @@
 	name = "\improper Outpost - Tool Storage"
 	icon_state = "storage"
 
-/area/outpost/research/toxins_scrubber_storage
-	name = "\improper Toxins Lab - Scrubber Storage"
+/area/outpost/research/toxins_canister_icyhoot
+	name = "\improper Toxins Lab - Canister Heating and Cooling"
 	icon_state = "research"
 
 /area/outpost/research/simulator
