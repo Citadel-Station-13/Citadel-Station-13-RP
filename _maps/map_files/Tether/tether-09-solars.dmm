@@ -1036,10 +1036,6 @@
 /turf/simulated/floor/virgo3b,
 /area/tether/outpost/solars_outside)
 "cn" = (
-/obj/machinery/atmospherics/portables_connector{
-	dir = 4
-	},
-/obj/effect/floor_decal/industrial/outline/blue,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
@@ -1062,22 +1058,16 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_misc_lab)
 "cp" = (
-/obj/machinery/atmospherics/unary/freezer{
-	dir = 8
-	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
 	},
+/obj/machinery/vending/phoronresearch,
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_misc_lab)
 "cq" = (
-/obj/machinery/atmospherics/pipe/manifold/visible{
-	dir = 1
-	},
-/obj/machinery/meter,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
@@ -1440,7 +1430,6 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_misc_lab)
 "cK" = (
-/obj/machinery/atmospherics/binary/pump,
 /obj/structure/cable/green{
 	d1 = 2;
 	d2 = 4;
@@ -1697,7 +1686,6 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 8
 	},
-/obj/machinery/power/apc,
 /obj/machinery/power/apc{
 	name = "south bump";
 	pixel_y = -28
@@ -4137,6 +4125,7 @@
 	layer = 3.3;
 	pixel_x = 26
 	},
+/obj/item/cell,
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/medical/first_aid_south_west)
 "kd" = (
@@ -4886,15 +4875,16 @@
 "mK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/airlock/maintenance/rnd{
-	name = "Outpost Substation"
-	},
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/engineering{
+	name = "Science Outpost Substation";
+	req_one_access = list(10,11,24,47)
+	},
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/substation)
 "mM" = (
@@ -6277,9 +6267,9 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/outpost/research/crew_quarters/sleep/Dorm_1)
 "tM" = (
-/obj/machinery/portable_atmospherics/powered/scrubber,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
+/obj/structure/table/standard,
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_scrubber_storage)
 "tT" = (
@@ -6486,6 +6476,12 @@
 "uR" = (
 /obj/machinery/power/breakerbox/activated{
 	RCon_tag = "Science Outpost Substation Bypass"
+	},
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/obj/structure/cable{
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating,
 /area/outpost/research/substation)
@@ -6757,7 +6753,6 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
 	},
-/obj/structure/table/standard,
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
 	},
@@ -6778,6 +6773,7 @@
 /obj/machinery/light_switch{
 	pixel_y = 25
 	},
+/obj/structure/table/standard,
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_scrubber_storage)
 "wO" = (
@@ -6862,10 +6858,6 @@
 	},
 /turf/simulated/wall,
 /area/outpost/research/toxins_misc_lab)
-"xn" = (
-/obj/machinery/portable_atmospherics/powered/pump,
-/turf/simulated/floor/tiled/white,
-/area/outpost/research/toxins_scrubber_storage)
 "xq" = (
 /obj/structure/sink{
 	dir = 8;
@@ -8425,6 +8417,7 @@
 /obj/effect/floor_decal/corner/mauve/border,
 /obj/effect/floor_decal/borderfloor/corner2,
 /obj/effect/floor_decal/corner/mauve/bordercorner2,
+/obj/item/tool/wrench,
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_misc_lab)
 "FN" = (
@@ -8836,12 +8829,14 @@
 /turf/simulated/floor/reinforced/airless,
 /area/outpost/research/materials_chamber)
 "HU" = (
-/obj/machinery/portable_atmospherics/powered/pump,
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 5
+	},
+/obj/machinery/atmospherics/portables_connector{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_scrubber_storage)
@@ -9099,7 +9094,9 @@
 /turf/simulated/floor/plating,
 /area/outpost/research/engineering/eva_atmospherics)
 "JU" = (
-/obj/machinery/portable_atmospherics/powered/scrubber,
+/obj/machinery/atmospherics/unary/heater{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_scrubber_storage)
 "JV" = (
@@ -9359,6 +9356,9 @@
 /obj/machinery/power/smes/buildable{
 	RCon_tag = "Substation - Science Outpost"
 	},
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
 /turf/simulated/floor/plating,
 /area/outpost/research/substation)
 "KY" = (
@@ -9394,12 +9394,14 @@
 /turf/simulated/floor/plating,
 /area/outpost/research/engineering/eva_atmospherics)
 "Le" = (
-/obj/machinery/portable_atmospherics/powered/pump,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
+	},
+/obj/machinery/atmospherics/unary/freezer{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_scrubber_storage)
@@ -9869,7 +9871,6 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/materials_lab)
 "Nq" = (
-/obj/structure/table/standard,
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
 	},
@@ -9881,6 +9882,7 @@
 	name = "south bump";
 	pixel_y = -28
 	},
+/obj/structure/table/standard,
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_scrubber_storage)
 "Ns" = (
@@ -10530,7 +10532,6 @@
 /turf/simulated/floor/plating,
 /area/outpost/research/toxins_misc_lab)
 "RJ" = (
-/obj/machinery/portable_atmospherics/powered/scrubber,
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
 	},
@@ -10899,7 +10900,9 @@
 	dir = 8;
 	light_range = 12
 	},
-/obj/machinery/vending/phoronresearch,
+/obj/structure/table/standard,
+/obj/structure/table/standard,
+/obj/item/tool/wrench,
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_scrubber_storage)
 "Tw" = (
@@ -11367,7 +11370,6 @@
 /turf/simulated/floor/plating,
 /area/outpost/research/atmospherics)
 "VL" = (
-/obj/machinery/portable_atmospherics/powered/pump,
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
@@ -11395,7 +11397,6 @@
 /turf/simulated/floor/plating,
 /area/outpost/research/longtermstorage)
 "VP" = (
-/obj/structure/table/standard,
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
@@ -11411,6 +11412,7 @@
 	dir = 4;
 	pixel_x = -22
 	},
+/obj/structure/table/standard,
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_scrubber_storage)
 "VT" = (
@@ -11959,7 +11961,6 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_misc_lab)
 "YT" = (
-/obj/machinery/portable_atmospherics/powered/scrubber,
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
@@ -11967,6 +11968,9 @@
 	dir = 4
 	},
 /obj/machinery/camera/network/research_outpost{
+	dir = 8
+	},
+/obj/machinery/atmospherics/portables_connector{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
@@ -25868,7 +25872,7 @@ kk
 ro
 mk
 Bj
-vG
+tM
 Dh
 CY
 tJ
@@ -26150,9 +26154,9 @@ fH
 wW
 rn
 Le
-xn
+Bj
 JU
-tM
+vG
 Dh
 CY
 tJ
