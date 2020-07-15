@@ -68,11 +68,11 @@ GLOBAL_LIST_EMPTY(PDAs)
 	if(..(user, 1))
 		to_chat(user, "The time [stationtime2text()] is displayed in the corner of the screen.")
 
-/obj/item/device/pda/CtrlClick()
-	if(issilicon(usr))
+/obj/item/pda/CtrlClick()
+	if (issilicon(usr))
 		return
 
-	if(can_use(usr))
+	if (can_use(usr))
 		remove_pen()
 		return
 	..()
@@ -81,7 +81,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	if(issilicon(usr))
 		return
 
-	if ( can_use(usr) )
+	if (can_use(usr))
 		if(id)
 			remove_id()
 		else
@@ -448,15 +448,15 @@ GLOBAL_LIST_EMPTY(PDAs)
 				icon = 'icons/obj/pda_wrist.dmi'
 				item_state = icon_state
 				item_icons = list(
-				slot_belt_str = 'icons/mob/pda_wrist.dmi',
-				slot_wear_id_str = 'icons/mob/pda_wrist.dmi',
-				slot_gloves_str = 'icons/mob/pda_wrist.dmi'
+					slot_belt_str = 'icons/mob/pda_wrist.dmi',
+					slot_wear_id_str = 'icons/mob/pda_wrist.dmi',
+					slot_gloves_str = 'icons/mob/pda_wrist.dmi'
 				)
 				desc = "A portable microcomputer by Thinktronic Systems, LTD. This model is a wrist-bound version."
 				slot_flags = SLOT_ID | SLOT_BELT | SLOT_GLOVES
 				sprite_sheets = list(
-				SPECIES_TESHARI = 'icons/mob/species/teshari/pda_wrist.dmi',
-				SPECIES_VR_TESHARI = 'icons/mob/species/teshari/pda_wrist.dmi',
+				SPECIES_TESHARI = 'icons/mob/species/seromi/pda_wrist.dmi',
+				SPECIES_VR_TESHARI = 'icons/mob/species/seromi/pda_wrist.dmi',
 				)
 			else
 				icon = 'icons/obj/pda_old.dmi'
@@ -1066,8 +1066,8 @@ GLOBAL_LIST_EMPTY(PDAs)
 			id.loc = get_turf(src)
 		id = null
 
-/obj/item/device/pda/proc/remove_pen()
-	var/obj/item/weapon/pen/O = locate() in src
+/obj/item/pda/proc/remove_pen()
+	var/obj/item/pen/O = locate() in src
 	if(O)
 		if(istype(loc, /mob))
 			var/mob/M = loc
@@ -1131,7 +1131,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 		if(!P.conversations.Find("\ref[src]"))
 			P.conversations.Add("\ref[src]")
 
-		to_chat(U, "[bicon(src)] <b>Sent message to [P.owner] ([P.ownjob]), </b>\"[t]\"")
+		to_chat(U, "\icon[src] <b>Sent message to [P.owner] ([P.ownjob]), </b>\"[t]\"")
 
 
 		if (prob(15)) //Give the AI a chance of intercepting the message
