@@ -143,7 +143,9 @@
 	if(!owner.is_preference_enabled(/datum/client_preference/play_jukebox) && url != "")
 		return // Don't send anything other than a cancel to people with SOUND_STREAMING pref disabled
 	// if(owner.prefs.media_player == 2) //theoraticaly works
-	// 	owner.chatOutput.sendMusic(url, 1)
+	// 	var/list/extra_data = list()
+	// 	extra_data["start"] = (world.time - start_time)
+	// 	owner.chatOutput.sendMusic(url, extra_data)
 	// 	return TRUE
 	//goonchat override on HTML 5 shenanigans.
 	MP_DEBUG("<span class='good'>Sending update to mediapanel ([url], [(world.time - start_time) / 10], [volume * source_volume])...</span>")
