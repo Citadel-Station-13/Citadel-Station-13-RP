@@ -183,7 +183,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 		holder = new /datum/admins("!localhost!", ALL, ckey)
 		holder.owner = src
 		GLOB.admins |= src
-		//holder.associate(src)
+		//holder.associate(ckey)
 		connecting_admin = TRUE
 
 	//preferences datum - also holds some persistant data for the client (because we may as well keep these datums to a minimum)

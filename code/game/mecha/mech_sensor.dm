@@ -16,6 +16,7 @@
 	var/datum/radio_frequency/radio_connection
 
 /obj/machinery/mech_sensor/CanAllowThrough(atom/movable/mover, turf/target)
+	. = ..()
 	if(!enabled())
 		return TRUE
 

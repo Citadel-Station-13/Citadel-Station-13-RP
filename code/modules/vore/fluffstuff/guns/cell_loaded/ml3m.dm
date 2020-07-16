@@ -12,6 +12,7 @@
 	description_antag = ""
 	origin_tech = list(TECH_MATERIAL = 4, TECH_MAGNET = 2, TECH_BIO = 5)
 	allowed_magazines = list(/obj/item/ammo_magazine/cell_mag/medical)
+	no_pin_required = 1
 
 /obj/item/gun/projectile/cell_loaded/medical/cmo
 	name = "advanced cell-loaded medigun"

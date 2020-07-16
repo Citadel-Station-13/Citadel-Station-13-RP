@@ -101,14 +101,14 @@
 		special_assembly.HasProximity(AM)
 
 
-/obj/item/assembly_holder/Crossed(atom/movable/AM as mob|obj)
+/obj/item/assembly_holder/Crossed(atom/movable/AM)
+	. = ..()
 	if(a_left)
 		a_left.Crossed(AM)
 	if(a_right)
 		a_right.Crossed(AM)
 	if(special_assembly)
 		special_assembly.Crossed(AM)
-
 
 /obj/item/assembly_holder/on_found(mob/finder as mob)
 	if(a_left)

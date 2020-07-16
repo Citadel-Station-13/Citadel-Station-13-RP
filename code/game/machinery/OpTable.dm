@@ -49,9 +49,9 @@
 	return
 
 /obj/machinery/optable/CanAllowThrough(atom/movable/mover, turf/target)
+	. = ..()
 	if(istype(mover) && mover.checkpass(PASSTABLE))
 		return TRUE
-	return FALSE
 
 /obj/machinery/optable/MouseDrop_T(obj/O as obj, mob/user as mob)
 

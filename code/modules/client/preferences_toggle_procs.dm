@@ -186,9 +186,9 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings, listen_looc)()
 	set desc = "Toggles the speech bubble typing indicator."
 
 	var/pref_path = /datum/client_preference/show_typing_indicator
-	usr.client.toggle_preference(pref_path)
-	SScharacter_setup.queue_preferences_save(usr.client.prefs)
-	to_chat(src,"You will [ (usr.is_preference_enabled(pref_path)) ? "now" : "no longer"] have the speech indicator.")
+	toggle_preference(pref_path)
+	SScharacter_setup.queue_preferences_save(prefs)
+	to_chat(src,"You will [ (is_preference_enabled(pref_path)) ? "now" : "no longer"] have the speech indicator.")
 	feedback_add_details("admin_verb","TTIND") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 //Admin Preferences
@@ -199,9 +199,9 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings, listen_looc)()
 	if(!holder)
 		return
 	var/pref_path = /datum/client_preference/holder/play_adminhelp_ping
-	usr.client.toggle_preference(pref_path)
-	SScharacter_setup.queue_preferences_save(usr.client.prefs)
-	to_chat(src,"You will [ (usr.is_preference_enabled(pref_path)) ? "now" : "no longer"] receive noise from admin messages.")
+	toggle_preference(pref_path)
+	SScharacter_setup.queue_preferences_save(prefs)
+	to_chat(src,"You will [ (is_preference_enabled(pref_path)) ? "now" : "no longer"] receive noise from admin messages.")
 	feedback_add_details("admin_verb","TAHelp") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/verb/toggle_deadchat()
@@ -210,11 +210,21 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings, listen_looc)()
 	set desc = "Toggles the dead chat channel."
 
 	var/pref_path = /datum/client_preference/show_dsay
-	usr.client.toggle_preference(pref_path)
-	SScharacter_setup.queue_preferences_save(usr.client.prefs)
-	to_chat(src,"You will [ (usr.is_preference_enabled(pref_path)) ? "now" : "no longer"] hear dead chat as a ghost.")
+	toggle_preference(pref_path)
+	SScharacter_setup.queue_preferences_save(prefs)
+	to_chat(src,"You will [ (is_preference_enabled(pref_path)) ? "now" : "no longer"] hear dead chat as a ghost.")
 	feedback_add_details("admin_verb","TDeadChat") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+/client/verb/toggle_air_pump_hum()
+	set name = "Toggle Air Pump Noise"
+	set category = "Preferences"
+	set desc = "Toggles Air Pumps humming"
+
+	var/pref_path = /datum/client_preference/air_pump_noise
+	toggle_preference(pref_path)
+	SScharacter_setup.queue_preferences_save(prefs)
+	to_chat(src, "You will [ (is_preference_enabled(pref_path)) ? "now" : "no longer"] hear air pumps hum, start, and stop.")
+	feedback_add_details("admin_verb","TAirPumpNoise")
 
 /client/verb/toggle_weather_sounds() //LN: I don't know if these fall under ambient noise, if they do i will axe these down.
 	set name = "Toggle Weather Sounds"
@@ -222,9 +232,9 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings, listen_looc)()
 	set desc = "Toggles the ability to hear weather sounds while on a planet."
 
 	var/pref_path = /datum/client_preference/weather_sounds
-	usr.client.toggle_preference(pref_path)
-	SScharacter_setup.queue_preferences_save(usr.client.prefs)
-	to_chat(src,"You will [ (usr.is_preference_enabled(pref_path)) ? "now" : "no longer"] hear weather sounds.")
+	toggle_preference(pref_path)
+	SScharacter_setup.queue_preferences_save(prefs)
+	to_chat(src, "You will [ (is_preference_enabled(pref_path)) ? "now" : "no longer"] hear weather sounds.")
 	feedback_add_details("admin_verb","TWeatherSounds") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/verb/toggle_supermatter_hum()
@@ -233,21 +243,10 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings, listen_looc)()
 	set desc = "Toggles the ability to hear supermatter hums."
 
 	var/pref_path = /datum/client_preference/supermatter_hum
-	usr.client.toggle_preference(pref_path)
-	SScharacter_setup.queue_preferences_save(usr.client.prefs)
-	to_chat(src,"You will [ (usr.is_preference_enabled(pref_path)) ? "now" : "no longer"] hear a hum from the supermatter.")
+	toggle_preference(pref_path)
+	SScharacter_setup.queue_preferences_save(prefs)
+	to_chat(src,"You will [ (is_preference_enabled(pref_path)) ? "now" : "no longer"] hear a hum from the supermatter.")
 	feedback_add_details("admin_verb","TSupermatterHum") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/client/verb/toggle_air_pump_hum()
-	set name = "Toggle Air Pump Noise"
-	set category = "Preferences"
-	set desc = "Toggles Air Pumps humming"
-
-	var/pref_path = /datum/client_preference/air_pump_noise
-	usr.client.toggle_preference(pref_path)
-	SScharacter_setup.queue_preferences_save(usr.client.prefs)
-	to_chat(src, "You will [ (usr.is_preference_enabled(pref_path)) ? "now" : "no longer"] hear air pumps hum, start, and stop.")
-	feedback_add_details("admin_verb","TAirPumpNoise")
 
 /client/verb/toggle_jukebox()
 	set name = "Toggle Jukebox"
@@ -255,9 +254,9 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings, listen_looc)()
 	set desc = "Toggles the playing of jukebox music."
 
 	var/pref_path = /datum/client_preference/play_jukebox
-	usr.client.toggle_preference(pref_path)
-	SScharacter_setup.queue_preferences_save(usr.client.prefs)
-	to_chat(src, "You will [ (usr.is_preference_enabled(pref_path)) ? "now" : "no longer"] hear jukebox music.")
+	toggle_preference(pref_path)
+	SScharacter_setup.queue_preferences_save(prefs)
+	to_chat(src, "You will [ (is_preference_enabled(pref_path)) ? "now" : "no longer"] hear jukebox music.")
 	feedback_add_details("admin_verb","TJukebox") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/verb/toggle_be_special(role in be_special_flags)
@@ -273,7 +272,6 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings, listen_looc)()
 	SScharacter_setup.queue_preferences_save(prefs)
 	to_chat(src,"You will [(prefs.be_special & role_flag) ? "now" : "no longer"] be considered for [role] events (where possible).")
 	feedback_add_details("admin_verb","TBeSpecial") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
 
 /client/verb/toggle_safe_firing()
 	set name = "Toggle Gun Firing Intent Requirement"

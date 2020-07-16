@@ -169,7 +169,7 @@
 	return null
 
 /obj/item/gun/energy/examine(mob/user)
-	. = ..()
+	..(user)
 	if(power_supply)
 		if(charge_cost)
 			var/shots_remaining = round(power_supply.charge / max(1, charge_cost))	// Paranoia

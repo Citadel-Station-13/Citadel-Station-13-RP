@@ -32,12 +32,7 @@
 	activate()
 		if((. = ..()))
 			show_settings(nif.human)
-			spawn(0)
-				deactivate()
-
-	deactivate()
-		if((. = ..()))
-			return TRUE
+			deactivate()
 
 	stat_text()
 		return "Change Settings ([brainmobs.len] minds)"

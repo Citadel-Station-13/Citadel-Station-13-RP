@@ -1428,6 +1428,25 @@
 		return
 	..()
 
+/obj/item/toy/snakeoilprize
+	name = "snake oil salesman action figure"
+	desc = "A detailed miniature figure based on the 'Snake Oil Salesman', villain and cheat, scourge of the Frontier."
+	icon = 'icons/obj/toy.dmi'
+	icon_state = "snakeoilprize"
+	w_class = ITEMSIZE_SMALL
+	var/cooldown = 0
+
+/obj/item/toy/snakeoilprize/attack_self(mob/user)
+	if(!cooldown) //for the sanity of everyone
+		var/message = pick("Mwahahaha!", "Try my snake oil! Guaranteed to solve all problems!", "Time to skedaddle.", "Money money money!")
+		to_chat(user, "<span class='notice'>You pull the string on the [src].</span>")
+		//playsound(user, 'sound/misc/click.ogg', 20, 1)
+		visible_message("<span class='danger'>[message]</span>")
+		cooldown = 1
+		spawn(30) cooldown = 0
+		return
+	..()
+
 /* NYET.
 /obj/item/toddler
 	icon_state = "toddler"
