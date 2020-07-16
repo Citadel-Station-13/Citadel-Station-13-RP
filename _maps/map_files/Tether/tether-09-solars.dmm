@@ -1096,11 +1096,6 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_misc_lab)
 "ct" = (
-/obj/structure/cable/green{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
 /obj/machinery/light{
 	dir = 1
 	},
@@ -1110,19 +1105,10 @@
 /turf/simulated/floor/reinforced,
 /area/outpost/research/toxins_misc_lab)
 "cu" = (
-/obj/structure/cable/green{
-	d2 = 4;
-	icon_state = "0-4"
-	},
 /obj/machinery/firealarm{
 	pixel_y = 24
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on,
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28
-	},
 /turf/simulated/floor/reinforced,
 /area/outpost/research/toxins_misc_lab)
 "cv" = (
@@ -1490,11 +1476,6 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
 /obj/structure/sign/warning/internals_required{
 	pixel_y = -30
 	},
@@ -1687,6 +1668,7 @@
 	dir = 8
 	},
 /obj/machinery/power/apc{
+	dir = 2;
 	name = "south bump";
 	pixel_y = -28
 	},
@@ -2202,6 +2184,10 @@
 /obj/machinery/door/firedoor,
 /obj/structure/window/reinforced{
 	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/plating,
 /area/outpost/research/hallway/resarch_outpost_western_hallway)
@@ -4636,10 +4622,7 @@
 /turf/simulated/floor/tiled/airless,
 /area/outpost/research/crew_quarters/sleep/Dorm_1)
 "lW" = (
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/wall,
 /area/outpost/research/medical/first_aid_south_west)
 "lY" = (
@@ -7440,9 +7423,6 @@
 /area/outpost/research/hallway/resarch_outpost_storage_hallway)
 "Ag" = (
 /obj/machinery/disposal,
-/obj/structure/disposalpipe/trunk{
-	dir = 4
-	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
 	},
@@ -7459,6 +7439,9 @@
 	dir = 1;
 	name = "Station Intercom (General)";
 	pixel_y = 21
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/medical/first_aid_south_west)
@@ -8499,12 +8482,23 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/crew_quarters/sleep/Dorm_1)
 "GK" = (
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
 	},
-/turf/simulated/floor/tiled/white,
-/area/outpost/research/medical/first_aid_south_west)
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 9
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 10
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
+/area/outpost/research/hallway/resarch_outpost_northern_hallway)
 "GM" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -10977,10 +10971,6 @@
 /turf/simulated/floor/plating,
 /area/outpost/research/atmospherics)
 "Uv" = (
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
-	},
 /obj/machinery/door/airlock/multi_tile/glass{
 	name = "Outpost First Aid Station"
 	},
@@ -26470,7 +26460,7 @@ UH
 Ni
 Ki
 Uv
-GK
+Be
 Be
 Be
 wG
@@ -26594,7 +26584,7 @@ Aj
 yB
 cQ
 dr
-fK
+GK
 ru
 eQ
 fr
