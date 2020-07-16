@@ -31,9 +31,9 @@
 	name = "small research uniform"
 	icon_state = "tesh_smock_science"
 
-/obj/item/clothing/under/teshari/smock/science
-	name = "small research uniform"
-	icon_state = "tesh_smock_science"
+/obj/item/clothing/under/teshari/smock/security
+	name = "small security uniform"
+	icon_state = "tesh_smock_security"
 
 /obj/item/clothing/under/teshari/smock/engine
 	name = "small engineering uniform"
