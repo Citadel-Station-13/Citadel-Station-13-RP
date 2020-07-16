@@ -23,23 +23,38 @@ if (typeof doT == 'undefined') {
 
 (function() {
 	window._alert = window.alert;
-	window._console = window.console; //backup c
 	window.alert = function(str) { //catch alert
-		window.location.href = "byond://?" + buildQueryString({"nano_err": str}); //send to backend
+		window.location.href = "byond://?src="
+			+ document.getElementById('data').getAttribute('data-ref')
+			+ buildQueryString({"nano_err": str}); //send to backend
 		_alert(str);
 	};
-	window.console.error = function(err){ //and error
-		window.location.href = "byond://?" + buildQueryString({"nano_err": err}); //send to backend
-		_alert(err);
-	}
-	if(!window.console) { //no window console?
-		window.console = {	//create a dummy one
-			log: function(str) {
-				window.location.href = "byond://?" + buildQueryString({"nano_log": str}); //send to backend. and only log it href side because no one logs nanoui
+	window.onerror = function(msg, url, line, col, error) {
+		// Proper stacktrace
+		var stack = error && error.stack;
+		// Ghetto stacktrace
+		if (!stack) {
+			stack = msg + '\n   at ' + url + ':' + line;
+			if (col) {
+				stack += ':' + col;
 			}
-		};
+		}
+		// Append user agent info
+		stack += '\n\nUser Agent: ' + navigator.userAgent;
+		// Print error to the page
+		//Nope no fancy BSOD for you!
+		// Send to the backend
+		window.location = 'byond://?src='
+			+ document.getElementById('data').getAttribute('data-ref')
+			+ '&' + buildQueryString({"nano_err": stack, "fatal": 1});
+		// Short-circuit further updates.
+		// i don't know how to currently do this
+		//NanoStateManager = function () {};
+		// Prevent default action
+		return true;
 	};
 })();
+
 
 // All scripts are initialised here, this allows control of init order
 $(document).ready(function() {
