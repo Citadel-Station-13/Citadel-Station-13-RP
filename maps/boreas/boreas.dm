@@ -17,7 +17,10 @@
 	#include "../../_maps/map_files/boreas/boreas-colony.dmm"
 	#include "../../_maps/map_files/boreas/boreas-mining.dmm"
 
+	#include "../../maps/submaps/surface_submaps/mountains/mountains.dm"
+
 	#define USING_MAP_DATUM /datum/map/boreas
+
 
 #elif !defined(MAP_OVERRIDE)
 

@@ -10,7 +10,8 @@ var/datum/planet/boreas/planet_boreas = null
 	expected_z_levels = list(
 						Z_LEVEL_SURFACE_UNDER,
 						Z_LEVEL_SURFACE_LOW,
-						Z_LEVEL_SURFACE_MID
+						Z_LEVEL_SURFACE_MID,
+						Z_LEVEL_MINING
 						)
 	planetary_wall_type = /turf/unsimulated/wall/planetary/boreas
 

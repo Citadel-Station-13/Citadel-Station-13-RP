@@ -28,14 +28,14 @@
 	boss_short    = "CentCom"
 	company_name  = "NanoTrasen"
 	company_short = "NT"
-	starsys_name  = "TBA"
+	starsys_name  = "Nerada"
 
 	shuttle_docked_message = "The mass driver is prepping for launch to the %dock_name% has arrived. It will depart in launch %ETD%."
 	shuttle_leaving_dock = "The mass driver has fired. Estimate %ETA% until the pod arrives at %dock_name%."
 	shuttle_called_message = "A scheduled crew transfer to the %dock_name% is occuring. The pod will be firing shortly. Those departing should proceed to the mass driver within %ETA%."
 	shuttle_recall_message = "The scheduled crew transfer has been cancelled."
 	emergency_shuttle_docked_message = "The evacuation pod has arrived at the tram station. You have approximately %ETD% to board the pod."
-	emergency_shuttle_leaving_dock = "The emergency pod has left the station. Estimate %ETA% until the pod arrives at %dock_name%."
+	emergency_shuttle_leaving_dock = "The evacuation pod has left the station. Estimate %ETA% until the pod arrives at %dock_name%."
 	emergency_shuttle_called_message = "An emergency evacuation has begun, and an off-schedule pod has been called. It will be ready to fire in approximately %ETA%."
 	emergency_shuttle_recall_message = "The evacuation pod has been cancelled."
 
@@ -71,16 +71,18 @@
 		)
 
 	lateload_single_pick = null //Nothing right now.
-*/
 
+*/
 /datum/map/boreas/perform_map_generation()
 
-	new /datum/random_map/automata/cave_system/(null, 1, 1, Z_LEVEL_MINING, world.maxx, world.maxy) // Create the mining Z-level.
-	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_MINING, world.maxx, world.maxy)         // Create the mining ore distribution map.
+	seed_submaps(list(Z_LEVEL_SURFACE_LOW), 80, /area/boreas/surfacebase/outside/wilderness, /datum/map_template/surface/mountains/normal)
+	seed_submaps(list(Z_LEVEL_SURFACE_LOW), 150, /area/boreas/surfacebase/outside/outside3, /datum/map_template/surface/mountains/normal)
+	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_MINING, world.maxx, world.maxy) // Create the mining Z-level.
+	new /datum/random_map/noise/ore(null, 3, 3, Z_LEVEL_MINING, world.maxx - 4, world.maxy - 4)         // Create the mining ore distribution map.
 
 	return 1
 
-// Short range computers see only the six main levels, others can see the surrounding surface levels.
+// Short range computers see only the three main levels, others can see the surrounding surface levels.
 /datum/map/boreas/get_map_levels(var/srcz, var/long_range = TRUE)
 	if (long_range && (srcz in map_levels))
 		return map_levels

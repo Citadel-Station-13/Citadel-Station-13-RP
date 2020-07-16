@@ -39,7 +39,6 @@
 "g" = (
 /obj/effect/step_trigger/thrower{
 	affect_ghosts = 1;
-	direction = 2;
 	name = "thrower_throwdownside";
 	nostop = 1;
 	stopper = 0;
@@ -50,15 +49,13 @@
 "h" = (
 /obj/structure/closet/crate,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 1
+	dir = 1;
+	icon_state = "vault"
 	},
 /area/centcom/suppy)
 "i" = (
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /turf/simulated/shuttle/floor,
 /area/supply/dock)
@@ -79,11 +76,11 @@
 	},
 /area/supply/dock)
 "r" = (
-/obj/structure/shuttle/engine/heater,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/simulated/floor/airless,
+/obj/structure/shuttle/engine/heater,
+/turf/simulated/shuttle/floor,
 /area/supply/dock)
 "s" = (
 /obj/structure/shuttle/engine/propulsion{
@@ -124,7 +121,6 @@
 	frequency = 1380;
 	id_tag = "supply_shuttle";
 	pixel_x = -25;
-	pixel_y = 0;
 	req_one_access = list(13,31);
 	tag_door = "supply_shuttle_hatch"
 	},
