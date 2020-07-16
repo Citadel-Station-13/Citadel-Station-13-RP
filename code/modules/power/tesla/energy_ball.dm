@@ -312,5 +312,5 @@
 	if(drain_energy && istype(source, /obj/singularity/energy_ball))
 		var/obj/singularity/energy_ball/EB = source
 		if (EB.energy > 0)
-			EB.energy -= min(EB.energy, max(1, round(EB.energy * 0.05))) // Citadel Station Edit: Reduces Drain speed to allow contained balls to lose power too
+			EB.energy -= min(EB.energy, max(1, round(EB.energy * 0.05))) // Citadel Station Edit: Reduces Drain speed to allow contained balls to lose power too /Vore station has set to 10 causing rapid decay
 	// VOREStation Edit End
