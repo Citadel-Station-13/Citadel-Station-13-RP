@@ -6,7 +6,7 @@
 /// Maximum keys per keybind
 #define MAX_KEYS_PER_KEYBIND 3
 /// Max amount of keypress messages per second over two seconds before client is autokicked
-#define MAX_KEYPRESS_AUTOKICK 100
+#define MAX_KEYPRESS_AUTOKICK 150
 /// Max keys that can be held down at once by a client
 #define MAX_HELD_KEYS 15
 
