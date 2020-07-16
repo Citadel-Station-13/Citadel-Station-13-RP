@@ -113,7 +113,7 @@
 			ready = 0
 
 	if(href_list["refresh"])
-		//src << browse(null, "window=playersetup") //closes the player setup window
+		src << browse(null, "window=preferences_window") //closes the player setup window
 		panel.close()
 		new_player_panel_proc()
 
