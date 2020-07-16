@@ -26,7 +26,7 @@ if (typeof doT == 'undefined') {
 	window.alert = function(str) { //catch alert
 		window.location.href = "byond://?src="
 			+ document.getElementById('data').getAttribute('data-ref')
-			+ buildQueryString({"nano_err": str}); //send to backend
+			+ "&" + buildQueryString({"nano_err": str}); //send to backend
 		_alert(str);
 	};
 	window.onerror = function(msg, url, line, col, error) {
