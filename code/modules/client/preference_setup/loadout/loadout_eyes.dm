@@ -142,6 +142,31 @@
 	display_name = "Glasses, prescription thin frame"
 	path = /obj/item/clothing/glasses/regular/thin
 
+// July 2020 Werewolf additions
+/datum/gear/eyes/glasses/thick
+	display_name = "Glasses, thick lenses"
+	path = /obj/item/clothing/glasses/thick
+
+/datum/gear/eyes/glasses/prescriptionthick
+	display_name = "Glasses, prescription thick lenses"
+	path = /obj/item/clothing/glasses/regular/thick
+
+/datum/gear/eyes/glasses/dark
+	display_name = "Glasses, dark frame"
+	path = /obj/item/clothing/glasses/dark
+
+/datum/gear/eyes/glasses/prescriptiondark
+	display_name = "Glasses, prescription dark frame"
+	path = /obj/item/clothing/glasses/regular/dark
+
+/datum/gear/eyes/glasses/scan
+	display_name = "Glasses, scanner"
+	path = /obj/item/clothing/glasses/scan
+
+/datum/gear/eyes/glasses/prescriptionscan
+	display_name = "Glasses, prescription scanner"
+	path = /obj/item/clothing/glasses/regular/scan
+
 // April 2020 Drof's Additions Begin Below
 /datum/gear/eyes/jamjar
 	display_name = "jamjar glasses"

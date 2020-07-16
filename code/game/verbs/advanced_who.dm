@@ -58,13 +58,13 @@
 				entry += "[C.holder.fakekey]"
 			else
 				entry += "[C.key]"
-			var/mob/observer/dead/O = C.mob
-			if(isobserver(O))
-				entry += " - <font color='gray'>Observing</font>"
-			else if(istype(O,/mob/new_player))
-				entry += " - <font color='blue'>In Lobby</font>"
-			else
-				entry += " - <font color='green'>Playing</font>"
+			if(C.is_preference_enabled(/datum/client_preference/show_in_advanced_who))
+				if(isobserver(C.mob))
+					entry += " - <font color='gray'>Observing</font>"
+				else if(istype(C.mob, /mob/new_player))
+					entry += " - <font color='blue'>In Lobby</font>"
+				else
+					entry += " - <font color='green'>Playing</font>"
 			Lines += entry
 
 	for(var/line in sortList(Lines))

@@ -482,7 +482,8 @@ var/list/admin_verbs_event_manager = list(
 /client/proc/admin_ghost()
 	set category = "Admin"
 	set name = "Aghost"
-	if(!holder)	return
+	if(!holder)
+		return
 	if(istype(mob,/mob/observer/dead))
 		//re-enter
 		var/mob/observer/dead/ghost = mob
@@ -636,6 +637,7 @@ var/list/admin_verbs_event_manager = list(
 			createStealthKey()
 			if(istype(mob, /mob/new_player))
 				mob.name = new_key
+		holder.update_stealth_ghost()
 		log_admin("[key_name(usr)] has turned stealth mode [holder.fakekey ? "ON" : "OFF"]")
 		message_admins("[key_name_admin(usr)] has turned stealth mode [holder.fakekey ? "ON" : "OFF"]", 1)
 	feedback_add_details("admin_verb","SM") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
