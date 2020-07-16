@@ -2632,7 +2632,7 @@
 	name = "The Outlaw"
 	id = "theoutlaw"
 	result = "theoutlaw"
-	required_reagents = list("tequila" = 3, "blood" = 1, "gold" = 1)
+	required_reagents = list("tequila" = 3, "gold" = 1, "bitters" = 1)
 	result_amount = 5
 
 /datum/chemical_reaction/drinks/thelawman
@@ -2674,7 +2674,7 @@
 	name = "The Best Boy"
 	id = "thebestboy"
 	result = "thebestboy"
-	required_reagents = list("vodka" = 2, "orangejuice" = 1, "ice" = 1, "cream" = 1)
+	required_reagents = list("screwdrivercocktail" = 3, "ice" = 1, "cream" = 1)
 	result_amount = 5
 
 ////////////////////////////////
