@@ -2,7 +2,7 @@
 	starts_with = list(
 		/obj/item/tool/prybar/red,
 		/obj/item/clothing/glasses/goggles,
-		/obj/item/clothing/mask/breath
+		/obj/item/clothing/mask/breath,
 		/obj/item/clothing/mask/rebreather
 	)
 

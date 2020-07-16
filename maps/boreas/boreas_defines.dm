@@ -75,8 +75,9 @@
 */
 /datum/map/boreas/perform_map_generation()
 
-	seed_submaps(list(Z_LEVEL_SURFACE_LOW), 80, /area/boreas/surfacebase/outside/wilderness, /datum/map_template/surface/mountains/normal)
-	seed_submaps(list(Z_LEVEL_SURFACE_LOW), 150, /area/boreas/surfacebase/outside/outside3, /datum/map_template/surface/mountains/normal)
+	seed_submaps(list(Z_LEVEL_SURFACE_LOW), 80, /area/boreas/surfacebase/outside/wilderness, /datum/map_template/surface/mountains_snow/normal)
+	seed_submaps(list(Z_LEVEL_SURFACE_LOW), 150, /area/boreas/surfacebase/outside/outside3, /datum/map_template/surface/mountains_snow/deep)
+	seed_submaps(list(Z_LEVEL_SURFACE_UNDER), 300, /area/boreas/surfacebase/outside/outside2, /datum/map_template/surface/mountains_snow/under)
 	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_MINING, world.maxx, world.maxy) // Create the mining Z-level.
 	new /datum/random_map/noise/ore(null, 3, 3, Z_LEVEL_MINING, world.maxx - 4, world.maxy - 4)         // Create the mining ore distribution map.
 
