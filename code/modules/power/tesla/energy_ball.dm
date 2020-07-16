@@ -274,7 +274,7 @@
 		if(zapdir)
 			. = zapdir
 
-	var/drain_energy = TRUE // VOREStation Edit - Safety First! Drain Tesla fast when its loose
+	var/drain_energy = TRUE // Citadel Station Edit: Reactivates drain for reactor. Keeping VS Edits for legacy knowledge.
 
 	//per type stuff:
 	if(closest_tesla_coil)
@@ -312,5 +312,5 @@
 	if(drain_energy && istype(source, /obj/singularity/energy_ball))
 		var/obj/singularity/energy_ball/EB = source
 		if (EB.energy > 0)
-			EB.energy -= min(EB.energy, max(1, round(EB.energy * 0.05)))
+			EB.energy -= min(EB.energy, max(1, round(EB.energy * 0.05))) // Citadel Station Edit: Reduces Drain speed to allow contained balls to lose power too
 	// VOREStation Edit End
