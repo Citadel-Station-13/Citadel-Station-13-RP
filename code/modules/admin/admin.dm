@@ -1548,3 +1548,19 @@ datum/admins/var/obj/item/paper/admin/faxreply // var to hold fax replies in
 		qdel(P)
 		faxreply = null
 	return
+
+/datum/admins/proc/update_stealth_ghost()
+	if(!isobserver(owner.mob))
+		return
+	var/mob/observer/dead/dead = owner.mob
+	var/stealthghost = owner.is_preference_enabled(/datum/client_preference/holder/stealth_ghost_mode)
+	if(!stealthghost || !fakekey)
+		dead.invisibility = initial(dead.invisibility)
+		dead.alpha = initial(dead.alpha)
+		if(dead.original_name)
+			dead.name = dead.original_name
+	else
+		dead.invisibility = INVISIBILITY_MAXIMUM
+		dead.alpha = 0
+		dead.original_name = dead.name
+		dead.name = "ghost"
