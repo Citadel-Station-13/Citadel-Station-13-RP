@@ -232,7 +232,7 @@
 
 
 /***********************************
-*   Microwave Menu Handling/Cooking
+*	Microwave Menu Handling/Cooking
 ************************************/
 
 /obj/machinery/microwave/proc/cook()

@@ -6,34 +6,34 @@
 //Timing subsystem
 //Don't run if there is an identical unique timer active
 //if the arguments to addtimer are the same as an existing timer, it doesn't create a new timer, and returns the id of the existing timer
-#define TIMER_UNIQUE			(1<<0)
+#define TIMER_UNIQUE		(1<<0)
 //For unique timers: Replace the old timer rather then not start this one
-#define TIMER_OVERRIDE			(1<<1)
+#define TIMER_OVERRIDE		(1<<1)
 //Timing should be based on how timing progresses on clients, not the sever.
 //	tracking this is more expensive,
 //	should only be used in conjuction with things that have to progress client side, such as animate() or sound()
-#define TIMER_CLIENT_TIME		(1<<2)
+#define TIMER_CLIENT_TIME	(1<<2)
 //Timer can be stopped using deltimer()
-#define TIMER_STOPPABLE			(1<<3)
+#define TIMER_STOPPABLE		(1<<3)
 //To be used with TIMER_UNIQUE
 //prevents distinguishing identical timers with the wait variable
-#define TIMER_NO_HASH_WAIT		(1<<4)
+#define TIMER_NO_HASH_WAIT	(1<<4)
 //Loops the timer repeatedly until qdeleted
 //In most cases you want a subsystem instead
-#define TIMER_LOOP				(1<<5)
+#define TIMER_LOOP			(1<<5)
 
-#define TIMER_ID_NULL -1
+#define TIMER_ID_NULL	-1
 
-#define INITIALIZATION_INSSATOMS 0	//New should not call Initialize
-#define INITIALIZATION_INNEW_MAPLOAD 1	//New should call Initialize(TRUE)
-#define INITIALIZATION_INNEW_REGULAR 2	//New should call Initialize(FALSE)
+#define INITIALIZATION_INSSATOMS		0	//New should not call Initialize
+#define INITIALIZATION_INNEW_MAPLOAD	1	//New should call Initialize(TRUE)
+#define INITIALIZATION_INNEW_REGULAR	2	//New should call Initialize(FALSE)
 
-#define INITIALIZE_HINT_NORMAL   0  //Nothing happens
-#define INITIALIZE_HINT_LATELOAD 1  //Call LateInitialize
-#define INITIALIZE_HINT_QDEL     2  //Call qdel on the atom
+#define INITIALIZE_HINT_NORMAL		0	//Nothing happens
+#define INITIALIZE_HINT_LATELOAD	1	//Call LateInitialize
+#define INITIALIZE_HINT_QDEL		2	//Call qdel on the atom
 
 //type and all subtypes should always call Initialize in New()
-#define INITIALIZE_IMMEDIATE(X) ##X/New(loc, ...){\
+#define INITIALIZE_IMMEDIATE(X)	##X/New(loc, ...){\
 	..();\
 	if(!initialized) {\
 		args[1] = TRUE;\
@@ -43,13 +43,13 @@
 
 // SS runlevels
 
-#define RUNLEVEL_INIT 0			// "Initialize Only" - Used for subsystems that should never be fired (Should also have SS_NO_FIRE set)
-#define RUNLEVEL_LOBBY 1		// Initial runlevel before setup.  Returns to here if setup fails.
-#define RUNLEVEL_SETUP 2		// While the gamemode setup is running.  I.E gameticker.setup()
-#define RUNLEVEL_GAME 4			// After successful game ticker setup, while the round is running.
-#define RUNLEVEL_POSTGAME 8		// When round completes but before reboot
+#define RUNLEVEL_INIT		0	// "Initialize Only" - Used for subsystems that should never be fired (Should also have SS_NO_FIRE set)
+#define RUNLEVEL_LOBBY		1	// Initial runlevel before setup.  Returns to here if setup fails.
+#define RUNLEVEL_SETUP		2	// While the gamemode setup is running.  I.E gameticker.setup()
+#define RUNLEVEL_GAME		4	// After successful game ticker setup, while the round is running.
+#define RUNLEVEL_POSTGAME	8	// When round completes but before reboot
 
-#define RUNLEVELS_DEFAULT (RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME)
+#define RUNLEVELS_DEFAULT	(RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME)
 
 var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_GAME, RUNLEVEL_POSTGAME)
 #define RUNLEVEL_FLAG_TO_INDEX(flag) (log(2, flag) + 1)	// Convert from the runlevel bitfield constants to index in runlevel_flags list
@@ -66,7 +66,7 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define INIT_ORDER_SERVER_MAINT		65
 #define INIT_ORDER_TIMER			60
 #define INIT_ORDER_INSTRUMENTS		50
-#define INIT_ORDER_MAPPING			20  // VOREStation Edit
+#define INIT_ORDER_MAPPING			20
 #define INIT_ORDER_ALARMS			18
 #define INIT_ORDER_DECALS			16
 #define INIT_ORDER_ATOMS			15
@@ -85,10 +85,11 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define INIT_ORDER_AI				-22
 #define INIT_ORDER_OPENSPACE		-50
 #define INIT_ORDER_PERSISTENCE		-95
-
+#define INIT_ORDER_CHAT				-100	//Should be last to ensure chat remains smooth during init.
 
 // Subsystem fire priority, from lowest to highest priority
 // If the subsystem isn't listed here it's either DEFAULT or PROCESS (if it's a processing subsystem child)
+
 #define FIRE_PRIORITY_SHUTTLES		5
 #define FIRE_PRIORITY_ORBIT			8
 #define FIRE_PRIORITY_VOTE			9
@@ -107,8 +108,9 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define FIRE_PRIORITY_INSTRUMENTS	90
 #define FIRE_PRIORITY_MACHINES		100
 #define FIRE_PRIORITY_PROJECTILES	150
+#define FIRE_PRIORITY_CHAT			400
 #define FIRE_PRIORITY_OVERLAYS		500
-#define FIRE_PRIORITY_INPUT			1000		//never drop input
+#define FIRE_PRIORITY_INPUT			1000	//never drop input
 
 // Macro defining the actual code applying our overlays lists to the BYOND overlays list. (I guess a macro for speed)
 #define COMPILE_OVERLAYS(A)\

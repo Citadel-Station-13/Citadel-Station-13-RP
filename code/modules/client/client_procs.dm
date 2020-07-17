@@ -28,7 +28,14 @@
 		del(src)
 		return
 
-	to_chat(src, "<font color='red'>If the title screen is black, resources are still downloading. Please be patient until the title screen appears.</font>")
+	chatOutput = new /datum/chatOutput(src) //veechat
+	chatOutput.send_resources()
+	spawn()
+		chatOutput.start()
+
+	//Only show this if they are put into a new_player mob. Otherwise, "what title screen?"
+	if(isnewplayer(src.mob))
+		to_chat(src, "<font color='red'>If the title screen is black, resources are still downloading. Please be patient until the title screen appears.</font>")
 
 
 	GLOB.clients += src
@@ -114,7 +121,7 @@
 		void.MakeGreed()
 	screen += void
 
-	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
+	if((prefs.lastchangelog != changelog_hash) && isnewplayer(src.mob)) //bolds the changelog button on the interface so we know there are updates.
 		to_chat(src, "<span class='info'>You have unread updates in the changelog.</span>")
 		winset(src, "rpane.changelog", "background-color=#eaeaea;font-style=bold")
 		if(config_legacy.aggressive_changelog)
@@ -370,6 +377,25 @@
 			change_view(var_value)
 			return TRUE
 	. = ..()
+
+/client/verb/reload_vchat()
+	set name = "Reload VChat"
+	set category = "OOC"
+
+	//Timing
+	if(src.chatOutputLoadedAt > (world.time - 10 SECONDS))
+		alert(src, "You can only try to reload VChat every 10 seconds at most.")
+		return
+
+	//Log, disable
+	log_debug("[key_name(src)] reloaded VChat.")
+
+	//The hard way
+	qdel_null(src.chatOutput)
+	chatOutput = new /datum/chatOutput(src) //veechat
+	chatOutput.send_resources()
+	spawn()
+		chatOutput.start()
 
 /client/proc/change_view(new_size)
 	if (isnull(new_size))
