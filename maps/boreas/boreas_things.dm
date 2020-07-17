@@ -16,7 +16,7 @@
 	..()
 	teleport_x = src.x
 	teleport_y = world.maxy - 1
-	teleport_z = Z_LEVEL_SURFACE_LOW
+	teleport_z = Z_LEVEL_MINING
 
 /obj/effect/step_trigger/teleporter/from_solars/New()
 	..()
