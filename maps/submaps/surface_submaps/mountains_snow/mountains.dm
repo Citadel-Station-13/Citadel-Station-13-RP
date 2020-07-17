@@ -40,19 +40,18 @@
 #include "Cliff1.dmm"
 #endif
 
-// The 'mountains_snow' is the mining z-level, and has a lot of caves.
-// POIs here spawn in two different sections, the top half and bottom half of the map.
-// The bottom half should be fairly tame, with perhaps a few enviromental hazards.
-// The top half is when things start getting dangerous, but the loot gets better.
+/*
+Mountain POIs converted to be friendly with Boreas
+*/
 
 /datum/map_template/surface/mountains_snow
 	name = "Mountain Content"
 	desc = "Don't dig too deep!"
 
-// 'Normal' templates get used on the bottom half, and should be safer.
+// 'Normal' templates get used on the station side of the ravine, where they can be safer
 /datum/map_template/surface/mountains_snow/normal
 
-// 'Deep' templates get used on the top half, and should be more dangerous and rewarding.
+// 'Deep' templates get used on the far side of the ravine.
 /datum/map_template/surface/mountains_snow/deep
 
 // 'Under' templates will get used underground.
