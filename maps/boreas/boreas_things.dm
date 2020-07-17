@@ -15,89 +15,8 @@
 /obj/effect/step_trigger/teleporter/from_mining/New()
 	..()
 	teleport_x = src.x
-	teleport_y = world.maxy - 1
+	teleport_y = world.maxy - 148
 	teleport_z = Z_LEVEL_MINING
-
-/obj/effect/step_trigger/teleporter/from_solars/New()
-	..()
-	teleport_x = 2
-	teleport_y = src.y
-	teleport_z = Z_LEVEL_SURFACE_LOW
-
-/obj/effect/step_trigger/teleporter/wild/New()
-	..()
-
-	//If starting on east/west edges.
-	if (src.x == 1)
-		teleport_x = world.maxx - 1
-	else if (src.x == world.maxx)
-		teleport_x = 2
-	else
-		teleport_x = src.x
-	//If starting on north/south edges.
-	if (src.y == 1)
-		teleport_y = world.maxy - 1
-	else if (src.y == world.maxy)
-		teleport_y = 2
-	else
-		teleport_y = src.y
-/*
-/obj/effect/step_trigger/teleporter/to_underdark
-	icon = 'icons/obj/stairs.dmi'
-	icon_state = "stairs"
-	invisibility = 0
-/obj/effect/step_trigger/teleporter/to_underdark/Initialize()
-	. = ..()
-	teleport_x = x
-	teleport_y = y
-	for(var/z_num in using_map.zlevels)
-		var/datum/map_z_level/Z = using_map.zlevels[z_num]
-		if(Z.name == "Underdark")
-			teleport_z = Z.z
-
-/obj/effect/step_trigger/teleporter/from_underdark
-	icon = 'icons/obj/stairs.dmi'
-	icon_state = "stairs"
-	invisibility = 0
-
-/obj/effect/step_trigger/teleporter/from_underdark/Initialize()
-	. = ..()
-	teleport_x = x
-	teleport_y = y
-	for(var/z_num in using_map.zlevels)
-		var/datum/map_z_level/Z = using_map.zlevels[z_num]
-		if(Z.name == "Mining Outpost")
-			teleport_z = Z.z
-
-
-// Invisible object that blocks z transfer to/from its turf and the turf above.
-/obj/effect/ceiling
-	invisibility = 101 // nope cant see this
-	anchored = 1
-
-/obj/effect/ceiling/CheckExit(atom/movable/O as mob|obj, turf/target as turf)
-	if(target && target.z > src.z)
-		return FALSE // Block exit from our turf to above
-	return TRUE
-
-/obj/effect/ceiling/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
-	if(mover && mover.z > src.z)
-		return FALSE // Block entry from above to our turf
-	return TRUE
-*/
-
-//
-// TRAM STATION
-//
-
-// Tram air scrubbers for keeping arrivals clean - they work even with no area power
-/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/tram
-	name = "\improper Tram Air Scrubber"
-	icon_state = "scrubber:1"
-	on = TRUE
-
-/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/tram/powered()
-	return TRUE // Always be powered
 
 //Chemistry 'chemavator'
 /obj/machinery/smartfridge/chemistry/chemvator
@@ -182,91 +101,7 @@ var/global/list/latejoin_tram   = list()
 /datum/spawnpoint/tram/New()
 	..()
 	turfs = latejoin_tram
-/*
-//
-// Holodorms
 
-/obj/machinery/computer/HolodeckControl/holodorm
-	name = "Don't use this one!!!"
-	powerdown_program = "Off"
-	default_program = "Off"
-
-	//Smollodeck
-	active_power_usage = 500
-	item_power_usage = 100
-
-	supported_programs = list(
-	"Off"			= new/datum/holodeck_program(/area/holodeck/holodorm/source_off),
-	"Basic Dorm"	= new/datum/holodeck_program(/area/holodeck/holodorm/source_basic),
-	"Table Seating"	= new/datum/holodeck_program(/area/holodeck/holodorm/source_seating),
-	"Beach Sim"		= new/datum/holodeck_program(/area/holodeck/holodorm/source_beach),
-	"Desert Area"	= new/datum/holodeck_program(/area/holodeck/holodorm/source_desert),
-	"Snow Field"	= new/datum/holodeck_program(/area/holodeck/holodorm/source_snow),
-	"Flower Garden"	= new/datum/holodeck_program(/area/holodeck/holodorm/source_garden),
-	"Space Sim"		= new/datum/holodeck_program(/area/holodeck/holodorm/source_space),
-	"Boxing Ring"	= new/datum/holodeck_program(/area/holodeck/holodorm/source_boxing)
-	)
-
-/obj/machinery/computer/HolodeckControl/holodorm/one
-	name = "dorm one holodeck control"
-	projection_area = /area/crew_quarters/sleep/Dorm_1/holo
-
-/obj/machinery/computer/HolodeckControl/holodorm/three
-	name = "dorm three holodeck control"
-	projection_area = /area/crew_quarters/sleep/Dorm_3/holo
-
-/obj/machinery/computer/HolodeckControl/holodorm/five
-	name = "dorm five holodeck control"
-	projection_area = /area/crew_quarters/sleep/Dorm_5/holo
-
-/obj/machinery/computer/HolodeckControl/holodorm/seven
-	name = "dorm seven holodeck control"
-	projection_area = /area/crew_quarters/sleep/Dorm_7/holo
-
-// Small Ship Holodeck
-/obj/machinery/computer/HolodeckControl/houseboat
-	projection_area = /area/houseboat/holodeck_area
-	powerdown_program = "Turn Off"
-	default_program = "Empty Court"
-
-	supported_programs = list(
-	"Basketball" 		= new/datum/holodeck_program(/area/houseboat/holodeck/basketball, list('sound/music/THUNDERDOME.ogg')),
-	"Thunderdome"		= new/datum/holodeck_program(/area/houseboat/holodeck/thunderdome, list('sound/music/THUNDERDOME.ogg')),
-	"Beach" 			= new/datum/holodeck_program(/area/houseboat/holodeck/beach),
-	"Desert" 			= new/datum/holodeck_program(/area/houseboat/holodeck/desert,
-													list(
-														'sound/effects/wind/wind_2_1.ogg',
-											 			'sound/effects/wind/wind_2_2.ogg',
-											 			'sound/effects/wind/wind_3_1.ogg',
-											 			'sound/effects/wind/wind_4_1.ogg',
-											 			'sound/effects/wind/wind_4_2.ogg',
-											 			'sound/effects/wind/wind_5_1.ogg'
-												 		)
-		 											),
-	"Snowfield" 		= new/datum/holodeck_program(/area/houseboat/holodeck/snow,
-													list(
-														'sound/effects/wind/wind_2_1.ogg',
-											 			'sound/effects/wind/wind_2_2.ogg',
-											 			'sound/effects/wind/wind_3_1.ogg',
-											 			'sound/effects/wind/wind_4_1.ogg',
-											 			'sound/effects/wind/wind_4_2.ogg',
-											 			'sound/effects/wind/wind_5_1.ogg'
-												 		)
-		 											),
-	"Space" 			= new/datum/holodeck_program(/area/houseboat/holodeck/space,
-													list(
-														'sound/ambience/ambispace.ogg',
-														'sound/music/main.ogg',
-														'sound/music/space.ogg',
-														'sound/music/traitor.ogg',
-														)
-													),
-	"Picnic Area" 		= new/datum/holodeck_program(/area/houseboat/holodeck/picnic, list('sound/music/title2.ogg')),
-	"Gaming" 			= new/datum/holodeck_program(/area/houseboat/holodeck/gaming, list('sound/music/traitor.ogg')),
-	"Bunking"			= new/datum/holodeck_program(/area/houseboat/holodeck/bunking, list()),
-	"Turn Off" 			= new/datum/holodeck_program(/area/houseboat/holodeck/off, list())
-	)
-*/
 // Our map is small, if the supermatter is ejected lets not have it just blow up somewhere else
 /obj/machinery/power/supermatter/touch_map_edge()
 	qdel(src)
@@ -314,50 +149,7 @@ var/global/list/latejoin_tram   = list()
 		new /obj/item/gun/energy/frontier/locked(src)
 	for(var/i = 1 to 4)
 		new /obj/item/gun/energy/frontier/locked/holdout(src)
-/*
-// Underdark mob spawners
-/obj/boreas_away_spawner/underdark_normal
-	name = "Underdark Normal Spawner"
-	faction = "underdark"
-	atmos_comp = TRUE
-	prob_spawn = 100
-	prob_fall = 50
-	guard = 20
-	mobs_to_pick_from = list(
-		/mob/living/simple_animal/hostile/jelly = 3,
-		/mob/living/simple_animal/hostile/giant_spider/hunter = 1,
-		/mob/living/simple_animal/hostile/giant_spider/phorogenic = 1,
-		/mob/living/simple_animal/hostile/giant_spider/lurker = 1,
-	)
 
-/obj/boreas_away_spawner/underdark_hard
-	name = "Underdark Hard Spawner"
-	faction = "underdark"
-	atmos_comp = TRUE
-	prob_spawn = 100
-	prob_fall = 50
-	guard = 20
-	mobs_to_pick_from = list(
-		/mob/living/simple_animal/hostile/corrupthound = 1,
-		/mob/living/simple_animal/hostile/rat = 1,
-		/mob/living/simple_animal/hostile/mimic = 1
-	)
-
-/obj/boreas_away_spawner/underdark_boss
-	name = "Underdark Boss Spawner"
-	faction = "underdark"
-	atmos_comp = TRUE
-	prob_spawn = 100
-	prob_fall = 100
-	guard = 70
-	mobs_to_pick_from = list(
-		/mob/living/simple_animal/hostile/dragon = 1
-	)
-
-// Used at centcomm for the elevator
-/obj/machinery/cryopod/robot/door/dorms
-	spawnpoint_type = /datum/spawnpoint/tram
-*/
 //
 // ### Wall Machines On Full Windows ###
 // To make sure wall-mounted machines placed on full-tile windows are clickable they must be above the window

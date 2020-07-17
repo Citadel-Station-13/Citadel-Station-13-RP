@@ -33,11 +33,11 @@
 	adjust_mask(user)
 
 /obj/item/clothing/mask/breath/verb/toggle()
-		set category = "Object"
-		set name = "Adjust mask"
-		set src in usr
+	set category = "Object"
+	set name = "Adjust mask"
+	set src = usr.contents
 
-		adjust_mask(usr)
+	adjust_mask(usr)
 
 /obj/item/clothing/mask/breath/medical
 	desc = "A close-fitting sterile mask that can be connected to an air supply."

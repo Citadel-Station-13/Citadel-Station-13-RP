@@ -290,8 +290,8 @@
 	item_state_slots = list(slot_r_hand_str = "bandskull", slot_l_hand_str = "bandskull")
 
 /obj/item/clothing/mask/rebreather
-	name = "personal rebreather"
-	desc = "A rebreather that heats up local atmosphere to safe temperatures."
+	name = "heated breathing apparatus"
+	desc = "A mask that heats up local atmosphere to safe temperatures."
 	icon_state = "fullgas"
 	item_state_slots = list(slot_r_hand_str = "swat", slot_l_hand_str = "swat")
 	/// Our power cell
@@ -304,6 +304,7 @@
 	var/breath_initial_temp
 	/// Charge to use per K heated. Linear formula for now.
 	var/power_coefficient = 0.0125
+	action_button_name = "Toggle HBA"
 
 /obj/item/clothing/mask/rebreather/Initialize(mapload)
 	if(ispath(cell))
@@ -318,7 +319,7 @@
 /obj/item/clothing/mask/rebreather/attack_self(mob/user)
 	if(on)
 		turn_off(user)
-		to_chat(user, "<span class='notice'>You turn off [src]'s heater.</span>")
+		to_chat(user, "<span class='notice'>You turn off the [src].</span>")
 		return
 	else
 		if(!cell)
@@ -328,7 +329,7 @@
 			to_chat(user, "<span class='warning'>You fiddle with [src], but it is completely lifeless!</span>")
 			return
 		turn_on(user)
-		to_chat(user, "<span class='notice'>You turn on [src]'s heater.</span>")
+		to_chat(user, "<span class='notice'>You turn on the [src].</span>")
 		return
 	return ..()
 
@@ -340,7 +341,14 @@
 	on = FALSE
 	STOP_PROCESSING(SSprocessing, src)
 	if(forced)
-		visible_message("<span class='warning'>[src] suddenly cuts out!</span>")
+		visible_message("<span class='warning'>The [src] suddenly cuts out!</span>")
+
+/obj/item/clothing/mask/rebreather/verb/toggle()
+		set category = "Object"
+		set name = "Toggle HBA"
+		set src in usr
+
+		attack_self()
 
 /obj/item/clothing/mask/rebreather/proc/give_flavor_feedback(mob/living/wearer)
 	var/flavormsg = pick(1,2,3)
