@@ -187,6 +187,10 @@ var/global/list/asset_datums = list()
 	send_asset_list(client,assets,verify)
 
 
+/*****************************************
+*DEFINITIONS FOR ASSET DATUMS START HERE!*
+*****************************************/
+
 // For registering or sending multiple others at once
 /datum/asset/group
 	_abstract = /datum/asset/group
@@ -201,6 +205,119 @@ var/global/list/asset_datums = list()
 		var/datum/asset/A = get_asset_datum(type)
 		A.send(C)
 
+
+datum/asset/simple/pda
+	assets = list(
+		"pda_atmos.png" = 'icons/pda_icons/pda_atmos.png',
+		"pda_back.png" = 'icons/pda_icons/pda_back.png',
+		"pda_bell.png" = 'icons/pda_icons/pda_bell.png',
+		"pda_blank.png" = 'icons/pda_icons/pda_blank.png',
+		"pda_boom.png" = 'icons/pda_icons/pda_boom.png',
+		"pda_bucket.png" = 'icons/pda_icons/pda_bucket.png',
+		"pda_crate.png" = 'icons/pda_icons/pda_crate.png',
+		"pda_cuffs.png" = 'icons/pda_icons/pda_cuffs.png',
+		"pda_eject.png" = 'icons/pda_icons/pda_eject.png',
+		"pda_exit.png" = 'icons/pda_icons/pda_exit.png',
+		"pda_flashlight.png" = 'icons/pda_icons/pda_flashlight.png',
+		"pda_honk.png" = 'icons/pda_icons/pda_honk.png',
+		"pda_mail.png" = 'icons/pda_icons/pda_mail.png',
+		"pda_medical.png" = 'icons/pda_icons/pda_medical.png',
+		"pda_menu.png" = 'icons/pda_icons/pda_menu.png',
+		"pda_mule.png" = 'icons/pda_icons/pda_mule.png',
+		"pda_notes.png" = 'icons/pda_icons/pda_notes.png',
+		"pda_power.png" = 'icons/pda_icons/pda_power.png',
+		"pda_rdoor.png" = 'icons/pda_icons/pda_rdoor.png',
+		"pda_reagent.png" = 'icons/pda_icons/pda_reagent.png',
+		"pda_refresh.png" = 'icons/pda_icons/pda_refresh.png',
+		"pda_scanner.png" = 'icons/pda_icons/pda_scanner.png',
+		"pda_signaler.png" = 'icons/pda_icons/pda_signaler.png',
+		"pda_status.png" = 'icons/pda_icons/pda_status.png'
+	)
+
+/datum/asset/simple/generic
+	assets = list(
+		"search.js" = 'html/search.js',
+		"panels.css" = 'html/panels.css',
+		"loading.gif" = 'html/images/loading.gif',
+		"ntlogo.png" = 'html/images/ntlogo.png',
+		"sglogo.png" = 'html/images/sglogo.png',
+		"talisman.png" = 'html/images/talisman.png',
+		"paper_bg.png" = 'html/images/paper_bg.png',
+		"no_image32.png" = 'html/images/no_image32.png',
+		"sos_1.png" = 'icons/spideros_icons/sos_1.png',
+		"sos_2.png" = 'icons/spideros_icons/sos_2.png',
+		"sos_3.png" = 'icons/spideros_icons/sos_3.png',
+		"sos_4.png" = 'icons/spideros_icons/sos_4.png',
+		"sos_5.png" = 'icons/spideros_icons/sos_5.png',
+		"sos_6.png" = 'icons/spideros_icons/sos_6.png',
+		"sos_7.png" = 'icons/spideros_icons/sos_7.png',
+		"sos_8.png" = 'icons/spideros_icons/sos_8.png',
+		"sos_9.png" = 'icons/spideros_icons/sos_9.png',
+		"sos_10.png" = 'icons/spideros_icons/sos_10.png',
+		"sos_11.png" = 'icons/spideros_icons/sos_11.png',
+		"sos_12.png" = 'icons/spideros_icons/sos_12.png',
+		"sos_13.png" = 'icons/spideros_icons/sos_13.png',
+		"sos_14.png" = 'icons/spideros_icons/sos_14.png'
+	)
+
+/* //We don't have a changelog? Right?
+/datum/asset/simple/changelog
+	assets = list(
+		"88x31.png" = 'html/88x31.png',
+		"bug-minus.png" = 'html/bug-minus.png',
+		"cross-circle.png" = 'html/cross-circle.png',
+		"hard-hat-exclamation.png" = 'html/hard-hat-exclamation.png',
+		"image-minus.png" = 'html/image-minus.png',
+		"image-plus.png" = 'html/image-plus.png',
+		"map-pencil.png" = 'html/map-pencil.png',
+		"music-minus.png" = 'html/music-minus.png',
+		"music-plus.png" = 'html/music-plus.png',
+		"tick-circle.png" = 'html/tick-circle.png',
+		"wrench-screwdriver.png" = 'html/wrench-screwdriver.png',
+		"spell-check.png" = 'html/spell-check.png',
+		"burn-exclamation.png" = 'html/burn-exclamation.png',
+		"chevron.png" = 'html/chevron.png',
+		"chevron-expand.png" = 'html/chevron-expand.png',
+		"changelog.css" = 'html/changelog.css',
+		"changelog.js" = 'html/changelog.js',
+		"changelog.html" = 'html/changelog.html'
+	)
+*/
+
+/datum/asset/nanoui
+	var/list/common = list()
+
+	var/list/common_dirs = list(
+		"nano/css/",
+		"nano/images/",
+		"nano/js/"
+	)
+	var/list/uncommon_dirs = list(
+		"nano/templates/"
+	)
+
+/datum/asset/nanoui/register()
+	// Crawl the directories to find files.
+	for(var/path in common_dirs)
+		var/list/filenames = flist(path)
+		for(var/filename in filenames)
+			if(copytext(filename, length(filename)) != "/") // Ignore directories.
+				if(fexists(path + filename))
+					common[filename] = fcopy_rsc(path + filename)
+					register_asset(filename, common[filename])
+	for(var/path in uncommon_dirs)
+		var/list/filenames = flist(path)
+		for(var/filename in filenames)
+			if(copytext(filename, length(filename)) != "/") // Ignore directories.
+				if(fexists(path + filename))
+					register_asset(filename, fcopy_rsc(path + filename))
+
+/datum/asset/nanoui/send(client, uncommon)
+	if(!islist(uncommon))
+		uncommon = list(uncommon)
+
+	send_asset_list(client, uncommon)
+	send_asset_list(client, common)
 /*
 // spritesheet implementation - coalesces various icons into a single .png file
 // and uses CSS to select icons out of that file - saves on transferring some
@@ -339,6 +456,7 @@ var/global/list/asset_datums = list()
 		Insert(key, assets[key])
 	..()
 */
+/*
 /datum/asset/group/goonchat
 	children = list(
 		/datum/asset/simple/jquery,
@@ -366,7 +484,7 @@ var/global/list/asset_datums = list()
 		"browserOutput.css"	       = 'code/modules/goonchat/browserassets/css/browserOutput.css',
 	)
 
-/*
+
 /datum/asset/spritesheet/goonchat
 	name = "chat"
 

@@ -648,8 +648,9 @@ GLOBAL_LIST_EMPTY(PDAs)
 	// auto update every Master Controller tick
 	ui.set_auto_update(auto_update)
 
-//NOTE: graphic resources are loaded on client login
 /obj/item/pda/attack_self(mob/user as mob)
+	var/datum/asset/assets = get_asset_datum(/datum/asset/simple/pda)
+	assets.send(user)
 
 	user.set_machine(src)
 
