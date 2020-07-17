@@ -6,6 +6,8 @@ var/obj/effect/lobby_image = new /obj/effect/lobby_image
 	name = "Citadel Station 13"
 	desc = "How are you reading this?"
 	screen_loc = "1,1"
+	icon = 'icons/misc/loading.dmi'
+	icon_state = "loading"
 
 /obj/effect/lobby_image/Initialize()
 	icon = GLOB.using_map.lobby_icon
