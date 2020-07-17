@@ -1,7 +1,7 @@
 #if !defined(USING_MAP_DATUM)
 
-	#include "boreas_turfs.dm"
 	#include "boreas_defines.dm"
+	#include "boreas_turfs.dm"
 	#include "boreas_turfs.dm"
 	#include "boreas_things.dm"
 	#include "boreas_areas.dm"
@@ -18,7 +18,7 @@
 	#include "../../_maps/map_files/boreas/boreas-colony.dmm"
 	#include "../../_maps/map_files/boreas/boreas-mining.dmm"
 
-	#include "../../maps/submaps/surface_submaps/mountains/mountains.dm"
+	#include "../../maps/submaps/surface_submaps/mountains_snow/mountains.dm"
 
 	#define USING_MAP_DATUM /datum/map/boreas
 
