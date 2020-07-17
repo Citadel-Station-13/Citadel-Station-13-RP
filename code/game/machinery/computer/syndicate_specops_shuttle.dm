@@ -56,13 +56,14 @@ var/syndicate_elite_shuttle_timeleft = 0
 	syndicate_elite_shuttle_moving_to_mothership = 0
 
 	syndicate_elite_shuttle_at_station = 1
-	if (syndicate_elite_shuttle_moving_to_station || syndicate_elite_shuttle_moving_to_mothership) return
+	if (syndicate_elite_shuttle_moving_to_station || syndicate_elite_shuttle_moving_to_mothership)
+		return
 
 	if (!syndicate_elite_can_move())
 		to_chat(usr, "<span class='warning'>The Syndicate Elite shuttle is unable to leave.</span>")
 		return
 
-		sleep(600)
+//		sleep(600)
 /*
 	//Begin Marauder launchpad.
 	spawn(0)//So it parallel processes it.

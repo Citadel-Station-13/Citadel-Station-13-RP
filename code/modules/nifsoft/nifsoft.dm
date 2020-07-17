@@ -105,7 +105,7 @@
 	return nif_result
 
 //Called when attempting to deactivate an implant
-/datum/nifsoft/proc/deactivate(var/force = FALSE)
+/datum/nifsoft/proc/deactivate(force = FALSE)
 	if(!active && !force)
 		return
 	var/nif_result = nif.deactivate(src)

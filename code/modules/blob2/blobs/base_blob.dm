@@ -48,6 +48,7 @@ var/list/blobs = list()
 
 // Blob tiles are not actually dense so we need Special Code(tm).
 /obj/structure/blob/CanAllowThrough(atom/movable/mover, turf/target)
+	. = ..()
 	if(istype(mover) && mover.checkpass(PASSBLOB))
 		return TRUE
 	else if(istype(mover, /mob/living))
@@ -58,7 +59,6 @@ var/list/blobs = list()
 		var/obj/item/projectile/P = mover
 		if(istype(P.firer) && P.firer.faction == "blob")
 			return TRUE
-	return FALSE
 
 /obj/structure/blob/examine(mob/user)
 	..()
