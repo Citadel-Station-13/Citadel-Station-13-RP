@@ -58,7 +58,7 @@
 		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
 		return
 
-	if(!src.client.holder)
+	if(!src.client.holder) //admin bypass
 		if(!config_legacy.dsay_allowed)
 			to_chat(src, "<span class='danger'>Deadchat is globally muted.</span>")
 			return
@@ -94,9 +94,9 @@
 
 	var/spanned = "[say_mod(message)], \"[message]\""
 	// message = emoji_parse(message) only for logging i think...
-	var/rendered = "<span class='game deadsay'><span class='prefix'>DEAD:</span> <span class='name'>[name]</span>[alt_name] <span class='message'>[emoji_parse(spanned)]</span></span>"
+	var/rendered = "<span class='game deadsay'> [alt_name] <span class='message'>[emoji_parse(spanned)]</span></span>"
 	// log_talk(message, LOG_SAY, tag="DEAD")
-	say_dead_direct(rendered, subject = src) //, speaker_key = key)
+	say_dead_direct(rendered, subject = src) //, speaker_key = key) //this fuck handles the prefix and name. <span class='prefix'>DEAD:</span> <span class='name'>[name]</span>
 
 /mob/proc/say_understands(var/mob/other,var/datum/language/speaking = null)
 

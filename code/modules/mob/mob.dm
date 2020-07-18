@@ -71,12 +71,12 @@
 					return
 	// Added voice muffling for Issue 41.
 	if(stat == UNCONSCIOUS || sleeping > 0)
-		to_chat(src,"<I>... You can almost hear someone talking ...</I>")
-	else
-		to_chat(src,msg)
-		if(teleop)
-			to_chat(teleop, create_text_tag("body", "BODY:", teleop) + "[msg]")
-	return
+		if(type & 2) // audio
+			to_chat(src,"<I>... You can almost hear someone talking ...</I>")
+		return
+	to_chat(src, msg)
+	if(teleop)
+		to_chat(teleop, "<span class='prefix'>BODY:</span> [msg]")
 
 // Show a message to all mobs and objects in sight of this one
 // This would be for visible actions by the src mob
