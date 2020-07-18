@@ -317,13 +317,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/mining_main/refinery)
-"aaM" = (
-/obj/machinery/conveyor{
-	dir = 4;
-	id = "mining_interior"
-	},
-/turf/simulated/floor/plating,
-/area/tether/surfacebase/mining_main/refinery)
 "aaN" = (
 /obj/machinery/conveyor{
 	dir = 9;
@@ -566,9 +559,8 @@
 /turf/simulated/wall,
 /area/tether/surfacebase/mining_main/storage)
 "abo" = (
-/obj/structure/closet/firecloset,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 4
+/obj/machinery/door/airlock/maintenance/medical{
+	name = "Triage Ready Room"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/surfacebase/mining_main/storage)
@@ -647,7 +639,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
+	dir = 6
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/mining_main/storage)
@@ -680,6 +672,9 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 10
+	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/mining_main/storage)
@@ -1160,9 +1155,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/sign/nosmoking_2{
-	pixel_x = -32
-	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/mining_main/storage)
 "ack" = (
@@ -1537,6 +1529,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 8
 	},
+/obj/structure/closet/firecloset,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/mining_main/storage)
 "acV" = (
@@ -1835,6 +1828,9 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
+	},
+/obj/structure/sign/nosmoking_2{
+	pixel_x = -32
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/mining_main/storage)
@@ -30791,6 +30787,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_one)
+"clA" = (
+/obj/structure/sign/atmos_air,
+/turf/simulated/wall,
+/area/tether/surfacebase/mining_main/external)
 "ctU" = (
 /obj/structure/symbol/sa,
 /turf/simulated/wall,
@@ -30870,6 +30870,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/public_garden_maintenence)
+"dcr" = (
+/obj/machinery/atmospherics/pipe/tank/air{
+	dir = 1
+	},
+/obj/effect/floor_decal/industrial/outline,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/mining_main/external)
 "deS" = (
 /obj/structure/railing{
 	dir = 4
@@ -30891,6 +30898,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_one)
+"dDl" = (
+/obj/structure/closet/secure_closet/guncabinet/phase{
+	name = "triage defense cabinet";
+	req_one_access = list(66)
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/tether/surfacebase/mining_main/storage)
 "dLl" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
@@ -31237,6 +31251,9 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/surfacebase/public_garden_one)
+"gua" = (
+/turf/simulated/floor/tiled/techfloor,
+/area/tether/surfacebase/mining_main/storage)
 "gwL" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -31410,6 +31427,11 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"hZe" = (
+/obj/structure/closet/secure_closet/paramedic,
+/obj/machinery/light,
+/turf/simulated/floor/tiled/techfloor,
+/area/tether/surfacebase/mining_main/storage)
 "icJ" = (
 /obj/structure/table/bench/padded,
 /turf/simulated/floor/wood,
@@ -31563,6 +31585,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood,
 /area/vacant/vacant_bar)
+"jAw" = (
+/obj/machinery/mech_recharger,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/mining_main/external)
 "kcR" = (
 /obj/structure/window/reinforced,
 /turf/simulated/floor/tiled,
@@ -31990,6 +32016,12 @@
 /obj/random/junk,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/public_garden_maintenence)
+"oDw" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/mining_main/external)
 "oMP" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/black{
 	dir = 4
@@ -32347,6 +32379,13 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/engineering/atmos/intake)
+"sxm" = (
+/obj/machinery/atmospherics/pipe/tank/air{
+	dir = 1
+	},
+/obj/effect/floor_decal/industrial/outline,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/storage/surface_eva/external)
 "sCz" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -32609,6 +32648,9 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"ufg" = (
+/turf/simulated/wall,
+/area/tether/surfacebase/mining_main/external)
 "ugx" = (
 /obj/machinery/atmospherics/binary/pump{
 	dir = 8
@@ -32678,6 +32720,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden)
+"uVV" = (
+/obj/structure/sign/atmos_air,
+/turf/simulated/wall,
+/area/storage/surface_eva/external)
 "vhj" = (
 /turf/simulated/floor/reinforced/n20,
 /area/engineering/atmos)
@@ -32688,6 +32734,10 @@
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"vpT" = (
+/obj/structure/closet/secure_closet/sar,
+/turf/simulated/floor/tiled/techfloor,
+/area/tether/surfacebase/mining_main/storage)
 "vvU" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 4
@@ -32720,6 +32770,13 @@
 /obj/effect/floor_decal/corner/grey/border,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/visitor_laundry)
+"vBE" = (
+/obj/machinery/atmospherics/portables_connector{
+	dir = 1
+	},
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/storage/surface_eva/external)
 "vCB" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -32798,6 +32855,13 @@
 	dir = 1
 	},
 /area/tether/surfacebase/public_garden_one)
+"waw" = (
+/obj/machinery/atmospherics/portables_connector{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/mining_main/external)
 "whR" = (
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide,
 /turf/simulated/floor/reinforced/carbon_dioxide,
@@ -36414,9 +36478,9 @@ aah
 aah
 aah
 aah
-aah
-aah
-aah
+aiy
+aiy
+uVV
 akb
 akb
 akb
@@ -36556,9 +36620,9 @@ aah
 aah
 aah
 aah
-aah
-aah
-aah
+aiy
+sxm
+vBE
 akc
 akH
 akH
@@ -36698,7 +36762,7 @@ aah
 aah
 aah
 aah
-aah
+aiy
 aiy
 aiy
 aiy
@@ -43070,10 +43134,10 @@ aah
 aah
 aah
 aah
-aah
-aah
-aah
-aah
+abn
+abn
+abn
+abn
 abT
 abT
 abT
@@ -43212,9 +43276,9 @@ aah
 aah
 aah
 aah
-aah
-aah
-aah
+abn
+gua
+dDl
 abT
 abT
 acQ
@@ -43354,9 +43418,9 @@ aao
 aao
 aao
 aao
-aao
-aah
-aah
+abn
+gua
+hZe
 abT
 adm
 acR
@@ -43497,8 +43561,8 @@ gRx
 iAg
 aau
 aao
-abn
-abn
+gua
+vpT
 abT
 adl
 acS
@@ -44627,8 +44691,8 @@ aaf
 aag
 aaf
 aaf
-aah
-aah
+oDw
+jAw
 aar
 aaF
 aar
@@ -44769,8 +44833,8 @@ fOF
 fOF
 fOF
 aaf
-aah
-aah
+oDw
+waw
 aar
 aaF
 aar
@@ -44910,9 +44974,9 @@ aad
 aad
 aad
 aad
-aah
-aah
-aah
+fOF
+oDw
+dcr
 aar
 aaG
 aar
@@ -45053,8 +45117,8 @@ aad
 aad
 aah
 aah
-aah
-aah
+clA
+ufg
 aar
 aaF
 aar
@@ -46902,7 +46966,7 @@ aad
 aad
 aah
 aar
-aaM
+aaI
 aaS
 abt
 abQ
