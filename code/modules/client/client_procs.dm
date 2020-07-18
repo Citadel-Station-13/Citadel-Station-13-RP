@@ -666,12 +666,6 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 	// Something went wrong, client is usually kicked or transfered to a new mob at this point
 	return FALSE
 
-/client/verb/character_setup()
-	set name = "Character Setup"
-	set category = "Preferences"
-	if(prefs)
-		prefs.ShowChoices(usr)
-
 /client/proc/findJoinDate()
 	var/list/http = world.Export("http://byond.com/members/[ckey]?format=text")
 	if(!http)
