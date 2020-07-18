@@ -4,7 +4,7 @@
 	icon_state = "generic-nt"
 	item_state = "card-id"
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/seromi/id.dmi'
+		SPECIES_TESHARI = 'icons/mob/species/teshari/id.dmi'
 		)
 	slot_flags = SLOT_ID | SLOT_EARS
 	var/mining_points = 0	// For redeeming at mining equipment vendors

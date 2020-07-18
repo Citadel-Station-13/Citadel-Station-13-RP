@@ -29,7 +29,7 @@ BLIND     // can't see anything
 	var/list/away_planes //Holder for disabled planes
 
 	sprite_sheets = list(
-		"Teshari" = 'icons/mob/species/seromi/eyes.dmi',
+		"Teshari" = 'icons/mob/species/teshari/eyes.dmi',
 		"Vox" = 'icons/mob/species/vox/eyes.dmi'
 		)
 

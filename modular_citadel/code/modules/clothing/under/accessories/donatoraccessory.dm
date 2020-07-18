@@ -40,3 +40,10 @@
 	flash_protection = FLASH_PROTECTION_NONE
 	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
 	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
+
+/obj/item/clothing/accessory/armband/veterancargo
+	name = "veteran's cargo armband"
+	desc = "A frayed and stained armband, typically used to identify an employee's department. The amount of wear and damage implies the owner is a veteran of their department."
+	icon_state = "vet_cargo_armband"
+	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
+	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'

@@ -33,7 +33,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 
 	var/translate_hive = FALSE
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/seromi/ears.dmi',
+		SPECIES_TESHARI = 'icons/mob/species/teshari/ears.dmi',
 		SPECIES_VOX = 'icons/mob/species/vox/ears.dmi'
 	)
 

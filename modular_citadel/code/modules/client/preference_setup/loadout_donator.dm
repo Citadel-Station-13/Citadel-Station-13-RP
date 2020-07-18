@@ -187,3 +187,9 @@
 	sort_category = "Donator"
 	path = /obj/item/clothing/suit/storage/hooded/techpriest/chaos
 	ckeywhitelist = list("loburd")
+
+/datum/gear/donator/veterancargoarmband
+	display_name = "Veteran's Cargo Armband"
+	sort_category = "Donator"
+	path = /obj/item/clothing/accessory/armband/veterancargo
+	ckeywhitelist = list("yourdoom9898")

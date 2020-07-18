@@ -31774,7 +31774,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "mos" = (
-/obj/item/clothing/suit/storage/seromi/cloak/standard/rainbow,
+/obj/item/clothing/suit/storage/teshari/cloak/standard/rainbow,
 /obj/item/clothing/gloves/rainbow,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)

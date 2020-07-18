@@ -124,7 +124,7 @@
 	flags = NONE
 /datum/language/human
 	flags = NONE
-/datum/language/seromi
+/datum/language/teshari
 	flags = NONE
 /datum/language/zaddat
 	flags = NONE

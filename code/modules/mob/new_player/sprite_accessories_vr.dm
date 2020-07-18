@@ -240,12 +240,7 @@
 		icon_state = "hair_fingerwave"
 		species_allowed = list(SPECIES_TAJ, SPECIES_XENOCHIMERA, SPECIES_PROTEAN)
 
-	teshari_fluffymohawk
-		name = "Teshari Fluffy Mohawk"
-		icon =  'icons/mob/human_face_vr.dmi'
-		icon_add = 'icons/mob/human_face_vr_add.dmi'
-		icon_state = "teshari_fluffymohawk"
-		species_allowed = list(SPECIES_TESHARI)
+
 
 //Teshari things
 	teshari
@@ -289,6 +284,13 @@
 
 	teshari_mushroom
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
+
+	teshari_fluffymohawk
+		name = "Teshari Fluffy Mohawk"
+		icon =  'icons/mob/human_face_vr.dmi'
+		icon_add = 'icons/mob/human_face_vr_add.dmi'
+		icon_state = "teshari_fluffymohawk"
+		species_allowed = list(SPECIES_TESHARI)
 
 //Skrell 'hairstyles' - these were requested for a chimera and screw it, if one wants to eat seafood, go nuts
 	skr_tentacle_veryshort
@@ -1142,3 +1144,31 @@
 		color_blend_mode = ICON_MULTIPLY
 		body_parts = list(BP_HEAD)
 		species_allowed = list(SPECIES_SHADEKIN)
+
+	teshari_large_eyes
+		name = "Teshari large eyes"
+		icon_state = "teshlarge_eyes"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_HEAD)
+		species_allowed = list(SPECIES_TESHARI)
+
+	teshari_coat
+		name = "Teshari coat"
+		icon_state = "tesh_coat"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_TORSO,BP_HEAD)
+		species_allowed = list(SPECIES_TESHARI)
+
+	teshari_pattern_male
+		name = "Teshari male pattern"
+		icon_state = "tesh-pattern-male"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_TORSO,BP_GROIN,BP_HEAD)
+		species_allowed = list(SPECIES_TESHARI)
+
+	teshari_pattern_female
+		name = "Teshari female pattern"
+		icon_state = "tesh-pattern-fem"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_L_LEG,BP_R_LEG,BP_L_HAND,BP_R_HAND,BP_TORSO,BP_GROIN,BP_HEAD)
+		species_allowed = list(SPECIES_TESHARI)
