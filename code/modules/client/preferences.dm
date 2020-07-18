@@ -262,8 +262,8 @@ var/list/preferences_datums = list()
 	dat += "<br><HR></center>"
 	dat += player_setup.content(user)
 
-//	winshow(user, "preferences_window", TRUE) soon(trade)
-	var/datum/browser/popup = new(user, "preferences_browser-nofancy", "<div align='center'>Character Setup</div>", 640, 770)
+//	winshow(user, "preferences_window", TRUE) //soon(trade)
+	var/datum/browser/popup = new(user, "preferences_browser-nofancy", "<div align='center'>Character Setup</div>", 770, 800)
 	popup.set_content(dat)
 	popup.open() //popup.open(FALSE)
 //	onclose(user, "preferences_window", src)
