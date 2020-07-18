@@ -102,12 +102,12 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 
 		if("setMusicVolume")
 			data = setMusicVolume(arglist(params))
-		// if("colorPresetPost") //User just swapped color presets in their goonchat preferences. Do we do anything else?
-		// 	switch(href_list["preset"])
-		// 		if("light")
-		// 			owner.force_white_theme()
-		// 		if("dark" || "normal")
-		// 			owner.force_dark_theme()
+		if("colorPresetPost") //User just swapped color presets in their goonchat preferences. Do we do anything else?
+			switch(href_list["preset"])
+				if("light")
+					owner.force_white_theme()
+				if("dark" || "normal")
+					owner.force_dark_theme()
 
 
 	if(data)
@@ -329,11 +329,11 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 	SSchat.queue(target, message, handle_whitespace, trailing_newline, confidential)
 
 /// Dark mode light mode stuff. Yell at KMC if this breaks! (See darkmode.dm for documentation)
-// /datum/chatOutput/proc/swaptolightmode()
-// 	owner.force_white_theme()
+/datum/chatOutput/proc/swaptolightmode()
+	owner.force_white_theme()
 
 /// Light mode stuff. (See darkmode.dm for documentation)
-// /datum/chatOutput/proc/swaptodarkmode()
-// 	owner.force_dark_theme()
+/datum/chatOutput/proc/swaptodarkmode()
+	owner.force_dark_theme()
 
 #undef MAX_COOKIE_LENGTH
