@@ -67,7 +67,16 @@
 
 	//Logs all hrefs, except chat pings
 	if(!(href_list["_src_"] == "chat" && href_list["proc"] == "ping" && LAZYLEN(href_list) == 2))
-		log_href("[src] (usr:[usr]\[[COORD(usr)]\]) : [hsrc ? "[hsrc] " : ""][href]")
+		var/hsrc_logline
+		var/atom/maybe = hsrc
+		if(istype(hsrc, /datum/nanoui))
+			var/datum/nanoui/N = hrsc
+			maybe = N.src_object
+		if(istype(maybe))
+			hsrc_logline = "[maybe] ([AREACOORD(maybe)])"
+		else
+			hsrc_logline = "[hsrc]"
+		log_href("[src] (usr:[usr]\[[COORD(usr)]\]) : [hsrc_logline] : [href]")
 
 	//Admin PM
 	if(href_list["priv_msg"])
