@@ -291,6 +291,103 @@
 /area/rnd/xenoarch_storage
 	name = "\improper Xenoarch Storage"
 	icon_state = "research"
+
+// Research Outpost
+/area/outpost/research/hallway/resarch_outpost_northern_hallway
+	name = "\improper Outpost - Northern Hallway"
+	icon_state = "dk_yellow"
+
+/area/outpost/research/hallway/resarch_outpost_eastern_hallway
+	name = "\improper Outpost - Eastern Hallway"
+	icon_state = "dk_yellow"
+
+/area/outpost/research/hallway/resarch_outpost_southern_hallway
+	name = "\improper Outpost - Southern Hallway"
+	icon_state = "dk_yellow"
+
+/area/outpost/research/hallway/resarch_outpost_western_hallway
+	name = "\improper Outpost - Western Hallway"
+	icon_state = "dk_yellow"
+
+/area/outpost/research/hallway/resarch_outpost_storage_hallway
+	name = "\improper Outpost - Hallway Storage"
+	icon_state = "dk_yellow"
+
+/area/outpost/research/crew_quarters/sleep/Dorm_1
+	name = "\improper Outpost - Dorms 1"
+	icon_state = "Sleep"
+
+/area/outpost/research/crew_quarters/sleep/Dorm_2
+	name = "\improper Outpost - Dorms 2"
+	icon_state = "Sleep"
+
+/area/outpost/research/crew_quarters/sleep/Dorm_3
+	name = "\improper Outpost - Dorms 3"
+	icon_state = "Sleep"
+
+/area/outpost/research/medical/first_aid_south_west
+	name = "\improper Outpost - First Aid South West"
+	icon_state = "blue"
+
+/area/outpost/research/storage/tools
+	name = "\improper Outpost - Tool Storage"
+	icon_state = "storage"
+
+/area/outpost/research/toxins_canister_icyhoot
+	name = "\improper Toxins Lab - Canister Heating and Cooling"
+	icon_state = "research"
+
+/area/outpost/research/simulator
+	name = "\improper Toxins Lab - Explosive Effect Simulator"
+	icon_state = "research"
+
+/area/outpost/research/toxins_burn_chamber
+	name = "\improper Toxins Lab - Burn Chamber"
+	icon_state = "research"
+
+/area/outpost/research/engineering/eva_atmospherics
+	name = "\improper Outpost - EVA-Atmospherics"
+	icon_state = "green"
+
+/area/outpost/research/storage/surface_eva
+	name = "\improper Outpost - Surface EVA"
+	icon_state = "green"
+
+/area/outpost/research/storage/surface_eva_storage
+	name = "\improper Outpost - Surface EVA Storage"
+	icon_state = "green"
+
+/area/outpost/research/substation
+	name = "\improper Outpost - Substation"
+
+/area/outpost/research/breakroom
+	name = "\improper Outpost - Breakroom"
+	icon_state = "research"
+
+/area/outpost/research/crew_quarters/showers
+	name = "\improper Outpost - Crew Showers"
+	icon_state = "recreation_area_restroom"
+
+/area/outpost/research/materials_lab
+	name = "\improper Outpost - Materials Lab"
+	icon_state = "red"
+
+/area/outpost/research/telescience_lab
+	name = "\improper Outpost - Telescience Lab"
+	icon_state = "yellow"
+
+/area/outpost/research/toxins_mixing_lab
+	name = "\improper Outpost - Toxins Lab"
+	icon_state = "purple"
+
+/area/outpost/research/atmospherics
+	name = "\improper Outpost - Atmospherics"
+	icon_state = "research"
+
+/area/outpost/research/materials_chamber
+	name = "\improper Materials - Chamber"
+	icon_state = "red"
+
 // Misc
 /area/hallway/lower/third_south
 	name = "\improper Hallway Third Floor South"
