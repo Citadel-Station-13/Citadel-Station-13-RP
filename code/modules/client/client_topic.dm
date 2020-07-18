@@ -76,7 +76,7 @@
 			hsrc_logline = "[maybe] ([AREACOORD(maybe)])"
 		else
 			hsrc_logline = "[hsrc]"
-		log_href("[src] (usr:[usr]\[[COORD(usr)]\]) : [hsrc_logline] : [href]")
+		log_href("[src] (usr:[usr? "[usr]\[[AREACOORD(usr)]\]" : "WARNING: NULL USER"]) : [hsrc_logline] : [href]")
 
 	//Admin PM
 	if(href_list["priv_msg"])
