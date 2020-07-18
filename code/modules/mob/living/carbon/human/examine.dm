@@ -102,7 +102,7 @@
 	if(skipface || get_visible_name() == "Unknown")
 		. += "You can't make out what species they are."
 	else			//species isn't dna level!
-		. += "[T.He] [T.is] a [(src.custom_species ? src.custom_species : (species.name != "Human" ? species.get_examine_name() : (looks_synth ? cyborg_dumbfuckery : "unknown")))]!"
+		. += "[T.He] [T.is] a [(src.custom_species ? src.custom_species : (!looks_synth ? species.get_examine_name() : cyborg_dumbfuckery))]!"
 
 	var/extra_species_text = species.get_additional_examine_text(src)
 	if(extra_species_text)
@@ -413,9 +413,9 @@
 
 	// VOREStation Start
 	if(ooc_notes)
-		. += "<span class='deptradio'>OOC Notes:</span> <a href='?src=[REF(src)];ooc_notes=1'>\[View\]</a>\n"
+		. += "<span class='deptradio'>OOC Notes:</span> <a href='?src=[REF(src)];ooc_notes=1'>\[View\]</a>"
 
-	. += "<span class='deptradio'><a href='?src=[REF(src)];vore_prefs=1'>\[Mechanical Vore Preferences\]</a></span>\n"
+	. += "<span class='deptradio'><a href='?src=[REF(src)];vore_prefs=1'>\[Mechanical Vore Preferences\]</a></span>"
 
 	var/show_descs = show_descriptors_to(user)
 	if(show_descs)

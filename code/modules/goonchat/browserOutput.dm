@@ -183,7 +183,7 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 		return
 	var/list/music_data = list("adminMusic" = url_encode(url_encode(music)))
 	if(pitch)
-		extra_data["pitch"] = pitch
+		music_data["musicRate"] = pitch
 
 	if(extra_data?.len)
 		music_data["musicRate"] = extra_data["pitch"]

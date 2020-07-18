@@ -707,20 +707,20 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 
 		var/atom_info = desc_holder["atom_info"]
 		if(atom_info)
-			stat(null,"<span class='info'><b>[atom_info]</b></span>") //Blue, informative text.
+			stat(null,"<span class=\"info\"><b>[atom_info]</b></span>") //Blue, informative text.
 
 		var/atom_interaction = desc_holder["atom_interaction"]
 		if(atom_interaction)
 			for(var/line in atom_interaction)
-				stat(null, "<span class='info'><b>[line]</b></span>")
+				stat(null, "<span class=\"info\"><b>[line]</b></span>")
 
 		var/atom_fluff = desc_holder["atom_fluff"]
 		if(atom_fluff)
-			stat(null,"<font color='#298A08'><b>[atom_fluff]</b></font>") //Yellow, fluff-related text.
+			stat(null,"<font color=\"#298A08\"><b>[atom_fluff]</b></font>") //Yellow, fluff-related text.
 
 		var/atom_antag = desc_holder["atom_antag"]
 		if(atom_antag)
-			stat(null,"<font color='#8A0808'><b>[atom_antag]</b></font>") //Red, malicious antag-related text
+			stat(null,"<font color=\"#8A0808\"><b>[atom_antag]</b></font>") //Red, malicious antag-related text
 
 	if(mind)
 		add_spells_to_statpanel(spell_list) //mind. yep, the client has the spells, not the mind

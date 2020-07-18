@@ -2,7 +2,7 @@
 	SHOO! GO USE EXAMINE!
 */
 
-#define EXAMINE_PANEL_PADDING "        "
+#define EXAMINE_PANEL_PADDING "        " //EIGHTSPACES in total
 
 /atom
 	var/description_info = null //Helpful blue text.
@@ -48,8 +48,7 @@
 	var/list/desc_holder = list()
 
 /client/proc/update_description_holders(mob/user, atom/A, update_antag_info) //user is needed for icon2html
-	var/istate = A.icon_state ? A.icon_state : null //needed because apparently mappers don't use subtypes
-	desc_holder["name"] = "[icon2html(A, user, istate)][EXAMINE_PANEL_PADDING]<font size='4'>[A.name]</font>"
+	desc_holder["name"] = "[icon2html(A, user)][EXAMINE_PANEL_PADDING]<font size='4'>[A.name]</font>" //yes, i know this will break on floor
 	desc_holder["desc"] = A.desc //the default examine text.
 	desc_holder["atom_info"] = A.get_description_info()
 	desc_holder["atom_interaction"] = A.get_description_interaction(user)
