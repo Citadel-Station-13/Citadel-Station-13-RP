@@ -1054,9 +1054,10 @@ world
 	if (!isicon(I))
 		if (isfile(thing)) //special snowflake
 			var/name = sanitize_filename("[generate_asset_name(thing)].png")
-			register_asset(name, thing)
+			if(!SSassets.cache[name])
+				register_asset(name, thing)
 			for (var/thing2 in targets)
-				send_asset(thing2, key, FALSE)
+				send_asset(thing2, key)
 			return "<img class='icon icon-misc' src=\"[url_encode(name)]\">"
 		var/atom/A = thing
 		if (isnull(dir))
@@ -1078,9 +1079,10 @@ world
 	I = icon(I, icon_state, dir, frame, moving)
 
 	key = "[generate_asset_name(I)].png"
-	register_asset(key, I)
+	if(!SSassets.cache[key])
+		register_asset(key, I)
 	for (var/thing2 in targets)
-		send_asset(thing2, key, FALSE)
+		send_asset(thing2, key)
 
 	return "<img class='icon icon-[icon_state]' src=\"[url_encode(key)]\">"
 
