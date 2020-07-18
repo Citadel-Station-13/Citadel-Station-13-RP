@@ -3,8 +3,7 @@
 	name_plural = "Tesharii"
 	blurb = "A race of feathered raptors who developed alongside the Skrell, inhabiting \
 	the polar tundral regions outside of Skrell territory. Extremely fragile, they developed \
-	hunting skills that emphasized taking out their prey without themselves getting hit. They \
-	are only recently becoming known on human stations after reaching space with Skrell assistance."
+	hunting skills that emphasized taking out their prey without themselves getting hit."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/teshari)
 
 	num_alternate_languages = 3
@@ -27,18 +26,20 @@
 	blood_color = "#D514F7"
 	flesh_color = "#5F7BB0"
 	base_color = "#001144"
-	tail = "seromitail"
+	tail = "teshtail"
 	//tail_hair = "feathers" //VORESTATION TESHARI TEMPORARY REMOVAL
 	reagent_tag = IS_TESHARI
 
 	move_trail = /obj/effect/decal/cleanable/blood/tracks/paw
 
-	icobase = 'icons/mob/human_races/r_seromi.dmi'
-	deform = 'icons/mob/human_races/r_seromi.dmi'
-	damage_overlays = 'icons/mob/human_races/masks/dam_seromi.dmi'
-	damage_mask = 'icons/mob/human_races/masks/dam_mask_seromi.dmi'
-	blood_mask = 'icons/mob/human_races/masks/blood_seromi.dmi'
-	suit_storage_icon = 'icons/mob/species/seromi/belt_mirror.dmi'
+	icobase = 'icons/mob/human_races/r_teshari_vr.dmi'
+	deform = 'icons/mob/human_races/r_teshari_vr.dmi'
+	damage_overlays = 'icons/mob/human_races/masks/dam_teshari.dmi'
+	damage_mask = 'icons/mob/human_races/masks/dam_mask_teshari.dmi'
+	blood_mask = 'icons/mob/human_races/masks/blood_teshari.dmi'
+	suit_storage_icon = 'icons/mob/species/teshari/belt_mirror.dmi'
+	icobase_tail = 1
+	color_mult = 1
 
 	fire_icon_state = "generic" // Humanoid is too big for them and spriting a new one is really annoying.
 
@@ -58,7 +59,7 @@
 
 	ambiguous_genders = TRUE
 
-	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED
+	spawn_flags = SPECIES_CAN_JOIN
 	appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 	bump_flag = MONKEY
 	swap_flags = MONKEY|SLIME|SIMPLE_ANIMAL
@@ -92,15 +93,15 @@
 	has_limbs = list(
 		BP_TORSO =  list("path" = /obj/item/organ/external/chest),
 		BP_GROIN =  list("path" = /obj/item/organ/external/groin),
-		BP_HEAD =   list("path" = /obj/item/organ/external/head/seromi),
+		BP_HEAD =   list("path" = /obj/item/organ/external/head/teshari),
 		BP_L_ARM =  list("path" = /obj/item/organ/external/arm),
 		BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right),
 		BP_L_LEG =  list("path" = /obj/item/organ/external/leg),
 		BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right),
-		BP_L_HAND = list("path" = /obj/item/organ/external/hand/seromi),
-		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right/seromi),
-		BP_L_FOOT = list("path" = /obj/item/organ/external/foot/seromi),
-		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/seromi)
+		BP_L_HAND = list("path" = /obj/item/organ/external/hand/teshari),
+		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right/teshari),
+		BP_L_FOOT = list("path" = /obj/item/organ/external/foot/teshari),
+		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/teshari)
 		)
 
 	has_organ = list(
@@ -123,7 +124,10 @@
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/sonar_ping,
-		/mob/living/proc/hide
+		/mob/living/proc/hide,
+		/mob/living/proc/shred_limb,
+		/mob/living/proc/toggle_pass_table,
+		/mob/living/carbon/human/proc/tie_hair
 		)
 
 	descriptors = list(
