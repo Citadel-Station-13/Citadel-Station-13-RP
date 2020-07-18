@@ -971,6 +971,26 @@
 /obj/structure/sign/warning/nosmoking_2,
 /turf/simulated/wall,
 /area/outpost/research/toxins_misc_lab)
+"cd" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/machinery/portable_atmospherics/canister/phoron,
+/turf/simulated/floor/plating,
+/area/outpost/research/toxins_misc_lab)
+"ce" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/turf/simulated/floor/plating,
+/area/outpost/research/toxins_misc_lab)
 "cf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -1027,6 +1047,36 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/storage/surface_eva)
+"cj" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/portable_atmospherics/canister/carbon_dioxide,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/outpost/research/toxins_misc_lab)
+"ck" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/portable_atmospherics/canister/nitrogen,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/outpost/research/toxins_misc_lab)
+"cl" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
+/turf/simulated/floor/plating,
+/area/outpost/research/toxins_misc_lab)
 "cm" = (
 /obj/structure/cable/ender{
 	icon_state = "4-8";
@@ -1078,6 +1128,13 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
+/area/outpost/research/toxins_misc_lab)
+"cr" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/portable_atmospherics/canister/empty,
+/turf/simulated/floor/plating,
 /area/outpost/research/toxins_misc_lab)
 "cs" = (
 /obj/machinery/pipedispenser,
@@ -1871,6 +1928,14 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/outpost/research/toxins_misc_lab)
+"dj" = (
+/obj/machinery/door/window/brigdoor/northleft{
+	id = "carbon_canisters";
+	req_access = null;
+	req_one_access = list(47)
+	},
+/turf/simulated/floor/plating,
+/area/outpost/research/toxins_misc_lab)
 "dk" = (
 /obj/machinery/atmospherics/binary/pump,
 /turf/simulated/floor/tiled/white,
@@ -1903,6 +1968,27 @@
 	},
 /obj/machinery/light_switch{
 	pixel_x = 25
+	},
+/turf/simulated/floor/tiled/white,
+/area/outpost/research/toxins_misc_lab)
+"do" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/mauve/border,
+/obj/effect/floor_decal/borderfloor/corner2,
+/obj/effect/floor_decal/corner/mauve/bordercorner2,
+/obj/machinery/camera/network/research_outpost{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/outpost/research/toxins_misc_lab)
+"dp" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/mauve/border,
+/obj/structure/cable/green,
+/obj/machinery/light,
+/obj/machinery/power/apc{
+	name = "south bump";
+	pixel_y = -28
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_misc_lab)
@@ -2171,10 +2257,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/hallway/resarch_outpost_western_hallway)
-"dT" = (
-/obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/outdoors/grass/sif/virgo3b,
-/area/tether/outpost/solars_outside)
 "dU" = (
 /obj/structure/window/reinforced/full,
 /obj/structure/grille,
@@ -2188,16 +2270,8 @@
 	},
 /turf/simulated/floor/plating,
 /area/outpost/research/hallway/resarch_outpost_western_hallway)
-"dV" = (
-/obj/structure/flora/ausbushes/fullgrass,
-/turf/simulated/floor/outdoors/grass/sif/virgo3b,
-/area/tether/outpost/solars_outside)
 "dZ" = (
 /obj/structure/flora/tree/sif,
-/turf/simulated/floor/outdoors/grass/sif/virgo3b,
-/area/tether/outpost/solars_outside)
-"ed" = (
-/obj/structure/flora/ausbushes/ppflowers,
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/tether/outpost/solars_outside)
 "ee" = (
@@ -2365,7 +2439,9 @@
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/hallway/resarch_outpost_western_hallway)
 "eC" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/fence/post{
+	dir = 8
+	},
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/tether/outpost/solars_outside)
 "eF" = (
@@ -2460,18 +2536,19 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_misc_lab)
 "eP" = (
-/obj/structure/plasticflaps/mining,
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/airlock/science{
+	name = "Tools and parts"
 	},
-/obj/effect/floor_decal/corner/mauve/border{
-	dir = 4
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
-/obj/machinery/conveyor{
-	id = "cansiter_in"
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/white,
-/area/outpost/research/toxins_misc_lab)
+/area/outpost/research/simulator)
 "eQ" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -2522,8 +2599,7 @@
 /turf/simulated/wall/r_wall,
 /area/outpost/research/telescience_lab)
 "fe" = (
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/tree/sif,
+/obj/structure/fence/door,
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/tether/outpost/solars_outside)
 "fh" = (
@@ -2739,6 +2815,23 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_misc_lab)
 "fF" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/hologram/holopad,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/outpost/research/toxins_misc_lab)
+"fG" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
@@ -2746,29 +2839,9 @@
 	dir = 10
 	},
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/cable/green{
 	d1 = 2;
 	d2 = 8;
 	icon_state = "2-8"
-	},
-/obj/machinery/hologram/holopad,
-/turf/simulated/floor/tiled/white,
-/area/outpost/research/toxins_misc_lab)
-"fG" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_misc_lab)
@@ -2924,15 +2997,15 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/materials_lab)
 "fV" = (
-/obj/structure/disposalpipe/segment,
 /obj/structure/table/standard,
-/obj/item/folder/yellow,
-/obj/item/folder/blue{
-	pixel_x = 4;
-	pixel_y = 4
-	},
+/obj/item/paper_bin,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 9
+	},
+/obj/item/pen,
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_misc_lab)
 "ga" = (
@@ -2973,8 +3046,13 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
+/obj/machinery/computer/guestpass{
+	dir = 4;
+	pixel_x = -28;
+	pixel_y = 0
+	},
 /turf/simulated/wall,
-/area/outpost/research/toxins_canister_icyhoot)
+/area/outpost/research/hallway/resarch_outpost_western_hallway)
 "gq" = (
 /obj/machinery/atmospherics/pipe/simple/visible,
 /turf/simulated/floor/tiled/white,
@@ -3131,12 +3209,6 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/materials_lab)
 "gK" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/mauve/border{
-	dir = 8
-	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -3155,6 +3227,12 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 5
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 10
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 9
 	},
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/hallway/resarch_outpost_western_hallway)
@@ -3346,12 +3424,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/hallway/resarch_outpost_western_hallway)
 "hh" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/mauve/border{
-	dir = 8
-	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
@@ -3370,9 +3442,11 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 5
 	},
-/obj/item/radio/intercom{
-	dir = 8;
-	pixel_x = -24
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 10
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 9
 	},
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/hallway/resarch_outpost_western_hallway)
@@ -3695,8 +3769,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/hallway/resarch_outpost_western_hallway)
 "hV" = (
-/obj/structure/flora/ausbushes/brflowers,
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/sif/tendrils,
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/tether/outpost/solars_outside)
 "hZ" = (
@@ -3706,6 +3779,23 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/outpost/research/telescience_lab)
+"ig" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/airlock/science{
+	name = "Heating and Cooling"
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/door/firedoor,
+/turf/space,
+/area/outpost/research/toxins_canister_icyhoot)
 "il" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -3745,10 +3835,9 @@
 /turf/simulated/floor/plating,
 /area/outpost/research/toxins_misc_lab)
 "ir" = (
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/outdoors/grass/sif/virgo3b,
-/area/tether/outpost/solars_outside)
+/obj/structure/fence/door,
+/turf/simulated/floor/outdoors/dirt/virgo3b,
+/area/outpost/research/toxins_misc_lab)
 "iz" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -3764,10 +3853,13 @@
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/hallway/resarch_outpost_southern_hallway)
 "iL" = (
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/ausbushes/ywflowers,
-/turf/simulated/floor/outdoors/grass/sif/virgo3b,
-/area/tether/outpost/solars_outside)
+/obj/structure/window/reinforced/full,
+/obj/structure/grille,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/outpost/research/simulator)
 "jc" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -3843,11 +3935,6 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 5
 	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/hallway/resarch_outpost_southern_hallway)
 "jj" = (
@@ -3875,17 +3962,8 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 10
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 8
-	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/hallway/resarch_outpost_southern_hallway)
 "jl" = (
@@ -3970,6 +4048,11 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 1
 	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/hallway/resarch_outpost_southern_hallway)
 "jr" = (
@@ -4040,8 +4123,11 @@
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/hallway/resarch_outpost_eastern_hallway)
 "jy" = (
-/obj/machinery/portable_atmospherics/powered/pump,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/portable_atmospherics/powered/scrubber,
+/obj/machinery/camera/network/research_outpost{
+	dir = 9
+	},
 /turf/simulated/floor/plating,
 /area/outpost/research/atmospherics)
 "jE" = (
@@ -4158,20 +4244,30 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/outpost/research/crew_quarters/sleep/Dorm_1)
 "kk" = (
-/obj/structure/disposalpipe/segment{
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/airlock/science{
-	name = "Heating and Cooling"
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 9
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/mauve/bordercorner2{
+	dir = 1
 	},
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
 	},
-/obj/machinery/door/firedoor,
+/obj/machinery/light_switch{
+	pixel_y = 25
+	},
+/obj/structure/table/standard,
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_canister_icyhoot)
 "kl" = (
@@ -4263,16 +4359,6 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/carpet/purcarpet,
 /area/outpost/research/hallway/resarch_outpost_eastern_hallway)
-"kx" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/portable_atmospherics/canister/nitrogen,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/outpost/research/toxins_misc_lab)
 "kA" = (
 /obj/structure/window/reinforced/full,
 /obj/structure/grille,
@@ -4380,16 +4466,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/wall,
 /area/outpost/research/storage/tools)
-"kT" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/white,
-/area/outpost/research/toxins_misc_lab)
 "kX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -4422,40 +4498,20 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/machinery/atmospherics/unary/freezer{
 	dir = 4
-	},
-/obj/effect/floor_decal/corner/mauve/bordercorner2{
-	dir = 4
-	},
-/obj/machinery/firealarm{
-	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_canister_icyhoot)
 "lh" = (
-/obj/structure/table/standard,
-/obj/item/folder/red{
-	pixel_x = -4
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
 	},
-/obj/item/folder/blue{
-	pixel_x = 4;
-	pixel_y = 4
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 9
-	},
-/obj/effect/floor_decal/corner/mauve/border{
-	dir = 9
-	},
-/obj/effect/floor_decal/borderfloor/corner2{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/mauve/bordercorner2{
-	dir = 1
-	},
-/obj/machinery/light_switch{
-	pixel_y = 25
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/simulator)
@@ -4492,23 +4548,7 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/hallway/resarch_outpost_eastern_hallway)
-"lo" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/portable_atmospherics/canister/carbon_dioxide,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/outpost/research/toxins_misc_lab)
 "lp" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/mauve/border{
-	dir = 8
-	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -4523,6 +4563,15 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 5
 	},
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/mauve/bordercorner{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 9
+	},
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/hallway/resarch_outpost_western_hallway)
 "lq" = (
@@ -4535,23 +4584,13 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/materials_lab)
 "lv" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/structure/table/standard,
+/obj/item/folder/yellow,
+/obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 5
-	},
 /obj/effect/floor_decal/corner/mauve/border{
-	dir = 5
-	},
-/obj/effect/floor_decal/borderfloor/corner2{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/mauve/bordercorner2{
-	dir = 4
-	},
-/obj/machinery/firealarm{
-	pixel_y = 24
+	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/simulator)
@@ -4577,20 +4616,28 @@
 /area/outpost/research/hallway/resarch_outpost_storage_hallway)
 "lz" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 8;
-	pixel_y = -4
+	dir = 4
 	},
 /obj/effect/floor_decal/borderfloor{
-	dir = 4
+	dir = 8
 	},
 /obj/effect/floor_decal/corner/mauve/border{
-	dir = 4
+	dir = 8
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /obj/machinery/light{
-	dir = 4
+	dir = 8;
+	light_range = 12
 	},
+/obj/structure/table/standard,
+/obj/structure/table/standard,
+/obj/item/tool/wrench,
 /turf/simulated/floor/tiled/white,
-/area/outpost/research/simulator)
+/area/outpost/research/toxins_canister_icyhoot)
 "lC" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -4671,19 +4718,15 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/hallway/resarch_outpost_southern_hallway)
-"lZ" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/mauve/border,
-/obj/effect/floor_decal/borderfloor/corner2,
-/obj/effect/floor_decal/corner/mauve/bordercorner2,
-/obj/machinery/camera/network/research_outpost{
-	dir = 1
+"ma" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/outpost/research/toxins_misc_lab)
-"ma" = (
-/turf/simulated/floor/plating,
-/area/outpost/research/longtermstorage)
+/area/outpost/research/toxins_canister_icyhoot)
 "mb" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
@@ -4741,12 +4784,6 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 9
-	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
@@ -4767,6 +4804,13 @@
 	},
 /obj/machinery/light{
 	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/hallway/resarch_outpost_southern_hallway)
@@ -4791,11 +4835,16 @@
 /turf/simulated/floor/plating,
 /area/outpost/research/toxins_misc_lab)
 "mk" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9
+/obj/structure/disposalpipe/segment,
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
 	},
-/turf/simulated/floor/tiled/white,
-/area/outpost/research/toxins_canister_icyhoot)
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 8
+	},
+/obj/structure/table/glass,
+/turf/simulated/floor/tiled/steel,
+/area/outpost/research/hallway/resarch_outpost_western_hallway)
 "mn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -4978,17 +5027,13 @@
 /turf/simulated/floor/carpet/blucarpet,
 /area/outpost/research/crew_quarters/sleep/Dorm_2)
 "nt" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/airlock/science{
-	name = "Tools and parts"
+/obj/structure/table/standard,
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
 	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 8
 	},
-/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/simulator)
 "nv" = (
@@ -5044,11 +5089,6 @@
 	},
 /turf/simulated/floor/carpet/blucarpet,
 /area/outpost/research/crew_quarters/sleep/Dorm_2)
-"nL" = (
-/obj/effect/floor_decal/rust,
-/obj/effect/decal/cleanable/blood/oil,
-/turf/simulated/floor/plating,
-/area/outpost/research/longtermstorage)
 "nM" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -5293,6 +5333,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/hallway/resarch_outpost_northern_hallway)
 "pc" = (
+/obj/machinery/portable_atmospherics/powered/pump,
 /turf/simulated/floor/plating,
 /area/outpost/research/atmospherics)
 "pi" = (
@@ -5307,15 +5348,24 @@
 /turf/simulated/wall,
 /area/outpost/research/atmospherics)
 "pt" = (
-/obj/machinery/bomb_tester,
 /obj/effect/floor_decal/borderfloor{
-	dir = 6
+	dir = 8
 	},
 /obj/effect/floor_decal/corner/mauve/border{
-	dir = 6
+	dir = 8
 	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -22
+	},
+/obj/structure/table/standard,
 /turf/simulated/floor/tiled/white,
-/area/outpost/research/simulator)
+/area/outpost/research/toxins_canister_icyhoot)
 "pz" = (
 /obj/machinery/atmospherics/pipe/tank/air,
 /obj/effect/floor_decal/industrial/warning{
@@ -5391,16 +5441,6 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/white,
-/area/outpost/research/toxins_misc_lab)
-"pK" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
-/turf/simulated/floor/plating,
 /area/outpost/research/toxins_misc_lab)
 "pQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -5486,13 +5526,13 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/medical/first_aid_south_west)
 "qb" = (
-/obj/structure/table/standard,
-/obj/item/folder/yellow,
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
 	},
-/obj/effect/floor_decal/corner/mauve/border{
-	dir = 8
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/simulator)
@@ -5742,14 +5782,20 @@
 /turf/simulated/wall,
 /area/outpost/research/toxins_canister_icyhoot)
 "ro" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 9
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/mauve/bordercorner2{
+	dir = 4
+	},
+/obj/machinery/firealarm{
+	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_canister_icyhoot)
@@ -5772,6 +5818,18 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/hallway/resarch_outpost_western_hallway)
+"rC" = (
+/obj/machinery/door/blast/regular{
+	dir = 8;
+	id = "burn_chamber_v";
+	layer = 2.7;
+	name = "Burn Chamber Vent"
+	},
+/obj/machinery/atmospherics/pipe/simple/visible{
+	dir = 5
+	},
+/turf/simulated/floor/reinforced/airless,
+/area/outpost/research/mixing)
 "rE" = (
 /obj/machinery/embedded_controller/radio/airlock/phoron{
 	frequency = 1788;
@@ -5870,10 +5928,9 @@
 /turf/simulated/floor/carpet/blucarpet,
 /area/outpost/research/crew_quarters/sleep/Dorm_2)
 "rS" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plating,
-/area/outpost/research/atmospherics)
+/obj/machinery/hologram/holopad,
+/turf/simulated/floor/tiled/white,
+/area/outpost/research/toxins_canister_icyhoot)
 "rT" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8;
@@ -5881,13 +5938,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/outpost/research/atmospherics)
-"rU" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/portable_atmospherics/canister/empty,
-/turf/simulated/floor/plating,
-/area/outpost/research/toxins_misc_lab)
 "rW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -5954,13 +6004,18 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/crew_quarters/sleep/Dorm_3)
 "so" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 5
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 8;
+	pixel_y = -4
 	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/simulator)
@@ -6041,7 +6096,7 @@
 	layer = 2.7;
 	name = "Burn Chamber Vent"
 	},
-/obj/machinery/atmospherics/pipe/simple/visible,
+/obj/machinery/atmospherics/pipe/manifold4w/visible,
 /turf/simulated/floor/reinforced/airless,
 /area/outpost/research/mixing)
 "sP" = (
@@ -6158,23 +6213,28 @@
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "tl" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/mauve/border,
-/obj/effect/floor_decal/borderfloor/corner2{
-	dir = 9
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
 	},
-/obj/effect/floor_decal/corner/mauve/bordercorner2{
-	dir = 9
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
 	},
-/obj/machinery/light,
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_misc_lab)
 "tq" = (
-/obj/effect/floor_decal/industrial/warning/cee,
-/obj/machinery/camera/network/research_outpost{
-	dir = 10
+/obj/machinery/bomb_tester,
+/obj/effect/floor_decal/borderfloor{
+	dir = 6
 	},
-/turf/simulated/floor/greengrid/airless,
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/white,
 /area/outpost/research/simulator)
 "tz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -6255,11 +6315,20 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/outpost/research/crew_quarters/sleep/Dorm_1)
 "tM" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/mauve/border,
-/obj/structure/table/standard,
-/turf/simulated/floor/tiled/white,
-/area/outpost/research/toxins_canister_icyhoot)
+/obj/structure/disposalpipe/segment,
+/obj/item/radio/intercom{
+	dir = 8;
+	pixel_x = -24
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 8
+	},
+/obj/structure/table/glass,
+/turf/simulated/floor/tiled/steel,
+/area/outpost/research/hallway/resarch_outpost_western_hallway)
 "tT" = (
 /obj/machinery/vending/snack,
 /turf/simulated/floor/wood,
@@ -6432,10 +6501,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/carpet/blucarpet,
 /area/outpost/research/crew_quarters/sleep/Dorm_2)
-"uC" = (
-/obj/structure/sign/warning/radioactive,
-/turf/simulated/wall,
-/area/outpost/research/longtermstorage)
 "uE" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "plant-10"
@@ -6470,11 +6535,6 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 5
-	},
-/obj/machinery/computer/guestpass{
-	dir = 4;
-	pixel_x = -28;
-	pixel_y = 0
 	},
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/hallway/resarch_outpost_western_hallway)
@@ -6649,13 +6709,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/outpost/research/longtermstorage)
-"wm" = (
-/obj/machinery/camera/network/research_outpost{
-	dir = 9
-	},
-/obj/effect/floor_decal/rust,
-/turf/simulated/floor/plating,
-/area/outpost/research/longtermstorage)
 "wo" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 5
@@ -6766,30 +6819,15 @@
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/tether/outpost/solars_outside)
 "wN" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 4
-	},
-/obj/effect/floor_decal/borderfloor{
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/obj/effect/floor_decal/corner/mauve/border{
-	dir = 9
-	},
-/obj/effect/floor_decal/borderfloor/corner2{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/mauve/bordercorner2{
-	dir = 1
-	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
 	},
-/obj/machinery/light_switch{
-	pixel_y = 25
-	},
-/obj/structure/table/standard,
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_canister_icyhoot)
 "wO" = (
@@ -6814,17 +6852,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/outpost/research/toxins_misc_lab)
-"wW" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/mauve/border,
-/obj/structure/cable/green,
-/obj/machinery/light,
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
-/turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_misc_lab)
 "wZ" = (
 /obj/machinery/atmospherics/pipe/manifold4w/visible/cyan,
@@ -7023,8 +7050,30 @@
 /turf/simulated/floor/plating,
 /area/outpost/research/materials_chamber)
 "yf" = (
-/obj/structure/sign/warning/compressed_gas,
-/turf/simulated/wall,
+/obj/effect/floor_decal/rust,
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/door/airlock/research{
+	name = "Toxins Storage";
+	req_access = list(8)
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
 /area/outpost/research/toxins_misc_lab)
 "yh" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -7056,9 +7105,6 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
 	},
-/obj/structure/flora/pottedplant{
-	icon_state = "plant-10"
-	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 6
 	},
@@ -7068,15 +7114,34 @@
 /obj/effect/floor_decal/corner/mauve/bordercorner2{
 	dir = 6
 	},
+/obj/structure/flora/pottedplant/unusual,
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/storage/tools)
 "ys" = (
-/obj/structure/window/reinforced/full,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 8
+/obj/structure/table/standard,
+/obj/item/folder/red{
+	pixel_x = -4
 	},
-/turf/simulated/floor/plating,
+/obj/item/folder/blue{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 9
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/mauve/bordercorner2{
+	dir = 1
+	},
+/obj/machinery/light_switch{
+	pixel_y = 25
+	},
+/turf/simulated/floor/tiled/white,
 /area/outpost/research/simulator)
 "yv" = (
 /obj/machinery/atmospherics/binary/pump{
@@ -7159,6 +7224,9 @@
 /area/outpost/research/crew_quarters/sleep/Dorm_1)
 "yY" = (
 /obj/effect/floor_decal/rust,
+/obj/machinery/conveyor{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
 /area/outpost/research/longtermstorage)
 "za" = (
@@ -7703,8 +7771,7 @@
 /area/rnd/breakroom)
 "Bb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/rust,
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
 /area/outpost/research/longtermstorage)
 "Be" = (
@@ -8061,12 +8128,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/telescience_lab)
 "Dm" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/mauve/border{
-	dir = 8
-	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
@@ -8086,34 +8147,31 @@
 /obj/machinery/camera/network/research_outpost{
 	dir = 5
 	},
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/mauve/bordercorner{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 10
+	},
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/hallway/resarch_outpost_western_hallway)
 "Do" = (
-/obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/rust,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
+/obj/structure/table/standard,
+/obj/effect/floor_decal/borderfloor{
+	dir = 10
 	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 10
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
+/obj/machinery/alarm{
+	dir = 1;
+	pixel_y = -22
 	},
-/obj/machinery/door/airlock/research{
-	name = "Toxins Storage";
-	req_access = list(8)
-	},
-/obj/machinery/door/firedoor/glass,
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/plating,
-/area/outpost/research/toxins_misc_lab)
+/turf/simulated/floor/tiled/white,
+/area/outpost/research/simulator)
 "Dq" = (
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/plating,
@@ -8238,14 +8296,23 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/crew_quarters/sleep/Dorm_3)
 "Eb" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor{
 	dir = 5
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 5
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/mauve/bordercorner2{
+	dir = 4
+	},
+/obj/machinery/firealarm{
+	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/simulator)
@@ -8406,14 +8473,13 @@
 /area/outpost/research/storage/tools)
 "FJ" = (
 /obj/structure/table/standard,
-/obj/item/folder/red{
-	pixel_x = -4
+/obj/item/folder/yellow,
+/obj/item/folder/blue{
+	pixel_x = 4;
+	pixel_y = 4
 	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
-/obj/effect/floor_decal/borderfloor/corner2,
-/obj/effect/floor_decal/corner/mauve/bordercorner2,
-/obj/item/tool/wrench,
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_misc_lab)
 "FN" = (
@@ -8450,15 +8516,14 @@
 "FW" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/portable_atmospherics/powered/pump,
 /turf/simulated/floor/plating,
 /area/outpost/research/atmospherics)
 "FX" = (
-/obj/structure/table/standard,
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/mauve/border{
-	dir = 8
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/simulator)
@@ -8555,16 +8620,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/hallway/resarch_outpost_northern_hallway)
-"GM" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/machinery/portable_atmospherics/canister/oxygen,
-/turf/simulated/floor/plating,
-/area/outpost/research/toxins_misc_lab)
 "GT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -8626,22 +8681,18 @@
 	dir = 8;
 	pixel_x = -24
 	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/mauve/bordercorner2{
+	dir = 9
+	},
+/obj/machinery/light,
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_misc_lab)
 "Hl" = (
 /turf/simulated/wall,
 /area/outpost/research/crew_quarters/sleep/Dorm_2)
-"Hm" = (
-/obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/rust,
-/obj/machinery/door/window/brigdoor/northleft{
-	id = "send_canisters";
-	req_access = null;
-	req_one_access = list(47)
-	},
-/turf/simulated/floor/plating,
-/area/outpost/research/toxins_misc_lab)
 "Hn" = (
 /obj/machinery/disposal,
 /obj/effect/floor_decal/borderfloor{
@@ -8837,14 +8888,17 @@
 /area/outpost/research/materials_chamber)
 "HU" = (
 /obj/effect/floor_decal/borderfloor{
-	dir = 5
+	dir = 10
 	},
 /obj/effect/floor_decal/corner/mauve/border{
-	dir = 5
+	dir = 10
 	},
-/obj/machinery/atmospherics/portables_connector{
-	dir = 8
+/obj/structure/cable/green,
+/obj/machinery/power/apc{
+	name = "south bump";
+	pixel_y = -28
 	},
+/obj/structure/table/standard,
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_canister_icyhoot)
 "Ia" = (
@@ -9101,8 +9155,17 @@
 /turf/simulated/floor/plating,
 /area/outpost/research/engineering/eva_atmospherics)
 "JU" = (
-/obj/machinery/atmospherics/unary/heater{
+/obj/effect/floor_decal/borderfloor{
 	dir = 4
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 4
+	},
+/obj/machinery/camera/network/research_outpost{
+	dir = 8
+	},
+/obj/machinery/atmospherics/portables_connector{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_canister_icyhoot)
@@ -9271,9 +9334,14 @@
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/hallway/resarch_outpost_storage_hallway)
 "Kx" = (
-/obj/machinery/portable_atmospherics/powered/scrubber,
-/turf/simulated/floor/plating,
-/area/outpost/research/atmospherics)
+/obj/effect/floor_decal/borderfloor{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/white,
+/area/outpost/research/toxins_canister_icyhoot)
 "Kz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/floor_decal/borderfloor{
@@ -9338,8 +9406,15 @@
 /area/outpost/research/materials_lab)
 "KR" = (
 /obj/structure/disposalpipe/segment,
-/turf/simulated/wall,
-/area/outpost/research/toxins_canister_icyhoot)
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 9
+	},
+/obj/structure/bed/chair/comfy/purp,
+/turf/simulated/floor/tiled/steel,
+/area/outpost/research/hallway/resarch_outpost_western_hallway)
 "KV" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -9368,15 +9443,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/outpost/research/substation)
-"KY" = (
-/obj/effect/floor_decal/rust,
-/obj/machinery/door/window/brigdoor/northleft{
-	id = "send_canisters";
-	req_access = null;
-	req_one_access = list(47)
-	},
-/turf/simulated/floor/plating,
-/area/outpost/research/toxins_misc_lab)
 "KZ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -9402,13 +9468,13 @@
 /area/outpost/research/engineering/eva_atmospherics)
 "Le" = (
 /obj/effect/floor_decal/borderfloor{
-	dir = 1
+	dir = 5
 	},
 /obj/effect/floor_decal/corner/mauve/border{
-	dir = 1
+	dir = 5
 	},
-/obj/machinery/atmospherics/unary/freezer{
-	dir = 4
+/obj/machinery/atmospherics/portables_connector{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_canister_icyhoot)
@@ -9458,10 +9524,20 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/materials_lab)
 "Lt" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 4
+	},
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
+	icon_state = "0-8"
+	},
+/obj/machinery/hologram/holopad,
+/obj/machinery/power/apc{
+	dir = 4;
+	name = "east bump";
+	pixel_x = 28
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/simulator)
@@ -9511,14 +9587,6 @@
 	},
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/tether/outpost/solars_outside)
-"LL" = (
-/obj/machinery/door/window/brigdoor/northleft{
-	id = "send_canisters";
-	req_access = null;
-	req_one_access = list(47)
-	},
-/turf/simulated/floor/plating,
-/area/outpost/research/toxins_misc_lab)
 "LN" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -9539,6 +9607,19 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/materials_lab)
+"LS" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/floor_decal/borderfloor{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 10
+	},
+/obj/structure/bed/chair/comfy/purp{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
+/area/outpost/research/hallway/resarch_outpost_western_hallway)
 "LW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -9878,17 +9959,8 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/materials_lab)
 "Nq" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 10
-	},
-/obj/effect/floor_decal/corner/mauve/border{
-	dir = 10
-	},
-/obj/structure/cable/green,
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/mauve/border,
 /obj/structure/table/standard,
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_canister_icyhoot)
@@ -10000,18 +10072,6 @@
 "Oa" = (
 /obj/structure/window/reinforced{
 	dir = 1
-	},
-/obj/effect/floor_decal/rust,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
-	},
-/obj/structure/cable/green{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
 	},
 /turf/simulated/floor/plating,
 /area/outpost/research/toxins_misc_lab)
@@ -10227,15 +10287,12 @@
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "Pw" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/obj/machinery/conveyor_switch/oneway{
-	id = "canister_storage";
-	name = "Sending Conveyor"
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/plating,
 /area/outpost/research/longtermstorage)
@@ -10250,7 +10307,7 @@
 /turf/simulated/floor/plating,
 /area/outpost/research/atmospherics)
 "Qb" = (
-/obj/machinery/portable_atmospherics/powered/pump,
+/obj/machinery/portable_atmospherics/powered/scrubber,
 /turf/simulated/floor/plating,
 /area/outpost/research/atmospherics)
 "Qf" = (
@@ -10284,6 +10341,15 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/rust,
+/obj/structure/disposaloutlet{
+	dir = 8
+	},
+/obj/machinery/conveyor{
+	dir = 8
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
 /turf/simulated/floor/plating,
 /area/outpost/research/longtermstorage)
 "Qn" = (
@@ -10311,13 +10377,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/outpost/research/substation)
-"Qu" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/effect/floor_decal/rust,
-/turf/simulated/floor/plating,
-/area/outpost/research/toxins_misc_lab)
 "QA" = (
 /obj/machinery/atmospherics/pipe/tank{
 	dir = 1;
@@ -10353,6 +10412,7 @@
 "QH" = (
 /obj/machinery/light,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/portable_atmospherics/powered/pump,
 /turf/simulated/floor/plating,
 /area/outpost/research/atmospherics)
 "QI" = (
@@ -10361,12 +10421,11 @@
 /turf/simulated/floor/carpet/oracarpet,
 /area/outpost/research/crew_quarters/sleep/Dorm_3)
 "QN" = (
-/obj/structure/disposalpipe/segment,
-/obj/machinery/conveyor{
-	id = "canister_storage"
+/obj/structure/fence/post{
+	dir = 8
 	},
-/turf/simulated/floor/plating,
-/area/outpost/research/longtermstorage)
+/turf/simulated/floor/outdoors/dirt/virgo3b,
+/area/tether/outpost/solars_outside)
 "QP" = (
 /obj/machinery/meter,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
@@ -10402,7 +10461,9 @@
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/telescience_lab)
 "Ri" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/atmospherics/unary/heater{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_canister_icyhoot)
 "Rj" = (
@@ -10448,10 +10509,8 @@
 /turf/simulated/floor/carpet/oracarpet,
 /area/outpost/research/crew_quarters/sleep/Dorm_3)
 "Rs" = (
-/obj/machinery/portable_atmospherics/powered/scrubber,
-/obj/machinery/camera/network/research_outpost{
-	dir = 9
-	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/portable_atmospherics/powered/pump,
 /turf/simulated/floor/plating,
 /area/outpost/research/atmospherics)
 "Ry" = (
@@ -10505,18 +10564,16 @@
 	req_access = null;
 	req_one_access = list(47)
 	},
-/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/outpost/research/toxins_misc_lab)
 "RJ" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 6
+/obj/effect/floor_decal/rust,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/conveyor{
+	dir = 8
 	},
-/obj/effect/floor_decal/corner/mauve/border{
-	dir = 6
-	},
-/turf/simulated/floor/tiled/white,
-/area/outpost/research/toxins_canister_icyhoot)
+/turf/simulated/floor/plating,
+/area/outpost/research/longtermstorage)
 "RL" = (
 /turf/simulated/wall,
 /area/outpost/research/crew_quarters/sleep/Dorm_1)
@@ -10761,27 +10818,12 @@
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/hallway/resarch_outpost_storage_hallway)
 "SW" = (
-/obj/structure/table/standard,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/floor_decal/industrial/warning/cee,
+/obj/machinery/camera/network/research_outpost{
 	dir = 10
 	},
-/obj/effect/floor_decal/corner/mauve/border{
-	dir = 10
-	},
-/obj/machinery/alarm{
-	dir = 1;
-	pixel_y = -22
-	},
-/turf/simulated/floor/tiled/white,
+/turf/simulated/floor/greengrid/airless,
 /area/outpost/research/simulator)
-"Ta" = (
-/obj/structure/disposalpipe/trunk,
-/obj/structure/disposaloutlet,
-/obj/machinery/conveyor{
-	id = "canister_storage"
-	},
-/turf/simulated/floor/plating,
-/area/outpost/research/longtermstorage)
 "Td" = (
 /obj/machinery/light{
 	dir = 8
@@ -10846,27 +10888,9 @@
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/hallway/resarch_outpost_southern_hallway)
 "Tq" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
 	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/mauve/border{
-	dir = 8
-	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/machinery/light{
-	dir = 8;
-	light_range = 12
-	},
-/obj/structure/table/standard,
-/obj/structure/table/standard,
-/obj/item/tool/wrench,
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_canister_icyhoot)
 "Tw" = (
@@ -10882,7 +10906,7 @@
 /area/outpost/research/toxins_misc_lab)
 "Tz" = (
 /obj/machinery/door/airlock/glass{
-	req_one_access = list (47)
+	req_one_access = list(47)
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/airless,
@@ -11163,12 +11187,25 @@
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/hallway/resarch_outpost_eastern_hallway)
 "UL" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/table/standard,
+/obj/item/folder/red{
+	pixel_x = -4
+	},
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/mauve/border,
+/obj/effect/floor_decal/borderfloor/corner2,
+/obj/effect/floor_decal/corner/mauve/bordercorner2,
+/obj/item/tool/wrench,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
 /obj/structure/cable/green{
 	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
+	d2 = 8;
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_misc_lab)
@@ -11260,14 +11297,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/hallway/resarch_outpost_southern_hallway)
-"Vx" = (
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
-	},
-/obj/effect/floor_decal/rust,
-/turf/simulated/floor/plating,
-/area/outpost/research/longtermstorage)
 "VD" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -11304,9 +11333,9 @@
 /turf/simulated/wall,
 /area/outpost/research/hallway/resarch_outpost_southern_hallway)
 "VH" = (
-/obj/machinery/portable_atmospherics/powered/pump,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/portable_atmospherics/powered/scrubber,
 /turf/simulated/floor/plating,
 /area/outpost/research/atmospherics)
 "VI" = (
@@ -11322,15 +11351,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/outpost/research/atmospherics)
-"VL" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/mauve/border{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/white,
-/area/outpost/research/toxins_canister_icyhoot)
 "VN" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
@@ -11349,25 +11369,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/outpost/research/longtermstorage)
-"VP" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/mauve/border{
-	dir = 8
-	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/machinery/alarm{
-	dir = 4;
-	pixel_x = -22
-	},
-/obj/structure/table/standard,
-/turf/simulated/floor/tiled/white,
-/area/outpost/research/toxins_canister_icyhoot)
 "VT" = (
 /obj/machinery/portable_atmospherics/canister/empty,
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide,
@@ -11515,16 +11516,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/outpost/research/materials_chamber)
-"WI" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/machinery/portable_atmospherics/canister/phoron,
-/turf/simulated/floor/plating,
-/area/outpost/research/toxins_misc_lab)
 "WL" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -11603,6 +11594,10 @@
 /obj/structure/sign/warning/radioactive,
 /turf/simulated/wall,
 /area/outpost/research/crew_quarters/showers)
+"WX" = (
+/obj/structure/sign/warning/compressed_gas,
+/turf/simulated/wall,
+/area/outpost/research/toxins_misc_lab)
 "WZ" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -11615,31 +11610,11 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/hallway/resarch_outpost_storage_hallway)
-"Xb" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/mauve/border{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	icon_state = "0-8"
-	},
-/obj/machinery/hologram/holopad,
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28
-	},
-/turf/simulated/floor/tiled/white,
-/area/outpost/research/simulator)
 "Xh" = (
-/obj/effect/decal/cleanable/blood/oil,
 /turf/simulated/floor/plating,
 /area/outpost/research/toxins_misc_lab)
 "Xn" = (
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/sif/eyes,
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/tether/outpost/solars_outside)
 "Xo" = (
@@ -11721,18 +11696,16 @@
 /turf/simulated/floor/plating,
 /area/outpost/research/longtermstorage)
 "XW" = (
-/obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/rust,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 5
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
+	dir = 4
 	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/outpost/research/toxins_misc_lab)
@@ -11812,10 +11785,6 @@
 /obj/item/pen,
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/telescience_lab)
-"Yj" = (
-/obj/effect/decal/cleanable/blood/oil,
-/turf/simulated/floor/plating,
-/area/outpost/research/longtermstorage)
 "Yn" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -11865,10 +11834,8 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
 	},
-/obj/structure/flora/pottedplant{
-	icon_state = "plant-10"
-	},
 /obj/effect/floor_decal/borderfloor/corner2,
+/obj/structure/flora/pottedplant/unusual,
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/storage/surface_eva_storage)
 "YH" = (
@@ -11876,31 +11843,15 @@
 /turf/simulated/floor/plating,
 /area/outpost/research/atmospherics)
 "YQ" = (
-/obj/structure/table/standard,
-/obj/item/paper_bin,
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/mauve/border,
-/obj/effect/floor_decal/borderfloor/corner2{
-	dir = 9
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
-/obj/item/pen,
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_misc_lab)
-"YT" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/mauve/border{
-	dir = 4
-	},
-/obj/machinery/camera/network/research_outpost{
-	dir = 8
-	},
-/obj/machinery/atmospherics/portables_connector{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/white,
-/area/outpost/research/toxins_canister_icyhoot)
 "Za" = (
 /obj/machinery/power/apc{
 	dir = 8;
@@ -12043,6 +11994,10 @@
 /obj/effect/floor_decal/rust,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/camera/network/research_outpost,
+/obj/machinery/conveyor_switch/oneway{
+	id = "canister_storage";
+	name = "Sending Conveyor"
+	},
 /turf/simulated/floor/plating,
 /area/outpost/research/longtermstorage)
 
@@ -24229,7 +24184,7 @@ jM
 jM
 BD
 RS
-RF
+rC
 ad
 ad
 ab
@@ -24800,12 +24755,12 @@ di
 ca
 Sz
 Lz
-Lz
-ab
-ab
-ab
-ab
-ab
+Oe
+iL
+iL
+iL
+iL
+Oe
 aw
 ab
 ab
@@ -24944,9 +24899,9 @@ cG
 Hk
 Oe
 ys
-ys
-ys
-ys
+lv
+nt
+Do
 Oe
 ab
 ab
@@ -25084,7 +25039,7 @@ eJ
 cH
 kf
 tl
-Oe
+eP
 lh
 qb
 FX
@@ -25226,7 +25181,7 @@ cI
 fi
 pI
 UL
-nt
+Oe
 Eb
 so
 Lt
@@ -25368,12 +25323,12 @@ eL
 fk
 fE
 FJ
-Oe
-lv
-lz
-Xb
-pt
-Oe
+Dh
+Dh
+Dh
+Dh
+Dh
+Dh
 zr
 zr
 zr
@@ -25511,10 +25466,10 @@ jK
 fD
 fV
 ZN
-Dh
-Dh
-Dh
-Dh
+kk
+lz
+pt
+HU
 Dh
 HK
 sA
@@ -25652,10 +25607,10 @@ JX
 fm
 fG
 YQ
-rn
+ig
 wN
 Tq
-VP
+Bj
 Nq
 Dh
 ol
@@ -25793,12 +25748,12 @@ en
 eM
 fl
 fF
-kT
-kk
+cH
+rn
 ro
-mk
 Bj
-tM
+rS
+vG
 Dh
 CY
 tJ
@@ -25935,7 +25890,7 @@ EE
 eO
 fo
 fI
-lZ
+do
 rn
 lf
 Bj
@@ -26077,12 +26032,12 @@ ep
 ep
 fn
 fH
-wW
+dp
 rn
 Le
-Bj
+ma
 JU
-vG
+Kx
 Dh
 CY
 tJ
@@ -26216,15 +26171,15 @@ cP
 Lz
 dQ
 eq
-eP
+eq
 fq
 fJ
 zL
 rn
-HU
-VL
-YT
-RJ
+Dh
+Dh
+Dh
+Dh
 Dh
 FD
 LW
@@ -26364,10 +26319,10 @@ XB
 Lz
 gj
 KR
-KR
-KR
-KR
-KR
+mk
+tM
+LS
+Ma
 kQ
 XE
 xH
@@ -26924,20 +26879,20 @@ Aj
 cw
 cS
 dt
-dT
-ab
-dT
 ab
 ab
 ab
-dT
+hV
+ab
+ab
+Xn
 eU
 gL
 Dk
 eU
 hV
 ab
-iL
+ab
 TX
 Ro
 Yb
@@ -27068,18 +27023,18 @@ cV
 dt
 ab
 Xn
-dV
-dV
+ab
+ab
 ab
 dZ
-dV
+ab
 eU
 gO
 hk
 eU
-dZ
-ir
 ab
+dZ
+Xn
 TX
 Tl
 Vm
@@ -27208,8 +27163,8 @@ Aj
 cx
 cU
 dt
-dV
-dZ
+hV
+ab
 eU
 eU
 eU
@@ -27221,7 +27176,7 @@ hj
 eU
 eU
 ab
-ed
+ab
 TX
 Gr
 HO
@@ -27350,7 +27305,7 @@ Ih
 tV
 ks
 ZT
-dV
+ab
 ab
 eU
 fw
@@ -27363,7 +27318,7 @@ hm
 hH
 hZ
 ab
-dT
+ab
 Ns
 IJ
 Vm
@@ -27492,8 +27447,8 @@ Ih
 cz
 cW
 ZT
-dV
-dT
+ab
+dZ
 eU
 fw
 fN
@@ -27504,8 +27459,8 @@ gQ
 hl
 hG
 hZ
-dV
-dZ
+hV
+ab
 Ns
 KV
 Nm
@@ -27647,7 +27602,7 @@ ho
 hJ
 hZ
 ab
-dT
+ab
 Ns
 IJ
 Vm
@@ -27776,8 +27731,8 @@ cg
 cA
 cX
 dt
-dV
-dV
+Xn
+ab
 eU
 ft
 fw
@@ -27788,8 +27743,8 @@ gQ
 hl
 hI
 eU
-ir
 ab
+dZ
 TX
 Ly
 zs
@@ -27919,7 +27874,7 @@ AE
 mb
 dt
 ab
-Xn
+ab
 eU
 fu
 fw
@@ -27930,7 +27885,7 @@ gU
 hq
 hL
 eU
-dV
+ab
 ab
 Ns
 IJ
@@ -28060,8 +28015,8 @@ Ih
 cC
 cZ
 dt
-dZ
-dT
+ab
+ab
 eU
 fw
 fw
@@ -28073,7 +28028,7 @@ hp
 hK
 eU
 ab
-ed
+hV
 Ns
 IJ
 Vm
@@ -28203,7 +28158,7 @@ cE
 db
 ZT
 ab
-dT
+hV
 eU
 fw
 Me
@@ -28214,7 +28169,7 @@ gx
 hs
 hM
 hZ
-dV
+ab
 ab
 Ns
 IJ
@@ -28357,7 +28312,7 @@ hr
 Rb
 hZ
 ab
-ed
+ab
 TX
 je
 Vm
@@ -28486,8 +28441,8 @@ ch
 cF
 dc
 dt
-dT
-Xn
+ab
+ab
 eU
 fw
 fQ
@@ -28498,8 +28453,8 @@ gY
 hu
 Yi
 hZ
-dV
-dT
+ab
+ab
 Ns
 IJ
 Vm
@@ -28628,20 +28583,20 @@ Xu
 UE
 oW
 dt
+Xn
 ab
+eU
+eU
+eU
+eU
+eU
+eU
+gX
+gX
+gX
+eU
 ab
-eU
-eU
-eU
-eU
-eU
-eU
-gX
-gX
-gX
-eU
-dT
-dV
+Xn
 Ns
 iz
 jn
@@ -28770,20 +28725,20 @@ Xu
 Lm
 jt
 dt
-ed
 ab
-dT
-dV
-dV
+dZ
+ab
+ab
+ab
+ab
+ab
 Xn
 ab
-dV
 ab
 ab
 ab
 ab
 ab
-dV
 Ns
 IJ
 Vm
@@ -28913,19 +28868,19 @@ cB
 oW
 ZT
 ab
-eC
-fe
-dV
 ab
 ab
+Xn
 ab
-dT
-dV
+hV
+ab
+ab
 dZ
-dV
 ab
-dT
 ab
+ab
+hV
+dZ
 TX
 jg
 Nm
@@ -29495,7 +29450,7 @@ Lz
 Lz
 Lz
 TX
-Do
+WX
 yf
 XZ
 Um
@@ -29778,7 +29733,7 @@ hS
 im
 im
 im
-WI
+cd
 RG
 UB
 XH
@@ -29921,7 +29876,7 @@ pR
 pR
 tc
 Fp
-Qu
+Oa
 GT
 XH
 yi
@@ -30062,8 +30017,8 @@ Iu
 Qk
 Qk
 Tw
-GM
-LL
+ce
+RG
 wU
 XH
 UC
@@ -30204,8 +30159,8 @@ VT
 oN
 oN
 oN
-lo
-Hm
+cj
+dj
 By
 XH
 Cj
@@ -30346,8 +30301,8 @@ Gp
 YC
 YC
 YC
-kx
-KY
+ck
+RG
 TV
 XH
 vA
@@ -30359,7 +30314,7 @@ QA
 XH
 Hp
 Dq
-um
+RJ
 MK
 ab
 aa
@@ -30488,20 +30443,20 @@ EQ
 mi
 mi
 mi
-pK
-KY
+cl
+RG
 rI
 XH
 zE
 Zb
 pc
-Zb
+Rs
 FW
 QH
 XH
 sy
 wO
-um
+RJ
 MK
 ab
 aa
@@ -30630,8 +30585,8 @@ oa
 oa
 oa
 oa
-rU
-KY
+cr
+RG
 KE
 XH
 Rm
@@ -30777,15 +30732,15 @@ Xh
 Ab
 pk
 zk
-rS
-Kx
-Rs
-Kx
-Kx
+XH
+XH
+XH
+XH
+XH
 XH
 ZZ
 xa
-um
+RJ
 MK
 ab
 aa
@@ -30920,10 +30875,10 @@ xW
 QX
 XH
 XH
-XH
-XH
-XH
-XH
+ab
+ab
+ab
+ab
 XH
 Pw
 Bb
@@ -31061,15 +31016,15 @@ LC
 AV
 Nw
 Lz
-Ta
-QN
-QN
-QN
-QN
-QN
-Vx
-yY
-um
+ab
+ab
+ab
+ab
+ab
+MK
+MK
+MK
+MK
 MK
 ab
 aa
@@ -31203,16 +31158,16 @@ OT
 zK
 zP
 Lz
-yY
-ma
-yY
-yY
-yY
-yY
-yY
-yY
-um
-MK
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
 ab
 aa
 "}
@@ -31325,7 +31280,7 @@ ab
 ab
 ab
 ab
-nR
+eC
 ab
 ab
 ab
@@ -31345,16 +31300,16 @@ Dx
 Dx
 kA
 Lz
-ma
-yY
-yY
-Yj
-wm
-yY
-yY
-ma
-nL
-MK
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
 ab
 aa
 "}
@@ -31467,7 +31422,7 @@ ab
 ab
 ab
 ab
-nR
+fe
 ab
 ab
 ab
@@ -31486,17 +31441,17 @@ ad
 ab
 ab
 yh
-Lz
-MK
-MK
-uC
-MK
-MK
-MK
-MK
-MK
-MK
-MK
+ir
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
 ab
 aa
 "}
@@ -31609,7 +31564,7 @@ ab
 ab
 ab
 ab
-nR
+eC
 ab
 ab
 ab
@@ -31628,8 +31583,8 @@ ad
 ad
 ab
 ad
-ad
-nR
+QN
+ab
 ab
 ab
 ab
@@ -31770,8 +31725,8 @@ ad
 ab
 ab
 ad
-ab
 nR
+ab
 ab
 ab
 ab
