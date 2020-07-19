@@ -9,24 +9,24 @@
 	p_drain = 0.01
 	other_flags = (NIF_O_COMMLINK)
 
-	install()
-		if((. = ..()))
-			nif.comm = new(nif,src)
+/datum/nifsoft/commlink/install()
+	if((. = ..()))
+		nif.comm = new(nif,src)
 
-	uninstall()
-		var/obj/item/nif/lnif = nif //Awkward. Parent clears it in an attempt to clean up.
-		if((. = ..()) && lnif)
-			QDEL_NULL(lnif.comm)
+/datum/nifsoft/commlink/uninstall()
+	var/obj/item/nif/lnif = nif //Awkward. Parent clears it in an attempt to clean up.
+	if((. = ..()) && lnif)
+		QDEL_NULL(lnif.comm)
 
-	activate()
-		if((. = ..()))
-			nif.comm.initialize_exonet(nif.human)
-			nif.comm.ui_interact(nif.human,key_state = commlink_state)
-			spawn(0)
-				deactivate()
+/datum/nifsoft/commlink/activate()
+	if((. = ..()))
+		nif.comm.initialize_exonet(nif.human)
+		nif.comm.ui_interact(nif.human,key_state = commlink_state)
+		spawn(0)
+			deactivate()
 
-	stat_text()
-		return "Show Commlink"
+/datum/nifsoft/commlink/stat_text()
+	return "Show Commlink"
 
 /datum/nifsoft/commlink/Topic(href, href_list)
 	if(href_list["open"])
@@ -39,31 +39,32 @@
 	var/obj/item/nif/nif
 	var/datum/nifsoft/commlink/nifsoft
 
-	New(var/newloc,var/soft)
-		..()
-		nif = newloc
-		nifsoft = soft
-		QDEL_NULL(camera) //Not supported on internal one.
+/obj/item/communicator/commlink/New(newloc, soft)
+	..()
+	nif = newloc
+	nifsoft = soft
+	QDEL_NULL(camera) //Not supported on internal one.
 
-	Destroy()
-		if(nif)
-			nif.comm = null
-			nif = null
-		nifsoft = null
-		return ..()
+/obj/item/communicator/commlink/Destroy()
+	if(nif)
+		nif.comm = null
+		nif = null
+	nifsoft = null
+	return ..()
 
-/obj/item/communicator/commlink/register_device(var/new_name)
+/obj/item/communicator/commlink/register_device(new_name)
 	owner = new_name
 	name = "[owner]'s [initial(name)]"
 	nif.save_data["commlink_name"] = owner
 
 //So that only the owner's chat is relayed to others.
 /obj/item/communicator/commlink/hear_talk(mob/living/M, text, verb, datum/language/speaking)
-	if(M != nif.human) return
+	if(M != nif.human)
+		return
 	for(var/obj/item/communicator/comm in communicating)
-
 		var/turf/T = get_turf(comm)
-		if(!T) return
+		if(!T)
+			return
 
 		var/icon_object = src
 
@@ -86,9 +87,9 @@
 			var/name_used = M.GetVoice()
 			var/rendered = null
 			if(speaking) //Language being used
-				rendered = "<span class='game say'>\icon[icon_object] <span class='name'>[name_used]</span> [speaking.format_message(text, verb)]</span>"
+				rendered = "<span class='game say'>[icon2html(icon_object, M)] <span class='name'>[name_used]</span> [speaking.format_message(text, verb)]</span>"
 			else
-				rendered = "<span class='game say'>\icon[icon_object] <span class='name'>[name_used]</span> [verb], <span class='message'>\"[text]\"</span></span>"
+				rendered = "<span class='game say'>[icon2html(icon_object, M)] <span class='name'>[name_used]</span> [verb], <span class='message'>\"[text]\"</span></span>"
 			mob.show_message(rendered, 2)
 
 //Not supported by the internal one
@@ -96,7 +97,7 @@
 	return
 
 //The silent treatment
-/obj/item/communicator/commlink/request(var/atom/candidate)
+/obj/item/communicator/commlink/request(atom/candidate)
 	if(candidate in voice_requests)
 		return
 	var/who = null
@@ -113,10 +114,10 @@
 	voice_requests |= candidate
 
 	if(ringer && nif.human)
-		nif.notify("New commlink call from [who]. (<a href='?src=\ref[nifsoft];open=1'>Open</a>)")
+		nif.notify("New commlink call from [who]. (<a href='?src=[REF(nifsoft)];open=1'>Open</a>)")
 
 //Similar reason
-/obj/item/communicator/commlink/request_im(var/atom/candidate, var/origin_address, var/text)
+/obj/item/communicator/commlink/request_im(atom/candidate, origin_address, text)
 	var/who = null
 	if(isobserver(candidate))
 		var/mob/observer/dead/ghost = candidate
@@ -135,4 +136,4 @@
 		return
 
 	if(ringer && nif.human)
-		nif.notify("Commlink message from [who]: \"[text]\" (<a href='?src=\ref[nifsoft];open=1'>Open</a>)")
+		nif.notify("Commlink message from [who]: \"[text]\" (<a href='?src=[REF(nifsoft)];open=1'>Open</a>)")
