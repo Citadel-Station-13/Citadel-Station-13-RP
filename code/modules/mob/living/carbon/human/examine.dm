@@ -385,8 +385,8 @@
 			if(R.fields["name"] == perpname)
 				criminal = R.fields["criminal"]
 
-		msg += "<span class = 'deptradio'>Criminal status:</span> <a href='?src=[REF(src)];criminal=1'>\[[criminal]\]</a><br>"
-		msg += "<span class = 'deptradio'>Security records:</span> <a href='?src=[REF(src)];secrecord=`'>\[View\]</a>  <a href='?src=\ref[src];secrecordadd=`'>\[Add comment\]</a><br>"
+		. += "<span class = 'deptradio'>Criminal status:</span> <a href='?src=[REF(src)];criminal=1'>\[[criminal]\]</a>"
+		. += "<span class = 'deptradio'>Security records:</span> <a href='?src=[REF(src)];secrecord=`'>\[View\]</a>  <a href='?src=\ref[src];secrecordadd=`'>\[Add comment\]</a>"
 
 	if(hasHUD(user,"medical"))
 		var/perpname = name
@@ -404,12 +404,12 @@
 			if (R.fields["name"] == perpname)
 				medical = R.fields["p_stat"]
 
-		msg += "<span class = 'deptradio'>Physical status:</span> <a href='?src=\ref[src];medical=1'>\[[medical]\]</a><br>"
-		msg += "<span class = 'deptradio'>Medical records:</span> <a href='?src=\ref[src];medrecord=`'>\[View\]</a> <a href='?src=\ref[src];medrecordadd=`'>\[Add comment\]</a><br>"
+		. += "<span class = 'deptradio'>Physical status:</span> <a href='?src=\ref[src];medical=1'>\[[medical]\]</a>"
+		. += "<span class = 'deptradio'>Medical records:</span> <a href='?src=\ref[src];medrecord=`'>\[View\]</a> <a href='?src=\ref[src];medrecordadd=`'>\[Add comment\]</a>"
 
 
 	if(print_flavor_text())
-		msg += "[print_flavor_text()]<br>"
+		. += "[print_flavor_text()]"
 
 	// VOREStation Start
 	if(ooc_notes)
