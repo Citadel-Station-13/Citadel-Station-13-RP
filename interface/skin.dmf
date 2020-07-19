@@ -226,6 +226,17 @@ window "infowindow"
 		left = "statwindow"
 		right = "outputwindow"
 		is-vert = false
+	elem "changelog"
+		type = BUTTON
+		pos = 25,4
+		size = 80x20
+		anchor1 = 3,0
+		anchor2 = 11,0
+		text-color = #e0e0e0
+		background-color = #40628a
+		saved-params = "is-checked"
+		text = "Changelog"
+		command = "changelog"
 	elem "report-issue"
 		type = BUTTON
 		pos = 424,4
@@ -242,6 +253,8 @@ window "infowindow"
 		size = 80x20
 		anchor1 = 55,0
 		anchor2 = 66,0
+		text-color = #e0e0e0
+		background-color = #40628a
 		saved-params = "is-checked"
 		text = "GitHub"
 		command = "github"
@@ -251,6 +264,8 @@ window "infowindow"
 		size = 80x20
 		anchor1 = 11,0
 		anchor2 = 22,0
+		text-color = #e0e0e0
+		background-color = #40628a
 		saved-params = "is-checked"
 		text = "Rules"
 		command = "rules"
@@ -260,6 +275,8 @@ window "infowindow"
 		size = 80x20
 		anchor1 = 44,0
 		anchor2 = 55,0
+		text-color = #e0e0e0
+		background-color = #40628a
 		saved-params = "is-checked"
 		text = "Forum"
 		command = "forum"
@@ -269,30 +286,11 @@ window "infowindow"
 		size = 80x20
 		anchor1 = 22,0
 		anchor2 = 33,0
+		text-color = #e0e0e0
+		background-color = #40628a
 		saved-params = "is-checked"
 		text = "Wiki"
 		command = "wiki"
-	elem "browseb"
-		type = BUTTON
-		pos = 504,4
-		size = 80x20
-		anchor1 = 77,0
-		anchor2 = 88,0
-		is-visible = false
-		saved-params = "is-checked"
-		text = "Browser"
-		command = ".winset \"rpanewindow.left=browserwindow\""
-		group = "rpanemode"
-		button-type = pushbox
-	elem "changelog"
-		type = BUTTON
-		pos = 25,4
-		size = 80x20
-		anchor1 = 3,0
-		anchor2 = 11,0
-		saved-params = "is-checked"
-		text = "Changelog"
-		command = "changelog"
 
 window "outputwindow"
 	elem "outputwindow"
