@@ -1137,7 +1137,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 		if(!P.conversations.Find("\ref[src]"))
 			P.conversations.Add("\ref[src]")
 
-		to_chat(U, "\icon[src] <b>Sent message to [P.owner] ([P.ownjob]), </b>\"[t]\"")
+		to_chat(U, "[icon2html(src, U)] <b>Sent message to [P.owner] ([P.ownjob]), </b>\"[t]\"")
 
 
 		if (prob(15)) //Give the AI a chance of intercepting the message
@@ -1174,7 +1174,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 		SSnanoui.update_user_uis(L, src) // Update the receiving user's PDA UI so that they can see the new message
 
 /obj/item/pda/proc/new_news(var/message)
-	new_info(news_silent, newstone, news_silent ? "" : "\icon[src] <b>[message]</b>")
+	new_info(news_silent, newstone, news_silent ? "" : "[icon2html(src, usr)] <b>[message]</b>")
 
 	if(!news_silent)
 		new_news = 1

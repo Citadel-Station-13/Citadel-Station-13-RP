@@ -362,15 +362,17 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 			return FALSE
 
 //Prints 'AR' messages to the user
-/obj/item/nif/proc/notify(var/message,var/alert = 0)
-	if(!human || stat == NIF_TEMPFAIL) return
+/obj/item/nif/proc/notify(message, alert = FALSE)
+	if(!human || stat == NIF_TEMPFAIL)
+		return
 
-	to_chat(human,"<b>\[\icon[src.big_icon]NIF\]</b> displays, \"<span class='[alert ? "danger" : "notice"]'>[message]</span>\"")
-	if(prob(1)) human.visible_message("<span class='notice'>\The [human] [pick(look_messages)].</span>")
+	to_chat(human,"<b>\[[icon2html(src.big_icon, human)]NIF\]</b> displays, \"<span class='[alert ? "danger" : "notice"]'>[message]</span>\"")
+	if(prob(1))
+		human.visible_message("<span class='notice'>\The [human] [pick(look_messages)].</span>")
 	if(alert)
-		human << bad_sound
+		SEND_SOUND(human, bad_sound)
 	else
-		human << good_sound
+		SEND_SOUND(human, good_sound)
 
 //Called to spend nutrition, returns 1 if it was able to
 /obj/item/nif/proc/use_charge(var/use_charge)
