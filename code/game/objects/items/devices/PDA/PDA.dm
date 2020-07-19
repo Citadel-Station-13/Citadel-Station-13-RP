@@ -68,6 +68,11 @@ GLOBAL_LIST_EMPTY(PDAs)
 	. = ..()
 	if(in_range(user, src))
 		. += "<span class='notice'>The time <b>[stationtime2text()]</b> is displayed in the corner of the screen.</span>"
+	. += id ? "<span class='notice'>Alt-click to remove the id.</span>" : ""
+	// if(inserted_item && (!isturf(loc)))
+	// 	. += "<span class='notice'>Ctrl-click to remove [inserted_item].</span>"
+	// if(LAZYLEN(GLOB.pda_reskins))
+	// 	. += "<span class='notice'>Ctrl-shift-click it to reskin it.</span>"
 
 /obj/item/pda/CtrlClick()
 	if (issilicon(usr))
@@ -260,7 +265,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 		ownrank = newrank
 	else
 		ownrank = ownjob
-	name = newname + " (" + ownjob + ")"
+	name = "[newname] ([ownjob])"
 
 //AI verb and proc for sending PDA messages.
 /obj/item/pda/ai/verb/cmd_send_pdamesg()
@@ -1080,7 +1085,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	else
 		to_chat(usr, "<span class='notice'>This PDA does not have a pen in it.</span>")
 
-/obj/item/pda/proc/create_message(var/mob/living/U = usr, var/obj/item/pda/P, var/tap = 1)
+/obj/item/pda/proc/create_message(mob/living/U = usr, obj/item/pda/P, tap = TRUE)
 	if(tap)
 		U.visible_message("<span class='notice'>\The [U] taps on their PDA's screen.</span>")
 	var/t = input(U, "Please enter message", P.name, null) as text
@@ -1149,11 +1154,12 @@ GLOBAL_LIST_EMPTY(PDAs)
 	else
 		to_chat(U, "<span class='notice'>ERROR: Messaging server is not responding.</span>")
 
-/obj/item/pda/proc/new_info(var/beep_silent, var/message_tone, var/reception_message)
+/obj/item/pda/proc/new_info(beep_silent, message_tone, reception_message)
 	if (!beep_silent)
 		playsound(loc, 'sound/machines/twobeep.ogg', 50, 1)
+		// audible_message("[icon2html(src, hearers(src))] *[ttone]*", null, 3) //faster way and not shit
 		for (var/mob/O in hearers(2, loc))
-			O.show_message(text("\icon[src] *[message_tone]*"))
+			O.show_message(text("[icon2html(src, hearers(src))] *[message_tone]*"))
 	//Search for holder of the PDA.
 	var/mob/living/L = null
 	if(loc && isliving(loc))
@@ -1164,7 +1170,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 	if(L)
 		if(reception_message)
-			L << reception_message
+			to_chat(L, reception_message)
 		SSnanoui.update_user_uis(L, src) // Update the receiving user's PDA UI so that they can see the new message
 
 /obj/item/pda/proc/new_news(var/message)
@@ -1182,20 +1188,19 @@ GLOBAL_LIST_EMPTY(PDAs)
 		return
 	new_message(sending_device, sending_device.owner, sending_device.ownjob, message)
 
-/obj/item/pda/proc/new_message(var/sending_unit, var/sender, var/sender_job, var/message, var/reply = 1)
-	var/reception_message = "\icon[src] <b>Message from [sender] ([sender_job]), </b>\"[message]\" ([reply ? "<a href='byond://?src=\ref[src];choice=Message;notap=[istype(loc, /mob/living/silicon)];skiprefresh=1;target=\ref[sending_unit]'>Reply</a>" : "Unable to Reply"])"
+/obj/item/pda/proc/new_message(sending_unit, sender, sender_job, message, reply = 1)
+	var/reception_message = "[icon2html(src, usr)] <b>Message from [sender] ([sender_job]), </b>\"[message]\" ([reply ? "<a href='byond://?src=[REF(src)];choice=Message;skiprefresh=1;target=[REF(sending_unit)];notap=[istype(loc, /mob/living/silicon)]'>Reply</a>" : "Unable to Reply"])"
 	new_info(message_silent, ringtone, reception_message)
-
 	log_pda("(PDA: [sending_unit]) sent \"[message]\" to [name]", usr)
-	new_message = 1
+	new_message = TRUE
 	update_icon()
 
-/obj/item/pda/ai/new_message(var/atom/movable/sending_unit, var/sender, var/sender_job, var/message)
+/obj/item/pda/ai/new_message(atom/movable/sending_unit, sender, sender_job, message)
 	var/track = ""
 	if(ismob(sending_unit.loc) && isAI(loc))
-		track = "(<a href='byond://?src=\ref[loc];track=\ref[sending_unit.loc];trackname=[html_encode(sender)]'>Follow</a>)"
+		track = "(<a href='byond://?src=[REF(loc)];track=[REF(sending_unit.loc)];trackname=[html_encode(sender)]'>Follow</a>)"
 
-	var/reception_message = "\icon[src] <b>Message from [sender] ([sender_job]), </b>\"[message]\" (<a href='byond://?src=\ref[src];choice=Message;notap=1;skiprefresh=1;target=\ref[sending_unit]'>Reply</a>) [track]"
+	var/reception_message = "[icon2html(src, usr)] <b>Message from [sender] ([sender_job]), </b>\"[message]\" (<a href='byond://?src=[REF(src)];choice=Message;skiprefresh=1;target=[REF(sending_unit)];notap=1'>Reply</a>) [track]"
 	new_info(message_silent, newstone, reception_message)
 
 	log_pda("(PDA: [sending_unit]) sent \"[message]\" to [name]",usr)
@@ -1528,20 +1533,20 @@ GLOBAL_LIST_EMPTY(PDAs)
 	icon = 'icons/obj/pda.dmi'
 	icon_state = "pdabox"
 
-	New()
-		..()
-		new /obj/item/pda(src)
-		new /obj/item/pda(src)
-		new /obj/item/pda(src)
-		new /obj/item/pda(src)
-		new /obj/item/cartridge/head(src)
+/obj/item/storage/box/PDAs/Initialize()
+	. = ..()
+	new /obj/item/pda(src)
+	new /obj/item/pda(src)
+	new /obj/item/pda(src)
+	new /obj/item/pda(src)
+	new /obj/item/cartridge/head(src)
 
-		var/newcart = pick(	/obj/item/cartridge/engineering,
-							/obj/item/cartridge/security,
-							/obj/item/cartridge/medical,
-							/obj/item/cartridge/signal/science,
-							/obj/item/cartridge/quartermaster)
-		new newcart(src)
+	var/newcart = pick(	/obj/item/cartridge/engineering,
+						/obj/item/cartridge/security,
+						/obj/item/cartridge/medical,
+						/obj/item/cartridge/signal/science,
+						/obj/item/cartridge/quartermaster)
+	new newcart(src)
 
 // Pass along the pulse to atoms in contents, largely added so pAIs are vulnerable to EMP
 /obj/item/pda/emp_act(severity)
