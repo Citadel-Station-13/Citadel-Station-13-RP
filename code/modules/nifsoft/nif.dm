@@ -269,12 +269,17 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 			install_done = world.time + 15 MINUTES
 			notify("Adapting to new user, this process may take upwards of fifteen minutes...")
 			sleep(5 SECONDS)
+			if(QDELETED(src)) //something something waiting check
+				return FALSE
 			notify("Adjoining optic [human.isSynthetic() ? "interface" : "nerve"], please be patient.",TRUE)
 		else
 			notify("You are not an authorized user for this device. Please contact [owner].",TRUE)
 			unimplant()
 			stat = NIF_TEMPFAIL
 			return FALSE
+
+	if(QDELETED(src))
+		return FALSE
 
 	var/percent_done = (world.time - (install_done - (15 MINUTES))) / (15 MINUTES)
 
@@ -288,7 +293,8 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 
 		//Mapping brain
 		if(0.2 to 0.9)
-			if(prob(98)) return TRUE
+			if(prob(98))
+				return TRUE
 			var/incident = rand(1,3)
 			switch(incident)
 				if(1)
