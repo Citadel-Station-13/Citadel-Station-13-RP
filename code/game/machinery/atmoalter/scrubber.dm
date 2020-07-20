@@ -175,8 +175,8 @@
 
 	name = "[name] (ID [id])"
 
-/obj/machinery/portable_atmospherics/powered/scrubber/huge/attack_hand(var/mob/user as mob)
-		to_chat(user, "<span class='notice'>You can't directly interact with this machine. Use the scrubber control console.</span>")
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/attack_hand(mob/user)
+	to_chat(user, "<span class='notice'>You can't directly interact with this machine. Use the scrubber control console.</span>")
 
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/update_icon()
 	src.overlays = 0
@@ -247,7 +247,7 @@
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary
 	name = "Stationary Air Scrubber"
 
-/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/attackby(var/obj/item/I as obj, var/mob/user as mob)
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/attackby(obj/item/I as obj, mob/user as mob)
 	if(I.is_wrench())
 		to_chat(user, "<span class='warning'>The bolts are too tight for you to unscrew!</span>")
 		return

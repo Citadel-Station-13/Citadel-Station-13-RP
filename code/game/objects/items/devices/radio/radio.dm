@@ -155,7 +155,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 		wires.Interact(user)
 		add_fingerprint(user)
 	else
-		// ui_interact(user)
+		ui_interact(user)
 		..()
 
 /obj/item/radio/attack_self(mob/user)
@@ -709,13 +709,11 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 		R.cell_use_power(C.active_usage)
 
 /obj/item/radio/borg/attackby(obj/item/W, mob/user, params)
-
 	if(W.is_screwdriver())
 		if(keyslot)
 			for(var/ch_name in channels)
 				radio_controller.remove_object(src, radiochannels[ch_name])
 				secure_radio_connections[ch_name] = null
-
 
 			if(keyslot)
 				var/turf/T = get_turf(user)
