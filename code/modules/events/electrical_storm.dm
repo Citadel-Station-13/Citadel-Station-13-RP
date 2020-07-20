@@ -33,8 +33,8 @@
 
 /datum/event/electrical_storm
 	announceWhen = 0		// Warn them shortly before it begins.
-	startWhen = 30			// 1 minute
-	endWhen = 60			// Set in setup()
+	startWhen = 15			// 30 seconds
+	endWhen = 30			// Set in setup() Reduced from 60
 	var/tmp/lightning_color
 	var/tmp/list/valid_apcs		// List of valid APCs.
 
@@ -46,14 +46,14 @@
 		if(EVENT_LEVEL_MODERATE)
 			command_announcement.Announce("The station is about to pass through an electrical storm. Please secure sensitive electrical equipment until the storm passes.", "Weather Sensor Array")
 		if(EVENT_LEVEL_MAJOR)
-			command_announcement.Announce("Alert. A strong electrical storm has been detected in proximity of the station. It is recommended to immediately secure sensitive electrical equipment until the storm passes.", "Weather Sensor Array")
+			command_announcement.Announce("A strong electrical storm has been detected in proximity of the station. It is recommended to immediately secure sensitive electrical equipment until the storm passes.", "Weather Sensor Array")
 
 /datum/event/electrical_storm/start()
 	..()
 	valid_apcs = list()
 	for(var/obj/machinery/power/apc/A in global.machines)
 		valid_apcs.Add(A)
-	endWhen = (severity * 60) + startWhen
+	endWhen = (severity * 30) + startWhen // Reducing endWhen by half
 
 /datum/event/electrical_storm/tick()
 	..()
@@ -63,7 +63,7 @@
 		log_debug("No valid APCs found for electrical storm event!")
 		return
 	var/list/picked_apcs = list()
-	for(var/i=0, i< severity * 2, i++) // up to 2/4/6 APCs per tick depending on severity
+	for(var/i=0, i< severity * 3, i++) // up to 3/6/9 APCs per tick depending on severity
 		picked_apcs |= pick(valid_apcs)
 	for(var/obj/machinery/power/apc/T in picked_apcs)
 		affect_apc(T)

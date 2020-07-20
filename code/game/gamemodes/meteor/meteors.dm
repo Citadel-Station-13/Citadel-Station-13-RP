@@ -205,7 +205,7 @@
 	if(heavy)
 		shake_players()
 
-
+/// CITADEL STATION EDITS - Making meteors less deadly to make this a non station-ending event, but still give engineering stuff to do for once.
 ///////////////////////
 //Meteor types
 ///////////////////////
@@ -224,26 +224,26 @@
 /obj/effect/meteor/medium
 	name = "meteor"
 	dropamt = 3
-	wall_power = 200
+	wall_power = 75 // CitadelStation Edit: Down from 200
 
 /obj/effect/meteor/medium/meteor_effect(var/explode)
 	..()
 	if(explode)
-		explosion(src.loc, 0, 1, 2, 3, 0)
+		explosion(src.loc, 0, 0, 1, 1, 0) // CitadelStation Edit: Down from 0,1,2,3,0)
 
 // Large-sized meteors generally pack the most punch, but are more concentrated towards the epicenter.
 /obj/effect/meteor/big
 	name = "large meteor"
 	icon_state = "large"
-	hits = 8
+	hits = 2
 	heavy = 1
 	dropamt = 4
-	wall_power = 400
+	wall_power = 125 // CitadelStation Edit: Down from 400
 
 /obj/effect/meteor/big/meteor_effect(var/explode)
 	..()
 	if(explode)
-		explosion(src.loc, devastation_range = 2, heavy_impact_range = 4, light_impact_range = 6, flash_range = 12, adminlog = 0)
+		explosion(src.loc, devastation_range = 1, heavy_impact_range = 2, light_impact_range = 3, flash_range = 12, adminlog = 0) // CitadelStation Edit: Down from 2,4,6,12
 
 // 'Flaming' meteors do less overall damage but are spread out more due to a larger but weaker explosion at the end.
 /obj/effect/meteor/flaming
