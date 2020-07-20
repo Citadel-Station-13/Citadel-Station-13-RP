@@ -309,7 +309,7 @@
 								if(C.internals)
 									C.internals.icon_state = "internal1"
 								return
-							to_chat(C, "<span class='warning'>You don't have an internals tank.</span.")
+							to_chat(C, "<span class='warning'>You don't have an internals tank.</span>")
 							return
 		if("act_intent")
 			usr.a_intent_change("right")
