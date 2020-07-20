@@ -202,6 +202,14 @@
 		return amount
 	return 0
 
+/mob/living/silicon/robot/get_standard_pixel_x_offset()
+	. = ..()
+	. += module?.default_pixel_x || 0
+
+/mob/living/silicon/robot/get_standard_pixel_y_offset()
+	. = ..()
+	. += module?.default_pixel_y || 0
+
 // setup the PDA and its name
 /mob/living/silicon/robot/proc/setup_PDA()
 	if (!rbPDA)
