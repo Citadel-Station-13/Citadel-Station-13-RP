@@ -351,7 +351,7 @@ obj/item/clothing/suit/kamishimo
 	addblends = "cardigan_a"
 	flags_inv = HIDEHOLSTER
 
-/obj/item/clothing/suit/slimleather
+/obj/item/clothing/suit/storage/toggle/slimleather
 	name = "slim leather coat"
 	desc = "A tailored, brown leather coat."
 	icon_state = "slim_leather"
@@ -359,7 +359,7 @@ obj/item/clothing/suit/kamishimo
 	item_state_slots = list(slot_r_hand_str = "brown_jacket", slot_l_hand_str = "brown_jacket")
 	flags_inv = HIDEHOLSTER
 
-/obj/item/clothing/suit/ronincoat
+/obj/item/clothing/suit/storage/toggle/ronincoat
 	name = "ronin coat"
 	desc = "Outfitted with integrated heating coils, this fashionable coat is a favorite of gangsters and mercenaries alike."
 	icon_state = "ronin_coat"

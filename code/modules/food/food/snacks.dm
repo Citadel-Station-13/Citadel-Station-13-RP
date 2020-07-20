@@ -5488,7 +5488,7 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/crayonburger_red // Buff 6 >> 15
 	name = "red crayonburger"
 	desc = "Someone has melted a whole crayon over the top of this patty!"
-	icon_state = "crayonburger_red"
+	icon_state = "crayonburg_red"
 	nutriment_amt = 7
 	nutriment_desc = list("bun" = 2, "wax" = 2, "meat" = 1)
 
@@ -5500,7 +5500,7 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/crayonburger_org // Buff 6 >> 15
 	name = "orange crayonburger"
 	desc = "Someone has melted a whole crayon over the top of this patty!"
-	icon_state = "crayonburger_org"
+	icon_state = "crayonburg_org"
 	nutriment_amt = 7
 	nutriment_desc = list("bun" = 2, "wax" = 2, "meat" = 1)
 
@@ -5512,7 +5512,7 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/crayonburger_yel // Buff 6 >> 15
 	name = "yellow crayonburger"
 	desc = "Someone has melted a whole crayon over the top of this patty!"
-	icon_state = "crayonburger_yel"
+	icon_state = "crayonburg_yel"
 	nutriment_amt = 7
 	nutriment_desc = list("bun" = 2, "wax" = 2, "meat" = 1)
 
@@ -5524,7 +5524,7 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/crayonburger_grn // Buff 6 >> 15
 	name = "green crayonburger"
 	desc = "Someone has melted a whole crayon over the top of this patty!"
-	icon_state = "crayonburger_grn"
+	icon_state = "crayonburg_grn"
 	nutriment_amt = 7
 	nutriment_desc = list("bun" = 2, "wax" = 2, "meat" = 1)
 
@@ -5536,7 +5536,7 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/crayonburger_blu // Buff 6 >> 15
 	name = "blue crayonburger"
 	desc = "Someone has melted a whole crayon over the top of this patty!"
-	icon_state = "crayonburger_blu"
+	icon_state = "crayonburg_blu"
 	nutriment_amt = 7
 	nutriment_desc = list("bun" = 2, "wax" = 2, "meat" = 1)
 
@@ -5548,7 +5548,7 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/crayonburger_prp // Buff 6 >> 15
 	name = "purple crayonburger"
 	desc = "Someone has melted a whole crayon over the top of this patty!"
-	icon_state = "crayonburger_prp"
+	icon_state = "crayonburg_prp"
 	nutriment_amt = 7
 	nutriment_desc = list("bun" = 2, "wax" = 2, "meat" = 1)
 
@@ -5560,7 +5560,7 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/crayonburger_rbw // Buff 6 >> 15
 	name = "rainbow crayonburger"
 	desc = "Someone has melted a whole crayon over the top of this patty! This one seems especially rare!"
-	icon_state = "crayonburger_rbw"
+	icon_state = "crayonburg_rbw"
 	nutriment_amt = 7
 	nutriment_desc = list("bun" = 2, "wax" = 2, "meat" = 1, "color" = 1)
 

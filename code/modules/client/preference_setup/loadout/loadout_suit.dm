@@ -578,8 +578,8 @@ datum/gear/suit/miscellaneous/storage/lawyer/bridgeofficerparade
 
 /datum/gear/suit/slimleather
 	display_name = "slim leather jacket, brown"
-	path = /obj/item/clothing/suit/slimleather
+	path = /obj/item/clothing/suit/storage/toggle/slimleather
 
 /datum/gear/suit/ronincoat
 	display_name = "Ronin Coat"
-	path = /obj/item/clothing/suit/ronincoat
+	path = /obj/item/clothing/suit/storage/toggle/ronincoat
