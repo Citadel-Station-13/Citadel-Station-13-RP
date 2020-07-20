@@ -52,7 +52,6 @@
 					/obj/fiftyspawner/tealcarpet
 					)
 
-
 /datum/supply_pack/misc/linoleum
 	name = "Linoleum"
 	containertype = /obj/structure/closet/crate

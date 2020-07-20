@@ -220,10 +220,13 @@
 	containername = "Energy ammunition crate"
 	access = access_security
 
-/datum/supply_pack/munitions/firingpins
-	name = "Weapons - Standard firing pins"
-	contains = list(/obj/item/storage/box/firingpins = 3)
-	cost = 10
+/datum/supply_pack/munitions/expeditionguns
+	name = "Frontier phaser (station-locked) crate"
+	contains = list(
+			/obj/item/gun/energy/frontier/locked = 2,
+			/obj/item/gun/energy/frontier/locked/holdout = 1,
+			)
+	cost = 35
 	containertype = /obj/structure/closet/crate/secure
-	containername = "Firing pin crate"
-	access = access_armory
+	containername = "frontier phaser crate"
+	access = access_explorer
