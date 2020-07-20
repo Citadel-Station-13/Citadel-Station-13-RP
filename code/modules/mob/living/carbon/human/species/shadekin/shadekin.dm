@@ -12,10 +12,10 @@
 	taken to calling these creatures 'Shadekin', and the name has generally stuck and spread. "		//TODO: Something that's not wiki copypaste
 	wikilink = "https://wiki.vore-station.net/Shadekin"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/shadekin)
-    inherent_verbs = list(
-	   /mob/living/proc/eat_trash,
-	   /mob/living/carbon/human/proc/lick_wounds
-	   )
+	inherent_verbs = list(
+		/mob/living/proc/eat_trash,
+		/mob/living/carbon/human/proc/lick_wounds
+		)
 
 	language = LANGUAGE_SHADEKIN
 	assisted_langs = list()
