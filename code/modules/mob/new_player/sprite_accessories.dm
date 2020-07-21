@@ -1270,6 +1270,7 @@
 		icon_state = "teshari_mushroom"
 		species_allowed = list(SPECIES_TESHARI)
 
+
 // Vox things
 	vox_braid_long
 		name = "Long Vox braid"
@@ -1694,14 +1695,8 @@
 
 	//Tesh stuff.
 
-	teshi_fluff
-		name = "Underfluff (Teshari)"
-		icon_state = "teshi_fluff"
-		body_parts = list(BP_HEAD, BP_TORSO, BP_GROIN, BP_R_LEG, BP_L_LEG)
-		species_allowed = list(SPECIES_TESHARI)
-
 	teshi_heterochromia
-		name = "Heterochromia (Teshari) (right eye)"
+		name = "Teshari Heterochromia"
 		icon_state = "teshi_heterochromia"
 		body_parts = list(BP_HEAD)
 		species_allowed = list(SPECIES_TESHARI)

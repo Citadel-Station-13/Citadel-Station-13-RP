@@ -2990,30 +2990,22 @@
 /turf/simulated/floor/tiled,
 /area/security/brig)
 "eR" = (
-/obj/structure/table/rack,
-/obj/item/clothing/shoes/magboots,
-/obj/item/clothing/suit/space/void/medical/emt,
-/obj/item/clothing/head/helmet/space/void/medical/emt,
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 9
 	},
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 6
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals9,
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 8
-	},
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 1
 	},
-/obj/item/clothing/mask/breath,
-/obj/machinery/light{
+/obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 8
 	},
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9,
 /turf/simulated/floor/tiled/dark,
 /area/medical/medbay_emt_bay)
 "eS" = (
@@ -3071,20 +3063,6 @@
 	},
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
-	},
-/turf/simulated/floor/wood,
-/area/crew_quarters/medbreak)
-"eZ" = (
-/obj/machinery/vending/fitness,
-/obj/effect/floor_decal/steeldecal/steel_decals9,
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 8
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/medbreak)
@@ -3238,7 +3216,6 @@
 /turf/simulated/floor/bluegrid,
 /area/ai_upload)
 "fq" = (
-/obj/machinery/vending/snack,
 /obj/effect/floor_decal/steeldecal/steel_decals9,
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 4
@@ -3249,6 +3226,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 8
 	},
+/obj/machinery/vending/fitness,
 /turf/simulated/floor/wood,
 /area/crew_quarters/medbreak)
 "fr" = (
@@ -4480,10 +4458,11 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/structure/closet/secure_closet/paramedic,
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/structure/table/rack,
+/obj/item/rig/medical/equipped,
 /turf/simulated/floor/tiled/dark,
 /area/medical/medbay_emt_bay)
 "hz" = (
@@ -15780,19 +15759,6 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medbreak)
 "AJ" = (
-/obj/structure/table/rack,
-/obj/item/suit_cooling_unit{
-	pixel_y = -5
-	},
-/obj/item/tank/oxygen{
-	pixel_y = -4
-	},
-/obj/item/suit_cooling_unit{
-	pixel_y = -5
-	},
-/obj/item/tank/oxygen{
-	pixel_y = -4
-	},
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 9
 	},
@@ -15809,6 +15775,8 @@
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 1
 	},
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/structure/closet/secure_closet/paramedic,
 /obj/machinery/alarm{
 	dir = 4;
 	pixel_x = -22
@@ -15828,12 +15796,14 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
+/obj/structure/table/bench/padded,
 /turf/simulated/floor/tiled/dark,
 /area/medical/medbay_emt_bay)
 "AM" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
+/obj/structure/table/bench/padded,
 /turf/simulated/floor/tiled/dark,
 /area/medical/medbay_emt_bay)
 "AN" = (
@@ -15846,6 +15816,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/medical/medbay_emt_bay)
 "AO" = (
+/obj/structure/table/rack,
+/obj/item/clothing/shoes/magboots,
+/obj/item/clothing/suit/space/void/medical/emt,
+/obj/item/clothing/head/helmet/space/void/medical/emt,
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 9
 	},
@@ -15862,13 +15836,15 @@
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 1
 	},
+/obj/item/clothing/mask/breath,
+/obj/machinery/light{
+	dir = 8
+	},
 /obj/machinery/firealarm{
 	dir = 4;
 	layer = 3.3;
 	pixel_x = 26
 	},
-/obj/effect/floor_decal/industrial/outline/blue,
-/obj/structure/closet/secure_closet/paramedic,
 /turf/simulated/floor/tiled/dark,
 /area/medical/medbay_emt_bay)
 "AP" = (
@@ -15930,53 +15906,9 @@
 "AU" = (
 /turf/simulated/wall,
 /area/crew_quarters/medical_restroom)
-"Bc" = (
-/obj/structure/table/rack,
-/obj/item/clothing/shoes/magboots,
-/obj/item/clothing/suit/space/void/medical/emt,
-/obj/item/clothing/head/helmet/space/void/medical/emt,
-/obj/effect/floor_decal/corner/paleblue{
-	dir = 9
-	},
-/obj/effect/floor_decal/corner/paleblue{
-	dir = 6
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9,
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 8
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 1
-	},
-/obj/item/clothing/mask/breath,
-/turf/simulated/floor/tiled/dark,
-/area/medical/medbay_emt_bay)
 "Bd" = (
-/obj/structure/table/bench/padded,
-/turf/simulated/floor/tiled/dark,
-/area/medical/medbay_emt_bay)
-"Be" = (
-/obj/structure/closet/secure_closet/paramedic,
-/obj/effect/floor_decal/corner/paleblue{
-	dir = 9
-	},
-/obj/effect/floor_decal/corner/paleblue{
-	dir = 6
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9,
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 8
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 1
-	},
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/paleblue/border,
 /turf/simulated/floor/tiled/dark,
 /area/medical/medbay_emt_bay)
 "Bf" = (
@@ -16080,11 +16012,6 @@
 	pixel_y = 5
 	},
 /obj/random/firstaid,
-/turf/simulated/floor/tiled/dark,
-/area/medical/medbay_emt_bay)
-"Bu" = (
-/obj/effect/floor_decal/borderfloor/corner,
-/obj/effect/floor_decal/corner/paleblue/bordercorner,
 /turf/simulated/floor/tiled/dark,
 /area/medical/medbay_emt_bay)
 "Bv" = (
@@ -16573,17 +16500,6 @@
 /area/shuttle/large_escape_pod1/station{
 	base_turf = /turf/simulated/mineral/floor/vacuum
 	})
-"Di" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/paleblue/border{
-	dir = 4
-	},
-/obj/structure/table/rack,
-/obj/item/rig/medical/equipped,
-/turf/simulated/floor/tiled/dark,
-/area/medical/medbay_emt_bay)
 "Dl" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -16957,7 +16873,7 @@
 /obj/item/clothing/shoes/boots/winter/medical,
 /obj/item/clothing/suit/storage/hooded/wintercoat/medical,
 /obj/item/clothing/under/rank/medical,
-/obj/item/clothing/under/seromi/smock/medical,
+/obj/item/clothing/under/teshari/smock/medical,
 /turf/simulated/floor,
 /area/maintenance/station/sec_lower)
 "Fv" = (
@@ -17683,6 +17599,32 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+"Ke" = (
+/obj/structure/table/rack,
+/obj/item/suit_cooling_unit{
+	pixel_y = -5
+	},
+/obj/item/tank/oxygen{
+	pixel_y = -4
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 6
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9,
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/medical/medbay_emt_bay)
 "Kg" = (
 /obj/structure/closet,
 /obj/effect/floor_decal/techfloor{
@@ -18070,6 +18012,20 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/ai_upload)
+"Mg" = (
+/obj/machinery/vending/snack,
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9,
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/medbreak)
 "Mn" = (
 /obj/structure/table/steel,
 /turf/simulated/floor,
@@ -18366,25 +18322,6 @@
 /obj/random/maintenance/medical,
 /turf/simulated/floor,
 /area/maintenance/station/sec_lower)
-"NO" = (
-/obj/effect/floor_decal/corner/paleblue{
-	dir = 6
-	},
-/obj/effect/floor_decal/corner/paleblue{
-	dir = 9
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9,
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/dark,
-/area/medical/medbay_emt_bay)
 "NP" = (
 /obj/machinery/door/airlock/glass_medical{
 	name = "Staff Room";
@@ -19584,20 +19521,6 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/evahallway)
-"UD" = (
-/obj/item/radio/intercom{
-	pixel_y = -24
-	},
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 6
-	},
-/obj/effect/floor_decal/corner/paleblue/border{
-	dir = 6
-	},
-/obj/structure/table/rack,
-/obj/item/rig/medical/equipped,
-/turf/simulated/floor/tiled/dark,
-/area/medical/medbay_emt_bay)
 "UE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -20571,20 +20494,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor,
 /area/maintenance/station/sec_lower)
-"ZM" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/paleblue/border{
-	dir = 4
-	},
-/obj/structure/table/rack,
-/obj/item/rig/medical/equipped,
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/medical/medbay_emt_bay)
 "ZR" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green{
@@ -30225,11 +30134,11 @@ zN
 Ah
 Aw
 AG
-eZ
+eV
 fq
 fG
 gz
-eV
+Mg
 iF
 iO
 jy
@@ -30367,11 +30276,11 @@ zO
 za
 za
 AG
-AG
-AG
-AG
-AG
 NP
+AG
+AG
+AG
+AG
 AG
 AG
 AG
@@ -30510,11 +30419,11 @@ Ai
 Ax
 AJ
 eR
-Bc
 Bt
-Pt
-NO
 Ai
+ac
+ac
+ac
 ac
 ac
 ac
@@ -30651,12 +30560,12 @@ zQ
 Aj
 Ay
 AK
-AK
-AK
-AK
-AK
 Sc
+Pt
 Ai
+ac
+ac
+ac
 ac
 ac
 ac
@@ -30794,11 +30703,11 @@ Ak
 Az
 AL
 Bd
-Bu
-Di
-ZM
-UD
+AC
 Ai
+ac
+ac
+ac
 ac
 ac
 ac
@@ -30935,8 +30844,8 @@ zS
 Al
 AA
 AM
-Bd
 Bv
+Ai
 yY
 yY
 yY
@@ -31077,8 +30986,8 @@ zT
 Ai
 AB
 AN
-AN
 Bw
+Ai
 yY
 ky
 kA
@@ -31217,10 +31126,10 @@ ve
 zt
 zU
 Ai
-AC
+Ke
 AO
 hy
-Be
+Ai
 yY
 BW
 Co

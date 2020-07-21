@@ -1,0 +1,5 @@
+author: "lolman360"
+delete-after: True
+changes: 
+  - rscadd: "Modular weapons 2."
+  - rscdel: "Modular weapons 1."

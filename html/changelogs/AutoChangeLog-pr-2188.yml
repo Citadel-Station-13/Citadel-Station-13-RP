@@ -1,0 +1,8 @@
+author: "Zandario"
+delete-after: True
+changes: 
+  - rscadd: "Holographic PDA Options"
+  - rscadd: "Wrist-Bound PDA Options"
+  - imageadd: "Holographic PDAs"
+  - imageadd: "Wrist-Bound PDAs"
+  - code_imp: "Code Support for new PDAs"

@@ -4401,7 +4401,7 @@
 /obj/item/storage/backpack/clown,
 /obj/item/clothing/shoes/rainbow,
 /obj/item/clothing/under/color/rainbow,
-/obj/item/clothing/under/seromi/undercoat/standard/rainbow,
+/obj/item/clothing/under/teshari/undercoat/standard/rainbow,
 /obj/item/clothing/gloves/rainbow,
 /obj/item/clothing/head/soft/rainbow,
 /turf/simulated/floor/holofloor/carpet,
@@ -7158,7 +7158,7 @@
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "sJ" = (
-/mob/living/simple_mob/animal/passive/bird/parrot/poly{
+/mob/living/simple_mob/animal/passive/bird/parrot/polly{
 	faction = "zoo"
 	},
 /turf/simulated/floor/holofloor/grass,

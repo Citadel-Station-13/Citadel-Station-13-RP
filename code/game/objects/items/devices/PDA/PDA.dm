@@ -11,7 +11,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	item_state = "electronic"
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_ID | SLOT_BELT
-	sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/species/seromi/id.dmi')
+	sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/species/teshari/id.dmi')
 
 	//Main variables
 	var/pdachoice = 1
@@ -68,12 +68,20 @@ GLOBAL_LIST_EMPTY(PDAs)
 	if(..(user, 1))
 		to_chat(user, "The time [stationtime2text()] is displayed in the corner of the screen.")
 
+/obj/item/pda/CtrlClick()
+	if (issilicon(usr))
+		return
+
+	if (can_use(usr))
+		remove_pen()
+		return
+	..()
 
 /obj/item/pda/AltClick()
 	if(issilicon(usr))
 		return
 
-	if ( can_use(usr) )
+	if (can_use(usr))
 		if(id)
 			remove_id()
 		else
@@ -430,16 +438,26 @@ GLOBAL_LIST_EMPTY(PDAs)
 		var/mob/living/carbon/human/H = loc
 		var/pdachoice = H.pdachoice
 		switch(pdachoice)
-			if(1)
-				icon = 'icons/obj/pda.dmi'
-			if(2)
-				icon = 'icons/obj/pda_slim.dmi'
-			if(3)
-				icon = 'icons/obj/pda_old.dmi'
-			if(4)
-				icon = 'icons/obj/pda_rugged.dmi'
-			if(5)
-				icon = 'icons/obj/pda_minimal.dmi'
+			if(1) icon = 'icons/obj/pda.dmi'
+			if(2) icon = 'icons/obj/pda_slim.dmi'
+			if(3) icon = 'icons/obj/pda_old.dmi'
+			if(4) icon = 'icons/obj/pda_rugged.dmi'
+			if(5) icon = 'icons/obj/pda_minimal.dmi'
+			if(6) icon = 'icons/obj/pda_holo.dmi'
+			if(7)
+				icon = 'icons/obj/pda_wrist.dmi'
+				item_state = icon_state
+				item_icons = list(
+					slot_belt_str = 'icons/mob/pda_wrist.dmi',
+					slot_wear_id_str = 'icons/mob/pda_wrist.dmi',
+					slot_gloves_str = 'icons/mob/pda_wrist.dmi'
+				)
+				desc = "A portable microcomputer by Thinktronic Systems, LTD. This model is a wrist-bound version."
+				slot_flags = SLOT_ID | SLOT_BELT | SLOT_GLOVES
+				sprite_sheets = list(
+				SPECIES_TESHARI = 'icons/mob/species/seromi/pda_wrist.dmi',
+				SPECIES_VR_TESHARI = 'icons/mob/species/seromi/pda_wrist.dmi',
+				)
 			else
 				icon = 'icons/obj/pda_old.dmi'
 				log_debug("Invalid switch for PDA, defaulting to old PDA icons. [pdachoice] chosen.")
@@ -1048,6 +1066,19 @@ GLOBAL_LIST_EMPTY(PDAs)
 			id.loc = get_turf(src)
 		id = null
 
+/obj/item/pda/proc/remove_pen()
+	var/obj/item/pen/O = locate() in src
+	if(O)
+		if(istype(loc, /mob))
+			var/mob/M = loc
+			if(M.get_active_hand() == null)
+				M.put_in_hands(O)
+				to_chat(usr, "<span class='notice'>You remove \the [O] from \the [src].</span>")
+				return
+		O.loc = get_turf(src)
+	else
+		to_chat(usr, "<span class='notice'>This PDA does not have a pen in it.</span>")
+
 /obj/item/pda/proc/create_message(var/mob/living/U = usr, var/obj/item/pda/P, var/tap = 1)
 	if(tap)
 		U.visible_message("<span class='notice'>\The [U] taps on their PDA's screen.</span>")
@@ -1099,6 +1130,8 @@ GLOBAL_LIST_EMPTY(PDAs)
 			conversations.Add("\ref[P]")
 		if(!P.conversations.Find("\ref[src]"))
 			P.conversations.Add("\ref[src]")
+
+		to_chat(U, "\icon[src] <b>Sent message to [P.owner] ([P.ownjob]), </b>\"[t]\"")
 
 
 		if (prob(15)) //Give the AI a chance of intercepting the message
@@ -1208,17 +1241,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 		return
 
 	if ( can_use(usr) )
-		var/obj/item/pen/O = locate() in src
-		if(O)
-			if (istype(loc, /mob))
-				var/mob/M = loc
-				if(M.get_active_hand() == null)
-					M.put_in_hands(O)
-					to_chat(usr, "<span class='notice'>You remove \the [O] from \the [src].</span>")
-					return
-			O.loc = get_turf(src)
-		else
-			to_chat(usr, "<span class='notice'>This PDA does not have a pen in it.</span>")
+		remove_pen()
 	else
 		to_chat(usr, "<span class='notice'>You cannot do this while restrained.</span>")
 

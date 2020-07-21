@@ -575,3 +575,11 @@ datum/gear/suit/miscellaneous/storage/lawyer/bridgeofficerparade
 /datum/gear/suit/storage/ladvic
 	display_name = "Ladies Victorian Coat"
 	path = /obj/item/clothing/suit/storage/ladiesvictoriancoat
+
+/datum/gear/suit/slimleather
+	display_name = "slim leather jacket, brown"
+	path = /obj/item/clothing/suit/storage/toggle/slimleather
+
+/datum/gear/suit/ronincoat
+	display_name = "Ronin Coat"
+	path = /obj/item/clothing/suit/storage/toggle/ronincoat
