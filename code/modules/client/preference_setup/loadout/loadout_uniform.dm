@@ -712,34 +712,34 @@ datum/gear/uniform/fiendsuit
 datum/gear/uniform/fienddress
 	display_name = "Fiendish Dress"
 	path = /obj/item/clothing/under/fienddress
-	
+
 datum/gear/uniform/leotard
 	display_name = "Black leotard"
 	path = /obj/item/clothing/under/leotard
 
 datum/gear/uniform/undersuitemt
 	display_name = "EMT Undersuit"
-	path = /obj/item/clothing/under/undersuitemt
+	path = /obj/item/clothing/uniform/undersuitemt
 	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist")
 
 datum/gear/uniform/undersuithazard
 	display_name = "Hazard Undersuit"
-	path = /obj/item/clothing/under/undersuithazard
+	path = /obj/item/clothing/uniform/undersuithazard
 	allowed_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer")
 
 datum/gear/uniform/undersuitsec
 	display_name = "Security Undersuit"
-	path = /obj/item/clothing/under/undersuitsec
+	path = /obj/item/clothing/uniform/undersuitsec
 	allowed_roles = list("Security Officer","Head of Security","Warden","Detective")
 
 datum/gear/uniform/undersuitseccom
-	displa_name = "Security Command Undersuit"
-	path = /obj/item/clothing/under/undersuitseccom
+	display_name = "Security Command Undersuit"
+	path = /obj/item/clothing/uniform/undersuitseccom
 	allowed_roles = list("Head of Security","Warden")
 
 datum/gear/uniform/undersuitcommand
-	displa_name = "Command Undersuit"
-	path = /obj/item/clothing/under/undersuitcommand
+	display_name = "Command Undersuit"
+	path = /obj/item/clothing/uniform/undersuitcommand
 	allowed_roles = list("Head of Security","Facility Director","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer")
 
 
