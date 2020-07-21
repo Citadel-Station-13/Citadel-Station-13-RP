@@ -1053,32 +1053,32 @@
 	desc = "A black leotard with a piece of semi-transparent cloth near the bust. Perfect for showing off cleavage. Bunny ears not included."
 	icon_state = "leotard"
 
-/obj/item/clothing/under/bodysuitemt
+/obj/item/clothing/under/bodysuit/bodysuitemt
 	name = "emt bodysuit"
 	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a deep blue base with white and blue coloration."
 	icon_state = "bodysuit_emt"
 
-/obj/item/clothing/under/bodysuithazard
+/obj/item/clothing/under/bodysuit/bodysuithazard
 	name = "hazard bodysuit"
 	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a black base with striking orange and reflective stripes."
 	icon_state = "bodysuit_emt"
 
-/obj/item/clothing/under/bodysuitsec
+/obj/item/clothing/under/bodysuit/bodysuitsec
 	name = "security bodysuit"
 	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a dark grey base with red and yellow coloration."
 	icon_state = "bodysuit_security"
 
-/obj/item/clothing/under/bodysuitsecweewoo
+/obj/item/clothing/under/bodysuit/bodysuitsecweewoo
 	name = "advanced security bodysuit"
 	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a dark grey base with red and yellow coloration. The flashing lights fill you with confidence."
 	icon_state = "bodysuit_secweewoo"
 
-/obj/item/clothing/under/bodysuitseccom
+/obj/item/clothing/under/bodysuit/bodysuitseccom
 	name = "security command bodysuit"
 	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a dark grey base with striking red and gold coloration."
 	icon_state = "bodysuit_bodysuitseccom"
 
-/obj/item/clothing/under/bodysuitcommand
+/obj/item/clothing/under/bodysuit/bodysuitcommand
 	name = "command bodysuit"
 	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a flashy blue base with white and gold coloration."
 	icon_state = "bodysuit_command"
