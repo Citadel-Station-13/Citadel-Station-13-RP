@@ -27,7 +27,7 @@
 		endWhen = worst_case_end()
 
 /datum/event/meteor_wave/proc/worst_case_end()
-	return activeFor + ((14 / severity) * waves) + 10
+	return activeFor + ((14 / severity) * waves) + 5
 
 /datum/event/meteor_wave/end()
 	switch(severity)
