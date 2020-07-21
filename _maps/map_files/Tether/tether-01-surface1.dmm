@@ -26241,6 +26241,7 @@
 	dir = 8
 	},
 /obj/structure/closet/secure_closet/paramedic,
+/obj/item/clothing/accessory/permit/gun/paramedic,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/triage)
 "bAe" = (
@@ -31703,6 +31704,10 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 4
 	},
+/obj/item/clothing/accessory/holster/machete,
+/obj/item/material/knife/tacknife/survival,
+/obj/item/material/knife/machete,
+/obj/item/clothing/accessory/permit/gun/paramedic,
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/medical/triage)
 "fTH" = (

@@ -582,4 +582,4 @@ datum/gear/suit/miscellaneous/storage/lawyer/bridgeofficerparade
 
 /datum/gear/suit/ronincoat
 	display_name = "Ronin Coat"
-	path = /obj/item/clothing/suit/storage/toggle/ronincoat
+	path = /obj/item/clothing/suit/storage/hooded/ronincoat
