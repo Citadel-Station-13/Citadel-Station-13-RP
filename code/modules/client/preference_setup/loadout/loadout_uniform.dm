@@ -717,27 +717,27 @@ datum/gear/uniform/leotard
 	display_name = "Black leotard"
 	path = /obj/item/clothing/under/leotard
 
-datum/gear/uniform/undersuitemt
+datum/gear/uniform/bodysuitemt
 	display_name = "EMT Bodysuit"
 	path = /obj/item/clothing/under/bodysuit/bodysuitemt
 	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist")
 
-datum/gear/uniform/undersuithazard
+datum/gear/uniform/bodysuithazard
 	display_name = "Hazard Bodysuit"
 	path = /obj/item/clothing/under/bodysuit/bodysuithazard
 	allowed_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer")
 
-datum/gear/uniform/undersuitsec
+datum/gear/uniform/bodysuitsec
 	display_name = "Security Bodysuit"
 	path = /obj/item/clothing/under/bodysuit/bodysuitsec
 	allowed_roles = list("Security Officer","Head of Security","Warden","Detective")
 
-datum/gear/uniform/undersuitseccom
+datum/gear/uniform/bodysuitseccom
 	display_name = "Security Command Bodysuit"
 	path = /obj/item/clothing/under/bodysuit/bodysuitseccom
 	allowed_roles = list("Head of Security","Warden")
 
-datum/gear/uniform/undersuitcommand
+datum/gear/uniform/bodysuitcommand
 	display_name = "Command Bodysuit"
 	path = /obj/item/clothing/under/bodysuit/bodysuitcommand
 	allowed_roles = list("Head of Security","Facility Director","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer")
