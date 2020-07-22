@@ -49,6 +49,7 @@ Used In File(s): \code\game\machinery\jukebox.dm
     {{for data.tracks}}
         <div class="item">
             {{:helper.link(value.title, 'gear', {'change_track' : value.ref}, data.current_track_ref == value.ref ? 'disabled' : null, null)}}
+			{{:helper.link(value.artist)}}
         </div>
     {{/for}}
 </div>
