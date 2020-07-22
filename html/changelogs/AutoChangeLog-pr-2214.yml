@@ -1,0 +1,6 @@
+author: "Enzo-Leon"
+delete-after: True
+changes: 
+  - tweak: "Reduced weight and duration of Electrical Storm events"
+  - tweak: "Reduced danger of Meteor Wave events"
+  - balance: "Damage and weight adjustments of the above events."
