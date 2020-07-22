@@ -70,7 +70,7 @@
 		var/hsrc_logline
 		var/atom/maybe = hsrc
 		if(istype(hsrc, /datum/nanoui))
-			var/datum/nanoui/N = hrsc
+			var/datum/nanoui/N = hsrc
 			maybe = N.src_object
 		if(istype(maybe))
 			hsrc_logline = "[maybe] ([AREACOORD(maybe)])"
