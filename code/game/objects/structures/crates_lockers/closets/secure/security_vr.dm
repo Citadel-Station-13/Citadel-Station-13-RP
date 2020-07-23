@@ -15,7 +15,7 @@
 		/obj/item/clothing/suit/storage/vest/hos,
 		/obj/item/clothing/under/rank/head_of_security/jensen,
 		/obj/item/clothing/under/rank/head_of_security/corp,
-		/obj/item/clothing/under/bodysuitseccom,
+		/obj/item/clothing/under/bodysuit/bodysuitseccom,
 		/obj/item/clothing/under/solgov/mildress/marine/command,
 		/obj/item/clothing/suit/storage/vest/hoscoat/jensen,
 		/obj/item/clothing/suit/storage/vest/hoscoat,
@@ -96,7 +96,7 @@
 		/obj/item/clothing/head/soft/nanotrasen,
 		/obj/item/clothing/head/beret/nanotrasen,
 		/obj/item/clothing/under/nanotrasen/security,
-		/obj/item/clothing/under/bodysuitsecweewoo,
+		/obj/item/clothing/under/bodysuit/bodysuitsecweewoo,
 		/obj/item/clothing/gloves/black,
 		/obj/item/clothing/shoes/boots/jackboots,
 		/obj/item/clothing/shoes/boots/jackboots/toeless)
