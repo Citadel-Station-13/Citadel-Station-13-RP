@@ -722,6 +722,16 @@ datum/gear/uniform/bodysuitemt
 	path = /obj/item/clothing/under/bodysuit/bodysuitemt
 	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist")
 
+datum/gear/uniform/bodysuitexplocom
+	display_name = "Exploration Command Bodysuit"
+	path = /obj/item/clothing/under/bodysuit/bodysuitexplocom
+	allowed_roles = list("Research Director","Pathfinder")
+
+datum/gear/uniform/bodysuitexplo
+	display_name = "Exploration Bodysuit"
+	path = /obj/item/clothing/under/bodysuit/bodysuitexplo
+	allowed_roles = list("Reasearch Director","Pathfinder","Scientist","Roboticist","Xenobiologist")
+
 datum/gear/uniform/bodysuithazard
 	display_name = "Hazard Bodysuit"
 	path = /obj/item/clothing/under/bodysuit/bodysuithazard
@@ -741,6 +751,4 @@ datum/gear/uniform/bodysuitcommand
 	display_name = "Command Bodysuit"
 	path = /obj/item/clothing/under/bodysuit/bodysuitcommand
 	allowed_roles = list("Head of Security","Facility Director","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer")
-
-
 

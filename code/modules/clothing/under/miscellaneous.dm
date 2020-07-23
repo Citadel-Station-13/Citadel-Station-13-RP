@@ -1060,8 +1060,18 @@
 
 /obj/item/clothing/under/bodysuit/bodysuithazard
 	name = "hazard bodysuit"
-	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a black base with striking orange and reflective stripes."
-	icon_state = "bodysuit_emt"
+	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a black base with striking orange plating and reflective stripes."
+	icon_state = "bodysuit_hazard"
+
+/obj/item/clothing/under/bodysuit/bodysuitexplocom
+	name = "exploration command bodysuit"
+	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a black base with striking purple plating and eyecatching golden stripes."
+	icon_state = "bodysuit_pathfinder"
+
+/obj/item/clothing/under/bodysuit/bodysuitexplo
+	name = "exploration bodysuit"
+	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a black base with striking purple plating."
+	icon_state = "bodysuit_explo"
 
 /obj/item/clothing/under/bodysuit/bodysuitsec
 	name = "security bodysuit"
@@ -1075,10 +1085,15 @@
 
 /obj/item/clothing/under/bodysuit/bodysuitseccom
 	name = "security command bodysuit"
-	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a dark grey base with striking red and gold coloration."
+	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a dark grey base with striking red plating and eyecatching golden stripes."
 	icon_state = "bodysuit_bodysuitseccom"
 
 /obj/item/clothing/under/bodysuit/bodysuitcommand
 	name = "command bodysuit"
-	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a flashy blue base with white and gold coloration."
+	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a flashy blue base with white plating and eyecatching golden stripes."
 	icon_state = "bodysuit_command"
+
+/obj/item/clothing/under/bodysuit/bodysuitcentcom
+	name = "central command bodysuit"
+	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a sleek black base with an elegant golden trim and grey plating. It fits your corporate badges nicely."
+	icon_state = "bodysuit_centcom"
