@@ -353,7 +353,10 @@
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/robotics/attach_organ_robotic
-	allowed_procs = list(IS_SCREWDRIVER = 100)
+
+	allowed_tools = list(
+	/obj/item/surgical/FixOVein = 100
+	)
 
 	min_duration = 100
 	max_duration = 120
