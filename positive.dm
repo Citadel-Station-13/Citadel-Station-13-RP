@@ -20,7 +20,7 @@
 	name = "Better Endurance"
 	desc = "Increases your maximum total hitpoints to 110"
 	cost = 3
-	var_changes = list("tota;_health" = 110)
+	var_changes = list("total_health" = 110)
 
 /datum/trait/endurance_high
 	name = "High Endurance"
