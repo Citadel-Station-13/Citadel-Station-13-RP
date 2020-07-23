@@ -171,19 +171,13 @@
 	desc = "Your saliva has especially strong antiseptic properties that can be used to heal small wounds."
 	cost = 1
 
-
 /datum/trait/antiseptic_saliva/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..()
 	H.verbs |= /mob/living/carbon/human/proc/lick_wounds
-
-/datum/trait/acrobatic
-	name = "Acrobatic"
-	desc = "You are acrobatic and can effortlessly climb tables and railings"
-	cost = 4
-	var_changes = list("pass_flags" = PASSTABLE)
 
 /datum/trait/thick_blood
 	name = "Thick Blood"
 	desc = "You bleed 25% slower."
 	cost = 1
 	var_changes = list("bloodloss_rate" = 0.75)
+	
