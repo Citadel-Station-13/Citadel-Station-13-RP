@@ -492,4 +492,4 @@
 		/obj/item/clothing/under/gimmick/rank/captain/suit/skirt,
 		/obj/item/clothing/glasses/sunglasses,
 		/obj/item/clothing/head/caphat,
-		/obj/item/clothing/under/bodysuitcommand)
+		/obj/item/clothing/under/bodysuit/bodysuitcommand)
