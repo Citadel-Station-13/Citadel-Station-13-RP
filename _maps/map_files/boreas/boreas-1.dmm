@@ -14721,16 +14721,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters)
 "Ey" = (
-/obj/machinery/access_button/airlock_exterior{
-	master_tag = "mining_airlock";
-	pixel_x = 25;
-	pixel_y = 8
-	},
-/obj/machinery/door/airlock/glass_mining{
-	name = "Mining Operations"
-	},
-/obj/structure/fans/tiny,
-/turf/simulated/floor/tiled/steel_grid,
+/turf/simulated/floor/outdoors/snow/boreas,
 /area/outpost/mining_main)
 "EA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -14938,6 +14929,12 @@
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
 /turf/simulated/floor,
 /area/outpost/mining_main)
@@ -15340,6 +15337,10 @@
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/showers)
+"Hm" = (
+/obj/machinery/light/small,
+/turf/simulated/floor/plating,
+/area/outpost/mining_main)
 "Hn" = (
 /obj/structure/flora/grass/both,
 /obj/effect/spider/spiderling/frost,
@@ -15520,9 +15521,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/locker/laundry_arrival)
 "HR" = (
-/obj/structure/sign/fire{
-	pixel_x = -32
-	},
+/obj/machinery/atmospherics/pipe/tank/air,
 /turf/simulated/floor/tiled/techmaint,
 /area/outpost/mining_main)
 "HS" = (
@@ -15871,6 +15870,8 @@
 	icon_state = "1-2"
 	},
 /obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/techfloor,
 /area/outpost/mining_main)
 "Jb" = (
@@ -17008,6 +17009,8 @@
 	},
 /obj/structure/cable/green,
 /obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor,
 /area/outpost/mining_main)
 "MS" = (
@@ -17594,8 +17597,8 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "OW" = (
-/obj/structure/sign/nosmoking_2{
-	pixel_x = -32
+/obj/machinery/atmospherics/portables_connector{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/outpost/mining_main)
@@ -17696,6 +17699,12 @@
 	d1 = 1;
 	d2 = 8;
 	icon_state = "1-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/outpost/mining_main)
@@ -18040,6 +18049,12 @@
 /obj/structure/railing{
 	dir = 1
 	},
+/obj/machinery/atmospherics/pipe/zpipe/down/scrubbers{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/zpipe/down/supply{
+	dir = 1
+	},
 /turf/simulated/open,
 /area/outpost/mining_main)
 "Qs" = (
@@ -18285,8 +18300,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
 "Rh" = (
-/obj/machinery/light/small,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techmaint,
 /area/outpost/mining_main)
 "Ri" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -19230,7 +19244,16 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main)
 "UD" = (
-/turf/simulated/floor/tiled/techmaint,
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 1
+	},
+/obj/structure/closet/secure_closet/guncabinet/phase{
+	name = "mining weapon cabinet"
+	},
+/turf/simulated/floor/tiled,
 /area/outpost/mining_main)
 "UE" = (
 /obj/effect/floor_decal/corner/paleblue/diagonal,
@@ -19934,9 +19957,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/escape/station)
 "Xp" = (
-/obj/structure/railing{
-	dir = 4
-	},
+/obj/machinery/mech_recharger,
 /turf/simulated/floor/tiled/techmaint,
 /area/outpost/mining_main)
 "Xs" = (
@@ -19972,6 +19993,12 @@
 	pixel_y = 22
 	},
 /obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
 /turf/simulated/floor,
 /area/outpost/mining_main)
 "Xy" = (
@@ -101209,7 +101236,7 @@ WV
 Xk
 Xk
 Xk
-WV
+Xk
 WV
 IJ
 SG
@@ -101518,20 +101545,20 @@ aa
 aa
 aa
 Cp
-WV
-WV
-WV
-WV
-WV
-WV
+Ey
+Ey
+Ey
+Ey
+Ey
+Ey
 aa
 aa
 WV
 OG
 Xk
 Xk
-Rh
-WV
+Xk
+Hm
 WV
 Jh
 Ug
@@ -101841,10 +101868,10 @@ aa
 aa
 Cp
 WV
-UD
-OW
-HR
-UD
+WV
+WV
+WV
+WV
 WV
 WV
 WV
@@ -101853,7 +101880,7 @@ SS
 Xk
 Xk
 Xk
-WV
+Xk
 WV
 Xw
 MQ
@@ -102164,9 +102191,9 @@ aa
 Cp
 WV
 Xp
-Xp
-Xp
-Xp
+HR
+OW
+Rh
 WV
 FP
 WV
@@ -102806,7 +102833,7 @@ aa
 aa
 aa
 Cp
-Ey
+Pc
 EJ
 Jb
 Jb
@@ -105068,7 +105095,7 @@ WV
 Th
 Vu
 GZ
-MU
+UD
 TW
 Gm
 Yr
