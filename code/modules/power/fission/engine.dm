@@ -529,7 +529,7 @@
 	var/prob_fall = 25		//Above decreases by this much each time one spawns
 
 	//Settings to help mappers/coders have their mobs do what they want in this case
-	var/faction	= "meltdown"			//To prevent infighting if it spawns various mobs, set a faction
+	var/faction	= "spiders"			//To prevent infighting if it spawns various mobs, set a faction
 	var/atmos_comp = TRUE			//TRUE will set all their survivability to be within 20% of the current air
 
 	//Internal use only
