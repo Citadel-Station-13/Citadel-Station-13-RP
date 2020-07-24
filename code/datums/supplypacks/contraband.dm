@@ -133,13 +133,6 @@
 	containername = "Wolfgirl crate"
 	contraband = 1
 
-/datum/supply_pack/supply/catgirl
-	name = "Catgirl Crate"
-	cost = 200 //I mean, it's a whole catgirl
-	containertype = /obj/structure/largecrate/animal/catgirl
-	containername = "Catgirl crate"
-	contraband = 1
-
 /datum/supply_pack/supply/medieval
 	name = "Knight set crate"
 	contains = list(
