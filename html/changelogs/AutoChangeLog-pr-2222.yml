@@ -1,0 +1,5 @@
+author: "drofoljaelisglis"
+delete-after: True
+changes: 
+  - rscdel: "Removed catgirl mobs."
+  - imagedel: "Removed all associated catgirl mob sprites."
