@@ -2,9 +2,9 @@
 	name = "space penguin"
 	desc = "An ungainly, waddling, cute, and VERY well-dressed bird."
 	tt_desc = "E Aptenodytes forsteri"
-	icon_state = "penguin"
-	icon_living = "penguin"
-	icon_dead = "penguin_dead"
+	icon_state = "emperor_penguin"
+	icon_living = "emperor_penguin"
+	icon_dead = "emperor_penguin_dead"
 	intelligence_level = SA_ANIMAL
 
 	maxHealth = 20

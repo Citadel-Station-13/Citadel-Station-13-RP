@@ -1,7 +1,7 @@
 /mob/living/simple_mob/fluffy
 	name = "Fluffy"
 	desc = "It's a pink Diyaab! It seems to be very tame and quiet."
-	icon = 'icons/mob/animal_vr.dmi'
+	icon = 'icons/mob/animal.dmi'
 	icon_state = "fluffy"
 	icon_living = "fluffy"
 	icon_dead = "fluffy_dead"
