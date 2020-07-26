@@ -152,6 +152,7 @@
 			if(!client.holder && !config_legacy.antag_hud_allowed)           // For new ghosts we remove the verb from even showing up if it's not allowed.
 				observer.verbs -= /mob/observer/dead/verb/toggle_antagHUD        // Poor guys, don't know what they are missing!
 			observer.key = key
+			observer.client?.holder?.update_stealth_ghost()
 			qdel(src)
 
 			return 1

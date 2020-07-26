@@ -774,6 +774,11 @@
 	desc = "No honest man would wear this abomination."
 	icon_state = "mankini"
 
+/obj/item/clothing/under/swimsuit/stripper/cowbikini
+	name = "cow print bikini"
+	desc = "A rather skimpy cow patterned swimsuit."
+	icon_state = "swim_cow"
+
 /*
  * pyjamas
  */
@@ -1052,3 +1057,18 @@
 	name = "black leotard"
 	desc = "A black leotard with a piece of semi-transparent cloth near the bust. Perfect for showing off cleavage. Bunny ears not included."
 	icon_state = "leotard"
+
+/obj/item/clothing/under/leotardcolor
+	name = "colored leotard"
+	desc = "A colorable leotard with a piece of semi-transparent cloth near the bust. Perfect for showing off cleavage. Bunny ears not included."
+	icon_state = "leotard_color"
+
+/obj/item/clothing/under/verglasdress
+    name = "verglas dress"
+    desc = "The modern twist on a forgotten pattern, the Verglas style utilizes comfortable velvet and silver white satin to create an otherworldly effect evocative of winter, or the void."
+    icon_state = "verglas_dress"
+
+/obj/item/clothing/under/fashionminiskirt
+    name = "fashionable miniskirt"
+    desc = "An impractically short miniskirt allegedly making waves through the local fashion scene."
+    icon_state = "miniskirt_fashion"

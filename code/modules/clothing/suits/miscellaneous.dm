@@ -222,6 +222,11 @@
 	icon_state = "straight_jacket"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
+	//yw edit - Teshari sprite
+	sprite_sheets = list(
+		SPECIES_TESHARI = 'icons/mob/species/teshari/suit.dmi'
+		)
+	//yw edit end
 
 	var/resist_time = 4800	// Eight minutes.
 
@@ -344,6 +349,14 @@ obj/item/clothing/suit/kamishimo
 	desc = "A cozy cardigan in a classic style."
 	icon_state = "cardigan"
 	addblends = "cardigan_a"
+	flags_inv = HIDEHOLSTER
+
+/obj/item/clothing/suit/storage/toggle/slimleather
+	name = "slim leather coat"
+	desc = "A tailored, brown leather coat."
+	icon_state = "slim_leather"
+	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask)
+	item_state_slots = list(slot_r_hand_str = "brown_jacket", slot_l_hand_str = "brown_jacket")
 	flags_inv = HIDEHOLSTER
 
 /*

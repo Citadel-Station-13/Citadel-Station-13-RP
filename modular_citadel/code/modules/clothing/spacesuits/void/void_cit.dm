@@ -5,7 +5,7 @@
 		"Tajara"			= 'icons/obj/clothing/species/tajaran/suits.dmi', // Copied from void.dm
 		"Skrell"			= 'icons/obj/clothing/species/skrell/suits.dmi',  // Copied from void.dm
 		"Unathi"			= 'icons/obj/clothing/species/unathi/suits.dmi',  // Copied from void.dm
-		"Teshari"			= 'icons/obj/clothing/species/seromi/suits.dmi',  // Copied from void.dm
+		"Teshari"			= 'icons/obj/clothing/species/teshari/suits.dmi',  // Copied from void.dm
 		"Nevrean"			= 'icons/obj/clothing/species/nevrean/suits.dmi',
 		"Akula"				= 'modular_citadel/icons/obj/clothing/species/akula/suits.dmi', // We have to update it if upstream adds more spacesuits.
 		"Sergal"			= 'icons/obj/clothing/species/sergal/suits.dmi',

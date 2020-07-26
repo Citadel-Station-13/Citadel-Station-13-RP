@@ -1,0 +1,14 @@
+author: "Zandario"
+delete-after: True
+changes: 
+  - rscadd: "customizable choker in loadout for both Teshari and Humans (ported)"
+  - rscadd: "Teshari Collars and Harnesses for those certain people (ported)"
+  - rscadd: "Hooded Teshari Coats, they're pretty hot if you ask me (ported)"
+  - rscadd: "2-3 new sets of prosthetics for various species including Teshari and even Diona Nymphs! (ported)"
+  - imageadd: "Teshari Collars (You asked for em, you're welcome) (ported)"
+  - imageadd: "Resprited Teshari Cloaks (by me)"
+  - imageadd: "Resprited Teshari Department Cloaks (by me)"
+  - imageadd: "New Teshari Department Dresses (by me)"
+  - imageadd: "Probably more things (fugg if I know)"
+  - code_imp: "Every. Single. Instance. of Resomi/Seromi has been thoroughly replaced with the proper name. Teshari.  (by me)"
+  - rscdel: "Duplicate Teshari markings/tails which were well, identical, but broken as it was legacy content. (delet'd by yours truly)"

@@ -18,7 +18,7 @@
 	ks2type = /obj/item/encryptionkey/ert
 
 /obj/item/radio/headset
-	sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/species/seromi/ears.dmi',
+	sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/species/teshari/ears.dmi',
 						SPECIES_WEREBEAST = 'icons/mob/species/werebeast/ears.dmi',
 						SPECIES_VOX = 'icons/mob/species/vox/ears.dmi')
 

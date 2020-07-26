@@ -97,13 +97,14 @@
 	icon_state = "door_locked";
 	id_tag = "trade_shuttle_hatch";
 	locked = 1;
-	name = "Shuttle Hatch"
+	name = "Shuttle Hatch";
+	req_one_access = null
 	},
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
 	id_tag = "trade_shuttle";
 	pixel_x = -25;
-	req_one_access = list(101);
+	req_one_access = null;
 	tag_door = "trade_shuttle_hatch"
 	},
 /turf/simulated/shuttle/floor/black,
@@ -3305,7 +3306,8 @@
 	frequency = 1380;
 	icon_state = "door_locked";
 	id_tag = "trade_shuttle_bay_door";
-	locked = 1
+	locked = 1;
+	req_one_access = null
 	},
 /turf/unsimulated/floor{
 	icon_state = "steel"
@@ -3337,7 +3339,8 @@
 	icon_state = "door_locked";
 	id_tag = "trade_shuttle_hatch";
 	locked = 1;
-	name = "Shuttle Hatch"
+	name = "Shuttle Hatch";
+	req_one_access = null
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade/centcom)

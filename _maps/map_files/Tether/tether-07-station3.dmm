@@ -17900,6 +17900,11 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
+/obj/structure/table/rack,
+/obj/item/toy/syndicateballoon{
+	desc = "There is a tag on the back bearing a long list of names. The name Yuri 'Iceman' Jones has been sloppily crossed out with permanent marker. Beneath the name, the word NanoTrasen has been stenciled in.";
+	name = "mysterious balloon"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
 "CY" = (

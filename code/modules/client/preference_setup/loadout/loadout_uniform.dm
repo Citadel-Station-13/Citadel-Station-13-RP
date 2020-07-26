@@ -738,3 +738,23 @@ datum/gear/uniform/fienddress
 datum/gear/uniform/leotard
 	display_name = "Black leotard"
 	path = /obj/item/clothing/under/leotard
+
+datum/gear/uniform/leotardcolor
+	display_name = "Colored leotard"
+	path = /obj/item/clothing/under/leotardcolor
+
+/datum/gear/uniform/leotardcolor/New()
+	..()
+	gear_tweaks = list(gear_tweak_free_color_choice)
+
+datum/gear/uniform/verglasdress
+	display_name = "Verglas dress"
+	path = /obj/item/clothing/under/verglasdress
+
+datum/gear/uniform/fashionminiskirt
+	display_name = "Fashionable miniskirt"
+	path = /obj/item/clothing/under/fashionminiskirt
+
+/datum/gear/uniform/fashionminiskirt/New()
+	..()
+	gear_tweaks = list(gear_tweak_free_color_choice)

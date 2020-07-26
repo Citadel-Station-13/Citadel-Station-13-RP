@@ -134,6 +134,16 @@
 	user.ooc_wrapper()
 	return TRUE
 
+/datum/keybinding/mob/looc
+	hotkey_keys = list("L")
+	name = "looc"
+	full_name = "LOOC"
+	description = "Says something in local OOC"
+
+/datum/keybinding/mob/ooc/down(client/user)
+	user.looc_wrapper()
+	return TRUE
+
 /datum/keybinding/mob/whisper
 	hotkey_keys = list("Y")
 	name = "whisper"
