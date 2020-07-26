@@ -1948,6 +1948,23 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_misc_lab)
+"dm" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/airlock/science{
+	name = "Heating and Cooling"
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/tiled/white,
+/area/outpost/research/toxins_canister_icyhoot)
 "dn" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -3779,23 +3796,6 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/outpost/research/telescience_lab)
-"ig" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/airlock/science{
-	name = "Heating and Cooling"
-	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/machinery/door/firedoor,
-/turf/space,
-/area/outpost/research/toxins_canister_icyhoot)
 "il" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -25607,7 +25607,7 @@ JX
 fm
 fG
 YQ
-ig
+dm
 wN
 Tq
 Bj
