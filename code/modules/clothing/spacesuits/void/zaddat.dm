@@ -125,7 +125,7 @@
 			item_state = "zaddat_ancient"
 			if(helmet)
 				helmet.name = "ancient Shroud helmet"
-				helmet.desc = "It's a little heavy, but certainly durable."
+				helmet.desc = "It's a little heavy, but certainly durrable."
 				helmet.icon_state = "zaddat_ancient"
 				helmet.item_state = "zaddat_ancient"
 		if("Freefarer")
@@ -147,7 +147,7 @@
 			item_state = "zaddat_healer"
 			if(helmet)
 				helmet.name = "\improper Healer Shroud helm"
-				helmet.desc = "Modeled after more modern voidsuit designs, this sleek Shoud Helmet is built high visibility in emergency situations."
+				helmet.desc = "Modeled after more modern voidsuit designs, this sleek Shoud Helmet is built for high visibility in emergency situations."
 				helmet.icon_state = "zaddat_healer"
 				helmet.item_state = "zaddat_healer"
 		if("Breaker")
