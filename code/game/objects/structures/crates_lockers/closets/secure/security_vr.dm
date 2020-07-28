@@ -27,7 +27,8 @@
 		/obj/item/clothing/accessory/holster/waist,
 		/obj/item/clothing/head/beret/sec/corporate/hos,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/security,
-		/obj/item/clothing/mask/gas/half)
+		/obj/item/clothing/mask/gas/half
+		/obj/item/clothing/under/bodysuit/bodysuitseccom,)
 
 /obj/structure/closet/secure_closet/hos2
 	name = "head of security's gear"
@@ -74,6 +75,7 @@
 	storage_capacity = 3.5 * MOB_MEDIUM
 
 	starts_with = list(
+		/obj/item/clothing/under/bodysuit/bodysuitsecweewoo,
 		/obj/item/clothing/suit/storage/vest/nanotrasen,
 		/obj/item/clothing/head/helmet,
 		/obj/item/cartridge/security,
