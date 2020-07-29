@@ -1844,3 +1844,11 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "robodragon_b"
+
+/datum/sprite_accessory/tail/tentacles
+	name = "Tentacles"
+	desc = ""
+	icon_state = "tentacles"
+	do_colouration = TRUE
+	color_blend_mode = ICON_MULTIPLY
+	ani_state = "tentacles_wag"
