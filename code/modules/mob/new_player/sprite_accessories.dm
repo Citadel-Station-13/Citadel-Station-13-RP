@@ -34,7 +34,6 @@
 	// Whether or not the accessory can be affected by colouration
 	var/do_colouration = 1
 
-
 /*
 ////////////////////////////
 /  =--------------------=  /
@@ -362,6 +361,10 @@
 	halfbangalt
 		name = "Half-banged Hair Alt"
 		icon_state = "hair_halfbang_alt"
+
+	hedgehog
+		name = "Hedgehog Hair"
+		icon_state = "hair_hedgehog"
 
 	hightight
 		name = "High and Tight"
