@@ -118,22 +118,13 @@
 				helmet.icon_state = "zaddat_rugged"
 				helmet.item_state = "zaddat_rugged"
 		if("Ancient")
-<<<<<<< Updated upstream
-			name = "ancient Shroud"
-			base_name = "ancient Shroud"
-=======
 			name = "\improper ancient Shroud"
 			base_name = "\improper ancient Shroud"
->>>>>>> Stashed changes
 			desc = "History is spoken through scars, this Shroud wears many, and has seen the test of time."
 			icon_state = "zaddat_ancient"
 			item_state = "zaddat_ancient"
 			if(helmet)
-<<<<<<< Updated upstream
-				helmet.name = "ancient Shroud helmet"
-=======
 				helmet.name = "\improper ancient Shroud helmet"
->>>>>>> Stashed changes
 				helmet.desc = "It's a little heavy, but certainly durrable."
 				helmet.icon_state = "zaddat_ancient"
 				helmet.item_state = "zaddat_ancient"
@@ -193,22 +184,13 @@
 				helmet.icon_state = "zaddat_retro"
 				helmet.item_state = "zaddat_retro"
 		if("Business")
-<<<<<<< Updated upstream
 			name = "\improper Business Shroud"
 			base_name = "\improper Business Shroud"
-=======
-			name = "business Shroud"
-			base_name = "business Shroud"
->>>>>>> Stashed changes
 			desc = "A slim fitting suit fashioned after Earthen Tuxedos, supposedly this is what you need to wear to get to the top."
 			icon_state = "zaddat_business"
 			item_state = "zaddat_business"
 			if(helmet)
-<<<<<<< Updated upstream
 				helmet.name = "\improper Business Shroud helm"
-=======
-				helmet.name = "business Shroud helm"
->>>>>>> Stashed changes
 				helmet.desc = "A classic style helmet with a dashing red bowtie clipped on. Some say it looks silly, but you know what's REALLY in style these days."
 				helmet.icon_state = "zaddat_business"
 				helmet.item_state = "zaddat_business"
