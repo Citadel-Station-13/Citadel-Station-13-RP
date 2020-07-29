@@ -103,13 +103,13 @@
 	var_changes = list("minimum_breath_pressure" = 24, "oxy_mod" = 1.5)
 
 /datum/trait/rad_weak
-	name = "Radiation Resist"
+	name = "Radiation Weakness"
 	desc = "You take 25% more radition damage"
 	cost = -1
 	var_changes = list("radiation_mod" = 1.35)
 
 /datum/trait/rad_weak_plus
-	name = "Radiation Resist"
+	name = "Major Radiation"
 	desc = "You take 50% more radition damage"
 	cost = -2
 	var_changes = list("radiation_mod" = 1.50)
