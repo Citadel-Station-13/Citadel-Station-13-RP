@@ -3612,5 +3612,4 @@
 #include "modular_citadel\code\modules\vore\fluffstuff\guns\protector.dm"
 #include "modular_citadel\icons\icon_overrides.dm"
 #include "modular_citadel\maps\tether\tether_defines.dm"
-#include "modular_citadel\maps\tether\submaps\_tether_submaps.dm"
 // END_INCLUDE
