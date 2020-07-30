@@ -14,7 +14,7 @@
 	if(M.eye_blurry)
 		M.eye_blurry = max(M.eye_blurry - 8*removed, 0)
 	if(M.jitteriness)
-		M.make_jittery(max(M.jitteriness - 8*removed,0))
+		M.make_jittery(-8 * removed)
 
 /datum/reagent/numbing_enzyme
 	name = "Numbing Enzyme"
