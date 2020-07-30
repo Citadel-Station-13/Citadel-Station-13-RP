@@ -139,6 +139,9 @@
 	name = "\improper Mining Bathroom"
 /area/tether/surfacebase/mining_main/lobby
 	name = "\improper Mining Lobby"
+/area/quartermaster/belterdock
+	name = "\improper Cargo Belter Access"
+	icon_state = "mining"
 
 // Mining Underdark
 /area/mine/unexplored/underdark

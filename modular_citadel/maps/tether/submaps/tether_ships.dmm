@@ -288,7 +288,7 @@
 /area/space)
 "yn" = (
 /turf/space/transit/north,
-/area/shuttle/escape_pod3/transit)
+/area/ninja_dojo/transit)
 "HO" = (
 /turf/space/transit/north,
 /area/space)
@@ -312,7 +312,7 @@
 /area/space)
 "TL" = (
 /turf/space/transit/east,
-/area/shuttle/escape_pod3/transit)
+/area/shuttle/specialops/transit)
 
 (1,1,1) = {"
 aa

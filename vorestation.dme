@@ -3223,6 +3223,7 @@
 #include "code\modules\rogueminer_vr\controller.dm"
 #include "code\modules\rogueminer_vr\debug.dm"
 #include "code\modules\rogueminer_vr\landmarks.dm"
+#include "code\modules\rogueminer_vr\roguemines_mobs.dm"
 #include "code\modules\rogueminer_vr\wrappers.dm"
 #include "code\modules\rogueminer_vr\zone_console.dm"
 #include "code\modules\rogueminer_vr\zonemaster.dm"
@@ -3611,4 +3612,5 @@
 #include "modular_citadel\code\modules\vore\fluffstuff\guns\protector.dm"
 #include "modular_citadel\icons\icon_overrides.dm"
 #include "modular_citadel\maps\tether\tether_defines.dm"
+#include "modular_citadel\maps\tether\submaps\_tether_submaps.dm"
 // END_INCLUDE
