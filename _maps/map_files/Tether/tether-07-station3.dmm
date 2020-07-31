@@ -19666,7 +19666,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
 "Go" = (
-/turf/simulated/shuttle/wall/voidcraft/green,
+/turf/simulated/shuttle/wall/voidcraft/blue,
 /area/shuttle/belter/station)
 "Gp" = (
 /obj/effect/floor_decal/borderfloorwhite,
@@ -20930,12 +20930,6 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/quartermaster/warehouse)
 "Ir" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
 /obj/effect/floor_decal/steeldecal/steel_decals6{
 	dir = 1
 	},
@@ -20946,6 +20940,12 @@
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
@@ -21289,6 +21289,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
 "IV" = (
@@ -21859,6 +21861,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
 "JO" = (
@@ -27149,11 +27153,11 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock)
 "RE" = (
-/obj/machinery/light,
-/obj/structure/bed/chair/shuttle{
-	dir = 1
+/obj/machinery/door/airlock/voidcraft{
+	frequency = 2020;
+	id_tag = "belt_shuttle_exterior"
 	},
-/turf/simulated/shuttle/floor/voidcraft/dark,
+/turf/simulated/shuttle/floor/airless,
 /area/shuttle/belter/station)
 "RG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -27249,8 +27253,8 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
 "RW" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/shuttle/floor/voidcraft/dark,
+/obj/structure/bed/chair/shuttle,
+/turf/simulated/shuttle/floor/airless,
 /area/shuttle/belter/station)
 "RY" = (
 /obj/machinery/mineral/output,
@@ -27267,18 +27271,20 @@
 /turf/simulated/floor/tiled,
 /area/security/eva)
 "Sc" = (
-/obj/machinery/door/airlock/voidcraft{
-	frequency = 2020;
-	id_tag = "belt_shuttle_exterior"
+/obj/machinery/light{
+	dir = 1
 	},
-/turf/simulated/shuttle/floor/voidcraft/external/dark,
+/obj/machinery/recharge_station,
+/turf/simulated/shuttle/floor/airless,
 /area/shuttle/belter/station)
 "Se" = (
 /obj/structure/sign/warning/nosmoking_1,
 /turf/simulated/wall/r_wall,
 /area/medical/psych_ward)
 "Sg" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/universal,
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 10
+	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock)
 "Sh" = (
@@ -27327,6 +27333,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+"So" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/turf/simulated/floor/tiled,
+/area/quartermaster/belterdock)
 "Sp" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/glass_external{
@@ -27583,7 +27595,7 @@
 	req_one_access = list(48)
 	},
 /obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor,
 /area/quartermaster/belterdock)
 "Tk" = (
 /obj/effect/floor_decal/industrial/warning,
@@ -27593,10 +27605,16 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock)
 "Tl" = (
-/obj/machinery/light{
-	dir = 1
+/obj/structure/grille,
+/obj/structure/window/reinforced{
+	dir = 4
 	},
-/turf/simulated/shuttle/floor/voidcraft/dark,
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced/full,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/simulated/shuttle/floor/airless,
 /area/shuttle/belter/station)
 "Tp" = (
 /obj/effect/floor_decal/borderfloorwhite/corner{
@@ -27630,18 +27648,6 @@
 /obj/effect/floor_decal/steeldecal/steel_decals4,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
-"Tv" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/turf/simulated/shuttle/floor/voidcraft/dark,
-/area/shuttle/belter/station)
 "Tw" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
@@ -27722,6 +27728,12 @@
 /obj/item/storage/box/firingpins,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
+"TI" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
+/turf/simulated/floor/tiled,
+/area/quartermaster/belterdock)
 "TK" = (
 /obj/machinery/light/flicker,
 /turf/simulated/floor/tiled/kafel_full{
@@ -27737,11 +27749,21 @@
 /turf/simulated/floor/bluegrid,
 /area/ai/foyer)
 "TM" = (
-/obj/machinery/computer/shuttle_control/belter{
+/obj/structure/table/rack{
+	dir = 8;
+	layer = 2.9
+	},
+/turf/simulated/shuttle/floor/airless,
+/area/shuttle/belter/station)
+"TO" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/shuttle/floor/voidcraft/dark,
-/area/shuttle/belter/station)
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/turf/simulated/floor/tiled,
+/area/quartermaster/belterdock)
 "TP" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -27783,11 +27805,8 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock)
 "Uf" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 8
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock)
@@ -28140,10 +28159,10 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock)
 "Ve" = (
-/obj/structure/bed/chair/shuttle{
-	dir = 8
+/obj/machinery/light{
+	dir = 1
 	},
-/turf/simulated/shuttle/floor/voidcraft/dark,
+/turf/simulated/shuttle/floor/airless,
 /area/shuttle/belter/station)
 "Vf" = (
 /obj/structure/cable/green{
@@ -28197,11 +28216,13 @@
 /turf/simulated/mineral/vacuum,
 /area/quartermaster/belterdock)
 "Vl" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 1
-	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
 	dir = 4
+	},
+/obj/machinery/meter{
+	frequency = 1443;
+	id = "dist_aux_meter";
+	name = "Distribution Loop"
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock)
@@ -28271,12 +28292,10 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 8
-	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock)
 "VE" = (
@@ -28417,7 +28436,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/ward)
 "VP" = (
-/turf/simulated/shuttle/floor/voidcraft/dark,
+/turf/simulated/shuttle/floor/airless,
 /area/shuttle/belter/station)
 "VQ" = (
 /obj/effect/floor_decal/techfloor{
@@ -28521,12 +28540,13 @@
 "Wg" = (
 /obj/machinery/mineral/input,
 /obj/machinery/conveyor{
-	dir = 4;
+	dir = 8;
 	id = "mine2"
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock)
 "Wk" = (
+/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass_external{
 	frequency = 2020;
 	icon_state = "door_locked";
@@ -28535,14 +28555,11 @@
 	name = "Docking Port Airlock";
 	req_one_access = list(48)
 	},
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor,
 /area/quartermaster/belterdock)
 "Wl" = (
-/obj/structure/bed/chair/shuttle{
-	dir = 1
-	},
-/turf/simulated/shuttle/floor/voidcraft/dark,
+/obj/machinery/light,
+/turf/simulated/shuttle/floor/airless,
 /area/shuttle/belter/station)
 "Wp" = (
 /obj/effect/floor_decal/borderfloorwhite/corner{
@@ -28580,11 +28597,10 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock)
 "Ws" = (
-/obj/structure/table/rack{
-	dir = 8;
-	layer = 2.9
+/obj/machinery/computer/shuttle_control/belter{
+	dir = 4
 	},
-/turf/simulated/shuttle/floor/voidcraft/dark,
+/turf/simulated/shuttle/floor/airless,
 /area/shuttle/belter/station)
 "Wv" = (
 /obj/structure/window/reinforced/full,
@@ -28592,7 +28608,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/simulated/shuttle/floor/voidcraft/dark,
+/turf/simulated/shuttle/floor/airless,
 /area/shuttle/belter/station)
 "Wx" = (
 /obj/structure/shuttle/engine/propulsion{
@@ -28601,8 +28617,8 @@
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/belter/station)
 "WA" = (
-/obj/structure/bed/chair/shuttle,
-/turf/simulated/shuttle/floor/voidcraft/dark,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/shuttle/floor/airless,
 /area/shuttle/belter/station)
 "WB" = (
 /obj/effect/floor_decal/borderfloorwhite,
@@ -28634,9 +28650,6 @@
 /turf/simulated/floor,
 /area/maintenance/cargo)
 "WH" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 1
-	},
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 4;
 	frequency = 2020;
@@ -28684,6 +28697,13 @@
 /obj/item/storage/box/masks,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+"WN" = (
+/obj/structure/table/standard,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/quartermaster/belterdock)
 "WS" = (
 /obj/machinery/mineral/processing_unit,
 /obj/machinery/light{
@@ -28803,8 +28823,10 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock)
 "Xu" = (
-/obj/machinery/light,
-/turf/simulated/shuttle/floor/voidcraft/dark,
+/obj/structure/bed/chair/shuttle{
+	dir = 8
+	},
+/turf/simulated/shuttle/floor/airless,
 /area/shuttle/belter/station)
 "Xv" = (
 /obj/machinery/power/apc{
@@ -28819,20 +28841,9 @@
 /turf/simulated/floor,
 /area/maintenance/station/sec_upper)
 "Xw" = (
-/obj/machinery/door/airlock/voidcraft{
-	frequency = 2020;
-	id_tag = "belt_shuttle_exterior"
-	},
-/obj/machinery/access_button{
-	command = "cycle_exterior";
-	frequency = 2020;
-	master_tag = "belt_shuttle";
-	name = "exterior access button";
-	pixel_x = 32;
-	pixel_y = 0;
-	req_one_access = list(48)
-	},
-/turf/simulated/shuttle/floor/voidcraft/external/dark,
+/obj/machinery/light,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/shuttle/floor/airless,
 /area/shuttle/belter/station)
 "Xy" = (
 /obj/structure/cable{
@@ -28975,23 +28986,27 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
-"Yc" = (
-/obj/machinery/airlock_sensor{
-	frequency = 2020;
-	id_tag = "belt_dock_sensor";
-	pixel_x = -32;
-	pixel_y = 0
+"Ya" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/universal{
+	dir = 8
 	},
-/obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock)
+"Yc" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 1
+	},
+/turf/simulated/shuttle/floor/airless,
+/area/shuttle/belter/station)
 "Yd" = (
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock)
 "Ye" = (
 /obj/machinery/light,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/shuttle/floor/voidcraft/dark,
+/obj/structure/bed/chair/shuttle{
+	dir = 1
+	},
+/turf/simulated/shuttle/floor/airless,
 /area/shuttle/belter/station)
 "Yf" = (
 /obj/structure/cable/green{
@@ -29009,8 +29024,8 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock)
 "Yg" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock)
@@ -29250,13 +29265,6 @@
 /obj/item/pen/crayon/red,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
-"YT" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/machinery/recharge_station,
-/turf/simulated/shuttle/floor/voidcraft/dark,
-/area/shuttle/belter/station)
 "YW" = (
 /obj/machinery/light,
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -29354,7 +29362,7 @@
 /obj/machinery/mineral/output,
 /obj/machinery/light,
 /obj/machinery/conveyor{
-	dir = 4;
+	dir = 8;
 	id = "mine2"
 	},
 /turf/simulated/floor/tiled,
@@ -29568,12 +29576,6 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "ZY" = (
-/obj/effect/floor_decal/industrial/warning,
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 1;
-	frequency = 2020;
-	id_tag = "belt_dock_vent"
-	},
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	frequency = 2020;
 	id_tag = "belt_dock";
@@ -29587,6 +29589,15 @@
 	},
 /obj/machinery/light{
 	dir = 4
+	},
+/obj/machinery/airlock_sensor{
+	frequency = 2020;
+	id_tag = "belt_dock_sensor";
+	pixel_x = 27;
+	pixel_y = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 9
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock)
@@ -40909,8 +40920,8 @@ Dt
 OM
 JF
 ab
-vt
-vt
+ab
+ab
 vt
 vt
 vt
@@ -41053,9 +41064,9 @@ JF
 ab
 ab
 ab
-vt
-vt
-vt
+ab
+ab
+ab
 vt
 vt
 vt
@@ -41196,9 +41207,9 @@ ab
 ab
 ab
 ab
-vt
-vt
-vt
+ab
+ab
+ab
 vt
 vt
 aa
@@ -41339,11 +41350,11 @@ ab
 ab
 ab
 ab
+ab
+ab
+ab
 vt
 vt
-vt
-vt
-Tf
 aa
 aa
 aa
@@ -41482,11 +41493,11 @@ ab
 ab
 ab
 ab
-vt
-vt
-vt
-aa
-aa
+ab
+ab
+ab
+ab
+ab
 aa
 aa
 aa
@@ -41619,16 +41630,16 @@ ab
 ab
 ab
 ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
 aa
 aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
 aa
 aa
 aa
@@ -41761,16 +41772,16 @@ XU
 XU
 XU
 ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
 aa
 aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
 aa
 aa
 aa
@@ -41909,10 +41920,10 @@ aa
 aa
 aa
 aa
-ab
-ab
 aa
 aa
+ab
+ab
 aa
 aa
 aa
@@ -42046,16 +42057,16 @@ YP
 XU
 ab
 aa
+aa
 Go
 Wv
 Wv
-Tv
+Tl
 Go
-ab
-ab
-ab
 aa
-aa
+ab
+ab
+ab
 aa
 aa
 aa
@@ -42181,23 +42192,23 @@ XU
 Yd
 Ub
 Yg
-Yd
+TI
 Yd
 Yd
 Th
 XU
 ab
 aa
+aa
 Go
-Ws
 TM
 Ws
+TM
 Go
-ab
-ab
-ab
 aa
-aa
+ab
+ab
+ab
 aa
 aa
 aa
@@ -42323,23 +42334,23 @@ XU
 Vh
 Ub
 RR
-ZI
+WN
 ZI
 Yd
 XU
 XU
 XU
 XU
+aa
 Go
-Tl
 Ve
 Xu
+Wl
 Go
-ab
-ab
-ab
 aa
-aa
+ab
+ab
+ab
 aa
 aa
 aa
@@ -42463,25 +42474,25 @@ Fj
 XU
 XU
 XU
-Ub
-Yg
-Yd
+TO
+So
+Ya
 Yd
 YD
 XV
 WH
-Yc
+WH
 Wk
-Sc
+gg
+RE
 VP
 VP
-RW
+WA
 Go
-ab
-ab
-ab
 aa
-aa
+ab
+ab
+ab
 aa
 aa
 aa
@@ -42600,7 +42611,7 @@ GK
 HA
 Ir
 IU
-Dx
+BS
 JN
 ZB
 XP
@@ -42614,15 +42625,15 @@ RM
 Vl
 ZY
 Tj
+gg
+RE
+VP
+VP
 Xw
-VP
-VP
-Ye
 Go
-ab
-ab
-ab
 aa
+ab
+ab
 aa
 aa
 aa
@@ -42756,16 +42767,16 @@ XU
 XU
 XU
 XU
+aa
 Go
-WA
+RW
 VP
-Wl
+Yc
 Go
+aa
 ab
 ab
-aa
-aa
-aa
+ab
 aa
 aa
 aa
@@ -42898,15 +42909,15 @@ XU
 Vj
 ab
 aa
+aa
 Go
-YT
+Sc
 VP
-RE
+Ye
 Go
+aa
 ab
 ab
-aa
-aa
 aa
 aa
 aa
@@ -43040,15 +43051,15 @@ XU
 Vj
 ab
 aa
+aa
 Go
 Go
 Go
 Go
 Go
+aa
 ab
 ab
-aa
-aa
 aa
 aa
 aa
@@ -43183,14 +43194,14 @@ Vj
 ab
 aa
 aa
+aa
 Wx
 Wx
 Wx
+aa
 aa
 ab
 ab
-aa
-aa
 aa
 aa
 aa
@@ -43329,10 +43340,10 @@ aa
 aa
 aa
 aa
-ab
-ab
 aa
 aa
+ab
+ab
 aa
 aa
 aa
@@ -43471,10 +43482,10 @@ aa
 aa
 aa
 aa
+aa
+aa
 ab
-aa
-aa
-aa
+ab
 aa
 aa
 aa
@@ -43613,11 +43624,11 @@ aa
 aa
 aa
 aa
+aa
+aa
+aa
 ab
-aa
-aa
-aa
-aa
+ab
 aa
 aa
 aa
@@ -43755,11 +43766,11 @@ aa
 aa
 aa
 aa
-vt
 aa
 aa
 aa
-aa
+ab
+ab
 aa
 aa
 aa
@@ -43897,7 +43908,7 @@ aa
 aa
 aa
 aa
-vt
+aa
 aa
 aa
 aa
