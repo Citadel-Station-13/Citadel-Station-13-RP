@@ -759,10 +759,15 @@ datum/gear/uniform/fashionminiskirt
 	..()
 	gear_tweaks = list(gear_tweak_free_color_choice)
 
+datum/gear/uniform/bodysuiteva
+	display_name = "EVA Bodysuit"
+	path = /obj/item/clothing/under/bodysuit/bodysuiteva
+
 datum/gear/uniform/bodysuitemt
 	display_name = "EMT Bodysuit"
 	path = /obj/item/clothing/under/bodysuit/bodysuitemt
 	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist")
+
 
 datum/gear/uniform/bodysuitexplocom
 	display_name = "Exploration Command Bodysuit"
@@ -774,15 +779,25 @@ datum/gear/uniform/bodysuitexplo
 	path = /obj/item/clothing/under/bodysuit/bodysuitexplo
 	allowed_roles = list("Reasearch Director","Pathfinder","Scientist","Roboticist","Xenobiologist")
 
+datum/gear/uniform/bodysuitminer
+	display_name = "Mining Bodysuit"
+	path = /obj/item/clothing/under/bodysuit/bodysuitminer
+	allowed_roles = list("Cargo Technician","Shaft Miner")
+
 datum/gear/uniform/bodysuithazard
 	display_name = "Hazard Bodysuit"
 	path = /obj/item/clothing/under/bodysuit/bodysuithazard
-	allowed_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer")
+	allowed_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Shaft Miner")
 
 datum/gear/uniform/bodysuitsec
 	display_name = "Security Bodysuit"
 	path = /obj/item/clothing/under/bodysuit/bodysuitsec
 	allowed_roles = list("Security Officer","Head of Security","Warden","Detective")
+
+datum/gear/uniform/bodysuitsecmed
+	display_name = "Security Medic Bodysuit"
+	path = /obj/item/clothing/under/bodysuit/bodysuitsecmed
+	allowed_roles = list("Security Officer","Head of Security","Medical Doctor")
 
 datum/gear/uniform/bodysuitseccom
 	display_name = "Security Command Bodysuit"

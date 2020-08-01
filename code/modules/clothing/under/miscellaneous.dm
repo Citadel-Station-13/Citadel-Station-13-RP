@@ -991,19 +991,19 @@
 	icon_state = "btc_bartender_s"
 
 /obj/item/clothing/under/paramedunilight
-	name = "Paramedic Uniform"
+	name = "\improper Paramedic Uniform"
 	desc = "A light jumpsuit for those brave souls who have to deal with a CMO who thinks they're the do everything person."
 	icon_state = "paramedic-light"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 
 /obj/item/clothing/under/parameduniskirtlight
-	name = "Paramedic Uniskirt"
+	name = "\improper Paramedic Uniskirt"
 	desc = "A light jumpskirt for those brave souls who have to deal with a CMO who thinks they're the do everything person."
 	icon_state = "paramedic-light_skirt"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 
 /obj/item/clothing/under/dutchuniform
-	name = "Western suit"
+	name = "\improper Western suit"
 	desc = "We can't always fight nature. We can't fight change, we can't fight gravity, we can't fight nothing."
 	icon_state = "dutchuniform"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
@@ -1073,8 +1073,13 @@
     desc = "An impractically short miniskirt allegedly making waves through the local fashion scene."
     icon_state = "miniskirt_fashion"
 
+/obj/item/clothing/under/bodysuit/bodysuiteva
+	name = "\improper EVA bodysuit"
+	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one has bright white plating for easy visibility and thick cuffs to lock into your thrust controls."
+	icon_state = "bodysuit_eva"
+
 /obj/item/clothing/under/bodysuit/bodysuitemt
-	name = "emt bodysuit"
+	name = "\improper EMT bodysuit"
 	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a deep blue base with white and blue coloration."
 	icon_state = "bodysuit_emt"
 
@@ -1093,10 +1098,20 @@
 	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a black base with striking purple plating."
 	icon_state = "bodysuit_explo"
 
+/obj/item/clothing/under/bodysuit/bodysuitminer
+	name = "mining bodysuit"
+	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a dark grey base with tan and purple coloration."
+	icon_state = "bodysuit_miner"
+
 /obj/item/clothing/under/bodysuit/bodysuitsec
 	name = "security bodysuit"
 	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a dark grey base with red and yellow coloration."
 	icon_state = "bodysuit_security"
+
+/obj/item/clothing/under/bodysuit/bodysuitsecmed
+	name = "security medical bodysuit"
+	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a dark grey base with white plating an an eyecatching red trim."
+	icon_state = "bodysuit_secmed"
 
 /obj/item/clothing/under/bodysuit/bodysuitsecweewoo
 	name = "advanced security bodysuit"
