@@ -77,4 +77,4 @@
 	minimal_access = list(access_security, access_eva, access_sec_doors, access_brig, access_maint_tunnels, access_external_airlocks)
 	minimal_player_age = 3
 	outfit_type = /decl/hierarchy/outfit/job/security/officer
-	alt_titles = list("Junior Officer")
+	alt_titles = list("Security Physician"= /decl/hierarchy/outfit/under/bodysuit/bodysuitsecmed,"Junior Officer")
