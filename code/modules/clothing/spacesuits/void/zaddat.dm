@@ -38,7 +38,7 @@
 		to_chat(M, "This Shroud has already been customized!")
 		return 0
 
-	suit_style = input(M, "Which suit style would you like?") in list("Engineer", "Spacer", "Knight", "Fashion", "Bishop", "Hegemony", "Rugged")
+	suit_style = input(M, "Which suit style would you like?") in list("Engineer", "Spacer", "Knight", "Royal", "Fashion", "Bishop", "Hegemony", "Rugged", "Ancient", "Freefarer", "Healer", "Breaker", "Clockwork", "Retro", "Business")
 	switch(suit_style)
 		if("Engineer")
 			name = "\improper Engineer's Guild Shroud"
