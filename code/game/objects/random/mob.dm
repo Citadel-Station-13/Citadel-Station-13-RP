@@ -81,7 +81,7 @@
 /obj/random/mob/sif/peaceful
 	name = "Random Peaceful Sif Animal"
 	desc = "This is a random peaceful cold weather animal."
-	icon_state = "penguin"
+	icon_state = "emperor_penguin"
 
 	mob_returns_home = 1
 	mob_wander_distance = 12

@@ -8,7 +8,7 @@
 	icon_living = "fluffy"
 	icon_dead = "fluffy_dead"
 	icon_rest = "fluffy_sleep"
-	icon = 'icons/mob/animal_vr.dmi'
+	icon = 'icons/mob/animal.dmi'
 
 	maxHealth = 20 //don't want Fluff to die on a missclick
 	health = 20

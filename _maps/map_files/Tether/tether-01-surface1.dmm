@@ -26241,6 +26241,7 @@
 	dir = 8
 	},
 /obj/structure/closet/secure_closet/paramedic,
+/obj/item/clothing/accessory/permit/gun/paramedic,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/triage)
 "bAe" = (
@@ -31703,6 +31704,10 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 4
 	},
+/obj/item/clothing/accessory/holster/machete,
+/obj/item/material/knife/tacknife/survival,
+/obj/item/material/knife/machete,
+/obj/item/clothing/accessory/permit/gun/paramedic,
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/medical/triage)
 "fTH" = (
@@ -32101,15 +32106,6 @@
 /area/engineering/atmos)
 "hQf" = (
 /obj/structure/table/standard,
-/obj/item/storage/firstaid/clotting{
-	pixel_x = 5;
-	pixel_y = -5
-	},
-/obj/item/storage/firstaid/fire{
-	pixel_x = 5;
-	pixel_y = 5
-	},
-/obj/item/storage/firstaid/toxin,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
@@ -32126,6 +32122,15 @@
 	dir = 8;
 	pixel_x = -24
 	},
+/obj/random/firstaid{
+	pixel_x = 5;
+	pixel_y = -5
+	},
+/obj/item/storage/firstaid/fire{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/storage/firstaid/toxin,
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/medical/triage)
 "hYD" = (
@@ -33205,6 +33210,8 @@
 	},
 /obj/structure/table/standard,
 /obj/item/storage/box/syringes,
+/obj/item/bodybag/cryobag,
+/obj/item/bodybag/cryobag,
 /obj/item/storage/belt/medical,
 /obj/item/storage/belt/medical,
 /turf/simulated/floor/tiled/dark,

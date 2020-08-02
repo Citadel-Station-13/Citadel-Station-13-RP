@@ -24,6 +24,7 @@
 	ideal_character_age = 50
 
 	outfit_type = /decl/hierarchy/outfit/job/medical/cmo
+	alt_titles = list ("Surgeon General")
 
 /datum/job/doctor
 	title = "Medical Doctor"
@@ -119,7 +120,7 @@
 	selection_color = "#013D3B"
 	idtype = /obj/item/card/id/medical/paramedic
 	economic_modifier = 4
-	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_eva, access_maint_tunnels, access_external_airlocks, access_psychiatrist, access_mining)
-	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_eva, access_maint_tunnels, access_external_airlocks, access_mining)
+	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_eva, access_maint_tunnels, access_external_airlocks, access_psychiatrist)
+	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_eva, access_maint_tunnels, access_external_airlocks)
 	outfit_type = /decl/hierarchy/outfit/job/medical/paramedic
 	alt_titles = list("Emergency Medical Technician" = /decl/hierarchy/outfit/job/medical/paramedic/emt)

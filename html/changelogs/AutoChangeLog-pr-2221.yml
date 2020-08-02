@@ -1,0 +1,15 @@
+author: "CharlesWedge"
+delete-after: True
+changes: 
+  - rscadd: "A number of new traits to hopefully allow for more customization options and custom species build variety including:
+
+- A Minor Version of the High Endurance Trait
+- A Trait Modifying Bone Breakage Positively (with cost to match)
+- Toxin Resistance and Weakness Traits
+- Breathe Traits modifying minimum air pressure and oxygen damage.
+- Radiation and Bloodloss traits.
+- A trait that cause burn damage from flashes."
+  - tweak: "Rewords a number of the traits
+- Shortens Description for most damage modifying traits.
+- Extends Description of Darksight Traits to make it clear that they make flashes more severe.
+- Modifies the Description of the Flight Trait removing the overt reference to magic."

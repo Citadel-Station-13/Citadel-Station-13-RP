@@ -84,6 +84,11 @@
 			else
 				to_chat(target, "<span class='ooc'><span class='[ooc_style]'>" + create_text_tag("ooc", "OOC:", target) + " <EM>[display_name]:</EM> <span class='message'>[msg]</span></span></span>")
 
+/client/proc/looc_wrapper()
+	var/message = input("","looc (text)") as text|null
+	if(message)
+		looc(message)
+
 /client/verb/looc(msg as text)
 	set name = "LOOC"
 	set desc = "Local OOC, seen only by those in view."

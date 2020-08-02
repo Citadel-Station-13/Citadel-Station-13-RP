@@ -1096,7 +1096,7 @@ default behaviour is:
   * * lying : The degrees we're turned to while lying down or resting for any reason.
   */
 /mob/living/proc/get_standard_pixel_x_offset(lying = 0)
-	return initial(pixel_x)
+	return default_pixel_x
 
 /**
   * Gets our standard pixel y offset.
@@ -1105,4 +1105,4 @@ default behaviour is:
   * * lying : The degrees we're turned to while lying down or resting for any reason.
   */
 /mob/living/proc/get_standard_pixel_y_offset(lying = 0)
-	return initial(pixel_y)
+	return default_pixel_y
