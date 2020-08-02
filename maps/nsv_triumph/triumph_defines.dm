@@ -159,7 +159,7 @@
 	else
 		return list(srcz) //may prevent runtimes, but more importantly gives gps units a shortwave-esque function
 
-// For making the 6-in-1 holomap, we calculate some offsets
+// For making the 4-in-1 holomap, we calculate some offsets
 #define TETHER_MAP_SIZE 140 // Width and height of compiled in tether z levels.
 #define TETHER_HOLOMAP_CENTER_GUTTER 40 // 40px central gutter between columns
 #define TETHER_HOLOMAP_MARGIN_X ((HOLOMAP_ICON_SIZE - (2*TETHER_MAP_SIZE) - TETHER_HOLOMAP_CENTER_GUTTER) / 2) // 100
