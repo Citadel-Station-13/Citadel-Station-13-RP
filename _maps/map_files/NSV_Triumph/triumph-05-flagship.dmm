@@ -16482,11 +16482,6 @@
 /obj/machinery/door/airlock/command,
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/escape/centcom)
-"Tf" = (
-/obj/machinery/door/airlock/glass_external,
-/obj/structure/fans/tiny,
-/turf/simulated/shuttle/floor,
-/area/shuttle/escape/centcom)
 "TZ" = (
 /obj/machinery/light{
 	dir = 1
@@ -16524,7 +16519,7 @@
 "UU" = (
 /obj/machinery/door/airlock/glass_external,
 /obj/structure/fans/tiny,
-/turf/simulated/shuttle/floor/darkred,
+/turf/simulated/shuttle/floor/black,
 /area/shuttle/escape/centcom)
 "Xa" = (
 /obj/machinery/space_heater,
@@ -18207,7 +18202,7 @@ hP
 hP
 hP
 hP
-rs
+rn
 rE
 rE
 rE
@@ -18226,7 +18221,7 @@ rE
 rE
 rE
 rE
-rs
+rn
 hP
 hP
 hP
@@ -21624,7 +21619,7 @@ rD
 rD
 wD
 wC
-Tf
+UU
 NB
 UU
 wC
@@ -21766,9 +21761,9 @@ rD
 rD
 rD
 rD
-rD
-rD
-rD
+rH
+rH
+rH
 rD
 rD
 rD
