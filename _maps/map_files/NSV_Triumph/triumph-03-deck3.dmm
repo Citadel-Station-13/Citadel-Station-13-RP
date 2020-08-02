@@ -1256,6 +1256,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/structure/reagent_dispensers/watertank,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "dv" = (
@@ -1904,6 +1905,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/fore)
+"fg" = (
+/obj/machinery/recharge_station,
+/turf/simulated/floor/tiled/white,
+/area/crew_quarters/medical_restroom)
 "fh" = (
 /obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
@@ -5335,6 +5340,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/black,
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
+"ou" = (
+/obj/machinery/light,
+/obj/machinery/recharge_station,
+/turf/simulated/floor/tiled/white,
+/area/crew_quarters/medical_restroom)
 "ov" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -6728,6 +6738,9 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 6
+	},
 /turf/simulated/floor/wood,
 /area/hallway/primary/aft)
 "sf" = (
@@ -7236,13 +7249,11 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "tA" = (
+/obj/structure/janitorialcart,
+/obj/item/reagent_containers/glass/bucket,
 /obj/structure/cable/green{
 	d2 = 4;
 	icon_state = "0-4"
-	},
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
 	},
 /turf/simulated/floor/tiled,
 /area/janitor)
@@ -10202,6 +10213,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/xenobiology/xenoflora_storage)
+"Bj" = (
+/obj/machinery/door/airlock{
+	name = "Restroom"
+	},
+/turf/simulated/floor/tiled/white,
+/area/crew_quarters/medical_restroom)
 "Bk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -11490,6 +11507,9 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
 /turf/simulated/floor/wood,
 /area/hallway/primary/aft)
 "Er" = (
@@ -12505,6 +12525,11 @@
 /turf/simulated/wall/r_wall,
 /area/medical/virologyaccess)
 "GX" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/closet/crate/trashcart,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/janitor)
 "GY" = (
@@ -13440,6 +13465,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
+"JM" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/simulated/floor/tiled,
+/area/rnd/hallway)
 "JN" = (
 /obj/machinery/camera/network/research{
 	dir = 1
@@ -13641,6 +13670,7 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
+/obj/structure/reagent_dispensers/watertank,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical_science)
 "Ks" = (
@@ -14793,6 +14823,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
+/obj/structure/reagent_dispensers/watertank,
 /turf/simulated/floor/tiled,
 /area/janitor)
 "Ng" = (
@@ -14974,6 +15005,7 @@
 /area/rnd/workshop)
 "NG" = (
 /obj/structure/flora/pottedplant/large,
+/obj/effect/floor_decal/spline/fancy/wood,
 /turf/simulated/floor/wood,
 /area/hallway/primary/aft)
 "NH" = (
@@ -17208,6 +17240,10 @@
 "Tq" = (
 /turf/simulated/wall,
 /area/medical/medbay_primary_storage)
+"Ts" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/simulated/floor/plating,
+/area/maintenance/medbay)
 "Tu" = (
 /obj/machinery/light{
 	dir = 1
@@ -25264,7 +25300,7 @@ lB
 lB
 lB
 fv
-CI
+Bj
 CI
 jR
 le
@@ -25547,8 +25583,8 @@ rT
 YY
 wh
 Pw
-fv
-CI
+fg
+Bj
 CI
 lZ
 le
@@ -26399,7 +26435,7 @@ RU
 vd
 vd
 Pw
-NI
+Ts
 NI
 TW
 lu
@@ -30345,7 +30381,7 @@ tr
 Ks
 km
 nI
-zi
+JM
 Bk
 Kx
 Kx
@@ -30513,7 +30549,7 @@ VL
 VL
 Ij
 vp
-vp
+ht
 cr
 NJ
 cr
@@ -30655,7 +30691,7 @@ XR
 VL
 zH
 vp
-vp
+ht
 cr
 NJ
 cr
@@ -30797,7 +30833,7 @@ VL
 VL
 Us
 vp
-vp
+ht
 nC
 wP
 Ua
@@ -30939,7 +30975,7 @@ VL
 VL
 ee
 vp
-vp
+ht
 cr
 NJ
 cr
@@ -31081,7 +31117,7 @@ Pj
 VL
 en
 vk
-vp
+ht
 cr
 NJ
 cr
@@ -31223,7 +31259,7 @@ ek
 VL
 wd
 xL
-vp
+ht
 cr
 NJ
 cr
@@ -32783,7 +32819,7 @@ xv
 CI
 CI
 wL
-Qe
+ou
 le
 vj
 bA
