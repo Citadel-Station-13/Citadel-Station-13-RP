@@ -15843,9 +15843,6 @@
 	dir = 1
 	},
 /obj/item/clothing/mask/breath,
-/obj/machinery/light{
-	dir = 8
-	},
 /obj/machinery/firealarm{
 	dir = 4;
 	layer = 3.3;
