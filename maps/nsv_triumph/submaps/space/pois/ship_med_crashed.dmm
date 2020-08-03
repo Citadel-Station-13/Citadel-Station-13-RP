@@ -175,7 +175,7 @@
 /turf/simulated/shuttle/floor/airless,
 /area/triumph_away/debrisfield/explored)
 "L" = (
-/obj/tether_away_spawner/debrisfield/carp,
+/obj/triumph_away_spawner/debrisfield/carp,
 /turf/template_noop,
 /area/triumph_away/debrisfield/explored)
 "M" = (

@@ -8,7 +8,7 @@
 /area/triumph_away/debrisfield/explored)
 "J" = (
 /obj/structure/lattice,
-/obj/tether_away_spawner/debrisfield/carp,
+/obj/triumph_away_spawner/debrisfield/carp,
 /turf/space,
 /area/triumph_away/debrisfield/explored)
 

@@ -1,5 +1,4 @@
 // -- Datums -- //
-
 /datum/shuttle_destination/excursion/debrisfield
 	name = "Debris Field"
 	my_area = /area/shuttle/excursion/debrisfield

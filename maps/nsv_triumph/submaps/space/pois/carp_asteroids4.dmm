@@ -6,7 +6,7 @@
 /turf/simulated/mineral/vacuum,
 /area/triumph_away/debrisfield/explored)
 "c" = (
-/obj/tether_away_spawner/debrisfield/carp/hard,
+/obj/triumph_away_spawner/debrisfield/carp/hard,
 /turf/template_noop,
 /area/triumph_away/debrisfield/explored)
 

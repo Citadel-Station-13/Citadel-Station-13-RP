@@ -17481,6 +17481,9 @@
 	gps_tag = "SHUTTLE";
 	name = "shuttle beacon"
 	},
+/obj/machinery/computer/shuttle_control/web/excursion{
+	dir = 8
+	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/excursion/triumph)
 "Pv" = (

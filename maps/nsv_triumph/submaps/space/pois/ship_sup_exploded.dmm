@@ -215,6 +215,7 @@
 /area/triumph_away/debrisfield/explored)
 "aT" = (
 /obj/structure/closet/emcloset,
+/obj/triumph_away_spawner/debrisfield/derelict/corrupt_maint_swarm,
 /turf/simulated/shuttle/floor/white/airless,
 /area/triumph_away/debrisfield/explored)
 "aU" = (
@@ -268,7 +269,7 @@
 /turf/simulated/shuttle/floor/white/airless,
 /area/triumph_away/debrisfield/explored)
 "NO" = (
-/mob/living/simple_mob/vore/aggressive/deathclaw,
+/obj/triumph_away_spawner/debrisfield/derelict/corrupt_maint_swarm,
 /turf/simulated/shuttle/floor/white/airless,
 /area/triumph_away/debrisfield/explored)
 
@@ -444,7 +445,7 @@ au
 ab
 aR
 aj
-aj
+NO
 aj
 aX
 aZ
@@ -473,7 +474,7 @@ aL
 au
 ab
 aj
-NO
+aj
 aj
 aj
 aj

@@ -104,7 +104,7 @@
 
 	lateload_z_levels = list(
 		list("Triumph - Misc","Triumph - Ships",), //Stock Triumph lateload maps
-		list("Debris Field - Z1 Space")
+		list("Debris Field - Z1 Space") // Debris Field
 	)
 
 	ai_shell_restricted = TRUE
@@ -116,27 +116,11 @@
 		Z_LEVEL_DEBRISFIELD)
 
 	lateload_single_pick = null //Nothing right now.
-/*
-/datum/map/tether/perform_map_generation()
 
-	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_SURFACE_MINE, world.maxx, world.maxy) // Create the mining Z-level.
-	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_SURFACE_MINE, 64, 64)         // Create the mining ore distribution map.
+/datum/map/triumph/perform_map_generation()
+	. = ..()
 
-	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_SOLARS, world.maxx, world.maxy) // Create the mining Z-level.
-	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_SOLARS, 64, 64)         // Create the mining ore distribution map.
 
-	return 1
-
-/datum/planet/virgo3b
-	expected_z_levels = list(
-		Z_LEVEL_SURFACE_LOW,
-		Z_LEVEL_SURFACE_MID,
-		Z_LEVEL_SURFACE_HIGH,
-		Z_LEVEL_SURFACE_MINE,
-		Z_LEVEL_SOLARS//,
-		//Z_LEVEL_PLAINS
-	)
-*/
 // Short range computers see only the main levels, others can see the surrounding surface levels.
 /datum/map/triumph/get_map_levels(var/srcz, var/long_range = TRUE)
 	if (long_range && (srcz in map_levels))

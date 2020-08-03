@@ -6,7 +6,7 @@
 /turf/template_noop,
 /area/triumph_away/debrisfield/explored)
 "c" = (
-/obj/tether_away_spawner/debrisfield/carp,
+/obj/triumph_away_spawner/debrisfield/carp,
 /turf/template_noop,
 /area/triumph_away/debrisfield/explored)
 

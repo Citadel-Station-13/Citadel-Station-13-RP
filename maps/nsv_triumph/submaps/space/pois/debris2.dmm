@@ -10,7 +10,7 @@
 /turf/simulated/floor/airless,
 /area/triumph_away/debrisfield/explored)
 "n" = (
-/obj/tether_away_spawner/debrisfield/carp,
+/obj/triumph_away_spawner/debrisfield/carp,
 /turf/simulated/floor/airless,
 /area/triumph_away/debrisfield/explored)
 

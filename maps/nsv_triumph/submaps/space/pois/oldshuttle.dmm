@@ -332,7 +332,7 @@
 /turf/simulated/shuttle/floor/black/airless,
 /area/triumph_away/debrisfield/explored)
 "aW" = (
-/obj/tether_away_spawner/debrisfield/carp/hard,
+/obj/triumph_away_spawner/debrisfield/carp/hard,
 /turf/space,
 /area/triumph_away/debrisfield/explored)
 "aX" = (
@@ -390,7 +390,7 @@
 /turf/simulated/shuttle/floor/darkred/airless,
 /area/triumph_away/debrisfield/explored)
 "bh" = (
-/obj/tether_away_spawner/debrisfield/carp,
+/obj/triumph_away_spawner/debrisfield/carp,
 /turf/space,
 /area/triumph_away/debrisfield/explored)
 "bi" = (
