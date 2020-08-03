@@ -1731,10 +1731,17 @@
 /turf/simulated/floor/plating,
 /area/security/eva)
 "dQ" = (
-/obj/item/barrier_tape_segment/engineering,
-/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/explorer_entry)
+/area/triumph/station/explorer_prep)
 "dT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -4561,6 +4568,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/table/bench/steel,
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
 "kw" = (
@@ -5874,15 +5882,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/triumph/station/excursion_dock)
-"nF" = (
-/obj/effect/floor_decal/steeldecal/steel_decals_central6{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals_central6{
-	dir = 4
-	},
-/turf/simulated/shuttle/floor/black,
-/area/shuttle/excursion/triumph)
 "nG" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/shuttle/excursion/triumph)
@@ -9480,6 +9479,17 @@
 	name = "Shuttle Bay"
 	},
 /obj/machinery/door/firedoor,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_entry)
 "vR" = (
@@ -12844,6 +12854,15 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
+"DZ" = (
+/obj/machinery/shuttle_sensor{
+	dir = 6;
+	id_tag = "shuttlesens_exp_psg";
+	pixel_x = 27;
+	pixel_y = 1
+	},
+/turf/simulated/shuttle/floor/voidcraft,
+/area/shuttle/excursion/triumph)
 "Ea" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -12990,6 +13009,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
+/obj/structure/table/bench/steel,
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
 "Ex" = (
@@ -13061,6 +13081,21 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/wood,
 /area/security/briefing_room)
+"EG" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/table/bench/steel,
+/turf/simulated/floor/tiled,
+/area/triumph/station/explorer_prep)
 "EH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -13087,6 +13122,7 @@
 "EO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/table/bench/steel,
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
 "EP" = (
@@ -15121,7 +15157,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/item/barrier_tape_segment/engineering,
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_entry)
@@ -16107,6 +16142,17 @@
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/sauna)
+"LW" = (
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled,
+/area/triumph/station/explorer_prep)
 "LX" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -16367,9 +16413,11 @@
 "MG" = (
 /obj/machinery/shuttle_sensor{
 	dir = 6;
-	id_tag = "shuttlesens_exp_int"
+	id_tag = "shuttlesens_exp_int";
+	pixel_x = 27;
+	pixel_y = 1
 	},
-/turf/simulated/shuttle/wall/voidcraft/blue,
+/turf/simulated/shuttle/floor/voidcraft,
 /area/shuttle/excursion/triumph)
 "MH" = (
 /obj/structure/window/reinforced{
@@ -20981,7 +21029,6 @@
 "Ye" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/maintenance/rnd,
-/obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
 "Yf" = (
@@ -21071,6 +21118,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/secondary/civilian_hallway_mid)
+"Yn" = (
+/obj/machinery/light,
+/turf/simulated/floor/tiled,
+/area/triumph/station/explorer_entry)
 "Yp" = (
 /obj/machinery/door/blast/regular{
 	dir = 4;
@@ -24088,7 +24139,7 @@ DN
 DN
 Gi
 kf
-nF
+oZ
 oZ
 GE
 Gi
@@ -25061,9 +25112,9 @@ gW
 gW
 Fh
 gW
-gW
-dr
-YO
+WD
+dQ
+LW
 gW
 gW
 gW
@@ -25347,11 +25398,11 @@ Ed
 Na
 gW
 dr
-gW
-gW
-gW
-gW
-Dv
+oA
+oA
+oA
+oA
+EG
 gW
 gW
 vH
@@ -25487,9 +25538,9 @@ rI
 bV
 iD
 sU
-gW
-dr
-gW
+WD
+dQ
+nx
 gW
 gW
 gW
@@ -25508,7 +25559,7 @@ sa
 LQ
 Jl
 wy
-wy
+DZ
 wy
 oN
 le
@@ -25650,9 +25701,9 @@ ml
 ML
 hB
 Gi
-Km
-wy
-oN
+Gi
+cY
+Gi
 le
 DN
 ka
@@ -25794,7 +25845,7 @@ ve
 aq
 kq
 wy
-oN
+wy
 Gi
 DN
 ka
@@ -25932,7 +25983,7 @@ Gi
 wy
 wy
 wy
-wy
+MG
 wy
 kq
 wy
@@ -26218,7 +26269,7 @@ gk
 Gi
 DN
 DN
-MG
+Gi
 gc
 Vu
 Gi
@@ -27057,7 +27108,7 @@ wG
 vT
 vT
 uT
-sB
+Yn
 Jn
 NU
 NU
@@ -27483,7 +27534,7 @@ jo
 Eg
 sB
 hT
-sB
+Yn
 Jn
 NU
 NU
@@ -27907,7 +27958,7 @@ Sl
 Sl
 Sl
 Jn
-dQ
+NR
 JH
 Jn
 Jn

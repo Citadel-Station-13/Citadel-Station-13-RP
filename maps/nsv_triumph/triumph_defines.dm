@@ -12,6 +12,7 @@
 #define Z_LEVEL_CENTCOM						5
 #define Z_LEVEL_MISC						6
 #define Z_LEVEL_SHIPS						7
+#define Z_LEVEL_DEBRISFIELD					8
 
 //Camera networks
 #define NETWORK_TRIUMPH "Triumph"
@@ -103,6 +104,7 @@
 
 	lateload_z_levels = list(
 		list("Triumph - Misc","Triumph - Ships",), //Stock Triumph lateload maps
+		list("Debris Field - Z1 Space")
 	)
 
 	ai_shell_restricted = TRUE
@@ -110,7 +112,8 @@
 		Z_LEVEL_DECK_ONE,
 		Z_LEVEL_DECK_TWO,
 		Z_LEVEL_DECK_THREE,
-		Z_LEVEL_DECK_FOUR)
+		Z_LEVEL_DECK_FOUR,
+		Z_LEVEL_DEBRISFIELD)
 
 	lateload_single_pick = null //Nothing right now.
 /*

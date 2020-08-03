@@ -174,13 +174,12 @@
 ////////////////////////////////////////
 //////// Excursion Shuttle /////////////
 ////////////////////////////////////////
-
 /obj/machinery/computer/shuttle_control/web/excursion
 	name = "shuttle control console"
 	shuttle_tag = "Excursion Shuttle"
 	req_access = list()
 	req_one_access = list(access_heads,access_explorer,access_pilot)
-	var/wait_time = 15 MINUTES
+	var/wait_time = 1 MINUTES
 
 /obj/machinery/computer/shuttle_control/web/excursion/ui_interact()
 	if(world.time < wait_time)
@@ -195,7 +194,7 @@
 	current_area = /area/shuttle/excursion/triumph
 	docking_controller_tag = "expshuttle_docker"
 	web_master_type = /datum/shuttle_web_master/excursion
-	var/abduct_chance = 0.5 //Prob
+	var/abduct_chance = 0 //Prob
 
 /datum/shuttle/web_shuttle/excursion/long_jump(var/area/departing, var/area/destination, var/area/interim, var/travel_time, var/direction)
 	. = ..()
@@ -220,7 +219,7 @@
 
 /datum/shuttle_web_master/excursion
 	destination_class = /datum/shuttle_destination/excursion
-	starting_destination = /datum/shuttle_destination/excursion/tether
+	starting_destination = /datum/shuttle_destination/excursion/triumph
 
 /datum/shuttle_destination/excursion/triumph
 	name = "NSV Triumph Excursion Hangar"
@@ -234,10 +233,10 @@
 		/datum/shuttle_destination/excursion/outside_triumph = 0,
 	)
 
-/datum/shuttle_destination/excursion/tether/get_arrival_message()
+/datum/shuttle_destination/excursion/triumph/get_arrival_message()
 	return "Attention, [master.my_shuttle.visible_name] has arrived at the Excursion Hangar."
 
-/datum/shuttle_destination/excursion/tether/get_departure_message()
+/datum/shuttle_destination/excursion/triumph/get_departure_message()
 	return "Attention, [master.my_shuttle.visible_name] has departed from the Excursion Hangar."
 
 
@@ -268,7 +267,7 @@
 
 
 /datum/shuttle_destination/excursion/fleet_orbit
-	name = "Virgo 3B Orbit"
+	name = "Fleet Orbit"
 	my_area = /area/shuttle/excursion/space
 	preferred_interim_area = /area/shuttle/excursion/space_moving
 

@@ -1,64 +1,64 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
 /turf/template_noop,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "ab" = (
 /turf/simulated/wall/thull,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "ac" = (
 /turf/simulated/floor/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "ad" = (
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "ae" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "af" = (
 /obj/machinery/botany/editor,
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "ag" = (
 /obj/machinery/vending/hydronutrients,
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "ah" = (
 /obj/machinery/seed_extractor,
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "ai" = (
 /obj/machinery/seed_storage/xenobotany,
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "aj" = (
 /obj/machinery/botany/extractor,
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "ak" = (
 /obj/item/seeds/killertomatoseed,
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "al" = (
 /obj/structure/railing,
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "am" = (
 /obj/structure/railing{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "an" = (
 /obj/structure/reagent_dispensers/watertank/high,
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "ao" = (
 /obj/structure/railing{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "ap" = (
 /obj/structure/table/rack,
 /obj/item/shovel/spade,
@@ -72,69 +72,69 @@
 /obj/item/analyzer/plant_analyzer,
 /obj/item/analyzer/plant_analyzer,
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "aq" = (
 /obj/structure/railing{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "ar" = (
 /mob/living/simple_mob/tomato/space,
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "as" = (
 /obj/structure/table/rack,
 /obj/random/tool,
 /obj/random/tool,
 /obj/random/tool,
 /turf/simulated/floor/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "at" = (
 /obj/machinery/door/airlock/science{
 	req_one_access = list(0)
 	},
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "au" = (
 /obj/item/clothing/head/collectable/slime,
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "av" = (
 /obj/structure/sign/hydro,
 /turf/simulated/wall/thull,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "aw" = (
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "ax" = (
 /obj/machinery/door/airlock/maintenance/rnd{
 	name = "Research Airlock";
 	req_one_access = list(0)
 	},
 /turf/simulated/floor/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "ay" = (
 /obj/structure/sign/xenobio,
 /turf/simulated/wall/thull,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "az" = (
 /obj/item/slime_scanner,
 /obj/item/slime_scanner,
 /obj/structure/table/reinforced,
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "aA" = (
 /obj/structure/table/reinforced,
 /obj/item/gun/energy/taser/xeno,
 /obj/item/melee/baton/slime/loaded,
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "aB" = (
 /obj/structure/table/reinforced,
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "aC" = (
 /obj/structure/table/reinforced,
 /obj/item/reagent_containers/food/snacks/monkeycube,
@@ -146,36 +146,36 @@
 /obj/item/reagent_containers/food/snacks/monkeycube/stokcube,
 /obj/item/reagent_containers/food/snacks/monkeycube/wolpincube,
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "aD" = (
 /obj/machinery/processor,
 /obj/item/slime_extract/dark_blue,
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "aE" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "aF" = (
 /obj/item/reagent_containers/spray/plantbgone,
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "aG" = (
 /obj/item/reagent_containers/spray/chemsprayer,
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "aH" = (
 /obj/tether_away_spawner/debrisfield/carp,
 /turf/template_noop,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "aI" = (
 /obj/effect/decal/remains,
 /obj/item/clothing/under/rank/hydroponics,
 /obj/item/clothing/suit/storage/toggle/labcoat/green,
 /obj/item/clothing/head/greenbandana,
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "aJ" = (
 /obj/structure/table/rack,
 /obj/item/slime_extract/rainbow,
@@ -187,7 +187,7 @@
 	},
 /obj/structure/window/reinforced,
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "aK" = (
 /obj/item/gun/energy/temperature,
 /obj/structure/table/rack,
@@ -199,24 +199,24 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "aL" = (
 /obj/structure/window/reinforced/full,
 /obj/structure/grille,
 /turf/simulated/floor/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "aM" = (
 /obj/machinery/computer/shuttle{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "aN" = (
 /obj/structure/bed/chair/comfy/purp{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "aO" = (
 /obj/item/gun/energy/decloner,
 /obj/structure/table/rack,
@@ -228,11 +228,11 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "aP" = (
 /obj/structure/filingcabinet/filingcabinet,
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "aQ" = (
 /obj/structure/table/reinforced,
 /obj/item/stack/material/phoron{
@@ -240,22 +240,22 @@
 	},
 /obj/item/flashlight/pen,
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "aR" = (
 /obj/structure/table/reinforced,
 /obj/item/paper_bin,
 /obj/item/pen/blue,
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "aS" = (
 /obj/structure/table/reinforced,
 /obj/item/folder/white,
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "aT" = (
 /mob/living/simple_mob/slime/feral/dark_blue,
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "aU" = (
 /obj/structure/table/rack,
 /obj/structure/window/reinforced{
@@ -267,80 +267,80 @@
 /obj/item/material/shard,
 /obj/item/clothing/mask/breath,
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "aV" = (
 /obj/structure/bed/chair/office/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "aW" = (
 /obj/item/airlock_electronics,
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "aX" = (
 /obj/item/material/shard,
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "aY" = (
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "aZ" = (
 /obj/machinery/door/unpowered/shuttle,
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "ba" = (
 /obj/item/clothing/suit/storage/toggle/labcoat/purple,
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "bb" = (
 /obj/effect/decal/remains,
 /obj/item/clothing/under/rank/scientist,
 /obj/item/clothing/suit/storage/toggle/labcoat/blue,
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "bc" = (
 /obj/structure/closet/secure_closet/scientist{
 	name = "scientist locker";
 	req_access = list(0)
 	},
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "bd" = (
 /obj/structure/bed,
 /obj/item/bedsheet/blue,
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "be" = (
 /obj/structure/bed,
 /obj/item/bedsheet/green,
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "bf" = (
 /obj/structure/bed,
 /obj/item/bedsheet/rd,
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "bg" = (
 /obj/structure/sink{
 	dir = 8;
 	pixel_x = -12
 	},
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "bh" = (
 /obj/structure/shuttle/engine/propulsion{
 	dir = 8
 	},
 /turf/simulated/floor/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "bi" = (
 /obj/structure/table/rack,
 /obj/random/firstaid,
 /obj/random/firstaid,
 /turf/simulated/floor/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "bj" = (
 /obj/structure/table/rack,
 /obj/random/unidentified_medicine/scientific,
@@ -348,29 +348,25 @@
 /obj/random/unidentified_medicine/scientific,
 /obj/random/unidentified_medicine/scientific,
 /turf/simulated/floor/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "bk" = (
 /obj/machinery/door/airlock/command{
 	name = "Research Airlock";
 	req_one_access = list(0)
 	},
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
-"bl" = (
+/area/triumph_away/debrisfield/explored)
+"bm" = (
 /obj/structure/closet/crate,
 /obj/item/stack/material/uranium{
 	amount = 11
 	},
 /turf/simulated/floor/airless,
-/area/tether_away/debrisfield/explored)
-"bm" = (
-/obj/structure/closet/crate,
-/turf/simulated/floor/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "bn" = (
 /obj/machinery/power/port_gen/pacman/super,
 /turf/simulated/floor/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "bo" = (
 /obj/structure/table/reinforced,
 /obj/random/slimecore,
@@ -379,15 +375,22 @@
 /obj/random/slimecore,
 /obj/random/slimecore,
 /turf/simulated/floor/tiled/white/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "bp" = (
 /obj/item/tool/prybar/red,
 /turf/simulated/floor/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
 "bq" = (
 /mob/living/simple_mob/slime/feral/dark_blue,
 /turf/simulated/floor/airless,
-/area/tether_away/debrisfield/explored)
+/area/triumph_away/debrisfield/explored)
+"MV" = (
+/obj/structure/closet/crate,
+/obj/item/stack/material/phoron{
+	amount = 10
+	},
+/turf/simulated/floor/airless,
+/area/triumph_away/debrisfield/explored)
 
 (1,1,1) = {"
 aa
@@ -540,12 +543,12 @@ ab
 aZ
 ab
 ab
-bl
-ac
-ac
-ac
-ac
 bm
+ac
+ac
+ac
+ac
+MV
 ab
 aa
 aa
@@ -733,7 +736,7 @@ aQ
 ad
 aW
 aX
-ad
+aT
 ad
 ab
 aa
@@ -882,7 +885,7 @@ aa
 ab
 af
 ar
-ad
+ar
 ad
 ad
 ad
@@ -895,7 +898,7 @@ ad
 ad
 aW
 ad
-ad
+aT
 ad
 ab
 aa
@@ -965,7 +968,7 @@ ai
 ad
 ao
 ao
-ad
+ar
 ad
 ab
 ad
@@ -1031,7 +1034,7 @@ ad
 ad
 ad
 ad
-ad
+aT
 ab
 aa
 aa

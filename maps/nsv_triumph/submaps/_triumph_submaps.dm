@@ -80,8 +80,27 @@
 //#include "alienship/alienship.dmm"
 //#include "aerostat/aerostat.dmm"
 //#include "aerostat/surface.dmm"
-// #include "space/debrisfield.dmm"
+#include "space/debrisfield.dmm"
 #endif
+
+
+#include "space/_debrisfield.dm"
+#include "space/pois/_templates.dm"
+#include "space/pois/debrisfield_things.dm"
+/datum/map_template/triumph_lateload/away_debrisfield
+	name = "Debris Field - Z1 Space"
+	desc = "A random Debris field in space."
+	mappath = 'space/debrisfield.dmm'
+	associated_map_datum = /datum/map_z_level/triumph_lateload/away_debrisfield
+	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = FALSE)
+
+/datum/map_template/triumph_lateload/away_debrisfield/on_map_loaded(z)
+	. = ..()
+	seed_submaps(list(Z_LEVEL_DEBRISFIELD), 100, /area/triumph_away/debrisfield/unexplored, /datum/map_template/debrisfield)
+
+/datum/map_z_level/triumph_lateload/away_debrisfield
+	name = "Away Mission - Debris Field"
+	z = Z_LEVEL_DEBRISFIELD
 
 /*
 #include "beach/_beach.dm"
@@ -167,27 +186,6 @@
 	name = "Away Mission - Aerostat Surface"
 	z = Z_LEVEL_AEROSTAT_SURFACE
 
-/*
-
-#include "space/_debrisfield.dm"
-#include "space/pois/_templates.dm"
-#include "space/pois/debrisfield_things.dm"
-/datum/map_template/tether_lateload/away_debrisfield
-	name = "Debris Field - Z1 Space"
-	desc = "The Virgo 3 Debris Field away mission."
-	mappath = 'space/debrisfield.dmm'
-	associated_map_datum = /datum/map_z_level/tether_lateload/away_debrisfield
-
-/datum/map_template/tether_lateload/away_debrisfield/on_map_loaded(z)
-	. = ..()
-	//Commented out until we actually get POIs
-	seed_submaps(list(Z_LEVEL_DEBRISFIELD), 200, /area/tether_away/debrisfield/unexplored, /datum/map_template/debrisfield)
-
-/datum/map_z_level/tether_lateload/away_debrisfield
-	name = "Away Mission - Debris Field"
-	z = Z_LEVEL_DEBRISFIELD
-
-*/
 
 */
 

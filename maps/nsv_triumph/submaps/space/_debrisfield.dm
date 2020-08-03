@@ -6,8 +6,8 @@
 	preferred_interim_area = /area/shuttle/excursion/space_moving
 	skip_me = TRUE
 
-	routes_to_make = list(
-		/datum/shuttle_destination/excursion/virgo3b_orbit = 30 SECONDS
+	routes_to_make = list( //These are routes the shuttle connects to,
+		/datum/shuttle_destination/excursion/bluespace = 30 SECONDS //This is a normal destination that's part of this map
 	)
 
 // -- Objs -- //
@@ -52,17 +52,17 @@
 /area/shuttle/excursion/debrisfield
 	name = "\improper Excursion Shuttle - Debris Field"
 
-/area/tether_away/debrisfield
+/area/triumph_away/debrisfield
 	name = "Away Mission - Debris Field"
 	icon = 'icons/turf/areas_vr.dmi'
 	icon_state = "dark"
 
-/area/tether_away/debrisfield/explored
+/area/triumph_away/debrisfield/explored
 	icon_state = "debrisexplored"
 
-/area/tether_away/debrisfield/unexplored
+/area/triumph_away/debrisfield/unexplored
 	icon_state = "debrisunexplored"
 
-/area/tether_away/debrisfield/derelict
+/area/triumph_away/debrisfield/derelict
 	icon_state = "debrisexplored"
 	forced_ambience = list('sound/ambience/tension/tension.ogg', 'sound/ambience/tension/horror.ogg')
