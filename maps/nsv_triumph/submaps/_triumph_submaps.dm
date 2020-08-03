@@ -49,14 +49,15 @@
 	mappath = 'space/debrisfield.dmm'
 	associated_map_datum = /datum/map_z_level/triumph_lateload/away_debrisfield
 
+/datum/map_z_level/triumph_lateload/away_debrisfield
+	name = "Away Mission - Debris Field"
+	z = Z_LEVEL_DEBRISFIELD
+	base_turf = /turf/space
+
 /datum/map_template/triumph_lateload/away_debrisfield/on_map_loaded(z)
 	. = ..()
 	//Commented out until we actually get POIs
 	seed_submaps(list(Z_LEVEL_DEBRISFIELD), 200, /area/triumph_away/debrisfield/unexplored, /datum/map_template/debrisfield)
-
-/datum/map_z_level/triumph_lateload/away_debrisfield
-	name = "Away Mission - Debris Field"
-	z = Z_LEVEL_DEBRISFIELD
 
 //////////////////////////////////////////////////////////////////////////////////////
 // Admin-use z-levels for loading whenever an admin feels like

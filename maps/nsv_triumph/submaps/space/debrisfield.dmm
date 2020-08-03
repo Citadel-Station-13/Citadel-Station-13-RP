@@ -25,7 +25,6 @@
 /turf/space,
 /area/triumph_away/debrisfield/explored)
 "W" = (
-/obj/effect/step_trigger/teleporter/debrisfield_loop/west,
 /obj/away_mission_init/debrisfield,
 /turf/space,
 /area/triumph_away/debrisfield/explored)
@@ -174,7 +173,7 @@ h
 h
 h
 h
-W
+h
 "}
 (2,1,1) = {"
 e
@@ -8776,7 +8775,7 @@ c
 c
 c
 c
-c
+W
 c
 c
 c

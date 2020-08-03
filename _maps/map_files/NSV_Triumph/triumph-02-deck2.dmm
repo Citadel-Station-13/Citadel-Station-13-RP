@@ -303,6 +303,18 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
+"be" = (
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -12;
+	pixel_y = 2
+	},
+/obj/structure/mirror{
+	pixel_x = -28
+	},
+/obj/machinery/light,
+/turf/simulated/floor/tiled/white,
+/area/crew_quarters/barrestroom)
 "bf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -853,7 +865,7 @@
 /obj/item/ore/iron,
 /obj/item/ore/iron,
 /obj/item/ore/iron,
-/turf/simulated/floor/airless,
+/turf/simulated/floor/plating/external,
 /area/quartermaster/miningdock)
 "cB" = (
 /obj/machinery/camera/network/outside{
@@ -1292,6 +1304,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
+"en" = (
+/obj/structure/closet/emcloset,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/dormitory)
 "eo" = (
 /obj/machinery/power/apc{
 	name = "south bump";
@@ -2482,7 +2501,7 @@
 /obj/item/ore/iron,
 /obj/item/ore/iron,
 /obj/item/ore/iron,
-/turf/simulated/floor/airless,
+/turf/simulated/floor/plating/external,
 /area/quartermaster/miningdock)
 "hD" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -2897,6 +2916,13 @@
 	dir = 10
 	},
 /obj/structure/reagent_dispensers/watertank,
+/turf/simulated/floor/plating,
+/area/maintenance/dormitory)
+"iW" = (
+/obj/structure/reagent_dispensers/watertank,
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "iX" = (
@@ -4157,7 +4183,7 @@
 	dir = 1
 	},
 /obj/machinery/camera/network/cargo,
-/turf/simulated/floor/airless,
+/turf/simulated/floor/plating/external,
 /area/quartermaster/miningdock)
 "nU" = (
 /obj/structure/cable/green{
@@ -4203,6 +4229,12 @@
 	pixel_y = 22
 	},
 /obj/structure/reagent_dispensers/watertank,
+/turf/simulated/floor/plating,
+/area/maintenance/dormitory)
+"od" = (
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "of" = (
@@ -4656,7 +4688,7 @@
 /obj/item/ore/iron,
 /obj/item/ore/iron,
 /obj/item/ore/iron,
-/turf/simulated/floor/airless,
+/turf/simulated/floor/plating/external,
 /area/quartermaster/miningdock)
 "pE" = (
 /obj/machinery/power/apc{
@@ -5978,6 +6010,9 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/lounge/kitchen_freezer)
 "un" = (
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civilian)
 "up" = (
@@ -6317,7 +6352,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "vH" = (
-/turf/simulated/floor/airless,
+/turf/simulated/floor/plating/external,
 /area/quartermaster/miningdock)
 "vJ" = (
 /obj/structure/closet/crate,
@@ -6447,7 +6482,7 @@
 /obj/item/ore/iron,
 /obj/item/ore/iron,
 /obj/item/ore/iron,
-/turf/simulated/floor/airless,
+/turf/simulated/floor/plating/external,
 /area/quartermaster/miningdock)
 "vP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -8919,6 +8954,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
+"FP" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/dormitory)
 "FQ" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -10464,7 +10507,7 @@
 /obj/item/ore/iron,
 /obj/item/ore/iron,
 /obj/item/ore/iron,
-/turf/simulated/floor/airless,
+/turf/simulated/floor/plating/external,
 /area/quartermaster/miningdock)
 "Lm" = (
 /obj/machinery/firealarm{
@@ -11742,6 +11785,14 @@
 /obj/machinery/microwave,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
+"QG" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/dormitory)
 "QH" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/crate,
@@ -12407,6 +12458,16 @@
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
+"SU" = (
+/obj/machinery/alarm{
+	dir = 8;
+	pixel_x = 25
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/dormitory)
 "SW" = (
 /turf/simulated/wall/r_wall,
 /area/maintenance/substation/civilian)
@@ -12936,7 +12997,7 @@
 /obj/item/ore/iron,
 /obj/item/ore/iron,
 /obj/item/ore/iron,
-/turf/simulated/floor/airless,
+/turf/simulated/floor/plating/external,
 /area/quartermaster/miningdock)
 "Ur" = (
 /obj/structure/table/reinforced,
@@ -14490,7 +14551,7 @@
 /obj/machinery/camera/network/cargo{
 	dir = 4
 	},
-/turf/simulated/floor/airless,
+/turf/simulated/floor/plating/external,
 /area/quartermaster/miningdock)
 "ZX" = (
 /obj/machinery/door/firedoor/glass/hidden/steel{
@@ -17849,7 +17910,7 @@ Le
 nP
 ai
 gW
-hZ
+en
 hZ
 WR
 oE
@@ -18845,7 +18906,7 @@ Dm
 Dm
 Dm
 Dm
-nj
+iW
 oE
 oE
 oE
@@ -18985,7 +19046,7 @@ hU
 JX
 SD
 Dy
-Dy
+be
 Dm
 ai
 ai
@@ -19839,7 +19900,7 @@ hZ
 oE
 oE
 oE
-oE
+od
 oE
 oE
 oE
@@ -23400,7 +23461,7 @@ iT
 RW
 RW
 RW
-RW
+FP
 RW
 RW
 xH
@@ -23410,7 +23471,7 @@ RW
 RW
 RW
 RW
-RW
+FP
 RW
 Mi
 tA
@@ -24973,7 +25034,7 @@ Xr
 cF
 lj
 Yu
-oE
+od
 WR
 tA
 ii
@@ -26240,7 +26301,7 @@ xw
 Ic
 RW
 RW
-RW
+FP
 RW
 jD
 RW
@@ -26249,7 +26310,7 @@ xw
 xw
 xw
 xw
-xw
+QG
 xw
 xw
 Ah
@@ -28219,7 +28280,7 @@ Ey
 OV
 ai
 oE
-oE
+od
 lT
 tA
 Ed
@@ -29348,7 +29409,7 @@ tZ
 Iq
 ai
 oE
-lT
+SU
 oE
 oE
 oE

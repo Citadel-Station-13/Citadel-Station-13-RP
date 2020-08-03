@@ -9447,7 +9447,7 @@
 /turf/simulated/floor/wood,
 /area/triumph/surfacebase/sauna)
 "vN" = (
-/turf/simulated/floor/plating,
+/turf/simulated/floor/plating/external,
 /area/space)
 "vO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -10829,9 +10829,14 @@
 /turf/simulated/floor/tiled/dark,
 /area/lawoffice)
 "yU" = (
-/obj/machinery/vending/nifsoft_shop,
-/turf/simulated/floor/wood,
-/area/crew_quarters/lounge)
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/obj/machinery/door/firedoor,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/bridge)
 "yW" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
@@ -22585,7 +22590,7 @@ NU
 NU
 NU
 KV
-KV
+NU
 NU
 NU
 NU
@@ -22730,7 +22735,7 @@ NU
 NU
 NU
 NU
-NU
+KV
 NU
 NU
 NU
@@ -27686,7 +27691,7 @@ NU
 Az
 tC
 Eu
-yU
+Ja
 Ja
 MV
 Gs
@@ -40611,25 +40616,25 @@ NU
 Td
 NU
 Az
-Az
-Bf
-Bf
-Bf
-Bf
-Bf
-Bf
-Bf
-Bf
-Bf
-Bf
-Bf
-Bf
-Bf
-Bf
-Bf
-Bf
-Bf
-Az
+VO
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+yU
+VO
 Az
 NU
 NU

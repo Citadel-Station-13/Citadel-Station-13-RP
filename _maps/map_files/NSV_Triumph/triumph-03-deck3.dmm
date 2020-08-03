@@ -2621,7 +2621,7 @@
 /area/triumph/surfacebase/medical/lobby)
 "gX" = (
 /obj/machinery/atmospherics/pipe/vent/high_volume,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/plating/external,
 /area/space)
 "gY" = (
 /obj/machinery/door/firedoor,
@@ -3816,9 +3816,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery_storage)
-"kk" = (
-/turf/simulated/floor/plating,
-/area/rnd/xenobiology)
 "kl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow{
 	dir = 4
@@ -5629,7 +5626,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/plating/external,
 /area/rnd/xenobiology)
 "pd" = (
 /obj/structure/sign/directions/medical{
@@ -6638,7 +6635,7 @@
 /area/rnd/research_foyer_auxiliary)
 "rF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/purple,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/plating/external,
 /area/space)
 "rG" = (
 /obj/structure/closet{
@@ -12734,7 +12731,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/floor/airless,
+/turf/simulated/floor/plating/external,
 /area/medical/virology)
 "GZ" = (
 /obj/machinery/power/apc{
@@ -15346,8 +15343,8 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
-/turf/simulated/floor/airless,
-/area/medical/virology)
+/turf/simulated/floor/plating/external,
+/area/space)
 "NT" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -15408,7 +15405,7 @@
 /area/medical/morgue)
 "Oe" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
-/turf/simulated/floor/airless,
+/turf/simulated/floor/plating/external,
 /area/medical/virology)
 "Of" = (
 /obj/machinery/media/jukebox,
@@ -15598,9 +15595,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery_hallway)
-"OB" = (
-/turf/simulated/floor/plating,
-/area/space)
 "OD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -15812,8 +15806,8 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/turf/simulated/floor/airless,
-/area/medical/virology)
+/turf/simulated/floor/plating/external,
+/area/space)
 "Pi" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
@@ -15940,8 +15934,8 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/rnd/storage)
 "PB" = (
-/turf/simulated/floor/airless,
-/area/medical/virology)
+/turf/simulated/floor/plating/external,
+/area/space)
 "PC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -18047,7 +18041,7 @@
 /obj/machinery/camera/network/outside{
 	dir = 10
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/plating/external,
 /area/space)
 "UW" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -22188,7 +22182,7 @@ hA
 ke
 oZ
 Zq
-kk
+PB
 gK
 gK
 ss
@@ -22330,8 +22324,8 @@ Nb
 SQ
 we
 Zq
-kk
-kk
+PB
+PB
 gK
 gK
 gK
@@ -22473,7 +22467,7 @@ lQ
 Xw
 UO
 pc
-kk
+PB
 gK
 gK
 gK
@@ -22614,8 +22608,8 @@ uB
 gq
 ph
 Zq
-kk
-kk
+PB
+PB
 gK
 gK
 gK
@@ -22756,7 +22750,7 @@ SW
 CK
 Mv
 Zq
-kk
+PB
 gK
 gK
 gK
@@ -28138,7 +28132,7 @@ gK
 gK
 gK
 gK
-OB
+PB
 ET
 uz
 Ww
@@ -28279,8 +28273,8 @@ gK
 gK
 gK
 gK
-OB
-OB
+PB
+PB
 ET
 di
 di
@@ -28563,8 +28557,8 @@ gK
 gK
 gK
 gK
-OB
-OB
+PB
+PB
 DH
 bL
 fN
@@ -28706,7 +28700,7 @@ gK
 gK
 gK
 gK
-OB
+PB
 DH
 uc
 vF
@@ -32258,9 +32252,9 @@ Oi
 Oi
 Oi
 ss
-OB
-OB
-OB
+PB
+PB
+PB
 eP
 Rg
 ts
@@ -32270,8 +32264,8 @@ vw
 OW
 Rg
 eP
-OB
-OB
+PB
+PB
 eP
 zi
 zi
@@ -32400,9 +32394,9 @@ gK
 gK
 gK
 ss
-OB
-OB
-OB
+PB
+PB
+PB
 eP
 Rg
 ts
@@ -32412,8 +32406,8 @@ if
 Hg
 Rg
 eP
-OB
-OB
+PB
+PB
 qK
 mu
 Qd
@@ -32542,9 +32536,9 @@ gK
 gK
 gK
 ss
-OB
-OB
-OB
+PB
+PB
+PB
 eP
 Rg
 ts
@@ -32554,8 +32548,8 @@ Pp
 ZB
 Rg
 eP
-OB
-OB
+PB
+PB
 qK
 iq
 hC
@@ -32684,8 +32678,8 @@ gK
 gK
 gK
 ss
-OB
-OB
+PB
+PB
 UV
 eP
 Rg
@@ -32696,8 +32690,8 @@ ts
 ts
 Rg
 eP
-OB
-OB
+PB
+PB
 qK
 KY
 tN
@@ -32826,9 +32820,9 @@ gK
 gK
 gK
 ss
-OB
-OB
-OB
+PB
+PB
+PB
 eP
 Rg
 Rg
@@ -32838,8 +32832,8 @@ Rg
 Rg
 Rg
 eP
-OB
-OB
+PB
+PB
 qK
 rs
 Jp
@@ -32968,9 +32962,9 @@ gK
 gK
 gK
 ss
-OB
-OB
-OB
+PB
+PB
+PB
 eP
 Rg
 Rg
@@ -32980,8 +32974,8 @@ Rg
 Rg
 Rg
 eP
-OB
-OB
+PB
+PB
 qK
 MJ
 lm
@@ -33110,9 +33104,9 @@ gK
 gK
 gK
 ss
-OB
-OB
-OB
+PB
+PB
+PB
 eP
 Rg
 Rg
@@ -33122,8 +33116,8 @@ Rg
 Rg
 Rg
 eP
-OB
-OB
+PB
+PB
 qK
 DW
 DW
@@ -33252,9 +33246,9 @@ gK
 gK
 gK
 ss
-OB
-OB
-OB
+PB
+PB
+PB
 eP
 eP
 eP
@@ -33264,8 +33258,8 @@ eP
 eP
 eP
 eP
-OB
-OB
+PB
+PB
 gK
 gK
 gK
