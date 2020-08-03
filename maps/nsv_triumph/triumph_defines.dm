@@ -94,14 +94,15 @@
 	spawnpoint_left = /datum/spawnpoint/shuttle
 	spawnpoint_stayed = /datum/spawnpoint/cryo
 
-	meteor_strike_areas = list(/area/triumph/surfacebase/outside/outside3)
+	meteor_strike_areas = null
 
 	unit_test_exempt_areas = list(
 		/area/vacant/vacant_site,
 		/area/vacant/vacant_site/east)
 	unit_test_exempt_from_atmos = list(
 		/area/engineering/atmos/intake,
-		/area/tcommsat/chamber)
+		/area/tcommsat/chamber,
+		/area/engineering/engineering_airlock)
 
 	lateload_z_levels = list(
 		list("Triumph - Misc","Triumph - Ships",), //Stock Triumph lateload maps
@@ -119,7 +120,7 @@
 	lateload_single_pick = null //Nothing right now.
 
 /datum/map/triumph/perform_map_generation()
-	. = ..()
+	return 1
 
 
 // Short range computers see only the main levels, others can see the surrounding surface levels.
@@ -153,7 +154,7 @@
 	z = Z_LEVEL_DECK_ONE
 	name = "Deck 1"
 	transit_chance = 33
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
+	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_XENOARCH_EXEMPT
 	holomap_offset_x = TRIUMPH_HOLOMAP_MARGIN_X
 	holomap_offset_y = TRIUMPH_HOLOMAP_MARGIN_Y + TRIUMPH_MAP_SIZE*1
 
@@ -161,7 +162,7 @@
 	z = Z_LEVEL_DECK_TWO
 	name = "Deck 2"
 	transit_chance = 33
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
+	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_XENOARCH_EXEMPT
 	holomap_offset_x = TRIUMPH_HOLOMAP_MARGIN_X
 	holomap_offset_y = TRIUMPH_HOLOMAP_MARGIN_Y + TRIUMPH_MAP_SIZE*2
 
@@ -169,7 +170,7 @@
 	z = Z_LEVEL_DECK_THREE
 	name = "Deck 3"
 	transit_chance = 33
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
+	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_XENOARCH_EXEMPT
 	holomap_offset_x = HOLOMAP_ICON_SIZE - TRIUMPH_HOLOMAP_MARGIN_X - TRIUMPH_MAP_SIZE
 	holomap_offset_y = TRIUMPH_HOLOMAP_MARGIN_Y + TRIUMPH_MAP_SIZE*1
 
@@ -177,7 +178,7 @@
 	z = Z_LEVEL_DECK_FOUR
 	name = "Deck 4"
 	transit_chance = 33
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
+	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_XENOARCH_EXEMPT
 	holomap_offset_x = HOLOMAP_ICON_SIZE - TRIUMPH_HOLOMAP_MARGIN_X - TRIUMPH_MAP_SIZE
 	holomap_offset_y = TRIUMPH_HOLOMAP_MARGIN_Y + TRIUMPH_MAP_SIZE*2
 

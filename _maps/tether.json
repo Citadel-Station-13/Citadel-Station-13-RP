@@ -1,17 +1,12 @@
 {
-   "map_name":"Tether",
-   "map_path":"map_files/tether",
+   "map_name":"Triumph",
+   "map_path":"map_files/nsv_triumph",
    "map_file":[
-        "tether-01-surface1.dmm",
-        "tether-02-surface2.dmm",
-        "tether-03-surface3.dmm",
-        "tether-04-transit.dmm",
-        "tether-05-station1.dmm",
-        "tether-06-station2.dmm",
-        "tether-07-station3.dmm",
-        "tether-08-mining.dmm",
-        "tether-09-solars.dmm",
-        "tether-10-colony.dmm"
+        "triumph-01-deck1.dmm",
+        "triumph-02-deck2.dmm",
+        "triumph-03-deck3.dmm",
+        "triumph-04-deck4.dmm",
+        "triumph-05-flagship.dmm"
    ],
    "traits":[
       {
@@ -19,33 +14,11 @@
         "Station":true,
         "Linkage":null,
         "Gravity":true,
-        "Baseturf":"/turf/simulated/floor/outdoors/grass/sif/virgo3b"
+        "Baseturf":"/turf/space"
       },
       {
+        "Up":1,
         "Down":-1,
-        "Up":1,
-        "Station":true,
-        "Linkage":null,
-        "Gravity":true,
-        "Baseturf":"/turf/simulated/open/virgo3b"
-      },
-      {
-        "Down":-1,
-        "Station":true,
-        "Linkage":null,
-        "Gravity":true,
-        "Baseturf":"/turf/simulated/open/virgo3b"
-      },
-      {
-         "Down":-1,
-        "Up":1,
-         "Station":true,
-         "Linkage":null,
-         "Gravity":true,
-         "Baseturf":"/turf/simulated/sky/virgo3b"
-      },
-      {
-        "Up":1,
         "Station":true,
         "Linkage":null,
         "Gravity":true,
@@ -65,24 +38,12 @@
         "Linkage":null,
         "Gravity":true,
         "Baseturf":"/turf/space"
-      },
-      {
-        "Mining":true,
-        "Linkage":null,
-        "Gravity":true,
-        "Baseturf":"/turf/simulated/floor/outdoors/grass/sif/virgo3b"
-      },
-      {
-        "Station":true,
-        "Linkage":null,
-        "Gravity":true,
-        "Baseturf":"/turf/simulated/floor/outdoors/grass/sif/virgo3b"
       },
       {
         "Station":false,
         "Linkage":null,
         "Gravity":true,
-        "Baseturf":"/turf/simulated/floor/outdoors/grass/sif/virgo3b"
+        "Baseturf":"/turf/space"
       }
    ],
    "minetype":"none"

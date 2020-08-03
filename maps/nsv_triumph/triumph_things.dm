@@ -29,86 +29,6 @@
 	music = list('sound/music/elevator.ogg')  // Woo elevator music!
 */
 
-/*
-/obj/machinery/atmospherics/unary/vent_pump/positive
-	use_power = USE_POWER_IDLE
-	icon_state = "map_vent_out"
-	external_pressure_bound = ONE_ATMOSPHERE * 1.1
-
-
-/obj/effect/step_trigger/teleporter/to_mining/New()
-	..()
-	teleport_x = src.x
-	teleport_y = 2
-	teleport_z = Z_LEVEL_SURFACE_MINE
-
-/obj/effect/step_trigger/teleporter/from_mining/New()
-	..()
-	teleport_x = src.x
-	teleport_y = world.maxy - 1
-	teleport_z = Z_LEVEL_SURFACE_LOW
-
-/obj/effect/step_trigger/teleporter/to_solars/New()
-	..()
-	teleport_x = world.maxx - 1
-	teleport_y = src.y
-	teleport_z = Z_LEVEL_SOLARS
-
-/obj/effect/step_trigger/teleporter/from_solars/New()
-	..()
-	teleport_x = 2
-	teleport_y = src.y
-	teleport_z = Z_LEVEL_SURFACE_LOW
-
-/obj/effect/step_trigger/teleporter/wild/New()
-	..()
-
-	//If starting on east/west edges.
-	if (src.x == 1)
-		teleport_x = world.maxx - 1
-	else if (src.x == world.maxx)
-		teleport_x = 2
-	else
-		teleport_x = src.x
-	//If starting on north/south edges.
-	if (src.y == 1)
-		teleport_y = world.maxy - 1
-	else if (src.y == world.maxy)
-		teleport_y = 2
-	else
-		teleport_y = src.y
-
-/obj/effect/step_trigger/teleporter/to_underdark
-	icon = 'icons/obj/stairs.dmi'
-	icon_state = "stairs"
-	invisibility = 0
-/obj/effect/step_trigger/teleporter/to_underdark/Initialize()
-	. = ..()
-	teleport_x = x
-	teleport_y = y
-	for(var/z_num in GLOB.using_map.zlevels)
-		var/datum/map_z_level/Z = GLOB.using_map.zlevels[z_num]
-		if(Z.name == "Underdark")
-			teleport_z = Z.z
-
-/obj/effect/step_trigger/teleporter/from_underdark
-	icon = 'icons/obj/stairs.dmi'
-	icon_state = "stairs"
-	invisibility = 0
-/obj/effect/step_trigger/teleporter/from_underdark/Initialize()
-	. = ..()
-	teleport_x = x
-	teleport_y = y
-	for(var/z_num in GLOB.using_map.zlevels)
-		var/datum/map_z_level/Z = GLOB.using_map.zlevels[z_num]
-		if(Z.name == "Mining Outpost")
-			teleport_z = Z.z
-
-/obj/effect/step_trigger/teleporter/planetary_fall/virgo3b/find_planet()
-	planet = planet_virgo3b
-
-*/
-
 /obj/effect/step_trigger/lost_in_space
 	var/deathmessage = "You drift off into space, floating alone in the void until your life support runs out."
 
@@ -132,7 +52,7 @@
 		return ..()
 
 /obj/effect/step_trigger/lost_in_space/shuttle
-	deathmessage = "You fly down the tunnel of the shuttle at high speed for a few moments before impact kills you with sheer concussive force."
+	deathmessage = "You fly out of the shuttle at high speed for a few moments before you see the last hopes of your survival fade away."
 
 
 // Invisible object that blocks z transfer to/from its turf and the turf above.
@@ -151,38 +71,8 @@
 	return TRUE
 
 //
-// shuttle STATION
+// SHUTTLE STATION
 //
-
-// The shuttle's electrified maglev tracks
-/turf/simulated/floor/maglev
-	name = "maglev track"
-	desc = "Magnetic levitation shuttle tracks. Caution! Electrified!"
-	icon = 'icons/turf/flooring/maglevs.dmi'
-	icon_state = "maglevup"
-
-	var/area/shock_area = /area/triumph/surfacebase/tram
-
-/turf/simulated/floor/maglev/Initialize()
-	. = ..()
-	shock_area = locate(shock_area)
-
-// Walking on maglev tracks will shock you! Horray!
-/turf/simulated/floor/maglev/Entered(var/atom/movable/AM, var/atom/old_loc)
-	..()
-	if(isliving(AM) && prob(50))
-		track_zap(AM)
-
-/turf/simulated/floor/maglev/attack_hand(var/mob/user)
-	if(prob(75))
-		track_zap(user)
-
-/turf/simulated/floor/maglev/proc/track_zap(var/mob/living/user)
-	if (!istype(user)) return
-	if (electrocute_mob(user, shock_area, src))
-		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-		s.set_up(5, 1, src)
-		s.start()
 
 // shuttle air scrubbers for keeping arrivals clean - they work even with no area power
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/shuttle
@@ -229,7 +119,7 @@
 	on_store_name = "Crew Shift Transfer Services"
 	on_enter_occupant_message = "The shuttle arrives at the platform; you step inside and take a seat."
 	on_store_visible_message_1 = "'s speakers chime, anouncing a shuttle has arrived to take"
-	on_store_visible_message_2 = "to the commanding ship."
+	on_store_visible_message_2 = "to the commanding ship"
 	time_till_despawn = 10 SECONDS
 	spawnpoint_type = /datum/spawnpoint/shuttle
 /obj/machinery/cryopod/robot/door/shuttle/process()
@@ -256,6 +146,7 @@
 		var/mob/observer/dead/newghost = user.ghostize()
 		newghost.timeofdeath = world.time
 		despawn_occupant(user)
+		qdel(user)
 
 // shuttle arrival point landmarks and datum
 var/global/list/latejoin_shuttle   = list()

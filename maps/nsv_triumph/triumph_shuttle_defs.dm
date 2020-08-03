@@ -13,6 +13,7 @@
 	move_time = SHUTTLE_TRANSIT_DURATION_RETURN
 
 //////////////////////////////////////////////////////////////
+/*
 /datum/shuttle/ferry/escape_pod/large_escape_pod1
 	name = "Large Escape Pod 1"
 	location = 0
@@ -24,7 +25,7 @@
 	dock_target_station = "large_escape_pod_1_berth"
 	dock_target_offsite = "large_escape_pod_1_recovery"
 	move_time = SHUTTLE_TRANSIT_DURATION_RETURN
-
+*/
 //////////////////////////////////////////////////////////////
 /* Removed for the time being
 /datum/shuttle/ferry/escape_pod/large_escape_pod2
@@ -53,6 +54,7 @@
 
 //////////////////////////////////////////////////////////////
 // Trade Ship
+/*
 /datum/shuttle/ferry/trade
 	name = "Trade"
 	location = 1
@@ -62,7 +64,7 @@
 	docking_controller_tag = "trade_shuttle"
 	dock_target_station = "trade_shuttle_dock_airlock"
 	dock_target_offsite = "trade_shuttle_bay"
-
+*/
 //////////////////////////////////////////////////////////////
 // Away Mission Shuttle
 // TODO - Not implemented yet on new map
@@ -113,6 +115,7 @@
 */
 //////////////////////////////////////////////////////////////
 // Antag Space "Proto Shuttle" Shuttle
+/*
 /datum/shuttle/multi_shuttle/protoshuttle
 	name = "Proto"
 	warmup_time = 8
@@ -186,7 +189,7 @@
 	docking_controller_tag_offsite = "specops_shuttle_fore"
 	dock_target_station = "specops_centcom_dock"
 	dock_target_offsite = "specops_dock_airlock"
-
+*/
 
 //////////////////////////////////////////////////////////////
 // RogueMiner "Belter: Shuttle

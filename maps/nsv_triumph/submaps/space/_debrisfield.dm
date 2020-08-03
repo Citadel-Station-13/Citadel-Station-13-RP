@@ -40,7 +40,7 @@
 	teleport_y = y
 	teleport_z = z
 
-//This does nothing right now, but is framework if we do POIs for this place
+//POI Init
 /obj/away_mission_init/debrisfield
 	name = "away mission initializer - debrisfield"
 

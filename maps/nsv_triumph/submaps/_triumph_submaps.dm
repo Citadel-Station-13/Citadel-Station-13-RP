@@ -33,31 +33,27 @@
 /// Away Missions
 #if AWAY_MISSION_TEST
 #include "space/debrisfield.dmm"
-//#include "beach/beach.dmm"
-//#include "beach/cave.dmm"
-//#include "alienship/alienship.dmm"
-//#include "aerostat/aerostat.dmm"
-//#include "aerostat/surface.dmm"
 #endif
 
 #include "space/_debrisfield.dm"
-#include "space/pois/_templates.dm"
-#include "space/pois/debrisfield_things.dm"
+#include "space/_templates.dm"
+#include "space/debrisfield_things.dm"
 /datum/map_template/triumph_lateload/away_debrisfield
 	name = "Debris Field - Z1 Space"
 	desc = "A random debris field out in space."
 	mappath = 'space/debrisfield.dmm'
 	associated_map_datum = /datum/map_z_level/triumph_lateload/away_debrisfield
-
-/datum/map_template/triumph_lateload/away_debrisfield/on_map_loaded(z)
-	. = ..()
-	//Commented out until we actually get POIs
-	seed_submaps(list(Z_LEVEL_DEBRISFIELD), 200, /area/triumph_away/debrisfield/unexplored, /datum/map_template/debrisfield)
+	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = FALSE)
 
 /datum/map_z_level/triumph_lateload/away_debrisfield
 	name = "Away Mission - Debris Field"
 	z = Z_LEVEL_DEBRISFIELD
 	base_turf = /turf/space
+
+
+/datum/map_template/triumph_lateload/away_debrisfield/on_map_loaded(z)
+	. = ..()
+	seed_submaps(list(Z_LEVEL_DEBRISFIELD), 200, /area/triumph_away/debrisfield/unexplored, /datum/map_template/debrisfield/)
 
 //////////////////////////////////////////////////////////////////////////////////////
 // Admin-use z-levels for loading whenever an admin feels like
