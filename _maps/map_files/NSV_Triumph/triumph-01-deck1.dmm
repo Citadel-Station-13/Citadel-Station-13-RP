@@ -558,7 +558,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
-/area/engineering/aft_hallway)
+/area/engineering/engine_eva)
 "dq" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -813,7 +813,7 @@
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled,
-/area/engineering/aft_hallway)
+/area/engineering/engine_eva)
 "fh" = (
 /obj/machinery/portable_atmospherics/canister/phoron,
 /turf/simulated/floor/reinforced/phoron,
@@ -983,7 +983,7 @@
 	icon_state = "1-8"
 	},
 /obj/machinery/power/tesla_coil,
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/airless,
 /area/space)
 "ge" = (
 /obj/machinery/power/apc{
@@ -1054,7 +1054,7 @@
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/engineering/engineering_airlock)
+/area/engineering/engine_eva)
 "gB" = (
 /turf/simulated/wall/r_wall,
 /area/engineering/engineering_airlock)
@@ -1081,7 +1081,7 @@
 "gJ" = (
 /obj/machinery/power/emitter,
 /obj/structure/cable/cyan,
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/airless,
 /area/space)
 "gN" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
@@ -1150,7 +1150,7 @@
 	dir = 1
 	},
 /obj/machinery/power/tesla_coil,
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/airless,
 /area/space)
 "he" = (
 /obj/structure/cable{
@@ -1292,7 +1292,7 @@
 	req_access = list(24);
 	use_power = 1
 	},
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/airless,
 /area/space)
 "if" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red,
@@ -1530,7 +1530,7 @@
 	},
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
-/area/engineering/aft_hallway)
+/area/engineering/engine_eva)
 "kb" = (
 /obj/machinery/telecomms/server/presets/command,
 /turf/simulated/floor/tiled/dark{
@@ -1578,7 +1578,7 @@
 /area/engineering/storage)
 "kp" = (
 /obj/machinery/power/grounding_rod,
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/airless,
 /area/space)
 "kq" = (
 /turf/simulated/floor/airless,
@@ -1637,7 +1637,7 @@
 /obj/machinery/camera/network/engine{
 	dir = 10
 	},
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/airless,
 /area/space)
 "kS" = (
 /turf/simulated/floor/tiled/techmaint,
@@ -1855,14 +1855,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/backup)
-"mJ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/engineering,
-/turf/simulated/floor/tiled,
-/area/engineering/engine_room)
 "mM" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/green{
 	dir = 1
@@ -2038,7 +2030,7 @@
 	pixel_y = 6;
 	req_one_access = list(11,24)
 	},
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/airless,
 /area/space)
 "nP" = (
 /obj/machinery/atmospherics/omni/atmos_filter{
@@ -2487,7 +2479,7 @@
 	dir = 8
 	},
 /obj/machinery/power/tesla_coil,
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/airless,
 /area/space)
 "qm" = (
 /obj/machinery/alarm{
@@ -2682,7 +2674,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/engineering/atmos/monitoring)
+/area/engineering/atmos)
 "rE" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/carpet/blucarpet,
@@ -2716,7 +2708,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/engineering/atmos/monitoring)
+/area/engineering/atmos)
 "rT" = (
 /obj/structure/closet/crate/bin,
 /turf/simulated/floor/tiled/techmaint,
@@ -2885,7 +2877,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/engineering,
 /turf/simulated/floor/tiled,
-/area/engineering/engine_monitoring)
+/area/engineering/engine_eva)
 "tb" = (
 /obj/machinery/atmospherics/omni/mixer{
 	name = "Air Mixer";
@@ -2950,7 +2942,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/airless,
 /area/space)
 "ts" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan,
@@ -3063,7 +3055,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/power/tesla_coil,
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/airless,
 /area/space)
 "ud" = (
 /obj/structure/sign/deck/first,
@@ -3168,7 +3160,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
-/area/engineering/aft_hallway)
+/area/engineering/engine_eva)
 "uP" = (
 /turf/simulated/floor/carpet/blucarpet,
 /area/engineering/break_room)
@@ -3469,7 +3461,7 @@
 /obj/machinery/camera/network/engine{
 	dir = 9
 	},
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/airless,
 /area/space)
 "wK" = (
 /obj/machinery/telecomms/server/presets/science,
@@ -3666,7 +3658,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
-/area/engineering/atmos/monitoring)
+/area/engineering/atmos)
 "xP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -4000,7 +3992,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/engineering/atmos/monitoring)
+/area/engineering/atmos)
 "zM" = (
 /obj/machinery/atmospherics/unary/outlet_injector{
 	dir = 1;
@@ -4294,11 +4286,12 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engi_engine)
 "Br" = (
-/obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 6
+/obj/structure/cable/cyan{
+	d2 = 2;
+	icon_state = "0-2"
 	},
-/turf/simulated/floor/tiled,
-/area/engineering/atmos/monitoring)
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/engineering_airlock)
 "Bt" = (
 /obj/machinery/atmospherics/pipe/tank/air{
 	dir = 8
@@ -4448,7 +4441,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/airless,
 /area/space)
 "CG" = (
 /obj/machinery/door/firedoor/glass,
@@ -4510,7 +4503,7 @@
 /area/crew_quarters/heads/chief)
 "CX" = (
 /obj/machinery/the_singularitygen/tesla,
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/airless,
 /area/space)
 "CZ" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
@@ -4615,7 +4608,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
-/area/engineering/atmos/monitoring)
+/area/engineering/atmos)
 "Ex" = (
 /obj/structure/sink{
 	pixel_y = 22
@@ -4649,9 +4642,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/engineering/break_room)
-"EM" = (
-/turf/simulated/wall/r_wall,
-/area/engineering/atmos/monitoring)
 "EP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -4814,7 +4804,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/airless,
 /area/space)
 "FZ" = (
 /obj/structure/cable{
@@ -4836,11 +4826,11 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/airless,
 /area/space)
 "Gd" = (
 /obj/machinery/field_generator,
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/airless,
 /area/space)
 "Gf" = (
 /obj/structure/cable{
@@ -4954,7 +4944,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/camera/network/engine,
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/airless,
 /area/space)
 "Hm" = (
 /obj/structure/cable{
@@ -5170,7 +5160,7 @@
 	icon_state = "2-8"
 	},
 /obj/machinery/power/tesla_coil,
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/airless,
 /area/space)
 "IL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -5190,7 +5180,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled,
-/area/engineering/aft_hallway)
+/area/engineering/engine_eva)
 "IT" = (
 /obj/structure/table/reinforced,
 /obj/item/paper_bin,
@@ -5455,7 +5445,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/airless,
 /area/space)
 "Kz" = (
 /turf/simulated/floor/tiled/techmaint,
@@ -5561,7 +5551,7 @@
 "LC" = (
 /obj/machinery/computer/power_monitor,
 /turf/simulated/floor/tiled,
-/area/engineering/atmos/monitoring)
+/area/engineering/atmos)
 "LD" = (
 /obj/machinery/atmospherics/unary/outlet_injector{
 	dir = 8;
@@ -5676,7 +5666,7 @@
 "MK" = (
 /obj/machinery/computer/atmoscontrol,
 /turf/simulated/floor/tiled,
-/area/engineering/atmos/monitoring)
+/area/engineering/atmos)
 "ML" = (
 /obj/machinery/atmospherics/pipe/tank/nitrogen{
 	dir = 1
@@ -5942,7 +5932,7 @@
 	req_one_access = list(11,24)
 	},
 /turf/simulated/floor/tiled,
-/area/engineering/aft_hallway)
+/area/engineering/engine_eva)
 "Oj" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -6109,7 +6099,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
-/area/engineering/aft_hallway)
+/area/engineering/engine_eva)
 "Pj" = (
 /obj/machinery/light,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -6198,7 +6188,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/engineering/aft_hallway)
+/area/engineering/engine_eva)
 "PT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
@@ -6342,12 +6332,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/foyer_mezzenine)
-"QS" = (
-/obj/machinery/atmospherics/pipe/simple/visible/green{
-	dir = 6
-	},
-/turf/simulated/floor/tiled,
-/area/engineering/atmos/monitoring)
 "QU" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/black,
 /turf/simulated/floor/tiled{
@@ -6596,12 +6580,12 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/airless,
 /area/space)
 "SC" = (
 /obj/machinery/computer/rcon,
 /turf/simulated/floor/tiled,
-/area/engineering/atmos/monitoring)
+/area/engineering/atmos)
 "SD" = (
 /obj/machinery/camera/network/outside{
 	dir = 10
@@ -6688,7 +6672,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/airless,
 /area/space)
 "Tk" = (
 /obj/machinery/shieldgen,
@@ -6735,7 +6719,7 @@
 /obj/machinery/camera/network/engine{
 	dir = 9
 	},
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/airless,
 /area/space)
 "TL" = (
 /obj/machinery/alarm{
@@ -6928,7 +6912,7 @@
 	pressure_resistance = 750
 	},
 /turf/simulated/floor/tiled,
-/area/engineering/aft_hallway)
+/area/engineering/engine_eva)
 "Vc" = (
 /obj/machinery/computer/atmos_alert,
 /turf/simulated/floor/tiled,
@@ -6951,7 +6935,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/engineering/atmos/monitoring)
+/area/engineering/atmos)
 "Vh" = (
 /obj/machinery/light{
 	dir = 1
@@ -6976,7 +6960,7 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/airless,
 /area/space)
 "Vx" = (
 /obj/machinery/shield_capacitor,
@@ -7085,7 +7069,7 @@
 	icon_state = "1-8"
 	},
 /obj/machinery/power/tesla_coil,
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/airless,
 /area/space)
 "Wn" = (
 /obj/effect/floor_decal/industrial/warning,
@@ -7238,7 +7222,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
-/area/engineering/aft_hallway)
+/area/engineering/engine_eva)
 "Xt" = (
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/workshop)
@@ -7315,7 +7299,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/airless,
 /area/space)
 "XR" = (
 /obj/structure/cable{
@@ -14598,21 +14582,21 @@ fN
 fN
 iC
 Zj
-eG
-eG
-eG
-eG
-eG
-eG
-eG
-eG
-eG
-eG
-eG
-eG
-eG
-eG
-eG
+kq
+kq
+kq
+kq
+kq
+kq
+kq
+kq
+kq
+kq
+kq
+kq
+kq
+kq
+kq
 Zj
 iC
 fN
@@ -14740,21 +14724,21 @@ iC
 Zj
 iC
 fN
-eG
+kq
 fN
 Zj
 fN
 fN
 fN
 fN
-eG
+kq
 fN
 fN
 fN
 fN
 Zj
 fN
-eG
+kq
 fN
 iC
 fN
@@ -14882,21 +14866,21 @@ fN
 fN
 iC
 fN
-eG
+kq
 Zj
 Zj
 Zj
 Zj
 Zj
 Zj
-eG
+kq
 Zj
 Zj
 Zj
 Zj
 Zj
 Zj
-eG
+kq
 fN
 iC
 fN
@@ -15024,21 +15008,21 @@ eD
 eD
 eD
 fN
-eG
+kq
 fN
 Zj
 fN
 fN
 Zj
 fN
-eG
+kq
 fN
 Zj
 fN
 fN
 Zj
 fN
-eG
+kq
 fN
 iC
 Zj
@@ -15165,23 +15149,23 @@ eD
 eG
 dU
 eD
-eG
-eG
+kq
+kq
 fN
 Zj
 fN
 kp
 Zj
-eG
-eG
-eG
+kq
+kq
+kq
 Zj
 kp
 fN
 Zj
 fN
-eG
-eG
+kq
+kq
 iC
 fN
 fN
@@ -15307,8 +15291,8 @@ eD
 eG
 lI
 eD
-eG
-eG
+kq
+kq
 fN
 Zj
 Zj
@@ -15322,8 +15306,8 @@ Zj
 Zj
 Zj
 fN
-eG
-eG
+kq
+kq
 iC
 fN
 fN
@@ -15454,13 +15438,13 @@ gJ
 fN
 Zj
 fN
-eG
+kq
 XQ
 Gd
-eG
+kq
 Gd
 XQ
-eG
+kq
 fN
 Zj
 fN
@@ -15592,21 +15576,21 @@ eD
 hz
 eD
 Hf
+kq
 eG
 eG
 eG
-eG
-eG
+kq
 ub
-eG
+kq
 CX
-eG
+kq
 ub
-eG
-eG
-eG
-eG
-eG
+kq
+kq
+kq
+kq
+kq
 CE
 iC
 fN
@@ -15738,13 +15722,13 @@ gJ
 fN
 Zj
 fN
-eG
+kq
 XQ
 Gd
-eG
+kq
 Gd
 XQ
-eG
+kq
 fN
 Zj
 fN
@@ -15876,7 +15860,7 @@ Zj
 HI
 eD
 CE
-eG
+kq
 fN
 Zj
 Zj
@@ -15890,7 +15874,7 @@ Zj
 Zj
 Zj
 fN
-eG
+kq
 kR
 eD
 Zj
@@ -16018,21 +16002,21 @@ Zj
 HI
 eD
 CE
-eG
+kq
 fN
 Zj
 fN
 kp
 Zj
-eG
+kq
 XQ
-eG
+kq
 Zj
 kp
 fN
 Zj
 fN
-eG
+kq
 CE
 eD
 fN
@@ -16160,7 +16144,7 @@ iC
 HI
 eD
 CE
-eG
+kq
 fN
 Zj
 fN
@@ -16174,7 +16158,7 @@ fN
 fN
 Zj
 fN
-eG
+kq
 CE
 eD
 fN
@@ -16302,7 +16286,7 @@ Zj
 ep
 eD
 CE
-eG
+kq
 Zj
 Zj
 cZ
@@ -16316,7 +16300,7 @@ ww
 cZ
 Zj
 Zj
-eG
+kq
 CE
 eD
 fN
@@ -16444,7 +16428,7 @@ fN
 HI
 eD
 CE
-eG
+kq
 fN
 Zj
 zz
@@ -16458,7 +16442,7 @@ zz
 zz
 Zj
 fN
-eG
+kq
 kR
 eD
 lr
@@ -16586,7 +16570,7 @@ fN
 HI
 eD
 CE
-eG
+kq
 fN
 Zj
 zz
@@ -16600,7 +16584,7 @@ Gu
 zz
 Zj
 fN
-eG
+kq
 CE
 eD
 fN
@@ -16730,7 +16714,7 @@ eD
 FY
 Gb
 wJ
-eG
+kq
 zz
 qm
 zi
@@ -16740,7 +16724,7 @@ jH
 Kz
 Wn
 zz
-eG
+kq
 TI
 Tg
 nO
@@ -17167,7 +17151,7 @@ Kz
 Cu
 ti
 gB
-JB
+Br
 cj
 Pj
 gB
@@ -17175,7 +17159,7 @@ fN
 Zj
 fN
 Zj
-eG
+kq
 Zj
 fN
 iC
@@ -17184,7 +17168,7 @@ fN
 Zj
 fN
 Zj
-eG
+kq
 Zj
 fN
 Zj
@@ -17316,18 +17300,18 @@ gB
 fN
 Zj
 fN
-eG
+kq
 ia
-eG
+kq
 fN
 Zj
 fN
 fN
 iC
 fN
-eG
+kq
 ia
-eG
+kq
 fN
 Zj
 fN
@@ -17448,15 +17432,15 @@ zz
 TP
 zz
 zz
-zz
-mJ
-gB
-gB
+ui
+ta
+ui
+ui
 gA
-EM
-EM
-EM
-EM
+bc
+bc
+bc
+bc
 bc
 bc
 sd
@@ -17595,7 +17579,7 @@ IR
 fe
 Oi
 Xm
-EM
+bc
 MK
 rI
 Vf
@@ -17737,7 +17721,7 @@ uL
 Pi
 Va
 ka
-EM
+bc
 LC
 Ew
 rA
@@ -17874,12 +17858,12 @@ MN
 pR
 hR
 fc
-cd
-cd
-cd
+ui
+ui
+ui
 ta
-cd
-EM
+ui
+bc
 SC
 Ew
 zL
@@ -18021,10 +18005,10 @@ mm
 Fg
 km
 tZ
-EM
-QS
+bc
+mU
 xM
-Br
+vr
 sY
 mM
 TG

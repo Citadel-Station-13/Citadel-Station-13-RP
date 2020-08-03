@@ -100,7 +100,8 @@
 		/area/vacant/vacant_site,
 		/area/vacant/vacant_site/east)
 	unit_test_exempt_from_atmos = list(
-		/area/engineering/atmos/intake)
+		/area/engineering/atmos/intake,
+		/area/tcommsat/chamber)
 
 	lateload_z_levels = list(
 		list("Triumph - Misc","Triumph - Ships",), //Stock Triumph lateload maps

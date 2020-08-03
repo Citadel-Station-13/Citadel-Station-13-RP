@@ -9447,7 +9447,7 @@
 /turf/simulated/floor/wood,
 /area/triumph/surfacebase/sauna)
 "vN" = (
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/airless/ceiling,
 /area/space)
 "vO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
