@@ -174,7 +174,7 @@
 ////////////////////////////////////////
 //////// Excursion Shuttle /////////////
 ////////////////////////////////////////
-/*
+
 /obj/machinery/computer/shuttle_control/web/excursion
 	name = "shuttle control console"
 	shuttle_tag = "Excursion Shuttle"
@@ -192,13 +192,14 @@
 /datum/shuttle/web_shuttle/excursion
 	name = "Excursion Shuttle"
 	warmup_time = 0
-	current_area = /area/shuttle/excursion/tether
+	current_area = /area/shuttle/excursion/triumph
 	docking_controller_tag = "expshuttle_docker"
 	web_master_type = /datum/shuttle_web_master/excursion
 	var/abduct_chance = 0.5 //Prob
 
 /datum/shuttle/web_shuttle/excursion/long_jump(var/area/departing, var/area/destination, var/area/interim, var/travel_time, var/direction)
-	if(prob(abduct_chance))
+	. = ..()
+	/*if(prob(abduct_chance))
 		abduct_chance = 0
 		var/list/occupants = list()
 		for(var/mob/living/L in departing)
@@ -215,6 +216,7 @@
 		. = ..(departing,ASD.my_area,interim,travel_time,direction)
 	else
 		. = ..()
+	*/
 
 /datum/shuttle_web_master/excursion
 	destination_class = /datum/shuttle_destination/excursion
@@ -265,7 +267,7 @@
 	return "Attention, [master.my_shuttle.visible_name] has departed from Docking Arm One."
 
 
-/datum/shuttle_destination/excursion/virgo3b_orbit
+/datum/shuttle_destination/excursion/fleet_orbit
 	name = "Virgo 3B Orbit"
 	my_area = /area/shuttle/excursion/space
 	preferred_interim_area = /area/shuttle/excursion/space_moving
@@ -280,4 +282,3 @@
 	my_area = /area/shuttle/excursion/bluespace
 	preferred_interim_area = /area/shuttle/excursion/space_moving
 
-*/

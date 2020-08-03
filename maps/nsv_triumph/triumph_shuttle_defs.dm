@@ -191,7 +191,7 @@
 //////////////////////////////////////////////////////////////
 // RogueMiner "Belter: Shuttle
 // TODO - Not implemented yet on new map
-/*
+
 /datum/shuttle/ferry/belter
 	name = "Belter"
 	location = 0
@@ -207,7 +207,7 @@
 /datum/shuttle/ferry/belter/New()
 	move_time = move_time + rand(10, 40)
 	..()
-*/
+
 
 //////////////////////////////////////////////////////////////
 // CC Lewdship shuttle

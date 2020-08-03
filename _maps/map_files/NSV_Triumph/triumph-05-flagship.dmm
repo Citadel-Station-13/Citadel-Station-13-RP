@@ -16348,6 +16348,9 @@
 	},
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/escape/centcom)
+"GA" = (
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/shuttle/escape/centcom)
 "GG" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 1
@@ -20199,10 +20202,10 @@ wC
 wC
 wC
 wC
-wC
-MJ
+GA
 vc
-wC
+vc
+GA
 wC
 wC
 wC
@@ -20342,7 +20345,7 @@ tA
 Pb
 ZK
 wC
-MJ
+vc
 vc
 wC
 EH
@@ -20484,7 +20487,7 @@ um
 um
 um
 wC
-MJ
+vc
 vc
 wC
 Xk
@@ -20626,7 +20629,7 @@ um
 um
 sX
 wC
-MJ
+vc
 vc
 wC
 EH
@@ -20768,7 +20771,7 @@ sY
 um
 sX
 wC
-MJ
+vc
 vc
 wC
 EH
@@ -20910,7 +20913,7 @@ um
 um
 um
 Uh
-MJ
+vc
 vc
 GH
 wf
@@ -21052,7 +21055,7 @@ wZ
 um
 um
 wC
-MJ
+vc
 vc
 wC
 wf
@@ -21194,7 +21197,7 @@ xa
 xa
 wC
 wC
-MJ
+vc
 vc
 wC
 TZ
@@ -21336,7 +21339,7 @@ wC
 wC
 wC
 vc
-MJ
+vc
 vc
 wC
 wC
@@ -21478,7 +21481,7 @@ wD
 wC
 wC
 vc
-MJ
+vc
 vc
 wC
 wC

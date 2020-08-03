@@ -47,14 +47,14 @@
 	company_short = "NT"
 	starsys_name  = "Sigmar Concord"
 
-	shuttle_docked_message = "This is the %dock_name% calling to the %station_name%. A shift transfer is commencing for crew that need to depart. The transfer shuttle will arrive in %ETD%. %dock_name% out."
+	shuttle_docked_message = "This is the %dock_name% calling to the Triumph. A shift transfer is commencing for crew that need to depart. The transfer shuttle will arrive in %ETD%. %dock_name% out."
 	shuttle_leaving_dock = "The transfer shuttle has left the ship. Estimate %ETA% until the shuttle arrives at the %dock_name%."
-	shuttle_called_message = "A scheduled crew transfer to the %dock_name% is occuring. The tram shuttle be arriving shortly. Those departing should proceed to the shuttlke bay within %ETA%."
+	shuttle_called_message = "A scheduled crew transfer to the %dock_name% is occuring. The shuttle be arriving shortly. Those departing should proceed to the shuttlke bay within %ETA%."
 	shuttle_recall_message = "The scheduled crew transfer has been cancelled."
 	shuttle_name = "Crew Hands Transfer"
-	emergency_shuttle_docked_message = "The evacuation shuttle has arrived at the tram station. You have approximately %ETD% to board the shuttle."
+	emergency_shuttle_docked_message = "The evacuation shuttle has arrived at the ship. You have approximately %ETD% to board the shuttle."
 	emergency_shuttle_leaving_dock = "The emergency shuttle has left the station. Estimate %ETA% until the shuttle arrives at %dock_name%."
-	emergency_shuttle_called_message = "An emergency evacuation has begun, and an off-schedule shuttle has been called. It will arrive at the tram station in approximately %ETA%."
+	emergency_shuttle_called_message = "An emergency evacuation has begun, and an off-schedule shuttle has been called. It will arrive at the hanger bay in approximately %ETA%."
 	emergency_shuttle_recall_message = "The evacuation shuttle has been recalled."
 
 	station_networks = list(
@@ -88,7 +88,7 @@
 
 	bot_patrolling = FALSE
 
-	allowed_spawns = list("Shuttle Dock","Gateway","Cryogenic Storage","Cyborg Storage")
+	allowed_spawns = list("Shuttle Station","Gateway","Cryogenic Storage","Cyborg Storage")
 	spawnpoint_died = /datum/spawnpoint/shuttle
 	spawnpoint_left = /datum/spawnpoint/shuttle
 	spawnpoint_stayed = /datum/spawnpoint/cryo
@@ -96,23 +96,13 @@
 	meteor_strike_areas = list(/area/triumph/surfacebase/outside/outside3)
 
 	unit_test_exempt_areas = list(
-		/area/triumph/surfacebase/outside/outside1,
 		/area/vacant/vacant_site,
-		/area/vacant/vacant_site/east,
-		/area/crew_quarters/sleep/Dorm_1/holo,
-		/area/crew_quarters/sleep/Dorm_3/holo,
-		/area/crew_quarters/sleep/Dorm_5/holo,
-		/area/crew_quarters/sleep/Dorm_7/holo)
+		/area/vacant/vacant_site/east)
 	unit_test_exempt_from_atmos = list(
-		/area/engineering/atmos/intake, // Outside,
-		/area/rnd/external, //  Outside,
-		/area/triumph/surfacebase/mining_main/external, // Outside,
-		/area/triumph/surfacebase/mining_main/airlock, //  Its an airlock,
-		/area/triumph/surfacebase/emergency_storage/rnd,
-		/area/triumph/surfacebase/emergency_storage/atrium)
+		/area/engineering/atmos/intake)
 
 	lateload_z_levels = list(
-		list("Triumph - Misc","Triumph - Ships",), //Stock Tether lateload maps
+		list("Triumph - Misc","Triumph - Ships",), //Stock Triumph lateload maps
 	)
 
 	ai_shell_restricted = TRUE
@@ -145,7 +135,7 @@
 	)
 */
 // Short range computers see only the main levels, others can see the surrounding surface levels.
-/datum/map/tether/get_map_levels(var/srcz, var/long_range = TRUE)
+/datum/map/triumph/get_map_levels(var/srcz, var/long_range = TRUE)
 	if (long_range && (srcz in map_levels))
 		return map_levels
 	else if (srcz == Z_LEVEL_SHIPS || srcz == Z_LEVEL_MISC)
@@ -160,10 +150,10 @@
 		return list(srcz) //may prevent runtimes, but more importantly gives gps units a shortwave-esque function
 
 // For making the 4-in-1 holomap, we calculate some offsets
-#define TETHER_MAP_SIZE 140 // Width and height of compiled in tether z levels.
-#define TETHER_HOLOMAP_CENTER_GUTTER 40 // 40px central gutter between columns
-#define TETHER_HOLOMAP_MARGIN_X ((HOLOMAP_ICON_SIZE - (2*TETHER_MAP_SIZE) - TETHER_HOLOMAP_CENTER_GUTTER) / 2) // 100
-#define TETHER_HOLOMAP_MARGIN_Y ((HOLOMAP_ICON_SIZE - (3*TETHER_MAP_SIZE)) / 2) // 60
+#define TRIUMPH_MAP_SIZE 140 // Width and height of compiled in triumph z levels.
+#define TRIUMPH_HOLOMAP_CENTER_GUTTER 40 // 40px central gutter between columns
+#define TRIUMPH_HOLOMAP_MARGIN_X ((HOLOMAP_ICON_SIZE - (2*TRIUMPH_MAP_SIZE) - TRIUMPH_HOLOMAP_CENTER_GUTTER) / 2) // 100
+#define TRIUMPH_HOLOMAP_MARGIN_Y ((HOLOMAP_ICON_SIZE - (3*TRIUMPH_MAP_SIZE)) / 2) // 60
 
 // We have a bunch of stuff common to the station z levels
 /datum/map_z_level/triumph/ship
@@ -174,30 +164,34 @@
 /datum/map_z_level/triumph/ship/deck_one
 	z = Z_LEVEL_DECK_ONE
 	name = "Deck 1"
+	transit_chance = 33
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
-	holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
-	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*0
+	holomap_offset_x = TRIUMPH_HOLOMAP_MARGIN_X
+	holomap_offset_y = TRIUMPH_HOLOMAP_MARGIN_Y + TRIUMPH_MAP_SIZE*1
 
 /datum/map_z_level/triumph/ship/deck_two
 	z = Z_LEVEL_DECK_TWO
 	name = "Deck 2"
+	transit_chance = 33
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
-	holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
-	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*0
+	holomap_offset_x = TRIUMPH_HOLOMAP_MARGIN_X
+	holomap_offset_y = TRIUMPH_HOLOMAP_MARGIN_Y + TRIUMPH_MAP_SIZE*2
 
 /datum/map_z_level/triumph/ship/deck_three
 	z = Z_LEVEL_DECK_THREE
 	name = "Deck 3"
+	transit_chance = 33
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
-	holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
-	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*0
+	holomap_offset_x = HOLOMAP_ICON_SIZE - TRIUMPH_HOLOMAP_MARGIN_X - TRIUMPH_MAP_SIZE
+	holomap_offset_y = TRIUMPH_HOLOMAP_MARGIN_Y + TRIUMPH_MAP_SIZE*1
 
 /datum/map_z_level/triumph/ship/deck_four
 	z = Z_LEVEL_DECK_FOUR
 	name = "Deck 4"
+	transit_chance = 33
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
-	holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
-	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*0
+	holomap_offset_x = HOLOMAP_ICON_SIZE - TRIUMPH_HOLOMAP_MARGIN_X - TRIUMPH_MAP_SIZE
+	holomap_offset_y = TRIUMPH_HOLOMAP_MARGIN_Y + TRIUMPH_MAP_SIZE*2
 
 /datum/map_z_level/triumph/colony
 	z = Z_LEVEL_CENTCOM
