@@ -16439,8 +16439,10 @@
 	},
 /area/centcom/specops)
 "NB" = (
-/obj/machinery/door/airlock/glass_external,
 /obj/structure/fans/tiny,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/escape/centcom)
 "OD" = (
@@ -16481,6 +16483,13 @@
 	icon_state = "dark"
 	},
 /area/centcom/specops)
+"SF" = (
+/obj/structure/fans/tiny,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/escape/centcom)
 "Td" = (
 /obj/machinery/door/airlock/command,
 /turf/simulated/shuttle/floor/white,
@@ -16520,7 +16529,9 @@
 	},
 /area/centcom/specops)
 "UU" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/structure/fans/tiny,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/escape/centcom)
@@ -18923,11 +18934,11 @@ rD
 wC
 wC
 wC
-wC
+GA
 Gr
 MJ
 MJ
-wC
+GA
 wC
 wC
 wC
@@ -19065,11 +19076,11 @@ rD
 wC
 sB
 Lf
-wC
+GA
 wC
 Td
 wC
-wC
+GA
 OM
 EZ
 wC
@@ -20200,7 +20211,7 @@ rD
 rD
 wC
 wC
-wC
+Gp
 wC
 GA
 vc
@@ -20486,10 +20497,10 @@ wC
 um
 um
 um
-wC
+Gp
 vc
 vc
-wC
+Gp
 Xk
 wf
 wC
@@ -20628,10 +20639,10 @@ wC
 um
 um
 sX
-wC
+Gp
 vc
 vc
-wC
+Gp
 EH
 wf
 wC
@@ -21195,8 +21206,8 @@ rD
 wC
 xa
 xa
-wC
-wC
+GA
+GA
 vc
 vc
 wC
@@ -21337,7 +21348,7 @@ rD
 wC
 wC
 wC
-wC
+GA
 vc
 vc
 vc
@@ -21621,11 +21632,11 @@ rD
 rD
 rD
 wD
-wC
+GA
 UU
 NB
-UU
-wC
+SF
+GA
 wD
 rD
 rD

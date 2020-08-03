@@ -356,6 +356,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical)
 "ba" = (
@@ -1407,7 +1408,7 @@
 /area/crew_quarters/heads/cmo)
 "dR" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/maintenance/medical,
+/obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay)
 "dS" = (
@@ -2359,6 +2360,16 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
+"go" = (
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/machinery/computer/guestpass{
+	dir = 1;
+	pixel_y = -28
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/medbay)
 "gq" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -3132,7 +3143,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/maintenance/medical,
+/obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical)
 "im" = (
@@ -3219,6 +3230,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay)
 "ix" = (
@@ -3492,6 +3504,16 @@
 /obj/machinery/camera/network/medbay,
 /turf/simulated/floor/tiled,
 /area/medical/medbay_emt_bay)
+"ji" = (
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/machinery/computer/guestpass{
+	dir = 1;
+	pixel_y = -28
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/primary/aft)
 "jj" = (
 /obj/structure/sink/kitchen{
 	dir = 4;
@@ -4619,6 +4641,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/wood,
 /area/medical/psych)
+"mo" = (
+/obj/machinery/camera/network/outside{
+	dir = 5
+	},
+/turf/space,
+/area/space)
 "mp" = (
 /turf/simulated/floor/tiled,
 /area/rnd/rdoffice)
@@ -5773,7 +5801,6 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
 "pp" = (
@@ -5781,6 +5808,10 @@
 /obj/effect/floor_decal/corner/paleblue/border,
 /obj/structure/bed/chair{
 	dir = 1
+	},
+/obj/machinery/computer/guestpass{
+	dir = 1;
+	pixel_y = -28
 	},
 /turf/simulated/floor/tiled,
 /area/medical/resleeving)
@@ -6141,7 +6172,6 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
 "qg" = (
@@ -7388,6 +7418,11 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
+/obj/machinery/power/apc{
+	dir = 8;
+	name = "west bump";
+	pixel_x = -28
+	},
 /turf/simulated/floor/tiled,
 /area/janitor)
 "tB" = (
@@ -7896,6 +7931,16 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
+"uM" = (
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/machinery/computer/guestpass{
+	dir = 1;
+	pixel_y = -28
+	},
+/turf/simulated/floor/wood,
+/area/medical/psych_ward)
 "uO" = (
 /obj/structure/table/glass,
 /obj/machinery/computer/med_data/laptop{
@@ -8336,6 +8381,15 @@
 	},
 /turf/simulated/floor/wood,
 /area/medical/psych_ward)
+"vX" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/atm{
+	pixel_y = 30
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/primary/aft)
 "vY" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/machinery/light{
@@ -11348,6 +11402,13 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery_hallway)
+"Dy" = (
+/obj/machinery/computer/guestpass{
+	dir = 1;
+	pixel_y = -28
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/surgery_hallway)
 "Dz" = (
 /obj/structure/bed/psych,
 /turf/simulated/floor/wood,
@@ -12786,6 +12847,9 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/janitor)
 "GY" = (
@@ -13962,6 +14026,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/resleeving)
+"Ko" = (
+/obj/machinery/door/airlock/maintenance/rnd,
+/turf/simulated/floor/plating,
+/area/assembly/chargebay)
 "Kp" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -14106,6 +14174,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical)
+"KE" = (
+/obj/machinery/computer/guestpass{
+	dir = 4;
+	pixel_x = -28
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/primary/starboard)
 "KG" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -14366,6 +14441,13 @@
 "Lm" = (
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_a)
+"Ln" = (
+/obj/structure/bed/chair/comfy/brown,
+/obj/machinery/computer/guestpass{
+	pixel_y = 27
+	},
+/turf/simulated/floor/wood,
+/area/hallway/primary/aft)
 "Lo" = (
 /obj/machinery/alarm{
 	pixel_y = 22
@@ -15698,7 +15780,6 @@
 /turf/simulated/floor/tiled,
 /area/medical/surgeryprep)
 "OE" = (
-/obj/machinery/recharge_station,
 /obj/machinery/camera/network/research{
 	dir = 8;
 	network = list("Research","Toxins Test Area")
@@ -15715,6 +15796,13 @@
 	},
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/medical/surgery)
+"OH" = (
+/obj/machinery/computer/guestpass{
+	dir = 4;
+	pixel_x = -28
+	},
+/turf/simulated/floor/tiled,
+/area/triumph/station/stairs_three)
 "OJ" = (
 /obj/structure/table/reinforced,
 /obj/item/reagent_containers/glass/beaker/large,
@@ -16095,6 +16183,13 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/research_restroom)
+"PM" = (
+/obj/machinery/computer/guestpass{
+	dir = 4;
+	pixel_x = -28
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/primary/aft)
 "PN" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -17660,6 +17755,13 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virology)
+"Tw" = (
+/obj/machinery/computer/guestpass{
+	dir = 4;
+	pixel_x = -28
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/research_foyer)
 "Tx" = (
 /obj/machinery/power/apc{
 	dir = 1;
@@ -19068,6 +19170,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
+"Xj" = (
+/obj/machinery/computer/guestpass{
+	dir = 4;
+	pixel_x = -28
+	},
+/turf/simulated/floor/tiled,
+/area/medical/medbay_emt_bay)
 "Xl" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -19122,6 +19231,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/rnd/reception_desk)
+"Xu" = (
+/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/atm{
+	pixel_x = -26
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/primary/starboard)
 "Xv" = (
 /obj/structure/table/rack,
 /obj/item/storage/belt/archaeology,
@@ -19516,6 +19632,10 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/machinery/computer/guestpass{
+	dir = 4;
+	pixel_x = -28
+	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "Yy" = (
@@ -19572,7 +19692,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
 /turf/simulated/floor/tiled,
 /area/janitor)
 "YH" = (
@@ -19626,9 +19748,11 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery_storage)
 "YO" = (
-/obj/item/barrier_tape_segment/engineering,
+/obj/machinery/atm{
+	pixel_y = 30
+	},
 /turf/simulated/floor/tiled,
-/area/rnd/research_foyer_auxiliary)
+/area/hallway/primary/starboard)
 "YP" = (
 /obj/structure/cable/green{
 	d2 = 8;
@@ -23645,7 +23769,7 @@ eo
 EQ
 BM
 wx
-NT
+go
 Vu
 Cu
 Xh
@@ -24202,7 +24326,7 @@ fh
 zh
 hU
 Yu
-WD
+uM
 Fa
 gK
 gK
@@ -26738,7 +26862,7 @@ eS
 eS
 qt
 qt
-qt
+Ko
 qt
 qt
 lB
@@ -27326,7 +27450,7 @@ eq
 eq
 Wh
 ny
-Wh
+Dy
 eS
 rB
 lt
@@ -27453,7 +27577,7 @@ tw
 rV
 nY
 QE
-cr
+PM
 cr
 VG
 cr
@@ -28585,7 +28709,7 @@ yL
 uk
 uk
 mQ
-ws
+Ln
 xL
 PQ
 ZJ
@@ -29415,7 +29539,7 @@ eP
 eP
 DJ
 Yz
-YO
+Yz
 uw
 TX
 Yz
@@ -29448,7 +29572,7 @@ bz
 nc
 nC
 wP
-Ua
+ji
 GR
 jY
 IL
@@ -30014,7 +30138,7 @@ EP
 Ud
 sM
 Nj
-FG
+vX
 NJ
 cr
 SZ
@@ -30295,7 +30419,7 @@ ww
 tj
 jT
 ua
-SJ
+Tw
 rN
 jT
 bk
@@ -31993,7 +32117,7 @@ KS
 Zv
 Yq
 lR
-lR
+KE
 lR
 Cf
 lR
@@ -32133,7 +32257,7 @@ vP
 Ch
 Fy
 Zv
-lR
+YO
 bK
 oN
 oN
@@ -33564,7 +33688,7 @@ Tq
 bW
 Mh
 bW
-bW
+Xj
 Mh
 bW
 gA
@@ -34699,7 +34823,7 @@ Mp
 Tq
 OS
 zg
-bW
+Xj
 fW
 jh
 rt
@@ -35263,9 +35387,9 @@ lR
 lR
 lR
 pm
-eL
+Xu
 lR
-lR
+KE
 lR
 lR
 pm
@@ -36539,7 +36663,7 @@ VJ
 Ya
 YY
 YY
-YY
+OH
 RU
 YY
 YY
@@ -37534,7 +37658,7 @@ ss
 gK
 gK
 gK
-gK
+mo
 gK
 gK
 gK

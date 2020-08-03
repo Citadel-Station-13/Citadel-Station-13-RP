@@ -1825,6 +1825,20 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/security/checkpoint/engineering)
+"my" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/computer/guestpass{
+	dir = 4;
+	pixel_x = -28
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/locker_room)
 "mB" = (
 /obj/structure/table/reinforced,
 /obj/item/clothing/glasses/meson,
@@ -2257,6 +2271,9 @@
 "pj" = (
 /obj/machinery/vending/assist,
 /obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -4911,6 +4928,9 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
 	},
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "Gu" = (
@@ -4921,7 +4941,6 @@
 /area/engineering/engine_room)
 "Gv" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/engineeringatmos,
 /obj/machinery/door/airlock/engineeringatmos,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/backup)
@@ -5552,6 +5571,9 @@
 "Lj" = (
 /obj/item/toy/plushie/deer,
 /obj/structure/table/standard,
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/engine_monitoring)
 "Ll" = (
@@ -6139,6 +6161,9 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "Pj" = (
@@ -6845,6 +6870,9 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_smes)
 "Ud" = (
@@ -7358,6 +7386,10 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
+	},
+/obj/machinery/computer/guestpass{
+	dir = 4;
+	pixel_x = -28
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
@@ -14202,19 +14234,19 @@ fN
 fN
 iC
 Zj
+iC
 Zj
+iC
+iC
+iC
 Zj
+iC
+iC
 Zj
-Zj
-Zj
-Zj
-Zj
-Zj
-Zj
-Zj
-Zj
-Zj
-Zj
+iC
+iC
+iC
+iC
 Zj
 Zj
 Zj
@@ -20452,7 +20484,7 @@ yk
 Je
 eo
 NJ
-KZ
+my
 KZ
 AX
 UH
