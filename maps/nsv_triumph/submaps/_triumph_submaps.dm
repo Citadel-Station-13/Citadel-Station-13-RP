@@ -48,7 +48,6 @@
 /datum/map_z_level/triumph_lateload/away_debrisfield
 	name = "Away Mission - Debris Field"
 	z = Z_LEVEL_DEBRISFIELD
-	base_turf = /turf/space
 
 
 /datum/map_template/triumph_lateload/away_debrisfield/on_map_loaded(z)

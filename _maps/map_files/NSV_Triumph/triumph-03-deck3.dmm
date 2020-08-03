@@ -6559,7 +6559,7 @@
 	dir = 1;
 	id = "xenobiocoldroom"
 	},
-/turf/simulated/floor/bluegrid/airless,
+/turf/simulated/floor/bluegrid,
 /area/rnd/xenobiology)
 "ro" = (
 /obj/machinery/disease2/isolator,
@@ -7317,7 +7317,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 4
 	},
-/turf/simulated/floor/bluegrid/airless,
+/turf/simulated/floor/bluegrid,
 /area/rnd/xenobiology)
 "tm" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
@@ -7730,7 +7730,7 @@
 	use_power = 1
 	},
 /obj/machinery/camera/network/research/xenobio,
-/turf/simulated/floor/bluegrid/airless,
+/turf/simulated/floor/bluegrid,
 /area/rnd/xenobiology)
 "uo" = (
 /obj/machinery/atmospherics/pipe/manifold/visible,
@@ -12518,7 +12518,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
 	},
-/turf/simulated/floor/bluegrid/airless,
+/turf/simulated/floor/bluegrid,
 /area/rnd/xenobiology)
 "Gm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -12985,8 +12985,7 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
-/obj/structure/plasticflaps,
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/bluegrid,
 /area/rnd/xenobiology)
 "HA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -13268,7 +13267,7 @@
 	alarm_id = "xenopenvent";
 	pixel_y = 24
 	},
-/turf/simulated/floor/bluegrid/airless,
+/turf/simulated/floor/bluegrid,
 /area/rnd/xenobiology)
 "Im" = (
 /obj/machinery/camera/network/research{
@@ -14495,7 +14494,7 @@
 	dir = 8;
 	id = "xenobiocoldroom"
 	},
-/turf/simulated/floor/bluegrid/airless,
+/turf/simulated/floor/bluegrid,
 /area/rnd/xenobiology)
 "LE" = (
 /obj/structure/closet/secure_closet/medical1,
@@ -18443,7 +18442,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/simulated/floor/bluegrid/airless,
+/turf/simulated/floor/bluegrid,
 /area/rnd/xenobiology)
 "VA" = (
 /obj/structure/closet{
