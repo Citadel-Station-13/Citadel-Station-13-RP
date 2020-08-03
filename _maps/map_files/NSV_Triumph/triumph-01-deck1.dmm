@@ -263,6 +263,14 @@
 "bh" = (
 /turf/simulated/wall/r_wall,
 /area/triumph/station/stairs_one)
+"bj" = (
+/obj/machinery/atmospherics/portables_connector,
+/obj/machinery/portable_atmospherics/canister/air/airlock,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/engine_room)
 "bq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
@@ -620,6 +628,9 @@
 	pixel_y = 22
 	},
 /obj/structure/coatrack,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/wood,
 /area/engineering/break_room)
 "dA" = (
@@ -976,12 +987,12 @@
 /turf/simulated/floor/plating,
 /area/engineering/break_room)
 "gc" = (
-/obj/structure/cable/yellow,
-/obj/structure/cable/cyan{
+/obj/structure/cable/yellow{
 	d1 = 1;
 	d2 = 8;
 	icon_state = "1-8"
 	},
+/obj/structure/cable/yellow,
 /obj/machinery/power/tesla_coil,
 /turf/simulated/floor/airless,
 /area/space)
@@ -1147,7 +1158,8 @@
 /area/engineering/atmos)
 "hc" = (
 /obj/structure/cable/yellow{
-	dir = 1
+	d2 = 2;
+	icon_state = "0-2"
 	},
 /obj/machinery/power/tesla_coil,
 /turf/simulated/floor/airless,
@@ -2080,6 +2092,9 @@
 /area/engineering/atmos)
 "oj" = (
 /obj/structure/closet/secure_closet/engineering_chief,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
 "oq" = (
@@ -2300,6 +2315,9 @@
 	frequency = 1379;
 	id_tag = "eng_fore_pump"
 	},
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engineering_airlock)
 "pt" = (
@@ -2465,18 +2483,19 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engine_monitoring)
 "qh" = (
-/obj/structure/cable/cyan{
+/obj/structure/cable/yellow{
 	d1 = 1;
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/obj/structure/cable/cyan{
+/obj/structure/cable/yellow{
 	d1 = 2;
 	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/structure/cable/yellow{
-	dir = 8
+	d2 = 4;
+	icon_state = "0-4"
 	},
 /obj/machinery/power/tesla_coil,
 /turf/simulated/floor/airless,
@@ -2783,6 +2802,9 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
 	},
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "st" = (
@@ -2823,6 +2845,19 @@
 /obj/structure/disposalpipe/trunk,
 /turf/simulated/floor/wood,
 /area/engineering/break_room)
+"sE" = (
+/obj/structure/cable/yellow{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable/yellow{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/obj/machinery/power/tesla_coil,
+/turf/simulated/floor/airless,
+/area/space)
 "sH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/floor_decal/industrial/warning{
@@ -3046,15 +3081,16 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engine_monitoring)
 "ub" = (
-/obj/structure/cable/yellow{
-	dir = 8
-	},
+/obj/machinery/power/tesla_coil,
 /obj/structure/cable/yellow{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/power/tesla_coil,
+/obj/structure/cable/yellow{
+	d2 = 4;
+	icon_state = "0-4"
+	},
 /turf/simulated/floor/airless,
 /area/space)
 "ud" = (
@@ -3737,6 +3773,9 @@
 "yx" = (
 /obj/machinery/alarm{
 	pixel_y = 22
+	},
+/obj/machinery/light{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/workshop)
@@ -5152,12 +5191,13 @@
 /area/security/checkpoint/engineering)
 "IF" = (
 /obj/structure/cable/yellow{
-	dir = 1
-	},
-/obj/structure/cable/cyan{
 	d1 = 2;
 	d2 = 8;
 	icon_state = "2-8"
+	},
+/obj/structure/cable/yellow{
+	d2 = 2;
+	icon_state = "0-2"
 	},
 /obj/machinery/power/tesla_coil,
 /turf/simulated/floor/airless,
@@ -5199,6 +5239,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/structure/table/reinforced,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
 "Jc" = (
@@ -6129,6 +6170,10 @@
 	icon_state = "techmaint"
 	},
 /area/tcommsat/entrance)
+"Pv" = (
+/obj/structure/sign/department/telecoms,
+/turf/simulated/wall/r_wall,
+/area/tcommsat/entrance)
 "PB" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
@@ -6187,6 +6232,9 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "PT" = (
@@ -6209,16 +6257,11 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engine_monitoring)
 "Qh" = (
-/obj/structure/cable/yellow{
-	dir = 8
-	},
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 8;
-	dir = 1;
-	icon_state = "1-8"
-	},
 /obj/machinery/power/tesla_coil,
+/obj/structure/cable/yellow{
+	d2 = 4;
+	icon_state = "0-4"
+	},
 /turf/simulated/floor/airless,
 /area/space)
 "Qi" = (
@@ -6234,6 +6277,9 @@
 "Qo" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
+	},
+/obj/machinery/light{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_room)
@@ -7060,13 +7106,13 @@
 /area/maintenance/lower/trash_pit)
 "Wl" = (
 /obj/structure/cable/yellow{
-	dir = 8
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 8;
-	dir = 8;
-	icon_state = "1-8"
+	d2 = 4;
+	icon_state = "0-4"
 	},
 /obj/machinery/power/tesla_coil,
 /turf/simulated/floor/airless,
@@ -15585,7 +15631,7 @@ ub
 kq
 CX
 kq
-ub
+sE
 kq
 kq
 kq
@@ -17141,7 +17187,7 @@ JB
 cj
 Pj
 gB
-fn
+bj
 Ur
 IU
 RM
@@ -18266,7 +18312,7 @@ yC
 yC
 yC
 Jn
-gS
+Pv
 Pr
 Pf
 qH
@@ -22111,7 +22157,7 @@ zw
 VC
 lY
 iY
-OT
+dZ
 CG
 VX
 VX
