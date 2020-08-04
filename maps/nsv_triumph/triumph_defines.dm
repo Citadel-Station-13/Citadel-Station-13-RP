@@ -13,6 +13,10 @@
 #define Z_LEVEL_MISC						6
 #define Z_LEVEL_SHIPS						7
 #define Z_LEVEL_DEBRISFIELD					8
+#define Z_LEVEL_ROGUEMINE_1					9
+#define Z_LEVEL_ROGUEMINE_2					10
+#define Z_LEVEL_ROGUEMINE_3					11
+#define Z_LEVEL_ROGUEMINE_4					12
 
 //Camera networks
 #define NETWORK_TRIUMPH "Triumph"
@@ -104,9 +108,17 @@
 		/area/tcommsat/chamber,
 		/area/engineering/engineering_airlock)
 
+	belter_docked_z = 		list(Z_LEVEL_DECK_TWO)
+	belter_transit_z =	 	list(Z_LEVEL_SHIPS)
+	belter_belt_z = 		list(Z_LEVEL_ROGUEMINE_1,
+						 		 Z_LEVEL_ROGUEMINE_2,
+						 	 	 Z_LEVEL_ROGUEMINE_3,
+								 Z_LEVEL_ROGUEMINE_4)
+
 	lateload_z_levels = list(
 		list("Triumph - Misc","Triumph - Ships",), //Stock Triumph lateload maps
-		list("Debris Field - Z1 Space") // Debris Field
+		list("Debris Field - Z1 Space"), // Debris Field
+		list("Asteroid Belt 1","Asteroid Belt 2","Asteroid Belt 3","Asteroid Belt 4")
 	)
 
 	ai_shell_restricted = TRUE
