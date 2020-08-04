@@ -569,7 +569,7 @@
 /area/ai)
 "bu" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/hallway/primary/aft)
 "bv" = (
@@ -2006,6 +2006,9 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/effect/floor_decal/techfloor/hole{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/primary/aft)
 "ek" = (
@@ -2606,7 +2609,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "fD" = (
-/obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/hallway/secondary/civilian_hallway_mid)
 "fE" = (
@@ -2805,7 +2808,7 @@
 /area/maintenance/security_starboard)
 "ga" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/library)
 "gb" = (
@@ -4740,7 +4743,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
 "ko" = (
@@ -11477,7 +11480,7 @@
 /area/crew_quarters/heads/hop)
 "zA" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/maintenance/central)
 "zB" = (
@@ -14727,12 +14730,12 @@
 /area/shuttle/excursion/triumph)
 "Hl" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/maintenance/common,
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/maintenance/central)
 "Hm" = (

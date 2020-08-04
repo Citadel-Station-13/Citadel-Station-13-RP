@@ -311,7 +311,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/airlock/maintenance_hatch,
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "bb" = (
@@ -1531,6 +1531,15 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/access_button{
+	command = "cycle_exterior";
+	frequency = 1379;
+	master_tag = "solar_dock";
+	name = "exterior access button";
+	pixel_x = -26;
+	pixel_y = 26;
+	req_one_access = list()
+	},
 /turf/simulated/floor/plating,
 /area/solar/aft)
 "eT" = (
@@ -1608,7 +1617,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/door/airlock/maintenance_hatch,
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "fe" = (
@@ -1849,7 +1858,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/door/airlock/maintenance_hatch,
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "fP" = (
@@ -2836,7 +2845,7 @@
 /area/quartermaster/storage)
 "im" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/maintenance_hatch,
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "in" = (
@@ -4224,6 +4233,15 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
+/obj/machinery/access_button{
+	command = "cycle_interior";
+	frequency = 1380;
+	master_tag = "d1a_dock";
+	name = "interior access button";
+	pixel_x = -28;
+	pixel_y = -24;
+	req_one_access = list()
+	},
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/dormitory)
 "nc" = (
@@ -4315,14 +4333,6 @@
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
-	},
-/obj/machinery/access_button{
-	command = "cycle_exterior";
-	frequency = 1379;
-	master_tag = "solar_dock";
-	name = "exterior access button";
-	pixel_x = -26;
-	pixel_y = -2
 	},
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/dormitory)
@@ -4446,7 +4456,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/airlock/maintenance_hatch,
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "nM" = (
@@ -4730,7 +4740,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/maintenance_hatch,
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/hallway/primary/aft)
 "oW" = (
@@ -5539,7 +5549,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/door/airlock/maintenance_hatch,
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/bar)
 "rx" = (
@@ -6375,8 +6385,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/door/airlock/maintenance_hatch,
 /obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "uf" = (
@@ -6501,6 +6511,7 @@
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	id_tag = "solar_dock";
 	pixel_x = -24;
+	req_one_access = list();
 	tag_airpump = "solar_pump";
 	tag_chamber_sensor = "solar_sensor";
 	tag_exterior_door = "solar_outer";
@@ -7018,7 +7029,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/airlock/maintenance_hatch,
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/bar)
 "wc" = (
@@ -7455,7 +7466,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/airlock/maintenance_hatch,
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "xI" = (
@@ -7845,7 +7856,7 @@
 /area/hallway/primary/aft)
 "zc" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/maintenance_hatch,
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "zd" = (
@@ -9427,7 +9438,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/door/airlock/maintenance_hatch,
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/bar)
 "Fd" = (
@@ -10339,15 +10350,6 @@
 	id_tag = "solar_inner";
 	locked = 1;
 	name = "Solars"
-	},
-/obj/machinery/access_button{
-	command = "cycle_interior";
-	frequency = 1380;
-	master_tag = "d1a_dock";
-	name = "interior access button";
-	pixel_x = -28;
-	pixel_y = 8;
-	req_one_access = null
 	},
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/dormitory)
@@ -11563,7 +11565,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/door/airlock/maintenance_hatch,
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "Mo" = (
@@ -11718,7 +11720,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/airlock/maintenance_hatch,
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "MW" = (
@@ -12051,7 +12053,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/maintenance_hatch,
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/bar)
 "Oq" = (
@@ -12346,8 +12348,8 @@
 "PE" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/airlock/maintenance_hatch,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
 "PF" = (
@@ -12554,7 +12556,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/airlock/maintenance_hatch,
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_shop)
 "Ql" = (
@@ -14119,7 +14121,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/airlock/maintenance_hatch,
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/sleep/cryo)
 "Vh" = (
@@ -15191,7 +15193,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/airlock/maintenance_hatch,
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "YM" = (
