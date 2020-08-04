@@ -255,7 +255,7 @@
 	name = "NSV Triumph Docking Arm"
 	my_area = /area/shuttle/excursion/triumph_dockarm
 
-	dock_target = "d1a2_dock"
+	dock_target = "d1a_dock"
 	radio_announce = 1
 	announcer = "Excursion Shuttle"
 
