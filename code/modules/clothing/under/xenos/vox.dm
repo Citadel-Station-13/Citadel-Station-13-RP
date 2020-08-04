@@ -74,8 +74,44 @@
 	item_state = "vox-civ-chaplain"
 
 /obj/item/clothing/under/pressuresuit/voxcivlibrarian
-	name = "assistant pressure suit"
+	name = "librarian pressure suit"
 	desc = "A lightly-plated jumpsuit, fitted to an alien frame. More stylish than others. Don't eat the books."
 	icon_state = "vox-civ-librarian"
 	item_state = "vox-civ-librarian"
+	
+/obj/item/clothing/under/pressuresuit/voxcivsecurity
+	name = "security pressure suit"
+	desc = "A lightly-plated jumpsuit, fitted to an alien frame. Now in red and black, the colors everyone loves to see running toward them with intent to arrest."
+	icon_state = "vox-civ-security"
+	item_state = "vox-civ-security"
 
+/obj/item/clothing/under/pressuresuit/voxcivmedical
+	name = "medical pressure suit"
+	desc = "A lightly-plated jumpsuit, fitted to an alien frame. This one's stark white, fitting in with Medbay's (not very) sterile floors."
+	icon_state = "vox-civ-medical"
+	item_state = "vox-civ-medical"
+	
+/obj/item/clothing/under/pressuresuit/voxcivengineer
+	name = "engineering pressure suit"
+	desc = "A lightly-plated jumpsuit, fitted to an alien frame. The fluorescent orange on this yellow jumpsuit helps keep the Vox visible on job sites, at the expense of style."
+	icon_state = "vox-civ-engineer"
+	item_state = "vox-civ-engineer"
+	
+/obj/item/clothing/under/pressuresuit/voxcivscience
+	name = "research and development pressure suit"
+	desc = "A lightly-plated jumpsuit, fitted to an alien frame. The royal purple marks you out as the Vox to go to for the really fun toys."
+	icon_state = "vox-civ-science"
+	item_state = "vox-civ-science
+
+/obj/item/clothing/under/pressuresuit/voxcivrd
+	name = "research director pressure suit"
+	desc = "A lightly-plated jumpsuit, fitted to an alien frame. While visually similar to the R&D pressure suit, this one's...a slightly darker shade of purple."
+	icon_state = "vox-civ-rd"
+	item_state = "vox-civ-rd"
+	
+/obj/item/clothing/under/pressuresuit/voxcivce
+	name = "chief engineer pressure suit"
+	desc = "A lightly-plated jumpsuit, fitted to an alien frame. This brown and white combo marks you as the Quill of the gear monkeys. Don't blow us up. 
+	icon_state = "vox-civ-ce"
+	item_state = "vox-civ-ce"
+	
