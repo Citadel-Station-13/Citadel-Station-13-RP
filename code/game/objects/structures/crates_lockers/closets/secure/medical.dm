@@ -116,6 +116,7 @@
 
 	starts_with = list(
 		/obj/item/storage/backpack/dufflebag/emt,
+		/obj/item/clothing/under/bodysuit/bodysuitemt,
 		/obj/item/storage/box/autoinjectors,
 		/obj/item/storage/box/syringes,
 		/obj/item/reagent_containers/glass/bottle/inaprovaline,

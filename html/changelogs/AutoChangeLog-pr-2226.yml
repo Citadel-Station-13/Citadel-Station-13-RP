@@ -1,0 +1,4 @@
+author: "Hatterhat"
+delete-after: True
+changes: 
+  - bugfix: "The hole in the floor in Toxins that led directly to space has now been patched over. Probably."

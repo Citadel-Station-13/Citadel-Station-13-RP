@@ -97,6 +97,7 @@
 		/obj/item/radio/headset/headset_eng,
 		/obj/item/radio/headset/headset_eng/alt,
 		/obj/item/clothing/suit/storage/hazardvest,
+		/obj/item/clothing/under/bodysuit/bodysuithazard,
 		/obj/item/clothing/mask/gas,
 		/obj/item/clothing/glasses/meson,
 		/obj/item/cartridge/engineering,

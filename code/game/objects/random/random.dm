@@ -1553,7 +1553,7 @@ var/list/multi_point_spawns
 /obj/random/mob/sif
 	name = "Random Sif Animal"
 	desc = "This is a random cold weather animal."
-	icon_state = "penguin"
+	icon_state = "emperor_penguin"
 
 /obj/random/mob/sif/item_to_spawn()
 	return pick(prob(30);/mob/living/simple_animal/retaliate/diyaab,

@@ -16,7 +16,6 @@
 /area/gateway)
 "af" = (
 /obj/structure/table/steel,
-/obj/item/storage/box/bodybags,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/mining)
 "ag" = (
@@ -36,7 +35,6 @@
 /area/maintenance/lower/mining)
 "aj" = (
 /obj/structure/table/steel,
-/obj/item/surgical/circular_saw,
 /obj/item/storage/briefcase/inflatable,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/mining)
@@ -87,7 +85,6 @@
 /area/maintenance/lower/mining)
 "as" = (
 /obj/structure/table/steel,
-/obj/item/backup_implanter,
 /obj/item/reagent_containers/food/drinks/glass2/fitnessflask,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/mining)
@@ -191,11 +188,6 @@
 /area/maintenance/lower/mining)
 "aG" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/mining)
-"aH" = (
-/obj/structure/table/steel,
-/obj/item/bodybag/cryobag,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/mining)
 "aI" = (
@@ -32018,7 +32010,7 @@ ac
 ad
 aj
 as
-aH
+af
 ad
 aZ
 ai

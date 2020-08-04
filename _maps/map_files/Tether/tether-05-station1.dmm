@@ -1696,7 +1696,9 @@
 	},
 /obj/structure/closet/secure_closet/medical_wall{
 	name = "O- Blood Locker";
-	pixel_y = -32
+	pixel_y = -32;
+	req_access = list(5);
+	req_one_access = list(5)
 	},
 /obj/item/reagent_containers/blood/OMinus,
 /obj/item/reagent_containers/blood/OMinus,
@@ -22934,6 +22936,7 @@
 /obj/item/storage/box/pillbottles,
 /obj/item/storage/box/autoinjectors,
 /obj/item/storage/bag/chemistry,
+/obj/item/clothing/accessory/permit/gun/planetside,
 /turf/simulated/floor/tiled/monotile,
 /area/space)
 "oJC" = (
@@ -24199,6 +24202,7 @@
 /obj/item/storage/box/pillbottles,
 /obj/item/storage/box/autoinjectors,
 /obj/item/storage/bag/chemistry,
+/obj/item/clothing/accessory/permit/gun/planetside,
 /turf/simulated/floor/tiled/monotile,
 /area/space)
 "wcD" = (

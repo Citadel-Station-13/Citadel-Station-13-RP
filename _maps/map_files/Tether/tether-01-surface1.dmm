@@ -317,6 +317,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/mining_main/refinery)
+"aaM" = (
+/obj/machinery/mineral/processing_unit_console{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/tether/surfacebase/mining_main/refinery)
 "aaN" = (
 /obj/machinery/conveyor{
 	dir = 9;
@@ -569,17 +575,6 @@
 	id = "mining_inbound"
 	},
 /turf/simulated/floor/plating,
-/area/tether/surfacebase/mining_main/refinery)
-"abq" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/mineral/processing_unit_console{
-	density = 0;
-	layer = 3.3;
-	pixel_y = 30
-	},
-/turf/simulated/floor/tiled/steel_grid,
 /area/tether/surfacebase/mining_main/refinery)
 "abr" = (
 /obj/machinery/firealarm{
@@ -32106,15 +32101,6 @@
 /area/engineering/atmos)
 "hQf" = (
 /obj/structure/table/standard,
-/obj/item/storage/firstaid/clotting{
-	pixel_x = 5;
-	pixel_y = -5
-	},
-/obj/item/storage/firstaid/fire{
-	pixel_x = 5;
-	pixel_y = 5
-	},
-/obj/item/storage/firstaid/toxin,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
@@ -32131,6 +32117,15 @@
 	dir = 8;
 	pixel_x = -24
 	},
+/obj/random/firstaid{
+	pixel_x = 5;
+	pixel_y = -5
+	},
+/obj/item/storage/firstaid/fire{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/storage/firstaid/toxin,
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/medical/triage)
 "hYD" = (
@@ -33210,6 +33205,8 @@
 	},
 /obj/structure/table/standard,
 /obj/item/storage/box/syringes,
+/obj/item/bodybag/cryobag,
+/obj/item/bodybag/cryobag,
 /obj/item/storage/belt/medical,
 /obj/item/storage/belt/medical,
 /turf/simulated/floor/tiled/dark,
@@ -48501,7 +48498,7 @@ aah
 aar
 aaK
 aaS
-abq
+aaM
 abF
 abL
 abL
