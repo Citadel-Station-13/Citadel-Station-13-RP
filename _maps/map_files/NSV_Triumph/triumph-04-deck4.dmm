@@ -10080,13 +10080,6 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
 "wj" = (
-/obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "d1a_dock_inner";
-	locked = 1;
-	name = "Docking Port Airlock"
-	},
 /obj/machinery/access_button{
 	command = "cycle_exterior";
 	frequency = 1380;
@@ -10095,6 +10088,13 @@
 	pixel_x = -26;
 	pixel_y = -2;
 	req_one_access = list(13)
+	},
+/obj/machinery/door/airlock/glass_external{
+	frequency = 1380;
+	icon_state = "door_locked";
+	id_tag = "d1a_dock_outer";
+	locked = 1;
+	name = "Docking Port Airlock"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)

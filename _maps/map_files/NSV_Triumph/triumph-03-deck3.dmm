@@ -10129,6 +10129,10 @@
 /obj/item/melee/baton/slime/loaded,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
+"Al" = (
+/obj/machinery/camera/network/outside,
+/turf/simulated/floor/airless/ceiling,
+/area/space)
 "An" = (
 /obj/structure/flora/pottedplant/shoot,
 /obj/machinery/camera/network/medbay,
@@ -29175,8 +29179,8 @@ ZR
 Fm
 Nx
 jv
-gK
-gK
+ss
+Oi
 ss
 gK
 gK
@@ -29317,9 +29321,9 @@ Qg
 xa
 cz
 jv
-gK
-gK
-ss
+ch
+ch
+ch
 gK
 gK
 gK
@@ -29458,10 +29462,10 @@ Ow
 vc
 xa
 xa
-jv
-HJ
-gK
-ss
+dd
+Al
+ch
+ch
 gK
 gK
 gK
@@ -29601,9 +29605,9 @@ xa
 xf
 si
 jv
-ss
-ss
-Oi
+ch
+ch
+ch
 gK
 gK
 gK
@@ -29743,9 +29747,9 @@ pq
 Ow
 pq
 jv
-gK
-gK
-Oi
+ch
+ch
+ch
 gK
 gK
 gK
@@ -29885,9 +29889,9 @@ ho
 Ow
 ho
 jv
-gK
-gK
-Oi
+ch
+ch
+ch
 gK
 gK
 gK
@@ -30027,9 +30031,9 @@ Ow
 Ow
 Ow
 jv
-gK
-gK
-Oi
+ch
+ch
+ch
 gK
 gK
 gK
@@ -30169,8 +30173,8 @@ Ym
 uZ
 lH
 rL
-gK
-gK
+ss
+Oi
 Oi
 gK
 gK

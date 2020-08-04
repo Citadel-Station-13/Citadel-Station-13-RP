@@ -1534,11 +1534,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
-"jH" = (
-/obj/effect/floor_decal/industrial/outline/blue,
-/obj/machinery/portable_atmospherics/canister/nitrogen,
-/turf/simulated/floor,
-/area/space)
 "jI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -2325,20 +2320,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
-"oC" = (
-/obj/effect/floor_decal/industrial/outline/blue,
-/obj/machinery/portable_atmospherics/canister/nitrogen,
-/obj/machinery/button/remote/blast_door{
-	desc = "A remote control-switch for the engine control room blast doors.";
-	id = "EngineEmitterPortWest";
-	name = "Engine Room Blast Doors";
-	pixel_x = 0;
-	pixel_y = 25;
-	req_access = null;
-	req_one_access = list(11,24)
-	},
-/turf/simulated/floor,
-/area/space)
 "oF" = (
 /obj/structure/cable/cyan{
 	d1 = 4;
@@ -2841,11 +2822,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
-"rB" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/floor_decal/industrial/warning/corner,
-/turf/simulated/floor,
-/area/space)
 "rE" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/carpet/blucarpet,
@@ -3527,15 +3503,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
-"vR" = (
-/obj/effect/floor_decal/industrial/outline/blue,
-/obj/machinery/portable_atmospherics/canister/phoron,
-/obj/machinery/firealarm{
-	dir = 1;
-	pixel_y = -24
-	},
-/turf/simulated/floor,
-/area/space)
 "vT" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/green{
 	dir = 8
@@ -3700,9 +3667,6 @@
 /obj/machinery/door/airlock/engineering,
 /turf/simulated/floor/tiled,
 /area/engineering/workshop)
-"wJ" = (
-/turf/simulated/floor,
-/area/space)
 "wK" = (
 /obj/machinery/telecomms/server/presets/science,
 /turf/simulated/floor/tiled/dark{
@@ -4746,16 +4710,6 @@
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
-"Cj" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/portable_atmospherics/canister/carbon_dioxide,
-/obj/structure/extinguisher_cabinet{
-	dir = 1;
-	icon_state = "extinguisher_closed";
-	pixel_y = 32
-	},
-/turf/simulated/floor,
-/area/space)
 "Cq" = (
 /obj/machinery/atmospherics/valve/digital/open{
 	name = "Air Cutoff"
@@ -4775,14 +4729,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/chief)
-"Cu" = (
-/obj/effect/floor_decal/industrial/outline/blue,
-/obj/machinery/portable_atmospherics/canister/nitrogen,
-/obj/machinery/camera/network/engine{
-	dir = 4
-	},
-/turf/simulated/floor,
-/area/space)
 "Cw" = (
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/tiled,
@@ -4868,24 +4814,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/backup)
-"Df" = (
-/obj/effect/floor_decal/industrial/warning,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/machinery/button/remote/blast_door{
-	desc = "A remote control-switch for the engine control room blast doors.";
-	id = "EngineEmitterPortWest2";
-	name = "Engine Room Blast Doors";
-	pixel_x = 25;
-	pixel_y = 0;
-	req_access = null;
-	req_one_access = list(11,24)
-	},
-/turf/simulated/floor,
-/area/space)
 "Dm" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
 /obj/effect/wingrille_spawn/reinforced_phoron,
@@ -5297,12 +5225,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
-"Gh" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 4
-	},
-/turf/simulated/floor,
-/area/space)
 "Gi" = (
 /obj/machinery/atmospherics/pipe/tank/oxygen{
 	dir = 1
@@ -5351,13 +5273,6 @@
 /obj/machinery/portable_atmospherics/canister/air/airlock,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_room)
-"Gu" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
-	},
-/turf/simulated/floor,
-/area/space)
 "Gv" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/engineeringatmos,
@@ -5407,20 +5322,6 @@
 	icon_state = "techmaint"
 	},
 /area/maintenance/lower/trash_pit)
-"Hb" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/portable_atmospherics/canister/carbon_dioxide,
-/obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
-	},
-/obj/machinery/alarm{
-	dir = 8;
-	pixel_x = 25;
-	pixel_y = 0
-	},
-/turf/simulated/floor,
-/area/space)
 "Hd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -5670,15 +5571,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_one)
-"IR" = (
-/obj/effect/floor_decal/industrial/outline/blue,
-/obj/machinery/portable_atmospherics/canister/phoron,
-/obj/machinery/light/small{
-	dir = 8;
-	pixel_x = 0
-	},
-/turf/simulated/floor,
-/area/space)
 "IT" = (
 /obj/structure/table/reinforced,
 /obj/item/paper_bin,
@@ -6029,11 +5921,6 @@
 	},
 /turf/simulated/floor/reinforced/phoron,
 /area/engineering/atmos)
-"Lm" = (
-/obj/effect/floor_decal/industrial/outline/blue,
-/obj/machinery/portable_atmospherics/canister/phoron,
-/turf/simulated/floor,
-/area/space)
 "Lo" = (
 /obj/machinery/firealarm{
 	dir = 1;
@@ -6076,13 +5963,6 @@
 	},
 /turf/simulated/floor/reinforced/n20,
 /area/engineering/atmos)
-"LQ" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 4
-	},
-/turf/simulated/floor,
-/area/space)
 "LU" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 8
@@ -7309,14 +7189,6 @@
 /obj/structure/table/woodentable,
 /turf/simulated/floor/wood,
 /area/engineering/break_room)
-"Tg" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
-	},
-/turf/simulated/floor,
-/area/space)
 "Tk" = (
 /obj/machinery/shieldgen,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -7387,24 +7259,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
-"TI" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/cable/green{
-	d2 = 2;
-	icon_state = "0-2"
-	},
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28
-	},
-/obj/structure/closet/radiation,
-/obj/item/clothing/glasses/meson,
-/obj/item/clothing/glasses/meson,
-/turf/simulated/floor,
-/area/space)
 "TJ" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 9
@@ -8318,13 +8172,6 @@
 	},
 /turf/simulated/wall/r_lead,
 /area/engineering/engine_room)
-"YV" = (
-/obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/industrial/warning,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor,
-/area/space)
 "YY" = (
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 1;
@@ -17019,10 +16866,10 @@ fN
 fN
 fN
 fN
-jH
-Cu
-IR
-Lm
+fN
+fN
+fN
+fN
 fN
 fN
 fN
@@ -17161,10 +17008,10 @@ fN
 fN
 fN
 fN
-oC
-jH
-Lm
-vR
+fN
+fN
+fN
+fN
 fN
 fN
 Zj
@@ -17303,10 +17150,10 @@ fN
 fN
 fN
 fN
-wJ
-Gh
-LQ
-rB
+fN
+fN
+fN
+fN
 fN
 fN
 iC
@@ -17445,10 +17292,10 @@ fN
 fN
 fN
 fN
-wJ
-Gu
-Tg
-YV
+fN
+fN
+fN
+fN
 fN
 fN
 iC
@@ -17587,10 +17434,10 @@ fN
 fN
 fN
 fN
-Cj
-Hb
-TI
-Df
+fN
+fN
+fN
+fN
 fN
 fN
 iC
