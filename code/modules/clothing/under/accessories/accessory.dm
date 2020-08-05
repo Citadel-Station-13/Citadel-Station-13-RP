@@ -440,7 +440,7 @@
 			to_chat(user, "You describe the [name].")
 			named = TRUE
 	if(!described)
-		var/inputdesc = sanitizeSafe(input("Enter the new description for the necklace. 500 character limit.", ,""), 500) // 500 character limit
+		var/inputdesc = sanitizeSafe(input("Enter the new description for the necklace. 2048 character limit.", ,""), 2048) // 2048 character limit
 		if(src && inputdesc && in_range(user,src))
 			desc = "[inputdesc]"
 			to_chat(user, "You describe the [name].")
