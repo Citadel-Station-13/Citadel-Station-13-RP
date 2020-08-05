@@ -3586,11 +3586,11 @@
 /turf/simulated/floor/tiled,
 /area/engineering/foyer_mezzenine)
 "uo" = (
-/obj/machinery/shield_capacitor{
-	dir = 1
-	},
 /obj/structure/cable,
 /obj/effect/floor_decal/industrial/warning,
+/obj/machinery/shield_capacitor/advanced{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/workshop)
 "up" = (
@@ -4628,9 +4628,6 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "zK" = (
-/obj/machinery/shield_capacitor{
-	dir = 8
-	},
 /obj/structure/cable{
 	d2 = 8;
 	icon_state = "0-8"
@@ -4642,6 +4639,9 @@
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/obj/machinery/shield_capacitor/advanced{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/workshop)
@@ -5206,7 +5206,6 @@
 /turf/simulated/floor/plating,
 /area/engineering/foyer_mezzenine)
 "CH" = (
-/obj/machinery/shield_gen/external,
 /obj/structure/cable{
 	d2 = 8;
 	icon_state = "0-8"
@@ -5226,6 +5225,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
+/obj/machinery/shield_gen/external/advanced,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/workshop)
 "CK" = (
@@ -5572,6 +5572,9 @@
 /area/engineering/atmos/backup)
 "Fq" = (
 /obj/machinery/light,
+/obj/machinery/keycard_auth{
+	pixel_y = -28
+	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
 "Fw" = (
@@ -8254,7 +8257,6 @@
 /turf/simulated/floor/reinforced,
 /area/engineering/engine_room)
 "Vx" = (
-/obj/machinery/shield_capacitor,
 /obj/structure/cable{
 	d2 = 2;
 	icon_state = "0-2"
@@ -8262,6 +8264,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
+/obj/machinery/shield_capacitor/advanced,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/workshop)
 "VA" = (

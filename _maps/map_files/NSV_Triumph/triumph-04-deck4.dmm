@@ -1435,6 +1435,10 @@
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 1
 	},
+/obj/item/shield_projector/rectangle,
+/obj/item/reagent_containers/hypospray/autoinjector/biginjector/healing_nanites,
+/obj/item/reagent_containers/hypospray/autoinjector/biginjector/pain,
+/obj/item/reagent_containers/hypospray/autoinjector/biginjector/pain,
 /turf/simulated/floor/tiled,
 /area/triumph/station/pathfinder_office)
 "dn" = (
@@ -2466,6 +2470,15 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/civilian_hallway_mid)
+"fm" = (
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/primary/aft)
 "fn" = (
 /obj/machinery/ai_slipper,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -2669,6 +2682,17 @@
 /area/centcom/command{
 	name = "\improper NanoTrasen Official On-Site Office"
 	})
+"fN" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/item/radio/beacon,
+/turf/simulated/floor/tiled,
+/area/triumph/station/explorer_entry)
 "fO" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -2832,6 +2856,8 @@
 	dir = 1
 	},
 /obj/item/tank/jetpack/oxygen,
+/obj/item/reagent_containers/hypospray/autoinjector/biginjector/healing_nanites,
+/obj/item/reagent_containers/hypospray/autoinjector/biginjector/stimm,
 /turf/simulated/floor/tiled/monotile,
 /area/triumph/station/explorer_prep)
 "gf" = (
@@ -3277,6 +3303,12 @@
 	},
 /turf/simulated/shuttle/wall/voidcraft/blue,
 /area/shuttle/excursion/triumph)
+"hf" = (
+/obj/machinery/keycard_auth{
+	pixel_y = -28
+	},
+/turf/simulated/floor/tiled,
+/area/triumph/station/pathfinder_office)
 "hg" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/clothing/suit/armor/combat,
@@ -4738,6 +4770,9 @@
 	dir = 4;
 	pixel_x = 24
 	},
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
 "kf" = (
@@ -5890,6 +5925,10 @@
 /obj/machinery/door/window/northright{
 	req_one_access = list(5)
 	},
+/obj/item/shield_projector/line,
+/obj/item/reagent_containers/hypospray/autoinjector/biginjector/bonemed,
+/obj/item/reagent_containers/hypospray/autoinjector/biginjector/clotting,
+/obj/item/reagent_containers/hypospray/autoinjector/biginjector/organ,
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
 "mO" = (
@@ -6493,6 +6532,9 @@
 /obj/item/target,
 /obj/item/target,
 /obj/item/target,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/range)
 "ol" = (
@@ -6542,7 +6584,7 @@
 "oq" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass_external{
-	req_one_access = list(44)
+	req_one_access = list(19,43,67)
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
@@ -7248,6 +7290,8 @@
 	dir = 1
 	},
 /obj/item/tank/jetpack/oxygen,
+/obj/item/reagent_containers/hypospray/autoinjector/biginjector/healing_nanites,
+/obj/item/reagent_containers/hypospray/autoinjector/biginjector/stimm,
 /turf/simulated/floor/tiled/monotile,
 /area/triumph/station/explorer_prep)
 "pL" = (
@@ -7261,6 +7305,17 @@
 	},
 /turf/simulated/floor/wood,
 /area/triumph/station/explorer_meeting)
+"pM" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/lounge)
 "pN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -7549,6 +7604,13 @@
 /obj/item/melee/baton/loaded,
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
+"qw" = (
+/obj/structure/table/reinforced,
+/obj/machinery/keycard_auth{
+	pixel_y = -28
+	},
+/turf/simulated/floor/tiled/dark,
+/area/bridge)
 "qy" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
@@ -8068,6 +8130,14 @@
 /obj/item/clothing/glasses/omnihud/all,
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
+"rA" = (
+/obj/machinery/light{
+	dir = 8;
+	icon_state = "tube1";
+	pixel_y = 0
+	},
+/turf/simulated/floor/carpet,
+/area/crew_quarters/heads/hos)
 "rB" = (
 /obj/machinery/washing_machine,
 /turf/simulated/floor/tiled,
@@ -9198,6 +9268,7 @@
 	dir = 4
 	},
 /obj/structure/table/standard,
+/obj/item/storage/toolbox/mechanical,
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
 "ub" = (
@@ -9683,6 +9754,8 @@
 	},
 /obj/item/tank/jetpack/oxygen,
 /obj/machinery/camera/network/exploration,
+/obj/item/reagent_containers/hypospray/autoinjector/biginjector/healing_nanites,
+/obj/item/reagent_containers/hypospray/autoinjector/biginjector/stimm,
 /turf/simulated/floor/tiled/monotile,
 /area/triumph/station/explorer_prep)
 "ve" = (
@@ -10988,7 +11061,7 @@
 "xM" = (
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/machinery/mech_recharger,
-/obj/mecha/working/hoverpod/shuttlepod,
+/obj/mecha/working/hoverpod,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/shuttle/excursion/triumph)
 "xN" = (
@@ -11178,6 +11251,7 @@
 	name = "Security Blast Doors";
 	opacity = 0
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/plating,
 /area/security/eva)
 "yj" = (
@@ -12522,6 +12596,11 @@
 /obj/item/clothing/accessory/armor/armguards,
 /obj/item/clothing/accessory/armor/armguards,
 /obj/item/clothing/accessory/armor/armguards,
+/obj/item/shield_projector,
+/obj/item/shield_projector,
+/obj/item/shield_projector,
+/obj/item/shield_projector,
+/obj/item/shield_projector,
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
 "Bm" = (
@@ -13096,7 +13175,9 @@
 "CE" = (
 /obj/machinery/mech_recharger,
 /obj/machinery/turretid/lethal{
-	pixel_y = 26
+	control_area = "\improper Gateway";
+	pixel_y = 26;
+	req_access = list(44)
 	},
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
@@ -14447,6 +14528,16 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
+"FD" = (
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -23
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/chapel)
 "FF" = (
 /turf/simulated/wall/r_wall,
 /area/chapel/office)
@@ -15247,6 +15338,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
+/obj/item/radio/beacon,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "Hs" = (
@@ -15309,6 +15401,15 @@
 "HB" = (
 /turf/simulated/wall/r_wall,
 /area/crew_quarters/captain)
+"HC" = (
+/obj/structure/table/reinforced,
+/obj/machinery/cell_charger,
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/range)
 "HD" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -15602,6 +15703,10 @@
 	req_one_access = list(5)
 	},
 /obj/machinery/light,
+/obj/item/shield_projector/line,
+/obj/item/reagent_containers/hypospray/autoinjector/biginjector/bonemed,
+/obj/item/reagent_containers/hypospray/autoinjector/biginjector/clotting,
+/obj/item/reagent_containers/hypospray/autoinjector/biginjector/organ,
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
 "Im" = (
@@ -16685,6 +16790,7 @@
 	name = "Security Blast Doors";
 	opacity = 0
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/plating,
 /area/security/eva)
 "KB" = (
@@ -21131,10 +21237,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/range)
-"Uq" = (
-/obj/machinery/porta_turret/ai_defense,
-/turf/simulated/floor/airless/ceiling,
-/area/ai)
 "Ur" = (
 /obj/structure/cable/cyan{
 	d1 = 1;
@@ -21656,6 +21758,11 @@
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
+"Vx" = (
+/obj/machinery/light,
+/obj/structure/closet/crate/freezer/rations,
+/turf/simulated/floor/tiled,
+/area/triumph/station/explorer_prep)
 "Vy" = (
 /obj/structure/fitness/weightlifter,
 /turf/simulated/floor/carpet/bcarpet,
@@ -21714,7 +21821,7 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass_external{
-	req_one_access = list(44)
+	req_one_access = list(19,43,67)
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
@@ -22176,6 +22283,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/hallwayaux)
+"Wy" = (
+/obj/machinery/porta_turret/ai_defense,
+/turf/simulated/floor/airless/ceiling,
+/area/ai)
 "Wz" = (
 /obj/structure/table/bench/wooden,
 /obj/machinery/light{
@@ -22965,6 +23076,9 @@
 /obj/machinery/alarm{
 	frequency = 1441;
 	pixel_y = 22
+	},
+/obj/machinery/light{
+	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
@@ -26706,7 +26820,7 @@ EJ
 pe
 gW
 Dv
-gW
+gX
 vH
 NU
 NU
@@ -26848,7 +26962,7 @@ EO
 EO
 Ew
 nX
-La
+Vx
 vH
 NU
 NU
@@ -26990,7 +27104,7 @@ gW
 gW
 wr
 YO
-gW
+gX
 vH
 vH
 vH
@@ -27984,7 +28098,7 @@ Ad
 HZ
 ZR
 ot
-Ad
+hf
 eq
 NU
 NU
@@ -28975,7 +29089,7 @@ cU
 vT
 vT
 wG
-vT
+fN
 vT
 uT
 oX
@@ -29696,7 +29810,7 @@ Az
 tC
 LZ
 Gn
-Gn
+pM
 Gn
 Gn
 mb
@@ -29980,13 +30094,13 @@ kF
 BX
 KZ
 KZ
-KZ
+fm
 KZ
 KZ
 AX
 KZ
 KZ
-KZ
+fm
 KZ
 hc
 Uf
@@ -31116,7 +31230,7 @@ Co
 qo
 Zq
 jS
-OK
+FD
 Tr
 qo
 TH
@@ -31396,7 +31510,7 @@ RP
 Uj
 ex
 vA
-mI
+PY
 qo
 Zq
 qo
@@ -34402,7 +34516,7 @@ Uu
 GT
 Tx
 Tx
-Tx
+rA
 kk
 Tx
 mo
@@ -34981,7 +35095,7 @@ OY
 FZ
 uz
 tm
-cO
+HC
 sk
 cO
 AO
@@ -39821,7 +39935,7 @@ am
 am
 XY
 XY
-Uq
+Wy
 NU
 zs
 NU
@@ -41368,7 +41482,7 @@ zs
 NU
 NU
 Az
-Uq
+Wy
 XY
 XY
 XY
@@ -41378,12 +41492,12 @@ XY
 XY
 XY
 XY
-Uq
+Wy
 XY
 XY
 XY
 XY
-Uq
+Wy
 NU
 zs
 NU
@@ -41785,7 +41899,7 @@ WW
 Dy
 Uo
 Uo
-Fn
+qw
 VO
 Az
 NU
