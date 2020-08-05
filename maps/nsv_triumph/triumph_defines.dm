@@ -102,7 +102,8 @@
 
 	unit_test_exempt_areas = list(
 		/area/vacant/vacant_site,
-		/area/vacant/vacant_site/east)
+		/area/vacant/vacant_site/east,
+		/area/triumph_away/)
 	unit_test_exempt_from_atmos = list(
 		/area/engineering/atmos/intake,
 		/area/tcommsat/chamber,
