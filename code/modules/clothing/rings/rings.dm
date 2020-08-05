@@ -31,7 +31,7 @@
 	if(!named)
 		var/inputname = sanitizeSafe(input("Enter a prefix for the ring's name.", ,""), MAX_NAME_LEN)
 		if(src && inputname && in_range(user,src))
-			name = "[inputname] necklace"
+			name = "[inputname] ring"
 			to_chat(user, "You describe the [name].")
 			named = TRUE
 	if(!described)
