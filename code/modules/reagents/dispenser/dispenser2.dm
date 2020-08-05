@@ -2,6 +2,7 @@
 	name = "chemical dispenser"
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "dispenser"
+	density = TRUE
 
 	var/list/spawn_cartridges = null // Set to a list of types to spawn one of each on New()
 
