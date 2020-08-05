@@ -797,7 +797,7 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/airless/ceiling,
 /area/solar/aft)
 "cH" = (
 /obj/effect/floor_decal/techfloor,
@@ -1417,7 +1417,7 @@
 	pixel_y = 26;
 	req_one_access = null
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/airless/ceiling,
 /area/solar/aft)
 "eT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -4497,7 +4497,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/airless/ceiling,
 /area/solar/aft)
 "oo" = (
 /obj/structure/sink/kitchen{
@@ -5253,7 +5253,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/airless/ceiling,
 /area/solar/aft)
 "qQ" = (
 /obj/structure/cable/green{
@@ -6208,7 +6208,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/airless/ceiling,
 /area/solar/aft)
 "tU" = (
 /obj/structure/cable/green{
@@ -7569,7 +7569,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/airless/ceiling,
 /area/solar/aft)
 "yL" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -8506,7 +8506,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/airless/ceiling,
 /area/solar/aft)
 "Cp" = (
 /obj/structure/table/rack,
@@ -9452,7 +9452,7 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/airless/ceiling,
 /area/solar/aft)
 "FS" = (
 /obj/structure/grille,
@@ -10764,7 +10764,7 @@
 "Kp" = (
 /obj/machinery/power/tracker,
 /obj/structure/cable/yellow,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/airless/ceiling,
 /area/solar/aft)
 "Kq" = (
 /obj/structure/cable/green{
@@ -13596,7 +13596,7 @@
 "UP" = (
 /obj/machinery/power/solar,
 /obj/structure/cable/yellow,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/airless/ceiling,
 /area/solar/aft)
 "UQ" = (
 /obj/machinery/alarm{

@@ -10232,7 +10232,7 @@
 /area/hallway/secondary/civilian_hallway_mid)
 "wh" = (
 /obj/machinery/porta_turret/ai_defense,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/airless/ceiling,
 /area/security/nuke_storage)
 "wi" = (
 /turf/simulated/floor/carpet/bcarpet,
@@ -21131,6 +21131,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/range)
+"Uq" = (
+/obj/machinery/porta_turret/ai_defense,
+/turf/simulated/floor/airless/ceiling,
+/area/ai)
 "Ur" = (
 /obj/structure/cable/cyan{
 	d1 = 1;
@@ -39817,7 +39821,7 @@ am
 am
 XY
 XY
-FK
+Uq
 NU
 zs
 NU
@@ -41364,7 +41368,7 @@ zs
 NU
 NU
 Az
-FK
+Uq
 XY
 XY
 XY
@@ -41374,12 +41378,12 @@ XY
 XY
 XY
 XY
-FK
+Uq
 XY
 XY
 XY
 XY
-FK
+Uq
 NU
 zs
 NU

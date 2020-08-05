@@ -106,7 +106,8 @@
 	unit_test_exempt_from_atmos = list(
 		/area/engineering/atmos/intake,
 		/area/tcommsat/chamber,
-		/area/engineering/engineering_airlock)
+		/area/engineering/engineering_airlock,
+		/area/triumph_away/)
 
 	belter_docked_z = 		list(Z_LEVEL_DECK_TWO)
 	belter_transit_z =	 	list(Z_LEVEL_SHIPS)

@@ -113,7 +113,7 @@
 
 /datum/unit_test/zas_area_test/mining_area
 	name = "ZAS: Mining Area (Vacuum)"
-	area_path = /area/mine/explored
+	area_path = /area/asteroid/rogue/
 	expectation = UT_VACUUM
 
 /datum/unit_test/zas_area_test/cargo_bay
