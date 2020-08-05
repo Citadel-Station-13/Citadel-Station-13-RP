@@ -446,7 +446,7 @@
 			to_chat(user, "You describe the [name].")
 			described = TRUE
 	if(!coloured)
-		var/colour_input = input(usr,"","Choose Color",lcolor) as color|null
+		var/colour_input = input(usr,"","Choose Color",color) as color|null
 		if(colour_input)
 			color = sanitize_hexcolor(colour_input)
 			coloured = TRUE
