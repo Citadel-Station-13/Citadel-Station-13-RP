@@ -19,7 +19,32 @@
 	desc = "A ring commemorating graduation from Mariner University."
 	icon_state = "mariner-grad"
 
+/obj/item/clothing/gloves/ring/custom
+	name = "ring"
+	desc = "Alt-click to name and add a description."
+	icon_state = "material"
+	var/described = FALSE
+	var/named = FALSE
+	var/coloured = FALSE
 
+/obj/item/clothing/gloves/ring/custom/AltClick(mob/user)
+	if(!named)
+		var/inputname = sanitizeSafe(input("Enter a prefix for the ring's name.", ,""), MAX_NAME_LEN)
+		if(src && inputname && in_range(user,src))
+			name = "[inputname] necklace"
+			to_chat(user, "You describe the [name].")
+			named = TRUE
+	if(!described)
+		var/inputdesc = sanitizeSafe(input("Enter the new description for the ring. 500 character limit.", ,""), 500) // 200 character limit
+		if(src && inputdesc && in_range(user,src))
+			desc = "[inputdesc]"
+			to_chat(user, "You describe the [name].")
+			described = TRUE
+	if(!coloured)
+		var/colour_input = input(usr,"","Choose Color",lcolor) as color|null
+		if(colour_input)
+			color = sanitize_hexcolor(colour_input)
+			coloured = TRUE
 /////////////////////////////////////////
 //Reagent Rings
 

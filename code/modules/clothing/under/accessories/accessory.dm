@@ -430,6 +430,7 @@
 	icon_state = "locket"
 	var/described = FALSE
 	var/named = FALSE
+	var/coloured = FALSE
 
 /obj/item/clothing/accessory/necklace/AltClick(mob/user)
 	if(!named)
@@ -439,8 +440,13 @@
 			to_chat(user, "You describe the [name].")
 			named = TRUE
 	if(!described)
-		var/inputdesc = sanitizeSafe(input("Enter the new description for the necklace. 400 character limit.", ,""), 400) // 400 character limit
+		var/inputdesc = sanitizeSafe(input("Enter the new description for the necklace. 500 character limit.", ,""), 500) // 500 character limit
 		if(src && inputdesc && in_range(user,src))
 			desc = "[inputdesc]"
 			to_chat(user, "You describe the [name].")
 			described = TRUE
+	if(!coloured)
+		var/colour_input = input(usr,"","Choose Color",lcolor) as color|null
+		if(colour_input)
+			color = sanitize_hexcolor(colour_input)
+			coloured = TRUE
