@@ -22891,6 +22891,10 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 32
 	},
+/mob/living/simple_mob/animal/passive/dog/corgi/Lisa{
+	desc = "It's Lisa, the exploration teams trusty Corgi."
+	},
+/obj/structure/dogbed,
 /turf/simulated/floor/tiled,
 /area/triumph/station/pathfinder_office)
 "vNZ" = (
