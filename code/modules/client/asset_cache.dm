@@ -384,3 +384,14 @@ var/global/list/asset_datums = list()
 			Insert("language-[icon_state]", icon, icon_state=icon_state)
 	..()
 */
+
+/datum/asset/simple/IRV
+	assets = list(
+		"jquery-ui.custom-core-widgit-mouse-sortable-min.js" = 'html/IRV/jquery-ui.custom-core-widgit-mouse-sortable-min.js',
+	)
+
+/datum/asset/group/IRV
+	children = list(
+		/datum/asset/simple/jquery,
+		/datum/asset/simple/IRV
+	)
