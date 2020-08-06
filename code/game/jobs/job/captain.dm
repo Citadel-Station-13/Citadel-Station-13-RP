@@ -1,7 +1,7 @@
 var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 
 /datum/job/captain
-	title = "Facility Director"
+	title = "Captain"
 	flag = CAPTAIN
 	department = "Command"
 	head_position = 1
@@ -22,7 +22,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	ideal_character_age = 70 // Old geezer captains ftw
 
 	outfit_type = /decl/hierarchy/outfit/job/captain
-	alt_titles = list("Site Manager", "Overseer", "Director of Operations")
+	alt_titles = list("Site Manager", "Overseer", "Director of Operations","Facility Director")
 
 /*
 /datum/job/captain/equip(var/mob/living/carbon/human/H)
@@ -53,7 +53,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	ideal_character_age = 50
 
 	outfit_type = /decl/hierarchy/outfit/job/hop
-	alt_titles = list("Crew Resources Officer")
+	alt_titles = list("Crew Resources Officer","First Officer")
 
 	access = list(access_security, access_sec_doors, access_brig, access_forensics_lockers,
 			            access_medical, access_engine, access_change_ids, access_ai_upload, access_eva, access_heads,

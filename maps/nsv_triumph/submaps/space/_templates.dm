@@ -103,4 +103,3 @@
 	name = "Alien Derelict"
 	mappath = 'derelict.dmm'
 	cost = 35
-	discard_prob = 50

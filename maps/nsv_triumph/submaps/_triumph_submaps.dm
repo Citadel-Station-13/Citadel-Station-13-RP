@@ -35,6 +35,7 @@
 #include "space/debrisfield.dmm"
 #endif
 
+// Debris Field Exploration Zone.
 #include "space/_debrisfield.dm"
 #include "space/_templates.dm"
 #include "space/debrisfield_things.dm"
@@ -52,7 +53,7 @@
 
 /datum/map_template/triumph_lateload/away_debrisfield/on_map_loaded(z)
 	. = ..()
-	seed_submaps(list(Z_LEVEL_DEBRISFIELD), 200, /area/triumph_away/debrisfield/unexplored, /datum/map_template/debrisfield/)
+	seed_submaps(list(Z_LEVEL_DEBRISFIELD), 150, /area/triumph_away/debrisfield/unexplored, /datum/map_template/debrisfield/)
 
 //////////////////////////////////////////////////////////////////////////////////////
 // Admin-use z-levels for loading whenever an admin feels like

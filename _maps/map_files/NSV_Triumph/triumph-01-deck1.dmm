@@ -1394,12 +1394,10 @@
 /turf/simulated/floor/wood,
 /area/engineering/break_room)
 "hg" = (
-/obj/structure/toilet{
-	pixel_y = 10
-	},
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/machinery/recharge_station,
 /turf/simulated/floor/tiled/white,
 /area/engineering/foyer_mezzenine)
 "hm" = (
@@ -2594,6 +2592,15 @@
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
+"oR" = (
+/obj/machinery/door/blast/regular{
+	dir = 2;
+	id = "SupermatterVent";
+	layer = 3.3;
+	name = "Reactor Blast Door"
+	},
+/turf/simulated/floor/reinforced,
+/area/engineering/engine_room)
 "oS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -2744,6 +2751,20 @@
 "pL" = (
 /turf/simulated/floor/reinforced/nitrogen,
 /area/engineering/atmos)
+"pM" = (
+/obj/machinery/atmospherics/pipe/simple/visible/red{
+	dir = 4
+	},
+/obj/machinery/button/remote/blast_door{
+	desc = "A remote control-switch for the engine charging port.";
+	id = "SupermatterVent";
+	name = "REACTOR EMERGENCY VENTING";
+	pixel_x = -6;
+	pixel_y = -24;
+	req_access = list(10)
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/engine_room)
 "pO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -3626,6 +3647,9 @@
 /area/security/checkpoint/engineering)
 "uB" = (
 /obj/machinery/atmospherics/portables_connector,
+/obj/machinery/camera/network/engine{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "uK" = (
@@ -5290,6 +5314,12 @@
 	icon_state = "techmaint"
 	},
 /area/tcommsat/chamber)
+"DB" = (
+/obj/machinery/door/airlock{
+	name = "Shell Recharging"
+	},
+/turf/simulated/floor/tiled/white,
+/area/engineering/foyer_mezzenine)
 "DG" = (
 /obj/machinery/atmospherics/pipe/manifold4w/visible/red,
 /turf/simulated/floor/tiled,
@@ -7057,6 +7087,10 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/backup)
+"ON" = (
+/obj/effect/floor_decal/industrial/warning/cee,
+/turf/simulated/floor/reinforced/airless,
+/area/space)
 "OP" = (
 /obj/structure/cable/cyan{
 	d1 = 1;
@@ -8280,6 +8314,12 @@
 	},
 /turf/simulated/floor/carpet/blucarpet,
 /area/crew_quarters/heads/chief)
+"VD" = (
+/obj/machinery/camera/network/engine{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/engine_room)
 "VE" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 4
@@ -8385,8 +8425,11 @@
 	},
 /area/maintenance/lower/trash_pit)
 "Wl" = (
-/turf/simulated/wall/r_lead,
-/area/engineering/engine_room)
+/obj/structure/reagent_dispensers/fueltank,
+/turf/simulated/floor/tiled{
+	icon_state = "techmaint"
+	},
+/area/tcommsat/entrance)
 "Wn" = (
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/techmaint,
@@ -9101,6 +9144,15 @@
 	},
 /turf/simulated/floor/reinforced/phoron,
 /area/engineering/atmos)
+"ZE" = (
+/obj/machinery/atmospherics/unary/outlet_injector{
+	dir = 4;
+	frequency = 1441;
+	id = "atmos_out";
+	req_access = list(24)
+	},
+/turf/simulated/floor/airless,
+/area/space)
 "ZJ" = (
 /obj/structure/cable/cyan{
 	d1 = 1;
@@ -15612,9 +15664,9 @@ jS
 fN
 fN
 iC
-fN
-fN
-fN
+Zj
+Zj
+Zj
 fN
 fN
 fN
@@ -15756,7 +15808,7 @@ Zj
 iC
 fN
 fN
-fN
+Zj
 fN
 fN
 fN
@@ -15898,7 +15950,7 @@ fN
 Zj
 fN
 fN
-fN
+Zj
 fN
 fN
 fN
@@ -16040,7 +16092,7 @@ zz
 zz
 fN
 fN
-fN
+Zj
 fN
 fN
 fN
@@ -16172,7 +16224,7 @@ Eg
 tg
 GL
 Lv
-tg
+VD
 Pj
 zz
 zz
@@ -16182,7 +16234,7 @@ zz
 zz
 fN
 fN
-fN
+Zj
 fN
 fN
 fN
@@ -16322,9 +16374,9 @@ ho
 Vu
 zz
 zz
-fN
-fN
-fN
+Zj
+Zj
+Zj
 fN
 fN
 fN
@@ -16462,8 +16514,8 @@ aO
 tt
 Qf
 VL
-zz
-zz
+oR
+ON
 fN
 fN
 fN
@@ -16741,7 +16793,7 @@ dn
 nx
 NF
 Ln
-WF
+pM
 zz
 WV
 WV
@@ -17596,9 +17648,9 @@ zz
 zz
 Yh
 zz
-Wl
+zz
 Nu
-Wl
+zz
 zz
 fN
 fN
@@ -18882,7 +18934,7 @@ fN
 Zj
 fN
 kq
-ia
+ZE
 kq
 fN
 Zj
@@ -19137,7 +19189,7 @@ nJ
 TL
 nJ
 nJ
-nJ
+Wl
 Ou
 Pf
 aR
@@ -23416,7 +23468,7 @@ Rx
 AZ
 em
 em
-nS
+DB
 em
 nS
 em
