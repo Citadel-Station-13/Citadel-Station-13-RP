@@ -16,9 +16,6 @@
 	brute_mod = 0.8		//About as tanky to brute as a Unathi. They'll probably snap and go feral when hurt though.
 	burn_mod =  1.15	//As vulnerable to burn as a Tajara.
 	radiation_mod = 1.15	//To help simulate the volatility of a living 'viral' cluster.
-	metabolic_rate = 1.4
-	hunger_factor = 0.4
-	metabolism = 0.012
 	base_species = "Xenochimera"
 	selects_bodytype = TRUE
 
