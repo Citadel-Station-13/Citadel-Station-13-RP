@@ -38,7 +38,7 @@
 		to_chat(M, "This Shroud has already been customized!")
 		return 0
 
-	suit_style = input(M, "Which suit style would you like?") in list("Engineer", "Spacer", "Knight", "Fashion", "Bishop", "Hegemony", "Rugged")
+	suit_style = input(M, "Which suit style would you like?") in list("Engineer", "Spacer", "Knight", "Royal", "Fashion", "Bishop", "Hegemony", "Rugged", "Ancient", "Freefarer", "Healer", "Breaker", "Clockwork", "Retro", "Business")
 	switch(suit_style)
 		if("Engineer")
 			name = "\improper Engineer's Guild Shroud"
@@ -73,6 +73,17 @@
 				helmet.desc = "This spaceworthy helmet was patterned after the knight's helmets used by Zaddat before their discovery by the Unathi."
 				helmet.icon_state = "zaddat_knight"
 				helmet.item_state = "zaddat_knight"
+		if("Royal")
+			name = "\improper Royal Shroud"
+			base_name = "\improper Royal Shroud"
+			desc = "This distinctive steel-plated, golden trimmed Shroud is suited only for the most remarkable in the Noble Guild."
+			icon_state = "zaddat_royal"
+			item_state = "zaddat_royal"
+			if(helmet)
+				helmet.name = "\improper Royal Shroud helm"
+				helmet.desc = "This spaceworthy helmet was patterned after the king's and queen's helmets used by Zaddat before their discovery by the Unathi."
+				helmet.icon_state = "zaddat_royal"
+				helmet.item_state = "zaddat_royal"
 		if("Fashion")
 			name = "\improper Avazi House Shroud"
 			base_name = "\improper Avazi House Shroud"
@@ -96,16 +107,93 @@
 				helmet.icon_state = "zaddat_bishop"
 				helmet.item_state = "zaddat_bishop"
 		if("Rugged")
-			name = "rugged Shroud"
-			base_name = "rugged Shroud"
+			name = "\improper rugged Shroud"
+			base_name = "\improper rugged Shroud"
 			desc = "This Shroud was patterned after from First Contact era human voidsuits."
 			icon_state = "zaddat_rugged"
 			item_state = "zaddat_rugged"
 			if(helmet)
-				helmet.name = "rugged Shroud helmet"
+				helmet.name = "\improper rugged Shroud helmet"
 				helmet.desc = "Supposedly, this helmet should make humans more comfortable and familiar with the Zaddat."
 				helmet.icon_state = "zaddat_rugged"
 				helmet.item_state = "zaddat_rugged"
+		if("Ancient")
+			name = "\improper ancient Shroud"
+			base_name = "\improper ancient Shroud"
+			desc = "History is spoken through scars, this Shroud wears many, and has seen the test of time."
+			icon_state = "zaddat_ancient"
+			item_state = "zaddat_ancient"
+			if(helmet)
+				helmet.name = "\improper ancient Shroud helmet"
+				helmet.desc = "It's a little heavy, but certainly durrable."
+				helmet.icon_state = "zaddat_ancient"
+				helmet.item_state = "zaddat_ancient"
+		if("Freefarer")
+			name = "\improper Freefarer Shroud"
+			base_name = "\improper Freefarer Shroud"
+			desc = "For the ones who want to see more in the universe than what's right in front of them, the Freefarer Shroud is a fine partner in your ventures."
+			icon_state = "zaddat_freefarer"
+			item_state = "zaddat_freefarer"
+			if(helmet)
+				helmet.name = "\improper Freefarer Shroud helm"
+				helmet.desc = "Modeled after more modern voidsuit designs, this sleek Shoud Helmet is built for the stars."
+				helmet.icon_state = "zaddat_freefarer"
+				helmet.item_state = "zaddat_freefarer"
+		if("Healer")
+			name = "\improper Healer Shroud"
+			base_name = "\improper Healer Shroud"
+			desc = "A much more modern suit than most, this suit was designed for mobility and comfort for those who risk their lives to save others."
+			icon_state = "zaddat_healer"
+			item_state = "zaddat_healer"
+			if(helmet)
+				helmet.name = "\improper Healer Shroud helm"
+				helmet.desc = "Modeled after more modern voidsuit designs, this sleek Shoud Helmet is built for high visibility in emergency situations."
+				helmet.icon_state = "zaddat_healer"
+				helmet.item_state = "zaddat_healer"
+		if("Breaker")
+			name = "\improper Breaker Shroud"
+			base_name = "\improper Breaker Shroud"
+			desc = "Built with durrability and intimidation in mind, the combat 'Breaker' Shroud is typically reserved for combat qualified individuals."
+			icon_state = "zaddat_breaker"
+			item_state = "zaddat_breaker"
+			if(helmet)
+				helmet.name = "\improper Breaker Shroud helm"
+				helmet.desc = "Well armored and well crafted, modeled after human military grade voidsuits."
+				helmet.icon_state = "zaddat_breaker"
+				helmet.item_state = "zaddat_breaker"
+		if("Clockwork")
+			name = "\improper Clockwork Shroud"
+			base_name = "\improper Clockwork Shroud"
+			desc = "For the more sophisticated of Zaddat, this elegant brass Clockwork Shroud wears many vibrant red ribbons, making one hell of a fashion statement."
+			icon_state = "zaddat_clockwork"
+			item_state = "zaddat_clockwork"
+			if(helmet)
+				helmet.name = "\improper Clockwork Shroud helm"
+				helmet.desc = "Tight brass with a vibrant red visor, an unforgettable look."
+				helmet.icon_state = "zaddat_clockwork"
+				helmet.item_state = "zaddat_clockwork"
+		if("Retro")
+			name = "\improper Retro Shroud"
+			base_name = "\improper Retro Shroud"
+			desc = "A standout one of a kind modern take on the classic EVA suit. What it lacks in plating it makes up for in style."
+			icon_state = "zaddat_retro"
+			item_state = "zaddat_retro"
+			if(helmet)
+				helmet.name = "\improper Retro Shroud helm"
+				helmet.desc = "Built for comfort and simplicity, the Retro Shroud is a good blend between mobility and protection."
+				helmet.icon_state = "zaddat_retro"
+				helmet.item_state = "zaddat_retro"
+		if("Business")
+			name = "\improper Business Shroud"
+			base_name = "\improper Business Shroud"
+			desc = "A slim fitting suit fashioned after Earthen Tuxedos, supposedly this is what you need to wear to get to the top."
+			icon_state = "zaddat_business"
+			item_state = "zaddat_business"
+			if(helmet)
+				helmet.name = "\improper Business Shroud helm"
+				helmet.desc = "A classic style helmet with a dashing red bowtie clipped on. Some say it looks silly, but you know what's REALLY in style these days."
+				helmet.icon_state = "zaddat_business"
+				helmet.item_state = "zaddat_business"
 
 	to_chat(M, "You finish customizing your Shroud. Looking good!")
 	has_been_customized = TRUE

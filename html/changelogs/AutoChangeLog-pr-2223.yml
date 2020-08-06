@@ -1,0 +1,5 @@
+author: "drofoljaelisglis"
+delete-after: True
+changes: 
+  - rscadd: "Added new penguins, the Emperor Penguin and the Emperor Penguin Chick (Baby)."
+  - rscadd: "Added new ghost/observer sprites that allow you to fly around as a penguin or baby penguin in celebration of good looking penguins."

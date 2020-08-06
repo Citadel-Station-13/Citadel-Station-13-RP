@@ -5,7 +5,7 @@
 	real_name = "morph"
 	desc = "A revolting, pulsating pile of flesh."
 	tt_desc = "morphus shapeshiftus"
-	icon = 'icons/mob/animal_vr.dmi'
+	icon = 'icons/mob/critter.dmi'
 	icon_state = "morph"
 	icon_living = "morph"
 	icon_dead = "morph_dead"
