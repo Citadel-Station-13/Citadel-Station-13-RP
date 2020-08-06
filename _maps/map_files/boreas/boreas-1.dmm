@@ -15539,7 +15539,7 @@
 /area/crew_quarters/kitchen)
 "HW" = (
 /obj/effect/zone_divider,
-/obj/effect/step_trigger/teleporter/from_mining,
+/obj/effect/step_trigger/teleporter/to_mining,
 /turf/simulated/floor/outdoors/dirt/boreas,
 /area/boreas/surfacebase/outside)
 "HX" = (

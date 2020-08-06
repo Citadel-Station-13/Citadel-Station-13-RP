@@ -14,8 +14,14 @@
 
 /obj/effect/step_trigger/teleporter/from_mining/New()
 	..()
-	teleport_x = src.x
-	teleport_y = world.maxy - 148
+	teleport_x = 320
+	teleport_y = 148
+	teleport_z = Z_LEVEL_SURFACE_LOW
+
+/obj/effect/step_trigger/teleporter/to_mining/New()
+	..()
+	teleport_x = 001
+	teleport_y = 148
 	teleport_z = Z_LEVEL_MINING
 
 //Chemistry 'chemavator'
