@@ -3,10 +3,10 @@
 	var/optiontext
 
 /mob/dead/new_player/proc/handle_player_polling()
-	if(!SSdbcore.IsConnected())
+	if(!SSdbcore.IsIsConnecteded())
 		to_chat(usr, "<span class='danger'>Failed to establish database connection.</span>")
 		return
-	var/DBQuery/query_poll_get = dbcon.NewQuery("SELECT id, question FROM [format_table_name("poll_question")] WHERE Now() BETWEEN starttime AND endtime [(client.holder ? "" : "AND adminonly = false")]")
+	var/DBQuery/query_poll_get = dbcon.NewQuery("SELECT id, question FROM [poll_format_table_name("poll_question")] WHERE Now() BETWEEN starttime AND endtime [(client.holder ? "" : "AND adminonly = false")]")
 	if(!query_poll_get.Execute())
 		qdel(query_poll_get)
 		return
@@ -26,10 +26,10 @@
 /mob/dead/new_player/proc/poll_player(pollid)
 	if(!pollid)
 		return
-	if (!SSdbcore.Connect())
+	if (!SSdbcore.IsConnected())
 		to_chat(usr, "<span class='danger'>Failed to establish database connection.</span>")
 		return
-	var/DBQuery/query_poll_get_details = dbcon.NewQuery("SELECT starttime, endtime, question, polltype, multiplechoiceoptions FROM [format_table_name("poll_question")] WHERE id = [pollid]")
+	var/DBQuery/query_poll_get_details = dbcon.NewQuery("SELECT starttime, endtime, question, polltype, multiplechoiceoptions FROM [poll_format_table_name("poll_question")] WHERE id = [pollid]")
 	if(!query_poll_get_details.Execute())
 		qdel(query_poll_get_details)
 		return
@@ -47,7 +47,7 @@
 	qdel(query_poll_get_details)
 	switch(polltype)
 		if(POLLTYPE_OPTION)
-			var/DBQuery/query_option_get_votes = dbcon.NewQuery("SELECT optionid FROM [format_table_name("poll_vote")] WHERE pollid = [pollid] AND ckey = '[ckey]'")
+			var/DBQuery/query_option_get_votes = dbcon.NewQuery("SELECT optionid FROM [poll_format_table_name("poll_vote")] WHERE pollid = [pollid] AND ckey = '[ckey]'")
 			if(!query_option_get_votes.Execute())
 				qdel(query_option_get_votes)
 				return
@@ -56,7 +56,7 @@
 				votedoptionid = text2num(query_option_get_votes.item[1])
 			qdel(query_option_get_votes)
 			var/list/datum/polloption/options = list()
-			var/DBQuery/query_option_options = dbcon.NewQuery("SELECT id, text FROM [format_table_name("poll_option")] WHERE pollid = [pollid]")
+			var/DBQuery/query_option_options = dbcon.NewQuery("SELECT id, text FROM [poll_format_table_name("poll_option")] WHERE pollid = [pollid]")
 			if(!query_option_options.Execute())
 				qdel(query_option_options)
 				return
@@ -92,7 +92,7 @@
 			src << browse(null ,"window=playerpolllist")
 			src << browse(output,"window=playerpoll;size=500x250")
 		if(POLLTYPE_TEXT)
-			var/DBQuery/query_text_get_votes = dbcon.NewQuery("SELECT replytext FROM [format_table_name("poll_textreply")] WHERE pollid = [pollid] AND ckey = '[ckey]'")
+			var/DBQuery/query_text_get_votes = dbcon.NewQuery("SELECT replytext FROM [poll_format_table_name("poll_textreply")] WHERE pollid = [pollid] AND ckey = '[ckey]'")
 			if(!query_text_get_votes.Execute())
 				qdel(query_text_get_votes)
 				return
@@ -120,7 +120,7 @@
 			src << browse(null ,"window=playerpolllist")
 			src << browse(output,"window=playerpoll;size=500x500")
 		if(POLLTYPE_RATING)
-			var/DBQuery/query_rating_get_votes = dbcon.NewQuery("SELECT o.text, v.rating FROM [format_table_name("poll_option")] o, [format_table_name("poll_vote")] v WHERE o.pollid = [pollid] AND v.ckey = '[ckey]' AND o.id = v.optionid")
+			var/DBQuery/query_rating_get_votes = dbcon.NewQuery("SELECT o.text, v.rating FROM [poll_format_table_name("poll_option")] o, [poll_format_table_name("poll_vote")] v WHERE o.pollid = [pollid] AND v.ckey = '[ckey]' AND o.id = v.optionid")
 			if(!query_rating_get_votes.Execute())
 				qdel(query_rating_get_votes)
 				return
@@ -140,7 +140,7 @@
 				output += "<input type='hidden' name='votetype' value=[POLLTYPE_RATING]>"
 				var/minid = 999999
 				var/maxid = 0
-				var/DBQuery/query_rating_options = dbcon.NewQuery("SELECT id, text, minval, maxval, descmin, descmid, descmax FROM [format_table_name("poll_option")] WHERE pollid = [pollid]")
+				var/DBQuery/query_rating_options = dbcon.NewQuery("SELECT id, text, minval, maxval, descmin, descmid, descmax FROM [poll_format_table_name("poll_option")] WHERE pollid = [pollid]")
 				if(!query_rating_options.Execute())
 					qdel(query_rating_options)
 					return
@@ -177,7 +177,7 @@
 				src << browse(null ,"window=playerpolllist")
 				src << browse(output,"window=playerpoll;size=500x500")
 		if(POLLTYPE_MULTI)
-			var/DBQuery/query_multi_get_votes = dbcon.NewQuery("SELECT optionid FROM [format_table_name("poll_vote")] WHERE pollid = [pollid] AND ckey = '[ckey]'")
+			var/DBQuery/query_multi_get_votes = dbcon.NewQuery("SELECT optionid FROM [poll_format_table_name("poll_vote")] WHERE pollid = [pollid] AND ckey = '[ckey]'")
 			if(!query_multi_get_votes.Execute())
 				qdel(query_multi_get_votes)
 				return
@@ -188,7 +188,7 @@
 			var/list/datum/polloption/options = list()
 			var/maxoptionid = 0
 			var/minoptionid = 0
-			var/DBQuery/query_multi_options = dbcon.NewQuery("SELECT id, text FROM [format_table_name("poll_option")] WHERE pollid = [pollid]")
+			var/DBQuery/query_multi_options = dbcon.NewQuery("SELECT id, text FROM [poll_format_table_name("poll_option")] WHERE pollid = [pollid]")
 			if(!query_multi_options.Execute())
 				qdel(query_multi_options)
 				return
@@ -232,7 +232,7 @@
 			var/datum/asset/irv_assets = get_asset_datum(/datum/asset/group/IRV)
 			irv_assets.send(src)
 
-			var/DBQuery/query_irv_get_votes = dbcon.NewQuery("SELECT optionid FROM [format_table_name("poll_vote")] WHERE pollid = [pollid] AND ckey = '[ckey]'")
+			var/DBQuery/query_irv_get_votes = dbcon.NewQuery("SELECT optionid FROM [poll_format_table_name("poll_vote")] WHERE pollid = [pollid] AND ckey = '[ckey]'")
 			if(!query_irv_get_votes.Execute())
 				qdel(query_irv_get_votes)
 				return
@@ -244,7 +244,7 @@
 
 			var/list/datum/polloption/options = list()
 
-			var/DBQuery/query_irv_options = dbcon.NewQuery("SELECT id, text FROM [format_table_name("poll_option")] WHERE pollid = [pollid]")
+			var/DBQuery/query_irv_options = dbcon.NewQuery("SELECT id, text FROM [poll_format_table_name("poll_option")] WHERE pollid = [pollid]")
 			if(!query_irv_options.Execute())
 				qdel(query_irv_options)
 				return
@@ -351,10 +351,10 @@
 	var/table = "poll_vote"
 	if (text)
 		table = "poll_textreply"
-	if (!SSdbcore.Connect())
+	if (!SSdbcore.IsConnected())
 		to_chat(usr, "<span class='danger'>Failed to establish database connection.</span>")
 		return
-	var/DBQuery/query_hasvoted = dbcon.NewQuery("SELECT id FROM `[format_table_name(table)]` WHERE pollid = [pollid] AND ckey = '[ckey]'")
+	var/DBQuery/query_hasvoted = dbcon.NewQuery("SELECT id FROM `[poll_format_table_name(table)]` WHERE pollid = [pollid] AND ckey = '[ckey]'")
 	if(!query_hasvoted.Execute())
 		qdel(query_hasvoted)
 		return
@@ -386,14 +386,14 @@
 	return 1
 
 /mob/dead/new_player/proc/vote_valid_check(pollid, holder, type)
-	if (!SSdbcore.Connect())
+	if (!SSdbcore.IsConnected())
 		to_chat(src, "<span class='danger'>Failed to establish database connection.</span>")
 		return 0
 	pollid = text2num(pollid)
 	if (!pollid || pollid < 0)
 		return 0
 	//validate the poll is actually the right type of poll and its still active
-	var/DBQuery/query_validate_poll = dbcon.NewQuery("SELECT id FROM [format_table_name("poll_question")] WHERE id = [pollid] AND Now() BETWEEN starttime AND endtime AND polltype = '[type]' [(holder ? "" : "AND adminonly = false")]")
+	var/DBQuery/query_validate_poll = dbcon.NewQuery("SELECT id FROM [poll_format_table_name("poll_question")] WHERE id = [pollid] AND Now() BETWEEN starttime AND endtime AND polltype = '[type]' [(holder ? "" : "AND adminonly = false")]")
 	if(!query_validate_poll.Execute())
 		qdel(query_validate_poll)
 		return 0
@@ -404,7 +404,7 @@
 	return 1
 
 /mob/dead/new_player/proc/vote_on_irv_poll(pollid, list/votelist)
-	if (!SSdbcore.Connect())
+	if (!SSdbcore.IsConnected())
 		to_chat(src, "<span class='danger'>Failed to establish database connection.</span>")
 		return 0
 	if (!vote_rig_check())
@@ -429,7 +429,7 @@
 		return 0
 
 	//lets collect the options
-	var/DBQuery/query_irv_id = dbcon.NewQuery("SELECT id FROM [format_table_name("poll_option")] WHERE pollid = [pollid]")
+	var/DBQuery/query_irv_id = dbcon.NewQuery("SELECT id FROM [poll_format_table_name("poll_option")] WHERE pollid = [pollid]")
 	if(!query_irv_id.Execute())
 		qdel(query_irv_id)
 		return 0
@@ -462,14 +462,14 @@
 		sqlrowlist += "(Now(), [pollid], [vote], '[sanitizeSQL(ckey)]', INET_ATON('[sanitizeSQL(address)]'), '[sanitizeSQL(rank)]')"
 
 	//now lets delete their old votes (if any)
-	var/DBQuery/query_irv_del_old = dbcon.NewQuery("DELETE FROM [format_table_name("poll_vote")] WHERE pollid = [pollid] AND ckey = '[ckey]'")
+	var/DBQuery/query_irv_del_old = dbcon.NewQuery("DELETE FROM [poll_format_table_name("poll_vote")] WHERE pollid = [pollid] AND ckey = '[ckey]'")
 	if(!query_irv_del_old.Execute())
 		qdel(query_irv_del_old)
 		return 0
 	qdel(query_irv_del_old)
 
 	//now to add the new ones.
-	var/DBQuery/query_irv_vote = dbcon.NewQuery("INSERT INTO [format_table_name("poll_vote")] (datetime, pollid, optionid, ckey, ip, adminrank) VALUES [sqlrowlist]")
+	var/DBQuery/query_irv_vote = dbcon.NewQuery("INSERT INTO [poll_format_table_name("poll_vote")] (datetime, pollid, optionid, ckey, ip, adminrank) VALUES [sqlrowlist]")
 	if(!query_irv_vote.Execute())
 		qdel(query_irv_vote)
 		return 0
@@ -480,7 +480,7 @@
 
 
 /mob/dead/new_player/proc/vote_on_poll(pollid, optionid)
-	if (!SSdbcore.Connect())
+	if (!SSdbcore.IsConnected())
 		to_chat(src, "<span class='danger'>Failed to establish database connection.</span>")
 		return 0
 	if (!vote_rig_check())
@@ -496,7 +496,7 @@
 	var/adminrank = sanitizeSQL(poll_rank())
 	if(!adminrank)
 		return
-	var/DBQuery/query_option_vote = dbcon.NewQuery("INSERT INTO [format_table_name("poll_vote")] (datetime, pollid, optionid, ckey, ip, adminrank) VALUES (Now(), [pollid], [optionid], '[ckey]', INET_ATON('[client.address]'), '[adminrank]')")
+	var/DBQuery/query_option_vote = dbcon.NewQuery("INSERT INTO [poll_format_table_name("poll_vote")] (datetime, pollid, optionid, ckey, ip, adminrank) VALUES (Now(), [pollid], [optionid], '[ckey]', INET_ATON('[client.address]'), '[adminrank]')")
 	if(!query_option_vote.Execute())
 		qdel(query_option_vote)
 		return
@@ -506,7 +506,7 @@
 	return 1
 
 /mob/dead/new_player/proc/log_text_poll_reply(pollid, replytext)
-	if (!SSdbcore.Connect())
+	if (!SSdbcore.IsConnected())
 		to_chat(src, "<span class='danger'>Failed to establish database connection.</span>")
 		return 0
 	if (!vote_rig_check())
@@ -531,9 +531,9 @@
 		return
 	var/DBQuery/query_text_vote
 	if(!voted)
-		query_text_vote  = dbcon.NewQuery("INSERT INTO [format_table_name("poll_textreply")] (datetime ,pollid ,ckey ,ip ,replytext ,adminrank) VALUES (Now(), [pollid], '[ckey]', INET_ATON('[client.address]'), '[replytext]', '[adminrank]')")
+		query_text_vote  = dbcon.NewQuery("INSERT INTO [poll_format_table_name("poll_textreply")] (datetime ,pollid ,ckey ,ip ,replytext ,adminrank) VALUES (Now(), [pollid], '[ckey]', INET_ATON('[client.address]'), '[replytext]', '[adminrank]')")
 	else
-		query_text_vote  = dbcon.NewQuery("UPDATE [format_table_name("poll_textreply")] SET datetime = Now(), ip = INET_ATON('[client.address]'), replytext = '[replytext]' WHERE pollid = '[pollid]' AND ckey = '[ckey]'")
+		query_text_vote  = dbcon.NewQuery("UPDATE [poll_format_table_name("poll_textreply")] SET datetime = Now(), ip = INET_ATON('[client.address]'), replytext = '[replytext]' WHERE pollid = '[pollid]' AND ckey = '[ckey]'")
 	if(!query_text_vote.Execute())
 		qdel(query_text_vote)
 		return
@@ -543,7 +543,7 @@
 	return 1
 
 /mob/dead/new_player/proc/vote_on_numval_poll(pollid, optionid, rating)
-	if (!SSdbcore.Connect())
+	if (!SSdbcore.IsConnected())
 		to_chat(src, "<span class='danger'>Failed to establish database connection.</span>")
 		return 0
 	if (!vote_rig_check())
@@ -553,7 +553,7 @@
 	//validate the poll
 	if (!vote_valid_check(pollid, client.holder, POLLTYPE_RATING))
 		return 0
-	var/DBQuery/query_numval_hasvoted = dbcon.NewQuery("SELECT id FROM [format_table_name("poll_vote")] WHERE optionid = [optionid] AND ckey = '[ckey]'")
+	var/DBQuery/query_numval_hasvoted = dbcon.NewQuery("SELECT id FROM [poll_format_table_name("poll_vote")] WHERE optionid = [optionid] AND ckey = '[ckey]'")
 	if(!query_numval_hasvoted.Execute())
 		qdel(query_numval_hasvoted)
 		return
@@ -566,7 +566,7 @@
 	if(client.holder)
 		adminrank = client.holder.rank.name
 	adminrank = sanitizeSQL(adminrank)
-	var/DBQuery/query_numval_vote = dbcon.NewQuery("INSERT INTO [format_table_name("poll_vote")] (datetime ,pollid ,optionid ,ckey ,ip ,adminrank, rating) VALUES (Now(), [pollid], [optionid], '[ckey]', INET_ATON('[client.address]'), '[adminrank]', [(isnull(rating)) ? "null" : rating])")
+	var/DBQuery/query_numval_vote = dbcon.NewQuery("INSERT INTO [poll_format_table_name("poll_vote")] (datetime ,pollid ,optionid ,ckey ,ip ,adminrank, rating) VALUES (Now(), [pollid], [optionid], '[ckey]', INET_ATON('[client.address]'), '[adminrank]', [(isnull(rating)) ? "null" : rating])")
 	if(!query_numval_vote.Execute())
 		qdel(query_numval_vote)
 		return
@@ -576,7 +576,7 @@
 	return 1
 
 /mob/dead/new_player/proc/vote_on_multi_poll(pollid, optionid)
-	if (!SSdbcore.Connect())
+	if (!SSdbcore.IsConnected())
 		to_chat(src, "<span class='danger'>Failed to establish database connection.</span>")
 		return 0
 	if (!vote_rig_check())
@@ -586,7 +586,7 @@
 	//validate the poll
 	if (!vote_valid_check(pollid, client.holder, POLLTYPE_MULTI))
 		return 0
-	var/DBQuery/query_multi_choicelen = dbcon.NewQuery("SELECT multiplechoiceoptions FROM [format_table_name("poll_question")] WHERE id = [pollid]")
+	var/DBQuery/query_multi_choicelen = dbcon.NewQuery("SELECT multiplechoiceoptions FROM [poll_format_table_name("poll_question")] WHERE id = [pollid]")
 	if(!query_multi_choicelen.Execute())
 		qdel(query_multi_choicelen)
 		return 1
@@ -594,7 +594,7 @@
 	if(query_multi_choicelen.NextRow())
 		i = text2num(query_multi_choicelen.item[1])
 	qdel(query_multi_choicelen)
-	var/DBQuery/query_multi_hasvoted = dbcon.NewQuery("SELECT id FROM [format_table_name("poll_vote")] WHERE pollid = [pollid] AND ckey = '[ckey]'")
+	var/DBQuery/query_multi_hasvoted = dbcon.NewQuery("SELECT id FROM [poll_format_table_name("poll_vote")] WHERE pollid = [pollid] AND ckey = '[ckey]'")
 	if(!query_multi_hasvoted.Execute())
 		qdel(query_multi_hasvoted)
 		return 1
@@ -610,7 +610,7 @@
 	if(!QDELETED(client) && client.holder)
 		adminrank = client.holder.rank.name
 	adminrank = sanitizeSQL(adminrank)
-	var/DBQuery/query_multi_vote = dbcon.NewQuery("INSERT INTO [format_table_name("poll_vote")] (datetime, pollid, optionid, ckey, ip, adminrank) VALUES (Now(), [pollid], [optionid], '[ckey]', INET_ATON('[client.address]'), '[adminrank]')")
+	var/DBQuery/query_multi_vote = dbcon.NewQuery("INSERT INTO [poll_format_table_name("poll_vote")] (datetime, pollid, optionid, ckey, ip, adminrank) VALUES (Now(), [pollid], [optionid], '[ckey]', INET_ATON('[client.address]'), '[adminrank]')")
 	if(!query_multi_vote.Execute())
 		qdel(query_multi_vote)
 		return 1

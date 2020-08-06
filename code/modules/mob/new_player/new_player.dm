@@ -249,34 +249,41 @@
 		new_player_panel()
 
 	if(href_list["showpoll"])
-
 		handle_player_polling()
 		return
 
 	if(href_list["pollid"])
-
 		var/pollid = href_list["pollid"]
 		if(istext(pollid))
 			pollid = text2num(pollid)
-		if(isnum(pollid))
+		if(isnum(pollid) && ISINTEGER(pollid))
 			src.poll_player(pollid)
 		return
 
 	if(href_list["votepollid"] && href_list["votetype"])
 		var/pollid = text2num(href_list["votepollid"])
 		var/votetype = href_list["votetype"]
+		//lets take data from the user to decide what kind of poll this is, without validating it
+		//what could go wrong
 		switch(votetype)
-			if("OPTION")
+			if(POLLTYPE_OPTION)
 				var/optionid = text2num(href_list["voteoptionid"])
-				vote_on_poll(pollid, optionid)
-			if("TEXT")
+				if(vote_on_poll(pollid, optionid))
+					to_chat(usr, "<span class='notice'>Vote successful.</span>")
+				else
+					to_chat(usr, "<span class='danger'>Vote failed, please try again or contact an administrator.</span>")
+			if(POLLTYPE_TEXT)
 				var/replytext = href_list["replytext"]
-				log_text_poll_reply(pollid, replytext)
-			if("NUMVAL")
+				if(log_text_poll_reply(pollid, replytext))
+					to_chat(usr, "<span class='notice'>Feedback logging successful.</span>")
+				else
+					to_chat(usr, "<span class='danger'>Feedback logging failed, please try again or contact an administrator.</span>")
+			if(POLLTYPE_RATING)
 				var/id_min = text2num(href_list["minid"])
 				var/id_max = text2num(href_list["maxid"])
 
 				if( (id_max - id_min) > 100 )	//Basic exploit prevention
+					                            //(protip, this stops no exploits)
 					to_chat(usr, "The option ID difference is too big. Please contact administration or the database admin.")
 					return
 
@@ -287,11 +294,14 @@
 							rating = null
 						else
 							rating = text2num(href_list["o[optionid]"])
-							if(!isnum(rating))
+							if(!isnum(rating) || !ISINTEGER(rating))
 								return
 
-						vote_on_numval_poll(pollid, optionid, rating)
-			if("MULTICHOICE")
+						if(!vote_on_numval_poll(pollid, optionid, rating))
+							to_chat(usr, "<span class='danger'>Vote failed, please try again or contact an administrator.</span>")
+							return
+				to_chat(usr, "<span class='notice'>Vote successful.</span>")
+			if(POLLTYPE_MULTI)
 				var/id_min = text2num(href_list["minoptionid"])
 				var/id_max = text2num(href_list["maxoptionid"])
 
@@ -301,7 +311,26 @@
 
 				for(var/optionid = id_min; optionid <= id_max; optionid++)
 					if(!isnull(href_list["option_[optionid]"]))	//Test if this optionid was selected
-						vote_on_poll(pollid, optionid, 1)
+						var/i = vote_on_multi_poll(pollid, optionid)
+						switch(i)
+							if(0)
+								continue
+							if(1)
+								to_chat(usr, "<span class='danger'>Vote failed, please try again or contact an administrator.</span>")
+								return
+							if(2)
+								to_chat(usr, "<span class='danger'>Maximum replies reached.</span>")
+								break
+				to_chat(usr, "<span class='notice'>Vote successful.</span>")
+			if(POLLTYPE_IRV)
+				if (!href_list["IRVdata"])
+					to_chat(src, "<span class='danger'>No ordering data found. Please try again or contact an administrator.</span>")
+					return
+				var/list/votelist = splittext(href_list["IRVdata"], ",")
+				if (!vote_on_irv_poll(pollid, votelist))
+					to_chat(src, "<span class='danger'>Vote failed, please try again or contact an administrator.</span>")
+					return
+				to_chat(src, "<span class='notice'>Vote successful.</span>")
 
 	if(href_list["shownews"])
 		handle_server_news()

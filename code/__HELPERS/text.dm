@@ -18,6 +18,9 @@
 	var/sqltext = dbcon.Quote(t);
 	return copytext(sqltext, 2, length(sqltext));//Quote() adds quotes around input, we already do that
 
+/proc/poll_format_table_name(table as text)
+	return CONFIG_GET(string/poll_tableprefix) + table
+
 /*
  * Text sanitization
  */
