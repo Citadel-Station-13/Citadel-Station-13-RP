@@ -1,7 +1,7 @@
 var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 
 /datum/job/captain
-	title = "Captain"
+	title = "Facility Director"
 	flag = CAPTAIN
 	department = "Command"
 	head_position = 1
@@ -22,7 +22,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	ideal_character_age = 70 // Old geezer captains ftw
 
 	outfit_type = /decl/hierarchy/outfit/job/captain
-	alt_titles = list("Site Manager", "Overseer", "Director of Operations","Facility Director")
+	alt_titles = list("Site Manager", "Overseer", "Director of Operations","Captain")
 
 /*
 /datum/job/captain/equip(var/mob/living/carbon/human/H)
