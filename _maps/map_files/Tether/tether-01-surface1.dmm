@@ -317,6 +317,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/mining_main/refinery)
+"aaM" = (
+/obj/machinery/mineral/processing_unit_console{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/tether/surfacebase/mining_main/refinery)
 "aaN" = (
 /obj/machinery/conveyor{
 	dir = 9;
@@ -569,17 +575,6 @@
 	id = "mining_inbound"
 	},
 /turf/simulated/floor/plating,
-/area/tether/surfacebase/mining_main/refinery)
-"abq" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/mineral/processing_unit_console{
-	density = 0;
-	layer = 3.3;
-	pixel_y = 30
-	},
-/turf/simulated/floor/tiled/steel_grid,
 /area/tether/surfacebase/mining_main/refinery)
 "abr" = (
 /obj/machinery/firealarm{
@@ -48503,7 +48498,7 @@ aah
 aar
 aaK
 aaS
-abq
+aaM
 abF
 abL
 abL

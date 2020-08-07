@@ -22,7 +22,10 @@
 #define Z_LEVEL_BEACH_CAVE					16
 #define Z_LEVEL_AEROSTAT					17
 #define Z_LEVEL_AEROSTAT_SURFACE			18
-
+#define Z_LEVEL_ROGUEMINE_1					19
+#define Z_LEVEL_ROGUEMINE_2					20
+#define Z_LEVEL_ROGUEMINE_3					21
+#define Z_LEVEL_ROGUEMINE_4					22
 //Camera networks
 #define NETWORK_TETHER "Tether"
 #define NETWORK_TCOMMS "Telecommunications" //Using different from Polaris one for better name
@@ -52,7 +55,6 @@
 	station_name  = "NSB Adephagia"
 	station_short = "Tether"
 	dock_name     = "Virgo-3B Colony"
-	dock_type     = "surface"
 	boss_name     = "Central Command"
 	boss_short    = "CentCom"
 	company_name  = "NanoTrasen"
@@ -63,7 +65,6 @@
 	shuttle_leaving_dock = "The Orange Line tram has left the station. Estimate %ETA% until the tram arrives at %dock_name%."
 	shuttle_called_message = "A scheduled crew transfer to the %dock_name% is occuring. The tram will be arriving shortly. Those departing should proceed to the Orange Line tram station within %ETA%."
 	shuttle_recall_message = "The scheduled crew transfer has been cancelled."
-	shuttle_name = "Automated Tram"
 	emergency_shuttle_docked_message = "The evacuation tram has arrived at the tram station. You have approximately %ETD% to board the tram."
 	emergency_shuttle_leaving_dock = "The emergency tram has left the station. Estimate %ETA% until the shuttle arrives at %dock_name%."
 	emergency_shuttle_called_message = "An emergency evacuation has begun, and an off-schedule tram has been called. It will arrive at the tram station in approximately %ETA%."
@@ -123,11 +124,19 @@
 		/area/tether/surfacebase/emergency_storage/rnd,
 		/area/tether/surfacebase/emergency_storage/atrium)
 
+
+	belter_docked_z = 		list(Z_LEVEL_SPACE_HIGH)
+	belter_transit_z =	 	list(Z_LEVEL_SHIPS)
+	belter_belt_z = 		list(Z_LEVEL_ROGUEMINE_1,
+						 		 Z_LEVEL_ROGUEMINE_2,
+						 	 	 Z_LEVEL_ROGUEMINE_3,
+								 Z_LEVEL_ROGUEMINE_4)
 	lateload_z_levels = list(
 		list("Tether - Misc","Tether - Ships","Tether - Underdark"), //Stock Tether lateload maps
 		list("Alien Ship - Z1 Ship"),
 		list("Desert Planet - Z1 Beach","Desert Planet - Z2 Cave"),
-		list("Remmi Aerostat - Z1 Aerostat","Remmi Aerostat - Z2 Surface")
+		list("Remmi Aerostat - Z1 Aerostat","Remmi Aerostat - Z2 Surface"),
+		list("Asteroid Belt 1","Asteroid Belt 2","Asteroid Belt 3","Asteroid Belt 4")
 	)
 
 	ai_shell_restricted = TRUE
