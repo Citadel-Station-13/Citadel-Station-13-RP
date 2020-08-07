@@ -64,6 +64,10 @@
 		name = "Big Afro"
 		icon_state = "hair_bigafro"
 
+	ahoge
+		name = "Ahoge"
+		icon_state = "hair_ahoge"
+
 	bald
 		name = "Bald"
 		icon_state = "bald"
@@ -453,6 +457,10 @@
 	reversemohawk
 		name = "Mohawk Reverse"
 		icon_state = "hair_reversemohawk"
+
+	messy
+		name = "Messy"
+		icon_state = "hair_messy"
 
 	mohawkunshaven
 		name = "Mohawk Unshaven"
