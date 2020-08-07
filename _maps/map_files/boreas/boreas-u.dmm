@@ -14152,6 +14152,10 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/substation/security)
+"El" = (
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/boreas/surfacebase/outside)
 "Em" = (
 /obj/structure/cable/cyan{
 	d1 = 1;
@@ -16612,6 +16616,11 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
+"Zt" = (
+/obj/structure/catwalk,
+/obj/structure/stairs/east,
+/turf/simulated/floor/plating,
+/area/maintenance/lower)
 "Zy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -84139,8 +84148,8 @@ aI
 bU
 av
 Xe
-Xe
-Xe
+gC
+gC
 FV
 FV
 mj
@@ -84461,9 +84470,9 @@ bC
 cn
 av
 Xe
-Xe
-Xe
-FV
+gC
+El
+Kf
 Kf
 Kf
 Kf
@@ -84783,9 +84792,9 @@ av
 av
 av
 Xe
-Xe
-Xe
-FV
+gC
+El
+Kf
 Kf
 Kf
 Kf
@@ -85105,12 +85114,12 @@ Xe
 Xe
 Xe
 Xe
-Xe
-Xe
-FV
+gC
+El
 Kf
 Kf
-rw
+Kf
+Kf
 Qi
 Ig
 ZV
@@ -85427,9 +85436,9 @@ Xe
 Xe
 Xe
 Xe
-Xe
-Xe
-FV
+gC
+El
+Zt
 Sr
 Kf
 Kf
@@ -85749,8 +85758,8 @@ Xe
 Xe
 Xe
 Xe
-Xe
-Xe
+gC
+gC
 FV
 FV
 FV
