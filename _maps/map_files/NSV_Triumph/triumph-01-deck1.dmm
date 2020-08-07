@@ -415,7 +415,6 @@
 /obj/machinery/station_map{
 	pixel_y = 32
 	},
-/obj/structure/closet/emcloset,
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_one)
 "bO" = (
@@ -2101,11 +2100,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating/external,
-/area/space)
-"lL" = (
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/space,
 /area/space)
 "lN" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
@@ -5015,12 +5009,6 @@
 /obj/item/circuitboard/partslathe,
 /turf/simulated/floor,
 /area/storage/tech)
-"Bo" = (
-/obj/structure/shuttle/engine/heater{
-	dir = 8
-	},
-/turf/simulated/wall/r_wall,
-/area/space)
 "Bp" = (
 /obj/structure/cable/cyan{
 	d1 = 1;
@@ -5279,10 +5267,6 @@
 "CN" = (
 /turf/simulated/floor/plating,
 /area/maintenance/engi_engine)
-"CP" = (
-/obj/structure/shuttle/engine/router,
-/turf/simulated/wall/r_wall,
-/area/space)
 "CU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -7373,7 +7357,7 @@
 /area/engineering/engine_monitoring)
 "Qf" = (
 /obj/machinery/power/supermatter,
-/turf/simulated/floor/greengrid/nitrogen,
+/turf/simulated/floor/reinforced/nitrogen,
 /area/engineering/engine_room)
 "Qh" = (
 /obj/machinery/atmospherics/binary/circulator{
@@ -9103,6 +9087,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/engine_room)
+"Zp" = (
+/obj/structure/shuttle/engine/router,
+/turf/simulated/wall/r_wall,
+/area/space)
 "Zq" = (
 /obj/machinery/atmospherics/binary/pump/on{
 	name = "Waste Compresser"
@@ -9208,6 +9196,12 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled/techmaint,
 /area/security/checkpoint/engineering)
+"ZZ" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 8
+	},
+/turf/simulated/wall/r_wall,
+/area/space)
 
 (1,1,1) = {"
 fN
@@ -11688,19 +11682,19 @@ fN
 Zj
 eD
 eD
-CP
-Bo
-Bo
-Bo
-Bo
-CP
-Bo
-CP
-Bo
-Bo
-Bo
-Bo
-CP
+Zp
+ZZ
+ZZ
+ZZ
+ZZ
+Zp
+ZZ
+Zp
+ZZ
+ZZ
+ZZ
+ZZ
+Zp
 eD
 eD
 Zj
@@ -23185,7 +23179,7 @@ fN
 fN
 fN
 fN
-lL
+Zj
 Zj
 OD
 OD

@@ -13,14 +13,15 @@
 #define Z_LEVEL_MISC						6
 #define Z_LEVEL_SHIPS						7
 #define Z_LEVEL_DEBRISFIELD					8
-#define Z_LEVEL_ROGUEMINE_1					9
-#define Z_LEVEL_ROGUEMINE_2					10
-#define Z_LEVEL_ROGUEMINE_3					11
-#define Z_LEVEL_ROGUEMINE_4					12
+#define Z_LEVEL_UNKNOWN_PLANET				9
+#define Z_LEVEL_ROGUEMINE_1					10
+#define Z_LEVEL_ROGUEMINE_2					11
+#define Z_LEVEL_ROGUEMINE_3					12
+#define Z_LEVEL_ROGUEMINE_4					13
 
 //Camera networks
 #define NETWORK_TRIUMPH "Triumph"
-#define NETWORK_TCOMMS "Telecommunications" //Using different from Polaris one for better name
+#define NETWORK_TCOMMS "Telecommunications"
 #define NETWORK_OUTSIDE "Outside"
 #define NETWORK_EXPLORATION "Exploration"
 #define NETWORK_XENOBIO "Xenobiology"
@@ -120,6 +121,7 @@
 	lateload_z_levels = list(
 		list("Triumph - Misc","Triumph - Ships",), //Stock Triumph lateload maps
 		list("Debris Field - Z1 Space"), // Debris Field
+		list("ExoPlanet - Z1 Planet"), // Exoplanet
 		list("Asteroid Belt 1","Asteroid Belt 2","Asteroid Belt 3","Asteroid Belt 4")
 	)
 
@@ -129,7 +131,8 @@
 		Z_LEVEL_DECK_TWO,
 		Z_LEVEL_DECK_THREE,
 		Z_LEVEL_DECK_FOUR,
-		Z_LEVEL_DEBRISFIELD)
+		Z_LEVEL_DEBRISFIELD,
+		Z_LEVEL_UNKNOWN_PLANET)
 
 	lateload_single_pick = null //Nothing right now.
 

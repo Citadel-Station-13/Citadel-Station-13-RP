@@ -21,6 +21,10 @@
 /obj/structure/table/woodentable,
 /turf/simulated/floor/carpet/turcarpet,
 /area/crew_quarters/visitor_dining)
+"af" = (
+/obj/structure/loot_pile/maint/boxfort,
+/turf/simulated/floor/plating,
+/area/maintenance/dormitory)
 "ag" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -1245,6 +1249,10 @@
 	name = "south bump";
 	pixel_y = -28
 	},
+/obj/structure/cable/green{
+	d2 = 8;
+	icon_state = "0-8"
+	},
 /turf/simulated/floor/tiled,
 /area/vacant/vacant_shop)
 "ep" = (
@@ -1366,6 +1374,14 @@
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/plating,
 /area/quartermaster/office)
+"eM" = (
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled,
+/area/vacant/vacant_shop)
 "eO" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -2856,6 +2872,10 @@
 /obj/structure/closet/crate/bin{
 	anchored = 1
 	},
+/obj/structure/cable/green{
+	d2 = 2;
+	icon_state = "0-2"
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
 "iE" = (
@@ -3767,6 +3787,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_two)
+"lH" = (
+/obj/structure/loot_pile/maint/technical,
+/turf/simulated/floor/plating,
+/area/maintenance/dormitory)
 "lI" = (
 /obj/structure/table/marble,
 /obj/machinery/firealarm{
@@ -3957,6 +3981,25 @@
 "mq" = (
 /turf/simulated/wall/r_wall,
 /area/triumph/station/stairs_two)
+"mr" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/primary/starboard)
 "ms" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -4598,6 +4641,10 @@
 "oE" = (
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
+"oF" = (
+/obj/structure/loot_pile/maint/technical,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/bar)
 "oG" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -5379,13 +5426,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/quartermaster/foyer)
-"rc" = (
-/mob/living/simple_mob/animal/goat{
-	desc = "Ah, it's Pete. They're not known for their pleasant disposition and now they're gonna eat all your plants.";
-	name = "Pete"
-	},
-/turf/simulated/floor/tiled,
-/area/hydroponics)
 "rd" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -6452,10 +6492,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_two)
-"us" = (
-/obj/structure/loot_pile/maint/boxfort,
-/turf/simulated/floor/plating,
-/area/maintenance/dormitory)
 "uu" = (
 /obj/structure/toilet{
 	dir = 1
@@ -6480,6 +6516,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
+"uw" = (
+/mob/living/simple_mob/animal/goat{
+	desc = "Ah, it's Pete. They're not known for their pleasant disposition and now they're gonna eat all your plants.";
+	name = "Pete"
+	},
+/turf/simulated/floor/tiled,
+/area/hydroponics)
 "uz" = (
 /obj/structure/cryofeed{
 	dir = 2
@@ -6661,6 +6704,17 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/primary/starboard)
+"vb" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/starboard)
@@ -7518,10 +7572,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/fitness)
-"yo" = (
-/obj/structure/loot_pile/maint/technical,
-/turf/simulated/floor/plating,
-/area/maintenance/cargo)
 "yq" = (
 /turf/simulated/wall,
 /area/crew_quarters/freezer)
@@ -8716,6 +8766,15 @@
 /obj/machinery/camera/network/civilian,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/crew_quarters/sleep/cryo)
+"CJ" = (
+/obj/machinery/door/firedoor,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled,
+/area/vacant/vacant_shop)
 "CK" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central6{
 	dir = 4
@@ -9304,6 +9363,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/lounge/kitchen_freezer)
+"EY" = (
+/obj/machinery/camera/network/cargo{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/quartermaster/foyer)
 "EZ" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass_mining,
@@ -9327,9 +9392,6 @@
 	d1 = 1;
 	d2 = 4;
 	icon_state = "1-4"
-	},
-/obj/machinery/camera/network/cargo{
-	dir = 4
 	},
 /obj/machinery/station_map{
 	dir = 4;
@@ -9778,6 +9840,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/lounge/kitchen_freezer)
+"Gy" = (
+/obj/structure/loot_pile/maint/technical,
+/turf/simulated/floor/plating,
+/area/maintenance/cargo)
 "Gz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -10998,6 +11064,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
 "KI" = (
@@ -11617,11 +11688,6 @@
 /obj/structure/flora/pottedplant/shoot,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_7)
-"No" = (
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/space,
-/area/space)
 "Np" = (
 /obj/structure/dogbed,
 /obj/machinery/camera/network/civilian,
@@ -12223,9 +12289,6 @@
 	layer = 3.3;
 	pixel_y = 30
 	},
-/obj/machinery/light{
-	dir = 1
-	},
 /obj/machinery/camera/network/cargo,
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
@@ -12318,10 +12381,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Apartment_A1)
-"PX" = (
-/obj/structure/loot_pile/maint/technical,
-/turf/simulated/floor/plating,
-/area/maintenance/lower/bar)
 "PY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -14309,6 +14368,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/vacant/vacant_site2)
+"Wx" = (
+/mob/living/simple_mob/animal/passive/penguin/emperor{
+	desc = "There's a tag on this pengiun that says Skipper. You're not even sure where the chef found them.";
+	name = "Skipper"
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters/freezer)
 "Wy" = (
 /obj/machinery/door/firedoor,
 /obj/structure/cable/green{
@@ -14793,13 +14859,6 @@
 "Yd" = (
 /turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/sleep/Dorm_1)
-"Yf" = (
-/mob/living/simple_mob/animal/passive/penguin/emperor{
-	desc = "There's a tag on this pengiun that says Skipper. You're not even sure where the chef found them.";
-	name = "Skipper"
-	},
-/turf/simulated/floor/tiled/freezer,
-/area/crew_quarters/freezer)
 "Yg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -14823,6 +14882,9 @@
 /obj/machinery/firealarm{
 	layer = 3.3;
 	pixel_y = 26
+	},
+/obj/machinery/light{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
@@ -14905,10 +14967,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/turf/simulated/floor/plating,
-/area/maintenance/dormitory)
-"Yw" = (
-/obj/structure/loot_pile/maint/technical,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "Yy" = (
@@ -15184,6 +15242,9 @@
 /area/crew_quarters/bar)
 "Zw" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
 "Zx" = (
@@ -20365,7 +20426,7 @@ ii
 ii
 vl
 ge
-PX
+oF
 JX
 lI
 wD
@@ -21060,7 +21121,7 @@ ii
 ii
 ii
 kD
-No
+Ed
 Ed
 ii
 ii
@@ -21519,7 +21580,7 @@ Wg
 Yt
 eT
 Xl
-rc
+uw
 yX
 CR
 WE
@@ -21768,7 +21829,7 @@ ii
 ii
 ii
 ii
-No
+Ed
 ii
 Ed
 ii
@@ -22074,7 +22135,7 @@ yq
 yD
 kr
 PZ
-Yf
+Wx
 vk
 ZK
 ZK
@@ -24627,7 +24688,7 @@ pn
 kg
 aI
 gz
-PX
+oF
 Ib
 dk
 WB
@@ -25474,7 +25535,7 @@ Cw
 YX
 Ws
 Fb
-bI
+EY
 uT
 nc
 of
@@ -26936,7 +26997,7 @@ oE
 oE
 Ze
 oE
-Yw
+lH
 oE
 xB
 oE
@@ -28172,7 +28233,7 @@ Ed
 Rj
 oG
 dD
-yo
+Gy
 Sv
 Sv
 Sv
@@ -28610,10 +28671,10 @@ mQ
 YS
 GY
 bb
-GM
-hf
-nM
-wX
+eM
+CJ
+vb
+mr
 hT
 zk
 zy
@@ -28887,7 +28948,7 @@ Rj
 rk
 dD
 dD
-yo
+Gy
 mx
 Cb
 Qj
@@ -30178,7 +30239,7 @@ cv
 tZ
 Iq
 ai
-us
+af
 SU
 oE
 oE

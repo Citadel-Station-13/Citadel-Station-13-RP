@@ -33,6 +33,7 @@
 /// Away Missions
 #if AWAY_MISSION_TEST
 #include "space/debrisfield.dmm"
+#include "poi_d/Class-D.dmm"
 #endif
 
 // Debris Field Exploration Zone.
@@ -53,7 +54,30 @@
 
 /datum/map_template/triumph_lateload/away_debrisfield/on_map_loaded(z)
 	. = ..()
-	seed_submaps(list(Z_LEVEL_DEBRISFIELD), 150, /area/triumph_away/debrisfield/unexplored, /datum/map_template/debrisfield/)
+	seed_submaps(list(Z_LEVEL_DEBRISFIELD), 125, /area/triumph_away/debrisfield/unexplored, /datum/map_template/debrisfield/)
+
+// Class D Rogue Planet Exploration Zone.
+#include "poi_d/_class_d.dm"
+#include "poi_d/_templates.dm"
+#include "poi_d/d_world_things.dm"
+/datum/map_template/triumph_lateload/away_d_world
+	name = "ExoPlanet - Z1 Planet"
+	desc = "A random unknown planet."
+	mappath = 'poi_d/Class-D.dmm'
+	associated_map_datum = /datum/map_z_level/triumph_lateload/away_d_world
+	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = FALSE)
+
+/datum/map_z_level/triumph_lateload/away_d_world
+	name = "Away Mission - Rogue Planet"
+	z = Z_LEVEL_UNKNOWN_PLANET
+
+
+/datum/map_template/triumph_lateload/away_d_world/on_map_loaded(z)
+	. = ..()
+	seed_submaps(list(Z_LEVEL_UNKNOWN_PLANET), 150, /area/triumph_away/poi_d/unexplored, /datum/map_template/Class_D/)
+	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, Z_LEVEL_UNKNOWN_PLANET, world.maxx - 4, world.maxy - 4)
+	new /datum/random_map/noise/ore/poi_d/(null, 1, 1, Z_LEVEL_UNKNOWN_PLANET, 64, 64)
+
 
 //////////////////////////////////////////////////////////////////////////////////////
 // Admin-use z-levels for loading whenever an admin feels like
