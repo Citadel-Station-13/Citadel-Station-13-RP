@@ -44,7 +44,7 @@
 
 /datum/sprite_accessory/hair
 
-	icon = 'icons/mob/Human_face_m.dmi'	  // default icon for all hairs
+	icon = 'icons/mob/human_face_m.dmi'	  // default icon for all hairs
 	var/icon_add = 'icons/mob/human_face.dmi'
 	var/flags
 
