@@ -433,10 +433,13 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 
 		if(hair_style && (src.species.get_bodytype(src) in hair_style.species_allowed))
 			var/icon/hair_s = new/icon("icon" = hair_style.icon, "icon_state" = "[hair_style.icon_state]_s")
-			var/icon/hair_s_add = new/icon("icon" = hair_style.icon_add, "icon_state" = "[hair_style.icon_state]_s")
+			var/icon/hair_s_add
+			if(hair_style.icon_add)
+				hair_s_add = new/icon("icon" = hair_style.icon_add, "icon_state" = "[hair_style.icon_state]_s")
 			if(hair_style.do_colouration)
 				hair_s.Blend(rgb(r_hair, g_hair, b_hair), ICON_MULTIPLY)
-				hair_s.Blend(hair_s_add, ICON_ADD)
+				if(hair_s_add)
+					hair_s.Blend(hair_s_add, ICON_ADD)
 
 			face_standing.Blend(hair_s, ICON_OVERLAY)
 

@@ -67,6 +67,7 @@
 	ahoge
 		name = "Ahoge"
 		icon_state = "hair_ahoge"
+		icon_add = null
 
 	bald
 		name = "Bald"
@@ -369,6 +370,7 @@
 	hedgehog
 		name = "Hedgehog Hair"
 		icon_state = "hair_hedgehog"
+		icon_add = null
 
 	hightight
 		name = "High and Tight"
@@ -460,7 +462,8 @@
 
 	messy
 		name = "Messy"
-		icon_state = "hair_messy"
+		icon_state = "hair_messy_tg"
+		icon_add = null
 
 	mohawkunshaven
 		name = "Mohawk Unshaven"
