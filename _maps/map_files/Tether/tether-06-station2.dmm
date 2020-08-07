@@ -2763,7 +2763,7 @@
 	},
 /obj/machinery/light,
 /turf/simulated/floor/carpet/bcarpet,
-/area/tether/station/public_meeting_room)
+/area/space)
 "ew" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -10792,9 +10792,6 @@
 	},
 /turf/simulated/open,
 /area/vacant/vacant_restaurant_upper)
-"sw" = (
-/turf/simulated/wall,
-/area/tether/station/stairs_two)
 "sx" = (
 /obj/structure/sign/directions/engineering{
 	dir = 1;
@@ -10804,7 +10801,7 @@
 	dir = 4
 	},
 /turf/simulated/wall,
-/area/tether/station/stairs_two)
+/area/space)
 "sy" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -10819,12 +10816,12 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled,
-/area/tether/station/stairs_two)
+/area/space)
 "sz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
-/area/tether/station/stairs_two)
+/area/space)
 "sA" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -10844,7 +10841,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled,
-/area/tether/station/stairs_two)
+/area/space)
 "sB" = (
 /turf/simulated/wall,
 /area/maintenance/station/micro)
@@ -11038,16 +11035,16 @@
 /area/vacant/vacant_restaurant_upper)
 "tc" = (
 /turf/simulated/floor,
-/area/tether/station/stairs_two)
+/area/space)
 "td" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
 /turf/simulated/open,
-/area/tether/station/stairs_two)
+/area/space)
 "te" = (
 /turf/simulated/open,
-/area/tether/station/stairs_two)
+/area/space)
 "tf" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -11066,7 +11063,7 @@
 	pixel_x = -26
 	},
 /turf/simulated/floor/tiled,
-/area/tether/station/stairs_two)
+/area/space)
 "tg" = (
 /obj/structure/table/wooden_reinforced,
 /obj/machinery/photocopier/faxmachine{
@@ -11085,7 +11082,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tether/station/public_meeting_room)
+/area/space)
 "th" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
@@ -11380,7 +11377,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled,
-/area/tether/station/stairs_two)
+/area/space)
 "tJ" = (
 /obj/structure/cable,
 /obj/machinery/power/apc{
@@ -11401,7 +11398,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled,
-/area/tether/station/stairs_two)
+/area/space)
 "tK" = (
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -11674,7 +11671,7 @@
 "un" = (
 /obj/structure/stairs/north,
 /turf/simulated/floor/tiled,
-/area/tether/station/stairs_two)
+/area/space)
 "uo" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -11693,7 +11690,7 @@
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled,
-/area/tether/station/stairs_two)
+/area/space)
 "up" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -11708,7 +11705,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled,
-/area/tether/station/stairs_two)
+/area/space)
 "uq" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -11999,11 +11996,11 @@
 /area/ai_monitored/storage/eva)
 "uP" = (
 /turf/simulated/floor/tiled,
-/area/tether/station/stairs_two)
+/area/space)
 "uQ" = (
 /obj/structure/sign/deck2,
 /turf/simulated/wall,
-/area/tether/station/stairs_two)
+/area/space)
 "uR" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -27
@@ -12027,12 +12024,12 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled,
-/area/tether/station/stairs_two)
+/area/space)
 "uS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
-/area/tether/station/stairs_two)
+/area/space)
 "uT" = (
 /obj/machinery/light{
 	dir = 4
@@ -12056,7 +12053,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled,
-/area/tether/station/stairs_two)
+/area/space)
 "uU" = (
 /obj/machinery/alarm{
 	dir = 4;
@@ -12249,7 +12246,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled,
-/area/tether/station/stairs_two)
+/area/space)
 "vo" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -12261,7 +12258,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled,
-/area/tether/station/stairs_two)
+/area/space)
 "vp" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -12279,7 +12276,7 @@
 	dir = 2
 	},
 /turf/simulated/floor/tiled,
-/area/tether/station/stairs_two)
+/area/space)
 "vq" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -12291,7 +12288,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/tether/station/stairs_two)
+/area/space)
 "vr" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -12306,7 +12303,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/tether/station/stairs_two)
+/area/space)
 "vs" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -12321,7 +12318,7 @@
 /turf/simulated/floor/tiled/monofloor{
 	dir = 1
 	},
-/area/tether/station/stairs_two)
+/area/space)
 "vt" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -12333,7 +12330,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
-/area/tether/station/stairs_two)
+/area/space)
 "vu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -12342,11 +12339,11 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
-/area/tether/station/stairs_two)
+/area/space)
 "vv" = (
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/tiled,
-/area/tether/station/stairs_two)
+/area/space)
 "vw" = (
 /obj/structure/closet,
 /obj/random/maintenance/medical,
@@ -12560,19 +12557,19 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/tether/station/stairs_two)
+/area/space)
 "vO" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/tether/station/stairs_two)
+/area/space)
 "vP" = (
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/tether/station/stairs_two)
+/area/space)
 "vQ" = (
 /obj/machinery/camera/network/northern_star{
 	dir = 1
@@ -12584,7 +12581,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/tether/station/stairs_two)
+/area/space)
 "vR" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 2;
@@ -12593,13 +12590,13 @@
 /obj/effect/floor_decal/steeldecal/steel_decals_central1,
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/monofloor,
-/area/tether/station/stairs_two)
+/area/space)
 "vS" = (
 /obj/effect/floor_decal/steeldecal/steel_decals6{
 	dir = 6
 	},
 /turf/simulated/floor/tiled,
-/area/tether/station/stairs_two)
+/area/space)
 "vT" = (
 /turf/simulated/wall,
 /area/medical/biostorage)
@@ -16531,7 +16528,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tether/station/public_meeting_room)
+/area/space)
 "Dq" = (
 /obj/machinery/camera/network/security{
 	dir = 4
@@ -17026,7 +17023,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tether/station/public_meeting_room)
+/area/space)
 "Gh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -17146,7 +17143,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/carpet/bcarpet,
-/area/tether/station/public_meeting_room)
+/area/space)
 "Hb" = (
 /obj/structure/closet/crate,
 /obj/random/maintenance/clean,
@@ -17174,7 +17171,7 @@
 /obj/structure/window/reinforced/full,
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
-/area/tether/station/public_meeting_room)
+/area/space)
 "Ht" = (
 /obj/effect/floor_decal/corner/white/border{
 	dir = 5
@@ -17221,7 +17218,7 @@
 	},
 /obj/machinery/vending/fitness,
 /turf/simulated/floor/tiled/dark,
-/area/tether/station/public_meeting_room)
+/area/space)
 "HH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -17375,14 +17372,14 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/carpet/bcarpet,
-/area/tether/station/public_meeting_room)
+/area/space)
 "IG" = (
 /obj/machinery/firealarm{
 	layer = 3.3;
 	pixel_y = 26
 	},
 /turf/simulated/floor/carpet/bcarpet,
-/area/tether/station/public_meeting_room)
+/area/space)
 "II" = (
 /obj/structure/sign/nosmoking_2,
 /turf/simulated/wall/r_wall,
@@ -17494,7 +17491,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/carpet/bcarpet,
-/area/tether/station/public_meeting_room)
+/area/space)
 "Jt" = (
 /obj/structure/table/standard,
 /obj/item/storage/box/syringes,
@@ -17696,7 +17693,7 @@
 /area/maintenance/station/sec_lower)
 "KI" = (
 /turf/simulated/wall,
-/area/tether/station/public_meeting_room)
+/area/space)
 "KJ" = (
 /obj/machinery/power/apc{
 	dir = 8;
@@ -17730,7 +17727,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tether/station/public_meeting_room)
+/area/space)
 "KQ" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
@@ -17973,7 +17970,7 @@
 /obj/effect/floor_decal/borderfloor/corner2,
 /obj/effect/floor_decal/corner/lightgrey/bordercorner2,
 /turf/simulated/floor/tiled/dark,
-/area/tether/station/public_meeting_room)
+/area/space)
 "LN" = (
 /obj/structure/railing{
 	dir = 8
@@ -18001,7 +17998,7 @@
 /obj/item/pen,
 /obj/item/pen/red,
 /turf/simulated/floor/carpet/bcarpet,
-/area/tether/station/public_meeting_room)
+/area/space)
 "LW" = (
 /obj/structure/catwalk,
 /obj/effect/decal/cleanable/dirt,
@@ -18581,7 +18578,7 @@
 	},
 /obj/item/paicard,
 /turf/simulated/floor/carpet/bcarpet,
-/area/tether/station/public_meeting_room)
+/area/space)
 "Pl" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -18719,14 +18716,14 @@
 	dir = 9
 	},
 /turf/simulated/floor/carpet/bcarpet,
-/area/tether/station/public_meeting_room)
+/area/space)
 "PS" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
 	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/carpet/bcarpet,
-/area/tether/station/public_meeting_room)
+/area/space)
 "PV" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -19081,7 +19078,7 @@
 	},
 /obj/item/folder,
 /turf/simulated/floor/carpet/bcarpet,
-/area/tether/station/public_meeting_room)
+/area/space)
 "RQ" = (
 /obj/structure/table/steel,
 /obj/machinery/microwave{
@@ -19122,7 +19119,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tether/station/public_meeting_room)
+/area/space)
 "Sc" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 10
@@ -19202,7 +19199,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tether/station/public_meeting_room)
+/area/space)
 "Sv" = (
 /obj/structure/table/steel,
 /obj/machinery/alarm{
@@ -19267,7 +19264,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/carpet/bcarpet,
-/area/tether/station/public_meeting_room)
+/area/space)
 "SW" = (
 /obj/machinery/alarm{
 	dir = 4;
@@ -19280,7 +19277,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tether/station/public_meeting_room)
+/area/space)
 "SX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -19414,7 +19411,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/tether/station/public_meeting_room)
+/area/space)
 "TW" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -19479,7 +19476,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/carpet/bcarpet,
-/area/tether/station/public_meeting_room)
+/area/space)
 "Us" = (
 /obj/machinery/light{
 	dir = 8
@@ -19694,7 +19691,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/tether/station/public_meeting_room)
+/area/space)
 "VF" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green{
@@ -19741,7 +19738,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tether/station/public_meeting_room)
+/area/space)
 "VL" = (
 /turf/simulated/mineral/vacuum,
 /area/chapel/chapel_morgue)
@@ -20166,7 +20163,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tether/station/public_meeting_room)
+/area/space)
 "Yd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -20190,7 +20187,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tether/station/public_meeting_room)
+/area/space)
 "Yg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -20488,7 +20485,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/carpet/bcarpet,
-/area/tether/station/public_meeting_room)
+/area/space)
 "ZL" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -27137,14 +27134,14 @@ kf
 qn
 rd
 qn
-sw
-sw
-sw
-sw
-sw
-sw
-sw
-sw
+KI
+KI
+KI
+KI
+KI
+KI
+KI
+KI
 ac
 ac
 ac
@@ -27279,14 +27276,14 @@ pK
 qo
 re
 rO
-sw
+KI
 tc
-sw
+KI
 un
 uP
 vn
 vN
-sw
+KI
 ac
 ac
 ac
@@ -27421,14 +27418,14 @@ pK
 qp
 re
 rP
-sw
+KI
 tc
-sw
+KI
 un
 uP
 vo
 vO
-sw
+KI
 ac
 ac
 ac
@@ -27563,14 +27560,14 @@ pK
 qp
 re
 rQ
-sw
-sw
-sw
-sw
+KI
+KI
+KI
+KI
 uQ
 vp
 vP
-sw
+KI
 ac
 ac
 ac
@@ -27705,14 +27702,14 @@ pK
 qp
 re
 rP
-sw
+KI
 td
 te
 te
 te
 vq
 vO
-sw
+KI
 ac
 ac
 ac
@@ -27847,14 +27844,14 @@ pK
 qp
 re
 rP
-sw
+KI
 te
 te
 te
 te
 vr
 vQ
-sw
+KI
 ac
 ac
 ac
@@ -27990,13 +27987,13 @@ qq
 rf
 rR
 sx
-sw
-sw
-sw
-sw
+KI
+KI
+KI
+KI
 vs
 vR
-sw
+KI
 ac
 ac
 ac
@@ -28138,7 +28135,7 @@ uo
 uR
 vt
 vS
-sw
+KI
 ac
 ac
 ac
@@ -28280,7 +28277,7 @@ sz
 uS
 vu
 uP
-sw
+KI
 ac
 ac
 ac
@@ -28422,7 +28419,7 @@ up
 uT
 vv
 vv
-sw
+KI
 ac
 ac
 ac
@@ -28564,7 +28561,7 @@ Hq
 KI
 Hq
 KI
-sw
+KI
 vT
 vT
 vT

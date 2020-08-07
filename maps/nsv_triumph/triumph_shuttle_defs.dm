@@ -13,11 +13,11 @@
 	move_time = SHUTTLE_TRANSIT_DURATION_RETURN
 
 //////////////////////////////////////////////////////////////
-/*
+
 /datum/shuttle/ferry/escape_pod/large_escape_pod1
 	name = "Large Escape Pod 1"
 	location = 0
-	warmup_time = 0
+	warmup_time = 3
 	area_station = /area/shuttle/large_escape_pod1/station
 	area_offsite = /area/shuttle/large_escape_pod1/centcom
 	area_transition = /area/shuttle/large_escape_pod1/transit
@@ -25,7 +25,7 @@
 	dock_target_station = "large_escape_pod_1_berth"
 	dock_target_offsite = "large_escape_pod_1_recovery"
 	move_time = SHUTTLE_TRANSIT_DURATION_RETURN
-*/
+
 //////////////////////////////////////////////////////////////
 /* Removed for the time being
 /datum/shuttle/ferry/escape_pod/large_escape_pod2

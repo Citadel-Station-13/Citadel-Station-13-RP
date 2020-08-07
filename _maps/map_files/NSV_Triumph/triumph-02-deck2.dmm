@@ -622,7 +622,7 @@
 /obj/machinery/computer/shuttle_control/belter{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/steel/airless,
+/turf/simulated/floor/tiled/steel,
 /area/shuttle/belter/station)
 "ci" = (
 /obj/machinery/portable_atmospherics/hydroponics,
@@ -1572,7 +1572,7 @@
 /area/triumph/station/stairs_two)
 "fm" = (
 /obj/machinery/recharge_station,
-/turf/simulated/floor/tiled/steel/airless,
+/turf/simulated/floor/tiled/steel,
 /area/shuttle/belter/station)
 "fn" = (
 /obj/structure/table/woodentable,
@@ -2623,6 +2623,7 @@
 	dir = 1;
 	pixel_y = -24
 	},
+/obj/structure/loot_pile/maint/boxfort,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "hT" = (
@@ -3966,7 +3967,7 @@
 /area/quartermaster/foyer)
 "mu" = (
 /obj/structure/bed/chair/shuttle,
-/turf/simulated/floor/tiled/steel/airless,
+/turf/simulated/floor/tiled/steel,
 /area/shuttle/belter/station)
 "mw" = (
 /obj/structure/table/woodentable,
@@ -5378,6 +5379,13 @@
 	},
 /turf/simulated/floor/wood,
 /area/quartermaster/foyer)
+"rc" = (
+/mob/living/simple_mob/animal/goat{
+	desc = "Ah, it's Pete. They're not known for their pleasant disposition and now they're gonna eat all your plants.";
+	name = "Pete"
+	},
+/turf/simulated/floor/tiled,
+/area/hydroponics)
 "rd" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -5538,6 +5546,7 @@
 /area/crew_quarters/sleep/cryo)
 "rB" = (
 /obj/machinery/conveyor{
+	dir = 1;
 	id = "mining_interior"
 	},
 /turf/simulated/floor/tiled,
@@ -6253,7 +6262,7 @@
 /area/triumph/station/stairs_two)
 "tP" = (
 /obj/structure/closet/walllocker/emerglocker/north,
-/turf/simulated/floor/tiled/steel/airless,
+/turf/simulated/floor/tiled/steel,
 /area/shuttle/belter/station)
 "tQ" = (
 /obj/machinery/door/firedoor/glass/hidden/steel,
@@ -6357,7 +6366,7 @@
 /area/hallway/primary/port)
 "ud" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/steel/airless,
+/turf/simulated/floor/tiled/steel,
 /area/shuttle/belter/station)
 "ue" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -6443,6 +6452,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_two)
+"us" = (
+/obj/structure/loot_pile/maint/boxfort,
+/turf/simulated/floor/plating,
+/area/maintenance/dormitory)
 "uu" = (
 /obj/structure/toilet{
 	dir = 1
@@ -7110,7 +7123,7 @@
 /turf/simulated/floor/lino,
 /area/crew_quarters/coffee_shop)
 "wZ" = (
-/turf/simulated/floor/tiled/steel/airless,
+/turf/simulated/floor/tiled/steel,
 /area/shuttle/belter/station)
 "xa" = (
 /obj/structure/table/marble,
@@ -7168,6 +7181,7 @@
 	frequency = 2020;
 	id_tag = "belt_shuttle_exterior"
 	},
+/obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/steel/airless,
 /area/shuttle/belter/station)
 "xj" = (
@@ -7504,6 +7518,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/fitness)
+"yo" = (
+/obj/structure/loot_pile/maint/technical,
+/turf/simulated/floor/plating,
+/area/maintenance/cargo)
 "yq" = (
 /turf/simulated/wall,
 /area/crew_quarters/freezer)
@@ -7682,7 +7700,7 @@
 /obj/structure/bed/chair/shuttle{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel/airless,
+/turf/simulated/floor/tiled/steel,
 /area/shuttle/belter/station)
 "yX" = (
 /obj/machinery/hologram/holopad,
@@ -8753,7 +8771,7 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -31
 	},
-/turf/simulated/floor/tiled/steel/airless,
+/turf/simulated/floor/tiled/steel,
 /area/shuttle/belter/station)
 "CY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -9648,7 +9666,7 @@
 "Ge" = (
 /obj/machinery/recharge_station,
 /obj/machinery/light,
-/turf/simulated/floor/tiled/steel/airless,
+/turf/simulated/floor/tiled/steel,
 /area/shuttle/belter/station)
 "Gi" = (
 /obj/machinery/power/smes/buildable{
@@ -9771,11 +9789,12 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "GA" = (
-/obj/machinery/conveyor{
-	id = "mining_interior"
-	},
 /obj/machinery/mineral/output,
 /obj/structure/window/reinforced,
+/obj/machinery/conveyor{
+	dir = 1;
+	id = "mining_interior"
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/triumph/surfacebase/mining_main/refinery)
 "GB" = (
@@ -10346,9 +10365,6 @@
 	frequency = 1379;
 	id_tag = "mining_fore_pump"
 	},
-/obj/machinery/light{
-	dir = 4
-	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/miningdock)
 "Iy" = (
@@ -10611,9 +10627,6 @@
 	id_tag = "mining_fore_pump"
 	},
 /obj/machinery/camera/network/cargo,
-/obj/machinery/light{
-	dir = 8
-	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/miningdock)
 "Jn" = (
@@ -10953,7 +10966,7 @@
 	dir = 1
 	},
 /obj/structure/bed/chair/shuttle,
-/turf/simulated/floor/tiled/steel/airless,
+/turf/simulated/floor/tiled/steel,
 /area/shuttle/belter/station)
 "KD" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -11034,7 +11047,7 @@
 	dir = 8;
 	pixel_x = -26
 	},
-/obj/structure/loot_pile/maint/trash,
+/obj/structure/loot_pile/maint/technical,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "KU" = (
@@ -12220,7 +12233,7 @@
 /obj/structure/bed/chair/shuttle{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/steel/airless,
+/turf/simulated/floor/tiled/steel,
 /area/shuttle/belter/station)
 "PM" = (
 /obj/effect/floor_decal/corner_techfloor_grid{
@@ -12305,6 +12318,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Apartment_A1)
+"PX" = (
+/obj/structure/loot_pile/maint/technical,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/bar)
 "PY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -14776,6 +14793,13 @@
 "Yd" = (
 /turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/sleep/Dorm_1)
+"Yf" = (
+/mob/living/simple_mob/animal/passive/penguin/emperor{
+	desc = "There's a tag on this pengiun that says Skipper. You're not even sure where the chef found them.";
+	name = "Skipper"
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters/freezer)
 "Yg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -14881,6 +14905,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
+/turf/simulated/floor/plating,
+/area/maintenance/dormitory)
+"Yw" = (
+/obj/structure/loot_pile/maint/technical,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "Yy" = (
@@ -15208,7 +15236,7 @@
 /obj/item/clothing/head/helmet/space/void/mining,
 /obj/item/clothing/suit/space/void/mining,
 /obj/item/tank/emergency/oxygen/double,
-/turf/simulated/floor/tiled/steel/airless,
+/turf/simulated/floor/tiled/steel,
 /area/shuttle/belter/station)
 "ZI" = (
 /obj/machinery/door/firedoor,
@@ -20337,7 +20365,7 @@ ii
 ii
 vl
 ge
-Nh
+PX
 JX
 lI
 wD
@@ -21491,7 +21519,7 @@ Wg
 Yt
 eT
 Xl
-WE
+rc
 yX
 CR
 WE
@@ -22046,7 +22074,7 @@ yq
 yD
 kr
 PZ
-kr
+Yf
 vk
 ZK
 ZK
@@ -24599,7 +24627,7 @@ pn
 kg
 aI
 gz
-Nh
+PX
 Ib
 dk
 WB
@@ -26908,7 +26936,7 @@ oE
 oE
 Ze
 oE
-oE
+Yw
 oE
 xB
 oE
@@ -28144,7 +28172,7 @@ Ed
 Rj
 oG
 dD
-dD
+yo
 Sv
 Sv
 Sv
@@ -28859,7 +28887,7 @@ Rj
 rk
 dD
 dD
-dD
+yo
 mx
 Cb
 Qj
@@ -30150,7 +30178,7 @@ cv
 tZ
 Iq
 ai
-iM
+us
 SU
 oE
 oE

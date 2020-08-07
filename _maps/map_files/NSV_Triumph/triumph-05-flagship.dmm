@@ -5058,11 +5058,11 @@
 	dir = 9
 	},
 /turf/unsimulated/floor/steel,
-/area/centcom/evac)
+/area/shuttle/large_escape_pod1/centcom)
 "jw" = (
 /obj/effect/floor_decal/rust/part_rusted3,
 /turf/unsimulated/floor/steel,
-/area/centcom/evac)
+/area/shuttle/large_escape_pod1/centcom)
 "jz" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner{
 	dir = 8
@@ -5205,7 +5205,7 @@
 "jJ" = (
 /obj/effect/floor_decal/rust/mono_rusted3,
 /turf/unsimulated/floor/steel,
-/area/centcom/evac)
+/area/shuttle/large_escape_pod1/centcom)
 "jK" = (
 /turf/unsimulated/wall,
 /area/centcom/medical)
@@ -5224,7 +5224,7 @@
 	dir = 8
 	},
 /turf/unsimulated/floor/steel,
-/area/centcom/evac)
+/area/shuttle/large_escape_pod1/centcom)
 "jO" = (
 /obj/machinery/computer/arcade,
 /obj/effect/floor_decal/borderfloorwhite{
@@ -16299,6 +16299,12 @@
 	icon_state = "white"
 	},
 /area/centcom/medical)
+"Et" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 10
+	},
+/turf/unsimulated/floor/steel,
+/area/shuttle/large_escape_pod1/centcom)
 "Ez" = (
 /obj/structure/table/reinforced,
 /obj/item/cell/hyper,
@@ -16331,6 +16337,16 @@
 	},
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/escape/centcom)
+"FI" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 9
+	},
+/turf/unsimulated/floor/steel,
+/area/shuttle/large_escape_pod1/centcom)
+"Gf" = (
+/obj/effect/floor_decal/rust,
+/turf/unsimulated/floor/steel,
+/area/shuttle/large_escape_pod1/centcom)
 "Gp" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced,
@@ -16388,12 +16404,21 @@
 /obj/structure/window/reinforced,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/escape/centcom)
+"HL" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 8
+	},
+/turf/unsimulated/floor/steel,
+/area/shuttle/large_escape_pod1/centcom)
 "IA" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/escape/centcom)
+"Jl" = (
+/turf/unsimulated/floor/steel,
+/area/shuttle/large_escape_pod1/centcom)
 "Jv" = (
 /obj/machinery/light{
 	dir = 4
@@ -16432,6 +16457,10 @@
 "MJ" = (
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/escape/centcom)
+"MV" = (
+/obj/effect/floor_decal/corner_steel_grid/diagonal,
+/turf/unsimulated/floor/steel,
+/area/shuttle/large_escape_pod1/centcom)
 "Nt" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/unsimulated/floor{
@@ -16466,6 +16495,15 @@
 	},
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/escape/centcom)
+"Qr" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/unsimulated/floor/steel,
+/area/shuttle/large_escape_pod1/centcom)
 "Rc" = (
 /obj/structure/table/glass,
 /obj/item/defib_kit/compact/loaded,
@@ -19761,9 +19799,9 @@ gX
 iE
 jk
 gX
-gX
-gX
-gX
+Qr
+Qr
+Qr
 gX
 li
 lF
@@ -19903,10 +19941,10 @@ nm
 iF
 jl
 jv
-nm
-nm
-nm
-nm
+Jl
+Jl
+Jl
+Jl
 lj
 lF
 iQ
@@ -20045,10 +20083,10 @@ nm
 iG
 jm
 jw
-nm
-iR
-iR
-nm
+Jl
+Gf
+Gf
+Jl
 lj
 lF
 iQ
@@ -20186,11 +20224,11 @@ nm
 nm
 iH
 jn
-nm
+Jl
 jJ
-nm
-nm
-nm
+Jl
+Jl
+Jl
 lj
 lF
 iQ
@@ -20328,11 +20366,11 @@ nm
 nm
 iI
 jo
-nm
-nm
-nm
-nm
-kP
+Jl
+Jl
+Jl
+Jl
+MV
 lj
 lF
 iQ
@@ -20470,11 +20508,11 @@ nm
 nm
 iJ
 jp
-nm
-iR
-nm
-nm
-nm
+Jl
+Gf
+Jl
+Jl
+Jl
 lk
 lF
 iQ
@@ -20612,11 +20650,11 @@ nm
 nm
 iK
 jq
-nm
-nm
-nm
-nm
-nm
+Jl
+Jl
+Jl
+Jl
+Jl
 lj
 lF
 iQ
@@ -20754,11 +20792,11 @@ nm
 nm
 iL
 jr
-iR
-nm
-nm
-nm
-nm
+Gf
+Jl
+Jl
+Jl
+Jl
 lj
 lF
 iQ
@@ -20896,11 +20934,11 @@ nm
 nm
 iM
 js
-nm
-nm
-kP
-nm
-iR
+Jl
+Jl
+MV
+Jl
+Gf
 ll
 lF
 iQ
@@ -21038,11 +21076,11 @@ kP
 nm
 iN
 jt
-nm
-nm
-nm
-nm
-nm
+Jl
+Jl
+Jl
+Jl
+Jl
 lj
 lF
 iQ
@@ -21180,11 +21218,11 @@ nm
 nm
 iO
 ju
-nm
-iR
-nm
-nm
-nm
+Jl
+Gf
+Jl
+Jl
+Jl
 lj
 lF
 iQ
@@ -21322,11 +21360,11 @@ iR
 nm
 iF
 ju
-nm
-nm
-nm
-nm
-kP
+Jl
+Jl
+Jl
+Jl
+MV
 lj
 lF
 iQ
@@ -21464,11 +21502,11 @@ iR
 iz
 iP
 hb
-ha
-nm
-nm
-nm
-iz
+Et
+Jl
+Jl
+Jl
+FI
 lm
 lF
 iQ
@@ -21607,9 +21645,9 @@ iA
 nm
 nm
 jz
-hu
+HL
 jN
-hu
+HL
 iP
 ln
 lF

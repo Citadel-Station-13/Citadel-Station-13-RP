@@ -3534,6 +3534,12 @@
 	name = "Engine Airlock Interior";
 	req_access = list(11)
 	},
+/obj/machinery/door/blast/regular{
+	dir = 2;
+	id = "SupermatterPort";
+	layer = 3.3;
+	name = "Reactor Blast Door"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "tZ" = (
@@ -5009,6 +5015,12 @@
 /obj/item/circuitboard/partslathe,
 /turf/simulated/floor,
 /area/storage/tech)
+"Bo" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 8
+	},
+/turf/simulated/wall/r_wall,
+/area/space)
 "Bp" = (
 /obj/structure/cable/cyan{
 	d1 = 1;
@@ -5267,6 +5279,10 @@
 "CN" = (
 /turf/simulated/floor/plating,
 /area/maintenance/engi_engine)
+"CP" = (
+/obj/structure/shuttle/engine/router,
+/turf/simulated/wall/r_wall,
+/area/space)
 "CU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -7357,7 +7373,7 @@
 /area/engineering/engine_monitoring)
 "Qf" = (
 /obj/machinery/power/supermatter,
-/turf/simulated/floor/reinforced/nitrogen,
+/turf/simulated/floor/greengrid/nitrogen,
 /area/engineering/engine_room)
 "Qh" = (
 /obj/machinery/atmospherics/binary/circulator{
@@ -11672,19 +11688,19 @@ fN
 Zj
 eD
 eD
-eD
-eD
-eD
-eD
-eD
-eD
-eD
-eD
-eD
-eD
-eD
-eD
-eD
+CP
+Bo
+Bo
+Bo
+Bo
+CP
+Bo
+CP
+Bo
+Bo
+Bo
+Bo
+CP
 eD
 eD
 Zj
@@ -18208,7 +18224,7 @@ Lo
 zz
 Zm
 Qo
-tg
+Kz
 tg
 fr
 tg
@@ -18360,7 +18376,7 @@ gD
 zz
 ER
 xz
-Pj
+ER
 zz
 fN
 fN
