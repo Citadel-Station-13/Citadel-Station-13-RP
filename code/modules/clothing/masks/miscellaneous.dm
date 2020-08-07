@@ -363,13 +363,13 @@
 /obj/item/clothing/mask/rebreather/process()
 	if(isnull(breath_initial_temp) || (breath_initial_temp > targettemp))
 		return
-	var/power_use = (targettemp - breath_initial_temp) * power_coefficient
-	cell.use(power_use)
+//	var/power_use = (targettemp - breath_initial_temp) * power_coefficient
+//	cell.use(power_use)
 	if(!cell.charge)
 		turn_off(null, TRUE)
 	if(isliving(loc) && prob(1))
 		give_flavor_feedback(loc)
-
+/*
 /obj/item/clothing/mask/rebreather/attack_hand(mob/living/user)
 	if(user.get_inactive_hand() == src)
 		if(cell)
@@ -401,7 +401,7 @@
 		to_chat(user, "<span class='notice'>You insert [I] into [src].</span>")
 		playsound(src, 'sound/machines/button.ogg', 30, 1, 0)
 		update_icon()
-
+*/
 /// Heat up temp if it isn't hot enough, do not release any to environment as we're not exactly filtering out.
 /obj/item/clothing/mask/rebreather/filter_air(datum/gas_mixture/air)
 	if(!on)
