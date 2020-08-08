@@ -55,25 +55,25 @@
 
 /datum/map_template/Class_D/Vault1D
 	name = "Mineral Vault"
-	mappath = 'Vault1D.dmm'
+	mappath = 'vault1D.dmm'
 	cost = 5
 
 /datum/map_template/Class_D/Vault2D
 	name = "Mineral Vault"
-	mappath = 'Vault2D.dmm'
+	mappath = 'vault2D.dmm'
 	cost = 5
 
 /datum/map_template/Class_D/Vault3D
 	name = "Mineral Vault"
-	mappath = 'Vault3D.dmm'
+	mappath = 'vault3D.dmm'
 	cost = 5
 
 /datum/map_template/Class_D/Vault4D
 	name = "Mineral Vault"
-	mappath = 'Vault4D.dmm'
+	mappath = 'vault4D.dmm'
 	cost = 5
 
 /datum/map_template/Class_D/Vault5D
 	name = "Mineral Vault"
-	mappath = 'Vault5D.dmm'
+	mappath = 'vault5D.dmm'
 	cost = 5

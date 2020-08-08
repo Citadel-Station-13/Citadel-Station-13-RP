@@ -1,78 +1,15 @@
-//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"b" = (
-/turf/simulated/wall/iron,
-/area/triumph_away/poi_d/explored)
-"c" = (
-/turf/template_noop,
-/area/template_noop)
-"d" = (
-/turf/simulated/mineral/floor/vacuum,
-/area/triumph_away/poi_d/explored)
-"e" = (
-/obj/effect/floor_decal/rust,
-/obj/structure/closet/crate/mimic/cointoss,
-/obj/random/bomb_supply,
-/obj/random/medical/lite,
-/obj/random/medical/lite,
-/obj/random/medical/lite,
-/turf/simulated/floor/airless,
-/area/triumph_away/poi_d/explored)
-"f" = (
-/obj/effect/floor_decal/rust,
-/obj/structure/closet/crate/mimic/safe,
-/obj/random/energy,
-/turf/simulated/floor/airless,
-/area/triumph_away/poi_d/explored)
-"N" = (
-/obj/effect/floor_decal/rust,
-/turf/simulated/floor/airless,
-/area/triumph_away/poi_d/explored)
+"b" = (/turf/simulated/wall/iron,/area/triumph_away/poi_d/explored)
+"c" = (/turf/template_noop,/area/template_noop)
+"d" = (/turf/simulated/mineral/floor/vacuum,/area/triumph_away/poi_d/explored)
+"e" = (/obj/effect/floor_decal/rust,/obj/structure/closet/crate/mimic/cointoss,/obj/random/bomb_supply,/obj/random/medical/lite,/obj/random/medical/lite,/obj/random/medical/lite,/turf/simulated/floor/airless,/area/triumph_away/poi_d/explored)
+"f" = (/obj/effect/floor_decal/rust,/obj/structure/closet/crate/mimic/safe,/obj/random/energy,/turf/simulated/floor/airless,/area/triumph_away/poi_d/explored)
+"N" = (/obj/effect/floor_decal/rust,/turf/simulated/floor/airless,/area/triumph_away/poi_d/explored)
 
 (1,1,1) = {"
-b
-b
-b
-b
-b
-b
-"}
-(2,1,1) = {"
-b
-N
-e
-N
-N
-b
-"}
-(3,1,1) = {"
-b
-d
-d
-N
-f
-b
-"}
-(4,1,1) = {"
-b
-d
-d
-d
-N
-b
-"}
-(5,1,1) = {"
-c
-c
-d
-d
-d
-b
-"}
-(6,1,1) = {"
-c
-c
-c
-b
-b
-b
+bbbbcc
+bNddcc
+bedddc
+bNNddb
+bNfNdb
+bbbbbb
 "}
