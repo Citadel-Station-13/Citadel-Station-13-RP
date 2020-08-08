@@ -318,8 +318,8 @@
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/mining_main/refinery)
 "aaM" = (
-/obj/machinery/mineral/processing_unit_console{
-	pixel_y = 32
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/tether/surfacebase/mining_main/refinery)
@@ -5639,12 +5639,14 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "akb" = (
+/obj/effect/ceiling,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "akc" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
+/obj/effect/ceiling,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/storage/surface_eva/external)
 "akd" = (
@@ -5951,6 +5953,7 @@
 /turf/simulated/wall,
 /area/maintenance/lower/research)
 "akH" = (
+/obj/effect/ceiling,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/storage/surface_eva/external)
 "akI" = (
@@ -6598,6 +6601,7 @@
 /obj/machinery/camera/network/civilian{
 	dir = 9
 	},
+/obj/effect/ceiling,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/storage/surface_eva/external)
 "ama" = (
@@ -18561,11 +18565,13 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 9
 	},
+/obj/effect/ceiling,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/rnd/external)
 "aIr" = (
 /obj/machinery/camera/network/research,
 /obj/machinery/floodlight,
+/obj/effect/ceiling,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/rnd/external)
 "aIs" = (
@@ -31082,6 +31088,7 @@
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/medical/triage)
 "cHR" = (
+/obj/effect/ceiling,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/medical/triage)
 "cHS" = (
@@ -31167,6 +31174,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/outline,
+/obj/effect/ceiling,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/mining_main/external)
 "den" = (
@@ -32438,6 +32446,13 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/triage)
+"jqT" = (
+/obj/machinery/mineral/processing_unit_console{
+	pixel_x = -32;
+	pixel_y = -3
+	},
+/turf/simulated/wall,
+/area/tether/surfacebase/mining_main/refinery)
 "jrz" = (
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 8;
@@ -32510,6 +32525,7 @@
 /area/tether/surfacebase/medical/triage)
 "jAw" = (
 /obj/machinery/mech_recharger,
+/obj/effect/ceiling,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/mining_main/external)
 "jGg" = (
@@ -33344,6 +33360,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
+/obj/effect/ceiling,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/mining_main/external)
 "oMP" = (
@@ -34279,6 +34296,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/outline,
+/obj/effect/ceiling,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/storage/surface_eva/external)
 "sAe" = (
@@ -34977,6 +34995,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/ceiling,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/storage/surface_eva/external)
 "vCB" = (
@@ -35085,6 +35104,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/ceiling,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/mining_main/external)
 "whR" = (
@@ -48639,7 +48659,7 @@ aah
 aah
 aar
 aaL
-aar
+jqT
 abe
 abJ
 abM
