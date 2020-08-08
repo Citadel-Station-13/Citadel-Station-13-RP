@@ -146,7 +146,6 @@
 		var/mob/observer/dead/newghost = user.ghostize()
 		newghost.timeofdeath = world.time
 		despawn_occupant(user)
-		qdel(user)
 
 // shuttle arrival point landmarks and datum
 var/global/list/latejoin_shuttle   = list()

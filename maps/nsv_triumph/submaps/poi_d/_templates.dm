@@ -1,22 +1,3 @@
-#if MAP_TEST
-#include "broken_reactor_D.dmm"
-#include "DecoupledEngineD.dmm"
-#include "DecoupledEngineD.dmm"
-#include "EpodD.dmm"
-#include "landing_padD.dmm"
-#include "mechwreckD.dmm"
-#include "meteor.dmm"
-#include "solar_farmD.dmm"
-#include "SupplyDrop1D.dmm"
-#include "SupplyDrop2D.dmm"
-#include "Vault1D.dmm"
-#include "Vault2D.dmm"
-#include "Vault3D.dmm"
-#include "Vault4D.dmm"
-#include "Vault5D.dmm"
-#endif
-
-
 /datum/map_template/Class_D
 	name = "Class D POIs"
 	desc = "Submaps for Class D Worlds"

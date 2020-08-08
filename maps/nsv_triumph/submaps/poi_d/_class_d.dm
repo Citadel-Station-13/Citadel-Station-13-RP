@@ -16,7 +16,7 @@
 	skip_me = TRUE
 
 	routes_to_make = list(
-		/datum/shuttle_destination/excursion/class_d_orbit = 30 SECONDS //This is the above one
+		/datum/shuttle_destination/excursion/class_d_orbit = 15 SECONDS //This is the above one
 	)
 
 /obj/shuttle_connector/poi_d
@@ -29,7 +29,15 @@
 
 	return INITIALIZE_HINT_QDEL
 
-//This file seems rather improtant
+//This is a special subtype of the thing that generates ores on a map
+//It will generate more rich ores because of the lower numbers than the normal one
+//Ore Generation for D Class Worlds
+/*
+/datum/random_map/noise/ore/poi_d
+	descriptor = "Ore Spawn for D-Class Worlds"
+	deep_val = 0.6 //Barren Rocks are not know for mineral richness.
+	rare_val = 0.5
+
 /datum/random_map/noise/ore/poi_d/check_map_sanity()
 	var/rare_count = 0
 	var/surface_count = 0
@@ -44,25 +52,19 @@
 		else
 			deep_count++
 	// Sanity check.
-	if(surface_count < 100)
+	if(surface_count < 50)
 		admin_notice("<span class='danger'>Insufficient surface minerals. Rerolling...</span>", R_DEBUG)
 		return 0
-	else if(rare_count < 50)
+	else if(rare_count < 25)
 		admin_notice("<span class='danger'>Insufficient rare minerals. Rerolling...</span>", R_DEBUG)
 		return 0
-	else if(deep_count < 50)
+	else if(deep_count < 10)
 		admin_notice("<span class='danger'>Insufficient deep minerals. Rerolling...</span>", R_DEBUG)
 		return 0
 	else
 		return 1
 
-
-//Ore Generation for D Class Worlds
-/datum/random_map/noise/ore/poi_d
-	descriptor = "Ore Spawn for D-Class Worlds"
-	deep_val = 0.8 //Barren Rocks are not know for mineral richness.
-	rare_val = 0.8
-
+*/
 //This object simply performs any map setup that needs to happen on our map if it loads.
 //As with the above, you do need to place this object on the map somewhere.
 
@@ -78,6 +80,7 @@
 /area/shuttle/excursion/poi_d
 	name = "Shuttle Landing Point"
 	base_turf = /turf/simulated/mineral/floor/vacuum
+	flags = RAD_SHIELDED
 	dynamic_lighting = 0
 
 /area/triumph_away/poi_d

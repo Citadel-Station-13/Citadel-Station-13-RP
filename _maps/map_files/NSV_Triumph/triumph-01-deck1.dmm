@@ -512,7 +512,9 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/turf/simulated/floor/reinforced/nitrogen,
+/turf/simulated/floor/reinforced/nitrogen{
+	initial_gas_mix = "n2=82.1472;TEMP=293.15"
+	},
 /area/engineering/engine_room)
 "cB" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
@@ -1416,7 +1418,9 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
-/turf/simulated/floor/reinforced/nitrogen,
+/turf/simulated/floor/reinforced/nitrogen{
+	initial_gas_mix = "n2=82.1472;TEMP=293.15"
+	},
 /area/engineering/engine_room)
 "hw" = (
 /obj/machinery/portable_atmospherics/canister/nitrogen,
@@ -3379,7 +3383,9 @@
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 6
 	},
-/turf/simulated/floor/reinforced/nitrogen,
+/turf/simulated/floor/reinforced/nitrogen{
+	initial_gas_mix = "n2=82.1472;TEMP=293.15"
+	},
 /area/engineering/engine_room)
 "tq" = (
 /obj/machinery/door/firedoor/glass,
@@ -3421,7 +3427,9 @@
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 9
 	},
-/turf/simulated/floor/reinforced/nitrogen,
+/turf/simulated/floor/reinforced/nitrogen{
+	initial_gas_mix = "n2=82.1472;TEMP=293.15"
+	},
 /area/engineering/engine_room)
 "tx" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -5807,7 +5815,9 @@
 	pump_direction = 0;
 	use_power = 1
 	},
-/turf/simulated/floor/reinforced/nitrogen,
+/turf/simulated/floor/reinforced/nitrogen{
+	initial_gas_mix = "n2=82.1472;TEMP=293.15"
+	},
 /area/engineering/engine_room)
 "GJ" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -7052,7 +7062,9 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 6
 	},
-/turf/simulated/floor/reinforced/nitrogen,
+/turf/simulated/floor/reinforced/nitrogen{
+	initial_gas_mix = "n2=82.1472;TEMP=293.15"
+	},
 /area/engineering/engine_room)
 "OD" = (
 /turf/simulated/wall/r_wall,
@@ -7357,7 +7369,9 @@
 /area/engineering/engine_monitoring)
 "Qf" = (
 /obj/machinery/power/supermatter,
-/turf/simulated/floor/reinforced/nitrogen,
+/turf/simulated/floor/reinforced/nitrogen{
+	initial_gas_mix = "n2=82.1472;TEMP=293.15"
+	},
 /area/engineering/engine_room)
 "Qh" = (
 /obj/machinery/atmospherics/binary/circulator{
@@ -8288,7 +8302,9 @@
 	use_power = 1;
 	volume_rate = 700
 	},
-/turf/simulated/floor/reinforced/nitrogen,
+/turf/simulated/floor/reinforced/nitrogen{
+	initial_gas_mix = "n2=82.1472;TEMP=293.15"
+	},
 /area/engineering/engine_room)
 "Vx" = (
 /obj/structure/cable{
@@ -8358,7 +8374,9 @@
 	icon_state = "warning"
 	},
 /obj/effect/floor_decal/industrial/warning,
-/turf/simulated/floor/reinforced/nitrogen,
+/turf/simulated/floor/reinforced/nitrogen{
+	initial_gas_mix = "n2=82.1472;TEMP=293.15"
+	},
 /area/engineering/engine_room)
 "VP" = (
 /obj/structure/table/rack{

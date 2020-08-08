@@ -65,19 +65,18 @@
 	desc = "A random unknown planet."
 	mappath = 'poi_d/Class-D.dmm'
 	associated_map_datum = /datum/map_z_level/triumph_lateload/away_d_world
-	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = FALSE)
+	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
+
+/datum/map_template/triumph_lateload/away_d_world/on_map_loaded(z)
+	. = ..()
+	seed_submaps(list(Z_LEVEL_UNKNOWN_PLANET), 150, /area/triumph_away/poi_d/unexplored, /datum/map_template/Class_D)
+
+	//new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, Z_LEVEL_UNKNOWN_PLANET, world.maxx - 30, world.maxy - 30)
+	//new /datum/random_map/noise/ore/poi_d(null, 1, 1, Z_LEVEL_UNKNOWN_PLANET, 64, 64)
 
 /datum/map_z_level/triumph_lateload/away_d_world
 	name = "Away Mission - Rogue Planet"
 	z = Z_LEVEL_UNKNOWN_PLANET
-
-
-/datum/map_template/triumph_lateload/away_d_world/on_map_loaded(z)
-	. = ..()
-	seed_submaps(list(Z_LEVEL_UNKNOWN_PLANET), 150, /area/triumph_away/poi_d/unexplored, /datum/map_template/Class_D/)
-	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, Z_LEVEL_UNKNOWN_PLANET, world.maxx - 4, world.maxy - 4)
-	new /datum/random_map/noise/ore/poi_d/(null, 1, 1, Z_LEVEL_UNKNOWN_PLANET, 64, 64)
-
 
 //////////////////////////////////////////////////////////////////////////////////////
 // Admin-use z-levels for loading whenever an admin feels like
