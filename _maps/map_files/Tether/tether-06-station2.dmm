@@ -4458,9 +4458,6 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/machinery/light{
-	dir = 4
-	},
 /obj/structure/table/rack,
 /obj/item/rig/medical/equipped,
 /turf/simulated/floor/tiled/dark,
@@ -17629,6 +17626,9 @@
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 1
 	},
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/dark,
 /area/medical/medbay_emt_bay)
 "Kg" = (
@@ -18628,6 +18628,7 @@
 /obj/item/radio{
 	pixel_x = -4
 	},
+/obj/machinery/light,
 /turf/simulated/floor/tiled/dark,
 /area/medical/medbay_emt_bay)
 "Py" = (
