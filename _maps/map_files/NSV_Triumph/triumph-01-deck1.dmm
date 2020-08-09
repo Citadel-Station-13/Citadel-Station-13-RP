@@ -1536,7 +1536,7 @@
 	use_power = 1
 	},
 /turf/simulated/floor/airless,
-/area/space)
+/area/engineering/atmos)
 "if" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red,
 /turf/simulated/floor/tiled,
