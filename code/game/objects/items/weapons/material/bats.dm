@@ -32,5 +32,8 @@
 	name = "penetrator"
 	desc = "The letter E has been lovingly engraved into the handle. When this wobbles, it sounds exactly like shame."
 	icon_state = "penbat0"
-	base_icon = "penbat0"
+	base_icon = "penbat"
+	force = 0
+	throwforce = 0
+	attack_verb = list("smacked", "slapped", "thwapped", "struck", "bapped", "bonked")
 	default_material = "plastic"
