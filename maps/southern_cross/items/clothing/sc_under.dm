@@ -5,6 +5,8 @@
 	desc = "A blue and grey NanoTrasen flight suit. Warm and practical, it feels cozy."
 	icon_state = "pilot1"
 	worn_state = "pilot1"
+	rolled_down = 0
+	rolled_sleeves = 0
 	item_icons = list(slot_w_uniform_str = 'maps/southern_cross/icons/mob/sc_under.dmi')
 	icon = 'maps/southern_cross/icons/obj/sc_uniforms.dmi'
 	sprite_sheets = list(
