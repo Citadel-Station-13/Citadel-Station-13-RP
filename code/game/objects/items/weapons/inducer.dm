@@ -35,6 +35,14 @@
 	cell.update_icon()
 	target.update_icon()
 
+/obj/item/inducer/proc/induceSMES(/obj/machinery/power/smes/target, coefficient)
+	var/totransfer = min(cell.charge,(powertransfer * coefficient))
+	cell.use(totransfer)
+	cell.update_icon()
+	if(target.charge > target.capacity)
+		target.charge += totransfer
+	target.update_icon()
+
 /obj/item/inducer/get_cell()
 	return cell
 
@@ -189,6 +197,28 @@
 
 		recharging = FALSE
 		return TRUE
+	else if(istype(A, /obj/machinery/power/smes))
+		var/obj/machinery/power/smes/S = A
+			if(S.charge >= S.capacity)
+				to_chat(user, "<span class='notice'>[S] is fully charged!</span>")
+				recharging = FALSE
+				return TRUE
+			user.visible_message("<span class='notice'>[user] starts recharging [S] with [src].</span>", "<span class='notice'>You start recharging [S] with [src].</span>")
+			var/datum/beam/charge_beam = user.Beam(S, icon_state = "rped_upgrade", time = 20 SECONDS)
+			var/filter = filter(type = "outline", size = 1, color = "#22AAFF")
+			S.filters += filter
+			var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
+			spark_system.set_up(5, 0, get_turf(S))
+			spark_system.attach(S)
+			while(S.charge < S.capacity)
+				if(do_after(user, 2 SECONDS, target = user) && cell.charge)
+					done_any = TRUE
+					induceSMES(S, coefficient)
+					spark_system.start()
+					if(O)
+						O.update_icon()
+				else
+					break
 	else //Couldn't find a cell
 		to_chat(user, "<span class='alert'>Error unable to interface with device.</span>")
 
