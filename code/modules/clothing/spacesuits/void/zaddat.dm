@@ -6,7 +6,7 @@
 	heat_protection = HEAD
 	body_parts_covered = HEAD|FACE|EYES
 	slowdown = 0.5
-	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 100, rad = 70) //realistically would have some armor but balance.
+	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 100, rad = 100) //hey look! some rad protection!
 	siemens_coefficient = 1
 
 	species_restricted = list(SPECIES_ZADDAT, SPECIES_PROMETHEAN) //on request from maintainer
@@ -15,7 +15,7 @@
 	name = "\improper Hegemony Shroud"
 	desc = "A Hegemony environment suit, still favored by the Spacer Zaddat because of its durability and ease of manufacture."
 	slowdown = 1
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 100, rad = 70)
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 100, rad = 100)
 	siemens_coefficient = 1
 	allowed = list(/obj/item/flashlight,/obj/item/tank)
 	icon_state = "zaddat_hegemony"
