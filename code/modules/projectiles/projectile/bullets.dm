@@ -95,7 +95,7 @@
 
 /obj/item/projectile/bullet/pistol/medium/hunter
 	damage = 15
-	SA_bonus_damage = 45 // 50 total against animals
+	SA_bonus_damage = 45 // 60 total against animals
 	SA_vulnerability = SA_ANIMAL
 
 /obj/item/projectile/bullet/pistol/strong // .357 and .44 caliber stuff. High power pistols like the Mateba or Desert Eagle. Sacrifice capacity for power.
