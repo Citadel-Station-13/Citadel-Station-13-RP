@@ -61,14 +61,14 @@
 	department = "Exploration"
 	department_flag = MEDSCI
 	faction = "Station"
-	total_positions = 2
+	total_positions = 4
 	spawn_positions = 2
 	supervisors = "the pathfinder and the head of personnel"
 	selection_color = "#999440"
 	idtype = /obj/item/card/id/explorer/pilot
 	economic_modifier = 5
 	minimal_player_age = 3
-	alt_titles = list("Aviator")
+	alt_titles = list("Aviator", "Combat Pilot")
 	access = list(access_pilot)
 	minimal_access = list(access_pilot)
 	outfit_type = /decl/hierarchy/outfit/job/pilot

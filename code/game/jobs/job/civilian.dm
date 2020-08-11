@@ -71,7 +71,7 @@
 	ideal_character_age = 40
 
 	outfit_type = /decl/hierarchy/outfit/job/cargo/qm
-	alt_titles = list("Supply Chief")
+	alt_titles = list("Supply Chief", "Inventory Chief")
 
 /datum/job/cargo_tech
 	title = "Cargo Technician"
