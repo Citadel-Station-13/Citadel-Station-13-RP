@@ -285,8 +285,8 @@
 
 	var/obj/P = new /obj/effect/decal/point(tile)
 	P.invisibility = invisibility
-	P.plane = isturf(A)? plane : A.plane
-	P.layer = FLOAT_LAYER
+	P.plane = ABOVE_PLANE
+	P.layer = FLY_LAYER
 	P.pixel_x = A.pixel_x
 	P.pixel_y = A.pixel_y
 	QDEL_IN(P, 2 SECONDS)
