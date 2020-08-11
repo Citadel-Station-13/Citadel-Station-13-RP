@@ -34,7 +34,6 @@
 	// Whether or not the accessory can be affected by colouration
 	var/do_colouration = 1
 
-
 /*
 ////////////////////////////
 /  =--------------------=  /
@@ -45,7 +44,7 @@
 
 /datum/sprite_accessory/hair
 
-	icon = 'icons/mob/Human_face_m.dmi'	  // default icon for all hairs
+	icon = 'icons/mob/human_face_m.dmi'	  // default icon for all hairs
 	var/icon_add = 'icons/mob/human_face.dmi'
 	var/flags
 
@@ -64,6 +63,11 @@
 	afro_large
 		name = "Big Afro"
 		icon_state = "hair_bigafro"
+
+	ahoge
+		name = "Ahoge"
+		icon_state = "hair_ahoge"
+		icon_add = null
 
 	bald
 		name = "Bald"
@@ -363,6 +367,11 @@
 		name = "Half-banged Hair Alt"
 		icon_state = "hair_halfbang_alt"
 
+	hedgehog
+		name = "Hedgehog Hair"
+		icon_state = "hair_hedgehog"
+		icon_add = null
+
 	hightight
 		name = "High and Tight"
 		icon_state = "hair_hightight"
@@ -450,6 +459,11 @@
 	reversemohawk
 		name = "Mohawk Reverse"
 		icon_state = "hair_reversemohawk"
+
+	messy
+		name = "Messy"
+		icon_state = "hair_messy_tg"
+		icon_add = null
 
 	mohawkunshaven
 		name = "Mohawk Unshaven"

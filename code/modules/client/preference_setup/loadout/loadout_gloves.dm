@@ -101,7 +101,9 @@
 	ringtype["ring, uranium"] = /obj/item/clothing/gloves/ring/material/uranium
 	ringtype["ring, osmium"] = /obj/item/clothing/gloves/ring/material/osmium
 	ringtype["ring, mhydrogen"] = /obj/item/clothing/gloves/ring/material/mhydrogen
+	ringtype["ring, custom"] = /obj/item/clothing/gloves/ring/custom
 	gear_tweaks += new/datum/gear_tweak/path(ringtype)
+
 
 /datum/gear/gloves/circuitry
 	display_name = "gloves, circuitry (empty)"
