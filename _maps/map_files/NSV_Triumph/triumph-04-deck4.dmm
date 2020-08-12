@@ -1713,6 +1713,12 @@
 /obj/item/tank/jetpack/oxygen,
 /obj/item/reagent_containers/hypospray/autoinjector/biginjector/healing_nanites,
 /obj/item/reagent_containers/hypospray/autoinjector/biginjector/stimm,
+/obj/item/clothing/suit/space/void/exploration{
+	armor = list("melee" = 50, "bullet" = 40, "laser" = 45, "energy" = 45, "bomb" = 30, "bio" = 100, "rad" = 70);
+	desc = "A heavier varient of the radiation-resistant voidsuit for explorations. This one features increased armor protection against small and medium arms fire, but comes at the cost of extra weight.";
+	move_speed = 7;
+	name = "heavy exploration voidsuit"
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/triumph/station/explorer_prep)
 "bAh" = (
@@ -13860,7 +13866,9 @@
 "lTt" = (
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/machinery/mech_recharger,
-/obj/mecha/working/hoverpod,
+/obj/mecha/working/hoverpod{
+	maxhealth = 300
+	},
 /turf/simulated/shuttle/floor/voidcraft,
 /area/shuttle/excursion/triumph)
 "lTz" = (
@@ -19577,6 +19585,12 @@
 /obj/item/tank/jetpack/oxygen,
 /obj/item/reagent_containers/hypospray/autoinjector/biginjector/healing_nanites,
 /obj/item/reagent_containers/hypospray/autoinjector/biginjector/stimm,
+/obj/item/clothing/suit/space/void/exploration{
+	armor = list("melee" = 50, "bullet" = 40, "laser" = 45, "energy" = 45, "bomb" = 30, "bio" = 100, "rad" = 70);
+	desc = "A heavier varient of the radiation-resistant voidsuit for explorations. This one features increased armor protection against small and medium arms fire, but comes at the cost of extra weight.";
+	move_speed = 7;
+	name = "heavy exploration voidsuit"
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/triumph/station/explorer_prep)
 "qxN" = (
@@ -26305,6 +26319,12 @@
 /obj/machinery/camera/network/exploration,
 /obj/item/reagent_containers/hypospray/autoinjector/biginjector/healing_nanites,
 /obj/item/reagent_containers/hypospray/autoinjector/biginjector/stimm,
+/obj/item/clothing/suit/space/void/exploration{
+	armor = list("melee" = 50, "bullet" = 40, "laser" = 45, "energy" = 45, "bomb" = 30, "bio" = 100, "rad" = 70);
+	desc = "A heavier varient of the radiation-resistant voidsuit for explorations. This one features increased armor protection against small and medium arms fire, but comes at the cost of extra weight.";
+	move_speed = 7;
+	name = "heavy exploration voidsuit"
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/triumph/station/explorer_prep)
 "wbh" = (
