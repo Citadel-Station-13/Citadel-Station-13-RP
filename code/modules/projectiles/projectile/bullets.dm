@@ -80,6 +80,7 @@
 	damage = 15
 	SA_bonus_damage = 25 // 40 total against animals
 	SA_vulnerability = SA_ANIMAL
+	embed_chance = -1
 
 /obj/item/projectile/bullet/pistol/medium // .45 (and maybe .40 if it ever gets added) caliber security pistols. Balance between capacity and power.
 	fire_sound = 'sound/weapons/gunshot3.ogg' // Snappier sound.
@@ -97,6 +98,7 @@
 	damage = 15
 	SA_bonus_damage = 45 // 60 total against animals
 	SA_vulnerability = SA_ANIMAL
+	embed_chance = -1
 
 /obj/item/projectile/bullet/pistol/strong // .357 and .44 caliber stuff. High power pistols like the Mateba or Desert Eagle. Sacrifice capacity for power.
 	fire_sound = 'sound/weapons/gunshot4.ogg'
