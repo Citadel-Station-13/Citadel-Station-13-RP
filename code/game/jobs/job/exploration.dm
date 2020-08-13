@@ -79,8 +79,8 @@
 	department = "Exploration"
 	department_flag = MEDSCI
 	faction = "Station"
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 4
+	spawn_positions = 4
 	supervisors = "the pathfinder and the research director"
 	selection_color = "#999440"
 	idtype = /obj/item/card/id/explorer/explorer

@@ -1164,6 +1164,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/escape/medical_escape_pod_hallway)
+"cG" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/wood/sif,
+/area/crew_quarters/medbreak)
 "cH" = (
 /obj/machinery/mech_recharger,
 /obj/machinery/button/remote/blast_door{
@@ -2312,6 +2318,9 @@
 /area/maintenance/fore)
 "fg" = (
 /obj/machinery/recharge_station,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medical_restroom)
 "fh" = (
@@ -2407,6 +2416,9 @@
 	name = "xeno_spawn";
 	pixel_x = -1
 	},
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medical_restroom)
 "fw" = (
@@ -2443,7 +2455,6 @@
 /area/hallway/primary/port)
 "fA" = (
 /obj/machinery/vending/snack,
-/obj/machinery/light,
 /turf/simulated/floor/wood/sif,
 /area/crew_quarters/medbreak)
 "fB" = (
@@ -4251,6 +4262,10 @@
 "jv" = (
 /turf/simulated/wall/r_wall,
 /area/medical/ward)
+"jw" = (
+/obj/structure/closet/firecloset,
+/turf/simulated/floor/tiled,
+/area/medical/ward)
 "jx" = (
 /obj/machinery/camera/network/medbay{
 	dir = 1
@@ -5314,6 +5329,12 @@
 "lN" = (
 /turf/simulated/floor/tiled/techfloor,
 /area/assembly/chargebay)
+"lO" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/wood/sif,
+/area/crew_quarters/medbreak)
 "lP" = (
 /obj/structure/disposalpipe/down{
 	dir = 8
@@ -5909,7 +5930,7 @@
 /obj/item/toy/plushie/rat{
 	pixel_y = 33
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/dark,
 /area/medical/psych)
 "nc" = (
 /obj/machinery/door/firedoor/glass,
@@ -10065,7 +10086,7 @@
 /obj/item/toy/plushie/kitten{
 	pixel_y = 32
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/dark,
 /area/medical/psych)
 "vV" = (
 /obj/structure/table/standard,
@@ -10595,6 +10616,23 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/first_aid_station)
+"wS" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 9
+	},
+/obj/machinery/button/remote/airlock{
+	desc = "A remote control switch for the medbay recovery room door.";
+	id = "MedbayPsyche";
+	name = "Door Switch";
+	pixel_x = -7;
+	pixel_y = 26
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/surgery_hallway)
 "wT" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -13384,6 +13422,10 @@
 "Cz" = (
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery2)
+"CA" = (
+/obj/structure/closet/firecloset,
+/turf/simulated/floor/plating,
+/area/maintenance/fpmaint2)
 "CB" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
@@ -15000,14 +15042,19 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/black,
 /obj/machinery/door/window/westright{
-	dir = 1;
-	name = "Virology Isolation Room One";
+	dir = 2;
+	name = "Virology Isolation Room Two";
 	req_access = list(39)
 	},
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
+	},
+/obj/machinery/door/window/westright{
+	dir = 1;
+	name = "Virology Isolation Room Two";
+	req_access = list(39)
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virologyisolation)
@@ -16357,6 +16404,11 @@
 	name = "Virology Isolation Room One";
 	req_access = list(39)
 	},
+/obj/machinery/door/window/westright{
+	dir = 2;
+	name = "Virology Isolation Room One";
+	req_access = list(39)
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virologyisolation)
 "IL" = (
@@ -17680,12 +17732,9 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/starboard)
 "LE" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 1
-	},
-/obj/structure/table/woodentable,
-/turf/simulated/floor/wood/sif,
-/area/crew_quarters/medbreak)
+/obj/structure/closet/firecloset,
+/turf/simulated/floor/tiled,
+/area/hallway/primary/starboard)
 "LF" = (
 /turf/simulated/wall/r_wall,
 /area/medical/virologyaccess)
@@ -18557,6 +18606,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
+	},
+/obj/machinery/light{
+	dir = 4
 	},
 /turf/simulated/floor/wood/sif,
 /area/crew_quarters/medbreak)
@@ -22858,7 +22910,7 @@
 "Wu" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 2;
-	id_tag = "MedbayFoyer";
+	id_tag = "MedbayPsyche";
 	name = "Treatment Centre";
 	req_access = list();
 	req_one_access = list(5)
@@ -31280,7 +31332,7 @@ NI
 NI
 lu
 BO
-FC
+wS
 jQ
 bB
 eS
@@ -33142,7 +33194,7 @@ bw
 KF
 Ow
 Fj
-Fj
+jw
 Ow
 Wl
 Nw
@@ -36247,7 +36299,7 @@ vT
 zo
 aA
 OJ
-xe
+lO
 lx
 xe
 xe
@@ -36674,7 +36726,7 @@ pC
 aA
 eg
 Ev
-LE
+rz
 rz
 jU
 wl
@@ -36961,7 +37013,7 @@ Nz
 xe
 Zn
 qA
-xe
+cG
 EB
 aA
 Nk
@@ -37529,7 +37581,7 @@ Sa
 Sa
 XX
 SY
-Sa
+CA
 XX
 Yj
 ib
@@ -38376,7 +38428,7 @@ Zy
 Zy
 Zy
 Uj
-lR
+LE
 lR
 pt
 PD
@@ -40507,7 +40559,7 @@ vd
 YY
 RU
 YY
-MD
+YY
 Pw
 gK
 gK
