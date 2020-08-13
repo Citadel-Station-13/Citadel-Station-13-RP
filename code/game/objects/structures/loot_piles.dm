@@ -876,6 +876,79 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/mecha_parts/mecha_equipment/teleporter
 		)
 
+//Micro mecha loot.
+/obj/structure/loot_pile/mecha/mouse_tank
+	name = "micro wreckage"
+	desc = "The ruins of a small tank. Perhaps some child's toy?"
+	icon = 'icons/mecha/mecha.dmi'
+	icon_state = "mousetank-broken"
+	density = TRUE
+	anchored = FALSE // In case a dead mecha-mob dies in a bad spot.
+
+	chance_uncommon = 20
+	chance_rare = 10
+
+	loot_depletion = TRUE
+	loot_left = 5
+
+	common_loot = list(
+		/obj/random/tool,
+		/obj/random/tool,
+		/obj/item/stack/cable_coil/random,
+		/obj/random/tank,
+		/obj/random/tech_supply/component,
+		/obj/random/tech_supply/component,
+		/obj/random/tech_supply/component,
+		/obj/effect/decal/remains/mouse,
+		/obj/item/stack/material/steel{amount = 20}
+		)
+
+	uncommon_loot = list(
+		/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg/rigged,
+		/obj/item/mecha_parts/mecha_equipment/generator
+		)
+
+	rare_loot = list(
+		/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg,
+		/obj/item/mecha_parts/mecha_equipment/generator/nuclear,
+		)
+
+/obj/structure/loot_pile/mecha/mouse_tank/livewire
+	name = "micro wreckage"
+	desc = "The smoldering ruins of a small tank. Perhaps some child's toy?"
+	icon = 'icons/mecha/mecha.dmi'
+	icon_state = "livewire-broken"
+	density = TRUE
+	anchored = FALSE // In case a dead mecha-mob dies in a bad spot.
+
+	chance_uncommon = 20
+	chance_rare = 10
+
+	loot_depletion = TRUE
+	loot_left = 5
+
+	common_loot = list(
+		/obj/random/tool,
+		/obj/random/tool,
+		/obj/item/stack/cable_coil/random,
+		/obj/random/tank,
+		/obj/random/tech_supply/component,
+		/obj/random/tech_supply/component,
+		/obj/random/tech_supply/component,
+		/obj/effect/decal/remains/mouse,
+		/obj/item/stack/material/steel{amount = 20}
+		)
+
+	uncommon_loot = list(
+		/obj/item/mecha_parts/mecha_equipment/weapon/energy/flamer/rigged,
+		/obj/item/mecha_parts/mecha_equipment/tool/extinguisher
+		)
+
+	rare_loot = list(
+		/obj/item/mecha_parts/mecha_equipment/weapon/energy/flamer,
+		/obj/item/mecha_parts/mecha_equipment/generator,
+		)
+
 /obj/structure/loot_pile/surface/drone
 	name = "drone wreckage"
 	desc = "The ruins of some unfortunate drone. Perhaps something is salvageable."

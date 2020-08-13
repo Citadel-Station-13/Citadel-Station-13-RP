@@ -130,3 +130,116 @@
 	speak = list("Squeek!","SQUEEK!","Squeek?")
 	emote_hear = list("squeeks","squeaks","squiks")
 	emote_see = list("runs in a circle", "shakes", "scritches at something")
+
+//Base ported from vgstation. Operative Mice.
+//Icon artists: DeityLink and plosky1
+/mob/living/simple_mob/animal/passive/mouse/mouse_op
+	name = "mouse operative"
+	desc = "Oh no..."
+	tt_desc = "E Mus sinister"
+	icon_state = "mouse_operative"
+	item_state = "mouse_operative"
+	icon_living = "mouse_operative"
+	icon_dead = "mouse_operative_dead"
+
+	maxHealth = 50
+	health = 50
+	universal_understand = 1
+
+	min_oxy = 0
+	minbodytemp = 0
+	maxbodytemp = 5000
+
+	taser_kill = 0
+
+	//Mob melee settings
+	melee_damage_lower = 5
+	melee_damage_upper = 15
+	list/attacktext = list("attacked", "chomped", "gnawed on")
+	list/friendly = list("baps", "nuzzles")
+	attack_armor_type = "melee"
+	attack_sharp = 1
+	attack_edge = 1
+
+	//Damage resistances
+	shock_resist = 1
+	armor = list(
+				"melee" = 40,
+				"bullet" = 30,
+				"laser" = 30,
+				"energy" = 10,
+				"bomb" = 10,
+				"bio" = 100,
+				"rad" = 100)
+
+	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
+
+/mob/living/simple_mob/animal/passive/mouse/pyro
+	name = "pyro mouse"
+	desc = "What kind of madman would strap this to a mouse?"
+	tt_desc = "E Mus phlogiston"
+	icon_state = "mouse_ash"
+	item_state = "mouse_ash"
+	icon_living = "mouse_ash"
+	icon_dead = "mouse_ash_dead"
+
+	maxHealth = 30
+	health = 30
+	universal_understand = 1
+
+	min_oxy = 0
+	minbodytemp = 0
+	maxbodytemp = 5000
+
+	taser_kill = 0
+
+	//Mob melee settings
+	melee_damage_lower = 5
+	melee_damage_upper = 10
+	list/attacktext = list("attacked", "chomped", "gnawed on")
+	list/friendly = list("baps", "nuzzles")
+	attack_armor_type = "melee"
+	attack_sharp = 0
+	attack_edge = 0
+
+	var/exploded = FALSE
+	var/explosion_dev_range		= 0
+	var/explosion_heavy_range	= 0
+	var/explosion_light_range	= 2
+	var/explosion_flash_range	= 4 // This doesn't do anything iirc.
+
+	var/explosion_delay_lower	= 1 SECOND	// Lower bound for explosion delay.
+	var/explosion_delay_upper	= 3 SECONDS	// Upper bound.
+
+
+	//Damage resistances
+	shock_resist = 0.6
+	armor = list(
+				"melee" = 10,
+				"bullet" = 0,
+				"laser" = 40,
+				"energy" = 30,
+				"bomb" = 90,
+				"bio" = 100,
+				"rad" = 100)
+
+	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
+
+/mob/living/simple_mob/animal/passive/mouse/pyro/death()
+	visible_message("<span class='critical'>\The [src]'s body begins to rupture!</span>")
+	var/delay = rand(1, 3)
+	spawn(0)
+		// Flash black and red as a warning.
+		for(var/i = 1 to delay)
+			if(i % 2 == 0)
+				color = "#000000"
+			else
+				color = "#FF0000"
+			sleep(1)
+
+	spawn(rand(1,5))
+		if(src && !exploded)
+			visible_message("<span class='critical'>\The [src]'s body detonates!</span>")
+			exploded = 1
+			explosion(src.loc, 0, 0, 2, 4)
+	return ..()
