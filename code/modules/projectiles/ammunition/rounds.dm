@@ -96,6 +96,11 @@
 	desc = "A 9mm hollow-point bullet casing."
 	projectile_type = /obj/item/projectile/bullet/pistol/hp
 
+/obj/item/ammo_casing/a9mm/hunter
+	desc = "A 9mm hunting bullet casing."
+	projectile_type = /obj/item/projectile/bullet/pistol/hunter
+	matter = list(DEFAULT_WALL_MATERIAL = 80)
+
 
 /obj/item/ammo_casing/a9mm/flash
 	desc = "A 9mm flash shell casing."
@@ -126,6 +131,11 @@
 	desc = "A .45 Armor-Piercing bullet casing."
 	icon_state = "r-casing"
 	projectile_type = /obj/item/projectile/bullet/pistol/medium/ap
+
+/obj/item/ammo_casing/a45/hunter
+	desc = "A .45 hunting bullet casing."
+	projectile_type = /obj/item/projectile/bullet/pistol/medium/hunter
+	matter = list(DEFAULT_WALL_MATERIAL = 75)
 
 /obj/item/ammo_casing/a45/practice
 	desc = "A .45 practice bullet casing."
