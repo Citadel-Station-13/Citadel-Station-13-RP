@@ -133,6 +133,7 @@
 /area/triumph_away/debrisfield/explored)
 "aB" = (
 /obj/structure/table/reinforced,
+/obj/item/reagent_containers/chem_disp_cartridge/plantbgone,
 /turf/simulated/floor/tiled/white/airless,
 /area/triumph_away/debrisfield/explored)
 "aC" = (
@@ -245,6 +246,7 @@
 /obj/structure/table/reinforced,
 /obj/item/paper_bin,
 /obj/item/pen/blue,
+/obj/item/reagent_containers/chem_disp_cartridge/rezadone,
 /turf/simulated/floor/tiled/white/airless,
 /area/triumph_away/debrisfield/explored)
 "aS" = (
@@ -369,6 +371,9 @@
 /area/triumph_away/debrisfield/explored)
 "bo" = (
 /obj/structure/table/reinforced,
+/obj/random/slimecore,
+/obj/random/slimecore,
+/obj/random/slimecore,
 /obj/random/slimecore,
 /obj/random/slimecore,
 /obj/random/slimecore,
@@ -650,7 +655,7 @@ ad
 ad
 ad
 ad
-ad
+ar
 ad
 ad
 ad
@@ -750,7 +755,7 @@ aa
 aE
 ad
 ad
-ad
+ar
 ad
 ad
 ad
@@ -890,7 +895,7 @@ ad
 ad
 ad
 ab
-ad
+ar
 ad
 ad
 ab

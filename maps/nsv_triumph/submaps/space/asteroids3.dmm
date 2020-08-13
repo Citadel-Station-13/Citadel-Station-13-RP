@@ -5,6 +5,10 @@
 "b" = (
 /turf/template_noop,
 /area/triumph_away/debrisfield/explored)
+"v" = (
+/obj/triumph_away_spawner/debrisfield/carp/hard,
+/turf/template_noop,
+/area/triumph_away/debrisfield/explored)
 
 (1,1,1) = {"
 a
@@ -54,7 +58,7 @@ b
 b
 b
 b
-b
+v
 b
 a
 a

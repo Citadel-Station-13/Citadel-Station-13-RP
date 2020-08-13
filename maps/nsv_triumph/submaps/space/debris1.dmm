@@ -13,6 +13,10 @@
 /obj/structure/girder,
 /turf/simulated/floor/airless,
 /area/triumph_away/debrisfield/explored)
+"m" = (
+/obj/random/maintenance/research,
+/turf/simulated/floor/airless,
+/area/triumph_away/debrisfield/explored)
 "w" = (
 /obj/triumph_away_spawner/debrisfield/carp,
 /turf/simulated/floor/airless,
@@ -20,6 +24,10 @@
 "L" = (
 /obj/triumph_away_spawner/debrisfield/carp/hard,
 /turf/template_noop,
+/area/triumph_away/debrisfield/explored)
+"M" = (
+/obj/random/maintenance/engineering,
+/turf/simulated/floor/airless,
 /area/triumph_away/debrisfield/explored)
 
 (1,1,1) = {"
@@ -34,14 +42,14 @@ c
 a
 a
 w
-c
+M
 c
 b
 "}
 (3,1,1) = {"
 a
 a
-c
+m
 c
 L
 b

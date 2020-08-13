@@ -17,6 +17,15 @@
 /turf/simulated/floor/airless,
 /area/triumph_away/debrisfield/explored)
 "f" = (
+/obj/structure/target_stake,
+/turf/simulated/shuttle/floor/white/airless,
+/area/triumph_away/debrisfield/explored)
+"I" = (
+/obj/triumph_away_spawner/debrisfield/derelict,
+/turf/simulated/floor/airless,
+/area/triumph_away/debrisfield/explored)
+"Y" = (
+/obj/random/ammo_all,
 /turf/simulated/shuttle/floor/white/airless,
 /area/triumph_away/debrisfield/explored)
 
@@ -38,20 +47,20 @@ a
 a
 d
 f
-e
+I
 b
 "}
 (4,1,1) = {"
 a
 d
-e
+Y
 b
 a
 "}
 (5,1,1) = {"
 b
 c
-e
+I
 b
 a
 "}
@@ -59,6 +68,6 @@ a
 b
 b
 b
-a
-a
+e
+b
 "}

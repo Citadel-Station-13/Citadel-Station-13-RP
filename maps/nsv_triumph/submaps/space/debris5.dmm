@@ -7,10 +7,15 @@
 /turf/space,
 /area/triumph_away/debrisfield/explored)
 "c" = (
+/obj/random/gun,
 /turf/simulated/floor/airless,
 /area/triumph_away/debrisfield/explored)
 "d" = (
 /turf/simulated/shuttle/wall/dark,
+/area/triumph_away/debrisfield/explored)
+"m" = (
+/obj/random/ammo,
+/turf/simulated/floor/airless,
 /area/triumph_away/debrisfield/explored)
 
 (1,1,1) = {"
@@ -22,17 +27,17 @@ b
 (2,1,1) = {"
 b
 c
-c
+m
 d
 "}
 (3,1,1) = {"
-a
+b
 d
 d
 b
 "}
 (4,1,1) = {"
-a
+d
 a
 a
 b

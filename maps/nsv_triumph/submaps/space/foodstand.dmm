@@ -16,14 +16,28 @@
 /obj/item/reagent_containers/food/snacks/carpmeat,
 /obj/item/reagent_containers/food/snacks/carpmeat,
 /obj/item/reagent_containers/food/snacks/carpmeat,
+/obj/item/reagent_containers/food/snacks/carpmeat,
+/obj/item/reagent_containers/food/snacks/carpmeat,
+/obj/item/reagent_containers/food/snacks/carpmeat,
+/obj/item/reagent_containers/food/snacks/carpmeat,
+/obj/item/reagent_containers/food/snacks/carpmeat,
+/obj/item/reagent_containers/food/snacks/carpmeat,
+/obj/item/reagent_containers/food/snacks/carpmeat,
 /turf/simulated/floor/wood,
 /area/triumph_away/debrisfield/explored)
 "f" = (
 /obj/structure/table/woodentable,
-/obj/item/reagent_containers/food/condiment/coldsauce,
+/obj/item/reagent_containers/food/condiment/coldsauce{
+	pixel_x = 4;
+	pixel_y = 16
+	},
 /obj/item/reagent_containers/food/condiment/ketchup,
-/obj/item/reagent_containers/food/condiment/hotsauce,
-/obj/item/reagent_containers/food/condiment/soysauce,
+/obj/item/reagent_containers/food/condiment/hotsauce{
+	pixel_x = 8
+	},
+/obj/item/reagent_containers/food/condiment/soysauce{
+	pixel_x = -8
+	},
 /turf/simulated/floor/wood,
 /area/triumph_away/debrisfield/explored)
 "g" = (
@@ -51,6 +65,8 @@
 /area/triumph_away/debrisfield/explored)
 "k" = (
 /obj/structure/table/woodentable,
+/obj/item/reagent_containers/food/snacks/taco,
+/obj/item/reagent_containers/food/snacks/taco,
 /turf/simulated/floor/wood,
 /area/triumph_away/debrisfield/explored)
 "l" = (

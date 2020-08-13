@@ -13,11 +13,15 @@
 /obj/triumph_away_spawner/debrisfield/carp,
 /turf/simulated/floor/airless,
 /area/triumph_away/debrisfield/explored)
+"p" = (
+/obj/random/maintenance/security,
+/turf/simulated/floor/airless,
+/area/triumph_away/debrisfield/explored)
 
 (1,1,1) = {"
 a
 b
-c
+p
 "}
 (2,1,1) = {"
 a
@@ -40,7 +44,7 @@ c
 b
 "}
 (6,1,1) = {"
-c
+p
 b
 b
 "}

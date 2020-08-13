@@ -101,6 +101,7 @@
 /area/triumph_away/debrisfield/explored)
 "v" = (
 /obj/structure/table/rack,
+/obj/item/reagent_containers/chem_disp_cartridge/clonexadone,
 /turf/simulated/shuttle/floor/airless,
 /area/triumph_away/debrisfield/explored)
 "w" = (
@@ -180,6 +181,16 @@
 /area/triumph_away/debrisfield/explored)
 "M" = (
 /turf/simulated/shuttle/wall/hard_corner,
+/area/triumph_away/debrisfield/explored)
+"V" = (
+/obj/structure/table/rack,
+/obj/item/reagent_containers/chem_disp_cartridge/dexalin_p,
+/turf/simulated/shuttle/floor/airless,
+/area/triumph_away/debrisfield/explored)
+"W" = (
+/obj/structure/table/rack,
+/obj/item/reagent_containers/chem_disp_cartridge/peridaxon,
+/turf/simulated/shuttle/floor/airless,
 /area/triumph_away/debrisfield/explored)
 
 (1,1,1) = {"
@@ -635,8 +646,8 @@ c
 t
 c
 v
-v
-v
+V
+W
 c
 a
 a

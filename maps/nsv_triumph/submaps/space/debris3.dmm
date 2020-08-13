@@ -13,6 +13,18 @@
 /obj/structure/girder,
 /turf/simulated/floor/airless,
 /area/triumph_away/debrisfield/explored)
+"k" = (
+/obj/triumph_away_spawner/debrisfield/carp,
+/turf/simulated/floor/tiled/airless,
+/area/triumph_away/debrisfield/explored)
+"r" = (
+/obj/random/medical,
+/turf/simulated/floor/tiled/airless,
+/area/triumph_away/debrisfield/explored)
+"u" = (
+/obj/random/medical,
+/turf/simulated/floor/airless,
+/area/triumph_away/debrisfield/explored)
 "D" = (
 /obj/triumph_away_spawner/debrisfield/carp,
 /turf/simulated/floor/airless,
@@ -30,9 +42,9 @@ d
 a
 b
 b
-c
-D
-c
+u
+k
+r
 "}
 (3,1,1) = {"
 b
@@ -43,7 +55,7 @@ b
 c
 "}
 (4,1,1) = {"
-c
+u
 c
 b
 b

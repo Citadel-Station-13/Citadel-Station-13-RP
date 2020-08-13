@@ -133,6 +133,13 @@
 /area/triumph_away/debrisfield/explored)
 "aw" = (
 /obj/effect/floor_decal/industrial/outline/red,
+/obj/structure/closet/crate/secure/weapon,
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/phase,
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/phase,
+/obj/random/ammo_all,
+/obj/random/ammo_all,
+/obj/random/janusmodule,
+/obj/random/multiple/gun/projectile/shotgun,
 /turf/simulated/shuttle/floor/darkred/airless,
 /area/triumph_away/debrisfield/explored)
 "ax" = (
@@ -144,6 +151,7 @@
 /obj/structure/table/steel,
 /obj/item/clothing/head/pilot,
 /obj/random/unidentified_medicine/drug_den,
+/obj/random/toolbox,
 /turf/simulated/shuttle/floor/black/airless,
 /area/triumph_away/debrisfield/explored)
 "az" = (
@@ -221,6 +229,7 @@
 	frequency = 1380;
 	id_tag = "expshuttle_vent"
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/shuttle/floor/black/airless,
 /area/triumph_away/debrisfield/explored)
 "aH" = (
@@ -329,6 +338,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/blood/gibs/xeno/body,
 /turf/simulated/shuttle/floor/black/airless,
 /area/triumph_away/debrisfield/explored)
 "aW" = (
@@ -396,6 +406,39 @@
 "bi" = (
 /obj/structure/loot_pile/mecha/durand,
 /turf/simulated/mineral/floor/vacuum,
+/area/triumph_away/debrisfield/explored)
+"bv" = (
+/obj/effect/decal/cleanable/blood/gibs/xeno/limb,
+/turf/simulated/shuttle/floor/black/airless,
+/area/triumph_away/debrisfield/explored)
+"oX" = (
+/obj/effect/decal/cleanable/blood/gibs/xeno/core,
+/turf/simulated/shuttle/floor/black/airless,
+/area/triumph_away/debrisfield/explored)
+"pq" = (
+/obj/triumph_away_spawner/debrisfield/derelict,
+/turf/simulated/shuttle/floor/black/airless,
+/area/triumph_away/debrisfield/explored)
+"Iv" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1;
+	icon_state = "warning"
+	},
+/obj/effect/decal/cleanable/blood/gibs/xeno/body,
+/turf/simulated/shuttle/floor/black/airless,
+/area/triumph_away/debrisfield/explored)
+"Vl" = (
+/obj/effect/floor_decal/industrial/warning,
+/obj/effect/gibspawner/human,
+/turf/simulated/shuttle/floor/black/airless,
+/area/triumph_away/debrisfield/explored)
+"Xk" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 1;
+	icon_state = "shuttle_chair"
+	},
+/obj/effect/decal/cleanable/blood/gibs/xeno/limb,
+/turf/simulated/shuttle/floor/black/airless,
 /area/triumph_away/debrisfield/explored)
 
 (1,1,1) = {"
@@ -485,7 +528,7 @@ ax
 aa
 aa
 aB
-aL
+Vl
 az
 ac
 aX
@@ -502,7 +545,7 @@ ae
 ad
 ac
 ap
-ad
+pq
 au
 ac
 ao
@@ -526,7 +569,7 @@ ag
 ah
 bd
 aq
-ad
+oX
 av
 aa
 aa
@@ -546,7 +589,7 @@ aa
 aa
 aa
 aj
-ad
+oX
 ad
 an
 ad
@@ -580,7 +623,7 @@ aa
 aa
 an
 ad
-ad
+bv
 aL
 ad
 aa
@@ -623,7 +666,7 @@ aa
 aa
 aa
 aa
-aa
+bh
 aa
 aa
 aa
@@ -690,7 +733,7 @@ aa
 aa
 ai
 ay
-ad
+bv
 ac
 aa
 aq
@@ -743,7 +786,7 @@ ac
 aa
 aa
 ad
-av
+Xk
 ac
 aA
 aF
@@ -769,8 +812,8 @@ aq
 as
 av
 ac
-aB
-ad
+Iv
+oX
 aL
 aR
 ac

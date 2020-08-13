@@ -175,6 +175,7 @@
 	name = "cargotech locker";
 	req_access = list()
 	},
+/obj/item/pickaxe/diamonddrill,
 /turf/simulated/shuttle/floor/airless,
 /area/triumph_away/debrisfield/explored)
 "aN" = (
@@ -264,9 +265,17 @@
 "bd" = (
 /turf/simulated/shuttle/wall/hard_corner,
 /area/triumph_away/debrisfield/explored)
+"jk" = (
+/obj/machinery/giga_drill,
+/turf/simulated/shuttle/floor/airless,
+/area/triumph_away/debrisfield/explored)
 "wb" = (
 /obj/effect/gibspawner/human,
 /turf/simulated/shuttle/floor/white/airless,
+/area/triumph_away/debrisfield/explored)
+"HF" = (
+/obj/triumph_away_spawner/debrisfield/derelict/corrupt_maint_swarm,
+/turf/simulated/shuttle/floor/airless,
 /area/triumph_away/debrisfield/explored)
 "NO" = (
 /obj/triumph_away_spawner/debrisfield/derelict/corrupt_maint_swarm,
@@ -350,7 +359,7 @@ ah
 ah
 ap
 aK
-aA
+HF
 aN
 ab
 aP
@@ -528,7 +537,7 @@ aa
 ah
 ag
 ag
-aj
+NO
 ar
 au
 au
@@ -649,7 +658,7 @@ ag
 am
 ab
 al
-aA
+jk
 aM
 aM
 ab
