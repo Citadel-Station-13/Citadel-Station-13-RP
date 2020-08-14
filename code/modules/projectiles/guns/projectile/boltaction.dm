@@ -50,16 +50,103 @@
 //Lever actions are the same thing, but bigger.
 /obj/item/gun/projectile/shotgun/pump/rifle/lever
 	name = "lever-action rifle"
-	desc = "A reproduction of an almost ancient weapon design from the 19th century. This one uses a lever-action to move new rounds into the chamber. Uses 7.62mm rounds."
+	desc = "A reproduction of an almost ancient weapon design from the 19th century. This one uses a lever-action to move new rounds into the chamber. Uses .357 rounds."
 	item_state = "leveraction"
 	icon_state = "leveraction"
-	max_shells = 5
-	caliber = "7.62mm"
+	max_shells = 10
+	caliber = "357"
 	load_method = SINGLE_CASING
+	ammo_type = /obj/item/ammo_casing/a357
+	action_sound = 'sound/weapons/riflebolt.ogg'
+
+/obj/item/gun/projectile/shotgun/pump/rifle/lever/attackby(var/obj/item/A as obj, mob/user as mob)
+	if(istype(A, /obj/item/surgical/circular_saw) || istype(A, /obj/item/melee/energy) || istype(A, /obj/item/pickaxe/plasmacutter) && w_class != ITEMSIZE_NORMAL)
+		to_chat(user, "<span class='notice'>You begin to shorten the barrel and stock of \the [src].</span>")
+		if(loaded.len)
+			afterattack(user, user)
+			playsound(user, fire_sound, 50, 1)
+			user.visible_message("<span class='danger'>[src] goes off!</span>", "<span class='danger'>The rifle goes off in your face!</span>")
+			return
+		if(do_after(user, 30))
+			item_state = "mareleg"
+			icon_state = "mareleg"
+			w_class = ITEMSIZE_NORMAL
+			caliber = "357"
+			load_method = SINGLE_CASING
+			ammo_type = /obj/item/ammo_casing/a357
+			recoil = 1 // Less Ouch
+			accuracy = -5 // You know damn well why.
+			item_state = "gun"
+			max_shells = 5
+			slot_flags &= ~SLOT_BACK	//you can't sling it on your back
+			slot_flags |= (SLOT_BELT|SLOT_HOLSTER) //but you can wear it on your hip (how's that for a big iron) - or in a holster, why not.
+			name = "Mare's Leg"
+			desc = "A traditional shortened lever action whose weight distribution makes it far better suited for its size than similar sawn off rifles but has less ammo capacity. Uses .44 rounds."
+			to_chat(user, "<span class='warning'>You shorten the barrel and stock of \the [src]!</span>")
+	else
+		..()
+
 
 /obj/item/gun/projectile/shotgun/pump/rifle/lever/vintage
 	name = "vintage repeater"
-	desc = "An iconic manually operated lever action rifle, offering adequate stopping power due to it's still powerful cartridge while at the same time having a rather respectable firing rate due to it's mechanism. It is very probable this is a replica instead of a museum piece, but rifles of this pattern still see usage as colonist guns in some far off regions. Uses 7.62mm rounds."
+	desc = "An iconic manually operated lever action rifle, offering adequate stopping power due to it's still powerful cartridge while at the same time having a rather respectable firing rate due to it's mechanism. It is very probable this is a replica instead of a museum piece, but rifles of this pattern still see usage as colonist guns in some far off regions. Uses .44 rounds."
 	item_state = "levercarabine" // That isn't how carbine is spelled ya knob! :U
 	icon_state = "levercarabine"
+	max_shells = 10
+	caliber = "44"
+	load_method = SINGLE_CASING
+	ammo_type = /obj/item/ammo_casing/a44
+	animated_pump = 1
+	action_sound = 'sound/weapons/riflebolt.ogg'
+
+/obj/item/gun/projectile/shotgun/pump/rifle/lever/vintage/attackby(var/obj/item/A as obj, mob/user as mob)
+	if(istype(A, /obj/item/surgical/circular_saw) || istype(A, /obj/item/melee/energy) || istype(A, /obj/item/pickaxe/plasmacutter) && w_class != ITEMSIZE_NORMAL)
+		to_chat(user, "<span class='notice'>You begin to shorten the barrel and stock of \the [src].</span>")
+		if(loaded.len)
+			afterattack(user, user)
+			playsound(user, fire_sound, 50, 1)
+			user.visible_message("<span class='danger'>[src] goes off!</span>", "<span class='danger'>The rifle goes off in your face!</span>")
+			return
+		if(do_after(user, 30))
+			item_state = "mareleg"
+			icon_state = "mareleg"
+			w_class = ITEMSIZE_NORMAL
+			caliber = "44"
+			load_method = SINGLE_CASING
+			ammo_type = /obj/item/ammo_casing/a44
+			recoil = 1 // Less Ouch
+			accuracy = -5 // You know damn well why.
+			item_state = "gun"
+			max_shells = 5
+			slot_flags &= ~SLOT_BACK	//you can't sling it on your back
+			slot_flags |= (SLOT_BELT|SLOT_HOLSTER) //but you can wear it on your hip (how's that for a big iron) - or in a holster, why not.
+			name = "Mare's Leg"
+			desc = "A traditional shortened lever action whose weight distribution makes it far better suited for its size than similar sawn off rifles but has less ammo capacity. Uses .44 rounds."
+			to_chat(user, "<span class='warning'>You shorten the barrel and stock of \the [src]!</span>")
+	else
+		..()
+
+/obj/item/gun/projectile/shotgun/pump/rifle/lever/arnold
+	name = "lever-action shotgun"
+	desc = "The legendary Model 1887 Lever Action Shotgun, Hasta La Vista Bay-bee!"
+	item_state = "arnold"
+	icon_state = "arnold"
+	slot_flags = SLOT_BACK
+	ammo_type = /obj/item/ammo_casing/a12g/pellet
+	max_shells = 5
+	caliber = "12g"
+	load_method = SINGLE_CASING
+	action_sound = 'sound/weapons/riflebolt.ogg'
+
+/obj/item/gun/projectile/shotgun/pump/rifle/lever/win1895
+	name = "Winchester 1895"
+	desc = "The Winchester Model 1895 rifle, unqiue for its ability to load using rifle stripper clips. Uses 7.62mm rounds."
+	item_state = "win1895"
+	icon_state = "win1895"
+	slot_flags = SLOT_BACK
+	ammo_type = /obj/item/ammo_casing/a762
+	load_method = SINGLE_CASING|SPEEDLOADER
+	max_shells = 5
+	caliber = "7.62mm"
+	action_sound = 'sound/weapons/riflebolt.ogg'
 	animated_pump = 1
