@@ -14,9 +14,9 @@
 	name = "ammunition (12g, beanbag)"
 	path =/obj/item/ammo_casing/a12g/beanbag
 
-/datum/category_item/autolathe/arms/shotgun_flash
-	name = "ammunition (12g, flash)"
-	path =/obj/item/ammo_casing/a12g/flash
+/datum/category_item/autolathe/arms/shotgun_flare
+	name = "ammunition (12g, flare)"
+	path =/obj/item/ammo_casing/a12g/flare
 
 /datum/category_item/autolathe/arms/shotgun
 	name = "ammunition (12g, slug)"
@@ -45,6 +45,23 @@
 	category = "Arms and Ammunition"
 	hidden = 1
 */
+
+////// 10x24mm
+/datum/category_item/autolathe/arms/usmc/small
+	name = "small m41a magazine"
+	path =/obj/item/ammo_magazine/m10x24mm/small
+	hidden = 1
+
+/datum/category_item/autolathe/arms/usmc/small/hp
+	name = "small m41a hp magazine"
+	path =/obj/item/ammo_magazine/m10x24mm/small/hp
+	hidden = 1
+
+/datum/category_item/autolathe/arms/usmc/small/ap
+	name = "small m41a ap magazine"
+	path =/obj/item/ammo_magazine/m10x24mm/small/ap
+	hidden = 1
+
 
 /////// .45
 /datum/category_item/autolathe/arms/pistol_45
