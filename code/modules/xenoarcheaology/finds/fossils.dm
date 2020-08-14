@@ -103,7 +103,7 @@
 	icon_state = "plant1"
 	desc = "It's fossilised plant remains."
 	animal = 0
-	processable = SEED
+	processable = "seed"
 
 
 /obj/item/fossil/plant/Initialize(mapload)
