@@ -11,7 +11,7 @@
 	idle_power_usage = 10
 	active_power_usage = 100
 	circuit = /obj/item/circuitboard/dnarevive
-	reviving = FALSE
+	var/reviving = FALSE
 
 /obj/machinery/fossilrevive/attackby(obj/item/I, mob/user)
 	if(reviving)
@@ -30,7 +30,7 @@
 
 /obj/machinery/fossilrevive/proc/findsaway(var/generatetype)
 	var/droploc = get_turf(src)
-	if(generatetype = "seed")
+	if(generatetype == "seed")
 		flick("pod_g", src)
 		new /obj/item/seeds/random(droploc)
 		visible_message("The [src] shudders and spits out a seed!", "You hear a whirr.")
