@@ -2,8 +2,8 @@
 // Designed for ranged attacks.
 
 /datum/category_item/catalogue/technology/mouse_tank
-	name = "Mouse Tank"
-	desc = "Although it lacks a proper designation, the 'Mouse Tank' is not unfamiliar \
+	name = "Whisker Tank"
+	desc = "Unofficially dubbed the 'Whisker Tank', this micro mecha is not unfamiliar \
 	in several neighboring sectors. Known for its speed and small size, theories \
 	on the origin of these devices cover a wide array of probabilities. The general \
 	consensus is that these tanks were designed as weapons of sabotage that never saw wide\
@@ -13,10 +13,10 @@
 
 
 /mob/living/simple_mob/mechanical/mecha/mouse_tank
-	name = "\improper Mouse Tank"
+	name = "\improper Whisker Tank"
 	desc = "A shockingly functional, miniaturized tank. Its inventor is unknown, but widely reviled."
 	catalogue_data = list(/datum/category_item/catalogue/technology/mouse_tank)
-	icon_state = "mousetank"
+	icon_state = "whisker"
 	wreckage = /obj/structure/loot_pile/mecha/mouse_tank
 
 	maxHealth = 150
@@ -40,8 +40,9 @@
 // Immune to heat damage, resistant to lasers, and it spits fire.
 /datum/category_item/catalogue/technology/mouse_tank/livewire
 	name = "Livewire Assault Tank"
-	desc = "Dubbed the 'Livewire Assault Tank' this pattern of the somewhat standard \
-	due to its infamous brutality. The utilization of this kind of technology would \
+	desc = "Dubbed the 'Livewire Assault Tank', this pattern of the 'standard' Whisker \
+	tank has been condemned by multiple governments and corporations due to the \
+	infamous brutality of its armaments. The utilization of this kind of technology would \
 	spark a major scandal if its origins could ever be proven."
 	value = CATALOGUER_REWARD_EASY
 

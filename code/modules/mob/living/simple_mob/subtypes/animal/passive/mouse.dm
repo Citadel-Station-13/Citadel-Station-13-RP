@@ -134,8 +134,8 @@
 //Base ported from vgstation. Operative Mice.
 //Icon artists: DeityLink and plosky1
 /mob/living/simple_mob/animal/passive/mouse/mouse_op
-	name = "mouse operative"
-	desc = "Oh no..."
+	name = "operative mouse"
+	desc = "Where did it get that? Oh no..."
 	tt_desc = "E Mus sinister"
 	icon_state = "mouse_operative"
 	item_state = "mouse_operative"
