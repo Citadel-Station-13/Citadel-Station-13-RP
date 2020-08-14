@@ -24,7 +24,9 @@
 	if(mosquito.processable == "seed")
 		addtimer(CALLBACK(src, .proc/findsaway, "seed"), 1)
 		reviving = TRUE
-		qdel(mosquito)
+		mosquito.processable = FALSE
+	else
+		to_chat(user, "That fossil has either already been processed, or does not contain valid genetic material.")
 
 /obj/machinery/fossilrevive/proc/findsaway(var/generatetype)
 	var/droploc = get_turf(src)
