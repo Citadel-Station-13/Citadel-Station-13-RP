@@ -316,7 +316,7 @@
 	multiple_sprites = 1
 	
 	/obj/item/ammo_magazine/m9mmp90/hunter
-	name = "large capacity top mounted magazine (9mm armor-piercing)"
+	name = "large capacity top mounted magazine (9mm hunter)"
 	ammo_type = /obj/item/ammo_casing/a9mm/hunter
 
 /obj/item/ammo_magazine/m9mmp90/empty
