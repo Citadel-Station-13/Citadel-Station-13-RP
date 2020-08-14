@@ -8,6 +8,7 @@
 	icon_state = "bone"
 	desc = "It's a fossil."
 	var/animal = 1
+	var/processable = FALSE
 
 /obj/item/fossil/base/Initialize(mapload)
 	. = ..()
@@ -102,6 +103,8 @@
 	icon_state = "plant1"
 	desc = "It's fossilised plant remains."
 	animal = 0
+	processable = SEED
+
 
 /obj/item/fossil/plant/Initialize(mapload)
 	. = ..()
