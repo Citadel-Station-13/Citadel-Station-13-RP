@@ -24,6 +24,7 @@
 	if(mosquito.processable == "seed")
 		addtimer(CALLBACK(src, .proc/findsaway, "seed"), 1)
 		reviving = TRUE
+		qdel(mosquito)
 
 /obj/machinery/fossilrevive/proc/findsaway(var/generatetype)
 	var/droploc = get_turf(src)
