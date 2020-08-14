@@ -84,14 +84,6 @@
 	build_path = /obj/item/gun/projectile/automatic/advanced_smg
 	sort_string = "MABAA"
 
-/datum/design/item/weapon/ballistic/p90
-	id = "smg"
-	desc = "A toploading 9mm SMG that feeds from a high capacity magazine."
-	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 10000, MAT_SILVER = 4000, MAT_DIAMOND = 2000)
-	build_path = /obj/item/gun/projectile/automatic/p90
-	sort_string = "MABAB"
-
 // Ballistic ammo
 
 /datum/design/item/weapon/ballistic/ammo/AssembleDesignName()
@@ -115,16 +107,7 @@
 	materials = list(DEFAULT_WALL_MATERIAL = 360, MAT_GLASS = 720)
 	build_path = /obj/item/ammo_casing/a12g/stunshell
 	sort_string = "MABBB"
-
-datum/design/item/weapon/ballistic/ammo/ammo_9mmp90
-	name = "Toploading 9mm magazine"
-	id = "ammo_9mmp90"
-	desc = "A 50 round magazine for the H90k SMG"
-	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 10000, MAT_SILVER = 500) // Requires silver for proprietary magazines! Or something.
-	build_path = /obj/item/ammo_magazine/m9mmp90
-	sort_string = "MABBC"
-
+	
 datum/design/item/weapon/ballistic/ammo/m10x24/medium
 	name = "M41A Medium Magazine"
 	id = "ammo_10x24med"
@@ -132,7 +115,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/medium
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
 	materials = list(DEFAULT_WALL_MATERIAL = 5500, MAT_SILVER = 250)
 	build_path = /obj/item/ammo_magazine/m10x24mm/med
-	sort_string = "MABBD"
+	sort_string = "MABBZ"
 
 datum/design/item/weapon/ballistic/ammo/m10x24/medium/hp
 	name = "M41A Medium HP Magazine"
@@ -141,7 +124,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/medium/hp
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
 	materials = list(DEFAULT_WALL_MATERIAL = 5500, MAT_SILVER = 250)
 	build_path = /obj/item/ammo_magazine/m10x24mm/med/hp
-	sort_string = "MABBE"
+	sort_string = "MABBY"
 
 datum/design/item/weapon/ballistic/ammo/m10x24/medium/ap
 	name = "M41A Medium AP Magazine"
@@ -150,7 +133,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/medium/ap
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
 	materials = list(DEFAULT_WALL_MATERIAL = 5500, MAT_SILVER = 250)
 	build_path = /obj/item/ammo_magazine/m10x24mm/med/ap
-	sort_string = "MABBF"
+	sort_string = "MABBX"
 
 datum/design/item/weapon/ballistic/ammo/m10x24/large
 	name = "M41A Large Magazine"
@@ -159,7 +142,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3)
 	materials = list(DEFAULT_WALL_MATERIAL = 8500, MAT_SILVER = 250)
 	build_path = /obj/item/ammo_magazine/m10x24mm/large
-	sort_string = "MABBG"
+	sort_string = "MABBW"
 
 datum/design/item/weapon/ballistic/ammo/m10x24/large/hp
 	name = "M41A Large HP Magazine"
@@ -168,7 +151,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/hp
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3)
 	materials = list(DEFAULT_WALL_MATERIAL = 8500, MAT_SILVER = 250)
 	build_path = /obj/item/ammo_magazine/m10x24mm/large/hp
-	sort_string = "MABBH"
+	sort_string = "MABBV"
 
 datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	name = "M41A Large Magazine"
@@ -177,7 +160,7 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3)
 	materials = list(DEFAULT_WALL_MATERIAL = 8500, MAT_SILVER = 500)
 	build_path = /obj/item/ammo_magazine/m10x24mm/large/ap
-	sort_string = "MABBI"
+	sort_string = "MABBU"
 
 // Phase weapons
 
