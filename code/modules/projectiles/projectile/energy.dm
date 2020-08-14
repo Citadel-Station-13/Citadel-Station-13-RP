@@ -46,13 +46,15 @@
 	new /obj/effect/decal/cleanable/ash(src.loc) //always use src.loc so that ash doesn't end up inside windows
 	new /obj/effect/effect/smoke/illumination(T, 5, brightness, brightness, light_colour)
 
-//blinds people like the flash round, but can also be used for temporary illumination
+//No longer blinds, and flash strength has been greatly lowered but now set's on fire.
 /obj/item/projectile/energy/flash/flare
 	fire_sound = 'sound/weapons/grenade_launcher.ogg'
-	damage = 10
+	damage = 20
 	flash_range = 1
 	brightness = 15
-	flash_strength = 20
+	flash_strength = 10
+	incendiary = 1
+	flammability = 2
 
 /obj/item/projectile/energy/flash/flare/on_impact(var/atom/A)
 	light_colour = pick("#e58775", "#ffffff", "#90ff90", "#a09030")
@@ -61,6 +63,7 @@
 
 	//residual illumination
 	new /obj/effect/effect/smoke/illumination(src.loc, rand(190,240) SECONDS, range=8, power=3, color=light_colour) //same lighting power as flare
+	new /obj/effect/decal/cleanable/ash(src.loc)
 
 /obj/item/projectile/energy/electrode
 	name = "electrode"
