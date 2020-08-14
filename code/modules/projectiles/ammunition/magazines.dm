@@ -188,6 +188,93 @@
 	name = "speedloader (.45 AP)"
 	ammo_type = /obj/item/ammo_casing/a45/ap
 
+///////// 10x24mm Caseless /////////
+/obj/item/ammo_magazine/m10x24mm/large
+	name = "Large 10x24mm Caseless Magazine"
+	ammo_type = /obj/item/ammo_casing/a10x24mmcaseless
+	icon_state = "usmc-large"
+	caliber = "10x24mm caseless"
+	w_class = ITEMSIZE_NORMAL
+	matter = list(DEFAULT_WALL_MATERIAL = 8500)
+	mag_type = MAGAZINE
+	max_ammo = 96
+	multiple_sprites = 1
+
+/obj/item/ammo_magazine/m10x24mm/med
+	name = "Medium 10x24mm Caseless Magazine"
+	ammo_type = /obj/item/ammo_casing/a10x24mmcaseless
+	icon_state = "usmc-med"
+	caliber = "10x24mm caseless"
+	mag_type = MAGAZINE
+	w_class = ITEMSIZE_NORMAL
+	matter = list(DEFAULT_WALL_MATERIAL = 5500)
+	max_ammo = 64
+	multiple_sprites = 1
+
+/obj/item/ammo_magazine/m10x24mm/small
+	name = "Small 10x24mm Caseless Magazine"
+	ammo_type = /obj/item/ammo_casing/a10x24mmcaseless
+	icon_state = "usmc-small"
+	caliber = "10x24mm caseless"
+	mag_type = MAGAZINE
+	matter = list(DEFAULT_WALL_MATERIAL = 2500)
+	max_ammo = 32
+	multiple_sprites = 1
+
+/obj/item/ammo_magazine/m10x24mm/large/hp
+	name = "Large 10x24mm Caseless HP Magazine"
+	ammo_type = /obj/item/ammo_casing/a10x24mmcaseless/hp
+	icon_state = "usmc-large-hp"
+	caliber = "10x24mm caseless"
+	mag_type = MAGAZINE
+	max_ammo = 96
+	multiple_sprites = 1
+
+/obj/item/ammo_magazine/m10x24mm/med/hp
+	name = "Medium 10x24mm Caseless HP Magazine"
+	ammo_type = /obj/item/ammo_casing/a10x24mmcaseless/hp
+	icon_state = "usmc-med-hp"
+	caliber = "10x24mm caseless"
+	mag_type = MAGAZINE
+	max_ammo = 64
+	multiple_sprites = 1
+
+/obj/item/ammo_magazine/m10x24mm/small/hp
+	name = "Small 10x24mm Caseless HP Magazine"
+	ammo_type = /obj/item/ammo_casing/a10x24mmcaseless/hp
+	icon_state = "usmc-small-hp"
+	caliber = "10x24mm caseless"
+	mag_type = MAGAZINE
+	max_ammo = 32
+	multiple_sprites = 1
+
+/obj/item/ammo_magazine/m10x24mm/large/ap
+	name = "Large 10x24mm Caseless AP Magazine"
+	ammo_type = /obj/item/ammo_casing/a10x24mmcaseless/ap
+	icon_state = "usmc-large-ap"
+	caliber = "10x24mm caseless"
+	mag_type = MAGAZINE
+	max_ammo = 96
+	multiple_sprites = 1
+
+/obj/item/ammo_magazine/m10x24mm/med/ap
+	name = "Medium 10x24mm Caseless AP Magazine"
+	ammo_type = /obj/item/ammo_casing/a10x24mmcaseless/ap
+	icon_state = "usmc-med-ap"
+	caliber = "10x24mm caseless"
+	mag_type = MAGAZINE
+	max_ammo = 64
+	multiple_sprites = 1
+
+/obj/item/ammo_magazine/m10x24mm/small/ap
+	name = "Small 10x24mm Caseless AP Magazine"
+	ammo_type = /obj/item/ammo_casing/a10x24mmcaseless/ap
+	icon_state = "usmc-small-ap"
+	caliber = "10x24mm caseless"
+	mag_type = MAGAZINE
+	max_ammo = 32
+	multiple_sprites = 1
+
 ///////// 5mm Caseless /////////
 
 /obj/item/ammo_magazine/m5mmcaseless
@@ -294,6 +381,16 @@
 	ammo_type = /obj/item/ammo_casing/a9mm/practice
 
 /obj/item/ammo_magazine/m9mmp90
+	name = "large capacity top mounted magazine"
+	icon_state = "p90"
+	mag_type = MAGAZINE
+	ammo_type = /obj/item/ammo_casing/a9mm
+	matter = list(DEFAULT_WALL_MATERIAL = 3000)
+	caliber = "9mm"
+	max_ammo = 50
+	multiple_sprites = 1
+
+/obj/item/ammo_magazine/m9mmp90/ap
 	name = "large capacity top mounted magazine (9mm armor-piercing)"
 	icon_state = "p90"
 	mag_type = MAGAZINE
@@ -645,9 +742,9 @@
 	name = "magazine (12 gauge pellet)"
 	ammo_type = /obj/item/ammo_casing/a12g/pellet
 
-/obj/item/ammo_magazine/m12gdrum/flash
+/obj/item/ammo_magazine/m12gdrum/flare
 	name = "magazine (12 gauge flash)"
-	ammo_type = /obj/item/ammo_casing/a12g/flash
+	ammo_type = /obj/item/ammo_casing/a12g/flare
 
 /obj/item/ammo_magazine/m12gdrum/empty
 	initial_ammo = 0
