@@ -489,8 +489,7 @@
 	dir = 8
 	},
 /obj/structure/curtain/black{
-	anchored = 1;
-	icon_state = "open"
+	anchored = 1
 	},
 /turf/simulated/floor/plating,
 /area/triumph/surfacebase/bar_backroom)
@@ -836,6 +835,17 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_8)
+"cL" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/dormitory)
 "cM" = (
 /turf/simulated/wall,
 /area/janitor)
@@ -1250,6 +1260,7 @@
 	},
 /obj/structure/lattice,
 /obj/structure/cable{
+	d2 = 8;
 	dir = 1;
 	icon_state = "32-4"
 	},
@@ -2671,8 +2682,7 @@
 	dir = 1
 	},
 /obj/structure/curtain/black{
-	anchored = 1;
-	icon_state = "open"
+	anchored = 1
 	},
 /turf/simulated/floor/plating,
 /area/triumph/surfacebase/bar_backroom)
@@ -4182,7 +4192,7 @@
 	},
 /obj/machinery/access_button{
 	command = "cycle_interior";
-	frequency = 1380;
+	frequency = 1379;
 	master_tag = "solar_dock";
 	name = "interior access button";
 	pixel_x = -28;
@@ -5571,17 +5581,6 @@
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/bar)
-"rw" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/catwalk,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/dormitory)
 "rx" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -5631,6 +5630,17 @@
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
+"rH" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/dormitory)
 "rI" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -6826,17 +6836,6 @@
 "vo" = (
 /turf/simulated/wall/r_wall,
 /area/vacant/vacant_shop)
-"vp" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/catwalk,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/dormitory)
 "vq" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -8623,18 +8622,6 @@
 /obj/structure/closet/secure_closet/freezer/meat,
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/freezer)
-"BN" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/airlock/maintenance,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/dormitory)
 "BP" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -8818,6 +8805,18 @@
 /obj/item/tank/jetpack/oxygen,
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
+"Cq" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/airlock/maintenance,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/dormitory)
 "Cr" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -18964,9 +18963,9 @@ sn
 cT
 Xt
 wQ
-BN
-vp
-rw
+Cq
+rH
+cL
 OD
 lv
 CU
