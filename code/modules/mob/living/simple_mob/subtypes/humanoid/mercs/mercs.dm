@@ -378,7 +378,7 @@
 
 /mob/living/simple_mob/humanoid/merc/voxpirate/boarder_r
 	name = "vox ranged boarder"
-	desc = "A howling Vox with a shotgu. Get to cover!"
+	desc = "A howling Vox with a shotgun. Get to cover!"
 	icon_state = "voxboarder_r"
 	icon_living = "voxboarder_r"
 	icon_dead = "voxboarder_r_dead"
