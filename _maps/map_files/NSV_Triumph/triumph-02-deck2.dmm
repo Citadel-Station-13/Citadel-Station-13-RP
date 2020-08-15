@@ -858,6 +858,11 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "cV" = (
@@ -1240,11 +1245,22 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "en" = (
-/obj/structure/closet/emcloset,
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/plating,
+/obj/structure/lattice,
+/obj/structure/cable{
+	dir = 1;
+	icon_state = "32-4"
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/open,
 /area/maintenance/dormitory)
 "eo" = (
 /obj/machinery/power/apc{
@@ -2216,8 +2232,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /obj/structure/curtain/black{
-	anchored = 1;
-	icon_state = "open"
+	anchored = 1
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/visitor_dining)
@@ -2243,6 +2258,13 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 4;
+	id = "kitchen-c";
+	name = "Kitchen public counter shutters";
+	pixel_x = -24;
+	pixel_y = -33
 	},
 /obj/machinery/button/remote/blast_door{
 	dir = 4;
@@ -2460,134 +2482,9 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_6)
 "hC" = (
-/obj/structure/closet/crate,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/diamond,
-/obj/item/ore/diamond,
-/obj/item/ore/diamond,
-/obj/item/ore/glass,
-/obj/item/ore/glass,
-/obj/item/ore/glass,
-/obj/item/ore/glass,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/hydrogen,
-/obj/item/ore/hydrogen,
-/obj/item/ore/hydrogen,
-/obj/item/ore/hydrogen,
-/obj/item/ore/iron,
-/obj/item/ore/iron,
-/obj/item/ore/iron,
-/obj/item/ore/iron,
-/obj/item/ore/iron,
-/obj/item/ore/iron,
-/obj/item/ore/iron,
-/obj/item/ore/lead,
-/obj/item/ore/lead,
-/obj/item/ore/lead,
-/obj/item/ore/lead,
-/obj/item/ore/lead,
-/obj/item/ore/lead,
-/obj/item/ore/lead,
-/obj/item/ore/lead,
-/obj/item/ore/osmium,
-/obj/item/ore/osmium,
-/obj/item/ore/osmium,
-/obj/item/ore/osmium,
-/obj/item/ore/osmium,
-/obj/item/ore/osmium,
-/obj/item/ore/osmium,
-/obj/item/ore/osmium,
-/obj/item/ore/osmium,
-/obj/item/ore/osmium,
-/obj/item/ore/phoron,
-/obj/item/ore/phoron,
-/obj/item/ore/phoron,
-/obj/item/ore/phoron,
-/obj/item/ore/phoron,
-/obj/item/ore/phoron,
-/obj/item/ore/phoron,
-/obj/item/ore/phoron,
-/obj/item/ore/phoron,
-/obj/item/ore/phoron,
-/obj/item/ore/phoron,
-/obj/item/ore/phoron,
-/obj/item/ore/phoron,
-/obj/item/ore/phoron,
-/obj/item/ore/phoron,
-/obj/item/ore/phoron,
-/obj/item/ore/phoron,
-/obj/item/ore/phoron,
-/obj/item/ore/phoron,
-/obj/item/ore/phoron,
-/obj/item/ore/phoron,
-/obj/item/ore/phoron,
-/obj/item/ore/silver,
-/obj/item/ore/silver,
-/obj/item/ore/silver,
-/obj/item/ore/silver,
-/obj/item/ore/silver,
-/obj/item/ore/silver,
-/obj/item/ore/silver,
-/obj/item/ore/silver,
-/obj/item/ore/silver,
-/obj/item/ore/silver,
-/obj/item/ore/silver,
-/obj/item/ore/silver,
-/obj/item/ore/silver,
-/obj/item/ore/silver,
-/obj/item/ore/uranium,
-/obj/item/ore/uranium,
-/obj/item/ore/uranium,
-/obj/item/ore/uranium,
-/obj/item/ore/uranium,
-/obj/item/ore/uranium,
-/obj/item/ore/uranium,
-/obj/item/ore/uranium,
-/obj/item/ore/uranium,
-/obj/item/ore/uranium,
-/obj/item/ore/uranium,
-/obj/item/ore/uranium,
-/obj/item/ore/uranium,
-/obj/item/ore/uranium,
-/obj/item/ore/uranium,
-/obj/item/ore/uranium,
-/obj/item/ore/verdantium,
-/obj/item/ore/verdantium,
-/obj/item/ore/verdantium,
-/obj/item/ore/verdantium,
-/obj/item/ore/verdantium,
-/obj/item/ore/verdantium,
-/obj/item/ore/verdantium,
-/obj/item/ore/verdantium,
-/obj/item/ore/verdantium,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/iron,
-/obj/item/ore/iron,
-/obj/item/ore/iron,
-/obj/item/ore/iron,
-/obj/item/ore/iron,
-/obj/item/ore/iron,
-/obj/item/ore/iron,
-/turf/simulated/floor/airless,
-/area/quartermaster/miningdock)
+/obj/structure/sign/department/cargo_dock,
+/turf/simulated/wall,
+/area/quartermaster/office)
 "hD" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
@@ -2896,6 +2793,11 @@
 	d1 = 1;
 	d2 = 4;
 	icon_state = "1-4"
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
@@ -4281,11 +4183,10 @@
 /obj/machinery/access_button{
 	command = "cycle_interior";
 	frequency = 1380;
-	master_tag = "d1a_dock";
+	master_tag = "solar_dock";
 	name = "interior access button";
 	pixel_x = -28;
-	pixel_y = -24;
-	req_one_access = null
+	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/dormitory)
@@ -4485,9 +4386,9 @@
 /obj/structure/window/reinforced/full,
 /obj/machinery/door/blast/shutters{
 	dir = 2;
-	id = "kitchen";
+	id = "kitchen-c";
 	layer = 3.3;
-	name = "Kitchen Shutters"
+	name = "Kitchen Service Shutters"
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/kitchen)
@@ -5262,7 +5163,7 @@
 /obj/structure/sign/directions/evac{
 	dir = 8
 	},
-/turf/simulated/wall,
+/turf/simulated/wall/r_wall,
 /area/hallway/primary/port)
 "qc" = (
 /obj/structure/closet/crate/bin{
@@ -5670,6 +5571,17 @@
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/bar)
+"rw" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/dormitory)
 "rx" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -5913,6 +5825,11 @@
 /obj/structure/table/woodentable,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "so" = (
@@ -6909,6 +6826,17 @@
 "vo" = (
 /turf/simulated/wall/r_wall,
 /area/vacant/vacant_shop)
+"vp" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/dormitory)
 "vq" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -6988,6 +6916,7 @@
 /area/crew_quarters/bar)
 "vA" = (
 /obj/structure/dogbed,
+/obj/random/maintenance/engineering,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/bar)
 "vB" = (
@@ -7662,6 +7591,7 @@
 "xV" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/crate/trashcart,
+/obj/random/maintenance/engineering,
 /turf/simulated/floor/tiled,
 /area/maintenance/lower/bar)
 "xW" = (
@@ -8693,6 +8623,18 @@
 /obj/structure/closet/secure_closet/freezer/meat,
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/freezer)
+"BN" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/airlock/maintenance,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/dormitory)
 "BP" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -8894,14 +8836,9 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_6)
 "Cu" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/light/small{
-	dir = 8
-	},
-/obj/structure/catwalk,
+/obj/structure/ladder,
 /turf/simulated/floor/plating,
-/area/maintenance/dormitory)
+/area/maintenance/lower/bar)
 "Cv" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -9441,6 +9378,9 @@
 "Ep" = (
 /obj/machinery/camera/network/cargo{
 	dir = 4
+	},
+/obj/structure/sign/department/cargo{
+	pixel_x = -32
 	},
 /turf/simulated/floor/wood,
 /area/quartermaster/foyer)
@@ -11566,6 +11506,7 @@
 "LD" = (
 /obj/structure/closet/crate/trashcart,
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/random/maintenance/engineering,
 /turf/simulated/floor/tiled,
 /area/maintenance/lower/bar)
 "LH" = (
@@ -13720,6 +13661,11 @@
 /obj/structure/bed/chair/comfy/beige,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "Ts" = (
@@ -13851,9 +13797,9 @@
 /obj/structure/table/marble,
 /obj/machinery/door/blast/shutters{
 	dir = 2;
-	id = "kitchen";
+	id = "kitchen-c";
 	layer = 3.3;
-	name = "Kitchen Shutters"
+	name = "Kitchen Service Shutters"
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/kitchen)
@@ -15057,8 +15003,18 @@
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
 "Xt" = (
-/obj/structure/bed/chair/comfy/beige,
-/turf/simulated/floor/carpet/bcarpet,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "Xu" = (
 /obj/machinery/camera/network/outside{
@@ -15796,14 +15752,14 @@
 /area/triumph/station/stairs_two)
 "ZZ" = (
 /obj/structure/table/marble,
-/obj/machinery/door/blast/shutters{
-	dir = 2;
-	id = "kitchen";
-	layer = 3.3;
-	name = "Kitchen Shutters"
-	},
 /obj/machinery/cash_register/civilian{
 	dir = 1
+	},
+/obj/machinery/door/blast/shutters{
+	dir = 2;
+	id = "kitchen-c";
+	layer = 3.3;
+	name = "Kitchen Service Shutters"
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/kitchen)
@@ -19006,11 +18962,11 @@ nI
 Tr
 sn
 cT
-nI
-bz
-ba
-sl
-sl
+Xt
+wQ
+BN
+vp
+rw
 OD
 lv
 CU
@@ -19145,7 +19101,7 @@ ph
 pf
 Az
 Le
-Xt
+HP
 Ub
 bA
 Le
@@ -19287,7 +19243,7 @@ Az
 pZ
 Az
 PH
-Xt
+HP
 MN
 bA
 Le
@@ -19429,7 +19385,7 @@ Hy
 VE
 Az
 Le
-Xt
+HP
 fn
 bA
 Le
@@ -19571,7 +19527,7 @@ AG
 XX
 Az
 Le
-Le
+Ok
 Le
 Le
 Le
@@ -20999,7 +20955,7 @@ RW
 RW
 RW
 RW
-Cu
+RW
 RW
 RW
 RW
@@ -22549,7 +22505,7 @@ PZ
 Wx
 vk
 ZK
-ZK
+Ij
 Ij
 Ij
 nB
@@ -22557,7 +22513,7 @@ vT
 GQ
 Ij
 Ij
-ZK
+Ij
 iv
 zj
 Tt
@@ -22691,7 +22647,7 @@ uH
 kb
 xC
 ZK
-ZK
+Ij
 OF
 vC
 sU
@@ -22699,7 +22655,7 @@ ub
 RH
 GE
 OF
-ZK
+Ij
 fI
 gk
 wU
@@ -22841,7 +22797,7 @@ VT
 fi
 Wh
 wd
-ZK
+Ij
 ZK
 Ki
 Ki
@@ -23096,7 +23052,7 @@ kD
 Ed
 vH
 vH
-hC
+vH
 br
 fm
 wZ
@@ -23394,7 +23350,7 @@ Rr
 Nh
 Vw
 aw
-Nh
+Cu
 Pq
 cM
 Bi
@@ -26508,7 +26464,7 @@ sZ
 qk
 qk
 To
-lq
+hC
 lq
 lq
 yc
