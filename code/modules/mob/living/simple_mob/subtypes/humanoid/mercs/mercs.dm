@@ -331,7 +331,10 @@
 	max_n2 = 0
 	minbodytemp = 0
 
-	loot_list = list(/obj/item/gun/projectile/shotgun/pump/rifle/lever = 100) //Change this whenever the Vox hunting rifle is fullmerged.
+	loot_list = list(/obj/item/gun/projectile/shotgun/pump/rifle/vox_hunting = 100,
+					/obj/item/ammo_magazine/clip/c762 = 30,
+					/obj/item/ammo_magazine/clip/c762 = 30
+					)
 
 	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged
 	say_list_type = /datum/say_list/merc/voxpirate
@@ -386,7 +389,10 @@
 	projectiletype = /obj/item/projectile/bullet/pellet/shotgun
 	projectilesound = 'sound/weapons/Gunshot_shotgun.ogg'
 
-	loot_list = list(/obj/item/gun/projectile/shotgun/pump/combat = 100)
+	loot_list = list(/obj/item/gun/projectile/shotgun/pump/combat = 100,
+					/obj/item/ammo_magazine/m12gdrum = 30,
+					/obj/item/ammo_magazine/m12gdrum = 30
+					)
 
 	needs_reload = TRUE
 	reload_max = 10
