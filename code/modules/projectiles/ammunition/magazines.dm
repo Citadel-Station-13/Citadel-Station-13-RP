@@ -71,6 +71,10 @@
 
 /obj/item/ammo_magazine/m45/empty
 	initial_ammo = 0
+	
+/obj/item/ammo_magazine/m45/hunter
+	name = "magazine (.45 hunter)"
+	ammo_type = /obj/item/ammo_casing/a45/hunter
 
 /obj/item/ammo_magazine/m45/rubber
 	name = "magazine (.45 rubber)"
@@ -151,6 +155,10 @@
 /obj/item/ammo_magazine/clip/c45/rubber
 	name = "ammo clip (.45 rubber)"
 	ammo_type = /obj/item/ammo_casing/a45/rubber
+	
+/obj/item/ammo_magazine/clip/c45/hunter
+	name = "ammo clip (.45 hunter)"
+	ammo_type = /obj/item/ammo_casing/a45/hunter
 
 /obj/item/ammo_magazine/clip/c45/practice
 	name = "ammo clip (.45 practice)"
@@ -281,6 +289,10 @@
 /obj/item/ammo_magazine/m9mmt/empty
 	initial_ammo = 0
 
+/obj/item/ammo_magazine/m9mmt/hunter
+	name = "top mounted magazine (9mm hunter)"
+	ammo_type = /obj/item/ammo_casing/a9mm/hunter
+
 /obj/item/ammo_magazine/m9mmt/rubber
 	name = "top mounted magazine (9mm rubber)"
 	ammo_type = /obj/item/ammo_casing/a9mm/rubber
@@ -302,6 +314,10 @@
 	caliber = "9mm"
 	max_ammo = 50
 	multiple_sprites = 1
+	
+	/obj/item/ammo_magazine/m9mmp90/hunter
+	name = "large capacity top mounted magazine (9mm hunter)"
+	ammo_type = /obj/item/ammo_casing/a9mm/hunter
 
 /obj/item/ammo_magazine/m9mmp90/empty
 	initial_ammo = 0
@@ -312,20 +328,24 @@
 	desc = "A stripper clip for reloading 9mm rounds into magazines."
 	caliber = "9mm"
 	ammo_type = /obj/item/ammo_casing/a9mm
-	matter = list(DEFAULT_WALL_MATERIAL = 540) // metal costs are very roughly based around one 9mm casing = 60 metal
-	max_ammo = 9
+	matter = list(DEFAULT_WALL_MATERIAL = 600) // metal costs are very roughly based around one 9mm casing = 60 metal
+	max_ammo = 10
 	multiple_sprites = 1
 
+/obj/item/ammo_magazine/clip/c9mm/hunter
+	name = "ammo clip (9mm hunter)"
+	ammo_type = /obj/item/ammo_casing/a9mm/hunter
+
 /obj/item/ammo_magazine/clip/c9mm/rubber
-	name = "ammo clip (.45 rubber)"
+	name = "ammo clip (9mm rubber)"
 	ammo_type = /obj/item/ammo_casing/a9mm/rubber
 
 /obj/item/ammo_magazine/clip/c9mm/practice
-	name = "ammo clip (.45 practice)"
+	name = "ammo clip (9mm practice)"
 	ammo_type = /obj/item/ammo_casing/a9mm/practice
 
 /obj/item/ammo_magazine/clip/c9mm/flash
-	name = "ammo clip (.45 flash)"
+	name = "ammo clip (9mm flash)"
 	ammo_type = /obj/item/ammo_casing/a9mm/flash
 
 /obj/item/ammo_magazine/m9mmAdvanced

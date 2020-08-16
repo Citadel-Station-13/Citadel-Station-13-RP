@@ -52,6 +52,11 @@
 	path =/obj/item/ammo_magazine/m45
 	hidden = 1
 
+/datum/category_item/autolathe/arms/pistol_45h
+	name = "pistol magazine (.45 hunter)"
+	path =/obj/item/ammo_magazine/m45/hunter
+	hidden = 1
+
 /datum/category_item/autolathe/arms/pistol_45p
 	name = "pistol magazine (.45 practice)"
 	path =/obj/item/ammo_magazine/m45/practice
@@ -126,6 +131,11 @@
 	path =/obj/item/ammo_magazine/m9mmt
 	hidden = 1
 
+/datum/category_item/autolathe/arms/smg_9mmh
+	name = "top-mounted SMG magazine (9mm hunter)"
+	path =/obj/item/ammo_magazine/m9mmt/hunter
+	hidden = 1
+
 /datum/category_item/autolathe/arms/smg_9mmr
 	name = "top-mounted SMG magazine (9mm rubber)"
 	path =/obj/item/ammo_magazine/m9mmt/rubber
@@ -137,6 +147,11 @@
 /datum/category_item/autolathe/arms/smg_9mmf
 	name = "top-mounted SMG magazine (9mm flash)"
 	path =/obj/item/ammo_magazine/m9mmt/flash
+	
+/datum/category_item/autolathe/arms/smg_9mmp90h
+	name = "large capacity top mounted magazine (9mm hunter)"
+	path =/obj/item/ammo_magazine/m9mmp90/hunter
+	hidden = 1
 
 /////// 10mm
 /datum/category_item/autolathe/arms/smg_10mm

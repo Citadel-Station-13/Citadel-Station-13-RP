@@ -201,3 +201,7 @@
 	display_name = "Optical Meson Eyepatch (Engineering, Science, Mining)"
 	path = /obj/item/clothing/glasses/hud/health/eyepatch
 	allowed_roles = list("Station Engineer","Chief Engineer","Atmospheric Technician", "Scientist", "Research Director", "Shaft Miner")
+
+/datum/gear/eyes/glasses/welding
+	display_name = "Welding Goggles"
+	path = /obj/item/clothing/glasses/welding

@@ -1132,3 +1132,13 @@
 	name = "central command bodysuit"
 	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a sleek black base with an elegant golden trim and grey plating. It fits your corporate badges nicely."
 	icon_state = "bodysuit_centcom"
+
+/obj/item/clothing/under/bodysuit/blueskirt
+	name = "blue skirt"
+	desc = "A comfy blue sweater paired with a stylish charcoal skirt!"
+	icon_state = "blueskirt"
+
+/obj/item/clothing/under/bodysuit/redskirt
+	name = "blue skirt"
+	desc = "A comfy red sweater paired with a stylish charcoal skirt!"
+	icon_state = "redskirt"
