@@ -75,6 +75,12 @@
 /obj/item/projectile/bullet/pistol/hp
 	damage = 25
 	armor_penetration = -50
+	
+/obj/item/projectile/bullet/pistol/hunter
+	damage = 15
+	SA_bonus_damage = 25 // 40 total against animals
+	SA_vulnerability = SA_ANIMAL
+	embed_chance = -1
 
 /obj/item/projectile/bullet/pistol/medium // .45 (and maybe .40 if it ever gets added) caliber security pistols. Balance between capacity and power.
 	fire_sound = 'sound/weapons/gunshot3.ogg' // Snappier sound.
@@ -87,6 +93,12 @@
 /obj/item/projectile/bullet/pistol/medium/hp
 	damage = 30
 	armor_penetration = -50
+
+/obj/item/projectile/bullet/pistol/medium/hunter
+	damage = 15
+	SA_bonus_damage = 45 // 60 total against animals
+	SA_vulnerability = SA_ANIMAL
+	embed_chance = -1
 
 /obj/item/projectile/bullet/pistol/strong // .357 and .44 caliber stuff. High power pistols like the Mateba or Desert Eagle. Sacrifice capacity for power.
 	fire_sound = 'sound/weapons/gunshot4.ogg'
@@ -205,7 +217,7 @@
 	SA_bonus_damage = 35 // 50 total on animals.
 	SA_vulnerability = SA_ANIMAL
 
-/obj/item/projectile/bullet/rifle/a145 // 14.5×114mm is bigger than a .50 BMG round.
+/obj/item/projectile/bullet/rifle/a145 // 14.5Ã—114mm is bigger than a .50 BMG round.
 	fire_sound = 'sound/weapons/Gunshot_cannon.ogg' // This is literally an anti-tank rifle caliber. It better sound like a fucking cannon.
 	damage = 80
 	stun = 3
