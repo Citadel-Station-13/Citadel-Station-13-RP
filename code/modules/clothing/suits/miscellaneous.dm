@@ -924,7 +924,7 @@ obj/item/clothing/suit/kamishimo
 	desc = "A padded suit for restraining patients without bumming everyone out!"
 	icon_state = "mr_snuggles"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
+	flags_inv = HIDEEARS|BLOCKHEADHAIR|HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 
 	var/resist_time = 4800	// Eight minutes.
 
@@ -933,6 +933,6 @@ obj/item/clothing/suit/kamishimo
 	desc = "A padded suit for restraining patients without bumming everyone out!"
 	icon_state = "mrs_snuggles"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
+	flags_inv = HIDEEARS|BLOCKHEADHAIR|HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 
 	var/resist_time = 4800	// Eight minutes.
