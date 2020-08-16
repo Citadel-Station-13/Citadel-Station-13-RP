@@ -1715,6 +1715,14 @@
 		body_parts = list(BP_HEAD)
 		species_allowed = list(SPECIES_TESHARI)
 
+	//Vox stuff
+
+	vox_coloration
+		name = "Vox Two Tone"
+		icon_state = "vox_two_tone"
+		body_parts = list(BP_HEAD,BP_L_HAND,BP_R_HAND,BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM)
+		species_allowed = list(SPECIES_VOX)
+
 //skin styles - WIP
 //going to have to re-integrate this with surgery
 //let the icon_state hold an icon preview for now
