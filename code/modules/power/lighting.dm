@@ -738,7 +738,7 @@ var/global/list/light_type_cache = list()
 	var/switchcount = 0	// number of times switched
 	matter = list(DEFAULT_WALL_MATERIAL = 60)
 	var/rigged = 0		// true if rigged to explode
-	var/broken_chance = 2
+	var/broken_chance = 0
 
 	var/brightness_range = 2 //how much light it gives off
 	var/brightness_power = 1
