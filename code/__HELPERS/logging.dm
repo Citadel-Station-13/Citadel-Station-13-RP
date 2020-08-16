@@ -241,7 +241,7 @@
 	return d.log_info_line()
 
 /mob/proc/simple_info_line()
-	return "[key_name(src)] ([x],[y],[z])"
+	return "[key_name(src)] ([AREACOORD(src)])"
 
 /client/proc/simple_info_line()
-	return "[key_name(src)] ([mob.x],[mob.y],[mob.z])"
+	return "[key_name(src)] ([AREACOORD(mob)])"

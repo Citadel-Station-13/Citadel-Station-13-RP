@@ -9595,6 +9595,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
 	},
+/obj/machinery/door/window/eastleft,
 /turf/unsimulated/floor/techfloor_grid,
 /area/centcom/terminal)
 "rG" = (
@@ -16593,6 +16594,20 @@
 	icon_state = "dark"
 	},
 /area/centcom/specops)
+"Lf" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
+	},
+/obj/machinery/door/window/eastright,
+/turf/unsimulated/floor/techfloor_grid,
+/area/centcom/terminal)
+"MJ" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/unsimulated/floor/steel,
+/area/centcom/terminal)
 "Nt" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/unsimulated/floor{
@@ -16605,6 +16620,15 @@
 	icon_state = "dark"
 	},
 /area/centcom/specops)
+"Pb" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/unsimulated/floor/techfloor_grid,
+/area/centcom/terminal)
 "Rc" = (
 /obj/structure/table/glass,
 /obj/item/defib_kit/compact/loaded,
@@ -21851,23 +21875,23 @@ ab
 ab
 ro
 rF
-rF
-rF
-rF
-rF
-rF
-rF
-rF
-rF
-rF
-rF
-rF
-rF
-rF
-rF
-rF
-rF
-rF
+Pb
+Pb
+Pb
+Pb
+MJ
+Pb
+Pb
+Pb
+Pb
+Pb
+Pb
+MJ
+Pb
+Pb
+Pb
+Pb
+Lf
 ro
 ab
 ab

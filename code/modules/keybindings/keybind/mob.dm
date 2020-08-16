@@ -140,7 +140,7 @@
 	full_name = "LOOC"
 	description = "Says something in local OOC"
 
-/datum/keybinding/mob/ooc/down(client/user)
+/datum/keybinding/mob/looc/down(client/user)
 	user.looc_wrapper()
 	return TRUE
 
