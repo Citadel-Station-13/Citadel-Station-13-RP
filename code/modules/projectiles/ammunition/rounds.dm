@@ -236,8 +236,8 @@
 	update_icon()
 
 //Does not stun, only blinds, but has area of effect.
-/obj/item/ammo_casing/a12g/flash
-	name = "flash shell"
+/obj/item/ammo_casing/a12g/flare
+	name = "flare shell"
 	desc = "A chemical shell used to signal distress or provide illumination."
 	icon_state = "fshell"
 	projectile_type = /obj/item/projectile/energy/flash/flare
