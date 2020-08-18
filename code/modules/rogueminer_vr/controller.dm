@@ -12,12 +12,12 @@ var/datum/controller/rogue/rm_controller
 
 	//So I don't have to do absurd list[list[thing]] over and over.
 	var/list/diffstep_nums = list(
-		100,
-		350,
-		600,
-		900,
-		1250,
-		1700)
+		30,
+		150,
+		200,
+		300,
+		550,
+		900)
 
 	var/list/diffstep_chances = list(
 		10,

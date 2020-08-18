@@ -10,3 +10,12 @@
 	desc = "An eight-meter tall carbyne wall. For when the wildlife on your planet is mostly militant megacorps."
 	alpha = 0xFF
 	VIRGO3B_SET_ATMOS
+
+// This line below is placeholder for Triumph as the code base here gets really angry if there isn't an actual planet atmos to set. Might do something for Tirumph in the future to allow this.
+/*
+/turf/unsimulated/wall/planetary/triumph
+	name = "facility wall"
+	desc = "An eight-meter tall carbyne wall. For when the wildlife on your planet is mostly militant megacorps."
+	alpha = 0xFF
+	TRIUMPH_SET_ATMOS
+*/
