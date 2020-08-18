@@ -558,12 +558,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/bar)
-"bU" = (
-/obj/machinery/conveyor_switch/oneway{
-	id = "QMLoad"
-	},
-/turf/simulated/floor/tiled,
-/area/quartermaster/warehouse)
 "bV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -1231,7 +1225,7 @@
 /obj/structure/lattice,
 /obj/structure/cable{
 	d2 = 8;
-	dir = 1;
+	dir = 4;
 	icon_state = "32-4"
 	},
 /obj/structure/railing{
@@ -1240,6 +1234,11 @@
 /obj/structure/railing,
 /obj/structure/railing{
 	dir = 1
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
 	},
 /turf/simulated/open,
 /area/maintenance/dormitory)
@@ -2922,6 +2921,7 @@
 /obj/machinery/status_display/supply_display{
 	pixel_y = -32
 	},
+/obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
 "jb" = (
@@ -2947,11 +2947,15 @@
 	dynamic_lighting = 0
 	})
 "jl" = (
-/obj/effect/floor_decal/industrial/outline/red,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled,
-/area/quartermaster/warehouse)
+/obj/machinery/door/firedoor/glass,
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/obj/structure/curtain/black{
+	anchored = 1
+	},
+/obj/structure/window/reinforced,
+/turf/simulated/floor/plating,
+/area/vacant/vacant_site2)
 "jm" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -5349,7 +5353,7 @@
 /area/quartermaster/warehouse)
 "qR" = (
 /obj/machinery/conveyor{
-	dir = 10;
+	dir = 4;
 	id = "QMLoad"
 	},
 /turf/simulated/floor/tiled,
@@ -8771,7 +8775,7 @@
 	name = "blobstart"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/cargo)
+/area/maintenance/dormitory)
 "Cl" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled,
@@ -9090,13 +9094,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/quartermaster/foyer)
-"Dk" = (
-/obj/machinery/conveyor{
-	dir = 5;
-	id = "QMLoad"
-	},
-/turf/simulated/floor/tiled,
-/area/quartermaster/warehouse)
 "Dl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -11335,13 +11332,6 @@
 /obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_two)
-"KV" = (
-/obj/machinery/conveyor{
-	dir = 4;
-	id = "QMLoad"
-	},
-/turf/simulated/floor/tiled,
-/area/quartermaster/warehouse)
 "KW" = (
 /obj/structure/cryofeed{
 	dir = 4
@@ -11897,12 +11887,11 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/bar)
 "Nj" = (
-/obj/machinery/conveyor{
-	dir = 1;
-	id = "QMLoad"
-	},
 /obj/machinery/light{
 	dir = 4
+	},
+/obj/machinery/conveyor_switch/oneway{
+	id = "QMLoad"
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
@@ -12238,6 +12227,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /obj/structure/curtain/black,
+/obj/structure/window/reinforced,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_site2)
 "Ot" = (
@@ -17889,16 +17879,16 @@ rC
 rC
 kD
 rC
+kD
 rC
-Ed
 kD
 Ed
 rC
 kD
 rC
 Ed
-Ed
 kD
+Ed
 rC
 Ed
 ii
@@ -18021,7 +18011,7 @@ ii
 ii
 ii
 ii
-Ed
+rC
 ii
 Ed
 ii
@@ -18163,7 +18153,7 @@ ii
 ii
 ii
 ii
-Ed
+rC
 ii
 Ed
 ii
@@ -19011,7 +19001,7 @@ ii
 ii
 ii
 Ed
-Ed
+rC
 Ed
 ht
 Cs
@@ -20028,7 +20018,7 @@ Og
 Og
 Og
 JX
-oE
+Ck
 oE
 oE
 oE
@@ -26953,8 +26943,8 @@ we
 we
 we
 Dg
-jl
-jl
+yi
+yi
 Jd
 Nf
 Nf
@@ -26975,7 +26965,7 @@ Rt
 aV
 aV
 Rt
-Or
+jl
 Yp
 Qg
 mB
@@ -27096,7 +27086,7 @@ kk
 NS
 Tk
 UM
-kk
+qR
 kk
 kk
 kk
@@ -27237,11 +27227,11 @@ OY
 Mt
 kk
 kk
+kk
+qR
+kk
 KP
 KP
-kk
-KV
-kk
 et
 QH
 Cl
@@ -27380,9 +27370,9 @@ GU
 kk
 CK
 kk
-bU
+qR
 kk
-KV
+KP
 iZ
 et
 OW
@@ -27524,7 +27514,7 @@ XI
 DF
 qR
 Nj
-Dk
+kk
 aQ
 et
 zl
@@ -28671,7 +28661,7 @@ Sv
 Sv
 Sv
 Sv
-Ck
+dD
 NB
 dD
 mQ
@@ -32649,11 +32639,11 @@ rC
 ii
 ii
 mq
+fk
+fk
 mq
-mq
-mq
-mq
-mq
+fk
+fk
 mq
 DQ
 Et
@@ -32663,9 +32653,9 @@ ZN
 mq
 mq
 mq
-mq
-mq
-mq
+fk
+fk
+fk
 mq
 ii
 ii

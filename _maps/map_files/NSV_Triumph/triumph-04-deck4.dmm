@@ -160,6 +160,12 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
 "aiO" = (
@@ -1779,13 +1785,31 @@
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_entry)
 "bBw" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/closet/secure_closet/explorer,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/floor_decal/steeldecal/steel_decals9,
+/obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 1
 	},
-/turf/simulated/floor/tiled,
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/item/tank/jetpack/oxygen,
+/obj/item/reagent_containers/hypospray/autoinjector/biginjector/healing_nanites,
+/obj/item/reagent_containers/hypospray/autoinjector/biginjector/stimm,
+/obj/item/clothing/suit/space/void/exploration{
+	armor = list("melee" = 50, "bullet" = 40, "laser" = 45, "energy" = 45, "bomb" = 30, "bio" = 100, "rad" = 70);
+	desc = "A heavier varient of the radiation-resistant voidsuit for explorations. This one features increased armor protection against small and medium arms fire, but comes at the cost of extra weight.";
+	move_speed = 7;
+	name = "heavy exploration voidsuit"
+	},
+/turf/simulated/floor/tiled/monotile,
 /area/triumph/station/explorer_prep)
 "bBS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -1996,6 +2020,12 @@
 "bKU" = (
 /obj/machinery/light,
 /obj/structure/closet/crate/freezer/rations,
+/obj/effect/floor_decal/borderfloor{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 6
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
 "bLl" = (
@@ -3144,6 +3174,12 @@
 /obj/machinery/recharger/wallcharger{
 	pixel_x = -24
 	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 9
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
 "cEa" = (
@@ -3347,6 +3383,12 @@
 "cNd" = (
 /obj/machinery/light{
 	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 5
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
@@ -4082,6 +4124,23 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
+"dCg" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/bed/chair/comfy/brown{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/primary/aft)
 "dCy" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
@@ -4653,31 +4712,6 @@
 /obj/structure/stasis_cage,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/shuttle/excursion/triumph)
-"dZv" = (
-/obj/structure/closet/secure_closet/explorer,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/effect/floor_decal/steeldecal/steel_decals9,
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 8
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 1
-	},
-/obj/item/tank/jetpack/oxygen,
-/obj/item/reagent_containers/hypospray/autoinjector/biginjector/healing_nanites,
-/obj/item/reagent_containers/hypospray/autoinjector/biginjector/stimm,
-/obj/item/clothing/suit/space/void/exploration{
-	armor = list("melee" = 50, "bullet" = 40, "laser" = 45, "energy" = 45, "bomb" = 30, "bio" = 100, "rad" = 70);
-	desc = "A heavier varient of the radiation-resistant voidsuit for explorations. This one features increased armor protection against small and medium arms fire, but comes at the cost of extra weight.";
-	move_speed = 7;
-	name = "heavy exploration voidsuit"
-	},
-/obj/machinery/camera/network/exploration,
-/turf/simulated/floor/tiled/monotile,
-/area/triumph/station/explorer_prep)
 "dZE" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -4757,6 +4791,12 @@
 	layer = 3.1;
 	name = "Colony Directo's Shutters"
 	},
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "bridge_lockdown";
+	name = "Bridge Lockdown"
+	},
 /turf/simulated/floor/plating,
 /area/bridge)
 "ecm" = (
@@ -4825,6 +4865,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
+"efq" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
+	},
+/obj/structure/bed/chair/comfy/brown{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/primary/aft)
 "efO" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
@@ -5616,6 +5665,7 @@
 /obj/machinery/camera/network/exploration{
 	dir = 4
 	},
+/obj/machinery/chemical_dispenser/bar_alc/full,
 /turf/simulated/floor/wood,
 /area/triumph/station/explorer_meeting)
 "eLn" = (
@@ -6119,6 +6169,12 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
 "feo" = (
@@ -6189,24 +6245,30 @@
 /turf/simulated/floor/tiled,
 /area/security/checkpoint2)
 "fgw" = (
-/obj/item/tank/oxygen,
-/obj/item/suit_cooling_unit,
+/obj/structure/closet/secure_closet/explorer,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/floor_decal/steeldecal/steel_decals9,
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 4
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 1
 	},
-/obj/item/clothing/shoes/magboots,
-/obj/item/clothing/suit/space/void/exploration,
-/obj/item/clothing/head/helmet/space/void/exploration,
-/obj/item/binoculars,
-/obj/machinery/firealarm{
-	layer = 3.3;
-	pixel_x = 4;
-	pixel_y = 26
+/obj/item/tank/jetpack/oxygen,
+/obj/item/reagent_containers/hypospray/autoinjector/biginjector/healing_nanites,
+/obj/item/reagent_containers/hypospray/autoinjector/biginjector/stimm,
+/obj/item/clothing/suit/space/void/exploration{
+	armor = list("melee" = 50, "bullet" = 40, "laser" = 45, "energy" = 45, "bomb" = 30, "bio" = 100, "rad" = 70);
+	desc = "A heavier varient of the radiation-resistant voidsuit for explorations. This one features increased armor protection against small and medium arms fire, but comes at the cost of extra weight.";
+	move_speed = 7;
+	name = "heavy exploration voidsuit"
 	},
-/turf/simulated/floor/tiled,
+/obj/machinery/camera/network/exploration,
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/turf/simulated/floor/tiled/monotile,
 /area/triumph/station/explorer_prep)
 "fgy" = (
 /obj/machinery/door/firedoor,
@@ -7009,6 +7071,19 @@
 	},
 /turf/simulated/floor/tiled,
 /area/bridge/hallway)
+"fPU" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/bed/chair/comfy/brown{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/primary/aft)
 "fPV" = (
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
@@ -8239,8 +8314,7 @@
 /turf/simulated/floor/tiled,
 /area/maintenance/chapel)
 "gXW" = (
-/obj/machinery/camera/network/exploration,
-/obj/structure/table/bench/steel,
+/obj/effect/floor_decal/steeldecal/steel_decals_central6,
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
 "gZa" = (
@@ -8536,6 +8610,10 @@
 /area/crew_quarters/sleep/Dorm_1{
 	name = "\improper HoP Living Quarters"
 	})
+"hkL" = (
+/obj/machinery/vending/snack,
+/turf/simulated/floor/tiled,
+/area/hallway/primary/aft)
 "hlp" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 4
@@ -8579,6 +8657,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/bridge/hallway)
+"hnj" = (
+/obj/machinery/vending/giftvendor,
+/turf/simulated/floor/tiled,
+/area/hallway/primary/aft)
 "hos" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
@@ -8871,6 +8953,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/interrogation)
+"hzO" = (
+/obj/machinery/camera/network/exploration{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/triumph/station/explorer_entry)
 "hzP" = (
 /turf/simulated/floor/airless/ceiling,
 /area/space)
@@ -9212,6 +9300,16 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/primary/aft)
+"hNE" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/brown/border,
+/turf/simulated/floor/tiled,
+/area/triumph/station/explorer_prep)
 "hOa" = (
 /obj/structure/table/reinforced,
 /obj/item/cell/high{
@@ -9844,7 +9942,6 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
-/obj/machinery/vending/nifsoft_shop,
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
@@ -10068,6 +10165,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/civilian_hallway_mid)
+"isv" = (
+/obj/structure/bed/chair/comfy/brown{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/primary/aft)
 "ity" = (
 /obj/structure/closet/emcloset,
 /obj/machinery/light,
@@ -11165,6 +11268,12 @@
 	dir = 4
 	},
 /obj/structure/closet/crate/freezer/rations,
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
 "jlA" = (
@@ -11182,16 +11291,23 @@
 /turf/simulated/floor/tiled/white,
 /area/security/forensics)
 "jmm" = (
-/obj/structure/table/rack/shelf,
 /obj/item/tank/oxygen,
 /obj/item/suit_cooling_unit,
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 4
+	},
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 1
 	},
 /obj/item/clothing/shoes/magboots,
 /obj/item/clothing/suit/space/void/exploration,
 /obj/item/clothing/head/helmet/space/void/exploration,
-/obj/machinery/camera/network/exploration,
+/obj/item/binoculars,
+/obj/machinery/firealarm{
+	layer = 3.3;
+	pixel_x = 4;
+	pixel_y = 26
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
 "jmF" = (
@@ -12548,6 +12664,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/spline/fancy,
+/obj/machinery/door/firedoor/glass/hidden/steel,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "kJB" = (
@@ -13464,6 +13581,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/floor_decal/spline/fancy,
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "lud" = (
@@ -13473,6 +13593,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
 	},
+/obj/structure/flora/pottedplant/stoutbush,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "luu" = (
@@ -14260,34 +14381,8 @@
 /turf/simulated/floor/tiled,
 /area/teleporter)
 "lVm" = (
-/obj/structure/closet/secure_closet/sar{
-	req_access = list(5);
-	req_one_access = list(5)
-	},
-/obj/effect/floor_decal/industrial/outline/blue,
-/obj/effect/floor_decal/steeldecal/steel_decals9,
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 8
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/item/storage/box/pillbottles,
-/obj/item/storage/box/autoinjectors,
-/obj/item/storage/bag/chemistry,
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
-/obj/item/tank/jetpack/oxygen,
-/obj/item/clothing/accessory/permit/gun/planetside,
-/turf/simulated/floor/tiled/monotile,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
 "lVs" = (
 /obj/machinery/media/jukebox,
@@ -14374,6 +14469,12 @@
 /area/security/riot_control)
 "maj" = (
 /obj/structure/closet/crate/freezer/rations,
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
 "maC" = (
@@ -14790,6 +14891,12 @@
 	req_access = list(19)
 	},
 /obj/machinery/door/firedoor,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "bridge_lockdown";
+	name = "Bridge Lockdown"
+	},
 /turf/simulated/floor/tiled,
 /area/bridge)
 "mwd" = (
@@ -15263,6 +15370,16 @@
 /obj/machinery/camera/network/security,
 /turf/simulated/floor/tiled,
 /area/security/security_equiptment_storage)
+"mQh" = (
+/obj/structure/table/bench/steel,
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/triumph/station/explorer_prep)
 "mQJ" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/carpet,
@@ -15320,7 +15437,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "mRM" = (
-/obj/machinery/vending/snack,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -15633,6 +15749,13 @@
 	},
 /turf/simulated/floor/wood,
 /area/library)
+"ndI" = (
+/obj/structure/closet/firecloset,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/primary/aft)
 "nen" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
@@ -15661,6 +15784,17 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
+"nfG" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/triumph/station/explorer_prep)
 "nfP" = (
 /obj/machinery/shuttle_sensor{
 	dir = 6;
@@ -15895,6 +16029,9 @@
 	},
 /obj/effect/floor_decal/spline/fancy,
 /obj/structure/flora/pottedplant/stoutbush,
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "nrj" = (
@@ -15913,6 +16050,16 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/hallway)
+"nrn" = (
+/obj/machinery/light,
+/obj/effect/floor_decal/borderfloor{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 10
+	},
+/turf/simulated/floor/tiled,
+/area/triumph/station/explorer_prep)
 "nrx" = (
 /obj/structure/bed/chair/comfy/brown{
 	dir = 1
@@ -16657,33 +16804,24 @@
 /turf/simulated/floor/tiled/dark,
 /area/triumph/station/stairs_one)
 "oan" = (
-/obj/effect/floor_decal/industrial/outline/blue,
-/obj/effect/floor_decal/steeldecal/steel_decals9,
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 4
+/obj/structure/table/rack/shelf,
+/obj/item/storage/backpack/parachute{
+	pixel_x = -4;
+	pixel_y = 4
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 8
+/obj/item/storage/backpack/parachute{
+	pixel_x = 5;
+	pixel_y = 4
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 1
+/obj/item/storage/backpack/parachute{
+	pixel_x = -4;
+	pixel_y = -6
 	},
-/obj/structure/window/reinforced{
-	dir = 1
+/obj/item/storage/backpack/parachute{
+	pixel_x = 5;
+	pixel_y = -6
 	},
-/obj/structure/closet/secure_closet/sar{
-	req_access = list(5);
-	req_one_access = list(5)
-	},
-/obj/item/storage/box/pillbottles,
-/obj/item/storage/box/autoinjectors,
-/obj/item/storage/bag/chemistry,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/item/tank/jetpack/oxygen,
-/obj/item/clothing/accessory/permit/gun/planetside,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
 "oaX" = (
 /obj/structure/bed/chair/comfy/black,
@@ -17437,6 +17575,9 @@
 /area/triumph/station/stairs_one)
 "oLh" = (
 /obj/effect/floor_decal/spline/fancy,
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "oMQ" = (
@@ -17787,6 +17928,9 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 8
 	},
+/obj/machinery/camera/network/exploration{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/white,
 /area/triumph/station/explorer_medical)
 "oWZ" = (
@@ -17805,6 +17949,9 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
+	},
+/obj/structure/bed/chair/comfy/brown{
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
@@ -17875,6 +18022,12 @@
 	},
 /obj/structure/window/phoronreinforced/full,
 /obj/structure/grille,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "bridge_lockdown";
+	name = "Bridge Lockdown"
+	},
 /turf/simulated/shuttle/floor/voidcraft,
 /area/bridge)
 "pbe" = (
@@ -17885,6 +18038,12 @@
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
@@ -18537,6 +18696,14 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_lockerroom)
+"pyH" = (
+/obj/structure/sign/goldenplaque{
+	desc = "This plaque is thankfully empty, but is dedicated to those that were killed in the line of duty protecting the NSV Triumph, and NanoTrasen as a whole.";
+	name = "Memorial Plaque";
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/dark,
+/area/chapel/main)
 "pAz" = (
 /obj/machinery/door/firedoor/glass/hidden/steel,
 /obj/machinery/light{
@@ -18641,6 +18808,26 @@
 "pFE" = (
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/primary/aft)
+"pFV" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/triumph/station/explorer_prep)
 "pGR" = (
 /obj/structure/bed/chair,
 /turf/simulated/floor/carpet,
@@ -18685,6 +18872,7 @@
 	dir = 8
 	},
 /obj/structure/table/woodentable,
+/obj/machinery/chemical_dispenser/bar_coffee/full,
 /turf/simulated/floor/wood,
 /area/triumph/station/explorer_meeting)
 "pJf" = (
@@ -18759,6 +18947,13 @@
 /area/lawoffice)
 "pJZ" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/button/remote/blast_door{
+	id = "armoryred";
+	name = "Armoury Access";
+	pixel_x = 26;
+	pixel_y = -7;
+	req_access = list(3)
+	},
 /turf/simulated/floor/tiled,
 /area/security/hallwayaux)
 "pKx" = (
@@ -19122,6 +19317,15 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 8
+	},
+/obj/machinery/camera/network/exploration{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
 "pWC" = (
@@ -19157,6 +19361,12 @@
 	},
 /obj/item/flashlight/lantern,
 /obj/structure/table/standard,
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
 "pXl" = (
@@ -19217,6 +19427,11 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
+"pYB" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/brown/border,
+/turf/simulated/floor/tiled,
+/area/triumph/station/explorer_prep)
 "pYO" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -19292,7 +19507,6 @@
 /area/hallway/secondary/civilian_hallway_mid)
 "qaM" = (
 /obj/machinery/camera/network/civilian,
-/obj/machinery/vending/giftvendor,
 /turf/simulated/floor/wood,
 /area/crew_quarters/lounge)
 "qaR" = (
@@ -19642,6 +19856,12 @@
 /obj/machinery/door/firedoor,
 /obj/structure/window/reinforced/full,
 /obj/structure/sign/department/bridge,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "bridge_lockdown";
+	name = "Bridge Lockdown"
+	},
 /turf/simulated/floor/plating,
 /area/bridge)
 "qlK" = (
@@ -19983,31 +20203,19 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/security_lockerroom)
 "qxt" = (
-/obj/structure/closet/secure_closet/explorer,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/effect/floor_decal/steeldecal/steel_decals9,
+/obj/item/tank/oxygen,
+/obj/item/suit_cooling_unit,
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 4
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 8
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 1
 	},
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/item/tank/jetpack/oxygen,
-/obj/item/reagent_containers/hypospray/autoinjector/biginjector/healing_nanites,
-/obj/item/reagent_containers/hypospray/autoinjector/biginjector/stimm,
-/obj/item/clothing/suit/space/void/exploration{
-	armor = list("melee" = 50, "bullet" = 40, "laser" = 45, "energy" = 45, "bomb" = 30, "bio" = 100, "rad" = 70);
-	desc = "A heavier varient of the radiation-resistant voidsuit for explorations. This one features increased armor protection against small and medium arms fire, but comes at the cost of extra weight.";
-	move_speed = 7;
-	name = "heavy exploration voidsuit"
-	},
-/turf/simulated/floor/tiled/monotile,
+/obj/item/clothing/shoes/magboots,
+/obj/item/clothing/suit/space/void/exploration,
+/obj/item/clothing/head/helmet/space/void/exploration,
+/obj/item/binoculars,
+/turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
 "qxN" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -20349,6 +20557,12 @@
 	name = "Facility Director's Office";
 	req_access = list(20)
 	},
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "bridge_lockdown";
+	name = "Bridge Lockdown"
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge)
 "qKH" = (
@@ -20589,6 +20803,8 @@
 /obj/structure/table/woodentable,
 /obj/item/storage/box/glasses/mug,
 /obj/item/storage/box/glasses/mug,
+/obj/item/storage/box/glasses/meta,
+/obj/item/storage/box/glasses/meta,
 /turf/simulated/floor/wood,
 /area/triumph/station/explorer_meeting)
 "qVA" = (
@@ -20686,6 +20902,12 @@
 	id = "cap_office";
 	layer = 3.1;
 	name = "Colony Directo's Shutters"
+	},
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "bridge_lockdown";
+	name = "Bridge Lockdown"
 	},
 /turf/simulated/floor/plating,
 /area/bridge)
@@ -21544,6 +21766,18 @@
 /obj/machinery/ai_slipper,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ai)
+"rEj" = (
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/triumph/station/explorer_prep)
 "rEn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -21643,6 +21877,12 @@
 "rHk" = (
 /obj/item/flashlight/lantern,
 /obj/structure/table/standard,
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
 "rIu" = (
@@ -21933,9 +22173,18 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/civilian_hallway_mid)
 "rWp" = (
-/obj/structure/flora/pottedplant/stoutbush,
+/obj/structure/table/rack/shelf,
+/obj/item/tank/oxygen,
+/obj/item/suit_cooling_unit,
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 1
+	},
+/obj/item/clothing/shoes/magboots,
+/obj/item/clothing/suit/space/void/exploration,
+/obj/item/clothing/head/helmet/space/void/exploration,
+/obj/machinery/camera/network/exploration,
 /turf/simulated/floor/tiled,
-/area/hallway/primary/aft)
+/area/triumph/station/explorer_prep)
 "rXj" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -22558,6 +22807,17 @@
 /area/crew_quarters/sleep/Dorm_1{
 	name = "\improper HoP Living Quarters"
 	})
+"sBc" = (
+/obj/machinery/button/remote/blast_door{
+	dir = 4;
+	id = "bridge_lockdown";
+	name = "Bridge Lockdown";
+	pixel_x = -30;
+	pixel_y = 1;
+	req_access = list(19)
+	},
+/turf/simulated/floor/tiled/dark,
+/area/bridge)
 "sBq" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -23069,6 +23329,18 @@
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
+"sTb" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 4
+	},
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/primary/aft)
 "sUg" = (
 /obj/structure/table/rack{
 	dir = 8;
@@ -23451,7 +23723,10 @@
 /turf/simulated/wall/r_wall,
 /area/security/nuke_storage)
 "tnz" = (
-/obj/machinery/vending/cigarette,
+/obj/machinery/alarm{
+	frequency = 1441;
+	pixel_y = 22
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/lounge)
 "tnZ" = (
@@ -23459,24 +23734,34 @@
 /turf/simulated/floor/plating,
 /area/maintenance/central)
 "tol" = (
-/obj/structure/table/rack/shelf,
-/obj/item/storage/backpack/parachute{
-	pixel_x = -4;
-	pixel_y = 4
+/obj/structure/closet/secure_closet/sar{
+	req_access = list(5);
+	req_one_access = list(5)
 	},
-/obj/item/storage/backpack/parachute{
-	pixel_x = 5;
-	pixel_y = 4
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/floor_decal/steeldecal/steel_decals9,
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 4
 	},
-/obj/item/storage/backpack/parachute{
-	pixel_x = -4;
-	pixel_y = -6
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 8
 	},
-/obj/item/storage/backpack/parachute{
-	pixel_x = 5;
-	pixel_y = -6
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 1
 	},
-/turf/simulated/floor/tiled,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/autoinjectors,
+/obj/item/storage/bag/chemistry,
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/item/tank/jetpack/oxygen,
+/obj/item/clothing/accessory/permit/gun/planetside,
+/turf/simulated/floor/tiled/monotile,
 /area/triumph/station/explorer_prep)
 "toP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -24270,10 +24555,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "ubL" = (
-/obj/machinery/light{
-	dir = 4
+/obj/machinery/vending/nifsoft_shop{
+	dir = 8
 	},
-/obj/structure/closet/firecloset,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "ubV" = (
@@ -24723,6 +25007,12 @@
 /obj/machinery/recharger/wallcharger{
 	pixel_x = -24
 	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
 "usz" = (
@@ -24971,19 +25261,33 @@
 	name = "\improper HoS Dorm"
 	})
 "uEB" = (
-/obj/item/tank/oxygen,
-/obj/item/suit_cooling_unit,
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/floor_decal/steeldecal/steel_decals9,
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 4
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 1
 	},
-/obj/item/clothing/shoes/magboots,
-/obj/item/clothing/suit/space/void/exploration,
-/obj/item/clothing/head/helmet/space/void/exploration,
-/obj/item/binoculars,
-/turf/simulated/floor/tiled,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/closet/secure_closet/sar{
+	req_access = list(5);
+	req_one_access = list(5)
+	},
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/autoinjectors,
+/obj/item/storage/bag/chemistry,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/item/tank/jetpack/oxygen,
+/obj/item/clothing/accessory/permit/gun/planetside,
+/turf/simulated/floor/tiled/monotile,
 /area/triumph/station/explorer_prep)
 "uEJ" = (
 /obj/structure/bookcase{
@@ -26795,6 +27099,13 @@
 /obj/item/pen/invisible,
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
+"vYG" = (
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 4
+	},
+/obj/machinery/vending/cigarette,
+/turf/simulated/floor/tiled,
+/area/hallway/primary/aft)
 "vZm" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -27831,6 +28142,7 @@
 /area/security/briefing_room)
 "wUd" = (
 /obj/machinery/camera/network/exploration,
+/obj/structure/table/bench/steel,
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
 "wUm" = (
@@ -28704,11 +29016,14 @@
 /turf/simulated/floor/tiled,
 /area/security/brig)
 "xGI" = (
-/obj/structure/closet/crate/bin{
-	anchored = 1
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/structure/sign/goldenplaque{
+	desc = "This is a dedicated plaque to all those that have given their life for the betterment of NanoTrasen. We give our thanks and salute to those that do not see the next star.";
+	name = "Fallen Hero/ine's Memorial";
+	pixel_y = 32
 	},
-/turf/simulated/floor/wood,
-/area/crew_quarters/lounge)
+/turf/simulated/floor/tiled,
+/area/triumph/station/explorer_prep)
 "xHF" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
@@ -32503,11 +32818,11 @@ oJu
 bWO
 cDW
 usl
-aHk
-aHk
+nfG
+nfG
 pWx
 fdy
-sdO
+nrn
 sJC
 nIK
 nIK
@@ -32649,7 +32964,7 @@ cVO
 mmj
 nif
 xdx
-cVO
+pYB
 sJC
 sJC
 sJC
@@ -32791,7 +33106,7 @@ xvF
 xvF
 bst
 qQP
-xvF
+hNE
 mTh
 xbo
 rXj
@@ -32925,15 +33240,15 @@ roa
 wfD
 vYs
 gCM
-wUd
+cVO
 gHc
-xOb
+mQh
 xOb
 xOb
 xOb
 yeU
 cVO
-cVO
+pYB
 sJC
 cVO
 cVO
@@ -33067,15 +33382,15 @@ tpw
 jzd
 hXk
 gCM
-tMS
+xGI
 gLg
-sTa
+rEj
 cVO
 cVO
 cVO
 gHc
 cVO
-cVO
+pYB
 eEl
 pLf
 dSS
@@ -33215,7 +33530,7 @@ cNd
 rHk
 pXd
 maj
-gHc
+pFV
 jlt
 bKU
 sJC
@@ -34345,7 +34660,7 @@ jpG
 amI
 apk
 bim
-kqG
+brT
 jFj
 mVN
 brT
@@ -34771,7 +35086,7 @@ pQM
 bnW
 dQJ
 bim
-brT
+hzO
 brT
 ioG
 brT
@@ -34788,7 +35103,7 @@ mAF
 jOu
 xsI
 qgG
-xGI
+rTa
 rTa
 rTa
 psx
@@ -34906,7 +35221,7 @@ nIK
 nIK
 clY
 nIK
-nIK
+bim
 bim
 bim
 bim
@@ -35048,10 +35363,10 @@ nIK
 nIK
 clY
 nIK
-nIK
 sJC
 bAe
-bAe
+cVO
+cVO
 hKb
 cVO
 cVO
@@ -35190,9 +35505,9 @@ nIK
 nIK
 clY
 nIK
-nIK
 sJC
-qxt
+bBw
+cVO
 bnm
 aIn
 jrs
@@ -35332,10 +35647,10 @@ nIK
 nIK
 clY
 pkc
-pkc
 sJC
-dZv
-bBw
+fgw
+lVm
+agH
 sTa
 gfO
 gBY
@@ -35474,8 +35789,8 @@ nIK
 nIK
 clY
 nIK
-nIK
 sJC
+bAe
 cVO
 vcE
 qJQ
@@ -35616,9 +35931,9 @@ nIK
 nIK
 clY
 nIK
-nIK
 sJC
 frn
+cVO
 vcE
 mPf
 cgH
@@ -35758,9 +36073,9 @@ pkc
 pkc
 pkc
 nIK
-nIK
 sJC
-fgw
+jmm
+cVO
 vcE
 cEa
 cgH
@@ -35900,9 +36215,9 @@ pkc
 nIK
 nIK
 nIK
-dff
 sJC
-tol
+oan
+cVO
 vcE
 dTy
 cgH
@@ -35924,13 +36239,13 @@ eDP
 lNr
 lNr
 nXe
-bfy
-dRl
+fPU
+dCg
 oWZ
 bfy
-bfy
-dRl
-bfy
+fPU
+dCg
+fPU
 bfy
 ltY
 iSn
@@ -36042,9 +36357,9 @@ pkc
 nIK
 nIK
 nIK
-dff
 sJC
-uEB
+qxt
+cVO
 vcE
 xvG
 cgH
@@ -36066,13 +36381,13 @@ inQ
 lNr
 lNr
 xiY
+isv
+efq
+isv
 lNr
-eDP
-lNr
-lNr
-lNr
-eDP
-lNr
+isv
+efq
+isv
 lNr
 oLh
 qNU
@@ -36184,9 +36499,9 @@ pkc
 nIK
 nIK
 nIK
-dff
 sJC
-jmm
+rWp
+cVO
 cot
 sdO
 cgH
@@ -36204,7 +36519,7 @@ qid
 lTl
 jjP
 iEQ
-rWp
+lNr
 lNr
 lNr
 lNr
@@ -36326,8 +36641,8 @@ pkc
 nIK
 nIK
 nIK
-dff
 sJC
+tol
 lVm
 dmD
 sTa
@@ -36348,12 +36663,12 @@ lCf
 iEQ
 cLv
 azh
-azh
+ndI
 ubL
-eKq
-azh
-cLv
-ceT
+hnj
+hkL
+vYG
+sTb
 gzz
 uxG
 lud
@@ -36468,9 +36783,9 @@ pkc
 nIK
 nIK
 nIK
-dff
 sJC
-oan
+uEB
+cVO
 vcE
 cVO
 cgH
@@ -36610,9 +36925,9 @@ pkc
 nIK
 nIK
 nIK
-nIK
 sJC
 wDx
+cVO
 vcE
 fhd
 cgH
@@ -36752,9 +37067,9 @@ pkc
 nIK
 nIK
 nIK
-nIK
 sJC
 dTy
+cVO
 vcE
 xvG
 cgH
@@ -36894,8 +37209,8 @@ pkc
 nIK
 nIK
 nIK
-nIK
 sJC
+wUd
 gXW
 vcE
 gvP
@@ -37036,9 +37351,9 @@ pkc
 nIK
 nIK
 nIK
-nIK
 sJC
 dTy
+cVO
 vcE
 bra
 cgH
@@ -37178,9 +37493,9 @@ pkc
 nIK
 nIK
 nIK
-nIK
 sJC
 tMS
+lVm
 agH
 sTa
 cgH
@@ -37320,7 +37635,7 @@ clY
 pkc
 pkc
 pkc
-pkc
+sJC
 sJC
 cVO
 vcE
@@ -40309,7 +40624,7 @@ xdN
 oYZ
 xdN
 ttb
-gpk
+pyH
 tph
 vRL
 mSk
@@ -47295,7 +47610,7 @@ pox
 hSt
 pox
 aTx
-pox
+sBc
 rpc
 pox
 iTO
