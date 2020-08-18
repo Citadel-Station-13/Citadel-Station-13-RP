@@ -11,7 +11,8 @@
 #define LAZYREMOVE(L, I) if(L) { L -= I; if(!length(L)) { L = null; } }
 // Adds I to L, initalizing I if necessary
 #define LAZYADD(L, I) if(!L) { L = list(); } L += I;
-#define LAZYOR(L, I) if(!L) { L = list(); } L |= I;
+// Adds I to L, initalizing L if necessary, if I is not already in L
+#define LAZYDISTINCTADDSTINCTADD(L, I) if(!L) { L = list(); } L |= I;
 #define LAZYFIND(L, V) (L ? L.Find(V) : 0)
 // Reads I from L safely - Works with both associative and traditional lists.
 #define LAZYACCESS(L, I) (L ? (isnum(I) ? (I > 0 && I <= length(L) ? L[I] : null) : L[I]) : null)

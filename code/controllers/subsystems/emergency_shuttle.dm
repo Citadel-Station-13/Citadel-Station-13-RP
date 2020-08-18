@@ -2,7 +2,7 @@ SUBSYSTEM_DEF(emergencyshuttle)
 	name = "Emergency Shuttle"
 	wait = 20
 
-	var/datum/shuttle/ferry/emergency/shuttle
+	var/datum/shuttle/autodock/ferry/emergency/shuttle	// Set in shuttle_emergency.dm TODO - is it really?
 
 	var/launch_time			//the time at which the shuttle will be launched
 	var/auto_recall = 0		//if set, the shuttle will be auto-recalled
@@ -28,8 +28,8 @@ SUBSYSTEM_DEF(emergencyshuttle)
 			if (!shuttle.location)	//leaving from the station
 				//launch the pods!
 				for (var/EP in SSshuttle.escape_pods)
-					var/datum/shuttle/ferry/escape_pod/pod
-					if(istype(SSshuttle.escape_pods[EP], /datum/shuttle/ferry/escape_pod))
+					var/datum/shuttle/autodock/ferry/escape_pod/pod
+					if(istype(escape_pods[EP], /datum/shuttle/autodock/ferry/escape_pod))
 						pod = SSshuttle.escape_pods[EP]
 					else
 						continue
@@ -55,8 +55,8 @@ SUBSYSTEM_DEF(emergencyshuttle)
 		//arm the escape pods
 		if (evac)
 			for (var/EP in SSshuttle.escape_pods)
-				var/datum/shuttle/ferry/escape_pod/pod
-				if(istype(SSshuttle.escape_pods[EP], /datum/shuttle/ferry/escape_pod))
+				var/datum/shuttle/autodock/ferry/escape_pod/pod
+				if(istype(escape_pods[EP], /datum/shuttle/autodock/ferry/escape_pod))
 					pod = SSshuttle.escape_pods[EP]
 				else
 					continue
@@ -207,11 +207,11 @@ SUBSYSTEM_DEF(emergencyshuttle)
 
 //returns 1 if the shuttle is currently in transit (or just leaving) to the station
 /datum/controller/subsystem/emergencyshuttle/proc/going_to_station()
-	return (!shuttle.direction && shuttle.moving_status != SHUTTLE_IDLE)
+	return shuttle && (!shuttle.direction && shuttle.moving_status != SHUTTLE_IDLE)
 
 //returns 1 if the shuttle is currently in transit (or just leaving) to centcom
 /datum/controller/subsystem/emergencyshuttle/proc/going_to_centcom()
-	return (shuttle.direction && shuttle.moving_status != SHUTTLE_IDLE)
+	return shuttle && (shuttle.direction && shuttle.moving_status != SHUTTLE_IDLE)
 
 
 /datum/controller/subsystem/emergencyshuttle/proc/get_status_panel_eta()
