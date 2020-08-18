@@ -286,3 +286,148 @@
 
 /mob/living/simple_mob/humanoid/merc/ranged/grenadier/poi
 	loot_list = list()
+
+////////////////////////////////
+//			Vox Pirates
+////////////////////////////////
+//Classifying these as Mercs, due to the general power level I want them at.
+
+/mob/living/simple_mob/humanoid/merc/voxpirate
+	name = "vox pirate"
+	desc = "A desperate looking Vox. Get your gun."
+	icon_state = "voxpirate"
+	icon_living = "voxpirate"
+	icon_dead = "voxpirate_dead"
+
+	faction = "voxpirate"
+	movement_cooldown = 4
+
+	status_flags = 0
+
+	response_help = "pokes"
+	response_disarm = "shoves"
+	response_harm = "hits"
+
+	harm_intent_damage = 5
+	melee_damage_lower = 20		//Vox Hunting rifle blade damage
+	melee_damage_upper = 20
+	attack_sharp = 1
+	attack_edge = 1
+	attacktext = list("slashed", "stabbed")
+	armor = list(melee = 60, bullet = 50, laser = 30, energy = 15, bomb = 35, bio = 100, rad = 100)	// Matching Merc voidsuit stats to represent toughness.
+
+	projectiletype = /obj/item/projectile/bullet/rifle/a762
+	projectilesound = 'sound/weapons/riflebolt.ogg'
+	needs_reload = TRUE
+	reload_max = 20
+
+	min_oxy = 0 //Vox are spaceproof.
+	max_oxy = 0
+	min_tox = 0
+	max_tox = 0
+	min_co2 = 0
+	max_co2 = 0
+	min_n2 = 0
+	max_n2 = 0
+	minbodytemp = 0
+
+	loot_list = list(/obj/item/gun/projectile/shotgun/pump/rifle/vox_hunting = 100,
+					/obj/item/ammo_magazine/clip/c762 = 30,
+					/obj/item/ammo_magazine/clip/c762 = 30
+					)
+
+	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged
+	say_list_type = /datum/say_list/merc/voxpirate
+
+/mob/living/simple_mob/humanoid/merc/voxpirate/boarder_m
+	name = "vox melee boarder"
+	desc = "A howling Vox with a sword. Run."
+	icon_state = "voxboarder_m"
+	icon_living = "voxboarder_m"
+	icon_dead = "voxboarder_m_dead"
+
+	melee_damage_lower = 30		//Energy sword damage
+	melee_damage_upper = 30
+	attack_sharp = 1
+	attack_edge = 1
+
+	loot_list = list(/obj/item/melee/energy/sword = 100)
+
+// They're good with the swords? I dunno. I like the idea they can deflect.
+/mob/living/simple_mob/humanoid/merc/melee/sword/attackby(var/obj/item/O as obj, var/mob/user as mob)
+	if(O.force)
+		if(prob(20))
+			visible_message("<span class='danger'>\The [src] blocks \the [O] with its sword!</span>")
+			if(user)
+				ai_holder.react_to_attack(user)
+			return
+		else
+			..()
+	else
+		to_chat(user, "<span class='warning'>This weapon is ineffective, it does no damage.</span>")
+		visible_message("<span class='warning'>\The [user] gently taps [src] with \the [O].</span>")
+
+/mob/living/simple_mob/humanoid/merc/melee/sword/bullet_act(var/obj/item/projectile/Proj)
+	if(!Proj)	return
+	if(prob(35))
+		visible_message("<font color='red'><B>[src] blocks [Proj] with its sword!</B></font>")
+		if(Proj.firer)
+			ai_holder.react_to_attack(Proj.firer)
+		return
+	else
+		..()
+
+	ai_holder_type = /datum/ai_holder/simple_mob/merc
+
+/mob/living/simple_mob/humanoid/merc/voxpirate/boarder_r
+	name = "vox ranged boarder"
+	desc = "A howling Vox with a shotgun. Get to cover!"
+	icon_state = "voxboarder_r"
+	icon_living = "voxboarder_r"
+	icon_dead = "voxboarder_r_dead"
+
+	projectiletype = /obj/item/projectile/bullet/pellet/shotgun
+	projectilesound = 'sound/weapons/Gunshot_shotgun.ogg'
+
+	loot_list = list(/obj/item/gun/projectile/shotgun/pump/combat = 100,
+					/obj/item/ammo_magazine/m12gdrum = 30,
+					/obj/item/ammo_magazine/m12gdrum = 30
+					)
+
+	needs_reload = TRUE
+	reload_max = 10
+
+/mob/living/simple_mob/humanoid/merc/voxpirate/suppressor
+	name = "vox suppressor"
+	desc = "Come on, feel the noise!"
+	icon_state = "voxsuppressor"
+	icon_living = "voxsuppressor"
+	icon_dead = "voxsuppresor_dead"
+
+	armor = list(melee = 30, bullet = 50, laser = 60, energy = 30, bomb = 35, bio = 100, rad = 100)	// Boosted armor to represent Tank role.
+
+	projectiletype = /obj/item/projectile/sonic/weak
+	projectilesound = 'sound/effects/basscannon.ogg'
+
+	loot_list = list(/obj/item/gun/energy/sonic = 100)
+
+	base_attack_cooldown = 5 // Two attacks a second or so.
+	needs_reload = TRUE
+	reload_max = 25 //Gotta lay down that fire, son.
+
+/mob/living/simple_mob/humanoid/merc/voxpirate/captain
+	name = "vox pirate captain"
+	desc = "Walkings the plank, dustlung! Yayaya."
+	icon_state = "voxcaptain"
+	icon_living = "voxcaptain"
+	icon_dead = "voxcaptain_dead"
+
+	armor = list(melee = 60, bullet = 50, laser = 40, energy = 15, bomb = 30, bio = 100, rad = 100)	// Vox RIG armor values.
+
+	projectiletype = /obj/item/projectile/energy/darkmatter
+	projectilesound = 'sound/weapons/eLuger.ogg'
+
+	loot_list = list(/obj/item/gun/energy/darkmatter = 100)
+
+	needs_reload = TRUE
+	reload_max = 10 //Other Vox should be carrying ammo.
