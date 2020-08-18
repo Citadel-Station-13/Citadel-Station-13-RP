@@ -95,6 +95,18 @@
 	else
 		..()
 
+/obj/item/gun/projectile/shotgun/pump/rifle/lever/vintage
+	name = "vintage repeater"
+	desc = "An iconic manually operated lever action rifle, offering adequate stopping power due to it's still powerful cartridge while at the same time having a rather respectable firing rate due to it's mechanism. It is very probable this is a replica instead of a museum piece, but rifles of this pattern still see usage as colonist guns in some far off regions. Uses .44 rounds."
+	item_state = "levercarabine" // That isn't how carbine is spelled ya knob! :U
+	icon_state = "levercarabine"
+	max_shells = 10
+	caliber = "44"
+	load_method = SINGLE_CASING
+	ammo_type = /obj/item/ammo_casing/a44
+	animated_pump = 1
+	action_sound = 'sound/weapons/riflebolt.ogg'
+
 /obj/item/gun/projectile/shotgun/pump/rifle/lever/vintage/attackby(var/obj/item/A as obj, mob/user as mob)
 	if(istype(A, /obj/item/surgical/circular_saw) || istype(A, /obj/item/melee/energy) || istype(A, /obj/item/pickaxe/plasmacutter) && w_class != ITEMSIZE_NORMAL)
 		to_chat(user, "<span class='notice'>You begin to shorten the barrel and stock of \the [src].</span>")
