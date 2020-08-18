@@ -83,15 +83,13 @@
 	materials = list(DEFAULT_WALL_MATERIAL = 8000, MAT_SILVER = 2000, MAT_DIAMOND = 1000)
 	build_path = /obj/item/gun/projectile/automatic/advanced_smg
 	sort_string = "MABAA"
-
+	
 /datum/design/item/weapon/ballistic/p90
-	id = "smg"
-	desc = "A toploading 9mm SMG that feeds from a high capacity magazine."
-	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 10000, MAT_SILVER = 4000, MAT_DIAMOND = 2000)
-	build_path = /obj/item/gun/projectile/automatic/p90
-	sort_string = "MABAB"
-
+	id = "p90"
+	desc = "The H90K is a compact, large capacity submachine gun produced by Hephaestus Industries. Despite its fierce reputation, it still manages to feel like a toy. Uses 9mm rounds."
+	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4)
+	materials = list(DEFAULT_WALL_MATERIAL = 5000, MAT_PLASTIC = 5000, MAT_URANIUM = 1000)
+	
 // Ballistic ammo
 
 /datum/design/item/weapon/ballistic/ammo/AssembleDesignName()
@@ -116,14 +114,12 @@
 	build_path = /obj/item/ammo_casing/a12g/stunshell
 	sort_string = "MABBB"
 
-datum/design/item/weapon/ballistic/ammo/ammo_9mmp90
-	name = "Toploading 9mm magazine"
-	id = "ammo_9mmp90"
-	desc = "A 50 round magazine for the H90k SMG"
-	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 10000, MAT_SILVER = 500) // Requires silver for proprietary magazines! Or something.
-	build_path = /obj/item/ammo_magazine/m9mmp90
-	sort_string = "MABBC"
+/datum/design/item/weapon/ballistic/ammo/m9mmp90
+	name = "H90K magazine"
+	desc = "A large capacity top mounted magazine (9mm armor-piercing)."
+	id = "m9mmp90"
+	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4)
+	materials = list(DEFAULT_WALL_MATERIAL = 2250, MAT_PLASTIC = 1500, MAT_URANIUM = 50)
 
 datum/design/item/weapon/ballistic/ammo/m10x24/medium
 	name = "M41A Medium Magazine"
