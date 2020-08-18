@@ -665,9 +665,9 @@
 	name = "magazine (12 gauge pellet)"
 	ammo_type = /obj/item/ammo_casing/a12g/pellet
 
-/obj/item/ammo_magazine/m12gdrum/flash
+/obj/item/ammo_magazine/m12gdrum/flare
 	name = "magazine (12 gauge flash)"
-	ammo_type = /obj/item/ammo_casing/a12g/flash
+	ammo_type = /obj/item/ammo_casing/a12g/flare
 
 /obj/item/ammo_magazine/m12gdrum/empty
 	initial_ammo = 0
