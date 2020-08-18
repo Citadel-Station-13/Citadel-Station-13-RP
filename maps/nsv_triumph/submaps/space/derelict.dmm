@@ -25,7 +25,7 @@
 /obj/effect/map_effect/interval/effect_emitter/smoke,
 /obj/machinery/door/airlock/alien,
 /turf/simulated/floor/plating,
-/area/triumph_away/debrisfield/explored)
+/area/triumph_away/debrisfield/derelict)
 "af" = (
 /obj/effect/map_effect/interval/effect_emitter/sparks/frequent,
 /obj/structure/door_assembly/door_assembly_alien,
@@ -39,16 +39,6 @@
 /obj/machinery/door/airlock/alien,
 /turf/simulated/floor/plating,
 /area/triumph_away/debrisfield/derelict)
-"ai" = (
-/obj/machinery/door/airlock/alien,
-/turf/simulated/floor/plating,
-/area/triumph_away/debrisfield/explored)
-"aj" = (
-/turf/simulated/wall,
-/area/triumph_away/debrisfield/explored)
-"ak" = (
-/turf/simulated/floor/plating,
-/area/triumph_away/debrisfield/explored)
 "al" = (
 /obj/structure/shuttle/engine/propulsion{
 	dir = 8;
@@ -1676,7 +1666,7 @@ aa
 aa
 aq
 ae
-aj
+aq
 aa
 ao
 bT
@@ -1730,7 +1720,7 @@ aa
 ab
 aq
 aP
-aj
+aq
 al
 ao
 aX
@@ -1784,8 +1774,8 @@ aa
 aq
 aq
 af
-aj
-aj
+aq
+aq
 ao
 aq
 aq
@@ -1838,8 +1828,8 @@ aa
 aq
 aP
 aP
-ak
-aj
+aP
+aq
 ao
 aU
 bT
@@ -2216,8 +2206,8 @@ aa
 aq
 aP
 aP
-ak
-aj
+aP
+aq
 ao
 ap
 bT
@@ -2270,8 +2260,8 @@ aa
 aq
 aq
 ah
-aj
-aj
+aq
+aq
 ao
 aq
 aq
@@ -2324,7 +2314,7 @@ aa
 ac
 aq
 aP
-aj
+aq
 am
 ao
 aX
@@ -2377,8 +2367,8 @@ bO
 aa
 aa
 aq
-ai
-aj
+ah
+aq
 aa
 ao
 an

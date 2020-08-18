@@ -631,6 +631,10 @@
 /obj/structure/railing,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
+"cR" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/plating,
+/area/vacant/vacant_bar)
 "cV" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
@@ -1107,6 +1111,10 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/carpet/blucarpet,
 /area/crew_quarters/heads/chief)
+"fa" = (
+/obj/machinery/atmospherics/unary/vent_pump/on,
+/turf/simulated/floor/plating,
+/area/vacant/vacant_bar)
 "fc" = (
 /turf/simulated/wall/r_wall,
 /area/engineering/engine_smes)
@@ -1576,6 +1584,12 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/backup)
+"hG" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/vacant/vacant_bar)
 "hH" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 8
@@ -1703,6 +1717,12 @@
 	icon_state = "16-0"
 	},
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/zpipe/up/supply{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/zpipe/up/scrubbers{
+	dir = 1
+	},
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
 "iv" = (
@@ -4392,6 +4412,11 @@
 	icon_state = "techmaint"
 	},
 /area/tcommsat/chamber)
+"wR" = (
+/obj/random/trash,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/wood,
+/area/vacant/vacant_bar)
 "wS" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
@@ -4452,6 +4477,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
 "xf" = (
@@ -4596,6 +4623,8 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
 "xV" = (
@@ -4963,6 +4992,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
 "zl" = (
@@ -5259,6 +5290,13 @@
 /area/engineering/hallway)
 "Ap" = (
 /obj/structure/bed/chair/comfy/red,
+/turf/simulated/floor/plating,
+/area/vacant/vacant_bar)
+"Ay" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
 "Az" = (
@@ -9285,6 +9323,12 @@
 /obj/machinery/meter,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"Ww" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/vacant/vacant_bar)
 "Wz" = (
 /obj/item/storage/briefcase/fission,
 /obj/structure/closet/crate/secure/engineering,
@@ -13369,10 +13413,10 @@ CP
 nw
 Xe
 nw
-nw
-nw
-DR
-nw
+fa
+cR
+wR
+Ay
 xU
 xa
 zk
@@ -13514,7 +13558,7 @@ Fh
 nw
 Fh
 nw
-nw
+Ww
 yb
 Bs
 XU
@@ -13656,7 +13700,7 @@ CP
 nw
 nw
 nw
-nw
+hG
 Lh
 Bs
 eD
