@@ -51,11 +51,11 @@ var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
 /datum/lore/atc_controller/proc/reroute_traffic(var/yes = 1)
 	if(yes)
 		if(!squelched)
-			msg("Scrambling fighters and ships to protect [GLOB.using_map.station_name]!")
+			msg("Re-routing traffic and fleet patterns around [GLOB.using_map.station_name].")
 		squelched = 1
 	else
 		if(squelched)
-			msg("Resuming normal fleet patterns around the flagship.")
+			msg("Resuming normal fleet patterns and traffic.")
 		squelched = 0
 
 /datum/lore/atc_controller/proc/shift_ending(var/evac = 0)
