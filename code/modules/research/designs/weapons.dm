@@ -89,6 +89,8 @@
 	desc = "The H90K is a compact, large capacity submachine gun produced by Hephaestus Industries. Despite its fierce reputation, it still manages to feel like a toy. Uses 9mm rounds."
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4)
 	materials = list(DEFAULT_WALL_MATERIAL = 5000, MAT_PLASTIC = 5000, MAT_URANIUM = 1000)
+	build_path = /obj/item/gun/projectile/automatic/p90
+	sort_string = "MABAB"
 	
 // Ballistic ammo
 
@@ -120,6 +122,8 @@
 	id = "m9mmp90"
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4)
 	materials = list(DEFAULT_WALL_MATERIAL = 2250, MAT_PLASTIC = 1500, MAT_URANIUM = 50)
+	build_path = /obj/item/ammo_magazine/m9mmp90
+	sort_string = "MABBC"
 
 datum/design/item/weapon/ballistic/ammo/m10x24/medium
 	name = "M41A Medium Magazine"
