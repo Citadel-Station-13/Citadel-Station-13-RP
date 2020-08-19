@@ -239,3 +239,25 @@
 	material = get_material_by_name("holowood")
 	..()
 */
+
+//Sandbags.
+/obj/structure/table/sandbags
+	name = "sandbag barrier"
+	icon = 'icons/obj/tables.dmi'
+	icon_state = "sandbags"
+	desc = "A barrier made of stacked sandbags."
+	density = 1
+	anchored = 1
+	climbable = 1
+	layer = TABLE_LAYER
+	throwpass = 1
+	surgery_odds = 66
+	can_plate = 0
+	can_reinforce = 0
+	flipped = -1
+	maxhealth = 100
+	health = 100
+	item_place = TRUE
+	item_pixel_place = FALSE
+
+	connections = list("nw0", "ne0", "sw0", "se0")

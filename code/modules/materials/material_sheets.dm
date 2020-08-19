@@ -436,3 +436,38 @@
 	icon_state = "sheet-phoronrglass"
 	default_type = "reinforced borosilicate glass"
 	no_variants = FALSE
+
+//CitMain Sandbag port.
+/obj/item/stack/material/emptysandbag
+	name = "empty sandbag"
+	desc = "A bag to be filled with sand."
+	icon_state = "sandbag"
+	max_amount = 50
+	description_info = "Fill with sand to convert this into a sandbag."
+	no_variants = FALSE
+	var/fill_type = /obj/item/stack/material/sandbags
+
+/obj/item/stack/material/emptysandbag/attackby(var/obj/item/W, var/mob/user)
+	if(!istype(W, /obj/item/ore/glass))
+		var/time = (3 SECONDS)
+		user.setClickCooldown(time)
+		if(do_after(user, time, src) && use(1))
+			to_chat(user, "<span class='notice'>You fill the sandbag.</span>")
+	else
+		return ..()
+
+/obj/item/stack/material/emptysandbag/attackby(var/obj/item/W, var/mob/user)
+	if(istype(W, /obj/item/ore/glass) && !interact(user, src))
+		if(do_after(user, 3 SECONDS, src) && use(1) && qdel(W))
+			var/turf/T = get_turf(user)
+				to_chat(user, "<span class='notice'>You fill the sandbag.</span>")
+			new /obj/item/stack/material/sandbags && !get(T)
+	else
+		return ..()
+
+/obj/item/stack/material/sandbags
+	name = "sandbags"
+	desc = "This is a synthetic bag tightly packed with sand. It is designed to provide structural support and serve as a portable barrier."
+	singular_name = "sandbag"
+	icon_state = "sandbags"
+	no_variants = FALSE
