@@ -4883,6 +4883,7 @@
 	name = "Virology Requests Console";
 	pixel_x = 32
 	},
+/obj/machinery/recharger,
 /turf/simulated/floor/tiled/white,
 /area/medical/virology)
 "kt" = (
@@ -8744,6 +8745,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 4
 	},
+/obj/machinery/recharger,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery_storage)
 "sx" = (
@@ -19251,6 +19253,11 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/heads/cmo)
+"Nv" = (
+/obj/structure/table/woodentable,
+/obj/machinery/recharger,
+/turf/simulated/floor/wood/sif,
+/area/crew_quarters/medbreak)
 "Nw" = (
 /obj/structure/curtain/open/shower/medical,
 /turf/simulated/floor/tiled,
@@ -22370,6 +22377,7 @@
 /obj/item/reagent_containers/syringe/antiviral,
 /obj/item/reagent_containers/syringe/antiviral,
 /obj/item/reagent_containers/syringe/antiviral,
+/obj/machinery/recharger,
 /turf/simulated/floor/tiled/white,
 /area/medical/virology)
 "TH" = (
@@ -22872,6 +22880,7 @@
 /obj/structure/table/glass,
 /obj/random/medical/lite,
 /obj/random/medical/lite,
+/obj/machinery/recharger,
 /turf/simulated/floor/tiled,
 /area/medical/ward)
 "UJ" = (
@@ -37608,7 +37617,7 @@ pC
 aA
 eg
 Ev
-rz
+Nv
 rz
 jU
 wl

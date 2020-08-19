@@ -4164,9 +4164,16 @@
 /turf/simulated/floor/tiled/white,
 /area/security/forensics)
 "dBa" = (
-/obj/structure/closet/thunderdome/tdred,
-/turf/simulated/floor/wood,
-/area/security/briefing_room)
+/obj/structure/window/reinforced/tinted/frosted{
+	dir = 8
+	},
+/obj/structure/table/reinforced,
+/obj/effect/floor_decal/corner/blue{
+	dir = 9
+	},
+/obj/machinery/recharger,
+/turf/simulated/floor/tiled/dark,
+/area/bridge)
 "dBl" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -8464,6 +8471,7 @@
 	pixel_y = 22
 	},
 /obj/machinery/camera/network/security,
+/obj/machinery/recharger,
 /turf/simulated/floor/lino,
 /area/security/detectives_office)
 "hat" = (
@@ -9323,6 +9331,7 @@
 	dir = 1
 	},
 /obj/structure/table/woodentable,
+/obj/machinery/recharger,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_3{
 	name = "\improper CMO Dorm"
@@ -16257,10 +16266,6 @@
 /obj/effect/floor_decal/corner/brown/border,
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_entry)
-"nlK" = (
-/obj/structure/closet/thunderdome/tdgreen,
-/turf/simulated/floor/wood,
-/area/security/briefing_room)
 "nlQ" = (
 /obj/structure/table/woodentable,
 /obj/machinery/light/small{
@@ -16843,6 +16848,7 @@
 /obj/random/tech_supply,
 /obj/random/tech_supply,
 /obj/random/tech_supply,
+/obj/machinery/recharger,
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
 "nMr" = (
@@ -17394,6 +17400,7 @@
 	dir = 1
 	},
 /obj/structure/table/woodentable,
+/obj/machinery/recharger,
 /turf/simulated/floor/carpet/oracarpet,
 /area/crew_quarters/sleep/Dorm_2{
 	name = "\improper CE Dorm"
@@ -19793,6 +19800,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 4
 	},
+/obj/machinery/recharger,
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
 "pXl" = (
@@ -23460,6 +23468,7 @@
 "sFX" = (
 /obj/structure/table/woodentable,
 /obj/item/toy/plushie/penguin_baby,
+/obj/machinery/recharger,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/sleep/Dorm_1{
 	name = "\improper HoP Living Quarters"
@@ -26496,6 +26505,7 @@
 	dir = 8;
 	pixel_x = -24
 	},
+/obj/machinery/recharger,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/sleep/Dorm_4{
 	name = "\improper Research Director's Dorm"
@@ -29674,7 +29684,7 @@
 "xGI" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/structure/sign/goldenplaque{
-	desc = "This is a dedicated plaque to all those that have given their life for the betterment of NanoTrasen. We give our thanks and salute to those that do not see the next star.";
+	desc = "This is a dedicated plaque to all those that have given their life for the betterment of NanoTrasen. We give our thanks and salute to those that do not see the next star. The name "DEAN FITZGERALD" is scratched under the text.";
 	name = "Fallen Hero/ine's Memorial";
 	pixel_y = 32
 	},
@@ -29853,6 +29863,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/machinery/recharger,
 /turf/simulated/floor/tiled,
 /area/security/hallwayaux)
 "xOb" = (
@@ -30133,6 +30144,7 @@
 	dir = 9
 	},
 /obj/structure/table/standard,
+/obj/machinery/recharger,
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_entry)
 "xZu" = (
@@ -37491,7 +37503,7 @@ ldh
 hvu
 sKM
 brg
-nlK
+vqd
 vqd
 ufw
 ufw
@@ -37633,7 +37645,7 @@ nXg
 vyP
 sKM
 brg
-nlK
+vqd
 vqd
 ufw
 ufw
@@ -38059,7 +38071,7 @@ fOb
 wkX
 xiF
 brg
-dBa
+vqd
 vqd
 vcM
 pZO
@@ -38201,7 +38213,7 @@ pgC
 dFA
 sKM
 brg
-dBa
+vqd
 vqd
 vcM
 pZO
@@ -48137,7 +48149,7 @@ vzr
 qnX
 dPR
 xyv
-pFz
+dBa
 pFz
 pFz
 dqW

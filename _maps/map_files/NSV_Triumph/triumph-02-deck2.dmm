@@ -1251,11 +1251,6 @@
 	dir = 4
 	},
 /obj/structure/lattice,
-/obj/structure/cable{
-	d2 = 8;
-	dir = 4;
-	icon_state = "32-4"
-	},
 /obj/structure/railing{
 	dir = 8
 	},
@@ -1273,6 +1268,9 @@
 	},
 /obj/machinery/atmospherics/pipe/zpipe/down/scrubbers{
 	dir = 8
+	},
+/obj/structure/cable{
+	icon_state = "32-1"
 	},
 /turf/simulated/open,
 /area/maintenance/dormitory)
@@ -6054,6 +6052,9 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
+/obj/effect/landmark/start{
+	name = "Shaft Miner"
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
 "sM" = (
@@ -8494,6 +8495,7 @@
 	dir = 4
 	},
 /obj/structure/table/reinforced,
+/obj/machinery/recharger,
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "Bd" = (
@@ -11327,6 +11329,20 @@
 "Ki" = (
 /turf/simulated/wall,
 /area/hydroponics)
+"Kj" = (
+/obj/structure/table/marble,
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 2
+	},
+/obj/machinery/door/blast/shutters{
+	dir = 2;
+	id = "bar";
+	layer = 3.3;
+	name = "Bar Shutters"
+	},
+/obj/machinery/recharger,
+/turf/simulated/floor/tiled/dark,
+/area/crew_quarters/bar)
 "Kl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -11365,6 +11381,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/machinery/recharger,
 /turf/simulated/floor/carpet/sblucarpet,
 /area/crew_quarters/coffee_shop)
 "Kt" = (
@@ -13411,6 +13428,9 @@
 /area/maintenance/substation/civilian)
 "RQ" = (
 /obj/structure/table/bench/padded,
+/obj/effect/landmark/start{
+	name = "Shaft Miner"
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
 "RR" = (
@@ -20244,7 +20264,7 @@ JX
 Cy
 xa
 AA
-rf
+Kj
 PU
 Le
 Le
