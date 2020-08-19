@@ -584,6 +584,15 @@
 /obj/effect/floor_decal/corner/mauve/border,
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
+"bp" = (
+/obj/structure/table/standard,
+/obj/item/radio/intercom{
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 26
+	},
+/turf/simulated/floor/tiled,
+/area/holodeck_control)
 "bq" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
@@ -1754,6 +1763,10 @@
 /obj/structure/closet/crate/bin{
 	anchored = 1
 	},
+/obj/item/radio/intercom{
+	dir = 4;
+	pixel_x = 24
+	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/heads/cmo)
 "dR" = (
@@ -1935,6 +1948,11 @@
 	},
 /obj/structure/bed/chair/comfy/brown{
 	dir = 4
+	},
+/obj/item/radio/intercom{
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 26
 	},
 /turf/simulated/floor/wood,
 /area/hallway/primary/aft)
@@ -2570,6 +2588,9 @@
 	dir = 4
 	},
 /obj/structure/flora/pottedplant/crystal,
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
 /turf/simulated/floor/tiled,
 /area/medical/ward)
 "fG" = (
@@ -3009,6 +3030,14 @@
 /obj/item/roller,
 /turf/simulated/floor/tiled/white,
 /area/medical/cmostore)
+"gC" = (
+/obj/item/radio/intercom{
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 26
+	},
+/turf/simulated/floor/tiled/white,
+/area/rnd/research_restroom)
 "gD" = (
 /obj/structure/table/woodentable,
 /obj/machinery/computer/med_data/laptop{
@@ -3313,6 +3342,9 @@
 "ho" = (
 /obj/structure/toilet{
 	dir = 8
+	},
+/obj/machinery/light{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/ward)
@@ -3841,6 +3873,11 @@
 /area/rnd/xenobiology/xenoflora_storage)
 "iq" = (
 /mob/living/simple_mob/slime/xenobio/rainbow/kendrick,
+/obj/item/radio/intercom{
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 26
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/rdoffice)
 "ir" = (
@@ -4882,6 +4919,9 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 9
 	},
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
 /turf/simulated/floor/tiled/steel,
 /area/medical/virologyaccess)
 "ky" = (
@@ -5323,6 +5363,11 @@
 /obj/structure/bed/chair/comfy/brown{
 	dir = 4
 	},
+/obj/item/radio/intercom{
+	dir = 8;
+	pixel_x = -28;
+	req_access = list()
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryobs)
 "lw" = (
@@ -5575,6 +5620,9 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 6
 	},
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay)
 "lX" = (
@@ -5596,6 +5644,10 @@
 /obj/structure/sink{
 	dir = 4;
 	pixel_x = 12
+	},
+/obj/item/radio/intercom{
+	dir = 4;
+	pixel_x = 24
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medical_restroom)
@@ -7674,6 +7726,24 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
+"qj" = (
+/obj/effect/floor_decal/steeldecal/steel_decals9,
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 8
+	},
+/obj/item/radio/intercom{
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 26
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/rnd/anomaly_lab)
 "qk" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8
@@ -8045,6 +8115,11 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 9
 	},
+/obj/item/radio/intercom{
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 26
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
 "rc" = (
@@ -8337,6 +8412,16 @@
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
+"rL" = (
+/obj/structure/bed,
+/obj/item/bedsheet/medical,
+/obj/item/radio/intercom{
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 26
+	},
+/turf/simulated/floor/tiled,
+/area/medical/ward)
 "rM" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -9166,6 +9251,11 @@
 /area/rnd/research/testingrange)
 "tt" = (
 /obj/machinery/vending/medical,
+/obj/item/radio/intercom{
+	dir = 8;
+	pixel_x = -28;
+	req_access = list()
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virology)
 "tu" = (
@@ -9802,6 +9892,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
+"uL" = (
+/obj/item/radio/intercom{
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 26
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rnd/research/testingrange)
 "uM" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -10950,6 +11048,19 @@
 "xa" = (
 /turf/simulated/floor/tiled/white,
 /area/medical/ward)
+"xb" = (
+/obj/structure/sink/kitchen{
+	dir = 4;
+	name = "surgery sink";
+	pixel_x = -12
+	},
+/obj/item/radio/intercom{
+	dir = 8;
+	pixel_x = -28;
+	req_access = list()
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/surgeryprep)
 "xc" = (
 /obj/structure/table/glass,
 /obj/effect/floor_decal/borderfloor,
@@ -11040,6 +11151,11 @@
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
+	},
+/obj/item/radio/intercom{
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 26
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/reception_desk)
@@ -11386,6 +11502,9 @@
 	dir = 4
 	},
 /obj/structure/flora/pottedplant/mysterious,
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
 /turf/simulated/floor/tiled,
 /area/medical/ward)
 "xX" = (
@@ -12002,6 +12121,14 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/research)
+"zg" = (
+/obj/item/radio/intercom{
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 26
+	},
+/turf/simulated/floor/wood,
+/area/hallway/primary/aft)
 "zh" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
@@ -12011,6 +12138,14 @@
 "zi" = (
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
+"zj" = (
+/obj/machinery/washing_machine,
+/obj/item/radio/intercom{
+	dir = 4;
+	pixel_x = 24
+	},
+/turf/simulated/floor/tiled/white,
+/area/crew_quarters/medical_restroom)
 "zk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -13489,6 +13624,19 @@
 	},
 /turf/simulated/floor/tiled,
 /area/medical/resleeving)
+"Cc" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 4
+	},
+/obj/item/radio/intercom{
+	dir = 4;
+	pixel_x = 24
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/surgery_hallway)
 "Cd" = (
 /obj/machinery/light{
 	dir = 8
@@ -13845,6 +13993,11 @@
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
+	},
+/obj/item/radio/intercom{
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 26
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
@@ -14364,6 +14517,9 @@
 	dir = 4
 	},
 /obj/structure/flora/pottedplant/decorative,
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
 /turf/simulated/floor/tiled,
 /area/medical/ward)
 "DN" = (
@@ -14916,6 +15072,11 @@
 /area/rnd/reception_desk)
 "EQ" = (
 /obj/machinery/vending/phoronresearch,
+/obj/item/radio/intercom{
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 26
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
 "ER" = (
@@ -14943,6 +15104,11 @@
 	dir = 4
 	},
 /obj/structure/flora/pottedplant/shoot,
+/obj/item/radio/intercom{
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 26
+	},
 /turf/simulated/floor/tiled,
 /area/medical/ward)
 "EV" = (
@@ -15831,6 +15997,10 @@
 /obj/structure/table/glass,
 /obj/item/bodybag/cryobag,
 /obj/item/bodybag/cryobag,
+/obj/item/radio/intercom{
+	dir = 4;
+	pixel_x = 24
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/cmostore)
 "GQ" = (
@@ -16845,6 +17015,11 @@
 	dir = 1
 	},
 /obj/structure/table/steel,
+/obj/item/radio/intercom{
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 26
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/workshop)
 "IU" = (
@@ -17092,6 +17267,11 @@
 	},
 /obj/item/robotanalyzer,
 /obj/item/robotanalyzer,
+/obj/item/radio/intercom{
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 26
+	},
 /turf/simulated/floor/tiled/old_cargo/purple,
 /area/medical/surgery{
 	name = "\improper Robotics Surgery Room"
@@ -17337,6 +17517,17 @@
 /obj/machinery/camera/network/civilian,
 /turf/simulated/wall/r_wall,
 /area/triumph/station/stairs_three)
+"Ke" = (
+/obj/structure/morgue{
+	dir = 2
+	},
+/obj/item/radio/intercom{
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 26
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/medical/morgue)
 "Kf" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -17780,6 +17971,11 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
 	},
+/obj/item/radio/intercom{
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 26
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
 "KU" = (
@@ -18214,6 +18410,9 @@
 /obj/item/storage/box/gloves{
 	pixel_x = 4;
 	pixel_y = 4
+	},
+/obj/structure/reagent_dispensers/virusfood{
+	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virology)
@@ -18820,6 +19019,11 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
 	},
+/obj/item/radio/intercom{
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 26
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
 "MZ" = (
@@ -19079,6 +19283,17 @@
 	},
 /turf/simulated/floor/wood/sif,
 /area/crew_quarters/medbreak)
+"NA" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/item/radio/intercom{
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 26
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/primary/starboard)
 "NB" = (
 /obj/machinery/light_switch{
 	pixel_x = 25
@@ -19243,6 +19458,20 @@
 	},
 /turf/simulated/floor/airless,
 /area/space)
+"NS" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/obj/item/radio/intercom{
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 26
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/surgery_hallway)
 "NT" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -19397,6 +19626,11 @@
 "Ok" = (
 /obj/machinery/camera/network/research,
 /obj/structure/flora/pottedplant/stoutbush,
+/obj/item/radio/intercom{
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 26
+	},
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "Ol" = (
@@ -20114,6 +20348,18 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
+"PI" = (
+/obj/machinery/camera/network/civilian,
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/item/radio/intercom{
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 26
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/primary/starboard)
 "PJ" = (
 /obj/structure/bed/chair/office/light{
 	dir = 4
@@ -21528,6 +21774,9 @@
 /obj/machinery/camera/network/medbay{
 	dir = 1
 	},
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virology)
 "SE" = (
@@ -22084,6 +22333,10 @@
 	pixel_y = 2
 	},
 /obj/item/stack/nanopaste,
+/obj/item/radio/intercom{
+	dir = 4;
+	pixel_x = 24
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery)
 "TE" = (
@@ -22167,6 +22420,9 @@
 	},
 /obj/machinery/camera/network/medbay{
 	dir = 1
+	},
+/obj/structure/reagent_dispensers/virusfood{
+	pixel_y = -32
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virology)
@@ -22517,6 +22773,9 @@
 /obj/item/reagent_containers/dropper,
 /obj/structure/table/glass,
 /obj/machinery/light,
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virology)
 "Uz" = (
@@ -23431,6 +23690,16 @@
 /obj/machinery/light,
 /turf/simulated/floor/wood/sif,
 /area/crew_quarters/heads/cmo)
+"Wo" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
+/obj/item/radio/intercom{
+	dir = 4;
+	pixel_x = 24
+	},
+/turf/simulated/floor/tiled,
+/area/triumph/station/stairs_three)
 "Wp" = (
 /turf/simulated/shuttle/wall,
 /area/shuttle/large_escape_pod1/station{
@@ -23633,6 +23902,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
+"WN" = (
+/obj/item/radio/intercom{
+	dir = 4;
+	pixel_x = 24
+	},
+/turf/simulated/floor/wood/sif,
+/area/crew_quarters/medbreak)
 "WO" = (
 /obj/machinery/light{
 	dir = 4
@@ -23646,6 +23922,14 @@
 /obj/item/tank/emergency/oxygen/engi,
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
+"WP" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/paleblue/border,
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/surgery_hallway)
 "WQ" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 9
@@ -23678,6 +23962,9 @@
 /obj/item/bedsheet/green,
 /obj/machinery/status_display{
 	pixel_x = -32
+	},
+/obj/item/radio/intercom{
+	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virology)
@@ -24251,6 +24538,10 @@
 	},
 /obj/machinery/light{
 	dir = 4
+	},
+/obj/item/radio/intercom{
+	dir = 4;
+	pixel_x = 24
 	},
 /turf/simulated/floor/tiled,
 /area/medical/medbay_emt_bay)
@@ -25124,6 +25415,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/escape/medical_escape_pod_hallway)
+"ZW" = (
+/obj/item/radio/intercom{
+	dir = 8;
+	pixel_x = -28;
+	req_access = list()
+	},
+/turf/simulated/floor/tiled,
+/area/medical/ward)
 "ZX" = (
 /obj/machinery/station_map{
 	pixel_y = 32
@@ -29477,7 +29776,7 @@ gK
 gK
 gK
 FI
-uA
+Ke
 cZ
 OP
 Wz
@@ -31628,7 +31927,7 @@ jb
 vl
 vl
 YL
-vl
+Wo
 SK
 BO
 cd
@@ -31642,7 +31941,7 @@ Xr
 Xr
 Xr
 BO
-nL
+NS
 ny
 zF
 eS
@@ -32488,7 +32787,7 @@ ny
 wc
 Zj
 aY
-Sx
+xb
 Sx
 Sx
 et
@@ -32780,7 +33079,7 @@ mr
 yv
 kn
 Aj
-zF
+WP
 Ow
 hL
 Fj
@@ -32924,7 +33223,7 @@ zB
 md
 Aw
 Ow
-xl
+rL
 Fj
 Nw
 Wl
@@ -33478,7 +33777,7 @@ VW
 BO
 jK
 qr
-tL
+Cc
 Aw
 Qo
 gt
@@ -33486,7 +33785,7 @@ tL
 tL
 tL
 Xk
-tL
+Cc
 QX
 tL
 md
@@ -33776,7 +34075,7 @@ Nk
 Hd
 KF
 Ow
-Fj
+ZW
 gx
 Ow
 wL
@@ -34028,7 +34327,7 @@ Or
 LL
 Fz
 Xn
-vp
+zg
 QU
 QU
 nQ
@@ -35990,7 +36289,7 @@ gK
 gK
 gK
 nI
-ds
+qj
 ds
 ds
 fU
@@ -36585,7 +36884,7 @@ Rx
 Rx
 sA
 VL
-rO
+gC
 rO
 NW
 Pj
@@ -36705,7 +37004,7 @@ Tk
 Tk
 Tk
 Rg
-ts
+uL
 ts
 ts
 ts
@@ -37580,7 +37879,7 @@ Bz
 Rz
 TM
 Uj
-Tn
+bp
 gc
 Tn
 cn
@@ -37593,7 +37892,7 @@ eE
 Dj
 Dk
 Nz
-xe
+WN
 Zn
 qA
 uC
@@ -38002,7 +38301,7 @@ mp
 mp
 pA
 qK
-Bz
+NA
 Hl
 GM
 UA
@@ -38295,7 +38594,7 @@ RN
 RN
 sh
 le
-qq
+zj
 CI
 CI
 VX
@@ -38996,7 +39295,7 @@ tq
 tq
 tq
 tq
-Wd
+PI
 Hl
 Fi
 Uj

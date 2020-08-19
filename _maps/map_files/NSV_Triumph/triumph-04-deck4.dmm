@@ -315,6 +315,9 @@
 "apk" = (
 /obj/structure/table/standard,
 /obj/random/firstaid,
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
 "apq" = (
@@ -395,6 +398,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/range)
+"arG" = (
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
+/turf/simulated/floor/tiled,
+/area/security/riot_control)
 "ash" = (
 /turf/simulated/wall/r_wall,
 /area/security/tactical)
@@ -982,6 +991,9 @@
 /area/security/armoury)
 "aVG" = (
 /obj/machinery/light/small,
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
 /turf/simulated/floor/wood,
 /area/library)
 "aVJ" = (
@@ -1037,6 +1049,9 @@
 	},
 /obj/effect/floor_decal/corner/red/border{
 	dir = 10
+	},
+/obj/item/radio/intercom{
+	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
 /area/security/security_cell_hallway)
@@ -1556,6 +1571,9 @@
 "bra" = (
 /obj/structure/table/standard,
 /obj/machinery/recharger,
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
 "brg" = (
@@ -1830,6 +1848,9 @@
 "bCU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
+	},
+/obj/item/radio/intercom{
+	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/dark,
 /area/gateway)
@@ -2773,6 +2794,9 @@
 	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/red/border,
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
 /turf/simulated/floor/tiled,
 /area/security/hallway)
 "cpD" = (
@@ -3665,6 +3689,12 @@
 /obj/effect/floor_decal/corner/red/bordercorner,
 /turf/simulated/floor/tiled,
 /area/security/hallwayaux)
+"des" = (
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
+/turf/simulated/floor/wood,
+/area/security/briefing_room)
 "deA" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -3740,6 +3770,9 @@
 	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/red/border,
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
 /turf/simulated/floor/tiled,
 /area/security/hallway)
 "dii" = (
@@ -3759,6 +3792,16 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_lockerroom)
+"djA" = (
+/obj/machinery/camera/network/command{
+	dir = 4
+	},
+/obj/item/radio/intercom{
+	dir = 8;
+	pixel_x = -24
+	},
+/turf/simulated/floor/tiled/dark,
+/area/bridge)
 "djR" = (
 /obj/structure/sink{
 	dir = 8;
@@ -4091,6 +4134,18 @@
 /obj/structure/table/rack,
 /turf/simulated/floor/plating,
 /area/maintenance/central)
+"dxM" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 4
+	},
+/obj/item/radio/intercom{
+	dir = 8;
+	pixel_x = -24
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/sleep/Dorm_3{
+	name = "\improper CMO Dorm"
+	})
 "dye" = (
 /obj/structure/table/woodentable,
 /obj/item/book/manual/standard_operating_procedure,
@@ -4593,6 +4648,10 @@
 "dSq" = (
 /obj/machinery/light/small{
 	dir = 8
+	},
+/obj/item/radio/intercom{
+	dir = 8;
+	pixel_x = -24
 	},
 /turf/simulated/floor/carpet/turcarpet,
 /area/crew_quarters/sleep/Dorm_5{
@@ -7256,6 +7315,9 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 10
 	},
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/pathfinder_office)
 "fVZ" = (
@@ -9351,6 +9413,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/hallway)
+"hMG" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/red/border,
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
+/turf/simulated/floor/tiled,
+/area/security/prison)
 "hMJ" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
@@ -10499,6 +10569,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
+"iEs" = (
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
+/turf/simulated/floor/carpet/sblucarpet,
+/area/chapel/main)
 "iEI" = (
 /obj/effect/floor_decal/corner/blue{
 	dir = 9
@@ -11703,6 +11779,12 @@
 "jCj" = (
 /turf/simulated/floor/tiled,
 /area/security/range)
+"jCW" = (
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
+/turf/simulated/floor/tiled,
+/area/maintenance/tool_storage)
 "jDA" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/multi_tile/glass{
@@ -13222,6 +13304,9 @@
 /obj/structure/closet/wardrobe/tactical,
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/green/border,
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "kYP" = (
@@ -15328,6 +15413,10 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/item/radio/intercom{
+	dir = 8;
+	pixel_x = -24
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_1{
 	name = "\improper HoP Living Quarters"
@@ -15391,6 +15480,14 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/secondary/civilian_hallway_mid)
+"mII" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/red/border,
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
+/turf/simulated/floor/tiled,
+/area/security/interrogation)
 "mIQ" = (
 /turf/simulated/wall,
 /area/hydroponics/garden)
@@ -15535,6 +15632,9 @@
 /obj/item/storage/backpack/parachute{
 	pixel_x = 5;
 	pixel_y = 4
+	},
+/obj/item/radio/intercom{
+	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
@@ -16112,6 +16212,9 @@
 	dir = 9
 	},
 /obj/effect/floor_decal/grass_edge,
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "nll" = (
@@ -17020,6 +17123,16 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
+"nZe" = (
+/obj/structure/closet/secure_closet/personal,
+/obj/effect/floor_decal/steeldecal/steel_decals5,
+/obj/item/clothing/under/swimsuit/stripper/cowbikini,
+/obj/item/reagent_containers/food/drinks/cans/waterbottle,
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
+/turf/simulated/floor/tiled,
+/area/triumph/surfacebase/sauna)
 "nZp" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/target_stake,
@@ -17127,6 +17240,9 @@
 /area/library)
 "oeN" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5,
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
 /turf/simulated/floor/tiled/white,
 /area/triumph/station/explorer_medical)
 "ofz" = (
@@ -17419,6 +17535,19 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/lounge)
+"orY" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 8
+	},
+/obj/item/radio/intercom{
+	dir = 8;
+	pixel_x = -24
+	},
+/turf/simulated/floor/tiled,
+/area/bridge/hallway)
 "ose" = (
 /obj/item/ammo_magazine/clip/c762/practice,
 /obj/item/ammo_magazine/clip/c762/practice,
@@ -17571,6 +17700,9 @@
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
 "oCi" = (
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
 /turf/simulated/floor/wood,
 /area/security/breakroom)
 "oCE" = (
@@ -19123,6 +19255,10 @@
 /obj/structure/closet/crate/bin{
 	anchored = 1
 	},
+/obj/item/radio/intercom{
+	dir = 8;
+	pixel_x = -24
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/hallway/secondary/civilian_hallway_mid)
 "pJe" = (
@@ -20631,6 +20767,10 @@
 	pixel_x = 4;
 	pixel_y = 26
 	},
+/obj/item/radio/intercom{
+	dir = 8;
+	pixel_x = -24
+	},
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
 "qBx" = (
@@ -20651,6 +20791,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
+	},
+/obj/item/radio/intercom{
+	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
@@ -20897,11 +21040,12 @@
 /area/triumph/station/stairs_one)
 "qLK" = (
 /obj/item/radio/intercom{
-	dir = 8;
-	pixel_x = -24
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 26
 	},
-/turf/simulated/floor/tiled/dark,
-/area/bridge)
+/turf/simulated/floor/wood,
+/area/library)
 "qNq" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
@@ -21817,6 +21961,23 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/hallwayaux)
+"rvG" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/armoury)
 "rvV" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 6
@@ -24624,6 +24785,25 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/security/security_bathroom)
+"tSx" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/red/border,
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
+/turf/simulated/floor/tiled,
+/area/security/hallwayaux)
 "tSH" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
@@ -24936,6 +25116,9 @@
 /area/lawoffice)
 "udl" = (
 /obj/effect/floor_decal/spline/plain,
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/lawoffice)
 "uel" = (
@@ -25207,6 +25390,14 @@
 /obj/effect/mist,
 /turf/simulated/floor/water/pool,
 /area/triumph/surfacebase/sauna)
+"uoo" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/brown/border,
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
+/turf/simulated/floor/tiled,
+/area/triumph/station/explorer_entry)
 "uoy" = (
 /obj/machinery/computer/card{
 	dir = 4
@@ -25939,6 +26130,9 @@
 	name = "east bump";
 	pixel_x = 24
 	},
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/security/eva)
 "uSJ" = (
@@ -26290,8 +26484,18 @@
 	},
 /turf/simulated/floor/lino,
 /area/chapel/office)
+"vet" = (
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
+/turf/simulated/floor/wood,
+/area/triumph/station/explorer_meeting)
 "vfk" = (
 /obj/structure/table/woodentable,
+/obj/item/radio/intercom{
+	dir = 8;
+	pixel_x = -24
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/sleep/Dorm_4{
 	name = "\improper Research Director's Dorm"
@@ -26790,6 +26994,9 @@
 /obj/machinery/light/small,
 /obj/structure/table/woodentable,
 /obj/item/paper_bin,
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
 /turf/simulated/floor/wood,
 /area/library)
 "vzq" = (
@@ -27130,6 +27337,9 @@
 	})
 "vNc" = (
 /obj/effect/floor_decal/spline/plain,
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
 /turf/simulated/floor/carpet/blucarpet,
 /area/lawoffice)
 "vNu" = (
@@ -28422,6 +28632,14 @@
 /obj/machinery/computer/med_data/laptop,
 /turf/simulated/floor/tiled/white,
 /area/security/forensics)
+"wOI" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/brown/border,
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
+/turf/simulated/floor/tiled,
+/area/triumph/station/explorer_prep)
 "wPq" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -28522,6 +28740,14 @@
 /obj/item/pen,
 /turf/simulated/floor/wood,
 /area/library)
+"wTS" = (
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
+/turf/simulated/floor/wood,
+/area/bridge{
+	name = "\improper Official On-Site Office"
+	})
 "wTZ" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/wood,
@@ -28931,6 +29157,19 @@
 /area/crew_quarters/sleep/Dorm_1{
 	name = "\improper HoP Living Quarters"
 	})
+"xlE" = (
+/obj/structure/flora/pottedplant/stoutbush,
+/obj/effect/floor_decal/borderfloor{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 6
+	},
+/obj/item/radio/intercom{
+	pixel_y = -24
+	},
+/turf/simulated/floor/tiled,
+/area/security/hallway)
 "xmc" = (
 /obj/structure/table/reinforced,
 /obj/machinery/cell_charger,
@@ -28975,6 +29214,19 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
+"xoG" = (
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 4
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 8
+	},
+/obj/item/radio/intercom{
+	dir = 8;
+	pixel_x = -24
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/hallway/secondary/civilian_hallway_mid)
 "xpv" = (
 /obj/machinery/alarm{
 	dir = 4;
@@ -30118,6 +30370,15 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled,
 /area/security/brig)
+"yjS" = (
+/obj/item/radio/intercom{
+	dir = 8;
+	pixel_x = -24
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/sleep/Dorm_2{
+	name = "\improper CE Dorm"
+	})
 "ykd" = (
 /obj/machinery/alarm{
 	dir = 8;
@@ -32372,7 +32633,7 @@ qPL
 ePE
 pON
 oWf
-bFl
+vet
 bFL
 dLn
 jWe
@@ -33374,7 +33635,7 @@ cVO
 mmj
 nif
 xdx
-pYB
+wOI
 sJC
 sJC
 sJC
@@ -33839,7 +34100,7 @@ hzP
 hzP
 hur
 mSg
-jhE
+hMG
 hur
 xxK
 jLC
@@ -35413,7 +35674,7 @@ oFQ
 oFQ
 qRG
 kGr
-kGr
+arG
 iGt
 dff
 nIK
@@ -35646,7 +35907,7 @@ xZs
 uXe
 nvY
 jFj
-mmU
+uoo
 jbl
 nIK
 nIK
@@ -37341,7 +37602,7 @@ cVO
 vcE
 fhd
 cgH
-wcm
+qLK
 wcm
 wcm
 wcm
@@ -38087,7 +38348,7 @@ wTZ
 gsa
 vqd
 vqd
-vqd
+des
 vma
 lxa
 tXp
@@ -38234,7 +38495,7 @@ vma
 hzN
 sNL
 mDd
-svu
+mII
 vma
 iGt
 jGO
@@ -38477,7 +38738,7 @@ tMS
 agH
 sTa
 cgH
-wcm
+qLK
 sNf
 ebD
 sZf
@@ -39247,7 +39508,7 @@ xzh
 qpW
 jtZ
 qEc
-gkm
+xlE
 wrw
 dff
 nIK
@@ -40902,7 +41163,7 @@ rde
 vIh
 hLr
 pAA
-vIh
+iEs
 ttb
 xkZ
 amB
@@ -42368,7 +42629,7 @@ yhQ
 fJZ
 hqz
 gwN
-eMU
+tSx
 pOh
 pOh
 nIK
@@ -42610,13 +42871,13 @@ pcn
 kRC
 rBF
 xfL
-xfL
+dxM
 xfL
 ucs
 oEK
 iwo
 iwo
-iwo
+yjS
 iwo
 uxB
 bAK
@@ -42884,7 +43145,7 @@ dlT
 krQ
 idd
 cym
-bhx
+nZe
 wke
 roY
 rSb
@@ -43056,7 +43317,7 @@ sNi
 xvg
 lqI
 sWX
-sWX
+jCW
 ksy
 ugw
 gMN
@@ -43184,7 +43445,7 @@ phn
 phn
 phn
 phn
-ubk
+xoG
 phn
 smu
 ubk
@@ -43788,7 +44049,7 @@ rIu
 vgx
 flL
 vgG
-alb
+rvG
 vgx
 vgx
 dff
@@ -46167,7 +46428,7 @@ eHr
 kTt
 kTt
 gZa
-kTt
+orY
 kTt
 cMg
 rYg
@@ -47142,7 +47403,7 @@ dOZ
 siD
 kMG
 nRc
-ruN
+wTS
 nYA
 pbU
 feE
@@ -47589,8 +47850,8 @@ feo
 kXI
 pWn
 poJ
-tDz
-qLK
+djA
+pox
 vug
 bvQ
 pdX
