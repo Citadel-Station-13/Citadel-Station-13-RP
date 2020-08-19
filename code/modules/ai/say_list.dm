@@ -117,3 +117,21 @@
 
 /datum/say_list/crab
 	emote_hear = list("hisses")
+
+//Vox Pirate Saylist
+/datum/say_list/merc/voxpirate
+	speak = list("Lookings for scrap, yaya.",
+				"Tank is lookings low.",
+				"Knowings should haves stayed on the Ark.",
+				"Quills itchings...",
+				"Cravings Teshari on stick.",
+				"Plates locking up. Not good.")
+	emote_see = list("sniffs", "coughs", "taps his foot", "looks around", "checks his equipment")
+
+	say_understood = list("Yayaya!")
+	say_cannot = list("Skreking negatives!", "Can't do that.")
+	say_maybe_target = list("Who's theres?", "Is hearing things?")
+	say_got_target = list("Dust!", "Easy loot!")
+	say_threaten = list("Gets out of heres!")
+	say_stand_down = list("Yaya, runs!", "Kikikiki!")
+	say_escalate = list("Skrek!", "Bringings it!", "Takings shot", "Lock claws!")

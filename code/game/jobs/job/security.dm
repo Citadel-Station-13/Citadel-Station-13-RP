@@ -24,7 +24,7 @@
 	minimal_player_age = 14
 
 	outfit_type = /decl/hierarchy/outfit/job/security/hos
-	alt_titles = list("Security Commander", "Chief of Security")
+	alt_titles = list("Security Commander", "Chief of Security","Defense Director")
 
 /datum/job/warden
 	title = "Warden"

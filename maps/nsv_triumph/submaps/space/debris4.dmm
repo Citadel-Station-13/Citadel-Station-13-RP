@@ -1,0 +1,73 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/space,
+/area/triumph_away/debrisfield/explored)
+"b" = (
+/obj/structure/lattice,
+/turf/space,
+/area/triumph_away/debrisfield/explored)
+"c" = (
+/obj/structure/girder,
+/turf/simulated/floor/airless,
+/area/triumph_away/debrisfield/explored)
+"d" = (
+/turf/simulated/shuttle/wall,
+/area/triumph_away/debrisfield/explored)
+"e" = (
+/turf/simulated/floor/airless,
+/area/triumph_away/debrisfield/explored)
+"f" = (
+/obj/structure/target_stake,
+/turf/simulated/shuttle/floor/white/airless,
+/area/triumph_away/debrisfield/explored)
+"I" = (
+/obj/triumph_away_spawner/debrisfield/derelict,
+/turf/simulated/floor/airless,
+/area/triumph_away/debrisfield/explored)
+"Y" = (
+/obj/random/ammo_all,
+/turf/simulated/shuttle/floor/white/airless,
+/area/triumph_away/debrisfield/explored)
+
+(1,1,1) = {"
+a
+b
+a
+b
+b
+"}
+(2,1,1) = {"
+a
+c
+e
+e
+a
+"}
+(3,1,1) = {"
+a
+d
+f
+I
+b
+"}
+(4,1,1) = {"
+a
+d
+Y
+b
+a
+"}
+(5,1,1) = {"
+b
+c
+I
+b
+a
+"}
+(6,1,1) = {"
+b
+b
+b
+e
+b
+"}
