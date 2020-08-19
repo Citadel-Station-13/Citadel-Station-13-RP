@@ -7892,6 +7892,17 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
+"yR" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/effect/landmark/start{
+	name = "Cargo Technician"
+	},
+/turf/simulated/floor/tiled,
+/area/quartermaster/warehouse)
 "yT" = (
 /obj/machinery/hologram/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -11265,6 +11276,12 @@
 "JX" = (
 /turf/simulated/wall,
 /area/crew_quarters/bar)
+"JY" = (
+/obj/effect/landmark/start{
+	name = "Cargo Technician"
+	},
+/turf/simulated/floor/tiled,
+/area/quartermaster/warehouse)
 "Ka" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
@@ -12066,6 +12083,14 @@
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/lounge/kitchen_freezer)
+"Nd" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/landmark/start{
+	name = "Cargo Technician"
+	},
+/turf/simulated/floor/tiled,
+/area/quartermaster/warehouse)
 "Ne" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled,
@@ -26637,7 +26662,7 @@ kk
 Nv
 xI
 HX
-yi
+Nd
 yi
 MI
 xN
@@ -26775,7 +26800,7 @@ zP
 lh
 fF
 wT
-qk
+yR
 qk
 qk
 sZ
@@ -27066,7 +27091,7 @@ Hs
 ES
 kk
 qQ
-kk
+JY
 nY
 et
 qO

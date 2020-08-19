@@ -6970,6 +6970,9 @@
 /obj/structure/bed/chair/comfy/beige{
 	dir = 1
 	},
+/obj/effect/landmark/start{
+	name = "Station Engineer"
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
 "JG" = (
@@ -8712,6 +8715,9 @@
 /obj/structure/bed/chair/comfy/beige{
 	dir = 1
 	},
+/obj/effect/landmark/start{
+	name = "Station Engineer"
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
 "Sy" = (
@@ -9277,6 +9283,9 @@
 "VC" = (
 /obj/structure/bed/chair/comfy/beige{
 	dir = 1
+	},
+/obj/effect/landmark/start{
+	name = "Chief Engineer"
 	},
 /turf/simulated/floor/carpet/blucarpet,
 /area/crew_quarters/heads/chief)

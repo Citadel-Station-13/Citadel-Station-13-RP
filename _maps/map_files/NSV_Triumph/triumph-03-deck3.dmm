@@ -5051,6 +5051,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
+"kM" = (
+/obj/structure/closet/lasertag/blue,
+/turf/simulated/floor/tiled,
+/area/holodeck_control)
 "kN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -11233,11 +11237,11 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "xv" = (
-/obj/structure/table/standard,
 /obj/machinery/light{
 	dir = 8;
 	light_range = 12
 	},
+/obj/structure/closet/lasertag/red,
 /turf/simulated/floor/tiled,
 /area/holodeck_control)
 "xw" = (
@@ -18172,6 +18176,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 8
 	},
+/obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/simulated/floor/tiled,
 /area/medical/medbay_emt_bay)
 "Lr" = (
@@ -38891,7 +38896,7 @@ EJ
 RN
 oz
 xv
-Tn
+kM
 XX
 VY
 Sa
