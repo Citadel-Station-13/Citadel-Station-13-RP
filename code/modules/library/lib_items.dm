@@ -193,7 +193,6 @@
 	else
 		icon_state = "legalbook-5"
 
-
 /*
  * Book
  */

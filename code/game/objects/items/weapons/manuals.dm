@@ -8,7 +8,6 @@
 	var/datum/codex_tree/tree = null
 	var/root_type = /datum/lore/codex/category/main_virgo_lore	//Runtimes on codex_tree.dm, line 18 with a null here
 
-
 /obj/item/book/manual/legal/Initialize()
 	tree = new(src, root_type)
 	. = ..()
@@ -18,7 +17,6 @@
 		tree = new(src, root_type)
 	icon_state = "[initial(icon_state)]-open"
 	tree.display(user)
-
 
 /obj/item/book/manual/engineering_construction
 	name = "Station Repairs and Construction"
