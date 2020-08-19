@@ -7192,10 +7192,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
-"fQK" = (
-/obj/structure/closet/lasertag/blue,
-/turf/simulated/floor/wood,
-/area/security/briefing_room)
 "fRw" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -8704,6 +8700,10 @@
 /area/crew_quarters/sleep/Dorm_1{
 	name = "\improper HoP Living Quarters"
 	})
+"hkr" = (
+/obj/structure/closet/lasertag/red,
+/turf/simulated/floor/wood,
+/area/security/briefing_room)
 "hkL" = (
 /obj/machinery/vending/snack,
 /turf/simulated/floor/tiled,
@@ -11304,6 +11304,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/bridge/hallway)
+"jhd" = (
+/obj/structure/closet/lasertag/blue,
+/turf/simulated/floor/wood,
+/area/security/briefing_room)
 "jhz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -15330,10 +15334,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/civilian_hallway_mid)
-"mDa" = (
-/obj/structure/closet/lasertag/red,
-/turf/simulated/floor/wood,
-/area/security/briefing_room)
 "mDd" = (
 /obj/machinery/hologram/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -21331,6 +21331,19 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
+"qYF" = (
+/obj/item/radio/intercom{
+	dir = 4;
+	pixel_x = 24
+	},
+/obj/effect/floor_decal/grass_edge{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/grass,
+/area/hydroponics/garden)
 "qYX" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
@@ -22043,19 +22056,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
-"rzx" = (
-/obj/item/radio/intercom{
-	dir = 4;
-	pixel_x = 24
-	},
-/obj/effect/floor_decal/grass_edge{
-	dir = 4
-	},
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/floor/grass,
-/area/hydroponics/garden)
 "rzB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -24371,16 +24371,6 @@
 "ttb" = (
 /turf/simulated/wall,
 /area/chapel/main)
-"ttC" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/beige/border{
-	dir = 1
-	},
-/obj/machinery/recharge_station,
-/turf/simulated/floor/tiled,
-/area/bridge/hallway)
 "ttZ" = (
 /obj/structure/table/reinforced,
 /obj/machinery/alarm{
@@ -28445,6 +28435,16 @@
 "wFO" = (
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
+"wFP" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 1
+	},
+/obj/machinery/recharge_station,
+/turf/simulated/floor/tiled,
+/area/bridge/hallway)
 "wFY" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -29704,7 +29704,7 @@
 "xGI" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/structure/sign/goldenplaque{
-	desc = "This is a dedicated plaque to all those that have given their life for the betterment of NanoTrasen. We give our thanks and salute to those that do not see the next star. The name "DEAN FITZGERALD" is scratched under the text.";
+	desc = "This is a dedicated plaque to all those that have given their life for the betterment of NanoTrasen. We give our thanks and salute to those that do not see the next star. The name DEAN FITZGERALD is scratched under the text.";
 	name = "Fallen Hero/ine's Memorial";
 	pixel_y = 32
 	},
@@ -37524,7 +37524,7 @@ ldh
 hvu
 sKM
 brg
-fQK
+jhd
 vqd
 ufw
 ufw
@@ -37666,7 +37666,7 @@ nXg
 vyP
 sKM
 brg
-fQK
+jhd
 vqd
 ufw
 ufw
@@ -38092,7 +38092,7 @@ fOb
 wkX
 xiF
 brg
-mDa
+hkr
 vqd
 vcM
 pZO
@@ -38234,7 +38234,7 @@ pgC
 dFA
 sKM
 brg
-mDa
+hkr
 vqd
 vcM
 pZO
@@ -41635,7 +41635,7 @@ spo
 pjF
 voH
 voH
-rzx
+qYF
 rgN
 mIQ
 evb
@@ -47175,7 +47175,7 @@ xce
 gIP
 hWN
 gef
-ttC
+wFP
 oqg
 gVa
 oqg
@@ -47459,7 +47459,7 @@ tjI
 czx
 tYh
 gef
-ttC
+wFP
 ecw
 wvz
 ePC
