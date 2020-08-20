@@ -1264,6 +1264,10 @@
 	name = "Powernet Sensor - Master Grid";
 	name_tag = "Master"
 	},
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_smes)
 "fL" = (
@@ -1947,6 +1951,10 @@
 	},
 /turf/simulated/floor,
 /area/storage/tech)
+"jH" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/airless,
+/area/space)
 "jI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -2504,10 +2512,6 @@
 /obj/random/trash,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
-"mR" = (
-/obj/machinery/shield_diffuser,
-/turf/simulated/floor/airless,
-/area/space)
 "mS" = (
 /turf/simulated/wall/r_wall,
 /area/maintenance/lower/trash_pit)
@@ -4169,6 +4173,10 @@
 /obj/machinery/power/sensor{
 	name = "Powernet Sensor - Engine Output";
 	name_tag = "Engine Output"
+	},
+/obj/structure/cable{
+	d2 = 4;
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
@@ -8231,7 +8239,9 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/foyer)
 "Qd" = (
-/obj/machinery/computer/power_monitor,
+/obj/machinery/computer/power_monitor{
+	throwpass = 1
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/engine_monitoring)
 "Qf" = (
@@ -19832,7 +19842,7 @@ fN
 Zj
 fN
 Zj
-mR
+jH
 Zj
 fN
 Zj

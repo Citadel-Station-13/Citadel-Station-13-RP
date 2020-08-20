@@ -309,15 +309,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/workshop)
-"aK" = (
-/obj/effect/floor_decal/industrial/warning/dust,
-/obj/machinery/light_switch{
-	pixel_x = 25
-	},
-/turf/simulated/floor/tiled/old_cargo/gray,
-/area/medical/surgery{
-	name = "\improper Robotics Surgery Room"
-	})
 "aL" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/dark,
@@ -823,13 +814,6 @@
 /obj/item/clothing/glasses/welding,
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
-"bR" = (
-/obj/machinery/chemical_dispenser/full,
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/white,
-/area/medical/chemistry)
 "bS" = (
 /obj/machinery/computer/rdconsole/core,
 /obj/machinery/firealarm{
@@ -2406,6 +2390,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/medical/psych)
+"fi" = (
+/obj/machinery/light_switch{
+	pixel_x = 25
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/test_area)
 "fj" = (
 /obj/machinery/atmospherics/pipe/simple/visible/universal,
 /turf/simulated/floor/tiled,
@@ -4408,6 +4398,7 @@
 	name = "Powernet Sensor - Deck 3 Subgrid";
 	name_tag = "Deck 3 Subgrid"
 	},
+/obj/structure/cable/green,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical_science)
 "js" = (
@@ -5803,6 +5794,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/medical/lobby)
+"mk" = (
+/obj/machinery/chemical_dispenser/full,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/chemistry)
 "ml" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -12190,12 +12188,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_emt_bay)
-"zl" = (
-/obj/machinery/light_switch{
-	pixel_x = 25
-	},
-/turf/simulated/floor/tiled,
-/area/rnd/test_area)
 "zm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -15732,20 +15724,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
-"Gg" = (
-/obj/structure/closet/secure_closet/medical1,
-/obj/item/storage/box/pillbottles,
-/obj/item/storage/box/syringes,
-/obj/item/radio/headset/headset_med,
-/obj/item/storage/box/pillbottles,
-/obj/item/storage/fancy/vials,
-/obj/item/storage/fancy/vials,
-/obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
-	},
-/turf/simulated/floor/tiled/white,
-/area/medical/chemistry)
 "Gh" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 8
@@ -18869,6 +18847,10 @@
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
+"ME" = (
+/obj/structure/closet/lasertag/blue,
+/turf/simulated/floor/tiled,
+/area/holodeck_control)
 "MF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -20659,6 +20641,10 @@
 	d1 = 2;
 	d2 = 4;
 	icon_state = "2-4"
+	},
+/obj/structure/cable/green{
+	d2 = 4;
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical)
@@ -22781,9 +22767,19 @@
 /turf/simulated/floor/tiled/white,
 /area/hallway/secondary/escape/medical_escape_pod_hallway)
 "Uo" = (
-/obj/structure/closet/lasertag/blue,
-/turf/simulated/floor/tiled,
-/area/holodeck_control)
+/obj/structure/closet/secure_closet/medical1,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/syringes,
+/obj/item/radio/headset/headset_med,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/fancy/vials,
+/obj/item/storage/fancy/vials,
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube1"
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/chemistry)
 "Up" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
@@ -25203,6 +25199,15 @@
 "Zq" = (
 /turf/simulated/wall/r_wall,
 /area/rnd/xenobiology)
+"Zs" = (
+/obj/effect/floor_decal/industrial/warning/dust,
+/obj/machinery/light_switch{
+	pixel_x = 25
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/medical/surgery{
+	name = "\improper Robotics Surgery Room"
+	})
 "Zt" = (
 /obj/structure/cable/green{
 	d2 = 4;
@@ -31998,7 +32003,7 @@ fk
 vg
 do
 iL
-aK
+Zs
 qt
 ic
 OE
@@ -35403,7 +35408,7 @@ Tm
 lh
 Fc
 ce
-zl
+fi
 yD
 Ji
 WG
@@ -36417,7 +36422,7 @@ Md
 Az
 zo
 yl
-bR
+mk
 jN
 Qb
 Qb
@@ -36987,7 +36992,7 @@ zo
 yl
 QO
 jN
-Gg
+Uo
 As
 qR
 QO
@@ -38971,7 +38976,7 @@ EJ
 RN
 oz
 xv
-Uo
+ME
 XX
 VY
 Sa
