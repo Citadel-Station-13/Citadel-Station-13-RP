@@ -27,6 +27,7 @@
 	name = "Prefabricated Landing Pad"
 	mappath = 'landing_padD.dmm'
 	cost = 5
+	fixed_orientation = TRUE
 
 /datum/map_template/Class_D/mechwreckD
 	name = "Ruined Ripley"
@@ -42,6 +43,7 @@
 	name = "Solar Farm"
 	mappath = 'solar_farmD.dmm'
 	cost = 5
+	fixed_orientation = TRUE
 
 /datum/map_template/Class_D/SupplyDrop1D
 	name = "Supply Drop"
