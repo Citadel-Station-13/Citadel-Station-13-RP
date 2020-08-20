@@ -1,4 +1,4 @@
-// Formerly /datum/shuttle/ferry/supply
+// Formerly /datum/shuttle/autodock/ferry/supply
 /datum/shuttle/autodock/ferry/supply
 	var/away_location = FERRY_LOCATION_OFFSITE	// The location to hide at while pretending to be in-transit
 	var/late_chance = 80
@@ -60,7 +60,7 @@
 			SSsupply.sell()
 
 // Returns 1 if the supply shuttle should be prevented from moving because it contains forbidden atoms
-/datum/shuttle/ferry/supply/proc/forbidden_atoms_check()
+/datum/shuttle/autodock/ferry/supply/proc/forbidden_atoms_check()
 	if (!at_station())
 		return 0	// If badmins want to send mobs or a nuke on the supply shuttle from centcom we don't care
 

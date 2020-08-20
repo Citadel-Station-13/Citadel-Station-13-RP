@@ -1,4 +1,4 @@
-/datum/shuttle/ferry/emergency/escape
+/datum/shuttle/autodock/ferry/emergency/escape
 	name = "Escape"
 	location = 1 // At offsite
 	warmup_time = 10
@@ -11,7 +11,7 @@
 	move_time = SHUTTLE_TRANSIT_DURATION_RETURN
 
 //Mining
-/datum/shuttle/ferry/mining
+/datum/shuttle/autodock/ferry/mining
 	name = "Mining"
 	warmup_time = 10
 	area_offsite = /area/shuttle/mining/outpost
@@ -25,7 +25,7 @@
 
 
 //Supply
-/datum/shuttle/ferry/supply/cargo
+/datum/shuttle/autodock/ferry/supply/cargo
 	name = "Supply"
 	location = 1
 	warmup_time = 10
@@ -37,7 +37,7 @@
 
 
 //Research
-/datum/shuttle/ferry/research
+/datum/shuttle/autodock/ferry/research
 	name = "Research"
 	warmup_time = 10
 	area_offsite = /area/shuttle/research/outpost

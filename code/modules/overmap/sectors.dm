@@ -7,6 +7,7 @@
 	scannable = TRUE
 
 	var/list/map_z = list()
+	var/list/extra_z_levels	// If you need to manually insist that these z-levels are part of this sector, for things like edge-of-map step trigger transitions rather than multi-z complexes
 
 	var/list/initial_generic_waypoints		// Store landmark_tag of landmarks that should be added to the actual lists below on init.
 	var/list/initial_restricted_waypoints	// For use with non-automatic landmarks (automatic ones add themselves).
@@ -33,13 +34,13 @@
 	find_z_levels()		// This populates map_z and assigns z levels to the ship.
 	register_z_levels()	// This makes external calls to update global z level information.
 
-	if(!global.using_map.overmap_z)
+	if(!GLOB.using_map.overmap_z)
 		build_overmap()
 
-	start_x = start_x || rand(OVERMAP_EDGE, global.using_map.overmap_size - OVERMAP_EDGE)
-	start_y = start_y || rand(OVERMAP_EDGE, global.using_map.overmap_size - OVERMAP_EDGE)
+	start_x = start_x || rand(OVERMAP_EDGE, GLOB.using_map.overmap_size - OVERMAP_EDGE)
+	start_y = start_y || rand(OVERMAP_EDGE, GLOB.using_map.overmap_size - OVERMAP_EDGE)
 
-	forceMove(locate(start_x, start_y, global.using_map.overmap_z))
+	forceMove(locate(start_x, start_y, GLOB.using_map.overmap_z))
 
 	docking_codes = "[ascii2text(rand(65,90))][ascii2text(rand(65,90))][ascii2text(rand(65,90))][ascii2text(rand(65,90))]"
 
@@ -51,24 +52,29 @@
 // This is called later in the init order by SSshuttle to populate sector objects. Importantly for subtypes, shuttles will be created by then.
 /obj/effect/overmap/visitable/proc/populate_sector_objects()
 
-// TODO Implement
-///obj/effect/overmap/visitable/proc/get_areas()
-//	return get_filtered_areas(list(/proc/area_belongs_to_zlevels = map_z))
+/obj/effect/overmap/visitable/proc/get_areas()
+	. = list()
+	for(var/area/A)
+		if (A.z in map_z)
+			. += A
 
 /obj/effect/overmap/visitable/proc/find_z_levels()
-	map_z = GetConnectedZlevels(z)
+	if(!LAZYLEN(map_z))	// If map_z is already populated use it as-is, otherwise start with connected z-levels.
+		map_z = GetConnectedZlevels(z)
+	if(LAZYLEN(extra_z_levels))
+		map_z |= extra_z_levels
 
 /obj/effect/overmap/visitable/proc/register_z_levels()
 	for(var/zlevel in map_z)
 		map_sectors["[zlevel]"] = src
 
-	global.using_map.player_levels |= map_z
+	GLOB.using_map.player_levels |= map_z
 	if(!in_space)
-		global.using_map.sealed_levels |= map_z
+		GLOB.using_map.sealed_levels |= map_z
 	if(base)
-		global.using_map.station_levels |= map_z
-		global.using_map.contact_levels |= map_z
-		global.using_map.map_levels |= map_z
+		GLOB.using_map.station_levels |= map_z
+		GLOB.using_map.contact_levels |= map_z
+		GLOB.using_map.map_levels |= map_z
 
 // Helper for init.
 /obj/effect/overmap/visitable/proc/check_ownership(obj/object)
@@ -114,24 +120,24 @@
 /obj/effect/overmap/visitable/sector/hide()
 
 /proc/build_overmap()
-	if(!global.using_map.use_overmap)
+	if(!GLOB.using_map.use_overmap)
 		return 1
 
 	testing("Building overmap...")
-	world.maxz++
-	global.using_map.overmap_z = world.maxz
+	world.increment_max_z()
+	GLOB.using_map.overmap_z = world.maxz
 
-	testing("Putting overmap on [global.using_map.overmap_z]")
+	testing("Putting overmap on [GLOB.using_map.overmap_z]")
 	var/area/overmap/A = new
-	for (var/square in block(locate(1,1,global.using_map.overmap_z), locate(global.using_map.overmap_size,global.using_map.overmap_size,global.using_map.overmap_z)))
+	for (var/square in block(locate(1,1,GLOB.using_map.overmap_z), locate(GLOB.using_map.overmap_size,GLOB.using_map.overmap_size,GLOB.using_map.overmap_z)))
 		var/turf/T = square
-		if(T.x == global.using_map.overmap_size || T.y == global.using_map.overmap_size)
+		if(T.x == GLOB.using_map.overmap_size || T.y == GLOB.using_map.overmap_size)
 			T = T.ChangeTurf(/turf/unsimulated/map/edge)
 		else
 			T = T.ChangeTurf(/turf/unsimulated/map)
 		ChangeArea(T, A)
 
-	global.using_map.sealed_levels |= global.using_map.overmap_z
+	GLOB.using_map.sealed_levels |= GLOB.using_map.overmap_z
 
 	testing("Overmap build complete.")
 	return 1

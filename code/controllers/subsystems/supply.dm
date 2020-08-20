@@ -129,7 +129,7 @@ SUBSYSTEM_DEF(supply)
 
 					// Sell spacebucks
 					if(istype(A, /obj/item/spacecash))
-						var/obj/item/weapon/spacecash/cashmoney = A
+						var/obj/item/spacecash/cashmoney = A
 						EC.contents[EC.contents.len]["value"] = cashmoney.worth * points_per_money
 						EC.contents[EC.contents.len]["quantity"] = cashmoney.worth
 						EC.value += EC.contents[EC.contents.len]["value"]
@@ -155,7 +155,7 @@ SUBSYSTEM_DEF(supply)
 
 			qdel(MA)
 
-/datum/controller/supply/proc/get_clear_turfs()
+/datum/controller/subsystem/supply/proc/get_clear_turfs()
 	var/list/clear_turfs = list()
 
 	for(var/area/subarea in shuttle.shuttle_area)

@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////
 // Escape shuttle and pods
-/datum/shuttle/ferry/emergency/escape
+/datum/shuttle/autodock/ferry/emergency/escape
 	name = "Escape"
 	location = 1 // At offsite
 	warmup_time = 10
@@ -13,7 +13,7 @@
 	move_time = SHUTTLE_TRANSIT_DURATION_RETURN
 
 //////////////////////////////////////////////////////////////
-/datum/shuttle/ferry/escape_pod/large_escape_pod1
+/datum/shuttle/autodock/ferry/escape_pod/large_escape_pod1
 	name = "Large Escape Pod 1"
 	location = 0
 	warmup_time = 0
@@ -27,7 +27,7 @@
 
 //////////////////////////////////////////////////////////////
 /* Removed for the time being
-/datum/shuttle/ferry/escape_pod/large_escape_pod2
+/datum/shuttle/autodock/ferry/escape_pod/large_escape_pod2
 	name = "Large Escape Pod 2"
 	location = 0
 	warmup_time = 0
@@ -41,7 +41,7 @@
 */
 //////////////////////////////////////////////////////////////
 // Supply shuttle
-/datum/shuttle/ferry/supply/cargo
+/datum/shuttle/autodock/ferry/supply/cargo
 	name = "Supply"
 	location = 1
 	warmup_time = 10
@@ -53,7 +53,7 @@
 
 //////////////////////////////////////////////////////////////
 // Trade Ship
-/datum/shuttle/ferry/trade
+/datum/shuttle/autodock/ferry/trade
 	name = "Trade"
 	location = 1
 	warmup_time = 10	//want some warmup time so people can cancel.
@@ -97,7 +97,7 @@
 
 //////////////////////////////////////////////////////////////
 // Tether Shuttle
-/datum/shuttle/ferry/tether_backup
+/datum/shuttle/autodock/ferry/tether_backup
 	name = "Tether Backup"
 	location = 1 // At offsite
 	warmup_time = 5
@@ -174,7 +174,7 @@
 	departure_message = "Attention. A unregistered vessel is now leaving Virgo-3B."
 	..()
 
-/datum/shuttle/ferry/multidock/specops/ert
+/datum/shuttle/autodock/ferry/multidock/specops/ert
 	name = "Special Operations"
 	location = 0
 	warmup_time = 10
@@ -191,7 +191,7 @@
 // RogueMiner "Belter: Shuttle
 // TODO - Not implemented yet on new map
 
-/datum/shuttle/ferry/belter
+/datum/shuttle/autodock/ferry/belter
 	name = "Belter"
 	location = 0
 	warmup_time = 6
@@ -203,7 +203,7 @@
 	dock_target_station = "belter_nodocking" //Fake tags to prevent the shuttle from opening doors.
 	dock_target_offsite = "belter_nodocking"
 
-/datum/shuttle/ferry/belter/New()
+/datum/shuttle/autodock/ferry/belter/New()
 	move_time = move_time + rand(-10, 20) //50sec max, 20sec min.
 	..()
 
@@ -212,7 +212,7 @@
 // CC Lewdship shuttle
 // DISABLED - cruiser has been removed entirely
 /*
-/datum/shuttle/ferry/cruiser_shuttle
+/datum/shuttle/autodock/ferry/cruiser_shuttle
 	name = "Cruiser Shuttle"
 	location = 1
 	warmup_time = 10	//want some warmup time so people can cancel.

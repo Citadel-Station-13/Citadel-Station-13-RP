@@ -26,20 +26,20 @@
 // "Tram" Emergency Shuttler
 // Becuase the tram only has its own doors and no corresponding station doors, a docking controller is overkill.
 // Just open the gosh darn doors!  Also we avoid having a physical docking controller obj for gameplay reasons.
-/datum/shuttle/ferry/emergency
+/datum/shuttle/autodock/ferry/emergency
 	var/tag_door_station = "escape_shuttle_hatch_station"
 	var/tag_door_offsite = "escape_shuttle_hatch_offsite"
 	var/frequency = 1380 // Why this frequency? BECAUSE! Thats what someone decided once.
 	var/datum/radio_frequency/radio_connection
 
-/datum/shuttle/ferry/emergency/init_docking_controllers()
+/datum/shuttle/autodock/ferry/emergency/init_docking_controllers()
 	docking_controller_tag = null
 	dock_target_station = null
 	dock_target_offsite = null
 	radio_connection = radio_controller.add_object(src, frequency, null)
 	..()
 
-/datum/shuttle/ferry/emergency/dock()
+/datum/shuttle/autodock/ferry/emergency/dock()
 	..()
 	// Open Doorsunes
 	var/datum/signal/signal = new
@@ -47,7 +47,7 @@
 	signal.data["command"] = "secure_open"
 	post_signal(signal)
 
-/datum/shuttle/ferry/emergency/undock()
+/datum/shuttle/autodock/ferry/emergency/undock()
 	..()
 	// Close Doorsunes
 	var/datum/signal/signal = new
@@ -55,7 +55,7 @@
 	signal.data["command"] = "secure_close"
 	post_signal(signal)
 
-/datum/shuttle/ferry/emergency/proc/post_signal(datum/signal/signal, var/filter = null)
+/datum/shuttle/autodock/ferry/emergency/proc/post_signal(datum/signal/signal, var/filter = null)
 	signal.transmission_method = TRANSMISSION_RADIO
 	if(radio_connection)
 		return radio_connection.post_signal(src, signal, filter)
@@ -66,13 +66,13 @@
 // The backup tether shuttle uses experimental engines and can degrade and/or crash!
 //
 /* //Disabling the crash mechanics per request
-/datum/shuttle/ferry/tether_backup
+/datum/shuttle/autodock/ferry/tether_backup
 	crash_message = "Tether shuttle distress signal received. Shuttle location is approximately 200 meters from tether base."
-	category = /datum/shuttle/ferry/tether_backup // So SSshuttle.dm doesn't try and instantiate this type as an acutal mapped in shuttle.
+	category = /datum/shuttle/autodock/ferry/tether_backup // So SSshuttle.dm doesn't try and instantiate this type as an acutal mapped in shuttle.
 	var/list/engines = list()
 	var/obj/machinery/computer/shuttle_control/tether_backup/computer
 
-/datum/shuttle/ferry/tether_backup/New()
+/datum/shuttle/autodock/ferry/tether_backup/New()
 	..()
 	var/area/current_area = get_location_area(location)
 	for(var/obj/structure/shuttle/engine/propulsion/E in current_area)
@@ -80,7 +80,7 @@
 	for(var/obj/machinery/computer/shuttle_control/tether_backup/comp in current_area)
 		computer = comp
 
-/datum/shuttle/ferry/tether_backup/process_longjump(var/area/origin, var/area/intended_destination)
+/datum/shuttle/autodock/ferry/tether_backup/process_longjump(var/area/origin, var/area/intended_destination)
 	var/failures = engines.len
 	for(var/engine in engines)
 		var/obj/structure/shuttle/engine/E = engine

@@ -1,5 +1,5 @@
 // Escape shuttle and pods
-/datum/shuttle/ferry/emergency/centcom
+/datum/shuttle/autodock/ferry/emergency/centcom
 	name = "Escape"
 	location = 1
 	warmup_time = 10
@@ -12,7 +12,7 @@
 	transit_direction = NORTH
 	move_time = SHUTTLE_TRANSIT_DURATION_RETURN
 
-/datum/shuttle/ferry/escape_pod/escape_pod_one
+/datum/shuttle/autodock/ferry/escape_pod/escape_pod_one
 	name = "Escape Pod 1"
 	location = 0
 	warmup_time = 0
@@ -25,7 +25,7 @@
 	transit_direction = NORTH
 	move_time = SHUTTLE_TRANSIT_DURATION_RETURN
 
-/datum/shuttle/ferry/escape_pod/escape_pod_two
+/datum/shuttle/autodock/ferry/escape_pod/escape_pod_two
 	name = "Escape Pod 2"
 	location = 0
 	warmup_time = 0
@@ -38,7 +38,7 @@
 	transit_direction = NORTH
 	move_time = SHUTTLE_TRANSIT_DURATION_RETURN
 
-/datum/shuttle/ferry/escape_pod/escape_pod_three
+/datum/shuttle/autodock/ferry/escape_pod/escape_pod_three
 	name = "Escape Pod 3"
 	location = 0
 	warmup_time = 0
@@ -51,7 +51,7 @@
 	transit_direction = NORTH
 	move_time = SHUTTLE_TRANSIT_DURATION_RETURN
 
-/datum/shuttle/ferry/escape_pod/escape_pod_four
+/datum/shuttle/autodock/ferry/escape_pod/escape_pod_four
 	name = "Escape Pod 4"
 	location = 0
 	warmup_time = 0
@@ -64,7 +64,7 @@
 	transit_direction = NORTH //should this be SOUTH? I have no idea.
 	move_time = SHUTTLE_TRANSIT_DURATION_RETURN
 
-/datum/shuttle/ferry/escape_pod/escape_pod_five
+/datum/shuttle/autodock/ferry/escape_pod/escape_pod_five
 	name = "Escape Pod 5"
 	location = 0
 	warmup_time = 0
@@ -77,7 +77,7 @@
 	transit_direction = NORTH //should this be WEST? I have no idea.
 	move_time = SHUTTLE_TRANSIT_DURATION_RETURN
 
-/datum/shuttle/ferry/escape_pod/escape_pod_six
+/datum/shuttle/autodock/ferry/escape_pod/escape_pod_six
 	name = "Escape Pod 6"
 	location = 0
 	warmup_time = 0
@@ -90,7 +90,7 @@
 	transit_direction = NORTH //should this be WEST? I have no idea.
 	move_time = SHUTTLE_TRANSIT_DURATION_RETURN
 
-/datum/shuttle/ferry/escape_pod/escape_pod_cryo
+/datum/shuttle/autodock/ferry/escape_pod/escape_pod_cryo
 	name = "Cryostorage Shuttle"
 	location = 0
 	warmup_time = 0
@@ -103,7 +103,7 @@
 	transit_direction = NORTH
 	move_time = SHUTTLE_TRANSIT_DURATION_RETURN
 
-/datum/shuttle/ferry/escape_pod/large_escape_pod1
+/datum/shuttle/autodock/ferry/escape_pod/large_escape_pod1
 	name = "Large Escape Pod 1"
 	location = 0
 	warmup_time = 0
@@ -116,7 +116,7 @@
 	transit_direction = EAST
 	move_time = SHUTTLE_TRANSIT_DURATION_RETURN
 
-/datum/shuttle/ferry/escape_pod/large_escape_pod2
+/datum/shuttle/autodock/ferry/escape_pod/large_escape_pod2
 	name = "Large Escape Pod 2"
 	location = 0
 	warmup_time = 0
@@ -130,7 +130,7 @@
 	move_time = SHUTTLE_TRANSIT_DURATION_RETURN
 
 // Cargo shuttle.
-/datum/shuttle/ferry/supply/cargo
+/datum/shuttle/autodock/ferry/supply/cargo
 	name = "Supply"
 	location = 1
 	warmup_time = 10
@@ -141,7 +141,7 @@
 	flags = SHUTTLE_FLAGS_PROCESS|SHUTTLE_FLAGS_SUPPLY
 
 // The "Elevators"
-/datum/shuttle/ferry/engineering
+/datum/shuttle/autodock/ferry/engineering
 	name = "Engineering"
 	warmup_time = 10
 	area_offsite = /area/shuttle/constructionsite/site
@@ -150,7 +150,7 @@
 	dock_target_station = "engineering_dock_airlock"
 	dock_target_offsite = "edock_airlock"
 
-/datum/shuttle/ferry/mining
+/datum/shuttle/autodock/ferry/mining
 	name = "Mining"
 	warmup_time = 10
 	area_offsite = /area/shuttle/mining/outpost
@@ -159,7 +159,7 @@
 	dock_target_station = "mining_dock_airlock"
 	dock_target_offsite = "mining_outpost_airlock"
 
-/datum/shuttle/ferry/research
+/datum/shuttle/autodock/ferry/research
 	name = "Research"
 	warmup_time = 10
 	area_offsite = /area/shuttle/research/outpost
@@ -169,7 +169,7 @@
 	dock_target_offsite = "research_outpost_dock"
 
 // Admin shuttles.
-/datum/shuttle/ferry/centcom
+/datum/shuttle/autodock/ferry/centcom
 	name = "Centcom"
 	location = 1
 	warmup_time = 10
@@ -179,7 +179,7 @@
 	dock_target_station = "centcom_shuttle_dock_airlock"
 	dock_target_offsite = "centcom_shuttle_bay"
 
-/datum/shuttle/ferry/administration
+/datum/shuttle/autodock/ferry/administration
 	name = "Administration"
 	location = 1
 	warmup_time = 10	//want some warmup time so people can cancel.
@@ -190,7 +190,7 @@
 	dock_target_offsite = "admin_shuttle_bay"
 
 // Traders
-/datum/shuttle/ferry/trade
+/datum/shuttle/autodock/ferry/trade
 	name = "Trade"
 	location = 1
 	warmup_time = 10	//want some warmup time so people can cancel.
@@ -201,7 +201,7 @@
 	dock_target_offsite = "trade_shuttle_bay"
 
 // Is this even used?
-/datum/shuttle/ferry/alien
+/datum/shuttle/autodock/ferry/alien
 	name = "Alien"
 	area_offsite = /area/shuttle/alien/base
 	area_station = /area/shuttle/alien/mine
@@ -261,7 +261,7 @@
 	departure_message = "Attention.  Unidentified object exiting local space.  Unidentified object expected to escape Kara gravity well with current velocity."
 	..()
 
-/datum/shuttle/ferry/multidock/specops/ert
+/datum/shuttle/autodock/ferry/multidock/specops/ert
 	name = "Special Operations"
 	location = 0
 	warmup_time = 10

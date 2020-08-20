@@ -23,7 +23,7 @@
 		/datum/shuttle_destination/excursion/virgo2orbit = 30 SECONDS
 	)
 
-/datum/shuttle/ferry/aerostat
+/datum/shuttle/autodock/ferry/aerostat
 	name = "Aerostat Ferry"
 	warmup_time = 10	//want some warmup time so people can cancel.
 	area_station = /area/shuttle/aerostat/docked

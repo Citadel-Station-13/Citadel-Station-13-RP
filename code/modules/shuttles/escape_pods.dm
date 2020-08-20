@@ -2,13 +2,13 @@
 	var/datum/computer/file/embedded_program/docking/simple/escape_pod_berth/arming_controller
 	category = /datum/shuttle/autodock/ferry/escape_pod
 
-/datum/shuttle/autodock/ferry/escape_pod/New()
-	move_time = move_time + rand(-30, 60)
-	if(name in SSshuttle.escape_pods)
-		CRASH("An escape pod with the name '[name]' has already been defined.")
-	SSshuttle.escape_pods[name] = src
-
+/datum/shuttle/autodock/ferry/escape_pod/New(_name)
 	..()
+	if(_name)
+		src.name = _name
+	if(src.name in SSshuttle.shuttles)
+		CRASH("A shuttle with the name '[name]' is already defined.")
+	SSshuttle.shuttles[src.name] = src
 
 	// Find the arming controller (berth) - If not configured directly, try to read it from current location landmark
 	var/arming_controller_tag = arming_controller

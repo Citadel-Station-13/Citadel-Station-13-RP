@@ -1,5 +1,5 @@
 // Cargo shuttle.
-/datum/shuttle/ferry/supply/cargo
+/datum/shuttle/autodock/ferry/supply/cargo
 	name = "Supply"
 	location = 1
 	warmup_time = 10
@@ -15,7 +15,7 @@
 	req_access = list(access_cent_general)
 	shuttle_tag = "Administration"
 
-/datum/shuttle/ferry/administration
+/datum/shuttle/autodock/ferry/administration
 	name = "Administration"
 	location = 1
 	warmup_time = 0
@@ -32,7 +32,7 @@
 	req_access = list(access_cent_general)
 	shuttle_tag = "Centcom"
 
-/datum/shuttle/ferry/centcom
+/datum/shuttle/autodock/ferry/centcom
 	name = "Centcom"
 	location = 1
 	warmup_time = 0
@@ -104,7 +104,7 @@
 	icon_screen = "shuttle"
 	shuttle_tag = "Merchant"
 
-/datum/shuttle/ferry/merchant
+/datum/shuttle/autodock/ferry/merchant
 	name = "Merchant"
 	warmup_time = 0
 	docking_controller_tag = "trade_shuttle"
@@ -115,7 +115,7 @@
 
 //Escape Pods
 
-/datum/shuttle/ferry/emergency/centcom
+/datum/shuttle/autodock/ferry/emergency/centcom
 	name = "Escape"
 	location = 1
 	warmup_time = 10
@@ -128,7 +128,7 @@
 	transit_direction = NORTH
 	move_time = SHUTTLE_TRANSIT_DURATION_RETURN
 
-/datum/shuttle/ferry/escape_pod/escape_pod_one
+/datum/shuttle/autodock/ferry/escape_pod/escape_pod_one
 	name = "Escape Pod 1"
 	location = 0
 	warmup_time = 0
@@ -141,7 +141,7 @@
 	transit_direction = NORTH
 	move_time = SHUTTLE_TRANSIT_DURATION_RETURN
 
-/datum/shuttle/ferry/escape_pod/escape_pod_two
+/datum/shuttle/autodock/ferry/escape_pod/escape_pod_two
 	name = "Escape Pod 2"
 	location = 0
 	warmup_time = 0
@@ -154,7 +154,7 @@
 	transit_direction = NORTH
 	move_time = SHUTTLE_TRANSIT_DURATION_RETURN
 
-/datum/shuttle/ferry/escape_pod/escape_pod_three
+/datum/shuttle/autodock/ferry/escape_pod/escape_pod_three
 	name = "Escape Pod 3"
 	location = 0
 	warmup_time = 0
@@ -167,7 +167,7 @@
 	transit_direction = NORTH
 	move_time = SHUTTLE_TRANSIT_DURATION_RETURN
 
-/datum/shuttle/ferry/escape_pod/escape_pod_four
+/datum/shuttle/autodock/ferry/escape_pod/escape_pod_four
 	name = "Escape Pod 4"
 	location = 0
 	warmup_time = 0
@@ -180,7 +180,7 @@
 	transit_direction = NORTH //should this be SOUTH? I have no idea.
 	move_time = SHUTTLE_TRANSIT_DURATION_RETURN
 
-/datum/shuttle/ferry/escape_pod/escape_pod_five
+/datum/shuttle/autodock/ferry/escape_pod/escape_pod_five
 	name = "Escape Pod 5"
 	location = 0
 	warmup_time = 0
@@ -193,7 +193,7 @@
 	transit_direction = NORTH //should this be WEST? I have no idea.
 	move_time = SHUTTLE_TRANSIT_DURATION_RETURN
 
-/datum/shuttle/ferry/escape_pod/escape_pod_six
+/datum/shuttle/autodock/ferry/escape_pod/escape_pod_six
 	name = "Escape Pod 6"
 	location = 0
 	warmup_time = 0
@@ -206,7 +206,7 @@
 	transit_direction = NORTH //should this be WEST? I have no idea.
 	move_time = SHUTTLE_TRANSIT_DURATION_RETURN
 
-/datum/shuttle/ferry/escape_pod/escape_pod_seven
+/datum/shuttle/autodock/ferry/escape_pod/escape_pod_seven
 	name = "Escape Pod 7"
 	location = 0
 	warmup_time = 0
@@ -218,7 +218,7 @@
 	dock_target_offsite = "escape_pod_7_recovery"
 	transit_direction = WEST
 
-/datum/shuttle/ferry/escape_pod/escape_pod_eight
+/datum/shuttle/autodock/ferry/escape_pod/escape_pod_eight
 	name = "Escape Pod 8"
 	location = 0
 	warmup_time = 0
@@ -230,7 +230,7 @@
 	dock_target_offsite = "escape_pod_8_recovery"
 	transit_direction = EAST
 
-/datum/shuttle/ferry/escape_pod/escape_pod_cryo
+/datum/shuttle/autodock/ferry/escape_pod/escape_pod_cryo
 	name = "Cryostorage Shuttle"
 	location = 0
 	warmup_time = 0
@@ -243,7 +243,7 @@
 	transit_direction = NORTH
 	move_time = SHUTTLE_TRANSIT_DURATION_RETURN
 
-/datum/shuttle/ferry/escape_pod/large_escape_pod1
+/datum/shuttle/autodock/ferry/escape_pod/large_escape_pod1
 	name = "Large Escape Pod 1"
 	location = 0
 	warmup_time = 0
@@ -256,7 +256,7 @@
 	transit_direction = EAST
 	move_time = SHUTTLE_TRANSIT_DURATION_RETURN
 
-/datum/shuttle/ferry/escape_pod/large_escape_pod2
+/datum/shuttle/autodock/ferry/escape_pod/large_escape_pod2
 	name = "Large Escape Pod 2"
 	location = 0
 	warmup_time = 0

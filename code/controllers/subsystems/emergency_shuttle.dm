@@ -2,8 +2,9 @@ SUBSYSTEM_DEF(emergencyshuttle)
 	name = "Emergency Shuttle"
 	wait = 20
 
+/datum/controller/subsystem/emergencyshuttle
 	var/datum/shuttle/autodock/ferry/emergency/shuttle	// Set in shuttle_emergency.dm TODO - is it really?
-	var/list/escape_pods
+	var/list/escape_pod
 
 	var/launch_time			//the time at which the shuttle will be launched
 	var/auto_recall = 0		//if set, the shuttle will be auto-recalled
@@ -19,8 +20,8 @@ SUBSYSTEM_DEF(emergencyshuttle)
 	var/datum/announcement/priority/emergency_shuttle_called = new(0, new_sound = sound('sound/AI/shuttlecalled.ogg'))
 	var/datum/announcement/priority/emergency_shuttle_recalled = new(0, new_sound = sound('sound/AI/shuttlerecalled.ogg'))
 
-/datum/emergency_shuttle_controller/New()
-	escape_pods = list()
+/datum/controller/subsystem/emergencyshuttle/New()
+	escape_pod = list()
 	..()
 /datum/controller/subsystem/emergencyshuttle/fire()
 	if (wait_for_launch)
@@ -31,10 +32,10 @@ SUBSYSTEM_DEF(emergencyshuttle)
 
 			if (!shuttle.location)	//leaving from the station
 				//launch the pods!
-				for (var/EP in SSshuttle.escape_pods)
+				for (var/EP in escape_pod)
 					var/datum/shuttle/autodock/ferry/escape_pod/pod
-					if(istype(escape_pods[EP], /datum/shuttle/autodock/ferry/escape_pod))
-						pod = SSshuttle.escape_pods[EP]
+					if(istype(escape_pod[EP], /datum/shuttle/autodock/ferry/escape_pod))
+						pod = escape_pod[EP]
 					else
 						continue
 					if (!pod.arming_controller || pod.arming_controller.armed)
@@ -58,10 +59,10 @@ SUBSYSTEM_DEF(emergencyshuttle)
 
 		//arm the escape pods
 		if (evac)
-			for (var/EP in SSshuttle.escape_pods)
+			for (var/EP in escape_pod)
 				var/datum/shuttle/autodock/ferry/escape_pod/pod
-				if(istype(escape_pods[EP], /datum/shuttle/autodock/ferry/escape_pod))
-					pod = SSshuttle.escape_pods[EP]
+				if(istype(escape_pod[EP], /datum/shuttle/autodock/ferry/escape_pod))
+					pod = escape_pod[EP]
 				else
 					continue
 				if (pod.arming_controller)
@@ -170,7 +171,7 @@ SUBSYSTEM_DEF(emergencyshuttle)
 		return 0	//not at station
 	return (wait_for_launch || shuttle.moving_status != SHUTTLE_INTRANSIT)
 
-//so we don't have emergency_shuttle.shuttle.location everywhere
+//so we don't have emergencyshuttleshuttle.location everywhere
 /datum/controller/subsystem/emergencyshuttle/proc/location()
 	if (!shuttle)
 		return 1 	//if we dont have a shuttle datum, just act like it's at centcom

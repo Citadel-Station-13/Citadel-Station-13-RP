@@ -55,7 +55,7 @@
 
 		var/turf/target = locate(dst_origin.x + x_pos, dst_origin.y + y_pos, dst_origin.z + z_pos)
 		if(!target)
-			error("Null turf in translation @ ([dst_origin.x + x_pos], [dst_origin.y + y_pos], [dst_origin.z + z_pos])")
+			log_debug("Null turf in translation @ ([dst_origin.x + x_pos], [dst_origin.y + y_pos], [dst_origin.z + z_pos])")
 		turf_map[source] = target	// If target is null, preserve that information in the turf map
 
 	return turf_map
@@ -82,7 +82,7 @@
 
 	// You can stay, though.
 	if(istype(T,/turf/space))
-		error("Tried to translate a space turf: src=[log_info_line(T)] dst=[log_info_line(B)]")
+		log_debug("Tried to translate a space turf: src=[log_info_line(T)] dst=[log_info_line(B)]")
 		return FALSE	// TODO - Is this really okay to do nothing?
 
 	var/turf/X	// New Destination Turf
@@ -106,7 +106,7 @@
 		var/old_decals = T.decals ? T.decals.Copy() : null
 
 		X = B.ChangeTurf(T.type)
-		X.set_dir(old_dir1)
+		X.setDir(old_dir1)
 		X.icon_state = old_icon_state1
 		X.icon = old_icon1
 		X.copy_overlays(T, TRUE)

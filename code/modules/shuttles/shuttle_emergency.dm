@@ -1,4 +1,4 @@
-// Formerly /datum/shuttle/ferry/emergency
+// Formerly /datum/shuttle/autodock/ferry/emergency
 /datum/shuttle/autodock/ferry/emergency
 	category = /datum/shuttle/autodock/ferry/emergency
 
@@ -31,13 +31,13 @@
 /datum/shuttle/autodock/ferry/emergency/perform_shuttle_move()
 	if (current_location == landmark_station)	// Leaving the station
 		spawn(0)
-			emergency_shuttle.departed = 1
-			var/estimated_time = round(emergency_shuttle.estimate_arrival_time()/60,1)
+			SSemergencyshuttle.departed = 1
+			var/estimated_time = round(SSemergencyshuttle.estimate_arrival_time()/60,1)
 
-			if (emergency_shuttle.evac)
-				priority_announcement.Announce(replacetext(replacetext(using_map.emergency_shuttle_leaving_dock, "%dock_name%", "[using_map.dock_name]"),  "%ETA%", "[estimated_time] minute\s"))
+			if (SSemergencyshuttle.evac)
+				priority_announcement.Announce(replacetext(replacetext(GLOB.using_map.emergency_shuttle_leaving_dock, "%dock_name%", "[GLOB.using_map.dock_name]"),  "%ETA%", "[estimated_time] minute\s"))
 			else
-				priority_announcement.Announce(replacetext(replacetext(using_map.shuttle_leaving_dock, "%dock_name%", "[using_map.dock_name]"),  "%ETA%", "[estimated_time] minute\s"))
+				priority_announcement.Announce(replacetext(replacetext(GLOB.using_map.shuttle_leaving_dock, "%dock_name%", "[GLOB.using_map.dock_name]"),  "%ETA%", "[estimated_time] minute\s"))
 	..()
 
 /datum/shuttle/autodock/ferry/emergency/can_launch(var/user)

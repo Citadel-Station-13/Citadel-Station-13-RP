@@ -1,5 +1,5 @@
 // The new arrivals shuttle.
-/datum/shuttle/ferry/arrivals
+/datum/shuttle/autodock/ferry/arrivals
 	name = "Arrivals"
 	location = 1
 	warmup_time = 25 // Warmup takes 5 seconds, so 30 total.
@@ -21,19 +21,19 @@
 
 
 // This proc checks if anyone is on the shuttle.
-/datum/shuttle/ferry/arrivals/proc/check_for_passengers(area/A)
+/datum/shuttle/autodock/ferry/arrivals/proc/check_for_passengers(area/A)
 	for(var/mob/living/L in A)
 		return TRUE
 	return FALSE
 
 // This is to stop the shuttle if someone tries to stow away when its leaving.
-/datum/shuttle/ferry/arrivals/post_warmup_checks()
+/datum/shuttle/autodock/ferry/arrivals/post_warmup_checks()
 	if(!location) // If we're at station.
 		if(check_for_passengers(area_station))
 			return FALSE
 	return TRUE
 
-/datum/shuttle/ferry/arrivals/process()
+/datum/shuttle/autodock/ferry/arrivals/process()
 	if(process_state == IDLE_STATE)
 
 		if(location) // If we're off-station (space).
@@ -58,7 +58,7 @@
 	..() // Do everything else
 
 /*
-/datum/shuttle/ferry/arrivals/current_dock_target()
+/datum/shuttle/autodock/ferry/arrivals/current_dock_target()
 	if(location) // If we're off station.
 		return null // Nothing to dock to in space.
 	return ..()
