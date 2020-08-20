@@ -19,6 +19,7 @@
 	icon = 'icons/mecha/micro.dmi'
 	icon_state = "whisker"
 	wreckage = /obj/structure/loot_pile/mecha/mouse_tank
+	faction = "mouse_army"
 
 	maxHealth = 150
 	armor = list(

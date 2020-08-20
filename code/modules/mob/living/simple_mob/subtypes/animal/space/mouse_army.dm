@@ -9,6 +9,7 @@
 	icon_living = "mouse_gray"
 	icon_dead = "mouse_gray_dead"
 	icon_rest = "mouse_gray_sleep"
+	faction = "mouse_army"
 
 	maxHealth = 50
 	health = 50
@@ -73,7 +74,7 @@
 	real_name = name
 
 	if(!rank)
-		rank = pick( list("operative","pyro") )
+		rank = pick( list("operative","pyro", "ammo", "stealth") )
 	icon_state = "mouse_[rank]"
 	item_state = "mouse_[rank]"
 	icon_living = "mouse_[rank]"

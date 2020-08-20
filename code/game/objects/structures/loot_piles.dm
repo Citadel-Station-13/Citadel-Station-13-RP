@@ -898,7 +898,6 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/random/tank,
 		/obj/random/tech_supply/component,
 		/obj/random/tech_supply/component,
-		/obj/random/tech_supply/component,
 		/obj/effect/decal/remains/mouse,
 		/obj/item/stack/material/steel{amount = 20}
 		)
@@ -932,7 +931,6 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/random/tool,
 		/obj/item/stack/cable_coil/random,
 		/obj/random/tank,
-		/obj/random/tech_supply/component,
 		/obj/random/tech_supply/component,
 		/obj/random/tech_supply/component,
 		/obj/effect/decal/remains/mouse,
