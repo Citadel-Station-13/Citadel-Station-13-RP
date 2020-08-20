@@ -92,6 +92,7 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
+/obj/machinery/vending/dinnerware,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
 "ar" = (
@@ -1068,6 +1069,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
+/obj/effect/landmark/start{
+	name = "Janitor"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/janitor)
 "dJ" = (
@@ -1477,6 +1481,7 @@
 	pixel_y = 26;
 	req_one_access = null
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless/ceiling,
 /area/solar/aft)
 "eT" = (
@@ -2333,6 +2338,9 @@
 "hk" = (
 /obj/machinery/camera/network/civilian{
 	dir = 8
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_x = 27
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/crew_quarters/kitchen)
@@ -4932,141 +4940,16 @@
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
 "pC" = (
-/obj/structure/closet/crate,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/diamond,
-/obj/item/ore/diamond,
-/obj/item/ore/diamond,
-/obj/item/ore/glass,
-/obj/item/ore/glass,
-/obj/item/ore/glass,
-/obj/item/ore/glass,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/hydrogen,
-/obj/item/ore/hydrogen,
-/obj/item/ore/hydrogen,
-/obj/item/ore/hydrogen,
-/obj/item/ore/iron,
-/obj/item/ore/iron,
-/obj/item/ore/iron,
-/obj/item/ore/iron,
-/obj/item/ore/iron,
-/obj/item/ore/iron,
-/obj/item/ore/iron,
-/obj/item/ore/lead,
-/obj/item/ore/lead,
-/obj/item/ore/lead,
-/obj/item/ore/lead,
-/obj/item/ore/lead,
-/obj/item/ore/lead,
-/obj/item/ore/lead,
-/obj/item/ore/lead,
-/obj/item/ore/osmium,
-/obj/item/ore/osmium,
-/obj/item/ore/osmium,
-/obj/item/ore/osmium,
-/obj/item/ore/osmium,
-/obj/item/ore/osmium,
-/obj/item/ore/osmium,
-/obj/item/ore/osmium,
-/obj/item/ore/osmium,
-/obj/item/ore/osmium,
-/obj/item/ore/phoron,
-/obj/item/ore/phoron,
-/obj/item/ore/phoron,
-/obj/item/ore/phoron,
-/obj/item/ore/phoron,
-/obj/item/ore/phoron,
-/obj/item/ore/phoron,
-/obj/item/ore/phoron,
-/obj/item/ore/phoron,
-/obj/item/ore/phoron,
-/obj/item/ore/phoron,
-/obj/item/ore/phoron,
-/obj/item/ore/phoron,
-/obj/item/ore/phoron,
-/obj/item/ore/phoron,
-/obj/item/ore/phoron,
-/obj/item/ore/phoron,
-/obj/item/ore/phoron,
-/obj/item/ore/phoron,
-/obj/item/ore/phoron,
-/obj/item/ore/phoron,
-/obj/item/ore/phoron,
-/obj/item/ore/silver,
-/obj/item/ore/silver,
-/obj/item/ore/silver,
-/obj/item/ore/silver,
-/obj/item/ore/silver,
-/obj/item/ore/silver,
-/obj/item/ore/silver,
-/obj/item/ore/silver,
-/obj/item/ore/silver,
-/obj/item/ore/silver,
-/obj/item/ore/silver,
-/obj/item/ore/silver,
-/obj/item/ore/silver,
-/obj/item/ore/silver,
-/obj/item/ore/uranium,
-/obj/item/ore/uranium,
-/obj/item/ore/uranium,
-/obj/item/ore/uranium,
-/obj/item/ore/uranium,
-/obj/item/ore/uranium,
-/obj/item/ore/uranium,
-/obj/item/ore/uranium,
-/obj/item/ore/uranium,
-/obj/item/ore/uranium,
-/obj/item/ore/uranium,
-/obj/item/ore/uranium,
-/obj/item/ore/uranium,
-/obj/item/ore/uranium,
-/obj/item/ore/uranium,
-/obj/item/ore/uranium,
-/obj/item/ore/verdantium,
-/obj/item/ore/verdantium,
-/obj/item/ore/verdantium,
-/obj/item/ore/verdantium,
-/obj/item/ore/verdantium,
-/obj/item/ore/verdantium,
-/obj/item/ore/verdantium,
-/obj/item/ore/verdantium,
-/obj/item/ore/verdantium,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/iron,
-/obj/item/ore/iron,
-/obj/item/ore/iron,
-/obj/item/ore/iron,
-/obj/item/ore/iron,
-/obj/item/ore/iron,
-/obj/item/ore/iron,
-/obj/item/ore/iron,
-/obj/item/ore/iron,
-/obj/item/ore/iron,
-/obj/item/ore/iron,
-/turf/simulated/floor/airless,
-/area/quartermaster/miningdock)
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/effect/landmark/start{
+	name = "Cargo Technician"
+	},
+/turf/simulated/floor/tiled,
+/area/quartermaster/warehouse)
 "pE" = (
 /obj/machinery/power/apc{
 	cell_type = /obj/item/cell/super;
@@ -5285,17 +5168,6 @@
 "qn" = (
 /turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/sleep/Dorm_7)
-"qo" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/effect/landmark/start{
-	name = "Cargo Technician"
-	},
-/turf/simulated/floor/tiled,
-/area/quartermaster/warehouse)
 "qu" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
@@ -5704,12 +5576,6 @@
 "rJ" = (
 /obj/machinery/camera/network/cargo,
 /obj/machinery/mech_recharger,
-/turf/simulated/floor/tiled,
-/area/quartermaster/warehouse)
-"rK" = (
-/obj/effect/landmark/start{
-	name = "Cargo Technician"
-	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
 "rL" = (
@@ -6353,6 +6219,9 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
+/obj/effect/landmark/start{
+	name = "Janitor"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/janitor)
 "tF" = (
@@ -6388,12 +6257,10 @@
 /turf/space,
 /area/space)
 "tJ" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
+/obj/item/stool/padded,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "tK" = (
@@ -6650,10 +6517,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "uw" = (
-/mob/living/simple_mob/animal/goat{
-	desc = "Ah, it's Pete. They're not known for their pleasant disposition and now they're gonna eat all your plants.";
-	name = "Pete"
-	},
+/obj/machinery/smartfridge,
 /turf/simulated/floor/tiled,
 /area/hydroponics)
 "uz" = (
@@ -6957,6 +6821,7 @@
 	layer = 3.3;
 	name = "Kitchen Shutters"
 	},
+/obj/item/storage/box/wings,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
 "vv" = (
@@ -7922,14 +7787,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
-"yU" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/landmark/start{
-	name = "Cargo Technician"
-	},
-/turf/simulated/floor/tiled,
-/area/quartermaster/warehouse)
 "yV" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 8
@@ -8134,6 +7991,9 @@
 "zF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/landmark/start{
+	name = "Janitor"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/janitor)
 "zG" = (
@@ -8299,9 +8159,11 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "Al" = (
-/obj/machinery/vending/dinnerware,
 /obj/machinery/light{
 	dir = 8
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_x = -27
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
@@ -10556,6 +10418,9 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/machinery/light_switch{
+	pixel_x = 25
+	},
 /turf/simulated/floor/tiled,
 /area/hydroponics)
 "HJ" = (
@@ -11356,6 +11221,7 @@
 	name = "Bar Shutters"
 	},
 /obj/machinery/recharger,
+/obj/item/storage/box/wings,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "Kl" = (
@@ -11491,6 +11357,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_two)
+"KL" = (
+/obj/machinery/gear_painter,
+/turf/simulated/floor/wood,
+/area/crew_quarters/visitor_dining)
 "KO" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -11598,15 +11468,13 @@
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 2
 	},
-/obj/machinery/cash_register/civilian{
-	dir = 1
-	},
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "bar";
 	layer = 3.3;
 	name = "Bar Shutters"
 	},
+/obj/item/storage/box/wings,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "Li" = (
@@ -12896,14 +12764,13 @@
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/freezer)
 "Qa" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/freezer{
-	name = "Kitchen";
-	req_access = list(28);
-	req_one_access = newlist()
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/landmark/start{
+	name = "Cargo Technician"
 	},
-/turf/simulated/floor/tiled/dark,
-/area/crew_quarters/kitchen)
+/turf/simulated/floor/tiled,
+/area/quartermaster/warehouse)
 "Qb" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -13634,6 +13501,7 @@
 	pixel_y = -23;
 	req_one_access = list(48)
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled,
 /area/quartermaster/miningdock)
 "Su" = (
@@ -14106,10 +13974,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/kitchen)
-"TL" = (
-/obj/machinery/gear_painter,
-/turf/simulated/floor/wood,
-/area/crew_quarters/visitor_dining)
 "TM" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
@@ -14261,21 +14125,11 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/fitness)
 "Ug" = (
-/obj/structure/table/marble,
-/obj/machinery/door/firedoor/glass/hidden/steel{
-	dir = 2
+/obj/effect/landmark/start{
+	name = "Cargo Technician"
 	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/machinery/door/blast/shutters{
-	dir = 2;
-	id = "bar";
-	layer = 3.3;
-	name = "Bar Shutters"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/crew_quarters/bar)
+/turf/simulated/floor/tiled,
+/area/quartermaster/warehouse)
 "Uh" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
@@ -14418,8 +14272,14 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/toilet)
 "UK" = (
-/obj/machinery/smartfridge,
-/turf/simulated/wall,
+/obj/structure/table/marble,
+/obj/machinery/door/blast/shutters{
+	dir = 2;
+	id = "bar";
+	layer = 3.3;
+	name = "Bar Shutters"
+	},
+/turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "UM" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -14570,6 +14430,7 @@
 	locked = 1;
 	name = "Engineering Fore External Access"
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled,
 /area/quartermaster/miningdock)
 "Vk" = (
@@ -14815,8 +14676,6 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "VS" = (
-/obj/machinery/door/firedoor,
-/obj/structure/table/marble,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -14828,11 +14687,8 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/door/blast/shutters{
-	dir = 2;
-	id = "kitchen";
-	layer = 3.3;
-	name = "Kitchen Shutters"
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
@@ -15281,9 +15137,21 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area_hallway)
 "Xl" = (
-/obj/machinery/smartfridge,
-/turf/simulated/floor/tiled,
-/area/hydroponics)
+/obj/structure/table/marble,
+/obj/machinery/door/window/westright{
+	dir = 4;
+	name = "Service Counter";
+	req_access = list(25);
+	req_one_access = list(25)
+	},
+/obj/machinery/door/blast/shutters{
+	dir = 2;
+	id = "kitchen";
+	layer = 3.3;
+	name = "Kitchen Shutters"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/crew_quarters/kitchen)
 "Xm" = (
 /obj/machinery/alarm{
 	dir = 4;
@@ -15696,17 +15564,11 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/Apartment_A1)
 "YH" = (
-/obj/machinery/light{
-	dir = 8
-	},
-/obj/structure/extinguisher_cabinet{
-	pixel_x = -27
-	},
-/obj/structure/closet/crate/bin{
-	anchored = 1
+/obj/effect/landmark/start{
+	name = "Janitor"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/crew_quarters/kitchen)
+/area/janitor)
 "YL" = (
 /obj/machinery/door/firedoor,
 /obj/structure/cable{
@@ -15741,6 +15603,13 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/coffee_shop)
+"YR" = (
+/mob/living/simple_mob/animal/goat{
+	desc = "Ah, it's Pete. They're not known for their pleasant disposition and now they're gonna eat all your plants.";
+	name = "Pete"
+	},
+/turf/simulated/floor/tiled,
+/area/hydroponics)
 "YS" = (
 /obj/machinery/light{
 	dir = 1
@@ -20708,7 +20577,7 @@ JX
 hi
 zt
 BJ
-rf
+Lh
 PU
 Le
 Jq
@@ -21134,7 +21003,7 @@ JX
 lI
 wD
 En
-Ug
+rf
 tJ
 Le
 qv
@@ -21277,7 +21146,7 @@ oo
 wD
 lK
 Lh
-Aj
+tJ
 PH
 qv
 Le
@@ -21557,10 +21426,10 @@ nJ
 ge
 Nh
 Zy
-Qa
+Zy
 Zy
 VS
-Zy
+Xl
 vu
 Zy
 xW
@@ -21702,7 +21571,7 @@ Zy
 XA
 Al
 SL
-YH
+XW
 XW
 uA
 hb
@@ -22282,7 +22151,7 @@ RH
 Wg
 Yt
 eT
-Xl
+WE
 uw
 yX
 CR
@@ -22710,7 +22579,7 @@ Ki
 Ki
 Xp
 Ph
-WE
+YR
 CR
 WE
 Td
@@ -23104,7 +22973,7 @@ Ed
 ii
 ei
 nT
-pC
+vH
 br
 tP
 wZ
@@ -23832,7 +23701,7 @@ Nh
 Ii
 cM
 tD
-fq
+YH
 tE
 jG
 yt
@@ -26114,7 +25983,7 @@ kM
 Vv
 hK
 gV
-TL
+KL
 WV
 wS
 Oy
@@ -26655,7 +26524,7 @@ kk
 Nv
 xI
 HX
-yU
+Qa
 yi
 MI
 xN
@@ -26793,7 +26662,7 @@ zP
 lh
 fF
 wT
-qo
+pC
 qk
 qk
 sZ
@@ -27084,7 +26953,7 @@ Hs
 ES
 kk
 qQ
-rK
+Ug
 nY
 et
 qO

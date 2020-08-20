@@ -2628,6 +2628,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/research)
+"fK" = (
+/obj/structure/closet/lasertag/blue,
+/turf/simulated/floor/tiled,
+/area/holodeck_control)
 "fL" = (
 /obj/machinery/atmospherics/pipe/manifold4w/visible/cyan,
 /turf/simulated/floor/tiled,
@@ -3161,6 +3165,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
+"gQ" = (
+/obj/effect/floor_decal/industrial/warning/dust,
+/obj/machinery/light_switch{
+	pixel_x = 25
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/medical/surgery{
+	name = "\improper Robotics Surgery Room"
+	})
 "gR" = (
 /obj/machinery/status_display{
 	pixel_x = -32
@@ -3408,6 +3421,9 @@
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 6
+	},
+/obj/machinery/light_switch{
+	pixel_x = 25
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
@@ -4181,6 +4197,10 @@
 "iS" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4
+	},
+/obj/machinery/light_switch{
+	pixel_x = -9;
+	pixel_y = 30
 	},
 /turf/simulated/floor/tiled/old_cargo/purple,
 /area/assembly/robotics)
@@ -5051,10 +5071,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
-"kM" = (
-/obj/structure/closet/lasertag/blue,
-/turf/simulated/floor/tiled,
-/area/holodeck_control)
 "kN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -5308,6 +5324,10 @@
 	id = "cmooffice_b";
 	pixel_x = -23;
 	pixel_y = -25
+	},
+/obj/machinery/light_switch{
+	pixel_x = -26;
+	pixel_y = -4
 	},
 /turf/simulated/floor/wood/sif,
 /area/crew_quarters/heads/cmo)
@@ -7094,6 +7114,20 @@
 "oU" = (
 /turf/simulated/floor/tiled,
 /area/medical/medbay_emt_bay)
+"oV" = (
+/obj/structure/closet/secure_closet/medical1,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/syringes,
+/obj/item/radio/headset/headset_med,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/fancy/vials,
+/obj/item/storage/fancy/vials,
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube1"
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/chemistry)
 "oW" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
@@ -7290,6 +7324,9 @@
 /obj/machinery/light{
 	dir = 4;
 	icon_state = "tube1"
+	},
+/obj/machinery/light_switch{
+	pixel_x = 25
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/ward)
@@ -9523,6 +9560,9 @@
 	dir = 8;
 	network = list("Research","Toxins Test Area")
 	},
+/obj/machinery/light_switch{
+	pixel_x = 25
+	},
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "tW" = (
@@ -11132,6 +11172,13 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/rnd/xenobiology)
+"xj" = (
+/obj/machinery/chemical_dispenser/full,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/chemistry)
 "xk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -11393,6 +11440,9 @@
 "xN" = (
 /obj/machinery/light{
 	dir = 4
+	},
+/obj/machinery/light_switch{
+	pixel_x = 25
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
@@ -12293,6 +12343,9 @@
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/structure/table/rack,
 /obj/item/rig/medical/equipped,
+/obj/machinery/light_switch{
+	pixel_x = 25
+	},
 /turf/simulated/floor/tiled/dark,
 /area/medical/medbay_emt_bay)
 "zz" = (
@@ -12700,6 +12753,9 @@
 /obj/structure/sink{
 	dir = 4;
 	pixel_x = 11
+	},
+/obj/machinery/light_switch{
+	pixel_x = 25
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
@@ -14118,6 +14174,12 @@
 /obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
+"CV" = (
+/obj/machinery/light_switch{
+	pixel_x = 25
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/test_area)
 "CW" = (
 /obj/machinery/light{
 	dir = 4
@@ -14157,6 +14219,9 @@
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 4
+	},
+/obj/machinery/light_switch{
+	pixel_x = 25
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/reception_desk)
@@ -17000,6 +17065,9 @@
 	name = "north bump";
 	pixel_y = 28
 	},
+/obj/machinery/light_switch{
+	pixel_x = 25
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/medical/morgue)
 "IR" = (
@@ -19170,6 +19238,9 @@
 "Nm" = (
 /obj/item/storage/box/nifsofts_medical,
 /obj/structure/table/glass,
+/obj/machinery/light_switch{
+	pixel_x = 25
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/cmostore)
 "Nn" = (
@@ -19292,6 +19363,9 @@
 	},
 /obj/machinery/light{
 	dir = 4
+	},
+/obj/machinery/light_switch{
+	pixel_x = 25
 	},
 /turf/simulated/floor/wood/sif,
 /area/crew_quarters/medbreak)
@@ -31923,7 +31997,7 @@ fk
 vg
 do
 iL
-aO
+gQ
 qt
 ic
 OE
@@ -35328,7 +35402,7 @@ Tm
 lh
 Fc
 ce
-vB
+CV
 yD
 Ji
 WG
@@ -36342,7 +36416,7 @@ Md
 Az
 zo
 yl
-QO
+xj
 jN
 Qb
 Qb
@@ -36912,7 +36986,7 @@ zo
 yl
 QO
 jN
-qR
+oV
 As
 qR
 QO
@@ -38896,7 +38970,7 @@ EJ
 RN
 oz
 xv
-kM
+fK
 XX
 VY
 Sa

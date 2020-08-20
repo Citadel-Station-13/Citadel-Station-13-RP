@@ -376,6 +376,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/engineering/foyer_mezzenine)
+"br" = (
+/obj/machinery/shield_diffuser,
+/obj/effect/floor_decal/industrial/warning/cee,
+/turf/simulated/floor/reinforced/airless,
+/area/space)
 "bt" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -7922,7 +7927,12 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/backup)
 "ON" = (
-/obj/effect/floor_decal/industrial/warning/cee,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "OP" = (
@@ -10170,7 +10180,7 @@
 	req_access = list(24)
 	},
 /turf/simulated/floor/airless,
-/area/space)
+/area/engineering/atmos)
 "ZJ" = (
 /obj/structure/cable/cyan{
 	d1 = 1;
@@ -10186,6 +10196,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
+"ZT" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/airless,
+/area/space)
 "ZU" = (
 /obj/structure/table/rack{
 	dir = 8;
@@ -17540,7 +17554,7 @@ Qf
 VL
 oR
 ON
-fN
+br
 fN
 fN
 fN
@@ -19825,7 +19839,7 @@ fN
 Zj
 fN
 Zj
-kq
+ZT
 Zj
 fN
 Zj
