@@ -19,10 +19,13 @@
 /turf/space/is_space()
 	return 1
 
-// override for space turfs, since they should never hide anything
+// Override for space turfs, since they should never hide anything
 /turf/space/levelupdate()
 	for(var/obj/O in src)
 		O.hide(0)
+
+/turf/space/is_solid_structure()
+	return locate(/obj/structure/lattice, src)	// Counts as solid structure if it has a lattice
 
 /turf/space/proc/update_starlight()
 	if(!config_legacy.starlight)
@@ -66,7 +69,7 @@
 		// Patch holes in the ceiling
 		if(T)
 			if(istype(T, /turf/simulated/open) || istype(T, /turf/space))
-			 	// Must be build adjacent to an existing floor/wall, no floating floors
+				// Must be build adjacent to an existing floor/wall, no floating floors
 				var/turf/simulated/A = locate(/turf/simulated/floor) in T.CardinalTurfs()
 				if(!A)
 					A = locate(/turf/simulated/wall) in T.CardinalTurfs()
@@ -74,7 +77,7 @@
 					to_chat(user, "<span class='warning'>There's nothing to attach the ceiling to!</span>")
 					return
 
-				if(R.use(1)) // Cost of roofing tiles is 1:1 with cost to place lattice and plating
+				if(R.use(1))	// Cost of roofing tiles is 1:1 with cost to place lattice and plating
 					T.ReplaceWithLattice()
 					T.ChangeTurf(/turf/simulated/floor)
 					playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)

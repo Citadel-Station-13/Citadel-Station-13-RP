@@ -226,7 +226,7 @@
 	if(z in GLOB.using_map.sealed_levels)
 		return
 
-	if(using_map.use_overmap)
+	if(GLOB.using_map.use_overmap)
 		overmap_spacetravel(get_turf(src), src)
 		return
 

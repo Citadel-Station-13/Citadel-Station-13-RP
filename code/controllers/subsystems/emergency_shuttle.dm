@@ -3,6 +3,7 @@ SUBSYSTEM_DEF(emergencyshuttle)
 	wait = 20
 
 	var/datum/shuttle/autodock/ferry/emergency/shuttle	// Set in shuttle_emergency.dm TODO - is it really?
+	var/list/escape_pods
 
 	var/launch_time			//the time at which the shuttle will be launched
 	var/auto_recall = 0		//if set, the shuttle will be auto-recalled
@@ -18,6 +19,9 @@ SUBSYSTEM_DEF(emergencyshuttle)
 	var/datum/announcement/priority/emergency_shuttle_called = new(0, new_sound = sound('sound/AI/shuttlecalled.ogg'))
 	var/datum/announcement/priority/emergency_shuttle_recalled = new(0, new_sound = sound('sound/AI/shuttlerecalled.ogg'))
 
+/datum/emergency_shuttle_controller/New()
+	escape_pods = list()
+	..()
 /datum/controller/subsystem/emergencyshuttle/fire()
 	if (wait_for_launch)
 		if (evac && auto_recall && world.time >= auto_recall_time)

@@ -16,7 +16,7 @@ GLOBAL_DATUM_INIT(shuttle_added, /decl/observ/shuttle_added, new)
 *  Shuttle Added Handling *
 *****************************/
 
-/datum/controller/subsystem/shuttles/initialize_shuttle()
+/datum/controller/subsystem/shuttle/initialize_shuttle()
 	. = ..()
 	if(.)
 		GLOB.shuttle_added.raise_event(.)

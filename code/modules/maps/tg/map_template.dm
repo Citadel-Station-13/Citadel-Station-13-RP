@@ -4,7 +4,7 @@ var/list/global/map_templates = list()
 /proc/load_map_templates()
 	for(var/T in subtypesof(/datum/map_template))
 		var/datum/map_template/template = T
-		if(!(initial(template.mappath))) // If it's missing the actual path its probably a base type or being used for inheritence.
+		if(!(initial(template.mappath)))	// If it's missing the actual path its probably a base type or being used for inheritence.
 			continue
 		template = new T()
 		map_templates[template.name] = template
@@ -13,22 +13,22 @@ var/list/global/map_templates = list()
 /datum/map_template
 	var/name = "Default Template Name"
 	var/desc = "Some text should go here. Maybe."
-	var/template_group = null // If this is set, no more than one template in the same group will be spawned, per submap seeding.
+	var/template_group = null	// If this is set, no more than one template in the same group will be spawned, per submap seeding.
 	var/width = 0
 	var/height = 0
 	var/mappath = null
-	var/loaded = 0 // Times loaded this round
-	var/annihilate = FALSE // If true, all (movable) atoms at the location where the map is loaded will be deleted before the map is loaded in.
+	var/loaded = 0				// Times loaded this round
+	var/annihilate = FALSE		// If true, all (movable) atoms at the location where the map is loaded will be deleted before the map is loaded in.
 
-	var/cost = null // The map generator has a set 'budget' it spends to place down different submaps. It will pick available submaps randomly until \
+	var/cost = null				// The map generator has a set 'budget' it spends to place down different submaps. It will pick available submaps randomly until \
 	it runs out. The cost of a submap should roughly corrispond with several factors such as size, loot, difficulty, desired scarcity, etc. \
 	Set to -1 to force the submap to always be made.
-	var/allow_duplicates = FALSE // If false, only one map template will be spawned by the game. Doesn't affect admins spawning then manually.
-	var/discard_prob = 0 // If non-zero, there is a chance that the map seeding algorithm will skip this template when selecting potential templates to use.
+	var/allow_duplicates = FALSE	// If false, only one map template will be spawned by the game. Doesn't affect admins spawning then manually.
+	var/discard_prob = 0		// If non-zero, there is a chance that the map seeding algorithm will skip this template when selecting potential templates to use.
 
 	var/static/dmm_suite/maploader = new
 
-	var/fixed_orientation = FALSE		//for ruins
+	var/fixed_orientation = FALSE	// For ruins
 
 	/// Zlevel traits
 	var/list/ztraits
@@ -49,13 +49,16 @@ var/list/global/map_templates = list()
 			width = bounds[MAP_MAXY]
 			height = bounds[MAP_MAXX]
 		else
-			width = bounds[MAP_MAXX] // Assumes all templates are rectangular, have a single Z level, and begin at 1,1,1
+			width = bounds[MAP_MAXX]	// Assumes all templates are rectangular, have a single Z level, and begin at 1,1,1
 			height = bounds[MAP_MAXY]
 	return bounds
 
 /datum/map_template/proc/initTemplateBounds(var/list/bounds)
 	if (SSatoms.subsystem_initialized == INITIALIZATION_INSSATOMS)
-		return // let proper initialisation handle it later
+		return	// Let proper initialisation handle it later
+
+	var/prev_shuttle_queue_state = SSshuttle.block_init_queue
+	SSshuttle.block_init_queue = TRUE
 
 	var/list/atom/atoms = list()
 	var/list/area/areas = list()
@@ -89,6 +92,9 @@ var/list/global/map_templates = list()
 		var/area/A = I
 		A.power_change()
 
+	SSshuttle.block_init_queue = prev_shuttle_queue_state
+	SSshuttle.process_init_queues()	// We will flush the queue unless there were other blockers, in which case they will do it.
+
 	admin_notice("<span class='danger'>Submap initializations finished.</span>", R_DEBUG)
 
 /datum/map_template/proc/load_new_z(var/centered = FALSE, var/orientation = SOUTH, list/traits = src.ztraits || list(ZTRAIT_AWAY = TRUE))
@@ -106,10 +112,10 @@ var/list/global/map_templates = list()
 
 //	repopulate_sorted_areas()
 
-	//initialize things that are normally initialized after map load
+	// Initialize things that are normally initialized after map load
 	initTemplateBounds(bounds)
 	log_game("Z-level [name] loaded at at [x],[y],[world.maxz]")
-	on_map_loaded(world.maxz) //VOREStation Edit
+	on_map_loaded(world.maxz)
 	return TRUE
 
 /datum/map_template/proc/load(turf/T, centered = FALSE, orientation = SOUTH)
@@ -130,10 +136,10 @@ var/list/global/map_templates = list()
 	if(!bounds)
 		return
 
-//	if(!SSmapping.loading_ruins) //Will be done manually during mapping ss init
+//	if(!SSmapping.loading_ruins)	// Will be done manually during mapping ss init
 //		repopulate_sorted_areas()
 
-	//initialize things that are normally initialized after map load
+	// Initialize things that are normally initialized after map load
 	initTemplateBounds(bounds)
 
 	log_game("[name] loaded at at [T.x],[T.y],[T.z]")
@@ -160,8 +166,8 @@ var/list/global/map_templates = list()
 	admin_notice("<span class='danger'>Annihilated [deleted_atoms] objects.</span>", R_DEBUG)
 
 
-//for your ever biggening badminnery kevinz000
-//❤ - Cyberboss
+// For your ever biggening badminnery kevinz000
+// ❤ - Cyberboss
 /proc/load_new_z_level(var/file, var/name, var/orientation = SOUTH)
 	var/datum/map_template/template = new(file, name)
 	template.load_new_z(orientation)
@@ -180,20 +186,20 @@ var/list/global/map_templates = list()
 			admin_notice("Z level [zl] does not exist - Not generating submaps", R_DEBUG)
 			return
 
-	var/overall_sanity = 100 // If the proc fails to place a submap more than this, the whole thing aborts.
-	var/list/potential_submaps = list() // Submaps we may or may not place.
-	var/list/priority_submaps = list() // Submaps that will always be placed.
+	var/overall_sanity = 100	// If the proc fails to place a submap more than this, the whole thing aborts.
+	var/list/potential_submaps = list()	// Submaps we may or may not place.
+	var/list/priority_submaps = list()	// Submaps that will always be placed.
 
 	// Lets go find some submaps to make.
 	for(var/map in map_templates)
 		var/datum/map_template/MT = map_templates[map]
-		if(!MT.allow_duplicates && MT.loaded > 0) // This probably won't be an issue but we might as well.
+		if(!MT.allow_duplicates && MT.loaded > 0)	// This probably won't be an issue but we might as well.
 			continue
-		if(!istype(MT, desired_map_template_type)) // Not the type wanted.
+		if(!istype(MT, desired_map_template_type))	// Not the type wanted.
 			continue
 		if(MT.discard_prob && prob(MT.discard_prob))
 			continue
-		if(MT.cost && MT.cost < 0) // Negative costs always get spawned.
+		if(MT.cost && MT.cost < 0)	// Negative costs always get spawned.
 			priority_submaps += MT
 		else
 			potential_submaps += MT
@@ -201,7 +207,7 @@ var/list/global/map_templates = list()
 	CHECK_TICK
 
 	var/list/loaded_submap_names = list()
-	var/list/template_groups_used = list() // Used to avoid spawning three seperate versions of the same PoI.
+	var/list/template_groups_used = list()	// Used to avoid spawning three seperate versions of the same PoI.
 
 	// Now lets start choosing some.
 	while(budget > 0 && overall_sanity > 0)
@@ -209,12 +215,12 @@ var/list/global/map_templates = list()
 		var/datum/map_template/chosen_template = null
 
 		if(potential_submaps.len)
-			if(priority_submaps.len) // Do these first.
+			if(priority_submaps.len)	// Do these first.
 				chosen_template = pick(priority_submaps)
 			else
 				chosen_template = pick(potential_submaps)
 
-		else // We're out of submaps.
+		else	// We're out of submaps.
 			admin_notice("Submap loader had no submaps to pick from with [budget] left to spend.", R_DEBUG)
 			break
 
@@ -233,7 +239,7 @@ var/list/global/map_templates = list()
 			continue
 
 		// If so, try to place it.
-		var/specific_sanity = 100 // A hundred chances to place the chosen submap.
+		var/specific_sanity = 100	// A hundred chances to place the chosen submap.
 		while(specific_sanity > 0)
 			specific_sanity--
 			var/orientation = pick(cardinal)
@@ -247,8 +253,8 @@ var/list/global/map_templates = list()
 			for(var/turf/check in chosen_template.get_affected_turfs(T,TRUE,orientation))
 				var/area/new_area = get_area(check)
 				if(!(istype(new_area, whitelist)))
-					valid = FALSE // Probably overlapping something important.
-			//		world << "Invalid due to overlapping with area [new_area.type] at ([check.x], [check.y], [check.z]), when attempting to place at ([T.x], [T.y], [T.z])."
+					valid = FALSE	// Probably overlapping something important.
+				//	world << "Invalid due to overlapping with area [new_area.type] at ([check.x], [check.y], [check.z]), when attempting to place at ([T.x], [T.y], [T.z])."
 					break
 				CHECK_TICK
 
@@ -260,7 +266,7 @@ var/list/global/map_templates = list()
 			admin_notice("Submap \"[chosen_template.name]\" placed at ([T.x], [T.y], [T.z])\n", R_DEBUG)
 
 			// Do loading here.
-			chosen_template.load(T, centered = TRUE, orientation=orientation) // This is run before the main map's initialization routine, so that can initilize our submaps for us instead.
+			chosen_template.load(T, centered = TRUE, orientation=orientation)	// This is run before the main map's initialization routine, so that can initilize our submaps for us instead.
 
 			CHECK_TICK
 
@@ -279,12 +285,12 @@ var/list/global/map_templates = list()
 				budget -= chosen_template.cost
 
 			// Remove the submap from our options.
-			if(chosen_template in priority_submaps) // Always remove priority submaps.
+			if(chosen_template in priority_submaps)	// Always remove priority submaps.
 				priority_submaps -= chosen_template
 			else if(!chosen_template.allow_duplicates)
 				potential_submaps -= chosen_template
 
-			break // Load the next submap.
+			break	// Load the next submap.
 
 	var/list/pretty_submap_list = list()
 	for(var/submap_name in loaded_submap_names)

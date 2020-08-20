@@ -111,8 +111,8 @@ SUBSYSTEM_DEF(supply)
 						)
 
 					// Sell manifests
-					if(find_slip && istype(A,/obj/item/weapon/paper/manifest))
-						var/obj/item/weapon/paper/manifest/slip = A
+					if(find_slip && istype(A,/obj/item/paper/manifest))
+						var/obj/item/paper/manifest/slip = A
 						if(!slip.is_copy && slip.stamped && slip.stamped.len)	// Yes, the clown stamp will work. clown is the highest authority on the station, it makes sense, trust me guys
 							points += points_per_slip
 							EC.contents[EC.contents.len]["value"] = points_per_slip
@@ -128,7 +128,7 @@ SUBSYSTEM_DEF(supply)
 						EC.value += EC.contents[EC.contents.len]["value"]
 
 					// Sell spacebucks
-					if(istype(A, /obj/item/weapon/spacecash))
+					if(istype(A, /obj/item/spacecash))
 						var/obj/item/weapon/spacecash/cashmoney = A
 						EC.contents[EC.contents.len]["value"] = cashmoney.worth * points_per_money
 						EC.contents[EC.contents.len]["quantity"] = cashmoney.worth

@@ -10,35 +10,35 @@
 	var/initial_gas_mix = GAS_STRING_TURF_DEFAULT
 	// End
 
-	//Properties for airtight tiles (/wall)
+	// Properties for airtight tiles (/wall)
 	var/thermal_conductivity = 0.05
 	var/heat_capacity = 1
 
-	//Properties for both
-	var/temperature = T20C      // Initial turf temperature.
-	var/blocks_air = 0          // Does this turf contain air/let air through?
+	// Properties for both
+	var/temperature = T20C		// Initial turf temperature.
+	var/blocks_air = 0			// Does this turf contain air/let air through?
 
 	// General properties.
 	var/icon_old = null
-	var/pathweight = 1          // How much does it cost to pathfind over this turf?
-	var/blessed = 0             // Has the turf been blessed?
+	var/pathweight = 1			// How much does it cost to pathfind over this turf?
+	var/blessed = 0				// Has the turf been blessed?
 
 	var/list/decals
 
-	var/movement_cost = 0       // How much the turf slows down movement, if any.
+	var/movement_cost = 0		// How much the turf slows down movement, if any.
 
 	var/list/footstep_sounds = null
 
-	var/block_tele = FALSE      // If true, most forms of teleporting to or from this turf tile will fail.
+	var/block_tele = FALSE			 // If true, most forms of teleporting to or from this turf tile will fail.
 	var/can_build_into_floor = FALSE // Used for things like RCDs (and maybe lattices/floor tiles in the future), to see if a floor should replace it.
-	var/list/dangerous_objects // List of 'dangerous' objs that the turf holds that can cause something bad to happen when stepped on, used for AI mobs.
+	var/list/dangerous_objects		 // List of 'dangerous' objs that the turf holds that can cause something bad to happen when stepped on, used for AI mobs.
 
 /turf/Initialize(mapload)
 	if(flags & INITIALIZED)
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
 	flags |= INITIALIZED
 
-	// by default, vis_contents is inherited from the turf that was here before
+	// By default, vis_contents is inherited from the turf that was here before
 	vis_contents.Cut()
 
 	if(color)
@@ -88,14 +88,12 @@
 
 	ComponentInitialize()
 
-	// VORESTATION EDIT
-	if(movement_cost && pathweight == 1) // This updates pathweight automatically.
+	if(movement_cost && pathweight == 1)	// This updates pathweight automatically.
 		pathweight = movement_cost
 	if(dynamic_lighting)
 		luminosity = 0
 	else
 		luminosity = 1
-	// VORE/POLARIS EDIT END
 
 	return INITIALIZE_HINT_NORMAL
 
@@ -117,7 +115,7 @@
 */
 	if(force)
 		..()
-		//this will completely wipe turf state
+		// This will completely wipe turf state
 		var/turf/B = new world.turf(src)
 		for(var/A in B.contents)
 			qdel(A)
@@ -144,6 +142,10 @@
 /turf/proc/is_intact()
 	return 0
 
+// Used by shuttle code to check if this turf is empty enough to not crush want it lands on.
+/turf/proc/is_solid_structure()
+	return 1
+
 /turf/attack_hand(mob/user)
 	. = ..()
 	user.move_pulled_towards(src)
@@ -161,14 +163,14 @@
 		return FALSE
 
 	var/list/viable_targets = list()
-	var/success = FALSE // Hitting something makes this true. If its still false, the miss sound is played.
+	var/success = FALSE	// Hitting something makes this true. If its still false, the miss sound is played.
 
 	for(var/mob/living/L in contents)
-		if(L == user) // Don't hit ourselves.
+		if(L == user)	// Don't hit ourselves.
 			continue
 		viable_targets += L
 
-	if(!viable_targets.len) // No valid targets on this tile.
+	if(!viable_targets.len)	// No valid targets on this tile.
 		if(W.can_cleave)
 			success = W.cleave(user, src)
 	else
@@ -178,7 +180,7 @@
 	user.setClickCooldown(user.get_attack_speed(W))
 	user.do_attack_animation(src, no_attack_icons = TRUE)
 
-	if(!success) // Nothing got hit.
+	if(!success)	// Nothing got hit.
 		user.visible_message("<span class='warning'>\The [user] swipes \the [W] over \the [src].</span>")
 		playsound(src, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
 	return success
@@ -259,7 +261,7 @@
 			return 1
 	return 0
 
-//expects an atom containing the reagents used to clean the turf
+// Expects an atom containing the reagents used to clean the turf
 /turf/proc/clean(atom/source, mob/user)
 	if(source.reagents.has_reagent("water", 1) || source.reagents.has_reagent("cleaner", 1))
 		clean_blood()
@@ -271,7 +273,7 @@
 				qdel(O)
 	else
 		to_chat(user, "<span class='warning'>\The [source] is too dry to wash that.</span>")
-	source.reagents.trans_to_turf(src, 1, 10)	//10 is the multiplier for the reaction effect. probably needed to wet the floor properly.
+	source.reagents.trans_to_turf(src, 1, 10)	// 10 is the multiplier for the reaction effect. probably needed to wet the floor properly.
 
 /turf/proc/update_blood_overlays()
 	return
@@ -309,7 +311,7 @@
 	if(!istype(O))
 		return FALSE
 	LAZYREMOVE(dangerous_objects, O)
-	UNSETEMPTY(dangerous_objects) // This nulls the list var if it's empty.
+	UNSETEMPTY(dangerous_objects)	// This nulls the list var if it's empty.
 //	color = "#00FF00"
 
 // This is all the way up here since its the common ancestor for things that need to get replaced with a floor when an RCD is used on them.
