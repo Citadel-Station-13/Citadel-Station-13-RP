@@ -19,6 +19,7 @@
 	dir = 6
 	},
 /obj/structure/table/woodentable,
+/obj/item/paper_bin,
 /turf/simulated/floor/carpet/turcarpet,
 /area/crew_quarters/visitor_dining)
 "af" = (
@@ -5284,6 +5285,17 @@
 "qn" = (
 /turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/sleep/Dorm_7)
+"qo" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/effect/landmark/start{
+	name = "Cargo Technician"
+	},
+/turf/simulated/floor/tiled,
+/area/quartermaster/warehouse)
 "qu" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
@@ -5692,6 +5704,12 @@
 "rJ" = (
 /obj/machinery/camera/network/cargo,
 /obj/machinery/mech_recharger,
+/turf/simulated/floor/tiled,
+/area/quartermaster/warehouse)
+"rK" = (
+/obj/effect/landmark/start{
+	name = "Cargo Technician"
+	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
 "rL" = (
@@ -7892,17 +7910,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
-"yR" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/effect/landmark/start{
-	name = "Cargo Technician"
-	},
-/turf/simulated/floor/tiled,
-/area/quartermaster/warehouse)
 "yT" = (
 /obj/machinery/hologram/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -7915,6 +7922,14 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
+"yU" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/landmark/start{
+	name = "Cargo Technician"
+	},
+/turf/simulated/floor/tiled,
+/area/quartermaster/warehouse)
 "yV" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 8
@@ -8988,11 +9003,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
-"Cz" = (
-/obj/structure/table/woodentable,
-/obj/item/paper_bin,
-/turf/simulated/floor/carpet/turcarpet,
-/area/crew_quarters/visitor_dining)
 "CA" = (
 /obj/machinery/alarm{
 	dir = 4;
@@ -9245,12 +9255,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/barrestroom)
-"Dr" = (
-/obj/structure/bed/chair/comfy/beige{
-	dir = 4
-	},
-/turf/simulated/floor/carpet/turcarpet,
-/area/crew_quarters/visitor_dining)
 "Ds" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -11276,12 +11280,6 @@
 "JX" = (
 /turf/simulated/wall,
 /area/crew_quarters/bar)
-"JY" = (
-/obj/effect/landmark/start{
-	name = "Cargo Technician"
-	},
-/turf/simulated/floor/tiled,
-/area/quartermaster/warehouse)
 "Ka" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
@@ -12083,14 +12081,6 @@
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/lounge/kitchen_freezer)
-"Nd" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/landmark/start{
-	name = "Cargo Technician"
-	},
-/turf/simulated/floor/tiled,
-/area/quartermaster/warehouse)
 "Ne" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled,
@@ -14116,6 +14106,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/kitchen)
+"TL" = (
+/obj/machinery/gear_painter,
+/turf/simulated/floor/wood,
+/area/crew_quarters/visitor_dining)
 "TM" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
@@ -15179,7 +15173,6 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/bar)
 "WV" = (
-/obj/structure/table/woodentable,
 /turf/simulated/floor/carpet/turcarpet,
 /area/crew_quarters/visitor_dining)
 "WW" = (
@@ -25838,7 +25831,7 @@ rL
 PF
 gV
 Oy
-Dr
+WV
 rO
 Oy
 zh
@@ -25980,7 +25973,7 @@ Vv
 hK
 gV
 Oy
-Cz
+WV
 ae
 gU
 si
@@ -26121,7 +26114,7 @@ kM
 Vv
 hK
 gV
-Oy
+TL
 WV
 wS
 Oy
@@ -26264,7 +26257,7 @@ Vv
 hK
 gV
 Oy
-uL
+WV
 uL
 Oy
 Xk
@@ -26662,7 +26655,7 @@ kk
 Nv
 xI
 HX
-Nd
+yU
 yi
 MI
 xN
@@ -26800,7 +26793,7 @@ zP
 lh
 fF
 wT
-yR
+qo
 qk
 qk
 sZ
@@ -27091,7 +27084,7 @@ Hs
 ES
 kk
 qQ
-JY
+rK
 nY
 et
 qO
