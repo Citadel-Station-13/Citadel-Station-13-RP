@@ -257,7 +257,7 @@
 		/obj/item/ammo_casing/a12g/pellet       = "12g",
 		/obj/item/ammo_casing/a12g/beanbag      = "12g",
 		/obj/item/ammo_casing/a12g/stunshell    = "12g",
-		/obj/item/ammo_casing/a12g/flash        = "12g",
+		/obj/item/ammo_casing/a12g/flare        = "12g",
 		/obj/item/ammo_casing/a762              = "7.62mm",
 		/obj/item/ammo_casing/a545              = "5.45mm"
 		)
@@ -326,3 +326,13 @@
 
 /obj/item/gun/projectile/p92x/large
 	magazine_type = /obj/item/ammo_magazine/m9mm/large // Spawns with illegal magazines.
+
+/obj/item/gun/projectile/r9
+	name = "C96-Red 9"
+	desc = "A variation on the Mauser C-96 the first semi firearm ever to be widely adopted by a human military. This version is chambered for 9mm and reloads using Stipper Clips."
+	icon_state = "r9"
+	origin_tech = list(TECH_COMBAT = 1, TECH_MATERIAL =1) //VERY OLD
+	caliber = "9mm"
+	load_method = SPEEDLOADER
+	max_shells = 10
+	ammo_type = /obj/item/ammo_casing/a9mm

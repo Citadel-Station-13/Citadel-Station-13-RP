@@ -357,6 +357,29 @@ var/global/list/latejoin_tram   = list()
 	"Turn Off" 			= new/datum/holodeck_program(/area/houseboat/holodeck/off, list())
 	)
 
+//
+//Holosurgery
+//
+/obj/machinery/computer/HolodeckControl/holosurgery
+	name = "Don't use this one either."
+	powerdown_program = "Off"
+	default_program = "Off"
+
+	//Surgerydeck
+	active_power_usage = 500
+	item_power_usage = 100
+
+	supported_programs = list(
+	"Off"			= new/datum/holodeck_program(/area/holodeck/holodorm/source_emptysurgery),
+	"Basic Suite"	= new/datum/holodeck_program(/area/holodeck/holodorm/source_standard),
+	"Phoron Suite"	= new/datum/holodeck_program(/area/holodeck/holodorm/source_phoron),
+	"Zaddat Suite"	= new/datum/holodeck_program(/area/holodeck/holodorm/source_zaddat)
+	)
+
+/obj/machinery/computer/HolodeckControl/holosurgery
+	name = "holosurgery control"
+	projection_area = /area/medical/surgery/holosurgery
+
 // Our map is small, if the supermatter is ejected lets not have it just blow up somewhere else
 /obj/machinery/power/supermatter/touch_map_edge()
 	qdel(src)
