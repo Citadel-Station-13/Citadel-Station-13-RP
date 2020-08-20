@@ -196,7 +196,7 @@
 		lastwarning = world.timeofday
 	else
 		alert_msg = null
-	if(alert_msg)
+	if(alert_msg && public_alert == 0)
 		global_announcer.autosay(alert_msg, "Supermatter Monitor", "Engineering")
 		log_game("SUPERMATTER([x],[y],[z]) Emergency engineering announcement. Power:[power], Oxygen:[oxygen], Damage:[damage], Integrity:[get_integrity()]")
 		//Public alerts
@@ -210,9 +210,9 @@
 			log_game("SUPERMATTER([x],[y],[z]) Emergency PUBLIC announcement. Power:[power], Oxygen:[oxygen], Damage:[damage], Integrity:[get_integrity()]")
 		else if((damage > emergency_point) && public_alert)
 			global_announcer.autosay("DANGER: SUPERMATTER CRYSTAL DEGRADATION IN PROGRESS! INTEGRITY AT [integrity]%", "Supermatter Monitor")
-			for(var/mob/M in player_list) // VOREStation Edit - Rykka adds SM Delam alarm
-				if(!istype(M,/mob/new_player) && !isdeaf(M)) // VOREStation Edit - Rykka adds SM Delam alarm
-					M << 'sound/ambience/engine_alert2.ogg' // VOREStation Edit - Rykka adds SM Delam alarm
+			for(var/mob/M in player_list)
+				if(!istype(M,/mob/new_player) && !isdeaf(M))
+					M << 'sound/ambience/engine_alert2.ogg'
 		else if(safe_warned && public_alert)
 			global_announcer.autosay(alert_msg, "Supermatter Monitor")
 			public_alert = 0
