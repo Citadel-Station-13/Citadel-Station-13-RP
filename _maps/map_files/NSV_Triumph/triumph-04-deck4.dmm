@@ -136,6 +136,16 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
+"agS" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 1
+	},
+/obj/machinery/recharge_station,
+/turf/simulated/floor/tiled,
+/area/bridge/hallway)
 "agV" = (
 /obj/structure/cable/cyan{
 	d1 = 1;
@@ -614,6 +624,10 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/ai)
+"aDy" = (
+/obj/structure/closet/lasertag/blue,
+/turf/simulated/floor/wood,
+/area/security/briefing_room)
 "aEz" = (
 /obj/machinery/firealarm{
 	dir = 4;
@@ -948,6 +962,19 @@
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/excursion/triumph)
+"aSh" = (
+/obj/item/radio/intercom{
+	dir = 4;
+	pixel_x = 24
+	},
+/obj/effect/floor_decal/grass_edge{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/grass,
+/area/hydroponics/garden)
 "aSO" = (
 /turf/simulated/wall/r_wall,
 /area/maintenance/security_starboard)
@@ -4110,6 +4137,10 @@
 "dxa" = (
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_showers)
+"dxf" = (
+/obj/structure/closet/lasertag/red,
+/turf/simulated/floor/wood,
+/area/security/briefing_room)
 "dxE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -8700,10 +8731,6 @@
 /area/crew_quarters/sleep/Dorm_1{
 	name = "\improper HoP Living Quarters"
 	})
-"hkr" = (
-/obj/structure/closet/lasertag/red,
-/turf/simulated/floor/wood,
-/area/security/briefing_room)
 "hkL" = (
 /obj/machinery/vending/snack,
 /turf/simulated/floor/tiled,
@@ -11304,10 +11331,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/bridge/hallway)
-"jhd" = (
-/obj/structure/closet/lasertag/blue,
-/turf/simulated/floor/wood,
-/area/security/briefing_room)
 "jhz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -21331,19 +21354,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
-"qYF" = (
-/obj/item/radio/intercom{
-	dir = 4;
-	pixel_x = 24
-	},
-/obj/effect/floor_decal/grass_edge{
-	dir = 4
-	},
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/floor/grass,
-/area/hydroponics/garden)
 "qYX" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
@@ -28435,16 +28445,6 @@
 "wFO" = (
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
-"wFP" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/beige/border{
-	dir = 1
-	},
-/obj/machinery/recharge_station,
-/turf/simulated/floor/tiled,
-/area/bridge/hallway)
 "wFY" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -28626,7 +28626,7 @@
 /area/security/riot_control)
 "wOa" = (
 /obj/machinery/turretid/stun{
-	control_area = "\improper AI Server Room";
+	control_area = "Messaging Server Room";
 	name = "AI Upload turret control";
 	pixel_y = -26
 	},
@@ -37524,7 +37524,7 @@ ldh
 hvu
 sKM
 brg
-jhd
+aDy
 vqd
 ufw
 ufw
@@ -37666,7 +37666,7 @@ nXg
 vyP
 sKM
 brg
-jhd
+aDy
 vqd
 ufw
 ufw
@@ -38092,7 +38092,7 @@ fOb
 wkX
 xiF
 brg
-hkr
+dxf
 vqd
 vcM
 pZO
@@ -38234,7 +38234,7 @@ pgC
 dFA
 sKM
 brg
-hkr
+dxf
 vqd
 vcM
 pZO
@@ -41635,7 +41635,7 @@ spo
 pjF
 voH
 voH
-qYF
+aSh
 rgN
 mIQ
 evb
@@ -47175,7 +47175,7 @@ xce
 gIP
 hWN
 gef
-wFP
+agS
 oqg
 gVa
 oqg
@@ -47459,7 +47459,7 @@ tjI
 czx
 tYh
 gef
-wFP
+agS
 ecw
 wvz
 ePC

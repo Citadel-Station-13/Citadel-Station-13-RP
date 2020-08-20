@@ -55,7 +55,7 @@
 
 	shuttle_docked_message = "This is the %dock_name% calling to the Triumph. A shift transfer is commencing for crew that need to depart. The transfer shuttle will arrive in %ETD%. %dock_name% out."
 	shuttle_leaving_dock = "The transfer shuttle has left the ship. Estimate %ETA% until the shuttle arrives at the %dock_name%."
-	shuttle_called_message = "A scheduled crew transfer to the %dock_name% is occuring. The shuttle be arriving shortly. Those departing should proceed to the shuttlke bay within %ETA%."
+	shuttle_called_message = "A scheduled crew transfer to the %dock_name% is occuring. The shuttle be arriving shortly. Those departing should proceed to the shuttle bay within %ETA%."
 	shuttle_recall_message = "The scheduled crew transfer has been cancelled."
 	shuttle_name = "Crew Hands Transfer"
 	emergency_shuttle_docked_message = "The evacuation shuttle has arrived at the ship. You have approximately %ETD% to board the shuttle."
