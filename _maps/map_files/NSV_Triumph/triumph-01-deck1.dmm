@@ -376,11 +376,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/engineering/foyer_mezzenine)
-"br" = (
-/obj/machinery/shield_diffuser,
-/obj/effect/floor_decal/industrial/warning/cee,
-/turf/simulated/floor/reinforced/airless,
-/area/space)
 "bt" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -2509,6 +2504,10 @@
 /obj/random/trash,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
+"mR" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/airless,
+/area/space)
 "mS" = (
 /turf/simulated/wall/r_wall,
 /area/maintenance/lower/trash_pit)
@@ -3499,12 +3498,10 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_eva)
 "rX" = (
-/obj/effect/floor_decal/industrial/warning,
-/obj/machinery/camera/network/engine{
-	dir = 10
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/engineering/engine_room)
+/obj/machinery/shield_diffuser,
+/obj/effect/floor_decal/industrial/warning/cee,
+/turf/simulated/floor/reinforced/airless,
+/area/space)
 "rY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -10196,10 +10193,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
-"ZT" = (
-/obj/machinery/shield_diffuser,
-/turf/simulated/floor/airless,
-/area/space)
 "ZU" = (
 /obj/structure/table/rack{
 	dir = 8;
@@ -17554,7 +17547,7 @@ Qf
 VL
 oR
 ON
-br
+rX
 fN
 fN
 fN
@@ -19535,7 +19528,7 @@ Wz
 ze
 oS
 hT
-rX
+Wn
 Fw
 zz
 Iq
@@ -19839,7 +19832,7 @@ fN
 Zj
 fN
 Zj
-ZT
+mR
 Zj
 fN
 Zj
