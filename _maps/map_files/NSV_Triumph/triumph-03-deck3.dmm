@@ -309,6 +309,15 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/workshop)
+"aK" = (
+/obj/effect/floor_decal/industrial/warning/dust,
+/obj/machinery/light_switch{
+	pixel_x = 25
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/medical/surgery{
+	name = "\improper Robotics Surgery Room"
+	})
 "aL" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/dark,
@@ -814,6 +823,13 @@
 /obj/item/clothing/glasses/welding,
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
+"bR" = (
+/obj/machinery/chemical_dispenser/full,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/chemistry)
 "bS" = (
 /obj/machinery/computer/rdconsole/core,
 /obj/machinery/firealarm{
@@ -2628,10 +2644,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/research)
-"fK" = (
-/obj/structure/closet/lasertag/blue,
-/turf/simulated/floor/tiled,
-/area/holodeck_control)
 "fL" = (
 /obj/machinery/atmospherics/pipe/manifold4w/visible/cyan,
 /turf/simulated/floor/tiled,
@@ -3165,15 +3177,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
-"gQ" = (
-/obj/effect/floor_decal/industrial/warning/dust,
-/obj/machinery/light_switch{
-	pixel_x = 25
-	},
-/turf/simulated/floor/tiled/old_cargo/gray,
-/area/medical/surgery{
-	name = "\improper Robotics Surgery Room"
-	})
 "gR" = (
 /obj/machinery/status_display{
 	pixel_x = -32
@@ -7114,20 +7117,6 @@
 "oU" = (
 /turf/simulated/floor/tiled,
 /area/medical/medbay_emt_bay)
-"oV" = (
-/obj/structure/closet/secure_closet/medical1,
-/obj/item/storage/box/pillbottles,
-/obj/item/storage/box/syringes,
-/obj/item/radio/headset/headset_med,
-/obj/item/storage/box/pillbottles,
-/obj/item/storage/fancy/vials,
-/obj/item/storage/fancy/vials,
-/obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
-	},
-/turf/simulated/floor/tiled/white,
-/area/medical/chemistry)
 "oW" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
@@ -11172,13 +11161,6 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/rnd/xenobiology)
-"xj" = (
-/obj/machinery/chemical_dispenser/full,
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/white,
-/area/medical/chemistry)
 "xk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -12208,6 +12190,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_emt_bay)
+"zl" = (
+/obj/machinery/light_switch{
+	pixel_x = 25
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/test_area)
 "zm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -14174,12 +14162,6 @@
 /obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
-"CV" = (
-/obj/machinery/light_switch{
-	pixel_x = 25
-	},
-/turf/simulated/floor/tiled,
-/area/rnd/test_area)
 "CW" = (
 /obj/machinery/light{
 	dir = 4
@@ -15750,6 +15732,20 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
+"Gg" = (
+/obj/structure/closet/secure_closet/medical1,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/syringes,
+/obj/item/radio/headset/headset_med,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/fancy/vials,
+/obj/item/storage/fancy/vials,
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube1"
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/chemistry)
 "Gh" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 8
@@ -22692,6 +22688,7 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 9
 	},
+/obj/item/reagent_containers/glass/beaker,
 /turf/simulated/floor/tiled,
 /area/rnd/reception_desk)
 "Ue" = (
@@ -22783,6 +22780,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/hallway/secondary/escape/medical_escape_pod_hallway)
+"Uo" = (
+/obj/structure/closet/lasertag/blue,
+/turf/simulated/floor/tiled,
+/area/holodeck_control)
 "Up" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
@@ -31997,7 +31998,7 @@ fk
 vg
 do
 iL
-gQ
+aK
 qt
 ic
 OE
@@ -35402,7 +35403,7 @@ Tm
 lh
 Fc
 ce
-CV
+zl
 yD
 Ji
 WG
@@ -36416,7 +36417,7 @@ Md
 Az
 zo
 yl
-xj
+bR
 jN
 Qb
 Qb
@@ -36986,7 +36987,7 @@ zo
 yl
 QO
 jN
-oV
+Gg
 As
 qR
 QO
@@ -38970,7 +38971,7 @@ EJ
 RN
 oz
 xv
-fK
+Uo
 XX
 VY
 Sa
