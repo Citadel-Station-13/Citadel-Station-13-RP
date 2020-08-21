@@ -682,17 +682,6 @@
 	},
 /turf/simulated/wall/r_wall,
 /area/tcommsat/computer)
-"dd" = (
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/plasticflaps/mining,
-/turf/simulated/floor/plating,
-/area/maintenance/lower/trash_pit)
 "dg" = (
 /obj/structure/grille,
 /obj/structure/lattice,
@@ -1611,6 +1600,17 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/atmos/backup)
+"hB" = (
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 1e+006
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/plasticflaps/mining,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/trash_pit)
 "hC" = (
 /turf/simulated/floor,
 /area/storage/tech)
@@ -2172,12 +2172,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
-"kz" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
-	},
-/turf/simulated/floor/tiled,
-/area/engineering/atmos)
 "kB" = (
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/tiled/techmaint,
@@ -2336,6 +2330,12 @@
 "lu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
+"lx" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "lz" = (
@@ -5273,6 +5273,15 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
+"zW" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/triumph/station/stairs_one)
 "zX" = (
 /obj/machinery/atmospherics/pipe/tank/air{
 	dir = 1
@@ -7955,6 +7964,9 @@
 "OM" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
+	},
+/obj/machinery/light{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/backup)
@@ -20531,7 +20543,7 @@ fN
 mS
 uR
 uR
-dd
+hB
 cO
 qc
 mS
@@ -21844,7 +21856,7 @@ WX
 Wo
 bc
 ed
-kz
+lx
 BH
 Em
 Ir
@@ -25953,7 +25965,7 @@ XH
 bM
 cB
 FR
-wr
+zW
 nL
 XH
 TN
