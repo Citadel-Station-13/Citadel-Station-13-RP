@@ -3098,6 +3098,9 @@
 /obj/machinery/status_display{
 	pixel_x = -32
 	},
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/wood/sif,
 /area/medical/reception)
 "gI" = (
@@ -7861,6 +7864,9 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/machinery/light_switch{
+	pixel_x = 25
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/resleeving)
 "qt" = (
@@ -8788,6 +8794,9 @@
 /obj/machinery/alarm{
 	dir = 8;
 	pixel_x = 25
+	},
+/obj/machinery/light{
+	dir = 4
 	},
 /turf/simulated/floor/wood/sif,
 /area/medical/reception)
@@ -9944,6 +9953,15 @@
 /obj/effect/floor_decal/spline/fancy/wood,
 /turf/simulated/floor/wood,
 /area/medical/psych_ward)
+"uN" = (
+/obj/machinery/door/firedoor/glass,
+/obj/structure/grille,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/phoronreinforced/full,
+/turf/simulated/floor/plating,
+/area/medical/medbay)
 "uP" = (
 /obj/machinery/door/firedoor,
 /obj/structure/window/reinforced,
@@ -10302,14 +10320,13 @@
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
 "vE" = (
-/obj/machinery/atmospherics/unary/cryo_cell,
-/obj/machinery/camera/network/medbay,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 1
 	},
+/obj/machinery/atmospherics/unary/cryo_cell,
 /turf/simulated/floor/tiled/white,
 /area/medical/first_aid_station)
 "vF" = (
@@ -16816,6 +16833,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/machinery/light,
 /turf/simulated/floor/wood/sif,
 /area/medical/reception)
 "Io" = (
@@ -23270,8 +23288,8 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/research{
 	name = "Research Lab";
-	req_access = list(47);
-	req_one_access = list(47)
+	req_access = list(8,47);
+	req_one_access = null
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/reception_desk)
@@ -29194,7 +29212,7 @@ gK
 gK
 gK
 gK
-Vu
+uN
 AJ
 Sf
 kW
@@ -29294,7 +29312,7 @@ Zq
 Wg
 ZU
 Bv
-Zq
+He
 gK
 gK
 gK
@@ -29336,7 +29354,7 @@ gK
 gK
 gK
 gK
-Vu
+uN
 AJ
 Sf
 hF

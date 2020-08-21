@@ -634,6 +634,13 @@
 	dir = 1
 	},
 /obj/structure/railing,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 1e+006
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "cR" = (
@@ -675,6 +682,17 @@
 	},
 /turf/simulated/wall/r_wall,
 /area/tcommsat/computer)
+"dd" = (
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 1e+006
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/plasticflaps/mining,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/trash_pit)
 "dg" = (
 /obj/structure/grille,
 /obj/structure/lattice,
@@ -2150,7 +2168,13 @@
 "kv" = (
 /obj/machinery/meter,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 1
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
+"kz" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
@@ -2883,11 +2907,11 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
@@ -4174,7 +4198,7 @@
 	name = "Powernet Sensor - Engine Output";
 	name_tag = "Engine Output"
 	},
-/obj/structure/cable{
+/obj/structure/cable/yellow{
 	d2 = 4;
 	icon_state = "0-4"
 	},
@@ -5654,8 +5678,8 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_room)
 "BH" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
+/obj/machinery/atmospherics/pipe/simple/visible/universal{
+	name = "Air to Distro"
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
@@ -5687,6 +5711,9 @@
 "BP" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
@@ -6027,8 +6054,8 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "Em" = (
-/obj/machinery/atmospherics/pipe/simple/visible/universal{
-	name = "Air to Distro"
+/obj/machinery/atmospherics/binary/pump/on{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
@@ -20504,7 +20531,7 @@ fN
 mS
 uR
 uR
-uR
+dd
 cO
 qc
 mS
@@ -21817,7 +21844,7 @@ WX
 Wo
 bc
 ed
-hN
+kz
 BH
 Em
 Ir
