@@ -5766,6 +5766,8 @@
 /obj/structure/table/woodentable,
 /obj/item/storage/pill_bottle/dice,
 /obj/item/storage/dicecup/loaded,
+/obj/item/deck/cah,
+/obj/item/deck/cah/black,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "sn" = (
@@ -6131,6 +6133,11 @@
 /obj/machinery/light,
 /turf/simulated/floor/carpet/sblucarpet,
 /area/crew_quarters/coffee_shop)
+"tl" = (
+/obj/structure/table/woodentable,
+/obj/item/deck/tarot,
+/turf/simulated/floor/carpet/bcarpet,
+/area/crew_quarters/bar)
 "tm" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -14391,6 +14398,8 @@
 	},
 /obj/structure/table/woodentable,
 /obj/item/flashlight/lamp/green,
+/obj/item/deck/cards,
+/obj/item/deck/cards,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "UW" = (
@@ -19629,7 +19638,7 @@ VE
 Az
 Le
 HP
-fn
+tl
 bA
 Le
 Og

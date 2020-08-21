@@ -11483,13 +11483,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/range)
-"jhY" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
-/turf/simulated/floor/tiled,
-/area/triumph/station/explorer_prep)
 "jic" = (
 /obj/structure/closet/crate/bin{
 	anchored = 1
@@ -13140,6 +13133,7 @@
 /obj/item/pen,
 /obj/item/pen,
 /obj/item/pen,
+/obj/item/storage/pill_bottle/dice_nerd,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_3{
 	name = "\improper CMO Dorm"
@@ -16147,6 +16141,8 @@
 /obj/item/storage/dicecup,
 /obj/item/storage/pill_bottle/dice_nerd,
 /obj/item/storage/pill_bottle/dice,
+/obj/item/deck/cards,
+/obj/item/deck/cards,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_5{
 	name = "\improper HoS Dorm"
@@ -17230,6 +17226,10 @@
 /obj/structure/dogbed{
 	name = "pet bed"
 	},
+/obj/machinery/light_switch{
+	dir = 8;
+	pixel_x = 24
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/sleep/Dorm_1{
 	name = "\improper HoP Living Quarters"
@@ -17339,6 +17339,10 @@
 /turf/simulated/shuttle/wall/voidcraft/blue,
 /area/shuttle/excursion/triumph)
 "nYp" = (
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -22
+	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/sleep/Dorm_5{
 	name = "\improper HoS Dorm"
@@ -18353,6 +18357,10 @@
 /turf/simulated/floor/tiled,
 /area/security/interrogation)
 "oRa" = (
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -22
+	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/sleep/Dorm_3{
 	name = "\improper CMO Dorm"
@@ -18959,6 +18967,9 @@
 "pjn" = (
 /obj/structure/toilet{
 	dir = 8
+	},
+/obj/machinery/light/small{
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/sleep/Dorm_3{
@@ -21967,6 +21978,10 @@
 /turf/simulated/floor/tiled,
 /area/security/prison)
 "rni" = (
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -22
+	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/sleep/Dorm_4{
 	name = "\improper Research Director's Dorm"
@@ -26860,6 +26875,7 @@
 	pixel_x = -24
 	},
 /obj/machinery/recharger,
+/obj/item/deck/tarot,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/sleep/Dorm_4{
 	name = "\improper Research Director's Dorm"
@@ -27704,6 +27720,10 @@
 /turf/simulated/floor/tiled,
 /area/security/hallway)
 "vMY" = (
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -22
+	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/sleep/Dorm_1{
 	name = "\improper HoP Living Quarters"
@@ -30059,6 +30079,10 @@
 "xAR" = (
 /obj/structure/toilet{
 	pixel_y = 10
+	},
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -22
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/sleep/Dorm_2{
@@ -39475,7 +39499,7 @@ nIK
 nIK
 dff
 sJC
-jhY
+tMS
 kMp
 sTa
 cgH
