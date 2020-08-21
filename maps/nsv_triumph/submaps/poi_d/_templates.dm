@@ -14,7 +14,7 @@
 	cost = 15
 
 /datum/map_template/Class_D/drone_hive_D
-	name = "Decoupled Engine"
+	name = "Drone Hive"
 	mappath = 'broken_reactor_D.dmm'
 	cost = 15
 
@@ -79,3 +79,32 @@
 	name = "Mineral Vault"
 	mappath = 'vault5D.dmm'
 	cost = 5
+
+
+/datum/map_template/Class_D/Cave1D
+	name = "Mineral Cave"
+	mappath = 'cave1D.dmm'
+	cost = 10
+
+/datum/map_template/Class_D/Cave2D
+	name = "Xenonest Cave"
+	mappath = 'cave2D.dmm'
+	cost = 15
+
+/datum/map_template/Class_D/Cave3D
+	name = "Mimic Cave"
+	mappath = 'cave3D.dmm'
+	cost = 5
+
+
+/datum/map_template/Class_D/droneship
+	name = "Automatic Constructor Ship"
+	mappath = 'matdropD.dmm'
+	cost = 15
+	fixed_orientation = TRUE
+
+/datum/map_template/Class_D/mercbunker
+	name = "Secret Mecenary Bunker"
+	mappath = 'hiddenbunkerD.dmm'
+	cost = 25
+	fixed_orientation = TRUE
