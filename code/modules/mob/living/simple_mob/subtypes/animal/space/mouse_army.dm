@@ -164,13 +164,7 @@
 
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged
 
-	var/datum/effect_system/spark_spread/spark_system
 	var/ruptured = FALSE
-
-/mob/living/silicon/robot/New(loc,var/unfinished = 0)
-	spark_system = new /datum/effect_system/spark_spread()
-	spark_system.set_up(5, 0, src)
-	spark_system.attach(src)
 
 /mob/living/simple_mob/animal/space/mouse_army/pyro/death()
 	visible_message("<span class='critical'>\The [src]'s tank groans!</span>")
@@ -188,7 +182,6 @@
 		if(src && !ruptured)
 			visible_message("<span class='critical'>\The [src]'s tank ruptures!</span>")
 			ruptured = 1
-			spark_system.start()
 			qdel(src)
 			adjust_fire_stacks(2)
 			IgniteMob()
