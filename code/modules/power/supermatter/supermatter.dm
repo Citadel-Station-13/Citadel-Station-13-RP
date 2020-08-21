@@ -196,7 +196,7 @@
 		lastwarning = world.timeofday
 	else
 		alert_msg = null
-	if(alert_msg && public_alert == 0)
+	if(alert_msg)
 		global_announcer.autosay(alert_msg, "Supermatter Monitor", "Engineering")
 		log_game("SUPERMATTER([x],[y],[z]) Emergency engineering announcement. Power:[power], Oxygen:[oxygen], Damage:[damage], Integrity:[get_integrity()]")
 		//Public alerts
