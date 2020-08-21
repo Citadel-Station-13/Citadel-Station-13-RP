@@ -131,6 +131,67 @@
 		new /obj/item/book/manual/research_and_development(src)
 		update_icon()
 
+/obj/structure/bookcase/legal/sop
+	name = "Legal Manuals bookcase"
+	icon_state = "legalbook-0"
+
+	New()
+		..()
+		new /obj/item/book/manual/legal/sop_vol1
+		new /obj/item/book/manual/legal/sop_vol2
+		new /obj/item/book/manual/legal/sop_vol3
+		new /obj/item/book/manual/legal/sop_vol4
+		new /obj/item/book/manual/legal/sop_vol5_1
+		new /obj/item/book/manual/legal/sop_vol5_2
+		new /obj/item/book/manual/legal/sop_vol5_3
+		new /obj/item/book/manual/legal/sop_vol5_4
+		new /obj/item/book/manual/legal/sop_vol5_5
+		new /obj/item/book/manual/legal/sop_vol5_6
+		new /obj/item/book/manual/legal/sop_vol5_7
+		update_icon()
+
+/obj/structure/bookcase/legal/corpreg
+	name = "Corporate Regulations bookcase"
+	icon_state = "legalbook-0"
+
+	New()
+		..()
+		new /obj/item/book/manual/legal/cr_vol1
+		new /obj/item/book/manual/legal/cr_vol2
+		new /obj/item/book/manual/legal/cr_vol3
+		new /obj/item/book/manual/legal/cr_vol4
+		new /obj/item/book/manual/legal/cr_vol5
+		update_icon()
+
+/obj/structure/bookcase/legal/combo
+	name = "Policy Reference bookcase"
+	icon_state = "legalbook-0"
+
+	New()
+		..()
+		new /obj/item/book/manual/legal/sop_vol1
+		new /obj/item/book/manual/legal/sop_vol2
+		new /obj/item/book/manual/legal/sop_vol3
+		new /obj/item/book/manual/legal/sop_vol4
+		new /obj/item/book/manual/legal/sop_vol5_1
+		new /obj/item/book/manual/legal/sop_vol5_2
+		new /obj/item/book/manual/legal/sop_vol5_3
+		new /obj/item/book/manual/legal/sop_vol5_4
+		new /obj/item/book/manual/legal/sop_vol5_5
+		new /obj/item/book/manual/legal/sop_vol5_6
+		new /obj/item/book/manual/legal/sop_vol5_7
+		new /obj/item/book/manual/legal/cr_vol1
+		new /obj/item/book/manual/legal/cr_vol2
+		new /obj/item/book/manual/legal/cr_vol3
+		new /obj/item/book/manual/legal/cr_vol4
+		new /obj/item/book/manual/legal/cr_vol5
+		update_icon()
+
+/obj/structure/bookcase/legal/update_icon()
+	if(contents.len < 5)
+		icon_state = "legalbook-[contents.len]"
+	else
+		icon_state = "legalbook-5"
 
 /*
  * Book
