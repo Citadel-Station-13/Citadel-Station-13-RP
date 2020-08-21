@@ -7013,8 +7013,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/security_starboard)
 "fIn" = (
-/obj/effect/floor_decal/grass_edge,
-/turf/simulated/floor/grass,
+/obj/machinery/seed_extractor,
+/turf/simulated/floor/wood,
 /area/hydroponics/garden)
 "fJc" = (
 /obj/machinery/shuttle_sensor{
@@ -7434,9 +7434,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/obj/effect/floor_decal/grass_edge,
 /obj/structure/table/bench/wooden,
-/turf/simulated/floor/grass,
+/turf/simulated/floor/wood,
 /area/hydroponics/garden)
 "gee" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
