@@ -14267,6 +14267,12 @@
 /obj/effect/floor_decal/grass_edge,
 /obj/structure/closet/crate/hydroponics,
 /obj/structure/flora/ausbushes/brflowers,
+/obj/item/material/minihoe,
+/obj/item/material/minihoe,
+/obj/item/shovel/spade,
+/obj/item/shovel/spade,
+/obj/item/analyzer/plant_analyzer,
+/obj/item/analyzer/plant_analyzer,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "lJK" = (
@@ -19704,6 +19710,12 @@
 	},
 /obj/effect/floor_decal/grass_edge,
 /obj/structure/closet/crate/hydroponics,
+/obj/item/material/minihoe,
+/obj/item/material/minihoe,
+/obj/item/shovel/spade,
+/obj/item/shovel/spade,
+/obj/item/analyzer/plant_analyzer,
+/obj/item/analyzer/plant_analyzer,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "pVk" = (
