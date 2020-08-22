@@ -166,7 +166,17 @@
 	cost = 130
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "Magnetic weapon crate"
-	access = access_security
+	access = access_armory
+	
+/datum/supply_packs/munitions/usmc
+	name = "Weapons - M41A Pulse Rifle"
+	contains = list(/obj/item/gun/projectile/caseless/usmc,
+			/obj/item/ammo_magazine/m10x24mm/small
+			)
+	cost = 200
+	containertype = /obj/structure/closet/crate/secure/weapon
+	container name = "USMC Military Surples Crate"
+	access = access_armory
 
 /datum/supply_pack/munitions/shotgunammo
 	name = "Ammunition - Shotgun shells"
