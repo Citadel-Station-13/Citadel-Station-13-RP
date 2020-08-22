@@ -119,7 +119,7 @@
 		/obj/item/stack/marker_beacon/thirty,
 		/obj/item/material/knife/tacknife/survival,
 		/obj/item/material/knife/machete/deluxe,
-		/obj/item/gun/energy/frontier/locked/carbine.
+		/obj/item/gun/energy/frontier/locked/carbine,
 		/obj/item/clothing/accessory/holster/machete,
 		/obj/item/reagent_containers/food/snacks/liquidfood,
 		/obj/item/reagent_containers/food/snacks/liquidprotein,
