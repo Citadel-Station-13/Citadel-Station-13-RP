@@ -1,3 +1,6 @@
+// Be sure to update planetary_vr.dm and atmosphers.dm when switching to this map.
+
+
 //Simulated
 TRIUMPH_TURF_CREATE(/turf/simulated/open)
 /turf/simulated/open/triumph
