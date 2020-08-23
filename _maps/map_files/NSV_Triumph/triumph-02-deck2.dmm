@@ -1739,7 +1739,8 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Deck 2 Grid"
+	RCon_tag = "Deck 2 Grid";
+	input_level_max = 500000
 	},
 /obj/structure/cable,
 /turf/simulated/floor/plating,

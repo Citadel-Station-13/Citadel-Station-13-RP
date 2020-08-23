@@ -81,6 +81,14 @@
 /obj/item/multitool/triumph_buffered,
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
+"aei" = (
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/wall/r_wall,
+/area/ai)
 "aeD" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -3731,7 +3739,8 @@
 /area/security/hallwayaux)
 "dcC" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Deck 4 Grid"
+	RCon_tag = "Deck 4 Grid";
+	input_level_max = 500000
 	},
 /obj/structure/cable/green{
 	d2 = 2;
@@ -7699,6 +7708,14 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
+"gpN" = (
+/obj/structure/cable/cyan{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/ai_server_room)
 "gpP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -7912,6 +7929,11 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
 /turf/simulated/floor/bluegrid,
 /area/ai)
 "gxB" = (
@@ -7992,13 +8014,18 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
 "gCB" = (
-/obj/structure/cable/green{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/cable/cyan{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/bluegrid,
 /area/ai_server_room)
 "gCM" = (
@@ -8010,6 +8037,11 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
+	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/bluegrid,
 /area/ai_server_room)
@@ -8305,7 +8337,7 @@
 	},
 /obj/structure/closet/crate/freezer/rations,
 /turf/simulated/floor/tiled,
-/area/triumph/station/explorer_entry)
+/area/triumph/station/explorer_prep)
 "gRh" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 2;
@@ -9331,6 +9363,15 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
+"hEL" = (
+/obj/machinery/porta_turret/ai_defense,
+/obj/structure/cable/cyan{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/ai_server_room)
 "hFe" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -13105,6 +13146,11 @@
 "kLf" = (
 /obj/structure/table/standard,
 /obj/item/aiModule/freeform,
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_server_room)
 "kLA" = (
@@ -13596,16 +13642,16 @@
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
 "ldI" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
 	},
 /turf/simulated/floor/bluegrid,
 /area/ai_server_room)
@@ -13634,6 +13680,11 @@
 	control_area = "\improper AI Chamber";
 	name = "AI Upload turret control";
 	pixel_y = -26
+	},
+/obj/structure/cable/cyan{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_server_room)
@@ -17126,7 +17177,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
-/area/triumph/station/explorer_entry)
+/area/triumph/station/explorer_prep)
 "nOV" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -21767,15 +21818,13 @@
 /turf/simulated/floor/water/pool,
 /area/triumph/surfacebase/sauna)
 "rff" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/obj/structure/cable/green,
 /obj/machinery/power/apc{
 	name = "south bump";
 	pixel_y = -32
+	},
+/obj/structure/cable/cyan{
+	d2 = 4;
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_server_room)
@@ -22531,6 +22580,11 @@
 /area/triumph/station/excursion_dock)
 "rEg" = (
 /obj/machinery/ai_slipper,
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ai)
 "rEj" = (
@@ -23786,7 +23840,7 @@
 	req_one_access = list(19,43,67)
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/explorer_entry)
+/area/triumph/station/explorer_prep)
 "sGq" = (
 /obj/structure/table/woodentable,
 /obj/item/tape_recorder{
@@ -30101,6 +30155,11 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
+/obj/structure/cable/cyan{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_server_room)
 "xDD" = (
@@ -36380,8 +36439,8 @@ bim
 bim
 bim
 bim
-jbl
-jbl
+sJC
+sJC
 ihS
 rVT
 xZs
@@ -36522,7 +36581,7 @@ cVO
 hKb
 cVO
 cVO
-brT
+cVO
 sGl
 iqQ
 brT
@@ -36664,7 +36723,7 @@ bnm
 aIn
 jrs
 jrs
-gwO
+jrs
 nOy
 jSu
 brT
@@ -36807,7 +36866,7 @@ sTa
 gfO
 gBY
 gQP
-jbl
+sJC
 oiQ
 kqN
 jzZ
@@ -47502,7 +47561,7 @@ qzM
 usH
 bbx
 xTO
-bbx
+hEL
 uWf
 xcj
 vZU
@@ -47644,7 +47703,7 @@ uUo
 usH
 bMZ
 xTO
-rxh
+gpN
 uWf
 bNI
 vZU
@@ -47788,7 +47847,7 @@ tgt
 iJy
 xBR
 kLf
-bNI
+aei
 rEg
 gxh
 sNo

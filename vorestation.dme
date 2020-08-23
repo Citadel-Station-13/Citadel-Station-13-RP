@@ -10,6 +10,7 @@
 #define DEBUG
 // END_PREFERENCES
 // BEGIN_INCLUDE
+#include "_maps\triumph.dm"
 #include "code\_away_mission_tests.dm"
 #include "code\_macros.dm"
 #include "code\_map_tests.dm"
@@ -3498,6 +3499,7 @@
 #include "interface\interface.dm"
 #include "interface\stylesheet.dm"
 #include "interface\skin.dmf"
+#include "maps\nsv_triumph\triumph.dm"
 #include "maps\RandomZLevels\blackmarketpackers.dm"
 #include "maps\RandomZLevels\carpfarm.dm"
 #include "maps\RandomZLevels\listeningpost.dm"
@@ -3530,7 +3532,6 @@
 #include "maps\submaps\surface_submaps\plains\plains_areas.dm"
 #include "maps\submaps\surface_submaps\wilderness\wilderness.dm"
 #include "maps\submaps\surface_submaps\wilderness\wilderness_areas.dm"
-#include "maps\tether\tether.dm"
 #include "maps\~map_system\maps.dm"
 #include "modular_citadel\code\global_cit.dm"
 #include "modular_citadel\code\datums\outfits\jobs\centcom.dm"
