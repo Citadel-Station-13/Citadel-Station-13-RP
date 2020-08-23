@@ -26,7 +26,7 @@
 		qdel(src)
 
 /obj/machinery/mineral/processing_unit_console/AltClick(mob/user)
-	to_chat(user, "You toggle the speed processing of the ore processor [speed_process ? "off" : "on"]"
+	to_chat(user, "You toggle the speed processing of the ore processor [speed_process ? "off" : "on"]")
 	machine.speed_process = !machine.speed_process
 
 /obj/machinery/mineral/processing_unit_console/Destroy()
