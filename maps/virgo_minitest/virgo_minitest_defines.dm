@@ -3,7 +3,7 @@
 
 /datum/map/virgo_minitest
 	name = "Virgo_minitest"
-	full_name = "NSS Ade-testing"
+	full_name = "NSS Citadel Testing Facility"
 	path = "virgo_minitest"
 
 	lobby_icon = 'icons/misc/title_vr.dmi'
@@ -16,18 +16,23 @@
 	contact_levels = list(Z_LEVEL_MAIN_VIRGO_TESTING)
 	player_levels = list(Z_LEVEL_MAIN_VIRGO_TESTING)
 
-	accessible_z_levels = list("1" = 100) // The defines can't be used here sadly.
+	accessible_z_levels = list("1" = 100)	// The defines can't be used here sadly.
 	base_turf_by_z = list("1" = /turf/space)
 
-	station_name  = "NSS Ade-testing"
-	station_short = "VORE-testing"
-	dock_name     = "Virgo-test CC"
+	use_overmap = TRUE
+	//var/overmap_size = 20			// Dimensions of overmap zlevel if overmap is used.
+	//var/overmap_z = 0				// If 0 will generate overmap zlevel on init. Otherwise will populate the zlevel provided.
+	//var/overmap_event_areas = 0	// How many event "clouds" will be generated
+
+	station_name  = "NSS Citadel Testing Facility"
+	station_short = "NSS-CTF"
+	dock_name     = "NSS-CTF CC"
 	dock_type     = "surface"
-	boss_name     = "Central Command-testing"
-	boss_short    = "CentCom-testing"
-	company_name  = "NanoTrasen-testing"
-	company_short = "NT-testing"
-	starsys_name  = "Virgo-Erigone-testing"
+	boss_name     = "Central Command-Testing"
+	boss_short    = "CentCom-Testing"
+	company_name  = "NanoTrasen-Testing"
+	company_short = "NT-Testing"
+	starsys_name  = "Virgo-Erigone-Testing"
 
 	shuttle_docked_message = "Test Shuttle Docked"
 	shuttle_leaving_dock = "Test Shuttle Leaving"
