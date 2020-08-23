@@ -21117,9 +21117,6 @@
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
-"bVa" = (
-/turf/simulated/wall,
-/area/space)
 "bVu" = (
 /obj/machinery/firealarm{
 	dir = 4;
@@ -21637,12 +21634,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/explorer_prep)
-"dnQ" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/dark,
-/area/space)
 "dom" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
@@ -21950,15 +21941,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/explorer_prep)
-"fUy" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/space)
 "fVe" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
@@ -22058,18 +22040,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/tether/station/explorer_medical)
-"hhq" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/space)
 "hjG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -22238,22 +22208,6 @@
 /obj/machinery/recharge_station,
 /turf/simulated/floor/tiled,
 /area/tether/station/explorer_meeting)
-"iCM" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/door/airlock/glass_atmos{
-	name = "Department Mail Room";
-	req_access = list(24)
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/space)
 "iEx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -23034,11 +22988,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/explorer_prep)
-"mWo" = (
-/obj/structure/table/standard,
-/obj/item/hand_labeler,
-/turf/simulated/floor/tiled/dark,
-/area/space)
 "mYr" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor,
@@ -24641,15 +24590,6 @@
 /obj/machinery/light,
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
-"vXL" = (
-/obj/machinery/disposal/deliveryChute{
-	dir = 8
-	},
-/obj/structure/disposalpipe/trunk{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/dark,
-/area/space)
 "wbr" = (
 /obj/machinery/camera/network/northern_star{
 	dir = 5
@@ -24734,9 +24674,6 @@
 	},
 /turf/simulated/floor,
 /area/construction/observation)
-"wxS" = (
-/turf/simulated/floor/tiled/dark,
-/area/space)
 "wCH" = (
 /obj/structure/extinguisher_cabinet{
 	dir = 8;
@@ -32419,11 +32356,11 @@ aaa
 aaa
 aaa
 aaa
-bVa
-bVa
-iCM
-bVa
-bVa
+aaa
+aaa
+aaa
+aaa
+aaa
 aaa
 aaa
 aac
@@ -32561,11 +32498,11 @@ aaa
 aaa
 aaa
 aaa
-bVa
-wxS
-hhq
 aaa
-bVa
+aaa
+aaa
+aaa
+aaa
 aaa
 aaa
 aac
@@ -32703,11 +32640,11 @@ aaa
 aaa
 aaa
 aaa
-bVa
-dnQ
-fUy
 aaa
-bVa
+aaa
+aaa
+aaa
+aaa
 aaa
 aaa
 aac
@@ -32845,11 +32782,11 @@ aaa
 aaa
 aaa
 aaa
-bVa
 aaa
-vXL
-mWo
-bVa
+aaa
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -32987,11 +32924,11 @@ aaa
 aaa
 aaa
 aaa
-bVa
-bVa
-bVa
-bVa
-bVa
+aaa
+aaa
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa

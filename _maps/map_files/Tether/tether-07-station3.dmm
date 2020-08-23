@@ -20723,13 +20723,6 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery/holosurgery)
-"Ig" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/machinery/suit_cycler/medical,
-/turf/simulated/floor/tiled/white,
-/area/space)
 "Ii" = (
 /obj/structure/table/standard,
 /obj/item/packageWrap,
@@ -27769,10 +27762,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock)
-"Ud" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
-/turf/simulated/floor/tiled/white,
-/area/space)
 "Ue" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/red/border,
@@ -28589,49 +28578,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery_hallway)
-"Wf" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/table/glass,
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/button/remote{
-	id = "surgeryobs";
-	name = "Surgery Emergency Shutters";
-	pixel_x = -5;
-	pixel_y = 5
-	},
-/obj/machinery/button/windowtint{
-	dir = 4;
-	id = "surgeryobs";
-	pixel_x = 5;
-	pixel_y = -5
-	},
-/obj/machinery/light_switch{
-	name = "light switch ";
-	pixel_x = 5;
-	pixel_y = 5
-	},
-/obj/machinery/button/remote/airlock{
-	dir = 4;
-	id = "theaterdoorlock";
-	name = "Theater Door Locks";
-	pixel_x = -5;
-	pixel_y = -5;
-	specialfunctions = 4
-	},
-/obj/effect/floor_decal/industrial/warning,
-/obj/item/paper{
-	info = "We misplaced the manual CMF sent with this new suite. Have them stand in the colored squares before you cycle? Reminder: Pin this to the board. -Sergio";
-	name = "note on process"
-	},
-/turf/simulated/floor/tiled/white,
-/area/space)
 "Wh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -28933,9 +28879,6 @@
 	name = "padded floor"
 	},
 /area/medical/psych_ward)
-"Xk" = (
-/turf/simulated/floor/tiled/white,
-/area/space)
 "Xl" = (
 /obj/machinery/door/airlock/glass_mining{
 	name = "Cargo Bay";
@@ -29360,24 +29303,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery_hallway)
-"YG" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/light{
-	dir = 8
-	},
-/obj/effect/floor_decal/industrial/warning,
-/turf/simulated/floor/tiled/white,
-/area/space)
 "YH" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
@@ -29481,26 +29406,6 @@
 /obj/item/pen/crayon/red,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
-"YS" = (
-/obj/structure/closet/secure_closet{
-	icon_broken = "medicalbroken";
-	icon_closed = "medical";
-	icon_locked = "medical1";
-	icon_off = "medicaloff";
-	icon_opened = "medicalopen";
-	icon_state = "medical1";
-	name = "Surgical Pressure Gear"
-	},
-/obj/item/suit_cooling_unit,
-/obj/item/tank/oxygen,
-/obj/item/clothing/suit/space/void/medical/bio,
-/obj/item/clothing/head/helmet/space/void/medical/bio,
-/obj/machinery/alarm{
-	pixel_y = 22;
-	target_temperature = 277.15
-	},
-/turf/simulated/floor/tiled/white,
-/area/space)
 "YT" = (
 /obj/structure/bed/chair/comfy/brown,
 /turf/simulated/floor/carpet/blue,
@@ -40169,9 +40074,9 @@ aa
 aa
 aa
 aa
-YS
-Xk
-YG
+aa
+aa
+aa
 aa
 aa
 aa
@@ -40311,9 +40216,9 @@ aa
 aa
 aa
 aa
-Ig
-Ud
-Wf
+aa
+aa
+aa
 aa
 aa
 aa
