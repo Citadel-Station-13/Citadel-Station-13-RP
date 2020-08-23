@@ -8483,6 +8483,15 @@
 /obj/structure/flora/pottedplant/unusual,
 /turf/simulated/floor/wood,
 /area/medical/psych)
+"rQ" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/medical/psych_ward)
 "rR" = (
 /obj/machinery/vending/coffee,
 /turf/simulated/floor/tiled,
@@ -12573,9 +12582,6 @@
 /obj/machinery/alarm{
 	frequency = 1441;
 	pixel_y = 22
-	},
-/obj/machinery/light{
-	dir = 1
 	},
 /obj/machinery/camera/network/medbay,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -29906,7 +29912,7 @@ HD
 Yi
 To
 RD
-zh
+rQ
 jA
 Qt
 vW

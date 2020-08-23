@@ -9165,6 +9165,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/barrestroom)
+"Dq" = (
+/obj/structure/table/standard,
+/turf/simulated/floor/tiled/white,
+/area/crew_quarters/toilet)
 "Ds" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -25614,7 +25618,7 @@ LP
 MF
 Bk
 Bk
-Kv
+Dq
 VP
 HC
 MF

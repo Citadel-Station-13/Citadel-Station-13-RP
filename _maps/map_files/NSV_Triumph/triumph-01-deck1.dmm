@@ -16,16 +16,6 @@
 /obj/machinery/alarm{
 	pixel_y = 22
 	},
-/obj/structure/closet/crate/secure/engineering,
-/obj/item/storage/briefcase/fission/fuelmixed,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/machinery/door/window/northleft{
-	dir = 2;
-	name = "Fuel Rods";
-	req_access = list(11)
-	},
 /turf/simulated/floor/tiled,
 /area/engineering/engine_room)
 "ae" = (
@@ -359,6 +349,14 @@
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/machinery/meter{
+	frequency = 1443;
+	id = "dist_aux_meter";
+	name = "Distribution Loop"
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/engine_room)
 "bk" = (
@@ -435,6 +433,14 @@
 /obj/item/toy/plushie/deer,
 /turf/simulated/floor/tiled,
 /area/engineering/foyer)
+"bI" = (
+/obj/machinery/door/airlock/vault{
+	name = "REACTOR ROOM";
+	req_one_access = list(10)
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/engine_room)
 "bK" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green,
 /obj/machinery/meter,
@@ -1352,6 +1358,26 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"gg" = (
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	dir = 4;
+	frequency = 1380;
+	id_tag = "airlock_eng_pump"
+	},
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	frequency = 1380;
+	id_tag = "airlock_eng";
+	pixel_x = -24;
+	req_one_access = list(13);
+	tag_airpump = "airlock_eng_pump";
+	tag_chamber_sensor = "airlock_eng_sensor";
+	tag_exterior_door = "airlock_eng_outer";
+	tag_interior_door = "airlock_eng_inner"
+	},
+/turf/simulated/floor/tiled{
+	icon_state = "techmaint"
+	},
+/area/engineering/engine_airlock)
 "gh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -1370,6 +1396,10 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/foyer)
+"gj" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/engine_room)
 "go" = (
 /obj/structure/closet/crate,
 /obj/item/circuitboard/smes,
@@ -1488,6 +1518,21 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/security/checkpoint/engineering)
+"gU" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled{
+	icon_state = "techmaint"
+	},
+/area/engineering/engine_eva)
 "gV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -1911,6 +1956,14 @@
 "iY" = (
 /turf/simulated/floor/carpet/blucarpet,
 /area/crew_quarters/heads/chief)
+"jb" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 6
+	},
+/turf/simulated/floor/tiled{
+	icon_state = "techmaint"
+	},
+/area/engineering/engine_eva)
 "je" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 5
@@ -2869,6 +2922,9 @@
 	name = "REACTOR ROOM";
 	req_one_access = list(10)
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "ow" = (
@@ -2920,6 +2976,16 @@
 /obj/item/clothing/glasses/meson,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_monitoring)
+"oJ" = (
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	dir = 4;
+	frequency = 1380;
+	id_tag = "airlock_eng_pump"
+	},
+/turf/simulated/floor/tiled{
+	icon_state = "techmaint"
+	},
+/area/engineering/engine_airlock)
 "oK" = (
 /obj/machinery/alarm{
 	pixel_y = 22
@@ -3503,6 +3569,9 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_room)
+"rG" = (
+/turf/simulated/wall/r_wall,
+/area/engineering/engine_airlock)
 "rH" = (
 /obj/machinery/telecomms/server/presets/unused,
 /turf/simulated/floor/tiled/dark{
@@ -3602,6 +3671,12 @@
 	},
 /turf/simulated/wall/r_wall,
 /area/engineering/atmos)
+"se" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled{
+	icon_state = "techmaint"
+	},
+/area/engineering/engine_eva)
 "sj" = (
 /obj/machinery/air_sensor{
 	frequency = 1443;
@@ -3659,6 +3734,18 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/backup)
+"sw" = (
+/obj/machinery/door/airlock/glass_external{
+	frequency = 1380;
+	icon_state = "door_locked";
+	id_tag = "airlock_eng_outer";
+	locked = 1;
+	name = "Docking Port Airlock"
+	},
+/turf/simulated/floor/tiled{
+	icon_state = "techmaint"
+	},
+/area/engineering/engine_airlock)
 "sx" = (
 /obj/machinery/alarm{
 	dir = 4;
@@ -6085,6 +6172,12 @@
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
+"DZ" = (
+/obj/machinery/atmospherics/pipe/tank/air{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/engine_room)
 "Ea" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -8499,6 +8592,20 @@
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
+"QG" = (
+/obj/machinery/access_button{
+	command = "cycle_interior";
+	frequency = 1380;
+	master_tag = "airlock_eng";
+	name = "interior access button";
+	pixel_x = -28;
+	pixel_y = 23;
+	req_one_access = list(13)
+	},
+/turf/simulated/floor/tiled{
+	icon_state = "techmaint"
+	},
+/area/engineering/engine_eva)
 "QI" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -8621,16 +8728,8 @@
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engine_room)
 "Ri" = (
-/obj/structure/closet/crate/secure/engineering,
-/obj/item/storage/briefcase/fission/uranium,
-/obj/machinery/camera/network/engine,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/machinery/door/window/northleft{
-	dir = 2;
-	name = "Fuel Rods";
-	req_access = list(11)
+/obj/machinery/light{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/engine_room)
@@ -8675,6 +8774,17 @@
 /obj/machinery/meter,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
+"Rs" = (
+/obj/machinery/atmospherics/pipe/manifold4w/hidden,
+/obj/machinery/meter{
+	frequency = 1443;
+	id = "dist_aux_meter";
+	name = "Distribution Loop"
+	},
+/turf/simulated/floor/tiled{
+	icon_state = "techmaint"
+	},
+/area/engineering/engine_airlock)
 "Rt" = (
 /obj/machinery/computer/telecomms/monitor,
 /turf/simulated/floor/tiled/dark,
@@ -8842,6 +8952,9 @@
 /obj/structure/cable/cyan{
 	d2 = 4;
 	icon_state = "0-4"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/engine_room)
@@ -9283,6 +9396,20 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
+"Uu" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/engine_room)
+"UA" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 1
+	},
+/turf/simulated/floor/tiled{
+	icon_state = "techmaint"
+	},
+/area/engineering/engine_airlock)
 "UC" = (
 /obj/machinery/telecomms/bus/preset_two/triumph,
 /turf/simulated/floor/tiled/dark{
@@ -9561,6 +9688,18 @@
 	icon_state = "techmaint"
 	},
 /area/engineering/storage)
+"We" = (
+/obj/machinery/door/airlock/glass_external{
+	frequency = 1380;
+	icon_state = "door_locked";
+	id_tag = "airlock_eng_inner";
+	locked = 1;
+	name = "Engineering Airlock"
+	},
+/turf/simulated/floor/tiled{
+	icon_state = "techmaint"
+	},
+/area/engineering/engine_airlock)
 "Wg" = (
 /obj/machinery/air_sensor{
 	frequency = 1441;
@@ -9646,6 +9785,14 @@
 	},
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
+"Wx" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 9
+	},
+/turf/simulated/floor/tiled{
+	icon_state = "techmaint"
+	},
+/area/engineering/engine_eva)
 "Wz" = (
 /obj/item/storage/briefcase/fission,
 /obj/structure/closet/crate/secure/engineering,
@@ -9735,6 +9882,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/storage/tech)
+"WM" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/engine_room)
 "WO" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -10120,6 +10273,16 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/storage/tech)
+"Yw" = (
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	dir = 8;
+	frequency = 1380;
+	id_tag = "airlock_eng_pump"
+	},
+/turf/simulated/floor/tiled{
+	icon_state = "techmaint"
+	},
+/area/engineering/engine_airlock)
 "Yz" = (
 /obj/machinery/floodlight,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -10212,6 +10375,19 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/workshop)
+"YT" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/door/airlock/glass_external{
+	frequency = 1380;
+	icon_state = "door_locked";
+	id_tag = "airlock_eng_inner";
+	locked = 1;
+	name = "Engineering Airlock"
+	},
+/turf/simulated/floor/tiled{
+	icon_state = "techmaint"
+	},
+/area/engineering/engine_airlock)
 "YU" = (
 /obj/machinery/light/small{
 	dir = 8;
@@ -10273,18 +10449,17 @@
 /turf/simulated/floor,
 /area/storage/tech)
 "Zm" = (
-/obj/structure/closet/crate/secure/engineering,
-/obj/item/storage/briefcase/fission/uranium,
-/obj/structure/window/reinforced{
-	dir = 4
+/obj/machinery/access_button{
+	command = "cycle_exterior";
+	frequency = 1380;
+	master_tag = "airlock_eng";
+	name = "exterior access button";
+	pixel_x = -26;
+	pixel_y = -24;
+	req_one_access = list(13)
 	},
-/obj/machinery/door/window/northleft{
-	dir = 2;
-	name = "Fuel Rods";
-	req_access = list(11)
-	},
-/turf/simulated/floor/tiled,
-/area/engineering/engine_room)
+/turf/simulated/floor/airless,
+/area/space)
 "Zp" = (
 /obj/structure/shuttle/engine/router,
 /turf/simulated/wall/r_wall,
@@ -14874,7 +15049,7 @@ fN
 fN
 fN
 fN
-iC
+dX
 bX
 BL
 bX
@@ -15320,7 +15495,7 @@ fN
 fN
 fN
 fN
-iC
+dX
 fN
 fN
 fN
@@ -16010,7 +16185,7 @@ fN
 fN
 fN
 fN
-iC
+dX
 Rg
 Rg
 cL
@@ -18134,7 +18309,7 @@ fN
 fN
 fN
 fN
-Zj
+dX
 Zj
 Zj
 iC
@@ -18273,9 +18448,9 @@ fN
 fN
 fN
 fN
-fN
-fN
-fN
+dX
+Zj
+jH
 Zj
 fN
 fN
@@ -18415,13 +18590,13 @@ fN
 fN
 fN
 fN
-fN
+Zj
 fN
 fN
 Zj
 fN
 fN
-kq
+jH
 Fn
 ui
 Vz
@@ -18557,12 +18732,12 @@ fN
 fN
 fN
 fN
-fN
+Zj
 fN
 fN
 Zj
 fN
-kq
+jH
 eH
 JG
 vn
@@ -18699,13 +18874,13 @@ fN
 fN
 fN
 fN
-fN
+Zj
 fN
 fN
 Zj
 fN
 fN
-kq
+jH
 TS
 ui
 bn
@@ -18841,7 +19016,7 @@ fN
 fN
 fN
 fN
-fN
+Zj
 fN
 fN
 Zj
@@ -18981,11 +19156,11 @@ fN
 fN
 fN
 fN
-fN
-fN
-fN
-fN
-fN
+dX
+Zj
+Zj
+Zj
+Zj
 Zj
 Zj
 Zj
@@ -19123,10 +19298,10 @@ fN
 fN
 fN
 fN
+iC
 fN
 fN
-fN
-fN
+Zj
 fN
 fN
 fN
@@ -19265,10 +19440,10 @@ fN
 fN
 fN
 fN
+iC
 fN
 fN
-fN
-fN
+Zj
 fN
 fN
 fN
@@ -19276,7 +19451,7 @@ fN
 Zj
 Zj
 ui
-Vz
+EL
 dK
 zz
 Rm
@@ -19407,15 +19582,15 @@ fN
 fN
 fN
 fN
-fN
-fN
-fN
-fN
-fN
-fN
+dX
 fN
 fN
 Zj
+fN
+fN
+fN
+fN
+fN
 fN
 ui
 vd
@@ -19425,7 +19600,7 @@ Gb
 Gb
 Lo
 zz
-Zm
+XP
 Qo
 Fj
 Dn
@@ -19549,16 +19724,16 @@ fN
 fN
 fN
 fN
-fN
-fN
-fN
-fN
-fN
-fN
+Zj
 fN
 fN
 Zj
 fN
+fN
+fN
+fN
+fN
+rG
 ui
 Vz
 MJ
@@ -19691,17 +19866,17 @@ fN
 fN
 fN
 fN
-fN
-fN
-fN
-fN
-fN
-fN
+Zj
 fN
 fN
 Zj
 fN
-ui
+jH
+rG
+rG
+rG
+rG
+Vz
 Vz
 MJ
 zz
@@ -19833,25 +20008,25 @@ iC
 iC
 Zj
 Zj
+dX
+Zj
+gy
 Zj
 Zj
-iC
-iC
-iC
-iC
-iC
-Zj
-iC
-iC
-ui
-EL
-MJ
-zz
-JB
+Zm
+sw
+gg
+oJ
+We
+QG
+jb
+gU
+bI
+gj
+Uu
 tg
-tg
 zz
-XP
+DZ
 Ur
 MI
 AF
@@ -19980,18 +20155,18 @@ fN
 fN
 fN
 fN
-fN
-fN
-fN
-fN
-fN
-ui
-Vz
+jH
+sw
+UA
+Rs
+YT
+se
+Wx
 wV
 zz
 JB
-tg
-Pj
+WM
+JB
 zz
 bj
 Ur
@@ -20122,17 +20297,17 @@ fN
 fN
 fN
 fN
-fN
-fN
-fN
-fN
-fN
-ui
+kq
+rG
+Yw
+Yw
+rG
+Vz
 Vz
 MJ
 zz
 bD
-tg
+WM
 ww
 zz
 Sk
@@ -20818,7 +20993,7 @@ fN
 fN
 fN
 fN
-Zj
+iC
 fN
 fN
 mS
@@ -20960,7 +21135,7 @@ fN
 fN
 fN
 fN
-Zj
+iC
 Zj
 Zj
 mS
