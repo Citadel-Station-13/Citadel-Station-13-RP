@@ -29,7 +29,7 @@ var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
 	secchannel = "[rand(850,899)].[rand(1,9)]"
 	sdfchannel = "[rand(900,999)].[rand(1,9)]"
 	spawn(450 SECONDS) //Lots of lag at the start of a shift. Yes, the following lines *have* to be indented or they're not delayed by the spawn properly.
-		msg("New shift beginning, resuming traffic control. This shift's Colony Frequencies are as follows: Emergency Responders: [ertchannel]. Medical: [medchannel]. Engineering: [engchannel]. Security: [secchannel]. System Defense: [sdfchannel].")
+		msg("New shift beginning, resuming standard operations. This shift's Fleet Frequencies are as follows: Emergency Responders: [ertchannel]. Medical: [medchannel]. Engineering: [engchannel]. Security: [secchannel]. System Defense: [sdfchannel].")
 		next_message = world.time + initial_delay
 		process()
 
@@ -51,11 +51,11 @@ var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
 /datum/lore/atc_controller/proc/reroute_traffic(var/yes = 1)
 	if(yes)
 		if(!squelched)
-			msg("Rerouting traffic away from [GLOB.using_map.station_name].")
+			msg("Re-routing traffic and fleet patterns around [GLOB.using_map.station_name].")
 		squelched = 1
 	else
 		if(squelched)
-			msg("Resuming normal traffic routing around [GLOB.using_map.station_name].")
+			msg("Resuming normal fleet patterns and traffic.")
 		squelched = 0
 
 /datum/lore/atc_controller/proc/shift_ending(var/evac = 0)

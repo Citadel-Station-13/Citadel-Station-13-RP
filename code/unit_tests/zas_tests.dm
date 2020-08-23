@@ -111,10 +111,11 @@
 	name = "ZAS: Xenobiology"
 	area_path = /area/rnd/xenobiology
 
-/datum/unit_test/zas_area_test/mining_area
-	name = "ZAS: Mining Area (Vacuum)"
-	area_path = /area/mine/explored
-	expectation = UT_VACUUM
+// Citadel Station: Mining is now in space in asteroid belts. No longer in an area/mine. Re-enable for any maps with surface mining though of course.
+///datum/unit_test/zas_area_test/mining_area
+//	name = "ZAS: Mining Area (Vacuum)"
+//	area_path = /area/mine/explored
+//	expectation = UT_VACUUM
 
 /datum/unit_test/zas_area_test/cargo_bay
 	name = "ZAS: Cargo Bay"

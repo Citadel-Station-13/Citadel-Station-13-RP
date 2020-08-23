@@ -2,20 +2,20 @@
 // Escape shuttle and pods
 /datum/shuttle/autodock/ferry/emergency/escape
 	name = "Escape"
-	location = 1 // At offsite
+	location = FERRY_LOCATION_OFFSITE
 	warmup_time = 10
-	area_offsite = /area/shuttle/escape/centcom
-	area_station = /area/shuttle/escape/station
-	area_transition = /area/shuttle/escape/transit
-	docking_controller_tag = "escape_shuttle"
-	dock_target_station = "escape_dock"
-	dock_target_offsite = "centcom_dock"
+	landmark_offsite = "escape_cc"
+	landmark_station = "escape_station"
+	landmark_transition = "escape_transit"
+	//docking_controller_tag = "escape_shuttle"
+	//dock_target_station = "escape_dock"
+	//dock_target_offsite = "centcom_dock"
 	move_time = SHUTTLE_TRANSIT_DURATION_RETURN
 
 //////////////////////////////////////////////////////////////
 /datum/shuttle/autodock/ferry/escape_pod/large_escape_pod1
 	name = "Large Escape Pod 1"
-	location = 0
+	location = FERRY_LOCATION_STATION
 	warmup_time = 0
 	area_station = /area/shuttle/large_escape_pod1/station
 	area_offsite = /area/shuttle/large_escape_pod1/centcom
@@ -29,7 +29,7 @@
 /* Removed for the time being
 /datum/shuttle/autodock/ferry/escape_pod/large_escape_pod2
 	name = "Large Escape Pod 2"
-	location = 0
+	location = FERRY_LOCATION_STATION
 	warmup_time = 0
 	area_station = /area/shuttle/large_escape_pod2/station
 	area_offsite = /area/shuttle/large_escape_pod2/centcom
@@ -99,7 +99,7 @@
 // Tether Shuttle
 /datum/shuttle/autodock/ferry/tether_backup
 	name = "Tether Backup"
-	location = 1 // At offsite
+	location = FERRY_LOCATION_OFFSITE
 	warmup_time = 5
 	move_time = 45
 	area_offsite = /area/shuttle/tether/surface
@@ -176,7 +176,7 @@
 
 /datum/shuttle/autodock/ferry/multidock/specops/ert
 	name = "Special Operations"
-	location = 0
+	location = FERRY_LOCATION_STATION
 	warmup_time = 10
 	area_offsite = /area/shuttle/specops/station	//centcom is the home station, the Exodus is offsite
 	area_station = /area/shuttle/specops/centcom
@@ -193,7 +193,7 @@
 
 /datum/shuttle/autodock/ferry/belter
 	name = "Belter"
-	location = 0
+	location = FERRY_LOCATION_STATION
 	warmup_time = 6
 	move_time = 30
 	area_station = /area/shuttle/belter/station

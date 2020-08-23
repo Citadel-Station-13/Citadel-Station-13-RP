@@ -3,18 +3,18 @@
 	name = "Escape"
 	location = 1
 	warmup_time = 10
-	area_offsite = /area/shuttle/escape/centcom
-	area_station = /area/shuttle/escape/station
-	area_transition = /area/shuttle/escape/transit
-	docking_controller_tag = "escape_shuttle"
-	dock_target_station = "escape_dock"
-	dock_target_offsite = "centcom_dock"
+	landmark_offsite = "escape_cc"
+	landmark_station = "escape_station"
+	landmark_transition = "escape_transit"
+	//docking_controller_tag = "escape_shuttle"
+	//dock_target_station = "escape_dock"
+	//dock_target_offsite = "centcom_dock"
 	transit_direction = NORTH
 	move_time = SHUTTLE_TRANSIT_DURATION_RETURN
 
 /datum/shuttle/autodock/ferry/escape_pod/escape_pod_one
 	name = "Escape Pod 1"
-	location = 0
+	location = FERRY_LOCATION_STATION
 	warmup_time = 0
 	area_station = /area/shuttle/escape_pod1/station
 	area_offsite = /area/shuttle/escape_pod1/centcom
@@ -27,7 +27,7 @@
 
 /datum/shuttle/autodock/ferry/escape_pod/escape_pod_two
 	name = "Escape Pod 2"
-	location = 0
+	location = FERRY_LOCATION_STATION
 	warmup_time = 0
 	area_station = /area/shuttle/escape_pod2/station
 	area_offsite = /area/shuttle/escape_pod2/centcom
@@ -40,7 +40,7 @@
 
 /datum/shuttle/autodock/ferry/escape_pod/escape_pod_three
 	name = "Escape Pod 3"
-	location = 0
+	location = FERRY_LOCATION_STATION
 	warmup_time = 0
 	area_station = /area/shuttle/escape_pod3/station
 	area_offsite = /area/shuttle/escape_pod3/centcom
@@ -53,7 +53,7 @@
 
 /datum/shuttle/autodock/ferry/escape_pod/escape_pod_four
 	name = "Escape Pod 4"
-	location = 0
+	location = FERRY_LOCATION_STATION
 	warmup_time = 0
 	area_station = /area/shuttle/escape_pod4/station
 	area_offsite = /area/shuttle/escape_pod4/centcom
@@ -66,7 +66,7 @@
 
 /datum/shuttle/autodock/ferry/escape_pod/escape_pod_five
 	name = "Escape Pod 5"
-	location = 0
+	location = FERRY_LOCATION_STATION
 	warmup_time = 0
 	area_station = /area/shuttle/escape_pod5/station
 	area_offsite = /area/shuttle/escape_pod5/centcom
@@ -79,7 +79,7 @@
 
 /datum/shuttle/autodock/ferry/escape_pod/escape_pod_six
 	name = "Escape Pod 6"
-	location = 0
+	location = FERRY_LOCATION_STATION
 	warmup_time = 0
 	area_station = /area/shuttle/escape_pod6/station
 	area_offsite = /area/shuttle/escape_pod6/centcom
@@ -92,7 +92,7 @@
 
 /datum/shuttle/autodock/ferry/escape_pod/escape_pod_cryo
 	name = "Cryostorage Shuttle"
-	location = 0
+	location = FERRY_LOCATION_STATION
 	warmup_time = 0
 	area_station = /area/shuttle/cryo/station
 	area_offsite = /area/shuttle/cryo/centcom
@@ -105,7 +105,7 @@
 
 /datum/shuttle/autodock/ferry/escape_pod/large_escape_pod1
 	name = "Large Escape Pod 1"
-	location = 0
+	location = FERRY_LOCATION_STATION
 	warmup_time = 0
 	area_station = /area/shuttle/large_escape_pod1/station
 	area_offsite = /area/shuttle/large_escape_pod1/centcom
@@ -118,7 +118,7 @@
 
 /datum/shuttle/autodock/ferry/escape_pod/large_escape_pod2
 	name = "Large Escape Pod 2"
-	location = 0
+	location = FERRY_LOCATION_STATION
 	warmup_time = 0
 	area_station = /area/shuttle/large_escape_pod2/station
 	area_offsite = /area/shuttle/large_escape_pod2/centcom
@@ -263,7 +263,7 @@
 
 /datum/shuttle/autodock/ferry/multidock/specops/ert
 	name = "Special Operations"
-	location = 0
+	location = FERRY_LOCATION_STATION
 	warmup_time = 10
 	area_offsite = /area/shuttle/specops/station	//centcom is the home station, the Exodus is offsite
 	area_station = /area/shuttle/specops/centcom

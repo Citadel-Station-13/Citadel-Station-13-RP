@@ -16,6 +16,7 @@
 	name = "\improper Whisker Tank"
 	desc = "A shockingly functional, miniaturized tank. Its inventor is unknown, but widely reviled."
 	catalogue_data = list(/datum/category_item/catalogue/technology/mouse_tank)
+	icon = 'icons/mecha/micro.dmi'
 	icon_state = "whisker"
 	wreckage = /obj/structure/loot_pile/mecha/mouse_tank
 
@@ -35,7 +36,7 @@
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
 
 /mob/living/simple_mob/mechanical/mecha/mouse_tank/manned
-	pilot_type = /mob/living/simple_mob/animal/passive/mouse/mouse_op
+	pilot_type = /mob/living/simple_mob/animal/space/mouse_army/operative
 
 // Immune to heat damage, resistant to lasers, and it spits fire.
 /datum/category_item/catalogue/technology/mouse_tank/livewire
@@ -71,4 +72,4 @@
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
 
 /mob/living/simple_mob/mechanical/mecha/mouse_tank/livewire/manned
-	pilot_type = /mob/living/simple_mob/animal/passive/mouse/pyro
+	pilot_type = /mob/living/simple_mob/animal/space/mouse_army/pyro

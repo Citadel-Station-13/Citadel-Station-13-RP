@@ -880,7 +880,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 /obj/structure/loot_pile/mecha/mouse_tank
 	name = "\improper Whisker wreckage"
 	desc = "The ruins of a small tank. Perhaps some child's toy?"
-	icon = 'icons/mecha/mecha.dmi'
+	icon = 'icons/mecha/micro.dmi'
 	icon_state = "whisker-broken"
 	density = TRUE
 	anchored = FALSE // In case a dead mecha-mob dies in a bad spot.
@@ -916,7 +916,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 /obj/structure/loot_pile/mecha/mouse_tank/livewire
 	name = "\improper Livewire wreckage"
 	desc = "The smoldering ruins of a small tank. Perhaps some child's toy?"
-	icon = 'icons/mecha/mecha.dmi'
+	icon = 'icons/mecha/micro.dmi'
 	icon_state = "livewire-broken"
 	density = TRUE
 	anchored = FALSE // In case a dead mecha-mob dies in a bad spot.

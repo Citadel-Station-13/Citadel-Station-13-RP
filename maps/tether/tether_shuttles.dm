@@ -196,11 +196,13 @@
 	web_master_type = /datum/shuttle_web_master/excursion
 	var/abduct_chance = 0.5 //Prob
 
-/datum/shuttle/web_shuttle/excursion/long_jump(var/area/departing, var/area/destination, var/area/interim, var/travel_time, var/direction)
+/datum/shuttle/autodock/web_shuttle/excursion/long_jump(var/obj/effect/shuttle_landmark/destination, var/obj/effect/shuttle_landmark/interim, var/travel_time)
+	. = ..()
 	if(prob(abduct_chance))
 		abduct_chance = 0
-		var/list/occupants = list()
-		for(var/mob/living/L in departing)
+		for(var/area/A in shuttle_area)
+			for(var/mob/living/L in A)
+				occupants += key_name(L)
 			occupants += key_name(L)
 		log_and_message_admins("Shuttle abduction occuring with (only mobs on turfs): [english_list(occupants)]")
 		//Build the route to the alien ship
@@ -208,10 +210,10 @@
 		ASC.setup_routes()
 
 		//Redirect us onto that route instead
-		var/datum/shuttle/web_shuttle/WS = SSshuttle.shuttles[name]
+		var/datum/shuttle/autodock/web_shuttle/WS = shuttle_controller.shuttles[name]
 		var/datum/shuttle_destination/ASD = WS.web_master.get_destination_by_type(/datum/shuttle_destination/excursion/alienship)
 		WS.web_master.future_destination = ASD
-		. = ..(departing,ASD.my_area,interim,travel_time,direction)
+		. = ..(ASD.my_landmark,interim,travel_time)
 	else
 		. = ..()
 
