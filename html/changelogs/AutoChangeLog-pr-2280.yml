@@ -1,0 +1,4 @@
+author: "Enzo-Leon"
+delete-after: True
+changes: 
+  - imageadd: "Missing vending icons"
