@@ -1,8 +1,8 @@
 // -- Datums -- //
 /datum/shuttle_destination/excursion/debrisfield
 	name = "Debris Field"
-	my_area = /area/shuttle/excursion/debrisfield
-	preferred_interim_area = /area/shuttle/excursion/space_moving
+	my_landmark = "triumph_excursion_debrisfield"
+	preferred_interim_tag = "triumph_excursion_transit_space"
 	skip_me = TRUE
 
 	routes_to_make = list( //These are routes the shuttle connects to,

@@ -460,7 +460,7 @@
 	if(istype(W, /obj/item/ore/glass) && !interact(user, src))
 		if(do_after(user, 3 SECONDS, src) && use(1) && qdel(W))
 			var/turf/T = get_turf(user)
-				to_chat(user, "<span class='notice'>You fill the sandbag.</span>")
+			to_chat(user, "<span class='notice'>You fill the sandbag.</span>")
 			new /obj/item/stack/material/sandbags && !get(T)
 	else
 		return ..()

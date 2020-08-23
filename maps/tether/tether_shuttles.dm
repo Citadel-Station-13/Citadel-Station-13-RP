@@ -32,13 +32,6 @@
 	var/frequency = 1380 // Why this frequency? BECAUSE! Thats what someone decided once.
 	var/datum/radio_frequency/radio_connection
 
-/datum/shuttle/autodock/ferry/emergency/init_docking_controllers()
-	docking_controller_tag = null
-	dock_target_station = null
-	dock_target_offsite = null
-	radio_connection = radio_controller.add_object(src, frequency, null)
-	..()
-
 /datum/shuttle/autodock/ferry/emergency/dock()
 	..()
 	// Open Doorsunes

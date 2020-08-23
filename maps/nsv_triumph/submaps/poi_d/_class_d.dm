@@ -1,8 +1,8 @@
 //Shuttle Path for Class D Worlds
 /datum/shuttle_destination/excursion/class_d_orbit
 	name = "Unknown Planet Orbit" //The name of the destination
-	my_area = /area/shuttle/excursion/space //The area the shuttle goes when it's settled at this destination
-	preferred_interim_area = /area/shuttle/excursion/space_moving //The area the shuttle goes while it's moving there
+	my_landmark = "triumph_excursion_space" //The area the shuttle goes when it's settled at this destination
+	preferred_interim_tag = "triumph_excursion_transit_space" //The area the shuttle goes while it's moving there
 	skip_me = TRUE //Must be TRUE on all away-mission destinations for reasons
 
 	routes_to_make = list( //These are routes the shuttle connects to,
@@ -11,8 +11,8 @@
 
 /datum/shuttle_destination/excursion/class_d_surface
 	name = "Unknown Planet Surface"
-	my_area = /area/shuttle/excursion/poi_d
-	preferred_interim_area = /area/shuttle/excursion/sand_moving
+	my_landmark = "triumph_excursion_poid"
+	preferred_interim_tag = "tether_excursion_transit_sand"
 	skip_me = TRUE
 
 	routes_to_make = list(

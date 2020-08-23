@@ -32,13 +32,6 @@
 	var/frequency = 1380 // Why this frequency? BECAUSE! Thats what someone decided once.
 	var/datum/radio_frequency/radio_connection
 
-/datum/shuttle/autodock/ferry/emergency/init_docking_controllers()
-	docking_controller_tag = null
-	landmark_station = null
-	landmark_offsite = null
-	radio_connection = radio_controller.add_object(src, frequency, null)
-	..()
-
 /datum/shuttle/autodock/ferry/emergency/dock()
 	..()
 	// Open Doorsunes
@@ -227,7 +220,7 @@
 	name = "NSV Triumph Excursion Hangar"
 	my_landmark = /area/shuttle/excursion/triumph
 
-	dock_target = "expshuttle_dock"
+	//dock_target = "expshuttle_dock"
 	radio_announce = 1
 	announcer = "Excursion Shuttle"
 

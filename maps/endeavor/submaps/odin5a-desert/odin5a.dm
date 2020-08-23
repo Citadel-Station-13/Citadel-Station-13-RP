@@ -17,7 +17,7 @@
 /datum/shuttle_destination/excursion/beach
 	name = "Odin 5a Coastal Landing"
 	my_area = /area/shuttle/excursion/away_beach
-	preferred_interim_area = /area/shuttle/excursion/sand_moving
+	preferred_interim_tag = "tether_excursion_transit_sand"
 	skip_me = TRUE
 
 	routes_to_make = list(
