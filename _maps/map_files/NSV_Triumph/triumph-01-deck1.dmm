@@ -1377,7 +1377,7 @@
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
-/area/engineering/engine_airlock)
+/area/engineering/engine_eva)
 "gh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -2985,7 +2985,7 @@
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
-/area/engineering/engine_airlock)
+/area/engineering/engine_eva)
 "oK" = (
 /obj/machinery/alarm{
 	pixel_y = 22
@@ -3569,9 +3569,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_room)
-"rG" = (
-/turf/simulated/wall/r_wall,
-/area/engineering/engine_airlock)
 "rH" = (
 /obj/machinery/telecomms/server/presets/unused,
 /turf/simulated/floor/tiled/dark{
@@ -3745,7 +3742,7 @@
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
-/area/engineering/engine_airlock)
+/area/engineering/engine_eva)
 "sx" = (
 /obj/machinery/alarm{
 	dir = 4;
@@ -8784,7 +8781,7 @@
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
-/area/engineering/engine_airlock)
+/area/engineering/engine_eva)
 "Rt" = (
 /obj/machinery/computer/telecomms/monitor,
 /turf/simulated/floor/tiled/dark,
@@ -9409,7 +9406,7 @@
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
-/area/engineering/engine_airlock)
+/area/engineering/engine_eva)
 "UC" = (
 /obj/machinery/telecomms/bus/preset_two/triumph,
 /turf/simulated/floor/tiled/dark{
@@ -9699,7 +9696,7 @@
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
-/area/engineering/engine_airlock)
+/area/engineering/engine_eva)
 "Wg" = (
 /obj/machinery/air_sensor{
 	frequency = 1441;
@@ -10282,7 +10279,7 @@
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
-/area/engineering/engine_airlock)
+/area/engineering/engine_eva)
 "Yz" = (
 /obj/machinery/floodlight,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -10387,7 +10384,7 @@
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
-/area/engineering/engine_airlock)
+/area/engineering/engine_eva)
 "YU" = (
 /obj/machinery/light/small{
 	dir = 8;
@@ -19733,7 +19730,7 @@ fN
 fN
 fN
 fN
-rG
+ui
 ui
 Vz
 MJ
@@ -19872,10 +19869,10 @@ fN
 Zj
 fN
 jH
-rG
-rG
-rG
-rG
+ui
+ui
+ui
+ui
 Vz
 Vz
 MJ
@@ -20298,10 +20295,10 @@ fN
 fN
 fN
 kq
-rG
+ui
 Yw
 Yw
-rG
+ui
 Vz
 Vz
 MJ
