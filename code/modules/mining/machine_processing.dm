@@ -25,6 +25,10 @@
 		log_debug("Ore processing machine console at [src.x], [src.y], [src.z] could not find its machine!")
 		qdel(src)
 
+/obj/machinery/mineral/processing_unit_console/AltClick(mob/user)
+	to_chat(user, "You toggle the speed processing of the ore processor [speed_process ? "off" : "on"]"
+	machine.speed_process = !machine.speed_process
+
 /obj/machinery/mineral/processing_unit_console/Destroy()
 	if(inserted_id)
 		inserted_id.forceMove(loc) //Prevents deconstructing from deleting whatever ID was inside it.
