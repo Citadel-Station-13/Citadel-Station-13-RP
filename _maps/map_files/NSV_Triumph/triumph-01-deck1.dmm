@@ -3852,12 +3852,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
-"tG" = (
-/obj/effect/engine_exhaust{
-	dir = 8
-	},
-/turf/space,
-/area/space)
 "tJ" = (
 /obj/structure/table/reinforced,
 /obj/item/tool/crowbar,
@@ -9218,7 +9212,7 @@
 /turf/simulated/floor/carpet/blucarpet,
 /area/engineering/break_room)
 "UV" = (
-/obj/structure/shuttle/engine/propulsion{
+/obj/effect/engine_exhaust{
 	dir = 8
 	},
 /turf/space,
@@ -10156,10 +10150,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/engine_room)
-"Zp" = (
-/obj/structure/shuttle/engine/router,
-/turf/simulated/wall/r_wall,
-/area/space)
 "Zq" = (
 /obj/machinery/atmospherics/binary/pump/on{
 	name = "Waste Compresser"
@@ -10267,11 +10257,11 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/security/checkpoint/engineering)
 "ZZ" = (
-/obj/structure/shuttle/engine/heater{
-	dir = 8
+/obj/machinery/ion_engine{
+	dir = 4
 	},
-/turf/simulated/wall/r_wall,
-/area/space)
+/turf/simulated/floor/plating,
+/area/vacant/vacant_bar)
 
 (1,1,1) = {"
 fN
@@ -12468,19 +12458,19 @@ fN
 iC
 Zj
 fN
-tG
-tG
-tG
-tG
-tG
-tG
-tG
-tG
-tG
-tG
-tG
-tG
-tG
+fN
+fN
+fN
+fN
+fN
+fN
+fN
+fN
+fN
+fN
+fN
+fN
+fN
 fN
 Zj
 iC
@@ -12752,19 +12742,19 @@ fN
 Zj
 eD
 eD
-Zp
 ZZ
 ZZ
 ZZ
 ZZ
-Zp
-ZZ
-Zp
 ZZ
 ZZ
 ZZ
 ZZ
-Zp
+ZZ
+ZZ
+ZZ
+ZZ
+ZZ
 eD
 eD
 Zj
@@ -12894,19 +12884,19 @@ fN
 fN
 eD
 eD
-eD
-eD
-eD
-eD
-eD
-eD
-eD
-eD
-eD
-eD
-eD
-eD
-eD
+XU
+XU
+XU
+XU
+XU
+XU
+XU
+XU
+XU
+XU
+XU
+XU
+XU
 eD
 eD
 fN

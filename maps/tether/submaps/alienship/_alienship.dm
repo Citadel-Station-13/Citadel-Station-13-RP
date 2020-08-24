@@ -1,25 +1,15 @@
 // -- Datums -- //
 
-/datum/shuttle_destination/excursion/alienship
-	name = "Unknown Ship"
-	my_area = /area/shuttle/excursion/away_alienship
-	preferred_interim_area = /area/shuttle/excursion/space_moving
-	skip_me = TRUE
-
-	routes_to_make = list(
-		/datum/shuttle_destination/excursion/bluespace = 30 SECONDS
-	)
+/obj/effect/overmap/visitable/sector/alienship
+	name = "Unknown Vessel"
+	desc = "An unknown vessel detected by sensors."
+	start_x = 12
+	start_y = 12
+	icon_state = "ship"
+	color = "#ff00ff"	// Sandy
+	initial_generic_waypoints = list("tether_excursion_alienship")
 
 // -- Objs -- //
-
-/obj/shuttle_connector/alienship
-	name = "shuttle connector - alienship"
-	shuttle_name = "Excursion Shuttle"
-	destinations = list(/datum/shuttle_destination/excursion/alienship)
-
-/obj/shuttle_connector/alienship/Initialize(mapload)
-	flags |= INITIALIZED
-	return INITIALIZE_HINT_NORMAL
 
 /obj/away_mission_init/alienship
 	name = "away mission initializer - alienship"

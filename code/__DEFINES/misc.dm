@@ -31,7 +31,7 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 // Turf-only flags.
 #define NOJAUNT 1 // This is used in literally one place, turf.dm, to block ethereal jaunt.
 
-#define TRANSITIONEDGE 7 // Distance from edge to move to another z-level.
+#define TRANSITIONEDGE 1	// Distance from edge to move to another z-level.
 
 // Invisibility constants. These should only be used for TRUE invisibility, AKA nothing living players touch
 #define INVISIBILITY_LIGHTING             20
@@ -134,6 +134,7 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define FORCE_LAUNCH 2
 #define WAIT_ARRIVE  3
 #define WAIT_FINISH  4
+#define DO_AUTOPILOT 5
 
 // Setting this much higher than 1024 could allow spammers to DOS the server easily.
 #define MAX_MESSAGE_LEN       2048 //VOREStation Edit - I'm not sure about "easily". It can be a little longer.
@@ -290,8 +291,9 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 
 #define MIDNIGHT_ROLLOVER		864000	//number of deciseconds in a day
 
-#define WORLD_ICON_SIZE 32 //Needed for the R-UST port
+#define WORLD_ICON_SIZE 32	//Needed for the R-UST port
 #define PIXEL_MULTIPLIER WORLD_ICON_SIZE/32 //Needed for the R-UST port
+#define MAX_CLIENT_VIEW	34	// Maximum effective value of client.view (According to DM references)
 
 // Maploader bounds indices
 #define MAP_MINX 1

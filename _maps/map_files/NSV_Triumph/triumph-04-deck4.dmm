@@ -155,6 +155,12 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/ai)
+"ahN" = (
+/obj/machinery/shipsensors,
+/turf/simulated/floor/plating{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/bridge)
 "ahT" = (
 /obj/machinery/computer/secure_data{
 	dir = 1
@@ -969,11 +975,11 @@
 /turf/simulated/floor/tiled,
 /area/security/security_cell_hallway)
 "aSd" = (
-/obj/structure/flight_left{
-	dir = 8
+/obj/machinery/computer/ship/helm{
+	dir = 4
 	},
 /turf/simulated/shuttle/floor/black,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/cockpit)
 "aSO" = (
 /turf/simulated/wall/r_wall,
 /area/maintenance/security_starboard)
@@ -1189,7 +1195,7 @@
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/structure/anomaly_container,
 /turf/simulated/shuttle/floor/voidcraft,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/cargo)
 "bbx" = (
 /obj/machinery/porta_turret/ai_defense,
 /turf/simulated/floor/tiled/techfloor,
@@ -1756,7 +1762,7 @@
 	dir = 4
 	},
 /turf/simulated/shuttle/plating/airless/carry,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/general)
 "bwx" = (
 /obj/structure/table/reinforced,
 /obj/item/clothing/ears/earmuffs,
@@ -2431,7 +2437,7 @@
 	})
 "bYS" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/general)
 "bZa" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
@@ -2467,9 +2473,9 @@
 /turf/simulated/floor/tiled,
 /area/triumph/station/pathfinder_office)
 "bZy" = (
-/obj/structure/table/rack/shelf,
+/obj/machinery/computer/ship/engines,
 /turf/simulated/shuttle/floor/black,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/cockpit)
 "bZM" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -2526,6 +2532,7 @@
 /obj/machinery/camera/network/command{
 	dir = 9
 	},
+/obj/machinery/computer/ship/navigation,
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "cdk" = (
@@ -3045,7 +3052,7 @@
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/voidcraft,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/general)
 "cwB" = (
 /obj/machinery/gateway{
 	dir = 5
@@ -4177,7 +4184,7 @@
 	specialfunctions = 4
 	},
 /turf/simulated/shuttle/floor/voidcraft,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/general)
 "dxa" = (
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_showers)
@@ -4819,7 +4826,7 @@
 	dir = 5
 	},
 /turf/simulated/shuttle/wall/voidcraft/blue,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/general)
 "dYm" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -4864,7 +4871,7 @@
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/structure/stasis_cage,
 /turf/simulated/shuttle/floor/voidcraft,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/cargo)
 "dZE" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -5553,11 +5560,15 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/chapel/main)
+"eCD" = (
+/obj/machinery/computer/ship/sensors,
+/turf/simulated/floor/tiled/dark,
+/area/bridge)
 "eCV" = (
 /obj/machinery/mineral/equipment_vendor/survey,
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/shuttle/floor/darkred,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/cargo)
 "eDN" = (
 /obj/structure/table/steel,
 /turf/simulated/floor/tiled,
@@ -5842,7 +5853,7 @@
 	power_rating = 20000
 	},
 /turf/simulated/shuttle/wall/voidcraft/blue,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/general)
 "eMq" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
@@ -6691,7 +6702,7 @@
 	},
 /obj/machinery/light,
 /turf/simulated/shuttle/floor/voidcraft,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/cargo)
 "fsz" = (
 /obj/machinery/hologram/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -7073,7 +7084,7 @@
 	id_tag = "shuttlesens_exp_int"
 	},
 /turf/simulated/shuttle/wall/voidcraft/blue,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/general)
 "fJE" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -7332,7 +7343,7 @@
 	pixel_y = 3
 	},
 /turf/simulated/shuttle/floor/voidcraft,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/general)
 "fVF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -7534,6 +7545,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
+"giI" = (
+/obj/effect/overmap/visitable/ship/triumph,
+/turf/space,
+/area/space)
 "giY" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
@@ -7728,11 +7743,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
-"gqN" = (
-/obj/structure/table/steel,
-/obj/item/clothing/head/pilot,
-/turf/simulated/shuttle/floor/black,
-/area/shuttle/excursion/triumph)
 "gqX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -8273,8 +8283,8 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/hop)
 "gQk" = (
-/turf/space,
-/area/shuttle/excursion/triumph_nearby)
+/turf/simulated/shuttle/floor/voidcraft,
+/area/shuttle/excursion/cargo)
 "gQL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -8629,7 +8639,7 @@
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/voidcraft,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/general)
 "hdt" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
@@ -9905,7 +9915,7 @@
 /area/bridge)
 "hYe" = (
 /turf/simulated/shuttle/wall/voidcraft/blue,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/general)
 "hYo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -10067,7 +10077,7 @@
 /area/triumph/station/explorer_medical)
 "ieD" = (
 /turf/simulated/shuttle/floor/voidcraft,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/general)
 "ieU" = (
 /obj/structure/table/bench/wooden,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -10538,13 +10548,11 @@
 	gps_tag = "SHUTTLE";
 	name = "shuttle beacon"
 	},
-/obj/machinery/computer/shuttle_control/web/excursion{
-	dir = 8;
-	my_doors = list("expshuttle_door_L" = "Port Cargo", "expshuttle_door_Ro" = "Airlock Outer", "expshuttle_door_Ri" = "Airlock Inner", "expshuttle_door_cargo" = "Cargo Hatch");
-	my_sensors = list("shuttlesens_exp" = "Exterior Environment", "shuttlesens_exp_int" = "Cargo Area", "shuttlesens_exp_psg" = "Passenger Area")
+/obj/machinery/computer/shuttle_control/explore/excursion{
+	dir = 4
 	},
 /turf/simulated/shuttle/floor/black,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/cockpit)
 "iwY" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -11076,7 +11084,7 @@
 	dir = 8
 	},
 /turf/simulated/shuttle/floor/voidcraft,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/cargo)
 "iSk" = (
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 4
@@ -11806,7 +11814,7 @@
 	pixel_x = -24
 	},
 /turf/simulated/shuttle/floor/voidcraft,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/cargo)
 "jxs" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -11975,6 +11983,10 @@
 /obj/machinery/vending/coffee,
 /turf/simulated/floor/tiled,
 /area/bridge/hallway)
+"jED" = (
+/obj/machinery/door/airlock/voidcraft/vertical,
+/turf/simulated/shuttle/floor/voidcraft,
+/area/shuttle/excursion/cargo)
 "jFj" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -12083,7 +12095,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/structure/closet/emcloset,
+/obj/machinery/computer/ship/engines,
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "jJt" = (
@@ -12195,12 +12207,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/hallway)
-"jOj" = (
-/obj/structure/flight_right{
-	dir = 8
-	},
-/turf/simulated/shuttle/floor/black,
-/area/shuttle/excursion/triumph)
 "jOu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -12541,7 +12547,7 @@
 	id_tag = "expshuttle_docker_pump_out_internal"
 	},
 /turf/simulated/shuttle/floor/voidcraft,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/general)
 "kdI" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
@@ -12644,7 +12650,7 @@
 	id_tag = "expshuttle_vent"
 	},
 /turf/simulated/shuttle/floor/voidcraft,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/general)
 "klp" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -13061,7 +13067,7 @@
 	pixel_y = -24
 	},
 /turf/simulated/shuttle/floor/black,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/cockpit)
 "kJr" = (
 /obj/item/radio/intercom{
 	dir = 8;
@@ -13656,7 +13662,7 @@
 	pixel_x = -32
 	},
 /turf/simulated/shuttle/floor/black,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/cargo)
 "lkD" = (
 /obj/structure/closet/crate/bin{
 	anchored = 1
@@ -13825,10 +13831,9 @@
 /turf/simulated/floor/tiled,
 /area/security/security_equiptment_storage)
 "loF" = (
-/obj/structure/table/rack/shelf,
-/obj/item/clothing/head/pilot,
+/obj/machinery/computer/ship/sensors,
 /turf/simulated/shuttle/floor/black,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/cockpit)
 "loH" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 1
@@ -14288,7 +14293,7 @@
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/machinery/light,
 /turf/simulated/shuttle/floor/voidcraft,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/cargo)
 "lEu" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
@@ -14735,7 +14740,7 @@
 	maxhealth = 300
 	},
 /turf/simulated/shuttle/floor/voidcraft,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/cargo)
 "lTz" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -15067,7 +15072,7 @@
 "mhu" = (
 /obj/machinery/door/airlock/voidcraft/vertical,
 /turf/simulated/shuttle/floor/black,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/general)
 "mhX" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -16333,7 +16338,7 @@
 	id_tag = "shuttlesens_exp_psg"
 	},
 /turf/simulated/shuttle/wall/voidcraft/blue,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/general)
 "ngM" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/blast/regular{
@@ -16499,7 +16504,7 @@
 	id_tag = "expshuttle_docker_pump_out_internal"
 	},
 /turf/simulated/shuttle/floor/voidcraft,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/general)
 "nnL" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -17188,7 +17193,7 @@
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/structure/closet/secure_closet/guncabinet/excursion,
 /turf/simulated/shuttle/floor/darkred,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/cargo)
 "nRT" = (
 /obj/structure/table/rack{
 	dir = 8;
@@ -17337,7 +17342,7 @@
 	dir = 5
 	},
 /turf/simulated/shuttle/wall/voidcraft/blue,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/general)
 "nYp" = (
 /obj/machinery/alarm{
 	dir = 4;
@@ -17427,7 +17432,7 @@
 	},
 /obj/effect/wingrille_spawn/reinforced_phoron,
 /turf/simulated/shuttle/floor/voidcraft,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/general)
 "obs" = (
 /turf/simulated/floor/carpet/bcarpet,
 /area/hallway/secondary/civilian_hallway_mid)
@@ -17565,7 +17570,7 @@
 "oik" = (
 /obj/effect/floor_decal/industrial/warning/full,
 /turf/simulated/shuttle/floor/black,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/general)
 "oiq" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -17625,7 +17630,7 @@
 "okw" = (
 /obj/machinery/recharge_station,
 /turf/simulated/shuttle/floor/voidcraft,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/general)
 "okA" = (
 /obj/machinery/firealarm{
 	layer = 3.3;
@@ -17670,7 +17675,7 @@
 "oln" = (
 /obj/machinery/sleep_console,
 /turf/simulated/shuttle/floor/voidcraft,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/general)
 "olP" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
@@ -17867,8 +17872,14 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "owu" = (
+/obj/effect/shuttle_landmark{
+	base_area = /area/space;
+	base_turf = /turf/space;
+	landmark_tag = "triumph_dockarm_d2l";
+	name = "NSV Triumph - Docking Arm 2"
+	},
 /turf/space,
-/area/shuttle/excursion/triumph_dockarm)
+/area/space)
 "oxu" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
@@ -19386,7 +19397,7 @@
 "pAV" = (
 /obj/machinery/atmospherics/pipe/tank/air,
 /turf/simulated/shuttle/floor/voidcraft,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/cargo)
 "pBe" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -19896,7 +19907,7 @@
 	pixel_x = -27
 	},
 /turf/simulated/shuttle/floor/voidcraft,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/general)
 "pTM" = (
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 8;
@@ -19906,8 +19917,16 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/effect/shuttle_landmark{
+	base_area = /area/triumph/station/excursion_dock;
+	base_turf = /turf/simulated/floor/tiled/techfloor/grid;
+	docking_controller = "expshuttle_dock";
+	landmark_tag = "nav_hanger_excursion";
+	name = "NSV Triumph - Excursion Hanger"
+	},
+/obj/effect/overmap/visitable/ship/landable/excursion,
 /turf/simulated/shuttle/floor/voidcraft,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/general)
 "pUS" = (
 /turf/simulated/wall,
 /area/hallway/primary/aft)
@@ -20138,7 +20157,7 @@
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/voidcraft,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/general)
 "pZf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -20795,7 +20814,7 @@
 	dir = 8
 	},
 /turf/simulated/shuttle/floor/voidcraft,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/general)
 "qss" = (
 /obj/machinery/light{
 	dir = 1
@@ -20868,7 +20887,7 @@
 	dir = 8
 	},
 /turf/simulated/shuttle/floor/voidcraft,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/general)
 "qvn" = (
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/wood,
@@ -20941,7 +20960,7 @@
 "qyn" = (
 /obj/machinery/light,
 /turf/simulated/shuttle/floor/voidcraft,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/cargo)
 "qyp" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
@@ -21581,7 +21600,7 @@
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/effect/floor_decal/industrial/warning/full,
 /turf/simulated/shuttle/floor/voidcraft,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/cargo)
 "qXb" = (
 /turf/simulated/wall/r_wall,
 /area/crew_quarters/sleep/Dorm_2{
@@ -21762,7 +21781,7 @@
 "reI" = (
 /obj/machinery/light,
 /turf/simulated/shuttle/floor/black,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/cockpit)
 "reN" = (
 /turf/simulated/floor/water/pool,
 /area/triumph/surfacebase/sauna)
@@ -22597,7 +22616,7 @@
 	dir = 4
 	},
 /turf/simulated/shuttle/floor/voidcraft,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/general)
 "rGQ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -22618,7 +22637,7 @@
 	dir = 8
 	},
 /turf/simulated/shuttle/floor/voidcraft,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/cargo)
 "rGX" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -22735,7 +22754,7 @@
 	pixel_x = -24
 	},
 /turf/simulated/shuttle/floor/black,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/cargo)
 "rNz" = (
 /obj/structure/bed/chair/comfy/brown,
 /obj/machinery/atm{
@@ -23897,7 +23916,7 @@
 	})
 "sKx" = (
 /turf/simulated/shuttle/floor/black,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/cockpit)
 "sKM" = (
 /obj/effect/floor_decal/techfloor,
 /turf/simulated/floor/tiled/dark,
@@ -23922,7 +23941,7 @@
 	},
 /obj/machinery/light,
 /turf/simulated/shuttle/floor/voidcraft,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/general)
 "sNf" = (
 /obj/structure/bed/chair/comfy/brown,
 /turf/simulated/floor/carpet/bcarpet,
@@ -24158,6 +24177,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
+"sVo" = (
+/obj/machinery/computer/ship/helm,
+/turf/simulated/floor/tiled/dark,
+/area/bridge)
 "sVx" = (
 /obj/structure/table/marble,
 /obj/machinery/chemical_dispenser/bar_soft/full,
@@ -24425,7 +24448,7 @@
 	pixel_y = 28
 	},
 /turf/simulated/shuttle/floor/voidcraft,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/general)
 "tiI" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -24457,7 +24480,7 @@
 	req_one_access = list(13)
 	},
 /turf/space,
-/area/shuttle/excursion/triumph_dockarm)
+/area/space)
 "tlE" = (
 /obj/machinery/fitness/punching_bag/clown,
 /turf/simulated/floor/tiled,
@@ -24956,7 +24979,7 @@
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/simulated/shuttle/floor/voidcraft,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/cargo)
 "tJG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -25052,7 +25075,7 @@
 	id_tag = "shuttlesens_exp"
 	},
 /turf/simulated/shuttle/wall/voidcraft/blue,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/general)
 "tOa" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -25172,6 +25195,15 @@
 /obj/effect/floor_decal/corner/red/border,
 /turf/simulated/floor/tiled,
 /area/security/hallway)
+"tUV" = (
+/obj/effect/shuttle_landmark{
+	base_area = /area/space;
+	base_turf = /turf/space;
+	landmark_tag = "triumph_space_SW";
+	name = "Near NSV Triumph (SW)"
+	},
+/turf/space,
+/area/space)
 "tUY" = (
 /obj/machinery/alarm{
 	pixel_y = 22
@@ -25235,6 +25267,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/lawoffice)
+"tWp" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/turf/simulated/shuttle/floor/voidcraft,
+/area/shuttle/excursion/cargo)
 "tWS" = (
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled,
@@ -25498,7 +25536,7 @@
 	dir = 8
 	},
 /turf/simulated/shuttle/wall/voidcraft/blue,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/general)
 "ugo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -25668,7 +25706,7 @@
 	dir = 4
 	},
 /turf/simulated/shuttle/wall/voidcraft/blue,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/general)
 "umg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -26955,7 +26993,7 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/space_heater,
 /turf/simulated/shuttle/floor/darkred,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/cargo)
 "vhy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -28776,12 +28814,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/range)
-"wDf" = (
-/obj/structure/bed/chair/shuttle{
-	dir = 8
-	},
-/turf/simulated/shuttle/floor/black,
-/area/shuttle/excursion/triumph)
 "wDl" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/tiled/dark,
@@ -29654,7 +29686,7 @@
 "xnp" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central6,
 /turf/simulated/shuttle/floor/voidcraft,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/cargo)
 "xnz" = (
 /obj/machinery/light,
 /turf/simulated/floor/wood,
@@ -30300,7 +30332,7 @@
 /obj/machinery/portable_atmospherics/powered/pump/filled,
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/shuttle/floor/darkred,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/cargo)
 "xMj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -30355,7 +30387,7 @@
 "xOw" = (
 /obj/effect/wingrille_spawn/reinforced_phoron,
 /turf/simulated/shuttle/floor/voidcraft,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/general)
 "xOD" = (
 /obj/machinery/power/apc{
 	name = "south bump";
@@ -30771,7 +30803,7 @@
 "yfe" = (
 /obj/machinery/door/airlock/voidcraft/vertical,
 /turf/simulated/shuttle/floor/voidcraft,
-/area/shuttle/excursion/triumph)
+/area/shuttle/excursion/general)
 "yfj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -31221,7 +31253,7 @@ nIK
 nIK
 nIK
 nIK
-nIK
+giI
 nIK
 "}
 (3,1,1) = {"
@@ -32618,12 +32650,12 @@ nIK
 nIK
 nIK
 nIK
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 nIK
 nIK
@@ -32760,12 +32792,12 @@ nIK
 nIK
 nIK
 nIK
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 nIK
 nIK
@@ -32850,10 +32882,10 @@ xsI
 xsI
 xsI
 hYe
-jOj
+sKx
 iwU
 aSd
-gqN
+sKx
 hYe
 xsI
 mAF
@@ -32902,12 +32934,12 @@ nIK
 nIK
 nIK
 nIK
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 nIK
 nIK
@@ -32993,8 +33025,8 @@ xsI
 xsI
 hYe
 loF
-wDf
-wDf
+sKx
+sKx
 reI
 hYe
 oJL
@@ -33044,12 +33076,12 @@ nIK
 nIK
 nIK
 nIK
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 nIK
 nIK
@@ -33186,12 +33218,12 @@ nIK
 nIK
 nIK
 nIK
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 nIK
 nIK
@@ -33328,12 +33360,12 @@ nIK
 nIK
 nIK
 nIK
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 nIK
 nIK
@@ -33470,12 +33502,12 @@ nIK
 nIK
 nIK
 nIK
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 nIK
 nIK
@@ -33611,13 +33643,13 @@ nIK
 nIK
 nIK
 nIK
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 nIK
 nIK
@@ -33750,16 +33782,16 @@ nIK
 nIK
 nIK
 nIK
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 nIK
 nIK
@@ -33892,16 +33924,16 @@ nIK
 nIK
 nIK
 nIK
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 nIK
 nIK
@@ -34034,16 +34066,16 @@ nIK
 nIK
 nIK
 nIK
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 nIK
 nIK
@@ -34176,16 +34208,16 @@ nIK
 nIK
 nIK
 nIK
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 nIK
 nIK
@@ -34318,16 +34350,16 @@ nIK
 nIK
 nIK
 nIK
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 nIK
 nIK
@@ -34460,16 +34492,16 @@ nIK
 nIK
 nIK
 nIK
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
+nIK
+tUV
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 nIK
 nIK
@@ -34602,16 +34634,16 @@ nIK
 nIK
 nIK
 nIK
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 nIK
 nIK
@@ -34744,16 +34776,16 @@ nIK
 nIK
 nIK
 nIK
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 nIK
 nIK
@@ -34839,8 +34871,8 @@ iRC
 pAV
 rGT
 jxo
-pYO
-ieD
+tWp
+gQk
 tIx
 hYe
 xsI
@@ -34886,16 +34918,16 @@ nIK
 nIK
 nIK
 nIK
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 nIK
 nIK
@@ -34977,12 +35009,12 @@ mAF
 ouB
 hYe
 qXa
-ieD
-ieD
-ieD
-ieD
-pYO
-ieD
+gQk
+gQk
+gQk
+gQk
+tWp
+gQk
 qyn
 hYe
 xsI
@@ -35028,16 +35060,16 @@ nIK
 nIK
 nIK
 nIK
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
-gQk
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 nIK
 nIK
@@ -35118,14 +35150,14 @@ dff
 mAF
 alS
 hYe
-ieD
+gQk
 xnp
 hYe
 fJc
 dwl
 hYe
-yfe
-yfe
+jED
+jED
 hYe
 uKG
 mAF
@@ -35170,16 +35202,16 @@ nIK
 nIK
 nIK
 nIK
-gQk
-gQk
-gQk
-gQk
 nIK
 nIK
-gQk
-gQk
-gQk
-gQk
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 nIK
 nIK
@@ -35260,7 +35292,7 @@ dff
 mAF
 ifm
 hYe
-ieD
+gQk
 fse
 hYe
 xsI
@@ -35312,16 +35344,16 @@ nIK
 nIK
 nIK
 nIK
-gQk
-gQk
-gQk
-gQk
 nIK
 nIK
-gQk
-gQk
-gQk
-gQk
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 nIK
 nIK
@@ -35454,16 +35486,16 @@ nIK
 nIK
 nIK
 nIK
-gQk
-gQk
-gQk
-gQk
 nIK
 nIK
-gQk
-gQk
-gQk
-gQk
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 nIK
 nIK
@@ -35596,16 +35628,16 @@ nIK
 nIK
 nIK
 nIK
-gQk
-gQk
-gQk
-gQk
 nIK
 nIK
-gQk
-gQk
-gQk
-gQk
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 nIK
 nIK
@@ -43183,12 +43215,12 @@ nIK
 nIK
 nIK
 nIK
-owu
-owu
-owu
-owu
-owu
-owu
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 pkc
 nIK
@@ -43325,12 +43357,12 @@ nIK
 nIK
 nIK
 nIK
-owu
-owu
-owu
-owu
-owu
-owu
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 pkc
 pkc
@@ -43467,12 +43499,12 @@ nIK
 nIK
 nIK
 nIK
-owu
-owu
-owu
-owu
-owu
-owu
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 pkc
 kgT
@@ -43609,12 +43641,12 @@ nIK
 nIK
 nIK
 nIK
-owu
-owu
-owu
-owu
-owu
-owu
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 pkc
 nIK
@@ -43751,12 +43783,12 @@ nIK
 nIK
 nIK
 nIK
-owu
-owu
-owu
-owu
-owu
-owu
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 clY
 nIK
@@ -43893,12 +43925,12 @@ nIK
 nIK
 nIK
 nIK
-owu
-owu
-owu
-owu
-owu
-owu
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 clY
 nIK
@@ -44035,12 +44067,12 @@ nIK
 nIK
 nIK
 nIK
-owu
-owu
-owu
-owu
-owu
-owu
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 clY
 nIK
@@ -44176,13 +44208,13 @@ nIK
 nIK
 nIK
 nIK
-owu
-owu
-owu
-owu
-owu
-owu
-owu
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 clY
 nIK
@@ -44315,16 +44347,16 @@ ctC
 qKH
 nIK
 nIK
-owu
-owu
-owu
-owu
-owu
-owu
-owu
-owu
-owu
-owu
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 clY
 nIK
@@ -44457,16 +44489,16 @@ opn
 nPD
 nIK
 nIK
-owu
-owu
-owu
-owu
-owu
-owu
-owu
-owu
-owu
-owu
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 clY
 nIK
@@ -44599,16 +44631,16 @@ hSs
 nPD
 nIK
 nIK
-owu
-owu
-owu
-owu
-owu
-owu
-owu
-owu
-owu
-owu
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 clY
 kgT
@@ -44741,16 +44773,16 @@ ctC
 nPD
 nPD
 nPD
-owu
-owu
-owu
-owu
-owu
-owu
-owu
-owu
-owu
-owu
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 clY
 nIK
@@ -44885,14 +44917,14 @@ lAR
 crT
 tkT
 owu
-owu
-owu
-owu
-owu
-owu
-owu
-owu
-owu
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 clY
 nIK
@@ -45025,16 +45057,16 @@ gHU
 uxk
 slh
 crT
-owu
-owu
-owu
-owu
-owu
-owu
-owu
-owu
-owu
-owu
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 clY
 nIK
@@ -45167,16 +45199,16 @@ nPD
 nPD
 nPD
 nPD
-owu
-owu
-owu
-owu
-owu
-owu
-owu
-owu
-owu
-owu
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 pkc
 nIK
@@ -45309,16 +45341,16 @@ nIK
 nIK
 nIK
 nIK
-owu
-owu
-owu
-owu
-owu
-owu
-owu
-owu
-owu
-owu
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 pkc
 nIK
@@ -45451,16 +45483,16 @@ nIK
 nIK
 nIK
 nIK
-owu
-owu
-owu
-owu
-owu
-owu
-owu
-owu
-owu
-owu
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 pkc
 nIK
@@ -45593,16 +45625,16 @@ nIK
 nIK
 nIK
 nIK
-owu
-owu
-owu
-owu
-owu
-owu
-owu
-owu
-owu
-owu
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 pkc
 nIK
@@ -45735,16 +45767,16 @@ nIK
 nIK
 nIK
 nIK
-owu
-owu
-owu
-owu
 nIK
 nIK
-owu
-owu
-owu
-owu
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 clY
 nIK
@@ -45877,16 +45909,16 @@ nIK
 nIK
 nIK
 nIK
-owu
-owu
-owu
-owu
 nIK
 nIK
-owu
-owu
-owu
-owu
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 pkc
 kgT
@@ -46019,16 +46051,16 @@ nIK
 nIK
 nIK
 nIK
-owu
-owu
-owu
-owu
 nIK
 nIK
-owu
-owu
-owu
-owu
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 clY
 nIK
@@ -46161,16 +46193,16 @@ nIK
 nIK
 nIK
 nIK
-owu
-owu
-owu
-owu
 nIK
 nIK
-owu
-owu
-owu
-owu
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 nIK
 pkc
 nIK
@@ -49178,8 +49210,8 @@ nIK
 pkc
 nIK
 nIK
-nIK
-dff
+duy
+ahN
 duy
 duy
 hba
@@ -49320,7 +49352,7 @@ nIK
 clY
 nIK
 nIK
-nIK
+duy
 nIK
 duy
 duy
@@ -49328,9 +49360,9 @@ lUu
 vJX
 lql
 jIv
-pox
+sVo
 cda
-pox
+eCD
 kwc
 qGF
 pQT

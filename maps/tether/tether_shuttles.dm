@@ -7,13 +7,30 @@
 	shuttle_tag = "Tether Backup"
 	req_one_access = list(access_heads,access_pilot)
 
-/obj/machinery/computer/shuttle_control/multi/tether_antag_ground
-	name = "land crawler control console"
-	shuttle_tag = "Land Crawler"
+/obj/machinery/computer/shuttle_control/multi/mercenary
+	name = "vessel control console"
+	shuttle_tag = "Mercenary"
+	req_one_access = list(access_syndicate)
 
-/obj/machinery/computer/shuttle_control/multi/tether_antag_space
-	name = "protoshuttle control console"
-	shuttle_tag = "Proto"
+/obj/machinery/computer/shuttle_control/multi/ninja
+	name = "vessel control console"
+	shuttle_tag = "Ninja"
+	//req_one_access = list()
+
+/obj/machinery/computer/shuttle_control/multi/skipjack
+	name = "vessel control console"
+	shuttle_tag = "Skipjack"
+	//req_one_access = list()
+
+/obj/machinery/computer/shuttle_control/multi/specops
+	name = "vessel control console"
+	shuttle_tag = "NDV Phantom"
+	req_one_access = list(access_cent_specops)
+
+/obj/machinery/computer/shuttle_control/multi/trade
+	name = "vessel control console"
+	shuttle_tag = "Trade"
+	req_one_access = list(access_trader)
 
 /*
 /obj/machinery/computer/shuttle_control/cruiser_shuttle
@@ -164,138 +181,54 @@
 	return 1
 */
 
+
 ////////////////////////////////////////
 //////// Excursion Shuttle /////////////
 ////////////////////////////////////////
-/obj/machinery/computer/shuttle_control/web/excursion
-	name = "shuttle control console"
-	shuttle_tag = "Excursion Shuttle"
-	req_access = list()
-	req_one_access = list(access_heads,access_explorer,access_pilot)
-	var/wait_time = 45 MINUTES
 
-/obj/machinery/computer/shuttle_control/web/excursion/ui_interact()
-	if(world.time < wait_time)
-		to_chat(usr,"<span class='warning'>The console is locked while the shuttle refuels. It will be complete in [round((wait_time - world.time)/10/60)] minute\s.</span>")
-		return FALSE
-
-	. = ..()
-
-/datum/shuttle/web_shuttle/excursion
+// The 'shuttle' of the excursion shuttle
+/datum/shuttle/autodock/overmap/excursion
 	name = "Excursion Shuttle"
 	warmup_time = 0
-	current_area = /area/shuttle/excursion/tether
+	current_location = "tether_excursion_hangar"
 	docking_controller_tag = "expshuttle_docker"
-	web_master_type = /datum/shuttle_web_master/excursion
-	var/abduct_chance = 0.5 //Prob
+	shuttle_area = list(/area/shuttle/excursion/cockpit, /area/shuttle/excursion/general, /area/shuttle/excursion/cargo)
+	fuel_consumption = 3
 
-/datum/shuttle/autodock/web_shuttle/excursion/long_jump(var/obj/effect/shuttle_landmark/destination, var/obj/effect/shuttle_landmark/interim, var/travel_time)
-	. = ..()
-	if(prob(abduct_chance))
-		abduct_chance = 0
-		for(var/area/A in shuttle_area)
-			for(var/mob/living/L in A)
-				occupants += key_name(L)
-			occupants += key_name(L)
-		log_and_message_admins("Shuttle abduction occuring with (only mobs on turfs): [english_list(occupants)]")
-		//Build the route to the alien ship
-		var/obj/shuttle_connector/alienship/ASC = new /obj/shuttle_connector/alienship(null)
-		ASC.setup_routes()
+// The 'ship' of the excursion shuttle
+/obj/effect/overmap/visitable/ship/landable/excursion
+	name = "Excursion Shuttle"
+	desc = "The traditional Excursion Shuttle. NT Approved!"
+	vessel_mass = 10000
+	vessel_size = SHIP_SIZE_SMALL
+	shuttle = "Excursion Shuttle"
 
-		//Redirect us onto that route instead
-		var/datum/shuttle/autodock/web_shuttle/WS = shuttle_controller.shuttles[name]
-		var/datum/shuttle_destination/ASD = WS.web_master.get_destination_by_type(/datum/shuttle_destination/excursion/alienship)
-		WS.web_master.future_destination = ASD
-		. = ..(ASD.my_landmark,interim,travel_time)
-	else
-		. = ..()
-
-/datum/shuttle_web_master/excursion
-	destination_class = /datum/shuttle_destination/excursion
-	starting_destination = /datum/shuttle_destination/excursion/tether
-
-/datum/shuttle_destination/excursion/tether
-	name = "NSB Adephagia Excursion Hangar"
-	my_area = /area/shuttle/excursion/tether
-
-	dock_target = "expshuttle_dock"
-	radio_announce = 1
-	announcer = "Excursion Shuttle"
-
-	routes_to_make = list(
-		/datum/shuttle_destination/excursion/outside_tether = 0,
-	)
-
-/datum/shuttle_destination/excursion/tether/get_arrival_message()
-	return "Attention, [master.my_shuttle.visible_name] has arrived at the Excursion Hangar."
-
-/datum/shuttle_destination/excursion/tether/get_departure_message()
-	return "Attention, [master.my_shuttle.visible_name] has departed from the Excursion Hangar."
+/obj/machinery/computer/shuttle_control/explore/excursion
+	name = "short jump console"
+	shuttle_tag = "Excursion Shuttle"
+	req_one_access = list(access_pilot)
 
 
-/datum/shuttle_destination/excursion/outside_tether
-	name = "Nearby NSB Adephagia"
-	my_area = /area/shuttle/excursion/tether_nearby
-	preferred_interim_area = /area/shuttle/excursion/space_moving
+////////////////////////////////////////
+////////      Tour Bus     /////////////
+////////////////////////////////////////
+/datum/shuttle/autodock/overmap/tourbus
+	name = "Tour Bus"
+	warmup_time = 0
+	current_location = "tourbus_dock"
+	docking_controller_tag = "tourbus_docker"
+	shuttle_area = list(/area/shuttle/tourbus/cockpit, /area/shuttle/tourbus/general, /area/shuttle/tourbus/engines)
+	fuel_consumption = 1
 
-	routes_to_make = list(
-		/datum/shuttle_destination/excursion/docked_tether = 0,
-		/datum/shuttle_destination/excursion/virgo3b_orbit = 30 SECONDS
-	)
+// The 'ship' of the tourbus
+/obj/effect/overmap/visitable/ship/landable/tourbus
+	name = "Tour Bus"
+	desc = "A small 'space bus', if you will."
+	vessel_mass = 2000
+	vessel_size = SHIP_SIZE_SMALL
+	shuttle = "Tour Bus"
 
-
-/datum/shuttle_destination/excursion/docked_tether
-	name = "NSB Adephagia Docking Arm"
-	my_area = /area/shuttle/excursion/tether_dockarm
-
-	dock_target = "d1a2_dock"
-	radio_announce = 1
-	announcer = "Excursion Shuttle"
-
-/datum/shuttle_destination/excursion/docked_tether/get_arrival_message()
-	return "Attention, [master.my_shuttle.visible_name] has arrived at Docking Arm One."
-
-/datum/shuttle_destination/excursion/docked_tether/get_departure_message()
-	return "Attention, [master.my_shuttle.visible_name] has departed from Docking Arm One."
-
-
-/datum/shuttle_destination/excursion/tether_surface
-	name = "NSB Adephagia Surface Landing Pad"
-	my_area = /area/shuttle/excursion/tether_surface
-
-	dock_target = "expshuttle_surface3pad"
-	radio_announce = 1
-	announcer = "Excursion Shuttle"
-
-/datum/shuttle_destination/excursion/tether_surface/get_arrival_message()
-	return "Attention, [master.my_shuttle.visible_name] has arrived at Surface 3 Landing Pad."
-
-/datum/shuttle_destination/excursion/tether_surface/get_departure_message()
-	return "Attention, [master.my_shuttle.visible_name] has departed from Surface 3 Landing Pad."
-
-
-/datum/shuttle_destination/excursion/virgo3b_orbit
-	name = "Virgo 3B Orbit"
-	my_area = /area/shuttle/excursion/space
-	preferred_interim_area = /area/shuttle/excursion/space_moving
-
-	routes_to_make = list(
-		/datum/shuttle_destination/excursion/virgo3b_sky = 30 SECONDS,
-		/datum/shuttle_destination/excursion/bluespace = 30 SECONDS
-	)
-
-
-/datum/shuttle_destination/excursion/virgo3b_sky
-	name = "Skies of Virgo 3B"
-	my_area = /area/shuttle/excursion/virgo3b_sky
-	preferred_interim_area = /area/shuttle/excursion/virgo3b_moving
-
-	routes_to_make = list(
-		/datum/shuttle_destination/excursion/tether_surface = 30 SECONDS
-	)
-
-////////// Distant Destinations
-/datum/shuttle_destination/excursion/bluespace
-	name = "Bluespace Jump"
-	my_area = /area/shuttle/excursion/bluespace
-	preferred_interim_area = /area/shuttle/excursion/space_moving
+/obj/machinery/computer/shuttle_control/explore/tourbus
+	name = "short jump console"
+	shuttle_tag = "Tour Bus"
+	req_one_access = list(access_pilot)

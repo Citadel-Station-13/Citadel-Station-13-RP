@@ -5,6 +5,7 @@
 /obj/effect/overmap/visitable
 	name = "map object"
 	scannable = TRUE
+	scanner_desc = "!! No Data Available !!"
 
 	var/list/map_z = list()
 	var/list/extra_z_levels	// If you need to manually insist that these z-levels are part of this sector, for things like edge-of-map step trigger transitions rather than multi-z complexes
@@ -76,6 +77,12 @@
 		GLOB.using_map.contact_levels |= map_z
 		GLOB.using_map.map_levels |= map_z
 
+/obj/effect/overmap/visitable/proc/get_space_zlevels()
+	if(in_space)
+		return map_z
+	else
+		return list()
+
 // Helper for init.
 /obj/effect/overmap/visitable/proc/check_ownership(obj/object)
 	if((object.z in map_z) && !(get_area(object) in SSshuttle.shuttle_areas))
@@ -109,6 +116,21 @@
 /obj/effect/overmap/visitable/proc/generate_skybox()
 	return
 
+/obj/effect/overmap/visitable/MouseEntered(location, control, params)
+	openToolTip(user = usr, tip_src = src, params = params, title = name)
+
+	..()
+
+/obj/effect/overmap/visitable/MouseDown()
+	closeToolTip(usr)	// No reason not to, really
+
+	..()
+
+/obj/effect/overmap/visitable/MouseExited()
+	closeToolTip(usr)	// No reason not to, really
+
+	..()
+
 /obj/effect/overmap/visitable/sector
 	name = "generic sector"
 	desc = "Sector with some stuff in it."
@@ -131,7 +153,7 @@
 	var/area/overmap/A = new
 	for (var/square in block(locate(1,1,GLOB.using_map.overmap_z), locate(GLOB.using_map.overmap_size,GLOB.using_map.overmap_size,GLOB.using_map.overmap_z)))
 		var/turf/T = square
-		if(T.x == GLOB.using_map.overmap_size || T.y == GLOB.using_map.overmap_size)
+		if(T.x == 1 || T.y == 1 || T.x == GLOB.using_map.overmap_size || T.y == GLOB.using_map.overmap_size)
 			T = T.ChangeTurf(/turf/unsimulated/map/edge)
 		else
 			T = T.ChangeTurf(/turf/unsimulated/map)

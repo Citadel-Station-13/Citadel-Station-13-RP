@@ -1,20 +1,12 @@
 // -- Datums -- //
-/datum/shuttle_destination/excursion/debrisfield
+/obj/effect/overmap/visitable/sector/debrisfield
 	name = "Debris Field"
-	my_landmark = "triumph_excursion_debrisfield"
-	preferred_interim_tag = "triumph_excursion_transit_space"
-	skip_me = TRUE
-
-	routes_to_make = list( //These are routes the shuttle connects to,
-		/datum/shuttle_destination/excursion/bluespace = 30 SECONDS //This is a normal destination that's part of this map
-	)
+	desc = "Space junk galore."
+	icon_state = "dust1"
+	known = FALSE
+	initial_generic_waypoints = list("triumph_excursion_debrisfield")
 
 // -- Objs -- //
-
-/obj/shuttle_connector/debrisfield
-	name = "shuttle connector - debrisfield"
-	shuttle_name = "Excursion Shuttle"
-	destinations = list(/datum/shuttle_destination/excursion/debrisfield)
 
 /obj/effect/step_trigger/teleporter/debrisfield_loop/north/New()
 	..()
@@ -40,7 +32,7 @@
 	teleport_y = y
 	teleport_z = z
 
-//POI Init
+//This does nothing right now, but is framework if we do POIs for this place
 /obj/away_mission_init/debrisfield
 	name = "away mission initializer - debrisfield"
 

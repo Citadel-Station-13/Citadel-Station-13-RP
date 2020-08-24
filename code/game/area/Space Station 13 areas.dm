@@ -26,6 +26,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	always_unpowered = 1
 	dynamic_lighting = 0
 	power_light = 0
+	has_gravity = 0
 	power_equip = 0
 	power_environ = 0
 	base_turf = /turf/space

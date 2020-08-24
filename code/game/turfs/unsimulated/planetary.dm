@@ -13,7 +13,7 @@
 	// Set these to get your desired planetary atmosphere.
 	initial_gas_mix = GAS_STRING_STP
 
-/turf/unsimulated/wall/planetary/Initialize(mapload)
+/turf/unsimulated/wall/planetary/Initialize()
 	. = ..()
 	SSplanets.addTurf(src)
 

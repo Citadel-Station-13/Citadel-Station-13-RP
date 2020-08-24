@@ -15,6 +15,7 @@
 /datum/map_z_level/triumph_lateload/misc
 	name = "Misc"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_SEALED
+	z = Z_LEVEL_MISC
 
 /datum/map_template/triumph_lateload/triumph_ships
 	name = "Triumph - Ships"
@@ -230,7 +231,7 @@
 				my_mob.max_tox = gaslist[/datum/gas/phoron] * 1.2
 				my_mob.max_n2 = gaslist[/datum/gas/nitrogen] * 1.2
 				my_mob.max_co2 = gaslist[/datum/gas/carbon_dioxide] * 1.2
-/* //VORESTATION AI TEMPORARY REMOVAL
+/* // AI TEMPORARY REMOVAL
 		if(guard)
 			my_mob.returns_home = TRUE
 			my_mob.wander_distance = guard

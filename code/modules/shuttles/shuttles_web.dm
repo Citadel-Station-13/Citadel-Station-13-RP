@@ -5,7 +5,7 @@
 	var/cloaked = FALSE
 	var/can_cloak = FALSE
 	var/cooldown = 0
-	var/last_move = 0	// The time at which we last moved
+	var/last_move = 0		// The time at which we last moved
 	var/datum/shuttle_web_master/web_master = null
 	var/web_master_type = null
 	var/flight_time_modifier = 1.0
@@ -13,7 +13,7 @@
 	var/can_autopilot = FALSE
 	var/autopilot_delay = 60	// How many ticks to not do anything when not following an autopath. Should equal two minutes.
 	var/autopilot_first_delay = null	// If your want your shuttle to stay for a different amount of time for the first time, set this.
-	var/can_rename = TRUE	// Lets the pilot rename the shuttle. Only available once.
+	var/can_rename = TRUE		// Lets the pilot rename the shuttle. Only available once.
 	category = /datum/shuttle/autodock/web_shuttle
 	var/list/obj/item/clothing/head/pilot/helmets
 
@@ -22,6 +22,7 @@
 	build_destinations()
 	if(autopilot)
 		flags |= SHUTTLE_FLAGS_PROCESS
+		process_state = DO_AUTOPILOT
 		if(autopilot_first_delay)
 			autopilot_delay = autopilot_first_delay
 	if(!visible_name)
@@ -43,8 +44,6 @@
 /datum/shuttle/autodock/web_shuttle/perform_shuttle_move()
 	..()
 	last_move = world.time
-	active_docking_controller = current_location.docking_controller
-	update_docking_target(current_location)
 
 /datum/shuttle/autodock/web_shuttle/short_jump()
 	. = ..()
@@ -61,6 +60,8 @@
 
 /datum/shuttle/autodock/web_shuttle/on_shuttle_arrival()
 	. = ..()
+	active_docking_controller = current_location.docking_controller
+	update_docking_target(current_location)
 	web_master.on_shuttle_arrival()
 	update_helmets()
 
@@ -131,11 +132,15 @@
 		autopilot = TRUE
 		autopilot_delay = initial(autopilot_delay)
 		SSshuttle.process_shuttles |= src
+		if(process_state == IDLE_STATE)
+			process_state = DO_AUTOPILOT
 	else
 		if(!autopilot)
 			return
 		autopilot = FALSE
 		SSshuttle.process_shuttles -= src
+		if (process_state == DO_AUTOPILOT)
+			process_state = initial(process_state)
 
 /datum/shuttle/autodock/web_shuttle/proc/autopilot_say(message)	// Makes the autopilot 'talk' to the passengers.
 	var/padded_message = "<span class='game say'><span class='name'>shuttle autopilot</span> states, \"[message]\"</span>"

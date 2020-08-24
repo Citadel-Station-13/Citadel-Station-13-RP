@@ -40,8 +40,14 @@
 /area/tether_away/aerostat/surface/explored)
 "Q" = (
 /obj/effect/floor_decal/rust,
+/obj/effect/shuttle_landmark{
+	base_area = /area/tether_away/aerostat/surface/explored;
+	base_turf = /turf/simulated/floor/tiled/techfloor/virgo2;
+	landmark_tag = "aerostat_surface";
+	name = "Virgo 2 Surface"
+	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
-/area/shuttle/aerostat/landed)
+/area/tether_away/aerostat/surface/explored)
 "V" = (
 /obj/structure/railing,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,

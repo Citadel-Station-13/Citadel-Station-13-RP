@@ -3,31 +3,9 @@
 	icon_state = "fwindow"
 	maxhealth = 80
 
-//Special map objects
+// Special map objects
 /obj/effect/landmark/map_data/triumph
-    height = 4
-/*
-/obj/turbolift_map_holder/tether
-	name = "Tether Climber"
-	depth = 7
-	lift_size_x = 3
-	lift_size_y = 3
-	icon = 'icons/obj/turbolift_preview_3x3.dmi'
-	wall_type = null // Don't make walls
-
-	areas_to_use = list(
-		/area/turbolift/t_surface/level1,
-		/area/turbolift/t_surface/level2,
-		/area/turbolift/t_surface/level3,
-		/area/turbolift/tether/transit,
-		/area/turbolift/t_station/level1,
-		/area/turbolift/t_station/level2,
-		/area/turbolift/t_station/level3
-		)
-
-/datum/turbolift
-	music = list('sound/music/elevator.ogg')  // Woo elevator music!
-*/
+	height = 4
 
 /obj/effect/step_trigger/lost_in_space
 	var/deathmessage = "You drift off into space, floating alone in the void until your life support runs out."

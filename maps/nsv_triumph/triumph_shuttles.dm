@@ -7,13 +7,30 @@
 	shuttle_tag = "Triumph Backup"
 	req_one_access = list(access_heads,access_pilot)
 
-/obj/machinery/computer/shuttle_control/multi/triumph_antag_ground
-	name = "land crawler control console"
-	shuttle_tag = "Land Crawler"
+/obj/machinery/computer/shuttle_control/multi/mercenary
+	name = "vessel control console"
+	shuttle_tag = "Mercenary"
+	req_one_access = list(access_syndicate)
 
-/obj/machinery/computer/shuttle_control/multi/triumph_antag_space
-	name = "protoshuttle control console"
-	shuttle_tag = "Proto"
+/obj/machinery/computer/shuttle_control/multi/ninja
+	name = "vessel control console"
+	shuttle_tag = "Ninja"
+	//req_one_access = list()
+
+/obj/machinery/computer/shuttle_control/multi/skipjack
+	name = "vessel control console"
+	shuttle_tag = "Skipjack"
+	//req_one_access = list()
+
+/obj/machinery/computer/shuttle_control/multi/specops
+	name = "vessel control console"
+	shuttle_tag = "NDV Phantom"
+	req_one_access = list(access_cent_specops)
+
+/obj/machinery/computer/shuttle_control/multi/trade
+	name = "vessel control console"
+	shuttle_tag = "Trade"
+	req_one_access = list(access_trader)
 
 /*
 /obj/machinery/computer/shuttle_control/cruiser_shuttle
@@ -59,21 +76,21 @@
 // The backup triumph shuttle uses experimental engines and can degrade and/or crash!
 //
 /* //Disabling the crash mechanics per request
-/datum/shuttle/autodock/ferry/tether_backup
+/datum/shuttle/autodock/ferry/triumph_backup
 	crash_message = "Triumph shuttle distress signal received. Shuttle location is approximately 200 meters from triumph base."
-	category = /datum/shuttle/autodock/ferry/tether_backup // So SSshuttle.dm doesn't try and instantiate this type as an acutal mapped in shuttle.
+	category = /datum/shuttle/autodock/ferry/triumph_backup // So SSshuttle.dm doesn't try and instantiate this type as an acutal mapped in shuttle.
 	var/list/engines = list()
-	var/obj/machinery/computer/shuttle_control/tether_backup/computer
+	var/obj/machinery/computer/shuttle_control/triumph_backup/computer
 
-/datum/shuttle/autodock/ferry/tether_backup/New()
+/datum/shuttle/autodock/ferry/triumph_backup/New()
 	..()
 	var/area/current_area = get_location_area(location)
 	for(var/obj/structure/shuttle/engine/propulsion/E in current_area)
 		engines += E
-	for(var/obj/machinery/computer/shuttle_control/tether_backup/comp in current_area)
+	for(var/obj/machinery/computer/shuttle_control/triumph_backup/comp in current_area)
 		computer = comp
 
-/datum/shuttle/autodock/ferry/tether_backup/process_longjump(var/area/origin, var/area/intended_destination)
+/datum/shuttle/autodock/ferry/triumph_backup/process_longjump(var/area/origin, var/area/intended_destination)
 	var/failures = engines.len
 	for(var/engine in engines)
 		var/obj/structure/shuttle/engine/E = engine
@@ -164,115 +181,55 @@
 	return 1
 */
 
+
 ////////////////////////////////////////
 //////// Excursion Shuttle /////////////
 ////////////////////////////////////////
-/obj/machinery/computer/shuttle_control/web/excursion
-	name = "shuttle control console"
-	shuttle_tag = "Excursion Shuttle"
-	req_access = list()
-	req_one_access = list(access_heads,access_explorer,access_pilot)
-	var/wait_time = 1 MINUTES
 
-/obj/machinery/computer/shuttle_control/web/excursion/ui_interact()
-	if(world.time < wait_time)
-		to_chat(usr,"<span class='warning'>The console is locked while the shuttle refuels. It will be complete in [round((wait_time - world.time)/10/60)] minute\s.</span>")
-		return FALSE
-
-	. = ..()
-
-/datum/shuttle/autodock/web_shuttle/excursion
+// The 'shuttle' of the excursion shuttle
+/datum/shuttle/autodock/overmap/excursion
 	name = "Excursion Shuttle"
 	warmup_time = 0
-	current_location = "tether_excursion_hangar"
+	current_location = "triumph_excursion_hangar"
 	docking_controller_tag = "expshuttle_docker"
-	web_master_type = /datum/shuttle_web_master/excursion
-	shuttle_area = /area/shuttle/excursion
-	var/abduct_chance = 0 //Prob
+	shuttle_area = list(/area/shuttle/excursion/cockpit, /area/shuttle/excursion/general, /area/shuttle/excursion/cargo)
+	//fuel_consumption = 3
+	fuel_consumption = 0	//inf fuel for testing purposes
 
-/datum/shuttle/autodock/web_shuttle/excursion/long_jump(var/obj/effect/shuttle_landmark/destination, var/obj/effect/shuttle_landmark/interim, var/travel_time)/* abduction removed for now
-	. = ..()
-	if(prob(abduct_chance))
-		abduct_chance = 0
-		for(var/area/A in shuttle_area)
-			for(var/mob/living/L in A)
-				occupants += key_name(L)
-			occupants += key_name(L)
-		log_and_message_admins("Shuttle abduction occuring with (only mobs on turfs): [english_list(occupants)]")
-		//Build the route to the alien ship
-		var/obj/shuttle_connector/alienship/ASC = new /obj/shuttle_connector/alienship(null)
-		ASC.setup_routes()
+// The 'ship' of the excursion shuttle
+/obj/effect/overmap/visitable/ship/landable/excursion
+	name = "Excursion Shuttle"
+	desc = "The traditional Excursion Shuttle. NT Approved!"
+	vessel_mass = 10000
+	vessel_size = SHIP_SIZE_SMALL
+	shuttle = "Excursion Shuttle"
 
-		//Redirect us onto that route instead
-		var/datum/shuttle/autodock/web_shuttle/WS = shuttle_controller.shuttles[name]
-		var/datum/shuttle_destination/ASD = WS.web_master.get_destination_by_type(/datum/shuttle_destination/excursion/alienship)
-		WS.web_master.future_destination = ASD
-		. = ..(ASD.my_landmark,interim,travel_time)
-	else
-		. = ..()
-	*/
-
-/datum/shuttle_web_master/excursion
-	destination_class = /datum/shuttle_destination/excursion
-	starting_destination = /datum/shuttle_destination/excursion/triumph
-
-/datum/shuttle_destination/excursion/triumph
-	name = "NSV Triumph Excursion Hangar"
-	my_landmark = /area/shuttle/excursion/triumph
-
-	//dock_target = "expshuttle_dock"
-	radio_announce = 1
-	announcer = "Excursion Shuttle"
-
-	routes_to_make = list(
-		/datum/shuttle_destination/excursion/outside_triumph = 0,
-	)
-
-/datum/shuttle_destination/excursion/triumph/get_arrival_message()
-	return "Attention, [master.my_shuttle.visible_name] has arrived at the Excursion Hangar."
-
-/datum/shuttle_destination/excursion/triumph/get_departure_message()
-	return "Attention, [master.my_shuttle.visible_name] has departed from the Excursion Hangar."
+/obj/machinery/computer/shuttle_control/explore/excursion
+	name = "short jump console"
+	shuttle_tag = "Excursion Shuttle"
+	req_one_access = list(access_pilot)
 
 
-/datum/shuttle_destination/excursion/outside_triumph
-	name = "Nearby NSV Triumph"
-	my_landmark = "triumph_excursion_nearby"
-	preferred_interim_tag = "triumph_excursion_transit_space"
+////////////////////////////////////////
+////////      Tour Bus     /////////////
+////////////////////////////////////////
+/datum/shuttle/autodock/overmap/tourbus
+	name = "Tour Bus"
+	warmup_time = 0
+	current_location = "tourbus_dock"
+	docking_controller_tag = "tourbus_docker"
+	shuttle_area = list(/area/shuttle/tourbus/cockpit, /area/shuttle/tourbus/general, /area/shuttle/tourbus/engines)
+	fuel_consumption = 1
 
-	routes_to_make = list(
-		/datum/shuttle_destination/excursion/docked_triumph = 0,
-		/datum/shuttle_destination/excursion/fleet_orbit = 15 SECONDS
-	)
+// The 'ship' of the tourbus
+/obj/effect/overmap/visitable/ship/landable/tourbus
+	name = "Tour Bus"
+	desc = "A small 'space bus', if you will."
+	vessel_mass = 2000
+	vessel_size = SHIP_SIZE_SMALL
+	shuttle = "Tour Bus"
 
-
-/datum/shuttle_destination/excursion/docked_triumph
-	name = "NSV Triumph Docking Arm"
-	my_landmark = "triumph_excursion_dockarm"
-
-	//dock_target = "d1a_dock"
-	radio_announce = 1
-	announcer = "Excursion Shuttle"
-
-/datum/shuttle_destination/excursion/docked_triumph/get_arrival_message()
-	return "Attention, [master.my_shuttle.visible_name] has arrived at Docking Arm One."
-
-/datum/shuttle_destination/excursion/docked_triumph/get_departure_message()
-	return "Attention, [master.my_shuttle.visible_name] has departed from Docking Arm One."
-
-
-/datum/shuttle_destination/excursion/fleet_orbit
-	name = "Fleet Orbit"
-	my_landmark = "triumph_excursion_space"
-	preferred_interim_tag = "triumph_excursion_transit_space"
-
-	routes_to_make = list(
-		/datum/shuttle_destination/excursion/bluespace = 30 SECONDS
-	)
-
-////////// Distant Destinations
-/datum/shuttle_destination/excursion/bluespace
-	name = "Bluespace Jump"
-	my_landmark = "tether_excursion_bluespace"
-	preferred_interim_tag = "triumph_excursion_transit_space"
-
+/obj/machinery/computer/shuttle_control/explore/tourbus
+	name = "short jump console"
+	shuttle_tag = "Tour Bus"
+	req_one_access = list(access_pilot)

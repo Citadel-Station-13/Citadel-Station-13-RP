@@ -34,104 +34,21 @@
 	var/list/dangerous_objects		 // List of 'dangerous' objs that the turf holds that can cause something bad to happen when stepped on, used for AI mobs.
 
 /turf/Initialize(mapload)
-	if(flags & INITIALIZED)
-		stack_trace("Warning: [src]([type]) initialized multiple times!")
-	flags |= INITIALIZED
-
-	// By default, vis_contents is inherited from the turf that was here before
-	vis_contents.Cut()
-
-	if(color)
-		add_atom_colour(color, FIXED_COLOUR_PRIORITY)
-
-/*
-	assemble_baseturfs()
-*/
-
-/*
-	if(smooth)
-		queue_smooth(src)
-	visibilityChanged()
-*/
-
+	. = ..()
 	for(var/atom/movable/AM in src)
 		Entered(AM)
 
-/*
-	var/area/A = loc
-	if(!IS_DYNAMIC_LIGHTING(src) && IS_DYNAMIC_LIGHTING(A))
-		add_overlay(/obj/effect/fullbright)
+	//Lighting related
+	luminosity = !(dynamic_lighting)
+	has_opaque_atom = (opacity)
 
-	if (light_power && light_range)
-		update_light()
-*/
-
-	if (opacity)
-		has_opaque_atom = TRUE
-
-/*
-	if(requires_activation)
-		CALCULATE_ADJACENT_TURFS(src)
-		SSair.add_to_active(src)
-*/
-
-/*
-	var/turf/T = SSmapping.get_turf_above(src)
-	if(T)
-		T.multiz_turf_new(src, DOWN)
-		SEND_SIGNAL(T, COMSIG_TURF_MULTIZ_NEW, src, DOWN)
-	T = SSmapping.get_turf_below(src)
-	if(T)
-		T.multiz_turf_new(src, UP)
-		SEND_SIGNAL(T, COMSIG_TURF_MULTIZ_NEW, src, UP)
-*/
-
-	ComponentInitialize()
-
+	//Pathfinding related
 	if(movement_cost && pathweight == 1)	// This updates pathweight automatically.
 		pathweight = movement_cost
-	if(dynamic_lighting)
-		luminosity = 0
-	else
-		luminosity = 1
 
-	return INITIALIZE_HINT_NORMAL
-
-/turf/Destroy(force)
+/turf/Destroy()
 	. = QDEL_HINT_IWILLGC
-/*
-	if(!changing_turf)
-		stack_trace("Incorrect turf deletion")
-	changing_turf = FALSE
-*/
-
-/*
-	var/turf/T = SSmapping.get_turf_above(src)
-	if(T)
-		T.multiz_turf_del(src, DOWN)
-	T = SSmapping.get_turf_below(src)
-	if(T)
-		T.multiz_turf_del(src, UP)
-*/
-	if(force)
 		..()
-		// This will completely wipe turf state
-		var/turf/B = new world.turf(src)
-		for(var/A in B.contents)
-			qdel(A)
-		for(var/I in B.vars)
-			B.vars[I] = null
-		return
-/*
-	SSair.remove_from_active(src)
-	visibilityChanged()
-	QDEL_LIST(blueprint_data)
-*/
-	flags &= ~INITIALIZED
-/*
-	requires_activation = FALSE
-*/
-	..()
 
 /turf/ex_act(severity)
 	return 0
@@ -222,20 +139,23 @@
 	for(var/obj/O in src)
 		O.hide(O.hides_under_flooring() && !is_plating())
 
-/turf/proc/AdjacentTurfs()
-	var/L[] = new()
-	for(var/turf/simulated/t in oview(src,1))
-		if(!t.density)
-			if(!LinkBlocked(src, t) && !TurfBlockedNonWindow(t))
-				L.Add(t)
-	return L
+/turf/proc/AdjacentTurfs(var/check_blockage = TRUE)
+	. = list()
+	for(var/t in (trange(1,src) - src))
+		var/turf/T = t
+		if(check_blockage)
+			if(!T.density)
+				if(!LinkBlocked(src, T) && !TurfBlockedNonWindow(T))
+					. += t
+		else
+			. += t
 
-/turf/proc/CardinalTurfs()
-	var/L[] = new()
-	for(var/turf/simulated/T in AdjacentTurfs())
+/turf/proc/CardinalTurfs(var/check_blockage = TRUE)
+	. = list()
+	for(var/ad in AdjacentTurfs(check_blockage))
+		var/turf/T = ad
 		if(T.x == src.x || T.y == src.y)
-			L.Add(T)
-	return L
+			. += T
 
 /turf/proc/Distance(turf/t)
 	if(get_dist(src,t) == 1)

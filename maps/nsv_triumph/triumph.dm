@@ -9,6 +9,7 @@
 	#include "triumph_shuttle_defs.dm"
 	#include "triumph_shuttles.dm"
 	#include "triumph_telecomms.dm"
+	#include "triumph_sectors.dm"
 
 	#include "../../_maps/map_files/NSV_Triumph/triumph-01-deck1.dmm"
 	#include "../../_maps/map_files/NSV_Triumph/triumph-02-deck2.dmm"
