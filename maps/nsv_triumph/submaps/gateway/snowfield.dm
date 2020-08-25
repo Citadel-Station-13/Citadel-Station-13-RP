@@ -1,9 +1,11 @@
 /obj/effect/overmap/visitable/sector/snowfield
-	name = "Unknown Facility"
-	desc = "Wet, boring, and cold."
+	scanner_name = "Snowy Field"
+	scanner_desc = @{"[i]Stellar Body[/i]: UNKNOWN
+[i]Class[/i]: M-Class Planetoid
+[i]Habitability[/i]: Moderate (Low Temperature)
+[b]Notice[/b]: Very cold atmosphere, minimal life signs detected"}
 	icon_state = "globe"
-	known = FALSE
-	initial_generic_waypoints = list("triumph_excursion_snowfield")
+	initial_generic_waypoints = list("tether_excursion_snowfield")
 
 // -- Areas -- //
 

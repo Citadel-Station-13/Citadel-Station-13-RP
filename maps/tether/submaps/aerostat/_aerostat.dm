@@ -25,7 +25,7 @@
 	rare_val = 0.1
 
 /datum/random_map/noise/ore/virgo2/check_map_sanity()
-	return 1 //Totally random, but probably beneficial.
+	return 1	// Totally random, but probably beneficial.
 
 // -- Objs -- //
 
@@ -137,7 +137,7 @@ VIRGO2_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
 	name = "\improper Aerostat Shuttle - Surface"
 	base_turf = /turf/simulated/floor/plating/virgo2
 
-//The aerostat itself
+// The aerostat itself
 /area/tether_away/aerostat
 	name = "\improper Away Mission - Aerostat Outside"
 	icon_state = "away"

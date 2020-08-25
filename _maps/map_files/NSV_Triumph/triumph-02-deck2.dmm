@@ -426,7 +426,7 @@
 /area/hydroponics)
 "br" = (
 /turf/simulated/shuttle/wall/voidcraft/green,
-/area/shuttle/belter/station)
+/area/shuttle/belter)
 "bs" = (
 /obj/machinery/camera/network/civilian,
 /obj/effect/floor_decal/techfloor{
@@ -619,7 +619,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
-/area/shuttle/belter/station)
+/area/shuttle/belter)
 "ci" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /obj/effect/floor_decal/borderfloor,
@@ -1635,7 +1635,7 @@
 "fm" = (
 /obj/machinery/recharge_station,
 /turf/simulated/floor/tiled/steel,
-/area/shuttle/belter/station)
+/area/shuttle/belter)
 "fn" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/carpet/bcarpet,
@@ -2151,7 +2151,7 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/crate,
 /turf/simulated/floor/tiled/steel,
-/area/shuttle/belter/station)
+/area/shuttle/belter)
 "gF" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
@@ -2996,11 +2996,6 @@
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
-"jk" = (
-/turf/space,
-/area/supply/station{
-	dynamic_lighting = 0
-	})
 "jl" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
@@ -3826,7 +3821,7 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/ore_box,
 /turf/simulated/floor/tiled/steel,
-/area/shuttle/belter/station)
+/area/shuttle/belter)
 "lR" = (
 /obj/machinery/mineral/output,
 /obj/machinery/conveyor{
@@ -4003,7 +3998,7 @@
 "mu" = (
 /obj/structure/bed/chair/shuttle,
 /turf/simulated/floor/tiled/steel,
-/area/shuttle/belter/station)
+/area/shuttle/belter)
 "mv" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
@@ -4523,7 +4518,7 @@
 	dir = 4
 	},
 /turf/simulated/shuttle/plating/airless/carry,
-/area/shuttle/belter/station)
+/area/shuttle/belter)
 "nS" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
@@ -6326,7 +6321,7 @@
 "tP" = (
 /obj/structure/closet/walllocker/emerglocker/north,
 /turf/simulated/floor/tiled/steel,
-/area/shuttle/belter/station)
+/area/shuttle/belter)
 "tQ" = (
 /obj/machinery/door/firedoor/glass/hidden/steel,
 /obj/machinery/station_map{
@@ -6432,7 +6427,7 @@
 "ud" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/steel,
-/area/shuttle/belter/station)
+/area/shuttle/belter)
 "ue" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -6720,11 +6715,15 @@
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
 "uY" = (
+/obj/effect/shuttle_landmark{
+	base_area = /area/space;
+	base_turf = /turf/space;
+	docking_controller = "supply_shuttle";
+	landmark_tag = "supply_dock";
+	name = "NSV Triumph Cargo Dock"
+	},
 /turf/space,
-/area/supply/station{
-	base_turf = /turf/simulated/floor/airless;
-	dynamic_lighting = 0
-	})
+/area/space)
 "uZ" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -7232,7 +7231,7 @@
 /area/crew_quarters/coffee_shop)
 "wZ" = (
 /turf/simulated/floor/tiled/steel,
-/area/shuttle/belter/station)
+/area/shuttle/belter)
 "xa" = (
 /obj/structure/table/marble,
 /obj/machinery/door/firedoor/glass/hidden/steel,
@@ -7291,7 +7290,7 @@
 	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/steel/airless,
-/area/shuttle/belter/station)
+/area/shuttle/belter)
 "xi" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
@@ -7834,7 +7833,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
-/area/shuttle/belter/station)
+/area/shuttle/belter)
 "yX" = (
 /obj/machinery/hologram/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -9020,7 +9019,7 @@
 	pixel_y = -31
 	},
 /turf/simulated/floor/tiled/steel,
-/area/shuttle/belter/station)
+/area/shuttle/belter)
 "CY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -9974,7 +9973,7 @@
 /obj/machinery/recharge_station,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/steel,
-/area/shuttle/belter/station)
+/area/shuttle/belter)
 "Gi" = (
 /obj/machinery/power/smes/buildable{
 	RCon_tag = "Solar Farm - SMES 1"
@@ -11352,7 +11351,7 @@
 	},
 /obj/structure/bed/chair/shuttle,
 /turf/simulated/floor/tiled/steel,
-/area/shuttle/belter/station)
+/area/shuttle/belter)
 "KD" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
@@ -11638,7 +11637,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel/airless,
-/area/shuttle/belter/station)
+/area/shuttle/belter)
 "LP" = (
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area_hallway)
@@ -12715,7 +12714,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
-/area/shuttle/belter/station)
+/area/shuttle/belter)
 "PM" = (
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 5
@@ -15407,6 +15406,19 @@
 /obj/structure/table/woodentable,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_9)
+"XQ" = (
+/obj/structure/shuttle/engine/propulsion{
+	dir = 4
+	},
+/obj/effect/shuttle_landmark{
+	base_area = /area/space;
+	base_turf = /turf/space;
+	docking_controller = "belter_docking";
+	landmark_tag = "belter_station";
+	name = "NSV Triumph - Belter Shuttle"
+	},
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/belter)
 "XV" = (
 /obj/item/radio/intercom{
 	dir = 8;
@@ -15909,7 +15921,7 @@
 /obj/item/clothing/suit/space/void/mining,
 /obj/item/tank/emergency/oxygen/double,
 /turf/simulated/floor/tiled/steel,
-/area/shuttle/belter/station)
+/area/shuttle/belter)
 "ZI" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass_mining,
@@ -23875,7 +23887,7 @@ vH
 ii
 ii
 nR
-nR
+XQ
 nR
 ii
 ii
@@ -28269,17 +28281,17 @@ ii
 ii
 Ed
 ii
-jk
-jk
-uY
-uY
-uY
-uY
-uY
-uY
-jk
-jk
-jk
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
 ii
 Rj
 aC
@@ -28411,18 +28423,18 @@ ii
 ii
 rC
 ii
-jk
-jk
-uY
-uY
-uY
-uY
-uY
-uY
-jk
-jk
-jk
-jk
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
 Rj
 aC
 Ne
@@ -28553,18 +28565,18 @@ ii
 ii
 rC
 ii
-jk
-jk
-jk
-jk
-jk
-jk
-jk
-jk
-jk
-jk
-jk
-jk
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
 Rj
 uv
 dD
@@ -28695,18 +28707,18 @@ ii
 ii
 rC
 ii
-jk
-jk
-jk
-jk
-jk
-jk
-jk
-jk
-jk
-jk
-jk
-jk
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+uY
 Rj
 aC
 mR
@@ -28837,18 +28849,18 @@ ii
 ii
 rC
 ii
-jk
-jk
-jk
-jk
-jk
-jk
-jk
-jk
-jk
-jk
-jk
-jk
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
 Rj
 oG
 dD
@@ -28979,18 +28991,18 @@ ii
 ii
 Ed
 ii
-jk
-jk
-jk
-jk
-jk
-jk
-jk
-jk
-jk
-jk
-jk
-jk
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
 Rj
 RX
 Bj
@@ -29121,17 +29133,17 @@ ii
 ii
 Ed
 ii
-jk
-jk
-jk
-jk
-jk
-jk
-jk
-jk
-jk
-jk
-jk
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
 ii
 Rj
 Rj

@@ -9,7 +9,6 @@
 /turf/space,
 /area/shuttle/excursion/debrisfield)
 "W" = (
-/obj/shuttle_connector/debrisfield,
 /turf/space,
 /area/triumph_away/debrisfield/explored)
 "X" = (

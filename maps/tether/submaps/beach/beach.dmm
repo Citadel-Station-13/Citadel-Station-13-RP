@@ -311,7 +311,7 @@
 /obj/effect/shuttle_landmark{
 	base_area = /area/tether_away/beach/jungle;
 	base_turf = /turf/simulated/floor/beach/sand/desert;
-	landmark_tag = "beach_c";
+	landmark_tag = "nav_beach_c";
 	name = "Virgo 4 Beach (Center)"
 	},
 /turf/simulated/floor/beach/sand/desert,
@@ -342,7 +342,7 @@
 /obj/effect/shuttle_landmark{
 	base_area = /area/tether_away/beach/jungle;
 	base_turf = /turf/simulated/floor/beach/sand/desert;
-	landmark_tag = "beach_nw";
+	landmark_tag = "nav_beach_nw";
 	name = "Virgo 4 Beach (NW)"
 	},
 /turf/simulated/floor/beach/sand/desert,
@@ -351,7 +351,7 @@
 /obj/effect/shuttle_landmark{
 	base_area = /area/tether_away/beach/jungle;
 	base_turf = /turf/simulated/floor/beach/sand/desert;
-	landmark_tag = "beach_e";
+	landmark_tag = "nav_beach_e";
 	name = "Virgo 4 Beach (E)"
 	},
 /turf/simulated/floor/beach/sand/desert,

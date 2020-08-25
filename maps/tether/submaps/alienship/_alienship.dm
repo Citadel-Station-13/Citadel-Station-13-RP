@@ -105,14 +105,6 @@
 
 // -- Areas -- //
 
-/area/shuttle/excursion/away_alienship
-	name = "\improper Excursion Shuttle - Alien Ship"
-	base_turf = /turf/simulated/shuttle/floor/alienplating
-	var/did_entry = FALSE
-	var/list/teleport_to
-	var/area/dump_area
-	var/obj/shuttle_connector/shuttle_friend
-
 /area/shuttle/excursion/away_alienship/Initialize()
 	. = ..()
 	dump_area = locate(/area/tether_away/alienship/equip_dump)

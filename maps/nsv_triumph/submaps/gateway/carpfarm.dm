@@ -1,9 +1,11 @@
 /obj/effect/overmap/visitable/sector/carpfarm
-	name = "Unknown Facility"
-	desc = "Seems to be a carp farm of some sort."
+	scanner_name = "Carp-Infested Outpost"
+	scanner_desc = @{"[i]Registration[/i]: UNKNOWN
+[i]Class[/i]: Installation
+[i]Transponder[/i]: None Detected
+[b]Notice[/b]: Many spaceborne lifesigns detected"}
 	icon_state = "object"
-	known = FALSE
-	initial_generic_waypoints = list("triumph_excursion_carpfarm")
+	initial_generic_waypoints = list("tether_excursion_carpfarm")
 
 /area/awaymission/carpfarm
 	icon_state = "blank"

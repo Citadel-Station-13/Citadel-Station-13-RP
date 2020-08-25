@@ -7,14 +7,14 @@
 /turf/simulated/shuttle/plating/airless/carry{
 	dir = 1
 	},
-/area/supply/dock)
+/area/shuttle/supply)
 "ab" = (
 /obj/structure/shuttle/engine/propulsion,
 /turf/space,
 /turf/simulated/shuttle/plating/airless/carry{
 	dir = 1
 	},
-/area/supply/dock)
+/area/shuttle/supply)
 "ac" = (
 /obj/structure/shuttle/engine/propulsion{
 	icon_state = "burst_r"
@@ -23,7 +23,7 @@
 /turf/simulated/shuttle/plating/airless/carry{
 	dir = 1
 	},
-/area/supply/dock)
+/area/shuttle/supply)
 "aj" = (
 /turf/space,
 /turf/space,
@@ -145,7 +145,7 @@
 /area/space)
 "bc" = (
 /turf/simulated/shuttle/wall,
-/area/supply/dock)
+/area/shuttle/supply)
 "bd" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/simulated/floor/holofloor/desert,
@@ -191,7 +191,7 @@
 /area/holodeck/source_emptycourt)
 "bn" = (
 /turf/simulated/shuttle/floor,
-/area/supply/dock)
+/area/shuttle/supply)
 "bo" = (
 /obj/structure/flora/ausbushes/brflowers,
 /obj/effect/floor_decal/spline/fancy/wood/corner,
@@ -274,13 +274,13 @@
 	dir = 8
 	},
 /turf/simulated/shuttle/floor,
-/area/supply/dock)
+/area/shuttle/supply)
 "bz" = (
 /obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/shuttle/floor,
-/area/supply/dock)
+/area/shuttle/supply)
 "bA" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /obj/effect/floor_decal/spline/fancy/wood,
@@ -427,14 +427,14 @@
 	id = "QMLoad2"
 	},
 /turf/simulated/shuttle/plating,
-/area/supply/dock)
+/area/shuttle/supply)
 "bR" = (
 /obj/machinery/conveyor{
 	dir = 4;
 	id = "QMLoad2"
 	},
 /turf/simulated/shuttle/floor,
-/area/supply/dock)
+/area/shuttle/supply)
 "bS" = (
 /obj/structure/table/woodentable/holotable,
 /turf/simulated/floor/holofloor/desert,
@@ -552,7 +552,7 @@
 	name = "Shuttle Hatch"
 	},
 /turf/simulated/shuttle/floor,
-/area/supply/dock)
+/area/shuttle/supply)
 "ct" = (
 /obj/structure/holostool,
 /obj/effect/floor_decal/carpet{
@@ -613,7 +613,7 @@
 	tag_door = "supply_shuttle_hatch"
 	},
 /turf/simulated/shuttle/floor,
-/area/supply/dock)
+/area/shuttle/supply)
 "cP" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -716,14 +716,7 @@
 	id = "QMLoad"
 	},
 /turf/simulated/shuttle/plating,
-/area/supply/dock)
-"di" = (
-/obj/machinery/conveyor{
-	dir = 4;
-	id = "QMLoad"
-	},
-/turf/simulated/shuttle/floor,
-/area/supply/dock)
+/area/shuttle/supply)
 "dj" = (
 /obj/structure/holostool,
 /obj/effect/floor_decal/carpet{
@@ -883,7 +876,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/airless,
-/area/supply/dock)
+/area/shuttle/supply)
 "dF" = (
 /turf/simulated/floor/holofloor/space,
 /area/holodeck/source_space)
@@ -1754,16 +1747,29 @@
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/holodorm/source_boxing)
+"mD" = (
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "QMLoad"
+	},
+/turf/simulated/shuttle/floor,
+/area/shuttle/supply)
 "oP" = (
 /turf/space/transit/east,
-/area/centcom/ferry)
+/area/space)
 "oT" = (
 /obj/effect/step_trigger/lost_in_space,
 /turf/space/transit/east,
-/area/centcom/ferry)
+/area/space)
 "oW" = (
+/obj/effect/shuttle_landmark/transit{
+	base_area = /area/space;
+	base_turf = /turf/space/transit/east;
+	landmark_tag = "escape_transit";
+	name = "Escape Shuttle Transit"
+	},
 /turf/space/transit/east,
-/area/shuttle/escape/transit)
+/area/space)
 "uc" = (
 /turf/unsimulated/wall,
 /area/centcom/suppy)
@@ -1792,6 +1798,24 @@
 	icon_state = "dark"
 	},
 /area/centcom/suppy)
+"zT" = (
+/obj/effect/step_trigger/teleporter/random,
+/obj/effect/step_trigger/teleporter/random,
+/turf/space,
+/area/space)
+"Bb" = (
+/obj/structure/shuttle/engine/propulsion,
+/obj/effect/shuttle_landmark{
+	base_area = /area/space;
+	base_turf = /turf/space;
+	landmark_tag = "supply_cc";
+	name = "Centcom Supply Depot"
+	},
+/turf/space,
+/turf/simulated/shuttle/plating/airless/carry{
+	dir = 1
+	},
+/area/shuttle/supply)
 "Fb" = (
 /turf/unsimulated/map/edge,
 /area/overmap)
@@ -1943,34 +1967,34 @@ Fb
 "}
 (2,1,1) = {"
 ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+zT
+aq
+aq
 ap
 ap
 ap
@@ -2085,7 +2109,7 @@ Fb
 "}
 (3,1,1) = {"
 ap
-ap
+aq
 oP
 oP
 oP
@@ -2112,7 +2136,7 @@ oP
 oP
 oP
 oP
-ap
+aq
 ap
 ap
 ap
@@ -2227,7 +2251,7 @@ Fb
 "}
 (4,1,1) = {"
 ap
-ap
+aq
 oP
 oP
 oP
@@ -2254,7 +2278,7 @@ oP
 oP
 oP
 oP
-ap
+aq
 ap
 ap
 ap
@@ -2369,7 +2393,7 @@ Fb
 "}
 (5,1,1) = {"
 ap
-ap
+aq
 oP
 oP
 oP
@@ -2396,7 +2420,7 @@ oP
 oP
 oP
 oP
-ap
+aq
 ap
 ap
 ap
@@ -2511,7 +2535,7 @@ Fb
 "}
 (6,1,1) = {"
 ap
-ap
+aq
 oP
 oP
 oP
@@ -2538,7 +2562,7 @@ oP
 oP
 oP
 oP
-ap
+aq
 ap
 ap
 ap
@@ -2653,7 +2677,7 @@ Fb
 "}
 (7,1,1) = {"
 ap
-ap
+aq
 oP
 oP
 oP
@@ -2680,7 +2704,7 @@ oP
 oP
 oP
 oP
-ap
+aq
 ap
 ap
 ap
@@ -2795,7 +2819,7 @@ Fb
 "}
 (8,1,1) = {"
 ap
-ap
+aq
 oP
 oP
 oP
@@ -2822,7 +2846,7 @@ oP
 oP
 oP
 oP
-ap
+aq
 ap
 ap
 ap
@@ -2937,7 +2961,7 @@ Fb
 "}
 (9,1,1) = {"
 ap
-ap
+aq
 oP
 oP
 oP
@@ -2964,7 +2988,7 @@ oP
 oP
 oP
 oP
-ap
+aq
 ap
 ap
 ap
@@ -3079,7 +3103,7 @@ Fb
 "}
 (10,1,1) = {"
 ap
-ap
+aq
 oP
 oP
 oP
@@ -3090,13 +3114,13 @@ oP
 oP
 oP
 oT
-oW
-oW
-oW
-oW
-oW
-oW
-oW
+oP
+oP
+oP
+oP
+oP
+oP
+oP
 oT
 oP
 oP
@@ -3106,7 +3130,7 @@ oP
 oP
 oP
 oP
-ap
+aq
 ap
 ap
 ap
@@ -3221,7 +3245,7 @@ Fb
 "}
 (11,1,1) = {"
 ap
-ap
+aq
 oP
 oP
 oP
@@ -3232,13 +3256,13 @@ oP
 oP
 oP
 oT
-oW
-oW
-oW
-oW
-oW
-oW
-oW
+oP
+oP
+oP
+oP
+oP
+oP
+oP
 oT
 oP
 oP
@@ -3248,7 +3272,7 @@ oP
 oP
 oP
 oP
-ap
+aq
 ap
 ap
 ap
@@ -3363,7 +3387,7 @@ Fb
 "}
 (12,1,1) = {"
 ap
-ap
+aq
 oP
 oP
 oP
@@ -3374,13 +3398,13 @@ oP
 oT
 oT
 oT
-oW
-oW
-oW
-oW
-oW
-oW
-oW
+oP
+oP
+oP
+oP
+oP
+oP
+oP
 oT
 oT
 oT
@@ -3390,7 +3414,7 @@ oP
 oP
 oP
 oP
-ap
+aq
 ap
 ap
 ap
@@ -3505,7 +3529,7 @@ Fb
 "}
 (13,1,1) = {"
 ap
-ap
+aq
 oP
 oP
 oP
@@ -3514,17 +3538,17 @@ oP
 oP
 oP
 oT
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
 oT
 oP
 oP
@@ -3532,7 +3556,7 @@ oP
 oP
 oP
 oP
-ap
+aq
 ap
 ap
 ap
@@ -3647,7 +3671,7 @@ Fb
 "}
 (14,1,1) = {"
 ap
-ap
+aq
 oP
 oP
 oP
@@ -3656,17 +3680,17 @@ oP
 oP
 oP
 oT
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
 oT
 oP
 oP
@@ -3674,7 +3698,7 @@ oP
 oP
 oP
 oP
-ap
+aq
 ap
 ap
 ap
@@ -3789,7 +3813,7 @@ Fb
 "}
 (15,1,1) = {"
 ap
-ap
+aq
 oP
 oP
 oP
@@ -3798,17 +3822,17 @@ oP
 oP
 oP
 oT
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
 oT
 oP
 oP
@@ -3816,7 +3840,7 @@ oP
 oP
 oP
 oP
-ap
+aq
 ap
 ap
 ap
@@ -3931,7 +3955,7 @@ Fb
 "}
 (16,1,1) = {"
 ap
-ap
+aq
 oP
 oP
 oP
@@ -3940,17 +3964,17 @@ oP
 oP
 oP
 oT
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
 oT
 oP
 oP
@@ -3958,7 +3982,7 @@ oP
 oP
 oP
 oP
-ap
+aq
 ap
 ap
 ap
@@ -4073,7 +4097,7 @@ Fb
 "}
 (17,1,1) = {"
 ap
-ap
+aq
 oP
 oP
 oP
@@ -4082,17 +4106,17 @@ oP
 oP
 oP
 oT
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
 oT
 oP
 oP
@@ -4100,7 +4124,7 @@ oP
 oP
 oP
 oP
-ap
+aq
 ap
 ap
 ap
@@ -4215,7 +4239,7 @@ Fb
 "}
 (18,1,1) = {"
 ap
-ap
+aq
 oP
 oP
 oP
@@ -4224,17 +4248,17 @@ oP
 oP
 oP
 oT
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
 oT
 oP
 oP
@@ -4242,7 +4266,7 @@ oP
 oP
 oP
 oP
-ap
+aq
 ap
 ap
 ap
@@ -4357,7 +4381,7 @@ Fb
 "}
 (19,1,1) = {"
 ap
-ap
+aq
 oP
 oP
 oP
@@ -4366,17 +4390,17 @@ oP
 oP
 oP
 oT
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
 oT
 oP
 oP
@@ -4384,7 +4408,7 @@ oP
 oP
 oP
 oP
-ap
+aq
 ap
 ap
 ap
@@ -4499,7 +4523,7 @@ Fb
 "}
 (20,1,1) = {"
 ap
-ap
+aq
 oP
 oP
 oP
@@ -4508,17 +4532,17 @@ oP
 oP
 oP
 oT
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
 oT
 oP
 oP
@@ -4526,7 +4550,7 @@ oP
 oP
 oP
 oP
-ap
+aq
 ap
 ap
 ap
@@ -4641,7 +4665,7 @@ Fb
 "}
 (21,1,1) = {"
 ap
-ap
+aq
 oP
 oP
 oP
@@ -4650,17 +4674,17 @@ oP
 oP
 oP
 oT
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
 oT
 oP
 oP
@@ -4668,7 +4692,7 @@ oP
 oP
 oP
 oP
-ap
+aq
 ap
 ap
 ap
@@ -4783,7 +4807,7 @@ Fb
 "}
 (22,1,1) = {"
 ap
-ap
+aq
 oP
 oP
 oP
@@ -4792,17 +4816,17 @@ oP
 oP
 oP
 oT
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
 oT
 oP
 oP
@@ -4810,7 +4834,7 @@ oP
 oP
 oP
 oP
-ap
+aq
 ap
 ap
 ap
@@ -4925,7 +4949,7 @@ Fb
 "}
 (23,1,1) = {"
 ap
-ap
+aq
 oP
 oP
 oP
@@ -4934,17 +4958,17 @@ oP
 oP
 oP
 oT
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
 oT
 oP
 oP
@@ -4952,7 +4976,7 @@ oP
 oP
 oP
 oP
-ap
+aq
 ap
 ap
 ap
@@ -5067,7 +5091,7 @@ Fb
 "}
 (24,1,1) = {"
 ap
-ap
+aq
 oP
 oP
 oP
@@ -5076,17 +5100,17 @@ oP
 oP
 oP
 oT
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
 oT
 oP
 oP
@@ -5094,7 +5118,7 @@ oP
 oP
 oP
 oP
-ap
+aq
 ap
 ap
 ap
@@ -5209,7 +5233,7 @@ Fb
 "}
 (25,1,1) = {"
 ap
-ap
+aq
 oP
 oP
 oP
@@ -5218,17 +5242,17 @@ oP
 oP
 oP
 oT
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
 oT
 oP
 oP
@@ -5236,7 +5260,7 @@ oP
 oP
 oP
 oP
-ap
+aq
 ap
 ap
 ap
@@ -5351,7 +5375,7 @@ Fb
 "}
 (26,1,1) = {"
 ap
-ap
+aq
 oP
 oP
 oP
@@ -5360,17 +5384,17 @@ oP
 oP
 oP
 oT
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
 oT
 oP
 oP
@@ -5378,7 +5402,7 @@ oP
 oP
 oP
 oP
-ap
+aq
 ap
 ap
 ap
@@ -5493,7 +5517,7 @@ Fb
 "}
 (27,1,1) = {"
 ap
-ap
+aq
 oP
 oP
 oP
@@ -5502,17 +5526,17 @@ oP
 oP
 oP
 oT
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
 oT
 oP
 oP
@@ -5520,7 +5544,7 @@ oP
 oP
 oP
 oP
-ap
+aq
 ap
 ap
 ap
@@ -5635,7 +5659,7 @@ Fb
 "}
 (28,1,1) = {"
 ap
-ap
+aq
 oP
 oP
 oP
@@ -5644,17 +5668,17 @@ oP
 oP
 oP
 oT
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
 oT
 oP
 oP
@@ -5662,7 +5686,7 @@ oP
 oP
 oP
 oP
-ap
+aq
 ap
 ap
 ap
@@ -5777,7 +5801,7 @@ Fb
 "}
 (29,1,1) = {"
 ap
-ap
+aq
 oP
 oP
 oP
@@ -5786,17 +5810,17 @@ oP
 oP
 oP
 oT
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
 oT
 oP
 oP
@@ -5804,7 +5828,7 @@ oP
 oP
 oP
 oP
-ap
+aq
 ap
 ap
 ap
@@ -5919,7 +5943,7 @@ Fb
 "}
 (30,1,1) = {"
 ap
-ap
+aq
 oP
 oP
 oP
@@ -5928,17 +5952,17 @@ oP
 oP
 oP
 oT
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
 oT
 oP
 oP
@@ -5946,7 +5970,7 @@ oP
 oP
 oP
 oP
-ap
+aq
 ap
 ap
 ap
@@ -6061,7 +6085,7 @@ Fb
 "}
 (31,1,1) = {"
 ap
-ap
+aq
 oP
 oP
 oP
@@ -6070,17 +6094,17 @@ oP
 oP
 oP
 oT
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
-oW
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
+oP
 oT
 oP
 oP
@@ -6088,7 +6112,7 @@ oP
 oP
 oP
 oP
-ap
+aq
 ap
 ap
 ap
@@ -6203,7 +6227,7 @@ Fb
 "}
 (32,1,1) = {"
 ap
-ap
+aq
 oP
 oP
 oP
@@ -6214,13 +6238,13 @@ oP
 oT
 oT
 oT
+oP
+oP
+oP
 oW
-oW
-oW
-oW
-oW
-oW
-oW
+oP
+oP
+oP
 oT
 oT
 oT
@@ -6230,7 +6254,7 @@ oP
 oP
 oP
 oP
-ap
+aq
 ap
 ap
 ap
@@ -6345,7 +6369,7 @@ Fb
 "}
 (33,1,1) = {"
 ap
-ap
+aq
 oP
 oP
 oP
@@ -6372,7 +6396,7 @@ oP
 oP
 oP
 oP
-ap
+aq
 ap
 ap
 ap
@@ -6487,7 +6511,7 @@ Fb
 "}
 (34,1,1) = {"
 ap
-ap
+aq
 oP
 oP
 oP
@@ -6514,7 +6538,7 @@ oP
 oP
 oP
 oP
-ap
+aq
 ap
 ap
 ap
@@ -6629,7 +6653,7 @@ Fb
 "}
 (35,1,1) = {"
 ap
-ap
+aq
 oP
 oP
 oP
@@ -6656,7 +6680,7 @@ oP
 oP
 oP
 oP
-ap
+aq
 ap
 ap
 ap
@@ -6771,7 +6795,7 @@ Fb
 "}
 (36,1,1) = {"
 ap
-ap
+aq
 oP
 oP
 oP
@@ -6798,7 +6822,7 @@ oP
 oP
 oP
 oP
-ap
+aq
 ap
 ap
 ap
@@ -6913,7 +6937,7 @@ Fb
 "}
 (37,1,1) = {"
 ap
-ap
+aq
 oP
 oP
 oP
@@ -6940,7 +6964,7 @@ oP
 oP
 oP
 oP
-ap
+aq
 ap
 ap
 ap
@@ -7055,7 +7079,7 @@ Fb
 "}
 (38,1,1) = {"
 ap
-ap
+aq
 oP
 oP
 oP
@@ -7082,7 +7106,7 @@ oP
 oP
 oP
 oP
-ap
+aq
 ap
 ap
 ap
@@ -7197,7 +7221,7 @@ Fb
 "}
 (39,1,1) = {"
 ap
-ap
+aq
 oP
 oP
 oP
@@ -7224,7 +7248,7 @@ oP
 oP
 oP
 oP
-ap
+aq
 ap
 ap
 ap
@@ -7339,34 +7363,34 @@ Fb
 "}
 (40,1,1) = {"
 ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
+zT
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
 ap
 ap
 ap
@@ -9619,7 +9643,7 @@ bR
 bn
 cO
 bn
-di
+mD
 by
 bc
 bc
@@ -9761,7 +9785,7 @@ bR
 bn
 bn
 bn
-di
+mD
 bn
 bn
 dE
@@ -9903,11 +9927,11 @@ bR
 bn
 bn
 bn
-di
+mD
 bn
 bn
 dE
-ab
+Bb
 ap
 aq
 ap

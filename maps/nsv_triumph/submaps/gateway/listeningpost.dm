@@ -1,9 +1,11 @@
 /obj/effect/overmap/visitable/sector/listeningpost
-	name = "Unknown Facility"
-	desc = "High levels of radio frequency emissions."
+	scanner_name = "Strange Asteroid"
+	scanner_desc = @{"[i]Registration[/i]: UNKNOWN
+[i]Class[/i]: Installation
+[i]Transponder[/i]: None Detected
+[b]Notice[/b]: Emitting encrypted radio-frequency traffic"}
 	icon_state = "object"
-	known = FALSE
-	initial_generic_waypoints = list("triumph_excursion_listeningpost")
+	initial_generic_waypoints = list("tether_excursion_listeningpost")
 
 /obj/item/paper/listneningpost/mission
 	name = "\improper Operation: Watchtower"

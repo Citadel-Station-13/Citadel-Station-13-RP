@@ -38,17 +38,17 @@
 // Trade Ship
 /datum/shuttle/autodock/multi/trade
 	name = "Trade"
-	current_location = "trade_dock"
+	current_location = "cc_trade_dock"
 	shuttle_area = /area/shuttle/trade
 	docking_controller_tag = "trade_shuttle"
 	warmup_time = 10	//want some warmup time so people can cancel.
 	destination_tags = list(
-		"trade_dock",
+		"cc_trade_dock",
 		"tether_dockarm_d1l",
-		"aerostat_south",
-		"beach_e",
-		"beach_c",
-		"beach_nw"
+		"nav_aerostat_south",
+		"nav_beach_e",
+		"nav_beach_c",
+		"nav_beach_nw"
 	)
 
 //////////////////////////////////////////////////////////////
@@ -65,7 +65,6 @@
 	docking_controller_tag = "tether_shuttle"
 
 //////////////////////////////////////////////////////////////
-
 // Mercenary Shuttle
 /datum/shuttle/autodock/multi/mercenary
 	name = "Mercenary"

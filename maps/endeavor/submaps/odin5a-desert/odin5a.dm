@@ -60,14 +60,6 @@
 
 // -- Objs -- //
 
-//This is a special type of object which will build our shuttle paths, only if this map loads
-//You do need to place this object on the map somewhere.
-/obj/shuttle_connector/beach
-	name = "shuttle connector - beach"
-	shuttle_name = "Excursion Shuttle"
-	//This list needs to be in the correct order, and start with the one that connects to the rest of the shuttle 'network'
-	destinations = list(/datum/shuttle_destination/excursion/odin5a_orbit, /datum/shuttle_destination/excursion/beach)
-
 //This object simply performs any map setup that needs to happen on our map if it loads.
 //As with the above, you do need to place this object on the map somewhere.
 /obj/away_mission_init/beachcave

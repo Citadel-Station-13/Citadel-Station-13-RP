@@ -2066,6 +2066,21 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/first_aid_station)
+"ey" = (
+/obj/structure/shuttle/engine/propulsion{
+	dir = 8
+	},
+/obj/effect/shuttle_landmark/transit{
+	base_area = /area/space;
+	base_turf = /turf/simulated/floor/airless/ceiling;
+	docking_controller = "large_escape_pod_1";
+	landmark_tag = "escapepod1_station";
+	name = "NSV Triumph - Escapepod 1"
+	},
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/large_escape_pod1/station{
+	base_turf = /turf/simulated/mineral/floor/vacuum
+	})
 "ez" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 9
@@ -35471,7 +35486,7 @@ Ty
 KG
 ch
 uZ
-uZ
+ey
 uZ
 ch
 ch
