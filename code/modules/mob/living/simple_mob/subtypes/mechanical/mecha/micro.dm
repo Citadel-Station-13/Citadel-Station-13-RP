@@ -19,6 +19,7 @@
 	icon = 'icons/mecha/micro.dmi'
 	icon_state = "whisker"
 	wreckage = /obj/structure/loot_pile/mecha/mouse_tank
+	faction = "mouse_army"
 
 	maxHealth = 150
 	armor = list(
@@ -32,6 +33,9 @@
 				)
 
 	projectiletype = /obj/item/projectile/bullet/pistol/medium
+
+	movement_cooldown = 2
+	base_attack_cooldown = 8
 
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
 
@@ -69,7 +73,48 @@
 
 	projectiletype = /obj/item/projectile/bullet/incendiary/flamethrower/large
 
+	movement_cooldown = 3
+	base_attack_cooldown = 15
+
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
 
 /mob/living/simple_mob/mechanical/mecha/mouse_tank/livewire/manned
 	pilot_type = /mob/living/simple_mob/animal/space/mouse_army/pyro
+
+//Rockets? Rockets.
+/datum/category_item/catalogue/technology/mouse_tank/eraticator
+	name = "Eraticator Artillery Platform"
+	desc = "Rare and fearsome weapons platforms, 'Eraticators', as they have come to be \
+	known, are frighteningly powerful long ranged tanks built entirely around exotic \
+	gyrojet technology. The raw cost and specialized nature of its design makes it a rare \
+	but formidable foe. It is often accompanied by mechanized reinforcements."
+	value = CATALOGUER_REWARD_EASY
+
+/mob/living/simple_mob/mechanical/mecha/mouse_tank/eraticator
+	name = "\improper Eraticator Artillery Platform"
+	desc = "A heavy, miniaturized artillery platform. If you can hear it squeaking, you're too close."
+	catalogue_data = list(/datum/category_item/catalogue/technology/mouse_tank/eraticator)
+	icon_state = "eraticator"
+	wreckage = /obj/structure/loot_pile/mecha/mouse_tank/eraticator
+
+	maxHealth = 300
+	heat_resist = 1
+	armor = list(
+				"melee" = 20,
+				"bullet" = 50,
+				"laser" = 50,
+				"energy" = 20,
+				"bomb" = 80,
+				"bio" = 100,
+				"rad" = 100
+				)
+
+	projectiletype = /obj/item/projectile/bullet/gyro
+
+	movement_cooldown = 5
+	base_attack_cooldown = 15
+
+	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
+
+/mob/living/simple_mob/mechanical/mecha/mouse_tank/eraticator/manned
+	pilot_type = /mob/living/simple_mob/animal/space/mouse_army/ammo

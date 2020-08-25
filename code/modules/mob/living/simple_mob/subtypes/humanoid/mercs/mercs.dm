@@ -331,15 +331,16 @@
 	max_n2 = 0
 	minbodytemp = 0
 
+	corpse = /obj/effect/landmark/mobcorpse/vox/pirate
 	loot_list = list(/obj/item/gun/projectile/shotgun/pump/rifle/vox_hunting = 100,
 					/obj/item/ammo_magazine/clip/c762 = 30,
 					/obj/item/ammo_magazine/clip/c762 = 30
 					)
 
-	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged
+	ai_holder_type = /datum/ai_holder/simple_mob/merc
 	say_list_type = /datum/say_list/merc/voxpirate
 
-/mob/living/simple_mob/humanoid/merc/voxpirate/boarder_m
+/mob/living/simple_mob/humanoid/merc/voxpirate/boarder
 	name = "vox melee boarder"
 	desc = "A howling Vox with a sword. Run."
 	icon_state = "voxboarder_m"
@@ -351,6 +352,7 @@
 	attack_sharp = 1
 	attack_edge = 1
 
+	corpse = /obj/effect/landmark/mobcorpse/vox/boarder_m
 	loot_list = list(/obj/item/melee/energy/sword = 100)
 
 // They're good with the swords? I dunno. I like the idea they can deflect.
@@ -379,7 +381,11 @@
 
 	ai_holder_type = /datum/ai_holder/simple_mob/merc
 
-/mob/living/simple_mob/humanoid/merc/voxpirate/boarder_r
+////////////////////////////////
+//			Vox Ranged
+////////////////////////////////
+
+/mob/living/simple_mob/humanoid/merc/voxpirate/ranged/boarder
 	name = "vox ranged boarder"
 	desc = "A howling Vox with a shotgun. Get to cover!"
 	icon_state = "voxboarder_r"
@@ -389,6 +395,7 @@
 	projectiletype = /obj/item/projectile/bullet/pellet/shotgun
 	projectilesound = 'sound/weapons/Gunshot_shotgun.ogg'
 
+	corpse = /obj/effect/landmark/mobcorpse/vox/boarder_r
 	loot_list = list(/obj/item/gun/projectile/shotgun/pump/combat = 100,
 					/obj/item/ammo_magazine/m12gdrum = 30,
 					/obj/item/ammo_magazine/m12gdrum = 30
@@ -397,7 +404,7 @@
 	needs_reload = TRUE
 	reload_max = 10
 
-/mob/living/simple_mob/humanoid/merc/voxpirate/suppressor
+/mob/living/simple_mob/humanoid/merc/voxpirate/ranged/suppressor
 	name = "vox suppressor"
 	desc = "Come on, feel the noise!"
 	icon_state = "voxsuppressor"
@@ -409,13 +416,14 @@
 	projectiletype = /obj/item/projectile/sonic/weak
 	projectilesound = 'sound/effects/basscannon.ogg'
 
+	corpse = /obj/effect/landmark/mobcorpse/vox/suppressor
 	loot_list = list(/obj/item/gun/energy/sonic = 100)
 
 	base_attack_cooldown = 5 // Two attacks a second or so.
 	needs_reload = TRUE
 	reload_max = 25 //Gotta lay down that fire, son.
 
-/mob/living/simple_mob/humanoid/merc/voxpirate/captain
+/mob/living/simple_mob/humanoid/merc/voxpirate/ranged/captain
 	name = "vox pirate captain"
 	desc = "Walkings the plank, dustlung! Yayaya."
 	icon_state = "voxcaptain"
@@ -427,6 +435,7 @@
 	projectiletype = /obj/item/projectile/energy/darkmatter
 	projectilesound = 'sound/weapons/eLuger.ogg'
 
+	corpse = /obj/effect/landmark/mobcorpse/vox/captain
 	loot_list = list(/obj/item/gun/energy/darkmatter = 100)
 
 	needs_reload = TRUE
