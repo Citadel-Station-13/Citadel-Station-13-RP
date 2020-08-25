@@ -9507,7 +9507,7 @@
 	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor,
-/area/centcom/shuttle)
+/area/shuttle/escape)
 "rG" = (
 /obj/effect/floor_decal/corner_steel_grid/diagonal,
 /obj/effect/floor_decal/corner_steel_grid/diagonal{
@@ -9893,11 +9893,11 @@
 "sB" = (
 /obj/machinery/vending/cigarette,
 /turf/simulated/shuttle/floor/darkred,
-/area/centcom/shuttle)
+/area/shuttle/escape)
 "sC" = (
 /obj/structure/bed/chair/shuttle,
 /turf/simulated/shuttle/floor/black,
-/area/centcom/shuttle)
+/area/shuttle/escape)
 "sF" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -10079,19 +10079,19 @@
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/black,
-/area/centcom/shuttle)
+/area/shuttle/escape)
 "sX" = (
 /obj/item/bedsheet/medical,
 /obj/structure/bed/padded,
 /turf/simulated/shuttle/floor,
-/area/centcom/shuttle)
+/area/shuttle/escape)
 "sY" = (
 /obj/machinery/optable,
 /obj/machinery/oxygen_pump/anesthetic{
 	pixel_y = 29
 	},
 /turf/simulated/shuttle/floor,
-/area/centcom/shuttle)
+/area/shuttle/escape)
 "sZ" = (
 /obj/structure/table/glass,
 /obj/item/storage/box/cups,
@@ -10430,7 +10430,7 @@
 	},
 /obj/machinery/vending/medical,
 /turf/simulated/shuttle/floor,
-/area/centcom/shuttle)
+/area/shuttle/escape)
 "tD" = (
 /obj/structure/table/glass,
 /obj/item/roller,
@@ -10708,7 +10708,7 @@
 /area/centcom/bathroom)
 "um" = (
 /turf/simulated/shuttle/floor,
-/area/centcom/shuttle)
+/area/shuttle/escape)
 "uo" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "plant-22"
@@ -11060,7 +11060,7 @@
 /area/centcom/living)
 "vc" = (
 /turf/simulated/shuttle/floor/black,
-/area/centcom/shuttle)
+/area/shuttle/escape)
 "vd" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/blast/regular{
@@ -11713,7 +11713,7 @@
 /area/centcom/security)
 "wf" = (
 /turf/simulated/shuttle/floor/darkred,
-/area/centcom/shuttle)
+/area/shuttle/escape)
 "wh" = (
 /obj/machinery/computer/card{
 	dir = 4
@@ -12011,13 +12011,13 @@
 /area/centcom/security)
 "wC" = (
 /turf/simulated/shuttle/wall/voidcraft/blue,
-/area/centcom/shuttle)
+/area/shuttle/escape)
 "wD" = (
 /obj/structure/shuttle/engine/propulsion{
 	dir = 4
 	},
 /turf/simulated/shuttle/plating/airless/carry,
-/area/centcom/shuttle)
+/area/shuttle/escape)
 "wE" = (
 /obj/machinery/computer/secure_data{
 	dir = 4
@@ -12287,13 +12287,13 @@
 	dir = 1
 	},
 /turf/simulated/shuttle/floor,
-/area/centcom/shuttle)
+/area/shuttle/escape)
 "xa" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 8
 	},
 /turf/simulated/shuttle/floor,
-/area/centcom/shuttle)
+/area/shuttle/escape)
 "xb" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 10
@@ -16280,17 +16280,17 @@
 "EH" = (
 /obj/structure/bed/chair/shuttle,
 /turf/simulated/shuttle/floor/darkred,
-/area/centcom/shuttle)
+/area/shuttle/escape)
 "EZ" = (
 /obj/machinery/vending/fitness,
 /turf/simulated/shuttle/floor/darkred,
-/area/centcom/shuttle)
+/area/shuttle/escape)
 "FF" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 8
 	},
 /turf/simulated/shuttle/floor/white,
-/area/centcom/shuttle)
+/area/shuttle/escape)
 "Gp" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced,
@@ -16301,33 +16301,33 @@
 	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor,
-/area/centcom/shuttle)
+/area/shuttle/escape)
 "Gr" = (
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/white,
-/area/centcom/shuttle)
+/area/shuttle/escape)
 "GA" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
-/area/centcom/shuttle)
+/area/shuttle/escape)
 "GG" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/black,
-/area/centcom/shuttle)
+/area/shuttle/escape)
 "GH" = (
 /obj/machinery/door/airlock/security{
 	id_tag = "front";
 	name = "Security"
 	},
 /turf/simulated/shuttle/floor/darkred,
-/area/centcom/shuttle)
+/area/shuttle/escape)
 "GR" = (
 /obj/structure/bed/chair/shuttle,
 /turf/simulated/shuttle/floor/white,
-/area/centcom/shuttle)
+/area/shuttle/escape)
 "He" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -16340,26 +16340,26 @@
 /obj/structure/grille,
 /obj/structure/fans/tiny,
 /turf/simulated/floor,
-/area/centcom/shuttle)
+/area/shuttle/escape)
 "Hr" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 1
 	},
 /obj/structure/window/reinforced,
 /turf/simulated/shuttle/floor/black,
-/area/centcom/shuttle)
+/area/shuttle/escape)
 "IA" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/white,
-/area/centcom/shuttle)
+/area/shuttle/escape)
 "Jv" = (
 /obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/shuttle/floor/white,
-/area/centcom/shuttle)
+/area/shuttle/escape)
 "JC" = (
 /obj/machinery/power/thermoregulator,
 /turf/unsimulated/floor{
@@ -16375,7 +16375,7 @@
 "Lf" = (
 /obj/machinery/vending/cola,
 /turf/simulated/shuttle/floor/darkred,
-/area/centcom/shuttle)
+/area/shuttle/escape)
 "MG" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -16388,10 +16388,10 @@
 	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor,
-/area/centcom/shuttle)
+/area/shuttle/escape)
 "MJ" = (
 /turf/simulated/shuttle/floor/white,
-/area/centcom/shuttle)
+/area/shuttle/escape)
 "Nt" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/unsimulated/floor{
@@ -16409,8 +16409,8 @@
 	landmark_tag = "escape_cc";
 	name = "Escape Shuttle Centcom"
 	},
-/turf/simulated/shuttle/floor/white,
-/area/centcom/shuttle)
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/escape)
 "OD" = (
 /obj/machinery/power/port_gen/pacman,
 /turf/unsimulated/floor{
@@ -16420,18 +16420,18 @@
 "OM" = (
 /obj/machinery/vending/snack,
 /turf/simulated/shuttle/floor/darkred,
-/area/centcom/shuttle)
+/area/shuttle/escape)
 "Pb" = (
 /obj/structure/table/steel,
 /obj/item/defib_kit,
 /turf/simulated/shuttle/floor,
-/area/centcom/shuttle)
+/area/shuttle/escape)
 "Qd" = (
 /obj/machinery/computer/communications{
 	dir = 4
 	},
 /turf/simulated/shuttle/floor/white,
-/area/centcom/shuttle)
+/area/shuttle/escape)
 "Qr" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4
@@ -16470,11 +16470,11 @@
 	req_one_access = null
 	},
 /turf/simulated/shuttle/floor/black,
-/area/centcom/shuttle)
+/area/shuttle/escape)
 "Td" = (
 /obj/machinery/door/airlock/command,
 /turf/simulated/shuttle/floor/white,
-/area/centcom/shuttle)
+/area/shuttle/escape)
 "TZ" = (
 /obj/machinery/light{
 	dir = 1
@@ -16483,20 +16483,20 @@
 	dir = 8
 	},
 /turf/simulated/shuttle/floor/darkred,
-/area/centcom/shuttle)
+/area/shuttle/escape)
 "Ue" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 8
 	},
 /turf/simulated/shuttle/floor/darkred,
-/area/centcom/shuttle)
+/area/shuttle/escape)
 "Uh" = (
 /obj/machinery/door/airlock/medical{
 	name = "Shuttle Medbay";
 	req_access = list(45)
 	},
 /turf/simulated/shuttle/floor,
-/area/centcom/shuttle)
+/area/shuttle/escape)
 "UC" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/stack/cable_coil,
@@ -16515,11 +16515,11 @@
 	},
 /obj/structure/fans/tiny,
 /turf/simulated/shuttle/floor/black,
-/area/centcom/shuttle)
+/area/shuttle/escape)
 "VU" = (
 /obj/machinery/light,
 /turf/simulated/shuttle/floor/black,
-/area/centcom/shuttle)
+/area/shuttle/escape)
 "Xa" = (
 /obj/machinery/space_heater,
 /turf/unsimulated/floor{
@@ -16532,7 +16532,7 @@
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/darkred,
-/area/centcom/shuttle)
+/area/shuttle/escape)
 "XA" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/smes_coil,
@@ -16552,7 +16552,7 @@
 /obj/item/storage/firstaid/clotting,
 /obj/item/storage/firstaid/clotting,
 /turf/simulated/shuttle/floor,
-/area/centcom/shuttle)
+/area/shuttle/escape)
 
 (1,1,1) = {"
 hP

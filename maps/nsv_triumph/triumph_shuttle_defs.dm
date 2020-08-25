@@ -3,7 +3,7 @@
 /datum/shuttle/autodock/ferry/emergency/escape
 	name = "Escape"
 	location = FERRY_LOCATION_OFFSITE
-	shuttle_area = /area/centcom/shuttle
+	shuttle_area = /area/shuttle/escape
 	warmup_time = 10
 	landmark_offsite = "escape_cc"
 	landmark_station = "escape_triumph"
