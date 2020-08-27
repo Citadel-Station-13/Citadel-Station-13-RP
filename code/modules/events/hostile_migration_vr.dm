@@ -57,7 +57,7 @@
 			spawncount = rand(10 * severity, 15 * severity)
 			boss_spawn_count = rand(1,5)
 		if(LOC_MINING)
-			spawn_area_type = /area/triumph/surfacebase
+			spawn_area_type = /area/quartermaster
 			locstring = "cargo & mining"
 			spawncount = rand(10 * severity, 19 * severity)
 			boss_spawn_count = rand(2,4)
