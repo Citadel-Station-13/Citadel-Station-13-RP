@@ -42,9 +42,22 @@
 	continuous = FALSE
 	hazards = /obj/effect/overmap/event/carp
 
-/datum/overmap_event/carp/major
+/datum/overmap_event/event/carp_heavy
 	name = "carp school"
 	count = 5
 	radius = 4
 	continuous = FALSE
 	hazards = /obj/effect/overmap/event/carp_heavy
+
+/datum/overmap_event/hostile_migration
+	name = "hostile lifesigns"
+	count = 4
+	radius = 4
+	continuous = FALSE
+	hazards = /obj/effect/overmap/event/hostile_migration
+
+/datum/overmap_event/communications_blackout
+	name = "Ionspheric Bubble"
+	count = 3
+	radius = 3
+	hazards = /obj/effect/overmap/event/communications_blackout

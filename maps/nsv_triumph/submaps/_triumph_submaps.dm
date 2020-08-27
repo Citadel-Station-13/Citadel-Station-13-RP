@@ -79,6 +79,26 @@
 	name = "Away Mission - Rogue Planet"
 	z = Z_LEVEL_UNKNOWN_PLANET
 
+// Pirate base
+#include "space/_piratebase.dm"
+#include "space/_templates.dm"
+
+/datum/map_template/triumph_lateload/away_piratebase
+	name = "Away Mission - Pirate Base"
+	desc = "A Vox Marauder Base, oh no!"
+	mappath = 'space/piratebase.dmm'
+	associated_map_datum = /datum/map_z_level/triumph_lateload/away_piratebase
+	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = FALSE)
+
+/datum/map_z_level/triumph_lateload/away_piratebase
+	name = "Away Mission - Pirate Base"
+	z = Z_LEVEL_DEBRISFIELD
+
+
+/datum/map_template/triumph_lateload/away_piratebase/on_map_loaded(z)
+	. = ..()
+
+
 //////////////////////////////////////////////////////////////////////////////////////
 // Admin-use z-levels for loading whenever an admin feels like
 #if AWAY_MISSION_TEST

@@ -3,11 +3,11 @@
 /turf/space,
 /area/triumph_away/debrisfield/unexplored)
 "c" = (
-/obj/effect/overmap/visitable/sector/debrisfield,
+/obj/effect/shuttle_landmark/automatic,
 /turf/space,
 /area/triumph_away/debrisfield/explored)
 "f" = (
-/obj/effect/shuttle_landmark/automatic,
+/obj/effect/overmap/visitable/sector/debrisfield,
 /turf/space,
 /area/triumph_away/debrisfield/explored)
 "W" = (
@@ -299,7 +299,7 @@ W
 W
 W
 W
-W
+f
 W
 "}
 (3,1,1) = {"
@@ -440,7 +440,7 @@ W
 W
 W
 W
-c
+W
 W
 W
 "}
@@ -16558,7 +16558,7 @@ W
 W
 W
 W
-f
+W
 W
 W
 W
@@ -16702,7 +16702,7 @@ W
 W
 W
 W
-W
+c
 W
 W
 W

@@ -8347,7 +8347,7 @@
 /obj/machinery/door/airlock{
 	name = "Restroom"
 	},
-/turf/space,
+/turf/simulated/floor/tiled,
 /area/triumph/surfacebase/sauna)
 "gQf" = (
 /obj/structure/filingcabinet/chestdrawer,
@@ -50422,7 +50422,7 @@ nIK
 nIK
 nIK
 nIK
-nIK
+bwd
 nIK
 nIK
 nIK
@@ -50463,7 +50463,7 @@ nIK
 nIK
 nIK
 nIK
-nIK
+bwd
 nIK
 nIK
 nIK
@@ -51010,14 +51010,14 @@ nIK
 nIK
 nIK
 nIK
+bwd
 nIK
 nIK
 nIK
 nIK
 nIK
 nIK
-nIK
-nIK
+bwd
 nIK
 nIK
 nIK

@@ -75,7 +75,7 @@
 
 /obj/effect/overmap/event/carp
 	name = "carp shoal"
-	events = /datum/event/carp_migration/overmap
+	events = list(/datum/event/carp_migration/overmap)
 	opacity = 0
 	event_icon_states = list("carp1", "carp2")
 	difficulty = EVENT_LEVEL_MODERATE
@@ -83,8 +83,24 @@
 
 /obj/effect/overmap/event/carp_heavy
 	name = "carp school"
-	events = /datum/event/carp_migration/overmap
+	events = list(/datum/event/carp_migration/overmap)
 	opacity = 0
 	event_icon_states = list("carp3", "carp4")
 	difficulty = EVENT_LEVEL_MAJOR
 	weaknesses = OVERMAP_WEAKNESS_EXPLOSIVE | OVERMAP_WEAKNESS_FIRE
+
+/obj/effect/overmap/event/hostile_migration
+	name = "hostile lifesigns"
+	events = list(/datum/event/hostile_migration/overmap)
+	opacity = 0
+	event_icon_states = list("rats1", "rats2")
+	difficulty = EVENT_LEVEL_MODERATE
+	weaknesses = OVERMAP_WEAKNESS_EXPLOSIVE | OVERMAP_WEAKNESS_FIRE
+
+/obj/effect/overmap/event/communications_blackout
+	name = "Ionspheric Bubble"
+	events = list(/datum/event/communications_blackout/overmap)
+	opacity = 0
+	event_icon_states = list("comout1")
+	difficulty = EVENT_LEVEL_MODERATE
+	weaknesses = OVERMAP_WEAKNESS_EMP

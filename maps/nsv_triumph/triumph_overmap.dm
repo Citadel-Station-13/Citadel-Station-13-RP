@@ -57,16 +57,26 @@
 	icon_state = "dust4"
 	color = "#AAAAAA"
 	known = FALSE
-	start_x = 23
-	start_y = 25
+	start_x = 22
+	start_y = 33
 	initial_generic_waypoints = list("triumph_excursion_debrisfield")
 
 /obj/effect/overmap/visitable/sector/class_d
 	name = "Unidentified Planet"
 	desc = "ASdlke ERROR%%%% UNABLE TO----."
 	in_space = 0
-	start_x = 11
-	start_y = 30
+	start_x = 32
+	start_y = 55
 	icon_state = "globe"
+	color = "#88FF33"
+
+/obj/effect/overmap/visitable/sector/pirate_base
+	name = "Vox Pirate Base"
+	desc = "A nest of hostiles to the company. Caution is advised."
+	in_space = 1
+	start_x = 55
+	start_y = 3
+	known = FALSE
+	icon_state = "piratebase"
 	color = "#FF3333"
 

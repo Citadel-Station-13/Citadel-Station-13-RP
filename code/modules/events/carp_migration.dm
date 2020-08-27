@@ -1,12 +1,12 @@
 GLOBAL_LIST_INIT(carp_count,list())// a list of Z levels (string), associated with a list of all the carp spawned by carp events
 
 /datum/event/carp_migration
-	announceWhen	= 5
-	endWhen			= 50
 	var/no_show = FALSE // Carp are laggy, so if there is too much stuff going on we're going to dial it down.
 	var/spawned_carp	//for debugging purposes only?
 	var/carp_per_z = 8
 	var/carp_per_event = 5
+	has_skybox_image = FALSE
+	var/list/players = list()
 
 /datum/event/carp_migration/setup()
 	announceWhen = rand(5, 10)
@@ -54,12 +54,12 @@ GLOBAL_LIST_INIT(carp_count,list())// a list of Z levels (string), associated wi
 	while(I < n)
 		var/turf/T = get_random_edge_turf(dir,TRANSITIONEDGE + 2, Z)
 		if(istype(T,/turf/space))
-			var/mob/living/simple_mob/hostile/M
+			var/mob/living/simple_mob/animal/space/M
 			if(prob(96))
-				M = new /mob/living/simple_mob/hostile/carp(T)
+				M = new /mob/living/simple_mob/animal/space/carp(T)
 				I++
 			else
-				M = new /mob/living/simple_mob/hostile/carp/pike(T)
+				M = new /mob/living/simple_mob/animal/space/carp/large(T)
 				I += 3
 			LAZYADD(GLOB.carp_count["[Z]"], M)
 			spawned_carp ++

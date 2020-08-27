@@ -21,6 +21,8 @@
 #define Z_LEVEL_ROGUEMINE_3				12
 #define Z_LEVEL_ROGUEMINE_4				13
 
+#define Z_LEVEL_PIRATEBASE				14
+
 // Camera Networks
 #define NETWORK_TRIUMPH "Triumph"
 #define NETWORK_TCOMMS "Telecommunications"
@@ -147,9 +149,10 @@
 								 Z_LEVEL_ROGUEMINE_4)
 
 	lateload_z_levels = list(
-		list("Triumph - Misc","Triumph - Ships",), //Stock Triumph lateload maps
+		list("Triumph - Misc","Triumph - Ships",), // Stock Triumph lateload maps
 		list("Debris Field - Z1 Space"), // Debris Field
 		list("ExoPlanet - Z1 Planet"), // Exoplanet
+		list("Away Mission - Pirate Base"), // Vox Pirate Base
 		list("Asteroid Belt 1","Asteroid Belt 2","Asteroid Belt 3","Asteroid Belt 4")
 	)
 
@@ -160,7 +163,8 @@
 		Z_LEVEL_DECK_THREE,
 		Z_LEVEL_DECK_FOUR,
 		Z_LEVEL_DEBRISFIELD,
-		Z_LEVEL_UNKNOWN_PLANET)
+		Z_LEVEL_UNKNOWN_PLANET,
+		Z_LEVEL_PIRATEBASE)
 
 	lateload_single_pick = null //Nothing right now.
 
@@ -168,7 +172,7 @@
 	return 1
 
 /datum/skybox_settings/triumph
-	icon_state = "space5"
+	icon_state = "space3"
 	use_stars = FALSE
 
 // Short range computers see only the main levels, others can see the surrounding surface levels.

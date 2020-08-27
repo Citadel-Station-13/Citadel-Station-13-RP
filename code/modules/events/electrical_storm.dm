@@ -62,4 +62,5 @@
 
 // Overmap version
 /datum/event/electrical_storm/overmap/announce()
+	command_announcement.Announce("The [location_name()] has entered an electrical storm. Please watch out for possible electrical discharges.", "[location_name()] Sensor Array")
 	return
