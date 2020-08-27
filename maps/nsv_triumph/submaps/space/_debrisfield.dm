@@ -1,11 +1,3 @@
-// -- Datums -- //
-/obj/effect/overmap/visitable/sector/debrisfield
-	name = "Debris Field"
-	desc = "Space junk galore."
-	icon_state = "dust1"
-	known = FALSE
-	initial_generic_waypoints = list("triumph_excursion_debrisfield")
-
 // -- Objs -- //
 
 /obj/effect/step_trigger/teleporter/debrisfield_loop/north/New()

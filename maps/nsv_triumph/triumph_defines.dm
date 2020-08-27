@@ -45,6 +45,22 @@
 	lobby_screens = list("title1", "title2", "title3", "title4", "title5", "title6", "title7")
 	id_hud_icons = 'icons/mob/hud_jobs_vr.dmi' //CITADEL CHANGE: Ignore this line because it's going to be overriden in modular_citadel\maps\triumph\triumph_defines.dm	//TODO Remove/Fix these unneccessary Override Overrides everywhere ffs - Zandario
 
+	admin_levels = list()
+	sealed_levels = list()
+	empty_levels = list()
+	station_levels = list(Z_LEVEL_DECK_ONE,
+		Z_LEVEL_DECK_TWO,
+		Z_LEVEL_DECK_THREE,
+		Z_LEVEL_DECK_FOUR)
+	contact_levels = list(Z_LEVEL_DECK_ONE,
+		Z_LEVEL_DECK_TWO,
+		Z_LEVEL_DECK_THREE,
+		Z_LEVEL_DECK_FOUR)
+	player_levels = list(Z_LEVEL_DECK_ONE,
+		Z_LEVEL_DECK_TWO,
+		Z_LEVEL_DECK_THREE,
+		Z_LEVEL_DECK_FOUR)
+
 	holomap_smoosh = list(list(
 		Z_LEVEL_DECK_ONE,
 		Z_LEVEL_DECK_TWO,

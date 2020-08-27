@@ -71,6 +71,8 @@
 	next_meteor = 0
 
 /datum/event/meteor_wave/overmap/announce()
+	announceWhen = 0
+	command_announcement.Announce("\The [location_name()] Is now entering an asteroid belt.", "Meteor Alert")
 	return
 
 /datum/event/meteor_wave/overmap/tick()

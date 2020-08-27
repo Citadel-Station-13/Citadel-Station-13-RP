@@ -31,4 +31,5 @@
 
 // Overmap version
 /datum/event/dust/overmap/announce()
+	announceWhen = 0
 	return

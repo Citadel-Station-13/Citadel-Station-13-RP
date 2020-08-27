@@ -46,4 +46,5 @@
 	name = "carp school"
 	count = 5
 	radius = 4
-	hazards = /obj/effect/overmap/event/carp/major
+	continuous = FALSE
+	hazards = /obj/effect/overmap/event/carp_heavy

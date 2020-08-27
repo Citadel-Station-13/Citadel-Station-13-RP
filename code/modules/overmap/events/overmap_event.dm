@@ -14,6 +14,7 @@
 	var/difficulty = EVENT_LEVEL_MODERATE
 	var/weaknesses		// If the BSA can destroy them and with what
 	var/list/victims	// Basically cached events on which Z level
+	color = "#FFFFFF"
 
 /obj/effect/overmap/event/Initialize()
 	. = ..()
@@ -74,13 +75,16 @@
 
 /obj/effect/overmap/event/carp
 	name = "carp shoal"
-	events = list(/datum/event/carp_migration/overmap)
+	events = /datum/event/carp_migration/overmap
 	opacity = 0
-	difficulty = EVENT_LEVEL_MODERATE
 	event_icon_states = list("carp1", "carp2")
+	difficulty = EVENT_LEVEL_MODERATE
 	weaknesses = OVERMAP_WEAKNESS_EXPLOSIVE | OVERMAP_WEAKNESS_FIRE
 
-/obj/effect/overmap/event/carp/major
+/obj/effect/overmap/event/carp_heavy
 	name = "carp school"
-	difficulty = EVENT_LEVEL_MAJOR
+	events = /datum/event/carp_migration/overmap
+	opacity = 0
 	event_icon_states = list("carp3", "carp4")
+	difficulty = EVENT_LEVEL_MAJOR
+	weaknesses = OVERMAP_WEAKNESS_EXPLOSIVE | OVERMAP_WEAKNESS_FIRE

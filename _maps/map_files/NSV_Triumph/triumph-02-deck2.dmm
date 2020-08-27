@@ -1739,7 +1739,8 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Deck 2 Grid"
+	RCon_tag = "Deck 2 Grid";
+	cur_coils = 3
 	},
 /obj/structure/cable,
 /turf/simulated/floor/plating,
@@ -4528,6 +4529,15 @@
 "nT" = (
 /obj/machinery/light/small{
 	dir = 1
+	},
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	frequency = 1380;
+	id_tag = "belter_docking";
+	layer = 3.3;
+	name = "Belting Dock Controller";
+	pixel_y = 30;
+	req_one_access = list(13,31);
+	tag_door = null
 	},
 /turf/simulated/floor/airless,
 /area/quartermaster/miningdock)
@@ -8942,6 +8952,13 @@
 /obj/machinery/camera/network/civilian,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/crew_quarters/sleep/cryo)
+"CH" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing,
+/turf/space,
+/area/solar/aft)
 "CI" = (
 /turf/simulated/floor/wood,
 /area/maintenance/cargo)
@@ -10920,6 +10937,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/starboard)
+"Jg" = (
+/obj/structure/railing,
+/turf/space,
+/area/solar/aft)
 "Jh" = (
 /obj/machinery/camera/network/civilian{
 	dir = 1
@@ -15342,7 +15363,7 @@
 "XI" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
-	id_tag = "cargo_bay";
+	id_tag = "supply_shuttle";
 	layer = 3.3;
 	name = "cargo bay hatch controller";
 	pixel_x = 30;
@@ -17041,7 +17062,6 @@ ii
 ii
 ii
 ii
-cs
 ii
 ii
 ii
@@ -17113,7 +17133,8 @@ ii
 ii
 ii
 ii
-cs
+ii
+ii
 ii
 ii
 ii
@@ -17840,7 +17861,7 @@ ii
 ii
 ii
 ii
-cs
+ii
 ii
 ii
 ii
@@ -18770,7 +18791,7 @@ ii
 ii
 ii
 ii
-cs
+ii
 ii
 ii
 ii
@@ -18848,7 +18869,7 @@ ii
 ii
 ii
 ii
-cs
+ii
 ii
 ii
 ii
@@ -20318,7 +20339,7 @@ ii
 ii
 ii
 ii
-cs
+ii
 ii
 ii
 ii
@@ -20477,7 +20498,7 @@ ii
 ii
 ii
 ii
-ii
+cs
 ii
 ii
 ii
@@ -20833,7 +20854,7 @@ ii
 ii
 ii
 ii
-cs
+ii
 ii
 ii
 ii
@@ -20952,17 +20973,17 @@ ii
 ii
 ii
 ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
 cs
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
 ii
 ii
 ii
@@ -22258,7 +22279,7 @@ ii
 ii
 ii
 ii
-cs
+ii
 ii
 ii
 ii
@@ -22662,7 +22683,7 @@ ii
 ii
 ii
 ii
-ii
+cs
 ii
 ii
 ii
@@ -22830,7 +22851,7 @@ ii
 ii
 ii
 ii
-cs
+ii
 ii
 ii
 ii
@@ -23237,7 +23258,7 @@ ii
 ii
 ii
 ii
-cs
+ii
 ii
 ii
 Ed
@@ -23299,7 +23320,7 @@ ii
 ii
 ii
 ii
-ii
+cs
 ii
 ii
 ii
@@ -23387,13 +23408,13 @@ ii
 ii
 ii
 ii
-cs
+ii
 ii
 Ed
 ii
 ii
 ii
-cs
+ii
 ii
 ii
 ii
@@ -23857,7 +23878,7 @@ ii
 ii
 ii
 ii
-cs
+ii
 ii
 ii
 ii
@@ -25249,7 +25270,7 @@ Ed
 ii
 ii
 ii
-cs
+ii
 ii
 ii
 ii
@@ -25366,7 +25387,7 @@ ml
 ke
 lU
 cp
-HF
+gx
 cG
 yI
 UP
@@ -25508,7 +25529,7 @@ tA
 Gi
 ZG
 cp
-HF
+Jg
 cG
 yI
 UP
@@ -25650,7 +25671,7 @@ Wr
 lL
 dg
 cp
-HF
+CH
 cG
 yI
 UP
@@ -25792,7 +25813,7 @@ tA
 tA
 tA
 tA
-HF
+jh
 cG
 FR
 UP
@@ -25861,7 +25882,7 @@ ii
 ii
 ii
 ii
-Ed
+kD
 Ed
 Ed
 wp
@@ -26522,7 +26543,7 @@ HF
 Ed
 ii
 ii
-cs
+ii
 ii
 ii
 ii
@@ -27281,7 +27302,7 @@ ii
 ii
 ii
 ii
-Ed
+kD
 Ed
 Ed
 Ux
@@ -27515,7 +27536,7 @@ UP
 HF
 Ed
 ii
-cs
+ii
 ii
 ii
 ii
@@ -27804,7 +27825,7 @@ ii
 ii
 ii
 ii
-cs
+ii
 ii
 ii
 ii
@@ -28133,7 +28154,7 @@ ii
 ii
 ii
 ii
-Ed
+kD
 Ed
 Ed
 Ed
@@ -28258,7 +28279,6 @@ ii
 ii
 ii
 ii
-cs
 ii
 ii
 ii
@@ -28277,6 +28297,7 @@ ii
 ii
 ii
 ii
+Ed
 ii
 ii
 Ed
@@ -28418,7 +28439,7 @@ ii
 ii
 ii
 ii
-ii
+kD
 ii
 ii
 rC
@@ -28560,7 +28581,7 @@ ii
 ii
 ii
 ii
-ii
+Ed
 ii
 ii
 rC
@@ -28702,7 +28723,7 @@ ii
 ii
 ii
 ii
-ii
+Ed
 ii
 ii
 rC
@@ -28844,9 +28865,9 @@ ii
 ii
 ii
 ii
-ii
-ii
-ii
+kD
+Ed
+Ed
 rC
 ii
 ii
@@ -28926,7 +28947,7 @@ ii
 ii
 ii
 ii
-cs
+ii
 ii
 ii
 ii
@@ -28986,7 +29007,7 @@ ii
 ii
 ii
 ii
-ii
+Ed
 ii
 ii
 Ed
@@ -29128,7 +29149,7 @@ ii
 ii
 ii
 ii
-ii
+Ed
 ii
 ii
 Ed
@@ -29270,7 +29291,7 @@ ii
 ii
 ii
 ii
-ii
+kD
 ii
 ii
 Ed
@@ -29412,19 +29433,19 @@ ii
 ii
 ii
 ii
+Ed
+ii
+ii
+Ed
+ii
+ii
+Ed
 ii
 ii
 ii
 ii
 ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
+Ed
 ii
 ii
 ii
@@ -29554,22 +29575,22 @@ ii
 ii
 ii
 ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
+Ed
+Ed
+Ed
+kD
+Ed
+Ed
+kD
+Ed
+Ed
+kD
+Ed
+Ed
+kD
+Ed
+Ed
+kD
 rC
 Ed
 rC
@@ -29631,7 +29652,7 @@ ii
 ii
 ii
 ii
-cs
+ii
 ii
 ii
 ii
@@ -29849,7 +29870,7 @@ ii
 ii
 ii
 ii
-ii
+cs
 ii
 ii
 ii
@@ -30045,7 +30066,7 @@ ii
 ii
 ii
 ii
-ii
+cs
 ii
 ii
 ii
@@ -30834,7 +30855,7 @@ ii
 ii
 ii
 ii
-cs
+ii
 ii
 ii
 ii
@@ -31053,7 +31074,7 @@ ii
 ii
 ii
 ii
-cs
+ii
 ii
 ii
 ii
@@ -31247,7 +31268,7 @@ ii
 ii
 ii
 ii
-cs
+ii
 ii
 ii
 ii
@@ -31603,7 +31624,7 @@ ii
 ii
 ii
 ii
-cs
+ii
 ii
 ii
 ii
@@ -33168,7 +33189,7 @@ ii
 ii
 ii
 ii
-cs
+ii
 ii
 ii
 ii
@@ -34390,7 +34411,7 @@ ii
 ii
 ii
 ii
-cs
+ii
 ii
 ii
 ii
