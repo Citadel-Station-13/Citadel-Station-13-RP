@@ -81,7 +81,7 @@
 
 // Pirate base
 #include "space/_piratebase.dm"
-#include "space/_templates.dm"
+#include "space/piratebase_things.dm"
 
 /datum/map_template/triumph_lateload/away_piratebase
 	name = "Away Mission - Pirate Base"

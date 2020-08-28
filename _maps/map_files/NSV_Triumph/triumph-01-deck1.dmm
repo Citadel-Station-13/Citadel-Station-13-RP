@@ -3624,7 +3624,6 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_eva)
 "rX" = (
-/obj/machinery/shield_diffuser,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
@@ -4054,6 +4053,10 @@
 /obj/structure/sign/deck/first,
 /turf/simulated/wall,
 /area/triumph/station/stairs_one)
+"ue" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/airless,
+/area/space)
 "ug" = (
 /obj/structure/closet/secure_closet/engineering_electrical,
 /obj/item/clothing/gloves/yellow,
@@ -6114,6 +6117,7 @@
 /area/engineering/foyer_mezzenine)
 "DC" = (
 /obj/effect/floor_decal/industrial/warning/cee,
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/reinforced/airless,
 /area/space)
 "DG" = (
@@ -6938,6 +6942,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engi_engine)
+"Ic" = (
+/obj/structure/lattice,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/space,
+/area/space)
 "Ii" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/green{
 	dir = 4
@@ -8062,6 +8076,14 @@
 /obj/machinery/door/airlock/engineeringatmos,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
+"Os" = (
+/obj/structure/lattice,
+/obj/structure/grille,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/space,
+/area/space)
 "Ou" = (
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/tiled{
@@ -9054,6 +9076,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless,
 /area/space)
 "SV" = (
@@ -18636,7 +18659,7 @@ fN
 fN
 Zj
 fN
-kq
+ue
 eH
 JG
 vn
@@ -22498,7 +22521,7 @@ mZ
 BX
 Fr
 Fr
-ID
+Fr
 Fr
 Fr
 Fr
@@ -22639,24 +22662,24 @@ zy
 NT
 BX
 Fr
-fN
-Zj
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
+Bu
+zH
+ek
+ek
+ek
+ek
+ek
+ek
+ek
+ek
+ek
+ek
+ek
+ek
+ek
+ek
+ek
+ek
 fN
 Zj
 fN
@@ -22781,7 +22804,7 @@ zy
 iS
 BX
 lI
-Zj
+We
 iC
 dX
 Zj
@@ -22923,7 +22946,7 @@ Fp
 RF
 BX
 Fr
-fN
+ns
 iC
 fN
 fN
@@ -23065,7 +23088,7 @@ UX
 zX
 BX
 Fr
-fN
+ns
 iC
 fN
 fN
@@ -23207,7 +23230,7 @@ Bt
 BX
 BX
 Fr
-Zj
+We
 Zj
 fN
 fN
@@ -23349,7 +23372,7 @@ Gi
 BX
 Fr
 Fr
-fN
+ns
 fN
 fN
 fN
@@ -23490,7 +23513,7 @@ kE
 ML
 BX
 Fr
-Zj
+Ic
 fN
 fN
 fN
@@ -23632,7 +23655,7 @@ mI
 MZ
 BX
 Fr
-iC
+Os
 fN
 fN
 fN
@@ -23774,7 +23797,7 @@ vz
 PG
 BX
 Fr
-iC
+Os
 fN
 fN
 fN
@@ -23916,7 +23939,7 @@ YQ
 Su
 BX
 Fr
-iC
+Os
 fN
 fN
 fN
@@ -24058,7 +24081,7 @@ rj
 rj
 BX
 Fr
-iC
+Os
 fN
 fN
 fN
@@ -24200,7 +24223,7 @@ rj
 rj
 BX
 Fr
-iC
+Os
 fN
 fN
 fN
@@ -24342,7 +24365,7 @@ hw
 rj
 BX
 Fr
-iC
+Os
 fN
 fN
 fN
@@ -24484,7 +24507,7 @@ BX
 BX
 BX
 Fr
-iC
+Os
 fN
 fN
 fN
@@ -24626,7 +24649,7 @@ em
 ea
 UQ
 Fr
-iC
+Os
 fN
 fN
 fN
@@ -24768,7 +24791,7 @@ em
 nS
 UQ
 lI
-Zj
+We
 fN
 fN
 fN
@@ -24910,7 +24933,7 @@ TD
 WO
 UQ
 Fr
-Zj
+We
 fN
 fN
 fN
@@ -25052,7 +25075,7 @@ em
 em
 UQ
 Fr
-Zj
+We
 fN
 fN
 fN
@@ -25194,7 +25217,7 @@ XF
 jJ
 UQ
 Fr
-Zj
+We
 fN
 fN
 fN
@@ -25336,7 +25359,7 @@ Bw
 un
 UQ
 Fr
-iC
+Os
 fN
 fN
 fN
@@ -25478,7 +25501,7 @@ UR
 UR
 xv
 Fr
-iC
+Os
 fN
 fN
 fN
@@ -25620,7 +25643,7 @@ UR
 dD
 xv
 Fr
-iC
+Os
 fN
 fN
 fN
@@ -25762,7 +25785,7 @@ UR
 GX
 xv
 Fr
-iC
+Os
 fN
 fN
 fN
@@ -25904,7 +25927,7 @@ UR
 GX
 xv
 lI
-iC
+Os
 fN
 fN
 fN
@@ -26046,7 +26069,7 @@ Qi
 uX
 xv
 Fr
-iC
+Os
 fN
 fN
 fN
@@ -26188,7 +26211,7 @@ CN
 CN
 xv
 Fr
-iC
+Os
 fN
 fN
 fN
@@ -26330,7 +26353,7 @@ RG
 xv
 xv
 Fr
-iC
+Os
 fN
 fN
 fN
@@ -26472,7 +26495,7 @@ Fr
 Fr
 Fr
 Fr
-iC
+Os
 fN
 fN
 fN
@@ -26609,11 +26632,11 @@ nq
 PX
 eM
 fN
-fN
-fN
-fN
-fN
-iC
+ek
+ek
+ek
+ek
+tS
 Zj
 fN
 fN

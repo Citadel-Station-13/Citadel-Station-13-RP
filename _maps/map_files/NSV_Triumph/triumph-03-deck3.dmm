@@ -4577,6 +4577,7 @@
 /area/rnd/research_foyer_auxiliary)
 "jN" = (
 /obj/machinery/chem_master,
+/obj/structure/table/reinforced,
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
 "jO" = (
@@ -5817,6 +5818,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/structure/table/reinforced,
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
 "ml" = (
@@ -8902,7 +8904,6 @@
 /area/assembly/chargebay)
 "sI" = (
 /obj/machinery/meter,
-/obj/machinery/atmospherics/pipe/manifold/visible/cyan,
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan{
 	dir = 1
 	},
@@ -10250,6 +10251,7 @@
 	dir = 1
 	},
 /obj/structure/window/phoronreinforced/full,
+/obj/machinery/atmospherics/pipe/simple/hidden/purple,
 /turf/simulated/floor/plating,
 /area/rnd/xenobiology/xenoflora_storage)
 "vr" = (
@@ -21046,6 +21048,7 @@
 /area/rnd/xenobiology/xenoflora/lab_atmos)
 "QO" = (
 /obj/machinery/chemical_dispenser/full,
+/obj/structure/table/reinforced,
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
 "QP" = (
@@ -36409,7 +36412,7 @@ gK
 gK
 gK
 gK
-gK
+aT
 gK
 gK
 gK
@@ -39542,7 +39545,7 @@ gK
 gK
 gK
 gK
-gK
+aT
 gK
 gK
 gK
@@ -39622,7 +39625,7 @@ gK
 gK
 gK
 gK
-gK
+aT
 gK
 gK
 gK
@@ -40979,7 +40982,7 @@ gK
 gK
 gK
 gK
-gK
+aT
 gK
 gK
 gK
@@ -43001,7 +43004,7 @@ eP
 gK
 gK
 gK
-gK
+ss
 gK
 gK
 gK
@@ -43143,7 +43146,7 @@ ss
 gK
 gK
 gK
-gK
+ss
 gK
 gK
 gK
@@ -43285,7 +43288,7 @@ ss
 gK
 gK
 gK
-gK
+ss
 gK
 gK
 gK
@@ -43424,10 +43427,10 @@ ss
 gK
 gK
 eP
-gK
-gK
-gK
-gK
+ss
+ss
+ss
+eP
 gK
 gK
 gK
@@ -43542,7 +43545,7 @@ gK
 gK
 gK
 gK
-gK
+aT
 gK
 gK
 gK
@@ -43569,7 +43572,7 @@ Oi
 gK
 gK
 gK
-gK
+ss
 gK
 gK
 gK
@@ -43711,7 +43714,7 @@ Oi
 gK
 gK
 gK
-gK
+ss
 gK
 gK
 gK
@@ -43850,10 +43853,10 @@ HE
 HE
 ss
 eP
-gK
-gK
-gK
-gK
+ss
+ss
+ss
+eP
 gK
 gK
 gK
@@ -44552,7 +44555,7 @@ gK
 gK
 gK
 gK
-gK
+aT
 gK
 gK
 gK

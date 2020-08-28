@@ -1,140 +1,194 @@
-"ap" = (/obj/structure/table/steel_reinforced,/obj/machinery/light,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"ax" = (/obj/machinery/light/flamp,/turf/simulated/floor/airless,/area/triumph_away/piratebase/facility)
-"aC" = (/obj/machinery/sleep_console{dir = 4},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"bT" = (/obj/machinery/portable_atmospherics/canister/phoron,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"bW" = (/obj/machinery/shower{pixel_y = 18},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"cd" = (/obj/structure/table/rack/shelf/steel,/obj/random/medical,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
+"ap" = (/obj/structure/table/steel_reinforced,/obj/machinery/light,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"ax" = (/obj/machinery/light/flamp,/turf/simulated/floor/airless,/area/triumph_away/piratebase/facility{requires_power = 0})
+"aC" = (/obj/machinery/sleep_console{dir = 4},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"aF" = (/obj/machinery/embedded_controller/radio/simple_docking_controller{frequency = 1380; id_tag = "pirate_docker"; layer = 3.3; name = "Belting Dock Controller"; pixel_y = 30; req_one_access = null},/turf/simulated/floor/airless,/area/triumph_away/piratebase/facility{requires_power = 0})
+"be" = (/obj/structure/shuttle/engine/heater{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden{dir = 5},/turf/simulated/shuttle/wall/voidcraft/hard_corner,/area/shuttle/pirate/general)
+"bM" = (/obj/machinery/turretid/lethal{control_area = "\improper Pirate Skiff Shuttle"; pixel_x = 30; req_access = null},/turf/simulated/floor/reinforced,/area/shuttle/pirate/general)
+"bT" = (/obj/machinery/portable_atmospherics/canister/phoron,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"bW" = (/obj/machinery/shower{pixel_y = 18},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"cd" = (/obj/structure/table/rack/shelf/steel,/obj/random/medical,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
 "cJ" = (/obj/structure/railing{dir = 1},/obj/structure/railing{dir = 4},/turf/space,/area/triumph_away/piratebase/space)
-"cM" = (/obj/structure/sink{pixel_y = 23},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"dA" = (/obj/structure/dispenser/phoron,/obj/machinery/light{dir = 4},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"dN" = (/obj/machinery/vending/boozeomat,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
+"cM" = (/obj/structure/sink{pixel_y = 23},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"dA" = (/obj/structure/dispenser/phoron,/obj/machinery/light{dir = 4},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"dN" = (/obj/machinery/vending/boozeomat,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
 "ez" = (/obj/structure/lattice,/obj/structure/railing{dir = 8},/turf/space,/area/triumph_away/piratebase/space)
-"fl" = (/obj/machinery/power/smes/buildable/point_of_interest,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"fC" = (/obj/machinery/door/airlock/multi_tile/metal/mait{dir = 2},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"fD" = (/obj/structure/table/steel_reinforced,/obj/fiftyspawner/phoron,/obj/machinery/light,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"fT" = (/obj/machinery/vending/fitness,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
+"fl" = (/obj/machinery/power/smes/buildable/point_of_interest,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"fC" = (/obj/machinery/door/airlock/multi_tile/metal/mait{dir = 2},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"fD" = (/obj/structure/table/steel_reinforced,/obj/fiftyspawner/phoron,/obj/machinery/light,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"fT" = (/obj/machinery/vending/fitness,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"fV" = (/obj/machinery/auto_cloner,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
 "fY" = (/obj/effect/overmap/visitable/sector/pirate_base,/turf/space,/area/triumph_away/piratebase/space)
-"gj" = (/obj/machinery/portable_atmospherics/canister/phoron,/obj/machinery/light{dir = 4},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"gm" = (/obj/item/clothing/head/helmet/space/vox/carapace,/obj/item/clothing/suit/space/vox/carapace,/obj/structure/table/steel_reinforced,/obj/fiftyspawner/deuterium,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"gw" = (/obj/structure/table/rack/shelf/steel,/obj/item/cell/device/weapon/recharge/captain,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"gQ" = (/obj/structure/table/rack/shelf/steel,/obj/item/cell/hyper,/obj/item/storage/secure/briefcase/ml3m_pack_cmo,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"hc" = (/obj/structure/table/steel_reinforced,/obj/fiftyspawner/phoron,/obj/item/mecha_parts/mecha_equipment/weapon/energy/burstlaser,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"hi" = (/obj/machinery/light{dir = 4},/turf/space,/area/triumph_away/piratebase/facility)
-"hT" = (/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"hX" = (/obj/machinery/shower{pixel_y = 18},/obj/machinery/light{dir = 8},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"ie" = (/obj/structure/table/steel_reinforced,/obj/item/reagent_containers/food/snacks/dionaroast,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"ig" = (/obj/structure/table/rack/shelf/steel,/obj/item/cell/device/weapon/gunsword,/obj/random/tool,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"ip" = (/obj/structure/toilet{pixel_y = 16},/obj/machinery/light{dir = 8},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"iq" = (/obj/machinery/sleeper/survival_pod,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
+"gj" = (/obj/machinery/portable_atmospherics/canister/phoron,/obj/machinery/light{dir = 4},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"gm" = (/obj/item/clothing/head/helmet/space/vox/carapace,/obj/item/clothing/suit/space/vox/carapace,/obj/structure/table/steel_reinforced,/obj/fiftyspawner/deuterium,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"gw" = (/obj/structure/table/rack/shelf/steel,/obj/item/cell/device/weapon/recharge/captain,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"gQ" = (/obj/structure/table/rack/shelf/steel,/obj/item/cell/hyper,/obj/item/storage/secure/briefcase/ml3m_pack_cmo,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"hc" = (/obj/structure/table/steel_reinforced,/obj/fiftyspawner/phoron,/obj/item/mecha_parts/mecha_equipment/weapon/energy/burstlaser,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"hi" = (/obj/machinery/light{dir = 1},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"hB" = (/obj/machinery/light{dir = 1},/turf/simulated/floor/reinforced,/area/shuttle/pirate/general)
+"hT" = (/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"hX" = (/obj/machinery/shower{pixel_y = 18},/obj/machinery/light{dir = 8},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"ie" = (/obj/structure/table/steel_reinforced,/obj/item/reagent_containers/food/snacks/dionaroast,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"ig" = (/obj/structure/table/rack/shelf/steel,/obj/item/cell/device/weapon/gunsword,/obj/random/tool,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"ip" = (/obj/structure/toilet{pixel_y = 16},/obj/machinery/light{dir = 8},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"iq" = (/obj/machinery/sleeper/survival_pod,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"iI" = (/turf/simulated/floor/reinforced,/area/shuttle/pirate/general)
+"iL" = (/obj/machinery/atmospherics/pipe/tank/phoron,/turf/simulated/floor/reinforced,/area/shuttle/pirate/general)
 "iO" = (/obj/structure/railing,/obj/structure/lattice,/turf/space,/area/triumph_away/piratebase/space)
 "iQ" = (/obj/effect/step_trigger/teleporter/piratebase_loop/west,/turf/space,/area/triumph_away/piratebase/space)
+"iT" = (/obj/structure/table/rack,/obj/fiftyspawner/phoron,/turf/simulated/floor/reinforced,/area/shuttle/pirate/general)
 "jh" = (/obj/structure/railing{dir = 8},/obj/structure/lattice,/turf/space,/area/triumph_away/piratebase/space)
-"jU" = (/obj/structure/table/rack/shelf/steel,/obj/item/projectile/beam/medical_cell/omni3,/obj/random/tool,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"kf" = (/obj/structure/table/steel_reinforced,/obj/random/tool,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"kS" = (/obj/machinery/body_scanconsole{dir = 4},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
+"jU" = (/obj/structure/table/rack/shelf/steel,/obj/item/projectile/beam/medical_cell/omni3,/obj/random/tool,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"kf" = (/obj/structure/table/steel_reinforced,/obj/random/tool,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"kg" = (/obj/structure/shuttle/engine/heater{dir = 4},/obj/machinery/atmospherics/pipe/manifold4w/hidden,/turf/simulated/shuttle/wall/voidcraft/red,/area/shuttle/pirate/general)
+"kI" = (/obj/machinery/recharger,/obj/structure/table/steel_reinforced,/turf/simulated/floor/reinforced,/area/shuttle/pirate/general)
+"kS" = (/obj/machinery/body_scanconsole{dir = 4},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"kU" = (/obj/structure/cable/cyan{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/simulated/floor/reinforced,/area/shuttle/pirate/general)
+"kZ" = (/obj/structure/closet/secure_closet/guncabinet/sidearm,/turf/simulated/floor/reinforced,/area/shuttle/pirate/general)
 "ls" = (/obj/effect/shuttle_landmark/automatic,/turf/space,/area/triumph_away/piratebase/space)
-"lH" = (/obj/structure/table/steel_reinforced,/obj/item/storage/firstaid/bonemed,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
+"lH" = (/obj/structure/table/steel_reinforced,/obj/item/storage/firstaid/bonemed,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"lI" = (/obj/structure/table/rack/shelf/steel,/obj/item/cell/device/weapon/gunsword,/obj/random/tool,/obj/machinery/light{dir = 8},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
 "lP" = (/obj/effect/step_trigger/teleporter/piratebase_loop/north,/turf/space,/area/triumph_away/piratebase/space)
-"mh" = (/obj/structure/dispenser/phoron,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"mz" = (/obj/structure/bed/padded,/obj/machinery/light{dir = 8},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"mE" = (/mob/living/simple_mob/humanoid/merc/voxpirate/captain,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"mK" = (/obj/structure/closet,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
+"mh" = (/obj/structure/dispenser/phoron,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"mz" = (/obj/structure/bed/padded,/obj/machinery/light{dir = 8},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"mE" = (/mob/living/simple_mob/humanoid/merc/voxpirate/captain,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"mK" = (/obj/structure/closet,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
 "na" = (/obj/structure/lattice,/turf/space,/area/triumph_away/piratebase/space)
-"nx" = (/obj/structure/bed/padded,/obj/machinery/light,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
+"ng" = (/obj/machinery/vending/snack,/obj/machinery/light{dir = 1},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"nx" = (/obj/structure/bed/padded,/obj/machinery/light,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
 "nB" = (/obj/structure/railing{dir = 4},/obj/structure/lattice,/turf/space,/area/triumph_away/piratebase/space)
-"op" = (/obj/structure/sign/redcross{pixel_x = 32},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"pn" = (/obj/structure/table/steel_reinforced,/obj/fiftyspawner/silver,/obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/xray,/obj/machinery/light,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"pp" = (/obj/machinery/vending/coffee,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"qL" = (/obj/structure/closet,/obj/random/mre,/obj/random/tool,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"rM" = (/obj/structure/table/steel_reinforced,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
+"ol" = (/turf/simulated/shuttle/wall/voidcraft/green,/area/triumph_away/piratebase/facility{requires_power = 0})
+"op" = (/obj/structure/sign/redcross{pixel_x = 32},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"oy" = (/obj/structure/closet/secure_closet/guncabinet/rifle,/turf/simulated/floor/reinforced,/area/shuttle/pirate/general)
+"pn" = (/obj/structure/table/steel_reinforced,/obj/fiftyspawner/silver,/obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/xray,/obj/machinery/light,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"pp" = (/obj/machinery/vending/coffee,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"qL" = (/obj/structure/closet,/obj/random/mre,/obj/random/tool,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"rA" = (/obj/machinery/computer/ship/engines,/turf/simulated/floor/reinforced,/area/shuttle/pirate/general)
+"rG" = (/obj/structure/bed/chair/shuttle,/turf/simulated/floor/reinforced,/area/shuttle/pirate/general)
+"rM" = (/obj/structure/table/steel_reinforced,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
 "rQ" = (/obj/structure/railing{dir = 4},/obj/structure/railing,/turf/space,/area/triumph_away/piratebase/space)
-"rX" = (/obj/structure/table/steel_reinforced,/obj/item/storage/firstaid/insiderepair,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"sb" = (/obj/structure/sign/atmos/phoron{pixel_y = -32},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"tv" = (/obj/structure/closet/crate/secure,/obj/machinery/light{dir = 8},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"tN" = (/obj/machinery/light{dir = 4},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
+"rX" = (/obj/structure/table/steel_reinforced,/obj/item/storage/firstaid/insiderepair,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"sb" = (/obj/structure/sign/atmos/phoron{pixel_y = -32},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"tv" = (/obj/structure/closet/crate/secure,/obj/machinery/light{dir = 8},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"tJ" = (/obj/machinery/door/airlock/external,/obj/structure/fans/tiny,/turf/simulated/floor/reinforced,/area/shuttle/pirate/general)
+"tN" = (/obj/machinery/light{dir = 4},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
 "tO" = (/obj/structure/railing{dir = 4},/turf/space,/area/triumph_away/piratebase/space)
-"ud" = (/obj/structure/toilet{pixel_y = 16},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"uu" = (/obj/structure/table/steel_reinforced,/obj/fiftyspawner/mhydrogen,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"uv" = (/obj/machinery/auto_cloner,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"uI" = (/obj/structure/table/rack/shelf/steel,/obj/item/projectile/beam/medical_cell/toxin3,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"uJ" = (/obj/structure/table/rack/shelf/steel,/obj/item/projectile/beam/medical_cell/burn3,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"uV" = (/obj/structure/table/rack/shelf/steel,/obj/random/energy,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"uX" = (/obj/machinery/sleeper{dir = 4},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"vL" = (/mob/living/simple_mob/humanoid/merc/voxpirate/boarder_m,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"vW" = (/mob/living/simple_mob/mechanical/mecha/combat/marauder/mauler{faction = "voxpirate"},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"vX" = (/obj/machinery/door/airlock/phoron,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"wb" = (/obj/structure/table/rack/shelf/steel,/obj/item/projectile/beam/medical_cell/corpse_mend,/obj/random/tool,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"wF" = (/obj/structure/table/rack/shelf/steel,/obj/item/cell/device/weapon/gunsword,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"wT" = (/obj/structure/bed/padded,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"wZ" = (/obj/structure/table/steel_reinforced,/obj/fiftyspawner/uranium,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"xo" = (/obj/structure/table/steel_reinforced,/obj/item/storage/firstaid/adv,/obj/machinery/cell_charger,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"ye" = (/obj/machinery/light,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"yq" = (/turf/simulated/shuttle/wall/voidcraft/hard_corner,/area/triumph_away/piratebase/facility)
-"yr" = (/obj/structure/table/rack/shelf/steel,/obj/item/projectile/beam/medical_cell/stabilize2,/obj/random/tool,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
+"ud" = (/obj/structure/toilet{pixel_y = 16},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"ul" = (/obj/structure/railing{dir = 1},/obj/structure/lattice,/turf/space,/area/triumph_away/piratebase/space)
+"uu" = (/obj/structure/table/steel_reinforced,/obj/fiftyspawner/mhydrogen,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"uv" = (/obj/structure/table/steel_reinforced,/obj/machinery/light{dir = 1},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"uH" = (/obj/machinery/light,/obj/machinery/recharger/wallcharger{pixel_x = 5; pixel_y = 32},/turf/simulated/floor/reinforced,/area/shuttle/pirate/general)
+"uI" = (/obj/structure/table/rack/shelf/steel,/obj/item/projectile/beam/medical_cell/toxin3,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"uJ" = (/obj/structure/table/rack/shelf/steel,/obj/item/projectile/beam/medical_cell/burn3,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"uV" = (/obj/structure/table/rack/shelf/steel,/obj/random/energy,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"uX" = (/obj/machinery/sleeper{dir = 4},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"vL" = (/mob/living/simple_mob/humanoid/merc/voxpirate/boarder_m,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"vW" = (/mob/living/simple_mob/mechanical/mecha/combat/marauder/mauler{faction = "voxpirate"},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"vX" = (/obj/machinery/door/airlock/phoron,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"wb" = (/obj/structure/table/rack/shelf/steel,/obj/item/projectile/beam/medical_cell/corpse_mend,/obj/random/tool,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"wF" = (/obj/structure/table/rack/shelf/steel,/obj/item/cell/device/weapon/gunsword,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"wN" = (/turf/simulated/shuttle/wall/voidcraft/red,/area/triumph_away/piratebase/space)
+"wT" = (/obj/structure/bed/padded,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"wZ" = (/obj/structure/table/steel_reinforced,/obj/fiftyspawner/uranium,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"xo" = (/obj/structure/table/steel_reinforced,/obj/item/storage/firstaid/adv,/obj/machinery/cell_charger,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"xM" = (/obj/structure/bed/chair/shuttle{dir = 8},/turf/simulated/floor/reinforced,/area/shuttle/pirate/general)
+"ye" = (/obj/machinery/light,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"yq" = (/turf/simulated/shuttle/wall/voidcraft/hard_corner,/area/triumph_away/piratebase/facility{requires_power = 0})
+"yr" = (/obj/structure/table/rack/shelf/steel,/obj/item/projectile/beam/medical_cell/stabilize2,/obj/random/tool,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
 "yw" = (/obj/structure/catwalk,/turf/space,/area/triumph_away/piratebase/space)
-"yz" = (/obj/structure/table/rack/shelf/steel,/obj/item/projectile/beam/medical_cell/toxin3,/obj/random/tool,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"yA" = (/obj/structure/table/rack/shelf/steel,/obj/item/cell/device/weapon,/obj/random/tool,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"zT" = (/turf/simulated/floor/airless,/area/triumph_away/piratebase/facility)
-"Ar" = (/obj/structure/table/steel_reinforced,/obj/item/storage/firstaid/clotting,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"Az" = (/obj/structure/table/steel_reinforced,/obj/machinery/light{dir = 4},/obj/random/mre,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"AH" = (/obj/machinery/door/airlock/external,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"Bd" = (/obj/structure/catwalk,/turf/space,/area/triumph_away/piratebase/facility)
-"CZ" = (/obj/structure/table/steel_reinforced,/obj/fiftyspawner/gold,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"Dl" = (/obj/structure/table/steel_reinforced,/obj/random/medical,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"Dz" = (/obj/structure/table/rack/shelf/steel,/obj/item/material/sword/katana/durasteel,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"DE" = (/obj/structure/table/rack/shelf/steel,/obj/item/cell/slime,/obj/random/mre,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"DJ" = (/obj/machinery/sleep_console{dir = 4},/obj/machinery/light,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"Em" = (/mob/living/simple_mob/humanoid/merc/voxpirate/suppressor,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"EB" = (/obj/machinery/light,/obj/structure/table/steel_reinforced,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"EW" = (/obj/structure/table/steel_reinforced,/obj/fiftyspawner/osmium,/obj/machinery/light{dir = 8},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
+"yz" = (/obj/structure/table/rack/shelf/steel,/obj/item/projectile/beam/medical_cell/toxin3,/obj/random/tool,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"yA" = (/obj/structure/table/rack/shelf/steel,/obj/item/cell/device/weapon,/obj/random/tool,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"zT" = (/turf/simulated/floor/airless,/area/triumph_away/piratebase/facility{requires_power = 0})
+"Ar" = (/obj/structure/table/steel_reinforced,/obj/item/storage/firstaid/clotting,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"Az" = (/obj/structure/table/steel_reinforced,/obj/machinery/light{dir = 4},/obj/random/mre,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"AH" = (/obj/machinery/door/airlock/external,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"AM" = (/obj/machinery/light{dir = 4; icon_state = "tube1"},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"Bd" = (/obj/structure/catwalk,/turf/space,/area/triumph_away/piratebase/facility{requires_power = 0})
+"Cq" = (/obj/structure/closet/crate/critter,/obj/machinery/light{dir = 1},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"CZ" = (/obj/structure/table/steel_reinforced,/obj/fiftyspawner/gold,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"Dl" = (/obj/structure/table/steel_reinforced,/obj/random/medical,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"Dz" = (/obj/structure/table/rack/shelf/steel,/obj/item/material/sword/katana/durasteel,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"DE" = (/obj/structure/table/rack/shelf/steel,/obj/item/cell/slime,/obj/random/mre,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"DH" = (/obj/machinery/light{dir = 4; icon_state = "tube1"},/turf/simulated/floor/reinforced,/area/shuttle/pirate/general)
+"DJ" = (/obj/machinery/sleep_console{dir = 4},/obj/machinery/light,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"DP" = (/obj/effect/overmap/visitable/ship/landable/pirate,/obj/effect/shuttle_landmark/triumph/pirate,/turf/simulated/floor/reinforced,/area/shuttle/pirate/general)
+"Ea" = (/obj/machinery/computer/shuttle_control/explore/pirate{dir = 4},/turf/simulated/floor/reinforced,/area/shuttle/pirate/general)
+"Em" = (/mob/living/simple_mob/humanoid/merc/voxpirate/suppressor,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"EB" = (/obj/machinery/light,/obj/structure/table/steel_reinforced,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"EW" = (/obj/structure/table/steel_reinforced,/obj/fiftyspawner/osmium,/obj/machinery/light{dir = 8},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
 "Fl" = (/turf/unsimulated/mineral/triumph,/area/triumph_away/piratebase/space)
-"Ft" = (/obj/structure/table/rack/shelf/steel,/obj/item/cell/hyper,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
+"Ft" = (/obj/structure/table/rack/shelf/steel,/obj/item/cell/hyper,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
 "GX" = (/obj/away_mission_init/piratebase,/turf/space,/area/triumph_away/piratebase/space)
+"Hr" = (/obj/structure/table/rack,/obj/machinery/light,/turf/simulated/floor/reinforced,/area/shuttle/pirate/general)
+"Hz" = (/obj/machinery/ion_engine{dir = 8},/turf/simulated/shuttle/plating/airless/carry,/area/shuttle/pirate/general)
 "HA" = (/obj/structure/catwalk,/obj/structure/railing{dir = 4},/turf/space,/area/triumph_away/piratebase/space)
-"HY" = (/obj/structure/table/rack/shelf/steel,/obj/item/gun/energy/gun/fluff/gunsword,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"Il" = (/obj/machinery/light{dir = 8},/turf/simulated/floor/airless,/area/triumph_away/piratebase/facility)
-"Iz" = (/obj/machinery/vending/cola,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"IJ" = (/obj/structure/table/steel_reinforced,/obj/item/reagent_containers/food/snacks/chickenfillet,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"Jw" = (/obj/structure/closet,/obj/random/tool,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"JA" = (/obj/machinery/light{dir = 8},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"JC" = (/obj/structure/table/steel_reinforced,/obj/fiftyspawner/diamond,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"JF" = (/obj/machinery/light{dir = 8},/mob/living/simple_mob/humanoid/merc/voxpirate/suppressor,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"JH" = (/obj/structure/table/rack/shelf/steel,/obj/item/cell/device/weapon,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"JW" = (/obj/structure/table/steel_reinforced,/obj/random/mre,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"Kw" = (/obj/structure/table/rack/shelf/steel,/obj/item/projectile/beam/medical_cell/stabilize2,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
+"HY" = (/obj/structure/table/rack/shelf/steel,/obj/item/gun/energy/gun/fluff/gunsword,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"Il" = (/obj/machinery/light{dir = 8},/turf/simulated/floor/airless,/area/triumph_away/piratebase/facility{requires_power = 0})
+"Io" = (/obj/machinery/power/smes/buildable{charge = 1.5e+007; cur_coils = 3},/obj/structure/cable/cyan{d2 = 2; icon_state = "0-2"},/turf/simulated/floor/reinforced,/area/shuttle/pirate/general)
+"Iz" = (/obj/machinery/vending/cola,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"IJ" = (/obj/structure/table/steel_reinforced,/obj/item/reagent_containers/food/snacks/chickenfillet,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"Jl" = (/obj/structure/cable/cyan{d2 = 8; icon_state = "0-8"},/obj/machinery/power/port_gen/pacman,/obj/machinery/light{dir = 1},/turf/simulated/floor/reinforced,/area/shuttle/pirate/general)
+"Jw" = (/obj/structure/closet,/obj/random/tool,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"JA" = (/obj/machinery/light{dir = 8},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"JC" = (/obj/structure/table/steel_reinforced,/obj/fiftyspawner/diamond,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"JF" = (/obj/machinery/light{dir = 8},/mob/living/simple_mob/humanoid/merc/voxpirate/suppressor,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"JH" = (/obj/structure/table/rack/shelf/steel,/obj/item/cell/device/weapon,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"JT" = (/obj/structure/grille,/obj/structure/window/phoronreinforced/full,/turf/simulated/floor/reinforced,/area/shuttle/pirate/general)
+"JW" = (/obj/structure/table/steel_reinforced,/obj/random/mre,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"Kw" = (/obj/structure/table/rack/shelf/steel,/obj/item/projectile/beam/medical_cell/stabilize2,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
 "KJ" = (/turf/space,/area/triumph_away/piratebase/space)
 "KP" = (/obj/structure/lattice,/obj/structure/railing{dir = 1},/turf/space,/area/triumph_away/piratebase/space)
-"KY" = (/obj/structure/table/rack/shelf/steel,/obj/random/cigarettes,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"Lj" = (/obj/structure/table/steel_reinforced,/obj/machinery/recharger,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
+"KY" = (/obj/structure/table/rack/shelf/steel,/obj/random/cigarettes,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"Lg" = (/obj/machinery/door/airlock/external,/turf/simulated/floor/reinforced,/area/shuttle/pirate/general)
+"Lj" = (/obj/structure/table/steel_reinforced,/obj/machinery/recharger,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
 "Ls" = (/obj/structure/lattice,/obj/structure/railing{dir = 8},/obj/structure/railing{dir = 1},/turf/space,/area/triumph_away/piratebase/space)
-"LB" = (/obj/structure/closet/crate/secure,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
+"LB" = (/obj/structure/closet/crate/secure,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"LM" = (/obj/structure/closet/crate/secure,/obj/machinery/light{dir = 1},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"LT" = (/obj/structure/cable/cyan{d2 = 4; icon_state = "0-4"},/obj/machinery/power/terminal{dir = 8},/turf/simulated/floor/reinforced,/area/shuttle/pirate/general)
 "Mc" = (/obj/structure/catwalk,/obj/structure/railing{dir = 8},/turf/space,/area/triumph_away/piratebase/space)
-"Ne" = (/obj/machinery/vending/snack,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"NI" = (/obj/machinery/light{dir = 4},/turf/simulated/floor/airless,/area/triumph_away/piratebase/facility)
-"OD" = (/obj/structure/closet/crate/critter,/obj/machinery/light{dir = 4},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"PJ" = (/obj/structure/table/rack/shelf/steel,/obj/random/curseditem,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"Qe" = (/obj/structure/table/steel_reinforced,/obj/fiftyspawner/durasteel,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"QF" = (/obj/structure/table/rack/shelf/steel,/obj/item/projectile/beam/medical_cell/brute3,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
+"Mm" = (/obj/machinery/atmospherics/pipe/simple/hidden{dir = 5},/obj/machinery/meter,/obj/machinery/light{dir = 4; icon_state = "tube1"},/turf/simulated/floor/reinforced,/area/shuttle/pirate/general)
+"Mt" = (/turf/simulated/shuttle/wall/voidcraft/hard_corner,/area/shuttle/pirate/general)
+"MC" = (/obj/structure/bed/chair/shuttle{dir = 1},/turf/simulated/floor/reinforced,/area/shuttle/pirate/general)
+"MN" = (/obj/structure/cable/cyan{d1 = 1; d2 = 4; icon_state = "1-4"},/turf/simulated/floor/reinforced,/area/shuttle/pirate/general)
+"Ne" = (/obj/machinery/vending/snack,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"NI" = (/obj/machinery/light{dir = 4},/turf/simulated/floor/airless,/area/triumph_away/piratebase/facility{requires_power = 0})
+"Of" = (/obj/structure/cable/cyan{d1 = 1; d2 = 8; icon_state = "1-8"},/turf/simulated/floor/reinforced,/area/shuttle/pirate/general)
+"Ou" = (/obj/machinery/shipsensors,/turf/simulated/floor/airless,/area/shuttle/pirate/general)
+"OD" = (/obj/structure/closet/crate/critter,/obj/machinery/light{dir = 4},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"OI" = (/obj/machinery/porta_turret/industrial{faction = "voxpirate"},/turf/simulated/floor/airless,/area/shuttle/pirate/general)
+"Pd" = (/obj/structure/cable/cyan{d2 = 2; icon_state = "0-2"},/obj/machinery/power/apc{dir = 1; name = "north bump"; pixel_y = 24},/turf/simulated/floor/reinforced,/area/shuttle/pirate/general)
+"PJ" = (/obj/structure/table/rack/shelf/steel,/obj/random/curseditem,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"Qe" = (/obj/structure/table/steel_reinforced,/obj/fiftyspawner/durasteel,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"Qo" = (/obj/machinery/light,/obj/structure/bed/chair/shuttle{dir = 1},/turf/simulated/floor/reinforced,/area/shuttle/pirate/general)
+"Qt" = (/obj/machinery/light{dir = 1},/obj/structure/bed/chair/shuttle,/turf/simulated/floor/reinforced,/area/shuttle/pirate/general)
+"QF" = (/obj/structure/table/rack/shelf/steel,/obj/item/projectile/beam/medical_cell/brute3,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
 "QV" = (/turf/simulated/shuttle/wall/voidcraft/green,/area/triumph_away/piratebase/facility)
-"Rp" = (/obj/structure/grille,/obj/structure/window/phoronreinforced/full,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"Rx" = (/obj/machinery/door/airlock/multi_tile/metal/mait,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
+"Rp" = (/obj/structure/grille,/obj/structure/window/phoronreinforced/full,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"Rx" = (/obj/machinery/door/airlock/multi_tile/metal/mait,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"RQ" = (/turf/simulated/shuttle/wall/voidcraft/red,/area/shuttle/pirate/general)
+"RT" = (/obj/machinery/light,/obj/machinery/computer/ship/helm{dir = 1},/turf/simulated/floor/reinforced,/area/shuttle/pirate/general)
+"Sl" = (/obj/structure/shuttle/engine/heater{dir = 4},/obj/machinery/atmospherics/pipe/manifold/hidden{dir = 8},/turf/simulated/shuttle/wall/voidcraft/red,/area/shuttle/pirate/general)
 "Th" = (/obj/effect/step_trigger/teleporter/piratebase_loop/east,/turf/space,/area/triumph_away/piratebase/space)
 "Tv" = (/turf/simulated/mineral/vacuum,/area/triumph_away/piratebase/space)
 "Tx" = (/obj/structure/railing{dir = 1},/turf/space,/area/triumph_away/piratebase/space)
 "TU" = (/obj/structure/lattice,/obj/structure/railing,/turf/space,/area/triumph_away/piratebase/space)
-"Uh" = (/mob/living/simple_mob/humanoid/merc/voxpirate/boarder_r,/turf/simulated/floor/airless,/area/triumph_away/piratebase/facility)
-"Vb" = (/mob/living/simple_mob/humanoid/merc/voxpirate/boarder_r,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
+"Uh" = (/mob/living/simple_mob/humanoid/merc/voxpirate/boarder_r,/turf/simulated/floor/airless,/area/triumph_away/piratebase/facility{requires_power = 0})
+"Um" = (/obj/structure/table/rack/shelf/steel,/obj/item/cell/device/weapon,/obj/machinery/light{dir = 8},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"Vb" = (/mob/living/simple_mob/humanoid/merc/voxpirate/boarder_r,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
 "Vr" = (/obj/structure/railing{dir = 8},/turf/space,/area/triumph_away/piratebase/space)
 "Vu" = (/obj/effect/step_trigger/teleporter/piratebase_loop/south,/turf/space,/area/triumph_away/piratebase/space)
 "Wg" = (/obj/structure/lattice,/obj/structure/railing{dir = 4},/turf/space,/area/triumph_away/piratebase/space)
-"WB" = (/obj/structure/table/rack/shelf/steel,/obj/random/firstaid,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"WS" = (/obj/structure/table/rack/shelf/steel,/obj/item/pickaxe/diamonddrill,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"Xd" = (/obj/structure/closet/crate/critter,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
+"WB" = (/obj/structure/table/rack/shelf/steel,/obj/random/firstaid,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"WS" = (/obj/structure/table/rack/shelf/steel,/obj/item/pickaxe/diamonddrill,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"Xd" = (/obj/structure/closet/crate/critter,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
 "Xf" = (/obj/structure/railing,/turf/space,/area/triumph_away/piratebase/space)
-"XU" = (/obj/machinery/bodyscanner{dir = 1},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"Yv" = (/obj/structure/table/rack/shelf/steel,/obj/random/drinkbottle,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"YD" = (/obj/structure/table/rack/shelf/steel,/obj/item/projectile/beam/medical_cell/antirad,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
-"YV" = (/obj/machinery/auto_cloner,/obj/machinery/light,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility)
+"Xy" = (/obj/machinery/light{dir = 1},/obj/machinery/computer/ship/engines,/turf/simulated/floor/reinforced,/area/shuttle/pirate/general)
+"XU" = (/obj/machinery/bodyscanner{dir = 1},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"Yv" = (/obj/structure/table/rack/shelf/steel,/obj/random/drinkbottle,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"YD" = (/obj/structure/table/rack/shelf/steel,/obj/item/projectile/beam/medical_cell/antirad,/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"YV" = (/obj/structure/closet,/obj/random/mre,/obj/random/tool,/obj/machinery/light{dir = 1},/turf/simulated/floor/reinforced,/area/triumph_away/piratebase/facility{requires_power = 0})
+"YY" = (/obj/structure/shuttle/engine/heater{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden{dir = 6},/turf/simulated/shuttle/wall/voidcraft/hard_corner,/area/shuttle/pirate/general)
+"ZJ" = (/obj/structure/cable/cyan{d1 = 4; d2 = 8; icon_state = "4-8"},/obj/machinery/door/airlock/external,/turf/simulated/floor/reinforced,/area/shuttle/pirate/general)
+"ZX" = (/obj/machinery/recharger/wallcharger{pixel_x = 5; pixel_y = 32},/turf/simulated/floor/reinforced,/area/shuttle/pirate/general)
 
 (1,1,1) = {"
 iQlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPlPTh
@@ -162,97 +216,97 @@ iQKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTv
 iQKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvFlyqEWuuCZQeJCgmyqFlTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJTh
 iQKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvFlyqhThThThThThTyqFlTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJTh
 iQKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvFlyqhcfDhThTpnwZyqFlTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvQVQVQVQVRxhTQVQVQVQVQVQVQVQVQVQVQVQVQVQVQVQVQVQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJTvKJKJKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvQVhThThThThThThThThThThThThThThThThThThThThThTQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJTvKJKJKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvQVhThThThThThThThThThThThThThThThTyqhThThThThTQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvQVJAhThThThThTyqhThThThThThThThThTrMhThThThThTQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvQVhThThThThThThThThThThThThThTEmhTrMhThThThThTQVQVQVQVQVQVQVQVQVQVQVQVQVQVQVQVQVQVQVQVQVQVQVQVQVQVQVQVQVQVQVQVQVQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvQVhThThTEmhThThThThThThTyehThThThTrMhThThThThTQVqLqLqLqLqLqLqLqLqLQVhThThThThThTmKhTJwQVipyqipyqipyqudyqyqyqyqyqQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvQVhThThThThThThThThThThTyqhThThThTrMhThThThThTyqJAhThThTVbhThThThTyqmzhTwThTwTvLmKhTJwyqvXyqvXyqvXyqvXyqhXbWbWbWQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJTvTvTvTvTvKJKJnaTvTvTvTvTvTvKJKJKJKJKJTvKJTvTvTvTvTvTvTvTvTvQVhThThThThThThThThThThThThThThThTrMhTmEhThThTyqhThThThThThThThThTyqhThThThThThTmKhTJwyqJAhThThThThThTyqVbyqyqhTQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJnaKJKJTvTvTvTvTvKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvQVhThThThThThThThThThThThThThThThTEBhThThThThTyqwTvLwThThThTwThTwTyqwThTwThTwTVbhThTJwyqhTyqyqyqyqhThTvXhTbWbWhTQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJnananaTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvQVJAyehThThThThThThTvWhThThThThThTyqhThThThThTyqhThThThThThThThThTyqhThThThThThThThTJwyqJAcMcMcMcMhTtNyqvLyqyqhTQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJTvKJKJKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJnananananananaKJKJKJKJKJKJnaTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvQVrMyqhThThThThThThThThThThThThThThThThThThThTyqwTyewThThThTwThTnxyqwTyewThTwThThTyeJwyqhThThThThThThTyqJAbWbWhTQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJTvKJKJKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJnaKJKJKJKJKJKJnaKJKJTvKJTvTvTvTvTvTvTvTvTvTvTvQVEmrMhThThThThThThTEmhThThThThThThThThThThThTyqyqyqyqyqyqvXyqyqyqyqyqyqyqyqyqvXyqyqyqyqyqyqyqyqvXyqyqyqyqyqyqQVQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJTvKJKJKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJnanananananananananananananaKJKJnaKJKJTvTvTvTvTvTvTvTvTvTvQVhTrMhThThTyqrMrMrMrMrMrMrMrMrMhThThThThThThThThThThTyqhThThThThThThThThThThThThThThThThThThThThThThThThThThThTQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJnaTvTvTvTvTvTvTvTvTvTvTvTvQVJFrMhThThThThThThThThThThThTrMhThThThThTyehThThThThTyqhThThThThThThThThThThThTEmhThThThTVbhThThThThThThThThThTQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJnaKJKJKJKJKJTvTvTvTvTvTvTvQVhTrMhThThThThThThThThThThThTyqhThThThThTyqhTyqhThThTyqhThThThThThTVbhThThThThThThThThThThThThThThTVbhThThThThTQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJnaKJKJKJKJKJTvTvTvTvTvTvTvQVflrMhThThThThThThTmEhThThThThThThThThThThThTyqhThThTyqXdhThTyehThTyehThThThThThThThThThTyehThThThThThThTvLhThTQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnananananananananaTvTvTvTvTvTvTvQVyqyqyqyqyqyqhThThThThThThThThThThThThThThThTyqhThThTyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqRxhTyqyqyqvXyqyqyqhThThTtNQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJnaKJKJKJKJKJTvQVQVQVQVQVQVyqyqyqyqyqyqyqJAhThThThThThTyehThThThThThThTmEhThThThThThThThTrMhThThThThThThThTLjhThThThTyqXdhThThTXdyqhThThThTQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJnaKJhiyqQVQVQVyqJAhThThTrMhThThThThTyqyqhThThThThThThTyqhThThTEmhThThThThThThThThThThThTrMhThThThThThThThTrMhThThTtNyqhThThThTODyqhThThThTyqQVQVQVQVQVQVQVQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJzTzTzTzTzTzTAHhThThTAHhThThThTrMhTVbhThThTyqyqhThThTyehThThThThThThThThThThThThThThThTVbhThThTrMhThThThThThThThTrMhThThThTyqVbhThThTXdyqhThThThThThThThThThThThTQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJzTzTzTzTzTzTAHhThThTAHhThThThTrMhThThTvLhTyqyqhThThTyqhThThThThThThThThThThThThThThThThThThThTrMhThThThTVbhThThTrMrMrMrMrMyqhThThThTXdyqhThThThTfChThThThTkSXUhTyqQVQVQVQVQVQVQVQVQVQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJhiyqQVQVQVyqJAhThThTrMhThThThThTyqyqhThThThThThThThTrMrMrMrMrMrMrMrMrMhThThThThThThThThThThThThThThThThThThThThTyqhThThTVbtNyqhThThTopyqhTEmhThThThThTyqXdhThThThThThThTDlQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJTvTvTvTvQVQVQVQVQVQVyqhThThThTyqyqhThThThThThThThTrMhThThThThThThTrMhThTEmhThThThThThThThThThThThThTyqhThThThTyqhThThThThTyqhThThThTyqhThThThTaCuXhTyqrMhThTEmhThThThTrMQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJlsKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJTvTvTvTvTvTvTvQVhThThThTyqyqhThThThThThThThTrMhThThTyehThThTrMhThThThThThThTyqhThThTEmhThThThThThThThThTyqhTuvYVuvhTyqhThThThTyqiqhThThThThThTyqrMhThThThThTvLhTAzQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJTvTvTvTvTvTvTvTvTvQVhThThThTyqyqhThThTEmhThThThTrMhThTyqyqyqhThTrMhThThThThThThThThThThThThThThThThThThThTyqyqyqyqyqyqyqyqhThThThTyqiqhThTEmaCuXtNyqLjhThThTyehThThTJWQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJTvTvTvTvTvTvTvTvTvTvQVJAhTrMrMyqyqJAhThThThThThThThThTVbhTyqhThThThThThThTVbhThThTrMhThThThThThThThTrMhThThTyqyqLBLBhThThThThThThThTyqrXhThThThThThTyqrMhThThTyqhThThTJWQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnananananaTvTvTvTvTvTvTvTvTvTvQVhThThThTyqyqhThThThThThThThThThThThTyqhThThThTyehThThThThThTrMhThThThTVbhThThTrMhThTtNyqyqLBLBhThThThThThThTtNyqArhThThTaCuXhTyqrMhTvLhTyqhThThTrMQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJTvTvTvTvTvTvTvTvTvTvQVhThThThTyqyqhThThTyqhThThThThThThThThThThThTyqyqyqyqhThThThTrMhThThThThThThThTrMhThThTyqyqLBLBVbhThThThThThThTyqlHhThTEmhThThTyqDlhThThTyqhThTEmrMQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJTvTvTvTvTvTvTvTvTvTvQVhThThThTyqyqhThTyehThThThThThTyehThThThThThThTyehThThThThThTrMhThThTyehThThThTaphThThTyqyqLBLBhThThThTyehThThTyqxohTyehTDJuXhTyqrMhThTtNyqhThThTrMQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJTvTvTvTvTvTvTvTvTvTvQVhThThThTyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqLBLBhThTyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqrMhThThTyqhThThThTQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJTvTvTvTvTvTvTvTvTvTvQVhThTVbhTyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqLBLBhThThTLBLBLBLBLByqLBhThThThTLBhTyqrMhTvLhTyqhThThThTQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJTvTvTvTvTvTvTvTvTvTvQVJAhThThTyqhThThTrMhThThThThThTXdhTrMhThThThThTrMhTVbhThThThThTyqhThThTppdNIzfTfTNeNeNehTyqLBLBhThThThThThThThTyqhThThTVbhThThThThThThThTyqhThThThTQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnanananananananaTvTvTvTvTvTvTvQVhThThThThThThThTrMhThThThThThThThTrMhThTmEhThTrMhThThThThThThThThThThTvLhThThThThThThThTyqLBLBhTvLhThThThThThThThThThThThThThTfChThTyehTyqyqRxhTyqQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJTvTvTvTvTvTvTvQVhThThThTfChThThThThThThThTVbhThThThThThThThThThThThThTvLhThThTfChThThThThThThThThTVbhTtNyqLBLByehThThThThThThTfChThThThThThTtNyqyqyqyqyqyqhThTEmhTQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJTvKJKJTvTvTvTvTvTvTvQVhTyehThTyqXdhTyehThThThThThThThThThThThTXdhThThThThThThThThThTyqhTieJWJWIJrMieIJrMhThThTyqyqyqyqyqyqyqhThThThTyqhThThThThThThTyqhThThThTyqXdhThThTQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJTvTvKJTvTvTvTvTvTvTvQVyqyqyqyqyqyqyqyqyqyqRxhTyqyqyqyqyqyqyqyqyqyqyqyqyqRxhTyqyqyqyqyqhThThThThThThThTVbhTVbhTyqhTLBLBhThThThThThThTyqhThThThThTvLhTyqhThTVbhTyqDlrMhTtNQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJTvTvTvTvTvTvTvTvTvTvQVhThTXdhThThThThThThThThThThThThThThThThTyqhThThThThThThThThThTyqhThThTVbhThThThThThThThThThThThThThThThThThTtNyqhThTvLhThThTtNyqhThThThThThThThThTQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnananananananaKJKJKJKJTvTvTvTvTvTvTvTvTvTvQVhTXdhThThThThThThThThThThThThThThThThThTyqJAvLhThThThThThThTtNyqhTJWIJrMieierMierMhThThTfChThThThThThTEmhThThTyqhThThThThThThTyqhThThThTfChThThThTQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJnaKJKJKJTvTvTvTvTvTvTvTvTvTvTvQVhThThThThThThThThThThThThThThThThThThThTyqhThTrMDlJWJWrMrMhThTyqhThThThThThThThThThThThTyqhThThThThThThThThThTyqLBhTLByehTLBhTyqhThThThTyqhThThThTQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJnaKJKJKJTvTvTvTvTvTvTvTvTvTvTvQVJAhThThThThThThTrMhTmEhThTVbhThThThThThThThThTrMhThThTVbrMhThTyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqRxhTyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqrMrMrMrMyqhThTrMJWQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJnaTvTvKJTvTvTvTvTvTvTvTvTvTvTvQVrMrMrMrMrMhThThTJWhThThThTEmhThTvLhThThTfChThTrMhTVbhThTrMhThTyqhThThTXdhThThThTrMLBLBLBhThThThThThThThTLBLBhTrMhTLBLBLBLBLBhThThThThTtNyqhTEmhThTQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJnaTvTvKJTvTvTvTvTvTvTvTvTvTvTvQVhThThThThThThThTJWhThThThThThThThThThThTyqhThTDlrMrMrMrMrMhThThThThThThThThThThTrMhThThThThThThThThThThThThTVbrMhThThThThTvLhThThThThThTyqhThThTtNQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJnaTvTvTvTvTvTvTvTvTvTvTvTvTvTvQVhThThThThThThThTrMhThThThThThThThThThThTyqJAhThThThThThThTvLhTfChThThThThTVbhThTrMhTEmhThThThThThThThThThThThTrMhThThThThThThThThThThThTyqhThThThTQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJTvTvKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvQVLBhThThThThThThTrMLBLBhTyeLBLBhThThThThTyqXdhThTyehThThTyeLBLByqhTLBLBhTyehThThTrMhThTyehThThThThTXdhThTyehThTrMhThThTyehThTXdhThTyehThTyqhThThThTQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJTvTvKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnanananaTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvQVLBhThThThThThThTyqQVQVQVQVRpRpRpRpRpRpRpyqQVQVQVyqRxhTyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqrMJWrMrMQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvQVtvhThThThThThThTQVKJKJnaKJKJKJKJKJKJKJKJnaKJKJKJQVhThThThThThThThThThTvLJWhThThTrMrMrMDlrMJWrMrMrMhThTkfhThTrMkfrMDlrMyqhTLBLBLBhThTvLXdhThThThThTQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvQVLBhThThThThThTtNQVnananananananananaKJKJnaKJKJKJQVJAhThThTVbhThThTEmhThTJWhThThThThThThThThThTVbhThThTrMhThThThThThThThThThThThThThThThThThThThTtNQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvQVrMkfDlrMrMhThThTQVKJKJKJKJKJKJKJKJnananananananaQVhThThThThThThThThThThThThThThThThThThThThThThThThThThThThThThThThThTfChThThThThTVbhThThThTEmhThTQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvQVhThThThThThThThTQVXfXfXfKJKJKJKJKJnaKJKJKJKJKJKJQVhThTyehThThThTrMDlrMhThThTrMrMrMhThThTyehTLBLBLBLBhTyehThThThThThThTyqhThTyehTsbhThThThThThTyehTQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvQVLBhThThThThThThTQVzTzTaxjhnananananaKJKJKJKJKJKJQVQVQVQVQVQVQVQVRpRpRpRpRpRpRpRpRpQVQVQVQVQVQVQVQVQVyqyqyqyqRxhTyqyqyqyqyqyqyqyqyqRxhTyqyqyqyqyqyqQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvQVLBhThThThThThTrMQVzTzTzTVrKJKJKJKJnaKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJQVhThThThThThTrMhThTyqDEhThThThThThThThThThThTFtQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvQVLBhThThThThThTDlRpIlzTzTVrKJKJKJKJnaKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJQVJAhTvLhThThTrMhThTyqFthThTWBhThTYvhThTYvhThTHYQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvQVhThThThTvLhThTrMRpzTUhzTeznananananananananananananaKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJQVrMkfrMrMhThTkfhThTyqDEhThTWShThTQFhThTJHhThTDzQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvQVhThThThThThThTtNQVzTzTzTVrKJKJKJKJKJKJnaKJKJKJKJKJnaKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJQVhThThThThTvLrMhTtNyqJHhTvLYDhThTwbvLhTJHhThTbTQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvQVJArMhThThThThThTQVzTzTzTVrKJKJKJKJKJKJnaKJKJKJKJKJnaKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJQVhThThThThThThThThTyqPJhThTYDhThTWBhThTJHhThTgjQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvQVkfrMhTrMkfDlrMkfQVIlzTzTVrKJKJKJKJKJKJnaKJKJKJKJKJnaKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJQVLBhThThThThThThThTyquVhThTFthThTuJhThTyzhThTbTQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJTvKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvQVhThThThThThThThTQVzTUhzTVrKJKJKJKJKJKJnaKJKJKJKJKJnanananananananananananananananananananananananaQVtvhTrMJWrMkfVbrMrMyqJHhThTYvhThTyrhThTuIhThTbTQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJTvKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvQVhThThThThThTyehTQVzTzTzTjhnananananananaKJKJKJKJKJnaKJKJKJKJKJnaKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJQVLBhThThThTrMkfrMhTyqyAhThTcdhThTFthThTKYhThTbTQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvQVJAhThThTyqyqyqyqyqIlzTzTVrKJKJKJKJKJKJnaKJKJKJKJKJTUXfXfXfXfXfiOXfXfXfKJKJKJXfXfXfXfXfiOXfXfXfXfXfQVLBhThThThThThThTtNyqwFhThTKwhThTyAhThTjUhThTbTQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvQVhThThThTAHhThThTAHzTzTzTVrKJKJKJKJKJKJnaKJKJKJKJtOaxzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTaxzTzTzTzTzTNIyqyqyqyqyqhThThThThTyqighThTcdhThTcdhThTFthThTdAQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvQVhThThThTAHhTyehTAHzTzTzTMcywKJKJKJKJKJnaKJKJKJywHAzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTAHhThThTAHhThThThThTyqighThTgwhThTFthThTgQvLhTmhQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvQVQVQVQVQVQVQVQVQVyqzTzTaxVrKJKJKJKJKJKJnaKJKJKJKJtOaxzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTaxzTzTzTzTzTzTAHhTyehTAHhTyehThThTyqwFhThThTyehThThThTyehThTmhQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJTxTxKPKJKJKJKJKJKJKJnaKJKJKJKJKJTxKPTxTxTxTxTxTxTxTxKJKJKJTxTxTxTxTxTxTxTxcJBdLsyqQVQVQVQVQVQVQVQVQVQVQVQVQVQVQVQVQVQVQVQVQVQVQVQVTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJnaKJKJKJKJKJKJKJnaKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJtOBdVrKJKJKJnaKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvnanananananananananananananananananaKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJtOBdVrKJKJKJnaKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJnaKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJtOBdVrKJKJKJnaKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJnaKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJtOBdVrKJKJKJnaKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvololololRxhTololololololololololololololololololTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJTvKJKJKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvolhThThThThThThThThihThThThThThThThThThThThThTolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJTvKJKJKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvolhThThThThThThThThThThThThThThThTyqhThThThThTolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJnaKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvolJAhThThThThTyqhThThThThThThThThTuvhThThThThTolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJnaKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvolhThThThThThThihThThThThThThTEmhTrMhThThThThTolQVololololololololololololololololololololololololololololololololTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJnaKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvolhThThTEmhThThThThThThTyehThThThTrMhThThThThTolqLqLqLqLYVqLqLqLqLolhThThThThihTmKhTJwolipyqipyqipyqudyqyqyqyqyqolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJnananaTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvolhThThThThThThThThThThTyqhThThThTrMhThThThThTyqJAhThThTVbhThThThTyqmzhTwThTwTvLmKhTJwyqvXyqvXyqvXyqvXyqhXbWbWbWolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJnaKJTvTvTvTvTvKJKJnaTvTvTvTvTvTvKJKJKJKJKJTvKJTvTvTvTvTvTvTvTvTvolhThThThThThThThThThThThThThThThTrMhTmEhThThTyqhThThThThThThThThTyqhThThThThThTmKhTJwyqJAhThThThThThTyqVbyqyqhTolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJnaKJKJnaKJKJKJKJKJnaKJKJTvTvTvTvTvKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvolhThThThThThThThThThThThThThThThTEBhThThThThTyqwTvLwThThThTwThTwTyqwThTwThTwTVbhThTJwyqhTyqyqyqyqhThTvXhTbWbWhTolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJnaKJKJnaKJKJKJKJKJnananaTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvolJAyehThThThThThThTvWhThThThThThTyqhThThThThTyqhThThThThThThThThTyqhThThThThThThThTJwyqJAcMcMcMcMhTtNyqvLyqyqhTolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJTvKJKJKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJnanananananananananaKJKJKJKJKJKJnaTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvolrMyqhThThThThThThThThThThThThThThThThThThThTyqwTyewThThThTwThTnxyqwTyewThTwThThTyeJwyqhThThThThThThTyqJAbWbWhTolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJTvKJKJKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJnaKJKJKJKJKJKJnaKJKJTvKJTvTvTvTvTvTvTvTvTvTvTvolEmrMhThThThThThThTEmhThThThThThThThThThThThTyqyqyqyqyqyqvXyqyqyqyqyqyqyqyqyqvXyqyqyqyqyqyqyqyqvXyqyqyqyqyqyqololTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJTvKJKJKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJnanananananananananananananaKJKJnaKJKJTvTvTvTvTvTvTvTvTvTvolhTrMhThThTyqrMrMrMrMrMrMrMrMrMhThThThThThThThThThihTyqhThThThThThThThihThThThThThThThihThThThThThThThThihThThTolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJnaTvTvTvTvTvTvTvTvTvTvTvTvolJFrMhThThThThThThThThThThThTrMhThThThThTyehThThThThTyqhThThThThThThThThThThThTEmhThThThTVbhThThThThThThThThThTolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJnaKJKJKJKJKJTvTvTvTvTvTvTvolhTrMhThThThThThThThThThThThTyqhThThThThTyqhTyqhThThTyqhThThThThThTVbhThThThThThThThThThThThThThThTVbhThThThThTolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJnaKJKJKJKJKJTvTvTvTvTvTvTvolflrMhThThThThThThTmEhThThThThThThThThThThThTyqhThThTyqXdhThTyehThThThThThThThThThThThThTyehThThThThThThTvLhThTolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnananananananananaTvTvTvTvTvTvTvolyqyqyqyqyqyqhThThThThThThThThThThThThThThThTyqhThThTyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqRxhTyqyqyqvXyqyqyqhThThTtNolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJnaKJKJKJKJKJTvololololololyqyqyqyqyqyqyqJAhThThThThThTyehThThThThThThTmEhihThThThThThThirMhThThThThThihThTLjhThThThTyqXdhThThiXdyqhThThThTolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJnaKJNIyqolololyqJAhThThTrMhThThThThTyqyqhThThThThThThTyqhThThTEmhThThThThThThThThThThThTrMhThThThThThThThTrMhThThTtNyqhThThThTODyqhThThThTyqololololololololTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJzTzTzTzTzTzTAHhThThTAHhThThThTrMhTVbhThThTyqyqhThThTyehThThThThThThThThThThThThThThThTVbhThThTrMhThThThThThThThTrMhThThThTyqVbhThThTXdyqhThThThThThThThThihThThTolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJzTzTzTzTzTzTAHhThThTAHhThThThTrMhThThTvLAMyqyqhThThTyqhThThThThThThThThThThThThThThThThThThThTrMhThThThTVbhThThTrMrMrMrMrMyqhThThThTXdyqhThThThTfChThThThTkSXUhTyqololololololololololTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJNIyqolololyqJAhThThTrMhThThThThTyqyqhThThThThThThThTrMrMrMrMrMrMrMrMrMhThThThThThThThThThThThThThThThThThThThThTyqhThThTVbtNyqhThThTopyqhTEmhThThThThTyqXdhThThThThThThTDlolTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJTvTvTvTvololololololyqhThThThTyqyqhThThThThThThThTrMhThThThThThThTrMhThTEmhThThThThThThThThThThThThTyqhThThThTyqhThThThThTyqhThThThTyqhThThThTaCuXhTyqrMhThTEmhThThThTrMolTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJlsKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJTvTvTvTvTvTvTvolhThThThTyqyqhThThThThThThThTrMhThThTyehThThTrMhThThThThThThTyqhThThTEmhThThThThThThThThTyqfVhTyehThTyqhThThThTyqiqhThThThThThTyqrMhThThThThTvLhTAzolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJTvTvTvTvTvTvTvTvTvolhThThThTyqyqhThThTEmhThThThTrMhThTyqyqyqhThTrMhThThThThThThThThThThThThThThThThThThThTyqyqyqyqyqyqyqyqhThThThTyqiqhThTEmaCuXtNyqLjhThThTyehThThTJWolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJTvTvTvTvTvTvTvTvTvTvolJAhTrMrMyqyqJAhThThThThThThThThTVbhTyqhThThThThThThTVbhThThTrMhThThThThThThThTrMhThThTyqyqLBLBhihThThThThThThTyqrXhThThThThThTyqrMhThThTyqhThThTJWolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnananananaTvTvTvTvTvTvTvTvTvTvolhThThThTyqyqhThThThThThThThThThThThTyqhThThThTyehThThThThThTrMhThThThTVbhThThTrMhThTtNyqyqLBLBhThThThThThThTtNyqArhThThTaCuXhTyqrMhTvLhTyqhThThTrMolTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJTvTvTvTvTvTvTvTvTvTvolhThThTAMyqyqhThThTyqhThThThThThThThThThThThTyqyqyqyqhThThThTrMhThThThThThThThTrMhThThTyqyqLBLBVbhThThThThThThTyqlHhThTEmhThThTyqDlhThThTyqhThTEmrMolTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJTvTvTvTvTvTvTvTvTvTvolhThThThTyqyqhThTyehThThThThThTyehThThThThThThTyehThThThThThTrMhThThTyehThThThTaphThThTyqyqLBLBhThThThTyehThThTyqxohTyehTDJuXhTyqrMhThTtNyqhThThTrMolTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJTvTvTvTvTvTvTvTvTvTvolhThThThTyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqLBLBhThTyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqrMhThThTyqhThThThTolTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJTvTvTvTvTvTvTvTvTvTvolhThTVbhTyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqLBLBhThThTLBLBLMLBLByqLBhThThihTLBhTyqrMhTvLhTyqhThThThTolTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJTvTvTvTvTvTvTvTvTvTvolJAhThThTyqhThThTrMhThihThThThTXdhTrMhThThThThTrMhTVbhihThThThTyqhThThippdNIzfTfTngNeNehTyqLBLBhThThThThThThThTyqhThThTVbhThThThThThThThTyqhThThThTolTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnanananananananaTvTvTvTvTvTvTvolhThThThThThThThTrMhThThThThThThThTrMhThTmEhThTrMhThThThThThThThThThThTvLhThThThThThThThTyqLBLBhTvLhThThThThThThThThThThThThThTfChThTyehTyqyqRxhTyqolTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJTvTvTvTvTvTvTvolhThThThTfChThThThThThThThTVbhThThThThThThThThThThThThTvLhThThTfChThThThThThThThThTVbhTtNyqLBLByehThThThThThThTfChThThThThThTtNyqyqyqyqyqyqhThTEmhTolTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJTvKJKJTvTvTvTvTvTvTvolhTyehThTyqXdhTyehThThThThThThTyehThThThTXdhThTyehThThThThThThTyqhTieJWJWIJrMieIJrMhThThTyqyqyqyqyqyqyqhThThThTyqhThThThThThThTyqhThThThTyqXdhThThTolTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJTvTvKJTvTvTvTvTvTvTvolyqyqyqyqyqyqyqyqyqyqRxhTyqyqyqyqyqyqyqyqyqyqyqyqyqRxhTyqyqyqyqyqJAhThThThThThThTVbhTVbhTyqhTLBLBhihThThThThThTyqhThThThThTvLhTyqhThTVbhTyqDlrMhTtNolTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJTvTvTvTvTvTvTvTvTvTvolhThTXdhThihThThThThThThThThThThihThThThTyqhThThThThThThThThThTyqhThThTVbhThThThThThThThThThThThThThThThThThTtNyqhThTvLhThThTtNyqhThThThThThThThThTolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnananananananaKJKJKJKJTvTvTvTvTvTvTvTvTvTvolhTXdhThThThThThThThThThThThThThThThThTAMyqJAvLhThThThThThThTtNyqhTJWIJrMieierMierMhThThTfChThThThThThTEmhThThTyqhThThThThThThTyqhThThThTfChThThThTolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJnaKJKJKJTvTvTvTvTvTvTvTvTvTvTvolhThThThThThThThThThThThThThThThThThThThTyqhThTrMDlJWJWrMrMhThTyqhThThTyehThThThThTyehThTyqhThThThThTyehThThThTyqLBhTLByehTLBhTyqhThThThTyqhThThThTolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJnaKJKJKJTvTvTvTvTvTvTvTvTvTvTvolJAhThThThThThThTrMhTmEhThTVbhThThThThThThThThTrMhThThTVbrMhThTyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqRxhTyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqrMrMrMrMyqhThTrMJWolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJnaTvTvKJTvTvTvTvTvTvTvTvTvTvTvolrMrMrMrMrMhThThTJWhThThThTEmhThTvLhThThTfChThTrMhTVbhThTrMhThTyqhThThTCqhThThThTrMLBLBLBhihThThThThThihTLBLBhTrMhTLBLBLBLBLBhThThThThTtNyqhTEmhThTolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJnaTvTvKJTvTvTvTvTvTvTvTvTvTvTvolhThThThThThThThTJWhThThThThThThThThThThTyqhThTDlrMrMrMrMrMhThThThThThThThThThThTrMhThThThThThThThThThThThThTVbrMhThThThThTvLhThThThThThTyqhThThTtNolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJnaTvTvTvTvTvTvTvTvTvTvTvTvTvTvolhThThThThThThThTrMhThThThThThThThThThTAMyqJAhThThThThThThTvLhTfChThThThThTVbhThTrMhTEmhThThThThThThThThThThThTrMhThThThThThThThThThThThTyqhThThThTolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJTvTvKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvolLBhThThThThThThTrMLBLBhTyeLBLBhThThThThTyqXdhThTyehThThTyeLBLByqhTLBLBhTyehThThTrMhThTyehThThThThTXdhThTyehThTrMhThThTyehThTXdhThTyehThTyqhThThThTolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJTvTvKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnanananaTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvolLBhThThThThThThTyqololololRpRpRpRpRpRpRpyqolololyqRxhTyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqyqrMJWrMrMolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvoltvhThThThThThThTolKJKJnaKJKJKJKJKJKJKJKJnaKJKJKJolhThThThThThThThihThTvLJWhThThTrMrMuvDlrMJWrMrMrMhThTkfhThTuvkfrMDlrMyqhTLBLBLBhihTvLXdhThThThThTolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvolLBhThThThThThTtNolnananananananananaKJKJnaKJKJKJolJAhThThTVbhThThTEmhThTJWhThThThThThThThThThTVbhThThTrMhThThThThThThThThThThThThThThThThThThThTtNolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvolrMkfDlrMrMhThThTolKJKJKJKJKJKJKJKJnananananananaolhThThThThThThThThThThThThThThThThThThThThThThThThThThThThThThThThThTfChThThThThTVbhThThThTEmhThTolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvolhThThThThThThThTolXfXfXfKJKJKJKJKJnaKJKJKJKJKJKJolhThTyehThThThTrMDlrMhThThTrMrMrMhThThTyehTLBLBLBLBhTyehThThThThThThTyqhThTyehTsbhThThThThThTyehTolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvolLBhThThThThThThTolzTzTaxjhnananananaKJKJKJKJKJKJololololololololRpRpRpRpRpRpRpRpRpolololololololololyqyqyqyqRxhTyqyqyqyqyqyqyqyqyqRxhTyqyqyqyqyqyqolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvolLBhThThThThThTrMolzTzTzTVrKJKJKJKJnaKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJnaKJKJKJKJKJolhThThThThThTrMhThTyqDEhThihThThThThThThihThTFtolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvolLBhThThThThThTDlRpIlzTzTVrKJKJKJKJnaKJKJKJKJKJKJKJnanananananananananaKJKJKJKJKJKJKJKJnaKJKJKJKJKJolJAhTvLhThThTrMhThTyqFthThTWBhThTYvhThTYvhThTHYolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvolhThThThTvLhThTrMRpzTUhzTeznananananananananananananaKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJnaKJKJKJKJKJolrMkfrMrMhThTkfhThTyqDEhThTWShThTQFhThTJHhThTDzolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvolhThThThThThThTtNolzTzTzTVrKJKJKJKJKJKJnaKJKJKJKJKJnaKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJnaKJKJKJKJKJolhThThThThTvLrMhTtNyqUmhTvLYDhThTwbvLhTJHhThTbTolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvolJArMhThThThThThTolzTzTzTVrKJKJKJKJKJKJnaKJKJKJKJKJnaKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJnaKJKJKJKJKJolhThThThThThThThThTyqPJhThTYDhThTWBhThTJHhThTgjolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvolkfrMhTrMkfDlrMkfolIlzTzTVrKJKJKJKJKJKJnaKJKJKJKJKJnaKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJnaKJKJKJKJKJolLBhThThThThThThThTyquVhThTFthThTuJhThTyzhThTbTolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJTvKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvolhThThThThThThThTolzTUhzTVrKJKJKJKJKJKJnaKJKJKJKJKJnanananananananananananananananananananananananaoltvhTrMJWrMkfVbrMrMyqJHhThTYvhThTyrhThTuIhThTbTolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJTvKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvolhThThThThThTyehTolzTzTzTjhnananananananaKJKJKJKJKJnaKJKJKJKJKJnaKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJolLBhThThThTrMkfrMhTyqyAhThTcdhThTFthThTKYhThTbTolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvolJAhThThTyqyqyqyqyqIlzTzTVrKJKJKJKJKJKJnaKJKJKJKJKJTUXfXfXfXfXfiOXfXfXfKJKJKJXfXfXfXfXfiOXfXfXfXfXfolLBhThThThThThThTtNyqwFhThTKwhThTyAhThTjUhThTbTolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvolhThThThTAHhThThTAHzTzTzTVrKJKJKJKJKJKJnaKJKJKJKJtOaxzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTaxzTzTzTzTzTNIyqyqyqyqyqhThThThThTyqlIhThTcdhThTcdhThTFthThTdAolTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvolhThThThTAHhTyehTAHzTzTzTMcywKJKJKJKJKJnaKJKJKJywHAzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTAHhThThTAHhThThThThTyqighThTgwhThTFthThTgQvLhTmholTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvolololololololololyqzTzTaxVrKJKJKJKJKJKJnaKJKJKJKJtOaxzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTaxzTzTzTzTzTzTAHhTyehTAHhTyehThThTyqwFhThThTyehThThThTyehThTmholTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJTxTxKPKJKJKJKJKJKJKJnaKJKJKJKJKJTxKPTxTxTxTxulTxTxTxKJKJKJTxTxTxulTxTxTxTxcJBdLsyqololololololololololololololololololololololololTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJnaKJKJKJKJKJKJKJnaKJKJKJKJKJKJnaKJKJKJKJnaKJKJKJKJKJKJKJKJKJnaKJKJKJKJtOBdVrKJKJKJnaKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvnanananananananananananananananananaKJKJKJKJnaKJKJKJKJKJKJKJKJKJnaKJKJKJKJtOBdVrKJKJKJnaKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJnaKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJnaKJKJKJKJKJKJKJKJKJnaKJKJKJKJtOBdVrKJKJKJnaKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJnaKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJnaKJKJKJKJKJKJKJKJKJnaKJKJKJKJtOBdVrKJKJKJnaKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJTh
 iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvKJTvTvTvTvKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJnaKJKJKJKJKJKJKJKJKJKJKJKJKJKJnanananananananananananananananananananaWgBdVrKJKJKJnaKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJnaKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJtOBdeznanananaKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJtOBdVrKJKJKJnaKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJtOBdVrKJKJKJnananananananaTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJtOBdVrKJKJKJnaKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJKJKJKJKJXfTUXfXfXfXfXfXfXfXfKJKJKJXfXfXfXfXfXfXfXfrQBdVrKJKJKJnaKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJKJKJKJtOaxzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTaxzTzTzTzTzTVrKJKJKJnaKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvnanananananananananananaWgzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTVrKJKJKJnaKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJnaKJKJKJKJKJKJKJTxKPTxTxTxTxTxTxTxTxKJnaKJTxTxTxTxTxTxTxcJzTaxVrKJKJKJnaKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJtOzTzTVrKJKJKJnaKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvKJTvTvKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJtOzTzTVrKJKJKJnaKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJtOzTzTVrKJKJKJnananananananaTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJtOzTzTVrKJKJKJnaKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJtOzTzTVrKJKJKJnaKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJtOzTzTVrKJKJKJnaKJKJKJKJKJTvTvKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvnananananananananananananananananaKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJtOzTzTVrKJKJKJnananananananaTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJTvTvTvTvTvKJKJTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnananananananananananananananananananaWgzTaxeznanananaKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJTvTvTvnaKJKJKJTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJtOzTzTVrKJKJKJnaKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJnaKJKJKJKJTvTvTvKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJtOzTzTVrKJKJKJnaKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJnaKJKJKJKJKJTvTvKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJtOzTzTVrKJKJKJnaKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaTvTvTvTvKJKJnananananananananananananananananaKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJtOzTzTVrKJKJKJnaKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaTvTvTvKJKJKJnaKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJtOzTzTVrKJKJKJnaKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTUXfXfXfXfXfXfXfXfXfTUXfXfXfXfXfXfXfXfrQzTzTVrKJKJKJnaKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJTh
-iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnananananananananananananananananaKJKJKJKJKJKJnanananananananananananananananananananBaxzTzTzTzTzTzTzTzTzTzTaxzTzTzTzTzTzTzTzTzTaxeznananananananananananananaTvTvTvTvTvTvKJTvTvTvTvTvTvTvTvTvTvTvTvKJKJTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJnaKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJnaKJKJKJKJKJKJnaKJKJKJKJKJtOBdeznanananaKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvnananananananananananananananaKJKJKJKJKJKJnaKJKJKJKJKJKJnaKJKJKJKJKJtOBdVrKJKJKJnaKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJnaKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJnaKJKJKJKJKJKJnaKJKJKJKJKJtOBdVrKJKJKJnananananananaTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJnaKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJnaKJKJKJKJKJKJnananananananBBdVrKJKJKJnaKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJnaKJKJKJKJKJKJKJKJKJKJTUXfXfXfXfXfXfiOXfKJKJKJXfXfiOXfXfXfXfXfrQBdVrKJKJKJnaKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJnaKJKJKJKJKJKJKJKJKJyqaxzTzTzTzTzTzTaxzTzTzTzTzTzTzTzTaxzTzTzTzTzTVrKJKJKJnaKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvnanananananananananananaWgaFzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTVrKJKJKJnaKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJnaKJKJKJKJKJKJKJTxKPTxTxTxulTxTxTxTxKJywKJTxTxTxTxTxulTxcJzTaxVrKJKJKJnaKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJnaKJKJKJnaKJKJRQRQRQtJRQRQMtOIKJKJnaKJtOzTzTVrKJKJKJnaKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvKJTvTvKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJnananananaKJKJJTiIhBDPuHZXRQMtwNKJnaKJtOzTzTVrKJKJKJnaKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJnaKJKJKJKJKJnanananaKJKJKJKJKJKJRQRQMtLgMtJTRQRQRQKJnananBzTzTVrKJKJKJnananananananaTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJnaKJKJKJKJKJnaKJKJKJKJKJKJKJKJKJKJOuRQiIRQKJKJKJKJKJKJKJtOzTzTVrKJKJKJnaKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJnaKJKJKJKJKJnaKJOIMtRQRQRQJTJTRQRQJTMtDHMtJTRQRQRQYYHzKJtOzTzTVrKJKJKJnaKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJnaKJKJKJKJKJnaKJMtMtXyrAMtoyrGQtrGrGPdiIRQIoLTJliLSlHzKJtOzTzTVrKJKJKJnaKJKJKJKJKJTvTvKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvnanananananananananananananaKJJTEaxMiILgiIiIiIiIiIMNkUZJOfiIiIMmkgHzKJtOzTzTVrKJKJKJnananananananaTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJTvTvTvTvTvKJKJTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJMtMtRTbMMtkZMCQoMCMCiIiIRQkIiTHriISlHzKJtOzTaxeznanananaKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJTvTvTvnaKJKJKJTvTvTvTvTvTvKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJOIMtRQRQRQJTJTRQRQJTMtDHMtJTRQRQRQbeHzKJtOzTzTVrKJKJKJnaKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJnaKJKJKJKJTvTvTvKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJKJKJKJRQiIRQKJKJKJKJKJKJKJtOzTzTVrKJKJKJnaKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJnaKJKJKJKJKJTvTvKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJKJRQRQMtLgMtJTRQRQRQKJnananBzTzTVrKJKJKJnaKJKJKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaTvTvTvTvKJKJnananananananananananananananananaKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnanananananananaKJKJJTiIhBiIuHiIRQMtwNKJnaKJtOzTzTVrKJKJKJnaKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaTvTvTvKJKJKJnaKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJnaKJKJRQRQRQtJRQRQMtOIKJKJnaKJtOzTzTVrKJKJKJnaKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJnaKJKJKJKJKJKJnaKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnaKJKJXfXfXfXfiOXfXfXfXfKJywKJXfXfXfXfXfiOXfrQzTzTVrKJKJKJnaKJKJKJKJKJKJTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvTvKJKJKJKJKJKJTh
+iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnananananananananananananananananaKJKJKJKJKJKJnanananananananananananananananananananBaxzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTzTaxeznananananananananananananaTvTvTvTvTvTvKJTvTvTvTvTvTvTvTvTvTvTvTvKJKJTvTvTvTvTvTvTvTvKJKJKJKJKJKJKJTh
 iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJnanananananananaKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxKJKJKJKJKJKJKJKJKJKJKJKJKJTvTvTvTvTvTvKJKJKJTvTvTvTvTvTvTvTvTvKJKJKJTvTvKJTvTvTvTvTvKJKJKJKJKJKJKJKJTh
 iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTh
 iQKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJKJTh

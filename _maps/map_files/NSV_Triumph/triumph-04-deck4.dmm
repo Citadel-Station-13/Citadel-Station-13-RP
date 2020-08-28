@@ -13116,7 +13116,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
 "kCH" = (
-/obj/machinery/porta_turret/ai_defense,
+/obj/machinery/porta_turret/crescent{
+	density = 1
+	},
 /turf/simulated/floor/airless/ceiling,
 /area/security/nuke_storage)
 "kCW" = (
@@ -16132,7 +16134,9 @@
 /turf/simulated/floor/wood,
 /area/library)
 "mSd" = (
-/obj/machinery/porta_turret/ai_defense,
+/obj/machinery/porta_turret/crescent{
+	density = 1
+	},
 /turf/simulated/floor/airless/ceiling,
 /area/ai)
 "mSg" = (

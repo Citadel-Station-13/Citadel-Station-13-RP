@@ -140,7 +140,26 @@
 	shuttle_tag = "Excursion Shuttle"
 	req_one_access = list(access_pilot)
 
-// NAV POINTS
+// PIRATE SHIP (Yaya!)
+/datum/shuttle/autodock/overmap/pirate
+	name = "Pirate Skiff"
+	warmup_time = 0
+	shuttle_area = list(/area/shuttle/pirate/cockpit, /area/shuttle/pirate/general, /area/shuttle/pirate/cargo)
+	current_location = "piratebase_hanger"
+	docking_controller_tag = "pirate_docker"
+	landmark_transition = "nav_transit_pirate"
+	fuel_consumption = 5
+	move_time = 20
+
+/area/shuttle/pirate
+	name = "Pirate Skiff"
+	icon_state = "shuttle"
+
+/obj/machinery/computer/shuttle_control/explore/pirate
+	name = "short jump raiding console"
+	shuttle_tag = "Pirate Skiff"
+
+// NAV POINTS /////////////////
 /obj/effect/shuttle_landmark/triumph/deck4/excursion
 	name = "NSV Triumph - Excursion Hanger"
 	landmark_tag = "triumph_excursion_hangar"
@@ -158,6 +177,16 @@
 /obj/effect/shuttle_landmark/transit/triumph/excursion
 	name = "In transit"
 	landmark_tag = "nav_transit_exploration"
+
+/obj/effect/shuttle_landmark/triumph/pirate
+	name = "Pirate Skiff Dock"
+	landmark_tag = "piratebase_hanger"
+	base_turf = /turf/space
+	base_area = /area/space
+
+/obj/effect/shuttle_landmark/transit/triumph/pirate
+	name = "In transit"
+	landmark_tag = "nav_transit_pirate"
 
 
 ////////////////////////////////////////

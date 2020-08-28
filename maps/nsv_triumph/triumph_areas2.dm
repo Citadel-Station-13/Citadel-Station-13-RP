@@ -657,6 +657,21 @@
 /area/shuttle/excursion/cargo
 	name = "\improper Excursion Shuttle Cockpit"
 
+// Pirate Skiff
+
+/area/shuttle/pirate
+	requires_power = 1
+	icon_state = "shuttle2"
+
+/area/shuttle/pirate/general
+	name = "\improper Pirate Skiff Shuttle"
+
+/area/shuttle/pirate/cockpit
+	name = "\improper Pirate Skiff Shuttle Cockpit"
+
+/area/shuttle/pirate/cargo
+	name = "\improper Pirate Skiff Shuttle Cockpit"
+
 // Tourbus
 /area/shuttle/tourbus
 	requires_power = 1
