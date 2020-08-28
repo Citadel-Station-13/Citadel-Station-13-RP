@@ -653,6 +653,9 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -37
+	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/toilet)
 "cl" = (
@@ -715,6 +718,9 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 8
+	},
+/obj/machinery/newscaster{
+	pixel_y = 32
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/starboard)
@@ -1296,6 +1302,9 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/machinery/newscaster{
+	pixel_x = 30
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/sleep/cryo)
 "er" = (
@@ -1347,6 +1356,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_8)
+"ew" = (
+/obj/machinery/vending/loadout,
+/turf/simulated/floor/tiled,
+/area/vacant/vacant_shop)
 "ez" = (
 /obj/structure/sign/double/barsign,
 /turf/simulated/wall,
@@ -1641,6 +1654,9 @@
 "fo" = (
 /obj/machinery/light{
 	dir = 1
+	},
+/obj/machinery/newscaster{
+	pixel_y = 32
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
@@ -2116,6 +2132,9 @@
 "gA" = (
 /obj/structure/table/woodentable,
 /obj/structure/flora/pottedplant/small,
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -37
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "gB" = (
@@ -2345,6 +2364,9 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/machinery/newscaster{
+	pixel_y = 32
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "hk" = (
@@ -2375,6 +2397,9 @@
 "ho" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/blue,
+/obj/machinery/newscaster{
+	pixel_y = 32
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_2)
 "hp" = (
@@ -2693,6 +2718,9 @@
 /obj/effect/floor_decal/corner/lime/border{
 	dir = 8
 	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = -32
+	},
 /turf/simulated/floor/tiled,
 /area/hydroponics)
 "ig" = (
@@ -2903,6 +2931,13 @@
 /obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
+"iN" = (
+/obj/machinery/fitness/heavy/lifter,
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -37
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/fitness)
 "iO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -2911,6 +2946,7 @@
 	dir = 10
 	},
 /obj/structure/table/woodentable,
+/obj/machinery/recharger,
 /turf/simulated/floor/wood,
 /area/triumph/station/stairs_two)
 "iP" = (
@@ -3545,6 +3581,17 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area_hallway)
+"kR" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 4
+	},
+/obj/machinery/firealarm{
+	layer = 3.3;
+	pixel_x = 4;
+	pixel_y = 26
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/crew_quarters/bar)
 "kU" = (
 /obj/structure/bed/chair/comfy/beige{
 	dir = 8
@@ -3762,11 +3809,10 @@
 /area/hallway/primary/port)
 "lE" = (
 /obj/structure/table/woodentable,
-/obj/machinery/firealarm{
-	dir = 1;
-	pixel_y = -25
-	},
 /obj/machinery/light,
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -37
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "lG" = (
@@ -4035,6 +4081,10 @@
 /obj/machinery/camera/network/civilian{
 	dir = 4
 	},
+/obj/machinery/newscaster{
+	layer = 3.3;
+	pixel_x = -27
+	},
 /turf/simulated/floor/tiled,
 /area/hydroponics)
 "mz" = (
@@ -4289,6 +4339,10 @@
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/wood,
 /area/hallway/primary/port)
+"nh" = (
+/obj/machinery/vending/loadout/costume,
+/turf/simulated/floor/tiled,
+/area/vacant/vacant_shop)
 "ni" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -4348,6 +4402,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
+"no" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/newscaster{
+	pixel_x = 30
+	},
+/turf/simulated/floor/tiled,
+/area/triumph/station/stairs_two)
 "np" = (
 /obj/structure/closet/crate/bin{
 	anchored = 1
@@ -4391,6 +4454,9 @@
 "nx" = (
 /obj/item/bedsheet/blue,
 /obj/structure/bed/padded,
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -37
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_6)
 "ny" = (
@@ -4524,6 +4590,9 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -37
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Apartment_A1)
 "nU" = (
@@ -4618,6 +4687,9 @@
 "oj" = (
 /obj/machinery/light{
 	dir = 8
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = -32
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/coffee_shop)
@@ -4761,6 +4833,9 @@
 "oS" = (
 /obj/structure/bed/chair/comfy/teal{
 	dir = 8
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -37
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Apartment_A2)
@@ -5178,6 +5253,12 @@
 /obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
+"qm" = (
+/obj/machinery/newscaster{
+	pixel_x = 30
+	},
+/turf/simulated/floor/plating,
+/area/vacant/vacant_shop)
 "qn" = (
 /turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/sleep/Dorm_7)
@@ -5666,6 +5747,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/toilet)
+"rU" = (
+/obj/machinery/vending/loadout/accessory,
+/turf/simulated/floor/tiled,
+/area/vacant/vacant_shop)
 "rV" = (
 /obj/structure/bed/chair/comfy/beige{
 	dir = 8
@@ -6061,6 +6146,10 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
+"sY" = (
+/obj/structure/lattice,
+/turf/simulated/open,
+/area/solar/aft)
 "sZ" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -6223,6 +6312,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/vacant/vacant_site2)
+"ty" = (
+/obj/machinery/newscaster{
+	pixel_y = 32
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/sleep/Dorm_5)
 "tz" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -31
@@ -6597,7 +6692,6 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
 	},
-/obj/structure/table/rack/shelf,
 /turf/simulated/floor/tiled,
 /area/vacant/vacant_shop)
 "uE" = (
@@ -6690,6 +6784,9 @@
 /obj/structure/table/reinforced,
 /obj/machinery/light{
 	dir = 8
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_y = -31
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
@@ -6920,6 +7017,13 @@
 /obj/structure/railing,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
+"vO" = (
+/obj/machinery/newscaster{
+	layer = 3.3;
+	pixel_x = -27
+	},
+/turf/simulated/floor/carpet/sblucarpet,
+/area/crew_quarters/coffee_shop)
 "vP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -6961,6 +7065,15 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/port)
+"vW" = (
+/obj/machinery/camera/network/civilian{
+	dir = 8
+	},
+/obj/machinery/newscaster{
+	pixel_x = 30
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/recreation_area_hallway)
 "vX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -7025,6 +7138,7 @@
 	dir = 4;
 	pixel_x = -23
 	},
+/obj/machinery/vending/loadout/overwear,
 /turf/simulated/floor/tiled,
 /area/vacant/vacant_shop)
 "wh" = (
@@ -7128,6 +7242,15 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
+"wF" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = 32
+	},
+/turf/simulated/floor/tiled,
+/area/triumph/station/stairs_two)
 "wG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -7167,6 +7290,7 @@
 	dir = 8
 	},
 /obj/structure/table/woodentable,
+/obj/machinery/recharger,
 /turf/simulated/floor/carpet/turcarpet,
 /area/crew_quarters/visitor_dining)
 "wT" = (
@@ -7252,9 +7376,6 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
 "xd" = (
-/obj/structure/extinguisher_cabinet{
-	pixel_y = -31
-	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
@@ -7440,6 +7561,9 @@
 	pixel_x = 25;
 	pixel_y = 7
 	},
+/obj/machinery/newscaster{
+	pixel_y = 32
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Apartment_A1)
 "xF" = (
@@ -7504,6 +7628,9 @@
 "xM" = (
 /obj/structure/closet/crate/bin{
 	anchored = 1
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -37
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_5)
@@ -7650,6 +7777,9 @@
 /area/crew_quarters/fitness)
 "yo" = (
 /obj/structure/closet/wardrobe,
+/obj/machinery/newscaster{
+	pixel_y = 32
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_9)
 "yq" = (
@@ -7976,6 +8106,9 @@
 "zv" = (
 /obj/item/bedsheet/blue,
 /obj/structure/bed/padded,
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -37
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_4)
 "zw" = (
@@ -8579,6 +8712,9 @@
 "BD" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/blue,
+/obj/machinery/newscaster{
+	pixel_y = 32
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_3)
 "BG" = (
@@ -8647,6 +8783,9 @@
 "BP" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -37
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_two)
@@ -9087,6 +9226,9 @@
 	dir = 8
 	},
 /obj/structure/flora/pottedplant/smalltree,
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = -32
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "Dd" = (
@@ -9237,6 +9379,9 @@
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_two)
 "DF" = (
@@ -9354,6 +9499,9 @@
 /area/triumph/station/stairs_two)
 "DX" = (
 /obj/machinery/light,
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -37
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_3)
 "DZ" = (
@@ -9651,6 +9799,9 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
+/obj/machinery/newscaster{
+	pixel_y = 32
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_7)
 "Ff" = (
@@ -9807,6 +9958,17 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/port)
+"FF" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/newscaster{
+	pixel_x = 30
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/recreation_area_hallway)
 "FI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -10083,6 +10245,9 @@
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/vacant/vacant_shop)
 "Gx" = (
@@ -10149,6 +10314,9 @@
 	icon_state = "0-4"
 	},
 /obj/structure/closet/wardrobe,
+/obj/machinery/newscaster{
+	pixel_y = 32
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_1)
 "GE" = (
@@ -10162,6 +10330,9 @@
 /turf/simulated/wall,
 /area/vacant/vacant_site2)
 "GL" = (
+/obj/machinery/newscaster{
+	pixel_y = 32
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Apartment_A2)
 "GM" = (
@@ -10738,6 +10909,9 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/structure/extinguisher_cabinet{
+	pixel_y = -31
+	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/miningdock)
 "IF" = (
@@ -10789,6 +10963,9 @@
 /obj/structure/bed/chair/comfy/teal,
 /obj/machinery/light{
 	dir = 4
+	},
+/obj/machinery/newscaster{
+	pixel_y = 32
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_4)
@@ -10926,6 +11103,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/starboard)
+"Jf" = (
+/obj/machinery/newscaster{
+	layer = 3.3;
+	pixel_x = -27
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/recreation_area_hallway)
 "Jg" = (
 /obj/structure/railing,
 /turf/space,
@@ -11264,6 +11448,23 @@
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
+"Kh" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/newscaster{
+	pixel_y = 32
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/recreation_area_hallway)
 "Ki" = (
 /turf/simulated/wall,
 /area/hydroponics)
@@ -11367,6 +11568,15 @@
 /obj/structure/bed/chair/shuttle,
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/belter)
+"KB" = (
+/obj/effect/landmark{
+	name = "JoinLateCryo"
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -37
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/crew_quarters/sleep/cryo)
 "KD" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
@@ -11566,6 +11776,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/uxstorage)
+"Lq" = (
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -37
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/recreation_area_hallway)
 "Lt" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -11623,6 +11839,19 @@
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/plating,
 /area/janitor)
+"LA" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/newscaster{
+	pixel_x = 30
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/bar)
 "LD" = (
 /obj/structure/closet/crate/trashcart,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -12062,6 +12291,14 @@
 	},
 /turf/simulated/floor/wood,
 /area/triumph/surfacebase/bar_backroom)
+"Nq" = (
+/obj/machinery/newscaster{
+	layer = 3.3;
+	pixel_x = -27
+	},
+/obj/machinery/vending/loadout/uniform,
+/turf/simulated/floor/tiled,
+/area/vacant/vacant_shop)
 "Nr" = (
 /obj/structure/bed/chair/comfy/teal{
 	dir = 1
@@ -12186,15 +12423,6 @@
 	},
 /obj/machinery/light{
 	dir = 4
-	},
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	frequency = 1380;
-	id_tag = "belter_docking";
-	layer = 3.3;
-	name = "Belting Dock Controller";
-	pixel_y = 30;
-	req_one_access = list(13,31);
-	tag_door = null
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/miningdock)
@@ -12624,6 +12852,9 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/newscaster{
+	pixel_x = 30
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area_hallway)
 "Ps" = (
@@ -12682,9 +12913,8 @@
 /turf/simulated/floor/lino,
 /area/crew_quarters/coffee_shop)
 "PA" = (
-/obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = -24
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = -32
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
@@ -13040,6 +13270,9 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/machinery/newscaster{
+	pixel_y = 32
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_8)
 "QP" = (
@@ -13151,6 +13384,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/uxstorage)
+"Rd" = (
+/obj/machinery/newscaster{
+	pixel_y = 32
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/triumph/station/stairs_two)
 "Re" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -13266,6 +13508,9 @@
 /obj/machinery/firealarm{
 	dir = 8;
 	pixel_x = -24
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -37
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_7)
@@ -13576,7 +13821,6 @@
 	pixel_y = -23;
 	req_one_access = list(48)
 	},
-/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled,
 /area/quartermaster/miningdock)
 "Su" = (
@@ -13754,6 +13998,16 @@
 	},
 /obj/machinery/requests_console/preset/cargo{
 	pixel_x = 30
+	},
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	frequency = 1380;
+	id_tag = "belter_docking";
+	layer = 3.3;
+	name = "Belting Dock Controller";
+	pixel_x = 24;
+	pixel_y = 30;
+	req_one_access = list(13,31);
+	tag_door = null
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
@@ -14221,6 +14475,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_3)
+"Ul" = (
+/obj/machinery/newscaster{
+	pixel_x = 30
+	},
+/turf/simulated/floor/tiled,
+/area/triumph/station/stairs_two)
 "Un" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -14485,8 +14745,15 @@
 /area/hydroponics)
 "Vd" = (
 /obj/structure/table/woodentable,
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -37
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_8)
+"Vf" = (
+/obj/machinery/vending/loadout/loadout_misc,
+/turf/simulated/floor/tiled,
+/area/vacant/vacant_shop)
 "Vg" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -14507,7 +14774,6 @@
 	locked = 1;
 	name = "Engineering Fore External Access"
 	},
-/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled,
 /area/quartermaster/miningdock)
 "Vk" = (
@@ -14859,6 +15125,9 @@
 "Wc" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 10
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -37
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/starboard)
@@ -15432,6 +15701,9 @@
 /area/vacant/vacant_site2)
 "XP" = (
 /obj/structure/table/woodentable,
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -37
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_9)
 "XQ" = (
@@ -15677,8 +15949,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "YM" = (
-/obj/structure/table/rack/shelf,
 /obj/machinery/camera/network/civilian,
+/obj/machinery/vending/loadout/clothing,
 /turf/simulated/floor/tiled,
 /area/vacant/vacant_shop)
 "YO" = (
@@ -15701,7 +15973,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/structure/table/rack/shelf,
+/obj/machinery/vending/loadout/gadget,
 /turf/simulated/floor/tiled,
 /area/vacant/vacant_shop)
 "YT" = (
@@ -15834,6 +16106,10 @@
 /obj/machinery/camera/network/civilian{
 	dir = 8
 	},
+/obj/machinery/firealarm{
+	dir = 4;
+	pixel_x = 24
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "Zn" = (
@@ -15883,6 +16159,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
+"Zv" = (
+/obj/structure/fitness/weightlifter,
+/obj/machinery/newscaster{
+	pixel_y = 32
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/fitness)
 "Zw" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /obj/machinery/light{
@@ -17544,7 +17827,7 @@ ii
 ii
 ii
 ii
-ii
+cs
 ii
 ii
 ii
@@ -18669,7 +18952,7 @@ ii
 ii
 ii
 eH
-HV
+kR
 HV
 PA
 gm
@@ -20667,7 +20950,7 @@ iH
 Hz
 wQ
 Zm
-wQ
+LA
 eO
 up
 ug
@@ -24049,11 +24332,11 @@ Vj
 St
 ei
 ei
-Ed
-rC
-kD
-Ed
-Ed
+ii
+ii
+ii
+ii
+ii
 vl
 op
 kP
@@ -24075,7 +24358,7 @@ oL
 Iw
 PT
 mQ
-xj
+qm
 xj
 xj
 xj
@@ -24191,11 +24474,11 @@ pU
 Kc
 ID
 ei
-ii
-ii
 Ed
-ii
-cB
+rC
+kD
+Ed
+Ed
 vl
 tf
 fL
@@ -24352,7 +24635,7 @@ ib
 Xx
 BC
 oj
-MS
+vO
 RE
 Ib
 zV
@@ -24361,7 +24644,7 @@ VQ
 VL
 LP
 LJ
-LP
+Jf
 NK
 WT
 qc
@@ -24609,16 +24892,16 @@ ii
 ii
 wp
 wp
-wp
-wp
+ei
+ei
 ei
 ei
 tH
 Rz
 ei
 ei
-qI
-qI
+ei
+ei
 qI
 qI
 qI
@@ -24932,7 +25215,7 @@ Yd
 nW
 nz
 YY
-LP
+Lq
 MF
 MF
 MF
@@ -25357,7 +25640,7 @@ Ci
 ed
 RD
 nz
-zh
+Kh
 fX
 MF
 bK
@@ -25813,7 +26096,7 @@ tA
 tA
 tA
 tA
-jh
+sY
 cG
 FR
 UP
@@ -26085,7 +26368,7 @@ sQ
 nK
 Ld
 AB
-nK
+FF
 AL
 nK
 Ld
@@ -26938,10 +27221,10 @@ oh
 Yr
 AH
 Yu
-dK
+Zv
 Lt
 aa
-Sn
+iN
 Yu
 zS
 rF
@@ -27206,7 +27489,7 @@ Uy
 Oc
 Gz
 jW
-wq
+ty
 WI
 vr
 VX
@@ -28340,7 +28623,7 @@ lW
 Nr
 cX
 LP
-KI
+vW
 yb
 dl
 dl
@@ -28752,10 +29035,10 @@ NB
 CI
 lu
 mQ
-fP
+ew
 Rn
 wg
-GM
+Nq
 sD
 IY
 wX
@@ -28894,7 +29177,7 @@ dD
 NB
 dD
 mQ
-fP
+rU
 qu
 uC
 GM
@@ -29051,7 +29334,7 @@ WZ
 OO
 WZ
 WZ
-WZ
+KB
 zk
 oE
 gC
@@ -29178,7 +29461,7 @@ dD
 dD
 dD
 mQ
-fP
+nh
 GY
 bb
 GM
@@ -29462,7 +29745,7 @@ Sv
 Sv
 Sv
 mQ
-fP
+Vf
 GY
 wn
 eo
@@ -29899,7 +30182,7 @@ ct
 zk
 cK
 LQ
-WZ
+KB
 zk
 HW
 gC
@@ -31189,7 +31472,7 @@ ii
 ii
 ii
 ii
-ii
+cs
 ii
 ii
 ii
@@ -31440,7 +31723,7 @@ ii
 ii
 ii
 ii
-ii
+cs
 ii
 ii
 ii
@@ -31590,7 +31873,7 @@ rC
 ii
 ii
 mq
-pg
+Rd
 TG
 le
 KJ
@@ -31735,7 +32018,7 @@ mq
 Fo
 oR
 GX
-pg
+Ul
 JJ
 pg
 uk
@@ -31744,7 +32027,7 @@ Qs
 Kt
 uk
 pg
-JJ
+no
 pg
 pg
 Ot
@@ -32728,7 +33011,7 @@ Ed
 mq
 UO
 Wb
-JJ
+wF
 pg
 pg
 uk
@@ -32738,7 +33021,7 @@ bV
 dd
 dd
 uk
-JJ
+wF
 ur
 UR
 pg

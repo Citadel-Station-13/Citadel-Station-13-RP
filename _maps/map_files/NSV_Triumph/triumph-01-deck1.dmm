@@ -149,6 +149,9 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
 	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = 32
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/foyer)
 "aA" = (
@@ -560,13 +563,13 @@
 	},
 /area/engineering/engine_room)
 "cB" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
 /obj/machinery/camera/network/engineering{
 	dir = 8
 	},
 /obj/structure/sign/department/ass{
 	pixel_x = 29
 	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_one)
 "cD" = (
@@ -807,6 +810,9 @@
 /obj/structure/coatrack,
 /obj/machinery/light{
 	dir = 1
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = 32
 	},
 /turf/simulated/floor/wood,
 /area/engineering/break_room)
@@ -2190,6 +2196,9 @@
 /obj/item/clothing/gloves/yellow,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
+	},
+/obj/machinery/newscaster{
+	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_eva)
@@ -3749,6 +3758,12 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engine_room)
+"sA" = (
+/obj/machinery/newscaster{
+	pixel_y = 32
+	},
+/turf/simulated/floor/plating,
+/area/vacant/vacant_bar)
 "sB" = (
 /obj/structure/extinguisher_cabinet{
 	dir = 1;
@@ -5062,6 +5077,9 @@
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = 32
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/foyer_mezzenine)
 "yJ" = (
@@ -5323,6 +5341,9 @@
 	dir = 8;
 	pixel_x = 0
 	},
+/obj/machinery/newscaster{
+	pixel_x = -30
+	},
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
 "zJ" = (
@@ -5397,11 +5418,11 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "zW" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 1
-	},
 /obj/machinery/light{
 	dir = 4
+	},
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_one)
@@ -5646,6 +5667,9 @@
 "AU" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 6
+	},
+/obj/machinery/newscaster{
+	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/backup)
@@ -5966,6 +5990,9 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
+/obj/machinery/newscaster{
+	pixel_y = 32
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
 "CE" = (
@@ -6109,6 +6136,14 @@
 	icon_state = "techmaint"
 	},
 /area/tcommsat/chamber)
+"Dz" = (
+/obj/machinery/light,
+/obj/effect/floor_decal/techfloor/orange,
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -37
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/locker_room)
 "DB" = (
 /obj/machinery/door/airlock{
 	name = "Shell Recharging"
@@ -6272,8 +6307,12 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "Ez" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/box/snakesnackbox,
+/obj/machinery/button/remote/driver{
+	dir = 4;
+	id = "enginecore";
+	name = "Emergency Core Eject";
+	pixel_x = 22
+	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
 "EC" = (
@@ -8493,6 +8532,9 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engine_monitoring)
 "Qf" = (
+/obj/machinery/mass_driver{
+	id = "enginecore"
+	},
 /obj/machinery/power/supermatter,
 /turf/simulated/floor/reinforced/nitrogen{
 	initial_gas_mix = "n2=82.1472;TEMP=293.15"
@@ -8557,6 +8599,9 @@
 /area/engineering/foyer_mezzenine)
 "Qu" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/newscaster{
+	pixel_y = 32
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/workshop)
 "Qw" = (
@@ -8591,6 +8636,7 @@
 /obj/machinery/camera/network/engineering{
 	dir = 8
 	},
+/obj/item/storage/box/snakesnackbox,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
 "QI" = (
@@ -9553,6 +9599,13 @@
 /obj/machinery/shield_capacitor/advanced,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/workshop)
+"Vy" = (
+/obj/structure/bed/chair/comfy/red,
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = -32
+	},
+/turf/simulated/floor/plating,
+/area/vacant/vacant_bar)
 "Vz" = (
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
@@ -10395,6 +10448,11 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/engine_room)
+"Zn" = (
+/obj/machinery/shield_diffuser,
+/obj/effect/floor_decal/industrial/warning/full,
+/turf/simulated/floor/reinforced/airless,
+/area/space)
 "Zq" = (
 /obj/machinery/atmospherics/binary/pump/on{
 	name = "Waste Compresser"
@@ -13421,7 +13479,7 @@ Rv
 zI
 nw
 Sd
-Ap
+Vy
 lh
 UJ
 eV
@@ -14126,7 +14184,7 @@ fN
 eD
 eD
 Bs
-nw
+sA
 He
 nw
 CP
@@ -17836,7 +17894,7 @@ rX
 DC
 fN
 fN
-iC
+Zn
 fN
 fN
 fN
@@ -23924,7 +23982,7 @@ VA
 aS
 zd
 Sx
-up
+Dz
 sU
 sU
 vF
@@ -25342,7 +25400,7 @@ fN
 OD
 yn
 QE
-Ez
+OT
 mB
 es
 UQ
@@ -25484,7 +25542,7 @@ Zj
 OD
 OD
 OD
-OD
+Ez
 OD
 OD
 bh
@@ -25626,7 +25684,7 @@ fN
 xv
 jZ
 UR
-xv
+OD
 bh
 Od
 Mc
