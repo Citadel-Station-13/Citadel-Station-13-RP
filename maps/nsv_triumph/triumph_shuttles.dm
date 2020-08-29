@@ -160,6 +160,8 @@
 	shuttle_tag = "Pirate Skiff"
 
 // NAV POINTS /////////////////
+
+// ON STATION NAV POINTS
 /obj/effect/shuttle_landmark/triumph/deck4/excursion
 	name = "NSV Triumph - Excursion Hanger"
 	landmark_tag = "triumph_excursion_hangar"
@@ -174,15 +176,54 @@
 	base_turf = /turf/space
 	base_area = /area/space
 
-/obj/effect/shuttle_landmark/transit/triumph/excursion
-	name = "In transit"
-	landmark_tag = "nav_transit_exploration"
+/obj/effect/shuttle_landmark/triumph/deck3/port
+	name = "Near NSV Triumph (Port Deck 3)"
+	landmark_tag = "triumph_space_port_3"
+	base_turf = /turf/space
+	base_area = /area/space
 
+/obj/effect/shuttle_landmark/triumph/deck3/starboard
+	name = "Near NSV Triumph (Starboard Deck 3)"
+	landmark_tag = "triumph_space_starboard_3"
+	base_turf = /turf/space
+	base_area = /area/space
+
+/obj/effect/shuttle_landmark/triumph/deck2/port
+	name = "Near NSV Triumph (Port Deck 2)"
+	landmark_tag = "triumph_space_port_2"
+	base_turf = /turf/space
+	base_area = /area/space
+
+/obj/effect/shuttle_landmark/triumph/deck2/starboard
+	name = "Near NSV Triumph (Starboard Deck 2)"
+	landmark_tag = "triumph_space_starboard_2"
+	base_turf = /turf/space
+	base_area = /area/space
+
+/obj/effect/shuttle_landmark/triumph/deck1/port
+	name = "Near NSV Triumph (Port Deck 1)"
+	landmark_tag = "triumph_space_port_1"
+	base_turf = /turf/space
+	base_area = /area/space
+
+/obj/effect/shuttle_landmark/triumph/deck1/starboard
+	name = "Near NSV Triumph (Starboard Deck 1)"
+	landmark_tag = "triumph_space_starboard_1"
+	base_turf = /turf/space
+	base_area = /area/space
+
+// OFF-STATION NAV POINTS
 /obj/effect/shuttle_landmark/triumph/pirate
 	name = "Pirate Skiff Dock"
 	landmark_tag = "piratebase_hanger"
 	base_turf = /turf/space
 	base_area = /area/space
+
+// TRANSIT NAV POINTS
+
+/obj/effect/shuttle_landmark/transit/triumph/excursion
+	name = "In transit"
+	landmark_tag = "nav_transit_exploration"
 
 /obj/effect/shuttle_landmark/transit/triumph/pirate
 	name = "In transit"

@@ -20796,10 +20796,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/evidence_storage)
-"qfG" = (
-/obj/effect/shuttle_landmark/visiting_shuttle,
-/turf/space,
-/area/space)
 "qgn" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/gun/energy/phasegun/rifle,
@@ -38457,7 +38453,7 @@ nIK
 nIK
 nIK
 nIK
-qfG
+nIK
 nIK
 nIK
 nIK
@@ -45385,7 +45381,7 @@ nIK
 nIK
 nIK
 nIK
-qfG
+nIK
 nIK
 nIK
 nIK

@@ -2613,6 +2613,10 @@
 /obj/random/trash,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
+"mO" = (
+/obj/effect/shuttle_landmark/triumph/deck1/port,
+/turf/space,
+/area/space)
 "mS" = (
 /turf/simulated/wall/r_wall,
 /area/maintenance/lower/trash_pit)
@@ -6154,6 +6158,10 @@
 /obj/effect/floor_decal/industrial/warning/cee,
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/reinforced/airless,
+/area/space)
+"DE" = (
+/obj/effect/shuttle_landmark/triumph/deck1/starboard,
+/turf/space,
 /area/space)
 "DG" = (
 /obj/machinery/atmospherics/pipe/manifold4w/visible/red,
@@ -13919,7 +13927,7 @@ fN
 fN
 fN
 fN
-fN
+DE
 fN
 fN
 fN
@@ -26072,7 +26080,7 @@ fN
 fN
 fN
 fN
-fN
+mO
 fN
 fN
 fN

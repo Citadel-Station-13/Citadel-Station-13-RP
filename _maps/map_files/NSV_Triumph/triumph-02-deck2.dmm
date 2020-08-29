@@ -8355,6 +8355,10 @@
 /obj/structure/undies_wardrobe,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_5)
+"Ap" = (
+/obj/effect/shuttle_landmark/triumph/deck2/port,
+/turf/space,
+/area/space)
 "Aq" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -9129,6 +9133,10 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/sleep/Apartment_A2)
+"CO" = (
+/obj/effect/shuttle_landmark/triumph/deck2/starboard,
+/turf/space,
+/area/space)
 "CP" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -26572,7 +26580,7 @@ ii
 ii
 ii
 ii
-ii
+Ap
 ii
 ii
 ii
@@ -32610,7 +32618,7 @@ ii
 ii
 ii
 ii
-ii
+CO
 ii
 ii
 ii
