@@ -21,7 +21,7 @@
 	if(waves && activeFor >= next_meteor)
 		var/pick_side = prob(80) ? start_side : (prob(50) ? turn(start_side, 90) : turn(start_side, -90))
 
-		spawn() spawn_meteors(severity * rand(1,2), get_meteors(), pick_side)
+		spawn() spawn_meteors(severity * rand(2,4), get_meteors(), pick_side)
 		next_meteor += rand(5, 14) / severity
 		waves--
 		endWhen = worst_case_end()
@@ -38,7 +38,7 @@
 
 /datum/event/meteor_wave/proc/get_meteors()
 	if(severity == EVENT_LEVEL_MAJOR)
-		if(prob(10))
+		if(prob(35))
 			return meteors_catastrophic
 		else
 			return meteors_threatening

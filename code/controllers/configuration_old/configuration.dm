@@ -164,7 +164,7 @@
 	var/use_loyalty_implants = 0
 
 	var/welder_vision = 1
-	var/generate_map = 0
+	var/generate_map = 1
 	var/no_click_cooldown = 0
 
 	//Used for modifying movement speed for mobs.

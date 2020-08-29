@@ -494,6 +494,23 @@
 /area/holodeck/holodorm/source_off
 	name = "\improper Holodeck Source"
 
+//Holosurgery areas
+/area/medical/surgery/holosurgery
+	name = "\improper Holosurgery"
+	icon_state = "Holodeck"
+/area/holodeck/holodorm/source_emptysurgery
+	name = "\improper Empty Surgery"
+	icon_state = "Holodeck"
+/area/holodeck/holodorm/source_standard
+	name = "\improper Standard Suite"
+	icon_state = "Holodeck"
+/area/holodeck/holodorm/source_phoron
+	name = "\improper Phoron Suite"
+	icon_state = "Holodeck"
+/area/holodeck/holodorm/source_zaddat
+	name = "\improper Zaddat Suite"
+	icon_state = "Holodeck"
+
 /area/ai/foyer
 	name = "\improper AI Core Access"
 

@@ -1,0 +1,1463 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/template_noop,
+/area/template_noop)
+"ab" = (
+/turf/template_noop,
+/area/triumph_away/poi_d/POIs/ship)
+"ac" = (
+/obj/item/fuel_assembly/deuterium,
+/turf/template_noop,
+/area/triumph_away/poi_d/POIs/ship)
+"ae" = (
+/obj/item/extinguisher,
+/turf/template_noop,
+/area/triumph_away/poi_d/POIs/ship)
+"af" = (
+/obj/item/material/shard/phoron,
+/turf/template_noop,
+/area/template_noop)
+"ag" = (
+/obj/machinery/power/rad_collector,
+/turf/simulated/mineral/floor/vacuum,
+/area/triumph_away/poi_d/POIs/ship)
+"ah" = (
+/obj/item/arrow/rod,
+/obj/item/stack/material/steel,
+/turf/simulated/mineral/floor/vacuum,
+/area/triumph_away/poi_d/POIs/ship)
+"ak" = (
+/obj/structure/lattice,
+/obj/structure/girder/displaced,
+/turf/simulated/mineral/floor/vacuum,
+/area/triumph_away/poi_d/POIs/ship)
+"al" = (
+/obj/item/projectile/bullet/magnetic/fuelrod,
+/turf/simulated/mineral/floor/vacuum,
+/area/triumph_away/poi_d/POIs/ship)
+"am" = (
+/obj/item/arrow/rod,
+/turf/template_noop,
+/area/triumph_away/poi_d/POIs/ship)
+"an" = (
+/turf/simulated/mineral/floor/vacuum,
+/area/triumph_away/poi_d/POIs/ship)
+"ap" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/airless,
+/area/triumph_away/poi_d/POIs/ship)
+"aq" = (
+/obj/structure/girder,
+/turf/simulated/floor/airless,
+/area/triumph_away/poi_d/POIs/ship)
+"ar" = (
+/obj/structure/sign/poi/engineright{
+	dir = 1
+	},
+/turf/simulated/wall/r_wall,
+/area/triumph_away/poi_d/POIs/ship)
+"as" = (
+/obj/structure/sign/poi/engineleft{
+	dir = 1
+	},
+/turf/simulated/wall/r_wall,
+/area/triumph_away/poi_d/POIs/ship)
+"at" = (
+/turf/simulated/wall/r_wall,
+/area/triumph_away/poi_d/POIs/ship)
+"au" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/triumph_away/poi_d/POIs/ship)
+"av" = (
+/turf/simulated/wall/durasteel,
+/area/triumph_away/poi_d/POIs/ship)
+"aw" = (
+/obj/structure/girder,
+/obj/item/stack/material/steel,
+/turf/simulated/floor/airless,
+/area/triumph_away/poi_d/POIs/ship)
+"ax" = (
+/obj/structure/lattice,
+/obj/structure/grille/broken,
+/turf/simulated/mineral/floor/vacuum,
+/area/triumph_away/poi_d/POIs/ship)
+"ay" = (
+/obj/effect/floor_decal/rust,
+/obj/item/stack/material/steel,
+/turf/simulated/floor/airless,
+/area/triumph_away/poi_d/POIs/ship)
+"az" = (
+/obj/machinery/atmospherics/pipe/simple/visible{
+	dir = 6;
+	icon_state = "intact"
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/airless,
+/area/triumph_away/poi_d/POIs/ship)
+"aA" = (
+/obj/machinery/atmospherics/pipe/simple/visible{
+	dir = 4
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/airless,
+/area/triumph_away/poi_d/POIs/ship)
+"aB" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 4;
+	icon_state = "heater"
+	},
+/obj/effect/floor_decal/rust,
+/obj/effect/decal/cleanable/cobweb2,
+/obj/machinery/atmospherics/pipe/simple/visible{
+	dir = 4
+	},
+/turf/simulated/floor/airless,
+/area/triumph_away/poi_d/POIs/ship)
+"aC" = (
+/obj/structure/ghost_pod/manual/lost_drone/dogborg,
+/turf/simulated/mineral/floor/vacuum,
+/area/triumph_away/poi_d/POIs/ship)
+"aD" = (
+/obj/structure/lattice,
+/obj/structure/grille,
+/turf/template_noop,
+/area/triumph_away/poi_d/POIs/ship)
+"aE" = (
+/obj/structure/lattice,
+/obj/structure/grille,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced,
+/turf/template_noop,
+/area/triumph_away/poi_d/POIs/ship)
+"aF" = (
+/obj/structure/sign/warning/radioactive{
+	dir = 8
+	},
+/turf/simulated/wall/durasteel,
+/area/triumph_away/poi_d/POIs/ship)
+"aG" = (
+/obj/machinery/fusion_fuel_compressor,
+/obj/effect/floor_decal/rust,
+/obj/effect/decal/cleanable/cobweb,
+/turf/simulated/floor/airless,
+/area/triumph_away/poi_d/POIs/ship)
+"aH" = (
+/obj/machinery/fusion_fuel_injector/mapped,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/airless,
+/area/triumph_away/poi_d/POIs/ship)
+"aI" = (
+/obj/effect/decal/cleanable/blood/oil/streak{
+	amount = 0
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/airless,
+/area/triumph_away/poi_d/POIs/ship)
+"aJ" = (
+/obj/machinery/power/rad_collector,
+/obj/effect/floor_decal/rust,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 9;
+	icon_state = "warning"
+	},
+/turf/simulated/floor,
+/area/triumph_away/poi_d/POIs/ship)
+"aK" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 5;
+	icon_state = "warning"
+	},
+/turf/simulated/floor/airless,
+/area/triumph_away/poi_d/POIs/ship)
+"aL" = (
+/obj/structure/grille/broken,
+/obj/structure/window/phoronreinforced{
+	dir = 4;
+	icon_state = "phoronrwindow"
+	},
+/obj/item/material/shard/phoron,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/airless,
+/area/triumph_away/poi_d/POIs/ship)
+"aM" = (
+/obj/machinery/atmospherics/pipe/manifold4w/visible,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/airless,
+/area/triumph_away/poi_d/POIs/ship)
+"aN" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 4;
+	icon_state = "heater"
+	},
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/pipe/simple/visible{
+	dir = 4
+	},
+/turf/simulated/floor/airless,
+/area/triumph_away/poi_d/POIs/ship)
+"aO" = (
+/obj/structure/shuttle/engine/propulsion{
+	dir = 4;
+	icon_state = "propulsion_r"
+	},
+/turf/simulated/mineral/floor/vacuum,
+/area/triumph_away/poi_d/POIs/ship)
+"aP" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/airless,
+/area/triumph_away/poi_d/POIs/ship)
+"aQ" = (
+/obj/machinery/door/airlock/maintenance_hatch{
+	icon_state = "door_closed";
+	locked = 0;
+	name = "Engine Access";
+	req_one_access = list(11)
+	},
+/turf/simulated/floor/airless,
+/area/triumph_away/poi_d/POIs/ship)
+"aR" = (
+/obj/structure/closet/crate/oldreactor{
+	anchored = 1
+	},
+/obj/effect/floor_decal/rust,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8;
+	icon_state = "warning"
+	},
+/turf/simulated/floor/airless,
+/area/triumph_away/poi_d/POIs/ship)
+"aS" = (
+/obj/structure/closet/crate/oldreactor{
+	anchored = 1
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/airless,
+/area/triumph_away/poi_d/POIs/ship)
+"aT" = (
+/obj/item/poi/brokenoldreactor{
+	anchored = 1
+	},
+/obj/effect/floor_decal/rust,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4;
+	icon_state = "warning"
+	},
+/turf/simulated/floor/airless,
+/area/triumph_away/poi_d/POIs/ship)
+"aU" = (
+/obj/machinery/atmospherics/pipe/simple/visible,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/airless,
+/area/triumph_away/poi_d/POIs/ship)
+"aV" = (
+/obj/structure/grille,
+/obj/structure/window/phoronreinforced{
+	dir = 4;
+	icon_state = "phoronrwindow"
+	},
+/obj/structure/window/phoronreinforced{
+	dir = 8;
+	icon_state = "phoronrwindow"
+	},
+/turf/simulated/floor/airless,
+/area/triumph_away/poi_d/POIs/ship)
+"aW" = (
+/obj/machinery/atmospherics/pipe/simple/visible{
+	dir = 5;
+	icon_state = "intact"
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/airless,
+/area/triumph_away/poi_d/POIs/ship)
+"aX" = (
+/obj/structure/shuttle/engine/router,
+/turf/simulated/floor/airless,
+/area/triumph_away/poi_d/POIs/ship)
+"aZ" = (
+/obj/item/stack/material/steel,
+/turf/simulated/mineral/floor/vacuum,
+/area/triumph_away/poi_d/POIs/ship)
+"ba" = (
+/obj/item/stack/rods,
+/turf/simulated/mineral/floor/vacuum,
+/area/triumph_away/poi_d/POIs/ship)
+"bb" = (
+/obj/structure/lattice,
+/obj/structure/grille,
+/obj/structure/window/reinforced{
+	dir = 2;
+	health = 1e+006
+	},
+/turf/template_noop,
+/area/triumph_away/poi_d/POIs/ship)
+"bc" = (
+/obj/structure/lattice,
+/obj/structure/grille,
+/obj/structure/window/reinforced{
+	dir = 2;
+	health = 1e+006
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 1;
+	health = 1e+006
+	},
+/turf/template_noop,
+/area/triumph_away/poi_d/POIs/ship)
+"bd" = (
+/obj/machinery/atmospherics/pipe/tank/carbon_dioxide,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/airless,
+/area/triumph_away/poi_d/POIs/ship)
+"be" = (
+/obj/effect/floor_decal/rust,
+/obj/item/projectile/bullet/magnetic/fuelrod,
+/turf/simulated/floor/airless,
+/area/triumph_away/poi_d/POIs/ship)
+"bf" = (
+/obj/machinery/power/rad_collector,
+/obj/structure/window/phoronreinforced,
+/obj/structure/window/phoronreinforced{
+	dir = 8;
+	icon_state = "phoronrwindow"
+	},
+/obj/effect/floor_decal/rust,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 10
+	},
+/turf/simulated/floor/airless,
+/area/triumph_away/poi_d/POIs/ship)
+"bg" = (
+/obj/machinery/power/rad_collector,
+/obj/structure/window/phoronreinforced,
+/obj/effect/floor_decal/rust,
+/obj/effect/floor_decal/industrial/warning,
+/turf/simulated/floor/airless,
+/area/triumph_away/poi_d/POIs/ship)
+"bh" = (
+/obj/machinery/power/rad_collector,
+/obj/structure/window/phoronreinforced{
+	dir = 4;
+	icon_state = "phoronrwindow"
+	},
+/obj/structure/window/phoronreinforced,
+/obj/effect/floor_decal/rust,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 6
+	},
+/turf/simulated/floor/airless,
+/area/triumph_away/poi_d/POIs/ship)
+"bi" = (
+/obj/structure/shuttle/engine/propulsion{
+	dir = 4
+	},
+/turf/simulated/mineral/floor/vacuum,
+/area/triumph_away/poi_d/POIs/ship)
+"bj" = (
+/obj/machinery/atmospherics/tvalve/digital{
+	dir = 8
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/airless,
+/area/triumph_away/poi_d/POIs/ship)
+"bk" = (
+/obj/machinery/atmospherics/binary/pump{
+	dir = 8
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/airless,
+/area/triumph_away/poi_d/POIs/ship)
+"bl" = (
+/obj/machinery/atmospherics/pipe/manifold/visible,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/airless,
+/area/triumph_away/poi_d/POIs/ship)
+"bm" = (
+/obj/machinery/atmospherics/pipe/simple/visible{
+	dir = 4
+	},
+/obj/structure/grille,
+/obj/structure/window/phoronreinforced{
+	dir = 4;
+	icon_state = "phoronrwindow"
+	},
+/obj/structure/window/phoronreinforced,
+/obj/structure/window/phoronreinforced{
+	dir = 8;
+	icon_state = "phoronrwindow"
+	},
+/turf/simulated/floor/airless,
+/area/triumph_away/poi_d/POIs/ship)
+"bn" = (
+/obj/structure/shuttle/engine/propulsion{
+	dir = 4;
+	icon_state = "propulsion_l"
+	},
+/turf/simulated/mineral/floor/vacuum,
+/area/triumph_away/poi_d/POIs/ship)
+"bo" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/closet/crate/radiation,
+/turf/simulated/floor/airless,
+/area/triumph_away/poi_d/POIs/ship)
+"bp" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/airless,
+/area/triumph_away/poi_d/POIs/ship)
+"bq" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/rcd,
+/turf/simulated/floor/airless,
+/area/triumph_away/poi_d/POIs/ship)
+"br" = (
+/obj/structure/sign/warning/radioactive,
+/turf/simulated/wall/durasteel,
+/area/triumph_away/poi_d/POIs/ship)
+"bs" = (
+/obj/structure/grille,
+/obj/structure/window/phoronreinforced{
+	dir = 1;
+	icon_state = "phoronrwindow"
+	},
+/obj/structure/window/phoronreinforced{
+	dir = 8;
+	icon_state = "phoronrwindow"
+	},
+/obj/structure/window/phoronreinforced,
+/turf/simulated/floor/airless,
+/area/triumph_away/poi_d/POIs/ship)
+"bt" = (
+/obj/structure/grille,
+/obj/structure/window/phoronreinforced{
+	dir = 1;
+	icon_state = "phoronrwindow"
+	},
+/obj/structure/window/phoronreinforced,
+/turf/simulated/floor/airless,
+/area/triumph_away/poi_d/POIs/ship)
+"bu" = (
+/obj/structure/grille,
+/obj/structure/window/phoronreinforced{
+	dir = 1;
+	icon_state = "phoronrwindow"
+	},
+/obj/structure/window/phoronreinforced{
+	dir = 4;
+	icon_state = "phoronrwindow"
+	},
+/obj/structure/window/phoronreinforced,
+/turf/simulated/floor/airless,
+/area/triumph_away/poi_d/POIs/ship)
+"bv" = (
+/obj/structure/sign/poi/engineleft,
+/turf/simulated/wall/durasteel,
+/area/triumph_away/poi_d/POIs/ship)
+"bw" = (
+/obj/structure/sign/poi/engineright,
+/turf/simulated/wall/r_wall,
+/area/triumph_away/poi_d/POIs/ship)
+"bx" = (
+/obj/structure/girder,
+/turf/simulated/mineral/floor/vacuum,
+/area/triumph_away/poi_d/POIs/ship)
+"by" = (
+/obj/structure/girder/displaced,
+/turf/simulated/mineral/floor/vacuum,
+/area/triumph_away/poi_d/POIs/ship)
+"bz" = (
+/turf/simulated/mineral/floor/vacuum,
+/area/template_noop)
+"bA" = (
+/obj/item/arrow/rod,
+/turf/simulated/mineral/floor/vacuum,
+/area/triumph_away/poi_d/POIs/ship)
+"bB" = (
+/obj/item/fuel_assembly/deuterium,
+/turf/simulated/mineral/floor/vacuum,
+/area/triumph_away/poi_d/POIs/ship)
+"bC" = (
+/obj/item/material/shard/phoron,
+/turf/simulated/mineral/floor/vacuum,
+/area/triumph_away/poi_d/POIs/ship)
+"bD" = (
+/obj/structure/lattice,
+/turf/simulated/mineral/floor/vacuum,
+/area/triumph_away/poi_d/POIs/ship)
+"bE" = (
+/obj/triumph_away_spawner/D/alien_medium,
+/turf/simulated/mineral/floor/vacuum,
+/area/triumph_away/poi_d/POIs/ship)
+"gU" = (
+/obj/item/fuel_assembly/deuterium,
+/turf/template_noop,
+/area/template_noop)
+
+(1,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(2,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+ab
+ab
+am
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+"}
+(3,1,1) = {"
+aa
+gU
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+ab
+ab
+an
+an
+an
+an
+an
+an
+an
+an
+ab
+ab
+ab
+ab
+aa
+aa
+aa
+aa
+"}
+(4,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+af
+aa
+ab
+ab
+ab
+ab
+ab
+an
+an
+bD
+an
+aZ
+an
+an
+an
+an
+an
+ab
+ab
+ab
+aa
+aa
+aa
+"}
+(5,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+an
+aZ
+an
+bC
+an
+bD
+an
+ba
+an
+an
+an
+bx
+an
+ab
+ab
+ab
+aa
+af
+aa
+"}
+(6,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+ab
+ab
+an
+an
+an
+an
+aD
+aP
+bb
+bD
+an
+an
+an
+an
+ab
+ab
+ab
+ab
+aa
+aa
+"}
+(7,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+an
+an
+ab
+an
+bB
+an
+bD
+aE
+aP
+bc
+ax
+bD
+an
+an
+an
+ab
+ab
+ab
+ab
+aa
+aa
+"}
+(8,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+an
+ak
+an
+an
+an
+bD
+av
+aF
+aQ
+av
+av
+av
+bD
+an
+an
+ab
+ab
+ab
+ab
+aa
+aa
+"}
+(9,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+ah
+an
+an
+bE
+an
+bD
+av
+aG
+aP
+bd
+aW
+av
+bD
+an
+an
+an
+ab
+ab
+ab
+aa
+aa
+"}
+(10,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+ab
+an
+an
+an
+bD
+av
+aH
+aP
+bd
+bj
+av
+bD
+an
+an
+an
+ab
+ab
+ab
+aa
+aa
+"}
+(11,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+ab
+an
+an
+an
+bD
+aw
+aI
+aP
+be
+aA
+av
+br
+an
+an
+an
+an
+ab
+ab
+ab
+aa
+"}
+(12,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+ab
+an
+an
+an
+bB
+ax
+aJ
+aR
+bf
+aA
+bo
+bs
+an
+an
+bE
+aZ
+ab
+ab
+ab
+aa
+"}
+(13,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+an
+an
+an
+an
+an
+bD
+bD
+aS
+bg
+bk
+bp
+bt
+an
+an
+an
+an
+ab
+ab
+ab
+aa
+"}
+(14,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+an
+an
+an
+an
+an
+bD
+ap
+aK
+aT
+bh
+aA
+aP
+bu
+an
+an
+an
+an
+an
+ab
+ab
+aa
+"}
+(15,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+ag
+an
+aC
+an
+an
+an
+ap
+ay
+aI
+aU
+aU
+bl
+bq
+av
+an
+an
+an
+an
+bA
+ab
+ab
+aa
+"}
+(16,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+an
+an
+an
+an
+bC
+an
+aq
+aq
+aL
+aV
+aV
+bm
+av
+bv
+an
+an
+an
+an
+an
+ab
+ab
+aa
+"}
+(17,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+ab
+ac
+ab
+an
+an
+an
+an
+an
+an
+aq
+az
+aM
+aW
+az
+aM
+aW
+bw
+an
+bA
+an
+by
+an
+ab
+ab
+aa
+"}
+(18,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+an
+an
+an
+an
+an
+an
+ar
+aA
+aA
+aN
+aN
+aA
+ay
+au
+an
+an
+an
+an
+an
+ab
+ab
+aa
+"}
+(19,1,1) = {"
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+ab
+an
+aZ
+al
+an
+an
+an
+as
+aB
+aN
+aX
+aX
+aN
+aN
+aP
+an
+an
+an
+an
+an
+ab
+ab
+aa
+"}
+(20,1,1) = {"
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+ab
+an
+an
+an
+an
+an
+an
+at
+aO
+aO
+bi
+bi
+bn
+bD
+an
+an
+an
+an
+an
+an
+ab
+ab
+aa
+"}
+(21,1,1) = {"
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+ab
+an
+an
+an
+an
+bA
+an
+at
+an
+an
+an
+an
+an
+an
+an
+an
+an
+bD
+ab
+ab
+ab
+ab
+aa
+"}
+(22,1,1) = {"
+aa
+aa
+aa
+ab
+ab
+ab
+ab
+ab
+an
+an
+an
+an
+an
+an
+an
+an
+an
+an
+an
+an
+an
+an
+an
+an
+ab
+ab
+ab
+ab
+aa
+aa
+"}
+(23,1,1) = {"
+aa
+aa
+aa
+ab
+ae
+ab
+ab
+an
+an
+an
+bE
+an
+an
+an
+an
+an
+an
+an
+an
+bA
+an
+an
+an
+an
+ab
+ab
+ab
+ab
+aa
+aa
+"}
+(24,1,1) = {"
+aa
+aa
+aa
+ab
+ab
+ab
+ab
+an
+an
+an
+an
+an
+an
+an
+an
+an
+an
+bz
+bz
+an
+an
+an
+an
+an
+ab
+ab
+ab
+ab
+aa
+aa
+"}
+(25,1,1) = {"
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+an
+an
+an
+an
+an
+an
+an
+an
+bz
+bz
+bz
+bz
+bz
+bz
+an
+an
+an
+ab
+ab
+ab
+ab
+aa
+aa
+"}
+(26,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+an
+an
+an
+an
+an
+an
+an
+bz
+bz
+bz
+aa
+bz
+bz
+bz
+an
+an
+an
+ab
+ab
+ab
+ab
+aa
+aa
+"}
+(27,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+bz
+bz
+an
+an
+an
+an
+an
+an
+bz
+bz
+bz
+aa
+aa
+bz
+bz
+bz
+an
+an
+an
+an
+ab
+ab
+aa
+aa
+"}
+(28,1,1) = {"
+aa
+aa
+aa
+aa
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+aa
+aa
+bz
+bz
+bz
+bz
+bz
+bz
+an
+an
+an
+ab
+ab
+aa
+aa
+"}
+(29,1,1) = {"
+aa
+aa
+aa
+aa
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+aa
+aa
+aa
+aa
+bz
+bz
+bz
+bz
+bz
+an
+an
+ab
+aa
+aa
+aa
+"}
+(30,1,1) = {"
+aa
+aa
+aa
+aa
+bz
+bz
+bz
+bz
+bz
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+aa
+aa
+aa
+aa
+"}

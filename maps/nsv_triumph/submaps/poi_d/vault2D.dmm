@@ -1,0 +1,72 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"b" = (
+/turf/simulated/wall/titanium,
+/area/triumph_away/poi_d/explored)
+"c" = (
+/obj/structure/closet/crate/mimic/dangerous,
+/obj/effect/decal/cleanable/dirt,
+/obj/random/maintenance/security,
+/obj/random/maintenance/security,
+/obj/random/roguemineloot,
+/obj/random/roguemineloot,
+/obj/random/roguemineloot,
+/turf/simulated/floor/tiled/white/airless,
+/area/triumph_away/poi_d/explored)
+"d" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/white/airless,
+/area/triumph_away/poi_d/explored)
+"e" = (
+/obj/structure/closet/crate/mimic,
+/obj/effect/decal/cleanable/dirt,
+/obj/random/roguemineloot,
+/obj/random/roguemineloot,
+/obj/random/roguemineloot,
+/turf/simulated/floor/tiled/white/airless,
+/area/triumph_away/poi_d/explored)
+"f" = (
+/obj/structure/simple_door/silver,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/white/airless,
+/area/triumph_away/poi_d/explored)
+"h" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/random/junk,
+/turf/simulated/floor/tiled/white/airless,
+/area/triumph_away/poi_d/explored)
+
+(1,1,1) = {"
+b
+b
+b
+b
+b
+"}
+(2,1,1) = {"
+b
+c
+d
+h
+b
+"}
+(3,1,1) = {"
+b
+d
+d
+d
+f
+"}
+(4,1,1) = {"
+b
+d
+e
+d
+b
+"}
+(5,1,1) = {"
+b
+b
+b
+b
+b
+"}

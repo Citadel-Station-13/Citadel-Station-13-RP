@@ -83,7 +83,7 @@
 	materials = list(DEFAULT_WALL_MATERIAL = 8000, MAT_SILVER = 2000, MAT_DIAMOND = 1000)
 	build_path = /obj/item/gun/projectile/automatic/advanced_smg
 	sort_string = "MABAA"
-
+	
 /datum/design/item/weapon/ballistic/p90
 	id = "p90"
 	desc = "The H90K is a compact, large capacity submachine gun produced by Hephaestus Industries. Despite its fierce reputation, it still manages to feel like a toy. Uses 9mm rounds."
@@ -91,7 +91,7 @@
 	materials = list(DEFAULT_WALL_MATERIAL = 5000, MAT_PLASTIC = 5000, MAT_URANIUM = 1000)
 	build_path = /obj/item/gun/projectile/automatic/p90
 	sort_string = "MABAB"
-
+	
 // Ballistic ammo
 
 /datum/design/item/weapon/ballistic/ammo/AssembleDesignName()
@@ -124,6 +124,60 @@
 	materials = list(DEFAULT_WALL_MATERIAL = 2250, MAT_PLASTIC = 1500, MAT_URANIUM = 50)
 	build_path = /obj/item/ammo_magazine/m9mmp90
 	sort_string = "MABBC"
+
+datum/design/item/weapon/ballistic/ammo/m10x24/medium
+	name = "M41A Medium Magazine"
+	id = "ammo_10x24med"
+	desc = "A 64 round magazine for the M41A pulse rifle."
+	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
+	materials = list(DEFAULT_WALL_MATERIAL = 5500, MAT_SILVER = 250)
+	build_path = /obj/item/ammo_magazine/m10x24mm/med
+	sort_string = "MABBD"
+
+datum/design/item/weapon/ballistic/ammo/m10x24/medium/hp
+	name = "M41A Medium HP Magazine"
+	id = "ammo_10x24medhp"
+	desc = "A 64 hollow point round magazine for the M41A pulse rifle."
+	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
+	materials = list(DEFAULT_WALL_MATERIAL = 5500, MAT_SILVER = 250)
+	build_path = /obj/item/ammo_magazine/m10x24mm/med/hp
+	sort_string = "MABBE"
+
+datum/design/item/weapon/ballistic/ammo/m10x24/medium/ap
+	name = "M41A Medium AP Magazine"
+	id = "ammo_10x24medap"
+	desc = "A 64 armor piercing round magazine for the M41A pulse rifle."
+	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
+	materials = list(DEFAULT_WALL_MATERIAL = 5500, MAT_SILVER = 250)
+	build_path = /obj/item/ammo_magazine/m10x24mm/med/ap
+	sort_string = "MABBF"
+
+datum/design/item/weapon/ballistic/ammo/m10x24/large
+	name = "M41A Large Magazine"
+	id = "ammo_10x24large"
+	desc = "A 96 round magazine for the M41A pulse rifle."
+	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3)
+	materials = list(DEFAULT_WALL_MATERIAL = 8500, MAT_SILVER = 250)
+	build_path = /obj/item/ammo_magazine/m10x24mm/large
+	sort_string = "MABBG"
+
+datum/design/item/weapon/ballistic/ammo/m10x24/large/hp
+	name = "M41A Large HP Magazine"
+	id = "ammo_10x24largehp"
+	desc = "A 96 hollow point round magazine for the M41A pulse rifle."
+	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3)
+	materials = list(DEFAULT_WALL_MATERIAL = 8500, MAT_SILVER = 250)
+	build_path = /obj/item/ammo_magazine/m10x24mm/large/hp
+	sort_string = "MABBH"
+
+datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
+	name = "M41A Large Magazine"
+	id = "ammo_10x24largeap"
+	desc = "A 96 armor piercing round magazine for the M41A pulse rifle."
+	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3)
+	materials = list(DEFAULT_WALL_MATERIAL = 8500, MAT_SILVER = 500)
+	build_path = /obj/item/ammo_magazine/m10x24mm/large/ap
+	sort_string = "MABBI"
 
 // Phase weapons
 

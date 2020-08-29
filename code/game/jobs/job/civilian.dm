@@ -32,7 +32,7 @@
 	minimal_access = list(access_kitchen)
 
 	outfit_type = /decl/hierarchy/outfit/job/service/chef
-	alt_titles = list("Cook")
+	alt_titles = list("Cook","Line Cook")
 
 /datum/job/hydro
 	title = "Botanist"
@@ -71,7 +71,7 @@
 	ideal_character_age = 40
 
 	outfit_type = /decl/hierarchy/outfit/job/cargo/qm
-	alt_titles = list("Supply Chief")
+	alt_titles = list("Supply Chief", "Inventory Chief")
 
 /datum/job/cargo_tech
 	title = "Cargo Technician"
@@ -106,7 +106,7 @@
 	minimal_access = list(access_mining, access_mining_station, access_mailsorting, access_cargo, access_cargo_bot)
 
 	outfit_type = /decl/hierarchy/outfit/job/cargo/mining
-	alt_titles = list("Drill Technician")
+	alt_titles = list("Drill Technician","Belt Miner")
 
 //Service
 /datum/job/janitor
@@ -142,7 +142,7 @@
 	minimal_access = list(access_library)
 
 	outfit_type = /decl/hierarchy/outfit/job/librarian
-	alt_titles = list("Journalist", "Writer")
+	alt_titles = list("Journalist", "Writer","Film Crew")
 
 //var/global/lawyer = 0//Checks for another lawyer //This changed clothes on 2nd lawyer, both IA get the same dreds.
 /datum/job/lawyer

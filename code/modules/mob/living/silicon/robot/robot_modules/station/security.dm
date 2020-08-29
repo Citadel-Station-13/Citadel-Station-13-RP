@@ -55,6 +55,7 @@
 	hide_on_manifest = 1
 	sprites = list(
 					"Haruka" = "marinaCB",
+					"Cabeiri" = "eyebot-combat",
 					"Combat Android" = "droid-combat",
 					"Insekt" = "insekt-Combat"
 					)
