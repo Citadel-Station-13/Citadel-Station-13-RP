@@ -12,12 +12,12 @@ var/datum/controller/rogue/rm_controller
 
 	//So I don't have to do absurd list[list[thing]] over and over.
 	var/list/diffstep_nums = list(
-		30,
-		150,
+		1,
+		55,
+		100,
 		200,
 		300,
-		400,
-		500)
+		400)
 
 	var/list/diffstep_chances = list(
 		10,
@@ -39,7 +39,7 @@ var/datum/controller/rogue/rm_controller
 	var/difficulty = 100
 
 	//Info about our current step
-	var/diffstep = 1
+	var/diffstep = 3
 
 	//Difficulty cap
 	var/max_diffstep = 6

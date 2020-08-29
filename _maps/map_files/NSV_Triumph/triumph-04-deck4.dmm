@@ -4626,6 +4626,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 1
 	},
+/obj/structure/table/standard,
 /turf/simulated/floor/tiled/white,
 /area/triumph/station/explorer_medical)
 "dLP" = (
@@ -7444,6 +7445,7 @@
 	pixel_x = -23;
 	pixel_y = 3
 	},
+/obj/structure/fans/tiny,
 /turf/simulated/shuttle/plating,
 /area/shuttle/excursion/general)
 "fVj" = (
@@ -14547,7 +14549,7 @@
 /obj/structure/closet/secure_closet/medical_wall{
 	name = "O- Blood Locker";
 	pixel_x = 32;
-	req_access = list(5)
+	req_access = list(5,44)
 	},
 /obj/item/reagent_containers/blood/OMinus,
 /obj/item/reagent_containers/blood/OMinus,
@@ -21955,6 +21957,9 @@
 	dir = 8
 	},
 /obj/item/tank/jetpack/oxygen,
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
 "qUK" = (
@@ -23265,8 +23270,10 @@
 	frequency = 1441;
 	pixel_y = 22
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
 /obj/machinery/camera/network/exploration,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
 "rPo" = (
@@ -26646,7 +26653,9 @@
 	pixel_y = -25
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
-/obj/machinery/vending/medical,
+/obj/machinery/vending/medical{
+	req_access = list(5,44)
+	},
 /turf/simulated/floor/tiled/white,
 /area/triumph/station/explorer_medical)
 "uyD" = (
@@ -29896,6 +29905,7 @@
 	dir = 1
 	},
 /obj/machinery/chem_master,
+/obj/structure/table/standard,
 /turf/simulated/floor/tiled/white,
 /area/triumph/station/explorer_medical)
 "wYh" = (

@@ -22,6 +22,7 @@
 #define Z_LEVEL_ROGUEMINE_4				13
 
 #define Z_LEVEL_PIRATEBASE				14
+#define Z_LEVEL_MININGPLANET			15
 
 // Camera Networks
 #define NETWORK_TRIUMPH "Triumph"
@@ -153,7 +154,7 @@
 		list("Triumph - Misc","Triumph - Ships",), // Stock Triumph lateload maps
 		list("Debris Field - Z1 Space"), // Debris Field
 		list("ExoPlanet - Z1 Planet"), // Exoplanet
-		list("Away Mission - Pirate Base"), // Vox Pirate Base
+		list("Away Mission - Pirate Base","Away Mission - Mining Planet"), // Vox Pirate Base & Mining Planet
 		list("Asteroid Belt 1","Asteroid Belt 2","Asteroid Belt 3","Asteroid Belt 4")
 	)
 
@@ -165,7 +166,8 @@
 		Z_LEVEL_DECK_FOUR,
 		Z_LEVEL_DEBRISFIELD,
 		Z_LEVEL_UNKNOWN_PLANET,
-		Z_LEVEL_PIRATEBASE)
+		Z_LEVEL_PIRATEBASE,
+		Z_LEVEL_MININGPLANET)
 
 	lateload_single_pick = null //Nothing right now.
 

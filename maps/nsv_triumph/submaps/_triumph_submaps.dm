@@ -92,11 +92,32 @@
 
 /datum/map_z_level/triumph_lateload/away_piratebase
 	name = "Away Mission - Pirate Base"
-	z = Z_LEVEL_DEBRISFIELD
+	z = Z_LEVEL_PIRATEBASE
 
 
 /datum/map_template/triumph_lateload/away_piratebase/on_map_loaded(z)
 	. = ..()
+
+
+// Mining Planet
+#include "mining_planet/_miningplanet.dm"
+
+/datum/map_template/triumph_lateload/away_mining_planet
+	name = "Away Mission - Mining Planet"
+	desc = "Mining Plante. For the miners to get actual supplies."
+	mappath = 'mining_planet/mining_planet.dmm'
+	associated_map_datum = /datum/map_z_level/triumph_lateload/away_mining_planet
+	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
+
+/datum/map_z_level/triumph_lateload/away_mining_planet
+	name = "Away Mission - Mining Planet"
+	z = Z_LEVEL_MININGPLANET
+
+
+/datum/map_template/triumph_lateload/away_mining_planet/on_map_loaded(z)
+	. = ..()
+	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, Z_LEVEL_MININGPLANET, world.maxx - 4, world.maxy - 4) // Create the mining Z-level.
+	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_MININGPLANET, 64, 64)         // Create the mining ore distribution map.
 
 
 //////////////////////////////////////////////////////////////////////////////////////

@@ -9916,6 +9916,10 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/machinery/alarm{
+	dir = 8;
+	pixel_x = 24
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/rdoffice)
 "us" = (
@@ -18637,13 +18641,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virology)
-"LJ" = (
-/obj/machinery/alarm{
-	dir = 8;
-	pixel_x = 24
-	},
-/turf/simulated/wall,
-/area/rnd/rdoffice)
 "LK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -38944,7 +38941,7 @@ DW
 qK
 qK
 GS
-LJ
+GS
 GS
 yJ
 qK

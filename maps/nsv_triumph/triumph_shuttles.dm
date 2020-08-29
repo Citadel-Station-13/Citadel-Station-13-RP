@@ -233,7 +233,7 @@
 ////////////////////////////////////////
 ////////      Tour Bus     /////////////
 ////////////////////////////////////////
-/datum/shuttle/autodock/overmap/tourbus
+/*/datum/shuttle/autodock/overmap/tourbus
 	name = "Tour Bus"
 	warmup_time = 0
 	current_location = "tourbus_dock"
@@ -253,3 +253,4 @@
 	name = "short jump console"
 	shuttle_tag = "Tour Bus"
 	req_one_access = list(access_pilot)
+*/

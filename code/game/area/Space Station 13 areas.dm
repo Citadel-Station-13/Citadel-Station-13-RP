@@ -83,6 +83,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/escape
 	name = "\improper Emergency Shuttle"
 	music = "music/escape.ogg"
+	requires_power = 0
 
 /area/shuttle/escape_pod1
 	name = "\improper Escape Pod One"

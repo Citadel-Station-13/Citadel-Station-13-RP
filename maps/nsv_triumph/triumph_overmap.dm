@@ -78,16 +78,16 @@
 	icon_state = "dust4"
 	color = "#AAAAAA"
 	known = FALSE
-	start_x = 22
-	start_y = 33
+	start_x = 15
+	start_y = 23
 	initial_generic_waypoints = list("triumph_excursion_debrisfield")
 
 /obj/effect/overmap/visitable/sector/class_d
 	name = "Unidentified Planet"
 	desc = "ASdlke ERROR%%%% UNABLE TO----."
 	in_space = 0
-	start_x = 32
-	start_y = 55
+	start_x = 12
+	start_y = 50
 	icon_state = "globe"
 	color = "#88FF33"
 
@@ -95,10 +95,19 @@
 	name = "Vox Pirate Base"
 	desc = "A nest of hostiles to the company. Caution is advised."
 	in_space = 1
-	start_x = 55
-	start_y = 3
+	start_x = 45
+	start_y = 50
 	known = FALSE
 	icon_state = "piratebase"
 	color = "#FF3333"
 	initial_generic_waypoints = list("piratebase_hanger")
 
+/obj/effect/overmap/visitable/sector/mining_planet
+	name = "Mineral Rich planet"
+	desc = "A planet filled with valuable minerals. No life signs currently detected on the surface."
+	in_space = 1
+	start_x = 5
+	start_y = 12
+	icon_state = "globe"
+	color = "#8F6E4C"
+	initial_generic_waypoints = list("mining_outpost")
