@@ -149,7 +149,7 @@
 	docking_controller_tag = "pirate_docker"
 	landmark_transition = "nav_transit_pirate"
 	fuel_consumption = 5
-	move_time = 20
+	move_time = 10
 
 /area/shuttle/pirate
 	name = "Pirate Skiff"

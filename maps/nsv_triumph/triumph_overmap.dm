@@ -100,4 +100,5 @@
 	known = FALSE
 	icon_state = "piratebase"
 	color = "#FF3333"
+	initial_generic_waypoints = list("piratebase_hanger")
 
