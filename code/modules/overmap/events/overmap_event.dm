@@ -48,12 +48,14 @@
 	name = "asteroid field"
 	events = list(/datum/event/meteor_wave/overmap)
 	event_icon_states = list("meteor1", "meteor2", "meteor3", "meteor4")
+	color = "#EEEEEE"
 	difficulty = EVENT_LEVEL_MAJOR
 	weaknesses = OVERMAP_WEAKNESS_MINING | OVERMAP_WEAKNESS_EXPLOSIVE
 
 /obj/effect/overmap/event/electric
 	name = "electrical storm"
 	events = list(/datum/event/electrical_storm/overmap)
+	color = "#EEEEEE"
 	opacity = 0
 	event_icon_states = list("electrical1", "electrical2", "electrical3", "electrical4")
 	difficulty = EVENT_LEVEL_MAJOR
@@ -63,6 +65,7 @@
 	name = "dust cloud"
 	events = list(/datum/event/dust/overmap)
 	event_icon_states = list("dust1", "dust2", "dust3", "dust4")
+	color = "#EEEEEE"
 	weaknesses = OVERMAP_WEAKNESS_MINING | OVERMAP_WEAKNESS_EXPLOSIVE | OVERMAP_WEAKNESS_FIRE
 
 /obj/effect/overmap/event/ion
@@ -70,6 +73,7 @@
 	events = list(/datum/event/ionstorm/overmap)
 	opacity = 0
 	event_icon_states = list("ion1", "ion2", "ion3", "ion4")
+	color = "#EEEEEE"
 	difficulty = EVENT_LEVEL_MAJOR
 	weaknesses = OVERMAP_WEAKNESS_EMP
 
@@ -78,6 +82,7 @@
 	events = list(/datum/event/carp_migration/overmap)
 	opacity = 0
 	event_icon_states = list("carp1", "carp2")
+	color = "#EEEEEE"
 	difficulty = EVENT_LEVEL_MODERATE
 	weaknesses = OVERMAP_WEAKNESS_EXPLOSIVE | OVERMAP_WEAKNESS_FIRE
 
@@ -86,6 +91,7 @@
 	events = list(/datum/event/carp_migration/overmap)
 	opacity = 0
 	event_icon_states = list("carp3", "carp4")
+	color = "#EEEEEE"
 	difficulty = EVENT_LEVEL_MAJOR
 	weaknesses = OVERMAP_WEAKNESS_EXPLOSIVE | OVERMAP_WEAKNESS_FIRE
 
@@ -94,6 +100,7 @@
 	events = list(/datum/event/hostile_migration/overmap)
 	opacity = 0
 	event_icon_states = list("rats1", "rats2")
+	color = "#EEEEEE"
 	difficulty = EVENT_LEVEL_MODERATE
 	weaknesses = OVERMAP_WEAKNESS_EXPLOSIVE | OVERMAP_WEAKNESS_FIRE
 
@@ -102,5 +109,6 @@
 	events = list(/datum/event/communications_blackout/overmap)
 	opacity = 0
 	event_icon_states = list("comout1")
+	color = "#EEEEEE"
 	difficulty = EVENT_LEVEL_MODERATE
 	weaknesses = OVERMAP_WEAKNESS_EMP
