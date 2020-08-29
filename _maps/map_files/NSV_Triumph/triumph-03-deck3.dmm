@@ -313,6 +313,12 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
+"aM" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/mauve/border,
+/obj/machinery/vending/cart,
+/turf/simulated/floor/tiled,
+/area/rnd/research_foyer_auxiliary)
 "aN" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 9
@@ -5625,6 +5631,15 @@
 "lN" = (
 /turf/simulated/floor/tiled/techfloor,
 /area/assembly/chargebay)
+"lO" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/medical/psych_ward)
 "lP" = (
 /obj/structure/disposalpipe/down{
 	dir = 8
@@ -13078,15 +13093,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
-"AE" = (
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
-	},
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/simulated/floor/wood,
-/area/medical/psych_ward)
 "AF" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
@@ -15749,6 +15755,12 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
+"FN" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/mauve/border,
+/obj/machinery/vending/robotics,
+/turf/simulated/floor/tiled,
+/area/rnd/research_foyer_auxiliary)
 "FO" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -17473,12 +17485,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/rdoffice)
-"Jq" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/mauve/border,
-/obj/machinery/vending/cart,
-/turf/simulated/floor/tiled,
-/area/rnd/research_foyer_auxiliary)
 "Js" = (
 /turf/simulated/wall/r_wall,
 /area/maintenance/research)
@@ -23521,8 +23527,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/research{
 	name = "Research Lab";
-	req_access = list(8,47);
-	req_one_access = null
+	req_one_access = list(8,44,47)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/reception_desk)
@@ -25074,12 +25079,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
-"Yy" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/mauve/border,
-/obj/machinery/vending/robotics,
-/turf/simulated/floor/tiled,
-/area/rnd/research_foyer_auxiliary)
 "Yz" = (
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
@@ -30159,7 +30158,7 @@ HD
 Yi
 To
 RD
-AE
+lO
 jA
 Qt
 vW
@@ -34249,7 +34248,7 @@ Ng
 Ba
 Yz
 Yz
-Yy
+FN
 Rw
 EO
 vB
@@ -34391,7 +34390,7 @@ Ng
 Qv
 Mx
 Yz
-Jq
+aM
 Xn
 nf
 vB
