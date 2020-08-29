@@ -11,7 +11,7 @@
 	spawn_positions = 4
 
 /datum/job/janitor //Lots of janitor substations on station.
-	total_positions = 3
+	total_positions = 6
 	spawn_positions = 3
 	alt_titles = list("Custodian", "Sanitation Technician", "Maid")
 

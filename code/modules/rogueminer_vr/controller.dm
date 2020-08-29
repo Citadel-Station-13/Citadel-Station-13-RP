@@ -16,8 +16,8 @@ var/datum/controller/rogue/rm_controller
 		150,
 		200,
 		300,
-		550,
-		900)
+		400,
+		500)
 
 	var/list/diffstep_chances = list(
 		10,
