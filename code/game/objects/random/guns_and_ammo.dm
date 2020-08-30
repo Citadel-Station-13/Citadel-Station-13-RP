@@ -84,7 +84,7 @@
 				prob(3);/obj/item/gun/projectile/shotgun/doublebarrel/sawn,
 				prob(2);/obj/item/gun/projectile/shotgun/doublebarrel/quad,
 				prob(3);/obj/item/gun/projectile/shotgun/pump,
-				prob(3);/obj/item/gun/projectile/shotgun/pump/rifle/arnold,
+				prob(3);/obj/item/gun/projectile/shotgun/pump/rifle/lever/arnold,
 				prob(2);/obj/item/gun/projectile/shotgun/pump/combat,
 				prob(4);/obj/item/gun/projectile/shotgun/pump/rifle,
 				prob(3);/obj/item/gun/projectile/shotgun/pump/rifle/lever,
@@ -227,13 +227,8 @@
 				/obj/item/ammo_magazine/m762,
 				/obj/item/ammo_magazine/m762
 			),
-			prob(4);list(
-				/obj/item/gun/projectile/shotgun/pump/rifle/win1895,
-				/obj/item/ammo_magazine/clip/c762,
-				/obj/item/ammo_magazine/clip/c762
-			),
 			prob(3);list(
-				/obj/item/gun/projectile/shotgun/pump/rifle/lever,
+				/obj/item/gun/projectile/shotgun/pump/rifle/lever/win1895,
 				/obj/item/ammo_magazine/clip/c762,
 				/obj/item/ammo_magazine/clip/c762
 			),
