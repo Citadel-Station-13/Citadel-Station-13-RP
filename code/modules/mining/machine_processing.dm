@@ -156,7 +156,7 @@
 	density = TRUE
 	anchored = TRUE
 	light_range = 3
-	speed_process = FALSE
+	speed_process = TRUE
 	var/tick = 0
 	var/obj/machinery/mineral/input = null
 	var/obj/machinery/mineral/output = null

@@ -9678,6 +9678,7 @@
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_red"
 	},
+<<<<<<< HEAD
 /area/shuttle/mercenary)
 "vi" = (
 /obj/structure/table/standard,
@@ -9690,6 +9691,9 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/holodeck/holodorm/source_standard)
+=======
+/area/syndicate_station/start)
+>>>>>>> origin/master
 "we" = (
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/purple/border,
@@ -9701,43 +9705,12 @@
 	initial_gas_mix = "phoron=101;TEMP=293.15"
 	},
 /area/holodeck/holodorm/source_phoron)
-"wg" = (
-/obj/effect/floor_decal/steeldecal/steel_decals6{
-	dir = 5
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals6{
-	dir = 6
-	},
-/obj/effect/floor_decal/industrial/warning{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/white,
-/area/holodeck/holodorm/source_standard)
 "wk" = (
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/white{
 	initial_gas_mix = "phoron=101;TEMP=293.15"
 	},
 /area/holodeck/holodorm/source_phoron)
-"wr" = (
-/obj/structure/table/standard,
-/obj/item/reagent_containers/spray/cleaner{
-	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
-	name = "Surgery Cleaner";
-	pixel_x = 2;
-	pixel_y = 2
-	},
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 6
-	},
-/obj/effect/floor_decal/corner/white/border{
-	dir = 6
-	},
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/white,
-/area/holodeck/holodorm/source_standard)
 "wY" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
@@ -9848,23 +9821,6 @@
 	initial_gas_mix = "phoron=101;TEMP=293.15"
 	},
 /area/holodeck/holodorm/source_phoron)
-"Aa" = (
-/obj/structure/table/standard,
-/obj/item/healthanalyzer,
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 5
-	},
-/obj/effect/floor_decal/corner/white/border{
-	dir = 5
-	},
-/obj/effect/floor_decal/borderfloorwhite/corner2{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/white/bordercorner2{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/white,
-/area/holodeck/holodorm/source_standard)
 "Am" = (
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/holofloor/reinforced,
@@ -9900,19 +9856,6 @@
 	initial_gas_mix = "phoron=101;TEMP=293.15"
 	},
 /area/holodeck/holodorm/source_phoron)
-"AP" = (
-/obj/effect/floor_decal/industrial/outline/red,
-/turf/simulated/floor/tiled/white,
-/area/holodeck/holodorm/source_standard)
-"AZ" = (
-/obj/effect/floor_decal/steeldecal/steel_decals4{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals4{
-	dir = 6
-	},
-/turf/simulated/floor/tiled/white,
-/area/holodeck/holodorm/source_standard)
 "Bt" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 5
@@ -9969,10 +9912,6 @@
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 4
 	},
-/obj/machinery/computer/operating{
-	dir = 8;
-	use_power = 0
-	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
@@ -9980,38 +9919,6 @@
 	initial_gas_mix = "phoron=101;TEMP=293.15"
 	},
 /area/holodeck/holodorm/source_phoron)
-"Dj" = (
-/obj/effect/floor_decal/steeldecal/steel_decals6{
-	dir = 10
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals6{
-	dir = 9
-	},
-/obj/effect/floor_decal/industrial/warning{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/white,
-/area/holodeck/holodorm/source_standard)
-"Ey" = (
-/obj/machinery/computer/operating{
-	dir = 8;
-	use_power = 0
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9,
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 8
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 4
-	},
-/obj/effect/floor_decal/industrial/warning{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/white,
-/area/holodeck/holodorm/source_standard)
 "EX" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -10041,54 +9948,6 @@
 	initial_gas_mix = "phoron=101;TEMP=293.15"
 	},
 /area/holodeck/holodorm/source_phoron)
-"Fo" = (
-/obj/machinery/oxygen_pump/anesthetic,
-/turf/simulated/wall,
-/area/holodeck/holodorm/source_standard)
-"FM" = (
-/obj/structure/table/standard,
-/obj/item/reagent_containers/spray/cleaner{
-	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
-	name = "Surgery Cleaner";
-	pixel_x = 2;
-	pixel_y = 2
-	},
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 5
-	},
-/obj/effect/floor_decal/corner/white/border{
-	dir = 5
-	},
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/item/radio/intercom{
-	dir = 1;
-	name = "Station Intercom (General)";
-	pixel_y = 21
-	},
-/turf/simulated/floor/tiled/white,
-/area/holodeck/holodorm/source_standard)
-"FO" = (
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/white/border{
-	dir = 8
-	},
-/obj/effect/floor_decal/borderfloorwhite/corner2{
-	dir = 10
-	},
-/obj/effect/floor_decal/corner/white/bordercorner2{
-	dir = 10
-	},
-/obj/structure/sink{
-	dir = 8;
-	pixel_x = -12;
-	pixel_y = 8
-	},
-/turf/simulated/floor/tiled/white,
-/area/holodeck/holodorm/source_standard)
 "Ia" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 6
@@ -10159,11 +10018,6 @@
 	initial_gas_mix = "phoron=101;TEMP=293.15"
 	},
 /area/holodeck/holodorm/source_phoron)
-"JI" = (
-/obj/machinery/optable,
-/obj/effect/floor_decal/industrial/hatch/yellow,
-/turf/simulated/floor/tiled/white,
-/area/holodeck/holodorm/source_standard)
 "JJ" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -10206,19 +10060,6 @@
 	initial_gas_mix = "phoron=101;TEMP=293.15"
 	},
 /area/holodeck/holodorm/source_phoron)
-"LD" = (
-/obj/structure/table/standard,
-/obj/item/healthanalyzer,
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 6
-	},
-/obj/effect/floor_decal/corner/white/border{
-	dir = 6
-	},
-/obj/effect/floor_decal/borderfloorwhite/corner2,
-/obj/effect/floor_decal/corner/white/bordercorner2,
-/turf/simulated/floor/tiled/white,
-/area/holodeck/holodorm/source_standard)
 "Mq" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -10235,10 +10076,6 @@
 	initial_gas_mix = "o2=410;TEMP=293.15"
 	},
 /area/holodeck/holodorm/source_zaddat)
-"MA" = (
-/obj/effect/floor_decal/industrial/loading,
-/turf/simulated/floor/tiled/white,
-/area/holodeck/holodorm/source_standard)
 "NO" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
@@ -10255,22 +10092,6 @@
 	initial_gas_mix = "phoron=101;TEMP=293.15"
 	},
 /area/holodeck/holodorm/source_phoron)
-"NP" = (
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/white/border{
-	dir = 8
-	},
-/obj/effect/floor_decal/borderfloorwhite/corner2{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/white/bordercorner2{
-	dir = 8
-	},
-/obj/machinery/iv_drip,
-/turf/simulated/floor/tiled/white,
-/area/holodeck/holodorm/source_standard)
 "NU" = (
 /obj/structure/table/steel,
 /obj/item/healthanalyzer,
@@ -10285,36 +10106,6 @@
 	initial_gas_mix = "o2=410;TEMP=293.15"
 	},
 /area/holodeck/holodorm/source_zaddat)
-"Oa" = (
-/obj/structure/table/standard,
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/white/border{
-	dir = 1
-	},
-/obj/item/reagent_containers/blood/OMinus,
-/obj/effect/floor_decal/industrial/warning{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/white,
-/area/holodeck/holodorm/source_standard)
-"OJ" = (
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/white/border{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/white,
-/area/holodeck/holodorm/source_standard)
-"OO" = (
-/obj/structure/table/standard,
-/obj/item/storage/firstaid/surgery,
-/obj/effect/floor_decal/borderfloorwhite,
-/obj/effect/floor_decal/corner/white/border,
-/turf/simulated/floor/tiled/white,
-/area/holodeck/holodorm/source_standard)
 "QH" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/optable,
@@ -10433,48 +10224,8 @@
 	initial_gas_mix = "o2=410;TEMP=293.15"
 	},
 /area/holodeck/holodorm/source_zaddat)
-"Vy" = (
-/obj/effect/floor_decal/borderfloorwhite,
-/obj/effect/floor_decal/corner/white/border,
-/turf/simulated/floor/tiled/white,
-/area/holodeck/holodorm/source_standard)
-"Wt" = (
-/obj/effect/floor_decal/industrial/loading{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/white,
-/area/holodeck/holodorm/source_standard)
-"XA" = (
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 10
-	},
-/obj/effect/floor_decal/corner/white/border{
-	dir = 10
-	},
-/obj/machinery/camera/network/medbay{
-	dir = 1
-	},
-/obj/structure/closet/secure_closet/medical2,
-/turf/simulated/floor/tiled/white,
-/area/holodeck/holodorm/source_standard)
-"Yf" = (
-/obj/structure/table/standard,
-/obj/effect/floor_decal/borderfloorwhite,
-/obj/effect/floor_decal/corner/white/border,
-/obj/item/stack/nanopaste,
-/obj/effect/floor_decal/industrial/warning{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/white,
-/area/holodeck/holodorm/source_standard)
 "Yr" = (
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 9
-	},
-/obj/effect/floor_decal/corner/white/border{
-	dir = 9
-	},
-/turf/simulated/floor/tiled/white,
+/turf/space,
 /area/holodeck/holodorm/source_standard)
 "ZY" = (
 /obj/structure/table/borosilicate,
@@ -23019,10 +22770,10 @@ fP
 eK
 dB
 Yr
-FO
-AZ
-NP
-XA
+Yr
+Yr
+Yr
+Yr
 dA
 xe
 xe
@@ -23160,11 +22911,11 @@ fo
 fP
 eK
 dB
-OJ
-AP
-AP
-AP
-Vy
+Yr
+Yr
+Yr
+Yr
+Yr
 dA
 xe
 Am
@@ -23302,11 +23053,11 @@ fo
 fP
 eK
 dB
-Oa
-wg
-Ey
-Dj
-Yf
+Yr
+Yr
+Yr
+Yr
+Yr
 dA
 xe
 xe
@@ -23444,11 +23195,11 @@ fo
 fP
 eK
 dB
-vi
-MA
-JI
-Wt
-OO
+Yr
+Yr
+Yr
+Yr
+Yr
 dA
 xe
 xe
@@ -23586,11 +23337,11 @@ fH
 fQ
 eK
 dB
-FM
-LD
-Fo
-Aa
-wr
+Yr
+Yr
+Yr
+Yr
+Yr
 dA
 xe
 xe
