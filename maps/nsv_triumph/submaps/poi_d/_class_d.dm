@@ -67,3 +67,37 @@
 /area/triumph_away/poi_d/unexplored
 	name = "Class D World - Unexplored (UE)"
 	icon_state = "unexplored"
+
+// This is a special subtype of the thing that generates ores on a map
+// It will generate more rich ores because of the lower numbers than the normal one
+/datum/random_map/noise/ore/poi_d
+	descriptor = "Mining planet mine ore distribution map"
+	deep_val = 0.5 //More riches, normal is 0.7 and 0.8
+	rare_val = 0.2
+
+// The check_map_sanity proc is sometimes unsatisfied with how AMAZING our ores are
+/datum/random_map/noise/ore/poi_d/check_map_sanity()
+	var/rare_count = 0
+	var/surface_count = 0
+	var/deep_count = 0
+
+	// Increment map sanity counters.
+	for(var/value in map)
+		if(value < rare_val)
+			surface_count++
+		else if(value < deep_val)
+			rare_count++
+		else
+			deep_count++
+	// Sanity check.
+	if(surface_count < 100)
+		admin_notice("<span class='danger'>Insufficient surface minerals. Rerolling...</span>", R_DEBUG)
+		return 0
+	else if(rare_count < 50)
+		admin_notice("<span class='danger'>Insufficient rare minerals. Rerolling...</span>", R_DEBUG)
+		return 0
+	else if(deep_count < 50)
+		admin_notice("<span class='danger'>Insufficient deep minerals. Rerolling...</span>", R_DEBUG)
+		return 0
+	else
+		return 1
