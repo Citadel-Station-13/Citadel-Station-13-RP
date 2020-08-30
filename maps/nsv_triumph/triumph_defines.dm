@@ -134,14 +134,12 @@
 	unit_test_exempt_areas = list(
 		/area/vacant/vacant_site,
 		/area/vacant/vacant_site/east,
-		/area/triumph_away/debrisfield/,
-		/area/triumph_away/poi_d/)
+		/area/triumph_away)
 	unit_test_exempt_from_atmos = list(
 		/area/engineering/atmos/intake,
 		/area/tcommsat/chamber,
 		/area/engineering/engineering_airlock,
-		/area/triumph_away/debrisfield/,
-		/area/triumph_away/poi_d/)
+		/area/triumph_away)
 
 	belter_docked_z = 		list(Z_LEVEL_DECK_TWO)
 	belter_transit_z =	 	list(Z_LEVEL_SHIPS)
