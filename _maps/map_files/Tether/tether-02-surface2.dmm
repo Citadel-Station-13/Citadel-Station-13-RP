@@ -7776,10 +7776,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9
-	},
 /obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
 /turf/simulated/floor/wood,
@@ -8116,13 +8116,24 @@
 /turf/simulated/floor/tiled,
 /area/engineering/lower/lobby)
 "qQ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
 /turf/simulated/floor/wood,
 /area/engineering/lower/breakroom)
 "qR" = (
-/obj/structure/table/glass,
-/obj/item/storage/box/cups,
-/obj/item/storage/box/cups,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/lower/breakroom)
 "qS" = (
@@ -8512,6 +8523,12 @@
 "rK" = (
 /obj/structure/bed/chair{
 	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
 /turf/simulated/floor/carpet,
 /area/engineering/lower/breakroom)
@@ -17999,6 +18016,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
+"KP" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/engineering/lower/breakroom)
 "Lg" = (
 /obj/machinery/telecomms/relay/preset/tether/midpoint,
 /turf/simulated/floor/tiled/dark{
@@ -18011,6 +18037,21 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/lower/bar)
+"Lq" = (
+/obj/machinery/disposal/deliveryChute{
+	dir = 8
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/engineering/lower/breakroom)
+"Lz" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/engineering/lower/breakroom)
 "LA" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/double,
@@ -18056,6 +18097,18 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/bar)
+"MG" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/engineering/lower/breakroom)
 "MX" = (
 /obj/structure/table/standard{
 	name = "plastic table frame"
@@ -18211,6 +18264,14 @@
 	},
 /turf/simulated/floor/plating,
 /area/tcommsat/computer)
+"Pn" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1;
+	pixel_x = 4
+	},
+/obj/structure/table/standard,
+/turf/simulated/floor/tiled/dark,
+/area/engineering/lower/breakroom)
 "Po" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -18305,6 +18366,12 @@
 /obj/structure/table/marble,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
+"QC" = (
+/obj/structure/table/standard,
+/obj/item/packageWrap,
+/obj/item/packageWrap,
+/turf/simulated/floor/tiled/dark,
+/area/engineering/lower/breakroom)
 "QM" = (
 /obj/machinery/portable_atmospherics/powered/scrubber,
 /obj/effect/decal/cleanable/dirt,
@@ -18353,6 +18420,22 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/atmos/storage)
+"Sk" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/turf/simulated/floor/carpet,
+/area/engineering/lower/breakroom)
 "Sn" = (
 /obj/structure/lattice,
 /turf/simulated/open,
@@ -18483,6 +18566,14 @@
 /obj/structure/symbol/gu,
 /turf/simulated/wall,
 /area/tether/surfacebase/public_garden_two)
+"Uy" = (
+/obj/structure/table/glass,
+/obj/structure/disposalpipe/junction{
+	dir = 8;
+	icon_state = "pipe-j2"
+	},
+/turf/simulated/floor/carpet,
+/area/engineering/lower/breakroom)
 "UB" = (
 /obj/machinery/power/apc{
 	dir = 1;
@@ -18515,6 +18606,11 @@
 	can_open = 1
 	},
 /area/vacant/vacant_bar_upper)
+"UV" = (
+/obj/structure/table/standard,
+/obj/item/hand_labeler,
+/turf/simulated/floor/tiled/dark,
+/area/engineering/lower/breakroom)
 "UX" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -18580,6 +18676,9 @@
 	dir = 1;
 	pixel_y = -25
 	},
+/obj/structure/table/glass,
+/obj/item/storage/box/cups,
+/obj/item/storage/box/cups,
 /turf/simulated/floor/wood,
 /area/engineering/lower/breakroom)
 "VI" = (
@@ -18623,6 +18722,25 @@
 /obj/effect/floor_decal/corner/lime/bordercorner,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
+"Wv" = (
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/structure/table/standard,
+/obj/item/paper_bin{
+	pixel_x = -3;
+	pixel_y = 7
+	},
+/obj/item/pen/red{
+	pixel_x = -1;
+	pixel_y = 3
+	},
+/obj/item/pen/blue{
+	pixel_x = -5;
+	pixel_y = -1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/engineering/lower/breakroom)
 "WA" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
 	dir = 4
@@ -18766,6 +18884,9 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
+"Yx" = (
+/turf/simulated/floor/tiled/dark,
+/area/engineering/lower/breakroom)
 "YA" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/reagent_containers/food/drinks/bottle/orangejuice,
@@ -18833,6 +18954,22 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
+"YV" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/door/airlock/glass_atmos{
+	name = "Department Mail Room";
+	req_access = list(24)
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/engineering/lower/breakroom)
 "Zo" = (
 /obj/structure/table/bench/steel,
 /obj/effect/floor_decal/borderfloor/corner{
@@ -18883,6 +19020,18 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
+"ZH" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/engineering/lower/breakroom)
 "ZN" = (
 /turf/simulated/floor/wood,
 /area/vacant/vacant_bar_upper)
@@ -31203,8 +31352,8 @@ Tc
 of
 oK
 px
-qf
-rK
+Uy
+Sk
 rH
 sl
 sG
@@ -31346,7 +31495,7 @@ ob
 oL
 oK
 qh
-oK
+ZH
 VA
 sl
 tg
@@ -31630,9 +31779,9 @@ ob
 ob
 ob
 ob
+YV
 ob
 ob
-sl
 ti
 ua
 uV
@@ -31771,10 +31920,10 @@ nA
 nW
 en
 dY
-ac
-ac
-ac
-sm
+Yx
+MG
+Wv
+ob
 tj
 ub
 uW
@@ -31913,10 +32062,10 @@ JT
 dY
 dY
 dY
-ac
-ac
-ac
-sm
+Lz
+KP
+Pn
+ob
 sm
 sm
 sm
@@ -32055,10 +32204,10 @@ nG
 dY
 oN
 rO
-ac
-ac
-ac
-ac
+QC
+Lq
+UV
+ob
 ac
 ac
 ac
