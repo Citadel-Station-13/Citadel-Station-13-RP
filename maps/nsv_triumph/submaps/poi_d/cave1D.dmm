@@ -1,0 +1,33 @@
+"a" = (/turf/template_noop,/area/template_noop)
+"q" = (/obj/random/roguemineloot,/turf/simulated/mineral/floor/vacuum,/area/triumph_away/poi_d/explored)
+"s" = (/turf/simulated/mineral/vacuum,/area/triumph_away/poi_d/explored)
+"u" = (/obj/item/storage/bag/ore,/turf/simulated/mineral/floor/vacuum,/area/triumph_away/poi_d/explored)
+"K" = (/obj/random/obstruction,/turf/simulated/mineral/floor/vacuum,/area/triumph_away/poi_d/explored)
+"M" = (/obj/random/outcrop,/turf/simulated/mineral/floor/vacuum,/area/triumph_away/poi_d/explored)
+"N" = (/obj/structure/closet/crate/miningcar,/turf/simulated/mineral/floor/vacuum,/area/triumph_away/poi_d/explored)
+"R" = (/obj/item/flashlight/lantern,/turf/simulated/mineral/floor/vacuum,/area/triumph_away/poi_d/explored)
+"S" = (/obj/random/obstruction,/turf/simulated/mineral/vacuum,/area/triumph_away/poi_d/explored)
+"W" = (/turf/simulated/mineral/floor/vacuum,/area/triumph_away/poi_d/explored)
+
+(1,1,1) = {"
+aaaaWWWWaaaaaWWWaaaa
+aWWWWssWWWWWWWWWWaaa
+WWsssssssWWMssssMWaa
+WssssWMssWWssssssWWa
+WsssWqWssWWssssssMWa
+WssMWWsssWWsssssssWa
+WssWWsssMWWWWWWsssWW
+WSsqWWMsWWRWMWWMssWW
+WssMWWWKWWNssWWWssWW
+WsssMWssWussssWKWssW
+WssssssWWWWMsssWqssW
+WssssssWWsWWsssWWssW
+WssssWWKsssWWssWWsMW
+WsssWWWssssWWMsMWWWW
+WssWWWsssssWWqssWWWW
+WMsWWsssqMWWWMsssssW
+WWWWWssMWWWWsssssssW
+aaWWssssWMWsssssssWW
+aaaWMsssssssssWMWWWa
+aaaWWWWWWWWWWWWWWaaa
+"}

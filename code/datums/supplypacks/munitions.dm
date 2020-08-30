@@ -166,8 +166,8 @@
 	cost = 130
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "Magnetic weapon crate"
-	access = access_security
-
+	access = access_armory
+	
 /datum/supply_pack/munitions/shotgunammo
 	name = "Ammunition - Shotgun shells"
 	contains = list(

@@ -134,3 +134,13 @@
 /area/triumph_away/poi_d/unexplored
 	name = "Class D World - Unexplored (UE)"
 	icon_state = "unexplored"
+
+/area/triumph_away/poi_d/POIs/frieght
+	name = "Autofrieghter"
+	base_turf = /turf/simulated/mineral/floor/vacuum
+	requires_power = FALSE
+
+/area/triumph_away/poi_d/POIs/mercbunker
+	name = "Error"
+	base_turf = /turf/simulated/mineral/floor/vacuum
+	requires_power = FALSE
