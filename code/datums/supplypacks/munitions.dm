@@ -168,7 +168,7 @@
 	
 /datum/supply_pack/munitions/usmc
 	name = "Weapons - M41A Pulse Rifle"
-	conatains = list(/obj/item/gun/projectile/caseless/usmc,
+	contains = list(/obj/item/gun/projectile/caseless/usmc,
 		/obj/item/ammo_magazine/m10x24mm/small = 2
 		)
 	cost = 200
