@@ -16,13 +16,13 @@
 #define Z_LEVEL_DEBRISFIELD				8
 #define Z_LEVEL_UNKNOWN_PLANET			9
 
-#define Z_LEVEL_ROGUEMINE_1				10
-#define Z_LEVEL_ROGUEMINE_2				11
-#define Z_LEVEL_ROGUEMINE_3				12
-#define Z_LEVEL_ROGUEMINE_4				13
+#define Z_LEVEL_PIRATEBASE				10
+#define Z_LEVEL_MININGPLANET			11
 
-#define Z_LEVEL_PIRATEBASE				14
-#define Z_LEVEL_MININGPLANET			15
+#define Z_LEVEL_ROGUEMINE_1				12
+#define Z_LEVEL_ROGUEMINE_2				13
+#define Z_LEVEL_ROGUEMINE_3				14
+#define Z_LEVEL_ROGUEMINE_4				15
 
 // Camera Networks
 #define NETWORK_TRIUMPH "Triumph"
