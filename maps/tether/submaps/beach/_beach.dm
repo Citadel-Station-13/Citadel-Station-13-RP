@@ -16,7 +16,7 @@
 /datum/random_map/noise/ore/beachmine
 	descriptor = "beach mine ore distribution map"
 	deep_val = 0.6 //More riches, normal is 0.7 and 0.8
-	rare_val = 0.5
+	rare_val = 0.6
 
 // The check_map_sanity proc is sometimes unsatisfied with how AMAZING our ores are
 /datum/random_map/noise/ore/beachmine/check_map_sanity()
