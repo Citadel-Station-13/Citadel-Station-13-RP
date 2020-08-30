@@ -82,6 +82,7 @@
 	start_y = 23
 	initial_generic_waypoints = list("triumph_excursion_debrisfield")
 
+/*
 /obj/effect/overmap/visitable/sector/class_d
 	name = "Unidentified Planet"
 	desc = "ASdlke ERROR%%%% UNABLE TO----."
@@ -90,6 +91,7 @@
 	start_y = 50
 	icon_state = "globe"
 	color = "#88FF33"
+*/
 
 /obj/effect/overmap/visitable/sector/pirate_base
 	name = "Vox Pirate Base"
