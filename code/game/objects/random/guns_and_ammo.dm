@@ -19,7 +19,7 @@
 				prob(4);/obj/item/gun/energy/gun,
 				prob(3);/obj/item/gun/energy/gun/burst,
 				prob(1);/obj/item/gun/energy/gun/nuclear,
-				prob(1);/obj/item/gun/energy/gun/tommylaser,
+				prob(1);/obj/item/gun/energy/tommylaser,
 				prob(5);/obj/item/gun/energy/zip,
 				prob(2);/obj/item/gun/energy/retro,
 				prob(2);/obj/item/gun/energy/lasercannon,
@@ -88,7 +88,7 @@
 				prob(2);/obj/item/gun/projectile/shotgun/pump/combat,
 				prob(4);/obj/item/gun/projectile/shotgun/pump/rifle,
 				prob(3);/obj/item/gun/projectile/shotgun/pump/rifle/lever,
-				prob(3);/obj/item/gun/projectile/shotgun/pump/rifle/win1895,
+				prob(3);/obj/item/gun/projectile/shotgun/pump/rifle/lever/win1895,
 				prob(2);/obj/item/gun/projectile/silenced)
 
 /obj/random/projectile/sec
@@ -319,8 +319,8 @@
 			),
 			prob(5);list(
 				/obj/item/gun/projectile/r9,
-				/obj/item/ammo_magazine/c9mm,
-				/obj/item/ammo_magazine/c9mm
+				/obj/item/ammo_magazine/clip/c9mm,
+				/obj/item/ammo_magazine/clip/c9mm
 			),
 			prob(4);list(
 				/obj/item/gun/projectile/p92x/brown,
