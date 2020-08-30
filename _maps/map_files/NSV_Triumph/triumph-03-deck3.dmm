@@ -25080,6 +25080,16 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
+"Yy" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/robotic_fabricator,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/assembly/robotics)
 "Yz" = (
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
@@ -30569,7 +30579,7 @@ OP
 QW
 fZ
 Pr
-ZK
+Yy
 CQ
 Pr
 Gj

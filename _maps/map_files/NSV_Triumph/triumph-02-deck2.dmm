@@ -7594,7 +7594,10 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
 "xJ" = (
-/obj/machinery/media/jukebox,
+/obj/machinery/media/jukebox{
+	icon_state = "superjuke-nopower";
+	state_base = "superjuke"
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
 	d1 = 1;

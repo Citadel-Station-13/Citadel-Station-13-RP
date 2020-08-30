@@ -2,6 +2,14 @@
 "a" = (
 /turf/space,
 /area/triumph_away/debrisfield/unexplored)
+"b" = (
+/obj/structure/table/steel,
+/obj/machinery/microwave,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_tile/yellow,
+/area/triumph_away/debrisfield/explored)
 "c" = (
 /obj/effect/shuttle_landmark/automatic,
 /turf/space,
@@ -10,12 +18,211 @@
 /obj/effect/overmap/visitable/sector/debrisfield,
 /turf/space,
 /area/triumph_away/debrisfield/explored)
+"j" = (
+/obj/structure/bed/chair/comfy/brown{
+	dir = 4
+	},
+/obj/structure/closet/walllocker/emerglocker{
+	pixel_y = -32
+	},
+/turf/simulated/floor/carpet/oracarpet,
+/area/triumph_away/debrisfield/explored)
+"l" = (
+/obj/structure/bed/chair/comfy/brown{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/oracarpet,
+/area/triumph_away/debrisfield/explored)
+"m" = (
+/obj/structure/table/steel,
+/obj/structure/sink/kitchen,
+/turf/simulated/floor/tiled/old_tile/yellow,
+/area/triumph_away/debrisfield/explored)
+"n" = (
+/obj/structure/bed/chair/comfy/brown{
+	dir = 8
+	},
+/obj/structure/closet/walllocker/emerglocker{
+	pixel_y = -32
+	},
+/turf/simulated/floor/carpet/oracarpet,
+/area/triumph_away/debrisfield/explored)
+"o" = (
+/turf/simulated/floor/wood,
+/area/triumph_away/debrisfield/explored)
+"p" = (
+/obj/structure/table/steel,
+/obj/machinery/light_switch{
+	dir = 1;
+	pixel_y = -24
+	},
+/turf/simulated/floor/carpet/oracarpet,
+/area/triumph_away/debrisfield/explored)
+"q" = (
+/obj/structure/table/steel,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/item/reagent_containers/glass/beaker{
+	pixel_x = 5
+	},
+/turf/simulated/floor/tiled/old_tile/yellow,
+/area/triumph_away/debrisfield/explored)
+"r" = (
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = 32
+	},
+/obj/structure/bed/chair/sofa/corner{
+	dir = 8;
+	icon_state = "sofacorner"
+	},
+/turf/simulated/floor/carpet/oracarpet,
+/area/triumph_away/debrisfield/explored)
+"t" = (
+/obj/structure/closet/walllocker/emerglocker{
+	pixel_y = -32
+	},
+/obj/structure/bed/chair/sofa/right{
+	dir = 1;
+	icon_state = "sofaend_right"
+	},
+/turf/simulated/floor/carpet/oracarpet,
+/area/triumph_away/debrisfield/explored)
+"u" = (
+/obj/machinery/door/window/westright{
+	dir = 1
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/oracarpet,
+/area/triumph_away/debrisfield/explored)
+"v" = (
+/obj/structure/simple_door,
+/turf/simulated/wall/wood,
+/area/triumph_away/debrisfield/explored)
+"w" = (
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/simulated/wall/wood,
+/area/triumph_away/debrisfield/explored)
+"z" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor/plating,
+/area/triumph_away/debrisfield/explored)
+"E" = (
+/turf/simulated/floor/carpet/oracarpet,
+/area/triumph_away/debrisfield/explored)
+"F" = (
+/obj/structure/closet/secure_closet/freezer/meat,
+/obj/item/reagent_containers/food/drinks/soymilk,
+/obj/item/reagent_containers/food/drinks/soymilk,
+/obj/item/reagent_containers/food/drinks/bottle/milk,
+/obj/item/reagent_containers/food/drinks/bottle/milk,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
+/turf/simulated/floor/carpet/oracarpet,
+/area/triumph_away/debrisfield/explored)
+"G" = (
+/obj/machinery/power/apc/alarms_hidden{
+	pixel_y = 30
+	},
+/obj/structure/cable/green{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/carpet/oracarpet,
+/area/triumph_away/debrisfield/explored)
+"H" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/simulated/wall/wood,
+/area/triumph_away/debrisfield/explored)
+"J" = (
+/obj/machinery/power/smes/buildable{
+	charge = 1.5e+007;
+	cur_coils = 3
+	},
+/obj/structure/cable/green{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/tiled/old_tile/yellow,
+/area/triumph_away/debrisfield/explored)
+"K" = (
+/obj/machinery/computer/ship/helm{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/oracarpet,
+/area/triumph_away/debrisfield/explored)
+"M" = (
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -12;
+	pixel_y = 2
+	},
+/obj/structure/toilet{
+	pixel_y = 10
+	},
+/obj/machinery/shower{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_tile/yellow,
+/area/triumph_away/debrisfield/explored)
+"O" = (
+/obj/machinery/computer/shuttle_control/explore{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/oracarpet,
+/area/triumph_away/debrisfield/explored)
+"P" = (
+/obj/machinery/ion_engine{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_tile/yellow,
+/area/triumph_away/debrisfield/explored)
+"S" = (
+/turf/simulated/wall/wood,
+/area/triumph_away/debrisfield/explored)
 "W" = (
 /turf/space,
 /area/triumph_away/debrisfield/explored)
 "X" = (
 /obj/away_mission_init/debrisfield,
 /turf/space,
+/area/triumph_away/debrisfield/explored)
+"Y" = (
+/obj/structure/bed/double/padded,
+/obj/item/bedsheet/browndouble,
+/turf/simulated/floor/carpet/oracarpet,
+/area/triumph_away/debrisfield/explored)
+"Z" = (
+/obj/machinery/computer/ship/sensors,
+/turf/simulated/floor/carpet/oracarpet,
 /area/triumph_away/debrisfield/explored)
 
 (1,1,1) = {"
@@ -447,13 +654,13 @@ W
 (4,1,1) = {"
 W
 W
+S
+z
+z
+z
+S
 W
-a
-a
-a
-a
-a
-a
+W
 a
 a
 a
@@ -589,13 +796,13 @@ W
 (5,1,1) = {"
 W
 W
+z
+Z
+O
+K
+z
 W
-a
-a
-a
-a
-a
-a
+W
 a
 a
 a
@@ -731,13 +938,13 @@ W
 (6,1,1) = {"
 W
 W
+v
+o
+E
+l
+S
 W
-a
-a
-a
-a
-a
-a
+W
 a
 a
 a
@@ -873,13 +1080,13 @@ W
 (7,1,1) = {"
 W
 W
+S
+b
+E
+j
+S
 W
-a
-a
-a
-a
-a
-a
+W
 a
 a
 a
@@ -1015,13 +1222,13 @@ W
 (8,1,1) = {"
 W
 W
+z
+m
+E
+p
+S
 W
-a
-a
-a
-a
-a
-a
+W
 a
 a
 a
@@ -1157,13 +1364,13 @@ W
 (9,1,1) = {"
 W
 W
+S
+q
+E
+n
+S
 W
-a
-a
-a
-a
-a
-a
+W
 a
 a
 a
@@ -1299,13 +1506,13 @@ W
 (10,1,1) = {"
 W
 W
+v
+o
+E
+t
+S
 W
-a
-a
-a
-a
-a
-a
+W
 a
 a
 a
@@ -1441,13 +1648,13 @@ W
 (11,1,1) = {"
 W
 W
+S
+F
+E
+r
+z
 W
-a
-a
-a
-a
-a
-a
+W
 a
 a
 a
@@ -1583,13 +1790,13 @@ W
 (12,1,1) = {"
 W
 W
+S
+S
+G
+S
+S
 W
-a
-a
-a
-a
-a
-a
+W
 a
 a
 a
@@ -1725,13 +1932,13 @@ W
 (13,1,1) = {"
 W
 W
+S
+M
+u
+Y
+S
 W
-a
-a
-a
-a
-a
-a
+W
 a
 a
 a
@@ -1867,13 +2074,13 @@ W
 (14,1,1) = {"
 W
 W
+S
+w
+H
+S
+S
 W
-a
-a
-a
-a
-a
-a
+W
 a
 a
 a
@@ -2009,13 +2216,13 @@ W
 (15,1,1) = {"
 W
 W
+J
+H
+P
+S
+S
 W
-a
-a
-a
-a
-a
-a
+W
 a
 a
 a
@@ -2152,12 +2359,12 @@ W
 W
 W
 W
-a
-a
-a
-a
-a
-a
+W
+W
+W
+W
+W
+W
 a
 a
 a
@@ -2294,12 +2501,12 @@ W
 W
 W
 W
-a
-a
-a
-a
-a
-a
+W
+W
+W
+W
+W
+W
 a
 a
 a
@@ -2436,12 +2643,12 @@ W
 W
 W
 W
-a
-a
-a
-a
-a
-a
+W
+W
+W
+W
+W
+W
 a
 a
 a
