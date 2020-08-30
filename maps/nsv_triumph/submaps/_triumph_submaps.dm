@@ -71,9 +71,6 @@
 /datum/map_template/triumph_lateload/away_d_world/on_map_loaded(z)
 	. = ..()
 	seed_submaps(list(Z_LEVEL_UNKNOWN_PLANET), 150, /area/triumph_away/poi_d/unexplored, /datum/map_template/Class_D)
-	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_MININGPLANET, world.maxx - 4, world.maxy - 4) // Create the mining Z-level.
-	new /datum/random_map/noise/ore/poi_d(null, 1, 1, Z_LEVEL_MININGPLANET, 32, 32)         // Create the mining ore distribution map.
-
 	//new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, Z_LEVEL_UNKNOWN_PLANET, world.maxx - 30, world.maxy - 30)
 	//new /datum/random_map/noise/ore/poi_d(null, 1, 1, Z_LEVEL_UNKNOWN_PLANET, 64, 64)
 
