@@ -28,6 +28,7 @@
 				prob(2);/obj/item/gun/energy/ionrifle/pistol,
 				prob(3);/obj/item/gun/energy/toxgun,
 				prob(4);/obj/item/gun/energy/taser,
+				prob(4);/obj/item/gun/energy/taser/civ,
 				prob(2);/obj/item/gun/energy/crossbow/largecrossbow,
 				prob(4);/obj/item/gun/energy/stunrevolver)
 
@@ -54,6 +55,7 @@
 				prob(2);/obj/item/gun/projectile/automatic/c20r,
 				prob(2);/obj/item/gun/projectile/automatic/sts35,
 				prob(2);/obj/item/gun/projectile/automatic/z8,
+				prob(1);/obj/item/gun/projectile/automatic/fal,
 				prob(4);/obj/item/gun/projectile/colt,
 				prob(2);/obj/item/gun/projectile/deagle,
 				prob(1);/obj/item/gun/projectile/deagle/camo,
@@ -64,6 +66,7 @@
 				prob(3);/obj/item/gun/projectile/luger/brown,
 				prob(4);/obj/item/gun/projectile/sec,
 				prob(3);/obj/item/gun/projectile/sec/wood,
+				prob(4);/obj/item/gun/projectile/r9,
 				prob(4);/obj/item/gun/projectile/p92x,
 				prob(3);/obj/item/gun/projectile/p92x/brown,
 				prob(4);/obj/item/gun/projectile/pistol,
@@ -74,12 +77,16 @@
 				prob(2);/obj/item/gun/projectile/revolver/judge,
 				prob(3);/obj/item/gun/projectile/revolver/lemat,
 				prob(2);/obj/item/gun/projectile/revolver/mateba,
+				prob(2);/obj/item/gun/projectile/revolver/dirty_harry,
 				prob(4);/obj/item/gun/projectile/shotgun/doublebarrel,
 				prob(3);/obj/item/gun/projectile/shotgun/doublebarrel/sawn,
+				prob(2);/obj/item/gun/projectile/shotgun/doublebarrel/quad,
 				prob(3);/obj/item/gun/projectile/shotgun/pump,
+				prob(3);/obj/item/gun/projectile/shotgun/pump/rifle/arnold,
 				prob(2);/obj/item/gun/projectile/shotgun/pump/combat,
 				prob(4);/obj/item/gun/projectile/shotgun/pump/rifle,
 				prob(3);/obj/item/gun/projectile/shotgun/pump/rifle/lever,
+				prob(3);/obj/item/gun/projectile/shotgun/pump/rifle/win1895,
 				prob(2);/obj/item/gun/projectile/silenced)
 
 /obj/random/projectile/sec
@@ -103,6 +110,7 @@
 	return pick(prob(4);/obj/item/gun/projectile/shotgun/doublebarrel,
 				prob(3);/obj/item/gun/projectile/shotgun/doublebarrel/sawn,
 				prob(3);/obj/item/gun/projectile/shotgun/pump,
+				prob(2);/obj/item/gun/projectile/shotgun/doublebarrel/quad,
 				prob(1);/obj/item/gun/projectile/shotgun/pump/combat)
 
 /obj/random/handgun
@@ -114,6 +122,7 @@
 /obj/random/handgun/item_to_spawn()
 	return pick(prob(4);/obj/item/gun/projectile/sec,
 				prob(4);/obj/item/gun/projectile/p92x,
+				prob(4);/obj/item/gun/projectile/r9,
 				prob(3);/obj/item/gun/projectile/sec/wood,
 				prob(3);/obj/item/gun/projectile/p92x/brown,
 				prob(3);/obj/item/gun/projectile/colt,
@@ -217,7 +226,7 @@
 				/obj/item/ammo_magazine/m762
 			),
 			prob(4);list(
-				/obj/item/gun/projectile/shotgun/pump/rifle,
+				/obj/item/gun/projectile/shotgun/pump/rifle/win1895,
 				/obj/item/ammo_magazine/clip/c762,
 				/obj/item/ammo_magazine/clip/c762
 			),
@@ -306,6 +315,11 @@
 				/obj/item/ammo_magazine/m9mm,
 				/obj/item/ammo_magazine/m9mm
 			),
+			prob(5);list(
+				/obj/item/gun/projectile/r9,
+				/obj/item/ammo_magazine/c9mm,
+				/obj/item/ammo_magazine/c9mm
+			),
 			prob(4);list(
 				/obj/item/gun/projectile/p92x/brown,
 				/obj/item/ammo_magazine/m9mm,
@@ -363,6 +377,11 @@
 				/obj/item/ammo_magazine/s44,
 				/obj/item/ammo_magazine/s44
 			),
+			prob(2);list(
+				/obj/item/gun/projectile/revolver/dirty_harry,
+				/obj/item/ammo_magazine/s44,
+				/obj/item/ammo_magazine/s44
+			),
 			prob(1);list(
 				/obj/item/gun/projectile/revolver/webley/auto,
 				/obj/item/ammo_magazine/s44,
@@ -387,6 +406,13 @@
 			),
 			prob(3);list(
 				/obj/item/gun/projectile/shotgun/doublebarrel/sawn,
+				/obj/item/ammo_magazine/clip/c12g/pellet,
+				/obj/item/ammo_magazine/clip/c12g/pellet,
+				/obj/item/ammo_magazine/clip/c12g/pellet,
+				/obj/item/ammo_magazine/clip/c12g/pellet
+			),
+			prob(3);list(
+				/obj/item/gun/projectile/shotgun/doublebarrel/quad,
 				/obj/item/ammo_magazine/clip/c12g/pellet,
 				/obj/item/ammo_magazine/clip/c12g/pellet,
 				/obj/item/ammo_magazine/clip/c12g/pellet,
