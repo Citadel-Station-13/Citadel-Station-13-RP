@@ -19,6 +19,8 @@
 				prob(4);/obj/item/gun/energy/gun,
 				prob(3);/obj/item/gun/energy/gun/burst,
 				prob(1);/obj/item/gun/energy/gun/nuclear,
+				prob(1);/obj/item/gun/energy/gun/tommylaser,
+				prob(5);/obj/item/gun/energy/zip,
 				prob(2);/obj/item/gun/energy/retro,
 				prob(2);/obj/item/gun/energy/lasercannon,
 				prob(3);/obj/item/gun/energy/xray,
