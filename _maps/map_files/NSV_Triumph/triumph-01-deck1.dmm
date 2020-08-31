@@ -1013,7 +1013,7 @@
 "ex" = (
 /obj/machinery/shield_diffuser,
 /obj/structure/catwalk,
-/turf/simulated/floor/airless/ceiling,
+/turf/space,
 /area/space)
 "ey" = (
 /obj/structure/cable{
@@ -1768,7 +1768,6 @@
 	req_access = list(24);
 	use_power = 1
 	},
-/obj/structure/catwalk,
 /turf/simulated/floor/airless/ceiling,
 /area/engineering/atmos)
 "if" = (
@@ -2450,7 +2449,7 @@
 "lI" = (
 /obj/machinery/camera/network/outside,
 /obj/structure/catwalk,
-/turf/simulated/floor/airless/ceiling,
+/turf/space,
 /area/space)
 "lN" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
@@ -2851,7 +2850,7 @@
 /obj/structure/sign/warning{
 	pixel_y = -32
 	},
-/turf/simulated/floor/airless/ceiling,
+/turf/space,
 /area/space)
 "nY" = (
 /obj/structure/cable{
@@ -6508,7 +6507,7 @@
 /area/crew_quarters/heads/chief)
 "Fr" = (
 /obj/structure/catwalk,
-/turf/simulated/floor/airless/ceiling,
+/turf/space,
 /area/space)
 "Fw" = (
 /obj/structure/closet/crate/secure/engineering,
@@ -7058,7 +7057,7 @@
 "ID" = (
 /obj/structure/lattice,
 /obj/structure/catwalk,
-/turf/simulated/floor/airless/ceiling,
+/turf/space,
 /area/space)
 "IF" = (
 /obj/structure/cable/yellow{
@@ -8363,7 +8362,7 @@
 	dir = 8
 	},
 /obj/structure/catwalk,
-/turf/simulated/floor/airless/ceiling,
+/turf/space,
 /area/space)
 "Pv" = (
 /obj/structure/sign/department/telecoms,
@@ -8445,7 +8444,7 @@
 /obj/machinery/camera/network/engine{
 	dir = 9
 	},
-/turf/simulated/floor/airless/ceiling,
+/turf/space,
 /area/space)
 "PK" = (
 /obj/machinery/button/remote/blast_door{
@@ -8617,7 +8616,7 @@
 	dir = 10
 	},
 /obj/structure/catwalk,
-/turf/simulated/floor/airless/ceiling,
+/turf/space,
 /area/space)
 "Qy" = (
 /obj/machinery/power/apc{
@@ -10526,7 +10525,6 @@
 	id = "atmos_out";
 	req_access = list(24)
 	},
-/obj/structure/catwalk,
 /turf/simulated/floor/airless/ceiling,
 /area/engineering/atmos)
 "ZJ" = (
@@ -17756,8 +17754,8 @@ ho
 Vu
 zz
 zz
-Fr
-We
+Zj
+Zj
 iC
 fN
 iC
@@ -18040,8 +18038,8 @@ cA
 OC
 zz
 zz
-Fr
-We
+Zj
+Zj
 iC
 fN
 iC
@@ -18300,8 +18298,8 @@ fN
 Zj
 Zj
 Zj
-CT
-Fr
+iC
+fN
 ui
 EL
 HI
@@ -18442,8 +18440,8 @@ fN
 dX
 fN
 fN
-CT
-Fr
+iC
+kq
 ui
 Vz
 HI
@@ -20315,18 +20313,18 @@ zz
 Fr
 Fr
 Fr
-Fr
+Zj
 ZE
+Zj
 Fr
 Fr
 Fr
 Fr
 Fr
 Fr
-Fr
-Fr
+Zj
 ia
-Fr
+Zj
 Fr
 Fr
 Fr
