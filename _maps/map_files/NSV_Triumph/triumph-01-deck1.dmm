@@ -1013,7 +1013,7 @@
 "ex" = (
 /obj/machinery/shield_diffuser,
 /obj/structure/catwalk,
-/turf/simulated/floor/airless,
+/turf/simulated/floor/airless/ceiling,
 /area/space)
 "ey" = (
 /obj/structure/cable{
@@ -1081,7 +1081,7 @@
 /area/engineering/engine_eva)
 "eH" = (
 /obj/machinery/atmospherics/pipe/vent/high_volume,
-/turf/simulated/floor/airless,
+/turf/simulated/floor/airless/ceiling,
 /area/space)
 "eK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1769,7 +1769,7 @@
 	use_power = 1
 	},
 /obj/structure/catwalk,
-/turf/simulated/floor/airless,
+/turf/simulated/floor/airless/ceiling,
 /area/engineering/atmos)
 "if" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red,
@@ -2040,7 +2040,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/airless,
+/turf/simulated/floor/airless/ceiling,
 /area/space)
 "jI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -2235,7 +2235,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "kq" = (
-/turf/simulated/floor/airless,
+/turf/simulated/floor/airless/ceiling,
 /area/space)
 "kv" = (
 /obj/machinery/meter,
@@ -2450,7 +2450,7 @@
 "lI" = (
 /obj/machinery/camera/network/outside,
 /obj/structure/catwalk,
-/turf/simulated/floor/airless,
+/turf/simulated/floor/airless/ceiling,
 /area/space)
 "lN" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
@@ -2851,7 +2851,7 @@
 /obj/structure/sign/warning{
 	pixel_y = -32
 	},
-/turf/simulated/floor/airless,
+/turf/simulated/floor/airless/ceiling,
 /area/space)
 "nY" = (
 /obj/structure/cable{
@@ -3643,7 +3643,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
-/turf/simulated/floor/reinforced/airless,
+/turf/simulated/floor/airless/ceiling,
 /area/space)
 "rY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -4074,7 +4074,7 @@
 /area/triumph/station/stairs_one)
 "ue" = (
 /obj/machinery/shield_diffuser,
-/turf/simulated/floor/airless,
+/turf/simulated/floor/airless/ceiling,
 /area/space)
 "ug" = (
 /obj/structure/closet/secure_closet/engineering_electrical,
@@ -6157,7 +6157,7 @@
 "DC" = (
 /obj/effect/floor_decal/industrial/warning/cee,
 /obj/machinery/shield_diffuser,
-/turf/simulated/floor/reinforced/airless,
+/turf/simulated/floor/airless/ceiling,
 /area/space)
 "DE" = (
 /obj/effect/shuttle_landmark/triumph/deck1/starboard,
@@ -6482,7 +6482,7 @@
 /obj/machinery/atmospherics/pipe/vent/high_volume{
 	dir = 4
 	},
-/turf/simulated/floor/airless,
+/turf/simulated/floor/airless/ceiling,
 /area/space)
 "Fo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -6508,7 +6508,7 @@
 /area/crew_quarters/heads/chief)
 "Fr" = (
 /obj/structure/catwalk,
-/turf/simulated/floor/airless,
+/turf/simulated/floor/airless/ceiling,
 /area/space)
 "Fw" = (
 /obj/structure/closet/crate/secure/engineering,
@@ -7058,7 +7058,7 @@
 "ID" = (
 /obj/structure/lattice,
 /obj/structure/catwalk,
-/turf/simulated/floor/airless,
+/turf/simulated/floor/airless/ceiling,
 /area/space)
 "IF" = (
 /obj/structure/cable/yellow{
@@ -7257,7 +7257,7 @@
 /area/space)
 "JG" = (
 /obj/machinery/atmospherics/pipe/manifold4w/visible/yellow,
-/turf/simulated/floor/airless,
+/turf/simulated/floor/airless/ceiling,
 /area/space)
 "JH" = (
 /obj/machinery/floodlight,
@@ -8225,7 +8225,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
-/turf/simulated/floor/reinforced/airless,
+/turf/simulated/floor/airless/ceiling,
 /area/engineering/engine_room)
 "OP" = (
 /obj/structure/cable/cyan{
@@ -8363,7 +8363,7 @@
 	dir = 8
 	},
 /obj/structure/catwalk,
-/turf/simulated/floor/airless,
+/turf/simulated/floor/airless/ceiling,
 /area/space)
 "Pv" = (
 /obj/structure/sign/department/telecoms,
@@ -8445,7 +8445,7 @@
 /obj/machinery/camera/network/engine{
 	dir = 9
 	},
-/turf/simulated/floor/airless,
+/turf/simulated/floor/airless/ceiling,
 /area/space)
 "PK" = (
 /obj/machinery/button/remote/blast_door{
@@ -8617,7 +8617,7 @@
 	dir = 10
 	},
 /obj/structure/catwalk,
-/turf/simulated/floor/airless,
+/turf/simulated/floor/airless/ceiling,
 /area/space)
 "Qy" = (
 /obj/machinery/power/apc{
@@ -9131,7 +9131,7 @@
 	dir = 4
 	},
 /obj/machinery/shield_diffuser,
-/turf/simulated/floor/airless,
+/turf/simulated/floor/airless/ceiling,
 /area/space)
 "SV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -9340,7 +9340,7 @@
 /obj/machinery/atmospherics/pipe/vent/high_volume{
 	dir = 8
 	},
-/turf/simulated/floor/airless,
+/turf/simulated/floor/airless/ceiling,
 /area/space)
 "TT" = (
 /obj/machinery/alarm{
@@ -10527,7 +10527,7 @@
 	req_access = list(24)
 	},
 /obj/structure/catwalk,
-/turf/simulated/floor/airless,
+/turf/simulated/floor/airless/ceiling,
 /area/engineering/atmos)
 "ZJ" = (
 /obj/structure/cable/cyan{
