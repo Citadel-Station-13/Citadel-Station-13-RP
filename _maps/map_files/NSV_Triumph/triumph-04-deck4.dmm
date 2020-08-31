@@ -14549,7 +14549,8 @@
 /obj/structure/closet/secure_closet/medical_wall{
 	name = "O- Blood Locker";
 	pixel_x = 32;
-	req_access = list(5,44)
+	req_access = null;
+	req_one_access = list(5,44)
 	},
 /obj/item/reagent_containers/blood/OMinus,
 /obj/item/reagent_containers/blood/OMinus,
