@@ -308,55 +308,63 @@
 
 //send resources to the client. It's here in its own proc so we can move it around easiliy if need be
 /client/proc/send_resources()
+#if (PRELOAD_RSC == 0)
+	var/static/next_external_rsc = 0
+	var/list/external_rsc_urls = CONFIG_GET(keyed_list/external_rsc_urls)
+	if(length(external_rsc_urls))
+		next_external_rsc = WRAP(next_external_rsc+1, 1, external_rsc_urls.len+1)
+		preload_rsc = external_rsc_urls[next_external_rsc]
+#endif
 
-	getFiles(
-		'html/search.js',
-		'html/panels.css',
-		'html/images/loading.gif',
-		'html/images/ntlogo.png',
-		'html/images/sglogo.png',
-		'html/images/talisman.png',
-		'html/images/paper_bg.png',
-		'html/images/no_image32.png',
-		'icons/pda_icons/pda_atmos.png',
-		'icons/pda_icons/pda_back.png',
-		'icons/pda_icons/pda_bell.png',
-		'icons/pda_icons/pda_blank.png',
-		'icons/pda_icons/pda_boom.png',
-		'icons/pda_icons/pda_bucket.png',
-		'icons/pda_icons/pda_crate.png',
-		'icons/pda_icons/pda_cuffs.png',
-		'icons/pda_icons/pda_eject.png',
-		'icons/pda_icons/pda_exit.png',
-		'icons/pda_icons/pda_flashlight.png',
-		'icons/pda_icons/pda_honk.png',
-		'icons/pda_icons/pda_mail.png',
-		'icons/pda_icons/pda_medical.png',
-		'icons/pda_icons/pda_menu.png',
-		'icons/pda_icons/pda_mule.png',
-		'icons/pda_icons/pda_notes.png',
-		'icons/pda_icons/pda_power.png',
-		'icons/pda_icons/pda_rdoor.png',
-		'icons/pda_icons/pda_reagent.png',
-		'icons/pda_icons/pda_refresh.png',
-		'icons/pda_icons/pda_scanner.png',
-		'icons/pda_icons/pda_signaler.png',
-		'icons/pda_icons/pda_status.png',
-		'icons/spideros_icons/sos_1.png',
-		'icons/spideros_icons/sos_2.png',
-		'icons/spideros_icons/sos_3.png',
-		'icons/spideros_icons/sos_4.png',
-		'icons/spideros_icons/sos_5.png',
-		'icons/spideros_icons/sos_6.png',
-		'icons/spideros_icons/sos_7.png',
-		'icons/spideros_icons/sos_8.png',
-		'icons/spideros_icons/sos_9.png',
-		'icons/spideros_icons/sos_10.png',
-		'icons/spideros_icons/sos_11.png',
-		'icons/spideros_icons/sos_12.png',
-		'icons/spideros_icons/sos_13.png',
-		'icons/spideros_icons/sos_14.png'
-		)
+	spawn(10)
+		getFiles(
+			'html/search.js',
+			'html/panels.css',
+			'html/images/loading.gif',
+			'html/images/ntlogo.png',
+			'html/images/sglogo.png',
+			'html/images/talisman.png',
+			'html/images/paper_bg.png',
+			'html/images/no_image32.png',
+			'icons/pda_icons/pda_atmos.png',
+			'icons/pda_icons/pda_back.png',
+			'icons/pda_icons/pda_bell.png',
+			'icons/pda_icons/pda_blank.png',
+			'icons/pda_icons/pda_boom.png',
+			'icons/pda_icons/pda_bucket.png',
+			'icons/pda_icons/pda_crate.png',
+			'icons/pda_icons/pda_cuffs.png',
+			'icons/pda_icons/pda_eject.png',
+			'icons/pda_icons/pda_exit.png',
+			'icons/pda_icons/pda_flashlight.png',
+			'icons/pda_icons/pda_honk.png',
+			'icons/pda_icons/pda_mail.png',
+			'icons/pda_icons/pda_medical.png',
+			'icons/pda_icons/pda_menu.png',
+			'icons/pda_icons/pda_mule.png',
+			'icons/pda_icons/pda_notes.png',
+			'icons/pda_icons/pda_power.png',
+			'icons/pda_icons/pda_rdoor.png',
+			'icons/pda_icons/pda_reagent.png',
+			'icons/pda_icons/pda_refresh.png',
+			'icons/pda_icons/pda_scanner.png',
+			'icons/pda_icons/pda_signaler.png',
+			'icons/pda_icons/pda_status.png',
+			'icons/spideros_icons/sos_1.png',
+			'icons/spideros_icons/sos_2.png',
+			'icons/spideros_icons/sos_3.png',
+			'icons/spideros_icons/sos_4.png',
+			'icons/spideros_icons/sos_5.png',
+			'icons/spideros_icons/sos_6.png',
+			'icons/spideros_icons/sos_7.png',
+			'icons/spideros_icons/sos_8.png',
+			'icons/spideros_icons/sos_9.png',
+			'icons/spideros_icons/sos_10.png',
+			'icons/spideros_icons/sos_11.png',
+			'icons/spideros_icons/sos_12.png',
+			'icons/spideros_icons/sos_13.png',
+			'icons/spideros_icons/sos_14.png'
+			)
 
 /client/vv_edit_var(var_name, var_value)
 	switch (var_name)
