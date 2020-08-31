@@ -6077,9 +6077,9 @@
 /area/maintenance/substation/medical_science)
 "mF" = (
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/wood,
 /area/hallway/primary/aft)
@@ -17082,6 +17082,7 @@
 /area/rnd/breakroom)
 "Ix" = (
 /obj/machinery/camera/network/civilian,
+/obj/structure/closet/emcloset,
 /turf/simulated/floor/wood,
 /area/hallway/primary/aft)
 "Iy" = (
@@ -22730,10 +22731,11 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "TP" = (
-/obj/machinery/light{
-	dir = 1
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
 	},
-/obj/structure/closet/emcloset,
 /turf/simulated/floor/wood,
 /area/hallway/primary/aft)
 "TQ" = (
@@ -24046,7 +24048,8 @@
 /obj/machinery/door/window/brigdoor/westright{
 	dir = 4;
 	name = "Research Desk";
-	req_access = list(7,44)
+	req_access = null;
+	req_one_access = list(8,44)
 	},
 /obj/item/deskbell,
 /turf/simulated/floor/tiled,
@@ -33796,8 +33799,8 @@ Xn
 Xn
 Xn
 Yw
-vp
 EX
+vp
 EL
 Md
 nC
