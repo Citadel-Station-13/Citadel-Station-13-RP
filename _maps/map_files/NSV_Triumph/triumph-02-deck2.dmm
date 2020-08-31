@@ -795,7 +795,7 @@
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/airless/ceiling,
-/area/solar/aft)
+/area/solar/starboard)
 "cH" = (
 /obj/effect/floor_decal/techfloor,
 /obj/structure/cable/green{
@@ -1491,7 +1491,7 @@
 	},
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless/ceiling,
-/area/solar/aft)
+/area/solar/starboard)
 "eT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -2102,7 +2102,7 @@
 /area/crew_quarters/coffee_shop)
 "gx" = (
 /turf/simulated/wall/r_wall,
-/area/solar/aft)
+/area/solar/starboard)
 "gy" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -31
@@ -3028,7 +3028,7 @@
 "jh" = (
 /obj/structure/lattice,
 /turf/space,
-/area/solar/aft)
+/area/solar/starboard)
 "ji" = (
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/plating,
@@ -4696,7 +4696,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/airless/ceiling,
-/area/solar/aft)
+/area/solar/starboard)
 "oo" = (
 /obj/structure/sink/kitchen{
 	pixel_y = 28
@@ -5378,7 +5378,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/airless/ceiling,
-/area/solar/aft)
+/area/solar/starboard)
 "qQ" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -6145,7 +6145,7 @@
 "sY" = (
 /obj/structure/lattice,
 /turf/simulated/open,
-/area/solar/aft)
+/area/solar/starboard)
 "sZ" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -6388,7 +6388,7 @@
 "tL" = (
 /obj/machinery/camera/network/outside,
 /turf/space,
-/area/solar/aft)
+/area/solar/starboard)
 "tM" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
@@ -6440,7 +6440,7 @@
 	},
 /obj/structure/cable/yellow,
 /turf/simulated/floor/airless/ceiling,
-/area/solar/aft)
+/area/solar/starboard)
 "tU" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -7929,7 +7929,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/airless/ceiling,
-/area/solar/aft)
+/area/solar/starboard)
 "yL" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
@@ -8988,7 +8988,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/airless/ceiling,
-/area/solar/aft)
+/area/solar/starboard)
 "Cp" = (
 /obj/structure/table/rack,
 /obj/item/clothing/head/helmet/space/void/mining,
@@ -9093,7 +9093,7 @@
 	},
 /obj/structure/railing,
 /turf/space,
-/area/solar/aft)
+/area/solar/starboard)
 "CI" = (
 /turf/simulated/floor/wood,
 /area/maintenance/cargo)
@@ -9556,7 +9556,7 @@
 	dir = 10
 	},
 /turf/space,
-/area/solar/aft)
+/area/solar/starboard)
 "El" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -10066,7 +10066,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/airless/ceiling,
-/area/solar/aft)
+/area/solar/starboard)
 "FS" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -10640,7 +10640,7 @@
 /area/quartermaster/storage)
 "HF" = (
 /turf/space,
-/area/solar/aft)
+/area/solar/starboard)
 "HH" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -11124,7 +11124,7 @@
 "Jg" = (
 /obj/structure/railing,
 /turf/space,
-/area/solar/aft)
+/area/solar/starboard)
 "Jh" = (
 /obj/machinery/camera/network/civilian{
 	dir = 1
@@ -11516,7 +11516,7 @@
 /obj/machinery/power/tracker,
 /obj/structure/cable/yellow,
 /turf/simulated/floor/airless/ceiling,
-/area/solar/aft)
+/area/solar/starboard)
 "Kq" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -14665,7 +14665,7 @@
 /obj/machinery/power/solar,
 /obj/structure/cable/yellow,
 /turf/simulated/floor/airless/ceiling,
-/area/solar/aft)
+/area/solar/starboard)
 "UQ" = (
 /obj/machinery/alarm{
 	dir = 4;
