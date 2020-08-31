@@ -5721,6 +5721,8 @@
 "rR" = (
 /obj/structure/table/woodentable,
 /obj/item/reagent_scanner,
+/obj/item/paper_bin,
+/obj/item/pen,
 /turf/simulated/floor/wood,
 /area/triumph/surfacebase/bar_backroom)
 "rS" = (
@@ -9206,6 +9208,7 @@
 /obj/random/plushie,
 /obj/random/plushie,
 /obj/item/paper_bin,
+/obj/item/pen,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "Da" = (
