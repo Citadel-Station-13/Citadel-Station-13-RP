@@ -9568,6 +9568,11 @@
 /obj/item/reagent_containers/glass/bucket,
 /obj/item/reagent_containers/glass/bucket,
 /obj/item/reagent_containers/glass/bucket,
+/obj/item/clothing/gloves/botanic_leather,
+/obj/item/clothing/gloves/botanic_leather,
+/obj/item/clothing/gloves/botanic_leather,
+/obj/item/clothing/gloves/botanic_leather,
+/obj/item/clothing/gloves/botanic_leather,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "tJ" = (
@@ -11173,6 +11178,13 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/first_aid_station)
+"wS" = (
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube1"
+	},
+/turf/simulated/floor/wood,
+/area/medical/psych)
 "wT" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -15644,13 +15656,11 @@
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
 "Fy" = (
-/obj/structure/bed/chair/comfy/beige{
-	dir = 1
-	},
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/machinery/light,
+/obj/structure/closet/secure_closet/scientist,
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "Fz" = (
@@ -15822,9 +15832,7 @@
 	dir = 8;
 	pixel_x = 24
 	},
-/obj/structure/closet/crate/bin{
-	anchored = 1
-	},
+/obj/structure/closet/secure_closet/scientist,
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "FS" = (
@@ -17145,9 +17153,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/ward)
 "ID" = (
-/obj/structure/bed/chair/comfy/beige{
-	dir = 1
-	},
+/obj/structure/closet/secure_closet/scientist,
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "IF" = (
@@ -17489,13 +17495,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/rdoffice)
-"Jr" = (
-/obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
-	},
-/turf/simulated/floor/wood,
-/area/medical/psych)
 "Js" = (
 /turf/simulated/wall/r_wall,
 /area/maintenance/research)
@@ -18243,15 +18242,13 @@
 /turf/simulated/floor/plating,
 /area/maintenance/fpmaint2)
 "KS" = (
-/obj/structure/bed/chair/comfy/beige{
-	dir = 1
-	},
 /obj/machinery/camera/network/research{
 	dir = 1
 	},
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -31
 	},
+/obj/structure/closet/secure_closet/scientist,
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "KT" = (
@@ -18583,6 +18580,10 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
 	},
+/obj/item/storage/box/syringes,
+/obj/item/reagent_containers/dropper,
+/obj/item/reagent_containers/dropper,
+/obj/item/reagent_containers/dropper,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "LC" = (
@@ -19915,12 +19916,12 @@
 /area/maintenance/substation/medical_science)
 "Ok" = (
 /obj/machinery/camera/network/research,
-/obj/structure/flora/pottedplant/stoutbush,
 /obj/item/radio/intercom{
 	dir = 1;
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
+/obj/structure/closet/secure_closet/scientist,
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "Ol" = (
@@ -31157,7 +31158,7 @@ gV
 pF
 Ux
 rZ
-Jr
+wS
 kc
 nl
 gD
@@ -37390,7 +37391,7 @@ Zv
 Ok
 Rx
 tK
-Rx
+ID
 FR
 Fo
 FA
