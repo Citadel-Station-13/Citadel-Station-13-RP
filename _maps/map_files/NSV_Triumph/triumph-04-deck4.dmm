@@ -26654,7 +26654,8 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /obj/machinery/vending/medical{
-	req_access = list(5,44)
+	req_access = null;
+	req_one_access = list(5,44)
 	},
 /turf/simulated/floor/tiled/white,
 /area/triumph/station/explorer_medical)
