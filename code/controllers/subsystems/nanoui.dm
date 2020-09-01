@@ -49,7 +49,5 @@ SUBSYSTEM_DEF(nanoui)
 /datum/controller/subsystem/nanoui/proc/send_resources(client)
 	if(!subsystem_initialized)
 		return
-	spawn(10)
-		for(var/file in asset_files)
-			client << browse_rsc(file)	// send the file to the client
-			sleep(0)
+	for(var/file in asset_files)
+		client << browse_rsc(file)	// send the file to the client
