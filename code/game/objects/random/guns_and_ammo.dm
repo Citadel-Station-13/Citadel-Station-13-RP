@@ -226,6 +226,7 @@
 				/obj/item/gun/projectile/automatic/z8,
 				/obj/item/ammo_magazine/m762,
 				/obj/item/ammo_magazine/m762
+			),
 			prob(4);list(
 				/obj/item/gun/projectile/shotgun/pump/rifle,
 				/obj/item/ammo_magazine/clip/c762,
