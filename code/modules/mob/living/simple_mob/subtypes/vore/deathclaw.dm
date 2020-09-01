@@ -39,15 +39,6 @@
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/deathclaw
 
-// Activate Noms!
-/mob/living/simple_mob/vore/aggressive/deathclaw
-	vore_active = 1
-	vore_capacity = 2
-	vore_max_size = RESIZE_HUGE
-	vore_min_size = RESIZE_SMALL
-	vore_pounce_chance = 0 // Beat them into crit before eating.
-	vore_icons = SA_ICON_LIVING
-
 /* //VOREStation AI Temporary Removal
 /mob/living/simple_animal/hostile/deathclaw/Login()
 	. = ..()
