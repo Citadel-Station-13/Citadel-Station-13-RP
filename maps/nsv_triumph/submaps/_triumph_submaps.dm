@@ -34,7 +34,7 @@
 /// Away Missions
 #if AWAY_MISSION_TEST
 #include "space/debrisfield.dmm"
-#include "poi_d/Class-D.dmm"
+//#include "poi_d/Class-D.dmm"
 #endif
 
 // Debris Field Exploration Zone.
@@ -58,7 +58,7 @@
 	seed_submaps(list(Z_LEVEL_DEBRISFIELD), 125, /area/triumph_away/debrisfield/unexplored, /datum/map_template/debrisfield/)
 
 // Class D Rogue Planet Exploration Zone.
-
+/*
 #include "poi_d/_class_d.dm"
 #include "poi_d/_templates.dm"
 #include "poi_d/d_world_things.dm"
@@ -78,7 +78,7 @@
 /datum/map_z_level/triumph_lateload/away_d_world
 	name = "Away Mission - Rogue Planet"
 	z = Z_LEVEL_UNKNOWN_PLANET
-
+*/
 
 // Pirate base
 #include "space/_piratebase.dm"

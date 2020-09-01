@@ -914,13 +914,7 @@
 	id_tag = "large_escape_pod_1";
 	pixel_x = 8;
 	pixel_y = -23;
-	req_one_access = list(5)
-	},
-/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod{
-	frequency = 1380;
-	id_tag = "large_escape_pod_1";
-	pixel_x = -8;
-	pixel_y = -23;
+	req_one_access = list(5);
 	tag_door = "large_escape_pod_1_hatch"
 	},
 /turf/simulated/floor/tiled/white,
@@ -4926,14 +4920,14 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/ward)
 "kp" = (
+/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass_external{
 	frequency = 1380;
 	icon_state = "door_locked";
-	id_tag = "large_escape_pod_1_berth_hatch";
+	id_tag = "large_escape_pod_1_hatch";
 	locked = 1;
-	name = "Large Escape Pod 1"
+	name = "Emergency Airlock"
 	},
-/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/escape/medical_escape_pod_hallway)
 "kq" = (
@@ -5522,12 +5516,12 @@
 /turf/simulated/wall,
 /area/triumph/station/stairs_three)
 "lC" = (
-/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod_berth{
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
-	id_tag = "large_escape_pod_1_berth";
-	pixel_x = 26;
-	pixel_y = 27;
-	tag_door = "large_escape_pod_1_hatch"
+	id_tag = "large_escape_pod_1";
+	pixel_x = 25;
+	pixel_y = 26;
+	req_one_access = list(5)
 	},
 /turf/simulated/shuttle/floor,
 /area/shuttle/large_escape_pod1)

@@ -104,7 +104,7 @@
 /area/triumph_away/debrisfield/explored)
 "v" = (
 /obj/structure/simple_door,
-/turf/simulated/wall/wood,
+/turf/simulated/floor/wood,
 /area/triumph_away/debrisfield/explored)
 "w" = (
 /obj/structure/cable/green{
