@@ -78,7 +78,7 @@
 	icon_state = "dust4"
 	color = "#AAAAAA"
 	known = FALSE
-	start_x = 15
+	start_x = 25
 	start_y = 23
 	initial_generic_waypoints = list("triumph_excursion_debrisfield")
 
@@ -87,8 +87,8 @@
 	name = "Unidentified Planet"
 	desc = "ASdlke ERROR%%%% UNABLE TO----."
 	in_space = 0
-	start_x = 12
-	start_y = 50
+	start_x = 30
+	start_y = 20
 	icon_state = "globe"
 	color = "#88FF33"
 
@@ -97,7 +97,7 @@
 	name = "Vox Pirate Base"
 	desc = "A nest of hostiles to the company. Caution is advised."
 	in_space = 1
-	start_x = 45
+	start_x = 10
 	start_y = 50
 	known = FALSE
 	icon_state = "piratebase"
@@ -108,8 +108,8 @@
 	name = "Mineral Rich planet"
 	desc = "A planet filled with valuable minerals. No life signs currently detected on the surface."
 	in_space = 1
-	start_x = 5
-	start_y = 12
+	start_x = 25
+	start_y = 18
 	icon_state = "globe"
 	color = "#8F6E4C"
 	initial_generic_waypoints = list("mining_outpost")

@@ -34,7 +34,7 @@
 /// Away Missions
 #if AWAY_MISSION_TEST
 #include "space/debrisfield.dmm"
-//#include "poi_d/Class-D.dmm"
+#include "poi_d/Class-D.dmm"
 #endif
 
 // Debris Field Exploration Zone.

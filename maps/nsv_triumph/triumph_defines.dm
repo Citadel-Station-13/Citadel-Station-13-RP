@@ -10,7 +10,6 @@
 #define Z_LEVEL_DECK_THREE				3
 #define Z_LEVEL_DECK_FOUR				4
 #define Z_LEVEL_CENTCOM					5
-
 #define Z_LEVEL_MISC					6
 #define Z_LEVEL_SHIPS					7
 
@@ -152,8 +151,9 @@
 	lateload_z_levels = list(
 		list("Triumph - Misc","Triumph - Ships",), // Stock Triumph lateload maps
 		list("Debris Field - Z1 Space"), // Debris Field
+		list("Away Mission - Pirate Base"), // Vox Pirate Base & Mining Planet
+		list("Away Mission - Mining Planet"),//Mining planet
 		list("ExoPlanet - Z1 Planet"), // Exoplanet
-		list("Away Mission - Pirate Base","Away Mission - Mining Planet"), // Vox Pirate Base & Mining Planet
 		list("Asteroid Belt 1","Asteroid Belt 2","Asteroid Belt 3","Asteroid Belt 4")
 	)
 
