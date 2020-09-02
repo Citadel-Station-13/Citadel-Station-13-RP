@@ -33,7 +33,7 @@
 //////////////////////////////////////////////////////////////////////////////
 /// Away Missions
 #if AWAY_MISSION_TEST
-#include "space/debrisfield.dmm"
+//#include "space/debrisfield.dmm"
 #include "space/piratebase.dmm"
 #include "mining_planet/mining_planet.dmm"
 //#include "poi_d/Class-D.dmm"
