@@ -33,7 +33,7 @@
 //////////////////////////////////////////////////////////////////////////////
 /// Away Missions
 #if AWAY_MISSION_TEST
-//#include "space/debrisfield.dmm"
+#include "space/debrisfield.dmm"
 #include "space/piratebase.dmm"
 #include "mining_planet/mining_planet.dmm"
 //#include "poi_d/Class-D.dmm"
@@ -120,7 +120,7 @@
 /datum/map_template/triumph_lateload/away_mining_planet/on_map_loaded(z)
 	. = ..()
 	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_MININGPLANET, world.maxx - 4, world.maxy - 4) // Create the mining Z-level.
-	new /datum/random_map/noise/ore/mining_planet(null, 1, 1, Z_LEVEL_MININGPLANET, 32, 32)         // Create the mining ore distribution map.
+	new /datum/random_map/noise/ore/mining_planet(null, 1, 1, Z_LEVEL_MININGPLANET, 64, 64)         // Create the mining ore distribution map.
 
 
 //////////////////////////////////////////////////////////////////////////////////////
