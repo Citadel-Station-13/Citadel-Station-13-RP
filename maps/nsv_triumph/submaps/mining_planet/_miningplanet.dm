@@ -36,8 +36,8 @@
 // It will generate more rich ores because of the lower numbers than the normal one
 /datum/random_map/noise/ore/mining_planet
 	descriptor = "Mining planet mine ore distribution map"
-	deep_val = 0.7 //More riches, normal is 0.7 and 0.8
-	rare_val = 0.8
+	deep_val = 0.6 //More riches, normal is 0.7 and 0.8
+	rare_val = 0.3
 
 // The check_map_sanity proc is sometimes unsatisfied with how AMAZING our ores are
 /datum/random_map/noise/ore/mining_planet/check_map_sanity()
@@ -54,7 +54,7 @@
 		else
 			deep_count++
 	// Sanity check.
-	if(surface_count < 100)
+/*	if(surface_count < 100)
 		admin_notice("<span class='danger'>Insufficient surface minerals. Rerolling...</span>", R_DEBUG)
 		return 0
 	else if(rare_count < 50)
@@ -64,4 +64,7 @@
 		admin_notice("<span class='danger'>Insufficient deep minerals. Rerolling...</span>", R_DEBUG)
 		return 0
 	else
-		return 1
+		return 1*/
+	admin_notice("RARE COUNT [rare_count]", R_DEBUG)
+	admin_notice("SURFACE COUNT [surface_count]", R_DEBUG)
+	admin_notice("DEEP COUNT [deep_count]", R_DEBUG)
