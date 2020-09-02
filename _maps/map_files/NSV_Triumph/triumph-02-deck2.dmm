@@ -795,7 +795,7 @@
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/airless/ceiling,
-/area/solar/starboard)
+/area/space)
 "cH" = (
 /obj/effect/floor_decal/techfloor,
 /obj/structure/cable/green{
@@ -1466,11 +1466,6 @@
 /turf/simulated/floor/carpet/sblucarpet,
 /area/quartermaster/foyer)
 "eS" = (
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28
-	},
 /obj/structure/cable/yellow{
 	d2 = 2;
 	icon_state = "0-2"
@@ -1491,7 +1486,7 @@
 	},
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless/ceiling,
-/area/solar/starboard)
+/area/space)
 "eT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -2100,9 +2095,6 @@
 	},
 /turf/simulated/floor/carpet/sblucarpet,
 /area/crew_quarters/coffee_shop)
-"gx" = (
-/turf/simulated/wall/r_wall,
-/area/solar/starboard)
 "gy" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -31
@@ -4692,7 +4684,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/airless/ceiling,
-/area/solar/starboard)
+/area/space)
 "oo" = (
 /obj/structure/sink/kitchen{
 	pixel_y = 28
@@ -5374,7 +5366,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/airless/ceiling,
-/area/solar/starboard)
+/area/space)
 "qQ" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -6434,7 +6426,7 @@
 	},
 /obj/structure/cable/yellow,
 /turf/simulated/floor/airless/ceiling,
-/area/solar/starboard)
+/area/space)
 "tU" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -7923,7 +7915,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/airless/ceiling,
-/area/solar/starboard)
+/area/space)
 "yL" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
@@ -8982,7 +8974,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/airless/ceiling,
-/area/solar/starboard)
+/area/space)
 "Cp" = (
 /obj/structure/table/rack,
 /obj/item/clothing/head/helmet/space/void/mining,
@@ -10055,7 +10047,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/airless/ceiling,
-/area/solar/starboard)
+/area/space)
 "FS" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -11502,7 +11494,7 @@
 /obj/machinery/power/tracker,
 /obj/structure/cable/yellow,
 /turf/simulated/floor/airless/ceiling,
-/area/solar/starboard)
+/area/space)
 "Kq" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -14651,7 +14643,7 @@
 /obj/machinery/power/solar,
 /obj/structure/cable/yellow,
 /turf/simulated/floor/airless/ceiling,
-/area/solar/starboard)
+/area/space)
 "UQ" = (
 /obj/machinery/alarm{
 	dir = 4;
@@ -26377,7 +26369,7 @@ tA
 tA
 tA
 tA
-gx
+kD
 cG
 qP
 UP
