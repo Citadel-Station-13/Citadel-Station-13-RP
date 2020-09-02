@@ -794,7 +794,7 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
-/turf/simulated/floor/airless/ceiling,
+/turf/simulated/floor/airless,
 /area/space)
 "cH" = (
 /obj/effect/floor_decal/techfloor,
@@ -1485,7 +1485,7 @@
 	req_one_access = null
 	},
 /obj/machinery/shield_diffuser,
-/turf/simulated/floor/airless/ceiling,
+/turf/simulated/floor/airless,
 /area/space)
 "eT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -4683,7 +4683,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/airless/ceiling,
+/turf/simulated/floor/airless,
 /area/space)
 "oo" = (
 /obj/structure/sink/kitchen{
@@ -5365,7 +5365,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/airless/ceiling,
+/turf/simulated/floor/airless,
 /area/space)
 "qQ" = (
 /obj/structure/cable/green{
@@ -6425,7 +6425,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/cable/yellow,
-/turf/simulated/floor/airless/ceiling,
+/turf/simulated/floor/airless,
 /area/space)
 "tU" = (
 /obj/structure/cable/green{
@@ -7914,7 +7914,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/airless/ceiling,
+/turf/simulated/floor/airless,
 /area/space)
 "yL" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -8973,7 +8973,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/airless/ceiling,
+/turf/simulated/floor/airless,
 /area/space)
 "Cp" = (
 /obj/structure/table/rack,
@@ -10046,7 +10046,7 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/airless/ceiling,
+/turf/simulated/floor/airless,
 /area/space)
 "FS" = (
 /obj/structure/grille,
@@ -11493,7 +11493,7 @@
 "Kp" = (
 /obj/machinery/power/tracker,
 /obj/structure/cable/yellow,
-/turf/simulated/floor/airless/ceiling,
+/turf/simulated/floor/airless,
 /area/space)
 "Kq" = (
 /obj/structure/cable/green{
@@ -14642,7 +14642,7 @@
 "UP" = (
 /obj/machinery/power/solar,
 /obj/structure/cable/yellow,
-/turf/simulated/floor/airless/ceiling,
+/turf/simulated/floor/airless,
 /area/space)
 "UQ" = (
 /obj/machinery/alarm{
@@ -23962,9 +23962,9 @@ Ed
 Ed
 Ed
 Ed
+kD
 Ed
-Ed
-Ed
+kD
 Ed
 Ed
 Ed
@@ -28506,9 +28506,9 @@ Ed
 Ed
 Ed
 Ed
+kD
 Ed
-Ed
-Ed
+kD
 Ed
 Ed
 Ed
