@@ -4125,6 +4125,7 @@
 /area/maintenance/central)
 "dtl" = (
 /obj/structure/table/woodentable,
+/obj/item/instrument/guitar,
 /turf/simulated/floor/wood,
 /area/triumph/station/explorer_meeting)
 "dtH" = (
@@ -9037,6 +9038,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/bridge/hallway)
+"hmM" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 4
+	},
+/obj/structure/table/bench/wooden,
+/obj/item/instrument/harmonica,
+/turf/simulated/floor/wood,
+/area/hydroponics/garden)
 "hnj" = (
 /obj/machinery/vending/giftvendor,
 /turf/simulated/floor/tiled,
@@ -29014,7 +29023,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/flora/pottedplant/unusual,
+/obj/item/instrument/violin/golden,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_4{
 	name = "\improper Research Director's Dorm"
@@ -40216,7 +40225,7 @@ hhP
 mIQ
 hSZ
 wXT
-qFS
+hmM
 dfZ
 xal
 wfJ
