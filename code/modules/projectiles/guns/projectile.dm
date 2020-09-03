@@ -9,7 +9,7 @@
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	w_class = ITEMSIZE_NORMAL
 	matter = list(DEFAULT_WALL_MATERIAL = 1000)
-	recoil = 1
+	recoil = 0
 	projectile_type = /obj/item/projectile/bullet/pistol/strong	//Only used for chameleon guns
 
 	var/caliber = ".357"		//determines which casings will fit
