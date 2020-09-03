@@ -3611,7 +3611,6 @@
 #include "modular_citadel\code\modules\vore\lick_wounds.dm"
 #include "modular_citadel\code\modules\vore\appearance\leaf.dm"
 #include "modular_citadel\code\modules\vore\eating\living_vr.dm"
-#include "modular_citadel\code\modules\vore\fluffstuff\custom_clothes_vr.dm"
 #include "modular_citadel\code\modules\vore\fluffstuff\custom_items_cit.dm"
 #include "modular_citadel\code\modules\vore\fluffstuff\guns\nsfw.dm"
 #include "modular_citadel\code\modules\vore\fluffstuff\guns\protector.dm"
