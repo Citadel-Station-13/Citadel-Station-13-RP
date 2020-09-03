@@ -171,7 +171,7 @@
 	contains = list(/obj/item/gun/projectile/caseless/usmc,
 		/obj/item/ammo_magazine/m10x24mm/small = 2
 		)
-	cost = 200
+	cost = 150
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = " United Sol Marine Corps Surplus Crate"
 	access = access_armory
