@@ -173,9 +173,9 @@
 	force = 10
 	w_class = ITEMSIZE_LARGE
 	slot_flags = SLOT_BACK
-	force_divisor = 0.25 			// 6 when wielded with hardness 30 (glass)
+	force_divisor = 0.35 			// 10 when wielded with hardness 30 (glass)
 	unwielded_force_divisor = 0.1
-	thrown_force_divisor = 1 		// 15 when thrown with weight 15 (glass)
+	thrown_force_divisor = 1.5		// 22.5 when thrown with weight 15 (glass)
 	throw_speed = 5
 	edge = 0
 	sharp = 1
