@@ -192,20 +192,13 @@
 /turf/simulated/floor/tiled/white,
 /area/security/security_bathroom)
 "ajj" = (
-/obj/structure/window/phoronreinforced{
-	dir = 8;
-	icon_state = "phoronrwindow"
-	},
-/obj/structure/window/phoronreinforced/full,
-/obj/structure/grille,
-/obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "bridge_lockdown";
-	name = "Bridge Lockdown"
-	},
-/turf/simulated/shuttle/floor/voidcraft,
-/area/bridge)
+/obj/structure/bookcase/legal/combo,
+/obj/item/book/manual/legal/sop_vol1,
+/obj/item/book/manual/legal/sop_vol2,
+/obj/item/book/manual/legal/sop_vol3,
+/obj/item/book/manual/legal/sop_vol4,
+/turf/simulated/floor/wood,
+/area/library)
 "akM" = (
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/ai_status_display{
@@ -1323,10 +1316,16 @@
 /turf/simulated/floor/water/pool,
 /area/triumph/surfacebase/sauna)
 "bfs" = (
-/obj/structure/bookcase,
+/obj/structure/bookcase/legal/combo,
 /obj/item/book/manual/command_guide,
 /obj/item/book/manual/standard_operating_procedure,
 /obj/item/book/manual/security_space_law,
+/obj/item/book/manual/legal/cr_vol1,
+/obj/item/book/manual/legal/cr_vol2,
+/obj/item/book/manual/legal/cr_vol3,
+/obj/item/book/manual/legal/cr_vol5,
+/obj/item/book/manual/legal/sop_vol1,
+/obj/item/book/manual/legal/sop_vol2,
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "bfy" = (
@@ -3561,6 +3560,14 @@
 	},
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
+"cSW" = (
+/obj/structure/bookcase/legal/combo,
+/obj/item/book/manual/legal/sop_vol5_1,
+/obj/item/book/manual/legal/sop_vol5_2,
+/obj/item/book/manual/legal/sop_vol5_3,
+/obj/item/book/manual/legal/sop_vol5_4,
+/turf/simulated/floor/wood,
+/area/library)
 "cTz" = (
 /obj/structure/extinguisher_cabinet{
 	dir = 1;
@@ -5016,7 +5023,8 @@
 	density = 0;
 	icon_state = "pdoor0";
 	id = "bridge_lockdown";
-	name = "Bridge Lockdown"
+	name = "Bridge Lockdown";
+	opacity = 0
 	},
 /turf/simulated/floor/plating,
 /area/bridge)
@@ -17100,6 +17108,13 @@
 /obj/effect/floor_decal/corner/green/border{
 	dir = 8
 	},
+/obj/machinery/button/remote/blast_door{
+	id = "armorytactical";
+	name = "Tactical Armory Access";
+	pixel_x = -27;
+	pixel_y = -25;
+	req_access = list(3)
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "nwJ" = (
@@ -22101,7 +22116,8 @@
 	density = 0;
 	icon_state = "pdoor0";
 	id = "bridge_lockdown";
-	name = "Bridge Lockdown"
+	name = "Bridge Lockdown";
+	opacity = 0
 	},
 /turf/simulated/floor/plating,
 /area/bridge)
@@ -22659,9 +22675,12 @@
 /turf/simulated/floor/tiled,
 /area/security/checkpoint2)
 "rsR" = (
-/obj/structure/bookcase{
-	name = "bookcase (Adult)"
-	},
+/obj/structure/bookcase/legal/combo,
+/obj/item/book/manual/legal/cr_vol1,
+/obj/item/book/manual/legal/cr_vol2,
+/obj/item/book/manual/legal/cr_vol3,
+/obj/item/book/manual/legal/cr_vol4,
+/obj/item/book/manual/legal/cr_vol5,
 /turf/simulated/floor/wood,
 /area/library)
 "rtF" = (
@@ -23205,18 +23224,17 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/obj/structure/bookcase,
-/obj/item/book/manual/standard_operating_procedure,
-/obj/item/book/manual/standard_operating_procedure,
-/obj/item/book/manual/security_space_law,
-/obj/item/book/manual/security_space_law,
-/obj/item/book/manual/command_guide,
-/obj/item/book/manual/command_guide,
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/structure/bookcase/legal/corpreg,
+/obj/item/book/manual/legal/cr_vol1,
+/obj/item/book/manual/legal/cr_vol2,
+/obj/item/book/manual/legal/cr_vol3,
+/obj/item/book/manual/legal/cr_vol4,
+/obj/item/book/manual/legal/cr_vol5,
 /turf/simulated/floor/wood,
 /area/lawoffice)
 "rMZ" = (
@@ -23640,6 +23658,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/security_port)
+"sfA" = (
+/obj/structure/bookcase/legal/combo,
+/obj/item/book/manual/legal/sop_vol5_5,
+/obj/item/book/manual/legal/sop_vol5_6,
+/obj/item/book/manual/legal/sop_vol5_7,
+/turf/simulated/floor/wood,
+/area/library)
 "sfN" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass_external{
@@ -27328,10 +27353,11 @@
 /area/hallway/secondary/civilian_hallway_mid)
 "uZT" = (
 /obj/structure/table/reinforced,
-/obj/item/book/codex,
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/item/book/manual/legal/sop_vol2,
+/obj/item/book/manual/legal/sop_vol1,
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "vaq" = (
@@ -27913,6 +27939,18 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/structure/bookcase/legal/sop,
+/obj/item/book/manual/legal/sop_vol1,
+/obj/item/book/manual/legal/sop_vol2,
+/obj/item/book/manual/legal/sop_vol3,
+/obj/item/book/manual/legal/sop_vol4,
+/obj/item/book/manual/legal/sop_vol5_1,
+/obj/item/book/manual/legal/sop_vol5_2,
+/obj/item/book/manual/legal/sop_vol5_3,
+/obj/item/book/manual/legal/sop_vol5_4,
+/obj/item/book/manual/legal/sop_vol5_5,
+/obj/item/book/manual/legal/sop_vol5_6,
+/obj/item/book/manual/legal/sop_vol5_7,
 /turf/simulated/floor/wood,
 /area/lawoffice)
 "vuL" = (
@@ -39214,7 +39252,7 @@ vcE
 bra
 cgH
 wcm
-rsR
+ajj
 wFO
 mMK
 gee
@@ -39356,7 +39394,7 @@ agH
 sTa
 cgH
 wcm
-rsR
+cSW
 wFO
 jjh
 riS
@@ -39498,7 +39536,7 @@ vcE
 cVO
 cgH
 ixL
-rsR
+sfA
 wFO
 uEJ
 wFO
@@ -50171,7 +50209,7 @@ nIK
 duy
 duy
 vde
-ajj
+vde
 vde
 vde
 vde
