@@ -2632,7 +2632,7 @@
 	name = "The Outlaw"
 	id = "theoutlaw"
 	result = "theoutlaw"
-	required_reagents = list("tequila" = 3, "gold" = 1, "bitters" = 1)
+	required_reagents = list("vodka" = 3, "gold" = 1, "bitters" = 1)
 	result_amount = 5
 
 /datum/chemical_reaction/drinks/thelawman

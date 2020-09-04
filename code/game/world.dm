@@ -25,8 +25,6 @@ GLOBAL_LIST(topic_status_cache)
 
 	log_world("World loaded at [TIME_STAMP("hh:mm:ss", FALSE)]!")
 
-	SetupExternalRsc()
-
 	var/tempfile = "data/logs/config_error.[GUID()].log"	//temporary file used to record errors with loading config, moved to log directory once logging is set
 	GLOB.config_error_log = GLOB.world_href_log = GLOB.world_runtime_log = GLOB.world_map_error_log = GLOB.world_attack_log = GLOB.world_game_log = tempfile
 
@@ -115,17 +113,6 @@ GLOBAL_LIST(topic_status_cache)
 	TgsNew(new /datum/tgs_event_handler/impl, TGS_SECURITY_TRUSTED)
 	GLOB.revdata.load_tgs_info()
 	GLOB.tgs_initialized = TRUE
-
-/world/proc/SetupExternalRsc()
-#if (PRELOAD_RSC == 0)
-	GLOB.external_rsc_urls = world.file2list("[global.config_legacy.directory]/external_rsc_urls.txt","\n")
-	var/i=1
-	while(i<=GLOB.external_rsc_urls.len)
-		if(GLOB.external_rsc_urls[i])
-			i++
-		else
-			GLOB.external_rsc_urls.Cut(i,i+1)
-#endif
 
 /world/proc/SetupLogs()
 	var/override_dir = params[OVERRIDE_LOG_DIRECTORY_PARAMETER]
