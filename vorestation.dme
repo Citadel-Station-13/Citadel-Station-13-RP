@@ -330,6 +330,7 @@
 #include "code\datums\browser\listpicker.dm"
 #include "code\datums\browser\preflikepicker.dm"
 #include "code\datums\components\_component.dm"
+#include "code\datums\components\anti_magic.dm"
 #include "code\datums\components\orbiter.dm"
 #include "code\datums\elements\_element.dm"
 #include "code\datums\elements\persistence.dm"
