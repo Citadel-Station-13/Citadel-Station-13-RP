@@ -868,6 +868,37 @@
 	icon_state = "turtleneck"
 	worn_state = "turtleneck"
 
+//And this is where the real game begins
+/obj/item/clothing/under/future_fashion_dark_blue_striped
+	name = "Futuristic Dark Blue-Striped Jumpsuit"
+	desc = "Show your love for the fasion of today viewed through the lens of yesterday! All come in black, but this one has dark blue stripes."
+	icon_state = "future_fashion_dark_blue"
+
+/obj/item/clothing/under/future_fashion_green_striped
+	name = "Futuristic Green-Striped Jumpsuit"
+	desc = "Show your love for the fasion of today viewed through the lens of yesterday! All come in black, but this one has green stripes."
+	icon_state = "future_fashion_green"
+
+/obj/item/clothing/under/future_fashion_light_blue_striped
+	name = "Futuristic Light Blue-Striped Jumpsuit"
+	desc = "Show your love for the fasion of today viewed through the lens of yesterday! All come in black, but this one has light blue stripes."
+	icon_state = "future_fashion_light_blue"
+
+/obj/item/clothing/under/future_fashion_orange_striped
+	name = "Futuristic Orange-Striped Jumpsuit"
+	desc = "Show your love for the fasion of today viewed through the lens of yesterday! All come in black, but this one has orange-brownish stripes."
+	icon_state = "future_fashion_orange"
+
+/obj/item/clothing/under/future_fashion_purple_striped
+	name = "Futuristic Purple-Striped Jumpsuit"
+	desc = "Show your love for the fasion of today viewed through the lens of yesterday! All come in black, but this one has purple stripes."
+	icon_state = "future_fashion_purple"
+
+/obj/item/clothing/under/future_fashion_red_striped
+	name = "Futuristic Red-Striped Jumpsuit"
+	desc = "Show your love for the fasion of today viewed through the lens of yesterday! All come in black, but this one has red stripes."
+	icon_state = "future_fashion_red"
+
 //Uniforms end above here.
 
 /obj/item/clothing/under/medigown
@@ -951,7 +982,6 @@
 /obj/item/clothing/under/color/ranger/yellow
 	unicolor = "yellow"
 
-// April 2020 - Drof's Additions Begin Below
 /obj/item/clothing/under/haltertop
 	name = "halter top"
 	desc = "A black halter top with denim jean shorts."

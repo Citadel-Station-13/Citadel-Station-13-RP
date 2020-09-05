@@ -395,6 +395,17 @@
 	name = "slim fit sweater"
 	desc = "A slim fit sweater! It seems robust."
 	icon_state = "syndicatesweater"
+
+/obj/item/clothing/accessory/sweater/shoulderless
+	name = "Shoulderless Sweater"
+	desc = "A plush sweater that doesn't cover the shoulders."
+	icon_state = "sweater_shoulderless"
+
+/obj/item/clothing/accessory/sweater/star
+	name = "Star Sweater"
+	desc = "A white long sweater with a big yellow star at the chest. It seems like it's made of a soft material."
+	icon_state = "star_sweater"
+
 //***
 // End of sweaters
 //***
