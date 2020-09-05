@@ -8,13 +8,13 @@
 	tt_desc = "NULL"
 	icon = 'icons/mob/cult.dmi'
 	icon_state = "initiate"
+	faction = "cult"
 
 /mob/living/simple_mob/humanoid/cultist/human
 	name = "cultist"
 	desc = "A fanatical zealot armed with a darkly colored sword."
 	icon_state = "cultist"
 	icon_living = "cultist"
-	faction = "cult"
 
 	status_flags = 0
 
