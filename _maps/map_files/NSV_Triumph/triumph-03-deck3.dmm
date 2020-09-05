@@ -11344,7 +11344,6 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/autolathe,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
@@ -11355,6 +11354,9 @@
 	dir = 1;
 	name = "Station Intercom (General)";
 	pixel_y = 26
+	},
+/obj/machinery/autolathe{
+	hacked = 1
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/reception_desk)
