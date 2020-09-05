@@ -12,52 +12,52 @@
 
 /datum/overmap_event/meteor
 	name = "asteroid field"
-	count = 15
+	count = 10
 	radius = 4
 	continuous = FALSE
 	hazards = /obj/effect/overmap/event/meteor
 
 /datum/overmap_event/electric
 	name = "electrical storm"
-	count = 11
+	count = 20
 	radius = 3
 	hazards = /obj/effect/overmap/event/electric
 
 /datum/overmap_event/dust
 	name = "dust cloud"
-	count = 16
+	count = 40
 	radius = 4
 	hazards = /obj/effect/overmap/event/dust
 
 /datum/overmap_event/ion
 	name = "ion cloud"
-	count = 8
+	count = 20
 	radius = 3
 	hazards = /obj/effect/overmap/event/ion
 
 /datum/overmap_event/carp
 	name = "carp shoal"
-	count = 8
+	count = 20
 	radius = 3
 	continuous = FALSE
 	hazards = /obj/effect/overmap/event/carp
 
 /datum/overmap_event/event/carp_heavy
 	name = "carp school"
-	count = 5
+	count = 20
 	radius = 4
 	continuous = FALSE
 	hazards = /obj/effect/overmap/event/carp_heavy
 
 /datum/overmap_event/hostile_migration
 	name = "hostile lifesigns"
-	count = 4
-	radius = 4
+	count = 12
+	radius = 2
 	continuous = FALSE
 	hazards = /obj/effect/overmap/event/hostile_migration
 
 /datum/overmap_event/communications_blackout
 	name = "Ionspheric Bubble"
-	count = 3
-	radius = 3
+	count = 12
+	radius = 2
 	hazards = /obj/effect/overmap/event/communications_blackout
