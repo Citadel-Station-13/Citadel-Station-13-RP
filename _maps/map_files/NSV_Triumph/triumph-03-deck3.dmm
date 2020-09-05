@@ -6659,14 +6659,6 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
-"nO" = (
-/obj/machinery/alarm{
-	frequency = 1441;
-	pixel_y = 22
-	},
-/obj/machinery/portable_atmospherics/canister/nitrogen,
-/turf/simulated/floor/tiled,
-/area/rnd/storage)
 "nP" = (
 /obj/machinery/door/firedoor,
 /obj/structure/window/reinforced{
@@ -11725,6 +11717,10 @@
 "xY" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/machinery/light/small,
+/obj/machinery/alarm{
+	dir = 1;
+	pixel_y = -22
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/storage)
 "xZ" = (
@@ -33923,7 +33919,7 @@ Ml
 Kp
 dI
 ET
-nO
+cJ
 Bc
 hV
 Ng
