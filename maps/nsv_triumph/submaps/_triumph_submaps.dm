@@ -15,7 +15,6 @@
 /datum/map_z_level/triumph_lateload/misc
 	name = "Misc"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_SEALED
-	z = Z_LEVEL_MISC
 
 /datum/map_template/triumph_lateload/triumph_ships
 	name = "Triumph - Ships"
@@ -36,10 +35,11 @@
 #include "space/debrisfield.dmm"
 #include "space/piratebase.dmm"
 #include "mining_planet/mining_planet.dmm"
-#include "poi_d/Class-D.dmm"
+#include "poi_d/Class_D.dmm"
+#include "poi_h/Class_H.dmm"
 #endif
 
-// Debris Field Exploration Zone.
+// Debris Fields
 #include "space/_debrisfield.dm"
 #include "space/_templates.dm"
 #include "space/debrisfield_things.dm"
@@ -59,29 +59,6 @@
 	. = ..()
 	seed_submaps(list(Z_LEVEL_DEBRISFIELD), 125, /area/triumph_away/debrisfield/unexplored, /datum/map_template/debrisfield/)
 
-// Class D Rogue Planet Exploration Zone.
-
-#include "poi_d/_class_d.dm"
-#include "poi_d/_templates.dm"
-#include "poi_d/d_world_things.dm"
-/datum/map_template/triumph_lateload/away_d_world
-	name = "ExoPlanet - Z1 Planet"
-	desc = "A random unknown planet."
-	mappath = 'poi_d/Class-D.dmm'
-	associated_map_datum = /datum/map_z_level/triumph_lateload/away_d_world
-	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
-
-/datum/map_template/triumph_lateload/away_d_world/on_map_loaded(z)
-	. = ..()
-	seed_submaps(list(Z_LEVEL_UNKNOWN_PLANET), 150, /area/triumph_away/poi_d/unexplored, /datum/map_template/Class_D)
-	//new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, Z_LEVEL_UNKNOWN_PLANET, world.maxx - 30, world.maxy - 30)
-	//new /datum/random_map/noise/ore/poi_d(null, 1, 1, Z_LEVEL_UNKNOWN_PLANET, 64, 64)
-
-/datum/map_z_level/triumph_lateload/away_d_world
-	name = "Away Mission - Rogue Planet"
-	z = Z_LEVEL_UNKNOWN_PLANET
-
-
 // Pirate base
 #include "space/_piratebase.dm"
 #include "space/piratebase_things.dm"
@@ -97,10 +74,8 @@
 	name = "Away Mission - Pirate Base"
 	z = Z_LEVEL_PIRATEBASE
 
-
 /datum/map_template/triumph_lateload/away_piratebase/on_map_loaded(z)
 	. = ..()
-
 
 // Mining Planet
 #include "mining_planet/_miningplanet.dm"
@@ -120,8 +95,51 @@
 /datum/map_template/triumph_lateload/away_mining_planet/on_map_loaded(z)
 	. = ..()
 	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_MININGPLANET, world.maxx - 4, world.maxy - 4) // Create the mining Z-level.
-	new /datum/random_map/noise/ore/mining_planet(null, 1, 1, Z_LEVEL_MININGPLANET, 64, 64)         // Create the mining ore distribution map.
+	new /datum/random_map/noise/ore/mining_planet(null, 1, 1, Z_LEVEL_MININGPLANET, 48, 48)         // Create the mining ore distribution map.
 
+// Class D Rogue Planet Exploration Zone.
+#include "poi_d/_class_d.dm"
+#include "poi_d/_templates.dm"
+#include "poi_d/d_world_things.dm"
+/datum/map_template/triumph_lateload/away_d_world
+	name = "ExoPlanet - Z1 Planet"
+	desc = "A random unknown planet."
+	mappath = 'poi_d/Class_D.dmm'
+	associated_map_datum = /datum/map_z_level/triumph_lateload/away_d_world
+	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
+
+/datum/map_template/triumph_lateload/away_d_world/on_map_loaded(z)
+	. = ..()
+	seed_submaps(list(Z_LEVEL_UNKNOWN_PLANET), 150, /area/triumph_away/poi_d/unexplored, /datum/map_template/Class_D)
+
+	//new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, Z_LEVEL_UNKNOWN_PLANET, world.maxx - 30, world.maxy - 30)
+	//new /datum/random_map/noise/ore/poi_d(null, 1, 1, Z_LEVEL_UNKNOWN_PLANET, 64, 64)
+
+/datum/map_z_level/triumph_lateload/away_d_world
+	name = "Away Mission - Rogue Planet"
+	z = Z_LEVEL_UNKNOWN_PLANET
+
+// Class H Desert Planet Exploration Zone.
+#include "poi_h/_class_h.dm"
+#include "poi_h/_templates.dm"
+#include "poi_h/h_world_things.dm"
+/datum/map_template/triumph_lateload/away_h_world
+	name = "ExoPlanet - Z2 Planet"
+	desc = "A random unknown planet."
+	mappath = 'poi_h/Class_H.dmm'
+	associated_map_datum = /datum/map_z_level/triumph_lateload/away_h_world
+	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
+
+/datum/map_template/triumph_lateload/away_h_world/on_map_loaded(z)
+	. = ..()
+	seed_submaps(list(Z_LEVEL_DESERT_PLANET), 150, /area/triumph_away/poi_h/unexplored, /datum/map_template/Class_H)
+
+	//new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, Z_LEVEL_UNKNOWN_PLANET, world.maxx - 30, world.maxy - 30)
+	//new /datum/random_map/noise/ore/poi_d(null, 1, 1, Z_LEVEL_UNKNOWN_PLANET, 64, 64)
+
+/datum/map_z_level/triumph_lateload/away_h_world
+	name = "Away Mission - Desert Planet"
+	z = Z_LEVEL_DESERT_PLANET
 
 //////////////////////////////////////////////////////////////////////////////////////
 // Admin-use z-levels for loading whenever an admin feels like
@@ -275,7 +293,7 @@
 				my_mob.max_tox = gaslist[/datum/gas/phoron] * 1.2
 				my_mob.max_n2 = gaslist[/datum/gas/nitrogen] * 1.2
 				my_mob.max_co2 = gaslist[/datum/gas/carbon_dioxide] * 1.2
-/* // AI TEMPORARY REMOVAL
+/* //VORESTATION AI TEMPORARY REMOVAL
 		if(guard)
 			my_mob.returns_home = TRUE
 			my_mob.wander_distance = guard

@@ -92,6 +92,15 @@
 	icon_state = "globe"
 	color = "#88FF33"
 
+/obj/effect/overmap/visitable/sector/class_h
+	name = "Unidentified Planet"
+	desc = "Planet readings indicate light atmosphere and high heat."
+	in_space = 0
+	start_x = 30
+	start_y = 55
+	icon_state = "globe"
+	color = "#BA9066"
+
 
 /obj/effect/overmap/visitable/sector/pirate_base
 	name = "Vox Pirate Base"

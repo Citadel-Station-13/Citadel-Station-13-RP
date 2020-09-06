@@ -15,6 +15,18 @@
 /obj/away_mission_init/poi_d/Initialize()
 	return INITIALIZE_HINT_QDEL
 
+/area/triumph_away/poi_d/POIs/ship
+	name = "Crashed Ship Fragment"
+	base_turf = /turf/simulated/mineral/floor/vacuum
+
+/area/triumph_away/poi_d/explored
+	name = "Class D World - Explored (E)"
+	icon_state = "explored"
+
+/area/triumph_away/poi_d/unexplored
+	name = "Class D World - Unexplored (UE)"
+	icon_state = "unexplored"
+
 // Class D world areas
 /area/triumph_away/poi_d
 	name = "Class D World"
@@ -56,14 +68,3 @@
 	name = "Prefab Reactor"
 	base_turf = /turf/simulated/mineral/floor/vacuum
 
-/area/triumph_away/poi_d/POIs/ship
-	name = "Crashed Ship Fragment"
-	base_turf = /turf/simulated/mineral/floor/vacuum
-
-/area/triumph_away/poi_d/explored
-	name = "Class D World - Explored (E)"
-	icon_state = "explored"
-
-/area/triumph_away/poi_d/unexplored
-	name = "Class D World - Unexplored (UE)"
-	icon_state = "unexplored"

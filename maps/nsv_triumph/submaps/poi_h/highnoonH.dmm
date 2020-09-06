@@ -1,0 +1,69 @@
+"a" = (/turf/simulated/floor/beach/sand/desert/classh,/area/triumph_away/poi_h/explored)
+"b" = (/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 4},/obj/structure/bed/pod,/turf/simulated/floor/wood,/area/triumph_away/poi_h/POIs/WW_Town)
+"c" = (/obj/structure/bed/chair/wood,/mob/living/simple_mob/humanoid/merc/ranged/poi,/turf/simulated/floor/wood/classh,/area/triumph_away/poi_h/POIs/WW_Town)
+"d" = (/turf/simulated/floor/wood,/area/triumph_away/poi_h/POIs/WW_Town)
+"e" = (/obj/structure/table/woodentable,/obj/item/clothing/accessory/badge/sheriff,/turf/simulated/floor/wood,/area/triumph_away/poi_h/POIs/WW_Town)
+"f" = (/obj/structure/closet/wardrobe/white,/turf/simulated/floor/wood,/area/triumph_away/poi_h/POIs/WW_Town)
+"g" = (/obj/structure/table/woodentable,/turf/simulated/floor/wood/classh,/area/triumph_away/poi_h/POIs/WW_Town)
+"h" = (/turf/simulated/wall/wood,/area/triumph_away/poi_h/POIs/WW_Town)
+"i" = (/obj/structure/closet/wardrobe/red,/turf/simulated/floor/wood,/area/triumph_away/poi_h/POIs/WW_Town)
+"j" = (/obj/machinery/door/window/holowindoor,/turf/simulated/floor/wood,/area/triumph_away/poi_h/POIs/WW_Town)
+"k" = (/obj/item/moneybag/vault,/turf/simulated/floor/wood/classh,/area/triumph_away/poi_h/POIs/WW_Town)
+"l" = (/obj/structure/table/woodentable,/obj/random/firstaid,/obj/random/firstaid,/turf/simulated/floor/wood/classh,/area/triumph_away/poi_h/POIs/WW_Town)
+"m" = (/obj/structure/simple_door/wood,/turf/simulated/floor/wood/classh,/area/triumph_away/poi_h/POIs/WW_Town)
+"n" = (/obj/structure/table/woodentable,/obj/item/rig/merc/empty,/turf/simulated/floor/wood/classh,/area/triumph_away/poi_h/POIs/WW_Town)
+"o" = (/obj/structure/table/gamblingtable,/obj/item/deck/cards,/obj/random/cash,/obj/random/cash,/obj/random/cash,/obj/random/cash,/obj/random/cash,/obj/random/cash,/obj/random/cash,/turf/simulated/floor/wood/classh,/area/triumph_away/poi_h/POIs/WW_Town)
+"p" = (/obj/structure/simple_door/wood,/turf/simulated/floor/wood,/area/triumph_away/poi_h/POIs/WW_Town)
+"q" = (/obj/structure/table/rack/shelf,/obj/random/toolbox,/turf/simulated/floor/wood/classh,/area/triumph_away/poi_h/POIs/WW_Town)
+"r" = (/obj/structure/reagent_dispensers/beerkeg,/turf/simulated/floor/wood/classh,/area/triumph_away/poi_h/POIs/WW_Town)
+"s" = (/obj/structure/table/woodentable,/turf/simulated/floor/wood,/area/triumph_away/poi_h/POIs/WW_Town)
+"t" = (/obj/structure/bed/padded,/obj/effect/landmark/corpse/syndicatesoldier,/turf/simulated/floor/wood/classh,/area/triumph_away/poi_h/POIs/WW_Town)
+"u" = (/obj/structure/table/woodentable,/obj/machinery/chemical_dispenser/bar_alc/full,/turf/simulated/floor/wood/classh,/area/triumph_away/poi_h/POIs/WW_Town)
+"v" = (/obj/structure/bed/double,/turf/simulated/floor/wood/classh,/area/triumph_away/poi_h/POIs/WW_Town)
+"w" = (/obj/machinery/vending/boozeomat,/turf/simulated/floor/wood/classh,/area/triumph_away/poi_h/POIs/WW_Town)
+"x" = (/obj/structure/closet/wardrobe/grey,/turf/simulated/floor/wood,/area/triumph_away/poi_h/POIs/WW_Town)
+"y" = (/obj/structure/table/bench/wooden,/mob/living/simple_mob/humanoid/merc/melee/poi,/turf/simulated/floor/wood/classh,/area/triumph_away/poi_h/POIs/WW_Town)
+"z" = (/mob/living/simple_mob/humanoid/merc/ranged/smg,/turf/simulated/floor/wood/classh,/area/triumph_away/poi_h/POIs/WW_Town)
+"A" = (/mob/living/simple_mob/humanoid/merc/ranged/poi,/turf/simulated/floor/wood/classh,/area/triumph_away/poi_h/POIs/WW_Town)
+"B" = (/obj/structure/table/rack/shelf,/obj/item/gun/projectile/shotgun/pump/rifle,/turf/simulated/floor/wood,/area/triumph_away/poi_h/POIs/WW_Town)
+"C" = (/mob/living/simple_mob/humanoid/merc/ranged/grenadier/poi,/turf/simulated/floor/wood/classh,/area/triumph_away/poi_h/POIs/WW_Town)
+"D" = (/turf/simulated/floor/outdoors/dirt,/area/triumph_away/poi_h/POIs/WW_Town)
+"E" = (/obj/structure/largecrate,/turf/simulated/floor/wood/classh,/area/triumph_away/poi_h/POIs/WW_Town)
+"F" = (/obj/structure/table/woodentable,/obj/item/storage/box/shotgunshells,/obj/item/storage/box/shotgunshells,/turf/simulated/floor/wood/classh,/area/triumph_away/poi_h/POIs/WW_Town)
+"G" = (/obj/structure/table/rack/shelf,/obj/item/ammo_magazine/clip/c762/hunter,/obj/item/ammo_magazine/clip/c762/hunter,/obj/item/ammo_magazine/clip/c762/hunter,/turf/simulated/floor/wood,/area/triumph_away/poi_h/POIs/WW_Town)
+"H" = (/obj/structure/table/rack/shelf,/obj/item/ammo_magazine/clip/c762,/obj/item/ammo_magazine/clip/c762,/obj/item/ammo_magazine/clip/c762,/turf/simulated/floor/wood,/area/triumph_away/poi_h/POIs/WW_Town)
+"I" = (/turf/simulated/floor/wood/classh,/area/triumph_away/poi_h/POIs/WW_Town)
+"J" = (/obj/structure/bed/padded,/turf/simulated/floor/wood/classh,/area/triumph_away/poi_h/POIs/WW_Town)
+"K" = (/turf/simulated/floor/beach/sand/desert/classh,/area/triumph_away/poi_h/POIs/WW_Town)
+"L" = (/mob/living/simple_mob/humanoid/merc/ranged/poi,/turf/simulated/floor/wood,/area/triumph_away/poi_h/POIs/WW_Town)
+"M" = (/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced{dir = 4},/obj/structure/bed/pod,/turf/simulated/floor/wood,/area/triumph_away/poi_h/POIs/WW_Town)
+"N" = (/obj/random/multiple/minevault,/turf/simulated/floor/wood/classh,/area/triumph_away/poi_h/POIs/WW_Town)
+"O" = (/obj/structure/table/woodentable,/obj/item/flashlight/lamp/green,/turf/simulated/floor/wood/classh,/area/triumph_away/poi_h/POIs/WW_Town)
+"P" = (/obj/structure/bed,/turf/simulated/floor/wood,/area/triumph_away/poi_h/POIs/WW_Town)
+"Q" = (/obj/structure/bed/chair/comfy/blue{dir = 1},/turf/simulated/floor/wood/classh,/area/triumph_away/poi_h/POIs/WW_Town)
+"R" = (/obj/structure/table/woodentable,/obj/item/gun/projectile/revolver/detective45,/turf/simulated/floor/wood,/area/triumph_away/poi_h/POIs/WW_Town)
+"S" = (/obj/structure/table/bench/wooden,/turf/simulated/floor/wood/classh,/area/triumph_away/poi_h/POIs/WW_Town)
+"T" = (/obj/structure/table/rack/shelf,/obj/item/ammo_magazine/clip/c762/ap,/turf/simulated/floor/wood,/area/triumph_away/poi_h/POIs/WW_Town)
+"U" = (/obj/structure/closet/wardrobe/yellow,/turf/simulated/floor/wood,/area/triumph_away/poi_h/POIs/WW_Town)
+"V" = (/obj/structure/toilet{dir = 4; pixel_x = -10},/turf/simulated/floor/wood,/area/triumph_away/poi_h/POIs/WW_Town)
+"W" = (/mob/living/simple_mob/humanoid/merc/ranged/grenadier,/turf/simulated/floor/wood,/area/triumph_away/poi_h/POIs/WW_Town)
+"X" = (/obj/structure/bed/chair/wood{dir = 1},/turf/simulated/floor/wood/classh,/area/triumph_away/poi_h/POIs/WW_Town)
+"Y" = (/obj/structure/table/woodentable,/obj/item/clothing/accessory/stethoscope,/obj/random/medical/pillbottle,/obj/random/medical/pillbottle,/turf/simulated/floor/wood/classh,/area/triumph_away/poi_h/POIs/WW_Town)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaaaaaaaaaaa
+KhhhhhhhhhhmhhhhhhhhhhhhK
+KhqIqhcIIIIIFhYlIthVjLehK
+KhqIqhoyISOCuhXAIOhMbdRhK
+KhhmhhXIISgIwhIIIJhVjdshK
+KKKDKhhmhhhhhhmhhhhhhphhK
+DDDDDKKDKKKKKDDKKKKKDDDKK
+DDDDDDDDDDDDDDDDDDDDDDDDD
+KKKKDDDDDDDDDDDDDDDDDDDDD
+KhhhmhKKKKDDDhhphhhphhhhK
+KhIIIhhhhhhphhBdHhPdPfPhK
+KhENkhnvhSOIrhBdGhdddddhK
+KhEEEhQzmIIINhBWThiPxPUhK
+KhhhhhhhhhhhhhhhhhhhhhhhK
+KKKKKKKKKKKKKKKKKKKKKKKKK
+"}
