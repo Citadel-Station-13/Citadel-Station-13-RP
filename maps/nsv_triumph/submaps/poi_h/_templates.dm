@@ -96,5 +96,5 @@
 
 datum/map_template/Class_H/springcave
 	name = "Desert Cave Spring"
-	mappath = 'springcaveh.dmm'
+	mappath = 'springcaveH.dmm'
 	cost = 5
