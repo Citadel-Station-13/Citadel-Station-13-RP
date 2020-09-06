@@ -1,4 +1,4 @@
-"a" = (/turf/unsimulated/wall/planetary/desert,/area/triumph_away/poi_h/explored)
+"a" = (/turf/unsimulated/wall/planetary/desert{initial_gas_mix = /datum/atmosphere/planet/classh},/area/triumph_away/poi_h/explored)
 "e" = (/turf/simulated/floor/beach/sand/desert/classh,/area/triumph_away/poi_h/unexplored)
 "g" = (/turf/simulated/floor/beach/sand/desert/classh,/area/triumph_away/poi_h/explored)
 "j" = (/turf/simulated/mineral/classh,/area/triumph_away/poi_h/explored)
