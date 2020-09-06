@@ -19,25 +19,25 @@
 
 /datum/overmap_event/electric
 	name = "electrical storm"
-	count = 50
-	radius = 3
+	count = 40
+	radius = 4
 	hazards = /obj/effect/overmap/event/electric
 
 /datum/overmap_event/dust
 	name = "dust cloud"
-	count = 60
+	count = 40
 	radius = 4
 	hazards = /obj/effect/overmap/event/dust
 
 /datum/overmap_event/ion
 	name = "ion cloud"
-	count = 35
+	count = 25
 	radius = 3
 	hazards = /obj/effect/overmap/event/ion
 
 /datum/overmap_event/carp
 	name = "carp shoal"
-	count = 30
+	count = 20
 	radius = 3
 	continuous = FALSE
 	hazards = /obj/effect/overmap/event/carp
@@ -51,13 +51,13 @@
 
 /datum/overmap_event/hostile_migration
 	name = "hostile lifesigns"
-	count = 30
+	count = 20
 	radius = 3
 	continuous = FALSE
 	hazards = /obj/effect/overmap/event/hostile_migration
 
 /datum/overmap_event/communications_blackout
 	name = "Ionspheric Bubble"
-	count = 30
+	count = 25
 	radius = 3
 	hazards = /obj/effect/overmap/event/communications_blackout
