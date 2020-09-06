@@ -3960,7 +3960,6 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civilian)
 "me" = (
@@ -4514,6 +4513,9 @@
 	layer = 3.3;
 	name = "Kitchen Service Shutters"
 	},
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 2
+	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/kitchen)
 "nI" = (
@@ -4979,6 +4981,22 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/showers)
+"pq" = (
+/obj/structure/table/marble,
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 2
+	},
+/obj/machinery/cash_register/civilian{
+	dir = 1
+	},
+/obj/machinery/door/blast/shutters{
+	dir = 2;
+	id = "cafe";
+	layer = 3.1;
+	name = "Cafe Shutters"
+	},
+/turf/simulated/floor/lino,
+/area/crew_quarters/coffee_shop)
 "pr" = (
 /obj/machinery/fitness/punching_bag,
 /turf/simulated/floor/wood,
@@ -5610,17 +5628,6 @@
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/plating,
 /area/triumph/surfacebase/mining_main/uxstorage)
-"rz" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/catwalk,
-/turf/simulated/floor/plating,
-/area/maintenance/dormitory)
 "rB" = (
 /obj/machinery/conveyor{
 	dir = 1;
@@ -6079,9 +6086,6 @@
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 2
 	},
-/obj/machinery/cash_register/civilian{
-	dir = 1
-	},
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -6491,6 +6495,14 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
+"tW" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/maintenance/dormitory)
 "tX" = (
 /obj/machinery/station_map{
 	pixel_y = 32
@@ -7715,6 +7727,7 @@
 	req_access = null;
 	req_one_access = list(28)
 	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/wood,
 /area/crew_quarters/kitchen)
 "yb" = (
@@ -7723,6 +7736,10 @@
 "yc" = (
 /turf/simulated/wall,
 /area/quartermaster/foyer)
+"yd" = (
+/obj/structure/dispenser/oxygen,
+/turf/simulated/floor/plating,
+/area/maintenance/dormitory)
 "ye" = (
 /obj/machinery/alarm{
 	pixel_y = 22
@@ -7949,12 +7966,6 @@
 	},
 /turf/simulated/floor/airless,
 /area/space)
-"yK" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/dormitory)
 "yL" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
@@ -8735,6 +8746,7 @@
 "BC" = (
 /obj/structure/table/marble,
 /obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/smartfridge,
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "cafe";
@@ -10746,14 +10758,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/visitor_dining)
-"HZ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 4
-	},
-/obj/structure/catwalk,
-/turf/simulated/floor/plating,
-/area/maintenance/dormitory)
 "Ib" = (
 /turf/simulated/wall,
 /area/crew_quarters/coffee_shop)
@@ -11671,10 +11675,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_two)
-"KL" = (
-/obj/structure/dispenser/oxygen,
-/turf/simulated/floor/plating,
-/area/maintenance/dormitory)
 "KO" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -11696,18 +11696,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/foyer)
-"KR" = (
-/obj/item/clothing/suit/space/void,
-/obj/item/clothing/head/helmet/space/void,
-/obj/structure/table/rack,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/item/tank/jetpack/oxygen,
-/obj/machinery/light/small,
-/obj/item/suit_cooling_unit,
-/turf/simulated/floor/plating,
-/area/maintenance/dormitory)
 "KS" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -12135,6 +12123,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
+"Mr" = (
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/dormitory)
 "Ms" = (
 /turf/simulated/floor/tiled/old_tile/red,
 /area/crew_quarters/bar)
@@ -12165,7 +12159,6 @@
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 2
 	},
-/obj/machinery/smartfridge,
 /obj/structure/table/marble,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/blast/shutters{
@@ -12246,6 +12239,18 @@
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/freezer)
+"MM" = (
+/obj/item/clothing/suit/space/void,
+/obj/item/clothing/head/helmet/space/void,
+/obj/structure/table/rack,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/item/tank/jetpack/oxygen,
+/obj/machinery/light/small,
+/obj/item/suit_cooling_unit,
+/turf/simulated/floor/plating,
+/area/maintenance/dormitory)
 "MN" = (
 /obj/structure/table/woodentable,
 /obj/item/flashlight/lamp/green,
@@ -12388,11 +12393,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
-"Nt" = (
-/obj/machinery/light/small,
-/obj/machinery/suit_cycler,
-/turf/simulated/floor/plating,
-/area/maintenance/dormitory)
 "Nu" = (
 /obj/structure/table/marble,
 /obj/machinery/door/firedoor/glass/hidden/steel{
@@ -12633,18 +12633,9 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "Oo" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/brown/border{
-	dir = 4
-	},
-/obj/machinery/light_switch{
-	pixel_x = 25;
-	pixel_y = 7
-	},
+/obj/machinery/mineral/mint,
 /turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
+/area/quartermaster/warehouse)
 "Op" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -12807,6 +12798,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_5)
+"OQ" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/dormitory)
 "OR" = (
 /obj/machinery/light{
 	dir = 1
@@ -13001,6 +12998,17 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
+"PB" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/maintenance/dormitory)
 "PD" = (
 /obj/machinery/alarm{
 	dir = 4;
@@ -13217,6 +13225,11 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/starboard)
+"Qi" = (
+/obj/machinery/light/small,
+/obj/machinery/suit_cycler,
+/turf/simulated/floor/plating,
+/area/maintenance/dormitory)
 "Qj" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -13731,6 +13744,19 @@
 	},
 /obj/machinery/light{
 	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/triumph/surfacebase/mining_main/storage)
+"RT" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 4
+	},
+/obj/machinery/light_switch{
+	pixel_x = 25;
+	pixel_y = 7
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
@@ -14395,6 +14421,9 @@
 	layer = 3.3;
 	name = "Kitchen Service Shutters"
 	},
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 2
+	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/kitchen)
 "TM" = (
@@ -15038,12 +15067,6 @@
 /obj/item/book/manual/standard_operating_procedure,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
-"VF" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/dormitory)
 "VG" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -15601,6 +15624,7 @@
 	layer = 3.3;
 	name = "Kitchen Shutters"
 	},
+/obj/machinery/door/firedoor/glass/hidden/steel,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
 "Xm" = (
@@ -15797,7 +15821,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/airlock/maintenance_hatch,
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_site2)
 "XP" = (
@@ -16430,6 +16454,9 @@
 	id = "kitchen-c";
 	layer = 3.3;
 	name = "Kitchen Service Shutters"
+	},
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 2
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/kitchen)
@@ -24877,7 +24904,7 @@ mj
 qT
 QU
 vq
-Pz
+pq
 WB
 MS
 UH
@@ -25196,8 +25223,8 @@ oE
 Ou
 LW
 oE
-yK
-VF
+Mr
+OQ
 oE
 KT
 cp
@@ -25338,8 +25365,8 @@ RW
 RW
 RW
 RW
-HZ
-rz
+tW
+PB
 is
 Mi
 tA
@@ -26706,7 +26733,7 @@ as
 Kf
 Pg
 Pg
-Oo
+RT
 Dh
 eJ
 Ak
@@ -26764,7 +26791,7 @@ Jt
 rF
 Of
 oE
-KR
+MM
 tA
 ii
 cG
@@ -27189,8 +27216,8 @@ Yu
 iM
 rF
 tA
-KL
-Nt
+yd
+Qi
 tA
 ii
 cG
@@ -27409,7 +27436,7 @@ ii
 rP
 jX
 kk
-kk
+Oo
 kk
 xc
 kk
