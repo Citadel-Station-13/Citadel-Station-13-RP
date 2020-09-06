@@ -1255,6 +1255,10 @@
 	pixel_x = -6;
 	pixel_y = 7
 	},
+/obj/machinery/light_switch{
+	pixel_x = 25;
+	pixel_y = 7
+	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "en" = (
@@ -4714,6 +4718,10 @@
 	department = "Quartermaster-Office"
 	},
 /obj/structure/table/standard,
+/obj/machinery/light_switch{
+	dir = 4;
+	pixel_x = -24
+	},
 /turf/simulated/floor/wood,
 /area/quartermaster/qm)
 "or" = (
@@ -5305,6 +5313,7 @@
 	dir = 4
 	},
 /obj/item/tank/jetpack/oxygen,
+/obj/item/suit_cooling_unit,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "qA" = (
@@ -5601,6 +5610,17 @@
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/plating,
 /area/triumph/surfacebase/mining_main/uxstorage)
+"rz" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/maintenance/dormitory)
 "rB" = (
 /obj/machinery/conveyor{
 	dir = 1;
@@ -6351,6 +6371,9 @@
 "tG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
+	},
+/obj/machinery/light_switch{
+	pixel_x = 25
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/eva)
@@ -7926,6 +7949,12 @@
 	},
 /turf/simulated/floor/airless,
 /area/space)
+"yK" = (
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/dormitory)
 "yL" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
@@ -10717,6 +10746,14 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/visitor_dining)
+"HZ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/maintenance/dormitory)
 "Ib" = (
 /turf/simulated/wall,
 /area/crew_quarters/coffee_shop)
@@ -11234,6 +11271,8 @@
 /obj/machinery/camera/network/cargo{
 	dir = 4
 	},
+/obj/item/suit_cooling_unit,
+/obj/item/suit_cooling_unit,
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
 "Jv" = (
@@ -11632,6 +11671,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_two)
+"KL" = (
+/obj/structure/dispenser/oxygen,
+/turf/simulated/floor/plating,
+/area/maintenance/dormitory)
 "KO" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -11653,6 +11696,18 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/foyer)
+"KR" = (
+/obj/item/clothing/suit/space/void,
+/obj/item/clothing/head/helmet/space/void,
+/obj/structure/table/rack,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/item/tank/jetpack/oxygen,
+/obj/machinery/light/small,
+/obj/item/suit_cooling_unit,
+/turf/simulated/floor/plating,
+/area/maintenance/dormitory)
 "KS" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -12170,6 +12225,10 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/machinery/light_switch{
+	dir = 4;
+	pixel_x = -24
+	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
 "MK" = (
@@ -12329,6 +12388,11 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
+"Nt" = (
+/obj/machinery/light/small,
+/obj/machinery/suit_cycler,
+/turf/simulated/floor/plating,
+/area/maintenance/dormitory)
 "Nu" = (
 /obj/structure/table/marble,
 /obj/machinery/door/firedoor/glass/hidden/steel{
@@ -12569,11 +12633,18 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "Oo" = (
-/obj/machinery/light/small{
+/obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
-/turf/simulated/floor/plating,
-/area/maintenance/dormitory)
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 4
+	},
+/obj/machinery/light_switch{
+	pixel_x = 25;
+	pixel_y = 7
+	},
+/turf/simulated/floor/tiled,
+/area/triumph/surfacebase/mining_main/storage)
 "Op" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -13319,6 +13390,10 @@
 	name = "Shotgun permit"
 	},
 /obj/item/clothing/suit/armor/vest,
+/obj/machinery/light_switch{
+	dir = 4;
+	pixel_x = -24
+	},
 /turf/simulated/floor/wood,
 /area/triumph/surfacebase/bar_backroom)
 "QT" = (
@@ -14067,7 +14142,14 @@
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
 "Tc" = (
-/obj/structure/dispenser/oxygen,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/table/rack,
+/obj/item/tank/jetpack/oxygen,
+/obj/item/clothing/suit/space/void,
+/obj/item/clothing/head/helmet/space/void,
+/obj/item/suit_cooling_unit,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "Td" = (
@@ -14317,6 +14399,9 @@
 /area/crew_quarters/kitchen)
 "TM" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/light_switch{
+	pixel_x = 25
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
 "TN" = (
@@ -14953,6 +15038,12 @@
 /obj/item/book/manual/standard_operating_procedure,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
+"VF" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/dormitory)
 "VG" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -25105,8 +25196,8 @@ oE
 Ou
 LW
 oE
-oE
-oE
+yK
+VF
 oE
 KT
 cp
@@ -25247,8 +25338,8 @@ RW
 RW
 RW
 RW
-RW
-FP
+HZ
+rz
 is
 Mi
 tA
@@ -26615,7 +26706,7 @@ as
 Kf
 Pg
 Pg
-Pg
+Oo
 Dh
 eJ
 Ak
@@ -26673,7 +26764,7 @@ Jt
 rF
 Of
 oE
-qy
+KR
 tA
 ii
 cG
@@ -26814,7 +26905,7 @@ Yu
 od
 rF
 tA
-Oo
+oE
 Tc
 tA
 AU
@@ -26956,8 +27047,8 @@ Yu
 ai
 fd
 tA
-tA
-tA
+oE
+oE
 tA
 ii
 cG
@@ -27098,9 +27189,9 @@ Yu
 iM
 rF
 tA
-ii
-ii
-rC
+KL
+Nt
+tA
 ii
 cG
 Cn
@@ -27240,9 +27331,9 @@ Yu
 zS
 rF
 tA
-ii
-ii
-rC
+tA
+tA
+tA
 ii
 cG
 Cn

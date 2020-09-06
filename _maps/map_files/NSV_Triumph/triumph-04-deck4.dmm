@@ -2361,6 +2361,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "bWO" = (
@@ -4819,12 +4822,14 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
@@ -6790,9 +6795,7 @@
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
 "frp" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 5
-	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "fse" = (
@@ -7064,6 +7067,7 @@
 /obj/structure/table/rack,
 /obj/item/clothing/suit/space/void,
 /obj/item/clothing/head/helmet/space/void,
+/obj/item/suit_cooling_unit,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "fBb" = (
@@ -17537,6 +17541,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "nPs" = (
@@ -18610,6 +18617,9 @@
 /obj/machinery/door/airlock/glass_external/public{
 	name = "Public EVA";
 	req_one_access = null
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
@@ -22464,6 +22474,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/range)
+"rmK" = (
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/hallway/secondary/docking_hallway)
 "rmO" = (
 /obj/machinery/alarm{
 	pixel_y = 22
@@ -24153,6 +24169,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
+"sBg" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/dark,
+/area/hallway/secondary/docking_hallway)
 "sBq" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -24312,6 +24332,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
+/obj/item/suit_cooling_unit,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "sFD" = (
@@ -29256,6 +29277,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/hallway)
+"wst" = (
+/obj/machinery/light,
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/hallway/secondary/docking_hallway)
 "wtU" = (
 /obj/structure/table/steel,
 /obj/item/storage/box/donkpockets,
@@ -30189,6 +30217,9 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
@@ -41662,7 +41693,7 @@ nIK
 nPD
 sFB
 fPV
-fPV
+rmK
 tXj
 gwn
 hWX
@@ -41804,7 +41835,7 @@ nIK
 nPD
 sFB
 fPV
-fPV
+iCK
 nYM
 gwn
 iRA
@@ -42656,8 +42687,8 @@ nIK
 nPD
 vSW
 nOV
-fPV
-lpR
+sBg
+wst
 azG
 jPF
 jPF

@@ -1015,7 +1015,7 @@
 "ex" = (
 /obj/machinery/shield_diffuser,
 /obj/structure/catwalk,
-/turf/space,
+/turf/simulated/floor/airless/ceiling,
 /area/space)
 "ey" = (
 /obj/structure/cable{
@@ -1641,6 +1641,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/atmos/backup)
+"hz" = (
+/obj/random/trash_pile,
+/turf/simulated/floor/plating,
+/area/maintenance/engi_engine)
 "hB" = (
 /obj/structure/window/reinforced{
 	dir = 8;
@@ -2451,7 +2455,7 @@
 "lI" = (
 /obj/machinery/camera/network/outside,
 /obj/structure/catwalk,
-/turf/space,
+/turf/simulated/floor/airless/ceiling,
 /area/space)
 "lN" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
@@ -5143,6 +5147,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"yX" = (
+/obj/machinery/alarm{
+	frequency = 1441;
+	pixel_y = 22
+	},
+/obj/random/trash_pile,
+/turf/simulated/floor/plating,
+/area/maintenance/engi_engine)
 "yZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 4
@@ -7044,9 +7056,8 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/security/checkpoint/engineering)
 "ID" = (
-/obj/structure/lattice,
 /obj/structure/catwalk,
-/turf/space,
+/turf/simulated/floor/airless/ceiling,
 /area/space)
 "IF" = (
 /obj/structure/cable/yellow{
@@ -7062,7 +7073,7 @@
 "IL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/maintenance/engi,
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_one)
 "IO" = (
@@ -7296,7 +7307,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/maintenance/engi,
+/obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_one)
 "Kd" = (
@@ -8351,7 +8362,7 @@
 	dir = 8
 	},
 /obj/structure/catwalk,
-/turf/space,
+/turf/simulated/floor/airless/ceiling,
 /area/space)
 "Pv" = (
 /obj/structure/sign/department/telecoms,
@@ -8435,7 +8446,7 @@
 /obj/machinery/camera/network/engine{
 	dir = 9
 	},
-/turf/space,
+/turf/simulated/floor/airless/ceiling,
 /area/space)
 "PK" = (
 /obj/machinery/button/remote/blast_door{
@@ -8607,7 +8618,7 @@
 	dir = 10
 	},
 /obj/structure/catwalk,
-/turf/space,
+/turf/simulated/floor/airless/ceiling,
 /area/space)
 "Qy" = (
 /obj/machinery/power/apc{
@@ -17299,27 +17310,27 @@ fN
 fN
 fN
 dX
-Fr
-Fr
-Fr
+ID
+ID
+ID
 PI
 Pt
-Fr
+ID
 Pt
-Fr
-Fr
+ID
+ID
 ex
 ex
 ex
-Fr
-Fr
-Fr
-Fr
+ID
+ID
+ID
+ID
 PI
-Fr
-Fr
-Fr
-Fr
+ID
+ID
+ID
+ID
 ns
 iC
 fN
@@ -17441,7 +17452,7 @@ fN
 fN
 fN
 UV
-Fr
+ID
 zz
 zz
 zz
@@ -17461,7 +17472,7 @@ zz
 zz
 zz
 zz
-Fr
+ID
 ns
 iC
 fN
@@ -17583,7 +17594,7 @@ fN
 fN
 fN
 UV
-Fr
+ID
 zz
 uB
 Tv
@@ -17603,7 +17614,7 @@ zz
 zz
 zz
 zz
-Fr
+ID
 ns
 iC
 Zj
@@ -17725,7 +17736,7 @@ Zj
 jp
 jp
 pf
-Fr
+ID
 zz
 iP
 vT
@@ -17864,10 +17875,10 @@ fN
 fN
 fN
 UV
-Fr
-Fr
-Fr
-Fr
+ID
+ID
+ID
+ID
 zz
 sB
 NX
@@ -18148,7 +18159,7 @@ fN
 fN
 fN
 UV
-Fr
+ID
 ui
 eG
 dU
@@ -18171,7 +18182,7 @@ WV
 tW
 zz
 zz
-Fr
+ID
 ns
 iC
 Zj
@@ -18313,7 +18324,7 @@ sz
 Rh
 HA
 zz
-Fr
+ID
 ns
 iC
 fN
@@ -18455,7 +18466,7 @@ ae
 ZJ
 tg
 zz
-Fr
+ID
 ns
 iC
 fN
@@ -18597,7 +18608,7 @@ Rh
 dw
 Pj
 zz
-Fr
+ID
 ns
 iC
 fN
@@ -18739,7 +18750,7 @@ tg
 xz
 tg
 zz
-Fr
+ID
 ns
 iC
 fN
@@ -18881,7 +18892,7 @@ GR
 xz
 tg
 zz
-Fr
+ID
 We
 Zj
 Zj
@@ -19023,7 +19034,7 @@ zz
 Nu
 zz
 zz
-Fr
+ID
 ns
 Zj
 fN
@@ -19165,7 +19176,7 @@ qM
 xz
 rh
 zz
-Fr
+ID
 ns
 Zj
 fN
@@ -19307,7 +19318,7 @@ yo
 xz
 GS
 zz
-Fr
+ID
 ns
 iC
 fN
@@ -19591,7 +19602,7 @@ JB
 xz
 tg
 zz
-Fr
+ID
 ns
 Zj
 fN
@@ -19733,7 +19744,7 @@ ER
 xz
 ER
 zz
-Fr
+ID
 ns
 Zj
 fN
@@ -19875,7 +19886,7 @@ Iq
 YZ
 xi
 zz
-Fr
+ID
 ns
 Zj
 fN
@@ -20017,7 +20028,7 @@ wP
 Bd
 xi
 zz
-Fr
+ID
 We
 iC
 iC
@@ -20159,7 +20170,7 @@ Ds
 NK
 Gw
 zz
-Fr
+ID
 Vg
 No
 FG
@@ -20301,29 +20312,29 @@ tg
 NK
 PC
 zz
-Fr
-Fr
-Fr
+ID
+ID
+ID
 Zj
 ZE
 Zj
-Fr
-Fr
-Fr
-Fr
-Fr
-Fr
+ID
+ID
+ID
+ID
+ID
+ID
 Zj
 ia
 Zj
-Fr
-Fr
-Fr
-Fr
-Fr
+ID
+ID
+ID
+ID
+ID
 gt
 dX
-Fr
+ID
 Fr
 Fr
 Fr
@@ -20462,10 +20473,10 @@ bc
 bc
 bc
 bc
-Fr
-Fr
-Fr
-Fr
+ID
+ID
+ID
+ID
 Bu
 zH
 ek
@@ -20604,7 +20615,7 @@ rq
 ro
 pL
 bc
-Fr
+ID
 Bu
 zH
 ek
@@ -20888,7 +20899,7 @@ ha
 RY
 pL
 bc
-Fr
+ID
 ns
 iC
 fN
@@ -21030,7 +21041,7 @@ bc
 bc
 bc
 bc
-Fr
+ID
 We
 iC
 fN
@@ -21172,7 +21183,7 @@ rq
 dx
 pw
 bc
-Fr
+ID
 ns
 Zj
 Zj
@@ -21314,7 +21325,7 @@ nD
 Qq
 lG
 bc
-Fr
+ID
 ns
 Zj
 fN
@@ -21456,7 +21467,7 @@ ha
 cD
 pw
 bc
-Fr
+ID
 ns
 iC
 fN
@@ -21598,7 +21609,7 @@ bc
 bc
 bc
 bc
-Fr
+ID
 ns
 iC
 fN
@@ -21740,7 +21751,7 @@ OL
 zM
 ur
 bc
-Fr
+ID
 ns
 dX
 Zj
@@ -21882,7 +21893,7 @@ nD
 ur
 ur
 bc
-Fr
+ID
 ns
 iC
 fN
@@ -22166,7 +22177,7 @@ nD
 ur
 Mm
 bc
-Fr
+ID
 ns
 Zj
 fN
@@ -22308,7 +22319,7 @@ ha
 YY
 ur
 bc
-Fr
+ID
 ns
 iC
 fN
@@ -22574,25 +22585,25 @@ su
 Fl
 mZ
 BX
-Fr
-Fr
-Fr
-Fr
-Fr
-Fr
-Fr
-Fr
-Fr
-Fr
-Fr
-Fr
-Fr
-Fr
-Fr
-Fr
-Fr
-Fr
-Fr
+ID
+ID
+ID
+ID
+ID
+ID
+ID
+ID
+ID
+ID
+ID
+ID
+ID
+ID
+ID
+ID
+ID
+ID
+ID
 ns
 iC
 fN
@@ -22716,7 +22727,7 @@ af
 zy
 NT
 BX
-Fr
+ID
 Bu
 zH
 ek
@@ -23000,7 +23011,7 @@ ny
 Fp
 RF
 BX
-Fr
+ID
 ns
 iC
 fN
@@ -23142,7 +23153,7 @@ Vd
 UX
 zX
 BX
-Fr
+ID
 ns
 iC
 fN
@@ -23284,7 +23295,7 @@ Mo
 Bt
 BX
 BX
-Fr
+ID
 We
 Zj
 fN
@@ -23425,8 +23436,8 @@ ra
 sZ
 Gi
 BX
-Fr
-Fr
+ID
+ID
 ns
 fN
 fN
@@ -23567,7 +23578,7 @@ Tx
 kE
 ML
 BX
-Fr
+ID
 Ic
 fN
 fN
@@ -23709,7 +23720,7 @@ Ia
 mI
 MZ
 BX
-Fr
+ID
 Os
 fN
 fN
@@ -23851,7 +23862,7 @@ YQ
 vz
 PG
 BX
-Fr
+ID
 Os
 fN
 fN
@@ -23993,7 +24004,7 @@ hE
 YQ
 Su
 BX
-Fr
+ID
 Os
 fN
 fN
@@ -24135,7 +24146,7 @@ BX
 rj
 rj
 BX
-Fr
+ID
 Os
 fN
 fN
@@ -24277,7 +24288,7 @@ BX
 rj
 rj
 BX
-Fr
+ID
 Os
 fN
 fN
@@ -24419,7 +24430,7 @@ BX
 hw
 rj
 BX
-Fr
+ID
 Os
 fN
 fN
@@ -24561,7 +24572,7 @@ BX
 BX
 BX
 BX
-Fr
+ID
 Os
 fN
 fN
@@ -24703,7 +24714,7 @@ ea
 em
 ea
 UQ
-Fr
+ID
 Os
 fN
 fN
@@ -24987,7 +24998,7 @@ Af
 TD
 WO
 UQ
-Fr
+ID
 We
 fN
 fN
@@ -25129,7 +25140,7 @@ qw
 em
 em
 UQ
-Fr
+ID
 We
 fN
 fN
@@ -25271,7 +25282,7 @@ Qs
 XF
 jJ
 UQ
-Fr
+ID
 We
 fN
 fN
@@ -25413,7 +25424,7 @@ TQ
 Bw
 un
 UQ
-Fr
+ID
 Os
 fN
 fN
@@ -25555,7 +25566,7 @@ UR
 UR
 UR
 xv
-Fr
+ID
 Os
 fN
 fN
@@ -25697,7 +25708,7 @@ xv
 UR
 dD
 xv
-Fr
+ID
 Os
 fN
 fN
@@ -25839,7 +25850,7 @@ xv
 UR
 GX
 xv
-Fr
+ID
 Os
 fN
 fN
@@ -26123,7 +26134,7 @@ Yb
 Qi
 uX
 xv
-Fr
+ID
 Os
 fN
 fN
@@ -26247,7 +26258,7 @@ fN
 fN
 Zj
 xv
-TN
+yX
 Bq
 NL
 NL
@@ -26260,12 +26271,12 @@ zW
 nL
 XH
 TN
-CN
+hz
 Bq
-CN
+hz
 CN
 xv
-Fr
+ID
 Os
 fN
 fN
@@ -26407,7 +26418,7 @@ xv
 RG
 xv
 xv
-Fr
+ID
 Os
 fN
 fN
@@ -26544,12 +26555,12 @@ oe
 ll
 nq
 eM
-Fr
-Fr
-Fr
-Fr
-Fr
-Fr
+ID
+ID
+ID
+ID
+ID
+ID
 Os
 fN
 fN
