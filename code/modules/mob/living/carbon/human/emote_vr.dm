@@ -69,6 +69,11 @@
 				src.SpinAnimation(7,1)
 				message = "does a flip!"
 				m_type = 1
+// New emotes below this line
+		if ("purr")
+			message = "purrs softly."
+			m_type = 2
+			playsound(loc, 'modular_citadel/sound/voice/purr.ogg', 50, 1, -1)
 
 	if (message)
 		custom_emote(m_type,message)

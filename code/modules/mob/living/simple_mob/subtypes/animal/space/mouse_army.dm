@@ -164,6 +164,7 @@
 
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged
 
+	var/datum/effect_system/spark_spread/spark_system
 	var/ruptured = FALSE
 
 /mob/living/simple_mob/animal/space/mouse_army/pyro/death()
@@ -177,14 +178,28 @@
 			else
 				color = "#FF0000"
 			sleep(1)
+	..()
 
-	spawn(rand (1,5))
+	var/turf/simulated/T = get_turf(src)
+	if(!T)
+		return
+	var/datum/gas_mixture/GM = new
+	if(prob(10))
+		T.assume_gas(/datum/gas/phoron, 100, 1500+T0C)
+		T.visible_message("<span class='critical'>\The [src]'s tank vents a cloud of heated gas!</span>")
+	else
+		T.assume_gas(/datum/gas/phoron, 5, istype(T) ? T.air.temperature : T20C)
+		visible_message("<span class='critical'>\The [src]'s tank ruptures!</span>")
+	T.assume_air(GM)
+	return
+
+	spawn(rand(1,5))
 		if(src && !ruptured)
-			visible_message("<span class='critical'>\The [src]'s tank ruptures!</span>")
+			visible_message("<span class='critical'>\The [src]'s suit sparks!</span>")
+			spark_system.set_up(5, 0, src)
+			spark_system.attach(src)
+			spark_system.start()
 			ruptured = 1
-			qdel(src)
-			adjust_fire_stacks(2)
-			IgniteMob()
 	return ..()
 
 //Ammo Mouse

@@ -808,3 +808,28 @@ datum/gear/uniform/bodysuitcommand
 	display_name = "Command Bodysuit"
 	path = /obj/item/clothing/under/bodysuit/bodysuitcommand
 	allowed_roles = list("Head of Security","Facility Director","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer")
+
+// And after nearly successfully hanging myself, this is where the real game begins
+/datum/gear/uniform/future_fashion_light_blue_striped
+	display_name = "Futuristic Light Blue-Striped Jumpsuit"
+	path = /obj/item/clothing/under/future_fashion_light_blue_striped
+
+/datum/gear/uniform/future_fashion_dark_blue_striped
+	display_name = "Futuristic Dark Blue-Striped Jumpsuit"
+	path = /obj/item/clothing/under/future_fashion_dark_blue_striped
+
+/datum/gear/uniform/future_fashion_red_striped
+	display_name = "Futuristic Red-Striped Jumpsuit"
+	path = /obj/item/clothing/under/future_fashion_red_striped
+
+/datum/gear/uniform/future_fashion_green_striped
+	display_name = "Futuristic Green-Striped Jumpsuit"
+	path = /obj/item/clothing/under/future_fashion_green_striped
+
+/datum/gear/uniform/future_fashion_orange_striped
+	display_name = "Futuristic Orange-Striped Jumpsuit"
+	path = /obj/item/clothing/under/future_fashion_orange_striped
+
+/datum/gear/uniform/future_fashion_purple_striped
+	display_name = "Futuristic Purple-Striped Jumpsuit"
+	path = /obj/item/clothing/under/future_fashion_purple_striped
