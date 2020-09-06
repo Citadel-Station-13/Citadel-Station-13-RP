@@ -16,12 +16,12 @@
 #define Z_LEVEL_DEBRISFIELD				8
 #define Z_LEVEL_PIRATEBASE				9
 #define Z_LEVEL_MININGPLANET			10
-//#define Z_LEVEL_UNKNOWN_PLANET			11
+#define Z_LEVEL_UNKNOWN_PLANET			11
 
-#define Z_LEVEL_ROGUEMINE_1				11
-#define Z_LEVEL_ROGUEMINE_2				12
-#define Z_LEVEL_ROGUEMINE_3				13
-#define Z_LEVEL_ROGUEMINE_4				14
+#define Z_LEVEL_ROGUEMINE_1				12
+#define Z_LEVEL_ROGUEMINE_2				13
+#define Z_LEVEL_ROGUEMINE_3				14
+#define Z_LEVEL_ROGUEMINE_4				15
 
 // Camera Networks
 #define NETWORK_TRIUMPH "Triumph"
@@ -44,8 +44,7 @@
 	zlevel_datum_type = /datum/map_z_level/triumph
 
 	lobby_icon = 'icons/misc/title_vr.dmi'
-	lobby_screens = list("title8")
-//	lobby_screens = list("title1", "title2", "title3", "title4", "title5", "title6", "title7", "title8")
+	lobby_screens = list("title1", "title2", "title3", "title4", "title5", "title6", "title7", "title8")
 	id_hud_icons = 'icons/mob/hud_jobs_vr.dmi' //CITADEL CHANGE: Ignore this line because it's going to be overriden in modular_citadel\maps\triumph\triumph_defines.dm	//TODO Remove/Fix these unneccessary Override Overrides everywhere ffs - Zandario
 
 	admin_levels = list()
@@ -154,7 +153,7 @@
 		list("Debris Field - Z1 Space"), // Debris Field
 		list("Away Mission - Pirate Base"), // Vox Pirate Base & Mining Planet
 		list("Away Mission - Mining Planet"),//Mining planet
-		//list("ExoPlanet - Z1 Planet"), // Exoplanet
+		list("ExoPlanet - Z1 Planet"), // Exoplanet
 		list("Asteroid Belt 1","Asteroid Belt 2","Asteroid Belt 3","Asteroid Belt 4")
 	)
 
@@ -165,7 +164,7 @@
 		Z_LEVEL_DECK_THREE,
 		Z_LEVEL_DECK_FOUR,
 		Z_LEVEL_DEBRISFIELD,
-		//Z_LEVEL_UNKNOWN_PLANET,
+		Z_LEVEL_UNKNOWN_PLANET,
 		Z_LEVEL_PIRATEBASE,
 		Z_LEVEL_MININGPLANET)
 
