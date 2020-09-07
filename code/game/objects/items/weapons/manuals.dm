@@ -5,18 +5,14 @@
 	due_date = 0 // Game time in 1/10th seconds
 	unique = 1   // 0 - Normal book, 1 - Should not be treated as normal book, unable to be copied, unable to be modified
 
-	var/datum/codex_tree/tree = null
-	var/root_type = /datum/lore/codex/category/main_virgo_lore	//Runtimes on codex_tree.dm, line 18 with a null here
-
-/obj/item/book/manual/legal/Initialize()
-	tree = new(src, root_type)
-	. = ..()
-
 /obj/item/book/manual/legal/attack_self(mob/user)
-	if(!tree)
-		tree = new(src, root_type)
-	icon_state = "[initial(icon_state)]-open"
-	tree.display(user)
+	if(src.icon_state == initial(icon_state))
+		src.icon_state = "[icon_state]-open"
+		to_chat(user, "You open the book.")
+	else
+		src.icon_state = initial(icon_state)
+		to_chat(user, "You close the book.")
+	update_icon()
 
 /obj/item/book/manual/engineering_construction
 	name = "Station Repairs and Construction"

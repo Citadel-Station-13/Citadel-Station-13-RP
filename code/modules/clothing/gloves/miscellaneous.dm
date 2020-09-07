@@ -166,3 +166,15 @@
 
 /obj/item/clothing/gloves/ranger/yellow
 	glovecolor = "yellow"
+
+/obj/item/clothing/gloves/swat/para //Combined effect of SWAT gloves and insulated gloves
+	desc = "PARA gloves"
+	name = "PMD issued gloves, stamped with protective seals and spells."
+	icon_state = "para_ert_gloves"
+	item_state = "para_ert_gloves"
+
+/obj/item/clothing/gloves/swat/para/Initialize(mob/living/carbon/human/H, src)
+	. = ..()
+	if(H.mind.isholy)
+		siemens_coefficient = 0
+	return

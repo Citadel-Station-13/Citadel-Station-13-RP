@@ -86,3 +86,35 @@
 		/obj/item/rig_module/device/rcd,
 		/obj/item/rig_module/datajack
 		)
+
+/obj/item/rig/ert/para
+	name = "PARA suit control module"
+	desc = "A sleek module decorated with intricate glyphs and alien wards. When worn by a trained agent, the various glyphs faintly glow."
+	suit_type = "PMD agent"
+	icon_state = "para_ert_rig"
+
+	var/anti_magic = FALSE
+	var/emp_proof = FALSE
+
+	allowed = list(/obj/item/flashlight, /obj/item/tank, /obj/item/t_scanner, /obj/item/rcd, /obj/item/tool/crowbar, \
+	/obj/item/tool/screwdriver, /obj/item/weldingtool, /obj/item/tool/wirecutters, /obj/item/tool/wrench, /obj/item/multitool, \
+	/obj/item/radio, /obj/item/analyzer,/obj/item/storage/briefcase/inflatable, /obj/item/melee/baton, /obj/item/gun, \
+	/obj/item/storage/firstaid, /obj/item/reagent_containers/hypospray, /obj/item/roller, /obj/item/nullrod)
+
+	initial_modules = list(
+		/obj/item/rig_module/ai_container,
+		/obj/item/rig_module/device/anomaly_scanner,
+		/obj/item/rig_module/armblade,
+		/obj/item/rig_module/datajack,
+		/obj/item/rig_module/grenade_launcher/holy,
+		/obj/item/rig_module/maneuvering_jets,
+		/obj/item/rig_module/vision/meson,
+		/obj/item/rig_module/self_destruct
+		)
+
+/obj/item/rig/ert/para/equip/Initialize(mob/living/carbon/human/H, src)
+	. = ..()
+	if(H.mind.isholy && !anti_magic)
+		anti_magic = TRUE
+		emp_proof = TRUE
+	return

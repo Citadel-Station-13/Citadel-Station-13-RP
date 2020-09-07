@@ -597,3 +597,17 @@
 /obj/item/clothing/suit/armor/pcarrier/merc
 	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/merc, /obj/item/clothing/accessory/armor/armguards/merc, /obj/item/clothing/accessory/armor/legguards/merc, /obj/item/clothing/accessory/storage/pouches/large)
 
+/obj/item/clothing/suit/armor/vest/ert/para
+	name = "PARA light armor"
+	desc = "Light armor emblazoned with the device of an Eye. When equipped by trained PMD agents, runes set into the interior begin to glow."
+	icon_state = "para_ert_armor"
+	item_state_slots = list(slot_r_hand_str = "armor", slot_l_hand_str = "armor")
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+
+	var/anti_magic = FALSE
+
+/obj/item/clothing/suit/armor/vest/ert/para/Initialize(mob/living/carbon/human/H, src)
+	. = ..()
+	if(H.mind.isholy && !anti_magic)
+		anti_magic = TRUE
+	return
