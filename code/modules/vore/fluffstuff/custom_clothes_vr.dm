@@ -900,68 +900,8 @@ END OF CITADEL CHANGE */
 	desc = "ROW ROW, FIGHT THE POWER."
 	flash_prot = 1 //Why not.
 END OF CITADEL CHANGES */
-//Kitsuhana Uniforms
-/obj/item/clothing/under/rank/khi
-	name = "Delete Me"
-	desc = "Why did you spawn this one? Dork."
-	//catalogue_data = list(/datum/category_item/catalogue/information/organization/khi)
-	sensor_mode = 3
-
-	icon = 'icons/vore/custom_clothes_vr.dmi'
-	icon_state = "khi_uniform_i"
-
-	icon_override = 'icons/vore/custom_clothes_vr.dmi'
-	item_state = ""
-
-/obj/item/clothing/under/rank/khi/cmd //Command version
-	name = "KHI command suit"
-	desc = "Kitsuhana Heavy Industries uniform. An extra-comfortable command one, at that. I guess if you DON'T want anarchy for some reason."
-	icon_state = "khi_uniform_cmd_i"
-	item_state = "khi_uniform_cmd"
-	worn_state = "khi_uniform_cmd"
-	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
-
-/obj/item/clothing/under/rank/khi/sec //Security version
-	name = "KHI security suit"
-	desc = "Kitsuhana Heavy Industries uniform. This one has angry red security stripes. Keepin' the peace in style."
-	icon_state = "khi_uniform_sec_i"
-	item_state = "khi_uniform_sec"
-	worn_state = "khi_uniform_sec"
-	armor = list(melee = 10, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
-
-/obj/item/clothing/under/rank/khi/med //Medical version
-	name = "KHI medical suit"
-	desc = "Kitsuhana Heavy Industries uniform. The medical version. Why not just get a new body, anyway?"
-	icon_state = "khi_uniform_med_i"
-	item_state = "khi_uniform_med"
-	worn_state = "khi_uniform_med"
-	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 10, rad = 0)
-
-/obj/item/clothing/under/rank/khi/eng //Engineering version
-	name = "KHI engineering suit"
-	desc = "Kitsuhana Heavy Industries uniform. One fit for an engineer, by the looks of it. Building the future, one disaster at a time."
-	icon_state = "khi_uniform_eng_i"
-	item_state = "khi_uniform_eng"
-	worn_state = "khi_uniform_eng"
-	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 10)
-
-/obj/item/clothing/under/rank/khi/sci //Science version
-	name = "KHI science suit"
-	desc = "Kitsuhana Heavy Industries uniform. For performing science in, based on the color! Only SCIENCE can save us now."
-	icon_state = "khi_uniform_sci_i"
-	item_state = "khi_uniform_sci"
-	worn_state = "khi_uniform_sci"
-	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 10, bio = 0, rad = 0)
 
 /* CITADEL CHANGE - Removes Virgo Fluff
-/obj/item/clothing/under/rank/khi/fluff/aronai //Aro fluff version
-	name = "KHI meditech suit"
-	desc = "Kitsuhana Heavy Industries uniform. This one has the colors of a resleeving or mnemonics engineer. It has 'Aronai' written inside the top."
-	icon_state = "khi_uniform_aro_i"
-	item_state = "khi_uniform_aro"
-	worn_state = "khi_uniform_aro"
-	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 10, rad = 0)
-
 //jacobdragon:Earthen Breath
 /obj/item/clothing/under/fluff/earthenbreath
 	name = "Earth Swimsuit"
@@ -1858,21 +1798,6 @@ END OF CITADEL CHANGES */
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	item_state = "zao_cap_mob"
 END OF CITADEL CHANGES */
-//Nepox:Annie Rose
-/obj/item/clothing/accessory/sweater/fluff/annie
-	name = "Lazy Annie's Lazy Sweater"
-	desc = "A cozy sweater that's probably far too long for it's owner.  She's too lazy to care though."
-
-	icon = 'icons/vore/custom_clothes_vr.dmi'
-	icon_state = "sweater_annie"
-
-	icon_override = 'icons/vore/custom_clothes_vr.dmi'
-	item_state = "sweater_annie"
-
-	slot_flags = SLOT_OCLOTHING | SLOT_TIE
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
-	w_class = ITEMSIZE_NORMAL
-	slot = ACCESSORY_SLOT_OVER
 
 //General definition for bracer items. No icons.
 /obj/item/clothing/accessory/bracer
@@ -1973,19 +1898,3 @@ END OF CITADEL CHANGES */
 
 /obj/item/clothing/under/fluff/slime_skeleton/digest_act(var/atom/movable/item_storage = null)
 	return FALSE	//Indigestible
-
-//Bacon12366:Elly Brown
-/obj/item/clothing/accessory/sweater/fluff/star
-	name = "Star Sweater"
-	desc = "It's a white long sweater with a big yellow star at the chest. It seems like it's made of a soft material."
-
-	icon = 'icons/vore/custom_clothes_vr.dmi'
-	icon_state = "star_sweater"
-
-	icon_override = 'icons/vore/custom_clothes_vr.dmi'
-	item_state = "star_sweater"
-
-	slot_flags = SLOT_OCLOTHING | SLOT_TIE
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
-	w_class = ITEMSIZE_NORMAL
-	slot = ACCESSORY_SLOT_OVER

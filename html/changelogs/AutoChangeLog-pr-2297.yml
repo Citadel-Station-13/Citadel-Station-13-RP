@@ -1,0 +1,4 @@
+author: "drofoljaelisglis"
+delete-after: True
+changes: 
+  - bugfix: "Fixed the invisible (nonexistent in fact) sprite for the pleated skirt."

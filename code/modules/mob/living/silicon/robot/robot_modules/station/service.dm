@@ -275,6 +275,7 @@
 
 	src.modules += new /obj/item/tray/robotray(src)
 	src.modules += new /obj/item/reagent_containers/borghypo/service(src)
+	src.modules += new /obj/item/storage/bag/trash(src)
 
 /* // I don't know what kind of sleeper to put here, but also no need if you already have "Robot Nom" verb.
 	var/obj/item/dogborg/sleeper/K9/B = new /obj/item/dogborg/sleeper/K9(src)

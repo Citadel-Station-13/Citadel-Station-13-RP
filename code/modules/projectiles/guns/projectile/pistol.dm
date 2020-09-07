@@ -241,6 +241,7 @@
 	desc = "Little more than a barrel, handle, and firing mechanism, cheap makeshift firearms like this one are not uncommon in frontier systems."
 	icon_state = "sawnshotgun"
 	item_state = "sawnshotgun"
+	recoil = 3 //Improvised weapons = poor ergonomics
 	handle_casings = CYCLE_CASINGS //player has to take the old casing out manually before reloading
 	load_method = SINGLE_CASING
 	max_shells = 1 //literally just a barrel
