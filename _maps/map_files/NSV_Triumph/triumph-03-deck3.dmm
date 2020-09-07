@@ -22,9 +22,6 @@
 /area/rnd/breakroom)
 "ad" = (
 /obj/structure/table/reinforced,
-/obj/machinery/camera/network/medbay{
-	dir = 1
-	},
 /obj/item/reagent_containers/spray/cleaner{
 	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
 	name = "Surgery Cleaner";
@@ -1405,7 +1402,9 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/surgery)
+/area/medical/surgery{
+	name = "\improper Operating Theatre 3"
+	})
 "db" = (
 /obj/machinery/light{
 	dir = 1
@@ -2292,9 +2291,6 @@
 "eM" = (
 /obj/structure/table/reinforced,
 /obj/item/stack/nanopaste,
-/obj/machinery/camera/network/medbay{
-	dir = 1
-	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 10
 	},
@@ -2377,7 +2373,9 @@
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/surgery)
+/area/medical/surgery{
+	name = "\improper Operating Theatre 3"
+	})
 "eW" = (
 /obj/structure/reagent_dispensers/water_cooler/full,
 /turf/simulated/floor/wood/sif,
@@ -4574,7 +4572,9 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/surgery)
+/area/medical/surgery{
+	name = "\improper Operating Theatre 3"
+	})
 "jz" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/white,
@@ -5302,6 +5302,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 1
 	},
+/obj/machinery/camera/network/medbay,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery2)
 "kZ" = (
@@ -5309,7 +5310,9 @@
 /obj/item/storage/box/masks,
 /obj/machinery/camera/network/medbay,
 /turf/simulated/floor/tiled/white,
-/area/medical/surgery)
+/area/medical/surgery{
+	name = "\improper Operating Theatre 3"
+	})
 "la" = (
 /obj/structure/closet/secure_closet/medical_wall{
 	name = "O- Blood Locker";
@@ -5662,7 +5665,9 @@
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/surgery)
+/area/medical/surgery{
+	name = "\improper Operating Theatre 3"
+	})
 "lM" = (
 /obj/structure/closet/crate{
 	name = "Grenade Crate"
@@ -5900,7 +5905,9 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/surgery)
+/area/medical/surgery{
+	name = "\improper Operating Theatre 3"
+	})
 "mg" = (
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 1;
@@ -8045,7 +8052,9 @@
 /obj/structure/table/reinforced,
 /obj/item/storage/firstaid/surgery,
 /turf/simulated/floor/tiled/white,
-/area/medical/surgery)
+/area/medical/surgery{
+	name = "\improper Operating Theatre 3"
+	})
 "qw" = (
 /obj/machinery/light/small,
 /obj/structure/catwalk,
@@ -8401,12 +8410,16 @@
 "rk" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/tiled/white,
-/area/medical/surgery)
+/area/medical/surgery{
+	name = "\improper Operating Theatre 3"
+	})
 "rl" = (
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/machinery/iv_drip,
 /turf/simulated/floor/tiled/white,
-/area/medical/surgery)
+/area/medical/surgery{
+	name = "\improper Operating Theatre 3"
+	})
 "rm" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -31
@@ -9745,7 +9758,9 @@
 "tW" = (
 /obj/machinery/computer/operating,
 /turf/simulated/floor/tiled/white,
-/area/medical/surgery)
+/area/medical/surgery{
+	name = "\improper Operating Theatre 3"
+	})
 "tX" = (
 /obj/structure/bed/chair/office/dark,
 /turf/simulated/floor/carpet/sblucarpet,
@@ -10478,6 +10493,11 @@
 "vx" = (
 /turf/simulated/wall,
 /area/rnd/xenobiology/xenoflora)
+"vy" = (
+/turf/simulated/floor/tiled/white,
+/area/medical/surgery{
+	name = "\improper Operating Theatre 3"
+	})
 "vz" = (
 /obj/machinery/door/window/brigdoor/northright{
 	name = "Containment Pen";
@@ -13140,7 +13160,9 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/surgery)
+/area/medical/surgery{
+	name = "\improper Operating Theatre 3"
+	})
 "AG" = (
 /obj/effect/shuttle_landmark/triumph/deck3/starboard,
 /turf/space,
@@ -14499,7 +14521,9 @@
 "De" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/white,
-/area/medical/surgery)
+/area/medical/surgery{
+	name = "\improper Operating Theatre 3"
+	})
 "Df" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
@@ -18592,7 +18616,9 @@
 	pixel_y = -25
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/surgery)
+/area/medical/surgery{
+	name = "\improper Operating Theatre 3"
+	})
 "LB" = (
 /obj/item/storage/box/beakers{
 	pixel_x = 2;
@@ -19628,7 +19654,9 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/surgery)
+/area/medical/surgery{
+	name = "\improper Operating Theatre 3"
+	})
 "NC" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -22452,7 +22480,9 @@
 	anchored = 1
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/surgery)
+/area/medical/surgery{
+	name = "\improper Operating Theatre 3"
+	})
 "Tj" = (
 /obj/item/radio/intercom{
 	dir = 1;
@@ -22662,7 +22692,9 @@
 	pixel_x = 24
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/surgery)
+/area/medical/surgery{
+	name = "\improper Operating Theatre 3"
+	})
 "TE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -22945,7 +22977,9 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/surgery)
+/area/medical/surgery{
+	name = "\improper Operating Theatre 3"
+	})
 "Ug" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -23771,6 +23805,7 @@
 	dir = 1
 	},
 /obj/machinery/disposal,
+/obj/effect/floor_decal/industrial/warning/full,
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
 "VN" = (
@@ -23870,7 +23905,9 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/surgery)
+/area/medical/surgery{
+	name = "\improper Operating Theatre 3"
+	})
 "VW" = (
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical)
@@ -24975,7 +25012,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/optable,
 /turf/simulated/floor/tiled/white,
-/area/medical/surgery)
+/area/medical/surgery{
+	name = "\improper Operating Theatre 3"
+	})
 "Yl" = (
 /obj/structure/table/reinforced,
 /obj/machinery/recharger,
@@ -25455,6 +25494,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 1
 	},
+/obj/machinery/camera/network/medbay,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery)
 "Zn" = (
@@ -25486,6 +25526,11 @@
 "Zq" = (
 /turf/simulated/wall/r_wall,
 /area/rnd/xenobiology)
+"Zr" = (
+/turf/simulated/wall,
+/area/medical/surgery{
+	name = "\improper Operating Theatre 3"
+	})
 "Zs" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/machinery/light_switch{
@@ -32454,14 +32499,14 @@ BO
 vS
 hG
 Wu
-eS
+Zr
 qv
-KM
-KM
-KM
+vy
+vy
+vy
 AF
 rl
-eS
+Zr
 AR
 EZ
 Ri
@@ -32596,14 +32641,14 @@ BO
 SP
 jQ
 bB
-eS
+Zr
 eV
 rk
 Yk
 De
 da
 Ti
-eS
+Zr
 es
 ny
 wc
@@ -32738,14 +32783,14 @@ Ep
 Dx
 Aj
 zF
-eS
+Zr
 kZ
-KM
+vy
 tW
-KM
+vy
 VV
 LA
-eS
+Zr
 nL
 ny
 zF
@@ -32880,14 +32925,14 @@ BO
 nL
 ny
 zF
-eS
+Zr
 TD
-KM
+vy
 NB
 lL
 jy
 Uf
-eS
+Zr
 wu
 Aj
 mB
@@ -33022,14 +33067,14 @@ eq
 HM
 ny
 Dy
-eS
-eS
-eS
-eS
-eS
+Zr
+Zr
+Zr
+Zr
+Zr
 mf
-eS
-eS
+Zr
+Zr
 nL
 ny
 zF
