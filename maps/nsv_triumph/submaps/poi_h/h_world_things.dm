@@ -4,7 +4,7 @@
 #define DESERT_SET_ATMOS	initial_gas_mix=ATMOSPHERE_ID_CLASSH
 #define DESERT_TURF_CREATE(x)	x/classh/initial_gas_mix=ATMOSPHERE_ID_DESERT
 
-DESERT_TURF_CREATE(/turf/unsimulated/wall/planetary)
+DESERT_TURF_CREATE(/turf/simulated/wall/planetary)
 
 DESERT_TURF_CREATE(/turf/simulated/wall)
 DESERT_TURF_CREATE(/turf/simulated/wall/sandstone)
@@ -23,6 +23,16 @@ DESERT_TURF_CREATE(/turf/simulated/mineral)
 DESERT_TURF_CREATE(/turf/simulated/mineral/ignore_mapgen)
 DESERT_TURF_CREATE(/turf/simulated/mineral/floor)
 DESERT_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
+
+
+/turf/unsimulated/wall/planetary/desert
+	name = "Endless Sands"
+	desc = "You see nothing but featureless flat desert stretching outwards far beyond what the eye can see."
+	icon_state = "desert"
+	opacity = 0
+	density = 1
+	alpha = 0
+	blocks_air = 0
 
 // -- Loot Spawners Stolen from UD Files -- //
 /obj/random/triumph

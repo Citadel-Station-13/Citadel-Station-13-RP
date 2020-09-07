@@ -9,18 +9,6 @@
 	density = 1
 	alpha = 0
 	blocks_air = 0
-
-/turf/unsimulated/wall/planetary/desert
-	name = "Endless Sands"
-	desc = "You see nothing but featureless flat desert stretching outwards far beyond what the eye can see."
-	icon_state = "desert"
-	opacity = 0
-	density = 1
-	alpha = 0
-	blocks_air = 0
-
-
-
 	// Set these to get your desired planetary atmosphere.
 	initial_gas_mix = GAS_STRING_STP
 
