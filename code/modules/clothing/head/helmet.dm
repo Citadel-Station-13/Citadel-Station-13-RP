@@ -223,3 +223,24 @@
 	name = "emergency response team medical helmet"
 	desc = "A set of armor worn by medical members of the NanoTrasen Emergency Response Team. Has red and white highlights."
 	icon_state = "erthelmet_med"
+
+/obj/item/clothing/head/helmet/ert/para
+	name = "Oculus Malum visor"
+	desc = "This specialty visor, nicknamed the 'MAW' by PMD agents, grants trained Agents the ability to view Paracausal events without suffering memetic hazards."
+	icon_state = "para_ert_helmet"
+	action_button_name = "Toggle Visor"
+
+/obj/item/clothing/head/helmet/ert/para/attack_self(mob/user as mob)
+	if(src.icon_state == initial(icon_state))
+		src.icon_state = "[icon_state]_up"
+		to_chat(user, "You raise the OM visor.")
+	else
+		src.icon_state = initial(icon_state)
+		to_chat(user, "You lower the OM visor.")
+	update_clothing_icon()	//so our mob-overlays update
+
+/obj/item/clothing/head/helmet/ert/para/Initialize(mob/living/carbon/human/H, src)
+	. = ..()
+	if(H.mind.isholy)
+		flash_protection = FLASH_PROTECTION_MAJOR
+	return

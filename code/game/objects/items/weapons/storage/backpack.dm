@@ -429,3 +429,8 @@
 	 Unlike the show claims, it is not a phoron-enhanced satchel of holding with plot-relevant content."
 	icon = 'icons/obj/clothing/ranger.dmi'
 	icon_state = "ranger_satchel"
+
+/obj/item/storage/backpack/ert/para
+	name = "PARA trophy rack"
+	desc = "A special trophy rack bearing the device of an all-seeing eye; the symbol of the PMD."
+	icon_state = "para_ert_pack"

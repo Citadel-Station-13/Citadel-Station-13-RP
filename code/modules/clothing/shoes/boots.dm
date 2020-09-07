@@ -176,3 +176,14 @@
 	name = "black cowboy boots"
 	desc = "A pair of black cowboy boots, pretty easy to scuff up."
 	icon_state = "cowboyboots_black"
+
+/obj/item/clothing/shoes/boots/swat/para
+	name = "PARA boots"
+	desc = "PMD issued gloves, stamped with protective seals and spells."
+	icon_state = "para_ert_boots"
+
+/obj/item/clothing/shoes/boots/swat/para/Initialize(mob/living/carbon/human/H, src)
+	. = ..()
+	if(H.mind.isholy)
+		item_flags = NOSLIP
+	return
