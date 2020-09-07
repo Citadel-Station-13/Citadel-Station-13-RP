@@ -112,3 +112,10 @@
 	color = "#EEEEEE"
 	difficulty = EVENT_LEVEL_MODERATE
 	weaknesses = OVERMAP_WEAKNESS_EMP
+
+/obj/effect/overmap/event/cult
+	name = "screaming signals"
+	events = list(/datum/event/cult/overmap)
+	opacity = 0
+	event_icon_states = list("cultist")
+	color = "#DD4444"
