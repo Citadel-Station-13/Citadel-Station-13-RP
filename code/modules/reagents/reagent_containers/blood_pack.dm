@@ -86,6 +86,12 @@
 
 /obj/item/reagent_containers/blood/BMinus
 	blood_type = "B-"
+	
+/obj/item/reagent_containers/blood/ABPlus
+	blood_type = "AB+"
+
+/obj/item/reagent_containers/blood/ABMinus
+	blood_type = "AB-"
 
 /obj/item/reagent_containers/blood/OPlus
 	blood_type = "O+"
