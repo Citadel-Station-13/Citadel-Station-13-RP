@@ -20,6 +20,7 @@
 	response_help  = "thinks better of touching"
 	response_disarm = "flailed at"
 	response_harm   = "punched"
+	icon = 'icons/mob/cult.dmi'
 
 	hovering = TRUE
 	softfall = TRUE //Beings made of Hellmarble and powered by the tears of the damned are not concerned with mortal things such as 'gravity'.
@@ -61,6 +62,8 @@
 	var/construct_type = "shade"
 	var/list/construct_spells = list()
 //	var/do_glow = TRUE
+
+	ai_holder_type = /datum/ai_holder/simple_mob/melee
 
 /mob/living/simple_mob/construct/place_spell_in_hand(var/path)
 	if(!path || !ispath(path))
@@ -150,8 +153,8 @@
 /mob/living/simple_mob/construct/Process_Spacemove()
 	return 1
 
-/*
-// Glowing Procs
+
+//Glowing Procs
 /mob/living/simple_mob/construct/proc/add_glow()
 	var/image/eye_glow = image(icon,"glow-[icon_state]")
 	eye_glow.plane = PLANE_LIGHTING_ABOVE
@@ -160,4 +163,3 @@
 
 /mob/living/simple_mob/construct/proc/remove_glow()
 	overlays.Cut()
-*/
