@@ -11,13 +11,15 @@ var/datum/controller/rogue/rm_controller
 	var/list/datum/rogue/zonemaster/ready_zones = list()
 
 	//So I don't have to do absurd list[list[thing]] over and over.
+	// Adjusting the numbers to where, yes, the first scan is going to suck for mining, but hopefully with the base difficulty still at 100 with this then *spawning*
+	// onto the level 5 difficulty will make up for this. - Enzo 9/8/2020
 	var/list/diffstep_nums = list(
 		1,
-		55,
+		2,
+		3,
+		50,
 		100,
-		200,
-		300,
-		400)
+		200)
 
 	var/list/diffstep_chances = list(
 		10,
@@ -39,7 +41,7 @@ var/datum/controller/rogue/rm_controller
 	var/difficulty = 100
 
 	//Info about our current step
-	var/diffstep = 3
+	var/diffstep = 1
 
 	//Difficulty cap
 	var/max_diffstep = 6

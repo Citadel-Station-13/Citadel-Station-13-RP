@@ -95,7 +95,7 @@
 /datum/map_template/triumph_lateload/away_mining_planet/on_map_loaded(z)
 	. = ..()
 	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_MININGPLANET, world.maxx - 4, world.maxy - 4) // Create the mining Z-level.
-	new /datum/random_map/noise/ore/mining_planet(null, 1, 1, Z_LEVEL_MININGPLANET, 48, 48)         // Create the mining ore distribution map.
+	new /datum/random_map/noise/ore/mining_planet(null, 1, 1, Z_LEVEL_MININGPLANET, 64, 64)         // Create the mining ore distribution map.
 
 // Class D Rogue Planet Exploration Zone.
 #include "poi_d/_class_d.dm"

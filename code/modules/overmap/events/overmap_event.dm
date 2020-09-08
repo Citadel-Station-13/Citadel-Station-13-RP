@@ -119,3 +119,5 @@
 	opacity = 0
 	event_icon_states = list("cultist")
 	color = "#DD4444"
+	difficulty = EVENT_LEVEL_MAJOR
+	weaknesses = OVERMAP_WEAKNESS_FIRE

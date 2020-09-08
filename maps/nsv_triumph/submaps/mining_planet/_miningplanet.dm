@@ -37,13 +37,16 @@
 /datum/random_map/noise/ore/mining_planet
 	descriptor = "Mining planet mine ore distribution map"
 	deep_val = 0.6 //More riches, normal is 0.7 and 0.8
-	rare_val = 0.9
+	rare_val = 0.4
 
 // The check_map_sanity proc is sometimes unsatisfied with how AMAZING our ores are
 /datum/random_map/noise/ore/mining_planet/check_map_sanity()
 	var/rare_count = 0
 	var/surface_count = 0
 	var/deep_count = 0
+
+//// Something is causing the ore spawn to error out, but still spawn ores for us so we'll need to keep tabs on why this is.
+//// Hopefully the increased rarity val will cause the error to vanish, but we'll see. - Enzo 9/8/2020
 
 	// Increment map sanity counters.
 	for(var/value in map)
