@@ -2,6 +2,7 @@
 #define LOC_HALLWAYS	1
 #define LOC_RESEARCH	2
 #define LOC_CHAPEL		3
+#define LOC_BRIDGE		4
 
 /datum/event/cult
 	var/location
@@ -43,17 +44,22 @@
 			spawn_area_type = /area/hallway
 			locstring = "public hallways"
 			spawncount = rand(4 * severity, 6 * severity)
-			boss_spawn_count = rand(2,5)
+			boss_spawn_count = rand(2,3)
 		if(LOC_RESEARCH)
 			spawn_area_type = /area/rnd
 			locstring = "research and development"
-			spawncount = rand(2 * severity, 5 * severity)
+			spawncount = rand(2 * severity, 4 * severity)
 			boss_spawn_count = rand(0,2)
 		if(LOC_CHAPEL)
 			spawn_area_type = /area/chapel/main
 			locstring = "chapel"
-			spawncount = rand(3 * severity, 8 * severity)
-			boss_spawn_count = rand(2,3)
+			spawncount = rand(2 * severity, 4 * severity)
+			boss_spawn_count = rand(1,2)
+		if(LOC_BRIDGE)
+			spawn_area_type = /area/bridge
+			locstring = "bridge"
+			spawncount = rand(1 * severity, 3 * severity)
+			boss_spawn_count = rand(0,1)
 
 /datum/event/cult/end()
 	var/list/vents = list()
