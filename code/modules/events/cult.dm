@@ -38,23 +38,23 @@
 		if(LOC_LIBRARY)
 			spawn_area_type = /area/library
 			locstring = "library"
-			spawncount = rand(2 * severity, 3 * severity)
-			boss_spawn_count = rand(0,1)
+			spawncount = rand(1 * severity, 2 * severity)
+			boss_spawn_count = 0
 		if(LOC_HALLWAYS)
 			spawn_area_type = /area/hallway
 			locstring = "public hallways"
-			spawncount = rand(4 * severity, 6 * severity)
-			boss_spawn_count = rand(2,3)
+			spawncount = rand(3 * severity, 5 * severity)
+			boss_spawn_count = rand(0,2)
 		if(LOC_RESEARCH)
 			spawn_area_type = /area/rnd
 			locstring = "research and development"
-			spawncount = rand(2 * severity, 4 * severity)
-			boss_spawn_count = rand(0,2)
+			spawncount = rand(1 * severity, 3 * severity)
+			boss_spawn_count = rand(0,1)
 		if(LOC_CHAPEL)
 			spawn_area_type = /area/chapel/main
 			locstring = "chapel"
-			spawncount = rand(2 * severity, 4 * severity)
-			boss_spawn_count = rand(1,2)
+			spawncount = rand(1 * severity, 3 * severity)
+			boss_spawn_count = rand(0,1)
 		if(LOC_BRIDGE)
 			spawn_area_type = /area/bridge
 			locstring = "bridge"
