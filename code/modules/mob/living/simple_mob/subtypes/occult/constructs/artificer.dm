@@ -7,11 +7,10 @@
 	real_name = "Artificer"
 	construct_type = "artificer"
 	desc = "A bulbous construct dedicated to building and maintaining temples to their otherworldly lords."
-	icon = 'icons/mob/mob.dmi'
 	icon_state = "artificer"
 	icon_living = "artificer"
-	maxHealth = 150
-	health = 150
+	maxHealth = 100
+	health = 100
 	response_harm = "viciously beaten"
 	harm_intent_damage = 5
 	melee_damage_lower = 15 //It's not the strongest of the bunch, but that doesn't mean it can't hurt you.
@@ -28,3 +27,20 @@
 							/spell/targeted/occult_repair_aura,
 							/spell/targeted/construct_advanced/mend_acolyte
 							)
+
+	ai_holder_type = /datum/ai_holder/mimic
+
+////////////////////////////
+//		Ranged Artificer
+////////////////////////////
+
+/mob/living/simple_mob/construct/artificer/caster
+	name = "Artificer"
+	real_name = "Artificer"
+	construct_type = "artificer"
+	desc = "A bulbous construct dedicated to building and maintaining temples to their otherworldly lords. Its central eye glows with unknowable power."
+	icon_state = "caster_artificer"
+	icon_living = "caster_artificer"
+	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
+	projectiletype = /obj/item/projectile/beam/inversion
+	projectilesound = 'sound/weapons/spiderlunge.ogg'
