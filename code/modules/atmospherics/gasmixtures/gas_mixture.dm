@@ -275,6 +275,12 @@
 
 	return removed
 
+//Returns the amount of gas that has the given flag, in moles
+/datum/gas_mixture/proc/get_by_flag(flag)
+	. = 0
+	for(var/g in gas)
+		if(GLOB.meta_gas_flags[g] & flag)
+			. += gas[g]
 
 //Copies gas and temperature from another gas_mixture.
 /datum/gas_mixture/proc/copy_from(const/datum/gas_mixture/sample)
@@ -499,3 +505,7 @@
 	//archive()
 	update_values()
 	return TRUE
+
+/datum/gas_mixture/proc/get_mass()
+	for(var/g in gas)
+		. += gas[g] * GLOB.meta_gas_molar_mass[g] * group_multiplier

@@ -80,7 +80,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "tacknife"
 	item_state = "knife"
-	force_divisor = 0.25 //15 when hardness 60 (steel)
+	force_divisor = 0.20 //12 when hardness 60 (steel)
 	attack_verb = list("stabbed", "chopped", "cut")
 	applies_material_colour = 1
 
@@ -90,7 +90,7 @@
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "buckknife"
 	item_state = "knife"
-	force_divisor = 0.34 // 20 with hardness 60 (steel)
+	force_divisor = 0.25 // 15 with hardness 60 (steel)
 	thrown_force_divisor = 1.75 // 20 with weight 20 (steel)
 	attack_verb = list("sliced", "stabbed", "chopped", "cut")
 	applies_material_colour = 1

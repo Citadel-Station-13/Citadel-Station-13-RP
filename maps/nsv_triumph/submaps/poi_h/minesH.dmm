@@ -1,0 +1,68 @@
+"a" = (/turf/template_noop,/area/template_noop)
+"b" = (/obj/random/multiple/minevault,/obj/item/ore/gold,/obj/item/ore/gold,/obj/item/ore/gold,/obj/item/ore/gold,/obj/item/ore/gold,/obj/item/ore/gold,/obj/item/ore/gold,/obj/item/ore/gold,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/POIs/goldmine)
+"e" = (/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/POIs/goldmine)
+"f" = (/mob/living/simple_mob/animal/giant_spider/nurse/queen,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/POIs/goldmine)
+"g" = (/obj/structure/closet/crate/miningcar,/obj/random/roguemineloot,/obj/random/roguemineloot,/obj/item/ore/gold,/obj/item/ore/gold,/obj/item/ore/gold,/obj/item/ore/gold,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/POIs/goldmine)
+"h" = (/obj/random/outcrop,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/POIs/goldmine)
+"j" = (/obj/structure/loot_pile/mecha/ripley,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/POIs/goldmine)
+"m" = (/obj/random/obstruction,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/POIs/goldmine)
+"o" = (/turf/simulated/mineral/classh,/area/triumph_away/poi_h/POIs/goldmine)
+"p" = (/mob/living/simple_mob/animal/giant_spider,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/POIs/goldmine)
+"q" = (/turf/simulated/floor/beach/sand/desert/classh,/area/triumph_away/poi_h/POIs/goldmine)
+"r" = (/obj/random/mob/spider/nurse,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/POIs/goldmine)
+"s" = (/obj/effect/spider/stickyweb/dark,/obj/structure/outcrop/gold,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/POIs/goldmine)
+"u" = (/obj/effect/spider/stickyweb/dark,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/POIs/goldmine)
+"v" = (/obj/structure/closet/crate/miningcar,/obj/random/roguemineloot,/obj/random/roguemineloot,/obj/item/ore/gold,/obj/item/ore/gold,/obj/item/ore/gold,/obj/item/ore/gold,/obj/item/ore/gold,/turf/simulated/mineral/floor/cave,/area/triumph_away/poi_h/POIs/goldmine)
+"y" = (/obj/effect/spider/stickyweb/dark,/obj/effect/spider/eggcluster,/obj/effect/spider/cocoon,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/POIs/goldmine)
+"z" = (/obj/random/mob/spider/nurse,/obj/effect/spider/stickyweb/dark,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/POIs/goldmine)
+"A" = (/obj/effect/spider/stickyweb,/obj/effect/spider/cocoon,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/POIs/goldmine)
+"B" = (/obj/effect/spider/stickyweb,/obj/effect/spider/eggcluster,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/POIs/goldmine)
+"C" = (/obj/effect/spider/stickyweb/dark,/turf/simulated/mineral/floor/cave,/area/triumph_away/poi_h/POIs/goldmine)
+"E" = (/obj/structure/outcrop/gold,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/POIs/goldmine)
+"F" = (/obj/random/powercell,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/POIs/goldmine)
+"G" = (/obj/structure/closet/crate/miningcar,/obj/random/roguemineloot,/obj/random/roguemineloot,/obj/random/roguemineloot,/obj/random/roguemineloot,/obj/item/ore/gold,/obj/item/ore/gold,/obj/item/ore/gold,/obj/item/ore/gold,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/POIs/goldmine)
+"H" = (/obj/random/multiple/minevault,/obj/item/ore/gold,/obj/item/ore/gold,/obj/item/ore/gold,/obj/item/ore/gold,/obj/item/ore/gold,/obj/item/ore/gold,/obj/item/ore/gold,/obj/item/ore/gold,/obj/item/ore/gold,/obj/item/ore/gold,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/POIs/goldmine)
+"J" = (/obj/item/pickaxe/diamond,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/POIs/goldmine)
+"K" = (/obj/random/mob/spider/mutant,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/POIs/goldmine)
+"M" = (/obj/effect/spider/stickyweb/dark,/obj/effect/spider/cocoon,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/POIs/goldmine)
+"O" = (/obj/effect/spider/stickyweb,/obj/structure/outcrop/gold,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/POIs/goldmine)
+"P" = (/obj/random/mob/spider/mutant,/turf/simulated/mineral/floor/cave,/area/triumph_away/poi_h/POIs/goldmine)
+"R" = (/obj/random/mob/spider/nurse,/obj/effect/spider/stickyweb,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/POIs/goldmine)
+"S" = (/obj/effect/spider/stickyweb,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/POIs/goldmine)
+"V" = (/obj/random/multiple/triumph/mechtool,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/POIs/goldmine)
+"W" = (/obj/random/mob/spider/nurse,/obj/effect/spider/stickyweb,/obj/effect/spider/cocoon,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/POIs/goldmine)
+"X" = (/obj/random/mob/spider,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/POIs/goldmine)
+"Z" = (/obj/effect/spider/stickyweb/dark,/obj/random/multiple/triumph/miningdrills,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/POIs/goldmine)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaqqqqqqqqqqqqqqqqqqqqqaaaa
+aaaaqqqqqqqooooooooooooooqqaaa
+aaaqqqooooooooooooooooooooqqaa
+aaqqoooooooooooooEZMsooooooqaa
+aqqooooooooohSSemeeeeeEooooqqa
+aqqoooooEeeKeeSemeeeeeSSoooqqa
+aqoooooEeeeeooooooooooASSoooqa
+aqooooeeeXoooooooooooooeeEooqa
+aqoooEXeEoooooooooooooooeKooqa
+aqoooeeeoooouySSuuooooooeeooqa
+aoooeeeEooosuSSSzMooooEepEooqa
+aooeeeoooosuWSHSMuoooEeeeKooqa
+aooeeEooooySSefSSBooouuoooooqa
+aooSSoooooSRbeeeHSOoouMoooooqa
+aooSSoooooeeeJeeerSooouCooooqa
+aooeeeEoooGKeeeKjEooooemmEooqa
+aoooeXegooeeeKeVEoooooEmeFooqa
+aqoooeeEooeeeeeeooooooooejooqa
+aqoooeeooouueeEEoooooooeeEooqa
+aqoooeeXoouueeooooCvPeeKeoooqa
+aqoooSSooosMeeeEuCCereEoooooqa
+aqooeeSoooouueeeMCreeEooooooqa
+aqoomeeoooooseeuueeEoooooooqqa
+aqommmeooooooooooooooooooqqqqa
+aqqemmooooooooooooooooqqqqqqqa
+aqqqeooooooooooooooqqqqqqaaaaa
+aaaqqooooooooooooqqqqqqaaaaaaa
+aaaaqqqqqqqqqqqqqqqqqaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+"}

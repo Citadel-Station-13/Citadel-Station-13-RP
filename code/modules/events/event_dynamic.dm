@@ -53,7 +53,7 @@ var/list/event_last_fired = list()
 	possibleEvents[/datum/event/pda_spam] = max(min(25, player_list.len) * 4, 200)
 	possibleEvents[/datum/event/money_lotto] = max(min(5, player_list.len), 50)
 	if(account_hack_attempted)
-		possibleEvents[/datum/event/money_hacker] = max(min(25, player_list.len) * 4, 200)
+		possibleEvents[/datum/gm_action/money_hacker] = max(min(25, player_list.len) * 4, 200)
 
 
 	possibleEvents[/datum/event/carp_migration] = 20 + 10 * active_with_role["Engineer"]

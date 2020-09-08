@@ -1,0 +1,53 @@
+"a" = (/turf/simulated/floor/beach/sand/desert,/area/template_noop)
+"c" = (/obj/structure/fence{dir = 4},/turf/simulated/floor/plating,/area/triumph_away/poi_h/POIs/solar_farm)
+"e" = (/obj/structure/fence/door,/turf/simulated/floor/plating,/area/triumph_away/poi_h/POIs/solar_farm)
+"h" = (/obj/structure/cable{d1 = 2; d2 = 4; icon_state = "2-4"},/obj/structure/cable{icon_state = "2-8"},/obj/structure/cable{icon_state = "1-2"},/turf/simulated/floor/plating,/area/triumph_away/poi_h/POIs/solar_farm)
+"j" = (/obj/machinery/power/solar_control,/turf/simulated/floor/plating,/area/triumph_away/poi_h/POIs/solar_farm)
+"k" = (/obj/structure/cable{icon_state = "1-8"},/obj/structure/cable{icon_state = "1-4"},/turf/simulated/floor/plating,/area/triumph_away/poi_h/POIs/solar_farm)
+"l" = (/obj/structure/fence/door/opened{dir = 8},/turf/simulated/floor/plating,/area/triumph_away/poi_h/POIs/solar_farm)
+"m" = (/obj/machinery/power/smes/buildable,/obj/structure/cable{dir = 4},/turf/simulated/floor/plating,/area/triumph_away/poi_h/POIs/solar_farm)
+"n" = (/obj/structure/cable{dir = 8},/turf/simulated/floor/airless,/area/triumph_away/poi_h/POIs/solar_farm)
+"o" = (/obj/structure/cable{icon_state = "4-8"},/turf/simulated/floor/plating,/area/triumph_away/poi_h/POIs/solar_farm)
+"p" = (/obj/structure/cable{d1 = 2; d2 = 4; icon_state = "2-4"},/obj/structure/cable{icon_state = "2-8"},/obj/structure/cable{icon_state = "1-2"},/obj/triumph_away_spawner/D/drone_spawner,/turf/simulated/floor/plating,/area/triumph_away/poi_h/POIs/solar_farm)
+"q" = (/obj/machinery/power/terminal{dir = 1},/obj/structure/cable{dir = 8},/obj/structure/cable{icon_state = "4-8"},/obj/triumph_away_spawner/D/drone_spawner,/turf/simulated/floor/plating,/area/triumph_away/poi_h/POIs/solar_farm)
+"s" = (/obj/structure/cable{icon_state = "1-8"},/obj/structure/cable{icon_state = "1-2"},/turf/simulated/floor/plating,/area/triumph_away/poi_h/POIs/solar_farm)
+"u" = (/turf/template_noop,/area/template_noop)
+"v" = (/obj/machinery/power/terminal{dir = 1},/obj/structure/cable{dir = 8},/turf/simulated/floor/plating,/area/triumph_away/poi_h/POIs/solar_farm)
+"x" = (/obj/structure/cable{d1 = 2; d2 = 4; icon_state = "2-4"},/obj/structure/cable{icon_state = "2-8"},/turf/simulated/floor/plating,/area/triumph_away/poi_h/POIs/solar_farm)
+"z" = (/obj/machinery/power/solar,/obj/structure/cable{dir = 8},/turf/simulated/floor/plating,/area/triumph_away/poi_h/POIs/solar_farm)
+"B" = (/turf/simulated/wall,/area/triumph_away/poi_h/POIs/solar_farm)
+"C" = (/obj/structure/cable{icon_state = "1-2"},/turf/simulated/floor/plating,/area/triumph_away/poi_h/POIs/solar_farm)
+"E" = (/obj/structure/closet/secure_closet/engineering_electrical{icon_state = "secureengoff"; locked = 0},/obj/random/tool/alien,/obj/random/tool/alien,/turf/simulated/floor/plating,/area/triumph_away/poi_h/POIs/solar_farm)
+"F" = (/obj/structure/cable{icon_state = "2-8"},/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/turf/simulated/floor/plating,/area/triumph_away/poi_h/POIs/solar_farm)
+"G" = (/obj/structure/fence{dir = 1},/turf/simulated/floor/plating,/area/triumph_away/poi_h/POIs/solar_farm)
+"H" = (/turf/simulated/floor/plating,/area/triumph_away/poi_h/POIs/solar_farm)
+"I" = (/obj/triumph_away_spawner/D/drone_spawner,/turf/simulated/floor/plating,/area/triumph_away/poi_h/POIs/solar_farm)
+"K" = (/turf/simulated/floor/airless,/area/triumph_away/poi_h/POIs/solar_farm)
+"L" = (/obj/structure/fence/door/opened{dir = 4},/turf/simulated/floor/plating,/area/triumph_away/poi_h/POIs/solar_farm)
+"N" = (/obj/structure/cable{icon_state = "1-4"},/obj/structure/cable{icon_state = "1-2"},/turf/simulated/floor/plating,/area/triumph_away/poi_h/POIs/solar_farm)
+"O" = (/obj/structure/cable{icon_state = "1-2"},/obj/machinery/door/airlock/maintenance/engi{req_one_access = null},/turf/simulated/floor/plating,/area/triumph_away/poi_h/POIs/solar_farm)
+"R" = (/obj/machinery/power/smes/buildable,/obj/structure/cable{dir = 4},/obj/structure/cable{icon_state = "4-8"},/turf/simulated/floor/plating,/area/triumph_away/poi_h/POIs/solar_farm)
+"S" = (/obj/machinery/power/solar,/obj/structure/cable{dir = 4},/turf/simulated/floor/plating,/area/triumph_away/poi_h/POIs/solar_farm)
+"T" = (/obj/machinery/power/tracker,/obj/structure/cable{dir = 8},/turf/simulated/floor/plating,/area/triumph_away/poi_h/POIs/solar_farm)
+"U" = (/obj/structure/cable{icon_state = "2-8"},/turf/simulated/floor/plating,/area/triumph_away/poi_h/POIs/solar_farm)
+"V" = (/obj/structure/cable{icon_state = "1-8"},/obj/structure/cable{icon_state = "1-4"},/obj/structure/cable{icon_state = "1-2"},/turf/simulated/floor/plating,/area/triumph_away/poi_h/POIs/solar_farm)
+"W" = (/obj/structure/cable{icon_state = "4-8"},/turf/simulated/wall,/area/triumph_away/poi_h/POIs/solar_farm)
+"Z" = (/obj/structure/cable{icon_state = "2-8"},/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/obj/structure/cable{icon_state = "4-8"},/turf/simulated/floor/plating,/area/triumph_away/poi_h/POIs/solar_farm)
+
+(1,1,1) = {"
+auuuuuuuuuuuuuu
+KBBBBBaaaaaaauu
+nWRmjBceccccBau
+KBvqUBzxSzxSGau
+KBEBOBzpSzhSGau
+aBBBCSzhSzhSGau
+aaGTsSzhSzhSGau
+uaGHNooZooFHLau
+ualHCHICHHCHGau
+uaGzVSzVSzVSGau
+uaGzVSzVSzVSGau
+uaGzkSzkSzkSGau
+uaBcccceccccBau
+uuaaaaaaaaaaauu
+uuuuuuuuuuuuuuu
+"}

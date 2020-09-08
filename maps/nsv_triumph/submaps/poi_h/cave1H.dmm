@@ -1,0 +1,38 @@
+"a" = (/turf/template_noop,/area/template_noop)
+"m" = (/obj/random/multiple/triumph/ores,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/explored)
+"q" = (/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/explored)
+"r" = (/obj/item/storage/mre/random,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/explored)
+"s" = (/turf/simulated/mineral/classh,/area/triumph_away/poi_h/explored)
+"u" = (/obj/random/multiple/triumph/miningdrills,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/explored)
+"C" = (/obj/random/multiple/triumph/ores,/obj/structure/closet/crate/miningcar,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/explored)
+"D" = (/obj/structure/sink/puddle,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/explored)
+"E" = (/obj/random/outcrop,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/explored)
+"K" = (/obj/random/obstruction,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/explored)
+"M" = (/obj/random/outcrop,/turf/simulated/floor/beach/sand/desert/classh,/area/triumph_away/poi_h/explored)
+"N" = (/obj/structure/closet/crate/miningcar,/obj/random/multiple/triumph/ores,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/explored)
+"R" = (/obj/item/flashlight/lantern,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/explored)
+"S" = (/obj/random/obstruction,/turf/simulated/mineral/classh,/area/triumph_away/poi_h/explored)
+"W" = (/turf/simulated/floor/beach/sand/desert/classh,/area/triumph_away/poi_h/explored)
+
+(1,1,1) = {"
+aaaaWWWWaaaaaWWWaaaa
+aWWWWssWWWWWWWWWWaaa
+WWsssssssWWMssssMWaa
+WssssqEssqqssssssWWa
+WsssCqDssqqssssssMWa
+WssEqqsssqqsssssssWa
+WssqqsssEqqqqqqsssWW
+WSsqqqEsrqRqEqqEssWW
+WssEqqqKqqNssqqqssWW
+WsssEqssqussssqKqsWW
+WssssssqqqKEsssqqssW
+WssssssqqsqqsssqqssW
+WssssqqKsssqqssqqsMW
+WsssqqqssssqqEsEqqWW
+WssqqqsssssqqqssqqWW
+WMsqqsssDEqmqEsssssW
+WWWqqssEquqqsssssssW
+aaWWssssqEqsssssssWW
+aaaWMsssssssssWMWWWa
+aaaWWWWWWWWWWWWWWaaa
+"}

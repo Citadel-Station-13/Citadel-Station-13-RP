@@ -1,3 +1,12 @@
+/obj/effect/overmap/visitable/sector/listeningpost
+	scanner_name = "Strange Asteroid"
+	scanner_desc = @{"[i]Registration[/i]: UNKNOWN
+[i]Class[/i]: Installation
+[i]Transponder[/i]: None Detected
+[b]Notice[/b]: Emitting encrypted radio-frequency traffic"}
+	icon_state = "object"
+	initial_generic_waypoints = list("tether_excursion_listeningpost")
+
 /obj/item/paper/listneningpost/mission
 	name = "\improper Operation: Watchtower"
 	info = {"<b>Mission Details</b>: You have been assigned to a newly constructed listening post

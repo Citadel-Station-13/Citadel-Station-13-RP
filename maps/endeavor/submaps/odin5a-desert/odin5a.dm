@@ -17,7 +17,7 @@
 /datum/shuttle_destination/excursion/beach
 	name = "Odin 5a Coastal Landing"
 	my_area = /area/shuttle/excursion/away_beach
-	preferred_interim_area = /area/shuttle/excursion/sand_moving
+	preferred_interim_tag = "tether_excursion_transit_sand"
 	skip_me = TRUE
 
 	routes_to_make = list(
@@ -59,14 +59,6 @@
 		return 1
 
 // -- Objs -- //
-
-//This is a special type of object which will build our shuttle paths, only if this map loads
-//You do need to place this object on the map somewhere.
-/obj/shuttle_connector/beach
-	name = "shuttle connector - beach"
-	shuttle_name = "Excursion Shuttle"
-	//This list needs to be in the correct order, and start with the one that connects to the rest of the shuttle 'network'
-	destinations = list(/datum/shuttle_destination/excursion/odin5a_orbit, /datum/shuttle_destination/excursion/beach)
 
 //This object simply performs any map setup that needs to happen on our map if it loads.
 //As with the above, you do need to place this object on the map somewhere.

@@ -7,7 +7,7 @@
 /turf/space,
 /area/triumph_away/debrisfield/explored)
 "c" = (
-/obj/random/gun,
+/obj/random/gun/random,
 /turf/simulated/floor/airless,
 /area/triumph_away/debrisfield/explored)
 "d" = (
