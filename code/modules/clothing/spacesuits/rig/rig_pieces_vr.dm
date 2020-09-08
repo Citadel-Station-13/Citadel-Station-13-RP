@@ -12,29 +12,20 @@
 		SPECIES_PROMETHEAN		= 'icons/mob/species/skrell/helmet.dmi',
 		SPECIES_XENOHYBRID		= 'icons/mob/species/unathi/helmet.dmi',
 		SPECIES_VOX 			= 'icons/mob/species/vox/head.dmi',
-		SPECIES_TESHARI = 'icons/mob/species/teshari/head.dmi',
-		SPECIES_ZADDAT = 'icons/mob/species/zaddat/head.dmi'
+		SPECIES_TESHARI 		= 'icons/mob/species/teshari/head.dmi',
+		SPECIES_ZADDAT 			= 'icons/mob/species/zaddat/head.dmi'
 		)
 
 
 
-/obj/item/clothing/suit/space/rig
+/obj/item/clothing/shoes/magboots/rig
 	sprite_sheets = list(
-		SPECIES_TAJ 			= 'icons/mob/species/tajaran/suit.dmi',
-		SPECIES_SKRELL 			= 'icons/mob/species/skrell/suit.dmi',
-		SPECIES_UNATHI 			= 'icons/mob/species/unathi/suit.dmi',
-		SPECIES_NEVREAN 		= 'icons/mob/species/nevrean/suit_vr.dmi',
-		SPECIES_AKULA 			= 'icons/mob/species/akula/suit_vr.dmi',
-		SPECIES_SERGAL			= 'icons/mob/species/sergal/suit_vr.dmi',
-		SPECIES_ZORREN_FLAT		= 'icons/mob/species/fennec/suit_vr.dmi',
-		SPECIES_ZORREN_HIGH 	= 'icons/mob/species/fox/suit_vr.dmi',
-		SPECIES_VULPKANIN		= 'icons/mob/species/vulpkanin/suit.dmi',
-		SPECIES_PROMETHEAN		= 'icons/mob/species/skrell/suit.dmi',
-		SPECIES_XENOHYBRID		= 'icons/mob/species/unathi/suit.dmi',
-		SPECIES_VOX 			= 'icons/mob/species/vox/suit.dmi',
-		SPECIES_TESHARI = 'icons/mob/species/teshari/suit.dmi',
-		SPECIES_ZADDAT = 'icons/mob/species/zaddat/suit.dmi'
-		)
+		SPECIES_ZADDAT 			= 'icons/mob/species/zaddat/shoes.dmi'
+		)//Fingers crossed it will reference back to the base sheet if it can't find the others
+
+/obj/item/clothing/gloves/gauntlets/rig
+
+/obj/item/clothing/feet/shoes/space/rig
 
 /obj/item/clothing/head/helmet/space/rig
 	species_restricted = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_TAJ, SPECIES_UNATHI, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_PROMETHEAN, SPECIES_XENOHYBRID, SPECIES_VOX, SPECIES_TESHARI, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_ALRAUNE, SPECIES_ZADDAT)
