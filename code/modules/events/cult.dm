@@ -1,5 +1,5 @@
 #define LOC_LIBRARY		0
-#define LOC_HALLWAYS	1
+#define LOC_SECURITY	1
 #define LOC_RESEARCH	2
 #define LOC_CHAPEL		3
 #define LOC_BRIDGE		4
@@ -40,9 +40,9 @@
 			locstring = "library"
 			spawncount = rand(1 * severity, 2 * severity)
 			boss_spawn_count = 0
-		if(LOC_HALLWAYS)
-			spawn_area_type = /area/hallway
-			locstring = "public hallways"
+		if(LOC_SECURITY)
+			spawn_area_type = /area/security
+			locstring = "security"
 			spawncount = rand(3 * severity, 5 * severity)
 			boss_spawn_count = rand(0,2)
 		if(LOC_RESEARCH)
@@ -92,6 +92,7 @@
 	return
 
 #undef LOC_LIBRARY
-#undef LOC_HALLWAYS
+#undef LOC_SECURITY
 #undef LOC_RESEARCH
 #undef LOC_CHAPEL
+#undef LOC_BRIDGE
