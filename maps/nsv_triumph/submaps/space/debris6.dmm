@@ -6,29 +6,19 @@
 /obj/structure/lattice,
 /turf/space,
 /area/triumph_away/debrisfield/explored)
-"e" = (
-/obj/structure/lattice,
-/obj/structure/closet/crate/medical/blood,
-/turf/space,
-/area/triumph_away/debrisfield/explored)
 "J" = (
 /obj/structure/lattice,
 /obj/triumph_away_spawner/debrisfield/carp,
 /turf/space,
 /area/triumph_away/debrisfield/explored)
-"K" = (
-/obj/structure/lattice,
-/obj/structure/closet/crate/internals,
-/turf/space,
-/area/triumph_away/debrisfield/explored)
 
 (1,1,1) = {"
-K
+b
 b
 a
 "}
 (2,1,1) = {"
-e
+b
 b
 b
 "}

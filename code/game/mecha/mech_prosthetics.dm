@@ -182,8 +182,8 @@
 				qdel(I)
 		return
 
-	if(istype(I,/obj/item/weapon/disk/species))
-		var/obj/item/weapon/disk/species/D = I
+	if(istype(I,/obj/item/disk/species))
+		var/obj/item/disk/species/D = I
 		if(!D.species || !(D.species in GLOB.all_species))
 			to_chat(user, "<span class='warning'>This disk seems to be corrupted!</span>")
 		else

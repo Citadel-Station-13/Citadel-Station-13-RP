@@ -1,0 +1,29 @@
+"a" = (/turf/simulated/floor/beach/sand/desert/classh,/area/triumph_away/poi_h/unexplored)
+"b" = (/turf/simulated/floor/beach/sand/desert/classh,/area/triumph_away/poi_h/explored)
+"e" = (/turf/simulated/floor/water/shoreline/classh{dir = 9},/area/triumph_away/poi_h/explored)
+"g" = (/turf/simulated/floor/water/shoreline/classh,/area/triumph_away/poi_h/explored)
+"h" = (/obj/random/outcrop,/turf/simulated/floor/beach/sand/desert/classh,/area/triumph_away/poi_h/explored)
+"i" = (/turf/simulated/floor/water/shoreline/classh{dir = 10},/area/triumph_away/poi_h/explored)
+"j" = (/turf/simulated/floor/water/classh,/area/triumph_away/poi_h/explored)
+"q" = (/turf/simulated/floor/water/shoreline/classh{dir = 1},/area/triumph_away/poi_h/explored)
+"s" = (/turf/simulated/floor/water/shoreline/corner/classh{dir = 8},/area/triumph_away/poi_h/explored)
+"u" = (/turf/simulated/floor/water/shoreline/classh{dir = 5},/area/triumph_away/poi_h/explored)
+"A" = (/turf/simulated/floor/water/shoreline/classh{dir = 8},/area/triumph_away/poi_h/explored)
+"B" = (/turf/simulated/floor/water/shoreline/classh{dir = 6},/area/triumph_away/poi_h/explored)
+"C" = (/turf/simulated/floor/water/shoreline/corner/classh{dir = 1},/area/triumph_away/poi_h/explored)
+"I" = (/turf/simulated/floor/water/shoreline/corner/classh,/area/triumph_away/poi_h/explored)
+"N" = (/turf/simulated/floor/water/shoreline/corner/classh{dir = 4},/area/triumph_away/poi_h/explored)
+"V" = (/turf/simulated/floor/water/shoreline/classh{dir = 4},/area/triumph_away/poi_h/explored)
+
+(1,1,1) = {"
+aaaaaaaaaa
+ahbIggCbha
+abIBjjiCba
+aIBjjjjiCa
+aAjjjjjjVa
+aAjjjjjeNa
+aAjjjeqNha
+asujeNbbba
+ahsqNhbbba
+aaaaaaaaaa
+"}
