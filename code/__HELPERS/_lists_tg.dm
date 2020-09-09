@@ -45,6 +45,20 @@
 		pos--
 	L.Insert(pos+1, thing)
 
+/*
+Two lists may be different (A!=B) even if they have the same elements.
+This actually tests if they have the same entries and values.
+*/
+/proc/same_entries(var/list/first, var/list/second)
+	if(!islist(first) || !islist(second))
+		return 0
+	if(length(first) != length(second))
+		return 0
+	for(var/entry in first)
+		if(!(entry in second) || (first[entry] != second[entry]))
+			return 0
+	return 1
+
 
 //for sorting clients or mobs by ckey
 /proc/sortKey(list/L, order=1)

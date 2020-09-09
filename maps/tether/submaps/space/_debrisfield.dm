@@ -1,21 +1,15 @@
 // -- Datums -- //
-
-/datum/shuttle_destination/excursion/debrisfield
+/obj/effect/overmap/visitable/sector/debrisfield
 	name = "Debris Field"
-	my_area = /area/shuttle/excursion/debrisfield
-	preferred_interim_area = /area/shuttle/excursion/space_moving
-	skip_me = TRUE
-
-	routes_to_make = list(
-		/datum/shuttle_destination/excursion/virgo3b_orbit = 30 SECONDS
-	)
+	desc = "Space junk galore."
+	scanner_desc = @{"[i]Transponder[/i]: Various faint signals
+[b]Notice[/b]: Warning! Significant field of space debris detected. May be salvagable."}
+	icon_state = "dust1"
+	known = FALSE
+	color = "#ee3333"	//Redish, so it stands out against the other debris-like icons
+	initial_generic_waypoints = list("tether_excursion_debrisfield")
 
 // -- Objs -- //
-
-/obj/shuttle_connector/debrisfield
-	name = "shuttle connector - debrisfield"
-	shuttle_name = "Excursion Shuttle"
-	destinations = list(/datum/shuttle_destination/excursion/debrisfield)
 
 /obj/effect/step_trigger/teleporter/debrisfield_loop/north/New()
 	..()

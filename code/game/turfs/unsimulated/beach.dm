@@ -15,7 +15,7 @@
 	name = "Water"
 	icon_state = "water"
 
-/turf/unsimulated/beach/water/Initialize(mapload)
+/turf/unsimulated/beach/water/Initialize()
 	. = ..()
 	add_overlay(/obj/effect/turf_overlay/beach_water, TRUE)
 
@@ -59,7 +59,7 @@
 /turf/simulated/floor/beach/water/ocean
 	icon_state = "seadeep"
 
-/turf/simulated/floor/beach/water/Initialize(mapload)
+/turf/simulated/floor/beach/water/Initialize()
 	. = ..()
 	add_overlay(/obj/effect/turf_overlay/beach_ocean, TRUE)
 

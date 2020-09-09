@@ -22,8 +22,14 @@
 /turf/simulated/shuttle/wall/alien/hard_corner,
 /area/tether_away/alienship)
 "ah" = (
+/obj/effect/shuttle_landmark{
+	base_area = /area/tether_away/alienship;
+	base_turf = /turf/simulated/shuttle/floor/alienplating;
+	landmark_tag = "nav_excursion_alienship";
+	name = "Excursion Alienship"
+	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/shuttle/excursion/away_alienship)
+/area/tether_away/alienship/equip_dump)
 "ai" = (
 /obj/machinery/door/airlock/alien/locked,
 /turf/simulated/shuttle/floor/alienplating,
@@ -562,6 +568,12 @@
 /obj/item/trash/liquidfood,
 /turf/simulated/shuttle/floor/alien,
 /area/tether_away/alienship)
+"wE" = (
+/turf/simulated/shuttle/wall/alien,
+/area/tether_away/alienship/equip_dump)
+"Bk" = (
+/turf/simulated/shuttle/floor/alien,
+/area/tether_away/alienship/equip_dump)
 "Rx" = (
 /obj/item/reagent_containers/food/snacks/liquidfood,
 /turf/simulated/shuttle/floor/alien,

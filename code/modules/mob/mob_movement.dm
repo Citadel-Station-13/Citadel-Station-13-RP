@@ -441,8 +441,8 @@
 	return dense_object
 
 /mob/proc/Check_Shoegrip()
-	if(flying) //VOREStation Edit. Checks to see if they  and are flying.
-		return 1 //VOREStation Edit. Checks to see if they are flying. Mostly for this to be ported to Polaris.
+	if(flying)	// Checks to see if they are flying.
+		return 1
 	return 0
 
 /mob/proc/Process_Spaceslipping(var/prob_slip = 5)

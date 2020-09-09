@@ -96,7 +96,6 @@
 	mappath = 'cave3D.dmm'
 	cost = 5
 
-
 /datum/map_template/Class_D/droneship
 	name = "Automatic Constructor Ship"
 	mappath = 'matdropD.dmm'
