@@ -75,9 +75,11 @@
 /obj/effect/overmap/visitable/sector/debrisfield
 	name = "Debris Field"
 	desc = "Space junk galore."
-	icon_state = "dust4"
-	color = "#AAAAAA"
+	scanner_desc = @{"[i]Information[/i]: A collection of ruins from ages ago.."}
+	icon_state = "dust2"
+	color = "#BBBBBB"
 	known = FALSE
+	in_space = 1
 	start_x = 18
 	start_y = 23
 	initial_generic_waypoints = list("triumph_excursion_debrisfield")
@@ -86,6 +88,7 @@
 /obj/effect/overmap/visitable/sector/class_d
 	name = "Unidentified Planet"
 	desc = "ASdlke ERROR%%%% UNABLE TO----."
+	scanner_desc = @{"[i]Information[/i]: Scans report a planet with nearly no atmosphere, but life-signs are registered."}
 	in_space = 0
 	start_x = 17
 	start_y = 43
@@ -95,6 +98,10 @@
 /obj/effect/overmap/visitable/sector/class_h
 	name = "Unidentified Planet"
 	desc = "Planet readings indicate light atmosphere and high heat."
+	scanner_desc = @{"[i]Information[/i]
+		Atmosphere: Thin
+		Weather: Sunny, little to no wind
+		Lifesign: Yes"}
 	in_space = 0
 	start_x = 38
 	start_y = 7
@@ -105,6 +112,8 @@
 /obj/effect/overmap/visitable/sector/pirate_base
 	name = "Vox Pirate Base"
 	desc = "A nest of hostiles to the company. Caution is advised."
+	scanner_desc = @{"[i]Information[/i]
+		Warning, unable to scan through sensor shielding systems at location. Possible heavy hostile life-signs."}
 	in_space = 1
 	start_x = 52
 	start_y = 56
@@ -116,7 +125,10 @@
 /obj/effect/overmap/visitable/sector/mining_planet
 	name = "Mineral Rich planet"
 	desc = "A planet filled with valuable minerals. No life signs currently detected on the surface."
-	in_space = 1
+	scanner_desc = @{"[i]Information[/i]
+		Atmopshere: Mix of Oxygen, Nitrogen and Phoron. DANGER
+		Lifesigns: No immediate life-signs detected."}
+	in_space = 0
 	start_x = 10
 	start_y = 19
 	icon_state = "globe"

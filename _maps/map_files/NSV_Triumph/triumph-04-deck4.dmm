@@ -32,6 +32,9 @@
 /area/security/range)
 "acp" = (
 /obj/machinery/computer/borgupload,
+/obj/effect/floor_decal/corner/purple{
+	dir = 5
+	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "acE" = (
@@ -601,6 +604,9 @@
 	dir = 1
 	},
 /obj/machinery/papershredder,
+/obj/effect/floor_decal/corner/purple{
+	dir = 10
+	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "aAy" = (
@@ -681,15 +687,9 @@
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
 "aFu" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 4
-	},
-/obj/machinery/alarm{
-	dir = 8;
-	pixel_x = 24
-	},
-/turf/simulated/floor/tiled/dark,
-/area/hallway/secondary/civilian_hallway_mid)
+/obj/effect/floor_decal/sign/dock/three,
+/turf/simulated/wall/r_wall,
+/area/hallway/secondary/docking_hallway)
 "aFw" = (
 /obj/machinery/cryopod{
 	dir = 4
@@ -759,6 +759,9 @@
 "aJO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/purple{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/dark,
@@ -1036,9 +1039,8 @@
 /area/security/eva)
 "aTx" = (
 /obj/machinery/hologram/holopad,
-/obj/machinery/light_switch{
-	dir = 4;
-	pixel_x = -28
+/obj/machinery/turretid/lethal{
+	pixel_x = -35
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
@@ -1160,6 +1162,12 @@
 /obj/machinery/vending/coffee,
 /turf/simulated/floor/carpet/bcarpet,
 /area/hallway/secondary/civilian_hallway_mid)
+"aYt" = (
+/obj/effect/floor_decal/corner/purple/full{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/bridge)
 "aYU" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
@@ -1272,6 +1280,17 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/hallwayaux)
+"bcR" = (
+/obj/machinery/camera/network/command{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/orange{
+	dir = 6
+	},
+/obj/structure/table/reinforced,
+/obj/item/storage/box/donut,
+/turf/simulated/floor/tiled/dark,
+/area/bridge)
 "bem" = (
 /turf/simulated/wall,
 /area/maintenance/central)
@@ -1962,6 +1981,15 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/triumph/station/explorer_prep)
+"bBI" = (
+/obj/effect/floor_decal/corner/orange{
+	dir = 6
+	},
+/obj/machinery/computer/ship/sensors{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/bridge)
 "bBS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -2586,6 +2614,8 @@
 	pixel_x = 4;
 	pixel_y = 26
 	},
+/obj/structure/table/reinforced,
+/obj/item/flashlight/lamp,
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "caf" = (
@@ -2622,12 +2652,8 @@
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "cda" = (
-/obj/machinery/camera/network/command{
-	dir = 9
-	},
-/obj/machinery/computer/ship/navigation{
-	dir = 8
-	},
+/obj/structure/table/reinforced,
+/obj/item/flashlight/lamp,
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "cdk" = (
@@ -2760,6 +2786,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/interrogation)
+"chZ" = (
+/obj/effect/floor_decal/sign/dock/two,
+/turf/simulated/wall/r_wall,
+/area/hallway/secondary/docking_hallway)
 "cih" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -2796,7 +2826,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/carpet/purcarpet,
 /area/bridge)
 "cjN" = (
 /obj/structure/cable/green{
@@ -3062,6 +3092,18 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
+/area/hallway/secondary/civilian_hallway_mid)
+"ctd" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/glass/hidden/steel,
+/turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/civilian_hallway_mid)
 "ctf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -3502,10 +3544,6 @@
 /turf/simulated/floor/plating,
 /area/triumph/station/pathfinder_office)
 "cHL" = (
-/obj/machinery/computer/skills{
-	dir = 8;
-	pixel_x = 32
-	},
 /obj/structure/bed/chair/office/dark,
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
@@ -3942,6 +3980,12 @@
 /obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hos)
+"dfE" = (
+/obj/machinery/recharger/wallcharger{
+	pixel_x = -22
+	},
+/turf/simulated/floor/tiled/dark,
+/area/bridge)
 "dfP" = (
 /obj/machinery/recharger/wallcharger{
 	pixel_x = 4;
@@ -4021,6 +4065,11 @@
 	dir = 8;
 	pixel_x = -24
 	},
+/obj/structure/table/reinforced,
+/obj/item/paper_bin,
+/obj/item/folder/red,
+/obj/item/folder/blue,
+/obj/item/pen,
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "djR" = (
@@ -4204,6 +4253,7 @@
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/corner/blue/full,
 /obj/item/flashlight/lamp,
+/obj/machinery/recharger,
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "dri" = (
@@ -4434,16 +4484,14 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
 "dBa" = (
-/obj/structure/window/reinforced/tinted/frosted{
-	dir = 8
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
 	},
-/obj/structure/table/reinforced,
-/obj/effect/floor_decal/corner/blue{
-	dir = 9
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 2
 	},
-/obj/machinery/recharger,
 /turf/simulated/floor/tiled/dark,
-/area/bridge)
+/area/hallway/secondary/docking_hallway)
 "dBl" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -4860,11 +4908,16 @@
 	name = "\improper Official On-Site Office"
 	})
 "dPR" = (
-/obj/structure/closet/crate/bin{
-	anchored = 1
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/obj/machinery/alarm{
+	frequency = 1441;
+	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/dark,
-/area/bridge)
+/area/hallway/secondary/docking_hallway)
 "dPV" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
@@ -5355,16 +5408,18 @@
 /turf/simulated/floor/wood,
 /area/library)
 "ehK" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
+/obj/machinery/door/airlock/glass_external{
+	frequency = 1380;
+	icon_state = "door_locked";
+	id_tag = "d1c_dock_inner";
+	locked = 1;
+	name = "Docking Port Airlock"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/floor_decal/sign/dock/one,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/hallway/secondary/civilian_hallway_mid)
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/dark,
+/area/hallway/secondary/docking_hallway)
 "eix" = (
 /obj/machinery/power/apc{
 	dir = 1;
@@ -5384,6 +5439,18 @@
 /obj/machinery/door/firedoor/glass/hidden/steel,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/lounge)
+"eja" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/computer/ship/navigation{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/orange/full{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/bridge)
 "ejo" = (
 /turf/simulated/wall/r_wall,
 /area/maintenance/chapel)
@@ -5827,11 +5894,29 @@
 /turf/simulated/floor/tiled,
 /area/chapel/main)
 "eCD" = (
-/obj/machinery/computer/ship/sensors{
-	dir = 8
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	frequency = 1380;
+	id_tag = "d1c_dock";
+	pixel_y = 30;
+	req_one_access = list(13);
+	tag_airpump = "d1c_dock_pump";
+	tag_chamber_sensor = "d1c_dock_sensor";
+	tag_exterior_door = "d1c_dock_outer";
+	tag_interior_door = "d1c_dock_inner"
+	},
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	dir = 8;
+	frequency = 1380;
+	id_tag = "d1c_dock_pump"
+	},
+/obj/machinery/airlock_sensor{
+	frequency = 1380;
+	id_tag = "d1c_dock_sensor";
+	pixel_x = 1;
+	pixel_y = 20
 	},
 /turf/simulated/floor/tiled/dark,
-/area/bridge)
+/area/hallway/secondary/docking_hallway)
 "eCV" = (
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/structure/cable/cyan{
@@ -5855,8 +5940,9 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "eDS" = (
-/obj/item/flashlight/lamp,
-/obj/structure/table/reinforced,
+/obj/effect/floor_decal/corner/paleblue/full{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "eEj" = (
@@ -6125,6 +6211,7 @@
 /area/security/eva)
 "eLD" = (
 /obj/machinery/door/airlock/maintenance/engi,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/triumph/surfacebase/tram)
 "eLJ" = (
@@ -6503,6 +6590,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/interrogation)
+"eXr" = (
+/obj/effect/floor_decal/corner/purple{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/dark,
+/area/bridge)
 "eXC" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -7014,6 +7107,15 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/wood,
 /area/lawoffice)
+"fsC" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/hallway/secondary/civilian_hallway_mid)
 "fto" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -7459,6 +7561,18 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
+"fLd" = (
+/obj/machinery/computer/ship/engines{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/orange/full{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/bridge)
 "fLm" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -7601,6 +7715,18 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
+"fQU" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 6
+	},
+/obj/machinery/camera/network/civilian{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/dark,
+/area/hallway/secondary/docking_hallway)
 "fRw" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -8021,9 +8147,6 @@
 /area/hallway/secondary/docking_hallway)
 "gnz" = (
 /obj/structure/table/reinforced,
-/obj/machinery/keycard_auth{
-	pixel_y = -28
-	},
 /obj/item/defib_kit/loaded,
 /obj/item/storage/firstaid/regular,
 /turf/simulated/floor/tiled/dark,
@@ -8136,6 +8259,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/interrogation)
+"gsL" = (
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	dir = 8;
+	frequency = 1380;
+	id_tag = "d1c_dock_pump"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/hallway/secondary/docking_hallway)
 "gsX" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass_security{
@@ -8931,6 +9062,13 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/maintenance/chapel)
+"gXU" = (
+/obj/structure/grille,
+/obj/machinery/door/firedoor,
+/obj/structure/window/phoronreinforced,
+/obj/structure/window/phoronreinforced/full,
+/turf/simulated/shuttle/floor/voidcraft,
+/area/bridge)
 "gXW" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central6,
 /turf/simulated/floor/tiled,
@@ -9657,6 +9795,18 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
+"hAV" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/effect/floor_decal/sign/dock/one,
+/turf/simulated/floor/tiled/dark,
+/area/hallway/secondary/docking_hallway)
 "hBd" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -10365,6 +10515,9 @@
 	dir = 8
 	},
 /obj/machinery/computer/mecha,
+/obj/effect/floor_decal/corner/purple{
+	dir = 5
+	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "hYe" = (
@@ -10662,6 +10815,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/lounge)
+"ikK" = (
+/obj/structure/filingcabinet/filingcabinet,
+/turf/simulated/floor/tiled/dark,
+/area/bridge)
 "ilg" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
@@ -10842,10 +10999,6 @@
 	dir = 1
 	},
 /obj/structure/closet/emcloset,
-/obj/machinery/alarm{
-	frequency = 1441;
-	pixel_y = 22
-	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "ipW" = (
@@ -10862,6 +11015,29 @@
 	},
 /turf/simulated/floor/water/pool,
 /area/triumph/surfacebase/sauna)
+"iqK" = (
+/obj/structure/window/phoronreinforced{
+	dir = 4
+	},
+/obj/structure/window/phoronreinforced/full,
+/obj/structure/grille,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "bridge_lockdown";
+	name = "Bridge Lockdown";
+	opacity = 0
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "bridge_lockdown";
+	name = "Bridge Lockdown";
+	opacity = 0
+	},
+/turf/simulated/shuttle/floor/voidcraft,
+/area/bridge)
 "iqQ" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -11640,7 +11816,7 @@
 /obj/machinery/ai_status_display{
 	pixel_y = -32
 	},
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/carpet/purcarpet,
 /area/bridge)
 "iWU" = (
 /turf/simulated/wall/r_wall,
@@ -11843,6 +12019,7 @@
 /obj/machinery/door/airlock/maintenance/engi,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/triumph/station/excursion_dock)
 "jgx" = (
@@ -11871,6 +12048,19 @@
 	},
 /turf/simulated/floor/wood,
 /area/hydroponics/garden)
+"jgH" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/hallway/secondary/civilian_hallway_mid)
 "jgT" = (
 /turf/simulated/wall,
 /area/janitor)
@@ -12159,6 +12349,19 @@
 	},
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
+"jpL" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
+/obj/machinery/alarm{
+	dir = 8;
+	pixel_x = 24
+	},
+/turf/simulated/floor/tiled/dark,
+/area/hallway/secondary/civilian_hallway_mid)
 "jpU" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -12566,11 +12769,8 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/secondary/civilian_hallway_mid)
 "jIv" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/machinery/computer/ship/engines{
-	dir = 8
+/obj/effect/floor_decal/corner/orange{
+	dir = 5
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
@@ -12885,6 +13085,9 @@
 /area/crew_quarters/sleep/Dorm_3{
 	name = "\improper CMO Dorm"
 	})
+"jYr" = (
+/turf/simulated/floor/airless/ceiling,
+/area/bridge)
 "jYA" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced,
@@ -13395,9 +13598,8 @@
 /turf/simulated/floor/tiled,
 /area/triumph/station/pathfinder_office)
 "kwc" = (
-/obj/structure/closet/emcloset,
-/obj/machinery/light{
-	dir = 4
+/obj/effect/floor_decal/corner/orange{
+	dir = 10
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
@@ -13460,13 +13662,17 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/captain)
 "kzW" = (
-/obj/structure/table/reinforced,
-/obj/machinery/recharger,
 /obj/machinery/alarm{
 	dir = 1;
 	pixel_y = -22
 	},
 /obj/machinery/light,
+/obj/machinery/computer/aifixer{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/purple{
+	dir = 10
+	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "kAF" = (
@@ -13519,10 +13725,11 @@
 /area/security/warden)
 "kCH" = (
 /obj/machinery/porta_turret/crescent{
-	density = 1
+	density = 1;
+	faction = "neutral"
 	},
 /turf/simulated/floor/airless/ceiling,
-/area/security/nuke_storage)
+/area/bridge)
 "kCW" = (
 /turf/simulated/floor/tiled/dark,
 /area/security/evidence_storage)
@@ -13829,7 +14036,7 @@
 	},
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless/ceiling,
-/area/space)
+/area/security/eva)
 "kPI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -14092,6 +14299,16 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/security_processing)
+"kYS" = (
+/obj/effect/floor_decal/techfloor/orange,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/hallway/secondary/docking_hallway)
 "kZr" = (
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 8
@@ -14939,8 +15156,8 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
 	},
-/obj/machinery/camera/network/civilian{
-	dir = 8
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 6
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
@@ -14954,6 +15171,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
+/obj/structure/closet/emcloset,
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "lGr" = (
@@ -15549,6 +15767,7 @@
 "lYt" = (
 /obj/effect/floor_decal/corner/blue/full,
 /obj/structure/window/reinforced,
+/obj/structure/table/reinforced,
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "lZa" = (
@@ -15686,6 +15905,12 @@
 	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/floor_decal/corner/yellow{
+	dir = 10
+	},
+/obj/structure/bed/chair/comfy/black{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "mfa" = (
@@ -16234,6 +16459,18 @@
 /obj/effect/floor_decal/corner/red/border,
 /turf/simulated/floor/tiled,
 /area/security/hallway)
+"mCo" = (
+/obj/structure/table/reinforced,
+/obj/item/radio,
+/obj/item/radio{
+	pixel_x = 2;
+	pixel_y = 3
+	},
+/obj/effect/floor_decal/corner/purple/full{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/bridge)
 "mCI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -16680,7 +16917,8 @@
 /area/library)
 "mSd" = (
 /obj/machinery/porta_turret/crescent{
-	density = 1
+	density = 1;
+	faction = "neutral"
 	},
 /turf/simulated/floor/airless/ceiling,
 /area/ai)
@@ -16901,6 +17139,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_entry)
+"mXr" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/airless/ceiling,
+/area/bridge)
 "mYf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -17066,11 +17308,15 @@
 /turf/simulated/floor/tiled,
 /area/security/prison)
 "nfc" = (
-/obj/effect/floor_decal/corner/paleblue{
-	dir = 10
+/obj/machinery/door/airlock/glass_external{
+	frequency = 1380;
+	icon_state = "door_locked";
+	id_tag = "d1c_dock_outer";
+	locked = 1;
+	name = "Docking Port Airlock"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/bridge)
+/area/hallway/secondary/docking_hallway)
 "nfn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -17506,11 +17752,17 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "nvw" = (
-/obj/effect/floor_decal/corner/yellow{
-	dir = 10
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/dark,
+/area/bridge)
+"nvJ" = (
+/obj/machinery/porta_turret/crescent{
+	density = 1;
+	faction = "neutral"
+	},
+/turf/simulated/floor/plating{
+	initial_gas_mix = "TEMP=2.7"
+	},
 /area/bridge)
 "nvY" = (
 /obj/structure/table/standard,
@@ -19321,6 +19573,16 @@
 /obj/effect/floor_decal/corner/red/border,
 /turf/simulated/floor/tiled,
 /area/security/hallwayaux)
+"oTH" = (
+/obj/structure/table/reinforced,
+/obj/machinery/computer/skills{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/purple{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/dark,
+/area/bridge)
 "oUc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -20008,17 +20270,16 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "poJ" = (
-/obj/structure/table/reinforced,
-/obj/item/paper_bin,
-/obj/item/pen,
-/obj/item/folder/blue,
-/obj/item/folder/red,
 /obj/machinery/newscaster{
 	layer = 3.3;
 	pixel_x = -27
 	},
 /obj/machinery/light{
 	dir = 8
+	},
+/obj/effect/floor_decal/corner/yellow/full,
+/obj/machinery/computer/atmos_alert{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
@@ -20329,15 +20590,17 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "pFz" = (
-/obj/structure/window/reinforced/tinted/frosted{
-	dir = 8
+/obj/machinery/access_button{
+	command = "cycle_exterior";
+	frequency = 1380;
+	master_tag = "d1c_dock";
+	name = "exterior access button";
+	pixel_x = -26;
+	pixel_y = 29;
+	req_one_access = list(13)
 	},
-/obj/structure/table/reinforced,
-/obj/effect/floor_decal/corner/blue{
-	dir = 9
-	},
-/turf/simulated/floor/tiled/dark,
-/area/bridge)
+/turf/space,
+/area/space)
 "pFE" = (
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/primary/aft)
@@ -20722,7 +20985,7 @@
 /area/gateway/prep_room)
 "pQT" = (
 /obj/structure/table/reinforced,
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/carpet/purcarpet,
 /area/bridge)
 "pRh" = (
 /obj/structure/extinguisher_cabinet{
@@ -20863,7 +21126,9 @@
 /obj/machinery/computer/power_monitor{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/yellow/full,
+/obj/effect/floor_decal/corner/yellow{
+	dir = 9
+	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "pWo" = (
@@ -21200,7 +21465,7 @@
 	dir = 1
 	},
 /obj/machinery/light,
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/carpet/purcarpet,
 /area/bridge)
 "qdA" = (
 /obj/effect/floor_decal/spline/plain{
@@ -21688,6 +21953,14 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
+"qrM" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/firstaid/regular,
+/obj/effect/floor_decal/corner/purple/full{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/bridge)
 "qrP" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -22070,6 +22343,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
+/obj/structure/closet/emcloset,
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "qFS" = (
@@ -22110,6 +22384,7 @@
 /obj/item/flashlight/lamp{
 	pixel_y = 12
 	},
+/obj/item/pen,
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "qHf" = (
@@ -22808,9 +23083,17 @@
 /turf/simulated/floor/plating,
 /area/crew_quarters/captain)
 "rjc" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
-/area/bridge)
+/area/hallway/secondary/docking_hallway)
 "rjo" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 4
@@ -24068,7 +24351,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/carpet/purcarpet,
 /area/bridge)
 "sdO" = (
 /obj/machinery/light,
@@ -24456,8 +24739,8 @@
 /obj/machinery/computer/med_data{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/paleblue/full{
-	dir = 4
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 6
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
@@ -24581,8 +24864,13 @@
 	id = "bridge_lockdown";
 	name = "Bridge Lockdown";
 	pixel_x = -30;
-	pixel_y = 1;
+	pixel_y = 5;
 	req_access = list(19)
+	},
+/obj/machinery/light_switch{
+	dir = 4;
+	pixel_x = -28;
+	pixel_y = -4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
@@ -24640,7 +24928,7 @@
 "sCp" = (
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless/ceiling,
-/area/space)
+/area/security/eva)
 "sCr" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 5
@@ -25159,8 +25447,31 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
 "sVo" = (
+/obj/machinery/access_button{
+	command = "cycle_interior";
+	frequency = 1380;
+	master_tag = "d1c_dock";
+	name = "interior access button";
+	pixel_x = 2;
+	pixel_y = -23;
+	req_one_access = list(13)
+	},
+/obj/machinery/door/airlock/glass_external{
+	frequency = 1380;
+	icon_state = "door_locked";
+	id_tag = "d1c_dock_inner";
+	locked = 1;
+	name = "Docking Port Airlock"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden,
+/turf/simulated/floor/tiled/dark,
+/area/hallway/secondary/docking_hallway)
+"sVu" = (
 /obj/machinery/computer/ship/helm{
 	dir = 8
+	},
+/obj/effect/floor_decal/corner/orange{
+	dir = 6
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
@@ -25533,6 +25844,10 @@
 	dir = 1
 	},
 /obj/machinery/vending/nifsoft_shop,
+/obj/machinery/alarm{
+	frequency = 1441;
+	pixel_y = 22
+	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "tnk" = (
@@ -25918,6 +26233,10 @@
 "tDz" = (
 /obj/machinery/camera/network/command{
 	dir = 4
+	},
+/obj/machinery/keycard_auth{
+	pixel_x = -28;
+	pixel_y = 6
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
@@ -26355,6 +26674,22 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/hallwayaux)
+"tYF" = (
+/obj/structure/window/phoronreinforced/full,
+/obj/structure/grille,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "bridge_lockdown";
+	name = "Bridge Lockdown";
+	opacity = 0
+	},
+/obj/machinery/door/firedoor,
+/obj/structure/window/phoronreinforced{
+	dir = 1
+	},
+/turf/simulated/shuttle/floor/voidcraft,
+/area/bridge)
 "tZl" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -27079,9 +27414,6 @@
 /area/hallway/secondary/docking_hallway)
 "uxr" = (
 /obj/effect/floor_decal/techfloor/orange,
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 10
-	},
 /obj/machinery/access_button{
 	command = "cycle_interior";
 	frequency = 1380;
@@ -27090,6 +27422,9 @@
 	pixel_x = -28;
 	pixel_y = -23;
 	req_one_access = list(13)
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
@@ -27945,6 +28280,19 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/range)
+"vek" = (
+/obj/machinery/camera/network/civilian{
+	dir = 8
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
+/obj/machinery/alarm{
+	dir = 8;
+	pixel_x = 24
+	},
+/turf/simulated/floor/tiled/dark,
+/area/hallway/secondary/civilian_hallway_mid)
 "ven" = (
 /obj/machinery/camera/network/civilian{
 	dir = 1
@@ -28120,7 +28468,25 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/structure/table/reinforced,
 /turf/simulated/floor/tiled/dark,
+/area/bridge)
+"vlm" = (
+/obj/structure/window/phoronreinforced{
+	dir = 8;
+	icon_state = "phoronrwindow"
+	},
+/obj/structure/window/phoronreinforced/full,
+/obj/structure/grille,
+/obj/machinery/door/firedoor,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "bridge_lockdown";
+	name = "Bridge Lockdown";
+	opacity = 0
+	},
+/turf/simulated/shuttle/floor/voidcraft,
 /area/bridge)
 "vlz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -28521,6 +28887,9 @@
 "vzr" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 10
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
@@ -30144,12 +30513,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
 "wMH" = (
-/obj/structure/table/reinforced,
-/obj/item/radio{
-	pixel_x = 2;
-	pixel_y = 3
-	},
-/obj/item/radio,
 /obj/machinery/requests_console{
 	announcementConsole = 1;
 	department = "Bridge";
@@ -30157,7 +30520,12 @@
 	name = "Bridge RC";
 	pixel_y = -32
 	},
-/obj/item/storage/firstaid/regular,
+/obj/machinery/computer/robotics{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/purple{
+	dir = 10
+	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "wNw" = (
@@ -30422,7 +30790,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/carpet/purcarpet,
 /area/bridge)
 "wWb" = (
 /mob/living/simple_mob/animal/passive/dog/corgi/Ian,
@@ -31234,6 +31602,7 @@
 	},
 /obj/structure/table/reinforced,
 /obj/item/flashlight/lamp,
+/obj/machinery/recharger,
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "xyD" = (
@@ -31309,6 +31678,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
+"xAG" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/airless/ceiling,
+/area/space)
 "xAR" = (
 /obj/structure/toilet{
 	pixel_y = 10
@@ -31478,6 +31851,7 @@
 	dir = 1;
 	pixel_y = -24
 	},
+/obj/effect/floor_decal/corner/purple/full,
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "xJm" = (
@@ -33365,67 +33739,16 @@ nIK
 nIK
 nIK
 nIK
-pkc
-pkc
-clY
-clY
-clY
-clY
-clY
-clY
-clY
-clY
-clY
-clY
-clY
-clY
-clY
-clY
 clY
 pkc
-pkc
-pkc
-pkc
-pkc
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-pkc
 clY
 clY
 clY
 clY
 clY
-pkc
-pkc
-pkc
-pkc
+clY
+clY
+clY
 clY
 clY
 clY
@@ -33437,6 +33760,57 @@ pkc
 pkc
 pkc
 pkc
+pkc
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+pkc
+clY
+pkc
+hzP
+pkc
+clY
+pkc
+pkc
+pkc
+pkc
+clY
+clY
+clY
+clY
+clY
+clY
+clY
+pkc
+pkc
+hzP
+hzP
 pkc
 nIK
 nIK
@@ -33561,24 +33935,24 @@ iWU
 iWU
 nIK
 nIK
-dff
-dff
-dff
-dff
-dff
-dff
-dff
+kCH
+lJK
+lJK
+lJK
+lJK
+lJK
+lJK
 nIK
 nIK
 nIK
 nIK
 nIK
 nIK
-dff
-dff
-dff
-dff
-nIK
+lJK
+lJK
+lJK
+kCH
+hzP
 pkc
 nIK
 nIK
@@ -33719,7 +34093,7 @@ lJK
 lJK
 lJK
 lJK
-dff
+lJK
 nIK
 pkc
 nIK
@@ -33861,7 +34235,7 @@ aWv
 lJK
 aFw
 lJK
-dff
+lJK
 nIK
 pkc
 nIK
@@ -34003,7 +34377,7 @@ uNf
 cup
 saM
 lJK
-dff
+lJK
 nIK
 clY
 nIK
@@ -34145,7 +34519,7 @@ lJK
 lJK
 cjs
 lJK
-dff
+lJK
 nIK
 clY
 nIK
@@ -34287,7 +34661,7 @@ gvI
 lJK
 wlX
 lJK
-dff
+lJK
 nIK
 clY
 nIK
@@ -34429,7 +34803,7 @@ lJK
 lJK
 lJK
 lJK
-dff
+lJK
 nIK
 clY
 nIK
@@ -34571,7 +34945,7 @@ yjI
 hqq
 mxy
 nZM
-dff
+nZM
 nIK
 clY
 nIK
@@ -34713,7 +35087,7 @@ pVB
 kEX
 iSk
 nZM
-dff
+nZM
 nIK
 clY
 nIK
@@ -34855,7 +35229,7 @@ xMj
 ePn
 spd
 nZM
-dff
+nZM
 nIK
 clY
 nIK
@@ -34997,7 +35371,7 @@ ebU
 gtS
 vZC
 nZM
-dff
+nZM
 nIK
 clY
 nIK
@@ -35139,7 +35513,7 @@ ebU
 aIm
 nuQ
 nZM
-dff
+nZM
 nIK
 clY
 nIK
@@ -35211,7 +35585,7 @@ nIK
 nIK
 nIK
 nIK
-pkc
+clY
 nIK
 dff
 sJC
@@ -35281,7 +35655,7 @@ cLA
 aIm
 rqL
 nZM
-dff
+nZM
 nIK
 clY
 nIK
@@ -35353,7 +35727,7 @@ nIK
 nIK
 nIK
 nIK
-pkc
+clY
 nIK
 dff
 sJC
@@ -35423,7 +35797,7 @@ ebU
 uAq
 spd
 nZM
-dff
+nZM
 nIK
 clY
 nIK
@@ -35565,7 +35939,7 @@ aMe
 uRJ
 txa
 nZM
-dff
+nZM
 nIK
 clY
 nIK
@@ -35636,8 +36010,8 @@ nIK
 nIK
 nIK
 nIK
-nIK
-pkc
+xAG
+kCH
 gCM
 gCM
 gCM
@@ -35707,7 +36081,7 @@ ebU
 aIm
 tQm
 nZM
-dff
+nZM
 nIK
 clY
 nIK
@@ -35849,7 +36223,7 @@ ebU
 aIm
 tlE
 nZM
-dff
+nZM
 nIK
 clY
 nIK
@@ -35991,7 +36365,7 @@ rRt
 tbn
 xrK
 nZM
-dff
+nZM
 nIK
 clY
 nIK
@@ -36063,7 +36437,7 @@ nIK
 nIK
 nIK
 nIK
-clY
+pkc
 gCM
 cwB
 noJ
@@ -36133,7 +36507,7 @@ ebU
 htG
 jCf
 nZM
-dff
+nZM
 nIK
 clY
 nIK
@@ -36204,8 +36578,8 @@ nIK
 nIK
 nIK
 nIK
-nIK
-clY
+xAG
+kCH
 gCM
 gCM
 gCM
@@ -36275,7 +36649,7 @@ aMe
 uRJ
 oVk
 nZM
-dff
+nZM
 nIK
 clY
 nIK
@@ -36347,7 +36721,7 @@ nIK
 nIK
 nIK
 nIK
-clY
+pkc
 nIK
 nIK
 bim
@@ -36417,7 +36791,7 @@ ebU
 aIm
 dqm
 nZM
-dff
+nZM
 nIK
 clY
 nIK
@@ -36559,7 +36933,7 @@ oRJ
 kVu
 nZM
 nZM
-dff
+nZM
 nIK
 clY
 nIK
@@ -36701,7 +37075,7 @@ axL
 xhp
 ong
 kvw
-dff
+kvw
 pkc
 clY
 nIK
@@ -36843,7 +37217,7 @@ eEv
 gXR
 pfZ
 kvw
-dff
+kvw
 nIK
 clY
 nIK
@@ -36985,7 +37359,7 @@ jeD
 xhp
 xhp
 kvw
-dff
+kvw
 nIK
 clY
 nIK
@@ -37127,7 +37501,7 @@ kYP
 cpS
 kvw
 kvw
-dff
+kvw
 nIK
 clY
 nIK
@@ -37269,7 +37643,7 @@ ubV
 kGr
 kGr
 iGt
-dff
+iGt
 nIK
 clY
 nIK
@@ -37411,7 +37785,7 @@ qRG
 kGr
 arG
 iGt
-dff
+iGt
 nIK
 pkc
 nIK
@@ -37553,9 +37927,9 @@ kGr
 kGr
 kGr
 iGt
-dff
+iGt
 nIK
-pkc
+clY
 nIK
 nIK
 nIK
@@ -37695,9 +38069,9 @@ pLq
 pLq
 pLq
 pLq
-dff
-nIK
-pkc
+kCH
+jYr
+clY
 nIK
 nIK
 nIK
@@ -37837,9 +38211,9 @@ cdk
 vIl
 mWz
 pLq
-dff
+pLq
 nIK
-pkc
+clY
 nIK
 nIK
 nIK
@@ -37979,7 +38353,7 @@ vsH
 bjB
 dfP
 pLq
-dff
+pLq
 nIK
 pkc
 nIK
@@ -38121,7 +38495,7 @@ khk
 cBy
 uNX
 pLq
-dff
+pLq
 nIK
 clY
 nIK
@@ -38263,7 +38637,7 @@ rzB
 tEi
 xnz
 pLq
-dff
+pLq
 nIK
 clY
 nIK
@@ -38405,7 +38779,7 @@ lNk
 jUU
 dfP
 pLq
-dff
+pLq
 pkc
 clY
 nIK
@@ -38547,7 +38921,7 @@ wtU
 ngX
 oCi
 pLq
-dff
+pLq
 nIK
 clY
 nIK
@@ -38689,7 +39063,7 @@ pLq
 rGX
 pLq
 pLq
-dff
+pLq
 nIK
 clY
 nIK
@@ -38831,7 +39205,7 @@ urm
 kqf
 jrj
 wrw
-dff
+wrw
 nIK
 clY
 nIK
@@ -38973,7 +39347,7 @@ oVv
 qpW
 mBY
 wrw
-dff
+wrw
 nIK
 clY
 nIK
@@ -39115,7 +39489,7 @@ nrj
 pXo
 gkm
 wrw
-dff
+wrw
 nIK
 clY
 nIK
@@ -39257,7 +39631,7 @@ jAq
 jAq
 jAq
 jAq
-dff
+jAq
 nIK
 clY
 nIK
@@ -39399,7 +39773,7 @@ qpO
 luJ
 qjx
 jAq
-dff
+jAq
 nIK
 pkc
 nIK
@@ -39541,7 +39915,7 @@ kpP
 ujF
 kpP
 jAq
-dff
+jAq
 nIK
 pkc
 nIK
@@ -39683,7 +40057,7 @@ rEs
 fAM
 qhg
 jAq
-dff
+jAq
 nIK
 pkc
 nIK
@@ -39825,7 +40199,7 @@ qGf
 sPz
 uSv
 jAq
-dff
+jAq
 pkc
 pkc
 nIK
@@ -39967,7 +40341,7 @@ dNM
 jAq
 jAq
 jAq
-dff
+jAq
 nIK
 nIK
 nIK
@@ -40312,7 +40686,7 @@ nIK
 nIK
 nIK
 nIK
-nIK
+bwd
 nIK
 nIK
 nIK
@@ -40609,7 +40983,7 @@ clY
 nIK
 nIK
 nIK
-dff
+sJC
 sJC
 cVO
 vcE
@@ -40750,8 +41124,8 @@ nIK
 clY
 nIK
 nIK
-nIK
-dff
+xAG
+kCH
 sJC
 uMB
 kMp
@@ -40893,7 +41267,7 @@ clY
 nIK
 nIK
 nIK
-dff
+sJC
 sJC
 cVO
 fnY
@@ -40961,7 +41335,7 @@ pOh
 pOh
 vfS
 pOh
-dff
+pOh
 pkc
 pkc
 nIK
@@ -41103,7 +41477,7 @@ urm
 xpv
 dCy
 wrw
-dff
+wrw
 nIK
 clY
 nIK
@@ -41245,8 +41619,8 @@ jtZ
 qEc
 xlE
 wrw
-dff
-nIK
+kCH
+mXr
 clY
 nIK
 nIK
@@ -41387,7 +41761,7 @@ pks
 qQT
 qQT
 wrw
-dff
+wrw
 nIK
 clY
 nIK
@@ -41529,7 +41903,7 @@ fVj
 nVK
 kKE
 pOh
-dff
+pOh
 nIK
 clY
 nIK
@@ -41671,7 +42045,7 @@ wdw
 szT
 qtn
 pOh
-dff
+pOh
 pkc
 clY
 nIK
@@ -41813,7 +42187,7 @@ xxx
 nVK
 nAj
 pOh
-dff
+pOh
 nIK
 clY
 nIK
@@ -41955,7 +42329,7 @@ lpq
 nVK
 fLs
 pOh
-dff
+pOh
 nIK
 clY
 nIK
@@ -42097,7 +42471,7 @@ umM
 nVK
 lWJ
 pOh
-dff
+pOh
 nIK
 clY
 nIK
@@ -42239,8 +42613,8 @@ vXo
 xcn
 kmI
 pOh
-dff
-nIK
+kCH
+mXr
 clY
 nIK
 nIK
@@ -42381,7 +42755,7 @@ vct
 rhg
 vWr
 pOh
-dff
+pOh
 nIK
 clY
 nIK
@@ -42523,7 +42897,7 @@ uWb
 dQj
 uel
 pOh
-dff
+pOh
 nIK
 clY
 nIK
@@ -42665,7 +43039,7 @@ uWb
 gmK
 vWr
 pOh
-dff
+pOh
 nIK
 clY
 nIK
@@ -42807,7 +43181,7 @@ uWb
 gmK
 dcj
 pOh
-dff
+pOh
 nIK
 pkc
 nIK
@@ -42949,7 +43323,7 @@ uWb
 eRm
 umM
 pOh
-dff
+pOh
 nIK
 pkc
 nIK
@@ -43091,9 +43465,9 @@ uWb
 gmK
 uaj
 pOh
-dff
+pOh
 nIK
-pkc
+clY
 nIK
 nIK
 nIK
@@ -43233,9 +43607,9 @@ uWb
 gmK
 uaj
 pOh
-dff
+pOh
 nIK
-pkc
+clY
 nIK
 nIK
 nIK
@@ -43375,7 +43749,7 @@ rRC
 yma
 xKp
 pOh
-dff
+pOh
 nIK
 pkc
 nIK
@@ -43517,7 +43891,7 @@ rwW
 igD
 wkW
 pOh
-dff
+pOh
 pkc
 clY
 nIK
@@ -43613,7 +43987,7 @@ xtN
 yfQ
 obh
 ldg
-nMr
+ctd
 xtN
 azW
 nMr
@@ -43659,7 +44033,7 @@ joY
 lQc
 kra
 pOh
-dff
+pOh
 nIK
 clY
 nIK
@@ -43723,7 +44097,7 @@ aGE
 kpf
 uIG
 cnK
-awJ
+hAV
 pQh
 awJ
 awJ
@@ -43735,7 +44109,7 @@ dUV
 gRJ
 tiI
 bGn
-ehK
+dtH
 dtH
 dtH
 dtH
@@ -43755,7 +44129,7 @@ rLl
 aVS
 ctb
 ctb
-ctb
+jgH
 rLl
 ctb
 ctb
@@ -43801,8 +44175,8 @@ rwW
 igD
 ity
 pOh
-dff
-nIK
+kCH
+mXr
 clY
 nIK
 nIK
@@ -43888,7 +44262,7 @@ hlp
 inX
 inX
 tGk
-cjV
+vek
 pij
 rWj
 pvj
@@ -43896,12 +44270,12 @@ inX
 isu
 xKQ
 pij
-aFu
 inX
+fsC
 isu
 hlp
 inX
-pvj
+jpL
 tGk
 inX
 cjV
@@ -43943,7 +44317,7 @@ ddl
 lAD
 ybL
 pOh
-dff
+pOh
 nIK
 clY
 nIK
@@ -44085,7 +44459,7 @@ jic
 pOh
 pOh
 pOh
-dff
+pOh
 nIK
 clY
 nIK
@@ -44160,7 +44534,7 @@ nIK
 nIK
 nIK
 nIK
-pkc
+clY
 lAq
 lAq
 lAq
@@ -44225,9 +44599,9 @@ dJY
 chw
 pOh
 pOh
-dff
-dff
-dff
+pOh
+pOh
+pOh
 nIK
 clY
 nIK
@@ -44302,7 +44676,7 @@ nIK
 nIK
 nIK
 nIK
-pkc
+clY
 nIK
 dff
 dff
@@ -44444,9 +44818,9 @@ nIK
 nIK
 nIK
 nIK
-pkc
-nIK
-dff
+clY
+xAG
+kCH
 dff
 wET
 hyC
@@ -44586,7 +44960,7 @@ nIK
 nIK
 nIK
 nIK
-pkc
+clY
 pkc
 dff
 dff
@@ -44711,9 +45085,9 @@ nIK
 nIK
 nIK
 gKV
-fMX
-lba
-ctC
+dBa
+rjc
+kYS
 nPD
 nIK
 nIK
@@ -44728,7 +45102,7 @@ nIK
 nIK
 nIK
 nIK
-pkc
+clY
 kgT
 dff
 dff
@@ -45705,7 +46079,7 @@ nIK
 nIK
 nIK
 nPD
-wBR
+dPR
 rEn
 opn
 nPD
@@ -45850,7 +46224,7 @@ nPD
 urK
 fPV
 hSs
-nPD
+chZ
 nIK
 nIK
 nIK
@@ -46272,10 +46646,10 @@ nIK
 nIK
 nIK
 nIK
-nPD
+aFu
 sCr
 lGo
-gHU
+fQU
 uxk
 slh
 crT
@@ -46415,8 +46789,8 @@ nIK
 nIK
 nIK
 nPD
-nPD
-nPD
+ehK
+sVo
 nPD
 nPD
 nPD
@@ -46556,10 +46930,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
-nIK
-nIK
-nIK
+nPD
+eCD
+gsL
+qKH
 nIK
 nIK
 nIK
@@ -46698,6 +47072,10 @@ nIK
 nIK
 nIK
 nIK
+nPD
+nfc
+nfc
+qKH
 nIK
 nIK
 nIK
@@ -46712,11 +47090,7 @@ nIK
 nIK
 nIK
 nIK
-nIK
-nIK
-nIK
-nIK
-pkc
+clY
 nIK
 ukh
 ukh
@@ -46841,6 +47215,7 @@ nIK
 nIK
 nIK
 nIK
+pFz
 nIK
 nIK
 nIK
@@ -46857,9 +47232,8 @@ nIK
 nIK
 nIK
 nIK
-nIK
-pkc
-nIK
+clY
+xAG
 kCH
 tnl
 ukh
@@ -47142,7 +47516,7 @@ nIK
 nIK
 nIK
 nIK
-pkc
+clY
 kgT
 ukh
 ukh
@@ -47426,8 +47800,8 @@ nIK
 nIK
 nIK
 nIK
-pkc
-nIK
+clY
+xAG
 kCH
 ukh
 ukh
@@ -47777,7 +48151,7 @@ bNI
 bNI
 bNI
 nIK
-pkc
+clY
 nIK
 nIK
 nIK
@@ -47919,7 +48293,7 @@ bNI
 bNI
 bNI
 pkc
-pkc
+clY
 nIK
 nIK
 nIK
@@ -47997,7 +48371,7 @@ nIK
 clY
 nIK
 dff
-dff
+dOZ
 dSw
 lfI
 eHr
@@ -48061,7 +48435,7 @@ bNI
 bNI
 bNI
 nIK
-pkc
+clY
 nIK
 nIK
 nIK
@@ -48139,7 +48513,7 @@ nIK
 clY
 nIK
 dff
-dff
+dOZ
 dSw
 icR
 oqg
@@ -48202,8 +48576,8 @@ vZU
 bNI
 bNI
 mSd
-nIK
-pkc
+xAG
+clY
 nIK
 nIK
 nIK
@@ -48281,7 +48655,7 @@ nIK
 clY
 pkc
 dff
-dff
+dOZ
 dSw
 gTD
 bFf
@@ -48345,7 +48719,7 @@ bNI
 bNI
 bNI
 nIK
-pkc
+clY
 nIK
 nIK
 nIK
@@ -48423,7 +48797,7 @@ nIK
 clY
 nIK
 dff
-dff
+dOZ
 dOZ
 dOZ
 lpP
@@ -48565,7 +48939,7 @@ nIK
 clY
 nIK
 dff
-dff
+dOZ
 dOZ
 hZa
 tZl
@@ -48707,7 +49081,7 @@ nIK
 clY
 kgT
 dff
-dff
+dOZ
 dOZ
 anV
 iMq
@@ -48849,7 +49223,7 @@ nIK
 clY
 nIK
 dff
-dff
+dOZ
 dOZ
 sPo
 oOH
@@ -48991,7 +49365,7 @@ nIK
 clY
 nIK
 dff
-dff
+dOZ
 dOZ
 qsP
 nEW
@@ -49133,7 +49507,7 @@ nIK
 clY
 nIK
 kgT
-dff
+dOZ
 dOZ
 siD
 kMG
@@ -49275,7 +49649,7 @@ nIK
 pkc
 nIK
 nIK
-dff
+dOZ
 dOZ
 fOc
 bbJ
@@ -49414,10 +49788,10 @@ nIK
 nIK
 nIK
 nIK
+clY
 pkc
 pkc
-pkc
-dff
+dOZ
 dOZ
 wfj
 dOZ
@@ -49556,14 +49930,14 @@ nIK
 nIK
 nIK
 nIK
-pkc
+clY
 nIK
 nIK
-dff
+nvJ
 dOZ
 iyp
 dOZ
-dOZ
+nIK
 iyp
 nYA
 vgr
@@ -49573,12 +49947,12 @@ vgr
 vgr
 vgr
 nYA
-nYA
+nvJ
 maC
 hjL
 hjL
 maC
-dff
+maC
 duy
 duy
 feo
@@ -49595,8 +49969,8 @@ lrV
 tDz
 rzQ
 uZT
-pox
-pox
+aYt
+eXr
 xJj
 duy
 duy
@@ -49698,29 +50072,29 @@ nIK
 nIK
 nIK
 nIK
-pkc
+clY
 nIK
 nIK
-nIK
-nIK
-nIK
-pkc
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
+mXr
 nIK
 nIK
 pkc
 nIK
 nIK
 nIK
-dff
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+mXr
+pkc
+nIK
+nIK
+nIK
+maC
 duy
 duy
 rLm
@@ -49742,7 +50116,7 @@ kWa
 aAj
 duy
 duy
-hyh
+dff
 nIK
 pkc
 nIK
@@ -49764,7 +50138,7 @@ bNI
 bNI
 bNI
 mSd
-nIK
+xAG
 pkc
 nIK
 nIK
@@ -49823,12 +50197,30 @@ nIK
 nIK
 nIK
 nIK
-bwd
 nIK
 nIK
 nIK
 nIK
 nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
+clY
+nIK
+nIK
+nIK
+nIK
+nIK
+pkc
 nIK
 nIK
 nIK
@@ -49845,38 +50237,20 @@ nIK
 nIK
 nIK
 nIK
-nIK
-pkc
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-pkc
-nIK
-nIK
-nIK
-nIK
-duy
-duy
+tYF
+gXU
 hvb
 ubE
-nfc
+pox
 vzr
 qnX
-dPR
+pox
 xyv
-dBa
-pFz
-pFz
+duy
+duy
+duy
 dqW
-dPR
+pox
 iTO
 pox
 hYd
@@ -49884,13 +50258,13 @@ pox
 kzW
 duy
 duy
-nIK
+hyh
 nIK
 pkc
 nIK
 nIK
 nIK
-nIK
+xAG
 nIK
 pkc
 nIK
@@ -49900,7 +50274,7 @@ nIK
 hyh
 nIK
 nIK
-nIK
+xAG
 pkc
 nIK
 nIK
@@ -50014,13 +50388,13 @@ eDS
 qnX
 pox
 hSt
-pox
+dfE
 aTx
 sBc
 rpc
 pox
 iTO
-pox
+ikK
 acp
 cHL
 wMH
@@ -50124,24 +50498,24 @@ nIK
 nIK
 nIK
 nIK
-pkc
-pkc
-pkc
-pkc
-pkc
-pkc
-clY
-clY
-clY
-clY
-clY
-clY
-clY
 clY
 clY
 clY
 clY
 pkc
+pkc
+clY
+clY
+clY
+clY
+clY
+clY
+clY
+clY
+clY
+clY
+clY
+clY
 clY
 clY
 clY
@@ -50163,9 +50537,9 @@ vlb
 pox
 qnX
 gnz
-duy
-duy
-duy
+mCo
+oTH
+qrM
 duy
 duy
 nIK
@@ -50302,7 +50676,7 @@ qFH
 rFt
 lGq
 fAv
-rjc
+pox
 scG
 qdb
 duy
@@ -50315,9 +50689,9 @@ nIK
 pkc
 clY
 clY
-pkc
-pkc
-pkc
+clY
+clY
+clY
 clY
 clY
 clY
@@ -50520,7 +50894,7 @@ nIK
 nIK
 nIK
 nIK
-nIK
+bwd
 nIK
 nIK
 nIK
@@ -50582,9 +50956,9 @@ lUu
 vJX
 lql
 jIv
-sVo
+ubE
 cda
-eCD
+ubE
 kwc
 qGF
 pQT
@@ -50723,11 +51097,11 @@ duy
 vde
 vde
 vde
-vde
-vde
-vde
-vde
-vde
+fLd
+bBI
+bcR
+sVu
+eja
 vde
 vde
 vde
@@ -50860,21 +51234,21 @@ nIK
 nIK
 nIK
 nIK
+nvJ
 duy
+pat
+pat
+pat
+vlm
+vlm
+vlm
+vlm
+iqK
+vlm
+pat
+pat
 duy
-pat
-pat
-pat
-pat
-pat
-pat
-pat
-pat
-pat
-pat
-pat
-duy
-duy
+nvJ
 nIK
 nIK
 nIK
@@ -51002,21 +51376,21 @@ nIK
 nIK
 nIK
 nIK
+mXr
 nIK
 nIK
 nIK
+pat
+pat
+pat
+pat
+pat
+pat
+pat
 nIK
 nIK
 nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
+mXr
 nIK
 nIK
 nIK
@@ -51852,7 +52226,7 @@ nIK
 nIK
 nIK
 nIK
-nIK
+bwd
 nIK
 nIK
 nIK

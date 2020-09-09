@@ -835,6 +835,13 @@
 /obj/item/clothing/glasses/welding,
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
+"bR" = (
+/obj/machinery/porta_turret/crescent{
+	density = 1;
+	faction = "neutral"
+	},
+/turf/simulated/floor/airless/ceiling,
+/area/bridge)
 "bS" = (
 /obj/machinery/computer/rdconsole/core,
 /obj/machinery/firealarm{
@@ -2451,6 +2458,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/fore)
+"ff" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/airless/ceiling,
+/area/rnd/xenobiology/xenoflora/lab_atmos)
 "fg" = (
 /obj/machinery/recharge_station,
 /obj/machinery/light{
@@ -3303,7 +3314,7 @@
 "gX" = (
 /obj/machinery/atmospherics/pipe/vent/high_volume,
 /turf/simulated/floor/airless,
-/area/space)
+/area/rnd/xenobiology/xenoflora_storage)
 "gY" = (
 /obj/machinery/door/firedoor,
 /obj/structure/window/reinforced{
@@ -7273,6 +7284,10 @@
 "oU" = (
 /turf/simulated/floor/tiled,
 /area/medical/medbay_emt_bay)
+"oV" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/airless/ceiling,
+/area/rnd/xenobiology/xenoflora_storage)
 "oW" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
@@ -8563,7 +8578,7 @@
 "rF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/purple,
 /turf/simulated/floor/airless,
-/area/space)
+/area/rnd/xenobiology/xenoflora_storage)
 "rG" = (
 /obj/structure/closet{
 	name = "spare clothes"
@@ -11433,6 +11448,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/reception_desk)
+"xn" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/airless/ceiling,
+/area/space)
 "xo" = (
 /obj/machinery/camera/network/civilian,
 /obj/effect/floor_decal/techfloor{
@@ -13538,8 +13557,7 @@
 /area/hallway/primary/aft)
 "Bo" = (
 /obj/machinery/door/airlock/medical{
-	name = "Operating Theatre 3 Viewing";
-	req_one_access = null
+	name = "Operating Theatre 3 Viewing"
 	},
 /turf/simulated/floor/tiled,
 /area/medical/surgery_hallway)
@@ -20318,6 +20336,9 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research)
+"OS" = (
+/turf/simulated/floor/airless,
+/area/rnd/xenobiology/xenoflora_storage)
 "OT" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 8
@@ -22574,6 +22595,9 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/medbay)
+"Tt" = (
+/turf/simulated/floor/airless,
+/area/rnd/xenobiology/xenoflora/lab_atmos)
 "Tu" = (
 /obj/machinery/light{
 	dir = 1
@@ -24131,8 +24155,7 @@
 	dir = 2;
 	id_tag = "MedbayPsyche";
 	name = "Treatment Centre";
-	req_access = null;
-	req_one_access = null
+	req_one_access = list(5)
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/white,
@@ -27054,10 +27077,10 @@ ss
 gK
 gK
 gK
-eP
-eP
-eP
-eP
+Zq
+Zq
+Zq
+Zq
 gK
 gK
 ss
@@ -27196,12 +27219,12 @@ ss
 gK
 gK
 gK
-eP
-eP
-eP
-eP
-eP
-eP
+Zq
+Zq
+Zq
+Zq
+Zq
+Zq
 ss
 gK
 gK
@@ -27337,9 +27360,9 @@ gK
 ss
 gK
 gK
-gK
-eP
-eP
+xn
+bR
+Zq
 Zq
 Zq
 Zq
@@ -27407,10 +27430,10 @@ xZ
 xZ
 xZ
 xZ
-eP
-eP
+xZ
+xZ
 gK
-Oi
+ss
 gK
 gK
 gK
@@ -27480,8 +27503,8 @@ ss
 gK
 gK
 gK
-eP
-eP
+Zq
+Zq
 Zq
 Gp
 eh
@@ -27549,10 +27572,10 @@ de
 tE
 ps
 xZ
-eP
-eP
-gK
-Oi
+xZ
+bR
+xn
+ss
 gK
 gK
 gK
@@ -27623,7 +27646,7 @@ gK
 gK
 gK
 gK
-eP
+Zq
 Zq
 QB
 IW
@@ -27691,10 +27714,10 @@ LK
 tE
 nj
 xZ
-eP
+xZ
 gK
 gK
-Oi
+ss
 gK
 gK
 gK
@@ -27765,7 +27788,7 @@ ss
 ss
 ss
 ss
-eP
+Zq
 Zq
 QB
 IW
@@ -27833,7 +27856,7 @@ Jx
 Tc
 GJ
 xZ
-eP
+xZ
 gK
 gK
 Oi
@@ -29279,7 +29302,7 @@ gK
 gK
 gK
 gK
-gK
+aT
 gK
 gK
 gK
@@ -30159,7 +30182,7 @@ gK
 gK
 gK
 gK
-gK
+aT
 gK
 gK
 gK
@@ -32093,8 +32116,8 @@ RS
 RS
 RS
 oR
-gK
-Oi
+bR
+xn
 gK
 gK
 gK
@@ -34012,8 +34035,8 @@ gK
 gK
 gK
 gK
-gK
-PB
+ff
+bR
 ET
 uz
 Ww
@@ -34128,6 +34151,7 @@ gK
 gK
 gK
 gK
+aT
 gK
 gK
 gK
@@ -34153,9 +34177,8 @@ gK
 gK
 gK
 gK
-gK
-PB
-PB
+Tt
+Tt
 ET
 di
 di
@@ -34438,8 +34461,8 @@ gK
 gK
 gK
 gK
-PB
-PB
+OS
+OS
 DH
 bL
 fN
@@ -34580,8 +34603,8 @@ gK
 gK
 gK
 gK
-gK
-PB
+oV
+bR
 DH
 uc
 vF
@@ -37900,7 +37923,7 @@ Mm
 FY
 dn
 MM
-eP
+bR
 gK
 gK
 gK
@@ -37910,7 +37933,7 @@ gK
 ss
 gK
 gK
-gK
+bR
 gK
 gK
 gK
@@ -38042,7 +38065,7 @@ hl
 ag
 zG
 MM
-gK
+xn
 gK
 gK
 gK
@@ -38052,7 +38075,7 @@ gK
 ss
 gK
 gK
-gK
+xn
 gK
 gK
 gK
@@ -39134,7 +39157,7 @@ eP
 eP
 eP
 eP
-eP
+bR
 eP
 eP
 eP
@@ -39173,7 +39196,7 @@ XX
 Ea
 Sa
 PD
-eP
+bR
 gK
 ss
 gK
@@ -39276,7 +39299,7 @@ Oi
 Oi
 Oi
 Oi
-Oi
+xn
 Oi
 Oi
 Oi
@@ -39315,7 +39338,7 @@ Sa
 Ea
 Sa
 PD
-gK
+xn
 gK
 ss
 gK
@@ -39857,7 +39880,7 @@ gK
 gK
 gK
 gK
-gK
+bR
 gK
 gK
 Pw
@@ -39999,7 +40022,7 @@ gK
 gK
 gK
 gK
-gK
+xn
 gK
 gK
 wg
@@ -41178,7 +41201,7 @@ gK
 gK
 gK
 gK
-gK
+aT
 gK
 gK
 gK
@@ -42699,7 +42722,7 @@ gK
 gK
 ss
 gK
-eP
+Pw
 Pw
 GD
 GD
@@ -42719,7 +42742,7 @@ GD
 GD
 GD
 Pw
-eP
+Pw
 gK
 ss
 gK
@@ -42841,8 +42864,8 @@ gK
 gK
 ss
 gK
-eP
-eP
+bR
+Pw
 gK
 ss
 gK
@@ -42860,8 +42883,8 @@ gK
 gK
 gK
 gK
-eP
-eP
+Pw
+bR
 gK
 ss
 gK
@@ -42981,9 +43004,9 @@ gK
 gK
 gK
 gK
-Oi
-Oi
-Oi
+ss
+ss
+xn
 Oi
 ss
 ss
@@ -43003,7 +43026,7 @@ gK
 gK
 gK
 gK
-gK
+xn
 gK
 ss
 gK

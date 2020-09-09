@@ -3,8 +3,9 @@
 */
 
 // These now are basically only used to spawn hazards. Will be useful when we need to spawn group of moving hazards
-// Somethings weird with the numbers here that is causing NOTHING to spawn on our overmap and I am unsure if there's a second file we need to investigate to resolve this.
-// I'm doing another slight number tweak to see if stuff spawns, but would like other eyes to check and see if there's something missing. - Enzo 9/8/2020
+//FOUND THE ISSUE FOR OVERMAP SPAWNING. WHEN MAKING OR EDITING EVENTS BE SURE TO HAVE THE FORMAT THE SAME AS BELOW
+// " /datum/overmap_event/event_name "
+// DO NOT ADD ANYTHING ELSE OR IT WILL RUNTIME AND BREAK THE SPAWN SYSTEM. COOL? COOL. - Enzo 9/9/2020
 /datum/overmap_event
 	var/name = "map event"
 	var/radius = 2			// Radius of the spawn circle around chosen epicenter
@@ -15,57 +16,57 @@
 /datum/overmap_event/meteor
 	name = "asteroid field"
 	count = 15
-	radius = 4
+	radius = 3
 	continuous = FALSE
 	hazards = /obj/effect/overmap/event/meteor
 
 /datum/overmap_event/electric
 	name = "electrical storm"
-	count = 15
+	count = 18
 	radius = 4
 	hazards = /obj/effect/overmap/event/electric
 
 /datum/overmap_event/dust
 	name = "dust cloud"
-	count = 15
-	radius = 3
+	count = 22
+	radius = 4
 	hazards = /obj/effect/overmap/event/dust
 
 /datum/overmap_event/ion
 	name = "ion cloud"
-	count = 15
-	radius = 3
+	count = 19
+	radius = 4
 	hazards = /obj/effect/overmap/event/ion
 
 /datum/overmap_event/carp
 	name = "carp shoal"
-	count = 15
-	radius = 4
+	count = 12
+	radius = 3
 	continuous = FALSE
 	hazards = /obj/effect/overmap/event/carp
 
-/datum/overmap_event/event/carp_heavy
+/datum/overmap_event/carp_heavy
 	name = "carp school"
-	count = 10
+	count = 9
 	radius = 3
 	continuous = FALSE
 	hazards = /obj/effect/overmap/event/carp_heavy
 
 /datum/overmap_event/hostile_migration
 	name = "hostile lifesigns"
-	count = 10
+	count = 11
 	radius = 3
 	continuous = FALSE
 	hazards = /obj/effect/overmap/event/hostile_migration
 
 /datum/overmap_event/communications_blackout
 	name = "Ionspheric Bubble"
-	count = 15
-	radius = 4
+	count = 12
+	radius = 3
 	hazards = /obj/effect/overmap/event/communications_blackout
 
 /datum/overmap_event/cult
 	name = "Screaming Signal"
-	count = 10
+	count = 12
 	radius = 3
 	hazards = /obj/effect/overmap/event/cult
