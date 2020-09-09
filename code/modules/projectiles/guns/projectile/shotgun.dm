@@ -135,6 +135,10 @@
 	ammo_type = /obj/item/ammo_casing/a12g/pellet
 	w_class = ITEMSIZE_NORMAL
 	force = 5
+	
+/obj/item/gun/projectile/shotgun/doublebarrel/sawn/holy // A Special Skin for the sawn off,makes it look like the sawn off from Blood.
+	icon_state = "shotpistol"
+	ammo_type = /obj/item/ammo_casing/a12g/holy
 
 obj/item/gun/projectile/shotgun/doublebarrel/quad
 	name = "quad-barreled shotgun"
