@@ -20,8 +20,21 @@
 
 /obj/item/clothing/shoes/magboots/rig
 	sprite_sheets = list(
+		SPECIES_TAJ 			= 'icons/mob/species/tajaran/suit.dmi',
+		SPECIES_SKRELL 			= 'icons/mob/species/skrell/suit.dmi',
+		SPECIES_UNATHI 			= 'icons/mob/species/unathi/suit.dmi',
+		SPECIES_NEVREAN 		= 'icons/mob/species/nevrean/suit_vr.dmi',
+		SPECIES_AKULA 			= 'icons/mob/species/akula/suit_vr.dmi',
+		SPECIES_SERGAL			= 'icons/mob/species/sergal/suit_vr.dmi',
+		SPECIES_ZORREN_FLAT		= 'icons/mob/species/fennec/suit_vr.dmi',
+		SPECIES_ZORREN_HIGH 	= 'icons/mob/species/fox/suit_vr.dmi',
+		SPECIES_VULPKANIN		= 'icons/mob/species/vulpkanin/suit.dmi',
+		SPECIES_PROMETHEAN		= 'icons/mob/species/skrell/suit.dmi',
+		SPECIES_XENOHYBRID		= 'icons/mob/species/unathi/suit.dmi',
+		SPECIES_VOX 			= 'icons/mob/species/vox/suit.dmi',
+		SPECIES_TESHARI			= 'icons/mob/species/teshari/suit.dmi',
 		SPECIES_ZADDAT 			= 'icons/mob/species/zaddat/shoes.dmi'
-		)//Fingers crossed it will reference back to the base sheet if it can't find the others
+		)//Sorry about that, old fork
 
 /obj/item/clothing/gloves/gauntlets/rig
 
