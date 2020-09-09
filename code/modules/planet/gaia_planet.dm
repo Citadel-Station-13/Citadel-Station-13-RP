@@ -8,7 +8,7 @@ var/datum/planet/gaia_planet/planet_gaia_planet = null
 	desc = "A beautiful lush planet that is owned by the Happy Days and Sunshine Corporation."
 	current_time = new /datum/time/gaia_planet()
 	expected_z_levels = list(13) // Debug testing.
-	planetary_wall_type = /turf/simulated/wall/planetary/gaia
+	planetary_wall_type = /turf/simulated/wall/planetary
 
 /datum/planet/gaia_planet/New()
 	..()
