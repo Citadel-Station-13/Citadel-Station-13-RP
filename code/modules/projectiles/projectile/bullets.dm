@@ -87,7 +87,6 @@
 	SA_bonus_damage = 25 // 40 total against demons
 	SA_vulnerability = MOB_CLASS_DEMONIC
 	embed_chance = -1
-	anti_magic = TRUE
 
 /obj/item/projectile/bullet/pistol/medium // .45 (and maybe .40 if it ever gets added) caliber security pistols. Balance between capacity and power.
 	fire_sound = 'sound/weapons/gunshot3.ogg' // Snappier sound.
@@ -185,7 +184,6 @@
 	pellets = 6
 	range_step = 1
 	spread_step = 20
-	anti_magic = TRUE
 
 //EMP shotgun 'slug', it's basically a beanbag that pops a tiny emp when it hits. //Not currently used
 /obj/item/projectile/bullet/shotgun/ion
