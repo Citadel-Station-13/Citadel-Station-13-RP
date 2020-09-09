@@ -130,6 +130,7 @@
 	desc = "Omar's coming!" // I'm not gonna add "Uses 12g rounds." to this one. I'll just let this reference go undisturbed.
 	icon_state = "sawnshotgun"
 	item_state = "sawnshotgun"
+	recoil = 3
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	ammo_type = /obj/item/ammo_casing/a12g/pellet
 	w_class = ITEMSIZE_NORMAL
@@ -140,6 +141,7 @@ obj/item/gun/projectile/shotgun/doublebarrel/quad
 	desc = "A shotgun pattern designed to make the most out of the limited machining capability of the frontier. 4 Whole barrels of death, loads using 12 gauge rounds."
 	icon_state = "qshotgun"
 	item_state = "qshotgun"
+	recoil = 2
 	load_method = SINGLE_CASING|SPEEDLOADER
 	handle_casings = CYCLE_CASINGS
 	max_shells = 4
