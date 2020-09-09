@@ -130,7 +130,6 @@
 	desc = "Omar's coming!" // I'm not gonna add "Uses 12g rounds." to this one. I'll just let this reference go undisturbed.
 	icon_state = "sawnshotgun"
 	item_state = "sawnshotgun"
-	recoil = 3
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	ammo_type = /obj/item/ammo_casing/a12g/pellet
 	w_class = ITEMSIZE_NORMAL
@@ -141,7 +140,6 @@ obj/item/gun/projectile/shotgun/doublebarrel/quad
 	desc = "A shotgun pattern designed to make the most out of the limited machining capability of the frontier. 4 Whole barrels of death, loads using 12 gauge rounds."
 	icon_state = "qshotgun"
 	item_state = "qshotgun"
-	recoil = 2
 	load_method = SINGLE_CASING|SPEEDLOADER
 	handle_casings = CYCLE_CASINGS
 	max_shells = 4
@@ -186,3 +184,20 @@ obj/item/gun/projectile/shotgun/doublebarrel/quad
 	name = "Exploration Flare Gun"
 	desc = "A common mass produced emergency flare gun capable of shooting a single flare great distances for signalling air and ground forces alike. As it loads 12g flare shells it can also function as improvised 12g shotgun. On it a description reads: 'For use on extraplanetary excursions only.'"
 	icon_state = "flareg-explo"
+
+/obj/item/gun/projectile/shotgun/doublebarrel/axe
+	name = "Shot Axe"
+	desc = " A single barrel shotgun with a long curved stock and an axe head wrapped around the end of the barrel. More axe than shotgun, the blade has been treated with an odd smelling incense. Loads using 12g shells."
+	icon_state = "axeshotgun"
+	item_state = "axeshotgun"
+	load_method = SINGLE_CASING
+	handle_casings = CYCLE_CASINGS
+	ammo_type = /obj/item/ammo_casing/a12g/silver
+	max_shells = 1
+	w_class = ITEMSIZE_LARGE
+	force = 25
+	slot_flags = SLOT_BACK
+	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2, TECH_OCCULT = 1)
+	sharp = 1
+	edge = 1
+	holy = TRUE
