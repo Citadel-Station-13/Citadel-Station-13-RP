@@ -1,9 +1,18 @@
-// Shoelocker
+/*
+	Shoes & Footwear
+*/
+
+
 /datum/gear/shoes
+	sort_category = "Shoes and Footwear" // This controls the name of the category in the loadout.
+	type_category = /datum/gear/shoes // All subtypes of the geartype declared will be associated with this - practically speaking this controls where the items themselves go.
+	slot = slot_shoes // Assigns the slot of each item of the gear subtype to the slot specified.
+	cost = 1 // Controls how much an item's "cost" is in the loadout point menu. If re-specified on a different item, that value will override this one. This sets the default value.
+
+
+/datum/gear/shoes/boots
 	display_name = "jackboots"
 	path = /obj/item/clothing/shoes/boots/jackboots
-	slot = slot_shoes
-	sort_category = "Shoes and Footwear"
 
 /datum/gear/shoes/toeless
 	display_name = "toe-less jackboots"
@@ -235,3 +244,40 @@
 /datum/gear/shoes/cowboy/black
 	display_name = "black cowboy boots"
 	path = /obj/item/clothing/shoes/cowboyboots/black
+
+/datum/gear/shoes/boots/winter/science
+	allowed_roles = list("Research Director","Scientist", "Roboticist", "Xenobiologist", "Explorer", "Pathfinder")
+
+/datum/gear/shoes/boots/winter/medical
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist", "Psychiatrist", "Field Medic")
+
+/datum/gear/shoes/black/cuffs
+	display_name = "legwraps, black"
+	path = /obj/item/clothing/shoes/black/cuffs
+
+/datum/gear/shoes/black/cuffs/blue
+	display_name = "legwraps, blue"
+	path = /obj/item/clothing/shoes/black/cuffs/blue
+
+/datum/gear/shoes/black/cuffs/red
+	display_name = "legwraps, red"
+	path = /obj/item/clothing/shoes/black/cuffs/red
+
+/datum/gear/shoes/siren
+	display_name = "boots, Siren"
+	path = /obj/item/clothing/shoes/boots/fluff/siren
+
+/datum/gear/shoes/galoshes
+	display_name = "galoshes"
+	path = /obj/item/clothing/shoes/galoshes
+	allowed_roles = list("Janitor")
+
+/datum/gear/shoes/galoshes/dark_purple
+	display_name = "galoshes, dark purple"
+	path = /obj/item/clothing/shoes/galoshes/citadel/starcon
+	allowed_roles = list("Janitor")
+
+/datum/gear/shoes/galoshes/black
+	display_name = "galoshes, black"
+	path = /obj/item/clothing/shoes/galoshes/citadel/black
+	allowed_roles = list("Janitor")

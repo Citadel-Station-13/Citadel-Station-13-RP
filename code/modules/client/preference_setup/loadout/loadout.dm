@@ -9,6 +9,50 @@ var/list/gear_datums = list()
 	category = cat
 	..()
 
+/datum/gear
+	var/display_name       //Name/index. Must be unique.
+	var/description        //Description of this gear. If left blank will default to the description of the pathed item.
+	var/path               //Path to item.
+	var/cost = 1           //Number of points used. Items in general cost 1 point, storage/armor/gloves/special use costs 2 points.
+	var/slot               //Slot to equip to.
+	var/list/allowed_roles //Roles that can spawn with this item.
+	var/whitelisted        //Term to check the whitelist for..
+	var/sort_category = "General"
+	var/list/gear_tweaks = list() //List of datums which will alter the item after it has been spawned.
+	var/exploitable = 0		//Does it go on the exploitable information list?
+	var/type_category = null
+	var/list/ckeywhitelist
+	var/list/character_name
+	var/static/datum/gear_tweak/color/gear_tweak_free_color_choice = new
+
+/datum/gear/New()
+	..()
+	if(!description)
+		var/obj/O = path
+		description = initial(O.desc)
+
+/datum/gear_data
+	var/path
+	var/location
+
+/datum/gear_data/New(var/path, var/location)
+	src.path = path
+	src.location = location
+
+/datum/gear/proc/spawn_item(var/location, var/metadata)
+	var/datum/gear_data/gd = new(path, location)
+	if(metadata)
+		for(var/datum/gear_tweak/gt in gear_tweaks)
+			gt.tweak_gear_data(metadata["[gt]"], gd)
+	var/item = new gd.path(gd.location)
+	if(metadata)
+		for(var/datum/gear_tweak/gt in gear_tweaks)
+			gt.tweak_item(item, metadata["[gt]"])
+	var/mob/M = location
+	if(istype(M) && exploitable) //Update exploitable info records for the mob without creating a duplicate object at their feet.
+		M.amend_exploitable(item)
+	return item
+
 /hook/startup/proc/populate_gear_list()
 
 	//create a list of gear datums to sort
@@ -35,10 +79,10 @@ var/list/gear_datums = list()
 		gear_datums[use_name] = new geartype
 		LC.gear[use_name] = gear_datums[use_name]
 
-	loadout_categories = sortTim(loadout_categories, /proc/cmp_text_asc, TRUE)
+	loadout_categories = sortAssoc(loadout_categories)
 	for(var/loadout_category in loadout_categories)
 		var/datum/loadout_category/LC = loadout_categories[loadout_category]
-		LC.gear = sortTim(LC.gear, /proc/cmp_text_asc, TRUE)
+		LC.gear = sortAssoc(LC.gear) //sortAssoc is what alphabetizes the loadout.
 	return 1
 
 /datum/category_item/player_setup_item/loadout
@@ -242,45 +286,3 @@ var/list/gear_datums = list()
 		pref.gear.Cut()
 		return TOPIC_REFRESH_UPDATE_PREVIEW
 	return ..()
-
-/datum/gear
-	var/display_name       //Name/index. Must be unique.
-	var/description        //Description of this gear. If left blank will default to the description of the pathed item.
-	var/path               //Path to item.
-	var/cost = 1           //Number of points used. Items in general cost 1 point, storage/armor/gloves/special use costs 2 points.
-	var/slot               //Slot to equip to.
-	var/list/allowed_roles //Roles that can spawn with this item.
-	var/whitelisted        //Term to check the whitelist for..
-	var/sort_category = "General"
-	var/list/gear_tweaks = list() //List of datums which will alter the item after it has been spawned.
-	var/exploitable = 0		//Does it go on the exploitable information list?
-	var/type_category = null
-	var/static/datum/gear_tweak/color/gear_tweak_free_color_choice = new
-
-/datum/gear/New()
-	..()
-	if(!description)
-		var/obj/O = path
-		description = initial(O.desc)
-
-/datum/gear_data
-	var/path
-	var/location
-
-/datum/gear_data/New(var/path, var/location)
-	src.path = path
-	src.location = location
-
-/datum/gear/proc/spawn_item(var/location, var/metadata)
-	var/datum/gear_data/gd = new(path, location)
-	if(metadata)
-		for(var/datum/gear_tweak/gt in gear_tweaks)
-			gt.tweak_gear_data(metadata["[gt]"], gd)
-	var/item = new gd.path(gd.location)
-	if(metadata)
-		for(var/datum/gear_tweak/gt in gear_tweaks)
-			gt.tweak_item(item, metadata["[gt]"])
-	var/mob/M = location
-	if(istype(M) && exploitable) //Update exploitable info records for the mob without creating a duplicate object at their feet.
-		M.amend_exploitable(item)
-	return item

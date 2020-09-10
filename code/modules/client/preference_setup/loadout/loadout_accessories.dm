@@ -1,11 +1,16 @@
+/*
+	Accessories
+*/
 
 /datum/gear/accessory
-	display_name = "accessory"
-	slot = slot_tie
-	sort_category = "Accessories"
-	type_category = /datum/gear/accessory
+	sort_category = "Accessories" // This controls the name of the category in the loadout.
+	type_category = /datum/gear/accessory // All subtypes of the geartype declared will be associated with this - practically speaking this controls where the items themselves go.
+	slot = slot_tie // Assigns the slot of each item of the gear subtype to the slot specified.
+	cost = 1 // Controls how much an item's "cost" is in the loadout point menu. If re-specified on a different item, that value will override this one. This sets the default value.
+
+/datum/gear/accessory/exampletie //This should be removed once the tie's object itself is renamed
+	display_name = "blue silk tie"
 	path = /obj/item/clothing/accessory
-	cost = 1
 
 /datum/gear/accessory/armband
 	display_name = "armband selection"
@@ -133,6 +138,11 @@
 	display_name = "suit vest"
 	path = /obj/item/clothing/accessory/vest
 
+/datum/gear/accessory/khcrystal
+	display_name = "KH Life Crystal"
+	path = /obj/item/storage/box/khcrystal
+	description = "A small necklace device that will notify an offsite cloning facility should you expire after activating it."
+
 /datum/gear/accessory/lifecrystal
 	display_name = "Life Crystal"
 	path = /obj/item/clothing/accessory/collar/lifecrystal
@@ -219,11 +229,16 @@
 		sweaters[initial(sweater_type.name)] = sweater_type
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(sweaters, /proc/cmp_text_asc, TRUE))
 
+
+/datum/gear/accessory/bracelet
+	display_name = "bracelet"
+	path = /obj/item/clothing/accessory/bracelet
+
+
 /datum/gear/accessory/bracelet/material
 	display_name = "bracelet selection"
 	description = "Choose from a number of bracelets."
 	path = /obj/item/clothing/accessory/bracelet
-	cost = 1
 
 /datum/gear/accessory/bracelet/material/New()
 	..()
@@ -256,10 +271,6 @@
 	path = /obj/item/clothing/accessory/necklace
 	description = "A necklace. You can rename it and change its description in-game."
 
-/datum/gear/accessory/treatbox
-	display_name = "box of treats"
-	path = /obj/item/storage/box/treats
-	cost = 2
 /datum/gear/accessory/halfcape
 	display_name = "half cape"
 	path = /obj/item/clothing/accessory/halfcape
@@ -292,3 +303,81 @@
 /datum/gear/accessory/cowledvest
 	display_name = "cowled vest"
 	path = /obj/item/clothing/accessory/cowledvest
+
+/datum/gear/accessory/collar/choker //A colorable choker
+	display_name = "choker (colorable, tagless)"
+	path = /obj/item/clothing/accessory/choker
+
+/datum/gear/accessory/collar/choker/New()
+	..()
+	gear_tweaks = list(gear_tweak_free_color_choice)
+
+
+/datum/gear/accessory/collar
+	display_name = "collar, silver"
+	path = /obj/item/clothing/accessory/collar/silver
+
+/datum/gear/accessory/collar/New()
+	..()
+	gear_tweaks = list(gear_tweak_collar_tag)
+
+
+/datum/gear/accessory/collar/golden
+	display_name = "collar, golden"
+	path = /obj/item/clothing/accessory/collar/gold
+
+/datum/gear/accessory/collar/bell
+	display_name = "collar, bell"
+	path = /obj/item/clothing/accessory/collar/bell
+
+/datum/gear/accessory/collar/shock
+	display_name = "collar, shock"
+	path = /obj/item/clothing/accessory/collar/shock
+
+/datum/gear/accessory/collar/spike
+	display_name = "collar, spike"
+	path = /obj/item/clothing/accessory/collar/spike
+
+/datum/gear/accessory/collar/pink
+	display_name = "collar, pink"
+	path = /obj/item/clothing/accessory/collar/pink
+
+/datum/gear/accessory/collar/holo
+	display_name = "collar, holo"
+	path = /obj/item/clothing/accessory/collar/holo
+
+/datum/gear/accessory/collar/cow
+	display_name = "collar, cowbell"
+	path = /obj/item/clothing/accessory/collar/cowbell
+
+/datum/gear/accessory/collar/holo/indigestible
+	display_name = "collar, holo (indigestible)"
+	path = /obj/item/clothing/accessory/collar/holo/indigestible
+
+/datum/gear/accessory/webbing
+	cost = 1
+
+/datum/gear/accessory/stethoscope
+	allowed_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Psychiatrist","Paramedic", "Field Medic")
+
+/datum/gear/accessory/tronket
+	display_name = "metal necklace"
+	description = "A shiny steel chain with a vague metallic object dangling off it."
+	path = /obj/item/clothing/accessory/tronket
+
+/datum/gear/accessory/pilotpin
+	display_name = "pilot qualification pin"
+	description = "An iron pin denoting the qualification to fly SCG spacecraft."
+	path = /obj/item/clothing/accessory/solgov/specialty/pilot
+	allowed_roles = list("Pathfinder", "Pilot", "Field Medic")
+
+/datum/gear/accessory/flops
+	display_name = "drop straps"
+	description = "Wearing suspenders over shoulders? That's been so out for centuries and you know better."
+	path = /obj/item/clothing/accessory/flops
+
+/datum/gear/accessory/flops/New()
+	..()
+	gear_tweaks = list(gear_tweak_free_color_choice)
+
+

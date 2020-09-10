@@ -1,3 +1,7 @@
+/*
+	Donator Items
+*/
+
 /datum/gear/donator
 	display_name = "If this item can be chosen or seen, ping a coder immediately!"
 	sort_category = "Donator"
@@ -156,6 +160,12 @@
 	display_name = "USDF Beret"
 	sort_category = "Donator"
 	path = /obj/item/clothing/head/donator/hberet
+	ckeywhitelist = list("certifiedhyena")
+
+/datum/gear/donator/usdfholotags
+	display_name = "USDF Holotags"
+	description = "United Sol Defense Force issued ID, Belonging to Nikolai Volkov, DOB 12/12/2537, Blood Type O+"
+	path = /obj/item/clothing/accessory/collar/donator/holotags
 	ckeywhitelist = list("certifiedhyena")
 
 /datum/gear/donator/woolhat

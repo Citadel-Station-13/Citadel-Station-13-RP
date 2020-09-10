@@ -1,10 +1,16 @@
-// Suit slot
+/*
+	Suits & Overwear
+*/
+
 /datum/gear/suit
+	sort_category = "Suits and Overwear" // This controls the name of the category in the loadout.
+	type_category = /datum/gear/suit // All subtypes of the geartype declared will be associated with this - practically speaking this controls where the items themselves go.
+	slot = slot_wear_suit // Assigns the slot of each item of the gear subtype to the slot specified.
+	cost = 2 // Controls how much an item's "cost" is in the loadout point menu. If re-specified on a different item, that value will override this one. This sets the default value.
+
+/datum/gear/suit/apron_blue
 	display_name = "apron, blue"
 	path = /obj/item/clothing/suit/storage/apron
-	slot = slot_wear_suit
-	sort_category = "Suits and Overwear"
-	cost = 2
 
 /datum/gear/suit/apron_white
 	display_name = "apron, colorable"
@@ -75,7 +81,6 @@
 	path = /obj/item/clothing/suit/storage/toggle/brown_jacket/nanotrasen/sleeveless
 
 /datum/gear/suit/mil
-	display_name = "military jacket"
 	display_name = "military jacket selection"
 	path = /obj/item/clothing/suit/storage/miljacket
 
@@ -87,13 +92,6 @@
 		mil_jackets[initial(miljacket.name)] = miljacket
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(mil_jackets, /proc/cmp_text_asc, TRUE))
 
-/* /datum/gear/suit/mil/alt
-	display_name = "military jacket, alt"
-	path = /obj/item/clothing/suit/storage/miljacket/alt
-
-/datum/gear/suit/mil/green
-	display_name = "military jacket, green"
-	path = /obj/item/clothing/suit/storage/miljacket/green */
 
 /datum/gear/suit/greyjacket
 	display_name = "grey jacket"
@@ -180,7 +178,7 @@ datum/gear/suit/duster
 	path = /obj/item/clothing/suit/storage/toggle/labcoat/emt
 	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist", "Psychiatrist")
 
-/datum/gear/suit/roles/surgical_apron
+/datum/gear/suit/surgical_apron
 	display_name = "surgical apron"
 	path = /obj/item/clothing/suit/surgicalapron
 	allowed_roles = list("Medical Doctor","Chief Medical Officer")
@@ -203,105 +201,109 @@ datum/gear/suit/duster
 		ponchos[initial(poncho.name)] = poncho
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(ponchos, /proc/cmp_text_asc, TRUE))
 
-/datum/gear/suit/roles/poncho/security
+
+/datum/gear/suit/poncho/roles //congraturlations security poncho you've been officialy promoted to the parent declaration
 	display_name = "poncho, security"
 	path = /obj/item/clothing/accessory/poncho/roles/security
 
-/datum/gear/suit/roles/poncho/medical
+/datum/gear/suit/poncho/roles/medical
 	display_name = "poncho, medical"
 	path = /obj/item/clothing/accessory/poncho/roles/medical
 
-/datum/gear/suit/roles/poncho/engineering
+/datum/gear/suit/poncho/roles/engineering
 	display_name = "poncho, engineering"
 	path = /obj/item/clothing/accessory/poncho/roles/engineering
 
-/datum/gear/suit/roles/poncho/science
+/datum/gear/suit/poncho/roles/science
 	display_name = "poncho, science"
 	path = /obj/item/clothing/accessory/poncho/roles/science
 
-/datum/gear/suit/roles/poncho/cargo
+/datum/gear/suit/poncho/roles/cargo
 	display_name = "poncho, cargo"
 	path = /obj/item/clothing/accessory/poncho/roles/cargo
 
-/datum/gear/suit/roles/poncho/cloak/hos
+/datum/gear/suit/poncho/roles/cloak/hos
 	display_name = "cloak, head of security"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/hos
 	allowed_roles = list("Head of Security")
 
-/datum/gear/suit/roles/poncho/cloak/cmo
+/datum/gear/suit/poncho/roles/cmo
 	display_name = "cloak, chief medical officer"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/cmo
 	allowed_roles = list("Chief Medical Officer")
 
-/datum/gear/suit/roles/poncho/cloak/ce
+/datum/gear/suit/poncho/roles/cloak/ce
 	display_name = "cloak, chief engineer"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/ce
 	allowed_roles = list("Chief Engineer")
 
-/datum/gear/suit/roles/poncho/cloak/rd
+/datum/gear/suit/poncho/roles/cloak/rd
 	display_name = "cloak, research director"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/rd
 	allowed_roles = list("Research Director")
 
-/datum/gear/suit/roles/poncho/cloak/qm
+/datum/gear/suit/poncho/roles/cloak/qm
 	display_name = "cloak, quartermaster"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/qm
 	allowed_roles = list("Quartermaster")
 
-/datum/gear/suit/roles/poncho/cloak/captain
+/datum/gear/suit/poncho/roles/cloak/captain
 	display_name = "cloak, Facility Director"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/captain
 	allowed_roles = list("Facility Director")
 
-/datum/gear/suit/roles/poncho/cloak/hop
+/datum/gear/suit/poncho/roles/cloak/hop
 	display_name = "cloak, head of personnel"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/hop
 	allowed_roles = list("Head of Personnel")
 
-/datum/gear/suit/roles/poncho/cloak/cargo
+/datum/gear/suit/poncho/roles/cloak //congratulations poncho cloak cargo youve ben promoted to fuck
 	display_name = "cloak, cargo"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/cargo
 
-/datum/gear/suit/roles/poncho/cloak/mining
+/datum/gear/suit/poncho/roles/cloak/mining
 	display_name = "cloak, mining"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/mining
 
-/datum/gear/suit/roles/poncho/cloak/security
+/datum/gear/suit/poncho/roles/cloak/security
 	display_name = "cloak, security"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/security
 
-/datum/gear/suit/roles/poncho/cloak/service
+/datum/gear/suit/poncho/roles/cloak/service
 	display_name = "cloak, service"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/service
 
-/datum/gear/suit/roles/poncho/cloak/engineer
+/datum/gear/suit/poncho/roles/cloak/engineer
 	display_name = "cloak, engineer"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/engineer
 
-/datum/gear/suit/roles/poncho/cloak/atmos
+/datum/gear/suit/poncho/roles/cloak/atmos
 	display_name = "cloak, atmos"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/atmos
 
-/datum/gear/suit/roles/poncho/cloak/research
+/datum/gear/suit/poncho/roles/cloak/research
 	display_name = "cloak, science"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/research
 
-/datum/gear/suit/roles/poncho/cloak/medical
+/datum/gear/suit/poncho/roles/cloak/medical
 	display_name = "cloak, medical"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/medical
 
-/datum/gear/suit/roles/poncho/cloak/custom //A colorable cloak
+/datum/gear/suit/poncho/roles/cloak/custom //A colorable cloak
 	display_name = "cloak (colorable)"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/custom
 
-/datum/gear/suit/roles/poncho/cloak/custom/New()
+/datum/gear/suit/poncho/roles/cloak/custom/New()
 	..()
 	gear_tweaks = list(gear_tweak_free_color_choice)
 
 /datum/gear/suit/unathi_robe
 	display_name = "roughspun robe"
 	path = /obj/item/clothing/suit/unathi/robe
-	cost = 1
+
+/datum/gear/suit/hide_mantle
+	display_name = "hide mantle"
+	path = /obj/item/clothing/suit/unathi/mantle
 
 /datum/gear/suit/black_lawyer_jacket
 	display_name = "suit jacket, black"
@@ -417,19 +419,19 @@ datum/gear/suit/duster
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(tracks, /proc/cmp_text_asc, TRUE))
 
 /datum/gear/suit/flannel
-	display_name = "grey flannel"
+	display_name = "flannel shirt, grey"
 	path = /obj/item/clothing/suit/storage/flannel
 
 /datum/gear/suit/flannel/red
-	display_name = "red flannel"
+	display_name = "flannel, red"
 	path = /obj/item/clothing/suit/storage/flannel/red
 
 /datum/gear/suit/flannel/aqua
-	display_name = "aqua flannel"
+	display_name = "flannel, aqua"
 	path = /obj/item/clothing/suit/storage/flannel/aqua
 
 /datum/gear/suit/flannel/brown
-	display_name = "brown flannel"
+	display_name = "flannel, brown"
 	path = /obj/item/clothing/suit/storage/flannel/brown
 
 /datum/gear/suit/denim_jacket
@@ -448,43 +450,54 @@ datum/gear/suit/duster
 	display_name = "denim vest, corporate"
 	path = /obj/item/clothing/suit/storage/toggle/denim_jacket/nanotrasen/sleeveless
 
-/datum/gear/suit/miscellaneous/kimono
+/datum/gear/suit/cardigan
+	display_name = "cardigan"
+	path = /obj/item/clothing/suit/storage/toggle/cardigan
+
+/datum/gear/suit/cardigan/New()
+	..()
+	gear_tweaks = list(gear_tweak_free_color_choice)
+
+
+/datum/gear/suit/kimono
 	display_name = "kimono"
 	path = /obj/item/clothing/suit/kimono
 
-/datum/gear/suit/miscellaneous/kimono/New()
+/datum/gear/suit/kimono/New()
 	..()
 	gear_tweaks = list(gear_tweak_free_color_choice)
 
-/datum/gear/suit/miscellaneous/sec_dep_jacket
+
+/datum/gear/suit/sec_dep_jacket
 	display_name = "department jacket, security"
 	path = /obj/item/clothing/suit/storage/toggle/sec_dep_jacket
 
-/datum/gear/suit/miscellaneous/engi_dep_jacket
+/datum/gear/suit/engi_dep_jacket
 	display_name = "department jacket, engineering"
 	path = /obj/item/clothing/suit/storage/toggle/engi_dep_jacket
 
-/datum/gear/suit/miscellaneous/supply_dep_jacket
+/datum/gear/suit/supply_dep_jacket
 	display_name = "department jacket, supply"
 	path = /obj/item/clothing/suit/storage/toggle/supply_dep_jacket
 
-/datum/gear/suit/miscellaneous/sci_dep_jacket
+/datum/gear/suit/sci_dep_jacket
 	display_name = "department jacket, science"
 	path = /obj/item/clothing/suit/storage/toggle/sci_dep_jacket
 
-/datum/gear/suit/miscellaneous/med_dep_jacket
+/datum/gear/suit/med_dep_jacket
 	display_name = "department jacket, medical"
 	path = /obj/item/clothing/suit/storage/toggle/med_dep_jacket
 
-/datum/gear/suit/miscellaneous/peacoat
+/datum/gear/suit/peacoat
 	display_name = "peacoat"
 	path = /obj/item/clothing/suit/storage/toggle/peacoat
 
-/datum/gear/suit/miscellaneous/peacoat/New()
+/datum/gear/suit/peacoat/New()
 	..()
 	gear_tweaks = list(gear_tweak_free_color_choice)
 
-/datum/gear/suit/miscellaneous/kamishimo
+
+/datum/gear/suit/kamishimo
 	display_name = "kamishimo"
 	path = /obj/item/clothing/suit/kamishimo
 
@@ -522,17 +535,14 @@ datum/gear/suit/duster
 	path = /obj/item/clothing/suit/storage/snowsuit/cargo
 	allowed_roles = list("Quartermaster","Shaft Miner","Cargo Technician","Head of Personnel")
 
-/datum/gear/suit/miscellaneous/cardigan
-	display_name = "cardigan"
-	path = /obj/item/clothing/suit/storage/toggle/cardigan
-
-/datum/gear/suit/miscellaneous/cardigan/New()
-	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
-
-datum/gear/suit/miscellaneous/storage/lawyer/bridgeofficer
+datum/gear/suit/bridge_officer_dress_jacket
 	display_name = "bridge officer dress jacket"
 	path = /obj/item/clothing/suit/storage/bridgeofficer
+	allowed_roles = list("Command Secretary")
+
+datum/gear/suit/bridge_officer_parade_jacket
+	display_name = "bridge officer parade jacket"
+	path = /obj/item/clothing/suit/storage/ecdress_ofcr
 	allowed_roles = list("Command Secretary")
 
 datum/gear/suit/labcoat/paramedicjacketsol
@@ -555,24 +565,19 @@ datum/gear/suit/labcoat/param
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/bar
 	allowed_roles = list("Bartender")
 
-/datum/gear/suit/storage/dutchcoat
+/datum/gear/suit/dutchcoat
 	display_name = "Western Coat"
 	path = /obj/item/clothing/suit/storage/dutchcoat
 
-/datum/gear/suit/storage/tailcoat
+/datum/gear/suit/tailcoat
 	display_name = "Tailcoat"
 	path = /obj/item/clothing/suit/storage/tailcoat
 
-datum/gear/suit/miscellaneous/storage/lawyer/bridgeofficerparade
-	display_name = "bridge officer parade jacket"
-	path = /obj/item/clothing/suit/storage/ecdress_ofcr
-	allowed_roles = list("Command Secretary")
-
-/datum/gear/suit/storage/redladvic
+/datum/gear/suit/redladvic
 	display_name = "Red Victorian Coat"
 	path = /obj/item/clothing/suit/storage/redladiesvictoriancoat
 
-/datum/gear/suit/storage/ladvic
+/datum/gear/suit/ladvic
 	display_name = "Ladies Victorian Coat"
 	path = /obj/item/clothing/suit/storage/ladiesvictoriancoat
 
@@ -583,3 +588,44 @@ datum/gear/suit/miscellaneous/storage/lawyer/bridgeofficerparade
 /datum/gear/suit/ronincoat
 	display_name = "Ronin Coat"
 	path = /obj/item/clothing/suit/storage/hooded/ronincoat
+
+/datum/gear/suit/wintercoat/medical
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist", "Psychiatrist", "Field Medic")
+
+/datum/gear/suit/wintercoat/science
+	allowed_roles = list("Research Director","Scientist", "Roboticist", "Xenobiologist", "Explorer", "Pathfinder")
+
+/datum/gear/suit/snowsuit/medical
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist", "Psychiatrist", "Field Medic")
+
+/datum/gear/suit/snowsuit/science
+	allowed_roles = list("Research Director","Scientist", "Roboticist", "Xenobiologist", "Explorer", "Pathfinder")
+
+/datum/gear/suit/labcoat_colorable
+	display_name = "labcoat, colorable"
+	path = /obj/item/clothing/suit/storage/toggle/labcoat
+
+/datum/gear/suit/labcoat_colorable/New()
+	..()
+	gear_tweaks = list(gear_tweak_free_color_choice)
+
+/datum/gear/suit/jacket_modular
+	display_name = "jacket, modular"
+	path = /obj/item/clothing/suit/storage/fluff/jacket
+
+/datum/gear/suit/jacket_modular/New()
+	..()
+	var/list/the_jackets = list()
+	for(var/the_jacket in typesof(/obj/item/clothing/suit/storage/fluff/jacket))
+		var/obj/item/clothing/suit/jacket_type = the_jacket
+		the_jackets[initial(jacket_type.name)] = jacket_type
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(the_jackets, /proc/cmp_text_asc, TRUE))
+
+/datum/gear/suit/gntop
+	display_name = "GN crop jacket"
+	path = /obj/item/clothing/suit/storage/fluff/gntop
+
+/datum/gear/suit/bomber_pilot
+	display_name = "bomber jacket, pilot"
+	path = /obj/item/clothing/suit/storage/toggle/bomber/pilot
+

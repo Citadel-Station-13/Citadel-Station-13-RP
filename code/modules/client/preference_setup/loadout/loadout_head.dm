@@ -1,8 +1,17 @@
+/*
+	Hats & Headwear
+*/
+
 /datum/gear/head
+	sort_category = "Hats and Headwear" // This controls the name of the category in the loadout.
+	type_category = /datum/gear/head // All subtypes of the geartype declared will be associated with this - practically speaking this controls where the items themselves go.
+
+	slot = slot_head // Assigns the slot of each item of the gear subtype to the slot specified.
+	cost = 1 // Controls how much an item's "cost" is in the loadout point menu. If re-specified on a different item, that value will override this one. This sets the default value.
+
+/datum/gear/head/bandana_red
 	display_name = "bandana, pirate-red"
 	path = /obj/item/clothing/head/bandana
-	slot = slot_head
-	sort_category = "Hats and Headwear"
 
 /datum/gear/head/bandana_green
 	display_name = "bandana, green"
@@ -311,6 +320,10 @@
 	..()
 	gear_tweaks = list(gear_tweak_free_color_choice)
 
+/datum/gear/head/bow //Ideally we'll get a larger hair bow at some point, but for now we need to have this declared so I'll just use the colorable one for now.
+	display_name = "hair bow, small"
+	path = /obj/item/clothing/head/pin/bow
+
 /datum/gear/head/bow/small
 	display_name = "hair bow, small (colorable)"
 	path = /obj/item/clothing/head/pin/bow
@@ -398,3 +411,20 @@
 	display_name = "bridge officer cap"
 	path = /obj/item/clothing/head/bocap
 	allowed_roles = list("Command Secretary")
+
+/*/datum/gear/head/cap/sol
+	display_name = "cap, sol"
+	path = /obj/item/clothing/head/soft/sol*/
+
+/datum/gear/head/headbando
+	display_name = "basic headband"
+	path = /obj/item/clothing/head/fluff/headbando
+
+/datum/gear/head/headbando/New()
+	..()
+	gear_tweaks = list(gear_tweak_free_color_choice)
+
+/datum/gear/head/pilot
+	display_name = "helmet, pilot (Pilot)"
+	path = /obj/item/clothing/head/pilot/alt
+	allowed_roles = list("Pilot")

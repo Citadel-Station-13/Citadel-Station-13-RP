@@ -1,9 +1,16 @@
-// Eyes
+/*
+	Eyewear
+*/
+
 /datum/gear/eyes
+	sort_category = "Glasses and Eyewear" // This controls the name of the category in the loadout.
+	type_category = /datum/gear/eyes // All subtypes of the geartype declared will be associated with this - practically speaking this controls where the items themselves go.
+	slot = slot_glasses // Assigns the slot of each item of the gear subtype to the slot specified.
+	cost = 1 // Controls how much an item's "cost" is in the loadout point menu. If re-specified on a different item, that value will override this one. This sets the default value.
+
+/datum/gear/eyes/eyepatch
 	display_name = "eyepatch"
 	path = /obj/item/clothing/glasses/eyepatch
-	slot = slot_glasses
-	sort_category = "Glasses and Eyewear"
 
 /datum/gear/eyes/glasses
 	display_name = "Glasses, prescription"
@@ -205,3 +212,51 @@
 /datum/gear/eyes/glasses/welding
 	display_name = "Welding Goggles"
 	path = /obj/item/clothing/glasses/welding
+
+/datum/gear/eyes/medical
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist", "Psychiatrist", "Field Medic")
+
+/datum/gear/eyes/meson
+	display_name = "Optical Meson Scanners (Engineering, Science)"
+	allowed_roles = list("Station Engineer","Chief Engineer","Atmospheric Technician", "Scientist", "Research Director", "Explorer", "Pathfinder")
+
+/datum/gear/eyes/arglasses
+	display_name = "AR glasses"
+	path = /obj/item/clothing/glasses/omnihud
+
+/datum/gear/eyes/arglassespres
+	display_name = "AR glasses, prescription"
+	path = /obj/item/clothing/glasses/omnihud/prescription
+
+/datum/gear/eyes/spiffygogs
+	display_name = "slick orange goggles"
+	path = /obj/item/clothing/glasses/fluff/spiffygogs
+
+/datum/gear/eyes/science_proper
+	display_name = "science goggles (no overlay)"
+	path = /obj/item/clothing/glasses/fluff/science_proper
+
+/datum/gear/eyes/security/secpatch
+	display_name = "security hudpatch"
+	path = /obj/item/clothing/glasses/hud/security/eyepatch
+
+/datum/gear/eyes/arglasses/sec
+	display_name = "AR-S glasses"
+	path = /obj/item/clothing/glasses/omnihud/sec
+	allowed_roles = list("Security Officer","Head of Security","Warden","Detective")
+
+/datum/gear/eyes/arglasses/eng
+	display_name = "AR-E glasses"
+	path = /obj/item/clothing/glasses/omnihud/eng
+	allowed_roles = list("Station Engineer","Chief Engineer","Atmospheric Technician")
+
+/datum/gear/eyes/arglasses/med
+	display_name = "AR-M glasses"
+	path = /obj/item/clothing/glasses/omnihud/med
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist", "Psychiatrist", "Field Medic")
+
+/datum/gear/eyes/arglasses/all
+	display_name = "AR-B glasses"
+	path = /obj/item/clothing/glasses/omnihud/all
+	cost = 2
+	allowed_roles = list("Facility Director","Head of Personnel")

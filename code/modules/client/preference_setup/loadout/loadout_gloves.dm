@@ -1,10 +1,16 @@
-// Gloves
+/*
+	Gloves & Handwear
+*/
+
 /datum/gear/gloves
+	sort_category = "Gloves and Handwear" // This controls the name of the category in the loadout.
+	type_category = /datum/gear/gloves // All subtypes of the geartype declared will be associated with this - practically speaking this controls where the items themselves go.
+	slot = slot_gloves // Assigns the slot of each item of the gear subtype to the slot specified.
+	cost = 1 // Controls how much an item's "cost" is in the loadout point menu. If re-specified on a different item, that value will override this one. This sets the default value.
+
+/datum/gear/gloves/black
 	display_name = "gloves, black"
 	path = /obj/item/clothing/gloves/black
-	cost = 2
-	slot = slot_gloves
-	sort_category = "Gloves and Handwear"
 
 /datum/gear/gloves/blue
 	display_name = "gloves, blue"
@@ -108,3 +114,32 @@
 /datum/gear/gloves/circuitry
 	display_name = "gloves, circuitry (empty)"
 	path = /obj/item/clothing/gloves/circuitry
+
+/datum/gear/gloves/goldring
+	display_name = "wedding ring, gold"
+	path = /obj/item/clothing/gloves/ring/wedding
+
+/datum/gear/gloves/silverring
+	display_name = "wedding ring, silver"
+	path = /obj/item/clothing/gloves/ring/wedding/silver
+
+/datum/gear/gloves/colored
+	display_name = "gloves, colorable"
+	path = /obj/item/clothing/gloves/color
+
+/datum/gear/gloves/colored/New()
+	..()
+	gear_tweaks = list(gear_tweak_free_color_choice)
+
+
+/datum/gear/gloves/latex/colorable
+	display_name = "gloves, latex, colorable"
+	path = /obj/item/clothing/gloves/sterile/latex
+
+/datum/gear/gloves/latex/colorable/New()
+	..()
+	gear_tweaks = list(gear_tweak_free_color_choice)
+
+/datum/gear/gloves/siren
+	display_name = "gloves, Siren"
+	path = /obj/item/clothing/gloves/fluff/siren
