@@ -136,8 +136,10 @@
 	w_class = ITEMSIZE_NORMAL
 	force = 5
 	
-/obj/item/gun/projectile/shotgun/doublebarrel/sawn/holy // A Special Skin for the sawn off,makes it look like the sawn off from Blood.
+/obj/item/gun/projectile/shotgun/doublebarrel/sawn/alt
 	icon_state = "shotpistol"
+
+/obj/item/gun/projectile/shotgun/doublebarrel/sawn/alt/holy // A Special Skin for the sawn off,makes it look like the sawn off from Blood.
 	ammo_type = /obj/item/ammo_casing/a12g/holy
 
 obj/item/gun/projectile/shotgun/doublebarrel/quad
@@ -190,6 +192,11 @@ obj/item/gun/projectile/shotgun/doublebarrel/quad
 	name = "Exploration Flare Gun"
 	desc = "A common mass produced emergency flare gun capable of shooting a single flare great distances for signalling air and ground forces alike. As it loads 12g flare shells it can also function as improvised 12g shotgun. On it a description reads: 'For use on extraplanetary excursions only.'"
 	icon_state = "flareg-explo"
+
+/obj/item/gun/projectile/shotgun/flare/holy
+	name = "Brass Flare Gun"
+	desc = "A Brass Flare Gun far more exspensuve and well made then the plastic ones mass produced for signalling. It fires using an odd clockwork mechanism"
+	icon_state = "flareg-holy"
 
 /obj/item/gun/projectile/shotgun/doublebarrel/axe
 	name = "Shot Axe"
