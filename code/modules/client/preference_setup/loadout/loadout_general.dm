@@ -48,7 +48,7 @@
 	for(var/plushie in subtypesof(/obj/item/toy/plushie/) - /obj/item/toy/plushie/therapy)
 		var/obj/item/toy/plushie/plushie_type = plushie
 		plushies[initial(plushie_type.name)] = plushie_type
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(plushies, /proc/cmp_text_asc, TRUE))
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(plushies, /proc/cmp_text_asc))
 
 /datum/gear/flask
 	display_name = "flask"
@@ -79,7 +79,7 @@
 		var/obj/item/storage/toolbox/lunchbox/lunchbox = lunchbox_type
 		if(!initial(lunchbox.filled))
 			lunchboxes[initial(lunchbox.name)] = lunchbox_type
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(lunchboxes, /proc/cmp_text_asc, TRUE))
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(lunchboxes, /proc/cmp_text_asc))
 	gear_tweaks += new/datum/gear_tweak/contents(lunchables_lunches(), lunchables_snacks(), lunchables_drinks())
 
 /datum/gear/towel
@@ -99,3 +99,15 @@
 	display_name = "Cards Against The Galaxy (black deck)"
 	path = /obj/item/deck/cah/black
 	description = "The ever-popular Cards Against The Galaxy word game. Warning: may include traces of broken fourth wall. This is the black deck."
+
+/datum/gear/tennis_ball
+	display_name = "tennis ball selection"
+	path = /obj/item/toy/tennis
+
+/datum/gear/tennis_ball/New()
+	..()
+	var/list/tennis_balls = list()
+	for(var/tball in typesof(/obj/item/toy/tennis) - typesof(/obj/item/toy/tennis/rainbow))
+		var/obj/item/toy/tennis/ball_type = tball
+		tennis_balls[initial(ball_type.name)] = ball_type
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(tennis_balls, /proc/cmp_text_asc))

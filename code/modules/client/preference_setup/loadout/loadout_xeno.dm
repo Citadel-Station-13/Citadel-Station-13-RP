@@ -28,7 +28,7 @@
 	for(var/chain_style in typesof(/obj/item/clothing/ears/skrell/chain))
 		var/obj/item/clothing/ears/skrell/chain/chain = chain_style
 		chaintypes[initial(chain.name)] = chain
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(chaintypes, /proc/cmp_text_asc, TRUE))
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(chaintypes, /proc/cmp_text_asc))
 
 /datum/gear/ears/skrell/bands
 	display_name = "headtail band selection (Skrell)"
@@ -42,7 +42,7 @@
 	for(var/band_style in typesof(/obj/item/clothing/ears/skrell/band))
 		var/obj/item/clothing/ears/skrell/band/band = band_style
 		bandtypes[initial(band.name)] = band
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(bandtypes, /proc/cmp_text_asc, TRUE))
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(bandtypes, /proc/cmp_text_asc))
 
 /datum/gear/ears/skrell/cloth/short
 	display_name = "short headtail cloth (Skrell)"
@@ -56,7 +56,7 @@
 	for(var/short_style in typesof(/obj/item/clothing/ears/skrell/cloth_male))
 		var/obj/item/clothing/ears/skrell/cloth_male/short = short_style
 		shorttypes[initial(short.name)] = short
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(shorttypes, /proc/cmp_text_asc, TRUE))
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(shorttypes, /proc/cmp_text_asc))
 
 /datum/gear/ears/skrell/cloth/long
 	display_name = "long headtail cloth (Skrell)"
@@ -70,7 +70,7 @@
 	for(var/long_style in typesof(/obj/item/clothing/ears/skrell/cloth_female))
 		var/obj/item/clothing/ears/skrell/cloth_female/long = long_style
 		longtypes[initial(long.name)] = long
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(longtypes, /proc/cmp_text_asc, TRUE))
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(longtypes, /proc/cmp_text_asc))
 
 /datum/gear/ears/skrell/colored/band
 	display_name = "Colored bands (Skrell)"
@@ -123,7 +123,7 @@
 	for(var/cohesionsuit in (typesof(/obj/item/clothing/under/cohesion)))
 		var/obj/item/clothing/under/cohesion/cohesion_type = cohesionsuit
 		cohesionsuits[initial(cohesion_type.name)] = cohesion_type
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(cohesionsuits, /proc/cmp_text_asc, TRUE))
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(cohesionsuits, /proc/cmp_text_asc))
 
 //TESHARI
 
@@ -139,7 +139,7 @@
 	for(var/smock in typesof(/obj/item/clothing/under/teshari/smock))
 		var/obj/item/clothing/under/teshari/smock/smock_type = smock
 		smocks[initial(smock_type.name)] = smock_type
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(smocks, /proc/cmp_text_asc, TRUE))
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(smocks, /proc/cmp_text_asc))
 
 /datum/gear/uniform/dresssmock
 	display_name = "department dress selection (Teshari)"
@@ -153,7 +153,7 @@
 	for(var/dresssmock in typesof(/obj/item/clothing/under/teshari/dresssmock))
 		var/obj/item/clothing/under/teshari/dresssmock/dresssmock_type = dresssmock
 		dresssmocks[initial(dresssmock_type.name)] = dresssmock_type
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(dresssmocks, /proc/cmp_text_asc, TRUE))
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(dresssmocks, /proc/cmp_text_asc))
 
 /datum/gear/suit/cloak
 	display_name = "cloak selection (Teshari)"
@@ -167,7 +167,7 @@
 	for(var/cloak in typesof(/obj/item/clothing/suit/storage/teshari/cloak/standard))
 		var/obj/item/clothing/suit/storage/teshari/cloak/standard/cloak_type = cloak
 		cloaks[initial(cloak_type.name)] = cloak_type
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(cloaks, /proc/cmp_text_asc, TRUE))
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(cloaks, /proc/cmp_text_asc))
 
 /datum/gear/uniform/undercoat
 	display_name = "undercoat selection (Teshari)"
@@ -181,7 +181,7 @@
 	for(var/undercoat in typesof(/obj/item/clothing/under/teshari/undercoat/standard))
 		var/obj/item/clothing/under/teshari/undercoat/standard/undercoat_type = undercoat
 		undercoats[initial(undercoat_type.name)] = undercoat_type
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(undercoats, /proc/cmp_text_asc, TRUE))
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(undercoats, /proc/cmp_text_asc))
 
 /datum/gear/uniform/dept
 	whitelisted = SPECIES_TESHARI
@@ -498,37 +498,37 @@
 	path = /obj/item/clothing/under/pressuresuit/voxcivlibrarian
 	sort_category = "Xenowear"
 	whitelisted = SPECIES_VOX
-	
+
 /datum/gear/uniform/voxsecofficer
 	display_name = "vox pressure suit (security officer)"
 	path = /obj/item/clothing/under/pressuresuit/voxcivsecurity
 	sort_category = "Xenowear"
 	whitelisted = SPECIES_VOX
-	
+
 /datum/gear/uniform/voxcivmedical
 	display_name = "vox pressure suit (medical doctor)"
 	path = /obj/item/clothing/under/pressuresuit/voxcivmedical
 	sort_category = "Xenowear"
 	whitelisted = SPECIES_VOX
-	
+
 /datum/gear/uniform/voxcivengineer
 	display_name = "vox pressure suit (engineer)"
 	path = /obj/item/clothing/under/pressuresuit/voxcivengineer
 	sort_category = "Xenowear"
 	whitelisted = SPECIES_VOX
-	
+
 /datum/gear/uniform/voxcivscience
 	display_name = "vox pressure suit (scientist)"
 	path = /obj/item/clothing/under/pressuresuit/voxcivscience
 	sort_category = "Xenowear"
 	whitelisted = SPECIES_VOX
-	
+
 /datum/gear/uniform/voxcivrd
 	display_name = "vox pressure suit (research director)"
 	path = /obj/item/clothing/under/pressuresuit/voxcivrd
 	sort_category = "Xenowear"
 	whitelisted = SPECIES_VOX
-	
+
 /datum/gear/uniform/voxcivce
 	display_name = "vox pressure suit (chief engineer)"
 	path = /obj/item/clothing/under/pressuresuit/voxcivce
@@ -546,3 +546,125 @@
 	path = /obj/item/clothing/suit/simonjacket
 	sort_category = "Xenowear"
 	whitelisted = SPECIES_VOX
+
+/datum/gear/uniform/voxcasual
+	display_name = "casual wear (Vox)"
+	path = /obj/item/clothing/under/vox/vox_casual
+	sort_category = "Xenowear"
+	whitelisted = "Vox"
+
+/datum/gear/uniform/voxrobes
+	display_name = "comfy robes (Vox)"
+	path = /obj/item/clothing/under/vox/vox_robes
+	sort_category = "Xenowear"
+	whitelisted = "Vox"
+
+/datum/gear/accessory/vox
+	display_name = "storage vest (Vox)"
+	path = /obj/item/clothing/accessory/storage/vox
+	sort_category = "Xenowear"
+	whitelisted = "Vox"
+
+/datum/gear/gloves/vox
+	display_name = "insulated gauntlets (Vox)"
+	path = /obj/item/clothing/gloves/vox
+	sort_category = "Xenowear"
+	whitelisted = "Vox"
+
+/datum/gear/shoes/vox
+	display_name = "magclaws (Vox)"
+	path = /obj/item/clothing/shoes/magboots/vox
+	sort_category = "Xenowear"
+	whitelisted = "Vox"
+
+/datum/gear/mask/vox
+	display_name = "alien mask (Vox)"
+	path = /obj/item/clothing/mask/gas/swat/vox
+	sort_category = "Xenowear"
+	whitelisted = "Vox"
+
+/datum/gear/uniform/loincloth
+	display_name = "loincloth"
+	path = /obj/item/clothing/suit/storage/fluff/loincloth
+	sort_category = "Xenowear"
+
+// Taj clothing
+/datum/gear/eyes/tajblind
+	display_name = "embroidered veil"
+	path = /obj/item/clothing/glasses/tajblind
+	//whitelisted = SPECIES_TAJ
+	sort_category = "Xenowear"
+
+/datum/gear/eyes/medical/tajblind
+	display_name = "medical veil (Tajara) (Medical)"
+	path = /obj/item/clothing/glasses/hud/health/tajblind
+	//whitelisted = SPECIES_TAJ
+	sort_category = "Xenowear"
+
+/datum/gear/eyes/meson/tajblind
+	display_name = "industrial veil (Tajara) (Engineering, Science)"
+	path = /obj/item/clothing/glasses/meson/prescription/tajblind
+	//whitelisted = SPECIES_TAJ
+	sort_category = "Xenowear"
+
+/datum/gear/eyes/material/tajblind
+	display_name = "mining veil (Tajara) (Mining)"
+	path = /obj/item/clothing/glasses/material/prescription/tajblind
+	//whitelisted = SPECIES_TAJ
+	sort_category = "Xenowear"
+
+/datum/gear/eyes/security/tajblind
+	display_name = "sleek veil (Tajara) (Security)"
+	path = /obj/item/clothing/glasses/sunglasses/sechud/tajblind
+	//whitelisted = SPECIES_TAJ
+	sort_category = "Xenowear"
+
+
+/datum/gear/uniform/plascapalt
+	display_name = "alternate Facility Director helmet (phoronoid)"
+	path = /obj/item/clothing/head/helmet/space/plasman/sec/captain/alt
+	sort_category = "Xenowear"
+	whitelisted = SPECIES_PLASMAMAN
+	allowed_roles = list("Facility Director")
+
+/datum/gear/uniform/plashosalt1
+	display_name = "alternate head of security helmet 1 (phoronoid)"
+	path = /obj/item/clothing/head/helmet/space/plasman/sec/hos/alt1
+	sort_category = "Xenowear"
+	whitelisted = SPECIES_PLASMAMAN
+	allowed_roles = list("Head of Security")
+
+/datum/gear/uniform/plashosalt2
+	display_name = "alternate head of security helmet 2 (phoronoid)"
+	path = /obj/item/clothing/head/helmet/space/plasman/sec/hos/alt2
+	sort_category = "Xenowear"
+	whitelisted = SPECIES_PLASMAMAN
+	allowed_roles = list("Head of Security")
+
+/datum/gear/uniform/plasaccessories
+	display_name = "containment suit accessory selection (phoronoid)"
+	sort_category = "Xenowear"
+	whitelisted = SPECIES_PLASMAMAN
+
+/datum/gear/uniform/plasaccessories/New()
+	..()
+	var/list/plasaccessories = list()
+	for(var/plasman in (typesof(/obj/item/clothing/accessory/plasman)))
+		var/obj/item/clothing/accessory/plasman/plasaccessory_type = plasman
+		plasaccessories[initial(plasaccessory_type.name)] = plasaccessory_type
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(plasaccessories, /proc/cmp_text_asc))
+
+//Added from CHOMP
+/datum/gear/suit/hood
+	display_name = "hooded cloak selection (Teshari)"
+	path = /obj/item/clothing/suit/storage/teshari/cloak/standard
+	whitelisted = SPECIES_TESHARI
+	sort_category = "Xenowear"
+
+/datum/gear/suit/hood/New()
+	..()
+	var/list/cloaks = list()
+	for(var/cloak in typesof(/obj/item/clothing/suit/storage/hooded/teshari/standard))
+		var/obj/item/clothing/suit/storage/teshari/cloak/cloak_type = cloak
+		cloaks[initial(cloak_type.name)] = cloak_type
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(cloaks, /proc/cmp_text_asc))

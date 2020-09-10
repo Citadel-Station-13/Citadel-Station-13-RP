@@ -175,7 +175,7 @@
 	for(var/pin in typesof(/obj/item/clothing/head/pin))
 		var/obj/item/clothing/head/pin/pin_type = pin
 		pins[initial(pin_type.name)] = pin_type
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(pins, /proc/cmp_text_asc, TRUE))
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(pins, /proc/cmp_text_asc))
 
 /datum/gear/head/hardhat
 	display_name = "hardhat selection"
@@ -188,7 +188,7 @@
 	for(var/hardhat in typesof(/obj/item/clothing/head/hardhat))
 		var/obj/item/clothing/head/hardhat/hardhat_type = hardhat
 		hardhats[initial(hardhat_type.name)] = hardhat_type
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(hardhats, /proc/cmp_text_asc, TRUE))
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(hardhats, /proc/cmp_text_asc))
 
 /datum/gear/head/boater
 	display_name = "hat, boatsman"
@@ -229,7 +229,7 @@
 	for(var/santahat in typesof(/obj/item/clothing/head/santa))
 		var/obj/item/clothing/head/santa/santahat_type = santahat
 		santahats[initial(santahat_type.name)] = santahat_type
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(santahats, /proc/cmp_text_asc, TRUE))
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(santahats, /proc/cmp_text_asc))
 
 /datum/gear/head/hijab
 	display_name = "hijab"
@@ -355,7 +355,7 @@
 	for(var/sol_style in typesof(/obj/item/clothing/head/beret/sol))
 		var/obj/item/clothing/head/beret/sol/sol = sol_style
 		sols[initial(sol.name)] = sol
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(sols, /proc/cmp_text_asc, TRUE))*/ // Vorestation removal.
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(sols, /proc/cmp_text_asc))*/ // Vorestation removal.
 
 /datum/gear/head/surgery
 	display_name = "surgical cap selection"
@@ -398,3 +398,20 @@
 	display_name = "bridge officer cap"
 	path = /obj/item/clothing/head/bocap
 	allowed_roles = list("Command Secretary")
+
+/*/datum/gear/head/cap/sol
+	display_name = "cap, sol"
+	path = /obj/item/clothing/head/soft/sol*/
+
+/datum/gear/head/headbando
+	display_name = "basic headband"
+	path = /obj/item/clothing/head/fluff/headbando
+
+/datum/gear/head/headbando/New()
+	..()
+	gear_tweaks = list(gear_tweak_free_color_choice)
+
+/datum/gear/head/pilot
+	display_name = "helmet, pilot (Pilot)"
+	path = /obj/item/clothing/head/pilot/alt
+	allowed_roles = list("Pilot")
