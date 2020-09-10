@@ -15,6 +15,10 @@
 	var/defend_chance = 0	// The base chance for the weapon to parry.
 	var/projectile_parry_chance = 0	// The base chance for a projectile to be deflected.
 
+	item_icons = list(
+			slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
+			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
+			)
 
 /obj/item/nullrod/Initialize()
 	. = ..()

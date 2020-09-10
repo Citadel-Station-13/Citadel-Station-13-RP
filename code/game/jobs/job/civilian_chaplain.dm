@@ -31,10 +31,6 @@
 	var/obj/item/storage/bible/B = locate(/obj/item/storage/bible) in H
 	if(!B)
 		return
-	H.equip_to_slot_or_del(B, SLOT_BACK)
-	var/nrt = GLOB.holy_weapon_type || /obj/item/nullrod
-	var/obj/item/nullrod/N = new nrt(H)
-	H.put_in_hands(N)
 
 	spawn(0)
 		var/religion_name = "Unitarianism"

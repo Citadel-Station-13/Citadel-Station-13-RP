@@ -229,6 +229,7 @@
 	desc = "This specialty visor, nicknamed the 'MAW' by PMD agents, grants trained Agents the ability to view Paracausal events without suffering memetic hazards."
 	icon_state = "para_ert_helmet"
 	action_button_name = "Toggle Visor"
+	flash_protection = FLASH_PROTECTION_NONE
 
 /obj/item/clothing/head/helmet/ert/para/attack_self(mob/user as mob)
 	if(src.icon_state == initial(icon_state))
