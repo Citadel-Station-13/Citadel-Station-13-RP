@@ -21822,6 +21822,12 @@
 /obj/structure/flora/ausbushes/brflowers,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
+"qee" = (
+/obj/machinery/shipsensors,
+/turf/simulated/floor/plating{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/shuttle/civvie/general)
 "qeC" = (
 /obj/effect/floor_decal/borderfloorblack,
 /turf/simulated/floor/tiled/dark,
@@ -24427,12 +24433,6 @@
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled,
 /area/bridge/hallway)
-"rRs" = (
-/obj/machinery/shipsensors,
-/turf/simulated/floor/plating{
-	initial_gas_mix = "TEMP=2.7"
-	},
-/area/shuttle/civvie/general)
 "rRt" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -48708,7 +48708,7 @@ axc
 vlp
 axc
 eiy
-rtC
+puZ
 nIK
 nIK
 nIK
@@ -48843,7 +48843,7 @@ nIK
 nIK
 nIK
 nIK
-rRs
+qee
 rtC
 fbp
 fbp
