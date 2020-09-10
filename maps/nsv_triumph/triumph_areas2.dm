@@ -672,6 +672,17 @@
 /area/shuttle/pirate/cargo
 	name = "\improper Pirate Skiff Shuttle Cockpit"
 
+// Civilian Transport
+/area/shuttle/civvie
+	requires_power = 1
+	icon_state = "shuttle2"
+
+/area/shuttle/civvie/general
+	name = "\improper Civilian Transport"
+
+/area/shuttle/civvie/cockpit
+	name = "\improper Pirate Skiff Shuttle Cockpit"
+
 // Tourbus
 /area/shuttle/tourbus
 	requires_power = 1

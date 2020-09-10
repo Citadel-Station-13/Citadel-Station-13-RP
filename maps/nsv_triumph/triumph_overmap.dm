@@ -47,6 +47,17 @@
 	shuttle_tag = "Excursion Shuttle"
 	req_one_access = list(access_pilot)
 
+// Public Civilian Shuttle
+
+/obj/effect/overmap/visitable/ship/landable/civvie
+	name = "Civilian Transport"
+	desc = "A basic, but slow, transport to ferry civilian to and from the ship."
+	fore_dir = EAST
+	vessel_mass = 15000
+	vessel_size = SHIP_SIZE_SMALL
+	shuttle = "Civilian Transport"
+
+
 // Vox Pirate ship (Yaya, yous be giving us all your gear now.)
 
 /obj/effect/overmap/visitable/ship/landable/pirate
