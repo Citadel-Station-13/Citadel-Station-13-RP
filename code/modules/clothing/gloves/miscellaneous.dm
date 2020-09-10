@@ -172,9 +172,15 @@
 	name = "PMD issued gloves, stamped with protective seals and spells."
 	icon_state = "para_ert_gloves"
 	item_state = "para_ert_gloves"
+	action_button_name = "Bless Gloves"
 
-/obj/item/clothing/gloves/swat/para/Initialize(mob/living/carbon/human/H, src)
-	. = ..()
+/obj/item/clothing/gloves/swat/para/verb/bless_gloves(var/mob/living/carbon/human/H, mob/user)
+	set name = "Bless Gloves"
+	set category = "Object"
+
 	if(H.mind.isholy)
 		siemens_coefficient = 0
-	return
+		to_chat(user, "You repeat the incantations etched into the gloves.")
+
+	if(!H.mind.isholy)
+		to_chat(user, "You're not sure what language this is.")

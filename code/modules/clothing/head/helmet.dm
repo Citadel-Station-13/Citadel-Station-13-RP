@@ -229,6 +229,7 @@
 	desc = "This specialty visor, nicknamed the 'MAW' by PMD agents, grants trained Agents the ability to view Paracausal events without suffering memetic hazards."
 	icon_state = "para_ert_helmet"
 	action_button_name = "Toggle Visor"
+
 	flash_protection = FLASH_PROTECTION_NONE
 
 /obj/item/clothing/head/helmet/ert/para/attack_self(mob/user as mob)
@@ -240,8 +241,13 @@
 		to_chat(user, "You lower the OM visor.")
 	update_clothing_icon()	//so our mob-overlays update
 
-/obj/item/clothing/head/helmet/ert/para/Initialize(mob/living/carbon/human/H, src)
-	. = ..()
+/obj/item/clothing/head/helmet/ert/para/verb/enable_maw(var/mob/living/carbon/human/H, mob/user)
+	set name = "Enable MAW"
+	set category = "Object"
+
 	if(H.mind.isholy)
 		flash_protection = FLASH_PROTECTION_MAJOR
-	return
+		to_chat(user, "You activate the helmet's protective sigil.")
+
+	if(!H.mind.isholy)
+		to_chat(user, "You can't tell what this symbol means.")
