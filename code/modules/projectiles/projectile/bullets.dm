@@ -111,7 +111,6 @@
 	SA_bonus_damage = 45 // 60 total against demons
 	SA_vulnerability = MOB_CLASS_DEMONIC
 	embed_chance = -1
-	anti_magic = TRUE
 
 /obj/item/projectile/bullet/pistol/strong // .357 and .44 caliber stuff. High power pistols like the Mateba or Desert Eagle. Sacrifice capacity for power.
 	fire_sound = 'sound/weapons/gunshot4.ogg'
@@ -235,7 +234,6 @@
 	damage = 20
 	SA_bonus_damage = 50 // 70 total on animals.
 	SA_vulnerability = MOB_CLASS_DEMONIC
-	anti_magic = TRUE
 
 /obj/item/projectile/bullet/rifle/a545
 	fire_sound = 'sound/weapons/Gunshot_light.ogg'
