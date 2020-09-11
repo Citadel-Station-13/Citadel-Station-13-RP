@@ -1,6 +1,8 @@
-/proc/AverageColor(var/icon/I, var/accurate = 0, var/ignoreGreyscale = 0)
-//Accurate: Use more accurate color averaging, usually has better results and prevents muddied or overly dark colors. Mad thanks to wwjnc.
-//ignoreGreyscale: Excempts greyscale colors from the color list, useful for filtering outlines or plate overlays.
+/*
+ * * Accurate - Use more accurate color averaging, usually has better results and prevents muddied or overly dark colors. Mad thanks to wwjnc.
+ * * ignoreGreyscale - Excempts greyscale colors from the color list, useful for filtering outlines or plate overlays.
+ */
+/proc/AverageColor(icon/I, accurate = FALSE, ignoreGreyscale = FALSE)
 	var/list/colors = ListColors(I, ignoreGreyscale)
 	if(!colors.len)
 		return null
@@ -26,7 +28,7 @@
 		final_average = rgb(colorsum[1]/total, colorsum[2]/total, colorsum[3]/total)
 	return final_average
 
-/proc/ListColors(var/icon/I, var/ignoreGreyscale = 0)
+/proc/ListColors(icon/I, ignoreGreyscale = FALSE)
 	var/list/colors = list()
 	for(var/x_pixel = 1 to I.Width())
 		for(var/y_pixel = 1 to I.Height())
@@ -37,7 +39,7 @@
 				colors.Add(this_color)
 	return colors
 
-/proc/empty_Y_space(var/icon/I) //Returns the amount of lines containing only transparent pixels in an icon, starting from the bottom
+/proc/empty_Y_space(icon/I) //Returns the amount of lines containing only transparent pixels in an icon, starting from the bottom
 	for(var/y_pixel = 1 to I.Height())
 		for(var/x_pixel = 1 to I.Width())
 			if (I.GetPixel(x_pixel, y_pixel))
@@ -45,7 +47,7 @@
 	return null
 
 //Standard behaviour is to cut pixels from the main icon that are covered by pixels from the mask icon unless passed mask_ready, see below.
-/proc/get_icon_difference(var/icon/main, var/icon/mask, var/mask_ready)
+/proc/get_icon_difference(icon/main, icon/mask, mask_ready)
 	/*You should skip prep if the mask is already sprited properly. This significantly improves performance by eliminating most of the realtime icon work.
 	e.g. A 'ready' mask is a mask where the part you want cut out is missing (no pixels, 0 alpha) from the sprite, and everything else is solid white.*/
 

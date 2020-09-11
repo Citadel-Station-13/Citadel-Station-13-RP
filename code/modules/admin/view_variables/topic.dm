@@ -600,8 +600,7 @@
 			to_chat(usr, "This can only be done on mobs with clients")
 			return
 
-		SSnanoui.send_resources(H.client)
-
+		SSassets.transport.send_assets(H.client, SSnanoui.asset_files)
 		to_chat(usr, "Resource files sent")
 		to_chat(H, "Your NanoUI Resource files have been refreshed")
 

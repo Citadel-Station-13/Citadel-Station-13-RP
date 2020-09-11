@@ -8,26 +8,27 @@ SUBSYSTEM_DEF(nanoui)
 	// a list of asset filenames which are to be sent to the client on user logon
 	var/list/asset_files = list()
 
-/datum/controller/subsystem/nanoui/Initialize()
-	var/list/nano_assetDirs = list(\
-		"nano/css/",\
-		"nano/images/",\
-		"nano/images/status_icons/",\
-		"nano/images/modular_computers/",\
-		"nano/js/",\
-		"nano/templates/"\
+/datum/controller/subsystem/nanoui/Initialize() //this is so fucking bad
+	var/list/nano_assetDirs = list(
+		"nano/css/",
+		"nano/images/",
+		"nano/images/status_icons/",
+		"nano/images/modular_computers/",
+		"nano/js/",
+		"nano/templates/"
 	)
 
 	var/list/filenames = null
 	for (var/path in nano_assetDirs)
 		filenames = flist(path)
 		for(var/filename in filenames)
-			if(copytext(filename, length(filename)) != "/") // filenames which end in "/" are actually directories, which we want to ignore
-				if(fexists(path + filename))
-					asset_files.Add(fcopy_rsc(path + filename)) // add this file to asset_files for sending to clients when they connect
-	.=..()
+			if(copytext(filename, length(filename)) == "/") // filenames which end in "/" are actually directories, which we want to ignore
+				continue
+			if(fexists(path + filename) && !SSassets.cache[filename])
+				asset_files |= SSassets.transport.register_asset(filename, path + filename)
+	. = ..()
 	for(var/i in GLOB.clients)
-		send_resources(i)
+		SSassets.transport.send_assets(i, asset_files)
 
 /datum/controller/subsystem/nanoui/Recover()
 	if(SSnanoui.open_uis)
@@ -45,9 +46,3 @@ SUBSYSTEM_DEF(nanoui)
 		var/datum/nanoui/UI = thing
 		UI.process()
 
-//Sends asset files to a client, called on client/New()
-/datum/controller/subsystem/nanoui/proc/send_resources(client)
-	if(!subsystem_initialized)
-		return
-	for(var/file in asset_files)
-		client << browse_rsc(file)	// send the file to the client
