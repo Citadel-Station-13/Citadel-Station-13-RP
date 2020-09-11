@@ -681,7 +681,7 @@
 	name = "\improper Civilian Transport"
 
 /area/shuttle/civvie/cockpit
-	name = "\improper Pirate Skiff Shuttle Cockpit"
+	name = "\improper Civilian Transport Cockpit"
 
 // Tourbus
 /area/shuttle/tourbus

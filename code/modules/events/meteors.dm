@@ -26,7 +26,7 @@
 /datum/event/meteor_wave/announce()
 	switch(severity)
 		if(EVENT_LEVEL_MAJOR)
-			command_announcement.Announce("Meteors have been detected on collision course with \the [location_name()].", "Meteor Alert", new_sound = 'sound/AI/meteors.ogg')
+			command_announcement.Announce("Meteors have been detected on collision course with \the [location_name()].", "Meteor Alert", new_sound = 'sound/effects/meteor_storm.wav')
 		else
 			command_announcement.Announce("\The [location_name()] is now in a meteor shower.", "Meteor Alert")
 

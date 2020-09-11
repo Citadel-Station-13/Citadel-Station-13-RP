@@ -18,7 +18,8 @@
 	initial_generic_waypoints = list("nav_capitalship_docking2", "triumph_excursion_hangar", "triumph_space_SW")
 
 	initial_restricted_waypoints = list(
-		"Excursion Shuttle" = list("triumph_excursion_hangar")
+		"Excursion Shuttle" = list("triumph_excursion_hangar"),
+		"Civilian Transport" = list("triumph_civvie_home")
 		)
 
 // EXCURSION SHUTTLE DATA
