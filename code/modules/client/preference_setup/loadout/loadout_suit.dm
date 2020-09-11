@@ -616,3 +616,25 @@ datum/gear/suit/miscellaneous/storage/lawyer/bridgeofficerparade
 	display_name = "bomber jacket, pilot"
 	path = /obj/item/clothing/suit/storage/toggle/bomber/pilot
 
+
+
+/datum/gear/suit/operations_coat
+	display_name = "Command Operations Jacket"
+	path = /obj/item/clothing/suit/storage/toggle/operations_coat/command
+	allowed_roles = list("Facility Director")
+
+/datum/gear/suit/operations_coat/security
+	display_name = "Security Operations Jacket"
+	path = /obj/item/clothing/suit/storage/toggle/operations_coat
+	allowed_roles = list("Head of Security", "Warden", "Detective", "Security Officer")
+
+/datum/gear/suit/operations_coat/medsci
+	display_name = "Medical/Science Operations Jacket"
+	path = /obj/item/clothing/suit/storage/toggle/operations_coat/medsci
+	allowed_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Paramedic","Geneticist","Research Director","Scientist", "Roboticist", "Xenobiologist","Pathfinder","Explorer","Field Medic")
+
+/datum/gear/suit/operations_coat/engineering
+	display_name = "Engineering Operations Jacket"
+	path = /obj/item/clothing/suit/storage/toggle/operations_coat/engineering
+	allowed_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer")
+

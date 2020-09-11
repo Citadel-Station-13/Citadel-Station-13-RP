@@ -842,23 +842,8 @@ datum/gear/uniform/bodysuitcommand
 /datum/gear/uniform/solgov/pt/sifguard
 	display_name = "pt uniform, planetside sec"
 	path = /obj/item/clothing/under/solgov/pt/sifguard
-
-//Federation jackets
-/datum/gear/suit/job_fed/sec
-	display_name = "fed uniform, sec"
-	path = /obj/item/clothing/suit/storage/fluff/fedcoat
-	allowed_roles = list("Head of Security", "Warden", "Detective", "Security Officer")
-
-/datum/gear/suit/job_fed/medsci
-	display_name = "fed uniform, med/sci"
-	path = /obj/item/clothing/suit/storage/fluff/fedcoat/fedblue
-	allowed_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Paramedic","Geneticist","Research Director","Scientist", "Roboticist", "Xenobiologist","Pathfinder","Explorer","Field Medic")
-
-/datum/gear/suit/job_fed/eng
-	display_name = "fed uniform, eng"
-	path = /obj/item/clothing/suit/storage/fluff/fedcoat/fedeng
-	allowed_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer")
 */
+
 
 /*
 Swimsuits

@@ -415,3 +415,24 @@
 	display_name = "helmet, pilot (Pilot)"
 	path = /obj/item/clothing/head/pilot/alt
 	allowed_roles = list("Pilot")
+
+
+/datum/gear/head/operations
+	display_name = "Operations Command Staff Cap"
+	path = /obj/item/clothing/head/operations
+//	allowed_roles = ""
+
+/datum/gear/head/operations/medsci
+	display_name = "Operations Medical/Science Staff Cap"
+	path = /obj/item/clothing/head/operations/medsci
+//	allowed_roles =
+
+/datum/gear/head/operations/engineering
+	display_name = "Operations Engineering Staff Cap"
+	path = /obj/item/clothing/head/operations/engineering
+//	allowed_roles = ""
+
+/datum/gear/head/operations/security
+	display_name = "Operations Security Staff Cap"
+	path = /obj/item/clothing/head/operations/security
+//	allowed_roles = ""
