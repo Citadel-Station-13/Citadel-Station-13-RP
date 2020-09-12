@@ -554,6 +554,15 @@
 /area/security/recstorage
 	name = "\improper Brig Recreation Storage"
 	icon_state = "brig"
+/area/security/training
+	name = "\improper Training & Briefing Room"
+	icon_state = "security"
+/area/security/hanger
+	name = "\improper Security Hanger"
+	icon_state = "security_equip_storage"
+/area/security/visitor
+	name = "\improper Security Visitor Room"
+	icon_state = "security"
 
 /area/engineering/atmos/backup
 	name = "\improper Backup Atmospherics"

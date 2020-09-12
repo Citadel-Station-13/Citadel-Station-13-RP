@@ -3493,9 +3493,12 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
-/obj/structure/table/woodentable,
 /obj/structure/disposalpipe/segment{
 	dir = 8
+	},
+/obj/structure/table/bench/padded,
+/obj/effect/landmark/start{
+	name = "Station Engineer"
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
@@ -5358,9 +5361,12 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/structure/table/woodentable,
 /obj/structure/disposalpipe/segment{
 	dir = 8
+	},
+/obj/structure/table/bench/padded,
+/obj/effect/landmark/start{
+	name = "Station Engineer"
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
@@ -7159,9 +7165,12 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/structure/table/woodentable,
 /obj/structure/disposalpipe/segment{
 	dir = 8
+	},
+/obj/structure/table/bench/padded,
+/obj/effect/landmark/start{
+	name = "Station Engineer"
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
@@ -7467,12 +7476,6 @@
 "JC" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
-	},
-/obj/structure/bed/chair/comfy/beige{
-	dir = 1
-	},
-/obj/effect/landmark/start{
-	name = "Station Engineer"
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
@@ -7865,9 +7868,6 @@
 /area/engineering/storage)
 "Ml" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 1
-	},
-/obj/structure/bed/chair/comfy/beige{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -9304,12 +9304,8 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/foyer)
 "Sx" = (
-/obj/structure/bed/chair/comfy/beige{
-	dir = 1
-	},
-/obj/effect/landmark/start{
-	name = "Station Engineer"
-	},
+/obj/effect/floor_decal/techfloor/orange,
+/obj/structure/closet/secure_closet/atmos_personal,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
 "Sy" = (
@@ -24028,7 +24024,7 @@ gq
 FC
 HK
 JC
-YK
+Sx
 zN
 nh
 AW
@@ -24169,8 +24165,8 @@ yk
 Mz
 aS
 zd
+aS
 Sx
-YK
 Cf
 wb
 xx
@@ -24311,7 +24307,7 @@ yk
 VA
 aS
 zd
-Sx
+aS
 Dz
 sU
 sU

@@ -1702,8 +1702,11 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
 "dG" = (
-/obj/machinery/light_switch{
-	pixel_x = 25
+/obj/structure/toilet{
+	pixel_y = 10
+	},
+/obj/machinery/light{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medical_restroom)
@@ -2191,16 +2194,17 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
 "eE" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/firealarm{
+/obj/machinery/power/apc{
+	cell_type = /obj/item/cell/super;
 	dir = 8;
-	pixel_x = -24
+	name = "west bump";
+	pixel_x = -30
+	},
+/obj/structure/cable/green{
+	d2 = 2;
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medical_restroom)
@@ -2863,6 +2867,9 @@
 /obj/machinery/ai_status_display{
 	pixel_y = -32
 	},
+/obj/effect/landmark/start{
+	name = "Paramedic"
+	},
 /turf/simulated/floor/tiled,
 /area/medical/medbay_emt_bay)
 "gc" = (
@@ -3348,9 +3355,10 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/teleporter/departing)
 "ha" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 9
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
 	},
+/obj/machinery/light,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medical_restroom)
 "hb" = (
@@ -3810,17 +3818,14 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "hY" = (
-/obj/structure/cable/green{
-	d2 = 2;
-	icon_state = "0-2"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/power/apc{
-	cell_type = /obj/item/cell/super;
+/obj/structure/sink{
 	dir = 8;
-	name = "west bump";
-	pixel_x = -30
+	pixel_x = -12
+	},
+/obj/structure/mirror{
+	pixel_x = -26
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medical_restroom)
@@ -5218,7 +5223,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
+	dir = 9
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medical_restroom)
@@ -7083,10 +7088,6 @@
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
 "oz" = (
-/obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = -24
-	},
 /obj/machinery/camera/network/civilian{
 	dir = 4
 	},
@@ -8008,7 +8009,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/anomaly_lab/containment_one)
 "qq" = (
-/obj/machinery/washing_machine,
+/obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medical_restroom)
 "qr" = (
@@ -10862,13 +10863,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/heads/cmo)
 "wo" = (
-/obj/machinery/alarm{
-	dir = 4;
-	pixel_x = -23
-	},
-/obj/structure/closet/crate/bin{
-	anchored = 1
-	},
+/obj/machinery/washing_machine,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medical_restroom)
 "wp" = (
@@ -12429,6 +12424,16 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/research)
+"zg" = (
+/obj/machinery/firealarm{
+	dir = 4;
+	pixel_x = 24
+	},
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/crew_quarters/medical_restroom)
 "zh" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
@@ -12439,10 +12444,15 @@
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
 "zj" = (
-/obj/machinery/washing_machine,
 /obj/item/radio/intercom{
 	dir = 4;
 	pixel_x = 24
+	},
+/obj/structure/toilet{
+	pixel_y = 10
+	},
+/obj/machinery/light{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medical_restroom)
@@ -12877,7 +12887,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/xenobiology/xenoflora)
 "Ab" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/door/airlock{
+	name = "Unit 2"
+	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medical_restroom)
 "Ac" = (
@@ -15374,6 +15386,10 @@
 	dir = 8;
 	light_range = 12
 	},
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
+	},
 /turf/simulated/floor/tiled,
 /area/holodeck_control)
 "EK" = (
@@ -16417,6 +16433,7 @@
 /obj/machinery/door/airlock{
 	name = "Restroom"
 	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/medical_restroom)
 "GX" = (
@@ -17146,7 +17163,9 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/medical/morgue)
 "Ip" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/light_switch{
+	pixel_x = 25
+	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medical_restroom)
 "Iq" = (
@@ -21206,6 +21225,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
+"QA" = (
+/obj/structure/table/bench/padded,
+/obj/effect/landmark/start{
+	name = "Paramedic"
+	},
+/turf/simulated/floor/tiled,
+/area/medical/medbay_emt_bay)
 "QB" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -24470,12 +24496,9 @@
 /turf/simulated/floor/tiled,
 /area/rnd/reception_desk)
 "Xd" = (
-/obj/structure/sink{
-	dir = 8;
-	pixel_x = -12
-	},
-/obj/structure/mirror{
-	pixel_x = -26
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -23
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medical_restroom)
@@ -25062,6 +25085,9 @@
 "Ym" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/structure/table/bench/padded,
+/obj/effect/landmark/start{
+	name = "Paramedic"
+	},
 /turf/simulated/floor/tiled,
 /area/medical/medbay_emt_bay)
 "Yn" = (
@@ -25199,9 +25225,6 @@
 "YC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9
 	},
 /obj/machinery/light,
 /turf/simulated/floor/tiled/white,
@@ -31403,7 +31426,7 @@ nu
 Fa
 nv
 zk
-DT
+QA
 DT
 eb
 OQ
@@ -38487,11 +38510,11 @@ GQ
 aQ
 ZZ
 le
-CI
-CI
+wo
+qq
 kN
-CI
-CI
+Ip
+zg
 aA
 aA
 aA
@@ -38629,8 +38652,8 @@ RI
 Pa
 PZ
 le
-CI
-Ip
+le
+le
 YC
 le
 le
@@ -38771,8 +38794,8 @@ RN
 RN
 rR
 le
-CI
-CI
+dG
+Ab
 wj
 ed
 cP
@@ -38913,8 +38936,8 @@ RN
 RN
 mH
 le
-qq
-Ab
+le
+le
 ha
 le
 le
@@ -39056,8 +39079,8 @@ RN
 sh
 le
 zj
+Ab
 CI
-dG
 VX
 cV
 XX
@@ -39198,8 +39221,8 @@ RN
 RN
 le
 le
-GW
 le
+GW
 le
 le
 XX
