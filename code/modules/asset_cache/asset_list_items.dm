@@ -1,4 +1,27 @@
 //DEFINITIONS FOR ASSET DATUMS START HERE.
+/datum/asset/simple/nanoui
+	keep_local_name = TRUE
+
+/datum/asset/simple/nanoui/register()
+	var/list/asset_dirs = list(
+		"nano/css/",
+		"nano/images/",
+		"nano/images/status_icons/",
+		"nano/images/modular_computers/",
+		"nano/js/",
+		"nano/templates/"
+	)
+
+	var/list/filenames = null
+	for (var/path in asset_dirs)
+		filenames = flist(path)
+		for(var/filename in filenames)
+			if(copytext(filename, length(filename)) == "/") // filenames which end in "/" are actually directories, which we want to ignore
+				continue
+			if(fexists(path + filename))
+				assets[filename] = file(path + filename)
+	. = ..()
+
 /*
 /datum/asset/simple/tgui_common
 	keep_local_name = TRUE

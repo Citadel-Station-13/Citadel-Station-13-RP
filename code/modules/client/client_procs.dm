@@ -206,7 +206,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		holder = new /datum/admins("!localhost!", ALL, ckey)
 		holder.owner = src
 		GLOB.admins |= src
-		admins |= src // i hate this.
+		//admins |= src // this makes them not have admin. what the fuck??
 		// holder.associate(ckey)
 		connecting_admin = TRUE
 	//CITADEL EDIT
@@ -635,7 +635,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		//Precache the client with all other assets slowly, so as to not block other browse() calls
 		if (CONFIG_GET(flag/asset_simple_preload))
 			addtimer(CALLBACK(SSassets.transport, /datum/asset_transport.proc/send_assets_slow, src, SSassets.transport.preload), 5 SECONDS)
-		SSassets.transport.send_assets(src, SSnanoui.asset_files) //this has to be called due to not being in a normal /datum/ asset thing
+
 		#if (PRELOAD_RSC == 0)
 		for (var/name in GLOB.vox_sounds)
 			var/file = GLOB.vox_sounds[name]
