@@ -11,7 +11,7 @@
 /datum/gear/utility/tts_device
 	display_name = "text to speech device"
 	path = /obj/item/text_to_speech
-	cost = 3 //Not extremely expensive, but it's useful for mute chracters.
+	cost = 3 // Not extremely expensive, but it's useful for mute chracters.
 
 /datum/gear/utility/communicator
 	display_name = "communicator selection"
@@ -32,7 +32,7 @@
 
 /datum/gear/utility/codex
 	display_name = "the traveler's guide to vir"
-	path = /obj/item/book/codex //VOREStation Edit
+	path = /obj/item/book/codex
 	cost = 0
 
 /datum/gear/utility/news
@@ -129,7 +129,7 @@
 	display_name = "implant, tracking"
 	slot = "implant"
 	path = /obj/item/implant/tracking/weak
-	cost = 0 //VOREStation Edit. Changed cost to 0
+	cost = 0
 
 /datum/gear/utility/implant/neural
 	display_name = "implant, neural assistance web"
@@ -229,66 +229,66 @@ modular computers
 /datum/gear/utility/customlaptop
 	display_name = "laptop computer, custom"
 	path = /obj/item/modular_computer/laptop/preset/
-	cost = 6 //VOREStation Edit
+	cost = 6
 
 /datum/gear/utility/customlaptop/New()
 	..()
 	gear_tweaks += new /datum/gear_tweak/laptop()
 
 /datum/gear/utility/saddlebag
-    display_name = "saddle bag, horse"
-    path = /obj/item/storage/backpack/saddlebag
-    slot = slot_back
-    cost = 2
+	display_name = "saddle bag, horse"
+	path = /obj/item/storage/backpack/saddlebag
+	slot = slot_back
+	cost = 2
 
 /datum/gear/utility/saddlebag_common
-    display_name = "saddle bag, common"
-    path = /obj/item/storage/backpack/saddlebag_common
-    slot = slot_back
-    cost = 2
+	display_name = "saddle bag, common"
+	path = /obj/item/storage/backpack/saddlebag_common
+	slot = slot_back
+	cost = 2
 
 /datum/gear/utility/saddlebag_common/robust
-    display_name = "saddle bag, robust"
-    path = /obj/item/storage/backpack/saddlebag_common/robust
-    slot = slot_back
-    cost = 2
+	display_name = "saddle bag, robust"
+	path = /obj/item/storage/backpack/saddlebag_common/robust
+	slot = slot_back
+	cost = 2
 
 /datum/gear/utility/saddlebag_common/vest
-    display_name = "taur duty vest (backpack)"
-    path = /obj/item/storage/backpack/saddlebag_common/vest
-    slot = slot_back
-    cost = 1
+	display_name = "taur duty vest (backpack)"
+	path = /obj/item/storage/backpack/saddlebag_common/vest
+	slot = slot_back
+	cost = 1
 
 /datum/gear/utility/dufflebag
-    display_name = "dufflebag"
-    path = /obj/item/storage/backpack/dufflebag
-    slot = slot_back
-    cost = 2
+	display_name = "dufflebag"
+	path = /obj/item/storage/backpack/dufflebag
+	slot = slot_back
+	cost = 2
 
 /datum/gear/utility/dufflebag/black
-    display_name = "black dufflebag"
-    path = /obj/item/storage/backpack/dufflebag/fluff
+	display_name = "black dufflebag"
+	path = /obj/item/storage/backpack/dufflebag/fluff
 
 /datum/gear/utility/dufflebag/med
-    display_name = "medical dufflebag"
-    path = /obj/item/storage/backpack/dufflebag/med
-    allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist","Psychiatrist","Field Medic")
+	display_name = "medical dufflebag"
+	path = /obj/item/storage/backpack/dufflebag/med
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist","Psychiatrist","Field Medic")
 
 /datum/gear/utility/dufflebag/med/emt
-    display_name = "EMT dufflebag"
-    path = /obj/item/storage/backpack/dufflebag/emt
+	display_name = "EMT dufflebag"
+	path = /obj/item/storage/backpack/dufflebag/emt
 
 /datum/gear/utility/dufflebag/sec
-    display_name = "security Dufflebag"
-    path = /obj/item/storage/backpack/dufflebag/sec
-    allowed_roles = list("Head of Security","Warden","Detective","Security Officer")
+	display_name = "security Dufflebag"
+	path = /obj/item/storage/backpack/dufflebag/sec
+	allowed_roles = list("Head of Security","Warden","Detective","Security Officer")
 
 /datum/gear/utility/dufflebag/eng
-    display_name = "engineering dufflebag"
-    path = /obj/item/storage/backpack/dufflebag/eng
-    allowed_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer")
+	display_name = "engineering dufflebag"
+	path = /obj/item/storage/backpack/dufflebag/eng
+	allowed_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer")
 
 /datum/gear/utility/dufflebag/sci
-    display_name = "science dufflebag"
-    path = /obj/item/storage/backpack/dufflebag/sci
-    allowed_roles = list("Research Director","Scientist","Roboticist","Xenobiologist","Explorer","Pathfinder")
+	display_name = "science dufflebag"
+	path = /obj/item/storage/backpack/dufflebag/sci
+	allowed_roles = list("Research Director","Scientist","Roboticist","Xenobiologist","Explorer","Pathfinder")
