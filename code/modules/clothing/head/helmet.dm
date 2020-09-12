@@ -232,6 +232,8 @@
 
 	flash_protection = FLASH_PROTECTION_NONE
 
+	var/blessed = FALSE
+
 /obj/item/clothing/head/helmet/ert/para/attack_self(mob/user as mob)
 	if(src.icon_state == initial(icon_state))
 		src.icon_state = "[icon_state]_up"
@@ -241,13 +243,18 @@
 		to_chat(user, "You lower the OM visor.")
 	update_clothing_icon()	//so our mob-overlays update
 
-/obj/item/clothing/head/helmet/ert/para/verb/enable_maw(var/mob/living/carbon/human/H, mob/user)
-	set name = "Enable MAW"
+/obj/item/clothing/head/helmet/ert/para/verb/toggle_maw(mob/user as mob)
+	set name = "Toggle MAW"
 	set category = "Object"
 
-	if(H.mind.isholy)
+	if(user.mind.isholy && !blessed)
+		blessed = TRUE
 		flash_protection = FLASH_PROTECTION_MAJOR
 		to_chat(user, "You activate the helmet's protective sigil.")
+	else
+		blessed = FALSE
+		flash_protection = FLASH_PROTECTION_NONE
+		to_chat(user, "You disable the helmet's protective sigil.")
 
-	if(!H.mind.isholy)
+	if(!user.mind.isholy)
 		to_chat(user, "You can't tell what this symbol means.")

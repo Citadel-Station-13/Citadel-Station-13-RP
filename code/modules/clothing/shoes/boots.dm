@@ -181,15 +181,20 @@
 	name = "PARA boots"
 	desc = "PMD issued gloves, stamped with protective seals and spells."
 	icon_state = "para_ert_boots"
-	action_button_name = "Bless Boots"
 
-/obj/item/clothing/shoes/boots/swat/para/verb/bless_boots(var/mob/living/carbon/human/H, mob/user)
-	set name = "Activate Sigils"
+	var/blessed = FALSE
+
+/obj/item/clothing/shoes/boots/swat/para/verb/toggle_boots(mob/user as mob)
+	set name = "Toggle Boot Sigils"
 	set category = "Object"
 
-	if(H.mind.isholy)
+	if(user.mind.isholy && !blessed)
+		blessed = TRUE
 		item_flags = NOSLIP
 		to_chat(user, "You repeat the incantations etched into the boots.")
+	else
+		blessed = FALSE
+		to_chat(user, "You dispel the incantations etched into the boots for now.")
 
-	if(!H.mind.isholy)
+	if(!user.mind.isholy)
 		to_chat(user, "You're not sure what language this is.")

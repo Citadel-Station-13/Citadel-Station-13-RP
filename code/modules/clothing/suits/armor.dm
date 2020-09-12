@@ -603,17 +603,22 @@
 	icon_state = "para_ert_armor"
 	item_state_slots = list(slot_r_hand_str = "armor", slot_l_hand_str = "armor")
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
-	action_button_name = "Activate Sigils"
 
 	var/anti_magic = FALSE
+	var/blessed = FALSE
 
-/obj/item/clothing/suit/armor/vest/ert/para/verb/activate_sigils(var/mob/living/carbon/human/H, mob/user)
-	set name = "Activate Sigils"
+/obj/item/clothing/suit/armor/vest/ert/para/verb/toggle_sigils(mob/user as mob)
+	set name = "Toggle Armor Sigils"
 	set category = "Object"
 
-	if(H.mind.isholy)
+	if(user.mind.isholy && !anti_magic && !blessed)
 		anti_magic = TRUE
+		blessed = TRUE
 		to_chat(user, "You enable the armor's protective sigils.")
+	else
+		anti_magic = FALSE
+		blessed = FALSE
+		to_chat(user, "You disable the armor's protective sigils.")
 
-	if(!H.mind.isholy)
+	if(!user.mind.isholy)
 		to_chat(user, "You can't figure out what these symbols do.")

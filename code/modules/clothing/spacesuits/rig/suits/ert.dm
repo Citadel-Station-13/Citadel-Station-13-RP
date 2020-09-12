@@ -92,9 +92,9 @@
 	desc = "A sleek module decorated with intricate glyphs and alien wards. When worn by a trained agent, the various glyphs faintly glow."
 	suit_type = "PMD agent"
 	icon_state = "para_ert_rig"
-	action_button_name = "Activate Sigils"
 
 	var/anti_magic = FALSE
+	var/blessed = FALSE
 	var/emp_proof = FALSE
 
 	allowed = list(/obj/item/flashlight, /obj/item/tank, /obj/item/t_scanner, /obj/item/rcd, /obj/item/tool/crowbar, \
@@ -114,14 +114,20 @@
 		/obj/item/rig_module/self_destruct
 		)
 
-/obj/item/rig/ert/para/verb/activate_sigils(var/mob/living/carbon/human/H, mob/user)
-	set name = "Activate Sigils"
+/obj/item/rig/ert/para/verb/toggle_sigils(mob/user as mob)
+	set name = "Toggle RIG Sigils"
 	set category = "Object"
 
-	if(H.mind.isholy)
+	if(user.mind.isholy && !anti_magic && !emp_proof)
 		anti_magic = TRUE
+		blessed = TRUE
 		emp_proof = TRUE
 		to_chat(user, "You enable the RIG's protective sigils.")
+	else
+		anti_magic = FALSE
+		blessed = FALSE
+		emp_proof = FALSE
+		to_chat(user, "You disable the RIG's protective sigils.")
 
-	if(!H.mind.isholy)
+	if(!user.mind.isholy)
 		to_chat(user, "You can't figure out what these symbols do.")

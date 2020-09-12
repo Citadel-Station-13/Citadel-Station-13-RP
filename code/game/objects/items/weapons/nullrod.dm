@@ -31,6 +31,14 @@
 	user.setClickCooldown(user.get_attack_speed(src))
 	user.do_attack_animation(M)
 
+	if(!user.mind || user.mind.assigned_role != "Chaplain")
+		to_chat(user, "<span class='notice'>You are not close enough with [GLOB.deity] to use [src].</span>")
+		return
+
+	if(!user.mind || user.mind.assigned_role != "Chaplain")
+		to_chat(user, "<span class='notice'>You are not close enough with [GLOB.deity] to use [src].</span>")
+		return
+
 	if (!(istype(user, /mob/living/carbon/human) || SSticker) && SSticker.mode.name != "monkey")
 		to_chat(user, "<span class='danger'>You don't have the dexterity to do this!</span>")
 		return
@@ -41,7 +49,7 @@
 		user.Paralyse(20)
 		return
 
-	if (M.stat == CONSCIOUS)
+	if (M.stat == CONSCIOUS && INTENT_DISARM)
 		if(cult && (M.mind in cult.current_antagonists) && prob(33))
 			to_chat(M, "<span class='danger'>The power of [src] clears your mind of the cult's influence!</span>")
 			to_chat(user, "<span class='danger'>You wave [src] over [M]'s head and see their eyes become clear, their mind returning to normal.</span>")
