@@ -180,7 +180,6 @@
 
 		if(validated)
 			E.modified = TRUE
-		world << "[E.name] added to the entrybus with a value of[E.config_entry_value]"
 
 	for(var/i in postload_required)
 		var/datum/config_entry/E = i
