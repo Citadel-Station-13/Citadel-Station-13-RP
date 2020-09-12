@@ -93,8 +93,7 @@
 	input_attempt = 1;
 	input_level = 250000;
 	inputting = 1;
-	output_level = 250000;
-	RCon_tag = "Telecommunications Satellite"
+	output_level = 250000
 	},
 /obj/structure/cable{
 	icon_state = "0-2";
@@ -1639,6 +1638,26 @@
 	initial_gas_mix = "n2=93.7835;o2=20.7263;TEMP=243.15"
 	},
 /area/awaymission/snowfield/base)
+"tn" = (
+/obj/effect/shuttle_landmark{
+	base_area = /area/awaymission/snowfield/outside;
+	base_turf = /turf/simulated/floor/outdoors/snow;
+	landmark_tag = "triumph_excursion_snowfield"
+	},
+/turf/simulated/floor/outdoors/snow{
+	nitrogen = 93.7835;
+	oxygen = 20.7263;
+	temperature = 243.15
+	},
+/area/awaymission/snowfield/outside)
+"Bw" = (
+/obj/effect/overmap/visitable/sector/snowfield,
+/turf/simulated/floor/outdoors/snow{
+	nitrogen = 93.7835;
+	oxygen = 20.7263;
+	temperature = 243.15
+	},
+/area/awaymission/snowfield/restricted)
 
 (1,1,1) = {"
 aa
@@ -1921,7 +1940,7 @@ ab
 ab
 ab
 ab
-ab
+Bw
 aa
 "}
 (3,1,1) = {"
@@ -7267,7 +7286,7 @@ ad
 ad
 ad
 ad
-ad
+tn
 ad
 ad
 ad

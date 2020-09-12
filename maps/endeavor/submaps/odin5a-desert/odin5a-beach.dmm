@@ -139,7 +139,6 @@
 /turf/simulated/floor/beach/coastwater/odin5a,
 /area/endeavor_away/beach/water)
 "D" = (
-/obj/shuttle_connector/beach,
 /turf/simulated/floor/beach/sand/odin5a,
 /area/endeavor_away/beach/coast)
 "E" = (

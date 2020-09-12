@@ -1,3 +1,12 @@
+/obj/effect/overmap/visitable/sector/snowfield
+	scanner_name = "Snowy Field"
+	scanner_desc = @{"[i]Stellar Body[/i]: UNKNOWN
+[i]Class[/i]: M-Class Planetoid
+[i]Habitability[/i]: Moderate (Low Temperature)
+[b]Notice[/b]: Very cold atmosphere, minimal life signs detected"}
+	icon_state = "globe"
+	initial_generic_waypoints = list("tether_excursion_snowfield")
+
 // -- Areas -- //
 
 /area/awaymission/snowfield

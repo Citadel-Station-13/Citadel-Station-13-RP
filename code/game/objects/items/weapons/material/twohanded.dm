@@ -93,8 +93,8 @@
 	desc = "Truly, the weapon of a madman. Who would think to fight fire with an axe?"
 	description_info = "This weapon can cleave, striking nearby lesser, hostile enemies close to the primary target.  It must be held in both hands to do this."
 	unwielded_force_divisor = 0.25
-	force_divisor = 0.7 // 10/42 with hardness 60 (steel) and 0.25 unwielded divisor
-	dulled_divisor = 0.75	//Still metal on a stick
+	force_divisor = 0.5 // 12/30 with hardness 60 (steel) and 0.25 unwielded divisor
+	dulled_divisor = 0.6	//Still metal on a stick
 	sharp = 1
 	edge = 1
 	w_class = ITEMSIZE_LARGE
@@ -173,10 +173,10 @@
 	force = 10
 	w_class = ITEMSIZE_LARGE
 	slot_flags = SLOT_BACK
-	force_divisor = 0.5 			// 15 when wielded with hardness 30 (glass)
-	unwielded_force_divisor = 0.375
-	thrown_force_divisor = 1.5 		// 22.5 when thrown with weight 15 (glass)
-	throw_speed = 3
+	force_divisor = 0.35 			// 10 when wielded with hardness 30 (glass)
+	unwielded_force_divisor = 0.1
+	thrown_force_divisor = 1.5		// 22.5 when thrown with weight 15 (glass)
+	throw_speed = 5
 	edge = 0
 	sharp = 1
 	hitsound = 'sound/weapons/bladeslice.ogg'
@@ -185,7 +185,8 @@
 	applies_material_colour = 0
 	fragile = 1	//It's a haphazard thing of glass, wire, and steel
 	reach = 2 // Spears are long.
-	attackspeed = 14
+	attackspeed = 20
+	slowdown = 1.05
 
 //Sledgehammers. Slightly less force than fire axes, but breaks bones easier.
 

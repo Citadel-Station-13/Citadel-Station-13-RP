@@ -35,10 +35,8 @@
 /datum/supply_pack/munitions/flareguns
 	name = "Weapons - Flare guns"
 	contains = list(
-			/obj/item/gun/projectile/sec/flash,
-			/obj/item/ammo_magazine/m45/flash,
-			/obj/item/gun/projectile/shotgun/doublebarrel/flare,
-			/obj/item/storage/box/flashshells
+			/obj/item/gun/projectile/shotgun/flare = 2,
+			/obj/item/storage/box/flashshells = 2
 			)
 	cost = 25
 	containertype = /obj/structure/closet/crate/secure/gear
@@ -166,6 +164,16 @@
 	cost = 130
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "Magnetic weapon crate"
+	access = access_armory
+	
+/datum/supply_pack/munitions/usmc
+	name = "Weapons - M41A Pulse Rifle"
+	contains = list(/obj/item/gun/projectile/caseless/usmc,
+		/obj/item/ammo_magazine/m10x24mm/small = 2
+		)
+	cost = 150
+	containertype = /obj/structure/closet/crate/secure/weapon
+	containername = " United Sol Marine Corps Surplus Crate"
 	access = access_armory
 	
 /datum/supply_pack/munitions/shotgunammo

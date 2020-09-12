@@ -38,6 +38,10 @@
 	full_name = "NSB Adephagia"
 	path = "tether"
 
+	use_overmap = TRUE
+	overmap_z = Z_LEVEL_MISC
+	overmap_size = 20
+
 	zlevel_datum_type = /datum/map_z_level/tether
 
 	lobby_icon = 'icons/misc/title_vr.dmi'
@@ -108,6 +112,8 @@
 
 	meteor_strike_areas = list(/area/tether/surfacebase/outside/outside3)
 
+	default_skybox = /datum/skybox_settings/tether
+
 	unit_test_exempt_areas = list(
 		/area/tether/surfacebase/outside/outside1,
 		/area/vacant/vacant_site,
@@ -168,6 +174,10 @@
 
 	return 1
 
+/datum/skybox_settings/tether
+	icon_state = "space5"
+	use_stars = FALSE
+
 /datum/planet/virgo3b
 	expected_z_levels = list(
 		Z_LEVEL_SURFACE_LOW,
@@ -195,6 +205,32 @@
 			Z_LEVEL_SPACE_HIGH)
 	else
 		return list(srcz) //may prevent runtimes, but more importantly gives gps units a shortwave-esque function
+
+// Overmap represetation of tether
+/obj/effect/overmap/visitable/sector/virgo3b
+	name = "Virgo 3B"
+	desc = "Full of phoron, and home to the NSB Adephagia, where you can dock and refuel your craft."
+	scanner_desc = @{"[i]Registration[/i]: NSB Adephagia
+[i]Class[/i]: Installation
+[i]Transponder[/i]: Transmitting (CIV), NanoTrasen IFF
+[b]Notice[/b]: NanoTrasen Base, authorized personnel only"}
+	base = 1
+	icon_state = "globe"
+	color = "#d35b5b"
+	initial_generic_waypoints = list(
+		"tether_dockarm_d1a1", //Bottom left,
+		"tether_dockarm_d1a2", //Top left,
+		"tether_dockarm_d1a3", //Left on inside,
+		"tether_dockarm_d2a1", //Bottom right,
+		"tether_dockarm_d2a2", //Top right,
+		"tether_dockarm_d1l", //End of left arm,
+		"tether_dockarm_d2l", //End of right arm,
+		"tether_space_SE", //station1, bottom right of space,
+		"tether_space_NE", //station1, top right of space,
+		"tether_space_SW", //station3, bottom left of space,
+		"tether_excursion_hangar", //Excursion shuttle hangar,
+		"tourbus_dock" //Surface large hangar
+		)
 
 // For making the 6-in-1 holomap, we calculate some offsets
 #define TETHER_MAP_SIZE 140 // Width and height of compiled in tether z levels.
