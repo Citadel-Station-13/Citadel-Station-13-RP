@@ -951,7 +951,7 @@
 "aPk" = (
 /obj/machinery/blackbox_recorder,
 /turf/simulated/floor/tiled/techfloor,
-/area/ai_server_room)
+/area/ai_upload)
 "aPv" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -1286,7 +1286,7 @@
 "bbx" = (
 /obj/machinery/porta_turret/ai_defense,
 /turf/simulated/floor/tiled/techfloor,
-/area/ai_server_room)
+/area/ai_upload)
 "bbJ" = (
 /obj/machinery/camera/network/command{
 	dir = 9
@@ -1716,7 +1716,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/ai_server_room)
+/area/ai_upload)
 "bqH" = (
 /obj/machinery/cryopod/robot/door/shuttle,
 /obj/machinery/door/firedoor,
@@ -2280,7 +2280,7 @@
 /obj/item/aiModule/antimov,
 /obj/item/aiModule/teleporterOffline,
 /turf/simulated/floor/tiled/techfloor,
-/area/ai_server_room)
+/area/ai_upload)
 "bNI" = (
 /turf/simulated/wall/r_wall,
 /area/ai)
@@ -3964,7 +3964,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/bluegrid,
-/area/ai_server_room)
+/area/ai_upload)
 "daY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/vending/hydroseeds,
@@ -5187,12 +5187,16 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/secondary/civilian_hallway_mid)
 "dVm" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass_security{
+	name = "Armory";
+	req_access = list(3)
+	},
 /obj/machinery/door/blast/regular{
 	dir = 4;
 	id = "armoryred";
 	name = "Armory Access"
 	},
-/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "dVs" = (
@@ -6880,7 +6884,7 @@
 	},
 /obj/effect/landmark/free_ai_shell,
 /turf/simulated/floor/bluegrid,
-/area/ai_server_room)
+/area/ai_upload)
 "fdy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -8609,6 +8613,13 @@
 	},
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/shuttle/excursion/general)
+"gya" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/triumph/station/excursion_dock)
 "gyv" = (
 /obj/machinery/light{
 	dir = 1
@@ -8698,7 +8709,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/bluegrid,
-/area/ai_server_room)
+/area/ai_upload)
 "gCM" = (
 /turf/simulated/wall/r_wall,
 /area/gateway)
@@ -8710,7 +8721,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/bluegrid,
-/area/ai_server_room)
+/area/ai_upload)
 "gEc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -9903,7 +9914,7 @@
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/techfloor,
-/area/ai/foyer)
+/area/ai_upload)
 "hyb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -11030,7 +11041,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/bluegrid,
-/area/ai_server_room)
+/area/ai_upload)
 "ilE" = (
 /obj/machinery/light/small,
 /obj/machinery/status_display{
@@ -11599,7 +11610,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/bluegrid,
-/area/ai_server_room)
+/area/ai_upload)
 "iKz" = (
 /obj/structure/table/woodentable,
 /obj/structure/dancepole,
@@ -12122,7 +12133,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/bluegrid,
-/area/ai_server_room)
+/area/ai_upload)
 "jeD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -14083,7 +14094,7 @@
 /obj/structure/table/standard,
 /obj/item/aiModule/freeform,
 /turf/simulated/floor/tiled/techfloor,
-/area/ai_server_room)
+/area/ai_upload)
 "kLA" = (
 /obj/machinery/camera/network/command{
 	dir = 4
@@ -14612,7 +14623,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/bluegrid,
-/area/ai_server_room)
+/area/ai_upload)
 "lfm" = (
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
@@ -14640,7 +14651,7 @@
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/ai_server_room)
+/area/ai_upload)
 "liC" = (
 /obj/random/tech_supply,
 /obj/random/tech_supply,
@@ -14942,7 +14953,7 @@
 /obj/structure/table/standard,
 /obj/item/aiModule/nanotrasen,
 /turf/simulated/floor/tiled/techfloor,
-/area/ai_server_room)
+/area/ai_upload)
 "lqI" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/toolbox/emergency,
@@ -17118,11 +17129,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
 "mRq" = (
-/obj/machinery/door/blast/regular{
-	dir = 4;
-	id = "armoryred";
-	name = "Armory Access"
-	},
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -17134,6 +17140,15 @@
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/glass_security{
+	name = "Armory";
+	req_access = list(3)
+	},
+/obj/machinery/door/blast/regular{
+	dir = 4;
+	id = "armoryred";
+	name = "Armory Access"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
@@ -19114,7 +19129,7 @@
 "ooL" = (
 /obj/machinery/message_server,
 /turf/simulated/floor/tiled/techfloor,
-/area/ai_server_room)
+/area/ai_upload)
 "opb" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -21972,7 +21987,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/ai_server_room)
+/area/ai_upload)
 "qjx" = (
 /obj/mecha/working/hoverpod/shuttlecraft,
 /obj/effect/floor_decal/industrial/danger{
@@ -23322,7 +23337,7 @@
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/ai_server_room)
+/area/ai_upload)
 "rfE" = (
 /obj/machinery/alarm{
 	pixel_y = 22
@@ -23889,7 +23904,7 @@
 /area/security/hallwayaux)
 "rxh" = (
 /turf/simulated/floor/tiled/techfloor,
-/area/ai_server_room)
+/area/ai_upload)
 "rxB" = (
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 8
@@ -24194,7 +24209,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/ai_server_room)
+/area/ai_upload)
 "rGn" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4
@@ -24391,7 +24406,7 @@
 /obj/machinery/computer/aifixer,
 /obj/machinery/camera/network/command,
 /turf/simulated/floor/tiled/techfloor,
-/area/ai_server_room)
+/area/ai_upload)
 "rOX" = (
 /obj/machinery/alarm{
 	frequency = 1441;
@@ -25096,7 +25111,7 @@
 "stq" = (
 /obj/machinery/computer/aiupload,
 /turf/simulated/floor/tiled/techfloor,
-/area/ai_server_room)
+/area/ai_upload)
 "sup" = (
 /obj/structure/sign/deck/fourth,
 /turf/simulated/wall/r_wall,
@@ -26169,7 +26184,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/ai_server_room)
+/area/ai_upload)
 "tgM" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /turf/simulated/floor/plating,
@@ -28464,7 +28479,7 @@
 /area/security/security_equiptment_storage)
 "uWf" = (
 /turf/simulated/wall/r_wall,
-/area/ai_server_room)
+/area/ai_upload)
 "uWs" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -29753,7 +29768,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/ai_server_room)
+/area/ai_upload)
 "vPY" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -31040,7 +31055,7 @@
 /area/security/riot_control)
 "wOa" = (
 /obj/machinery/turretid/stun{
-	control_area = "Messaging Server Room";
+	control_area = "\improper AI Upload Chamber";
 	name = "AI Upload turret control";
 	pixel_y = -26
 	},
@@ -32190,7 +32205,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/ai_server_room)
+/area/ai_upload)
 "xDD" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/random/energy/sec,
@@ -32596,7 +32611,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/bluegrid,
-/area/ai_server_room)
+/area/ai_upload)
 "xUa" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -32639,7 +32654,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/ai_server_room)
+/area/ai_upload)
 "xWo" = (
 /turf/simulated/floor/wood,
 /area/security/hallway)
@@ -37951,14 +37966,14 @@ mAF
 mAF
 ouB
 xsI
-xsI
+rkC
 xsI
 xsI
 fPc
 rkC
 xsI
-xsI
-xsI
+fPc
+rkC
 xsI
 wlr
 mAF
@@ -38093,14 +38108,14 @@ mAF
 mAF
 pwy
 rDW
-rDW
+gya
 rDW
 rDW
 uUY
 anw
 kAG
-kAG
-kAG
+uUY
+gya
 kAG
 xJi
 mAF
@@ -48912,7 +48927,7 @@ dSw
 tyT
 tyT
 tyT
-tyT
+uWf
 uWf
 uWf
 uWf
@@ -49054,7 +49069,7 @@ gOk
 tyT
 mxx
 wOa
-tyT
+uWf
 ooL
 qjt
 aPk
