@@ -5,15 +5,6 @@
 	due_date = 0 // Game time in 1/10th seconds
 	unique = 1   // 0 - Normal book, 1 - Should not be treated as normal book, unable to be copied, unable to be modified
 
-/obj/item/book/manual/legal/attack_self(mob/user)
-	if(src.icon_state == initial(icon_state))
-		src.icon_state = "[icon_state]-open"
-		to_chat(user, "You open the book.")
-	else
-		src.icon_state = initial(icon_state)
-		to_chat(user, "You close the book.")
-	update_icon()
-
 /obj/item/book/manual/engineering_construction
 	name = "Station Repairs and Construction"
 	icon_state ="bookEngineering"

@@ -181,20 +181,19 @@
 	name = "PARA boots"
 	desc = "PMD issued gloves, stamped with protective seals and spells."
 	icon_state = "para_ert_boots"
+	action_button_name = "Enable Boot Sigils"
 
 	var/blessed = FALSE
 
-/obj/item/clothing/shoes/boots/swat/para/verb/toggle_boots(mob/user as mob)
-	set name = "Toggle Boot Sigils"
-	set category = "Object"
-
+/obj/item/clothing/shoes/boots/swat/para/attack_self(mob/user as mob)
 	if(user.mind.isholy && !blessed)
 		blessed = TRUE
-		item_flags = NOSLIP
-		to_chat(user, "You repeat the incantations etched into the boots.")
+		item_flags |= NOSLIP
+		to_chat(user, "<font color='blue'>You repeat the incantations etched into the boots.</font>")
 	else
 		blessed = FALSE
-		to_chat(user, "You dispel the incantations etched into the boots for now.")
+		item_flags &= ~NOSLIP
+		to_chat(user, "<font color='blue'>You dispel the incantations etched into the boots for now.</font>")
 
 	if(!user.mind.isholy)
-		to_chat(user, "You're not sure what language this is.")
+		to_chat(user, "<font color='red'>You're not sure what language this is.</font>")

@@ -228,33 +228,26 @@
 	name = "Oculus Malum visor"
 	desc = "This specialty visor, nicknamed the 'MAW' by PMD agents, grants trained Agents the ability to view Paracausal events without suffering memetic hazards."
 	icon_state = "para_ert_helmet"
-	action_button_name = "Toggle Visor"
+	action_button_name = "Cycle MAW"
 
-	flash_protection = FLASH_PROTECTION_NONE
+	flash_protection = FLASH_PROTECTION_MAJOR
 
-	var/blessed = FALSE
+	var/blessed = TRUE
 
 /obj/item/clothing/head/helmet/ert/para/attack_self(mob/user as mob)
-	if(src.icon_state == initial(icon_state))
-		src.icon_state = "[icon_state]_up"
-		to_chat(user, "You raise the OM visor.")
-	else
-		src.icon_state = initial(icon_state)
-		to_chat(user, "You lower the OM visor.")
-	update_clothing_icon()	//so our mob-overlays update
-
-/obj/item/clothing/head/helmet/ert/para/verb/toggle_maw(mob/user as mob)
-	set name = "Toggle MAW"
-	set category = "Object"
-
-	if(user.mind.isholy && !blessed)
-		blessed = TRUE
-		flash_protection = FLASH_PROTECTION_MAJOR
-		to_chat(user, "You activate the helmet's protective sigil.")
-	else
+	if(src.icon_state == initial(icon_state) && user.mind.isholy && blessed)
 		blessed = FALSE
 		flash_protection = FLASH_PROTECTION_NONE
-		to_chat(user, "You disable the helmet's protective sigil.")
+		src.icon_state = "[icon_state]_up"
+		to_chat(user, "<font color='blue'>The helmet's protective sigil fades as you raise the OM visor.</font>")
+	else
+		blessed = TRUE
+		flash_protection = FLASH_PROTECTION_MAJOR
+		src.icon_state = initial(icon_state)
+		to_chat(user, "<font color='blue'>The helmet's protective sigil glows as you lower the OM visor.</font>")
+	update_clothing_icon()	//so our mob-overlays update
 
 	if(!user.mind.isholy)
-		to_chat(user, "You can't tell what this symbol means.")
+		flash_protection = FLASH_PROTECTION_NONE
+		blessed = FALSE
+		to_chat(user, "<font color='blue'>The OM visor doesn't respond to you.</font>")

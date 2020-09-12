@@ -92,6 +92,7 @@
 	desc = "A sleek module decorated with intricate glyphs and alien wards. When worn by a trained agent, the various glyphs faintly glow."
 	suit_type = "PMD agent"
 	icon_state = "para_ert_rig"
+	action_button_name = "Enable RIG Sigils"
 
 	var/anti_magic = FALSE
 	var/blessed = FALSE
@@ -114,20 +115,23 @@
 		/obj/item/rig_module/self_destruct
 		)
 
-/obj/item/rig/ert/para/verb/toggle_sigils(mob/user as mob)
-	set name = "Toggle RIG Sigils"
-	set category = "Object"
-
-	if(user.mind.isholy && !anti_magic && !emp_proof)
+/obj/item/rig/ert/para/attack_self(mob/user as mob)
+	if(user.mind.isholy && !anti_magic && !emp_proof && !blessed)
 		anti_magic = TRUE
 		blessed = TRUE
 		emp_proof = TRUE
-		to_chat(user, "You enable the RIG's protective sigils.")
+		to_chat(user, "<font color='blue'>You enable the RIG's protective sigils.</font>")
 	else
 		anti_magic = FALSE
 		blessed = FALSE
 		emp_proof = FALSE
-		to_chat(user, "You disable the RIG's protective sigils.")
+		to_chat(user, "<font color='blue'>You disable the RIG's protective sigils.</font>")
 
 	if(!user.mind.isholy)
-		to_chat(user, "You can't figure out what these symbols do.")
+		to_chat(user, "<font color='red'>You can't figure out what these symbols do.</font>")
+
+/obj/item/rig/ert/para/emp_act(severity)
+	if(emp_proof)
+		emp_protection = 75
+	else
+		return
