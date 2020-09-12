@@ -19,9 +19,7 @@
 
 
 /obj/item/clothing/shoes/magboots/rig
-	sprite_sheets = list(
-		SPECIES_ZADDAT 			= 'icons/mob/species/zaddat/shoes.dmi'
-		)//Fingers crossed it will reference back to the base sheet if it can't find the others
+	sprite_sheets = list( SPECIES_ZADDAT = 'icons/mob/species/zaddat/shoes.dmi' ) //Unique override
 
 /obj/item/clothing/gloves/gauntlets/rig
 
