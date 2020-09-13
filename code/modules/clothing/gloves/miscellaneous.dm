@@ -166,3 +166,25 @@
 
 /obj/item/clothing/gloves/ranger/yellow
 	glovecolor = "yellow"
+
+/obj/item/clothing/gloves/swat/para //Combined effect of SWAT gloves and insulated gloves
+	desc = "PARA gloves"
+	name = "PMD issued gloves, stamped with protective seals and spells."
+	icon_state = "para_ert_gloves"
+	item_state = "para_ert_gloves"
+	action_button_name = "Enable Glove Sigils"
+
+	var/blessed = FALSE
+
+/obj/item/clothing/gloves/swat/para/attack_self(mob/user as mob)
+	if(user.mind.isholy && !blessed)
+		blessed = TRUE
+		siemens_coefficient = 0
+		to_chat(user, "<font color='blue'>You repeat the incantations etched into the gloves.</font>")
+	else
+		blessed = FALSE
+		siemens_coefficient = 0.5
+		to_chat(user, "<font color='blue'>You dispel the incantations eteched into the gloves for now.</font>")
+
+	if(!user.mind.isholy)
+		to_chat(user, "<font color='red'>You're not sure what language this is.</font>")

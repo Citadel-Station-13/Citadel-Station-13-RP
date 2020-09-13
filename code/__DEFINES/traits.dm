@@ -108,8 +108,10 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_EASYLIMBDISABLE	"easy_limb_disable"
 #define TRAIT_TOXINLOVER		"toxinlover"
 #define TRAIT_NOBREATH			"no_breath"
+*/
 #define TRAIT_ANTIMAGIC			"anti_magic"
 #define TRAIT_HOLY				"holy"
+/*
 #define TRAIT_DEPRESSION		"depression"
 #define TRAIT_JOLLY				"jolly"
 #define TRAIT_NOCRITDAMAGE		"no_crit"
@@ -153,7 +155,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_PARALYSIS			"paralysis" //Used for limb-based paralysis, where replacing the limb will fix it
 
 // item traits
+*/
 #define TRAIT_NODROP            "nodrop"
+/*
 #define TRAIT_T_RAY_VISIBLE     "t-ray-visible" // Visible on t-ray scanners if the atom/var/level == 1
 #define TRAIT_NO_TELEPORT		"no-teleport" //you just can't
 
@@ -184,7 +188,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define EYE_DAMAGE "eye_damage"
 #define GENETIC_MUTATION "genetic"
 #define OBESITY "obesity"
+*/
 #define MAGIC_TRAIT "magic"
+/*
 #define TRAUMA_TRAIT "trauma"
 #define DISEASE_TRAIT "disease"
 #define SPECIES_TRAIT "species"
@@ -232,7 +238,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define REVERSE_BEAR_TRAP_TRAIT "reverse-bear-trap"
 #define CURSED_MASK_TRAIT "cursed-mask"
 #define HIS_GRACE_TRAIT "his-grace"
+*/
 #define HAND_REPLACEMENT_TRAIT "magic-hand"
+/*
 #define HOT_POTATO_TRAIT "hot-potato"
 #define SABRE_SUICIDE_TRAIT "sabre-suicide"
 #define ABDUCTOR_VEST_TRAIT "abductor-vest"
