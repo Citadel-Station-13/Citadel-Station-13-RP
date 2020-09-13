@@ -418,21 +418,21 @@
 
 
 /datum/gear/head/operations
-	display_name = "Operations Command Staff Cap"
+	display_name = "Command - Operations Cap"
 	path = /obj/item/clothing/head/operations
-//	allowed_roles = ""
-
-/datum/gear/head/operations/medsci
-	display_name = "Operations Medical/Science Staff Cap"
-	path = /obj/item/clothing/head/operations/medsci
-//	allowed_roles =
-
-/datum/gear/head/operations/engineering
-	display_name = "Operations Engineering Staff Cap"
-	path = /obj/item/clothing/head/operations/engineering
-//	allowed_roles = ""
+	allowed_roles = list("Facility Director","Research Director","Head of Personnel","Head of Security","Chief Engineer","Command Secretary")
 
 /datum/gear/head/operations/security
-	display_name = "Operations Security Staff Cap"
+	display_name = "Security - Operations Cap"
 	path = /obj/item/clothing/head/operations/security
-//	allowed_roles = ""
+	allowed_roles = list("Head of Security", "Warden", "Detective", "Security Officer")
+
+/datum/gear/head/operations/medsci
+	display_name = "MedSci - Operations Cap"
+	path = /obj/item/clothing/head/operations/medsci
+	allowed_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Paramedic","Geneticist","Research Director","Scientist", "Roboticist", "Xenobiologist","Pathfinder","Explorer","Field Medic")
+
+/datum/gear/head/operations/engineering
+	display_name = "Engineering - Operations Cap"
+	path = /obj/item/clothing/head/operations/engineering
+	allowed_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer")

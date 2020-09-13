@@ -556,7 +556,7 @@ datum/gear/suit/labcoat/param
 	path = /obj/item/clothing/suit/storage/tailcoat
 
 datum/gear/suit/miscellaneous/storage/lawyer/bridgeofficerparade
-	display_name = "Command - parade jacket"
+	display_name = "Command - Parade Jacket"
 	path = /obj/item/clothing/suit/storage/ecdress_ofcr
 	allowed_roles = list("Facility Director","Research Director","Head of Personnel","Head of Security","Chief Engineer","Command Secretary")
 
@@ -621,7 +621,7 @@ datum/gear/suit/miscellaneous/storage/lawyer/bridgeofficerparade
 /datum/gear/suit/operations_coat
 	display_name = "Command - Operations Jacket"
 	path = /obj/item/clothing/suit/storage/toggle/operations_coat/command
-	allowed_roles = list("Facility Director")
+	allowed_roles = list("Facility Director","Research Director","Head of Personnel","Head of Security","Chief Engineer","Command Secretary")
 
 /datum/gear/suit/operations_coat/security
 	display_name = "Security - Operations Jacket"
