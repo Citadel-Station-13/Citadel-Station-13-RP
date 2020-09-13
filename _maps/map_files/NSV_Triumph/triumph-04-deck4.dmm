@@ -3829,6 +3829,34 @@
 	},
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
+"cRe" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/button/remote/blast_door{
+	id = "VaultAc";
+	name = "Vault Blast Door";
+	pixel_y = -32;
+	req_access = list(53);
+	req_one_access = list(53)
+	},
+/obj/machinery/button/remote/blast_door{
+	id = "VaultAc";
+	name = "Vault Blast Door";
+	pixel_y = 32;
+	req_access = list(53);
+	req_one_access = list(53)
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/nuke_storage)
 "cTz" = (
 /obj/structure/extinguisher_cabinet{
 	dir = 1;
@@ -4302,8 +4330,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock/security{
 	name = "Evidence Storage";
-	req_access = newlist();
-	req_one_access = list(2,38)
+	req_one_access = list(2,4,18)
 	},
 /obj/structure/cable/green{
 	d1 = 1;
@@ -7745,6 +7772,7 @@
 "fLs" = (
 /obj/structure/table/reinforced,
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/phase,
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/microtaser,
 /turf/simulated/floor/tiled,
 /area/security/hallwayaux)
 "fLV" = (
@@ -9313,7 +9341,7 @@
 "hcP" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/blast/regular{
-	id = "Cell 3";
+	id = "Cell 3 B";
 	name = "Cell 3"
 	},
 /turf/simulated/floor/tiled,
@@ -12219,15 +12247,18 @@
 /turf/simulated/floor/tiled,
 /area/security/range)
 "jgZ" = (
-/obj/machinery/alarm{
-	dir = 4;
-	pixel_x = -22
+/obj/machinery/camera/network/command{
+	dir = 4
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/floor_decal/corner/beige/border{
 	dir = 8
+	},
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -22
 	},
 /turf/simulated/floor/tiled,
 /area/bridge/hallway)
@@ -14082,6 +14113,7 @@
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/phase,
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/phase,
 /obj/structure/table/reinforced,
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/microtaser,
 /turf/simulated/floor/tiled,
 /area/security/hallwayaux)
 "kKQ" = (
@@ -17536,7 +17568,7 @@
 "ngM" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/blast/regular{
-	id = "Cell 4";
+	id = "Cell 4 B";
 	name = "Cell 4"
 	},
 /turf/simulated/floor/tiled,
@@ -18173,10 +18205,6 @@
 /turf/simulated/floor/tiled,
 /area/security/hallwayaux)
 "nEa" = (
-/obj/machinery/door_timer/cell_3{
-	pixel_x = -32;
-	pixel_y = -32
-	},
 /obj/structure/cable/green,
 /obj/machinery/power/apc{
 	name = "south bump";
@@ -18184,6 +18212,10 @@
 	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/red/border,
+/obj/machinery/door_timer/cell_3{
+	pixel_x = -32;
+	pixel_y = -32
+	},
 /turf/simulated/floor/tiled,
 /area/security/prison)
 "nEd" = (
@@ -19265,7 +19297,7 @@
 /obj/effect/floor_decal/corner/red/border,
 /obj/machinery/button/remote/blast_door{
 	dir = 1;
-	id = "Cell 3";
+	id = "Cell 3 B";
 	name = "Cell 3 Door";
 	pixel_x = 26;
 	pixel_y = -27;
@@ -22377,25 +22409,13 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/captain)
 "qzT" = (
-/obj/machinery/door/airlock/vault/bolted{
-	req_access = list(53)
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
-	},
-/obj/machinery/door/blast/regular{
-	id = "VaultAc";
-	name = "\improper Vault"
 	},
 /obj/structure/cable{
 	d1 = 4;
@@ -22406,6 +22426,21 @@
 	id = "VaultAc";
 	name = "Vault Blast Door";
 	pixel_y = -32;
+	req_access = list(53);
+	req_one_access = list(53)
+	},
+/obj/machinery/door/airlock/vault/bolted{
+	id_tag = "vault";
+	req_access = list(53)
+	},
+/obj/machinery/door/blast/regular{
+	id = "VaultAc";
+	name = "\improper Vault"
+	},
+/obj/machinery/button/remote/blast_door{
+	id = "VaultAc";
+	name = "Vault Blast Door";
+	pixel_y = 32;
 	req_access = list(53);
 	req_one_access = list(53)
 	},
@@ -23496,7 +23531,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/button/remote/blast_door{
 	dir = 1;
-	id = "Cell 2";
+	id = "Cell 2 B";
 	name = "Cell 2 Door";
 	pixel_x = 26;
 	pixel_y = -27;
@@ -24460,7 +24495,7 @@
 "rUN" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/blast/regular{
-	id = "Cell 1";
+	id = "Cell 1 B";
 	name = "Cell 1"
 	},
 /turf/simulated/floor/tiled,
@@ -25583,12 +25618,14 @@
 /turf/simulated/floor/bluegrid,
 /area/ai)
 "sNt" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/red/border,
 /obj/machinery/door_timer/cell_3{
+	id = "Cell 4";
+	name = "Cell 4";
 	pixel_x = -32;
 	pixel_y = -32
 	},
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/red/border,
 /turf/simulated/floor/tiled,
 /area/security/prison)
 "sNy" = (
@@ -25927,20 +25964,20 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/button/remote/blast_door{
 	dir = 1;
-	id = "Cell 1";
+	id = "Cell 1 B";
 	name = "Cell 1 Door";
 	pixel_x = 26;
 	pixel_y = -27;
 	req_access = list(1,2)
 	},
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/red/border,
 /obj/machinery/door_timer/cell_3{
-	id = "Cell 5";
-	name = "Cell 5";
+	id = "Cell 1";
+	name = "Cell 1";
 	pixel_x = -32;
 	pixel_y = -32
 	},
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/red/border,
 /turf/simulated/floor/tiled,
 /area/security/prison)
 "tbn" = (
@@ -27284,7 +27321,7 @@
 "uia" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/blast/regular{
-	id = "Cell 2";
+	id = "Cell 2 B";
 	name = "Cell 2"
 	},
 /turf/simulated/floor/tiled,
@@ -28642,7 +28679,7 @@
 	},
 /obj/machinery/door/window/brigdoor/southleft{
 	dir = 1;
-	id = "Cell 4";
+	id = "Cell 4 B";
 	name = "Cell 4";
 	req_access = list(2)
 	},
@@ -32319,14 +32356,14 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/civilian_hallway_mid)
 "xKZ" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/red/border,
 /obj/machinery/door_timer/cell_3{
-	id = "Cell 4";
-	name = "Cell 4";
+	id = "Cell 2";
+	name = "Cell 2";
 	pixel_x = -32;
 	pixel_y = -32
 	},
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/red/border,
 /turf/simulated/floor/tiled,
 /area/security/prison)
 "xLf" = (
@@ -34223,7 +34260,7 @@ nIK
 pkc
 clY
 pkc
-hzP
+mmk
 pkc
 clY
 pkc
@@ -34240,7 +34277,7 @@ clY
 pkc
 pkc
 hzP
-hzP
+mmk
 pkc
 nIK
 nIK
@@ -48522,7 +48559,7 @@ ukh
 ukh
 ukh
 ukh
-gJl
+cRe
 ukh
 ukh
 ukh
@@ -48804,8 +48841,8 @@ dff
 dOZ
 dSw
 lfI
-eHr
 jgZ
+dLP
 fPs
 dLP
 dPV

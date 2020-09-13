@@ -1281,9 +1281,8 @@
 /turf/simulated/floor/tiled,
 /area/rnd/storage)
 "cM" = (
-/obj/machinery/atmospherics/valve/digital{
-	dir = 4;
-	icon_state = "map_valve1"
+/obj/machinery/atmospherics/binary/pump/on{
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
@@ -3121,8 +3120,10 @@
 "gA" = (
 /obj/machinery/atmospherics/unary/freezer{
 	dir = 1;
-	heatsink_temperature = 200;
-	icon_state = "freezer_1"
+	icon_state = "freezer_1";
+	power_setting = 20;
+	set_temperature = 73;
+	use_power = 1
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
@@ -4558,15 +4559,9 @@
 /turf/simulated/wall/r_wall,
 /area/medical/ward)
 "jw" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced/polarized{
-	dir = 10;
-	icon_state = "fwindow";
-	id = "surgery1"
-	},
-/turf/simulated/floor/plating,
-/area/medical/surgery2)
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/airless,
+/area/rnd/xenobiology/xenoflora/lab_atmos)
 "jx" = (
 /obj/machinery/camera/network/medbay{
 	dir = 1
@@ -9382,6 +9377,9 @@
 /obj/structure/closet/crate/bin{
 	anchored = 1
 	},
+/obj/structure/window/reinforced/tinted/frosted{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/ward)
 "ti" = (
@@ -9394,6 +9392,9 @@
 	},
 /obj/machinery/camera/network/medbay{
 	dir = 1
+	},
+/obj/structure/window/reinforced/tinted/frosted{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/ward)
@@ -11422,6 +11423,17 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/rnd/xenobiology)
+"xj" = (
+/obj/structure/table/glass,
+/obj/item/flashlight/lamp/green,
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -37
+	},
+/obj/structure/window/reinforced/tinted/frosted{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/medical/ward)
 "xk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -15403,6 +15415,18 @@
 /obj/effect/floor_decal/spline/fancy/wood,
 /turf/simulated/floor/wood,
 /area/hallway/primary/aft)
+"EM" = (
+/obj/structure/table/glass,
+/obj/machinery/camera/network/medbay,
+/obj/item/flashlight/lamp/green,
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 27
+	},
+/obj/structure/window/reinforced/tinted/frosted{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/medical/ward)
 "EN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -15644,6 +15668,9 @@
 "Fm" = (
 /obj/structure/table/glass,
 /obj/item/healthanalyzer,
+/obj/structure/window/reinforced/tinted/frosted{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/ward)
 "Fn" = (
@@ -17252,6 +17279,17 @@
 /obj/structure/closet/secure_closet/scientist,
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
+"IE" = (
+/obj/machinery/button/remote/airlock{
+	desc = "A remote control switch for the medbay recovery room door.";
+	dir = 4;
+	id = "MedbayFoyer";
+	name = "Door Switch";
+	pixel_x = -27;
+	pixel_y = 9
+	},
+/turf/simulated/floor/wood/sif,
+/area/medical/reception)
 "IF" = (
 /obj/structure/closet/secure_closet/medical3,
 /obj/item/clothing/under/rank/medical/scrubs/black,
@@ -17591,6 +17629,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/rdoffice)
+"Jr" = (
+/obj/structure/curtain/open/shower/medical,
+/obj/structure/window/reinforced/tinted/frosted{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/medical/ward)
 "Js" = (
 /turf/simulated/wall/r_wall,
 /area/maintenance/research)
@@ -17601,6 +17646,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/yellow,
 /turf/simulated/floor/plating,
 /area/medical/virology)
 "Ju" = (
@@ -19168,6 +19214,9 @@
 /obj/machinery/camera/network/medbay{
 	dir = 8
 	},
+/obj/machinery/light_switch{
+	pixel_x = 25
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virology)
 "MC" = (
@@ -19660,6 +19709,9 @@
 /area/medical/ward)
 "Nx" = (
 /obj/machinery/vending/medical,
+/obj/structure/window/reinforced/tinted/frosted{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/ward)
 "Ny" = (
@@ -23481,6 +23533,9 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
+/obj/structure/window/reinforced/tinted/frosted{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/ward)
 "Vc" = (
@@ -24544,6 +24599,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
+"Xj" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/airless,
+/area/rnd/xenobiology/xenoflora_storage)
 "Xk" = (
 /obj/machinery/firealarm{
 	dir = 4;
@@ -25865,6 +25924,9 @@
 "ZR" = (
 /obj/item/bodybag/cryobag,
 /obj/structure/table/glass,
+/obj/structure/window/reinforced/tinted/frosted{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/ward)
 "ZS" = (
@@ -31572,7 +31634,7 @@ Eu
 FC
 jQ
 bB
-jw
+jI
 LX
 ub
 ub
@@ -33561,13 +33623,13 @@ kn
 Aj
 WP
 Ow
-hL
-Fj
-Nw
+EM
+px
+Jr
 Wl
-Nw
-Fj
-xx
+Jr
+px
+xj
 jv
 gK
 gK
@@ -34210,7 +34272,7 @@ gK
 gK
 gK
 gK
-Tt
+jw
 Tt
 ET
 di
@@ -34494,7 +34556,7 @@ gK
 gK
 gK
 gK
-OS
+Xj
 OS
 DH
 bL
@@ -35961,7 +36023,7 @@ LT
 TE
 Ll
 re
-xg
+IE
 xg
 gH
 VC

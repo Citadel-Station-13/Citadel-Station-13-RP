@@ -468,13 +468,6 @@
 /area/engineering/engine_room)
 "bH" = (
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "eng_sec_lockdown";
-	name = "Security Checkpoint Blast Doors";
-	opacity = 0
-	},
 /obj/machinery/door/window/brigdoor/eastright{
 	dir = 8
 	},
@@ -483,6 +476,13 @@
 	},
 /obj/structure/table/reinforced,
 /obj/item/toy/plushie/deer,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "eng_sec_ld";
+	name = "Security Checkpoint Blast Doors";
+	opacity = 0
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/foyer)
 "bK" = (
@@ -668,18 +668,18 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "engsec_lockdown_c";
-	name = "Security Checkpoint Blast Doors";
-	opacity = 0
-	},
 /obj/machinery/door/airlock/glass_engineering{
 	req_one_access = null
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "engsec_ld_c";
+	name = "Security Checkpoint Blast Doors";
+	opacity = 0
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/foyer)
@@ -1972,7 +1972,7 @@
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
-	id = "engsec_lockdown_c";
+	id = "engsec_ld_c";
 	name = "Security Checkpoint Blast Doors";
 	opacity = 0
 	},
@@ -3466,7 +3466,7 @@
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
-	id = "eng_sec_lockdown";
+	id = "eng_sec_ld";
 	name = "Security Checkpoint Blast Doors";
 	opacity = 0
 	},
@@ -3543,6 +3543,7 @@
 /area/engineering/engine_room)
 "qJ" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/structure/table/bench/padded,
 /turf/simulated/floor/tiled,
 /area/engineering/foyer_mezzenine)
 "qL" = (
@@ -4329,6 +4330,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
+"uH" = (
+/obj/machinery/vending/fitness,
+/turf/simulated/floor/tiled,
+/area/engineering/foyer_mezzenine)
 "uK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -4487,7 +4492,7 @@
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
-	id = "eng_sec_lockdown";
+	id = "eng_sec_ld";
 	name = "Security Checkpoint Blast Doors";
 	opacity = 0
 	},
@@ -4926,16 +4931,6 @@
 "xx" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/structure/table/reinforced,
-/obj/machinery/button/remote/airlock{
-	id = "engsec_lockdown_c";
-	name = "Checkpoint Hallway Lockdown";
-	pixel_x = 4
-	},
-/obj/machinery/button/remote/airlock{
-	id = "eng_sec_lockdown";
-	name = "Checkpoint Lockdown";
-	pixel_x = -6
-	},
 /turf/simulated/floor/tiled/techmaint,
 /area/security/checkpoint/engineering)
 "xz" = (
@@ -5708,7 +5703,7 @@
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
-	id = "engsec_lockdown_c";
+	id = "engsec_ld_c";
 	name = "Security Checkpoint Blast Doors";
 	opacity = 0
 	},
@@ -7888,6 +7883,18 @@
 	},
 /obj/structure/bed/chair/comfy/beige{
 	dir = 4
+	},
+/obj/machinery/button/remote/blast_door{
+	id = "engsec_ld_c";
+	name = "Access Lockdown";
+	pixel_x = 6;
+	pixel_y = 32
+	},
+/obj/machinery/button/remote/blast_door{
+	id = "eng_sec_ld";
+	name = "Checkpoint Lockdown";
+	pixel_x = -6;
+	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/security/checkpoint/engineering)
@@ -10557,6 +10564,10 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_smes)
+"Yk" = (
+/obj/structure/table/bench/padded,
+/turf/simulated/floor/tiled,
+/area/engineering/foyer_mezzenine)
 "Yp" = (
 /obj/machinery/camera/network/engine{
 	dir = 9
@@ -25304,7 +25315,7 @@ mX
 ew
 Ja
 as
-VX
+Yk
 VX
 Ud
 VX
@@ -25446,7 +25457,7 @@ lY
 iY
 dZ
 CG
-VX
+Yk
 VX
 jP
 pt
@@ -25588,7 +25599,7 @@ CU
 fX
 Fq
 UQ
-VX
+uH
 VX
 wE
 xH
