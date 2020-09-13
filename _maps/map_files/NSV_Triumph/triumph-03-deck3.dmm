@@ -12424,16 +12424,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/research)
-"zg" = (
-/obj/machinery/firealarm{
-	dir = 4;
-	pixel_x = 24
-	},
-/obj/structure/closet/crate/bin{
-	anchored = 1
-	},
-/turf/simulated/floor/tiled/white,
-/area/crew_quarters/medical_restroom)
 "zh" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
@@ -12886,6 +12876,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/xenobiology/xenoflora)
+"Aa" = (
+/obj/structure/table/bench/padded,
+/obj/effect/landmark/start{
+	name = "Paramedic"
+	},
+/turf/simulated/floor/tiled,
+/area/medical/medbay_emt_bay)
 "Ab" = (
 /obj/machinery/door/airlock{
 	name = "Unit 2"
@@ -17903,9 +17900,15 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/medical/psych)
 "Kd" = (
-/obj/machinery/camera/network/civilian,
-/turf/simulated/wall/r_wall,
-/area/triumph/station/stairs_three)
+/obj/machinery/firealarm{
+	dir = 4;
+	pixel_x = 24
+	},
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/crew_quarters/medical_restroom)
 "Ke" = (
 /obj/structure/morgue{
 	dir = 2
@@ -21225,13 +21228,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
-"QA" = (
-/obj/structure/table/bench/padded,
-/obj/effect/landmark/start{
-	name = "Paramedic"
-	},
-/turf/simulated/floor/tiled,
-/area/medical/medbay_emt_bay)
 "QB" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -31426,7 +31422,7 @@ nu
 Fa
 nv
 zk
-QA
+Aa
 DT
 eb
 OQ
@@ -38514,7 +38510,7 @@ wo
 qq
 kN
 Ip
-zg
+Kd
 aA
 aA
 aA
@@ -42057,7 +42053,7 @@ rT
 YY
 vd
 vd
-Kd
+Pw
 HX
 YM
 xw
