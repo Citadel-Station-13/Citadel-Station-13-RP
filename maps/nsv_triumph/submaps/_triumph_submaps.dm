@@ -141,6 +141,27 @@
 	name = "Away Mission - Desert Planet"
 	z = Z_LEVEL_DESERT_PLANET
 
+// Gaia Planet Zone.
+#include "gaia_planet/_gaia_planet.dm"
+#include "gaia_planet/gaia_planet_things.dm"
+/datum/map_template/triumph_lateload/gaia_planet
+	name = "Gaia Planet - Z3 Planet"
+	desc = "A lush Gaia Class Planet."
+	mappath = 'gaia_planet/gaia_planet.dmm'
+	associated_map_datum = /datum/map_z_level/triumph_lateload/gaia_planet
+	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
+
+/datum/map_template/triumph_lateload/gaia_planet/on_map_loaded(z)
+	. = ..()
+//	seed_submaps(list(Z_LEVEL_DESERT_PLANET), 150, /area/triumph_away/poi_h/unexplored, /datum/map_template/Class_H)
+
+	//new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, Z_LEVEL_UNKNOWN_PLANET, world.maxx - 30, world.maxy - 30)
+	//new /datum/random_map/noise/ore/poi_d(null, 1, 1, Z_LEVEL_UNKNOWN_PLANET, 64, 64)
+
+/datum/map_z_level/triumph_lateload/gaia_planet
+	name = "Away Mission - Desert Planet"
+	z = Z_LEVEL_DESERT_PLANET
+
 //////////////////////////////////////////////////////////////////////////////////////
 // Admin-use z-levels for loading whenever an admin feels like
 #if AWAY_MISSION_TEST

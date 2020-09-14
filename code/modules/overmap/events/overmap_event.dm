@@ -1,7 +1,7 @@
 /*
 ** /obj/effect/overmap/event - Actual instances of event hazards on the overmap map
 */
-
+// TO-DO: We need to find a way to get BSAs ported or something to make weaknesses work so crew have a chance to *fight* tiles later - Enzo 9/9/2020
 // We don't subtype /obj/effect/overmap/visitable because that'll create sections one can travel to
 //	 and with them "existing" on the overmap Z-level things quickly get odd.
 /obj/effect/overmap/event
@@ -48,7 +48,7 @@
 	name = "asteroid field"
 	events = list(/datum/event/meteor_wave/overmap)
 	event_icon_states = list("meteor1", "meteor2", "meteor3", "meteor4")
-	color = "#EEEEEE"
+	color = "#DD4444"
 	difficulty = EVENT_LEVEL_MAJOR
 	weaknesses = OVERMAP_WEAKNESS_MINING | OVERMAP_WEAKNESS_EXPLOSIVE
 
@@ -91,7 +91,7 @@
 	events = list(/datum/event/carp_migration/overmap)
 	opacity = 0
 	event_icon_states = list("carp3", "carp4")
-	color = "#EEEEEE"
+	color = "#DD4444"
 	difficulty = EVENT_LEVEL_MAJOR
 	weaknesses = OVERMAP_WEAKNESS_EXPLOSIVE | OVERMAP_WEAKNESS_FIRE
 
@@ -100,14 +100,14 @@
 	events = list(/datum/event/hostile_migration/overmap)
 	opacity = 0
 	event_icon_states = list("rats1", "rats2")
-	color = "#EEEEEE"
+	color = "#DD4444"
 	difficulty = EVENT_LEVEL_MODERATE
 	weaknesses = OVERMAP_WEAKNESS_EXPLOSIVE | OVERMAP_WEAKNESS_FIRE
 
 /obj/effect/overmap/event/communications_blackout
 	name = "Ionspheric Bubble"
 	events = list(/datum/event/communications_blackout/overmap)
-	opacity = 0
+	opacity = 1
 	event_icon_states = list("comout1")
 	color = "#EEEEEE"
 	difficulty = EVENT_LEVEL_MODERATE
