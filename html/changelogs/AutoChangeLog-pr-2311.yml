@@ -1,0 +1,7 @@
+author: "Enzo-Leon"
+delete-after: True
+changes: 
+  - rscadd: "Third airlock for docking arm"
+  - rscadd: "ship defense turrets aligned to \"neutral\" faction (player faction)"
+  - bugfix: "Overmap generation system fixed."
+  - code_imp: "removed error in overmap code, and added notes on how to make new event templates."
