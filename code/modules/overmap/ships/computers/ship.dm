@@ -60,9 +60,12 @@ somewhere on that shuttle. Subtypes of these can be then used to perform ship ov
 	if(linked)
 		user.reset_view(linked)
 	user.set_viewsize(world.view + extra_view)
+	var/WR = WEAKREF(user)
+	if(WR in viewers)
+		return
 	RegisterSignal(user, COMSIG_MOVABLE_MOVED, /obj/machinery/computer/ship/proc/unlook)
 	// TODO GLOB.stat_set_event.register(user, src, /obj/machinery/computer/ship/proc/unlook)
-	LAZYDISTINCTADD(viewers, WEAKREF(user))
+	LAZYDISTINCTADD(viewers, WR)
 
 /obj/machinery/computer/ship/proc/unlook(var/mob/user)
 	user.reset_view()
