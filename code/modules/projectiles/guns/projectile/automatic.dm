@@ -453,3 +453,4 @@ obj/item/gun/projectile/automatic/automat
 
 obj/item/gun/projectile/automatic/automat/holy
 	ammo_type = /obj/item/ammo_casing/a762/silver
+	holy = TRUE
