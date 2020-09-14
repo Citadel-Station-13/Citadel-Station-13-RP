@@ -1169,6 +1169,11 @@
 	icon_state = "blueskirt"
 
 /obj/item/clothing/under/bodysuit/redskirt
-	name = "blue skirt"
+	name = "red skirt"
 	desc = "A comfy red sweater paired with a stylish charcoal skirt!"
 	icon_state = "redskirt"
+
+/obj/item/clothing/under/ert/para
+	name = "PARA tactical uniform"
+	desc = "A standard grey jumpsuit, emblazoned with the Icon of the PMD. Close inspection of the embroidery reveals a complex web of glyphs written in an unknown language."
+	icon_state = "para_ert_uniform"

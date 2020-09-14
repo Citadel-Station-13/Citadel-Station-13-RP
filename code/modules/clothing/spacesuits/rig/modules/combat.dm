@@ -103,6 +103,19 @@
 		list("smoke bomb",  "smoke bomb",  /obj/item/grenade/smokebomb,  6)
 		)
 
+/obj/item/rig_module/grenade_launcher/holy
+	name = "mounted PARA disruptor launcher"
+	desc = "A shoulder-mounted holy water dispenser."
+
+	interface_name = "PARA disruptor grenade launcher"
+	interface_desc = "Launches armed PARA disruptor grenades at the wearer's target."
+
+	fire_force = 15
+
+	charges = list(
+		list("PARA disruptor grenade",  "PARA disruptor grenade",  /obj/item/grenade/chem_grenade/holy,  6)
+		)
+
 /obj/item/rig_module/mounted
 
 	name = "mounted laser cannon"
