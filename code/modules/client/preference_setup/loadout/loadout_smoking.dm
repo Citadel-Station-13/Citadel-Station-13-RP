@@ -20,7 +20,7 @@
 	path = /obj/item/flame/lighter
 
 /datum/gear/lighter/zippo
-	display_name = "Zippo - Selection"
+	display_name = "Zippo Selection"
 	path = /obj/item/flame/lighter/zippo
 
 /datum/gear/lighter/zippo/New()
@@ -47,7 +47,7 @@
 	cost = 3
 
 /datum/gear/cigarettes
-	display_name = "Cigarette - Selection"
+	display_name = "Cigarette Selection"
 	path = /obj/item/storage/fancy/cigarettes
 
 /datum/gear/cigarettes/New()

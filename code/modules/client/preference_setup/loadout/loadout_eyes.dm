@@ -72,29 +72,29 @@
 	path = /obj/item/clothing/glasses/hud/health/aviator/prescription
 
 /datum/gear/eyes/meson
-	display_name = "EngSci & Mining - Optical Meson Scanners"
+	display_name = "EngSci & Mining Optical Meson Scanners"
 	path = /obj/item/clothing/glasses/meson
 	allowed_roles = list("Station Engineer","Chief Engineer","Atmospheric Technician", "Scientist", "Research Director", "Shaft Miner")
 
 /datum/gear/eyes/meson/prescription
-	display_name = "EngSci & Mining - Optical Meson Scanners - Prescription"
+	display_name = "EngSci & Mining Optical Meson Scanners - Prescription"
 	path = /obj/item/clothing/glasses/meson/prescription
 
 /datum/gear/eyes/material
-	display_name = "Mining - Optical Material Scanners"
+	display_name = "Mining Optical Material Scanners"
 	path = /obj/item/clothing/glasses/material
 	allowed_roles = list("Shaft Miner")
 
 /datum/gear/eyes/material/prescription
-	display_name = "Mining - Optical Material Scanners - Prescription"
+	display_name = "Mining Optical Material Scanners - Prescription"
 	path = /obj/item/clothing/glasses/material/prescription
 
 /datum/gear/eyes/meson/aviator
-	display_name = "EngSci & Mining - Optical Meson - Aviators"
+	display_name = "EngSci & Mining Optical Meson - Aviators"
 	path = /obj/item/clothing/glasses/meson/aviator
 
 /datum/gear/eyes/meson/aviator/prescription
-	display_name = "EngSci & Mining - Optical Meson - Aviators - Prescription"
+	display_name = "EngSci & Mining Optical Meson - Aviators - Prescription"
 	path = /obj/item/clothing/glasses/meson/aviator/prescription
 
 /datum/gear/eyes/glasses/fakesun

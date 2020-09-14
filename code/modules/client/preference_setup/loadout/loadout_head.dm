@@ -1,58 +1,60 @@
 /datum/gear/head
-	display_name = "bandana, pirate-red"
+	display_name = "Civilian Bandana - Pirate-Red"
 	path = /obj/item/clothing/head/bandana
 	slot = slot_head
 	sort_category = "Hats and Headwear"
 
 /datum/gear/head/bandana_green
-	display_name = "bandana, green"
+	display_name = "Civilian Bandana - Green"
 	path = /obj/item/clothing/head/greenbandana
 
 /datum/gear/head/bandana_orange
-	display_name = "bandana, orange"
+	display_name = "Civilian Bandana - Orange"
 	path = /obj/item/clothing/head/orangebandana
 
 /datum/gear/head/beret
-	display_name = "beret, red"
+	display_name = "Civilian Beret - Red"
 	path = /obj/item/clothing/head/beret
 
 /datum/gear/head/beret/bsec
-	display_name = "beret, navy (officer)"
+	display_name = "Security Beret - Naval"
 	path = /obj/item/clothing/head/beret/sec/navy/officer
 	allowed_roles = list("Security Officer","Head of Security","Warden")
 
 /datum/gear/head/beret/bsec_warden
-	display_name = "beret, navy (warden)"
+	display_name = "Warden Beret - Naval"
 	path = /obj/item/clothing/head/beret/sec/navy/warden
 	allowed_roles = list("Head of Security","Warden")
 
 /datum/gear/head/beret/bsec_hos
-	display_name = "beret, navy (hos)"
+	display_name = "Head of Security Beret - Naval"
 	path = /obj/item/clothing/head/beret/sec/navy/hos
 	allowed_roles = list("Head of Security")
 
 /datum/gear/head/beret/csec
-	display_name = "beret, corporate (officer)"
+	display_name = "Security Beret - Corporate"
 	path = /obj/item/clothing/head/beret/sec/corporate/officer
 	allowed_roles = list("Security Officer","Head of Security","Warden", "Detective")
 
 /datum/gear/head/beret/csec_warden
-	display_name = "beret, corporate (warden)"
+	display_name = "Warden Beret - Corporate"
 	path = /obj/item/clothing/head/beret/sec/corporate/warden
 	allowed_roles = list("Head of Security","Warden")
 
 /datum/gear/head/beret/csec_hos
-	display_name = "beret, corporate (hos)"
+	display_name = "Head of Security Beret - Corporate"
 	path = /obj/item/clothing/head/beret/sec/corporate/hos
 	allowed_roles = list("Head of Security")
 
 /datum/gear/head/beret/eng
-	display_name = "beret, engie-orange"
+	display_name = "Engineering Beret"
 	path = /obj/item/clothing/head/beret/engineering
+	allowed_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer")
 
-/datum/gear/head/beret/purp
-	display_name = "beret, purple"
-	path = /obj/item/clothing/head/beret/purple
+/datum/gear/head/beret/sci
+	display_name = "Science Beret"
+	path = /obj/item/clothing/head/beret/science
+	allowed_roles = list("Research Director","Scientist","Roboticist","Xenobiologist")
 
 /datum/gear/head/beret/sec
 	display_name = "beret, red (security)"
@@ -135,7 +137,7 @@
 
 /datum/gear/head/cap/fleet
 	display_name = "cap, fleet"
-	path = /obj/item/clothing/head/soft/sol/fleet*/ // Vorestation removal
+	path = /obj/item/clothing/head/soft/sol/fleet*/
 
 /datum/gear/head/cowboy
 	display_name = "cowboy, rodeo"
@@ -404,7 +406,7 @@
 	path = /obj/item/clothing/head/soft/sol*/
 
 /datum/gear/head/headbando
-	display_name = "basic headband"
+	display_name = "Basic headband"
 	path = /obj/item/clothing/head/fluff/headbando
 
 /datum/gear/head/headbando/New()

@@ -1,6 +1,6 @@
 
 /datum/gear/accessory
-	display_name = "Civilian - Blue Silk Tie"
+	display_name = "Blue Silk Tie"
 	slot = slot_tie
 	sort_category = "Accessories"
 	type_category = /datum/gear/accessory
@@ -20,7 +20,7 @@
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(armbands, /proc/cmp_text_asc))
 
 /datum/gear/accessory/armband/colored
-	display_name = "Civilian - Armband - Colorable"
+	display_name = "Armband - Colorable"
 	path = /obj/item/clothing/accessory/armband/med/color
 
 /datum/gear/accessory/armband/colored/New()
@@ -28,17 +28,17 @@
 	gear_tweaks = list(gear_tweak_free_color_choice)
 
 /datum/gear/accessory/wallet
-	display_name = "Civilian - Wallet - Orange"
+	display_name = "Wallet - Orange"
 	path = /obj/item/storage/wallet/random
 
 /datum/gear/accessory/wallet_poly
-	display_name = "Civilian - Wallet - Colorable"
+	display_name = "Wallet - Colorable"
 	path = /obj/item/storage/wallet/poly
 	cost = 0
 
 
 /datum/gear/accessory/wallet/womens
-	display_name = "Civilian - Wallet - Womens"
+	display_name = "Wallet - Womens"
 	path = /obj/item/storage/wallet/womens
 	cost = 0
 
@@ -47,7 +47,7 @@
 	gear_tweaks = list(gear_tweak_free_color_choice)
 
 /datum/gear/accessory/clutch
-	display_name = "Civilian - Clutch Bag"
+	display_name = "Clutch Bag"
 	path = /obj/item/storage/briefcase/clutch
 	cost = 2
 
@@ -56,7 +56,7 @@
 	gear_tweaks = list(gear_tweak_free_color_choice)
 
 /datum/gear/accessory/purse
-	display_name = "Civilian - Purse"
+	display_name = "Purse"
 	path = /obj/item/storage/backpack/purse
 	cost = 3
 
@@ -65,7 +65,7 @@
 	gear_tweaks = list(gear_tweak_free_color_choice)
 
 /datum/gear/accessory/wcoat
-	display_name = "Civilian - Waistcoat - Selection"
+	display_name = "Waistcoat - Selection"
 	path = /obj/item/clothing/accessory/wcoat
 	cost = 1
 
@@ -78,7 +78,7 @@
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(wcoats, /proc/cmp_text_asc))
 
 /datum/gear/accessory/holster
-	display_name = "Civilian - Holster - Selection"
+	display_name = "Holster - Selection"
 	path = /obj/item/clothing/accessory/holster
 	allowed_roles = list("Facility Director","Head of Personnel","Security Officer","Warden","Head of Security","Detective","Field Medic","Explorer","Pathfinder")
 
@@ -91,7 +91,7 @@
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(holsters, /proc/cmp_text_asc))
 
 /datum/gear/accessory/tie
-	display_name = "Civilian - Tie - Selection"
+	display_name = "Tie - Selection"
 	path = /obj/item/clothing/accessory/tie
 	cost = 1
 
@@ -104,7 +104,7 @@
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(ties, /proc/cmp_text_asc))
 
 /datum/gear/accessory/scarf
-	display_name = "Civilian - Scarf - Selection"
+	display_name = "Scarf - Selection"
 	path = /obj/item/clothing/accessory/scarf
 	cost = 1
 
@@ -117,7 +117,7 @@
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(scarfs, /proc/cmp_text_asc))
 
 /datum/gear/accessory/jacket
-	display_name = "Civilian - Suit Jacket Selection"
+	display_name = "Suit Jacket Selection"
 	path = /obj/item/clothing/accessory/jacket
 	cost = 1
 
@@ -130,40 +130,40 @@
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(jackets, /proc/cmp_text_asc))
 
 /datum/gear/accessory/suitvest
-	display_name = "Civilian - Suit Vest"
+	display_name = "Suit Vest"
 	path = /obj/item/clothing/accessory/vest
 
 /datum/gear/accessory/lifecrystal
-	display_name = "Civilian - Life Crystal"
+	display_name = "Life Crystal"
 	path = /obj/item/clothing/accessory/collar/lifecrystal
 	description = "A smart medical necklace that pings an offsite recovery facility and acts as a beacon, should you die."
 
 /datum/gear/accessory/brown_vest
-	display_name = "Civilian - Webbing - Brown"
+	display_name = "Webbing - Brown"
 	path = /obj/item/clothing/accessory/storage/brown_vest
 
 /datum/gear/accessory/black_vest
-	display_name = "Civilian - Webbing - Black"
+	display_name = "Webbing - Black"
 	path = /obj/item/clothing/accessory/storage/black_vest
 
 /datum/gear/accessory/white_vest
-	display_name = "Civilian - Webbing - White"
+	display_name = "Webbing - White"
 	path = /obj/item/clothing/accessory/storage/white_vest
 
 /datum/gear/accessory/brown_drop_pouches
-	display_name = "Civilian - Drop Pouches - Brown"
+	display_name = "Drop Pouches - Brown"
 	path = /obj/item/clothing/accessory/storage/brown_drop_pouches
 
 /datum/gear/accessory/black_drop_pouches
-	display_name = "Civilian - Drop Pouches - Black"
+	display_name = "Drop Pouches - Black"
 	path = /obj/item/clothing/accessory/storage/black_drop_pouches
 
 /datum/gear/accessory/white_drop_pouches
-	display_name = "Civilian - Drop Pouches - White"
+	display_name = "Drop Pouches - White"
 	path = /obj/item/clothing/accessory/storage/white_drop_pouches
 
 /datum/gear/accessory/fannypack
-	display_name = "Civilian - Fannypack - Selection"
+	display_name = "Fannypack - Selection"
 	cost = 2
 	path = /obj/item/storage/belt/fannypack
 
@@ -176,20 +176,20 @@
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(fannys, /proc/cmp_text_asc))
 
 /datum/gear/accessory/webbing
-	display_name = "Civilian - Webbing - Simple"
+	display_name = "Webbing - Simple"
 	path = /obj/item/clothing/accessory/storage/webbing
 	cost = 2
 
 /datum/gear/accessory/chaps
-	display_name = "Civilian - Chaps - Brown"
+	display_name = "Chaps - Brown"
 	path = /obj/item/clothing/accessory/chaps
 
 /datum/gear/accessory/chaps/black
-	display_name = "Civilian - Chaps - Black"
+	display_name = "Chaps - Black"
 	path = /obj/item/clothing/accessory/chaps/black
 
 /datum/gear/accessory/hawaii
-	display_name = "Civilian - Hawaii Shirt"
+	display_name = "Hawaii Shirt"
 	path = /obj/item/clothing/accessory/hawaii
 
 /datum/gear/accessory/hawaii/New()
@@ -202,7 +202,7 @@
 
 
 /datum/gear/accessory/sweater
-	display_name = "Civilian - Sweater - Selection"
+	display_name = "Sweater - Selection"
 	path = /obj/item/clothing/accessory/sweater
 
 /datum/gear/accessory/sweater/New()
@@ -214,7 +214,7 @@
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(sweaters, /proc/cmp_text_asc))
 
 /datum/gear/accessory/bracelet/material
-	display_name = "Civilian - Bracelet - Selection"
+	display_name = "Bracelet - Selection"
 	description = "Choose from a number of bracelets."
 	path = /obj/item/clothing/accessory/bracelet
 	cost = 1
@@ -233,7 +233,7 @@
 	gear_tweaks += new/datum/gear_tweak/path(bracelettype)
 
 /datum/gear/accessory/bracelet/friendship
-	display_name = "Civilian - Friendship Bracelet"
+	display_name = "Friendship Bracelet"
 	path = /obj/item/clothing/accessory/bracelet/friendship
 
 /datum/gear/accessory/stethoscope
@@ -242,28 +242,28 @@
 	allowed_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Psychiatrist","Paramedic", "Field Medic")
 
 /datum/gear/accessory/locket
-	display_name = "Civilian - Locket"
+	display_name = "Locket"
 	path = /obj/item/clothing/accessory/locket
 
 /datum/gear/accessory/necklace
-	display_name = "Civilian - Customizable Necklace"
+	display_name = "Customizable Necklace"
 	path = /obj/item/clothing/accessory/necklace
 	description = "A necklace. You can rename it and change its description in-game."
 
 /datum/gear/accessory/treatbox
-	display_name = "Civilian - Box of Treats"
+	display_name = "Box of Treats"
 	path = /obj/item/storage/box/treats
 	cost = 2
 /datum/gear/accessory/halfcape
-	display_name = "Civilian - Half Cape"
+	display_name = "Half Cape"
 	path = /obj/item/clothing/accessory/halfcape
 
 /datum/gear/accessory/fullcape
-	display_name = "Civilian - Full Cape"
+	display_name = "Full Cape"
 	path = /obj/item/clothing/accessory/fullcape
 
 /datum/gear/accessory/sash
-	display_name = "Civilian - Sash - Colorable"
+	display_name = "Sash - Colorable"
 	path = /obj/item/clothing/accessory/sash
 
 /datum/gear/accessory/sash/New()
@@ -271,7 +271,7 @@
 	gear_tweaks = list(gear_tweak_free_color_choice)
 
 /datum/gear/accessory/asym
-	display_name = "Civilian - Asymmetric Jacket - Selection"
+	display_name = "Asymmetric Jacket - Selection"
 	path = /obj/item/clothing/accessory/asymmetric
 	cost = 1
 
@@ -284,11 +284,11 @@
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(asyms, /proc/cmp_text_asc))
 
 /datum/gear/accessory/cowledvest
-	display_name = "Civilian - Cowled Vest"
+	display_name = "Cowled Vest"
 	path = /obj/item/clothing/accessory/cowledvest
 
 /datum/gear/choker	// A colorable choker
-	display_name = "Civilian - Choker - Colorable & Tagless"
+	display_name = "Choker - Colorable & Tagless"
 	path = /obj/item/clothing/accessory/choker
 	slot = slot_tie
 	sort_category = "Accessories"
@@ -298,7 +298,7 @@
 	gear_tweaks = list(gear_tweak_free_color_choice)
 
 /datum/gear/collar
-	display_name = "Civilian - Collar - Silver"
+	display_name = "Collar - Silver"
 	path = /obj/item/clothing/accessory/collar/silver
 	slot = slot_tie
 	sort_category = "Accessories"
@@ -308,35 +308,35 @@
 	gear_tweaks = list(gear_tweak_collar_tag)
 
 /datum/gear/collar/golden
-	display_name = "Civilian - Collar - Golden"
+	display_name = "Collar - Golden"
 	path = /obj/item/clothing/accessory/collar/gold
 
 /datum/gear/collar/bell
-	display_name = "Civilian - Collar - Bell"
+	display_name = "Collar - Bell"
 	path = /obj/item/clothing/accessory/collar/bell
 
 /datum/gear/collar/shock
-	display_name = "Civilian - Collar - Shock"
+	display_name = "Collar - Shock"
 	path = /obj/item/clothing/accessory/collar/shock
 
 /datum/gear/collar/spike
-	display_name = "Civilian - Collar - Spike"
+	display_name = "Collar - Spike"
 	path = /obj/item/clothing/accessory/collar/spike
 
 /datum/gear/collar/pink
-	display_name = "Civilian - Collar - Pink"
+	display_name = "Collar - Pink"
 	path = /obj/item/clothing/accessory/collar/pink
 
 /datum/gear/collar/holo
-	display_name = "Civilian - Collar - Holo"
+	display_name = "Collar - Holo"
 	path = /obj/item/clothing/accessory/collar/holo
 
 /datum/gear/collar/cow
-	display_name = "Civilian - Collar - Cowbell"
+	display_name = "Collar - Cowbell"
 	path = /obj/item/clothing/accessory/collar/cowbell
 
 /datum/gear/collar/holo/indigestible
-	display_name = "Civilian - Collar - Holo - Indigestible"
+	display_name = "Collar - Holo - Indigestible"
 	path = /obj/item/clothing/accessory/collar/holo/indigestible
 
 /datum/gear/accessory/webbing
@@ -346,12 +346,12 @@
 	allowed_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Psychiatrist","Paramedic", "Field Medic")
 
 /datum/gear/accessory/vmcrystal
-	display_name = "Civilian - Life Crystal"
+	display_name = "Life Crystal"
 	path = /obj/item/storage/box/vmcrystal
 	description = "A small necklace device that will notify an offsite cloning facility should you expire after activating it."
 
 /datum/gear/accessory/tronket
-	display_name = "Civilian - Metal Necklace"
+	display_name = "Metal Necklace"
 	description = "A shiny steel chain with a vague metallic object dangling off it."
 	path = /obj/item/clothing/accessory/tronket
 
@@ -362,7 +362,7 @@
 	allowed_roles = list("Pathfinder", "Pilot", "Field Medic")
 
 /datum/gear/accessory/flops
-	display_name = "Civilian - Drop Straps"
+	display_name = "Drop Straps"
 	description = "Wearing suspenders over shoulders? That's been so out for centuries and you know better."
 	path = /obj/item/clothing/accessory/flops
 

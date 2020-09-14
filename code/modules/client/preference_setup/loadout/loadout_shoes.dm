@@ -204,7 +204,7 @@
 	allowed_roles = list("Chief Engineer","Atmospheric Technician", "Station Engineer")
 
 /datum/gear/shoes/boots/winter/atmos
-	display_name = "Atmospherics - Winter Boots"
+	display_name = "Atmospherics Winter Boots"
 	path = /obj/item/clothing/shoes/boots/winter/atmos
 	allowed_roles = list("Chief Engineer", "Atmospheric Technician")
 
@@ -214,7 +214,7 @@
 	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Field Medic","Paramedic","Geneticist", "Psychiatrist")
 
 /datum/gear/shoes/boots/winter/mining
-	display_name = "Mining - Winter Boots"
+	display_name = "Mining Winter Boots"
 	path = /obj/item/clothing/shoes/boots/winter/mining
 	allowed_roles = list("Shaft Miner")
 
@@ -224,7 +224,7 @@
 	allowed_roles = list("Quartermaster","Cargo Technician")
 
 /datum/gear/shoes/boots/winter/hydro
-	display_name = "Hydroponics - Winter Boots"
+	display_name = "Hydroponics Winter Boots"
 	path = /obj/item/clothing/shoes/boots/winter/hydro
 	allowed_roles = list("Botanist", "Xenobiologist")
 
