@@ -5,19 +5,6 @@
 	due_date = 0 // Game time in 1/10th seconds
 	unique = 1   // 0 - Normal book, 1 - Should not be treated as normal book, unable to be copied, unable to be modified
 
-	var/datum/codex_tree/tree = null
-	var/root_type = /datum/lore/codex/category/main_virgo_lore	//Runtimes on codex_tree.dm, line 18 with a null here
-
-/obj/item/book/manual/legal/Initialize()
-	tree = new(src, root_type)
-	. = ..()
-
-/obj/item/book/manual/legal/attack_self(mob/user)
-	if(!tree)
-		tree = new(src, root_type)
-	icon_state = "[initial(icon_state)]-open"
-	tree.display(user)
-
 /obj/item/book/manual/engineering_construction
 	name = "Station Repairs and Construction"
 	icon_state ="bookEngineering"
@@ -1480,6 +1467,9 @@
 	icon_state = "sop_se"
 	author = "NanoTrasen"
 	title = "SOP Volume 1: Alert Levels"
+
+/obj/item/book/manual/legal/sop_vol1/New()
+	..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -1586,6 +1576,9 @@
 	icon_state = "sop_se"
 	author = "NanoTrasen"
 	title = "SOP Volume 2: Emergency Situations Protocol"
+
+/obj/item/book/manual/legal/sop_vol2/New()
+	..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -1765,6 +1758,9 @@
 	icon_state = "sop_se"
 	author = "NanoTrasen"
 	title = "SOP Volume 3: Legal Clauses"
+
+/obj/item/book/manual/legal/sop_vol3/New()
+	..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -1833,6 +1829,9 @@
 	icon_state = "sop_se"
 	author = "NanoTrasen"
 	title = "SOP Volume 4: Courtesy Procedures"
+
+/obj/item/book/manual/legal/sop_vol4/New()
+	..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -1896,6 +1895,9 @@
 	icon_state = "sop_se_vol5"
 	author = "NanoTrasen"
 	title = "SOP Volume 5.1: Department Regulations (Cargo)"
+
+/obj/item/book/manual/legal/sop_vol5_1/New()
+	..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -1969,6 +1971,9 @@
 	icon_state = "sop_se_vol5"
 	author = "NanoTrasen"
 	title = "SOP Volume 5.2: Department Regulations (Engineering)"
+
+/obj/item/book/manual/legal/sop_vol5_2/New()
+	..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -2047,6 +2052,9 @@
 	icon_state = "sop_se_vol5"
 	author = "NanoTrasen"
 	title = "SOP Volume 5.3: Department Regulations (Medical)"
+
+/obj/item/book/manual/legal/sop_vol5_3/New()
+	..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -2217,6 +2225,9 @@
 	icon_state = "sop_se_vol5"
 	author = "NanoTrasen"
 	title = "SOP Volume 5.4: Department Regulations (Research)"
+
+/obj/item/book/manual/legal/sop_vol5_4/New()
+	..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -2331,6 +2342,9 @@
 	icon_state = "sop_se_vol5"
 	author = "NanoTrasen"
 	title = "SOP Volume 5.5: Department Regulations (Security)"
+
+/obj/item/book/manual/legal/sop_vol5_5/New()
+	..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -2582,6 +2596,9 @@
 	icon_state = "sop_se_vol5"
 	author = "NanoTrasen"
 	title = "SOP Volume 5.6: Department Regulations (Command)"
+
+/obj/item/book/manual/legal/sop_vol5_6/New()
+	..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -2646,6 +2663,9 @@
 	icon_state = "sop_se_vol5"
 	author = "NanoTrasen"
 	title = "SOP Volume 5.7: Department Regulations (Internal Affairs)"
+
+/obj/item/book/manual/legal/sop_vol5_7/New()
+	..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -2779,6 +2799,9 @@
 	icon_state = "corpreg_se"
 	author = "NanoTrasen"
 	title = "Corporate Regulations Volume 1: Introduction"
+
+/obj/item/book/manual/legal/cr_vol1/New()
+	..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -2909,6 +2932,9 @@
 	icon_state = "corpreg_se"
 	author = "NanoTrasen"
 	title = "Corporate Regulations Volume 2: Infractions (Low)"
+
+/obj/item/book/manual/legal/cr_vol2/New()
+	..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -3164,6 +3190,9 @@
 	icon_state = "corpreg_se"
 	author = "NanoTrasen"
 	title = "Corporate Regulations Volume 3: Infractions (Moderate)"
+
+/obj/item/book/manual/legal/cr_vol3/New()
+	..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -3359,6 +3388,9 @@
 	icon_state = "corpreg_se"
 	author = "NanoTrasen"
 	title = "Corporate Regulations Volume 4: Infractions (Severe)"
+
+/obj/item/book/manual/legal/cr_vol4/New()
+	..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -3481,6 +3513,9 @@
 	icon_state = "corpreg_se"
 	author = "NanoTrasen"
 	title = "Corporate Regulations Volume 5: Supplementals"
+
+/obj/item/book/manual/legal/cr_vol5/New()
+	..()
 	dat = {"<html>
 				<head>
 				<style>
