@@ -87,7 +87,7 @@
 	SA_bonus_damage = 25 // 40 total against demons
 	SA_vulnerability = MOB_CLASS_DEMONIC
 	embed_chance = -1
-	holy = TRUE
+	anti_magic = TRUE
 
 /obj/item/projectile/bullet/pistol/medium // .45 (and maybe .40 if it ever gets added) caliber security pistols. Balance between capacity and power.
 	fire_sound = 'sound/weapons/gunshot3.ogg' // Snappier sound.
@@ -112,7 +112,7 @@
 	SA_bonus_damage = 45 // 60 total against demons
 	SA_vulnerability = MOB_CLASS_DEMONIC
 	embed_chance = -1
-	holy = TRUE
+	anti_magic = TRUE
 
 /obj/item/projectile/bullet/pistol/strong // .357 and .44 caliber stuff. High power pistols like the Mateba or Desert Eagle. Sacrifice capacity for power.
 	fire_sound = 'sound/weapons/gunshot4.ogg'
@@ -124,6 +124,7 @@
 	SA_bonus_damage = 80 // 120 total against demons
 	SA_vulnerability = MOB_CLASS_DEMONIC
 	embed_chance = -1
+	anti_magic = TRUE
 
 /obj/item/projectile/bullet/pistol/rubber/strong // "Rubber" bullets for high power pistols.
 	fire_sound = 'sound/weapons/gunshot3.ogg' // Rubber shots have less powder, but these still have more punch than normal rubber shot.
@@ -185,7 +186,7 @@
 	pellets = 6
 	range_step = 1
 	spread_step = 20
-	holy = TRUE
+	anti_magic = TRUE
 
 //EMP shotgun 'slug', it's basically a beanbag that pops a tiny emp when it hits. //Not currently used
 /obj/item/projectile/bullet/shotgun/ion
@@ -237,7 +238,7 @@
 	damage = 20
 	SA_bonus_damage = 50 // 70 total on animals.
 	SA_vulnerability = MOB_CLASS_DEMONIC
-	holy = TRUE
+	anti_magic = TRUE
 
 /obj/item/projectile/bullet/rifle/a545
 	fire_sound = 'sound/weapons/Gunshot_light.ogg'
