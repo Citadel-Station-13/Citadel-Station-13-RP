@@ -306,3 +306,24 @@
 	beakers += B1
 	beakers += B2
 	icon_state = initial(icon_state) +"_locked"
+
+/obj/item/grenade/chem_grenade/holy
+	name = "PARA disruptor grenade"
+	desc = "These modified PMD grenades utilize a similar formula to the standard cleaning grenade, with one important substitution: holy water."
+	stage = 2
+	path = 1
+
+/obj/item/grenade/chem_grenade/holy/Initialize()
+	. = ..()
+	var/obj/item/reagent_containers/glass/beaker/B1 = new(src)
+	var/obj/item/reagent_containers/glass/beaker/B2 = new(src)
+
+	B1.reagents.add_reagent("fluorosurfactant", 40)
+	B2.reagents.add_reagent("holywater", 40)
+	B2.reagents.add_reagent("cleaner", 10)
+
+	detonator = new/obj/item/assembly_holder/timer_igniter(src)
+
+	beakers += B1
+	beakers += B2
+	icon_state = initial(icon_state) +"_locked"

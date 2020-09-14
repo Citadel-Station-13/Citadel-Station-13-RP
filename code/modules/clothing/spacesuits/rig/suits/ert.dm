@@ -86,3 +86,52 @@
 		/obj/item/rig_module/device/rcd,
 		/obj/item/rig_module/datajack
 		)
+
+/obj/item/rig/ert/para
+	name = "PARA suit control module"
+	desc = "A sleek module decorated with intricate glyphs and alien wards. When worn by a trained agent, the various glyphs faintly glow."
+	suit_type = "PMD agent"
+	icon_state = "para_ert_rig"
+	action_button_name = "Enable RIG Sigils"
+
+	var/anti_magic = FALSE
+	var/blessed = FALSE
+	var/emp_proof = FALSE
+
+	allowed = list(/obj/item/flashlight, /obj/item/tank, /obj/item/t_scanner, /obj/item/rcd, /obj/item/tool/crowbar, \
+	/obj/item/tool/screwdriver, /obj/item/weldingtool, /obj/item/tool/wirecutters, /obj/item/tool/wrench, /obj/item/multitool, \
+	/obj/item/radio, /obj/item/analyzer,/obj/item/storage/briefcase/inflatable, /obj/item/melee/baton, /obj/item/gun, \
+	/obj/item/storage/firstaid, /obj/item/reagent_containers/hypospray, /obj/item/roller, /obj/item/nullrod, /obj/item/tank, \
+	/obj/item/storage/backpack,	/obj/item/storage/briefcase, /obj/item/storage/secure/briefcase)
+
+	initial_modules = list(
+		/obj/item/rig_module/ai_container,
+		/obj/item/rig_module/device/anomaly_scanner,
+		/obj/item/rig_module/armblade,
+		/obj/item/rig_module/datajack,
+		/obj/item/rig_module/grenade_launcher/holy,
+		/obj/item/rig_module/maneuvering_jets,
+		/obj/item/rig_module/vision/meson,
+		/obj/item/rig_module/self_destruct
+		)
+
+/obj/item/rig/ert/para/attack_self(mob/user as mob)
+	if(user.mind.isholy && !anti_magic && !emp_proof && !blessed)
+		anti_magic = TRUE
+		blessed = TRUE
+		emp_proof = TRUE
+		to_chat(user, "<font color='blue'>You enable the RIG's protective sigils.</font>")
+	else
+		anti_magic = FALSE
+		blessed = FALSE
+		emp_proof = FALSE
+		to_chat(user, "<font color='blue'>You disable the RIG's protective sigils.</font>")
+
+	if(!user.mind.isholy)
+		to_chat(user, "<font color='red'>You can't figure out what these symbols do.</font>")
+
+/obj/item/rig/ert/para/emp_act(severity)
+	if(emp_proof)
+		emp_protection = 75
+	else
+		return

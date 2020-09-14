@@ -597,3 +597,26 @@
 /obj/item/clothing/suit/armor/pcarrier/merc
 	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/merc, /obj/item/clothing/accessory/armor/armguards/merc, /obj/item/clothing/accessory/armor/legguards/merc, /obj/item/clothing/accessory/storage/pouches/large)
 
+/obj/item/clothing/suit/armor/vest/ert/para
+	name = "PARA light armor"
+	desc = "Light armor emblazoned with the device of an Eye. When equipped by trained PMD agents, runes set into the interior begin to glow."
+	icon_state = "para_ert_armor"
+	item_state_slots = list(slot_r_hand_str = "armor", slot_l_hand_str = "armor")
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	action_button_name = "Enable Armor Sigils"
+
+	var/anti_magic = FALSE
+	var/blessed = FALSE
+
+/obj/item/clothing/suit/armor/vest/ert/para/attack_self(mob/user as mob)
+	if(user.mind.isholy && !anti_magic && !blessed)
+		anti_magic = TRUE
+		blessed = TRUE
+		to_chat(user, "<font color='blue'>You enable the armor's protective sigils.</font>")
+	else
+		anti_magic = FALSE
+		blessed = FALSE
+		to_chat(user, "<font color='blue'>You disable the armor's protective sigils.</font>")
+
+	if(!user.mind.isholy)
+		to_chat(user, "<font color='red'>You can't figure out what these symbols do.</font>")
