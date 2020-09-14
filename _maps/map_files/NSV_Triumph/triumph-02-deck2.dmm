@@ -2599,7 +2599,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock/glass_mining{
-	name = "Cargo Stroage"
+	name = "Cargo Storage"
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
@@ -12187,7 +12187,7 @@
 "Md" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass_mining{
-	name = "Cargo Stroage"
+	name = "Cargo Storage"
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
