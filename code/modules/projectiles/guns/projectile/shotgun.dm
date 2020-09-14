@@ -141,6 +141,7 @@
 
 /obj/item/gun/projectile/shotgun/doublebarrel/sawn/alt/holy // A Special Skin for the sawn off,makes it look like the sawn off from Blood.
 	ammo_type = /obj/item/ammo_casing/a12g/silver
+	holy = TRUE
 
 obj/item/gun/projectile/shotgun/doublebarrel/quad
 	name = "quad-barreled shotgun"
@@ -198,6 +199,7 @@ obj/item/gun/projectile/shotgun/doublebarrel/quad
 	desc = "A Brass Flare Gun far more exspensuve and well made then the plastic ones mass produced for signalling. It fires using an odd clockwork mechanism. Loads using 12g"
 	icon_state = "flareg-holy"
 	accuracy = 0 //Strong Gun Better Accuracy
+	holy = TRUE
 
 /obj/item/gun/projectile/shotgun/doublebarrel/axe
 	name = "Shot Axe"
@@ -214,3 +216,4 @@ obj/item/gun/projectile/shotgun/doublebarrel/quad
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2, TECH_OCCULT = 1)
 	sharp = 1
 	edge = 1
+	holy = TRUE
