@@ -87,10 +87,17 @@ obj/item/circuitboard/rdserver/attackby(obj/item/I as obj, mob/user as mob)
 							/obj/item/stock_parts/micro_laser = 1,
 							/obj/item/stock_parts/console_screen = 1)
 
-obj/item/circuitboard/ntnet_relay
+/obj/item/circuitboard/ntnet_relay
 	name = "Circuit board (NTNet Quantum Relay)"
 	build_path = "/obj/machinery/ntnet_relay"
 	board_type = "machine"
 	origin_tech = list(TECH_DATA = 4)
 	req_components = list(
 							"/obj/item/stack/cable_coil" = 15)
+
+/obj/item/circuitboard/dnarevive
+	name = T_BOARD("fossil reviver pod")
+	build_path = /obj/machinery/fossilrevive
+	board_type = new /datum/frame/frame_types/machine
+	origin_tech = list(TECH_DATA = 3, TECH_BIO = 3)
+	req_components = list()

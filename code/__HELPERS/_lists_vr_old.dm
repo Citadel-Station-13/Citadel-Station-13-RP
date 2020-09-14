@@ -225,3 +225,17 @@ proc/dd_sortedObjectList(list/incoming)
 	if(Li <= L.len)
 		return (result + L.Copy(Li, 0))
 	return (result + R.Copy(Ri, 0))
+
+//generates a list used to randomize transit animations so they aren't in lockstep
+/proc/get_cross_shift_list(var/size)
+	var/list/result = list()
+
+	result += rand(0, 14)
+	for(var/i in 2 to size)
+		var/shifts = list(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14)
+		shifts -= result[i - 1] //consecutive shifts should not be equal
+		if(i == size)
+			shifts -= result[1] //because shift list is a ring buffer
+		result += pick(shifts)
+
+	return result

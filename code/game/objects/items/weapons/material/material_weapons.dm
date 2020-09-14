@@ -21,9 +21,9 @@
 	var/fragile = 0			//Shatters when it dies
 	var/dulled = 0			//Has gone dull
 	var/can_dull = 1		//Can it go dull?
-	var/force_divisor = 0.5
-	var/thrown_force_divisor = 0.5
-	var/dulled_divisor = 0.5	//Just drops the damage by half
+	var/force_divisor = 0.3
+	var/thrown_force_divisor = 0.3
+	var/dulled_divisor = 0.1	//Just drops the damage to a tenth
 	var/default_material = DEFAULT_WALL_MATERIAL
 	var/datum/material/material
 	var/drops_debris = 1

@@ -71,6 +71,10 @@
 
 /obj/item/ammo_magazine/m45/empty
 	initial_ammo = 0
+	
+/obj/item/ammo_magazine/m45/hunter
+	name = "magazine (.45 hunter)"
+	ammo_type = /obj/item/ammo_casing/a45/hunter
 
 /obj/item/ammo_magazine/m45/rubber
 	name = "magazine (.45 rubber)"
@@ -151,6 +155,10 @@
 /obj/item/ammo_magazine/clip/c45/rubber
 	name = "ammo clip (.45 rubber)"
 	ammo_type = /obj/item/ammo_casing/a45/rubber
+	
+/obj/item/ammo_magazine/clip/c45/hunter
+	name = "ammo clip (.45 hunter)"
+	ammo_type = /obj/item/ammo_casing/a45/hunter
 
 /obj/item/ammo_magazine/clip/c45/practice
 	name = "ammo clip (.45 practice)"
@@ -187,6 +195,93 @@
 /obj/item/ammo_magazine/s45/ap
 	name = "speedloader (.45 AP)"
 	ammo_type = /obj/item/ammo_casing/a45/ap
+	
+///////// 10x24mm Caseless /////////
+/obj/item/ammo_magazine/m10x24mm/large
+	name = "Large 10x24mm Caseless Magazine"
+	ammo_type = /obj/item/ammo_casing/a10x24mmcaseless
+	icon_state = "usmc-large"
+	caliber = "10x24mm caseless"
+	w_class = ITEMSIZE_NORMAL
+	matter = list(DEFAULT_WALL_MATERIAL = 8500)
+	mag_type = MAGAZINE
+	max_ammo = 96
+	multiple_sprites = 1
+
+/obj/item/ammo_magazine/m10x24mm/med
+	name = "Medium 10x24mm Caseless Magazine"
+	ammo_type = /obj/item/ammo_casing/a10x24mmcaseless
+	icon_state = "usmc-med"
+	caliber = "10x24mm caseless"
+	mag_type = MAGAZINE
+	w_class = ITEMSIZE_NORMAL
+	matter = list(DEFAULT_WALL_MATERIAL = 5500)
+	max_ammo = 64
+	multiple_sprites = 1
+
+/obj/item/ammo_magazine/m10x24mm/small
+	name = "Small 10x24mm Caseless Magazine"
+	ammo_type = /obj/item/ammo_casing/a10x24mmcaseless
+	icon_state = "usmc-small"
+	caliber = "10x24mm caseless"
+	mag_type = MAGAZINE
+	matter = list(DEFAULT_WALL_MATERIAL = 2500)
+	max_ammo = 32
+	multiple_sprites = 1
+
+/obj/item/ammo_magazine/m10x24mm/large/hp
+	name = "Large 10x24mm Caseless HP Magazine"
+	ammo_type = /obj/item/ammo_casing/a10x24mmcaseless/hp
+	icon_state = "usmc-large-hp"
+	caliber = "10x24mm caseless"
+	mag_type = MAGAZINE
+	max_ammo = 96
+	multiple_sprites = 1
+
+/obj/item/ammo_magazine/m10x24mm/med/hp
+	name = "Medium 10x24mm Caseless HP Magazine"
+	ammo_type = /obj/item/ammo_casing/a10x24mmcaseless/hp
+	icon_state = "usmc-med-hp"
+	caliber = "10x24mm caseless"
+	mag_type = MAGAZINE
+	max_ammo = 64
+	multiple_sprites = 1
+
+/obj/item/ammo_magazine/m10x24mm/small/hp
+	name = "Small 10x24mm Caseless HP Magazine"
+	ammo_type = /obj/item/ammo_casing/a10x24mmcaseless/hp
+	icon_state = "usmc-small-hp"
+	caliber = "10x24mm caseless"
+	mag_type = MAGAZINE
+	max_ammo = 32
+	multiple_sprites = 1
+
+/obj/item/ammo_magazine/m10x24mm/large/ap
+	name = "Large 10x24mm Caseless AP Magazine"
+	ammo_type = /obj/item/ammo_casing/a10x24mmcaseless/ap
+	icon_state = "usmc-large-ap"
+	caliber = "10x24mm caseless"
+	mag_type = MAGAZINE
+	max_ammo = 96
+	multiple_sprites = 1
+
+/obj/item/ammo_magazine/m10x24mm/med/ap
+	name = "Medium 10x24mm Caseless AP Magazine"
+	ammo_type = /obj/item/ammo_casing/a10x24mmcaseless/ap
+	icon_state = "usmc-med-ap"
+	caliber = "10x24mm caseless"
+	mag_type = MAGAZINE
+	max_ammo = 64
+	multiple_sprites = 1
+
+/obj/item/ammo_magazine/m10x24mm/small/ap
+	name = "Small 10x24mm Caseless AP Magazine"
+	ammo_type = /obj/item/ammo_casing/a10x24mmcaseless/ap
+	icon_state = "usmc-small-ap"
+	caliber = "10x24mm caseless"
+	mag_type = MAGAZINE
+	max_ammo = 32
+	multiple_sprites = 1
 
 ///////// 5mm Caseless /////////
 
@@ -281,6 +376,10 @@
 /obj/item/ammo_magazine/m9mmt/empty
 	initial_ammo = 0
 
+/obj/item/ammo_magazine/m9mmt/hunter
+	name = "top mounted magazine (9mm hunter)"
+	ammo_type = /obj/item/ammo_casing/a9mm/hunter
+
 /obj/item/ammo_magazine/m9mmt/rubber
 	name = "top mounted magazine (9mm rubber)"
 	ammo_type = /obj/item/ammo_casing/a9mm/rubber
@@ -302,6 +401,10 @@
 	caliber = "9mm"
 	max_ammo = 50
 	multiple_sprites = 1
+	
+/obj/item/ammo_magazine/m9mmp90/hunter
+	name = "large capacity top mounted magazine (9mm hunter)"
+	ammo_type = /obj/item/ammo_casing/a9mm/hunter
 
 /obj/item/ammo_magazine/m9mmp90/empty
 	initial_ammo = 0
@@ -312,20 +415,24 @@
 	desc = "A stripper clip for reloading 9mm rounds into magazines."
 	caliber = "9mm"
 	ammo_type = /obj/item/ammo_casing/a9mm
-	matter = list(DEFAULT_WALL_MATERIAL = 540) // metal costs are very roughly based around one 9mm casing = 60 metal
-	max_ammo = 9
+	matter = list(DEFAULT_WALL_MATERIAL = 600) // metal costs are very roughly based around one 9mm casing = 60 metal
+	max_ammo = 10
 	multiple_sprites = 1
 
+/obj/item/ammo_magazine/clip/c9mm/hunter
+	name = "ammo clip (9mm hunter)"
+	ammo_type = /obj/item/ammo_casing/a9mm/hunter
+
 /obj/item/ammo_magazine/clip/c9mm/rubber
-	name = "ammo clip (.45 rubber)"
+	name = "ammo clip (9mm rubber)"
 	ammo_type = /obj/item/ammo_casing/a9mm/rubber
 
 /obj/item/ammo_magazine/clip/c9mm/practice
-	name = "ammo clip (.45 practice)"
+	name = "ammo clip (9mm practice)"
 	ammo_type = /obj/item/ammo_casing/a9mm/practice
 
 /obj/item/ammo_magazine/clip/c9mm/flash
-	name = "ammo clip (.45 flash)"
+	name = "ammo clip (9mm flash)"
 	ammo_type = /obj/item/ammo_casing/a9mm/flash
 
 /obj/item/ammo_magazine/m9mmAdvanced
@@ -645,9 +752,9 @@
 	name = "magazine (12 gauge pellet)"
 	ammo_type = /obj/item/ammo_casing/a12g/pellet
 
-/obj/item/ammo_magazine/m12gdrum/flash
+/obj/item/ammo_magazine/m12gdrum/flare
 	name = "magazine (12 gauge flash)"
-	ammo_type = /obj/item/ammo_casing/a12g/flash
+	ammo_type = /obj/item/ammo_casing/a12g/flare
 
 /obj/item/ammo_magazine/m12gdrum/empty
 	initial_ammo = 0

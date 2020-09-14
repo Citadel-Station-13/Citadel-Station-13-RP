@@ -124,3 +124,12 @@
 /obj/fiftyspawner/deuterium
 	name = "stack of deuterium"
 	type_to_spawn = /obj/item/stack/material/deuterium
+
+//Sandbag port
+/obj/fiftyspawner/emptysandbag
+	name = "stack of empty sandbags"
+	type_to_spawn = /obj/item/stack/material/emptysandbag
+
+/obj/fiftyspawner/sandbags
+	name = "stack of sandbags"
+	type_to_spawn = /obj/item/stack/material/sandbags

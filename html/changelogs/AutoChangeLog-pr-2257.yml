@@ -1,0 +1,5 @@
+author: "VailTheWolf"
+delete-after: True
+changes: 
+  - rscadd: "Added new hunting ammo type for pistols"
+  - code_imp: "changed bullets.dm"

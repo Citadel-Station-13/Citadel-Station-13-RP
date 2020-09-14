@@ -24,6 +24,7 @@
 	ideal_character_age = 50
 
 	outfit_type = /decl/hierarchy/outfit/job/medical/cmo
+	alt_titles = list ("Surgeon General","Chief Physician","Director of Medicine")
 
 /datum/job/doctor
 	title = "Medical Doctor"

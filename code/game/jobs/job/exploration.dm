@@ -49,6 +49,7 @@
 	idtype = /obj/item/card/id/explorer/head/pathfinder
 	economic_modifier = 7
 	minimal_player_age = 7
+	alt_titles = list("Expedition Manager")
 
 	access = list(access_eva, access_maint_tunnels, access_tox, access_external_airlocks, access_pilot, access_explorer, access_research, access_gateway, access_pathfinder)
 	minimal_access = list(access_eva, access_maint_tunnels, access_tox, access_external_airlocks, access_pilot, access_explorer, access_research, access_gateway, access_pathfinder)
@@ -60,13 +61,14 @@
 	department = "Exploration"
 	department_flag = MEDSCI
 	faction = "Station"
-	total_positions = 2
+	total_positions = 4
 	spawn_positions = 2
 	supervisors = "the pathfinder and the head of personnel"
 	selection_color = "#999440"
 	idtype = /obj/item/card/id/explorer/pilot
 	economic_modifier = 5
 	minimal_player_age = 3
+	alt_titles = list("Aviator", "Combat Pilot")
 	access = list(access_pilot)
 	minimal_access = list(access_pilot)
 	outfit_type = /decl/hierarchy/outfit/job/pilot
@@ -77,12 +79,13 @@
 	department = "Exploration"
 	department_flag = MEDSCI
 	faction = "Station"
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 4
+	spawn_positions = 4
 	supervisors = "the pathfinder and the research director"
 	selection_color = "#999440"
 	idtype = /obj/item/card/id/explorer/explorer
 	economic_modifier = 6
+	alt_titles = list("Field Scout", "Pioneer")
 	access = list(access_explorer, access_research)
 	minimal_access = list(access_explorer, access_research)
 	outfit_type = /decl/hierarchy/outfit/job/explorer2

@@ -868,6 +868,37 @@
 	icon_state = "turtleneck"
 	worn_state = "turtleneck"
 
+//And this is where the real game begins
+/obj/item/clothing/under/future_fashion_dark_blue_striped
+	name = "Futuristic Dark Blue-Striped Jumpsuit"
+	desc = "Show your love for the fasion of today viewed through the lens of yesterday! All come in black, but this one has dark blue stripes."
+	icon_state = "future_fashion_dark_blue"
+
+/obj/item/clothing/under/future_fashion_green_striped
+	name = "Futuristic Green-Striped Jumpsuit"
+	desc = "Show your love for the fasion of today viewed through the lens of yesterday! All come in black, but this one has green stripes."
+	icon_state = "future_fashion_green"
+
+/obj/item/clothing/under/future_fashion_light_blue_striped
+	name = "Futuristic Light Blue-Striped Jumpsuit"
+	desc = "Show your love for the fasion of today viewed through the lens of yesterday! All come in black, but this one has light blue stripes."
+	icon_state = "future_fashion_light_blue"
+
+/obj/item/clothing/under/future_fashion_orange_striped
+	name = "Futuristic Orange-Striped Jumpsuit"
+	desc = "Show your love for the fasion of today viewed through the lens of yesterday! All come in black, but this one has orange-brownish stripes."
+	icon_state = "future_fashion_orange"
+
+/obj/item/clothing/under/future_fashion_purple_striped
+	name = "Futuristic Purple-Striped Jumpsuit"
+	desc = "Show your love for the fasion of today viewed through the lens of yesterday! All come in black, but this one has purple stripes."
+	icon_state = "future_fashion_purple"
+
+/obj/item/clothing/under/future_fashion_red_striped
+	name = "Futuristic Red-Striped Jumpsuit"
+	desc = "Show your love for the fasion of today viewed through the lens of yesterday! All come in black, but this one has red stripes."
+	icon_state = "future_fashion_red"
+
 //Uniforms end above here.
 
 /obj/item/clothing/under/medigown
@@ -951,7 +982,6 @@
 /obj/item/clothing/under/color/ranger/yellow
 	unicolor = "yellow"
 
-// April 2020 - Drof's Additions Begin Below
 /obj/item/clothing/under/haltertop
 	name = "halter top"
 	desc = "A black halter top with denim jean shorts."
@@ -991,19 +1021,19 @@
 	icon_state = "btc_bartender_s"
 
 /obj/item/clothing/under/paramedunilight
-	name = "Paramedic Uniform"
+	name = "\improper Paramedic Uniform"
 	desc = "A light jumpsuit for those brave souls who have to deal with a CMO who thinks they're the do everything person."
 	icon_state = "paramedic-light"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 
 /obj/item/clothing/under/parameduniskirtlight
-	name = "Paramedic Uniskirt"
+	name = "\improper Paramedic Uniskirt"
 	desc = "A light jumpskirt for those brave souls who have to deal with a CMO who thinks they're the do everything person."
 	icon_state = "paramedic-light_skirt"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 
 /obj/item/clothing/under/dutchuniform
-	name = "Western suit"
+	name = "\improper Western suit"
 	desc = "We can't always fight nature. We can't fight change, we can't fight gravity, we can't fight nothing."
 	icon_state = "dutchuniform"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
@@ -1072,3 +1102,78 @@
     name = "fashionable miniskirt"
     desc = "An impractically short miniskirt allegedly making waves through the local fashion scene."
     icon_state = "miniskirt_fashion"
+
+/obj/item/clothing/under/bodysuit/bodysuiteva
+	name = "\improper EVA bodysuit"
+	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one has bright white plating for easy visibility and thick cuffs to lock into your thrust controls."
+	icon_state = "bodysuit_eva"
+
+/obj/item/clothing/under/bodysuit/bodysuitemt
+	name = "\improper EMT bodysuit"
+	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a deep blue base with white and blue coloration."
+	icon_state = "bodysuit_emt"
+
+/obj/item/clothing/under/bodysuit/bodysuithazard
+	name = "hazard bodysuit"
+	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a black base with striking orange plating and reflective stripes."
+	icon_state = "bodysuit_hazard"
+
+/obj/item/clothing/under/bodysuit/bodysuitexplocom
+	name = "exploration command bodysuit"
+	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a black base with striking purple plating and eyecatching golden stripes."
+	icon_state = "bodysuit_pathfinder"
+
+/obj/item/clothing/under/bodysuit/bodysuitexplo
+	name = "exploration bodysuit"
+	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a black base with striking purple plating."
+	icon_state = "bodysuit_explo"
+
+/obj/item/clothing/under/bodysuit/bodysuitminer
+	name = "mining bodysuit"
+	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a dark grey base with tan and purple coloration."
+	icon_state = "bodysuit_miner"
+
+/obj/item/clothing/under/bodysuit/bodysuitsec
+	name = "security bodysuit"
+	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a dark grey base with red and yellow coloration."
+	icon_state = "bodysuit_security"
+
+/obj/item/clothing/under/bodysuit/bodysuitsecmed
+	name = "security medical bodysuit"
+	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a dark grey base with white plating an an eyecatching red trim."
+	icon_state = "bodysuit_secmed"
+
+/obj/item/clothing/under/bodysuit/bodysuitsecweewoo
+	name = "advanced security bodysuit"
+	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a dark grey base with red and yellow coloration. The flashing lights fill you with confidence."
+	icon_state = "bodysuit_secweewoo"
+
+/obj/item/clothing/under/bodysuit/bodysuitseccom
+	name = "security command bodysuit"
+	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a dark grey base with striking red plating and eyecatching golden stripes."
+	icon_state = "bodysuit_seccom"
+
+/obj/item/clothing/under/bodysuit/bodysuitcommand
+	name = "command bodysuit"
+	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a flashy blue base with white plating and eyecatching golden stripes."
+	icon_state = "bodysuit_command"
+
+/obj/item/clothing/under/bodysuit/bodysuitcentcom
+	name = "central command bodysuit"
+	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a sleek black base with an elegant golden trim and grey plating. It fits your corporate badges nicely."
+	icon_state = "bodysuit_centcom"
+
+/obj/item/clothing/under/bodysuit/blueskirt
+	name = "blue skirt"
+	desc = "A comfy blue sweater paired with a stylish charcoal skirt!"
+	icon_state = "blueskirt"
+
+/obj/item/clothing/under/bodysuit/redskirt
+	name = "red skirt"
+	desc = "A comfy red sweater paired with a stylish charcoal skirt!"
+	icon_state = "redskirt"
+
+/obj/item/clothing/under/ert/para
+	name = "PARA tactical uniform"
+	desc = "A standard grey jumpsuit, emblazoned with the Icon of the PMD. Close inspection of the embroidery reveals a complex web of glyphs written in an unknown language."
+	icon_state = "para_ert_uniform"

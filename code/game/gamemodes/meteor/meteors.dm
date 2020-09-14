@@ -8,8 +8,8 @@
 /var/list/meteors_threatening = list(/obj/effect/meteor/medium=5, /obj/effect/meteor/big=15, \
 						  /obj/effect/meteor/flaming=4, /obj/effect/meteor/irradiated=4, /obj/effect/meteor/emp=4) //for threatening meteor event
 
-/var/list/meteors_catastrophic = list(/obj/effect/meteor/medium=5, /obj/effect/meteor/big=75, \
-						  /obj/effect/meteor/flaming=10, /obj/effect/meteor/irradiated=10, /obj/effect/meteor/emp=10) //, /obj/effect/meteor/tunguska = 1) //for catastrophic meteor event
+/var/list/meteors_catastrophic = list(/obj/effect/meteor/medium=5, /obj/effect/meteor/big=50, \
+						  /obj/effect/meteor/flaming=10, /obj/effect/meteor/irradiated=10, /obj/effect/meteor/emp=10, /obj/effect/meteor/tunguska = 1) //for catastrophic meteor event
 
 /var/list/meteors_dust = list(/obj/effect/meteor/dust) //for space dust event
 
@@ -18,21 +18,18 @@
 //Meteor spawning global procs
 ///////////////////////////////
 
-/proc/pick_meteor_start(var/startSide = pick(cardinal))
-	var/startLevel = pick(GLOB.using_map.station_levels - GLOB.using_map.sealed_levels)
-	var/pickedstart = spaceDebrisStartLoc(startSide, startLevel)
-
-	return list(startLevel, pickedstart)
-
-/proc/spawn_meteors(var/number = 10, var/list/meteortypes, var/startSide)
+/proc/spawn_meteors(var/number = 10, var/list/meteortypes, var/startSide, var/zlevel)
+	log_debug("Spawning [number] meteors on the [dir2text(startSide)] of [zlevel]")
 	for(var/i = 0; i < number; i++)
-		spawn_meteor(meteortypes, startSide)
+		spawn_meteor(meteortypes, startSide, zlevel)
 
-/proc/spawn_meteor(var/list/meteortypes, var/startSide)
-	var/start = pick_meteor_start(startSide)
+/proc/spawn_meteor(var/list/meteortypes, var/startSide, var/startLevel)
+	if(isnull(startSide))
+		startSide = pick(cardinal)
+	if(isnull(startLevel))
+		startLevel = pick(GLOB.using_map.station_levels - GLOB.using_map.sealed_levels)
 
-	var/startLevel = start[1]
-	var/turf/pickedstart = start[2]
+	var/turf/pickedstart = spaceDebrisStartLoc(startSide, startLevel)
 	var/turf/pickedgoal = spaceDebrisFinishLoc(startSide, startLevel)
 
 	var/Me = pickweight(meteortypes)

@@ -48,10 +48,11 @@
 
 	flags = NO_SCAN
 	spawn_flags = SPECIES_IS_WHITELISTED
-	appearance_flags = HAS_EYE_COLOR | HAS_HAIR_COLOR
+	appearance_flags = HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_SKIN_COLOR
 
 	blood_color = "#9066BD"
-	flesh_color = "#808D11"
+	flesh_color = "#a3a593"
+	base_color = "#2e3302"
 
 	reagent_tag = IS_VOX
 

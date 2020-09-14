@@ -1,0 +1,22 @@
+"a" = (/turf/template_noop,/area/template_noop)
+"c" = (/turf/simulated/mineral/vacuum,/area/triumph_away/poi_d/explored)
+"n" = (/obj/structure/closet/crate/mimic/cointoss,/obj/random/drinkbottle,/obj/random/drinkbottle,/obj/random/drinkbottle,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_d/explored)
+"p" = (/obj/structure/closet/crate/mimic/cointoss,/obj/random/ammo_all,/obj/random/ammo_all,/obj/random/ammo_all,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_d/explored)
+"q" = (/obj/structure/closet/crate/mimic/cointoss,/obj/random/medical/pillbottle,/obj/random/medical/pillbottle,/obj/random/medical/pillbottle,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_d/explored)
+"r" = (/obj/structure/closet/crate/mimic/cointoss,/obj/random/cash,/obj/random/cash,/obj/random/cash,/obj/random/cash,/obj/random/cash,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_d/explored)
+"t" = (/turf/simulated/mineral/classh,/area/triumph_away/poi_d/explored)
+"z" = (/obj/random/humanoidremains,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_d/explored)
+"T" = (/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_d/explored)
+
+(1,1,1) = {"
+aattttttta
+attttttttt
+atttTrTptt
+tttTTTTTtt
+tttnTTTTzt
+tttTTztTqt
+atTTTttttt
+aTztcttttt
+aattttttta
+aaaattttaa
+"}

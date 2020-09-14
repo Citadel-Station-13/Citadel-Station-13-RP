@@ -96,6 +96,11 @@
 	desc = "A 9mm hollow-point bullet casing."
 	projectile_type = /obj/item/projectile/bullet/pistol/hp
 
+/obj/item/ammo_casing/a9mm/hunter
+	desc = "A 9mm hunting bullet casing."
+	projectile_type = /obj/item/projectile/bullet/pistol/hunter
+	matter = list(DEFAULT_WALL_MATERIAL = 80)
+
 
 /obj/item/ammo_casing/a9mm/flash
 	desc = "A 9mm flash shell casing."
@@ -126,6 +131,11 @@
 	desc = "A .45 Armor-Piercing bullet casing."
 	icon_state = "r-casing"
 	projectile_type = /obj/item/projectile/bullet/pistol/medium/ap
+
+/obj/item/ammo_casing/a45/hunter
+	desc = "A .45 hunting bullet casing."
+	projectile_type = /obj/item/projectile/bullet/pistol/medium/hunter
+	matter = list(DEFAULT_WALL_MATERIAL = 75)
 
 /obj/item/ammo_casing/a45/practice
 	desc = "A .45 practice bullet casing."
@@ -226,8 +236,8 @@
 	update_icon()
 
 //Does not stun, only blinds, but has area of effect.
-/obj/item/ammo_casing/a12g/flash
-	name = "flash shell"
+/obj/item/ammo_casing/a12g/flare
+	name = "flare shell"
 	desc = "A chemical shell used to signal distress or provide illumination."
 	icon_state = "fshell"
 	projectile_type = /obj/item/projectile/energy/flash/flare
@@ -321,6 +331,32 @@
 /obj/item/ammo_casing/a545/hunter
 	desc = "A 5.45mm hunting bullet casing."
 	projectile_type = /obj/item/projectile/bullet/rifle/a545/hunter
+	
+/*
+ * 10x24mm Caseless
+ */
+ 
+/obj/item/ammo_casing/a10x24mmcaseless
+	desc = "A 10x24mm caseless round, common during the Xenomorph wars due to its use the the battle rifles of the United Solar Marine Corps."
+	caliber = "10x24mm caseless"
+	icon_state = "casing"
+	projectile_type = /obj/item/projectile/bullet/pistol/medium
+	matter = list(DEFAULT_WALL_MATERIAL = 180)
+	caseless = 1
+
+/obj/item/ammo_casing/a10x24mmcaseless/ap
+	desc = "A 10x24mm caseless round, common during the Xenomorph wars due to its use the the battle rifles of the United Solar Marine Corps. This one was meant to shred armored targets."
+	caliber = "10x24mm caseless"
+	icon_state = "casing"
+	projectile_type = /obj/item/projectile/bullet/pistol/medium/ap
+	matter = list(DEFAULT_WALL_MATERIAL = 180)
+
+/obj/item/ammo_casing/a10x24mmcaseless/hp
+	desc = "A 10x24mm caseless round, common during the Xenomorph wars due to its use the the battle rifles of the United Solar Marine Corps. This one was meant to shred armored targets."
+	caliber = "10x24mm caseless"
+	icon_state = "casing"
+	projectile_type = /obj/item/projectile/bullet/pistol/medium/hp
+	matter = list(DEFAULT_WALL_MATERIAL = 180)
 
 /*
  * 5mm Caseless
