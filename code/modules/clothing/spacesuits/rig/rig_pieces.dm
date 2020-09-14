@@ -17,7 +17,8 @@
 		SPECIES_UNATHI = 'icons/mob/species/unathi/helmet.dmi',
 		SPECIES_VOX = 'icons/mob/species/vox/head.dmi',
 		SPECIES_TESHARI = 'icons/mob/species/teshari/head.dmi',
-		SPECIES_ZADDAT = 'icons/mob/species/zaddat/head.dmi'
+		SPECIES_ZADDAT = 'icons/mob/species/zaddat/head.dmi',
+		SPECIES_PLASMEN = 'icons/mob/species/phoronoid/head.dmi'
 		)
 	species_restricted = null
 	max_pressure_protection = null
@@ -77,7 +78,8 @@
         SPECIES_XENOHYBRID        = 'icons/mob/species/unathi/suit.dmi',
         SPECIES_VOX             = 'icons/mob/species/vox/suit.dmi',
         SPECIES_TESHARI            = 'icons/mob/species/teshari/suit.dmi',
-        SPECIES_ZADDAT            = 'icons/mob/species/zaddat/suit.dmi'
+        SPECIES_ZADDAT            = 'icons/mob/species/zaddat/suit.dmi',
+		SPECIES_PLASMEN			= 'icons/mob/species/phoronoid/suit.dmi'
         )
 	supporting_limbs = list()
 	var/obj/item/material/knife/tacknife
