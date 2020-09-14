@@ -65,7 +65,7 @@
 		/obj/item/cartridge/janitor,
 		/obj/item/clothing/gloves/black,
 		/obj/item/clothing/head/soft/purple,
-		/obj/item/clothing/head/beret/purple,
+		/obj/item/clothing/head/beret/science,
 		/obj/item/flashlight,
 		/obj/item/caution = 4,
 		/obj/item/lightreplacer,

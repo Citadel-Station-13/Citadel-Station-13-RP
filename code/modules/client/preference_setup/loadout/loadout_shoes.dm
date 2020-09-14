@@ -1,112 +1,112 @@
 // Shoelocker
 /datum/gear/shoes
-	display_name = "jackboots"
+	display_name = "Jackboots"
 	path = /obj/item/clothing/shoes/boots/jackboots
 	slot = slot_shoes
 	sort_category = "Shoes and Footwear"
 
 /datum/gear/shoes/toeless
-	display_name = "toe-less jackboots"
+	display_name = "Toe-Less Jackboots"
 	path = /obj/item/clothing/shoes/boots/jackboots/toeless
 
 /datum/gear/shoes/workboots
-	display_name = "workboots"
+	display_name = "Workboots"
 	path = /obj/item/clothing/shoes/boots/workboots
 
 /datum/gear/shoes/workboots/toeless
-	display_name = "toe-less workboots"
+	display_name = "Toe-Less Workboots"
 	path = /obj/item/clothing/shoes/boots/workboots/toeless
 
 /datum/gear/shoes/sandals
-	display_name = "sandals"
+	display_name = "Sandals"
 	path = /obj/item/clothing/shoes/sandal
 
 /datum/gear/shoes/black
-	display_name = "shoes, black"
+	display_name = "Shoes - Black"
 	path = /obj/item/clothing/shoes/black
 
 /datum/gear/shoes/blue
-	display_name = "shoes, blue"
+	display_name = "Shoes - Blue"
 	path = /obj/item/clothing/shoes/blue
 
 /datum/gear/shoes/brown
-	display_name = "shoes, brown"
+	display_name = "Shoes - Brown"
 	path = /obj/item/clothing/shoes/brown
 
 /datum/gear/shoes/lacey
-	display_name = "shoes, classy"
+	display_name = "Shoes - Classy"
 	path = /obj/item/clothing/shoes/laceup
 
 /datum/gear/shoes/dress
-	display_name = "shoes, dress"
+	display_name = "Shoes - Dress"
 	path = /obj/item/clothing/shoes/laceup
 
 /datum/gear/shoes/green
-	display_name = "shoes, green"
+	display_name = "Shoes - Green"
 	path = /obj/item/clothing/shoes/green
 
 /datum/gear/shoes/leather
-	display_name = "shoes, leather"
+	display_name = "Shoes - Leather"
 	path = /obj/item/clothing/shoes/leather
 
 /datum/gear/shoes/orange
-	display_name = "shoes, orange"
+	display_name = "Shoes - Orange"
 	path = /obj/item/clothing/shoes/orange
 
 /datum/gear/shoes/purple
-	display_name = "shoes, purple"
+	display_name = "Shoes - Purple"
 	path = /obj/item/clothing/shoes/purple
 
 /datum/gear/shoes/rainbow
-	display_name = "shoes, rainbow"
+	display_name = "Shoes - Rainbow"
 	path = /obj/item/clothing/shoes/rainbow
 
 /datum/gear/shoes/red
-	display_name = "shoes, red"
+	display_name = "Shoes - Red"
 	path = /obj/item/clothing/shoes/red
 
 /datum/gear/shoes/white
-	display_name = "shoes, white"
+	display_name = "Shoes - White"
 	path = /obj/item/clothing/shoes/white
 
 /datum/gear/shoes/yellow
-	display_name = "shoes, yellow"
+	display_name = "Shoes - Yellow"
 	path = /obj/item/clothing/shoes/yellow
 
 /datum/gear/shoes/hitops/
-	display_name = "high-top, white"
+	display_name = "High-Top - White"
 	path = /obj/item/clothing/shoes/hitops/
 
 /datum/gear/shoes/hitops/red
-	display_name = "high-top, red"
+	display_name = "High-Top - Red"
 	path = /obj/item/clothing/shoes/hitops/red
 
 /datum/gear/shoes/hitops/black
-	display_name = "high-top, black"
+	display_name = "High-Top - Black"
 	path = /obj/item/clothing/shoes/hitops/black
 
 /datum/gear/shoes/hitops/orange
-	display_name = "high-top, orange"
+	display_name = "High-Top - Orange"
 	path = /obj/item/clothing/shoes/hitops/orange
 
 /datum/gear/shoes/hitops/blue
-	display_name = "high-top, blue"
+	display_name = "High-Top - Blue"
 	path = /obj/item/clothing/shoes/hitops/blue
 
 /datum/gear/shoes/hitops/green
-	display_name = "high-top, green"
+	display_name = "High-Top - Green"
 	path = /obj/item/clothing/shoes/hitops/green
 
 /datum/gear/shoes/hitops/purple
-	display_name = "high-top, purple"
+	display_name = "High-Top - Purple"
 	path = /obj/item/clothing/shoes/hitops/purple
 
 /datum/gear/shoes/hitops/yellow
-	display_name = "high-top, yellow"
+	display_name = "High-Top - Yellow"
 	path = /obj/item/clothing/shoes/hitops/yellow
 
 /datum/gear/shoes/flipflops
-	display_name = "flip flops"
+	display_name = "Flip Flops"
 	path = /obj/item/clothing/shoes/flipflop
 
 /datum/gear/shoes/flipflops/New()
@@ -114,7 +114,7 @@
 	gear_tweaks = list(gear_tweak_free_color_choice)
 
 /datum/gear/shoes/athletic
-	display_name = "athletic shoes"
+	display_name = "Athletic Shoes"
 	path = /obj/item/clothing/shoes/athletic
 
 /datum/gear/shoes/athletic/New()
@@ -122,7 +122,7 @@
 	gear_tweaks = list(gear_tweak_free_color_choice)
 
 /datum/gear/shoes/skater
-	display_name = "skater shoes"
+	display_name = "Skater Shoes"
 	path = /obj/item/clothing/shoes/skater
 
 /datum/gear/shoes/skater/New()
@@ -130,7 +130,7 @@
 	gear_tweaks = list(gear_tweak_free_color_choice)
 
 /datum/gear/shoes/flats
-	display_name = "flats"
+	display_name = "Flats"
 	path = /obj/item/clothing/shoes/flats/white/color
 
 /datum/gear/shoes/flats/New()
@@ -138,37 +138,37 @@
 	gear_tweaks = list(gear_tweak_free_color_choice)
 
 /datum/gear/shoes/cowboy
-	display_name = "cowboy boots"
+	display_name = "Cowboy Boots"
 	path = /obj/item/clothing/shoes/boots/cowboy
 
 /datum/gear/shoes/cowboy/classic
-	display_name = "classic cowboy boots"
+	display_name = "Cowboy Boots - Classic"
 	path = /obj/item/clothing/shoes/boots/cowboy/classic
 
 /datum/gear/shoes/cowboy/snakeskin
-	display_name = "snakeskin cowboy boots"
+	display_name = "Cowboy Boots - Snakeskin"
 	path = /obj/item/clothing/shoes/boots/cowboy/snakeskin
 
 /datum/gear/shoes/jungle
-	display_name = "jungle boots"
+	display_name = "Jungle Boots"
 	path = /obj/item/clothing/shoes/boots/jungle
 	cost = 2
 
 /datum/gear/shoes/duty
-	display_name = "duty boots"
+	display_name = "Duty Boots"
 	path = 	/obj/item/clothing/shoes/boots/duty
 	cost = 2
 
 /datum/gear/shoes/dress
-	display_name = "shoes, dress"
+	display_name = "Shoes - Dress"
 	path = 	/obj/item/clothing/shoes/dress
 
 /datum/gear/shoes/dress/white
-	display_name = "shoes, dress white"
+	display_name = "Shoes - Dress - White"
 	path = 	/obj/item/clothing/shoes/dress/white
 
 /datum/gear/shoes/heels
-	display_name = "high heels"
+	display_name = "High Heels"
 	path = /obj/item/clothing/shoes/heels
 
 /datum/gear/shoes/heels/New()
@@ -176,64 +176,64 @@
 	gear_tweaks = list(gear_tweak_free_color_choice)
 
 /datum/gear/shoes/slippers
-	display_name = "bunny slippers"
+	display_name = "Bunny Slippers"
 	path = /obj/item/clothing/shoes/slippers
 
 /datum/gear/shoes/boots/winter
-	display_name = "winter boots"
+	display_name = "Winter Boots"
 	path = /obj/item/clothing/shoes/boots/winter
 
 /datum/gear/shoes/boots/winter/security
-	display_name = "security winter boots"
+	display_name = "Security - Winter Boots"
 	path = /obj/item/clothing/shoes/boots/winter/security
 	allowed_roles = list("Security Officer", "Head of Security", "Warden", "Detective")
 
 /datum/gear/shoes/boots/winter/science
-	display_name = "science winter boots"
+	display_name = "Science - Winter Boots"
 	path = /obj/item/clothing/shoes/boots/winter/science
 	allowed_roles = list("Research Director","Scientist", "Roboticist", "Xenobiologist")
 
 /datum/gear/shoes/boots/winter/command
-	display_name = "Facility Director's winter boots"
+	display_name = "Facility Director - Winter Boots"
 	path = /obj/item/clothing/shoes/boots/winter/command
 	allowed_roles = list("Facility Director")
 
 /datum/gear/shoes/boots/winter/engineering
-	display_name = "engineering winter boots"
+	display_name = "Engineering - Winter Boots"
 	path = /obj/item/clothing/shoes/boots/winter/engineering
 	allowed_roles = list("Chief Engineer","Atmospheric Technician", "Station Engineer")
 
 /datum/gear/shoes/boots/winter/atmos
-	display_name = "atmospherics winter boots"
+	display_name = "Atmospherics Winter Boots"
 	path = /obj/item/clothing/shoes/boots/winter/atmos
 	allowed_roles = list("Chief Engineer", "Atmospheric Technician")
 
 /datum/gear/shoes/boots/winter/medical
-	display_name = "medical winter boots"
+	display_name = "Medical - Winter Boots"
 	path = /obj/item/clothing/shoes/boots/winter/medical
 	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Field Medic","Paramedic","Geneticist", "Psychiatrist")
 
 /datum/gear/shoes/boots/winter/mining
-	display_name = "mining winter boots"
+	display_name = "Mining Winter Boots"
 	path = /obj/item/clothing/shoes/boots/winter/mining
 	allowed_roles = list("Shaft Miner")
 
 /datum/gear/shoes/boots/winter/supply
-	display_name = "supply winter boots"
+	display_name = "Supply - Winter Boots"
 	path = /obj/item/clothing/shoes/boots/winter/supply
 	allowed_roles = list("Quartermaster","Cargo Technician")
 
 /datum/gear/shoes/boots/winter/hydro
-	display_name = "hydroponics winter boots"
+	display_name = "Hydroponics Winter Boots"
 	path = /obj/item/clothing/shoes/boots/winter/hydro
 	allowed_roles = list("Botanist", "Xenobiologist")
 
 /datum/gear/shoes/circuitry
-	display_name = "boots, circuitry (empty)"
+	display_name = "Boots - Circuitry"
 	path = /obj/item/clothing/shoes/circuitry
 
 /datum/gear/shoes/cowboy/black
-	display_name = "black cowboy boots"
+	display_name = "Cowboy Boots - Black"
 	path = /obj/item/clothing/shoes/cowboyboots/black
 
 /datum/gear/shoes/boots/winter/science
@@ -243,28 +243,28 @@
 	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist", "Psychiatrist", "Field Medic")
 
 /datum/gear/shoes/black/cuffs
-	display_name = "legwraps, black"
+	display_name = "Legwraps - Black"
 	path = /obj/item/clothing/shoes/black/cuffs
 
 /datum/gear/shoes/black/cuffs/blue
-	display_name = "legwraps, blue"
+	display_name = "Legwraps - Blue"
 	path = /obj/item/clothing/shoes/black/cuffs/blue
 
 /datum/gear/shoes/black/cuffs/red
-	display_name = "legwraps, red"
+	display_name = "Legwraps - Red"
 	path = /obj/item/clothing/shoes/black/cuffs/red
 
 /datum/gear/shoes/siren
-	display_name = "boots, Siren"
+	display_name = "Boots - Siren"
 	path = /obj/item/clothing/shoes/boots/fluff/siren
 
 /datum/gear/shoes/galoshes/black
-	display_name = "galoshes, black"
+	display_name = "Galoshes - Black"
 	path = /obj/item/clothing/shoes/galoshes/citadel/black
 	allowed_roles = list("Janitor")
 
 /datum/gear/shoes/galoshes/starcon
-	display_name = "galoshes, dark-purple"
+	display_name = "Galoshes - Dark-Purple"
 	path = /obj/item/clothing/shoes/galoshes/citadel/starcon
 	allowed_roles = list("Janitor")
 	cost = 2

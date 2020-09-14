@@ -1,6 +1,6 @@
 
 /datum/gear/pipe
-	display_name = "pipe"
+	display_name = "Pipe"
 	path = /obj/item/clothing/mask/smokable/pipe
 
 /datum/gear/pipe/New()
@@ -12,15 +12,15 @@
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(pipes, /proc/cmp_text_asc))
 
 /datum/gear/matchbook
-	display_name = "matchbook"
+	display_name = "Matchbook"
 	path = /obj/item/storage/box/matches
 
 /datum/gear/lighter
-	display_name = "cheap lighter"
+	display_name = "Cheap Lighter"
 	path = /obj/item/flame/lighter
 
 /datum/gear/lighter/zippo
-	display_name = "Zippo selection"
+	display_name = "Zippo Selection"
 	path = /obj/item/flame/lighter/zippo
 
 /datum/gear/lighter/zippo/New()
@@ -34,20 +34,20 @@
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(zippos, /proc/cmp_text_asc))
 
 /datum/gear/ashtray
-	display_name = "ashtray, plastic"
+	display_name = "Plastic Ashtray"
 	path = /obj/item/material/ashtray/plastic
 
 /datum/gear/cigar
-	display_name = "cigar"
+	display_name = "Cigar"
 	path = /obj/item/clothing/mask/smokable/cigarette/cigar
 
 /datum/gear/cigarcase
-	display_name = "cigar case"
+	display_name = "Cigar Case"
 	path = /obj/item/storage/fancy/cigar
 	cost = 3
 
 /datum/gear/cigarettes
-	display_name = "cigarette selection"
+	display_name = "Cigarette Selection"
 	path = /obj/item/storage/fancy/cigarettes
 
 /datum/gear/cigarettes/New()

@@ -6,16 +6,16 @@ var/list/gear_datums = list()
 	var/list/gear = list()
 
 /datum/gear
-	var/display_name       //Name/index. Must be unique.
-	var/description        //Description of this gear. If left blank will default to the description of the pathed item.
-	var/path               //Path to item.
-	var/cost = 1           //Number of points used. Items in general cost 1 point, storage/armor/gloves/special use costs 2 points.
-	var/slot               //Slot to equip to.
-	var/list/allowed_roles //Roles that can spawn with this item.
-	var/whitelisted        //Term to check the whitelist for..
+	var/display_name			  // Name/index. Must be unique.
+	var/description				  // Description of this gear. If left blank will default to the description of the pathed item.
+	var/path					  // Path to item.
+	var/cost = 1				  // Number of points used. Items in general cost 1 point, storage/armor/gloves/special use costs 2 points.
+	var/slot					  // Slot to equip to.
+	var/list/allowed_roles		  // Roles that can spawn with this item.
+	var/whitelisted				  // Term to check the whitelist for..
 	var/sort_category = "General"
-	var/list/gear_tweaks = list() //List of datums which will alter the item after it has been spawned.
-	var/exploitable = 0		//Does it go on the exploitable information list?
+	var/list/gear_tweaks = list() // List of datums which will alter the item after it has been spawned.
+	var/exploitable = 0			  // Does it go on the exploitable information list?
 	var/type_category = null
 	var/static/datum/gear_tweak/color/gear_tweak_free_color_choice = new
 	var/list/ckeywhitelist
@@ -45,7 +45,7 @@ var/list/gear_datums = list()
 		for(var/datum/gear_tweak/gt in gear_tweaks)
 			gt.tweak_item(item, metadata["[gt]"])
 	var/mob/M = location
-	if(istype(M) && exploitable) //Update exploitable info records for the mob without creating a duplicate object at their feet.
+	if(istype(M) && exploitable)	// Update exploitable info records for the mob without creating a duplicate object at their feet.
 		M.amend_exploitable(item)
 	return item
 
@@ -55,7 +55,7 @@ var/list/gear_datums = list()
 
 /hook/startup/proc/populate_gear_list()
 
-	//create a list of gear datums to sort
+	// Create a list of gear datums to sort
 	for(var/geartype in typesof(/datum/gear)-/datum/gear)
 		var/datum/gear/G = geartype
 		if(initial(G.type_category) == geartype)
@@ -82,7 +82,7 @@ var/list/gear_datums = list()
 	loadout_categories = sortTim(loadout_categories, /proc/cmp_text_asc)
 	for(var/loadout_category in loadout_categories)
 		var/datum/loadout_category/LC = loadout_categories[loadout_category]
-		LC.gear = sortTim(LC.gear, /proc/cmp_text_asc) // DO NOT ADD A ", TRUE" TO THE END OF THIS FUCKING LINE IT'S WHAT WAS CAUSING ALPHABETIZATION TO BREAK
+		LC.gear = sortTim(LC.gear, /proc/cmp_text_asc)	// DO NOT ADD A ", TRUE" TO THE END OF THIS FUCKING LINE IT'S WHAT WAS CAUSING ALPHABETIZATION TO BREAK
 	return 1
 
 /datum/category_item/player_setup_item/loadout
@@ -114,13 +114,11 @@ var/list/gear_datums = list()
 			continue
 		if(max_cost && G.cost > max_cost)
 			continue
-		//VOREStation Edit Start
 		if(preference_mob && preference_mob.client)
 			if(G.ckeywhitelist && !(preference_mob.ckey in G.ckeywhitelist))
 				continue
 			if(G.character_name && !(preference_mob.client.prefs.real_name in G.character_name))
 				continue
-		//VOREStation Edit End
 		. += gear_name
 
 /datum/category_item/player_setup_item/loadout/sanitize_character()
@@ -151,7 +149,7 @@ var/list/gear_datums = list()
 
 /datum/category_item/player_setup_item/loadout/content()
 	. = list()
-	var/mob/preference_mob = preference_mob()	//Vorestation Edit
+	var/mob/preference_mob = preference_mob()
 	var/total_cost = 0
 	if(pref.gear && pref.gear.len)
 		for(var/i = 1; i <= pref.gear.len; i++)
@@ -257,17 +255,17 @@ var/list/gear_datums = list()
 		set_tweak_metadata(gear, tweak, metadata)
 		return TOPIC_REFRESH_UPDATE_PREVIEW
 	if(href_list["next_slot"] || href_list["prev_slot"])
-		//Set the current slot in the gear list to the currently selected gear
+		// Set the current slot in the gear list to the currently selected gear
 		pref.gear_list["[pref.gear_slot]"] = pref.gear
-		//If we're moving up a slot..
+		// If we're moving up a slot..
 		if(href_list["next_slot"])
-			//change the current slot number
+			// Change the current slot number
 			pref.gear_slot = pref.gear_slot+1
 			if(pref.gear_slot>config_legacy.loadout_slots)
 				pref.gear_slot = 1
-		//If we're moving down a slot..
+		// If we're moving down a slot..
 		else if(href_list["prev_slot"])
-			//change current slot one down
+			// Change current slot one down
 			pref.gear_slot = pref.gear_slot-1
 			if(pref.gear_slot<1)
 				pref.gear_slot = config_legacy.loadout_slots

@@ -408,7 +408,7 @@
 	body_parts_covered = 0
 
 //Lots of people are using this now.
-/obj/item/clothing/accessory/collar/khcrystal
+/obj/item/clothing/accessory/collar/vmcrystal
 	name = "life crystal"
 	desc = "A small crystal with four little dots in it. It feels slightly warm to the touch. \
 	Read manual before use! Can be worn, held, or attached to uniform. NOTE: Device contains antimatter."
@@ -427,21 +427,21 @@
 	var/client/owner_c = null //They'll be dead when we message them probably.
 	var/state = 0 //0 - New, 1 - Paired, 2 - Breaking, 3 - Broken (same as iconstates)
 
-/obj/item/clothing/accessory/collar/khcrystal/New()
+/obj/item/clothing/accessory/collar/vmcrystal/New()
 	..()
 	update_state(0)
 
-/obj/item/clothing/accessory/collar/khcrystal/Destroy() //Waitwaitwait
+/obj/item/clothing/accessory/collar/vmcrystal/Destroy() //Waitwaitwait
 	if(state == 1)
 		process() //Nownownow
 	return ..() //Okfine
 
-/obj/item/clothing/accessory/collar/khcrystal/process()
+/obj/item/clothing/accessory/collar/vmcrystal/process()
 	check_owner()
 	if((state > 1) || !owner)
 		STOP_PROCESSING(SSobj, src)
 
-/obj/item/clothing/accessory/collar/khcrystal/attack_self(mob/user as mob)
+/obj/item/clothing/accessory/collar/vmcrystal/attack_self(mob/user as mob)
 	if(state > 0) //Can't re-pair, one time only, for security reasons.
 		to_chat(user, "<span class='notice'>The [name] doesn't do anything.</span>")
 		return 0
@@ -452,7 +452,7 @@
 	to_chat(user, "<span class='notice'>The [name] glows pleasantly blue.</span>")
 	START_PROCESSING(SSobj, src)
 
-/obj/item/clothing/accessory/collar/khcrystal/proc/check_owner()
+/obj/item/clothing/accessory/collar/vmcrystal/proc/check_owner()
 	//He's dead, jim
 	if((state == 1) && owner && (owner.stat == DEAD))
 		update_state(2)
@@ -465,14 +465,14 @@
 		name = "broken [initial(name)]"
 		desc = "This seems like a necklace, but the actual pendant is missing."
 
-/obj/item/clothing/accessory/collar/khcrystal/proc/update_state(var/tostate)
+/obj/item/clothing/accessory/collar/vmcrystal/proc/update_state(var/tostate)
 	state = tostate
 	icon_state = "[initial(icon_state)][tostate]"
 	update_icon()
-
-/obj/item/paper/khcrystal_manual
-	name = "KH-LC91-1 manual"
-	info = {"<h4>KH-LC91-1 Life Crystal</h4>
+/*
+/obj/item/paper/vmcrystal_manual
+	name = "VM-LC91-1 manual"
+	info = {"<h4>VM-LC91-1 Life Crystal</h4>
 	<h5>Usage</h5>
 	<ol>
 		<li>Hold new crystal in hand.</li>
@@ -481,7 +481,7 @@
 	</ol>
 	<br />
 	<h5>Purpose</h5>
-	<p>The Kitsuhana Life Crystal is a small device typically worn around the neck for the purpose of reporting your status to the HAVENS (Kitsuhana's High-AVailability ENgram Storage) system, so that appropriate measures can be taken in the case of your body's demise. The whole device is housed inside a pleasing-to-the-eye elongated diamond.</p>
+	<p>The VeyMed Life Crystal is a small device typically worn around the neck for the purpose of reporting your status to the HAVENS (VeyMed's High-AVailability ENgram Storage) system, so that appropriate measures can be taken in the case of your body's demise. The whole device is housed inside a pleasing-to-the-eye elongated diamond.</p>
 	<p>Upon your body's desmise, the crystal will send a transmission to HAVENS. Depending on your membership level, the appropriate actions can be taken to ensure that you are back up and enjoying existence as soon as possible.</p>
 
 	<p>Nanotrasen has negotiated a <i>FREE</i> Star membership for you in the HAVENS system, though an upgrade can be obtained depending on your citizenship and reputation level.</p>
@@ -508,22 +508,22 @@
 	<h5>Special Notes</h5>
 	<i>\[AM WARNING\]</i>
 	<p>This device contains antimatter. Please consult all local regulations when travelling to ensure compliance with local laws.</p>"}
-
-/obj/item/storage/box/khcrystal
+*/
+/obj/item/storage/box/vmcrystal
 	name = "life crystal case"
 	icon = 'icons/vore/custom_items_vr.dmi'
 	icon_state = "khlifebox"
-	desc = "This case can only hold the KH-LC91-1 and a manual."
+	desc = "This case can only hold the VM-LC91-1 and a manual."
 	item_state_slots = list(slot_r_hand_str = "syringe_kit", slot_l_hand_str = "syringe_kit")
 	storage_slots = 2
-	can_hold = list(/obj/item/paper/khcrystal_manual, /obj/item/clothing/accessory/collar/khcrystal)
+	can_hold = list(/obj/item/clothing/accessory/collar/vmcrystal)
 	max_storage_space = ITEMSIZE_COST_SMALL * 2
 	w_class = ITEMSIZE_SMALL
 
-/obj/item/storage/box/khcrystal/New()
+/obj/item/storage/box/vmcrystal/New()
 	..()
-	new /obj/item/paper/khcrystal_manual(src)
-	new /obj/item/clothing/accessory/collar/khcrystal(src)
+//	new /obj/item/paper/vmcrystal_manual(src)
+	new /obj/item/clothing/accessory/collar/vmcrystal(src)
 
 /obj/item/cane/fluff
 	name = "cane"
