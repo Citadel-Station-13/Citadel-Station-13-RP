@@ -77,6 +77,11 @@
 	path = /obj/item/clothing/head/collectable/petehat
 	ckeywhitelist = list("risingstarslash")
 
+/datum/gear/donator/holotags
+	display_name = "USDF Holotags"
+	description = "United Sol Defense Force issued ID, Belonging to Nikolai Volkov, DOB 12/12/2537, Blood Type O+"
+	path = /obj/item/clothing/accessory/collar/donator/holotags
+	ckeywhitelist = list("certifiedhyena")
 
 /datum/gear/donator/silverhelmet
 	display_name = "Silver's Helmet"
