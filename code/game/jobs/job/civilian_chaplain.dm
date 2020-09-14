@@ -16,6 +16,11 @@
 	outfit_type = /decl/hierarchy/outfit/job/chaplain
 	alt_titles = list("Paracausal Scholar", "Religious Affairs Liason")
 
+/datum/job/chaplain/equip(mob/living/carbon/human/H, src)
+	. = ..()
+	if(H.mind)
+		H.mind.isholy = TRUE
+
 /datum/job/chaplain/equip(var/mob/living/carbon/human/H, var/alt_title, var/ask_questions = TRUE)
 	. = ..()
 	if(!.)
@@ -141,6 +146,10 @@
 					if(outoftime)
 						to_chat(H, "Welp, out of time, buddy. You're stuck. Next time choose faster.")
 						accepted = 1
+
+		GLOB.religion = religion_name
+		GLOB.bible_name = B.name
+		GLOB.deity = B.deity_name
 
 		if(SSticker)
 			SSticker.Bible_icon_state = B.icon_state
