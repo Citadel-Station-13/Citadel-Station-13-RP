@@ -65,6 +65,7 @@
 	icon_retracted = "pockrifle_c-empty"
 	ammo_type = /obj/item/ammo_casing/a357/silver
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_OCCULT = 1)
+	holy = TRUE
 
 /obj/item/gun/projectile/contender/holy/a44
 	caliber = ".44"
