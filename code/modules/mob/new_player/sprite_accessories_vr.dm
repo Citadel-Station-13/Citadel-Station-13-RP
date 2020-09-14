@@ -8,7 +8,7 @@
 
 	//var/icon_add = 'icons/mob/human_face.dmi' //Already defined in sprite_accessories.dm line 49.
 	var/color_blend_mode = ICON_MULTIPLY
-	species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_TESHARI, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST, SPECIES_SHADEKIN) //This lets all races use the default hairstyles.
+	species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST, SPECIES_SHADEKIN) //This lets all races use the default hairstyles.
 
 	astolfo
 		name = "Astolfo"
@@ -242,52 +242,86 @@
 
 
 
-//Teshari things
+// Teshari things
 	teshari
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
+		species_allowed = list(SPECIES_TESHARI)
 
 	teshari_altdefault
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
+		species_allowed = list(SPECIES_TESHARI)
 
 	teshari_tight
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
+		species_allowed = list(SPECIES_TESHARI)
 
 	teshari_excited
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
+		species_allowed = list(SPECIES_TESHARI)
 
 	teshari_spike
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
+		species_allowed = list(SPECIES_TESHARI)
 
 	teshari_long
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
+		species_allowed = list(SPECIES_TESHARI)
 
 	teshari_burst
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
+		species_allowed = list(SPECIES_TESHARI)
 
 	teshari_shortburst
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
+		species_allowed = list(SPECIES_TESHARI)
 
 	teshari_mohawk
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
+		species_allowed = list(SPECIES_TESHARI)
 
 	teshari_pointy
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
+		species_allowed = list(SPECIES_TESHARI)
 
 	teshari_upright
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
+		species_allowed = list(SPECIES_TESHARI)
 
 	teshari_mane
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
+		species_allowed = list(SPECIES_TESHARI)
 
 	teshari_droopy
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
+		species_allowed = list(SPECIES_TESHARI)
 
 	teshari_mushroom
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
+		species_allowed = list(SPECIES_TESHARI)
+
+	teshari_twies
+		name = "Teshari Twies"
+		icon_state = "teshari_twies"
+		species_allowed = list(SPECIES_TESHARI)
+
+	teshari_backstrafe
+		name = "Teshari Backstrafe"
+		icon_state = "teshari_backstrafe"
+		species_allowed = list(SPECIES_TESHARI)
+
+	teshari_longway
+		name = "Teshari Long way"
+		icon_state = "teshari_longway"
+		species_allowed = list(SPECIES_TESHARI)
+
+	teshari_tree
+		name = "Teshari Tree"
+		icon_state = "teshari_tree"
+		species_allowed = list(SPECIES_TESHARI)
 
 	teshari_fluffymohawk
 		name = "Teshari Fluffy Mohawk"
-		icon =  'icons/mob/human_face_vr.dmi'
+		icon = 'icons/mob/human_face_vr.dmi'
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
 		icon_state = "teshari_fluffymohawk"
 		species_allowed = list(SPECIES_TESHARI)
@@ -521,7 +555,7 @@
 /datum/sprite_accessory/facial_hair
 	icon = 'icons/mob/human_face_or_vr.dmi'
 	var/color_blend_mode = ICON_MULTIPLY
-	species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_TESHARI, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST) //This lets all races use the facial hair styles.
+	species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST) //This lets all races use the facial hair styles.
 
 	shaved
 		name = "Shaved"
@@ -534,7 +568,7 @@
 		icon = 'icons/mob/human_face_or_vr.dmi'
 		icon_state = "facial_neckfluff"
 		gender = NEUTER
-		species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_TESHARI, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST)
+		species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST)
 
 	vulp_none
 		name = "None"
