@@ -92,6 +92,11 @@
 
 /obj/item/gun/projectile/shotgun/doublebarrel/pellet
 	ammo_type = /obj/item/ammo_casing/a12g/pellet
+	
+/obj/item/gun/projectile/shotgun/doublebarrel/holy
+	ammo_type = /obj/item/ammo_casing/a12g/silver
+	desc = "Alright you primitive screw heads, listen up. See this? This... is my BOOMSTICK."
+	holy = TRUE
 
 /obj/item/gun/projectile/shotgun/doublebarrel/flare
 	name = "signal shotgun"
