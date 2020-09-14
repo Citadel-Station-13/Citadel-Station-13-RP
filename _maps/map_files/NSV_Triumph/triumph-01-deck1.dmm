@@ -120,6 +120,14 @@
 	icon_state = "1-8"
 	},
 /obj/structure/cable,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 4;
+	icon_state = "pdoor0";
+	id = "engsec_ld_c";
+	name = "Security Checkpoint Blast Doors";
+	opacity = 0
+	},
 /turf/simulated/floor/plating,
 /area/engineering/foyer_mezzenine)
 "av" = (
@@ -1873,6 +1881,7 @@
 	req_access = list(24);
 	use_power = 1
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless/ceiling,
 /area/engineering/atmos)
 "if" = (
@@ -2968,7 +2977,7 @@
 /obj/structure/sign/warning{
 	pixel_y = -32
 	},
-/turf/space,
+/turf/simulated/floor/airless/ceiling,
 /area/space)
 "nY" = (
 /obj/structure/cable{
@@ -3776,6 +3785,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless/ceiling,
 /area/space)
 "rY" = (
@@ -6206,6 +6216,14 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 4;
+	icon_state = "pdoor0";
+	id = "engsec_ld_c";
+	name = "Security Checkpoint Blast Doors";
+	opacity = 0
+	},
 /turf/simulated/floor/plating,
 /area/engineering/foyer_mezzenine)
 "CH" = (
@@ -6506,6 +6524,9 @@
 	name = "Emergency Core Eject";
 	pixel_x = 22
 	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
 "EC" = (
@@ -6708,9 +6729,14 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
 "Fr" = (
-/obj/structure/catwalk,
-/turf/space,
-/area/space)
+/obj/machinery/button/remote/blast_door{
+	id = "engsec_ld_c";
+	name = "Access Lockdown";
+	pixel_x = 25;
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled,
+/area/crew_quarters/heads/chief)
 "Fw" = (
 /obj/structure/closet/crate/secure/engineering,
 /obj/item/storage/briefcase/fission/tungstencarbide,
@@ -8967,6 +8993,14 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 4;
+	icon_state = "pdoor0";
+	id = "engsec_ld_c";
+	name = "Security Checkpoint Blast Doors";
+	opacity = 0
+	},
 /turf/simulated/floor/plating,
 /area/engineering/foyer_mezzenine)
 "QO" = (
@@ -10856,6 +10890,7 @@
 	id = "atmos_out";
 	req_access = list(24)
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless/ceiling,
 /area/engineering/atmos)
 "ZJ" = (
@@ -18772,7 +18807,7 @@ dX
 fN
 fN
 iC
-kq
+ue
 ui
 Vz
 HI
@@ -20664,10 +20699,10 @@ ID
 gt
 dX
 ID
-Fr
-Fr
-Fr
-Fr
+ID
+ID
+ID
+ID
 nV
 eD
 fN
@@ -25737,7 +25772,7 @@ fN
 OD
 yn
 QE
-OT
+Fr
 mB
 es
 UQ
