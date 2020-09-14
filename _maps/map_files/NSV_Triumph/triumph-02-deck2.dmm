@@ -22,10 +22,6 @@
 /obj/item/paper_bin,
 /turf/simulated/floor/carpet/turcarpet,
 /area/crew_quarters/visitor_dining)
-"af" = (
-/obj/structure/loot_pile/maint/boxfort,
-/turf/simulated/floor/plating,
-/area/maintenance/dormitory)
 "ag" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -1719,13 +1715,6 @@
 "fq" = (
 /turf/simulated/floor/tiled/dark,
 /area/janitor)
-"fr" = (
-/obj/machinery/alarm{
-	pixel_y = 22
-	},
-/obj/structure/loot_pile/maint/trash,
-/turf/simulated/floor/plating,
-/area/maintenance/dormitory)
 "fu" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -2664,7 +2653,6 @@
 	dir = 1;
 	pixel_y = -24
 	},
-/obj/structure/loot_pile/maint/boxfort,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "hT" = (
@@ -2937,7 +2925,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/obj/structure/loot_pile/maint/trash,
+/obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/bar)
 "iG" = (
@@ -2986,7 +2974,7 @@
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_two)
 "iM" = (
-/obj/structure/loot_pile/maint/trash,
+/obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "iN" = (
@@ -3893,10 +3881,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_two)
-"lH" = (
-/obj/structure/loot_pile/maint/technical,
-/turf/simulated/floor/plating,
-/area/maintenance/dormitory)
 "lI" = (
 /obj/structure/table/marble,
 /obj/item/reagent_containers/glass/rag,
@@ -3952,7 +3936,7 @@
 	dir = 8;
 	pixel_x = 25
 	},
-/obj/structure/loot_pile/maint/trash,
+/obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "lU" = (
@@ -4781,7 +4765,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "op" = (
-/obj/structure/loot_pile/maint/trash,
+/obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/bar)
 "oq" = (
@@ -5350,7 +5334,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "qm" = (
@@ -5646,10 +5629,6 @@
 /obj/item/reagent_containers/spray/cleaner,
 /turf/simulated/floor/tiled/dark,
 /area/janitor)
-"ro" = (
-/obj/structure/loot_pile/maint/trash,
-/turf/simulated/floor/plating,
-/area/maintenance/cargo)
 "rp" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -31
@@ -6401,7 +6380,7 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/obj/structure/loot_pile/maint/boxfort,
+/obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "tr" = (
@@ -9123,6 +9102,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "Ci" = (
@@ -10475,7 +10455,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/lounge/kitchen_freezer)
 "Gy" = (
-/obj/structure/loot_pile/maint/technical,
+/obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "Gz" = (
@@ -11885,7 +11865,7 @@
 	dir = 8;
 	pixel_x = -26
 	},
-/obj/structure/loot_pile/maint/technical,
+/obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "KU" = (
@@ -13590,6 +13570,7 @@
 	dir = 4;
 	pixel_x = -24
 	},
+/obj/item/gun/projectile/shotgun/doublebarrel,
 /turf/simulated/floor/wood,
 /area/triumph/surfacebase/bar_backroom)
 "QT" = (
@@ -15817,21 +15798,14 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area_hallway)
 "Xl" = (
-/obj/structure/table/marble,
-/obj/machinery/door/window/westright{
-	dir = 4;
-	name = "Service Counter";
-	req_access = list(25);
-	req_one_access = list(25)
-	},
+/obj/machinery/smartfridge/drinks,
 /obj/machinery/door/blast/shutters{
 	dir = 2;
-	id = "kitchen";
+	id = "bar";
 	layer = 3.3;
-	name = "Kitchen Shutters"
+	name = "Bar Shutters"
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel,
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/wall,
 /area/crew_quarters/kitchen)
 "Xm" = (
 /obj/machinery/alarm{
@@ -20043,7 +20017,7 @@ nP
 ai
 Pk
 en
-hZ
+iM
 TC
 CU
 tA
@@ -22319,7 +22293,7 @@ ie
 my
 BB
 Ki
-af
+iM
 gC
 tA
 ii
@@ -25989,7 +25963,7 @@ pn
 kg
 aI
 gz
-oF
+op
 Ib
 dk
 WB
@@ -28291,16 +28265,16 @@ ew
 HW
 oE
 oE
-oE
 iM
+oE
 oE
 oE
 oE
 Ze
 oE
-lH
 oE
-xB
+oE
+KT
 oE
 oE
 rF
@@ -28683,8 +28657,8 @@ Rj
 tq
 dD
 Sv
-ro
 dD
+Gy
 Dt
 EI
 yQ
@@ -28997,7 +28971,7 @@ Ji
 dr
 hW
 yb
-oE
+iM
 gC
 tA
 ii
@@ -29139,7 +29113,7 @@ QJ
 Qp
 nx
 yb
-fr
+Qe
 gC
 cp
 ii
@@ -29560,7 +29534,7 @@ OO
 WZ
 QK
 zk
-oE
+iM
 IJ
 RW
 RW
@@ -29707,7 +29681,7 @@ gC
 oE
 oE
 oE
-oE
+iM
 hR
 tA
 ii
@@ -29844,7 +29818,7 @@ Ps
 Ps
 Ps
 zk
-af
+oE
 gC
 tA
 tA
@@ -29963,7 +29937,7 @@ ii
 ii
 Rj
 aC
-ro
+Gy
 Sv
 dD
 dD
@@ -31540,11 +31514,11 @@ cv
 tZ
 Iq
 ai
-af
+iM
 SU
 oE
 oE
-af
+iM
 LH
 tA
 ii

@@ -5674,6 +5674,19 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/command)
+"eoo" = (
+/obj/machinery/door/firedoor/glass,
+/obj/structure/grille,
+/obj/structure/window/reinforced/polarized{
+	dir = 10;
+	icon_state = "fwindow";
+	id = "sec_processing"
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/simulated/floor,
+/area/maintenance/security_starboard)
 "epg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -32605,8 +32618,8 @@
 /obj/effect/landmark{
 	name = "blobstart"
 	},
-/turf/simulated/floor/plating,
-/area/maintenance/security_starboard)
+/turf/simulated/floor/tiled,
+/area/chapel/main)
 "xVF" = (
 /turf/simulated/wall/r_wall,
 /area/security/forensics)
@@ -44009,7 +44022,7 @@ eOt
 fDD
 azG
 jPF
-jPF
+xVy
 fzM
 kXG
 eBU
@@ -46327,9 +46340,9 @@ gMN
 uMe
 gMN
 gMN
-xVy
 gMN
-tZH
+gMN
+gMN
 aSO
 dff
 ash
@@ -46470,8 +46483,8 @@ aSO
 aSO
 aSO
 aSO
-aSO
-aSO
+eoo
+eoo
 aSO
 dff
 ash
@@ -46612,8 +46625,8 @@ aSO
 dff
 dff
 dff
-dff
-dff
+nIK
+nIK
 dff
 dff
 ash
@@ -46753,10 +46766,10 @@ gMN
 aSO
 dff
 dff
-dff
-dff
-dff
-dff
+nIK
+nIK
+nIK
+nIK
 dff
 ash
 ash
@@ -46894,12 +46907,12 @@ ugw
 gMN
 aSO
 dff
-dff
-dff
-dff
-dff
-dff
-dff
+nIK
+nIK
+nIK
+nIK
+nIK
+nIK
 dff
 dff
 vgx
@@ -47035,14 +47048,14 @@ ntB
 tcX
 kEY
 aSO
-dff
-dff
 nIK
 nIK
 nIK
 nIK
-dff
-dff
+nIK
+nIK
+nIK
+nIK
 dff
 vgx
 qYr
@@ -47176,15 +47189,15 @@ fVZ
 ntB
 ugw
 gMN
-aSO
-dff
+ejP
 nIK
 nIK
 nIK
 nIK
 nIK
 nIK
-dff
+nIK
+nIK
 dff
 vgx
 qYr
@@ -47460,7 +47473,7 @@ cEK
 ntB
 ugl
 gMN
-aSO
+ejP
 nIK
 nIK
 nIK
