@@ -119,6 +119,7 @@
 	var/modifier_type_to_apply = null // If set, will apply a modifier to mobs that are hit by this projectile.
 	var/modifier_duration = null // How long the above modifier should last for. Leave null to be permanent.
 	var/excavation_amount = 0 // How much, if anything, it drills from a mineral turf.
+	var/holy = false // For Divine Anti Demon and Monster Hunter Weapons
 
 	embed_chance = 0	//Base chance for a projectile to embed
 
