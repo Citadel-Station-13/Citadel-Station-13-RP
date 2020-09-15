@@ -454,3 +454,23 @@
 	name = "bridge officer cap"
 	desc = "For a person with no authority who takes themselves very VERY seriously."
 	icon_state = "bridgeofficerhard"
+
+/obj/item/clothing/head/operations
+	name = "Operations Command Staff Cap"
+	desc = "A white cap distributed to Command staff aboard NT vessels."
+	icon_state = "operations_cap_command"
+
+/obj/item/clothing/head/operations/medsci
+	name = "Operations Medical/Science Staff Cap"
+	desc = "A faded-blue cap distributed to both Medical and Science staff aboard NT vessels."
+	icon_state = "operations_cap_medsci"
+
+/obj/item/clothing/head/operations/engineering
+	name = "Operations Engineering Staff Cap"
+	desc = "An orange/yellow cap distributed to Engineering staff aboard NT vessels."
+	icon_state = "operations_cap_engineering"
+
+/obj/item/clothing/head/operations/security
+	name = "Operations Security Staff Cap"
+	desc = "A red cap distributed to Security staff aboard NT vessels."
+	icon_state = "operations_cap_sec"

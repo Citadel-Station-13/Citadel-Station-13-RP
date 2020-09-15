@@ -40,14 +40,14 @@
 	icon = 'icons/turf/shuttle_parts.dmi'
 	icon_state = "nozzle"
 	power_channel = ENVIRON
-	idle_power_usage = 100
+	idle_power_usage = 150
 	anchored = TRUE
 	// construct_state = /decl/machine_construction/default/panel_closed
 	var/datum/ship_engine/ion/controller
 	var/thrust_limit = 1
 	var/on = 1
-	var/burn_cost = 750
-	var/generated_thrust = 2.5
+	var/burn_cost = 1000
+	var/generated_thrust = 4
 
 /obj/machinery/ion_engine/Initialize()
 	. = ..()

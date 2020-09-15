@@ -18,11 +18,12 @@
 #define Z_LEVEL_MININGPLANET			10
 #define Z_LEVEL_UNKNOWN_PLANET			11
 #define Z_LEVEL_DESERT_PLANET			12
+#define Z_LEVEL_GAIA_PLANET				13
 
-#define Z_LEVEL_ROGUEMINE_1				13
-#define Z_LEVEL_ROGUEMINE_2				14
-#define Z_LEVEL_ROGUEMINE_3				15
-#define Z_LEVEL_ROGUEMINE_4				16
+#define Z_LEVEL_ROGUEMINE_1				14
+#define Z_LEVEL_ROGUEMINE_2				15
+#define Z_LEVEL_ROGUEMINE_3				16
+#define Z_LEVEL_ROGUEMINE_4				17
 
 // Camera Networks
 #define NETWORK_TRIUMPH "Triumph"
@@ -156,6 +157,7 @@
 		list("Away Mission - Mining Planet"),//Mining planet
 		list("ExoPlanet - Z1 Planet"), // Rogue Exoplanet
 		list("ExoPlanet - Z2 Planet"), // Desert Exoplanet
+		list("Gaia Planet - Z3 Planet"), // Gaia Planet
 		list("Asteroid Belt 1","Asteroid Belt 2","Asteroid Belt 3","Asteroid Belt 4")
 	)
 
@@ -169,7 +171,8 @@
 		Z_LEVEL_PIRATEBASE,
 		Z_LEVEL_MININGPLANET,
 		Z_LEVEL_UNKNOWN_PLANET,
-		Z_LEVEL_DESERT_PLANET)
+		Z_LEVEL_DESERT_PLANET,
+		Z_LEVEL_GAIA_PLANET)
 
 	lateload_single_pick = null //Nothing right now.
 

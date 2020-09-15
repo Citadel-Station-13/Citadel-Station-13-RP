@@ -1,6 +1,6 @@
 
 /datum/gear/pipe
-	display_name = "pipe"
+	display_name = "Pipe"
 	path = /obj/item/clothing/mask/smokable/pipe
 
 /datum/gear/pipe/New()
@@ -9,18 +9,18 @@
 	for(var/pipe_style in typesof(/obj/item/clothing/mask/smokable/pipe))
 		var/obj/item/clothing/mask/smokable/pipe/pipe = pipe_style
 		pipes[initial(pipe.name)] = pipe
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(pipes, /proc/cmp_text_asc, TRUE))
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(pipes, /proc/cmp_text_asc))
 
 /datum/gear/matchbook
-	display_name = "matchbook"
+	display_name = "Matchbook"
 	path = /obj/item/storage/box/matches
 
 /datum/gear/lighter
-	display_name = "cheap lighter"
+	display_name = "Cheap Lighter"
 	path = /obj/item/flame/lighter
 
 /datum/gear/lighter/zippo
-	display_name = "Zippo selection"
+	display_name = "Zippo Selection"
 	path = /obj/item/flame/lighter/zippo
 
 /datum/gear/lighter/zippo/New()
@@ -31,23 +31,23 @@
 		//	continue														//VOREStation addition
 		var/obj/item/flame/lighter/zippo/zippo_type = zippo
 		zippos[initial(zippo_type.name)] = zippo_type
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(zippos, /proc/cmp_text_asc, TRUE))
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(zippos, /proc/cmp_text_asc))
 
 /datum/gear/ashtray
-	display_name = "ashtray, plastic"
+	display_name = "Plastic Ashtray"
 	path = /obj/item/material/ashtray/plastic
 
 /datum/gear/cigar
-	display_name = "cigar"
+	display_name = "Cigar"
 	path = /obj/item/clothing/mask/smokable/cigarette/cigar
 
 /datum/gear/cigarcase
-	display_name = "cigar case"
+	display_name = "Cigar Case"
 	path = /obj/item/storage/fancy/cigar
 	cost = 3
 
 /datum/gear/cigarettes
-	display_name = "cigarette selection"
+	display_name = "Cigarette Selection"
 	path = /obj/item/storage/fancy/cigarettes
 
 /datum/gear/cigarettes/New()
@@ -56,4 +56,4 @@
 	for(var/cigarette in (typesof(/obj/item/storage/fancy/cigarettes) - typesof(/obj/item/storage/fancy/cigarettes/killthroat)))
 		var/obj/item/storage/fancy/cigarettes/cigarette_brand = cigarette
 		cigarettes[initial(cigarette_brand.name)] = cigarette_brand
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(cigarettes, /proc/cmp_text_asc, TRUE))
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(cigarettes, /proc/cmp_text_asc))
