@@ -152,6 +152,9 @@
 		if(SS_SLEEPING)
 			state = SS_PAUSING
 
+/// Called after the config has been loaded or reloaded.
+/datum/controller/subsystem/proc/OnConfigLoad()
+
 /datum/controller/subsystem/proc/subsystem_log(msg)
 	return log_subsystem(name, msg)
 
@@ -205,3 +208,13 @@
 //usually called via datum/controller/subsystem/New() when replacing a subsystem (i.e. due to a recurring crash)
 //should attempt to salvage what it can from the old instance of subsystem
 /datum/controller/subsystem/Recover()
+
+/datum/controller/subsystem/vv_edit_var(var_name, var_value)
+	switch (var_name)
+		if (NAMEOF(src, can_fire))
+			//this is so the subsystem doesn't rapid fire to make up missed ticks causing more lag
+			if (var_value)
+				next_fire = world.time + wait
+		if (NAMEOF(src, queued_priority)) //editing this breaks things.
+			return FALSE
+	. = ..()
