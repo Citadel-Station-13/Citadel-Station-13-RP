@@ -298,7 +298,7 @@
 
 /datum/gear/suit/dept/cloak/cap
 	display_name = "Teshari - Facility Director Cloak"
-	path = /obj/item/clothing/suit/storage/teshari/cloak/jobs/cap
+	path = /obj/item/clothing/suit/storage/teshari/cloak/jobs
 	allowed_roles = list("Facility Director")
 
 /datum/gear/suit/dept/cloak/hop
