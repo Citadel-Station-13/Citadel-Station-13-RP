@@ -72,7 +72,7 @@
 	var/list/speech_buffer = list()
 	var/list/available_channels = list()
 
-	//Headset for Polly to yell at engineers :)
+	//Headset for Poly to yell at engineers :)
 	var/obj/item/radio/headset/ears = null
 
 	//The thing the parrot is currently interested in. This gets used for items the parrot wants to pick up, mobs it wants to steal from,
@@ -687,12 +687,12 @@
 /*
  * Sub-types
  */
-/mob/living/simple_mob/parrot/Polly
-	name = "Polly"
-	desc = "Polly the Parrot. An expert on quantum cracker theory."
-	speak = list("Polly wanna cracker!", ":e Check the singlo, you chucklefucks!",":e Wire the solars, you lazy bums!",":e WHO TOOK THE DAMN HARDSUITS?",":e OH GOD ITS FREE CALL THE SHUTTLE")
+/mob/living/simple_mob/parrot/Poly
+	name = "Poly"
+	desc = "Poly the Parrot. An expert on quantum cracker theory."
+	speak = list("Poly wanna cracker!", ":e Check the singlo, you chucklefucks!",":e Wire the solars, you lazy bums!",":e WHO TOOK THE DAMN HARDSUITS?",":e OH GOD ITS FREE CALL THE SHUTTLE")
 
-/mob/living/simple_mob/parrot/Polly/New()
+/mob/living/simple_mob/parrot/Poly/New()
 	ears = new /obj/item/radio/headset/headset_eng(src)
 	available_channels = list(":e")
 	..()

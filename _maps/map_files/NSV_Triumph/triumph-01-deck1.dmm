@@ -5144,7 +5144,7 @@
 /area/engineering/atmos/backup)
 "yn" = (
 /obj/structure/table/reinforced,
-/mob/living/simple_mob/animal/passive/bird/parrot/polly/ultimate,
+/mob/living/simple_mob/animal/passive/bird/parrot/poly/ultimate,
 /obj/item/flashlight/lamp,
 /obj/item/radio/intercom{
 	dir = 1;

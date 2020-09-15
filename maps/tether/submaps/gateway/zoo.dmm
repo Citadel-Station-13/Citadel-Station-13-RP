@@ -7158,7 +7158,7 @@
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "sJ" = (
-/mob/living/simple_mob/animal/passive/bird/parrot/polly{
+/mob/living/simple_mob/animal/passive/bird/parrot/poly{
 	faction = "zoo"
 	},
 /turf/simulated/floor/holofloor/grass,

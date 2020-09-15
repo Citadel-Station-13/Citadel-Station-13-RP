@@ -12,9 +12,9 @@
 	var/obj/item/radio/headset/my_headset = null
 
 // Say list
-/datum/say_list/bird/polly
+/datum/say_list/bird/poly
 	speak = list(
-		"Polly wanna cracker!",
+		"Poly wanna cracker!",
 		"Check the singulo, you chucklefucks!",
 		"Wire the solars, you lazy bums!",
 		"WHO TOOK THE DAMN HARDSUITS?",
@@ -102,18 +102,18 @@
 // Subtypes.
 
 // Best Bird
-/mob/living/simple_mob/animal/passive/bird/parrot/polly
-	name = "Polly"
+/mob/living/simple_mob/animal/passive/bird/parrot/poly
+	name = "Poly"
 	desc = "It's a parrot. An expert on quantum cracker theory."
-	icon_state = "polly"
-	icon_rest = "polly-held"
-	icon_dead = "polly-dead"
+	icon_state = "poly"
+	icon_rest = "poly-held"
+	icon_dead = "poly-dead"
 	tt_desc = "E Ara macao"
 	my_headset = /obj/item/radio/headset/headset_eng
-	say_list_type = /datum/say_list/bird/polly
+	say_list_type = /datum/say_list/bird/poly
 
 // Best Bird with best headset.
-/mob/living/simple_mob/animal/passive/bird/parrot/polly/ultimate
+/mob/living/simple_mob/animal/passive/bird/parrot/poly/ultimate
 	my_headset = /obj/item/radio/headset/omni
 
 /mob/living/simple_mob/animal/passive/bird/parrot/kea

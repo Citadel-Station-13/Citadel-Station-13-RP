@@ -24247,7 +24247,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/station/explorer_entry)
 "ufh" = (
-/mob/living/simple_mob/animal/passive/bird/parrot/polly{
+/mob/living/simple_mob/animal/passive/bird/parrot/poly{
 	desc = "The CE's tried and true beloved pet to everyone that doesn't wear a headset."
 	},
 /turf/simulated/floor/carpet/oracarpet,
