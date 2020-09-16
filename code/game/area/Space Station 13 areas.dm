@@ -1075,6 +1075,30 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Dormitory Room 10"
 	icon_state = "Sleep"
 
+/area/crew_quarters/sleep/Dorm_11
+	name = "\improper Dormitory Room 11"
+	icon_state = "Sleep"
+
+/area/crew_quarters/sleep/CMO_quarters
+	name = "\improper CMO Dorm"
+	icon_state = "Sleep"
+
+/area/crew_quarters/sleep/RD_quarters
+	name = "\improper RD Dorm"
+	icon_state = "Sleep"
+
+/area/crew_quarters/sleep/CE_quarters
+	name = "\improper CE Dorm"
+	icon_state = "Sleep"
+
+/area/crew_quarters/sleep/HOS_quarters
+	name = "\improper HOS Dorm"
+	icon_state = "Sleep"
+
+/area/crew_quarters/sleep/HOP_quarters
+	name = "\improper HOP Dorm"
+	icon_state = "Sleep"
+
 /area/crew_quarters/sleep/vistor_room_1
 	name = "\improper Visitor Room 1"
 	icon_state = "Sleep"

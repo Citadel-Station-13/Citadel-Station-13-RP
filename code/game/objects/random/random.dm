@@ -923,7 +923,7 @@ something, make sure it's not in one of the other lists.*/
 				prob(2);/obj/item/clothing/gloves/sterile/latex,
 				prob(4);/obj/item/clothing/glasses/science,
 				prob(3);/obj/item/clothing/glasses/material,
-				prob(1);/obj/item/clothing/head/beret/purple,
+				prob(1);/obj/item/clothing/head/beret/science,
 				prob(1);/obj/item/clothing/head/bio_hood/scientist,
 				prob(4);/obj/item/clothing/suit/storage/toggle/labcoat,
 				prob(4);/obj/item/clothing/suit/storage/toggle/labcoat/science,

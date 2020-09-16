@@ -16463,6 +16463,16 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/evac)
+"QL" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/polarized{
+	dir = 10;
+	icon_state = "fwindow";
+	id = "sec_processing"
+	},
+/obj/structure/fans/tiny,
+/turf/simulated/floor,
+/area/shuttle/escape)
 "Rc" = (
 /obj/structure/table/glass,
 /obj/item/defib_kit/compact/loaded,
@@ -20213,14 +20223,14 @@ rD
 rD
 wC
 wC
-Gp
-rF
+QL
+QL
 GA
 vc
 vc
 GA
-rF
-rF
+QL
+QL
 wC
 rD
 rD
@@ -20499,10 +20509,10 @@ wC
 um
 um
 um
-Gp
+QL
 vc
 vc
-Gp
+QL
 EH
 wf
 wC
@@ -20641,10 +20651,10 @@ wC
 um
 um
 sX
-Gp
+QL
 vc
 vc
-Gp
+QL
 EH
 wf
 wC

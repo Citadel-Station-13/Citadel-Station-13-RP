@@ -140,6 +140,28 @@
 	shuttle_tag = "Excursion Shuttle"
 	req_one_access = list(access_pilot)
 
+// Public Civilian Shuttle
+
+/datum/shuttle/autodock/overmap/civvie
+	name = "Civilian Transport"
+	warmup_time = 10
+	shuttle_area = list(/area/shuttle/civvie/cockpit, /area/shuttle/civvie/general)
+	current_location = "triumph_civvie_home"
+	docking_controller_tag = "civvie_docker"
+	landmark_transition = "nav_transit_civvie"
+	fuel_consumption = 10
+	move_time = 30
+
+/area/shuttle/civvie
+	name = "Civilian Transport"
+	icon_state = "shuttle"
+
+/obj/machinery/computer/shuttle_control/explore/civvie
+	name = "civilian jump console"
+	shuttle_tag = "Civilian Transport"
+	req_one_access = list(access_pilot)
+
+
 // PIRATE SHIP (Yaya!)
 /datum/shuttle/autodock/overmap/pirate
 	name = "Pirate Skiff"
@@ -168,6 +190,13 @@
 	docking_controller = "expshuttle_dock"
 	base_turf = /turf/simulated/floor/tiled/techfloor/grid
 	base_area = /area/triumph/station/excursion_dock
+
+/obj/effect/shuttle_landmark/triumph/deck4/civvie
+	name = "NSV Triumph - Civilian Transport Dock"
+	landmark_tag = "triumph_civvie_home"
+	docking_controller = "civvie_docker"
+	base_turf = /turf/space
+	base_area = /area/space
 
 
 /obj/effect/shuttle_landmark/triumph/deck4/excursion_space
@@ -228,6 +257,10 @@
 /obj/effect/shuttle_landmark/transit/triumph/pirate
 	name = "In transit"
 	landmark_tag = "nav_transit_pirate"
+
+/obj/effect/shuttle_landmark/transit/triumph/civvie
+	name = "In transit"
+	landmark_tag = "nav_transit_civvie"
 
 
 ////////////////////////////////////////
