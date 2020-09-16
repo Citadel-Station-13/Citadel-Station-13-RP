@@ -197,4 +197,8 @@
 	display_name = "Veteran's Cargo Armband"
 	sort_category = "Donator"
 	path = /obj/item/clothing/accessory/armband/veterancargo
+<<<<<<< HEAD
 	ckeywhitelist = list("yourdoom9898")
+=======
+	ckeywhitelist = list("yourdoom9898")
+>>>>>>> parent of 3089768855... Donator stuff

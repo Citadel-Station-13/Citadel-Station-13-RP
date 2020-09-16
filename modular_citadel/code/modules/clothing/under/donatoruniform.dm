@@ -19,9 +19,3 @@
 	item_state = "hungrycricket_opd"
 	rolled_sleeves = 0
 	rolled_down = 0
-
-/obj/item/clothing/under/donator/mikubikini
-	name = "starlight singer bikini"
-	desc = " "
-	icon_state = "mikubikini"
-	item_state = "mikubikini"
