@@ -115,6 +115,12 @@
 	light_power = 3
 	light_color = "#3300ff"
 
+/obj/effect/projectile/tracer/faint
+	name = "bullet trail"
+	light_range = 1
+	light_power = 0.25
+	light_color = "#ffffff"
+
 //VOREStation edit: medigun
 /obj/effect/projectile/tracer/medigun
 	icon = 'icons/obj/projectiles_vr.dmi'

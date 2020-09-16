@@ -96,7 +96,7 @@
 	weaknesses = OVERMAP_WEAKNESS_EXPLOSIVE | OVERMAP_WEAKNESS_FIRE
 
 /obj/effect/overmap/event/hostile_migration
-	name = "hostile lifesigns"
+	name = "unknown lifesigns"
 	events = list(/datum/event/hostile_migration/overmap)
 	opacity = 0
 	event_icon_states = list("rats1", "rats2")
@@ -114,10 +114,10 @@
 	weaknesses = OVERMAP_WEAKNESS_EMP
 
 /obj/effect/overmap/event/cult
-	name = "screaming signals"
+	name = "eerie signals"
 	events = list(/datum/event/cult/overmap)
 	opacity = 0
-	event_icon_states = list("cultist")
+	event_icon_states = list("cultist","cultist2")
 	color = "#DD4444"
 	difficulty = EVENT_LEVEL_MAJOR
 	weaknesses = OVERMAP_WEAKNESS_FIRE

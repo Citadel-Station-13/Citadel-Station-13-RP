@@ -455,8 +455,8 @@ GLOBAL_LIST_EMPTY(PDAs)
 				desc = "A portable microcomputer by Thinktronic Systems, LTD. This model is a wrist-bound version."
 				slot_flags = SLOT_ID | SLOT_BELT | SLOT_GLOVES
 				sprite_sheets = list(
-				SPECIES_TESHARI = 'icons/mob/species/seromi/pda_wrist.dmi',
-				SPECIES_VR_TESHARI = 'icons/mob/species/seromi/pda_wrist.dmi',
+				SPECIES_TESHARI = 'icons/mob/species/teshari/pda_wrist.dmi',
+				SPECIES_VR_TESHARI = 'icons/mob/species/teshari/pda_wrist.dmi',
 				)
 			else
 				icon = 'icons/obj/pda_old.dmi'

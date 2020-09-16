@@ -89,6 +89,10 @@
 	firing_lanes = TRUE		// But not your buddies!
 	conserve_ammo = TRUE	// And don't go wasting bullets!
 
+/datum/ai_holder/simple_mob/merc/ranged/suppressor
+	threaten = FALSE // he just shoots you
+	respect_alpha = FALSE // he really just shoots you
+	vision_range = 9 // plutonia experience
 
 ////////////////////////////////
 //			Melee
@@ -240,7 +244,7 @@
 
 // Ranged Space Merc
 /mob/living/simple_mob/humanoid/merc/ranged/space
-	name = "syndicate sommando"
+	name = "syndicate commando"
 	icon_state = "syndicaterangedpsace"
 	icon_living = "syndicaterangedpsace"
 
@@ -260,6 +264,64 @@
 
 /mob/living/simple_mob/humanoid/merc/ranged/space/Process_Spacemove(var/check_drift = 0)
 	return
+
+/mob/living/simple_mob/humanoid/merc/ranged/space/suppressor
+	name = "mercenary suppressor" // the plutonia experience
+	desc = "Geeze, weren't shotgunners bad enough? At least when you fade this jerk you get...flashbanged."
+	icon_state = "syndicaterangedspace-elite"
+	icon_living = "syndicaterangedspace-elite"
+	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/suppressor // he just starts blasting
+	projectiletype = /obj/item/projectile/bullet/pistol/medium/ap/suppressor // it's high velocity
+	projectilesound = 'sound/weapons/doompistol-perkristian.ogg'
+	armor = list(melee = 80, bullet = 65, laser = 50, energy = 15, bomb = 80, bio = 100, rad = 100) // this is the merc rig's stats, yes
+	grenade_type = /obj/item/grenade/concussion/frag
+	base_attack_cooldown = 2.5 // this mercenary
+	reload_max = 24 // is designed
+	special_attack_charges = 5 // to wipe your squad
+	loot_list = list()
+	corpse = null
+
+/mob/living/simple_mob/humanoid/merc/ranged/space/suppressor/death()
+	// you thought killing him would be the least of your worries?
+	// think again
+	var/obj/item/grenade/flashbang/banger = new(get_turf(src))
+	banger.throw_at(ai_holder.target, 5, 5, null)
+	banger.det_time = 25
+	banger.activate(null)
+	..()
+
+/mob/living/simple_mob/humanoid/merc/ranged/space/suppressor/elite
+	name = "mercenary elite suppressor" // the Nightmare! plutonia experience
+	desc = "Geeze, weren't shotgunners bad enough? At least if you fade this jerk, you get flashbanged. A mite more difficult with that shield, though."
+	icon_state = "syndi-ranged-space-elite-shield"
+	icon_living = "syndi-ranged-space-elite-shield"
+	armor = list(melee = 80, bullet = 70, laser = 55, energy = 15, bomb = 80, bio = 100, rad = 100) // see code for military rig
+	maxHealth = 180
+	health = 180
+
+// They have a shield, so they try to block
+/mob/living/simple_mob/humanoid/merc/ranged/space/suppressor/elite/attackby(var/obj/item/O as obj, var/mob/user as mob)
+	if(O.force)
+		if(prob(50))
+			visible_message("<span class='danger'>\The [src] blocks \the [O] with its shield!</span>")
+			if(user)
+				ai_holder.react_to_attack(user)
+			return
+		else
+			..()
+	else
+		visible_message("<span class='warning'>\The [user] gently taps [src] with \the [O].</span>")
+
+/mob/living/simple_mob/humanoid/merc/ranged/space/suppressor/elite/bullet_act(var/obj/item/projectile/Proj)
+	if(!Proj)
+		return
+	if(prob(50))
+		visible_message("<font color='red'><B>[src] blocks [Proj] with its shield!</B></font>")
+		if(Proj.firer)
+			ai_holder.react_to_attack(Proj.firer)
+		return
+	else
+		..()
 
 ////////////////////////////////
 //			PoI Mercs

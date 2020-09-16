@@ -12,8 +12,6 @@
 	burn_delay = 2 SECONDS
 	fore_dir = EAST	// Which direction the ship/z-level is facing.  It will move dust particles from that direction when moving.
 	base = TRUE		// Honestly unsure what this does but it seems the main sector or "Map" we're at has this so here it stays
-	start_x = 4
-	start_y = 5
 	// The waypoints that are avaliable once you are at this Navpoint
 	initial_generic_waypoints = list("nav_capitalship_docking2", "triumph_excursion_hangar", "triumph_space_SW")
 
@@ -92,8 +90,6 @@
 	color = "#BBBBBB"
 	known = FALSE
 	in_space = 1
-	start_x = 18
-	start_y = 23
 	initial_generic_waypoints = list("triumph_excursion_debrisfield")
 
 
@@ -102,8 +98,6 @@
 	desc = "ASdlke ERROR%%%% UNABLE TO----."
 	scanner_desc = @{"[i]Information[/i]: Scans report a planet with nearly no atmosphere, but life-signs are registered."}
 	in_space = 0
-	start_x = 17
-	start_y = 43
 	icon_state = "globe"
 	color = "#882933"
 
@@ -115,8 +109,6 @@ Atmosphere: Thin
 Weather: Sunny, little to no wind
 Lifesign: Multiple Fauna and humanoid life-signs detected."}
 	in_space = 0
-	start_x = 38
-	start_y = 7
 	icon_state = "globe"
 	color = "#BA9066"
 
@@ -127,8 +119,6 @@ Lifesign: Multiple Fauna and humanoid life-signs detected."}
 	scanner_desc = @{"[i]Information[/i]
 Warning, unable to scan through sensor shielding systems at location. Possible heavy hostile life-signs."}
 	in_space = 1
-	start_x = 52
-	start_y = 56
 	known = FALSE
 	icon_state = "piratebase"
 	color = "#FF3333"
@@ -141,8 +131,6 @@ Warning, unable to scan through sensor shielding systems at location. Possible h
 Atmopshere: Mix of Oxygen, Nitrogen and Phoron. DANGER
 Lifesigns: No immediate life-signs detected."}
 	in_space = 0
-	start_x = 10
-	start_y = 19
 	icon_state = "globe"
 	color = "#8F6E4C"
 	initial_generic_waypoints = list("mining_outpost")
@@ -163,7 +151,5 @@ Lifesign: Multiple Fauna. No history of hostile life recorded
 Ownership: Planet is owned by the Happy Days and Sunshine Corporation.
 Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 	in_space = 0
-	start_x = 53
-	start_y = 11
 	icon_state = "globe"
 	color = "#33BB33"
