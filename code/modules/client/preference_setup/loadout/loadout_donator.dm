@@ -198,33 +198,3 @@
 	sort_category = "Donator"
 	path = /obj/item/clothing/accessory/armband/veterancargo
 	ckeywhitelist = list("yourdoom9898")
-
-/datum/gear/donator/mikubikini
-	display_name = "starlight singer bikini"
-	sort_category = "Donator"
-	path = /obj/item/clothing/under/mikubikini
-	ckeywhitelist = list("grandvegeta")
-
-/datum/gear/donator/mikujacket
-	display_name = "starlight singer jacket"
-	sort_category = "Donator"
-	path = /obj/item/clothing/suit/mikujacket
-	ckeywhitelist = list("grandvegeta")
-
-/datum/gear/donator/mikuhair
-	display_name = "starlight singer hair"
-	sort_category = "Donator"
-	path = /obj/item/clothing/head/mikuhair
-	ckeywhitelist = list("grandvegeta")
-
-/datum/gear/donator/mikugloves
-	display_name = "starlight singer gloves"
-	sort_category = "Donator"
-	path = /obj/item/clothing/gloves/mikugloves
-	ckeywhitelist = list("grandvegeta")
-
-/datum/gear/donator/mikuleggings
-	display_name = "starlight singer leggings"
-	sort_category = "Donator"
-	path = /obj/item/clothing/shoes/mikuleggings
-	ckeywhitelist = list("grandvegeta")
