@@ -6,7 +6,7 @@
 	heat_protection = HEAD
 	body_parts_covered = HEAD|FACE|EYES
 	slowdown = 0.5
-	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 100, rad = 70) //realistically would have some armor but balance.
+	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 100, rad = 100) //hey look! some rad protection!
 	siemens_coefficient = 1
 
 	species_restricted = list(SPECIES_ZADDAT, SPECIES_PROMETHEAN) //on request from maintainer
@@ -15,7 +15,7 @@
 	name = "\improper Hegemony Shroud"
 	desc = "A Hegemony environment suit, still favored by the Spacer Zaddat because of its durability and ease of manufacture."
 	slowdown = 1
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 100, rad = 70)
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 100, rad = 100)
 	siemens_coefficient = 1
 	allowed = list(/obj/item/flashlight,/obj/item/tank)
 	icon_state = "zaddat_hegemony"
@@ -118,14 +118,14 @@
 				helmet.icon_state = "zaddat_rugged"
 				helmet.item_state = "zaddat_rugged"
 		if("Ancient")
-			name = "\improper ancient Shroud"
-			base_name = "\improper ancient Shroud"
+			name = "ancient Shroud"
+			base_name = "ancient Shroud"
 			desc = "History is spoken through scars, this Shroud wears many, and has seen the test of time."
 			icon_state = "zaddat_ancient"
 			item_state = "zaddat_ancient"
 			if(helmet)
-				helmet.name = "\improper ancient Shroud helmet"
-				helmet.desc = "It's a little heavy, but certainly durrable."
+				helmet.name = "ancient Shroud helmet"
+				helmet.desc = "This old, durable, rusted helmet bears a long crack across the visor, along with many other nicks and scratches along it's plating. Your mind stirrs with memories the longer you look into it."
 				helmet.icon_state = "zaddat_ancient"
 				helmet.item_state = "zaddat_ancient"
 		if("Freefarer")
@@ -142,7 +142,7 @@
 		if("Healer")
 			name = "\improper Healer Shroud"
 			base_name = "\improper Healer Shroud"
-			desc = "A much more modern suit than most, this suit was designed for mobility and comfort for those who risk their lives to save others."
+			desc = "A much more modern Shroud than many, this suit was designed for mobility and comfort for those who risk their lives to save others."
 			icon_state = "zaddat_healer"
 			item_state = "zaddat_healer"
 			if(helmet)
@@ -153,7 +153,7 @@
 		if("Breaker")
 			name = "\improper Breaker Shroud"
 			base_name = "\improper Breaker Shroud"
-			desc = "Built with durrability and intimidation in mind, the combat 'Breaker' Shroud is typically reserved for combat qualified individuals."
+			desc = "Built with durability and intimidation in mind, the military grade 'Breaker' Shroud is typically reserved for combat qualified individuals."
 			icon_state = "zaddat_breaker"
 			item_state = "zaddat_breaker"
 			if(helmet)

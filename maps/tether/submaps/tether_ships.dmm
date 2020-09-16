@@ -3,8 +3,14 @@
 /turf/space,
 /area/space)
 "ab" = (
+/obj/effect/shuttle_landmark/transit{
+	base_area = /area/space;
+	base_turf = /turf/space/transit/east;
+	landmark_tag = "belter_transit";
+	name = "Belter Transit"
+	},
 /turf/space/transit/east,
-/area/shuttle/belter/transit)
+/area/space)
 "ac" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
@@ -40,15 +46,27 @@
 /turf/space/sandyscroll,
 /area/space)
 "fg" = (
+/obj/effect/shuttle_landmark/transit{
+	base_area = /area/space;
+	base_turf = /turf/space/bluespace;
+	landmark_tag = "tether_excursion_bluespace";
+	name = "Excursion Bluespace Transit"
+	},
 /turf/space/bluespace,
-/area/shuttle/excursion/bluespace)
+/area/space)
 "gO" = (
 /obj/effect/step_trigger/teleporter/planetary_fall/virgo3b,
 /turf/simulated/sky/virgo3b/south,
 /area/space)
 "gP" = (
+/obj/effect/shuttle_landmark/transit{
+	base_area = /area/space;
+	base_turf = /turf/simulated/sky/virgo3b/south;
+	landmark_tag = "tether_excursion_virgo3bsky";
+	name = "Excursion Virgo3b Sky"
+	},
 /turf/simulated/sky/virgo3b/south,
-/area/shuttle/excursion/virgo3b_sky)
+/area/space)
 "gT" = (
 /turf/space/transit/east,
 /area/space)
@@ -86,25 +104,57 @@
 	},
 /area/space)
 "ha" = (
+/obj/effect/shuttle_landmark/transit{
+	base_area = /area/space;
+	base_turf = /turf/space/transit/south;
+	landmark_tag = "antag_space_transit";
+	name = "Proto Shuttle Transit"
+	},
 /turf/space/transit/south,
-/area/shuttle/antag_space/transit)
+/area/space)
 "hb" = (
+/obj/effect/shuttle_landmark/transit{
+	base_area = /area/space;
+	base_turf = /turf/unsimulated/floor/techfloor_grid;
+	flags = 0;
+	landmark_tag = "antag_ground_transit";
+	name = "Secret Tunnel"
+	},
 /turf/unsimulated/floor/techfloor_grid{
 	icon = 'icons/turf/transit_vr.dmi'
 	},
-/area/shuttle/antag_ground/transit)
+/area/space)
 "hc" = (
 /turf/simulated/sky/virgo3b/south,
 /area/space)
 "hd" = (
+/obj/effect/shuttle_landmark/transit{
+	base_area = /area/space;
+	base_turf = /turf/space/sandyscroll;
+	landmark_tag = "tether_excursion_transit_sand";
+	name = "Excursion Sandy Transit"
+	},
 /turf/space/sandyscroll,
-/area/shuttle/excursion/sand_moving)
+/area/space)
 "he" = (
+/obj/effect/shuttle_landmark/transit{
+	base_area = /area/space;
+	base_turf = /turf/space;
+	docking_controller = null;
+	landmark_tag = "tether_excursion_space";
+	name = "Excursion Space"
+	},
 /turf/space,
-/area/shuttle/excursion/space)
+/area/space)
 "hf" = (
+/obj/effect/shuttle_landmark/transit{
+	base_area = /area/space;
+	base_turf = /turf/space/transit/east;
+	landmark_tag = "escapepod1_transit";
+	name = "Escapepod 1 Transit"
+	},
 /turf/space/transit/east,
-/area/shuttle/large_escape_pod1/transit)
+/area/space)
 "hh" = (
 /obj/effect/floor_decal/transit/orange{
 	dir = 8
@@ -138,8 +188,14 @@
 /turf/space/bluespace,
 /area/space)
 "hk" = (
+/obj/effect/shuttle_landmark/transit{
+	base_area = /area/space;
+	base_turf = /turf/simulated/sky/virgo3b/south;
+	landmark_tag = "tether_backup_transit";
+	name = "Tether Backup Transit"
+	},
 /turf/simulated/sky/virgo3b/south,
-/area/shuttle/tether/transit)
+/area/space)
 "hn" = (
 /obj/effect/step_trigger/thrower{
 	affect_ghosts = 1;
@@ -163,8 +219,15 @@
 /turf/space/transit/south,
 /area/space)
 "hq" = (
+/obj/effect/shuttle_landmark/transit{
+	base_area = /area/space;
+	base_turf = /turf/space;
+	docking_controller = null;
+	landmark_tag = "tether_excursion_transit_space";
+	name = "Excursion Transit Space"
+	},
 /turf/space/transit/south,
-/area/shuttle/excursion/space_moving)
+/area/space)
 "hr" = (
 /obj/effect/step_trigger/thrower{
 	affect_ghosts = 1;
@@ -293,8 +356,14 @@
 /turf/space/transit/north,
 /area/space)
 "Js" = (
+/obj/effect/shuttle_landmark/transit{
+	base_area = /area/space;
+	base_turf = /turf/space/transit/north;
+	landmark_tag = "skipjack_transit";
+	name = "Skipjack Transit"
+	},
 /turf/space/transit/north,
-/area/skipjack_station/transit)
+/area/space)
 "Nb" = (
 /turf/space,
 /turf/space/transit/north,
@@ -311,8 +380,14 @@
 /turf/space/transit/north,
 /area/space)
 "TL" = (
+/obj/effect/shuttle_landmark/transit{
+	base_area = /area/space;
+	base_turf = /turf/space/transit/east;
+	landmark_tag = "specops_transit";
+	name = "Specops Transit"
+	},
 /turf/space/transit/east,
-/area/shuttle/escape_pod3/transit)
+/area/space)
 
 (1,1,1) = {"
 aa

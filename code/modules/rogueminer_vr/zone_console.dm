@@ -17,14 +17,17 @@
 	var/debug = 0
 	var/debug_scans = 0
 	var/scanning = 0
-	var/legacy_zone = 0 //Disable scanning and whatnot.
+	var/legacy_zone = 0	// Disable scanning and whatnot.
 	var/obj/machinery/computer/shuttle_control/belter/shuttle_control
 
 /obj/machinery/computer/roguezones/Initialize()
 	. = ..()
+	shuttle_control = locate(/obj/machinery/computer/shuttle_control/belter)
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/machinery/computer/roguezones/LateInitialize()
 	if(!rm_controller)
 		rm_controller = new /datum/controller/rogue()
-	shuttle_control = locate(/obj/machinery/computer/shuttle_control/belter)
 
 /obj/machinery/computer/roguezones/attack_ai(mob/user as mob)
 	return attack_hand(user)
@@ -49,7 +52,7 @@
 	data["difficulty"] = rm_controller.diffstep_strs[rm_controller.diffstep]
 	data["occupied"] = curZoneOccupied
 	data["scanning"] = scanning
-	data["updated"] = world.time - rm_controller.last_scan < 200 //Very recently scanned (20 seconds)
+	data["updated"] = world.time - rm_controller.last_scan < 200	// Very recently scanned (20 seconds)
 	data["debug"] = debug
 
 	if(!shuttle_control)
@@ -66,9 +69,9 @@
 		data["shuttle_at_station"] = 0
 
 	var/can_scan = 0
-	if(chargePercent >= 100) //Keep having weird problems with these in one 'if' statement
-		if(shuttle_control && (shuttle_control.z in GLOB.using_map.belter_docked_z)) //Even though I put them all in parens to avoid OoO problems...
-			if(!curZoneOccupied) //Not sure why.
+	if(chargePercent >= 100)	// Keep having weird problems with these in one 'if' statement
+		if(shuttle_control && (shuttle_control.z in GLOB.using_map.belter_docked_z))	// Even though I put them all in parens to avoid OoO problems...
+			if(!curZoneOccupied)	// Not sure why.
 				if(!scanning)
 					can_scan = 1
 
@@ -104,31 +107,32 @@
 /obj/machinery/computer/roguezones/proc/scan_for_new_zone()
 	if(scanning) return
 
-	//Set some kinda scanning var to pause UI input on console
+	// Set some kinda scanning var to pause UI input on console
 	rm_controller.last_scan = world.time
 	scanning = 1
 	sleep(60)
 
-	//Break the shuttle temporarily.
+	// Break the shuttle temporarily.
 	shuttle_control.shuttle_tag = null
 
-	//Build and get a new zone.
+	// Build and get a new zone.
 	var/datum/rogue/zonemaster/ZM_target = rm_controller.prepare_new_zone()
 
-	//Update shuttle destination.
-	var/datum/shuttle/ferry/S = SSshuttle.shuttles["Belter"]
-	S.area_offsite = ZM_target.myshuttle
+	// Update shuttle destination.
+	var/datum/shuttle/autodock/ferry/S = SSshuttle.shuttles["Belter"]
+	S.landmark_offsite = ZM_target.myshuttle_landmark
+	S.next_location = S.get_location_waypoint(!S.location)
 
-	//Re-enable shuttle.
+	// Re-enable shuttle.
 	shuttle_control.shuttle_tag = "Belter"
 
-	//Update rm_previous
+	// Update rm_previous
 	rm_controller.previous_zone = rm_controller.current_zone
 
-	//Update rm_current
+	// Update rm_current
 	rm_controller.current_zone = ZM_target
 
-	//Unset scanning
+	// Unset scanning
 	scanning = 0
 
 	return
@@ -139,13 +143,13 @@
 
 /obj/machinery/computer/roguezones/proc/failsafe_shuttle_recall()
 	if(!shuttle_control)
-		return // Shuttle computer has been destroyed
+		return	// Shuttle computer has been destroyed
 	if (!(shuttle_control.z in GLOB.using_map.belter_belt_z))
-		return // Usable only when shuttle is away
+		return	// Usable only when shuttle is away
 	if(rm_controller.current_zone && rm_controller.current_zone.is_occupied())
-		return // Not usable if shuttle is in occupied zone
+		return	// Not usable if shuttle is in occupied zone
 	// Okay do it
-	var/datum/shuttle/ferry/S = SSshuttle.shuttles["Belter"]
+	var/datum/shuttle/autodock/ferry/S = SSshuttle.shuttles["Belter"]
 	S.launch(usr)
 
 /obj/item/circuitboard/roguezones

@@ -7,11 +7,10 @@
 	real_name = "Juggernaut"
 	construct_type = "juggernaut"
 	desc = "A possessed suit of armour driven by the will of the restless dead"
-	icon = 'icons/mob/mob.dmi'
 	icon_state = "behemoth"
 	icon_living = "behemoth"
-	maxHealth = 300
-	health = 300
+	maxHealth = 200
+	health = 200
 	response_harm   = "harmlessly punches"
 	harm_intent_damage = 0
 	melee_damage_lower = 30
@@ -25,6 +24,8 @@
 	movement_cooldown = 6 //Not super fast, but it might catch up to someone in armor who got punched once or twice.
 
 //	environment_smash = 2	// Whatever this gets renamed to, Juggernauts need to break things
+
+	ai_holder_type = /datum/ai_holder/simple_mob/destructive
 
 
 	attack_sound = 'sound/weapons/heavysmash.ogg'
@@ -97,8 +98,8 @@
 	name = "Behemoth"
 	real_name = "Behemoth"
 	desc = "The pinnacle of occult technology, Behemoths are nothing shy of both an Immovable Object, and Unstoppable Force."
-	maxHealth = 750
-	health = 750
+	maxHealth = 600
+	health = 600
 	speak_emote = list("rumbles")
 	melee_damage_lower = 50
 	melee_damage_upper = 50

@@ -74,7 +74,11 @@
 	var/allow_ai_shells = FALSE			// allow AIs to enter and leave special borg shells at will, and for those shells to be buildable.
 	var/give_free_ai_shell = FALSE		// allows a specific spawner object to instantiate a premade AI Shell
 	var/hostedby = null
+
 	var/respawn = 1
+	var/static/respawn_time = 3000		// time before a dead player is allowed to respawn (in ds, though the config file asks for minutes, and it's converted below)
+	var/static/respawn_message = "<span class='notice'><B>Make sure to play a different character, and please roleplay correctly!</B></span>"
+
 	var/guest_jobban = 1
 	var/usewhitelist = 0
 	var/kick_inactive = 0				//force disconnect for inactive players after this many minutes, if non-0
@@ -164,7 +168,7 @@
 	var/use_loyalty_implants = 0
 
 	var/welder_vision = 1
-	var/generate_map = 0
+	var/generate_map = 1
 	var/no_click_cooldown = 0
 
 	//Used for modifying movement speed for mobs.
@@ -229,7 +233,7 @@
 	var/dooc_allowed = 1
 	var/dsay_allowed = 1
 
-	var/starlight = 0	// Whether space turfs have ambient light or not
+	var/static/starlight = 0	// Whether space turfs have ambient light or not
 
 	var/list/ert_species = list(SPECIES_HUMAN)
 
@@ -242,7 +246,7 @@
 	var/show_human_death_message = 1
 
 	var/radiation_decay_rate = 1 //How much radiation is reduced by each tick
-	var/radiation_resistance_multiplier = 8.5 //VOREstation edit
+	var/radiation_resistance_multiplier = 8.5
 	var/radiation_lower_limit = 0.35 //If the radiation level for a turf would be below this, ignore it.
 
 	var/comms_key = "default_password"
@@ -451,6 +455,13 @@
 
 				if ("norespawn")
 					config_legacy.respawn = 0
+
+				if ("respawn_time")
+					var/raw_minutes = text2num(value)
+					config_legacy.respawn_time = raw_minutes MINUTES
+
+				if ("respawn_message")
+					config_legacy.respawn_message = value
 
 				if ("servername")
 					config_legacy.server_name = value

@@ -39,7 +39,9 @@
 	w_class = ITEMSIZE_SMALL
 	force = 3
 	var/on = 0
-
+	var/off_force = 3
+	var/on_force = 15
+	var/on_pain_force = 30
 
 /obj/item/melee/telebaton/attack_self(mob/user as mob)
 	on = !on
@@ -49,16 +51,16 @@
 		"You hear an ominous click.")
 		icon_state = "telebaton1"
 		w_class = ITEMSIZE_NORMAL
-		force = 15//quite robust
-		attack_verb = list("smacked", "struck", "slapped")
+		force = on_force //quite robust
+		attack_verb = list("struck", "beat")
 	else
 		user.visible_message("<span class='notice'>\The [user] collapses their telescopic baton.</span>",\
 		"<span class='notice'>You collapse the baton.</span>",\
 		"You hear a click.")
 		icon_state = "telebaton0"
 		w_class = ITEMSIZE_SMALL
-		force = 3//not so robust now
-		attack_verb = list("hit", "punched")
+		force = off_force //not so robust now
+		attack_verb = list("poked", "jabbed")
 
 	if(istype(user,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user
@@ -95,4 +97,14 @@
 			//playsound(src.loc, "swing_hit", 50, 1, -1)
 			return
 	else
-		return ..()
+		var/old_damtype = damtype
+		var/old_attack_verb = attack_verb
+		var/old_force = force
+		if(user.a_intent != INTENT_HARM)
+			damtype = HALLOSS
+			attack_verb = list("suppressed")
+			force = on_pain_force
+		. = ..()
+		damtype = old_damtype
+		attack_verb = old_attack_verb
+		force = old_force

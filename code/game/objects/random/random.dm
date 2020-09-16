@@ -324,6 +324,7 @@
 				prob(3);/obj/item/gun/energy/gun/burst,
 				prob(1);/obj/item/gun/energy/gun/nuclear,
 				prob(2);/obj/item/gun/energy/retro,
+				prob(2);/obj/item/gun/energy/tommylaser,
 				prob(2);/obj/item/gun/energy/lasercannon,
 				prob(3);/obj/item/gun/energy/xray,
 				prob(1);/obj/item/gun/energy/sniperrifle,
@@ -333,7 +334,10 @@
 				prob(3);/obj/item/gun/energy/toxgun,
 				prob(4);/obj/item/gun/energy/taser,
 				prob(2);/obj/item/gun/energy/crossbow/largecrossbow,
-				prob(4);/obj/item/gun/energy/stunrevolver)
+				prob(4);/obj/item/gun/energy/stunrevolver,
+				prob(4);/obj/item/gun/energy/taser/civ,
+				prob(5);/obj/item/gun/energy/zip
+				)
 
 /obj/random/energy/sec
 	name = "Random Security Energy Weapon"
@@ -358,6 +362,7 @@
 				prob(2);/obj/item/gun/projectile/automatic/c20r,
 				prob(2);/obj/item/gun/projectile/automatic/sts35,
 				prob(2);/obj/item/gun/projectile/automatic/z8,
+				prob(2);/obj/item/gun/projectile/automatic/fal,
 				prob(4);/obj/item/gun/projectile/colt,
 				prob(2);/obj/item/gun/projectile/deagle,
 				prob(1);/obj/item/gun/projectile/deagle/camo,
@@ -371,19 +376,24 @@
 				prob(4);/obj/item/gun/projectile/p92x,
 				prob(3);/obj/item/gun/projectile/p92x/brown,
 				prob(4);/obj/item/gun/projectile/pistol,
+				prob(4);/obj/item/gun/projectile/r9,
 				prob(5);/obj/item/gun/projectile/pirate,
 				prob(2);/obj/item/gun/projectile/revolver,
 				prob(4);/obj/item/gun/projectile/revolver/deckard,
 				prob(4);/obj/item/gun/projectile/revolver/detective,
 				prob(2);/obj/item/gun/projectile/revolver/judge,
+				prob(2);/obj/item/gun/projectile/revolver/dirty_harry,
 				prob(3);/obj/item/gun/projectile/revolver/lemat,
 				prob(2);/obj/item/gun/projectile/revolver/mateba,
 				prob(4);/obj/item/gun/projectile/shotgun/doublebarrel,
 				prob(3);/obj/item/gun/projectile/shotgun/doublebarrel/sawn,
+				prob(3);/obj/item/gun/projectile/shotgun/doublebarrel/quad,
 				prob(3);/obj/item/gun/projectile/shotgun/pump,
+				prob(3);/obj/item/gun/projectile/shotgun/pump/rifle/lever/arnold,
 				prob(2);/obj/item/gun/projectile/shotgun/pump/combat,
 				prob(4);/obj/item/gun/projectile/shotgun/pump/rifle,
 				prob(3);/obj/item/gun/projectile/shotgun/pump/rifle/lever,
+				prob(3);/obj/item/gun/projectile/shotgun/pump/rifle/lever/win1895,
 				prob(2);/obj/item/gun/projectile/silenced)
 
 /obj/random/projectile/sec
@@ -406,6 +416,7 @@
 /obj/random/handgun/item_to_spawn()
 	return pick(prob(4);/obj/item/gun/projectile/sec,
 				prob(4);/obj/item/gun/projectile/p92x,
+				prob(4);/obj/item/gun/projectile/r9,
 				prob(3);/obj/item/gun/projectile/sec/wood,
 				prob(3);/obj/item/gun/projectile/p92x/brown,
 				prob(3);/obj/item/gun/projectile/colt,
@@ -912,7 +923,7 @@ something, make sure it's not in one of the other lists.*/
 				prob(2);/obj/item/clothing/gloves/sterile/latex,
 				prob(4);/obj/item/clothing/glasses/science,
 				prob(3);/obj/item/clothing/glasses/material,
-				prob(1);/obj/item/clothing/head/beret/purple,
+				prob(1);/obj/item/clothing/head/beret/science,
 				prob(1);/obj/item/clothing/head/bio_hood/scientist,
 				prob(4);/obj/item/clothing/suit/storage/toggle/labcoat,
 				prob(4);/obj/item/clothing/suit/storage/toggle/labcoat/science,

@@ -226,8 +226,8 @@
 	if(T)
 		var/list/levels = GLOB.using_map.get_map_levels(T.z, FALSE)
 		for(var/obj/machinery/power/sensor/S in machines)
-			if((S.long_range) || (S.loc.z in levels) || (S.loc.z == T.z)) // Consoles have range on their Z-Level. Sensors with long_range var will work between Z levels.
-				if(S.name_tag == "#UNKN#") // Default name. Shouldn't happen!
+			if((S.long_range) || (S.loc.z in levels) || (S.loc.z == T.z))	// Consoles have range on their Z-Level. Sensors with long_range var will work between Z levels.
+				if(S.name_tag == "#UNKN#")	// Default name. Shouldn't happen!
 					warning("Powernet sensor with unset ID Tag! [S.x]X [S.y]Y [S.z]Z")
 				else
 					grid_sensors += S
@@ -299,7 +299,7 @@
 		janidata[++janidata.len] = list("field" = "Current Location", "val" = "<span class='good'>[userloc.x], [userloc.y], [GLOB.using_map.get_zlevel_name(userloc.z)]</span>")
 	else
 		janidata[++janidata.len] = list("field" = "Current Location", "val" = "<span class='bad'>Unknown</span>")
-		return janidata // If the user isn't on a valid turf, then it shouldn't be able to find anything anyways
+		return janidata	// If the user isn't on a valid turf, then it shouldn't be able to find anything anyways
 
 	// Mops, mop buckets, janitorial carts.
 	for(var/obj/C in cleaningList)
@@ -332,23 +332,23 @@
 // The contents of the three lists are inherently related, so separating them into different procs would be largely redundant
 /obj/item/commcard/proc/get_GPS_lists()
 	// GPS Access
-	var/intgps[0] // Gps devices within the commcard -- Allow tag edits, turning on/off, etc
-	var/extgps[0] // Gps devices not inside the commcard -- Print locations if a gps is on
-	var/stagps[0] // Gps net status, location, whether it's on, if it's got long range
+	var/intgps[0]	// Gps devices within the commcard		-- Allow tag edits, turning on/off, etc
+	var/extgps[0]	// Gps devices not inside the commcard	-- Print locations if a gps is on
+	var/stagps[0]	// Gps net status, location, whether it's on, if it's got long range
 	var/obj/item/gps/cumulative = new(src)
 	cumulative.tracking = FALSE
-	cumulative.local_mode = TRUE // Won't detect long-range signals automatically
+	cumulative.local_mode = TRUE	// Won't detect long-range signals automatically
 	cumulative.long_range = FALSE
-	var/list/toggled_gps = list() // List of GPS units that are turned off before display_list() is called
+	var/list/toggled_gps = list()	// List of GPS units that are turned off before display_list() is called
 
 	for(var/obj/item/gps/G in internal_devices)
 		var/gpsdata[0]
 		if(G.tracking && !G.emped)
-			cumulative.tracking = TRUE // Turn it on
+			cumulative.tracking = TRUE	// Turn it on
 			if(G.long_range)
-				cumulative.long_range = TRUE // It can detect long-range
+				cumulative.long_range = TRUE	// It can detect long-range
 				if(!G.local_mode)
-					cumulative.local_mode = FALSE // It is detecting long-range
+					cumulative.local_mode = FALSE	// It is detecting long-range
 
 		gpsdata["ref"] = "\ref[G]"
 		gpsdata["tag"] = G.gps_tag
@@ -358,15 +358,15 @@
 		gpsdata["hide_signal"] = G.hide_signal
 		gpsdata["can_hide"] = G.can_hide_signal
 
-		intgps[++intgps.len] = gpsdata // Add it to the list
+		intgps[++intgps.len] = gpsdata	// Add it to the list
 
 		if(G.tracking)
-			G.tracking = FALSE // Disable the internal gps units so they don't show up in the report
+			G.tracking = FALSE	// Disable the internal gps units so they don't show up in the report
 			toggled_gps += G
 
 	var/list/remote_gps = cumulative.display_list() // Fetch information for all units except the ones inside of this device
 
-	for(var/obj/item/gps/G in toggled_gps) // Reenable any internal GPS units
+	for(var/obj/item/gps/G in toggled_gps)	// Reenable any internal GPS units
 		G.tracking = TRUE
 
 	stagps["enabled"] = cumulative.tracking
@@ -393,7 +393,7 @@
 // code\game\machinery\computer\supply.dm, starting at line 55
 /obj/item/commcard/proc/get_supply_shuttle_status()
 	var/shuttle_status[0]
-	var/datum/shuttle/ferry/supply/shuttle = SSsupply.shuttle
+	var/datum/shuttle/autodock/ferry/supply/shuttle = SSsupply.shuttle
 	if(shuttle)
 		if(shuttle.has_arrive_time())
 			shuttle_status["location"] = "In transit"
@@ -403,8 +403,8 @@
 		else
 			shuttle_status["time"] = 0
 			if(shuttle.at_station())
-				if(shuttle.docking_controller)
-					switch(shuttle.docking_controller.get_docking_status())
+				if(shuttle.shuttle_docking_controller)
+					switch(shuttle.shuttle_docking_controller.get_docking_status())
 						if("docked")
 							shuttle_status["location"] = "Docked"
 							shuttle_status["mode"] = SUP_SHUTTLE_DOCKED

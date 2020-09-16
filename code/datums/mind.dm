@@ -53,6 +53,8 @@
 	var/datum/faction/faction 			//associated faction
 	var/datum/changeling/changeling		//changeling holder
 
+	var/isholy = FALSE //is this person a chaplain or admin role allowed to use bibles
+
 	var/rev_cooldown = 0
 	var/tcrystals = 0
 

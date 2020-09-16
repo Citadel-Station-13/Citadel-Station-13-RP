@@ -926,6 +926,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "kitty, colorable, downwards"
 	desc = ""
 	icon_state = "kittydown"
+	ani_state = "kittydown_wag"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 
@@ -933,6 +934,23 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "kitty, colorable, upwards"
 	desc = ""
 	icon_state = "kittyup"
+	ani_state = "kittyup_wag"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/tail/kitty_tg
+	name = "kitty, colorable, main"
+	desc = ""
+	icon_state = "kittytg"
+	ani_state = "kittytg_wag"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/tail/cat_big
+	name = "kitty (big), colorable"
+	desc = ""
+	icon_state = "catbig"
+	ani_state = "catbig_wag"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 
@@ -1844,3 +1862,11 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "robodragon_b"
+
+/datum/sprite_accessory/tail/tentacles
+	name = "Tentacles"
+	desc = ""
+	icon_state = "tentacles"
+	do_colouration = TRUE
+	color_blend_mode = ICON_MULTIPLY
+	ani_state = "tentacles_wag"

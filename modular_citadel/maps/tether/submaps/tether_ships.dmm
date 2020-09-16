@@ -41,7 +41,7 @@
 /area/space)
 "fg" = (
 /turf/space/bluespace,
-/area/shuttle/excursion/bluespace)
+/area/space)
 "gO" = (
 /obj/effect/step_trigger/teleporter/planetary_fall/virgo3b,
 /turf/simulated/sky/virgo3b/south,

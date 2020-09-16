@@ -36,7 +36,7 @@
 	icon_living = "aliend_running"
 	icon_dead = "aliend_l"
 	icon_rest = "aliend_sleep"
-	health = 60
+	health = 100
 	melee_damage_lower = 15
 	melee_damage_upper = 15
 
@@ -46,7 +46,7 @@
 	icon_living = "aliens_running"
 	icon_dead = "aliens_l"
 	icon_rest = "aliens_sleep"
-	health = 120
+	health = 220
 	melee_damage_lower = 15
 	melee_damage_upper = 15
 	projectiletype = /obj/item/projectile/energy/neurotoxin/toxic
@@ -59,8 +59,8 @@
 	icon_living = "prat_s"
 	icon_dead = "prat_dead"
 	icon_rest = "prat_sleep"
-	maxHealth = 200
-	health = 200
+	maxHealth = 400
+	health = 400
 
 	pixel_x = -16
 	old_x = -16
@@ -72,8 +72,8 @@
 	icon_living = "alienq_running"
 	icon_dead = "alienq_l"
 	icon_rest = "alienq_sleep"
-	health = 250
-	maxHealth = 250
+	health = 750
+	maxHealth = 750
 	melee_damage_lower = 15
 	melee_damage_upper = 15
 	projectiletype = /obj/item/projectile/energy/neurotoxin/toxic
@@ -89,8 +89,8 @@
 	icon_living = "queen_s"
 	icon_dead = "queen_dead"
 	icon_rest = "queen_sleep"
-	maxHealth = 400
-	health = 400
+	maxHealth = 1000
+	health = 1000
 	meat_amount = 5
 
 	pixel_x = -16

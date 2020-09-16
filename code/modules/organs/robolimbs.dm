@@ -484,33 +484,33 @@ var/const/standard_monitor_styles = "blank=ipc_blank;\
 	catalogue_data = list(/datum/category_item/catalogue/information/organization/nanotrasen)
 
 
-/obj/item/weapon/disk/species
+/obj/item/disk/species
 	name = "Species Bioprints"
 	desc = "A disk containing the blueprints for species-specific prosthetics."
 	icon = 'icons/obj/cloning.dmi'
 	icon_state = "datadisk2"
 	var/species = SPECIES_HUMAN
 
-/obj/item/weapon/disk/species/Initialize()
+/obj/item/disk/species/Initialize()
 	..()
 	if(species)
 		name = "[species] [initial(name)]"
 
-/obj/item/weapon/disk/species/skrell
+/obj/item/disk/species/skrell
 	species = SPECIES_SKRELL
 
-/obj/item/weapon/disk/species/unathi
+/obj/item/disk/species/unathi
 	species = SPECIES_UNATHI
 
-/obj/item/weapon/disk/species/tajaran
+/obj/item/disk/species/tajaran
 	species = SPECIES_TAJ
 
-/obj/item/weapon/disk/species/teshari
+/obj/item/disk/species/teshari
 	species = SPECIES_TESHARI
 
 // In case of bus, presently.
-/obj/item/weapon/disk/species/diona
+/obj/item/disk/species/diona
 	species = SPECIES_DIONA
 
-/obj/item/weapon/disk/species/zaddat
+/obj/item/disk/species/zaddat
 	species = SPECIES_ZADDAT

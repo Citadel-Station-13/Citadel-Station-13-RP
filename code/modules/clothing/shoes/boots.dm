@@ -176,3 +176,24 @@
 	name = "black cowboy boots"
 	desc = "A pair of black cowboy boots, pretty easy to scuff up."
 	icon_state = "cowboyboots_black"
+
+/obj/item/clothing/shoes/boots/swat/para
+	name = "PARA boots"
+	desc = "PMD issued gloves, stamped with protective seals and spells."
+	icon_state = "para_ert_boots"
+	action_button_name = "Enable Boot Sigils"
+
+	var/blessed = FALSE
+
+/obj/item/clothing/shoes/boots/swat/para/attack_self(mob/user as mob)
+	if(user.mind.isholy && !blessed)
+		blessed = TRUE
+		item_flags |= NOSLIP
+		to_chat(user, "<font color='blue'>You repeat the incantations etched into the boots.</font>")
+	else
+		blessed = FALSE
+		item_flags &= ~NOSLIP
+		to_chat(user, "<font color='blue'>You dispel the incantations etched into the boots for now.</font>")
+
+	if(!user.mind.isholy)
+		to_chat(user, "<font color='red'>You're not sure what language this is.</font>")

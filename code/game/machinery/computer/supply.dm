@@ -54,7 +54,7 @@
 	var/orders[0]
 	var/receipts[0]
 
-	var/datum/shuttle/ferry/supply/shuttle = SSsupply.shuttle
+	var/datum/shuttle/autodock/ferry/supply/shuttle = SSsupply.shuttle
 	if(shuttle)
 		if(shuttle.has_arrive_time())
 			shuttle_status["location"] = "In transit"
@@ -64,8 +64,8 @@
 		else
 			shuttle_status["time"] = 0
 			if(shuttle.at_station())
-				if(shuttle.docking_controller)
-					switch(shuttle.docking_controller.get_docking_status())
+				if(shuttle.shuttle_docking_controller)
+					switch(shuttle.shuttle_docking_controller.get_docking_status())
 						if("docked")
 							shuttle_status["location"] = "Docked"
 							shuttle_status["mode"] = SUP_SHUTTLE_DOCKED
@@ -190,7 +190,7 @@
 	if(!SSsupply)
 		log_world("## ERROR: The supply_controller datum is missing.")
 		return
-	var/datum/shuttle/ferry/supply/shuttle = SSsupply.shuttle
+	var/datum/shuttle/autodock/ferry/supply/shuttle = SSsupply.shuttle
 	if (!shuttle)
 		log_world("## ERROR: The supply shuttle datum is missing.")
 		return

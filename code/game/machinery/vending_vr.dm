@@ -18,7 +18,7 @@
 	..()
 
 /obj/machinery/vending/medical/New()
-	products += list(/obj/item/storage/box/khcrystal = 4,/obj/item/backup_implanter = 3,
+	products += list(/obj/item/storage/box/vmcrystal = 4,/obj/item/backup_implanter = 3,
 					/obj/item/clothing/glasses/omnihud/med = 4, /obj/item/glasses_kit = 1,  /obj/item/storage/quickdraw/syringe_case = 4)
 	..()
 
@@ -137,6 +137,7 @@
 	req_access = list(access_medical)
 	products = list(/obj/item/reagent_containers/blood/prelabeled/APlus = 3,/obj/item/reagent_containers/blood/prelabeled/AMinus = 3,
 					/obj/item/reagent_containers/blood/prelabeled/BPlus = 3,/obj/item/reagent_containers/blood/prelabeled/BMinus = 3,
+					/obj/item/reagent_containers/blood/prelabeled/ABPlus = 2,/obj/item/reagent_containers/blood/prelabeled/ABMinus = 1,
 					/obj/item/reagent_containers/blood/prelabeled/OPlus = 2,/obj/item/reagent_containers/blood/prelabeled/OMinus = 5,
 					/obj/item/reagent_containers/blood/empty = 5)
 	contraband = list(/obj/item/reagent_containers/glass/bottle/stoxin = 2)

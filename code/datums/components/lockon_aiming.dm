@@ -101,7 +101,7 @@
 		refresh_visuals()
 
 /datum/component/lockon_aiming/proc/lock(atom/A, refresh_vis = TRUE)
-	LAZYOR(locked_weakrefs, WEAKREF(A))
+	LAZYDISTINCTADD(locked_weakrefs, WEAKREF(A))
 	if(refresh_vis)
 		refresh_visuals()
 

@@ -1,0 +1,13 @@
+"a" = (/turf/simulated/floor/beach/sand/desert/classh,/area/triumph_away/poi_h/unexplored)
+"h" = (/turf/simulated/wall/sandstone/classh,/area/triumph_away/poi_h/explored)
+"I" = (/obj/effect/floor_decal/plaque{desc = "The carving that used to be here has worn beyond any recoginition."; name = "dusty plaque"},/turf/simulated/wall/sandstone/classh,/area/triumph_away/poi_h/explored)
+"U" = (/obj/random/multiple/minevault,/obj/item/moneybag/vault,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/explored)
+"Z" = (/turf/simulated/wall/sandstone/classh{can_open = 1},/area/triumph_away/poi_h/explored)
+
+(1,1,1) = {"
+aaaaa
+ahZha
+ahUha
+ahIha
+aaaaa
+"}

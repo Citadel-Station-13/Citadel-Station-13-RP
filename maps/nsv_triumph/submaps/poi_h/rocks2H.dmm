@@ -1,0 +1,15 @@
+"a" = (/turf/simulated/floor/beach/sand/desert/classh,/area/triumph_away/poi_h/explored)
+"p" = (/turf/simulated/mineral/classh,/area/triumph_away/poi_h/explored)
+"r" = (/obj/random/mob/spider,/turf/simulated/floor/beach/sand/desert/classh,/area/triumph_away/poi_h/explored)
+"T" = (/obj/random/mob/spider/mutant,/turf/simulated/floor/beach/sand/desert/classh,/area/triumph_away/poi_h/explored)
+
+(1,1,1) = {"
+aaappppp
+ppaTpppp
+praaaaTp
+aaaaapaa
+appTaaaa
+appppaar
+apppprap
+aaaaaapp
+"}
