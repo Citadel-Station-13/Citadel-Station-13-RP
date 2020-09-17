@@ -5,7 +5,7 @@
 	item_state = "card-id"
 
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/seromi/id.dmi'
+		SPECIES_TESHARI = 'icons/mob/species/teshari/id.dmi'
 		)
 
 	var/access = list()
@@ -50,7 +50,6 @@
 		user << browse_rsc(side, "side.png")
 	var/datum/browser/popup = new(user, "idcard", name, 600, 250)
 	popup.set_content(dat())
-	popup.set_title_image(usr.browse_rsc_icon(src.icon, src.icon_state))
 	popup.open()
 	return
 

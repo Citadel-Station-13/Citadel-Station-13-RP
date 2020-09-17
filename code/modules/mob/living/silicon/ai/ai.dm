@@ -628,7 +628,7 @@ var/list/ai_verbs_default = list(
 				"bear",
 				"slime",
 				"runtime",
-				"poly",
+				"polly",
 				"gondola"
 
 			)
@@ -694,7 +694,7 @@ var/list/ai_verbs_default = list(
 						holo_icon = getHologramIcon(icon('icons/mob/slimes.dmi',"cerulean adult slime"))
 					if("runtime")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"cat"))
-					if("poly")
+					if("polly")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"parrot_fly"))
 					if("gondola")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"gondola"))

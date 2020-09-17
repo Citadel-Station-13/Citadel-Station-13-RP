@@ -29,7 +29,6 @@
 	var/antagHUD = 0
 	universal_speak = 1
 	var/admin_ghosted = 0
-	var/anonsay = 0
 	var/ghostvision = 1 //is the ghost able to see things humans can't?
 	incorporeal_move = 1
 
@@ -60,7 +59,9 @@
 		"Chicken" = "chicken_white",
 		"Parrot"= "parrot_fly",
 		"Goose" = "goose",
-		"Penguin" = "penguin",
+		"Penguin" = "penguin_new",
+		"Penguin (Old)" = "penguin",
+		"Penguin (Baby)" = "penguin_baby",
 		"Brown Crab" = "crab",
 		"Gray Crab" = "evilcrab",
 		"Trout" = "trout-swim",
@@ -87,6 +88,9 @@
 		"Beepsky" = "secbot"
 		)
 	var/last_revive_notification = null // world.time of last notification, used to avoid spamming players from defibs or cloners.
+	/// stealthmin vars
+	var/original_name
+
 /mob/observer/dead/New(mob/body)
 	sight |= SEE_TURFS | SEE_MOBS | SEE_OBJS | SEE_SELF
 	see_invisible = SEE_INVISIBLE_OBSERVER
@@ -183,6 +187,7 @@ Works together with spawning an observer, noted above.
 			ghost.client.time_died_as_mouse = ghost.timeofdeath
 		if(ghost.client && !ghost.client.holder && !config_legacy.antag_hud_allowed)		// For new ghosts we remove the verb from even showing up if it's not allowed.
 			ghost.verbs -= /mob/observer/dead/verb/toggle_antagHUD	// Poor guys, don't know what they are missing!
+		ghost.client?.holder?.update_stealth_ghost()
 		return ghost
 
 /*
@@ -217,6 +222,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		var/mob/observer/dead/ghost = ghostize(0)	// 0 parameter is so we can never re-enter our body, "Charlie, you can never come baaaack~" :3
 		if(ghost)
 			ghost.timeofdeath = world.time 	// Because the living mob won't have a time of death and we want the respawn timer to work properly.
+			ghost.set_respawn_timer()
 			announce_ghost_joinleave(ghost)
 
 /mob/observer/dead/can_use_hands()	return 0
@@ -292,6 +298,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		var/response = alert(src, "If you turn this on, you will not be able to take any part in the round.","Are you sure you want to turn this feature on?","Yes","No")
 		if(response == "No") return
 		can_reenter_corpse = FALSE
+		set_respawn_timer(-1)	// Foreeeever
 	if(!has_enabled_antagHUD && !client.holder)
 		has_enabled_antagHUD = TRUE
 
@@ -310,12 +317,12 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	usr.forceMove(pick(get_area_turfs(A)))
 
-/mob/observer/dead/verb/follow(input in getmobs())
+/mob/observer/dead/verb/follow(input in getmobs_ghost_follow())
 	set category = "Ghost"
 	set name = "Follow" // "Haunt"
 	set desc = "Follow and haunt a mob."
 
-	var/target = getmobs()[input]
+	var/target = getmobs_ghost_follow()[input]
 	if(!target)
 		return
 	ManualFollow(target)
@@ -327,13 +334,13 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	orbit(target, actually_orbit = FALSE)
 
-/mob/observer/dead/verb/jumptomob(input in getmobs()) //Moves the ghost instead of just changing the ghosts's eye -Nodrak
+/mob/observer/dead/verb/jumptomob(input in getmobs_ghost_follow()) //Moves the ghost instead of just changing the ghosts's eye -Nodrak
 	set category = "Ghost"
 	set name = "Jump to Mob"
 	set desc = "Teleport to a mob"
 	set popup_menu = FALSE //VOREStation Edit - Declutter.
 	if(istype(usr, /mob/observer/dead)) //Make sure they're an observer!
-		var/target = getmobs()[input]
+		var/target = getmobs_ghost_follow()[input]
 		if (!target)//Make sure we actually have a target
 			return
 		else
@@ -611,8 +618,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Toggle Anonymous Chat"
 	set desc = "Toggles showing your key in dead chat."
 
-	src.anonsay = !src.anonsay
-	if(anonsay)
+	client.toggle_preference(/datum/client_preference/anonymous_ghost_chat)
+	SScharacter_setup.queue_preferences_save(client.prefs)
+	if(is_preference_enabled(/datum/client_preference/anonymous_ghost_chat))
 		to_chat(src, "<span class='info'>Your key won't be shown when you speak in dead chat.</span>")
 	else
 		to_chat(src, "<span class='info'>Your key will be publicly visible again.</span>")

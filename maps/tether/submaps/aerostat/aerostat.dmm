@@ -466,7 +466,7 @@
 /area/tether_away/aerostat/solars)
 "bd" = (
 /turf/simulated/shuttle/wall,
-/area/shuttle/aerostat/docked)
+/area/shuttle/aerostat)
 "be" = (
 /turf/simulated/floor/plating/virgo2,
 /area/tether_away/aerostat/inside)
@@ -477,11 +477,11 @@
 /area/tether_away/aerostat/inside)
 "bg" = (
 /turf/simulated/shuttle/floor/yellow,
-/area/shuttle/aerostat/docked)
+/area/shuttle/aerostat)
 "bh" = (
 /obj/machinery/door/airlock/external,
 /turf/simulated/shuttle/floor/yellow,
-/area/shuttle/aerostat/docked)
+/area/shuttle/aerostat)
 "bi" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner,
 /turf/simulated/floor/plating/virgo2,
@@ -535,7 +535,7 @@
 	dir = 4
 	},
 /turf/simulated/shuttle/floor/yellow,
-/area/shuttle/aerostat/docked)
+/area/shuttle/aerostat)
 "bs" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner{
 	dir = 1
@@ -633,11 +633,11 @@
 	dir = 8
 	},
 /turf/simulated/shuttle/floor/yellow,
-/area/shuttle/aerostat/docked)
+/area/shuttle/aerostat)
 "bI" = (
 /obj/structure/closet/emcloset,
 /turf/simulated/shuttle/floor/yellow,
-/area/shuttle/aerostat/docked)
+/area/shuttle/aerostat)
 "bJ" = (
 /obj/structure/table/standard,
 /obj/random/cargopod,
@@ -778,7 +778,6 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
 	},
-/obj/shuttle_connector/aerostat,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating/virgo2,
 /area/tether_away/aerostat/inside)
@@ -808,14 +807,20 @@
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/yellow,
-/area/shuttle/aerostat/docked)
+/area/shuttle/aerostat)
 "ck" = (
+/obj/effect/shuttle_landmark{
+	base_area = /area/tether_away/aerostat;
+	base_turf = /turf/unsimulated/floor/sky/virgo2_sky;
+	landmark_tag = "nav_excursion_aerostat";
+	name = "Excursion Aerostat"
+	},
 /turf/unsimulated/floor/sky/virgo2_sky,
-/area/shuttle/excursion/away_aerostat)
+/area/tether_away/aerostat)
 "cl" = (
 /obj/machinery/light,
 /turf/simulated/shuttle/floor/yellow,
-/area/shuttle/aerostat/docked)
+/area/shuttle/aerostat)
 "cm" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "1-8"
@@ -1654,6 +1659,15 @@
 /obj/random/action_figure,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/tether_away/aerostat/inside)
+"pd" = (
+/obj/effect/shuttle_landmark{
+	base_area = /area/tether_away/aerostat;
+	base_turf = /turf/unsimulated/floor/sky/virgo2_sky;
+	landmark_tag = "aerostat_up";
+	name = "Remmi Aerostat"
+	},
+/turf/simulated/shuttle/floor/yellow,
+/area/shuttle/aerostat)
 "tZ" = (
 /obj/structure/table/standard,
 /obj/random/powercell,

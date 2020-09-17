@@ -1,7 +1,7 @@
 var/global/defer_powernet_rebuild = 0      // True if net rebuild will be called manually after an event.
 
-#define CELLRATE 0.002 // Multiplier for watts per tick <> cell storage (e.g., 0.02 means if there is a load of 1000 watts, 20 units will be taken from a cell per second)
-                       // It's a conversion constant. power_used*CELLRATE = charge_provided, or charge_used/CELLRATE = power_provided
+#define CELLRATE 0.002	// Multiplier for watts per tick <> cell storage (e.g., 0.02 means if there is a load of 1000 watts, 20 units will be taken from a cell per second)
+						// It's a conversion constant. power_used*CELLRATE = charge_provided, or charge_used/CELLRATE = power_provided
 
 #define KILOWATTS *1000
 #define MEGAWATTS *1000000
@@ -9,25 +9,25 @@ var/global/defer_powernet_rebuild = 0      // True if net rebuild will be called
 
 // Doors!
 #define DOOR_CRUSH_DAMAGE 20
-#define ALIEN_SELECT_AFK_BUFFER  1    // How many minutes that a person can be AFK before not being allowed to be an alien.
+#define ALIEN_SELECT_AFK_BUFFER 1	// How many minutes that a person can be AFK before not being allowed to be an alien.
 
 // Constants for machine's use_power
-#define USE_POWER_OFF    0	// No continuous power use
-#define USE_POWER_IDLE   1	// Machine is using power at its idle power level
+#define USE_POWER_OFF	 0	// No continuous power use
+#define USE_POWER_IDLE	 1	// Machine is using power at its idle power level
 #define USE_POWER_ACTIVE 2	// Machine is using power at its active power level
 
 // Channel numbers for power.
-#define EQUIP   1
-#define LIGHT   2
-#define ENVIRON 3
-#define TOTAL   4 // For total power used only.
+#define EQUIP	1
+#define LIGHT	2
+#define ENVIRON	3
+#define TOTAL	4	// For total power used only.
 
 // Bitflags for machine stat variable.
-#define BROKEN   0x1
-#define NOPOWER  0x2
-#define POWEROFF 0x4  // TBD.
-#define MAINT    0x8  // Under maintenance.
-#define EMPED    0x10 // Temporary broken by EMP pulse.
+#define BROKEN	 0x1
+#define NOPOWER	 0x2
+#define POWEROFF 0x4	// TBD.
+#define MAINT	 0x8	// Under maintenance.
+#define EMPED	 0x10	// Temporary broken by EMP pulse.
 
 // Used by firelocks
 #define FIREDOOR_OPEN 1
@@ -60,7 +60,7 @@ var/global/defer_powernet_rebuild = 0      // True if net rebuild will be called
 #define NETWORK_SECURITY "Security"
 #define NETWORK_INTERROGATION "Interrogation"
 #define NETWORK_TELECOM "Tcomms"
-#define NETWORK_THUNDER "Entertainment"		//VOREStation Edit: broader definition
+#define NETWORK_THUNDER "Entertainment"
 #define NETWORK_COMMUNICATORS "Communicators"
 #define NETWORK_ALARM_ATMOS "Atmosphere Alarms"
 #define NETWORK_ALARM_POWER "Power Alarms"

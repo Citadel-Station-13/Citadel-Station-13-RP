@@ -100,6 +100,7 @@
 		/obj/item/clothing/under/rank/head_of_security/corp,
 		/obj/item/clothing/suit/storage/vest/hoscoat/jensen,
 		/obj/item/clothing/suit/storage/vest/hoscoat,
+		/obj/item/clothing/under/bodysuit/bodysuitseccom,
 		/obj/item/clothing/head/helmet/dermal,
 		/obj/item/cartridge/hos,
 		/obj/item/radio/headset/heads/hos,
@@ -218,6 +219,7 @@
 		/obj/item/gun/energy/taser,
 		/obj/item/cell/device/weapon,
 		/obj/item/gps/security,
+		/obj/item/clothing/under/bodysuit/bodysuitsec,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/security,
 		/obj/item/clothing/shoes/boots/winter/security,
 		/obj/item/flashlight/maglight)

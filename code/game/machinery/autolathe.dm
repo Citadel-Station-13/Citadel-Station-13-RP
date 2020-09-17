@@ -249,6 +249,8 @@
 			log_admin("EXPLOIT : [key_name(usr)] tried to exploit an autolathe to duplicate an item!")
 			return
 
+		var/logstring = "[key_name(usr)] has made [multiplier] of [making.name]"
+
 		busy = 1
 		update_use_power(USE_POWER_ACTIVE)
 
@@ -276,6 +278,7 @@
 		if(!making || !src) return
 
 		//Create the desired item.
+		log_game(logstring)
 		var/obj/item/I = new making.path(src.loc)
 		if(multiplier > 1)
 			if(istype(I, /obj/item/stack))

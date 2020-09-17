@@ -285,13 +285,11 @@
 
 	var/obj/P = new /obj/effect/decal/point(tile)
 	P.invisibility = invisibility
-	P.plane = plane
+	P.plane = ABOVE_PLANE
+	P.layer = FLY_LAYER
 	P.pixel_x = A.pixel_x
 	P.pixel_y = A.pixel_y
-	spawn (20)
-		if(P)
-			qdel(P)	// qdel
-
+	QDEL_IN(P, 2 SECONDS)
 	face_atom(A)
 	return 1
 
@@ -382,46 +380,56 @@
 	return
 */
 
+/mob/proc/set_respawn_timer(var/time)
+	// Try to figure out what time to use
+
+	// Special cases, can never respawn
+	if(SSticker?.mode?.deny_respawn)
+		time = -1
+	else if(!config_legacy.abandon_allowed)
+		time = -1
+	else if(!config_legacy.respawn)
+		time = -1
+
+	// Special case for observing before game start
+	else if(SSticker?.current_state <= GAME_STATE_SETTING_UP)
+		time = 1 MINUTE
+
+	// Wasn't given a time, use the config time
+	else if(!time)
+		time = config_legacy.respawn_time
+
+	var/keytouse = ckey
+	// Try harder to find a key to use
+	if(!keytouse && key)
+		keytouse = ckey(key)
+	else if(!keytouse && mind?.key)
+		keytouse = ckey(mind.key)
+
+	GLOB.respawn_timers[keytouse] = world.time + time
+
+/mob/observer/dead/set_respawn_timer()
+	if(config_legacy.antag_hud_restricted && has_enabled_antagHUD)
+		..(-1)
+	else
+		return 	// Don't set it, no need
+
 /mob/verb/abandon_mob()
-	set name = "Respawn"
+	set name = "Return to Menu"
 	set category = "OOC"
 
-	if (!( config_legacy.abandon_allowed ))
-		to_chat(usr, "<span class='notice'>Respawn is disabled.</span>")
-		return
-	if ((stat != 2 || !( SSticker )))
+	if(stat != DEAD || !SSticker)
 		to_chat(usr, "<span class='notice'><B>You must be dead to use this!</B></span>")
 		return
-	if (SSticker.mode && SSticker.mode.deny_respawn) //BS12 EDIT
-		to_chat(usr, "<span class='notice'>Respawn is disabled for this roundtype.</span>")
-		return
-	else
-		var/deathtime = world.time - src.timeofdeath
-		if(istype(src,/mob/observer/dead))
-			var/mob/observer/dead/G = src
-			if(G.has_enabled_antagHUD == 1 && config_legacy.antag_hud_restricted)
-				to_chat(usr, "<font color='blue'><B>By using the antagHUD you forfeit the ability to join the round.</B></font>")
-				return
-		var/deathtimeminutes = round(deathtime / 600)
-		var/pluralcheck = "minute"
-		if(deathtimeminutes == 0)
-			pluralcheck = ""
-		else if(deathtimeminutes == 1)
-			pluralcheck = " [deathtimeminutes] minute and"
-		else if(deathtimeminutes > 1)
-			pluralcheck = " [deathtimeminutes] minutes and"
-		var/deathtimeseconds = round((deathtime - deathtimeminutes * 600) / 10,1)
-		to_chat(usr, "You have been dead for[pluralcheck] [deathtimeseconds] seconds.")
 
-		if ((deathtime < (1 * 600)) && (SSticker && SSticker.current_state > GAME_STATE_PREGAME))	//VOREStation Edit: lower respawn timer
-			to_chat(usr, "You must wait 1 minute to respawn!")
+	// Final chance to abort "respawning"
+	if(mind && timeofdeath)	// They had spawned before
+		var/choice = alert(usr, "Returning to the menu will prevent your character from being revived in-round. Are you sure?", "Confirmation", "No, wait", "Yes, leave")
+		if(choice == "No, wait")
 			return
-		else
-			to_chat(usr, "You can respawn now, enjoy your new life!")
 
-	log_game("[usr.name]/[usr.key] used abandon mob.")
-
-	to_chat(usr, "<font color='blue'><B>Make sure to play a different character, and please roleplay correctly!</B></font>")
+	// Beyond this point, you're going to respawn
+	to_chat(usr, config_legacy.respawn_message)
 
 	if(!client)
 		log_game("[usr.key] AM failed due to disconnect.")
@@ -1053,6 +1061,13 @@ mob/proc/yank_out_object()
 
 /mob/proc/setEarDamage()
 	return
+
+// Set client view distance (size of client's screen). Returns TRUE if anything changed.
+/mob/proc/set_viewsize(var/new_view = world.view)
+	if (client && new_view != client.view)
+		client.view = new_view
+		return TRUE
+	return FALSE
 
 //Throwing stuff
 

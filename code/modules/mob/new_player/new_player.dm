@@ -1,11 +1,9 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:33
-
 /mob/new_player
 	var/ready = 0
-	var/spawning = 0			//Referenced when you want to delete the new_player later on in the code.
-	var/totalPlayers = 0		//Player counts for the Lobby tab
+	var/spawning = 0			// Referenced when you want to delete the new_player later on in the code.
+	var/totalPlayers = 0		// Player counts for the Lobby tab
 	var/totalPlayersReady = 0
-	var/show_hidden_jobs = 0	//Show jobs that are set to "Never" in preferences
+	var/show_hidden_jobs = 0	// Show jobs that are set to "Never" in preferences
 	var/datum/browser/panel
 	universal_speak = 1
 
@@ -15,7 +13,7 @@
 	stat = 2
 	canmove = 0
 
-	anchored = 1	//  don't get pushed around
+	anchored = 1	// Don't get pushed around
 
 /mob/new_player/New()
 	mob_list += src
@@ -83,7 +81,7 @@
 				stat("Game Mode:", "Secret")
 			else
 				if(SSticker.hide_mode == 0)
-					stat("Game Mode:", "[config_legacy.mode_names[master_mode]]") // Old setting for showing the game mode
+					stat("Game Mode:", "[config_legacy.mode_names[master_mode]]")	// Old setting for showing the game mode
 			var/time_remaining = SSticker.GetTimeLeft()
 			if(time_remaining > 0)
 				stat(null, "Time To Start: [round(time_remaining/10)]s")
@@ -107,26 +105,27 @@
 		return 1
 
 	if(href_list["ready"])
-		if(!SSticker || SSticker.current_state <= GAME_STATE_PREGAME) // Make sure we don't ready up after the round has started
+		if(!SSticker || SSticker.current_state <= GAME_STATE_PREGAME)	// Make sure we don't ready up after the round has started
 			ready = text2num(href_list["ready"])
 		else
 			ready = 0
 
 	if(href_list["refresh"])
-		//src << browse(null, "window=playersetup") //closes the player setup window
+		//src << browse(null, "window=playersetup")	// Closes the player setup window
 		panel.close()
 		new_player_panel_proc()
 
 	if(href_list["observe"])
+		var/alert_time = SSticker?.current_state <= GAME_STATE_SETTING_UP ? 1 : round(config_legacy.respawn_time/10/60)
 
-		if(alert(src,"Are you sure you wish to observe? You will have to wait 60 seconds before being able to respawn!","Player Setup","Yes","No") == "Yes") //Vorestation edit - Rykka corrected to 60 seconds to match current spawn time
+		if(alert(src,"Are you sure you wish to observe? You will have to wait up to [alert_time] minute\s before being able to spawn into the game!","Player Setup","Yes","No") == "Yes")
 			if(!client)	return 1
 
-			//Make a new mannequin quickly, and allow the observer to take the appearance
+			// Make a new mannequin quickly, and allow the observer to take the appearance
 			var/mob/living/carbon/human/dummy/mannequin = new()
 			client.prefs.dress_preview_mob(mannequin)
 			var/mob/observer/dead/observer = new(mannequin)
-			observer.moveToNullspace() //Let's not stay in our doomed mannequin
+			observer.moveToNullspace()	// Let's not stay in our doomed mannequin
 			qdel(mannequin)
 
 			spawning = 1
@@ -141,7 +140,6 @@
 				observer.forceMove(O.loc)
 			else
 				to_chat(src,"<span class='danger'>Could not locate an observer spawn point. Use the Teleport verb to jump to the station map.</span>")
-			observer.timeofdeath = world.time // Set the time of death so that the respawn timer works correctly.
 
 			announce_ghost_joinleave(src)
 
@@ -149,9 +147,11 @@
 				client.prefs.real_name = random_name(client.prefs.identifying_gender)
 			observer.real_name = client.prefs.real_name
 			observer.name = observer.real_name
-			if(!client.holder && !config_legacy.antag_hud_allowed)           // For new ghosts we remove the verb from even showing up if it's not allowed.
-				observer.verbs -= /mob/observer/dead/verb/toggle_antagHUD        // Poor guys, don't know what they are missing!
+			if(!client.holder && !config_legacy.antag_hud_allowed)			// For new ghosts we remove the verb from even showing up if it's not allowed.
+				observer.verbs -= /mob/observer/dead/verb/toggle_antagHUD	// Poor guys, don't know what they are missing!
 			observer.key = key
+			observer.client?.holder?.update_stealth_ghost()
+			observer.set_respawn_timer(time_till_respawn())	// Will keep their existing time if any, or return 0 and pass 0 into set_respawn_timer which will use the defaults
 			qdel(src)
 
 			return 1
@@ -161,8 +161,15 @@
 		if(!SSticker || SSticker.current_state != GAME_STATE_PLAYING)
 			to_chat(usr, "<font color='red'>The round is either not ready, or has already finished...</font>")
 			return
+
+		var/time_till_respawn = time_till_respawn()
+		if(time_till_respawn == -1)	// Special case, never allowed to respawn
+			to_chat(usr, "<span class='warning'>Respawning is not allowed!</span>")
+		else if(time_till_respawn)	// Nonzero time to respawn
+			to_chat(usr, "<span class='warning'>You can't respawn yet! You need to wait another [round(time_till_respawn/10/60, 0.1)] minutes.</span>")
+			return
 /*
-		if(client.prefs.species != "Human" && !check_rights(R_ADMIN, 0)) //VORESTATION EDITS: THE COMMENTED OUT AREAS FROM LINE 154 TO 178
+		if(client.prefs.species != "Human" && !check_rights(R_ADMIN, 0))
 			if (config_legacy.usealienwhitelist)
 				if(!is_alien_whitelisted(src, client.prefs.species))
 					src << alert("You are currently not whitelisted to Play [client.prefs.species].")
@@ -174,16 +181,14 @@
 		ViewManifest()
 
 	if(href_list["SelectedJob"])
-
-		/* Vorestation Removal Start
-		//Prevents people rejoining as same character.
+/*
+		// Prevents people rejoining as same character.
 		for (var/mob/living/carbon/human/C in mob_list)
 			var/char_name = client.prefs.real_name
 			if(char_name == C.real_name)
-				to_chat(usr, "<span class='notice'>There is a character that already exists with the same name - <b>[C.real_name]</b>, please join with a different one, or use Quit the Round with the previous character.</span>") //VOREStation Edit
+				to_chat(usr, "<span class='notice'>There is a character that already exists with the same name - <b>[C.real_name]</b>, please join with a different one, or use Quit the Round with the previous character.</span>")
 				return
-		*/ //Vorestation Removal End
-
+*/
 		if(!config_legacy.enter_allowed)
 			to_chat(usr, "<span class='notice'>There is an administrative lock on entering the game!</span>")
 			return
@@ -191,11 +196,11 @@
 			to_chat(usr, "<span class='danger'>The station is currently exploding. Joining would go poorly.</span>")
 			return
 /*
-		if(!is_alien_whitelisted(src, all_species[client.prefs.species]))
+		if(!is_alien_whitelisted(src, GLOB.all_species[client.prefs.species]))
 			src << alert("You are currently not whitelisted to play [client.prefs.species].")
 			return 0
 */
-		var/datum/species/S = all_species[client.prefs.species]
+		var/datum/species/S = GLOB.all_species[client.prefs.species]
 		if(!(S.spawn_flags & SPECIES_CAN_JOIN))
 			src << alert("Your current species, [client.prefs.species], is not available for play on the station.")
 			return 0
@@ -329,14 +334,32 @@
 		popup.set_content(dat)
 		popup.open()
 
+/mob/new_player/proc/time_till_respawn()
+	if(!ckey)
+		return -1	// What?
+
+	var/timer = GLOB.respawn_timers[ckey]
+	// No timer at all
+	if(!timer)
+		return 0
+	// Special case, infinite timer
+	if(timer == -1)
+		return -1
+	// Timer expired
+	if(timer <= world.time)
+		GLOB.respawn_timers -= ckey
+		return 0
+	// Timer still going
+	return timer - world.time
+
 /mob/new_player/proc/IsJobAvailable(rank)
 	var/datum/job/job = SSjobs.GetJob(rank)
 	if(!job)	return 0
 	if(!job.is_position_available()) return 0
 	if(jobban_isbanned(src,rank))	return 0
 	if(!job.player_old_enough(src.client))	return 0
-	if(!is_job_whitelisted(src,rank))	return 0 //VOREStation Code
-	if(!job.player_has_enough_pto(src.client)) return 0 //VOREStation Code
+	if(!is_job_whitelisted(src,rank))	return 0
+	if(!job.player_has_enough_pto(src.client)) return 0
 	return 1
 
 
@@ -352,7 +375,7 @@
 	if(!IsJobAvailable(rank))
 		src << alert("[rank] is not available. Please try another.")
 		return 0
-	if(!attempt_vr(src,"spawn_checks_vr",list())) return 0 // VOREStation Insert
+	if(!attempt_vr(src,"spawn_checks_vr",list())) return 0
 	if(!client)
 		return 0
 
@@ -369,14 +392,14 @@
 
 	SSjobs.AssignRole(src, rank, 1)
 
-	var/mob/living/character = create_character(T)	//creates the human and transfers vars and mind
-	character = SSjobs.EquipRank(character, rank, 1)					//equips the human
+	var/mob/living/character = create_character(T)		// Creates the human and transfers vars and mind
+	character = SSjobs.EquipRank(character, rank, 1)	// Equips the human
 	UpdateFactionList(character)
 
 	// AIs don't need a spawnpoint, they must spawn at an empty core
 	if(character.mind.assigned_role == "AI")
 
-		character = character.AIize(move=0) // AIize the character, but don't move them yet
+		character = character.AIize(move=0)	// AIize the character, but don't move them yet
 
 		// IsJobAvailable for AI checks that there is an empty core available in this list
 		var/obj/structure/AIcore/deactivated/C = empty_playable_ai_cores[1]
@@ -392,9 +415,9 @@
 		return
 
 	// Equip our custom items only AFTER deploying to spawn points eh?
-	//equip_custom_items(character)	//VOREStation Removal
+	//equip_custom_items(character)
 
-	//character.apply_traits() //VOREStation Removal
+	//character.apply_traits()
 
 	// Moving wheelchair if they have one
 	if(character.buckled && istype(character.buckled, /obj/structure/bed/chair/wheelchair))
@@ -463,7 +486,7 @@
 
 /mob/new_player/proc/create_character(var/turf/T)
 	if (!attempt_vr(src,"spawn_checks_vr",list()))
-		return 0 // VOREStation Insert
+		return 0
 	spawning = 1
 	close_spawn_windows()
 
@@ -472,8 +495,8 @@
 	var/use_species_name
 	var/datum/species/chosen_species
 	if(client.prefs.species)
-		chosen_species = all_species[client.prefs.species]
-		use_species_name = chosen_species.get_station_variant() //Only used by pariahs atm.
+		chosen_species = GLOB.all_species[client.prefs.species]
+		use_species_name = chosen_species.get_station_variant()	// Only used by pariahs atm.
 
 	if(chosen_species && use_species_name)
 		// Have to recheck admin due to no usr at roundstart. Latejoins are fine though.
@@ -493,21 +516,19 @@
 		client.prefs.copy_to(new_character, icon_updates = TRUE)
 
 	if(client && client.media)
-		client.media.stop_music() // MAD JAMS cant last forever yo
+		client.media.stop_music()	// MAD JAMS cant last forever yo
 
 	if(mind)
-		mind.active = 0					//we wish to transfer the key manually
-		// VOREStation edit to disable the destructive forced renaming for our responsible whitelist clowns.
-		//if(mind.assigned_role == "Clown")				//give them a clownname if they are a clown
-		//	new_character.real_name = pick(clown_names)	//I hate this being here of all places but unfortunately dna is based on real_name!
+		mind.active = 0					// We wish to transfer the key manually
+		// Edited to disable the destructive forced renaming for our responsible whitelist clowns.
+		//if(mind.assigned_role == "Clown")				// Give them a clownname if they are a clown
+		//	new_character.real_name = pick(clown_names)	// I hate this being here of all places but unfortunately dna is based on real_name!
 		//	new_character.rename_self("clown")
 		mind.original = new_character
-		// VOREStation
 		mind.loaded_from_ckey = client.ckey
 		mind.loaded_from_slot = client.prefs.default_slot
-		// VOREStation
-		//mind.traits = client.prefs.traits.Copy() // VOREStation conflict
-		mind.transfer_to(new_character)					//won't transfer key since the mind is not active
+		//mind.traits = client.prefs.traits.Copy()	// Conflict
+		mind.transfer_to(new_character)				// Won't transfer key since the mind is not active
 
 	new_character.name = real_name
 	new_character.dna.ready_dna(new_character)
@@ -519,7 +540,7 @@
 		new_character.disabilities |= NEARSIGHTED
 
 	for(var/lang in client.prefs.alternate_languages)
-		var/datum/language/chosen_language = all_languages[lang]
+		var/datum/language/chosen_language = GLOB.all_languages[lang]
 		if(chosen_language)
 			if(is_lang_whitelisted(src,chosen_language) || (new_character.species && (chosen_language.name in new_character.species.secondary_langs)))
 				new_character.add_language(lang)
@@ -559,7 +580,7 @@
 /mob/new_player/get_species()
 	var/datum/species/chosen_species
 	if(client.prefs.species)
-		chosen_species = all_species[client.prefs.species]
+		chosen_species = GLOB.all_species[client.prefs.species]
 
 	if(!chosen_species)
 		return SPECIES_HUMAN

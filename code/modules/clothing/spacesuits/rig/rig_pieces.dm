@@ -16,7 +16,9 @@
 		SPECIES_SKRELL = 'icons/mob/species/skrell/helmet.dmi',
 		SPECIES_UNATHI = 'icons/mob/species/unathi/helmet.dmi',
 		SPECIES_VOX = 'icons/mob/species/vox/head.dmi',
-		SPECIES_TESHARI = 'icons/mob/species/seromi/head.dmi'
+		SPECIES_TESHARI = 'icons/mob/species/teshari/head.dmi',
+		SPECIES_ZADDAT = 'icons/mob/species/zaddat/head.dmi',
+		SPECIES_PLASMAMAN = 'icons/mob/species/phoronoid/head.dmi'
 		)
 	species_restricted = null
 	max_pressure_protection = null
@@ -42,6 +44,10 @@
 	species_restricted = null
 	gender = PLURAL
 	icon_base = null
+	sprite_sheets = list(
+		SPECIES_ZADDAT = 'icons/mob/species/zaddat/shoes.dmi'
+		) //Zaddat Engi RIG appearance is unique
+
 	force = 5 // if you're kicking someone with something meant to keep you locked on a hunk of metal...
 
 /obj/item/clothing/suit/space/rig
@@ -59,11 +65,22 @@
 	resilience = 0.2
 	can_breach = 1
 	sprite_sheets = list(
-		SPECIES_TAJ = 'icons/mob/species/tajaran/suit.dmi',
-		SPECIES_UNATHI = 'icons/mob/species/unathi/suit.dmi',
-		SPECIES_VOX = 'icons/mob/species/vox/suit.dmi',
-		SPECIES_TESHARI = 'icons/mob/species/seromi/suit.dmi'
-		)
+        SPECIES_TAJ             = 'icons/mob/species/tajaran/suit.dmi',
+        SPECIES_SKRELL             = 'icons/mob/species/skrell/suit.dmi',
+        SPECIES_UNATHI             = 'icons/mob/species/unathi/suit.dmi',
+        SPECIES_NEVREAN         = 'icons/mob/species/nevrean/suit_vr.dmi',
+        SPECIES_AKULA             = 'icons/mob/species/akula/suit_vr.dmi',
+        SPECIES_SERGAL            = 'icons/mob/species/sergal/suit_vr.dmi',
+        SPECIES_ZORREN_FLAT        = 'icons/mob/species/fennec/suit_vr.dmi',
+        SPECIES_ZORREN_HIGH        = 'icons/mob/species/fox/suit_vr.dmi',
+        SPECIES_VULPKANIN        = 'icons/mob/species/vulpkanin/suit.dmi',
+        SPECIES_PROMETHEAN        = 'icons/mob/species/skrell/suit.dmi',
+        SPECIES_XENOHYBRID        = 'icons/mob/species/unathi/suit.dmi',
+        SPECIES_VOX             = 'icons/mob/species/vox/suit.dmi',
+        SPECIES_TESHARI            = 'icons/mob/species/teshari/suit.dmi',
+        SPECIES_ZADDAT            = 'icons/mob/species/zaddat/suit.dmi',
+		SPECIES_PLASMAMAN			= 'icons/mob/species/phoronoid/suit.dmi'
+        )
 	supporting_limbs = list()
 	var/obj/item/material/knife/tacknife
 	max_pressure_protection = null

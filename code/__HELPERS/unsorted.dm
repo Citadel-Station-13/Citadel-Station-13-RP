@@ -36,7 +36,6 @@
 	if (length(textb) < 2)
 		textr = text("0[]", textb)
 	return text("#[][][]", textr, textg, textb)
-	return
 
 /proc/Get_Angle(atom/movable/start,atom/movable/end)//For beams.
 	if(!start || !end) return 0
@@ -437,13 +436,15 @@ Turf and target are seperate in case you want to teleport some distance from a t
 	return new_list
 
 //Returns a list of all mobs with their name
-/proc/getmobs()
+/proc/getmobs(ghostfollow = FALSE)
 
 	var/list/mobs = sortmobs()
 	var/list/names = list()
 	var/list/creatures = list()
 	var/list/namecounts = list()
 	for(var/mob/M in mobs)
+		if(isobserver(M) && ghostfollow && M.client?.holder && M.client.holder.fakekey && M.is_preference_enabled(/datum/client_preference/holder/stealth_ghost_mode))
+			continue
 		var/name = M.name
 		if (name in names)
 			namecounts[name]++
@@ -461,6 +462,9 @@ Turf and target are seperate in case you want to teleport some distance from a t
 		creatures[name] = M
 
 	return creatures
+
+/proc/getmobs_ghost_follow()
+	return getmobs(TRUE)
 
 //Orders mobs by type then by name
 /proc/sortmobs()
@@ -1103,8 +1107,6 @@ proc/is_hot(obj/item/W as obj)
 			return 3500
 		else
 			return 0
-
-	return 0
 
 //Whether or not the given item counts as sharp in terms of dealing damage
 /proc/is_sharp(obj/O as obj)

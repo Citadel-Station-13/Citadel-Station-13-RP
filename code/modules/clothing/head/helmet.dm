@@ -182,6 +182,16 @@
 	siemens_coefficient = 0.5
 	valid_accessory_slots = null
 
+/obj/item/clothing/head/helmet/eraticator
+	name = "Eraticator Head"
+	desc = "The 'head' of an Eraticator Artillery Platform, ripped off of the chassis. May be worn for totemic purposes."
+	icon_state = "eraticator-head"
+	item_state_slots = list(slot_r_hand_str = "helmet", slot_l_hand_str = "helmet")
+	armor = list(melee = 10, bullet = 80, laser = 10 ,energy = 10, bomb = 0, bio = 0, rad = 0)
+	flags_inv = HIDEEARS|HIDEEYES|BLOCKHEADHAIR
+	siemens_coefficient = 0.7
+	valid_accessory_slots = null
+
 //Non-hardsuit ERT helmets.
 /obj/item/clothing/head/helmet/ert
 	name = "emergency response team helmet"
@@ -213,3 +223,31 @@
 	name = "emergency response team medical helmet"
 	desc = "A set of armor worn by medical members of the NanoTrasen Emergency Response Team. Has red and white highlights."
 	icon_state = "erthelmet_med"
+
+/obj/item/clothing/head/helmet/ert/para
+	name = "Oculus Malum visor"
+	desc = "This specialty visor, nicknamed the 'MAW' by PMD agents, grants trained Agents the ability to view Paracausal events without suffering memetic hazards."
+	icon_state = "para_ert_helmet"
+	action_button_name = "Cycle MAW"
+
+	flash_protection = FLASH_PROTECTION_MAJOR
+
+	var/blessed = TRUE
+
+/obj/item/clothing/head/helmet/ert/para/attack_self(mob/user as mob)
+	if(src.icon_state == initial(icon_state) && user.mind.isholy && blessed)
+		blessed = FALSE
+		flash_protection = FLASH_PROTECTION_NONE
+		src.icon_state = "[icon_state]_up"
+		to_chat(user, "<font color='blue'>The helmet's protective sigil fades as you raise the OM visor.</font>")
+	else
+		blessed = TRUE
+		flash_protection = FLASH_PROTECTION_MAJOR
+		src.icon_state = initial(icon_state)
+		to_chat(user, "<font color='blue'>The helmet's protective sigil glows as you lower the OM visor.</font>")
+	update_clothing_icon()	//so our mob-overlays update
+
+	if(!user.mind.isholy)
+		flash_protection = FLASH_PROTECTION_NONE
+		blessed = FALSE
+		to_chat(user, "<font color='blue'>The OM visor doesn't respond to you.</font>")

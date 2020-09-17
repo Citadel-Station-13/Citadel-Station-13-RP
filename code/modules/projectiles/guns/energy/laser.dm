@@ -229,26 +229,18 @@
 	projectile_type = /obj/item/projectile/beam/lasertag/blue
 	cell_type = /obj/item/cell/device/weapon/recharge
 	battery_lock = 1
-	var/required_vest
-
-/obj/item/gun/energy/lasertag/special_check(var/mob/living/carbon/human/M)
-	if(ishuman(M))
-		if(!istype(M.wear_suit, required_vest))
-			to_chat(M, "<span class='warning'>You need to be wearing your laser tag vest!</span>")
-			return 0
-	return ..()
 
 /obj/item/gun/energy/lasertag/blue
 	icon_state = "bluetag"
 	item_state = "bluetag"
 	projectile_type = /obj/item/projectile/beam/lasertag/blue
-	required_vest = /obj/item/clothing/suit/bluetag
+	pin = /obj/item/firing_pin/tag/blue
 
 /obj/item/gun/energy/lasertag/red
 	icon_state = "redtag"
 	item_state = "redtag"
 	projectile_type = /obj/item/projectile/beam/lasertag/red
-	required_vest = /obj/item/clothing/suit/redtag
+	pin = /obj/item/firing_pin/tag/red
 
 /obj/item/gun/energy/lasertag/omni
 	projectile_type = /obj/item/projectile/beam/lasertag/omni
@@ -264,3 +256,35 @@
 	origin_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 1, TECH_MATERIAL = 4)
 
 	projectile_type = /obj/item/projectile/scatter/laser
+
+// Other laser guns.
+
+/obj/item/gun/energy/tommylaser
+	name = "M-2421 'Tommy-Laser'"
+	desc = "A automatic laser weapon resembling a Tommy-Gun. Designed by Cybersun Industries to be a man portable supressive fire laser weapon."
+	icon_state = "tommylas"
+	item_state = "tommylas"
+	w_class = ITEMSIZE_LARGE
+	slot_flags = SLOT_BACK
+	charge_cost = 60 // 40 shots, lay down the firepower
+	projectile_type = /obj/item/projectile/beam/weaklaser
+	cell_type = /obj/item/cell/device/weapon
+	origin_tech = list(TECH_COMBAT = 5, TECH_MAGNET = 5, TECH_ILLEGAL = 3)
+
+	firemodes = list(
+		list(mode_name="single shot", burst = 1, fire_delay=4, move_delay=null, burst_accuracy = null, dispersion = null),
+		list(mode_name="three shot bursts", burst=3, fire_delay=10 , move_delay=4,    burst_accuracy=list(75,75,75), dispersion=list(1,1,1)),
+		list(mode_name="short bursts",	burst=5, fire_delay=10 ,move_delay=6, burst_accuracy = list(0,0,0,0,0), dispersion = list(4,4,4,4,4)),
+		)
+
+/obj/item/gun/energy/zip
+	name = "Zip-Las"
+	desc = "A homemade (and somehow safe) laser gun deisgined around shooting single powerful laser beam draining the cell entirely. Better not miss and better have spare cells."
+	icon_state = "ziplas"
+	item_state = "ziplas"
+	w_class = ITEMSIZE_SMALL
+	slot_flags = SLOT_BELT|SLOT_BACK
+	charge_cost = 1500 //You got 1 shot...
+	projectile_type = /obj/item/projectile/beam/heavylaser //But it hurts a lot
+	cell_type = /obj/item/cell/device/weapon
+

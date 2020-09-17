@@ -5086,26 +5086,18 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
-/area/shuttle/large_escape_pod1/centcom{
-	base_turf = /turf/simulated/floor/tiled/steel_dirty/virgo3b
-	})
+/area/centcom/evac)
 "jw" = (
 /obj/effect/floor_decal/rust/part_rusted3,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
-/area/shuttle/large_escape_pod1/centcom{
-	base_turf = /turf/simulated/floor/tiled/steel_dirty/virgo3b
-	})
+/area/centcom/evac)
 "jx" = (
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
-/area/shuttle/large_escape_pod1/centcom{
-	base_turf = /turf/simulated/floor/tiled/steel_dirty/virgo3b
-	})
+/area/centcom/evac)
 "jy" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
-/area/shuttle/large_escape_pod1/centcom{
-	base_turf = /turf/simulated/floor/tiled/steel_dirty/virgo3b
-	})
+/area/centcom/evac)
 "jz" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner{
 	dir = 8
@@ -5248,9 +5240,7 @@
 "jJ" = (
 /obj/effect/floor_decal/rust/mono_rusted3,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
-/area/shuttle/large_escape_pod1/centcom{
-	base_turf = /turf/simulated/floor/tiled/steel_dirty/virgo3b
-	})
+/area/centcom/evac)
 "jK" = (
 /turf/unsimulated/wall,
 /area/centcom/medical)
@@ -5266,9 +5256,7 @@
 "jM" = (
 /obj/effect/floor_decal/corner_steel_grid/diagonal,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
-/area/shuttle/large_escape_pod1/centcom{
-	base_turf = /turf/simulated/floor/tiled/steel_dirty/virgo3b
-	})
+/area/centcom/evac)
 "jN" = (
 /obj/effect/floor_decal/sign/dock/two,
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -9595,6 +9583,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
 	},
+/obj/machinery/door/window/eastleft,
 /turf/unsimulated/floor/techfloor_grid,
 /area/centcom/terminal)
 "rG" = (
@@ -9830,16 +9819,12 @@
 /area/centcom/security)
 "si" = (
 /turf/simulated/shuttle/wall,
-/area/shuttle/escape/centcom{
-	base_turf = /turf/unsimulated/floor/techfloor_grid
-	})
+/area/centcom/evac)
 "sj" = (
 /obj/structure/grille,
 /obj/structure/shuttle/window,
 /turf/simulated/shuttle/plating,
-/area/shuttle/escape/centcom{
-	base_turf = /turf/unsimulated/floor/techfloor_grid
-	})
+/area/centcom/evac)
 "sk" = (
 /obj/structure/table/woodentable{
 	dir = 5
@@ -9993,9 +9978,7 @@
 /area/centcom/security)
 "sB" = (
 /turf/simulated/shuttle/wall/hard_corner,
-/area/shuttle/escape/centcom{
-	base_turf = /turf/unsimulated/floor/techfloor_grid
-	})
+/area/centcom/evac)
 "sC" = (
 /obj/structure/closet/hydrant{
 	pixel_x = -30
@@ -10011,24 +9994,18 @@
 /turf/simulated/shuttle/floor/white{
 	color = "#cccccc"
 	},
-/area/shuttle/escape/centcom{
-	base_turf = /turf/unsimulated/floor/techfloor_grid
-	})
+/area/centcom/evac)
 "sD" = (
 /turf/simulated/shuttle/floor/white{
 	color = "#cccccc"
 	},
-/area/shuttle/escape/centcom{
-	base_turf = /turf/unsimulated/floor/techfloor_grid
-	})
+/area/centcom/evac)
 "sE" = (
 /obj/structure/bed/chair/shuttle,
 /turf/simulated/shuttle/floor/white{
 	color = "#cccccc"
 	},
-/area/shuttle/escape/centcom{
-	base_turf = /turf/unsimulated/floor/techfloor_grid
-	})
+/area/centcom/evac)
 "sF" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -10222,17 +10199,13 @@
 /turf/simulated/shuttle/floor/white{
 	color = "#cccccc"
 	},
-/area/shuttle/escape/centcom{
-	base_turf = /turf/unsimulated/floor/techfloor_grid
-	})
+/area/centcom/evac)
 "sX" = (
 /obj/structure/table/standard,
 /turf/simulated/shuttle/floor/white{
 	color = "#cccccc"
 	},
-/area/shuttle/escape/centcom{
-	base_turf = /turf/unsimulated/floor/techfloor_grid
-	})
+/area/centcom/evac)
 "sY" = (
 /obj/machinery/status_display{
 	pixel_y = 30
@@ -10244,9 +10217,7 @@
 /turf/simulated/shuttle/floor/white{
 	color = "#cccccc"
 	},
-/area/shuttle/escape/centcom{
-	base_turf = /turf/unsimulated/floor/techfloor_grid
-	})
+/area/centcom/evac)
 "sZ" = (
 /obj/structure/table/glass,
 /obj/item/storage/box/cups,
@@ -10428,9 +10399,7 @@
 /turf/simulated/shuttle/floor/white{
 	color = "#cccccc"
 	},
-/area/shuttle/escape/centcom{
-	base_turf = /turf/unsimulated/floor/techfloor_grid
-	})
+/area/centcom/evac)
 "tm" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
@@ -10606,9 +10575,7 @@
 	name = "Shuttle Hatch"
 	},
 /turf/simulated/shuttle/floor/yellow,
-/area/shuttle/escape/centcom{
-	base_turf = /turf/unsimulated/floor/techfloor_grid
-	})
+/area/centcom/evac)
 "tC" = (
 /obj/machinery/door/airlock/glass_external{
 	frequency = 1380;
@@ -10618,9 +10585,7 @@
 	name = "Shuttle Hatch"
 	},
 /turf/simulated/shuttle/floor/yellow,
-/area/shuttle/escape/centcom{
-	base_turf = /turf/unsimulated/floor/techfloor_grid
-	})
+/area/centcom/evac)
 "tD" = (
 /obj/structure/table/glass,
 /obj/item/roller,
@@ -10843,9 +10808,7 @@
 /turf/simulated/shuttle/floor/white{
 	color = "#cccccc"
 	},
-/area/shuttle/escape/centcom{
-	base_turf = /turf/unsimulated/floor/techfloor_grid
-	})
+/area/centcom/evac)
 "ub" = (
 /obj/structure/bed/chair/shuttle,
 /obj/structure/closet/walllocker/emerglocker{
@@ -10854,9 +10817,7 @@
 /turf/simulated/shuttle/floor/white{
 	color = "#cccccc"
 	},
-/area/shuttle/escape/centcom{
-	base_turf = /turf/unsimulated/floor/techfloor_grid
-	})
+/area/centcom/evac)
 "uc" = (
 /obj/effect/wingrille_spawn/reinforced/crescent,
 /turf/unsimulated/floor/steel,
@@ -10924,18 +10885,14 @@
 /turf/simulated/shuttle/floor/white{
 	color = "#cccccc"
 	},
-/area/shuttle/escape/centcom{
-	base_turf = /turf/unsimulated/floor/techfloor_grid
-	})
+/area/centcom/evac)
 "un" = (
 /obj/structure/table/standard,
 /obj/random/maintenance/clean,
 /turf/simulated/shuttle/floor/white{
 	color = "#cccccc"
 	},
-/area/shuttle/escape/centcom{
-	base_turf = /turf/unsimulated/floor/techfloor_grid
-	})
+/area/centcom/evac)
 "uo" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "plant-22"
@@ -11174,9 +11131,7 @@
 "uP" = (
 /obj/structure/sign/nanotrasen,
 /turf/simulated/shuttle/wall,
-/area/shuttle/escape/centcom{
-	base_turf = /turf/unsimulated/floor/techfloor_grid
-	})
+/area/centcom/evac)
 "uQ" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 8
@@ -11297,18 +11252,14 @@
 /turf/simulated/shuttle/floor/white{
 	color = "#cccccc"
 	},
-/area/shuttle/escape/centcom{
-	base_turf = /turf/unsimulated/floor/techfloor_grid
-	})
+/area/centcom/evac)
 "vc" = (
 /obj/structure/table/standard,
 /obj/random/plushie,
 /turf/simulated/shuttle/floor/white{
 	color = "#cccccc"
 	},
-/area/shuttle/escape/centcom{
-	base_turf = /turf/unsimulated/floor/techfloor_grid
-	})
+/area/centcom/evac)
 "vd" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/blast/regular{
@@ -11411,9 +11362,7 @@
 /turf/simulated/shuttle/floor/white{
 	color = "#cccccc"
 	},
-/area/shuttle/escape/centcom{
-	base_turf = /turf/unsimulated/floor/techfloor_grid
-	})
+/area/centcom/evac)
 "vl" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 1
@@ -11424,9 +11373,7 @@
 /turf/simulated/shuttle/floor/white{
 	color = "#cccccc"
 	},
-/area/shuttle/escape/centcom{
-	base_turf = /turf/unsimulated/floor/techfloor_grid
-	})
+/area/centcom/evac)
 "vm" = (
 /turf/unsimulated/wall,
 /area/centcom/security{
@@ -11989,17 +11936,13 @@
 /obj/structure/grille,
 /obj/structure/shuttle/window,
 /turf/simulated/shuttle/floor/white,
-/area/shuttle/escape/centcom{
-	base_turf = /turf/unsimulated/floor/techfloor_grid
-	})
+/area/centcom/evac)
 "wg" = (
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/shuttle/floor/white{
 	color = "#cccccc"
 	},
-/area/shuttle/escape/centcom{
-	base_turf = /turf/unsimulated/floor/techfloor_grid
-	})
+/area/centcom/evac)
 "wh" = (
 /obj/machinery/computer/card{
 	dir = 4
@@ -12303,18 +12246,14 @@
 /turf/simulated/shuttle/floor/white{
 	color = "#cccccc"
 	},
-/area/shuttle/escape/centcom{
-	base_turf = /turf/unsimulated/floor/techfloor_grid
-	})
+/area/centcom/evac)
 "wD" = (
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/machinery/light,
 /turf/simulated/shuttle/floor/white{
 	color = "#cccccc"
 	},
-/area/shuttle/escape/centcom{
-	base_turf = /turf/unsimulated/floor/techfloor_grid
-	})
+/area/centcom/evac)
 "wE" = (
 /obj/machinery/computer/secure_data{
 	dir = 4
@@ -12584,9 +12523,7 @@
 /turf/simulated/shuttle/floor/white{
 	color = "#cccccc"
 	},
-/area/shuttle/escape/centcom{
-	base_turf = /turf/unsimulated/floor/techfloor_grid
-	})
+/area/centcom/evac)
 "xa" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 1
@@ -12595,9 +12532,7 @@
 /turf/simulated/shuttle/floor/white{
 	color = "#cccccc"
 	},
-/area/shuttle/escape/centcom{
-	base_turf = /turf/unsimulated/floor/techfloor_grid
-	})
+/area/centcom/evac)
 "xb" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 10
@@ -16593,6 +16528,20 @@
 	icon_state = "dark"
 	},
 /area/centcom/specops)
+"Lf" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
+	},
+/obj/machinery/door/window/eastright,
+/turf/unsimulated/floor/techfloor_grid,
+/area/centcom/terminal)
+"MJ" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/unsimulated/floor/steel,
+/area/centcom/terminal)
 "Nt" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/unsimulated/floor{
@@ -16605,6 +16554,15 @@
 	icon_state = "dark"
 	},
 /area/centcom/specops)
+"Pb" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/unsimulated/floor/techfloor_grid,
+/area/centcom/terminal)
 "Rc" = (
 /obj/structure/table/glass,
 /obj/item/defib_kit/compact/loaded,
@@ -21851,23 +21809,23 @@ ab
 ab
 ro
 rF
-rF
-rF
-rF
-rF
-rF
-rF
-rF
-rF
-rF
-rF
-rF
-rF
-rF
-rF
-rF
-rF
-rF
+Pb
+Pb
+Pb
+Pb
+MJ
+Pb
+Pb
+Pb
+Pb
+Pb
+Pb
+MJ
+Pb
+Pb
+Pb
+Pb
+Lf
 ro
 ab
 ab

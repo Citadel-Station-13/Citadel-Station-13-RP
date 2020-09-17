@@ -1,0 +1,4 @@
+author: "drofoljaelisglis"
+delete-after: True
+changes: 
+  - rscadd: "A song's artist name will now display alongside the song on the jukebox selection menu."

@@ -9,7 +9,6 @@
 /datum/supply_pack/randomised/munitions
 	group = "Munitions"
 
-//CITADEL CHANGE - uncomments VOREstation removals /* VOREStation Removal - What? This crate costs 40... the crate with just two eguns costs 50... what??? This crate is also like "the armory" and has OFFICER access?
 /datum/supply_pack/munitions/weapons
 	name = "Weapons - Security basic equipment"
 	contains = list(
@@ -23,7 +22,7 @@
 	cost = 40
 	containertype = /obj/structure/closet/crate/secure/gear
 	containername = "Security equipment crate"
-	access = access_security //CITADEL CHANGE - uncomments them shits*/
+	access = access_security
 
 /datum/supply_pack/munitions/egunpistol
 	name = "Weapons - Energy sidearms"
@@ -31,20 +30,18 @@
 	cost = 50
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "Energy sidearms crate"
-	access = access_armory //VOREStation Edit - Guns are for the armory.
+	access = access_armory
 
 /datum/supply_pack/munitions/flareguns
 	name = "Weapons - Flare guns"
 	contains = list(
-			/obj/item/gun/projectile/sec/flash,
-			/obj/item/ammo_magazine/m45/flash,
-			/obj/item/gun/projectile/shotgun/doublebarrel/flare,
-			/obj/item/storage/box/flashshells
+			/obj/item/gun/projectile/shotgun/flare = 2,
+			/obj/item/storage/box/flashshells = 2
 			)
 	cost = 25
 	containertype = /obj/structure/closet/crate/secure/gear
 	containername = "Flare gun crate"
-	access = access_armory //VOREStation Edit - Guns are for the armory.
+	access = access_armory
 
 /datum/supply_pack/munitions/eweapons
 	name = "Weapons - Experimental weapons crate"
@@ -58,7 +55,7 @@
 
 /datum/supply_pack/munitions/energyweapons
 	name = "Weapons - Laser rifle crate"
-	contains = list(/obj/item/gun/energy/laser = 2) //VOREStation Edit - Made to be consistent with the energy guns crate.
+	contains = list(/obj/item/gun/energy/laser = 2)
 	cost = 50
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "Energy weapons crate"
@@ -75,7 +72,7 @@
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "Shotgun crate"
 	access = access_armory
-//CITADEL CHANGE - comments out VOREdev antifun /* VOREStation edit -- This is a bad idea. -- So is this.
+
 /datum/supply_pack/munitions/erifle
 	name = "Weapons - Energy marksman"
 	contains = list(/obj/item/gun/energy/sniperrifle = 2)
@@ -91,7 +88,7 @@
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "Burst laser crate"
 	access = access_armory
-// CITADEL CHANGE - uncomments removed shit */
+
 /datum/supply_pack/munitions/ionweapons
 	name = "Weapons - Electromagnetic Rifles"
 	contains = list(
@@ -143,7 +140,7 @@
  	cost = 40
  	containertype = /obj/structure/closet/crate/secure/weapon
  	containername = "Ballistic Weapons crate"
- 	access = access_armory //VOREStation Edit - Guns are for the armory.
+ 	access = access_armory
 
 /datum/supply_pack/munitions/mrifle
 	name = "Weapons - Magnetic Rifles"
@@ -167,8 +164,18 @@
 	cost = 130
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "Magnetic weapon crate"
-	access = access_security
-
+	access = access_armory
+	
+/datum/supply_pack/munitions/usmc
+	name = "Weapons - M41A Pulse Rifle"
+	contains = list(/obj/item/gun/projectile/caseless/usmc,
+		/obj/item/ammo_magazine/m10x24mm/small = 2
+		)
+	cost = 150
+	containertype = /obj/structure/closet/crate/secure/weapon
+	containername = " United Sol Marine Corps Surplus Crate"
+	access = access_armory
+	
 /datum/supply_pack/munitions/shotgunammo
 	name = "Ammunition - Shotgun shells"
 	contains = list(
@@ -219,3 +226,22 @@
 	containertype = /obj/structure/closet/crate/secure
 	containername = "Energy ammunition crate"
 	access = access_security
+
+/datum/supply_pack/munitions/firingpins
+	name = "Weapons - Standard firing pins"
+	contains = list(/obj/item/storage/box/firingpins = 3)
+	cost = 10
+	containertype = /obj/structure/closet/crate/secure
+	containername = "Firing pin crate"
+	access = access_armory
+
+/datum/supply_pack/munitions/expeditionguns
+	name = "Frontier phaser (station-locked) crate"
+	contains = list(
+			/obj/item/gun/energy/frontier/locked = 2,
+			/obj/item/gun/energy/frontier/locked/holdout = 1,
+			)
+	cost = 35
+	containertype = /obj/structure/closet/crate/secure
+	containername = "frontier phaser crate"
+	access = access_explorer

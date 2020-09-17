@@ -1,0 +1,133 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"b" = (
+/turf/template_noop,
+/area/triumph_away/poi_d/POIs/reactor)
+"c" = (
+/turf/simulated/floor/tiled/steel_dirty/triumph,
+/area/triumph_away/poi_d/POIs/reactor)
+"d" = (
+/obj/effect/decal/remains/tajaran,
+/turf/simulated/floor/tiled/airless,
+/area/triumph_away/poi_d/POIs/reactor)
+"e" = (
+/obj/effect/decal/remains/tajaran,
+/turf/simulated/mineral/floor/vacuum,
+/area/triumph_away/poi_d/POIs/reactor)
+"f" = (
+/turf/simulated/mineral/floor/vacuum,
+/area/triumph_away/poi_d/POIs/reactor)
+"g" = (
+/obj/effect/decal/remains/deer,
+/turf/simulated/mineral/floor/vacuum,
+/area/triumph_away/poi_d/POIs/reactor)
+"h" = (
+/obj/structure/ore_box,
+/turf/simulated/mineral/floor/vacuum,
+/area/triumph_away/poi_d/POIs/reactor)
+"i" = (
+/turf/simulated/wall,
+/area/triumph_away/poi_d/POIs/reactor)
+"l" = (
+/obj/triumph_away_spawner/D/drone_spawner,
+/turf/simulated/floor/tiled/airless,
+/area/triumph_away/poi_d/POIs/reactor)
+"m" = (
+/obj/structure/barricade,
+/turf/simulated/mineral/floor/vacuum,
+/area/triumph_away/poi_d/POIs/reactor)
+"n" = (
+/obj/machinery/door/airlock/multi_tile/glass,
+/turf/simulated/floor/tiled/steel_dirty/triumph,
+/area/triumph_away/poi_d/POIs/reactor)
+"v" = (
+/obj/machinery/drone_fabricator/derelict,
+/turf/simulated/floor/tiled/airless,
+/area/triumph_away/poi_d/POIs/reactor)
+"B" = (
+/turf/simulated/floor/tiled/airless,
+/area/triumph_away/poi_d/POIs/reactor)
+
+(1,1,1) = {"
+b
+b
+f
+b
+b
+i
+d
+i
+i
+i
+i
+i
+"}
+(2,1,1) = {"
+b
+b
+f
+b
+b
+i
+B
+B
+v
+B
+v
+i
+"}
+(3,1,1) = {"
+f
+e
+f
+m
+h
+n
+B
+B
+B
+B
+B
+i
+"}
+(4,1,1) = {"
+f
+f
+f
+m
+f
+c
+B
+B
+B
+B
+B
+i
+"}
+(5,1,1) = {"
+b
+b
+g
+b
+b
+i
+B
+l
+l
+l
+B
+i
+"}
+(6,1,1) = {"
+b
+b
+f
+b
+b
+i
+B
+i
+i
+i
+i
+i
+"}

@@ -371,6 +371,33 @@
 /obj/item/geiger,
 /turf/simulated/mineral/floor/ignore_cavegen/virgo3b,
 /area/mine/explored/underdark)
+"dN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/mine/explored/underdark)
+"kn" = (
+/obj/tether_away_spawner/underdark_normal,
+/turf/simulated/mineral/floor/ignore_cavegen/virgo3b,
+/area/mine/explored/underdark)
+"ul" = (
+/obj/tether_away_spawner/underdark_hard,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/mine/explored/underdark)
+"GV" = (
+/obj/item/ore/hydrogen,
+/obj/structure/table/steel,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/mine/explored/underdark)
+"PX" = (
+/obj/structure/bed,
+/obj/random/gun/random,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/mine/explored/underdark)
+"Sz" = (
+/obj/effect/decal/cleanable/blood,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/mine/explored/underdark)
 
 (1,1,1) = {"
 aa
@@ -471,7 +498,7 @@ aP
 al
 ab
 bp
-ae
+GV
 ab
 ad
 ac
@@ -575,7 +602,7 @@ ae
 aI
 ab
 bj
-bj
+dN
 ab
 ad
 ac
@@ -702,7 +729,7 @@ bh
 bj
 bj
 bt
-ae
+ul
 ae
 ae
 aK
@@ -793,13 +820,13 @@ aA
 bu
 ad
 ad
-ad
+kn
 ad
 ad
 ab
 aS
 ae
-ae
+Sz
 aC
 ab
 ae
@@ -856,7 +883,7 @@ aH
 ab
 ae
 ae
-ae
+Sz
 ae
 ae
 af
@@ -902,7 +929,7 @@ ah
 ad
 ab
 aT
-ae
+au
 ae
 ae
 ab
@@ -928,7 +955,7 @@ aa
 aa
 ab
 bo
-az
+PX
 az
 an
 ab

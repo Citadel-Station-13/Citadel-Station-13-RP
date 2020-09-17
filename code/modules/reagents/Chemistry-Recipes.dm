@@ -2628,6 +2628,55 @@
 	required_reagents = list("sassafras" = 1, "vodkatonic" = 1, "blood" = 3, "egg" = 1, "bluecuracao" = 1)
 	result_amount = 5
 
+/datum/chemical_reaction/drinks/theoutlaw
+	name = "The Outlaw"
+	id = "theoutlaw"
+	result = "theoutlaw"
+	required_reagents = list("vodka" = 3, "gold" = 1, "bitters" = 1)
+	result_amount = 5
+
+/datum/chemical_reaction/drinks/thelawman
+	name = "The Lawman"
+	id = "thelawman"
+	result = "thelawman"
+	required_reagents = list("whiskey" = 3, "coffee" = 1, "mint" = 1)
+	result_amount = 5
+
+/datum/chemical_reaction/drinks/hangmansnoose
+	name = "Hangman's Noose"
+	id = "hangmansnoose"
+	result = "hangmansnoose"
+	required_reagents = list("rotgut" = 1, "carpotoxin" = 1, "spidertoxin" = 1)
+	result_amount = 3
+
+/datum/chemical_reaction/drinks/bigiron
+	name = "Big Iron"
+	id = "bigiron"
+	result = "bigiron"
+	required_reagents = list("rum" = 2, "iron" = 1)
+	result_amount = 3
+
+/datum/chemical_reaction/drinks/lastcactus
+	name = "Last Cactus"
+	id = "lastcactus"
+	result = "lastcactus"
+	required_reagents = list("vodka" = 2, "mint" = 1, "sugar" = 1, "ice" = 1)
+	result_amount = 5
+
+/datum/chemical_reaction/drinks/rootbeerfloat
+	name = "Root Beer Float"
+	id = "rootbeerfloat"
+	result = "rootbeerfloat"
+	required_reagents = list("sassafras" = 1, "ice" = 1, "cream" = 1)
+	result_amount = 3
+
+/datum/chemical_reaction/drinks/thebestboy
+	name = "The Best Boy"
+	id = "thebestboy"
+	result = "thebestboy"
+	required_reagents = list("screwdrivercocktail" = 3, "ice" = 1, "cream" = 1)
+	result_amount = 5
+
 ////////////////////////////////
 /// End of booze drinks list///
 ///////////////////////////////

@@ -1119,3 +1119,27 @@ var/list/name_to_material
 	weight = 1
 	protectiveness = 0 // 0%
 	conductive = 0
+
+/datum/material/emptysandbag
+	name = "empty sandbag"
+	stack_type = /obj/item/stack/material/emptysandbag
+	icon_base = ""
+	icon_colour = "#D9C179"
+	weight = 1
+	hardness = 1
+	protectiveness = 0 // 0%
+	conductive = 0
+	sheet_singular_name = "empty sandbag"
+	sheet_plural_name = "empty sandbags"
+
+/datum/material/sandbags
+	name = "sandbag"
+	stack_type = /obj/item/stack/material/sandbags
+	icon_base = ""
+	icon_colour = "#D9C179"
+	weight = 5
+	hardness = 50
+	protectiveness = 5 // 20%
+	conductive = 0
+	sheet_singular_name = "sandbag"
+	sheet_plural_name = "sandbags"

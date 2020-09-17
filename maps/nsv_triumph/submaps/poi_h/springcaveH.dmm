@@ -1,0 +1,23 @@
+"a" = (/turf/simulated/floor/beach/sand/desert/classh,/area/triumph_away/poi_h/unexplored)
+"d" = (/turf/simulated/mineral/classh,/area/triumph_away/poi_h/explored)
+"i" = (/obj/random/outcrop,/turf/simulated/floor/water/classh,/area/triumph_away/poi_h/explored)
+"o" = (/obj/random/outcrop,/turf/simulated/floor/water/shoreline/classh{dir = 1},/area/triumph_away/poi_h/explored)
+"v" = (/turf/simulated/floor/water/shoreline/corner/classh{dir = 4},/area/triumph_away/poi_h/explored)
+"B" = (/turf/simulated/floor/water/classh,/area/triumph_away/poi_h/explored)
+"C" = (/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/explored)
+"S" = (/obj/random/outcrop,/turf/simulated/floor/water/shoreline/classh{dir = 9},/area/triumph_away/poi_h/explored)
+"V" = (/turf/simulated/floor/water/shoreline/classh{dir = 9},/area/triumph_away/poi_h/explored)
+"Y" = (/turf/simulated/floor/water/shoreline/classh{dir = 1},/area/triumph_away/poi_h/explored)
+
+(1,1,1) = {"
+aaaaaaaaaa
+aaadddddaa
+aaddddddda
+adddiBddda
+addiBBSdda
+addBBVvCda
+addoYvCCCa
+addddddCaa
+aadddddaaa
+aaaaaaaaaa
+"}

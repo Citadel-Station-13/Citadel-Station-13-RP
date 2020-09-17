@@ -8,7 +8,7 @@ var/list/global/tank_gauge_cache = list()
 	name = "tank"
 	icon = 'icons/obj/tank.dmi'
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/seromi/back.dmi'
+		SPECIES_TESHARI = 'icons/mob/species/teshari/back.dmi'
 		)
 
 	var/gauge_icon = "indicator_tank"
@@ -326,6 +326,9 @@ var/list/global/tank_gauge_cache = list()
 
 /obj/item/tank/remove_air(amount)
 	return air_contents.remove(amount)
+
+/obj/item/tank/proc/remove_air_by_flag(flag, amount)
+	return air_contents.remove_by_flag(flag, amount)
 
 /obj/item/tank/return_air()
 	return air_contents

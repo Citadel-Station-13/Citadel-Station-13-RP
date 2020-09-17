@@ -222,6 +222,11 @@
 	icon_state = "straight_jacket"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
+	//yw edit - Teshari sprite
+	sprite_sheets = list(
+		SPECIES_TESHARI = 'icons/mob/species/teshari/suit.dmi'
+		)
+	//yw edit end
 
 	var/resist_time = 4800	// Eight minutes.
 
@@ -344,6 +349,14 @@ obj/item/clothing/suit/kamishimo
 	desc = "A cozy cardigan in a classic style."
 	icon_state = "cardigan"
 	addblends = "cardigan_a"
+	flags_inv = HIDEHOLSTER
+
+/obj/item/clothing/suit/storage/toggle/slimleather
+	name = "slim leather coat"
+	desc = "A tailored, brown leather coat."
+	icon_state = "slim_leather"
+	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask)
+	item_state_slots = list(slot_r_hand_str = "brown_jacket", slot_l_hand_str = "brown_jacket")
 	flags_inv = HIDEHOLSTER
 
 /*
@@ -911,7 +924,7 @@ obj/item/clothing/suit/kamishimo
 	desc = "A padded suit for restraining patients without bumming everyone out!"
 	icon_state = "mr_snuggles"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
+	flags_inv = HIDEEARS|BLOCKHEADHAIR|HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 
 	var/resist_time = 4800	// Eight minutes.
 
@@ -920,6 +933,99 @@ obj/item/clothing/suit/kamishimo
 	desc = "A padded suit for restraining patients without bumming everyone out!"
 	icon_state = "mrs_snuggles"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
+	flags_inv = HIDEEARS|BLOCKHEADHAIR|HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 
 	var/resist_time = 4800	// Eight minutes.
+
+
+
+/obj/item/clothing/suit/storage/toggle/operations_coat
+	name = "Security Operations Jacket"
+	desc = "A uniform jacket from the United Federation. Starfleet still uses this uniform and there are variations of it. Set phasers to awesome."
+	icon_state = "fedcoat"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	allowed = list(
+				/obj/item/tank/emergency/oxygen,
+				/obj/item/flashlight,
+				/obj/item/gun/energy,
+				/obj/item/gun/projectile,
+				/obj/item/ammo_magazine,
+				/obj/item/ammo_casing,
+//				/obj/item/storage/fancy/shotgun_ammo,
+				/obj/item/melee/baton,
+				/obj/item/handcuffs,
+//				/obj/item/detective_scanner,
+				/obj/item/tape_recorder)
+	var/unbuttoned = 0
+
+/*
+/obj/item/clothing/suit/storage/toggle/operations_coat/verb/toggle()
+	set name = "Toggle coat buttons"
+	set category = "Object"
+	set src in usr
+
+	if(!usr.canmove || usr.stat || usr.restrained())
+		return 0
+
+	switch(unbuttoned)
+		if(0)
+			icon_state = "[initial(icon_state)]_open"
+			item_state = "[initial(item_state)]_open"
+			unbuttoned = 1
+			to_chat(usr, "You unbutton the coat.")
+		if(1)
+			icon_state = "[initial(icon_state)]"
+			item_state = "[initial(item_state)]"
+			unbuttoned = 0
+			to_chat(usr, "You button up the coat.")
+	usr.update_inv_wear_suit()
+*/
+
+
+/obj/item/clothing/suit/storage/toggle/operations_coat/medsci
+	name = "Medical/Science Operations Jacket"
+	desc = "A jacket issued to Medical and Science staff on NT vessels.."
+	icon_state = "fedblue"
+
+/obj/item/clothing/suit/storage/toggle/operations_coat/engineering
+	name = "Engineering Operations Jacket"
+	desc = "A jacket issued to Engineering staff on NT vessels."
+	icon_state = "fedeng"
+
+/obj/item/clothing/suit/storage/toggle/operations_coat/command
+	name = "Command Operations Jacket"
+	desc = "A jacket issued to Command staff on NT vessels."
+	icon_state = "fedcapt"
+
+/obj/item/clothing/suit/storage/modern_operations_coat
+	name = "Modern Command Operations Jacket"
+	desc = "A jacket issued to Command staff on NT vessels. This one is modern."
+	icon_state = "fedmodern"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	allowed = list(
+				/obj/item/tank/emergency/oxygen,
+				/obj/item/flashlight,
+				/obj/item/gun/energy,
+				/obj/item/gun/projectile,
+				/obj/item/ammo_magazine,
+				/obj/item/ammo_casing,
+//				/obj/item/storage/fancy/shotgun_ammo,
+				/obj/item/melee/baton,
+				/obj/item/handcuffs,
+//				/obj/item/detective_scanner,
+				/obj/item/tape_recorder)
+
+/obj/item/clothing/suit/storage/modern_operations_coat/medsci
+	name = "Modern Medical/Science Operations Jacket"
+	desc = "A jacket issued to Medical and Science staff on NT vessels. This one is modern."
+	icon_state = "fedmodernblue"
+
+/obj/item/clothing/suit/storage/modern_operations_coat/engineering
+	name = "Modern Engineering Operations Jacket"
+	desc = "A jacket issued to Engineering staff on NT vessels. This one is modern."
+	icon_state = "fedmoderneng"
+
+/obj/item/clothing/suit/storage/modern_operations_coat/security
+	name = "Modern Security Operations Jacket"
+	desc = "A jacket issued to Security staff on NT vessels. This one is modern."
+	icon_state = "fedmodernsec"

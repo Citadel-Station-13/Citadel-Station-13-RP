@@ -375,7 +375,7 @@
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/ears/teshari
-	name = "Teshari (colorable fluff)"
+	name = "Teshari ears (colorable)"
 	desc = ""
 	icon_state = "teshari"
 	do_colouration = 1
@@ -383,7 +383,7 @@
 	extra_overlay = "teshariinner"
 
 /datum/sprite_accessory/ears/tesharihigh
-	name = "Teshari upper ears (colorable fluff)"
+	name = "Teshari upper ears (colorable)"
 	desc = ""
 	icon_state = "tesharihigh"
 	do_colouration = 1
@@ -391,12 +391,30 @@
 	extra_overlay = "tesharihighinner"
 
 /datum/sprite_accessory/ears/tesharilow
-	name = "Teshari lower ears (colorable fluff)"
+	name = "Teshari lower ears (colorable)"
 	desc = ""
 	icon_state = "tesharilow"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "tesharilowinner"
+
+datum/sprite_accessory/ears/tesh_pattern_ear_male
+	icon = 'icons/mob/vore/ears_vr.dmi'
+	name = "Teshari male ear pattern (colorable)"
+	desc = ""
+	icon_state = "teshari"
+	color_blend_mode = ICON_MULTIPLY
+	do_colouration = 1
+	extra_overlay = "teshari_male_pattern"
+
+/datum/sprite_accessory/ears/tesh_pattern_ear_female
+	icon = 'icons/mob/vore/ears_vr.dmi'
+	name = "Teshari female ear pattern (colorable)"
+	desc = ""
+	icon_state = "teshari"
+	color_blend_mode = ICON_MULTIPLY
+	do_colouration = 1
+	extra_overlay = "teshari_female_pattern"
 
 /datum/sprite_accessory/ears/swooped_bunny
 	name = "Swooped bunny ears (colorable)"
@@ -908,6 +926,7 @@
 	name = "kitty, colorable, downwards"
 	desc = ""
 	icon_state = "kittydown"
+	ani_state = "kittydown_wag"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 
@@ -915,6 +934,23 @@
 	name = "kitty, colorable, upwards"
 	desc = ""
 	icon_state = "kittyup"
+	ani_state = "kittyup_wag"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/tail/kitty_tg
+	name = "kitty, colorable, main"
+	desc = ""
+	icon_state = "kittytg"
+	ani_state = "kittytg_wag"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/tail/cat_big
+	name = "kitty (big), colorable"
+	desc = ""
+	icon_state = "catbig"
+	ani_state = "catbig_wag"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 
@@ -1306,7 +1342,7 @@
 	extra_overlay = "skunktail_mark"
 
 /datum/sprite_accessory/tail/deertail
-	name = "deer, dual-color"
+	name = "deer tail, dual-color"
 	desc = ""
 	icon_state = "deertail"
 	do_colouration = 1
@@ -1314,12 +1350,57 @@
 	extra_overlay = "deertail_mark"
 
 /datum/sprite_accessory/tail/teshari_fluffytail
-	name = "Teshari alternative, colorable"
+	name = "Teshari tail"
 	desc = ""
 	icon_state = "teshari_fluffytail"
 	extra_overlay = "teshari_fluffytail_mark"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/tail/special/teshtailfeathered
+	name = "Teshari tail alt"
+	desc = ""
+	icon_state = "teshtail_s"
+	extra_overlay = "teshtail_feathers_s"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/tail/tesh_pattern_male
+	icon = 'icons/mob/vore/tails_vr.dmi'
+	name = "Teshari male tail pattern"
+	desc = ""
+	icon_state = "teshtail_s"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+	extra_overlay = "teshpattern_male_tail"
+
+/datum/sprite_accessory/tail/tesh_pattern_male_alt
+	icon = 'icons/mob/vore/tails_vr.dmi'
+	name = "Teshari male tail alt. pattern"
+	desc = ""
+	icon_state = "teshtail_s"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+	extra_overlay = "teshpattern_male_alt"
+
+/datum/sprite_accessory/tail/tesh_pattern_fem
+	icon = 'icons/mob/vore/tails_vr.dmi'
+	name = "Teshari female tail pattern"
+	desc = ""
+	icon_state = "teshtail_s"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+	extra_overlay = "teshpattern_fem_tail"
+
+/datum/sprite_accessory/tail/tesh_pattern_fem_alt
+	icon = 'icons/mob/vore/tails_vr.dmi'
+	name = "Teshari male tail alt. pattern"
+	desc = ""
+	icon_state = "teshtail_s"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+	extra_overlay = "teshpattern_fem_alt"
+
 
 //For all species tails. Includes haircolored tails.
 /datum/sprite_accessory/tail/special
@@ -1390,21 +1471,6 @@
 	name = "monkey tail"
 	desc = ""
 	icon_state = "chimptail_s"
-
-/datum/sprite_accessory/tail/special/seromitail
-	name = "seromi tail"
-	desc = ""
-	icon_state = "seromitail_s"
-	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
-
-/datum/sprite_accessory/tail/special/seromitailfeathered
-	name = "seromi tail w/ feathers"
-	desc = ""
-	icon_state = "seromitail_s"
-	extra_overlay = "seromitail_feathers_s"
-	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/special/unathihc
 	name = "unathi tail, colorable"
@@ -1490,20 +1556,6 @@
 	desc = ""
 	icon_state = "chimptail_hc_s"
 	do_colouration = 1
-
-/datum/sprite_accessory/tail/special/seromitailhc
-	name = "seromi tail, colorable"
-	desc = ""
-	icon_state = "seromitail_hc_s"
-	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
-
-/datum/sprite_accessory/tail/special/seromitailfeatheredhc
-	name = "seromi tail w/ feathers, colorable"
-	desc = ""
-	icon_state = "seromitail_feathers_hc_s"
-	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/special/vulpan
 	name = "vulpkanin, colorable"
@@ -1810,3 +1862,11 @@
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "robodragon_b"
+
+/datum/sprite_accessory/tail/tentacles
+	name = "Tentacles"
+	desc = ""
+	icon_state = "tentacles"
+	do_colouration = TRUE
+	color_blend_mode = ICON_MULTIPLY
+	ani_state = "tentacles_wag"

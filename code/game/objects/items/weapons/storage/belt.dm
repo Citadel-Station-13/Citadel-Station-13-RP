@@ -8,7 +8,7 @@
 	max_w_class = ITEMSIZE_NORMAL
 	slot_flags = SLOT_BELT
 	attack_verb = list("whipped", "lashed", "disciplined")
-	sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/species/seromi/belt.dmi')
+	sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/species/teshari/belt.dmi')
 
 	var/show_above_suit = 0
 

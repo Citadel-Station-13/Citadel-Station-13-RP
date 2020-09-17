@@ -1,0 +1,5 @@
+author: "Enzo-Leon"
+delete-after: True
+changes: 
+  - tweak: "Re-enabled the meteor type Tunguska (Will spawn NO more than one)"
+  - balance: "Adjusted spawn chance and count of current meteors"

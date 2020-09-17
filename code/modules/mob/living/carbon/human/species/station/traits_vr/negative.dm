@@ -44,39 +44,75 @@
 
 /datum/trait/minor_brute_weak
 	name = "Minor Brute Weakness"
-	desc = "Increases damage from brute damage sources by 15%"
+	desc = "You take 15% more brute damage"
 	cost = -1
 	var_changes = list("brute_mod" = 1.15)
 
 /datum/trait/brute_weak
 	name = "Brute Weakness"
-	desc = "Increases damage from brute damage sources by 25%"
+	desc = "You take 25% more brute damage"
 	cost = -2
 	var_changes = list("brute_mod" = 1.25)
 
 /datum/trait/brute_weak_plus
 	name = "Major Brute Weakness"
-	desc = "Increases damage from brute damage sources by 50%"
+	desc = "You take 50% more brute damage"
 	cost = -3
 	var_changes = list("brute_mod" = 1.5)
 
 /datum/trait/minor_burn_weak
 	name = "Minor Burn Weakness"
-	desc = "Increases damage from burn damage sources by 15%"
+	desc = "You take 15% more burn damage"
 	cost = -1
 	var_changes = list("burn_mod" = 1.15)
 
 /datum/trait/burn_weak
 	name = "Burn Weakness"
-	desc = "Increases damage from burn damage sources by 25%"
+	desc = "You take 25% more burn damage"
 	cost = -2
 	var_changes = list("burn_mod" = 1.25)
 
 /datum/trait/burn_weak_plus
 	name = "Major Burn Weakness"
-	desc = "Increases damage from burn damage sources by 50%"
+	desc = "You take 50% more burn damage"
 	cost = -3
 	var_changes = list("burn_mod" = 1.5)
+
+/datum/trait/toxin_weak
+	name = "Toxin Weakness"
+	desc = "You take 25% more toxin damage"
+	cost = -1
+	var_changes = list("toxin_mod" = 1.25)
+
+/datum/trait/toxin_weak_plus
+	name = "Major Toxin Weaness"
+	desc = "You take 50% more toxin damage"
+	cost = -2
+	var_changes = list("toxin_mod" = 1.5)
+
+/datum/trait/oxy_weak
+	name = "Breathe Weakness"
+	desc = "You take 25% more breathe damage and require 25% more air (20kpa minimum). Make sure to adjust your emergency EVA tanks."
+	cost = -1
+	var_changes = list("minimum_breath_pressure" = 20, "oxy_mod" = 1.25)
+
+/datum/trait/oxy_weak_plus
+	name = "Major Breathe Weakness"
+	desc = "You take 50% more breathe damage and require 50% more air (24kpa minimum). Make sure to adjust your emergency EVA tanks."
+	cost = -2
+	var_changes = list("minimum_breath_pressure" = 24, "oxy_mod" = 1.5)
+
+/datum/trait/rad_weak
+	name = "Radiation Weakness"
+	desc = "You take 25% more radition damage"
+	cost = -1
+	var_changes = list("radiation_mod" = 1.35)
+
+/datum/trait/rad_weak_plus
+	name = "Major Radiation Weakness"
+	desc = "You take 50% more radition damage"
+	cost = -2
+	var_changes = list("radiation_mod" = 1.50)
 
 /datum/trait/conductive
 	name = "Conductive"
@@ -133,3 +169,17 @@
 /datum/trait/colorblind/para_taj/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
 	H.add_modifier(/datum/modifier/trait/colorblind_taj)
+
+/datum/trait/photosensitive
+	name = "Photosensitive"
+	desc = "You are incredibly vulnerable to bright lights. You are blinded for longer and your skin burns under extreme light."
+	cost = -1
+	var_changes = list("flash_mod" = 2)
+	var_changes = list("flash_burn" = 5)
+
+/datum/trait/hemophilia
+	name = "Hemophilia"
+	desc = "You bleed twice as fast as normal."
+	cost = -1
+	var_changes = list("bloodloss_rate" = 2)
+

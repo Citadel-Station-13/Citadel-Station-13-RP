@@ -61,7 +61,8 @@
 		/obj/item/storage/toolbox/electrical = 3,
 		/obj/item/module/power_control = 3,
 		/obj/item/multitool = 3,
-		/obj/item/inducer = 1)
+		/obj/item/inducer = 1,
+		/obj/item/lightreplacer = 1)
 
 
 /obj/structure/closet/secure_closet/engineering_welding
@@ -96,6 +97,7 @@
 		/obj/item/radio/headset/headset_eng,
 		/obj/item/radio/headset/headset_eng/alt,
 		/obj/item/clothing/suit/storage/hazardvest,
+		/obj/item/clothing/under/bodysuit/bodysuithazard,
 		/obj/item/clothing/mask/gas,
 		/obj/item/clothing/glasses/meson,
 		/obj/item/cartridge/engineering,

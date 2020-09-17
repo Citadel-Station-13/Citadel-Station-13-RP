@@ -11,3 +11,5 @@ html/changelog.html merge=union
 
 # enforced LF
 * text=auto
+
+*.<ext> merge=<ext>

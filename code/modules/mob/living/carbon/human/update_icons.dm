@@ -277,6 +277,8 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 				icon_key += "3"
 			else
 				icon_key += "1"
+			if(part.transparent) //VOREStation Edit. For better slime limbs. Avoids using solid var due to limb dropping.
+				icon_key += "_t" //VOREStation Edit.
 
 	icon_key = "[icon_key][husk ? 1 : 0][fat ? 1 : 0][hulk ? 1 : 0][skeleton ? 1 : 0]"
 
@@ -431,10 +433,13 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 
 		if(hair_style && (src.species.get_bodytype(src) in hair_style.species_allowed))
 			var/icon/hair_s = new/icon("icon" = hair_style.icon, "icon_state" = "[hair_style.icon_state]_s")
-			var/icon/hair_s_add = new/icon("icon" = hair_style.icon_add, "icon_state" = "[hair_style.icon_state]_s")
+			var/icon/hair_s_add
+			if(hair_style.icon_add)
+				hair_s_add = new/icon("icon" = hair_style.icon_add, "icon_state" = "[hair_style.icon_state]_s")
 			if(hair_style.do_colouration)
 				hair_s.Blend(rgb(r_hair, g_hair, b_hair), ICON_MULTIPLY)
-				hair_s.Blend(hair_s_add, ICON_ADD)
+				if(hair_s_add)
+					hair_s.Blend(hair_s_add, ICON_ADD)
 
 			face_standing.Blend(hair_s, ICON_OVERLAY)
 
@@ -449,7 +454,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 		return
 	// VOREStation Edit - END
 
-	if(head_organ.nonsolid)
+	if(head_organ.transparent) //VOREStation Edit. For better slime limbs.
 		face_standing += rgb(,,,120)
 
 	overlays_standing[HAIR_LAYER] = image(face_standing, layer = BODY_LAYER+HAIR_LAYER)

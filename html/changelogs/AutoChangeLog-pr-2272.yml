@@ -1,0 +1,4 @@
+author: "Enzo-Leon"
+delete-after: True
+changes: 
+  - server: "Switches active map to Triumph with Tether going inactive"

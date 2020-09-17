@@ -32,7 +32,7 @@
 	minimal_access = list(access_kitchen)
 
 	outfit_type = /decl/hierarchy/outfit/job/service/chef
-	alt_titles = list("Cook")
+	alt_titles = list("Cook","Line Cook")
 
 /datum/job/hydro
 	title = "Botanist"
@@ -71,7 +71,7 @@
 	ideal_character_age = 40
 
 	outfit_type = /decl/hierarchy/outfit/job/cargo/qm
-	alt_titles = list("Supply Chief")
+	alt_titles = list("Supply Chief", "Inventory Chief")
 
 /datum/job/cargo_tech
 	title = "Cargo Technician"
@@ -88,6 +88,7 @@
 	minimal_access = list(access_maint_tunnels, access_cargo, access_cargo_bot, access_mailsorting)
 
 	outfit_type = /decl/hierarchy/outfit/job/cargo/cargo_tech
+	alt_titles = list("Logistics Specialist")
 
 /datum/job/mining
 	title = "Shaft Miner"
@@ -102,10 +103,10 @@
 	idtype = /obj/item/card/id/cargo/mining
 	economic_modifier = 5
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_mining, access_mining_station)
-	minimal_access = list(access_mining, access_mining_station, access_mailsorting)
+	minimal_access = list(access_mining, access_mining_station, access_mailsorting, access_cargo, access_cargo_bot)
 
 	outfit_type = /decl/hierarchy/outfit/job/cargo/mining
-	alt_titles = list("Drill Technician")
+	alt_titles = list("Drill Technician","Belt Miner")
 
 //Service
 /datum/job/janitor
@@ -141,7 +142,7 @@
 	minimal_access = list(access_library)
 
 	outfit_type = /decl/hierarchy/outfit/job/librarian
-	alt_titles = list("Journalist", "Writer")
+	alt_titles = list("Journalist", "Writer","Film Crew")
 
 //var/global/lawyer = 0//Checks for another lawyer //This changed clothes on 2nd lawyer, both IA get the same dreds.
 /datum/job/lawyer
@@ -161,6 +162,7 @@
 	minimal_player_age = 7
 
 	outfit_type = /decl/hierarchy/outfit/job/internal_affairs_agent
+	alt_titles = list("Ethical Compliance Analyst")
 
 /*
 /datum/job/lawyer/equip(var/mob/living/carbon/human/H)

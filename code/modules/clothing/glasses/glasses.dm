@@ -29,7 +29,7 @@ BLIND     // can't see anything
 	var/list/away_planes //Holder for disabled planes
 
 	sprite_sheets = list(
-		"Teshari" = 'icons/mob/species/seromi/eyes.dmi',
+		"Teshari" = 'icons/mob/species/teshari/eyes.dmi',
 		"Vox" = 'icons/mob/species/vox/eyes.dmi'
 		)
 
@@ -282,6 +282,41 @@ BLIND     // can't see anything
 	icon_state = "glasses_thin"
 	prescription = 0
 
+/obj/item/clothing/glasses/regular/thick
+	name = "prescription thick glasses"
+	desc = "Glasses with extra thick lenses."
+	icon_state = "glasses_thick"
+	prescription = 1
+
+/obj/item/clothing/glasses/thick
+	name = "thick glasses"
+	desc = "Glasses with extra thick lenses."
+	icon_state = "glasses_thick"
+	prescription = 0
+
+/obj/item/clothing/glasses/regular/dark
+	name = "prescription dark framed glasses"
+	desc = "Glasses with a darker frame."
+	icon_state = "glasses_alt"
+	prescription = 1
+
+/obj/item/clothing/glasses/dark
+	name = "dark framed glasses"
+	desc = "Glasses with a darker frame."
+	icon_state = "glasses_alt"
+	prescription = 0
+
+/obj/item/clothing/glasses/regular/scan
+	name = "prescription scanner glasses"
+	desc = "Glasses with a scanner device installed."
+	icon_state = "glasses_scan"
+	prescription = 1
+
+/obj/item/clothing/glasses/scan
+	name = "scanner glasses"
+	desc = "Glasses with a scanner device installed."
+	icon_state = "glasses_scan"
+	prescription = 0
 
 /obj/item/clothing/glasses/sunglasses
 	name = "sunglasses"
@@ -567,7 +602,7 @@ BLIND     // can't see anything
 /obj/item/clothing/glasses/badglasses
 	name = "poorly made glasses"
 	desc = "A pair of glasses that look cheaply made. The lenses are prescription, at least...?"
-	icon_state = "glasses_bad"
+	icon_state = "glasses_alt"
 	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
 	prescription = 1
 

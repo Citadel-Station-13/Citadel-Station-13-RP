@@ -19,7 +19,7 @@
 
 Going to make a Pull Request? Make sure you read the [CONTRIBUTING.md](.github/CONTRIBUTING.md) first!
 
-Citadel Station 13 - RP is a fork of VOREStation. VOREStation is a fork of the Polaris code branch, itself a fork of the Baystation12 code branch, for the game Space Station 13.
+Citadel Station 13 - RP was originally a fork of VOREStation, which separated on 01/25/2019. VOREStation is a fork of the Polaris code branch, itself a fork of the Baystation12 code branch, for the game Space Station 13.
 
 ## DOWNLOADING
 
@@ -31,14 +31,14 @@ When that's installed, right click in any folder and click on "Git Bash".
 When that opens, type in:
 
 ```
-git clone https://github.com/VOREStation/VOREStation.git
+git clone https://github.com/Citadel-Station-13/Citadel-Station-13-RP.git
 ```
 
 (hint: hold down ctrl and press insert to paste into git bash)
 This will take a while to download, but it provides an easier method for updating.
 
 Option 2: Download the source code as a zip by clicking the ZIP button in the
-code tab of <https://github.com/VOREStation/VOREStation>
+code tab of <https://github.com/Citadel-Station-13/Citadel-Station-13-RP>
 (note: this will use a lot of bandwidth if you wish to update and is a lot of
 hassle if you want to make any changes at all, so it's not recommended.)
 

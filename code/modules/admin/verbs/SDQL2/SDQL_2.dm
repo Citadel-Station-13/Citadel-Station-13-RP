@@ -910,11 +910,9 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 			if(expressions_list[expression_list] != null)
 				assoc = SDQL_expression(object, expressions_list[expression_list])
 			if(assoc != null)
-				// Need to insert the key like this to prevent duplicate keys fucking up.
-				var/list/dummy = list()
-				dummy[result] = assoc
-				result = dummy
-			val += result
+				val[result] = assoc
+			else
+				val += list(assoc)		// += list(list()) byond memes
 
 	else if(expression[i] == "@\[")
 		var/list/search_tree = expression[++i]

@@ -59,7 +59,7 @@
 	slot = ACCESSORY_SLOT_OVER
 
 	sprite_sheets = list(
-		"Teshari" = 'icons/mob/species/seromi/suit.dmi'
+		"Teshari" = 'icons/mob/species/teshari/suit.dmi'
 		)
 
 /obj/item/clothing/accessory/poncho/equipped() //Solution for race-specific sprites for an accessory which is also a suit. Suit icons break if you don't use icon override which then also overrides race-specific sprites.
@@ -67,7 +67,7 @@
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.wear_suit == src)
 		if(H.species.name == "Teshari")
-			icon_override = 'icons/mob/species/seromi/suit.dmi'
+			icon_override = 'icons/mob/species/teshari/suit.dmi'
 		else if(H.species.name == "Vox")
 			icon_override = 'icons/mob/species/vox/ties.dmi'
 		else
@@ -395,6 +395,17 @@
 	name = "slim fit sweater"
 	desc = "A slim fit sweater! It seems robust."
 	icon_state = "syndicatesweater"
+
+/obj/item/clothing/accessory/sweater/shoulderless
+	name = "Shoulderless Sweater"
+	desc = "A plush sweater that doesn't cover the shoulders."
+	icon_state = "sweater_shoulderless"
+
+/obj/item/clothing/accessory/sweater/star
+	name = "Star Sweater"
+	desc = "A white long sweater with a big yellow star at the chest. It seems like it's made of a soft material."
+	icon_state = "star_sweater"
+
 //***
 // End of sweaters
 //***

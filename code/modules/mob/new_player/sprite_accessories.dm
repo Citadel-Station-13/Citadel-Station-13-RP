@@ -34,7 +34,6 @@
 	// Whether or not the accessory can be affected by colouration
 	var/do_colouration = 1
 
-
 /*
 ////////////////////////////
 /  =--------------------=  /
@@ -45,7 +44,7 @@
 
 /datum/sprite_accessory/hair
 
-	icon = 'icons/mob/Human_face_m.dmi'	  // default icon for all hairs
+	icon = 'icons/mob/human_face_m.dmi'	  // default icon for all hairs
 	var/icon_add = 'icons/mob/human_face.dmi'
 	var/flags
 
@@ -64,6 +63,11 @@
 	afro_large
 		name = "Big Afro"
 		icon_state = "hair_bigafro"
+
+	ahoge
+		name = "Ahoge"
+		icon_state = "hair_ahoge"
+		icon_add = null
 
 	bald
 		name = "Bald"
@@ -363,6 +367,11 @@
 		name = "Half-banged Hair Alt"
 		icon_state = "hair_halfbang_alt"
 
+	hedgehog
+		name = "Hedgehog Hair"
+		icon_state = "hair_hedgehog"
+		icon_add = null
+
 	hightight
 		name = "High and Tight"
 		icon_state = "hair_hightight"
@@ -450,6 +459,11 @@
 	reversemohawk
 		name = "Mohawk Reverse"
 		icon_state = "hair_reversemohawk"
+
+	messy
+		name = "Messy"
+		icon_state = "hair_messy_tg"
+		icon_add = null
 
 	mohawkunshaven
 		name = "Mohawk Unshaven"
@@ -1270,6 +1284,7 @@
 		icon_state = "teshari_mushroom"
 		species_allowed = list(SPECIES_TESHARI)
 
+
 // Vox things
 	vox_braid_long
 		name = "Long Vox braid"
@@ -1694,17 +1709,19 @@
 
 	//Tesh stuff.
 
-	teshi_fluff
-		name = "Underfluff (Teshari)"
-		icon_state = "teshi_fluff"
-		body_parts = list(BP_HEAD, BP_TORSO, BP_GROIN, BP_R_LEG, BP_L_LEG)
-		species_allowed = list(SPECIES_TESHARI)
-
 	teshi_heterochromia
-		name = "Heterochromia (Teshari) (right eye)"
+		name = "Teshari Heterochromia"
 		icon_state = "teshi_heterochromia"
 		body_parts = list(BP_HEAD)
 		species_allowed = list(SPECIES_TESHARI)
+
+	//Vox stuff
+
+	vox_coloration
+		name = "Vox Two Tone"
+		icon_state = "vox_two_tone"
+		body_parts = list(BP_HEAD,BP_L_HAND,BP_R_HAND,BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM)
+		species_allowed = list(SPECIES_VOX)
 
 //skin styles - WIP
 //going to have to re-integrate this with surgery

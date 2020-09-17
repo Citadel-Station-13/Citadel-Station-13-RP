@@ -48,10 +48,11 @@
 
 	flags = NO_SCAN
 	spawn_flags = SPECIES_IS_WHITELISTED
-	appearance_flags = HAS_EYE_COLOR | HAS_HAIR_COLOR
+	appearance_flags = HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_SKIN_COLOR
 
 	blood_color = "#9066BD"
-	flesh_color = "#808D11"
+	flesh_color = "#a3a593"
+	base_color = "#2e3302"
 
 	reagent_tag = IS_VOX
 
@@ -89,7 +90,7 @@
 		)
 
 /datum/species/vox/get_random_name(var/gender)
-	var/datum/language/species_language = all_languages[default_language]
+	var/datum/language/species_language = GLOB.all_languages[default_language]
 	return species_language.get_random_name(gender)
 
 /datum/species/vox/equip_survival_gear(var/mob/living/carbon/human/H, var/extendedtank = 0,var/comprehensive = 0)

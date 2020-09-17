@@ -83,7 +83,7 @@ SUBSYSTEM_DEF(ticker)
 			round_process()
 
 /datum/controller/subsystem/ticker/proc/on_mc_init_finish()
-	send2mainirc("Server lobby is loaded and open at byond://[config_legacy.serverurl ? config_legacy.serverurl : (config_legacy.server ? config_legacy.server : "[world.address]:[world.port]")]")
+	send2irc("Server lobby is loaded and open at byond://[config_legacy.serverurl ? config_legacy.serverurl : (config_legacy.server ? config_legacy.server : "[world.address]:[world.port]")]")
 	to_chat(world, "<span class='boldnotice'>Welcome to the pregame lobby!</span>")
 	to_chat(world, "Please set up your character and select ready. The round will start in [CONFIG_GET(number/lobby_countdown)] seconds.")
 	current_state = GAME_STATE_PREGAME
@@ -226,7 +226,7 @@ SUBSYSTEM_DEF(ticker)
 
 	callHook("roundstart")
 
-	// TODO - Leshana - Dear God Fix This.  Fix all of this. Not just this line, this entire proc. This entire file!
+	// TODO Dear God Fix This.  Fix all of this. Not just this line, this entire proc. This entire file!
 	spawn(0)//Forking here so we dont have to wait for this to finish
 		mode.post_setup()
 		//Cleanup some stuff
@@ -247,7 +247,7 @@ SUBSYSTEM_DEF(ticker)
 		if(C.holder)
 			admins_number++
 	if(admins_number == 0)
-		send2adminirc("A round has started with no admins online.")
+		send2irc("A round has started with no admins online.")
 
 /*	SSsupply.process() 		//Start the supply shuttle regenerating points -- TLE // handled in scheduler
 	master_controller.process()		//Start master_controller.process()

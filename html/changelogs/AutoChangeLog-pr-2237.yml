@@ -1,0 +1,5 @@
+author: "Enzo-Leon"
+delete-after: True
+changes: 
+  - rscadd: "Belt mining"
+  - rscadd: "Belt mining mob template for future difficult and adjustments"

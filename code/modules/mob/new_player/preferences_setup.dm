@@ -1,7 +1,7 @@
 /datum/preferences
 	//The mob should have a gender you want before running this proc. Will run fine without H
 /datum/preferences/proc/randomize_appearance_and_body_for(var/mob/living/carbon/human/H)
-	var/datum/species/current_species = all_species[species ? species : "Human"]
+	var/datum/species/current_species = GLOB.all_species[species ? species : "Human"]
 	set_biological_gender(pick(current_species.genders))
 
 	h_style = random_hair_style(biological_gender, species)
@@ -30,7 +30,7 @@
 
 
 	backbag = rand(1,5)
-	pdachoice = rand(1,5)
+	pdachoice = rand(1,6)
 	age = rand(current_species.min_age, current_species.max_age)
 	b_type = RANDOM_BLOOD_TYPE
 	if(H)

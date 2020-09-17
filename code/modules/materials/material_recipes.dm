@@ -28,6 +28,7 @@
 		recipes += new/datum/stack_recipe("[display_name] fork", /obj/item/material/kitchen/utensil/fork/plastic, 1, on_floor = 1, supplied_material = "[name]", pass_stack_color = TRUE)
 		recipes += new/datum/stack_recipe("[display_name] knife", /obj/item/material/knife/plastic, 1, on_floor = 1, supplied_material = "[name]", pass_stack_color = TRUE)
 		recipes += new/datum/stack_recipe("[display_name] blade", /obj/item/material/butterflyblade, 6, time = 20, one_per_turf = 0, on_floor = 1, supplied_material = "[name]", pass_stack_color = TRUE)
+		recipes += new/datum/stack_recipe("[display_name] hammer Head", /obj/item/material/hammer_head, 10, time = 20, one_per_turf = 0, on_floor = 1, supplied_material = "[name]", pass_stack_color = TRUE)
 
 /datum/material/steel/generate_recipes()
 	..()
@@ -119,6 +120,12 @@
 	..()
 	recipes += new/datum/stack_recipe("light marble floor tile", /obj/item/stack/tile/wmarble, 1, 4, 20)
 	recipes += new/datum/stack_recipe("dark marble floor tile", /obj/item/stack/tile/bmarble, 1, 4, 20)
+	recipes += new/datum/stack_recipe_list("statues", list( \
+		new/datum/stack_recipe("male statue", /obj/structure/statue/marble/male, 20, time = 5, one_per_turf = 1, on_floor = 1), \
+		new/datum/stack_recipe("female statue", /obj/structure/statue/marble/female, 20, time = 5, one_per_turf = 1, on_floor = 1), \
+		new/datum/stack_recipe("monkey statue", /obj/structure/statue/marble/monkey, 20, time = 5, one_per_turf = 1, on_floor = 1), \
+		new/datum/stack_recipe("corgi statue", /obj/structure/statue/marble/corgi, 20, time = 5, one_per_turf = 1, on_floor = 1), \
+		))
 
 /datum/material/plastic/generate_recipes()
 	..()
@@ -132,6 +139,7 @@
 	recipes += new/datum/stack_recipe("freezer floor tile", /obj/item/stack/tile/floor/freezer, 1, 4, 20, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("shower curtain", /obj/structure/curtain, 4, time = 15, one_per_turf = 1, on_floor = 1, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("plastic flaps", /obj/structure/plasticflaps, 4, time = 25, one_per_turf = 1, on_floor = 1, pass_stack_color = TRUE)
+	recipes += new/datum/stack_recipe("airtight plastic flaps", /obj/structure/plasticflaps/mining, 5, time = 25, one_per_turf = 1, on_floor = 1, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("water-cooler", /obj/structure/reagent_dispensers/water_cooler, 4, time = 10, one_per_turf = 1, on_floor = 1, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("lampshade", /obj/item/lampshade, 1, time = 1, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("plastic net", /obj/item/material/fishing_net, 25, time = 1 MINUTE, pass_stack_color = TRUE)
@@ -231,6 +239,7 @@
 	recipes += new/datum/stack_recipe("baggy pants", /obj/item/clothing/under/pants/baggy/white, 8, time = 10 SECONDS, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("belt pouch", /obj/item/storage/belt/fannypack/white, 25, time = 1 MINUTE, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("crude bandage", /obj/item/stack/medical/crude_pack, 1, time = 2 SECONDS, pass_stack_color = TRUE)
+	recipes += new/datum/stack_recipe("empty sandbag", /obj/item/stack/material/emptysandbag, 1, 5, 10, time = 2 SECONDS, pass_stack_color = TRUE)
 
 /datum/material/resin/generate_recipes()
 	recipes = list()
@@ -242,3 +251,58 @@
 	recipes += new/datum/stack_recipe("[display_name] net", /obj/item/material/fishing_net, 10, time = 5 SECONDS, supplied_material = "[name]", pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] membrane", /obj/effect/alien/resin/membrane, 1, time = 2 SECONDS, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] node", /obj/effect/alien/weeds/node, 1, time = 4 SECONDS)
+
+/datum/material/silver/generate_recipes()
+	..()
+	recipes += new/datum/stack_recipe_list("statues", list( \
+		new/datum/stack_recipe("head of security statue", /obj/structure/statue/silver/hos, 20, time = 5, one_per_turf = 1, on_floor = 1), \
+		new/datum/stack_recipe("medical doctor statue", /obj/structure/statue/silver/md, 20, time = 5, one_per_turf = 1, on_floor = 1), \
+		new/datum/stack_recipe("janitor statue", /obj/structure/statue/silver/janitor, 20, time = 5, one_per_turf = 1, on_floor = 1), \
+		new/datum/stack_recipe("security statue", /obj/structure/statue/silver/sec, 20, time = 5, one_per_turf = 1, on_floor = 1), \
+		new/datum/stack_recipe("secborg statue", /obj/structure/statue/silver/secborg, 20, time = 5, one_per_turf = 1, on_floor = 1), \
+		new/datum/stack_recipe("medborg statue", /obj/structure/statue/silver/medborg, 20, time = 5, one_per_turf = 1, on_floor = 1), \
+		))
+
+/datum/material/gold/generate_recipes()
+	..()
+	recipes += new/datum/stack_recipe_list("statues", list( \
+		new/datum/stack_recipe("head of security statue", /obj/structure/statue/gold/hos, 20, time = 5, one_per_turf = 1, on_floor = 1), \
+		new/datum/stack_recipe("head of personnel statue", /obj/structure/statue/gold/hop, 20, time = 5, one_per_turf = 1, on_floor = 1), \
+		new/datum/stack_recipe("chief medical officer statue", /obj/structure/statue/gold/cmo, 20, time = 5, one_per_turf = 1, on_floor = 1), \
+		new/datum/stack_recipe("chief engineer statue", /obj/structure/statue/gold/ce, 20, time = 5, one_per_turf = 1, on_floor = 1), \
+		new/datum/stack_recipe("research director statue", /obj/structure/statue/gold/rd, 20, time = 5, one_per_turf = 1, on_floor = 1), \
+		))
+
+/datum/material/phoron/generate_recipes()
+	..()
+	recipes += new/datum/stack_recipe_list("statues", list( \
+		new/datum/stack_recipe("scientist statue", /obj/structure/statue/phoron/scientist, 20, time = 5, one_per_turf = 1, on_floor = 1), \
+		new/datum/stack_recipe("xenomorph statue", /obj/structure/statue/phoron/xeno, 20, time = 5, one_per_turf = 1, on_floor = 1), \
+		))
+
+/datum/material/uranium/generate_recipes()
+	..()
+	recipes += new/datum/stack_recipe_list("statues", list( \
+		new/datum/stack_recipe("nuke statue", /obj/structure/statue/uranium/nuke, 20, time = 5, one_per_turf = 1, on_floor = 1), \
+		new/datum/stack_recipe("engineer statue", /obj/structure/statue/uranium/eng, 20, time = 5, one_per_turf = 1, on_floor = 1), \
+		))
+
+/datum/material/diamond/generate_recipes()
+	..()
+	recipes += new/datum/stack_recipe_list("statues", list( \
+		new/datum/stack_recipe("captain statue", /obj/structure/statue/diamond/captain, 20, time = 5, one_per_turf = 1, on_floor = 1), \
+		new/datum/stack_recipe("ai hologram statue", /obj/structure/statue/diamond/ai1, 20, time = 5, one_per_turf = 1, on_floor = 1), \
+		new/datum/stack_recipe("ai core statue", /obj/structure/statue/diamond/ai2, 20, time = 5, one_per_turf = 1, on_floor = 1), \
+		))
+
+/datum/material/sandstone/generate_recipes()
+	..()
+	recipes += new/datum/stack_recipe_list("statues", list( \
+		new/datum/stack_recipe("assistant statue", /obj/structure/statue/sandstone/assistant, 20, time = 5, one_per_turf = 1, on_floor = 1), \
+		))
+
+//Sandbags
+/datum/material/sandbags/generate_recipes()
+	..()
+	recipes = list()
+	recipes += new/datum/stack_recipe("sandbag barricade", /obj/structure/table/sandbags, 10, one_per_turf = 1, on_floor = 1)

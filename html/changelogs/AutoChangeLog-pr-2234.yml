@@ -1,0 +1,4 @@
+author: "CharlesWedge"
+delete-after: True
+changes: 
+  - bugfix: "Changed the names for Radiation Weakness traits to be correct."

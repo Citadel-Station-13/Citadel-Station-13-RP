@@ -1,0 +1,6 @@
+author: "LetterN"
+delete-after: True
+changes: 
+  - code_imp: "ports cdn from main/tg"
+  - code_imp: "squishes client/client_* to client/client_procs"
+  - code_imp: "merges all logging into logging.dm"

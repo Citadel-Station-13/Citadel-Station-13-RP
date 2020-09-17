@@ -78,18 +78,18 @@
 	return 1
 
 /datum/unit_test/zas_area_test/supply_centcomm
-	name = "ZAS: Supply Shuttle (CentCom)"
-	area_path = /area/supply/dock
+	name = "ZAS: Supply Shuttle"
+	area_path = /area/shuttle/supply
 
 /datum/unit_test/zas_area_test/emergency_shuttle
 	name = "ZAS: Emergency Shuttle"
-	area_path = /area/shuttle/escape/centcom
+	area_path = /area/shuttle/escape
 
 /datum/unit_test/zas_area_test/ai_chamber
 	name = "ZAS: AI Chamber"
 	area_path = /area/ai
 
-// VOREStation Edit - We don't have this anymore - Tether
+// We don't have this anymore - Tether
 // /datum/unit_test/zas_area_test/mining_shuttle_at_station
 // 	name = "ZAS: Mining Shuttle (Station)"
 // 	area_path = /area/shuttle/mining/station
@@ -98,7 +98,7 @@
 	name = "ZAS: Cargo Maintenance"
 	area_path = /area/maintenance/cargo
 
-// VOREStation Edit - We don't have this anymore - Tether
+// We don't have this anymore - Tether
 // /datum/unit_test/zas_area_test/eng_shuttle
 // 	name = "ZAS: Construction Site Shuttle (Station)"
 // 	area_path = /area/shuttle/constructionsite/station
@@ -111,10 +111,11 @@
 	name = "ZAS: Xenobiology"
 	area_path = /area/rnd/xenobiology
 
-/datum/unit_test/zas_area_test/mining_area
-	name = "ZAS: Mining Area (Vacuum)"
-	area_path = /area/mine/explored
-	expectation = UT_VACUUM
+// Citadel Station: Mining is now in space in asteroid belts. No longer in an area/mine. Re-enable for any maps with surface mining though of course.
+///datum/unit_test/zas_area_test/mining_area
+//	name = "ZAS: Mining Area (Vacuum)"
+//	area_path = /area/mine/explored
+//	expectation = UT_VACUUM
 
 /datum/unit_test/zas_area_test/cargo_bay
 	name = "ZAS: Cargo Bay"

@@ -159,10 +159,10 @@
 	desc = "It has a picture of a gun and several warning symbols on the front.<br>WARNING: Live ammunition. Misuse may result in serious injury or death."
 	icon_state = "illumshot_box"
 	item_state_slots = list(slot_r_hand_str = "syringe_kit", slot_l_hand_str = "syringe_kit")
-	starts_with = list(/obj/item/ammo_casing/a12g/flash = 8)
+	starts_with = list(/obj/item/ammo_casing/a12g/flare = 8)
 
 /obj/item/storage/box/flashshells/large
-	starts_with = list(/obj/item/ammo_casing/a12g/flash = 16)
+	starts_with = list(/obj/item/ammo_casing/a12g/flare = 16)
 
 /obj/item/storage/box/stunshells
 	name = "box of stun shells"
@@ -480,3 +480,9 @@
 	name = "box of worms"
 	desc = "It's a box filled with worms."
 	starts_with = list(/obj/item/reagent_containers/food/snacks/worm = 10)
+
+/obj/item/storage/box/firingpins
+	name = "box of standard firing pins"
+	desc = "A box full of standard firing pins, to allow newly-developed firearms to operate."
+	icon_state = "firingpins"
+	starts_with = list(/obj/item/firing_pin = 8)

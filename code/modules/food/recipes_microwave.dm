@@ -1250,3 +1250,58 @@ I said no!
 	)
 	result = /obj/item/reagent_containers/food/snacks/makaroni
 
+/datum/recipe/crayonburger_red
+	items = list(
+		/obj/item/reagent_containers/food/snacks/bun,
+		/obj/item/reagent_containers/food/snacks/meat,
+		/obj/item/pen/crayon/red
+	)
+	result = /obj/item/reagent_containers/food/snacks/crayonburger_red
+
+/datum/recipe/crayonburger_org
+	items = list(
+		/obj/item/reagent_containers/food/snacks/bun,
+		/obj/item/reagent_containers/food/snacks/meat,
+		/obj/item/pen/crayon/orange
+	)
+	result = /obj/item/reagent_containers/food/snacks/crayonburger_org
+
+/datum/recipe/crayonburger_yel
+	items = list(
+		/obj/item/reagent_containers/food/snacks/bun,
+		/obj/item/reagent_containers/food/snacks/meat,
+		/obj/item/pen/crayon/yellow
+	)
+	result = /obj/item/reagent_containers/food/snacks/crayonburger_yel
+
+/datum/recipe/crayonburger_grn
+	items = list(
+		/obj/item/reagent_containers/food/snacks/bun,
+		/obj/item/reagent_containers/food/snacks/meat,
+		/obj/item/pen/crayon/green
+	)
+	result = /obj/item/reagent_containers/food/snacks/crayonburger_grn
+
+/datum/recipe/crayonburger_blu
+	items = list(
+		/obj/item/reagent_containers/food/snacks/bun,
+		/obj/item/reagent_containers/food/snacks/meat,
+		/obj/item/pen/crayon/blue
+	)
+	result = /obj/item/reagent_containers/food/snacks/crayonburger_blu
+
+/datum/recipe/crayonburger_prp
+	items = list(
+		/obj/item/reagent_containers/food/snacks/bun,
+		/obj/item/reagent_containers/food/snacks/meat,
+		/obj/item/pen/crayon/purple
+	)
+	result = /obj/item/reagent_containers/food/snacks/crayonburger_prp
+
+/datum/recipe/crayonburger_rbw
+	items = list(
+		/obj/item/reagent_containers/food/snacks/bun,
+		/obj/item/reagent_containers/food/snacks/meat,
+		/obj/item/pen/crayon/rainbow
+	)
+	result = /obj/item/reagent_containers/food/snacks/crayonburger_rbw
