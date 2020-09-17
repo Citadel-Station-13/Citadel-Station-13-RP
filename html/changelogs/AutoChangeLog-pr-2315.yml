@@ -1,0 +1,14 @@
+author: "CharlesWedge"
+delete-after: True
+changes: 
+  - rscadd: "Silver Ammunition in 9mm, .375, .44, .45, and 7.62mm, more effective against Demons like Constructs. It is also holy which will have more effects in the future for fighting the supernatural. Speed Loader Variants included"
+  - rscadd: "New Guns: The Automat Rifle, a Bolt Action reworked in a Machine Gun, loads using stripper clips. The Shotgun Axe, whose role is self explanatory."
+  - rscadd: "New Gun Vairants and Skins: A Classic Mad Max/Blood Style Sawn off, a Brass Flare Gun, .357/.44 Contender Variants, and a New Holy Contender."
+  - rscadd: "The Saw Cleaver has been ported from Main and adjusted to fit into RP, it is a combination sword and machete, Unfortunately its current wielder is a bit blood thirsty."
+  - rscadd: "Holy Variant Guns (Double Barrel Shotguns, Bolt Action Rifles, Lever Action Rifles, Revolvers, Etc.) that have the holy trait, which will hopefully interact with blessed persons like that chaplain."
+  - rscadd: "The Blood Hunter, a Boss Cultist Mob that will hopefully challenge even well armed Explo teams."
+  - tweak: "Hunter Ammo now does more damage to MOB_CLASS_ANIMAL rather than SA_ANIMAL pending a mob class rework"
+  - imageadd: "Sprites for the New Weapons, New Ammo types and New Speedloaders."
+  - imageadd: "Missing left hand sprites for the Zip-Las"
+  - code_imp: "New Mob AI variant attached to Blood Hunter, will relentlessly pursue a target shooting at it before closing to melee."
+  - bugfix: "adds in missing sprites for some weapons"
