@@ -1138,11 +1138,6 @@
 	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a dark grey base with red and yellow coloration."
 	icon_state = "bodysuit_security"
 
-/obj/item/clothing/under/bodysuit/bodysuitsecmed
-	name = "security medical bodysuit"
-	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a dark grey base with white plating an an eyecatching red trim."
-	icon_state = "bodysuit_secmed"
-
 /obj/item/clothing/under/bodysuit/bodysuitsecweewoo
 	name = "advanced security bodysuit"
 	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a dark grey base with red and yellow coloration. The flashing lights fill you with confidence."
