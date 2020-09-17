@@ -1,3 +1,7 @@
+//Write your own shit later major
+
+
+/*
 /datum/shuttle/ferry/emergency
 	var/tag_door_station = "escape_shuttle_hatch_station"
 	var/tag_door_offsite = "escape_shuttle_hatch_offsite"
@@ -55,3 +59,5 @@
 	docking_controller_tag = "supply_shuttle"
 	dock_target_station = "cargo_bay"
 	flags = SHUTTLE_FLAGS_PROCESS|SHUTTLE_FLAGS_SUPPLY
+
+*/
