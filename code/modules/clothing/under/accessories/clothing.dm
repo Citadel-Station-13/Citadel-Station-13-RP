@@ -321,6 +321,22 @@
 	w_class = ITEMSIZE_NORMAL
 	slot = ACCESSORY_SLOT_OVER
 
+	sprite_sheets = list(
+		"Teshari" = 'icons/mob/species/teshari/ties.dmi'
+		)
+
+/obj/item/clothing/accessory/sweater/equipped() // Solution for race-specific sprites for an accessory which is also a suit. Suit icons break if you don't use icon override which then also overrides race-specific sprites.
+	..()
+	var/mob/living/carbon/human/H = loc
+	if(istype(H) && H.wear_suit == src)
+		if(H.species.name == "Teshari")
+			icon_override = 'icons/mob/species/teshari/ties.dmi'
+		else if(H.species.name == "Vox")
+			icon_override = 'icons/mob/species/vox/ties.dmi'
+		else
+			icon_override = 'icons/mob/ties.dmi'
+		update_clothing_icon()
+
 /obj/item/clothing/accessory/sweater/pink
 	name = "pink sweater"
 	desc = "A warm knit sweater. This one's pink in color."

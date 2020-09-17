@@ -1,0 +1,6 @@
+author: "Zandario"
+delete-after: True
+changes: 
+  - rscadd: "Uhhh, New Undercoat selection, they look pretty slick"
+  - bugfix: "fixes some minor sprite issues"
+  - imageadd: "Erm, lots of sprites from here and there"
