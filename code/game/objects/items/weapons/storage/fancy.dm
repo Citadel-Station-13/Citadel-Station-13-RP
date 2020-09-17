@@ -183,6 +183,34 @@
 				return
 	..()
 
+/obj/item/storage/fancy/chalk
+	name = "box of ritual chalk"
+	desc = "A box of chalk for all your ritual needs."
+	icon = 'icons/obj/crayons.dmi'
+	icon_state = "chalkbox"
+	w_class = ITEMSIZE_SMALL
+	icon_type = "chalk"
+	can_hold = list(
+		/obj/item/pen/crayon/chalk
+	)
+	starts_with = list(
+		/obj/item/pen/crayon/chalk,
+		/obj/item/pen/crayon/chalk/red,
+		/obj/item/pen/crayon/chalk/black,
+		/obj/item/pen/crayon/chalk/blue
+	)
+
+/obj/item/storage/fancy/chalk/Initialize()
+	. = ..()
+	update_icon()
+
+/obj/item/storage/fancy/chalk/update_icon()
+	var/mutable_appearance/ma = new(src)
+	ma.overlays = list()
+	for(var/obj/item/pen/crayon/chalk/chalk in contents)
+		ma.overlays += image('icons/obj/crayons.dmi',"c"+chalk.colourName)
+	appearance = ma
+
 /*
  * Cracker Packet
  */
