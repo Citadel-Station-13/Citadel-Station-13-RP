@@ -24,12 +24,6 @@
 	. = ..()
 	AddComponent(/datum/component/anti_magic, TRUE, TRUE, FALSE, null, null, FALSE)
 
-/obj/item/nullrod/attack(mob/user)
-	if(!user.mind.isholy)
-		force = 5
-		throwforce = 5
-		to_chat(user, "span class='notice'>The [src] feels heavy as you swing it!</span>")
-
 /obj/item/nullrod/afterattack(atom/A, mob/user as mob, proximity)
 	if(!proximity)
 		return
