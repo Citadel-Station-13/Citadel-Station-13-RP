@@ -92,6 +92,11 @@
 
 /obj/item/gun/projectile/shotgun/doublebarrel/pellet
 	ammo_type = /obj/item/ammo_casing/a12g/pellet
+	
+/obj/item/gun/projectile/shotgun/doublebarrel/holy
+	ammo_type = /obj/item/ammo_casing/a12g/silver
+	desc = "Alright you primitive screw heads, listen up. See this? This... is my BOOMSTICK."
+	holy = TRUE
 
 /obj/item/gun/projectile/shotgun/doublebarrel/flare
 	name = "signal shotgun"
@@ -135,6 +140,13 @@
 	ammo_type = /obj/item/ammo_casing/a12g/pellet
 	w_class = ITEMSIZE_NORMAL
 	force = 5
+	
+/obj/item/gun/projectile/shotgun/doublebarrel/sawn/alt
+	icon_state = "shotpistol"
+
+/obj/item/gun/projectile/shotgun/doublebarrel/sawn/alt/holy // A Special Skin for the sawn off,makes it look like the sawn off from Blood.
+	ammo_type = /obj/item/ammo_casing/a12g/silver
+	holy = TRUE
 
 obj/item/gun/projectile/shotgun/doublebarrel/quad
 	name = "quad-barreled shotgun"
@@ -186,3 +198,27 @@ obj/item/gun/projectile/shotgun/doublebarrel/quad
 	name = "Exploration Flare Gun"
 	desc = "A common mass produced emergency flare gun capable of shooting a single flare great distances for signalling air and ground forces alike. As it loads 12g flare shells it can also function as improvised 12g shotgun. On it a description reads: 'For use on extraplanetary excursions only.'"
 	icon_state = "flareg-explo"
+
+/obj/item/gun/projectile/shotgun/flare/holy
+	name = "Brass Flare Gun"
+	desc = "A Brass Flare Gun far more exspensuve and well made then the plastic ones mass produced for signalling. It fires using an odd clockwork mechanism. Loads using 12g"
+	icon_state = "flareg-holy"
+	accuracy = 0 //Strong Gun Better Accuracy
+	holy = TRUE
+
+/obj/item/gun/projectile/shotgun/doublebarrel/axe
+	name = "Shot Axe"
+	desc = " A single barrel shotgun with a long curved stock and an axe head wrapped around the end of the barrel. More axe than shotgun, the blade has been treated with an odd smelling incense. Loads using 12g shells."
+	icon_state = "axeshotgun"
+	item_state = "axeshotgun"
+	load_method = SINGLE_CASING
+	handle_casings = CYCLE_CASINGS
+	ammo_type = /obj/item/ammo_casing/a12g/silver
+	max_shells = 1
+	w_class = ITEMSIZE_LARGE
+	force = 25
+	slot_flags = SLOT_BACK
+	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2, TECH_OCCULT = 1)
+	sharp = 1
+	edge = 1
+	holy = TRUE

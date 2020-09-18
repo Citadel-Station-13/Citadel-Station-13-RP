@@ -459,3 +459,59 @@
 	..(null,"let's out a dark laugh as it collapses into a puddle of blood.")
 	ghostize()
 	qdel(src)
+
+////////////////////////////
+//		Blood Hunter
+////////////////////////////
+/mob/living/simple_mob/humanoid/cultist/hunter // This Mob is not meant to be fair, he is not meant to fight regular crew he is to be pitted against heavily armed explo teams to see if he can wipe them out.
+	name = "Blood Hunter" // TO BE CLEAR: DO NOT SPAWN THIS GUY ON THE SHIP/STATION HE WILL MURDER EVERYTHING.
+	desc = "The smell of blood fills the air, how delicious it tastes. Let the hunt begin." // He is a horrifying lovechild of Caleb and a blooborne hunter.
+	icon_state = "hunterb" // He probably shouldn't even have other mobs supporting him.
+	icon_living = "hunterb"
+	maxHealth = 300 //Boss Mobs should be tanky.
+	health = 300
+
+	faction = "cult"
+
+	status_flags = 0
+
+	response_help = "pokes"
+	response_disarm = "shoves"
+	response_harm = "hits"
+
+	harm_intent_damage = 5
+	melee_damage_lower = 42	//Saw Cleaver Brutality
+	melee_damage_upper = 42
+	attack_sharp = 1
+	attack_edge = 1
+	attacktext = list("slashed", "stabbed")
+	armor = list(melee = 60, bullet = 50, laser = 50, energy = 80, bomb = 30, bio = 100, rad = 100)	//Super Armor since Boss Mob
+	attack_sound = 'sound/weapons/bladeslice.ogg'
+	movement_cooldown = 0 //This is so he can't be kited well
+
+	projectiletype = /obj/item/projectile/bullet/pellet/shotgun
+
+	base_attack_cooldown = 7.5
+
+	loot_list = list(/obj/item/material/butterfly/saw = 100, /obj/item/gun/projectile/shotgun/doublebarrel/sawn/alt = 100)
+
+	needs_reload = TRUE
+	reload_max = 2
+	projectilesound = 'sound/weapons/Gunshot_shotgun.ogg'
+
+	ai_holder_type = /datum/ai_holder/simple_mob/ranged/aggressive/blood_hunter
+
+/mob/living/simple_mob/humanoid/cultist/hunter/death()
+	new /obj/effect/decal/cleanable/blood/gibs (src.loc)
+	..(null,"laughs as he melts away. His laughs echo through the air even after only a dense red goo remains.")
+	ghostize()
+	qdel(src)
+
+
+////////////////////////////
+//		Hunter AI
+////////////////////////////
+
+/datum/ai_holder/simple_mob/ranged/aggressive/blood_hunter //This directs the AI to charge while shooting at its victim then entering Glorious melee combat.
+	pointblank = FALSE
+	closest_distance = 0
