@@ -135,3 +135,17 @@
 	say_threaten = list("Gets out of heres!")
 	say_stand_down = list("Yaya, runs!", "Kikikiki!")
 	say_escalate = list("Skrek!", "Bringings it!", "Takings shot", "Lock claws!")
+
+	//Synth Horror Saylist
+
+/datum/say_list/cyber_horror
+	speak = list("H@!#$$P M@!$#",
+				 "GHAA!@@#",
+				 "KR@!!N",
+				 "K!@@##L!@@ %!@#E",
+				 "G@#!$ H@!#%",
+				 "H!@%%@ @!E")
+	emote_hear = list("emits", "groans", "wails", "pleads")
+	emote_see = list ("stares unblinkingly.", "jitters and twitches.", "emits a synthetic scream.", "rapidly twitches.", "convulses.", "twitches uncontrollably.", "goes stock still.")
+	say_threaten = list ("FR@#DOM","EN@ T#I$-$","N0$ M^> B@!#")
+	say_got_target = list("I *#@ Y@%","!E@#$P","F#RR @I","D0@#$ ##OK %","IT $##TS")

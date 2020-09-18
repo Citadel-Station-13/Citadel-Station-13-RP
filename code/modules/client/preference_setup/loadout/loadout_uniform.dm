@@ -793,11 +793,6 @@ datum/gear/uniform/bodysuitsec
 	path = /obj/item/clothing/under/bodysuit/bodysuitsec
 	allowed_roles = list("Security Officer","Head of Security","Warden","Detective")
 
-datum/gear/uniform/bodysuitsecmed
-	display_name = "Security Medic Bodysuit"
-	path = /obj/item/clothing/under/bodysuit/bodysuitsecmed
-	allowed_roles = list("Security Officer","Head of Security","Medical Doctor")
-
 datum/gear/uniform/bodysuitseccom
 	display_name = "Security Command Bodysuit"
 	path = /obj/item/clothing/under/bodysuit/bodysuitseccom
