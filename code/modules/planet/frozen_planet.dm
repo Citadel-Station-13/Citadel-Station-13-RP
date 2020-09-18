@@ -1,7 +1,7 @@
 var/datum/planet/frozen_planet/planet_frozen_planet = null
 
 /datum/time/frozen_planet
-	seconds_in_day = 3 HOURS
+	seconds_in_day = 2 HOURS
 
 /datum/planet/frozen_planet
 	name = "Frozen Class world"
@@ -110,7 +110,7 @@ var/datum/planet/frozen_planet/planet_frozen_planet = null
 /datum/weather/frozen_planet
 	name = "frozen_planet base"
 	temp_high = 260.15 // -19c
-	temp_low = 369.15  // -10c
+	temp_low = 269.15  // -10c
 
 /datum/weather/virgo3b/light_snow
 	name = "light snow"
@@ -119,10 +119,9 @@ var/datum/planet/frozen_planet/planet_frozen_planet = null
 	temp_low = 	225.15
 	light_modifier = 0.7
 	transition_chances = list(
-		WEATHER_OVERCAST = 20,
+		WEATHER_OVERCAST = 25,
 		WEATHER_LIGHT_SNOW = 50,
 		WEATHER_SNOW = 25,
-		WEATHER_HAIL = 5
 		)
 	observed_message = "It is snowing lightly."
 	transition_messages = list(
@@ -175,8 +174,7 @@ var/datum/planet/frozen_planet/planet_frozen_planet = null
 	flight_failure_modifier = 10
 	transition_chances = list(
 		WEATHER_SNOW = 45,
-		WEATHER_BLIZZARD = 40,
-		WEATHER_HAIL = 10,
+		WEATHER_BLIZZARD = 50,
 		WEATHER_OVERCAST = 5
 		)
 	observed_message = "A blizzard blows snow everywhere."
