@@ -351,7 +351,7 @@
 	desc = "An oily pirate mechanist. Thankfully he has but an old laser to defend himself with."
 	icon_state = "bosun"
 	icon_living = "bosun"
-//	ai_holder_type = /datum/ai_holder/simple_mob/ranged/aggressive/blood_hunter // This is for use in the Pirate Ripley Mecha
+	ai_holder_type = /datum/ai_holder/simple_mob/ranged/aggressive/blood_hunter // This is for use in the Pirate Ripley Mecha
 
 	loot_list = list(/obj/item/gun/energy/retro = 100, /obj/item/clothing/head/welding = 100, /obj/item/clothing/suit/pirate = 100)
 
