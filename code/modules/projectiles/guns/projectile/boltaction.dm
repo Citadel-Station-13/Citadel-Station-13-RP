@@ -23,6 +23,12 @@
 	icon_state = "boltaction_c"
 	item_state = "boltaction_c"
 	ammo_type = /obj/item/ammo_casing/a762/blank
+	
+/obj/item/gun/projectile/shotgun/pump/rifle/ceremonial/holy
+	name = "blessed bolt-action rifle"
+	desc = "A bolt-action rifle with a heavy, high-quality wood stock that has a beautiful finish. Clearly not intended to be used in combat. Uses 7.62mm rounds."
+	ammo_type = /obj/item/ammo_casing/a762/silver
+	holy = TRUE
 
 /obj/item/gun/projectile/shotgun/pump/rifle/vox_hunting
 	name = "vox hunting rifle"
@@ -67,6 +73,11 @@
 	load_method = SINGLE_CASING
 	ammo_type = /obj/item/ammo_casing/a357
 	action_sound = 'sound/weapons/riflebolt.ogg'
+	
+/obj/item/gun/projectile/shotgun/pump/rifle/lever/holy
+	name = "blessed lever-action"
+	ammo_type = /obj/item/ammo_casing/a357/silver
+	holy = TRUE
 
 /obj/item/gun/projectile/shotgun/pump/rifle/lever/attackby(var/obj/item/A as obj, mob/user as mob)
 	if(istype(A, /obj/item/surgical/circular_saw) || istype(A, /obj/item/melee/energy) || istype(A, /obj/item/pickaxe/plasmacutter) && w_class != ITEMSIZE_NORMAL)
@@ -106,6 +117,11 @@
 	ammo_type = /obj/item/ammo_casing/a44
 	animated_pump = 1
 	action_sound = 'sound/weapons/riflebolt.ogg'
+	
+/obj/item/gun/projectile/shotgun/pump/rifle/lever/vintage/holy
+	name = "blessed lever-action"
+	ammo_type = /obj/item/ammo_casing/a44/silver
+	holy = TRUE
 
 /obj/item/gun/projectile/shotgun/pump/rifle/lever/vintage/attackby(var/obj/item/A as obj, mob/user as mob)
 	if(istype(A, /obj/item/surgical/circular_saw) || istype(A, /obj/item/melee/energy) || istype(A, /obj/item/pickaxe/plasmacutter) && w_class != ITEMSIZE_NORMAL)
@@ -145,6 +161,11 @@
 	caliber = "12g"
 	load_method = SINGLE_CASING
 	action_sound = 'sound/weapons/riflebolt.ogg'
+	
+/obj/item/gun/projectile/shotgun/pump/rifle/lever/arnold/holy
+	name = "blessed lever-action shotgun"
+	ammo_type = /obj/item/ammo_casing/a12g/silver
+	holy = TRUE
 
 /obj/item/gun/projectile/shotgun/pump/rifle/lever/win1895
 	name = "Winchester 1895"
@@ -158,3 +179,8 @@
 	caliber = "7.62mm"
 	action_sound = 'sound/weapons/riflebolt.ogg'
 	animated_pump = 1
+	
+/obj/item/gun/projectile/shotgun/pump/rifle/lever/win1895/holy
+	name = "blessed lever-action"
+	ammo_type = /obj/item/ammo_casing/a762/silver
+	holy = TRUE
