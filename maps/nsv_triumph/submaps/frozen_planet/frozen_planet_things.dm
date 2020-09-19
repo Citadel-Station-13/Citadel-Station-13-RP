@@ -1,7 +1,7 @@
 #define FROZEN_SET_ATMOS	initial_gas_mix=ATMOSPHERE_ID_FROZEN
 #define FROZEN_TURF_CREATE(x)	x/frozen_world/initial_gas_mix=ATMOSPHERE_ID_FROZEN
 
-FROZEN_TURF_CREATE(/turf/simulated/wall/planetary/gaia)
+FROZEN_TURF_CREATE(/turf/simulated/wall/planetary/frozen)
 
 FROZEN_TURF_CREATE(/turf/simulated/wall)
 FROZEN_TURF_CREATE(/turf/simulated/wall/snowbrick)
