@@ -127,7 +127,7 @@
 /mob/living/simple_mob/humanoid/merc/melee/sword/bullet_act(var/obj/item/projectile/Proj)
 	if(!Proj)	return
 	if(prob(35))
-		visible_message("<font color='red'><B>[src] blocks [Proj] with its shield!</B></font>")
+		visible_message("<span class='warning'>[src] blocks [Proj] with its shield!</span>")
 		if(Proj.firer)
 			ai_holder.react_to_attack(Proj.firer)
 		return
@@ -325,7 +325,7 @@
 /mob/living/simple_mob/humanoid/merc/ranged/space/suppressor/bullet_act(var/obj/item/projectile/Proj)
 	if(!Proj)	return
 	if(prob(50))
-		visible_message("<font color='red'><B>[src] blocks [Proj] with its shield!</B></font>")
+		visible_message("<span class='warning'>[src] blocks [Proj] with its shield!</span>")
 		if(Proj.firer)
 			ai_holder.react_to_attack(Proj.firer)
 		return
@@ -443,7 +443,7 @@
 /mob/living/simple_mob/humanoid/merc/voxpirate/boarder/bullet_act(var/obj/item/projectile/Proj)
 	if(!Proj)	return
 	if(prob(35))
-		visible_message("<font color='red'><B>[src] blocks [Proj] with its sword!</B></font>")
+		visible_message("<span class='warning'>[src] blocks [Proj] with its sword!</span>")
 		if(Proj.firer)
 			ai_holder.react_to_attack(Proj.firer)
 		return
