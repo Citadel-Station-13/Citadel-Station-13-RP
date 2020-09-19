@@ -66,11 +66,11 @@
 	var/chargecost_special = 120
 	var/obj/item/projectile/beammode_lethal
 	var/obj/item/projectile/beammode_special
-	if(cores > 1) //Secondary firemode
+	if(cores > 1 && secondarycore) //Secondary firemode
 		beammode_lethal = secondarycore.beamtype
 		chargecost_lethal = secondarycore.beamcost * lasercap.costmod
 		chargecost_lethal += lasercooler.costadd
-	if(cores == 3) //Tertiary firemodes
+	if(cores == 3 && tertiarycore) //Tertiary firemodes
 		beammode_special = tertiarycore.beamtype
 		chargecost_special = tertiarycore.beamcost * lasercap.costmod
 		chargecost_special += lasercooler.costadd

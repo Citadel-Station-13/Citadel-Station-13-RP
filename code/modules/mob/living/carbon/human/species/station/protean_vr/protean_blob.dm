@@ -280,8 +280,10 @@
 		drop_from_inventory(slot_shoes)
 
 	for(var/obj/item/radio/headset/HS in things_to_not_drop)
-		blob.mob_radio.keyslot1 = new HS.keyslot1(blob.mob_radio)
-		blob.mob_radio.keyslot2 = new HS.keyslot2(blob.mob_radio)
+		if(HS.keyslot1)
+			blob.mob_radio.keyslot1 = new HS.keyslot1.type(blob.mob_radio)
+		if(HS.keyslot2)
+			blob.mob_radio.keyslot2 = new HS.keyslot2.type(blob.mob_radio)
 		if(HS.adhoc_fallback)
 			blob.mob_radio.adhoc_fallback = TRUE
 		blob.mob_radio.recalculateChannels()
