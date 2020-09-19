@@ -114,6 +114,19 @@
 	embed_chance = -1
 	holy = TRUE
 
+/obj/item/projectile/bullet/pistol/medium/ap/suppressor // adminspawn only
+	name = "suppressor bullet" // this guy is Important and also Hates You
+	fire_sound = 'sound/weapons/doompistol-perkristian.ogg' // converted from a wav taken from http://www.perkristian.net/game_doom-sfx.shtml
+	damage = 15 // high rof kinda fucked up lets be real
+	agony = 8 // brute easily heals, agony not so much
+	armor_penetration = 30 // reduces shield blockchance
+	accuracy = 50 // he don't miss
+	speed = 0.4 // if the pathfinder gets a funny burst rifle, they deserve a rival
+	// that's double projectile speed btw
+
+/obj/item/projectile/bullet/pistol/medium/ap/suppressor/hitscan // spicy boys
+	hitscan = TRUE
+
 /obj/item/projectile/bullet/pistol/strong // .357 and .44 caliber stuff. High power pistols like the Mateba or Desert Eagle. Sacrifice capacity for power.
 	fire_sound = 'sound/weapons/gunshot4.ogg'
 	damage = 60

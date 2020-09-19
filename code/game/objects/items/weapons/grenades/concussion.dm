@@ -83,3 +83,18 @@
 						L.client.spinright()
 				to_chat(R, "<span class='critical'>Gyroscopic failure.</span>")
 	return
+
+/obj/item/grenade/concussion/frag
+	name = "concussion-frag grenade"
+	desc = "A polymer and steel concussion grenade, optimized for disorienting personnel and being accused of war crimes."
+	icon_state = "concussion-red"
+	var/fragment_types = list(/obj/item/projectile/bullet/pellet/fragment, /obj/item/projectile/bullet/pellet/fragment/strong, /obj/item/projectile/bullet/pellet/fragment/rubber, /obj/item/projectile/bullet/pellet/fragment/rubber/strong)
+	var/num_fragments = 40  //total number of fragments produced by the grenade
+	var/spread_range = 5 // for above and below, see code\game\objects\items\weapons\grenades\explosive.dm
+
+/obj/item/grenade/concussion/frag/detonate()
+	var/turf/O = get_turf(src)
+	if(!O)
+		return
+	src.fragmentate(O, num_fragments, spread_range, fragment_types)
+	..()
