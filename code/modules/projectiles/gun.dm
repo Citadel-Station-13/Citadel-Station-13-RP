@@ -105,6 +105,7 @@
 
 	var/obj/item/firing_pin/pin = /obj/item/firing_pin
 	var/no_pin_required = 0
+	var/shootback = FALSE
 
 /obj/item/gun/CtrlClick(mob/user)
 	if(can_flashlight && ishuman(user) && src.loc == usr && !user.incapacitated(INCAPACITATION_ALL))
@@ -203,6 +204,20 @@
 	if(HULK in M.mutations)
 		to_chat(M, "<span class='danger'>Your fingers are much too large for the trigger guard!</span>")
 		return 0
+	if(shootback)
+		var/obj/P = consume_next_projectile()
+		var/targetedlimb = pick(BP_HEAD, BP_TORSO)
+		if(P)
+			if(process_projectile(P, user, user, targetedlimb))
+				to_chat(user, "<span class='warning'>UNAUTHORIZED USER DETECTED.</span>")
+				user.visible_message(
+					"<span class='danger'>\The [src] buzzes, firing by itself into [user]'s [targetedlimb]!</span>",
+					"<span class='danger'>\The [src] buzzes, and as your grip loosens on it, it fires point-blank into your [targetedlimb]!</span>"
+					)
+				handle_post_fire(user, user, TRUE)
+		else
+			handle_click_empty(user)
+		return FALSE
 	if((CLUMSY in M.mutations) && prob(40)) //Clumsy handling
 		var/obj/P = consume_next_projectile()
 		if(P)

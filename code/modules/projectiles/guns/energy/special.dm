@@ -13,6 +13,14 @@
 /obj/item/gun/energy/ionrifle/emp_act(severity)
 	..(max(severity, 4)) //so it doesn't EMP itself, I guess
 
+/obj/item/gun/energy/ionrifle/rigged
+	shootback = TRUE
+
+/obj/item/gun/energy/ionrifle/rigged/chance/Initialize()
+	. = ..()
+	if(prob(40))
+		shootback = FALSE
+
 /obj/item/gun/energy/ionrifle/pistol
 	name = "ion pistol"
 	desc = "The NT Mk63 EW Pan is a man portable anti-armor weapon designed to disable mechanical threats, produced by NT. This model sacrifices capacity for portability."

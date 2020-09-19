@@ -22,6 +22,14 @@
 		else
 			icon_state = "[initial(icon_state)]-e"
 
+/obj/item/gun/projectile/colt/rigged
+	shootback = TRUE
+
+/obj/item/gun/projectile/colt/rigged/chance/Initialize()
+	. = ..()
+	if(prob(40))
+		shootback = FALSE
+
 /obj/item/gun/projectile/colt/detective
 	desc = "A Martian recreation of an old pistol. Uses .45 rounds."
 	magazine_type = /obj/item/ammo_magazine/m45/rubber
@@ -337,9 +345,9 @@
 	load_method = SPEEDLOADER
 	max_shells = 10
 	ammo_type = /obj/item/ammo_casing/a9mm
-	
+
 /obj/item/gun/projectile/r9/holy
-	name = "Blessed Red 9"	
+	name = "Blessed Red 9"
 	desc = "Ah, the choice of an avid gun collector! It's a nice gun, stranger."
 	ammo_type = /obj/item/ammo_casing/a9mm/silver
 	holy = TRUE

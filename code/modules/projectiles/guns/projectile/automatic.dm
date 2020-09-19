@@ -66,6 +66,14 @@
 		icon_state = "c20r"
 	return
 
+/obj/item/gun/projectile/automatic/c20r/rigged
+	shootback = TRUE
+
+/obj/item/gun/projectile/automatic/c20r/rigged/chance/Initialize()
+	. = ..()
+	if(prob(40))
+		shootback = FALSE
+
 /obj/item/gun/projectile/automatic/sts35
 	name = "assault rifle"
 	desc = "The rugged STS-35 is a durable automatic weapon of a make popular on the frontier worlds. Uses 5.45mm rounds."

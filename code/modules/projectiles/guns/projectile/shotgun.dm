@@ -57,6 +57,14 @@
 /obj/item/gun/projectile/shotgun/pump/slug
 	ammo_type = /obj/item/ammo_casing/a12g
 
+/obj/item/gun/projectile/shotgun/pump/rigged
+	shootback = TRUE
+
+/obj/item/gun/projectile/shotgun/pump/rigged/chance/Initialize()
+	. = ..()
+	if(prob(40))
+		shootback = FALSE
+
 /obj/item/gun/projectile/shotgun/pump/combat
 	name = "combat shotgun"
 	desc = "Built for close quarters combat, the Hephaestus Industries KS-40 is widely regarded as a weapon of choice for repelling boarders. Uses 12g rounds."
@@ -92,7 +100,7 @@
 
 /obj/item/gun/projectile/shotgun/doublebarrel/pellet
 	ammo_type = /obj/item/ammo_casing/a12g/pellet
-	
+
 /obj/item/gun/projectile/shotgun/doublebarrel/holy
 	ammo_type = /obj/item/ammo_casing/a12g/silver
 	desc = "Alright you primitive screw heads, listen up. See this? This... is my BOOMSTICK."
@@ -140,7 +148,7 @@
 	ammo_type = /obj/item/ammo_casing/a12g/pellet
 	w_class = ITEMSIZE_NORMAL
 	force = 5
-	
+
 /obj/item/gun/projectile/shotgun/doublebarrel/sawn/alt
 	icon_state = "shotpistol"
 

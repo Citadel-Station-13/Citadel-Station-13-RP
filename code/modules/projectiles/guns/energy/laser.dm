@@ -19,6 +19,14 @@
 		list(mode_name="suppressive", fire_delay=5, projectile_type=/obj/item/projectile/beam/weaklaser, charge_cost = 60),
 		)
 
+/obj/item/gun/energy/laser/rigged
+	shootback = TRUE
+
+/obj/item/gun/energy/laser/rigged/chance/Initialize()
+	. = ..()
+	if(prob(40))
+		shootback = FALSE
+
 /obj/item/gun/energy/laser/mounted
 	self_recharge = 1
 	use_external_power = 1
