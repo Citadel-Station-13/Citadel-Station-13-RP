@@ -2557,6 +2557,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
 "bWu" = (
@@ -20965,6 +20966,7 @@
 	frequency = 1380;
 	id_tag = "civvie_door_Ro"
 	},
+/obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
 "pFE" = (
