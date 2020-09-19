@@ -112,6 +112,11 @@
 	src.fragmentate(O, num_fragments, spread_range, fragment_types)
 	..()
 
+/obj/item/grenade/flashbang/stingbang/shredbang
+	name = "shredbang"
+	desc = "A hand held grenade, with an adjustable timer, perfect for handling unruly citizens and getting detained by government officials."
+	fragment_types = list(/obj/item/projectile/bullet/pellet/fragment, /obj/item/projectile/bullet/pellet/fragment/strong, /obj/item/projectile/bullet/pellet/fragment)
+
 /obj/item/grenade/flashbang/clusterbang//Created by Polymorph, fixed by Sieve
 	desc = "Use of this weapon may constiute a war crime in your area, consult your local Facility Director."
 	name = "clusterbang"

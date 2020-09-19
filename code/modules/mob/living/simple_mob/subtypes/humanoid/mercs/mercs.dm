@@ -37,6 +37,7 @@
 
 	// Grenade special attack vars
 	var/grenade_type = /obj/item/grenade/concussion
+	var/grenade_timer = 50
 	special_attack_cooldown = 45 SECONDS
 	special_attack_min_range = 2
 	special_attack_max_range = 7
@@ -70,7 +71,8 @@
 	var/obj/item/grenade/G = new grenade_type(get_turf(src))
 	if(istype(G))
 		G.throw_at(A, G.throw_range, G.throw_speed, src)
-		G.attack_self(src)
+		G.det_time = grenade_timer
+		G.activate(src)
 		special_attack_charges = max(special_attack_charges-1, 0)
 
 	set_AI_busy(FALSE)
@@ -215,7 +217,7 @@
 
 // Sword Space Merc
 /mob/living/simple_mob/humanoid/merc/melee/sword/space
-	name = "syndicate commando"
+	name = "mercenary commando"
 	icon_state = "syndicatemeleespace"
 	icon_living = "syndicatemeleespace"
 
@@ -240,7 +242,7 @@
 
 // Ranged Space Merc
 /mob/living/simple_mob/humanoid/merc/ranged/space
-	name = "syndicate commando"
+	name = "mercenary commando"
 	icon_state = "syndicaterangedspace"
 	icon_living = "syndicaterangedspace"
 
@@ -272,7 +274,7 @@
 	vision_range = 10 // plutonia experience
 
 /mob/living/simple_mob/humanoid/merc/ranged/space/suppressor // adminspawn only, and also Probably Going To Kill The Unprepared
-	name = "syndicate suppressor"
+	name = "mercenary suppressor"
 	desc = "Geeze, weren't shotgun ops bad enough? At least when you fade these jerks you get a flashbang to the face."
 	icon_state = "syndi-ranged-space-sup"
 	icon_living = "syndi-ranged-space-sup"
@@ -280,12 +282,12 @@
 	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/suppressor
 	say_list_type = /datum/say_list/merc/elite
 	projectiletype = /obj/item/projectile/bullet/pistol/medium/ap/suppressor // it's high velocity
-	projectilesound = 'sound/weapons/doompistol-perkristian.ogg' // converted from a wav taken from http://www.perkristian.net/game_doom-sfx.shtml
+	projectilesound = 'sound/weapons/doompistol.ogg' // converted from .wavs extracted from doom 2
 	base_attack_cooldown = 3 // three? attacks a second
 	reload_max = 30 // extended mags
 	special_attack_charges = 5
-	loot_list = list()
-	corpse = null
+	loot_list = list() // oh, you killed him?
+	corpse = null // well, sorry, buddy, he doesn't drop shit
 	var/deathnade_path = /obj/item/grenade/flashbang
 
 /mob/living/simple_mob/humanoid/merc/ranged/space/suppressor/death()
@@ -293,9 +295,8 @@
 	// think again
 	var/obj/item/grenade/banger = new deathnade_path(get_turf(src))
 	banger.throw_at(ai_holder.target, 9, 9, null)
-	if(istype(banger, /obj/item/grenade))
-		banger.det_time = 2
-		banger.activate(null)
+	banger.det_time = 25
+	banger.activate(null)
 	..()
 
 /mob/living/simple_mob/humanoid/merc/ranged/space/suppressor/elite // really reconsider why you're spawning this dude
@@ -304,10 +305,11 @@
 	icon_state = "syndi-ranged-space-sup-elite"
 	icon_living = "syndi-ranged-space-sup-elite"
 	armor = list(melee = 80, bullet = 70, laser = 55, energy = 15, bomb = 80, bio = 100, rad = 100) // see code for military hardsuit
-	projectiletype = /obj/item/projectile/bullet/pistol/medium/ap/suppressor/hitscan
+	projectiletype = /obj/item/projectile/bullet/pistol/medium/ap/suppressor/turbo // fuck it, fast bullets
 	base_attack_cooldown = 2 // jesus christ
-	grenade_type = /obj/item/grenade/concussion/frag
-	deathnade_path = /obj/item/grenade/flashbang/stingbang
+	grenade_type = /obj/item/grenade/concussion/frag // don't group up
+	grenade_timer = 30 // HEHO BEEP BOOP
+	deathnade_path = /obj/item/grenade/flashbang/stingbang/shredbang // REALLY don't group up
 
 // being Actual Professionals, they have better (read: player-level) blocking chances
 /mob/living/simple_mob/humanoid/merc/ranged/space/suppressor/attackby(var/obj/item/O, var/mob/user)
