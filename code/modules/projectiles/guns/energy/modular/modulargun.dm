@@ -86,7 +86,7 @@
 		if(burstmode > 1)
 			firemodes = list(
 				new /datum/firemode(src, list(mode_name=primarycore.firename, projectile_type=beammode, charge_cost = chargecost, burst = 1)),
-				new /datum/firemode(src, list("mode_name=[maxburst] shot [primarycore.firename]", projectile_type=beammode, charge_cost = chargecost, burst = maxburst))
+				new /datum/firemode(src, list(mode_name="[maxburst] shot [primarycore.firename]", projectile_type=beammode, charge_cost = chargecost, burst = maxburst))
 				)
 			return TRUE
 		else
@@ -115,7 +115,7 @@
 		else
 			firemodes = list(
 				new /datum/firemode(src, list(mode_name=primarycore.firename, projectile_type=beammode, charge_cost = chargecost, burst = 1)),
-					new /datum/firemode(src, list(mode_name=secondarycore.firename, projectile_type=beammode_lethal, charge_cost = chargecost_lethal, burst = 1))
+				new /datum/firemode(src, list(mode_name=secondarycore.firename, projectile_type=beammode_lethal, charge_cost = chargecost_lethal, burst = 1))
 			)
 			return TRUE
 	if(primarycore && secondarycore && tertiarycore)
@@ -143,12 +143,7 @@
 				)
 			return TRUE
 		else
-			firemodes = list(
-			new /datum/firemode(src, list(mode_name=primarycore.firename, projectile_type=beammode, charge_cost = chargecost, burst = 1)),
-			new /datum/firemode(src, list(mode_name=secondarycore.firename, projectile_type=beammode_lethal, charge_cost = chargecost_lethal, burst = 1)),
-			new /datum/firemode(src, list(mode_name=tertiarycore.firename, projectile_type=beammode_special, charge_cost = chargecost_special, burst = 1)),
-			)
-			return TRUE
+			return FALSE
 
 /obj/item/gun/energy/modular/emp_act(severity)
 	if(!emp_vuln)
