@@ -30,6 +30,26 @@
 	description = "Moves your character east"
 	category = CATEGORY_MOVEMENT
 
+/datum/keybinding/movement/multiz_up
+	hotkey_keys = list()
+	name = "multiz_move_up"
+	full_name = "Move Up Zlevel"
+	description = "Moves up one zlevel if possible"
+	category = CATEGORY_MOVEMENT
+
+/datum/keybinding/movement/multiz_up/down(client/user)
+	user.mob.up()
+
+/datum/keybinding/movement/multiz_down
+	hotkey_keys = list()
+	name = "multiz_move_down"
+	full_name = "Move down Zlevel"
+	description = "Moves down one zlevel if possible"
+	category = CATEGORY_MOVEMENT
+
+/datum/keybinding/movement/multiz_down/down(client/user)
+	user.mob.down()
+
 /datum/keybinding/movement/facenorth
 	hotkey_keys = list("CtrlAltW", "CtrlAltNorth")
 	name = "Permanently Face North"

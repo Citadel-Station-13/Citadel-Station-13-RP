@@ -23,7 +23,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 //Nanotech Implant Foundation
 /obj/item/nif
 	name = "nanite implant framework"
-	desc = "A somewhat diminished knockoff of a Kitsuhana nano working surface, in a box. Can print new \
+	desc = "A somewhat diminished knockoff of a Vey-Med nano working surface, in a box. Can print new \
 	implants inside living hosts on the fly based on software uploads. Must be surgically \
 	implanted in the head to work. May eventually wear out and break."
 
@@ -573,8 +573,8 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	id = NIF_ID_BOOTLEG
 
 /obj/item/nif/authentic
-	name = "\improper Kitsuhana NIF"
-	desc = "An actual Kitsuhana working surface, in a box. From a society slightly less afraid \
+	name = "\improper Vey-Med NIF"
+	desc = "An actual Vey-Med working surface, in a box. From a society slightly less afraid \
 	of self-replicating nanotechnology. Basically just a high-endurance NIF."
 	durability = 1000
 	id = NIF_ID_VEYMED
