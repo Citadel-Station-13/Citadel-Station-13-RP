@@ -10,8 +10,6 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 	/// Adjusted to give approx 2 per hour, will work out to 10-14 over a full shift
 	var/delay_max = 35 MINUTES
 
-	/// How long to back off if we can't talk and want to.  Default is 5 mins.
-	var/backoff_delay = 5 MINUTES
 	/// How long to wait before sending the first message of the shift.
 	var/initial_delay = 2 MINUTES
 	/// When the next message should happen in world.time - Making it default to min value
@@ -46,9 +44,8 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 
 /datum/lore/atc_controller/process()
 	if(world.time >= next_message)
-		return
-	next_message = world.time + rand(delay_min,delay_max)
-	random_convo()
+		next_message = world.time + rand(delay_min, delay_max)
+		random_convo()
 
 /datum/lore/atc_controller/proc/msg(message, sender)
 	ASSERT(message)
