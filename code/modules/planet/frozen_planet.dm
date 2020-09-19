@@ -97,9 +97,9 @@ var/datum/planet/frozen_planet/planet_frozen_planet = null
 /datum/weather_holder/frozen_planet
 	temperature = T0C
 	allowed_weather_types = list(
-		WEATHER_LIGHT_SNOW	= new /datum/weather/virgo3b/light_snow(),
-		WEATHER_SNOW		= new /datum/weather/virgo3b/snow(),
-		WEATHER_BLIZZARD	= new /datum/weather/virgo3b/blizzard()
+		WEATHER_LIGHT_SNOW	= new /datum/weather/frozen_planet/light_snow(),
+		WEATHER_SNOW		= new /datum/weather/frozen_planet/snow(),
+		WEATHER_BLIZZARD	= new /datum/weather/frozen_planet/blizzard()
 		)
 	roundstart_weather_chances = list(
 		WEATHER_LIGHT_SNOW	= 50,
@@ -112,7 +112,7 @@ var/datum/planet/frozen_planet/planet_frozen_planet = null
 	temp_high = 260.15 // -19c
 	temp_low = 269.15  // -10c
 
-/datum/weather/virgo3b/light_snow
+/datum/weather/frozen_planet/light_snow
 	name = "light snow"
 	icon_state = "snowfall_light"
 	temp_high = 235.15
@@ -129,7 +129,7 @@ var/datum/planet/frozen_planet/planet_frozen_planet = null
 		"It begins to snow lightly.",
 		)
 
-/datum/weather/virgo3b/snow
+/datum/weather/frozen_planet/snow
 	name = "moderate snow"
 	icon_state = "snowfall_med"
 	temp_high = 230.15
@@ -153,7 +153,7 @@ var/datum/planet/frozen_planet/planet_frozen_planet = null
 	outdoor_sounds_type = /datum/looping_sound/weather/outside_snow
 	indoor_sounds_type = /datum/looping_sound/weather/inside_snow
 
-/datum/weather/virgo3b/snow/process_effects()
+/datum/weather/frozen_planet/snow/process_effects()
 	..()
 	for(var/turf/simulated/floor/outdoors/snow/S in SSplanets.new_outdoor_turfs) //This didn't make any sense before SSplanets, either
 		if(S.z in holder.our_planet.expected_z_levels)
@@ -163,7 +163,7 @@ var/datum/planet/frozen_planet/planet_frozen_planet = null
 					if(istype(T, /turf/simulated/floor/outdoors) && prob(33))
 						T.chill()
 
-/datum/weather/virgo3b/blizzard
+/datum/weather/frozen_planet/blizzard
 	name = "blizzard"
 	icon_state = "snowfall_heavy"
 	temp_high = 215.15
@@ -185,7 +185,7 @@ var/datum/planet/frozen_planet/planet_frozen_planet = null
 	outdoor_sounds_type = /datum/looping_sound/weather/outside_blizzard
 	indoor_sounds_type = /datum/looping_sound/weather/inside_blizzard
 
-/datum/weather/virgo3b/blizzard/process_effects()
+/datum/weather/frozen_planet/blizzard/process_effects()
 	..()
 	for(var/turf/simulated/floor/outdoors/snow/S in SSplanets.new_outdoor_turfs) //This didn't make any sense before SSplanets, either
 		if(S.z in holder.our_planet.expected_z_levels)
