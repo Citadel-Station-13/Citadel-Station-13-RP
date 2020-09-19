@@ -80,17 +80,17 @@
 	speak = list("I got better pay on my last job.",
 				"So, y'think we'll get to shoot anyone today?",
 				"Fuck, I hate those guys.",
-				"If someone doesn't show up for me to shoot today, I swear I'd go apeshit.",
+				"Would be nice for something to happen, for once.",
+				"Think those NT shits'll rear their heads?",
 				"Any of you see anything recently?")
 	emote_see = list("taps his foot", "looks around coldly", "checks his equipment", "rummages in his webbing")
-
 	say_understood = list("Aff.", "Affirmative.", "Copy.", "Understood.")
 	say_cannot = list("Neg.", "Negative.")
-	say_maybe_target = list("Someone's acting mighty bold...")
-	say_got_target = list("Oh, good, I needed more range fodder.", "I'm going to enjoy this.", "I see you.")
-	say_threaten = list("Hoy, private property, fuck off.", "You're acting mighty bold for someone in shooting distance.", "First and last warning; find somewhere else to be.", "I wouldn't do that if I were you.", "Back off or your field medic's getting a bonus.")
-	say_stand_down = list("Damn it, I was hoping they'd push their luck.", "Good call. Don't do it again.", "Harrumph.")
-	say_escalate = list("Oh, I'm gonna enjoy this.", "I'm going to enjoy making you regret that.", "Last mistake you'll make in that sleeve.")
+	say_maybe_target = list("I heard something.")
+	say_got_target = list("Oh, good, I needed more range fodder.", "I'm going to enjoy this.", "I see you.", "Not quiet enough.")
+	say_threaten = list("Hoy, private property, fuck off.", "You're acting mighty bold for a bullet sponge.", "First and last warning; find somewhere else to be.", "I wouldn't do that if I were you.", "Back off or your field medic's getting a bonus.")
+	say_stand_down = list("Damn it, I was hoping you'd push your luck.", "What, that's it? Pussy.", "And don't come back.", "Good call. Don't do it again.", "Harrumph.", "That'll teach 'ya.")
+	say_escalate = list("Oh, I'm gonna enjoy this.", "I'm going to enjoy making you regret that.", "Last mistake you'll make.")
 
 /datum/say_list/malf_drone
 	speak = list("ALERT.","Hostile-ile-ile entities dee-twhoooo-wected.","Threat parameterszzzz- szzet.","Bring sub-sub-sub-systems uuuup to combat alert alpha-a-a.")
