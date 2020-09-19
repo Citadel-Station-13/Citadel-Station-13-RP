@@ -7,7 +7,7 @@ var/datum/planet/frozen_planet/planet_frozen_planet = null
 	name = "Frozen Class world"
 	desc = "A frosted world that seems stuck in time."
 	current_time = new /datum/time/frozen_planet()
-	expected_z_levels = list(13) // Debug testing.
+	expected_z_levels = list(14) // Debug testing.
 
 /datum/planet/frozen_planet/New()
 	..()

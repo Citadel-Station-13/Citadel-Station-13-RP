@@ -160,8 +160,8 @@
 	//new /datum/random_map/noise/ore/poi_d(null, 1, 1, Z_LEVEL_UNKNOWN_PLANET, 64, 64)
 
 /datum/map_z_level/triumph_lateload/gaia_planet
-	name = "Away Mission - Desert Planet"
-	z = Z_LEVEL_DESERT_PLANET
+	name = "Away Mission - Gaia Planet"
+	z = Z_LEVEL_GAIA_PLANET
 
 
 // Frozen Planet Zone.
@@ -181,7 +181,7 @@
 
 
 /datum/map_z_level/triumph_lateload/frozen_planet
-	name = "Away Mission - Desert Planet"
+	name = "Away Mission - Frozen Planet"
 	z = Z_LEVEL_FROZEN_PLANET
 
 
