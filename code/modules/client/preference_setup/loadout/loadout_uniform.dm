@@ -450,11 +450,6 @@
 	display_name = "Civilian Outfit - Major Bill's"
 	path = /obj/item/clothing/under/mbill
 
-/datum/gear/uniform/pcrc
-	display_name = "Security Uniform - PCRC"
-	path = /obj/item/clothing/under/pcrc
-	allowed_roles = list("Security Officer","Head of Security","Warden")
-
 /datum/gear/uniform/brandsuit/grayson
 	display_name = "Civilian Outfit - Grayson"
 	path = /obj/item/clothing/under/grayson
