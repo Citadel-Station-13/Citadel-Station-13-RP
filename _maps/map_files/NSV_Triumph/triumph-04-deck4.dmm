@@ -23393,6 +23393,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/security_starboard)
+"qWw" = (
+/obj/structure/cable/cyan{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/turf/simulated/floor/tiled/old_tile/green,
+/area/shuttle/civvie/general)
 "qWB" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -26970,13 +26980,13 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/primary/aft)
 "tAa" = (
-/obj/structure/table/rack/steel,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
 	},
+/obj/machinery/recharge_station,
 /turf/simulated/floor/reinforced,
 /area/shuttle/civvie/general)
 "tAQ" = (
@@ -31969,16 +31979,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/hydroponics/garden)
-"xfw" = (
-/obj/structure/cable/cyan{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/turf/simulated/floor/tiled/old_tile/green,
-/area/shuttle/civvie/general)
 "xfH" = (
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
@@ -49015,7 +49015,7 @@ rtC
 tnW
 fbp
 pYF
-xfw
+qWw
 xqM
 bsQ
 rtC
