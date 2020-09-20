@@ -220,7 +220,7 @@
 	can_atmos_pass = ATMOS_PASS_NO
 	base_icon_state = "door_closed"
 	occupied_icon_state = "door_locked"
-	desc = "The tram station you might've came in from.  You could leave the base easily using this."
+	desc = "The tram station you might've came in from.  You could leave the base easily using this.<br><span class='userdanger'>Drag-drop yourself onto it while adjacent to leave.</span>"
 	on_store_message = "has departed on the tram."
 	on_store_name = "Travel Oversight"
 	on_enter_occupant_message = "The tram arrives at the platform; you step inside and take a seat."
@@ -228,6 +228,7 @@
 	on_store_visible_message_2 = "to the colony"
 	time_till_despawn = 10 SECONDS
 	spawnpoint_type = /datum/spawnpoint/tram
+
 /obj/machinery/cryopod/robot/door/tram/process()
 	if(SSemergencyshuttle.online() || SSemergencyshuttle.returned())
 		// Transform into a door!  But first despawn anyone inside
@@ -241,12 +242,9 @@
 	// Otherwise just operate normally
 	return ..()
 
-/obj/machinery/cryopod/robot/door/tram/Bumped(var/atom/movable/AM)
-	if(!ishuman(AM))
-		return
-
-	var/mob/living/carbon/human/user = AM
-
+/obj/machinery/cryopod/robot/door/tram/go_in(mob/living/M, mob/living/user)
+	if(M != user)
+		return ..()
 	var/choice = alert(user, "Do you want to depart via the tram? Your character will leave the round.","Departure","No","Yes")
 	if(user && Adjacent(user) && choice == "Yes")
 		var/mob/observer/dead/newghost = user.ghostize()
