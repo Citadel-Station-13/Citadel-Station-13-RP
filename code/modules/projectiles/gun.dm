@@ -106,6 +106,7 @@
 	var/obj/item/firing_pin/pin = /obj/item/firing_pin
 	var/no_pin_required = 0
 	var/shootback = FALSE
+	var/fix_attempts = 0
 
 /obj/item/gun/CtrlClick(mob/user)
 	if(can_flashlight && ishuman(user) && src.loc == usr && !user.incapacitated(INCAPACITATION_ALL))
@@ -297,6 +298,21 @@
 				verbs -= /obj/item/gun/verb/allow_dna
 		else
 			to_chat(user, "<span class='warning'>\The [src] is not accepting modifications at this time.</span>")
+	if(A.is_multitool() && src.shootback)
+		var/unrig_chance = 5 + (fix_attempts * 2.5)
+		to_chat(user, "<span class='notice'>You begin pulsing the trigger of \the [src] with [A].</span>")
+		playsound(src, A.usesound, 50, 1)
+		if(do_after(user, 25 * A.toolspeed))
+			fix_attempts++
+			if(prob(unrig_chance))
+				to_chat(user, "<span class='notice'>You unrig \the [src], making it safe to use.</span>")
+				shootback = FALSE
+			else
+				to_chat(user, "<span class='warning'>Uh oh.</span>")
+				special_check(user)
+		else
+			to_chat(user, "<span class='warning'>Uh oh.</span>")
+			special_check(user)
 	..()
 
 /obj/item/gun/emag_act(var/remaining_charges, var/mob/user)
