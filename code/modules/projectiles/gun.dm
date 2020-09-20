@@ -299,10 +299,11 @@
 		else
 			to_chat(user, "<span class='warning'>\The [src] is not accepting modifications at this time.</span>")
 	if(A.is_multitool() && src.shootback)
-		var/unrig_chance = 5 + (fix_attempts * 2.5)
+		var/unrig_chance = 5 + (fix_attempts * 1)
 		to_chat(user, "<span class='notice'>You begin pulsing the trigger of \the [src] with [A].</span>")
 		playsound(src, A.usesound, 50, 1)
-		if(do_after(user, 25 * A.toolspeed))
+		if(do_after(user, 100 * A.toolspeed))
+			playsound(src, A.usesound, 50, 1)
 			fix_attempts++
 			if(prob(unrig_chance))
 				to_chat(user, "<span class='notice'>You unrig \the [src], making it safe to use.</span>")
@@ -311,7 +312,7 @@
 				to_chat(user, "<span class='warning'>Uh oh.</span>")
 				special_check(user)
 		else
-			to_chat(user, "<span class='warning'>Uh oh.</span>")
+			to_chat(user, "<span class='warning'>Probably should've kept your hand steady...</span>")
 			special_check(user)
 	..()
 
