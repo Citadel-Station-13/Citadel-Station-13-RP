@@ -1,0 +1,6 @@
+author: "Enzo-Leon"
+delete-after: True
+changes: 
+  - rscadd: "Sec checkpoint for exploration"
+  - rscadd: "tinyfans for civvie shuttle"
+  - tweak: "Access fixed in security wing"
