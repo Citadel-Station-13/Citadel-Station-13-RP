@@ -37,6 +37,7 @@
 #include "mining_planet/mining_planet.dmm"
 #include "poi_d/Class_D.dmm"
 #include "poi_h/Class_H.dmm"
+#include "frozen_planet/frozen_planet.dmm"
 #endif
 
 // Debris Fields
@@ -159,8 +160,32 @@
 	//new /datum/random_map/noise/ore/poi_d(null, 1, 1, Z_LEVEL_UNKNOWN_PLANET, 64, 64)
 
 /datum/map_z_level/triumph_lateload/gaia_planet
-	name = "Away Mission - Desert Planet"
-	z = Z_LEVEL_DESERT_PLANET
+	name = "Away Mission - Gaia Planet"
+	z = Z_LEVEL_GAIA_PLANET
+
+
+// Frozen Planet Zone.
+#include "frozen_planet/_frozen_planet.dm"
+#include "frozen_planet/frozen_planet_things.dm"
+#include "frozen_planet/_templates.dm"
+/datum/map_template/triumph_lateload/frozen_planet
+	name = "Forzen Planet - Z4 Planet"
+	desc = "A Cold Frozen Planet."
+	mappath = 'frozen_planet/frozen_planet.dmm'
+	associated_map_datum = /datum/map_z_level/triumph_lateload/frozen_planet
+	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
+
+/datum/map_template/triumph_lateload/frozen_planet/on_map_loaded(z)
+	. = ..()
+	seed_submaps(list(Z_LEVEL_FROZEN_PLANET), 125, /area/triumph_away/frozen_planet/ruins, /datum/map_template/frozen_planet/)
+
+
+/datum/map_z_level/triumph_lateload/frozen_planet
+	name = "Away Mission - Frozen Planet"
+	z = Z_LEVEL_FROZEN_PLANET
+
+
+
 
 //////////////////////////////////////////////////////////////////////////////////////
 // Admin-use z-levels for loading whenever an admin feels like
