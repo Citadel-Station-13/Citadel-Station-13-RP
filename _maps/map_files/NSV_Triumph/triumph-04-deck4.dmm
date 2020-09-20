@@ -22751,16 +22751,6 @@
 /obj/effect/landmark/shuttle,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
-"qzL" = (
-/obj/structure/cable/cyan{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/turf/simulated/floor/tiled/old_tile/green,
-/area/shuttle/civvie/general)
 "qzM" = (
 /obj/structure/bed/chair/comfy/brown{
 	dir = 4
@@ -24851,7 +24841,7 @@
 /area/bridge)
 "rUx" = (
 /obj/machinery/shipsensors,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/airless,
 /area/shuttle/civvie/cockpit)
 "rUG" = (
 /obj/machinery/status_display{
@@ -30986,7 +30976,7 @@
 	icon_state = "map_injector";
 	use_power = 1
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/airless,
 /area/shuttle/civvie/cockpit)
 "wtU" = (
 /obj/machinery/light_switch{
@@ -31401,6 +31391,16 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
+"wMM" = (
+/obj/structure/cable/cyan{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/turf/simulated/floor/tiled/old_tile/green,
+/area/shuttle/civvie/general)
 "wNw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -49003,7 +49003,7 @@ rtC
 tnW
 fbp
 pYF
-qzL
+wMM
 xqM
 bsQ
 rtC
