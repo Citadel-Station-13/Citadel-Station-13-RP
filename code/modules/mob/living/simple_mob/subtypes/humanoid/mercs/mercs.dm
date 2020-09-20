@@ -288,7 +288,7 @@
 	special_attack_charges = 5
 	loot_list = list() // oh, you killed him?
 	corpse = null // well, sorry, buddy, he doesn't drop shit
-	var/deathnade_path = /obj/item/grenade/flashbang
+	var/deathnade_path = /obj/item/grenade/flashbang/stingbang
 
 /mob/living/simple_mob/humanoid/merc/ranged/space/suppressor/death()
 	// you thought killing him would be the least of your worries?
@@ -300,8 +300,8 @@
 	..()
 
 /mob/living/simple_mob/humanoid/merc/ranged/space/suppressor/elite // really reconsider why you're spawning this dude
-	name = "elite mercenary suppressor"
-	desc = "Geeze, weren't normal suppressors bad enough? At least if you fade this jerk, you'll still have an awful time anyway."
+	name = "mercenary elite suppressor"
+	desc = "Geeze, weren't normal suppressors bad enough? At least if you fade this jerk, you'll have an awful time anyway."
 	icon_state = "syndi-ranged-space-sup-elite"
 	icon_living = "syndi-ranged-space-sup-elite"
 	armor = list(melee = 80, bullet = 70, laser = 55, energy = 15, bomb = 80, bio = 100, rad = 100) // see code for military hardsuit
