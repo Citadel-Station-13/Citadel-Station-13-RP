@@ -653,9 +653,9 @@ END OF CITADEL CHANGE */
 			H.update_inv_head()
 
 /obj/item/rig/light/hacker/fluff/aronai
-	name = "KHI-99-AAR suit module"
+	name = "WT-99-AAR suit module"
 	suit_type = "nano"
-	desc = "A thin collapsable spacesuit for synths from Kitsuhana Heavy Industries."
+	desc = "A thin collapsable spacesuit for synths from Ward-Takahashi."
 	airtight = 1 //Not because it should be airtight but because suit coolers don't work w/o it.
 	armor = list(melee = 25, bullet = 15, laser = 15, energy = 60, bomb = 30, bio = 70, rad = 100)
 	air_type = null //No O2 tank, why would it have one?
