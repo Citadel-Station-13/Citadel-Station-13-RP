@@ -61,6 +61,12 @@
 	req_access = null
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/item/radio/intercom{
+	broadcasting = 1;
+	dir = 8;
+	name = "Common Channel";
+	pixel_x = -21
+	},
 /turf/simulated/floor/carpet/tealcarpet,
 /area/shuttle/civvie/general)
 "adJ" = (
@@ -191,6 +197,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
+"aiJ" = (
+/obj/machinery/shuttle_sensor{
+	dir = 6;
+	id_tag = "civvie_exp_psg"
+	},
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/shuttle/civvie/cockpit)
 "aiO" = (
 /obj/machinery/power/apc{
 	name = "south bump";
@@ -1370,7 +1383,7 @@
 /obj/item/storage/toolbox/electrical,
 /obj/item/storage/belt/utility,
 /turf/simulated/floor/reinforced,
-/area/shuttle/civvie/general)
+/area/shuttle/civvie/cockpit)
 "bem" = (
 /turf/simulated/wall,
 /area/maintenance/central)
@@ -4322,7 +4335,7 @@
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/reinforced,
-/area/shuttle/civvie/general)
+/area/shuttle/civvie/cockpit)
 "dlT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -4457,7 +4470,7 @@
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /turf/simulated/floor/tiled/old_tile/green,
-/area/shuttle/civvie/general)
+/area/shuttle/civvie/cockpit)
 "dqj" = (
 /obj/machinery/computer/ship/helm{
 	dir = 8
@@ -4985,7 +4998,7 @@
 	pixel_y = 32
 	},
 /turf/simulated/floor/carpet/tealcarpet,
-/area/shuttle/civvie/general)
+/area/shuttle/civvie/cockpit)
 "dHE" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -5705,13 +5718,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/checkpoint2)
-"eiy" = (
-/obj/machinery/shuttle_sensor{
-	dir = 6;
-	id_tag = "civvie_exp_psg"
-	},
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
-/area/shuttle/civvie/general)
 "eiZ" = (
 /obj/machinery/door/firedoor/glass/hidden/steel,
 /turf/simulated/floor/tiled,
@@ -7088,7 +7094,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/reinforced,
-/area/shuttle/civvie/general)
+/area/shuttle/civvie/cockpit)
 "feo" = (
 /obj/machinery/computer/rcon{
 	dir = 4
@@ -7284,7 +7290,7 @@
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/old_tile/green,
-/area/shuttle/civvie/general)
+/area/shuttle/civvie/cockpit)
 "fkU" = (
 /obj/effect/landmark/shuttle,
 /obj/machinery/computer/cryopod{
@@ -9369,7 +9375,7 @@
 	},
 /obj/structure/closet/secure_closet/pilot,
 /turf/simulated/floor/carpet/tealcarpet,
-/area/shuttle/civvie/general)
+/area/shuttle/civvie/cockpit)
 "gUD" = (
 /obj/structure/sign/deck/fourth,
 /turf/simulated/wall,
@@ -9452,9 +9458,9 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
 	},
-/obj/machinery/recharge_station,
+/obj/machinery/suit_cycler/pilot,
 /turf/simulated/floor/reinforced,
-/area/shuttle/civvie/general)
+/area/shuttle/civvie/cockpit)
 "gXR" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -11634,7 +11640,7 @@
 	},
 /obj/machinery/light,
 /turf/simulated/floor/reinforced,
-/area/shuttle/civvie/general)
+/area/shuttle/civvie/cockpit)
 "ixx" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/carpet,
@@ -14861,7 +14867,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/old_tile/green,
-/area/shuttle/civvie/general)
+/area/shuttle/civvie/cockpit)
 "lau" = (
 /obj/structure/cable/green{
 	d2 = 2;
@@ -15662,7 +15668,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/carpet/tealcarpet,
-/area/shuttle/civvie/general)
+/area/shuttle/civvie/cockpit)
 "lCf" = (
 /obj/machinery/vending/cola,
 /turf/simulated/floor/carpet/bcarpet,
@@ -16366,6 +16372,12 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/item/radio/intercom{
+	broadcasting = 1;
+	dir = 8;
+	name = "Common Channel";
+	pixel_x = -21
+	},
 /turf/simulated/floor/carpet/tealcarpet,
 /area/shuttle/civvie/general)
 "lZG" = (
@@ -17344,6 +17356,12 @@
 	req_access = null
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/item/radio/intercom{
+	broadcasting = 1;
+	dir = 8;
+	name = "Common Channel";
+	pixel_x = -21
+	},
 /turf/simulated/floor/carpet/tealcarpet,
 /area/shuttle/civvie/general)
 "mMK" = (
@@ -20896,7 +20914,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/reinforced,
-/area/shuttle/civvie/general)
+/area/shuttle/civvie/cockpit)
 "pmy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -21047,7 +21065,7 @@
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/old_tile/green,
-/area/shuttle/civvie/general)
+/area/shuttle/civvie/cockpit)
 "psx" = (
 /obj/machinery/station_map{
 	dir = 4;
@@ -22299,7 +22317,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/carpet/tealcarpet,
-/area/shuttle/civvie/general)
+/area/shuttle/civvie/cockpit)
 "qid" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -23459,7 +23477,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/carpet/tealcarpet,
-/area/shuttle/civvie/general)
+/area/shuttle/civvie/cockpit)
 "qUK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -25241,7 +25259,9 @@
 	icon_state = "map_connector";
 	dir = 4
 	},
-/obj/machinery/portable_atmospherics/canister/air/airlock,
+/obj/machinery/portable_atmospherics/canister/air/airlock{
+	start_pressure = 15000
+	},
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
 "sfl" = (
@@ -27545,7 +27565,7 @@
 	},
 /obj/structure/table/reinforced,
 /turf/simulated/floor/carpet/tealcarpet,
-/area/shuttle/civvie/general)
+/area/shuttle/civvie/cockpit)
 "tUB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -28697,7 +28717,7 @@
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/browndouble,
 /turf/simulated/floor/carpet/tealcarpet,
-/area/shuttle/civvie/general)
+/area/shuttle/civvie/cockpit)
 "uKG" = (
 /obj/machinery/camera/network/exploration{
 	dir = 10
@@ -30594,6 +30614,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
+/obj/machinery/recharge_station,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
 "vWr" = (
@@ -48930,7 +48951,7 @@ htm
 cnM
 sgM
 qDW
-eiy
+puZ
 eMf
 rtC
 rtC
@@ -49777,14 +49798,14 @@ nIK
 nIK
 nIK
 nIK
-rtC
-rtC
-rtC
-puZ
+iFf
+iFf
+iFf
+aiJ
 psp
-puZ
-rtC
-rtC
+cTW
+iFf
+iFf
 nIK
 nIK
 nIK
@@ -49919,14 +49940,14 @@ nIK
 nIK
 nIK
 nIK
-rtC
+iFf
 tUx
 gUj
-rtC
+iFf
 lak
 gXq
 bcy
-rtC
+iFf
 nIK
 nIK
 nIK
@@ -50061,14 +50082,14 @@ nIK
 nIK
 nIK
 nIK
-qvL
+rCU
 dHi
 qTZ
 qhY
 dpQ
 pme
 fdC
-qvL
+rCU
 nIK
 nIK
 nIK
@@ -50203,14 +50224,14 @@ nIK
 nIK
 nIK
 nIK
-rtC
+iFf
 uKw
 lCb
-rtC
+iFf
 fkC
 dlD
 ixt
-rtC
+iFf
 nIK
 nIK
 nIK
