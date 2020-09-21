@@ -1366,6 +1366,9 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
+/obj/item/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/electrical,
+/obj/item/storage/belt/utility,
 /turf/simulated/floor/reinforced,
 /area/shuttle/civvie/general)
 "bem" = (
