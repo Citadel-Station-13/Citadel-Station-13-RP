@@ -1,5 +1,0 @@
-author: "Zandario"
-delete-after: True
-changes: 
-  - rscadd: "2 more event subspecies"
-  - code_imp: "all_species, all_languages, language_keys, whitelisted_species, playable_species Global lists to GLOB."

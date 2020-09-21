@@ -1,4 +1,0 @@
-author: "drofoljaelisglis"
-delete-after: True
-changes: 
-  - bugfix: "Fixed the \"Phantom Jukebox\" issue, wherein jukeboxes that once were in an area but since have been moved still played whatever new song the jukebox is playing, regardless of whether or not a jukebox is currently in said area."

@@ -1,6 +1,0 @@
-author: "Mewchild"
-delete-after: True
-changes: 
-  - bugfix: "Cargo Mailing Room will no longer overpressurize"
-  - bugfix: "Solar Shed will no longer throw an alarm if solars aren't wired"
-  - bugfix: "Shield Diffusers at Engine EVA will now actually work"

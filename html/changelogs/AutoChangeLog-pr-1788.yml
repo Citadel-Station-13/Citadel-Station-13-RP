@@ -1,5 +1,0 @@
-author: "Nethaufer"
-delete-after: True
-changes: 
-  - imageadd: "Added sprites for the Vox Pilot voidsuit (blue and red), pilot voidsuit helmets, as well as inventory icons for the refitted suits"
-  - imageadd: "Added sprites for the AMI (aka RD) hardsuit for Vox."

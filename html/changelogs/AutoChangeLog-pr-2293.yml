@@ -1,6 +1,0 @@
-author: "Zandario"
-delete-after: True
-changes: 
-  - tweak: "tweaked a bunch of comments and removed a handful of //VORE Edits"
-  - refactor: "ported the refactored code"
-  - config: "changed some of the outdated config settings"
