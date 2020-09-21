@@ -6572,10 +6572,6 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/alarm/alarms_hidden{
-	dir = 1;
-	pixel_y = -23
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/universal{
 	dir = 4
 	},
@@ -22292,7 +22288,9 @@
 /area/security/hanger)
 "qhY" = (
 /obj/machinery/door/airlock/hatch{
-	name = "Pilot's Quarters"
+	name = "Pilot's Quarters";
+	req_access = list(67);
+	req_one_access = null
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
