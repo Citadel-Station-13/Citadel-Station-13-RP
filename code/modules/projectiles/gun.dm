@@ -206,18 +206,22 @@
 		to_chat(M, "<span class='danger'>Your fingers are much too large for the trigger guard!</span>")
 		return 0
 	if(shootback)
-		var/obj/P = consume_next_projectile()
-		var/targetedlimb = pick(BP_HEAD, BP_TORSO)
-		if(P)
-			if(process_projectile(P, user, user, targetedlimb))
-				to_chat(user, "<span class='warning'>UNAUTHORIZED USER DETECTED.</span>")
-				user.visible_message(
-					"<span class='danger'>\The [src] buzzes, firing by itself into [user]'s [targetedlimb]!</span>",
-					"<span class='danger'>\The [src] buzzes, and as your grip loosens on it, it fires point-blank into your [targetedlimb]!</span>"
-					)
-				handle_post_fire(user, user, TRUE)
-		else
-			handle_click_empty(user)
+		var/burstcount = burst
+		while(burstcount)
+			var/obj/P = consume_next_projectile()
+			var/targetedlimb = pick(BP_HEAD, BP_TORSO)
+			if(P)
+				if(process_projectile(P, user, user, targetedlimb))
+					to_chat(user, "<span class='warning'>USER AUTHENTICATION FAILED.</span>")
+					user.visible_message(
+						"<span class='danger'>\The [src] buzzes, firing by itself into [user]'s [targetedlimb]!</span>",
+						"<span class='danger'>You lose your grip as \the [src] buzzes, firing point-blank into your [targetedlimb]!</span>"
+						)
+					handle_post_fire(user, user, TRUE)
+			else
+				handle_click_empty(user)
+			burstcount--
+		M.drop_item() // dropping at the end of the blunder
 		return FALSE
 	if((CLUMSY in M.mutations) && prob(40)) //Clumsy handling
 		var/obj/P = consume_next_projectile()
@@ -300,7 +304,7 @@
 			to_chat(user, "<span class='warning'>\The [src] is not accepting modifications at this time.</span>")
 	if(A.is_multitool() && src.shootback)
 		var/unrig_chance = 5 + (fix_attempts * 1)
-		to_chat(user, "<span class='notice'>You begin pulsing the trigger of \the [src] with [A].</span>")
+		to_chat(user, "<span class='notice'>You begin pulsing the trigger assembly of \the [src] with [A]...</span>")
 		playsound(src, A.usesound, 50, 1)
 		if(do_after(user, 100 * A.toolspeed))
 			playsound(src, A.usesound, 50, 1)

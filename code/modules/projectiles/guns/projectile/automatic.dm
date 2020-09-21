@@ -69,6 +69,15 @@
 /obj/item/gun/projectile/automatic/c20r/rigged
 	shootback = TRUE
 
+/obj/item/gun/projectile/automatic/c20r/rigged/Initialize()
+	. = ..() // firemode switching on initialize doesn't seem to work so PLEASE excuse the bullshit about to occur here
+	mode_name = "3-round bursts"
+	burst = 3
+	fire_delay = null
+	move_delay = 4
+	burst_accuracy = list(0, -15, -15)
+	dispersion = list(0.0, 0.6, 1.0)
+
 /obj/item/gun/projectile/automatic/c20r/rigged/chance/Initialize()
 	. = ..()
 	if(prob(40))
