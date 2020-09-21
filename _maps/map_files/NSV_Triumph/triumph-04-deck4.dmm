@@ -56,6 +56,13 @@
 /obj/item/bedsheet/bluedouble,
 /turf/simulated/floor/carpet/tealcarpet,
 /area/crew_quarters/sleep/CMO_quarters)
+"adD" = (
+/obj/machinery/door/window/brigdoor/southleft{
+	req_access = null
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/carpet/tealcarpet,
+/area/shuttle/civvie/general)
 "adJ" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /obj/structure/railing{
@@ -519,7 +526,8 @@
 /obj/structure/bed/chair/shuttle{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/old_tile/green,
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/turf/simulated/floor/carpet/tealcarpet,
 /area/shuttle/civvie/general)
 "axG" = (
 /obj/structure/closet/secure_closet/hop,
@@ -777,6 +785,23 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
+"aIQ" = (
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/structure/bed/chair/shuttle{
+	dir = 4
+	},
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/old_tile/green,
+/area/shuttle/civvie/cockpit)
 "aJw" = (
 /obj/machinery/firealarm{
 	dir = 8;
@@ -975,6 +1000,13 @@
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/binary/passive_gate/on{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
@@ -1328,6 +1360,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/hallwayaux)
+"bcy" = (
+/obj/structure/table/rack/steel,
+/obj/machinery/light,
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced,
+/area/shuttle/civvie/general)
 "bem" = (
 /turf/simulated/wall,
 /area/maintenance/central)
@@ -1802,16 +1842,20 @@
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
 "bsQ" = (
-/obj/structure/cable/cyan{
-	d2 = 8;
-	icon_state = "0-8"
-	},
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
 /obj/machinery/light,
-/turf/simulated/floor/tiled/old_tile/green,
+/obj/structure/table/reinforced,
+/obj/machinery/alarm/alarms_hidden{
+	dir = 8;
+	icon_state = "alarm0";
+	pixel_x = 27
+	},
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -37
+	},
+/turf/simulated/floor/carpet/tealcarpet,
 /area/shuttle/civvie/general)
 "btx" = (
 /obj/structure/table/rack/shelf/steel,
@@ -2282,10 +2326,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/brig)
-"bLC" = (
-/obj/machinery/light,
-/turf/simulated/floor/tiled/old_tile/green,
-/area/shuttle/civvie/general)
 "bMZ" = (
 /obj/structure/table/standard,
 /obj/item/aiModule/oxygen,
@@ -2557,6 +2597,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/shield_diffuser,
 /obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
@@ -2849,6 +2890,10 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
 "cha" = (
@@ -3075,6 +3120,11 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
+"cnM" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/shuttle/civvie/general)
 "coe" = (
 /obj/machinery/washing_machine,
 /turf/simulated/floor/tiled,
@@ -3523,6 +3573,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
 "cCY" = (
@@ -3916,6 +3967,9 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
+"cTW" = (
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/shuttle/civvie/cockpit)
 "cUD" = (
 /obj/machinery/light{
 	dir = 1
@@ -4083,8 +4137,22 @@
 /turf/simulated/floor/tiled,
 /area/security/hallwayaux)
 "dep" = (
-/obj/effect/wingrille_spawn/reinforced_phoron,
-/turf/simulated/shuttle/floor/voidcraft,
+/obj/machinery/door/airlock/voidcraft/vertical{
+	req_access = list(67)
+	},
+/obj/structure/cable/cyan{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/cockpit)
 "des" = (
 /obj/structure/closet/crate/bin{
@@ -4241,6 +4309,17 @@
 /obj/machinery/microwave,
 /turf/simulated/floor/tiled,
 /area/triumph/station/excursion_dock)
+"dlD" = (
+/obj/machinery/shield_capacitor/advanced,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/cable/cyan{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/turf/simulated/floor/reinforced,
+/area/shuttle/civvie/general)
 "dlT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -4363,12 +4442,19 @@
 /area/security/evidence_storage)
 "dpQ" = (
 /obj/structure/cable/cyan{
-	d1 = 1;
+	d1 = 4;
 	d2 = 8;
-	icon_state = "1-8"
+	icon_state = "4-8"
 	},
+/obj/structure/cable/cyan{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /turf/simulated/floor/tiled/old_tile/green,
-/area/shuttle/civvie/cockpit)
+/area/shuttle/civvie/general)
 "dqj" = (
 /obj/machinery/computer/ship/helm{
 	dir = 8
@@ -4890,6 +4976,13 @@
 "dHb" = (
 /turf/simulated/floor/plating,
 /area/maintenance/security_port)
+"dHi" = (
+/obj/structure/curtain/black{
+	anchored = 1;
+	pixel_y = 32
+	},
+/turf/simulated/floor/carpet/tealcarpet,
+/area/shuttle/civvie/general)
 "dHE" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -5741,6 +5834,8 @@
 	pixel_x = -27
 	},
 /obj/machinery/door/airlock/voidcraft,
+/obj/machinery/meter,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
 "epL" = (
@@ -6021,6 +6116,26 @@
 	},
 /turf/simulated/shuttle/floor/voidcraft,
 /area/bridge)
+"eAf" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 4
+	},
+/obj/structure/cable/cyan{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/obj/machinery/power/apc{
+	dir = 8;
+	name = "west bump";
+	pixel_x = -28
+	},
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
+	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/turf/simulated/floor/tiled/old_tile/green,
+/area/shuttle/civvie/cockpit)
 "eAk" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/cedouble,
@@ -6461,7 +6576,10 @@
 	dir = 1;
 	pixel_y = -23
 	},
-/turf/simulated/floor/tiled/old_tile/green,
+/obj/machinery/atmospherics/pipe/simple/hidden/universal{
+	dir = 4
+	},
+/turf/simulated/shuttle/wall/voidcraft/green,
 /area/shuttle/civvie/general)
 "eMq" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -6918,7 +7036,12 @@
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "fbp" = (
-/turf/simulated/floor/tiled/old_tile/green,
+/obj/structure/bed/chair/shuttle{
+	dir = 1
+	},
+/obj/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/carpet/tealcarpet,
 /area/shuttle/civvie/general)
 "fcx" = (
 /obj/machinery/door/airlock/maintenance/common,
@@ -6956,6 +7079,17 @@
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
+"fdC" = (
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/turf/simulated/floor/reinforced,
+/area/shuttle/civvie/general)
 "feo" = (
 /obj/machinery/computer/rcon{
 	dir = 4
@@ -7135,16 +7269,23 @@
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "fkC" = (
-/obj/item/gps/internal/base{
-	desc = "A tracking beacon embedded in the shuttle systems, to help explorers find where they landed.";
-	gps_tag = "CIVVIE";
-	name = "civilian transport beacon"
+/obj/structure/cable/cyan{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
-/obj/machinery/computer/shuttle_control/explore/civvie{
-	dir = 8
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/firealarm{
+	layer = 3.3;
+	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/old_tile/green,
-/area/shuttle/civvie/cockpit)
+/area/shuttle/civvie/general)
 "fkU" = (
 /obj/effect/landmark/shuttle,
 /obj/machinery/computer/cryopod{
@@ -7358,6 +7499,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/library)
+"ftw" = (
+/obj/machinery/computer/shuttle_control/explore/civvie{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_tile/green,
+/area/shuttle/civvie/cockpit)
 "fuD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -9213,6 +9360,17 @@
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/sauna)
+"gUj" = (
+/obj/machinery/alarm/alarms_hidden{
+	dir = 4;
+	pixel_x = -27
+	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 4
+	},
+/obj/structure/closet/secure_closet/pilot,
+/turf/simulated/floor/carpet/tealcarpet,
+/area/shuttle/civvie/general)
 "gUD" = (
 /obj/structure/sign/deck/fourth,
 /turf/simulated/wall,
@@ -9288,6 +9446,16 @@
 /obj/item/book/manual/robotics_cyborgs,
 /turf/simulated/floor/wood,
 /area/library)
+"gXq" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 4
+	},
+/obj/machinery/recharge_station,
+/turf/simulated/floor/reinforced,
+/area/shuttle/civvie/general)
 "gXR" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -9555,6 +9723,21 @@
 /obj/machinery/vending/cigarette,
 /turf/simulated/floor/carpet/bcarpet,
 /area/hallway/secondary/civilian_hallway_mid)
+"hhx" = (
+/obj/structure/table/rack/shelf,
+/obj/item/tank/oxygen,
+/obj/item/suit_cooling_unit,
+/obj/item/clothing/shoes/magboots,
+/obj/item/clothing/suit/space/void/pilot,
+/obj/item/clothing/head/helmet/space/void/pilot,
+/obj/item/tank/jetpack/oxygen,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -26
+	},
+/turf/simulated/floor/tiled/old_tile/green,
+/area/shuttle/civvie/cockpit)
 "hhC" = (
 /obj/machinery/door/airlock/glass_security{
 	id_tag = "Checkpoint";
@@ -9855,6 +10038,13 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
 /area/security/hallway)
+"htm" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/turf/simulated/shuttle/wall/voidcraft/green,
+/area/shuttle/civvie/general)
 "htG" = (
 /obj/structure/dogbed,
 /obj/random/plushie,
@@ -10324,6 +10514,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
+"hKi" = (
+/obj/effect/wingrille_spawn/reinforced_phoron,
+/obj/machinery/atmospherics/pipe/simple/hidden/universal,
+/obj/machinery/door/firedoor,
+/turf/simulated/shuttle/floor/voidcraft,
+/area/shuttle/civvie/cockpit)
 "hKx" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -11423,7 +11619,22 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
 /turf/simulated/floor/tiled/old_tile/green,
+/area/shuttle/civvie/general)
+"ixt" = (
+/obj/machinery/shield_gen/external/advanced,
+/obj/structure/cable/cyan{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/light,
+/turf/simulated/floor/reinforced,
 /area/shuttle/civvie/general)
 "ixx" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
@@ -13668,12 +13879,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/hallwayaux)
-"kmX" = (
-/obj/machinery/shipsensors,
-/turf/simulated/floor/plating{
-	initial_gas_mix = "TEMP=2.7"
-	},
-/area/shuttle/civvie/general)
 "kmY" = (
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/computer/timeclock/premade/south,
@@ -13894,7 +14099,8 @@
 	tag_chamber_sensor = "civvie_sensor";
 	tag_exterior_door = "civvie_door_Ro";
 	tag_exterior_sensor = "civvie_exterior_sensor";
-	tag_interior_door = "civvie_door_Ri"
+	tag_interior_door = "civvie_door_Ri";
+	tag_interior_sensor = "civvie_exp_psg"
 	},
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 4;
@@ -14644,11 +14850,16 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/lounge)
 "lak" = (
-/obj/machinery/door/airlock/voidcraft/vertical,
 /obj/structure/cable/cyan{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
@@ -15240,6 +15451,18 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/HOS_quarters)
+"lvM" = (
+/obj/structure/cable/cyan{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
+/turf/simulated/floor/tiled/old_tile/green,
+/area/shuttle/civvie/general)
 "lvR" = (
 /obj/machinery/recharge_station,
 /obj/machinery/light{
@@ -15322,6 +15545,15 @@
 /obj/item/flame/candle/candelabra/everburn,
 /turf/simulated/floor/carpet/sblucarpet,
 /area/chapel/main)
+"lAn" = (
+/obj/machinery/alarm/alarms_hidden{
+	dir = 4;
+	pixel_x = -27
+	},
+/obj/structure/table/reinforced,
+/obj/item/subspaceradio,
+/turf/simulated/floor/tiled/old_tile/green,
+/area/shuttle/civvie/cockpit)
 "lAq" = (
 /turf/simulated/wall/r_wall,
 /area/hallway/secondary/civilian_hallway_mid)
@@ -15427,8 +15659,11 @@
 /turf/simulated/floor/tiled/white,
 /area/triumph/station/explorer_medical)
 "lCb" = (
-/turf/simulated/floor/tiled/old_tile/green,
-/area/shuttle/civvie/cockpit)
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/tealcarpet,
+/area/shuttle/civvie/general)
 "lCf" = (
 /obj/machinery/vending/cola,
 /turf/simulated/floor/carpet/bcarpet,
@@ -15481,6 +15716,26 @@
 	},
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
+"lFR" = (
+/obj/structure/cable/cyan{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/power/apc{
+	name = "south bump";
+	pixel_y = -28
+	},
+/obj/structure/cable/cyan{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/turf/simulated/floor/tiled/old_tile/green,
+/area/shuttle/civvie/general)
 "lFS" = (
 /obj/structure/railing{
 	dir = 4
@@ -16102,15 +16357,17 @@
 /turf/simulated/floor/tiled/white,
 /area/triumph/station/explorer_medical)
 "lZB" = (
-/obj/structure/bed/chair/shuttle{
-	dir = 4
-	},
 /obj/structure/cable/cyan{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/old_tile/green,
+/obj/machinery/door/window/brigdoor/northleft{
+	req_access = null
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/carpet/tealcarpet,
 /area/shuttle/civvie/general)
 "lZG" = (
 /turf/simulated/wall,
@@ -17083,6 +17340,13 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
+"mMq" = (
+/obj/machinery/door/window/brigdoor/northleft{
+	req_access = null
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/carpet/tealcarpet,
+/area/shuttle/civvie/general)
 "mMK" = (
 /obj/structure/bookcase{
 	name = "bookcase (Fiction)"
@@ -17137,6 +17401,9 @@
 "mPp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
 	},
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
@@ -18447,6 +18714,10 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/door/airlock/voidcraft,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
 "nKv" = (
@@ -18749,6 +19020,15 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
+"nXC" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 4
+	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/tealcarpet,
+/area/shuttle/civvie/general)
 "nXG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 5
@@ -18872,6 +19152,14 @@
 	},
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
+"ocK" = (
+/obj/structure/bed/chair/shuttle,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/carpet/tealcarpet,
+/area/shuttle/civvie/general)
 "odm" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
@@ -19067,6 +19355,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/hallwayaux)
+"ojJ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/turf/simulated/shuttle/wall/voidcraft/green,
+/area/shuttle/civvie/general)
 "okw" = (
 /obj/machinery/recharge_station,
 /turf/simulated/floor/tiled,
@@ -19131,6 +19425,14 @@
 /obj/machinery/sleep_console,
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/general)
+"ols" = (
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube1"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled/old_tile/green,
+/area/shuttle/civvie/general)
 "olP" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
@@ -19338,6 +19640,14 @@
 /obj/effect/shuttle_landmark/station_dockpoint2,
 /turf/space,
 /area/space)
+"owA" = (
+/obj/machinery/atmospherics/unary/outlet_injector{
+	dir = 1;
+	icon_state = "map_injector";
+	use_power = 1
+	},
+/turf/simulated/floor/airless,
+/area/shuttle/civvie/cockpit)
 "oxu" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
@@ -20569,11 +20879,25 @@
 /turf/simulated/floor/tiled,
 /area/security/hallwayaux)
 "pme" = (
-/obj/machinery/computer/ship/sensors{
-	dir = 1
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/old_tile/green,
-/area/shuttle/civvie/cockpit)
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/obj/machinery/door/window/brigdoor/northleft{
+	req_access = list(67)
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/turf/simulated/floor/reinforced,
+/area/shuttle/civvie/general)
 "pmy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -20656,6 +20980,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
+"poY" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/old_tile/green,
+/area/shuttle/civvie/general)
 "ppM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -20703,6 +21031,24 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/security_equiptment_storage)
+"psp" = (
+/obj/structure/cable/cyan{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/voidcraft/vertical{
+	req_access = list(67)
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/tiled/old_tile/green,
+/area/shuttle/civvie/general)
 "psx" = (
 /obj/machinery/station_map{
 	dir = 4;
@@ -20966,6 +21312,7 @@
 	frequency = 1380;
 	id_tag = "civvie_door_Ro"
 	},
+/obj/machinery/shield_diffuser,
 /obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
@@ -21944,24 +22291,14 @@
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/security/hanger)
 "qhY" = (
-/obj/structure/bed/chair/shuttle{
-	dir = 4
+/obj/machinery/door/airlock/hatch{
+	name = "Pilot's Quarters"
 	},
-/obj/structure/cable/cyan{
-	d2 = 2;
-	icon_state = "0-2"
-	},
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28
-	},
-/obj/machinery/light{
-	dir = 8;
-	light_range = 12
-	},
-/turf/simulated/floor/tiled/old_tile/green,
-/area/shuttle/civvie/cockpit)
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/carpet/tealcarpet,
+/area/shuttle/civvie/general)
 "qid" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -22416,6 +22753,7 @@
 /area/hydroponics/garden)
 "qvL" = (
 /obj/effect/wingrille_spawn/reinforced_phoron,
+/obj/machinery/door/firedoor,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/shuttle/civvie/general)
 "qwd" = (
@@ -22655,6 +22993,17 @@
 	},
 /turf/simulated/floor/water/indoors,
 /area/hydroponics/garden)
+"qDW" = (
+/obj/machinery/light,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_tile/green,
+/area/shuttle/civvie/general)
 "qEc" = (
 /obj/machinery/alarm{
 	dir = 8;
@@ -22752,20 +23101,21 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "qGM" = (
-/obj/structure/bed/chair/shuttle{
-	dir = 4
-	},
-/obj/structure/cable/cyan{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /obj/structure/cable/cyan{
 	d1 = 1;
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/tiled/old_tile/green,
+/obj/structure/bed/chair/shuttle{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/tealcarpet,
 /area/shuttle/civvie/general)
 "qHf" = (
 /obj/structure/cable/green{
@@ -22908,6 +23258,12 @@
 /obj/item/duct_tape_roll,
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
+"qNS" = (
+/obj/machinery/computer/ship/engines{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_tile/green,
+/area/shuttle/civvie/cockpit)
 "qNU" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -23020,11 +23376,11 @@
 	desc = "A bed made just for the Facility Director's fox.";
 	name = "Renault's Bed"
 	},
-/mob/living/simple_mob/animal/passive/fox/renault,
 /obj/machinery/light_switch{
 	name = "light switch ";
 	pixel_y = 26
 	},
+/mob/living/simple_mob/animal/passive/fox/renault,
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "qSy" = (
@@ -23095,13 +23451,14 @@
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
 "qTZ" = (
-/obj/machinery/computer/ship/engines,
-/obj/machinery/alarm/alarms_hidden{
-	dir = 4;
-	pixel_x = -27
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
 	},
-/turf/simulated/floor/tiled/old_tile/green,
-/area/shuttle/civvie/cockpit)
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/turf/simulated/floor/carpet/tealcarpet,
+/area/shuttle/civvie/general)
 "qUK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -23703,6 +24060,9 @@
 /obj/machinery/power/terminal{
 	dir = 8
 	},
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
 "rpB" = (
@@ -24199,6 +24559,11 @@
 /obj/item/melee/baton/loaded,
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
+"rCU" = (
+/obj/effect/wingrille_spawn/reinforced_phoron,
+/obj/machinery/door/firedoor,
+/turf/simulated/shuttle/floor/voidcraft,
+/area/shuttle/civvie/cockpit)
 "rDo" = (
 /obj/structure/lightpost,
 /obj/effect/floor_decal/grass_edge{
@@ -24871,6 +25236,11 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/machinery/atmospherics/portables_connector{
+	icon_state = "map_connector";
+	dir = 4
+	},
+/obj/machinery/portable_atmospherics/canister/air/airlock,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
 "sfl" = (
@@ -24895,6 +25265,19 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/secondary/civilian_hallway_mid)
+"sgM" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_tile/green,
+/area/shuttle/civvie/general)
 "shs" = (
 /obj/structure/table/steel,
 /obj/item/storage/box/donkpockets,
@@ -25495,6 +25878,10 @@
 /obj/item/flame/candle/candelabra/everburn,
 /turf/simulated/floor/carpet/sblucarpet,
 /area/chapel/main)
+"sEs" = (
+/obj/machinery/shipsensors,
+/turf/simulated/floor/airless,
+/area/shuttle/civvie/cockpit)
 "sEt" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -26092,6 +26479,12 @@
 /obj/effect/floor_decal/techfloor/hole,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/civilian_hallway_mid)
+"sZy" = (
+/turf/space,
+/turf/simulated/shuttle/wall/voidcraft/green{
+	icon_state = "void5"
+	},
+/area/shuttle/civvie/cockpit)
 "tab" = (
 /obj/machinery/power/apc{
 	dir = 4;
@@ -26317,6 +26710,11 @@
 	},
 /turf/simulated/floor/tiled,
 /area/teleporter)
+"tkr" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/turf/simulated/floor/tiled/old_tile/green,
+/area/shuttle/civvie/general)
 "tkT" = (
 /obj/machinery/access_button{
 	command = "cycle_exterior";
@@ -26400,7 +26798,17 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/old_tile/green,
+/obj/structure/table/reinforced,
+/obj/machinery/alarm/alarms_hidden{
+	dir = 8;
+	icon_state = "alarm0";
+	pixel_x = 27
+	},
+/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 27
+	},
+/turf/simulated/floor/carpet/tealcarpet,
 /area/shuttle/civvie/general)
 "tnZ" = (
 /obj/structure/loot_pile/maint/trash,
@@ -26580,6 +26988,18 @@
 "ttb" = (
 /turf/simulated/wall,
 /area/chapel/main)
+"ttL" = (
+/obj/structure/cable/cyan{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/old_tile/green,
+/area/shuttle/civvie/general)
 "ttZ" = (
 /obj/structure/table/reinforced,
 /obj/machinery/alarm{
@@ -26599,6 +27019,7 @@
 	frequency = 1380;
 	id_tag = "civvie_door_Ri"
 	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
 "tuN" = (
@@ -27033,6 +27454,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/excursion_dock)
+"tQL" = (
+/obj/machinery/firealarm{
+	layer = 3.3;
+	pixel_y = 26
+	},
+/obj/machinery/atmospherics/unary/vent_pump/on,
+/turf/simulated/floor/tiled/old_tile/green,
+/area/shuttle/civvie/general)
 "tSf" = (
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
@@ -27109,6 +27538,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/evidence_storage)
+"tUx" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/structure/table/reinforced,
+/turf/simulated/floor/carpet/tealcarpet,
+/area/shuttle/civvie/general)
 "tUB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -28256,6 +28692,11 @@
 /obj/structure/closet/athletic_mixed,
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/civilian_hallway_mid)
+"uKw" = (
+/obj/structure/bed/double/padded,
+/obj/item/bedsheet/browndouble,
+/turf/simulated/floor/carpet/tealcarpet,
+/area/shuttle/civvie/general)
 "uKG" = (
 /obj/machinery/camera/network/exploration{
 	dir = 10
@@ -29054,6 +29495,8 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
 "vlz" = (
@@ -29745,7 +30188,9 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
 	dir = 4
 	},
-/obj/machinery/meter,
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
 "vKx" = (
@@ -29855,15 +30300,15 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 32
 	},
-/mob/living/simple_mob/animal/passive/dog/corgi/Lisa{
-	desc = "It's Lisa, the exploration teams trusty Corgi."
-	},
 /obj/structure/dogbed,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 1
+	},
+/mob/living/simple_mob/animal/passive/dog/corgi/Lisa{
+	desc = "It's Lisa, the exploration teams trusty Corgi."
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/pathfinder_office)
@@ -30144,6 +30589,9 @@
 	},
 /obj/machinery/light{
 	dir = 1
+	},
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
@@ -32387,6 +32835,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/brig)
+"xFO" = (
+/turf/space,
+/turf/simulated/shuttle/wall/voidcraft/green{
+	icon_state = "void6"
+	},
+/area/shuttle/civvie/cockpit)
 "xGD" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -32538,6 +32992,17 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/hallwayaux)
+"xKx" = (
+/obj/item/gps/internal/base{
+	desc = "A tracking beacon embedded in the shuttle systems, to help explorers find where they landed.";
+	gps_tag = "CIVVIE";
+	name = "civilian transport beacon"
+	},
+/obj/machinery/computer/ship/sensors{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_tile/green,
+/area/shuttle/civvie/cockpit)
 "xKQ" = (
 /obj/machinery/light{
 	dir = 4
@@ -47890,7 +48355,7 @@ nIK
 nIK
 nIK
 nIK
-nIK
+xFO
 aFX
 nIK
 kvi
@@ -47899,7 +48364,7 @@ bVX
 wUi
 nIK
 aFX
-nIK
+sZy
 nIK
 nIK
 nIK
@@ -48459,14 +48924,14 @@ nIK
 nIK
 nIK
 rtC
-rtC
-rtC
-puZ
-fbp
-fbp
-fbp
+ojJ
+htm
+cnM
+sgM
+qDW
+eiy
 eMf
-puZ
+rtC
 rtC
 nIK
 nIK
@@ -48603,8 +49068,8 @@ nIK
 nIK
 qvL
 axc
-axc
-axc
+adD
+poY
 cgS
 lZB
 qGM
@@ -48746,9 +49211,9 @@ nIK
 rtC
 tnW
 fbp
-fbp
+tkr
 vlp
-fbp
+ocK
 bsQ
 rtC
 nIK
@@ -48885,14 +49350,14 @@ nIK
 nIK
 nIK
 nIK
-puZ
-puZ
-axc
-axc
-vlp
-axc
-eiy
-puZ
+rtC
+rtC
+rtC
+tQL
+lFR
+rtC
+rtC
+rtC
 nIK
 nIK
 nIK
@@ -49027,14 +49492,14 @@ nIK
 nIK
 nIK
 nIK
-kmX
-rtC
-fbp
-fbp
-vlp
-fbp
-rtC
-nIK
+qvL
+axc
+adD
+poY
+lvM
+mMq
+nXC
+qvL
 nIK
 nIK
 nIK
@@ -49169,14 +49634,14 @@ nIK
 nIK
 nIK
 nIK
-nIK
-qvL
-axc
-axc
-vlp
-axc
-qvL
-nIK
+rtC
+tnW
+fbp
+ols
+ttL
+ocK
+bsQ
+rtC
 nIK
 nIK
 nIK
@@ -49311,14 +49776,14 @@ nIK
 nIK
 nIK
 nIK
-nIK
 rtC
-tnW
-fbp
-vlp
-bLC
 rtC
-nIK
+rtC
+puZ
+psp
+puZ
+rtC
+rtC
 nIK
 nIK
 nIK
@@ -49453,14 +49918,14 @@ nIK
 nIK
 nIK
 nIK
-nIK
-puZ
-puZ
-puZ
+rtC
+tUx
+gUj
+rtC
 lak
-puZ
-puZ
-nIK
+gXq
+bcy
+rtC
 nIK
 nIK
 nIK
@@ -49595,14 +50060,14 @@ nIK
 nIK
 nIK
 nIK
-nIK
-iFf
+qvL
+dHi
 qTZ
 qhY
 dpQ
 pme
-iFf
-nIK
+fdC
+qvL
 nIK
 nIK
 nIK
@@ -49737,14 +50202,14 @@ nIK
 nIK
 nIK
 nIK
-nIK
-iFf
+rtC
+uKw
 lCb
-dqj
+rtC
 fkC
-lCb
-iFf
-nIK
+dlD
+ixt
+rtC
 nIK
 nIK
 nIK
@@ -49879,14 +50344,14 @@ nIK
 nIK
 nIK
 nIK
-nIK
-iFf
-iFf
+cTW
+cTW
+cTW
+cTW
 dep
-dep
-iFf
-iFf
-nIK
+cTW
+cTW
+cTW
 nIK
 nIK
 nIK
@@ -50021,14 +50486,14 @@ nIK
 nIK
 nIK
 nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
+sEs
+rCU
+lAn
+eAf
+aIQ
+hhx
+hKi
+owA
 nIK
 nIK
 nIK
@@ -50164,12 +50629,12 @@ nIK
 nIK
 nIK
 nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
+iFf
+ftw
+dqj
+xKx
+qNS
+iFf
 nIK
 nIK
 nIK
@@ -50306,12 +50771,12 @@ nIK
 nIK
 nIK
 nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
+iFf
+iFf
+rCU
+rCU
+iFf
+iFf
 nIK
 nIK
 nIK
