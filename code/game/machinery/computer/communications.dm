@@ -40,7 +40,7 @@
 
 /obj/machinery/computer/communications/New()
 	..()
-	ATC = atc
+	ATC = GLOB.lore_atc
 	crew_announcement.newscast = 1
 
 /obj/machinery/computer/communications/process()
