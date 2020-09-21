@@ -1172,3 +1172,8 @@
 	name = "PARA tactical uniform"
 	desc = "A standard grey jumpsuit, emblazoned with the Icon of the PMD. Close inspection of the embroidery reveals a complex web of glyphs written in an unknown language."
 	icon_state = "para_ert_uniform"
+
+/obj/item/clothing/under/blueshortskirt
+	name = "Short Skirt"
+	desc = "A light blue sweater with a black skirt."
+	icon_state = "blueshortskirt_female"

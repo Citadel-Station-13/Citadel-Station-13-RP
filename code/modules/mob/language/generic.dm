@@ -156,6 +156,19 @@
 	syllables = list ("sque", "uik", "squeak", "squee", "eak", "eek", "uek", "squik",
 			"squeek", "sq", "eek", "squeee", "ee", "ek", "ak", "ueak", "squea")
 
+// Alraune language that's literally just bushes rubbing together.
+/datum/language/vernal
+	name = LANGUAGE_VERNAL
+	desc = "An imperceptibly complex and nuanced language, often confused for the natural sounds of the forest."
+	signlang_verb = list("sways")
+	speech_verb = "rustles"
+	whisper_verb = "susurrus"
+	exclaim_verb = "crackles"
+	colour = "soghun"
+	key = "t" //Rustles susurrus crackles
+	syllables = list ("shh", "fssh", "rustle", "snap", "kssh", "sffh", "mssh", "creak",
+			"knock", "crk", "srhh", "rrssh", "sh", "hk", "fsh", "rss", "ks")
+
 // Silly language for those times when you try to talk a languague you normally can't
 /datum/language/gibberish
 	name = LANGUAGE_GIBBERISH

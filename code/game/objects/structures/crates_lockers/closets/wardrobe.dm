@@ -105,6 +105,8 @@
 		/obj/item/storage/fancy/candle_box = 2,
 		/obj/item/storage/fancy/whitecandle_box,
 		/obj/item/storage/fancy/blackcandle_box,
+		/obj/item/clothing/accessory/permit/chaplain,
+		/obj/item/storage/fancy/chalk,
 		/obj/item/godfig = 2,
 		/obj/item/deck/tarot)
 

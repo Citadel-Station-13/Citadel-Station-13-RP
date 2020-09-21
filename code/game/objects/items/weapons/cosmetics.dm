@@ -9,24 +9,48 @@
 	var/colour = "red"
 	var/open = 0
 
-/obj/item/lipstick/purple
-	name = "purple lipstick"
-	colour = "purple"
+/obj/item/lipstick/orange
+	name = "orange lipstick"
+	colour = "orange"
+
+/obj/item/lipstick/yellow
+	name = "yellow lipstick"
+	colour = "yellow"
 
 /obj/item/lipstick/jade
 	name = "jade lipstick"
 	colour = "jade"
 
+/obj/item/lipstick/cyan
+	name = "cyan lipstick"
+	colour = "cyan"
+
+/obj/item/lipstick/purple
+	name = "purple lipstick"
+	colour = "purple"
+
+/obj/item/lipstick/pink
+	name = "pink lipstick"
+	colour = "pink"
+
+/obj/item/lipstick/maroon
+	name = "maroon lipstick"
+	colour = "maroon"
+
 /obj/item/lipstick/black
 	name = "black lipstick"
 	colour = "black"
+
+/obj/item/lipstick/white
+	name = "white lipstick"
+	colour = "white"
 
 /obj/item/lipstick/random
 	name = "lipstick"
 
 /obj/item/lipstick/random/Initialize(mapload)
 	. = ..()
-	colour = pick("red","purple","jade","black")
+	colour = pick("red","orange","yellow","jade","cyan","purple","pink","maroon","black","white")
 	name = "[colour] lipstick"
 
 /obj/item/lipstick/attack_self(mob/user as mob)
