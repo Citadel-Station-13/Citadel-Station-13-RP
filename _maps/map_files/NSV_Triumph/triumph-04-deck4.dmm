@@ -9437,13 +9437,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/brig)
-"hdf" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/item/rig_module/mounted/egun,
-/obj/item/rig_module/mounted/egun,
-/obj/item/rig_module/mounted/egun,
-/turf/simulated/floor/tiled/dark,
-/area/security/tactical)
 "hdl" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 1
@@ -22302,7 +22295,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/triumph/station/stairs_one)
 "qqE" = (
-/obj/structure/table/rack/shelf/steel,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -22317,8 +22309,10 @@
 /obj/effect/floor_decal/corner/green/border{
 	dir = 8
 	},
-/obj/item/gun/energy/sniperrifle,
-/obj/item/gun/energy/sniperrifle,
+/obj/structure/table/rack/shelf/steel,
+/obj/item/rig_module/mounted/egun,
+/obj/item/rig_module/armblade,
+/obj/item/rig/combat,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "qrP" = (
@@ -28649,9 +28643,8 @@
 	dir = 10
 	},
 /obj/item/rig_module/armblade,
-/obj/item/rig_module/armblade,
-/obj/item/rig_module/armblade,
-/obj/item/rig_module/armblade,
+/obj/item/rig_module/mounted/egun,
+/obj/item/rig/combat,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "uYz" = (
@@ -32919,11 +32912,10 @@
 /obj/effect/floor_decal/corner/green/border{
 	dir = 8
 	},
-/obj/item/gun/projectile/shotgun/pump,
-/obj/item/gun/projectile/shotgun/pump,
-/obj/item/gun/projectile/shotgun/pump,
-/obj/item/gun/projectile/shotgun/pump,
-/obj/item/gun/projectile/shotgun/pump,
+/obj/item/gun/projectile/shotgun/pump/USDF,
+/obj/item/gun/projectile/shotgun/pump/USDF,
+/obj/item/gun/projectile/shotgun/pump/USDF,
+/obj/item/gun/projectile/shotgun/pump/USDF,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "ybe" = (
@@ -46404,7 +46396,7 @@ dff
 ash
 oKw
 dnb
-hdf
+btx
 dnb
 blJ
 ash
