@@ -114,8 +114,10 @@
 	origin_tech = list(TECH_BIO = 3)
 
 /obj/item/holder/protoblob
-	slot_flags = SLOT_HEAD | SLOT_OCLOTHING | SLOT_HOLSTER | SLOT_ICLOTHING | SLOT_ID 
+	slot_flags = SLOT_HEAD | SLOT_OCLOTHING | SLOT_HOLSTER | SLOT_ICLOTHING | SLOT_ID
 	w_class = ITEMSIZE_TINY
+	allowed = list(/obj/item/gun,/obj/item/flashlight,/obj/item/tank,/obj/item/storage/backpack,/obj/item/suit_cooling_unit,/obj/item/melee/baton)
+
 
 /obj/item/holder/fish/afterattack(var/atom/target, var/mob/living/user, proximity)
 	if(!target)
