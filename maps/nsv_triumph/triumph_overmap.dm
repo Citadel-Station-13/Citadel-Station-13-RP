@@ -99,6 +99,7 @@
 	scanner_desc = @{"[i]Information[/i]: Scans report a planet with nearly no atmosphere, but life-signs are registered."}
 	in_space = 0
 	icon_state = "globe"
+	known = FALSE
 	color = "#882933"
 
 /obj/effect/overmap/visitable/sector/class_h
@@ -110,6 +111,7 @@ Weather: Sunny, little to no wind
 Lifesign: Multiple Fauna and humanoid life-signs detected."}
 	in_space = 0
 	icon_state = "globe"
+	known = FALSE
 	color = "#BA9066"
 
 
@@ -152,4 +154,14 @@ Ownership: Planet is owned by the Happy Days and Sunshine Corporation.
 Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 	in_space = 0
 	icon_state = "globe"
+	known = FALSE
 	color = "#33BB33"
+
+/obj/effect/overmap/visitable/sector/frozen_planet
+	name = "Frozen Planet"
+	desc = "A world shrouded in cold and snow that seems to never let up."
+	scanner_desc = @{"[i]Information[/i]: A planet with a very cold atmosphere. Possible life signs detected."}
+	icon_state = "globe"
+	color = "#3434AA"
+	known = FALSE
+	in_space = 0

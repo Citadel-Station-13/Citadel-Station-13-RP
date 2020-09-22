@@ -12,6 +12,8 @@
 #define ATMOSPHERE_ID_DESERT			/datum/atmosphere/planet/classh
 /// Gaia PlanetAtmos IDs
 #define ATMOSPHERE_ID_GAIA				/datum/atmosphere/planet/gaia_planet
+/// Frozen World Atmos ID
+#define ATMOSPHERE_ID_FROZEN			/datum/atmosphere/planet/frozen_planet
 /// Triumph Planet Atmos ID (If needed)
 
 #define ATMOSPHERE_ID_TRIUMPH			/datum/atmosphere/planet/virgo3b
