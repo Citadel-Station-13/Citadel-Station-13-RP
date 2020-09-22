@@ -21,8 +21,12 @@
 	category = /datum/shuttle/autodock
 	flags = SHUTTLE_FLAGS_PROCESS | SHUTTLE_FLAGS_ZERO_G
 
+	var/list/obj/item/clothing/head/pilot/helmets
+
 /datum/shuttle/autodock/New(var/_name, var/obj/effect/shuttle_landmark/start_waypoint)
 	..(_name, start_waypoint)
+
+	helmets = list()
 
 	// Initial dock
 	active_docking_controller = current_location.docking_controller
@@ -44,6 +48,7 @@
 	next_location = null
 	active_docking_controller = null
 	landmark_transition = null
+	helmets.Cut()
 
 	return ..()
 
@@ -110,6 +115,7 @@
 	Doing so will ensure that multiple jumps cannot be initiated in parallel.
 */
 /datum/shuttle/autodock/process()
+	update_helmets()
 	switch(process_state)
 		if (WAIT_LAUNCH)
 			if(check_undocked())
@@ -218,3 +224,33 @@
 
 /obj/effect/shuttle_landmark/transit
 	flags = SLANDMARK_FLAG_ZERO_G|SLANDMARK_FLAG_AUTOSET
+
+/datum/shuttle/autodock/short_jump()
+	. = ..()
+	update_helmets()
+
+/datum/shuttle/autodock/long_jump()
+	. = ..()
+	update_helmets()
+
+/datum/shuttle/autodock/on_shuttle_departure()
+	. = ..()
+	update_helmets()
+
+/datum/shuttle/autodock/web_shuttle/on_shuttle_arrival()
+	. = ..()
+	update_helmets()
+
+/datum/shuttle/autodock/proc/update_helmets()
+	for(var/helm in helmets)
+		var/obj/item/clothing/head/pilot/H = helm
+		if(QDELETED(H))
+			helmets -= H
+			continue
+		if(!H.shuttle_comp || !(get_area(H) in shuttle_area))
+			H.shuttle_comp = null
+			H.audible_message("<span class='warning'>\The [H] pings as it loses it's connection with the ship.</span>")
+			H.update_hud("discon")
+			helmets -= H
+		else
+			H.update_hud(moving_status)
