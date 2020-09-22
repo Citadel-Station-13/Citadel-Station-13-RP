@@ -565,6 +565,8 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 	//update_inv_pockets() //Doesn't do anything
 	update_fire()
 	update_water()
+	update_acidsub()
+	update_bloodsub()
 	update_surgery()
 
 /* --------------------------------------- */
@@ -1052,6 +1054,34 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 		return
 
 	overlays_standing[WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "human_swimming_[depth]", layer = BODY_LAYER+WATER_LAYER) //TODO: Improve
+
+	apply_layer(WATER_LAYER)
+
+/mob/living/carbon/human/update_acidsub()
+	if(QDESTROYING(src))
+		return
+
+	remove_layer(WATER_LAYER)
+
+	var/depth = check_submerged()
+	if(!depth || lying)
+		return
+
+	overlays_standing[WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "hacid_[depth]", layer = BODY_LAYER+WATER_LAYER) //TODO: Improve
+
+	apply_layer(WATER_LAYER)
+
+/mob/living/carbon/human/update_bloodsub()
+	if(QDESTROYING(src))
+		return
+
+	remove_layer(WATER_LAYER)
+
+	var/depth = check_submerged()
+	if(!depth || lying)
+		return
+
+	overlays_standing[WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "hblood_[depth]", layer = BODY_LAYER+WATER_LAYER) //TODO: Improve
 
 	apply_layer(WATER_LAYER)
 

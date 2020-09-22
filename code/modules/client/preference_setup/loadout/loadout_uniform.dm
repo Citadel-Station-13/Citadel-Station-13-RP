@@ -57,6 +57,10 @@
 		jumpclothes[initial(jumps.name)] = jumps
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(jumpclothes, /proc/cmp_text_asc))
 
+/datum/gear/uniform/blueshortskirt
+	display_name = "Civilian Short Skirt"
+	path = /obj/item/clothing/under/blueshortskirt
+
 /datum/gear/uniform/skirt
 	display_name = "Civilian Skirts Selection"
 	path = /obj/item/clothing/under/skirt

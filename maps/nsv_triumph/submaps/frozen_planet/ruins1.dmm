@@ -1,0 +1,26 @@
+"a" = (/turf/simulated/floor/outdoors/snow/frozen_world,/area/triumph_away/frozen_planet/ruins)
+"k" = (/turf/simulated/floor/frozen_world,/area/triumph_away/frozen_planet/ruins)
+"C" = (/turf/simulated/floor/old_tile/green/frozen_world{color = "#63A83A"; icon = 'icons/turf/flooring/tiles_vr.dmi'; icon_state = "tile_full"},/area/triumph_away/frozen_planet/ruins)
+"E" = (/turf/simulated/wall/snowbrick/frozen_world,/area/triumph_away/frozen_planet/ruins)
+"H" = (/obj/random/mob/robotic/hivebot{mob_faction = "frozen"},/turf/simulated/floor/frozen_world,/area/triumph_away/frozen_planet/ruins)
+"N" = (/obj/structure/closet/crate/secure/loot,/turf/simulated/floor/old_tile/green/frozen_world{color = "#63A83A"; icon = 'icons/turf/flooring/tiles_vr.dmi'; icon_state = "tile_full"},/area/triumph_away/frozen_planet/ruins)
+"Q" = (/obj/structure/table/survival_pod,/obj/random/triumph/uncertain,/turf/simulated/floor/frozen_world,/area/triumph_away/frozen_planet/ruins)
+"R" = (/obj/structure/table,/obj/random/triumph/uncertain,/turf/simulated/floor/frozen_world,/area/triumph_away/frozen_planet/ruins)
+"S" = (/obj/structure/table,/turf/simulated/floor/old_tile/green/frozen_world{color = "#63A83A"; icon = 'icons/turf/flooring/tiles_vr.dmi'; icon_state = "tile_full"},/area/triumph_away/frozen_planet/ruins)
+"T" = (/obj/structure/flora/tree/pine,/turf/simulated/floor/outdoors/snow/frozen_world,/area/triumph_away/frozen_planet/ruins)
+"W" = (/obj/random/mob/robotic/hivebot{mob_faction = "frozen"},/turf/simulated/floor/outdoors/snow/frozen_world,/area/triumph_away/frozen_planet/ruins)
+
+(1,1,1) = {"
+aaTaaaaaaaaa
+aaaaaEaEEaEa
+aEaaaaakNkEa
+aaaHTaaSCkEa
+aaaaaaaRkCEa
+aaaaakkaaaEa
+aEaaakkkaaEa
+aaaCaakkaaEa
+aEkCkaaaWaEa
+aEQkaaTaaaaa
+aEEEEaaEEaaT
+aaaaaaaaaaaa
+"}
