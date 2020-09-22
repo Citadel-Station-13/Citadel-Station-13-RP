@@ -2126,8 +2126,16 @@
 	pixel_y = 26
 	},
 /obj/structure/table/rack/shelf/steel,
-/obj/random/handgun/sec,
-/obj/random/handgun/sec,
+/obj/item/ammo_magazine/m9mmt,
+/obj/item/ammo_magazine/m9mmt,
+/obj/item/ammo_magazine/m9mmt,
+/obj/item/ammo_magazine/m9mmt,
+/obj/item/ammo_magazine/m9mmt,
+/obj/item/ammo_magazine/m9mmt,
+/obj/item/ammo_magazine/m9mmt,
+/obj/item/ammo_magazine/m9mmt,
+/obj/item/ammo_magazine/m9mmt,
+/obj/item/ammo_magazine/m9mmt,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "bFf" = (
@@ -3167,11 +3175,14 @@
 	dir = 9
 	},
 /obj/structure/table/rack/shelf/steel,
-/obj/random/projectile/sec,
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/random/projectile/sec,
+/obj/item/gun/projectile/automatic/wt550,
+/obj/item/gun/projectile/automatic/wt550,
+/obj/item/gun/projectile/automatic/wt550,
+/obj/item/gun/projectile/automatic/wt550,
+/obj/item/gun/projectile/automatic/wt550,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "crC" = (
@@ -5300,11 +5311,14 @@
 	dir = 5
 	},
 /obj/structure/table/rack/shelf/steel,
-/obj/random/handgun/sec,
-/obj/random/handgun/sec,
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/item/storage/box/stunshells/large,
+/obj/item/storage/box/stunshells/large,
+/obj/item/storage/box/stunshells/large,
+/obj/item/storage/box/stunshells/large,
+/obj/item/storage/box/stunshells/large,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "dZf" = (
@@ -7944,8 +7958,33 @@
 	dir = 1
 	},
 /obj/structure/table/rack/shelf/steel,
-/obj/random/handgun/sec,
-/obj/random/handgun/sec,
+/obj/item/storage/box/shotgunshells/large,
+/obj/item/storage/box/shotgunshells/large,
+/obj/item/storage/box/shotgunshells/large,
+/obj/item/storage/box/shotgunshells/large,
+/obj/item/storage/box/shotgunshells/large,
+/obj/item/storage/box/shotgunshells/large,
+/obj/item/storage/box/shotgunshells/large,
+/obj/item/storage/box/shotgunshells/large,
+/obj/item/storage/box/shotgunshells/large,
+/obj/item/storage/box/shotgunammo/large{
+	pixel_y = 9
+	},
+/obj/item/storage/box/shotgunammo/large{
+	pixel_y = 9
+	},
+/obj/item/storage/box/shotgunammo/large{
+	pixel_y = 9
+	},
+/obj/item/storage/box/shotgunammo/large{
+	pixel_y = 9
+	},
+/obj/item/storage/box/shotgunammo/large{
+	pixel_y = 9
+	},
+/obj/item/storage/box/shotgunammo/large{
+	pixel_y = 9
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "fRE" = (
@@ -9398,20 +9437,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/brig)
-"hdf" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/item/rig_module/mounted/egun,
-/obj/item/rig_module/mounted/egun,
-/obj/item/ammo_magazine/m95,
-/obj/item/ammo_magazine/m95,
-/obj/item/ammo_magazine/m95,
-/obj/item/ammo_magazine/m95,
-/obj/item/ammo_magazine/m95,
-/obj/item/ammo_magazine/m95,
-/obj/item/ammo_magazine/m95,
-/obj/item/ammo_magazine/m95,
-/turf/simulated/floor/tiled/dark,
-/area/security/tactical)
 "hdl" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 1
@@ -17408,8 +17433,6 @@
 /obj/effect/floor_decal/corner/green/border{
 	dir = 1
 	},
-/obj/structure/table/rack/shelf/steel,
-/obj/random/projectile/shotgun,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "mWq" = (
@@ -19683,7 +19706,15 @@
 	dir = 1
 	},
 /obj/structure/table/rack/shelf/steel,
-/obj/random/projectile/shotgun,
+/obj/item/ammo_magazine/m9mmt/rubber,
+/obj/item/ammo_magazine/m9mmt/rubber,
+/obj/item/ammo_magazine/m9mmt/rubber,
+/obj/item/ammo_magazine/m9mmt/rubber,
+/obj/item/ammo_magazine/m9mmt/rubber,
+/obj/item/ammo_magazine/m9mmt/rubber,
+/obj/item/ammo_magazine/m9mmt/rubber,
+/obj/item/ammo_magazine/m9mmt/rubber,
+/obj/item/ammo_magazine/m9mmt/rubber,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "oKD" = (
@@ -22264,39 +22295,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/triumph/station/stairs_one)
 "qqE" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/item/storage/box/shotgunshells{
-	pixel_x = 6;
-	pixel_y = -1
-	},
-/obj/item/storage/box/shotgunshells{
-	pixel_x = 6;
-	pixel_y = -1
-	},
-/obj/item/storage/box/shotgunshells{
-	pixel_x = 6;
-	pixel_y = -1
-	},
-/obj/item/storage/box/shotgunshells{
-	pixel_x = 6;
-	pixel_y = -1
-	},
-/obj/item/ammo_magazine/m9mmt/rubber,
-/obj/item/ammo_magazine/m9mmt/rubber,
-/obj/item/ammo_magazine/m9mmt/rubber,
-/obj/item/ammo_magazine/m9mmt/rubber,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/storage/box/stunshells/large,
-/obj/item/storage/box/stunshells/large,
-/obj/item/storage/box/stunshells/large,
-/obj/item/storage/box/stunshells/large,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -22305,16 +22303,16 @@
 	name = "west bump";
 	pixel_x = -28
 	},
-/obj/item/ammo_magazine/m545saw,
-/obj/item/ammo_magazine/m545saw,
-/obj/item/ammo_magazine/m545saw/hunter,
-/obj/item/ammo_magazine/m545saw/hunter,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/green/border{
 	dir = 8
 	},
+/obj/structure/table/rack/shelf/steel,
+/obj/item/rig_module/mounted/egun,
+/obj/item/rig_module/armblade,
+/obj/item/rig/combat,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "qrP" = (
@@ -28638,15 +28636,15 @@
 /area/security/security_bathroom)
 "uYv" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/projectile/automatic/l6_saw,
-/obj/item/gun/projectile/automatic/battlerifle,
-/obj/item/gun/projectile/automatic/battlerifle,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 10
 	},
 /obj/effect/floor_decal/corner/green/border{
 	dir = 10
 	},
+/obj/item/rig_module/armblade,
+/obj/item/rig_module/mounted/egun,
+/obj/item/rig/combat,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "uYz" = (
@@ -30710,6 +30708,9 @@
 /obj/effect/floor_decal/corner/green/border{
 	dir = 4
 	},
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "wrw" = (
@@ -31580,17 +31581,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/HOS_quarters)
-"xcr" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/item/clothing/suit/armor/combat,
-/obj/item/clothing/head/helmet/combat,
-/obj/item/clothing/shoes/leg_guard/combat,
-/obj/item/clothing/gloves/arm_guard/combat,
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/dark,
-/area/security/tactical)
 "xcG" = (
 /obj/machinery/power/apc{
 	dir = 4;
@@ -32922,6 +32912,7 @@
 /obj/effect/floor_decal/corner/green/border{
 	dir = 8
 	},
+/obj/item/gun/projectile/shotgun/pump/USDF,
 /obj/item/gun/projectile/shotgun/pump/USDF,
 /obj/item/gun/projectile/shotgun/pump/USDF,
 /obj/item/gun/projectile/shotgun/pump/USDF,
@@ -46405,7 +46396,7 @@ dff
 ash
 oKw
 dnb
-hdf
+btx
 dnb
 blJ
 ash
@@ -46547,7 +46538,7 @@ dff
 ash
 bEi
 dnb
-xcr
+btx
 dnb
 eOC
 ash
