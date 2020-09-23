@@ -1,0 +1,26 @@
+"a" = (/turf/simulated/floor/outdoors/snow/frozen_world,/area/triumph_away/frozen_planet/ruins)
+"e" = (/obj/random/triumph/uncertain,/turf/simulated/floor/outdoors/snow/frozen_world,/area/triumph_away/frozen_planet/ruins)
+"m" = (/obj/effect/spider/stickyweb,/turf/simulated/floor/frozen_world,/area/triumph_away/frozen_planet/ruins)
+"n" = (/obj/random/mob/sif/hostile{mob_faction = "frozen"},/turf/simulated/floor/frozen_world,/area/triumph_away/frozen_planet/ruins)
+"s" = (/obj/effect/spider/cocoon,/obj/random/triumph/uncertain,/turf/simulated/floor/frozen_world,/area/triumph_away/frozen_planet/ruins)
+"t" = (/obj/effect/spider/stickyweb,/obj/structure/closet/crate/secure/loot,/turf/simulated/floor/outdoors/snow/frozen_world,/area/triumph_away/frozen_planet/ruins)
+"w" = (/obj/structure/flora/tree/pine,/turf/simulated/floor/outdoors/snow/frozen_world,/area/triumph_away/frozen_planet/ruins)
+"B" = (/turf/simulated/wall/frozen_world,/area/triumph_away/frozen_planet/ruins)
+"F" = (/turf/simulated/floor/frozen_world,/area/triumph_away/frozen_planet/ruins)
+"I" = (/obj/random/mob/sif/hostile{mob_faction = "frozen"},/turf/simulated/floor/outdoors/snow/frozen_world,/area/triumph_away/frozen_planet/ruins)
+"S" = (/obj/effect/spider/stickyweb,/turf/simulated/floor/outdoors/snow/frozen_world,/area/triumph_away/frozen_planet/ruins)
+
+(1,1,1) = {"
+aaawaaaaaaaa
+awaaaaaaawaa
+aaaaBaSBaaaw
+aawaBSaBaaaa
+aaBBBnFBBBaa
+aaSamsFetaaa
+aaImaansaSaa
+aaBBBFmBBBaa
+aaaaBnSBaaaa
+waaaBSSBaaaw
+aawaaaaaawaa
+aaaaaaaaaaaa
+"}

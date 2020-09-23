@@ -17,15 +17,6 @@
 		SPECIES_PLASMAMAN		= 'icons/mob/species/phoronoid/head.dmi'
 		)
 
-
-
-/obj/item/clothing/shoes/magboots/rig
-	sprite_sheets = list( SPECIES_ZADDAT = 'icons/mob/species/zaddat/shoes.dmi' ) //Unique override
-
-/obj/item/clothing/gloves/gauntlets/rig
-
-/obj/item/clothing/feet/shoes/space/rig
-
 /obj/item/clothing/head/helmet/space/rig
 	species_restricted = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_TAJ, SPECIES_UNATHI, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_PROMETHEAN, SPECIES_XENOHYBRID, SPECIES_VOX, SPECIES_TESHARI, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_ALRAUNE, SPECIES_ZADDAT, SPECIES_PLASMAMAN)
 

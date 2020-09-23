@@ -11,6 +11,10 @@
 	projectile_type = /obj/item/projectile/bullet/pistol/strong
 	var/chamber_offset = 0 //how many empty chambers in the cylinder until you hit a round
 
+/obj/item/gun/projectile/revolver/holy
+	name = "blessed revolver"
+	ammo_type = /obj/item/ammo_casing/a357/silver
+
 /obj/item/gun/projectile/revolver/verb/spin_cylinder()
 	set name = "Spin cylinder"
 	set desc = "Fun when you're bored out of your skull."
@@ -257,6 +261,12 @@ obj/item/gun/projectile/revolver/detective45/verb/rename_gun()
 		to_chat(user, "\The [src] has a secondary barrel loaded with \a [to_print]")
 	else
 		to_chat(user, "\The [src] has a secondary barrel that is empty.")
+		
+/obj/item/gun/projectile/revolver/lemat/holy
+	name = "Blessed LeMat Revolver"
+	ammo_type = /obj/item/ammo_casing/a38/silver
+	secondary_ammo_type = /obj/item/ammo_casing/a12g/silver
+	
 
 
 //Ported from Bay
@@ -270,6 +280,10 @@ obj/item/gun/projectile/revolver/detective45/verb/rename_gun()
 	handle_casings = CYCLE_CASINGS
 	max_shells = 6
 	ammo_type = /obj/item/ammo_casing/a44
+	
+/obj/item/gun/projectile/revolver/webley/holy
+	name = "blessed service revolver"
+	ammo_type = /obj/item/ammo_casing/a44/silver
 
 /obj/item/gun/projectile/revolver/webley/auto
 	name = "autorevolver"
@@ -290,3 +304,7 @@ obj/item/gun/projectile/revolver/detective45/verb/rename_gun()
 	handle_casings = CYCLE_CASINGS
 	max_shells = 6
 	ammo_type = /obj/item/ammo_casing/a44
+	
+/obj/item/gun/projectile/revolver/dirty_harry/holy
+	name = "Blessed Model 29"
+	ammo_type = /obj/item/ammo_casing/a44/silver

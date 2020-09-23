@@ -654,6 +654,9 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 /obj/structure/loot_pile/mecha/ripley/firefighter
 	icon_state = "firefighter-broken"
 
+/obj/structure/loot_pile/mecha/ripley/pirate
+	icon_state = "pirate-broken"
+
 /obj/structure/loot_pile/mecha/ripley/random_sprite
 	icon_states_to_use = list("ripley-broken", "firefighter-broken", "ripley-broken-old")
 

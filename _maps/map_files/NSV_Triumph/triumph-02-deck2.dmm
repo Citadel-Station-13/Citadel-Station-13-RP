@@ -6480,7 +6480,7 @@
 	name = "Engineering Fore Internal Access"
 	},
 /turf/simulated/floor/tiled,
-/area/quartermaster/miningdock)
+/area/triumph/surfacebase/mining_main/refinery)
 "tI" = (
 /obj/machinery/light/small/emergency/flicker{
 	dir = 4
@@ -13801,7 +13801,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
-/area/quartermaster/miningdock)
+/area/triumph/surfacebase/mining_main/refinery)
 "RA" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/machinery/fitness/punching_bag/clown,
@@ -25232,16 +25232,16 @@ ii
 ii
 wp
 wp
-ei
-ei
-ei
-ei
+wp
+wp
+wp
+wp
 tH
 Rz
-ei
-ei
-ei
-ei
+wp
+wp
+wp
+wp
 qI
 qI
 qI

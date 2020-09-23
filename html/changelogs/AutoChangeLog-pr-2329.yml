@@ -1,0 +1,5 @@
+author: "Max-023"
+delete-after: True
+changes: 
+  - rscadd: "Gonk emote"
+  - soundadd: "Gonk sound"

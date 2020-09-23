@@ -93,10 +93,6 @@
 			else
 				user.take_organ_damage(2*force)
 			return
-		if(..())
-			//playsound(src.loc, "swing_hit", 50, 1, -1)
-			return
-	else
 		var/old_damtype = damtype
 		var/old_attack_verb = attack_verb
 		var/old_force = force
@@ -108,3 +104,5 @@
 		damtype = old_damtype
 		attack_verb = old_attack_verb
 		force = old_force
+	else
+		return ..()

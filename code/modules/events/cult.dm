@@ -25,15 +25,15 @@
 
 /datum/event/cult/setup()
 	announceWhen = rand(announceWhen, announceWhen + 3)
-	startWhen = announceWhen - 1
-	endWhen = 10
+	startWhen = announceWhen
+	endWhen = 45
 
 /datum/event/cult/announce()
-	command_announcement.Announce("Attention [station_name()], unknown humanoid and non-humanoid entities are warping onto the ship! Advise immediate removal of these intruders before productivy aboard gets hindered!", "Screaming Signals Detected", new_sound = 'sound/effects/c_alarm.mp3')
+	command_announcement.Announce("Attention [station_name()], unknown humanoid and non-humanoid entities are warping onto the ships! Advise immediate removal of these intruders before productivy aboard gets hindered!", "Screaming Signals Detected", new_sound = sound('sound/effects/c_alarm.mp3',volume=20))
 
 
 /datum/event/cult/start()
-	location = rand(0,3)
+	location = rand(0,4)
 	switch(location)
 		if(LOC_LIBRARY)
 			spawn_area_type = /area/library

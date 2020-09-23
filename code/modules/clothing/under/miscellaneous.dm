@@ -1138,11 +1138,6 @@
 	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a dark grey base with red and yellow coloration."
 	icon_state = "bodysuit_security"
 
-/obj/item/clothing/under/bodysuit/bodysuitsecmed
-	name = "security medical bodysuit"
-	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a dark grey base with white plating an an eyecatching red trim."
-	icon_state = "bodysuit_secmed"
-
 /obj/item/clothing/under/bodysuit/bodysuitsecweewoo
 	name = "advanced security bodysuit"
 	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a dark grey base with red and yellow coloration. The flashing lights fill you with confidence."
@@ -1177,3 +1172,8 @@
 	name = "PARA tactical uniform"
 	desc = "A standard grey jumpsuit, emblazoned with the Icon of the PMD. Close inspection of the embroidery reveals a complex web of glyphs written in an unknown language."
 	icon_state = "para_ert_uniform"
+
+/obj/item/clothing/under/blueshortskirt
+	name = "Short Skirt"
+	desc = "A light blue sweater with a black skirt."
+	icon_state = "blueshortskirt_female"

@@ -57,6 +57,10 @@
 		jumpclothes[initial(jumps.name)] = jumps
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(jumpclothes, /proc/cmp_text_asc))
 
+/datum/gear/uniform/blueshortskirt
+	display_name = "Civilian Short Skirt"
+	path = /obj/item/clothing/under/blueshortskirt
+
 /datum/gear/uniform/skirt
 	display_name = "Civilian Skirts Selection"
 	path = /obj/item/clothing/under/skirt
@@ -450,11 +454,6 @@
 	display_name = "Civilian Outfit - Major Bill's"
 	path = /obj/item/clothing/under/mbill
 
-/datum/gear/uniform/pcrc
-	display_name = "Security Uniform - PCRC"
-	path = /obj/item/clothing/under/pcrc
-	allowed_roles = list("Security Officer","Head of Security","Warden")
-
 /datum/gear/uniform/brandsuit/grayson
 	display_name = "Civilian Outfit - Grayson"
 	path = /obj/item/clothing/under/grayson
@@ -788,11 +787,6 @@ datum/gear/uniform/bodysuitsec
 	display_name = "Security Bodysuit"
 	path = /obj/item/clothing/under/bodysuit/bodysuitsec
 	allowed_roles = list("Security Officer","Head of Security","Warden","Detective")
-
-datum/gear/uniform/bodysuitsecmed
-	display_name = "Security Medic Bodysuit"
-	path = /obj/item/clothing/under/bodysuit/bodysuitsecmed
-	allowed_roles = list("Security Officer","Head of Security","Medical Doctor")
 
 datum/gear/uniform/bodysuitseccom
 	display_name = "Security Command Bodysuit"
