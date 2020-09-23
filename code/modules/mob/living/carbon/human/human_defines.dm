@@ -25,6 +25,34 @@
 
 	var/skin_state = SKIN_NORMAL
 
+	//Start CitRP Edit - ears, tails, wings and custom species.
+	var/datum/sprite_accessory/ears/ear_style = null
+	var/r_ears = 30
+	var/g_ears = 30
+	var/b_ears = 30
+	var/r_ears2 = 30
+	var/g_ears2 = 30
+	var/b_ears2 = 30
+
+	var/datum/sprite_accessory/tail/tail_style = null
+	var/r_tail = 30
+	var/g_tail = 30
+	var/b_tail = 30
+	var/r_tail2 = 30
+	var/g_tail2 = 30
+	var/b_tail2 = 30
+
+	var/datum/sprite_accessory/wing/wing_style = null
+	var/r_wing = 30
+	var/g_wing = 30
+	var/b_wing = 30
+	var/r_wing2 = 30
+	var/g_wing2 = 30
+	var/b_wing2 = 30
+
+	var/custom_species
+	//End CitRP Edit
+
 	//Synth colors
 	var/synth_color	= 0					//Lets normally uncolorable synth parts be colorable.
 	var/r_synth							//Used with synth_color to color synth parts that normaly can't be colored.
