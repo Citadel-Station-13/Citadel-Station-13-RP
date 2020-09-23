@@ -25,7 +25,7 @@
 	var/blood_sprite_state
 
 	var/update_icon_define = null	// Only needed if you've got multiple files for the same type of clothing
-	var/recent_struggle = 0 //CitRP edit.
+	var/recent_struggle = 0
 
 //Updates the icons of the mob wearing the clothing item, if any.
 /obj/item/clothing/proc/update_clothing_icon()
@@ -91,7 +91,7 @@
 				. = check
 				break
 
-//CitRP Edit Start - micros in shoes
+//micros in shoes
 /obj/item/clothing/relaymove(var/mob/living/user,var/direction)
 	if(recent_struggle)
 		return
@@ -112,7 +112,6 @@
 	else
 		src.visible_message("<font color='red'>\The [src] moves a little!</font>")
 		to_chat(user, "<font color='red'>You throw yourself against the inside of \the [src]!</font>")
-//CitRP Edit End
 
 /obj/item/clothing/proc/refit_for_species(var/target_species)
 	if(!species_restricted)
@@ -164,7 +163,7 @@
 	slot_flags = SLOT_EARS
 	sprite_sheets = list(
 		SPECIES_TESHARI = 'icons/mob/species/teshari/ears.dmi',
-		SPECIES_WEREBEAST = 'icons/mob/species/werebeast/ears.dmi') //CitRP edit - add Werebeast.
+		SPECIES_WEREBEAST = 'icons/mob/species/werebeast/ears.dmi')
 
 /obj/item/clothing/ears/attack_hand(mob/user as mob)
 	if (!user) return
@@ -247,7 +246,7 @@
 	sprite_sheets = list(
 		SPECIES_TESHARI = 'icons/mob/species/teshari/gloves.dmi',
 		SPECIES_VOX = 'icons/mob/species/vox/gloves.dmi',
-		SPECIES_WEREBEAST = 'icons/mob/species/werebeast/hands.dmi') //CitRP edit - add Werebeast.
+		SPECIES_WEREBEAST = 'icons/mob/species/werebeast/hands.dmi')
 
 /obj/item/clothing/gloves/update_clothing_icon()
 	if (ismob(src.loc))
@@ -377,7 +376,7 @@
 	sprite_sheets = list(
 		SPECIES_TESHARI = 'icons/mob/species/teshari/head.dmi',
 		SPECIES_VOX = 'icons/mob/species/vox/head.dmi',
-		SPECIES_WEREBEAST = 'icons/mob/species/werebeast/head.dmi') //CitRP edit - adds werebeast.
+		SPECIES_WEREBEAST = 'icons/mob/species/werebeast/head.dmi')
 
 /obj/item/clothing/head/attack_self(mob/user)
 	if(brightness_on)
@@ -469,7 +468,7 @@
 //Mask
 /obj/item/clothing/mask
 	name = "mask"
-	icon = 'icons/obj/clothing/masks_vr.dmi' //CitRP Edit - custom species support.
+	icon = 'icons/obj/clothing/masks_vr.dmi' //custom species support.
 	item_icons = list(
 		slot_l_hand_str = 'icons/mob/items/lefthand_masks.dmi',
 		slot_r_hand_str = 'icons/mob/items/righthand_masks.dmi',
@@ -479,7 +478,7 @@
 	body_parts_covered = FACE|EYES
 	item_icons = list(
 		slot_wear_mask_str = 'icons/mob/mask_vr.dmi'
-		) //CitRP edit, custom species support.
+		) //custom species support.
 	blood_sprite_state = "maskblood"
 	sprite_sheets = list(
 		SPECIES_TESHARI		= 'icons/mob/species/teshari/masks_vr.dmi',
@@ -494,7 +493,7 @@
 		SPECIES_VULPKANIN 	= 'icons/mob/species/vulpkanin/mask.dmi',
 		SPECIES_XENOCHIMERA	= 'icons/mob/species/tajaran/mask_vr.dmi',
 		SPECIES_WEREBEAST	= 'icons/mob/species/werebeast/masks.dmi'
-		) //CitRP edit - custom species support.
+		) //custom species support.
 
 	var/voicechange = 0
 	var/list/say_messages
@@ -543,9 +542,9 @@
 	sprite_sheets = list(
 		SPECIES_TESHARI = 'icons/mob/species/teshari/shoes.dmi',
 		SPECIES_VOX = 'icons/mob/species/vox/shoes.dmi',
-		SPECIES_WEREBEAST = 'icons/mob/species/werebeast/feet.dmi') //CitRP edit - add Werebeast.
+		SPECIES_WEREBEAST = 'icons/mob/species/werebeast/feet.dmi')
 
-	//CitRP Edit - there's a snake in my boot
+	//there's a snake in my boot
 	var/list/inside_emotes = list()
 	var/recent_squish = 0
 
@@ -555,7 +554,7 @@
 		"<font color='red'>\The [name] are a ride you've got no choice but to participate in as the wearer moves.</font>",
 		"<font color='red'>The wearer of \the [name] moves, pressing down on you.</font>",
 		"<font color='red'>More motion while \the [name] move, feet pressing down against you.</font>"
-	) //CitRP Edit end.
+	)
 
 /obj/item/clothing/shoes/proc/draw_knife()
 	set name = "Draw Boot Knife"
@@ -602,9 +601,7 @@
 		user.visible_message("<span class='notice'>\The [user] shoves \the [I] into \the [src].</span>")
 		verbs |= /obj/item/clothing/shoes/proc/draw_knife
 		update_icon()
-
-	//CitRP Edit - MICROS IN MY SHOES
-	else if(istype(I,/obj/item/holder/micro))
+	else if(istype(I,/obj/item/holder/micro)) //MICROS IN MY SHOES
 		var/full = 0
 		for(var/mob/M in src)
 			full++
@@ -616,19 +613,16 @@
 				to_chat(holder.held_mob,"<span class='warning'>[user] stuffs you into \the [src]!</span>")
 				holder.held_mob.forceMove(src)
 				to_chat(user,"<span class='notice'>You stuff \the [holder.held_mob] into \the [src]!</span>")
-	//CitRP Edit end.
 	else
 		return ..()
 
-//CitRP Edit - gtfo my shoe
-/obj/item/clothing/shoes/attack_self(var/mob/user)
+/obj/item/clothing/shoes/attack_self(var/mob/user) //gtfo my shoe
 	for(var/mob/M in src)
 		M.forceMove(get_turf(user))
 		to_chat(M,"<span class='warning'>[user] shakes you out of \the [src]!</span>")
 		to_chat(user,"<span class='notice'>You shake [M] out of \the [src]!</span>")
 
 	..()
-//CitRP Edit
 
 /obj/item/clothing/shoes/verb/toggle_layer()
 	set name = "Switch Shoe Layer"
@@ -694,16 +688,16 @@
 	w_class = ITEMSIZE_NORMAL
 	preserve_item = 1
 
-	var/taurized = FALSE //CitRP edit for taurized suits. Easier than trying to 'compare icons' to see if it's a taur suit
+	var/taurized = FALSE //Easier than trying to 'compare icons' to see if it's a taur suit
 	sprite_sheets = list(
 		SPECIES_TESHARI = 'icons/mob/species/teshari/suit.dmi',
 		SPECIES_VOX = 'icons/mob/species/vox/suit.dmi',
-		SPECIES_WEREBEAST = 'icons/mob/species/werebeast/suit.dmi') //CitRP edit - adds Werebeast.
+		SPECIES_WEREBEAST = 'icons/mob/species/werebeast/suit.dmi')
 
 	valid_accessory_slots = (ACCESSORY_SLOT_OVER | ACCESSORY_SLOT_ARMBAND)
 	restricted_accessory_slots = (ACCESSORY_SLOT_ARMBAND)
 
-//CitRP Edit start - taurized suits
+//taurized suit support
 /obj/item/clothing/suit/equipped(var/mob/user, var/slot)
 	var/normalize = TRUE
 
@@ -738,7 +732,6 @@
 			standing.add_overlay(I)
 	else
 		return ..()
-//CitRP Edit end.
 
 /obj/item/clothing/suit/update_clothing_icon()
 	if (ismob(src.loc))
@@ -763,7 +756,7 @@
 	blood_sprite_state = "uniformblood"
 
 	var/has_sensor = 1 //For the crew computer 2 = unable to change mode
-	//CitRP edit start - TFF 5/8/19 - sets Vorestation /obj/item/clothing/under sensor setting default?
+	//TFF 5/8/19 - sets /obj/item/clothing/under sensor setting default?
 	var/sensor_mode = 3
 		/*
 		1 = Report living/dead
@@ -771,14 +764,13 @@
 		3 = Report location
 		*/
 	var/sensorpref = 5
-	//CitRP edit end
 	var/displays_id = 1
 	var/rolled_down = -1 //0 = unrolled, 1 = rolled, -1 = cannot be toggled
 	var/rolled_sleeves = -1 //0 = unrolled, 1 = rolled, -1 = cannot be toggled
 	sprite_sheets = list(
 		SPECIES_TESHARI = 'icons/mob/species/teshari/uniform.dmi',
 		SPECIES_VOX = 'icons/mob/species/vox/uniform.dmi',
-		SPECIES_WEREBEAST = 'icons/mob/species/werebeast/uniform.dmi') //CitRP edit - add werebeast.
+		SPECIES_WEREBEAST = 'icons/mob/species/werebeast/uniform.dmi')
 
 	//convenience var for defining the icon state for the overlay used when the clothing is worn.
 	//Also used by rolling/unrolling.
@@ -809,7 +801,7 @@
 		return
 	..()
 
-/obj/item/clothing/under/New(var/mob/living/carbon/human/H) //CitRP edit -- need human arg.
+/obj/item/clothing/under/New(var/mob/living/carbon/human/H) //need human arg for sensorprefs..
 	..()
 	if(worn_state)
 		if(!item_state_slots)
@@ -828,7 +820,7 @@
 	if(rolled_sleeves == -1)
 		verbs -= /obj/item/clothing/under/verb/rollsleeves
 
-	//CitRP edit start - TFF 5/8/19 - define numbers and specifics for suit sensor settings
+	//TFF 5/8/19 - define numbers and specifics for suit sensor settings
 	sensorpref = isnull(H) ? 1 : (ishuman(H) ? H.sensorpref : 1)
 	switch(sensorpref)
 		if(1) sensor_mode = 0				//Sensors off
@@ -839,7 +831,6 @@
 		else
 			sensor_mode = pick(0,1,2,3)
 			log_debug("Invalid switch for suit sensors, defaulting to random. [sensorpref] chosen")
-	//CitRP edit end
 
 /obj/item/clothing/under/proc/update_rolldown_status()
 	var/mob/living/carbon/human/H

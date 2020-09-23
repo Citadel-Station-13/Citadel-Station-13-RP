@@ -1391,7 +1391,6 @@ GLOBAL_DATUM_INIT(dummySave, /savefile, new("tmp/dummySave.sav")) //Cache of ico
 	var/icon/this_icon = getFlatIcon(A, defdir=dir)
 	usr << ftp(this_icon,"[A.name].png")
 
-//CitRP edit start.
 /*
  * * Accurate - Use more accurate color averaging, usually has better results and prevents muddied or overly dark colors. Mad thanks to wwjnc.
  * * ignoreGreyscale - Excempts greyscale colors from the color list, useful for filtering outlines or plate overlays.
@@ -1439,4 +1438,3 @@ GLOBAL_DATUM_INIT(dummySave, /savefile, new("tmp/dummySave.sav")) //Cache of ico
 			if (I.GetPixel(x_pixel, y_pixel))
 				return y_pixel - 1
 	return null
-//CitRP edit end.

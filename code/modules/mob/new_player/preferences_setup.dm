@@ -267,7 +267,7 @@
 
 	preview_icon.Scale(preview_icon.Width() * 2, preview_icon.Height() * 2) // Scaling here to prevent blurring in the browser.
 
-//CitRP edit start - taur support & sensor setting in prefs.
+//Taur support & sensor setting in prefs.
 /datum/preferences/update_preview_icon() // Lines up and un-overlaps character edit previews. Also un-splits taurs.
 	var/mob/living/carbon/human/dummy/mannequin/mannequin = get_mannequin(client_ckey)
 	mannequin.delete_inventory(TRUE)
@@ -297,4 +297,3 @@
 //TFF 5/8/19 - add randomised sensor setting for random button clicking
 /datum/preferences/randomize_appearance_and_body_for(var/mob/living/carbon/human/H)
 	sensorpref = rand(1,5)
-//CitRP edit end.

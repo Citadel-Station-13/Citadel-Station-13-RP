@@ -140,10 +140,8 @@ datum/preferences
 
 	var/lastnews // Hash of last seen lobby news content.
 
-	//CitRP Edit start - suit sensor prefs & character directory visibility
 	var/show_in_directory = 1	//TFF 5/8/19 - show in Character Directory
 	var/sensorpref = 5			//TFF 5/8/19 - set character's suit sensor level
-	//CitRP Edit end
 
 /datum/preferences/New(client/C)
 	player_setup = new(src)
@@ -382,7 +380,7 @@ datum/preferences
 	panel.set_content(dat)
 	panel.open()
 
-//CitRP Edit start - Vore noises.
+//Vore noises.
 /client/verb/toggle_eating_noises()
 	set name = "Eating Noises"
 	set category = "Vore"
@@ -413,4 +411,3 @@ datum/preferences
 	SScharacter_setup.queue_preferences_save(prefs)
 
 	feedback_add_details("admin_verb","TDigestNoise") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-//CitRP Edit end.
