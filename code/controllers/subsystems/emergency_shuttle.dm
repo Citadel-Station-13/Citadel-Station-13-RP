@@ -95,7 +95,7 @@ SUBSYSTEM_DEF(emergencyshuttle)
 		if(istype(A, /area/hallway))
 			A.readyalert()
 
-	atc.reroute_traffic(yes = 1)
+	GLOB.lore_atc.reroute_traffic(TRUE)
 
 //calls the shuttle for a routine crew transfer
 /datum/controller/subsystem/emergencyshuttle/proc/call_transfer()
@@ -111,7 +111,7 @@ SUBSYSTEM_DEF(emergencyshuttle)
 	var/estimated_time = round(estimate_arrival_time()/60,1)
 
 	priority_announcement.Announce(replacetext(replacetext(GLOB.using_map.shuttle_called_message, "%dock_name%", "[GLOB.using_map.dock_name]"),  "%ETA%", "[estimated_time] minute\s"))
-	atc.shift_ending()
+	GLOB.lore_atc.shift_ending()
 
 //recalls the shuttle
 /datum/controller/subsystem/emergencyshuttle/proc/recall()
