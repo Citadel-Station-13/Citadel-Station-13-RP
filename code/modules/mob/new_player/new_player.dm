@@ -611,8 +611,7 @@
 /mob/new_player/MayRespawn()
 	return 1
 
-//CitRP edit start - custom spawn checks.
-/mob/new_player/proc/spawn_checks_vr()
+/mob/new_player/proc/spawn_checks_vr() //Custom spawn checks.
 	var/pass = TRUE
 
 	//No Flavor Text
@@ -676,4 +675,3 @@
 		spawn()
 			alert(src,"There were problems with spawning your character. Check your message log for details.","Error","OK")
 	return pass
-//CitRP edit end.

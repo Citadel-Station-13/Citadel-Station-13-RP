@@ -1101,8 +1101,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 		overlays_standing[SURGERY_LAYER] = total
 		apply_layer(SURGERY_LAYER)
 
-//CitRP edit start - redbull gives you wings
-/mob/living/carbon/human/proc/get_wing_image()
+/mob/living/carbon/human/proc/get_wing_image() //redbull gives you wings
 	if(QDESTROYING(src))
 		return
 
@@ -1134,8 +1133,6 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 /mob/living/carbon/human/stop_flying()
 	if((. = ..()))
 		update_wing_showing()
-//CitRP edit end
-
 
 //Human Overlays Indexes/////////
 #undef MUTATIONS_LAYER

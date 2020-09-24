@@ -324,7 +324,6 @@ var/list/wrapped_species_by_ref = list()
 	update_icons_body()
 	update_eyes()
 
-//CitRP edit start.
 /mob/living/carbon/human/proc/shapeshifter_select_ears()
 	set name = "Select Ears"
 	set category = "Abilities"
