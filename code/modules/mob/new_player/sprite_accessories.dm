@@ -45,10 +45,9 @@
 /datum/sprite_accessory/hair
 	icon = 'icons/mob/human_face_m.dmi'	  // default icon for all hairs
 	var/icon_add = 'icons/mob/human_face.dmi'
-	//CitRP edit start - enhanded colours and hair for all
+	//Enhanced colours and hair for all
 	var/color_blend_mode = ICON_MULTIPLY
 	species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST, SPECIES_SHADEKIN) //This lets all races use the default hairstyles.
-	//CitRP edit end
 	var/flags
 
 	eighties
@@ -72,7 +71,7 @@
 		icon_state = "hair_ahoge"
 		icon_add = null
 
-	bald //CitRP edit - everyone goes BALD
+	bald //Everyone goes bald.
 		name = "Bald"
 		icon_state = "bald"
 		gender = MALE
@@ -170,7 +169,7 @@
 		icon_state = "hair_shortbraid"
 		flags = HAIR_TIEABLE
 
-	braid //CitRP edit.
+	braid
 		name = "Floorlength Braid"
 		icon = 'icons/mob/human_face_vr.dmi'
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
@@ -569,7 +568,7 @@
 		icon_state = "hair_ponytail6"
 		flags = HAIR_TIEABLE|HAIR_VERY_SHORT
 
-	ponytail6_fixed //CitRP edit - Eggnerd's done with waiting for upstream fixes lmao.
+	ponytail6_fixed //Eggnerd's done with waiting for upstream fixes lmao.
 		name = "Ponytail 6 but fixed"
 		icon = 'icons/mob/human_face_vr.dmi'
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
@@ -920,7 +919,6 @@
 		name = "Vivi"
 		icon_state = "hair_vivi"
 
-	//CitRP edit begin.
 	astolfo
 		name = "Astolfo"
 		icon = 'icons/mob/human_face_vr.dmi'
@@ -967,8 +965,6 @@
 		color_blend_mode = ICON_MULTIPLY
 		do_colouration = 1
 
-	//CitRP edit end.
-
 /*
 ///////////////////////////////////
 /  =---------------------------=  /
@@ -978,7 +974,6 @@
 */
 
 /datum/sprite_accessory/facial_hair
-	//CitRP edit begin.
 	icon = 'icons/mob/human_face_or_vr.dmi'
 	var/color_blend_mode = ICON_MULTIPLY
 	species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST) //This lets all races use the facial hair styles.
@@ -1058,7 +1053,6 @@
 		icon_state = "vulp_facial_swift"
 		species_allowed = list(SPECIES_VULPKANIN)
 		gender = NEUTER
-	//CitRP edit end.
 
 	watson
 		name = "Watson Mustache"
@@ -1099,7 +1093,7 @@
 	elvis
 		name = "Elvis Sideburns"
 		icon_state = "facial_elvis"
-		//CitRP edit. Fuck it, everyone is Elvis. species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_HUMAN_VATBORN,SPECIES_UNATHI)
+		//Fuck it, everyone is Elvis. species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_HUMAN_VATBORN,SPECIES_UNATHI)
 
 	abe
 		name = "Abraham Lincoln Beard"
@@ -1193,7 +1187,7 @@
 */
 
 /datum/sprite_accessory/hair
-	//CitRP edit start - Unathi stuff)
+	//Unathi stuff
 	una_hood
 		name = "Cobra Hood"
 		icon = 'icons/mob/human_face_vr.dmi'
@@ -1450,21 +1444,25 @@
 	teshari_twies
 		name = "Teshari Twies"
 		icon_state = "teshari_twies"
+		icon_add = 'icons/mob/human_face_vr_add.dmi'
 		species_allowed = list(SPECIES_TESHARI)
 
 	teshari_backstrafe
 		name = "Teshari Backstrafe"
 		icon_state = "teshari_backstrafe"
+		icon_add = 'icons/mob/human_face_vr_add.dmi'
 		species_allowed = list(SPECIES_TESHARI)
 
 	teshari_longway
 		name = "Teshari Long way"
 		icon_state = "teshari_longway"
+		icon_add = 'icons/mob/human_face_vr_add.dmi'
 		species_allowed = list(SPECIES_TESHARI)
 
 	teshari_tree
 		name = "Teshari Tree"
 		icon_state = "teshari_tree"
+		icon_add = 'icons/mob/human_face_vr_add.dmi'
 		species_allowed = list(SPECIES_TESHARI)
 
 	teshari_fluffymohawk
@@ -1473,7 +1471,6 @@
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
 		icon_state = "teshari_fluffymohawk"
 		species_allowed = list(SPECIES_TESHARI)
-//CitRP edit end.
 
 // Vox things
 	vox_braid_long
@@ -1561,7 +1558,6 @@
 		icon_state = "vox_pony"
 		species_allowed = list(SPECIES_VOX)
 
-//CitRP edit start.
 //Cheesewedge things
 	sergal_plain
 		name = "Sergal Plain"
@@ -1784,7 +1780,6 @@
 		ckeys_allowed = list("verysoft")
 		species_allowed = list(SPECIES_SHADEKIN)
 		gender = NEUTER
-//CitRP edit end.
 
 /datum/sprite_accessory/facial_hair
 
@@ -1903,7 +1898,7 @@
 /datum/sprite_accessory/marking
 	icon = 'icons/mob/human_races/markings.dmi'
 	do_colouration = 1 //Almost all of them have it, COLOR_ADD
-	var/color_blend_mode = ICON_ADD //CitRP edit.
+	var/color_blend_mode = ICON_ADD
 
 	//Empty list is unrestricted. Should only restrict the ones that make NO SENSE on other species,
 	//like Tajaran inner-ear coloring overlay stuff.
@@ -2140,7 +2135,6 @@
 		body_parts = list(BP_HEAD,BP_L_HAND,BP_R_HAND,BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM)
 		species_allowed = list(SPECIES_VOX)
 
-//CitRP edit start.
 /datum/sprite_accessory/marking/vr
 	icon = 'icons/mob/human_races/markings_vr.dmi'
 
@@ -2750,7 +2744,6 @@
 		color_blend_mode = ICON_MULTIPLY
 		body_parts = list(BP_L_LEG,BP_R_LEG,BP_L_HAND,BP_R_HAND,BP_TORSO,BP_GROIN,BP_HEAD)
 		species_allowed = list(SPECIES_TESHARI)
-//CitRP edit end.
 
 //skin styles - WIP
 //going to have to re-integrate this with surgery
