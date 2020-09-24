@@ -45,15 +45,19 @@
 
 // This one's pretty dumb, but pirates are dumb anyways and it makes for a good test.
 /datum/say_list/pirate
-	speak = list("Yarr!")
-
+	speak = list("Yarr!",
+				"Yohoho and a bottle of rum...",
+				"Getting tired of hardtack.",
+				"What do you do with a drunken sailor...",
+				"One day, we'll get that big score.",
+				"They ain't catching this pirate, no siree.")
 	say_understood = list("Alright, matey.")
 	say_cannot = list("No, matey.")
-	say_maybe_target = list("Eh?")
-	say_got_target = list("Yarrrr!")
+	say_maybe_target = list("Eh?", "Who goes there?")
+	say_got_target = list("Yarrrr!", "Just drop your loot and run.")
 	say_threaten = list("You best leave, this booty is mine.", "No plank to walk on, just walk away.")
-	say_stand_down = list("Good.")
-	say_escalate = list("Yarr! The booty is mine!")
+	say_stand_down = list("Good.", "That's right, run, you lilly livers.")
+	say_escalate = list("Yarr! That booty is mine!", "Going to gut you, landlubber.")
 	threaten_sound = 'sound/weapons/TargetOn.ogg'
 	stand_down_sound = 'sound/weapons/TargetOff.ogg'
 
@@ -151,6 +155,7 @@
 	say_threaten = list("Gets out of heres!")
 	say_stand_down = list("Yaya, runs!", "Kikikiki!")
 	say_escalate = list("Skrek!", "Bringings it!", "Takings shot", "Lock claws!")
+	
 
 	//Synth Horror Saylist
 

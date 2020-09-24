@@ -293,6 +293,10 @@
 /atom/movable/proc/lava_act()
 	fire_act(null, 10000, 1000)
 
+//Called when touching an acid pool.
+/atom/movable/proc/acid_act()
+	acid_act(null, 5000, 500)
+
 /**
   * Sets our movement type.
   */
