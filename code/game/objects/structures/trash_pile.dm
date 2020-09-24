@@ -218,8 +218,7 @@
 	return I
 
 /obj/structure/trash_pile/proc/produce_beta_item()
-	var/path = pick(prob(10);/obj/item/disk/nifsoft/compliance, //Citadel Override probability, 3.6%
-					prob(6);/obj/item/storage/pill_bottle/tramadol,
+	var/path = pick(prob(6);/obj/item/storage/pill_bottle/tramadol,
 					prob(4);/obj/item/storage/pill_bottle/happy,
 					prob(4);/obj/item/storage/pill_bottle/zoom,
 					prob(4);/obj/item/gun/energy/sizegun,
@@ -233,21 +232,18 @@
 					prob(2);/obj/item/storage/pill_bottle/antitox,
 					prob(2);/obj/item/storage/pill_bottle/kelotane,
 					prob(2);/obj/item/handcuffs/fuzzy,
-				//	prob(2);/obj/item/legcuffs,
 					prob(2);/obj/item/storage/box/syndie_kit/spy,
 					prob(2);/obj/item/grenade/anti_photon,
-					prob(2);/obj/item/nif/bad, //Citadel Override probability, 0.7%
-					prob(2);/obj/item/bodysnatcher, //Citadel Override probability, 0.7%
+					prob(1);/obj/item/nif/bad,
 					prob(1);/obj/item/clothing/suit/storage/vest/heavy/merc,
-					prob(1);/obj/item/clothing/head/helmet/medieval/crusader, //Citadel Addition
-					prob(1);/obj/item/clothing/suit/armor/medieval/crusader/dark, //Citadel Addition
-				//	prob(1);/obj/item/nif/bad, // VORECode default probability, 0.2%
+					prob(1);/obj/item/clothing/head/helmet/medieval/crusader,
+					prob(1);/obj/item/clothing/suit/armor/medieval/crusader/dark,
 					prob(1);/obj/item/radio_jammer,
 					prob(1);/obj/item/sleevemate,
-				//	prob(1);/obj/item/bodysnatcher, //VORECode default probability, 0.2%
+					prob(1);/obj/item/bodysnatcher,
 					prob(1);/obj/item/beartrap,
 					prob(1);/obj/item/cell/hyper/empty,
-				//	prob(1);/obj/item/disk/nifsoft/compliance, //VORECode default probability, 0.2%
+					prob(1);/obj/item/disk/nifsoft/compliance,
 					prob(1);/obj/item/material/knife/tacknife,
 					prob(1);/obj/item/clothing/accessory/storage/brown_vest,
 					prob(1);/obj/item/clothing/accessory/storage/black_vest,

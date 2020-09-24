@@ -25,6 +25,7 @@
 	name = "advanced modular lens"
 	desc = "An advanced metamaterial lens that focuses beams more accurately."
 	accuracy = 15 //1 tile closer
+	scatter = FALSE
 
 /obj/item/modularlaser/lens/super
 	name = "metamaterial modular lens"

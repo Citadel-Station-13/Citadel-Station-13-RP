@@ -1,0 +1,27 @@
+"a" = (/turf/simulated/floor/outdoors/snow/frozen_world,/area/triumph_away/frozen_planet/ruins)
+"j" = (/turf/simulated/floor/frozen_world,/area/triumph_away/frozen_planet/ruins)
+"m" = (/turf/simulated/wall/frozen_world,/area/triumph_away/frozen_planet/ruins)
+"z" = (/obj/structure/fireplace{pixel_y = 19},/turf/simulated/floor/frozen_world,/area/triumph_away/frozen_planet/ruins)
+"F" = (/obj/random/mob/robotic/hivebot{mob_faction = "frozen"},/turf/simulated/floor/frozen_world,/area/triumph_away/frozen_planet/ruins)
+"L" = (/obj/structure/table/gamblingtable,/obj/random/triumph/uncertain,/turf/simulated/floor/carpet/purcarpet,/area/triumph_away/frozen_planet/ruins)
+"M" = (/obj/structure/flora/tree/pine,/turf/simulated/floor/outdoors/snow/frozen_world,/area/triumph_away/frozen_planet/ruins)
+"N" = (/obj/structure/closet/crate/secure/loot,/turf/simulated/floor/wood/frozen_world,/area/triumph_away/frozen_planet/ruins)
+"O" = (/obj/structure/bed,/turf/simulated/floor/carpet/purcarpet,/area/triumph_away/frozen_planet/ruins)
+"Q" = (/obj/random/mob/robotic/hivebot{mob_faction = "frozen"},/turf/simulated/floor/outdoors/snow/frozen_world,/area/triumph_away/frozen_planet/ruins)
+"S" = (/turf/simulated/floor/carpet/purcarpet,/area/triumph_away/frozen_planet/ruins)
+"W" = (/turf/simulated/floor/wood/frozen_world,/area/triumph_away/frozen_planet/ruins)
+
+(1,1,1) = {"
+aaaaaaaaaaaa
+aMaaMaaMaMaM
+aaaaaMaaaQaa
+aaMmmmmmmaaa
+aQamzWSOmaMa
+aaamWjSLmaaa
+MaamNFjWmaaa
+aaammjammaaa
+aaMamaamaaMa
+aaaaaaamaMaa
+aMaMmaaaaQaa
+aaaMaaaaaaaM
+"}

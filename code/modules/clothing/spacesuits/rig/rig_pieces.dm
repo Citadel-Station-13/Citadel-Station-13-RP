@@ -45,8 +45,11 @@
 	gender = PLURAL
 	icon_base = null
 	sprite_sheets = list(
+		SPECIES_TESHARI = 'icons/mob/species/teshari/shoes.dmi',
+		SPECIES_VOX = 'icons/mob/species/vox/shoes.dmi',
+		SPECIES_WEREBEAST = 'icons/mob/species/werebeast/feet.dmi',
 		SPECIES_ZADDAT = 'icons/mob/species/zaddat/shoes.dmi'
-		) //Zaddat Engi RIG appearance is unique
+		) //Zaddat Engi RIG appearance is unique. List inherited from code\modules\clothing\clothing_vr.dm.
 
 	force = 5 // if you're kicking someone with something meant to keep you locked on a hunk of metal...
 

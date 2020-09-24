@@ -215,3 +215,25 @@
 
 /obj/item/pen/crayon/marker/New()
 	name = "[colourName] marker"
+
+//Ritual Chalk
+/obj/item/pen/crayon/chalk
+	name = "chalk"
+	desc = "A dusty stick of chalk. We accept no liability for any accidental summonings."
+	icon = 'icons/obj/crayons.dmi'
+	icon_state = "chalkwhite"
+	w_class = ITEMSIZE_TINY
+	attack_verb = list("attacked", "coloured")
+	colour = "#FFFFFF" //RGB
+	shadeColour = "#000000" //RGB
+	uses = 66 //0 for unlimited uses
+	instant = 0
+	colourName = "white" //for updateIcon purposes
+
+/obj/item/pen/crayon/chalk/suicide_act(mob/user)
+	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+	viewers(user) << "<font color='red'><b>[user] is jamming the [src.name] up [TU.his] nose and into [TU.his] brain. It looks like [TU.he] [TU.is] trying to perform human transmutation!</b></font>"
+	return (BRUTELOSS|OXYLOSS)
+
+/obj/item/pen/crayon/chalk/New()
+	name = "[colourName] chalk"
