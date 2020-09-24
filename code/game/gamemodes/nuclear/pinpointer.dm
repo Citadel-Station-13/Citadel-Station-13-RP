@@ -13,40 +13,41 @@
 	var/active = 0
 
 
-	attack_self()
-		if(!active)
-			active = 1
-			workdisk()
-			to_chat(usr, "<span class='notice'>You activate the pinpointer</span>")
-		else
-			active = 0
-			icon_state = "pinoff"
-			to_chat(usr, "<span>You deactivate the pinpointer</span>")
+/obj/item/pinpointer/attack_self()
+	if(!active)
+		active = 1
+		workdisk()
+		to_chat(usr, "<span class='notice'>You activate the pinpointer</span>")
+	else
+		active = 0
+		icon_state = "pinoff"
+		to_chat(usr, "<span>You deactivate the pinpointer</span>")
 
-	proc/workdisk()
-		if(!active) return
+/obj/item/pinpointer/proc/workdisk()
+	if(!active)
+		return
+	if(!the_disk)
+		the_disk = locate()
 		if(!the_disk)
-			the_disk = locate()
-			if(!the_disk)
-				icon_state = "pinonnull"
-				return
-		setDir(get_dir(src,the_disk))
-		switch(get_dist(src,the_disk))
-			if(0)
-				icon_state = "pinondirect"
-			if(1 to 8)
-				icon_state = "pinonclose"
-			if(9 to 16)
-				icon_state = "pinonmedium"
-			if(16 to INFINITY)
-				icon_state = "pinonfar"
-		spawn(5) .()
+			icon_state = "pinonnull"
+			return
+	setDir(get_dir(src,the_disk))
+	switch(get_dist(src,the_disk))
+		if(0)
+			icon_state = "pinondirect"
+		if(1 to 8)
+			icon_state = "pinonclose"
+		if(9 to 16)
+			icon_state = "pinonmedium"
+		if(16 to INFINITY)
+			icon_state = "pinonfar"
+	spawn(5) .()
 
-	examine(mob/user)
-		..(user)
-		for(var/obj/machinery/nuclearbomb/bomb in machines)
-			if(bomb.timing)
-				to_chat(user, "Extreme danger.  Arming signal detected.   Time remaining: [bomb.timeleft]")
+/obj/item/pinpointer/examine(mob/user)
+	. = ..()
+	for(var/obj/machinery/nuclearbomb/bomb in machines)
+		if(bomb.timing)
+			. += "<span class = 'danger'>Extreme danger.  Arming signal detected.   Time remaining: [bomb.timeleft]</span>"
 
 /obj/item/pinpointer/Destroy()
 	active = 0
@@ -60,58 +61,56 @@
 	var/turf/location = null
 	var/obj/target = null
 
-	attack_self()
-		if(!active)
-			active = 1
-			if(mode == 0)
-				workdisk()
-			if(mode == 1)
-				worklocation()
-			if(mode == 2)
-				workobj()
-			to_chat(usr, "<span class='notice'>You activate the pinpointer</span>")
-		else
-			active = 0
-			icon_state = "pinoff"
-			to_chat(usr, "<span class='notice'>You deactivate the pinpointer</span>")
+/obj/item/pinpointer/advpinpointer/attack_self()
+	if(!active)
+		active = 1
+		if(mode == 0)
+			workdisk()
+		if(mode == 1)
+			worklocation()
+		if(mode == 2)
+			workobj()
+		to_chat(usr, "<span class='notice'>You activate the pinpointer</span>")
+	else
+		active = 0
+		icon_state = "pinoff"
+		to_chat(usr, "<span class='notice'>You deactivate the pinpointer</span>")
 
+/obj/item/pinpointer/advpinpointer/proc/worklocation()
+	if(!active)
+		return
+	if(!location)
+		icon_state = "pinonnull"
+		return
+	setDir(get_dir(src,location))
+	switch(get_dist(src,location))
+		if(0)
+			icon_state = "pinondirect"
+		if(1 to 8)
+			icon_state = "pinonclose"
+		if(9 to 16)
+			icon_state = "pinonmedium"
+		if(16 to INFINITY)
+			icon_state = "pinonfar"
+	spawn(5) .()
 
-	proc/worklocation()
-		if(!active)
-			return
-		if(!location)
-			icon_state = "pinonnull"
-			return
-		setDir(get_dir(src,location))
-		switch(get_dist(src,location))
-			if(0)
-				icon_state = "pinondirect"
-			if(1 to 8)
-				icon_state = "pinonclose"
-			if(9 to 16)
-				icon_state = "pinonmedium"
-			if(16 to INFINITY)
-				icon_state = "pinonfar"
-		spawn(5) .()
-
-
-	proc/workobj()
-		if(!active)
-			return
-		if(!target)
-			icon_state = "pinonnull"
-			return
-		setDir(get_dir(src,target))
-		switch(get_dist(src,target))
-			if(0)
-				icon_state = "pinondirect"
-			if(1 to 8)
-				icon_state = "pinonclose"
-			if(9 to 16)
-				icon_state = "pinonmedium"
-			if(16 to INFINITY)
-				icon_state = "pinonfar"
-		spawn(5) .()
+/obj/item/pinpointer/advpinpointer/proc/workobj()
+	if(!active)
+		return
+	if(!target)
+		icon_state = "pinonnull"
+		return
+	setDir(get_dir(src,target))
+	switch(get_dist(src,target))
+		if(0)
+			icon_state = "pinondirect"
+		if(1 to 8)
+			icon_state = "pinonclose"
+		if(9 to 16)
+			icon_state = "pinonmedium"
+		if(16 to INFINITY)
+			icon_state = "pinonfar"
+	spawn(5) .()
 
 /obj/item/pinpointer/advpinpointer/verb/toggle_mode()
 	set category = "Object"
