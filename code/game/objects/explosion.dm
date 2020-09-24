@@ -30,14 +30,13 @@ proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impa
 		// 3/7/14 will calculate to 80 + 35
 		var/far_dist = 0
 		far_dist += heavy_impact_range * 15
-		far_dist += devastation_range * 20
+		far_dist += devastation_range * 10
 		var/frequency = get_rand_frequency()
 		var/creaking_explosion = FALSE
 		var/on_station = SSmapping.level_trait(epicenter.z, MAP_LEVEL_STATION)
 		if(prob(devastation_range*30+heavy_impact_range*5) && on_station) // Huge explosions are near guaranteed to make the station creak and whine, smaller ones might.
 			creaking_explosion = TRUE // prob over 100 always returns true
 		var/far_volume = clamp(far_dist, 30, 50) // Volume is based on explosion size and dist
-		var/close = range(world.view+round(devastation_range,1), epicenter)
 		for(var/mob/M in player_list)
 			var/turf/M_turf = get_turf(M)
 			var/dist = get_dist(M_turf, epicenter)
@@ -52,18 +51,21 @@ proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impa
 					else
 						M.playsound_local(epicenter, 'sound/effects/explosionfar.ogg', far_volume, 1, frequency, falloff = 2)
 
-
-				else if(!(M in close))
+				var/close = range(world.view+round(devastation_range,1), epicenter)
+				if(!(M in close))
 					// check if the mob can hear
 					if(M.ear_deaf <= 0 || !M.ear_deaf)
 						if(!istype(M.loc,/turf/space))
 							if(creaking_explosion)
-								M.playsound_local(epicenter, list('sound/effects/explosioncreak1.ogg','sound/effects/explosioncreak2.ogg'), far_volume, 1, frequency, falloff = 2)
+								if(prob(50))
+									M << 'sound/effects/explosioncreak1.ogg'
+								else
+									M << 'sound/effects/explosioncreak2.ogg'
 							else
 								M << 'sound/effects/explosionfar.ogg'
 
 			if(creaking_explosion)
-				addtimer(CALLBACK(M, /mob/proc/playsound_local, epicenter, null, rand(25, 40), 1, frequency, null, null, FALSE, list('sound/effects/creak1.ogg','sound/effects/creak2.ogg','sound/effects/creak3.ogg'), null, null, null, null, 0), 5 SECONDS)
+				addtimer(CALLBACK(M, /mob/proc/playsound_local, epicenter, null, rand(25, 40), 1, frequency, null, null, FALSE, 'sound/effects/creak1.ogg', null, null, null, null, 0), 5 SECONDS)
 		if(adminlog)
 			message_admins("Explosion with [shaped ? "shaped" : "non-shaped"] size ([devastation_range], [heavy_impact_range], [light_impact_range]) in area [epicenter.loc.name] ([epicenter.x],[epicenter.y],[epicenter.z]) (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[epicenter.x];Y=[epicenter.y];Z=[epicenter.z]'>JMP</a>)")
 			log_game("Explosion with [shaped ? "shaped" : "non-shaped"] size ([devastation_range], [heavy_impact_range], [light_impact_range]) in area [epicenter.loc.name] ")
