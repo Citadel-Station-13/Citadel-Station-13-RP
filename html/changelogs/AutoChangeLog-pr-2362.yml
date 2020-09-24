@@ -1,0 +1,4 @@
+author: "RealDonaldTrump"
+delete-after: True
+changes: 
+  - bugfix: "Pilot helmets can once again be linked to shuttle jump consoles."
