@@ -212,7 +212,8 @@
 					prob(1);/obj/item/spacecash/c100,
 					prob(1);/obj/item/spacecash/c50,
 					prob(1);/obj/item/storage/backpack/dufflebag/syndie,
-					prob(1);/obj/item/storage/box/cups)
+					prob(1);/obj/item/storage/box/cups,
+					prob(1);/obj/item/pizzavoucher)
 
 	var/obj/item/I = new path()
 	return I
