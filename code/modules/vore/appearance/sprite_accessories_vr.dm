@@ -323,7 +323,7 @@
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 
-/datum/sprite_accessory/ears/caprahorns
+/datum/sprite_accessory/ears/ram
 	name = "ram horns"
 	desc = ""
 	icon_state = "ram"
