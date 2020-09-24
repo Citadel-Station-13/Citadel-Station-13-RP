@@ -42,17 +42,15 @@ proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impa
 			if(M.z == epicenter.z)
 				var/turf/M_turf = get_turf(M)
 				var/dist = get_dist(M_turf, epicenter)
-				far_volume += (dist <= far_dist * 0.5 ? 50 : 0) // add 50 volume if the mob is pretty close to the explosion
 				// If inside the blast radius + world.view - 2
 				if(dist <= round(max_range + world.view - 2, 1))
 					M.playsound_local(epicenter, get_sfx("explosion"), 100, 1, frequency, falloff = 5) // get_sfx() is so that everyone gets the same sound
 				else if(dist <= far_dist)
+					far_volume += (dist <= far_dist * 0.5 ? 50 : 0) // add 50 volume if the mob is pretty close to the explosion
 					if(creaking_explosion)
-						M.playsound_local(epicenter, list('sound/effects/explosioncreak1.ogg','sound/effects/explosioncreak2.ogg'), far_volume, 1, frequency, falloff = 5)
-					else if(prob(75))
-						M.playsound_local(epicenter, 'sound/effects/explosionfar.ogg', far_volume, 1, frequency, falloff = 5)
+						M.playsound_local(epicenter, list('sound/effects/explosioncreak1.ogg','sound/effects/explosioncreak2.ogg'), far_volume, 1, frequency, falloff = 2)
 					else
-						M.playsound_local(epicenter, 'sound/effects/explosionfar.ogg', far_volume, 1, frequency, falloff = 5) // Echo sound
+						M.playsound_local(epicenter, 'sound/effects/explosionfar.ogg', far_volume, 1, frequency, falloff = 2)
 
 
 				else if(!(M in close))
@@ -60,13 +58,12 @@ proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impa
 					if(M.ear_deaf <= 0 || !M.ear_deaf)
 						if(!istype(M.loc,/turf/space))
 							if(creaking_explosion)
-								M.playsound_local(epicenter, list('sound/effects/explosioncreak1.ogg','sound/effects/explosioncreak2.ogg'), far_volume, 1, frequency, falloff = 5)
-							else if(prob(75))
-								M.playsound_local(epicenter, 'sound/effects/explosionfar.ogg', far_volume, 1, frequency, falloff = 5)
+								M.playsound_local(epicenter, list('sound/effects/explosioncreak1.ogg','sound/effects/explosioncreak2.ogg'), far_volume, 1, frequency, falloff = 2)
 							else
-								M.playsound_local(epicenter, 'sound/effects/explosionfar.ogg', far_volume, 1, frequency, falloff = 5) // Echo sound
+								M << 'sound/effects/explosionfar.ogg'
+
 				if(creaking_explosion)
-					addtimer(CALLBACK(M, /mob/proc/playsound_local, epicenter, null, rand(25, 40), 1, frequency, null, null, FALSE, list('sound/effects/creak1.ogg','sound/effects/creak2.ogg','sound/effects/creak3.ogg'), null, null, null, null, 0), 5 SECONDS)
+					addtimer(CALLBACK(M, /mob/proc/playsound_local, epicenter, list('sound/effects/creak1.ogg','sound/effects/creak2.ogg','sound/effects/creak3.ogg'), falloff = 0), 5 SECONDS)
 
 		if(adminlog)
 			message_admins("Explosion with [shaped ? "shaped" : "non-shaped"] size ([devastation_range], [heavy_impact_range], [light_impact_range]) in area [epicenter.loc.name] ([epicenter.x],[epicenter.y],[epicenter.z]) (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[epicenter.x];Y=[epicenter.y];Z=[epicenter.z]'>JMP</a>)")
