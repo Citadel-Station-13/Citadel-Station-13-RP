@@ -39,9 +39,9 @@ proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impa
 		var/far_volume = clamp(far_dist, 30, 50) // Volume is based on explosion size and dist
 		var/close = range(world.view+round(devastation_range,1), epicenter)
 		for(var/mob/M in player_list)
+			var/turf/M_turf = get_turf(M)
+			var/dist = get_dist(M_turf, epicenter)
 			if(M.z == epicenter.z)
-				var/turf/M_turf = get_turf(M)
-				var/dist = get_dist(M_turf, epicenter)
 				// If inside the blast radius + world.view - 2
 				if(dist <= round(max_range + world.view - 2, 1))
 					M.playsound_local(epicenter, get_sfx("explosion"), 100, 1, frequency, falloff = 5) // get_sfx() is so that everyone gets the same sound
@@ -62,9 +62,8 @@ proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impa
 							else
 								M << 'sound/effects/explosionfar.ogg'
 
-				if(creaking_explosion)
-					addtimer(CALLBACK(M, /mob/proc/playsound_local, epicenter, list('sound/effects/creak1.ogg','sound/effects/creak2.ogg','sound/effects/creak3.ogg'), falloff = 0), 5 SECONDS)
-
+			if(creaking_explosion)
+				addtimer(CALLBACK(M, /mob/proc/playsound_local, epicenter, null, rand(25, 40), 1, frequency, null, null, FALSE, list('sound/effects/creak1.ogg','sound/effects/creak2.ogg','sound/effects/creak3.ogg'), null, null, null, null, 0), 5 SECONDS)
 		if(adminlog)
 			message_admins("Explosion with [shaped ? "shaped" : "non-shaped"] size ([devastation_range], [heavy_impact_range], [light_impact_range]) in area [epicenter.loc.name] ([epicenter.x],[epicenter.y],[epicenter.z]) (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[epicenter.x];Y=[epicenter.y];Z=[epicenter.z]'>JMP</a>)")
 			log_game("Explosion with [shaped ? "shaped" : "non-shaped"] size ([devastation_range], [heavy_impact_range], [light_impact_range]) in area [epicenter.loc.name] ")
