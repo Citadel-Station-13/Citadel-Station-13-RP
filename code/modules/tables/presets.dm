@@ -261,3 +261,7 @@
 	item_pixel_place = FALSE
 
 	connections = list("nw0", "ne0", "sw0", "se0")
+
+/obj/structure/table/sandbags/New()
+	material = get_material_by_name("sandbag")
+	..()

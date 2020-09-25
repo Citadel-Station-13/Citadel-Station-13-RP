@@ -1,0 +1,4 @@
+author: "silicons"
+delete-after: True
+changes: 
+  - tweak: "tram station now requires drag-drop to leave instead of bump. behavior for other people shoving you in is unchanged."

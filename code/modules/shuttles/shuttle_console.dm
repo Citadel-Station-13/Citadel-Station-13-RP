@@ -20,6 +20,18 @@
 
 	ui_interact(user)
 
+/obj/machinery/computer/shuttle_control/attackby(obj/I, mob/user)
+	var/datum/shuttle/autodock/shuttle = SSshuttle.shuttles[shuttle_tag]
+	if(shuttle && istype(I,/obj/item/clothing/head/pilot))
+		var/obj/item/clothing/head/pilot/H = I
+		H.shuttle_comp = src
+		shuttle.helmets |= I
+		to_chat(user,"<span class='notice'>You register the helmet with the ship's console.</span>")
+		shuttle.update_helmets()
+		return
+
+	return ..()
+
 /obj/machinery/computer/shuttle_control/proc/get_ui_data(var/datum/shuttle/autodock/shuttle)
 	var/shuttle_state
 	switch(shuttle.moving_status)
