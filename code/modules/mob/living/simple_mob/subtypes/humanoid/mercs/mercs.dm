@@ -185,6 +185,8 @@
 
 // Laser Rifle
 /mob/living/simple_mob/humanoid/merc/ranged/laser
+	name = "mercenary marksman"
+	desc = "A tough looking individual armed with an laser rifle."
 	icon_state = "syndicateranged_laser"
 	icon_living = "syndicateranged_laser"
 	projectiletype = /obj/item/projectile/beam/midlaser
@@ -223,7 +225,7 @@
 
 //Hand Cannon
 /mob/living/simple_mob/humanoid/merc/ranged/deagle
-	name = "mercenary"
+	name = "mercenary officer"
 	desc = "A tough looking individual armed with an handcannon."
 	icon_state = "syndicate_handcannon"
 	icon_living = "syndicate_handcannon"
@@ -258,7 +260,7 @@
 // Sword Space Merc
 /mob/living/simple_mob/humanoid/merc/melee/sword/space
 	name = "mercenary commando"
-	desc = "A tough looking energy sword individual."
+	desc = "A tough looking individual, armred with an energy sword and shield."
 	icon_state = "syndicatespace-melee"
 	icon_living = "syndicatespace-melee"
 
@@ -284,7 +286,7 @@
 // Ranged Space Merc
 /mob/living/simple_mob/humanoid/merc/ranged/space
 	name = "armored mercenary"
-	desc = "A tough looking submachine gun armed individual."
+	desc = "A tough looking individual, armed with a submachine gun."
 	icon_state = "syndicatespace-ranged"
 	icon_living = "syndicatespceace-ranged"
 
