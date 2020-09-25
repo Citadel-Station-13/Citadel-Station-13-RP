@@ -1258,6 +1258,7 @@
 #include "code\game\objects\structures\cliff.dm"
 #include "code\game\objects\structures\coathanger.dm"
 #include "code\game\objects\structures\curtains.dm"
+#include "code\game\objects\structures\dancepole.dm"
 #include "code\game\objects\structures\displaycase.dm"
 #include "code\game\objects\structures\dogbed.dm"
 #include "code\game\objects\structures\door_assembly.dm"
