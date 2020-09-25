@@ -75,7 +75,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	head_position = 1
 	department_flag = CIVILIAN
 	faction = "Station"
-	total_positions = 2
+	total_positions = 3
 	spawn_positions = 2
 	supervisors = "command staff"
 	selection_color = "#2F2F7F"
@@ -85,6 +85,6 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 
 	access = list(access_heads, access_keycard_auth)
 	minimal_access = list(access_heads, access_keycard_auth)
-	alt_titles = list("Bridge Officer")
+	alt_titles = list("Bridge Officer", "Helmsman")
 
 	outfit_type = /decl/hierarchy/outfit/job/secretary
