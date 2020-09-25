@@ -1,4 +1,5 @@
 #define SDQL_qdel_datum(d) qdel(d)
+#define is_object_datatype(object)		(object && !ispath(object) && !istext(object) && !isnum(object))
 
 //SDQL2 datumized, /tg/station special!
 
@@ -375,7 +376,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 		//print the key
 		if(islist(key))
 			recursive_list_print(output, key, datum_handler, atom_handler)
-		else if(is_proper_datum(key) && (datum_handler || (isatom(key) && atom_handler)))
+		else if(is_object_datatype(key) && (datum_handler || (isatom(key) && atom_handler)))
 			if(isatom(key) && atom_handler)
 				output += atom_handler.Invoke(key)
 			else
@@ -389,7 +390,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 			var/value = input[key]
 			if(islist(value))
 				recursive_list_print(output, value, datum_handler, atom_handler)
-			else if(is_proper_datum(value) && (datum_handler || (isatom(value) && atom_handler)))
+			else if(is_object_datatype(value) && (datum_handler || (isatom(value) && atom_handler)))
 				if(isatom(value) && atom_handler)
 					output += atom_handler.Invoke(value)
 				else
@@ -679,7 +680,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 	switch(query_tree[1])
 		if("call")
 			for(var/i in found)
-				if(!is_proper_datum(i))
+				if(!is_object_datatype(i))
 					continue
 				world.SDQL_var(i, query_tree["call"][1], null, i, superuser, src)
 				obj_count_finished++
@@ -708,7 +709,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 			if("set" in query_tree)
 				var/list/set_list = query_tree["set"]
 				for(var/d in found)
-					if(!is_proper_datum(d))
+					if(!is_object_datatype(d))
 						continue
 					SDQL_internal_vv(d, set_list)
 					obj_count_finished++
@@ -719,7 +720,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 	state = SDQL2_STATE_SWITCHING
 
 /datum/SDQL2_query/proc/SDQL_print(object, list/text_list, print_nulls = TRUE)
-	if(is_proper_datum(object))
+	if(is_object_datatype(object))
 		text_list += "<A HREF='?_src_=vars;[HrefToken(TRUE)];Vars=[REF(object)]'>[REF(object)]</A> : [object]"
 		if(istype(object, /atom))
 			var/atom/A = object
@@ -1001,7 +1002,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 	var/static/list/exclude = list("usr", "src", "marked", "global")
 	var/long = start < expression.len
 	var/datum/D
-	if(is_proper_datum(object))
+	if(is_object_datatype(object))
 		D = object
 
 	if (object == world && (!long || expression[start + 1] == ".") && !(expression[start] in exclude))
@@ -1214,9 +1215,6 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 	if(word != "")
 		query_list += word
 	return query_list
-
-/proc/is_proper_datum(thing)
-	return istype(thing, /datum) || istype(thing, /client)
 
 /obj/effect/statclick/SDQL2_delete/Click()
 	var/datum/SDQL2_query/Q = target
