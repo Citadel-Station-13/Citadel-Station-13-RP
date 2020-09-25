@@ -57,7 +57,7 @@ proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impa
 					if(M.ear_deaf <= 0 || !M.ear_deaf)
 						if(!istype(M.loc,/turf/space))
 							if(creaking_explosion)
-								if(prob(50))
+								if(prob(65))
 									M << 'sound/effects/explosioncreak1.ogg'
 								else
 									M << 'sound/effects/explosioncreak2.ogg'
