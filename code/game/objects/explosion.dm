@@ -64,8 +64,8 @@ proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impa
 							else
 								M << 'sound/effects/explosionfar.ogg'
 
-			if(creaking_explosion)
-				addtimer(CALLBACK(M, /mob/proc/playsound_local, epicenter, null, rand(25, 40), 1, frequency, null, null, FALSE, 'sound/effects/creak1.ogg', null, null, null, null, 0), 5 SECONDS)
+				if(creaking_explosion)
+					addtimer(CALLBACK(M, /mob/proc/playsound_local, epicenter, null, rand(25, 40), 1, frequency, null, null, FALSE, 'sound/effects/creak1.ogg', null, null, null, null, 0), 5 SECONDS)
 		if(adminlog)
 			message_admins("Explosion with [shaped ? "shaped" : "non-shaped"] size ([devastation_range], [heavy_impact_range], [light_impact_range]) in area [epicenter.loc.name] ([epicenter.x],[epicenter.y],[epicenter.z]) (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[epicenter.x];Y=[epicenter.y];Z=[epicenter.z]'>JMP</a>)")
 			log_game("Explosion with [shaped ? "shaped" : "non-shaped"] size ([devastation_range], [heavy_impact_range], [light_impact_range]) in area [epicenter.loc.name] ")
