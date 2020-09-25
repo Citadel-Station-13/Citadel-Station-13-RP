@@ -1,0 +1,6 @@
+author: "Max-023"
+delete-after: True
+changes: 
+  - rscadd: "Adds the helmsman alt title"
+  - tweak: "Tweaks the amount of command secs that can be had
+delete: Deletes herobrine"
