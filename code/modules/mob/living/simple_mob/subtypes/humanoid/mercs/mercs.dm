@@ -288,8 +288,9 @@
 	special_attack_charges = 5
 	loot_list = list() // oh, you killed him?
 	corpse = null // well, sorry, buddy, he doesn't drop shit
-	var/deathnade_path = /obj/item/grenade/flashbang/stingbang
+// 	var/deathnade_path = /obj/item/grenade/flashbang/stingbang
 
+/* far too fun for the codebase at the moment
 /mob/living/simple_mob/humanoid/merc/ranged/space/suppressor/death()
 	// you thought killing him would be the least of your worries?
 	// think again
@@ -298,6 +299,7 @@
 	banger.det_time = 25
 	banger.activate(null)
 	..()
+*/
 
 /mob/living/simple_mob/humanoid/merc/ranged/space/suppressor/elite // really reconsider why you're spawning this dude
 	name = "mercenary elite suppressor"
@@ -306,10 +308,9 @@
 	icon_living = "syndi-ranged-space-sup-elite"
 	armor = list(melee = 80, bullet = 70, laser = 55, energy = 15, bomb = 80, bio = 100, rad = 100) // see code for military hardsuit
 	projectiletype = /obj/item/projectile/bullet/pistol/medium/ap/suppressor/turbo // fuck it, fast bullets
-	base_attack_cooldown = 2 // jesus christ
-	grenade_type = /obj/item/grenade/concussion/frag // don't group up
-	grenade_timer = 30 // HEHO BEEP BOOP
-	deathnade_path = /obj/item/grenade/flashbang/stingbang/shredbang // REALLY don't group up
+	grenade_type = /obj/item/grenade/shooter/rubber // don't group up
+	grenade_timer = 30 // well, look what you've done, you've grouped up
+// 	deathnade_path = /obj/item/grenade/flashbang/stingbang/shredbang // REALLY don't group up
 
 // being Actual Professionals, they have better (read: player-level) blocking chances
 /mob/living/simple_mob/humanoid/merc/ranged/space/suppressor/attackby(var/obj/item/O, var/mob/user)
