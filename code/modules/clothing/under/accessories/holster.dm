@@ -172,3 +172,8 @@
 
 /obj/item/clothing/accessory/holster/machete/occupied/durasteel
 	holstered_spawn = /obj/item/material/knife/machete/deluxe/durasteel
+
+/obj/item/clothing/accessory/holster/waist/kinetic_accelerator
+	name = "KA holster"
+	desc = "A specialized holster, made specifically for Kinetic Accelerator."
+	can_hold = list(/obj/item/gun/energy/kinetic_accelerator)
