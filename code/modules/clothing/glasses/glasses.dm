@@ -165,6 +165,28 @@ BLIND     // can't see anything
 	body_parts_covered = 0
 	var/eye = null
 
+/obj/item/clothing/glasses/eyepatchwhite
+	name = "eyepatch"
+	desc = "A simple eyepatch made of a strip of cloth tied around the head."
+	icon_state = "eyepatch_white"
+	item_state_slots = list(slot_r_hand_str = "blindfold", slot_l_hand_str = "blindfold")
+	body_parts_covered = 0
+	var/eye = null
+
+/obj/item/clothing/glasses/eyepatchwhite/verb/switcheye()
+	set name = "Switch Eyepatch"
+	set category = "Object"
+	set src in usr
+	if(!istype(usr, /mob/living)) return
+	if(usr.stat) return
+
+	eye = !eye
+	if(eye)
+		icon_state = "[icon_state]_1"
+	else
+		icon_state = initial(icon_state)
+	update_clothing_icon()
+
 /obj/item/clothing/glasses/eyepatch/verb/switcheye()
 	set name = "Switch Eyepatch"
 	set category = "Object"

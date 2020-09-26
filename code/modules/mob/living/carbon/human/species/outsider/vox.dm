@@ -1,8 +1,8 @@
 /datum/species/vox
 	name = SPECIES_VOX
 	name_plural = "Vox"
-	icobase = 'icons/mob/human_races/r_vox.dmi'
-	deform = 'icons/mob/human_races/r_def_vox.dmi'
+	icobase = 'icons/mob/human_races/r_vox_old.dmi'
+	deform = 'icons/mob/human_races/r_def_vox_old.dmi'
 	default_language = LANGUAGE_VOX
 	language = LANGUAGE_GALCOM
 	species_language = LANGUAGE_VOX
@@ -40,14 +40,14 @@
 	cold_level_2 = 50
 	cold_level_3 = 0
 
-	gluttonous = 1
+	gluttonous = 0
 
 	breath_type = /datum/gas/phoron
 	poison_type = /datum/gas/oxygen
 	siemens_coefficient = 0.2
 
 	flags = NO_SCAN
-	spawn_flags = SPECIES_IS_WHITELISTED
+	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
 	appearance_flags = HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_SKIN_COLOR
 
 	blood_color = "#9066BD"
@@ -84,9 +84,15 @@
 	genders = list(NEUTER)
 
 	descriptors = list(
-		/datum/mob_descriptor/height = -1,
-		/datum/mob_descriptor/build = 1,
 		/datum/mob_descriptor/vox_markings = 0
+		)
+
+	min_age = 18
+	wikilink="https://wiki.vore-station.net/Vox"
+	inherent_verbs = list(
+		/mob/living/proc/shred_limb,
+		/mob/living/proc/eat_trash,
+		/mob/living/carbon/human/proc/tie_hair
 		)
 
 /datum/species/vox/get_random_name(var/gender)
