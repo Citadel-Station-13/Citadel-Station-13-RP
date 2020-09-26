@@ -84,7 +84,7 @@
 	threaten = TRUE
 	returns_home = TRUE		// Stay close to the base...
 	wander = TRUE			// ... but "patrol" a little.
-	threaten_delay = 3 	// Three Seconds is far to generous for Explo and its unga guns
+	threaten_delay = 3 
 
 /datum/ai_holder/simple_mob/merc/ranged
 	pointblank = TRUE		// They get close? Just shoot 'em!
