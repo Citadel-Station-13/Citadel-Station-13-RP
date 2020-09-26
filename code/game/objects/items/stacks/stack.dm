@@ -66,9 +66,9 @@
 /obj/item/stack/examine(mob/user)
 	. = ..()
 	if(!uses_charge)
-		to_chat(user, "There are [amount] [singular_name]\s in the stack.")
+		. += "There are [amount] [singular_name]\s in the stack."
 	else
-		to_chat(user, "There is enough charge for [get_amount()].")
+		. += "There is enough charge for [get_amount()]."
 
 /obj/item/stack/attack_self(mob/user as mob)
 	list_recipes(user)

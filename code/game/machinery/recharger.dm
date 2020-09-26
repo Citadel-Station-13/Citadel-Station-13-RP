@@ -26,13 +26,10 @@
 	return
 
 /obj/machinery/recharger/examine(mob/user)
-	if(!..(user, 5))
-		return
-
-	to_chat(user, "[charging ? "[charging]" : "Nothing"] is in [src].")
+	. = ..()
+	. += "<span class = 'notice'>[charging ? "[charging]" : "Nothing"] is in [src].</span>"
 	if(charging)
-		var/obj/item/cell/C = charging.get_cell()
-		to_chat(user, "Current charge: [C.charge] / [C.maxcharge]")
+		. += "<span class = 'notice'>Current charge: [charging.charge] / [charging.maxcharge]</span>"
 
 /obj/machinery/recharger/attackby(obj/item/G as obj, mob/user as mob)
 	var/allowed = 0

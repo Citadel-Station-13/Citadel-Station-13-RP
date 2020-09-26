@@ -162,8 +162,8 @@
 
 
 /obj/item/wrapping_paper/examine(mob/user)
-	if(..(user, 1))
-		user << text("There is about [] square units of paper left!", src.amount)
+	. = ..()
+	. += "There is about [src.amount] square units of paper left!"
 
 /obj/item/wrapping_paper/attack(mob/target as mob, mob/user as mob)
 	if (!istype(target, /mob/living/carbon/human)) return

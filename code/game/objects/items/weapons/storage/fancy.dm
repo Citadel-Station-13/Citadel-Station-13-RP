@@ -26,15 +26,13 @@
 	return
 
 /obj/item/storage/fancy/examine(mob/user)
-	if(!..(user, 1))
-		return
-
+	. = ..()
 	if(contents.len <= 0)
-		to_chat(user, "There are no [icon_type]s left in the box.")
+		. += "There are no [icon_type]s left in the box."
 	else if(contents.len == 1)
-		to_chat(user, "There is one [icon_type] left in the box.")
+		. += "There is one [icon_type] left in the box."
 	else
-		to_chat(user, "There are [contents.len] [icon_type]s in the box.")
+		. += "There are [contents.len] [icon_type]s in the box."
 
 	return
 

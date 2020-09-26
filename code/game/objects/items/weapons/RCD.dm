@@ -71,12 +71,8 @@
 
 
 /obj/item/rcd/examine(mob/user)
-	..()
-	to_chat(user, display_resources())
-
-// Used to show how much stuff (matter units, cell charge, etc) is left inside.
-/obj/item/rcd/proc/display_resources()
-	return "It currently holds [stored_matter]/[max_stored_matter] matter-units."
+	. = ..()
+	. += "It currently holds [stored_matter]/[max_stored_matter] matter-units."
 
 // Used to add new cartridges.
 /obj/item/rcd/attackby(obj/item/W, mob/user)
@@ -434,12 +430,8 @@
 	remaining = RCD_MAX_CAPACITY
 
 /obj/item/rcd_ammo/examine(mob/user)
-	..()
-	to_chat(user, display_resources())
-
-// Used to show how much stuff (matter units, cell charge, etc) is left inside.
-/obj/item/rcd_ammo/proc/display_resources()
-	return "It currently holds [remaining]/[initial(remaining)] matter-units."
+	. = ..()
+	. += "It currently holds [remaining]/[initial(remaining)] matter-units."
 
 // RCD Construction Effects
 
@@ -496,4 +488,3 @@
 
 /obj/effect/constructing_effect/proc/end()
 	qdel(src)
-

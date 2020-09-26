@@ -266,23 +266,23 @@
 		return 0
 
 /obj/mecha/examine(mob/user)
-	..(user)
+	. = ..()
 	var/integrity = health/initial(health)*100
 	switch(integrity)
 		if(85 to 100)
-			to_chat(user, "It's fully intact.")
+		. += "<span class = 'notice'>It's fully intact.</span>"
 		if(65 to 85)
-			to_chat(user, "It's slightly damaged.")
+			. += "<span class = 'notice'>It's slightly damaged.</span>"
 		if(45 to 65)
-			to_chat(user, "It's badly damaged.")
+			. += "<span class = 'notice'>It's badly damaged.</span>"
 		if(25 to 45)
-			to_chat(user, "It's heavily damaged.")
+			. += "<span class = 'danger'>It's heavily damaged.</span>"
 		else
-			to_chat(user, "It's falling apart.")
+			. += "<span class = 'danger'>It's falling apart.</span>"
 	if(equipment && equipment.len)
-		to_chat(user, "It's equipped with:")
+		. += "<span class = 'notice'>It's equipped with:</span>"
 		for(var/obj/item/mecha_parts/mecha_equipment/ME in equipment)
-			to_chat(user, "\icon[ME] [ME]")
+			. += "\icon[ME] [ME]"
 	return
 
 

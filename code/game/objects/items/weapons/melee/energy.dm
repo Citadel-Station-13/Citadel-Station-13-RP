@@ -67,14 +67,12 @@
 	return null
 
 /obj/item/melee/energy/examine(mob/user)
-	if(!..(user, 1))
-		return
-
+	. = ..()
 	if(use_cell)
 		if(bcell)
-			to_chat(user, "<span class='notice'>The blade is [round(bcell.percent())]% charged.</span>")
+			. += "<span class='notice'>The blade is [round(bcell.percent())]% charged.</span>"
 		if(!bcell)
-			to_chat(user, "<span class='warning'>The blade does not have a power source installed.</span>")
+			. += "<span class='warning'>The blade does not have a power source installed.</span>"
 
 /obj/item/melee/energy/attack_self(mob/living/user as mob)
 	if(use_cell)
@@ -180,8 +178,9 @@
 		update_icon()
 
 /obj/item/melee/energy/examine(mob/user)
-	..()
-	to_chat(user, "<span class='notice'>Alt-click to recolor it.</span>")
+	. = ..()
+	if(colorable)
+	. += "<span class='notice'>Alt-click to recolor it.</span>"
 
 /*
  * Energy Axe

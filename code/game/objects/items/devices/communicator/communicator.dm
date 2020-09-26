@@ -101,9 +101,9 @@ var/global/list/obj/item/communicator/all_communicators = list()
 // Parameters: user - the user doing the examining
 // Description: Allows the user to click a link when examining to look at video if one is going.
 /obj/item/communicator/examine(mob/user)
-	. = ..(user, 1)
+	. = ..()
 	if(. && video_source)
-		to_chat(user, "<span class='notice'>It looks like it's on a video call: <a href='?src=\ref[src];watchvideo=1'>\[view\]</a></span>")
+		. += "<span class='notice'>It looks like it's on a video call: <a href='?src=\ref[src];watchvideo=1'>\[view\]</a></span
 
 // Proc: initialize_exonet()
 // Parameters: 1 (user - the person the communicator belongs to)
@@ -412,4 +412,3 @@ var/global/list/obj/item/communicator/all_communicators = list()
 		return
 
 	icon_state = initial(icon_state)
-

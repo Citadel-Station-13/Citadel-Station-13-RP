@@ -55,8 +55,7 @@
 	return 1
 
 /obj/item/nifrepairer/examine(mob/user)
-	if(..(user, 1))
-		if(supply.total_volume)
-			to_chat(user,"<span class='notice'>\The [src] contains [supply.total_volume] units of programmed nanites, ready for dispensing.</span>")
-		else
-			to_chat(user,"<span class='notice'>\The [src] is empty and ready to accept nanopaste.</span>")
+	if(supply.total_volume)
+	. += "<span class='notice'>\The [src] contains [supply.total_volume] units of programmed nanites, ready for dispensing.</span>"
+	else
+		. += "<span class='notice'>\The [src] is empty and ready to accept nanopaste.</span>"
