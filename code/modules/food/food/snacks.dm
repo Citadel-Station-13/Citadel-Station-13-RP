@@ -3047,7 +3047,7 @@
 			icon_state = "pizzabox_open"
 
 		if( pizza )
-			var/image/pizzaimg = image("food.dmi", icon_state = pizza.icon_state)
+			var/image/pizzaimg = image(icon = pizza.icon, icon_state = pizza.icon_state)
 			pizzaimg.pixel_y = -3
 			overlays += pizzaimg
 
@@ -3183,6 +3183,10 @@
 	pizza = new /obj/item/reagent_containers/food/snacks/sliceable/pizza/meatpizza(src)
 	boxtag = "Meatlover's Supreme"
 
+/obj/item/pizzabox/pineapple/Initialize()
+	pizza = new /obj/item/reagent_containers/food/snacks/sliceable/pizza/pineapple(src)
+	boxtag = "Hawaiian Sunrise"
+
 /obj/item/reagent_containers/food/snacks/dionaroast
 	name = "roast diona"
 	desc = "It's like an enormous, leathery carrot. With an eye."
@@ -3219,6 +3223,8 @@
 		new /obj/item/reagent_containers/food/snacks/sliceable/flatdough(src)
 		to_chat(user, "You flatten the dough.")
 		qdel(src)
+	else
+		. = ..()
 
 // slicable into 3xdoughslices
 /obj/item/reagent_containers/food/snacks/sliceable/flatdough
@@ -3928,7 +3934,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/sausage/battered
 	name = "battered sausage"
 	desc = "A piece of mixed, long meat, battered and then deepfried."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "batteredsausage"
 	filling_color = "#DB0000"
 	do_coating_prefix = 0
@@ -3943,7 +3948,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/jalapeno_poppers
 	name = "jalapeno popper"
 	desc = "A battered, deep-fried chilli pepper."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "popper"
 	filling_color = "#00AA00"
 	do_coating_prefix = 0
@@ -3959,7 +3963,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/mouseburger
 	name = "mouse burger"
 	desc = "Squeaky and a little furry."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "ratburger"
 
 /obj/item/reagent_containers/food/snacks/mouseburger/Initialize()
@@ -3970,7 +3973,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/lizardburger
 	name = "lizard burger"
 	desc = "Tastes like chicken."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "baconburger"
 
 /obj/item/reagent_containers/food/snacks/lizardburger/Initialize()
@@ -3981,7 +3983,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/chickenkatsu
 	name = "chicken katsu"
 	desc = "A Terran delicacy consisting of chicken fried in a light beer batter."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "katsu"
 	trash = /obj/item/trash/plate
 	filling_color = "#E9ADFF"
@@ -4006,7 +4007,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/microchips
 	name = "micro chips"
 	desc = "Soft and rubbery, should have fried them. Good for smaller crewmembers, maybe?"
-	icon = 'icons/obj/food.dmi'
 	icon_state = "microchips"
 	trash = /obj/item/trash/plate
 	filling_color = "#EDDD00"
@@ -4020,7 +4020,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/ovenchips
 	name = "oven chips"
 	desc = "Dark and crispy, but a bit dry."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "ovenchips"
 	trash = /obj/item/trash/plate
 	filling_color = "#EDDD00"
@@ -4042,7 +4041,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/sliceable/pizza/crunch
 	name = "pizza crunch"
 	desc = "This was once a normal pizza, but it has been coated in batter and deep-fried. Whatever toppings it once had are a mystery, but they're still under there, somewhere..."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "pizzacrunch"
 	slice_path = /obj/item/reagent_containers/food/snacks/pizzacrunchslice
 	slices_num = 6
@@ -4059,7 +4057,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/pizzacrunchslice
 	name = "pizza crunch"
 	desc = "A little piece of a heart attack. Its toppings are a mystery, hidden under batter."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "pizzacrunchslice"
 	filling_color = "#BAA14C"
 	bitesize = 2
@@ -4067,7 +4064,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/funnelcake
 	name = "funnel cake"
 	desc = "Funnel cakes rule!"
-	icon = 'icons/obj/food.dmi'
 	icon_state = "funnelcake"
 	filling_color = "#Ef1479"
 	do_coating_prefix = 0
@@ -4081,7 +4077,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/spreads
 	name = "nutri-spread"
 	desc = "A stick of plant-based nutriments in a semi-solid form. I can't believe it's not margarine!"
-	icon = 'icons/obj/food.dmi'
 	icon_state = "marge"
 	bitesize = 2
 	nutriment_desc = list("margarine" = 1)
@@ -4090,7 +4085,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/spreads/butter
 	name = "butter"
 	desc = "A stick of pure butterfat made from milk products."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "butter"
 	bitesize = 2
 	nutriment_desc = list("butter" = 1)
@@ -4150,7 +4144,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/bacon_stick
 	name = "eggpop"
 	desc = "A bacon wrapped boiled egg, conviently skewered on a wooden stick."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "bacon_stick"
 
 /obj/item/reagent_containers/food/snacks/bacon_stick/Initialize()
@@ -4173,7 +4166,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/cheese_cracker
 	name = "supreme cheese toast"
 	desc = "A piece of toast lathered with butter, cheese, spices, and herbs."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "cheese_cracker"
 	nutriment_desc = list("cheese toast" = 8)
 	nutriment_amt = 8
@@ -4181,7 +4173,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/bacon_and_eggs
 	name = "bacon and eggs"
 	desc = "A piece of bacon and two fried eggs."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "bacon_and_eggs"
 	trash = /obj/item/trash/plate
 
@@ -4193,7 +4184,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/sweet_and_sour
 	name = "sweet and sour pork"
 	desc = "A traditional ancient sol recipe with a few liberties taken with meat selection."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "sweet_and_sour"
 	nutriment_desc = list("sweet and sour" = 6)
 	nutriment_amt = 6
@@ -4206,7 +4196,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/corn_dog
 	name = "corn dog"
 	desc = "A cornbread covered sausage deepfried in oil."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "corndog"
 	nutriment_desc = list("corn batter" = 4)
 	nutriment_amt = 4
@@ -4218,7 +4207,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/truffle
 	name = "chocolate truffle"
 	desc = "Rich bite-sized chocolate."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "truffle"
 	nutriment_amt = 0
 	bitesize = 4
@@ -4240,7 +4228,6 @@ END CITADEL CHANGE */
 	name = "bacon cheese flatbread"
 	desc = "Not a pizza."
 	icon_state = "bacon_pizza"
-	icon = 'icons/obj/food.dmi'
 	nutriment_desc = list("flatbread" = 5)
 	nutriment_amt = 5
 
@@ -4251,7 +4238,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/meat_pocket
 	name = "meat pocket"
 	desc = "Meat and cheese stuffed in a flatbread pocket, grilled to perfection."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "meat_pocket"
 	nutriment_desc = list("flatbread" = 3)
 	nutriment_amt = 3
@@ -4263,7 +4249,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/fish_taco
 	name = "carp taco"
 	desc = "A questionably cooked fish taco decorated with herbs, spices, and special sauce."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "fish_taco"
 	nutriment_desc = list("flatbread" = 3)
 	nutriment_amt = 3
@@ -4275,7 +4260,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/nt_muffin
 	name = "\improper NtMuffin"
 	desc = "A NanoTrasen sponsered biscuit with egg, cheese, and sausage."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "nt_muffin"
 	nutriment_desc = list("biscuit" = 3)
 	nutriment_amt = 3
@@ -4287,7 +4271,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/pineapple_ring
 	name = "pineapple ring"
 	desc = "What the hell is this?"
-	icon = 'icons/obj/food.dmi'
 	icon_state = "pineapple_ring"
 	nutriment_desc = list("sweetness" = 2)
 	nutriment_amt = 2
@@ -4299,7 +4282,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/sliceable/pizza/pineapple
 	name = "ham & pineapple pizza"
 	desc = "One of the most debated pizzas in existence."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "pineapple_pizza"
 	slice_path = /obj/item/reagent_containers/food/snacks/pineappleslice
 	slices_num = 6
@@ -4316,7 +4298,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/pineappleslice
 	name = "ham & pineapple pizza slice"
 	desc = "A slice of contraband."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "pineapple_pizza_slice"
 	filling_color = "#BAA14C"
 	bitesize = 2
@@ -4328,7 +4309,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/burger/bacon // Buff 7 >> 15
 	name = "bacon burger"
 	desc = "The cornerstone of every nutritious breakfast, now with bacon!"
-	icon = 'icons/obj/food.dmi'
 	icon_state = "baconburger"
 	filling_color = "#D63C3C"
 	nutriment_desc = list("bun" = 2)
@@ -4342,7 +4322,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/blt // Buff 8 >> 16
 	name = "BLT"
 	desc = "Bacon, lettuce, tomatoes. The perfect lunch."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "blt"
 	filling_color = "#D63C3C"
 	nutriment_desc = list("bread" = 4)
@@ -4356,7 +4335,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/onionrings
 	name = "onion rings"
 	desc = "Like circular fries but better."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "onionrings"
 	trash = /obj/item/trash/plate
 	filling_color = "#eddd00"
@@ -4367,7 +4345,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/berrymuffin
 	name = "berry muffin"
 	desc = "A delicious and spongy little cake, with berries."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "berrymuffin"
 	filling_color = "#E0CF9B"
 	nutriment_amt = 5
@@ -4377,7 +4354,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/soup/onion
 	name = "onion soup"
 	desc = "A soup with layers."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "onionsoup"
 	trash = /obj/item/trash/snack_bowl
 	filling_color = "#E0C367"
@@ -4388,7 +4364,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/porkbowl
 	name = "pork bowl"
 	desc = "A bowl of fried rice with cuts of meat."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "porkbowl"
 	trash = /obj/item/trash/snack_bowl
 	filling_color = "#FFFBDB"
@@ -4402,7 +4377,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/mashedpotato
 	name = "mashed potato"
 	desc = "Pillowy mounds of mashed potato."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "mashedpotato"
 	trash = /obj/item/trash/plate
 	filling_color = "#EDDD00"
@@ -4413,7 +4387,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/croissant
 	name = "croissant"
 	desc = "True french cuisine."
-	icon = 'icons/obj/food.dmi'
 	filling_color = "#E3D796"
 	icon_state = "croissant"
 	nutriment_amt = 4
@@ -4423,7 +4396,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/crabmeat
 	name = "crab legs"
 	desc = "... Coffee? Is that you?"
-	icon = 'icons/obj/food.dmi'
 	icon_state = "crabmeat"
 	bitesize = 1
 
@@ -4434,7 +4406,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/crab_legs
 	name = "steamed crab legs"
 	desc = "Crab legs steamed and buttered to perfection. One day when the boss gets hungry..."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "crablegs"
 	nutriment_amt = 2
 	nutriment_desc = list("savory butter" = 2)
@@ -4449,7 +4420,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/pancakes
 	name = "pancakes"
 	desc = "Pancakes with berries, delicious."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "pancakes"
 	trash = /obj/item/trash/plate
 	nutriment_desc = list("pancake" = 8)
@@ -4458,7 +4428,6 @@ END CITADEL CHANGE */
 
 /obj/item/reagent_containers/food/snacks/nugget
 	name = "chicken nugget"
-	icon = 'icons/obj/food.dmi'
 	icon_state = "nugget_lump"
 	bitesize = 3
 
@@ -4472,7 +4441,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/icecreamsandwich
 	name = "ice cream sandwich"
 	desc = "Portable ice cream in its own packaging."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "icecreamsandwich"
 	filling_color = "#343834"
 	nutriment_desc = list("ice cream" = 4)
@@ -4481,7 +4449,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/honeybun
 	name = "honey bun"
 	desc = "A sticky pastry bun glazed with honey."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "honeybun"
 	nutriment_desc = list("pastry" = 1)
 	nutriment_amt = 3
@@ -4493,6 +4460,11 @@ END CITADEL CHANGE */
 
 // Moved /bun/attackby() from /code/modules/food/food/snacks.dm
 /obj/item/reagent_containers/food/snacks/bun/attackby(obj/item/W as obj, mob/user as mob)
+	//i honestly should probably refactor this whole thing but idgaf
+	if(istype(W,/obj/item/storage))
+		. = ..() //if you want to bag a ton of buns idk i don't play chef
+		return
+
 	var/obj/item/reagent_containers/food/snacks/result = null
 	// Bun + meatball = burger
 	if(istype(W,/obj/item/reagent_containers/food/snacks/meatball))
@@ -4545,7 +4517,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/tortilla
 	name = "tortilla"
 	desc = "A thin, flour-based tortilla that can be used in a variety of dishes, or can be served as is."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "tortilla"
 	bitesize = 3
 	nutriment_desc = list("tortilla" = 1)
@@ -4555,7 +4526,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/chip
 	name = "chip"
 	desc = "A portion sized chip good for dipping."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "chip"
 	var/bitten_state = "chip_half"
 	bitesize = 1
@@ -4617,7 +4587,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/chipplate
 	name = "basket of chips"
 	desc = "A plate of chips intended for dipping."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "chip_basket"
 	trash = /obj/item/trash/chipbasket
 	var/vendingobject = /obj/item/reagent_containers/food/snacks/chip
@@ -4664,7 +4633,6 @@ END CITADEL CHANGE */
 	desc = "A simple, cheesy dip consisting of tomatos, cheese, and spices."
 	var/nachotrans = /obj/item/reagent_containers/food/snacks/chip/nacho/cheese
 	var/chiptrans = /obj/item/reagent_containers/food/snacks/chip/cheese
-	icon = 'icons/obj/food.dmi'
 	icon_state = "dip_cheese"
 	trash = /obj/item/trash/dipbowl
 	bitesize = 1
@@ -4729,7 +4697,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/burrito
 	name = "meat burrito"
 	desc = "Meat wrapped in a flour tortilla. It's a burrito by definition."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "burrito"
 	bitesize = 4
 	nutriment_desc = list("tortilla" = 6)
@@ -4743,7 +4710,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/burrito_vegan
 	name = "vegan burrito"
 	desc = "Tofu wrapped in a flour tortilla. Those seen with this food object are Valid."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "burrito_vegan"
 	bitesize = 4
 	nutriment_desc = list("tortilla" = 6)
@@ -4756,7 +4722,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/burrito_spicy
 	name = "spicy meat burrito"
 	desc = "Meat and chilis wrapped in a flour tortilla."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "burrito_spicy"
 	bitesize = 4
 	nutriment_desc = list("tortilla" = 6)
@@ -4769,7 +4734,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/burrito_cheese
 	name = "meat cheese burrito"
 	desc = "Meat and melted cheese wrapped in a flour tortilla."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "burrito_cheese"
 	bitesize = 4
 	nutriment_desc = list("tortilla" = 6)
@@ -4782,7 +4746,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/burrito_cheese_spicy
 	name = "spicy cheese meat burrito"
 	desc = "Meat, melted cheese, and chilis wrapped in a flour tortilla."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "burrito_cheese_spicy"
 	bitesize = 4
 	nutriment_desc = list("tortilla" = 6)
@@ -4795,7 +4758,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/burrito_hell
 	name = "el diablo"
 	desc = "Meat and an insane amount of chilis packed in a flour tortilla. The Chaplain will see you now."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "burrito_hell"
 	bitesize = 4
 	nutriment_desc = list("hellfire" = 6)
@@ -4804,7 +4766,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/breakfast_wrap
 	name = "breakfast wrap"
 	desc = "Bacon, eggs, cheese, and tortilla grilled to perfection."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "breakfast_wrap"
 	bitesize = 4
 	nutriment_desc = list("tortilla" = 6)
@@ -4818,7 +4779,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/burrito_mystery
 	name = "mystery meat burrito"
 	desc = "The mystery is, why aren't you BSAing it?"
-	icon = 'icons/obj/food.dmi'
 	icon_state = "burrito_mystery"
 	bitesize = 5
 	nutriment_desc = list("regret" = 6)
@@ -4827,7 +4787,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/hatchling_suprise
 	name = "hatchling suprise"
 	desc = "A poached egg on top of three slices of bacon. A typical breakfast for hungry Unathi children."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "hatchling_suprise"
 	trash = /obj/item/trash/snack_bowl
 
@@ -4839,7 +4798,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/red_sun_special
 	name = "red sun special"
 	desc = "One lousy piece of sausage sitting on melted cheese curds. A cheap meal for the Unathi peasants of Moghes."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "red_sun_special"
 	trash = /obj/item/trash/plate
 
@@ -4850,7 +4808,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/riztizkzi_sea
 	name = "moghesian sea delight"
 	desc = "Three raw eggs floating in a sea of blood. An authentic replication of an ancient Unathi delicacy."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "riztizkzi_sea"
 	trash = /obj/item/trash/snack_bowl
 
@@ -4861,7 +4818,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/father_breakfast
 	name = "breakfast of champions"
 	desc = "A sausage and an omelette on top of a grilled steak."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "father_breakfast"
 	trash = /obj/item/trash/plate
 
@@ -4873,7 +4829,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/stuffed_meatball
 	name = "stuffed meatball" //YES
 	desc = "A meatball loaded with cheese."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "stuffed_meatball"
 
 /obj/item/reagent_containers/food/snacks/stuffed_meatball/Initialize()
@@ -4883,7 +4838,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/egg_pancake
 	name = "meat pancake"
 	desc = "An omelette baked on top of a giant meat patty. This monstrousity is typically shared between four people during a dinnertime meal."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "egg_pancake"
 	trash = /obj/item/trash/plate
 
@@ -4895,7 +4849,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/sliceable/grilled_carp
 	name = "korlaaskak"
 	desc = "A well-dressed carp, seared to perfection and adorned with herbs and spices. Can be sliced into proper serving sizes."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "grilled_carp"
 	slice_path = /obj/item/reagent_containers/food/snacks/grilled_carp_slice
 	slices_num = 6
@@ -4908,7 +4861,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/grilled_carp_slice
 	name = "korlaaskak slice"
 	desc = "A well-dressed fillet of carp, seared to perfection and adorned with herbs and spices."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "grilled_carp_slice"
 	trash = /obj/item/trash/plate
 
@@ -4919,7 +4871,6 @@ END CITADEL CHANGE */
 	name = "red curry"
 	gender = PLURAL
 	desc = "A bowl of creamy red curry with meat and rice. This one looks savory."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "redcurry"
 	trash = /obj/item/trash/snack_bowl
 	filling_color = "#f73333"
@@ -4935,7 +4886,6 @@ END CITADEL CHANGE */
 	name = "green curry"
 	gender = PLURAL
 	desc = "A bowl of creamy green curry with tofu, hot peppers and rice. This one looks spicy!"
-	icon = 'icons/obj/food.dmi'
 	icon_state = "greencurry"
 	trash = /obj/item/trash/snack_bowl
 	filling_color = "#58b76c"
@@ -4952,7 +4902,6 @@ END CITADEL CHANGE */
 	name = "yellow curry"
 	gender = PLURAL
 	desc = "A bowl of creamy yellow curry with potatoes, peanuts and rice. This one looks mild."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "yellowcurry"
 	trash = /obj/item/trash/snack_bowl
 	filling_color = "#bc9509"
@@ -4967,7 +4916,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/bearburger
 	name = "bearburger"
 	desc = "The solution to your unbearable hunger."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "bearburger"
 	filling_color = "#5d5260"
 
@@ -4980,7 +4928,6 @@ END CITADEL CHANGE */
 	name = "bear chili"
 	gender = PLURAL
 	desc = "A dark, hearty chili. Can you bear the heat?"
-	icon = 'icons/obj/food.dmi'
 	icon_state = "bearchili"
 	trash = /obj/item/trash/snack_bowl
 	filling_color = "#702708"
@@ -4999,7 +4946,6 @@ END CITADEL CHANGE */
 	name = "bear stew"
 	gender = PLURAL
 	desc = "A thick, dark stew of bear meat and vegetables."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "bearstew"
 	filling_color = "#9E673A"
 	nutriment_amt = 6
@@ -5017,7 +4963,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/bibimbap
 	name = "bibimbap bowl"
 	desc = "A traditional Korean meal of meat and mixed vegetables. It's served on a bed of rice, and topped with a fried egg."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "bibimbap"
 	trash = /obj/item/trash/snack_bowl
 	filling_color = "#4f2100"
@@ -5033,7 +4978,6 @@ END CITADEL CHANGE */
 	name = "lo mein"
 	gender = PLURAL
 	desc = "A popular Chinese noodle dish. Chopsticks optional."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "lomein"
 	trash = /obj/item/trash/plate
 	filling_color = "#FCEE81"
@@ -5049,7 +4993,6 @@ END CITADEL CHANGE */
 	name = "fried rice"
 	gender = PLURAL
 	desc = "A less-boring dish of less-boring rice!"
-	icon = 'icons/obj/food.dmi'
 	icon_state = "friedrice"
 	trash = /obj/item/trash/snack_bowl
 	filling_color = "#FFFBDB"
@@ -5063,7 +5006,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/chickenfillet
 	name = "chicken fillet sandwich"
 	desc = "Fried chicken, in sandwich format. Beauty is simplicity."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "chickenfillet"
 	filling_color = "#E9ADFF"
 	nutriment_amt = 4
@@ -5078,7 +5020,6 @@ END CITADEL CHANGE */
 	name = "chili cheese fries"
 	gender = PLURAL
 	desc = "A mighty plate of fries, drowned in hot chili and cheese sauce. Because your arteries are overrated."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "chilicheesefries"
 	trash = /obj/item/trash/plate
 	filling_color = "#EDDD00"
@@ -5094,7 +5035,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/friedmushroom
 	name = "fried mushroom"
 	desc = "A tender, beer-battered plump helmet, fried to crispy perfection."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "friedmushroom"
 	filling_color = "#EDDD00"
 	nutriment_amt = 4
@@ -5109,7 +5049,6 @@ END CITADEL CHANGE */
 	name = "pisang goreng"
 	gender = PLURAL
 	desc = "Crispy, starchy, sweet banana fritters. Popular street food in parts of Sol."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "pisanggoreng"
 	trash = /obj/item/trash/plate
 	filling_color = "#301301"
@@ -5124,7 +5063,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/meatbun
 	name = "meat bun"
 	desc = "A soft, fluffy flour bun also known as baozi. This one is filled with a spiced meat filling."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "meatbun"
 	filling_color = "#edd7d7"
 	nutriment_amt = 5
@@ -5138,7 +5076,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/custardbun
 	name = "custard bun"
 	desc = "A soft, fluffy flour bun also known as baozi. This one is filled with an egg custard."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "meatbun"
 	nutriment_amt = 6
 	nutriment_desc = list("egg custard" = 6)
@@ -5153,7 +5090,6 @@ END CITADEL CHANGE */
 	name = "chicken momo"
 	gender = PLURAL
 	desc = "A plate of spiced and steamed chicken dumplings. The style originates from south Asia."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "tajaran_soup"
 	trash = /obj/item/trash/snacktray
 	filling_color = "#edd7d7"
@@ -5169,7 +5105,6 @@ END CITADEL CHANGE */
 	name = "veggie momo"
 	gender = PLURAL
 	desc = "A plate of spiced and steamed vegetable dumplings. The style originates from south Asia."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "tajaran_soup"
 	trash = /obj/item/trash/snacktray
 	filling_color = "#edd7d7"
@@ -5185,7 +5120,6 @@ END CITADEL CHANGE */
 	name = "risotto"
 	gender = PLURAL
 	desc = "A creamy, savory rice dish from southern Europe, typically cooked slowly with wine and broth. This one has bits of mushroom."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "risotto"
 	trash = /obj/item/trash/snack_bowl
 	filling_color = "#edd7d7"
@@ -5201,7 +5135,6 @@ END CITADEL CHANGE */
 	name = "risotto balls"
 	gender = PLURAL
 	desc = "Mushroom risotto that has been battered and deep fried. The best use of leftovers!"
-	icon = 'icons/obj/food.dmi'
 	icon_state = "risottoballs"
 	trash = /obj/item/trash/snack_bowl
 	filling_color = "#edd7d7"
@@ -5215,7 +5148,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/honeytoast
 	name = "piece of honeyed toast"
 	desc = "For those who like their breakfast sweet."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "honeytoast"
 	trash = /obj/item/trash/plate
 	filling_color = "#EDE5AD"
@@ -5229,7 +5161,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/poachedegg
 	name = "poached egg"
 	desc = "A delicately poached egg with a runny yolk. Healthier than its fried counterpart."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "poachedegg"
 	trash = /obj/item/trash/plate
 	filling_color = "#FFDF78"
@@ -5245,7 +5176,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/ribplate
 	name = "plate of ribs"
 	desc = "A half-rack of ribs, brushed with some sort of honey-glaze. Why are there no napkins on board?"
-	icon = 'icons/obj/food.dmi'
 	icon_state = "ribplate"
 	trash = /obj/item/trash/plate
 	filling_color = "#7A3D11"
@@ -5265,7 +5195,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/sliceable/keylimepie
 	name = "key lime pie"
 	desc = "A tart, sweet dessert. What's a key lime, anyway?"
-	icon = 'icons/obj/food.dmi'
 	icon_state = "keylimepie"
 	slice_path = /obj/item/reagent_containers/food/snacks/keylimepieslice
 	slices_num = 5
@@ -5280,7 +5209,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/keylimepieslice
 	name = "slice of key lime pie"
 	desc = "A slice of tart pie, with whipped cream on top."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "keylimepieslice"
 	trash = /obj/item/trash/plate
 	filling_color = "#F5B951"
@@ -5293,7 +5221,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/sliceable/quiche
 	name = "quiche"
 	desc = "Real men eat this, contrary to popular belief."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "quiche"
 	slice_path = /obj/item/reagent_containers/food/snacks/quicheslice
 	slices_num = 5
@@ -5308,7 +5235,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/quicheslice
 	name = "slice of quiche"
 	desc = "A slice of delicious quiche. Eggy, cheesy goodness."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "quicheslice"
 	trash = /obj/item/trash/plate
 	filling_color = "#F5B951"
@@ -5326,7 +5252,6 @@ END CITADEL CHANGE */
 	name = "brownies"
 	gender = PLURAL
 	desc = "Halfway to fudge, or halfway to cake? Who cares!"
-	icon = 'icons/obj/food.dmi'
 	icon_state = "brownies"
 	slice_path = /obj/item/reagent_containers/food/snacks/browniesslice
 	slices_num = 4
@@ -5343,7 +5268,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/browniesslice
 	name = "brownie"
 	desc = "A dense, decadent chocolate brownie."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "browniesslice"
 	trash = /obj/item/trash/plate
 	filling_color = "#F5B951"
@@ -5361,7 +5285,6 @@ END CITADEL CHANGE */
 	name = "cosmic brownies"
 	gender = PLURAL
 	desc = "Like, ultra-trippy. Brownies HAVE no gender, man." //Except I had to add one!
-	icon = 'icons/obj/food.dmi'
 	icon_state = "cosmicbrownies"
 	slice_path = /obj/item/reagent_containers/food/snacks/cosmicbrowniesslice
 	slices_num = 4
@@ -5382,7 +5305,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/cosmicbrowniesslice
 	name = "cosmic brownie"
 	desc = "A dense, decadent and fun-looking chocolate brownie."
-	icon = 'icons/obj/food.dmi'
 	icon_state = "cosmicbrowniesslice"
 	trash = /obj/item/trash/plate
 	filling_color = "#F5B951"
