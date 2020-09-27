@@ -77,7 +77,7 @@
 					"K9 Alternative" = "k92",
 					"Secborg model V-2" = "secborg",
 					"Borgi" = "borgi-sec",
-					"Otieborg" = "Oties"
+					"Otieborg" = "oties"
 					)
 	channels = list("Security" = 1)
 	networks = list(NETWORK_SECURITY)
