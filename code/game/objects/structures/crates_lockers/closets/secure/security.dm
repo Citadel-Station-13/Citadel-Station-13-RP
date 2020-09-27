@@ -164,6 +164,7 @@
 		/obj/item/barrier_tape_roll/police,
 		/obj/item/clothing/accessory/badge/holo/warden,
 		/obj/item/storage/box/flashbangs,
+		obj/item/storage/box/firingpins,
 		/obj/item/storage/belt/security,
 		/obj/item/reagent_containers/spray/pepper,
 		/obj/item/melee/baton/loaded,
