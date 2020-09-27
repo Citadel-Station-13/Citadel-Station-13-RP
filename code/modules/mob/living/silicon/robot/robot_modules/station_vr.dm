@@ -89,10 +89,7 @@
 						"Handy" = "handy-janitor",
 						"Acheron" = "mechoid-Janitor",
 						"Shellguard Noble" = "Noble-CLN",
-						"ZOOM-BA" = "zoomba-janitor",
-						"Borgi" = "borgi-jani",
-						"Otieborg" = "otiej"
-
+						"ZOOM-BA" = "zoomba-janitor"
 					 )
 
 /obj/item/robot_module/robot/security/general
@@ -100,9 +97,7 @@
 						"Handy" = "handy-sec",
 						"Acheron" = "mechoid-Security",
 						"Shellguard Noble" = "Noble-SEC",
-						"ZOOM-BA" = "zoomba-security",
-						"Borgi" = "borgi-sec",
-						"Otieborg" = "oties"
+						"ZOOM-BA" = "zoomba-security"
 					 )
 
 /obj/item/robot_module/robot/miner
@@ -132,7 +127,6 @@
 	vr_sprites = list(
 						"Acheron" = "mechoid-Science",
 						"ZOOM-BA" = "zoomba-research",
-						"Borgi" = "borgi-sci"
 					 )
 
 /obj/item/robot_module/robot/security/combat
