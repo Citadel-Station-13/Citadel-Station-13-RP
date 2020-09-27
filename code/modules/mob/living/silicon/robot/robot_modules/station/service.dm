@@ -146,7 +146,8 @@
 	name = "Custodial Hound module"
 	sprites = list(
 					"Custodial Hound" = "scrubpup",
-					"Borgi" = "borgi-jani"
+					"Borgi" = "borgi-jani",
+					"Otieborg" = "otiej"
 					)
 	channels = list("Service" = 1)
 	can_be_pushed = 0
