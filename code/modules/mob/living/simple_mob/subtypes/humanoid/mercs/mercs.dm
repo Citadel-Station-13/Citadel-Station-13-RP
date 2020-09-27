@@ -366,7 +366,7 @@
 
 //Tommy-Las Merc
 /mob/living/simple_mob/humanoid/merc/ranged/space/tommylas
-	name = "mercenary supressor"
+	name = "mercenary light burster"
 	desc = "A tough looking individual armed with an automatic laser."
 	icon_state = "syndicatespace-tommylas"
 	icon_living = "syndicatespace-tommylas"
@@ -383,7 +383,7 @@
 	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/surpressor
 
 /mob/living/simple_mob/humanoid/merc/ranged/space/fal
-	name = "mercenary commado"
+	name = "mercenary commando"
 	desc = "A tough looking individual armed with a assault rifle."
 	icon_state = "syndicatespace-commando"
 	icon_living = "syndicatespace-commando"
