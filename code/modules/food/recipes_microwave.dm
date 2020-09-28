@@ -257,12 +257,11 @@ I said no!
 	items = list(/obj/item/reagent_containers/food/snacks/cheesewedge)
 	result = /obj/item/reagent_containers/food/snacks/loadedbakedpotato
 
-/datum/recipe/microchips
-	appliance = MICROWAVE
+/datum/recipe/fries
 	items = list(
-		/obj/item/reagent_containers/food/snacks/rawsticks
+		/obj/item/weapon/reagent_containers/food/snacks/rawsticks
 	)
-	result = /obj/item/reagent_containers/food/snacks/microchips
+	result = /obj/item/weapon/reagent_containers/food/snacks/fries
 
 /datum/recipe/cheesyfries
 	items = list(
