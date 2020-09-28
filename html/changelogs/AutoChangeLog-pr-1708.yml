@@ -1,7 +1,0 @@
-author: "Mewchild"
-delete-after: True
-changes: 
-  - bugfix: "Solar SMES units will no longer drain master when they're wired."
-  - bugfix: "Shifts some areas in maint to no longer be misaligned"
-  - bugfix: "The doors from the tram station into maint now have normal access"
-  - bugfix: "Duplicate pipes under the old botany maint door have been removed"

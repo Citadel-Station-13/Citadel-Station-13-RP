@@ -1,5 +1,0 @@
-author: "Nethaufer"
-delete-after: True
-changes: 
-  - rscadd: "Added *shriekshort (vox cough sound) and *shriekloud (vox sneeze sound). Both are restricted to Vox."
-  - rscadd: "Added emotes that have been added over time to the list of emotes displayed with *help"

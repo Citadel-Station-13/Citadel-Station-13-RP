@@ -1,5 +1,0 @@
-author: "JLinari"
-delete-after: True
-changes: 
-  - bugfix: "fixed icons for facility director and field medic not showing"
-  - imageadd: "Added new icon for off-duty explorers"

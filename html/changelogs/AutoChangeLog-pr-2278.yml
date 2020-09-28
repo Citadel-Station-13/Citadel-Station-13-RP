@@ -1,6 +1,0 @@
-author: "CharlesWedge"
-delete-after: True
-changes: 
-  - rscadd: "5 new POI maps: Including 3 caves and 2 more interesting locations."
-  - bugfix: "set fixed orientation is now set to TRUE on more complex POIs so things remained properly orientated.
-other fix: fixed an access inconsistency in cargo that would allow one to open magnetic carbine crates with only security access. It now properly requires armory access."
