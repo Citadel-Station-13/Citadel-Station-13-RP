@@ -2106,6 +2106,7 @@
     item_state = "camcorder"
     w_class = ITEMSIZE_LARGE
     slot_flags = SLOT_BELT
+    var/obj/machinery/camera/network/thunder/camera
 
 /obj/item/faketvcamera/update_icon()
 	..()
