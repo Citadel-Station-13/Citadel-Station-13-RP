@@ -1,4 +1,0 @@
-author: "Mewchild"
-delete-after: True
-changes: 
-  - bugfix: "Fixes overwritten section of cargo mailing room. oops"

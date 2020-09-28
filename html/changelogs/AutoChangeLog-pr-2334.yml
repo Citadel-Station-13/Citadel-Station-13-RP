@@ -1,4 +1,0 @@
-author: "Enzo-Leon"
-delete-after: True
-changes: 
-  - bugfix: "Restored RNG to overmap exploration"
