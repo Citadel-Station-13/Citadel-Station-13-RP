@@ -7,6 +7,7 @@
 	name = "mercenary"
 	desc = "A tough looking individual armed with only a knife."
 	tt_desc = "E Homo sapiens"
+	icon = 'icons/mob/merc.dmi'
 	icon_state = "syndicate"
 	icon_living = "syndicate"
 	icon_dead = "syndicate_dead"
