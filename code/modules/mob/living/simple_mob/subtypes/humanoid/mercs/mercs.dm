@@ -14,7 +14,7 @@
 	icon_gib = "syndicate_gib"
 
 	faction = "syndicate"
-	movement_cooldown = 4
+	movement_cooldown = 2
 
 	status_flags = 0
 
