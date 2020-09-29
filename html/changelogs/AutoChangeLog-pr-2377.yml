@@ -1,8 +1,0 @@
-author: "Greenjoe12345"
-delete-after: True
-changes: 
-  - rscadd: "The ability to add a custom name/description to loadout items was added."
-  - rscadd: "the white cane got a new sprite, new variation, and also a crutch was added, and a new eyepatch"
-  - imageadd: "Teshari got a sprite for the white blindfold"
-  - code_imp: "where 'gear_tweaks = list(gear_tweak_free_color_choice)' was used before for color selection in the loadout, now 'gear_tweaks += gear_tweak_free_color_choice' will need to be used, otherwise the item will not be able to be given a custom name or description"
-  - admin: "A jobban option was added for disabling a specific person's access to the custom loadout name/desc feature"

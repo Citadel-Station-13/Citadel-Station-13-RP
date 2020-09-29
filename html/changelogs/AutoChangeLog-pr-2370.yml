@@ -1,4 +1,0 @@
-author: "KasparoVy"
-delete-after: True
-changes: 
-  - bugfix: "You can now speak Sagaru with ,T. Why there wasn't a language key at all before is a mystery."
