@@ -1262,6 +1262,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
+"cD" = (
+/obj/structure/table/woodentable,
+/obj/item/paicard,
+/turf/simulated/floor/wood,
+/area/triumph/station/stairs_three)
 "cE" = (
 /obj/structure/table/glass,
 /obj/machinery/computer/med_data/laptop,
@@ -13325,6 +13330,11 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
 /area/medical/resleeving)
+"Ar" = (
+/obj/structure/table/reinforced,
+/obj/item/paicard,
+/turf/simulated/floor/wood,
+/area/hallway/primary/aft)
 "As" = (
 /obj/structure/sink{
 	dir = 4;
@@ -17717,6 +17727,7 @@
 	dir = 8;
 	pixel_x = -24
 	},
+/obj/item/paicard,
 /turf/simulated/floor/wood/sif,
 /area/triumph/surfacebase/medical/lobby)
 "IM" = (
@@ -18843,6 +18854,7 @@
 /area/medical/surgery)
 "Ld" = (
 /obj/structure/table/reinforced,
+/obj/item/paicard,
 /turf/simulated/floor/wood,
 /area/hallway/primary/port)
 "Le" = (
@@ -23032,6 +23044,7 @@
 /area/rnd/test_area)
 "Tn" = (
 /obj/structure/table/standard,
+/obj/item/paicard,
 /turf/simulated/floor/tiled,
 /area/holodeck_control)
 "To" = (
@@ -37996,7 +38009,7 @@ VL
 ek
 VL
 wd
-xL
+Ar
 ht
 Md
 vT
@@ -43533,7 +43546,7 @@ gK
 Pw
 cQ
 hf
-ES
+cD
 bc
 dy
 Pw

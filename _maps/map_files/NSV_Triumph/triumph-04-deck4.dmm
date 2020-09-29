@@ -6953,6 +6953,17 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/interrogation)
+"eXq" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/table/woodentable,
+/obj/item/paicard,
+/turf/simulated/floor/carpet/bcarpet,
+/area/library)
 "eXs" = (
 /obj/structure/bed/chair/office/dark,
 /turf/simulated/floor/tiled,
@@ -15208,6 +15219,7 @@
 	},
 /obj/structure/table/woodentable,
 /obj/item/paper_bin,
+/obj/item/paicard,
 /turf/simulated/floor/wood,
 /area/library)
 "loy" = (
@@ -33641,6 +33653,7 @@
 "yis" = (
 /obj/structure/table/woodentable,
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/item/paicard,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/lounge)
 "yjg" = (
@@ -42032,7 +42045,7 @@ ebD
 sZf
 wcm
 sNf
-hMd
+eXq
 sZf
 wcm
 sNf
