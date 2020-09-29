@@ -143,8 +143,8 @@
 		src.add_fingerprint(usr)
 
 /obj/item/weldpack/examine(mob/user)
-	..(user)
-	user << text("\icon[] [] units of fuel left!", src, src.reagents.total_volume)
+	. = ..()
+	. += "\icon[src] [src] has [src.reagents.total_volume] units of fuel left!"
 	return
 
 /obj/item/weldpack/survival

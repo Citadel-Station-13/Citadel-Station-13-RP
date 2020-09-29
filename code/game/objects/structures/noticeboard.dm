@@ -55,7 +55,7 @@
 
 // Since Topic() never seems to interact with usr on more than a superficial
 // level, it should be fine to let anyone mess with the board other than ghosts.
-/obj/structure/noticeboard/examine(var/mob/user)
+/obj/structure/noticeboard/examine(mob/user) //why the fuck is this shit on examine
 	if(!user)
 		user = usr
 	if(user.Adjacent(src))
