@@ -1,6 +1,6 @@
 author: "Hatterhat"
 delete-after: True
-changes: 
+changes:
   - rscadd: "Rumors around the sector have mentioned something about experimental high-velocity 10mm cartridges being field-tested by operatives and elite mercenaries alike. Be on guard for so-called \"suppressors\"."
   - rscadd: "Stingbangs! Like flashbangs, except they also fire rubbershot pellets. Adminspawn only."
   - bugfix: "Threat sounds from mercenary simplemobs now play properly."
