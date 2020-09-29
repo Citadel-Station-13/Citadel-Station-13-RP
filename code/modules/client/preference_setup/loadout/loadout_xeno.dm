@@ -92,11 +92,6 @@
 	..()
 	gear_tweaks = list(gear_tweak_free_color_choice)
 
-/datum/gear/mask/ipc_monitor
-	display_name = "display monitor (Full Body Prosthetic)"
-	path = /obj/item/clothing/mask/monitor
-	sort_category = "Xenowear"
-
 /datum/gear/uniform/harness
 	display_name = "gear harness (Full Body Prosthetic, Diona)"
 	path = /obj/item/clothing/under/harness
@@ -498,37 +493,37 @@
 	path = /obj/item/clothing/under/pressuresuit/voxcivlibrarian
 	sort_category = "Xenowear"
 	whitelisted = SPECIES_VOX
-	
+
 /datum/gear/uniform/voxsecofficer
 	display_name = "vox pressure suit (security officer)"
 	path = /obj/item/clothing/under/pressuresuit/voxcivsecurity
 	sort_category = "Xenowear"
 	whitelisted = SPECIES_VOX
-	
+
 /datum/gear/uniform/voxcivmedical
 	display_name = "vox pressure suit (medical doctor)"
 	path = /obj/item/clothing/under/pressuresuit/voxcivmedical
 	sort_category = "Xenowear"
 	whitelisted = SPECIES_VOX
-	
+
 /datum/gear/uniform/voxcivengineer
 	display_name = "vox pressure suit (engineer)"
 	path = /obj/item/clothing/under/pressuresuit/voxcivengineer
 	sort_category = "Xenowear"
 	whitelisted = SPECIES_VOX
-	
+
 /datum/gear/uniform/voxcivscience
 	display_name = "vox pressure suit (scientist)"
 	path = /obj/item/clothing/under/pressuresuit/voxcivscience
 	sort_category = "Xenowear"
 	whitelisted = SPECIES_VOX
-	
+
 /datum/gear/uniform/voxcivrd
 	display_name = "vox pressure suit (research director)"
 	path = /obj/item/clothing/under/pressuresuit/voxcivrd
 	sort_category = "Xenowear"
 	whitelisted = SPECIES_VOX
-	
+
 /datum/gear/uniform/voxcivce
 	display_name = "vox pressure suit (chief engineer)"
 	path = /obj/item/clothing/under/pressuresuit/voxcivce
