@@ -236,7 +236,7 @@
 		to_chat(user, "<font color='red'>You try to touch the controls but you get zapped. There must be a short circuit somewhere.</font>")
 		return*/
 	else
-		to_chat(user, "You push the button. The coloured LED next to it changes.")
+		to_chat(user, "You push the button. The colored LED next to it changes.")
 		safetieson = !safetieson
 
 
@@ -561,9 +561,8 @@
 
 //////////////////////////////REMINDER: Make it lock once you place some fucker inside.
 
-//God this entire file is fucking awful
-//Suit painter for Bay's special snowflake aliums.
-
+// God this entire file is fucking awful
+// Suit painter for Bay's special snowflake aliums.
 /obj/machinery/suit_cycler
 
 	name = "suit cycler"
@@ -576,20 +575,38 @@
 
 	req_access = list(access_captain,access_heads)
 
-	var/active = 0          // PLEASE HOLD.
-	var/safeties = 1        // The cycler won't start with a living thing inside it unless safeties are off.
-	var/irradiating = 0     // If this is > 0, the cycler is decontaminating whatever is inside it.
-	var/radiation_level = 2 // 1 is removing germs, 2 is removing blood, 3 is removing phoron.
-	var/model_text = ""     // Some flavour text for the topic box.
-	var/locked = 1          // If locked, nothing can be taken from or added to the cycler.
-	var/can_repair          // If set, the cycler can repair voidsuits.
+	var/active = 0			// PLEASE HOLD.
+	var/safeties = 1		// The cycler won't start with a living thing inside it unless safeties are off.
+	var/irradiating = 0		// If this is > 0, the cycler is decontaminating whatever is inside it.
+	var/radiation_level = 2	// 1 is removing germs, 2 is removing blood, 3 is removing phoron.
+	var/model_text = ""		// Some flavour text for the topic box.
+	var/locked = 1			// If locked, nothing can be taken from or added to the cycler.
+	var/can_repair			// If set, the cycler can repair voidsuits.
 	var/electrified = 0
 
 	//Departments that the cycler can paint suits to look like.
 	var/list/departments = list("Engineering","Mining","Medical","Security","Atmos","HAZMAT","Construction","Biohazard","Emergency Medical Response","Crowd Control","Director","Head of Security")
 	//Species that the suits can be configured to fit.
-	var/list/species = list(SPECIES_HUMAN,SPECIES_SKRELL,SPECIES_UNATHI,SPECIES_TAJ, SPECIES_TESHARI, "Nevrean", "Akula", "Sergal", "Flatland Zorren", "Highlander Zorren", "Vulpkanin", "Promethean", "Xenomorph Hybrid", "Xenochimera","Vasilissan", "Rapala", "Vox") //VORESTATION EDIT
-
+	var/list/species = list(
+		SPECIES_HUMAN,
+		SPECIES_SKRELL,
+		SPECIES_UNATHI,
+		SPECIES_TAJ,
+		SPECIES_TESHARI,
+		SPECIES_AKULA,
+		SPECIES_ALRAUNE,
+		SPECIES_NEVREAN,
+		SPECIES_RAPALA,
+		SPECIES_SERGAL,
+		SPECIES_PROMETHEAN,
+		SPECIES_VASILISSAN,
+		SPECIES_VULPKANIN,
+		SPECIES_XENOCHIMERA,
+		SPECIES_XENOHYBRID,
+		SPECIES_ZORREN_FLAT,
+		SPECIES_ZORREN_HIGH,
+		SPECIES_VOX
+	)
 	var/target_department
 	var/target_species
 
@@ -781,7 +798,26 @@
 	//Clear the access reqs, disable the safeties, and open up all paintjobs.
 	to_chat(user, "<span class='danger'>You run the sequencer across the interface, corrupting the operating protocols.</span>")
 	departments = list("Engineering","Mining","Medical","Security","Atmos","HAZMAT","Construction","Biohazard","Crowd Control","Emergency Medical Response","^%###^%$", "Charring")
-	species = list(SPECIES_HUMAN,SPECIES_SKRELL,SPECIES_UNATHI,SPECIES_TAJ, SPECIES_TESHARI, "Nevrean", "Akula", "Sergal", "Flatland Zorren", "Highlander Zorren", "Vulpkanin", "Promethean", "Xenomorph Hybrid", "Vasilissan", "Rapala", "Vox") //VORESTATION EDIT
+	species = list(
+		SPECIES_HUMAN,
+		SPECIES_SKRELL,
+		SPECIES_UNATHI,
+		SPECIES_TAJ,
+		SPECIES_TESHARI,
+		SPECIES_AKULA,
+		SPECIES_ALRAUNE,
+		SPECIES_NEVREAN,
+		SPECIES_RAPALA,
+		SPECIES_SERGAL,
+		SPECIES_PROMETHEAN,
+		SPECIES_VASILISSAN,
+		SPECIES_VULPKANIN,
+		SPECIES_XENOCHIMERA,
+		SPECIES_XENOHYBRID,
+		SPECIES_ZORREN_FLAT,
+		SPECIES_ZORREN_HIGH,
+		SPECIES_VOX
+	)
 
 	emagged = 1
 	safeties = 0
@@ -990,6 +1026,17 @@
 	update_icon()
 
 	return
+
+// Old Exploration is too WIP to use right now
+/obj/machinery/suit_cycler/exploration
+	req_access = list(access_explorer)
+	departments = list("Exploration")
+
+// Pilot Blue is still missing a few sprites on polaris end
+/obj/machinery/suit_cycler/pilot
+	req_access = list(access_pilot)
+	departments = list("Pilot")
+
 
 //There HAS to be a less bloated way to do this. TODO: some kind of table/icon name coding? ~Z
 /obj/machinery/suit_cycler/proc/apply_paintjob()

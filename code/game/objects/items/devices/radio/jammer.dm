@@ -2,13 +2,13 @@ var/global/list/active_radio_jammers = list()
 
 /proc/is_jammed(var/obj/radio)
 	var/turf/Tr = get_turf(radio)
-	if(!Tr) return 0 //Nullspace radios don't get jammed.
+	if(!Tr) return 0	// Nullspace radios don't get jammed.
 
 	for(var/jammer in active_radio_jammers)
 		var/obj/item/radio_jammer/J = jammer
 		var/turf/Tj = get_turf(J)
 
-		if(J.on && Tj.z == Tr.z) //If we're on the same Z, it's worth checking.
+		if(J.on && Tj.z == Tr.z)	//If we're on the same Z, it's worth checking.
 			var/dist = get_dist(Tj,Tr)
 			if(dist <= J.jam_range)
 				return list("jammer" = J, "distance" = dist)
@@ -19,19 +19,24 @@ var/global/list/active_radio_jammers = list()
 	icon = 'icons/obj/device.dmi'
 	icon_state = "jammer0"
 	var/active_state = "jammer1"
-	var/last_overlay_percent = null // Stores overlay icon_state to avoid excessive recreation of overlays.
+	var/last_overlay_percent = null	// Stores overlay icon_state to avoid excessive recreation of overlays.
 
 	var/on = 0
 	var/jam_range = 7
 	var/obj/item/cell/device/weapon/power_source
-	var/tick_cost = 5 //VOREStation Edit - For the ERPs.
+	var/tick_cost = 5
 
-	origin_tech = list(TECH_ILLEGAL = 7, TECH_BLUESPACE = 5) //Such technology! Subspace jamming!
+	origin_tech = list(TECH_ILLEGAL = 7, TECH_BLUESPACE = 5)	// Such technology! Subspace jamming!
+
+// Unlimited use, unlimited range jammer for admins. Turn it on, drop it somewhere, it works.
+/obj/item/radio_jammer/admin
+	jam_range = 255
+	tick_cost = 0
 
 /obj/item/radio_jammer/Initialize()
 	. = ..()
 	power_source = new(src)
-	update_icon() // So it starts with the full overlay.
+	update_icon()	// So it starts with the full overlay.
 
 /obj/item/radio_jammer/Destroy()
 	if(on)
@@ -90,7 +95,7 @@ var/global/list/active_radio_jammers = list()
 /obj/item/radio_jammer/attackby(obj/W, mob/user)
 	if(istype(W,/obj/item/cell/device/weapon) && !power_source)
 		power_source = W
-		power_source.update_icon() //Why doesn't a cell do this already? :|
+		power_source.update_icon()	// Why doesn't a cell do this already? :|
 		user.unEquip(power_source)
 		power_source.forceMove(src)
 		update_icon()

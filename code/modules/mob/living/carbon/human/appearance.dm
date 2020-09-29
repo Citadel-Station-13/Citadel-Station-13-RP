@@ -208,5 +208,5 @@
 
 /mob/living/carbon/human/proc/force_update_limbs()
 	for(var/obj/item/organ/external/O in organs)
-		O.sync_colour_to_human(src)
+		O.sync_color_to_human(src)
 	update_icons_body(FALSE)

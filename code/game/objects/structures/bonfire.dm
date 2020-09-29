@@ -21,7 +21,7 @@
 	if(!material)
 		qdel(src)
 		return
-	color = material.icon_colour
+	color = material.icon_color
 
 // Blue wood.
 /obj/structure/bonfire/sifwood/New(newloc, material_name)

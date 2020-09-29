@@ -27,7 +27,7 @@
 	if(!material)
 		qdel(src)
 		return
-	color = material.icon_colour
+	color = material.icon_color
 
 /obj/structure/gravemarker/examine(mob/user)
 	..()

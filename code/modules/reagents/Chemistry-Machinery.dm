@@ -258,7 +258,7 @@
 					P.icon_state = "bouilloncube"//Reskinned monkey cube
 					P.desc = "A dissolvable cube."
 
-				if(P.icon_state in list("pill1", "pill2", "pill3", "pill4")) // if using greyscale, take colour from reagent
+				if(P.icon_state in list("pill1", "pill2", "pill3", "pill4")) // if using greyscale, take color from reagent
 					P.color = reagents.get_color()
 
 				reagents.trans_to_obj(P,amount_per_pill)

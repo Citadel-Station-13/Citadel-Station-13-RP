@@ -32,10 +32,10 @@
 		/obj/item/clothing/shoes/boots/winter/engineering,
 		/obj/item/tank/emergency/oxygen/engi,
 		/obj/item/gps/engineering/ce,
-		/obj/item/reagent_containers/spray/windowsealant,//VOREStation Add
-		/obj/item/pipe_dispenser, //Citadel Addition
+		/obj/item/reagent_containers/spray/windowsealant,
+		/obj/item/pipe_dispenser,
 		/obj/item/shield_diffuser,
-		/obj/item/switchtool/holo/CE) //Citadel Addition
+		/obj/item/switchtool/holo/CE)
 
 /obj/structure/closet/secure_closet/engineering_chief/Initialize()
 	if(prob(50))
@@ -107,8 +107,8 @@
 		/obj/item/clothing/shoes/boots/winter/engineering,
 		/obj/item/tank/emergency/oxygen/engi,
 		/obj/item/gps/engineering,
-		/obj/item/reagent_containers/spray/windowsealant, //VOREStation Add
-		/obj/item/shield_diffuser) //Citadel Addition
+		/obj/item/reagent_containers/spray/windowsealant,
+		/obj/item/shield_diffuser)
 
 /obj/structure/closet/secure_closet/engineering_personal/Initialize()
 	if(prob(50))
@@ -136,7 +136,7 @@
 		/obj/item/clothing/head/hardhat/red,
 		/obj/item/flashlight,
 		/obj/item/extinguisher,
-		///obj/item/clamp,	//VOREStation Removal: without leaks those are pointless,
+		///obj/item/clamp,	// Without leaks those are pointless,
 		/obj/item/radio/headset/headset_eng,
 		/obj/item/radio/headset/headset_eng/alt,
 		/obj/item/clothing/suit/storage/hazardvest,
@@ -148,7 +148,7 @@
 		/obj/item/tank/emergency/oxygen/engi,
 		/obj/item/gps/engineering/atmos,
 		/obj/item/pipe_dispenser,
-		/obj/item/shield_diffuser) //Citadel Addition
+		/obj/item/shield_diffuser)
 
 /obj/structure/closet/secure_closet/atmos_personal/Initialize()
 	if(prob(50))

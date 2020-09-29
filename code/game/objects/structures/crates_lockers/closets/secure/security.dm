@@ -43,10 +43,10 @@
 		/obj/item/storage/box/ids = 2,
 		/obj/item/gun/energy/gun,
 		/obj/item/gps/command,
-		/obj/item/gun/energy/gun/martin, //VOREStation Add,
-		/obj/item/storage/box/commandkeys, //VOREStation Add,
-		/obj/item/storage/box/servicekeys, //VOREStation Add,
-		///obj/item/gun/projectile/sec/flash, //VOREStation Removal,
+		/obj/item/gun/energy/gun/martin,
+		/obj/item/storage/box/commandkeys,
+		/obj/item/storage/box/servicekeys,
+		///obj/item/gun/projectile/sec/flash,
 		/obj/item/flash)
 
 /obj/structure/closet/secure_closet/hop2
@@ -81,7 +81,7 @@
 
 
 /obj/structure/closet/secure_closet/hos
-	name = "head of security's locker"
+	name = "head of security's locker attire"
 	req_access = list(access_hos)
 	icon_state = "hossecure1"
 	icon_closed = "hossecure"
@@ -127,6 +127,36 @@
 		/obj/item/gps/security/hos,
 		/obj/item/flashlight/maglight,
 		/obj/item/clothing/mask/gas/half)
+
+/obj/structure/closet/secure_closet/hos2
+	name = "head of security's gear"
+	icon_state = "hossecure1"
+	icon_closed = "hossecure"
+	icon_locked = "hossecure1"
+	icon_opened = "hossecureopen"
+	icon_broken = "hossecurebroken"
+	icon_off = "hossecureoff"
+	req_access = list(access_hos)
+	storage_capacity = 2.5 * MOB_MEDIUM
+
+	starts_with = list(
+		/obj/item/cartridge/hos,
+		/obj/item/barrier_tape_roll/police,
+		/obj/item/shield/riot/tele,
+		/obj/item/storage/box/holobadge/hos,
+		/obj/item/clothing/accessory/badge/holo/hos,
+		/obj/item/reagent_containers/spray/pepper,
+		/obj/item/tool/crowbar/red,
+		/obj/item/storage/box/flashbangs,
+		/obj/item/flash,
+		/obj/item/melee/baton/loaded,
+		/obj/item/gun/energy/gun/multiphase,
+		/obj/item/melee/telebaton,
+		/obj/item/clothing/head/beret/sec/corporate/hos,
+		/obj/item/clothing/suit/storage/hooded/wintercoat/security,
+		/obj/item/clothing/shoes/boots/winter/security,
+		/obj/item/gps/security/hos,
+		/obj/item/flashlight/maglight)
 
 /obj/structure/closet/secure_closet/hos/Initialize()
 	if(prob(50))
@@ -215,7 +245,7 @@
 		/obj/item/clothing/accessory/storage/black_vest,
 		/obj/item/clothing/head/soft/sec/corp,
 		/obj/item/clothing/under/rank/security/corp,
-		///obj/item/ammo_magazine/m45/rubber, //VOREStation Removal,
+		///obj/item/ammo_magazine/m45/rubber,
 		/obj/item/gun/energy/taser,
 		/obj/item/cell/device/weapon,
 		/obj/item/gps/security,
@@ -269,7 +299,7 @@
 	starts_with = list(
 		/obj/item/clothing/accessory/badge/holo/detective,
 		/obj/item/clothing/gloves/black,
-		///obj/item/gunbox, //VOREStation Removal,
+		///obj/item/gunbox,
 		/obj/item/storage/belt/detective,
 		/obj/item/storage/box/evidence,
 		/obj/item/radio/headset/headset_sec,

@@ -247,8 +247,7 @@
 				prob(3);/obj/item/storage/firstaid/toxin,
 				prob(3);/obj/item/storage/firstaid/o2,
 				prob(2);/obj/item/storage/firstaid/adv,
-				prob(3);/obj/item/storage/firstaid/fire,
-				prob(1);/obj/item/storage/firstaid/combat)
+				prob(3);/obj/item/storage/firstaid/fire)
 
 /obj/random/contraband
 	name = "Random Illegal Item"
@@ -257,7 +256,6 @@
 	icon_state = "purplecomb"
 	spawn_nothing_percentage = 50
 
-//VOREStation Edit - Changed items in this list drastically.
 /obj/random/contraband/item_to_spawn()
 	return pick(prob(6);/obj/item/storage/pill_bottle/tramadol,
 				//prob(8);/obj/item/haircomb,
@@ -1095,7 +1093,7 @@ var/list/multi_point_spawns
 	var/item_path  // Item type to spawn
 
 /obj/random_multi/single_item/generate_items()
-	//VOREStation Edit - Make this proc check for a closet and spawn in that. This happens after closets are init'd so otherwise it spawns on top
+	// Make this proc check for a closet and spawn in that. This happens after closets are init'd so otherwise it spawns on top
 	var/obj/structure/closet/C = locate(/obj/structure/closet) in get_turf(src)
 	if(C)
 		new item_path(C)

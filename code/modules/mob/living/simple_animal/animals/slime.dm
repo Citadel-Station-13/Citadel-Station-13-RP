@@ -18,11 +18,11 @@
 	speak_emote = list("chirps")
 	emote_see = list("jiggles", "bounces in place")
 
-	var/colour = "grey"
+	var/color = "grey"
 
 /mob/living/simple_mob/old_slime/science
 	name = "Kendrick"
-	colour = "rainbow"
+	color = "rainbow"
 	icon_state = "rainbow baby slime"
 	icon_living = "rainbow baby slime"
 	icon_dead = "rainbow baby slime dead"
@@ -50,7 +50,7 @@
 	speak_chance = 1
 	emote_see = list("jiggles", "bounces in place")
 
-	var/colour = "grey"
+	var/color = "grey"
 
 /mob/living/simple_mob/adultslime/New()
 	..()
@@ -58,13 +58,13 @@
 
 /mob/living/simple_mob/adultslime/death()
 	var/mob/living/simple_mob/old_slime/S1 = new /mob/living/simple_mob/old_slime (src.loc)
-	S1.icon_state = "[src.colour] baby slime"
-	S1.icon_living = "[src.colour] baby slime"
-	S1.icon_dead = "[src.colour] baby slime dead"
-	S1.colour = "[src.colour]"
+	S1.icon_state = "[src.color] baby slime"
+	S1.icon_living = "[src.color] baby slime"
+	S1.icon_dead = "[src.color] baby slime dead"
+	S1.color = "[src.color]"
 	var/mob/living/simple_mob/old_slime/S2 = new /mob/living/simple_mob/old_slime (src.loc)
-	S2.icon_state = "[src.colour] baby slime"
-	S2.icon_living = "[src.colour] baby slime"
-	S2.icon_dead = "[src.colour] baby slime dead"
-	S2.colour = "[src.colour]"
+	S2.icon_state = "[src.color] baby slime"
+	S2.icon_living = "[src.color] baby slime"
+	S2.icon_dead = "[src.color] baby slime dead"
+	S2.color = "[src.color]"
 	qdel(src)

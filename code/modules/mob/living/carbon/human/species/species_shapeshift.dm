@@ -73,7 +73,7 @@ var/list/wrapped_species_by_ref = list()
 		H.b_facial = H.b_skin
 
 	for(var/obj/item/organ/external/E in H.organs)
-		E.sync_colour_to_human(H)
+		E.sync_color_to_human(H)
 
 // Verbs follow.
 /mob/living/carbon/human/proc/shapeshifter_select_hair()
@@ -163,7 +163,7 @@ var/list/wrapped_species_by_ref = list()
 	visible_message("<span class='notice'>\The [src] shifts and contorts, taking the form of \a [new_species]!</span>")
 	regenerate_icons()
 
-/mob/living/carbon/human/proc/shapeshifter_select_colour()
+/mob/living/carbon/human/proc/shapeshifter_select_color()
 
 	set name = "Select Body Colour"
 	set category = "Abilities"
@@ -176,9 +176,9 @@ var/list/wrapped_species_by_ref = list()
 	var/new_skin = input("Please select a new body color.", "Shapeshifter Colour") as color
 	if(!new_skin)
 		return
-	shapeshifter_set_colour(new_skin)
+	shapeshifter_set_color(new_skin)
 
-/mob/living/carbon/human/proc/shapeshifter_set_colour(var/new_skin)
+/mob/living/carbon/human/proc/shapeshifter_set_color(var/new_skin)
 
 	r_skin =   hex2num(copytext(new_skin, 2, 4))
 	g_skin =   hex2num(copytext(new_skin, 4, 6))
@@ -197,7 +197,7 @@ var/list/wrapped_species_by_ref = list()
 		b_facial = b_skin
 
 	for(var/obj/item/organ/external/E in organs)
-		E.sync_colour_to_human(src)
+		E.sync_color_to_human(src)
 
 	regenerate_icons()
 
@@ -292,7 +292,7 @@ var/list/wrapped_species_by_ref = list()
 */
 	return
 
-/mob/living/carbon/human/proc/shapeshifter_select_eye_colour()
+/mob/living/carbon/human/proc/shapeshifter_select_eye_color()
 
 	set name = "Select Eye Color"
 	set category = "Abilities"
@@ -316,10 +316,10 @@ var/list/wrapped_species_by_ref = list()
 	r_eyes = new_color_rgb_list[1]
 	g_eyes = new_color_rgb_list[2]
 	b_eyes = new_color_rgb_list[3]
-	// Now sync the organ's eye_colour list, if possible
+	// Now sync the organ's eye_color list, if possible
 	var/obj/item/organ/internal/eyes/eyes = internal_organs_by_name[O_EYES]
 	if(istype(eyes))
-		eyes.update_colour()
+		eyes.update_color()
 
 	update_icons_body()
 	update_eyes()

@@ -1,10 +1,3 @@
-//VOREStation Edit - Redone a lot of airlock things:
-/*
-- Specific department maintenance doors
-- Named doors properly according to type
-- Gave them default access levels with the access constants
-- Improper'd all of the names in the new()
-*/
 
 /obj/machinery/door/airlock
 	name = "Airlock"
@@ -143,7 +136,7 @@
 /obj/machinery/door/airlock/maintenance
 	name = "Maintenance Access"
 	icon = 'icons/obj/doors/Doormaint.dmi'
-	//req_one_access = list(access_maint_tunnels) //VOREStation Edit - Maintenance is open access
+	//req_one_access = list(access_maint_tunnels)	// Maintenance is open access
 	assembly_type = /obj/structure/door_assembly/door_assembly_mai
 
 /obj/machinery/door/airlock/maintenance/cargo
@@ -196,6 +189,9 @@
 	opacity = 0
 	glass = 1
 	req_one_access = list(access_external_airlocks)
+
+/obj/machinery/door/airlock/glass_external/public
+	req_one_access = list()
 
 /obj/machinery/door/airlock/glass
 	name = "Glass Airlock"
@@ -505,7 +501,7 @@
 /obj/machinery/door/airlock/alien/public // Entry to UFO.
 	req_one_access = list()
 	normalspeed = FALSE // So it closes faster and hopefully keeps the warm air inside.
-	hackProof = TRUE //VOREStation Edit - No borgos
+	hackProof = TRUE
 
 /*
 About the new airlock wires panel:

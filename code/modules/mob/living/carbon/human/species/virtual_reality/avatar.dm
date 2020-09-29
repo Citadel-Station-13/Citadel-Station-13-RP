@@ -30,7 +30,7 @@
 	heal_rate = 0		// Avatars don't naturally heal like prometheans, at least not for now
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/shapeshifter_select_shape,
-		/mob/living/carbon/human/proc/shapeshifter_select_colour,
+		/mob/living/carbon/human/proc/shapeshifter_select_color,
 		/mob/living/carbon/human/proc/shapeshifter_select_hair,
 		/mob/living/carbon/human/proc/shapeshifter_select_hair_colors,
 		/mob/living/carbon/human/proc/shapeshifter_select_gender,

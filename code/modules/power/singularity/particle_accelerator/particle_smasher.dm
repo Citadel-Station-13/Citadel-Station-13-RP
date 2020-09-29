@@ -107,10 +107,10 @@
 	if(anchored)
 		icon_state = "[initial(icon_state)]-o"
 		if(target)
-			material_layer.color = target.material.icon_colour
+			material_layer.color = target.material.icon_color
 			add_overlay(material_layer)
 			if(successful_craft)
-				material_glow.color = target.material.icon_colour
+				material_glow.color = target.material.icon_color
 				add_overlay(material_glow)
 		if(reagent_container)
 			add_overlay(reagent_layer)
@@ -119,7 +119,7 @@
 
 	if(target && energy)
 		var/power_percent = round((energy / max_energy) * 100)
-		light_color = target.material.icon_colour
+		light_color = target.material.icon_color
 		switch(power_percent)
 			if(0 to 25)
 				light_range = 1

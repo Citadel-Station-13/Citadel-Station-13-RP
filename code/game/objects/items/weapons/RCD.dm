@@ -215,7 +215,7 @@
 		rcd_beam = beam_origin.Beam(A, icon_state = "rped_upgrade", time = max(true_delay, 5))
 	busy = TRUE
 
-	perform_effect(A, true_delay) //VOREStation Add
+	perform_effect(A, true_delay)
 	if(do_after(user, true_delay, target = A))
 		busy = FALSE
 		// Doing another check in case we lost matter during the delay for whatever reason.

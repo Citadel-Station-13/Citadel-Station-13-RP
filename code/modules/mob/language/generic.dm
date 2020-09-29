@@ -6,13 +6,13 @@
 	flags = RESTRICTED|NONGLOBAL|INNATE|NO_TALK_MSG|NO_STUTTER
 
 /datum/language/noise/format_message(message, verb)
-	return "<span class='message'><span class='[colour]'>[message]</span></span>"
+	return "<span class='message'><span class='[color]'>[message]</span></span>"
 
 /datum/language/noise/format_message_plain(message, verb)
 	return message
 
 /datum/language/noise/format_message_radio(message, verb)
-	return "<span class='[colour]'>[message]</span>"
+	return "<span class='[color]'>[message]</span>"
 
 /datum/language/noise/get_talkinto_msg_range(message)
 	// if you make a loud noise (screams etc), you'll be heard from 4 tiles over instead of two
@@ -48,7 +48,7 @@
 	name = LANGUAGE_TRADEBAND
 	desc = "Maintained by the various trading cartels in major systems, this elegant, structured language is used for bartering and bargaining." //VOREstation Edit
 	speech_verb = "enunciates"
-	colour = "say_quote"
+	color = "say_quote"
 	key = "2"
 	syllables = list(
 "fea","vea","vei","veh","vee","feh","fa","soa","su","sua","sou","se","seh","twa","twe","twi",
@@ -62,7 +62,7 @@
 	desc = "A group of languages spoken by the Zorren with a certain degree of mutual intelligibility under each other. Evidence shows it was a single lingua franca which has diverged into many sub languages due to isolation." // VOREstation edit. Original : A soft language spoken by the people of the sparsely populated, socially-conscious Precursors' Crypt region.
 	speech_verb = "mentions"
 	exclaim_verb = "insinuates"
-	colour = "terminus"
+	color = "terminus"
 	key = "4"
 	// flags = WHITELISTED (VOREstation edit)
 	// partial_understanding = list(LANGUAGE_SOL_COMMON = 20) (VOREStation Edit: It is a Zorren language now)
@@ -75,7 +75,7 @@
 	name = LANGUAGE_GUTTER
 	desc = "Gutter originated as a Thieves' Cant of sorts during the early colonization era. The language eventually spread from the cartels and triads to the disenfranchised people of the Bowl."
 	speech_verb = "growls"
-	colour = "rough"
+	color = "rough"
 	key = "3"
 	space_chance = 45
 	partial_understanding = list(LANGUAGE_GALCOM = 10, LANGUAGE_TRADEBAND = 20, LANGUAGE_SOL_COMMON = 20)
@@ -135,7 +135,7 @@
 	name = LANGUAGE_SIGN
 	desc = "A sign language commonly used for those who are deaf or mute."
 	signlang_verb = list("gestures")
-	colour = "say_quote"
+	color = "say_quote"
 	key = "s"
 	flags = SIGNLANG|NO_STUTTER|NONVERBAL
 
@@ -151,7 +151,7 @@
 	speech_verb = "squeaks"
 	whisper_verb = "squiks"
 	exclaim_verb = "squeaks loudly"
-	colour = "say_quote"
+	color = "say_quote"
 	key = "e"	// Squeak squeak squeee squik
 	syllables = list ("sque", "uik", "squeak", "squee", "eak", "eek", "uek", "squik",
 			"squeek", "sq", "eek", "squeee", "ee", "ek", "ak", "ueak", "squea")
@@ -164,7 +164,7 @@
 	speech_verb = "rustles"
 	whisper_verb = "susurrus"
 	exclaim_verb = "crackles"
-	colour = "soghun"
+	color = "soghun"
 	key = "t" //Rustles susurrus crackles
 	syllables = list ("shh", "fssh", "rustle", "snap", "kssh", "sffh", "mssh", "creak",
 			"knock", "crk", "srhh", "rrssh", "sh", "hk", "fsh", "rss", "ks")
@@ -177,7 +177,7 @@
 	speech_verb = "spews"
 	whisper_verb = "mumbles"
 	exclaim_verb = "shrieks"
-	colour = "attack"
+	color = "attack"
 	key = "r"	// Radda radda radda
 	flags = RESTRICTED|NONGLOBAL
 	machine_understands = 0

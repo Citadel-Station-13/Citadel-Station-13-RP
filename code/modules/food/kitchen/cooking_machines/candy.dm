@@ -16,5 +16,5 @@
 	)
 
 /obj/machinery/appliance/mixer/candy/change_product_appearance(var/obj/item/reagent_containers/food/snacks/cooked/product)
-	food_color = get_random_colour(1)
+	food_color = get_random_color(1)
 	. = ..()

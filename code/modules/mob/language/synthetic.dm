@@ -1,7 +1,7 @@
 /datum/language/binary
 	name = "Robot Talk"
 	desc = "Most human stations support free-use communications protocols and routing hubs for synthetic use."
-	colour = "say_quote"
+	color = "say_quote"
 	speech_verb = "states"
 	ask_verb = "queries"
 	exclaim_verb = "declares"
@@ -63,7 +63,7 @@
 	speech_verb = "transmits"
 	ask_verb = "transmits"
 	exclaim_verb = "transmits"
-	colour = "say_quote"
+	color = "say_quote"
 	key = "d"
 	machine_understands = 0
 	flags = RESTRICTED | HIVEMIND

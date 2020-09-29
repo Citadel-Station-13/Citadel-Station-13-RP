@@ -37,7 +37,7 @@ var/global/list/Holiday = list() //Holidays are lists now, so we can have more t
 				if(12)
 					Holiday["Vertalliq-Qerr"] = "Vertalliq-Qerr, translated to mean 'Festival of the Royals', is a \
 					Skrell holiday that celebrates the Qerr-Katish and all they have provided for the rest of Skrell society, \
-					it often features colourful displays and skilled performers take this time to show off some of their more \
+					it often features colorful displays and skilled performers take this time to show off some of their more \
 					fancy displays."
 
 		if(2)	//Feb

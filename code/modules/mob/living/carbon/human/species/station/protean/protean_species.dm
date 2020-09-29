@@ -104,8 +104,8 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 		/mob/living/carbon/human/proc/nano_change_fitting, //These verbs are displayed normally,
 		/mob/living/carbon/human/proc/shapeshifter_select_hair,
 		/mob/living/carbon/human/proc/shapeshifter_select_hair_colors,
-		/mob/living/carbon/human/proc/shapeshifter_select_colour,
-		/mob/living/carbon/human/proc/shapeshifter_select_eye_colour,
+		/mob/living/carbon/human/proc/shapeshifter_select_color,
+		/mob/living/carbon/human/proc/shapeshifter_select_eye_color,
 		/mob/living/carbon/human/proc/shapeshifter_select_gender,
 		/mob/living/carbon/human/proc/shapeshifter_select_wings,
 		/mob/living/carbon/human/proc/shapeshifter_select_tail,
@@ -177,10 +177,10 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 /datum/species/protean/hug(var/mob/living/carbon/human/H, var/mob/living/target)
 	return ..() //Wut
 
-/datum/species/protean/get_blood_colour(var/mob/living/carbon/human/H)
+/datum/species/protean/get_blood_color(var/mob/living/carbon/human/H)
 	return rgb(80,80,80,230)
 
-/datum/species/protean/get_flesh_colour(var/mob/living/carbon/human/H)
+/datum/species/protean/get_flesh_color(var/mob/living/carbon/human/H)
 	return rgb(80,80,80,230)
 
 /datum/species/protean/handle_death(var/mob/living/carbon/human/H)

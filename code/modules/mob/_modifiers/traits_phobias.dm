@@ -111,11 +111,11 @@
 			if(istype(thing, /obj/effect/decal/cleanable/blood/tracks))
 				var/obj/effect/decal/cleanable/blood/tracks/T = B
 				for(var/datum/fluidtrack/F in T.stack)
-					if(F.basecolor != SYNTH_BLOOD_COLOUR)
+					if(F.basecolor != SYNTH_BLOOD_COLOR)
 						fear_amount++
 						break
 			else
-				if(B.basecolor != SYNTH_BLOOD_COLOUR)
+				if(B.basecolor != SYNTH_BLOOD_COLOR)
 					fear_amount++
 
 		// People covered in blood is also bad.
@@ -124,9 +124,9 @@
 			var/mob/living/carbon/human/H = thing
 			var/self_multiplier = H == holder ? 2 : 1
 			var/human_blood_fear_amount = 0
-			if(!H.gloves && H.bloody_hands && H.hand_blood_color != SYNTH_BLOOD_COLOUR)
+			if(!H.gloves && H.bloody_hands && H.hand_blood_color != SYNTH_BLOOD_COLOR)
 				human_blood_fear_amount += 1
-			if(!H.shoes && H.feet_blood_color && H.feet_blood_color != SYNTH_BLOOD_COLOUR)
+			if(!H.shoes && H.feet_blood_color && H.feet_blood_color != SYNTH_BLOOD_COLOR)
 				human_blood_fear_amount += 1
 
 			// List of slots.  Some slots like pockets are omitted due to not being visible, if H isn't the holder.
@@ -135,7 +135,7 @@
 				clothing_slots += list(H.l_store, H.r_store)
 
 			for(var/obj/item/clothing/C in clothing_slots)
-				if(C.blood_DNA && C.blood_color && C.blood_color != SYNTH_BLOOD_COLOUR)
+				if(C.blood_DNA && C.blood_color && C.blood_color != SYNTH_BLOOD_COLOR)
 					human_blood_fear_amount += 1
 
 			// This is divided, since humans can wear so many items at once.
@@ -145,7 +145,7 @@
 		// Bloody objects are also bad.
 		if(istype(thing, /obj))
 			var/obj/O = thing
-			if(O.blood_DNA && O.blood_color && O.blood_color != SYNTH_BLOOD_COLOUR)
+			if(O.blood_DNA && O.blood_color && O.blood_color != SYNTH_BLOOD_COLOR)
 				fear_amount++
 
 	return fear_amount

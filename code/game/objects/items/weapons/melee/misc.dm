@@ -65,7 +65,7 @@
 
 // Randomizes color
 /obj/item/melee/umbrella/random/New()
-	color = "#"+get_random_colour()
+	color = "#"+get_random_color()
 	..()
 
 /obj/item/melee/cursedblade

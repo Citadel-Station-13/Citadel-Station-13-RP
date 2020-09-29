@@ -30,7 +30,7 @@ var/list/admin_verbs_admin = list(
 	/datum/admins/proc/announce,		//priority announce something to all clients.,
 	/datum/admins/proc/intercom,		//send a fake intercom message, like an arrivals announcement,
 	/datum/admins/proc/intercom_convo,	//send a fake intercom conversation, like an ATC exchange,
-	/client/proc/colorooc,				//allows us to set a custom colour for everythign we say in ooc,
+	/client/proc/colorooc,				//allows us to set a custom color for everythign we say in ooc,
 	/client/proc/admin_ghost,			//allows us to ghost/reenter body at will,
 	/client/proc/toggle_view_range,		//changes how far we can see,
 	/client/proc/cmd_admin_pm_context,	//right-click adminPM interface,
@@ -592,7 +592,7 @@ var/list/admin_verbs_event_manager = list(
 	if(!holder)	return
 	var/response = alert(src, "Please choose a distinct color that is easy to read and doesn't mix with all the other chat and radio frequency colors.", "Change own OOC color", "Pick new color", "Reset to default", "Cancel")
 	if(response == "Pick new color")
-		prefs.ooccolor = input(src, "Please select your OOC colour.", "OOC colour") as color
+		prefs.ooccolor = input(src, "Please select your OOC color.", "OOC color") as color
 	else if(response == "Reset to default")
 		prefs.ooccolor = initial(prefs.ooccolor)
 	SScharacter_setup.queue_preferences_save(prefs)

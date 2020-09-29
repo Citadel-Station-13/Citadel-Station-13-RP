@@ -1102,7 +1102,7 @@
 	else
 		to_chat(usr, "<span class='warning'>You failed to check the pulse. Try again.</span>")
 
-/mob/living/carbon/human/proc/set_species(var/new_species, var/default_colour, var/regen_icons = TRUE, var/mob/living/carbon/human/example = null)	//VOREStation Edit - send an example
+/mob/living/carbon/human/proc/set_species(var/new_species, var/default_color, var/regen_icons = TRUE, var/mob/living/carbon/human/example = null)	//VOREStation Edit - send an example
 
 	if(!dna)
 		if(!new_species)
@@ -1148,7 +1148,7 @@
 			g_skin = example.g_skin
 			b_skin = example.b_skin
 	else if(species.base_color)	//VOREStation Edit end
-		//Apply colour.
+		//Apply color.
 		r_skin = hex2num(copytext(species.base_color,2,4))
 		g_skin = hex2num(copytext(species.base_color,4,6))
 		b_skin = hex2num(copytext(species.base_color,6,8))

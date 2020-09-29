@@ -1,7 +1,7 @@
 /obj/structure/window
 	name = "window"
 	desc = "A window."
-	icon = 'icons/obj/structures_vr.dmi' // VOREStation Edit - New icons
+	icon = 'icons/obj/structures_vr.dmi'
 	density = 1
 	can_atmos_pass = ATMOS_PASS_DENSITY
 	w_class = ITEMSIZE_NORMAL

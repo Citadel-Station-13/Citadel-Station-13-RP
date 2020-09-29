@@ -4,8 +4,8 @@
 	var/mob/living/carbon/occupant
 	var/locked
 	name = "Body Scanner"
-	icon = 'icons/obj/Cryogenic2.dmi'
-	icon_state = "body_scanner_0"
+	icon = 'icons/obj/Cryogenic2_vr.dmi'
+	icon_state = "scanner_open"
 	density = 1
 	anchored = 1
 	circuit = /obj/item/circuitboard/body_scanner
@@ -59,7 +59,7 @@
 			return
 		M.forceMove(src)
 		occupant = M
-		update_icon() //icon_state = "body_scanner_1" //VOREStation Edit - Health display for consoles with light and such.
+		update_icon()	// Health display for consoles with light and such.
 		add_fingerprint(user)
 		qdel(G)
 	if(!occupant)
@@ -102,12 +102,12 @@
 
 	O.forceMove(src)
 	occupant = O
-	update_icon() //icon_state = "body_scanner_1" //VOREStation Edit - Health display for consoles with light and such.
+	update_icon()	// Health display for consoles with light and such.
 	add_fingerprint(user)
 
 /obj/machinery/bodyscanner/relaymove(mob/user as mob)
 	if(user.incapacitated())
-		return 0 //maybe they should be able to get out with cuffs, but whatever
+		return 0	// Maybe they should be able to get out with cuffs, but whatever
 	go_out()
 
 /obj/machinery/bodyscanner/verb/eject()
@@ -128,7 +128,7 @@
 		occupant.client.perspective = MOB_PERSPECTIVE
 	occupant.loc = src.loc
 	occupant = null
-	update_icon() //icon_state = "body_scanner_1" //VOREStation Edit - Health display for consoles with light and such.
+	update_icon()	// Health display for consoles with light and such.
 	return
 
 /obj/machinery/bodyscanner/ex_act(severity)
@@ -162,17 +162,46 @@
 		else
 	return
 
-//Body Scan Console
+/obj/machinery/bodyscanner/update_icon()
+	if(stat & (NOPOWER|BROKEN))
+		icon_state = "scanner_off"
+		set_light(0)
+	else
+		var/h_ratio
+		if(occupant)
+			h_ratio = occupant.health / occupant.maxHealth
+			switch(h_ratio)
+				if(1.000)
+					icon_state = "scanner_green"
+					set_light(l_range = 1.5, l_power = 2, l_color = COLOR_LIME)
+				if(0.001 to 0.999)
+					icon_state = "scanner_yellow"
+					set_light(l_range = 1.5, l_power = 2, l_color = COLOR_YELLOW)
+				if(-0.999 to 0.000)
+					icon_state = "scanner_red"
+					set_light(l_range = 1.5, l_power = 2, l_color = COLOR_RED)
+				else
+					icon_state = "scanner_death"
+					set_light(l_range = 1.5, l_power = 2, l_color = COLOR_RED)
+		else
+			icon_state = "scanner_open"
+			set_light(0)
+		if(console)
+			console.update_icon(h_ratio)
+
+// Body Scan Console
 /obj/machinery/body_scanconsole
 	var/obj/machinery/bodyscanner/scanner
-	var/known_implants = list(/obj/item/implant/health, /obj/item/implant/chem, /obj/item/implant/death_alarm, /obj/item/implant/loyalty, /obj/item/implant/tracking, /obj/item/implant/language, /obj/item/implant/language/eal, /obj/item/implant/backup, /obj/item/nif) //VOREStation Add - Backup Implant, NIF
+
+	// Backup Implant, NIF
+	var/known_implants = list(/obj/item/implant/health, /obj/item/implant/chem, /obj/item/implant/death_alarm, /obj/item/implant/loyalty, /obj/item/implant/tracking, /obj/item/implant/language, /obj/item/implant/language/eal, /obj/item/implant/backup, /obj/item/nif)
 	var/delete
 	var/temphtml
 	name = "Body Scanner Console"
-	icon = 'icons/obj/Cryogenic2.dmi'
-	icon_state = "body_scannerconsole"
+	icon = 'icons/obj/Cryogenic2_vr.dmi'
+	icon_state = "scanner_terminal_off"
 	dir = 8
-	density = 0
+	density = 1
 	anchored = 1
 	circuit = /obj/item/circuitboard/scanner_console
 	var/printing = null
@@ -206,18 +235,7 @@
 		return attack_hand(user)
 
 /obj/machinery/body_scanconsole/power_change()
-	/* VOREStation Removal
-	if(stat & BROKEN)
-		icon_state = "body_scannerconsole-p"
-	else if(powered() && !panel_open)
-		icon_state = initial(icon_state)
-		stat &= ~NOPOWER
-	else
-		spawn(rand(0, 15))
-			icon_state = "body_scannerconsole-p"
-			stat |= NOPOWER
-	*/
-	update_icon() //icon_state = "body_scanner_1" //VOREStation Edit - Health display for consoles with light and such.
+	update_icon()	// Health display for consoles with light and such.
 
 /obj/machinery/body_scanconsole/ex_act(severity)
 	switch(severity)
@@ -269,6 +287,30 @@
 	if(scanner)
 		return ui_interact(user)
 
+/obj/machinery/body_scanconsole/update_icon(var/h_ratio)
+	if(stat & (NOPOWER|BROKEN))
+		icon_state = "scanner_terminal_off"
+		set_light(0)
+	else
+		if(scanner)
+			if(h_ratio)
+				switch(h_ratio)
+					if(1.000)
+						icon_state = "scanner_terminal_green"
+						set_light(l_range = 1.5, l_power = 2, l_color = COLOR_LIME)
+					if(-0.999 to 0.000)
+						icon_state = "scanner_terminal_red"
+						set_light(l_range = 1.5, l_power = 2, l_color = COLOR_RED)
+					else
+						icon_state = "scanner_terminal_dead"
+						set_light(l_range = 1.5, l_power = 2, l_color = COLOR_RED)
+			else
+				icon_state = "scanner_terminal_blue"
+				set_light(l_range = 1.5, l_power = 2, l_color = COLOR_BLUE)
+		else
+			icon_state = "scanner_terminal_off"
+			set_light(0)
+
 /obj/machinery/body_scanconsole/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/data[0]
 
@@ -279,7 +321,7 @@
 
 		var/occupantData[0]
 		if(scanner.occupant && ishuman(scanner.occupant))
-			update_icon() //VOREStation Edit - Health display for consoles with light and such.
+			update_icon()	// Health display for consoles with light and such.
 			var/mob/living/carbon/human/H = scanner.occupant
 			occupantData["name"] = H.name
 			occupantData["stat"] = H.stat
@@ -397,7 +439,7 @@
 
 			occupantData["blind"] = (H.sdisabilities & BLIND)
 			occupantData["nearsighted"] = (H.disabilities & NEARSIGHTED)
-			occupantData = attempt_vr(scanner,"get_occupant_data_vr",list(occupantData,H)) //VOREStation Insert
+			occupantData = attempt_vr(scanner,"get_occupant_data_vr",list(occupantData,H))
 		data["occupant"] = occupantData
 
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
@@ -407,6 +449,27 @@
 		ui.open()
 		ui.set_auto_update(1)
 
+/obj/machinery/bodyscanner/proc/get_occupant_data_vr(list/incoming,mob/living/carbon/human/H)
+	var/humanprey = 0
+	var/livingprey = 0
+	var/objectprey = 0
+
+	for(var/belly in H.vore_organs)
+		var/obj/belly/B = belly
+		for(var/C in B)
+			if(ishuman(C))
+				humanprey++
+			else if(isliving(C))
+				livingprey++
+			else
+				objectprey++
+
+	incoming["livingPrey"] = livingprey
+	incoming["humanPrey"] = humanprey
+	incoming["objectPrey"] = objectprey
+	incoming["weight"] = H.weight
+
+	return incoming
 
 /obj/machinery/body_scanconsole/Topic(href, href_list)
 	if(..())

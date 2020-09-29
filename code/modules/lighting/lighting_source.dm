@@ -9,9 +9,9 @@
 	var/turf/source_turf     // The turf under the above.
 	var/light_power    // Intensity of the emitter light.
 	var/light_range      // The range of the emitted light.
-	var/light_color    // The colour of the light, string, decomposed by parse_light_color()
+	var/light_color    // The color of the light, string, decomposed by parse_light_color()
 
-	// Variables for keeping track of the colour.
+	// Variables for keeping track of the color.
 	var/lum_r
 	var/lum_g
 	var/lum_b
@@ -147,7 +147,7 @@
 		parse_light_color()
 		. = 1
 
-// Decompile the hexadecimal colour into lumcounts of each perspective.
+// Decompile the hexadecimal color into lumcounts of each perspective.
 /datum/light_source/proc/parse_light_color()
 	if(light_color)
 		lum_r = GetRedPart  (light_color) / 255

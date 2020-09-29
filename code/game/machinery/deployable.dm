@@ -26,7 +26,7 @@ Barricades
 		return
 	name = "[material.display_name] barricade"
 	desc = "This space is blocked off by a barricade made of [material.display_name]."
-	color = material.icon_colour
+	color = material.icon_color
 	maxhealth = material.integrity
 	health = maxhealth
 

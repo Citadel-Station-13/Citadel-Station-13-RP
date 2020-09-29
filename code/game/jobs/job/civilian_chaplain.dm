@@ -1,4 +1,4 @@
-//Due to how large this one is it gets its own file
+// Due to how large this one is it gets its own file
 /datum/job/chaplain
 	title = "Chaplain"
 	flag = CHAPLAIN
@@ -83,12 +83,12 @@
 
 		var/accepted = 0
 		var/outoftime = 0
-		spawn(200) // 20 seconds to choose
+		spawn(200)	// 20 seconds to choose
 			outoftime = 1
 		var/new_book_style = "Bible"
 
 		while(!accepted)
-			if(!B) break // prevents possible runtime errors
+			if(!B) break	// Prevents possible runtime errors
 			new_book_style = input(H,"Which bible style would you like?") in list("Bible", "Koran", "Scrapbook", "Pagan", "White Bible", "Holy Light", "Athiest", "Tome", "The King in Yellow", "Ithaqua", "Scientology", "the bible melts", "Necronomicon","Orthodox","Torah")
 			switch(new_book_style)
 				if("Koran")
@@ -137,7 +137,7 @@
 					B.icon_state = "bible"
 					B.item_state = "bible"
 
-			H.update_inv_l_hand() // so that it updates the bible's item_state in his hand
+			H.update_inv_l_hand()	// So that it updates the bible's item_state in his hand
 
 			switch(input(H,"Look at your bible - is this what you want?") in list("Yes","No"))
 				if("Yes")

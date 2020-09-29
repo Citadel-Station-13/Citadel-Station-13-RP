@@ -12,7 +12,7 @@
 		"You feel happy.",
 		"You fight the urge to smile.",
 		"Your scalp prickles.",
-		"All the colours seem a bit more vibrant.",
+		"All the colors seem a bit more vibrant.",
 		"Everything seems a little lighter.",
 		"The troubles of the world seem to fade away.")
 

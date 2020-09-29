@@ -1,24 +1,24 @@
 /mob/living/carbon/human
-	//Hair colour and style
+	//Hair color and style
 	var/r_hair = 0
 	var/g_hair = 0
 	var/b_hair = 0
 	var/h_style = "Bald"
 
-	//Facial hair colour and style
+	//Facial hair color and style
 	var/r_facial = 0
 	var/g_facial = 0
 	var/b_facial = 0
 	var/f_style = "Shaved"
 
-	//Eye colour
+	//Eye color
 	var/r_eyes = 0
 	var/g_eyes = 0
 	var/b_eyes = 0
 
 	var/s_tone = 0	//Skin tone
 
-	//Skin colour
+	//Skin color
 	var/r_skin = 238 // TO DO: Set defaults for other races.
 	var/g_skin = 206
 	var/b_skin = 179

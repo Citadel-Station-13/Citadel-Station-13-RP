@@ -127,7 +127,7 @@
 					dat += "<A href='?src=\ref[src];action=create;item=leathercoat;cost=500'>Leather Coat</A> <FONT COLOR=blue>([round(500/build_eff)])</FONT><BR>"
 					dat += "<A href='?src=\ref[src];action=create;item=leatherjacket;cost=500'>Leather Jacket</A> <FONT COLOR=blue>([round(500/build_eff)])</FONT><BR>"
 					dat += "<A href='?src=\ref[src];action=create;item=wintercoat;cost=500'>Winter Coat</A> <FONT COLOR=blue>([round(500/build_eff)])</FONT><BR>"
-					dat += "<A href='?src=\ref[src];action=create;item=algae;cost=400'>4 Algae Sheets</A> <FONT COLOR=blue>([round(400/build_eff)])</FONT><BR>" //VOREStation Edit - Algae for oxygen generator
+					dat += "<A href='?src=\ref[src];action=create;item=algae;cost=400'>4 Algae Sheets</A> <FONT COLOR=blue>([round(400/build_eff)])</FONT><BR>"
 					//dat += "Other<BR>"
 					//dat += "<A href='?src=\ref[src];action=create;item=monkey;cost=500'>Monkey</A> <FONT COLOR=blue>(500)</FONT><BR>"
 				else
@@ -258,9 +258,9 @@
 			new/obj/item/clothing/suit/storage/toggle/brown_jacket(loc)
 		if("wintercoat")
 			new/obj/item/clothing/suit/storage/hooded/wintercoat(loc)
-		if("algae") //VOREStation Edit - Algae for oxygen generator
+		if("algae")
 			var/obj/item/stack/material/algae/A = new(loc)
-			A.amount = 4 //VOREStation Edit End
+			A.amount = 4
 	processing = 0
 	menustat = "complete"
 	update_icon()

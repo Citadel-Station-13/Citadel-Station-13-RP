@@ -21,7 +21,7 @@ If d1 = 0 and d2 = dir, it's a O-X cable, getting from the center of the tile to
 If d1 = dir1 and d2 = dir2, it's a full X-X cable, getting from dir1 to dir2
 By design, d1 is the smallest direction and d2 is the highest
 */
-var/list/possible_cable_coil_colours = list(
+var/list/possible_cable_coil_colors = list(
 		"White" = COLOR_WHITE,
 		"Silver" = COLOR_SILVER,
 		"Gray" = COLOR_GRAY,
@@ -582,9 +582,9 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	if(!selected_color)
 		return
 
-	var/final_color = possible_cable_coil_colours[selected_color]
+	var/final_color = possible_cable_coil_colors[selected_color]
 	if(!final_color)
-		final_color = possible_cable_coil_colours["Red"]
+		final_color = possible_cable_coil_colors["Red"]
 		selected_color = "red"
 	color = final_color
 	to_chat(user, "<span class='notice'>You change \the [src]'s color to [lowertext(selected_color)].</span>")
@@ -626,11 +626,11 @@ obj/structure/cable/proc/cableColor(var/colorC)
 		to_chat(usr, "<span class='notice'>You cannot do that.</span>")
 	..()
 
-/obj/item/stack/cable_coil/cyborg/verb/set_colour()
+/obj/item/stack/cable_coil/cyborg/verb/set_color()
 	set name = "Change Colour"
 	set category = "Object"
 
-	var/selected_type = input("Pick new colour.", "Cable Colour", null, null) as null|anything in possible_cable_coil_colours
+	var/selected_type = input("Pick new color.", "Cable Colour", null, null) as null|anything in possible_cable_coil_colors
 	set_cable_color(selected_type, usr)
 
 // Items usable on a cable coil :

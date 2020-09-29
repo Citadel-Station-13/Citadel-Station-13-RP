@@ -696,7 +696,7 @@ world
 		return BlendRGB(tone, "#ffffff", (gray-tone_gray)/((255-tone_gray) || 1))
 
 
-//Used in the OLD chem colour mixing algorithm
+//Used in the OLD chem color mixing algorithm
 /proc/GetColors(hex)
 	hex = uppertext(hex)
 	// No alpha set? Default to full alpha.
@@ -1034,7 +1034,7 @@ GLOBAL_LIST_EMPTY(friendly_animal_types)
 */
 //Interface for using DrawBox() to draw 1 pixel on a coordinate.
 //Returns the same icon specifed in the argument, but with the pixel drawn
-/proc/DrawPixel(icon/I,colour,drawX,drawY)
+/proc/DrawPixel(icon/I,color,drawX,drawY)
 	if(!I)
 		return 0
 
@@ -1046,14 +1046,14 @@ GLOBAL_LIST_EMPTY(friendly_animal_types)
 	if(drawY > Iheight || drawY <= 0)
 		return 0
 
-	I.DrawBox(colour,drawX, drawY)
+	I.DrawBox(color,drawX, drawY)
 	return I
 
 
 //Interface for easy drawing of one pixel on an atom.
-/atom/proc/DrawPixelOn(colour, drawX, drawY)
+/atom/proc/DrawPixelOn(color, drawX, drawY)
 	var/icon/I = new(icon)
-	var/icon/J = DrawPixel(I, colour, drawX, drawY)
+	var/icon/J = DrawPixel(I, color, drawX, drawY)
 	if(J) //Only set the icon if it succeeded, the icon without the pixel is 1000x better than a black square.
 		icon = J
 		return J
@@ -1100,7 +1100,7 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 		return
 	if(!(obj_flags & FROZEN))
 		name = "frozen [name]"
-		add_atom_colour(GLOB.freon_color_matrix, TEMPORARY_COLOUR_PRIORITY)
+		add_atom_color(GLOB.freon_color_matrix, TEMPORARY_COLOR_PRIORITY)
 		alpha -= 25
 		obj_flags |= FROZEN
 
@@ -1108,7 +1108,7 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 /obj/proc/make_unfrozen()
 	if(obj_flags & FROZEN)
 		name = replacetext(name, "frozen ", "")
-		remove_atom_colour(TEMPORARY_COLOUR_PRIORITY, GLOB.freon_color_matrix)
+		remove_atom_color(TEMPORARY_COLOR_PRIORITY, GLOB.freon_color_matrix)
 		alpha += 25
 		obj_flags &= ~FROZEN
 */

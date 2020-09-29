@@ -489,7 +489,7 @@ END OF CITADEL CHANGE */
 //natje:Pumila
 /obj/item/clothing/under/fluff/aluranevines
 	name = "Pumila's vines"
-	desc = "A wrap of green vines and colourful flowers."
+	desc = "A wrap of green vines and colorful flowers."
 
 	icon = 'icons/vore/custom_clothes_vr.dmi'
 	icon_state = "alurane-vines"
@@ -568,7 +568,7 @@ END OF CITADEL CHANGES */
 END OF CITADEL CHANGE */
 /obj/item/storage/belt/utility/fluff/vulpine
 	name = "vulpine belt"
-	desc = "A tool-belt in Atmos colours."
+	desc = "A tool-belt in Atmos colors."
 
 	icon = 'icons/vore/custom_clothes_vr.dmi'
 	icon_state = "vulpine_belt"

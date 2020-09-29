@@ -46,3 +46,7 @@
 /datum/category_item/autolathe/tools/welder_industrial
 	name = "industrial welding tool"
 	path =/obj/item/weldingtool/largetank
+
+/datum/category_item/autolathe/tools/prybar
+	name = "prybar"
+	path =/obj/item/tool/prybar

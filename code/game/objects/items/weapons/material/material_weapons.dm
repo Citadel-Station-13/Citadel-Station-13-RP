@@ -16,7 +16,7 @@
 			slot_r_hand_str = 'icons/mob/items/righthand_material.dmi',
 			)
 
-	var/applies_material_colour = 1
+	var/applies_material_color = 1
 	var/unbreakable = 0		//Doesn't lose health
 	var/fragile = 0			//Shatters when it dies
 	var/dulled = 0			//Has gone dull
@@ -74,8 +74,8 @@
 	else
 		name = "[material.display_name] [initial(name)]"
 		health = round(material.integrity/10)
-		if(applies_material_colour)
-			color = material.icon_colour
+		if(applies_material_color)
+			color = material.icon_color
 		if(material.products_need_process())
 			START_PROCESSING(SSobj, src)
 		update_force()

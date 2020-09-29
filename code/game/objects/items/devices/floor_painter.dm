@@ -5,14 +5,14 @@
 
 	var/decal =        "remove all decals"
 	var/paint_dir =    "precise"
-	var/paint_colour = "#FFFFFF"
+	var/paint_color = "#FFFFFF"
 
 	var/list/decals = list(
-		"quarter-turf" =      list("path" = /obj/effect/floor_decal/corner, "precise" = 1, "coloured" = 1),
+		"quarter-turf" =      list("path" = /obj/effect/floor_decal/corner, "precise" = 1, "colored" = 1),
 		"hazard stripes" =    list("path" = /obj/effect/floor_decal/industrial/warning),
 		"corner, hazard" =    list("path" = /obj/effect/floor_decal/industrial/warning/corner),
-		"hatched marking" =   list("path" = /obj/effect/floor_decal/industrial/hatch, "coloured" = 1),
-		"dotted outline" =    list("path" = /obj/effect/floor_decal/industrial/outline, "coloured" = 1),
+		"hatched marking" =   list("path" = /obj/effect/floor_decal/industrial/hatch, "colored" = 1),
+		"dotted outline" =    list("path" = /obj/effect/floor_decal/industrial/outline, "colored" = 1),
 		"loading sign" =      list("path" = /obj/effect/floor_decal/industrial/loading),
 		"1" =                 list("path" = /obj/effect/floor_decal/sign),
 		"2" =                 list("path" = /obj/effect/floor_decal/sign/two),
@@ -94,37 +94,37 @@
 	else if(paint_dirs[paint_dir])
 		painting_dir = paint_dirs[paint_dir]
 
-	var/painting_colour
-	if(decal_data["coloured"] && paint_colour)
-		painting_colour = paint_colour
+	var/painting_color
+	if(decal_data["colored"] && paint_color)
+		painting_color = paint_color
 
-	new painting_decal(F, painting_dir, painting_colour)
+	new painting_decal(F, painting_dir, painting_color)
 
 /obj/item/floor_painter/attack_self(var/mob/user)
-	var/choice = input("Do you wish to change the decal type, paint direction, or paint colour?") as null|anything in list("Decal","Direction", "Colour")
+	var/choice = input("Do you wish to change the decal type, paint direction, or paint color?") as null|anything in list("Decal","Direction", "Colour")
 	if(choice == "Decal")
 		choose_decal()
 	else if(choice == "Direction")
 		choose_direction()
 	else if(choice == "Colour")
-		choose_colour()
+		choose_color()
 
 /obj/item/floor_painter/examine(mob/user)
 	..(user)
-	to_chat(user, "It is configured to produce the '[decal]' decal with a direction of '[paint_dir]' using [paint_colour] paint.")
+	to_chat(user, "It is configured to produce the '[decal]' decal with a direction of '[paint_dir]' using [paint_color] paint.")
 
-/obj/item/floor_painter/verb/choose_colour()
+/obj/item/floor_painter/verb/choose_color()
 	set name = "Choose Colour"
-	set desc = "Choose a floor painter colour."
+	set desc = "Choose a floor painter color."
 	set category = "Object"
 	set src in usr
 
 	if(usr.incapacitated())
 		return
-	var/new_colour = input(usr, "Choose a colour.", "Floor painter", paint_colour) as color|null
-	if(new_colour && new_colour != paint_colour)
-		paint_colour = new_colour
-		to_chat(usr, "<span class='notice'>You set \the [src] to paint with <font color='[paint_colour]'>a new colour</font>.</span>")
+	var/new_color = input(usr, "Choose a color.", "Floor painter", paint_color) as color|null
+	if(new_color && new_color != paint_color)
+		paint_color = new_color
+		to_chat(usr, "<span class='notice'>You set \the [src] to paint with <font color='[paint_color]'>a new color</font>.</span>")
 
 /obj/item/floor_painter/verb/choose_decal()
 	set name = "Choose Decal"

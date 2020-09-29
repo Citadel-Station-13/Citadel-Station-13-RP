@@ -1,6 +1,5 @@
 // Access check is of the type requires one. These have been carefully selected to avoid allowing the janitor to see channels he shouldn't
 GLOBAL_LIST_INIT(default_internal_channels, list(
-//VOREStation Edit Start - Updating this for Virgo
 	num2text(PUB_FREQ) = list(),
 	num2text(AI_FREQ)  = list(access_synth),
 	num2text(ENT_FREQ) = list(),
@@ -24,8 +23,8 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 ))
 
 /obj/item/radio
-	icon = 'icons/obj/radio_vr.dmi' //VOREStation Edit
-	name = "shortwave radio" //VOREStation Edit
+	icon = 'icons/obj/radio_vr.dmi'
+	name = "shortwave radio"
 	suffix = "\[3\]"
 	icon_state = "walkietalkie"
 	item_state = "radio"
@@ -474,12 +473,10 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	//THIS IS TEMPORARY. YEAH RIGHT
 	if(!connection)	return FALSE	//~Carn
 
-//VOREStation Add Start
 	if(bluespace_radio)
 		return Broadcast_Message(connection, M, voicemask, pick(M.speak_emote),
 					  src, message, displayname, jobname, real_name, M.voice_name,
 					  0, signal.data["compression"], list(0), connection.frequency,verb,speaking)
-//VOREStation Add End
 
 	return Broadcast_Message(connection, M, voicemask, pick(M.speak_emote),
 					  src, message, displayname, jobname, real_name, M.voice_name,
@@ -518,7 +515,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 		return -1
 	if(!(0 in level))
 		var/turf/position = get_turf(src)
-		if((!position || !(position.z in level)) && !bluespace_radio) //VOREStation Edit
+		if((!position || !(position.z in level)) && !bluespace_radio)
 			return -1
 	if(freq in ANTAG_FREQS)
 		if(!(src.syndie))//Checks to see if it's allowed on that frequency, based on the encryption keys

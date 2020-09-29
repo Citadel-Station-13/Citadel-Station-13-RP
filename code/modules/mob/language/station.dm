@@ -4,7 +4,7 @@
 	speech_verb = "creaks and rustles"
 	ask_verb = "creaks"
 	exclaim_verb = "rustles"
-	colour = "soghun"
+	color = "soghun"
 	key = "q"
 	machine_understands = 0
 	flags = RESTRICTED
@@ -28,7 +28,7 @@
 	speech_verb = "hisses"
 	ask_verb = "hisses"
 	exclaim_verb = "roars"
-	colour = "soghun"
+	color = "soghun"
 	key = "o"
 	flags = WHITELISTED
 	space_chance = 40
@@ -55,7 +55,7 @@
 	speech_verb = "mrowls"
 	ask_verb = "mrowls"
 	exclaim_verb = "yowls"
-	colour = "tajaran"
+	color = "tajaran"
 	key = "j"
 	flags = WHITELISTED
 	syllables = list("mrr","rr","tajr","kir","raj","kii","mir","kra","ahk","nal","vah","khaz","jri","ran","darr",
@@ -77,7 +77,7 @@
 	speech_verb = "chatters"
 	ask_verb = "mrowls"
 	exclaim_verb = "wails"
-	colour = "akhani"
+	color = "akhani"
 	key = "h"
 	flags = WHITELISTED
 	syllables = list("mrr","rr","marr","tar","ahk","ket","hal","kah","dra","nal","kra","vah","dar","hrar", "eh",
@@ -90,7 +90,7 @@
 	desc = "A standardized Tajaran sign language that was developed in Zarraya and gradually adopted by other nations, incorporating \
 			hand gestures and movements of the ears and tail."
 	signlang_verb = list("gestures with their hands", "gestures with their ears and tail", "gestures with their ears, tail and hands")
-	colour = "tajaran"
+	color = "tajaran"
 	key = "l"
 	flags = WHITELISTED | SIGNLANG | NO_STUTTER | NONVERBAL
 
@@ -114,7 +114,7 @@
 	ask_verb = "warbles"
 	exclaim_verb = "sings"
 	whisper_verb = "hums"
-	colour = "skrell"
+	color = "skrell"
 	key = "k"
 	space_chance = 30
 	flags = WHITELISTED
@@ -127,7 +127,7 @@
 	ask_verb = "warbles"
 	exclaim_verb = "sings"
 	whisper_verb = "hums"
-	colour = "skrellfar"
+	color = "skrellfar"
 	key = "p"
 	space_chance = 30
 	flags = WHITELISTED
@@ -143,7 +143,7 @@
 	desc = "A bastardized hybrid of many languages, including Chinese, English, French, and more; it is the common language of the Sol system."
 	speech_verb = "says"
 	whisper_verb = "whispers"
-	colour = "solcom"
+	color = "solcom"
 	key = "1"
 	flags = WHITELISTED
 	//syllables are at the bottom of the file
@@ -171,7 +171,7 @@
 	speech_verb = "whistles"
 	ask_verb = "chirps"
 	exclaim_verb = "whistles loudly"
-	colour = "changeling"
+	color = "changeling"
 	key = "6"
 	flags = NO_STUTTER
 	syllables = list("beep","beep","beep","beep","beep","boop","boop","boop","bop","bop","dee","dee","doo","doo","hiss","hss","buzz","buzz","bzz","ksssh","keey","wurr","wahh","tzzz","shh","shk")
@@ -189,7 +189,7 @@
 	speech_verb = "chirps"
 	ask_verb = "chirrups"
 	exclaim_verb = "trills"
-	colour = "alien"
+	color = "alien"
 	key = "v"
 	flags = WHITELISTED
 	space_chance = 50
@@ -209,7 +209,7 @@
 	speech_verb = "buzzes"
 	ask_verb = "buzzes"
 	exclaim_verb = "croaks"
-	colour = "zaddat"
+	color = "zaddat"
 	key = "z"
 	space_chance = 20
 	syllables = list("z", "dz", "i", "iv", "ti", "az", "hix", "xo", "av", "xo", "x", "za", "at", "vi")

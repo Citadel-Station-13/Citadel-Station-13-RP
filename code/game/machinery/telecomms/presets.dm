@@ -41,14 +41,14 @@
 	network = "tcommsat"
 	autolinkers = list("hub", "relay", "c_relay", "s_relay", "m_relay", "r_relay", "science", "medical",
 	"supply", "service", "common", "command", "engineering", "security", "unused", "hb_relay",
-	"receiverA", "broadcasterA") //VOREStation Edit - Added "hb_relay"
+	"receiverA", "broadcasterA")
 
 /obj/machinery/telecomms/hub/preset_cent
 	id = "CentCom Hub"
 	network = "tcommsat"
 	produces_heat = 0
 	autolinkers = list("hub_cent", "c_relay", "s_relay", "m_relay", "r_relay", "hb_relay",
-	 "centcom", "receiverCent", "broadcasterCent") //VOREStation Edit - Added "hb_relay"
+	 "centcom", "receiverCent", "broadcasterCent")
 
 //Receivers
 
@@ -220,3 +220,12 @@
 	network = "tcommsat"
 	produces_heat = 0
 	autolinkers = list("broadcasterCent")
+
+/obj/machinery/telecomms/relay/preset/houseboat
+	id = "Nearby Ship Relay"
+	hide = 1
+	produces_heat = 0
+	autolinkers = list("hb_relay")
+
+/obj/machinery/telecomms/relay/proc/reset_z()
+	listening_level = z

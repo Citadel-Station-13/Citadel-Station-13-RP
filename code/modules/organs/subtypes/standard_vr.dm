@@ -20,7 +20,7 @@
 		if(eye_icon)
 			var/icon/eyes_icon = new/icon(eye_icons_vr, eye_icon_vr)
 			if(eyes)
-				eyes_icon.Blend(rgb(eyes.eye_colour[1], eyes.eye_colour[2], eyes.eye_colour[3]), ICON_ADD)
+				eyes_icon.Blend(rgb(eyes.eye_color[1], eyes.eye_color[2], eyes.eye_color[3]), ICON_ADD)
 			else
 				eyes_icon.Blend(rgb(128,0,0), ICON_ADD)
 			mob_icon.Blend(eyes_icon, ICON_OVERLAY)
@@ -35,7 +35,7 @@
 		var/datum/sprite_accessory/facial_hair_style = facial_hair_styles_list[owner.f_style]
 		if(facial_hair_style && facial_hair_style.species_allowed && (species.get_bodytype(owner) in facial_hair_style.species_allowed))
 			var/icon/facial_s = new/icon("icon" = facial_hair_style.icon, "icon_state" = "[facial_hair_style.icon_state]_s")
-			if(facial_hair_style.do_colouration)
+			if(facial_hair_style.do_coloration)
 				facial_s.Blend(rgb(owner.r_facial, owner.g_facial, owner.b_facial), ICON_ADD)
 			overlays |= image(facial_s, "pixel_y" = head_offset)
 
@@ -43,7 +43,7 @@
 		var/datum/sprite_accessory/hair_style = hair_styles_list[owner.h_style]
 		if(hair_style && (species.get_bodytype(owner) in hair_style.species_allowed))
 			var/icon/hair_s = new/icon("icon" = hair_style.icon, "icon_state" = "[hair_style.icon_state]_s")
-			if(hair_style.do_colouration && islist(h_col) && h_col.len >= 3)
+			if(hair_style.do_coloration && islist(h_col) && h_col.len >= 3)
 				hair_s.Blend(rgb(h_col[1], h_col[2], h_col[3]), ICON_MULTIPLY)
 			overlays |= image(hair_s, "pixel_y" = head_offset)
 	return mob_icon

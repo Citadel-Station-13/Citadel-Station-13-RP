@@ -1021,8 +1021,8 @@
 
 /datum/chemical_reaction/blood_paint/send_data(var/datum/reagents/T)
 	var/t = T.get_data("blood")
-	if(t && t["blood_colour"])
-		return t["blood_colour"]
+	if(t && t["blood_color"])
+		return t["blood_color"]
 	return "#FE191A" // Probably red
 
 /datum/chemical_reaction/milk_paint

@@ -82,7 +82,7 @@
 	item_state = "knife"
 	force_divisor = 0.20 //12 when hardness 60 (steel)
 	attack_verb = list("stabbed", "chopped", "cut")
-	applies_material_colour = 1
+	applies_material_color = 1
 
 /obj/item/material/knife/tacknife/combatknife
 	name = "combat knife"
@@ -93,7 +93,7 @@
 	force_divisor = 0.25 // 15 with hardness 60 (steel)
 	thrown_force_divisor = 1.75 // 20 with weight 20 (steel)
 	attack_verb = list("sliced", "stabbed", "chopped", "cut")
-	applies_material_colour = 1
+	applies_material_color = 1
 
 // Identical to the tactical knife but nowhere near as stabby.
 // Kind of like the toy esword compared to the real thing.
@@ -104,7 +104,7 @@
 	icon_state = "tacknife"
 	item_state = "knife"
 	force_divisor = 0.15
-	applies_material_colour = 0
+	applies_material_color = 0
 
 /obj/item/material/knife/hook
 	name = "meat hook"
@@ -116,7 +116,7 @@
 	desc = "The unearthly energies that once powered this blade are now dormant."
 	icon = 'icons/obj/wizard.dmi'
 	icon_state = "render"
-	applies_material_colour = 0
+	applies_material_color = 0
 
 /obj/item/material/knife/butch
 	name = "butcher's cleaver"
@@ -133,7 +133,7 @@
 	attack_verb = list("slashed", "chopped", "gouged", "ripped", "cut")
 	can_cleave = TRUE //Now hatchets inherit from the machete, and thus knives. Tables turned.
 	slot_flags = SLOT_BELT
-	default_material = "plasteel" //VOREStation Edit
+	default_material = "plasteel"
 
 /obj/item/material/knife/machete/armblade
 	name = "arm-mounted blade"
@@ -176,6 +176,13 @@
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "survivalknife"
 	item_state = "knife"
-	applies_material_colour = FALSE
-	default_material = "plasteel" //VOREStation Edit
+	applies_material_color = FALSE
+	default_material = "plasteel"
 	toolspeed = 2 // Use a real axe if you want to chop logs.
+
+/obj/item/material/knife/machete/deluxe
+	name = "deluxe machete"
+	desc = "A fine example of a machete, with a polished blade, wooden handle and a leather cord loop."
+	icon = 'icons/obj/weapons_vr.dmi'
+	icon_state = "machetedx"
+	item_state = "machete"

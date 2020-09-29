@@ -68,12 +68,10 @@
 //	buckled_mob = M
 	buckled_mobs |= M
 
-	//VOREStation Add
 	if(riding_datum)
 		riding_datum.ridden = src
 		riding_datum.handle_vehicle_offsets()
 	M.update_water()
-	//VOREStation Add End
 
 	post_buckle_mob(M)
 	return TRUE
@@ -94,12 +92,10 @@
 	//	buckled_mob = null
 		buckled_mobs -= buckled_mob
 
-		//VOREStation Add
 		buckled_mob.update_water()
 		if(riding_datum)
 			riding_datum.restore_position(buckled_mob)
 			riding_datum.handle_vehicle_offsets() // So the person in back goes to the front.
-		//VOREStation Add End
 		post_buckle_mob(.)
 
 /atom/movable/proc/unbuckle_all_mobs(force = FALSE)
@@ -133,29 +129,27 @@
 
 	. = buckle_mob(M, forced)
 	if(.)
-		var/reveal_message = list("buckled_mob" = null, "buckled_to" = null) //VORE EDIT: This being a list and messages existing for the buckle target atom.
+		var/reveal_message = list("buckled_mob" = null, "buckled_to" = null) // This being a list and messages existing for the buckle target atom.
 		if(!silent)
 			if(M == user)
-				reveal_message["buckled_mob"] = "<span class='notice'>You come out of hiding and buckle yourself to [src].</span>" //VORE EDIT
-				reveal_message["buckled_to"] = "<span class='notice'>You come out of hiding as [M.name] buckles themselves to you.</span>" //VORE EDIT
+				reveal_message["buckled_mob"] = "<span class='notice'>You come out of hiding and buckle yourself to [src].</span>"
+				reveal_message["buckled_to"] = "<span class='notice'>You come out of hiding as [M.name] buckles themselves to you.</span>"
 				M.visible_message(\
 					"<span class='notice'>[M.name] buckles themselves to [src].</span>",\
 					"<span class='notice'>You buckle yourself to [src].</span>",\
 					"<span class='notice'>You hear metal clanking.</span>")
 			else
-				reveal_message["buckled_mob"] = "<span class='notice'>You are revealed as you are buckled to [src].</span>" //VORE EDIT
-				reveal_message["buckled_to"] = "<span class='notice'>You are revealed as [M.name] is buckled to you.</span>" //VORE EDIT
+				reveal_message["buckled_mob"] = "<span class='notice'>You are revealed as you are buckled to [src].</span>"
+				reveal_message["buckled_to"] = "<span class='notice'>You are revealed as [M.name] is buckled to you.</span>"
 				M.visible_message(\
 					"<span class='danger'>[M.name] is buckled to [src] by [user.name]!</span>",\
 					"<span class='danger'>You are buckled to [src] by [user.name]!</span>",\
 					"<span class='notice'>You hear metal clanking.</span>")
 
-		M.reveal(silent, reveal_message["buckled_mob"]) //Reveal people so they aren't buckled to chairs from behind. //VORE EDIT, list arg instead of simple message var for buckled mob
-		//Vore edit start
+		M.reveal(silent, reveal_message["buckled_mob"]) //Reveal people so they aren't buckled to chairs from behind.  List arg instead of simple message var for buckled mob
 		var/mob/living/L = src
 		if(istype(L))
 			L.reveal(silent, reveal_message["buckled_to"])
-		//Vore edit end
 
 /atom/movable/proc/user_unbuckle_mob(mob/living/buckled_mob, mob/user)
 	var/mob/living/M = unbuckle_mob(buckled_mob)

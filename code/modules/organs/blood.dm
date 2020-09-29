@@ -32,9 +32,9 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 /mob/living/carbon/human/proc/fixblood()
 	for(var/datum/reagent/blood/B in vessel.reagent_list)
 		if(B.id == "blood")
-			B.data = list(	"donor"=src,"viruses"=null,"species"=species.name,"blood_DNA"=dna.unique_enzymes,"blood_colour"= species.get_blood_colour(src),"blood_type"=dna.b_type,	\
+			B.data = list(	"donor"=src,"viruses"=null,"species"=species.name,"blood_DNA"=dna.unique_enzymes,"blood_color"= species.get_blood_color(src),"blood_type"=dna.b_type,	\
 							"resistances"=null,"trace_chem"=null, "virus2" = null, "antibodies" = list())
-			B.color = B.data["blood_colour"]
+			B.color = B.data["blood_color"]
 
 // Takes care blood loss and regeneration
 /mob/living/carbon/human/handle_blood()
@@ -228,8 +228,8 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 	// Putting this here due to return shenanigans.
 	if(istype(src,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = src
-		B.data["blood_colour"] = H.species.get_blood_colour(H)
-		B.color = B.data["blood_colour"]
+		B.data["blood_color"] = H.species.get_blood_color(H)
+		B.color = B.data["blood_color"]
 
 	var/list/temp_chem = list()
 	for(var/datum/reagent/R in src.reagents.reagent_list)
@@ -361,8 +361,8 @@ proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large)
 		return B
 
 	// Update appearance.
-	if(source.data["blood_colour"])
-		B.basecolor = source.data["blood_colour"]
+	if(source.data["blood_color"])
+		B.basecolor = source.data["blood_color"]
 		B.synthblood = synth
 		B.update_icon()
 

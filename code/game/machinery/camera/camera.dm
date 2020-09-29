@@ -1,13 +1,13 @@
 /obj/machinery/camera
 	name = "security camera"
 	desc = "It's used to monitor rooms."
-	icon = 'icons/obj/monitors_vr.dmi' //VOREStation Edit - New Icons
+	icon = 'icons/obj/monitors_vr.dmi'
 	icon_state = "camera"
 	use_power = USE_POWER_ACTIVE
 	idle_power_usage = 5
 	active_power_usage = 10
 	plane = MOB_PLANE
-	layer = ABOVE_MOB_LAYER
+	layer = BELOW_MOB_LAYER
 
 	var/list/network = list(NETWORK_DEFAULT)
 	var/c_tag = null
@@ -59,6 +59,9 @@
 	return 1
 
 /obj/machinery/camera/New()
+	..()
+	if (dir == NORTH)
+		layer = ABOVE_MOB_LAYER
 	wires = new(src)
 	assembly = new(src)
 	assembly.state = 4
@@ -77,12 +80,10 @@
 			log_world("[src.name] in [get_area(src)]has errored. [src.network?"Empty network list":"Null network list"]")
 		ASSERT(src.network)
 		ASSERT(src.network.len > 0)
-	// VOREStation Edit Start - Make mapping with cameras easier
 	if(!c_tag)
 		var/area/A = get_area(src)
 		c_tag = "[A ? A.name : "Unknown"] #[rand(111,999)]"
 	..()
-	// VOREStation Edit End
 
 /obj/machinery/camera/Destroy()
 	deactivate(null, 0) //kick anyone viewing out

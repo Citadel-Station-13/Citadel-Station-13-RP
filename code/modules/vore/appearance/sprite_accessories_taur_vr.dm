@@ -123,7 +123,7 @@
 /datum/sprite_accessory/tail/taur
 	name = "You should not see this..."
 	icon = 'icons/mob/vore/taurs_vr.dmi'
-	do_colouration = 1 // Yes color, using tail color
+	do_coloration = 1 // Yes color, using tail color
 	color_blend_mode = ICON_MULTIPLY  // The sprites for taurs are designed for ICON_MULTIPLY
 
 	var/icon/suit_sprites = null //File for suit sprites, if any.
@@ -163,7 +163,7 @@
 /datum/sprite_accessory/tail/taur/roiz_long_lizard // Not ACTUALLY a taur, but it uses 32x64 so it wouldn't fit in tails.dmi, and having it as a tail bugs up the sprite.
 	name = "Long Lizard Tail (Roiz Lizden)"
 	icon_state = "roiz_tail_s"
-	do_colouration = 0
+	do_coloration = 0
 	ckeys_allowed = list("spoopylizz")
 // Species-unique long tails/taurhalves
 
@@ -461,7 +461,7 @@
 	icon_state = "alraunecolor_s"
 	ani_state = "alraunecolor_closed_s"
 	ckeys_allowed = null
-	do_colouration = 1
+	do_coloration = 1
 	extra_overlay = "alraunecolor_markings"
 	extra_overlay_w = "alraunecolor_closed_markings"
 	clip_mask_state = "taur_clip_mask_alraune"
@@ -493,7 +493,7 @@
 /datum/sprite_accessory/tail/taur/roiz_long_lizard // Not ACTUALLY a taur, but it uses 32x64 so it wouldn't fit in tails.dmi, and having it as a tail bugs up the sprite.
 	name = "Long Lizard Tail (Roiz Lizden)"
 	icon_state = "roiz_tail_s"
-	do_colouration = 0
+	do_coloration = 0
 	ckeys_allowed = list("spoopylizz")
 	hide_body_parts = null
 	clip_mask_icon = null
@@ -516,7 +516,7 @@
 	name = "Centipede (liquidfirefly) (Taur)"
 	icon_state = "ariana_s"
 	ckeys_allowed = list("liquidfirefly")
-	do_colouration = 0
+	do_coloration = 0
 
 	msg_owner_disarm_run = "You quickly push %prey to the ground with your leg!"
 	msg_prey_disarm_run = "%owner pushes you down to the ground with their leg!"
@@ -539,7 +539,7 @@
 	icon_state = "alraune_s"
 	ani_state = "alraune_closed_s"
 	ckeys_allowed = list("natje")
-	do_colouration = 0
+	do_coloration = 0
 	can_ride = 0
 	clip_mask_state = "taur_clip_mask_alraune"
 
@@ -570,7 +570,7 @@
 	icon_state = "alraunecolor_s"
 	ani_state = "alraunecolor_closed_s"
 	ckeys_allowed = null
-	do_colouration = 1
+	do_coloration = 1
 	extra_overlay = "alraunecolor_markings"
 	extra_overlay_w = "alraunecolor_closed_markings"
 

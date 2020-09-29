@@ -26,7 +26,7 @@
 	name = "mechanical trap"
 	path =/obj/item/beartrap
 
-/datum/category_item/autolathe/devices/cell_charger_kit //cit edit
+/datum/category_item/autolathe/devices/cell_charger_kit
 	name = "cell charger kit"
 	path =/obj/item/cell_charger_kit
 
@@ -34,3 +34,7 @@
 	name = "electropack"
 	path =/obj/item/radio/electropack
 	hidden = 1
+
+/datum/category_item/autolathe/devices/sleevecard
+	name = "sleevecard"
+	path =/obj/item/sleevecard

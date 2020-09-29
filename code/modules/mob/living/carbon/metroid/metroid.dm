@@ -55,24 +55,24 @@
 
 	///////////TIME FOR SUBSPECIES
 
-	var/colour = "grey"
+	color = COLOR_GRAY
 	var/coretype = /obj/item/slime_extract/grey
 	var/list/slime_mutation[4]
 
 	var/core_removal_stage = 0 //For removing cores.
 
-/mob/living/carbon/slime/New(var/location, var/colour="grey")
+/mob/living/carbon/slime/New(var/location, var/color=COLOR_GRAY)
 
 	verbs += /mob/living/proc/ventcrawl
 
-	src.colour = colour
+	src.color = color
 	number = rand(1, 1000)
-	name = "[colour] [is_adult ? "adult" : "baby"] slime ([number])"
+	name = "[color] [is_adult ? "adult" : "baby"] slime ([number])"
 	real_name = name
-	slime_mutation = mutation_table(colour)
+	slime_mutation = mutation_table(color)
 	mutation_chance = rand(25, 35)
-	var/sanitizedcolour = replacetext(colour, " ", "")
-	coretype = text2path("/obj/item/slime_extract/[sanitizedcolour]")
+	var/sanitizedcolor = replacetext(color, " ", "")
+	coretype = text2path("/obj/item/slime_extract/[sanitizedcolor]")
 	regenerate_icons()
 	..(location)
 

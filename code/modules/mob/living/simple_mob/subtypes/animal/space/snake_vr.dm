@@ -132,8 +132,8 @@
 //Special snek-snax for Noodle!
 /obj/item/reagent_containers/food/snacks/snakesnack
 	name = "sugar mouse"
-	desc = "A little mouse treat made of coloured sugar. Noodle loves these!"
-	var/snack_colour
+	desc = "A little mouse treat made of colored sugar. Noodle loves these!"
+	var/snack_color
 	icon = 'icons/mob/snake_vr.dmi'
 	icon_state = "snack_yellow"
 	nutriment_amt = 1
@@ -141,10 +141,10 @@
 
 /obj/item/reagent_containers/food/snacks/snakesnack/Initialize()
 	..()
-	if(!snack_colour)
-		snack_colour = pick( list("yellow","green","pink","blue") )
-	icon_state = "snack_[snack_colour]"
-	desc = "A little mouse treat made of coloured sugar. Noodle loves these! This one is [snack_colour]."
+	if(!snack_color)
+		snack_color = pick( list("yellow","green","pink","blue") )
+	icon_state = "snack_[snack_color]"
+	desc = "A little mouse treat made of colored sugar. Noodle loves these! This one is [snack_color]."
 	reagents.add_reagent("sugar", 2)
 
 /obj/item/storage/box/snakesnackbox

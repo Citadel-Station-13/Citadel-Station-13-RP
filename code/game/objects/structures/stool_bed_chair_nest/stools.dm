@@ -1,10 +1,10 @@
-//Todo: add leather and cloth for arbitrary coloured stools.
+//Todo: add leather and cloth for arbitrary colored stools.
 var/global/list/stool_cache = list() //haha stool
 
 /obj/item/stool
 	name = "stool"
 	desc = "Apply butt."
-	icon = 'icons/obj/furniture_vr.dmi' //VOREStation Edit - new Icons
+	icon = 'icons/obj/furniture_vr.dmi'
 	icon_state = "stool_preview" //set for the map
 	force = 10
 	throwforce = 10
@@ -40,7 +40,7 @@ var/global/list/stool_cache = list() //haha stool
 	var/cache_key = "stool-[material.name]"
 	if(isnull(stool_cache[cache_key]))
 		var/image/I = image(icon, base_icon)
-		I.color = material.icon_colour
+		I.color = material.icon_color
 		stool_cache[cache_key] = I
 	overlays |= stool_cache[cache_key]
 	// Padding overlay.
@@ -48,7 +48,7 @@ var/global/list/stool_cache = list() //haha stool
 		var/padding_cache_key = "stool-padding-[padding_material.name]"
 		if(isnull(stool_cache[padding_cache_key]))
 			var/image/I =  image(icon, "stool_padding")
-			I.color = padding_material.icon_colour
+			I.color = padding_material.icon_color
 			stool_cache[padding_cache_key] = I
 		overlays |= stool_cache[padding_cache_key]
 	// Strings.

@@ -1,6 +1,6 @@
 /*****************Marker Beacons**************************/
 var/list/marker_beacon_colors = list(
-"Random" = FALSE, //not a true color, will pick a random color
+"Random" = FALSE,	// Not a true color, will pick a random color
 "Burgundy" = LIGHT_COLOR_FLARE,
 "Bronze" = LIGHT_COLOR_ORANGE,
 "Yellow" = LIGHT_COLOR_YELLOW,

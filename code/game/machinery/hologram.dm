@@ -101,7 +101,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 				else
 					text = stars(text)
 			var/name_used = M.GetVoice()
-			//This communication is imperfect because the holopad "filters" voices and is only designed to connect to the master only.
+			// This communication is imperfect because the holopad "filters" voices and is only designed to connect to the master only.
 			var/rendered
 			if(speaking)
 				rendered = "<i><span class='game say'>Holopad received, <span class='name'>[name_used]</span> [speaking.format_message(text, verb)]</span></i>"
@@ -114,7 +114,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 		for(var/mob/living/silicon/ai/master in masters)
 			//var/name_used = M.GetVoice()
 			var/rendered = "<i><span class='game say'>Holopad received, <span class='message'>[text]</span></span></i>"
-			//The lack of name_used is needed, because message already contains a name.  This is needed for simple mobs to emote properly.
+			// The lack of name_used is needed, because message already contains a name.  This is needed for simple mobs to emote properly.
 			master.show_message(rendered, 2)
 	return
 
@@ -125,17 +125,16 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	return
 
 /obj/machinery/hologram/holopad/proc/create_holo(mob/living/silicon/ai/A, turf/T = loc)
-	var/obj/effect/overlay/aiholo/hologram = new(T)//Spawn a blank effect at the location. //VOREStation Edit to specific type for adding vars
-	hologram.master = A //VOREStation Edit: So you can reference the master AI from in the hologram procs
+	var/obj/effect/overlay/aiholo/hologram = new(T)	// Spawn a blank effect at the location.
+	hologram.master = A	// So you can reference the master AI from in the hologram procs
 	hologram.icon = A.holo_icon
-	//hologram.mouse_opacity = 0//So you can't click on it. //VOREStation Removal
-	hologram.layer = FLY_LAYER//Above all the other objects/mobs. Or the vast majority of them.
-	hologram.anchored = 1//So space wind cannot drag it.
-	hologram.name = "[A.name] (Hologram)"//If someone decides to right click.
-	hologram.set_light(2)	//hologram lighting
-	hologram.color = color //painted holopad gives coloured holograms
+	hologram.layer = FLY_LAYER	// Above all the other objects/mobs. Or the vast majority of them.
+	hologram.anchored = 1	// So space wind cannot drag it.
+	hologram.name = "[A.name] (Hologram)"	// If someone decides to right click.
+	hologram.set_light(2)	// Hologram lighting
+	hologram.color = color	// Painted holopad gives colored holograms
 	masters[A] = hologram
-	set_light(2)			//pad lighting
+	set_light(2)			// Pad lighting
 	icon_state = "holopad1"
 	A.holo = src
 	return 1
@@ -162,22 +161,14 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 
 /obj/machinery/hologram/holopad/proc/move_hologram(mob/living/silicon/ai/user)
 	if(masters[user])
-		/*VOREStation Removal, using our own code
-		step_to(masters[user], user.eyeobj) // So it turns.
-		var/obj/effect/overlay/H = masters[user]
-		H.loc = get_turf(user.eyeobj)
-		masters[user] = H
-		*/
-		//VOREStation Add - Solid mass holovore tracking stuff
 		var/obj/effect/overlay/aiholo/H = masters[user]
 		if(H.bellied)
-			walk_to(H, user.eyeobj) //Walk-to respects obstacles
+			walk_to(H, user.eyeobj)	// Walk-to respects obstacles
 		else
-			walk_towards(H, user.eyeobj) //Walk-towards does not
-		//Hologram left the screen (got stuck on a wall or something)
+			walk_towards(H, user.eyeobj)	// Walk-towards does not
+		// Hologram left the screen (got stuck on a wall or something)
 		if(get_dist(H, user.eyeobj) > world.view)
 			clear_holo(user)
-		//VOREStation Add End
 		if((HOLOPAD_MODE == RANGE_BASED && (get_dist(H, src) > holo_range)))
 			clear_holo(user)
 

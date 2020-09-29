@@ -10,7 +10,7 @@
 
 /datum/component/spraycan_paintable/proc/RemoveCurrentCoat()
 	var/atom/A = parent
-	A.remove_atom_colour(FIXED_COLOUR_PRIORITY, current_paint)
+	A.remove_atom_color(FIXED_COLOR_PRIORITY, current_paint)
 
 /datum/component/spraycan_paintable/proc/Repaint(datum/source, obj/item/toy/crayon/spraycan/spraycan, mob/living/user)
 	if(!istype(spraycan) || user.a_intent == INTENT_HARM)
@@ -21,9 +21,9 @@
 		return
 	RemoveCurrentCoat()
 	if(spraycan.use_charges(user, 2))
-		var/colour = spraycan.paint_color
-		current_paint = colour
+		var/color = spraycan.paint_color
+		current_paint = color
 		var/atom/A = parent
-		A.add_atom_colour(colour, FIXED_COLOUR_PRIORITY)
+		A.add_atom_color(color, FIXED_COLOR_PRIORITY)
 		playsound(spraycan, 'sound/effects/spray.ogg', 5, TRUE, 5)
 		to_chat(user, "<span class='notice'>You spray [spraycan] on [A], painting it.</span>")

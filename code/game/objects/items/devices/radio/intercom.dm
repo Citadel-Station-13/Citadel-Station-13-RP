@@ -1,7 +1,7 @@
 /obj/item/radio/intercom
 	name = "station intercom (General)"
 	desc = "Talk through this."
-	icon = 'icons/obj/radio_vr.dmi' //VOREStation Edit - New Icon
+	icon = 'icons/obj/radio_vr.dmi'
 	icon_state = "intercom"
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER

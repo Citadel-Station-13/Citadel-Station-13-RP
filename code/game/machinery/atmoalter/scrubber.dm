@@ -11,7 +11,7 @@
 
 	volume = 750
 
-	power_rating = 7500 //7500 W ~ 10 HP
+	power_rating = 7500	// 7500 W ~ 10 HP
 	power_losses = 150
 
 	var/minrate = 0
@@ -84,7 +84,7 @@
 
 		update_connected_network()
 
-		//ran out of charge
+		// Ran out of charge
 		if (!cell.charge)
 			power_change()
 			update_icon()
@@ -149,19 +149,19 @@
 	update_icon()
 
 
-//Huge scrubber
+// Huge scrubber
 /obj/machinery/portable_atmospherics/powered/scrubber/huge
 	name = "Huge Air Scrubber"
-	icon = 'icons/obj/atmos_vr.dmi' //VOREStation Edit - New Sprite
+	icon = 'icons/obj/atmos_vr.dmi'
 	icon_state = "scrubber:0"
 	anchored = 1
 	volume = 500000
 	volume_rate = 7000
 
 	use_power = USE_POWER_IDLE
-	idle_power_usage = 50		//internal circuitry, friction losses and stuff
+	idle_power_usage = 50		// Internal circuitry, friction losses and stuff
 	active_power_usage = 1000	// Blowers running
-	power_rating = 100000	//100 kW ~ 135 HP
+	power_rating = 100000		// 100 kW ~ 135 HP
 
 	var/global/gid = 1
 	var/id = 0
@@ -231,13 +231,13 @@
 
 		return
 
-	//doesn't use power cells
+	// Doesn't use power cells
 	if(istype(I, /obj/item/cell))
 		return
 	if(I.is_screwdriver())
 		return
 
-	//doesn't hold tanks
+	// Doesn't hold tanks
 	if(istype(I, /obj/item/tank))
 		return
 

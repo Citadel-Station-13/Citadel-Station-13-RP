@@ -419,3 +419,10 @@ var/list/ghostteleportlocs = list()
 	ghostteleportlocs = sortTim(ghostteleportlocs, /proc/cmp_text_asc, TRUE)
 
 	return 1
+
+/area/shuttle_arrived()
+	.=..()
+	for(var/obj/machinery/telecomms/relay/R in contents)
+		R.reset_z()
+	for(var/obj/machinery/power/apc/A in contents)
+		A.update_area()

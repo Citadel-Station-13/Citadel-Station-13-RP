@@ -24,23 +24,23 @@
 	var/datum/playingcard/P
 	for(var/suit in list("spades","clubs","diamonds","hearts"))
 
-		var/colour
+		var/color
 		if(suit == "spades" || suit == "clubs")
-			colour = "black_"
+			color = "black_"
 		else
-			colour = "red_"
+			color = "red_"
 
 		for(var/number in list("ace","two","three","four","five","six","seven","eight","nine","ten"))
 			P = new()
 			P.name = "[number] of [suit]"
-			P.card_icon = "[colour]num"
+			P.card_icon = "[color]num"
 			P.back_icon = "card_back"
 			cards += P
 
 		for(var/number in list("jack","queen","king"))
 			P = new()
 			P.name = "[number] of [suit]"
-			P.card_icon = "[colour]col"
+			P.card_icon = "[color]col"
 			P.back_icon = "card_back"
 			cards += P
 

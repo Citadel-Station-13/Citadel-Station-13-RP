@@ -22,7 +22,7 @@
 	force_wielded = 1
 	force_divisor = 1
 	force = 1
-	applies_material_colour = 1
+	applies_material_color = 1
 	base_icon = "spear_mask"
 	icon_state = "spear_mask0"
 	unbreakable = 1
@@ -35,7 +35,7 @@
 	force_wielded = 1
 	force_divisor = 1
 	force = 1
-	applies_material_colour = 1
+	applies_material_color = 1
 	base_icon = "fireaxe_mask"
 	icon_state = "fireaxe_mask0"
 	unbreakable = 1

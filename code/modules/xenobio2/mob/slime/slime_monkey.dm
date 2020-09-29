@@ -41,7 +41,7 @@ Slime cube lives here.
 	to_chat(S., "<b>You are a promethean, brought into existence on [station_name()].</b>")
 	S.mind.assigned_role = "Promethean"
 	S.set_species("Promethean")
-	S.shapeshifter_set_colour("#05FF9B")
+	S.shapeshifter_set_color("#05FF9B")
 	for(var/mob/M in viewers(get_turf_or_move(loc)))
 		M.show_message("<span class='warning'>The monkey cube suddenly takes the shape of a humanoid!</span>")
 	var/newname = sanitize(input(S, "You are a Promethean. Would you like to change your name to something else?", "Name change") as null|text, MAX_NAME_LEN)

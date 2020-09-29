@@ -21,7 +21,7 @@
 
 /obj/structure/table/rack/update_icon()
 	if(material) //VOREStation Add for rack colors based on materials
-		color = material.icon_colour
+		color = material.icon_color
 	return
 
 /obj/structure/table/rack/holorack/dismantle(obj/item/wrench/W, mob/user)

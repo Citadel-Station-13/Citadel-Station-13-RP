@@ -168,20 +168,19 @@
 	playsound(src.loc, 'sound/weapons/flash.ogg', 100, 1)
 	var/flashfail = 0
 
-	//VOREStation Add - NIF
+// NIF Stuff
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.nif && H.nif.flag_check(NIF_V_FLASHPROT,NIF_FLAGS_VISION))
 			flashfail = 1
 			H.nif.notify("High intensity light detected, and blocked!",TRUE)
-	//VOREStation Add End
 
-	if(iscarbon(M) && !flashfail) //VOREStation Add - NIF
+	if(iscarbon(M) && !flashfail)
 		var/mob/living/carbon/C = M
 		if(C.stat != DEAD)
 			var/safety = C.eyecheck()
 			if(safety <= 0)
-				var/flash_strength = 10 //Vorestation edit, making flashes behave the same as flash rounds
+				var/flash_strength = 10	// Making flashes behave the same as flash rounds
 				if(ishuman(C))
 					var/mob/living/carbon/human/H = C
 					flash_strength *= H.species.flash_mod
@@ -191,7 +190,7 @@
 						H.Blind(flash_strength)
 						H.eye_blurry = max(H.eye_blurry, flash_strength + 5)
 						H.flash_eyes()
-						H.adjustHalLoss(halloss_per_flash * (flash_strength / 5)) // Should take four flashes to stun.
+						H.adjustHalLoss(halloss_per_flash * (flash_strength / 5))	// Should take four flashes to stun.
 						H.apply_damage(flash_strength * H.species.flash_burn/5, BURN, BP_HEAD, 0, 0, "Photon burns")
 
 			else

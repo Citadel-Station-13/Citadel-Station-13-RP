@@ -59,7 +59,7 @@ var/global/datum/controller/occupations/job_master
 				return 0
 			if(!job.player_old_enough(player.client))
 				return 0
-			if(!is_job_whitelisted(player, rank)) //VOREStation Code
+			if(!is_job_whitelisted(player, rank))
 				return 0
 
 			var/position_limit = job.total_positions
@@ -95,11 +95,9 @@ var/global/datum/controller/occupations/job_master
 			if(job.minimum_character_age && (player.client.prefs.age < job.minimum_character_age))
 				Debug("FOC character not old enough, Player: [player]")
 				continue
-			//VOREStation Code Start
 			if(!is_job_whitelisted(player, job.title))
 				Debug("FOC is_job_whitelisted failed, Player: [player]")
 				continue
-			//VOREStation Code End
 			if(flag && (!player.client.prefs.be_special & flag))
 				Debug("FOC flag failed, Player: [player], Flag: [flag], ")
 				continue
@@ -117,7 +115,7 @@ var/global/datum/controller/occupations/job_master
 			if(job.minimum_character_age && (player.client.prefs.age < job.minimum_character_age))
 				continue
 
-			if(istype(job, GetJob(USELESS_JOB))) // We don't want to give him assistant, that's boring! //VOREStation Edit - Visitor not Assistant
+			if(istype(job, GetJob(USELESS_JOB))) // We don't want to give him visitor, that's boring!
 				continue
 
 			if(job.title in command_positions) //If you want a command position, select it!
@@ -131,11 +129,9 @@ var/global/datum/controller/occupations/job_master
 				Debug("GRJ player not old enough, Player: [player]")
 				continue
 
-			//VOREStation Code Start
 			if(!is_job_whitelisted(player, job.title))
 				Debug("GRJ player not whitelisted for this job, Player: [player], Job: [job.title]")
 				continue
-			//VOREStation Code End
 
 			if((job.current_positions < job.spawn_positions) || job.spawn_positions == -1)
 				Debug("GRJ Random job given, Player: [player], Job: [job]")
@@ -242,7 +238,7 @@ var/global/datum/controller/occupations/job_master
 		Debug("AC1, Candidates: [assistant_candidates.len]")
 		for(var/mob/new_player/player in assistant_candidates)
 			Debug("AC1 pass, Player: [player]")
-			AssignRole(player, USELESS_JOB) //VOREStation Edit - Visitor not Assistant
+			AssignRole(player, USELESS_JOB)
 			assistant_candidates -= player
 		Debug("DO, AC1 end")
 
@@ -323,7 +319,7 @@ var/global/datum/controller/occupations/job_master
 		for(var/mob/new_player/player in unassigned)
 			if(player.client.prefs.alternate_option == BE_ASSISTANT)
 				Debug("AC2 Assistant located, Player: [player]")
-				AssignRole(player, USELESS_JOB) //VOREStation Edit - Visitor not Assistant
+				AssignRole(player, USELESS_JOB)
 
 		//For ones returning to lobby
 		for(var/mob/new_player/player in unassigned)
@@ -435,7 +431,7 @@ var/global/datum/controller/occupations/job_master
 
 		H.job = rank
 		log_game("JOINED [key_name(H)] as \"[rank]\"")
-		log_game("SPECIES [key_name(H)] is a: \"[H.species.name]\"") //VOREStation Add
+		log_game("SPECIES [key_name(H)] is a: \"[H.species.name]\"")
 
 		// If they're head, give them the account info for their department
 		if(H.mind && job.head_position)
@@ -691,7 +687,7 @@ var/global/datum/controller/occupations/job_master
 			to_chat(C,"Your chosen spawnpoint ([spawnpos.display_name]) is unavailable for your chosen job. Spawning you at the Arrivals shuttle instead.")
 			var/spawning = pick(latejoin)
 			.["turf"] = get_turf(spawning)
-			.["msg"] = "will arrive at the station shortly"  //VOREStation Edit - Grammar but mostly 'shuttle' reference removal, and this also applies to notified spawn-character verb use
+			.["msg"] = "will arrive at the station shortly"
 	else
 		var/spawning = pick(latejoin)
 		.["turf"] = get_turf(spawning)

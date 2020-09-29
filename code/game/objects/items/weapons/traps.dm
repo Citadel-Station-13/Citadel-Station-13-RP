@@ -8,11 +8,28 @@
 	desc = "A mechanically activated leg trap. Low-tech, but reliable. Looks like it could really hurt if you set it off."
 	throwforce = 0
 	w_class = ITEMSIZE_NORMAL
+	slot_flags = SLOT_MASK
 	origin_tech = list(TECH_MATERIAL = 1)
 	matter = list(DEFAULT_WALL_MATERIAL = 18750)
 	var/deployed = 0
 	var/camo_net = FALSE
 	var/stun_length = 0.25 SECONDS
+	item_icons = list(
+		slot_wear_mask_str = 'icons/mob/mask_vr.dmi'
+		)
+
+/obj/item/beartrap/equipped()
+	if(ishuman(src.loc))
+		var/mob/living/carbon/human/H = src.loc
+		if(H.wear_mask == src)
+			H.verbs |= /mob/living/proc/shred_limb_temp
+		else
+			H.verbs -= /mob/living/proc/shred_limb_temp
+	..()
+
+/obj/item/beartrap/dropped(var/mob/user)
+	user.verbs -= /mob/living/proc/shred_limb_temp
+	..()
 
 /obj/item/beartrap/suicide_act(mob/user)
 	var/datum/gender/T = gender_datums[user.get_visible_gender()]

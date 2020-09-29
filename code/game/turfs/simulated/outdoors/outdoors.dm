@@ -127,7 +127,7 @@ var/list/turf_edge_cache = list()
 
 /turf/simulated/floor/outdoors/ex_act(severity)
 	switch(severity)
-		//VOREStation Edit - Outdoor turfs less explosion resistant
+		// Outdoor turfs less explosion resistant
 		if(1)
 			if(prob(66))
 				ChangeTurf(get_base_turf_by_area(src))
@@ -138,7 +138,6 @@ var/list/turf_edge_cache = list()
 				return
 			else if(prob(33))
 				demote()
-		//VOREStation Edit End
 		if(3)
 			if(prob(66))
 				return

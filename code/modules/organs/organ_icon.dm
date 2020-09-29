@@ -9,7 +9,7 @@ var/global/list/limb_icon_cache = list()
 				overlays += child.mob_icon
 		add_overlay(organ.mob_icon)
 
-/obj/item/organ/external/proc/sync_colour_to_human(var/mob/living/carbon/human/human)
+/obj/item/organ/external/proc/sync_color_to_human(var/mob/living/carbon/human/human)
 	s_tone = null
 	s_col = null
 	h_col = null
@@ -27,7 +27,7 @@ var/global/list/limb_icon_cache = list()
 		s_col = list(human.r_skin, human.g_skin, human.b_skin)
 	h_col = list(human.r_hair, human.g_hair, human.b_hair)
 
-/obj/item/organ/external/proc/sync_colour_to_dna()
+/obj/item/organ/external/proc/sync_color_to_dna()
 	s_tone = null
 	s_col = null
 	h_col = null
@@ -41,10 +41,10 @@ var/global/list/limb_icon_cache = list()
 		s_col = list(dna.GetUIValue(DNA_UI_SKIN_R), dna.GetUIValue(DNA_UI_SKIN_G), dna.GetUIValue(DNA_UI_SKIN_B))
 	h_col = list(dna.GetUIValue(DNA_UI_HAIR_R),dna.GetUIValue(DNA_UI_HAIR_G),dna.GetUIValue(DNA_UI_HAIR_B))
 
-/obj/item/organ/external/head/sync_colour_to_human(var/mob/living/carbon/human/human)
+/obj/item/organ/external/head/sync_color_to_human(var/mob/living/carbon/human/human)
 	..()
 	var/obj/item/organ/internal/eyes/eyes = owner.internal_organs_by_name[O_EYES]
-	if(eyes) eyes.update_colour()
+	if(eyes) eyes.update_color()
 
 /obj/item/organ/external/head/get_icon()
 	..()
@@ -66,7 +66,7 @@ var/global/list/limb_icon_cache = list()
 		if(should_have_eyes)
 			//And we have them
 			if(eyes)
-				eyes_icon.Blend(rgb(eyes.eye_colour[1], eyes.eye_colour[2], eyes.eye_colour[3]), ICON_ADD)
+				eyes_icon.Blend(rgb(eyes.eye_color[1], eyes.eye_color[2], eyes.eye_color[3]), ICON_ADD)
 			//They're gone!
 			else
 				eyes_icon.Blend(rgb(128,0,0), ICON_ADD)
@@ -102,7 +102,7 @@ var/global/list/limb_icon_cache = list()
 		var/datum/sprite_accessory/facial_hair_style = facial_hair_styles_list[owner.f_style]
 		if(facial_hair_style && facial_hair_style.species_allowed && (species.get_bodytype(owner) in facial_hair_style.species_allowed))
 			var/icon/facial_s = new/icon("icon" = facial_hair_style.icon, "icon_state" = "[facial_hair_style.icon_state]_s")
-			if(facial_hair_style.do_colouration)
+			if(facial_hair_style.do_coloration)
 				facial_s.Blend(rgb(owner.r_facial, owner.g_facial, owner.b_facial), ICON_MULTIPLY) // VOREStation edit
 			res.add_overlay(facial_s)
 
@@ -116,7 +116,7 @@ var/global/list/limb_icon_cache = list()
 		if(hair_style && (species.get_bodytype(owner) in hair_style.species_allowed))
 			var/icon/hair_s = new/icon("icon" = hair_style.icon, "icon_state" = "[hair_style.icon_state]_s")
 			var/icon/hair_s_add = new/icon("icon" = hair_style.icon_add, "icon_state" = "[hair_style.icon_state]_s")
-			if(hair_style.do_colouration && islist(h_col) && h_col.len >= 3)
+			if(hair_style.do_coloration && islist(h_col) && h_col.len >= 3)
 				hair_s.Blend(rgb(h_col[1], h_col[2], h_col[3]), ICON_MULTIPLY)
 				hair_s.Blend(hair_s_add, ICON_ADD)
 			res.add_overlay(hair_s)
@@ -150,10 +150,10 @@ var/global/list/limb_icon_cache = list()
 				mob_icon = new /icon('icons/mob/human_races/r_skeleton.dmi', "[icon_name][gender ? "_[gender]" : ""]")
 			else if (robotic >= ORGAN_ROBOT)
 				mob_icon = new /icon('icons/mob/human_races/robotic.dmi', "[icon_name][gender ? "_[gender]" : ""]")
-				apply_colouration(mob_icon)
+				apply_coloration(mob_icon)
 			else
 				mob_icon = new /icon(species.get_icobase(owner, (status & ORGAN_MUTATED)), "[icon_name][gender ? "_[gender]" : ""]")
-				apply_colouration(mob_icon)
+				apply_coloration(mob_icon)
 
 			//Body markings, actually does not include head this time. Done separately above.
 			if(!istype(src,/obj/item/organ/external/head))
@@ -175,7 +175,7 @@ var/global/list/limb_icon_cache = list()
 
 	if(model)
 		icon_cache_key += "_model_[model]"
-		apply_colouration(mob_icon)
+		apply_coloration(mob_icon)
 		if(owner && owner.synth_markings)
 			for(var/M in markings)
 				var/datum/sprite_accessory/marking/mark_style = markings[M]["datum"]
@@ -198,7 +198,7 @@ var/global/list/limb_icon_cache = list()
 	icon = mob_icon
 	return mob_icon
 
-/obj/item/organ/external/proc/apply_colouration(var/icon/applying)
+/obj/item/organ/external/proc/apply_coloration(var/icon/applying)
 
 	if(transparent) //VOREStation edit
 		applying.MapColors("#4D4D4D","#969696","#1C1C1C", "#000000")
@@ -250,8 +250,8 @@ var/global/list/limb_icon_cache = list()
 // damage amount to represent the pain of the injuries involved.
 
 // Global scope, used in code below.
-var/list/flesh_hud_colours = list("#02BA08","#9ECF19","#DEDE10","#FFAA00","#FF0000","#AA0000","#660000")
-var/list/robot_hud_colours = list("#CFCFCF","#AFAFAF","#8F8F8F","#6F6F6F","#4F4F4F","#2F2F2F","#000000")
+var/list/flesh_hud_colors = list("#02BA08","#9ECF19","#DEDE10","#FFAA00","#FF0000","#AA0000","#660000")
+var/list/robot_hud_colors = list("#CFCFCF","#AFAFAF","#8F8F8F","#6F6F6F","#4F4F4F","#2F2F2F","#000000")
 
 /obj/item/organ/external/proc/get_damage_hud_image(var/min_dam_state)
 
@@ -264,7 +264,7 @@ var/list/robot_hud_colours = list("#CFCFCF","#AFAFAF","#8F8F8F","#6F6F6F","#4F4F
 			limb_icon_cache[cache_key] = icon(get_icon(), null, SOUTH)
 		var/image/temp = image(limb_icon_cache[cache_key])
 		if((robotic < ORGAN_ROBOT) && species)
-			// Calculate the required colour matrix.
+			// Calculate the required color matrix.
 			var/r = 0.30 * species.health_hud_intensity
 			var/g = 0.59 * species.health_hud_intensity
 			var/b = 0.11 * species.health_hud_intensity
@@ -284,7 +284,7 @@ var/list/robot_hud_colours = list("#CFCFCF","#AFAFAF","#8F8F8F","#6F6F6F","#4F4F
 	// Apply traumatic shock min damage state.
 	if(!isnull(min_dam_state) && dam_state < min_dam_state)
 		dam_state = min_dam_state
-	// Apply colour and return product.
-	var/list/hud_colours = (robotic < ORGAN_ROBOT) ? flesh_hud_colours : robot_hud_colours
-	hud_damage_image.color = hud_colours[max(1,min(CEILING(dam_state*hud_colours.len, 1),hud_colours.len))]
+	// Apply color and return product.
+	var/list/hud_colors = (robotic < ORGAN_ROBOT) ? flesh_hud_colors : robot_hud_colors
+	hud_damage_image.color = hud_colors[max(1,min(CEILING(dam_state*hud_colors.len, 1),hud_colors.len))]
 	return hud_damage_image

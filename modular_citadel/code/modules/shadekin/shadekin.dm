@@ -448,7 +448,7 @@
 /datum/language/shadekin
 	name = "Shadekin Empathy"
 	desc = "Shadekin seem to always know what the others are thinking. This is probably why."
-	colour = "changeling"
+	color = "changeling"
 	speech_verb = "mars"
 	ask_verb = "mars"
 	exclaim_verb = "mars"

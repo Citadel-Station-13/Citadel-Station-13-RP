@@ -17,7 +17,7 @@
 	sharp = TRUE
 	attack_verb = list("whipped", "battered", "slapped", "fished", "hooked")
 	hitsound = 'sound/weapons/punchmiss.ogg'
-	applies_material_colour = TRUE
+	applies_material_color = TRUE
 	default_material = "wood"
 	can_dull = FALSE
 	var/strung = TRUE

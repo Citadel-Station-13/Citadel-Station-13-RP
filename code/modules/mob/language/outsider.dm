@@ -2,7 +2,7 @@
 	name = LANGUAGE_CHANGELING
 	desc = "Although they are normally wary and suspicious of each other, changelings can commune over a distance."
 	speech_verb = "says"
-	colour = "changeling"
+	color = "changeling"
 	key = "g"
 	machine_understands = 0
 	flags = RESTRICTED | HIVEMIND
@@ -20,7 +20,7 @@
 	speech_verb = "sings"
 	ask_verb = "sings"
 	exclaim_verb = "sings"
-	colour = "alien"
+	color = "alien"
 	key = "x"
 	machine_understands = 0
 	flags = RESTRICTED | HIVEMIND
@@ -45,7 +45,7 @@
 	speech_verb = "shrieks"
 	ask_verb = "creels"
 	exclaim_verb = "SHRIEKS"
-	colour = "vox"
+	color = "vox"
 	key = "5"
 	flags = WHITELISTED
 	syllables = list("ti","ti","ti","hi","hi","ki","ki","ki","ki","ya","ta","ha","ka","ya","chi","cha","kah", \
@@ -61,7 +61,7 @@
 	speech_verb = "intones"
 	ask_verb = "intones"
 	exclaim_verb = "chants"
-	colour = "cult"
+	color = "cult"
 	key = "f"
 	flags = RESTRICTED
 	space_chance = 100
@@ -80,14 +80,14 @@
 	speech_verb = "intones"
 	ask_verb = "intones"
 	exclaim_verb = "chants"
-	colour = "cult"
+	color = "cult"
 	key = "y"
 	machine_understands = 0
 	flags = RESTRICTED | HIVEMIND
 
 /datum/language/xenocommon
 	name = "Xenomorph"
-	colour = "alien"
+	color = "alien"
 	desc = "The common tongue of the xenomorphs."
 	speech_verb = "hisses"
 	ask_verb = "hisses"
@@ -102,7 +102,7 @@
 	speech_verb = "hisses"
 	ask_verb = "hisses"
 	exclaim_verb = "hisses"
-	colour = "alien"
+	color = "alien"
 	key = "a"
 	flags = RESTRICTED | HIVEMIND
 
@@ -122,7 +122,7 @@
 	speech_verb = "clatters"
 	ask_verb = "chatters"
 	exclaim_verb = "shrieks"
-	colour = "changeling"
+	color = "changeling"
 	key = "_"
 	flags = NO_STUTTER | RESTRICTED
 	syllables = list("^", "v", "-", ".", "~")
@@ -135,7 +135,7 @@
 	speech_verb = "says"
 	ask_verb = "asks"
 	exclaim_verb = "shouts"
-	colour = "deadsay"
+	color = "deadsay"
 	key = "r"
 	machine_understands = 0
 	flags = RESTRICTED
@@ -150,7 +150,7 @@
 	speech_verb = "says"
 	ask_verb = "asks"
 	exclaim_verb = "shouts"
-	colour = "warning"
+	color = "warning"
 	key = "]"
 	flags = RESTRICTED
 	syllables = list("chan","ange","thi","se")

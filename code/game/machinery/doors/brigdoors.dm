@@ -19,11 +19,11 @@
 	icon_state = "frame"
 	desc = "A remote control for a door."
 	req_access = list(access_brig)
-	anchored = 1.0    		// can't pick it up
-	density = 0       		// can walk through it.
-	var/id = null     		// id of door it controls.
+	anchored = 1.0			// can't pick it up
+	density = 0				// can walk through it.
+	var/id = null			// id of door it controls.
 	var/releasetime = 0		// when world.timeofday reaches it - release the prisoner
-	var/timing = 1    		// boolean, true/1 timer is on, false/0 means it's not timing
+	var/timing = 1			// boolean, true/1 timer is on, false/0 means it's not timing
 	var/picture_state		// icon_state of alert picture, if not displaying text/numbers
 	var/list/obj/machinery/targets
 	var/timetoset = 0		// Used to set releasetime upon starting the timer
@@ -352,7 +352,7 @@
 	id = "Cell 6"
 
 
-/obj/machinery/door_timer/tactical_pet_storage //Vorestation Addition
+/obj/machinery/door_timer/tactical_pet_storage
 	name = "Tactical Pet Storage"
 	id = "tactical_pet_storage"
 	desc = "Opens and Closes on a timer. This one seals away a tactical boost in morale."

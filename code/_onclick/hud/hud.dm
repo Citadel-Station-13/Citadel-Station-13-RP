@@ -43,7 +43,7 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	mouse_opacity = 0
 
 /datum/global_hud/New()
-	//420erryday psychedellic colours screen overlay for when you are high
+	//420erryday psychedellic colors screen overlay for when you are high
 	druggy = new /obj/screen/global_screen()
 	druggy.icon_state = "druggy"
 

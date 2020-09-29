@@ -222,12 +222,12 @@
 
 /obj/structure/statue/uranium/nuke
 	name = "Statue of a Nuclear Fission Explosive"
-	desc = "This is a grand statue of a Nuclear Explosive. It has a sickening green colour."
+	desc = "This is a grand statue of a Nuclear Explosive. It has a sickening green color."
 	icon_state = "nuke"
 
 /obj/structure/statue/uranium/eng
 	name = "Statue of an engineer"
-	desc = "This statue has a sickening green colour."
+	desc = "This statue has a sickening green color."
 	icon_state = "eng"
 
 /////////////////////////diamond/////////////////////////////////////////

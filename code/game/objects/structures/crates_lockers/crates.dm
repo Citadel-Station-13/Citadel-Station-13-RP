@@ -3,7 +3,7 @@
 /obj/structure/closet/crate
 	name = "crate"
 	desc = "A rectangular steel crate."
-	icon = 'icons/obj/storage.dmi'	//VOREStation edit
+	icon = 'icons/obj/storage.dmi'
 	icon_state = "crate"
 	icon_opened = "crateopen"
 	icon_closed = "crate"
@@ -134,6 +134,7 @@
 	var/emag = "securecrateemag"
 	var/broken = 0
 	var/locked = 1
+	var/tamper_proof = 0
 
 /obj/structure/closet/crate/secure/New()
 	..()
@@ -235,6 +236,38 @@
 			src.req_access += pick(get_all_station_access())
 	..()
 
+/obj/structure/closet/crate/secure/bullet_act(var/obj/item/projectile/Proj)
+	if(!(Proj.damage_type == BRUTE || Proj.damage_type == BURN))
+		return
+
+	if(locked && tamper_proof && health <= Proj.damage)
+		if(tamper_proof == 2) // Mainly used for events to prevent any chance of opening the box improperly.
+			visible_message("<font color='red'><b>The anti-tamper mechanism of [src] triggers an explosion!</b></font>")
+			var/turf/T = get_turf(src.loc)
+			explosion(T, 0, 0, 0, 1) // Non-damaging, but it'll alert security.
+			qdel(src)
+			return
+		var/open_chance = rand(1,5)
+		switch(open_chance)
+			if(1)
+				visible_message("<font color='red'><b>The anti-tamper mechanism of [src] causes an explosion!</b></font>")
+				var/turf/T = get_turf(src.loc)
+				explosion(T, 0, 0, 0, 1) // Non-damaging, but it'll alert security.
+				qdel(src)
+			if(2 to 4)
+				visible_message("<font color='red'><b>The anti-tamper mechanism of [src] causes a small fire!</b></font>")
+				for(var/atom/movable/A as mob|obj in src) // For every item in the box, we spawn a pile of ash.
+					new /obj/effect/decal/cleanable/ash(src.loc)
+				new /obj/fire(src.loc)
+				qdel(src)
+			if(5)
+				visible_message("<font color='green'><b>The anti-tamper mechanism of [src] fails!</b></font>")
+		return
+
+	..()
+
+	return
+
 /obj/structure/closet/crate/plastic
 	name = "plastic crate"
 	desc = "A rectangular plastic crate."
@@ -280,6 +313,11 @@
 	icon_opened = "medicalcrateopen"
 	icon_closed = "medicalcrate"
 
+/obj/structure/closet/crate/medical/blood
+	icon_state = "blood"
+	icon_opened = "bloodopen"
+	icon_closed = "blood"
+
 /obj/structure/closet/crate/rcd
 	name = "\improper RCD crate"
 	desc = "A crate with rapid construction device."
@@ -293,9 +331,9 @@
 
 /obj/structure/closet/crate/solar
 	name = "solar pack crate"
-	icon_state = "engi_crate"		//VOREStation Edit
-	icon_opened = "engi_crateopen"	//VOREStation Edit
-	icon_closed = "engi_crate"		//VOREStation Edit
+	icon_state = "engi_crate"
+	icon_opened = "engi_crateopen"
+	icon_closed = "engi_crate"
 
 	starts_with = list(
 		/obj/item/solar_assembly = 21,
@@ -352,7 +390,7 @@
 /obj/structure/closet/crate/bin
 	name = "large bin"
 	desc = "A large bin."
-	icon = 'icons/obj/storage.dmi'	//VOREStation edit
+	icon = 'icons/obj/storage.dmi'
 	icon_state = "largebin"
 	icon_opened = "largebinopen"
 	icon_closed = "largebin"
@@ -421,7 +459,7 @@
 /obj/structure/closet/crate/secure/bin
 	name = "secure bin"
 	desc = "A secure bin."
-	icon = 'icons/obj/storage.dmi'	//VOREStation edit
+	icon = 'icons/obj/storage.dmi'
 	icon_state = "largebins"
 	icon_opened = "largebinsopen"
 	icon_closed = "largebins"
@@ -434,7 +472,7 @@
 /obj/structure/closet/crate/large
 	name = "large crate"
 	desc = "A hefty metal crate."
-	icon = 'icons/obj/storage.dmi'	//VOREStation Edit
+	icon = 'icons/obj/storage.dmi'
 	icon_state = "largemetal"
 	icon_opened = "largemetalopen"
 	icon_closed = "largemetal"
@@ -462,10 +500,10 @@
 /obj/structure/closet/crate/secure/large
 	name = "large crate"
 	desc = "A hefty metal crate with an electronic locking system."
-	icon = 'icons/obj/storage.dmi'		//VOREStation Edit
-	icon_state = "largemetalsecure"			//VOREStation Edit
-	icon_opened = "largemetalsecureopen"	//VOREStation Edit
-	icon_closed = "largemetalsecure"		//VOREStation Edit
+	icon = 'icons/obj/storage.dmi'
+	icon_state = "largemetalsecure"
+	icon_opened = "largemetalsecureopen"
+	icon_closed = "largemetalsecure"
 	redlight = "largemetalr"
 	greenlight = "largemetalg"
 

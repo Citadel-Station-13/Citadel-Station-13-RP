@@ -554,5 +554,5 @@
 	icon_state = "laptop"
 	icon_keyboard = "laptop_key"
 	icon_screen = "medlaptop"
-	throwpass = 1 //VOREStation Edit - Really???
-	density = FALSE			//THIS IS A LAPTOP.	--CITADEL EDIT
+	throwpass = 1
+	density = FALSE

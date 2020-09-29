@@ -157,7 +157,7 @@ var/list/flooring_types
 /decl/flooring/tiling
 	name = "floor"
 	desc = "Scuffed from the passage of countless greyshirts."
-	icon = 'icons/turf/flooring/tiles_vr.dmi' // VOREStation Edit - Eris floors. Polaris still hasn't added all of them properly. See: steel_ridged
+	icon = 'icons/turf/flooring/tiles_vr.dmi'
 	icon_base = "tiled"
 	has_damage_range = 2
 	damage_temperature = T0C+1400
@@ -353,3 +353,23 @@ var/list/flooring_types
 	has_damage_range = 6
 	flags = TURF_ACID_IMMUNE | TURF_CAN_BREAK
 	can_paint = null
+
+/turf/simulated/floor/flesh
+	name = "flesh"
+	desc = "This slick flesh ripples and squishes under your touch"
+	icon = 'icons/turf/stomach_vr.dmi'
+	icon_state = "flesh_floor"
+	initial_flooring = /decl/flooring/flesh
+
+/turf/simulated/floor/flesh/color
+	icon_state = "c_flesh_floor"
+	initial_flooring = /decl/flooring/flesh
+
+/turf/simulated/floor/flesh/attackby()
+	return
+
+/decl/flooring/flesh
+	name = "flesh"
+	desc = "This slick flesh ripples and squishes under your touch"
+	icon = 'icons/turf/stomach_vr.dmi'
+	icon_base = "flesh_floor"

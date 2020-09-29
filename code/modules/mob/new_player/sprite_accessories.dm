@@ -31,8 +31,8 @@
 	// Restrict some styles to specific species
 	var/list/species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_HUMAN_VATBORN)
 
-	// Whether or not the accessory can be affected by colouration
-	var/do_colouration = 1
+	// Whether or not the accessory can be affected by coloration
+	var/do_coloration = 1
 
 /*
 ////////////////////////////
@@ -45,7 +45,7 @@
 /datum/sprite_accessory/hair
 	icon = 'icons/mob/human_face_m.dmi'	  // default icon for all hairs
 	var/icon_add = 'icons/mob/human_face.dmi'
-	//Enhanced colours and hair for all
+	//Enhanced colors and hair for all
 	var/color_blend_mode = ICON_MULTIPLY
 	species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST, SPECIES_SHADEKIN) //This lets all races use the default hairstyles.
 	var/flags
@@ -936,21 +936,21 @@
 		icon = 'icons/mob/human_face_vr.dmi'
 		icon_state = "citheronia_hair"
 		ckeys_allowed = list("Kira72")
-		do_colouration = 0
+		do_coloration = 0
 
 	taramaw
 		name = "Hairmaw (Liquidfirefly)"
 		icon = 'icons/mob/human_face_vr.dmi'
 		icon_state = "maw_hair"
 		ckeys_allowed = list("liquidfirefly")
-		do_colouration = 0
+		do_coloration = 0
 
 	citheronia_colorable
 		name = "Citheronia Hair"
 		icon = 'icons/mob/human_face_vr.dmi'
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
 		icon_state = "citheronia_hair_c"
-		do_colouration = 1
+		do_coloration = 1
 
 	twindrills
 		name = "Twin Drills"
@@ -963,7 +963,7 @@
 		icon = 'icons/mob/human_face_vr.dmi'
 		icon_state = "inkling-colorable"
 		color_blend_mode = ICON_MULTIPLY
-		do_colouration = 1
+		do_coloration = 1
 
 /*
 ///////////////////////////////////
@@ -1897,7 +1897,7 @@
 
 /datum/sprite_accessory/marking
 	icon = 'icons/mob/human_races/markings.dmi'
-	do_colouration = 1 //Almost all of them have it, COLOR_ADD
+	do_coloration = 1 //Almost all of them have it, COLOR_ADD
 	var/color_blend_mode = ICON_ADD
 
 	//Empty list is unrestricted. Should only restrict the ones that make NO SENSE on other species,

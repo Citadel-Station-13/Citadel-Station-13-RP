@@ -56,7 +56,7 @@ Protectiveness | Armor %
 		name = "[material.display_name] [initial(name)]"
 		health = round(material.integrity/10)
 		if(applies_material_color)
-			color = material.icon_colour
+			color = material.icon_color
 		if(material.products_need_process())
 			START_PROCESSING(SSobj, src)
 		update_armor()

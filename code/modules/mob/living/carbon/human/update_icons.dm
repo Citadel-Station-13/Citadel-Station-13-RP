@@ -193,11 +193,11 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 		O.update_icon()
 		if(O.damage_state == "00") continue
 		var/icon/DI
-		var/cache_index = "[O.damage_state]/[O.icon_name]/[species.get_blood_colour(src)]/[species.get_bodytype(src)]"
+		var/cache_index = "[O.damage_state]/[O.icon_name]/[species.get_blood_color(src)]/[species.get_bodytype(src)]"
 		if(damage_icon_parts[cache_index] == null)
 			DI = icon(species.get_damage_overlays(src), O.damage_state)			// the damage icon for whole human
 			DI.Blend(icon(species.get_damage_mask(src), O.icon_name), ICON_MULTIPLY)	// mask with this organ's pixels
-			DI.Blend(species.get_blood_colour(src), ICON_MULTIPLY)
+			DI.Blend(species.get_blood_color(src), ICON_MULTIPLY)
 			damage_icon_parts[cache_index] = DI
 		else
 			DI = damage_icon_parts[cache_index]
@@ -240,7 +240,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 		icon_key += "nolips"
 	var/obj/item/organ/internal/eyes/eyes = internal_organs_by_name[O_EYES]
 	if(eyes)
-		icon_key += "[rgb(eyes.eye_colour[1], eyes.eye_colour[2], eyes.eye_colour[3])]"
+		icon_key += "[rgb(eyes.eye_color[1], eyes.eye_color[2], eyes.eye_color[3])]"
 	else
 		icon_key += "[r_eyes], [g_eyes], [b_eyes]"
 
@@ -420,7 +420,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 		var/datum/sprite_accessory/facial_hair_style = facial_hair_styles_list[f_style]
 		if(facial_hair_style && facial_hair_style.species_allowed && (src.species.get_bodytype(src) in facial_hair_style.species_allowed))
 			var/icon/facial_s = new/icon("icon" = facial_hair_style.icon, "icon_state" = "[facial_hair_style.icon_state]_s")
-			if(facial_hair_style.do_colouration)
+			if(facial_hair_style.do_coloration)
 				facial_s.Blend(rgb(r_facial, g_facial, b_facial), ICON_MULTIPLY) //VOREStation edit
 
 			face_standing.Blend(facial_s, ICON_OVERLAY)
@@ -436,7 +436,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 			var/icon/hair_s_add
 			if(hair_style.icon_add)
 				hair_s_add = new/icon("icon" = hair_style.icon_add, "icon_state" = "[hair_style.icon_state]_s")
-			if(hair_style.do_colouration)
+			if(hair_style.do_coloration)
 				hair_s.Blend(rgb(r_hair, g_hair, b_hair), ICON_MULTIPLY)
 				if(hair_s_add)
 					hair_s.Blend(hair_s_add, ICON_ADD)
@@ -489,7 +489,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 
 	var/icon/eyes_icon = new/icon(head_organ.eye_icon_location, head_organ.eye_icon)
 	if(eyes)
-		eyes_icon.Blend(rgb(eyes.eye_colour[1], eyes.eye_colour[2], eyes.eye_colour[3]), ICON_ADD)
+		eyes_icon.Blend(rgb(eyes.eye_color[1], eyes.eye_color[2], eyes.eye_color[3]), ICON_ADD)
 	else
 		eyes_icon.Blend(rgb(128,0,0), ICON_ADD)
 
@@ -1114,7 +1114,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 	//If you have custom wings selected
 	if(wing_style && !(wear_suit && wear_suit.flags_inv & HIDETAIL))
 		var/icon/wing_s = new/icon("icon" = wing_style.icon, "icon_state" = flapping && wing_style.ani_state ? wing_style.ani_state : wing_style.icon_state)
-		if(wing_style.do_colouration)
+		if(wing_style.do_coloration)
 			wing_s.Blend(rgb(src.r_wing, src.g_wing, src.b_wing), wing_style.color_blend_mode)
 		if(wing_style.extra_overlay)
 			var/icon/overlay = new/icon("icon" = wing_style.icon, "icon_state" = wing_style.extra_overlay)

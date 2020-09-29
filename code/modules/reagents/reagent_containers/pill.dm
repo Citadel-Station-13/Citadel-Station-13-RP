@@ -18,7 +18,7 @@
 /obj/item/reagent_containers/pill/Initialize()
 	. = ..()
 	if(!icon_state)
-		icon_state = "[base_state][rand(1, 4)]" //preset pills only use colour changing or unique icons
+		icon_state = "[base_state][rand(1, 4)]" //preset pills only use color changing or unique icons
 
 /obj/item/reagent_containers/pill/attack(mob/M as mob, mob/user as mob)
 	if(M == user)

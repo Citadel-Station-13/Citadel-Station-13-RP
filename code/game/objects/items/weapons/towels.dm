@@ -29,4 +29,4 @@
 
 /obj/item/towel/random/New()
 	..()
-	color = "#"+get_random_colour()
+	color = "#"+get_random_color()

@@ -1,7 +1,7 @@
 /atom
 	var/light_power = 1 // intensity of the light
 	var/light_range = 0 // range in tiles of the light
-	var/light_color		// Hexadecimal RGB string representing the colour of the light
+	var/light_color		// Hexadecimal RGB string representing the color of the light
 
 	var/datum/light_source/light
 	var/list/light_sources

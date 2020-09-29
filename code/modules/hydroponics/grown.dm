@@ -141,17 +141,17 @@
 		return
 	overlays.Cut()
 	var/image/plant_icon
-	var/icon_key = "fruit-[seed.get_trait(TRAIT_PRODUCT_ICON)]-[seed.get_trait(TRAIT_PRODUCT_COLOUR)]-[seed.get_trait(TRAIT_PLANT_COLOUR)]"
+	var/icon_key = "fruit-[seed.get_trait(TRAIT_PRODUCT_ICON)]-[seed.get_trait(TRAIT_PRODUCT_COLOR)]-[seed.get_trait(TRAIT_PLANT_COLOR)]"
 	if(plant_controller.plant_icon_cache[icon_key])
 		plant_icon = plant_controller.plant_icon_cache[icon_key]
 	else
 		plant_icon = image('icons/obj/hydroponics_products.dmi',"blank")
 		var/image/fruit_base = image('icons/obj/hydroponics_products.dmi',"[seed.get_trait(TRAIT_PRODUCT_ICON)]-product")
-		fruit_base.color = "[seed.get_trait(TRAIT_PRODUCT_COLOUR)]"
+		fruit_base.color = "[seed.get_trait(TRAIT_PRODUCT_COLOR)]"
 		plant_icon.overlays |= fruit_base
 		if("[seed.get_trait(TRAIT_PRODUCT_ICON)]-leaf" in icon_states('icons/obj/hydroponics_products.dmi'))
 			var/image/fruit_leaves = image('icons/obj/hydroponics_products.dmi',"[seed.get_trait(TRAIT_PRODUCT_ICON)]-leaf")
-			fruit_leaves.color = "[seed.get_trait(TRAIT_PLANT_COLOUR)]"
+			fruit_leaves.color = "[seed.get_trait(TRAIT_PLANT_COLOR)]"
 			plant_icon.overlays |= fruit_leaves
 		plant_controller.plant_icon_cache[icon_key] = plant_icon
 	overlays |= plant_icon
@@ -207,11 +207,11 @@
 				if(W.sharp && W.edge && !isnull(seed.chems["woodpulp"]))
 					user.show_message("<span class='notice'>You make planks out of \the [src]!</span>", 1)
 					playsound(loc, 'sound/effects/woodcutting.ogg', 50, 1)
-					var/flesh_colour = seed.get_trait(TRAIT_FLESH_COLOUR)
-					if(!flesh_colour) flesh_colour = seed.get_trait(TRAIT_PRODUCT_COLOUR)
+					var/flesh_color = seed.get_trait(TRAIT_FLESH_COLOR)
+					if(!flesh_color) flesh_color = seed.get_trait(TRAIT_PRODUCT_COLOR)
 					for(var/i=0,i<2,i++)
 						var/obj/item/stack/material/wood/NG = new (user.loc)
-						if(flesh_colour) NG.color = flesh_colour
+						if(flesh_color) NG.color = flesh_color
 						for (var/obj/item/stack/material/wood/G in user.loc)
 							if(G==NG)
 								continue
@@ -242,7 +242,7 @@
 						new /obj/item/reagent_containers/food/snacks/pineapple_ring(get_turf(src))
 					qdel(src)
 					return
-				else if(seed.get_trait(TRAIT_FLESH_COLOUR))
+				else if(seed.get_trait(TRAIT_FLESH_COLOR))
 					to_chat(user, "You slice up \the [src].")
 					var/slices = rand(3,5)
 					var/reagents_to_transfer = round(reagents.total_volume/slices)
@@ -287,12 +287,12 @@
 
 	if(seed.kitchen_tag == "grass")
 		user.show_message("<span class='notice'>You make a grass tile out of [src]!</span>", 1)
-		var/flesh_colour = seed.get_trait(TRAIT_FLESH_COLOUR)
-		if(!flesh_colour)
-			flesh_colour = seed.get_trait(TRAIT_PRODUCT_COLOUR)
+		var/flesh_color = seed.get_trait(TRAIT_FLESH_COLOR)
+		if(!flesh_color)
+			flesh_color = seed.get_trait(TRAIT_PRODUCT_COLOR)
 		var/obj/item/stack/tile/grass/G = new(user.loc, 2)		//2 grass tiles
-		if(flesh_colour)
-			G.color = flesh_colour
+		if(flesh_color)
+			G.color = flesh_color
 		qdel(src)
 		return
 
@@ -360,16 +360,16 @@ var/list/fruit_icon_cache = list()
 	name = "[S.seed_name] slice"
 	desc = "A slice of \a [S.seed_name]. Tasty, probably."
 
-	var/rind_colour = S.get_trait(TRAIT_PRODUCT_COLOUR)
-	var/flesh_colour = S.get_trait(TRAIT_FLESH_COLOUR)
-	if(!flesh_colour) flesh_colour = rind_colour
-	if(!fruit_icon_cache["rind-[rind_colour]"])
+	var/rind_color = S.get_trait(TRAIT_PRODUCT_COLOR)
+	var/flesh_color = S.get_trait(TRAIT_FLESH_COLOR)
+	if(!flesh_color) flesh_color = rind_color
+	if(!fruit_icon_cache["rind-[rind_color]"])
 		var/image/I = image(icon,"fruit_rind")
-		I.color = rind_colour
-		fruit_icon_cache["rind-[rind_colour]"] = I
-	overlays |= fruit_icon_cache["rind-[rind_colour]"]
-	if(!fruit_icon_cache["slice-[rind_colour]"])
+		I.color = rind_color
+		fruit_icon_cache["rind-[rind_color]"] = I
+	overlays |= fruit_icon_cache["rind-[rind_color]"]
+	if(!fruit_icon_cache["slice-[rind_color]"])
 		var/image/I = image(icon,"fruit_slice")
-		I.color = flesh_colour
-		fruit_icon_cache["slice-[rind_colour]"] = I
-	overlays |= fruit_icon_cache["slice-[rind_colour]"]
+		I.color = flesh_color
+		fruit_icon_cache["slice-[rind_color]"] = I
+	overlays |= fruit_icon_cache["slice-[rind_color]"]

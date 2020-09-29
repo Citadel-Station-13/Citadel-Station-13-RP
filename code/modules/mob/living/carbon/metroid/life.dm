@@ -327,7 +327,7 @@
 			if (S != src)
 				frenemy = S
 		if (frenemy && prob(1))
-			if (frenemy.colour == colour)
+			if (frenemy.color == color)
 				a_intent = INTENT_HELP
 			else
 				a_intent = INTENT_HARM

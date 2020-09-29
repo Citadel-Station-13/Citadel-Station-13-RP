@@ -12,7 +12,7 @@
 	var/exclaim_verb = "exclaims"     // Used when sentence ends in a !
 	var/whisper_verb                  // Optional. When not specified speech_verb + quietly/softly is used instead.
 	var/signlang_verb = list("signs", "gestures") // list of emotes that might be displayed if this language has NONVERBAL or SIGNLANG flags
-	var/colour = "body"               // CSS style to use for strings in this language.
+	var/color = "body"               // CSS style to use for strings in this language.
 	var/key = "x"                     // Character used to speak in language eg. :o for Unathi.
 	var/flags = 0                     // Various language flags.
 	var/native                        // If set, non-native speakers will have trouble speaking.
@@ -113,13 +113,13 @@
 	return scrambled_text
 
 /datum/language/proc/format_message(message, verb)
-	return "[verb], <span class='message'><span class='[colour]'>\"[capitalize(message)]\"</span></span>"
+	return "[verb], <span class='message'><span class='[color]'>\"[capitalize(message)]\"</span></span>"
 
 /datum/language/proc/format_message_plain(message, verb)
 	return "[verb], \"[capitalize(message)]\""
 
 /datum/language/proc/format_message_radio(message, verb)
-	return "[verb], <span class='[colour]'>\"[capitalize(message)]\"</span>"
+	return "[verb], <span class='[color]'>\"[capitalize(message)]\"</span>"
 
 /datum/language/proc/get_talkinto_msg_range(message)
 	// if you yell, you'll be heard from two tiles over instead of one

@@ -383,7 +383,7 @@
 		return
 	name = "[material.display_name] bracelet"
 	desc = "A bracelet made from [material.display_name]."
-	color = material.icon_colour
+	color = material.icon_color
 
 /obj/item/clothing/accessory/bracelet/material/get_material()
 	return material
@@ -441,7 +441,7 @@
 	icon_state = "locket"
 	var/described = FALSE
 	var/named = FALSE
-	var/coloured = FALSE
+	var/colored = FALSE
 
 /obj/item/clothing/accessory/necklace/AltClick(mob/user)
 	if(!named)
@@ -456,11 +456,11 @@
 			desc = "[inputdesc]"
 			to_chat(user, "You describe the [name].")
 			described = TRUE
-	if(!coloured)
-		var/colour_input = input(usr,"","Choose Color",color) as color|null
-		if(colour_input)
-			color = sanitize_hexcolor(colour_input)
-			coloured = TRUE
+	if(!colored)
+		var/color_input = input(usr,"","Choose Color",color) as color|null
+		if(color_input)
+			color = sanitize_hexcolor(color_input)
+			colored = TRUE
 
 //
 // Collars and such like that

@@ -337,7 +337,7 @@
 //Swat43:Fortune Bloise
 /obj/item/storage/backpack/satchel/fluff/swat43bag
 	name = "Coloured Satchel"
-	desc = "That's a coloured satchel with red stripes, with a heart and ripley logo on each side."
+	desc = "That's a colored satchel with red stripes, with a heart and ripley logo on each side."
 	icon = 'icons/vore/custom_items_vr.dmi'
 	icon_state = "swat43-bag"
 
@@ -1088,7 +1088,7 @@
 /obj/item/reagent_containers/food/snacks/egg/roiz/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype( W, /obj/item/pen/crayon ))
 		var/obj/item/pen/crayon/C = W
-		var/clr = C.colourName
+		var/clr = C.colorName
 
 		if(!(clr in list("blue","green","mime","orange","purple","rainbow","red","yellow")))
 			to_chat(user,"<span class='warning'>The egg refuses to take on this color!</span>")
@@ -1730,7 +1730,7 @@
 	//force_wielded = 0.05 //Stings, but does jack shit for damage, provided you don't hit someone 100 times. 1 damage with hardness of 60.
 	force_divisor = 0.05 //Required in order for the X attacks Y message to pop up.
 	unwielded_force_divisor = 1 // One here, too.
-	applies_material_colour = 0
+	applies_material_color = 0
 	unbreakable = 1
 	base_icon = "riding_crop"
 	icon_state = "riding_crop0"

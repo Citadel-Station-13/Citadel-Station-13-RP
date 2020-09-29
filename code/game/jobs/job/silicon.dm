@@ -39,9 +39,9 @@
 	flag = CYBORG
 	department_flag = ENGSEC
 	faction = "Station"
-	total_positions = 2
-	spawn_positions = 2
-	supervisors = "your laws and the AI"	//Nodrak
+	total_positions = 4 //Along with one able to spawn later in the round.
+	spawn_positions = 3 //Let's have 3 able to spawn in roundstart
+	supervisors = "your laws and the AI"
 	selection_color = "#254C25"
 	minimal_player_age = 1
 	alt_titles = list("Robot", "Drone")

@@ -162,7 +162,7 @@
 	. += " Style: <a href='?src=\ref[src];ear_style=1'>[ear_display]</a><br>"
 	if(ear_styles_list[pref.ear_style])
 		var/datum/sprite_accessory/ears/ear = ear_styles_list[pref.ear_style]
-		if (ear.do_colouration)
+		if (ear.do_coloration)
 			. += "<a href='?src=\ref[src];ear_color=1'>Change Color</a> <font face='fixedsys' size='3' color='#[num2hex(pref.r_ears, 2)][num2hex(pref.g_ears, 2)][num2hex(pref.b_ears, 2)]'><table style='display:inline;' bgcolor='#[num2hex(pref.r_ears, 2)][num2hex(pref.g_ears, 2)][num2hex(pref.b_ears, 2)]'><tr><td>__</td></tr></table> </font><br>"
 		if (ear.extra_overlay)
 			. += "<a href='?src=\ref[src];ear_color2=1'>Change Secondary Color</a> <font face='fixedsys' size='3' color='#[num2hex(pref.r_ears2, 2)][num2hex(pref.g_ears2, 2)][num2hex(pref.b_ears2, 2)]'><table style='display:inline;' bgcolor='#[num2hex(pref.r_ears2, 2)][num2hex(pref.g_ears2, 2)][num2hex(pref.b_ears2, 2)]'><tr><td>__</td></tr></table> </font><br>"
@@ -178,7 +178,7 @@
 
 	if(tail_styles_list[pref.tail_style])
 		var/datum/sprite_accessory/tail/T = tail_styles_list[pref.tail_style]
-		if (T.do_colouration)
+		if (T.do_coloration)
 			. += "<a href='?src=\ref[src];tail_color=1'>Change Color</a> <font face='fixedsys' size='3' color='#[num2hex(pref.r_tail, 2)][num2hex(pref.g_tail, 2)][num2hex(pref.b_tail, 2)]'><table style='display:inline;' bgcolor='#[num2hex(pref.r_tail, 2)][num2hex(pref.g_tail, 2)][num2hex(pref.b_tail, 2)]'><tr><td>__</td></tr></table> </font><br>"
 		if (T.extra_overlay)
 			. += "<a href='?src=\ref[src];tail_color2=1'>Change Secondary Color</a> <font face='fixedsys' size='3' color='#[num2hex(pref.r_tail2, 2)][num2hex(pref.g_tail2, 2)][num2hex(pref.b_tail2, 2)]'><table style='display:inline;' bgcolor='#[num2hex(pref.r_tail2, 2)][num2hex(pref.g_tail2, 2)][num2hex(pref.b_tail2, 2)]'><tr><td>__</td></tr></table> </font><br>"
@@ -194,7 +194,7 @@
 
 	if(wing_styles_list[pref.wing_style])
 		var/datum/sprite_accessory/wing/W = wing_styles_list[pref.wing_style]
-		if (W.do_colouration)
+		if (W.do_coloration)
 			. += "<a href='?src=\ref[src];wing_color=1'>Change Color</a> <font face='fixedsys' size='3' color='#[num2hex(pref.r_wing, 2)][num2hex(pref.g_wing, 2)][num2hex(pref.b_wing, 2)]'><table style='display:inline;' bgcolor='#[num2hex(pref.r_wing, 2)][num2hex(pref.g_wing, 2)][num2hex(pref.b_wing, 2)]'><tr><td>__</td></tr></table> </font><br>"
 		if (W.extra_overlay)
 			. += "<a href='?src=\ref[src];wing_color2=1'>Change Secondary Color</a> <font face='fixedsys' size='3' color='#[num2hex(pref.r_wing2, 2)][num2hex(pref.g_wing2, 2)][num2hex(pref.b_wing2, 2)]'><table style='display:inline;' bgcolor='#[num2hex(pref.r_wing2, 2)][num2hex(pref.g_wing2, 2)][num2hex(pref.b_wing2, 2)]'><tr><td>__</td></tr></table> </font><br>"
@@ -219,7 +219,7 @@
 		return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["ear_color"])
-		var/new_earc = input(user, "Choose your character's ear colour:", "Character Preference",
+		var/new_earc = input(user, "Choose your character's ear color:", "Character Preference",
 			rgb(pref.r_ears, pref.g_ears, pref.b_ears)) as color|null
 		if(new_earc)
 			pref.r_ears = hex2num(copytext(new_earc, 2, 4))
@@ -228,7 +228,7 @@
 			return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["ear_color2"])
-		var/new_earc2 = input(user, "Choose your character's ear colour:", "Character Preference",
+		var/new_earc2 = input(user, "Choose your character's ear color:", "Character Preference",
 			rgb(pref.r_ears2, pref.g_ears2, pref.b_ears2)) as color|null
 		if(new_earc2)
 			pref.r_ears2 = hex2num(copytext(new_earc2, 2, 4))
@@ -252,7 +252,7 @@
 		return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["tail_color"])
-		var/new_tailc = input(user, "Choose your character's tail/taur colour:", "Character Preference",
+		var/new_tailc = input(user, "Choose your character's tail/taur color:", "Character Preference",
 			rgb(pref.r_tail, pref.g_tail, pref.b_tail)) as color|null
 		if(new_tailc)
 			pref.r_tail = hex2num(copytext(new_tailc, 2, 4))
@@ -261,7 +261,7 @@
 			return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["tail_color2"])
-		var/new_tailc2 = input(user, "Choose your character's secondary tail/taur colour:", "Character Preference",
+		var/new_tailc2 = input(user, "Choose your character's secondary tail/taur color:", "Character Preference",
 			rgb(pref.r_tail2, pref.g_tail2, pref.b_tail2)) as color|null
 		if(new_tailc2)
 			pref.r_tail2 = hex2num(copytext(new_tailc2, 2, 4))
@@ -285,7 +285,7 @@
 		return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["wing_color"])
-		var/new_wingc = input(user, "Choose your character's wing colour:", "Character Preference",
+		var/new_wingc = input(user, "Choose your character's wing color:", "Character Preference",
 			rgb(pref.r_wing, pref.g_wing, pref.b_wing)) as color|null
 		if(new_wingc)
 			pref.r_wing = hex2num(copytext(new_wingc, 2, 4))
@@ -294,7 +294,7 @@
 			return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["wing_color2"])
-		var/new_wingc2 = input(user, "Choose your character's secondary wing colour:", "Character Preference",
+		var/new_wingc2 = input(user, "Choose your character's secondary wing color:", "Character Preference",
 			rgb(pref.r_wing2, pref.g_wing2, pref.b_wing2)) as color|null
 		if(new_wingc2)
 			pref.r_wing2 = hex2num(copytext(new_wingc2, 2, 4))

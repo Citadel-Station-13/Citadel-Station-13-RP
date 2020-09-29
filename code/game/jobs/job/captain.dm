@@ -17,6 +17,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	minimal_access = list() 	//See get_access()
 	minimal_player_age = 14
 	economic_modifier = 20
+	disallow_jobhop = TRUE
 
 	minimum_character_age = 25
 	ideal_character_age = 70 // Old geezer captains ftw
@@ -53,20 +54,21 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	ideal_character_age = 50
 
 	outfit_type = /decl/hierarchy/outfit/job/hop
-	alt_titles = list("Crew Resources Officer","First Officer")
+	disallow_jobhop = TRUE
+	alt_titles = list("Deputy Director", "Crew Resources Officer", "Underseer")
 
 	access = list(access_security, access_sec_doors, access_brig, access_forensics_lockers,
-			            access_medical, access_engine, access_change_ids, access_ai_upload, access_eva, access_heads,
-			            access_all_personal_lockers, access_maint_tunnels, access_bar, access_janitor, access_construction, access_morgue,
-			            access_crematorium, access_kitchen, access_cargo, access_cargo_bot, access_mailsorting, access_qm, access_hydroponics, access_lawyer,
-			            access_chapel_office, access_library, access_research, access_mining, access_heads_vault, access_mining_station,
-			            access_hop, access_RC_announce, access_keycard_auth, access_gateway)
+						access_medical, access_engine, access_change_ids, access_ai_upload, access_eva, access_heads,
+						access_all_personal_lockers, access_maint_tunnels, access_bar, access_janitor, access_construction, access_morgue,
+						access_crematorium, access_kitchen, access_cargo, access_cargo_bot, access_mailsorting, access_qm, access_hydroponics, access_lawyer,
+						access_chapel_office, access_library, access_research, access_mining, access_heads_vault, access_mining_station,
+						access_hop, access_RC_announce, access_keycard_auth)
 	minimal_access = list(access_security, access_sec_doors, access_brig, access_forensics_lockers,
-			            access_medical, access_engine, access_change_ids, access_ai_upload, access_eva, access_heads,
-			            access_all_personal_lockers, access_maint_tunnels, access_bar, access_janitor, access_construction, access_morgue,
-			            access_crematorium, access_kitchen, access_cargo, access_cargo_bot, access_mailsorting, access_qm, access_hydroponics, access_lawyer,
-			            access_chapel_office, access_library, access_research, access_mining, access_heads_vault, access_mining_station,
-			            access_hop, access_RC_announce, access_keycard_auth, access_gateway)
+						access_medical, access_engine, access_change_ids, access_ai_upload, access_eva, access_heads,
+						access_all_personal_lockers, access_maint_tunnels, access_bar, access_janitor, access_construction, access_morgue,
+						access_crematorium, access_kitchen, access_cargo, access_cargo_bot, access_mailsorting, access_qm, access_hydroponics, access_lawyer,
+						access_chapel_office, access_library, access_research, access_mining, access_heads_vault, access_mining_station,
+						access_hop, access_RC_announce, access_keycard_auth)
 
 /datum/job/secretary
 	title = "Command Secretary"
@@ -82,6 +84,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	idtype = /obj/item/card/id/silver/secretary
 	minimal_player_age = 5
 	economic_modifier = 7
+	disallow_jobhop = TRUE
 
 	access = list(access_heads, access_keycard_auth)
 	minimal_access = list(access_heads, access_keycard_auth)

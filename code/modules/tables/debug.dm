@@ -12,7 +12,7 @@
 	stack_type = /obj/item/stack/material/debug
 	icon_base = "debug"
 	icon_reinf = "rdebug"
-	icon_colour = "#FFFFFF"
+	icon_color = "#FFFFFF"
 
 /obj/item/stack/material/debug
 	name = "debugium"

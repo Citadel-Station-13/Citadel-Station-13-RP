@@ -273,7 +273,7 @@
 
 /obj/item/pen/robopen/attack_self(mob/user as mob)
 
-	var/choice = input("Would you like to change colour or mode?") as null|anything in list("Colour","Mode")
+	var/choice = input("Would you like to change color or mode?") as null|anything in list("Colour","Mode")
 	if(!choice) return
 
 	playsound(src.loc, 'sound/effects/pop.ogg', 50, 0)
@@ -281,8 +281,8 @@
 	switch(choice)
 
 		if("Colour")
-			var/newcolour = input("Which colour would you like to use?") as null|anything in list("black","blue","red","green","yellow")
-			if(newcolour) colour = newcolour
+			var/newcolor = input("Which color would you like to use?") as null|anything in list("black","blue","red","green","yellow")
+			if(newcolor) color = newcolor
 
 		if("Mode")
 			if (mode == 1)

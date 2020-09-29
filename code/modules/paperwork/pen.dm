@@ -21,19 +21,19 @@
 	throw_speed = 7
 	throw_range = 15
 	matter = list(DEFAULT_WALL_MATERIAL = 10)
-	var/colour = "black"	//what colour the ink is!
+	color = "black"		// What color the ink is!
 	pressure_resistance = 2
 
 
 /obj/item/pen/blue
 	desc = "It's a normal blue ink pen."
 	icon_state = "pen_blue"
-	colour = "blue"
+	color = "blue"
 
 /obj/item/pen/red
 	desc = "It's a normal red ink pen."
 	icon_state = "pen_red"
-	colour = "red"
+	color = "red"
 
 /obj/item/pen/fountain
 	desc = "A well made fountain pen."
@@ -48,19 +48,19 @@
 	if(++selectedColor > 3)
 		selectedColor = 1
 
-	colour = colors[selectedColor]
+	color = colors[selectedColor]
 
-	if(colour == "black")
+	if(color == "black")
 		icon_state = "pen"
 	else
-		icon_state = "pen_[colour]"
+		icon_state = "pen_[color]"
 
-	to_chat(user, "<span class='notice'>Changed color to '[colour].'</span>")
+	to_chat(user, "<span class='notice'>Changed color to '[color].'</span>")
 
 /obj/item/pen/invisible
 	desc = "It's an invisble pen marker."
 	icon_state = "pen"
-	colour = "white"
+	color = "white"
 
 /obj/item/pen/click
 	desc = "It's a black ink pen. It urges you to click it."
@@ -153,33 +153,33 @@
 /obj/item/pen/chameleon/get_signature(var/mob/user)
 	return signature ? signature : "Anonymous"
 
-/obj/item/pen/chameleon/verb/set_colour()
+/obj/item/pen/chameleon/verb/set_color()
 	set name = "Change Pen Colour"
 	set category = "Object"
 
-	var/list/possible_colours = list ("Yellow", "Green", "Pink", "Blue", "Orange", "Cyan", "Red", "Invisible", "Black")
-	var/selected_type = input("Pick new colour.", "Pen Colour", null, null) as null|anything in possible_colours
+	var/list/possible_colors = list ("Yellow", "Green", "Pink", "Blue", "Orange", "Cyan", "Red", "Invisible", "Black")
+	var/selected_type = input("Pick new color.", "Pen Colour", null, null) as null|anything in possible_colors
 
 	if(selected_type)
 		switch(selected_type)
 			if("Yellow")
-				colour = COLOR_YELLOW
+				color = COLOR_YELLOW
 			if("Green")
-				colour = COLOR_LIME
+				color = COLOR_LIME
 			if("Pink")
-				colour = COLOR_PINK
+				color = COLOR_PINK
 			if("Blue")
-				colour = COLOR_BLUE
+				color = COLOR_BLUE
 			if("Orange")
-				colour = COLOR_ORANGE
+				color = COLOR_ORANGE
 			if("Cyan")
-				colour = COLOR_CYAN
+				color = COLOR_CYAN
 			if("Red")
-				colour = COLOR_RED
+				color = COLOR_RED
 			if("Invisible")
-				colour = COLOR_WHITE
+				color = COLOR_WHITE
 			else
-				colour = COLOR_BLACK
+				color = COLOR_BLACK
 		to_chat(usr, "<span class='info'>You select the [lowertext(selected_type)] ink container.</span>")
 
 
@@ -189,16 +189,16 @@
 
 /obj/item/pen/crayon
 	name = "crayon"
-	desc = "A colourful crayon. Please refrain from eating it or putting it in your nose."
+	desc = "A colorful crayon. Please refrain from eating it or putting it in your nose."
 	icon = 'icons/obj/crayons.dmi'
 	icon_state = "crayonred"
 	w_class = ITEMSIZE_TINY
-	attack_verb = list("attacked", "coloured")
-	colour = "#FF0000" //RGB
+	attack_verb = list("attacked", "colored")
+	color = "#FF0000" //RGB
 	var/shadeColour = "#220000" //RGB
 	var/uses = 30 //0 for unlimited uses
 	var/instant = 0
-	var/colourName = "red" //for updateIcon purposes
+	var/colorName = "red" //for updateIcon purposes
 
 /obj/item/pen/crayon/suicide_act(mob/user)
 	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
@@ -206,7 +206,7 @@
 	return (BRUTELOSS|OXYLOSS)
 
 /obj/item/pen/crayon/New()
-	name = "[colourName] crayon"
+	name = "[colorName] crayon"
 
 /obj/item/pen/crayon/marker
 	name = "marker"
@@ -214,7 +214,7 @@
 	icon_state = "markerred"
 
 /obj/item/pen/crayon/marker/New()
-	name = "[colourName] marker"
+	name = "[colorName] marker"
 
 //Ritual Chalk
 /obj/item/pen/crayon/chalk
@@ -223,12 +223,12 @@
 	icon = 'icons/obj/crayons.dmi'
 	icon_state = "chalkwhite"
 	w_class = ITEMSIZE_TINY
-	attack_verb = list("attacked", "coloured")
-	colour = "#FFFFFF" //RGB
+	attack_verb = list("attacked", "colored")
+	color = "#FFFFFF" //RGB
 	shadeColour = "#000000" //RGB
 	uses = 66 //0 for unlimited uses
 	instant = 0
-	colourName = "white" //for updateIcon purposes
+	colorName = "white" //for updateIcon purposes
 
 /obj/item/pen/crayon/chalk/suicide_act(mob/user)
 	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
@@ -236,4 +236,4 @@
 	return (BRUTELOSS|OXYLOSS)
 
 /obj/item/pen/crayon/chalk/New()
-	name = "[colourName] chalk"
+	name = "[colorName] chalk"

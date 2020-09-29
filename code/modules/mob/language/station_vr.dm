@@ -13,7 +13,7 @@
 	name = LANGUAGE_BIRDSONG
 	desc = "A language primarily spoken by Narvians"
 	speech_verb = "chirps"
-	colour = "birdsongc"
+	color = "birdsongc"
 	key = "7"
 	syllables = list ("cheep", "peep", "tweet")
 
@@ -21,7 +21,7 @@
 	name = LANGUAGE_SAGARU
 	desc = "The dominant language of the Sergal homeworld, Vilous. It consists of aggressive low-pitched hissing and throaty growling."
 	speech_verb = "snarls"
-	colour = "sergal"
+	color = "sergal"
 	key = "T"
 	syllables = list ("grr", "gah", "woof", "arf", "arra", "rah", "wor", "sarg")
 
@@ -31,7 +31,7 @@
 	speech_verb = "rrrfts"
 	ask_verb = "rurs"
 	exclaim_verb = "barks"
-	colour = "vulpkanin"
+	color = "vulpkanin"
 	key = "8"
 	syllables = list("rur","ya","cen","rawr","bar","kuk","tek","qat","uk","wu","vuh","tah","tch","schz","auch", \
 	"ist","ein","entch","zwichs","tut","mir","wo","bis","es","vor","nic","gro","lll","enem","zandt","tzch","noch", \
@@ -53,7 +53,7 @@
 	speech_verb = "chants"
 	ask_verb = "croons"
 	exclaim_verb = "incants"
-	colour = "daemon" //So fancy
+	color = "daemon" //So fancy
 	key = "n"
 	syllables = list("viepn","e","bag","docu","kar","xlaqf","raa","qwos","nen","ty","von","kytaf","xin","ty","ka","baak","hlafaifpyk","znu","agrith","na'ar","uah","plhu","six","fhler","bjel","scee","lleri",
 	"dttm","aggr","uujl","hjjifr","wwuthaav",)
@@ -65,7 +65,7 @@
 	speech_verb = "sings"
 	ask_verb = "hums"
 	exclaim_verb = "loudly sings"
-	colour = "enochian" //So fancy
+	color = "enochian" //So fancy
 	key = "i"
 	syllables = list("salve","sum","loqui","operatur","iusta","et","permittit","facere","effercio","pluribus","enim","hoc",
 	"mihi","wan","six","tartu")
@@ -77,7 +77,7 @@
 	speech_verb = "clicks"
 	ask_verb = "chitters"
 	exclaim_verb = "rasps"
-	colour = "bug"
+	color = "bug"
 	key = "x"
 	syllables = list("vaur","uyek","uyit","avek","sc'theth","k'ztak","teth","wre'ge","lii","dra'","zo'","ra'","kax'","zz","vh","ik","ak",
     "uhk","zir","sc'orth","sc'er","thc'yek","th'zirk","th'esk","k'ayek","ka'mil","sc'","ik'yir","yol","kig","k'zit","'","'","zrk","krg","isk'yet","na'k",
@@ -89,7 +89,7 @@
 	speech_verb = "mars"
 	ask_verb = "mars"
 	exclaim_verb = "mars"
-	colour = "changeling"
+	color = "changeling"
 	key = "m"
 	machine_understands = FALSE
 	flags = WHITELISTED | HIVEMIND
@@ -97,7 +97,7 @@
 /datum/language/slavic
 	name = LANGUAGE_SLAVIC
 	desc = "The official language of the Independent Colonial Confederation of Gilgamesh, originally established in 2122 by the short-lived United Slavic Confederation on Earth."
-	colour = "solcom"
+	color = "solcom"
 	key = "g"
 	syllables = list(
 		"rus", "zem", "ave", "groz", "ski", "ska", "ven", "konst", "pol", "lin", "svy",
@@ -112,7 +112,7 @@
 	speech_verb = "rattles"
 	ask_verb = "clinks"
 	exclaim_verb = "clunks"
-	colour = "changeling"
+	color = "changeling"
 	key = "c"
 	syllables = list("clatter","tink","chink","clack","rattle","clink","clunk","dink","tonk","donk","plink,","plonk")
 

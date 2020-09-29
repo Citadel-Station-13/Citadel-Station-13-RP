@@ -103,7 +103,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/shapeshifter_select_shape,
-		/mob/living/carbon/human/proc/shapeshifter_select_colour,
+		/mob/living/carbon/human/proc/shapeshifter_select_color,
 		/mob/living/carbon/human/proc/shapeshifter_select_hair,
 		/mob/living/carbon/human/proc/shapeshifter_select_hair_colors,
 		/mob/living/carbon/human/proc/shapeshifter_select_gender,
@@ -223,10 +223,10 @@ VOREStation Removal End */
 	//else//VOREStation Removal
 		//H.adjustToxLoss(2*heal_rate)	// Doubled because 0.5 is miniscule, and fire_stacks are capped in both directions
 
-/datum/species/shapeshifter/promethean/get_blood_colour(var/mob/living/carbon/human/H)
+/datum/species/shapeshifter/promethean/get_blood_color(var/mob/living/carbon/human/H)
 	return (H ? rgb(H.r_skin, H.g_skin, H.b_skin) : ..())
 
-/datum/species/shapeshifter/promethean/get_flesh_colour(var/mob/living/carbon/human/H)
+/datum/species/shapeshifter/promethean/get_flesh_color(var/mob/living/carbon/human/H)
 	return (H ? rgb(H.r_skin, H.g_skin, H.b_skin) : ..())
 
 /datum/species/shapeshifter/promethean/get_additional_examine_text(var/mob/living/carbon/human/H)

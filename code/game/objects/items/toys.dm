@@ -1087,7 +1087,7 @@
 
 /obj/item/toy/plushie/squid/mint
 	name = "mint squid plushie"
-	desc = "A small, cute and loveable squid friend. This one is mint coloured."
+	desc = "A small, cute and loveable squid friend. This one is mint colored."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "mintsquid"
 	slot_flags = SLOT_HEAD

@@ -56,7 +56,7 @@
 	if(!material)
 		qdel(src)
 		return
-	color = material.icon_colour
+	color = material.icon_color
 
 /obj/vehicle/boat/New(newloc, material_name)
 	..(newloc)
@@ -66,7 +66,7 @@
 	if(!material)
 		qdel(src)
 		return
-	color = material.icon_colour
+	color = material.icon_color
 	riding_datum = new riding_datum_type(src)
 
 // Boarding.

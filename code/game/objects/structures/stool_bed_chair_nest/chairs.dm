@@ -1,7 +1,7 @@
 /obj/structure/bed/chair	//YES, chairs are a type of bed, which are a type of stool. This works, believe me.	-Pete
 	name = "chair"
 	desc = "You sit in this. Either by will or force."
-	icon = 'icons/obj/furniture_vr.dmi' //VOREStation Edit - Using Eris furniture
+	icon = 'icons/obj/furniture_vr.dmi'
 	icon_state = "chair_preview"
 	color = "#666666"
 	base_icon = "chair"
@@ -49,7 +49,7 @@
 			var/image/I = image(icon, "[base_icon]_armrest")
 			I.layer = MOB_LAYER + 0.1
 			I.plane = MOB_PLANE
-			I.color = padding_material.icon_colour
+			I.color = padding_material.icon_color
 			stool_cache[cache_key] = I
 		overlays |= stool_cache[cache_key]
 
@@ -88,7 +88,7 @@
 	icon_state = "shuttle_chair"
 	color = null
 	base_icon = "shuttle_chair"
-	applies_material_colour = 0
+	applies_material_color = 0
 
 // Leaving this in for the sake of compilation.
 /obj/structure/bed/chair/comfy
@@ -203,3 +203,24 @@
 
 /obj/structure/bed/chair/wood/wings
 	icon_state = "wooden_chair_wings"
+
+/obj/structure/bed/chair/sofa
+	name = "sofa"
+	desc = "A padded, comfy sofa. Great for lazing on."
+	base_icon = "sofamiddle"
+
+/obj/structure/bed/chair/sofa/left
+	base_icon = "sofaend_left"
+
+/obj/structure/bed/chair/sofa/right
+	base_icon = "sofaend_right"
+
+/obj/structure/bed/chair/sofa/corner
+	base_icon = "sofacorner"
+
+/obj/structure/bed/chair/sofa/corner/update_layer()
+	if(src.dir == NORTH || src.dir == WEST)
+		plane = MOB_PLANE
+		layer = MOB_LAYER + 0.1
+	else
+		reset_plane_and_layer()

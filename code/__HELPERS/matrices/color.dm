@@ -1,5 +1,5 @@
 /////////////////////
-// COLOUR MATRICES //
+// COLOR MATRICES //
 /////////////////////
 
 /* Documenting a couple of potentially useful color matrices here to inspire ideas

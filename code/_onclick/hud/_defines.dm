@@ -107,6 +107,10 @@
 //#define ui_wiz_instability_display "EAST-2:28,CENTER-3:15"
 #define ui_wiz_instability_display "EAST-1:28,NORTH-2:27"
 
+#define ui_shadekin_dark_display "EAST-1:28,CENTER-3:15"
+#define ui_shadekin_energy_display "EAST-1:28,CENTER-4:15"
+#define ui_xenochimera_danger_display "EAST-1:28,CENTER-3:15"
+
 //Pop-up inventory
 #define ui_shoes "WEST+1:8,SOUTH:5"
 

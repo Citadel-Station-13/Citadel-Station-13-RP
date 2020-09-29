@@ -1,7 +1,7 @@
 /datum/material/flesh
 	name = "flesh"
 	display_name = "chunk of flesh"
-	icon_colour = "#dd90aa"
+	icon_color = "#dd90aa"
 	sheet_singular_name = "meat"
 	sheet_plural_name = "meats"
 	integrity = 1200
@@ -13,7 +13,7 @@
 /datum/material/fluff //This is to allow for 2 handed weapons that don't want to have a prefix.
 	name = " "
 	display_name = ""
-	icon_colour = "#000000"
+	icon_color = "#000000"
 	sheet_singular_name = "fluff"
 	sheet_plural_name = "fluffs"
 	hardness = 60

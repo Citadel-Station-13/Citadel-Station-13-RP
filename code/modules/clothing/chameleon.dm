@@ -89,7 +89,7 @@
 
 /obj/item/clothing/head/chameleon/emp_act(severity) //Because we don't have psych for all slots right now but still want a downside to EMP.  In this case your cover's blown.
 	name = "grey cap"
-	desc = "It's a baseball hat in a tasteful grey colour."
+	desc = "It's a baseball hat in a tasteful grey color."
 	icon_state = "greysoft"
 	update_icon()
 	update_clothing_icon()

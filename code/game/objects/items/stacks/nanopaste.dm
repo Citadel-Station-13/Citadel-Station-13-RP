@@ -32,7 +32,6 @@
 	if (istype(M,/mob/living/carbon/human))		//Repairing robolimbs
 		var/mob/living/carbon/human/H = M
 		var/obj/item/organ/external/S = H.get_organ(user.zone_sel.selecting)
-		//VOREStation Edit Start
 		if (S && (S.robotic >= ORGAN_ROBOT))
 			if(!S.get_damage())
 				to_chat(user, "<span class='notice'>Nothing to fix here.</span>")
@@ -47,7 +46,6 @@
 				use(1)
 				user.visible_message("<span class='notice'>\The [user] applies some nanite paste on [user != M ? "[M]'s [S.name]" : "[S]"] with [src].</span>",\
 				"<span class='notice'>You apply some nanite paste on [user == M ? "your" : "[M]'s"] [S.name].</span>")
-		//VOREStation Edit End
 
 /obj/item/stack/nanopaste/advanced
 	name = "advanced nanopaste"

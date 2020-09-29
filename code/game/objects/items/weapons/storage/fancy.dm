@@ -127,12 +127,12 @@
 	var/mutable_appearance/ma = new(src)
 	ma.overlays = list()
 	for(var/obj/item/pen/crayon/crayon in contents)
-		ma.overlays += image('icons/obj/crayons.dmi',crayon.colourName)
+		ma.overlays += image('icons/obj/crayons.dmi',crayon.colorName)
 	appearance = ma
 
 /obj/item/storage/fancy/crayons/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/pen/crayon))
-		switch(W:colourName)
+		switch(W:colorName)
 			if("mime")
 				to_chat(user, "This crayon is too sad to be contained in this box.")
 				return
@@ -169,12 +169,12 @@
 	var/mutable_appearance/ma = new(src)
 	ma.overlays = list()
 	for(var/obj/item/pen/crayon/marker/marker in contents)
-		ma.overlays += image('icons/obj/crayons.dmi',"m"+marker.colourName)
+		ma.overlays += image('icons/obj/crayons.dmi',"m"+marker.colorName)
 	appearance = ma
 
 /obj/item/storage/fancy/markers/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/pen/crayon/marker))
-		switch(W:colourName)
+		switch(W:colorName)
 			if("mime")
 				to_chat(user, "This marker is too depressing to be contained in this box.")
 				return
@@ -208,7 +208,7 @@
 	var/mutable_appearance/ma = new(src)
 	ma.overlays = list()
 	for(var/obj/item/pen/crayon/chalk/chalk in contents)
-		ma.overlays += image('icons/obj/crayons.dmi',"c"+chalk.colourName)
+		ma.overlays += image('icons/obj/crayons.dmi',"c"+chalk.colorName)
 	appearance = ma
 
 /*

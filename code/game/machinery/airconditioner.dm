@@ -10,8 +10,8 @@
 	density = 1
 	anchored = 0
 
-	use_power = USE_POWER_OFF //is powered directly from cables
-	active_power_usage = 150 KILOWATTS  //BIG POWER
+	use_power = USE_POWER_OFF	// Is powered directly from cables
+	active_power_usage = 150 KILOWATTS	// BIG POWER
 	idle_power_usage = 500
 
 	circuit = /obj/item/circuitboard/thermoregulator
@@ -91,7 +91,7 @@
 
 	var/heat_transfer = removed.get_thermal_energy_change(target_temp)
 	var/power_avail
-	if(heat_transfer == 0) //just in case
+	if(heat_transfer == 0)	// Just in case
 		change_mode(MODE_IDLE)
 	else if(heat_transfer > 0)
 		change_mode(MODE_HEATING)

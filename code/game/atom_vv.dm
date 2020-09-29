@@ -3,8 +3,8 @@
   *
   * Can be used to implement special handling of vars
   *
-  * At the atom level, if you edit a var named "color" it will add the atom colour with
-  * admin level priority to the atom colours list
+  * At the atom level, if you edit a var named "color" it will add the atom color with
+  * admin level priority to the atom colors list
   *
   * Also, if GLOB.Debug2 is FALSE, it sets the ADMIN_SPAWNED_1 flag on flags_1, which signifies
   * the object has been admin edited
@@ -16,7 +16,7 @@
 		/*
 	switch(var_name)
 		if("color")
-			add_atom_colour(color, ADMIN_COLOUR_PRIORITY)
+			add_atom_color(color, ADMIN_COLOR_PRIORITY)
 		*/
 
 /**

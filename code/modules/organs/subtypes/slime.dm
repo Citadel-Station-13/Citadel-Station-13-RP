@@ -108,7 +108,7 @@
 	spawn(15)
 		if(ishuman(owner))
 			H = owner
-			color = H.species.get_blood_colour(H)
+			color = H.species.get_blood_color(H)
 
 /obj/item/organ/internal/regennetwork/proc/get_strain_percent(var/cost)
 	adjust_strain(cost)

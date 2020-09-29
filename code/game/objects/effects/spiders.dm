@@ -176,25 +176,10 @@
 			entry_vent = null
 	else if(entry_vent)
 		if(get_dist(src, entry_vent) <= 1)
-			//VOREStation Edit Start
 			var/obj/machinery/atmospherics/unary/vent_pump/exit_vent = get_safe_ventcrawl_target(entry_vent)
 			if(!exit_vent)
 				return
 			if(1) //To maintain indentation level
-			//VOREStation Edit End
-			/*	//VOREStation Removal Start - prevent spiders in dorms
-			if(entry_vent.network && entry_vent.network.normal_members.len)
-				var/list/vents = list()
-				for(var/obj/machinery/atmospherics/unary/vent_pump/temp_vent in entry_vent.network.normal_members)
-					vents.Add(temp_vent)
-				if(!vents.len)
-					entry_vent = null
-					return
-				var/obj/machinery/atmospherics/unary/vent_pump/exit_vent = pick(vents)
-				*/ //VOREStation Removal End
-				/*if(prob(50))
-					src.visible_message("<B>[src] scrambles into the ventillation ducts!</B>")*/
-
 				spawn(rand(20,60))
 					loc = exit_vent
 					var/travel_time = round(get_dist(loc, exit_vent.loc) / 2)
@@ -255,7 +240,7 @@
 				if(prob(25))
 					src.visible_message("<span class='notice'>\The [src] skitters[pick(" away"," around","")].</span>")
 		else if(prob(5))
-			//vent crawl!
+			// Vent crawl!
 			for(var/obj/machinery/atmospherics/unary/vent_pump/v in view(7,src))
 				if(!v.welded)
 					entry_vent = v
@@ -294,3 +279,6 @@
 	for(var/atom/movable/A in contents)
 		A.loc = src.loc
 	return ..()
+
+/obj/effect/spider/spiderling/virgo
+	grow_as = list(/mob/living/simple_mob/animal/giant_spider, /mob/living/simple_mob/animal/giant_spider/hunter)

@@ -64,7 +64,7 @@
 
 /obj/item/clothing/shoes/boots/winter/security
 	name = "security winter boots"
-	desc = "A pair of winter boots. These ones are lined with grey fur, and coloured an angry red."
+	desc = "A pair of winter boots. These ones are lined with grey fur, and colored an angry red."
 	icon_state = "winterboots_sec"
 	armor = list(melee = 30, bullet = 10, laser = 10, energy = 15, bomb = 20, bio = 0, rad = 0)
 
@@ -75,17 +75,17 @@
 
 /obj/item/clothing/shoes/boots/winter/command
 	name = "Facility Director's winter boots"
-	desc = "A pair of winter boots. They're lined with dark fur, and trimmed in the colours of superiority."
+	desc = "A pair of winter boots. They're lined with dark fur, and trimmed in the colors of superiority."
 	icon_state = "winterboots_cap"
 
 /obj/item/clothing/shoes/boots/winter/engineering
 	name = "engineering winter boots"
-	desc = "A pair of winter boots. These ones are lined with orange fur and are trimmed in the colours of disaster."
+	desc = "A pair of winter boots. These ones are lined with orange fur and are trimmed in the colors of disaster."
 	icon_state = "winterboots_eng"
 
 /obj/item/clothing/shoes/boots/winter/atmos
 	name = "atmospherics winter boots"
-	desc = "A pair of winter boots. These ones are lined with beige fur, and are trimmed in breath taking colours."
+	desc = "A pair of winter boots. These ones are lined with beige fur, and are trimmed in breath taking colors."
 	icon_state = "winterboots_atmos"
 
 /obj/item/clothing/shoes/boots/winter/medical

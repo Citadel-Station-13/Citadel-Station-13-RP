@@ -6,58 +6,58 @@
 	icon_state = "lipstick"
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_EARS
-	var/colour = "red"
+	var/item_color = "red"
 	var/open = 0
 
 /obj/item/lipstick/orange
 	name = "orange lipstick"
-	colour = "orange"
+	item_color = "orange"
 
 /obj/item/lipstick/yellow
 	name = "yellow lipstick"
-	colour = "yellow"
+	item_color = "yellow"
 
 /obj/item/lipstick/jade
 	name = "jade lipstick"
-	colour = "jade"
+	item_color = "jade"
 
 /obj/item/lipstick/cyan
 	name = "cyan lipstick"
-	colour = "cyan"
+	item_color = "cyan"
 
 /obj/item/lipstick/purple
 	name = "purple lipstick"
-	colour = "purple"
+	item_color = "purple"
 
 /obj/item/lipstick/pink
 	name = "pink lipstick"
-	colour = "pink"
+	item_color = "pink"
 
 /obj/item/lipstick/maroon
 	name = "maroon lipstick"
-	colour = "maroon"
+	item_color = "maroon"
 
 /obj/item/lipstick/black
 	name = "black lipstick"
-	colour = "black"
+	item_color = "black"
 
 /obj/item/lipstick/white
 	name = "white lipstick"
-	colour = "white"
+	item_color = "white"
 
 /obj/item/lipstick/random
 	name = "lipstick"
 
 /obj/item/lipstick/random/Initialize(mapload)
 	. = ..()
-	colour = pick("red","orange","yellow","jade","cyan","purple","pink","maroon","black","white")
-	name = "[colour] lipstick"
+	item_color = pick("red","orange","yellow","jade","cyan","purple","pink","maroon","black","white")
+	name = "[item_color] lipstick"
 
 /obj/item/lipstick/attack_self(mob/user as mob)
 	to_chat(user, "<span class='notice'>You twist \the [src] [open ? "closed" : "open"].</span>")
 	open = !open
 	if(open)
-		icon_state = "[initial(icon_state)]_[colour]"
+		icon_state = "[initial(icon_state)]_[item_color]"
 	else
 		icon_state = initial(icon_state)
 
@@ -74,7 +74,7 @@
 		if(H == user)
 			user.visible_message("<span class='notice'>[user] does their lips with \the [src].</span>", \
 								 "<span class='notice'>You take a moment to apply \the [src]. Perfect!</span>")
-			H.lip_style = colour
+			H.lip_style = item_color
 			H.update_icons_body()
 		else
 			user.visible_message("<span class='warning'>[user] begins to do [H]'s lips with \the [src].</span>", \
@@ -82,7 +82,7 @@
 			if(do_after(user, 20) && do_after(H, 20, 5, 0))	//user needs to keep their active hand, H does not.
 				user.visible_message("<span class='notice'>[user] does [H]'s lips with \the [src].</span>", \
 									 "<span class='notice'>You apply \the [src].</span>")
-				H.lip_style = colour
+				H.lip_style = item_color
 				H.update_icons_body()
 	else
 		to_chat(user, "<span class='notice'>Where are the lips on that?</span>")

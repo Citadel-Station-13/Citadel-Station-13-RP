@@ -34,7 +34,7 @@
 					var/gibType = gibtypes[i]
 					gib = new gibType(location)
 
-					// Apply human species colouration to masks.
+					// Apply human species coloration to masks.
 					if(fleshcolor)
 						gib.fleshcolor = fleshcolor
 					if(bloodcolor)

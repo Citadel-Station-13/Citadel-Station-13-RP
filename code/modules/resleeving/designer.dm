@@ -103,7 +103,7 @@
 		temp = list("styleHref" = "tail_style", "style" = "Normal")
 		if(mannequin.tail_style)
 			temp["style"] = mannequin.tail_style.name
-			if(mannequin.tail_style.do_colouration)
+			if(mannequin.tail_style.do_coloration)
 				temp["color"] = MOB_HEX_COLOR(mannequin, tail)
 				temp["colorHref"] = "tail_color"
 		styles["Tail"] = temp
@@ -111,7 +111,7 @@
 		temp = list("styleHref" = "wing_style", "style" = "Normal")
 		if(mannequin.wing_style)
 			temp["style"] = mannequin.wing_style.name
-			if(mannequin.wing_style.do_colouration)
+			if(mannequin.wing_style.do_coloration)
 				temp["color"] = MOB_HEX_COLOR(mannequin, wing)
 				temp["colorHref"] = "wing_color"
 		styles["Wing"] = temp

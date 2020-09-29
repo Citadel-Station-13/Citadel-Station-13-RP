@@ -70,11 +70,11 @@
 	if(!L.say_understands(speaker,language))
 		//They understand the output language
 		if(L.say_understands(null,langset))
-			to_chat(L, "<i><b>[src]</b> translates, </i>\"<span class='[langset.colour]'>[message]</span>\"")
+			to_chat(L, "<i><b>[src]</b> translates, </i>\"<span class='[langset.color]'>[message]</span>\"")
 
 		//They don't understand the output language
 		else
-			to_chat(L, "<i><b>[src]</b> translates, </i>\"<span class='[langset.colour]'>[langset.scramble(message)]</span>\"")
+			to_chat(L, "<i><b>[src]</b> translates, </i>\"<span class='[langset.color]'>[langset.scramble(message)]</span>\"")
 
 //Let's try an ear-worn version
 /obj/item/universal_translator/ear

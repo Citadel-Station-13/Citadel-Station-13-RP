@@ -207,7 +207,6 @@
 	for(var/obj/item/communicator/comm in communicating)
 		var/turf/T = get_turf(comm)
 		if(!T) return
-		//VOREStation Edit Start for commlinks
 		var/list/mobs_to_relay
 		if(istype(comm,/obj/item/communicator/commlink))
 			var/obj/item/communicator/commlink/CL = comm
@@ -215,7 +214,6 @@
 		else
 			var/list/in_range = get_mobs_and_objs_in_view_fast(T,world.view,0) //Range of 3 since it's a tiny video display
 			mobs_to_relay = in_range["mobs"]
-		//VOREStation Edit End
 
 		for(var/mob/mob in mobs_to_relay) //We can't use visible_message(), or else we will get an infinite loop if two communicators hear each other.
 			var/dst = get_dist(get_turf(mob),get_turf(comm))
@@ -235,7 +233,6 @@
 
 		var/turf/T = get_turf(comm)
 		if(!T) return
-		//VOREStation Edit Start for commlinks
 		var/list/mobs_to_relay
 		if(istype(comm,/obj/item/communicator/commlink))
 			var/obj/item/communicator/commlink/CL = comm
@@ -243,7 +240,6 @@
 		else
 			var/list/in_range = get_mobs_and_objs_in_view_fast(T,world.view,0) //Range of 3 since it's a tiny video display
 			mobs_to_relay = in_range["mobs"]
-		//VOREStation Edit End
 
 		for(var/mob/mob in mobs_to_relay)
 			//Can whoever is hearing us understand?

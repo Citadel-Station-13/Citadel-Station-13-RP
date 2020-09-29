@@ -90,7 +90,7 @@
 
 /obj/effect/wingrille_spawn/reinforced/polarized
 	name = "polarized window grille spawner"
-	color = "#444444"
+	color = COLOR_GRAY_DARK
 	win_path = /obj/structure/window/reinforced/polarized
 	var/id
 

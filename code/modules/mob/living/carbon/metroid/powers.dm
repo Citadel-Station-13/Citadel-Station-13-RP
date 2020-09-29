@@ -120,7 +120,7 @@
 			maxHealth = 200
 			amount_grown = 0
 			regenerate_icons()
-			name = text("[colour] [is_adult ? "adult" : "baby"] slime ([number])")
+			name = text("[color] [is_adult ? "adult" : "baby"] slime ([number])")
 		else
 			to_chat(src, "<span class='notice'>I am not ready to evolve yet...</span>")
 	else
@@ -144,7 +144,7 @@
 			var/new_nutrition = round(nutrition * 0.9)
 			var/new_powerlevel = round(powerlevel / 4)
 			for(var/i = 1, i <= 4, i++)
-				var/t = colour
+				var/t = color
 				if(prob(mutation_chance))
 					t = slime_mutation[rand(1,4)]
 				var/mob/living/carbon/slime/M = new /mob/living/carbon/slime/(loc, t)
@@ -153,7 +153,7 @@
 				if(i != 1) step_away(M, src)
 				M.Friends = Friends.Copy()
 				babies += M
-				feedback_add_details("slime_babies_born","slimebirth_[replacetext(M.colour," ","_")]")
+				feedback_add_details("slime_babies_born","slimebirth_[replacetext(M.color," ","_")]")
 
 			var/mob/living/carbon/slime/new_slime = pick(babies)
 			new_slime.universal_speak = universal_speak

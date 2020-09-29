@@ -6,7 +6,7 @@
 	gender = PLURAL
 	organ_tag = O_EYES
 	parent_organ = BP_HEAD
-	var/list/eye_colour = list(0,0,0)
+	var/list/eye_color = list(0,0,0)
 	var/innate_flash_protection = FLASH_PROTECTION_NONE
 
 /obj/item/organ/internal/eyes/robotize()
@@ -38,7 +38,7 @@
 	set category = "IC"
 	set src in usr
 
-	var/current_color = rgb(eye_colour[1],eye_colour[2],eye_colour[3])
+	var/current_color = rgb(eye_color[1],eye_color[2],eye_color[3])
 	var/new_color = input("Pick a new color for your eyes.","Eye Color", current_color) as null|color
 	if(new_color && owner)
 		// input() supplies us with a hex color, which we can't use, so we convert it to rbg values.
@@ -47,25 +47,25 @@
 		owner.r_eyes = new_color_rgb_list[1]
 		owner.g_eyes = new_color_rgb_list[2]
 		owner.b_eyes = new_color_rgb_list[3]
-		// Now sync the organ's eye_colour list.
-		update_colour()
+		// Now sync the organ's eye_color list.
+		update_color()
 		// Finally, update the eye icon on the mob.
 		owner.regenerate_icons()
 
 /obj/item/organ/internal/eyes/replaced(var/mob/living/carbon/human/target)
 
-	// Apply our eye colour to the target.
-	if(istype(target) && eye_colour)
-		target.r_eyes = eye_colour[1]
-		target.g_eyes = eye_colour[2]
-		target.b_eyes = eye_colour[3]
+	// Apply our eye color to the target.
+	if(istype(target) && eye_color)
+		target.r_eyes = eye_color[1]
+		target.g_eyes = eye_color[2]
+		target.b_eyes = eye_color[3]
 		target.update_eyes()
 	..()
 
-/obj/item/organ/internal/eyes/proc/update_colour()
+/obj/item/organ/internal/eyes/proc/update_color()
 	if(!owner)
 		return
-	eye_colour = list(
+	eye_color = list(
 		owner.r_eyes ? owner.r_eyes : 0,
 		owner.g_eyes ? owner.g_eyes : 0,
 		owner.b_eyes ? owner.b_eyes : 0

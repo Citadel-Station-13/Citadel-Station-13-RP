@@ -100,7 +100,7 @@
 /obj/item/storage/wallet/poly/New()
 	..()
 	verbs |= /obj/item/storage/wallet/poly/proc/change_color
-	color = "#"+get_random_colour()
+	color = "#"+get_random_color()
 	update_icon()
 
 /obj/item/storage/wallet/poly/proc/change_color()

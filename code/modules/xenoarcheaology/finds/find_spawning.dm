@@ -541,7 +541,7 @@
 			MAT_SUPERMATTER = 1
 			)
 		var/obj/item/material/MW = new_item
-		MW.applies_material_colour = TRUE
+		MW.applies_material_color = TRUE
 		MW.set_material(new_item_mat)
 		if(istype(MW, /obj/item/material/twohanded))
 			var/obj/item/material/twohanded/TH = MW

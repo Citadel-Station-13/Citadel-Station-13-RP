@@ -189,6 +189,24 @@
 	R.emag_items = 1
 	return 1
 
+// Robot resizing module
+
+/obj/item/borg/upgrade/sizeshift
+	name = "robot size alteration module"
+	desc = "Using technology similar to one used in sizeguns, allows cyborgs to adjust their own size as neccesary."
+	icon_state = "cyborg_upgrade2"
+	item_state = "cyborg_upgrade"
+	require_module = 1
+
+/obj/item/borg/upgrade/sizeshift/action(var/mob/living/silicon/robot/R)
+	if(..()) return 0
+
+	if(/mob/living/proc/set_size in R.verbs)
+		return 0
+
+	R.verbs += /mob/living/proc/set_size
+	return 1
+
 /obj/item/borg/upgrade/language
 	name = "language module"
 	desc = "Used to let cyborgs other than clerical or service speak a variety of languages."
@@ -198,17 +216,24 @@
 /obj/item/borg/upgrade/language/action(var/mob/living/silicon/robot/R)
 	if(..()) return 0
 
-	R.add_language(LANGUAGE_SOL_COMMON, 1)
-	R.add_language(LANGUAGE_TRADEBAND, 1)
-	R.add_language(LANGUAGE_UNATHI, 1)
-	R.add_language(LANGUAGE_SIIK, 1)
-	R.add_language(LANGUAGE_AKHANI, 1)
-	R.add_language(LANGUAGE_SKRELLIAN, 1)
-	R.add_language(LANGUAGE_SKRELLIANFAR, 0)
-	R.add_language(LANGUAGE_GUTTER, 1)
-	R.add_language(LANGUAGE_SCHECHI, 1)
-	R.add_language(LANGUAGE_ROOTLOCAL, 1)
-	R.add_language(LANGUAGE_TERMINUS, 1)
-	R.add_language(LANGUAGE_ZADDAT, 1)
+	R.add_language(LANGUAGE_SOL_COMMON,		1)
+	R.add_language(LANGUAGE_TRADEBAND,		1)
+	R.add_language(LANGUAGE_UNATHI,			1)
+	R.add_language(LANGUAGE_SIIK,			1)
+	R.add_language(LANGUAGE_AKHANI,			1)
+	R.add_language(LANGUAGE_SKRELLIAN,		1)
+	R.add_language(LANGUAGE_SKRELLIANFAR,	0)
+	R.add_language(LANGUAGE_GUTTER,			1)
+	R.add_language(LANGUAGE_SCHECHI,		1)
+	R.add_language(LANGUAGE_ROOTLOCAL,		1)
+	R.add_language(LANGUAGE_TERMINUS,		1)
+	R.add_language(LANGUAGE_ZADDAT,			1)
+	R.add_language(LANGUAGE_BIRDSONG,		1)
+	R.add_language(LANGUAGE_SAGARU,			1)
+	R.add_language(LANGUAGE_CANILUNZT,		1)
+	R.add_language(LANGUAGE_ECUREUILIAN,	1)
+	R.add_language(LANGUAGE_DAEMON,			1)
+	R.add_language(LANGUAGE_ENOCHIAN,		1)
+	R.add_language(LANGUAGE_SLAVIC,			1)
 
 	return 1

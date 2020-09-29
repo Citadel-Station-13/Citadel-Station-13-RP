@@ -279,7 +279,7 @@
 
 /obj/item/inducer/syndicate
 	name = "suspicious inducer"
-	desc = "A tool for inductively charging internal power cells. This one has a suspicious colour scheme, and seems to be rigged to transfer charge at a much faster rate."
+	desc = "A tool for inductively charging internal power cells. This one has a suspicious color scheme, and seems to be rigged to transfer charge at a much faster rate."
 	icon_state = "inducer-syndi"
 	item_state = "inducer-syndi"
 	powertransfer = 2000

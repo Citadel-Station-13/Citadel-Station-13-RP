@@ -3,10 +3,10 @@
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "labeler1"
 
-	var/colour =        "plain"
-	var/colour_secure = "plain"
+	var/closet_color =	 "plain"
+	var/color_secure =	 "plain"
 
-	var/list/colours = list(
+	var/list/colors = list(
 		"plain" = 				list("open" = "open", "closed" = "closed"),
 		"blue" = 				list("open" = "open", "closed" = "blue"),
 		"mixed" = 				list("open" = "open", "closed" = "mixed"),
@@ -35,7 +35,7 @@
 		"radiation" = 			list("open" = "toolclosetopen", "closed" = "radsuitcloset")
 		)
 
-	var/list/colours_secure = list(
+	var/list/colors_secure = list(
 		"plain" = 				list("open" = "open", "closed" = "secure", "locked" = "secure1", "broken" = "securebroken", "off" = "secureoff"),
 		"medical-red" = 		list("open" = "medicalopen", "closed" = "medical", "locked" = "medical1", "broken" = "medicalbroken", "off" = "medicaloff"),
 		"medical-green" = 		list("open" = "securemedopen", "closed" = "securemed", "locked" = "securemed1", "broken" = "securemedbroken", "off" = "securemedoff"),
@@ -92,25 +92,25 @@
 			to_chat(user, "<span class='warning'>\The [src] cannot paint broken closets.</span>")
 			return
 
-		var/list/colour_data = colours_secure[colour_secure]
-		if(!islist(colour_data))
+		var/list/color_data = colors_secure[color_secure]
+		if(!islist(color_data))
 			config_error = 1
 		if(!config_error)
-			F.icon_opened = colour_data["open"]
-			F.icon_closed = colour_data["closed"]
-			F.icon_locked = colour_data["locked"]
-			F.icon_broken = colour_data["broken"]
-			F.icon_off = colour_data["off"]
+			F.icon_opened = color_data["open"]
+			F.icon_closed = color_data["closed"]
+			F.icon_locked = color_data["locked"]
+			F.icon_broken = color_data["broken"]
+			F.icon_off = color_data["off"]
 			F.update_icon()
 
 	else
 		var/obj/structure/closet/F = A
-		var/list/colour_data = colours[colour]
-		if(!islist(colour_data))
+		var/list/color_data = colors[color]
+		if(!islist(color_data))
 			config_error = 1
 		if(!config_error)
-			F.icon_opened = colour_data["open"]
-			F.icon_closed = colour_data["closed"]
+			F.icon_opened = color_data["open"]
+			F.icon_closed = color_data["closed"]
 			F.update_icon()
 
 	if(config_error)
@@ -118,40 +118,40 @@
 		return
 
 /obj/item/closet_painter/attack_self(var/mob/user)
-	var/choice = input("Do you wish to change the regular closet colour or the secure closet colour?") as null|anything in list("Regular Closet Colour","Secure Closet Colour")
+	var/choice = input("Do you wish to change the regular closet color or the secure closet color?") as null|anything in list("Regular Closet Colour","Secure Closet Colour")
 	if(choice == "Regular Closet Colour")
-		choose_colour()
+		choose_color()
 	else if(choice == "Secure Closet Colour")
-		choose_colour_secure()
+		choose_color_secure()
 
 /obj/item/closet_painter/examine(mob/user)
 	..(user)
-	to_chat(user, "It is configured to produce the '[colour]' paint scheme or the '[colour_secure]' secure closet paint scheme.")
+	to_chat(user, "It is configured to produce the '[color]' paint scheme or the '[color_secure]' secure closet paint scheme.")
 
-/obj/item/closet_painter/verb/choose_colour()
+/obj/item/closet_painter/verb/choose_color()
 	set name = "Choose Colour"
-	set desc = "Choose a regular closet painter colour."
+	set desc = "Choose a regular closet painter color."
 	set category = "Object"
 	set src in usr
 
 	if(usr.incapacitated())
 		return
 
-	var/new_colour = input("Select a colour.") as null|anything in colours
-	if(new_colour && !isnull(colours[new_colour]))
-		colour = new_colour
-		to_chat(usr, "<span class='notice'>You set \the [src] regular closet colour to '[colour]'.</span>")
+	var/new_color = input("Select a color.") as null|anything in colors
+	if(new_color && !isnull(colors[new_color]))
+		color = new_color
+		to_chat(usr, "<span class='notice'>You set \the [src] regular closet color to '[color]'.</span>")
 
-/obj/item/closet_painter/verb/choose_colour_secure()
+/obj/item/closet_painter/verb/choose_color_secure()
 	set name = "Choose Secure Colour"
-	set desc = "Choose a secure closet painter colour."
+	set desc = "Choose a secure closet painter color."
 	set category = "Object"
 	set src in usr
 
 	if(usr.incapacitated())
 		return
 
-	var/new_colour_secure = input("Select a colour.") as null|anything in colours_secure
-	if(new_colour_secure && !isnull(colours_secure[new_colour_secure]))
-		colour_secure = new_colour_secure
-		to_chat(usr, "<span class='notice'>You set \the [src] secure closet colour to '[colour_secure]'.</span>")
+	var/new_color_secure = input("Select a color.") as null|anything in colors_secure
+	if(new_color_secure && !isnull(colors_secure[new_color_secure]))
+		color_secure = new_color_secure
+		to_chat(usr, "<span class='notice'>You set \the [src] secure closet color to '[color_secure]'.</span>")

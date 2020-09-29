@@ -93,7 +93,7 @@
 
 /obj/item/clothing/head/welding/engie
 	name = "engineering welding helmet"
-	desc = "A painted welding helmet, this one has been painted the engineering colours."
+	desc = "A painted welding helmet, this one has been painted the engineering colors."
 	icon_state = "engiewelding"
 	item_state_slots = list(
 		slot_l_hand_str = "engiewelding",

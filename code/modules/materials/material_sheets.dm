@@ -15,7 +15,7 @@
 	var/default_type = DEFAULT_WALL_MATERIAL
 	var/datum/material/material
 	var/perunit = SHEET_MATERIAL_AMOUNT
-	var/apply_colour //temp pending icon rewrite
+	var/apply_color //temp pending icon rewrite
 
 /obj/item/stack/material/Initialize(mapload, new_amount, merge = TRUE)
 	if(!default_type)
@@ -35,8 +35,8 @@
 	if(islist(material.stack_origin_tech))
 		origin_tech = material.stack_origin_tech.Copy()
 
-	if(apply_colour)
-		color = material.icon_colour
+	if(apply_color)
+		color = material.icon_color
 
 	if(!material.conductive)
 		flags |= NOCONDUCT
@@ -91,14 +91,14 @@
 	name = "iron"
 	icon_state = "sheet-silver"
 	default_type = "iron"
-	apply_colour = 1
+	apply_color = 1
 	no_variants = FALSE
 
 /obj/item/stack/material/lead
 	name = "lead"
 	icon_state = "sheet-adamantine"
 	default_type = "lead"
-	apply_colour = 1
+	apply_color = 1
 	no_variants = FALSE
 
 /obj/item/stack/material/sandstone
@@ -167,14 +167,14 @@
 	name = "tritium"
 	icon_state = "sheet-silver"
 	default_type = "tritium"
-	apply_colour = 1
+	apply_color = 1
 	no_variants = FALSE
 
 /obj/item/stack/material/osmium
 	name = "osmium"
 	icon_state = "sheet-silver"
 	default_type = "osmium"
-	apply_colour = 1
+	apply_color = 1
 	no_variants = FALSE
 
 //R-UST port
@@ -183,7 +183,7 @@
 	name = "deuterium"
 	icon_state = "sheet-silver"
 	default_type = "deuterium"
-	apply_colour = 1
+	apply_color = 1
 	no_variants = FALSE
 
 /obj/item/stack/material/steel
@@ -234,7 +234,7 @@
 	item_state = "mhydrogen"
 	default_type = MAT_VERDANTIUM
 	no_variants = FALSE
-	apply_colour = TRUE
+	apply_color = TRUE
 
 /obj/item/stack/material/morphium
 	name = MAT_MORPHIUM
@@ -242,7 +242,7 @@
 	item_state = "mhydrogen"
 	default_type = MAT_MORPHIUM
 	no_variants = FALSE
-	apply_colour = TRUE
+	apply_color = TRUE
 
 /obj/item/stack/material/morphium/hull
 	name = MAT_MORPHIUMHULL
@@ -254,7 +254,7 @@
 	item_state = "diamond"
 	default_type = MAT_VALHOLLIDE
 	no_variants = FALSE
-	apply_colour = TRUE
+	apply_color = TRUE
 
 // Forged in the equivalent of Hell, one piece at a time.
 /obj/item/stack/material/supermatter
@@ -262,7 +262,7 @@
 	icon_state = "sheet-super"
 	item_state = "diamond"
 	default_type = MAT_SUPERMATTER
-	apply_colour = TRUE
+	apply_color = TRUE
 
 /obj/item/stack/material/supermatter/proc/update_mass()	// Due to how dangerous they can be, the item will get heavier and larger the more are in the stack.
 	slowdown = amount / 10
@@ -376,7 +376,7 @@
 	icon_state = "sheet-resin"
 	default_type = "resin"
 	no_variants = TRUE
-	apply_colour = TRUE
+	apply_color = TRUE
 	pass_color = TRUE
 	strict_color_stacking = TRUE
 

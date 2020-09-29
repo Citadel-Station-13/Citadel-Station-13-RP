@@ -15,7 +15,7 @@
 	var/simulated = 1 //filter for actions - used by lighting overlays
 	var/fluorescent // Shows up under a UV light.
 
-	var/list/atom_colours	 //used to store the different colors on an atom
+	var/list/atom_colors	 //used to store the different colors on an atom
 							//its inherent color, the colored paint applied on it, special color effect etc...
 
 	/// The orbiter comopnent if we're being orbited.
@@ -81,7 +81,7 @@
 
 	//atom color stuff
 	if(color)
-		add_atom_colour(color, FIXED_COLOUR_PRIORITY)
+		add_atom_color(color, FIXED_COLOR_PRIORITY)
 
 /*
 	if (light_power && light_range)
@@ -208,7 +208,7 @@
 			f_name = "some "
 		else
 			f_name = "a "
-		if(blood_color != SYNTH_BLOOD_COLOUR)
+		if(blood_color != SYNTH_BLOOD_COLOR)
 			f_name += "<span class='danger'>blood-stained</span> [name][infix]!"
 		else
 			f_name += "oil-stained [name][infix]."
@@ -420,7 +420,7 @@
 			M.dna = new /datum/dna(null)
 			M.dna.real_name = M.real_name
 		M.check_dna()
-		blood_color = M.species.get_blood_colour(M)
+		blood_color = M.species.get_blood_color(M)
 	. = 1
 	return 1
 
@@ -473,14 +473,12 @@
 // blind_message (optional) is what blind people will hear e.g. "You hear something!"
 /atom/proc/visible_message(var/message, var/blind_message)
 
-	//VOREStation Edit
 	var/list/see
 	if(isbelly(loc))
 		var/obj/belly/B = loc
 		see = B.get_mobs_and_objs_in_belly()
 	else
 		see = get_mobs_and_objs_in_view_fast(get_turf(src),world.view,remote_ghosts = FALSE)
-	//VOREStation Edit End
 
 	var/list/seeing_mobs = see["mobs"]
 	var/list/seeing_objs = see["objs"]
@@ -554,49 +552,49 @@
 
 /*
 	Atom Colour Priority System
-	A System that gives finer control over which atom colour to colour the atom with.
+	A System that gives finer control over which atom color to color the atom with.
 	The "highest priority" one is always displayed as opposed to the default of
 	"whichever was set last is displayed"
 */
 
 /*
-	Adds an instance of colour_type to the atom's atom_colours list
+	Adds an instance of color_type to the atom's atom_colors list
 */
-/atom/proc/add_atom_colour(coloration, colour_priority)
-	if(!atom_colours || !atom_colours.len)
-		atom_colours = list()
-		atom_colours.len = COLOUR_PRIORITY_AMOUNT //four priority levels currently.
+/atom/proc/add_atom_color(coloration, color_priority)
+	if(!atom_colors || !atom_colors.len)
+		atom_colors = list()
+		atom_colors.len = COLOR_PRIORITY_AMOUNT //four priority levels currently.
 	if(!coloration)
 		return
-	if(colour_priority > atom_colours.len)
+	if(color_priority > atom_colors.len)
 		return
-	atom_colours[colour_priority] = coloration
-	update_atom_colour()
+	atom_colors[color_priority] = coloration
+	update_atom_color()
 
 /*
-	Removes an instance of colour_type from the atom's atom_colours list
+	Removes an instance of color_type from the atom's atom_colors list
 */
-/atom/proc/remove_atom_colour(colour_priority, coloration)
-	if(!atom_colours)
-		atom_colours = list()
-		atom_colours.len = COLOUR_PRIORITY_AMOUNT //four priority levels currently.
-	if(colour_priority > atom_colours.len)
+/atom/proc/remove_atom_color(color_priority, coloration)
+	if(!atom_colors)
+		atom_colors = list()
+		atom_colors.len = COLOR_PRIORITY_AMOUNT //four priority levels currently.
+	if(color_priority > atom_colors.len)
 		return
-	if(coloration && atom_colours[colour_priority] != coloration)
+	if(coloration && atom_colors[color_priority] != coloration)
 		return //if we don't have the expected color (for a specific priority) to remove, do nothing
-	atom_colours[colour_priority] = null
-	update_atom_colour()
+	atom_colors[color_priority] = null
+	update_atom_color()
 
 /*
 	Resets the atom's color to null, and then sets it to the highest priority
-	colour available
+	color available
 */
-/atom/proc/update_atom_colour()
-	if(!atom_colours)
-		atom_colours = list()
-		atom_colours.len = COLOUR_PRIORITY_AMOUNT //four priority levels currently.
+/atom/proc/update_atom_color()
+	if(!atom_colors)
+		atom_colors = list()
+		atom_colors.len = COLOR_PRIORITY_AMOUNT //four priority levels currently.
 	color = null
-	for(var/C in atom_colours)
+	for(var/C in atom_colors)
 		if(islist(C))
 			var/list/L = C
 			if(L.len)

@@ -3,10 +3,10 @@
 // Rewritten by Leshana from existing Polaris code, merging in D2K5 and N3X15 work
 //
 
-#define JUKEMODE_NEXT        1 // Advance to next song in the track list
-#define JUKEMODE_RANDOM      2 // Not shuffle, randomly picks next each time.
-#define JUKEMODE_REPEAT_SONG 3 // Play the same song over and over
-#define JUKEMODE_PLAY_ONCE   4 // Play, then stop.
+#define JUKEMODE_NEXT		 1	// Advance to next song in the track list
+#define JUKEMODE_RANDOM		 2	// Not shuffle, randomly picks next each time.
+#define JUKEMODE_REPEAT_SONG 3	// Play the same song over and over
+#define JUKEMODE_PLAY_ONCE	 4	// Play, then stop.
 
 /obj/machinery/media/jukebox/
 	name = "space jukebox"
@@ -23,14 +23,12 @@
 
 	// Vars for hacking
 	var/datum/wires/jukebox/wires = null
-	var/hacked = 0 // Whether to show the hidden songs or not
-	var/freq = 0 // Currently no effect, will return in phase II of mediamanager.
-	//VOREStation Add
-	var/loop_mode = JUKEMODE_PLAY_ONCE			// Behavior when finished playing a song
-	var/max_queue_len = 3						// How many songs are we allowed to queue up?
+	var/hacked = 0	// Whether to show the hidden songs or not
+	var/freq = 0	// Currently no effect, will return in phase II of mediamanager.
+	var/loop_mode = JUKEMODE_PLAY_ONCE		// Behavior when finished playing a song
+	var/max_queue_len = 3					// How many songs are we allowed to queue up?
 	var/list/queue = list()
-	//VOREStation Add End
-	var/current_genre = "Electronic" //What is our current genre?
+	var/current_genre = "Electronic"		// What is our current genre?
 	var/list/genres = list("Classical and Orchestral", "Country and Western", "Disco, Funk, Soul, and R&B", "Electronic", "Folk and Indie", "Hip-Hop and Rap", "Jazz", "Metal", "Pop", "Rock") //Avaliable genres.
 	var/datum/track/current_track
 	var/list/datum/track/tracks = list(
@@ -73,11 +71,11 @@
 	. = ..()
 	wires = new/datum/wires/jukebox(src)
 	update_icon()
-	if(LAZYLEN(all_jukebox_tracks)) //Global list has tracks
+	if(LAZYLEN(all_jukebox_tracks))	// Global list has tracks
 		tracks.Cut()
 		secret_tracks.Cut()
 		emag_tracks.Cut()
-		for(var/datum/track/T in all_jukebox_tracks) //Load them
+		for(var/datum/track/T in all_jukebox_tracks)	// Load them
 			if(!T.jukebox)
 				continue
 			if(T.secret)
@@ -86,8 +84,8 @@
 				emag_tracks |=T
 			else
 				tracks |= T
-	else if(!LAZYLEN(tracks)) //We don't even have default tracks
-		stat |= BROKEN // No tracks configured this round!
+	else if(!LAZYLEN(tracks))	// We don't even have default tracks
+		stat |= BROKEN			// No tracks configured this round!
 
 /obj/machinery/media/jukebox/process()
 	if(!playing)
@@ -102,13 +100,13 @@
 	// Otherwise time to pick a new one!
 	if(queue.len > 0)
 		current_track = queue[1]
-		queue.Cut(1, 2)  // Remove the item we just took off the list
+		queue.Cut(1, 2)		// Remove the item we just took off the list
 	else
 		// Oh... nothing in queue? Well then pick next according to our rules
 		switch(loop_mode)
 			if(JUKEMODE_NEXT)
 				var/curTrackIndex = max(1, tracks.Find(current_track))
-				var/newTrackIndex = (curTrackIndex % tracks.len) + 1  // Loop back around if past end
+				var/newTrackIndex = (curTrackIndex % tracks.len) + 1	// Loop back around if past end
 				current_track = tracks[newTrackIndex]
 			if(JUKEMODE_RANDOM)
 				var/previous_track = current_track
@@ -225,7 +223,7 @@
 		var/newval = input("Choose Jukebox volume (0-100%)", "Jukebox volume", round(volume * 100.0))
 		newval = sanitize_integer(text2num(newval), min = 0, max = 100, default = volume * 100.0)
 		volume = newval / 100.0
-		update_music() // To broadcast volume change without restarting song
+		update_music()	// To broadcast volume change without restarting song
 	else if(href_list["stop"])
 		StopPlaying()
 	else if(href_list["play"])
@@ -270,7 +268,7 @@
 		data["loop_mode"] = loop_mode
 		data["volume"] = volume
 		if(current_track)
-			data["current_track_ref"] = "\ref[current_track]"  // Convenient shortcut
+			data["current_track_ref"] = "\ref[current_track]"	// Convenient shortcut
 			data["current_track"] = current_track.toNanoList()
 		data["percent"] = playing ? min(100, round(world.time - media_start_time) / current_track.duration) : 0;
 
@@ -283,7 +281,7 @@
 			nano_tracks[++nano_tracks.len] = T.toNanoList()
 		data["tracks"] = nano_tracks
 
-	// update the ui if it exists, returns null if no ui is passed/found
+	// Update the ui if it exists, returns null if no ui is passed/found
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "jukebox.tmpl", title, 450, 600)
@@ -361,7 +359,7 @@
 /obj/machinery/media/jukebox/proc/NextTrack()
 	if(!tracks.len) return
 	var/curTrackIndex = max(1, tracks.Find(current_track))
-	var/newTrackIndex = (curTrackIndex % tracks.len) + 1  // Loop back around if past end
+	var/newTrackIndex = (curTrackIndex % tracks.len) + 1	// Loop back around if past end
 	current_track = tracks[newTrackIndex]
 	if(playing)
 		start_stop_song()

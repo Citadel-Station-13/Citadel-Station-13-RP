@@ -172,7 +172,7 @@
 		/obj/item/clothing/head/bio_hood/cmo,
 		/obj/item/gps/medical/cmo,
 		/obj/item/clothing/shoes/white,
-		/obj/item/reagent_containers/glass/beaker/vial) //VOREStation Add
+		/obj/item/reagent_containers/glass/beaker/vial)
 
 /obj/structure/closet/secure_closet/CMO/Initialize()
 	if(prob(50))
@@ -228,7 +228,7 @@
 		/obj/item/reagent_containers/dropper = 2,
 		/obj/item/reagent_containers/glass/bottle/inaprovaline = 2,
 		/obj/item/reagent_containers/glass/bottle/antitoxin = 2,
-		/obj/item/storage/fancy/vials) //VOREStation Add
+		/obj/item/storage/fancy/vials)
 
 
 /obj/structure/closet/secure_closet/psych

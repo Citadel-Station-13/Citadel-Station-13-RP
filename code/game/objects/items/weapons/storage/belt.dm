@@ -70,7 +70,7 @@
 		/obj/item/duct_tape_roll,
 		/obj/item/switchtool,
 		/obj/item/integrated_electronics/wirer,
-		/obj/item/integrated_electronics/debugger, //Vorestation edit adding debugger to toolbelt can hold list
+		/obj/item/integrated_electronics/debugger,
 		)
 
 /obj/item/storage/belt/utility/full
@@ -121,7 +121,7 @@
 		/obj/item/reagent_containers/glass/bottle,
 		/obj/item/reagent_containers/pill,
 		/obj/item/reagent_containers/syringe,
-		/obj/item/storage/quickdraw/syringe_case, //VOREStation Addition - Adds syringe cases,
+		/obj/item/storage/quickdraw/syringe_case,
 		/obj/item/flame/lighter/zippo,
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/storage/pill_bottle,

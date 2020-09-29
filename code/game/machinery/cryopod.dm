@@ -11,7 +11,7 @@
 /obj/machinery/computer/cryopod
 	name = "cryogenic oversight console"
 	desc = "An interface between crew and the cryogenic storage oversight systems."
-	icon = 'icons/obj/Cryogenic2_vr.dmi' //VOREStation Edit - New Icon
+	icon = 'icons/obj/Cryogenic2_vr.dmi'
 	icon_state = "cellconsole"
 	circuit = /obj/item/circuitboard/cryopodcontrol
 	density = 0
@@ -27,7 +27,7 @@
 	var/storage_name = "Cryogenic Oversight Control"
 	var/allow_items = 1
 
-	req_one_access = list(access_heads) //VOREStation Add
+	req_one_access = list(access_heads)
 
 /obj/machinery/computer/cryopod/update_icon()
 	..()
@@ -66,13 +66,24 @@
 	allow_items = 1
 
 /obj/machinery/computer/cryopod/gateway
-	name = "gateway oversight console"
-	desc = "An interface between visitors and the gateway oversight systems tasked with keeping track of all visitors who enter or exit from the gateway."
+	name = "teleport oversight console"
+	desc = "An interface between visitors and the teleport oversight systems tasked with keeping track of all visitors who enter or exit from the teleporters."
 	circuit = "/obj/item/circuitboard/robotstoragecontrol"
 
 	storage_type = "visitors"
 	storage_name = "Travel Oversight Control"
 	allow_items = 1
+
+/* Zandario TODO - One day.
+/obj/machinery/cryopod/robot/door/dorms
+	desc = "A small elevator that goes down to the residential district."
+	on_enter_occupant_message = "The elevator door closes slowly, ready to bring you down to the residential district."
+	spawnpoint_type = /datum/spawnpoint/elevator
+
+/obj/machinery/computer/cryopod/dorms
+	name = "residential oversight console"
+	desc = "An interface between visitors and the residential oversight systems tasked with keeping track of all visitors in the residential district."
+*/
 
 /obj/machinery/computer/cryopod/attack_ai()
 	attack_hand()
@@ -94,8 +105,8 @@
 	dat += "<a href='?src=\ref[src];log=1'>View storage log</a>.<br>"
 	if(allow_items)
 		dat += "<a href='?src=\ref[src];view=1'>View objects</a>.<br>"
-		//dat += "<a href='?src=\ref[src];item=1'>Recover object</a>.<br>" //VOREStation Removal - Just log them.
-		//dat += "<a href='?src=\ref[src];allitems=1'>Recover all objects</a>.<br>" //VOREStation Removal
+		//dat += "<a href='?src=\ref[src];item=1'>Recover object</a>.<br>"			// Just log them.
+		//dat += "<a href='?src=\ref[src];allitems=1'>Recover all objects</a>.<br>"
 
 	user << browse(dat, "window=cryopod_console")
 	onclose(user, "cryopod_console")
@@ -122,10 +133,8 @@
 		if(!allow_items) return
 
 		var/dat = "<b>Recently stored objects</b><br/><hr/><br/>"
-		//VOREStation Edit Start
 		for(var/I in frozen_items)
 			dat += "[I]<br/>"
-		//VOREStation Edit End
 		dat += "<hr/>"
 
 		user << browse(dat, "window=cryoitems")
@@ -191,45 +200,49 @@
 	build_path = "/obj/machinery/computer/cryopod/door/gateway"
 	origin_tech = list(TECH_DATA = 3)
 
-//Decorative structures to go alongside cryopods.
+// Decorative structures to go alongside cryopods.
 /obj/structure/cryofeed
 
 	name = "cryogenic feed"
 	desc = "A bewildering tangle of machinery and pipes."
-	icon = 'icons/obj/Cryogenic2_vr.dmi' //VOREStation Edit - New Icon
+	icon = 'icons/obj/Cryogenic2_vr.dmi'
 	icon_state = "cryo_rear"
 	anchored = 1
 	dir = WEST
 
-//Cryopods themselves.
+// Cryopods themselves.
 /obj/machinery/cryopod
 	name = "cryogenic freezer"
 	desc = "A man-sized pod for entering suspended animation."
-	icon = 'icons/obj/Cryogenic2_vr.dmi' //VOREStation Edit - New Icon
-	icon_state = "cryopod_0" //VOREStation Edit - New Icon
+	icon = 'icons/obj/Cryogenic2_vr.dmi'
+	icon_state = "cryopod_0"
 	density = 1
 	anchored = 1
 	dir = WEST
 
-	var/base_icon_state = "cryopod_0" //VOREStation Edit - New Icon
-	var/occupied_icon_state = "cryopod_1" //VOREStation Edit - New Icon
+	// The corresponding spawn point type that user despawning here will return at next round.
+	// Note: We use a type instead of name so that its validity is checked at compile time.
+	var/spawnpoint_type = /datum/spawnpoint/cryo
+
+	var/base_icon_state = "cryopod_0"
+	var/occupied_icon_state = "cryopod_1"
 	var/on_store_message = "has entered long-term storage."
 	var/on_store_name = "Cryogenic Oversight"
 	var/on_enter_visible_message = "starts climbing into the"
 	var/on_enter_occupant_message = "You feel cool air surround you. You go numb as your senses turn inward."
-	var/on_store_visible_message_1 = "hums and hisses as it moves" //We need two variables because byond doesn't let us have variables inside strings at compile-time.
+	var/on_store_visible_message_1 = "hums and hisses as it moves"	// We need two variables because byond doesn't let us have variables inside strings at compile-time.
 	var/on_store_visible_message_2 = "into storage."
 	var/allow_occupant_types = list(/mob/living/carbon/human)
 	var/disallow_occupant_types = list()
 
-	var/mob/occupant = null       // Person waiting to be despawned.
-	var/time_till_despawn = 599  // Down to 1 minute to reflect Vorestation respawn times.
-	var/time_entered = 0          // Used to keep track of the safe period.
-	var/obj/item/radio/intercom/announce //
+	var/mob/occupant = null		// Person waiting to be despawned.
+	var/time_till_despawn = 599
+	var/time_entered = 0		// Used to keep track of the safe period.
+	var/obj/item/radio/intercom/announce
 
 	var/obj/machinery/computer/cryopod/control_computer
 	var/last_no_computer_message = 0
-	var/applies_stasis = 0	//VOREStation Edit: allow people to change their mind
+	var/applies_stasis = 0	// Allow people to change their mind
 
 /obj/machinery/cryopod/robot
 	name = "robotic storage unit"
@@ -242,11 +255,11 @@
 	on_store_name = "Robotic Storage Oversight"
 	on_enter_occupant_message = "The storage unit broadcasts a sleep signal to you. Your systems start to shut down, and you enter low-power mode."
 	allow_occupant_types = list(/mob/living/silicon/robot)
-	//disallow_occupant_types = list(/mob/living/silicon/robot/drone) //VOREStation Removal - Why? How else do they leave?
 	applies_stasis = 0
+	spawnpoint_type = /datum/spawnpoint/cyborg
 
 /obj/machinery/cryopod/robot/door
-	//This inherits from the robot cryo, so synths can be properly cryo'd.  If a non-synth enters and is cryo'd, ..() is called and it'll still work.
+	// This inherits from the robot cryo, so synths can be properly cryo'd.  If a non-synth enters and is cryo'd, ..() is called and it'll still work.
 	name = "Airlock of Wonders"
 	desc = "An airlock that isn't an airlock, and shouldn't exist.  Yell at a coder/mapper."
 	icon = 'icons/obj/doors/Doorint.dmi'
@@ -255,7 +268,7 @@
 	occupied_icon_state = "door_closed"
 	on_enter_visible_message = "steps into the"
 
-	time_till_despawn = 600 //1 minute. We want to be much faster then normal cryo, since waiting in an elevator for half an hour is a special kind of hell.
+	time_till_despawn = 600	// 1 minute. We want to be much faster then normal cryo, since waiting in an elevator for half an hour is a special kind of hell.
 
 	allow_occupant_types = list(/mob/living/silicon/robot,/mob/living/carbon/human)
 	disallow_occupant_types = list(/mob/living/silicon/robot/drone)
@@ -279,19 +292,20 @@
 	on_store_visible_message_2 = "to the passenger deck."
 
 /obj/machinery/cryopod/robot/door/gateway
-	name = "Gateway"
-	desc = "The gateway you might've came in from.  You could leave the colony easily using this."
-	icon = 'icons/obj/machines/gateway.dmi'
-	icon_state = "offcenter"
-	base_icon_state = "offcenter"
-	occupied_icon_state = "oncenter"
-	on_store_message = "has departed from the colony."
+	name = "public teleporter"
+	desc = "The short-range teleporter you might've came in from. You could leave easily using this."
+	icon = 'icons/obj/stationobjs.dmi'
+	icon_state = "tele0"
+	base_icon_state = "tele0"
+	occupied_icon_state = "tele1"
+	on_store_message = "has departed via short-range teleport."
 	on_store_name = "Travel Oversight"
-	on_enter_occupant_message = "The gateway activates, and you step into the swirling portal."
+	on_enter_occupant_message = "The teleporter activates, and you step into the swirling portal."
 	on_store_visible_message_1 = "'s portal disappears just after"
 	on_store_visible_message_2 = "finishes walking across it."
+	spawnpoint_type = /datum/spawnpoint/gateway
 
-	time_till_despawn = 60 //1 second, because gateway.
+	time_till_despawn = 60	// 1 second, because gateway.
 
 /obj/machinery/cryopod/New()
 	announce = new /obj/item/radio/intercom(src)
@@ -314,7 +328,7 @@
 	var/area/my_area = get_area(src)
 	control_computer = locate(/obj/machinery/computer/cryopod) in my_area
 
-	if(!control_computer) //Fallback to old method.
+	if(!control_computer)	// Fallback to old method.
 		control_computer = locate(/obj/machinery/computer/cryopod) in range(6,src)
 
 	// Don't send messages unless we *need* the computer, and less than five minutes have passed since last time we messaged
@@ -340,14 +354,14 @@
 
 	return 1
 
-//Lifted from Unity stasis.dm and refactored. ~Zuhayr
+// Lifted from Unity stasis.dm and refactored. ~Zuhayr
 /obj/machinery/cryopod/process()
 	if(occupant)
-		//Allow a ten minute gap between entering the pod and actually despawning.
+		// Allow a ten minute gap between entering the pod and actually despawning.
 		if(world.time - time_entered < time_till_despawn)
 			return
 
-		if(!occupant.client && occupant.stat<2) //Occupant is living and has no client.
+		if(!occupant.client && occupant.stat<2)	// Occupant is living and has no client.
 			if(!control_computer)
 				if(!find_control_computer(urgent=1))
 					return
@@ -361,10 +375,10 @@
 	if(!istype(R)) return ..()
 
 	qdel(R.mmi)
-	for(var/obj/item/I in R.module) // the tools the borg has; metal, glass, guns etc
-		for(var/mob/M in I) //VOREStation edit
+	for(var/obj/item/I in R.module)	// The tools the borg has; metal, glass, guns etc
+		for(var/mob/M in I)
 			despawn_occupant(M)
-		for(var/obj/item/O in I) // the things inside the tools, if anything; mainly for janiborg trash bags
+		for(var/obj/item/O in I)	// The things inside the tools, if anything; mainly for janiborg trash bags
 			O.forceMove(R)
 		qdel(I)
 	qdel(R.module)
@@ -379,11 +393,10 @@
 // This function can not be undone; do not call this unless you are sure
 // Also make sure there is a valid control computer
 /obj/machinery/cryopod/proc/despawn_occupant(var/mob/to_despawn)
-	//Recursively despawn mobs
+	// Recursively despawn mobs
 	for(var/mob/M in to_despawn)
 		despawn_occupant(M)
 
-	// VOREStation
 	hook_vr("despawn", list(to_despawn, src))
 	if(isliving(to_despawn))
 		var/mob/living/L = to_despawn
@@ -405,23 +418,22 @@
 				if(SC)
 					for(var/bm in SC.brainmobs)
 						despawn_occupant(bm)
-	// VOREStation
 
-	//Drop all items into the pod.
+	// Drop all items into the pod.
 	for(var/obj/item/W in to_despawn)
 		to_despawn.drop_from_inventory(W)
 		W.forceMove(src)
 
-		if(W.contents.len) //Make sure we catch anything not handled by qdel() on the items.
+		if(W.contents.len)	// Make sure we catch anything not handled by qdel() on the items.
 			for(var/obj/item/O in W.contents)
-				if(istype(O,/obj/item/storage/internal)) //Stop eating pockets, you fuck!
+				if(istype(O,/obj/item/storage/internal))	// Stop eating pockets, you fuck!
 					continue
 				O.forceMove(src)
 
-	//Delete all items not on the preservation list.
+	// Delete all items not on the preservation list.
 	var/list/items = contents.Copy()
-	items -= to_despawn // Don't delete the occupant
-	items -= announce // or the autosay radio.
+	items -= to_despawn	// Don't delete the occupant
+	items -= announce	// or the autosay radio.
 
 	for(var/obj/item/W in items)
 
@@ -440,19 +452,12 @@
 		if(!preserve)
 			qdel(W)
 		else
-			log_special_item(W,to_despawn) //VOREStation Add
-			/* VOREStation Removal - We do our own thing.
-			if(control_computer && control_computer.allow_items)
-				control_computer.frozen_items += W
-				W.loc = control_computer //VOREStation Edit
-			else
-				W.forceMove(src.loc)
-			VOREStation Removal End */
+			log_special_item(W,to_despawn)
 	for(var/obj/structure/B in items)
 		if(istype(B,/obj/structure/bed))
 			qdel(B)
 
-	//Update any existing objectives involving this mob.
+	// Update any existing objectives involving this mob.
 	for(var/datum/objective/O in all_objectives)
 		// We don't want revs to get objectives that aren't for heads of staff. Letting
 		// them win or lose based on cryo is silly so we remove the objective.
@@ -461,7 +466,7 @@
 				to_chat(O.owner.current, "<span class='warning'>You get the feeling your target is no longer within your reach...</span>")
 			qdel(O)
 
-	//VOREStation Edit - Resleeving.
+	// Resleeving.
 	if(to_despawn.mind)
 		if(to_despawn.mind.name in SStranscore.backed_up)
 			var/datum/transhuman/mind_record/MR = SStranscore.backed_up[to_despawn.mind.name]
@@ -469,9 +474,8 @@
 		if(to_despawn.mind.name in SStranscore.body_scans) //This uses mind names to avoid people cryo'ing a printed body to delete body scans.
 			var/datum/transhuman/body_record/BR = SStranscore.body_scans[to_despawn.mind.name]
 			SStranscore.remove_body(BR)
-	//VOREStation Edit End - Resleeving.
 
-	//Handle job slot/tater cleanup.
+	// Handle job slot/tater cleanup.
 	var/job = to_despawn.mind.assigned_role
 
 	SSjobs.FreeRole(job)
@@ -501,10 +505,10 @@
 
 	icon_state = base_icon_state
 
-	//TODO: Check objectives/mode, update new targets if this mob is the target, spawn new antags?
+	// TODO: Check objectives/mode, update new targets if this mob is the target, spawn new antags?
 
 
-	//Make an announcement and log the person entering storage.
+	// Make an announcement and log the person entering storage.
 	control_computer.frozen_crew += "[to_despawn.real_name], [to_despawn.mind.role_alt_title] - [stationtime2text()]"
 	control_computer._admin_logs += "[key_name(to_despawn)] ([to_despawn.mind.role_alt_title]) at [stationtime2text()]"
 	log_and_message_admins("[key_name(to_despawn)] ([to_despawn.mind.role_alt_title]) entered cryostorage.")
@@ -513,13 +517,11 @@
 	//visible_message("<span class='notice'>\The [initial(name)] hums and hisses as it moves [to_despawn.real_name] into storage.</span>", 3)
 	visible_message("<span class='notice'>\The [initial(name)] [on_store_visible_message_1] [to_despawn.real_name] [on_store_visible_message_2].</span>", 3)
 
-	//VOREStation Edit begin: Dont delete mobs-in-mobs
 	if(to_despawn.client && to_despawn.stat<2)
 		var/mob/observer/dead/newghost = to_despawn.ghostize()
 		newghost.timeofdeath = world.time
-	//VOREStation Edit end: Dont delete mobs-in-mobs
 
-	//This should guarantee that ghosts don't spawn.
+	// This should guarantee that ghosts don't spawn.
 	to_despawn.ckey = null
 
 	// Delete the mob.
@@ -551,7 +553,7 @@
 
 	icon_state = base_icon_state
 
-	//Eject any items that aren't meant to be in the pod.
+	// Eject any items that aren't meant to be in the pod.
 	var/list/items = contents
 	if(occupant) items -= occupant
 	if(announce) items -= announce
@@ -669,7 +671,7 @@
 		to_chat(user,"<span class='warning'>\The [src] is already occupied.</span>")
 		return
 
-	var/willing = null //We don't want to allow people to be forced into despawning.
+	var/willing = null	// We don't want to allow people to be forced into despawning.
 
 	if(M.client)
 		if(alert(M,"Would you like to enter long-term storage?",,"Yes","No") == "Yes")
@@ -712,5 +714,31 @@
 		log_admin("[key_name_admin(M)] has entered a stasis pod. (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>JMP</a>)")
 		message_admins("<span class='notice'>[key_name_admin(M)] has entered a stasis pod.</span>")
 
-		//Despawning occurs when process() is called with an occupant without a client.
+		// Despawning occurs when process() is called with an occupant without a client.
 		add_fingerprint(M)
+
+/obj/machinery/cryopod/proc/log_special_item(var/atom/movable/item,var/mob/to_despawn)
+	ASSERT(item && to_despawn)
+
+	var/loaded_from_key
+	var/char_name = to_despawn.name
+	var/item_name = item.name
+
+	// Best effort key aquisition
+	if(ishuman(to_despawn))
+		var/mob/living/carbon/human/H = to_despawn
+		if(H.original_player)
+			loaded_from_key = H.original_player
+
+	if(!loaded_from_key && to_despawn.mind && to_despawn.mind.loaded_from_ckey)
+		loaded_from_key = to_despawn.mind.loaded_from_ckey
+
+	else
+		loaded_from_key = "INVALID"
+
+	// Log to harrass them later
+	log_game("CRYO [loaded_from_key]/([to_despawn.name]) cryo'd with [item_name] ([item.type])")
+	qdel(item)
+
+	if(control_computer && control_computer.allow_items)
+		control_computer.frozen_items += "[item_name] ([char_name])"

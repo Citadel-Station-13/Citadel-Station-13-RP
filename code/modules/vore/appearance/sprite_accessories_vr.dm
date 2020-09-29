@@ -24,7 +24,7 @@
 /datum/sprite_accessory/ears
 	name = "You should not see this..."
 	icon = 'icons/mob/vore/ears_vr.dmi'
-	do_colouration = 0 // Set to 1 to blend (ICON_ADD) hair color
+	do_coloration = 0 // Set to 1 to blend (ICON_ADD) hair color
 
 	var/color_blend_mode = ICON_ADD // Only appliciable if do_coloration = 1
 	var/extra_overlay // Icon state of an additional overlay to blend in.
@@ -36,7 +36,7 @@
 	name = "Shadekin Ears, colorable"
 	desc = ""
 	icon_state = "shadekin"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	apply_restrictions = TRUE
 	species_allowed = list(SPECIES_SHADEKIN)
@@ -97,35 +97,35 @@
 	name = "antennae, colorable"
 	desc = ""
 	icon_state = "antennae"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/ears/curly_bug
 	name = "curly antennae, colorable"
 	desc = ""
 	icon_state = "curly_bug"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/ears/dual_robot
 	name = "synth antennae, colorable"
 	desc = ""
 	icon_state = "dual_robot_antennae"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/ears/right_robot
 	name = "right synth, colorable"
 	desc = ""
 	icon_state = "right_robot_antennae"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/ears/left_robot
 	name = "left synth, colorable"
 	desc = ""
 	icon_state = "left_robot_antennae"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/ears/oni_h1
@@ -137,7 +137,7 @@
 	name = "oni horns, colorable"
 	desc = ""
 	icon_state = "oni-h1_c"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/ears/demon_horns1
@@ -149,21 +149,21 @@
 	name = "demon horns, colorable"
 	desc = ""
 	icon_state = "demon-horns1_c"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/ears/demon_horns2
 	name = "demon horns, colorable(outward)"
 	desc = ""
 	icon_state = "demon-horns2"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/ears/dragon_horns
 	name = "dragon horns, colorable"
 	desc = ""
 	icon_state = "dragon-horns"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/ears/foxears
@@ -184,7 +184,7 @@
 	name = "highlander zorren ears, colorable"
 	desc = ""
 	icon_state = "foxearshc"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/ears/fenearshc
@@ -192,20 +192,20 @@
 	desc = ""
 	icon_state = "fenearshc"
 	extra_overlay = "fenears-inner"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/ears/sergalhc
 	name = "Sergal ears, colorable"
 	icon_state = "serg_plain_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/ears/mousehc
 	name = "mouse, colorable"
 	desc = ""
 	icon_state = "mouse"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "mouseinner"
 
@@ -213,14 +213,14 @@
 	name = "mouse, colorable, no inner"
 	desc = ""
 	icon_state = "mouse"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/ears/wolfhc
 	name = "wolf, colorable"
 	desc = ""
 	icon_state = "wolf"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "wolfinner"
 
@@ -228,28 +228,28 @@
 	name = "bear, colorable"
 	desc = ""
 	icon_state = "bear"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/ears/smallbear
 	name = "small bear"
 	desc = ""
 	icon_state = "smallbear"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/ears/squirrelhc
 	name = "squirrel, colorable"
 	desc = ""
 	icon_state = "squirrel"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/ears/kittyhc
 	name = "kitty, colorable"
 	desc = ""
 	icon_state = "kitty"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "kittyinner"
 
@@ -257,21 +257,21 @@
 	name = "bunny, colorable"
 	desc = ""
 	icon_state = "bunny"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/ears/antlers
 	name = "antlers"
 	desc = ""
 	icon_state = "antlers"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/ears/antlers_e
 	name = "antlers with ears"
 	desc = ""
 	icon_state = "cow-nohorns"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "antlers_mark"
 
@@ -279,14 +279,14 @@
 	name = "small antlers"
 	desc = ""
 	icon_state = "smallantlers"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/ears/smallantlers_e
 	name = "small antlers with ears"
 	desc = ""
 	icon_state = "smallantlers"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "deer"
 
@@ -294,7 +294,7 @@
 	name = "deer ears"
 	desc = ""
 	icon_state = "deer"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/ears/cow
@@ -306,35 +306,35 @@
 	name = "cow, horns, colorable"
 	desc = ""
 	icon_state = "cow-c"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/ears/cow_nohorns
 	name = "cow, no horns"
 	desc = ""
 	icon_state = "cow-nohorns"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/ears/caprahorns
 	name = "caprine horns"
 	desc = ""
 	icon_state = "caprahorns"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/ears/ram
 	name = "ram horns"
 	desc = ""
 	icon_state = "ram"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/ears/otie
 	name = "otie, colorable"
 	desc = ""
 	icon_state = "otie"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "otie-inner"
 
@@ -342,7 +342,7 @@
 	name = "donkey, colorable"
 	desc = ""
 	icon_state = "donkey"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "otie-inner"
 
@@ -350,35 +350,35 @@
 	name = "jagged ears"
 	desc = ""
 	icon_state = "zears"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/ears/elfs
 	name = "elven ears"
 	desc = ""
 	icon_state = "elfs"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/ears/sleek
 	name = "sleek ears"
 	desc = ""
 	icon_state = "sleek"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/ears/drake
 	name = "drake frills"
 	desc = ""
 	icon_state = "drake"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/ears/vulp
 	name = "vulpkanin, dual-color"
 	desc = ""
 	icon_state = "vulp"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "vulp-inner"
 
@@ -386,14 +386,14 @@
 	name = "vulpkanin short"
 	desc = ""
 	icon_state = "vulp_terrier"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/ears/vulp_short_dc
 	name = "vulpkanin short, dual-color"
 	desc = ""
 	icon_state = "vulp_terrier"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "vulp_terrier-inner"
 
@@ -401,7 +401,7 @@
 	name = "vulpkanin thin, dual-color"
 	desc = ""
 	icon_state = "vulp_jackal"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "vulp_jackal-inner"
 
@@ -409,14 +409,14 @@
 	name = "floopy bunny ears (colorable)"
 	desc = ""
 	icon_state = "floppy_bun"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/ears/teshari
 	name = "Teshari ears (colorable)"
 	desc = ""
 	icon_state = "teshari"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "teshariinner"
 
@@ -424,7 +424,7 @@
 	name = "Teshari upper ears (colorable)"
 	desc = ""
 	icon_state = "tesharihigh"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "tesharihighinner"
 
@@ -432,7 +432,7 @@
 	name = "Teshari lower ears (colorable)"
 	desc = ""
 	icon_state = "tesharilow"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "tesharilowinner"
 
@@ -442,7 +442,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	desc = ""
 	icon_state = "teshari"
 	color_blend_mode = ICON_MULTIPLY
-	do_colouration = 1
+	do_coloration = 1
 	extra_overlay = "teshari_male_pattern"
 
 /datum/sprite_accessory/ears/tesh_pattern_ear_female
@@ -451,21 +451,21 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	desc = ""
 	icon_state = "teshari"
 	color_blend_mode = ICON_MULTIPLY
-	do_colouration = 1
+	do_coloration = 1
 	extra_overlay = "teshari_female_pattern"
 
 /datum/sprite_accessory/ears/swooped_bunny
 	name = "Swooped bunny ears (colorable)"
 	desc = ""
 	icon_state = "swooped_bunny"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/ears/large_dragon
 	name = "vary large dragon horns"
 	desc = ""
 	icon_state = "big_liz"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/ears/moth_antenna_fluff_gothic
@@ -644,7 +644,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 /datum/sprite_accessory/wing
 	name = "You should not see this..."
 	icon = 'icons/mob/vore/wings_vr.dmi'
-	do_colouration = 0 //Set to 1 to enable coloration using the tail color.
+	do_coloration = 0 //Set to 1 to enable coloration using the tail color.
 
 	var/color_blend_mode = ICON_ADD // Only appliciable if do_coloration = 1
 	var/extra_overlay // Icon state of an additional overlay to blend in.
@@ -664,14 +664,14 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "large feathered wings (colorable)"
 	desc = ""
 	icon_state = "feathered2"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/wing/spider_legs //Not really /WINGS/ but they protrude from the back, kinda. Might as well have them here.
 	name = "spider legs"
 	desc = ""
 	icon_state = "spider-legs"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/wing/moth
@@ -683,7 +683,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "moth wings, colorable"
 	desc = ""
 	icon_state = "moth"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/wing/dragonfly
@@ -702,14 +702,14 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "feathered wings, colorable"
 	desc = ""
 	icon_state = "feathered"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/wing/feathered_medium
 	name = "medium feathered wings, colorable" // Keekenox made these feathery things with a little bit more shape to them than the other wings. They are medium sized wing boys.
 	desc = ""
 	icon_state = "feathered3"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/wing/bat_black
@@ -721,7 +721,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "bat wings, colorable"
 	desc = ""
 	icon_state = "bat-color"
-	do_colouration = 1
+	do_coloration = 1
 
 /datum/sprite_accessory/wing/bat_red
 	name = "bat wings, red"
@@ -732,14 +732,14 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "harpy wings, colorable"
 	desc = ""
 	icon_state = "harpywings"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/wing/feathered
 	name = "feathered wings, colorable"
 	desc = ""
 	icon_state = "feathered"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/wing/beewings
@@ -891,7 +891,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "Robotic Wings"
 	desc = ""
 	icon_state = "Drago_wing"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 
@@ -905,7 +905,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 /datum/sprite_accessory/tail
 	name = "You should not see this..."
 	icon = 'icons/mob/vore/tails_vr.dmi'
-	do_colouration = 0 //Set to 1 to enable coloration using the tail color.
+	do_coloration = 0 //Set to 1 to enable coloration using the tail color.
 
 	var/color_blend_mode = ICON_ADD // Only appliciable if do_coloration = 1
 	var/extra_overlay // Icon state of an additional overlay to blend in.
@@ -930,7 +930,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "Shadekin Short Tail, colorable"
 	desc = ""
 	icon_state = "shadekin-short"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	apply_restrictions = TRUE
 	species_allowed = list(SPECIES_SHADEKIN)
@@ -956,7 +956,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "squirrel, colorable"
 	desc = ""
 	icon_state = "squirrel"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/kitty
@@ -964,7 +964,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	desc = ""
 	icon_state = "kittydown"
 	ani_state = "kittydown_wag"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/kittyup
@@ -972,7 +972,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	desc = ""
 	icon_state = "kittyup"
 	ani_state = "kittyup_wag"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/kitty_tg
@@ -980,7 +980,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	desc = ""
 	icon_state = "kittytg"
 	ani_state = "kittytg_wag"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/cat_big
@@ -988,14 +988,14 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	desc = ""
 	icon_state = "catbig"
 	ani_state = "catbig_wag"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/tiger_white
 	name = "tiger, colorable"
 	desc = ""
 	icon_state = "tiger"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "tigerinnerwhite"
 
@@ -1003,7 +1003,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "stripey taj, colorable"
 	desc = ""
 	icon_state = "stripeytail"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "stripeytail_mark"
 
@@ -1016,14 +1016,14 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "Chameleon, colorable"
 	desc = ""
 	icon_state = "chameleon"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/bunny
 	name = "bunny, colorable"
 	desc = ""
 	icon_state = "bunny"
-	do_colouration = 1
+	do_coloration = 1
 
 /datum/sprite_accessory/tail/bear_brown
 	name = "bear, brown"
@@ -1034,14 +1034,14 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "bear, colorable"
 	desc = ""
 	icon_state = "bear"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/dragon
 	name = "dragon, colorable"
 	desc = ""
 	icon_state = "dragon"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/wolf_grey
@@ -1068,7 +1068,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "wolf, colorable"
 	desc = ""
 	icon_state = "wolf"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "wolfinner"
 
@@ -1081,35 +1081,35 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "mouse, colorable"
 	desc = ""
 	icon_state = "mouse"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/horse
 	name = "horse tail, colorable"
 	desc = ""
 	icon_state = "horse"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/cow
 	name = "cow tail, colorable"
 	desc = ""
 	icon_state = "cow"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/fantail
 	name = "avian fantail, colorable"
 	desc = ""
 	icon_state = "fantail"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/wagtail
 	name = "avian wagtail, colorable"
 	desc = ""
 	icon_state = "wagtail"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/nevreandc
@@ -1117,7 +1117,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	desc = ""
 	icon_state = "nevreantail_dc"
 	extra_overlay = "nevreantail_dc_tail"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/nevreanwagdc
@@ -1125,7 +1125,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	desc = ""
 	icon_state = "wagtail"
 	extra_overlay = "wagtail_dc_tail"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/nevreanwagdc_alt
@@ -1133,7 +1133,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	desc = ""
 	icon_state = "wagtail2_dc"
 	extra_overlay = "wagtail2_dc_mark"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/crossfox
@@ -1150,14 +1150,14 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "double kitsune tail, colorable"
 	desc = ""
 	icon_state = "doublekitsune"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/spade_color
 	name = "spade-tail (colorable)"
 	desc = ""
 	icon_state = "spadetail-black"
-	do_colouration = 1
+	do_coloration = 1
 
 /datum/sprite_accessory/tail/snag
 	name = "xenomorph tail 1"
@@ -1173,7 +1173,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "EGN mech tail (dual color)"
 	desc = ""
 	icon_state = "eboop"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "eboop_mark"
 
@@ -1261,7 +1261,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	desc = ""
 	icon_state = "tamamo-kitsunetails"
 	extra_overlay = "tamamo-kitsunetails-tips"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/redpanda
@@ -1273,7 +1273,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "ringtail, colorable"
 	desc = ""
 	icon_state = "ringtail"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "ringtail_mark"
 
@@ -1288,7 +1288,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	desc = ""
 	icon_state = "satyr"
 	color_blend_mode = ICON_MULTIPLY
-	do_colouration = 1
+	do_coloration = 1
 	hide_body_parts = list(BP_L_LEG, BP_L_FOOT, BP_R_LEG, BP_R_FOOT) //Exclude pelvis just in case.
 	clip_mask_icon = 'icons/mob/vore/taurs_vr.dmi'
 	clip_mask_state = "taur_clip_mask_def" //Used to clip off the lower part of suits & uniforms.
@@ -1298,14 +1298,14 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	desc = ""
 	icon_state = "tailmaw"
 	color_blend_mode = ICON_MULTIPLY
-	do_colouration = 1
+	do_coloration = 1
 
 /datum/sprite_accessory/tail/curltail
 	name = "curltail (vwag)"
 	desc = ""
 	icon_state = "curltail"
 	ani_state = "curltail_w"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "curltail_mark"
 	extra_overlay_w = "curltail_mark_w"
@@ -1315,7 +1315,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	desc = ""
 	icon_state = "straighttail"
 	ani_state = "straighttail_w"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/sneptail
@@ -1323,7 +1323,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	desc = ""
 	icon_state = "sneptail"
 	ani_state = "sneptail_w"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "sneptail_mark"
 	extra_overlay_w = "sneptail_mark_w"
@@ -1334,7 +1334,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	desc = ""
 	icon_state = "tigertail"
 	ani_state = "tigertail_w"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "tigertail_mark"
 	extra_overlay_w = "tigertail_mark_w"
@@ -1344,7 +1344,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	desc = ""
 	icon_state = "vulptail"
 	ani_state = "vulptail_w"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "vulptail_mark"
 	extra_overlay_w = "vulptail_mark_w"
@@ -1354,7 +1354,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	desc = ""
 	icon_state = "otie"
 	ani_state = "otie_w"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/newtailmaw
@@ -1362,35 +1362,35 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	desc = ""
 	icon_state = "newtailmaw"
 	ani_state = "newtailmaw_w"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/ztail
 	name = "jagged flufftail"
 	desc = ""
 	icon_state = "ztail"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/snaketail
 	name = "snake tail, colorable"
 	desc = ""
 	icon_state = "snaketail"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/vulpan_alt
 	name = "vulpkanin alt style, colorable"
 	desc = ""
 	icon_state = "vulptail_alt"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/sergaltaildc
 	name = "sergal, dual-color"
 	desc = ""
 	icon_state = "sergal"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "sergal_mark"
 
@@ -1398,7 +1398,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "skunk, dual-color"
 	desc = ""
 	icon_state = "skunktail"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "skunktail_mark"
 
@@ -1406,7 +1406,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "deer tail, dual-color"
 	desc = ""
 	icon_state = "deertail"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "deertail_mark"
 
@@ -1415,7 +1415,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	desc = ""
 	icon_state = "teshari_fluffytail"
 	extra_overlay = "teshari_fluffytail_mark"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/special/teshtailfeathered
@@ -1423,7 +1423,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	desc = ""
 	icon_state = "teshtail_s"
 	extra_overlay = "teshtail_feathers_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/tesh_pattern_male
@@ -1431,7 +1431,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "Teshari male tail pattern"
 	desc = ""
 	icon_state = "teshtail_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "teshpattern_male_tail"
 
@@ -1440,7 +1440,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "Teshari male tail alt. pattern"
 	desc = ""
 	icon_state = "teshtail_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "teshpattern_male_alt"
 
@@ -1449,7 +1449,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "Teshari female tail pattern"
 	desc = ""
 	icon_state = "teshtail_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "teshpattern_fem_tail"
 
@@ -1458,7 +1458,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "Teshari male tail alt. pattern"
 	desc = ""
 	icon_state = "teshtail_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "teshpattern_fem_alt"
 
@@ -1472,35 +1472,35 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "unathi tail"
 	desc = ""
 	icon_state = "sogtail_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/special/tajaran
 	name = "tajaran tail"
 	desc = ""
 	icon_state = "tajtail_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/special/sergal
 	name = "sergal tail"
 	desc = ""
 	icon_state = "sergtail_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/special/akula
 	name = "akula tail"
 	desc = ""
 	icon_state = "sharktail_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/special/nevrean
 	name = "nevrean tail"
 	desc = ""
 	icon_state = "nevreantail_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/special/armalis
@@ -1537,92 +1537,92 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "unathi tail, colorable"
 	desc = ""
 	icon_state = "sogtail_hc_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/special/tajaranhc
 	name = "tajaran tail, colorable"
 	desc = ""
 	icon_state = "tajtail_hc_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/special/sergalhc
 	name = "sergal tail, colorable"
 	desc = ""
 	icon_state = "sergtail_hc_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/special/akulahc
 	name = "akula tail, colorable"
 	desc = ""
 	icon_state = "sharktail_hc_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/special/nevreanhc
 	name = "nevrean tail, colorable"
 	desc = ""
 	icon_state = "nevreantail_hc_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/special/foxhc
 	name = "highlander zorren tail, colorable"
 	desc = ""
 	icon_state = "foxtail_hc_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/special/fennechc
 	name = "flatland zorren tail, colorable"
 	desc = ""
 	icon_state = "fentail_hc_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/special/armalishc
 	name = "armalis tail, colorable"
 	desc = ""
 	icon_state = "armalis_tail_humanoid_hc_s"
-	do_colouration = 1
+	do_coloration = 1
 
 /datum/sprite_accessory/tail/special/xenodronehc
 	name = "xenomorph drone tail, colorable"
 	desc = ""
 	icon_state = "xenos_drone_tail_hc_s"
-	do_colouration = 1
+	do_coloration = 1
 
 /datum/sprite_accessory/tail/special/xenosentinelhc
 	name = "xenomorph sentinel tail, colorable"
 	desc = ""
 	icon_state = "xenos_sentinel_tail_hc_s"
-	do_colouration = 1
+	do_coloration = 1
 
 /datum/sprite_accessory/tail/special/xenohunterhc
 	name = "xenomorph hunter tail, colorable"
 	desc = ""
 	icon_state = "xenos_hunter_tail_hc_s"
-	do_colouration = 1
+	do_coloration = 1
 
 /datum/sprite_accessory/tail/special/xenoqueenhc
 	name = "xenomorph queen tail, colorable"
 	desc = ""
 	icon_state = "xenos_queen_tail_hc_s"
-	do_colouration = 1
+	do_coloration = 1
 
 /datum/sprite_accessory/tail/special/monkeyhc
 	name = "monkey tail, colorable"
 	desc = ""
 	icon_state = "chimptail_hc_s"
-	do_colouration = 1
+	do_coloration = 1
 
 /datum/sprite_accessory/tail/special/vulpan
 	name = "vulpkanin, colorable"
 	desc = ""
 	icon_state = "vulptail_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 
@@ -1639,14 +1639,14 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "Bug abdomen, colorable"
 	desc = ""
 	icon_state = "buggo_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/buggobee
 	name = "Bug abdomen, bee top, dual-colorable"
 	desc = ""
 	icon_state = "buggo_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "buggobee_markings"
 
@@ -1654,7 +1654,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "Bug abdomen, bee full, dual-colorable"
 	desc = ""
 	icon_state = "buggo_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "buggobeefull_markings"
 
@@ -1662,7 +1662,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "Bug abdomen, underside, dual-colorable"
 	desc = ""
 	icon_state = "buggo_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "buggounder_markings"
 
@@ -1670,7 +1670,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "Bug abdomen, firefly, dual-colorable"
 	desc = ""
 	icon_state = "buggo_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "buggofirefly_markings"
 
@@ -1678,14 +1678,14 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "Fat bug abdomen, colorable"
 	desc = ""
 	icon_state = "buggofat_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/buggofatbee
 	name = "Fat bug abdomen, bee top, dual-colorable"
 	desc = ""
 	icon_state = "buggofat_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "buggofatbee_markings"
 
@@ -1693,7 +1693,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "Fat bug abdomen, bee full, dual-colorable"
 	desc = ""
 	icon_state = "buggofat_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "buggofatbeefull_markings"
 
@@ -1701,7 +1701,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "Fat bug abdomen, underside, dual-colorable"
 	desc = ""
 	icon_state = "buggofat_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "buggofatunder_markings"
 
@@ -1709,7 +1709,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "Fat bug abdomen, firefly, dual-colorable"
 	desc = ""
 	icon_state = "buggofat_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "buggofatfirefly_markings"
 
@@ -1718,7 +1718,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	desc = ""
 	icon_state = "buggo_s"
 	ani_state = "buggofat_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/buggobeewag
@@ -1726,7 +1726,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	desc = ""
 	icon_state = "buggo_s"
 	ani_state = "buggofat_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "buggobee_markings"
 	extra_overlay_w = "buggofatbee_markings"
@@ -1736,7 +1736,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	desc = ""
 	icon_state = "buggo_s"
 	ani_state = "buggofat_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "buggobeefull_markings"
 	extra_overlay_w = "buggofatbeefull_markings"
@@ -1746,7 +1746,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	desc = ""
 	icon_state = "buggo_s"
 	ani_state = "buggofat_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "buggounder_markings"
 	extra_overlay_w = "buggofatunder_markings"
@@ -1756,7 +1756,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	desc = ""
 	icon_state = "buggo_s"
 	ani_state = "buggofat_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "buggofirefly_markings"
 	extra_overlay_w = "buggofatfirefly_markings"
@@ -1767,14 +1767,14 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "Bug abdomen, vass, colorable"
 	desc = ""
 	icon_state = "buggo_vass_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/buggovassbee
 	name = "Bug abdomen, bee top, dc, vass"
 	desc = ""
 	icon_state = "buggo_vass_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "buggobee_vass_markings"
 
@@ -1782,7 +1782,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "Bug abdomen, bee full, dc, vass"
 	desc = ""
 	icon_state = "buggo_vass_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "buggobeefull_vass_markings"
 
@@ -1790,7 +1790,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "Bug abdomen, underside, dc, vass"
 	desc = ""
 	icon_state = "buggo_vass_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "buggounder_vass_markings"
 
@@ -1798,7 +1798,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "Bug abdomen, firefly, dc, vass"
 	desc = ""
 	icon_state = "buggo_vass_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "buggofirefly_vass_markings"
 
@@ -1806,14 +1806,14 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "Fat bug abdomen, vass, colorable"
 	desc = ""
 	icon_state = "buggofat_vass_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/buggovassfatbee
 	name = "Fat bug abdomen, bee top, dc, vass"
 	desc = ""
 	icon_state = "buggofat_vass_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "buggofatbee_vass_markings"
 
@@ -1821,7 +1821,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "Fat bug abdomen, bee full, dc, vass"
 	desc = ""
 	icon_state = "buggofat_vass_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "buggofatbeefull_vass_markings"
 
@@ -1829,7 +1829,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "Fat bug abdomen, underside, dc, vass"
 	desc = ""
 	icon_state = "buggofat_vass_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "buggofatunder_vass_markings"
 
@@ -1837,7 +1837,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "Fat bug abdomen, firefly, dc, vass"
 	desc = ""
 	icon_state = "buggofat_vass_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "buggofatfirefly_vass_markings"
 
@@ -1846,7 +1846,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	desc = ""
 	icon_state = "buggo_vass_s"
 	ani_state = "buggofat_vass_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/buggovassbeewag
@@ -1854,7 +1854,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	desc = ""
 	icon_state = "buggo_vass_s"
 	ani_state = "buggofat_vass_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "buggobee_vass_markings"
 	extra_overlay_w = "buggofatbee_vass_markings"
@@ -1864,7 +1864,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	desc = ""
 	icon_state = "buggo_vass_s"
 	ani_state = "buggofat_vass_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "buggobeefull_vass_markings"
 	extra_overlay_w = "buggofatbeefull_vass_markings"
@@ -1874,7 +1874,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	desc = ""
 	icon_state = "buggo_vass_s"
 	ani_state = "buggofat_vass_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "buggounder_vass_markings"
 	extra_overlay_w = "buggofatunder_vass_markings"
@@ -1884,7 +1884,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	desc = ""
 	icon_state = "buggo_vass_s"
 	ani_state = "buggofat_vass_s"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "buggofirefly_vass_markings"
 	extra_overlay_w = "buggofatfirefly_vass_markings"
@@ -1899,14 +1899,14 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "Ward-Takahashi Tail"
 	desc = ""
 	icon_state = "wardtakahashi_vulp"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/wartacosushi_tail_dc
 	name = "Ward-Takahashi Tail, dual-color"
 	desc = ""
 	icon_state = "wardtakahashi_vulp_dc"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "wardtakahashi_vulp_dc_mark"
 
@@ -1914,28 +1914,28 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "Lizard Tail (Dark Tiger)"
 	desc = ""
 	icon_state = "lizard_tail_dark_tiger"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/lizard_tail_light_tiger
 	name = "Lizard Tail (Light Tiger)"
 	desc = ""
 	icon_state = "lizard_tail_light_tiger"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/lizard_tail_spiked
 	name = "Lizard Tail (Spiked)"
 	desc = ""
 	icon_state = "lizard_tail_spiked"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/robo_tail
 	name = "Robo Dragon Tail"
 	desc = ""
 	icon_state = "robo_dragon"
-	do_colouration = 1
+	do_coloration = 1
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "robodragon_b"
 
@@ -1943,6 +1943,6 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "Tentacles"
 	desc = ""
 	icon_state = "tentacles"
-	do_colouration = TRUE
+	do_coloration = TRUE
 	color_blend_mode = ICON_MULTIPLY
 	ani_state = "tentacles_wag"

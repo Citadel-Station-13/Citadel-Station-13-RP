@@ -17,7 +17,7 @@ var/list/floor_light_cache = list()
 	var/damaged
 	var/default_light_range = 4
 	var/default_light_power = 0.75
-	var/default_light_colour = LIGHT_COLOR_INCANDESCENT_BULB
+	var/default_light_color = LIGHT_COLOR_INCANDESCENT_BULB
 
 /obj/machinery/floor_light/prebuilt
 	anchored = 1
@@ -73,7 +73,7 @@ var/list/floor_light_cache = list()
 
 		on = !on
 		if(on) update_use_power(USE_POWER_ACTIVE)
-		//visible_message("<span class='notice'>\The [user] turns \the [src] [on ? "on" : "off"].</span>") //VOREStation Edit - No thankouuuu. Too spammy.
+		//visible_message("<span class='notice'>\The [user] turns \the [src] [on ? "on" : "off"].</span>")
 		update_brightness()
 		return
 
@@ -92,8 +92,8 @@ var/list/floor_light_cache = list()
 
 /obj/machinery/floor_light/proc/update_brightness()
 	if(on && use_power == USE_POWER_ACTIVE)
-		if(light_range != default_light_range || light_power != default_light_power || light_color != default_light_colour)
-			set_light(default_light_range, default_light_power, default_light_colour)
+		if(light_range != default_light_range || light_power != default_light_power || light_color != default_light_color)
+			set_light(default_light_range, default_light_power, default_light_color)
 	else
 		update_use_power(USE_POWER_OFF)
 		if(light_range || light_power)
@@ -106,20 +106,20 @@ var/list/floor_light_cache = list()
 	overlays.Cut()
 	if(use_power && !broken())
 		if(isnull(damaged))
-			var/cache_key = "floorlight-[default_light_colour]"
+			var/cache_key = "floorlight-[default_light_color]"
 			if(!floor_light_cache[cache_key])
 				var/image/I = image("on")
-				I.color = default_light_colour
+				I.color = default_light_color
 				I.layer = layer+0.001
 				floor_light_cache[cache_key] = I
 			overlays |= floor_light_cache[cache_key]
 		else
 			if(damaged == 0) //Needs init.
 				damaged = rand(1,4)
-			var/cache_key = "floorlight-broken[damaged]-[default_light_colour]"
+			var/cache_key = "floorlight-broken[damaged]-[default_light_color]"
 			if(!floor_light_cache[cache_key])
 				var/image/I = image("flicker[damaged]")
-				I.color = default_light_colour
+				I.color = default_light_color
 				I.layer = layer+0.001
 				floor_light_cache[cache_key] = I
 			overlays |= floor_light_cache[cache_key]
@@ -153,5 +153,5 @@ var/list/floor_light_cache = list()
 	. = ..()
 
 /obj/machinery/floor_light/cultify()
-	default_light_colour = "#FF0000"
+	default_light_color = "#FF0000"
 	update_brightness()

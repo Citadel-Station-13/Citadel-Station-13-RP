@@ -15,11 +15,11 @@
 	throw_speed = 2
 	throw_range = 8
 	max_storage_space = ITEMSIZE_COST_SMALL * 7 // 14
-//	var/list/icon_variety // VOREStation edit
+//	var/list/icon_variety
 
 /obj/item/storage/firstaid/Initialize()
 	. = ..()
-//	if(icon_variety) // VOREStation edit
+//	if(icon_variety)
 //		icon_state = pick(icon_variety)
 //		icon_variety = null
 
@@ -28,7 +28,7 @@
 	desc = "It's an emergency medical kit for when the toxins lab <i>spontaneously</i> burns down."
 	icon_state = "ointment"
 	item_state_slots = list(slot_r_hand_str = "firstaid-ointment", slot_l_hand_str = "firstaid-ointment")
-//	icon_variety = list("ointment","firefirstaid") // VOREStation edit
+//	icon_variety = list("ointment","firefirstaid")
 	starts_with = list(
 		/obj/item/healthanalyzer,
 		/obj/item/reagent_containers/hypospray/autoinjector,
@@ -56,7 +56,7 @@
 	desc = "Used to treat when one has a high amount of toxins in their body."
 	icon_state = "antitoxin"
 	item_state_slots = list(slot_r_hand_str = "firstaid-toxin", slot_l_hand_str = "firstaid-toxin")
-//	icon_variety = list("antitoxin","antitoxfirstaid","antitoxfirstaid2","antitoxfirstaid3") // VOREStation edit
+//	icon_variety = list("antitoxin","antitoxfirstaid","antitoxfirstaid2","antitoxfirstaid3")
 	starts_with = list(
 		/obj/item/reagent_containers/syringe/antitoxin,
 		/obj/item/reagent_containers/syringe/antitoxin,
@@ -117,7 +117,7 @@
 /obj/item/storage/firstaid/surgery
 	name = "surgery kit"
 	desc = "Contains tools for surgery. Has precise foam fitting for safe transport and automatically sterilizes the content between uses."
-	icon = 'icons/obj/storage.dmi' // VOREStation edit
+	icon = 'icons/obj/storage.dmi'
 	icon_state = "surgerykit"
 	item_state = "firstaid-surgery"
 	max_w_class = ITEMSIZE_NORMAL
@@ -142,14 +142,14 @@
 		/obj/item/surgical/bonegel,
 		/obj/item/surgical/FixOVein,
 		/obj/item/stack/medical/advanced/bruise_pack,
-		///obj/item/healthanalyzer/advanced, //VOREStation Removal,
+		///obj/item/healthanalyzer/advanced,
 		/obj/item/autopsy_scanner
 		)
 
 /obj/item/storage/firstaid/clotting
 	name = "clotting kit"
 	desc = "Contains chemicals to stop bleeding."
-	icon_state = "clottingkit" // VOREStation edit
+	icon_state = "clottingkit"
 	max_storage_space = ITEMSIZE_COST_SMALL * 7
 	starts_with = list(/obj/item/reagent_containers/hypospray/autoinjector/biginjector/clotting = 8)
 

@@ -37,9 +37,9 @@
 	var/icon/mob_icon                  // Cached icon for use in mob overlays.
 	var/gendered_icon = 0              // Whether or not the icon state appends a gender.
 	var/s_tone                         // Skin tone.
-	var/list/s_col                     // skin colour
-	var/s_col_blend = ICON_ADD         // How the skin colour is applied.
-	var/list/h_col                     // hair colour
+	var/list/s_col                     // skin color
+	var/s_col_blend = ICON_ADD         // How the skin color is applied.
+	var/list/h_col                     // hair color
 	var/body_hair                      // Icon blend for body hair if any.
 	var/mob/living/applied_pressure
 	var/list/markings = list()         // Markings (body_markings) to apply to the icon
@@ -223,7 +223,7 @@
 	..(holder, 0)
 	if(owner)
 		replaced(owner)
-		sync_colour_to_human(owner)
+		sync_color_to_human(owner)
 	spawn(1)
 		get_icon()
 
@@ -881,8 +881,8 @@ Note that amputating the affected organ does in fact remove the infection from t
 	var/mob/living/carbon/human/victim = owner //Keep a reference for post-removed().
 	var/obj/item/organ/external/parent_organ = parent
 
-	var/use_flesh_colour = species.get_flesh_colour(owner)
-	var/use_blood_colour = species.get_blood_colour(owner)
+	var/use_flesh_color = species.get_flesh_color(owner)
+	var/use_blood_color = species.get_blood_color(owner)
 
 	removed(null, ignore_children)
 	victim.traumatic_shock += 60
@@ -933,8 +933,8 @@ Note that amputating the affected organ does in fact remove the infection from t
 			else
 				gore = new /obj/effect/decal/cleanable/blood/gibs(droploc)
 				if(species)
-					gore.fleshcolor = use_flesh_colour
-					gore.basecolor =  use_blood_colour
+					gore.fleshcolor = use_flesh_color
+					gore.basecolor =  use_blood_color
 					gore.update_icon()
 
 			gore.throw_at(get_edge_target_turf(src,pick(alldirs)),rand(1,3),5)

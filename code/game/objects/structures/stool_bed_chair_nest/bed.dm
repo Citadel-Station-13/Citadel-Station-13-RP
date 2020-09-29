@@ -20,7 +20,7 @@
 	var/datum/material/material
 	var/datum/material/padding_material
 	var/base_icon = "bed"
-	var/applies_material_colour = 1
+	var/applies_material_color = 1
 
 /obj/structure/bed/New(var/newloc, var/new_material, var/new_padding_material)
 	..(newloc)
@@ -46,10 +46,10 @@
 	// Base icon.
 	var/cache_key = "[base_icon]-[material.name]"
 	if(isnull(stool_cache[cache_key]))
-		var/image/I = image(icon, base_icon) //VOREStation Edit
-		//var/image/I = image('icons/obj/furniture.dmi', base_icon) //From Polaris Sync. Not sure if this is a better way of doing it or not. Uncomment if so.
-		if(applies_material_colour) //VOREStation Add - Goes with added var
-			I.color = material.icon_colour
+		var/image/I = image(icon, base_icon)
+		//var/image/I = image('icons/obj/furniture.dmi', base_icon)
+		if(applies_material_color)
+			I.color = material.icon_color
 		stool_cache[cache_key] = I
 	overlays |= stool_cache[cache_key]
 	// Padding overlay.
@@ -57,7 +57,7 @@
 		var/padding_cache_key = "[base_icon]-padding-[padding_material.name]"
 		if(isnull(stool_cache[padding_cache_key]))
 			var/image/I =  image(icon, "[base_icon]_padding")
-			I.color = padding_material.icon_colour
+			I.color = padding_material.icon_color
 			stool_cache[padding_cache_key] = I
 		overlays |= stool_cache[padding_cache_key]
 	// Strings.

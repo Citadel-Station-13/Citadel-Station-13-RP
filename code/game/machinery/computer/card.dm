@@ -108,7 +108,7 @@
 				list("cat" = "Science", "jobs" = format_jobs(science_positions)),
 				list("cat" = "Security", "jobs" = format_jobs(security_positions)),
 				list("cat" = "Cargo", "jobs" = format_jobs(cargo_positions)),
-				list("cat" = "Exploration", "jobs" = format_jobs(planet_positions)), //VOREStation Edit
+				list("cat" = "Exploration", "jobs" = format_jobs(planet_positions)),
 				list("cat" = "Civilian", "jobs" = format_jobs(civilian_positions)),
 				list("cat" = "CentCom", "jobs" = format_jobs(get_all_centcom_jobs()))
 			)
@@ -279,14 +279,14 @@
 
 		if ("terminate")
 			if (is_authenticated())
-				modify.assignment = "Dismissed"	//VOREStation Edit: setting adjustment
+				modify.assignment = "Dismissed"
 				modify.access = list()
 
 				callHook("terminate_employee", list(modify))
 
 	if (modify)
 		modify.name = text("[modify.registered_name]'s ID Card ([modify.assignment])")
-		modify.lost_access = list()	//VOREStation addition: reset the lost access upon any modifications
+		modify.lost_access = list()
 
 	return 1
 

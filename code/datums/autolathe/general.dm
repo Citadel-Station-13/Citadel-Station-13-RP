@@ -132,3 +132,7 @@
 	name = "handcuffs"
 	path =/obj/item/handcuffs
 	hidden = 1
+
+/datum/category_item/autolathe/general/holocollar
+	name = "Holo-collar"
+	path =/obj/item/clothing/accessory/collar/holo

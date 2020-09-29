@@ -11,7 +11,7 @@ var/const/ENGINEER			=(1<<6)
 var/const/ATMOSTECH			=(1<<7)
 var/const/AI				=(1<<8)
 var/const/CYBORG			=(1<<9)
-var/const/INTERN			=(1<<15) //VOREStation Add
+var/const/INTERN			=(1<<15)
 
 var/const/MEDSCI			=(1<<1)
 
@@ -42,8 +42,8 @@ var/const/LAWYER			=(1<<9)
 var/const/CHAPLAIN			=(1<<10)
 var/const/ASSISTANT			=(1<<11)
 var/const/BRIDGE			=(1<<12)
-var/const/CLOWN				=(1<<13) //VOREStation Add
-var/const/MIME				=(1<<14) //VOREStation Add
+var/const/CLOWN				=(1<<13)
+var/const/MIME				=(1<<14)
 
 var/const/PATHFINDER 		=(1<<11)
 var/const/EXPLORER 			=(1<<12)
@@ -93,7 +93,7 @@ var/list/science_positions = list(
 	"Pathfinder"
 )
 
-//BS12 EDIT
+
 var/list/cargo_positions = list(
 	"Quartermaster",
 	"Cargo Technician",
@@ -110,8 +110,8 @@ var/list/civilian_positions = list(
 	"Lawyer",
 	"Chaplain",
 	"Pilot",
-	USELESS_JOB, //VOREStation Edit - Visitor not Assistant
-	"Intern" //VOREStation Edit - Intern
+	USELESS_JOB,
+	"Intern"
 )
 
 
@@ -124,10 +124,10 @@ var/list/security_positions = list(
 
 
 var/list/planet_positions = list(
-	"Pathfinder", // VOREStation Edit - Added Pathfinder
+	"Pathfinder",
 	"Explorer",
 	"Pilot",
-	"Field Medic"  // VOREStation Edit - Field Medic
+	"Field Medic"
 )
 
 

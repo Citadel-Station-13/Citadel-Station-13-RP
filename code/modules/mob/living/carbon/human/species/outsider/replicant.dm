@@ -46,7 +46,7 @@
 		/mob/living/carbon/human/proc/shapeshifter_select_shape,
 		/mob/living/carbon/human/proc/shapeshifter_select_hair,
 		/mob/living/carbon/human/proc/shapeshifter_select_gender,
-		/mob/living/carbon/human/proc/shapeshifter_select_colour,
+		/mob/living/carbon/human/proc/shapeshifter_select_color,
 		/mob/living/carbon/human/proc/shapeshifter_select_hair_colors,
 		/mob/living/carbon/human/proc/exit_vr
 		)
@@ -78,7 +78,7 @@
 		/mob/living/carbon/human/proc/shapeshifter_select_shape,
 		/mob/living/carbon/human/proc/shapeshifter_select_hair,
 		/mob/living/carbon/human/proc/shapeshifter_select_gender,
-		/mob/living/carbon/human/proc/shapeshifter_select_colour,
+		/mob/living/carbon/human/proc/shapeshifter_select_color,
 		/mob/living/carbon/human/proc/shapeshifter_select_hair_colors,
 		/mob/living/carbon/human/proc/exit_vr,
 		/mob/living/carbon/human/proc/corrosive_acid,

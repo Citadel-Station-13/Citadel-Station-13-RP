@@ -55,7 +55,7 @@
 		else
 			return
 
-/datum/species/proc/get_blood_colour(var/mob/living/carbon/human/H)
+/datum/species/proc/get_blood_color(var/mob/living/carbon/human/H)
 	if(H)
 		var/datum/robolimb/company = H.isSynthetic()
 		if(company)
@@ -66,8 +66,8 @@
 /datum/species/proc/get_virus_immune(var/mob/living/carbon/human/H)
 	return ((H && H.isSynthetic()) ? 1 : virus_immune)
 
-/datum/species/proc/get_flesh_colour(var/mob/living/carbon/human/H)
-	return ((H && H.isSynthetic()) ? SYNTH_FLESH_COLOUR : flesh_color)
+/datum/species/proc/get_flesh_color(var/mob/living/carbon/human/H)
+	return ((H && H.isSynthetic()) ? SYNTH_FLESH_COLOR : flesh_color)
 
 /datum/species/proc/get_environment_discomfort(var/mob/living/carbon/human/H, var/msg_type)
 

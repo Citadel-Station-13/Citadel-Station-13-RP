@@ -4,7 +4,7 @@
 	if(!host || !istype(host)) return
 
 	if(apply_color_to_mob)
-		host.color = traits[TRAIT_PRODUCT_COLOUR]
+		host.color = traits[TRAIT_PRODUCT_COLOR]
 
 	var/datum/ghosttrap/plant/P = get_ghost_trap("living plant")
 	P.request_player(host, "Someone is harvesting [display_name]. ")

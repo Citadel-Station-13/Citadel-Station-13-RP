@@ -26,7 +26,7 @@ var/global/list/ashtray_cache = list()
 	var/cache_key = "base-[material.name]"
 	if(!ashtray_cache[cache_key])
 		var/image/I = image('icons/obj/objects.dmi',"ashtray")
-		I.color = material.icon_colour
+		I.color = material.icon_color
 		ashtray_cache[cache_key] = I
 	overlays |= ashtray_cache[cache_key]
 

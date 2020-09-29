@@ -32,7 +32,7 @@
 		I.throw_at(get_edge_target_turf(src,pick(alldirs)), rand(1,3), round(30/I.w_class))
 
 	..(species.gibbed_anim) // uses the default mob.dmi file for these, so we only need to specify the first argument
-	gibs(loc, dna, null, species.get_flesh_colour(src), species.get_blood_colour(src))
+	gibs(loc, dna, null, species.get_flesh_color(src), species.get_blood_color(src))
 
 /mob/living/carbon/human/dust()
 	if(species)

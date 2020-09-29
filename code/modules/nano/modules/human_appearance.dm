@@ -43,7 +43,7 @@
 				return owner.change_skin_tone(new_s_tone)
 	if(href_list["skin_color"])
 		if(can_change_skin_color())
-			var/new_skin = input(usr, "Choose your character's skin colour: ", "Skin Color", rgb(owner.r_skin, owner.g_skin, owner.b_skin)) as color|null
+			var/new_skin = input(usr, "Choose your character's skin color: ", "Skin Color", rgb(owner.r_skin, owner.g_skin, owner.b_skin)) as color|null
 			if(new_skin && can_still_topic(state))
 				var/r_skin = hex2num(copytext(new_skin, 2, 4))
 				var/g_skin = hex2num(copytext(new_skin, 4, 6))

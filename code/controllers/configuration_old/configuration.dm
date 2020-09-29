@@ -31,7 +31,7 @@
 	var/log_world_output = 0			// log world.log << messages
 	var/log_topic = TRUE
 	var/sql_enabled = 0					// for sql switching
-	var/allow_admin_ooccolor = 0		// Allows admins with relevant permissions to have their own ooc colour
+	var/allow_admin_ooccolor = 0		// Allows admins with relevant permissions to have their own ooc color
 	var/allow_vote_restart = 0 			// allow votes to restart
 	var/ert_admin_call_only = 0
 	var/allow_vote_mode = 0				// allow votes to change mode

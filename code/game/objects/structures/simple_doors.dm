@@ -31,7 +31,7 @@
 	hardness = max(1,round(material.integrity/10))
 	icon_state = material.door_icon_base
 	name = "[material.display_name] door"
-	color = material.icon_colour
+	color = material.icon_color
 	if(material.opacity < 0.5)
 		set_opacity(0)
 	else

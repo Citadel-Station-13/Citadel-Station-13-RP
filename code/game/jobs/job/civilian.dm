@@ -23,8 +23,8 @@
 	department = "Civilian"
 	department_flag = CIVILIAN
 	faction = "Station"
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 2 //IT TAKES A LOT TO MAKE A STEW
+	spawn_positions = 2 //A PINCH OF SALT AND LAUGHTER, TOO
 	supervisors = "the head of personnel"
 	selection_color = "#515151"
 	idtype = /obj/item/card/id/civilian/chef
@@ -79,8 +79,8 @@
 	department = "Cargo"
 	department_flag = CIVILIAN
 	faction = "Station"
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 3
+	spawn_positions = 3
 	supervisors = "the quartermaster and the head of personnel"
 	selection_color = "#9b633e"
 	idtype = /obj/item/card/id/cargo/cargo_tech
@@ -96,8 +96,8 @@
 	department = "Cargo"
 	department_flag = CIVILIAN
 	faction = "Station"
-	total_positions = 3
-	spawn_positions = 3
+	total_positions = 4
+	spawn_positions = 4
 	supervisors = "the quartermaster and the head of personnel"
 	selection_color = "#9b633e"
 	idtype = /obj/item/card/id/cargo/mining
@@ -115,8 +115,8 @@
 	department = "Civilian"
 	department_flag = CIVILIAN
 	faction = "Station"
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 3
+	spawn_positions = 3
 	supervisors = "the head of personnel"
 	selection_color = "#515151"
 	idtype = /obj/item/card/id/civilian/janitor
@@ -124,7 +124,7 @@
 	minimal_access = list(access_janitor, access_maint_tunnels)
 
 	outfit_type = /decl/hierarchy/outfit/job/service/janitor
-	alt_titles = list("Custodian")
+	alt_titles = list("Custodian", "Sanitation Technician", "Viscera Cleaner", "Maid")
 
 //More or less assistants
 /datum/job/librarian
@@ -133,8 +133,8 @@
 	department = "Civilian"
 	department_flag = CIVILIAN
 	faction = "Station"
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 2
+	spawn_positions = 2
 	supervisors = "the head of personnel"
 	selection_color = "#515151"
 	idtype = /obj/item/card/id/civilian/librarian
@@ -142,7 +142,7 @@
 	minimal_access = list(access_library)
 
 	outfit_type = /decl/hierarchy/outfit/job/librarian
-	alt_titles = list("Journalist", "Writer","Film Crew")
+	alt_titles = list("Journalist", "Historian", "Writer")
 
 //var/global/lawyer = 0//Checks for another lawyer //This changed clothes on 2nd lawyer, both IA get the same dreds.
 /datum/job/lawyer
@@ -160,6 +160,7 @@
 	access = list(access_lawyer, access_sec_doors, access_maint_tunnels, access_heads)
 	minimal_access = list(access_lawyer, access_sec_doors, access_heads)
 	minimal_player_age = 7
+	disallow_jobhop = TRUE
 
 	outfit_type = /decl/hierarchy/outfit/job/internal_affairs_agent
 	alt_titles = list("Ethical Compliance Analyst")

@@ -31,7 +31,7 @@
 /datum/integrated_io/color/scramble()
 	if(!is_valid())
 		return
-	var/new_data = get_random_colour(simple = FALSE, lower = 0, upper = 255)
+	var/new_data = get_random_color(simple = FALSE, lower = 0, upper = 255)
 	data = new_data
 	push_data()
 

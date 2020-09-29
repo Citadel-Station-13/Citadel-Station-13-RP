@@ -3,14 +3,14 @@
 	name = "APLU \"Ripley\""
 	icon_state = "ripley"
 	initial_icon = "ripley"
-	step_in = 5 // vorestation edit, was 6 but that's PAINFULLY slow
-	step_energy_drain = 5 // vorestation edit because 10 drained a significant chunk of its cell before you even got out the airlock
+	step_in = 5
+	step_energy_drain = 5
 	max_temperature = 20000
 	health = 200
 	maxhealth = 200
 	wreckage = /obj/effect/decal/mecha_wreckage/ripley
 	cargo_capacity = 10
-	var/obj/item/mining_scanner/orescanner // vorestation addition
+	var/obj/item/mining_scanner/orescanner
 
 /obj/mecha/working/ripley/Destroy()
 	for(var/atom/movable/A in src.cargo)
@@ -81,8 +81,6 @@
 		qdel (B)
 
 
-// VORESTATION EDIT BEGIN
-
 /obj/mecha/working/ripley/New()
 	..()
 	orescanner = new /obj/item/mining_scanner
@@ -94,6 +92,3 @@
 	set popup_menu = 0
 
 	orescanner.attack_self(usr)
-
-// VORESTATION EDIT END
-

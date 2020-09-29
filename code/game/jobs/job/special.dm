@@ -1,4 +1,4 @@
-/datum/job/centcom_officer //For Business
+/datum/job/centcom_officer	// For Business
 	title = "CentCom Officer"
 	department = "Command"
 	head_position = 1
@@ -14,6 +14,8 @@
 	economic_modifier = 20
 	whitelist_only = 1
 	latejoin_only = 1
+
+	alt_titles = list("Centcom Commander")
 
 	minimum_character_age = 25
 	ideal_character_age = 40
@@ -40,7 +42,7 @@
 		var/access = get_all_accesses()
 		return access
 
-/*/datum/job/centcom_visitor //For Pleasure // You mean for admin abuse... -Ace
+/datum/job/centcom_visitor //For Pleasure
 	title = "CentCom Visitor"
 	department = "Civilian"
 	head_position = 1
@@ -80,42 +82,4 @@
 
 	get_access()
 		var/access = get_all_accesses()
-		return access*/
-
-/datum/job/clown
-	title = "Clown"
-	flag = CLOWN
-	department = "Civilian"
-	department_flag = CIVILIAN
-	faction = "Station"
-	total_positions = -1
-	spawn_positions = -1
-	supervisors = "the spirit of laughter"
-	selection_color = "#515151"
-	idtype = /obj/item/card/id/civilian/clown
-	economic_modifier = 1
-	access = list()
-	minimal_access = list()
-	alt_titles = list("Comedian","Jester")
-	whitelist_only = 1
-	latejoin_only = 1
-	outfit_type = /decl/hierarchy/outfit/job/clown
-
-/datum/job/mime
-	title = "Mime"
-	flag = MIME
-	department = "Civilian"
-	department_flag = CIVILIAN
-	faction = "Station"
-	total_positions = -1
-	spawn_positions = -1
-	supervisors = "the spirit of performance"
-	selection_color = "#515151"
-	idtype = /obj/item/card/id/civilian/mime
-	economic_modifier = 1
-	access = list()
-	minimal_access = list()
-	alt_titles = list("Performer","Interpretive Dancer")
-	whitelist_only = 1
-	latejoin_only = 1
-	outfit_type = /decl/hierarchy/outfit/job/mime
+		return access

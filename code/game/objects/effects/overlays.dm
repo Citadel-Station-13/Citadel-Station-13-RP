@@ -37,7 +37,7 @@
 
 /obj/effect/overlay/bluespacify
 	name = "Bluespace"
-	icon = 'icons/turf/space_vr.dmi' //VOREStation Edit
+	icon = 'icons/turf/space_vr.dmi'
 	icon_state = "bluespacify"
 	plane = ABOVE_PLANE
 

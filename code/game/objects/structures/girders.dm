@@ -14,7 +14,7 @@
 	var/datum/material/girder_material
 	var/datum/material/reinf_material
 	var/reinforcing = 0
-	var/applies_material_colour = 1
+	var/applies_material_color = 1
 
 /obj/structure/girder/New(var/newloc, var/material_key)
 	..(newloc)
@@ -50,8 +50,8 @@
 	max_health = round(girder_material.integrity) //Should be 150 with default integrity (steel). Weaker than ye-olden Girders now.
 	health = max_health
 	displaced_health = round(max_health/4)
-	if(applies_material_colour)
-		color = girder_material.icon_colour
+	if(applies_material_color)
+		color = girder_material.icon_color
 	if(girder_material.products_need_process()) //Am I radioactive or some other? Process me!
 		START_PROCESSING(SSobj, src)
 	else if(datum_flags & DF_ISPROCESSING) //If I happened to be radioactive or s.o. previously, and am not now, stop processing.
@@ -324,7 +324,7 @@
 	health = 250
 	cover = 70
 	girder_material = "cult"
-	applies_material_colour = 0
+	applies_material_color = 0
 
 /obj/structure/girder/cult/update_icon()
 	if(anchored)

@@ -1,5 +1,5 @@
 /datum/reagent/blood
-	data = new/list("donor" = null, "viruses" = null, "species" = SPECIES_HUMAN, "blood_DNA" = null, "blood_type" = null, "blood_colour" = "#A10808", "resistances" = null, "trace_chem" = null, "antibodies" = list())
+	data = new/list("donor" = null, "viruses" = null, "species" = SPECIES_HUMAN, "blood_DNA" = null, "blood_type" = null, "blood_color" = "#A10808", "resistances" = null, "trace_chem" = null, "antibodies" = list())
 	name = "Blood"
 	id = "blood"
 	taste_description = "iron"
@@ -16,8 +16,8 @@
 
 /datum/reagent/blood/initialize_data(var/newdata)
 	..()
-	if(data && data["blood_colour"])
-		color = data["blood_colour"]
+	if(data && data["blood_color"])
+		color = data["blood_color"]
 	return
 
 /datum/reagent/blood/get_data() // Just in case you have a reagent that handles data differently.

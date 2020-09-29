@@ -1,10 +1,10 @@
 /obj/machinery/sleep_console
 	name = "sleeper console"
-	icon = 'icons/obj/Cryogenic2_vr.dmi' //VOREStation Edit - Better icon.
+	icon = 'icons/obj/Cryogenic2_vr.dmi'
 	icon_state = "sleeperconsole"
 	var/obj/machinery/sleeper/sleeper
-	anchored = 1 //About time someone fixed this.
-	density = 1 //VOREStation Edit - Big console
+	anchored = 1
+	density = 1
 	dir = 8
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 40
@@ -26,11 +26,9 @@
 		for(dir in list(NORTH, EAST, SOUTH, WEST)) // Loop through every direction
 			sleepernew = locate(/obj/machinery/sleeper, get_step(src, dir)) // Try to find a scanner in that direction
 			if(sleepernew)
-				// VOREStation Edit Start
 				sleeper = sleepernew
 				sleepernew.console = src
 				break
-				// VOREStation Edit End
 
 
 /obj/machinery/sleep_console/attack_ai(var/mob/user)
@@ -161,7 +159,7 @@
 /obj/machinery/sleeper
 	name = "sleeper"
 	desc = "A stasis pod with built-in injectors, a dialysis machine, and a limited health scanner."
-	icon = 'icons/obj/Cryogenic2_vr.dmi' //VOREStation Edit - Better icons
+	icon = 'icons/obj/Cryogenic2_vr.dmi'
 	icon_state = "sleeper_0"
 	density = 1
 	anchored = 1

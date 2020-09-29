@@ -65,7 +65,7 @@
 	M.g_skin = O.g_skin
 	M.b_skin = O.b_skin
 	for(var/obj/item/organ/external/Z in M.organs)
-		Z.sync_colour_to_human(M)
+		Z.sync_color_to_human(M)
 	M.update_icons_body()
 	if(message)
 		to_chat(M, "<span class='notice'>Your body tingles all over...</span>")

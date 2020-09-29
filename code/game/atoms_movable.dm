@@ -45,7 +45,7 @@
 	var/icon_rotation = 0 // Used to rotate icons in update_transform()
 	var/old_x = 0
 	var/old_y = 0
-	var/datum/riding/riding_datum //VOREStation Add - Moved from /obj/vehicle
+	var/datum/riding/riding_datum // Moved from /obj/vehicle
 	var/does_spin = TRUE // Does the atom spin when thrown (of course it does :P)
 
 /atom/movable/Destroy()
@@ -66,7 +66,7 @@
 		if (pulledby.pulling == src)
 			pulledby.pulling = null
 		pulledby = null
-	QDEL_NULL(riding_datum) //VOREStation Add
+	QDEL_NULL(riding_datum)
 
 /atom/movable/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
@@ -302,3 +302,16 @@
   */
 /atom/movable/proc/set_movement_type(new_movetype)
 	movement_type = new_movetype
+
+/atom/movable/proc/Bump_vr(var/atom/A, yes)
+	return
+
+/atom/movable/setDir(newdir)
+	. = ..(newdir)
+	if(riding_datum)
+		riding_datum.handle_vehicle_offsets()
+
+/atom/movable/relaymove(mob/user, direction)
+	. = ..()
+	if(riding_datum)
+		riding_datum.handle_ride(user, direction)

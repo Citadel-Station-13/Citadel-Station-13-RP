@@ -3,7 +3,7 @@
 	desc = "It's a useless heap of junk... <i>or is it?</i>"
 	icon = 'icons/mob/robots.dmi'
 	icon_state = "gib1"
-	basecolor = SYNTH_BLOOD_COLOUR
+	basecolor = SYNTH_BLOOD_COLOR
 	random_icon_states = list("gib1", "gib2", "gib3", "gib4", "gib5", "gib6", "gib7")
 
 /obj/effect/decal/cleanable/blood/gibs/robot/update_icon()
@@ -38,7 +38,7 @@
 	random_icon_states = list("gib1", "gib2", "gib3", "gib4", "gib5", "gib6", "gib7","gibdown1","gibdown1") //2:7 is close enough to 1:4
 
 /obj/effect/decal/cleanable/blood/oil
-	basecolor = SYNTH_BLOOD_COLOUR
+	basecolor = SYNTH_BLOOD_COLOR
 
 /obj/effect/decal/cleanable/blood/oil/dry()
 	return

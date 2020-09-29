@@ -20,7 +20,7 @@
 	edge = 1
 	origin_tech = list(TECH_MATERIAL = 2, TECH_COMBAT = 1)
 	attack_verb = list("chopped", "torn", "cut")
-	applies_material_colour = 0
+	applies_material_color = 0
 
 /obj/item/material/knife/machete/hatchet/unathiknife
 	name = "duelling knife"
@@ -89,7 +89,7 @@
 	//icon_state = "reinf-snowball"
 	force_divisor = 0.20
 	thrown_force_divisor = 0.25
-	
+
 /obj/item/material/butterfly/saw //This Saw Cleaver is in here since I do not know where else to put it
 	name = "Saw Cleaver"
 	desc = "A weapon consisting of a long handle and a heavy serrated blade. Using centrifrical force the blade extends outword allowing it to slice it long cleaves. The smell of blood hangs in the air around it."

@@ -101,7 +101,7 @@
 	slot_flags = SLOT_BACK
 	force_wielded = 30
 	attack_verb = list("attacked", "chopped", "cleaved", "torn", "cut")
-	applies_material_colour = 0
+	applies_material_color = 0
 	can_cleave = TRUE
 
 /obj/item/material/twohanded/fireaxe/update_held_icon()
@@ -138,7 +138,7 @@
 	force_wielded = 0
 	force_divisor = 0
 	force = 0
-	applies_material_colour = 1
+	applies_material_color = 1
 	base_icon = "fireaxe_mask"
 	icon_state = "fireaxe_mask0"
 	unbreakable = 1
@@ -182,7 +182,7 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("attacked", "poked", "jabbed", "torn", "gored")
 	default_material = "glass"
-	applies_material_colour = 0
+	applies_material_color = 0
 	fragile = 1	//It's a haphazard thing of glass, wire, and steel
 	reach = 2 // Spears are long.
 	attackspeed = 20

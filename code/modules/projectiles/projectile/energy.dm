@@ -13,9 +13,9 @@
 	fire_sound = 'sound/weapons/gunshot_pathetic.ogg'
 	damage = 5
 	range = 15 //if the shell hasn't hit anything after travelling this far it just explodes.
+	light_color = COLOR_WHITE
 	var/flash_range = 0
 	var/brightness = 7
-	var/light_colour = "#ffffff"
 
 /obj/item/projectile/energy/flash/on_impact(var/atom/A)
 	var/turf/T = flash_range? src.loc : get_turf(A)
@@ -44,7 +44,7 @@
 	sparks.start()
 
 	new /obj/effect/decal/cleanable/ash(src.loc) //always use src.loc so that ash doesn't end up inside windows
-	new /obj/effect/effect/smoke/illumination(T, 5, brightness, brightness, light_colour)
+	new /obj/effect/effect/smoke/illumination(T, 5, brightness, brightness, light_color)
 
 //No longer blinds, and flash strength has been greatly lowered but now set's on fire.
 /obj/item/projectile/energy/flash/flare
@@ -57,12 +57,12 @@
 	flammability = 2
 
 /obj/item/projectile/energy/flash/flare/on_impact(var/atom/A)
-	light_colour = pick("#e58775", "#ffffff", "#90ff90", "#a09030")
+	light_color = pick("#e58775", "#ffffff", "#90ff90", "#a09030")
 
 	..() //initial flash
 
 	//residual illumination
-	new /obj/effect/effect/smoke/illumination(src.loc, rand(190,240) SECONDS, range=8, power=3, color=light_colour) //same lighting power as flare
+	new /obj/effect/effect/smoke/illumination(src.loc, rand(190,240) SECONDS, range=8, power=3, color=light_color) //same lighting power as flare
 
 /obj/item/projectile/energy/electrode
 	name = "electrode"

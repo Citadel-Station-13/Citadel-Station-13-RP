@@ -242,7 +242,7 @@
 
 	if(istype(O, /obj/item/organ/external) && !malfunctioned)
 		var/obj/item/organ/external/E = O
-		E.sync_colour_to_human(C)
+		E.sync_color_to_human(C)
 
 	O.pixel_x = rand(-6.0, 6)
 	O.pixel_y = rand(-6.0, 6)

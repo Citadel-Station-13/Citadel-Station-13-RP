@@ -25,7 +25,7 @@
 	icon_state = "material"
 	var/described = FALSE
 	var/named = FALSE
-	var/coloured = FALSE
+	var/colored = FALSE
 
 /obj/item/clothing/gloves/ring/custom/AltClick(mob/user)
 	if(!named)
@@ -40,11 +40,11 @@
 			desc = "[inputdesc]"
 			to_chat(user, "You describe the [name].")
 			described = TRUE
-	if(!coloured)
-		var/colour_input = input(usr,"","Choose Color",color) as color|null
-		if(colour_input)
-			color = sanitize_hexcolor(colour_input)
-			coloured = TRUE
+	if(!colored)
+		var/color_input = input(usr,"","Choose Color",color) as color|null
+		if(color_input)
+			color = sanitize_hexcolor(color_input)
+			colored = TRUE
 /////////////////////////////////////////
 //Reagent Rings
 

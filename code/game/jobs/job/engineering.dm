@@ -12,19 +12,20 @@
 	idtype = /obj/item/card/id/engineering/head
 	req_admin_notify = 1
 	economic_modifier = 10
+	disallow_jobhop = TRUE
 
 	minimum_character_age = 25
 	ideal_character_age = 50
 
 
 	access = list(access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels,
-			            access_teleporter, access_external_airlocks, access_atmospherics, access_emergency_storage, access_eva,
-			            access_heads, access_construction, access_sec_doors,
-			            access_ce, access_RC_announce, access_keycard_auth, access_tcomsat, access_ai_upload)
+						access_teleporter, access_external_airlocks, access_atmospherics, access_emergency_storage, access_eva,
+						access_heads, access_construction, access_sec_doors,
+						access_ce, access_RC_announce, access_keycard_auth, access_tcomsat, access_ai_upload)
 	minimal_access = list(access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels,
-			            access_teleporter, access_external_airlocks, access_atmospherics, access_emergency_storage, access_eva,
-			            access_heads, access_construction, access_sec_doors,
-			            access_ce, access_RC_announce, access_keycard_auth, access_tcomsat, access_ai_upload)
+						access_teleporter, access_external_airlocks, access_atmospherics, access_emergency_storage, access_eva,
+						access_heads, access_construction, access_sec_doors,
+						access_ce, access_RC_announce, access_keycard_auth, access_tcomsat, access_ai_upload)
 	alt_titles = list("Director of Maintenance")
 
 	minimal_player_age = 7
@@ -58,14 +59,14 @@
 	department_flag = ENGSEC
 	faction = "Station"
 	total_positions = 3
-	spawn_positions = 2
+	spawn_positions = 3
 	supervisors = "the chief engineer"
 	selection_color = "#5B4D20"
 	idtype = /obj/item/card/id/engineering/atmos
 	economic_modifier = 5
 	access = list(access_eva, access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels, access_external_airlocks, access_construction, access_atmospherics, access_external_airlocks)
 	minimal_access = list(access_eva, access_engine, access_atmospherics, access_maint_tunnels, access_emergency_storage, access_construction, access_external_airlocks)
-	alt_titles = list("Pipe Network Specialist")
+	alt_titles = list("Pipe Network Specialist","Firefighter")
 
 	minimal_player_age = 3
 

@@ -35,7 +35,7 @@
 	starts_with = list(
 		/obj/item/clothing/suit/bio_suit/security,
 		/obj/item/clothing/head/bio_hood/security)
-		///obj/item/gun/energy/taser/xeno/sec) //VOREStation Removal
+		///obj/item/gun/energy/taser/xeno/sec)
 
 /obj/structure/closet/l3closet/janitor
 	icon_state = "bio_janitor"

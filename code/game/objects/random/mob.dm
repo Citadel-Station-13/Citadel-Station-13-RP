@@ -203,3 +203,118 @@
 				prob(30);/mob/living/simple_mob/animal/passive/mouse/brown,
 				prob(30);/mob/living/simple_mob/animal/passive/mouse/gray,
 				prob(25);/obj/random/mouseremains) //because figuring out how to come up with it picking nothing is beyond my coding ability.
+
+/obj/random/cargopod
+	name = "Random Cargo Item"
+	desc = "Hot Stuff."
+	icon = 'icons/obj/items.dmi'
+	icon_state = "purplecomb"
+	spawn_nothing_percentage = 0
+/obj/random/cargopod/item_to_spawn()
+	return pick(prob(10);/obj/item/contraband/poster,\
+				prob(8);/obj/item/haircomb,\
+				prob(6);/obj/item/material/wirerod,\
+				prob(6);/obj/item/storage/pill_bottle/tramadol,\
+				prob(6);/obj/item/material/butterflyblade,\
+				prob(6);/obj/item/material/butterflyhandle,\
+				prob(4);/obj/item/storage/pill_bottle/happy,\
+				prob(4);/obj/item/storage/pill_bottle/zoom,\
+				prob(4);/obj/item/material/butterfly,\
+				prob(2);/obj/item/material/butterfly/switchblade,\
+				prob(2);/obj/item/clothing/gloves/knuckledusters,\
+				prob(2);/obj/item/reagent_containers/syringe/drugs,\
+				prob(1);/obj/item/material/knife/tacknife,\
+				prob(1);/obj/item/clothing/suit/storage/vest/heavy/merc,\
+				prob(1);/obj/item/beartrap,\
+				prob(1);/obj/item/handcuffs,\
+				prob(1);/obj/item/handcuffs/legcuffs,\
+				prob(1);/obj/item/reagent_containers/syringe/steroid)
+
+//A random thing so that the spawn_nothing_percentage can be used w/o duplicating code.
+/obj/random/trash_pile
+	name = "Random Trash Pile"
+	desc = "Hot Garbage."
+	icon = 'icons/obj/trash_piles.dmi'
+	icon_state = "randompile"
+	spawn_nothing_percentage = 0
+/obj/random/trash_pile/item_to_spawn()
+	return	/obj/structure/trash_pile
+
+/obj/random/outside_mob
+	name = "Random Mob"
+	desc = "Eek!"
+	icon = 'icons/mob/screen1.dmi'
+	icon_state = "x"
+	spawn_nothing_percentage = 10
+	var/faction = "wild animal"
+
+/obj/random/outside_mob/item_to_spawn() // Special version for mobs to have the same faction.
+	return pick(
+				prob(50);/mob/living/simple_mob/animal/passive/gaslamp,
+//				prob(50);/mob/living/simple_mob/otie/feral, // Removed until Otie code is unfucked.
+				prob(20);/mob/living/simple_mob/vore/aggressive/dino/virgo3b,
+				prob(1);/mob/living/simple_mob/vore/aggressive/dragon/virgo3b)
+
+/obj/random/outside_mob/spawn_item()
+	. = ..()
+	if(istype(., /mob/living/simple_mob))
+		var/mob/living/simple_mob/this_mob = .
+		this_mob.faction = src.faction
+		if (this_mob.minbodytemp > 200) // Temporary hotfix. Eventually I'll add code to change all mob vars to fit the environment they are spawned in.
+			this_mob.minbodytemp = 200
+		//wander the mobs around so they aren't always in the same spots
+		var/turf/T = null
+		for(var/i = 1 to 20)
+			T = get_step_rand(this_mob) || T
+		if(T)
+			this_mob.forceMove(T)
+
+//Just overriding this here, no more super medkit so those can be reserved for PoIs and such
+/obj/random/tetheraid
+	name = "Random First Aid Kit"
+	desc = "This is a random first aid kit. Does not include Combat Kits."
+	icon = 'icons/obj/storage.dmi'
+	icon_state = "firstaid"
+
+/obj/random/tetheraid/item_to_spawn()
+	return pick(prob(4);/obj/item/storage/firstaid/regular,
+				prob(3);/obj/item/storage/firstaid/toxin,
+				prob(3);/obj/item/storage/firstaid/o2,
+				prob(2);/obj/item/storage/firstaid/adv,
+				prob(3);/obj/item/storage/firstaid/fire)
+
+//Override from maintenance.dm to prevent combat kits from spawning in Tether maintenance
+/obj/random/maintenance/item_to_spawn()
+	return pick(prob(300);/obj/random/tech_supply,
+				prob(200);/obj/random/medical,
+				prob(100);/obj/random/tetheraid,
+				prob(10);/obj/random/contraband,
+				prob(50);/obj/random/action_figure,
+				prob(50);/obj/random/plushie,
+				prob(200);/obj/random/junk,
+				prob(200);/obj/random/material,
+				prob(50);/obj/random/toy,
+				prob(100);/obj/random/tank,
+				prob(50);/obj/random/soap,
+				prob(60);/obj/random/drinkbottle,
+				prob(500);/obj/random/maintenance/clean)
+
+/obj/random/action_figure/supplypack
+	drop_get_turf = FALSE
+
+/obj/random/roguemineloot
+	name = "Random Rogue Mines Item"
+	desc = "Hot Stuff. Hopefully"
+	icon = 'icons/obj/items.dmi'
+	icon_state = "spickaxe"
+	spawn_nothing_percentage = 0
+
+/obj/random/roguemineloot/item_to_spawn()
+	return pick(prob(5);/obj/random/mre,
+				prob(5);/obj/random/maintenance,
+				prob(4);/obj/random/firstaid,
+				prob(3);/obj/random/toolbox,
+				prob(2);/obj/random/multiple/minevault,
+				prob(1);/obj/random/coin,
+				prob(1);/obj/random/drinkbottle,
+				prob(1);/obj/random/tool/alien)

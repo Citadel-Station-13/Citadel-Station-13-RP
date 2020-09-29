@@ -447,7 +447,7 @@
 
 	var/list/words = list()
 	var/datum/reagents/buffer = new /datum/reagents(1000)
-	var/totalcolour
+	var/totalcolor
 
 	for (var/obj/item/I in CI.container)
 		var/obj/item/reagent_containers/food/snacks/S
@@ -463,13 +463,13 @@
 
 		if (S.reagents && S.reagents.total_volume > 0)
 			if (S.filling_color)
-				if (!totalcolour || !buffer.total_volume)
-					totalcolour = S.filling_color
+				if (!totalcolor || !buffer.total_volume)
+					totalcolor = S.filling_color
 				else
 					var/t = buffer.total_volume + S.reagents.total_volume
 					t = buffer.total_volume / y
-					totalcolour = BlendRGB(totalcolour, S.filling_color, t)
-					//Blend colours in order to find a good filling color
+					totalcolor = BlendRGB(totalcolor, S.filling_color, t)
+					//Blend colors in order to find a good filling color
 
 			S.reagents.trans_to_holder(buffer, S.reagents.total_volume)
 		//Cleanup these empty husk ingredients now
@@ -485,9 +485,9 @@
 
 	//Filling overlay
 	var/image/I = image(result.icon, "[result.icon_state]_filling")
-	I.color = totalcolour
+	I.color = totalcolor
 	result.add_overlay(I)
-	result.filling_color = totalcolour
+	result.filling_color = totalcolor
 
 	//Set the name.
 	words -= list("and", "the", "in", "is", "bar", "raw", "sticks", "boiled", "fried", "deep", "-o-", "warm", "two", "flavored")
@@ -603,7 +603,7 @@
 
 
 /obj/machinery/appliance/proc/change_product_appearance(var/obj/item/reagent_containers/food/snacks/product, var/datum/cooking_item/CI)
-	if (!product.coating) //Coatings change colour through a new sprite
+	if (!product.coating) //Coatings change color through a new sprite
 		product.color = food_color
 	product.filling_color = food_color
 

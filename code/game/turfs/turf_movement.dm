@@ -11,8 +11,8 @@ var/const/enterloopsanity = 100
 		var/mob/M = A
 		if(!M.lastarea)
 			M.lastarea = get_area(M.loc)
-		if(M.flying) //VORESTATION Edit Start. This overwrites the above is_space without touching it all that much.
-			M.make_floating(1) //VOREStation Edit End.
+		if(M.flying) // This overwrites the above is_space without touching it all that much.
+			M.make_floating(1)
 		else if(!is_space())
 			M.make_floating(0)
 		if(isliving(M) && CHECK_BITFIELD(M.movement_type, GROUND))

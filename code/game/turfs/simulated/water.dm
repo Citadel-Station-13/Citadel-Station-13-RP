@@ -402,3 +402,9 @@ var/list/shoreline_icon_cache = list()
 	edge_blending_priority = -2
 	movement_cost = 8
 	depth = 2
+
+/turf/simulated/floor/water/indoors //because it's nice to be able to use these indoors without having a blizzard ignore walls and areas.
+	outdoors = FALSE
+
+/turf/simulated/floor/water/deep/indoors
+	outdoors = FALSE

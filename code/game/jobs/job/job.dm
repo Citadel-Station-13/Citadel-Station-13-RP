@@ -1,29 +1,34 @@
 /datum/job
 
-	//The name of the job
+	// The name of the job
 	var/title = "NOPE"
-	//Job access. The use of minimal_access or access is determined by a config setting: config_legacy.jobs_have_minimal_access
-	var/list/minimal_access = list()      // Useful for servers which prefer to only have access given to the places a job absolutely needs (Larger server population)
-	var/list/access = list()              // Useful for servers which either have fewer players, so each person needs to fill more than one role, or servers which like to give more access, so players can't hide forever in their super secure departments (I'm looking at you, chemistry!)
-	var/flag = 0 	                      // Bitflags for the job
+	// Job access. The use of minimal_access or access is determined by a config setting: config_legacy.jobs_have_minimal_access
+	var/list/minimal_access = list()	// Useful for servers which prefer to only have access given to the places a job absolutely needs (Larger server population)
+	var/list/access = list()			// Useful for servers which either have fewer players, so each person needs to fill more than one role, or servers which like to give more access, so players can't hide forever in their super secure departments (I'm looking at you, chemistry!)
+	var/flag = 0 						// Bitflags for the job
 	var/department_flag = 0
-	var/faction = "None"	              // Players will be allowed to spawn in as jobs that are set to "Station"
-	var/total_positions = 0               // How many players can be this job
-	var/spawn_positions = 0               // How many players can spawn in as this job
-	var/current_positions = 0             // How many players have this job
-	var/supervisors = null                // Supervisors, who this person answers to directly
-	var/selection_color = "#ffffff"       // Selection screen color
-	var/idtype = /obj/item/card/id // The type of the ID the player will have
-	var/list/alt_titles                   // List of alternate titles, if any
-	var/req_admin_notify                  // If this is set to 1, a text is printed to the player when jobs are assigned, telling him that he should let admins know that he has to disconnect.
-	var/minimal_player_age = 0            // If you have use_age_restriction_for_jobs config option enabled and the database set up, this option will add a requirement for players to be at least minimal_player_age days old. (meaning they first signed in at least that many days before.)
-	var/department = null                 // Does this position have a department tag?
-	var/head_position = 0                 // Is this position Command?
+	var/faction = "None"				// Players will be allowed to spawn in as jobs that are set to "Station"
+	var/total_positions = 0				// How many players can be this job
+	var/spawn_positions = 0				// How many players can spawn in as this job
+	var/current_positions = 0			// How many players have this job
+	var/supervisors = null				// Supervisors, who this person answers to directly
+	var/selection_color = "#ffffff"		// Selection screen color
+	var/idtype = /obj/item/card/id		// The type of the ID the player will have
+	var/list/alt_titles					// List of alternate titles, if any
+	var/req_admin_notify				// If this is set to 1, a text is printed to the player when jobs are assigned, telling him that he should let admins know that he has to disconnect.
+	var/minimal_player_age = 0			// If you have use_age_restriction_for_jobs config option enabled and the database set up, this option will add a requirement for players to be at least minimal_player_age days old. (meaning they first signed in at least that many days before.)
+	var/department = null				// Does this position have a department tag?
+	var/head_position = 0				// Is this position Command?
 	var/minimum_character_age = 0
 	var/ideal_character_age = 30
 
-	var/account_allowed = 1				  // Does this job type come with a station account?
-	var/economic_modifier = 2			  // With how much does this job modify the initial account amount?
+	var/account_allowed = 1				// Does this job type come with a station account?
+	var/economic_modifier = 2			// With how much does this job modify the initial account amount?
+
+	var/whitelist_only = 0				// Requires a ckey to be whitelisted in jobwhitelist.txt
+	var/latejoin_only = 0				// Does not display this job on the occupation setup screen
+	var/timeoff_factor = 3				// Every hour playing this role gains this much time off. (Can be negative for off duty jobs!)
+	var/disallow_jobhop = FALSE			// Disallow joining as this job midround from off-duty position via going on-duty
 
 	var/outfit_type
 
@@ -60,8 +65,8 @@
 			if(CLASS_LOWMID)	income = 0.75
 			if(CLASS_LOWER)		income = 0.50
 
-	//give them an account in the station database
-	var/money_amount = (rand(15,40) + rand(15,40)) * income * economic_modifier * ECO_MODIFIER //VOREStation Edit - Smoothed peaks, ECO_MODIFIER rather than per-species ones.
+	// give them an account in the station database
+	var/money_amount = (rand(15,40) + rand(15,40)) * income * economic_modifier * ECO_MODIFIER
 	var/datum/money_account/M = create_account(H.real_name, money_amount, null)
 	if(H.mind)
 		var/remembered_info = ""
@@ -91,9 +96,9 @@
 	else
 		return src.access.Copy()
 
-//If the configuration option is set to require players to be logged as old enough to play certain jobs, then this proc checks that they are, otherwise it just returns 1
+// If the configuration option is set to require players to be logged as old enough to play certain jobs, then this proc checks that they are, otherwise it just returns 1
 /datum/job/proc/player_old_enough(client/C)
-	return (available_in_days(C) == 0) //Available in 0 days = available right now = player is old enough to play.
+	return (available_in_days(C) == 0)	// Available in 0 days = available right now = player is old enough to play.
 
 /datum/job/proc/available_in_days(client/C)
 	if(C && config_legacy.use_age_restriction_for_jobs && isnum(C.player_age) && isnum(minimal_player_age))
@@ -118,3 +123,7 @@
 
 /datum/job/proc/has_alt_title(var/mob/H, var/supplied_title, var/desired_title)
 	return (supplied_title == desired_title) || (H.mind && H.mind.role_alt_title == desired_title)
+
+// Check client-specific availability rules.
+/datum/job/proc/player_has_enough_pto(client/C)
+	return timeoff_factor >= 0 || (C && LAZYACCESS(C.department_hours, department) > 0)
