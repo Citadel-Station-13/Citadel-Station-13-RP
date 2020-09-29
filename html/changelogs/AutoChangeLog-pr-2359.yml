@@ -1,8 +1,0 @@
-author: "Zandario"
-delete-after: True
-changes: 
-  - rscadd: "Automatic Changelogs"
-  - rscadd: "github workflows"
-  - rscdel: "Old records that are no longer needed"
-  - tweak: "Changelog systems"
-  - tweak: "Updated Changelog Header"

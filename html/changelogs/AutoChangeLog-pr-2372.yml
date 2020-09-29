@@ -1,4 +1,0 @@
-author: "silicons"
-delete-after: True
-changes: 
-  - admin: "toggle-respawn renamed to toggle-return-to-menu"
