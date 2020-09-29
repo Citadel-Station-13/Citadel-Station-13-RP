@@ -472,6 +472,7 @@
 	dir = 1
 	},
 /obj/structure/closet/firecloset,
+/obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "bH" = (
@@ -918,6 +919,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
 	},
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
@@ -1493,6 +1497,23 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/foyer)
+"gj" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 10
+	},
+/turf/simulated/floor/tiled{
+	icon_state = "techmaint"
+	},
+/area/engineering/engine_eva)
 "go" = (
 /obj/structure/closet/crate,
 /obj/item/circuitboard/smes,
@@ -2109,8 +2130,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
 	},
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
@@ -2918,6 +2942,19 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"nI" = (
+/obj/machinery/door/airlock/glass_external{
+	frequency = 1380;
+	icon_state = "door_locked";
+	id_tag = "deck1_airlock_outer";
+	locked = 1;
+	name = "Docking Port Airlock"
+	},
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/tiled{
+	icon_state = "techmaint"
+	},
+/area/engineering/engine_eva)
 "nJ" = (
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
@@ -3069,6 +3106,9 @@
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
@@ -3234,6 +3274,19 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
+/area/engineering/engine_eva)
+"pk" = (
+/obj/machinery/door/airlock/glass_external{
+	frequency = 1380;
+	icon_state = "door_locked";
+	id_tag = "deck1_airlock_inner";
+	locked = 1;
+	name = "Docking Port Airlock"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled{
+	icon_state = "techmaint"
+	},
 /area/engineering/engine_eva)
 "pn" = (
 /obj/machinery/door/firedoor/glass,
@@ -3463,6 +3516,12 @@
 /obj/machinery/computer/rcon,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_monitoring)
+"qi" = (
+/obj/machinery/door/airlock/engineering{
+	name = "Engineering Access"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/engine_room)
 "qs" = (
 /obj/machinery/door/firedoor/glass/hidden/steel,
 /turf/simulated/floor/tiled,
@@ -4387,7 +4446,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engi_engine)
 "vd" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
@@ -4836,6 +4895,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
@@ -4878,6 +4940,21 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
+"xd" = (
+/obj/machinery/airlock_sensor{
+	frequency = 1380;
+	id_tag = "deck1_airlocksensor";
+	pixel_x = 26
+	},
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	dir = 8;
+	frequency = 1380;
+	id_tag = "deck1_airlock_pump"
+	},
+/turf/simulated/floor/tiled{
+	icon_state = "techmaint"
+	},
+/area/engineering/engine_eva)
 "xf" = (
 /obj/machinery/power/apc{
 	name = "south bump";
@@ -4920,6 +4997,16 @@
 /obj/structure/grille,
 /turf/space,
 /area/space)
+"xo" = (
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	dir = 8;
+	frequency = 1380;
+	id_tag = "deck1_airlock_pump"
+	},
+/turf/simulated/floor/tiled{
+	icon_state = "techmaint"
+	},
+/area/engineering/engine_eva)
 "xp" = (
 /obj/machinery/alarm{
 	pixel_y = 22
@@ -5354,6 +5441,19 @@
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/chief)
+"zc" = (
+/obj/machinery/access_button{
+	command = "cycle_interior";
+	frequency = 1380;
+	master_tag = "deck1_airlock";
+	name = "interior access button";
+	pixel_x = -3;
+	pixel_y = 26
+	},
+/turf/simulated/floor/tiled{
+	icon_state = "techmaint"
+	},
+/area/engineering/engine_eva)
 "zd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -6282,6 +6382,23 @@
 	},
 /turf/simulated/floor/carpet/blucarpet,
 /area/crew_quarters/heads/chief)
+"CW" = (
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	frequency = 1380;
+	id_tag = "deck1_airlock";
+	pixel_x = -32;
+	tag_airpump = "deck1_airlock_pump";
+	tag_chamber_sensor = "deck1_airlock_sensor";
+	tag_exterior_door = "deck1_airlock_outer";
+	tag_interior_door = "deck1_airlock_inner"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 6
+	},
+/turf/simulated/floor/tiled{
+	icon_state = "techmaint"
+	},
+/area/engineering/engine_eva)
 "CX" = (
 /obj/structure/table/rack{
 	dir = 8;
@@ -7176,6 +7293,10 @@
 	icon_state = "techmaint"
 	},
 /area/engineering/engine_eva)
+"HJ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/wall/r_wall,
+/area/engineering/engine_room)
 "HK" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -7216,6 +7337,17 @@
 /obj/structure/closet/secure_closet/atmos_personal,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"HW" = (
+/obj/structure/cable/cyan{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/engine_room)
 "Ia" = (
 /obj/machinery/meter,
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
@@ -7870,6 +8002,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"LX" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
+	},
+/turf/simulated/floor/tiled{
+	icon_state = "techmaint"
+	},
+/area/engineering/engine_eva)
 "Mc" = (
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_one)
@@ -7987,6 +8127,9 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
 /turf/simulated/floor/tiled{
@@ -9007,6 +9150,18 @@
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
+"QQ" = (
+/obj/machinery/door/airlock/glass_external{
+	frequency = 1380;
+	icon_state = "door_locked";
+	id_tag = "deck1_airlock_inner";
+	locked = 1;
+	name = "Docking Port Airlock"
+	},
+/turf/simulated/floor/tiled{
+	icon_state = "techmaint"
+	},
+/area/engineering/engine_eva)
 "QU" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/black,
 /turf/simulated/floor/tiled{
@@ -9355,6 +9510,17 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/security/checkpoint/engineering)
+"SA" = (
+/obj/machinery/access_button{
+	command = "cycle_exterior";
+	frequency = 1380;
+	master_tag = "deck1_airlock";
+	name = "exterior access button";
+	pixel_x = 26;
+	pixel_y = -27
+	},
+/turf/space,
+/area/space)
 "SB" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -9897,6 +10063,12 @@
 	icon_state = "techmaint"
 	},
 /area/tcommsat/chamber)
+"Vr" = (
+/obj/machinery/atmospherics/unary/vent_pump/on,
+/turf/simulated/floor/tiled{
+	icon_state = "techmaint"
+	},
+/area/engineering/engine_eva)
 "Vu" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4;
@@ -19389,7 +19561,7 @@ NX
 VI
 vC
 tg
-tg
+JB
 zz
 zz
 Yh
@@ -19799,11 +19971,11 @@ fN
 fN
 Zj
 fN
-fN
-Zj
-Zj
 ui
-Vz
+ui
+ui
+ui
+Vr
 dK
 zz
 Rm
@@ -19940,11 +20112,11 @@ Zj
 Zj
 Zj
 Zj
-Zj
-Zj
-Zj
 fN
-ui
+nI
+CW
+LX
+pk
 vd
 jx
 zz
@@ -20082,11 +20254,11 @@ fN
 fN
 Zj
 fN
-fN
-fN
-Zj
-fN
-ui
+SA
+nI
+xo
+xd
+QQ
 Vz
 MJ
 zz
@@ -20225,11 +20397,11 @@ fN
 Zj
 fN
 fN
-fN
-Zj
-fN
 ui
-Vz
+ui
+ui
+ui
+zc
 MJ
 zz
 NO
@@ -20373,8 +20545,8 @@ iC
 ui
 EL
 MJ
-zz
-JB
+qi
+tg
 IP
 Ts
 SZ
@@ -20656,10 +20828,10 @@ fN
 fN
 ui
 Vz
-MJ
-zz
+gj
+HJ
 bD
-xz
+HW
 ww
 SZ
 Sk
