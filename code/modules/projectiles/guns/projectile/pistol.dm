@@ -232,7 +232,7 @@
 /obj/item/silencer
 	name = "silencer"
 	desc = "a silencer"
-	icon = 'icons/obj/gun.dmi'
+	icon = 'icons/obj/gun/ballistic.dmi'
 	icon_state = "silencer"
 	w_class = ITEMSIZE_SMALL
 
@@ -337,9 +337,9 @@
 	load_method = SPEEDLOADER
 	max_shells = 10
 	ammo_type = /obj/item/ammo_casing/a9mm
-	
+
 /obj/item/gun/projectile/r9/holy
-	name = "Blessed Red 9"	
+	name = "Blessed Red 9"
 	desc = "Ah, the choice of an avid gun collector! It's a nice gun, stranger."
 	ammo_type = /obj/item/ammo_casing/a9mm/silver
 	holy = TRUE

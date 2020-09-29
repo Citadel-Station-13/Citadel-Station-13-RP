@@ -525,3 +525,15 @@
 	starts_with = list(
 		/obj/item/reagent_containers/spray/plantbgone = 2,
 		/obj/item/material/minihoe)
+
+/obj/structure/closet/crate/hydroponics/exotic
+	name = "exotic seeds crate"
+	desc = "All you need to destroy that pesky planet."
+
+	starts_with = list(
+		/obj/item/seeds/random = 6,
+		/obj/item/seeds/replicapod = 2,
+		/obj/item/seeds/ambrosiavulgarisseed = 2,
+		/obj/item/seeds/kudzuseed,
+		/obj/item/seeds/libertymycelium,
+		/obj/item/seeds/reishimycelium)

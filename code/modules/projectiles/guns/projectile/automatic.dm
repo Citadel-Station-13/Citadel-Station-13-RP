@@ -16,7 +16,6 @@
 /obj/item/gun/projectile/automatic/advanced_smg
 	name = "advanced SMG"
 	desc = "An advanced submachine gun with a reflective laser optic that makes burst fire less inaccurate than other SMGs. Uses 9mm rounds."
-	icon = 'icons/obj/gun.dmi'
 	icon_state = "advanced_smg-empty"
 	w_class = ITEMSIZE_NORMAL
 	load_method = MAGAZINE
