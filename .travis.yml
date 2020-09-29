@@ -3,7 +3,7 @@ language: c
 
 env:
   global:
-    - BASENAME="citadelrp" # $BASENAME.dmb, $BASENAME.dme, etc.
+    - BASENAME="vorestaton" # $BASENAME.dmb, $BASENAME.dme, etc.
     - BYOND_MAJOR="513"
     - BYOND_MINOR="1520"
     - MACRO_COUNT=4

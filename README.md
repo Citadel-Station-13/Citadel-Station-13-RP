@@ -48,13 +48,13 @@ First-time installation should be fairly straightforward. First, you'll need
 BYOND installed. You can get it from <https://secure.byond.com/download>. Once you've done
 that, extract the game files to wherever you want to keep them. This is a
 sourcecode-only release, so the next step is to compile the server files.
-Open citadelrp.dme by double-clicking it, open the Build menu, and click
+Open vorestaton.dme by double-clicking it, open the Build menu, and click
 compile. This'll take a little while, and if everything's done right you'll get
 a message like this:
 
 ```
-saving citadelrp.dmb (DEBUG mode)
-citadelrp.dmb - 0 errors, 0 warnings
+saving vorestaton.dmb (DEBUG mode)
+vorestaton.dmb - 0 errors, 0 warnings
 ```
 
 If you see any errors or warnings, something has gone wrong - possibly a corrupt
@@ -83,7 +83,7 @@ capitalised. There are a bunch more admin ranks, but these two should be
 enough for most servers, assuming you have trustworthy admins.
 
 Finally, to start the server, run Dream Daemon and enter the path to your
-compiled citadelrp.dmb file. Make sure to set the port to the one you
+compiled vorestaton.dmb file. Make sure to set the port to the one you
 specified in the config.txt, and set the Security box to 'Safe'. Then press GO
 and the server should start up and be ready to join. It is also recommended that
 you set up the SQL backend (see below).
