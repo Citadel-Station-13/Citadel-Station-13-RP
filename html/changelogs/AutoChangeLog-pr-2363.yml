@@ -1,5 +1,0 @@
-author: "Zandario"
-delete-after: True
-changes: 
-  - imageadd: "New Modern Logo"
-  - imagedel: "Old Outdated Logos"
