@@ -1,0 +1,4 @@
+author: "Zandario"
+delete-after: True
+changes: 
+  - bugfix: "fixes some missed arguments caught by new Travis"
