@@ -137,4 +137,4 @@
 		span = "<span class='danger'></span>"
 		effect_description = "<span class='umbra_emphasis'>mottled black glow</span>"
 
-	location.visible_message("[span][originalName] is covered by a [effect_description] and then transforms into [parent]!</span>")
+	location.visible_message("[span][originalName] is covered by a [effect_description] and then transforms into [parent]!")
