@@ -121,7 +121,7 @@
 
 /datum/gear/head/cap/white/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/head/cap/mbill
 	display_name = "cap, bill"
@@ -165,7 +165,7 @@
 
 /datum/gear/head/hairflower/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/head/pin
 	display_name = "pin selection"
@@ -239,7 +239,7 @@
 
 /datum/gear/head/hijab/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/head/kippa
 	display_name = "kippa"
@@ -247,7 +247,7 @@
 
 /datum/gear/head/kippa/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/head/turban
 	display_name = "turban"
@@ -255,7 +255,7 @@
 
 /datum/gear/head/turban/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/head/taqiyah
 	display_name = "taqiyah"
@@ -263,7 +263,7 @@
 
 /datum/gear/head/taqiyah/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/head/kitty
 	display_name = "kitty ears"
@@ -283,7 +283,7 @@
 
 /datum/gear/head/beanie/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/head/loose_beanie
 	display_name = "loose beanie"
@@ -291,7 +291,7 @@
 
 /datum/gear/head/loose_beanie/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/head/beretg
 	display_name = "beret"
@@ -299,7 +299,7 @@
 
 /datum/gear/head/beretg/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/head/sombrero
 	display_name = "sombrero"
@@ -311,7 +311,7 @@
 
 /datum/gear/head/flatcapg/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/head/bow/small
 	display_name = "hair bow, small (colorable)"
@@ -319,7 +319,7 @@
 
 /datum/gear/head/bow/small/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/head/welding/
 	display_name = "welding, normal (engineering/robotics)"
@@ -411,7 +411,7 @@
 
 /datum/gear/head/headbando/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/head/pilot
 	display_name = "helmet, pilot (Pilot)"

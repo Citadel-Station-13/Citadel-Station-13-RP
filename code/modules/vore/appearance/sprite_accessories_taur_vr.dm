@@ -299,6 +299,7 @@
 	name = "Deer dual-color (Taur)"
 	icon_state = "deer_s"
 	extra_overlay = "deer_markings"
+	suit_sprites = 'icons/mob/taursuits_deer_vr.dmi'
 
 	msg_owner_disarm_run = "You quickly push %prey to the ground with your hoof!"
 	msg_prey_disarm_run = "%owner pushes you down to the ground with their hoof!"
@@ -333,6 +334,7 @@
 /datum/sprite_accessory/tail/taur/spider
 	name = "Spider (Taur)"
 	icon_state = "spider_s"
+	suit_sprites = 'icons/mob/taursuits_spider_vr.dmi'
 
 	msg_owner_disarm_run = "You quickly push %prey to the ground with your leg!"
 	msg_prey_disarm_run = "%owner pushes you down to the ground with their leg!"
@@ -378,6 +380,7 @@
 /datum/sprite_accessory/tail/taur/feline
 	name = "Feline (Taur)"
 	icon_state = "feline_s"
+	suit_sprites = 'icons/mob/taursuits_feline_vr.dmi'
 
 //TFF 22/11/19 - CHOMPStation port of fat taur sprites
 /datum/sprite_accessory/tail/taur/fatfeline
@@ -408,6 +411,7 @@
 /datum/sprite_accessory/tail/taur/slug
 	name = "Slug (Taur)"
 	icon_state = "slug_s"
+	suit_sprites = 'icons/mob/taursuits_slug_vr.dmi'
 
 	msg_owner_help_walk = "You carefully slither around %prey."
 	msg_prey_help_walk = "%owner's huge tail slithers past beside you!"
@@ -444,11 +448,13 @@
 	name = "Drake (Taur)"
 	icon_state = "drake_s"
 	extra_overlay = "drake_markings"
+	suit_sprites = 'icons/mob/taursuits_drake_vr.dmi'
 
 /datum/sprite_accessory/tail/taur/otie
 	name = "Otie (Taur)"
 	icon_state = "otie_s"
 	extra_overlay = "otie_markings"
+	suit_sprites = 'icons/mob/taursuits_otie_vr.dmi'
 
 /datum/sprite_accessory/tail/taur/alraune/alraune_2c
 	name = "Alraune (dual color)"

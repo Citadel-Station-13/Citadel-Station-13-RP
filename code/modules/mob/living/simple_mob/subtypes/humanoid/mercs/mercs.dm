@@ -37,6 +37,7 @@
 
 	// Grenade special attack vars
 	var/grenade_type = /obj/item/grenade/concussion
+	var/grenade_timer = 50
 	special_attack_cooldown = 45 SECONDS
 	special_attack_min_range = 2
 	special_attack_max_range = 7
@@ -70,7 +71,8 @@
 	var/obj/item/grenade/G = new grenade_type(get_turf(src))
 	if(istype(G))
 		G.throw_at(A, G.throw_range, G.throw_speed, src)
-		G.attack_self(src)
+		G.det_time = grenade_timer
+		G.activate(src)
 		special_attack_charges = max(special_attack_charges-1, 0)
 
 	set_AI_busy(FALSE)
@@ -127,7 +129,7 @@
 /mob/living/simple_mob/humanoid/merc/melee/sword/bullet_act(var/obj/item/projectile/Proj)
 	if(!Proj)	return
 	if(prob(35))
-		visible_message("<font color='red'><B>[src] blocks [Proj] with its shield!</B></font>")
+		visible_message("<span class='warning'>[src] blocks [Proj] with its shield!</span>")
 		if(Proj.firer)
 			ai_holder.react_to_attack(Proj.firer)
 		return
@@ -215,7 +217,7 @@
 
 // Sword Space Merc
 /mob/living/simple_mob/humanoid/merc/melee/sword/space
-	name = "syndicate commando"
+	name = "mercenary commando"
 	icon_state = "syndicatemeleespace"
 	icon_living = "syndicatemeleespace"
 
@@ -240,9 +242,9 @@
 
 // Ranged Space Merc
 /mob/living/simple_mob/humanoid/merc/ranged/space
-	name = "syndicate sommando"
-	icon_state = "syndicaterangedpsace"
-	icon_living = "syndicaterangedpsace"
+	name = "mercenary commando"
+	icon_state = "syndicaterangedspace"
+	icon_living = "syndicaterangedspace"
 
 	movement_cooldown = 0
 
@@ -258,8 +260,80 @@
 
 	corpse = /obj/effect/landmark/mobcorpse/syndicatecommando
 
+	loot_list = list(/obj/item/gun/projectile/automatic/c20r = 100)
+	base_attack_cooldown = 5 // Two attacks a second or so.
+	reload_max = 20
+
 /mob/living/simple_mob/humanoid/merc/ranged/space/Process_Spacemove(var/check_drift = 0)
 	return
+
+// suppressors are just assholes and are intended to be a piss poor experience for everyone on both sides
+
+/datum/ai_holder/simple_mob/merc/ranged/suppressor
+	respect_alpha = FALSE // he really just shoots you
+	vision_range = 10 // plutonia experience
+
+/mob/living/simple_mob/humanoid/merc/ranged/space/suppressor // adminspawn only, and also Probably Going To Kill The Unprepared
+	name = "mercenary suppressor"
+	desc = "Geeze, weren't shotgun ops bad enough? At least when you fade these jerks you get a flashbang to the face."
+	icon_state = "syndi-ranged-space-sup"
+	icon_living = "syndi-ranged-space-sup"
+	armor = list(melee = 80, bullet = 65, laser = 50, energy = 15, bomb = 80, bio = 100, rad = 100) // this is the merc rig's stats
+	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/suppressor
+	say_list_type = /datum/say_list/merc/elite
+	projectiletype = /obj/item/projectile/bullet/pistol/medium/ap/suppressor // it's high velocity
+	projectilesound = 'sound/weapons/doompistol.ogg' // converted from .wavs extracted from doom 2
+	base_attack_cooldown = 3 // three? attacks a second
+	reload_max = 30 // extended mags
+	special_attack_charges = 5
+	loot_list = list() // oh, you killed him?
+	corpse = null // well, sorry, buddy, he doesn't drop shit
+// 	var/deathnade_path = /obj/item/grenade/flashbang/stingbang
+
+/* far too fun for the codebase at the moment
+/mob/living/simple_mob/humanoid/merc/ranged/space/suppressor/death()
+	// you thought killing him would be the least of your worries?
+	// think again
+	var/obj/item/grenade/banger = new deathnade_path(get_turf(src))
+	banger.throw_at(ai_holder.target, 9, 9, null)
+	banger.det_time = 25
+	banger.activate(null)
+	..()
+*/
+
+/mob/living/simple_mob/humanoid/merc/ranged/space/suppressor/elite // really reconsider why you're spawning this dude
+	name = "mercenary elite suppressor"
+	desc = "Geeze, weren't normal suppressors bad enough? At least if you fade this jerk, you'll have an awful time anyway."
+	icon_state = "syndi-ranged-space-sup-elite"
+	icon_living = "syndi-ranged-space-sup-elite"
+	armor = list(melee = 80, bullet = 70, laser = 55, energy = 15, bomb = 80, bio = 100, rad = 100) // see code for military hardsuit
+	projectiletype = /obj/item/projectile/bullet/pistol/medium/ap/suppressor/turbo // fuck it, fast bullets
+	grenade_type = /obj/item/grenade/shooter/rubber // don't group up
+	grenade_timer = 30 // well, look what you've done, you've grouped up
+// 	deathnade_path = /obj/item/grenade/flashbang/stingbang/shredbang // REALLY don't group up
+
+// being Actual Professionals, they have better (read: player-level) blocking chances
+/mob/living/simple_mob/humanoid/merc/ranged/space/suppressor/attackby(var/obj/item/O, var/mob/user)
+	if(O.force)
+		if(prob(50))
+			visible_message("<span class='danger'>\The [src] blocks \the [O] with its shield!</span>")
+			if(user)
+				ai_holder.react_to_attack(user)
+			return
+		else
+			..()
+	else
+		visible_message("<span class='warning'>\The [user] gently taps [src] with \the [O].</span>")
+
+/mob/living/simple_mob/humanoid/merc/ranged/space/suppressor/bullet_act(var/obj/item/projectile/Proj)
+	if(!Proj)	return
+	if(prob(50))
+		visible_message("<span class='warning'>[src] blocks [Proj] with its shield!</span>")
+		if(Proj.firer)
+			ai_holder.react_to_attack(Proj.firer)
+		return
+	else
+		..()
 
 ////////////////////////////////
 //			PoI Mercs
@@ -356,7 +430,7 @@
 	loot_list = list(/obj/item/melee/energy/sword = 100)
 
 // They're good with the swords? I dunno. I like the idea they can deflect.
-/mob/living/simple_mob/humanoid/merc/melee/sword/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/mob/living/simple_mob/humanoid/merc/voxpirate/boarder/attackby(var/obj/item/O, var/mob/user)
 	if(O.force)
 		if(prob(20))
 			visible_message("<span class='danger'>\The [src] blocks \the [O] with its sword!</span>")
@@ -369,17 +443,15 @@
 		to_chat(user, "<span class='warning'>This weapon is ineffective, it does no damage.</span>")
 		visible_message("<span class='warning'>\The [user] gently taps [src] with \the [O].</span>")
 
-/mob/living/simple_mob/humanoid/merc/melee/sword/bullet_act(var/obj/item/projectile/Proj)
+/mob/living/simple_mob/humanoid/merc/voxpirate/boarder/bullet_act(var/obj/item/projectile/Proj)
 	if(!Proj)	return
 	if(prob(35))
-		visible_message("<font color='red'><B>[src] blocks [Proj] with its sword!</B></font>")
+		visible_message("<span class='warning'>[src] blocks [Proj] with its sword!</span>")
 		if(Proj.firer)
 			ai_holder.react_to_attack(Proj.firer)
 		return
 	else
 		..()
-
-	ai_holder_type = /datum/ai_holder/simple_mob/merc
 
 ////////////////////////////////
 //			Vox Ranged

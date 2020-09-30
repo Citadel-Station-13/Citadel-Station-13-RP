@@ -1,8 +1,0 @@
-author: "Enzo-Leon"
-delete-after: True
-changes: 
-  - rscadd: "Fishing/Zen Garden"
-  - rscadd: "Exploration Vendor"
-  - rscadd: "Fishing Vendor"
-  - rscadd: "worm box (holder) and worm sprite."
-  - bugfix: "Robotics Anesthesia now doesn't need Surgeon access"
