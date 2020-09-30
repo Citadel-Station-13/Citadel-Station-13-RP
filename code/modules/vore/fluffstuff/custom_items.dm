@@ -2102,8 +2102,8 @@
     name = "non-functioning press camera drone"
     desc = "A long since retired EyeBuddy media streaming hovercam with it's hover functionality being the only thing left alone on this unit."
     icon = 'icons/vore/custom_items_vr.dmi'
-    icon_state = "camcorder"
-    item_state = "camcorder"
+    icon_state = "jazzcamcorder"
+    item_state = "jazzcamcorder"
     w_class = ITEMSIZE_LARGE
     slot_flags = SLOT_BELT
     var/obj/machinery/camera/network/thunder/camera
@@ -2111,11 +2111,11 @@
 /obj/item/faketvcamera/update_icon()
 	..()
 	if(camera.status)
-		icon_state = "camcorder_on"
-		item_state = "camcorder_on"
+		icon_state = "jazzcamcorder_on"
+		item_state = "jazzcamcorder_on"
 	else
-		icon_state = "camcorder"
-		item_state = "camcorder"
+		icon_state = "jazzcamcorder"
+		item_state = "jazzcamcorder"
 	var/mob/living/carbon/human/H = loc
 	if(istype(H))
 		H.update_inv_r_hand()

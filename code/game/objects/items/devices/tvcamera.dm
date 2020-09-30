@@ -80,7 +80,7 @@
 	if(!href_list["close"])
 		attack_self(usr)
 
-/obj/item/faketvcamera/update_icon()
+/obj/item/tvcamera/update_icon()
 	..()
 	if(camera.status)
 		icon_state = "camcorder_on"
