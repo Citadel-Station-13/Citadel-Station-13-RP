@@ -40,8 +40,8 @@
 	projectile_type = /obj/item/projectile/energy/floramut
 	origin_tech = list(TECH_MATERIAL = 2, TECH_BIO = 3, TECH_POWER = 3)
 	modifystate = "floramut"
-	cell_type = /obj/item/cell/device/weapon/recharge
-    no_pin_required = 1
+	cell_type = /obj/item/cell/device/weapon/recharge	
+	no_pin_required = 1
 	battery_lock = 1
 	var/decl/plantgene/gene = null
 
