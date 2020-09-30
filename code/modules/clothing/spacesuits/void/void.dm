@@ -13,7 +13,7 @@
 //	flags_inv = HIDEEARS|BLOCKHAIR
 
 	//Species-specific stuff.
-	species_restricted = list("Human", "Promethean")
+	species_restricted = list("Human", "Promethean", "Alraune")
 	sprite_sheets_refit = list(
 		SPECIES_UNATHI = 'icons/mob/species/unathi/helmet.dmi',
 		SPECIES_TAJ = 'icons/mob/species/tajaran/helmet.dmi',
