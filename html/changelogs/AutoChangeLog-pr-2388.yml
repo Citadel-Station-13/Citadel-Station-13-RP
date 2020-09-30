@@ -1,0 +1,4 @@
+author: "KasparoVy"
+delete-after: True
+changes: 
+  - bugfix: "The regular eyepatch's strap won't cover your good eye when facing south."
