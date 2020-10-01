@@ -1,0 +1,4 @@
+author: "RobotAlice"
+delete-after: True
+changes: 
+  - bugfix: "can no longer slide between beds/chairs with clickdrag while buckled"
