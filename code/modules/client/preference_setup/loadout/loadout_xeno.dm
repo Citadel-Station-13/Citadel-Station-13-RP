@@ -92,11 +92,6 @@
 	..()
 	gear_tweaks += gear_tweak_free_color_choice
 
-/datum/gear/mask/ipc_monitor
-	display_name = "Full Body Prosthetic - Display Monitor"
-	path = /obj/item/clothing/mask/monitor
-	sort_category = "Xenowear"
-
 /datum/gear/uniform/harness
 	display_name = "Full Body Prosthetic / Diona - Gear Harness"
 	path = /obj/item/clothing/under/harness
