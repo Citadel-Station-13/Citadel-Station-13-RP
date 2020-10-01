@@ -878,3 +878,20 @@ Swimsuits
 	display_name = "Janitor Jumpsuit - Alt"
 	path = /obj/item/clothing/under/rank/janitor/starcon
 	allowed_roles = list("Janitor")
+
+/datum/gear/uniform/greyskirt_female
+	display_name = "Civilian Grey Skirt"
+	path = /obj/item/clothing/under/greyskirt_female
+
+/datum/gear/uniform/highwayman_clothes
+	display_name = "Civilian Highwayman Outfit"
+	path = /obj/item/clothing/under/highwayman_clothes
+
+/datum/gear/uniform/businessskirt
+	display_name = "Civilian Business Skirt"
+	path = /obj/item/clothing/under/businessskirt_female
+
+/datum/gear/uniform/simpledress
+	display_name = "Civilian Simple Dress"
+	path = /obj/item/clothing/under/simpledress
+
