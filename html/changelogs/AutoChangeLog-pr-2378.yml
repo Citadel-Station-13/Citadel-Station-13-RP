@@ -1,0 +1,8 @@
+author: "CharlesWedge"
+delete-after: True
+changes: 
+  - rscadd: "2 New Grunt Mercs: The Rifleman and the Officer Carrying a Garand and a Desert Eagle Respectively"
+  - rscadd: "5 New Space Mercs carrying: Combat Shotguns, Automatic Shotguns, FALs, L6 SAWs, and Tommy Lasers."
+  - balance: "Base speed of grunt mercs raised to 2 so the ones with E-swords may actually reach their target before they are swissed by explo."
+  - bugfix: "Ranged Space Mercs Finally have Armor in line with their Hardsuit. They also properly use the C-20R their sprite shows they carry."
+  - imageadd: "New.dmi for the mercs, so they are easy to find and add onto them (Why were **all** our mobs in animal.dmi anyway)"
