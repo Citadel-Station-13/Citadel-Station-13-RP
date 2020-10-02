@@ -29,20 +29,27 @@
 	update_Login_details()
 	world.update_status()
 
-	client.images = null				//remove the images such as AIs being unable to see runes
-	client.screen = list()				//remove hud items just in case
-	if(hud_used)	qdel(hud_used)		//remove the hud objects
+	client.images = null				// Remove the images such as AIs being unable to see runes
+	client.screen = list()				// Remove hud items just in case
+	if(hud_used)	qdel(hud_used)		// Remove the hud objects
 	hud_used = new /datum/hud(src)
 
 	if(client.prefs && client.prefs.client_fps)
 		client.fps = client.prefs.client_fps
 	else
-		client.fps = 0 // Results in using the server FPS
+		client.fps = 0	// Results in using the server FPS
 
 	next_move = 1
-	disconnect_time = null				//VOREStation Addition: clear the disconnect time
+	disconnect_time = null	// Clear the disconnect time
 	sight |= SEE_SELF
 	..()
+
+	if(viewing_alternate_appearances && viewing_alternate_appearances.len)
+		for(var/datum/alternate_appearance/AA in viewing_alternate_appearances)
+			AA.display_to(list(src))
+
+	var/obj/screen/plane_master/augmented/aug = plane_holder.plane_masters[VIS_AUGMENTED]
+	aug.apply()
 
 	if(loc && !isturf(loc))
 		client.eye = loc

@@ -162,6 +162,12 @@ var/list/ai_verbs_default = list(
 	add_language(LANGUAGE_ROOTLOCAL, 1)
 	add_language(LANGUAGE_TERMINUS, 1)
 	add_language(LANGUAGE_ZADDAT, 1)
+	add_language(LANGUAGE_BIRDSONG,		1)
+	add_language(LANGUAGE_SAGARU,		1)
+	add_language(LANGUAGE_CANILUNZT,	1)
+	add_language(LANGUAGE_ECUREUILIAN,	1)
+	add_language(LANGUAGE_DAEMON,		1)
+	add_language(LANGUAGE_ENOCHIAN,		1)
 
 	if(!safety)//Only used by AIize() to successfully spawn an AI.
 		if (!B)//If there is no player/brain inside.
@@ -880,6 +886,15 @@ var/list/ai_verbs_default = list(
 
 /mob/living/silicon/ai/announcer/Life()
 	return
+
+/mob/AIize(move = 1)
+	. = ..()
+	add_language(LANGUAGE_BIRDSONG,		1)
+	add_language(LANGUAGE_SAGARU,		1)
+	add_language(LANGUAGE_CANILUNZT,	1)
+	add_language(LANGUAGE_ECUREUILIAN,	1)
+	add_language(LANGUAGE_DAEMON,		1)
+	add_language(LANGUAGE_ENOCHIAN,		1)
 
 #undef AI_CHECK_WIRELESS
 #undef AI_CHECK_RADIO

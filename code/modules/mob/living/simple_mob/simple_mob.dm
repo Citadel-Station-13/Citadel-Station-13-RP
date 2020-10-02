@@ -1,6 +1,11 @@
 // Reorganized and somewhat cleaned up.
 // AI code has been made into a datum, inside the AI module folder.
 
+// Flags for specifying which states we have vore icon_states for.
+#define SA_ICON_LIVING	0x01
+#define SA_ICON_DEAD	0x02
+#define SA_ICON_REST	0x04
+
 /mob/living/simple_mob
 	name = "animal"
 	desc = ""

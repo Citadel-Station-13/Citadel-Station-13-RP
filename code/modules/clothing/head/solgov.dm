@@ -62,6 +62,13 @@
 	desc = "A green utility cover bearing the crest of the SCG Marine Corps."
 	icon_state = "greenutility"
 
+/obj/item/clothing/head/utility/marine/green/officer // "And YOU told me you were gonna wear something nice!"
+	name = "\improper officer's cap"
+	desc = "A green utility cover bearing the crest of the USDF Marine Corps. This one has an officer's emblem."
+	icon_state = "UNSCsoft"
+	icon = 'icons/obj/clothing/hats_vr.dmi'
+	icon_override = 'icons/mob/head_vr.dmi'
+
 //Service
 
 /obj/item/clothing/head/service

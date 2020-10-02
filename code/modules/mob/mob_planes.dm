@@ -13,32 +13,39 @@
 	//It'd be nice to lazy init these but some of them are important to just EXIST. Like without ghost planemaster, you can see ghosts. Go figure.
 
 	// 'Utility' planes
-	plane_masters[VIS_FULLBRIGHT] 	= new /obj/screen/plane_master/fullbright						//Lighting system (lighting_overlay objects)
-	plane_masters[VIS_LIGHTING] 	= new /obj/screen/plane_master/lighting							//Lighting system (but different!)
-	plane_masters[VIS_GHOSTS] 		= new /obj/screen/plane_master/ghosts							//Ghosts!
+	plane_masters[VIS_FULLBRIGHT]	= new /obj/screen/plane_master/fullbright						//Lighting system (lighting_overlay objects)
+	plane_masters[VIS_LIGHTING]		= new /obj/screen/plane_master/lighting							//Lighting system (but different!)
+	plane_masters[VIS_GHOSTS]		= new /obj/screen/plane_master/ghosts							//Ghosts!
 	plane_masters[VIS_AI_EYE]		= new /obj/screen/plane_master{plane = PLANE_AI_EYE}			//AI Eye!
 
-	plane_masters[VIS_CH_STATUS] 	= new /obj/screen/plane_master{plane = PLANE_CH_STATUS}			//Status is the synth/human icon left side of medhuds
-	plane_masters[VIS_CH_HEALTH] 	= new /obj/screen/plane_master{plane = PLANE_CH_HEALTH}			//Health bar
-	plane_masters[VIS_CH_LIFE] 		= new /obj/screen/plane_master{plane = PLANE_CH_LIFE}			//Alive-or-not icon
-	plane_masters[VIS_CH_ID] 		= new /obj/screen/plane_master{plane = PLANE_CH_ID}				//Job ID icon
-	plane_masters[VIS_CH_WANTED] 	= new /obj/screen/plane_master{plane = PLANE_CH_WANTED}			//Wanted status
-	plane_masters[VIS_CH_IMPLOYAL] 	= new /obj/screen/plane_master{plane = PLANE_CH_IMPLOYAL}		//Loyalty implants
-	plane_masters[VIS_CH_IMPTRACK] 	= new /obj/screen/plane_master{plane = PLANE_CH_IMPTRACK}		//Tracking implants
-	plane_masters[VIS_CH_IMPCHEM] 	= new /obj/screen/plane_master{plane = PLANE_CH_IMPCHEM}		//Chemical implants
-	plane_masters[VIS_CH_SPECIAL] 	= new /obj/screen/plane_master{plane = PLANE_CH_SPECIAL}		//"Special" role stuff
+	plane_masters[VIS_CH_STATUS]	= new /obj/screen/plane_master{plane = PLANE_CH_STATUS}			//Status is the synth/human icon left side of medhuds
+	plane_masters[VIS_CH_HEALTH]	= new /obj/screen/plane_master{plane = PLANE_CH_HEALTH}			//Health bar
+	plane_masters[VIS_CH_LIFE]		= new /obj/screen/plane_master{plane = PLANE_CH_LIFE}			//Alive-or-not icon
+	plane_masters[VIS_CH_ID]		= new /obj/screen/plane_master{plane = PLANE_CH_ID}				//Job ID icon
+	plane_masters[VIS_CH_WANTED]	= new /obj/screen/plane_master{plane = PLANE_CH_WANTED}			//Wanted status
+	plane_masters[VIS_CH_IMPLOYAL]	= new /obj/screen/plane_master{plane = PLANE_CH_IMPLOYAL}		//Loyalty implants
+	plane_masters[VIS_CH_IMPTRACK]	= new /obj/screen/plane_master{plane = PLANE_CH_IMPTRACK}		//Tracking implants
+	plane_masters[VIS_CH_IMPCHEM]	= new /obj/screen/plane_master{plane = PLANE_CH_IMPCHEM}		//Chemical implants
+	plane_masters[VIS_CH_SPECIAL]	= new /obj/screen/plane_master{plane = PLANE_CH_SPECIAL}		//"Special" role stuff
 	plane_masters[VIS_CH_STATUS_OOC]= new /obj/screen/plane_master{plane = PLANE_CH_STATUS_OOC}		//OOC status HUD
 
-	plane_masters[VIS_ADMIN1] 		= new /obj/screen/plane_master{plane = PLANE_ADMIN1}			//For admin use
-	plane_masters[VIS_ADMIN2] 		= new /obj/screen/plane_master{plane = PLANE_ADMIN2}			//For admin use
-	plane_masters[VIS_ADMIN3] 		= new /obj/screen/plane_master{plane = PLANE_ADMIN3}			//For admin use
+	plane_masters[VIS_ADMIN1]		= new /obj/screen/plane_master{plane = PLANE_ADMIN1}			//For admin use
+	plane_masters[VIS_ADMIN2]		= new /obj/screen/plane_master{plane = PLANE_ADMIN2}			//For admin use
+	plane_masters[VIS_ADMIN3]		= new /obj/screen/plane_master{plane = PLANE_ADMIN3}			//For admin use
 
-	plane_masters[VIS_MESONS]		= new /obj/screen/plane_master{plane = PLANE_MESONS} 			//Meson-specific things like open ceilings.
+	plane_masters[VIS_MESONS]		= new /obj/screen/plane_master{plane = PLANE_MESONS}			//Meson-specific things like open ceilings.
 
 	// Real tangible stuff planes
-	plane_masters[VIS_TURFS]	= new /obj/screen/plane_master/main{plane = TURF_PLANE}
-	plane_masters[VIS_OBJS]		= new /obj/screen/plane_master/main{plane = OBJ_PLANE}
-	plane_masters[VIS_MOBS]		= new /obj/screen/plane_master/main{plane = MOB_PLANE}
+	plane_masters[VIS_TURFS]		= new /obj/screen/plane_master/main{plane = TURF_PLANE}
+	plane_masters[VIS_OBJS]			= new /obj/screen/plane_master/main{plane = OBJ_PLANE}
+	plane_masters[VIS_MOBS]			= new /obj/screen/plane_master/main{plane = MOB_PLANE}
+
+	plane_masters[VIS_CH_STATUS_R]	= new /obj/screen/plane_master{plane = PLANE_CH_STATUS_R}			//Right-side status icon
+	plane_masters[VIS_CH_HEALTH_VR]	= new /obj/screen/plane_master{plane = PLANE_CH_HEALTH_VR}			//Health bar but transparent at 100
+	plane_masters[VIS_CH_BACKUP]	= new /obj/screen/plane_master{plane = PLANE_CH_BACKUP}				//Backup implant status
+	plane_masters[VIS_CH_VANTAG]	= new /obj/screen/plane_master{plane = PLANE_CH_VANTAG}				//Vore Antags
+
+	plane_masters[VIS_AUGMENTED]	= new /obj/screen/plane_master/augmented(my_mob)					//Augmented reality
 
 	..()
 
@@ -178,3 +185,36 @@
 /obj/screen/plane_master/main
 	alpha = 255
 	mouse_opacity = 1
+
+/////////////////
+//AR planemaster does some special image handling
+/obj/screen/plane_master/augmented
+	plane = PLANE_AUGMENTED
+	var/state = FALSE //Saves cost with the lists
+	var/mob/my_mob
+
+/obj/screen/plane_master/augmented/New(var/mob/M)
+	..()
+	my_mob = M
+
+/obj/screen/plane_master/augmented/Destroy()
+	my_mob = null
+	return ..()
+
+/obj/screen/plane_master/augmented/set_visibility(var/want = FALSE)
+	. = ..()
+	state = want
+	apply()
+
+/obj/screen/plane_master/augmented/proc/apply()
+	if(!my_mob.client)
+		return
+
+	if(state)
+		entopic_users |= my_mob
+		if(my_mob.client)
+			my_mob.client.images |= entopic_images
+	else
+		entopic_users -= my_mob
+		if(my_mob.client)
+			my_mob.client.images -= entopic_images

@@ -45,6 +45,10 @@
 	var/obj/screen/wizard/energy/wiz_energy_display = null
 	var/obj/screen/wizard/instability/wiz_instability_display = null
 
+	var/obj/screen/shadekin/darkness/shadekin_dark_display = null
+	var/obj/screen/shadekin/energy/shadekin_energy_display = null
+	var/obj/screen/xenochimera/danger_level/xenochimera_danger_display = null
+
 	var/datum/plane_holder/plane_holder = null
 	var/list/vis_enabled = null		// List of vision planes that should be graphically visible (list of their VIS_ indexes).
 	var/list/planes_visible = null	// List of atom planes that are logically visible/interactable (list of actual plane numbers).
@@ -241,3 +245,11 @@
 	var/attack_icon_state //State for above
 
 	var/registered_z
+
+	var/vantag_hud = 0			// Do I have the HUD enabled?
+	var/flying = 0				// Allows flight
+	var/mob/temporary_form		// For holding onto a temporary form
+
+	var/disconnect_time = null	//Time of client loss, set by Logout(), for timekeeping
+
+	var/muffled = 0 			// Used by muffling belly

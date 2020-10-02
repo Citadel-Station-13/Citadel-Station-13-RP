@@ -69,3 +69,12 @@
 	var/looking_elsewhere = FALSE //If the mob's view has been relocated to somewhere else, like via a camera or with binocs
 
 	var/image/selected_image = null // Used for buildmode AI control stuff.
+
+	var/ooc_notes = null
+	var/obj/structure/mob_spawner/source_spawner = null
+
+// Custom say verbs
+	var/custom_say = null
+	var/custom_ask = null
+	var/custom_exclaim = null
+	var/custom_whisper = null
