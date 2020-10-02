@@ -48,7 +48,7 @@
 	icon_state = "impact_stun"
 	light_range = 2
 	light_power = 0.5
-	light_color = "#FFFFFF"
+	light_color = COLOR_WHITE
 
 /obj/effect/projectile/impact/lightning
 	icon_state = "impact_lightning"
@@ -66,7 +66,7 @@
 	icon_state = "impact_invert"
 	light_range = 2
 	light_power = -2
-	light_color = "#FFFFFF"
+	light_color = COLOR_WHITE
 
 /obj/effect/projectile/impact/darkmatter
 	icon_state = "impact_darkb"

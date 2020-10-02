@@ -15,7 +15,7 @@ var/specops_shuttle_timeleft = 0
 	name = "special operations shuttle control console"
 	icon_keyboard = "security_key"
 	icon_screen = "syndishuttle"
-	light_color = "#00ffff"
+	light_color = COLOR_CYAN
 	req_access = list(access_cent_specops)
 //	req_access = list(ACCESS_CENT_SPECOPS)
 	var/temp = null
@@ -240,10 +240,10 @@ var/specops_shuttle_timeleft = 0
 
 /proc/specops_can_move()
 	if(specops_shuttle_moving_to_station || specops_shuttle_moving_to_centcom)
-		return 0
+		return FALSE
 	for(var/obj/machinery/computer/specops_shuttle/S in machines)
 		if(world.timeofday <= S.specops_shuttle_timereset)
-			return 0
+			return FALSE
 	return 1
 
 /obj/machinery/computer/specops_shuttle/attack_ai(var/mob/user as mob)

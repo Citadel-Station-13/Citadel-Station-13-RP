@@ -25,7 +25,7 @@
 			if(L.client) // Player-controlled mobs are immune to being killed by this.
 				to_chat(user, "<span class='warning'>\The [L] resists your attempt to banish it!</span>")
 				to_chat(L, "<span class='warning'>\The [user] tried to teleport you far away, but failed.</span>")
-				return 0
+				return FALSE
 			else
 				visible_message("<span class='notice'>\The [L] vanishes!</span>")
 				qdel(L)

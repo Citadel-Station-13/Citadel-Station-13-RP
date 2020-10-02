@@ -14,7 +14,7 @@
 	icon_state = "generic"
 	cast_methods = null
 	aspect = ASPECT_SHOCK
-	glow_color = "#0000FF" //TODO
+	glow_color = COLOR_BLUE //TODO
 
 /obj/item/spell/aura/shock/process()
 	if(!pay_energy(500))

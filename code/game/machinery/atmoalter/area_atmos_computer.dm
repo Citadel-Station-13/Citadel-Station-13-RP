@@ -153,7 +153,7 @@
 	if(get_area(scrubber) == get_area(src))
 		return 1
 
-	return 0
+	return FALSE
 
 // The one that only works in the same map area
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/var/scrub_id = "generic"
@@ -166,7 +166,7 @@
 
 /obj/machinery/computer/area_atmos/tag/scanscrubbers()
 	if(last_scan && world.time - last_scan < 20 SECONDS)
-		return 0
+		return FALSE
 	else
 		last_scan = world.time
 
@@ -182,4 +182,4 @@
 	if(scrubber.scrub_id == src.scrub_id)
 		return 1
 
-	return 0
+	return FALSE

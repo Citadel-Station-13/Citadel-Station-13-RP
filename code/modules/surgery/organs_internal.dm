@@ -7,7 +7,7 @@
 /datum/surgery_step/internal/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 
 	if (!hasorgans(target))
-		return 0
+		return FALSE
 
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	return affected && affected.open == (affected.encased ? 3 : 2)
@@ -160,12 +160,12 @@
 
 /datum/surgery_step/internal/detatch_organ/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if (!..())
-		return 0
+		return FALSE
 
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 
 	if(!(affected && !(affected.robotic >= ORGAN_ROBOT)))
-		return 0
+		return FALSE
 
 	target.op_stage.current_organ = null
 
@@ -177,7 +177,7 @@
 
 	var/organ_to_remove = input(user, "Which organ do you want to prepare for removal?") as null|anything in attached_organs
 	if(!organ_to_remove)
-		return 0
+		return FALSE
 
 	target.op_stage.current_organ = organ_to_remove
 
@@ -223,7 +223,7 @@
 
 /datum/surgery_step/internal/remove_organ/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if (!..())
-		return 0
+		return FALSE
 
 	target.op_stage.current_organ = null
 
@@ -235,7 +235,7 @@
 
 	var/organ_to_remove = input(user, "Which organ do you want to remove?") as null|anything in removable_organs
 	if(!organ_to_remove)
-		return 0
+		return FALSE
 
 	target.op_stage.current_organ = organ_to_remove
 	return ..()
@@ -286,7 +286,7 @@
 	var/organ_missing
 
 	if(!istype(O))
-		return 0
+		return FALSE
 
 	if((affected.robotic >= ORGAN_ROBOT) && !(O.robotic >= ORGAN_ROBOT))
 		to_chat(user, "<span class='danger'>You cannot install a naked organ into a robotic body.</span>")
@@ -357,7 +357,7 @@
 
 /datum/surgery_step/internal/attach_organ/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if (!..())
-		return 0
+		return FALSE
 
 	target.op_stage.current_organ = null
 
@@ -369,7 +369,7 @@
 
 	var/organ_to_replace = input(user, "Which organ do you want to reattach?") as null|anything in removable_organs
 	if(!organ_to_replace)
-		return 0
+		return FALSE
 
 	target.op_stage.current_organ = organ_to_replace
 	return ..()
@@ -413,7 +413,7 @@
 
 /datum/surgery_step/internal/rip_organ/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if (!..())
-		return 0
+		return FALSE
 
 	target.op_stage.current_organ = null
 
@@ -425,7 +425,7 @@
 
 	var/organ_to_remove = input(user, "Which organ do you want to remove?") as null|anything in removable_organs
 	if(!organ_to_remove)
-		return 0
+		return FALSE
 
 	target.op_stage.current_organ = organ_to_remove
 	return ..()

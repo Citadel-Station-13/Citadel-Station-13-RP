@@ -1804,7 +1804,7 @@
 	icon_state = "plant-09";
 	name = "Esteban";
 	pixel_y = 8;
-	
+
 	},
 /turf/simulated/shuttle/floor/black,
 /area/awaymission/zoo/tradeship)
@@ -1834,7 +1834,7 @@
 /obj/structure/table/standard,
 /obj/item/soap,
 /obj/item/towel{
-	color = "#0000FF"
+	color = COLOR_BLUE
 	},
 /turf/simulated/shuttle/floor/black,
 /area/awaymission/zoo/tradeship)
@@ -2399,7 +2399,7 @@
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /obj/structure/window/phoronreinforced{
 	maxhealth = 10000;
@@ -2410,7 +2410,7 @@
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
@@ -2418,7 +2418,7 @@
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
@@ -2472,7 +2472,7 @@
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /obj/structure/window/phoronreinforced{
 	maxhealth = 10000;
@@ -2483,7 +2483,7 @@
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /obj/structure/grille,
 /turf/simulated/floor/plating,
@@ -2494,7 +2494,7 @@
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /obj/structure/window/phoronreinforced{
 	maxhealth = 10000;
@@ -2509,7 +2509,7 @@
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /obj/structure/window/phoronreinforced{
 	maxhealth = 10000;
@@ -2520,7 +2520,7 @@
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /obj/structure/grille,
 /turf/simulated/floor/plating,
@@ -2545,21 +2545,21 @@
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 1;
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 8;
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
@@ -2656,14 +2656,14 @@
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 8;
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
@@ -2709,14 +2709,14 @@
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 8;
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
@@ -2871,7 +2871,7 @@
 	name = "Flasher";
 	pixel_x = 27;
 	pixel_y = 0;
-	
+
 	},
 /turf/simulated/shuttle/floor/darkred,
 /area/awaymission/zoo/syndieship)
@@ -3373,14 +3373,14 @@
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 8;
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
@@ -3391,14 +3391,14 @@
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 1;
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /obj/structure/window/phoronreinforced{
 	maxhealth = 10000;
@@ -3419,14 +3419,14 @@
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 1;
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /obj/structure/window/phoronreinforced{
 	maxhealth = 10000;
@@ -3441,14 +3441,14 @@
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 4;
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
@@ -3465,7 +3465,7 @@
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /obj/structure/window/phoronreinforced{
 	maxhealth = 10000;
@@ -3480,7 +3480,7 @@
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /obj/structure/window/phoronreinforced{
 	maxhealth = 10000;
@@ -3495,14 +3495,14 @@
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 8;
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /obj/structure/window/phoronreinforced{
 	maxhealth = 10000;
@@ -3517,14 +3517,14 @@
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 4;
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /obj/structure/window/phoronreinforced{
 	maxhealth = 10000;
@@ -4572,21 +4572,21 @@
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 4;
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 1;
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /obj/structure/grille,
 /turf/simulated/floor/plating,
@@ -4675,21 +4675,21 @@
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 1;
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 4;
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /obj/structure/grille,
 /turf/simulated/floor/plating,
@@ -4700,7 +4700,7 @@
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /obj/structure/window/phoronreinforced{
 	maxhealth = 10000;
@@ -4715,14 +4715,14 @@
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 1;
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /obj/structure/grille,
 /turf/simulated/floor/plating,
@@ -4798,14 +4798,14 @@
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 1;
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /obj/structure/grille,
 /turf/simulated/floor/plating,
@@ -4816,7 +4816,7 @@
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /obj/structure/window/phoronreinforced{
 	maxhealth = 10000;
@@ -4831,14 +4831,14 @@
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 1;
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /obj/structure/window/phoronreinforced{
 	maxhealth = 10000;
@@ -4909,14 +4909,14 @@
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 1;
 	icon_state = "phoronrwindow";
 	maxhealth = 10000;
 	name = "robust borosilicate window";
-	
+
 	},
 /obj/structure/window/phoronreinforced{
 	maxhealth = 10000;

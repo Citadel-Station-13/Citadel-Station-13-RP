@@ -69,7 +69,7 @@
 /mob/proc/death(gibbed,deathmessage="seizes up and falls limp...")
 
 	if(stat == DEAD)
-		return 0
+		return FALSE
 	if(src.loc && istype(loc,/obj/belly) || istype(loc,/obj/item/dogborg/sleeper)) deathmessage = "no message" //VOREStation Add - Prevents death messages from inside mobs
 	facing_dir = null
 

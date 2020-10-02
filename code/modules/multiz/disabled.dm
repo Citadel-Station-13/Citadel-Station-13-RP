@@ -1,8 +1,8 @@
 
 proc/HasAbove(var/z)
-	return 0
+	return FALSE
 proc/HasBelow(var/z)
-	return 0
+	return FALSE
 // These give either the turf or null.
 proc/GetAbove(var/turf/turf)
 	return null

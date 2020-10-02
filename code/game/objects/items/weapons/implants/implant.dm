@@ -50,7 +50,7 @@
 	return
 
 /obj/item/implant/proc/islegal()
-	return 0
+	return FALSE
 
 /obj/item/implant/proc/meltdown()	//breaks it down, making implant unrecongizible
 	to_chat(imp_in, "<span class='warning'>You feel something melting inside [part ? "your [part.name]" : "you"]!</span>")
@@ -196,13 +196,13 @@ Implant Specifics:<BR>"}
 
 
 /obj/item/implant/dexplosive/activate(var/cause)
-	if((!cause) || (!src.imp_in))	return 0
+	if((!cause) || (!src.imp_in))	return FALSE
 	explosion(src, -1, 0, 2, 3, 0)//This might be a bit much, dono will have to see.
 	if(src.imp_in)
 		src.imp_in.gib()
 
 /obj/item/implant/dexplosive/islegal()
-	return 0
+	return FALSE
 
 //////////////////////////////
 //	Explosive Implant
@@ -319,7 +319,7 @@ Implant Specifics:<BR>"}
 		malfunction--
 
 /obj/item/implant/explosive/islegal()
-	return 0
+	return FALSE
 
 /obj/item/implant/explosive/proc/small_boom()
 	if (ishuman(imp_in) && part)
@@ -378,7 +378,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 	return
 
 /obj/item/implant/chem/activate(var/cause)
-	if((!cause) || (!src.imp_in))	return 0
+	if((!cause) || (!src.imp_in))	return FALSE
 	var/mob/living/carbon/R = src.imp_in
 	src.reagents.trans_to_mob(R, cause, CHEM_BLOOD)
 	to_chat(R, "You hear a faint *beep*.")
@@ -469,7 +469,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 
 
 /obj/item/implant/adrenalin/trigger(emote, mob/source as mob)
-	if (src.uses < 1)	return 0
+	if (src.uses < 1)	return FALSE
 	if (emote == "pale")
 		src.uses--
 		to_chat(source, "<span class='notice'>You feel a sudden surge of energy!</span>")
@@ -592,7 +592,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 
 /obj/item/implant/compressed/trigger(emote, mob/source as mob)
 	if (src.scanned == null)
-		return 0
+		return FALSE
 
 	if (emote == src.activation_emote)
 		to_chat(source, "The air glows as \the [src.scanned.name] uncompresses.")
@@ -614,7 +614,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 
 
 /obj/item/implant/compressed/islegal()
-	return 0
+	return FALSE
 
 /obj/item/implant/vrlanguage
 	name = "language"
@@ -636,7 +636,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 
 /obj/item/implant/vrlanguage/trigger(emote, mob/source as mob)
 	if (src.uses < 1)
-		return 0
+		return FALSE
 	if (emote == "smile")
 		src.uses--
 		to_chat(source,"<span class='notice'>You suddenly feel as if you can understand other languages!</span>")

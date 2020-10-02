@@ -19,7 +19,7 @@
 
 	var/datum/changeling/changeling = changeling_power(30,0,100)
 	if(!changeling)
-		return 0
+		return FALSE
 
 	var/modifier_to_use = /datum/modifier/berserk/changeling
 	if(src.mind.changeling.recursive_enhancement)

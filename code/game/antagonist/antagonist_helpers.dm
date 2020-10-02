@@ -18,7 +18,7 @@
 			continue
 		if(antag.current.stat==2)
 			continue
-		return 0
+		return FALSE
 	return 1
 
 /datum/antagonist/proc/get_antag_count()
@@ -31,17 +31,17 @@
 /datum/antagonist/proc/is_type(var/antag_type)
 	if(antag_type == id || antag_type == role_text)
 		return 1
-	return 0
+	return FALSE
 
 /datum/antagonist/proc/is_votable()
 	return (flags & ANTAG_VOTABLE)
 
 /datum/antagonist/proc/can_late_spawn()
 	if(!(allow_latejoin))
-		return 0
+		return FALSE
 	update_current_antag_max()
 	if(get_antag_count() >= cur_max)
-		return 0
+		return FALSE
 	return 1
 
 /datum/antagonist/proc/is_latejoin_template()

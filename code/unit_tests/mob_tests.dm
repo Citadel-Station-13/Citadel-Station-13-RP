@@ -12,11 +12,11 @@
 	H = new(T)
 	startOxyloss = H.getOxyLoss()
 
-	return 1
+	return TRUE
 
 /datum/unit_test/space_suffocation/check_result()
 	if(H.life_tick < 10)
-		return 0
+		return FALSE
 
 	endOxyloss = H.getOxyLoss()
 
@@ -26,4 +26,4 @@
 		fail("Human mob is not taking oxygen damage in space. (Before: [startOxyloss]; after: [endOxyloss])")
 
 	qdel(H)
-	return 1
+	return TRUE

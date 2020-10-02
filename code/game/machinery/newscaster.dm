@@ -255,10 +255,10 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 	if(!node || !node.on || !node.allow_external_newscasters)
 		user << "<span class='danger'>Error: Cannot connect to external content.  Please try again in a few minutes.  If this error persists, please \
 		contact the system administrator.</span>"
-		return 0
+		return FALSE
 
 	if(!user.IsAdvancedToolUser())
-		return 0
+		return FALSE
 
 	if(istype(user, /mob/living/carbon/human) || istype(user,/mob/living/silicon))
 		var/mob/living/human_or_robot_user = user

@@ -144,10 +144,10 @@ var/global/list/additional_antag_types = list()
 
 	if(master_mode=="secret")
 		if(playerC < config_legacy.player_requirements_secret[config_tag])
-			return 0
+			return FALSE
 	else
 		if(playerC < config_legacy.player_requirements[config_tag])
-			return 0
+			return FALSE
 
 	if(!(antag_templates && antag_templates.len))
 		return 1
@@ -165,11 +165,11 @@ var/global/list/additional_antag_types = list()
 				potential = antag.candidates
 			if(islist(potential))
 				if(require_all_templates && potential.len < antag.initial_spawn_req)
-					return 0
+					return FALSE
 				enemy_count += potential.len
 				if(enemy_count >= required_enemies)
 					return 1
-	return 0
+	return FALSE
 
 /datum/game_mode/proc/refresh_event_modifiers()
 	if(event_delay_mod_moderate || event_delay_mod_major)
@@ -266,12 +266,12 @@ var/global/list/additional_antag_types = list()
 	if(end_on_antag_death && antag_templates && antag_templates.len)
 		for(var/datum/antagonist/antag in antag_templates)
 			if(!antag.antags_are_dead())
-				return 0
+				return FALSE
 		if(config_legacy.continous_rounds)
 			SSemergencyshuttle.auto_recall = 0
-			return 0
+			return FALSE
 		return 1
-	return 0
+	return FALSE
 
 /datum/game_mode/proc/cleanup()	//This is called when the round has ended but not the game, if any cleanup would be necessary in that case.
 	return
@@ -364,10 +364,10 @@ var/global/list/additional_antag_types = list()
 
 	send2irc("ROUND END", "A round of [src.name] has ended - [surviving_total] survivors, [ghosts] ghosts.")
 
-	return 0
+	return FALSE
 
 /datum/game_mode/proc/check_win() //universal trigger to be called at mob death, nuke explosion, etc. To be called from everywhere.
-	return 0
+	return FALSE
 
 /datum/game_mode/proc/get_players_for_role(var/role, var/antag_id, var/ghosts_only)
 	var/list/players = list()
@@ -425,7 +425,7 @@ var/global/list/additional_antag_types = list()
 			. ++
 
 /datum/game_mode/proc/check_antagonists_topic(href, href_list[])
-	return 0
+	return FALSE
 
 /datum/game_mode/proc/create_antagonists()
 

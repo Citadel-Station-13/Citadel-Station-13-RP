@@ -101,15 +101,15 @@
 
 	// Checks whether other other can be merged into src.
 	proc/can_merge(var/datum/wound/other)
-		if (other.type != src.type) return 0
-		if (other.current_stage != src.current_stage) return 0
-		if (other.damage_type != src.damage_type) return 0
-		if (!(other.can_autoheal()) != !(src.can_autoheal())) return 0
-		if (!(other.bandaged) != !(src.bandaged)) return 0
-		if (!(other.clamped) != !(src.clamped)) return 0
-		if (!(other.salved) != !(src.salved)) return 0
-		if (!(other.disinfected) != !(src.disinfected)) return 0
-		//if (other.germ_level != src.germ_level) return 0
+		if (other.type != src.type) return FALSE
+		if (other.current_stage != src.current_stage) return FALSE
+		if (other.damage_type != src.damage_type) return FALSE
+		if (!(other.can_autoheal()) != !(src.can_autoheal())) return FALSE
+		if (!(other.bandaged) != !(src.bandaged)) return FALSE
+		if (!(other.clamped) != !(src.clamped)) return FALSE
+		if (!(other.salved) != !(src.salved)) return FALSE
+		if (!(other.disinfected) != !(src.disinfected)) return FALSE
+		//if (other.germ_level != src.germ_level) return FALSE
 		return 1
 
 	proc/merge_wound(var/datum/wound/other)
@@ -123,15 +123,15 @@
 	// untreated cuts (and bleeding bruises) and burns are possibly infectable, chance higher if wound is bigger
 	proc/infection_check()
 		if (damage < 10)	//small cuts, tiny bruises, and moderate burns shouldn't be infectable.
-			return 0
+			return FALSE
 		if (is_treated() && damage < 25)	//anything less than a flesh wound (or equivalent) isn't infectable if treated properly
-			return 0
+			return FALSE
 		if (disinfected)
 			germ_level = 0	//reset this, just in case
-			return 0
+			return FALSE
 
 		if (damage_type == BRUISE && !bleeding()) //bruises only infectable if bleeding
-			return 0
+			return FALSE
 
 		var/dam_coef = round(damage/10)
 		switch (damage_type)
@@ -142,7 +142,7 @@
 			if (CUT)
 				return prob(dam_coef*20)
 
-		return 0
+		return FALSE
 
 	proc/bandage()
 		bandaged = 1
@@ -188,32 +188,32 @@
 	// this will prevent large amounts of damage being trapped in less severe wound types
 	proc/can_worsen(damage_type, damage)
 		if (src.damage_type != damage_type)
-			return 0	//incompatible damage types
+			return FALSE	//incompatible damage types
 
 		if (src.amount > 1)
-			return 0//merged wounds cannot be worsened.
+			return FALSE//merged wounds cannot be worsened.
 
 		//with 1.5*, a shallow cut will be able to carry at most 30 damage,
 		//37.5 for a deep cut
 		//52.5 for a flesh wound, etc.
 		var/max_wound_damage = 1.5*src.damage_list[1]
 		if (src.damage + damage > max_wound_damage)
-			return 0
+			return FALSE
 
 		return 1
 
 	proc/bleeding()
 		if (src.internal)
-			return 0	// internal wounds don't bleed in the sense of this function
+			return FALSE	// internal wounds don't bleed in the sense of this function
 
 		if (current_stage > max_bleeding_stage)
-			return 0
+			return FALSE
 
 		if (bandaged||clamped)
-			return 0
+			return FALSE
 
 		if (bleed_timer <= 0 && wound_damage() <= bleed_threshold)
-			return 0	//Bleed timer has run out. Once a wound is big enough though, you'll need a bandage to stop it
+			return FALSE	//Bleed timer has run out. Once a wound is big enough though, you'll need a bandage to stop it
 
 		return 1
 
@@ -305,7 +305,7 @@ datum/wound/cut/massive
 	damage_type = PIERCE
 
 /datum/wound/puncture/can_worsen(damage_type, damage)
-	return 0 //puncture wounds cannot be enlargened
+	return FALSE //puncture wounds cannot be enlargened
 
 /datum/wound/puncture/small
 	max_bleeding_stage = 2
@@ -346,7 +346,7 @@ datum/wound/puncture/massive
 	max_bleeding_stage = 0
 
 /datum/wound/burn/bleeding()
-	return 0
+	return FALSE
 
 /datum/wound/burn/moderate
 	stages = list("ripped burn" = 10, "moderate burn" = 5, "healing moderate burn" = 2, "fresh skin" = 0)
@@ -399,4 +399,4 @@ datum/wound/puncture/massive
 	..(damage_amt)
 
 /datum/wound/lost_limb/can_merge(var/datum/wound/other)
-	return 0 //cannot be merged
+	return FALSE //cannot be merged

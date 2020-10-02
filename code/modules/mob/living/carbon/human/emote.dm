@@ -943,13 +943,13 @@
 		custom_emote(m_type,message)
 		return 1
 
-	return 0
+	return FALSE
 
 /mob/living/carbon/human/proc/toggle_tail_vr(var/setting,var/message = 0)
 	if(!tail_style || !tail_style.ani_state)
 		if(message)
 			to_chat(src, "<span class='warning'>You don't have a tail that supports this.</span>")
-		return 0
+		return FALSE
 
 	var/new_wagging = isnull(setting) ? !wagging : setting
 	if(new_wagging != wagging)
@@ -961,7 +961,7 @@
 	if(!wing_style || !wing_style.ani_state)
 		if(message)
 			to_chat(src, "<span class='warning'>You don't have a tail that supports this.</span>")
-		return 0
+		return FALSE
 
 	var/new_flapping = isnull(setting) ? !flapping : setting
 	if(new_flapping != flapping)
@@ -975,7 +975,7 @@
 	set category = "IC"
 	var/new_gender_identity = input("Please select a gender Identity.") as null|anything in list(FEMALE, MALE, NEUTER, PLURAL, HERM)
 	if(!new_gender_identity)
-		return 0
+		return FALSE
 	change_gender_identity(new_gender_identity)
 	return 1
 

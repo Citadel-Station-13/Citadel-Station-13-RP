@@ -314,12 +314,12 @@
 
 /obj/machinery/power/fission/proc/add_thermal_energy(var/thermal_energy)
 	if(mass < 1)
-		return 0
+		return FALSE
 
 	var/heat_capacity = heat_capacity()
 	if(thermal_energy < 0)
 		if(temperature < TCMB)
-			return 0
+			return FALSE
 		var/thermal_energy_limit = -(temperature - TCMB)*heat_capacity	//ensure temperature does not go below TCMB
 		thermal_energy = max(thermal_energy, thermal_energy_limit)	//thermal_energy and thermal_energy_limit are negative here.
 	temperature += thermal_energy/heat_capacity

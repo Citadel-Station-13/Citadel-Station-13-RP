@@ -117,7 +117,7 @@
 		sleep(10)
 		return 1
 
-	return 0
+	return FALSE
 
 /mob/living/silicon/proc/law_channels()
 	var/list/channels = new()

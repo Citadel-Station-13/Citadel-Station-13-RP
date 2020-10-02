@@ -22,6 +22,8 @@
 
 	corpse = /obj/effect/landmark/mobcorpse/russian
 
+	ai_holder_type = /datum/ai_holder/simple_mob/melee
+
 /mob/living/simple_mob/humanoid/russian/ranged
 	icon_state = "russianranged"
 	icon_living = "russianranged"
@@ -33,3 +35,5 @@
 	loot_list = list(/obj/item/gun/projectile/revolver/mateba = 100)
 
 	corpse = /obj/effect/landmark/mobcorpse/russian/ranged
+
+	ai_holder_type = /datum/ai_holder/simple_mob/ranged

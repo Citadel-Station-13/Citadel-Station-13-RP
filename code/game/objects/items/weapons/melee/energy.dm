@@ -63,7 +63,7 @@
 			if(bcell.checked_use(cost))
 				return 1
 			else
-				return 0
+				return FALSE
 	return null
 
 /obj/item/melee/energy/examine(mob/user)
@@ -300,15 +300,15 @@
 		playsound(user.loc, 'sound/weapons/blade1.ogg', 50, 1)
 		return 1
 
-	return 0
+	return FALSE
 
 /obj/item/melee/energy/sword/unique_parry_check(mob/user, mob/attacker, atom/damage_source)
 	if(user.incapacitated() || !istype(damage_source, /obj/item/projectile/))
-		return 0
+		return FALSE
 
 	var/bad_arc = reverse_direction(user.dir)
 	if(!check_shield_arc(user, bad_arc, damage_source, attacker))
-		return 0
+		return FALSE
 
 	return 1
 
@@ -341,7 +341,7 @@
 	flags = NOBLOODY
 	lrange = 2
 	lpower = 2
-	lcolor = "#0000FF"
+	lcolor = COLOR_BLUE
 	projectile_parry_chance = 30	// It's not specifically designed for cutting and slashing, but it can still, maybe, save your life.
 
 /obj/item/melee/energy/sword/ionic_rapier/afterattack(var/atom/movable/AM, var/mob/living/user, var/proximity)
@@ -416,7 +416,7 @@
 	var/mob/living/creator
 	var/datum/effect_system/spark_spread/spark_system
 	projectile_parry_chance = 60
-	lcolor = "#00FF00"
+	lcolor = COLOR_LIME
 
 /obj/item/melee/energy/blade/New()
 
@@ -471,16 +471,16 @@
 		playsound(user.loc, 'sound/weapons/blade1.ogg', 50, 1)
 		return 1
 
-	return 0
+	return FALSE
 
 /obj/item/melee/energy/blade/unique_parry_check(mob/user, mob/attacker, atom/damage_source)
 
 	if(user.incapacitated() || !istype(damage_source, /obj/item/projectile/))
-		return 0
+		return FALSE
 
 	var/bad_arc = reverse_direction(user.dir)
 	if(!check_shield_arc(user, bad_arc, damage_source, attacker))
-		return 0
+		return FALSE
 
 	return 1
 
@@ -505,7 +505,7 @@
 	colorable = TRUE
 
 
-	lcolor = "#800080"
+	lcolor = COLOR_PURPLE
 
 /obj/item/melee/energy/spear/activate(mob/living/user)
 	if(!active)
@@ -528,7 +528,7 @@
 		spark_system.start()
 		playsound(user.loc, 'sound/weapons/blade1.ogg', 50, 1)
 		return 1
-	return 0
+	return FALSE
 
 /obj/item/melee/energy/sword/imperial
 	name = "energy gladius"

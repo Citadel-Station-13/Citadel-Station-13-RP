@@ -469,7 +469,7 @@
 
 /obj/machinery/disposal/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover, /obj/item/projectile))
-		return 1
+		return TRUE
 	if (istype(mover,/obj/item) && mover.throwing)
 		var/obj/item/I = mover
 		if(istype(I, /obj/item/projectile))
@@ -481,7 +481,7 @@
 		else
 			for(var/mob/M in viewers(src))
 				M.show_message("\The [I] bounces off of \the [src]'s rim!", 3)
-		return 0
+		return FALSE
 	else
 		return ..(mover, target)
 
@@ -963,7 +963,7 @@
 	..()
 
 /obj/structure/disposalpipe/hides_under_flooring()
-	return 1
+	return TRUE
 
 // *** TEST verb
 //client/verb/dispstop()
@@ -1404,7 +1404,7 @@
 	if(fromdir == DOWN)
 		return dir
 	else
-		return 0
+		return FALSE
 
 // a broken pipe
 /obj/structure/disposalpipe/broken

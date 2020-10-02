@@ -110,8 +110,8 @@
 
 /obj/effect/blob/proc/pulse(var/forceLeft, var/list/dirs)
 	regen()
-	animate(src, color = "#FF0000", time=1)
-	animate(color = "#FFFFFF", time=4, easing=ELASTIC_EASING)
+	animate(src, color = COLOR_RED, time=1)
+	animate(color = COLOR_WHITE, time=4, easing=ELASTIC_EASING)
 	sleep(5)
 	var/pushDir = pick(dirs)
 	var/turf/T = get_step(src, pushDir)
@@ -131,7 +131,7 @@
 			take_damage(Proj.damage / brute_resist)
 		if(BURN)
 			take_damage(Proj.damage / fire_resist)
-	return 0
+	return FALSE
 
 /obj/effect/blob/attackby(var/obj/item/W, var/mob/user)
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)

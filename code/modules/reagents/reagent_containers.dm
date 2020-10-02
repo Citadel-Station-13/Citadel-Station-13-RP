@@ -35,19 +35,19 @@
 
 /obj/item/reagent_containers/proc/standard_dispenser_refill(var/mob/user, var/obj/structure/reagent_dispensers/target) // This goes into afterattack
 	if(!istype(target))
-		return 0
+		return FALSE
 
 	if(!target.reagents || !target.reagents.total_volume)
 		to_chat(user, "<span class='notice'>[target] is empty.</span>")
-		return 1
+		return TRUE
 
 	if(reagents && !reagents.get_free_space())
 		to_chat(user, "<span class='notice'>[src] is full.</span>")
-		return 1
+		return TRUE
 
 	var/trans = target.reagents.trans_to_obj(src, target:amount_per_transfer_from_this)
 	to_chat(user, "<span class='notice'>You fill [src] with [trans] units of the contents of [target].</span>")
-	return 1
+	return TRUE
 
 /obj/item/reagent_containers/proc/standard_splash_mob(var/mob/user, var/mob/target) // This goes into afterattack
 	if(!istype(target))
@@ -55,17 +55,17 @@
 
 	if(!reagents || !reagents.total_volume)
 		to_chat(user, "<span class='notice'>[src] is empty.</span>")
-		return 1
+		return TRUE
 
 	if(target.reagents && !target.reagents.get_free_space())
 		to_chat(user, "<span class='notice'>[target] is full.</span>")
-		return 1
+		return TRUE
 
 	var/contained = reagentlist()
 	add_attack_logs(user,target,"Splashed with [src.name] containing [contained]")
 	user.visible_message("<span class='danger'>[target] has been splashed with something by [user]!</span>", "<span class = 'notice'>You splash the solution onto [target].</span>")
 	reagents.splash(target, reagents.total_volume)
-	return 1
+	return TRUE
 
 /obj/item/reagent_containers/proc/self_feed_message(var/mob/user)
 	to_chat(user, "<span class='notice'>You eat \the [src]</span>")
@@ -81,11 +81,11 @@
 
 /obj/item/reagent_containers/proc/standard_feed_mob(var/mob/user, var/mob/target) // This goes into attack
 	if(!istype(target))
-		return 0
+		return FALSE
 
 	if(!reagents || !reagents.total_volume)
 		to_chat(user, "<span class='notice'>\The [src] is empty.</span>")
-		return 1
+		return TRUE
 
 	if(target == user)
 		if(istype(user, /mob/living/carbon/human))
@@ -102,7 +102,7 @@
 		self_feed_message(user)
 		reagents.trans_to_mob(user, issmall(user) ? CEILING(amount_per_transfer_from_this/2, 1) : amount_per_transfer_from_this, CHEM_INGEST)
 		feed_sound(user)
-		return 1
+		return TRUE
 	else
 		if(istype(user, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = target
@@ -126,20 +126,20 @@
 		add_attack_logs(user,target,"Fed from [src.name] containing [contained]")
 		reagents.trans_to_mob(target, amount_per_transfer_from_this, CHEM_INGEST)
 		feed_sound(user)
-		return 1
+		return TRUE
 
 /obj/item/reagent_containers/proc/standard_pour_into(var/mob/user, var/atom/target) // This goes into afterattack and yes, it's atom-level
 	if(!target.is_open_container() || !target.reagents)
-		return 0
+		return FALSE
 
 	if(!reagents || !reagents.total_volume)
 		to_chat(user, "<span class='notice'>[src] is empty.</span>")
-		return 1
+		return TRUE
 
 	if(!target.reagents.get_free_space())
 		to_chat(user, "<span class='notice'>[target] is full.</span>")
-		return 1
+		return TRUE
 
 	var/trans = reagents.trans_to(target, amount_per_transfer_from_this)
 	to_chat(user, "<span class='notice'>You transfer [trans] units of the solution to [target].</span>")
-	return 1
+	return TRUE

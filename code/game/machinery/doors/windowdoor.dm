@@ -111,9 +111,9 @@
 
 /obj/machinery/door/window/open()
 	if (operating == 1 || !density) //doors can still open when emag-disabled
-		return 0
+		return FALSE
 	if (!SSticker)
-		return 0
+		return FALSE
 	if (!operating) //in case of emag
 		operating = 1
 	flick(text("[src.base_state]opening"), src)

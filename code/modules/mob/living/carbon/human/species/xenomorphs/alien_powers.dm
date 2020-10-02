@@ -7,7 +7,7 @@
 		if(!Q.key || !Q.client || Q.stat)
 			continue
 		return 1
-	return 0
+	return FALSE
 
 /mob/living/carbon/human/proc/gain_plasma(var/amount)
 
@@ -36,7 +36,7 @@
 
 	if(P.stored_plasma < cost)
 		to_chat(src, "<span class='danger'>You don't have enough phoron stored to do that.</span>")
-		return 0
+		return FALSE
 
 	if(needs_foundation)
 		var/turf/T = get_turf(src)
@@ -47,7 +47,7 @@
 				has_foundation = 1
 		if(!has_foundation)
 			to_chat(src, "<span class='danger'>You need a solid foundation to do that on.</span>")
-			return 0
+			return FALSE
 
 	P.stored_plasma -= cost
 	return 1

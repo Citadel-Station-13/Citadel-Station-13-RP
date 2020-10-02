@@ -166,7 +166,7 @@ Proc for attack log creation, because really why not
 //checks whether this item is a module of the robot it is located in.
 /proc/is_robot_module(var/obj/item/thing)
 	if (!thing || !istype(thing.loc, /mob/living/silicon/robot))
-		return 0
+		return FALSE
 	var/mob/living/silicon/robot/R = thing.loc
 	return (thing in R.module.modules)
 
@@ -179,7 +179,7 @@ Proc for attack log creation, because really why not
 
 /proc/do_mob(mob/user , mob/target, time = 30, target_zone = 0, uninterruptible = FALSE, progress = TRUE, ignore_movement = FALSE)
 	if(!user || !target)
-		return 0
+		return FALSE
 	var/user_loc = user.loc
 	var/target_loc = target.loc
 
@@ -226,9 +226,9 @@ Proc for attack log creation, because really why not
 
 /proc/do_after(mob/user, delay, atom/target = null, needhand = TRUE, progress = TRUE, incapacitation_flags = INCAPACITATION_DEFAULT, ignore_movement = FALSE, max_distance = null)
 	if(!user)
-		return 0
+		return FALSE
 	if(!delay)
-		return 1 //Okay. Done.
+		return TRUE //Okay. Done.
 	var/atom/target_loc = null
 	if(target)
 		target_loc = target.loc

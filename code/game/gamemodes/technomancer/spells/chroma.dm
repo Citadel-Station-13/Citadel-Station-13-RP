@@ -12,7 +12,7 @@
 	icon_state = "darkness"
 	cast_methods = CAST_RANGED | CAST_USE
 	aspect = ASPECT_LIGHT
-	var/color_to_use = "#FFFFFF"
+	var/color_to_use = COLOR_WHITE
 
 /obj/item/spell/chroma/New()
 	..()
@@ -24,7 +24,7 @@
 	invisibility = 101
 	var/time_to_die = 2 MINUTES //Despawn after this time, if set.
 
-/obj/effect/chroma/New(var/newloc, var/new_color = "#FFFFFF")
+/obj/effect/chroma/New(var/newloc, var/new_color = COLOR_WHITE)
 	..()
 	set_light(6, 5, l_color = new_color)
 	if(time_to_die)

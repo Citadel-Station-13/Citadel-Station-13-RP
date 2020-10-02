@@ -64,7 +64,7 @@
 
 		output += "<table>"
 		var/color1 = "#ececec"
-		var/color2 = "#e2e2e2"
+		var/color2 = COLOR_PALE_WHITE
 		var/i = 0
 
 		while(select_query.NextRow())

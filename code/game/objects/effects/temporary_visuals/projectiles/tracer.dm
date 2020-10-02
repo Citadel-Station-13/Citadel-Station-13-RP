@@ -41,7 +41,7 @@
 	icon_state = "stun"
 	light_range = 2
 	light_power = 0.5
-	light_color = "#FFFFFF"
+	light_color = COLOR_WHITE
 
 /obj/effect/projectile/tracer/lightning
 	icon_state = "lightning"
@@ -95,7 +95,7 @@
 	icon_state = "invert"
 	light_range = 2
 	light_power = -2
-	light_color = "#FFFFFF"
+	light_color = COLOR_WHITE
 
 /obj/effect/projectile/tracer/laser
 	icon_state = "beam"

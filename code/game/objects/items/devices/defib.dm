@@ -136,14 +136,14 @@
 /obj/item/defib_kit/proc/slot_check()
 	var/mob/M = loc
 	if(!istype(M))
-		return 0 //not equipped
+		return FALSE //not equipped
 
 	if((slot_flags & SLOT_BACK) && M.get_equipped_item(slot_back) == src)
 		return 1
 	if((slot_flags & SLOT_BELT) && M.get_equipped_item(slot_belt) == src)
 		return 1
 
-	return 0
+	return FALSE
 
 /obj/item/defib_kit/dropped(mob/user)
 	..()
@@ -248,16 +248,16 @@
 
 /obj/item/shockpaddles/proc/can_use(mob/user, mob/M)
 	if(busy)
-		return 0
+		return FALSE
 	if(!check_charge(chargecost))
 		to_chat(user, "<span class='warning'>\The [src] doesn't have enough charge left to do that.</span>")
-		return 0
+		return FALSE
 	if(!wielded && !isrobot(user))
 		to_chat(user, "<span class='warning'>You need to wield the paddles with both hands before you can use them on someone!</span>")
-		return 0
+		return FALSE
 	if(cooldown)
 		to_chat(user, "<span class='warning'>\The [src] are re-energizing!</span>")
-		return 0
+		return FALSE
 	return 1
 
 //Checks for various conditions to see if the mob is revivable
@@ -340,10 +340,10 @@
 	return blood_volume < BLOOD_VOLUME_SURVIVE
 
 /obj/item/shockpaddles/proc/check_charge(var/charge_amt)
-	return 0
+	return FALSE
 
 /obj/item/shockpaddles/proc/checked_use(var/charge_amt)
-	return 0
+	return FALSE
 
 /obj/item/shockpaddles/attack(mob/living/M, mob/living/user, var/target_zone)
 	var/mob/living/carbon/human/H = M

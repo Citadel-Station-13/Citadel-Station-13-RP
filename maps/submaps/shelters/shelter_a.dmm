@@ -77,10 +77,10 @@
 	name = "emergency radio"
 	},
 /obj/item/towel{
-	color = "#800080"
+	color = COLOR_PURPLE
 	},
 /obj/item/towel{
-	color = "#800080"
+	color = COLOR_PURPLE
 	},
 /obj/item/storage/box/donkpockets,
 /obj/item/storage/box/donkpockets,

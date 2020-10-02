@@ -76,7 +76,7 @@
 		return 1
 
 	if (!avail_reagents)
-		return 0
+		return FALSE
 
 	. = 1
 	for (var/r_r in reagents)
@@ -88,7 +88,7 @@
 			return -1
 
 	if ((reagents?(reagents.len):(0)) < avail_reagents.reagent_list.len)
-		return 0
+		return FALSE
 	return .
 
 /datum/recipe/proc/check_fruit(var/obj/container)
@@ -154,11 +154,11 @@
 	if (!S.coating)
 		if (!coating)
 			return 1
-		return 0
+		return FALSE
 	else if (S.coating.type == coating)
 		return 1
 
-	return 0
+	return FALSE
 
 
 //general version

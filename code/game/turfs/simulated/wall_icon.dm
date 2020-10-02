@@ -118,4 +118,4 @@
 /turf/simulated/wall/proc/can_join_with(var/turf/simulated/wall/W)
 	if(material && W.material && material.icon_base == W.material.icon_base)
 		return 1
-	return 0
+	return FALSE

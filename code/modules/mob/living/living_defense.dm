@@ -16,7 +16,7 @@
 		log_world("## DEBUG: getarmor() was called.")
 
 	if(armour_pen >= 100)
-		return 0 //might as well just skip the processing
+		return FALSE //might as well just skip the processing
 
 	var/armor = getarmor(def_zone, attack_flag)
 	if(armor)
@@ -45,7 +45,7 @@
 /*
 	//Old armor code here.
 	if(armour_pen >= 100)
-		return 0 //might as well just skip the processing
+		return FALSE //might as well just skip the processing
 
 	var/armor = getarmor(def_zone, attack_flag)
 	var/absorb = 0
@@ -74,7 +74,7 @@
 		else
 			show_message("<span class='warning'>Your armor softens the blow!</span>")
 		return 1
-	return 0
+	return FALSE
 */
 
 //Certain pieces of armor actually absorb flat amounts of damage from income attacks
@@ -87,10 +87,10 @@
 
 //if null is passed for def_zone, then this should return something appropriate for all zones (e.g. area effect damage)
 /mob/living/proc/getarmor(var/def_zone, var/type)
-	return 0
+	return FALSE
 
 /mob/living/proc/getsoak(var/def_zone, var/type)
-	return 0
+	return FALSE
 
 // Clicking with an empty hand
 /mob/living/attack_hand(mob/living/L)
@@ -144,7 +144,7 @@
 	else if (absorb >= 0)
 		return 1
 	else
-		return 0
+		return FALSE
 
 //	return absorb
 
@@ -164,7 +164,7 @@
 		apply_effect(EYE_BLUR, agony_amount/10)
 
 /mob/living/proc/electrocute_act(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0)
-	  return 0 //only carbon liveforms have this proc
+	  return FALSE //only carbon liveforms have this proc
 
 /mob/living/emp_act(severity)
 	var/list/L = src.get_contents()
@@ -233,7 +233,7 @@
 //returns 0 if the effects failed to apply for some reason, 1 otherwise.
 /mob/living/proc/standard_weapon_hit_effects(obj/item/I, mob/living/user, var/effective_force, var/blocked, var/soaked, var/hit_zone)
 	if(!effective_force || blocked >= 100)
-		return 0
+		return FALSE
 	//Apply weapon damage
 	var/weapon_sharp = is_sharp(I)
 	var/weapon_edge = has_edge(I)
@@ -334,7 +334,7 @@
 		last_turf = T
 		T = get_step(T,direction)
 
-	return 0
+	return FALSE
 
 // End BS12 momentum-transfer code.
 
@@ -423,24 +423,24 @@
 */
 
 /mob/living/proc/get_cold_protection()
-	return 0
+	return FALSE
 
 /mob/living/proc/get_heat_protection()
-	return 0
+	return FALSE
 
 /mob/living/proc/get_shock_protection()
-	return 0
+	return FALSE
 
 /mob/living/proc/get_water_protection()
 	return 1 // Water won't hurt most things.
 
 /mob/living/proc/get_poison_protection()
-	return 0
+	return FALSE
 
 //Finds the effective temperature that the mob is burning at.
 /mob/living/proc/fire_burn_temperature()
 	if (fire_stacks <= 0)
-		return 0
+		return FALSE
 
 	//Scale quadratically so that single digit numbers of fire stacks don't burn ridiculously hot.
 	//lower limit of 700 K, same as matches and roughly the temperature of a cool flame.

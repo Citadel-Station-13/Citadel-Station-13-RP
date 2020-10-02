@@ -75,7 +75,7 @@
 	var/choice = alert(src, "Select resting pose", "", "Resting", "Sitting", "Belly up")
 	switch(choice)
 		if("Resting")
-			return 0
+			return FALSE
 		if("Sitting")
 			sitting = TRUE
 		if("Belly up")

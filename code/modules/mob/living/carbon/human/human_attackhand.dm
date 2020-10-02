@@ -64,7 +64,7 @@
 
 			// VOREStation Edit - Begin
 			if (istype(H) && attempt_to_scoop(H))
-				return 0;
+				return FALSE;
 			// VOREStation Edit - End
 			if(istype(H) && health < config_legacy.health_threshold_crit)
 				if(!H.check_has_mouth())
@@ -75,13 +75,13 @@
 					return
 				if((H.head && (H.head.body_parts_covered & FACE)) || (H.wear_mask && (H.wear_mask.body_parts_covered & FACE)))
 					to_chat(H, "<span class='notice'>Remove your mask!</span>")
-					return 0
+					return FALSE
 				if((head && (head.body_parts_covered & FACE)) || (wear_mask && (wear_mask.body_parts_covered & FACE)))
 					to_chat(H, "<span class='notice'>Remove [src]'s mask!</span>")
-					return 0
+					return FALSE
 
 				if (!cpr_time)
-					return 0
+					return FALSE
 
 				cpr_time = 0
 				spawn(30)
@@ -106,7 +106,7 @@
 
 		if(INTENT_GRAB)
 			if(M == src || anchored)
-				return 0
+				return FALSE
 			for(var/obj/item/grab/G in src.grabbed_by)
 				if(G.assailant == M)
 					to_chat(M, "<span class='notice'>You already grabbed [src].</span>")

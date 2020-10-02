@@ -32,11 +32,11 @@
 	set desc = "Rename your gun. If you're Security."
 
 	var/mob/M = usr
-	if(!M.mind)	return 0
+	if(!M.mind)	return FALSE
 	var/job = M.mind.assigned_role
 	if(job != "Detective" && job != "Security Officer" && job != "Warden" && job != "Head of Security")
 		to_chat(M, "<span class='notice'>You don't feel cool enough to name this gun, chump.</span>")
-		return 0
+		return FALSE
 
 	var/input = sanitizeSafe(input("What do you want to name the gun?", ,""), MAX_NAME_LEN)
 
@@ -95,7 +95,7 @@
 		icon_state = "secguncomp-e"
 
 /obj/item/gun/projectile/sec/flash
-	name = ".45 signal pistol"
+	name = ".45 pistol"
 	magazine_type = /obj/item/ammo_magazine/m45/flash
 
 /obj/item/gun/projectile/sec/wood
@@ -322,11 +322,21 @@
 	else
 		icon_state = "[initial(icon_state)]-e"
 
+/obj/item/gun/projectile/p92x/sec
+	magazine_type = /obj/item/ammo_magazine/m9mm/rubber
+
 /obj/item/gun/projectile/p92x/brown
 	icon_state = "p92x-brown"
 
 /obj/item/gun/projectile/p92x/large
 	magazine_type = /obj/item/ammo_magazine/m9mm/large // Spawns with illegal magazines.
+
+/obj/item/gun/projectile/p92x/large/preban
+	icon_state = "p92x-brown"
+	magazine_type = /obj/item/ammo_magazine/m9mm/large/preban // Spawns with big magazines that are legal.
+
+/obj/item/gun/projectile/p92x/large/preban/hp
+	magazine_type = /obj/item/ammo_magazine/m9mm/large/preban/hp // Spawns with legal hollow-point mag
 
 /obj/item/gun/projectile/r9
 	name = "C96-Red 9"
@@ -337,9 +347,9 @@
 	load_method = SPEEDLOADER
 	max_shells = 10
 	ammo_type = /obj/item/ammo_casing/a9mm
-	
+
 /obj/item/gun/projectile/r9/holy
-	name = "Blessed Red 9"	
+	name = "Blessed Red 9"
 	desc = "Ah, the choice of an avid gun collector! It's a nice gun, stranger."
 	ammo_type = /obj/item/ammo_casing/a9mm/silver
 	holy = TRUE

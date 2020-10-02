@@ -64,24 +64,24 @@ var/global/ntnet_card_uid = 1
 // 0 - No signal, 1 - Low signal, 2 - High signal. 3 - Wired Connection
 /obj/item/computer_hardware/network_card/proc/get_signal(var/specific_action = 0)
 	if(!holder2) // Hardware is not installed in anything. No signal. How did this even get called?
-		return 0
+		return FALSE
 
 	if(!enabled)
-		return 0
+		return FALSE
 
 	if(!check_functionality() || !ntnet_global || is_banned())
-		return 0
+		return FALSE
 
 	if(ethernet) // Computer is connected via wired connection.
 		return 3
 
 	if(!ntnet_global.check_function(specific_action)) // NTNet is down and we are not connected via wired connection. No signal.
-		return 0
+		return FALSE
 
 	if(holder2)
 		var/turf/T = get_turf(holder2)
 		if(!istype(T)) //no reception in nullspace
-			return 0
+			return FALSE
 		if(T.z in GLOB.using_map.station_levels)
 			// Computer is on station. Low/High signal depending on what type of network card you have
 			if(long_range)
@@ -92,7 +92,7 @@ var/global/ntnet_card_uid = 1
 			if(long_range) // Computer is not on station, but it has upgraded network card. Low signal.
 				return 1
 
-	return 0 // Computer is not on station and does not have upgraded network card. No signal.
+	return FALSE // Computer is not on station and does not have upgraded network card. No signal.
 
 /obj/item/computer_hardware/network_card/Destroy()
 	if(holder2 && (holder2.network_card == src))

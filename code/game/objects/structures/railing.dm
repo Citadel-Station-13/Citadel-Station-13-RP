@@ -137,14 +137,14 @@
 	set src in oview(1)
 
 	if(usr.incapacitated())
-		return 0
+		return FALSE
 
 	if (!can_touch(usr) || ismouse(usr))
 		return
 
 	if(anchored)
 		to_chat(usr, "It is fastened to the floor therefore you can't rotate it!")
-		return 0
+		return FALSE
 
 	src.setDir(turn(src.dir, 90))
 	update_icon()
@@ -156,14 +156,14 @@
 	set src in oview(1)
 
 	if(usr.incapacitated())
-		return 0
+		return FALSE
 
 	if (!can_touch(usr) || ismouse(usr))
 		return
 
 	if(anchored)
 		to_chat(usr, "It is fastened to the floor therefore you can't rotate it!")
-		return 0
+		return FALSE
 
 	src.setDir(turn(src.dir, 270))
 	update_icon()
@@ -175,19 +175,19 @@
 	set src in oview(1)
 
 	if(usr.incapacitated())
-		return 0
+		return FALSE
 
 	if (!can_touch(usr) || ismouse(usr))
 		return
 
 	if(anchored)
 		to_chat(usr, "It is fastened to the floor therefore you can't flip it!")
-		return 0
+		return FALSE
 
 	var/obj/occupied = neighbor_turf_impassable()
 	if(occupied)
 		to_chat(usr, "You can't flip \the [src] because there's \a [occupied] in the way.")
-		return 0
+		return FALSE
 
 	src.loc = get_step(src, src.dir)
 	setDir(turn(dir, 180))
@@ -198,7 +198,7 @@
 	if(istype(O) && O.checkpass(PASSTABLE))
 		return 1
 	if(get_dir(O.loc, target) == dir)
-		return 0
+		return FALSE
 	return 1
 
 /obj/structure/railing/attackby(obj/item/W as obj, mob/user as mob)
@@ -308,7 +308,7 @@
 
 /obj/structure/railing/can_climb(var/mob/living/user, post_climb_check=0)
 	if(!..())
-		return 0
+		return FALSE
 
 	// Normal can_climb() handles climbing from adjacent turf onto our turf.  But railings also allow climbing
 	// from our turf onto an adjacent! If that is the case we need to do checks for that too...
@@ -316,14 +316,14 @@
 		var/obj/occupied = neighbor_turf_impassable()
 		if(occupied)
 			to_chat(user, "<span class='danger'>You can't climb there, there's \a [occupied] in the way.</span>")
-			return 0
+			return FALSE
 	return 1
 
 // TODO - This here might require some investigation
 /obj/structure/proc/neighbor_turf_impassable()
 	var/turf/T = get_step(src, src.dir)
 	if(!T || !istype(T))
-		return 0
+		return FALSE
 	if(T.density == 1)
 		return T
 	for(var/obj/O in T.contents)

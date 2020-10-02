@@ -3,11 +3,11 @@
 // The idea and the code structure was taken from Dungeon Crawl Stone Soup.
 
 /atom/movable/proc/get_threat(var/mob/living/threatened)
-	return 0
+	return FALSE
 
 
 /atom/movable/proc/guess_threat_level(var/mob/living/threatened)
-	return 0
+	return FALSE
 
 /mob/living/simple_mob
 	var/threat_level = null // Set this if you want an explicit danger rating.
@@ -54,7 +54,7 @@
 
 /mob/living/get_threat(var/mob/living/threatened)
 	if(stat)
-		return 0
+		return FALSE
 
 
 /mob/living/simple_mob/get_threat(var/mob/living/threatened)
@@ -62,10 +62,10 @@
 
 	if(has_AI())
 		if(!ai_holder.hostile)
-			return 0 // Can't hurt anyone.
+			return FALSE // Can't hurt anyone.
 
 	if(incapacitated(INCAPACITATION_DISABLED))
-		return 0 // Can't currently hurt you if it's stunned.
+		return FALSE // Can't currently hurt you if it's stunned.
 
 	var/friendly = threatened.faction == faction
 
@@ -105,10 +105,10 @@
 
 	if(has_AI())
 		if(!ai_holder.hostile)
-			return 0
+			return FALSE
 
 	if(incapacitated(INCAPACITATION_DISABLED))
-		return 0
+		return FALSE
 
 	var/friendly = (IIsAlly(threatened) && a_intent == INTENT_HELP)
 
@@ -235,7 +235,7 @@
 			danger = TRUE
 
 	if(!danger)
-		return 0
+		return FALSE
 
 	// Tension is roughly doubled when about to fall into crit.
 	var/max_health = getMaxHealth()

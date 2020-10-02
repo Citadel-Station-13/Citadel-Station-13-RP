@@ -133,7 +133,7 @@
 	if( href_list["close"] )
 		usr << browse(null, "window=teg")
 		usr.unset_machine()
-		return 0
+		return FALSE
 
 	return 1
 

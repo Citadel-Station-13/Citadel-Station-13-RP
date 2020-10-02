@@ -8,7 +8,7 @@
 	reagent_state = SOLID
 	metabolism = REM * 4
 	ingest_met = REM * 4
-	var/nutriment_factor = 30 // Per unit
+	var/nutriment_factor = 10 // Per unit
 	var/injectable = 0
 	color = "#664330"
 
@@ -54,7 +54,7 @@
 	name = "Glucose"
 	id = "glucose"
 	taste_description = "sweetness"
-	color = "#FFFFFF"
+	color = COLOR_WHITE
 
 	injectable = 1
 
@@ -103,7 +103,7 @@
 	description = "A golden yellow syrup, loaded with sugary sweetness."
 	taste_description = "sweetness"
 	nutriment_factor = 10
-	color = "#FFFF00"
+	color = COLOR_YELLOW
 
 /datum/reagent/nutriment/honey/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
@@ -132,7 +132,7 @@
 	description = "A thick, bitter sauce."
 	taste_description = "unmistakably mayonnaise"
 	nutriment_factor = 10
-	color = "#FFFFFF"
+	color = COLOR_WHITE
 
 /datum/reagent/nutriment/flour
 	name = "Flour"
@@ -141,7 +141,7 @@
 	taste_description = "chalky wheat"
 	reagent_state = SOLID
 	nutriment_factor = 1
-	color = "#FFFFFF"
+	color = COLOR_WHITE
 
 /datum/reagent/nutriment/flour/touch_turf(var/turf/simulated/T)
 	if(!istype(T, /turf/space))
@@ -249,7 +249,7 @@
 	taste_mult = 0.4
 	reagent_state = SOLID
 	nutriment_factor = 1
-	color = "#FFFFFF"
+	color = COLOR_WHITE
 
 /datum/reagent/nutriment/cherryjelly
 	name = "Cherry Jelly"
@@ -374,7 +374,7 @@ End Citadel Change */
 	description = "Multi-colored little bits of sugar, commonly found on donuts. Loved by cops."
 	taste_description = "sugar"
 	nutriment_factor = 1
-	color = "#FF00FF"
+	color = COLOR_PINK
 
 /datum/reagent/nutriment/mint
 	name = "Mint"
@@ -407,7 +407,7 @@ End Citadel Change */
 	description = "A salt made of sodium chloride. Commonly used to season food."
 	taste_description = "salt"
 	reagent_state = SOLID
-	color = "#FFFFFF"
+	color = COLOR_WHITE
 	overdose = REAGENTS_OVERDOSE
 	ingest_met = REM
 
@@ -428,7 +428,7 @@ End Citadel Change */
 	taste_description = "pepper"
 	reagent_state = SOLID
 	ingest_met = REM
-	color = "#000000"
+	color = COLOR_BLACK
 
 /datum/reagent/enzyme
 	name = "Universal Enzyme"
@@ -1249,7 +1249,7 @@ End Citadel Change */
 	id = "lemonade"
 	description = "Oh the nostalgia..."
 	taste_description = "lemonade"
-	color = "#FFFF00"
+	color = COLOR_YELLOW
 	adj_temp = -5
 
 	glass_name = "lemonade"
@@ -1285,7 +1285,7 @@ End Citadel Change */
 	id = "pineappleade"
 	description = "Spineapple, juiced up."
 	taste_description = "sweet`n`sour pineapples"
-	color = "#FFFF00"
+	color = COLOR_YELLOW
 	adj_temp = -5
 
 	glass_name = "pineappleade"
@@ -2786,7 +2786,7 @@ End Citadel Change */
 	name = "Poison Wine"
 	id = "pwine"
 	description = "Is this even wine? Toxic! Hallucinogenic! Probably consumed in boatloads by your superiors!"
-	color = "#000000"
+	color = COLOR_BLACK
 	strength = 10
 	druggy = 50
 	halluci = 10
@@ -2849,7 +2849,7 @@ End Citadel Change */
 	taste_description = "a pencil eraser"
 	taste_mult = 1.2
 	nutriment_factor = 1
-	color = "#FFFFFF"
+	color = COLOR_WHITE
 	strength = 12
 
 	glass_name = "Silencer"
@@ -2871,7 +2871,7 @@ End Citadel Change */
 	id = "snowwhite"
 	description = "A cold refreshment"
 	taste_description = "refreshing cold"
-	color = "#FFFFFF"
+	color = COLOR_WHITE
 	strength = 30
 
 	glass_name = "Snow White"
@@ -3915,7 +3915,7 @@ End Citadel Change */
 
 	//If temperature is too low to burn, return a factor of 0. no damage
 	if (data["temperature"] < threshold)
-		return 0
+		return FALSE
 
 	//Step = degrees above heat level 1 for 1.0 multiplier
 	var/step = 60
@@ -3996,3 +3996,78 @@ End Citadel Change */
 
 	glass_name = "the bubbly"
 	glass_desc = "An even classier looking drink, with floating bubbles."
+
+/datum/reagent/lipozine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	M.nutrition = max(M.nutrition - 20 * removed, 0)
+	M.overeatduration = 0
+	if(M.nutrition < 0)
+		M.nutrition = 0
+
+/datum/reagent/ethanol/deathbell
+	name = "Deathbell"
+	id = "deathbell"
+	description = "A successful experiment to make the most alcoholic thing possible."
+	taste_description = "your brains smashed out by a smooth brick of hard, ice cold alcohol"
+	color = "#9f6aff"
+	taste_mult = 5
+	strength = 10
+	adj_temp = 10
+	targ_temp = 330
+
+	glass_name = "Deathbell"
+	glass_desc = "The perfect blend of the most alcoholic things a bartender can get their hands on."
+
+/datum/reagent/ethanol/deathbell/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+	..()
+
+	if(dose * strength >= strength) // Early warning
+		M.make_dizzy(24) // Intentionally higher than normal to compensate for it's previous effects.
+	if(dose * strength >= strength * 2.5) // Slurring takes longer. Again, intentional.
+		M.slurring = max(M.slurring, 30)
+
+/datum/reagent/ethanol/monstertamer
+	name = "Monster Tamer"
+	id = "monstertamer"
+	description = "A questionably-delicious blend of a carnivore's favorite food and a potent neural depressant."
+	taste_description = "the gross yet satisfying combination of chewing on a raw steak while downing a shot of whiskey"
+	strength = 50
+	color = "#d3785d"
+	metabolism = REM * 2.5 // about right for mixing nutriment and ethanol.
+	var/alt_nutriment_factor = 5 //half as much as protein since it's half protein.
+	//using a new variable instead of nutriment_factor so we can call ..() without that adding nutrition for us without taking factors for protein into account
+
+	glass_name = "Monster Tamer"
+	glass_desc = "This looks like a vaguely-alcoholic slurry of meat. Gross."
+
+/datum/reagent/ethanol/monstertamer/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+	..()
+
+	if(M.species.gets_food_nutrition) //it's still food!
+		switch(alien)
+			if(IS_DIONA) //Diona don't get any nutrition from nutriment or protein.
+			if(IS_SKRELL)
+				M.adjustToxLoss(0.25 * removed)  //Equivalent to half as much protein, since it's half protein.
+			if(IS_TESHARI)
+				M.nutrition += (alt_nutriment_factor * 1.2 * removed) //Give them the same nutrition they would get from protein.
+			if(IS_UNATHI)
+				M.nutrition += (alt_nutriment_factor * 1.125 * removed) //Give them the same nutrition they would get from protein.
+				//Takes into account the 0.5 factor for all nutriment which is applied on top of the 2.25 factor for protein.
+			//Chimera don't need their own case here since their factors for nutriment and protein cancel out.
+			else
+				M.nutrition += (alt_nutriment_factor * removed)
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(H.feral > 0 && H.nutrition > 100 && H.traumatic_shock < min(60, H.nutrition/10) && H.jitteriness < 100) // same check as feral triggers to stop them immediately re-feralling
+			H.feral -= removed * 3 // should calm them down quick, provided they're actually in a state to STAY calm.
+			if (H.feral <=0) //check if they're unferalled
+				H.feral = 0
+				to_chat(H, "<span class='info'>Your mind starts to clear, soothed into a state of clarity as your senses return.</span>")
+				log_and_message_admins("is no longer feral.", H)
+
+/datum/reagent/ethanol/monstertamer/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	..()
+	if(alien == IS_SKRELL)
+		M.adjustToxLoss(removed)  //Equivalent to half as much protein, since it's half protein.
+	if(M.species.gets_food_nutrition)
+		if(alien == IS_SLIME || alien == IS_CHIMERA) //slimes and chimera can get nutrition from injected nutriment and protein
+			M.nutrition += (alt_nutriment_factor * removed)

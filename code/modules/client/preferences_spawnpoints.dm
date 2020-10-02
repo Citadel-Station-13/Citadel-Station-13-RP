@@ -15,10 +15,10 @@ var/list/spawntypes = list()
 
 	proc/check_job_spawning(job)
 		if(restrict_job && !(job in restrict_job))
-			return 0
+			return FALSE
 
 		if(disallow_job && (job in disallow_job))
-			return 0
+			return FALSE
 
 		return 1
 

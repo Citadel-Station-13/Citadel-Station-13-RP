@@ -43,4 +43,4 @@
 			return R.radio.talk_into(src,message,message_mode,verb,speaking)
 		else
 			to_chat(src, "<span class='danger'>Your radio is disabled.</span>")
-			return 0
+			return FALSE

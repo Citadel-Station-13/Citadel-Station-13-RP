@@ -55,7 +55,7 @@
 	flags = NOBLOODY
 	var/lrange = 2
 	var/lpower = 2
-	var/lcolor = "#800080"
+	var/lcolor = COLOR_PURPLE
 
 
 /obj/item/cell/device/weapon/gunsword/proc/activate(mob/living/user)

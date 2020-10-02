@@ -62,7 +62,7 @@
 
 /obj/structure/flora/proc/spawn_harvest(var/path = null, var/mob/user = null)
 	if(!ispath(path))
-		return 0
+		return FALSE
 	var/turf/Target = get_turf(src)
 	if(user)
 		Target = get_turf(user)

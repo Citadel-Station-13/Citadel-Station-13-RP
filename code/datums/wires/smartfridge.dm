@@ -14,7 +14,7 @@ var/const/SMARTFRIDGE_WIRE_IDSCAN		= 4
 	var/obj/machinery/smartfridge/S = holder
 	if(S.panel_open)
 		return 1
-	return 0
+	return FALSE
 
 /datum/wires/smartfridge/GetInteractWindow()
 	var/obj/machinery/smartfridge/S = holder

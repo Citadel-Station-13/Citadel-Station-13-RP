@@ -1,7 +1,7 @@
 /turf/simulated/floor/attackby(obj/item/C as obj, mob/user as mob)
 
 	if(!C || !user)
-		return 0
+		return FALSE
 
 	if(isliving(user) && istype(C, /obj/item))
 		var/mob/living/L = user
@@ -126,12 +126,12 @@
 			to_chat(user, "<span class='notice'>You lever off the [flooring.descriptor].</span>")
 			make_plating(1)
 		else
-			return 0
+			return FALSE
 		playsound(src, W.usesound, 80, 1)
 		return 1
 	else if(W.is_screwdriver() && (flooring.flags & TURF_REMOVE_SCREWDRIVER))
 		if(broken || burnt)
-			return 0
+			return FALSE
 		to_chat(user, "<span class='notice'>You unscrew and remove the [flooring.descriptor].</span>")
 		make_plating(1)
 		playsound(src, W.usesound, 80, 1)
@@ -146,7 +146,7 @@
 		make_plating(1)
 		playsound(src, 'sound/items/Deconstruct.ogg', 80, 1)
 		return 1
-	return 0
+	return FALSE
 
 /turf/simulated/floor/proc/try_replace_tile(obj/item/stack/tile/T as obj, mob/user as mob)
 	if(T.type == flooring.build_type)

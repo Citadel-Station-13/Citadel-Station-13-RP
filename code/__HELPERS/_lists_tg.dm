@@ -51,13 +51,13 @@ This actually tests if they have the same entries and values.
 */
 /proc/same_entries(var/list/first, var/list/second)
 	if(!islist(first) || !islist(second))
-		return 0
+		return FALSE
 	if(length(first) != length(second))
-		return 0
+		return FALSE
 	for(var/entry in first)
 		if(!(entry in second) || (first[entry] != second[entry]))
-			return 0
-	return 1
+			return FALSE
+	return TRUE
 
 
 //for sorting clients or mobs by ckey

@@ -172,7 +172,7 @@
 			// If recursion gets too high (max 50 nested functions) throw an error
 			if(cur_recursion >= max_recursion)
 				RaiseError(new/runtimeError/RecursionLimitReached())
-				return 0
+				return FALSE
 
 			var/node/statement/FunctionDefinition/def
 			if(!stmt.object)							//A scope's function is being called, stmt.object is null
@@ -246,11 +246,11 @@
 			RunBlock(block)
 			if(max_iterations > 0 && count >= max_iterations)
 				RaiseError(new/runtimeError/IterationLimitReached())
-				return 0
+				return FALSE
 			if(status & (BREAKING|RETURNING))
-				return 0
+				return FALSE
 			status &= ~CONTINUING
-			return 1
+			return TRUE
 
 /*
 	Proc: GetFunction

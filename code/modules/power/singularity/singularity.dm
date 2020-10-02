@@ -67,7 +67,7 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 			return
 
 /obj/singularity/bullet_act(obj/item/projectile/P)
-	return 0 //Will there be an impact? Who knows. Will we see it? No.
+	return FALSE //Will there be an impact? Who knows. Will we see it? No.
 
 /obj/singularity/Bump(atom/A)
 	consume(A)
@@ -238,13 +238,13 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 	else if (current_size < (--temp_allowed_size) && current_size != STAGE_SUPER)
 		expand(temp_allowed_size)
 	else
-		return 0
+		return FALSE
 
 /obj/singularity/proc/check_energy()
 	if (energy <= 0)
 		investigate_log("collapsed.", I_SINGULO)
 		qdel(src)
-		return 0
+		return FALSE
 
 	switch (energy) //Some of these numbers might need to be changed up later -Mport.
 		if (1 to 199)
@@ -282,7 +282,7 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 
 /obj/singularity/proc/move(var/force_move = 0)
 	if(!move_self)
-		return 0
+		return FALSE
 
 	var/movement_dir = pick(alldirs - last_failed_movement)
 
@@ -305,11 +305,11 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 		return 1
 	else
 		last_failed_movement = movement_dir
-	return 0
+	return FALSE
 
 /obj/singularity/proc/check_turfs_in(var/direction = 0, var/step = 0)
 	if(!direction)
-		return 0
+		return FALSE
 	var/steps = 0
 	if(!step)
 		switch(current_size)
@@ -332,7 +332,7 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 	for(var/i = 1 to steps)
 		T = get_step(T,direction)
 	if(!isturf(T))
-		return 0
+		return FALSE
 	turfs.Add(T)
 	var/dir2 = 0
 	var/dir3 = 0
@@ -347,41 +347,41 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 	for(var/j = 1 to steps)
 		T2 = get_step(T2,dir2)
 		if(!isturf(T2))
-			return 0
+			return FALSE
 		turfs.Add(T2)
 	for(var/k = 1 to steps)
 		T = get_step(T,dir3)
 		if(!isturf(T))
-			return 0
+			return FALSE
 		turfs.Add(T)
 	for(var/turf/T3 in turfs)
 		if(isnull(T3))
 			continue
 		if(!can_move(T3))
-			return 0
+			return FALSE
 	return 1
 
 /obj/singularity/proc/can_move(const/turf/T)
 	if (!isturf(T))
-		return 0
+		return FALSE
 
 	// VOREStation Edit Start
 	if(istype(get_area(T), /area/crew_quarters/sleep)) //No going to dorms
-		return 0
+		return FALSE
 	// VOREStation Edit End
 
 	if ((locate(/obj/machinery/containment_field) in T) || (locate(/obj/machinery/shieldwall) in T))
-		return 0
+		return FALSE
 	else if (locate(/obj/machinery/field_generator) in T)
 		var/obj/machinery/field_generator/G = locate(/obj/machinery/field_generator) in T
 
 		if (G && G.active)
-			return 0
+			return FALSE
 	else if (locate(/obj/machinery/shieldwallgen) in T)
 		var/obj/machinery/shieldwallgen/S = locate(/obj/machinery/shieldwallgen) in T
 
 		if (S && S.active)
-			return 0
+			return FALSE
 	return 1
 
 /obj/singularity/proc/event()
@@ -395,7 +395,7 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 		if (4) //Stun mobs who lack optic scanners.
 			mezzer()
 		else
-			return 0
+			return FALSE
 	if(current_size == STAGE_SUPER)
 		smwave()
 	return 1

@@ -13,6 +13,7 @@
 	var/tint = TINT_NONE
 	var/list/enables_planes		//Enables these planes in the wearing mob's plane_holder
 	var/list/plane_slots		//But only if it's equipped into this specific slot
+	var/hides_bulges = FALSE // OwO wats this?
 
 	/*
 		Sprites used when the clothing item is refit. This is done by setting icon_override.
@@ -58,7 +59,7 @@
 
 	//if we can't equip the item anyway, don't bother with species_restricted (cuts down on spam)
 	if (!..())
-		return 0
+		return FALSE
 
 	if(LAZYLEN(species_restricted) && istype(M,/mob/living/carbon/human))
 		var/exclusive = null
@@ -78,7 +79,7 @@
 
 			if(!wearable && !(slot in list(slot_l_store, slot_r_store, slot_s_store)))
 				to_chat(H, "<span class='danger'>Your species cannot wear [src].</span>")
-				return 0
+				return FALSE
 	return 1
 
 /obj/item/clothing/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
@@ -262,7 +263,7 @@
 
 // Called just before an attack_hand(), in mob/UnarmedAttack()
 /obj/item/clothing/gloves/proc/Touch(var/atom/A, var/proximity)
-	return 0 // return 1 to cancel attack_hand()
+	return FALSE // return 1 to cancel attack_hand()
 
 /*/obj/item/clothing/gloves/attackby(obj/item/W, mob/user)
 	if(W.is_wirecutter() || istype(W, /obj/item/scalpel))
@@ -293,7 +294,7 @@
 			if(ring.glove_level >= src.glove_level)
 				to_chat(user, "You are unable to wear \the [src] as \the [H.gloves] are in the way.")
 				ring = null
-				return 0
+				return FALSE
 			else
 				H.drop_from_inventory(ring)	//Remove the ring (or other under-glove item in the hand slot?) so you can put on the gloves.
 				ring.forceMove(src)
@@ -308,7 +309,7 @@
 			if(H.equip_to_slot_if_possible(ring, slot_gloves))
 				src.ring = null
 		punch_force = initial(punch_force)
-		return 0
+		return FALSE
 
 	wearer = H //TODO clean this when magboots are cleaned
 	return 1
@@ -409,7 +410,7 @@
 
 /obj/item/clothing/head/proc/mob_wear_hat(var/mob/user)
 	if(!Adjacent(user))
-		return 0
+		return FALSE
 	var/success
 	if(istype(user, /mob/living/silicon/robot/drone))
 		var/mob/living/silicon/robot/drone/D = user
@@ -427,7 +428,7 @@
 			success = 1
 
 	if(!success)
-		return 0
+		return FALSE
 	else if(success == 2)
 		to_chat(user, "<span class='warning'>You are already wearing a hat.</span>")
 	else if(success == 1)
@@ -906,10 +907,10 @@
 	if (usr.stat || usr.restrained()) return
 	if(has_sensor >= 2)
 		to_chat(usr, "The controls are locked.")
-		return 0
+		return FALSE
 	if(has_sensor <= 0)
 		to_chat(usr, "This suit does not have any sensors.")
-		return 0
+		return FALSE
 
 	var/list/modes = list("Off", "Binary sensors", "Vitals tracker", "Tracking beacon")
 	var/switchMode = input("Select a sensor mode:", "Suit Sensor Mode", modes[sensor_mode + 1]) in modes

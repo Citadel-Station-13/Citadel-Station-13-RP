@@ -60,7 +60,7 @@ var/datum/planet/frozen_planet/planet_frozen_planet = null
 			low_color = "#DDDDDD"
 
 			high_brightness = 1.0
-			high_color = "#FFFFFF"
+			high_color = COLOR_WHITE
 			min = 0.70
 
 	var/interpolate_weight = (abs(min - sun_position)) * 4

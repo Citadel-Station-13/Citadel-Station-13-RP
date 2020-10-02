@@ -73,7 +73,7 @@
 	if(..()) return 1
 
 	if(stat & (NOPOWER))
-		return 0 // don't update UIs attached to this object
+		return FALSE // don't update UIs attached to this object
 
 	if(href_list["scanItem"])
 		if(scanning)

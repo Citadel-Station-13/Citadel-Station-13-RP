@@ -16,12 +16,12 @@
 
 /obj/effect/overmap/visitable/ship/landable/can_burn()
 	if(status != SHIP_STATUS_OVERMAP)
-		return 0
+		return FALSE
 	return ..()
 
 /obj/effect/overmap/visitable/ship/landable/burn()
 	if(status != SHIP_STATUS_OVERMAP)
-		return 0
+		return FALSE
 	return ..()
 
 /obj/effect/overmap/visitable/ship/landable/check_ownership(obj/object)

@@ -37,7 +37,7 @@
 		return ..()
 
 	if(!attempt_hack(user, A))
-		return 0
+		return FALSE
 
 	A.ui_interact(user, state = hack_state)
 	return 1
@@ -45,10 +45,10 @@
 /obj/item/multitool/hacktool/proc/attempt_hack(var/mob/user, var/atom/target)
 	if(is_hacking)
 		to_chat(user, "<span class='warning'>You are already hacking!</span>")
-		return 0
+		return FALSE
 	if(!is_type_in_list(target, supported_types))
 		to_chat(user, "\icon[src] <span class='warning'>Unable to hack this target!</span>")
-		return 0
+		return FALSE
 	var/found = known_targets.Find(target)
 	if(found)
 		known_targets.Swap(1, found)	// Move the last hacked item first
@@ -65,7 +65,7 @@
 		user.playsound_local(get_turf(src), 'sound/instruments/piano/An6.ogg', 50)
 	else
 		to_chat(user, "<span class='warning'>Your hacking attempt failed!</span>")
-		return 0
+		return FALSE
 
 	known_targets.Insert(1, target)	// Insert the newly hacked target first,
 	target.register(OBSERVER_EVENT_DESTROY, src, /obj/item/multitool/hacktool/proc/on_target_destroy)

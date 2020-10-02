@@ -11,7 +11,7 @@
 
 	var/mob/living/carbon/T = changeling_sting(30,/mob/proc/changeling_paralysis_sting)
 	if(!T)
-		return 0
+		return FALSE
 	add_attack_logs(src,T,"Paralysis sting (changeling)")
 	to_chat(T, "<span class='danger'>Your muscles begin to painfully tighten.</span>")
 	T.Weaken(20)

@@ -86,7 +86,7 @@ datum/archived_book/New(var/path)
 	if (isnull(version) || version < BOOK_VERSION_MIN || version > BOOK_VERSION_MAX)
 		fdel(path)
 		to_chat(usr, "What book?")
-		return 0
+		return FALSE
 
 	F["author"] >> author
 	F["title"] >> title

@@ -201,7 +201,7 @@ var/global/list/limb_icon_cache = list()
 /obj/item/organ/external/proc/apply_coloration(var/icon/applying)
 
 	if(transparent) //VOREStation edit
-		applying.MapColors("#4D4D4D","#969696","#1C1C1C", "#000000")
+		applying.MapColors("#4D4D4D","#969696","#1C1C1C", COLOR_BLACK)
 		if(species && species.get_bodytype(owner) != SPECIES_HUMAN)
 			applying.SetIntensity(1) // Unathi, Taj and Skrell have -very- dark base icons. VOREStation edit fixes this and brings the number back to 1
 		else
@@ -242,7 +242,7 @@ var/global/list/limb_icon_cache = list()
 	if (n_is != damage_state)
 		damage_state = n_is
 		return 1
-	return 0
+	return FALSE
 
 
 // Returns an image for use by the human health dolly HUD element.
@@ -250,8 +250,8 @@ var/global/list/limb_icon_cache = list()
 // damage amount to represent the pain of the injuries involved.
 
 // Global scope, used in code below.
-var/list/flesh_hud_colors = list("#02BA08","#9ECF19","#DEDE10","#FFAA00","#FF0000","#AA0000","#660000")
-var/list/robot_hud_colors = list("#CFCFCF","#AFAFAF","#8F8F8F","#6F6F6F","#4F4F4F","#2F2F2F","#000000")
+var/list/flesh_hud_colors = list("#02BA08","#9ECF19","#DEDE10","#FFAA00",COLOR_RED,"#AA0000","#660000")
+var/list/robot_hud_colors = list("#CFCFCF","#AFAFAF","#8F8F8F","#6F6F6F","#4F4F4F","#2F2F2F",COLOR_BLACK)
 
 /obj/item/organ/external/proc/get_damage_hud_image(var/min_dam_state)
 

@@ -23,7 +23,7 @@
 		var/mob/living/simple_mob/SM = L
 		if(owner in SM.friends)
 			return 1
-	return 0
+	return FALSE
 
 /obj/item/spell/proc/allowed_to_teleport()
 	if(owner)

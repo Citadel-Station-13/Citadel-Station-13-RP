@@ -24,15 +24,15 @@ proc/populate_ghost_traps()
 // Check for bans, proper atom types, etc.
 /datum/ghosttrap/proc/assess_candidate(var/mob/observer/dead/candidate)
 	if(!istype(candidate) || !candidate.client || !candidate.ckey)
-		return 0
+		return FALSE
 	if(!candidate.MayRespawn())
 		to_chat(candidate, "You have made use of the AntagHUD and hence cannot enter play as \a [object].")
-		return 0
+		return FALSE
 	if(islist(ban_checks))
 		for(var/bantype in ban_checks)
 			if(jobban_isbanned(candidate, "[bantype]"))
 				to_chat(candidate, "You are banned from one or more required roles and hence cannot enter play as \a [object].")
-				return 0
+				return FALSE
 	return 1
 
 // Print a message to all ghosts with the right prefs/lack of bans.
@@ -67,7 +67,7 @@ proc/populate_ghost_traps()
 // Shunts the ckey/mind into the target mob.
 /datum/ghosttrap/proc/transfer_personality(var/mob/candidate, var/mob/target)
 	if(!assess_candidate(candidate))
-		return 0
+		return FALSE
 	target.ckey = candidate.ckey
 	if(target.mind)
 		target.mind.assigned_role = "[ghost_trap_role]"

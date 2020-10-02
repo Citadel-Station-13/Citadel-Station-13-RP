@@ -2,7 +2,7 @@
 /mob/proc/changeling_generic_armor(var/armor_type, var/helmet_type, var/boot_type, var/chem_cost)
 
 	if(!ishuman(src))
-		return 0
+		return FALSE
 
 	var/mob/living/carbon/human/M = src
 
@@ -33,7 +33,7 @@
 
 	if(M.head || M.wear_suit) //Make sure our slots aren't full
 		to_chat(src, "<span class='warning'>We require nothing to be on our head, and we cannot wear any external suits, or shoes.</span>")
-		return 0
+		return FALSE
 
 	var/obj/item/clothing/suit/A = new armor_type(src)
 	src.equip_to_slot_or_del(A, slot_wear_suit)
@@ -58,7 +58,7 @@
 		return
 
 	if(!ishuman(src))
-		return 0
+		return FALSE
 
 	var/mob/living/carbon/human/M = src
 
@@ -224,7 +224,7 @@
 		var/feedback = english_list(grown_items_list, nothing_text = "nothing", and_text = " and ", comma_text = ", ", final_comma_text = "" )
 
 		to_chat(M, "<span class='notice'>We have grown [feedback].</span>")
-	
+
 		if(success)
 			M.mind.changeling.armor_deployed = 1
 			M.mind.changeling.chem_charges -= 10
@@ -237,13 +237,13 @@
 		return
 
 	if(!ishuman(src))
-		return 0
+		return FALSE
 
 	var/mob/living/carbon/human/M = src
 
 	if(M.hands_are_full()) //Make sure our hands aren't full.
 		to_chat(src, "<span class='warning'>Our hands are full.  Drop something first.</span>")
-		return 0
+		return FALSE
 
 	var/obj/item/W = new weapon_type(src)
 	src.put_in_hands(W)

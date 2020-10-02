@@ -248,7 +248,7 @@
 
 		return 1
 	else
-		return 0
+		return FALSE
 
 //VOREStation Add
 /mob/living/carbon/human/proc/force_update_organs()

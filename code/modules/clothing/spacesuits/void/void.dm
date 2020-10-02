@@ -15,17 +15,34 @@
 	//Species-specific stuff.
 	species_restricted = list("Human", "Promethean")
 	sprite_sheets_refit = list(
-		SPECIES_UNATHI = 'icons/mob/species/unathi/helmet.dmi',
-		SPECIES_TAJ = 'icons/mob/species/tajaran/helmet.dmi',
-		SPECIES_SKRELL = 'icons/mob/species/skrell/helmet.dmi'
-		//Teshari have a general sprite sheet defined in modules/clothing/clothing.dm
+		"Tajara" 				= 'icons/mob/species/tajaran/helmet.dmi',
+		"Skrell" 				= 'icons/mob/species/skrell/helmet.dmi',
+		"Unathi" 				= 'icons/mob/species/unathi/helmet.dmi',
+		"Teshari"				= 'icons/mob/species/teshari/head.dmi',
+		"Nevrean" 				= 'icons/mob/species/nevrean/helmet_vr.dmi',
+		"Akula" 				= 'icons/mob/species/akula/helmet_vr.dmi',
+		"Sergal"				= 'icons/mob/species/sergal/helmet_vr.dmi',
+		"Flatland Zorren" 		= 'icons/mob/species/fennec/helmet_vr.dmi',
+		"Highlander Zorren" 	= 'icons/mob/species/fox/helmet_vr.dmi',
+		"Vulpkanin"				= 'icons/mob/species/vulpkanin/helmet.dmi',
+		"Promethean"			= 'icons/mob/species/skrell/helmet.dmi',
+		"Xenomorph Hybrid"		= 'icons/mob/species/unathi/helmet.dmi',
+		"Vox"					= 'icons/mob/species/vox/helmet.dmi'
 		)
 	sprite_sheets_obj = list(
-		SPECIES_UNATHI = 'icons/obj/clothing/species/unathi/hats.dmi',
-		SPECIES_TAJ = 'icons/obj/clothing/species/tajaran/hats.dmi',
-		SPECIES_SKRELL = 'icons/obj/clothing/species/skrell/hats.dmi',
-		SPECIES_TESHARI = 'icons/obj/clothing/species/teshari/hats.dmi',
-		SPECIES_VOX = 'icons/obj/clothing/species/vox/hats.dmi'
+		"Tajara" 			= 'icons/obj/clothing/species/tajaran/hats.dmi',
+		"Skrell"			= 'icons/obj/clothing/species/skrell/hats.dmi',
+		"Unathi"			= 'icons/obj/clothing/species/unathi/hats.dmi',
+		"Teshari"			= 'icons/obj/clothing/species/teshari/hats.dmi',
+		"Nevrean"			= 'icons/obj/clothing/species/nevrean/hats.dmi',
+		"Akula"				= 'icons/obj/clothing/species/akula/hats.dmi',
+		"Sergal"			= 'icons/obj/clothing/species/sergal/hats.dmi',
+		"Flatland Zorren"	= 'icons/obj/clothing/species/fennec/hats.dmi',
+		"Highlander Zorren"	= 'icons/obj/clothing/species/fox/hats.dmi',
+		"Vulpkanin"			= 'icons/obj/clothing/species/vulpkanin/hats.dmi',
+		"Promethean"		= 'icons/obj/clothing/species/skrell/hats.dmi',
+		"Xenomorph Hybrid"	= 'icons/obj/clothing/species/unathi/hats.dmi',
+		"Vox"				= 'icons/obj/clothing/species/vox/hats.dmi'
 		)
 
 	light_overlay = "helmet_light"
@@ -45,17 +62,33 @@
 
 	species_restricted = list("Human", SPECIES_SKRELL, "Promethean")
 	sprite_sheets_refit = list(
-		SPECIES_UNATHI = 'icons/mob/species/unathi/suit.dmi',
-		SPECIES_TAJ = 'icons/mob/species/tajaran/suit.dmi',
-		SPECIES_SKRELL = 'icons/mob/species/skrell/suit.dmi'
-		//Teshari have a general sprite sheet defined in modules/clothing/clothing.dm
+		"Tajara" 				= 'icons/mob/species/tajaran/suit.dmi',
+		"Skrell" 				= 'icons/mob/species/skrell/suit.dmi',
+		"Unathi" 				= 'icons/mob/species/unathi/suit.dmi',
+		"Teshari"				= 'icons/mob/species/teshari/suit.dmi',
+		"Nevrean" 				= 'icons/mob/species/nevrean/suit_vr.dmi',
+		"Akula" 				= 'icons/mob/species/akula/suit_vr.dmi',
+		"Sergal"				= 'icons/mob/species/sergal/suit_vr.dmi',
+		"Flatland Zorren" 		= 'icons/mob/species/fennec/suit_vr.dmi',
+		"Highlander Zorren" 	= 'icons/mob/species/fox/suit_vr.dmi',
+		"Vulpkanin"				= 'icons/mob/species/vulpkanin/suit.dmi',
+		"Promethean"			= 'icons/mob/species/skrell/suit.dmi',
+		"Xenomorph Hybrid"		= 'icons/mob/species/unathi/suit.dmi',
+		"Vox"					= 'icons/mob/species/vox/suit.dmi'
 		)
 	sprite_sheets_obj = list(
-		SPECIES_UNATHI = 'icons/obj/clothing/species/unathi/suits.dmi',
-		SPECIES_TAJ = 'icons/obj/clothing/species/tajaran/suits.dmi',
-		SPECIES_SKRELL = 'icons/obj/clothing/species/skrell/suits.dmi',
-		SPECIES_TESHARI = 'icons/obj/clothing/species/teshari/suits.dmi',
-		SPECIES_VOX = 'icons/obj/clothing/species/vox/suits.dmi'
+		"Tajara"			= 'icons/obj/clothing/species/tajaran/suits.dmi',
+		"Skrell"			= 'icons/obj/clothing/species/skrell/suits.dmi',
+		"Unathi"			= 'icons/obj/clothing/species/unathi/suits.dmi',
+		"Teshari"			= 'icons/obj/clothing/species/teshari/suits.dmi',
+		"Nevrean"			= 'icons/obj/clothing/species/nevrean/suits.dmi',
+		"Akula"				= 'icons/obj/clothing/species/akula/suits.dmi',
+		"Sergal"			= 'icons/obj/clothing/species/sergal/suits.dmi',
+		"Flatland Zorren"	= 'icons/obj/clothing/species/fennec/suits.dmi',
+		"Highlander Zorren"	= 'icons/obj/clothing/species/fox/suits.dmi',
+		"Vulpkanin"			= 'icons/obj/clothing/species/vulpkanin/suits.dmi',
+		"Promethean"		= 'icons/obj/clothing/species/skrell/suits.dmi',
+		"Vox"				= 'icons/obj/clothing/species/vox/suits.dmi'
 		)
 
 	//Breach thresholds, should ideally be inherited by most (if not all) voidsuits.
@@ -64,10 +97,10 @@
 	can_breach = 1
 
 	//Inbuilt devices.
-	var/obj/item/clothing/shoes/magboots/boots = null // Deployable boots, if any.
-	var/obj/item/clothing/head/helmet/helmet = null   // Deployable helmet, if any.
-	var/obj/item/tank/tank = null              // Deployable tank, if any.
-	var/obj/item/suit_cooling_unit/cooler = null// Cooling unit, for FBPs.  Cannot be installed alongside a tank.
+	var/obj/item/clothing/shoes/magboots/boots = null	// Deployable boots, if any.
+	var/obj/item/clothing/head/helmet/helmet = null		// Deployable helmet, if any.
+	var/obj/item/tank/tank = null						// Deployable tank, if any.
+	var/obj/item/suit_cooling_unit/cooler = null		// Cooling unit, for FBPs.  Cannot be installed alongside a tank.
 
 	action_button_name = "Toggle Helmet"
 

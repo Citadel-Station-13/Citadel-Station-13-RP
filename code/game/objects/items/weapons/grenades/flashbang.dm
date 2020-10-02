@@ -23,7 +23,7 @@
 		B.adjust_integrity(-damage)
 
 	new/obj/effect/effect/sparks(src.loc)
-	new/obj/effect/effect/smoke/illumination(src.loc, 5, range=30, power=30, color="#FFFFFF")
+	new/obj/effect/effect/smoke/illumination(src.loc, 5, range=30, power=30, color=COLOR_WHITE)
 
 	qdel(src)
 

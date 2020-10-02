@@ -8,7 +8,7 @@ var/const/WIRE_ZAP = 1
 	var/obj/machinery/power/tesla_coil/T = holder
 	if(T && T.panel_open)
 		return 1
-	return 0
+	return FALSE
 
 /datum/wires/tesla_coil/UpdatePulsed(index)
 	var/obj/machinery/power/tesla_coil/T = holder

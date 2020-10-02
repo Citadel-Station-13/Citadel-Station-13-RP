@@ -19,7 +19,7 @@
 		if (S.can_be_inserted(newitem, 1))
 			newitem.forceMove(S)
 			return 1
-	return 0
+	return FALSE
 
 //Returns the thing in our active hand
 /mob/living/get_active_hand()
@@ -174,4 +174,4 @@
 
 	if((src.l_hand && !( src.l_hand.abstract )) || (src.r_hand && !( src.r_hand.abstract )))
 		return 1
-	return 0
+	return FALSE

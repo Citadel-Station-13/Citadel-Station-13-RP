@@ -90,7 +90,7 @@
 		if("west")
 			return WEST
 		else
-			return 0
+			return FALSE
 
 /proc/mode_to_gasid(var/mode)
 	switch(mode)

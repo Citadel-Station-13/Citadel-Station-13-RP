@@ -55,7 +55,7 @@ GLOBAL_PROTECT(href_token)
 /*
 checks if usr is an admin with at least ONE of the flags in rights_required. (Note, they don't need all the flags)
 if rights_required == 0, then it simply checks if they are an admin.
-if it doesn't return 1 and show_msg=1 it will prints a message explaining why the check has failed
+if it doesn't return TRUE and show_msg=1 it will prints a message explaining why the check has failed
 generally it would be used like so:
 
 proc/admin_proc()
@@ -92,12 +92,12 @@ NOTE: It checks usr by default. Supply the "user" argument if you wish to check 
 	if(usr && usr.client)
 		if(usr.client.holder)
 			if(!other || !other.holder)
-				return 1
+				return TRUE
 			if(usr.client.holder.rights != other.holder.rights)
 				if( (usr.client.holder.rights & other.holder.rights) == other.holder.rights )
-					return 1	//we have all the rights they have and more
+					return TRUE	//we have all the rights they have and more
 		to_chat(usr, "<font color='red'>Error: Cannot proceed. They have more or equal rights to us.</font>")
-	return 0
+	return FALSE
 
 
 
@@ -105,7 +105,7 @@ NOTE: It checks usr by default. Supply the "user" argument if you wish to check 
 	if(holder)
 		holder.disassociate()
 		//qdel(holder)
-	return 1
+	return TRUE
 
 /proc/GenerateToken()
 	. = ""

@@ -228,7 +228,7 @@
 		// This is not a status display message, since it's something the character
 		// themselves is meant to see BEFORE putting the money in
 		to_chat(usr, "\icon[cashmoney] <span class='warning'>That is not enough money.</span>")
-		return 0
+		return FALSE
 
 	if(istype(cashmoney, /obj/item/spacecash))
 
@@ -256,7 +256,7 @@
 	if(currently_vending.price > wallet.worth)
 		status_message = "Insufficient funds on chargecard."
 		status_error = 1
-		return 0
+		return FALSE
 	else
 		wallet.worth -= currently_vending.price
 		credit_purchase("[wallet.owner_name] (chargecard)")
@@ -277,12 +277,12 @@
 	if(!customer_account)
 		status_message = "Error: Unable to access account. Please contact technical support if problem persists."
 		status_error = 1
-		return 0
+		return FALSE
 
 	if(customer_account.suspended)
 		status_message = "Unable to access account: account suspended."
 		status_error = 1
-		return 0
+		return FALSE
 
 	// Have the customer punch in the PIN before checking if there's enough money. Prevents people from figuring out acct is
 	// empty at high security levels
@@ -293,12 +293,12 @@
 		if(!customer_account)
 			status_message = "Unable to access account: incorrect credentials."
 			status_error = 1
-			return 0
+			return FALSE
 
 	if(currently_vending.price > customer_account.money)
 		status_message = "Insufficient funds in account."
 		status_error = 1
-		return 0
+		return FALSE
 	else
 		// Okay to move the money at this point
 
@@ -629,7 +629,7 @@
 	var/obj/throw_item = null
 	var/mob/living/target = locate() in view(7,src)
 	if(!target)
-		return 0
+		return FALSE
 
 	for(var/datum/stored_item/vending_product/R in product_records)
 		throw_item = R.get_product(loc)
@@ -637,7 +637,7 @@
 			continue
 		break
 	if(!throw_item)
-		return 0
+		return FALSE
 	spawn(0)
 		throw_item.throw_at(target, 16, 3, src)
 	visible_message("<span class='warning'>\The [src] launches \a [throw_item] at \the [target]!</span>")

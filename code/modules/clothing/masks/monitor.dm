@@ -31,14 +31,14 @@
 
 /obj/item/clothing/mask/monitor/mob_can_equip(var/mob/living/carbon/human/user, var/slot)
 	if (!..())
-		return 0
+		return FALSE
 	if(istype(user))
 		var/obj/item/organ/external/E = user.organs_by_name[BP_HEAD]
 		var/datum/robolimb/robohead = all_robolimbs[E.model]
 		if(istype(E) && (E.robotic >= ORGAN_ROBOT) && robohead.monitor_styles)
 			return 1
 		to_chat(user, "<span class='warning'>You must have a compatible robotic head to install this upgrade.</span>")
-	return 0
+	return FALSE
 
 /obj/item/clothing/mask/monitor/verb/set_monitor_state()
 	set name = "Set Monitor State"

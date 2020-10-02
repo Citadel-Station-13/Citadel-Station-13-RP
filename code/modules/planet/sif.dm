@@ -67,7 +67,7 @@ var/datum/planet/sif/planet_sif = null
 			low_color = "#DDDDDD"
 
 			high_brightness = 1.0
-			high_color = "#FFFFFF"
+			high_color = COLOR_WHITE
 			min = 0.70
 
 	var/interpolate_weight = (abs(min - sun_position)) * 4
@@ -443,7 +443,7 @@ var/datum/planet/sif/planet_sif = null
 /datum/weather/sif/blood_moon
 	name = "blood moon"
 	light_modifier = 0.5
-	light_color = "#FF0000"
+	light_color = COLOR_RED
 	flight_failure_modifier = 25
 	transition_chances = list(
 		WEATHER_BLOODMOON = 100
@@ -479,7 +479,7 @@ var/datum/planet/sif/planet_sif = null
 	name = "ash storm"
 	icon_state = "ashfall_heavy"
 	light_modifier = 0.1
-	light_color = "#FF0000"
+	light_color = COLOR_RED
 	temp_high = 323.15	// 50c
 	temp_low = 313.15	// 40c
 	wind_high = 6

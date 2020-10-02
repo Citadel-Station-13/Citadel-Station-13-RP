@@ -71,7 +71,7 @@ var/datum/uplink/uplink = new()
 
 /datum/uplink_item/proc/can_buy(obj/item/uplink/U)
 	if(cost(U.uses, U) > U.uses)
-		return 0
+		return FALSE
 
 	return can_view(U)
 
@@ -82,14 +82,14 @@ var/datum/uplink/uplink = new()
 
 	// With no owner, there's no need to check antag status.
 	if(!U.uplink_owner)
-		return 0
+		return FALSE
 
 	for(var/antag_role in antag_roles)
 		var/datum/antagonist/antag = all_antag_types[antag_role]
 		if(!isnull(antag))
 			if(antag.is_antagonist(U.uplink_owner))
 				return 1
-	return 0
+	return FALSE
 
 /datum/uplink_item/proc/cost(var/telecrystals, obj/item/uplink/U)
 	. = item_cost
@@ -101,7 +101,7 @@ var/datum/uplink/uplink = new()
 
 // get_goods does not necessarily return physical objects, it is simply a way to acquire the uplink item without paying
 /datum/uplink_item/proc/get_goods(var/obj/item/uplink/U, var/loc)
-	return 0
+	return FALSE
 
 /datum/uplink_item/proc/log_icon()
 	return

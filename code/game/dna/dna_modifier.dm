@@ -315,9 +315,9 @@
 
 /obj/machinery/computer/scan_consolenew/proc/setInjectorBlock(var/obj/item/dnainjector/I, var/blk, var/datum/dna2/record/buffer)
 	var/pos = findtext(blk,":")
-	if(!pos) return 0
+	if(!pos) return FALSE
 	var/id = text2num(copytext(blk,1,pos))
-	if(!id) return 0
+	if(!id) return FALSE
 	I.block = id
 	I.buf = buffer
 	return 1
@@ -444,13 +444,13 @@
 
 /obj/machinery/computer/scan_consolenew/Topic(href, href_list)
 	if(..())
-		return 0 // don't update uis
+		return FALSE // don't update uis
 	if(!istype(usr.loc, /turf))
-		return 0 // don't update uis
+		return FALSE // don't update uis
 	if(!src || !src.connected)
-		return 0 // don't update uis
+		return FALSE // don't update uis
 	if(irradiating) // Make sure that it isn't already irradiating someone...
-		return 0 // don't update uis
+		return FALSE // don't update uis
 
 	add_fingerprint(usr)
 
@@ -597,7 +597,7 @@
 
 	if (href_list["injectRejuvenators"])
 		if (!connected.occupant)
-			return 0
+			return FALSE
 		var/inject_amount = round(text2num(href_list["injectRejuvenators"]), 5) // round to nearest 5
 		if (inject_amount < 0) // Since the user can actually type the commands himself, some sanity checking
 			inject_amount = 0
@@ -680,7 +680,7 @@
 		if (bufferOption == "wipeDisk")
 			if ((isnull(src.disk)) || (src.disk.read_only))
 				//src.temphtml = "Invalid disk. Please try again."
-				return 0
+				return FALSE
 
 			src.disk.buf=null
 			//src.temphtml = "Data saved."
@@ -695,12 +695,12 @@
 
 		// All bufferOptions from here on require a bufferId
 		if (!href_list["bufferId"])
-			return 0
+			return FALSE
 
 		var/bufferId = text2num(href_list["bufferId"])
 
 		if (bufferId < 1 || bufferId > 3)
-			return 0 // Not a valid buffer id
+			return FALSE // Not a valid buffer id
 
 		if (bufferOption == "saveUI")
 			if(src.connected.occupant && src.connected.occupant.dna)
@@ -825,7 +825,7 @@
 		if (bufferOption == "loadDisk")
 			if ((isnull(src.disk)) || (!src.disk.buf))
 				//src.temphtml = "Invalid disk. Please try again."
-				return 0
+				return FALSE
 
 			src.buffers[bufferId]=src.disk.buf
 			//src.temphtml = "Data loaded."
@@ -834,7 +834,7 @@
 		if (bufferOption == "saveDisk")
 			if ((isnull(src.disk)) || (src.disk.read_only))
 				//src.temphtml = "Invalid disk. Please try again."
-				return 0
+				return FALSE
 
 			var/datum/dna2/record/buf = src.buffers[bufferId]
 

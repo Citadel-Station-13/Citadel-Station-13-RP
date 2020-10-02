@@ -57,19 +57,19 @@
 /datum/computer_file/program/proc/generate_network_log(var/text)
 	if(computer)
 		return computer.add_log(text)
-	return 0
+	return FALSE
 
 /datum/computer_file/program/proc/is_supported_by_hardware(var/hardware_flag = 0, var/loud = 0, var/mob/user = null)
 	if(!(hardware_flag & usage_flags))
 		if(loud && computer && user)
 			to_chat(user, "<span class='warning'>\The [computer] flashes: \"Hardware Error - Incompatible software\".</span>")
-		return 0
+		return FALSE
 	return 1
 
 /datum/computer_file/program/proc/get_signal(var/specific_action = 0)
 	if(computer)
 		return computer.get_ntnet_status(specific_action)
-	return 0
+	return FALSE
 
 // Called by Process() on device that runs us, once every tick.
 /datum/computer_file/program/proc/process_tick()
@@ -101,13 +101,13 @@
 		return 1
 
 	if(!istype(user))
-		return 0
+		return FALSE
 
 	var/obj/item/card/id/I = user.GetIdCard()
 	if(!I)
 		if(loud)
 			to_chat(user, "<span class='notice'>\The [computer] flashes an \"RFID Error - Unable to scan ID\" warning.</span>")
-		return 0
+		return FALSE
 
 	if(access_to_check in I.access)
 		return 1
@@ -132,7 +132,7 @@
 			generate_network_log("Connection opened to [network_destination].")
 		program_state = PROGRAM_STATE_ACTIVE
 		return 1
-	return 0
+	return FALSE
 
 // Use this proc to kill the program. Designed to be implemented by each program if it requires on-quit logic, such as the NTNRC client.
 /datum/computer_file/program/proc/kill_program(var/forced = 0)
@@ -153,7 +153,7 @@
 		return computer.ui_interact(user)
 	if(istype(NM))
 		NM.ui_interact(user, ui_key, null, force_open)
-		return 0
+		return FALSE
 	return 1
 
 

@@ -8,8 +8,8 @@
 	var/savefile/F = new(TORFILE)
 	if(F)
 		if( ip_address in F.dir )
-			return 1
-	return 0
+			return TRUE
+	return FALSE
 
 /proc/ToRban_autoupdate()
 	var/savefile/F = new(TORFILE)
@@ -38,9 +38,9 @@
 			F["last_update"] << world.realtime
 			log_misc("ToR data updated!")
 			if(usr)	usr << "ToRban updated."
-			return 1
+			return TRUE
 		log_misc("ToR data update aborted: no data.")
-		return 0
+		return FALSE
 
 /client/proc/ToRban(task in list("update","toggle","show","remove","remove all","find"))
 	set name = "ToRban"

@@ -169,11 +169,11 @@
 
 /obj/item/gun/projectile/dartgun/proc/check_beaker_mixing(var/obj/item/B)
 	if(!mixing || !beakers)
-		return 0
+		return FALSE
 	for(var/obj/item/M in mixing)
 		if(M == B)
 			return 1
-	return 0
+	return FALSE
 
 /obj/item/gun/projectile/dartgun/Topic(href, href_list)
 	if(..()) return 1

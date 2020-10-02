@@ -166,7 +166,7 @@ var/list/organ_cache = list()
 	//** Handle the effects of infections
 	if(robotic >= ORGAN_ROBOT) //Just in case!
 		germ_level = 0
-		return 0
+		return FALSE
 
 	var/antibiotics = owner.chem_effects[CE_ANTIBIOTIC] || 0
 
@@ -238,7 +238,7 @@ var/list/organ_cache = list()
 						owner.reagents.add_reagent("toxin", rand(1,2))
 
 /obj/item/organ/proc/receive_chem(chemical as obj)
-	return 0
+	return FALSE
 
 /obj/item/organ/proc/remove_rejuv()
 	qdel(src)
@@ -427,13 +427,13 @@ var/list/organ_cache = list()
 
 /obj/item/organ/proc/organ_can_feel_pain()
 	if(species.flags & NO_PAIN)
-		return 0
+		return FALSE
 	if(status & ORGAN_DESTROYED)
-		return 0
+		return FALSE
 	if(robotic && robotic < ORGAN_LIFELIKE)	//Super fancy humanlike robotics probably have sensors, or something?
-		return 0
+		return FALSE
 	if(stapled_nerves)
-		return 0
+		return FALSE
 	return 1
 
 /obj/item/organ/proc/handle_organ_mod_special(var/removed = FALSE)	// Called when created, transplanted, and removed.

@@ -191,13 +191,13 @@ steam.start() -- spawns the effect
 
 /obj/effect/effect/smoke/proc/affect(var/mob/living/carbon/M)
 	if (!istype(M))
-		return 0
+		return FALSE
 	if(M.wear_mask && (M.wear_mask.item_flags & AIRTIGHT))
-		return 0
+		return FALSE
 	if(istype(M,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
 		if(H.head && (H.head.item_flags & AIRTIGHT))
-			return 0
+			return FALSE
 	return 1
 
 /////////////////////////////////////////////
@@ -230,7 +230,7 @@ steam.start() -- spawns the effect
 
 /obj/effect/effect/smoke/bad/affect(var/mob/living/L)
 	if (!..())
-		return 0
+		return FALSE
 	if(L.needs_to_breathe())
 		L.adjustOxyLoss(1)
 		if(prob(25))
@@ -284,7 +284,7 @@ steam.start() -- spawns the effect
 	name = "burning cloud"
 	desc = "A cloud of something that is on fire."
 	color = "#FF9933"
-	light_color = "#FF0000"
+	light_color = COLOR_RED
 	light_range = 2
 	light_power = 5
 

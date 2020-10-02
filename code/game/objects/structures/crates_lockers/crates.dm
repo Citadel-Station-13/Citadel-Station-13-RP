@@ -20,9 +20,9 @@
 
 /obj/structure/closet/crate/open()
 	if(src.opened)
-		return 0
+		return FALSE
 	if(!src.can_open())
-		return 0
+		return FALSE
 
 	if(rigged && locate(/obj/item/radio/electropack) in src)
 		if(isliving(usr))
@@ -46,9 +46,9 @@
 
 /obj/structure/closet/crate/close()
 	if(!src.opened)
-		return 0
+		return FALSE
 	if(!src.can_close())
-		return 0
+		return FALSE
 
 	playsound(src.loc, 'sound/machines/click.ogg', 15, 1, -3)
 	var/itemcount = 0

@@ -2,7 +2,7 @@
 	name = "Computer networking component"
 
 /obj/item/part/computer/networking/allow_attackby(var/obj/item/I, var/mob/user)
-	return 0
+	return FALSE
 
 /*
 	This is the public-facing proc used by NETUP.
@@ -54,7 +54,7 @@
 	Overwrite this on any networking component.
 */
 /obj/item/part/computer/networking/proc/verify_machine(var/obj/previous)
-	return 0
+	return FALSE
 
 /*
 	Provides radio/signaler functionality, and also
@@ -114,14 +114,14 @@
 
 /obj/item/part/computer/networking/radio/verify_machine(var/obj/previous)
 	if(!previous)
-		return 0
+		return FALSE
 	if(subspace)
 		return ( radio_connection && (previous in radio_connection.devices) )
 	else
 		var/turf/T = get_turf(loc)
 		var/turf/O = get_turf(previous)
 		if(!T || !O)
-			return 0
+			return FALSE
 		return ( radio_connection && (previous in radio_connection.devices) && (T.z == O.z))
 
 /*
@@ -153,11 +153,11 @@
 	return machines
 
 /obj/item/part/computer/networking/area/verify_machine(var/obj/previous)
-	if(!previous) return 0
+	if(!previous) return FALSE
 	var/area/A = get_area(src)
 	if( A && A == get_area(previous) )
 		return 1
-	return 0
+	return FALSE
 
 /*
 	Proximity networking: Connects to machines or computers adjacent to this device
@@ -185,10 +185,10 @@
 
 /obj/item/part/computer/networking/prox/verify_machine(var/obj/previous)
 	if(!previous)
-		return 0
+		return FALSE
 	if(get_dist(get_turf(previous),get_turf(loc)) == 1)
 		return 1
-	return 0
+	return FALSE
 
 /*
 	Cable networking: Not currently used
@@ -224,7 +224,7 @@
 
 /obj/item/part/computer/networking/cable/verify_machine(var/obj/previous)
 	if(!previous)
-		return 0
+		return FALSE
 	var/turf/T = get_turf(loc)
 	var/datum/powernet/P = null
 	for(var/obj/structure/cable/C in T)
@@ -234,10 +234,10 @@
 	if(istype(previous,/datum/powernet))
 		if(previous == P)
 			return 1
-		return 0
+		return FALSE
 	T = get_turf(previous.loc)
 	for(var/obj/structure/cable/C in T)
 		if(C.d1 == 0 && (C.powernet == P))
 			return 1
-	return 0
+	return FALSE
 

@@ -48,7 +48,7 @@
 	..()
 
 /obj/item/dogborg/sleeper/Exit(atom/movable/O)
-	return 0
+	return FALSE
 
 /obj/item/dogborg/sleeper/afterattack(var/atom/movable/target, mob/living/silicon/user, proximity)
 	hound = loc
@@ -335,7 +335,7 @@
 	if(href_list["deliveryslot"])
 		var/tag = input("Select active delivery slot.") as null|anything in deliverylists
 		if(!tag)
-			return 0
+			return FALSE
 		delivery_tag = tag
 		sleeperUI(usr)
 		return

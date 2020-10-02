@@ -3,7 +3,7 @@
 /hook/sell_shuttle/proc/supply_demand_sell_shuttle(var/area/area_shuttle)
 	for(var/datum/event/supply_demand/E in running_demand_events)
 		E.handle_sold_shuttle(area_shuttle)
-	return 1 // All hooks must return one to show success.
+	return TRUE // All hooks must return one to show success.
 
 //
 // The Supply Demand Event - CentCom asks for us to put some stuff on the shuttle
@@ -129,14 +129,14 @@
 		if(meta.match_item(I))
 			if(meta.qty_need <= 0)
 				required_items -= meta
-			return 1
-	return 0 // Nothing found if we get here
+			return TRUE
+	return FALSE // Nothing found if we get here
 
 /**
  * Utility method to send message to request consoles.
  * @param message - Message to send
  * @param to_department - Name of department to deliver to, or null to send to all departments.
- * @return 1 if successful, 0 if couldn't send.
+ * @return TRUE if successful, 0 if couldn't send.
  */
 /datum/event/supply_demand/proc/send_console_message(var/message, var/to_department)
 	for(var/obj/machinery/message_server/MS in world)
@@ -160,7 +160,7 @@
 	return "[name] - (Qty: [qty_need])"
 
 /datum/supply_demand_order/proc/match_item(var/atom/I)
-	return 0
+	return FALSE
 
 //
 // Request is for a physical thing
@@ -186,7 +186,7 @@
 		else
 			qty_need -= 1
 			qdel(I)
-		return 1
+		return TRUE
 
 //
 // Request is for an amount of some reagent
@@ -212,7 +212,7 @@
 	if(amount_to_take >= 1)
 		I.reagents.remove_reagent(reagent_id, amount_to_take, safety = 1)
 		qty_need = CEILING((qty_need - amount_to_take), 1)
-		return 1
+		return TRUE
 	else
 		log_debug("supply_demand event: not taking reagent '[reagent_id]': [amount_to_take]")
 	return
@@ -251,7 +251,7 @@
 			return // Fail!
 	// Huh, it actually matches!
 	qty_need -= 1
-	return 1
+	return TRUE
 
 //
 // Item choosing procs - Decide what supplies will be demanded!

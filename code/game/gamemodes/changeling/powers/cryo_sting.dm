@@ -15,7 +15,7 @@
 
 	var/mob/living/carbon/T = changeling_sting(20,/mob/proc/changeling_cryo_sting)
 	if(!T)
-		return 0
+		return FALSE
 	add_attack_logs(src,T,"Cryo sting (changeling)")
 	var/inject_amount = 10
 	if(src.mind.changeling.recursive_enhancement)

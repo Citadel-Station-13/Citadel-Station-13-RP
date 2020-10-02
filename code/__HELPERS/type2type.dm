@@ -96,7 +96,7 @@
 // Turns text into proper directions
 /proc/text2dir(direction)
 	switch (uppertext(direction))
-		if ("NORTH")     return 1
+		if ("NORTH")     return TRUE
 		if ("SOUTH")     return 2
 		if ("EAST")      return 4
 		if ("WEST")      return 8
@@ -120,7 +120,7 @@
 // Returns the north-zero clockwise angle in degrees, given a direction
 /proc/dir2angle(var/D)
 	switch (D)
-		if (NORTH)     return 0
+		if (NORTH)     return FALSE
 		if (SOUTH)     return 180
 		if (EAST)      return 90
 		if (WEST)      return 270
@@ -184,14 +184,14 @@
 // returns "YYYY-MM-DD" by default
 /proc/unix2date(timestamp, seperator = "-")
 	if(timestamp < 0)
-		return 0 //Do not accept negative values
+		return FALSE //Do not accept negative values
 
 	var/const/dayInSeconds = 86400 //60secs*60mins*24hours
 	var/const/daysInYear = 365 //Non Leap Year
 	var/const/daysInLYear = daysInYear + 1//Leap year
 	var/days = round(timestamp / dayInSeconds) //Days passed since UNIX Epoc
 	var/year = 1970 //Unix Epoc begins 1970-01-01
-	var/tmpDays = days + 1 //If passed (timestamp < dayInSeconds), it will return 0, so add 1
+	var/tmpDays = days + 1 //If passed (timestamp < dayInSeconds), it will return FALSE, so add 1
 	var/monthsInDays = list() //Months will be in here ***Taken from the PHP source code***
 	var/month = 1 //This will be the returned MONTH NUMBER.
 	var/day //This will be the returned day number.

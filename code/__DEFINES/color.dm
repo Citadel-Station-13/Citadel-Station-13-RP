@@ -1,8 +1,10 @@
 
 // General colors
 #define COLOR_WHITE				"#FFFFFF"
+#define COLOR_PALE_WHITE		"#E2E2E2"
 #define COLOR_SILVER			"#C0C0C0"
 #define COLOR_GRAY				"#808080"
+#define COLOR_STEEL				"#666666"
 #define COLOR_GRAY_DARK			"#444444"
 #define COLOR_BLACK				"#000000"
 #define COLOR_RED_LIGHT			"#FF3333"
@@ -21,13 +23,14 @@
 #define COLOR_BLUE				"#0000FF"
 #define COLOR_NAVY				"#000080"
 #define COLOR_VIOLET			"#5c1ec0"
+#define COLOR_HOT_PINK			"#FF69B4"
 #define COLOR_PINK				"#FF00FF"
 #define COLOR_PURPLE			"#800080"
 #define COLOR_LUMINOL			"#66FFFF"
 #define COLOR_BEIGE				"#CEB689"
 #define COLOR_BLUE_GRAY			"#6A97B0"
 #define COLOR_BROWN				"#B19664"
-#define COLOR_DARK_BROWN		"#917448"
+#define COLOR_BROWN_DARK		"#917448"
 #define COLOR_GREEN_GRAY		"#8DAF6A"
 #define COLOR_RED_GRAY			"#AA5F61"
 #define COLOR_PALE_BLUE_GRAY	"#8BBBD5"
@@ -38,9 +41,10 @@
 #define COLOR_DEEP_SKY_BLUE		"#00e1ff"
 
 // Color defines used by the assembly detailer.
+// Colors that are used elsewhere as well should be put into the main list and pulled. Examples being White and Hot Pink.
 #define COLOR_ASSEMBLY_BLACK	"#545454"
 #define COLOR_ASSEMBLY_BGRAY	"#9497AB"
-#define COLOR_ASSEMBLY_WHITE	"#E2E2E2"
+#define COLOR_ASSEMBLY_WHITE	COLOR_PALE_WHITE
 #define COLOR_ASSEMBLY_RED		"#CC4242"
 #define COLOR_ASSEMBLY_ORANGE	"#E39751"
 #define COLOR_ASSEMBLY_BEIGE	"#AF9366"
@@ -53,10 +57,9 @@
 #define COLOR_ASSEMBLY_LBLUE	"#5D99BE"
 #define COLOR_ASSEMBLY_BLUE		"#38559E"
 #define COLOR_ASSEMBLY_PURPLE	"#6F6192"
-#define COLOR_ASSEMBLY_HOT_PINK	"#FF69B4"
+#define COLOR_ASSEMBLY_HOT_PINK	COLOR_HOTPINK
 
 // Misc Colors
 #define COLOR_ASTEROID_ROCK		"#735555"
-
 #define SYNTH_BLOOD_COLOR		"#030303"
 #define SYNTH_FLESH_COLOR		"#575757"

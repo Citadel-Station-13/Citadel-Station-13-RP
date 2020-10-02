@@ -18,7 +18,7 @@
 
 /obj/item/spacecash/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/spacecash))
-		if(istype(W, /obj/item/spacecash/ewallet)) return 0
+		if(istype(W, /obj/item/spacecash/ewallet)) return FALSE
 
 		var/obj/item/spacecash/SC = W
 
@@ -68,7 +68,7 @@
 		return worth
 	else
 		qdel(src)
-		return 0
+		return FALSE
 
 /obj/item/spacecash/proc/set_worth(var/new_worth = 0, var/update = 1)
 	worth = max(0, new_worth)

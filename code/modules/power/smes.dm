@@ -108,7 +108,7 @@
 		terminal.master = null
 		terminal = null
 		return 1
-	return 0
+	return FALSE
 
 /obj/machinery/power/smes/update_icon()
 	overlays.Cut()
@@ -233,14 +233,14 @@
 		terminal.setDir(tempDir)
 		terminal.master = src
 		terminal.connect_to_network()
-		return 0
+		return FALSE
 	return 1
 
 
 /obj/machinery/power/smes/draw_power(var/amount)
 	if(terminal && terminal.powernet)
 		return terminal.powernet.draw_power(amount)
-	return 0
+	return FALSE
 
 
 /obj/machinery/power/smes/attack_ai(mob/user)
@@ -258,16 +258,16 @@
 			open_hatch = 1
 			to_chat(user, "<span class='notice'>You open the maintenance hatch of [src].</span>")
 			playsound(src, W.usesound, 50, 1)
-			return 0
+			return FALSE
 		else
 			open_hatch = 0
 			to_chat(user, "<span class='notice'>You close the maintenance hatch of [src].</span>")
 			playsound(src, W.usesound, 50, 1)
-			return 0
+			return FALSE
 
 	if (!open_hatch)
 		to_chat(user, "<span class='warning'>You need to open access hatch on [src] first!</span>")
-		return 0
+		return FALSE
 
 	if(istype(W, /obj/item/stack/cable_coil) && !terminal && !building_terminal)
 		building_terminal = 1
@@ -275,17 +275,17 @@
 		if (CC.get_amount() < 10)
 			to_chat(user, "<span class='warning'>You need more cables.</span>")
 			building_terminal = 0
-			return 0
+			return FALSE
 		if (make_terminal(user))
 			building_terminal = 0
-			return 0
+			return FALSE
 		building_terminal = 0
 		CC.use(10)
 		user.visible_message(\
 				"<span class='notice'>[user.name] has added cables to the [src].</span>",\
 				"<span class='notice'>You added cables to the [src].</span>")
 		stat = 0
-		return 0
+		return FALSE
 
 	else if(W.is_wirecutter() && terminal && !building_terminal)
 		building_terminal = 1
@@ -303,14 +303,14 @@
 						s.start()
 						building_terminal = 0
 						if(usr.stunned)
-							return 0
+							return FALSE
 					new /obj/item/stack/cable_coil(loc,10)
 					user.visible_message(\
 						"<span class='notice'>[user.name] cut the cables and dismantled the power terminal.</span>",\
 						"<span class='notice'>You cut the cables and dismantle the power terminal.</span>")
 					qdel(terminal)
 		building_terminal = 0
-		return 0
+		return FALSE
 	return 1
 
 /obj/machinery/power/smes/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)

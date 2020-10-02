@@ -132,10 +132,10 @@ TRIUMPH_TURF_CREATE(/turf/simulated/mineral/floor)
 
 
 /turf/unsimulated/wall
-	blocks_air = 1
+	blocks_air = TRUE
 
 /turf/unsimulated/wall/planetary
-	blocks_air = 0
+	blocks_air = FALSE
 
 // Some turfs to make floors look better in centcom tram station.
 

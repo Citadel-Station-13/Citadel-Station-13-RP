@@ -484,15 +484,15 @@ GLOBAL_LIST_EMPTY(PDAs)
 /obj/item/pda/proc/can_use()
 
 	if(!ismob(loc))
-		return 0
+		return FALSE
 
 	var/mob/M = loc
 	if(M.stat || M.restrained() || M.paralysis || M.stunned || M.weakened)
-		return 0
+		return FALSE
 	if((src in M.contents) || ( istype(loc, /turf) && in_range(src, M) ))
 		return 1
 	else
-		return 0
+		return FALSE
 
 /obj/item/pda/GetAccess()
 	if(id)
@@ -711,12 +711,12 @@ GLOBAL_LIST_EMPTY(PDAs)
 	//Looking for master was kind of pointless since PDAs don't appear to have one.
 	//if ((src in U.contents) || ( istype(loc, /turf) && in_range(src, U) ) )
 	if (usr.stat == DEAD)
-		return 0
+		return FALSE
 	if(!can_use()) //Why reinvent the wheel? There's a proc that does exactly that.
 		U.unset_machine()
 		if(ui)
 			ui.close()
-		return 0
+		return FALSE
 
 	add_fingerprint(U)
 	U.set_machine(src)
@@ -728,7 +728,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 		if("Close")//Self explanatory
 			U.unset_machine()
 			ui.close()
-			return 0
+			return FALSE
 		if("Refresh")//Refresh, goes to the end of the proc.
 		if("Return")//Return
 			if(mode<=9)
@@ -848,14 +848,14 @@ GLOBAL_LIST_EMPTY(PDAs)
 					ringtone = sanitize(t, 20)
 			else
 				ui.close()
-				return 0
+				return FALSE
 		if("Newstone")
 			var/t = input(U, "Please enter new news tone", name, newstone) as text
 			if (in_range(src, U) && loc == U && t)
 				newstone = sanitize(t, 20)
 			else
 				ui.close()
-				return 0
+				return FALSE
 		if("Message")
 
 			var/obj/item/pda/P = locate(href_list["target"])
@@ -889,7 +889,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 					to_chat(U, "PDA not found.")
 			else
 				ui.close()
-				return 0
+				return FALSE
 		if("Send Silence")//Silent virus
 			if(cartridge && cartridge.access_mime)
 				var/obj/item/pda/P = locate(href_list["target"])
@@ -905,7 +905,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 					to_chat(U, "PDA not found.")
 			else
 				ui.close()
-				return 0
+				return FALSE
 
 
 //SYNDICATE FUNCTIONS===================================
@@ -965,7 +965,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 			else
 				U.unset_machine()
 				ui.close()
-				return 0
+				return FALSE
 
 //pAI FUNCTIONS===================================
 		if("pai")
@@ -1309,7 +1309,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 			id = I
 			user.put_in_hands(old_id)
 			return 1
-	return 0
+	return FALSE
 
 // access to status display signals
 /obj/item/pda/attackby(obj/item/C as obj, mob/user as mob)

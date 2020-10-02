@@ -58,11 +58,11 @@
 /obj/machinery/portable_atmospherics/proc/connect(obj/machinery/atmospherics/portables_connector/new_port)
 	//Make sure not already connected to something else
 	if(connected_port || !new_port || new_port.connected_device)
-		return 0
+		return FALSE
 
 	//Make sure are close enough for a valid connection
 	if(new_port.loc != loc)
-		return 0
+		return FALSE
 
 	//Perform the connection
 	connected_port = new_port
@@ -81,7 +81,7 @@
 
 /obj/machinery/portable_atmospherics/proc/disconnect()
 	if(!connected_port)
-		return 0
+		return FALSE
 
 	var/datum/pipe_network/network = connected_port.return_network(src)
 	if(network)
@@ -157,7 +157,7 @@
 		return ..()
 	if(cell && cell.charge)
 		return 1
-	return 0
+	return FALSE
 
 /obj/machinery/portable_atmospherics/powered/attackby(obj/item/I, mob/user)
 	if(use_cell && istype(I, /obj/item/cell))

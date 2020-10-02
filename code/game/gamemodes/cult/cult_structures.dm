@@ -101,7 +101,7 @@
 // Returns 1 if the pylon does something special.
 /obj/structure/cult/pylon/proc/pylon_unique()
 	last_activation = world.time
-	return 0
+	return FALSE
 
 /obj/structure/cult/pylon/process()
 	if(!isbroken && (last_activation < world.time + activation_cooldown) && pylon_unique())
@@ -134,7 +134,7 @@
 
 /obj/effect/gateway/active
 	light_range=5
-	light_color="#ff0000"
+	light_color=COLOR_RED
 	spawnable=list(
 		/mob/living/simple_mob/animal/space/bats,
 		/mob/living/simple_mob/creature,
@@ -143,7 +143,7 @@
 
 /obj/effect/gateway/active/cult
 	light_range=5
-	light_color="#ff0000"
+	light_color=COLOR_RED
 	spawnable=list(
 		/mob/living/simple_mob/animal/space/bats/cult,
 		/mob/living/simple_mob/creature/cult,

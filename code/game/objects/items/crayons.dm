@@ -37,19 +37,19 @@
 /obj/item/pen/crayon/mime
 	icon_state = "crayonmime"
 	desc = "A very sad-looking crayon."
-	color = "#FFFFFF"
-	shadeColour = "#000000"
+	color = COLOR_WHITE
+	shadeColour = COLOR_BLACK
 	colorName = "mime"
 	uses = 0
 
 /obj/item/pen/crayon/mime/attack_self(mob/living/user as mob) //inversion
-	if(color != "#FFFFFF" && shadeColour != "#000000")
-		color = "#FFFFFF"
-		shadeColour = "#000000"
+	if(color != COLOR_WHITE && shadeColour != COLOR_BLACK)
+		color = COLOR_WHITE
+		shadeColour = COLOR_BLACK
 		to_chat(user, "You will now draw in white and black with this crayon.")
 	else
-		color = "#000000"
-		shadeColour = "#FFFFFF"
+		color = COLOR_BLACK
+		shadeColour = COLOR_WHITE
 		to_chat(user, "You will now draw in black and white with this crayon.")
 	return
 
@@ -110,7 +110,7 @@
 /obj/item/pen/crayon/marker/black
 	icon_state = "markerblack"
 	color = "#2D2D2D"
-	shadeColour = "#000000"
+	shadeColour = COLOR_BLACK
 	colorName = "black"
 
 /obj/item/pen/crayon/marker/red
@@ -152,19 +152,19 @@
 /obj/item/pen/crayon/marker/mime
 	icon_state = "markermime"
 	desc = "A very sad-looking marker."
-	color = "#FFFFFF"
-	shadeColour = "#000000"
+	color = COLOR_WHITE
+	shadeColour = COLOR_BLACK
 	colorName = "mime"
 	uses = 0
 
 /obj/item/pen/crayon/marker/mime/attack_self(mob/living/user as mob) //inversion
-	if(color != "#FFFFFF" && shadeColour != "#000000")
-		color = "#FFFFFF"
-		shadeColour = "#000000"
+	if(color != COLOR_WHITE && shadeColour != COLOR_BLACK)
+		color = COLOR_WHITE
+		shadeColour = COLOR_BLACK
 		to_chat(user, "You will now draw in white and black with this marker.")
 	else
-		color = "#000000"
-		shadeColour = "#FFFFFF"
+		color = COLOR_BLACK
+		shadeColour = COLOR_WHITE
 		to_chat(user, "You will now draw in black and white with this marker.")
 	return
 
@@ -196,8 +196,8 @@
 //Ritual Chalk
 /obj/item/pen/crayon/chalk
 	icon_state = "chalkwhite"
-	color = "#FFFFFF"
-	shadeColour = "#000000"
+	color = COLOR_WHITE
+	shadeColour = COLOR_BLACK
 	colorName = "yellow"
 
 /obj/item/pen/crayon/chalk/red
@@ -209,7 +209,7 @@
 /obj/item/pen/crayon/chalk/black
 	icon_state = "chalkblack"
 	color = "#2D2D2D"
-	shadeColour = "#000000"
+	shadeColour = COLOR_BLACK
 	colorName = "black"
 
 /obj/item/pen/crayon/chalk/blue

@@ -50,7 +50,7 @@
 	// Instead any such checks are made in CanUseTopic()
 	if(CanUseTopic(usr, state, href_list) == STATUS_INTERACTIVE)
 		CouldUseTopic(usr)
-		return 0
+		return FALSE
 
 	CouldNotUseTopic(usr)
 	return 1
@@ -160,7 +160,7 @@
 	return
 
 /obj/proc/hides_under_flooring()
-	return 0
+	return FALSE
 
 /obj/proc/hear_talk(mob/M as mob, text, verb, datum/language/speaking)
 	if(talking_atom)

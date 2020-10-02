@@ -25,7 +25,7 @@ SUBSYSTEM_DEF(jobs)
 	var/list/all_jobs = list(/datum/job/assistant) | GLOB.using_map.allowed_jobs
 	if(!all_jobs.len)
 		world << "<span class='warning'>Error setting up jobs, no job datums found!</span>"
-		return 0
+		return FALSE
 	for(var/J in all_jobs)
 		var/datum/job/job = new J()
 		if(!job)	continue
@@ -37,7 +37,7 @@ SUBSYSTEM_DEF(jobs)
 
 /datum/controller/subsystem/jobs/proc/Debug(var/text)
 	if(!Debug2)
-		return 0
+		return FALSE
 	job_debug.Add(text)
 	return 1
 
@@ -60,15 +60,15 @@ SUBSYSTEM_DEF(jobs)
 	if(player && player.mind && rank)
 		var/datum/job/job = GetJob(rank)
 		if(!job)
-			return 0
+			return FALSE
 		if(job.minimum_character_age && (player.client.prefs.age < job.minimum_character_age))
-			return 0
+			return FALSE
 		if(jobban_isbanned(player, rank))
-			return 0
+			return FALSE
 		if(!job.player_old_enough(player.client))
-			return 0
+			return FALSE
 		if(!is_job_whitelisted(player, rank)) //VOREStation Code
-			return 0
+			return FALSE
 
 		var/position_limit = job.total_positions
 		if(!latejoin)
@@ -81,14 +81,14 @@ SUBSYSTEM_DEF(jobs)
 			job.current_positions++
 			return 1
 	Debug("AR has failed, Player: [player], Rank: [rank]")
-	return 0
+	return FALSE
 
 /datum/controller/subsystem/jobs/proc/FreeRole(var/rank)	//making additional slot on the fly
 	var/datum/job/job = GetJob(rank)
 	if(job && job.total_positions != -1)
 		job.total_positions++
 		return 1
-	return 0
+	return FALSE
 
 /datum/controller/subsystem/jobs/proc/FindOccupationCandidates(datum/job/job, level, flag)
 	Debug("Running FOC, Job: [job], Level: [level], Flag: [flag]")
@@ -199,7 +199,7 @@ SUBSYSTEM_DEF(jobs)
 			var/mob/new_player/candidate = pickweight(weightedCandidates)
 			if(AssignRole(candidate, command_position))
 				return 1
-	return 0
+	return FALSE
 
 
 ///This proc is called at the start of the level loop of DivideOccupations() and will cause head jobs to be checked before any other jobs of the same level
@@ -236,7 +236,7 @@ SUBSYSTEM_DEF(jobs)
 			unassigned += player
 
 	Debug("DO, Len: [unassigned.len]")
-	if(unassigned.len == 0)	return 0
+	if(unassigned.len == 0)	return FALSE
 
 	//Shuffle players and jobs
 	unassigned = shuffle(unassigned)
@@ -572,9 +572,9 @@ SUBSYSTEM_DEF(jobs)
 
 
 /datum/controller/subsystem/jobs/proc/spawnId(var/mob/living/carbon/human/H, rank, title)
-	if(!H)	return 0
+	if(!H)	return FALSE
 	var/obj/item/card/id/C = H.get_equipped_item(slot_wear_id)
-	if(istype(C))  return 0
+	if(istype(C))  return FALSE
 
 	var/datum/job/job = null
 	for(var/datum/job/J in occupations)
@@ -614,7 +614,7 @@ SUBSYSTEM_DEF(jobs)
 
 /datum/controller/subsystem/jobs/proc/LoadJobs(jobsfile) //ran during round setup, reads info from jobs.txt -- Urist
 	if(!config_legacy.load_jobs_from_txt)
-		return 0
+		return FALSE
 
 	var/list/jobEntries = file2list(jobsfile)
 

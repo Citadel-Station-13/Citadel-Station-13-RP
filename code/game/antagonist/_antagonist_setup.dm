@@ -67,4 +67,4 @@ var/global/list/antag_names_to_ids = list()
 			return 1
 		if(player in antag.pending_antagonists)
 			return 1
-	return 0
+	return FALSE

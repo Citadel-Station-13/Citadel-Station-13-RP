@@ -397,7 +397,7 @@ var/list/floor_decals = list()
 
 /obj/effect/floor_decal/corner/brown
 	name = "brown corner"
-	color = COLOR_DARK_BROWN
+	color = COLOR_BROWN_DARK
 
 /obj/effect/floor_decal/corner/brown/diagonal
 	icon_state = "corner_white_diagonal"
@@ -581,7 +581,7 @@ var/list/floor_decals = list()
 
 /obj/effect/floor_decal/industrial/outline/grey
 	name = "grey outline"
-	color = "#808080"
+	color = COLOR_GRAY
 
 /obj/effect/floor_decal/industrial/loading
 	name = "loading area"

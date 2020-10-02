@@ -174,22 +174,22 @@
 /obj/item/gun/proc/special_check(var/mob/user)
 
 	if(!istype(user, /mob/living))
-		return 0
+		return FALSE
 	if(!user.IsAdvancedToolUser())
-		return 0
+		return FALSE
 	if(isanimal(user))
 		var/mob/living/simple_mob/S = user
 		if(!S.IsHumanoidToolUser(src))
-			return 0
+			return FALSE
 	if(!handle_pins(user))
-		return 0
+		return FALSE
 
 	var/mob/living/M = user
 	if(dna_lock && attached_lock.stored_dna)
 		if(!authorized_user(user))
 			if(attached_lock.safety_level == 0)
 				to_chat(M, "<span class='danger'>\The [src] buzzes in dissapointment and displays an invalid DNA symbol.</span>")
-				return 0
+				return FALSE
 			if(!attached_lock.exploding)
 				if(attached_lock.safety_level == 1)
 					to_chat(M, "<span class='danger'>\The [src] hisses in dissapointment.</span>")
@@ -199,10 +199,10 @@
 						explosion(src, 0, 0, 3, 4)
 						sleep(1)
 						qdel(src)
-					return 0
+					return FALSE
 	if(HULK in M.mutations)
 		to_chat(M, "<span class='danger'>Your fingers are much too large for the trigger guard!</span>")
-		return 0
+		return FALSE
 	if((CLUMSY in M.mutations) && prob(40)) //Clumsy handling
 		var/obj/P = consume_next_projectile()
 		if(P)
@@ -216,7 +216,7 @@
 				M.drop_item()
 		else
 			handle_click_empty(user)
-		return 0
+		return FALSE
 	return 1
 
 /obj/item/gun/emp_act(severity)
@@ -739,7 +739,7 @@
 			return 1
 		else
 			pin.auth_fail(user)
-			return 0
+			return FALSE
 	else
 		to_chat(user, "<span class='warning'>[src]'s trigger is locked. This weapon doesn't have a firing pin installed!</span>")
-	return 0
+	return FALSE

@@ -18,13 +18,13 @@
 
 /datum/antagonist/proc/add_antagonist_mind(var/datum/mind/player, var/ignore_role, var/nonstandard_role_type, var/nonstandard_role_msg)
 	if(!istype(player))
-		return 0
+		return FALSE
 	if(!player.current)
-		return 0
+		return FALSE
 	if(player in current_antagonists)
-		return 0
+		return FALSE
 	if(!can_become_antag(player, ignore_role))
-		return 0
+		return FALSE
 	current_antagonists |= player
 
 	if(faction_verb && player.current)
@@ -64,4 +64,4 @@
 			player.current.client.verbs -= /client/proc/aooc
 			player.ambitions = ""
 		return 1
-	return 0
+	return FALSE

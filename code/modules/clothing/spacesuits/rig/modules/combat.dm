@@ -39,7 +39,7 @@
 /obj/item/rig_module/grenade_launcher/accepts_item(var/obj/item/input_device, var/mob/living/user)
 
 	if(!istype(input_device) || !istype(user))
-		return 0
+		return FALSE
 
 	var/datum/rig_charge/accepted_item
 	for(var/charge in charges)
@@ -49,40 +49,40 @@
 			break
 
 	if(!accepted_item)
-		return 0
+		return FALSE
 
 	if(accepted_item.charges >= 5)
 		to_chat(user, "<span class='danger'>Another grenade of that type will not fit into the module.</span>")
-		return 0
+		return FALSE
 
 	to_chat(user, "<font color='blue'><b>You slot \the [input_device] into the suit module.</b></font>")
 	user.drop_from_inventory(input_device)
 	qdel(input_device)
 	accepted_item.charges++
-	return 1
+	return TRUE
 
 /obj/item/rig_module/grenade_launcher/engage(atom/target)
 
 	if(!..())
-		return 0
+		return FALSE
 
 	if(!target)
-		return 0
+		return FALSE
 
 	var/mob/living/carbon/human/H = holder.wearer
 
 	if(!charge_selected)
 		to_chat(H, "<span class='danger'>You have not selected a grenade type.</span>")
-		return 0
+		return FALSE
 
 	var/datum/rig_charge/charge = charges[charge_selected]
 
 	if(!charge)
-		return 0
+		return FALSE
 
 	if(charge.charges <= 0)
 		to_chat(H, "<span class='danger'>Insufficient grenades!</span>")
-		return 0
+		return FALSE
 
 	charge.charges--
 	var/obj/item/grenade/new_grenade = new charge.product_type(get_turf(H))
@@ -140,14 +140,14 @@
 /obj/item/rig_module/mounted/engage(atom/target)
 
 	if(!..())
-		return 0
+		return FALSE
 
 	if(!target)
 		gun.attack_self(holder.wearer)
 		return
 
 	gun.Fire(target,holder.wearer)
-	return 1
+	return TRUE
 
 /obj/item/rig_module/mounted/egun
 
@@ -202,7 +202,7 @@
 	if(holder && holder.wearer)
 		if(!(locate(/obj/item/melee/energy/blade) in holder.wearer))
 			deactivate()
-			return 0
+			return FALSE
 
 	return ..()
 
@@ -255,7 +255,7 @@
 /obj/item/rig_module/fabricator/engage(atom/target)
 
 	if(!..())
-		return 0
+		return FALSE
 
 	var/mob/living/H = holder.wearer
 
@@ -273,7 +273,7 @@
 			to_chat(H, "<font color='blue'><b>You quickly fabricate \a [new_weapon].</b></font>")
 			H.put_in_hands(new_weapon)
 
-	return 1
+	return TRUE
 
 /obj/item/rig_module/armblade
 	name = "retractable armblade"
@@ -299,7 +299,7 @@
 	if(holder && holder.wearer)
 		if(!(locate(/obj/item/material/knife/machete/armblade) in holder.wearer))
 			deactivate()
-			return 0
+			return FALSE
 
 	return ..()
 
@@ -340,3 +340,16 @@
 
 	for(var/obj/item/material/knife/machete/armblade/stabby in M.contents)
 		M.drop_from_inventory(stabby)
+
+/obj/item/rig_module/grenade_launcher/cleaner
+	name = "mounted cleaner-grenade launcher"
+	desc = "A shoulder-mounted cleaner-grenade dispenser."
+
+	interface_name = "integrated cleaner-grenade launcher"
+	interface_desc = "Discharges loaded cleaner-grenades against the wearer's location."
+
+	fire_force = 15
+
+	charges = list(
+		list("cleaner grenade",  "cleaner grenade",  /obj/item/grenade/chem_grenade/cleaner,  6)
+		)

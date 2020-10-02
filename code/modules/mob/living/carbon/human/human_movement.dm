@@ -137,7 +137,7 @@
 // Similar to above, but for turf slowdown.
 /mob/living/carbon/human/proc/calculate_turf_slowdown(turf/T, direct)
 	if(!T)
-		return 0
+		return FALSE
 
 	if(T.movement_cost)
 		var/turf_move_cost = T.movement_cost

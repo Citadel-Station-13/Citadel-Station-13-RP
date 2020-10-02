@@ -72,11 +72,11 @@
 
 /mob/living/bot/cleanbot/confirmTarget(var/obj/effect/decal/cleanable/D)
 	if(!..())
-		return 0
+		return FALSE
 	for(var/T in target_types)
 		if(istype(D, T))
 			return 1
-	return 0
+	return FALSE
 
 /mob/living/bot/cleanbot/handleAdjacentTarget()
 	if(get_turf(target) == src.loc)

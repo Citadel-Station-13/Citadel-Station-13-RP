@@ -93,7 +93,7 @@
 	else if(module_state_3 == O)
 		return 1
 	else
-		return 0
+		return FALSE
 	updateicon()
 
 // This one takes an object's type instead of an instance, as above.
@@ -112,7 +112,7 @@
 
 //module_active(module) - Checks whether there is a module active in the slot specified by "module".
 /mob/living/silicon/robot/proc/module_active(var/module) //Module is 1-3
-	if(module < 1 || module > 3) return 0
+	if(module < 1 || module > 3) return FALSE
 
 	switch(module)
 		if(1)
@@ -124,7 +124,7 @@
 		if(3)
 			if(module_state_3)
 				return 1
-	return 0
+	return FALSE
 
 //get_selected_module() - Returns the slot number of the currently selected module.  Returns 0 if no modules are selected.
 /mob/living/silicon/robot/proc/get_selected_module()
@@ -135,7 +135,7 @@
 	else if(module_state_3 && module_active == module_state_3)
 		return 3
 
-	return 0
+	return FALSE
 
 //select_module(module) - Selects the module slot specified by "module"
 /mob/living/silicon/robot/proc/select_module(var/module) //Module is 1-3

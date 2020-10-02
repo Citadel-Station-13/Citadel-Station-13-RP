@@ -64,7 +64,7 @@
 	if(holder)
 		delay *= ADMIN_FTPDELAY_MODIFIER
 	fileaccess_timer = world.time + delay
-	return 0
+	return FALSE
 #undef FTPDELAY
 #undef ADMIN_FTPDELAY_MODIFIER
 

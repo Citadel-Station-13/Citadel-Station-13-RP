@@ -45,7 +45,7 @@
 
 /datum/uplink_item/abstract/announcements/fake_crew_arrival/get_goods(var/obj/item/uplink/U, var/loc, var/mob/user, var/list/args)
 	if(!user)
-		return 0
+		return FALSE
 
 	var/obj/item/card/id/I = user.GetIdCard()
 	var/datum/data/record/random_general_record

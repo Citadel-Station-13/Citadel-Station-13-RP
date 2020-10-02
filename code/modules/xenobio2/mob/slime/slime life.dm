@@ -21,7 +21,7 @@ Slime specific life events go here.
 					nutrition = 0
 				if((prob(10) && !emote_on))	//Slimes might display their food-based emotions over time.
 					var/image/I = new(src.icon)
-					I.color = "#FFFFFF"
+					I.color = COLOR_WHITE
 					I.layer = src.layer + 0.2
 					if((nutrition >= HAPPYLEVEL))
 						if((nutrition >= 1.5 * HAPPYLEVEL))
@@ -50,6 +50,6 @@ Slime specific life events go here.
 				icon_state = "slime adult dead"
 				color = traitdat.traits[TRAIT_XENO_COLOR]
 
-		return 0 //Everything worked okay
+		return FALSE //Everything worked okay
 
 	return 	//xeno/Life() returned 0.

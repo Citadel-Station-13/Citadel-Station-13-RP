@@ -381,18 +381,18 @@
 		istype(O,/obj/item/reagent_containers/food/drinks/shaker))
 
 		if (beaker)
-			return 1
+			return TRUE
 		else
 			src.beaker =  O
 			user.drop_item()
 			O.loc = src
 			update_icon()
 			src.updateUsrDialog()
-			return 0
+			return FALSE
 
 	if(holdingitems && holdingitems.len >= limit)
 		to_chat(user, "The machine cannot hold anymore items.")
-		return 1
+		return TRUE
 
 	if(!istype(O))
 		return
@@ -411,7 +411,7 @@
 
 		if(failed)
 			to_chat(user, "Nothing in the plant bag is usable.")
-			return 1
+			return TRUE
 
 		if(!O.contents.len)
 			to_chat(user, "You empty \the [O] into \the [src].")
@@ -419,28 +419,28 @@
 			to_chat(user, "You fill \the [src] from \the [O].")
 
 		src.updateUsrDialog()
-		return 0
+		return FALSE
 
 	if(istype(O,/obj/item/gripper))
 		var/obj/item/gripper/B = O	//B, for Borg.
 		if(!B.wrapped)
 			to_chat(user, "\The [B] is not holding anything.")
-			return 0
+			return FALSE
 		else
 			var/B_held = B.wrapped
 			to_chat(user, "You use \the [B] to load \the [src] with \the [B_held].")
 
-		return 0
+		return FALSE
 
 	if(!sheet_reagents[O.type] && (!O.reagents || !O.reagents.total_volume))
 		to_chat(user, "\The [O] is not suitable for blending.")
-		return 1
+		return TRUE
 
 	user.remove_from_mob(O)
 	O.loc = src
 	holdingitems += O
 	src.updateUsrDialog()
-	return 0
+	return FALSE
 
 /obj/machinery/reagentgrinder/attack_hand(mob/user as mob)
 	user.set_machine(src)

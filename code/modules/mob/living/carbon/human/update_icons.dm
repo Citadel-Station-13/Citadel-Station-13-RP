@@ -264,7 +264,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 					icon_key += "[ICON_ADD]"
 				//VOREStation Edit End
 			else
-				icon_key += "#000000"
+				icon_key += COLOR_BLACK
 			for(var/M in part.markings)
 				icon_key += "[M][part.markings[M]["color"]]"
 

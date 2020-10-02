@@ -5,7 +5,7 @@
 
 	var/decal =        "remove all decals"
 	var/paint_dir =    "precise"
-	var/paint_color = "#FFFFFF"
+	var/paint_color = COLOR_WHITE
 
 	var/list/decals = list(
 		"quarter-turf" =      list("path" = /obj/effect/floor_decal/corner, "precise" = 1, "colored" = 1),

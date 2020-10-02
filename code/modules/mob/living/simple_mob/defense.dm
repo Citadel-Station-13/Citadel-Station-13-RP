@@ -133,7 +133,7 @@
 /mob/living/simple_mob/electrocute_act(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0, var/def_zone = null)
 	shock_damage *= siemens_coeff
 	if(shock_damage < 1)
-		return 0
+		return FALSE
 
 	apply_damage(damage = shock_damage, damagetype = BURN, def_zone = null, blocked = null, blocked = resistance, used_weapon = null, sharp = FALSE, edge = FALSE)
 	playsound(loc, "sparks", 50, 1, -1)
@@ -192,14 +192,14 @@
 /mob/living/simple_mob/getarmor(def_zone, attack_flag)
 	var/armorval = armor[attack_flag]
 	if(!armorval)
-		return 0
+		return FALSE
 	else
 		return armorval
 
 /mob/living/simple_mob/getsoak(def_zone, attack_flag)
 	var/armorval = armor_soak[attack_flag]
 	if(!armorval)
-		return 0
+		return FALSE
 	else
 		return armorval
 

@@ -20,7 +20,7 @@
 	var/obj/held_item = get_active_hand()
 
 	if(!changeling)
-		return 0
+		return FALSE
 
 	if(held_item == null)
 		if(src.mind.changeling.recursive_enhancement)
@@ -30,7 +30,7 @@
 		else
 			if(changeling_generic_weapon(/obj/item/electric_hand,0))  //Chemical cost is handled in the equip proc.
 				return 1
-		return 0
+		return FALSE
 
 	else
 		// Handle glove conductivity.
@@ -144,7 +144,7 @@
 
 		if(user.mind.changeling.chem_charges < shock_cost)
 			to_chat(src, "<span class='warning'>We require more chemicals to electrocute [C]!</span>")
-			return 0
+			return FALSE
 
 		C.electrocute_act(electrocute_amount * siemens,src,1.0,BP_TORSO)
 		C.stun_effect_act(0, agony_amount * siemens, BP_TORSO, src)
@@ -166,7 +166,7 @@
 
 		if(user.mind.changeling.chem_charges < 10)
 			to_chat(src, "<span class='warning'>We require more chemicals to electrocute [S]!</span>")
-			return 0
+			return FALSE
 
 		S.electrocute_act(60,src,0.75) //If only they had surge protectors.
 		if(siemens)

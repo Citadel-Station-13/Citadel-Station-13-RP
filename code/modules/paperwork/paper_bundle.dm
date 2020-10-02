@@ -45,7 +45,7 @@
 		qdel(W)
 	else
 		if(istype(W, /obj/item/duct_tape_roll))
-			return 0
+			return FALSE
 		if(istype(W, /obj/item/pen))
 			usr << browse("", "window=[name]") //Closes the dialog
 		var/obj/P = pages[page]

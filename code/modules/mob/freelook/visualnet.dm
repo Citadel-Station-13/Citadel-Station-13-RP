@@ -118,7 +118,7 @@
 			chunk.hasChanged(1) // Update now, no matter if it's visible or not.
 		if(chunk.visibleTurfs[position])
 			return 1
-	return 0
+	return FALSE
 
 // Debug verb for VVing the chunk that the turf is in.
 /*

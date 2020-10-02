@@ -65,7 +65,7 @@
 			last_power_draw = idle_power_usage
 		else
 			last_power_draw = 0
-		return 0
+		return FALSE
 
 	last_power_draw = active_power_usage
 
@@ -257,7 +257,7 @@
 // Attept to load materials.  Returns 0 if item wasn't a stack of materials, otherwise 1 (even if failed to load)
 /obj/machinery/atmospherics/binary/algae_farm/proc/try_load_materials(var/mob/user, var/obj/item/stack/material/S)
 	if(!istype(S))
-		return 0
+		return FALSE
 	if(!(S.material.name in stored_material))
 		to_chat(user, "<span class='warning'>\The [src] doesn't accept [material_display_name(S.material)]!</span>")
 		return 1

@@ -35,7 +35,7 @@ var/datum/antagonist/technomancer/technomancers
 /datum/antagonist/technomancer/equip(var/mob/living/carbon/human/technomancer_mob)
 
 	if(!..())
-		return 0
+		return FALSE
 
 	technomancer_mob.equip_to_slot_or_del(new /obj/item/clothing/under/technomancer/master(technomancer_mob), slot_w_uniform)
 	create_id("Technomagus", technomancer_mob)

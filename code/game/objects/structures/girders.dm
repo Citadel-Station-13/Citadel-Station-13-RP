@@ -85,7 +85,7 @@
 
 /obj/structure/girder/attack_generic(var/mob/user, var/damage, var/attack_message = "smashes apart")
 	if(damage < STRUCTURE_MIN_DAMAGE_THRESHOLD)
-		return 0
+		return FALSE
 	user.do_attack_animation(src)
 	visible_message("<span class='danger'>[user] [attack_message] the [src]!</span>")
 	spawn(1) dismantle()
@@ -224,18 +224,18 @@
 	var/amount_to_use = reinf_material ? 1 : 2
 	if(S.get_amount() < amount_to_use)
 		to_chat(user, "<span class='notice'>There isn't enough material here to construct a wall.</span>")
-		return 0
+		return FALSE
 
 	var/datum/material/M = name_to_material[S.default_type]
 	if(!istype(M))
-		return 0
+		return FALSE
 
 	var/wall_fake
 	add_hiddenprint(usr)
 
 	if(M.integrity < 50)
 		to_chat(user, "<span class='notice'>This material is too soft for use in wall construction.</span>")
-		return 0
+		return FALSE
 
 	to_chat(user, "<span class='notice'>You begin adding the plating...</span>")
 
@@ -261,16 +261,16 @@
 /obj/structure/girder/proc/reinforce_with_material(obj/item/stack/material/S, mob/user) //if the verb is removed this can be renamed.
 	if(reinf_material)
 		to_chat(user, "<span class='notice'>\The [src] is already reinforced.</span>")
-		return 0
+		return FALSE
 
 	if(S.get_amount() < 1)
 		to_chat(user, "<span class='notice'>There isn't enough material here to reinforce the girder.</span>")
-		return 0
+		return FALSE
 
 	var/datum/material/M = name_to_material[S.default_type]
 	if(!istype(M) || M.integrity < 50)
 		to_chat(user, "You cannot reinforce \the [src] with that; it is too soft.")
-		return 0
+		return FALSE
 
 	to_chat(user, "<span class='notice'>Now reinforcing...</span>")
 	if (!do_after(user,40) || !S.use(1))

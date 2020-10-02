@@ -22,7 +22,7 @@
 	desc = "It's a little flying drone. This one seems to be watching you..."
 	catalogue_data = list(/datum/category_item/catalogue/technology/drone/ward)
 	icon_state = "ward"
-	glow_color = "#00FF00"
+	glow_color = COLOR_LIME
 	see_invisible = SEE_INVISIBLE_LEVEL_TWO
 
 	has_eye_glow = TRUE
@@ -69,10 +69,10 @@
 /mob/living/simple_mob/mechanical/ward/monitor/update_icon()
 	if(seen_mobs.len)
 		icon_living = "[initial(icon_state)]_spotted"
-		glow_color = "#FF0000"
+		glow_color = COLOR_RED
 	else
 		icon_living = "[initial(icon_state)]"
-		glow_color = "#00FF00"
+		glow_color = COLOR_LIME
 	handle_light() // Update the light immediately.
 	..()
 

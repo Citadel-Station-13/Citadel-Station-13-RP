@@ -44,7 +44,7 @@
 	F.calculate_size()
 	if(!HDD.store_file(F))
 		HDD.store_file(backup)
-		return 0
+		return FALSE
 	is_edited = 0
 	return 1
 
@@ -157,7 +157,7 @@
 		if(!open_file)
 			open_file = sanitize(input(usr, "Enter file name:", "Save As") as text|null)
 			if(!open_file)
-				return 0
+				return FALSE
 		if(!save_file(open_file))
 			error = "I/O error: Unable to save file '[open_file]'."
 		return 1

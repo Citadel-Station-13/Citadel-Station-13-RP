@@ -60,7 +60,7 @@
 		/datum/lore/codex/category/law_minor_violations,
 		/datum/lore/codex/category/law_major_violations
 		)
-	var/list/table_color_headers = list("#66ffff", "#3399ff", "#ffee55", "#ff8855")
+	var/list/table_color_headers = list(COLOR_LUMINOL, "#3399ff", "#ffee55", "#ff8855")
 	var/list/table_color_body_even = list("#ccffff", "#66ccff", "#ffee99", "#ffaa99")
 	var/list/table_color_body_odd = list("#e6ffff", "#b3e6ff", "#fff6cc", "#ffd5cc")
 	spawn(2 SECONDS) // So the rest of the book can finish.

@@ -121,9 +121,9 @@
 									break
 							if (!theAPC)
 								switch(PRP)
-									if (1) 
+									if (1)
 										to_chat(src, "Unable to locate APC!")
-									else 
+									else
 										to_chat(src, "Lost connection with the APC!")
 								src:aiRestorePowerRoutine = 2
 								return
@@ -134,11 +134,11 @@
 									clear_fullscreen("blind") //This, too, is a fix to issue 603
 									return
 							switch(PRP)
-								if (1) 
+								if (1)
 									to_chat(src, "APC located. Optimizing route to APC to avoid needless power waste.")
-								if (2) 
+								if (2)
 									to_chat(src, "Best route identified. Hacking offline APC power port.")
-								if (3) 
+								if (3)
 									to_chat(src, "Power port upload access confirmed. Loading control program into APC power port software.")
 								if (4)
 									to_chat(src, "Transfer complete. Forcing APC to execute program.")
@@ -161,7 +161,7 @@
 
 /mob/living/silicon/ai/proc/lacks_power()
 	if(APU_power)
-		return 0
+		return FALSE
 	var/turf/T = get_turf(src)
 	var/area/A = get_area(src)
 	return ((!A.power_equip) && A.requires_power == 1 || istype(T, /turf/space)) && !istype(src.loc,/obj/item)

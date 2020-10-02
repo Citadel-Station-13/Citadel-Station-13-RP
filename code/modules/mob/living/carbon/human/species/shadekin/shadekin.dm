@@ -177,7 +177,7 @@
 	var/obj/item/organ/internal/brain/shadekin/shade_organ = H.internal_organs_by_name[O_BRAIN]
 
 	if(!istype(shade_organ))
-		return 0
+		return FALSE
 
 	return shade_organ.dark_energy
 
@@ -185,7 +185,7 @@
 	var/obj/item/organ/internal/brain/shadekin/shade_organ = H.internal_organs_by_name[O_BRAIN]
 
 	if(!istype(shade_organ))
-		return 0
+		return FALSE
 
 	return shade_organ.max_dark_energy
 
@@ -201,7 +201,7 @@
 	var/obj/item/organ/internal/brain/shadekin/shade_organ = H.internal_organs_by_name[O_BRAIN]
 
 	if(!istype(shade_organ))
-		return 0
+		return FALSE
 
 	shade_organ.max_dark_energy = new_max_energy
 
@@ -209,7 +209,7 @@
 	var/obj/item/organ/internal/brain/shadekin/shade_organ = H.internal_organs_by_name[O_BRAIN]
 
 	if(!istype(shade_organ))
-		return 0
+		return FALSE
 
 	return shade_organ.dark_energy_infinite
 

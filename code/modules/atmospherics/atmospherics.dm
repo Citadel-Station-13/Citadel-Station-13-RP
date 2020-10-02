@@ -98,14 +98,14 @@ Pipelines + Other Objects -> Pipe network
 	if(check_icon_cache())
 		return 1
 	else
-		return 0
+		return FALSE
 
 /obj/machinery/atmospherics/proc/check_icon_cache(var/safety = 0)
 	if(!istype(icon_manager))
 		if(!safety) //to prevent infinite loops
 			icon_manager = new()
 			check_icon_cache(1)
-		return 0
+		return FALSE
 
 	return 1
 
@@ -157,7 +157,7 @@ Pipelines + Other Objects -> Pipe network
 	var/datum/gas_mixture/int_air = return_air()
 	var/datum/gas_mixture/env_air = loc.return_air()
 	if((int_air.return_pressure()-env_air.return_pressure()) > 2*ONE_ATMOSPHERE)
-		return 0
+		return FALSE
 	return 1
 
 // Deconstruct into a pipe item.

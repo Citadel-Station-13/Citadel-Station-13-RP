@@ -13,7 +13,7 @@
 	if(1)
 		return 1 //Sucessful
 	else
-		return 0 //Error, or runtime.
+		return FALSE //Error, or runtime.
  * @endcode
  * All hooks must return nonzero on success, as runtimes will force return null.
  */
@@ -27,7 +27,7 @@
 	var/hook_path = text2path("/hook/[hook]")
 	if(!hook_path)
 		log_world("Invalid hook '/hook/[hook]' called.")
-		return 0
+		return FALSE
 
 	var/caller = new hook_path
 	var/status = 1

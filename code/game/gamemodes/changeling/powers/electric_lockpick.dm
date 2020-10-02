@@ -18,12 +18,12 @@
 	var/obj/held_item = get_active_hand()
 
 	if(!changeling)
-		return 0
+		return FALSE
 
 	if(held_item == null)
 		if(changeling_generic_weapon(/obj/item/finger_lockpick,0,5))  //Chemical cost is handled in the equip proc.
 			return 1
-		return 0
+		return FALSE
 
 /obj/item/finger_lockpick
 	name = "finger lockpick"
@@ -93,4 +93,4 @@
 		ling_datum.chem_charges -= 10
 
 		return 1
-	return 0
+	return FALSE

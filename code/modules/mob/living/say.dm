@@ -123,7 +123,7 @@ proc/get_radio_key_from_channel(var/channel)
 		for(var/obj/item/radio/intercom/I in view(1, null))
 			I.talk_into(src, message, verb, speaking)
 			used_radios += I
-	return 0
+	return FALSE
 
 /mob/living/proc/handle_speech_sound()
 	var/list/returns[2]
@@ -244,7 +244,7 @@ proc/get_radio_key_from_channel(var/channel)
 
 	//If something nulled or emptied the message, forget it
 	if(!message || message == "")
-		return 0
+		return FALSE
 
 	//Radio message handling
 	var/list/obj/item/used_radios = new

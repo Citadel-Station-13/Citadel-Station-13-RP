@@ -25,7 +25,7 @@ var/list/cached_space = list()
 	for(var/mob/M in global.player_list)
 		if(M != observer && (M.z in map_z))
 			testing("There are people on it.")
-			return 0
+			return FALSE
 	return 1
 
 proc/get_deepspace(x,y)

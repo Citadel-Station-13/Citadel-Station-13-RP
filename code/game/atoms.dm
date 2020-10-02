@@ -128,7 +128,7 @@
 //Otherwise return a negative number to indicate that the view should be cancelled.
 /atom/proc/check_eye(user as mob)
 	if (istype(user, /mob/living/silicon/ai)) // WHYYYY
-		return 0
+		return FALSE
 	return -1
 
 /atom/proc/Bumped(AM as mob|obj)
@@ -261,12 +261,12 @@
 	if (ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if (!istype(H.dna, /datum/dna))
-			return 0
+			return FALSE
 		if (H.gloves)
 			if(src.fingerprintslast != H.key)
 				src.fingerprintshidden += text("\[[time_stamp()]\] (Wearing gloves). Real name: [], Key: []",H.real_name, H.key)
 				src.fingerprintslast = H.key
-			return 0
+			return FALSE
 		if (!( src.fingerprints ))
 			if(src.fingerprintslast != H.key)
 				src.fingerprintshidden += text("\[[time_stamp()]\] Real name: [], Key: []",H.real_name, H.key)
@@ -295,7 +295,7 @@
 			if(fingerprintslast != M.key)
 				fingerprintshidden += "[time_stamp()]: [key_name(M)] (No fingerprints mutation)"
 				fingerprintslast = M.key
-			return 0		//Now, lets get to the dirty work.
+			return FALSE		//Now, lets get to the dirty work.
 		//First, make sure their DNA makes sense.
 		var/mob/living/carbon/human/H = M
 		if (!istype(H.dna, /datum/dna) || !H.dna.uni_identity || (length(H.dna.uni_identity) != 32))
@@ -317,7 +317,7 @@
 				if(istype(H.gloves, /obj/item/clothing/gloves))
 					var/obj/item/clothing/gloves/G = H.gloves
 					if(!prob(G.fingerprint_chance))
-						return 0
+						return FALSE
 
 		//More adminstuffz
 		if(fingerprintslast != H.key)
@@ -407,7 +407,7 @@
 /atom/proc/add_blood(mob/living/carbon/human/M as mob)
 
 	if(flags & NOBLOODY)
-		return 0
+		return FALSE
 
 	if(!blood_DNA || !istype(blood_DNA, /list))	//if our list of DNA doesn't exist yet (or isn't a list) initialise it.
 		blood_DNA = list()
@@ -456,7 +456,7 @@
 	if(cur_x && cur_y)
 		return list("x"=cur_x,"y"=cur_y)
 	else
-		return 0
+		return FALSE
 
 /atom/proc/checkpass(passflag)
 	return (pass_flags&passflag)
@@ -465,7 +465,7 @@
 	if(istype(get_turf(src), /turf/space))
 		return 1
 	else
-		return 0
+		return FALSE
 
 // Show a message to all mobs and objects in sight of this atom
 // Use for objects performing visible actions

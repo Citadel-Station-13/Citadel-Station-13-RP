@@ -255,7 +255,7 @@ var/const/POWER = 8
 /datum/wires/proc/IsAttached(var/color)
 	if(signallers[color])
 		return 1
-	return 0
+	return FALSE
 
 /datum/wires/proc/GetAttached(var/color)
 	if(signallers[color])
@@ -319,7 +319,7 @@ var/const/POWER = 8
 /datum/wires/proc/IsAllCut()
 	if(wires_status == (1 << wire_count) - 1)
 		return 1
-	return 0
+	return FALSE
 
 /datum/wires/proc/MendAll()
 	for(var/i = 1; i < MAX_FLAG && i < (1 << wire_count); i += i)

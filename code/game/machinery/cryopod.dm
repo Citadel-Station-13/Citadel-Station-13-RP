@@ -346,11 +346,11 @@
 			correct_type = 1
 			break
 
-	if(!correct_type) return 0
+	if(!correct_type) return FALSE
 
 	for(var/type in disallow_occupant_types)
 		if(istype(M, type))
-			return 0
+			return FALSE
 
 	return 1
 

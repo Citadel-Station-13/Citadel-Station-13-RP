@@ -91,12 +91,12 @@
 
 /obj/machinery/door/proc/can_open()
 	if(!density || operating || !SSticker)
-		return 0
+		return FALSE
 	return 1
 
 /obj/machinery/door/proc/can_close()
 	if(density || operating || !SSticker)
-		return 0
+		return FALSE
 	return 1
 
 /obj/machinery/door/Bumped(atom/AM)
@@ -473,7 +473,7 @@
 
 /obj/machinery/door/update_nearby_tiles(need_rebuild)
 	if(!air_master)
-		return 0
+		return FALSE
 
 	for(var/turf/simulated/turf in locs)
 		update_heat_protection(turf)

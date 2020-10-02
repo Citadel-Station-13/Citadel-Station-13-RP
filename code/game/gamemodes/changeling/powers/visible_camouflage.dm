@@ -26,7 +26,7 @@
 		var/datum/changeling/changeling = changeling_power(10,0,100,CONSCIOUS)
 
 		if(!changeling)
-			return 0
+			return FALSE
 		changeling.chem_charges -= 10
 		var/old_regen_rate = H.mind.changeling.chem_recharge_rate
 

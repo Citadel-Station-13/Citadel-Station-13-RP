@@ -2,23 +2,23 @@ var/savefile/Banlistjob
 
 
 /proc/_jobban_isbanned(var/client/clientvar, var/rank)
-	if(!clientvar) return 1
+	if(!clientvar) return TRUE
 	ClearTempbansjob()
 	var/id = clientvar.computer_id
 	var/key = clientvar.ckey
 	if (guest_jobbans(rank))
 		if(config_legacy.guest_jobban && IsGuestKey(key))
-			return 1
+			return TRUE
 	Banlistjob.cd = "/base"
 	if (Banlistjob.dir.Find("[key][id][rank]"))
-		return 1
+		return TRUE
 
 	Banlistjob.cd = "/base"
 	for (var/A in Banlistjob.dir)
 		Banlistjob.cd = "/base/[A]"
 		if ((id == Banlistjob["id"] || key == Banlistjob["key"]) && rank == Banlistjob["rank"])
-			return 1
-	return 0
+			return TRUE
+	return FALSE
 
 /proc/LoadBansjob()
 
@@ -35,7 +35,7 @@ var/savefile/Banlistjob
 		Banlistjob.cd = "/base"
 
 	ClearTempbansjob()
-	return 1
+	return TRUE
 
 /proc/ClearTempbansjob()
 	UpdateTime()
@@ -52,7 +52,7 @@ var/savefile/Banlistjob
 		if (!Banlistjob["temp"]) continue
 		if (CMinutes >= Banlistjob["minutes"]) RemoveBanjob(A)
 
-	return 1
+	return TRUE
 
 
 /proc/AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, rank)
@@ -68,81 +68,81 @@ var/savefile/Banlistjob
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Chief Engineer")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Research Director")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Chief Medical Officer")
-		return 1
+		return TRUE
 	if(rank == "Security")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Head of Security")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Warden")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Detective")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Security Officer")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Cyborg")
-		return 1
+		return TRUE
 	if(rank == "Engineering")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Station Engineer")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Atmospheric Technician")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Chief Engineer")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Cyborg")
-		return 1
+		return TRUE
 	if(rank == "Research")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Scientist")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Geneticist")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Chief Medical Officer")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Research Director")
-		return 1
+		return TRUE
 	if(rank == "Medical")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Geneticist")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Medical Doctor")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Chief Medical Officer")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Chemist")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Cyborg")
-		return 1
+		return TRUE
 	if(rank == "CE_Station_Engineer")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Station Engineer")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Chief Engineer")
-		return 1
+		return TRUE
 	if(rank == "CE_Atmospheric_Tech")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Atmospheric Technician")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Chief Engineer")
-		return 1
+		return TRUE
 	if(rank == "CE_Shaft_Miner")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Shaft Miner")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Chief Engineer")
-		return 1
+		return TRUE
 	if(rank == "Chemist_RD_CMO")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Chief Medical Officer")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Research Director")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Chemist")
-		return 1
+		return TRUE
 	if(rank == "Geneticist_RD_CMO")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Chief Medical Officer")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Research Director")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Geneticist")
-		return 1
+		return TRUE
 	if(rank == "MD_CMO")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Chief Medical Officer")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Medical Doctor")
-		return 1
+		return TRUE
 	if(rank == "Scientist_RD")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Research Director")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Scientist")
-		return 1
+		return TRUE
 	if(rank == "AI_Cyborg")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Cyborg")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "AI")
-		return 1
+		return TRUE
 	if(rank == "Detective_HoS")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Detective")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Head of Security")
-		return 1
+		return TRUE
 	if(rank == "Virologist_RD_CMO")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Chief Medical Officer")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Research Director")
 		AddBanjob(ckey, computerid, reason, bannedby, temp, minutes, "Virologist")
-		return 1
+		return TRUE
 
 	Banlistjob.cd = "/base"
 	if ( Banlistjob.dir.Find("[ckey][computerid][rank]") )
 		usr << text("<font color='red'>Banjob already exists.</font>")
-		return 0
+		return FALSE
 	else
 		Banlistjob.dir.Add("[ckey][computerid][rank]")
 		Banlistjob.cd = "/base/[ckey][computerid][rank]"
@@ -155,7 +155,7 @@ var/savefile/Banlistjob
 		if (temp)
 			Banlistjob["minutes"] << bantimestamp
 
-	return 1
+	return TRUE
 
 /proc/RemoveBanjob(foldername)
 	var/key
@@ -167,7 +167,7 @@ var/savefile/Banlistjob
 	Banlistjob["rank"] >> rank
 	Banlistjob.cd = "/base"
 
-	if (!Banlistjob.dir.Remove(foldername)) return 0
+	if (!Banlistjob.dir.Remove(foldername)) return FALSE
 
 	if(!usr)
 		log_admin("Banjob Expired: [key]")
@@ -186,13 +186,13 @@ var/savefile/Banlistjob
 			Banlistjob.dir.Remove(A)
 			continue
 
-	return 1
+	return TRUE
 
 /proc/GetBanExpjob(minutes as num)
 	UpdateTime()
 	var/exp = minutes - CMinutes
 	if (exp <= 0)
-		return 0
+		return FALSE
 	else
 		var/timeleftstring
 		if (exp >= 1440) //1440 = 1 day in minutes

@@ -34,10 +34,10 @@
 	process()
 		..()
 		if(!partner)
-			return 0
+			return FALSE
 
 		if(!air_master || air_master.current_cycle <= update_cycle)
-			return 0
+			return FALSE
 
 		update_cycle = air_master.current_cycle
 		partner.update_cycle = air_master.current_cycle

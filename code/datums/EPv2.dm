@@ -70,7 +70,7 @@ var/global/list/all_exonet_connections = list()
 /datum/exonet_protocol/proc/make_arbitrary_address(var/new_address)
 	if(new_address)
 		if(new_address == find_address(new_address) )	//Collision test.
-			return 0
+			return FALSE
 		address = new_address
 		all_exonet_connections |= src
 		return 1

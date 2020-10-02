@@ -263,7 +263,7 @@
 /obj/machinery/pros_fabricator/proc/can_build(var/datum/design/D)
 	for(var/M in D.materials)
 		if(materials[M] < (D.materials[M] * mat_efficiency))
-			return 0
+			return FALSE
 	return 1
 
 /obj/machinery/pros_fabricator/proc/check_build()

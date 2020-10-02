@@ -197,7 +197,7 @@ Class Procs:
 
 /obj/machinery/proc/auto_use_power()
 	if(!powered(power_channel))
-		return 0
+		return FALSE
 	if(use_power == USE_POWER_IDLE)
 		use_power(idle_power_usage, power_channel, 1)
 	else if(use_power >= USE_POWER_ACTIVE)
@@ -278,9 +278,9 @@ Class Procs:
 
 /obj/machinery/proc/shock(mob/user, prb)
 	if(inoperable())
-		return 0
+		return FALSE
 	if(!prob(prb))
-		return 0
+		return FALSE
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(5, 1, src)
 	s.start()
@@ -293,7 +293,7 @@ Class Procs:
 				temp_apc.terminal.powernet.trigger_warning()
 		if(user.stunned)
 			return 1
-	return 0
+	return FALSE
 
 /obj/machinery/proc/default_apply_parts()
 	var/obj/item/circuitboard/CB = circuit
@@ -304,9 +304,9 @@ Class Procs:
 
 /obj/machinery/proc/default_part_replacement(var/mob/user, var/obj/item/storage/part_replacer/R)
 	if(!istype(R))
-		return 0
+		return FALSE
 	if(!component_parts)
-		return 0
+		return FALSE
 	if(panel_open)
 		var/obj/item/circuitboard/CB = circuit
 		var/P
@@ -356,14 +356,14 @@ Class Procs:
 
 /obj/machinery/proc/default_deconstruction_crowbar(var/mob/user, var/obj/item/C)
 	if(!C.is_crowbar())
-		return 0
+		return FALSE
 	if(!panel_open)
-		return 0
+		return FALSE
 	. = dismantle()
 
 /obj/machinery/proc/default_deconstruction_screwdriver(var/mob/user, var/obj/item/S)
 	if(!S.is_screwdriver())
-		return 0
+		return FALSE
 	playsound(src, S.usesound, 50, 1)
 	panel_open = !panel_open
 	to_chat(user, "<span class='notice'>You [panel_open ? "open" : "close"] the maintenance hatch of [src].</span>")
@@ -372,9 +372,9 @@ Class Procs:
 
 /obj/machinery/proc/computer_deconstruction_screwdriver(var/mob/user, var/obj/item/S)
 	if(!S.is_screwdriver())
-		return 0
+		return FALSE
 	if(!circuit)
-		return 0
+		return FALSE
 	to_chat(user, "<span class='notice'>You start disconnecting the monitor.</span>")
 	playsound(src, S.usesound, 50, 1)
 	if(do_after(user, 20 * S.toolspeed))
@@ -387,7 +387,7 @@ Class Procs:
 
 /obj/machinery/proc/alarm_deconstruction_screwdriver(var/mob/user, var/obj/item/S)
 	if(!S.is_screwdriver())
-		return 0
+		return FALSE
 	playsound(src, S.usesound, 50, 1)
 	panel_open = !panel_open
 	to_chat(user, "The wires have been [panel_open ? "exposed" : "unexposed"]")
@@ -396,9 +396,9 @@ Class Procs:
 
 /obj/machinery/proc/alarm_deconstruction_wirecutters(var/mob/user, var/obj/item/W)
 	if(!W.is_wirecutter())
-		return 0
+		return FALSE
 	if(!panel_open)
-		return 0
+		return FALSE
 	user.visible_message("<span class='warning'>[user] has cut the wires inside \the [src]!</span>", "You have cut the wires inside \the [src].")
 	playsound(src.loc, W.usesound, 50, 1)
 	new/obj/item/stack/cable_coil(get_turf(src), 5)
@@ -408,7 +408,7 @@ Class Procs:
 	playsound(src.loc, 'sound/items/Crowbar.ogg', 50, 1)
 	//TFF 3/6/19 - port Cit RP fix of infinite frames. If it doesn't have a circuit board, don't create a frame. Return a smack instead. BONK!
 	if(!circuit)
-		return 0
+		return FALSE
 	var/obj/structure/frame/A = new /obj/structure/frame(src.loc)
 	var/obj/item/circuitboard/M = circuit
 	A.circuit = M

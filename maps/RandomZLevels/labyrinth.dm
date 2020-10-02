@@ -142,7 +142,7 @@
 
 	can_attach(obj/mecha/combat/honker/M as obj)
 		if(!istype(M))
-			return 0
+			return FALSE
 		return ..()
 
 /obj/item/mecha_parts/mecha_equipment/weapon/honker
@@ -155,16 +155,16 @@
 
 	can_attach(obj/mecha/combat/honker/M as obj)
 		if(!istype(M))
-			return 0
+			return FALSE
 		return ..()
 
 	action(target)
 		if(!chassis)
-			return 0
+			return FALSE
 		if(energy_drain && chassis.get_charge() < energy_drain)
-			return 0
+			return FALSE
 		if(!equip_ready)
-			return 0
+			return FALSE
 
 		playsound(chassis, 'sound/items/AirHorn.ogg', 100, 1)
 		chassis.occupant_message("<font color='red' size='5'>HONK</font>")

@@ -27,7 +27,7 @@
 					lostTarget(target)
 
 /obj/machinery/camera/proc/newTarget(var/mob/target)
-	if (istype(target, /mob/living/silicon/ai)) return 0
+	if (istype(target, /mob/living/silicon/ai)) return FALSE
 	if (detectTime == 0)
 		detectTime = world.time // start the clock
 	if (!(target in motionTargets))
@@ -42,7 +42,7 @@
 
 /obj/machinery/camera/proc/cancelAlarm()
 	if (!status || (stat & NOPOWER))
-		return 0
+		return FALSE
 	if (detectTime == -1)
 		SSalarms.motion_alarm.clearAlarm(loc, src)
 	detectTime = 0
@@ -50,8 +50,8 @@
 
 /obj/machinery/camera/proc/triggerAlarm()
 	if (!status || (stat & NOPOWER))
-		return 0
-	if (!detectTime) return 0
+		return FALSE
+	if (!detectTime) return FALSE
 	SSalarms.motion_alarm.triggerAlarm(loc, src)
 	detectTime = -1
 	return 1

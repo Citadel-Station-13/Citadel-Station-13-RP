@@ -19,7 +19,7 @@
 	outfit_type = /decl/hierarchy/outfit/job/clown
 
 	equip(var/mob/living/carbon/human/H)
-		if(!H)	return 0
+		if(!H)	return FALSE
 		H.equip_to_slot_or_del(new /obj/item/storage/backpack/clown(H), slot_back)
 		H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/clown(H), slot_w_uniform)
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/clown_shoes(H), slot_shoes)
@@ -62,7 +62,7 @@
 	outfit_type = /decl/hierarchy/outfit/job/mime
 
 	equip(var/mob/living/carbon/human/H)
-		if(!H)	return 0
+		if(!H)	return FALSE
 		H.equip_to_slot_or_del(new /obj/item/storage/backpack(H), slot_back)
 		H.equip_to_slot_or_del(new /obj/item/clothing/under/mime(H), slot_w_uniform)
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/mime(H), slot_shoes)

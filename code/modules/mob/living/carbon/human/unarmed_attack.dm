@@ -121,9 +121,9 @@ var/global/list/sparring_attack_cache = list()
 /datum/unarmed_attack/bite/is_usable(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone)
 
 	if (user.is_muzzled())
-		return 0
+		return FALSE
 	if (user == target && (zone == BP_HEAD || zone == O_EYES || zone == O_MOUTH))
-		return 0
+		return FALSE
 	return TRUE
 
 /datum/unarmed_attack/punch
@@ -146,7 +146,7 @@ var/global/list/sparring_attack_cache = list()
 
 	if(target == user)
 		user.visible_message("<span class='danger'>[user] [pick(attack_verb)] [TU.himself] in the [organ]!</span>")
-		return 0
+		return FALSE
 
 	if(!target.lying)
 		switch(zone)

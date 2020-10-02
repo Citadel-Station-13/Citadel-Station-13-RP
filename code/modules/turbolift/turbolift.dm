@@ -80,8 +80,8 @@
 /datum/turbolift/proc/doors_are_open(var/datum/turbolift_floor/use_floor = current_floor)
 	for(var/obj/machinery/door/airlock/door in (use_floor ? (doors + use_floor.doors) : doors))
 		if(!door.density)
-			return 1
-	return 0
+			return TRUE
+	return FALSE
 
 /datum/turbolift/proc/open_doors(var/datum/turbolift_floor/use_floor = current_floor)
 	for(var/obj/machinery/door/airlock/door in (use_floor ? (doors + use_floor.doors) : doors))
@@ -103,7 +103,7 @@
 
 	if(!target_floor)
 		if(!queued_floors || !queued_floors.len)
-			return 0
+			return FALSE
 		target_floor = queued_floors[1]
 		queued_floors -= target_floor
 		if(current_floor_index < floors.Find(target_floor))
@@ -116,14 +116,14 @@
 		if(!doors_closing)
 			close_doors()
 			doors_closing = 1
-			return 1
+			return TRUE
 		else // We failed to close the doors - probably, someone is blocking them; stop trying to move
 			doors_closing = 0
 			if(!fire_mode)
 				open_doors()
 			control_panel_interior.audible_message("\The [current_floor.ext_panel] buzzes loudly.")
 			playsound(control_panel_interior.loc, "sound/machines/buzz-two.ogg", 50, 1)
-			return 0
+			return FALSE
 
 	doors_closing = 0 // The doors weren't open, so they are done closing
 
@@ -139,7 +139,7 @@
 		control_panel_interior.visible_message("<b>The elevator</b> announces, \"[origin.lift_announce_str]\"")
 		sleep(floor_wait_delay)
 
-		return 1
+		return TRUE
 
 	// Work out where we're headed.
 	var/datum/turbolift_floor/next_floor
@@ -151,7 +151,7 @@
 	var/area/turbolift/destination = locate(next_floor.area_ref)
 
 	if(!istype(origin) || !istype(destination) || (origin == destination))
-		return 0
+		return FALSE
 
 	if(!moving_upwards)
 		for(var/turf/T in destination)
@@ -184,4 +184,4 @@
 
 // TODO: dummy machine ('lift mechanism') in powered area for functionality/blackout checks.
 /datum/turbolift/proc/is_functional()
-	return 1
+	return TRUE

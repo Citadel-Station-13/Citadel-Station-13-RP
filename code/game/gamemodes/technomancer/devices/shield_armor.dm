@@ -36,7 +36,7 @@
 /obj/item/clothing/suit/armor/shield/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	//Since this is a pierce of armor that is passive, we do not need to check if the user is incapacitated.
 	if(!active)
-		return 0
+		return FALSE
 
 	var/modified_block_percentage = block_percentage
 
@@ -52,7 +52,7 @@
 		to_chat(user, "<span class='danger'>Your shield fades due to lack of energy!</span>")
 		active = 0
 		update_icon()
-		return 0
+		return FALSE
 
 	damage = damage - damage_blocked
 
@@ -71,7 +71,7 @@
 
 	spark_system.start()
 	playsound(user.loc, 'sound/weapons/blade1.ogg', 50, 1)
-	return 0 // This shield does not block all damage, so returning 0 is needed to tell the game to apply the new damage.
+	return FALSE // This shield does not block all damage, so returning 0 is needed to tell the game to apply the new damage.
 
 /obj/item/clothing/suit/armor/shield/attack_self(mob/user)
 	active = !active
@@ -86,6 +86,6 @@
 	if(active)
 		set_light(2, 1, l_color = "#006AFF")
 	else
-		set_light(0, 0, l_color = "#000000")
+		set_light(0, 0, l_color = COLOR_BLACK)
 	..()
 	return

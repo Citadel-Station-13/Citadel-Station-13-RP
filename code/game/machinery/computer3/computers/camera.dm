@@ -166,12 +166,12 @@
 
 /obj/item/part/computer/networking/cameras/verify_machine(var/obj/machinery/camera/C,var/datum/file/camnet_key/key = null)
 	if(!istype(C) || !C.can_use())
-		return 0
+		return FALSE
 
 	if(key)
 		var/list/temp = C.network & key.networks
 		if(!temp.len)
-			return 0
+			return FALSE
 	return 1
 
 /*

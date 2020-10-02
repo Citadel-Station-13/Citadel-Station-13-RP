@@ -95,7 +95,7 @@
 	if(O.checkpass(PASSGRILLE))
 		return 1
 	if(target && target.z < src.z)
-		return 0
+		return FALSE
 	return 1
 
 /obj/structure/catwalk/take_damage(amount)

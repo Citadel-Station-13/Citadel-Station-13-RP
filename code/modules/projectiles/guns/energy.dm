@@ -49,10 +49,10 @@
 	if(self_recharge) //Every [recharge_time] ticks, recharge a shot for the battery
 		if(world.time > last_shot + charge_delay)	//Doesn't work if you've fired recently
 			if(!power_supply || power_supply.charge >= power_supply.maxcharge)
-				return 0 // check if we actually need to recharge
+				return FALSE // check if we actually need to recharge
 
 			charge_tick++
-			if(charge_tick < recharge_time) return 0
+			if(charge_tick < recharge_time) return FALSE
 			charge_tick = 0
 
 			var/rechargeamt = power_supply.maxcharge*0.2
@@ -60,7 +60,7 @@
 			if(use_external_power)
 				var/obj/item/cell/external = get_external_power_supply()
 				if(!external || !external.use(rechargeamt)) //Take power from the borg...
-					return 0
+					return FALSE
 
 			if(use_organic_power)
 				var/mob/living/carbon/human/H

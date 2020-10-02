@@ -76,7 +76,7 @@ Programs are a file that can be executed
 	return
 /*
 	The computer object will transfer all attackby() calls to the program
-		If the item is a valid interactable object, return 1. Else, return 0.
+		If the item is a valid interactable object, return 1. Else, return FALSE.
 		This helps identify what to use to actually hit the computer with, and
 		what can be used to interact with it.
 
@@ -130,18 +130,18 @@ Programs are a file that can be executed
 		return 1
 
 	if(!I)
-		return 0
+		return FALSE
 
 	var/list/iAccess = I.GetAccess()
 	if(!iAccess || !iAccess.len)
-		return 0
+		return FALSE
 
 	var/list/temp = req_one_access & iAccess
 	if(temp.len) // a required access in item access list
 		return 1
 	temp = req_access - iAccess
 	if(temp.len) // a required access not in item access list
-		return 0
+		return FALSE
 	return 1
 
 
@@ -160,7 +160,7 @@ Programs are a file that can be executed
 			popup.set_title_image(usr.browse_rsc_icon(overlay.icon, overlay.icon_state))
 		popup.set_title(name)
 		return 1
-	return 0
+	return FALSE
 
 
 /datum/file/program/proc/fake_link(var/text)
@@ -212,7 +212,7 @@ Programs are a file that can be executed
 // If you do, do the interactable() check first, please, I don't want to repeat it here.  It's not hard.
 /datum/file/program/Topic(var/href,var/list/href_list)
 	if(!computer)
-		return 0
+		return FALSE
 
 	//
 	// usage: eject_disk
@@ -257,7 +257,7 @@ Programs are a file that can be executed
 		computer.update_icon()
 		computer.updateDialog()
 		return 1
-	return 0
+	return FALSE
 
 
 /datum/file/program/RD

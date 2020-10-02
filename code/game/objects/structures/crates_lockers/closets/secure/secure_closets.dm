@@ -18,7 +18,7 @@
 
 /obj/structure/closet/secure_closet/can_open()
 	if(src.locked)
-		return 0
+		return FALSE
 	return ..()
 
 /obj/structure/closet/secure_closet/close()
@@ -27,7 +27,7 @@
 			icon_state = src.icon_off
 		return 1
 	else
-		return 0
+		return FALSE
 
 /obj/structure/closet/secure_closet/emp_act(severity)
 	for(var/obj/O in src)

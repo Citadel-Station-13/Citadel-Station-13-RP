@@ -23,6 +23,7 @@
 	var/scan_id = 1
 	var/is_secure = 0
 	var/wrenchable = 0
+	var/expert_job = "Chef"
 	var/datum/wires/smartfridge/wires = null
 
 /obj/machinery/smartfridge/secure
@@ -44,8 +45,8 @@
 
 /obj/machinery/smartfridge/proc/accept_check(var/obj/item/O as obj)
 	if(istype(O,/obj/item/reagent_containers/food/snacks/grown/) || istype(O,/obj/item/seeds/))
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /obj/machinery/smartfridge/seeds
 	name = "\improper MegaSeed Servitor"
@@ -54,16 +55,18 @@
 	icon_state = "seeds"
 	icon_on = "seeds"
 	icon_off = "seeds-off"
+	expert_job = "Botanist"
 
 /obj/machinery/smartfridge/seeds/accept_check(var/obj/item/O as obj)
 	if(istype(O,/obj/item/seeds/))
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /obj/machinery/smartfridge/secure/extract
 	name = "\improper Biological Sample Storage"
 	desc = "A refrigerated storage unit for xenobiological samples."
 	req_access = list(access_research)
+	expert_job = "Xenobiologist"
 
 /obj/machinery/smartfridge/secure/extract/accept_check(var/obj/item/O as obj)
 	if(istype(O, /obj/item/slime_extract))
@@ -79,15 +82,16 @@
 	icon_state = "smartfridge" //To fix the icon in the map editor.
 	icon_on = "smartfridge_chem"
 	req_one_access = list(access_medical,access_chemistry)
+	expert_job = "Chemist"
 
 /obj/machinery/smartfridge/secure/medbay/accept_check(var/obj/item/O as obj)
 	if(istype(O,/obj/item/reagent_containers/glass/))
-		return 1
+		return TRUE
 	if(istype(O,/obj/item/storage/pill_bottle/))
-		return 1
+		return TRUE
 	if(istype(O,/obj/item/reagent_containers/pill/))
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /obj/machinery/smartfridge/secure/virology
 	name = "\improper Refrigerated Virus Storage"
@@ -96,22 +100,24 @@
 	icon_state = "smartfridge_virology"
 	icon_on = "smartfridge_virology"
 	icon_off = "smartfridge_virology-off"
+	expert_job = "Medical Doctor" //Virologist is an alt-title unfortunately
 
 /obj/machinery/smartfridge/secure/virology/accept_check(var/obj/item/O as obj)
 	if(istype(O,/obj/item/reagent_containers/glass/beaker/vial/))
-		return 1
+		return TRUE
 	if(istype(O,/obj/item/virusdish/))
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /obj/machinery/smartfridge/chemistry
 	name = "\improper Smart Chemical Storage"
 	desc = "A refrigerated storage unit for medicine and chemical storage."
+	expert_job = "Chemist" //Unsure what this one is used for, actually
 
 /obj/machinery/smartfridge/chemistry/accept_check(var/obj/item/O as obj)
 	if(istype(O,/obj/item/storage/pill_bottle) || istype(O,/obj/item/reagent_containers))
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /obj/machinery/smartfridge/chemistry/virology
 	name = "\improper Smart Virus Storage"
@@ -121,10 +127,11 @@
 /obj/machinery/smartfridge/drinks
 	name = "\improper Drink Showcase"
 	desc = "A refrigerated storage unit for tasty tasty alcohol."
+	expert_job = "Bartender"
 
 /obj/machinery/smartfridge/drinks/accept_check(var/obj/item/O as obj)
 	if(istype(O,/obj/item/reagent_containers/glass) || istype(O,/obj/item/reagent_containers/food/drinks) || istype(O,/obj/item/reagent_containers/food/condiment))
-		return 1
+		return TRUE
 
 /obj/machinery/smartfridge/drying_rack
 	name = "\improper Drying Rack"
@@ -139,8 +146,8 @@
 	if(istype(O, /obj/item/reagent_containers/food/snacks/))
 		var/obj/item/reagent_containers/food/snacks/S = O
 		if (S.dried_type)
-			return 1
-	return 0
+			return TRUE
+	return FALSE
 
 /obj/machinery/smartfridge/drying_rack/process()
 	..()
@@ -262,14 +269,14 @@
 
 	else
 		to_chat(user, "<span class='notice'>\The [src] smartly refuses [O].</span>")
-		return 1
+		return TRUE
 
 /obj/machinery/smartfridge/secure/emag_act(var/remaining_charges, var/mob/user)
 	if(!emagged)
 		emagged = 1
 		locked = -1
 		to_chat(user, "You short out the product lock on [src].")
-		return 1
+		return TRUE
 
 /obj/machinery/smartfridge/proc/stock(obj/item/O)
 	var/hasRecord = FALSE	//Check to see if this passes or not.
@@ -328,7 +335,7 @@
 		ui.open()
 
 /obj/machinery/smartfridge/Topic(href, href_list)
-	if(..()) return 0
+	if(..()) return FALSE
 
 	var/mob/user = usr
 	var/datum/nanoui/ui = SSnanoui.get_open_ui(user, src, "main")
@@ -338,7 +345,7 @@
 	if(href_list["close"])
 		user.unset_machine()
 		ui.close()
-		return 0
+		return FALSE
 
 	if(href_list["vend"])
 		var/index = text2num(href_list["vend"])
@@ -353,14 +360,14 @@
 			for(var/i = 1 to amount)
 				vend(I)
 
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /obj/machinery/smartfridge/proc/throw_item()
 	var/obj/throw_item = null
 	var/mob/living/target = locate() in view(7,src)
 	if(!target)
-		return 0
+		return FALSE
 
 	for(var/datum/stored_item/I in item_records)
 		throw_item = I.get_product(get_turf(src))
@@ -369,11 +376,11 @@
 		break
 
 	if(!throw_item)
-		return 0
+		return FALSE
 	spawn(0)
 		throw_item.throw_at(target,16,3,src)
 	src.visible_message("<span class='warning'>[src] launches [throw_item.name] at [target.name]!</span>")
-	return 1
+	return TRUE
 
 /************************
 *   Secure SmartFridges
@@ -381,9 +388,28 @@
 
 /obj/machinery/smartfridge/secure/Topic(href, href_list)
 	if(stat & (NOPOWER|BROKEN))
-		return 0
+		return FALSE
 	if(usr.contents.Find(src) || (in_range(src, usr) && istype(loc, /turf)))
 		if(!allowed(usr) && !emagged && locked != -1 && href_list["vend"])
 			to_chat(usr, "<span class='warning'>Access denied.</span>")
-			return 0
+			return FALSE
 	return ..()
+
+
+// Allow thrown items into smartfridges
+/obj/machinery/smartfridge/throw_impact(var/atom/movable/A)
+	. = ..()
+	if(accept_check(A) && A.thrower)
+		//Try to find what job they are via ID
+		var/obj/item/card/id/thrower_id
+		if(ismob(A.thrower))
+			var/mob/T = A.thrower
+			thrower_id = T.GetIdCard()
+
+		//98% chance the expert makes it
+		if(expert_job && thrower_id && thrower_id.rank == expert_job && prob(98))
+			stock(A)
+
+		//20% chance a non-expert makes it
+		else if(prob(20))
+			stock(A)

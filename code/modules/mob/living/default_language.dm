@@ -7,7 +7,7 @@
 
 	if (only_species_language && language != GLOB.all_languages[src.species_language])
 		to_chat(src, "<span class='notice'>You can only speak your species language, [src.species_language].</span>")
-		return 0
+		return FALSE
 
 	if(language == GLOB.all_languages[src.species_language])
 		to_chat(src, "<span class='notice'>You will now speak your standard default language, [language], if you do not specify a language when speaking.</span>")

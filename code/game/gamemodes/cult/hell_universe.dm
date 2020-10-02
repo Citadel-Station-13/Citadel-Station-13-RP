@@ -17,7 +17,7 @@ In short:
 	/*
 	if(user)
 		to_chat(user, "<span class='sinister'>All you hear on the frequency is static and panicked screaming. There will be no shuttle call today.</span>")
-	return 0
+	return FALSE
 	*/
 
 /datum/universal_state/hell/DecayTurf(var/turf/T)
@@ -32,7 +32,7 @@ In short:
 /datum/universal_state/hell/OnTurfChange(var/turf/T)
 	var/turf/space/S = T
 	if(istype(S))
-		S.color = "#FF0000"
+		S.color = COLOR_RED
 	else
 		S.color = initial(S.color)
 

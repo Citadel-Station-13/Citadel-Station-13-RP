@@ -4,6 +4,7 @@
 	icon_state = "securecrate"
 	icon_opened = "securecrateopen"
 	icon_closed = "securecrate"
+	tamper_proof = 1
 	var/list/code = list()
 	var/list/lastattempt = list()
 	var/attempts = 10
@@ -182,7 +183,7 @@
 
 /obj/structure/closet/crate/secure/loot/proc/check_input(var/input)
 	if(length(input) != codelen)
-		return 0
+		return FALSE
 
 	. = 1
 	lastattempt.Cut()

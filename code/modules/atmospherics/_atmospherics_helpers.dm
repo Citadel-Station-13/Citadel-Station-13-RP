@@ -99,7 +99,7 @@
 		return -1
 	sink.merge(removed)
 
-	return 0
+	return FALSE
 
 //Generalized gas scrubbing proc.
 //Selectively moves specified gasses one gas_mixture to another and returns the amount of power needed (assuming 1 second), or -1 if no gas was filtered.
@@ -427,7 +427,7 @@
 //If set, sink_volume_mod adjusts the effective output volume used in the calculation. This is useful when the output gas_mixture is
 //part of a pipenetwork, and so it's volume isn't representative of the actual volume since the gas will be shared across the pipenetwork when it processes.
 /proc/calculate_transfer_moles(datum/gas_mixture/source, datum/gas_mixture/sink, var/pressure_delta, var/sink_volume_mod=0)
-	if(source.temperature == 0 || source.total_moles == 0) return 0
+	if(source.temperature == 0 || source.total_moles == 0) return FALSE
 
 	var/output_volume = (sink.volume * sink.group_multiplier) + sink_volume_mod
 	var/source_total_moles = source.total_moles * source.group_multiplier
@@ -445,7 +445,7 @@
 
 //Calculates the APPROXIMATE amount of moles that would need to be transferred to bring source and sink to the same pressure
 /proc/calculate_equalize_moles(datum/gas_mixture/source, datum/gas_mixture/sink)
-	if(source.temperature == 0) return 0
+	if(source.temperature == 0) return FALSE
 
 	//Make the approximation that the sink temperature is unchanged after transferring gas
 	var/source_volume = source.volume * source.group_multiplier

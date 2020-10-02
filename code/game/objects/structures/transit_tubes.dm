@@ -183,7 +183,7 @@
 
 // Called to check if a pod should stop upon entering this tube.
 /obj/structure/transit_tube/proc/should_stop_pod(pod, from_dir)
-	return 0
+	return FALSE
 
 
 
@@ -235,7 +235,7 @@
 		if(direction == from_dir)
 			return 1
 
-	return 0
+	return FALSE
 
 
 
@@ -244,7 +244,7 @@
 		if(direction == in_dir)
 			return 1
 
-	return 0
+	return FALSE
 
 
 
@@ -562,7 +562,7 @@
 
 
 // A copy of text2dir, extended to accept one and two letter
-//  directions, and to clearly return 0 otherwise.
+//  directions, and to clearly return FALSE otherwise.
 /obj/structure/transit_tube/proc/text2dir_extended(direction)
 	switch(uppertext(direction))
 		if("NORTH", "N")
@@ -582,7 +582,7 @@
 		if("SOUTHWEST", "SW")
 			return 10
 		else
-	return 0
+	return FALSE
 
 
 

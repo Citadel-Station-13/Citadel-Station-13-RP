@@ -582,9 +582,9 @@
 
 //TODO: make it so this is called more reliably, instead of sometimes by bullet_act() and sometimes not
 /obj/item/projectile/proc/on_hit(atom/target, blocked = 0, def_zone)
-	if(blocked >= 100)		return 0//Full block
-	if(!isliving(target))	return 0
-//	if(isanimal(target))	return 0
+	if(blocked >= 100)		return FALSE//Full block
+	if(!isliving(target))	return FALSE
+//	if(isanimal(target))	return FALSE
 	var/mob/living/L = target
 	L.apply_effects(stun, weaken, paralyze, irradiate, stutter, eyeblur, drowsy, agony, blocked, incendiary, flammability) // add in AGONY!
 	if(modifier_type_to_apply)
@@ -602,13 +602,13 @@
 /obj/item/projectile/proc/can_embed()
 	//embed must be enabled and damage type must be brute
 	if(embed_chance == 0 || damage_type != BRUTE)
-		return 0
+		return FALSE
 	return 1
 
 /obj/item/projectile/proc/get_structure_damage()
 	if(damage_type == BRUTE || damage_type == BURN)
 		return damage
-	return 0
+	return FALSE
 
 //return 1 if the projectile should be allowed to pass through after all, 0 if not.
 /obj/item/projectile/proc/check_penetrate(atom/A)

@@ -5,7 +5,7 @@
 
 /obj/machinery/computer/shuttle_control/specops/attack_ai(user as mob)
 	to_chat(user, "<span class='warning'>Access Denied.</span>")
-	return 1
+	return TRUE
 
 // Formerly /datum/shuttle/autodock/ferry/multidock/specops
 /datum/shuttle/autodock/ferry/specops
@@ -95,16 +95,16 @@
 
 /datum/shuttle/autodock/ferry/specops/can_launch()
 	if(launch_prep)
-		return 0
+		return FALSE
 	return ..()
 
 // Should be fine to allow forcing. process_state only becomes WAIT_LAUNCH after the countdown is over.
 ///datum/shuttle/autodock/ferry/specops/can_force()
-//	return 0
+//	return FALSE
 
 /datum/shuttle/autodock/ferry/specops/can_cancel()
 	if(launch_prep)
-		return 1
+		return TRUE
 	return ..()
 
 /datum/shuttle/autodock/ferry/specops/proc/sleep_until_launch()

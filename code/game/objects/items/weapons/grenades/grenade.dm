@@ -22,7 +22,7 @@
 		add_fingerprint(user)
 		spawn(5)
 			detonate()
-		return 0
+		return FALSE
 	return 1
 
 

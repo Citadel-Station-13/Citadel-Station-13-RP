@@ -3,7 +3,7 @@
 
 /datum/admin_secret_item/admin_secret/show_game_mode/can_execute(var/mob/user)
 	if(!SSticker)
-		return 0
+		return FALSE
 	return ..()
 
 /datum/admin_secret_item/admin_secret/show_game_mode/execute(var/mob/user)

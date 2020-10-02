@@ -459,9 +459,9 @@ END OF CITADEL CHANGE */
 	if(..())
 		if(H.ckey != "scree")
 			to_chat(H, "<span class='warning'>Your face and whoever is meant for this helmet are too different.</span>")
-			return 0
+			return FALSE
 		else
-			return 1
+			return TRUE
 
 //scree:Scree
 /obj/item/clothing/suit/space/void/engineering/hazmat/fluff/screespess
@@ -482,9 +482,9 @@ END OF CITADEL CHANGE */
 	if(..())
 		if(H.ckey != "scree")
 			to_chat(H, "<span class='warning'>The gloves only have three fingers, not to mention the accommodation for extra limbs.</span>")
-			return 0
+			return FALSE
 		else
-			return 1
+			return TRUE
 
 //natje:Pumila
 /obj/item/clothing/under/fluff/aluranevines
@@ -502,9 +502,9 @@ END OF CITADEL CHANGE */
 	if(..())
 		if(H.ckey != "natje")
 			to_chat(H, "<span class='warning'>Wrapping vines around yourself is a quite an... Odd idea. You decide otherwise.</span>")
-			return 0
+			return FALSE
 		else
-			return 1
+			return TRUE
 
 /obj/item/clothing/under/fluff/screesuit
 	name = "Scree's feathers"
@@ -520,9 +520,9 @@ END OF CITADEL CHANGE */
 	if(..())
 		if(H.ckey != "scree")
 			to_chat(H, "<span class='warning'>Are you just going to tape them on or what? This isn't gonna work.</span>")
-			return 0
+			return FALSE
 		else
-			return 1
+			return TRUE
 
 /obj/item/clothing/under/fluff/screesuit/digest_act(var/atom/movable/item_storage = null)
 	return FALSE
@@ -692,9 +692,9 @@ END OF CITADEL CHANGE */
 	if(..())
 		if(H.ckey != "joanrisu")
 			to_chat(H, "<span class='warning'>You try to fit on the helmet, but it doesn't fit.</span>")
-			return 0
+			return FALSE
 		else
-			return 1
+			return TRUE
 
 //JoanRisu:Joan Risu
 /obj/item/clothing/suit/space/fluff/joan
@@ -720,9 +720,9 @@ END OF CITADEL CHANGE */
 	if(..())
 		if(H.ckey != "joanrisu")
 			to_chat(H, "<span class='warning'>You try to fit into the suit, to no avail.</span>")
-			return 0
+			return FALSE
 		else
-			return 1
+			return TRUE
 
 
 /obj/item/clothing/under/rank/internalaffairs/fluff/joan
@@ -1160,7 +1160,7 @@ END OF CITADEL CHANGES */
 			return ..()
 		else
 			to_chat(H, "<span class='warning'>You need to have a wolf-taur half to wear this.</span>")
-			return 0
+			return FALSE
 /* CITADEL CHANGE - Removes Virgo Fluff
 //samanthafyre:Kateryna Petrovitch
 /obj/item/clothing/suit/armor/vest/wolftaur/kate
@@ -1177,7 +1177,7 @@ END OF CITADEL CHANGES */
 			return ..()
 		else
 			to_chat(H, "<span class='warning'>You need to have a wolf-taur half to wear this.</span>")
-			return 0
+			return FALSE
 
 //samanthafyre:Kateryna Petrovitch
 /obj/item/clothing/suit/space/void/engineering/kate
@@ -1207,9 +1207,9 @@ END OF CITADEL CHANGES */
 	if(..())
 		if(H.ckey != "samanthafyre")
 			to_chat(H, "<span class='warning'>You try to fit on the helmet, but it doesn't fit.</span>")
-			return 0
+			return FALSE
 		else
-			return 1
+			return TRUE
 
 //Seiga: Alfonso Oak Telanor
 /obj/item/clothing/glasses/sunglasses/fluff/alfonso
@@ -1264,7 +1264,7 @@ END OF CITADEL CHANGES */
 	set src in usr
 
 	if(!usr.canmove || usr.stat || usr.restrained())
-		return 0
+		return FALSE
 
 	switch(unbuttoned)
 		if(0)
@@ -1612,9 +1612,9 @@ END OF CITADEL CHANGES */
 		if(..())
 			if(H.ckey != "silencedmp5a5")
 				to_chat(H, "<span class='warning'>...The faceplate is clearly not made for your anatomy, thus, does not fit.</span>")
-				return 0
+				return FALSE
 			else
-				return 1
+				return TRUE
 
 /obj/item/clothing/suit/space/void/security/hasd
 	name = "HASD EVA bodyplates"
@@ -1628,10 +1628,10 @@ END OF CITADEL CHANGES */
 
 	mob_can_equip(var/mob/living/carbon/human/H, slot, disable_warning = 0)
 		if(..() && istype(H) && H.ckey == "silencedmp5a5")
-			return 1
+			return TRUE
 		else
 			to_chat(H,"<span class='warning'>This suit is not designed for you.</span>")
-			return 0
+			return FALSE
 
 //Zigfe:Zaoozaoo Xrimxuqmqixzix
 /obj/item/clothing/head/fluff/zao
@@ -1733,14 +1733,14 @@ END OF CITADEL CHANGES */
 
 /obj/item/clothing/under/fluff/slime_skeleton/mob_can_equip(M as mob, slot)
 	if(!..())
-		return 0
+		return FALSE
 
 	if(istype(M,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
 		if(!(H.get_species() == SPECIES_PROMETHEAN))	//Only wearable by slimes, since species_restricted actually checks bodytype, not species
-			return 0
+			return FALSE
 
-	return 1
+	return TRUE
 
 /obj/item/clothing/under/fluff/slime_skeleton/digest_act(var/atom/movable/item_storage = null)
 	return FALSE	//Indigestible

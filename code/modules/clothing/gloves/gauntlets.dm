@@ -21,11 +21,11 @@
 		if(!istype(gloves))
 			to_chat(user, "You are unable to wear \the [src] as \the [H.gloves] are in the way.")
 			gloves = null
-			return 0
+			return FALSE
 		if(gloves.overgloves)
 			to_chat(user, "You are unable to wear \the [src] as \the [H.gloves] are in the way.")
 			gloves = null
-			return 0
+			return FALSE
 		H.drop_from_inventory(gloves)
 		gloves.forceMove(src)
 
@@ -33,7 +33,7 @@
 		if(gloves)
 			if(H.equip_to_slot_if_possible(gloves, slot_gloves))
 				gloves = null
-			return 0
+			return FALSE
 	if(gloves)
 		to_chat(user, "You slip \the [src] on over \the [gloves].")
 	wearer = H

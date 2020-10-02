@@ -868,14 +868,14 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 /obj/item/subspaceradio/proc/slot_check()
 	var/mob/M = loc
 	if(!istype(M))
-		return 0 //not equipped
+		return FALSE //not equipped
 
 	if((slot_flags & SLOT_BACK) && M.get_equipped_item(slot_back) == src)
 		return 1
 	if((slot_flags & SLOT_BACK) && M.get_equipped_item(slot_s_store) == src)
 		return 1
 
-	return 0
+	return FALSE
 
 /obj/item/subspaceradio/dropped(mob/user)
 	..()

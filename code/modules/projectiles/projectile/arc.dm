@@ -115,7 +115,7 @@
 // as opposed to a 'can I hit this thing' projectile.
 /obj/item/projectile/arc/test/on_impact(turf/T)
 	new /obj/effect/explosion(T)
-	T.color = "#FF0000"
+	T.color = COLOR_RED
 
 // Generic, Hivebot related
 /obj/item/projectile/arc/blue_energy

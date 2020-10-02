@@ -318,7 +318,7 @@
 	var/datum/money_account/CH = get_account(C.associated_account_number)
 	if(!CH)
 		to_chat(usr, "\icon[src]<span class='warning'>No valid account number is associated with this card.</span>")
-		return 0
+		return FALSE
 	if(CH.security_level != 0) //If card requires pin authentication (ie seclevel 1 or 2)
 		if(vendor_account)
 			var/attempt_pin = input("Enter pin code", "Vendor transaction") as num
@@ -328,10 +328,10 @@
 				return 1
 			else
 				to_chat(usr, "\icon[src]<span class='warning'>Unable to access vendor account. Please record the machine ID and call [GLOB.using_map.boss_short] Support.</span>")
-				return 0
+				return FALSE
 		else
 			to_chat(usr, "\icon[src]<span class='warning'>Unable to access vendor account. Please record the machine ID and call [GLOB.using_map.boss_short] Support.</span>")
-			return 0
+			return FALSE
 	else
 		transfer_and_reimburse(CH)
 		return 1

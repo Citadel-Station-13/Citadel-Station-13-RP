@@ -163,7 +163,7 @@
 		..()
 
 /mob/living/bot/emag_act(var/remaining_charges, var/mob/user)
-	return 0
+	return FALSE
 
 /mob/living/bot/proc/handleAI()
 	if(ignore_list.len)
@@ -261,11 +261,11 @@
 
 /mob/living/bot/proc/confirmTarget(var/atom/A)
 	if(A.invisibility >= INVISIBILITY_LEVEL_ONE)
-		return 0
+		return FALSE
 	if(A in ignore_list)
-		return 0
+		return FALSE
 	if(!A.loc)
-		return 0
+		return FALSE
 	return 1
 
 /mob/living/bot/proc/handlePatrol()
@@ -317,7 +317,7 @@
 
 /mob/living/bot/proc/makeStep(var/list/path)
 	if(!path.len)
-		return 0
+		return FALSE
 	var/turf/T = path[1]
 	if(get_turf(src) == T)
 		path -= T
@@ -333,7 +333,7 @@
 
 /mob/living/bot/proc/turn_on()
 	if(stat)
-		return 0
+		return FALSE
 	on = 1
 	set_light(light_strength)
 	update_icons()
@@ -396,11 +396,11 @@
 	if((adir & (NORTH|SOUTH)) && (adir & (EAST|WEST)))	//	diagonal
 		var/iStep = get_step(A,adir&(NORTH|SOUTH))
 		if(!LinkBlockedWithAccess(A,iStep, ID) && !LinkBlockedWithAccess(iStep,B,ID))
-			return 0
+			return FALSE
 
 		var/pStep = get_step(A,adir&(EAST|WEST))
 		if(!LinkBlockedWithAccess(A,pStep,ID) && !LinkBlockedWithAccess(pStep,B,ID))
-			return 0
+			return FALSE
 		return 1
 
 	if(DirBlockedWithAccess(A,adir, ID))
@@ -413,7 +413,7 @@
 		if(O.density && !istype(O, /obj/machinery/door) && !(O.flags & ON_BORDER))
 			return 1
 
-	return 0
+	return FALSE
 
 // Returns true if direction is blocked from loc
 // Checks doors against access with given ID
@@ -436,7 +436,7 @@
 			//if((dir & SOUTH) && (D.dir & (EAST|WEST)))		return !D.check_access(ID)
 			//if((dir & EAST ) && (D.dir & (NORTH|SOUTH)))	return !D.check_access(ID)
 		else return !D.check_access(ID)	// it's a real, air blocking door
-	return 0
+	return FALSE
 
 
 /mob/living/bot/isSynthetic() //Robots are synthetic, no?

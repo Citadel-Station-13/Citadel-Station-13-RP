@@ -12,7 +12,7 @@
 	var/obj/machinery/seed_storage/V = holder
 	if(V.panel_open)
 		return 1
-	return 0
+	return FALSE
 
 /datum/wires/seedstorage/GetInteractWindow()
 	var/obj/machinery/seed_storage/V = holder

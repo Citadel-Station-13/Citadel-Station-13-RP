@@ -36,7 +36,7 @@
 		qdel(thing)
 		user.put_in_hands(F)
 		return 1
-	return 0
+	return FALSE
 
 /obj/machinery/fusion_fuel_compressor/attackby(var/obj/item/thing, var/mob/user)
 

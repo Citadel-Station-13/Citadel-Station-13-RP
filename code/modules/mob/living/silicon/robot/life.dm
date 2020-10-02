@@ -353,5 +353,5 @@
 	. = ..()
 	if(. == FALSE) // If no other light sources are on.
 		if(lights_on)
-			set_light(integrated_light_power, 1, "#FFFFFF")
+			set_light(integrated_light_power, 1, COLOR_WHITE)
 			return TRUE

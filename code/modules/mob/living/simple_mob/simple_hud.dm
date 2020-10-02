@@ -6,7 +6,7 @@
 	if(ui_icons)
 		ui_style = ui_icons
 
-	var/ui_color = "#ffffff"
+	var/ui_color = COLOR_WHITE
 	var/ui_alpha = 255
 
 	var/list/adding = list()

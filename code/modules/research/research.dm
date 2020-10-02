@@ -68,7 +68,7 @@ research holder datum.
 //Input: datum/design; Output: 0/1 (false/true)
 /datum/research/proc/DesignHasReqs(var/datum/design/D)
 	if(D.req_tech.len == 0)
-		return 1
+		return TRUE
 
 	var/list/k_tech = list()
 
@@ -77,9 +77,9 @@ research holder datum.
 
 	for(var/req in D.req_tech)
 		if(isnull(k_tech[req]) || k_tech[req] < D.req_tech[req])
-			return 0
+			return FALSE
 
-	return 1
+	return TRUE
 
 //Adds a tech to known_tech list. Checks to make sure there aren't duplicates and updates existing tech's levels if needed.
 //Input: datum/tech; Output: Null

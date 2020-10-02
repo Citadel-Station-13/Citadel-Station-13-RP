@@ -132,13 +132,13 @@ SUBSYSTEM_DEF(emergencyshuttle)
 
 /datum/controller/subsystem/emergencyshuttle/proc/can_call()
 	if (!universe.OnShuttleCall(null))
-		return 0
+		return FALSE
 	if (deny_shuttle)
-		return 0
+		return FALSE
 	if (shuttle.moving_status != SHUTTLE_IDLE || !shuttle.location)	//must be idle at centcom
-		return 0
+		return FALSE
 	if (wait_for_launch)	//already launching
-		return 0
+		return FALSE
 	return 1
 
 //this only returns 0 if it would absolutely make no sense to recall
@@ -146,11 +146,11 @@ SUBSYSTEM_DEF(emergencyshuttle)
 //other reasons for the shuttle not being recallable should be handled elsewhere
 /datum/controller/subsystem/emergencyshuttle/proc/can_recall()
 	if (shuttle.moving_status == SHUTTLE_INTRANSIT)	//if the shuttle is already in transit then it's too late
-		return 0
+		return FALSE
 	if (!shuttle.location)	//already at the station.
-		return 0
+		return FALSE
 	if (!wait_for_launch)	//we weren't going anywhere, anyways...
-		return 0
+		return FALSE
 	return 1
 
 /datum/controller/subsystem/emergencyshuttle/proc/get_shuttle_prep_time()
@@ -168,7 +168,7 @@ SUBSYSTEM_DEF(emergencyshuttle)
 //returns 1 if the shuttle is docked at the station and waiting to leave
 /datum/controller/subsystem/emergencyshuttle/proc/waiting_to_leave()
 	if (shuttle.location)
-		return 0	//not at station
+		return FALSE	//not at station
 	return (wait_for_launch || shuttle.moving_status != SHUTTLE_INTRANSIT)
 
 //so we don't have emergencyshuttleshuttle.location everywhere
@@ -208,7 +208,7 @@ SUBSYSTEM_DEF(emergencyshuttle)
 		return 1
 	if (wait_for_launch || shuttle.moving_status != SHUTTLE_IDLE)
 		return 1
-	return 0
+	return FALSE
 
 //returns 1 if the shuttle is currently in transit (or just leaving) to the station
 /datum/controller/subsystem/emergencyshuttle/proc/going_to_station()

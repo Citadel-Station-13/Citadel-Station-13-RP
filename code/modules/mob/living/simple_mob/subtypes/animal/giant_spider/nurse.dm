@@ -216,7 +216,7 @@
 /obj/effect/spider/stickyweb/dark
 	name = "dense web"
 	desc = "It's sticky, and blocks a lot of light."
-	light_color = "#FFFFFF"
+	light_color = COLOR_WHITE
 	light_range = 2
 	light_power = -3
 
@@ -262,3 +262,25 @@
 			var/obj/O = the_target
 			if(!O.anchored)
 				return TRUE
+
+//Lost to AI refactor, returning champion of arachnophobe horror, Spider Queen
+/mob/living/simple_mob/animal/giant_spider/nurse/queen
+	name = "giant spider queen"
+	desc = "Absolutely gigantic, this creature is horror itself."
+	tt_desc = "X Brachypelma phorus tyrannus"
+	icon = 'icons/mob/64x64.dmi'
+	icon_state = "spider_queen"
+	icon_living = "spider_queen"
+	icon_dead = "spider_queen_dead"
+
+	maxHealth = 320
+	health = 320
+
+	melee_damage_lower = 20
+	melee_damage_upper = 30
+	attack_armor_pen = 25
+
+	pixel_x = -16
+	pixel_y = -16
+	old_x = -16
+	old_y = -16

@@ -59,7 +59,7 @@
 
 /mob/living/proc/set_m_intent(var/intent)
 	if (intent != "walk" && intent != "run")
-		return 0
+		return FALSE
 	m_intent = intent
 	if(hud_used)
 		if (hud_used.move_intent)

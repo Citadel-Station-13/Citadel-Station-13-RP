@@ -15,27 +15,27 @@
 	*/
 /obj/machinery/computer3/proc/interactable(var/mob/user)
 	if( !src || !user || stat || user.stat || user.lying || user.blinded )
-		return 0
+		return FALSE
 	if(!program)
-		return 0
+		return FALSE
 	if(!isturf(loc) || !isturf(user.loc)) // todo handheld maybe
-		return 0
+		return FALSE
 	if(user.restrained())
 		to_chat(user, "<span class='warning'>You need a free hand!</span>")
-		return 0
+		return FALSE
 
 	if(issilicon(user) &&!program.ai_allowed )
 		to_chat(user, "<span class='warning'>You are forbidden from accessing this program.</span>")
-		return 0
+		return FALSE
 	if(!ishuman(user) && program.human_controls)
 		to_chat(user, "<span class='warning'>Your body can't work the controls!</span>")
-		return 0
+		return FALSE
 
 
 	if(!in_range(src,user) && (!program.human_controls || !istype(user.get_active_hand(),/obj/item/tk_grab)))
 		// telekinesis check
 		to_chat(user, "<span class='warning'>It's too complicated to work at a distance!</span>")
-		return 0
+		return FALSE
 
 	add_fingerprint(user)
 	user.set_machine(src)
@@ -69,7 +69,7 @@
 		return -1
 
 	user.reset_view(S.current, 0)
-	return 0
+	return FALSE
 
 	/*
 		List all files, including removable disks and data cards
@@ -163,7 +163,7 @@
 			return 1
 
 		if(required_location)
-			return 0
+			return FALSE
 
 	if(floppy && floppy.addfile(F))
 		return 1
@@ -173,4 +173,4 @@
 			return 1
 	if(hdd && hdd.addfile(F))
 		return 1
-	return 0
+	return FALSE

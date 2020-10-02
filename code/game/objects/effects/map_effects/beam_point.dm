@@ -129,7 +129,7 @@ GLOBAL_LIST_EMPTY(all_beam_points)
 
 	if(my_beams.len) // Currently on.
 		destroy_all_beams()
-		color = "#FF0000"
+		color = COLOR_RED
 
 		timer_off_index++
 		if(timer_off_index > off_duration.len)
@@ -146,7 +146,7 @@ GLOBAL_LIST_EMPTY(all_beam_points)
 			return
 
 		create_beams()
-		color = "#00FF00"
+		color = COLOR_LIME
 
 		timer_on_index++
 		if(timer_on_index > on_duration.len)

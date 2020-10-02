@@ -10974,7 +10974,7 @@
 /obj/structure/table/standard,
 /obj/item/soap,
 /obj/item/towel{
-	color = "#0000FF"
+	color = COLOR_BLUE
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/merchant/home)
@@ -16369,23 +16369,23 @@
 "KL" = (
 /obj/structure/table/standard,
 /obj/item/towel{
-	color = "#ff0000";
+	color = COLOR_RED;
 	name = "red towel"
 	},
 /obj/item/towel{
-	color = "#ff0000";
+	color = COLOR_RED;
 	name = "red towel"
 	},
 /obj/item/towel{
-	color = "#ff0000";
+	color = COLOR_RED;
 	name = "red towel"
 	},
 /obj/item/towel{
-	color = "#ff0000";
+	color = COLOR_RED;
 	name = "red towel"
 	},
 /obj/item/towel{
-	color = "#ff0000";
+	color = COLOR_RED;
 	name = "red towel"
 	},
 /obj/item/soap/syndie,

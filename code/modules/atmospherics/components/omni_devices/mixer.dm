@@ -96,11 +96,11 @@
 	if (total != 1)
 		return 1
 
-	return 0
+	return FALSE
 
 /obj/machinery/atmospherics/omni/mixer/process()
 	if(!..())
-		return 0
+		return FALSE
 
 	//Figure out the amount of moles to transfer
 	var/transfer_moles = 0

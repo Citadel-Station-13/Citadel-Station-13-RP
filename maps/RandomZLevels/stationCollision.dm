@@ -182,7 +182,7 @@ var/sc_safecode5 = "[rand(0,9)]"
 
 /obj/machinery/singularity/narsie/sc_Narsie/consume(var/atom/A)
 	if(is_type_in_list(A, uneatable))
-		return 0
+		return FALSE
 	if (istype(A,/mob/living))
 		var/mob/living/L = A
 		L.gib()

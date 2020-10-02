@@ -19,7 +19,7 @@
 		return
 
 	proc/is_active(mob/living/silicon/pai/user)
-		return 0
+		return FALSE
 
 /datum/pai_software/directives
 	name = "Directives"
@@ -57,7 +57,7 @@
 				if(!M || !M.loc || count > 6)
 					//For a runtime where M ends up in nullspace (similar to bluespace but less colorful)
 					to_chat(src, "You are not being carried by anyone!")
-					return 0
+					return FALSE
 				M = M.loc
 				count++
 

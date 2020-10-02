@@ -12,7 +12,7 @@
 
 /datum/paiCandidate/proc/savefile_save(mob/user)
 	if(IsGuestKey(user.key))
-		return 0
+		return FALSE
 
 	var/savefile/F = new /savefile(src.savefile_path(user))
 
@@ -33,12 +33,12 @@
 
 /datum/paiCandidate/proc/savefile_load(mob/user, var/silent = 1)
 	if (IsGuestKey(user.key))
-		return 0
+		return FALSE
 
 	var/path = savefile_path(user)
 
 	if (!fexists(path))
-		return 0
+		return FALSE
 
 	var/savefile/F = new /savefile(path)
 
@@ -51,7 +51,7 @@
 		fdel(path)
 		if (!silent)
 			alert(user, "Your savefile was incompatible with this version and was deleted.")
-		return 0
+		return FALSE
 
 	F["name"] >> src.name
 	F["description"] >> src.description

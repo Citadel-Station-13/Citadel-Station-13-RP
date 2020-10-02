@@ -3,7 +3,7 @@
 
 /datum/admin_secret_item/fun_secret/triple_ai_mode/can_execute(var/mob/user)
 	if(SSticker && SSticker.current_state > GAME_STATE_PREGAME)
-		return 0
+		return FALSE
 
 	return ..()
 

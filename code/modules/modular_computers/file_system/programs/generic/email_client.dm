@@ -85,20 +85,20 @@
 			if(account.password == stored_password)
 				if(account.suspended)
 					error = "This account has been suspended. Please contact the system administrator for assistance."
-					return 0
+					return FALSE
 				current_account = account
 				return 1
 			else
 				error = "Invalid Password"
-				return 0
+				return FALSE
 	error = "Invalid Login"
-	return 0
+	return FALSE
 
 // Returns 0 if no new messages were received, 1 if there is an unread message but notification has already been sent.
 // and 2 if there is a new message that appeared in this tick (and therefore notification should be sent by the program).
 /datum/nano_module/email_client/proc/check_for_new_messages(var/messages_read = FALSE)
 	if(!current_account)
-		return 0
+		return FALSE
 
 	var/list/allmails = current_account.all_emails()
 

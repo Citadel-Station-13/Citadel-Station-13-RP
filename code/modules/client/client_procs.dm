@@ -141,7 +141,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 /client/AllowUpload(filename, filelength)
 	if(filelength > UPLOAD_LIMIT)
 		to_chat(src, "<font color='red'>Error: AllowUpload(): File Upload too large. Upload Limit: [UPLOAD_LIMIT/1024]KiB.</font>")
-		return 0
+		return FALSE
 	return 1
 
 
@@ -311,7 +311,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			to_chat(src, "Because you are an admin, you are being allowed to walk past this limitation, But it is still STRONGLY suggested you upgrade")
 		else
 			qdel(src)
-			return 0
+			return FALSE
 	else if (byond_version < cwv)	//We have words for this client.
 		if(CONFIG_GET(flag/client_warn_popup))
 			var/msg = "<b>Your version of byond may be getting out of date:</b><br>"
@@ -331,11 +331,11 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		if (!CONFIG_GET(flag/allow_webclient))
 			to_chat(src, "Web client is disabled")
 			qdel(src)
-			return 0
+			return FALSE
 		if (CONFIG_GET(flag/webclient_only_byond_members) && !IsByondMember())
 			to_chat(src, "Sorry, but the web client is restricted to byond members only.")
 			qdel(src)
-			return 0
+			return FALSE
 
 	if( (world.address == address || !address) && !GLOB.host )
 		GLOB.host = key
@@ -511,7 +511,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			message_admins("<span class='adminnotice'>Failed Login: [key] - New account attempting to connect during panic bunker</span>")
 			to_chat(src, config_legacy.panic_bunker_message)
 			qdel(src)
-			return 0
+			return FALSE
 	if(player_age == -1)
 		player_age = 0		//math requires this to not be -1.
 
@@ -546,7 +546,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 //3000 frames = 5 minutes
 /client/proc/is_afk(duration=3000)
 	if(inactivity > duration)	return inactivity
-	return 0
+	return FALSE
 
 // Byond seemingly calls stat, each tick.
 // Calling things each tick can get expensive real quick.
@@ -683,14 +683,14 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	*/
 
 /mob/proc/MayRespawn()
-	return 0
+	return FALSE
 
 /client/proc/MayRespawn()
 	if(mob)
 		return mob.MayRespawn()
 
 	// Something went wrong, client is usually kicked or transfered to a new mob at this point
-	return 0
+	return FALSE
 
 /client/verb/character_setup()
 	set name = "Character Setup"

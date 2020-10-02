@@ -36,7 +36,7 @@
 		if (istype(I, possible_type))
 			if (!can_fit(I))
 				user << span("warning","There's no more space in the [src] for that!")
-				return 0
+				return FALSE
 
 			if(!user.unEquip(I))
 				return
@@ -77,7 +77,7 @@
 /obj/item/reagent_containers/cooking_container/proc/check_contents()
 	if (contents.len == 0)
 		if (!reagents || reagents.total_volume == 0)
-			return 0//Completely empty
+			return FALSE//Completely empty
 	else if (contents.len == 1)
 		if (!reagents || reagents.total_volume == 0)
 			return 1//Contains only a single object which can be extracted alone

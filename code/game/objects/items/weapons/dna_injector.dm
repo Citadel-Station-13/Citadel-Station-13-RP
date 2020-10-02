@@ -105,7 +105,7 @@
 	if (!usr.IsAdvancedToolUser())
 		return
 	if(inuse)
-		return 0
+		return FALSE
 
 	user.visible_message("<span class='danger'>\The [user] is trying to inject \the [M] with \the [src]!</span>")
 	inuse = 1

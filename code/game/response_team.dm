@@ -72,7 +72,7 @@ proc/percentage_dead()
 			if(H.stat == 2) deadcount++
 			total++
 
-	if(total == 0) return 0
+	if(total == 0) return FALSE
 	else return round(100 * deadcount / total)
 
 // counts the number of antagonists in %
@@ -84,7 +84,7 @@ proc/percentage_antagonists()
 			antagonists++
 		total++
 
-	if(total == 0) return 0
+	if(total == 0) return FALSE
 	else return round(100 * antagonists / total)
 
 // Increments the ERT chance automatically, so that the later it is in the round,

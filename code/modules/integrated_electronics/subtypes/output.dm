@@ -69,7 +69,7 @@
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 	var/light_toggled = 0
 	var/light_brightness = 3
-	var/light_rgb = "#FFFFFF"
+	var/light_rgb = COLOR_WHITE
 	power_draw_idle = 0 // Adjusted based on brightness.
 
 /obj/item/integrated_circuit/output/light/do_work()

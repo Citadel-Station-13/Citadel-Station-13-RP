@@ -95,7 +95,7 @@
 
 /mob/living/carbon/human/proc/handle_some_updates()
 	if(life_tick > 5 && timeofdeath && (timeofdeath < 5 || world.time - timeofdeath > 6000))	//We are long dead, or we're junk mobs spawned like the clowns on the clown shuttle
-		return 0
+		return FALSE
 	return 1
 
 /mob/living/carbon/human/breathe()
@@ -374,7 +374,7 @@
 		adjustOxyLoss(2)//If you are suiciding, you should die a little bit faster
 		oxygen_alert = max(oxygen_alert, 1)
 		suiciding --
-		return 0
+		return FALSE
 
 	if(does_not_breathe)
 		failed_last_breath = 0
@@ -395,7 +395,7 @@
 
 		oxygen_alert = max(oxygen_alert, 1)
 
-		return 0
+		return FALSE
 
 	var/safe_pressure_min = species.minimum_breath_pressure // Minimum safe partial pressure of breathable gas in kPa
 
@@ -892,7 +892,7 @@
 					adjustToxLoss(total_phoronloss)
 
 	if(status_flags & GODMODE)
-		return 0	//godmode
+		return FALSE	//godmode
 
 	if(species.light_dam)
 		var/light_amount = 0
@@ -938,9 +938,9 @@
 //DO NOT CALL handle_statuses() from this proc, it's called from living/Life() as long as this returns a true value.
 /mob/living/carbon/human/handle_regular_status_updates()
 	if(!handle_some_updates())
-		return 0
+		return FALSE
 
-	if(status_flags & GODMODE)	return 0
+	if(status_flags & GODMODE)	return FALSE
 
 	//SSD check, if a logged player is awake put them back to sleep!
 	if(species.get_ssd(src) && !client && !teleop)
@@ -1106,7 +1106,7 @@
 	// now handle what we see on our screen
 
 	if(!client)
-		return 0
+		return FALSE
 
 	..()
 
@@ -1500,7 +1500,7 @@
 
 /mob/living/carbon/human/handle_shock()
 	..()
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & GODMODE)	return FALSE	//godmode
 	if(!can_feel_pain()) return
 
 	if(health < config_legacy.health_threshold_softcrit)// health 0 makes you immediately collapse
@@ -1516,7 +1516,7 @@
 		return
 
 	if(stat)
-		return 0
+		return FALSE
 
 	if(shock_stage == 10)
 		custom_pain("[pick("It hurts so much", "You really need some painkillers", "Dear god, the pain")]!", 40)

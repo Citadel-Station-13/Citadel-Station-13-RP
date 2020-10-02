@@ -127,7 +127,7 @@
 			if (CI.container.check_contents() == 0)
 				return CI
 
-	return 0
+	return FALSE
 
 /obj/machinery/appliance/cooker/add_content(var/obj/item/I, var/mob/user)
 	var/datum/cooking_item/CI = ..()

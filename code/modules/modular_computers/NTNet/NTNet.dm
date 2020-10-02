@@ -74,7 +74,7 @@ var/global/datum/ntnet/ntnet_global = new()
 // Checks whether NTNet operates. If parameter is passed checks whether specific function is enabled.
 /datum/ntnet/proc/check_function(var/specific_action = 0)
 	if(!relays || !relays.len) // No relays found. NTNet is down
-		return 0
+		return FALSE
 
 	var/operating = 0
 
@@ -85,7 +85,7 @@ var/global/datum/ntnet/ntnet_global = new()
 			break
 
 	if(setting_disabled)
-		return 0
+		return FALSE
 
 	if(specific_action == NTNET_SOFTWAREDOWNLOAD)
 		return (operating && setting_softwaredownload)
@@ -150,7 +150,7 @@ var/global/datum/ntnet/ntnet_global = new()
 // Updates maximal amount of stored logs. Use this instead of setting the number, it performs required checks.
 /datum/ntnet/proc/update_max_log_count(var/lognumber)
 	if(!lognumber)
-		return 0
+		return FALSE
 	// Trim the value if necessary
 	lognumber = between(MIN_NTNET_LOGS, lognumber, MAX_NTNET_LOGS)
 	setting_maxlogcount = lognumber
@@ -178,7 +178,7 @@ var/global/datum/ntnet/ntnet_global = new()
 	for(var/datum/computer_file/data/email_account/A in ntnet_global.email_accounts)
 		if(A.login == login)
 			return 1
-	return 0
+	return FALSE
 
 
 

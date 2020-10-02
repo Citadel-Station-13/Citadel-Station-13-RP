@@ -189,7 +189,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 /obj/item/communicator/proc/get_connection_to_tcomms()
 	if(node && node.on && node.allow_external_communicators)
 		return can_telecomm(src,node)
-	return 0
+	return FALSE
 
 // Proc: process()
 // Parameters: None
@@ -211,7 +211,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 		for(var/obj/item/wrapped in cartridge.active_devices)
 			if(wrapped) 	//The force of the wrapped obj gets set to zero during the attack() and afterattack().
 				wrapped.attack(M,user)
-	return 0
+	return FALSE
 
 // Proc: attackby()
 // Parameters: 2 (C - what is used on the communicator. user - the mob that has the communicator)

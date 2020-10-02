@@ -30,7 +30,7 @@ var/list/nuke_disks = list()
 	for(var/obj/item/disk/nuclear/N in nuke_disks)
 		if(N.storage_depth(L) >= 0)
 			return 1
-	return 0
+	return FALSE
 
 /datum/game_mode/nuclear/declare_completion()
 	if(config_legacy.objectives_disabled)

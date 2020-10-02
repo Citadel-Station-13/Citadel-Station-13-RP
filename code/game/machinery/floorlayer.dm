@@ -85,7 +85,7 @@
 	for(var/obj/item/stack/tile/tile in contents)
 		T = tile
 		return 1
-	return 0
+	return FALSE
 
 /obj/machinery/floorlayer/proc/SortStacks()
 	for(var/obj/item/stack/tile/tile1 in contents)
@@ -95,7 +95,7 @@
 /obj/machinery/floorlayer/proc/layFloor(var/turf/w_turf)
 	if(!T)
 		if(!TakeNewStack())
-			return 0
+			return FALSE
 	w_turf.attackby(T , src)
 	return 1
 

@@ -9,7 +9,7 @@
 	face_atom(A)
 
 	if(melee_attack_delay)
-	//	their_T.color = "#FF0000"
+	//	their_T.color = COLOR_RED
 		melee_pre_animation(A)
 		handle_attack_delay(A, melee_attack_delay) // This will sleep this proc for a bit, which is why waitfor is false.
 
@@ -20,7 +20,7 @@
 
 	if(melee_attack_delay)
 		melee_post_animation(A)
-	//	their_T.color = "#FFFFFF"
+	//	their_T.color = COLOR_WHITE
 
 
 

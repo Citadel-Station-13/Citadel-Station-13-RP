@@ -16,7 +16,7 @@
 
 	var/datum/changeling/changeling = changeling_power(10,0,100)
 	if(!changeling)
-		return 0
+		return FALSE
 	changeling.chem_charges -= 10
 	to_chat(src, "<span class='notice'>Your throat adjusts to launch the sting.</span>")
 	var/range = 2

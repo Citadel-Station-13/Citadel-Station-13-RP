@@ -11,7 +11,7 @@
 			to_chat(src, "Where do you intend to put \the [food]? You don't have a mouth!")
 		else if(status[1] == HUMAN_EATING_BLOCKED_MOUTH)
 			to_chat(src, "<span class='warning'>\The [status[2]] is in the way!</span>")
-	return 0
+	return FALSE
 
 /mob/living/carbon/human/can_force_feed(var/feeder, var/food, var/feedback = 1)
 	var/list/status = can_eat_status()
@@ -22,7 +22,7 @@
 			to_chat(feeder, "Where do you intend to put \the [food]? \The [src] doesn't have a mouth!")
 		else if(status[1] == HUMAN_EATING_BLOCKED_MOUTH)
 			to_chat(feeder, "<span class='warning'>\The [status[2]] is in the way!</span>")
-	return 0
+	return FALSE
 
 /mob/living/carbon/human/proc/can_eat_status()
 	if(!check_has_mouth())
@@ -107,7 +107,7 @@
 		synthetic = R
 		return synthetic
 
-	return 0
+	return FALSE
 
 // Would an onlooker know this person is synthetic?
 // Based on sort of logical reasoning, 'Look at head, look at torso'
@@ -126,7 +126,7 @@
 			if(T && T.robotic == ORGAN_ROBOT)
 				return 1
 
-	return 0
+	return FALSE
 
 // Returns a string based on what kind of brain the FBP has.
 /mob/living/carbon/human/proc/get_FBP_type()

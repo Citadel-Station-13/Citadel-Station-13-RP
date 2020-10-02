@@ -33,7 +33,7 @@
 		playsound(loc, ready_sound, 50, 1, -1)
 	if(target && chassis)
 		return 1
-	return 0
+	return FALSE
 
 /obj/item/mecha_parts/mecha_equipment/examine(mob/user)
 	..()
@@ -128,17 +128,17 @@
 		if (istype(target, path))
 			return 1
 
-	return 0
+	return FALSE
 
 /obj/item/mecha_parts/mecha_equipment/proc/action_checks(atom/target)
 	if(!target)
-		return 0
+		return FALSE
 	if(!chassis)
-		return 0
+		return FALSE
 	if(!equip_ready)
-		return 0
+		return FALSE
 	if(energy_drain && !chassis.has_charge(energy_drain))
-		return 0
+		return FALSE
 	return 1
 
 /obj/item/mecha_parts/mecha_equipment/proc/handle_movement_action() //Any modules that have special effects or needs when taking a step or floating through space.
@@ -149,11 +149,11 @@
 
 /obj/item/mecha_parts/mecha_equipment/proc/can_attach(obj/mecha/M as obj)
 	//if(M.equipment.len >= M.max_equip)
-	//	return 0
+	//	return FALSE
 	if(!allow_duplicate)
 		for(var/obj/item/mecha_parts/mecha_equipment/ME in M.equipment) //Exact duplicate components aren't allowed.
 			if(ME.type == src.type)
-				return 0
+				return FALSE
 	if(equip_type == EQUIP_HULL && M.hull_equipment.len < M.max_hull_equip)
 		return 1
 	if(equip_type == EQUIP_WEAPON && M.weapon_equipment.len < M.max_weapon_equip)
@@ -168,7 +168,7 @@
 		return 1
 	if(equip_type != EQUIP_SPECIAL && M.universal_equipment.len < M.max_universal_equip) //The exosuit needs to be military grade to actually have a universal slot capable of accepting a true weapon.
 		if(equip_type == EQUIP_WEAPON && !istype(M, /obj/mecha/combat))
-			return 0
+			return FALSE
 		return 1
 	/*if (ispath(required_type))
 		return istype(M, required_type)
@@ -177,7 +177,7 @@
 		if (istype(M, path))
 			return 1
 	*/
-	return 0
+	return FALSE
 
 /obj/item/mecha_parts/mecha_equipment/proc/attach(obj/mecha/M as obj)
 	//M.equipment += src

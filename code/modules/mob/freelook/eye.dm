@@ -35,7 +35,7 @@
 /mob/observer/eye/Move(n, direct)
 	if(owner == src)
 		return EyeMove(n, direct)
-	return 0
+	return FALSE
 
 /mob/observer/eye/airflow_hit(atom/A)
 	airflow_speed = 0
@@ -44,12 +44,12 @@
 /mob/observer/eye/examinate()
 	set popup_menu = 0
 	set src = usr.contents
-	return 0
+	return FALSE
 
 /mob/observer/eye/pointed()
 	set popup_menu = 0
 	set src = usr.contents
-	return 0
+	return FALSE
 
 /mob/observer/eye/examine(mob/user)
 
@@ -71,7 +71,7 @@
 
 			visualnet.visibility(src)
 			return 1
-	return 0
+	return FALSE
 
 /mob/observer/eye/proc/getLoc()
 	if(owner)

@@ -118,7 +118,7 @@
 
 	custom_action(index, diff, atom/used_atom, mob/user)
 		if(!..())
-			return 0
+			return FALSE
 		//TODO: better messages.
 		switch(index)
 			if(20)
@@ -373,7 +373,7 @@
 
 	custom_action(index, diff, atom/used_atom, mob/user)
 		if(!..())
-			return 0
+			return FALSE
 
 		//TODO: better messages.
 		switch(index)
@@ -606,7 +606,7 @@
 
 	custom_action(index, diff, atom/used_atom, mob/user)
 		if(!..())
-			return 0
+			return FALSE
 		//TODO: better messages.
 		switch(index)
 			if(20)

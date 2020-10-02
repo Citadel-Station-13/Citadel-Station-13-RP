@@ -16,7 +16,7 @@
 		mobloc = default_mobloc
 	if(!mobloc)
 		fail("Unable to find a location to create test mob")
-		return 0
+		return FALSE
 
 	var/mob/living/carbon/human/H = new mobtype(mobloc)
 

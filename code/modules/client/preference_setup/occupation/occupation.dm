@@ -184,7 +184,7 @@
 /datum/category_item/player_setup_item/occupation/proc/SetJob(mob/user, role)
 	var/datum/job/job = SSjobs.GetJob(role)
 	if(!job)
-		return 0
+		return FALSE
 
 	if(job.type == /datum/job/assistant)
 		if(pref.job_civilian_low & job.flag)
@@ -205,7 +205,7 @@
 	return 1
 
 /datum/category_item/player_setup_item/occupation/proc/SetJobDepartment(var/datum/job/job, var/level)
-	if(!job || !level)	return 0
+	if(!job || !level)	return FALSE
 	switch(level)
 		if(1)//Only one of these should ever be active at once so clear them all here
 			pref.job_civilian_high = 0
@@ -272,7 +272,7 @@
 	return (job.title in player_alt_titles) ? player_alt_titles[job.title] : job.title
 
 /datum/preferences/proc/GetJobDepartment(var/datum/job/job, var/level)
-	if(!job || !level)	return 0
+	if(!job || !level)	return FALSE
 	switch(job.department_flag)
 		if(CIVILIAN)
 			switch(level)
@@ -298,4 +298,4 @@
 					return job_engsec_med
 				if(3)
 					return job_engsec_low
-	return 0
+	return FALSE

@@ -155,10 +155,10 @@
 
 /obj/machinery/atmospherics/unary/cryo_cell/Topic(href, href_list)
 	if(usr == occupant)
-		return 0 // don't update UIs attached to this object
+		return FALSE // don't update UIs attached to this object
 
 	if(..())
-		return 0 // don't update UIs attached to this object
+		return FALSE // don't update UIs attached to this object
 
 	if(href_list["switchOn"])
 		on = 1
@@ -176,7 +176,7 @@
 
 	if(href_list["ejectOccupant"])
 		if(!occupant || isslime(usr) || ispAI(usr))
-			return 0 // don't update UIs attached to this object
+			return FALSE // don't update UIs attached to this object
 		go_out()
 
 	add_fingerprint(usr)

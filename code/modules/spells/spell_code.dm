@@ -181,7 +181,7 @@ var/list/spells = typesof(/spell) //needed for the badmin verb for now
 	if(!(src in user.spell_list) && holder == user)
 		log_world("[user] utilized the spell '[src]' without having it.")
 		to_chat(user, "<span class='warning'>You shouldn't have this spell! Something's wrong.</span>")
-		return 0
+		return FALSE
 
 	if(silenced > 0)
 		return
@@ -191,38 +191,38 @@ var/list/spells = typesof(/spell) //needed for the badmin verb for now
 		to_chat(user, "<span class='warning'>You cannot cast spells in null space!</span>")
 
 	if(spell_flags & Z2NOCAST && (user_turf.z in GLOB.using_map.admin_levels)) //Certain spells are not allowed on the CentCom zlevel
-		return 0
+		return FALSE
 
 	if(spell_flags & CONSTRUCT_CHECK)
 		for(var/turf/T in range(holder, 1))
 			if(findNullRod(T))
-				return 0
+				return FALSE
 
 	if(istype(user, /mob/living/simple_mob) && holder == user)
 		var/mob/living/simple_mob/SM = user
 		if(SM.purge)
 			to_chat(SM, "<span class='warning'>The nullrod's power interferes with your own!</span>")
-			return 0
+			return FALSE
 
 	if(!src.check_charge(skipcharge, user)) //sees if we can cast based on charges alone
-		return 0
+		return FALSE
 
 	if(!(spell_flags & GHOSTCAST) && holder == user)
 		if(user.stat && !(spell_flags & STATALLOWED))
 			to_chat(usr, "Not when you're incapacitated.")
-			return 0
+			return FALSE
 
 		if(ishuman(user) && !(invocation_type in list(SpI_EMOTE, SpI_NONE)))
 			if(user.is_muzzled())
 				to_chat(user, "Mmmf mrrfff!")
-				return 0
+				return FALSE
 
 	var/spell/noclothes/spell = locate() in user.spell_list
 	if((spell_flags & NEEDSCLOTHES) && !(spell && istype(spell)) && holder == user)//clothes check
 		if(!user.wearing_wiz_garb())
-			return 0
+			return FALSE
 
-	return 1
+	return TRUE
 
 /spell/proc/check_charge(var/skipcharge, mob/user)
 	if(!skipcharge)
@@ -230,12 +230,12 @@ var/list/spells = typesof(/spell) //needed for the badmin verb for now
 			if(Sp_RECHARGE)
 				if(charge_counter < charge_max)
 					user << still_recharging_msg
-					return 0
+					return FALSE
 			if(Sp_CHARGES)
 				if(!charge_counter)
 					to_chat(user, "<span class='notice'>[name] has no charges left.</span>")
-					return 0
-	return 1
+					return FALSE
+	return TRUE
 
 /spell/proc/take_charge(mob/user = user, var/skipcharge)
 	if(!skipcharge)
@@ -243,15 +243,15 @@ var/list/spells = typesof(/spell) //needed for the badmin verb for now
 			if(Sp_RECHARGE)
 				charge_counter = 0 //doesn't start recharging until the targets selecting ends
 				src.process()
-				return 1
+				return TRUE
 			if(Sp_CHARGES)
 				charge_counter-- //returns the charge if the targets selecting fails
-				return 1
+				return TRUE
 			if(Sp_HOLDVAR)
 				adjust_var(user, holder_var_type, holder_var_amount)
-				return 1
-		return 0
-	return 1
+				return TRUE
+		return FALSE
+	return TRUE
 
 /spell/proc/invocation(mob/user = usr, var/list/targets) //spelling the spell out and setting it on recharge/reducing charges amount
 
@@ -275,20 +275,20 @@ var/list/spells = typesof(/spell) //needed for the badmin verb for now
 
 /spell/proc/can_improve(var/upgrade_type)
 	if(level_max[Sp_TOTAL] <= ( spell_levels[Sp_SPEED] + spell_levels[Sp_POWER] )) //too many levels, can't do it
-		return 0
+		return FALSE
 
 	if(upgrade_type && upgrade_type in spell_levels && upgrade_type in level_max)
 		if(spell_levels[upgrade_type] >= level_max[upgrade_type])
-			return 0
+			return FALSE
 
-	return 1
+	return TRUE
 
 /spell/proc/empower_spell()
 	return
 
 /spell/proc/quicken_spell()
 	if(!can_improve(Sp_SPEED))
-		return 0
+		return FALSE
 
 	spell_levels[Sp_SPEED]++
 
@@ -325,9 +325,9 @@ var/list/spells = typesof(/spell) //needed for the badmin verb for now
 
 /spell/proc/spell_do_after(var/mob/user as mob, delay as num, var/numticks = 5)
 	if(!user || isnull(user))
-		return 0
+		return FALSE
 	if(numticks == 0)
-		return 1
+		return TRUE
 
 	var/delayfraction = round(delay/numticks)
 	var/Location = user.loc
@@ -338,5 +338,5 @@ var/list/spells = typesof(/spell) //needed for the badmin verb for now
 
 
 		if(!user || (!(spell_flags & (STATALLOWED|GHOSTCAST)) && user.stat != originalstat)  || !(user.loc == Location))
-			return 0
-	return 1
+			return FALSE
+	return TRUE

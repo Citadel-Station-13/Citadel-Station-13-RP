@@ -73,7 +73,7 @@
 			redirect(new_target.x, new_target.y, curloc, firer)
 			bounces--
 
-			return 0
+			return FALSE
 	return 1
 
 

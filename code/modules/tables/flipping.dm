@@ -1,12 +1,12 @@
 
 /obj/structure/table/proc/straight_table_check(var/direction)
 	if(health > 100)
-		return 0
+		return FALSE
 	var/obj/structure/table/T
 	for(var/angle in list(-90,90))
 		T = locate() in get_step(src.loc,turn(direction,angle))
 		if(T && T.flipped == 0 && T.material.name == material.name)
-			return 0
+			return FALSE
 	T = locate() in get_step(src.loc,direction)
 	if (!T || T.flipped == 1 || T.material != material)
 		return 1
@@ -35,12 +35,12 @@
 /obj/structure/table/proc/unflipping_check(var/direction)
 
 	for(var/mob/M in oview(src,0))
-		return 0
+		return FALSE
 
 	var/obj/occupied = turf_is_crowded()
 	if(occupied)
 		to_chat(usr, "There's \a [occupied] in the way.")
-		return 0
+		return FALSE
 
 	var/list/L = list()
 	if(direction)
@@ -52,7 +52,7 @@
 		var/obj/structure/table/T = locate() in get_step(src.loc,new_dir)
 		if(T && T.material.name == material.name)
 			if(T.flipped == 1 && T.dir == src.dir && !T.unflipping_check(new_dir))
-				return 0
+				return FALSE
 	return 1
 
 /obj/structure/table/proc/do_put()
@@ -71,7 +71,7 @@
 
 /obj/structure/table/proc/flip(var/direction)
 	if( !straight_table_check(turn(direction,90)) || !straight_table_check(turn(direction,-90)) )
-		return 0
+		return FALSE
 
 	verbs -=/obj/structure/table/verb/do_flip
 	verbs +=/obj/structure/table/proc/do_put

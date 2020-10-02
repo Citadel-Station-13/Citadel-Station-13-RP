@@ -88,7 +88,7 @@
 
 /obj/structure/closet/proc/can_open()
 	if(src.sealed)
-		return 0
+		return FALSE
 	return 1
 
 /obj/structure/closet/proc/can_close()
@@ -98,7 +98,7 @@
 			if(!closet.anchored)
 				closet_count ++
 	if(closet_count > max_closets)
-		return 0
+		return FALSE
 	return 1
 
 /obj/structure/closet/proc/dump_contents()
@@ -117,10 +117,10 @@
 
 /obj/structure/closet/proc/open()
 	if(src.opened)
-		return 0
+		return FALSE
 
 	if(!src.can_open())
-		return 0
+		return FALSE
 
 	src.dump_contents()
 
@@ -133,9 +133,9 @@
 
 /obj/structure/closet/proc/close()
 	if(!src.opened)
-		return 0
+		return FALSE
 	if(!src.can_close())
-		return 0
+		return FALSE
 
 	var/stored_units = 0
 
@@ -258,9 +258,9 @@
 		if(istype(W, /obj/item/grab))
 			var/obj/item/grab/G = W
 			src.MouseDrop_T(G.affecting, user)      //act like they were dragged onto the closet
-			return 0
+			return FALSE
 		if(istype(W,/obj/item/tk_grab))
-			return 0
+			return FALSE
 		if(istype(W, /obj/item/weldingtool))
 			var/obj/item/weldingtool/WT = W
 			if(!WT.remove_fuel(0,user))
@@ -407,9 +407,9 @@
 
 /obj/structure/closet/proc/req_breakout()
 	if(opened)
-		return 0 //Door's open... wait, why are you in it's contents then?
+		return FALSE //Door's open... wait, why are you in it's contents then?
 	if(!sealed)
-		return 0 //closed but not sealed...
+		return FALSE //closed but not sealed...
 	return 1
 
 /obj/structure/closet/proc/mob_breakout(var/mob/living/escapee)

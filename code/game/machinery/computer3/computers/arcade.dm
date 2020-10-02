@@ -28,7 +28,7 @@
 							)
 
 /obj/item/part/computer/toybox/allow_attackby(var/obj/item/I, var/mob/user)
-	return 0
+	return FALSE
 
 /obj/item/part/computer/toybox/proc/dispense()
 	if(computer && !computer.stat)

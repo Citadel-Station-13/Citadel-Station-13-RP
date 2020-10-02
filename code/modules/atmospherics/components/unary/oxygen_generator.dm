@@ -31,7 +31,7 @@ obj/machinery/atmospherics/unary/oxygen_generator
 	process()
 		..()
 		if(!on)
-			return 0
+			return FALSE
 
 		var/total_moles = air_contents.total_moles
 

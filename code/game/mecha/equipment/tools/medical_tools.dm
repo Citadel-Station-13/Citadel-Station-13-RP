@@ -27,7 +27,7 @@
 	return ..()
 
 /obj/item/mecha_parts/mecha_equipment/tool/sleeper/Exit(atom/movable/O)
-	return 0
+	return FALSE
 
 /obj/item/mecha_parts/mecha_equipment/tool/sleeper/action(var/mob/living/carbon/human/target)
 	if(!action_checks(target))
@@ -183,7 +183,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/tool/sleeper/proc/inject_reagent(var/datum/reagent/R,var/obj/item/mecha_parts/mecha_equipment/tool/syringe_gun/SG)
 	if(!R || !occupant || !SG || !(SG in chassis.equipment))
-		return 0
+		return FALSE
 	var/to_inject = min(R.volume, inject_amount)
 	if(to_inject && occupant.reagents.get_reagent_amount(R.id) + to_inject > inject_amount*4)
 		occupant_message("Sleeper safeties prohibit you from injecting more than [inject_amount*4] units of [R.name].")
@@ -497,15 +497,15 @@
 	if(syringes.len<max_syringes)
 		if(get_dist(src,S) >= 2)
 			occupant_message("The syringe is too far away.")
-			return 0
+			return FALSE
 		for(var/obj/structure/D in S.loc)//Basic level check for structures in the way (Like grilles and windows)
 			if(!(D.CanPass(S,src.loc)))
 				occupant_message("Unable to load syringe.")
-				return 0
+				return FALSE
 		for(var/obj/machinery/door/D in S.loc)//Checks for doors
 			if(!(D.CanPass(S,src.loc)))
 				occupant_message("Unable to load syringe.")
-				return 0
+				return FALSE
 		S.reagents.trans_to_obj(src, S.reagents.total_volume)
 		S.forceMove(src)
 		syringes += S
@@ -513,15 +513,15 @@
 		update_equip_info()
 		return 1
 	occupant_message("The [src] syringe chamber is full.")
-	return 0
+	return FALSE
 
 /obj/item/mecha_parts/mecha_equipment/tool/syringe_gun/proc/analyze_reagents(atom/A)
 	if(get_dist(src,A) >= 4)
 		occupant_message("The object is too far away.")
-		return 0
+		return FALSE
 	if(!A.reagents || istype(A,/mob))
 		occupant_message("<span class=\"alert\">No reagent info gained from [A].</span>")
-		return 0
+		return FALSE
 	occupant_message("Analyzing reagents...")
 	//VOREStation Block Edit - Start
 	for(var/datum/reagent/R in A.reagents.reagent_list)
@@ -543,7 +543,7 @@
 		known_reagents += r_id
 		known_reagents[r_id] = r_name
 		return 1
-	return 0
+	return FALSE
 
 
 /obj/item/mecha_parts/mecha_equipment/tool/syringe_gun/update_equip_info()

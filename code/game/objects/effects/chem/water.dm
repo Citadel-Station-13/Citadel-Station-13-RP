@@ -41,7 +41,7 @@
 
 /obj/effect/effect/water/Move(turf/newloc)
 	if(newloc.density)
-		return 0
+		return FALSE
 	. = ..()
 
 /obj/effect/effect/water/Bump(atom/A)

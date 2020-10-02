@@ -34,7 +34,7 @@ var/global/repository/radiation/radiation_repository = new()
 
 // Ray trace from all active radiation sources to T and return the strongest effect.
 /repository/radiation/proc/get_rads_at_turf(var/turf/T)
-	if(!istype(T)) return 0
+	if(!istype(T)) return FALSE
 
 	. = 0
 	for(var/value in sources)

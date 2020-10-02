@@ -69,7 +69,7 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 			low_color = "#DDDDDD"
 
 			high_brightness = 1.0
-			high_color = "#FFFFFF"
+			high_color = COLOR_WHITE
 			min = 0.70
 
 	var/lerp_weight = (abs(min - sun_position)) * 4
@@ -474,7 +474,7 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 /datum/weather/virgo3b/blood_moon
 	name = "blood moon"
 	light_modifier = 0.5
-	light_color = "#FF0000"
+	light_color = COLOR_RED
 	flight_failure_modifier = 25
 	transition_chances = list(
 		WEATHER_BLOODMOON = 100

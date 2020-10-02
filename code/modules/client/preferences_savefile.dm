@@ -7,7 +7,7 @@
 //this will mean that savefile_version will still be over SAVEFILE_VERSION_MIN, meaning
 //this savefile update doesn't run everytime we load from the savefile.
 //This is mainly for format changes, such as the bitflags in toggles changing order or something.
-//if a file can't be updated, return 0 to delete it and start again
+//if a file can't be updated, return FALSE to delete it and start again
 //if a file was updated, return 1
 /datum/preferences/proc/savefile_update()
 	if(savefile_version < 8)	//lazily delete everything + additional files so they can be saved in the new format
@@ -33,17 +33,17 @@
 
 /datum/preferences/proc/load_preferences()
 	if(!path)
-		return 0
+		return FALSE
 	if(world.time < loadprefcooldown) //This is done before checking if the file exists to ensure that the server can't hang on read attempts
 		if(istype(client))
 			to_chat(client, "<span class='warning'>You're attempting to load your preferences a little too fast. Wait half a second, then try again.</span>")
-		return 0
+		return FALSE
 	loadprefcooldown = world.time + PREF_SAVELOAD_COOLDOWN
 	if(!fexists(path))
-		return 0
+		return FALSE
 	var/savefile/S = new /savefile(path)
 	if(!S)
-		return 0
+		return FALSE
 	S.cd = "/"
 
 	S["version"] >> savefile_version
@@ -53,20 +53,20 @@
 			savefile_version = SAVEFILE_VERSION_MAX
 			save_preferences()
 			save_character()
-			return 0
+			return FALSE
 
 	player_setup.load_preferences(S)
 	return 1
 
 /datum/preferences/proc/save_preferences()
-	if(!path)				return 0
+	if(!path)				return FALSE
 	if(world.time < saveprefcooldown)
 		if(istype(client))
 			to_chat(client, "<span class='warning'>You're attempting to save your preferences a little too fast. Wait half a second, then try again.</span>")
-		return 0
+		return FALSE
 	saveprefcooldown = world.time + PREF_SAVELOAD_COOLDOWN
 	var/savefile/S = new /savefile(path)
-	if(!S)					return 0
+	if(!S)					return FALSE
 	S.cd = "/"
 
 	S["version"] << savefile_version
@@ -74,15 +74,15 @@
 	return 1
 
 /datum/preferences/proc/load_character(slot)
-	if(!path)				return 0
+	if(!path)				return FALSE
 	if(world.time < loadcharcooldown)
 		if(istype(client))
 			to_chat(client, "<span class='warning'>You're attempting to load your character a little too fast. Wait half a second, then try again.</span>")
-		return 0
+		return FALSE
 	loadcharcooldown = world.time + PREF_SAVELOAD_COOLDOWN
-	if(!fexists(path))		return 0
+	if(!fexists(path))		return FALSE
 	var/savefile/S = new /savefile(path)
-	if(!S)					return 0
+	if(!S)					return FALSE
 	S.cd = "/"
 	if(!slot)	slot = default_slot
 	if(slot != SAVE_RESET) // SAVE_RESET will reset the slot as though it does not exist, but keep the current slot for saving purposes.
@@ -104,24 +104,24 @@
 	return 1
 
 /datum/preferences/proc/save_character()
-	if(!path)				return 0
+	if(!path)				return FALSE
 	if(world.time < savecharcooldown)
 		if(istype(client))
 			to_chat(client, "<span class='warning'>You're attempting to save your character a little too fast. Wait half a second, then try again.</span>")
-		return 0
+		return FALSE
 	savecharcooldown = world.time + PREF_SAVELOAD_COOLDOWN
 	var/savefile/S = new /savefile(path)
-	if(!S)					return 0
+	if(!S)					return FALSE
 	S.cd = "/character[default_slot]"
 
 	player_setup.save_character(S)
 	return 1
 
 /datum/preferences/proc/overwrite_character(slot)
-	if(!path)				return 0
-	if(!fexists(path))		return 0
+	if(!path)				return FALSE
+	if(!fexists(path))		return FALSE
 	var/savefile/S = new /savefile(path)
-	if(!S)					return 0
+	if(!S)					return FALSE
 	if(!slot)	slot = default_slot
 	if(slot != SAVE_RESET)
 		slot = sanitize_integer(slot, 1, config_legacy.character_slots, initial(default_slot))

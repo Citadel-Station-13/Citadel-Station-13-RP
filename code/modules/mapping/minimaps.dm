@@ -53,15 +53,15 @@
 		meta_icon.DrawBox(meta_color, img_x, img_y)
 
 		if(iswall(T))
-			map_icon.DrawBox("#000000", img_x, img_y)
+			map_icon.DrawBox(COLOR_BLACK, img_x, img_y)
 
 		else if(!istype(A, /area/space))
-			var/color = A.minimap_color || "#FF00FF"
+			var/color = A.minimap_color || COLOR_PINK
 			if(locate(/obj/machinery/power/solar) in T)
 				color = "#02026a"
 
 			if((locate(/obj/structure/window) in T) || (locate(/obj/structure/grille) in T))
-				color = BlendRGB(color, "#000000", 0.5)
+				color = BlendRGB(color, COLOR_BLACK, 0.5)
 			map_icon.DrawBox(color, img_x, img_y)
 
 	map_icon.Crop(crop_x1, crop_y1, crop_x2, crop_y2)

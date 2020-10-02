@@ -211,7 +211,7 @@
 //Ensures that code dealing with stacks uses the same logic
 /obj/item/stack/proc/can_use(var/used)
 	if (get_amount() < used)
-		return 0
+		return FALSE
 	return 1
 
 /**
@@ -224,7 +224,7 @@
 
 /obj/item/stack/proc/use(var/used)
 	if (!can_use(used))
-		return 0
+		return FALSE
 	if(!uses_charge)
 		amount -= used
 		if (amount <= 0)
@@ -235,23 +235,23 @@
 		return 1
 	else
 		if(get_amount() < used)
-			return 0
+			return FALSE
 		for(var/i = 1 to uses_charge)
 			var/datum/matter_synth/S = synths[i]
 			S.use_charge(charge_costs[i] * used) // Doesn't need to be deleted
 		return 1
-	return 0
+	return FALSE
 
 /obj/item/stack/proc/add(var/extra)
 	if(!uses_charge)
 		if(amount + extra > get_max_amount())
-			return 0
+			return FALSE
 		else
 			amount += extra
 		update_icon()
 		return 1
 	else if(!synths || synths.len < uses_charge)
-		return 0
+		return FALSE
 	else
 		for(var/i = 1 to uses_charge)
 			var/datum/matter_synth/S = synths[i]
@@ -266,11 +266,11 @@
 //attempts to transfer amount to S, and returns the amount actually transferred
 /obj/item/stack/proc/transfer_to(obj/item/stack/S, var/tamount=null, var/type_verified)
 	if (!get_amount())
-		return 0
+		return FALSE
 	if (!can_merge(S) && !type_verified)
-		return 0
+		return FALSE
 	if ((strict_color_stacking || S.strict_color_stacking) && S.color != color)
-		return 0
+		return FALSE
 
 	if (isnull(tamount))
 		tamount = src.get_amount()
@@ -285,7 +285,7 @@
 			if(blood_DNA)
 				S.blood_DNA |= blood_DNA
 		return transfer
-	return 0
+	return FALSE
 
 //creates a new stack with the specified amount
 /obj/item/stack/proc/split(var/tamount)
@@ -310,7 +310,7 @@
 /obj/item/stack/proc/get_amount()
 	if(uses_charge)
 		if(!synths || synths.len < uses_charge)
-			return 0
+			return FALSE
 		var/datum/matter_synth/S = synths[1]
 		. = round(S.get_charge() / charge_costs[1])
 		if(uses_charge > 1)
@@ -323,7 +323,7 @@
 /obj/item/stack/proc/get_max_amount()
 	if(uses_charge)
 		if(!synths || synths.len < uses_charge)
-			return 0
+			return FALSE
 		var/datum/matter_synth/S = synths[1]
 		. = round(S.max_energy / charge_costs[1])
 		if(uses_charge > 1)

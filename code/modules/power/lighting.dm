@@ -25,7 +25,7 @@ var/global/list/light_type_cache = list()
 	icon_state = "tube-construct-stage1"
 	anchored = 1
 	plane = MOB_PLANE
-	layer = ABOVE_MOB_LAYER
+	layer = BELOW_MOB_LAYER
 	var/stage = 1
 	var/fixture_type = /obj/machinery/light
 	var/sheets_refunded = 2
@@ -161,13 +161,13 @@ var/global/list/light_type_cache = list()
 // the standard tube light fixture
 /obj/machinery/light
 	name = "light fixture"
-	icon = 'icons/obj/lighting_vr.dmi' //VOREStation Edit
+	icon = 'icons/obj/lighting_vr.dmi'
 	var/base_state = "tube"		// base description and icon_state
 	icon_state = "tube1"
 	desc = "A lighting fixture."
 	anchored = 1
 	plane = MOB_PLANE
-	layer = ABOVE_MOB_LAYER
+	layer = BELOW_MOB_LAYER
 	use_power = USE_POWER_ACTIVE
 	idle_power_usage = 2
 	active_power_usage = 10
@@ -191,6 +191,18 @@ var/global/list/light_type_cache = list()
 	//VOREStation Edit End
 
 	var/auto_flicker = FALSE // If true, will constantly flicker, so long as someone is around to see it (otherwise its a waste of CPU).
+
+// Overrides the New() proc further below, since this is a lamp.
+/obj/machinery/light/flamp/New()
+	..()
+	layer = initial(layer)
+
+// Creates a new lighting fixture
+/obj/machinery/light/New()
+	..()
+	// So large mobs stop looking stupid in front of lights.
+	if (dir == SOUTH) // Lights are backwards, SOUTH lights face north (they are on south wall)
+		layer = ABOVE_MOB_LAYER
 
 /obj/machinery/light/flicker
 	auto_flicker = TRUE

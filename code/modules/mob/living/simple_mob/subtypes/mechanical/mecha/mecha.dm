@@ -115,7 +115,7 @@
 	if(prob(deflect_chance))
 		visible_message(span("warning", "\The [P] is deflected by \the [src]'s armor!"))
 		deflect_sprite()
-		return 0
+		return FALSE
 	return ..()
 
 /mob/living/simple_mob/mechanical/mecha/proc/deflect_sprite()

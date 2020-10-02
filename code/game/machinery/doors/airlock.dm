@@ -540,7 +540,7 @@ About the new airlock wires panel:
 /obj/machinery/door/airlock/proc/isElectrified()
 	if(src.electrified_until != 0)
 		return 1
-	return 0
+	return FALSE
 
 /obj/machinery/door/airlock/proc/isWireCut(var/wireIndex)
 	// You can find the wires in the datum folder.
@@ -554,7 +554,7 @@ About the new airlock wires panel:
 
 /obj/machinery/door/airlock/proc/arePowerSystemsOn()
 	if (stat & (NOPOWER|BROKEN))
-		return 0
+		return FALSE
 	return (src.main_power_lost_until==0 || src.backup_power_lost_until==0)
 
 /obj/machinery/door/airlock/requiresID()
@@ -565,7 +565,7 @@ About the new airlock wires panel:
 		return 1
 	if(mainPowerCablesCut() && backupPowerCablesCut())
 		return 1
-	return 0
+	return FALSE
 
 /obj/machinery/door/airlock/proc/mainPowerCablesCut()
 	return src.isWireCut(AIRLOCK_WIRE_MAIN_POWER1) || src.isWireCut(AIRLOCK_WIRE_MAIN_POWER2)
@@ -675,16 +675,16 @@ About the new airlock wires panel:
 // The preceding comment was borrowed from the grille's shock script
 /obj/machinery/door/airlock/shock(mob/user, prb)
 	if(!arePowerSystemsOn())
-		return 0
+		return FALSE
 	if(hasShocked)
-		return 0	//Already shocked someone recently?
+		return FALSE	//Already shocked someone recently?
 	if(..())
 		hasShocked = 1
 		sleep(10)
 		hasShocked = 0
 		return 1
 	else
-		return 0
+		return FALSE
 
 
 /obj/machinery/door/airlock/update_icon()
@@ -1062,7 +1062,7 @@ About the new airlock wires panel:
 
 /obj/machinery/door/airlock/open(var/forced=0)
 	if(!can_open(forced))
-		return 0
+		return FALSE
 	use_power(360)	//360 W seems much more appropriate for an actuator moving an industrial door capable of crushing people
 
 	//if the door is unpowered then it doesn't make sense to hear the woosh of a pneumatic actuator
@@ -1078,15 +1078,15 @@ About the new airlock wires panel:
 /obj/machinery/door/airlock/can_open(var/forced=0)
 	if(!forced)
 		if(!arePowerSystemsOn() || isWireCut(AIRLOCK_WIRE_OPEN_DOOR))
-			return 0
+			return FALSE
 
 	if(locked || welded)
-		return 0
+		return FALSE
 	return ..()
 
 /obj/machinery/door/airlock/can_close(var/forced=0)
 	if(locked || welded)
-		return 0
+		return FALSE
 
 	if(!forced)
 		//despite the name, this wire is for general door control.
@@ -1099,16 +1099,16 @@ About the new airlock wires panel:
 	return density
 
 /obj/machinery/door/blocks_airlock()
-	return 0
+	return FALSE
 
 /obj/machinery/mech_sensor/blocks_airlock()
-	return 0
+	return FALSE
 
 /mob/living/blocks_airlock()
 	return 1
 
 /atom/movable/proc/airlock_crush(var/crush_damage)
-	return 0
+	return FALSE
 
 /obj/machinery/portable_atmospherics/canister/airlock_crush(var/crush_damage)
 	. = ..()
@@ -1140,11 +1140,11 @@ About the new airlock wires panel:
 
 /mob/living/silicon/robot/airlock_crush(var/crush_damage)
 	adjustBruteLoss(crush_damage)
-	return 0
+	return FALSE
 
 /obj/machinery/door/airlock/close(var/forced=0)
 	if(!can_close(forced))
-		return 0
+		return FALSE
 
 	if(safe)
 		for(var/turf/turf in locs)
@@ -1175,9 +1175,9 @@ About the new airlock wires panel:
 
 /obj/machinery/door/airlock/proc/lock(var/forced=0)
 	if(locked)
-		return 0
+		return FALSE
 
-	if (operating && !forced) return 0
+	if (operating && !forced) return FALSE
 
 	src.locked = 1
 	playsound(src, bolt_down_sound, 30, 0, 3)
@@ -1202,7 +1202,7 @@ About the new airlock wires panel:
 
 /obj/machinery/door/airlock/allowed(mob/M)
 	if(locked)
-		return 0
+		return FALSE
 	return ..(M)
 
 /obj/machinery/door/airlock/New(var/newloc, var/obj/structure/door_assembly/assembly=null)

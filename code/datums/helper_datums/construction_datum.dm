@@ -35,7 +35,7 @@
 		if(custom_action(valid_step, I, user))
 			next_step()
 			return 1
-	return 0
+	return FALSE
 
 /datum/construction/proc/is_right_key(var/obj/item/I) // returns current step num if I is of the right type.
 	var/list/L = steps[steps.len]
@@ -55,7 +55,7 @@
 
 	if(istype(I, L["key"]))
 		return steps.len
-	return 0
+	return FALSE
 
 /datum/construction/proc/custom_action(step, I, user)
 	return 1
@@ -70,7 +70,7 @@
 				if(!steps.len)
 					spawn_result()
 				return 1
-	return 0
+	return FALSE
 
 
 /datum/construction/proc/spawn_result()
@@ -138,7 +138,7 @@
 		return FORWARD //to the first step -> forward
 	else if(L["backkey"] && istype(I, L["backkey"]))
 		return BACKWARD //to the last step -> backwards
-	return 0
+	return FALSE
 
 /datum/construction/reversible/check_step(var/obj/item/I,mob/user as mob)
 	var/diff = is_right_key(I)
@@ -146,7 +146,7 @@
 		if(custom_action(index, diff, I, user))
 			update_index(diff)
 			return 1
-	return 0
+	return FALSE
 
 /datum/construction/reversible/custom_action(index, diff, I, user)
 	return 1

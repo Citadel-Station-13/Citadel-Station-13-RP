@@ -6,7 +6,7 @@ var/savefile/Banlist
 	if(!Banlist)		// if Banlist cannot be located for some reason
 		LoadBans()		// try to load the bans
 		if(!Banlist)	// uh oh, can't find bans!
-			return 0	// ABORT ABORT ABORT
+			return FALSE	// ABORT ABORT ABORT
 
 	. = list()
 	var/appeal
@@ -18,7 +18,7 @@ var/savefile/Banlist
 		if (Banlist["temp"])
 			if (!GetExp(Banlist["minutes"]))
 				ClearTempbans()
-				return 0
+				return FALSE
 			else
 				.["desc"] = "\nReason: [Banlist["reason"]]\nExpires: [GetExp(Banlist["minutes"])]\nBy: [Banlist["bannedby"]][appeal]"
 		else
@@ -45,18 +45,18 @@ var/savefile/Banlist
 				if(Banlist["temp"])
 					if (!GetExp(Banlist["minutes"]))
 						ClearTempbans()
-						return 0
+						return FALSE
 					else
 						.["desc"] = "\nReason: [Banlist["reason"]]\nExpires: [GetExp(Banlist["minutes"])]\nBy: [Banlist["bannedby"]][appeal]"
 				else
 					.["desc"] = "\nReason: [Banlist["reason"]]\nExpires: <B>PERMANENT</B>\nBy: [Banlist["bannedby"]][appeal]"
 				.["reason"] = matches
 				return .
-	return 0
+	return FALSE
 
 /proc/UpdateTime() //No idea why i made this a proc.
 	CMinutes = (world.realtime / 10) / 60
-	return 1
+	return TRUE
 
 /hook/startup/proc/loadBans()
 	return LoadBans()
@@ -76,7 +76,7 @@ var/savefile/Banlist
 		Banlist.cd = "/base"
 
 	ClearTempbans()
-	return 1
+	return TRUE
 
 /proc/ClearTempbans()
 	UpdateTime()
@@ -93,7 +93,7 @@ var/savefile/Banlist
 		if (!Banlist["temp"]) continue
 		if (CMinutes >= Banlist["minutes"]) RemoveBan(A)
 
-	return 1
+	return TRUE
 
 
 /proc/AddBan(ckey, computerid, reason, bannedby, temp, minutes, address)
@@ -107,7 +107,7 @@ var/savefile/Banlist
 	Banlist.cd = "/base"
 	if ( Banlist.dir.Find("[ckey][computerid]") )
 		usr << text("<font color='red'>Ban already exists.</font>")
-		return 0
+		return FALSE
 	else
 		Banlist.dir.Add("[ckey][computerid]")
 		Banlist.cd = "/base/[ckey][computerid]"
@@ -119,7 +119,7 @@ var/savefile/Banlist
 		Banlist["temp"] << temp
 		if (temp)
 			Banlist["minutes"] << bantimestamp
-	return 1
+	return TRUE
 
 /proc/RemoveBan(foldername)
 	var/key
@@ -130,7 +130,7 @@ var/savefile/Banlist
 	Banlist["id"] >> id
 	Banlist.cd = "/base"
 
-	if (!Banlist.dir.Remove(foldername)) return 0
+	if (!Banlist.dir.Remove(foldername)) return FALSE
 
 	if(!usr)
 		log_admin("Ban Expired: [key]")
@@ -148,13 +148,13 @@ var/savefile/Banlist
 			Banlist.dir.Remove(A)
 			continue
 
-	return 1
+	return TRUE
 
 /proc/GetExp(minutes as num)
 	UpdateTime()
 	var/exp = minutes - CMinutes
 	if (exp <= 0)
-		return 0
+		return FALSE
 	else
 		var/timeleftstring
 		if (exp >= 1440) //1440 = 1 day in minutes

@@ -15,7 +15,7 @@
 
 	var/datum/changeling/changeling = changeling_power()
 	if(!changeling)
-		return 0
+		return FALSE
 
 	var/mob/living/carbon/human/C = src
 	if(C.digitalcamo)

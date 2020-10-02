@@ -383,7 +383,7 @@ var/failed_old_db_connections = 0
 proc/setup_database_connection()
 
 	if(failed_db_connections > FAILED_DB_CONNECTION_CUTOFF)	//If it failed to establish a connection more than 5 times in a row, don't bother attempting to conenct anymore.
-		return 0
+		return FALSE
 
 	if(!dbcon)
 		dbcon = new()
@@ -407,7 +407,7 @@ proc/setup_database_connection()
 //This proc ensures that the connection to the feedback database (global variable dbcon) is established
 proc/establish_db_connection()
 	if(failed_db_connections > FAILED_DB_CONNECTION_CUTOFF)
-		return 0
+		return FALSE
 
 	if(!dbcon || !dbcon.IsConnected())
 		return setup_database_connection()
@@ -428,7 +428,7 @@ proc/establish_db_connection()
 proc/setup_old_database_connection()
 
 	if(failed_old_db_connections > FAILED_DB_CONNECTION_CUTOFF)	//If it failed to establish a connection more than 5 times in a row, don't bother attempting to conenct anymore.
-		return 0
+		return FALSE
 
 	if(!dbcon_old)
 		dbcon_old = new()
@@ -452,7 +452,7 @@ proc/setup_old_database_connection()
 //This proc ensures that the connection to the feedback database (global variable dbcon) is established
 proc/establish_old_db_connection()
 	if(failed_old_db_connections > FAILED_DB_CONNECTION_CUTOFF)
-		return 0
+		return FALSE
 
 	if(!dbcon_old || !dbcon_old.IsConnected())
 		return setup_old_database_connection()

@@ -20,7 +20,7 @@ var/global/list/pipe_colors = list("grey" = PIPE_COLOR_GREY, "red" = PIPE_COLOR_
 	for(var/C in pipe_colors)
 		if(color == pipe_colors[C])
 			return 1
-	return 0
+	return FALSE
 
 //--------------------------------------------
 // Icon cache generation

@@ -1,11 +1,11 @@
 //Returns 1 if mob can be infected, 0 otherwise.
 proc/infection_check(var/mob/living/carbon/M, var/vector = "Airborne")
 	if (!istype(M))
-		return 0
+		return FALSE
 
 	var/mob/living/carbon/human/H = M
 	if(istype(H) && H.species.get_virus_immune(H))
-		return 0
+		return FALSE
 
 	var/protection = M.getarmor(null, "bio")	//gets the full body bio armour value, weighted by body part coverage.
 	var/score = round(0.06*protection) 			//scales 100% protection to 6.
@@ -13,7 +13,7 @@ proc/infection_check(var/mob/living/carbon/M, var/vector = "Airborne")
 	switch(vector)
 		if("Airborne")
 			if(M.internal) //not breathing infected air helps greatly
-				return 0
+				return FALSE
 			var/obj/item/I = M.wear_mask
 			//masks provide a small bonus and can replace overall bio protection
 			if(I)
@@ -28,23 +28,23 @@ proc/infection_check(var/mob/living/carbon/M, var/vector = "Airborne")
 					score += 2
 
 	if(score >= 6)
-		return 0
+		return FALSE
 	else if(score >= 5 && prob(99))
-		return 0
+		return FALSE
 	else if(score >= 4 && prob(95))
-		return 0
+		return FALSE
 	else if(score >= 3 && prob(75))
-		return 0
+		return FALSE
 	else if(score >= 2 && prob(55))
-		return 0
+		return FALSE
 	else if(score >= 1 && prob(35))
-		return 0
-	return 1
+		return FALSE
+	return TRUE
 
 //Similar to infection check, but used for when M is spreading the virus.
 /proc/infection_spreading_check(var/mob/living/carbon/M, var/vector = "Airborne")
 	if (!istype(M))
-		return 0
+		return FALSE
 
 	var/protection = M.getarmor(null, "bio")	//gets the full body bio armour value, weighted by body part coverage.
 

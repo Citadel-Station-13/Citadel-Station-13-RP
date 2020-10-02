@@ -305,7 +305,7 @@
 					to_chat(G, "Golem rune created in [A.name].")
 
 /mob/living/carbon/slime/has_eyes()
-	return 0
+	return FALSE
 
 //////////////////////////////Old shit from metroids/RoRos, and the old cores, would not take much work to re-add them////////////////////////
 

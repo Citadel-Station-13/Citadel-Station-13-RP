@@ -28,7 +28,7 @@
 	for(var/typepath in attackby_types)
 		if(istype(I, typepath))
 			return 1
-	return 0
+	return FALSE
 
 /obj/item/part/computer/proc/init(var/obj/machinery/computer/target)
 		computer = target
@@ -123,7 +123,7 @@
 		to_chat(user, "You insert the card into reader slot")
 		return 1
 	to_chat(user, "There is already something in the reader slot.")
-	return 0
+	return FALSE
 
 
 	// Usage of insert() preferred, as it also tells result to the user.
@@ -133,7 +133,7 @@
 		card.loc = src
 		reader = card
 		return 1
-	return 0
+	return FALSE
 
 	// cardslot.remove(slot)
 	// user: The mob removing the card
@@ -142,7 +142,7 @@
 		to_chat(user,  "You remove the card from reader slot")
 		return 1
 	to_chat(user,  "There is nothing in the reader slot")
-	return 0
+	return FALSE
 
 /obj/item/part/computer/cardslot/proc/remove_reader(var/mob/living/L)
 	if(reader)
@@ -152,7 +152,7 @@
 			reader.loc = get_turf(computer)
 		reader = null
 		return 1
-	return 0
+	return FALSE
 
 	// Authorizes the user based on the computer's requirements
 /obj/item/part/computer/cardslot/proc/authenticate()
@@ -176,7 +176,7 @@
 		card.loc = src
 		writer = card
 		return 1
-	return 0
+	return FALSE
 
 /obj/item/part/computer/cardslot/dual/proc/remove_from_writer(var/mob/living/L)
 	if(writer)
@@ -186,7 +186,7 @@
 			writer.loc = get_turf(computer)
 		writer = null
 		return 1
-	return 0
+	return FALSE
 
 	// cardslot.insert(card, slot)
 	// card: The card obj you want to insert (usually your ID)
@@ -203,7 +203,7 @@
 			return 1
 		else
 			to_chat(user, "There is already something in the writer slot.")
-	return 0
+	return FALSE
 
 	// cardslot/dual.insert(card, slot)
 	// user: The mob removing the card
@@ -218,13 +218,13 @@
 			to_chat(user, "You remove the card from the writer slot")
 			return 1
 		to_chat(user, "There is nothing in the writer slot.")
-	return 0
+	return FALSE
 
 /obj/item/part/computer/cardslot/dual/proc/addfile(var/datum/file/F)
 	if(!istype(writer,/obj/item/card/data))
-		return 0
+		return FALSE
 	var/obj/item/card/data/D = writer
 	if(D.files.len > 3)
-		return 0
+		return FALSE
 	D.files += F
 	return 1

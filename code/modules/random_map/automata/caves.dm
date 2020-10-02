@@ -45,7 +45,7 @@
 /datum/random_map/automata/cave_system/apply_to_turf(var/x,var/y)
 	var/current_cell = get_map_cell(x,y)
 	if(!current_cell)
-		return 0
+		return FALSE
 	var/turf/simulated/mineral/T = locate((origin_x-1)+x,(origin_y-1)+y,origin_z)
 	if(istype(T) && !T.ignore_mapgen && !T.ignore_cavegen)	//VOREStation Edit: ignore cavegen
 		if(map[current_cell] == FLOOR_CHAR)

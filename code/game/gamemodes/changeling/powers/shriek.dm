@@ -23,25 +23,25 @@
 	set desc = "Emits a high-frequency sound that confuses and deafens organics, blows out nearby lights, and overloads synthetics' sensors."
 
 	var/datum/changeling/changeling = changeling_power(20,0,100,CONSCIOUS)
-	if(!changeling)	return 0
+	if(!changeling)	return FALSE
 
 	if(is_muzzled())
 		to_chat(src, "<span class='danger'>Mmmf mrrfff!</span>")
-		return 0
+		return FALSE
 
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
 		if(H.silent)
 			to_chat(src, "<span class='danger'>You can't speak!</span>")
-			return 0
+			return FALSE
 
 	if(world.time < (changeling.last_shriek + 10 SECONDS) )
 		to_chat(src, "<span class='warning'>We are still recovering from our last shriek...</span>")
-		return 0
+		return FALSE
 
 	if(!isturf(loc))
 		to_chat(src, "<span class='warning'>Shrieking here would be a bad idea.</span>")
-		return 0
+		return FALSE
 
 	src.break_cloak()	//No more invisible shrieking
 
@@ -92,25 +92,25 @@
 	set desc = "We shift our vocal cords to release a high-frequency sound that overloads nearby electronics."
 
 	var/datum/changeling/changeling = changeling_power(20,0,100,CONSCIOUS)
-	if(!changeling)	return 0
+	if(!changeling)	return FALSE
 
 	if(is_muzzled())
 		to_chat(src, "<span class='danger'>Mmmf mrrfff!</span>")
-		return 0
+		return FALSE
 
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
 		if(H.silent)
 			to_chat(src, "<span class='danger'>You can't speak!</span>")
-			return 0
+			return FALSE
 
 	if(world.time < (changeling.last_shriek + 10 SECONDS) )
 		to_chat(src, "<span class='warning'>We are still recovering from our last shriek...</span>")
-		return 0
+		return FALSE
 
 	if(!isturf(loc))
 		to_chat(src, "<span class='warning'>Shrieking here would be a bad idea.</span>")
-		return 0
+		return FALSE
 
 	src.break_cloak()	//No more invisible shrieking
 

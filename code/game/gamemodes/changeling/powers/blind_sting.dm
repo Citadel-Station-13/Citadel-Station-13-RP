@@ -14,7 +14,7 @@
 
 	var/mob/living/carbon/T = changeling_sting(20,/mob/proc/changeling_blind_sting)
 	if(!T)
-		return 0
+		return FALSE
 	add_attack_logs(src,T,"Blind sting (changeling)")
 	to_chat(T, "<span class='danger'>Your eyes burn horrificly!</span>")
 	T.disabilities |= NEARSIGHTED

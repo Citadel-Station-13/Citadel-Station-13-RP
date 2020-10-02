@@ -39,12 +39,12 @@
 
 /obj/item/reagent_containers/food/drinks/bottle/proc/smash_check(var/distance)
 	if(!isGlass || !smash_duration)
-		return 0
+		return FALSE
 
 	var/list/chance_table = list(100, 95, 90, 85, 75, 55, 35) //starting from distance 0
 	var/idx = max(distance + 1, 1) //since list indices start at 1
 	if(idx > chance_table.len)
-		return 0
+		return FALSE
 	return prob(chance_table[idx])
 
 /obj/item/reagent_containers/food/drinks/bottle/proc/smash(var/newloc, atom/against = null)

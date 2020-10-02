@@ -65,7 +65,7 @@
 	//check children ready status
 	for (var/child_tag in children_tags)
 		if (!children_ready[child_tag])
-			return 0
+			return FALSE
 	return 1
 
 /datum/computer/file/embedded_program/docking/multi/finish_docking()
@@ -88,7 +88,7 @@
 	//check children ready status
 	for (var/child_tag in children_tags)
 		if (!children_ready[child_tag])
-			return 0
+			return FALSE
 	return 1
 
 /datum/computer/file/embedded_program/docking/multi/finish_undocking()

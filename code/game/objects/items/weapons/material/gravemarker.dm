@@ -61,15 +61,15 @@
 	src.add_fingerprint(user)
 
 	if(!isturf(user.loc))
-		return 0
+		return FALSE
 
 	if(locate(/obj/structure/gravemarker, user.loc))
 		to_chat(user, "<span class='warning'>There's already something there.</span>")
-		return 0
+		return FALSE
 	else
 		to_chat(user, "<span class='notice'>You begin to place \the [src.name].</span>")
 		if(!do_after(usr, 10))
-			return 0
+			return FALSE
 		var/obj/structure/gravemarker/G = new /obj/structure/gravemarker/(user.loc, src.get_material())
 		to_chat(user, "<span class='notice'>You place \the [src.name].</span>")
 		G.grave_name = grave_name

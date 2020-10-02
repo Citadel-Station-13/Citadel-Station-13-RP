@@ -15,7 +15,7 @@ var/list/all_maps = list()
 			log_debug("Map '[M]' does not have a defined path, not adding to map list!")
 		else
 			all_maps[M.path] = M
-	return 1
+	return TRUE
 
 
 /datum/map
@@ -145,7 +145,7 @@ var/list/all_maps = list()
 		CHECK_TICK
 
 /datum/map/proc/get_network_access(var/network)
-	return 0
+	return FALSE
 
 // By default transition randomly to another zlevel
 /datum/map/proc/get_transit_zlevel(var/current_z_level)

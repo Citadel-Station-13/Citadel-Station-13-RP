@@ -15,15 +15,15 @@
 	alt_titles = list("Overseer: Digitised Deluxe Edition")
 
 /datum/job/ai/equip(var/mob/living/carbon/human/H)
-	if(!H)	return 0
+	if(!H)	return FALSE
 	return 1
 /*
 /datum/job/ai/equip_survival(var/mob/living/carbon/human/H)
-	if(!H)	return 0
+	if(!H)	return FALSE
 	return 1
 */
 /datum/job/ai/equip_backpack(var/mob/living/carbon/human/H)
-	if(!H)	return 0
+	if(!H)	return FALSE
 	return 1
 
 /datum/job/ai/is_position_available()
@@ -49,11 +49,11 @@
 	economic_modifier = 0
 
 /datum/job/cyborg/equip(var/mob/living/carbon/human/H)
-	if(!H)	return 0
+	if(!H)	return FALSE
 	return 1
 /*
 /datum/job/cyborg/equip_survival(var/mob/living/carbon/human/H)
-	if(!H)	return 0
+	if(!H)	return FALSE
 	return 1
 */
 /datum/job/cyborg/equip_backpack(var/mob/living/carbon/human/H)

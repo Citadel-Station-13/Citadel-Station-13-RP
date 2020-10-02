@@ -4,9 +4,9 @@ var/list/datum/ai_icon/ai_icons
 /datum/ai_icon
 	var/name
 	var/alive_icon
-	var/alive_light = "#FFFFFF"
+	var/alive_light = COLOR_WHITE
 	var/nopower_icon = "4"
-	var/nopower_light = "#FFFFFF"
+	var/nopower_light = COLOR_WHITE
 	var/dead_icon = "ai-crash"
 	var/dead_light = "#000099"
 

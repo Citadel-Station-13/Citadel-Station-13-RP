@@ -25,7 +25,7 @@
 				message1 = ""
 		update_display(message1, message2)
 		return 1
-	return 0
+	return FALSE
 
 /obj/machinery/status_display/supply_display/receive_signal/(datum/signal/signal)
 	if(signal.data["command"] == "supply")

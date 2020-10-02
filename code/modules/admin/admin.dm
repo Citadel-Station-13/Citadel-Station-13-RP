@@ -140,7 +140,7 @@ proc/admin_notice(var/message, var/rights)
 					body += "<td>"
 					if(bname)
 						var/bstate=M.dna.GetSEState(block)
-						var/bcolor="[(bstate)?"#006600":"#ff0000"]"
+						var/bcolor="[(bstate)?"#006600":COLOR_RED]"
 						body += "<A href='?src=\ref[src];togmutate=\ref[M];block=[block]' style='color:[bcolor];'>[bname]</A><sub>[block]</sub>"
 					else
 						body += "[block]"
@@ -270,7 +270,7 @@ proc/admin_notice(var/message, var/rights)
 	var/savefile/info = new("data/player_saves/[copytext(key, 1, 2)]/[key]/info.sav")
 	var/list/infos
 	info >> infos
-	if(!infos || !infos.len) return 0
+	if(!infos || !infos.len) return FALSE
 	else return 1
 
 
@@ -858,7 +858,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 		return 1
 	else
 		to_chat(usr, "<font color='red'>Error: Start Now: Game has already started.</font>")
-		return 0
+		return FALSE
 
 /datum/admins/proc/toggleenter()
 	set category = "Server"
@@ -995,7 +995,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 
 /proc/is_special_character(var/character) // returns 1 for special characters and 2 for heroes of gamemode
 	if(!SSticker || !SSticker.mode)
-		return 0
+		return FALSE
 	var/datum/mind/M
 	if (ismob(character))
 		var/mob/C = character
@@ -1016,7 +1016,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 		if(R.emagged)
 			return 1
 
-	return 0
+	return FALSE
 
 /datum/admins/proc/spawn_fruit(seedtype in plant_controller.seeds)
 	set category = "Debug"
@@ -1318,7 +1318,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 
 /proc/ishost(whom)
 	if(!whom)
-		return 0
+		return FALSE
 	var/client/C
 	var/mob/M
 	if(istype(whom, /client))
@@ -1329,7 +1329,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 	if(R_HOST & C.holder.rights)
 		return 1
 	else
-		return 0
+		return FALSE
 //
 //
 //ALL DONE
@@ -1344,9 +1344,9 @@ var/datum/announcement/minor/admin_min_announcer = new
 
 	//Same as assume-direct-control perm requirements.
 	if (!check_rights(R_VAREDIT,0) || !check_rights(R_ADMIN|R_DEBUG,0))
-		return 0
+		return FALSE
 	if (!frommob.ckey)
-		return 0
+		return FALSE
 	var/question = ""
 	if (tomob.ckey)
 		question = "This mob already has a user ([tomob.key]) in control of it! "

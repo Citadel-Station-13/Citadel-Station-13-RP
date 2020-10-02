@@ -46,7 +46,7 @@
 	if(!density)
 		return ..()
 	else
-		return 0
+		return FALSE
 
 // Proc: update_icon()
 // Parameters: None

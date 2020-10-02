@@ -83,22 +83,22 @@
 
 	var/turf/T = get_turf(src)
 	if(istype(T, /turf/space))
-		return 0	//space has no temperature, this just makes sure the cooling unit works in space
+		return FALSE	//space has no temperature, this just makes sure the cooling unit works in space
 
 	var/datum/gas_mixture/environment = T.return_air()
 	if (!environment)
-		return 0
+		return FALSE
 
 	return environment.temperature
 
 /obj/item/suit_cooling_unit/proc/attached_to_suit(mob/M)
 	if (!ishuman(M))
-		return 0
+		return FALSE
 
 	var/mob/living/carbon/human/H = M
 
 	if (!H.wear_suit || (H.s_store != src && H.back != src))
-		return 0
+		return FALSE
 
 	return 1
 

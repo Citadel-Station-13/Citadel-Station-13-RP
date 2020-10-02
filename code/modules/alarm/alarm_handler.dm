@@ -53,7 +53,7 @@
 /datum/alarm_handler/proc/has_major_alarms()
 	if(alarms && alarms.len)
 		return 1
-	return 0
+	return FALSE
 
 /datum/alarm_handler/proc/minor_alarms()
 	return visible_alarms()
@@ -64,7 +64,7 @@
 		alarms_assoc -= alarm.origin
 		on_alarm_change(alarm, ALARM_CLEARED)
 		return 1
-	return 0
+	return FALSE
 
 /datum/alarm_handler/proc/on_alarm_change(var/datum/alarm/alarm, var/was_raised)
 	for(var/obj/machinery/camera/C in alarm.cameras())

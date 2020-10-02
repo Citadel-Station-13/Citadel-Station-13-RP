@@ -103,12 +103,12 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 	busy = TRUE
 	update_icon()
 	var/datum/beam/scan_beam = user.Beam(target, icon_state = "rped_upgrade", time = scan_delay)
-	var/filter = filter(type = "outline", size = 1, color = "#FFFFFF")
+	var/filter = filter(type = "outline", size = 1, color = COLOR_WHITE)
 	target.filters += filter
 	var/list/box_segments = list()
 	if(user.client)
 		box_segments = draw_box(target, scan_range, user.client)
-		color_box(box_segments, "#00FF00", scan_delay)
+		color_box(box_segments, COLOR_LIME, scan_delay)
 
 	playsound(src.loc, 'sound/machines/beep.ogg', 50)
 
@@ -129,7 +129,7 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 	else
 		to_chat(user, span("warning", "You failed to finish scanning \the [target] with \the [src]."))
 		playsound(src.loc, 'sound/machines/buzz-two.ogg', 50)
-		color_box(box_segments, "#FF0000", 3)
+		color_box(box_segments, COLOR_RED, 3)
 		partial_scanned = WEAKREF(target)
 		partial_scan_time += world.time - scan_start_time // This is added to the existing value so two partial scans will add up correctly.
 		sleep(3)
@@ -213,7 +213,7 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 			scannable_atoms += A
 
 	// Highlight things able to be scanned.
-	var/filter = filter(type = "outline", size = 1, color = "#00FF00")
+	var/filter = filter(type = "outline", size = 1, color = COLOR_LIME)
 	for(var/a in scannable_atoms)
 		var/atom/A = a
 		A.filters += filter
@@ -293,10 +293,10 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 /obj/item/cataloguer/Topic(href, href_list)
 	if(..())
 		usr << browse(null, "window=cataloguer_display")
-		return 0
+		return FALSE
 	if(href_list["close"] )
 		usr << browse(null, "window=cataloguer_display")
-		return 0
+		return FALSE
 
 	if(href_list["show_data"])
 		displayed_data = locate(href_list["show_data"])

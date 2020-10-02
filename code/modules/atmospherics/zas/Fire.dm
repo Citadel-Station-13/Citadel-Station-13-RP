@@ -20,12 +20,12 @@ turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
 
 /turf/simulated/hotspot_expose(exposed_temperature, exposed_volume, soh)
 	if(fire_protection > world.time-300)
-		return 0
+		return FALSE
 	if(locate(/obj/fire) in src)
 		return 1
 	var/datum/gas_mixture/air_contents = return_air()
 	if(!air_contents || exposed_temperature < PHORON_MINIMUM_BURN_TEMPERATURE)
-		return 0
+		return FALSE
 
 	var/igniting = 0
 	var/obj/effect/decal/cleanable/liquid_fuel/liquid = locate() in src
@@ -87,7 +87,7 @@ turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
 			qdel(fuel)
 
 /turf/proc/create_fire(fl)
-	return 0
+	return FALSE
 
 /turf/simulated/create_fire(fl)
 	if(fire)
@@ -104,7 +104,7 @@ turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
 	zone.fire_tiles |= src
 	if(fuel) zone.fuel_objs += fuel
 
-	return 0
+	return FALSE
 
 /obj/fire
 	//Icon for fire on turfs.

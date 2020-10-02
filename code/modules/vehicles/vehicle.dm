@@ -34,7 +34,7 @@
 	var/obj/item/cell/cell
 	var/charge_use = 5	//set this to adjust the amount of power the vehicle uses per move
 
-	var/paint_color = "#666666" //For vehicles with special paint overlays.
+	var/paint_color = COLOR_STEEL //For vehicles with special paint overlays.
 
 	var/atom/movable/load		//all vehicles can take a load, since they should all be a least drivable
 	var/load_item_visible = 1	//set if the loaded item should be overlayed on the vehicle sprite
@@ -95,7 +95,7 @@
 		anchored = 0
 		if(!..())
 			anchored = init_anc
-			return 0
+			return FALSE
 
 		setDir(get_dir(old_loc, loc))
 		anchored = init_anc
@@ -109,9 +109,9 @@
 			load.forceMove(loc)
 			load.setDir(dir)
 
-		return 1
+		return TRUE
 	else
-		return 0
+		return FALSE
 
 /obj/vehicle/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/hand_labeler))
@@ -331,9 +331,9 @@
 	//This loads objects onto the vehicle so they can still be interacted with.
 	//Define allowed items for loading in specific vehicle definitions.
 	if(!isturf(C.loc)) //To prevent loading things from someone's inventory, which wouldn't get handled properly.
-		return 0
+		return FALSE
 	if(load || C.anchored)
-		return 0
+		return FALSE
 
 	// if a create/closet, close before loading
 	var/obj/structure/closet/crate = C
@@ -357,7 +357,7 @@
 	if(ismob(C))
 		user_buckle_mob(C, user)
 
-	return 1
+	return TRUE
 
 
 /obj/vehicle/proc/unload(var/mob/user, var/direction)
@@ -388,7 +388,7 @@
 			dest = get_turf(src)	//otherwise just dump it on the same turf as the vehicle
 
 	if(!isturf(dest))	//if there still is nowhere to unload, cancel out since the vehicle is probably in nullspace
-		return 0
+		return FALSE
 
 	load.forceMove(dest)
 	load.setDir(get_dir(loc, dest))
@@ -402,7 +402,7 @@
 
 	load = null
 
-	return 1
+	return TRUE
 
 
 //-------------------------------------------------------
@@ -421,7 +421,7 @@
 	if(mechanical && prob(10))
 		new /obj/effect/decal/cleanable/blood/oil(src.loc)
 	spawn(1) healthcheck()
-	return 1
+	return TRUE
 
 /obj/vehicle/take_damage(var/damage)
 	if(!damage)
@@ -430,4 +430,4 @@
 	if(mechanical && prob(10))
 		new /obj/effect/decal/cleanable/blood/oil(src.loc)
 	spawn(1) healthcheck()
-	return 1
+	return TRUE

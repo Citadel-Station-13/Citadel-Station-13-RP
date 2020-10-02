@@ -193,7 +193,7 @@
 		return 1
 	if(istype(usr,/mob/living/silicon/ai))
 		return 1
-	return 0
+	return FALSE
 
 /datum/file/program/card_comp/proc/set_default_access(var/jobname)
 	var/datum/job/jobdatum
@@ -344,4 +344,4 @@
 /datum/file/program/card_comp/centcom/authenticate()
 	if(access_cent_captain in reader.access)
 		return 1
-	return 0
+	return FALSE

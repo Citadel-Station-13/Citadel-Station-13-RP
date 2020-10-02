@@ -45,7 +45,7 @@
 
 /obj/mecha/working/Exit(atom/movable/O)
 	if(O in cargo)
-		return 0
+		return FALSE
 	return ..()
 
 /obj/mecha/working/get_stats_part()

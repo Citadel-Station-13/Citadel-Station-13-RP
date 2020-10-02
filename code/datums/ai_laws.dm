@@ -15,7 +15,7 @@ var/global/const/base_law_type = /datum/ai_laws/nanotrasen
 	return ionnum()
 
 /datum/ai_law/zero/get_index()
-	return 0
+	return FALSE
 
 /datum/ai_laws
 	var/name = "Unknown Laws"
@@ -259,7 +259,7 @@ var/global/const/base_law_type = /datum/ai_laws/nanotrasen
 	var/index = laws.Find(law)
 	if(index)
 		return state[index]
-	return 0
+	return FALSE
 
 /********
 *	Set	*

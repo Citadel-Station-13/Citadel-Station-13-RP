@@ -41,25 +41,25 @@
 /obj/machinery/power/proc/draw_power(var/amount)
 	if(powernet)
 		return powernet.draw_power(amount)
-	return 0
+	return FALSE
 
 /obj/machinery/power/proc/surplus()
 	if(powernet)
 		return powernet.avail-powernet.load
 	else
-		return 0
+		return FALSE
 
 /obj/machinery/power/proc/avail()
 	if(powernet)
 		return powernet.avail
 	else
-		return 0
+		return FALSE
 
 /obj/machinery/power/proc/viewload()
 	if(powernet)
 		return powernet.viewload
 	else
-		return 0
+		return FALSE
 
 /obj/machinery/power/proc/disconnect_terminal() // machines without a terminal will just return, no harm no fowl.
 	return
@@ -69,7 +69,7 @@
 /obj/machinery/proc/powered(var/chan = -1) // defaults to power_channel
 
 	if(!src.loc)
-		return 0
+		return FALSE
 
 	//Don't do this. It allows machines that set use_power to 0 when off (many machines) to
 	//be turned on again and used after a power failure because they never gain the NOPOWER flag.
@@ -78,7 +78,7 @@
 
 	var/area/A = src.loc.loc		// make sure it's in an area
 	if(!A || !isarea(A))
-		return 0					// if not, then not powered
+		return FALSE					// if not, then not powered
 	if(chan == -1)
 		chan = power_channel
 	return A.powered(chan)			// return power status of the area
@@ -106,11 +106,11 @@
 /obj/machinery/power/proc/connect_to_network()
 	var/turf/T = src.loc
 	if(!T || !istype(T))
-		return 0
+		return FALSE
 
 	var/obj/structure/cable/C = T.get_cable_node() //check if we have a node cable on the machine turf, the first found is picked
 	if(!C || !C.powernet)
-		return 0
+		return FALSE
 
 	C.powernet.add_machine(src)
 	return 1
@@ -118,7 +118,7 @@
 // remove and disconnect the machine from its current powernet
 /obj/machinery/power/proc/disconnect_from_network()
 	if(!powernet)
-		return 0
+		return FALSE
 	powernet.remove_machine(src)
 	return 1
 
@@ -309,8 +309,8 @@
 //source is an object caused electrocuting (airlock, grille, etc)
 //No animations will be performed by this proc.
 /proc/electrocute_mob(mob/living/M as mob, var/power_source, var/obj/source, var/siemens_coeff = 1.0)
-	if(istype(M.loc,/obj/mecha))	return 0	//feckin mechs are dumb
-	if(issilicon(M))	return 0	//No more robot shocks from machinery
+	if(istype(M.loc,/obj/mecha))	return FALSE	//feckin mechs are dumb
+	if(issilicon(M))	return FALSE	//No more robot shocks from machinery
 	var/area/source_area
 	if(istype(power_source,/area))
 		source_area = power_source
@@ -332,10 +332,10 @@
 		if (apc.terminal)
 			PN = apc.terminal.powernet
 	else if (!power_source)
-		return 0
+		return FALSE
 	else
 		log_admin("ERROR: /proc/electrocute_mob([M], [power_source], [source]): wrong power_source")
-		return 0
+		return FALSE
 	//Triggers powernet warning, but only for 5 ticks (if applicable)
 	//If following checks determine user is protected we won't alarm for long.
 	if(PN)
@@ -346,7 +346,7 @@
 			return
 		if(H.gloves)
 			var/obj/item/clothing/gloves/G = H.gloves
-			if(G.siemens_coefficient == 0)	return 0		//to avoid spamming with insulated glvoes on
+			if(G.siemens_coefficient == 0)	return FALSE		//to avoid spamming with insulated glvoes on
 
 	//Checks again. If we are still here subject will be shocked, trigger standard 20 tick warning
 	//Since this one is longer it will override the original one.
@@ -354,7 +354,7 @@
 		PN.trigger_warning()
 
 	if (!cell && !PN)
-		return 0
+		return FALSE
 	var/PN_damage = 0
 	var/cell_damage = 0
 	if (PN)

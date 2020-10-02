@@ -2,7 +2,7 @@ var/global/list/active_radio_jammers = list()
 
 /proc/is_jammed(var/obj/radio)
 	var/turf/Tr = get_turf(radio)
-	if(!Tr) return 0	// Nullspace radios don't get jammed.
+	if(!Tr) return FALSE	// Nullspace radios don't get jammed.
 
 	for(var/jammer in active_radio_jammers)
 		var/obj/item/radio_jammer/J = jammer

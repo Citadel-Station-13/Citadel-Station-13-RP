@@ -22,7 +22,7 @@
 	var/bike_icon = "bike"
 	var/custom_icon = FALSE
 
-	paint_color = "#ffffff"
+	paint_color = COLOR_WHITE
 
 	var/datum/effect_system/ion_trail_follow/ion
 	var/kickstand = 1
@@ -96,9 +96,9 @@
 
 /obj/vehicle/bike/load(var/atom/movable/C, var/mob/user as mob)
 	var/mob/living/M = C
-	if(!istype(C)) return 0
+	if(!istype(C)) return FALSE
 	if(M.buckled || M.restrained() || !Adjacent(M) || !M.Adjacent(src))
-		return 0
+		return FALSE
 	return ..(M, user)
 
 /obj/vehicle/bike/MouseDrop_T(var/atom/movable/C, var/mob/user as mob)
@@ -115,18 +115,18 @@
 
 /obj/vehicle/bike/relaymove(mob/user, direction)
 	if(user != load || !on)
-		return 0
+		return FALSE
 	if(Move(get_step(src, direction)))
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /obj/vehicle/bike/Move(var/turf/destination)
-	if(kickstand) return 0
+	if(kickstand) return FALSE
 
 	if(on && (!cell || cell.charge < charge_use))
 		turn_off()
 		visible_message("<span class='warning'>\The [src] whines, before its engines wind down.</span>")
-		return 0
+		return FALSE
 
 	//these things like space, not turf. Dragging shouldn't weigh you down.
 	if(on && cell)
@@ -134,11 +134,11 @@
 
 	if(istype(destination,/turf/space) || istype(destination, /turf/simulated/floor/water) || pulledby)
 		if(!space_speed)
-			return 0
+			return FALSE
 		move_delay = space_speed
 	else
 		if(!land_speed)
-			return 0
+			return FALSE
 		move_delay = land_speed
 	return ..()
 

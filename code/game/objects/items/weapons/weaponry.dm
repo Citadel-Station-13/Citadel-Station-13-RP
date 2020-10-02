@@ -18,7 +18,7 @@
 
 	if(!istype(M) || locate(/obj/effect/energy_net) in M.loc)
 		qdel(src)
-		return 0
+		return FALSE
 
 	var/turf/T = get_turf(M)
 	if(T)

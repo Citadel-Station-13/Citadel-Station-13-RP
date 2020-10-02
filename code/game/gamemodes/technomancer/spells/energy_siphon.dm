@@ -54,7 +54,7 @@
 		populate_siphon_list(AM)
 		if(!things_to_siphon.len)
 			to_chat(user, "<span class='warning'>You cannot steal energy from \a [AM].</span>")
-			return 0
+			return FALSE
 		siphoning = AM
 		update_icon()
 		log_and_message_admins("is siphoning energy from \a [AM].")
@@ -89,7 +89,7 @@
 	var/flow_remaining = calculate_spell_power(flow_rate)
 
 	if(!siphoning)
-		return 0
+		return FALSE
 
 	update_icon()
 
@@ -197,7 +197,7 @@
 		H.electrocute_act(power, src, H.get_siemens_coefficient_organ(affected), affected, 0)
 	else
 		target_mob.electrocute_act(power, src, 0.75, BP_TORSO)
-	return 0 // Since this is a continous beam, it needs to keep flying until it hits the Technomancer.
+	return FALSE // Since this is a continous beam, it needs to keep flying until it hits the Technomancer.
 
 
 #undef SIPHON_CELL_TO_ENERGY

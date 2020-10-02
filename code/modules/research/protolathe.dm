@@ -107,7 +107,7 @@
 	if(O.is_open_container())
 		return 1
 	if(istype(O, /obj/item/gripper/no_use/loader))
-		return 0		//Sheet loaders weren't finishing attack(), this prevents the message "You can't stuff that gripper into this" without preventing the rest of the attack sequence from finishing
+		return FALSE		//Sheet loaders weren't finishing attack(), this prevents the message "You can't stuff that gripper into this" without preventing the rest of the attack sequence from finishing
 	if(panel_open)
 		to_chat(user, "<span class='notice'>You can't load \the [src] while it's opened.</span>")
 		return 1
@@ -167,10 +167,10 @@
 /obj/machinery/r_n_d/protolathe/proc/canBuild(var/datum/design/D)
 	for(var/M in D.materials)
 		if(materials[M] < (D.materials[M] * mat_efficiency))
-			return 0
+			return FALSE
 	for(var/C in D.chemicals)
 		if(!reagents.has_reagent(C, D.chemicals[C] * mat_efficiency))
-			return 0
+			return FALSE
 	return 1
 
 /obj/machinery/r_n_d/protolathe/proc/getLackingMaterials(var/datum/design/D)

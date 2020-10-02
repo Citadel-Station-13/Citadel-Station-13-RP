@@ -53,12 +53,12 @@ fundamental differences
 /obj/machinery/appliance/mixer/has_space(var/obj/item/I)
 	var/datum/cooking_item/CI = cooking_objs[1]
 	if (!CI || !CI.container)
-		return 0
+		return FALSE
 
 	if (CI.container.can_fit(I))
 		return CI
 
-	return 0
+	return FALSE
 
 
 /obj/machinery/appliance/mixer/can_remove_items(var/mob/user)
@@ -88,7 +88,7 @@ fundamental differences
 				I.forceMove(get_turf(src))
 			update_icon()
 		return 1
-	return 0
+	return FALSE
 
 
 /obj/machinery/appliance/mixer/toggle_power()
@@ -118,7 +118,7 @@ fundamental differences
 /obj/machinery/appliance/mixer/can_insert(var/obj/item/I, var/mob/user)
 	if (!stat)
 		user << span("warning","You can't add items while \the [src] is running. Wait for it to finish or turn the power off to abort.")
-		return 0
+		return FALSE
 	else
 		return ..()
 

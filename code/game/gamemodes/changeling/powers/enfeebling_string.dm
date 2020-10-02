@@ -31,7 +31,7 @@
 
 	var/mob/living/carbon/T = changeling_sting(30,/mob/proc/changeling_enfeebling_string)
 	if(!T)
-		return 0
+		return FALSE
 	if(ishuman(T))
 		var/mob/living/carbon/human/H = T
 

@@ -223,11 +223,11 @@ Class Procs:
 /datum/controller/subsystem/air/proc/has_same_air(turf/A, turf/B)
 	return A.initial_gas_mix == B.initial_gas_mix		// bad idea but fuck it.
 /*
-	if(A.oxygen != B.oxygen) return 0
-	if(A.nitrogen != B.nitrogen) return 0
-	if(A.phoron != B.phoron) return 0
-	if(A.carbon_dioxide != B.carbon_dioxide) return 0
-	if(A.temperature != B.temperature) return 0
+	if(A.oxygen != B.oxygen) return FALSE
+	if(A.nitrogen != B.nitrogen) return FALSE
+	if(A.phoron != B.phoron) return FALSE
+	if(A.carbon_dioxide != B.carbon_dioxide) return FALSE
+	if(A.temperature != B.temperature) return FALSE
 	return 1
 */
 

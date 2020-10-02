@@ -86,29 +86,29 @@
 	return
 
 /datum/action/proc/CheckRemoval(mob/living/user) // 1 if action is no longer valid for this mob and should be removed
-	return 0
+	return FALSE
 
 /datum/action/proc/IsAvailable()
 	return Checks()
 
 /datum/action/proc/Checks()// returns 1 if all checks pass
 	if(!owner)
-		return 0
+		return FALSE
 	if(check_flags & AB_CHECK_RESTRAINED)
 		if(owner.restrained())
-			return 0
+			return FALSE
 	if(check_flags & AB_CHECK_STUNNED)
 		if(owner.stunned)
-			return 0
+			return FALSE
 	if(check_flags & AB_CHECK_LYING)
 		if(owner.lying)
-			return 0
+			return FALSE
 	if(check_flags & AB_CHECK_ALIVE)
 		if(owner.stat)
-			return 0
+			return FALSE
 	if(check_flags & AB_CHECK_INSIDE)
 		if(!(target in owner))
-			return 0
+			return FALSE
 	return 1
 
 /datum/action/proc/UpdateName()

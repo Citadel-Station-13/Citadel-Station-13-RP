@@ -6,7 +6,7 @@
 	density = 1
 	anchored = 1
 	var/list/processing = list()
-	var/activecolor = "#FFFFFF"
+	var/activecolor = COLOR_WHITE
 	var/list/allowed_types = list(
 			/obj/item/clothing,
 			/obj/item/storage/backpack,

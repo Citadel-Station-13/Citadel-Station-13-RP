@@ -24,7 +24,7 @@ var/const/WIRE_EXPLODE = 1
 	var/obj/item/plastique/P = holder
 	if(P.open_panel)
 		return 1
-	return 0
+	return FALSE
 
 /datum/wires/explosive/c4/explode()
 	var/obj/item/plastique/P = holder

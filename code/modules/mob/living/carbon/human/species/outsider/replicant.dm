@@ -106,7 +106,7 @@
 	name = SPECIES_REPLICANT_BETA
 	blurb = "The remnants of some lost or dead race's research. These seem elastic."
 
-	blood_color = "#C0C0C0"
+	blood_color = COLOR_SILVER
 
 	species_language = LANGUAGE_SIGN
 	secondary_langs = list(LANGUAGE_TERMINUS, LANGUAGE_ROOTGLOBAL)	// Radio-waves.

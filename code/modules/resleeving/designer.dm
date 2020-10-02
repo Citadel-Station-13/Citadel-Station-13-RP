@@ -151,7 +151,7 @@
 
 /obj/machinery/computer/transhuman/designer/Topic(href, href_list)
 	if(..())
-		return 1
+		return TRUE
 
 	else if(href_list["debug_load_my_body"])
 		active_br = new /datum/transhuman/body_record(usr, FALSE, FALSE)
@@ -213,7 +213,7 @@
 		OnTopic(href, href_list, usr)
 
 	add_fingerprint(usr)
-	return 1 // Return 1 to refresh UI
+	return TRUE // Return 1 to refresh UI
 
 //
 // Code below is for generating preview icons based on a body_record
@@ -298,7 +298,7 @@
 	// We don't actually dress them! This is a medical machine, handle the nakedness DOCTOR!
 
 	H.regenerate_icons()
-	return 0 // Success!
+	return FALSE // Success!
 
 // HORROR SHOW BELOW
 // In order to avoid duplicating the many lines of code in player_setup that handle customizing
@@ -315,7 +315,7 @@
 		if(new_size && ISINRANGE(new_size,25,200))
 			active_br.sizemult = (new_size/100)
 			preview_icon = null
-		return 1
+		return TRUE
 
 	// The black magic horror show begins
 	var/datum/preferences/designer/P = new()
@@ -344,7 +344,7 @@
 			active_br.bodygender = new_gender
 			active_br.mydna.dna.SetUIState(DNA_UI_GENDER, new_gender!=MALE, 1)
 		preview_icon = null
-		return 1
+		return TRUE
 
 	var/action = 0
 	action = B.OnTopic(href, href_list, user)
@@ -352,13 +352,13 @@
 		B.copy_to_mob(mannequin)
 		active_br.mydna.dna.ResetUIFrom(mannequin)
 		preview_icon = null
-		return 1
+		return TRUE
 	action = E.OnTopic(href, href_list, user)
 	if(action & TOPIC_UPDATE_PREVIEW && mannequin && active_br)
 		E.copy_to_mob(mannequin)
 		active_br.mydna.dna.ResetUIFrom(mannequin)
 		preview_icon = null
-		return 1
+		return TRUE
 
 // Fake subtype of preferences we can use to steal code from player_setup
 /datum/preferences/designer/New()

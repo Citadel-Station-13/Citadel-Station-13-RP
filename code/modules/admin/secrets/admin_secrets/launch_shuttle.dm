@@ -2,7 +2,7 @@
 	name = "Launch a Shuttle"
 
 /datum/admin_secret_item/admin_secret/launch_shuttle/can_execute(var/mob/user)
-	if(!SSshuttle) return 0
+	if(!SSshuttle) return FALSE
 	return ..()
 
 /datum/admin_secret_item/admin_secret/launch_shuttle/execute(var/mob/user)

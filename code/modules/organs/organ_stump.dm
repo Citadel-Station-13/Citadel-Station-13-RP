@@ -25,4 +25,4 @@
 	qdel(src)
 
 /obj/item/organ/external/stump/is_usable()
-	return 0
+	return FALSE

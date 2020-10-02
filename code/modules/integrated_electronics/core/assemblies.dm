@@ -54,7 +54,7 @@
 
 /obj/item/electronic_assembly/proc/check_interactivity(mob/user)
 	if(!CanInteract(user, physical_state))
-		return 0
+		return FALSE
 	return 1
 
 /obj/item/electronic_assembly/get_cell()

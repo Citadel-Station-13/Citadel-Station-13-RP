@@ -320,7 +320,7 @@
 	..()
 	if((over_object == usr && (in_range(src, usr) || usr.contents.Find(src))))
 		if(!ishuman(usr))	return
-		if(has_buckled_mobs())	return 0
+		if(has_buckled_mobs())	return FALSE
 		visible_message("[usr] collapses \the [src.name].")
 		new rollertype(get_turf(src))
 		spawn(0)

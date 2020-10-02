@@ -1,6 +1,6 @@
 /mob/living/silicon/pai
 	name = "pAI"
-	icon = 'icons/mob/pai.dmi'
+	icon = 'icons/mob/pai_vr.dmi'
 	icon_state = "pai-repairbot"
 
 	emote_type = 2		// pAIs emotes are heard, not seen, so they can be seen through a container (eg. person)
@@ -14,6 +14,7 @@
 
 	idcard_type = /obj/item/card/id
 	var/idaccessible = 0
+	var/people_eaten = 0
 
 	var/network = "SS13"
 	var/obj/machinery/camera/current = null
@@ -25,7 +26,7 @@
 	var/obj/item/radio/radio		// Our primary radio
 	var/obj/item/communicator/integrated/communicator	// Our integrated communicator.
 
-	var/chassis = "pai-repairbot"   // A record of your chosen chassis.
+	var/chassis = "pai-repairbot"	// A record of your chosen chassis.
 	var/global/list/possible_chassis = list(
 		"Drone" = "pai-repairbot",
 		"Cat" = "pai-cat",
@@ -35,9 +36,9 @@
 		"Fox" = "pai-fox",
 		"Parrot" = "pai-parrot",
 		"Rabbit" = "pai-rabbit",
-		"Bear" = "pai-bear",  //VOREStation Edit
-		"Fennec" = "pai-fen",  // VOREStation Edit - Rykka
-		"Fennec" = "pai-typezero"  //VOREStation Edit
+		"Bear" = "pai-bear",
+		"Fennec" = "pai-fen",
+		"Fennec" = "pai-typezero"
 		)
 
 	var/global/list/possible_say_verbs = list(
@@ -141,11 +142,11 @@
 /mob/living/silicon/pai/check_eye(var/mob/user as mob)
 	if (!src.current)
 		return -1
-	return 0
+	return FALSE
 
 /mob/living/silicon/pai/restrained()
 	if(istype(src.loc,/obj/item/paicard))
-		return 0
+		return FALSE
 	..()
 
 /mob/living/silicon/pai/emp_act(severity)
@@ -183,8 +184,8 @@
 	if (!C)
 		src.unset_machine()
 		src.reset_view(null)
-		return 0
-	if (stat == 2 || !C.status || !(src.network in C.network)) return 0
+		return FALSE
+	if (stat == 2 || !C.status || !(src.network in C.network)) return FALSE
 
 	// ok, we're alive, camera is good and in our network...
 
@@ -272,13 +273,13 @@
 	//I'm not sure how much of this is necessary, but I would rather avoid issues.
 	if(istype(card.loc,/obj/item/rig_module))
 		to_chat(src, "There is no room to unfold inside this rig module. You're good and stuck.")
-		return 0
+		return FALSE
 	else if(istype(card.loc,/mob))
 		var/mob/holder = card.loc
 		var/datum/belly/inside_belly = check_belly(card) //VOREStation edit.
 		if(inside_belly) //VOREStation edit.
 			to_chat(src, "<span class='notice'>There is no room to unfold in here. You're good and stuck.</span>") //VOREStation edit.
-			return 0 //VOREStation edit.
+			return FALSE //VOREStation edit.
 		if(ishuman(holder))
 			var/mob/living/carbon/human/H = holder
 			for(var/obj/item/organ/external/affecting in H.organs)
@@ -428,7 +429,7 @@
 
 // No binary for pAIs.
 /mob/living/silicon/pai/binarycheck()
-	return 0
+	return FALSE
 
 // Handle being picked up.
 /mob/living/silicon/pai/get_scooped(var/mob/living/carbon/grabber, var/self_drop)
@@ -487,3 +488,44 @@
 	visible_message("<b>[src]</b> fades away from the screen, the pAI device goes silent.")
 	card.removePersonality()
 	clear_client()
+
+/mob/living/silicon/pai/proc/pai_nom(var/mob/living/T in oview(1))
+	set name = "pAI Nom"
+	set category = "pAI Commands"
+	set desc = "Allows you to eat someone while unfolded. Can't be used while in card form."
+
+	if (stat != CONSCIOUS)
+		return
+	return feed_grabbed_to_self(src,T)
+
+/mob/living/silicon/pai/proc/update_fullness_pai() //Determines if they have something in their stomach. Copied and slightly modified.
+	var/new_people_eaten = 0
+	for(var/belly in vore_organs)
+		var/obj/belly/B = belly
+		for(var/mob/living/M in B)
+			new_people_eaten += M.size_multiplier
+	people_eaten = min(1, new_people_eaten)
+
+/mob/living/silicon/pai/update_icon() //Some functions cause this to occur, such as resting
+	..()
+	update_fullness_pai()
+	if(!people_eaten && !resting)
+		icon_state = "[chassis]" //Using icon_state here resulted in quite a few bugs. Chassis is much less buggy.
+	else if(!people_eaten && resting)
+		icon_state = "[chassis]_rest"
+	else if(people_eaten && !resting)
+		icon_state = "[chassis]_full"
+	else if(people_eaten && resting)
+		icon_state = "[chassis]_rest_full"
+
+/mob/living/silicon/pai/update_icons() //And other functions cause this to occur, such as digesting someone.
+	..()
+	update_fullness_pai()
+	if(!people_eaten && !resting)
+		icon_state = "[chassis]"
+	else if(!people_eaten && resting)
+		icon_state = "[chassis]_rest"
+	else if(people_eaten && !resting)
+		icon_state = "[chassis]_full"
+	else if(people_eaten && resting)
+		icon_state = "[chassis]_rest_full"

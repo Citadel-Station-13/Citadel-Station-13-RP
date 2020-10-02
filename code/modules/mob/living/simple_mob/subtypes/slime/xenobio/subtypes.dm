@@ -380,7 +380,7 @@
 
 /mob/living/simple_mob/slime/xenobio/ruby
 	desc = "This slime has great physical strength."
-	color = "#FF3333"
+	color = COLOR_RED_LIGHT
 	slime_color = "ruby"
 	shiny = TRUE
 	glow_toggle = TRUE
@@ -483,7 +483,7 @@
 
 /mob/living/simple_mob/slime/xenobio/red
 	desc = "This slime is full of energy, and very aggressive.  'The red ones go faster.' seems to apply here."
-	color = "#FF3333"
+	color = COLOR_RED_LIGHT
 	slime_color = "red"
 	coretype = /obj/item/slime_extract/red
 	movement_cooldown = 0 // See above.

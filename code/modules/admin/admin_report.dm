@@ -69,7 +69,7 @@ proc/load_reports()
 
 // check if there are any unhandled reports
 client/proc/unhandled_reports()
-	if(!src.holder) return 0
+	if(!src.holder) return FALSE
 	var/list/reports = load_reports()
 
 	for(var/datum/admin_report/N in reports)
@@ -77,7 +77,7 @@ client/proc/unhandled_reports()
 			continue
 		else return 1
 
-	return 0
+	return FALSE
 
 // checks if the player has an unhandled report against him
 client/proc/is_reported()
@@ -87,7 +87,7 @@ client/proc/is_reported()
 		if(N.offender_key == src.key)
 			return 1
 
-	return 0
+	return FALSE
 
 // display only the reports that haven't been handled
 client/proc/display_admin_reports()
@@ -149,7 +149,7 @@ client/proc/mark_report_done(ID as num)
 	for(var/datum/admin_report/N in reports)
 		if(N.ID == ID)
 			found = N
-	if(!found) 
+	if(!found)
 		to_chat(src, "<b>* An error occured, sorry.</b>")
 
 	found.done = 1
@@ -171,7 +171,7 @@ client/proc/edit_report(ID as num)
 	for(var/datum/admin_report/N in reports)
 		if(N.ID == ID)
 			found = N
-	if(!found) 
+	if(!found)
 		to_chat(src, "<b>* An error occured, sorry.</b>")
 
 	var/body = input(src.mob, "Enter a body for the news", "Body") as null|message

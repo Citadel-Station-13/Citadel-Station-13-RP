@@ -17,7 +17,7 @@
 	if (energy >= amount)
 		energy -= amount
 		return 1
-	return 0
+	return FALSE
 
 /datum/matter_synth/proc/add_charge(var/amount)
 	energy = min(energy + amount, max_energy)

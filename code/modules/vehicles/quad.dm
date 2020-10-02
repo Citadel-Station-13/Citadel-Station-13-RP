@@ -22,7 +22,7 @@
 	var/custom_frame = FALSE
 	cell = /obj/item/cell/high
 
-	paint_color = "#ffffff"
+	paint_color = COLOR_WHITE
 
 	var/outdoors_speed_mod = 0.7 //The general 'outdoors' speed. I.E., the general difference you'll be at when driving outside.
 
@@ -169,7 +169,7 @@
 
 	pixel_x = -16
 
-	paint_color = "#ffffff"
+	paint_color = COLOR_WHITE
 
 /obj/vehicle/train/trolley/trailer/random/Initialize(mapload)
 	. = ..()
@@ -182,8 +182,8 @@
 			y_offset = mob_offset_y
 		load.pixel_x = (initial(load.pixel_x) + 16 + load_offset_x + pixel_x) //Base location for the sprite, plus 16 to center it on the 'base' sprite of the trailer, plus the x shift of the trailer, then shift it by the same pixel_x as the trailer to track it.
 		load.pixel_y = (initial(load.pixel_y) + y_offset + pixel_y) //Same as the above.
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /obj/vehicle/train/trolley/trailer/Initialize(mapload)
 	. = ..()

@@ -77,11 +77,11 @@
 			temp = H.organs_by_name["l_hand"]
 		if(temp && !temp.is_usable())
 			to_chat(H,"<span class='notice'>You try to move your [temp.name], but cannot!</span>")
-			return 0
+			return FALSE
 		return 1
 	else
 		to_chat(user,"<span class='notice'>You are not able to ring [src].</span>")
-	return 0
+	return FALSE
 
 /obj/item/deskbell/attackby(obj/item/W, mob/user, params)
 	if(!istype(W))

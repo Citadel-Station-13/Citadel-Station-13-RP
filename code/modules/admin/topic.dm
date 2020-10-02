@@ -759,7 +759,7 @@
 					to_chat(M, "<font color='red'><B>The reason is: [reason]</B></font>")
 					to_chat(M, "<font color='red'>This jobban will be lifted in [mins] minutes.</font>")
 					href_list["jobban2"] = 1 // lets it fall through and refresh
-					return 1
+					return TRUE
 				if("No")
 					if(!check_rights(R_BAN))  return
 					var/reason = sanitize(input(usr,"Reason?","Please State Reason","") as text|null)
@@ -780,7 +780,7 @@
 						to_chat(M, "<font color='red'><B>The reason is: [reason]</B></font>")
 						to_chat(M, "<font color='red'>Jobban can be lifted only upon request.</font>")
 						href_list["jobban2"] = 1 // lets it fall through and refresh
-						return 1
+						return TRUE
 				if("Cancel")
 					return
 
@@ -811,8 +811,8 @@
 				message_admins("<font color='blue'>[key_name_admin(usr)] unbanned [key_name_admin(M)] from [msg]</font>", 1)
 				to_chat(M, "<font color='red'><BIG><B>You have been un-jobbanned by [usr.client.ckey] from [msg].</B></BIG></font>")
 				href_list["jobban2"] = 1 // lets it fall through and refresh
-			return 1
-		return 0 //we didn't do anything!
+			return TRUE
+		return FALSE //we didn't do anything!
 
 	else if(href_list["boot2"])
 		var/mob/M = locate(href_list["boot2"])
@@ -1981,7 +1981,7 @@
 		return
 
 mob/living/proc/can_centcom_reply()
-	return 0
+	return FALSE
 
 mob/living/carbon/human/can_centcom_reply()
 	return istype(l_ear, /obj/item/radio/headset) || istype(r_ear, /obj/item/radio/headset)

@@ -312,7 +312,7 @@
 /obj/machinery/camera/check_eye(mob/user)
 	if(!can_use()) return -1
 	if(isXRay()) return SEE_TURFS|SEE_MOBS|SEE_OBJS
-	return 0
+	return FALSE
 
 /obj/machinery/camera/update_icon()
 	if (!status || (stat & BROKEN))
@@ -336,9 +336,9 @@
 //if false, then the camera is listed as DEACTIVATED and cannot be used
 /obj/machinery/camera/proc/can_use()
 	if(!status)
-		return 0
+		return FALSE
 	if(stat & (EMPED|BROKEN))
-		return 0
+		return FALSE
 	return 1
 
 /obj/machinery/camera/proc/can_see()
@@ -386,9 +386,9 @@
 /obj/machinery/camera/proc/weld(var/obj/item/weldingtool/WT, var/mob/user)
 
 	if(busy)
-		return 0
+		return FALSE
 	if(!WT.isOn())
-		return 0
+		return FALSE
 
 	// Do after stuff here
 	to_chat(user, "<span class='notice'>You start to weld [src]..</span>")
@@ -398,10 +398,10 @@
 	if(do_after(user, 100 * WT.toolspeed))
 		busy = 0
 		if(!WT.isOn())
-			return 0
+			return FALSE
 		return 1
 	busy = 0
-	return 0
+	return FALSE
 
 /obj/machinery/camera/interact(mob/living/user as mob)
 	if(!panel_open || istype(user, /mob/living/silicon/ai))

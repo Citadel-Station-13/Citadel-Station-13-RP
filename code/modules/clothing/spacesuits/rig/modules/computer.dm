@@ -89,7 +89,7 @@
 
 		// Terminal interaction only works with an intellicarded AI.
 		if(!istype(card))
-			return 0
+			return FALSE
 
 		// Since we've explicitly checked for three types, this should be safe.
 		input_device.attackby(card,user)
@@ -114,7 +114,7 @@
 		else
 			// You're using an empty card on an empty suit, idiot.
 			if(!target_ai)
-				return 0
+				return FALSE
 			integrate_ai(input_device,user)
 		return 1
 
@@ -130,12 +130,12 @@
 			integrate_ai(input_device,user)
 		return 1
 
-	return 0
+	return FALSE
 
 /obj/item/rig_module/ai_container/engage(atom/target)
 
 	if(!..())
-		return 0
+		return FALSE
 
 	var/mob/living/carbon/human/H = holder.wearer
 
@@ -151,7 +151,7 @@
 	if(accepts_item(target,H))
 		return 1
 
-	return 0
+	return FALSE
 
 /obj/item/rig_module/ai_container/removed()
 	eject_ai()
@@ -164,7 +164,7 @@
 			if(integrated_ai && !integrated_ai.stat)
 				if(user)
 					to_chat(user, "<span class='danger'>You cannot eject your currently stored AI. Purge it manually.</span>")
-				return 0
+				return FALSE
 			to_chat(user, "<span class='danger'>You purge the previous AI from your Integrated Intelligence System, freeing it for use.</span>")
 			if(integrated_ai)
 				integrated_ai.ghostize()
@@ -201,9 +201,9 @@
 					if(target_card.grab_ai(ai_mob, user))
 						source_card.clear()
 					else
-						return 0
+						return FALSE
 				else
-					return 0
+					return FALSE
 			else
 				user.drop_from_inventory(ai)
 				ai.forceMove(src)
@@ -246,12 +246,12 @@
 /obj/item/rig_module/datajack/engage(atom/target)
 
 	if(!..())
-		return 0
+		return FALSE
 
 	if(target)
 		var/mob/living/carbon/human/H = holder.wearer
 		if(!accepts_item(target,H))
-			return 0
+			return FALSE
 	return 1
 
 /obj/item/rig_module/datajack/accepts_item(var/obj/item/input_device, var/mob/living/user)
@@ -291,7 +291,7 @@
 			else
 				to_chat(user, "<span class='warning'>Scan complete. There is nothing useful stored on this terminal.</span>")
 		return 1
-	return 0
+	return FALSE
 
 /obj/item/rig_module/datajack/proc/load_data(var/incoming_data)
 
@@ -312,7 +312,7 @@
 		if(!data_found)
 			stored_research += incoming_data
 		return 1
-	return 0
+	return FALSE
 
 /obj/item/rig_module/electrowarfare_suite
 
@@ -382,11 +382,11 @@
 /obj/item/rig_module/power_sink/engage(atom/target)
 
 	if(!..())
-		return 0
+		return FALSE
 
 	//Target wasn't supplied or we're already draining.
 	if(interfaced_with)
-		return 0
+		return FALSE
 
 	if(!target)
 		return 1
@@ -394,11 +394,11 @@
 	// Are we close enough?
 	var/mob/living/carbon/human/H = holder.wearer
 	if(!target.Adjacent(H))
-		return 0
+		return FALSE
 
 	// Is it a valid power source?
 	if(target.drain_power(1) <= 0)
-		return 0
+		return FALSE
 
 	to_chat(H, "<span class = 'danger'>You begin draining power from [target]!</span>")
 	interfaced_with = target
@@ -414,7 +414,7 @@
 	if(can_drain > 0)
 		engage(input_device)
 		return 1
-	return 0
+	return FALSE
 
 /obj/item/rig_module/power_sink/process()
 
@@ -426,7 +426,7 @@
 		H = holder.wearer
 
 	if(!H || !istype(H))
-		return 0
+		return FALSE
 
 	holder.spark_system.start()
 	playsound(H.loc, 'sound/effects/sparks2.ogg', 50, 1)

@@ -475,7 +475,7 @@
 				return R.hudmode == "Security"
 			if("medical")
 				return R.hudmode == "Medical"
-	return 0
+	return FALSE
 
 /mob/living/carbon/human/proc/examine_weight()
 	if(!show_pudge()) //Some clothing or equipment can hide this.

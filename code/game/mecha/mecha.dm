@@ -103,7 +103,7 @@
 		return 1
 
 	if(!cell)
-		return 0
+		return FALSE
 
 	return cell.drain_power(drain_check)
 
@@ -129,7 +129,7 @@
 
 /obj/mecha/Exit(atom/movable/O)
 	if(O in cargo)
-		return 0
+		return FALSE
 	return ..()
 
 /obj/mecha/Destroy()
@@ -243,7 +243,7 @@
 	sleep(delay)
 	if(src)
 		return 1
-	return 0
+	return FALSE
 
 /obj/mecha/proc/enter_after(delay as num, var/mob/user as mob, var/numticks = 5)
 	var/delayfraction = delay/numticks
@@ -253,7 +253,7 @@
 	for(var/i = 0, i<numticks, i++)
 		sleep(delayfraction)
 		if(!src || !user || !user.canmove || !(user.loc == T))
-			return 0
+			return FALSE
 
 	return 1
 
@@ -263,7 +263,7 @@
 	if(locate(/obj/structure/grille, orange(1, src)) || locate(/obj/structure/lattice, orange(1, src)) || locate(/turf/simulated, orange(1, src)) || locate(/turf/unsimulated, orange(1, src)))
 		return 1
 	else
-		return 0
+		return FALSE
 
 /obj/mecha/examine(mob/user)
 	..(user)
@@ -356,7 +356,7 @@
 	if(istype(target, /obj/machinery/embedded_controller))
 		target.ui_interact(src.occupant)
 		return 1
-	return 0
+	return FALSE
 
 /obj/mecha/contents_nano_distance(var/src_object, var/mob/living/user)
 	. = user.shared_living_nano_distance(src_object) //allow them to interact with anything they can interact with normally.
@@ -399,15 +399,15 @@
 	if(user != src.occupant) //While not "realistic", this piece is player friendly.
 		if(istype(user,/mob/living/carbon/brain))
 			to_chat(user,"You try to move, but you are not the pilot! The exosuit doesn't respond.")
-			return 0
+			return FALSE
 		user.forceMove(get_turf(src))
 		to_chat(user,"You climb out from [src]")
-		return 0
+		return FALSE
 	if(connected_port)
 		if(world.time - last_message > 20)
 			src.occupant_message("Unable to move while connected to the air system port")
 			last_message = world.time
-		return 0
+		return FALSE
 	if(state)
 		occupant_message("<font color='red'>Maintenance protocols in effect</font>")
 		return
@@ -419,11 +419,11 @@
 
 /obj/mecha/proc/dyndomove(direction)
 	if(!can_move)
-		return 0
+		return FALSE
 	if(src.pr_inertial_movement.active())
-		return 0
+		return FALSE
 	if(!has_charge(step_energy_drain))
-		return 0
+		return FALSE
 	var/move_result = 0
 	if(hasInternalDamage(MECHA_INT_CONTROL_LOST))
 		move_result = mechsteprand()
@@ -441,7 +441,7 @@
 		if(do_after(step_in))
 			can_move = 1
 		return 1
-	return 0
+	return FALSE
 
 /obj/mecha/proc/handle_equipment_movement()
 	for(var/obj/item/mecha_parts/mecha_equipment/ME in equipment)
@@ -915,16 +915,16 @@
 /obj/mecha/proc/mmi_move_inside(var/obj/item/mmi/mmi_as_oc as obj,mob/user as mob)
 	if(!mmi_as_oc.brainmob || !mmi_as_oc.brainmob.client)
 		to_chat(user,"Consciousness matrix not detected.")
-		return 0
+		return FALSE
 	else if(mmi_as_oc.brainmob.stat)
 		to_chat(user,"Brain activity below acceptable level.")
-		return 0
+		return FALSE
 	else if(occupant)
 		to_chat(user,"Occupant detected.")
-		return 0
+		return FALSE
 	else if(dna && dna!=mmi_as_oc.brainmob.dna.unique_enzymes)
 		to_chat(user,"Genetic sequence or serial number incompatible with locking mechanism.")
-		return 0
+		return FALSE
 	//Added a message here since people assume their first click failed or something./N
 //	user << "Installing MMI, please stand by."
 
@@ -937,16 +937,16 @@
 			to_chat(user,"Occupant detected.")
 	else
 		to_chat(user,"You stop attempting to install the brain.")
-	return 0
+	return FALSE
 
 /obj/mecha/proc/mmi_moved_inside(var/obj/item/mmi/mmi_as_oc as obj,mob/user as mob)
 	if(mmi_as_oc && (user in range(1)))
 		if(!mmi_as_oc.brainmob || !mmi_as_oc.brainmob.client)
 			to_chat(user,"Consciousness matrix not detected.")
-			return 0
+			return FALSE
 		else if(mmi_as_oc.brainmob.stat)
 			to_chat(user,"Beta-rhythm below acceptable level.")
-			return 0
+			return FALSE
 		user.drop_from_inventory(mmi_as_oc)
 		var/mob/brainmob = mmi_as_oc.brainmob
 		brainmob.reset_view(src)
@@ -969,7 +969,7 @@
 			src.occupant << sound('sound/mecha/nominal.ogg',volume=50)
 		return 1
 	else
-		return 0
+		return FALSE
 
 
 /////////////////////////////////////
@@ -1020,11 +1020,11 @@
 /obj/mecha/proc/connect(obj/machinery/atmospherics/portables_connector/new_port)
 	//Make sure not already connected to something else
 	if(connected_port || !new_port || new_port.connected_device)
-		return 0
+		return FALSE
 
 	//Make sure are close enough for a valid connection
 	if(new_port.loc != src.loc)
-		return 0
+		return FALSE
 
 	//Perform the connection
 	connected_port = new_port
@@ -1041,7 +1041,7 @@
 
 /obj/mecha/proc/disconnect()
 	if(!connected_port)
-		return 0
+		return FALSE
 
 	var/datum/pipe_network/network = connected_port.return_network(src)
 	if(network)
@@ -1226,7 +1226,7 @@
 					src.occupant << sound('sound/mecha/nominal.ogg',volume=50)
 		return 1
 	else
-		return 0
+		return FALSE
 
 /obj/mecha/verb/view_stats()
 	set name = "View Stats"
@@ -1320,14 +1320,14 @@
 	for(var/ID in list(H.get_active_hand(), H.wear_id, H.belt))
 		if(src.check_access(ID,src.operation_req_access))
 			return 1
-	return 0
+	return FALSE
 
 
 /obj/mecha/proc/internals_access_allowed(mob/living/carbon/human/H)
 	for(var/atom/ID in list(H.get_active_hand(), H.wear_id, H.belt))
 		if(src.check_access(ID,src.internals_req_access))
 			return 1
-	return 0
+	return FALSE
 
 
 /obj/mecha/check_access(obj/item/card/id/I, list/access_list)
@@ -1339,11 +1339,11 @@
 		var/obj/item/pda/pda = I
 		I = pda.id
 	if(!istype(I) || !I.access) //not ID or no access
-		return 0
+		return FALSE
 	if(access_list==src.operation_req_access)
 		for(var/req in access_list)
 			if(!(req in I.access)) //doesn't have this access
-				return 0
+				return FALSE
 	else if(access_list==src.internals_req_access)
 		for(var/req in access_list)
 			if(req in I.access)
@@ -1877,13 +1877,13 @@
 	if(get_charge())
 		cell.use(amount)
 		return 1
-	return 0
+	return FALSE
 
 /obj/mecha/proc/give_power(amount)
 	if(!isnull(get_charge()))
 		cell.give(amount)
 		return 1
-	return 0
+	return FALSE
 
 /obj/mecha/proc/reset_icon()
 	if (initial_icon)
@@ -1896,7 +1896,7 @@
 
 	user.setClickCooldown(user.get_attack_speed())
 	if(!damage)
-		return 0
+		return FALSE
 
 	src.log_message("Attacked. Attacker - [user].",1)
 

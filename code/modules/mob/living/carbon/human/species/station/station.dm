@@ -399,7 +399,7 @@
 
 	flesh_color = "#AFA59E"
 	base_color = "#e2e4a6"
-	blood_color = "#FFCC00" //a gross sort of orange color
+	blood_color = COLOR_YELLOW_GOLD //a gross sort of orange color
 
 	reagent_tag = IS_ZADDAT
 
@@ -562,7 +562,7 @@
 	var/mob/living/carbon/alien/diona/D = other
 	if(istype(D))
 		return 1
-	return 0
+	return FALSE
 
 /datum/species/diona/equip_survival_gear(var/mob/living/carbon/human/H)
 	if(H.backbag == 1)

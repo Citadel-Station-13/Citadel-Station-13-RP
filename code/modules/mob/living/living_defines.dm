@@ -55,7 +55,7 @@
 	var/glow_toggle = 0					// If they're glowing!
 	var/glow_range = 2
 	var/glow_intensity = null
-	var/glow_color = "#FFFFFF"			// The color they're glowing!
+	var/glow_color = COLOR_WHITE			// The color they're glowing!
 
 	var/see_invisible_default = SEE_INVISIBLE_LIVING
 

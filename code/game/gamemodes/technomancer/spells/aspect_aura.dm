@@ -39,7 +39,7 @@
 	icon_state = "generic"
 	cast_methods = null
 	aspect = ASPECT_CHROMATIC
-	var/glow_color = "#FFFFFF"
+	var/glow_color = COLOR_WHITE
 
 /obj/item/spell/aura/New()
 	..()
@@ -105,7 +105,7 @@
 	icon_state = "generic"
 	cast_methods = null
 	aspect = ASPECT_BIOMED
-	glow_color = "#0000FF"
+	glow_color = COLOR_BLUE
 	var/regen_tick = 0
 	var/heal_allies_only = 1
 

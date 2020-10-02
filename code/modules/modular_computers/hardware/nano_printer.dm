@@ -15,11 +15,11 @@
 
 /obj/item/computer_hardware/nano_printer/proc/print_text(var/text_to_print, var/paper_title = null)
 	if(!stored_paper)
-		return 0
+		return FALSE
 	if(!enabled)
-		return 0
+		return FALSE
 	if(!check_functionality())
-		return 0
+		return FALSE
 
 	var/obj/item/paper/P = new/obj/item/paper(get_turf(holder2))
 

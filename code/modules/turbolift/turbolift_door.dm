@@ -42,5 +42,9 @@
 			else // the mob is too big to just move, so we need to give up what we're doing
 				audible_message("\The [src]'s motors grind as they quickly reverse direction, unable to safely close.")
 				cur_command = null // the door will just keep trying otherwise
-				return 0
+				return FALSE
 	return ..()
+
+/obj/machinery/door/airlock/lift/emag_act(var/uses_left, var/mob/user)
+	to_chat(user, "<span class='danger'>This door is internally controlled.</span>")
+	return FALSE // Prevents the cryptographic sequencer from using a charge fruitlessly

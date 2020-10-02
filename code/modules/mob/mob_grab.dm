@@ -286,12 +286,12 @@
 /obj/item/grab/proc/confirm()
 	if(!assailant || !affecting)
 		qdel(src)
-		return 0
+		return FALSE
 
 	if(affecting)
 		if(!isturf(assailant.loc) || ( !isturf(affecting.loc) || assailant.loc != affecting.loc && get_dist(assailant, affecting) > 1) )
 			qdel(src)
-			return 0
+			return FALSE
 
 	return 1
 

@@ -90,7 +90,7 @@
 			if(src.chest && src.head)
 				feedback_inc("cyborg_frames_built",1)
 				return 1
-	return 0
+	return FALSE
 
 /obj/item/robot_parts/robot_suit/attackby(obj/item/W as obj, mob/user as mob)
 	..()

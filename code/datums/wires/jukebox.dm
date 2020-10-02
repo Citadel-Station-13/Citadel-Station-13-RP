@@ -19,7 +19,7 @@ var/const/WIRE_NEXT = 1024
 	var/obj/machinery/media/jukebox/A = holder
 	if(A.panel_open)
 		return 1
-	return 0
+	return FALSE
 
 // Show the status of lights as a hint to the current state
 /datum/wires/jukebox/GetInteractWindow()

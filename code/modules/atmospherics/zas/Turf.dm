@@ -227,10 +227,10 @@
 	if(connections) connections.update_all()
 
 /turf/assume_air(datum/gas_mixture/giver) //use this for machines to adjust air
-	return 0
+	return FALSE
 
 /turf/proc/assume_gas(gasid, moles, temp = 0)
-	return 0
+	return FALSE
 
 /turf/return_air()
 	//Create gas mixture to hold data for passing

@@ -169,7 +169,7 @@ the artifact triggers the rage.
 /datum/modifier/berserk_synthetic
 	name = "recklessness"
 	desc = "You are filled with an overwhelming rage, however your metal shell prevents taking advantage of this."
-	client_color = "#FF0000" // Make everything red!
+	client_color = COLOR_RED // Make everything red!
 	mob_overlay_state = "berserk"
 
 	on_created_text = "<span class='danger'>You feel an intense and overwhelming rage overtake you as you go berserk! \

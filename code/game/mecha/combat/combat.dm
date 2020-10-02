@@ -144,7 +144,7 @@
 				energy--
 			return 1
 
-	return 0
+	return FALSE
 */
 /*
 /obj/mecha/combat/hear_talk(mob/M as mob, text)
@@ -253,7 +253,7 @@
 			H.client.mouse_pointer_icon = file("icons/mecha/mecha_mouse.dmi")
 		return 1
 	else
-		return 0
+		return FALSE
 
 /obj/mecha/combat/mmi_moved_inside(var/obj/item/mmi/mmi_as_oc as obj,mob/user as mob)
 	if(..())
@@ -261,7 +261,7 @@
 			occupant.client.mouse_pointer_icon = file("icons/mecha/mecha_mouse.dmi")
 		return 1
 	else
-		return 0
+		return FALSE
 
 /obj/mecha/combat/go_out()
 	if(src.occupant && src.occupant.client)

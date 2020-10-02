@@ -208,15 +208,15 @@ var/const/MAX_ACTIVE_TIME = 400
 		return 1
 
 	if(!iscarbon(M))
-		return 0
+		return FALSE
 
 	var/mob/living/carbon/C = M
 	if(istype(C) && locate(/obj/item/organ/internal/xenos/hivenode) in C.internal_organs)
-		return 0
+		return FALSE
 
 	if(ishuman(C))
 		var/mob/living/carbon/human/H = C
 		if(H.head && (H.head.body_parts_covered & FACE) && !(H.head.item_flags & FLEXIBLEMATERIAL))
-			return 0
+			return FALSE
 	return 1
 */

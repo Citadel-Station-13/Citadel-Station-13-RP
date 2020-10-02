@@ -41,7 +41,7 @@
 
 /datum/game_mode/meme/can_start()
 	if(!..())
-		return 0
+		return FALSE
 
 	// for every 10 players, get 1 meme, and for each meme, get a host
 	// also make sure that there's at least one meme and one host
@@ -51,7 +51,7 @@
 
 	if(possible_memes.len < 2)
 		log_admin("MODE FAILURE: MEME. NOT ENOUGH MEME CANDIDATES.")
-		return 0 // not enough candidates for meme
+		return FALSE // not enough candidates for meme
 
 	// for each 2 possible memes, add one meme and one host
 	while(possible_memes.len >= 2)

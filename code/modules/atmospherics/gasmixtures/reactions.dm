@@ -34,7 +34,7 @@
 
 		total_fuel = gas_fuel + liquid_fuel
 		if(total_fuel <= 0.005)
-			return 0
+			return FALSE
 
 		//*** Determine how fast the fire burns
 
@@ -73,7 +73,7 @@
 		//if the reaction is progressing too slow then it isn't self-sustaining anymore and burns out
 		if(zone) //be less restrictive with canister and tank reactions
 			if((!liquid_fuel || used_fuel <= FIRE_LIQUD_MIN_BURNRATE) && (!gas_fuel || used_fuel <= FIRE_GAS_MIN_BURNRATE*zone.contents.len))
-				return 0
+				return FALSE
 
 
 		//*** Remove fuel and oxidizer, add carbon dioxide and heat
@@ -109,7 +109,7 @@ datum/gas_mixture/proc/check_recombustability(list/fuel_objs)
 			break
 
 	if(!.)
-		return 0
+		return FALSE
 
 	if(fuel_objs && fuel_objs.len)
 		return 1
@@ -129,7 +129,7 @@ datum/gas_mixture/proc/check_recombustability(list/fuel_objs)
 			break
 
 	if(!.)
-		return 0
+		return FALSE
 
 	if(liquid)
 		return 1

@@ -13,7 +13,7 @@ var/const/SMES_WIRE_FAILSAFES = 16	// Cut to disable failsafes, mend to reenable
 	var/obj/machinery/power/smes/buildable/S = holder
 	if(S.open_hatch)
 		return 1
-	return 0
+	return FALSE
 
 
 /datum/wires/smes/GetInteractWindow()

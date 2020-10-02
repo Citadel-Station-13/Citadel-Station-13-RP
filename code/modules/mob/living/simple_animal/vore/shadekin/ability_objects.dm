@@ -141,8 +141,8 @@
 	holder.glow_toggle = TRUE
 	holder.glow_range = 8
 	holder.glow_intensity = -10
-	holder.glow_color = "#FFFFFF"
-	holder.set_light(8, -10, "#FFFFFF")
+	holder.glow_color = COLOR_WHITE
+	holder.set_light(8, -10, COLOR_WHITE)
 
 /datum/modifier/shadekin/create_shade/on_expire()
 	holder.glow_toggle = initial(holder.glow_toggle)

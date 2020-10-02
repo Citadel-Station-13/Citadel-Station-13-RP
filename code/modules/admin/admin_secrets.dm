@@ -37,7 +37,7 @@ var/datum/admin_secrets/admin_secrets = new()
 	for(var/datum/admin_secret_item/item in items)
 		if(item.can_view(user))
 			return 1
-	return 0
+	return FALSE
 
 //
 // Secret Item Datum - Each subtype is a command on the secrets panel.
@@ -64,11 +64,11 @@ var/datum/admin_secrets/admin_secrets = new()
 	if(can_view(user))
 		if(!warn_before_use || alert("Execute the command '[name]'?", name, "No","Yes") == "Yes")
 			return 1
-	return 0
+	return FALSE
 
 /datum/admin_secret_item/proc/execute(var/mob/user)
 	if(!can_execute(user))
-		return 0
+		return FALSE
 
 	if(log)
 		log_and_message_admins("used secret '[name]'", user)

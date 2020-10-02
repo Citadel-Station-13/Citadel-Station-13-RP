@@ -131,13 +131,13 @@
 				light_range = 4
 		set_light(light_range, 2, light_color)
 	else
-		set_light(0, 0, "#FFFFFF")
+		set_light(0, 0, COLOR_WHITE)
 
 /obj/machinery/particle_smasher/bullet_act(var/obj/item/projectile/Proj)
 	if(istype(Proj, /obj/item/projectile/beam))
 		if(Proj.damage >= 50)
 			TryCraft()
-	return 0
+	return FALSE
 
 /obj/machinery/particle_smasher/process()
 	if(!src.anchored)	// Rapidly loses focus.
@@ -305,7 +305,7 @@
 			else
 				return -1
 	if ((reagents?(reagents.len):(0)) < avail_reagents.reagent_list.len)
-		return 0
+		return FALSE
 	return .
 
 /datum/particle_smasher_recipe/deuterium_tritium

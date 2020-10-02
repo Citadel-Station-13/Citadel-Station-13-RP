@@ -221,7 +221,7 @@
 /obj/structure/computer3frame/proc/remove_peripheral(var/obj/item/I = null)
 	if(!components || !components.len)
 		to_chat(usr, "<span class='warning'>There are no components in [src] to take out!</span>")
-		return 0
+		return FALSE
 	if(!I)
 		I = input(usr, "Remove which component?","Remove component", null) as null|obj in components
 
@@ -261,38 +261,38 @@
 				I.loc = loc
 			to_chat(usr, "<span class='notice'>You remove [I]</span>")
 			return 1
-	return 0
+	return FALSE
 
 /obj/structure/computer3frame/proc/insert_peripheral(var/obj/item/I)
 	if(components.len >= max_components)
 		to_chat(usr, "There isn't room in [src] for another component!")
-		return 0
+		return FALSE
 	switch(I.type)
 		if(/obj/item/part/computer/storage/hdd)
 			if(hdd)
 				to_chat(usr, "There is already \an [hdd] in [src]!")
-				return 0
+				return FALSE
 			hdd = I
 			components += hdd
 			hdd.loc = src
 		if(/obj/item/part/computer/storage/removable)
 			if(floppy)
 				to_chat(usr, "There is already \an [floppy] in [src]!")
-				return 0
+				return FALSE
 			floppy = I
 			components += floppy
 			floppy.loc = src
 		if(/obj/item/part/computer/networking/radio)
 			if(radio)
 				to_chat(usr, "There is already \an [radio] in [src]!")
-				return 0
+				return FALSE
 			radio = I
 			components += radio
 			radio.loc = src
 		if(/obj/item/part/computer/networking/cameras)
 			if(camnet)
 				to_chat(usr, "There is already \an [camnet] in [src]!")
-				return 0
+				return FALSE
 			camnet = I
 			components += camnet
 			camnet.loc = src

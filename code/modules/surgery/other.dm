@@ -21,7 +21,7 @@
 
 /datum/surgery_step/fix_vein/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if(!hasorgans(target))
-		return 0
+		return FALSE
 
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	if(!affected) return
@@ -74,10 +74,10 @@
 
 /datum/surgery_step/fix_dead_tissue/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if(!hasorgans(target))
-		return 0
+		return FALSE
 
 	if (target_zone == O_MOUTH || target_zone == O_EYES)
-		return 0
+		return FALSE
 
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 
@@ -123,17 +123,17 @@
 
 /datum/surgery_step/treat_necrosis/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if (!istype(tool, /obj/item/reagent_containers))
-		return 0
+		return FALSE
 
 	var/obj/item/reagent_containers/container = tool
 	if(!container.reagents.has_reagent("peridaxon"))
-		return 0
+		return FALSE
 
 	if(!hasorgans(target))
-		return 0
+		return FALSE
 
 	if (target_zone == O_MOUTH || target_zone == O_EYES)
-		return 0
+		return FALSE
 
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	return affected && affected.open == 3 && (affected.status & ORGAN_DEAD)
@@ -196,11 +196,11 @@
 
 /datum/surgery_step/hardsuit/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if(!istype(target))
-		return 0
+		return FALSE
 	if(istype(tool,/obj/item/weldingtool))
 		var/obj/item/weldingtool/welder = tool
 		if(!welder.isOn() || !welder.remove_fuel(1,user))
-			return 0
+			return FALSE
 	return (target_zone == BP_TORSO) && ((istype(target.back, /obj/item/rig) && !(target.back.canremove)) || (istype(target.belt, /obj/item/rig) && !(target.belt.canremove)))
 
 /datum/surgery_step/hardsuit/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)

@@ -42,7 +42,7 @@
 /datum/reagent/crayon_dust/grey //Mime
 	name = "Grey crayon dust"
 	id = "crayon_dust_grey"
-	color = "#808080"
+	color = COLOR_GRAY
 
 /datum/reagent/crayon_dust/brown //Rainbow
 	name = "Brown crayon dust"
@@ -61,7 +61,7 @@
 /datum/reagent/marker_ink/black
 	name = "Black marker ink"
 	id = "marker_ink_black"
-	color = "#000000"
+	color = COLOR_BLACK
 
 /datum/reagent/marker_ink/red
 	name = "Red marker ink"
@@ -96,7 +96,7 @@
 /datum/reagent/marker_ink/grey //Mime
 	name = "Grey marker ink"
 	id = "marker_ink_grey"
-	color = "#808080"
+	color = COLOR_GRAY
 
 /datum/reagent/marker_ink/brown //Rainbow
 	name = "Brown marker ink"
@@ -109,7 +109,7 @@
 	description = "Dusty powder obtained by grinding chalk."
 	taste_description = "powdered chalk"
 	reagent_state = LIQUID
-	color = "#FFFFFF"
+	color = COLOR_WHITE
 	overdose = 5
 
 /datum/reagent/chalk_dust/red
@@ -133,7 +133,7 @@
 	description = "This paint will stick to almost any object."
 	taste_description = "chalk"
 	reagent_state = LIQUID
-	color = "#808080"
+	color = COLOR_GRAY
 	overdose = REAGENTS_OVERDOSE * 0.5
 	color_weight = 20
 
@@ -496,7 +496,7 @@
 	description = "Glycerol is a simple polyol compound. Glycerol is sweet-tasting and of low toxicity."
 	taste_description = "sweetness"
 	reagent_state = LIQUID
-	color = "#808080"
+	color = COLOR_GRAY
 
 /datum/reagent/nitroglycerin
 	name = "Nitroglycerin"
@@ -504,7 +504,7 @@
 	description = "Nitroglycerin is a heavy, colorless, oily, explosive liquid obtained by nitrating glycerol."
 	taste_description = "oil"
 	reagent_state = LIQUID
-	color = "#808080"
+	color = COLOR_GRAY
 
 /datum/reagent/coolant
 	name = "Coolant"
@@ -576,3 +576,21 @@
 	taste_description = "earthy"
 	reagent_state = LIQUID
 	color = "#62764E"
+
+/datum/reagent/nif_repair_nanites
+	name = "Programmed Nanomachines"
+	id = "nifrepairnanites"
+	description = "A thick grey slurry of NIF repair nanomachines."
+	taste_description = "metallic"
+	reagent_state = LIQUID
+	color = "#333333"
+	scannable = 1
+
+/datum/reagent/nif_repair_nanites/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(H.nif)
+			var/obj/item/nif/nif = H.nif //L o c a l
+			if(nif.stat == NIF_TEMPFAIL)
+				nif.stat = NIF_INSTALLING
+			nif.durability = min(nif.durability + removed, initial(nif.durability))

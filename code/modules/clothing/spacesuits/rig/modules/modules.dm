@@ -144,30 +144,30 @@
 
 	if(damage >= 2)
 		to_chat(usr, "<span class='warning'>The [interface_name] is damaged beyond use!</span>")
-		return 0
+		return FALSE
 
 	if(world.time < next_use)
 		to_chat(usr, "<span class='warning'>You cannot use the [interface_name] again so soon.</span>")
-		return 0
+		return FALSE
 
 	if(!holder || holder.canremove)
 		to_chat(usr, "<span class='warning'>The suit is not initialized.</span>")
-		return 0
+		return FALSE
 
 	if(usr.lying || usr.stat || usr.stunned || usr.paralysis || usr.weakened)
 		to_chat(usr, "<span class='warning'>You cannot use the suit in this state.</span>")
-		return 0
+		return FALSE
 
 	if(holder.wearer && holder.wearer.lying)
 		to_chat(usr, "<span class='warning'>The suit cannot function while the wearer is prone.</span>")
-		return 0
+		return FALSE
 
 	if(holder.security_check_enabled && !holder.check_suit_access(usr))
 		to_chat(usr, "<span class='danger'>Access denied.</span>")
-		return 0
+		return FALSE
 
 	if(!holder.check_power_cost(usr, use_power_cost, 0, src, (istype(usr,/mob/living/silicon ? 1 : 0) ) ) )
-		return 0
+		return FALSE
 
 	next_use = world.time + module_cooldown
 
@@ -177,9 +177,9 @@
 /obj/item/rig_module/proc/activate(var/skip_engage = 0) //VOREStation Edit - Allow us to skip the engage call.
 	//VOREStation Edit - Allow us to skip the engage call
 	if(active)
-		return 0
+		return FALSE
 	if(!skip_engage && !engage())
-		return 0
+		return FALSE
 	//VOREStation Edit End
 	active = 1
 
@@ -196,7 +196,7 @@
 /obj/item/rig_module/proc/deactivate()
 
 	if(!active)
-		return 0
+		return FALSE
 
 	active = 0
 
@@ -226,7 +226,7 @@
 // Called by holder rigsuit attackby()
 // Checks if an item is usable with this module and handles it if it is
 /obj/item/rig_module/proc/accepts_item(var/obj/item/input_device)
-	return 0
+	return FALSE
 
 /mob/living/carbon/human/Stat()
 	. = ..()
@@ -262,7 +262,7 @@
 	return
 
 /stat_rig_module/proc/CanUse()
-	return 0
+	return FALSE
 
 /stat_rig_module/Click()
 	if(CanUse())
@@ -317,7 +317,7 @@
 	if(module.selectable)
 		name = module.holder.selected_module == module ? "Selected" : "Select"
 		return 1
-	return 0
+	return FALSE
 
 /stat_rig_module/charge/New()
 	..()
@@ -338,4 +338,4 @@
 		var/datum/rig_charge/charge = module.charges[module.charge_selected]
 		name = "[charge.display_name] ([charge.charges]C) - Change"
 		return 1
-	return 0
+	return FALSE

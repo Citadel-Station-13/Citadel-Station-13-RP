@@ -22,20 +22,20 @@
 	var/turf/start = loc
 	if(!istype(start))
 		to_chat(src, "<span class='notice'>You are unable to move from here.</span>")
-		return 0
+		return FALSE
 
 	var/turf/destination = (direction == UP) ? GetAbove(src) : GetBelow(src)
 	if(!destination)
 		to_chat(src, "<span class='notice'>There is nothing of interest in this direction.</span>")
-		return 0
+		return FALSE
 
 	if(!start.CanZPass(src, direction))
 		to_chat(src, "<span class='warning'>\The [start] is in the way.</span>")
-		return 0
+		return FALSE
 
 	if(!destination.CanZPass(src, direction))
 		to_chat(src, "<span class='warning'>\The [destination] blocks your way.</span>")
-		return 0
+		return FALSE
 
 	var/area/area = get_area(src)
 	if(direction == UP && area.has_gravity() && !can_overcome_gravity())
@@ -48,14 +48,14 @@
 				to_chat(src, "<span class='notice'>You pull yourself up.</span>")
 			else
 				to_chat(src, "<span class='warning'>You gave up on pulling yourself up.</span>")
-				return 0
+				return FALSE
 		else if(ismob(src)) //VOREStation Edit Start. Are they a mob, and are they currently flying??
 			var/mob/H = src
 			if(H.flying)
 				if(H.incapacitated(INCAPACITATION_ALL))
 					to_chat(src, "<span class='notice'>You can't fly in your current state.</span>")
 					H.stop_flying() //Should already be done, but just in case.
-					return 0
+					return FALSE
 				var/fly_time = max(7 SECONDS + (H.movement_delay() * 10), 1) //So it's not too useful for combat. Could make this variable somehow, but that's down the road.
 				to_chat(src, "<span class='notice'>You begin to fly upwards...</span>")
 				destination.audible_message("<span class='notice'>You hear the of air moving.</span>")
@@ -64,21 +64,21 @@
 					to_chat(src, "<span class='notice'>You fly upwards.</span>")
 				else
 					to_chat(src, "<span class='warning'>You stopped flying upwards.</span>")
-					return 0
+					return FALSE
 			else
 				to_chat(src, "<span class='warning'>Gravity stops you from moving upward.</span>")
-				return 0 //VOREStation Edit End.
+				return FALSE //VOREStation Edit End.
 		else
 			to_chat(src, "<span class='warning'>Gravity stops you from moving upward.</span>")
-			return 0
+			return FALSE
 
 	for(var/atom/A in destination)
 		if(!A.CanPass(src, start, 1.5, 0))
 			to_chat(src, "<span class='warning'>\The [A] blocks you.</span>")
-			return 0
+			return FALSE
 	if(!Move(destination))
-		return 0
-	return 1
+		return FALSE
+	return TRUE
 
 /mob/proc/can_overcome_gravity()
 	return FALSE
@@ -106,7 +106,7 @@
 		to_chat(src, "<span class='notice'>There is nothing of interest in this direction.</span>")
 
 /mob/proc/can_ztravel()
-	return 0
+	return FALSE
 
 /mob/living/zMove(direction)
 	//Sort of a lame hack to allow ztravel through zpipes. Should be improved.
@@ -134,7 +134,7 @@
 		return TRUE
 
 	if(flying) //VOREStation Edit. Allows movement up/down with wings.
-		return 1 //VOREStation Edit
+		return TRUE //VOREStation Edit
 
 	if(Process_Spacemove())
 		return TRUE
@@ -328,7 +328,7 @@
 
 		// Now lets move there!
 		if(!Move(landing))
-			return 1
+			return TRUE
 
 		var/atom/A = find_fall_target(oldloc, landing)
 		if(special_fall_handle(A) || !A || !A.check_impact(src))
@@ -406,7 +406,7 @@
 /turf/space/check_impact(var/atom/movable/falling_atom)
 	return FALSE
 
-// We return 1 without calling fall_impact in order to provide a soft landing. So nice.
+// We return TRUE without calling fall_impact in order to provide a soft landing. So nice.
 // Note this really should never even get this far
 /obj/structure/stairs/CheckFall(var/atom/movable/falling_atom)
 	return TRUE

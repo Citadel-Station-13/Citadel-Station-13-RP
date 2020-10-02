@@ -37,7 +37,7 @@
 /datum/file/program/med_data/proc/authenticate()
 	if(isAI(usr) || access_medical in scan.access)
 		return 1
-	return 0
+	return FALSE
 
 /datum/file/program/med_data/interact()
 	if(!computer.cardslot)

@@ -6,11 +6,11 @@
 
 /mob/living/carbon/standard_weapon_hit_effects(obj/item/I, mob/living/user, var/effective_force, var/blocked, var/soaked, var/hit_zone)
 	if(!effective_force || blocked >= 100)
-		return 0
+		return FALSE
 
 	//If the armor soaks all of the damage, it just skips the rest of the checks
 	if(effective_force <= soaked)
-		return 0
+		return FALSE
 
 	//Apply weapon damage
 	var/weapon_sharp = is_sharp(I)
@@ -49,22 +49,22 @@
 				if(G.state >= GRAB_NECK)
 					if(hit_zone == BP_HEAD && attack_throat(W, G, user, hit_zone))
 						return 1
-	return 0
+	return FALSE
 
 
 // Knifing
 /mob/living/carbon/proc/attack_throat(obj/item/W, obj/item/grab/G, mob/user)
 
 	if(!W.edge || !W.force || W.damtype != BRUTE)
-		return 0 //unsuitable weapon
+		return FALSE //unsuitable weapon
 
 	user.visible_message("<span class='danger'>\The [user] begins to slit [src]'s throat with \the [W]!</span>")
 
 	user.next_move = world.time + 20 //also should prevent user from triggering this repeatedly
 	if(!do_after(user, 20))
-		return 0
+		return FALSE
 	if(!(G && G.assailant == user && G.affecting == src)) //check that we still have a grab
-		return 0
+		return FALSE
 
 	var/damage_mod = 1
 	//presumably, if they are wearing a helmet that stops pressure effects, then it probably covers the throat as well
@@ -104,7 +104,7 @@
 /mob/living/carbon/proc/shank_attack(obj/item/W, obj/item/grab/G, mob/user, hit_zone)
 
 	if(!W.sharp || !W.force || W.damtype != BRUTE)
-		return 0 //unsuitable weapon
+		return FALSE //unsuitable weapon
 
 	user.visible_message("<span class='danger'>\The [user] plunges \the [W] into \the [src]!</span>")
 

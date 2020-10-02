@@ -6,4 +6,4 @@
 
 	light_range = 3
 	light_power = 1
-	light_color = "#FFFFFF"
+	light_color = COLOR_WHITE

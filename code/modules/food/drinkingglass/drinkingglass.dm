@@ -51,7 +51,7 @@
 			if(reagents.has_reagent("ice", reagents.total_volume / 10)) // 10% ice by volume
 				return 1
 
-	return 0
+	return FALSE
 
 /obj/item/reagent_containers/food/drinks/glass2/proc/has_fizz()
 	if(reagents.reagent_list.len > 0)
@@ -63,7 +63,7 @@
 					totalfizzy += re.volume
 			if(totalfizzy >= reagents.total_volume / 5) // 20% fizzy by volume
 				return 1
-	return 0
+	return FALSE
 
 /obj/item/reagent_containers/food/drinks/glass2/Initialize()
 	..()
@@ -75,9 +75,9 @@
 
 /obj/item/reagent_containers/food/drinks/glass2/proc/can_add_extra(obj/item/glass_extra/GE)
 	if(!("[base_icon]_[GE.glass_addition]left" in icon_states(DRINK_ICON_FILE)))
-		return 0
+		return FALSE
 	if(!("[base_icon]_[GE.glass_addition]right" in icon_states(DRINK_ICON_FILE)))
-		return 0
+		return FALSE
 
 	return 1
 

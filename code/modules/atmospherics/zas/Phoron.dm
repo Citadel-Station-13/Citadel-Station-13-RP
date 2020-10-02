@@ -7,14 +7,14 @@ obj/var/contaminated = 0
 /obj/item/proc/can_contaminate()
 	//Clothing and backpacks can be contaminated.
 	if(flags & PHORONGUARD)
-		return 0
+		return FALSE
 	else if(istype(src,/obj/item/storage/backpack))
-		return 0 //Cannot be washed :(
+		return FALSE //Cannot be washed :(
 	//VOREStation Addition start
 	else if(isbelly(loc))
-		return 0
+		return FALSE
 	else if(ismob(loc) && isbelly(loc.loc))
-		return 0
+		return FALSE
 	//VOREStation Addition end
 	else if(istype(src,/obj/item/clothing))
 		return 1
@@ -124,7 +124,7 @@ obj/var/contaminated = 0
 				return 1
 		else if(head.body_parts_covered & EYES)
 			return 1
-	return 0
+	return FALSE
 
 /mob/living/carbon/human/proc/pl_suit_protected()
 	CACHE_VSC_PROP(atmos_vsc, /atmos/phoron/phoronguard_only, phoronguard_only)
@@ -135,7 +135,7 @@ obj/var/contaminated = 0
 		if(!protection)
 			continue
 		if(phoronguard_only && !(protection.flags & PHORONGUARD))
-			return 0
+			return FALSE
 		coverage |= protection.body_parts_covered
 
 	if(phoronguard_only)

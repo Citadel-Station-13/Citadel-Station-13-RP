@@ -25,7 +25,7 @@
 
 /mob/living/simple_mob/put_in_l_hand(var/obj/item/W)
 	if(!..() || l_hand)
-		return 0
+		return FALSE
 	W.forceMove(src)
 	l_hand = W
 	W.equipped(src,slot_l_hand)
@@ -35,7 +35,7 @@
 
 /mob/living/simple_mob/put_in_r_hand(var/obj/item/W)
 	if(!..() || r_hand)
-		return 0
+		return FALSE
 	W.forceMove(src)
 	r_hand = W
 	W.equipped(src,slot_r_hand)

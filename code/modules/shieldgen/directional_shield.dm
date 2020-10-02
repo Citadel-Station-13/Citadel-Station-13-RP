@@ -95,7 +95,7 @@
 	var/list/active_shields = list()	// Shields that are active and deployed.
 	var/always_on = FALSE				// If true, will always try to reactivate if disabled for whatever reason, ideal if AI mobs are holding this.
 	var/high_color = "#0099FF"			// Color the shield will be when at max health.  A light blue.
-	var/low_color = "#FF0000"			// Color the shield will drift towards as health is lowered.  Deep red.
+	var/low_color = COLOR_RED			// Color the shield will drift towards as health is lowered.  Deep red.
 
 /obj/item/shield_projector/Initialize(mapload)
 	. = ..()

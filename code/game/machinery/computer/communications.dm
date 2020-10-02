@@ -537,7 +537,7 @@
     for(var/obj/machinery/telecomms/relay/M in world)
         if(M.stat == 0)
             return 1
-    return 0
+    return FALSE
 
 /obj/machinery/computer/communications/proc/post_status(var/command, var/data1, var/data2)
 

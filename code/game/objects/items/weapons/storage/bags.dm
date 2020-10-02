@@ -86,7 +86,7 @@
 	var/last_update = 0
 
 /obj/item/storage/bag/ore/remove_from_storage(obj/item/W as obj, atom/new_location)
-	if(!istype(W)) return 0
+	if(!istype(W)) return FALSE
 
 	if(new_location)
 		if(ismob(loc))
@@ -218,21 +218,21 @@
 	if(!istype(W,/obj/item/stack/material))
 		if(!stop_messages)
 			to_chat(usr, "The snatcher does not accept [W].")
-		return 0
+		return FALSE
 	var/current = 0
 	for(var/obj/item/stack/material/S in contents)
 		current += S.amount
 	if(capacity == current)//If it's full, you're done
 		if(!stop_messages)
 			to_chat(usr, "<span class='warning'>The snatcher is full.</span>")
-		return 0
+		return FALSE
 	return 1
 
 
 // Modified handle_item_insertion.  Would prefer not to, but...
 /obj/item/storage/bag/sheetsnatcher/handle_item_insertion(obj/item/W as obj, prevent_warning = 0)
 	var/obj/item/stack/material/S = W
-	if(!istype(S)) return 0
+	if(!istype(S)) return FALSE
 
 	var/amount
 	var/inserted = 0
@@ -311,7 +311,7 @@
 // Instead of removing
 /obj/item/storage/bag/sheetsnatcher/remove_from_storage(obj/item/W as obj, atom/new_location)
 	var/obj/item/stack/material/S = W
-	if(!istype(S)) return 0
+	if(!istype(S)) return FALSE
 
 	//I would prefer to drop a new stack, but the item/attack_hand code
 	// that calls this can't recieve a different object than you clicked on.

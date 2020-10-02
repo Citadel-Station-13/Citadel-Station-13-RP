@@ -303,7 +303,7 @@
 			if(wrapped) //In the event nothing happened to wrapped, go back into the gripper.
 				wrapped.loc = src
 			return 1
-	return 0
+	return FALSE
 
 /obj/item/gripper/afterattack(var/atom/target, var/mob/living/user, proximity, params)
 

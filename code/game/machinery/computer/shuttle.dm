@@ -3,7 +3,7 @@
 	desc = "For shuttle control."
 	icon_keyboard = "tech_key"
 	icon_screen = "shuttle"
-	light_color = "#00ffff"
+	light_color = COLOR_CYAN
 	var/auth_need = 3.0
 	var/list/authorized = list(  )
 
@@ -26,11 +26,11 @@
 
 			if(!(access_heads in W:access)) //doesn't have this access
 				to_chat(user, "The access level of [W:registered_name]\'s card is not high enough. ")
-				return 0
+				return FALSE
 
 			var/choice = alert(user, text("Would you like to (un)authorize a shortened launch time? [] authorization\s are still needed. Use abort to cancel all authorizations.", src.auth_need - src.authorized.len), "Shuttle Launch", "Authorize", "Repeal", "Abort")
 			if(SSemergencyshuttle.location() && user.get_active_hand() != W)
-				return 0
+				return FALSE
 			switch(choice)
 				if("Authorize")
 					src.authorized -= W:registered_name

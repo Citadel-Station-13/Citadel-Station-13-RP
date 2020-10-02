@@ -111,7 +111,7 @@
 	last_flow_rate = 0
 
 	if(stat & (NOPOWER|BROKEN) || !use_power)
-		return 0
+		return FALSE
 
 	var/datum/gas_mixture/environment = loc.return_air()
 
@@ -173,7 +173,7 @@
 
 /obj/machinery/atmospherics/binary/dp_vent_pump/proc/broadcast_status()
 	if(!radio_connection)
-		return 0
+		return FALSE
 
 	var/datum/signal/signal = new
 	signal.transmission_method = 1 //radio signal
@@ -212,7 +212,7 @@
 
 /obj/machinery/atmospherics/binary/dp_vent_pump/receive_signal(datum/signal/signal)
 	if(!signal.data["tag"] || (signal.data["tag"] != id) || (signal.data["sigtype"]!="command"))
-		return 0
+		return FALSE
 	if(signal.data["power"])
 		update_use_power(text2num(signal.data["power"]))
 

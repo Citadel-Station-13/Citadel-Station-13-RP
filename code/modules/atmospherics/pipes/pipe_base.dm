@@ -87,7 +87,7 @@
 		return ..()
 
 	if(istype(W,/obj/item/pipe_painter))
-		return 0
+		return FALSE
 
 	if (!W.is_wrench())
 		return ..()

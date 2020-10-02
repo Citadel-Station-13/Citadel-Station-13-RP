@@ -86,7 +86,7 @@
 
 /obj/item/powersink/pwr_drain()
 	if(!attached)
-		return 0
+		return FALSE
 
 	if(drained_this_tick)
 		return 1

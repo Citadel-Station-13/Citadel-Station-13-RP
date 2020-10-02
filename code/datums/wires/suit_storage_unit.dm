@@ -11,10 +11,10 @@ var/const/SUIT_STORAGE_WIRE_LOCKED		= 4
 	if(!istype(L, /mob/living/silicon))
 		if(S.electrified)
 			if(S.shock(L, 100))
-				return 0
+				return FALSE
 	if(S.panel_open)
 		return 1
-	return 0
+	return FALSE
 
 /datum/wires/suit_storage_unit/GetInteractWindow()
 	var/obj/machinery/suit_cycler/S = holder

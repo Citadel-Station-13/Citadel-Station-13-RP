@@ -12,7 +12,7 @@
 	set desc = "Causes terror in the target."
 
 	var/mob/living/carbon/T = changeling_sting(15,/mob/proc/changeling_lsdsting)
-	if(!T)	return 0
+	if(!T)	return FALSE
 	add_attack_logs(src,T,"Hallucination sting (changeling)")
 	spawn(rand(300,600))
 		if(T)	T.hallucination += 400

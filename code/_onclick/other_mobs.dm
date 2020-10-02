@@ -1,9 +1,9 @@
 // Generic damage proc (slimes and monkeys).
 /atom/proc/attack_generic(mob/user as mob)
-	return 0
+	return FALSE
 
 /atom/proc/take_damage(var/damage)
-	return 0
+	return FALSE
 
 /*
 	Humans:
@@ -17,7 +17,7 @@
 		return
 
 	// Special glove functions:
-	// If the gloves do anything, have them return 1 to stop
+	// If the gloves do anything, have them return TRUE to stop
 	// normal attack_hand() here.
 	var/obj/item/clothing/gloves/G = gloves // not typecast specifically enough in defines
 	if(istype(G) && G.Touch(A,1))
@@ -63,7 +63,7 @@
 /mob/living/carbon/alien/UnarmedAttack(var/atom/A, var/proximity)
 
 	if(!..())
-		return 0
+		return FALSE
 
 	setClickCooldown(get_attack_speed())
 	A.attack_generic(src,rand(5,6),"bitten")

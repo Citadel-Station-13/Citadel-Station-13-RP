@@ -18,13 +18,13 @@
 	if (!ishuman(M))
 		to_chat(user, "<span class='warning'>\The [M] does not seem to be compatible with this device.</span>")
 		flick("[icon_state]0",src)
-		return 0
+		return FALSE
 
 	if(reveal_fingerprints)
 		if((!( istype(M.dna, /datum/dna) ) || M.gloves))
 			to_chat(user, "<span class='notice'>No fingerprints found on [M]</span>")
 			flick("[icon_state]0",src)
-			return 0
+			return FALSE
 		else if(user.zone_sel.selecting == "r_hand" || user.zone_sel.selecting == "l_hand")
 			var/obj/item/sample/print/P = new /obj/item/sample/print(user.loc)
 			P.attack(M, user)
@@ -61,7 +61,7 @@
 
 	if(!(do_after(user, 1 SECOND)))
 		to_chat(user,"<span class='warning'>You must remain still for the device to complete its work.</span>")
-		return 0
+		return FALSE
 
 	//General
 	if ((!A.fingerprints || !A.fingerprints.len) && !A.suit_fibers && !A.blood_DNA)
@@ -69,7 +69,7 @@
 		"<span class='warning'>Unable to locate any fingerprints, materials, fibers, or blood on [A]!</span>",\
 		"You hear a faint hum of electrical equipment.")
 		flick("[icon_state]0",src)
-		return 0
+		return FALSE
 
 	if(add_data(A))
 		to_chat(user,"<span class='notice'>Object already in internal memory. Consolidating data...</span>")
@@ -124,7 +124,7 @@
 	"<span class='notice'>You finish scanning \the [A].</span>",\
 	"You hear a faint hum of electrical equipment.")
 	flick("[icon_state]2",src)
-	return 0
+	return FALSE
 
 /obj/item/detective_scanner/proc/add_data(atom/A as mob|obj|turf|area)
 	var/datum/data/record/forensic/old = stored["\ref [A]"]

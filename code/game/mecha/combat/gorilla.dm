@@ -117,21 +117,21 @@
 	if(user != src.occupant)
 		user.loc = get_turf(src)
 		to_chat(user, "You climb out from [src]")
-		return 0
+		return FALSE
 	if(!can_move)
-		return 0
+		return FALSE
 	if(zoom)
 		if(world.time - last_message > 20)
 			src.occupant_message("Unable to move while in zoom mode.")
 			last_message = world.time
-		return 0
+		return FALSE
 	if(connected_port)
 		if(world.time - last_message > 20)
 			src.occupant_message("Unable to move while connected to the air system port")
 			last_message = world.time
-		return 0
+		return FALSE
 	if(state || !has_charge(step_energy_drain))
-		return 0
+		return FALSE
 	var/tmp_step_in = step_in
 	var/tmp_step_energy_drain = step_energy_drain
 	var/move_result = 0
@@ -149,7 +149,7 @@
 		spawn(tmp_step_in) can_move = 1
 		use_power(tmp_step_energy_drain)
 		return 1
-	return 0
+	return FALSE
 
 /obj/mecha/combat/gorilla/verb/smoke()
 	set category = "Exosuit Interface"

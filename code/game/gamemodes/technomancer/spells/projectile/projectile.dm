@@ -19,7 +19,7 @@
 			playsound(get_turf(src), fire_sound, 75, 1)
 		adjust_instability(instability_per_shot)
 		return 1
-	return 0
+	return FALSE
 
 /obj/item/spell/projectile/proc/make_projectile(obj/item/projectile/projectile_type, mob/living/user)
 	var/obj/item/projectile/P = new projectile_type(get_turf(user))

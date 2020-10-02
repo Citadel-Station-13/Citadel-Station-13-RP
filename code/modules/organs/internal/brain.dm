@@ -190,23 +190,23 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	var/datum/mind/clonemind = brainmob.mind
 
 	if(!istype(clonemind, /datum/mind))	//not a mind
-		return 0
+		return FALSE
 	if(clonemind.current && clonemind.current.stat != DEAD)	//mind is associated with a non-dead body
-		return 0
+		return FALSE
 	if(clonemind.active)	//somebody is using that mind
 		if(ckey(clonemind.key) != R.ckey)
-			return 0
+			return FALSE
 	else
 		for(var/mob/observer/dead/G in player_list)
 			if(G.ckey == R.ckey)
 				if(G.can_reenter_corpse)
 					break
 				else
-					return 0
+					return FALSE
 
 	for(var/modifier_type in R.genetic_modifiers)	//Can't be revived. Probably won't happen...?
 		if(istype(modifier_type, /datum/modifier/no_clone))
-			return 0
+			return FALSE
 
 	var/mob/living/carbon/human/H = new /mob/living/carbon/human(get_turf(src), R.dna.species)
 

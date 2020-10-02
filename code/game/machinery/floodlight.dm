@@ -39,9 +39,9 @@
 // Returns 0 on failure and 1 on success
 /obj/machinery/floodlight/proc/turn_on(var/loud = 0)
 	if(!cell)
-		return 0
+		return FALSE
 	if(cell.charge < (use * CELLRATE))
-		return 0
+		return FALSE
 
 	on = 1
 	set_light(brightness_on, brightness_on / 2)

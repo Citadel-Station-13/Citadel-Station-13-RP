@@ -50,7 +50,7 @@ var/global/list/datum/pipe_network/pipe_networks = list()	// TODO - Move into SS
 		qdel(src)
 
 /datum/pipe_network/proc/merge(datum/pipe_network/giver)
-	if(giver==src) return 0
+	if(giver==src) return FALSE
 
 	normal_members |= giver.normal_members
 

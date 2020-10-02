@@ -142,7 +142,7 @@
 			AA.update_icon()
 
 		return 1
-	return 0
+	return FALSE
 
 // Either close or open firedoors depending on current alert statuses
 /area/proc/firedoors_update()
@@ -258,7 +258,7 @@
 	if(!requires_power)
 		return 1
 	if(always_unpowered)
-		return 0
+		return FALSE
 	switch(chan)
 		if(EQUIP)
 			return power_equip
@@ -267,7 +267,7 @@
 		if(ENVIRON)
 			return power_environ
 
-	return 0
+	return FALSE
 
 // called when power status changes
 /area/proc/power_change()
@@ -372,7 +372,7 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 	return has_gravity
 
 /area/space/has_gravity()
-	return 0
+	return FALSE
 
 /area/proc/shuttle_arrived()
 	return TRUE

@@ -91,7 +91,7 @@
 	if(value == target)
 		trigger(user)
 		return 1
-	return 0
+	return FALSE
 
 /*
 	NANO UI FOR UPLINK WOOP WOOP
@@ -212,7 +212,7 @@
 		if(src.hidden_uplink.active)
 			src.hidden_uplink.trigger(user)
 			return 1
-	return 0
+	return FALSE
 
 // PRESET UPLINKS
 // A collection of preset uplinks.

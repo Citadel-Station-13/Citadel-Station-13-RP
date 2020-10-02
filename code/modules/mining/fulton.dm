@@ -198,7 +198,7 @@ var/global/list/total_extraction_beacons = list()
 			update_icon()
 			if(L.stat != DEAD)
 				return 1
-	return 0
+	return FALSE
 
 /obj/effect/extraction_holder/singularity_pull()
 	return

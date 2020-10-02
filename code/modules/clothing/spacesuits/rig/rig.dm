@@ -199,15 +199,15 @@
 
 /obj/item/rig/proc/suit_is_deployed()
 	if(!istype(wearer) || src.loc != wearer || (wearer.back != src && wearer.belt != src))
-		return 0
+		return FALSE
 	if(helm_type && !(helmet && wearer.head == helmet))
-		return 0
+		return FALSE
 	if(glove_type && !(gloves && wearer.gloves == gloves))
-		return 0
+		return FALSE
 	if(boot_type && !(boots && wearer.shoes == boots))
-		return 0
+		return FALSE
 	if(chest_type && !(chest && wearer.wear_suit == chest))
-		return 0
+		return FALSE
 	return 1
 
 // Updates pressure protection
@@ -240,7 +240,7 @@
 	if(sealing) return
 
 	if(!check_power_cost(M))
-		return 0
+		return FALSE
 
 	deploy(M,instant)
 
@@ -340,7 +340,7 @@
 		if(airtight)
 			update_component_sealed()
 		update_icon(1)
-		return 0
+		return FALSE
 
 	// Success!
 	canremove = seal_target
@@ -408,22 +408,22 @@
 
 	var/turf/T = get_turf(src)
 	if(istype(T, /turf/space))
-		return 0	//space has no temperature, this just makes sure the cooling unit works in space
+		return FALSE	//space has no temperature, this just makes sure the cooling unit works in space
 
 	var/datum/gas_mixture/environment = T.return_air()
 	if (!environment)
-		return 0
+		return FALSE
 
 	return environment.temperature
 
 /obj/item/rig/proc/attached_to_user(mob/M)
 	if (!ishuman(M))
-		return 0
+		return FALSE
 
 	var/mob/living/carbon/human/H = M
 
 	if (!H.wear_suit || (H.back != src && H.belt != src))
-		return 0
+		return FALSE
 
 	return 1
 
@@ -519,7 +519,7 @@
 /obj/item/rig/proc/check_power_cost(var/mob/living/user, var/cost, var/use_unconcious, var/obj/item/rig_module/mod, var/user_is_ai)
 
 	if(!istype(user))
-		return 0
+		return FALSE
 
 	var/fail_msg
 
@@ -540,7 +540,7 @@
 
 	if(fail_msg)
 		to_chat(user, fail_msg)
-		return 0
+		return FALSE
 
 	// This is largely for cancelling stealth and whatever.
 	if(mod && mod.disruptive)
@@ -668,27 +668,27 @@
 		if(!canremove)
 			return 1
 		if(malfunction_check(user))
-			return 0
+			return FALSE
 		if(user.back != src && user.belt != src)
-			return 0
+			return FALSE
 		else if(!src.allowed(user))
 			to_chat(user, "<span class='danger'>Unauthorized user. Access denied.</span>")
-			return 0
+			return FALSE
 
 	else if(!ai_override_enabled)
 		to_chat(user, "<span class='danger'>Synthetic access disabled. Please consult hardware provider.</span>")
-		return 0
+		return FALSE
 
 	return 1
 
 //TODO: Fix Topic vulnerabilities for malfunction and AI override.
 /obj/item/rig/Topic(href,href_list)
 	if(!check_suit_access(usr))
-		return 0
+		return FALSE
 
 	if(href_list["toggle_piece"])
 		if(ishuman(usr) && (usr.stat || usr.stunned || usr.lying))
-			return 0
+			return FALSE
 		toggle_piece(href_list["toggle_piece"], usr)
 	else if(href_list["toggle_seals"])
 		toggle_seals(usr)
@@ -717,7 +717,7 @@
 
 	usr.set_machine(src)
 	src.add_fingerprint(usr)
-	return 0
+	return FALSE
 
 /obj/item/rig/proc/notify_ai(var/message)
 	for(var/obj/item/rig_module/ai_container/module in installed_modules)
@@ -866,7 +866,7 @@
 
 //Todo
 /obj/item/rig/proc/malfunction()
-	return 0
+	return FALSE
 
 /obj/item/rig/emp_act(severity_class)
 	//set malfunctioning
@@ -886,7 +886,7 @@
 		spark_system.start()
 		if(user.stunned)
 			return 1
-	return 0
+	return FALSE
 
 /obj/item/rig/proc/take_hit(damage, source, is_emp=0)
 
@@ -941,13 +941,13 @@
 		else
 			to_chat(user, "<span class='danger'>ERROR: Hardware fault. Rebooting interface...</span>")
 		return 1
-	return 0
+	return FALSE
 
 /obj/item/rig/proc/ai_can_move_suit(var/mob/user, var/check_user_module = 0, var/check_for_ai = 0)
 
 	if(check_for_ai)
 		if(!(locate(/obj/item/rig_module/ai_container) in contents))
-			return 0
+			return FALSE
 		var/found_ai
 		for(var/obj/item/rig_module/ai_container/module in contents)
 			if(module.damage >= 2)
@@ -956,25 +956,25 @@
 				found_ai = 1
 				break
 		if(!found_ai)
-			return 0
+			return FALSE
 
 	if(check_user_module)
 		if(!user || !user.loc || !user.loc.loc)
-			return 0
+			return FALSE
 		var/obj/item/rig_module/ai_container/module = user.loc.loc
 		if(!istype(module) || module.damage >= 2)
 			to_chat(user, "<span class='warning'>Your host module is unable to interface with the suit.</span>")
-			return 0
+			return FALSE
 
 	if(offline || !cell || !cell.charge || locked_down)
 		if(user) user << "<span class='warning'>Your host rig is unpowered and unresponsive.</span>"
-		return 0
+		return FALSE
 	if(!wearer || (wearer.back != src && wearer.belt != src))
 		if(user) user << "<span class='warning'>Your host rig is not being worn.</span>"
-		return 0
+		return FALSE
 	if(!wearer.stat && !control_overridden && !ai_override_enabled)
 		if(user) user << "<span class='warning'>You are locked out of the suit servo controller.</span>"
-		return 0
+		return FALSE
 	return 1
 
 /obj/item/rig/proc/force_rest(var/mob/user)
@@ -1006,7 +1006,7 @@
 
 	if((istype(wearer.loc, /turf/space)) || (wearer.lastarea.has_gravity == 0))
 		if(!wearer.Process_Spacemove(0))
-			return 0
+			return FALSE
 
 	if(malfunctioning)
 		direction = pick(cardinal)
@@ -1022,13 +1022,13 @@
 				if(M.pulling == wearer)
 					if(!M.restrained() && M.stat == 0 && M.canmove && wearer.Adjacent(M))
 						to_chat(user, "<span class='notice'>Your host is restrained! They can't move!</span>")
-						return 0
+						return FALSE
 					else
 						M.stop_pulling()
 
 	if(wearer.pinned.len)
 		to_chat(src, "<span class='notice'>Your host is pinned to a wall by [wearer.pinned[1]]</span>!")
-		return 0
+		return FALSE
 
 	// AIs are a bit slower than regular and ignore move intent.
 	wearer_move_delay = world.time + ai_controlled_move_delay

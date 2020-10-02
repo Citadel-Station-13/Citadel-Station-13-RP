@@ -50,22 +50,22 @@
 	var/list/modifiers = params2list(params)
 	if(modifiers["shift"] && modifiers["ctrl"])
 		CtrlShiftClickOn(A)
-		return 1
+		return TRUE
 	if(modifiers["shift"] && modifiers["middle"])
 		ShiftMiddleClickOn(A)
-		return 1
+		return TRUE
 	if(modifiers["middle"])
 		MiddleClickOn(A)
-		return 1
+		return TRUE
 	if(modifiers["shift"])
 		ShiftClickOn(A)
-		return 0
+		return FALSE
 	if(modifiers["alt"]) // alt and alt-gr (rightalt)
 		AltClickOn(A)
-		return 1
+		return TRUE
 	if(modifiers["ctrl"])
 		CtrlClickOn(A)
-		return 1
+		return TRUE
 
 	if(stat || paralysis || stunned || weakened)
 		return
@@ -84,13 +84,13 @@
 	if(restrained())
 		setClickCooldown(10)
 		RestrainedClickOn(A)
-		return 1
+		return TRUE
 
 	if(in_throw_mode)
 		if(isturf(A) || isturf(A.loc))
 			throw_item(A)
 			trigger_aiming(TARGET_CAN_CLICK)
-			return 1
+			return TRUE
 		throw_mode_off()
 
 	var/obj/item/W = get_active_hand()
@@ -99,7 +99,7 @@
 		W.attack_self(src)
 		trigger_aiming(TARGET_CAN_CLICK)
 		update_inv_active_hand(0)
-		return 1
+		return TRUE
 
 	//Atoms on your person
 	// A is your location but is not a turf; or is on you (backpack); or is on something on you (box in backpack); sdepth is needed here because contents depth does not equate inventory storage depth.
@@ -115,7 +115,7 @@
 			UnarmedAttack(A, 1)
 
 		trigger_aiming(TARGET_CAN_CLICK)
-		return 1
+		return TRUE
 
 	// VOREStation Addition Start: inbelly item interaction
 	if(isbelly(loc) && (loc == A.loc))
@@ -156,15 +156,15 @@
 				RangedAttack(A, params)
 
 			trigger_aiming(TARGET_CAN_CLICK)
-	return 1
+	return TRUE
 
 /mob/proc/setClickCooldown(var/timeout)
 	next_move = max(world.time + timeout, next_move)
 
 /mob/proc/canClick()
 	if(config_legacy.no_click_cooldown || next_move <= world.time)
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 // Default behavior: ignore double clicks, the second click that makes the doubleclick call already calls for a normal click
 /mob/proc/DblClickOn(var/atom/A, var/params)
@@ -187,12 +187,12 @@
 
 	if(!SSticker)
 		to_chat(src, "You cannot attack people before the game has started.")
-		return 0
+		return FALSE
 
 	if(stat)
-		return 0
+		return FALSE
 
-	return 1
+	return TRUE
 
 /*
 	Ranged unarmed attack:

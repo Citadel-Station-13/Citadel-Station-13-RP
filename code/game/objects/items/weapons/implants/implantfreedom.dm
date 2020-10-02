@@ -17,7 +17,7 @@
 
 /obj/item/implant/freedom/trigger(emote, mob/living/carbon/source as mob)
 	if (src.uses < 1)
-		return 0
+		return FALSE
 
 	if (emote == src.activation_emote)
 		src.uses--

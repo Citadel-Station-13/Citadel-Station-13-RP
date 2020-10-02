@@ -11,7 +11,7 @@
 	to check that the mob is not inside of something
 */
 /atom/proc/Adjacent(var/atom/neighbor) // basic inheritance, unused
-	return 0
+	return FALSE
 
 // Not a sane use of the function and (for now) indicative of an error elsewhere
 /area/Adjacent(var/atom/neighbor)
@@ -30,8 +30,8 @@
 	if(T0 == src)
 		return 1
 	if(get_dist(src,T0) > 1)
-		return 0
-	if(T0.z != z) return 0 //VOREStation Add
+		return FALSE
+	if(T0.z != z) return FALSE //VOREStation Add
 	if(T0.x == x || T0.y == y)
 		// Check for border blockages
 		return T0.ClickCross(get_dir(T0,src), border_only = 1) && src.ClickCross(get_dir(src,T0), border_only = 1, target_atom = target)
@@ -53,7 +53,7 @@
 			continue // could not enter src
 
 		return 1 // we don't care about our own density
-	return 0
+	return FALSE
 
 /*
 Quick adjacency (to turf):
@@ -66,7 +66,7 @@ Quick adjacency (to turf):
 		return 1
 
 	if(get_dist(src,T0) > 1)
-		return 0
+		return FALSE
 
 	return 1
 
@@ -80,11 +80,11 @@ Quick adjacency (to turf):
 */
 /atom/movable/Adjacent(var/atom/neighbor)
 	if(neighbor == loc) return 1
-	if(!isturf(loc)) return 0
+	if(!isturf(loc)) return FALSE
 	for(var/turf/T in locs)
 		if(isnull(T)) continue
 		if(T.Adjacent(neighbor,src)) return 1
-	return 0
+	return FALSE
 
 // This is necessary for storage items not on your person.
 /obj/item/Adjacent(var/atom/neighbor, var/recurse = 1)
@@ -92,7 +92,7 @@ Quick adjacency (to turf):
 	if(istype(loc,/obj/item))
 		if(recurse > 0)
 			return loc.Adjacent(neighbor,recurse - 1)
-		return 0
+		return FALSE
 	return ..()
 /*
 	Special case: This allows you to reach a door when it is visally on top of,
@@ -126,12 +126,12 @@ Quick adjacency (to turf):
 				var/obj/structure/window/W = target_atom
 				if(istype(W))
 					if(!W.is_fulltile())	//exception for breaking full tile windows on top of single pane windows
-						return 0
+						return FALSE
 				else
-					return 0
+					return FALSE
 
 		else if( !border_only ) // dense, not on border, cannot pass over
-			return 0
+			return FALSE
 	return 1
 /*
 	Aside: throwpass does not do what I thought it did originally, and is only used for checking whether or not

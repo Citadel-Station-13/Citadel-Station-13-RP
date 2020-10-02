@@ -73,7 +73,7 @@
 		to_chat(user, "This device is not powered.")
 		return
 	if(!user.IsAdvancedToolUser())
-		return 0
+		return FALSE
 	if(busy)
 		to_chat(user, "This device is busy.")
 		return

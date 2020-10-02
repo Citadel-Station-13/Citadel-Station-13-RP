@@ -114,7 +114,7 @@
 		if(failures < 3)
 			move(area_transition,origin)
 			moving_status = SHUTTLE_IDLE
-			return 1
+			return TRUE
 
 	if(failures >= 3)
 		computer.visible_message("\icon[computer] <span class='danger'>Total engine failure, unable to complete abort mode.</span>")
@@ -133,9 +133,9 @@
 		playsound(computer,'sound/misc/bloblarm.ogg',100,0)
 		sleep(MOVE_PER(10))
 		do_crash(area_transition)
-		return 1
+		return TRUE
 
-	return 0
+	return FALSE
 
 	#undef MOVE_PER
 //
@@ -162,23 +162,23 @@
 
 /obj/structure/shuttle/engine/proc/repair_welder(var/mob/user, var/obj/item/weldingtool/WT)
 	if(!istype(WT))
-		return 0
+		return FALSE
 	if(wear <= 20)
 		to_chat(user,"<span class='notice'>\The [src] doesn't seem to need repairs right now.</span>")
-		return 1
+		return TRUE
 	if(!WT.remove_fuel(0, user))
 		to_chat(user,"<span class='warning'>\The [WT] must be on to complete this task.</span>")
-		return 1
+		return TRUE
 	playsound(src.loc, 'sound/items/Welder.ogg', 50, 1)
 	user.visible_message("<span class='notice'>\The [user] begins \the [src] overhaul.</span>","<span class='notice'>You begin an overhaul of \the [src].</span>")
 	if(!do_after(user, wear SECONDS, src))
-		return 1
+		return TRUE
 	if(!src || !WT.isOn())
-		return 1
+		return TRUE
 	user.visible_message("<span class='notice'>\The [user] has overhauled \the [src].</span>","<span class='notice'>You complete \the [src] overhaul.</span>")
 	wear = 20
 	update_icon()
-	return 1
+	return TRUE
 */
 
 

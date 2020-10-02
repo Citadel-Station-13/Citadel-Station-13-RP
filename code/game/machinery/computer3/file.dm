@@ -56,9 +56,9 @@
 
 /datum/file/proc/edit()
 	if(!computer)
-		return 0
+		return FALSE
 	if(readonly && !computer.emagged)
-		return 0
+		return FALSE
 	return 1
 
 /*

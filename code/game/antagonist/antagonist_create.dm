@@ -6,7 +6,7 @@
 	update_antag_mob(target, preserve_appearance)
 	if(!target.current)
 		remove_antagonist(target)
-		return 0
+		return FALSE
 	if(flags & ANTAG_CHOOSE_NAME)
 		spawn(1)
 			set_antag_name(target.current)

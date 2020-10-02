@@ -51,7 +51,7 @@
 
 /obj/machinery/partslathe/proc/getHighestOriginTechLevel(var/obj/item/I)
 	if(!istype(I) || !I.origin_tech)
-		return 0
+		return FALSE
 	var/highest = 0
 	for(var/tech in I.origin_tech)
 		highest = max(highest, I.origin_tech[tech])
@@ -121,7 +121,7 @@
 // Attept to load materials.  Returns 0 if item wasn't a stack of materials, otherwise 1 (even if failed to load)
 /obj/machinery/partslathe/proc/try_load_materials(var/mob/user, var/obj/item/stack/material/S)
 	if(!istype(S))
-		return 0
+		return FALSE
 	if(!(S.material.name in materials))
 		to_chat(user, "<span class='warning'>The [src] doesn't accept [S.material]!</span>")
 		return 1
@@ -180,7 +180,7 @@
 /obj/machinery/partslathe/proc/canBuild(var/datum/category_item/partslathe/D)
 	for(var/M in D.resources)
 		if(materials[M] < CEILING((D.resources[M] * mat_efficiency), 1))
-			return 0
+			return FALSE
 	return 1
 
 /obj/machinery/partslathe/proc/getLackingMaterials(var/datum/category_item/partslathe/D)

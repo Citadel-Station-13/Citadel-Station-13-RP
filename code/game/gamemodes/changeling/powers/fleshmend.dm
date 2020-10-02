@@ -15,7 +15,7 @@
 
 	var/datum/changeling/changeling = changeling_power(10,0,100,UNCONSCIOUS)
 	if(!changeling)
-		return 0
+		return FALSE
 	src.mind.changeling.chem_charges -= 10
 
 	var/mob/living/carbon/human/C = src

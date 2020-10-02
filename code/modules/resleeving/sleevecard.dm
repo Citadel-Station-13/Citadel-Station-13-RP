@@ -67,9 +67,9 @@
 	setEmotion(infomorph_emotions[emoname])
 
 	if(infomorph.client)
-		return 1
+		return TRUE
 
-	return 0
+	return FALSE
 
 /obj/item/sleevecard/proc/removePersonality()
 	if(infomorph)

@@ -534,7 +534,7 @@ END OF CITADEL CHANGES */
 /obj/item/projectile/beam/eluger
 	name = "laser beam"
 	icon_state = "xray"
-	light_color = "#00FF00"
+	light_color = COLOR_LIME
 	muzzle_type = /obj/effect/projectile/muzzle/xray
 	tracer_type = /obj/effect/projectile/tracer/xray
 	impact_type = /obj/effect/projectile/impact/xray
@@ -551,7 +551,7 @@ END OF CITADEL CHANGES */
 /obj/item/projectile/beam/stun/kin21
 	name = "kinh21 stun beam"
 	icon_state = "omnilaser"
-	light_color = "#0000FF"
+	light_color = COLOR_BLUE
 	muzzle_type = /obj/effect/projectile/muzzle/laser_omni
 	tracer_type = /obj/effect/projectile/tracer/laser_omni
 	impact_type = /obj/effect/projectile/impact/laser_omni

@@ -157,7 +157,7 @@
 	// Shock nearby things that aren't ourselves.
 	for(var/i = 1 to 10)
 		energy_ball.adjust_scale(0.5 + (i/10))
-		energy_ball.set_light(i/2, i/2, "#0000FF")
+		energy_ball.set_light(i/2, i/2, COLOR_BLUE)
 		for(var/thing in range(3, src))
 			// This is stupid because mechs are stupid and not mobs.
 			if(isliving(thing))

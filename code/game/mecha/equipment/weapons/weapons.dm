@@ -16,7 +16,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/weapon/action_checks(atom/target)
 	if(projectiles <= 0)
-		return 0
+		return FALSE
 	return ..()
 
 /obj/item/mecha_parts/mecha_equipment/weapon/action(atom/target, params)
@@ -251,11 +251,11 @@
 
 /obj/item/mecha_parts/mecha_equipment/weapon/honker/action(target)
 	if(!chassis)
-		return 0
+		return FALSE
 	if(energy_drain && chassis.get_charge() < energy_drain)
-		return 0
+		return FALSE
 	if(!equip_ready)
-		return 0
+		return FALSE
 
 	playsound(chassis, 'sound/effects/bang.ogg', 30, 1, 30)
 	chassis.occupant_message("<span class='warning'>You emit a high-pitched noise from the mech.</span>")
@@ -321,7 +321,7 @@
 	var/turf/TT = get_turf(target)
 	if(!MT.outdoors || !TT.outdoors)
 		to_chat(chassis.occupant, "<span class='notice'>\The [src]'s control system prevents you from firing due to a blocked firing arc.</span>")
-		return 0
+		return FALSE
 	return ..()
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/scattershot
@@ -593,7 +593,7 @@
 	if(..())
 		if(!M.proc_res["dynattackby"] && !M.proc_res["dynattackhand"] && !M.proc_res["dynattackalien"])
 			return 1
-	return 0
+	return FALSE
 
 /obj/item/mecha_parts/mecha_equipment/shocker/attach(obj/mecha/M as obj)
 	..()

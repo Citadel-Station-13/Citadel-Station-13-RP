@@ -36,7 +36,7 @@
 
 	if(has_been_customized)
 		to_chat(M, "This Shroud has already been customized!")
-		return 0
+		return FALSE
 
 	suit_style = input(M, "Which suit style would you like?") in list("Engineer", "Spacer", "Knight", "Royal", "Fashion", "Bishop", "Hegemony", "Rugged", "Ancient", "Freefarer", "Healer", "Breaker", "Clockwork", "Retro", "Business")
 	switch(suit_style)

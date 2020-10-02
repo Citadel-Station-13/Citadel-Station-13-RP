@@ -30,7 +30,7 @@
 		var/mob/living/chosen_target = targeting_assist(T,5)		//The person who's about to get attacked.
 
 		if(!chosen_target)
-			return 0
+			return FALSE
 
 		//Now we handle picking a place for the user to teleport to.
 		var/list/tele_target_candidates = view(get_turf(chosen_target), 1)
@@ -44,7 +44,7 @@
 
 		//Pay for our teleport.
 		if(!pay_energy(2000) || !tele_target)
-			return 0
+			return FALSE
 
 		//Teleporting time.
 		user.forceMove(tele_target)

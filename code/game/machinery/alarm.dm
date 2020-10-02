@@ -264,10 +264,10 @@
 	var/turf/simulated/location = src.loc
 
 	if(!istype(location))
-		return 0
+		return FALSE
 
 	if(breach_detection	== 0)
-		return 0
+		return FALSE
 
 	var/datum/gas_mixture/environment = location.return_air()
 	var/environment_pressure = environment.return_pressure()
@@ -278,7 +278,7 @@
 			playsound(src.loc, 'sound/machines/airalarm.ogg', 25, 0, 4)
 			return 1
 
-	return 0
+	return FALSE
 
 /obj/machinery/alarm/proc/master_is_operating()
 	return alarm_area && alarm_area.master_air_alarm && !(alarm_area.master_air_alarm.stat & (NOPOWER | BROKEN))
@@ -290,14 +290,14 @@
 		if(!(AA.stat & (NOPOWER|BROKEN)))
 			alarm_area.master_air_alarm = AA
 			return 1
-	return 0
+	return FALSE
 
 /obj/machinery/alarm/proc/get_danger_level(var/current_value, var/list/danger_levels)
 	if((current_value >= danger_levels[4] && danger_levels[4] > 0) || current_value <= danger_levels[1])
 		return 2
 	if((current_value >= danger_levels[3] && danger_levels[3] > 0) || current_value <= danger_levels[2])
 		return 1
-	return 0
+	return FALSE
 
 /obj/machinery/alarm/update_icon()
 	if(panel_open)
@@ -386,7 +386,7 @@
 
 /obj/machinery/alarm/proc/send_signal(var/target, var/list/command)//sends signal 'command' to 'target'. Returns 0 if no radio connection, 1 otherwise
 	if(!radio_connection)
-		return 0
+		return FALSE
 
 	var/datum/signal/signal = new
 	signal.transmission_method = 1 //radio signal
@@ -843,16 +843,16 @@ FIRE ALARM
 	else
 		if(!detecting)
 			icon_state = "fire1"
-			set_light(l_range = 4, l_power = 0.9, l_color = "#ff0000")
+			set_light(l_range = 4, l_power = 0.9, l_color = COLOR_RED)
 		else
 			icon_state = "fire0"
 			switch(seclevel)
-				if("green")	set_light(l_range = 2, l_power = 0.25, l_color = "#00ff00")
-				if("yellow")	set_light(l_range = 2, l_power = 0.25, l_color = "#ffff00")
+				if("green")	set_light(l_range = 2, l_power = 0.25, l_color = COLOR_LIME)
+				if("yellow")	set_light(l_range = 2, l_power = 0.25, l_color = COLOR_YELLOW)
 				if("violet")	set_light(l_range = 2, l_power = 0.25, l_color = "#9933ff")
-				if("orange")	set_light(l_range = 2, l_power = 0.25, l_color = "#ff9900")
+				if("orange")	set_light(l_range = 2, l_power = 0.25, l_color = COLOR_ORANGE)
 				if("blue")	set_light(l_range = 2, l_power = 0.25, l_color = "#1024A9")
-				if("red")	set_light(l_range = 4, l_power = 0.9, l_color = "#ff0000")
+				if("red")	set_light(l_range = 4, l_power = 0.9, l_color = COLOR_RED)
 				if("delta")	set_light(l_range = 4, l_power = 0.9, l_color = "#FF6633")
 		add_overlay("overlay_[seclevel]")
 

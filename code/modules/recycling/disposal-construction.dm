@@ -352,9 +352,9 @@
 
 /obj/structure/disposalconstruct/hides_under_flooring()
 	if(anchored)
-		return 1
+		return TRUE
 	else
-		return 0
+		return FALSE
 
 /obj/structure/disposalconstruct/proc/is_pipe()
 	return (ptype != DISPOSAL_PIPE_BIN && ptype != DISPOSAL_PIPE_OUTLET && ptype != DISPOSAL_PIPE_CHUTE)

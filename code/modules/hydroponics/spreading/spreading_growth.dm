@@ -46,7 +46,7 @@
 	// Something is very wrong, kill ourselves.
 	if(!seed)
 		die_off()
-		return 0
+		return FALSE
 
 	for(var/obj/effect/effect/smoke/chem/smoke in view(1, src))
 		if(smoke.reagents.has_reagent("plantbgone"))

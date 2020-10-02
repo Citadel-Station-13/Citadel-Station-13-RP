@@ -13,7 +13,7 @@
 
 	var/datum/changeling/changeling = changeling_power(0,0,100,UNCONSCIOUS)
 	if(!changeling)
-		return 0
+		return FALSE
 
 	if(istype(src,/mob/living/carbon))
 		var/mob/living/carbon/C = src
@@ -23,4 +23,4 @@
 		else
 			to_chat(C, "<span class='notice'>We no longer need light to see.</span>")
 
-	return 0
+	return FALSE

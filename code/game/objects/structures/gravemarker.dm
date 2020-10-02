@@ -49,7 +49,7 @@
 	if(istype(O) && O.checkpass(PASSTABLE))
 		return 1
 	if(get_dir(O.loc, target) == dir)
-		return 0
+		return FALSE
 	return 1
 
 /obj/structure/gravemarker/attackby(obj/item/W, mob/user as mob)

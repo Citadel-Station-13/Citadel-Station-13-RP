@@ -56,30 +56,30 @@
 		for(var/obj/item/grab/G in target.grabbed_by)
 			if(G.loc == user && G.state >= GRAB_AGGRESSIVE)
 				return 1
-	return 0
+	return FALSE
 
 /obj/item/handcuffs/proc/place_handcuffs(var/mob/living/carbon/target, var/mob/user)
 	playsound(src.loc, cuff_sound, 30, 1, -2)
 
 	var/mob/living/carbon/human/H = target
 	if(!istype(H))
-		return 0
+		return FALSE
 
 	if (!H.has_organ_for_slot(slot_handcuffed))
 		to_chat(user, "<span class='danger'>\The [H] needs at least two wrists before you can cuff them together!</span>")
-		return 0
+		return FALSE
 
 	if(istype(H.gloves,/obj/item/clothing/gloves/gauntlets/rig) && !elastic) // Can't cuff someone who's in a deployed hardsuit.
 		to_chat(user, "<span class='danger'>\The [src] won't fit around \the [H.gloves]!</span>")
-		return 0
+		return FALSE
 
 	user.visible_message("<span class='danger'>\The [user] is attempting to put [cuff_type] on \the [H]!</span>")
 
 	if(!do_after(user,use_time))
-		return 0
+		return FALSE
 
 	if(!can_place(target, user)) //victim may have resisted out of the grab in the meantime
-		return 0
+		return FALSE
 
 	add_attack_logs(user,H,"Handcuffed (attempt)")
 	feedback_add_details("handcuffs","H")
@@ -173,7 +173,7 @@ var/last_chew = 0
 	color = "#00DDDD"
 
 /obj/item/handcuffs/cable/white
-	color = "#FFFFFF"
+	color = COLOR_WHITE
 
 /obj/item/handcuffs/cable/attackby(var/obj/item/I, mob/user as mob)
 	..()
@@ -248,23 +248,23 @@ var/last_chew = 0
 
 	var/mob/living/carbon/human/H = target
 	if(!istype(H))
-		return 0
+		return FALSE
 
 	if (!H.has_organ_for_slot(slot_legcuffed))
 		to_chat(user, "<span class='danger'>\The [H] needs at least two ankles before you can cuff them together!</span>")
-		return 0
+		return FALSE
 
 	if(istype(H.shoes,/obj/item/clothing/shoes/magboots/rig) && !elastic) // Can't cuff someone who's in a deployed hardsuit.
 		to_chat(user, "<span class='danger'>\The [src] won't fit around \the [H.shoes]!</span>")
-		return 0
+		return FALSE
 
 	user.visible_message("<span class='danger'>\The [user] is attempting to put [cuff_type] on \the [H]!</span>")
 
 	if(!do_after(user,use_time))
-		return 0
+		return FALSE
 
 	if(!can_place(target, user)) //victim may have resisted out of the grab in the meantime
-		return 0
+		return FALSE
 
 	add_attack_logs(user,H,"Legcuffed (attempt)")
 	feedback_add_details("legcuffs","H")
@@ -320,12 +320,12 @@ var/last_chew = 0
 	var/mob/living/carbon/human/H = target
 	if(!istype(H))
 		src.dropped()
-		return 0
+		return FALSE
 
 	if(!H.has_organ_for_slot(slot_legcuffed))
 		H.visible_message("<span class='notice'>\The [src] slams into [H], but slides off!</span>")
 		src.dropped()
-		return 0
+		return FALSE
 
 	H.visible_message("<span class='danger'>\The [H] has been snared by \the [src]!</span>")
 

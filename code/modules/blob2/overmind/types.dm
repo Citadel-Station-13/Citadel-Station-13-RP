@@ -6,8 +6,8 @@
 	var/ai_desc = "default" // Shown when examining the overmind.
 	var/difficulty = BLOB_DIFFICULTY_EASY // A rough guess on how hard a blob is to kill.
 	                                      // When a harder blob spawns by event, the crew is given more information than usual from the announcement.
-	var/color = "#FFFFFF"	// The actual blob's color.
-	var/complementary_color = "#000000" //a color that's complementary to the normal blob color.  Blob mobs are colored in this.
+	var/color = COLOR_WHITE	// The actual blob's color.
+	var/complementary_color = COLOR_BLACK //a color that's complementary to the normal blob color.  Blob mobs are colored in this.
 
 	var/attack_message = "The blob attacks you" // Base message the mob gets when blob_act() gets called on them by the blob.  An exclaimation point is added to the end.
 	var/attack_message_living = null	// Appended to attack_message, if the target fails isSynthetic() check.
@@ -105,7 +105,7 @@
 	effect_desc = "Slow-spreading, but incredibly resiliant. It has a chance to harden itself against attacks automatically for no resource cost, and uses cheaply-constructed hivebots as soldiers."
 	ai_desc = "defensive"
 	difficulty = BLOB_DIFFICULTY_MEDIUM // Emitters are okay, EMP is great.
-	color = "#666666"
+	color = COLOR_STEEL
 	complementary_color = "#B7410E"
 	spread_modifier = 0.2
 	can_build_factories = TRUE
@@ -219,7 +219,7 @@
 	infest deceased biological humanoids.  It is vulnerable to fire."
 	difficulty = BLOB_DIFFICULTY_MEDIUM // The spores are more of an annoyance but can be difficult to contain.
 	color = "#AAAAAA"
-	complementary_color = "#FFFFFF"
+	complementary_color = COLOR_WHITE
 	damage_type = TOX
 	damage_lower = 15
 	damage_upper = 25
@@ -248,8 +248,8 @@
 	effect_desc = "Creates weak floating spores that attack enemies from specialized blobs, has a chance to also create a spore when \
 	it spreads onto a new tile, and has a chance to create a spore when a blob tile is destroyed.  It is more fragile than average to all types of damage."
 	difficulty = BLOB_DIFFICULTY_HARD // Loads of spores that can overwhelm, and spreads quickly.
-	color = "#FF0000" // Red
-	complementary_color = "#FFCC00" // Orange-ish
+	color = COLOR_RED // Red
+	complementary_color = COLOR_YELLOW_GOLD // Orange-ish
 	damage_type = TOX
 	damage_lower = 10
 	damage_upper = 20

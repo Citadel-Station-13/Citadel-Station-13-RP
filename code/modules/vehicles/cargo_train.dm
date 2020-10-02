@@ -58,11 +58,11 @@
 			to_chat(load, "The drive motor briefly whines, then drones to a stop.")
 
 	if(is_train_head() && !on)
-		return 0
+		return FALSE
 
 	//space check ~no flying space trains sorry
 	if(on && istype(destination, /turf/space))
-		return 0
+		return FALSE
 
 	return ..()
 
@@ -181,14 +181,14 @@
 //-------------------------------------------
 /obj/vehicle/train/engine/relaymove(mob/user, direction)
 	if(user != load)
-		return 0
+		return FALSE
 
 	if(is_train_head())
 		if(direction == reverse_direction(dir) && tow)
-			return 0
+			return FALSE
 		if(Move(get_step(src, direction)))
-			return 1
-		return 0
+			return TRUE
+		return FALSE
 	else
 		return ..()
 
@@ -265,9 +265,9 @@
 //-------------------------------------------
 /obj/vehicle/train/trolley/load(var/atom/movable/C, var/mob/user)
 	if(ismob(C) && !passenger_allowed)
-		return 0
+		return FALSE
 	if(!istype(C,/obj/machinery) && !istype(C,/obj/structure/closet) && !istype(C,/obj/structure/largecrate) && !istype(C,/obj/structure/reagent_dispensers) && !istype(C,/obj/structure/ore_box) && !istype(C, /mob/living/carbon/human))
-		return 0
+		return FALSE
 
 	//if there are any items you don't want to be able to interact with, add them to this check
 	// ~no more shielded, emitter armed death trains
@@ -277,11 +277,11 @@
 		..(C, user)
 
 	if(load)
-		return 1
+		return TRUE
 
 /obj/vehicle/train/engine/load(var/atom/movable/C, var/mob/user)
 	if(!istype(C, /mob/living/carbon/human))
-		return 0
+		return FALSE
 
 	return ..()
 
@@ -291,9 +291,9 @@
 // code knows to handle it correctly.
 /obj/vehicle/train/trolley/proc/load_object(var/atom/movable/C)
 	if(!isturf(C.loc)) //To prevent loading things from someone's inventory, which wouldn't get handled properly.
-		return 0
+		return FALSE
 	if(load || C.anchored)
-		return 0
+		return FALSE
 
 	var/datum/vehicle_dummy_load/dummy_load = new()
 	load = dummy_load
@@ -330,7 +330,7 @@
 
 /obj/vehicle/train/engine/latch(obj/vehicle/train/T, mob/user)
 	if(!istype(T) || !Adjacent(T))
-		return 0
+		return FALSE
 
 	//if we are attaching a trolley to an engine we don't care what direction
 	// it is in and it should probably be attached with the engine in the lead

@@ -80,12 +80,12 @@
 
 /obj/item/fuelrod/proc/add_thermal_energy(var/thermal_energy)
 	if(mass < 1)
-		return 0
+		return FALSE
 
 	var/heat_capacity = heat_capacity()
 	if(thermal_energy < 0)
 		if(temperature < TCMB)
-			return 0
+			return FALSE
 		var/thermal_energy_limit = -(temperature - TCMB)*heat_capacity	//ensure temperature does not go below TCMB
 		thermal_energy = max(thermal_energy, thermal_energy_limit)	//thermal_energy and thermal_energy_limit are negative here.
 	temperature += thermal_energy/heat_capacity
@@ -107,7 +107,7 @@
 			name = "depleted [name]"
 		else if(decay_heat > 0)
 			return ((decay_heat * (mass / molar_mass)) / lifespan) * (min(life, 100) / 100) * applied_insertion
-	return 0
+	return FALSE
 
 /obj/item/fuelrod/proc/get_insertion()
 	var/applied_insertion = 1

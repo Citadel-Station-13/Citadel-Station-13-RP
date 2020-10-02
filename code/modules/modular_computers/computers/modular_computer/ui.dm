@@ -3,11 +3,11 @@
 	if(!screen_on || !enabled)
 		if(ui)
 			ui.close()
-		return 0
+		return FALSE
 	if(!apc_power(0) && !battery_power(0))
 		if(ui)
 			ui.close()
-		return 0
+		return FALSE
 
 	// If we have an active program switch to it now.
 	if(active_program)

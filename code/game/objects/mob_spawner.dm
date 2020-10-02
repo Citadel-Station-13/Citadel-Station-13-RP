@@ -43,11 +43,11 @@
 
 /obj/structure/mob_spawner/proc/can_spawn()
 	if(!total_spawns)
-		return 0
+		return FALSE
 	if(spawned_mobs.len >= simultaneous_spawns)
-		return 0
+		return FALSE
 	if(world.time < last_spawn + spawn_delay)
-		return 0
+		return FALSE
 	return 1
 
 /obj/structure/mob_spawner/proc/choose_spawn()
@@ -55,7 +55,7 @@
 
 /obj/structure/mob_spawner/proc/do_spawn(var/mob_path)
 	if(!ispath(mob_path))
-		return 0
+		return FALSE
 	var/mob/living/L = new mob_path(get_turf(src))
 	L.source_spawner = src
 	spawned_mobs.Add(L)
@@ -92,17 +92,17 @@
 
 /obj/structure/mob_spawner/clear_zlevel/can_spawn()
 	if(!..())
-		return 0
+		return FALSE
 	var/turf/T = get_turf(src)
 	if(!T)
-		return 0
+		return FALSE
 	for(var/mob/living/L in player_list)
 		var/turf/L_T
 		if(L.stat == DEAD)
 			continue
 		L_T = get_turf(L)
 		if(T.z == L_T.z)
-			return 0
+			return FALSE
 	return 1
 
 

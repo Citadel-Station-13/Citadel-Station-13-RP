@@ -43,7 +43,7 @@
 	for(var/obj/machinery/power/sensor/S in grid_sensors)
 		if(S.check_grid_warning())
 			return 1
-	return 0
+	return FALSE
 
 // If PC is not null header template is loaded. Use PC.get_header_data() to get relevant nanoui data from it. All data entries begin with "PC_...."
 // In future it may be expanded to other modular computer devices.

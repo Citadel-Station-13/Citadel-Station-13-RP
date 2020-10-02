@@ -12,7 +12,7 @@
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 60
 	active_power_usage = 10000	//10 kW. It's a big all-body scanner.
-	light_color = "#00FF00"
+	light_color = COLOR_LIME
 	var/obj/machinery/body_scanconsole/console
 
 /obj/machinery/bodyscanner/New()
@@ -70,27 +70,27 @@
 
 /obj/machinery/bodyscanner/MouseDrop_T(mob/living/carbon/O, mob/user as mob)
 	if(!istype(O))
-		return 0 //not a mob
+		return FALSE //not a mob
 	if(user.incapacitated())
-		return 0 //user shouldn't be doing things
+		return FALSE //user shouldn't be doing things
 	if(O.anchored)
-		return 0 //mob is anchored???
+		return FALSE //mob is anchored???
 	if(get_dist(user, src) > 1 || get_dist(user, O) > 1)
-		return 0 //doesn't use adjacent() to allow for non-cardinal (fuck my life)
+		return FALSE //doesn't use adjacent() to allow for non-cardinal (fuck my life)
 	if(!ishuman(user) && !isrobot(user))
-		return 0 //not a borg or human
+		return FALSE //not a borg or human
 	if(panel_open)
 		to_chat(user, "<span class='notice'>Close the maintenance panel first.</span>")
-		return 0 //panel open
+		return FALSE //panel open
 	if(occupant)
 		to_chat(user, "<span class='notice'>\The [src] is already occupied.</span>")
-		return 0 //occupied
+		return FALSE //occupied
 
 	if(O.buckled)
-		return 0
+		return FALSE
 	if(O.abiotic())
 		to_chat(user, "<span class='notice'>Subject cannot have abiotic items on.</span>")
-		return 0
+		return FALSE
 	if(O.has_buckled_mobs())
 		to_chat(user, span("warning", "\The [O] has other entities attached to it. Remove them first."))
 		return
@@ -107,7 +107,7 @@
 
 /obj/machinery/bodyscanner/relaymove(mob/user as mob)
 	if(user.incapacitated())
-		return 0	// Maybe they should be able to get out with cuffs, but whatever
+		return FALSE	// Maybe they should be able to get out with cuffs, but whatever
 	go_out()
 
 /obj/machinery/bodyscanner/verb/eject()

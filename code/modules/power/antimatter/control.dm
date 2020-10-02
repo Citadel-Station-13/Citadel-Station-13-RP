@@ -71,7 +71,7 @@
 /obj/machinery/power/am_control_unit/proc/produce_power()
 	playsound(src.loc, 'sound/effects/bang.ogg', 25, 1)
 	var/core_power = reported_core_efficiency//Effectively how much fuel we can safely deal with
-	if(core_power <= 0) return 0//Something is wrong
+	if(core_power <= 0) return FALSE//Something is wrong
 	var/core_damage = 0
 	var/fuel = fueljar.usefuel(fuel_injection)
 
@@ -104,7 +104,7 @@
 			if(active)	toggle_power()
 			stability -= rand(5,10)
 	..()
-	return 0
+	return FALSE
 
 
 /obj/machinery/power/am_control_unit/ex_act(severity)
@@ -122,7 +122,7 @@
 /obj/machinery/power/am_control_unit/bullet_act(var/obj/item/projectile/Proj)
 	if(Proj.check_armour != "bullet")
 		stability -= Proj.force
-	return 0
+	return FALSE
 
 
 /obj/machinery/power/am_control_unit/power_change()
@@ -186,16 +186,16 @@
 
 
 /obj/machinery/power/am_control_unit/proc/add_shielding(var/obj/machinery/am_shielding/AMS, var/AMS_linking = 0)
-	if(!istype(AMS)) return 0
-	if(!anchored) return 0
-	if(!AMS_linking && !AMS.link_control(src)) return 0
+	if(!istype(AMS)) return FALSE
+	if(!anchored) return FALSE
+	if(!AMS_linking && !AMS.link_control(src)) return FALSE
 	linked_shielding.Add(AMS)
 	update_shield_icons = 1
 	return 1
 
 
 /obj/machinery/power/am_control_unit/proc/remove_shielding(var/obj/machinery/am_shielding/AMS)
-	if(!istype(AMS)) return 0
+	if(!istype(AMS)) return FALSE
 	linked_shielding.Remove(AMS)
 	update_shield_icons = 2
 	if(active)	toggle_power()

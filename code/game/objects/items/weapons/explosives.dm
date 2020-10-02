@@ -132,6 +132,6 @@
 		target.visible_message("<span class='danger'>\The [src] lets out a loud beep as safeties trigger, before imploding and falling apart.</span>")
 		target.overlays -= image_overlay
 		qdel(src)
-		return 0
+		return FALSE
 	else
 		return ..()

@@ -28,7 +28,7 @@ var/global/list/changeling_fabricated_clothing = list(
 
 	if(changeling_generic_equip_all_slots(changeling_fabricated_clothing, cost = 10))
 		return 1
-	return 0
+	return FALSE
 
 /obj/item/clothing/under/chameleon/changeling
 	name = "malformed flesh"

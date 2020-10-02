@@ -150,7 +150,7 @@
 
 /mob/living/bot/floorbot/confirmTarget(var/atom/A) // The fact that we do some checks twice may seem confusing but remember that the bot's settings may be toggled while it's moving and we want them to stop in that case
 	if(!..())
-		return 0
+		return FALSE
 
 	if(istype(A, /obj/item/stack/tile/floor))
 		return (amount < maxAmount && eattiles)
@@ -159,16 +159,16 @@
 
 	// Don't pave over all of space, build there only if in bridge mode
 	if(!targetdirection && istype(A.loc, /area/space)) // Note name == "Space" does not work!
-		return 0
+		return FALSE
 
 	if(istype(A.loc, /area/shuttle)) // Do NOT mess with shuttle drop zones
-		return 0
+		return FALSE
 
 	if(emagged)
 		return (istype(A, /turf/simulated/floor))
 
 	if(!amount)
-		return 0
+		return FALSE
 
 #ifdef FLOORBOT_PATCHES_HOLES
 	if(istype(A, /turf/space))

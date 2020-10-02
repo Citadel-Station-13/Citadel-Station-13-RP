@@ -215,7 +215,7 @@ proc/check_panel(mob/M)
 	if (istype(M, /mob/living/carbon/human) || istype(M, /mob/living/silicon/ai))
 		if(M.hallucination < 15)
 			return 1
-	return 0*/
+	return FALSE*/
 
 /obj/effect/fake_attacker
 	icon = null

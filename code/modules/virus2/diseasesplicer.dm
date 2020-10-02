@@ -125,7 +125,7 @@
 			SSnanoui.update_uis(src)
 
 /obj/machinery/computer/diseasesplicer/Topic(href, href_list)
-	if(..()) return 1
+	if(..()) return TRUE
 
 	var/mob/user = usr
 	var/datum/nanoui/ui = SSnanoui.get_open_ui(user, src, "main")
@@ -135,7 +135,7 @@
 	if (href_list["close"])
 		user.unset_machine()
 		ui.close()
-		return 0
+		return FALSE
 
 	if (href_list["grab"])
 		if (dish)
@@ -144,7 +144,7 @@
 			analysed = dish.analysed
 			dish = null
 			scanning = 10
-		return 1
+		return TRUE
 
 	if (href_list["affected_species"])
 		if (dish)
@@ -153,13 +153,13 @@
 			analysed = dish.analysed
 			dish = null
 			scanning = 10
-		return 1
+		return TRUE
 
 	if(href_list["eject"])
 		if (dish)
 			dish.loc = src.loc
 			dish = null
-		return 1
+		return TRUE
 
 	if(href_list["splice"])
 		if(dish)
@@ -185,10 +185,10 @@
 
 			splicing = 10
 			dish.virus2.uniqueID = rand(0,10000)
-		return 1
+		return TRUE
 
 	if(href_list["disk"])
 		burning = 10
-		return 1
+		return TRUE
 
-	return 0
+	return FALSE

@@ -146,7 +146,7 @@
 	..()
 
 /obj/machinery/shieldgen/proc/shields_up()
-	if(active) return 0 //If it's already turned on, how did this get called?
+	if(active) return FALSE //If it's already turned on, how did this get called?
 
 	src.active = 1
 	update_icon()
@@ -159,7 +159,7 @@
 	update_use_power(USE_POWER_IDLE)
 
 /obj/machinery/shieldgen/proc/shields_down()
-	if(!active) return 0 //If it's already off, how did this get called?
+	if(!active) return FALSE //If it's already off, how did this get called?
 
 	src.active = 0
 	update_icon()
@@ -276,7 +276,7 @@
 	if(!malfunction)
 		malfunction = 1
 		update_icon()
-		return 1
+		return TRUE
 
 /obj/machinery/shieldgen/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_screwdriver())

@@ -86,19 +86,19 @@
 	icon_state = "refactory"
 	organ_tag = O_FACT
 	parent_organ = BP_TORSO
-	
+
 	var/list/materials = list(DEFAULT_WALL_MATERIAL = 0)
 	var/max_storage = 10000
 	var/processingbuffs = FALSE
 
 /obj/item/organ/internal/nano/refactory/proc/get_stored_material(var/material)
 	if(status & ORGAN_DEAD)
-		return 0
+		return FALSE
 	return materials[material] || 0
 
 /obj/item/organ/internal/nano/refactory/proc/add_stored_material(var/material,var/amt)
 	if(status & ORGAN_DEAD)
-		return 0
+		return FALSE
 	var/increase = min(amt,max(max_storage-materials[material],0))
 	if(isnum(materials[material]))
 		materials[material] += increase
@@ -109,7 +109,7 @@
 
 /obj/item/organ/internal/nano/refactory/proc/use_stored_material(var/material,var/amt)
 	if(status & ORGAN_DEAD)
-		return 0
+		return FALSE
 
 	var/available = materials[material]
 
@@ -123,7 +123,7 @@
 		return amt
 
 	//Failure
-	return 0
+	return FALSE
 
 /obj/item/organ/internal/mmi_holder/posibrain/nano
 	name = "protean posibrain"

@@ -43,6 +43,8 @@
 
 	var/body_color //brown, gray and white, leave blank for random
 
+	no_vore = 1 //Mice can't eat others due to the amount of bugs caused by it.
+
 /mob/living/simple_mob/mouse/Life()
 	. = ..()
 	if(!. || ai_inactive) return
@@ -106,6 +108,9 @@
 	if(client)
 		client.time_died_as_mouse = world.time
 	..()
+
+/mob/living/simple_mob/mouse/attack_hand(mob/living/hander)
+	src.get_scooped(hander) //For one-click mouse scooping under any conditions. They knew what they were getting into!
 
 /*
  * Mouse types

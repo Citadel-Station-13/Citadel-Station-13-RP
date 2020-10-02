@@ -72,7 +72,7 @@
 
 	proc/get_mecha_info()
 		if(!in_mecha())
-			return 0
+			return FALSE
 		var/obj/mecha/M = src.loc
 		var/cell_charge = M.get_charge()
 		var/answer = {"<b>Name:</b> [M.name]<br>
@@ -99,7 +99,7 @@
 	proc/in_mecha()
 		if(istype(src.loc, /obj/mecha))
 			return src.loc
-		return 0
+		return FALSE
 
 	proc/shock()
 		var/obj/mecha/M = in_mecha()
@@ -109,7 +109,7 @@
 
 	proc/get_mecha_log()
 		if(!src.in_mecha())
-			return 0
+			return FALSE
 		var/obj/mecha/M = src.loc
 		return M.get_log_html()
 

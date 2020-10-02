@@ -127,7 +127,7 @@ SUBSYSTEM_DEF(transcore)
 /datum/controller/subsystem/transcore/proc/m_backup(var/datum/mind/mind, var/obj/item/nif/nif, var/one_time = FALSE)
 	ASSERT(mind)
 	if(!mind.name || core_dumped)
-		return 0
+		return FALSE
 
 	var/datum/transhuman/mind_record/MR
 

@@ -43,12 +43,12 @@ avoid code duplication. This includes items that may sometimes act as a standard
 
 /mob/living/attackby(obj/item/I, mob/user, params, attack_modifier)
 	if(!ismob(user))
-		return 0
+		return FALSE
 	if(can_operate(src) && I.do_surgery(src,user))
 		if(I.can_do_surgery(src,user))
 			return 1
 		else
-			return 0
+			return FALSE
 	if(attempt_vr(src,"vore_attackby",args)) return //VOREStation Add - The vore, of course.
 	return I.attack(src, user, user.zone_sel.selecting, attack_modifier)
 
@@ -76,9 +76,9 @@ avoid code duplication. This includes items that may sometimes act as a standard
 //I would prefer to rename this attack_as_weapon(), but that would involve touching hundreds of files.
 /obj/item/proc/attack(mob/living/M, mob/living/user, var/target_zone, var/attack_modifier)
 	if(!force || (flags & NOBLUDGEON))
-		return 0
+		return FALSE
 	if(M == user && user.a_intent != INTENT_HARM)
-		return 0
+		return FALSE
 
 	/////////////////////////
 	user.lastattacked = M

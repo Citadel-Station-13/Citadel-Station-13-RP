@@ -104,7 +104,7 @@
 	user.do_attack_animation(src)
 	if(shattered && glass)
 		playsound(src.loc, 'sound/effects/hit_on_shattered_glass.ogg', 70, 1)
-		return 0
+		return FALSE
 
 	if(damage)
 		user.visible_message("<span class='danger'>[user] smashes [src]!</span>")

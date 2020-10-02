@@ -79,11 +79,11 @@
 
 /obj/machinery/atmospherics/unary/outlet_injector/proc/inject()
 	if(injecting || (stat & NOPOWER))
-		return 0
+		return FALSE
 
 	var/datum/gas_mixture/environment = loc.return_air()
 	if (!environment)
-		return 0
+		return FALSE
 
 	injecting = 1
 
@@ -104,7 +104,7 @@
 
 /obj/machinery/atmospherics/unary/outlet_injector/proc/broadcast_status()
 	if(!radio_connection)
-		return 0
+		return FALSE
 
 	var/datum/signal/signal = new
 	signal.transmission_method = 1 //radio signal
@@ -129,7 +129,7 @@
 
 /obj/machinery/atmospherics/unary/outlet_injector/receive_signal(datum/signal/signal)
 	if(!signal.data["tag"] || (signal.data["tag"] != id) || (signal.data["sigtype"]!="command"))
-		return 0
+		return FALSE
 
 	if(signal.data["power"])
 		update_use_power(text2num(signal.data["power"]))
@@ -184,7 +184,7 @@
 				"<span class='notice'>\The [user] uploads access data to \the [src].</span>", \
 				"<span class='notice'>You copied access data from \the [W] to \the [src].</span>", \
 				"You hear a faint beep.")
-		return 0
+		return FALSE
 
 	if(!W.is_wrench())
 		return ..()

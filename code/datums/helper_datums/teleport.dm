@@ -18,16 +18,16 @@
 /datum/teleport/New(ateleatom, adestination, aprecision=0, afteleport=1, aeffectin=null, aeffectout=null, asoundin=null, asoundout=null, local=TRUE) //VOREStation Edit
 	..()
 	if(!initTeleport(arglist(args)))
-		return 0
+		return FALSE
 	return 1
 
 /datum/teleport/proc/initTeleport(ateleatom,adestination,aprecision,afteleport,aeffectin,aeffectout,asoundin,asoundout,local) //VOREStation Edit
 	if(!setTeleatom(ateleatom))
-		return 0
+		return FALSE
 	if(!setDestination(adestination))
-		return 0
+		return FALSE
 	if(!setPrecision(aprecision))
-		return 0
+		return FALSE
 	setEffects(aeffectin,aeffectout)
 	setForceTeleport(afteleport)
 	setSounds(asoundin,asoundout)
@@ -39,24 +39,24 @@
 	if(isnum(aprecision))
 		precision = aprecision
 		return 1
-	return 0
+	return FALSE
 
 //must succeed
 /datum/teleport/proc/setDestination(atom/adestination)
 	if(istype(adestination))
 		destination = adestination
 		return 1
-	return 0
+	return FALSE
 
 //must succeed in most cases
 /datum/teleport/proc/setTeleatom(atom/movable/ateleatom)
 	if(istype(ateleatom, /obj/effect) && !istype(ateleatom, /obj/effect/dummy/chameleon))
 		qdel(ateleatom)
-		return 0
+		return FALSE
 	if(istype(ateleatom))
 		teleatom = ateleatom
 		return 1
-	return 0
+	return FALSE
 
 //custom effects must be properly set up first for instant-type teleports
 //optional
@@ -106,7 +106,7 @@
 		destturf = get_turf(destination)
 
 	if(!destturf || !curturf)
-		return 0
+		return FALSE
 
 	playSpecials(curturf,effectin,soundin)
 
@@ -132,7 +132,7 @@
 /datum/teleport/proc/teleport()
 	if(teleportChecks())
 		return doTeleport()
-	return 0
+	return FALSE
 
 /datum/teleport/instant //teleports when datum is created
 
@@ -168,7 +168,7 @@
 /datum/teleport/instant/science/teleportChecks()
 	if(istype(teleatom, /obj/item/disk/nuclear)) // Don't let nuke disks get teleported --NeoFite
 		teleatom.visible_message("<span class='danger'>\The [teleatom] bounces off of the portal!</span>")
-		return 0
+		return FALSE
 
 	if(!!length(teleatom.search_contents_for(/obj/item/disk/nuclear)))
 		if(istype(teleatom, /mob/living))
@@ -176,16 +176,16 @@
 			MM.visible_message("<span class='danger'>\The [MM] bounces off of the portal!</span>","<span class='warning'>Something you are carrying seems to be unable to pass through the portal. Better drop it if you want to go through.</span>")
 		else
 			teleatom.visible_message("<span class='danger'>\The [teleatom] bounces off of the portal!</span>")
-		return 0
+		return FALSE
 	/* VOREStation Removal
 	if(destination.z in GLOB.using_map.admin_levels) //CentCom z-level
 		if(istype(teleatom, /obj/mecha))
 			var/obj/mecha/MM = teleatom
 			to_chat(MM.occupant, "<span class='danger'>\The [MM] would not survive the jump to a location so far away!</span>")
-			return 0
+			return FALSE
 		if(!!length(teleatom.search_contents_for(/obj/item/storage/backpack/holding)))
 			teleatom.visible_message("<span class='danger'>\The [teleatom] bounces off of the portal!</span>")
-			return 0
+			return FALSE
 	*/ //VOREStation Removal End
 	//VOREStation Edit Start
 	var/obstructed = 0
@@ -193,7 +193,7 @@
 	if(local && !(dest_turf.z in GLOB.using_map.player_levels))
 		if(istype(teleatom, /mob/living))
 			to_chat(teleatom, "<span class='warning'>The portal refuses to carry you that far away!</span>")
-		return 0
+		return FALSE
 	else if(istype(destination.loc, /obj/belly))
 		var/obj/belly/destination_belly = destination.loc
 		var/mob/living/telenommer = destination_belly.owner
@@ -209,7 +209,7 @@
 		obstructed = 1
 		to_chat(teleatom, "<span class='warning'>Something is blocking way on the other side!</span>")
 	if(obstructed)
-		return 0
+		return FALSE
 	else
 		return 1
 

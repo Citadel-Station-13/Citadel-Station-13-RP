@@ -93,7 +93,7 @@
 /datum/pipeline/proc/network_expand(datum/pipe_network/new_network, obj/machinery/atmospherics/pipe/reference)
 
 	if(new_network.line_members.Find(src))
-		return 0
+		return FALSE
 
 	new_network.line_members += src
 

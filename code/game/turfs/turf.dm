@@ -3,7 +3,7 @@
 	layer = TURF_LAYER
 	plane = TURF_PLANE
 	level = 1
-	var/holy = 0
+	var/holy = FALSE
 
 	// Atmospherics / ZAS Environmental
 	/// Initial air contents, as a specially formatted gas string.
@@ -16,12 +16,12 @@
 
 	// Properties for both
 	var/temperature = T20C		// Initial turf temperature.
-	var/blocks_air = 0			// Does this turf contain air/let air through?
+	var/blocks_air = FALSE			// Does this turf contain air/let air through?
 
 	// General properties.
 	var/icon_old = null
 	var/pathweight = 1			// How much does it cost to pathfind over this turf?
-	var/blessed = 0				// Has the turf been blessed?
+	var/blessed = FALSE				// Has the turf been blessed?
 
 	var/list/decals
 
@@ -51,17 +51,17 @@
 		..()
 
 /turf/ex_act(severity)
-	return 0
+	return FLASE
 
 /turf/proc/is_space()
-	return 0
+	return FALSE
 
 /turf/proc/is_intact()
-	return 0
+	return FALSE
 
 // Used by shuttle code to check if this turf is empty enough to not crush want it lands on.
 /turf/proc/is_solid_structure()
-	return 1
+	return TRUE
 
 /turf/attack_hand(mob/user)
 	. = ..()
@@ -133,7 +133,7 @@
 	return
 
 /turf/proc/is_plating()
-	return 0
+	return FALSE
 
 /turf/proc/levelupdate()
 	for(var/obj/O in src)
@@ -175,11 +175,11 @@
 
 /turf/proc/contains_dense_objects()
 	if(density)
-		return 1
+		return TRUE
 	for(var/atom/A in src)
 		if(A.density && !(A.flags & ON_BORDER))
-			return 1
-	return 0
+			return TRUE
+	return FALSE
 
 // Expects an atom containing the reagents used to clean the turf
 /turf/proc/clean(atom/source, mob/user)
@@ -224,7 +224,7 @@
 	if(!istype(O))
 		return FALSE
 	LAZYADD(dangerous_objects, O)
-//	color = "#FF0000"
+//	color = COLOR_RED
 
 // Similar to above, for when the dangerous object stops being dangerous/gets deleted/moved/etc.
 /turf/proc/unregister_dangerous_object(obj/O)
@@ -232,7 +232,7 @@
 		return FALSE
 	LAZYREMOVE(dangerous_objects, O)
 	UNSETEMPTY(dangerous_objects)	// This nulls the list var if it's empty.
-//	color = "#00FF00"
+//	color = COLOR_LIME
 
 // This is all the way up here since its the common ancestor for things that need to get replaced with a floor when an RCD is used on them.
 // More specialized turfs like walls should instead override this.

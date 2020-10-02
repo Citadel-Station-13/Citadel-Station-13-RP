@@ -26,22 +26,22 @@
 /mob/living/carbon/brain/say_understands(var/other)//Goddamn is this hackish, but this say code is so odd
 	if (istype(other, /mob/living/silicon/ai))
 		if(!(container && istype(container, /obj/item/mmi)))
-			return 0
+			return FALSE
 		else
 			return 1
 	if (istype(other, /mob/living/silicon/decoy))
 		if(!(container && istype(container, /obj/item/mmi)))
-			return 0
+			return FALSE
 		else
 			return 1
 	if (istype(other, /mob/living/silicon/pai))
 		if(!(container && istype(container, /obj/item/mmi)))
-			return 0
+			return FALSE
 		else
 			return 1
 	if (istype(other, /mob/living/silicon/robot))
 		if(!(container && istype(container, /obj/item/mmi)))
-			return 0
+			return FALSE
 		else
 			return 1
 	if (istype(other, /mob/living/carbon/human))

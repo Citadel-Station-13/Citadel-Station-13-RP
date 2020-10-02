@@ -189,7 +189,7 @@
 		return 1
 
 	if(!cell || !cell.charge)
-		return 0
+		return FALSE
 
 	// Actual amount to drain from cell, using CELLRATE
 	var/cell_amount = amount * CELLRATE
@@ -200,7 +200,7 @@
 			to_chat(src, "<span class='danger'>Warning: Unauthorized access through power channel [rand(11,29)] detected!</span>")
 		cell.use(cell_amount)
 		return amount
-	return 0
+	return FALSE
 
 // setup the PDA and its name
 /mob/living/silicon/robot/proc/setup_PDA()
@@ -332,7 +332,7 @@
 /mob/living/silicon/robot/verb/Namepick()
 	set category = "Robot Commands"
 	if(custom_name)
-		return 0
+		return FALSE
 
 	spawn(0)
 		var/newname
@@ -426,7 +426,7 @@
 /mob/living/silicon/robot/proc/installed_jetpack()
 	if(module)
 		return (locate(/obj/item/tank/jetpack) in module.modules)
-	return 0
+	return FALSE
 
 
 // this function displays the cyborgs current cell charge in the stat panel
@@ -451,7 +451,7 @@
 				stat("[ms.name]: [ms.energy]/[ms.max_energy]")
 
 /mob/living/silicon/robot/restrained()
-	return 0
+	return FALSE
 
 /mob/living/silicon/robot/bullet_act(var/obj/item/projectile/Proj)
 	..(Proj)
@@ -738,7 +738,7 @@
 		var/mob/living/silicon/robot/R = M
 		if(check_access(R.get_active_hand()) || istype(R.get_active_hand(), /obj/item/card/robot))
 			return 1
-	return 0
+	return FALSE
 
 /mob/living/silicon/robot/proc/check_access(obj/item/I)
 	if(!istype(req_access, /list)) //something's very wrong
@@ -748,12 +748,12 @@
 	if(!L.len) //no requirements
 		return 1
 	if(!I) //nothing to check with..?
-		return 0
+		return FALSE
 	var/access_found = I.GetAccess()
 	for(var/req in req_access)
 		if(req in access_found) //have one of the required accesses
 			return 1
-	return 0
+	return FALSE
 
 /mob/living/silicon/robot/updateicon()
 	cut_overlays()
@@ -1055,24 +1055,24 @@
 /mob/living/silicon/robot/proc/cell_use_power(var/amount = 0)
 	// No cell inserted
 	if(!cell)
-		return 0
+		return FALSE
 
 	// Power cell is empty.
 	if(cell.charge == 0)
-		return 0
+		return FALSE
 
 	var/power_use = amount * CYBORG_POWER_USAGE_MULTIPLIER
 	if(cell.checked_use(CELLRATE * power_use))
 		used_power_this_tick += power_use
 		return 1
-	return 0
+	return FALSE
 
 /mob/living/silicon/robot/binarycheck()
 	if(is_component_functioning("comms"))
 		var/datum/robot_component/RC = get_component("comms")
 		use_power(RC.active_usage)
 		return 1
-	return 0
+	return FALSE
 
 /mob/living/silicon/robot/proc/notify_ai(var/notifytype, var/first_arg, var/second_arg)
 	if(!connected_ai)

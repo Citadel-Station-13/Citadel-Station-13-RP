@@ -90,7 +90,7 @@
 	if(istype(other,/mob/living/carbon/alien/larva))
 		return 1
 
-	return 0
+	return FALSE
 
 /datum/species/xenos/hug(var/mob/living/carbon/human/H,var/mob/living/target)
 	H.visible_message("<span class='notice'>[H] caresses [target] with its scythe-like arm.</span>", \
@@ -155,7 +155,7 @@
 					to_chat(H, "<span class='alien'>You feel something mend itself inside your [E.name].</span>")
 			return 1
 
-	return 0
+	return FALSE
 /*
 /datum/species/xenos/handle_login_special(var/mob/living/carbon/human/H)
 	H.AddInfectionImages()

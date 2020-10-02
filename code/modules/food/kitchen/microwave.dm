@@ -331,7 +331,7 @@
 /obj/machinery/microwave/proc/wzhzhzh(var/seconds as num) // Whoever named this proc is fucking literally Satan. ~ Z
 	for (var/i=1 to seconds)
 		if (stat & (NOPOWER|BROKEN))
-			return 0
+			return FALSE
 		use_power(active_power_usage)
 		sleep(10)
 	return 1
@@ -343,7 +343,7 @@
 				!istype(O, /obj/item/grown) \
 			)
 			return 1
-	return 0
+	return FALSE
 
 /obj/machinery/microwave/proc/start()
 	src.visible_message("<span class='notice'>The microwave turns on.</span>", "<span class='notice'>You hear a microwave.</span>")

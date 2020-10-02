@@ -23,7 +23,7 @@
 	if(panel_open)
 		overlays  += "sheater-open"
 	if(on)
-		set_light(3, 3, "#FFCC00")
+		set_light(3, 3, COLOR_YELLOW_GOLD)
 	else
 		set_light(0)
 
@@ -40,7 +40,7 @@
 /obj/machinery/space_heater/powered()
 	if(cell && cell.charge)
 		return 1
-	return 0
+	return FALSE
 
 /obj/machinery/space_heater/emp_act(severity)
 	if(stat & (BROKEN|NOPOWER))

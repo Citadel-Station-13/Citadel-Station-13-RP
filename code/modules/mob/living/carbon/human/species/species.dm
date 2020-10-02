@@ -445,7 +445,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 /datum/species/proc/can_shred(var/mob/living/carbon/human/H, var/ignore_intent)
 
 	if(!ignore_intent && H.a_intent != INTENT_HARM)
-		return 0
+		return FALSE
 
 	for(var/datum/unarmed_attack/attack in unarmed_attacks)
 		if(!attack.is_usable(H))
@@ -453,7 +453,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 		if(attack.shredding)
 			return 1
 
-	return 0
+	return FALSE
 
 // Called in life() when the mob has no client.
 /datum/species/proc/handle_npc(var/mob/living/carbon/human/H)

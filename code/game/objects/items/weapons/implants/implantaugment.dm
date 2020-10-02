@@ -53,7 +53,7 @@
 			to_chat(H, "<span class='warning'>You feel a pinching sensation in your [part]. The implant remains.</span>")
 
 /obj/item/implant/organ/islegal()
-	return 0
+	return FALSE
 
 /*
  * Arm / leg mounted augments.

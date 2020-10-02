@@ -8,18 +8,18 @@
 
 /datum/surgery_step/generic/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if (isslime(target))
-		return 0
+		return FALSE
 	if (target_zone == O_EYES)	//there are specific steps for eye surgery
-		return 0
+		return FALSE
 	if (!hasorgans(target))
-		return 0
+		return FALSE
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	if (affected == null)
-		return 0
+		return FALSE
 	if (affected.is_stump())
-		return 0
+		return FALSE
 	if (affected.robotic >= ORGAN_ROBOT)
-		return 0
+		return FALSE
 	return 1
 
 ///////////////////////////////////////////////////////////////
@@ -314,12 +314,12 @@
 
 /datum/surgery_step/generic/amputate/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if (target_zone == O_EYES)	//there are specific steps for eye surgery
-		return 0
+		return FALSE
 	if (!hasorgans(target))
-		return 0
+		return FALSE
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	if (affected == null)
-		return 0
+		return FALSE
 	return !affected.cannot_amputate
 
 /datum/surgery_step/generic/amputate/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)

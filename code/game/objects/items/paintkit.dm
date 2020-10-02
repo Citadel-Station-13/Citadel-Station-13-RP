@@ -203,7 +203,7 @@
 
 /obj/item/kit/paint/can_customize(var/obj/mecha/M)
 	if(!istype(M))
-		return 0
+		return FALSE
 
 	for(var/type in allowed_types)
 		if(type == M.initial_icon)

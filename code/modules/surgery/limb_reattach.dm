@@ -10,10 +10,10 @@
 
 /datum/surgery_step/limb/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if (!hasorgans(target))
-		return 0
+		return FALSE
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	if (affected)
-		return 0
+		return FALSE
 	var/list/organ_data = target.species.has_limbs["[target_zone]"]
 	return !isnull(organ_data)
 
@@ -33,18 +33,18 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	if (affected)
 		to_chat(user, "<span class='warning'>Something is in the way! You can't attach [E] here!</span>")
-		return 0
+		return FALSE
 	if(!P)
 		to_chat(user, "<span class='warning'>There's nothing to attach [E] to!</span>")
-		return 0
+		return FALSE
 	else if((P.robotic >= ORGAN_ROBOT) && (E.robotic < ORGAN_ROBOT))
 		to_chat(user, "<span class='warning'>Attaching [E] to [P] wouldn't work well.</span>")
-		return 0
+		return FALSE
 	else if(istype(E, /obj/item/organ/external/head) && E.robotic >= ORGAN_ROBOT && P.robotic < ORGAN_ROBOT)
 		to_chat(user, "<span class='warning'>Attaching [E] to [P] might break [E].</span>")
-		return 0
+		return FALSE
 	else
-		return 1
+		return TRUE
 
 /datum/surgery_step/limb/attach/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/E = tool
@@ -121,7 +121,7 @@
 		var/obj/item/robot_parts/p = tool
 		if (p.part)
 			if (!(target_zone in p.part))
-				return 0
+				return FALSE
 		return isnull(target.get_organ(target_zone))
 
 /datum/surgery_step/limb/mechanize/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)

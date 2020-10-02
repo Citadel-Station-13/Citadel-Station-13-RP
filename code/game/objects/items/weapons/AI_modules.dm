@@ -24,7 +24,7 @@ AI MODULES
 	if(!user.IsAdvancedToolUser() && isanimal(user))
 		var/mob/living/simple_mob/S = user
 		if(!S.IsHumanoidToolUser(src))
-			return 0
+			return FALSE
 
 	if (istype(AM, /obj/machinery/computer/aiupload))
 		var/obj/machinery/computer/aiupload/comp = AM
@@ -139,7 +139,7 @@ AI MODULES
 /obj/item/aiModule/safeguard/install(var/obj/machinery/computer/C, var/mob/living/user)
 	if(!targetName)
 		to_chat(usr, "No name detected on module, please enter one.")
-		return 0
+		return FALSE
 	..()
 
 /obj/item/aiModule/safeguard/addAdditionalLaws(var/mob/living/silicon/ai/target, var/mob/sender)
@@ -165,7 +165,7 @@ AI MODULES
 /obj/item/aiModule/oneHuman/install(var/obj/machinery/computer/C, var/mob/living/user)
 	if(!targetName)
 		to_chat(usr, "No name detected on module, please enter one.")
-		return 0
+		return FALSE
 	return ..()
 
 /obj/item/aiModule/oneHuman/addAdditionalLaws(var/mob/living/silicon/ai/target, var/mob/sender)
@@ -257,7 +257,7 @@ AI MODULES
 /obj/item/aiModule/freeform/install(var/obj/machinery/computer/C, var/mob/living/user)
 	if(!newFreeFormLaw)
 		to_chat(usr, "No law detected on module, please create one.")
-		return 0
+		return FALSE
 	..()
 
 /******************** Reset ********************/
@@ -368,7 +368,7 @@ AI MODULES
 /obj/item/aiModule/freeformcore/install(var/obj/machinery/computer/C, var/mob/living/user)
 	if(!newFreeFormLaw)
 		to_chat(usr, "No law detected on module, please create one.")
-		return 0
+		return FALSE
 	..()
 
 /obj/item/aiModule/syndicate // Slightly more dynamic freeform module -- TLE
@@ -397,7 +397,7 @@ AI MODULES
 /obj/item/aiModule/syndicate/install(var/obj/machinery/computer/C, var/mob/living/user)
 	if(!newFreeFormLaw)
 		to_chat(usr, "No law detected on module, please create one.")
-		return 0
+		return FALSE
 	..()
 
 

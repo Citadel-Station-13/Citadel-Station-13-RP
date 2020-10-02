@@ -35,7 +35,7 @@ icon/MinColors(icon)
 icon/MaxColors(icon)
     The icon is blended with a second icon where the maximum of each RGB pixel is the result.
     Opacity may increase, as if the icons were blended with ICON_OR. You may supply a color in place of an icon.
-icon/Opaque(background = "#000000")
+icon/Opaque(background = COLOR_BLACK)
     All alpha values are set to 255 throughout the icon. Transparent pixels become black, or whatever background color you specify.
 icon/BecomeAlphaMask()
     You can convert a simple grayscale icon into an alpha mask to use with other icons very easily with this proc.
@@ -265,8 +265,8 @@ world
 	else
 		// solid color
 		I = new(src)
-		I.Blend("#000000", ICON_OVERLAY)
-		I.SwapColor("#000000", null)
+		I.Blend(COLOR_BLACK, ICON_OVERLAY)
+		I.SwapColor(COLOR_BLACK, null)
 		I.Blend(icon, ICON_OVERLAY)
 	var/icon/J = new(src)
 	J.Opaque()
@@ -274,7 +274,7 @@ world
 	Blend(I, ICON_OR)
 
 // make this icon fully opaque--transparent pixels become black
-/icon/proc/Opaque(background = "#000000")
+/icon/proc/Opaque(background = COLOR_BLACK)
 	SwapColor(null, background)
 	MapColors(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,0, 0,0,0,1)
 
@@ -290,7 +290,7 @@ world
 
 /icon/proc/AddAlphaMask(mask)
 	var/icon/M = new(mask)
-	M.Blend("#ffffff", ICON_SUBTRACT)
+	M.Blend(COLOR_WHITE, ICON_SUBTRACT)
 	// apply mask
 	Blend(M, ICON_ADD)
 
@@ -436,10 +436,10 @@ world
 
 /proc/HSVtoRGB(hsv)
 	if(!hsv)
-		return "#000000"
+		return COLOR_BLACK
 	var/list/HSV = ReadHSV(hsv)
 	if(!HSV)
-		return "#000000"
+		return COLOR_BLACK
 
 	var/hue = HSV[1]
 	var/sat = HSV[2]
@@ -691,9 +691,9 @@ world
 	var/tone_gray = TONE[1]*0.3 + TONE[2]*0.59 + TONE[3]*0.11
 
 	if(gray <= tone_gray)
-		return BlendRGB("#000000", tone, gray/(tone_gray || 1))
+		return BlendRGB(COLOR_BLACK, tone, gray/(tone_gray || 1))
 	else
-		return BlendRGB(tone, "#ffffff", (gray-tone_gray)/((255-tone_gray) || 1))
+		return BlendRGB(tone, COLOR_WHITE, (gray-tone_gray)/((255-tone_gray) || 1))
 
 
 //Used in the OLD chem color mixing algorithm
@@ -1036,15 +1036,15 @@ GLOBAL_LIST_EMPTY(friendly_animal_types)
 //Returns the same icon specifed in the argument, but with the pixel drawn
 /proc/DrawPixel(icon/I,color,drawX,drawY)
 	if(!I)
-		return 0
+		return FALSE
 
 	var/Iwidth = I.Width()
 	var/Iheight = I.Height()
 
 	if(drawX > Iwidth || drawX <= 0)
-		return 0
+		return FALSE
 	if(drawY > Iheight || drawY <= 0)
-		return 0
+		return FALSE
 
 	I.DrawBox(color,drawX, drawY)
 	return I
@@ -1057,7 +1057,7 @@ GLOBAL_LIST_EMPTY(friendly_animal_types)
 	if(J) //Only set the icon if it succeeded, the icon without the pixel is 1000x better than a black square.
 		icon = J
 		return J
-	return 0
+	return FALSE
 /*
 //For creating consistent icons for human looking simple animals
 /proc/get_flat_human_icon(icon_id, datum/job/J, datum/preferences/prefs, dummy_key, showDirs = GLOB.cardinals, outfit_override = null)
@@ -1254,7 +1254,7 @@ GLOBAL_DATUM_INIT(dummySave, /savefile, new("tmp/dummySave.sav")) //Cache of ico
 
 /proc/adjust_brightness(color, value)
 	if (!color)
-		return "#FFFFFF"
+		return COLOR_WHITE
 	if (!value)
 		return color
 
@@ -1335,7 +1335,7 @@ GLOBAL_DATUM_INIT(dummySave, /savefile, new("tmp/dummySave.sav")) //Cache of ico
 	var/half_diff_height = (end_height-orig_height)*0.5
 
 	//Make icon black
-	grower.SwapColor("#FFFFFF","#000000") //Black.
+	grower.SwapColor(COLOR_WHITE,COLOR_BLACK) //Black.
 
 	//Scale both icons big so we don't have to deal with low-pixel garbage issues
 	grower.Scale(orig_width*10,orig_height*10)
@@ -1345,10 +1345,10 @@ GLOBAL_DATUM_INIT(dummySave, /savefile, new("tmp/dummySave.sav")) //Cache of ico
 	grower.Blend(hole,ICON_OVERLAY, x = ((orig_width*10-orig_width*9)*0.5)+1, y = ((orig_height*10-orig_height*9)*0.5)+1)
 
 	//Swap white to zero alpha
-	grower.SwapColor("#FFFFFF","#00000000")
+	grower.SwapColor(COLOR_WHITE,"#00000000")
 
 	//Color it
-	grower.SwapColor("#000000",color)
+	grower.SwapColor(COLOR_BLACK,color)
 
 	//Scale it to final height
 	grower.Scale(end_width,end_height)

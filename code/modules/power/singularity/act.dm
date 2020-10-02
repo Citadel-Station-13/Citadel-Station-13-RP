@@ -150,7 +150,7 @@
 	return 1
 
 /mob/observer/singuloCanEat()
-	return 0
+	return FALSE
 
 /mob/new_player/singuloCanEat()
-	return 0
+	return FALSE

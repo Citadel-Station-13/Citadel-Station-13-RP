@@ -158,13 +158,13 @@ field_generator power level display
 
 
 /obj/machinery/field_generator/emp_act()
-	return 0
+	return FALSE
 
 /obj/machinery/field_generator/bullet_act(var/obj/item/projectile/Proj)
 	if(istype(Proj, /obj/item/projectile/beam))
 		power += Proj.damage * EMITTER_DAMAGE_POWER_TRANSFER
 		update_icon()
-	return 0
+	return FALSE
 
 
 /obj/machinery/field_generator/Destroy()
@@ -217,7 +217,7 @@ field_generator power level display
 		log_game("FIELDGEN([x],[y],[z]) Lost power and was ON.")
 		investigate_log("ran out of power and <font color='red'>deactivated</font>","singulo")
 		src.power = 0
-		return 0
+		return FALSE
 
 //Tries to draw the needed power from our own power reserve, or connected generators if we can. Returns the amount of power we were able to get.
 /obj/machinery/field_generator/proc/draw_power(var/draw = 0, var/list/flood_list = list())
@@ -264,19 +264,19 @@ field_generator power level display
 	for(var/dist = 0, dist <= 9, dist += 1) // checks out to 8 tiles away for another generator
 		T = get_step(T, NSEW)
 		if(T.density)//We cant shoot a field though this
-			return 0
+			return FALSE
 		for(var/atom/A in T.contents)
 			if(ismob(A))
 				continue
 			if(!istype(A,/obj/machinery/field_generator))
 				if((istype(A,/obj/machinery/door)||istype(A,/obj/machinery/the_singularitygen))&&(A.density))
-					return 0
+					return FALSE
 		steps += 1
 		G = locate(/obj/machinery/field_generator) in T
 		if(!isnull(G))
 			steps -= 1
 			if(!G.active)
-				return 0
+				return FALSE
 			break
 	if(isnull(G))
 		return

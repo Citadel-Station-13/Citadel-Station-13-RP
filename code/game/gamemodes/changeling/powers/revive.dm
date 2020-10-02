@@ -6,11 +6,11 @@
 
 	var/datum/changeling/changeling = changeling_power(0,0,100,DEAD)
 	if(!changeling)
-		return 0
+		return FALSE
 
 	if(changeling.max_geneticpoints < 0) //Absorbed by another ling
 		to_chat(src, "<span class='danger'>You have no genomes, not even your own, and cannot revive.</span>")
-		return 0
+		return FALSE
 
 	if(src.stat == DEAD)
 		dead_mob_list -= src

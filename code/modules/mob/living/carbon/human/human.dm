@@ -178,14 +178,14 @@
 			for(var/obj/item/organ/external/O in src.organs)
 				if(L in O.implants)
 					return 1
-	return 0
+	return FALSE
 
 /mob/living/carbon/human/restrained()
 	if (handcuffed)
 		return 1
 	if (istype(wear_suit, /obj/item/clothing/suit/straight_jacket))
 		return 1
-	return 0
+	return FALSE
 
 /mob/living/carbon/human/var/co2overloadtime = null
 /mob/living/carbon/human/var/temperature_resistance = T0C+75
@@ -341,7 +341,7 @@
 //Now checks siemens_coefficient of the affected area by default
 /mob/living/carbon/human/electrocute_act(var/shock_damage, var/obj/source, var/base_siemens_coeff = 1.0, var/def_zone = null)
 
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & GODMODE)	return FALSE	//godmode
 
 	if (!def_zone)
 		def_zone = pick("l_hand", "r_hand")
@@ -694,12 +694,12 @@
 
 	target_zone = check_zone(target_zone)
 	if(!affecting || affecting.parent_organ != target_zone)
-		return 0
+		return FALSE
 
 	//if the parent organ is significantly larger than the brain organ, then hitting it is not guaranteed
 	var/obj/item/organ/parent = get_organ(target_zone)
 	if(!parent)
-		return 0
+		return FALSE
 
 	if(parent.w_class > affecting.w_class + 1)
 		return prob(100 / 2**(parent.w_class - affecting.w_class - 1))
@@ -710,13 +710,13 @@
 	// VOREstation start
 	if(feral)
 		to_chat(src, "<span class='warning'>Your primitive mind can't grasp the concept of that thing.</span>")
-		return 0
+		return FALSE
 	// VOREstation end
 	if(species.has_fine_manipulation)
 		return 1
 	if(!silent)
 		to_chat(src, "<span class='warning'>You don't have the dexterity to use that!</span>")
-	return 0
+	return FALSE
 
 /mob/living/carbon/human/abiotic(var/full_body = 0)
 	if(full_body && ((src.l_hand && !( src.l_hand.abstract )) || (src.r_hand && !( src.r_hand.abstract )) || (src.back || src.wear_mask || src.head || src.shoes || src.w_uniform || src.wear_suit || src.glasses || src.l_ear || src.r_ear || src.gloves)))
@@ -725,7 +725,7 @@
 	if( (src.l_hand && !src.l_hand.abstract) || (src.r_hand && !src.r_hand.abstract) )
 		return 1
 
-	return 0
+	return FALSE
 
 
 /mob/living/carbon/human/proc/check_dna()
@@ -755,7 +755,7 @@
 	// Todo, check stomach organ when implemented.
 	var/obj/item/organ/external/head/H = get_organ(BP_HEAD)
 	if(!H || !H.can_intake_reagents)
-		return 0
+		return FALSE
 	return 1
 
 /mob/living/carbon/human/proc/morph()
@@ -990,7 +990,7 @@
 
 /mob/living/carbon/human/add_blood(mob/living/carbon/human/M as mob)
 	if (!..())
-		return 0
+		return FALSE
 	//if this blood isn't already in the list, add it
 	if(istype(M))
 		if(!blood_DNA[M.dna.unique_enzymes])
@@ -1046,7 +1046,7 @@
 		for(var/obj/item/O in organ.implants)
 			if(!istype(O, /obj/item/implant)) //implant type items do not cause embedding effects, see handle_embedded_objects()
 				return 1
-	return 0
+	return FALSE
 
 /mob/living/carbon/human/proc/handle_embedded_objects()
 
@@ -1206,7 +1206,7 @@
 			//apply_traits() //VOREStation Removal
 		return 1
 	else
-		return 0
+		return FALSE
 
 /mob/living/carbon/human/proc/bloody_doodle()
 	set category = "IC"
@@ -1217,7 +1217,7 @@
 		return
 
 	if (usr != src)
-		return 0 //something is terribly wrong
+		return FALSE //something is terribly wrong
 
 	if (!bloody_hands)
 		verbs -= /mob/living/carbon/human/proc/bloody_doodle
@@ -1358,14 +1358,14 @@
 		var/obj/item/organ/brain = internal_organs_by_name[O_BRAIN]
 		if(brain && istype(brain))
 			return 1
-	return 0
+	return FALSE
 
 /mob/living/carbon/human/has_eyes()
 	if(internal_organs_by_name[O_EYES])
 		var/obj/item/organ/eyes = internal_organs_by_name[O_EYES]
 		if(eyes && istype(eyes) && !(eyes.status & ORGAN_CUT_AWAY))
 			return 1
-	return 0
+	return FALSE
 
 /mob/living/carbon/human/slip(var/slipped_on, stun_duration=8)
 	var/list/equipment = list(src.w_uniform,src.wear_suit,src.shoes)
@@ -1375,7 +1375,7 @@
 			footcoverage_check = TRUE
 			break
 	if((species.flags & NO_SLIP && !footcoverage_check) || (shoes && (shoes.item_flags & NOSLIP))) //Footwear negates a species' natural traction.
-		return 0
+		return FALSE
 	if(..(slipped_on,stun_duration))
 		return 1
 
@@ -1446,7 +1446,7 @@
 		return 1
 	if(flying) //VOREStation Edit. Checks to see if they have wings and are flying.
 		return 1 //VOREStation Edit.
-	return 0
+	return FALSE
 
 /mob/living/carbon/human/can_stand_overridden()
 	if(wearing_rig && wearing_rig.ai_can_move_suit(check_for_ai = 1))
@@ -1454,9 +1454,9 @@
 		for(var/limbcheck in list("l_leg","r_leg"))
 			var/obj/item/organ/affecting = get_organ(limbcheck)
 			if(!affecting)
-				return 0
+				return FALSE
 		return 1
-	return 0
+	return FALSE
 
 /mob/living/carbon/human/verb/toggle_underwear()
 	set name = "Toggle Underwear"
@@ -1494,18 +1494,18 @@
 		affecting = organs_by_name[BP_GROIN]
 
 	if(affecting && (affecting.robotic >= ORGAN_ROBOT))
-		return 0
+		return FALSE
 	return (species && species.has_organ[organ_check])
 
 /mob/living/carbon/human/can_feel_pain(var/obj/item/organ/check_organ)
 	if(isSynthetic())
-		return 0
+		return FALSE
 	for(var/datum/modifier/M in modifiers)
 		if(M.pain_immunity == TRUE)
-			return 0
+			return FALSE
 	if(check_organ)
 		if(!istype(check_organ))
-			return 0
+			return FALSE
 		return check_organ.organ_can_feel_pain()
 	return !(species.flags & NO_PAIN)
 

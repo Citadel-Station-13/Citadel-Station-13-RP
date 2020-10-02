@@ -17,18 +17,18 @@ var/datum/antagonist/mutineer/mutineers
 
 /datum/antagonist/mutineer/can_become_antag(var/datum/mind/player)
 	if(!..())
-		return 0
+		return FALSE
 	if(!istype(player.current, /mob/living/carbon/human))
-		return 0
+		return FALSE
 	if(M.special_role)
-		return 0
+		return FALSE
 	return 1
 
 /*
 	var/list/directive_candidates = get_directive_candidates()
 	if(!directive_candidates || directive_candidates.len == 0)
 		to_chat(world, "<span class='warning'>Mutiny mode aborted: no valid candidates for Directive X.</span>")
-		return 0
+		return FALSE
 
 	head_loyalist = pick(loyalist_candidates)
 	head_mutineer = pick(mutineer_candidates)

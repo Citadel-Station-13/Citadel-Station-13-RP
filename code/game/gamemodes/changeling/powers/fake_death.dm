@@ -20,7 +20,7 @@
 
 	if(changeling.max_geneticpoints < 0) //Absorbed by another ling
 		to_chat(src, "<span class='danger'>We have no genomes, not even our own, and cannot regenerate.</span>")
-		return 0
+		return FALSE
 
 	if(!C.stat && alert("Are we sure we wish to regenerate?  We will appear to be dead while doing so.","Revival","Yes","No") == "No")
 		return

@@ -10,5 +10,5 @@ proc/findNullRod(var/atom/target)
 		for(var/atom/A in target.contents)
 			if(findNullRod(A))
 				return 1
-	return 0
+	return FALSE
 */

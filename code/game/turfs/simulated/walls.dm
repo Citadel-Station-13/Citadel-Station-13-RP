@@ -240,7 +240,7 @@
 
 /turf/simulated/wall/proc/can_melt()
 	if(material.flags & MATERIAL_UNMELTABLE)
-		return 0
+		return FALSE
 	return 1
 
 /turf/simulated/wall/proc/thermitemelt(mob/user as mob)

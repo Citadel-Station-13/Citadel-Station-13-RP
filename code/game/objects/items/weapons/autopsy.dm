@@ -164,7 +164,7 @@
 
 /obj/item/autopsy_scanner/do_surgery(mob/living/carbon/human/M, mob/living/user)
 	if(!istype(M))
-		return 0
+		return FALSE
 
 	if (user.a_intent == INTENT_HELP)
 		return ..()

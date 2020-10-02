@@ -198,7 +198,7 @@
 	var/turf/coordA = null
 	var/turf/coordB = null
 
-	var/new_light_color = "#FFFFFF"
+	var/new_light_color = COLOR_WHITE
 	var/new_light_range = 3
 	var/new_light_intensity = 3
 
@@ -443,7 +443,7 @@
 					object.set_light(holder.buildmode.new_light_range, holder.buildmode.new_light_intensity, holder.buildmode.new_light_color)
 			if(pa.Find("right"))
 				if(object)
-					object.set_light(0, 0, "#FFFFFF")
+					object.set_light(0, 0, COLOR_WHITE)
 		if(9) // AI control
 			if(pa.Find("left"))
 				if(isliving(object))

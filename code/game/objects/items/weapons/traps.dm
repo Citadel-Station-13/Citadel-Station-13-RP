@@ -111,7 +111,7 @@
 		return
 
 	if(!L.apply_damage(30, BRUTE, target_zone, blocked, soaked, used_weapon=src))
-		return 0
+		return FALSE
 
 	//trap the victim in place
 	setDir(L.dir)

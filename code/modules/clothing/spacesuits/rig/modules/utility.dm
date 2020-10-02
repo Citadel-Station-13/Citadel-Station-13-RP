@@ -108,20 +108,20 @@
 
 /obj/item/rig_module/device/engage(atom/target)
 	if(!..() || !device)
-		return 0
+		return FALSE
 
 	if(!target)
 		device.attack_self(holder.wearer)
-		return 1
+		return TRUE
 
 	var/turf/T = get_turf(target)
 	if(istype(T) && !T.Adjacent(get_turf(src)))
-		return 0
+		return FALSE
 
 	var/resolved = target.attackby(device,holder.wearer)
 	if(!resolved && device && target)
 		device.afterattack(target,holder.wearer,1)
-	return 1
+	return TRUE
 
 
 
@@ -173,11 +173,11 @@
 /obj/item/rig_module/chem_dispenser/accepts_item(var/obj/item/input_item, var/mob/living/user)
 
 	if(!input_item.is_open_container())
-		return 0
+		return FALSE
 
 	if(!input_item.reagents || !input_item.reagents.total_volume)
 		to_chat(user, "\The [input_item] is empty.")
-		return 0
+		return FALSE
 
 	// Magical chemical filtration system, do not question it.
 	var/total_transferred = 0
@@ -201,28 +201,28 @@
 		to_chat(user, "<font color='blue'>You transfer [total_transferred] units into the suit reservoir.</font>")
 	else
 		to_chat(user, "<span class='danger'>None of the reagents seem suitable.</span>")
-	return 1
+	return TRUE
 
 /obj/item/rig_module/chem_dispenser/engage(atom/target)
 
 	if(!..())
-		return 0
+		return FALSE
 
 	var/mob/living/carbon/human/H = holder.wearer
 
 	if(!charge_selected)
 		to_chat(H, "<span class='danger'>You have not selected a chemical type.</span>")
-		return 0
+		return FALSE
 
 	var/datum/rig_charge/charge = charges[charge_selected]
 
 	if(!charge)
-		return 0
+		return FALSE
 
 	var/chems_to_use = 10
 	if(charge.charges <= 0)
 		to_chat(H, "<span class='danger'>Insufficient chems!</span>")
-		return 0
+		return FALSE
 	else if(charge.charges < chems_to_use)
 		chems_to_use = charge.charges
 
@@ -231,7 +231,7 @@
 		if(istype(target,/mob/living/carbon))
 			target_mob = target
 		else
-			return 0
+			return FALSE
 	else
 		target_mob = H
 
@@ -243,7 +243,7 @@
 	charge.charges -= chems_to_use
 	if(charge.charges < 0) charge.charges = 0
 
-	return 1
+	return TRUE
 
 /obj/item/rig_module/chem_dispenser/combat
 
@@ -316,12 +316,12 @@
 /obj/item/rig_module/voice/engage()
 
 	if(!..())
-		return 0
+		return FALSE
 
 	var/choice= input("Would you like to toggle the synthesiser or set the name?") as null|anything in list("Enable","Disable","Set Name")
 
 	if(!choice)
-		return 0
+		return FALSE
 
 	switch(choice)
 		if("Enable")
@@ -335,10 +335,10 @@
 		if("Set Name")
 			var/raw_choice = sanitize(input(usr, "Please enter a new name.")  as text|null, MAX_NAME_LEN)
 			if(!raw_choice)
-				return 0
+				return FALSE
 			voice_holder.voice = raw_choice
 			to_chat(usr, "<font color='blue'>You are now mimicking <B>[voice_holder.voice]</B>.</font>")
-	return 1
+	return TRUE
 
 /obj/item/rig_module/maneuvering_jets
 
@@ -364,14 +364,14 @@
 
 /obj/item/rig_module/maneuvering_jets/engage()
 	if(!..())
-		return 0
+		return FALSE
 	jets.toggle_rockets()
-	return 1
+	return TRUE
 
 /obj/item/rig_module/maneuvering_jets/activate()
 
 	if(active)
-		return 0
+		return FALSE
 
 	active = 1
 
@@ -384,14 +384,14 @@
 
 	if(!jets.on)
 		jets.toggle()
-	return 1
+	return TRUE
 
 /obj/item/rig_module/maneuvering_jets/deactivate()
 	if(!..())
-		return 0
+		return FALSE
 	if(jets.on)
 		jets.toggle()
-	return 1
+	return TRUE
 
 /obj/item/rig_module/maneuvering_jets/New()
 	..()
@@ -439,21 +439,21 @@
 /obj/item/rig_module/mounted/engage(atom/target)
 
 	if(!..())
-		return 0
+		return FALSE
 
 	if(!target)
 		gun.attack_self(holder.wearer)
-		return 1
+		return TRUE
 
 	gun.Fire(target,holder.wearer)
-	return 1
+	return TRUE
 
 /obj/item/rig_module/mounted/mop/process()
 
 	if(holder && holder.wearer)
 		if(!(locate(/obj/item/mop_deploy) in holder.wearer))
 			deactivate()
-			return 0
+			return FALSE
 
 	return ..()
 
@@ -508,7 +508,7 @@
 /obj/item/rig_module/cleaner_launcher/accepts_item(var/obj/item/input_device, var/mob/living/user)
 
 	if(!istype(input_device) || !istype(user))
-		return 0
+		return FALSE
 
 	var/datum/rig_charge/accepted_item
 	for(var/charge in charges)
@@ -518,40 +518,40 @@
 			break
 
 	if(!accepted_item)
-		return 0
+		return FALSE
 
 	if(accepted_item.charges >= 5)
 		to_chat(user, "<span class='danger'>Another grenade of that type will not fit into the module.</span>")
-		return 0
+		return FALSE
 
 	to_chat(user, "<font color='blue'><b>You slot \the [input_device] into the suit module.</b></font>")
 	user.drop_from_inventory(input_device)
 	qdel(input_device)
 	accepted_item.charges++
-	return 1
+	return TRUE
 
 /obj/item/rig_module/cleaner_launcher/engage(atom/target)
 
 	if(!..())
-		return 0
+		return FALSE
 
 	if(!target)
-		return 0
+		return FALSE
 
 	var/mob/living/carbon/human/H = holder.wearer
 
 	if(!charge_selected)
 		to_chat(H, "<span class='danger'>You have not selected a grenade type.</span>")
-		return 0
+		return FALSE
 
 	var/datum/rig_charge/charge = charges[charge_selected]
 
 	if(!charge)
-		return 0
+		return FALSE
 
 	if(charge.charges <= 0)
 		to_chat(H, "<span class='danger'>Insufficient grenades!</span>")
-		return 0
+		return FALSE
 
 	charge.charges--
 	var/obj/item/grenade/new_grenade = new charge.product_type(get_turf(H))
@@ -573,11 +573,11 @@
 /obj/item/rig_module/device/paperdispenser/engage(atom/target)
 
 	if(!..() || !device)
-		return 0
+		return FALSE
 
 	if(!target)
 		device.attack_hand(holder.wearer)
-		return 1
+		return TRUE
 
 /obj/item/rig_module/device/pen
 	name = "mounted pen"
@@ -608,7 +608,7 @@
 
 /obj/item/rig_module/device/stamp/engage(atom/target)
 	if(!..() || !device)
-		return 0
+		return FALSE
 
 	if(!target)
 		if(device == iastamp)
@@ -617,7 +617,7 @@
 		else if(device == deniedstamp)
 			device = iastamp
 			to_chat(holder.wearer, "<span class='notice'>Switched to internal affairs stamp.</span>")
-		return 1
+		return TRUE
 
 /obj/item/rig_module/sprinter
 	name = "sprint module"
@@ -644,7 +644,7 @@
 /obj/item/rig_module/sprinter/activate()
 
 	if(!..())
-		return 0
+		return FALSE
 
 	var/mob/living/carbon/human/H = holder.wearer
 
@@ -655,10 +655,180 @@
 /obj/item/rig_module/sprinter/deactivate()
 
 	if(!..())
-		return 0
+		return FALSE
 
 	var/mob/living/carbon/human/H = holder.wearer
 
 	to_chat(H, "<span class='danger'>Your hardsuit returns to normal speed.</span>")
 
 	holder.slowdown += sprint_speed
+
+/obj/item/rig_module/pat_module
+	name = "\improper P.A.T. module"
+	desc = "A \'Pre-emptive Access Tunneling\' module, for opening every door in a hurry."
+	icon_state = "cloak"
+
+	var/range = 3
+
+	usable = 1
+	toggleable = 1
+	disruptable = 1
+	disruptive = 0
+
+	use_power_cost = 100
+	active_power_cost = 1
+	passive_power_cost = 0
+	module_cooldown = 30
+
+	activate_string = "Enable P.A.T."
+	deactivate_string = "Disable P.A.T."
+	engage_string = "Override Airlock"
+
+	interface_name = "PAT system"
+	interface_desc = "For opening doors ahead of you, in advance. Override notifies command staff."
+
+/*
+	var/message = "[H] has activated \a [src] in [get_area(T)] at position [T.x],[T.y],[T.z], giving them full access for medical rescue."
+	var/obj/item/radio/headset/a = new /obj/item/radio/headset/heads/captain(null)
+	a.icon = icon
+	a.icon_state = icon_state
+	a.autosay(message, "Security Subsystem", "Command")
+	a.autosay(message, "Security Subsystem", "Security")
+	qdel(a)
+*/
+
+/obj/item/rig_module/pat_module/activate()
+	if(!..(TRUE)) //Skip the engage() call, that's for the override and is 'spensive.
+		return FALSE
+
+	var/mob/living/carbon/human/H = holder.wearer
+	to_chat(H,"<span class='notice'>You activate the P.A.T. module.</span>")
+	RegisterSignal(H, COMSIG_MOVABLE_MOVED, .proc/boop)
+
+/obj/item/rig_module/pat_module/deactivate()
+	if(!..())
+		return FALSE
+
+	var/mob/living/carbon/human/H = holder.wearer
+	to_chat(H,"<span class='notice'>Your disable the P.A.T. module.</span>")
+	UnregisterSignal(H, COMSIG_MOVABLE_MOVED)
+
+/obj/item/rig_module/pat_module/proc/boop(var/mob/living/carbon/human/user,var/turf/To,var/turf/Tn)
+	if(!istype(user) || !istype(To) || !istype(Tn))
+		deactivate() //They were picked up or something, or put themselves in a locker, who knows. Just turn off.
+		return
+
+	var/direction = user.dir
+	var/turf/current = Tn
+	for(var/i = 0; i < range; i++)
+		current = get_step(current,direction)
+		if(!current) break
+
+		var/obj/machinery/door/airlock/A = locate(/obj/machinery/door/airlock) in current
+		if(!A || !A.density) continue
+
+		if(A.allowed(user) && A.operable())
+			A.open()
+
+/obj/item/rig_module/pat_module/engage()
+	var/mob/living/carbon/human/H = holder.wearer
+	if(!istype(H))
+		return FALSE
+
+	var/obj/machinery/door/airlock/A = locate(/obj/machinery/door/airlock) in get_step(H,H.dir)
+
+	//Okay, we either found an airlock or we're about to give up.
+	if(!A || !A.density || !A.can_open() || !..())
+		to_chat(H,"<span class='warning'>Unable to comply! Energy too low, or not facing a working airlock!</span>")
+		return FALSE
+
+	H.visible_message("<span class='warning'>[H] begins overriding the airlock!</span>","<span class='notice'>You begin overriding the airlock!</span>")
+	if(do_after(H,6 SECONDS,A) && A.density)
+		A.open()
+
+	var/username = FindNameFromID(H) || "Unknown"
+	var/message = "[username] has overridden [A] (airlock) in \the [get_area(A)] at [A.x],[A.y],[A.z] with \the [src]."
+	global_announcer.autosay(message, "Security Subsystem", "Command")
+	global_announcer.autosay(message, "Security Subsystem", "Security")
+	return TRUE
+
+/obj/item/rig_module/rescue_pharm
+	name = "micro-pharmacy"
+	desc = "A small chemical dispenser with integrated micro cartridges."
+	usable = 0
+	selectable = 1
+	disruptive = 1
+	toggleable = 1
+
+	use_power_cost = 0
+	active_power_cost = 5
+
+	activate_string = "Enable Regen"
+	deactivate_string = "Disable Regen"
+
+	interface_name = "mounted chem injector"
+	interface_desc = "Dispenses loaded chemicals via an arm-mounted injector."
+
+	var/max_reagent_volume = 20 //Regen to this volume
+	var/chems_to_use = 5 //Per injection
+
+	charges = list(
+		list("inaprovaline",  "inaprovaline",  0, 20),
+		list("anti_toxin",  "anti_toxin",  0, 20),
+		list("paracetamol",      "paracetamol",      0, 20),
+		list("dexalin",  "dexalin",      0, 20)
+		)
+
+/obj/item/rig_module/rescue_pharm/process()
+	. = ..()
+	if(active)
+		var/did_work = 0
+
+		for(var/charge in charges)
+			var/datum/rig_charge/C = charges[charge]
+
+			//Found one that isn't full
+			if(C.charges < max_reagent_volume)
+				did_work = 1
+				C.charges += 1
+				break
+
+		if (!did_work)
+			deactivate() //All done
+
+/obj/item/rig_module/rescue_pharm/engage(atom/target)
+	if(!target)
+		return TRUE //You're just toggling the module on, not clicking someone.
+
+	var/mob/living/carbon/human/H = holder.wearer
+
+	if(!charge_selected)
+		to_chat(H,"<span class='danger'>You have not selected a chemical type.</span>")
+		return FALSE
+
+	var/datum/rig_charge/charge = charges[charge_selected]
+
+	if(!charge)
+		return FALSE
+
+	if(charge.charges <= 0)
+		to_chat(H,"<span class='danger'>Insufficient chems!</span>")
+		return FALSE
+
+	else if(charge.charges < chems_to_use)
+		chems_to_use = charge.charges
+
+	var/mob/living/carbon/target_mob
+	if(istype(target,/mob/living/carbon))
+		target_mob = target
+	else
+		return FALSE
+
+	to_chat(H,"<span class='notice'>You inject [target_mob == H ? "yourself" : target_mob] with [chems_to_use] unit\s of [charge.short_name].</span>")
+	to_chat(target_mob,"<span class='notice'>You feel a rushing in your veins as you're injected by \the [src].</span>")
+	target_mob.reagents.add_reagent(charge.display_name, chems_to_use)
+
+	charge.charges -= chems_to_use
+	if(charge.charges < 0) charge.charges = 0
+
+	return TRUE

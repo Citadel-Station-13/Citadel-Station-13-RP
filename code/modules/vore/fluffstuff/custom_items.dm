@@ -94,8 +94,8 @@
 	if(default_parry_check(user, attacker, damage_source) && prob(75))
 		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
 		playsound(user.loc, 'sound/weapons/punchmiss.ogg', 50, 1)
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 //joanrisu:Katarina Eine
 /obj/item/material/knife/tacknife/combatknife/fluff/katarina
@@ -108,8 +108,8 @@
 	if(default_parry_check(user, attacker, damage_source) && prob(75))
 		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
 		playsound(user.loc, 'sound/weapons/punchmiss.ogg', 50, 1)
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 //For General use
 /obj/item/sword/fluff/joanaria/scisword
@@ -368,7 +368,7 @@
 		return ..()
 	else
 		to_chat(H, "<span class='warning'>You need to have a wolf-taur half to wear this.</span>")
-		return 0
+		return FALSE
 
 /obj/item/clothing/head/helmet/serdy //SilencedMP5A5's specialty helmet. Uncomment if/when they make their custom item app and are accepted.
 	name = "KSS-8 security helmet"
@@ -444,7 +444,7 @@
 /obj/item/clothing/accessory/collar/vmcrystal/attack_self(mob/user as mob)
 	if(state > 0) //Can't re-pair, one time only, for security reasons.
 		to_chat(user, "<span class='notice'>The [name] doesn't do anything.</span>")
-		return 0
+		return FALSE
 
 	owner = user	//We're paired to this guy
 	owner_c = user.client	//This is his client
@@ -639,7 +639,7 @@
 			var/mob/M = loc
 			M.update_inv_back()
 		ambulance_state = FALSE
-		set_light(2, 1, "#FF0000")
+		set_light(2, 1, COLOR_RED)
 		soundloop.start()
 	else
 		item_state = "tempestsaddlebag"
@@ -656,9 +656,9 @@
 		return
 	if(world.time - ambulance_last_switch > 15)
 		ambulance_state = !(ambulance_state)
-		var/newlight = "#FF0000"
+		var/newlight = COLOR_RED
 		if(ambulance_state)
-			newlight = "#0000FF"
+			newlight = COLOR_BLUE
 		if (ismob(loc))
 			var/mob/M = loc
 			M.update_inv_back()
@@ -784,7 +784,7 @@
 	START_PROCESSING(SSobj, src)
 	to_chat(source, "<span class='notice'>You implant [source] with \the [src].</span>")
 	source.verbs |= assigned_proc
-	return 1
+	return TRUE
 
 /obj/item/implanter/reagent_generator/roiz
 	implant_type = /obj/item/implant/reagent_generator/roiz
@@ -853,7 +853,7 @@
 	START_PROCESSING(SSobj, src)
 	to_chat(source, "<span class='notice'>You implant [source] with \the [src].</span>")
 	source.verbs |= assigned_proc
-	return 1
+	return TRUE
 
 /obj/item/implanter/reagent_generator/jasmine
 	implant_type = /obj/item/implant/reagent_generator/jasmine
@@ -922,7 +922,7 @@
 	START_PROCESSING(SSobj, src)
 	to_chat(source, "<span class='notice'>You implant [source] with \the [src].</span>")
 	source.verbs |= assigned_proc
-	return 1
+	return TRUE
 
 /obj/item/implanter/reagent_generator/yonra
 	implant_type = /obj/item/implant/reagent_generator/yonra
@@ -1007,7 +1007,7 @@
 	START_PROCESSING(SSobj, src)
 	to_chat(source, "<span class='notice'>You implant [source] with \the [src].</span>")
 	source.verbs |= assigned_proc
-	return 1
+	return TRUE
 
 /obj/item/implanter/reagent_generator/rischi
 	implant_type = /obj/item/implant/reagent_generator/rischi
@@ -1755,7 +1755,7 @@
 	START_PROCESSING(SSobj, src)
 	to_chat(source, "<span class='notice'>You implant [source] with \the [src].</span>")
 	source.verbs |= assigned_proc
-	return 1
+	return TRUE
 
 /obj/item/implanter/reagent_generator/evian
 	implant_type = /obj/item/implant/reagent_generator/evian
@@ -1859,8 +1859,8 @@
 	if(wielded && default_parry_check(user, attacker, damage_source) && prob(30))
 		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
 		playsound(user.loc, 'sound/weapons/punchmiss.ogg', 50, 1)
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /obj/item/melee/baton/fluff/stunstaff/update_icon()
 	icon_state = "[base_icon][wielded][status]"
@@ -2093,6 +2093,6 @@
    if(..())
       if(H.ckey != "radiantaurora")
          to_chat(H, "<span class='warning'>These don't look like they were made to fit you...</span>")
-         return 0
+         return FALSE
       else
-         return 1
+         return TRUE

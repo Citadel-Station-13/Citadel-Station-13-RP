@@ -25,7 +25,7 @@
 	if(delay && delay >= 0)
 		fire_delay = delay
 		return 1
-	return 0
+	return FALSE
 
 /obj/structure/particle_accelerator/particle_emitter/proc/emit_particle(var/strength = 0)
 	if((last_shot + fire_delay) <= world.time)
@@ -46,4 +46,4 @@
 		if(A)
 			A.setDir(src.dir)
 			return 1
-	return 0
+	return FALSE

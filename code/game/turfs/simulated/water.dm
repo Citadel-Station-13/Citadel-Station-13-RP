@@ -107,15 +107,15 @@
 
 /mob/living/proc/check_submerged()
 	if(buckled)
-		return 0
+		return FALSE
 	if(hovering)
-		return 0
+		return FALSE
 	if(locate(/obj/structure/catwalk) in loc)
-		return 0
+		return FALSE
 	var/turf/simulated/floor/water/T = loc
 	if(istype(T))
 		return T.depth
-	return 0
+	return FALSE
 
 // Use this to have things react to having water applied to them.
 /atom/movable/proc/water_act(amount)

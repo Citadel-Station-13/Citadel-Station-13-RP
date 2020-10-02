@@ -170,7 +170,7 @@
 //Removes fuel from the welding tool. If a mob is passed, it will perform an eyecheck on the mob. This should probably be renamed to use()
 /obj/item/weldingtool/proc/remove_fuel(var/amount = 1, var/mob/M = null)
 	if(!welding)
-		return 0
+		return FALSE
 	if(amount)
 		burned_fuel_for = 0 // Reset the counter since we're removing fuel.
 	if(get_fuel() >= amount)
@@ -183,7 +183,7 @@
 		if(M)
 			to_chat(M, "<span class='notice'>You need more welding fuel to complete this task.</span>")
 		update_icon()
-		return 0
+		return FALSE
 
 //Returns whether or not the welding tool is currently on.
 /obj/item/weldingtool/proc/isOn()
@@ -564,7 +564,7 @@
 	else if(power_supply)
 		return power_supply.charge
 	else
-		return 0
+		return FALSE
 
 /obj/item/weldingtool/electric/get_max_fuel()
 	if(use_external_power)
@@ -573,11 +573,11 @@
 			return external.maxcharge
 	else if(power_supply)
 		return power_supply.maxcharge
-	return 0
+	return FALSE
 
 /obj/item/weldingtool/electric/remove_fuel(var/amount = 1, var/mob/M = null)
 	if(!welding)
-		return 0
+		return FALSE
 	if(get_fuel() >= amount)
 		power_supply.checked_use(charge_cost)
 		if(use_external_power)
@@ -592,7 +592,7 @@
 		if(M)
 			to_chat(M, "<span class='notice'>You need more energy to complete this task.</span>")
 		update_icon()
-		return 0
+		return FALSE
 
 /obj/item/weldingtool/electric/attack_hand(mob/user as mob)
 	if(user.get_inactive_hand() == src)

@@ -138,7 +138,7 @@
 		if (1000 to 50000)
 			return min(rand(10,20),rand(10,20))
 		else
-			return 0
+			return FALSE
 
 ////////////////////////////////////////////////
 // Misc.

@@ -355,7 +355,7 @@
 
 	//VOREStation Edit
 	if(life_disabled)
-		return 0
+		return FALSE
 	//VOREStation Edit End
 
 	..()
@@ -363,7 +363,7 @@
 	//Health
 	updatehealth()
 	if(stat >= DEAD)
-		return 0
+		return FALSE
 
 	handle_stunned()
 	handle_weakened()
@@ -794,7 +794,7 @@
 		if (M.occupant)
 			return 1
 	ai_log("SA_attackable([target_mob]): no",3)
-	return 0
+	return FALSE
 
 /mob/living/simple_mob/say(var/message,var/datum/language/language)
 	var/verb = "says"
@@ -848,13 +848,13 @@
 		handle_stance(STANCE_ATTACK)
 		return M
 
-	return 0
+	return FALSE
 
 /mob/living/simple_mob/proc/set_target(var/mob/M, forced = 0)
 	ai_log("SetTarget([M])",2)
 	if(!M || (world.time - last_target_time < 5 SECONDS) && target_mob)
 		ai_log("SetTarget() can't set it again so soon",3)
-		return 0
+		return FALSE
 
 	var/turf/seen = get_turf(M)
 
@@ -873,14 +873,14 @@
 		spawn(1)
 			WanderTowards(seen)
 
-	return 0
+	return FALSE
 
 // Set a follow target, with optional time for how long to follow them.
 /mob/living/simple_mob/proc/set_follow(var/mob/M, var/follow_for = 0)
 	ai_log("SetFollow([M]) for=[follow_for]",2)
 	if(!M || (world.time - last_target_time < 4 SECONDS) && follow_mob)
 		ai_log("SetFollow() can't set it again so soon",3)
-		return 0
+		return FALSE
 
 	follow_mob = M
 	last_follow_time = world.time
@@ -900,7 +900,7 @@
 			T = F
 			break
 		else if(specific_targets)
-			return 0
+			return FALSE
 
 		if(isliving(A))
 			var/mob/living/L = A
@@ -1131,7 +1131,7 @@
 			for(var/turf/T in walk_list)
 				T.overlays |= path_overlay
 	else
-		return 0
+		return FALSE
 
 	return walk_list.len
 
@@ -1149,7 +1149,7 @@
 		if(!astarpathing || incapacitated(INCAPACITATION_DISABLED))
 			astarpathing = 0
 			ai_log("WalkPath() was interrupted",2)
-			return 0
+			return FALSE
 		//Finished the path
 		if(!walk_list.len)
 			astarpathing = 0
@@ -1158,7 +1158,7 @@
 		if(failed_steps >= 3)
 			astarpathing = 0
 			ai_log("WalkPath() failed too many steps",2)
-			return 0
+			return FALSE
 
 		//Take a step
 		if(!MoveOnce())
@@ -1194,7 +1194,7 @@
 	step_towards(src, src.walk_list[1])
 	if(src.loc != src.walk_list[1])
 		ai_log("MoveOnce() step_towards returning 0",3)
-		return 0
+		return FALSE
 	else
 		walk_list -= src.walk_list[1]
 		ai_log("MoveOnce() step_towards returning 1",3)
@@ -1236,13 +1236,13 @@
 	if(incapacitated(INCAPACITATION_DISABLED))
 		ai_log("AttackTarget() Bailing because we're disabled",2)
 		LoseTarget()
-		return 0
+		return FALSE
 	if(!target_mob || !SA_attackable(target_mob) || (target_mob.alpha <= EFFECTIVE_INVIS)) //if the target went invisible, you can't follow it
 		LoseTarget()
-		return 0
+		return FALSE
 	if(!(target_mob in ListTargets(view_range)))
 		LostTarget()
-		return 0
+		return FALSE
 
 	ai_log("AttackTarget() vs. [target_mob]",1)
 	var/distance = get_dist(src, target_mob)
@@ -1268,7 +1268,7 @@
 		ai_log("AttackTarget() out of range!",3)
 		stoplag(1) // Unfortunately this is needed to protect from ClosestDistance() sometimes not updating fast enough to prevent an infinite loop.
 		handle_stance(STANCE_ATTACK)
-		return 0
+		return FALSE
 
 //Attack the target in melee
 /mob/living/simple_mob/proc/PunchTarget()
@@ -1366,17 +1366,17 @@
 
 	for(var/mob/living/FF in faction_friends)
 		if(FF.loc in crosses)
-			return 0
+			return FALSE
 
 	for(var/mob/living/F in friends)
 		if(F.loc in crosses)
-			return 0
+			return FALSE
 
 	return 1
 
 //Special attacks, like grenades or blinding spit or whatever
 /mob/living/simple_mob/proc/SpecialAtkTarget()
-	return 0
+	return FALSE
 
 //Shoot a bullet at someone
 /mob/living/simple_animal/proc/Shoot(atom/target, atom/start, mob/user, var/bullet = 0)
@@ -1498,7 +1498,7 @@
 
 //Check for shuttle bumrush
 /mob/living/simple_mob/proc/check_horde()
-	return 0
+	return FALSE
 	if(SSemergencyshuttle.shuttle.location)
 		if(!enroute && !target_mob)	//The shuttle docked, all monsters rush for the escape hallway
 			if(!shuttletarget && escape_list.len) //Make sure we didn't already assign it a target, and that there are targets to pick
@@ -1539,7 +1539,7 @@
 /mob/living/simple_mob/electrocute_act(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0, var/def_zone = null)
 	shock_damage *= max(siemens_coeff - shock_resistance, 0)
 	if (shock_damage < 1)
-		return 0
+		return FALSE
 
 	apply_damage(damage = shock_damage, damagetype = BURN, def_zone = null, blocked = null, blocked = resistance, used_weapon = null, sharp = FALSE, edge = FALSE)
 	playsound(loc, "sparks", 50, 1, -1)
@@ -1579,7 +1579,7 @@
 /mob/living/simple_mob/getarmor(def_zone, attack_flag)
 	var/armorval = armor[attack_flag]
 	if(!armorval)
-		return 0
+		return FALSE
 	else
 		return armorval
 /*
@@ -1616,7 +1616,7 @@
 
 /mob/living/simple_mob/put_in_l_hand(var/obj/item/W)
 	if(!..() || l_hand)
-		return 0
+		return FALSE
 	W.forceMove(src)
 	l_hand = W
 	W.equipped(src,slot_l_hand)
@@ -1626,7 +1626,7 @@
 
 /mob/living/simple_mob/put_in_r_hand(var/obj/item/W)
 	if(!..() || r_hand)
-		return 0
+		return FALSE
 	W.forceMove(src)
 	r_hand = W
 	W.equipped(src,slot_r_hand)
@@ -1757,3 +1757,330 @@
 
 /mob/living/simple_mob/get_nametag_desc(mob/user)
 	return "<i>[tt_desc]</i>"
+
+/mob/living/simple_animal
+	var/vore_active = 0					// If vore behavior is enabled for this mob
+	var/vore_capacity = 1				// The capacity (in people) this person can hold
+	var/vore_max_size = RESIZE_HUGE		// The max size this mob will consider eating
+	var/vore_min_size = RESIZE_TINY 	// The min size this mob will consider eating
+	var/vore_bump_chance = 0			// Chance of trying to eat anyone that bumps into them, regardless of hostility
+	var/vore_bump_emote	= "grabs hold of"	// Allow messages for bumpnom mobs to have a flavorful bumpnom
+	var/vore_pounce_chance = 5			// Chance of this mob knocking down an opponent
+	var/vore_pounce_cooldown = 0		// Cooldown timer - if it fails a pounce it won't pounce again for a while
+	var/vore_pounce_successrate	= 100	// Chance of a pounce succeeding against a theoretical 0-health opponent
+	var/vore_pounce_falloff = 1			// Success rate falloff per %health of target mob.
+	var/vore_pounce_maxhealth = 80		// Mob will not attempt to pounce targets above this %health
+	var/vore_standing_too = 0			// Can also eat non-stunned mobs
+	var/vore_ignores_undigestable = 1	// Refuse to eat mobs who are undigestable by the prefs toggle.
+	var/swallowsound = null				// What noise plays when you succeed in eating the mob.
+
+	var/vore_default_mode = DM_DIGEST	// Default bellymode (DM_DIGEST, DM_HOLD, DM_ABSORB)
+	var/vore_default_flags = DM_FLAG_ITEMWEAK // Itemweak by default
+	var/vore_digest_chance = 25			// Chance to switch to digest mode if resisted
+	var/vore_absorb_chance = 0			// Chance to switch to absorb mode if resisted
+	var/vore_escape_chance = 25			// Chance of resisting out of mob
+
+	var/vore_stomach_name				// The name for the first belly if not "stomach"
+	var/vore_stomach_flavor				// The flavortext for the first belly if not the default
+
+	var/vore_fullness = 0				// How "full" the belly is (controls icons)
+	var/vore_icons = 0					// Bitfield for which fields we have vore icons for.
+
+	var/mount_offset_x = 5				// Horizontal riding offset.
+	var/mount_offset_y = 8				// Vertical riding offset
+
+// Release belly contents before being gc'd!
+/mob/living/simple_animal/Destroy()
+	release_vore_contents()
+	prey_excludes.Cut()
+	. = ..()
+
+//For all those ID-having mobs
+/mob/living/simple_animal/GetIdCard()
+	if(myid)
+		return myid
+
+// Update fullness based on size & quantity of belly contents
+/mob/living/simple_animal/proc/update_fullness()
+	var/new_fullness = 0
+	for(var/belly in vore_organs)
+		var/obj/belly/B = belly
+		for(var/mob/living/M in B)
+			new_fullness += M.size_multiplier
+	new_fullness = round(new_fullness, 1) // Because intervals of 0.25 are going to make sprite artists cry.
+	vore_fullness = min(vore_capacity, new_fullness)
+
+/mob/living/simple_animal/proc/update_vore_icon()
+	if(!vore_active)
+		return FALSE
+	update_fullness()
+	if(!vore_fullness)
+		return FALSE
+	else if((stat == CONSCIOUS) && (!icon_rest || !resting || !incapacitated(INCAPACITATION_DISABLED)) && (vore_icons & SA_ICON_LIVING))
+		return "[icon_living]-[vore_fullness]"
+	else if(stat >= DEAD && (vore_icons & SA_ICON_DEAD))
+		return "[icon_dead]-[vore_fullness]"
+	else if(((stat == UNCONSCIOUS) || resting || incapacitated(INCAPACITATION_DISABLED) ) && icon_rest && (vore_icons & SA_ICON_REST))
+		return "[icon_rest]-[vore_fullness]"
+
+/mob/living/simple_animal/proc/will_eat(var/mob/living/M)
+	if(client) //You do this yourself, dick!
+		ai_log("vr/wont eat [M] because we're player-controlled", 3)
+		return FALSE
+	if(!istype(M)) //Can't eat 'em if they ain't /mob/living
+		ai_log("vr/wont eat [M] because they are not /mob/living", 3)
+		return FALSE
+	if(src == M) //Don't eat YOURSELF dork
+		ai_log("vr/won't eat [M] because it's me!", 3)
+		return FALSE
+	if(vore_ignores_undigestable && !M.digestable) //Don't eat people with nogurgle prefs
+		ai_log("vr/wont eat [M] because I am picky", 3)
+		return FALSE
+	if(!M.allowmobvore) // Don't eat people who don't want to be ate by mobs
+		ai_log("vr/wont eat [M] because they don't allow mob vore", 3)
+		return FALSE
+	if(M in prey_excludes) // They're excluded
+		ai_log("vr/wont eat [M] because they are excluded", 3)
+		return FALSE
+	if(M.size_multiplier < vore_min_size || M.size_multiplier > vore_max_size)
+		ai_log("vr/wont eat [M] because they too small or too big", 3)
+		return FALSE
+	if(vore_capacity != 0 && (vore_fullness >= vore_capacity)) // We're too full to fit them
+		ai_log("vr/wont eat [M] because I am too full", 3)
+		return FALSE
+	return 1
+
+/mob/living/simple_animal/PunchTarget()
+	ai_log("vr/PunchTarget() [target_mob]", 3)
+
+	// If we're not hungry, call the sideways "parent" to do normal punching
+	if(!vore_active)
+		return ..()
+
+	// If target is standing we might pounce and knock them down instead of attacking
+	var/pouncechance = CanPounceTarget()
+	if(pouncechance)
+		return PounceTarget(pouncechance)
+
+	// We're not attempting a pounce, if they're down or we can eat standing, do it as long as they're edible. Otherwise, hit normally.
+	if(will_eat(target_mob) && (!target_mob.canmove || vore_standing_too))
+		return EatTarget()
+	else
+		return ..()
+
+/mob/living/simple_animal/proc/CanPounceTarget() //returns either FALSE or a %chance of success
+	if(!target_mob.canmove || issilicon(target_mob) || world.time < vore_pounce_cooldown) //eliminate situations where pouncing CANNOT happen
+		return FALSE
+	if(!prob(vore_pounce_chance)) //mob doesn't want to pounce
+		return FALSE
+	if(will_eat(target_mob) && vore_standing_too) //100% chance of hitting people we can eat on the spot
+		return 100
+	var/TargetHealthPercent = (target_mob.health/target_mob.getMaxHealth())*100 //now we start looking at the target itself
+	if (TargetHealthPercent > vore_pounce_maxhealth) //target is too healthy to pounce
+		return FALSE
+	else
+		return max(0,(vore_pounce_successrate - (vore_pounce_falloff * TargetHealthPercent)))
+
+
+/mob/living/simple_animal/proc/PounceTarget(var/successrate = 100)
+	vore_pounce_cooldown = world.time + 20 SECONDS // don't attempt another pounce for a while
+	if(prob(successrate)) // pounce success!
+		target_mob.Weaken(5)
+		target_mob.visible_message("<span class='danger'>\the [src] pounces on \the [target_mob]!</span>!")
+	else // pounce misses!
+		target_mob.visible_message("<span class='danger'>\the [src] attempts to pounce \the [target_mob] but misses!</span>!")
+		playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
+
+	if(will_eat(target_mob) && (!target_mob.canmove || vore_standing_too)) //if they're edible then eat them too
+		return EatTarget()
+	else
+		return //just leave them
+
+// Attempt to eat target
+// TODO - Review this.  Could be some issues here
+/mob/living/simple_animal/proc/EatTarget()
+	ai_log("vr/EatTarget() [target_mob]",2)
+	stop_automated_movement = 1
+	var/old_target = target_mob
+	handle_stance(STANCE_BUSY)
+	. = animal_nom(target_mob)
+	playsound(src, swallowsound, 50, 1)
+	update_icon()
+
+	if(.)
+		// If we succesfully ate them, lose the target
+		LoseTarget()
+		return old_target
+	else if(old_target == target_mob)
+		// If we didn't but they are still our target, go back to attack.
+		// but don't run the handler immediately, wait until next tick
+		// Otherwise we'll be in a possibly infinate loop
+		set_stance(STANCE_ATTACK)
+	stop_automated_movement = 0
+
+/mob/living/simple_animal/death()
+	release_vore_contents()
+	. = ..()
+
+// Make sure you don't call ..() on this one, otherwise you duplicate work.
+/mob/living/simple_animal/init_vore()
+	if(!vore_active || no_vore)
+		return
+
+	if(!IsAdvancedToolUser())
+		verbs |= /mob/living/simple_animal/proc/animal_nom
+		verbs |= /mob/living/proc/shred_limb
+
+	if(LAZYLEN(vore_organs))
+		return
+
+	//A much more detailed version of the default /living implementation
+	var/obj/belly/B = new /obj/belly(src)
+	vore_selected = B
+	B.immutable = 1
+	B.name = vore_stomach_name ? vore_stomach_name : "stomach"
+	B.desc = vore_stomach_flavor ? vore_stomach_flavor : "Your surroundings are warm, soft, and slimy. Makes sense, considering you're inside \the [name]."
+	B.digest_mode = vore_default_mode
+	B.mode_flags = vore_default_flags
+	B.escapable = vore_escape_chance > 0
+	B.escapechance = vore_escape_chance
+	B.digestchance = vore_digest_chance
+	B.absorbchance = vore_absorb_chance
+	B.human_prey_swallow_time = swallowTime
+	B.nonhuman_prey_swallow_time = swallowTime
+	B.vore_verb = "swallow"
+	B.emote_lists[DM_HOLD] = list( // We need more that aren't repetitive. I suck at endo. -Ace
+		"The insides knead at you gently for a moment.",
+		"The guts glorp wetly around you as some air shifts.",
+		"The predator takes a deep breath and sighs, shifting you somewhat.",
+		"The stomach squeezes you tight for a moment, then relaxes harmlessly.",
+		"The predator's calm breathing and thumping heartbeat pulses around you.",
+		"The warm walls kneads harmlessly against you.",
+		"The liquids churn around you, though there doesn't seem to be much effect.",
+		"The sound of bodily movements drown out everything for a moment.",
+		"The predator's movements gently force you into a different position.")
+	B.emote_lists[DM_DIGEST] = list(
+		"The burning acids eat away at your form.",
+		"The muscular stomach flesh grinds harshly against you.",
+		"The caustic air stings your chest when you try to breathe.",
+		"The slimy guts squeeze inward to help the digestive juices soften you up.",
+		"The onslaught against your body doesn't seem to be letting up; you're food now.",
+		"The predator's body ripples and crushes against you as digestive enzymes pull you apart.",
+		"The juices pooling beneath you sizzle against your sore skin.",
+		"The churning walls slowly pulverize you into meaty nutrients.",
+		"The stomach glorps and gurgles as it tries to work you into slop.")
+
+/mob/living/simple_animal/Bumped(var/atom/movable/AM, yes)
+	if(ismob(AM))
+		var/mob/tmob = AM
+		if(will_eat(tmob) && !istype(tmob, type) && prob(vore_bump_chance) && !ckey) //check if they decide to eat. Includes sanity check to prevent cannibalism.
+			if(tmob.canmove && prob(vore_pounce_chance)) //if they'd pounce for other noms, pounce for these too, otherwise still try and eat them if they hold still
+				tmob.Weaken(5)
+			tmob.visible_message("<span class='danger'>\the [src] [vore_bump_emote] \the [tmob]!</span>!")
+			stop_automated_movement = 1
+			animal_nom(tmob)
+			update_icon()
+			stop_automated_movement = 0
+	..()
+
+// Checks to see if mob doesn't like this kind of turf
+/mob/living/simple_animal/avoid_turf(var/turf/turf)
+	//So we only check if the parent didn't find anything terrible
+	if((. = ..(turf)))
+		return .
+
+	if(istype(turf,/turf/unsimulated/floor/sky))
+		return TRUE //Mobs aren't that stupid, probably
+
+//Grab = Nomf
+/mob/living/simple_animal/UnarmedAttack(var/atom/A, var/proximity)
+	. = ..()
+
+	if(a_intent == INTENT_GRAB && isliving(A) && !has_hands)
+		animal_nom(A)
+
+// Riding
+/datum/riding/simple_animal
+	keytype = /obj/item/material/twohanded/fluff/riding_crop // Crack!
+	nonhuman_key_exemption = FALSE	// If true, nonhumans who can't hold keys don't need them, like borgs and simplemobs.
+	key_name = "a riding crop"		// What the 'keys' for the thing being rided on would be called.
+	only_one_driver = TRUE			// If true, only the person in 'front' (first on list of riding mobs) can drive.
+
+/datum/riding/simple_animal/handle_vehicle_layer()
+	ridden.layer = initial(ridden.layer)
+
+/datum/riding/simple_animal/ride_check(mob/living/M)
+	var/mob/living/L = ridden
+	if(L.stat)
+		force_dismount(M)
+		return FALSE
+	return TRUE
+
+/datum/riding/simple_animal/force_dismount(mob/M)
+	. =..()
+	ridden.visible_message("<span class='notice'>[M] stops riding [ridden]!</span>")
+
+/datum/riding/simple_animal/get_offsets(pass_index) // list(dir = x, y, layer)
+	var/mob/living/simple_animal/L = ridden
+	var/scale = L.size_multiplier
+
+	var/list/values = list(
+		"[NORTH]" = list(0, L.mount_offset_y*scale, ABOVE_MOB_LAYER),
+		"[SOUTH]" = list(0, L.mount_offset_y*scale, BELOW_MOB_LAYER),
+		"[EAST]" = list(-L.mount_offset_x*scale, L.mount_offset_y*scale, ABOVE_MOB_LAYER),
+		"[WEST]" = list(L.mount_offset_x*scale, L.mount_offset_y*scale, ABOVE_MOB_LAYER))
+
+	return values
+
+/mob/living/simple_animal/buckle_mob(mob/living/M, forced = FALSE, check_loc = TRUE)
+	if(forced)
+		return ..() // Skip our checks
+	if(!riding_datum)
+		return FALSE
+	if(lying)
+		return FALSE
+	if(!ishuman(M))
+		return FALSE
+	if(M in buckled_mobs)
+		return FALSE
+	if(M.size_multiplier > size_multiplier * 1.2)
+		to_chat(src,"<span class='warning'>This isn't a pony show! You need to be bigger for them to ride.</span>")
+		return FALSE
+
+	var/mob/living/carbon/human/H = M
+
+	if(H.loc != src.loc)
+		if(H.Adjacent(src))
+			H.forceMove(get_turf(src))
+
+	. = ..()
+	if(.)
+		buckled_mobs[H] = "riding"
+
+/mob/living/simple_animal/attack_hand(mob/user as mob)
+	if(riding_datum && LAZYLEN(buckled_mobs))
+		//We're getting off!
+		if(user in buckled_mobs)
+			riding_datum.force_dismount(user)
+		//We're kicking everyone off!
+		if(user == src)
+			for(var/rider in buckled_mobs)
+				riding_datum.force_dismount(rider)
+	else
+		. = ..()
+
+/mob/living/simple_animal/proc/animal_mount(var/mob/living/M in living_mobs(1))
+	set name = "Animal Mount/Dismount"
+	set category = "Abilities"
+	set desc = "Let people ride on you."
+
+	if(LAZYLEN(buckled_mobs))
+		for(var/rider in buckled_mobs)
+			riding_datum.force_dismount(rider)
+		return
+	if (stat != CONSCIOUS)
+		return
+	if(!can_buckle || !istype(M) || !M.Adjacent(src) || M.buckled)
+		return
+	if(buckle_mob(M))
+		visible_message("<span class='notice'>[M] starts riding [name]!</span>")

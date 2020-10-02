@@ -24,6 +24,9 @@
 	charge_cost = 480
 	projectile_type = /obj/item/projectile/ion/pistol
 
+/obj/item/gun/energy/ionrifle/weak
+	projectile_type = /obj/item/projectile/ion/small
+
 /obj/item/gun/energy/decloner
 	name = "biological demolecularisor"
 	desc = "A gun that discharges high amounts of controlled radiation to slowly break a target into component elements."
@@ -138,7 +141,7 @@
 /obj/item/gun/energy/staff/special_check(var/mob/user)
 	if((user.mind && !wizards.is_antagonist(user.mind)))
 		to_chat(usr, "<span class='warning'>You focus your mind on \the [src], but nothing happens!</span>")
-		return 0
+		return FALSE
 
 	return ..()
 
@@ -230,7 +233,7 @@ obj/item/gun/energy/staff/focus
 /obj/item/gun/energy/maghowitzer/attack(atom/A, mob/living/user, def_zone)
 	if(power_cycle)
 		to_chat(user, "<span class='notice'>\The [src] is already powering up!</span>")
-		return 0
+		return FALSE
 	var/turf/target_turf = get_turf(A)
 	var/beameffect = user.Beam(target_turf,icon_state="sat_beam",icon='icons/effects/beam.dmi',time=31, maxdistance=10,beam_type=/obj/effect/ebeam,beam_sleep_time=3)
 	if(beameffect)
@@ -256,7 +259,7 @@ obj/item/gun/energy/staff/focus
 /obj/item/gun/energy/maghowitzer/afterattack(atom/A, mob/living/user, adjacent, params)
 	if(power_cycle)
 		to_chat(user, "<span class='notice'>\The [src] is already powering up!</span>")
-		return 0
+		return FALSE
 
 	var/turf/target_turf = get_turf(A)
 
@@ -283,3 +286,25 @@ obj/item/gun/energy/staff/focus
 		power_cycle = FALSE
 	else
 		to_chat(user, "<span class='notice'>\The [src] is already powering up!</span>")
+
+/obj/item/gun/energy/medigun //Adminspawn/ERT etc
+	name = "directed restoration system"
+	desc = "The BL-3 'Phoenix' is an adaptation on the ML-3 'Medbeam' design that channels the power of the beam into a single healing laser. It is highly energy-inefficient, but its medical power cannot be denied."
+	force = 5
+	icon_state = "medbeam"
+	item_state = "medbeam"
+	icon = 'icons/obj/gun_vr.dmi'
+	item_icons = list(
+		slot_l_hand_str = 'icons/mob/items/lefthand_guns_vr.dmi',
+		slot_r_hand_str = 'icons/mob/items/righthand_guns_vr.dmi',
+		)
+	slot_flags = SLOT_BELT
+	accuracy = 100
+	fire_delay = 12
+	fire_sound = 'sound/weapons/eluger.ogg'
+
+	projectile_type = /obj/item/projectile/beam/medigun
+
+	accept_cell_type = /obj/item/cell
+	cell_type = /obj/item/cell/high
+	charge_cost = 2500

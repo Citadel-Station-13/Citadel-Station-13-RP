@@ -17,7 +17,7 @@
 	var/obj/machinery/power/apc/A = holder
 	if(A.wiresexposed)
 		return 1
-	return 0
+	return FALSE
 
 /datum/wires/apc/UpdatePulsed(var/index)
 

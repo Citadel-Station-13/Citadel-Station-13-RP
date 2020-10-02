@@ -39,7 +39,7 @@
 	pellets -= hits //each hit reduces the number of pellets left
 	if (hits >= total_pellets || pellets <= 0)
 		return 1
-	return 0
+	return FALSE
 
 /obj/item/projectile/bullet/pellet/get_structure_damage()
 	var/distance = get_dist(loc, starting)

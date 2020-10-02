@@ -270,7 +270,7 @@ var/global/datum/controller/radio/radio_controller
 		start_point = get_turf(source)
 		if(!start_point)
 			qdel(signal)
-			return 0
+			return FALSE
 	if (radio_filter)
 		send_to_filter(source, signal, radio_filter, start_point, range)
 		send_to_filter(source, signal, RADIO_DEFAULT, start_point, range)

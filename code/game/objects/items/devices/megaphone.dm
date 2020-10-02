@@ -14,15 +14,15 @@
 	if (user.client)
 		if(user.client.prefs.muted & MUTE_IC)
 			to_chat(user, "<span class='warning'>You cannot speak in IC (muted).</span>")
-			return 0
+			return FALSE
 	if(!(ishuman(user) || user.isSynthetic()))
 		to_chat(user, "<span class='warning'>You don't know how to use this!</span>")
-		return 0
+		return FALSE
 	if(user.silent)
-		return 0
+		return FALSE
 	if(spamcheck)
 		to_chat(user, "<span class='warning'>\The [src] needs to recharge!</span>")
-		return 0
+		return FALSE
 	return 1
 
 /obj/item/megaphone/proc/do_broadcast(var/mob/living/user, var/message)
@@ -66,10 +66,10 @@
 
 	var/broadcast_font = "verdana"
 	var/broadcast_size = 3
-	var/broadcast_color = "#000000" //Black by default.
+	var/broadcast_color = COLOR_BLACK //Black by default.
 	var/list/volume_options = list(2, 3, 4)
 	var/list/font_options = list("times new roman", "times", "verdana", "sans-serif", "serif", "georgia")
-	var/list/color_options= list("#000000", "#ff0000", "#00ff00", "#0000ff")
+	var/list/color_options= list(COLOR_BLACK, COLOR_RED, COLOR_LIME, COLOR_BLUE)
 
 	insultmsg = list("HONK?!", "HONK!", "HOOOOOOOONK!", "...!", "HUNK.", "Honk?")
 
@@ -83,9 +83,9 @@
 			font_options = list("comic sans ms")
 			broadcast_font = "comic sans ms"
 			to_chat(user, "<span class='notice'>\The [src] emits a <font face='comic sans ms' color='#ff69b4'>silly</font> sound.</span>")
-		if(!("#ff69b4" in color_options))
-			color_options = list("#ff69b4")
-			broadcast_color = "#ff69b4"
+		if(!(COLOR_HOT_PINK in color_options))
+			color_options = list(COLOR_HOT_PINK)
+			broadcast_color = COLOR_HOT_PINK
 		if(insults <= 0)
 			insults = rand(1,3)
 			to_chat(user, "<span class='warning'>You re-scramble \the [src]'s voice synthesizer.</span>")

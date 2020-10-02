@@ -137,11 +137,11 @@ var/list/infomorph_emotions = list(
 /mob/living/silicon/infomorph/check_eye(var/mob/user as mob)
 	if (!src.current)
 		return -1
-	return 0
+	return FALSE
 
 /mob/living/silicon/infomorph/restrained()
 	if(istype(src.loc,/obj/item/sleevecard))
-		return 0
+		return FALSE
 	..()
 
 /mob/living/silicon/infomorph/default_can_use_topic(var/src_object)
@@ -195,15 +195,15 @@ var/list/infomorph_emotions = list(
 	if (!C)
 		src.unset_machine()
 		src.reset_view(null)
-		return 0
-	if (stat == 2 || !C.status || !(src.network in C.network)) return 0
+		return FALSE
+	if (stat == 2 || !C.status || !(src.network in C.network)) return FALSE
 
 	// ok, we're alive, camera is good and in our network...
 
 	src.set_machine(src)
 	src.current = C
 	src.reset_view(C)
-	return 1
+	return TRUE
 
 /mob/living/silicon/infomorph/cancel_camera()
 	set category = "Card Commands"
@@ -437,7 +437,7 @@ var/list/infomorph_emotions = list(
 
 // No binary for pAIs.
 /mob/living/silicon/infomorph/binarycheck()
-	return 0
+	return FALSE
 
 /////////////// SOFTWARE DOWNLOADS
 var/global/list/infomorph_software_by_key = list()
@@ -527,7 +527,7 @@ var/global/list/default_infomorph_software = list()
 			S.toggle(src)
 		else
 			ui_interact(src, ui_key = soft)
-		return 1
+		return TRUE
 
 	else if(href_list["stopic"])
 		var/soft = href_list["stopic"]
@@ -541,13 +541,13 @@ var/global/list/default_infomorph_software = list()
 		if(S && (ram >= S.ram_cost))
 			ram -= S.ram_cost
 			software[S.id] = S
-		return 1
+		return TRUE
 
 	else if(href_list["image"])
 		var/img = href_list["image"]
 		if(img)
 			card.setEmotion(img)
-		return 1
+		return TRUE
 
 /mob/living/silicon/infomorph/examine(mob/user)
 	..(user, infix = ", personal AI")

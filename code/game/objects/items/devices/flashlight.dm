@@ -103,10 +103,10 @@
 	if(power_use)
 		if(!isturf(user.loc))
 			to_chat(user, "You cannot turn the light on while in this [user.loc].") //To prevent some lighting anomalities.
-			return 0
+			return FALSE
 		if(!cell || cell.charge == 0)
 			to_chat(user, "You flick the switch on [src], but nothing happens.")
-			return 0
+			return FALSE
 	on = !on
 	if(on && power_use)
 		START_PROCESSING(SSobj, src)

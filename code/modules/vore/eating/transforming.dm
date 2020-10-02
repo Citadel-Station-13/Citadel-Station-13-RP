@@ -1,7 +1,7 @@
 /obj/belly/proc/check_eyes(var/mob/living/carbon/human/M)
 	var/mob/living/carbon/human/O = owner
 	if(!istype(M) || !istype(O))
-		return 0
+		return FALSE
 	return (M.r_eyes != O.r_eyes || M.g_eyes != O.g_eyes || M.b_eyes != O.b_eyes)
 
 /obj/belly/proc/change_eyes(var/mob/living/carbon/human/M, message=0)
@@ -21,15 +21,15 @@
 /obj/belly/proc/check_hair(var/mob/living/carbon/human/M)
 	var/mob/living/carbon/human/O = owner
 	if(!istype(M) || !istype(O))
-		return 0
+		return FALSE
 
 	if(M.r_hair != O.r_hair || M.g_hair != O.g_hair || M.b_hair != O.b_hair)
-		return 1
+		return TRUE
 	if(M.r_facial != O.r_facial || M.g_facial != O.g_facial || M.b_facial != O.b_facial)
-		return 1
+		return TRUE
 	if(M.h_style != O.h_style || M.f_style != O.f_style)
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /obj/belly/proc/change_hair(var/mob/living/carbon/human/M, message=0)
 	var/mob/living/carbon/human/O = owner
@@ -52,7 +52,7 @@
 /obj/belly/proc/check_skin(var/mob/living/carbon/human/M)
 	var/mob/living/carbon/human/O = owner
 	if(!istype(M) || !istype(O))
-		return 0
+		return FALSE
 
 	return (M.r_skin != O.r_skin || M.g_skin != O.g_skin || M.b_skin != O.b_skin)
 
@@ -74,7 +74,7 @@
 /obj/belly/proc/check_gender(var/mob/living/carbon/human/M, target_gender)
 	var/mob/living/carbon/human/O = owner
 	if(!istype(M) || !istype(O))
-		return 0
+		return FALSE
 
 	if(!target_gender)
 		target_gender = O.gender
@@ -103,13 +103,13 @@
 /obj/belly/proc/check_tail(var/mob/living/carbon/human/M)
 	var/mob/living/carbon/human/O = owner
 	if(!istype(M) || !istype(O))
-		return 0
+		return FALSE
 
 	if(M.tail_style != O.tail_style)
-		return 1
+		return TRUE
 	if(M.r_tail != O.r_tail || M.g_tail != O.g_tail || M.b_tail != O.b_tail)
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /obj/belly/proc/change_tail(var/mob/living/carbon/human/M, message=0)
 	var/mob/living/carbon/human/O = owner
@@ -128,7 +128,7 @@
 /obj/belly/proc/check_tail_nocolor(var/mob/living/carbon/human/M)
 	var/mob/living/carbon/human/O = owner
 	if(!istype(M) || !istype(O))
-		return 0
+		return FALSE
 
 	return (M.tail_style != O.tail_style)
 
@@ -146,13 +146,13 @@
 /obj/belly/proc/check_wing(var/mob/living/carbon/human/M)
 	var/mob/living/carbon/human/O = owner
 	if(!istype(M) || !istype(O))
-		return 0
+		return FALSE
 
 	if(M.wing_style != O.wing_style)
-		return 1
+		return TRUE
 	if(M.r_wing != O.r_wing || M.g_wing != O.g_wing || M.b_wing != O.b_wing)
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /obj/belly/proc/change_wing(var/mob/living/carbon/human/M, message=0)
 	var/mob/living/carbon/human/O = owner
@@ -171,7 +171,7 @@
 /obj/belly/proc/check_wing_nocolor(var/mob/living/carbon/human/M)
 	var/mob/living/carbon/human/O = owner
 	if(!istype(M) || !istype(O))
-		return 0
+		return FALSE
 
 	return (M.wing_style != O.wing_style)
 
@@ -189,7 +189,7 @@
 /obj/belly/proc/check_ears(var/mob/living/carbon/human/M)
 	var/mob/living/carbon/human/O = owner
 	if(!istype(M) || !istype(O))
-		return 0
+		return FALSE
 
 	return (M.ear_style != O.ear_style)
 
@@ -204,11 +204,11 @@
 /obj/belly/proc/check_species(var/mob/living/carbon/human/M)
 	var/mob/living/carbon/human/O = owner
 	if(!istype(M) || !istype(O))
-		return 0
+		return FALSE
 
 	if(M.species != O.species || M.custom_species != O.custom_species)
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /obj/belly/proc/change_species(var/mob/living/carbon/human/M, message=0, color_action = 0)	//color_action: 0 for default species, 1 to preserve, 2 to transfer from pred
 	var/mob/living/carbon/human/O = owner

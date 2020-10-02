@@ -41,7 +41,7 @@
 		if(istype(master, /obj/item/storage))
 			var/obj/item/storage/S = master
 			S.close(usr)
-	return 1
+	return TRUE
 
 
 /obj/screen/item_action
@@ -53,18 +53,18 @@
 
 /obj/screen/item_action/Click()
 	if(!usr || !owner)
-		return 1
+		return TRUE
 	if(!usr.canClick())
 		return
 
 	if(usr.stat || usr.restrained() || usr.stunned || usr.lying)
-		return 1
+		return TRUE
 
 	if(!(owner in usr))
-		return 1
+		return TRUE
 
 	owner.ui_action_click()
-	return 1
+	return TRUE
 
 /obj/screen/grab
 	name = "grab"
@@ -72,7 +72,7 @@
 /obj/screen/grab/Click()
 	var/obj/item/grab/G = master
 	G.s_click(src)
-	return 1
+	return TRUE
 
 /obj/screen/grab/attack_hand()
 	return
@@ -86,16 +86,16 @@
 
 /obj/screen/storage/Click()
 	if(!usr.canClick())
-		return 1
+		return TRUE
 	if(usr.stat || usr.paralysis || usr.stunned || usr.weakened)
-		return 1
+		return TRUE
 	if (istype(usr.loc,/obj/mecha)) // stops inventory actions in a mech
-		return 1
+		return TRUE
 	if(master)
 		var/obj/item/I = usr.get_active_hand()
 		if(I)
 			usr.ClickOn(master)
-	return 1
+	return TRUE
 
 /obj/screen/zone_sel
 	name = "damage zone"
@@ -117,7 +117,7 @@
 				if(17 to 22)
 					selecting = BP_L_FOOT
 				else
-					return 1
+					return TRUE
 		if(4 to 9) //Legs
 			switch(icon_x)
 				if(10 to 15)
@@ -125,7 +125,7 @@
 				if(17 to 22)
 					selecting = BP_L_LEG
 				else
-					return 1
+					return TRUE
 		if(10 to 13) //Hands and groin
 			switch(icon_x)
 				if(8 to 11)
@@ -135,7 +135,7 @@
 				if(21 to 24)
 					selecting = BP_L_HAND
 				else
-					return 1
+					return TRUE
 		if(14 to 22) //Chest and arms to shoulders
 			switch(icon_x)
 				if(8 to 11)
@@ -145,7 +145,7 @@
 				if(21 to 24)
 					selecting = BP_L_ARM
 				else
-					return 1
+					return TRUE
 		if(23 to 30) //Head, but we need to check for eye or mouth
 			if(icon_x in 12 to 20)
 				selecting = BP_HEAD
@@ -162,7 +162,7 @@
 
 	if(old_selecting != selecting)
 		update_icon()
-	return 1
+	return TRUE
 
 /obj/screen/zone_sel/proc/set_selected_zone(bodypart)
 	var/old_selecting = selecting
@@ -176,7 +176,7 @@
 
 
 /obj/screen/Click(location, control, params)
-	if(!usr)	return 1
+	if(!usr)	return TRUE
 	switch(name)
 		if("toggle")
 			if(usr.hud_used.inventory_shown)
@@ -190,7 +190,7 @@
 
 		if("equip")
 			if (istype(usr.loc,/obj/mecha)) // stops inventory actions in a mech
-				return 1
+				return TRUE
 			if(ishuman(usr))
 				var/mob/living/carbon/human/H = usr
 				H.quick_equip()
@@ -208,7 +208,7 @@
 						to_chat(C, "<span class='notice'>You are legcuffed! You cannot run until you get [C.legcuffed] removed!</span>")
 						C.m_intent = "walk"	//Just incase
 						C.hud_used.move_intent.icon_state = "walking"
-						return 1
+						return TRUE
 				var/mob/living/L = usr
 				L.toggle_move_intent()
 		if("m_intent")
@@ -252,7 +252,7 @@
 
 						if(no_mask)
 							to_chat(C, "<span class='notice'>You are not wearing a suitable mask or helmet.</span>")
-							return 1
+							return TRUE
 						else
 							// groan. lazy time.
 							// location name
@@ -340,7 +340,7 @@
 				var/mob/living/silicon/robot/R = usr
 //				if(R.module)
 //					R.hud_used.toggle_show_robot_modules()
-//					return 1
+//					return TRUE
 				R.pick_module()
 
 		if("inventory")
@@ -348,7 +348,7 @@
 				var/mob/living/silicon/robot/R = usr
 				if(R.module)
 					R.hud_used.toggle_show_robot_modules()
-					return 1
+					return TRUE
 				else
 					to_chat(R, "You haven't selected a module yet.")
 
@@ -453,17 +453,17 @@
 				AI.view_images()
 		else
 			return attempt_vr(src,"Click_vr",list(location,control,params)) //VOREStation Add - Additional things.
-	return 1
+	return TRUE
 
 /obj/screen/inventory/Click()
 	// At this point in client Click() code we have passed the 1/10 sec check and little else
 	// We don't even know if it's a middle click
 	if(!usr.canClick())
-		return 1
+		return TRUE
 	if(usr.stat || usr.paralysis || usr.stunned || usr.weakened)
-		return 1
+		return TRUE
 	if (istype(usr.loc,/obj/mecha)) // stops inventory actions in a mech
-		return 1
+		return TRUE
 	switch(name)
 		if("r_hand")
 			if(iscarbon(usr))
@@ -481,7 +481,7 @@
 			if(usr.attack_ui(slot_id))
 				usr.update_inv_l_hand(0)
 				usr.update_inv_r_hand(0)
-	return 1
+	return TRUE
 
 // Hand slots are special to handle the handcuffs overlay
 /obj/screen/inventory/hand
@@ -501,7 +501,7 @@
 			overlays |= handcuff_overlay
 
 /obj/screen/proc/Click_vr(location, control, params)
-	if(!usr)	return 1
+	if(!usr)	return TRUE
 	switch(name)
 
 		//Shadekin
@@ -550,6 +550,6 @@
 						to_chat(usr, "<span class='warning'>Your hunger is slowly making you unstable.</span>")
 
 		else
-			return 0
+			return FALSE
 
-	return 1
+	return TRUE

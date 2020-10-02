@@ -14,7 +14,7 @@ var/syndicate_elite_shuttle_timeleft = 0
 	name = "elite syndicate squad shuttle control console"
 	icon_keyboard = "syndie_key"
 	icon_screen = "syndishuttle"
-	light_color = "#00ffff"
+	light_color = COLOR_CYAN
 	req_access = list(access_cent_specops)
 	var/temp = null
 	var/hacked = 0
@@ -177,7 +177,7 @@ var/syndicate_elite_shuttle_timeleft = 0
 		to_chat(M, "<span class='warning'>You have arrived to [station_name()]. Commence operation!</span>")
 
 /proc/syndicate_elite_can_move()
-	if(syndicate_elite_shuttle_moving_to_station || syndicate_elite_shuttle_moving_to_mothership) return 0
+	if(syndicate_elite_shuttle_moving_to_station || syndicate_elite_shuttle_moving_to_mothership) return FALSE
 	else return 1
 
 /obj/machinery/computer/syndicate_elite_shuttle/attackby(I as obj, user as mob)

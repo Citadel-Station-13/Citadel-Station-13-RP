@@ -114,7 +114,7 @@
 	if(locate(/obj/item/organ/internal/xenos/hivenode) in M.internal_organs)
 		return 1
 
-	return 0
+	return FALSE
 
 /datum/language/swarmbot
 	name = LANGUAGE_SWARMBOT

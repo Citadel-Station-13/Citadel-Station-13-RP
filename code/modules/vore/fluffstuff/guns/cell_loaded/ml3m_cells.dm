@@ -104,7 +104,7 @@
 
 /obj/item/ammo_casing/microbattery/medical/antirad
 	name = "\'ML-3/M\' nanite cell - ANTIRAD"
-	type_color = "#008000"
+	type_color = COLOR_GREEN
 	type_name = "<span style='color:#008000;font-weight:bold;'>ANTIRAD</span>"
 	projectile_type = /obj/item/projectile/beam/medical_cell/antirad
 

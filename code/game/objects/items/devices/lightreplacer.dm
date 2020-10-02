@@ -206,7 +206,7 @@
 	if(uses > 0)
 		return 1
 	else
-		return 0
+		return FALSE
 
 #undef LIGHT_OK
 #undef LIGHT_EMPTY

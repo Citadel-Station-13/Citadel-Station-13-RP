@@ -61,4 +61,4 @@
 	var/obj/item/rig/rig = holder
 	if(rig.open)
 		return 1
-	return 0
+	return FALSE

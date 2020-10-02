@@ -15,11 +15,11 @@ var/list/mining_overlay_cache = list()
 	var/rock_side_icon_state = "rock_side"
 	var/sand_icon_state = "asteroid"
 	var/rock_icon_state = "rock"
-	var/random_icon = 0
+	var/random_icon = FALSE
 	initial_gas_mix = GAS_STRING_VACUUM
 	opacity = 1
 	density = 1
-	blocks_air = 1
+	blocks_air = TRUE
 
 	can_dirty = FALSE
 
@@ -38,8 +38,10 @@ var/list/mining_overlay_cache = list()
 	var/obj/item/last_find
 	var/datum/artifact_find/artifact_find
 	var/ignore_mapgen
+	var/ignore_oregen = FALSE
+	var/ignore_cavegen = FALSE
 
-	has_resources = 1
+	has_resources = TRUE
 
 // Alternative rock wall sprites.
 /turf/simulated/mineral/light
@@ -47,10 +49,19 @@ var/list/mining_overlay_cache = list()
 	rock_side_icon_state = "rock_side-light"
 	sand_icon_state = "sand-light"
 	rock_icon_state = "rock-light"
-	random_icon = 1
+	random_icon = TRUE
 
 /turf/simulated/mineral/ignore_mapgen
-	ignore_mapgen = 1
+	ignore_mapgen = TRUE
+
+/turf/simulated/mineral/floor/ignore_oregen
+	ignore_oregen = TRUE
+
+/turf/simulated/mineral/ignore_cavegen
+	ignore_cavegen = TRUE
+
+/turf/simulated/mineral/floor/ignore_cavegen
+	ignore_cavegen = TRUE
 
 /turf/simulated/mineral/floor
 	name = "sand"
@@ -58,7 +69,7 @@ var/list/mining_overlay_cache = list()
 	icon_state = "asteroid"
 	density = 0
 	opacity = 0
-	blocks_air = 0
+	blocks_air = FALSE
 	can_build_into_floor = TRUE
 
 //Alternative sand floor sprite.
@@ -86,7 +97,7 @@ turf/simulated/mineral/floor/light_corner
 		return
 	density = 0
 	opacity = 0
-	blocks_air = 0
+	blocks_air = FALSE
 	can_build_into_floor = TRUE
 	update_general()
 
@@ -95,7 +106,7 @@ turf/simulated/mineral/floor/light_corner
 		return
 	density = 1
 	opacity = 1
-	blocks_air = 1
+	blocks_air = TRUE
 	can_build_into_floor = FALSE
 	update_general()
 

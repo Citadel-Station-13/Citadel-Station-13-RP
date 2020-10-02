@@ -33,7 +33,7 @@
 			for(var/mob/living/M in A)
 				M.show_message("<spawn class='warning'>You hear the shuttle engines sputter... perhaps it doesn't have enough fuel?", 1,
 				"<spawn class='warning'>The shuttle shakes but fails to take off.", 2)
-				return 0 //failure!
+				return FALSE //failure!
 	return 1 //sucess, continue with launch
 
 /datum/shuttle/autodock/overmap/proc/can_go()
@@ -95,19 +95,19 @@
 	if(!fuel_consumption)
 		return 1 //shuttles with zero fuel consumption are magic and can always launch
 	if(!fuel_ports.len)
-		return 0 //Nowhere to get fuel from
+		return FALSE //Nowhere to get fuel from
 	var/list/obj/item/tank/fuel_tanks = list()
 	for(var/obj/structure/FP in fuel_ports) //loop through fuel ports and assemble list of all fuel tanks
 		var/obj/item/tank/FT = locate() in FP
 		if(FT)
 			fuel_tanks += FT
 	if(!fuel_tanks.len)
-		return 0 //can't launch if you have no fuel TANKS in the ports
+		return FALSE //can't launch if you have no fuel TANKS in the ports
 	var/total_flammable_gas_moles = 0
 	for(var/obj/item/tank/FT in fuel_tanks)
 		total_flammable_gas_moles += FT.air_contents.get_by_flag(GAS_FLAG_FUEL)
 	if(total_flammable_gas_moles < fuel_consumption) //not enough fuel
-		return 0
+		return FALSE
 	// We are going to succeed if we got to here, so start consuming that fuel
 	var/fuel_to_consume = fuel_consumption
 	for(var/obj/item/tank/FT in fuel_tanks) //loop through tanks, consume their fuel one by one

@@ -42,7 +42,7 @@
 		to_chat(usr, "<span class='warning'>It is too far away.</span>")
 
 /obj/item/card/id/proc/prevent_tracking()
-	return 0
+	return FALSE
 
 /obj/item/card/id/proc/show(mob/user as mob)
 	if(front && side)

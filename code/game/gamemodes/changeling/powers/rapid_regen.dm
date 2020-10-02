@@ -16,7 +16,7 @@
 
 	var/datum/changeling/changeling = changeling_power(50,0,100,UNCONSCIOUS)
 	if(!changeling)
-		return 0
+		return FALSE
 	src.mind.changeling.chem_charges -= 50
 
 	if(ishuman(src))

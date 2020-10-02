@@ -31,7 +31,7 @@
 
 	if(target == user)
 		user.visible_message("<span class='danger'>[user] [pick(attack_verb)] [T.himself] in the [affecting.name]!</span>")
-		return 0
+		return FALSE
 
 	switch(zone)
 		if(BP_HEAD, O_MOUTH, O_EYES)
@@ -108,7 +108,7 @@
 	attack_damage = clamp(attack_damage, 1, 5)
 	if(target == user)
 		user.visible_message("<span class='danger'>[user] [pick(attack_verb)] \himself in the [affecting.name]!</span>")
-		return 0 //No venom for you.
+		return FALSE //No venom for you.
 	switch(zone)
 		if(BP_HEAD, O_MOUTH, O_EYES)
 			// ----- HEAD ----- //

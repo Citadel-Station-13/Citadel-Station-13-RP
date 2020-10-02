@@ -86,7 +86,7 @@ proc/cardinalrange(var/center)
 
 
 /obj/machinery/am_shielding/emp_act()//Immune due to not really much in the way of electronics.
-	return 0
+	return FALSE
 
 
 /obj/machinery/am_shielding/ex_act(severity)
@@ -104,7 +104,7 @@ proc/cardinalrange(var/center)
 /obj/machinery/am_shielding/bullet_act(var/obj/item/projectile/Proj)
 	if(Proj.check_armour != "bullet")
 		stability -= Proj.force/2
-	return 0
+	return FALSE
 
 
 /obj/machinery/am_shielding/update_icon()
@@ -132,8 +132,8 @@ proc/cardinalrange(var/center)
 
 //Call this to link a detected shilding unit to the controller
 /obj/machinery/am_shielding/proc/link_control(var/obj/machinery/power/am_control_unit/AMC)
-	if(!istype(AMC))	return 0
-	if(control_unit && control_unit != AMC) return 0//Already have one
+	if(!istype(AMC))	return FALSE
+	if(control_unit && control_unit != AMC) return FALSE//Already have one
 	control_unit = AMC
 	control_unit.add_shielding(src,1)
 	return 1
@@ -143,8 +143,8 @@ proc/cardinalrange(var/center)
 /obj/machinery/am_shielding/proc/core_check()
 	for(var/direction in alldirs)
 		var/machine = locate(/obj/machinery, get_step(loc, direction))
-		if(!machine) return 0//Need all for a core
-		if(!istype(machine, /obj/machinery/am_shielding) && !istype(machine, /obj/machinery/power/am_control_unit))	return 0
+		if(!machine) return FALSE//Need all for a core
+		if(!istype(machine, /obj/machinery/am_shielding) && !istype(machine, /obj/machinery/power/am_control_unit))	return FALSE
 	return 1
 
 

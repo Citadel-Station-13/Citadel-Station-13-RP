@@ -95,7 +95,7 @@
 	update_icon()
 
 	var/image/img = image(src)
-	img.color = "#ffffff"
+	img.color = COLOR_WHITE
 	img.alpha = silicate * 255 / 100
 	overlays += img
 
@@ -160,7 +160,7 @@
 	if(istype(O) && O.checkpass(PASSGLASS))
 		return 1
 	if(get_dir(O.loc, target) == dir)
-		return 0
+		return FALSE
 	return 1
 
 /obj/structure/window/hitby(AM as mob|obj)
@@ -354,14 +354,14 @@
 	set src in oview(1)
 
 	if(usr.incapacitated())
-		return 0
+		return FALSE
 
 	if(is_fulltile())
-		return 0
+		return FALSE
 
 	if(anchored)
 		to_chat(usr, "It is fastened to the floor therefore you can't rotate it!")
-		return 0
+		return FALSE
 
 	update_nearby_tiles(need_rebuild=1) //Compel updates before
 	src.setDir(turn(src.dir, 90))
@@ -376,14 +376,14 @@
 	set src in oview(1)
 
 	if(usr.incapacitated())
-		return 0
+		return FALSE
 
 	if(is_fulltile())
-		return 0
+		return FALSE
 
 	if(anchored)
 		to_chat(usr, "It is fastened to the floor therefore you can't rotate it!")
-		return 0
+		return FALSE
 
 	update_nearby_tiles(need_rebuild=1) //Compel updates before
 	src.setDir(turn(src.dir, 270))
@@ -607,7 +607,7 @@
 
 /obj/structure/window/reinforced/polarized/proc/toggle()
 	if(opacity)
-		animate(src, color="#FFFFFF", time=5)
+		animate(src, color=COLOR_WHITE, time=5)
 		set_opacity(0)
 	else
 		animate(src, color="#222222", time=5)

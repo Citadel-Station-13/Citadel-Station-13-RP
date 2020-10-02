@@ -262,7 +262,7 @@
 			else
 				battery.use(active_power_usage)
 			return 1
-		return 0
+		return FALSE
 	if(src.use_power == 1)
 		use_power(idle_power_usage,power_channel)
 	else if(src.use_power >= 2)

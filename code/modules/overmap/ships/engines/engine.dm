@@ -11,11 +11,11 @@ var/list/ship_engines = list()
 	ship_engines += src
 
 /datum/ship_engine/proc/can_burn()
-	return 0
+	return FALSE
 
 //Tries to fire the engine. Returns thrust
 /datum/ship_engine/proc/burn()
-	return 0
+	return FALSE
 
 //Returns status string for this engine
 /datum/ship_engine/proc/get_status()

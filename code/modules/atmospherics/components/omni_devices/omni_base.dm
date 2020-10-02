@@ -70,7 +70,7 @@
 		update_use_power(USE_POWER_OFF)
 
 	if((stat & (NOPOWER|BROKEN)) || !use_power)
-		return 0
+		return FALSE
 	return 1
 
 /obj/machinery/atmospherics/omni/power_change()
@@ -102,7 +102,7 @@
 		int_pressure += P.air.return_pressure()
 	var/datum/gas_mixture/env_air = loc.return_air()
 	if((int_pressure - env_air.return_pressure()) > 2*ONE_ATMOSPHERE)
-		return 0
+		return FALSE
 	return 1
 
 /obj/machinery/atmospherics/omni/attack_hand(user as mob)
@@ -235,7 +235,7 @@
 			break
 
 	if(new_network.normal_members.Find(src))
-		return 0
+		return FALSE
 
 	new_network.normal_members += src
 

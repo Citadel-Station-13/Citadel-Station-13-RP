@@ -190,9 +190,9 @@
 //Handles all validity checking and error messages for inserting things
 /obj/machinery/appliance/proc/can_insert(var/obj/item/I, var/mob/user)
 	if (istype(I.loc, /mob/living/silicon))
-		return 0
+		return FALSE
 	else if (istype(I.loc, /obj/item/rig_module))
-		return 0
+		return FALSE
 
 	// We are trying to cook a grabbed mob.
 	var/obj/item/grab/G = I
@@ -200,18 +200,18 @@
 
 		if(!can_cook_mobs)
 			to_chat(user, "<span class='warning'>That's not going to fit.</span>")
-			return 0
+			return FALSE
 
 		if(!isliving(G.affecting))
 			to_chat(user, "<span class='warning'>You can't cook that.</span>")
-			return 0
+			return FALSE
 
 		return 2
 
 
 	if (!has_space(I))
 		to_chat(user, "<span class='warning'>There's no room in [src] for that!</span>")
-		return 0
+		return FALSE
 
 
 	if (container_type && istype(I, container_type))
@@ -221,16 +221,16 @@
 	var/obj/item/reagent_containers/food/snacks/check = I
 	if(istype(check) && LAZYLEN(check.cooked) && (cook_type in check.cooked))
 		to_chat(user, "<span class='warning'>\The [check] has already been [cook_type].</span>")
-		return 0
+		return FALSE
 	else if(istype(check, /obj/item/reagent_containers/glass))
 		to_chat(user, "<span class='warning'>That would probably break [src].</span>")
-		return 0
+		return FALSE
 	else if(istype(check, /obj/item/disk/nuclear))
 		to_chat(user, "<span class='warning'>You can't cook that.</span>")
-		return 0
+		return FALSE
 	else if(!istype(check) && !istype(check, /obj/item/holder))
 		to_chat(user, "<span class='warning'>That's not edible.</span>")
-		return 0
+		return FALSE
 
 	return 1
 
@@ -238,7 +238,7 @@
 //This function is overridden by cookers that do stuff with containers
 /obj/machinery/appliance/proc/has_space(var/obj/item/I)
 	if (cooking_objs.len >= max_contents)
-		return 0
+		return FALSE
 
 	else return 1
 
@@ -354,7 +354,7 @@
 //Called every tick while we're cooking something
 /obj/machinery/appliance/proc/do_cooking_tick(var/datum/cooking_item/CI)
 	if (!istype(CI) || !CI.max_cookwork)
-		return 0
+		return FALSE
 
 	var/was_done = 0
 	if (CI.cookwork >= CI.max_cookwork)
@@ -565,14 +565,14 @@
 			eject(CI, user)
 			update_icon()
 		return 1
-	return 0
+	return FALSE
 
 /obj/machinery/appliance/proc/can_remove_items(var/mob/user)
 	if (!Adjacent(user))
-		return 0
+		return FALSE
 
 	if (isanimal(user))
-		return 0
+		return FALSE
 
 	return 1
 

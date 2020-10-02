@@ -9,7 +9,7 @@
 	if(message_mode)
 		if(!is_component_functioning("radio"))
 			to_chat(src, "<span class='warning'>Your radio isn't functional at this time.</span>")
-			return 0
+			return FALSE
 		if(message_mode == "general")
 			message_mode = null
 		return radio.talk_into(src,message,message_mode,verb,speaking)
@@ -24,7 +24,7 @@
 	else if(message_mode)
 		if (aiRadio.disabledAi || aiRestorePowerRoutine || stat)
 			to_chat(src, "<span class='danger'>System Error - Transceiver Disabled.</span>")
-			return 0
+			return FALSE
 		if(message_mode == "general")
 			message_mode = null
 		return aiRadio.talk_into(src,message,message_mode,verb,speaking)
@@ -106,7 +106,7 @@
 		This is another way of saying that we won't bother dealing with them.*/
 	else
 		to_chat(src, "No holopad connected.")
-		return 0
+		return FALSE
 	return 1
 
 /mob/living/silicon/ai/proc/holopad_emote(var/message) //This is called when the AI uses the 'me' verb while using a holopad.
@@ -143,7 +143,7 @@
 
 	else //This shouldn't occur, but better safe then sorry.
 		to_chat(src, "No holopad connected.")
-		return 0
+		return FALSE
 	return 1
 
 /mob/living/silicon/ai/emote(var/act, var/type, var/message)

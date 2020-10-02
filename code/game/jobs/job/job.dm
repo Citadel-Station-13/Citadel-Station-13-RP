@@ -12,7 +12,7 @@
 	var/spawn_positions = 0				// How many players can spawn in as this job
 	var/current_positions = 0			// How many players have this job
 	var/supervisors = null				// Supervisors, who this person answers to directly
-	var/selection_color = "#ffffff"		// Selection screen color
+	var/selection_color = COLOR_WHITE		// Selection screen color
 	var/idtype = /obj/item/card/id		// The type of the ID the player will have
 	var/list/alt_titles					// List of alternate titles, if any
 	var/req_admin_notify				// If this is set to 1, a text is printed to the player when jobs are assigned, telling him that he should let admins know that he has to disconnect.
@@ -103,11 +103,11 @@
 /datum/job/proc/available_in_days(client/C)
 	if(C && config_legacy.use_age_restriction_for_jobs && isnum(C.player_age) && isnum(minimal_player_age))
 		return max(0, minimal_player_age - C.player_age)
-	return 0
+	return FALSE
 
 /datum/job/proc/apply_fingerprints(var/mob/living/carbon/human/target)
 	if(!istype(target))
-		return 0
+		return FALSE
 	for(var/obj/item/item in target.contents)
 		apply_fingerprints_to_item(target, item)
 	return 1

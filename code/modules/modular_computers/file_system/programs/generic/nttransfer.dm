@@ -182,4 +182,4 @@ var/global/nttransfer_uid = 0
 		return 1
 	if(href_list["PRG_uploadmenu"])
 		upload_menu = 1
-	return 0
+	return FALSE

@@ -266,7 +266,7 @@
 
 	else if(pressure > TANK_LEAK_PRESSURE || faketank.temperature - T0C > 173)
 		faketank_integrity -= 1
-	return 0
+	return FALSE
 
 /obj/machinery/bomb_tester/proc/single_tank_sim()
 	faketank.volume = tank1.volume

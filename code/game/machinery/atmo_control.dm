@@ -208,7 +208,7 @@ obj/machinery/computer/general_air_control/Destroy()
 		return 1
 
 	if(!radio_connection)
-		return 0
+		return FALSE
 	var/datum/signal/signal = new
 	signal.transmission_method = 1 //radio signal
 	signal.source = src
@@ -318,7 +318,7 @@ obj/machinery/computer/general_air_control/Destroy()
 		return 1
 
 	if(!radio_connection)
-		return 0
+		return FALSE
 	var/datum/signal/signal = new
 	signal.transmission_method = 1 //radio signal
 	signal.source = src
@@ -368,7 +368,7 @@ obj/machinery/computer/general_air_control/Destroy()
 /obj/machinery/computer/general_air_control/fuel_injection/process()
 	if(automation)
 		if(!radio_connection)
-			return 0
+			return FALSE
 
 		var/injecting = 0
 		for(var/id_tag in sensor_information)
@@ -440,7 +440,7 @@ obj/machinery/computer/general_air_control/Destroy()
 	if(href_list["refresh_status"])
 		device_info = null
 		if(!radio_connection)
-			return 0
+			return FALSE
 
 		var/datum/signal/signal = new
 		signal.transmission_method = 1 //radio signal
@@ -458,7 +458,7 @@ obj/machinery/computer/general_air_control/Destroy()
 	if(href_list["toggle_injector"])
 		device_info = null
 		if(!radio_connection)
-			return 0
+			return FALSE
 
 		var/datum/signal/signal = new
 		signal.transmission_method = 1 //radio signal
@@ -473,7 +473,7 @@ obj/machinery/computer/general_air_control/Destroy()
 
 	if(href_list["injection"])
 		if(!radio_connection)
-			return 0
+			return FALSE
 
 		var/datum/signal/signal = new
 		signal.transmission_method = 1 //radio signal

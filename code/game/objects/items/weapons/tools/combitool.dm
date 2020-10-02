@@ -45,16 +45,16 @@
 
 /obj/item/combitool/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
 	if(!M.Adjacent(user))
-		return 0
+		return FALSE
 	var/obj/item/tool = tools[current_tool]
-	if(!tool) return 0
+	if(!tool) return FALSE
 	return (tool ? tool.attack(M,user) : 0)
 
 /obj/item/combitool/afterattack(var/atom/target, var/mob/living/user, proximity, params)
 	if(!proximity)
-		return 0
+		return FALSE
 	var/obj/item/tool = tools[current_tool]
-	if(!tool) return 0
+	if(!tool) return FALSE
 	tool.loc = user
 	var/resolved = target.attackby(tool,user)
 	if(!resolved && tool && target)

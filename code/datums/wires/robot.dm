@@ -68,7 +68,7 @@ var/const/BORG_WIRE_CAMERA = 16
 	var/mob/living/silicon/robot/R = holder
 	if(R.wiresexposed)
 		return 1
-	return 0
+	return FALSE
 
 /datum/wires/robot/proc/IsCameraCut()
 	return wires_status & BORG_WIRE_CAMERA

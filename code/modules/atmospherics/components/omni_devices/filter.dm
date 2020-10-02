@@ -56,11 +56,11 @@
 	if(atmos_filters.len < 1) //requires at least 1 atmos_filter ~otherwise why are you using a filter?
 		return 1
 
-	return 0
+	return FALSE
 
 /obj/machinery/atmospherics/omni/atmos_filter/process()
 	if(!..())
-		return 0
+		return FALSE
 
 	var/datum/gas_mixture/output_air = output.air	//BYOND doesn't like referencing "output.air.return_pressure()" so we need to make a direct reference
 	var/datum/gas_mixture/input_air = input.air		// it's completely happy with them if they're in a loop though i.e. "P.air.return_pressure()"... *shrug*

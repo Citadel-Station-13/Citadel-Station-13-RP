@@ -75,27 +75,27 @@
 //Start growing a human clone in the pod!
 /obj/machinery/clonepod/proc/growclone(var/datum/dna2/record/R)
 	if(mess || attempting)
-		return 0
+		return FALSE
 	var/datum/mind/clonemind = locate(R.mind)
 
 	if(!istype(clonemind, /datum/mind))	//not a mind
-		return 0
+		return FALSE
 	if(clonemind.current && clonemind.current.stat != DEAD)	//mind is associated with a non-dead body
-		return 0
+		return FALSE
 	if(clonemind.active)	//somebody is using that mind
 		if(ckey(clonemind.key) != R.ckey)
-			return 0
+			return FALSE
 	else
 		for(var/mob/observer/dead/G in player_list)
 			if(G.ckey == R.ckey)
 				if(G.can_reenter_corpse)
 					break
 				else
-					return 0
+					return FALSE
 
 	for(var/modifier_type in R.genetic_modifiers)	//Can't be cloned, even if they had a previous scan
 		if(istype(modifier_type, /datum/modifier/no_clone))
-			return 0
+			return FALSE
 
 	// Remove biomass when the cloning is started, rather than when the guy pops out
 	remove_biomass(CLONE_BIOMASS)
@@ -289,9 +289,9 @@
 //Put messages in the connected computer's temp var for display.
 /obj/machinery/clonepod/proc/connected_message(var/message)
 	if((isnull(connected)) || (!istype(connected, /obj/machinery/computer/cloning)))
-		return 0
+		return FALSE
 	if(!message)
-		return 0
+		return FALSE
 
 	connected.temp = "[name] : [message]"
 	connected.updateUsrDialog()
@@ -375,7 +375,7 @@
 						continue
 			else
 				return 1
-	return 0
+	return FALSE
 
 // Empties all of the beakers from the cloning pod, used to refill it
 /obj/machinery/clonepod/verb/empty_beakers()
@@ -400,7 +400,7 @@
 				G.forceMove(T)
 				containers -= G
 		return	1
-	return 0
+	return FALSE
 
 /obj/machinery/clonepod/proc/malfunction()
 	if(occupant)

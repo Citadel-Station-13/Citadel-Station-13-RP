@@ -10,7 +10,7 @@ var/const/WIRE_TRANSMIT = 4
 	var/obj/item/radio/R = holder
 	if(R.b_stat)
 		return 1
-	return 0
+	return FALSE
 
 /datum/wires/radio/UpdatePulsed(var/index)
 	var/obj/item/radio/R = holder

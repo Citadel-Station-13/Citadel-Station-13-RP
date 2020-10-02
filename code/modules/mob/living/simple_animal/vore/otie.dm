@@ -255,14 +255,14 @@
 
 /mob/living/simple_mob/otie/security/proc/check_threat(var/mob/living/M)
 	if(!M || !ishuman(M) || M.stat == DEAD || src == M)
-		return 0
+		return FALSE
 	return M.assess_perp(0, 0, 0, check_records, check_arrest)
 
 /mob/living/simple_mob/otie/security/set_target(var/mob/M)
 	ai_log("SetTarget([M])",2)
 	if(!M || (world.time - last_target_time < 5 SECONDS) && target_mob)
 		ai_log("SetTarget() can't set it again so soon",3)
-		return 0
+		return FALSE
 
 	var/turf/seen = get_turf(M)
 
@@ -283,7 +283,7 @@
 		spawn(1)
 			WanderTowards(seen)
 
-	return 0
+	return FALSE
 
 
 /mob/living/simple_mob/otie/security/proc/target_name(mob/living/T)

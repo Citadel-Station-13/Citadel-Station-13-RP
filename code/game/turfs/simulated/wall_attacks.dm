@@ -15,7 +15,7 @@
 		update_icon()
 		update_air()
 		set_light(0)
-		src.blocks_air = 0
+		src.blocks_air = FALSE
 		set_opacity(0)
 		for(var/turf/simulated/turf in loc)
 			air_master.mark_for_update(turf)
@@ -27,7 +27,7 @@
 		update_icon()
 		update_air()
 		set_light(1)
-		src.blocks_air = 1
+		src.blocks_air = TRUE
 		set_opacity(1)
 		for(var/turf/simulated/turf in loc)
 			air_master.mark_for_update(turf)
@@ -91,7 +91,7 @@
 			playsound(src, 'sound/weapons/Genhit.ogg', 25, 1)
 	else
 		toggle_open(user)
-	return 0
+	return FALSE
 
 
 /turf/simulated/wall/attack_hand(var/mob/user)

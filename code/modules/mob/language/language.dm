@@ -182,7 +182,7 @@
 	var/datum/language/new_language = GLOB.all_languages[language]
 
 	if(!istype(new_language) || (new_language in languages))
-		return 0
+		return FALSE
 
 	languages.Add(new_language)
 	return 1
@@ -203,13 +203,13 @@
 //Prevents someone from speaking a null language.
 	if(!speaking)
 		log_debug("[src] attempted to speak a null language.")
-		return 0
+		return FALSE
 
 	if(speaking == GLOB.all_languages["Noise"])
 		return 1
 
 	if (only_species_language && speaking != GLOB.all_languages[species_language])
-		return 0
+		return FALSE
 
 	if(speaking.can_speak_special(src))
 		if(universal_speak)
@@ -218,7 +218,7 @@
 			return 1
 		if(speaking in src.languages)
 			return 1
-	return 0
+	return FALSE
 
 /mob/proc/get_language_prefix()
 	if(client && client.prefs.language_prefixes && client.prefs.language_prefixes.len)

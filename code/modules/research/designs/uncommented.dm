@@ -66,4 +66,13 @@ datum/design/rust_injector
 	build_type = IMPRINTER
 	materials = list("glass" = 2000, "sacid" = 20, "phoron" = 3000, "uranium" = 2000)
 	build_path = "/obj/item/circuitboard/rust_core"
+
+/datum/design/item/implant/language	// Make language great again
+	name = "Language implant"
+	id = "implant_language"
+	req_tech = list(TECH_MATERIAL = 5, TECH_BIO = 5, TECH_DATA = 4, TECH_ENGINEERING = 4) //This is not an easy to make implant.
+	materials = list(DEFAULT_WALL_MATERIAL = 7000, "glass" = 7000, "gold" = 2000, "diamond" = 3000)
+	build_path = /obj/item/implantcase/vrlanguage
+	sort_string = "MFAVC"
+
 */

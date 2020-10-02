@@ -3,13 +3,13 @@
 	if(istype(A, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = A
 		return istype(H.species, /datum/species/xenos)
-	return 0
+	return FALSE
 
 /proc/issmall(A)
 	if(A && istype(A, /mob/living))
 		var/mob/living/L = A
 		return L.mob_size <= MOB_SMALL
-	return 0
+	return FALSE
 
 //returns the number of size categories between two mob_sizes, rounded. Positive means A is larger than B
 /proc/mob_size_difference(var/mob_size_A, var/mob_size_B)
@@ -24,20 +24,20 @@
 	if(A && istype(A, /mob/living))
 		var/mob/living/L = A
 		return L.mob_size <= MOB_TINY
-	return 0
+	return FALSE
 
 
 /proc/ismini(A)
 	if(A && istype(A, /mob/living))
 		var/mob/living/L = A
 		return L.mob_size <= MOB_MINISCULE
-	return 0
+	return FALSE
 
 /mob/living/silicon/isSynthetic()
 	return 1
 
 /mob/proc/isMonkey()
-	return 0
+	return FALSE
 
 /mob/living/carbon/human/isMonkey()
 	return istype(species, /datum/species/monkey)
@@ -46,10 +46,10 @@ proc/isdeaf(A)
 	if(istype(A, /mob))
 		var/mob/M = A
 		return (M.sdisabilities & DEAF) || M.ear_deaf
-	return 0
+	return FALSE
 
 /mob/proc/get_ear_protection()
-	return 0
+	return FALSE
 
 /mob/proc/break_cloak()
 	return
@@ -65,14 +65,14 @@ proc/iscuffed(A)
 		var/mob/living/carbon/C = A
 		if(C.handcuffed)
 			return 1
-	return 0
+	return FALSE
 
 proc/hassensorlevel(A, var/level)
 	var/mob/living/carbon/human/H = A
 	if(istype(H) && istype(H.w_uniform, /obj/item/clothing/under))
 		var/obj/item/clothing/under/U = H.w_uniform
 		return U.sensor_mode >= level
-	return 0
+	return FALSE
 
 proc/getsensorlevel(A)
 	var/mob/living/carbon/human/H = A
@@ -302,18 +302,18 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 	for(var/mob/M in mob_list)
 		if (M.real_name == text("[msg]"))
 			return 1
-	return 0
+	return FALSE
 
 
 /mob/proc/abiotic(var/full_body = 0)
-	return 0
+	return FALSE
 
 //converts intent-strings into numbers and back
 var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 /proc/intent_numeric(argument)
 	if(istext(argument))
 		switch(argument)
-			if(INTENT_HELP)		return 0
+			if(INTENT_HELP)		return FALSE
 			if(INTENT_DISARM)	return 1
 			if(INTENT_GRAB)		return 2
 			else			return 3
@@ -359,7 +359,7 @@ proc/is_blind(A)
 		var/mob/living/carbon/C = A
 		if(C.sdisabilities & BLIND || C.blinded)
 			return 1
-	return 0
+	return FALSE
 
 /proc/mobs_in_area(var/area/A)
 	var/list/mobs = new
@@ -475,13 +475,13 @@ proc/is_blind(A)
 
 /mob/proc/switch_to_camera(var/obj/machinery/camera/C)
 	if (!C.can_use() || stat || (get_dist(C, src) > 1 || machine != src || blinded || !canmove))
-		return 0
+		return FALSE
 	check_eye(src)
 	return 1
 
 /mob/living/silicon/ai/switch_to_camera(var/obj/machinery/camera/C)
 	if(!C.can_use() || !is_in_chassis())
-		return 0
+		return FALSE
 
 	eyeobj.setLoc(C)
 	return 1
@@ -501,7 +501,7 @@ proc/is_blind(A)
 	if(stat == DEAD)
 		return SAFE_PERP
 
-	return 0
+	return FALSE
 
 /mob/living/carbon/assess_perp(var/obj/access_obj, var/check_access, var/auth_weapons, var/check_records, var/check_arrest)
 	if(handcuffed)

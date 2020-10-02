@@ -18,10 +18,10 @@
 
 /obj/item/spell/passwall/on_melee_cast(atom/hit_atom, mob/user)
 	if(busy)	//Prevent someone from trying to get two uses of the spell from one instance.
-		return 0
+		return FALSE
 	if(!allowed_to_teleport())
 		to_chat(user, "<span class='warning'>You can't teleport here!</span>")
-		return 0
+		return FALSE
 //	if(isturf(hit_atom))
 
 	var/turf/T = get_turf(hit_atom)		//Turf we touched.
@@ -29,7 +29,7 @@
 	if(!T.density)
 		if(!T.check_density())
 			to_chat(user, "<span class='warning'>Perhaps you should try using passWALL on a wall, or other solid object.</span>")
-			return 0
+			return FALSE
 	var/direction = get_dir(our_turf, T)
 	var/total_cost = 0
 	var/turf/checked_turf = T			//Turf we're currently checking for density in the loop below.
@@ -63,7 +63,7 @@
 	if(found_turf)
 		if(user.loc != our_turf)
 			to_chat(user, "<span class='warning'>You need to stand still in order to phase through \the [hit_atom].</span>")
-			return 0
+			return FALSE
 		if(pay_energy(total_cost) && !user.incapacitated() )
 			visible_message("<span class='warning'>[user] appears to phase through \the [hit_atom]!</span>")
 			to_chat(user, "<span class='info'>You find a destination on the other side of \the [hit_atom], and phase through it.</span>")

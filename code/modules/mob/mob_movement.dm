@@ -52,7 +52,7 @@
 
 /// until movespeed modifiersare done - kevinz000
 /mob/proc/movement_delay()
-	return 0
+	return FALSE
 
 #define MOVEMENT_DELAY_BUFFER 0.75
 #define MOVEMENT_DELAY_BUFFER_DELTA 1.25
@@ -174,7 +174,7 @@
 // shitcode, rip out when possible
 /*
 	if((istype(mob.loc, /turf/space)) || (mob.lastarea.has_gravity == 0))
-		if(!mob.Process_Spacemove(0))	return 0
+		if(!mob.Process_Spacemove(0))	return FALSE
 */
 
 	if(!mob.lastarea)
@@ -443,7 +443,7 @@
 /mob/proc/Check_Shoegrip()
 	if(flying)	// Checks to see if they are flying.
 		return 1
-	return 0
+	return FALSE
 
 /mob/proc/Process_Spaceslipping(var/prob_slip = 5)
 	//Setup slipage

@@ -3,7 +3,7 @@ var/obj/screen/robot_inventory
 /mob/living/silicon/robot/instantiate_hud(var/datum/hud/HUD, var/ui_style, var/ui_color, var/ui_alpha)
 	HUD.robot_hud(ui_style, ui_color, ui_alpha, src)*/
 
-/datum/hud/proc/robot_hud(ui_style='icons/mob/screen1_robot.dmi', var/ui_color = "#ffffff", var/ui_alpha = 255, var/mob/living/silicon/robot/target)
+/datum/hud/proc/robot_hud(ui_style='icons/mob/screen1_robot.dmi', var/ui_color = COLOR_WHITE, var/ui_alpha = 255, var/mob/living/silicon/robot/target)
 /*	var/datum/hud_data/hud_data
 	if(!istype(target))
 		hud_data = new()

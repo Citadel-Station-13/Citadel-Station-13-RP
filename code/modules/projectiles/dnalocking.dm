@@ -19,7 +19,7 @@
 
 		if(!attached_lock.stored_dna && !(M.dna in attached_lock.stored_dna))
 			to_chat(M, "<span class='warning'>\The [src] buzzes and displays a symbol showing the gun already contains your DNA.</span>")
-			return 0
+			return FALSE
 		else
 			attached_lock.stored_dna += M.dna
 			to_chat(M, "<span class='notice'>\The [src] pings and a needle flicks out from the grip, taking a DNA sample from you.</span>")
@@ -29,7 +29,7 @@
 			return 1
 	else
 		to_chat(M, "<span class='warning'>\The [src] buzzes and displays a locked symbol. It is not allowing DNA samples at this time.</span>")
-		return 0
+		return FALSE
 
 /obj/item/gun/verb/give_dna()
 	set name = "Give DNA"
@@ -42,7 +42,7 @@
 	if(!attached_lock.controller_lock)
 		if(!authorized_user(M))
 			to_chat(M, "<span class='warning'>\The [src] buzzes and displays an invalid user symbol.</span>")
-			return 0
+			return FALSE
 		else
 			attached_lock.stored_dna -= user.dna
 			to_chat(M, "<span class='notice'>\The [src] beeps and clears the DNA it has stored.</span>")
@@ -54,7 +54,7 @@
 			return 1
 	else
 		to_chat(M, "<span class='warning'>\The [src] buzzes and displays a locked symbol. It is not allowing DNA modifcation at this time.</span>")
-		return 0
+		return FALSE
 
 /obj/item/gun/verb/remove_dna()
 	set name = "Remove DNA"
@@ -84,5 +84,5 @@
 	if(!attached_lock.stored_dna || !attached_lock.stored_dna.len)
 		return 1
 	if(!(user.dna in attached_lock.stored_dna))
-		return 0
+		return FALSE
 	return 1

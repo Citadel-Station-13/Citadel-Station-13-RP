@@ -29,7 +29,7 @@
 	set src in usr
 	set popup_menu = 1
 	if(!usr.canmove || usr.stat || usr.restrained())
-		return 0
+		return FALSE
 
 	if (radio.radio_enabled == 1)
 		radio.radio_enabled = 0

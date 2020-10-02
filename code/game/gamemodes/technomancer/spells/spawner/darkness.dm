@@ -20,7 +20,7 @@
 
 /obj/item/spell/spawner/darkness/New()
 	..()
-	set_light(6, -20, l_color = "#FFFFFF")
+	set_light(6, -20, l_color = COLOR_WHITE)
 
 /obj/effect/temporary_effect/darkness
 	name = "darkness"

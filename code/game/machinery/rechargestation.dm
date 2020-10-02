@@ -77,7 +77,7 @@
 		return ..()
 
 	if(!has_cell_power())
-		return 0
+		return FALSE
 	if(use_power == USE_POWER_IDLE)
 		cell.use(idle_power_usage * CELLRATE)
 	else if(use_power >= USE_POWER_ACTIVE)
@@ -130,7 +130,7 @@
 
 /obj/machinery/recharge_station/proc/chargepercentage()
 	if(!cell)
-		return 0
+		return FALSE
 	return cell.percent()
 
 /obj/machinery/recharge_station/relaymove(mob/user as mob)

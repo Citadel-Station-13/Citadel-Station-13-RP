@@ -33,7 +33,7 @@
 			break
 
 	if(!istype(recipient))
-		return 0
+		return FALSE
 
 	if(!recipient.receive_mail(message, relayed))
 		return
@@ -68,7 +68,7 @@
 
 /datum/computer_file/data/email_account/service/broadcaster/receive_mail(var/datum/computer_file/data/email_message/received_message, var/relayed)
 	if(!istype(received_message) || relayed)
-		return 0
+		return FALSE
 	// Possibly exploitable for user spamming so keep admins informed.
 	if(!received_message.spam)
 		log_and_message_admins("Broadcast email address used by [usr]. Message title: [received_message.title].")

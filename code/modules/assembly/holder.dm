@@ -32,9 +32,9 @@
 
 
 /obj/item/assembly_holder/attach(var/obj/item/D, var/obj/item/D2, var/mob/user)
-	if((!D)||(!D2))	return 0
-	if((!isassembly(D))||(!isassembly(D2)))	return 0
-	if((D:secured)||(D2:secured))	return 0
+	if((!D)||(!D2))	return FALSE
+	if((!isassembly(D))||(!isassembly(D2)))	return FALSE
+	if((D:secured)||(D2:secured))	return FALSE
 	if(user)
 		user.remove_from_mob(D)
 		user.remove_from_mob(D2)
@@ -53,7 +53,7 @@
 
 /obj/item/assembly_holder/attach_special(var/obj/O, var/mob/user)
 	if(!O)	return
-	if(!O.IsSpecialAssembly())	return 0
+	if(!O.IsSpecialAssembly())	return FALSE
 
 /*		if(O:Attach_Holder())
 		special_assembly = O
@@ -182,7 +182,7 @@
 				a_right.attack_self(user)
 	else
 		var/turf/T = get_turf(src)
-		if(!T)	return 0
+		if(!T)	return FALSE
 		if(a_left)
 			a_left:holder = null
 			a_left.loc = T
@@ -195,7 +195,7 @@
 
 
 /obj/item/assembly_holder/process_activation(var/obj/D, var/normal = 1, var/special = 1)
-	if(!D)	return 0
+	if(!D)	return FALSE
 	if(!secured)
 		visible_message("\icon[src] *beep* *beep*", "*beep* *beep*")
 	if((normal) && (a_right) && (a_left))

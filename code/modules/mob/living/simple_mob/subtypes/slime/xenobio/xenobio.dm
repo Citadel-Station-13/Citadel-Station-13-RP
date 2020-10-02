@@ -3,6 +3,8 @@
 /mob/living/simple_mob/slime/xenobio
 	desc = "The most basic of slimes.  The grey slime has no remarkable qualities, however it remains one of the most useful colors for scientists."
 	layer = MOB_LAYER + 1 // Need them on top of other mobs or it looks weird when consuming something.
+	mob_bump_flag = SLIME
+	temperature_range = 5
 	ai_holder_type = /datum/ai_holder/simple_mob/xenobio_slime // This should never be changed for xenobio slimes.
 	var/is_adult = FALSE // Slimes turn into adults when fed enough. Adult slimes are somewhat stronger, and can reproduce if fed enough.
 	var/maxHealth_adult = 200
@@ -17,12 +19,13 @@
 		/mob/living/simple_mob/slime/xenobio/purple
 	)
 	var/amount_grown = 0 // controls how long the slime has been overfed, if 10, grows or reproduces
-	var/number = 0 // This is used to make the slime semi-unique for indentification.
+	var/number = 0		 // This is used to make the slime semi-unique for indentification.
 	var/harmless = FALSE // Set to true when pacified. Makes the slime harmless, not get hungry, and not be able to grow/reproduce.
 
 /mob/living/simple_mob/slime/xenobio/Initialize(mapload, var/mob/living/simple_mob/slime/xenobio/my_predecessor)
 	ASSERT(ispath(ai_holder_type, /datum/ai_holder/simple_mob/xenobio_slime))
 	number = rand(1, 1000)
+	Weaken(10)
 	update_name()
 
 	. = ..() // This will make the AI and do the other mob constructor things. It will also return the default hint at the end.

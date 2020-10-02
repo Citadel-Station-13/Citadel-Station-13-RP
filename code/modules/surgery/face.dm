@@ -10,10 +10,10 @@
 
 /datum/surgery_step/face/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if (!hasorgans(target))
-		return 0
+		return FALSE
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	if (!affected || (affected.robotic >= ORGAN_ROBOT))
-		return 0
+		return FALSE
 	return target_zone == O_MOUTH
 
 ///////////////////////////////////////////////////////////////

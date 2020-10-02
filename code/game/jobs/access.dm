@@ -12,7 +12,7 @@
 	var/id = M.GetIdCard()
 	if(id)
 		return check_access(id)
-	return 0
+	return FALSE
 
 ///obj/item/proc/GetAccess()
 //	return list()
@@ -28,8 +28,8 @@
 	return check_access_list(I ? I.GetAccess() : list())
 
 /obj/proc/check_access_list(var/list/L)
-	if(!L)	return 0
-	if(!istype(L, /list))	return 0
+	if(!L)	return FALSE
+	if(!istype(L, /list))	return FALSE
 	return has_access(req_access, req_one_access, L)
 
 /proc/has_access(var/list/req_access, var/list/req_one_access, var/list/accesses)

@@ -247,7 +247,7 @@
 // Returns the number of atoms so released.
 /obj/belly/proc/release_specific_contents(var/atom/movable/M, var/silent = FALSE)
 	if (!(M in contents))
-		return 0 // They weren't in this belly anyway
+		return FALSE // They weren't in this belly anyway
 
 	//Place them into our drop_location
 	M.forceMove(drop_location())
@@ -288,7 +288,7 @@
 		if(soundfile)
 			playsound(src, soundfile, vol = 100, vary = 1, falloff = VORE_SOUND_FALLOFF, preference = /datum/client_preference/eating_noises)
 
-	return 1
+	return TRUE
 
 // Actually perform the mechanics of devouring the tasty prey.
 // The purpose of this method is to avoid duplicate code, and ensure that all necessary

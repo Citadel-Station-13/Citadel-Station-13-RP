@@ -133,15 +133,15 @@ var/global/list/map_count = list()
 		cleanup()
 		if(auto_apply)
 			apply_to_map()
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 // Unused for basic map.
 /datum/random_map/proc/generate_map()
-	return 1
+	return TRUE
 
 /datum/random_map/proc/check_map_sanity()
-	return 1
+	return TRUE
 
 /datum/random_map/proc/set_origins(var/tx, var/ty, var/tz)
 	origin_x = tx ? tx : 1
@@ -161,10 +161,10 @@ var/global/list/map_count = list()
 /datum/random_map/proc/apply_to_turf(var/x,var/y)
 	var/current_cell = get_map_cell(x,y)
 	if(!current_cell)
-		return 0
+		return FALSE
 	var/turf/T = locate((origin_x-1)+x,(origin_y-1)+y,origin_z)
 	if(!T || (target_turf_type && !istype(T,target_turf_type)))
-		return 0
+		return FALSE
 	var/newpath = get_appropriate_path(map[current_cell])
 	if(newpath)
 		T.ChangeTurf(newpath)
@@ -172,7 +172,7 @@ var/global/list/map_count = list()
 	return T
 
 /datum/random_map/proc/get_spawn_dir()
-	return 0
+	return FALSE
 
 /datum/random_map/proc/get_appropriate_path(var/value)
 	switch(value)

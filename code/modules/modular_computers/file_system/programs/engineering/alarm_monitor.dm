@@ -80,7 +80,7 @@
 		if(AH.has_major_alarms())
 			return 1
 
-	return 0
+	return FALSE
 
 /datum/nano_module/alarm_monitor/proc/minor_alarms()
 	var/list/all_alarms = new()

@@ -10,7 +10,7 @@
 	for(var/datum/uplink_item/item in items)
 		if(item.can_view(U))
 			return 1
-	return 0
+	return FALSE
 
 datum/uplink_category/ammunition
 	name = "Ammunition"

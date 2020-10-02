@@ -62,11 +62,11 @@
 // Returns 1 if the supply shuttle should be prevented from moving because it contains forbidden atoms
 /datum/shuttle/autodock/ferry/supply/proc/forbidden_atoms_check()
 	if (!at_station())
-		return 0	// If badmins want to send mobs or a nuke on the supply shuttle from centcom we don't care
+		return FALSE	// If badmins want to send mobs or a nuke on the supply shuttle from centcom we don't care
 
 	for(var/area/A in shuttle_area)
 		if(SSsupply.forbidden_atoms_check(A))
-			return 1
+			return TRUE
 
 /datum/shuttle/autodock/ferry/supply/proc/at_station()
 	return (!location)

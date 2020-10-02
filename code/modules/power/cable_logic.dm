@@ -19,7 +19,7 @@
 					input = C
 					return 1
 
-	return 0	//If it gets to here, it means no suitable wire to link to was found.
+	return FALSE	//If it gets to here, it means no suitable wire to link to was found.
 
 /obj/machinery/logic/indicator/bulb
 	icon = 'icons/obj/lighting.dmi'
@@ -59,7 +59,7 @@
 					output = C
 					return 1
 
-	return 0	//If it gets to here, it means no suitable wire to link to was found.
+	return FALSE	//If it gets to here, it means no suitable wire to link to was found.
 
 //Constant high generator. This will continue to send a signal of LOGIC_HIGH as long as it exists.
 /obj/machinery/logic/sensor/constant_high
@@ -93,7 +93,7 @@
 		return 1
 
 	if(!dir_input || !dir_output)
-		return 0
+		return FALSE
 
 	if(!input)
 		var/turf/T = get_step(src, dir_input)
@@ -111,7 +111,7 @@
 				if(C.d1 == inv_dir || C.d2 == inv_dir)
 					output = C
 
-	return 0	//On the process() call, where everything is still being searched for, it returns 0. It will return 1 on the next process() call.
+	return FALSE	//On the process() call, where everything is still being searched for, it returns 0. It will return 1 on the next process() call.
 
 //NOT GATE
 /obj/machinery/logic/oneinput/not/process()
@@ -156,7 +156,7 @@
 		return 1
 
 	if(!dir_input1 || !dir_input2 || !dir_output)
-		return 0
+		return FALSE
 
 	if(!input1)
 		var/turf/T = get_step(src, dir_input1)
@@ -182,7 +182,7 @@
 				if(C.d1 == inv_dir || C.d2 == inv_dir)
 					output = C
 
-	return 0	//On the process() call, where everything is still being searched for, it returns 0. It will return 1 on the next process() call.
+	return FALSE	//On the process() call, where everything is still being searched for, it returns 0. It will return 1 on the next process() call.
 
 //AND GATE
 /obj/machinery/logic/twoinput/and/process()

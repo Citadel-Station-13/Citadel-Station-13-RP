@@ -157,7 +157,7 @@
 		else
 			battery.use(active_power_usage*CELLRATE)
 		return 1
-	return 0
+	return FALSE
 
 /obj/machinery/computer3/laptop/use_power(var/amount, var/chan = -1)
 	if(battery && battery.charge > 0)

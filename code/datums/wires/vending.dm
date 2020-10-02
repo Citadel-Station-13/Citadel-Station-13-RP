@@ -11,7 +11,7 @@ var/const/VENDING_WIRE_IDSCAN = 8
 	var/obj/machinery/vending/V = holder
 	if(V.panel_open)
 		return 1
-	return 0
+	return FALSE
 
 /datum/wires/vending/GetInteractWindow()
 	var/obj/machinery/vending/V = holder

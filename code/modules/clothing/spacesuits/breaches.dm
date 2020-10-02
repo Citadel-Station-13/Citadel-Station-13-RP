@@ -150,7 +150,7 @@ var/global/list/breach_burn_descriptors = list(
 
 	if(!can_breach || !breaches || !breaches.len)
 		name = base_name
-		return 0
+		return FALSE
 
 	for(var/datum/breach/B in breaches)
 		if(!B.class)

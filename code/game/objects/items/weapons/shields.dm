@@ -15,17 +15,17 @@
 
 	if(!(attack_dir && (attack_dir & bad_arc)))
 		return 1
-	return 0
+	return FALSE
 
 /proc/default_parry_check(mob/user, mob/attacker, atom/damage_source)
 	//parry only melee attacks
 	if(istype(damage_source, /obj/item/projectile) || (attacker && get_dist(user, attacker) > 1) || user.incapacitated())
-		return 0
+		return FALSE
 
 	//block as long as they are not directly behind us
 	var/bad_arc = reverse_direction(user.dir) //arc of directions from which we cannot block
 	if(!check_shield_arc(user, bad_arc, damage_source, attacker))
-		return 0
+		return FALSE
 
 	return 1
 
@@ -43,7 +43,7 @@
 
 /obj/item/shield/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	if(user.incapacitated())
-		return 0
+		return FALSE
 
 	//block as long as they are not directly behind us
 	var/bad_arc = reverse_direction(user.dir) //arc of directions from which we cannot block
@@ -51,7 +51,7 @@
 		if(prob(get_block_chance(user, damage, damage_source, attacker)))
 			user.visible_message("<span class='danger'>\The [user] blocks [attack_text] with \the [src]!</span>")
 			return 1
-	return 0
+	return FALSE
 
 /obj/item/shield/proc/get_block_chance(mob/user, var/damage, atom/damage_source = null, mob/attacker = null)
 	return base_block_chance
@@ -74,7 +74,7 @@
 
 /obj/item/shield/riot/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	if(user.incapacitated())
-		return 0
+		return FALSE
 
 	//block as long as they are not directly behind us
 	var/bad_arc = reverse_direction(user.dir) //arc of directions from which we cannot block
@@ -91,12 +91,12 @@
 					user.visible_message("<span class='danger'>\The [user]'s [src.name] is pierced by [attack_text]!</span>")
 					if(P.armor_penetration < 30) //PTR bullets and x-rays will bypass this entirely.
 						P.damage = P.damage / 2
-					return 0
+					return FALSE
 			//Otherwise, if we're here, we're gonna stop the attack entirely.
 			user.visible_message("<span class='danger'>\The [user] blocks [attack_text] with \the [src]!</span>")
 			playsound(user.loc, 'sound/weapons/Genhit.ogg', 50, 1)
 			return 1
-	return 0
+	return FALSE
 
 /obj/item/shield/riot/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/melee/baton))
@@ -137,7 +137,7 @@
 
 /obj/item/shield/energy/handle_shield(mob/user)
 	if(!active)
-		return 0 //turn it on first!
+		return FALSE //turn it on first!
 	. = ..()
 
 	if(.)
@@ -228,7 +228,7 @@
 	if(active)
 		return 1
 	else
-		return 0
+		return FALSE
 */
 /obj/item/shield/riot/tele/attack_self(mob/living/user)
 	active = !active

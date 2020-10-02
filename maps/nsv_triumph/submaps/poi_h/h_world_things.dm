@@ -32,7 +32,7 @@ DESERT_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
 	opacity = 0
 	density = 1
 	alpha = 0
-	blocks_air = 0
+	blocks_air = FALSE
 
 // -- Loot Spawners Stolen from UD Files -- //
 /obj/random/triumph

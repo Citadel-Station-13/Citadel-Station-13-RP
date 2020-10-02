@@ -19,7 +19,7 @@
 		return
 
 	proc/is_active(mob/living/silicon/infomorph/user)
-		return 0
+		return FALSE
 
 /datum/infomorph_software/crew_manifest
 	name = "Crew Manifest"
@@ -94,7 +94,7 @@
 					P.medicalActive2 = M
 			else
 				P.medical_cannotfind = 1
-			return 1
+			return TRUE
 
 /datum/infomorph_software/sec_records
 	name = "Security Records"
@@ -152,7 +152,7 @@
 				P.securityActive1 = null
 				P.securityActive2 = null
 				P.security_cannotfind = 1
-			return 1
+			return TRUE
 
 /datum/infomorph_software/door_jack
 	name = "Door Jack"
@@ -186,10 +186,10 @@
 			if(P.cable && P.cable.machine)
 				P.hackdoor = P.cable.machine
 				P.hackloop()
-			return 1
+			return TRUE
 		else if(href_list["cancel"])
 			P.hackdoor = null
-			return 1
+			return TRUE
 		else if(href_list["cable"])
 			var/turf/T = get_turf(P)
 			P.hack_aborted = 0
@@ -198,7 +198,7 @@
 				var/mob/living/carbon/human/H = P.card.loc
 				H.put_in_any_hand_if_possible(P.cable)
 			T.visible_message("<span class='warning'>A port on \the [P] opens to reveal \the [P.cable].</span>")
-			return 1
+			return TRUE
 
 /mob/living/silicon/infomorph/proc/hackloop()
 	var/turf/T = get_turf(src)
@@ -329,18 +329,18 @@
 			P.sradio.send_signal("ACTIVATE")
 			for(var/mob/O in hearers(1, P.loc))
 				O.show_message(text("\icon[] *beep* *beep*", P), 3, "*beep* *beep*", 2)
-			return 1
+			return TRUE
 
 		else if(href_list["freq"])
 			var/new_frequency = (P.sradio.frequency + text2num(href_list["freq"]))
 			if(new_frequency < PUBLIC_LOW_FREQ || new_frequency > PUBLIC_HIGH_FREQ)
 				new_frequency = sanitize_frequency(new_frequency)
 			P.sradio.set_frequency(new_frequency)
-			return 1
+			return TRUE
 
 		else if(href_list["code"])
 			P.sradio.code += text2num(href_list["code"])
 			P.sradio.code = round(P.sradio.code)
 			P.sradio.code = min(100, P.sradio.code)
 			P.sradio.code = max(1, P.sradio.code)
-			return 1
+			return TRUE

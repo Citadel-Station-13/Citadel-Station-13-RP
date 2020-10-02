@@ -11,7 +11,7 @@
 		if(istype(candidate, /turf/simulated/wall))
 			center = candidate
 			return 1
-	return 0
+	return FALSE
 
 /datum/event/wallrot/announce()
 	if(center)

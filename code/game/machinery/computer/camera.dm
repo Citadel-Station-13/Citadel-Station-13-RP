@@ -28,7 +28,7 @@
 	if (user.stat || ((get_dist(user, src) > 1 || !( user.canmove ) || user.blinded) && !istype(user, /mob/living/silicon))) //user can't see - not sure why canmove is here.
 		return -1
 	if(!current_camera)
-		return 0
+		return FALSE
 	var/viewflag = current_camera.check_eye(user)
 	if ( viewflag < 0 ) //camera doesn't work
 		reset_current()
@@ -106,14 +106,14 @@
 		var/mob/living/silicon/ai/A = user
 		// Only allow non-carded AIs to view because the interaction with the eye gets all wonky otherwise.
 		if(!A.is_in_chassis())
-			return 0
+			return FALSE
 
 		A.eyeobj.setLoc(get_turf(C))
 		A.client.eye = A.eyeobj
 		return 1
 
 	if (!C.can_use() || user.stat || (get_dist(user, src) > 1 || user.machine != src || user.blinded || !( user.canmove ) && !istype(user, /mob/living/silicon)))
-		return 0
+		return FALSE
 	set_current(C)
 	user.reset_view(current_camera)
 	check_eye(user)
@@ -158,7 +158,7 @@
 	var/list/shared_networks = src.network & C.network
 	if(shared_networks.len)
 		return 1
-	return 0
+	return FALSE
 
 /obj/machinery/computer/security/proc/set_current(var/obj/machinery/camera/C)
 	if(current_camera == C)

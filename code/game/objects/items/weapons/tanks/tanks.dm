@@ -277,9 +277,9 @@ var/list/global/tank_gauge_cache = list()
 /obj/item/tank/Topic(href, href_list)
 	..()
 	if (usr.stat|| usr.restrained())
-		return 0
+		return FALSE
 	if (src.loc != usr)
-		return 0
+		return FALSE
 
 	if (href_list["dist_p"])
 		if (href_list["dist_p"] == "reset")
@@ -398,7 +398,7 @@ var/list/global/tank_gauge_cache = list()
 	//Handle exploding, leaking, and rupturing of the tank
 
 	if(!air_contents)
-		return 0
+		return FALSE
 
 	var/pressure = air_contents.return_pressure()
 

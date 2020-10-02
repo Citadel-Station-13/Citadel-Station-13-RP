@@ -12,7 +12,7 @@
 /turf/simulated/sky/Initialize()
 	. = ..()
 	SSplanets.addTurf(src)
-	set_light(2, 2, "#FFFFFF")
+	set_light(2, 2, COLOR_WHITE)
 
 /turf/simulated/sky/north
 	dir = NORTH

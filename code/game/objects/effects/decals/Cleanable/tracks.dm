@@ -128,7 +128,7 @@ var/global/list/image/fluidtrack_cache=list()
 
 	update_icon()
 		overlays.Cut()
-		color = "#FFFFFF"
+		color = COLOR_WHITE
 		var/truedir=0
 
 		// Update ONLY the overlays that have changed.

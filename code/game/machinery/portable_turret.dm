@@ -410,7 +410,7 @@
 		to_chat(user, "<span class='notice'>Controls locked.</span>")
 		return 1
 
-	return 0
+	return FALSE
 
 /obj/machinery/porta_turret/attack_ai(mob/user)
 	if(isLocked(user))
@@ -778,7 +778,7 @@
 
 /obj/machinery/porta_turret/proc/assess_perp(var/mob/living/carbon/human/H)
 	if(!H || !istype(H))
-		return 0
+		return FALSE
 
 	if(emagged)
 		return 10

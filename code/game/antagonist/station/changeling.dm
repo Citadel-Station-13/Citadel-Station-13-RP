@@ -58,24 +58,24 @@
 
 /datum/antagonist/changeling/can_become_antag(var/datum/mind/player, var/ignore_role)
 	if(!..())
-		return 0
+		return FALSE
 	if(player.current)
 		if(ishuman(player.current))
 			var/mob/living/carbon/human/H = player.current
 			if(H.isSynthetic())
-				return 0
+				return FALSE
 			if(H.species.flags & NO_SCAN)
-				return 0
+				return FALSE
 			return 1
 		else if(isnewplayer(player.current))
 			if(player.current.client && player.current.client.prefs)
 				var/datum/species/S = GLOB.all_species[player.current.client.prefs.species]
 				if(S && (S.flags & NO_SCAN))
-					return 0
+					return FALSE
 				if(player.current.client.prefs.organ_data["torso"] == "cyborg") // Full synthetic.
-					return 0
+					return FALSE
 				return 1
-	return 0
+	return FALSE
 
 /datum/antagonist/changeling/print_player_full(var/datum/mind/ply)
 	var/text = print_player_lite(ply)

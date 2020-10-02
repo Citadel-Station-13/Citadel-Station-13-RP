@@ -36,7 +36,7 @@
 		if(world.time - last_message > 20)
 			src.occupant_message("<font color='red'>Unable to move while in defence mode</font>")
 			last_message = world.time
-		return 0
+		return FALSE
 	. = ..()
 	return
 

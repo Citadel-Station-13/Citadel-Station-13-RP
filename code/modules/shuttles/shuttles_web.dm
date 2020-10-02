@@ -425,17 +425,17 @@
 // Check if we're undocked, give option to force launch
 /obj/machinery/computer/shuttle_control/web/proc/check_docking(datum/shuttle/autodock/MS)
 	if(MS.skip_docking_checks() || MS.check_undocked())
-		return 1
+		return TRUE
 
 	var/choice = alert("The shuttle is currently docked! Please undock before continuing.","Error","Cancel","Force Launch")
 	if(choice == "Cancel")
-		return 0
+		return FALSE
 
 	choice = alert("Forcing a shuttle launch while docked may result in severe injury, death and/or damage to property. Are you sure you wish to continue?", "Force Launch", "Force Launch", "Cancel")
 	if(choice == "Cancel")
-		return 0
+		return FALSE
 
-	return 1
+	return TRUE
 
 // Props, for now.
 /obj/structure/flight_left

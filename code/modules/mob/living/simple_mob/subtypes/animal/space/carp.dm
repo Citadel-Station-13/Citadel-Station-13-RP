@@ -46,7 +46,7 @@
 
 	melee_damage_lower = 7 // About 14 DPS.
 	melee_damage_upper = 7
-	base_attack_cooldown = 10 // One attack a second.
+	base_attack_cooldown = 15 // 1.5 Seconds I believe
 	attack_sharp = TRUE
 	attack_sound = 'sound/weapons/bite.ogg'
 	attacktext = list("bitten")

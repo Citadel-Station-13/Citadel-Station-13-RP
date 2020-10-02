@@ -60,10 +60,10 @@
 
 /obj/item/tank/jetpack/proc/allow_thrust(num, mob/living/user as mob)
 	if(!on)
-		return 0
+		return FALSE
 	if((num < 0.005 || air_contents.total_moles < num))
 		ion_trail.stop()
-		return 0
+		return FALSE
 
 	var/datum/gas_mixture/G = air_contents.remove(num)
 
@@ -114,21 +114,21 @@
 
 /obj/item/tank/jetpack/rig/examine()
 	to_chat(usr, "It's a jetpack. If you can see this, report it on the bug tracker.")
-	return 0
+	return FALSE
 
 /obj/item/tank/jetpack/rig/allow_thrust(num, mob/living/user as mob)
 
 	if(!(src.on))
-		return 0
+		return FALSE
 
 	if(!istype(holder) || !holder.air_supply)
-		return 0
+		return FALSE
 
 	var/obj/item/tank/pressure_vessel = holder.air_supply
 
 	if((num < 0.005 || pressure_vessel.air_contents.total_moles < num))
 		src.ion_trail.stop()
-		return 0
+		return FALSE
 
 	var/datum/gas_mixture/G = pressure_vessel.air_contents.remove(num)
 

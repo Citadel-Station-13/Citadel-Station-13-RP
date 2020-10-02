@@ -120,7 +120,7 @@
 	taste_description = "metallic"
 	taste_mult = 1.1
 	reagent_state = LIQUID
-	color = "#666666"
+	color = COLOR_STEEL
 	strength = 20
 
 /datum/chemical_reaction/slime/metal_metamorphic
@@ -204,7 +204,7 @@
 	taste_description = "metallic"
 	taste_mult = 1.1
 	reagent_state = LIQUID
-	color = "#666666"
+	color = COLOR_STEEL
 	strength = 20
 
 /obj/item/reagent_containers/glass/bottle/binding

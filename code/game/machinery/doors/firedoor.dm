@@ -128,7 +128,7 @@
 			if(world.time - M.last_bumped <= 10) return //Can bump-open one airlock per second. This is to prevent popup message spam.
 			M.last_bumped = world.time
 			attack_hand(M)
-	return 0
+	return FALSE
 
 /obj/machinery/door/firedoor/attack_hand(mob/user as mob)
 	add_fingerprint(user)
@@ -489,7 +489,7 @@
 
 
 	update_nearby_tiles(need_rebuild)
-		if(!air_master) return 0
+		if(!air_master) return FALSE
 
 		var/turf/simulated/source = loc
 		var/turf/simulated/destination = get_step(source,dir)

@@ -49,7 +49,7 @@
 	cold_damage_per_tick = 0
 
 	projectiletype = /obj/item/projectile/icicle
-	base_attack_cooldown = 2 SECONDS
+	base_attack_cooldown = 3 SECONDS
 	ranged_attack_delay = 1 SECOND
 
 	player_msg = "You can fire an icicle projectile every two seconds. It hits hard, and armor has a hard time resisting it.<br>\

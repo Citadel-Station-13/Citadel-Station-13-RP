@@ -45,7 +45,7 @@
 
 /datum/stored_item/proc/add_product(var/atom/movable/product)
 	if(product.type != item_path)
-		return 0
+		return FALSE
 	init_products()
 	product.forceMove(stored)
 	instances += product

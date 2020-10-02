@@ -141,10 +141,10 @@
 			return
 
 	if(O.loc != user && !(istype(O,/obj/item/stack)))
-		return 0
+		return FALSE
 
 	if(is_robot_module(O))
-		return 0
+		return FALSE
 
 	if(istype(O,/obj/item/ammo_magazine/clip) || istype(O,/obj/item/ammo_magazine/s357) || istype(O,/obj/item/ammo_magazine/s38) || istype (O,/obj/item/ammo_magazine/s44)/* VOREstation Edit*/) // Prevents ammo recycling exploit with speedloaders.
 		to_chat(user, "\The [O] is too hazardous to recycle with the autolathe!")

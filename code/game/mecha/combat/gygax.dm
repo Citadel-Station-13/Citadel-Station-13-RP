@@ -160,7 +160,7 @@
 			H.recalculate_vis()
 		return 1
 	else
-		return 0
+		return FALSE
 
 /obj/mecha/combat/gygax/serenity/go_out()
 	if(ishuman(occupant))

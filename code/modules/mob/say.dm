@@ -84,7 +84,7 @@
 			return 1
 		if (istype(other, src.type) || istype(src, other.type))
 			return 1
-		return 0
+		return FALSE
 
 	if(speaking.flags & INNATE)
 		return 1
@@ -94,7 +94,7 @@
 		if(speaking.name == L.name)
 			return 1
 
-	return 0
+	return FALSE
 
 /*
    ***Deprecated***

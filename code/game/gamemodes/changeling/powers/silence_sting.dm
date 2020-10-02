@@ -14,7 +14,7 @@
 	set desc="Sting target"
 
 	var/mob/living/carbon/T = changeling_sting(10,/mob/proc/changeling_silence_sting)
-	if(!T)	return 0
+	if(!T)	return FALSE
 	add_attack_logs(src,T,"Silence sting (changeling)")
 	var/duration = 30
 	if(src.mind.changeling.recursive_enhancement)

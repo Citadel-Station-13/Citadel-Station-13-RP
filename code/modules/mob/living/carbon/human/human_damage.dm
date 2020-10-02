@@ -23,7 +23,7 @@
 
 /mob/living/carbon/human/adjustBrainLoss(var/amount)
 
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & GODMODE)	return FALSE	//godmode
 
 	if(should_have_organ("brain"))
 		var/obj/item/organ/internal/brain/sponge = internal_organs_by_name["brain"]
@@ -37,7 +37,7 @@
 
 /mob/living/carbon/human/setBrainLoss(var/amount)
 
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & GODMODE)	return FALSE	//godmode
 
 	if(should_have_organ("brain"))
 		var/obj/item/organ/internal/brain/sponge = internal_organs_by_name["brain"]
@@ -51,7 +51,7 @@
 
 /mob/living/carbon/human/getBrainLoss()
 
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & GODMODE)	return FALSE	//godmode
 
 	if(should_have_organ("brain"))
 		var/obj/item/organ/internal/brain/sponge = internal_organs_by_name["brain"]
@@ -211,7 +211,7 @@
 
 /mob/living/carbon/human/proc/getStasis()
 	if((species.flags & NO_SCAN) || isSynthetic())
-		return 0
+		return FALSE
 
 	return in_stasis
 
@@ -221,7 +221,7 @@
 	if(stasisValue && (life_tick % stasisValue))
 		return 1
 
-	return 0
+	return FALSE
 
 /mob/living/carbon/human/getCloneLoss()
 	if((species.flags & NO_SCAN) || isSynthetic())
@@ -421,7 +421,7 @@ This function restores all organs.
 			UpdateDamageIcon()
 			ENABLE_BITFIELD(hud_updateflag, HEALTH_HUD)
 	else
-		return 0
+		return FALSE
 	return
 
 
@@ -456,12 +456,12 @@ This function restores all organs.
 	handle_suit_punctures(damagetype, damage, def_zone)
 
 	if(blocked >= 100)
-		return 0
+		return FALSE
 
 	if(soaked >= damage)
-		return 0
+		return FALSE
 
-	if(!organ)	return 0
+	if(!organ)	return FALSE
 
 	if(blocked)
 		blocked = (100-blocked)/100

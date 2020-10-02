@@ -1,7 +1,7 @@
 /datum/antagonist/proc/equip(var/mob/living/carbon/human/player)
 
 	if(!istype(player))
-		return 0
+		return FALSE
 
 	// This could use work.
 	if(flags & ANTAG_CLEAR_EQUIPMENT)
@@ -13,5 +13,5 @@
 
 /datum/antagonist/proc/unequip(var/mob/living/carbon/human/player)
 	if(!istype(player))
-		return 0
+		return FALSE
 	return 1

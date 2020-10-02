@@ -33,13 +33,13 @@
 
 /obj/item/weldpack/proc/get_nozzle(var/mob/living/user)
 	if(!ishuman(user))
-		return 0
+		return FALSE
 
 	var/mob/living/carbon/human/H = user
 
 	if(H.hands_are_full()) //Make sure our hands aren't full.
 		to_chat(H, "<span class='warning'>Your hands are full.  Drop something first.</span>")
-		return 0
+		return FALSE
 
 	var/obj/item/F = nozzle
 	H.put_in_hands(F)

@@ -182,19 +182,19 @@
 	icon_state = "stun"
 	light_range = 2
 	light_power = 0.5
-	light_color = "#FFFFFF"
+	light_color = COLOR_WHITE
 
 /obj/effect/projectile/stun/muzzle
 	icon_state = "muzzle_stun"
 	light_range = 2
 	light_power = 0.5
-	light_color = "#FFFFFF"
+	light_color = COLOR_WHITE
 
 /obj/effect/projectile/stun/impact
 	icon_state = "impact_stun"
 	light_range = 2
 	light_power = 0.5
-	light_color = "#FFFFFF"
+	light_color = COLOR_WHITE
 
 //----------------------------
 // Bullet
@@ -203,7 +203,7 @@
 	icon_state = "muzzle_bullet"
 	light_range = 2
 	light_power = 0.5
-	light_color = "#FFFFFF"
+	light_color = COLOR_WHITE
 
 //----------------------------
 // Lightning beam
@@ -277,16 +277,16 @@
 	icon_state = "invert"
 	light_range = 2
 	light_power = -2
-	light_color = "#FFFFFF"
+	light_color = COLOR_WHITE
 
 /obj/effect/projectile/inversion/muzzle
 	icon_state = "muzzle_invert"
 	light_range = 2
 	light_power = -2
-	light_color = "#FFFFFF"
+	light_color = COLOR_WHITE
 
 /obj/effect/projectile/inversion/impact
 	icon_state = "impact_invert"
 	light_range = 2
 	light_power = -2
-	light_color = "#FFFFFF"
+	light_color = COLOR_WHITE

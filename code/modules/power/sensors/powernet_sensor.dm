@@ -47,7 +47,7 @@
 	if(powernet)
 		if(powernet.problem)
 			return 1
-	return 0
+	return FALSE
 
 // Proc: process()
 // Parameters: None
@@ -178,7 +178,7 @@
 			APC_entry["total_load"] = reading_to_text(A.lastused_total)
 			// Hopefully removes those goddamn \improper s which are screwing up the UI
 			var/N = A.area.name
-			if(findtext(N, "ÿ"))
+			if(findtext(N, "ï¿½"))
 				N = copytext(N, 3)
 			APC_entry["name"] = N
 			// Add data into main list of APC data.

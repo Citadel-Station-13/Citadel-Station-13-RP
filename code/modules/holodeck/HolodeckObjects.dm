@@ -283,10 +283,10 @@ datum/unarmed_attack/holopugilism/unarmed_override(var/mob/living/carbon/human/u
 	var/active = 0
 
 /obj/item/holo/esword/green/New()
-		lcolor = "#008000"
+		lcolor = COLOR_GREEN
 
 /obj/item/holo/esword/red/New()
-		lcolor = "#FF0000"
+		lcolor = COLOR_RED
 
 /obj/item/holo/esword/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	if(active && default_parry_check(user, attacker, damage_source) && prob(50))
@@ -421,7 +421,7 @@ datum/unarmed_attack/holopugilism/unarmed_override(var/mob/living/carbon/human/u
 		return
 
 	if(!user.IsAdvancedToolUser())
-		return 0
+		return FALSE
 
 	currentarea = get_area(src.loc)
 	if(!currentarea)

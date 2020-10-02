@@ -27,18 +27,18 @@
 
 /datum/shuttle/autodock/ferry/escape_pod/can_launch()
 	if(arming_controller && !arming_controller.armed)	// Must be armed
-		return 0
+		return FALSE
 	if(location)
-		return 0	// It's a one-way trip.
+		return FALSE	// It's a one-way trip.
 	return ..()
 
 /datum/shuttle/autodock/ferry/escape_pod/can_force()
 	if (arming_controller.eject_time && world.time < arming_controller.eject_time + 50)
-		return 0	// Dont allow force launching until 5 seconds after the arming controller has reached it's countdown
+		return FALSE	// Dont allow force launching until 5 seconds after the arming controller has reached it's countdown
 	return ..()
 
 /datum/shuttle/autodock/ferry/escape_pod/can_cancel()
-	return 0
+	return FALSE
 
 
 // This controller goes on the escape pod itself
@@ -81,7 +81,7 @@
 		else if (SSemergencyshuttle.departed && pod.can_launch())	// Allow players to manually launch ahead of time if the shuttle leaves
 			pod.launch(src)
 		return TOPIC_REFRESH
-	return 0
+	return FALSE
 
 
 
@@ -121,7 +121,7 @@
 			var/datum/computer/file/embedded_program/docking/simple/escape_pod_berth/P = program
 			if (!P.armed)
 				P.arm()
-		return 1
+		return TRUE
 
 // A docking controller program for a simple door based docking port
 /datum/computer/file/embedded_program/docking/simple/escape_pod_berth
@@ -151,7 +151,7 @@
 	return
 
 /datum/computer/file/embedded_program/docking/simple/escape_pod_berth/ready_for_docking()
-	return 1
+	return TRUE
 
 /datum/computer/file/embedded_program/docking/simple/escape_pod_berth/finish_docking()
 	return	// Don't do anything - the doors only open when the pod is armed.

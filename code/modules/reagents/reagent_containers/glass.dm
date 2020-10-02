@@ -85,14 +85,14 @@
 	if(standard_feed_mob(user, M))
 		return
 
-	return 0
+	return FALSE
 
 /obj/item/reagent_containers/glass/standard_feed_mob(var/mob/user, var/mob/target)
 	if(!is_open_container())
 		to_chat(user, "<span class='notice'>You need to open \the [src] first.</span>")
-		return 1
+		return TRUE
 	if(user.a_intent == INTENT_HARM)
-		return 1
+		return TRUE
 	return ..()
 
 /obj/item/reagent_containers/glass/self_feed_message(var/mob/user)
@@ -100,21 +100,21 @@
 
 /obj/item/reagent_containers/glass/afterattack(var/obj/target, var/mob/user, var/proximity)
 	if(!is_open_container() || !proximity) //Is the container open & are they next to whatever they're clicking?
-		return 1 //If not, do nothing.
+		return TRUE //If not, do nothing.
 	for(var/type in can_be_placed_into) //Is it something it can be placed into?
 		if(istype(target, type))
-			return 1
+			return TRUE
 	if(standard_dispenser_refill(user, target)) //Are they clicking a water tank/some dispenser?
-		return 1
+		return TRUE
 	if(standard_pour_into(user, target)) //Pouring into another beaker?
 		return
 	if(user.a_intent == INTENT_HARM)
 		if(standard_splash_mob(user,target))
-			return 1
+			return TRUE
 		if(reagents && reagents.total_volume)
 			to_chat(user, "<span class='notice'>You splash the solution onto [target].</span>") //They are on harm intent, aka wanting to spill it.
 			reagents.splash(target, reagents.total_volume)
-			return 1
+			return TRUE
 	..()
 
 /obj/item/reagent_containers/glass/attackby(obj/item/W as obj, mob/user as mob)
@@ -343,3 +343,68 @@ obj/item/reagent_containers/glass/bucket/wood
 	amount_per_transfer_from_this = 20
 	possible_transfer_amounts = list(10,20,30,60,120)
 	volume = 120
+
+/obj/item/reagent_containers/glass/bottle/ickypak
+	name = "ickypak bottle"
+	desc = "A small bottle of ickypak. The smell alone makes you gag."
+	icon = 'icons/obj/chemical.dmi'
+	icon_state = "bottle-3"
+	prefill = list("ickypak" = 60)
+
+/obj/item/reagent_containers/glass/bottle/unsorbitol
+	name = "unsorbitol bottle"
+	desc = "A small bottle of unsorbitol. Sickeningly sweet."
+	icon = 'icons/obj/chemical.dmi'
+	icon_state = "bottle-3"
+	prefill = list("unsorbitol" = 60)
+
+/obj/item/reagent_containers/glass/beaker/neurotoxin
+	prefill = list("neurotoxin" = 50)
+
+/obj/item/reagent_containers/glass/beaker/vial/bicaridine
+	name = "vial (bicaridine)"
+	prefill = list("bicaridine" = 30)
+
+/obj/item/reagent_containers/glass/beaker/vial/dylovene
+	name = "vial (dylovene)"
+	prefill = list("dylovene" = 30)
+
+/obj/item/reagent_containers/glass/beaker/vial/dermaline
+	name = "vial (dermaline)"
+	prefill = list("dermaline" = 30)
+
+/obj/item/reagent_containers/glass/beaker/vial/kelotane
+	name = "vial (kelotane)"
+	prefill = list("kelotane" = 30)
+
+/obj/item/reagent_containers/glass/beaker/vial/inaprovaline
+	name = "vial (inaprovaline)"
+	prefill = list("inaprovaline" = 30)
+
+/obj/item/reagent_containers/glass/beaker/vial/dexalin
+	name = "vial (dexalin)"
+	prefill = list("dexalin" = 30)
+
+/obj/item/reagent_containers/glass/beaker/vial/dexalinplus
+	name = "vial (dexalinp)"
+	prefill = list("dexalinp" = 30)
+
+/obj/item/reagent_containers/glass/beaker/vial/tricordrazine
+	name = "vial (tricordrazine)"
+	prefill = list("tricordrazine" = 30)
+
+/obj/item/reagent_containers/glass/beaker/vial/alkysine
+	name = "vial (alkysine)"
+	prefill = list("alkysine" = 30)
+
+/obj/item/reagent_containers/glass/beaker/vial/imidazoline
+	name = "vial (imidazoline)"
+	prefill = list("imidazoline" = 30)
+
+/obj/item/reagent_containers/glass/beaker/vial/peridaxon
+	name = "vial (peridaxon)"
+	prefill = list("peridaxon" = 30)
+
+/obj/item/reagent_containers/glass/beaker/vial/hyronalin
+	name = "vial (hyronalin)"
+	prefill = list("hyronalin" = 30)

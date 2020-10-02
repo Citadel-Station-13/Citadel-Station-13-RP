@@ -37,7 +37,7 @@
 
 	if (src.anchored || usr:stat)
 		to_chat(usr, "It is fastened to the floor!")
-		return 0
+		return FALSE
 	src.setDir(turn(src.dir, 270))
 	return 1
 

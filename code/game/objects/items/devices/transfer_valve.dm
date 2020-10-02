@@ -96,9 +96,9 @@
 /obj/item/transfer_valve/Topic(href, href_list)
 	..()
 	if ( usr.stat || usr.restrained() )
-		return 0
+		return FALSE
 	if (src.loc != usr)
-		return 0
+		return FALSE
 	if(tank_one && href_list["tankone"])
 		remove_tank(tank_one)
 	else if(tank_two && href_list["tanktwo"])

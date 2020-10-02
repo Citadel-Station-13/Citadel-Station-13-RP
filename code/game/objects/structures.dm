@@ -70,29 +70,29 @@
 
 /obj/structure/proc/can_climb(var/mob/living/user, post_climb_check=0)
 	if (!climbable || !can_touch(user) || (!post_climb_check && (user in climbers)))
-		return 0
+		return FALSE
 
 	if (!user.Adjacent(src))
 		to_chat(user, "<span class='danger'>You can't climb there, the way is blocked.</span>")
-		return 0
+		return FALSE
 
 	var/obj/occupied = turf_is_crowded()
 	if(occupied)
 		to_chat(user, "<span class='danger'>There's \a [occupied] in the way.</span>")
-		return 0
+		return FALSE
 	return 1
 
 /obj/structure/proc/turf_is_crowded()
 	var/turf/T = get_turf(src)
 	if(!T || !istype(T))
-		return 0
+		return FALSE
 	for(var/obj/O in T.contents)
 		if(istype(O,/obj/structure))
 			var/obj/structure/S = O
 			if(S.climbable) continue
 		if(O && O.density && !(O.flags & ON_BORDER)) //ON_BORDER structures are handled by the Adjacent() check.
 			return O
-	return 0
+	return FALSE
 
 /obj/structure/proc/do_climb(var/mob/living/user)
 	if (!can_climb(user))
@@ -165,22 +165,22 @@
 
 /obj/structure/proc/can_touch(var/mob/user)
 	if (!user)
-		return 0
+		return FALSE
 	if(!Adjacent(user))
-		return 0
+		return FALSE
 	if (user.restrained() || user.buckled)
 		to_chat(user, "<span class='notice'>You need your hands and legs free for this.</span>")
-		return 0
+		return FALSE
 	if (user.stat || user.paralysis || user.sleeping || user.lying || user.weakened)
-		return 0
+		return FALSE
 	if (isAI(user))
 		to_chat(user, "<span class='notice'>You need hands for this.</span>")
-		return 0
+		return FALSE
 	return 1
 
 /obj/structure/attack_generic(var/mob/user, var/damage, var/attack_verb)
 	if(!breakable || damage < STRUCTURE_MIN_DAMAGE_THRESHOLD)
-		return 0
+		return FALSE
 	visible_message("<span class='danger'>[user] [attack_verb] the [src] apart!</span>")
 	user.do_attack_animation(src)
 	spawn(1) qdel(src)

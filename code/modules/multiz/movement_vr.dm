@@ -67,7 +67,7 @@
 */
 /mob/living/proc/dropped_onto(var/atom/hit_atom)
 	if(!isliving(hit_atom))
-		return 0
+		return FALSE
 
 	var/mob/living/pred = hit_atom
 	pred.visible_message("<span class='danger'>\The [hit_atom] falls onto \the [src]!</span>")
@@ -100,6 +100,6 @@
 		return direction == UP //can't go below
 	else
 		if(direction == UP) //on a turf below, trying to enter
-			return 0
+			return FALSE
 		if(direction == DOWN) //on a turf above, trying to enter
 			return 1

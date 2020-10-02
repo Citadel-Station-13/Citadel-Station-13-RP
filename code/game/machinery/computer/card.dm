@@ -14,7 +14,7 @@
 	var/printing = null
 
 /obj/machinery/computer/card/proc/is_centcom()
-	return 0
+	return FALSE
 
 /obj/machinery/computer/card/proc/is_authenticated()
 	return scan ? check_access(scan) : 0

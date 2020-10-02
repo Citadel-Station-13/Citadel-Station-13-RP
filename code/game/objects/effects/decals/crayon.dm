@@ -5,7 +5,7 @@
 	plane = DIRTY_PLANE
 	anchored = 1
 
-	New(location,main = "#FFFFFF",shade = "#000000",var/type = "rune")
+	New(location,main = COLOR_WHITE,shade = COLOR_BLACK,var/type = "rune")
 		..()
 		loc = location
 
@@ -36,7 +36,7 @@
 	plane = DIRTY_PLANE
 	anchored = 1
 
-	New(location,main = "#FFFFFF",shade = "#000000",var/type = "rune")
+	New(location,main = COLOR_WHITE,shade = COLOR_BLACK,var/type = "rune")
 		..()
 		loc = location
 

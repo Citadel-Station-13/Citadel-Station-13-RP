@@ -38,10 +38,10 @@
 	if(!F || (F in files))
 		return 1
 	if(writeprotect && !forced)
-		return 0
+		return FALSE
 	if(volume + F.volume > max_volume)
 		if(!forced)
-			return 0
+			return FALSE
 		max_volume = volume + F.volume
 
 	files.Add(F)
@@ -53,7 +53,7 @@
 	if(!F || !(F in files))
 		return 1
 	if(writeprotect && !forced)
-		return 0
+		return FALSE
 
 	files -= F
 	volume -= F.volume
@@ -139,13 +139,13 @@
 
 /obj/item/part/computer/storage/removable/addfile(var/datum/file/F)
 	if(!F || !inserted)
-		return 0
+		return FALSE
 
 	if(F in inserted.files)
 		return 1
 
 	if(inserted.volume + F.volume > inserted.max_volume)
-		return 0
+		return FALSE
 
 	inserted.files.Add(F)
 	F.computer = computer

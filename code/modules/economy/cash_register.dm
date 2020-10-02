@@ -208,7 +208,7 @@
 		confirm_item = I
 		src.visible_message("\icon[src]<b>Total price:</b> [transaction_amount] Thaler\s. Swipe again to confirm.")
 		playsound(src, 'sound/machines/twobeep.ogg', 25)
-		return 0
+		return FALSE
 
 
 /obj/machinery/cash_register/proc/scan_card(obj/item/card/id/I, obj/item/ID_container)
@@ -431,11 +431,11 @@
 /obj/machinery/cash_register/proc/check_account()
 	if (!linked_account)
 		usr.visible_message("\icon[src]<span class='warning'>Unable to connect to linked account.</span>")
-		return 0
+		return FALSE
 
 	if(linked_account.suspended)
 		src.visible_message("\icon[src]<span class='warning'>Connected account has been suspended.</span>")
-		return 0
+		return FALSE
 	return 1
 
 

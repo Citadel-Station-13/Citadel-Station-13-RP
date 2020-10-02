@@ -14,7 +14,7 @@ var/prison_shuttle_timeleft = 0
 	name = "prison shuttle control console"
 	icon_keyboard = "security_key"
 	icon_screen = "syndishuttle"
-	light_color = "#00ffff"
+	light_color = COLOR_CYAN
 	req_access = list(access_security)
 	circuit = /obj/item/circuitboard/prison_shuttle
 	var/temp = null
@@ -94,7 +94,7 @@ var/prison_shuttle_timeleft = 0
 
 
 	proc/prison_can_move()
-		if(prison_shuttle_moving_to_station || prison_shuttle_moving_to_prison) return 0
+		if(prison_shuttle_moving_to_station || prison_shuttle_moving_to_prison) return FALSE
 		else return 1
 
 

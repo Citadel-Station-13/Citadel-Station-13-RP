@@ -246,7 +246,7 @@ var/global/list/virusDB = list()
 
 /datum/disease2/disease/proc/addToDB()
 	if ("[uniqueID]" in virusDB)
-		return 0
+		return FALSE
 	var/datum/data/record/v = new()
 	v.fields["id"] = uniqueID
 	v.fields["name"] = name()
@@ -254,7 +254,7 @@ var/global/list/virusDB = list()
 	v.fields["antigen"] = antigens2string(antigen)
 	v.fields["spread type"] = spreadtype
 	virusDB["[uniqueID]"] = v
-	return 1
+	return TRUE
 
 proc/virus2_lesser_infection()
 	var/list/candidates = list()	//list of candidate keys
@@ -291,6 +291,6 @@ proc/virology_letterhead(var/report_name)
 /datum/disease2/disease/proc/can_add_symptom(type)
 	for(var/datum/disease2/effectholder/H in effects)
 		if(H.effect.type == type)
-			return 0
+			return FALSE
 
-	return 1
+	return TRUE

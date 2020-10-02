@@ -131,18 +131,18 @@
 			if(curToken.value!=val || !istype(curToken,type))
 				if(err)
 					errors+=new/scriptError/ExpectedToken(val, curToken)
-				return 0
+				return FALSE
 			if(skip)NextToken()
-			return 1
+			return TRUE
 
 		AddBlock(node/BlockDefinition/B)
 			blocks.Push(curBlock)
 			curBlock=B
 
 		EndBlock()
-			if(curBlock==global_block) return 0
+			if(curBlock==global_block) return FALSE
 			curBlock=blocks.Pop()
-			return 1
+			return TRUE
 
 		ParseAssignment()
 			var/name=curToken.value

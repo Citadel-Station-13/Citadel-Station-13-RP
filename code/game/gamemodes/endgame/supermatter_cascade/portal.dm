@@ -32,7 +32,7 @@
 
 /obj/singularity/narsie/large/exit/consume(const/atom/A)
 	if(!(A.singuloCanEat()))
-		return 0
+		return FALSE
 
 	if (istype(A, /mob/living/))
 		var/mob/living/L = A

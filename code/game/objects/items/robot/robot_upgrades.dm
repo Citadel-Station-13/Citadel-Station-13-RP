@@ -14,7 +14,7 @@
 	if(R.stat == DEAD)
 		to_chat(usr, "<span class='warning'>The [src] will not function on a deceased robot.</span>")
 		return 1
-	return 0
+	return FALSE
 
 
 /obj/item/borg/upgrade/reset
@@ -26,7 +26,7 @@
 
 /obj/item/borg/upgrade/reset/action(var/mob/living/silicon/robot/R)
 	if(..())
-		return 0
+		return FALSE
 	R.module_reset()
 	return 1
 
@@ -41,7 +41,7 @@
 	heldname = capitalize(sanitizeSafe(input(user, "Enter new robot name", "Robot Reclassification", heldname), MAX_NAME_LEN))
 
 /obj/item/borg/upgrade/rename/action(var/mob/living/silicon/robot/R)
-	if(..()) return 0
+	if(..()) return FALSE
 	R.notify_ai(ROBOT_NOTIFICATION_NEW_NAME, R.name, heldname)
 	R.name = heldname
 	R.custom_name = heldname
@@ -59,7 +59,7 @@
 /obj/item/borg/upgrade/restart/action(var/mob/living/silicon/robot/R)
 	if(R.health < 0)
 		to_chat(usr, "You have to repair the robot before using this module!")
-		return 0
+		return FALSE
 
 	if(!R.key)
 		for(var/mob/observer/dead/ghost in player_list)
@@ -81,10 +81,10 @@
 	require_module = 1
 
 /obj/item/borg/upgrade/vtec/action(var/mob/living/silicon/robot/R)
-	if(..()) return 0
+	if(..()) return FALSE
 
 	if(R.speed == -1)
-		return 0
+		return FALSE
 
 	R.speed--
 	return 1
@@ -99,12 +99,12 @@
 
 
 /obj/item/borg/upgrade/tasercooler/action(var/mob/living/silicon/robot/R)
-	if(..()) return 0
+	if(..()) return FALSE
 
 	if(!R.module || !(type in R.module.supported_upgrades))
 		to_chat(R, "Upgrade mounting error!  No suitable hardpoint detected!")
 		to_chat(usr, "There's no mounting point for the module!")
-		return 0
+		return FALSE
 
 	var/obj/item/gun/energy/taser/mounted/cyborg/T = locate() in R.module
 	if(!T)
@@ -113,12 +113,12 @@
 		T = locate() in R.module.modules
 	if(!T)
 		to_chat(usr, "<span class='warning'>This robot has had its taser removed!</span>")
-		return 0
+		return FALSE
 
 	if(T.recharge_time <= 2)
 		to_chat(R, "Maximum cooling achieved for this hardpoint!")
 		to_chat(usr, "There's no room for another cooling unit!")
-		return 0
+		return FALSE
 
 	else
 		T.recharge_time = max(2 , T.recharge_time - 4)
@@ -133,7 +133,7 @@
 	require_module = 1
 
 /obj/item/borg/upgrade/jetpack/action(var/mob/living/silicon/robot/R)
-	if(..()) return 0
+	if(..()) return FALSE
 
 	var/obj/item/tank/jetpack/carbondioxide/T = locate() in R.module
 	if(!T)
@@ -148,7 +148,7 @@
 	if(T)
 		to_chat(R, "Upgrade mounting error!  No suitable hardpoint detected!")
 		to_chat(usr, "There's no mounting point for the module!")
-		return 0
+		return FALSE
 
 /obj/item/borg/upgrade/advhealth
 	name = "advanced health analyzer module"
@@ -158,7 +158,7 @@
 	require_module = 1
 
 /obj/item/borg/upgrade/advhealth/action(var/mob/living/silicon/robot/R)
-	if(..()) return 0
+	if(..()) return FALSE
 
 	var/obj/item/healthanalyzer/advanced/T = locate() in R.module
 	if(!T)
@@ -171,7 +171,7 @@
 	if(T)
 		to_chat(R, "Upgrade mounting error!  No suitable hardpoint detected!")
 		to_chat(usr, "There's no mounting point for the module!")
-		return 0
+		return FALSE
 
 /obj/item/borg/upgrade/syndicate/
 	name = "scrambled equipment module"
@@ -181,10 +181,10 @@
 	require_module = 1
 
 /obj/item/borg/upgrade/syndicate/action(var/mob/living/silicon/robot/R)
-	if(..()) return 0
+	if(..()) return FALSE
 
 	if(R.emag_items == 1)
-		return 0
+		return FALSE
 
 	R.emag_items = 1
 	return 1
@@ -199,10 +199,10 @@
 	require_module = 1
 
 /obj/item/borg/upgrade/sizeshift/action(var/mob/living/silicon/robot/R)
-	if(..()) return 0
+	if(..()) return FALSE
 
 	if(/mob/living/proc/set_size in R.verbs)
-		return 0
+		return FALSE
 
 	R.verbs += /mob/living/proc/set_size
 	return 1
@@ -214,7 +214,7 @@
 	item_state = "cyborg_upgrade"
 
 /obj/item/borg/upgrade/language/action(var/mob/living/silicon/robot/R)
-	if(..()) return 0
+	if(..()) return FALSE
 
 	R.add_language(LANGUAGE_SOL_COMMON,		1)
 	R.add_language(LANGUAGE_TRADEBAND,		1)

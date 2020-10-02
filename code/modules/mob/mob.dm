@@ -180,7 +180,7 @@
 	for(var/mob/M in mob_list)
 		if (M.real_name == text("[]", msg))
 			return M
-	return 0
+	return FALSE
 
 /mob/proc/Life()
 //	if(organStructure)
@@ -229,7 +229,7 @@
 		if(buckling == FULLY_BUCKLED && (incapacitation_flags & INCAPACITATION_BUCKLED_FULLY))
 			return 1
 
-	return 0
+	return FALSE
 
 #undef UNBUCKLED
 #undef PARTIALLY_BUCKLED
@@ -273,13 +273,13 @@
 	set category = "Object"
 
 	if(!src || !isturf(src.loc) || !(A in view(src.loc)))
-		return 0
+		return FALSE
 	if(istype(A, /obj/effect/decal/point))
-		return 0
+		return FALSE
 
 	var/tile = get_turf(A)
 	if (!tile)
-		return 0
+		return FALSE
 
 	var/obj/P = new /obj/effect/decal/point(tile)
 	P.invisibility = invisibility
@@ -608,7 +608,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 					if((e.status & ORGAN_BROKEN && (!e.splinted || (e.splinted && e.splinted in e.contents && prob(30))) || e.status & ORGAN_BLEEDING) && (H.getBruteLoss() + H.getFireLoss() >= 100))
 						return 1
 						break
-	return 0
+	return FALSE
 
 /mob/MouseDrop(mob/M as mob)
 	..()
@@ -644,7 +644,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 
 /mob/proc/see(message)
 	if(!is_active())
-		return 0
+		return FALSE
 	src << message
 	return 1
 
@@ -729,7 +729,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 
 // Not sure what to call this. Used to check if humans are wearing an AI-controlled exosuit and hence don't need to fall over yet.
 /mob/proc/can_stand_overridden()
-	return 0
+	return FALSE
 
 //Updates canmove, lying and icons. Could perhaps do with a rename but I can't think of anything to describe it.
 /mob/proc/update_canmove()
@@ -737,7 +737,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 
 //This might need a rename but it should replace the can this mob use things check
 /mob/proc/IsAdvancedToolUser()
-	return 0
+	return FALSE
 
 /mob/proc/Stun(amount)
 	if(status_flags & CANSTUN)
@@ -967,7 +967,7 @@ mob/proc/yank_out_object()
 		if(istype(I,/mob/living/simple_mob/animal/borer))
 			return I
 
-	return 0
+	return FALSE
 
 /mob/proc/updateicon()
 	return
@@ -1086,10 +1086,10 @@ mob/proc/yank_out_object()
 		src.throw_icon.icon_state = "act_throw_on"
 
 /mob/proc/isSynthetic()
-	return 0
+	return FALSE
 
 /mob/proc/is_muzzled()
-	return 0
+	return FALSE
 
 //Exploitable Info Update
 

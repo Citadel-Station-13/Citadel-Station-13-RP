@@ -210,7 +210,7 @@
 	taser_effect = 1
 	agony = 40
 	damage_type = HALLOSS
-	light_color = "#FFFFFF"
+	light_color = COLOR_WHITE
 
 	combustion = FALSE
 

@@ -32,7 +32,7 @@
 		return
 
 	if(!M.apply_damage(base_damage, BRUTE, target_zone, blocked, soaked, used_weapon=src))
-		return 0
+		return FALSE
 
 /obj/effect/plant/attack_hand(var/mob/user)
 	manual_unbuckle(user)

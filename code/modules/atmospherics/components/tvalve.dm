@@ -70,7 +70,7 @@
 			network_node1 = new_network
 
 	if(new_network.normal_members.Find(src))
-		return 0
+		return FALSE
 
 	new_network.normal_members += src
 
@@ -110,7 +110,7 @@
 
 /obj/machinery/atmospherics/tvalve/proc/go_to_side()
 
-	if(state) return 0
+	if(state) return FALSE
 
 	state = 1
 	update_icon()
@@ -135,7 +135,7 @@
 /obj/machinery/atmospherics/tvalve/proc/go_straight()
 
 	if(!state)
-		return 0
+		return FALSE
 
 	state = 0
 	update_icon()
@@ -309,7 +309,7 @@
 
 /obj/machinery/atmospherics/tvalve/digital/receive_signal(datum/signal/signal)
 	if(!signal.data["tag"] || (signal.data["tag"] != id))
-		return 0
+		return FALSE
 
 	switch(signal.data["command"])
 		if("valve_open")
@@ -344,7 +344,7 @@
 				"<span class='notice'>\The [user] uploads access data to \the [src].</span>", \
 				"<span class='notice'>You copied access data from \the [W] to \the [src].</span>", \
 				"You hear a faint beep.")
-		return 0
+		return FALSE
 
 	if (!W.is_wrench())
 		return ..()

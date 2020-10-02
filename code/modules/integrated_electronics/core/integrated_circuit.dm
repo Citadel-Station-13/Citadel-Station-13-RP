@@ -65,7 +65,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 	if(assembly)
 		return assembly.check_interactivity(user)
 	else if(!CanInteract(user, physical_state))
-		return 0
+		return FALSE
 	return 1
 
 /obj/item/integrated_circuit/verb/rename_component()

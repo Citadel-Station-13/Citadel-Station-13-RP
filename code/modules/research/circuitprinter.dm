@@ -102,7 +102,7 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 /obj/machinery/r_n_d/circuit_imprinter/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(busy)
 		to_chat(user, "<span class='notice'>\The [src] is busy. Please wait for completion of previous operation.</span>")
-		return 1
+		return TRUE
 	if(default_deconstruction_screwdriver(user, O))
 		if(linked_console)
 			linked_console.linked_imprinter = null
@@ -113,24 +113,24 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 	if(default_part_replacement(user, O))
 		return
 	if(istype(O, /obj/item/gripper/no_use/loader))
-		return 0		//Sheet loaders weren't finishing attack(), this prevents the message "You can't stuff that gripper into this" without preventing the rest of the attack sequence from finishing
+		return FALSE		//Sheet loaders weren't finishing attack(), this prevents the message "You can't stuff that gripper into this" without preventing the rest of the attack sequence from finishing
 	if(panel_open)
 		to_chat(user, "<span class='notice'>You can't load \the [src] while it's opened.</span>")
-		return 1
+		return TRUE
 	if(!linked_console)
 		to_chat(user, "\The [src] must be linked to an R&D console first.")
-		return 1
+		return TRUE
 	if(O.is_open_container())
-		return 0
+		return FALSE
 	if(!istype(O, /obj/item/stack/material)) //Previously checked for specific material sheets, for some reason? Made the check on 133 redundant.
 		to_chat(user, "<span class='notice'>You cannot insert this item into \the [src].</span>")
-		return 1
+		return TRUE
 	if(stat)
-		return 1
+		return TRUE
 
 	if(TotalMaterials() + SHEET_MATERIAL_AMOUNT > max_material_storage)
 		to_chat(user, "<span class='notice'>\The [src]'s material bin is full. Please remove material before adding more.</span>")
-		return 1
+		return TRUE
 
 	var/obj/item/stack/material/S = O
 	if(!(S.material.name in materials))
@@ -173,11 +173,11 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 /obj/machinery/r_n_d/circuit_imprinter/proc/canBuild(var/datum/design/D)
 	for(var/M in D.materials)
 		if(materials[M] < (D.materials[M] * mat_efficiency))
-			return 0
+			return FALSE
 	for(var/C in D.chemicals)
 		if(!reagents.has_reagent(C, D.chemicals[C] * mat_efficiency))
-			return 0
-	return 1
+			return FALSE
+	return TRUE
 
 /obj/machinery/r_n_d/circuit_imprinter/proc/getLackingMaterials(var/datum/design/D)
 	var/ret = ""

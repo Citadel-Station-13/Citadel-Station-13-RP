@@ -274,7 +274,7 @@ var/list/mob_hat_cache = list()
 
 //DRONE MOVEMENT.
 /mob/living/silicon/robot/drone/Process_Spaceslipping(var/prob_slip)
-	return 0
+	return FALSE
 
 //CONSOLE PROCS
 /mob/living/silicon/robot/drone/proc/law_resync()

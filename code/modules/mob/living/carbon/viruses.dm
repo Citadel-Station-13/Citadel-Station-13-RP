@@ -1,6 +1,6 @@
 /mob/living/carbon/proc/handle_viruses()
 
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & GODMODE)	return FALSE	//godmode
 
 	if(bodytemperature > 406)
 		for (var/ID in virus2)

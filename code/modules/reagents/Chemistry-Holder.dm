@@ -107,7 +107,7 @@
 
 /datum/reagents/proc/add_reagent(var/id, var/amount, var/data = null, var/safety = 0)
 	if(!isnum(amount) || amount <= 0)
-		return 0
+		return FALSE
 
 	update_total()
 	amount = min(amount, get_free_space())
@@ -122,7 +122,7 @@
 				handle_reactions()
 			if(my_atom)
 				my_atom.on_reagent_change()
-			return 1
+			return TRUE
 	var/datum/reagent/D = SSchemistry.chemical_reagents[id]
 	if(D)
 		var/datum/reagent/R = new D.type()
@@ -135,14 +135,14 @@
 			handle_reactions()
 		if(my_atom)
 			my_atom.on_reagent_change()
-		return 1
+		return TRUE
 	else
 		stack_trace("[my_atom] attempted to add a reagent called '[id]' which doesn't exist. ([usr])")
-	return 0
+	return FALSE
 
 /datum/reagents/proc/remove_reagent(var/id, var/amount, var/safety = 0)
 	if(!isnum(amount))
-		return 0
+		return FALSE
 	for(var/datum/reagent/current in reagent_list)
 		if(current.id == id)
 			current.volume -= amount // It can go negative, but it doesn't matter
@@ -151,8 +151,8 @@
 				handle_reactions()
 			if(my_atom)
 				my_atom.on_reagent_change()
-			return 1
-	return 0
+			return TRUE
+	return FALSE
 
 /datum/reagents/proc/del_reagent(var/id)
 	for(var/datum/reagent/current in reagent_list)
@@ -162,25 +162,25 @@
 			update_total()
 			if(my_atom)
 				my_atom.on_reagent_change()
-			return 0
+			return FALSE
 
 /datum/reagents/proc/has_reagent(var/id, var/amount = 0)
 	for(var/datum/reagent/current in reagent_list)
 		if(current.id == id)
 			if(current.volume >= amount)
-				return 1
+				return TRUE
 			else
-				return 0
-	return 0
+				return FALSE
+	return FALSE
 
 /datum/reagents/proc/has_any_reagent(var/list/check_reagents)
 	for(var/datum/reagent/current in reagent_list)
 		if(current.id in check_reagents)
 			if(current.volume >= check_reagents[current.id])
-				return 1
+				return TRUE
 			else
-				return 0
-	return 0
+				return FALSE
+	return FALSE
 
 /datum/reagents/proc/has_all_reagents(var/list/check_reagents)
 	//this only works if check_reagents has no duplicate entries... hopefully okay since it expects an associative list
@@ -205,13 +205,13 @@
 	for(var/datum/reagent/current in reagent_list)
 		if(current.id == id)
 			return current.volume
-	return 0
+	return FALSE
 
 /datum/reagents/proc/get_data(var/id)
 	for(var/datum/reagent/current in reagent_list)
 		if(current.id == id)
 			return current.get_data()
-	return 0
+	return FALSE
 
 /datum/reagents/proc/get_reagents()
 	. = list()
@@ -274,7 +274,7 @@
 		return trans_to_turf(target, amount, multiplier, copy)
 	if(isobj(target) && target.is_open_container())
 		return trans_to_obj(target, amount, multiplier, copy)
-	return 0
+	return FALSE
 
 //Splashing reagents is messier than trans_to, the target's loc gets some of the reagents as well.
 /datum/reagents/proc/splash(var/atom/target, var/amount = 1, var/multiplier = 1, var/copy = 0, var/min_spill=0, var/max_spill=60)

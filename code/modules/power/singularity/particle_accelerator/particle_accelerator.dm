@@ -96,7 +96,7 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 
 	if (src.anchored || usr:stat)
 		to_chat(usr, "It is fastened to the floor!")
-		return 0
+		return FALSE
 	src.setDir(turn(src.dir, 270))
 	return 1
 
@@ -107,7 +107,7 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 
 	if (src.anchored || usr:stat)
 		to_chat(usr, "It is fastened to the floor!")
-		return 0
+		return FALSE
 	src.setDir(turn(src.dir, 90))
 	return 1
 
@@ -174,20 +174,20 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 /obj/structure/particle_accelerator/proc/update_state()
 	if(master)
 		master.update_state()
-		return 0
+		return FALSE
 
 
 /obj/structure/particle_accelerator/proc/report_ready(var/obj/O)
 	if(O && (O == master))
 		if(construction_state >= 3)
 			return 1
-	return 0
+	return FALSE
 
 
 /obj/structure/particle_accelerator/proc/report_master()
 	if(master)
 		return master
-	return 0
+	return FALSE
 
 
 /obj/structure/particle_accelerator/proc/connect_master(var/obj/O)
@@ -195,14 +195,14 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 		if(O.dir == src.dir)
 			master = O
 			return 1
-	return 0
+	return FALSE
 
 
 /obj/structure/particle_accelerator/proc/process_tool_hit(var/obj/item/O, var/mob/user)
 	if(!(O) || !(user))
-		return 0
+		return FALSE
 	if(!ismob(user) || !isobj(O))
-		return 0
+		return FALSE
 	var/temp_state = src.construction_state
 
 	switch(src.construction_state)//TODO:Might be more interesting to have it need several parts rather than a single list of steps
@@ -240,7 +240,7 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 					"You open the access panel.")
 				temp_state--
 	if(temp_state == src.construction_state)//Nothing changed
-		return 0
+		return FALSE
 	else
 		src.construction_state = temp_state
 		if(src.construction_state < 3)//Was taken apart, update state
@@ -273,7 +273,7 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 
 	if (src.anchored || usr:stat)
 		to_chat(usr, "It is fastened to the floor!")
-		return 0
+		return FALSE
 	src.setDir(turn(src.dir, 270))
 	return 1
 
@@ -284,7 +284,7 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 
 	if (src.anchored || usr:stat)
 		to_chat(usr, "It is fastened to the floor!")
-		return 0
+		return FALSE
 	src.setDir(turn(src.dir, 90))
 	return 1
 
@@ -331,13 +331,13 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 	return
 
 /obj/machinery/particle_accelerator/proc/update_state()
-	return 0
+	return FALSE
 
 /obj/machinery/particle_accelerator/proc/process_tool_hit(var/obj/item/O, var/mob/user)
 	if(!(O) || !(user))
-		return 0
+		return FALSE
 	if(!ismob(user) || !isobj(O))
-		return 0
+		return FALSE
 	var/temp_state = src.construction_state
 	switch(src.construction_state)//TODO:Might be more interesting to have it need several parts rather than a single list of steps
 		if(0)
@@ -375,7 +375,7 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 				temp_state--
 				active = 0
 	if(temp_state == src.construction_state)//Nothing changed
-		return 0
+		return FALSE
 	else
 		if(src.construction_state < 3)//Was taken apart, update state
 			update_state()

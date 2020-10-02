@@ -300,7 +300,7 @@
 				objectOrMob.forceMove(src)
 				return 1
 
-	return 0
+	return FALSE
 
 /mob/living/simple_mob/animal/space/space_worm/proc/Attach(var/mob/living/simple_mob/animal/space/space_worm/attachement)
 	if(!attachement)
@@ -382,7 +382,7 @@
 	if(previous)
 		previous.update_body_faction()
 		return 1
-	return 0
+	return FALSE
 
 // Worm meat.
 

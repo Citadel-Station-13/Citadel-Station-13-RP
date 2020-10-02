@@ -40,7 +40,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 //set the control of the panel to a given computer if closer than SOLAR_MAX_DIST
 /obj/machinery/power/solar/proc/set_control(var/obj/machinery/power/solar_control/SC)
 	if(SC && (get_dist(src, SC) > SOLAR_MAX_DIST))
-		return 0
+		return FALSE
 	control = SC
 	return 1
 
@@ -229,7 +229,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 
 /obj/item/solar_assembly/attackby(var/obj/item/W, var/mob/user)
 	if (!isturf(loc))
-		return 0
+		return FALSE
 	if(!anchored)
 		if(W.is_wrench())
 			anchored = 1
@@ -485,11 +485,11 @@ GLOBAL_LIST_EMPTY(solars_list)
 	if(..())
 		usr << browse(null, "window=solcon")
 		usr.unset_machine()
-		return 0
+		return FALSE
 	if(href_list["close"] )
 		usr << browse(null, "window=solcon")
 		usr.unset_machine()
-		return 0
+		return FALSE
 
 	if(href_list["rate control"])
 		if(href_list["cdir"])

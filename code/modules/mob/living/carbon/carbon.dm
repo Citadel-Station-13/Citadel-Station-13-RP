@@ -57,13 +57,13 @@
 	return
 
 /mob/living/carbon/electrocute_act(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0, var/def_zone = null, var/stun = 1)
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & GODMODE)	return FALSE	//godmode
 	if(def_zone == "l_hand" || def_zone == "r_hand") //Diona (And any other potential plant people) hands don't get shocked.
 		if(species.flags & IS_PLANT)
-			return 0
+			return FALSE
 	shock_damage *= siemens_coeff
 	if (shock_damage<1)
-		return 0
+		return FALSE
 
 	src.apply_damage(shock_damage, BURN, def_zone, used_weapon="Electrocution")
 	playsound(loc, "sparks", 50, 1, -1)
@@ -225,7 +225,7 @@
 			playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 
 /mob/living/carbon/proc/eyecheck()
-	return 0
+	return FALSE
 
 /mob/living/carbon/flash_eyes(intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /obj/screen/fullscreen/flash)
 	if(eyecheck() < intensity || override_blindness_check)
@@ -249,9 +249,9 @@
 
 /mob/living/carbon/can_use_hands()
 	if(handcuffed)
-		return 0
+		return FALSE
 	if(buckled && ! istype(buckled, /obj/structure/bed/chair)) // buckling does not restrict hands
-		return 0
+		return FALSE
 	return 1
 
 /mob/living/carbon/restrained()
@@ -260,7 +260,7 @@
 	return
 
 /mob/living/carbon/u_equip(obj/item/W as obj)
-	if(!W)	return 0
+	if(!W)	return FALSE
 
 	else if (W == handcuffed)
 		handcuffed = null
@@ -320,7 +320,7 @@
 
 /mob/living/carbon/slip(var/slipped_on,stun_duration=8)
 	if(buckled)
-		return 0
+		return FALSE
 	stop_pulling()
 	to_chat(src, "<span class='warning'>You slipped on [slipped_on]!</span>")
 	playsound(src.loc, 'sound/misc/slip.ogg', 50, 1, -3)
@@ -346,11 +346,11 @@
 	return species.default_language ? GLOB.all_languages[species.default_language] : null
 
 /mob/living/carbon/proc/should_have_organ(var/organ_check)
-	return 0
+	return FALSE
 
 /mob/living/carbon/can_feel_pain(var/check_organ)
 	if(isSynthetic())
-		return 0
+		return FALSE
 	return !(species.flags & NO_PAIN)
 
 /mob/living/carbon/needs_to_breathe()

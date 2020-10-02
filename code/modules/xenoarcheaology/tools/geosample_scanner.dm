@@ -325,7 +325,7 @@
 
 /obj/machinery/radiocarbon_spectrometer/Topic(href, href_list)
 	if(stat & (NOPOWER|BROKEN))
-		return 0 // don't update UIs attached to this object
+		return FALSE // don't update UIs attached to this object
 
 	if(href_list["scanItem"])
 		if(scanning)

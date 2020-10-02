@@ -19,7 +19,7 @@
 /obj/machinery/clonepod/transhuman/growclone(var/datum/transhuman/body_record/current_project)
 	//Manage machine-specific stuff.
 	if(mess || attempting)
-		return 0
+		return FALSE
 	attempting = 1 //One at a time!!
 	locked = 1
 	eject_wait = 1
@@ -118,7 +118,7 @@
 	//Machine specific stuff at the end
 	update_icon()
 	attempting = 0
-	return 1
+	return TRUE
 
 /obj/machinery/clonepod/transhuman/process()
 	if(stat & NOPOWER)
@@ -239,16 +239,16 @@
 
 /obj/machinery/transhuman/synthprinter/proc/print(var/datum/transhuman/body_record/BR)
 	if(!istype(BR) || busy)
-		return 0
+		return FALSE
 
 	if(stored_material[DEFAULT_WALL_MATERIAL] < body_cost || stored_material["glass"] < body_cost)
-		return 0
+		return FALSE
 
 	current_project = BR
 	busy = 5
 	update_icon()
 
-	return 1
+	return TRUE
 
 /obj/machinery/transhuman/synthprinter/proc/make_body()
 	//Manage machine-specific stuff
@@ -341,7 +341,7 @@
 	busy = 0
 	update_icon()
 
-	return 1
+	return TRUE
 
 /obj/machinery/transhuman/synthprinter/attack_hand(mob/user as mob)
 	if((busy == 0) || (stat & NOPOWER))
@@ -496,21 +496,21 @@
 
 /obj/machinery/transhuman/resleever/MouseDrop_T(mob/living/carbon/O, mob/user as mob)
 	if(!istype(O))
-		return 0 //not a mob
+		return FALSE //not a mob
 	if(user.incapacitated())
-		return 0 //user shouldn't be doing things
+		return FALSE //user shouldn't be doing things
 	if(O.anchored)
-		return 0 //mob is anchored???
+		return FALSE //mob is anchored???
 	if(get_dist(user, src) > 1 || get_dist(user, O) > 1)
-		return 0 //doesn't use adjacent() to allow for non-cardinal (fuck my life)
+		return FALSE //doesn't use adjacent() to allow for non-cardinal (fuck my life)
 	if(!ishuman(user) && !isrobot(user))
-		return 0 //not a borg or human
+		return FALSE //not a borg or human
 	if(panel_open)
 		to_chat(user, "<span class='notice'>Close the maintenance panel first.</span>")
-		return 0 //panel open
+		return FALSE //panel open
 
 	if(O.buckled)
-		return 0
+		return FALSE
 	if(O.has_buckled_mobs())
 		to_chat(user, span("warning", "\The [O] has other entities attached to it. Remove them first."))
 		return
@@ -527,13 +527,13 @@
 
 /obj/machinery/transhuman/resleever/proc/putmind(var/datum/transhuman/mind_record/MR, mode = 1, var/mob/living/carbon/human/override = null)
 	if((!occupant || !istype(occupant) || occupant.stat >= DEAD) && mode == 1)
-		return 0
+		return FALSE
 
 	if(mode == 2 && sleevecards) //Card sleeving
 		var/obj/item/sleevecard/card = new /obj/item/sleevecard(get_turf(src))
 		card.sleeveInto(MR)
 		sleevecards--
-		return 1
+		return TRUE
 
 	//If we're sleeving a subtarget, briefly swap them to not need to duplicate tons of code.
 	var/mob/living/carbon/human/original_occupant
@@ -594,7 +594,7 @@
 	if(original_occupant)
 		occupant = original_occupant
 
-	return 1
+	return TRUE
 
 /obj/machinery/transhuman/resleever/proc/go_out(var/mob/M)
 	if(!( src.occupant ))
@@ -622,7 +622,7 @@
 	src.occupant = M
 	src.add_fingerprint(usr)
 	icon_state = "implantchair_on"
-	return 1
+	return TRUE
 
 /obj/machinery/transhuman/resleever/verb/get_out()
 	set name = "EJECT Occupant"

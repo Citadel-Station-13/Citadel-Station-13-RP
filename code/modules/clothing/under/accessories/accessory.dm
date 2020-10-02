@@ -360,7 +360,7 @@
 	set desc = "Dedicate your friendship bracelet to a special someone."
 	var/mob/M = usr
 	if(!M.mind)
-		return 0
+		return FALSE
 
 	var/input = sanitizeSafe(input("Who do you want to dedicate the bracelet to?", ,""), MAX_NAME_LEN)
 

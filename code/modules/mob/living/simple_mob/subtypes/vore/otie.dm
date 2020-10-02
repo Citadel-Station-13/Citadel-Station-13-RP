@@ -207,7 +207,7 @@
 
 /mob/living/simple_mob/otie/security/proc/check_threat(var/mob/living/M)
 	if(!M || !ishuman(M) || M.stat == DEAD || src == M)
-		return 0
+		return FALSE
 	return M.assess_perp(0, 0, 0, check_records, check_arrest)
 
 /mob/living/simple_mob/otie/security/proc/target_name(mob/living/T)

@@ -42,6 +42,10 @@
 	special_attack_min_range = 2
 	special_attack_max_range = 7
 
+/datum/say_list/merc/unknown_ind
+	speak = list("One day the'll fix that damn engine..","Next time, We're hidding on the tropical beach planet.","Wish I had better equipment...","I knew I should have been a line chef...","Fuckin' helmet keeps fogging up.","Hate this blocky ass ship.")
+	say_got_target = list("Looks like trouble!","Contact!","We've got company!","Perimeter Breached!!")
+
 ////////////////////////////////
 //		Grenade Attack
 ////////////////////////////////
@@ -211,6 +215,19 @@
 	special_attack_charges = 5
 
 
+/mob/living/simple_mob/humanoid/merc/ranged/virgo
+	name = "suspicious individual"
+	min_oxy = 0
+	max_oxy = 0
+	min_tox = 0
+	max_tox = 0
+	min_co2 = 0
+	max_co2 = 0
+	min_n2 = 0
+	max_n2 = 0
+	minbodytemp = 0
+	maxbodytemp = 700
+
 ////////////////////////////////
 //		Space Mercs
 ////////////////////////////////
@@ -234,6 +251,7 @@
 	min_n2 = 0
 	max_n2 = 0
 	minbodytemp = 0
+	maxbodytemp = 700
 
 	corpse = /obj/effect/landmark/mobcorpse/syndicatecommando
 
@@ -257,6 +275,7 @@
 	min_n2 = 0
 	max_n2 = 0
 	minbodytemp = 0
+	maxbodytemp = 700
 
 	corpse = /obj/effect/landmark/mobcorpse/syndicatecommando
 

@@ -145,7 +145,7 @@
 			message2 = stationtime2text()
 			update_display(message1, message2)
 			return 1
-	return 0
+	return FALSE
 
 /obj/machinery/status_display/examine(mob/user)
 	. = ..(user)
@@ -172,12 +172,12 @@
 	if(seclevel != newlevel)
 		seclevel = newlevel
 	switch(seclevel)
-		if("green")	set_light(l_range = 2, l_power = 0.25, l_color = "#00ff00")
-		if("yellow")	set_light(l_range = 2, l_power = 0.25, l_color = "#ffff00")
+		if("green")	set_light(l_range = 2, l_power = 0.25, l_color = COLOR_LIME)
+		if("yellow")	set_light(l_range = 2, l_power = 0.25, l_color = COLOR_YELLOW)
 		if("violet")	set_light(l_range = 2, l_power = 0.25, l_color = "#9933ff")
-		if("orange")	set_light(l_range = 2, l_power = 0.25, l_color = "#ff9900")
+		if("orange")	set_light(l_range = 2, l_power = 0.25, l_color = COLOR_ORANGE)
 		if("blue")	set_light(l_range = 2, l_power = 0.25, l_color = "#1024A9")
-		if("red")	set_light(l_range = 4, l_power = 0.9, l_color = "#ff0000")
+		if("red")	set_light(l_range = 4, l_power = 0.9, l_color = COLOR_RED)
 		if("delta")	set_light(l_range = 4, l_power = 0.9, l_color = "#FF6633")
 	set_picture("status_display_[seclevel]")
 

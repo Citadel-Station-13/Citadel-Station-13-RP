@@ -294,11 +294,11 @@
 		system_error("Resources depleted.")
 
 /obj/machinery/mining/drill/proc/use_cell_power()
-	if(!cell) return 0
+	if(!cell) return FALSE
 	if(cell.charge >= charge_use)
 		cell.use(charge_use)
 		return 1
-	return 0
+	return FALSE
 
 /obj/machinery/mining/drill/verb/unload()
 	set name = "Unload Drill"
@@ -394,7 +394,7 @@
 
 	if (src.anchored)
 		to_chat(usr, "It is anchored in place!")
-		return 0
+		return FALSE
 
 	src.setDir(turn(src.dir, 270))
 	return 1

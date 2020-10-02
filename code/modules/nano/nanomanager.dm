@@ -62,7 +62,7 @@
 /datum/controller/subsystem/nanoui/proc/update_uis(src_object)
 	var/src_object_key = "\ref[src_object]"
 	if (isnull(open_uis[src_object_key]) || !istype(open_uis[src_object_key], /list))
-		return 0
+		return FALSE
 
 	var/update_count = 0
 	for (var/ui_key in open_uis[src_object_key])
@@ -82,7 +82,7 @@
 /datum/controller/subsystem/nanoui/proc/close_uis(src_object)
 	var/src_object_key = "\ref[src_object]"
 	if (isnull(open_uis[src_object_key]) || !istype(open_uis[src_object_key], /list))
-		return 0
+		return FALSE
 
 	var/close_count = 0
 	for (var/ui_key in open_uis[src_object_key])
@@ -103,7 +103,7 @@
   */
 /datum/controller/subsystem/nanoui/proc/update_user_uis(var/mob/user, src_object = null, ui_key = null)
 	if (isnull(user.open_uis) || !istype(user.open_uis, /list) || open_uis.len == 0)
-		return 0 // has no open uis
+		return FALSE // has no open uis
 
 	var/update_count = 0
 	for (var/datum/nanoui/ui in user.open_uis)
@@ -125,7 +125,7 @@
 /datum/controller/subsystem/nanoui/proc/close_user_uis(var/mob/user, src_object = null, ui_key = null)
 	if (isnull(user.open_uis) || !istype(user.open_uis, /list) || open_uis.len == 0)
 		//testing("nanomanager/close_user_uis mob [user.name] has no open uis")
-		return 0 // has no open uis
+		return FALSE // has no open uis
 
 	var/close_count = 0
 	for (var/datum/nanoui/ui in user.open_uis)
@@ -169,9 +169,9 @@
 /datum/controller/subsystem/nanoui/proc/ui_closed(var/datum/nanoui/ui)
 	var/src_object_key = "\ref[ui.src_object]"
 	if (isnull(open_uis[src_object_key]) || !istype(open_uis[src_object_key], /list))
-		return 0 // wasn't open
+		return FALSE // wasn't open
 	else if (isnull(open_uis[src_object_key][ui.ui_key]) || !istype(open_uis[src_object_key][ui.ui_key], /list))
-		return 0 // wasn't open
+		return FALSE // wasn't open
 
 	processing_uis.Remove(ui)
 	if(ui.user)	// Sanity check in case a user has been deleted (say a blown up borg watching the alarm interface)
@@ -210,7 +210,7 @@
 	//testing("nanomanager/user_transferred from mob [oldMob.name] to mob [newMob.name]")
 	if (!oldMob || isnull(oldMob.open_uis) || !istype(oldMob.open_uis, /list) || open_uis.len == 0)
 		//testing("nanomanager/user_transferred mob [oldMob.name] has no open uis")
-		return 0 // has no open uis
+		return FALSE // has no open uis
 
 	if (isnull(newMob.open_uis) || !istype(newMob.open_uis, /list))
 		newMob.open_uis = list()

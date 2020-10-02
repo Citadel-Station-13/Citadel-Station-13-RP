@@ -191,19 +191,19 @@
 		return 1
 	else
 		assembled = 0
-		return 0
+		return FALSE
 
 
 /obj/machinery/particle_accelerator/control_box/proc/check_part(var/turf/T, var/type)
 	if(!(T)||!(type))
-		return 0
+		return FALSE
 	var/obj/structure/particle_accelerator/PA = locate(/obj/structure/particle_accelerator) in T
 	if(istype(PA, type))
 		if(PA.connect_master(src))
 			if(PA.report_ready(src))
 				src.connected_parts.Add(PA)
 				return 1
-	return 0
+	return FALSE
 
 
 /obj/machinery/particle_accelerator/control_box/proc/toggle_power()

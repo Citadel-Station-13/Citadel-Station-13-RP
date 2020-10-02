@@ -9,7 +9,7 @@
 	icon_state = "light"
 	opacity = 1
 	density = 1
-	blocks_air = 1
+	blocks_air = TRUE
 
 /turf/unsimulated/shuttle/wall/dark
 	icon = 'icons/turf/shuttle_dark.dmi'

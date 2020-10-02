@@ -27,10 +27,10 @@ var/const/AIRLOCK_WIRE_LIGHT = 2048
 	if(!istype(L, /mob/living/silicon))
 		if(A.isElectrified())
 			if(A.shock(L, 100))
-				return 0
+				return FALSE
 	if(A.p_open)
 		return 1
-	return 0
+	return FALSE
 
 /datum/wires/airlock/GetInteractWindow()
 	var/obj/machinery/door/airlock/A = holder

@@ -83,7 +83,7 @@
 	materials = list(DEFAULT_WALL_MATERIAL = 8000, MAT_SILVER = 2000, MAT_DIAMOND = 1000)
 	build_path = /obj/item/gun/projectile/automatic/advanced_smg
 	sort_string = "MABAA"
-	
+
 /datum/design/item/weapon/ballistic/p90
 	id = "p90"
 	desc = "The H90K is a compact, large capacity submachine gun produced by Hephaestus Industries. Despite its fierce reputation, it still manages to feel like a toy. Uses 9mm rounds."
@@ -91,7 +91,7 @@
 	materials = list(DEFAULT_WALL_MATERIAL = 5000, MAT_PLASTIC = 5000, MAT_URANIUM = 1000)
 	build_path = /obj/item/gun/projectile/automatic/p90
 	sort_string = "MABAB"
-	
+
 // Ballistic ammo
 
 /datum/design/item/weapon/ballistic/ammo/AssembleDesignName()
@@ -356,6 +356,14 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	materials = list(DEFAULT_WALL_MATERIAL = 3000, MAT_GLASS = 3000, MAT_URANIUM = 1000)
 	build_path = /obj/item/gun/energy/pummeler
 	sort_string = "MAAAK"
+
+/datum/design/item/weapon/sizegun
+	name = "Size gun"
+	id = "sizegun"
+	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3, TECH_POWER = 2)
+	materials = list(DEFAULT_WALL_MATERIAL = 3000, "glass" = 2000, "uranium" = 2000)
+	build_path = /obj/item/gun/energy/sizegun
+	sort_string = "TAAAB"
 
 // Anti-particle stuff
 

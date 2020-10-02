@@ -35,7 +35,7 @@
 
 	corpse = /obj/effect/landmark/mobcorpse/pirate
 
-	ai_holder_type = /datum/ai_holder/simple_mob/merc
+	ai_holder_type = /datum/ai_holder/simple_mob/melee
 	say_list_type = /datum/say_list/pirate
 
 //Armored Variant
@@ -48,6 +48,8 @@
 	movement_cooldown = 4
 	armor = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 	loot_list = list(/obj/item/material/knife/tacknife = 100, /obj/item/clothing/suit/armor/material/makeshift = 100)
+
+	ai_holder_type = /datum/ai_holder/simple_mob/ranged
 
 ///////////////////////////////
 //		Machete Priate

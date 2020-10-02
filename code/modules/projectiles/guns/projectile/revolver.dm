@@ -58,10 +58,10 @@
 	set desc = "Click to rename your gun. If you're the detective."
 
 	var/mob/M = usr
-	if(!M.mind)	return 0
+	if(!M.mind)	return FALSE
 	if(!M.mind.assigned_role == "Detective")
 		to_chat(M, "<span class='notice'>You don't feel cool enough to name this gun, chump.</span>")
-		return 0
+		return FALSE
 
 	var/input = sanitizeSafe(input("What do you want to name the gun?", ,""), MAX_NAME_LEN)
 
@@ -86,11 +86,11 @@ obj/item/gun/projectile/revolver/detective45/verb/rename_gun()
 	set desc = "Rename your gun. If you're the Detective."
 
 	var/mob/M = usr
-	if(!M.mind)	return 0
+	if(!M.mind)	return FALSE
 	var/job = M.mind.assigned_role
 	if(job != "Detective")
 		to_chat(M, "<span class='notice'>You don't feel cool enough to name this gun, chump.</span>")
-		return 0
+		return FALSE
 
 	var/input = sanitizeSafe(input("What do you want to name the gun?", ,""), MAX_NAME_LEN)
 
@@ -203,7 +203,7 @@ obj/item/gun/projectile/revolver/detective45/verb/rename_gun()
 
 	var/mob/living/carbon/human/M = usr
 	if(!M.mind)
-		return 0
+		return FALSE
 
 	to_chat(M, "<span class='notice'>You change the firing mode on \the [src].</span>")
 	if(!flipped_firing)
@@ -261,12 +261,12 @@ obj/item/gun/projectile/revolver/detective45/verb/rename_gun()
 		to_chat(user, "\The [src] has a secondary barrel loaded with \a [to_print]")
 	else
 		to_chat(user, "\The [src] has a secondary barrel that is empty.")
-		
+
 /obj/item/gun/projectile/revolver/lemat/holy
 	name = "Blessed LeMat Revolver"
 	ammo_type = /obj/item/ammo_casing/a38/silver
 	secondary_ammo_type = /obj/item/ammo_casing/a12g/silver
-	
+
 
 
 //Ported from Bay
@@ -280,7 +280,7 @@ obj/item/gun/projectile/revolver/detective45/verb/rename_gun()
 	handle_casings = CYCLE_CASINGS
 	max_shells = 6
 	ammo_type = /obj/item/ammo_casing/a44
-	
+
 /obj/item/gun/projectile/revolver/webley/holy
 	name = "blessed service revolver"
 	ammo_type = /obj/item/ammo_casing/a44/silver
@@ -304,7 +304,7 @@ obj/item/gun/projectile/revolver/detective45/verb/rename_gun()
 	handle_casings = CYCLE_CASINGS
 	max_shells = 6
 	ammo_type = /obj/item/ammo_casing/a44
-	
+
 /obj/item/gun/projectile/revolver/dirty_harry/holy
 	name = "Blessed Model 29"
 	ammo_type = /obj/item/ammo_casing/a44/silver

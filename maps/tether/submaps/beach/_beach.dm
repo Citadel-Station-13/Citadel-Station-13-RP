@@ -35,15 +35,15 @@
 	// Sanity check.
 	if(surface_count < 100)
 		admin_notice("<span class='danger'>Insufficient surface minerals. Rerolling...</span>", R_DEBUG)
-		return 0
+		return FALSE
 	else if(rare_count < 50)
 		admin_notice("<span class='danger'>Insufficient rare minerals. Rerolling...</span>", R_DEBUG)
-		return 0
+		return FALSE
 	else if(deep_count < 50)
 		admin_notice("<span class='danger'>Insufficient deep minerals. Rerolling...</span>", R_DEBUG)
-		return 0
+		return FALSE
 	else
-		return 1
+		return TRUE
 
 // -- Objs -- //
 

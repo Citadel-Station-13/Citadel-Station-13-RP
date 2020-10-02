@@ -33,7 +33,7 @@
 
 /obj/item/analyzer/xeno_analyzer/attack_self(mob/user as mob)
 	print_report(user)
-	return 0
+	return FALSE
 
 /obj/item/analyzer/xeno_analyzer/afterattack(var/target, mob/user, flag)
 	if(!flag) return

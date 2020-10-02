@@ -45,8 +45,7 @@
 //Port of _vr files.
 /obj/item/clothing/glasses/omnihud
 	name = "\improper AR glasses"
-	desc = "The VM-62 AR Glasses are a design from Vey Med. These are a cheap export version \
-	for Nanotrasen. Probably not as complete as Vey Med could make them, but more readily available for NT."
+	desc = "The Nerd Glasses are a design from Nerd Co. Made in Montreal, China. For when reality just isn't cutting it, Nerd Glasses are a cut above the rest."
 	origin_tech = list(TECH_MAGNET = 3, TECH_BIO = 3)
 	var/obj/item/clothing/glasses/hud/omni/hud = null
 	var/mode = "civ"
@@ -104,7 +103,7 @@
 			to_chat(user, "<span class='warning'>The [src] does not have any kind of special display.</span>")
 
 /obj/item/clothing/glasses/omnihud/proc/ar_interact(var/mob/living/carbon/human/user)
-	return 0 //The base models do nothing.
+	return FALSE //The base models do nothing.
 
 /obj/item/clothing/glasses/omnihud/prescription
 	name = "AR glasses (pr)"
@@ -112,7 +111,7 @@
 
 /obj/item/clothing/glasses/omnihud/med
 	name = "\improper AR-M glasses"
-	desc = "The VM-62-M AR glasses are a design from Vey Med. \
+	desc = "The Nurse Glasses are a design from Nerd Co. \
 	These have been upgraded with medical records access and virus database integration."
 	mode = "med"
 	action_button_name = "AR Console (Crew Monitor)"
@@ -126,7 +125,7 @@
 
 /obj/item/clothing/glasses/omnihud/sec
 	name = "\improper AR-S glasses"
-	desc = "The VM-62-S AR glasses are a design from Vey Med. \
+	desc = "The Bully Glasses are a design from Nerd Co. \
 	These have been upgraded with security records integration and flash protection."
 	mode = "sec"
 	flash_protection = FLASH_PROTECTION_MAJOR
@@ -141,7 +140,7 @@
 
 /obj/item/clothing/glasses/omnihud/eng
 	name = "\improper AR-E glasses"
-	desc = "The VM-62-E AR glasses are a design from Vey Med. \
+	desc = "The Genius Glasses are a design from Nerd Co. \
 	These have been upgraded with advanced electrochromic lenses to protect your eyes during welding."
 	mode = "eng"
 	flash_protection = FLASH_PROTECTION_MAJOR
@@ -155,8 +154,8 @@
 
 /obj/item/clothing/glasses/omnihud/rnd
 	name = "\improper AR-R glasses"
-	desc = "The VM-62-R AR glasses are a design from Vey Med. \
-	These have been ... modified ... to fit into a different frame."
+	desc = "The Geek Glasses are a design from Nerd Co. \
+	These have been modified to fit a different frame."
 	mode = "sci"
 	icon = 'icons/obj/clothing/glasses.dmi'
 	icon_override = null
@@ -201,8 +200,8 @@
 
 /obj/item/clothing/glasses/omnihud/all
 	name = "\improper AR-B glasses"
-	desc = "The CC-62-B AR glasses are a design from Nanotrasen Central Command. \
-	These have been upgraded with every feature the lesser models have. Now we're talkin'."
+	desc = "The Super Dork Glasses are a design from Nerd Co. \
+	These have been stocked with every feature from the entire Nerd Co. lineup of AR Specs. Jocks beware."
 	mode = "best"
 	flash_protection = FLASH_PROTECTION_MAJOR
 	enables_planes = list(VIS_CH_ID,VIS_CH_HEALTH_VR,VIS_CH_STATUS_R,VIS_CH_BACKUP,VIS_CH_WANTED)

@@ -18,7 +18,7 @@ var/const/AUTOLATHE_DISABLE_WIRE = 4
 	var/obj/machinery/autolathe/A = holder
 	if(A.panel_open)
 		return 1
-	return 0
+	return FALSE
 
 /datum/wires/autolathe/Interact(var/mob/living/user)
 	if(CanUse(user))

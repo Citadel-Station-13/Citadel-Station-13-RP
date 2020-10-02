@@ -47,30 +47,30 @@
 			if(IS_WRENCH)
 				if(tool.is_wrench())
 					return allowed_procs[P]
-	return 0
+	return FALSE
 
 
 // Checks if this step applies to the user mob at all
 /datum/surgery_step/proc/is_valid_target(mob/living/carbon/human/target)
 	if(!hasorgans(target))
-		return 0
+		return FALSE
 
 	if(allowed_species)
 		for(var/species in allowed_species)
 			if(target.species.get_bodytype() == species)
-				return 1
+				return TRUE
 
 	if(disallowed_species)
 		for(var/species in disallowed_species)
 			if(target.species.get_bodytype() == species)
-				return 0
+				return FALSE
 
-	return 1
+	return TRUE
 
 
 // checks whether this step can be applied with the given user and target
 /datum/surgery_step/proc/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	return 0
+	return FALSE
 
 // does stuff to begin the step, usually just printing messages. Moved germs transfering and bloodying here too
 /datum/surgery_step/proc/begin_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
@@ -107,33 +107,33 @@
 
 /obj/item/proc/can_do_surgery(mob/living/carbon/M, mob/living/user)
 	if(M == user)
-		return 0
+		return FALSE
 	if(!ishuman(M))
-		return 1
+		return TRUE
 	var/mob/living/carbon/human/H = M
 	var/obj/item/organ/external/affected = H.get_organ(user.zone_sel.selecting)
 	if(affected)
 		for(var/datum/surgery_step/S in GLOB.surgery_steps)
 			if(!affected.open && S.req_open)
-				return 0
-	return 0
+				return FALSE
+	return FALSE
 
 /obj/item/proc/do_surgery(mob/living/carbon/M, mob/living/user)
 	if(!istype(M))
-		return 0
+		return FALSE
 	if (user.a_intent == INTENT_HARM)	//check for Hippocratic Oath
-		return 0
+		return FALSE
 	var/zone = user.zone_sel.selecting
 	if(zone in M.op_stage.in_progress) //Can't operate on someone repeatedly.
 		to_chat(user, "<span class='warning'>You can't operate on this area while surgery is already in progress.</span>")
-		return 1
+		return TRUE
 	for(var/datum/surgery_step/S in GLOB.surgery_steps)
 		//check if tool is right or close enough and if this step is possible
 		if(S.tool_quality(src))
 			var/step_is_valid = S.can_use(user, M, zone, src)
 			if(step_is_valid && S.is_valid_target(M))
 				if(step_is_valid == SURGERY_FAILURE) // This is a failure that already has a message for failing.
-					return 1
+					return TRUE
 				M.op_stage.in_progress += zone
 				S.begin_step(user, M, zone, src)		//start on it
 				var/success = TRUE
@@ -164,7 +164,7 @@
 					var/mob/living/carbon/human/H = M
 					H.update_surgery()
 				return	1	  												//don't want to do weapony things after surgery
-	return 0
+	return FALSE
 
 /proc/initialize_surgeries()
 	. = list()

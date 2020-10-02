@@ -32,7 +32,7 @@
 			return -1
 		else
 			return 1
-	return 0
+	return FALSE
 
 /datum/ship_engine/gas_thruster/toggle()
 	if(nozzle.use_power)
@@ -79,7 +79,7 @@
 	var/blockage
 
 /obj/machinery/atmospherics/unary/engine/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
-	return 0
+	return FALSE
 
 /obj/machinery/atmospherics/unary/engine/Initialize()
 	. = ..()
@@ -129,7 +129,7 @@
 
 /obj/machinery/atmospherics/unary/engine/proc/get_thrust()
 	if(!is_on() || !check_fuel())
-		return 0
+		return FALSE
 	var/used_part = volume_per_burn * thrust_limit / air_contents.volume
 	. = calculate_thrust(air_contents, used_part)
 	return
@@ -149,15 +149,15 @@
 
 /obj/machinery/atmospherics/unary/engine/proc/burn()
 	if(!is_on())
-		return 0
+		return FALSE
 	if(!check_fuel() || (0 < use_power_oneoff(charge_per_burn)) || check_blockage())
 		audible_message(src,"<span class='warning'>[src] coughs once and goes silent!</span>")
 		update_use_power(USE_POWER_OFF)
-		return 0
+		return FALSE
 
 	var/datum/gas_mixture/removed = air_contents.remove_ratio(volume_per_burn * thrust_limit / air_contents.volume)
 	if(!removed)
-		return 0
+		return FALSE
 	. = calculate_thrust(removed)
 	playsound(loc, 'sound/machines/thruster.ogg', 100 * thrust_limit, 0, world.view * 4, 0.1)
 	if(network)

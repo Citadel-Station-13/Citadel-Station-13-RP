@@ -24,13 +24,13 @@
 	icon_state = "muzzle_stun"
 	light_range = 2
 	light_power = 0.5
-	light_color = "#FFFFFF"
+	light_color = COLOR_WHITE
 
 /obj/effect/projectile/muzzle/bullet
 	icon_state = "muzzle_bullet"
 	light_range = 2
 	light_power = 0.5
-	light_color = "#FFFFFF"
+	light_color = COLOR_WHITE
 
 /obj/effect/projectile/muzzle/laser_heavy
 	icon_state = "muzzle_beam_heavy"
@@ -66,7 +66,7 @@
 	icon_state = "muzzle_invert"
 	light_range = 2
 	light_power = -2
-	light_color = "#FFFFFF"
+	light_color = COLOR_WHITE
 
 /obj/effect/projectile/muzzle/xray
 	icon_state = "muzzle_xray"

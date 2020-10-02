@@ -22,7 +22,7 @@
 
 /obj/item/sample/proc/merge_evidence(var/obj/item/sample/supplied, var/mob/user)
 	if(!supplied.evidence || !supplied.evidence.len)
-		return 0
+		return FALSE
 	evidence |= supplied.evidence
 	name = "[initial(name)] (combined)"
 	to_chat(user, "<span class='notice'>You transfer the contents of \the [supplied] into \the [src].</span>")
@@ -30,7 +30,7 @@
 
 /obj/item/sample/print/merge_evidence(var/obj/item/sample/supplied, var/mob/user)
 	if(!supplied.evidence || !supplied.evidence.len)
-		return 0
+		return FALSE
 	for(var/print in supplied.evidence)
 		if(evidence[print])
 			evidence[print] = stringmerge(evidence[print],supplied.evidence[print])
@@ -82,7 +82,7 @@
 		return ..()
 
 	if(evidence && evidence.len)
-		return 0
+		return FALSE
 
 	var/mob/living/carbon/human/H = M
 
@@ -113,7 +113,7 @@
 		name = "[initial(name)] (\the [H])"
 		icon_state = "fingerprint1"
 		return 1
-	return 0
+	return FALSE
 
 /obj/item/sample/print/copy_evidence(var/atom/supplied)
 	if(supplied.fingerprints && supplied.fingerprints.len)

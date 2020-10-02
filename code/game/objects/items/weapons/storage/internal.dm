@@ -19,7 +19,7 @@
 	return		//make sure this is never picked up
 
 /obj/item/storage/internal/mob_can_equip()
-	return 0	//make sure this is never picked up
+	return FALSE	//make sure this is never picked up
 
 //Helper procs to cleanly implement internal storages - storage items that provide inventory slots for other items.
 //These procs are completely optional, it is up to the master item to decide when it's storage get's opened by calling open()
@@ -34,11 +34,11 @@
 	if (ishuman(user) || issmall(user)) //so monkeys can take off their backpacks -- Urist
 
 		if (istype(user.loc,/obj/mecha)) // stops inventory actions in a mech
-			return 0
+			return FALSE
 
 		if(over_object == user && Adjacent(user)) // this must come before the screen objects only block
 			src.open(user)
-			return 0
+			return FALSE
 
 		if (!( istype(over_object, /obj/screen) ))
 			return 1
@@ -46,7 +46,7 @@
 		//makes sure master_item is equipped before putting it in hand, so that we can't drag it into our hand from miles away.
 		//there's got to be a better way of doing this...
 		if (!(master_item.loc == user) || (master_item.loc && master_item.loc.loc == user))
-			return 0
+			return FALSE
 
 		if (!( user.restrained() ) && !( user.stat ))
 			switch(over_object.name)
@@ -57,8 +57,8 @@
 					user.unEquip(master_item)
 					user.put_in_l_hand(master_item)
 			master_item.add_fingerprint(user)
-			return 0
-	return 0
+			return FALSE
+	return FALSE
 
 //items that use internal storage have the option of calling this to emulate default storage attack_hand behaviour.
 //returns 1 if the master item's parent's attack_hand() should be called, 0 otherwise.
@@ -70,16 +70,16 @@
 		if(H.l_store == master_item && !H.get_active_hand())	//Prevents opening if it's in a pocket.
 			H.put_in_hands(master_item)
 			H.l_store = null
-			return 0
+			return FALSE
 		if(H.r_store == master_item && !H.get_active_hand())
 			H.put_in_hands(master_item)
 			H.r_store = null
-			return 0
+			return FALSE
 
 	src.add_fingerprint(user)
 	if (master_item.loc == user)
 		src.open(user)
-		return 0
+		return FALSE
 
 	for(var/mob/M in range(1, master_item.loc))
 		if (M.s_active == src)

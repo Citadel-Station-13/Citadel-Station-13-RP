@@ -6,7 +6,7 @@
 
 /datum/admin_secret_item/random_event/gravity/can_execute(var/mob/user)
 	if(!(SSticker && SSticker.mode))
-		return 0
+		return FALSE
 
 	return ..()
 

@@ -31,12 +31,12 @@
 
 /datum/computer_file/program/ntnetdownload/proc/begin_file_download(var/filename)
 	if(downloaded_file)
-		return 0
+		return FALSE
 
 	var/datum/computer_file/program/PRG = ntnet_global.find_ntnet_file_by_name(filename)
 
 	if(!check_file_download(filename))
-		return 0
+		return FALSE
 
 	ui_header = "downloader_running.gif"
 
@@ -57,14 +57,14 @@
 	var/datum/computer_file/program/PRG = ntnet_global.find_ntnet_file_by_name(filename)
 
 	if(!PRG || !istype(PRG))
-		return 0
+		return FALSE
 
 	// Attempting to download antag only program, but without having emagged computer. No.
 	if(PRG.available_on_syndinet && !computer_emagged)
-		return 0
+		return FALSE
 
 	if(!computer || !computer.hard_drive || !computer.hard_drive.try_store_file(PRG))
-		return 0
+		return FALSE
 
 	return 1
 
@@ -127,7 +127,7 @@
 			downloaded_file = null
 			downloaderror = ""
 		return 1
-	return 0
+	return FALSE
 
 /datum/nano_module/program/computer_ntnetdownload
 	name = "Network Downloader"

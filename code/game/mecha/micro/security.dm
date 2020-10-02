@@ -4,7 +4,7 @@
 			H.client.mouse_pointer_icon = file("icons/mecha/mecha_mouse.dmi")
 		return 1
 	else
-		return 0
+		return FALSE
 
 /obj/mecha/micro/sec/go_out()
 	if(src.occupant && src.occupant.client)

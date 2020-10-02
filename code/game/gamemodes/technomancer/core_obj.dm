@@ -61,20 +61,20 @@
 
 // 'pay_energy' is too vague of a name for a proc at the mob level.
 /mob/proc/technomancer_pay_energy(amount)
-	return 0
+	return FALSE
 
 /mob/living/carbon/human/technomancer_pay_energy(amount)
 	if(istype(back, /obj/item/technomancer_core))
 		var/obj/item/technomancer_core/TC = back
 		return TC.pay_energy(amount)
-	return 0
+	return FALSE
 
 /obj/item/technomancer_core/proc/pay_energy(amount)
 	amount = round(amount * energy_cost_modifier, 0.1)
 	if(amount <= energy)
 		energy = max(energy - amount, 0)
 		return 1
-	return 0
+	return FALSE
 
 /obj/item/technomancer_core/proc/give_energy(amount)
 	energy = min(energy + amount, max_energy)
@@ -205,7 +205,7 @@
 	for(var/obj/spellbutton/spell in spells)
 		if(spell.spellpath == spell_to_check.obj_path)
 			return 1
-	return 0
+	return FALSE
 
 /mob/living/carbon/human/proc/wiz_energy_update_hud()
 	if(client && hud_used)

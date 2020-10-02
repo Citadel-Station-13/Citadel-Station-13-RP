@@ -71,7 +71,7 @@
 			return 1
 	victim = null
 	icon_state = "table2-idle"
-	return 0
+	return FALSE
 
 /obj/machinery/optable/process()
 	check_victim()
@@ -128,8 +128,8 @@
 	check_victim()
 	if(victim && get_turf(victim) == get_turf(src) && victim.lying)
 		to_chat(usr, "<span class='warning'>\The [src] is already occupied!</span>")
-		return 0
+		return FALSE
 	if(patient.buckled)
 		to_chat(usr, "<span class='notice'>Unbuckle \the [patient] first!</span>")
-		return 0
+		return FALSE
 	return 1

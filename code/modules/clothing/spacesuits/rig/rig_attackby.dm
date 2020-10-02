@@ -1,6 +1,6 @@
 /obj/item/rig/attackby(obj/item/W as obj, mob/living/user as mob)
 	if(!istype(user))
-		return 0
+		return FALSE
 
 	if(electrified != 0)
 		if(shock(user)) //Handles removing charge from the cell, as well. No need to do that here.

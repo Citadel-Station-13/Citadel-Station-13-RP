@@ -102,13 +102,13 @@
 		if(L == user && !controlled_mobs.len)
 			user << "<span class='warning'>This function doesn't work on higher-intelligence entities, however since you're \
 			trying to use it on yourself, perhaps you're an exception?  Regardless, nothing happens.</span>"
-			return 0
+			return FALSE
 
 		if(L.mob_class & allowed_mob_classes)
 			if(!(L in controlled_mobs)) //Selecting
 				if(L.client)
 					to_chat(user, "<span class='danger'>\The [L] seems to resist you!</span>")
-					return 0
+					return FALSE
 				if(!L.has_AI())
 					to_chat(user, span("warning", "\The [L] seems too dim for this to work on them."))
 					return FALSE
@@ -122,7 +122,7 @@
 		else //Let's attack
 			if(!controlled_mobs.len)
 				to_chat(user, "<span class='warning'>You have no entities under your control to command.</span>")
-				return 0
+				return FALSE
 			if(pay_energy(25 * controlled_mobs.len))
 				attack_all(L)
 				log_and_message_admins("has commanded their army of [controlled_mobs.len] to attack [L].")
@@ -136,7 +136,7 @@
 		var/turf/T = hit_atom
 		if(!controlled_mobs.len)
 			to_chat(user, "<span class='warning'>You have no entities under your control to command.</span>")
-			return 0
+			return FALSE
 		if(pay_energy(10 * controlled_mobs.len))
 			move_all(T)
 			adjust_instability(controlled_mobs.len)

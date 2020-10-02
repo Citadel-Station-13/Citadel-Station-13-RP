@@ -73,7 +73,7 @@ var/datum/antagonist/wizard/wizards
 /datum/antagonist/wizard/equip(var/mob/living/carbon/human/wizard_mob)
 
 	if(!..())
-		return 0
+		return FALSE
 
 	wizard_mob.equip_to_slot_or_del(new /obj/item/radio/headset(wizard_mob), slot_l_ear)
 	wizard_mob.equip_to_slot_or_del(new /obj/item/clothing/under/color/lightpurple(wizard_mob), slot_w_uniform)
@@ -116,17 +116,17 @@ obj/item/clothing
 Made a proc so this is not repeated 14 (or more) times.*/
 /mob/proc/wearing_wiz_garb()
 	to_chat(src, "Silly creature, you're not a human. Only humans can cast this spell.")
-	return 0
+	return FALSE
 
 // Humans can wear clothes.
 /mob/living/carbon/human/wearing_wiz_garb()
 	if(!is_wiz_garb(src.wear_suit))
 		to_chat(src, "<span class='warning'>I don't feel strong enough without my robe.</span>")
-		return 0
+		return FALSE
 	if(!is_wiz_garb(src.shoes))
 		to_chat(src, "<span class='warning'>I don't feel strong enough without my sandals.</span>")
-		return 0
+		return FALSE
 	if(!is_wiz_garb(src.head))
 		to_chat(src, "<span class='warning'>I don't feel strong enough without my hat.</span>")
-		return 0
+		return FALSE
 	return 1

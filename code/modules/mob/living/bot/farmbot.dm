@@ -275,24 +275,24 @@
 
 /mob/living/bot/farmbot/confirmTarget(var/atom/targ)
 	if(!..())
-		return 0
+		return FALSE
 
 	if(emagged && ishuman(targ))
 		if(targ in view(world.view, src))
 			return 1
-		return 0
+		return FALSE
 
 	if(istype(targ, /obj/structure/sink))
 		if(!tank || tank.reagents.total_volume >= tank.reagents.maximum_volume)
-			return 0
+			return FALSE
 		return 1
 
 	var/obj/machinery/portable_atmospherics/hydroponics/tray = targ
 	if(!istype(tray))
-		return 0
+		return FALSE
 
 	if(tray.closed_system || !tray.seed)
-		return 0
+		return FALSE
 
 	if(tray.dead && removes_dead || tray.harvest && collects_produce)
 		return FARMBOT_COLLECT
@@ -306,7 +306,7 @@
 	else if(replaces_nutriment && tray.nutrilevel < 1 && tray.reagents.total_volume < 1)
 		return FARMBOT_NUTRIMENT
 
-	return 0
+	return FALSE
 
 // Assembly
 

@@ -83,7 +83,7 @@ var/datum/antagonist/ninja/ninjas
 /datum/antagonist/ninja/greet(var/datum/mind/player)
 
 	if(!..())
-		return 0
+		return FALSE
 	var/directive = generate_ninja_directive("heel")
 	player.store_memory("<B>Directive:</B> <span class='danger'>[directive]</span><br>")
 	to_chat(player, "<b>Remember your directive:</b> [directive].")
@@ -101,7 +101,7 @@ var/datum/antagonist/ninja/ninjas
 /datum/antagonist/ninja/equip(var/mob/living/carbon/human/player)
 
 	if(!..())
-		return 0
+		return FALSE
 
 	var/obj/item/radio/R = new /obj/item/radio/headset(player)
 	player.equip_to_slot_or_del(R, slot_l_ear)

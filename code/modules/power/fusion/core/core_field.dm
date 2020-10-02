@@ -502,7 +502,7 @@
 /obj/effect/fusion_em_field/bullet_act(var/obj/item/projectile/Proj)
 	AddEnergy(Proj.damage)
 	update_icon()
-	return 0
+	return FALSE
 //All procs below this point are called in _core.dm, starting at line 41.
 //Stability monitoring. Gives radio annoucements if field stability is below 80%
 /obj/effect/fusion_em_field/proc/stability_monitor()
@@ -558,7 +558,7 @@
 //moved the flare to a proc for various reasons. Called on line 225.
 /obj/effect/fusion_em_field/proc/emflare()
 		radiation += plasma_temperature/2
-		light_color = "#ff0000"
+		light_color = COLOR_RED
 		light_max_power = 30
 		light_min_power = 30
 		light_min_range = 30

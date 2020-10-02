@@ -15,7 +15,7 @@
 		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
 		playsound(user.loc, 'sound/weapons/punchmiss.ogg', 50, 1)
 		return 1
-	return 0
+	return FALSE
 
 /obj/item/material/sword/suicide_act(mob/user)
 	var/datum/gender/TU = gender_datums[user.get_visible_gender()]

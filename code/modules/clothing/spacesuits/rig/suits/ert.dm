@@ -71,7 +71,7 @@
 	desc = "A heavy suit worn by the highest level of Asset Protection, don't mess with the person wearing this. Armoured and space ready."
 	suit_type = "heavy asset protection"
 	icon_state = "asset_protection_rig"
-	armor = list(melee = 60, bullet = 50, laser = 50,energy = 40, bomb = 40, bio = 100, rad = 100)
+	armor = list(melee = 80, bullet = 65, laser = 50, energy = 15, bomb = 80, bio = 100, rad = 60)
 	siemens_coefficient= 0.3
 	glove_type = /obj/item/clothing/gloves/gauntlets/rig/eva
 
@@ -135,3 +135,14 @@
 		emp_protection = 75
 	else
 		return
+
+/obj/item/rig/ert/janitor
+	name = "ERT-J suit control module"
+	desc = "A suit worn by the janitorial division of an Emergency Response Team. Has purple highlights. Armoured and space ready."
+	suit_type = "ERT janitor"
+	icon_state = "ert_janitor_rig"
+
+	initial_modules = list(
+		/obj/item/rig_module/maneuvering_jets,
+		/obj/item/rig_module/grenade_launcher/cleaner,
+		)

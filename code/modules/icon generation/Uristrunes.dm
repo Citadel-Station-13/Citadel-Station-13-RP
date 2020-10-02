@@ -8,7 +8,7 @@
 //
 //----------------------------------------
 
-/proc/create_border_image(icon/input, border_color = "#000000", fill_color = "#000000", border_alpha = 255, fill_alpha = 255)
+/proc/create_border_image(icon/input, border_color = COLOR_BLACK, fill_color = COLOR_BLACK, border_alpha = 255, fill_alpha = 255)
 	var/icon/I = icon('icons/effects/uristrunes.dmi', "blank")
 	I.Blend(input, ICON_OVERLAY)
 
@@ -35,15 +35,15 @@
 				var/nw = I.GetPixel(x - 1, y + 1)
 				var/sw = I.GetPixel(x - 1, y - 1)
 
-				var/sum_adj = ((n == "#00ff00"? 1 : 0) \
-				             + (s == "#00ff00"? 1 : 0) \
-				             + (e == "#00ff00"? 1 : 0) \
-				             + (w == "#00ff00"? 1 : 0))
+				var/sum_adj = ((n == COLOR_LIME? 1 : 0) \
+				             + (s == COLOR_LIME? 1 : 0) \
+				             + (e == COLOR_LIME? 1 : 0) \
+				             + (w == COLOR_LIME? 1 : 0))
 
-				var/sum_diag = ((ne == "#00ff00"? 1 : 0) \
-				              + (se == "#00ff00"? 1 : 0) \
-				              + (nw == "#00ff00"? 1 : 0) \
-				              + (sw == "#00ff00"? 1 : 0))
+				var/sum_diag = ((ne == COLOR_LIME? 1 : 0) \
+				              + (se == COLOR_LIME? 1 : 0) \
+				              + (nw == COLOR_LIME? 1 : 0) \
+				              + (sw == COLOR_LIME? 1 : 0))
 
 
 				if(sum_adj)
@@ -55,7 +55,7 @@
 				else
 					I.DrawBox(rgb(0, 0, 0, 0), x, y)
 
-			else if(p != "#00ff00")
+			else if(p != COLOR_LIME)
 				var/a = 255
 
 				if(length(p) == 9) // "#rrggbbaa", we want the aa

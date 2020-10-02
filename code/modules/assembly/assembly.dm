@@ -49,7 +49,7 @@
 
 /obj/item/assembly/process_cooldown()
 	cooldown--
-	if(cooldown <= 0)	return 0
+	if(cooldown <= 0)	return FALSE
 	spawn(10)
 		process_cooldown()
 	return 1
@@ -74,7 +74,7 @@
 
 
 /obj/item/assembly/activate()
-	if(!secured || (cooldown > 0))	return 0
+	if(!secured || (cooldown > 0))	return FALSE
 	cooldown = 2
 	spawn(10)
 		process_cooldown()
@@ -92,7 +92,7 @@
 	if(holder.attach(A,src,user))
 		to_chat(user, "<span class='notice'>You attach \the [A] to \the [src]!</span>")
 		return 1
-	return 0
+	return FALSE
 
 
 /obj/item/assembly/attackby(obj/item/W as obj, mob/user as mob)
@@ -127,7 +127,7 @@
 
 
 /obj/item/assembly/attack_self(mob/user as mob)
-	if(!user)	return 0
+	if(!user)	return FALSE
 	user.set_machine(src)
 	interact(user)
 	return 1
@@ -155,25 +155,25 @@
 
 	Activate()
 		if(cooldown > 0)
-			return 0
+			return FALSE
 		cooldown = 2
 		spawn(10)
 			Process_cooldown()
 		//Rest of code here
-		return 0
+		return FALSE
 
 
 	Process_cooldown()
 		cooldown--
-		if(cooldown <= 0)	return 0
+		if(cooldown <= 0)	return FALSE
 		spawn(10)
 			Process_cooldown()
 		return 1
 
 
 	Attach_Holder(var/obj/H, var/mob/user)
-		if(!H)	return 0
-		if(!H.IsAssemblyHolder())	return 0
+		if(!H)	return FALSE
+		if(!H.IsAssemblyHolder())	return FALSE
 		//Remember to have it set its loc somewhere in here
 
 

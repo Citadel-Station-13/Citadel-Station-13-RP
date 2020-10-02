@@ -44,7 +44,7 @@
 	if (istype(user, /obj/machinery/computer/shuttle_control/emergency))
 		var/obj/machinery/computer/shuttle_control/emergency/C = user
 		if (!C.has_authorization())
-			return 0
+			return FALSE
 	return ..()
 
 /datum/shuttle/autodock/ferry/emergency/can_force(var/user)
@@ -54,14 +54,14 @@
 		// Initiating or cancelling a launch ALWAYS requires authorization, but if we are already set to launch anyways than forcing does not.
 		// This is so that people can force launch if the docking controller cannot safely undock without needing X heads to swipe.
 		if (!(process_state == WAIT_LAUNCH || C.has_authorization()))
-			return 0
+			return FALSE
 	return ..()
 
 /datum/shuttle/autodock/ferry/emergency/can_cancel(var/user)
 	if (istype(user, /obj/machinery/computer/shuttle_control/emergency))
 		var/obj/machinery/computer/shuttle_control/emergency/C = user
 		if (!C.has_authorization())
-			return 0
+			return FALSE
 	return ..()
 
 /datum/shuttle/autodock/ferry/emergency/launch(var/user)
@@ -124,9 +124,9 @@
 // Returns 1 if the ID was accepted and a new authorization was added, 0 otherwise
 /obj/machinery/computer/shuttle_control/emergency/proc/read_authorization(var/obj/item/ident)
 	if (!ident || !istype(ident))
-		return 0
+		return FALSE
 	if (authorized.len >= req_authorizations)
-		return 0	// Don't need any more
+		return FALSE	// Don't need any more
 
 	var/list/access
 	var/auth_name
@@ -142,17 +142,17 @@
 	dna_hash = ID.dna_hash
 
 	if (!access || !istype(access))
-		return 0	// Not an ID
+		return FALSE	// Not an ID
 
 	if (dna_hash in authorized)
 		src.visible_message("\The [src] buzzes. That ID has already been scanned.")
 		playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 50, 0)
-		return 0
+		return FALSE
 
 	if (!(access_heads in access))
 		src.visible_message("\The [src] buzzes, rejecting [ident].")
 		playsound(src.loc, 'sound/machines/deniedbeep.ogg', 50, 0)
-		return 0
+		return FALSE
 
 	src.visible_message("\The [src] beeps as it scans [ident].")
 	playsound(src.loc, 'sound/machines/twobeep.ogg', 50, 0)
@@ -164,13 +164,13 @@
 		log_admin("[key_name(usr)] has inserted [ID] into the shuttle control computer - [req_authorizations - authorized.len] authorisation\s needed")
 		message_admins("[key_name_admin(usr)] has inserted [ID] into the shuttle control computer - [req_authorizations - authorized.len] authorisation\s needed")
 
-	return 1
+	return TRUE
 
 /obj/machinery/computer/shuttle_control/emergency/emag_act(var/remaining_charges, var/mob/user)
 	if (!emagged)
 		to_chat(user, "<span class='notice'>You short out \the [src]'s authorization protocols.</span>")
 		emagged = 1
-		return 1
+		return TRUE
 
 /obj/machinery/computer/shuttle_control/emergency/attackby(obj/item/W as obj, mob/user as mob)
 	read_authorization(W)
@@ -244,7 +244,7 @@
 
 /obj/machinery/computer/shuttle_control/emergency/Topic(href, href_list)
 	if(..())
-		return 1
+		return TRUE
 
 	if(href_list["removeid"])
 		var/dna_hash = href_list["removeid"]

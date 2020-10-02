@@ -37,7 +37,7 @@ mob/living/carbon/proc/dream()
 			sleep(rand(40,70))
 			if(paralysis <= 0)
 				dreaming = 0
-				return 0
+				return FALSE
 		dreaming = 0
 		return 1
 

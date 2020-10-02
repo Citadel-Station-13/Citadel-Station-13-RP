@@ -28,13 +28,13 @@
 /obj/machinery/shieldwallgen/attack_hand(mob/user as mob)
 	if(state != 1)
 		to_chat(user, "<font color='red'>The shield generator needs to be firmly secured to the floor first.</font>")
-		return 1
+		return TRUE
 	if(src.locked && !istype(user, /mob/living/silicon))
 		to_chat(user, "<font color='red'>The controls are locked!</font>")
-		return 1
+		return TRUE
 	if(power != 1)
 		to_chat(user, "<font color='red'>The shield generator needs to be powered by wire underneath.</font>")
-		return 1
+		return TRUE
 
 	if(src.active >= 1)
 		src.active = 0
@@ -55,7 +55,7 @@
 /obj/machinery/shieldwallgen/proc/power()
 	if(!anchored)
 		power = 0
-		return 0
+		return FALSE
 	var/turf/T = src.loc
 
 	var/obj/structure/cable/C = T.get_cable_node()
@@ -64,7 +64,7 @@
 
 	if(!PN)
 		power = 0
-		return 0
+		return FALSE
 
 	var/shieldload = between(500, max_stored_power - storedpower, power_draw)	//what we try to draw
 	shieldload = PN.draw_power(shieldload) //what we actually get
@@ -73,10 +73,10 @@
 	//If we're still in the red, then there must not be enough available power to cover our load.
 	if(storedpower <= 0)
 		power = 0
-		return 0
+		return FALSE
 
 	power = 1	// IVE GOT THE POWER!
-	return 1
+	return TRUE
 
 /obj/machinery/shieldwallgen/process()
 	power()

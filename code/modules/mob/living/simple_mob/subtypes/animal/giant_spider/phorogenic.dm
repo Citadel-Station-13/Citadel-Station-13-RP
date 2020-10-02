@@ -65,9 +65,9 @@
 		// Flash black and red as a warning.
 		for(var/i = 1 to delay)
 			if(i % 2 == 0)
-				color = "#000000"
+				color = COLOR_BLACK
 			else
-				color = "#FF0000"
+				color = COLOR_RED
 			sleep(1)
 
 	spawn(delay)

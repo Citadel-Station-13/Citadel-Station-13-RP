@@ -57,7 +57,7 @@
 	flammability = 2
 
 /obj/item/projectile/energy/flash/flare/on_impact(var/atom/A)
-	light_color = pick("#e58775", "#ffffff", "#90ff90", "#a09030")
+	light_color = pick("#e58775", COLOR_WHITE, "#90ff90", "#a09030")
 
 	..() //initial flash
 
@@ -72,7 +72,7 @@
 	agony = 40
 	light_range = 2
 	light_power = 0.5
-	light_color = "#FFFFFF"
+	light_color = COLOR_WHITE
 	//Damage will be handled on the MOB side, to prevent window shattering.
 
 /obj/item/projectile/energy/electrode/strong
@@ -211,7 +211,7 @@
 	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
 	damage_type = BURN
 	check_armour = "energy"
-	light_color = "#0000FF"
+	light_color = COLOR_BLUE
 
 	embed_chance = 0
 	muzzle_type = /obj/effect/projectile/muzzle/pulse

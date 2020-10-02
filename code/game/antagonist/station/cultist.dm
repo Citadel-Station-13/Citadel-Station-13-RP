@@ -2,7 +2,7 @@ var/datum/antagonist/cultist/cult
 
 /proc/iscultist(var/mob/player)
 	if(!cult || !player.mind)
-		return 0
+		return FALSE
 	if(player.mind in cult.current_antagonists)
 		return 1
 
@@ -60,7 +60,7 @@ var/datum/antagonist/cultist/cult
 /datum/antagonist/cultist/equip(var/mob/living/carbon/human/player)
 
 	if(!..())
-		return 0
+		return FALSE
 
 	var/obj/item/paper/talisman/supply/T = new(get_turf(player))
 	var/list/slots = list (
@@ -80,7 +80,7 @@ var/datum/antagonist/cultist/cult
 
 /datum/antagonist/cultist/greet(var/datum/mind/player)
 	if(!..())
-		return 0
+		return FALSE
 	grant_runeword(player.current)
 
 /datum/antagonist/cultist/proc/grant_runeword(mob/living/carbon/human/cult_mob, var/word)
@@ -102,7 +102,7 @@ var/datum/antagonist/cultist/cult
 
 /datum/antagonist/cultist/remove_antagonist(var/datum/mind/player, var/show_message, var/implanted)
 	if(!..())
-		return 0
+		return FALSE
 	to_chat(player.current, "<span class='danger'>An unfamiliar white light flashes through your mind, cleansing the taint of the dark-one and the memories of your time as his servant with it.</span>")
 	player.memory = ""
 	if(show_message)
@@ -122,8 +122,8 @@ var/datum/antagonist/cultist/cult
 
 /datum/antagonist/cultist/can_become_antag(var/datum/mind/player)
 	if(!..())
-		return 0
+		return FALSE
 	for(var/obj/item/implant/loyalty/L in player.current)
 		if(L && (L.imp_in == player.current))
-			return 0
+			return FALSE
 	return 1

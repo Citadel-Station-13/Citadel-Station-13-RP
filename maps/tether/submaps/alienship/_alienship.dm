@@ -6,7 +6,7 @@
 	start_x = 12
 	start_y = 12
 	icon_state = "ship"
-	color = "#ff00ff"	// Sandy
+	color = COLOR_PINK	// Sandy
 	initial_generic_waypoints = list("tether_excursion_alienship")
 
 // -- Objs -- //

@@ -79,7 +79,7 @@
 			if(bcell.checked_use(chrgdeductamt))
 				return 1
 			else
-				return 0
+				return FALSE
 	return null
 
 /obj/item/melee/baton/proc/powercheck(var/chrgdeductamt)

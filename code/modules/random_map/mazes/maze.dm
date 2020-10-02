@@ -58,7 +58,7 @@
 
 /datum/random_map/maze/proc/add_to_openlist(var/tx, var/ty, var/nx, var/ny)
 	if(tx < 1 || ty < 1 || tx > limit_x || ty > limit_y || !isnull(checked_coord_cache["[tx]-[ty]"]))
-		return 0
+		return FALSE
 	checked_coord_cache["[tx]-[ty]"] = 1
 	map[get_map_cell(tx,ty)] = DOOR_CHAR
 	var/datum/maze_cell/new_cell = new(tx,ty,nx,ny)

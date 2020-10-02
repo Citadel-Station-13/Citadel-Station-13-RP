@@ -53,11 +53,11 @@
 		user.canmove = 1
 
 /obj/machinery/atmospherics/proc/can_crawl_through()
-	return 1
+	return TRUE
 
 /obj/machinery/atmospherics/unary/can_crawl_through()
 	if(welded)
-		return 0
+		return FALSE
 
 	. = ..()
 

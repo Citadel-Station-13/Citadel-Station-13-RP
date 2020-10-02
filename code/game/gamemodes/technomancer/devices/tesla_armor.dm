@@ -50,7 +50,7 @@
 			visible_message("<span class='danger'>\The [user]'s [src.name] blocks [attack_text]!</span>")
 			update_icon()
 			return 1
-	return 0
+	return FALSE
 
 /obj/item/clothing/suit/armor/tesla/attack_self(mob/user)
 	active = !active
@@ -67,7 +67,7 @@
 	else
 		icon_state = normal_icon_state
 		item_state = normal_icon_state
-		set_light(0, 0, l_color = "#000000")
+		set_light(0, 0, l_color = COLOR_BLACK)
 
 	if(ishuman(loc))
 		var/mob/living/carbon/human/H = loc

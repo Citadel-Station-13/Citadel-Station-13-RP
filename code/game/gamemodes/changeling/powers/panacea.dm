@@ -15,7 +15,7 @@
 
 	var/datum/changeling/changeling = changeling_power(20,0,100,UNCONSCIOUS)
 	if(!changeling)
-		return 0
+		return FALSE
 	src.mind.changeling.chem_charges -= 20
 
 	to_chat(src, "<span class='notice'>We cleanse impurities from our form.</span>")

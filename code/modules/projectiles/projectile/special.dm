@@ -120,7 +120,7 @@
 			qdel(src)
 			return 1
 	else
-		return 0
+		return FALSE
 
 /obj/item/projectile/energy/floramut
 	name = "alpha somatoray"
@@ -188,7 +188,7 @@
 	check_armour = "energy"
 	light_range = 2
 	light_power = 0.5
-	light_color = "#FFFFFF"
+	light_color = COLOR_WHITE
 
 /obj/item/projectile/energy/florayield/on_hit(var/atom/target, var/blocked = 0)
 	var/mob/M = target
@@ -334,5 +334,5 @@
 	if(istype(A, /obj/structure/window)) //It does not pass through windows. It pulverizes them.
 		var/obj/structure/window/W = A
 		W.shatter()
-		return 0
+		return FALSE
 	..()

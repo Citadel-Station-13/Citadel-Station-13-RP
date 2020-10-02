@@ -17,7 +17,7 @@
 
 /proc/investigate_reset()
 	if(fdel(INVESTIGATE_DIR))	return 1
-	return 0
+	return FALSE
 
 /atom/proc/investigate_log(var/message, var/subject)
 	if(!message)	return

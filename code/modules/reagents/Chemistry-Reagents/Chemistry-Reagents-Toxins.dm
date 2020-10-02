@@ -231,7 +231,7 @@
 	description = "A delicious salt that stops the heart when injected into cardiac muscle."
 	taste_description = "salt"
 	reagent_state = SOLID
-	color = "#FFFFFF"
+	color = COLOR_WHITE
 	strength = 0
 	overdose = REAGENTS_OVERDOSE
 	filtered_organs = list(O_SPLEEN, O_KIDNEYS)
@@ -257,7 +257,7 @@
 	description = "A specific chemical based on Potassium Chloride to stop the heart for surgery. Not safe to eat!"
 	taste_description = "salt"
 	reagent_state = SOLID
-	color = "#FFFFFF"
+	color = COLOR_WHITE
 	strength = 10
 	overdose = 20
 	filtered_organs = list(O_SPLEEN, O_KIDNEYS)
@@ -306,7 +306,7 @@
 	id = "lichpowder"
 	description = "A stablized nerve agent that puts the subject into a strange state of un-death."
 	reagent_state = SOLID
-	color = "#666666"
+	color = COLOR_STEEL
 	metabolism = REM * 0.75
 	strength = 2
 	mrate_static = TRUE
@@ -996,7 +996,7 @@ datum/reagent/talum_quem/affect_blood(var/mob/living/carbon/M, var/alien, var/re
 	description = "A corruptive toxin produced by slimes."
 	taste_description = "sludge"
 	reagent_state = LIQUID
-	color = "#FF69B4"
+	color = COLOR_HOT_PINK
 
 /datum/reagent/aslimetoxin/affect_blood(var/mob/living/carbon/M, var/alien, var/removed) // TODO: check if there's similar code anywhere else
 	if(M.isSynthetic())
@@ -1064,3 +1064,33 @@ datum/reagent/talum_quem/affect_blood(var/mob/living/carbon/M, var/alien, var/re
 /datum/reagent/neurophage_nanites/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	M.adjustBrainLoss(2 * removed)	// Their job is to give you a bad time.
 	M.adjustBruteLoss(2 * removed)
+
+/datum/reagent/advmutationtoxin
+	name = "Advanced Mutation Toxin"
+	id = "advmutationtoxin"
+	description = "A corruptive toxin produced by slimes. Turns the subject of the chemical into a Promethean."
+	reagent_state = LIQUID
+	color = "#13BC5E"
+
+/datum/reagent/advmutationtoxin/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(H.species.name != "Promethean")
+			to_chat(M, "<span class='danger'>Your flesh rapidly mutates!</span>")
+
+			var/list/backup_implants = list()
+			for(var/obj/item/organ/I in H.organs)
+				for(var/obj/item/implant/backup/BI in I.contents)
+					backup_implants += BI
+			if(backup_implants.len)
+				for(var/obj/item/implant/backup/BI in backup_implants)
+					BI.forceMove(src)
+
+			H.set_species("Promethean")
+			H.shapeshifter_set_color("#05FF9B") //They can still change their color.
+
+			if(backup_implants.len)
+				var/obj/item/organ/external/torso = H.get_organ(BP_TORSO)
+				for(var/obj/item/implant/backup/BI in backup_implants)
+					BI.forceMove(torso)
+					torso.implants += BI

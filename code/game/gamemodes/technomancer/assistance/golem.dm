@@ -158,7 +158,7 @@
 
 /mob/living/simple_animal/technomancer_golem/place_spell_in_hand(var/path)
 	if(!path || !ispath(path))
-		return 0
+		return FALSE
 
 	if(active_spell)
 		qdel(active_spell) // Get rid of our old spell.

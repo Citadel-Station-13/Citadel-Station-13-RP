@@ -448,7 +448,7 @@
 /obj/machinery/portable_atmospherics/hydroponics/attackby(var/obj/item/O as obj, var/mob/user as mob)
 
 	if(O.is_open_container())
-		return 0
+		return FALSE
 
 	if(O.is_wirecutter() || istype(O, /obj/item/surgical/scalpel))
 

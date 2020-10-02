@@ -16,7 +16,7 @@
 	if(src.mind && src.mind.changeling)
 		changeling = src.mind.changeling
 	if(!changeling)
-		return 0
+		return FALSE
 
 	var/mob/living/carbon/human/T = changeling_sting(40, /mob/proc/changeling_extract_dna_sting)
 
@@ -25,15 +25,15 @@
 
 	if(!istype(T) || T.isSynthetic())
 		to_chat(src, "<span class='warning'>\The [T] is not compatible with our biology.</span>")
-		return 0
+		return FALSE
 
 	if(T.species.flags & NO_SCAN)
 		to_chat(src, "<span class='warning'>We do not know how to parse this creature's DNA!</span>")
-		return 0
+		return FALSE
 
 	if(HUSK in T.mutations)
 		to_chat(src, "<span class='warning'>This creature's DNA is ruined beyond useability!</span>")
-		return 0
+		return FALSE
 
 	add_attack_logs(src,T,"DNA extraction sting (changeling)")
 

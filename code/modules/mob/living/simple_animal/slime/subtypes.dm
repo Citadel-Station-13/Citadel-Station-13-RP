@@ -350,7 +350,7 @@
 
 /mob/living/simple_animal/slime/ruby
 	desc = "This slime has great physical strength."
-	color = "#FF3333"
+	color = COLOR_RED_LIGHT
 	slime_color = "ruby"
 	shiny = TRUE
 	glows = TRUE
@@ -449,7 +449,7 @@
 
 /mob/living/simple_animal/slime/red
 	desc = "This slime is full of energy, and very aggressive.  'The red ones go faster.' seems to apply here."
-	color = "#FF3333"
+	color = COLOR_RED_LIGHT
 	slime_color = "red"
 	coretype = /obj/item/slime_extract/red
 	move_to_delay = 3 // The red ones go faster.

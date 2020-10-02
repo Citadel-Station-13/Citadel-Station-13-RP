@@ -58,7 +58,7 @@
 		return 1
 
 	if(charge <= 0)
-		return 0
+		return FALSE
 
 	var/cell_amt = power * CELLRATE
 
@@ -115,7 +115,7 @@
 /obj/item/cell/proc/use(var/amount)
 	if(rigged && amount > 0)
 		explode()
-		return 0
+		return FALSE
 	var/used = min(charge, amount)
 	charge -= used
 	last_use = world.time
@@ -126,7 +126,7 @@
 // from the cell and returns 1. Otherwise does nothing and returns 0.
 /obj/item/cell/proc/checked_use(var/amount)
 	if(!check_charge(amount))
-		return 0
+		return FALSE
 	use(amount)
 	return 1
 
@@ -265,7 +265,7 @@
 		if (1000 to 50000-1)
 			return min(rand(10,20),rand(10,20))
 		else
-			return 0
+			return FALSE
 
 /obj/item/cell/suicide_act(mob/user)
 	var/datum/gender/TU = gender_datums[user.get_visible_gender()]

@@ -12,4 +12,4 @@
 	return 1
 
 /mob/living/silicon/provides_cult_vision()
-	return 0
+	return FALSE

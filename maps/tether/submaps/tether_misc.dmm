@@ -4448,7 +4448,7 @@
 /obj/structure/table/standard,
 /obj/item/soap,
 /obj/item/towel{
-	color = "#0000FF"
+	color = COLOR_BLUE
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)

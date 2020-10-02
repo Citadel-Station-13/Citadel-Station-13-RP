@@ -21,7 +21,7 @@
 	ideal_character_age = 40
 
 	equip(var/mob/living/carbon/human/H)
-		if(!H)	return 0
+		if(!H)	return FALSE
 		H.equip_to_slot_or_del(new /obj/item/radio/headset/centcom(H), slot_l_ear)
 		switch(H.backbag)
 			if(2) H.equip_to_slot_or_del(new /obj/item/storage/backpack(H), slot_back)
@@ -63,7 +63,7 @@
 	ideal_character_age = 40
 
 	equip(var/mob/living/carbon/human/H)
-		if(!H)	return 0
+		if(!H)	return FALSE
 		H.equip_to_slot_or_del(new /obj/item/radio/headset/centcom(H), slot_l_ear)
 		switch(H.backbag)
 			if(2) H.equip_to_slot_or_del(new /obj/item/storage/backpack(H), slot_back)

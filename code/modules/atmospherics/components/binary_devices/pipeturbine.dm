@@ -150,7 +150,7 @@
 		network2 = new_network
 
 	if(new_network.normal_members.Find(src))
-		return 0
+		return FALSE
 
 	new_network.normal_members += src
 

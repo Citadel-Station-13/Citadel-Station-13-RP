@@ -458,7 +458,7 @@
 				return 1
 			else
 				to_chat(H, "<span class='warning'>[no_message]</span>")
-				return 0
+				return FALSE
 
 /* If anyone wants to make some... this is how you would.
 /obj/item/storage/backpack/saddlebag/spider
@@ -541,7 +541,7 @@
 				return 1
 			else
 				to_chat(H, "<span class='warning'>[no_message]</span>")
-				return 0
+				return FALSE
 
 /obj/item/storage/backpack/saddlebag_common/robust //Shared bag for other taurs with sturdy backs
 	name = "Robust Saddlebags"

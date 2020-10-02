@@ -14,7 +14,7 @@
 		if(istype(candidate, /turf/simulated/wall))
 			center = candidate
 			return 1
-	return 0
+	return FALSE
 
 /datum/gm_action/wallrot/announce()
 	if(center && prob(min(90,40 * severity)))

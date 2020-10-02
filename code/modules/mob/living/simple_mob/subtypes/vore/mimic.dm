@@ -13,9 +13,9 @@
 
 /obj/structure/closet/crate/mimic/open()
 	if(src.opened)
-		return 0
+		return FALSE
 	if(!src.can_open())
-		return 0
+		return FALSE
 
 	if(mimic_active)
 		mimic_active = FALSE

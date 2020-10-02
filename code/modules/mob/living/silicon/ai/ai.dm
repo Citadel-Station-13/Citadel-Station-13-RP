@@ -271,7 +271,7 @@ var/list/ai_verbs_default = list(
 		if(Entry[1] == src.ckey && Entry[2] == src.real_name)
 			icon = CUSTOM_ITEM_SYNTH
 			custom_sprite = 1
-			selected_sprite = new/datum/ai_icon("Custom", "[src.ckey]-ai", "4", "[ckey]-ai-crash", "#FFFFFF", "#FFFFFF", "#FFFFFF")
+			selected_sprite = new/datum/ai_icon("Custom", "[src.ckey]-ai", "4", "[ckey]-ai-crash", COLOR_WHITE, COLOR_WHITE, COLOR_WHITE)
 		else
 			selected_sprite = default_ai_icon
 	updateicon()
@@ -279,7 +279,7 @@ var/list/ai_verbs_default = list(
 /mob/living/silicon/ai/pointed(atom/A as mob|obj|turf in view())
 	set popup_menu = 0
 	set src = usr.contents
-	return 0
+	return FALSE
 
 /mob/living/silicon/ai/SetName(pickedName as text)
 	..()
@@ -436,10 +436,10 @@ var/list/ai_verbs_default = list(
 /mob/living/silicon/ai/check_eye(var/mob/user as mob)
 	if (!camera)
 		return -1
-	return 0
+	return FALSE
 
 /mob/living/silicon/ai/restrained()
-	return 0
+	return FALSE
 
 /mob/living/silicon/ai/emp_act(severity)
 	disconnect_shell("Disconnected from remote shell due to ionic interfe%*@$^___")
@@ -497,7 +497,7 @@ var/list/ai_verbs_default = list(
 
 /mob/living/silicon/ai/proc/switchCamera(var/obj/machinery/camera/C)
 	if (!C || stat == DEAD) //C.can_use())
-		return 0
+		return FALSE
 
 	if(!src.eyeobj)
 		view_core()
@@ -832,7 +832,7 @@ var/list/ai_verbs_default = list(
 		if(feedback)
 			to_chat(src, "<span class='warning'>System Error - Transceiver Disabled!</span>")
 		return 1
-	return 0
+	return FALSE
 
 /mob/living/silicon/ai/proc/is_in_chassis()
 	return istype(loc, /turf)

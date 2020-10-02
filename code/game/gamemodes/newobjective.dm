@@ -268,19 +268,19 @@ datum
 
 			check_completion()
 				if(!SSemergencyshuttle.returned())
-					return 0
+					return FALSE
 				if(target.current.stat == 2)
-					return 0
+					return FALSE
 				var/turf/location = get_turf(target.current.loc)
 				if(!location)
-					return 0
+					return FALSE
 				if(!target.current:handcuffed && !istype(location, /turf/simulated/shuttle/floor4))
-					return 0
+					return FALSE
 
 				if(location in locate(/area/shuttle/escape/centcom))
 					return 1
 
-				return 0
+				return FALSE
 
 			get_points()
 				if(target)
@@ -302,7 +302,7 @@ datum
 			get_weight()
 				if(target)
 					return 1
-				return 0
+				return FALSE
 
 
 		protection
@@ -314,19 +314,19 @@ datum
 
 			check_completion()
 				if(!SSemergencyshuttle.returned())
-					return 0
+					return FALSE
 
 				if(target.current.stat == 2)
-					return 0
+					return FALSE
 
 				var/turf/location = get_turf(target.current.loc)
 				if(!location)
-					return 0
+					return FALSE
 
 				if(location in locate(/area/shuttle/escape/centcom))
 					return 1
 
-				return 0
+				return FALSE
 
 			get_points()
 				if(target)
@@ -337,7 +337,7 @@ datum
 			get_weight()
 				if(target)
 					return 1
-				return 0
+				return FALSE
 
 			find_target_by_role(role, role_type=0)
 				..(role, role_type)
@@ -361,7 +361,7 @@ datum
 					if(target.current.stat == 2 || istype(get_area(target.current), /area/tdome) || issilicon(target.current) || isbrain(target.current))
 						return 1
 					else
-						return 0
+						return FALSE
 				else
 					return 1
 			get_points()
@@ -379,12 +379,12 @@ datum
 						if(0)
 							return 60*difficulty
 				else
-					return 0
+					return FALSE
 
 			get_weight()
 				if(target)
 					return 1
-				return 0
+				return FALSE
 
 			find_target_by_role(var/role)
 				for(var/datum/mind/possible_target in SSticker.minds)
@@ -430,11 +430,11 @@ datum
 			check_completion()
 				if(target && target.current)
 					if(target.current.stat == 2)
-						if(config_legacy.require_heads_alive) return 0
+						if(config_legacy.require_heads_alive) return FALSE
 					else
 						if(!target.current.handcuffed)
-							return 0
-				else if(config_legacy.require_heads_alive) return 0
+							return FALSE
+				else if(config_legacy.require_heads_alive) return FALSE
 				return 1
 
 			find_target_by_role(var/role)
@@ -470,7 +470,7 @@ datum
 			get_weight()
 				if(target)
 					return 1
-				return 0
+				return FALSE
 
 
 		hijack
@@ -478,20 +478,20 @@ datum
 
 			check_completion()
 				if(!SSemergencyshuttle.returned())
-					return 0
+					return FALSE
 
 				if(!owner.current || owner.current.stat == 2)
-					return 0
+					return FALSE
 				var/turf/location = get_turf(owner.current.loc)
 
 				if(location in locate(/area/shuttle/escape/centcom))
 					for(var/mob/living/player in locate(/area/shuttle/escape/centcom))
 						if (player.mind && (player.mind != owner))
 							if (player.stat != 2) //they're not dead
-								return 0
+								return FALSE
 					return 1
 
-				return 0
+				return FALSE
 			get_points(var/job)
 				switch(GetRank(job))
 					if(0)
@@ -513,22 +513,22 @@ datum
 
 			check_completion()
 				if(!SSemergencyshuttle.returned())
-					return 0
+					return FALSE
 
 				if(!owner.current || owner.current.stat ==2)
-					return 0
+					return FALSE
 
 				var/turf/location = get_turf(owner.current.loc)
 				if(!location)
-					return 0
+					return FALSE
 
 				if(owner.current:handcuffed || istype(location, /turf/simulated/shuttle/floor4))
-					return 0
+					return FALSE
 
 				if(location in locate(/area/shuttle/escape/centcom))
 					return 1
 
-				return 0
+				return FALSE
 			get_points()
 				return INFINITY
 
@@ -541,7 +541,7 @@ datum
 
 			check_completion()
 				if(!owner.current || owner.current.stat == 2)
-					return 0
+					return FALSE
 
 				return 1
 			get_points()
@@ -559,7 +559,7 @@ datum
 					if(owner.current.check_contents_for(steal_target))
 						return 1
 					else
-						return 0
+						return FALSE
 
 
 			captainslaser
@@ -605,7 +605,7 @@ datum
 					for(var/obj/item/I in all_items)
 						if(!istype(I, steal_target))	continue//If it's not actually that item.
 						if(I:air_contents:phoron) return 1 //If they got one with plasma
-					return 0
+					return FALSE
 
 
 			/*Removing this as an objective.  Not necessary to have two theft objectives in the same room.
@@ -1039,7 +1039,7 @@ datum
 						for(var/obj/item/robot_parts/robot_suit/objective in owner.current.get_contents())
 							if(istype(objective,/obj/item/robot_parts/robot_suit) && objective.check_completion())
 								return 1
-						return 0
+						return FALSE
 
 				get_weight(var/job)
 					return 20
@@ -1078,7 +1078,7 @@ datum
 							if(istype(M.loc, /turf) && M.state == 4)
 								if(istype(get_area(M), /area/shuttle/escape))
 									return 1
-						return 0
+						return FALSE
 
 			drugs
 				steal_target = /datum/reagent/space_drugs
@@ -1103,7 +1103,7 @@ datum
 						if(owner.current.check_contents_for_reagent(steal_target))
 							return 1
 						else
-							return 0
+							return FALSE
 
 				get_weight(var/job)
 					return 20
@@ -1132,7 +1132,7 @@ datum
 						if(owner.current.check_contents_for_reagent(steal_target))
 							return 1
 						else
-							return 0
+							return FALSE
 
 				get_weight(var/job)
 					return 20
@@ -1189,7 +1189,7 @@ datum
 						if(owner.current.check_contents_for_reagent(steal_target))
 							return 1
 						else
-							return 0
+							return FALSE
 
 				get_weight(var/job)
 					return 20
@@ -1213,7 +1213,7 @@ datum
 						held_credits += M.worth
 					if(held_credits >= steal_amount)
 						return 1
-					return 0
+					return FALSE
 
 				get_weight(var/job)
 					return 20
@@ -1229,11 +1229,11 @@ datum
 
 			check_completion()
 				if(!istype(owner.current, /mob/living/silicon))
-					return 0
+					return FALSE
 				if(!SSemergencyshuttle.returned())
-					return 0
+					return FALSE
 				if(!owner.current)
-					return 0
+					return FALSE
 				var/area/shuttle = locate(/area/shuttle/escape/centcom)
 				var/protected_mobs[] = list(/mob/living/silicon/ai, /mob/living/silicon/pai, /mob/living/silicon/robot)
 				for(var/mob/living/player in world)
@@ -1241,7 +1241,7 @@ datum
 					if (player.mind)
 						if (player.stat != 2)
 							if (get_turf(player) in shuttle)
-								return 0
+								return FALSE
 				return 1
 
 		decapitate
@@ -1272,12 +1272,12 @@ datum
 			check_completion()
 				if(target && target.current)
 					if(!owner.current||owner.current.stat==2)//If you're otherwise dead.
-						return 0
+						return FALSE
 					var/list/all_items = owner.current.get_contents()
 					for(var/obj/item/organ/head/mmi in all_items)
 						if(mmi.brainmob&&mmi.brainmob.mind==target)
 							return 1
-					return 0
+					return FALSE
 				else
 					return 1
 
@@ -1304,7 +1304,7 @@ datum
 				if(owner && owner.current && owner.current.changeling && owner.current.changeling.absorbed_dna && ((owner.current.changeling.absorbed_dna.len - 1) >= target_amount))
 					return 1
 				else
-					return 0
+					return FALSE
 
 		meme_attune
 			var/target_amount
@@ -1318,7 +1318,7 @@ datum
 				if(owner && owner.current && istype(owner.current,/mob/living/parasite/meme) && (owner.current:indoctrinated.len >= target_amount))
 					return 1
 				else
-					return 0
+					return FALSE
 
 		download
 			var/target_amount
@@ -1330,9 +1330,9 @@ datum
 
 			check_completion()
 				if(!ishuman(owner.current))
-					return 0
+					return FALSE
 				if(!owner.current || owner.current.stat == 2)
-					return 0
+					return FALSE
 
 				var/current_amount
 				var/obj/item/rig/S
@@ -1340,11 +1340,11 @@ datum
 					var/mob/living/carbon/human/H = owner.current
 					S = H.back
 				if(!S || !istype(S) || !S.stored_research.len)
-					return 0
+					return FALSE
 				else
 					for(var/datum/tech/current_data in S.stored_research)
 						if(current_data.level>1)	current_amount+=(current_data.level-1)
-				if(current_amount<target_amount)	return 0
+				if(current_amount<target_amount)	return FALSE
 				return 1
 
 
@@ -1376,13 +1376,13 @@ datum
 				if(!target)//If it's a free objective.
 					return 1
 				if(!owner.current||owner.current.stat==2)//If you're otherwise dead.
-					return 0
+					return FALSE
 				var/list/all_items = owner.current.get_contents()
 				for(var/obj/item/mmi/mmi in all_items)
 					if(mmi.brainmob&&mmi.brainmob.mind==target)	return 1
 				for(var/obj/item/organ/brain/brain in all_items)
 					if(brain.brainmob&&brain.brainmob.mind==target)	return 1
-				return 0
+				return FALSE
 
 		mutiny
 			proc/find_target()
@@ -1411,7 +1411,7 @@ datum
 					else if((T) && (isNotStationLevel(T.z)))//If they leave the station they count as dead for this
 						return 2
 					else
-						return 0
+						return FALSE
 				else
 					return 1
 
@@ -1450,7 +1450,7 @@ datum
 						continue
 					captured_amount+=2
 				if(captured_amount<target_amount)
-					return 0
+					return FALSE
 				return 1
 
 datum/objective/silence
@@ -1458,7 +1458,7 @@ datum/objective/silence
 
 	check_completion()
 		if(!SSemergencyshuttle.returned())
-			return 0
+			return FALSE
 
 		var/area/shuttle = locate(/area/shuttle/escape/centcom)
 		var/area/pod1 =    locate(/area/shuttle/escape_pod1/centcom)
@@ -1472,15 +1472,15 @@ datum/objective/silence
 			if (player.mind)
 				if (player.stat != 2)
 					if (get_turf(player) in shuttle)
-						return 0
+						return FALSE
 					if (get_turf(player) in pod1)
-						return 0
+						return FALSE
 					if (get_turf(player) in pod2)
-						return 0
+						return FALSE
 					if (get_turf(player) in pod3)
-						return 0
+						return FALSE
 					if (get_turf(player) in pod4)
-						return 0
+						return FALSE
 		return 1
 
 #undef FRAME_PROBABILITY

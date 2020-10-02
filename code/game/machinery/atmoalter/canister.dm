@@ -114,7 +114,7 @@
 	if(update_flag == old_flag)
 		return 1
 	else
-		return 0
+		return FALSE
 
 /obj/machinery/portable_atmospherics/canister/update_icon()
 /*
@@ -218,13 +218,13 @@ update_flag
 	var/datum/gas_mixture/GM = src.return_air()
 	if(GM && GM.volume>0)
 		return GM.temperature
-	return 0
+	return FALSE
 
 /obj/machinery/portable_atmospherics/canister/proc/return_pressure()
 	var/datum/gas_mixture/GM = src.return_air()
 	if(GM && GM.volume>0)
 		return GM.return_pressure()
-	return 0
+	return FALSE
 
 /obj/machinery/portable_atmospherics/canister/bullet_act(var/obj/item/projectile/Proj)
 	if(!(Proj.damage_type == BRUTE || Proj.damage_type == BURN))
@@ -302,7 +302,7 @@ update_flag
 	//Do not use "if(..()) return" here, canisters will stop working in unpowered areas like space or on the derelict. // yeah but without SOME sort of Topic check any dick can mess with them via exploits as he pleases -walter0o
 	//First comment might be outdated.
 	if (!istype(src.loc, /turf))
-		return 0
+		return FALSE
 
 	if(!usr.canmove || usr.stat || usr.restrained() || !in_range(loc, usr)) // exploit protection -walter0o
 		usr << browse(null, "window=canister")

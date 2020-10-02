@@ -148,7 +148,7 @@
 
 /obj/machinery/chemical_dispenser/Topic(href, href_list)
 	if(stat & (NOPOWER|BROKEN))
-		return 0 // don't update UIs attached to this object
+		return FALSE // don't update UIs attached to this object
 
 	if(href_list["amount"])
 		amount = round(text2num(href_list["amount"]), 1) // round to nearest 1
@@ -167,7 +167,7 @@
 			container = null
 
 	add_fingerprint(usr)
-	return 1 // update UIs attached to this object
+	return TRUE // update UIs attached to this object
 
 /obj/machinery/chemical_dispenser/attack_ai(mob/user as mob)
 	src.attack_hand(user)

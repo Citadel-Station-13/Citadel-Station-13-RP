@@ -53,7 +53,7 @@
 		if(istype(buckled, /mob))	//If you're buckled to a mob, a la slime things, keep on rolling.
 			return buckled.Move(NewLoc, Dir)
 		else	//Otherwise, no running around for you.
-			return 0
+			return FALSE
 	// end
 
 	. = ..()

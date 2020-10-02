@@ -14,7 +14,7 @@
 		return 1
 	if((z1 in GLOB.using_map.station_levels) &&	(z2 in GLOB.using_map.station_levels))
 		return 1
-	return 0
+	return FALSE
 
 /proc/max_default_z_level()
 	var/max_z = 0
@@ -53,7 +53,7 @@
 		var/area/A = get_area(H)
 		if(A == myarea) //The loc of a turf is the area it is in.
 			return 1
-	return 0
+	return FALSE
 
 // Like view but bypasses luminosity check
 
@@ -341,7 +341,7 @@ proc
 				while(Y1!=Y2)
 					T=locate(X1,Y1,Z)
 					if(T.opacity)
-						return 0
+						return FALSE
 					Y1+=s
 		else
 			var/m=(32*(Y2-Y1)+(PY2-PY1))/(32*(X2-X1)+(PX2-PX1))
@@ -357,7 +357,7 @@ proc
 					X1+=signX //Line exits tile horizontally
 				T=locate(X1,Y1,Z)
 				if(T.opacity)
-					return 0
+					return FALSE
 		return 1
 #undef SIGN
 
@@ -383,13 +383,13 @@ proc/isInSight(var/atom/A, var/atom/B)
 	var/turf/Bturf = get_turf(B)
 
 	if(!Aturf || !Bturf)
-		return 0
+		return FALSE
 
 	if(inLineOfSight(Aturf.x,Aturf.y, Bturf.x,Bturf.y,Aturf.z))
 		return 1
 
 	else
-		return 0
+		return FALSE
 
 /proc/get_cardinal_step_away(atom/start, atom/finish) //returns the position of a step from start away from finish, in one of the cardinal directions
 	//returns only NORTH, SOUTH, EAST, or WEST
@@ -532,7 +532,7 @@ datum/projectile_data
 
 /proc/mixOneColor(var/list/weight, var/list/color)
 	if (!weight || !color || length(weight)!=length(color))
-		return 0
+		return FALSE
 
 	var/contents = length(weight)
 	var/i
@@ -552,7 +552,7 @@ datum/projectile_data
 
 	//until someone writes a formal proof for this algorithm, let's keep this in
 //	if(mixedcolor<0x00 || mixedcolor>0xFF)
-//		return 0
+//		return FALSE
 	//that's not the kind of operation we are running here, nerd
 	mixedcolor=min(max(mixedcolor,0),255)
 

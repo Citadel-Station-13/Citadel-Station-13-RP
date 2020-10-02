@@ -44,7 +44,7 @@
 
 /obj/structure/lift/interact(var/mob/user)
 	if(!lift.is_functional())
-		return 0
+		return FALSE
 	return 1
 // End base.
 
@@ -192,7 +192,7 @@
 		pressed(usr)
 		updateDialog()
 
-	return 0
+	return FALSE
 
 /obj/structure/lift/panel/update_icon()
 	if(lift.fire_mode)

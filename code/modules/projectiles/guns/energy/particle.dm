@@ -72,18 +72,18 @@
 		if (!power_supply || power_supply.charge < charge_cost)
 			user.visible_message("<span class='warning'>*click*</span>", "<span class='danger'>*click*</span>")
 			playsound(src.loc, 'sound/weapons/empty.ogg', 100, 1)
-			return 0
+			return FALSE
 		if(pressure >= 10)
 			if (safetycatch) //weapons with a pressure regulator simply won't fire
 				user.visible_message("<span class='warning'>*click*</span>", "<span class='danger'>The pressure-interlock prevents you from firing \the [src].</span>")
 				playsound(src.loc, 'sound/weapons/empty.ogg', 100, 1)
-				return 0
+				return FALSE
 			else if (prob(min(pressure, 100))) //pressure% chance of failing
 				var/severity = rand(pressure)
 				pressuremalfunction(severity, user, T)
-				return 0
+				return FALSE
 		return 1
-	return 0
+	return FALSE
 
 /obj/item/gun/energy/particle/proc/pressuremalfunction(severity, var/mob/user, var/turf/T)
 	if (severity <= 10) // just doesn't fire. 10% chance in 100 atmo.

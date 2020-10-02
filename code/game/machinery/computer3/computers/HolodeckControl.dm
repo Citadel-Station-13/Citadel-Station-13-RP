@@ -162,7 +162,7 @@
 /datum/file/program/holodeck/proc/checkInteg(var/area/A)
 	for(var/turf/T in A)
 		if(istype(T, /turf/space))
-			return 0
+			return FALSE
 	return 1
 
 /datum/file/program/holodeck/proc/togglePower(var/toggleOn = 0)

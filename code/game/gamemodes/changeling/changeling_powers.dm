@@ -205,11 +205,11 @@ turf/proc/AdjacentTurfsRangedSting()
 		return 1 //target and source are in the same thing
 	if(!isturf(src.loc) || !isturf(M.loc))
 		to_chat(src, "<span class='warning'>We cannot reach \the [M] with a sting!</span>")
-		return 0 //One is inside, the other is outside something.
+		return FALSE //One is inside, the other is outside something.
 	// Maximum queued turfs set to 25; I don't *think* anything raises sting_range above 2, but if it does the 25 may need raising
 	if(!AStar(src.loc, M.loc, /turf/proc/AdjacentTurfsRangedSting, /turf/proc/Distance, max_nodes=25, max_node_depth=sting_range)) //If we can't find a path, fail
 		to_chat(src, "<span class='warning'>We cannot find a path to sting \the [M] by!</span>")
-		return 0
+		return FALSE
 	return 1
 
 //Handles the general sting code to reduce on copypasta (seeming as somebody decided to make SO MANY dumb abilities)

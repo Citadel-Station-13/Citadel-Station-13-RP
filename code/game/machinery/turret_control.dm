@@ -75,7 +75,7 @@
 		to_chat(user, "<span class='notice'>Access denied.</span>")
 		return 1
 
-	return 0
+	return FALSE
 
 /obj/machinery/turretid/CanUseTopic(mob/user)
 	if(isLocked(user))
@@ -207,7 +207,7 @@
 			set_light(1.5, 1,"#990000")
 		else
 			icon_state = "control_stun"
-			set_light(1.5, 1,"#FF9900")
+			set_light(1.5, 1,COLOR_ORANGE)
 	else
 		icon_state = "control_standby"
 		set_light(1.5, 1,"#003300")

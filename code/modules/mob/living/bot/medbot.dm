@@ -303,16 +303,16 @@
 
 /mob/living/bot/medbot/confirmTarget(var/mob/living/carbon/human/H)
 	if(!..())
-		return 0
+		return FALSE
 
 	if(H.isSynthetic()) // Don't treat FBPs
-		return 0
+		return FALSE
 
 	if(H.stat == DEAD) // He's dead, Jim
-		return 0
+		return FALSE
 
 	if(H.suiciding)
-		return 0
+		return FALSE
 
 	if(emagged)
 		return treatment_emag

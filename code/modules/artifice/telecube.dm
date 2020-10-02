@@ -39,11 +39,11 @@
 
 	var/randomize_colors = FALSE
 
-	var/glow_color = "#FFFFFF"
+	var/glow_color = COLOR_WHITE
 	var/image/glow = null
 	var/image/charge = null
 
-	var/shell_color = "#FFFFFF"
+	var/shell_color = COLOR_WHITE
 	var/image/shell = null
 
 	var/cooldown_time = 30 SECONDS
@@ -125,11 +125,11 @@
 
 /obj/item/telecube/proc/pair_cube(var/obj/item/telecube/M)
 	if(mate)
-		return 0
+		return FALSE
 	else
 		mate = M
 		update_icon()
-		return 1
+		return TRUE
 
 /obj/item/telecube/proc/teleport_to_mate(var/atom/movable/A, var/areaporting = FALSE)
 	. = FALSE

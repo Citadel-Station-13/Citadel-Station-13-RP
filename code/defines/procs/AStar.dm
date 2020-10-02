@@ -59,12 +59,12 @@ PriorityQueue
 
 	proc/Dequeue()
 		if(!queue.len)
-			return 0
+			return FALSE
 		return Remove(1)
 
 	proc/Remove(var/index)
 		if(index > queue.len)
-			return 0
+			return FALSE
 
 		var/thing = queue[index]
 		queue.Swap(index, queue.len)
@@ -130,7 +130,7 @@ PathNode
 	var/list/path_node_by_position = list()
 	start = get_turf(start)
 	if(!start)
-		return 0
+		return FALSE
 
 	open.Enqueue(new /PathNode(start, null, 0, call(start, dist)(end), 0))
 

@@ -226,7 +226,7 @@
 		to_chat(user, "The time '12:00' is blinking in the corner of the screen and \the [src] looks very cheaply made.")
 
 /obj/machinery/camera/bug/check_eye(var/mob/user as mob)
-	return 0
+	return FALSE
 
 /obj/machinery/camera/bug
 	network = list(NETWORK_SECURITY)

@@ -295,7 +295,7 @@
 /proc/stringmerge(var/text,var/compare,replace = "*")
 	var/newtext = text
 	if(length(text) != length(compare))
-		return 0
+		return FALSE
 	for(var/i = 1, i < length(text), i++)
 		var/a = copytext(text,i,i+1)
 		var/b = copytext(compare,i,i+1)
@@ -307,14 +307,14 @@
 			else if(b == replace) //if B is the replacement char
 				newtext = copytext(newtext,1,i) + a + copytext(newtext, i+1)
 			else //The lists disagree, Uh-oh!
-				return 0
+				return FALSE
 	return newtext
 
 //This proc returns the number of chars of the string that is the character
 //This is used for detective work to determine fingerprint completion.
 /proc/stringpercent(var/text,character = "*")
 	if(!text || !character)
-		return 0
+		return FALSE
 	var/count = 0
 	for(var/i = 1, i <= length(text), i++)
 		var/a = copytext(text,i,i+1)
@@ -358,15 +358,15 @@ proc/TextPreview(var/string,var/len=40)
 		switch(ascii_char)
 			// A  .. Z
 			if(65 to 90)			//Uppercase Letters
-				return 1
+				return TRUE
 			// a  .. z
 			if(97 to 122)			//Lowercase Letters
-				return 1
+				return TRUE
 
 			// 0  .. 9
 			if(48 to 57)			//Numbers
-				return 1
-	return 0
+				return TRUE
+	return FALSE
 
 /**
  * Strip out the special beyond characters for \proper and \improper
@@ -503,3 +503,12 @@ GLOBAL_LIST_INIT(binary, list("0","1"))
 /proc/random_color()
 	return random_string(6, GLOB.hex_characters)
 
+//Readds quotes and apostrophes to HTML-encoded strings
+/proc/readd_quotes(var/t)
+	var/list/repl_chars = list("&#34;" = "\"","&#39;" = "'")
+	for(var/char in repl_chars)
+		var/index = findtext(t, char)
+		while(index)
+			t = copytext(t, 1, index) + repl_chars[char] + copytext(t, index+5)
+			index = findtext(t, char)
+	return t

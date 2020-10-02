@@ -134,7 +134,7 @@
 /obj/machinery/power/apc/drain_power(var/drain_check, var/surge, var/amount = 0)
 
 	if(drain_check)
-		return 1
+		return TRUE
 
 	//This makes sure fully draining an APC cell won't break the cell charging.
 	charging = 0
@@ -358,7 +358,7 @@
 
 	if(update & 3)
 		if(update_state & UPDATE_BLUESCREEN)
-			set_light(l_range = 2, l_power = 0.25, l_color = "#0000FF")
+			set_light(l_range = 2, l_power = 0.25, l_color = COLOR_BLUE)
 		else if(!(stat & (BROKEN|MAINT)) && update_state & UPDATE_ALLGOOD)
 			var/color
 			switch(charging)
@@ -435,7 +435,7 @@
 
 	var/results = 0
 	if(last_update_state == update_state && last_update_overlay == update_overlay)
-		return 0
+		return FALSE
 	if(last_update_state != update_state)
 		results += 1
 	if(last_update_overlay != update_overlay)
@@ -703,7 +703,7 @@
 				locked = 0
 				to_chat(user,"<span class='notice'>You emag the APC interface.</span>")
 				update_icon()
-				return 1
+				return TRUE
 
 /obj/machinery/power/apc/blob_act()
 	if(!wires.IsAllCut())
@@ -861,21 +861,21 @@
 
 /obj/machinery/power/apc/proc/can_use(mob/user as mob, var/loud = 0) //used by attack_hand() and Topic()
 	if(!user.client)
-		return 0
+		return FALSE
 	if(isobserver(user) && is_admin(user) ) //This is to allow nanoUI interaction by ghost admins.
-		return 1
+		return TRUE
 	if (user.stat)
-		return 0
+		return FALSE
 	if(inoperable())
-		return 0
+		return FALSE
 	if(!user.IsAdvancedToolUser())
-		return 0
+		return FALSE
 	if(user.restrained())
 		to_chat(user,"<span class='warning'>Your hands must be free to use [src].</span>")
-		return 0
+		return FALSE
 	if(user.lying)
 		to_chat(user,"<span class='warning'>You must stand to use [src]!</span>")
-		return 0
+		return FALSE
 	autoflag = 5
 	if (istype(user, /mob/living/silicon))
 		var/permit = 0 // Malfunction variable. If AI hacks APC it can control it even without AI control wire.
@@ -890,32 +890,32 @@
 		if(aidisabled && !permit)
 			if(!loud)
 				to_chat(user,"<span class='danger'>\The AI control for [src] has been disabled!</span>")
-			return 0
+			return FALSE
 	else
 		if (!in_range(src, user) || !istype(src.loc, /turf))
-			return 0
+			return FALSE
 	var/mob/living/carbon/human/H = user
 	if (istype(H) && prob(H.getBrainLoss()))
 		to_chat(user,"<span class='danger'>You momentarily forget how to use [src].</span>")
-		return 0
-	return 1
+		return FALSE
+	return TRUE
 
 /obj/machinery/power/apc/Topic(href, href_list)
 	if(..())
-		return 1
+		return TRUE
 
 	if(!can_use(usr, 1))
-		return 1
+		return TRUE
 
 	if(locked && !issilicon(usr) )
 		if(isobserver(usr) )
 			var/mob/observer/dead/O = usr	//Added to allow admin nanoUI interactions.
 			if(!O.can_admin_interact() )	//NanoUI /should/ make this not needed, but better safe than sorry.
 				to_chat(usr,"Try as you might, your ghostly fingers can't press the buttons.")
-				return 1
+				return TRUE
 		else
 			to_chat(usr,"You must unlock the panel to use this!")
-			return 1
+			return TRUE
 
 	if (href_list["lock"])
 		coverlocked = !coverlocked
@@ -964,7 +964,7 @@
 			locked = !locked
 			update_icon()
 
-	return 0
+	return FALSE
 
 /obj/machinery/power/apc/proc/toggle_breaker()
 	operating = !operating
@@ -995,13 +995,13 @@
 	if(terminal)
 		return terminal.surplus()
 	else
-		return 0
+		return FALSE
 
 /obj/machinery/power/apc/proc/last_surplus()
 	if(terminal && terminal.powernet)
 		return terminal.powernet.last_surplus()
 	else
-		return 0
+		return FALSE
 
 //Returns 1 if the APC should attempt to charge
 /obj/machinery/power/apc/proc/attempt_charging()
@@ -1011,13 +1011,13 @@
 /obj/machinery/power/apc/draw_power(var/amount)
 	if(terminal && terminal.powernet)
 		return terminal.powernet.draw_power(amount)
-	return 0
+	return FALSE
 
 /obj/machinery/power/apc/avail()
 	if(terminal)
 		return terminal.avail()
 	else
-		return 0
+		return FALSE
 
 /obj/machinery/power/apc/process()
 
@@ -1269,19 +1269,19 @@ obj/machinery/power/apc/proc/autoset(var/cur_state, var/on)
 	if(cell && cell.charge > 0)
 		return (val==1) ? 0 : val
 	else if(val == 3)
-		return 1
+		return TRUE
 	else
-		return 0
+		return FALSE
 
 // Malfunction: Transfers APC under AI's control
 /obj/machinery/power/apc/proc/ai_hack(var/mob/living/silicon/ai/A = null)
 	if(!A || !A.hacked_apcs || hacker || aidisabled || A.stat == DEAD)
-		return 0
+		return FALSE
 	src.hacker = A
 	A.hacked_apcs += src
 	locked = 1
 	update_icon()
-	return 1
+	return TRUE
 
 /obj/machinery/power/apc/proc/reboot()
 	//reset various counters so that process() will start fresh
@@ -1347,5 +1347,15 @@ obj/machinery/power/apc/proc/autoset(var/cur_state, var/on)
 	spawn(15 MINUTES) // Protection against someone deconning the grid checker after a grid check happens, preventing infinte blackout.
 		if(src && grid_check == TRUE)
 			grid_check = FALSE
+
+/obj/machinery/power/apc/proc/update_area()
+	var/area/NA = get_area(src)
+	if(!(NA == area))
+		if(area.apc == src)
+			area.apc = null
+		NA.apc = src
+		area = NA
+		name = "[area.name] APC"
+	update()
 
 #undef APC_UPDATE_ICON_COOLDOWN

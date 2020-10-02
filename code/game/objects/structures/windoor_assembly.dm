@@ -278,7 +278,7 @@ obj/structure/windoor_assembly/Destroy()
 
 	if (src.anchored)
 		to_chat(usr,"It is fastened to the floor; therefore, you can't rotate it!")
-		return 0
+		return FALSE
 	if(src.state != "01")
 		update_nearby_tiles(need_rebuild=1) //Compel updates before
 

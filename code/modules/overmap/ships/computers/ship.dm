@@ -91,7 +91,7 @@ somewhere on that shuttle. Subtypes of these can be then used to perform ship ov
 		unlook(user)
 		return -1
 	else
-		return 0
+		return FALSE
 
 /obj/machinery/computer/ship/sensors/Destroy()
 	sensors = null

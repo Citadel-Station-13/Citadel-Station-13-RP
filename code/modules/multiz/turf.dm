@@ -3,15 +3,15 @@
 		return direction == UP	//Can't go below
 	else
 		if(direction == UP)	// On a turf below, trying to enter
-			return 0
+			return FALSE
 		if(direction == DOWN)	// On a turf above, trying to enter
 			return !density && isopenspace(GetAbove(src))
 
 /turf/simulated/open/CanZPass(atom, direction)
-	return 1
+	return TRUE
 
 /turf/space/CanZPass(atom, direction)
-	return 1
+	return TRUE
 
 //
 // Open Space - "empty" turf that lets stuff fall thru it to the layer below
@@ -108,7 +108,7 @@
 		if(!below_is_open)
 			add_overlay(/obj/effect/abstract/over_openspace_darkness)
 
-		return 0
+		return FALSE
 	return PROCESS_KILL
 
 /obj/effect/abstract/over_openspace_darkness

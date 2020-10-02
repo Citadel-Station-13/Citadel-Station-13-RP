@@ -25,7 +25,7 @@ var/datum/antagonist/mercenary/mercs
 
 /datum/antagonist/mercenary/create_global_objectives()
 	if(!..())
-		return 0
+		return FALSE
 	global_objectives = list()
 	global_objectives |= new /datum/objective/nuclear
 	return 1
@@ -33,7 +33,7 @@ var/datum/antagonist/mercenary/mercs
 /datum/antagonist/mercenary/equip(var/mob/living/carbon/human/player)
 
 	if(!..())
-		return 0
+		return FALSE
 
 	player.equip_to_slot_or_del(new /obj/item/clothing/under/syndicate(player), slot_w_uniform)
 	player.equip_to_slot_or_del(new /obj/item/clothing/shoes/boots/swat(player), slot_shoes)

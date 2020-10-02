@@ -965,7 +965,7 @@ obj/item/clothing/suit/kamishimo
 	set src in usr
 
 	if(!usr.canmove || usr.stat || usr.restrained())
-		return 0
+		return FALSE
 
 	switch(unbuttoned)
 		if(0)

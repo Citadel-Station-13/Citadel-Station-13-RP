@@ -5,7 +5,7 @@
 /mob/living/carbon/proc/updateshock()
 	if (!can_feel_pain())
 		src.traumatic_shock = 0
-		return 0
+		return FALSE
 
 	src.traumatic_shock = 			\
 	1	* src.getOxyLoss() + 		\

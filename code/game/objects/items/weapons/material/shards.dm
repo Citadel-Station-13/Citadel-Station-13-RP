@@ -49,7 +49,7 @@
 		// 1-(1-x)^2, so that glass shards with 0.3 opacity end up somewhat visible at 0.51 opacity
 		alpha = 255 * (1 - (1 - material.opacity)*(1 - material.opacity))
 	else
-		color = "#ffffff"
+		color = COLOR_WHITE
 		alpha = 255
 
 /obj/item/material/shard/attackby(obj/item/W as obj, mob/user as mob)

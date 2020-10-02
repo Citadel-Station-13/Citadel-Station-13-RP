@@ -44,7 +44,7 @@
 
 	melee_damage_lower = 10
 	melee_damage_upper = 15
-	base_attack_cooldown = 10 // One attack a second.
+	base_attack_cooldown = 2 SECONDS
 	attack_sound = 'sound/weapons/bite.ogg'
 	attacktext = list("glomped")
 	speak_emote = list("chirps")
@@ -61,6 +61,9 @@
 	var/reagent_injected = null // Some slimes inject reagents on attack.  This tells the game what reagent to use.
 	var/injection_amount = 5 // This determines how much.
 	var/mood = ":3" // Icon to use to display 'mood', as an overlay.
+	var/allowed_attack_types = list(
+							/obj/item/melee/baton/slime,
+							/obj/item/slimepotion)
 
 	can_enter_vent_with = list(/obj/item/clothing/head)
 

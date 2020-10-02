@@ -76,7 +76,7 @@
 // if they are able to pay, it is deducted automatically.
 /obj/item/spell/proc/pay_energy(var/amount)
 	if(!core)
-		return 0
+		return FALSE
 	return core.pay_energy(amount)
 
 // Proc: give_energy()
@@ -84,7 +84,7 @@
 // Description: Redirects the call to the core's give_energy().
 /obj/item/spell/proc/give_energy(var/amount)
 	if(!core)
-		return 0
+		return FALSE
 	return core.give_energy(amount)
 
 // Proc: adjust_instability()
@@ -92,7 +92,7 @@
 // Description: Use this to quickly add or subtract instability from the caster of the spell.  Owner is set by New().
 /obj/item/spell/proc/adjust_instability(var/amount)
 	if(!owner || !core)
-		return 0
+		return FALSE
 	amount = round(amount * core.instability_modifier, 0.1)
 	owner.adjust_instability(amount)
 
@@ -157,32 +157,32 @@
 // if it still can't find one.  It will also check if the core is being worn properly, and finally checks if the owner is a technomancer.
 /obj/item/spell/proc/run_checks()
 	if(!owner)
-		return 0
+		return FALSE
 	if(!core)
 		core = locate(/obj/item/technomancer_core) in owner
 		if(!core)
 			to_chat(owner, "<span class='danger'>You need to be wearing a core on your back!</span>")
-			return 0
+			return FALSE
 	if(core.loc != owner || owner.back != core) //Make sure the core's being worn.
 		to_chat(owner, "<span class='danger'>You need to be wearing a core on your back!</span>")
-		return 0
+		return FALSE
 	if(!technomancers.is_antagonist(owner.mind)) //Now make sure the person using this is the actual antag.
 		to_chat(owner, "<span class='danger'>You can't seem to figure out how to make the machine work properly.</span>")
-		return 0
+		return FALSE
 	return 1
 
 // Proc: check_for_scepter()
 // Parameters: 0
 // Description: Terrible code to check if a scepter is in the offhand, returns 1 if yes.
 /obj/item/spell/proc/check_for_scepter()
-	if(!src || !owner) return 0
+	if(!src || !owner) return FALSE
 	if(owner.r_hand == src)
 		if(istype(owner.l_hand, /obj/item/scepter))
 			return 1
 	else
 		if(istype(owner.r_hand, /obj/item/scepter))
 			return 1
-	return 0
+	return FALSE
 
 // Proc: get_other_hand()
 // Parameters: 1 (I - item being compared to determine what the offhand is)
@@ -250,7 +250,7 @@
 // Description: Gives the spell to the human mob, if it is allowed to have spells, hands are not full, etc.  Otherwise it deletes itself.
 /mob/living/carbon/human/place_spell_in_hand(var/path)
 	if(!path || !ispath(path))
-		return 0
+		return FALSE
 
 	//var/obj/item/spell/S = new path(src)
 	var/obj/item/spell/S = new path(src)
@@ -271,14 +271,14 @@
 				l_spell.on_combine_cast(S, src)
 		else //Welp
 			to_chat(src, "<span class='warning'>You require a free hand to use this function.</span>")
-			return 0
+			return FALSE
 
 	if(S.run_checks())
 		put_in_hands(S)
 		return 1
 	else
 		qdel(S)
-		return 0
+		return FALSE
 
 // Proc: dropped()
 // Parameters: 0

@@ -186,13 +186,13 @@
 /obj/machinery/atmospherics/unary/vent_pump/proc/can_pump()
 	if(stat & (NOPOWER|BROKEN))
 		//soundloop.stop()
-		return 0
+		return FALSE
 	if(!use_power)
 		//soundloop.stop()
-		return 0
+		return FALSE
 	if(welded)
 		//soundloop.stop()
-		return 0
+		return FALSE
 	//soundloop.start()
 	return 1
 
@@ -205,7 +205,7 @@
 	if (!node)
 		update_use_power(USE_POWER_OFF)
 	if(!can_pump())
-		return 0
+		return FALSE
 
 	var/datum/gas_mixture/environment = return_air() // VOREStation Edit - Use our own proc
 
@@ -254,7 +254,7 @@
 
 /obj/machinery/atmospherics/unary/vent_pump/proc/broadcast_status()
 	if(!radio_connection)
-		return 0
+		return FALSE
 
 	var/datum/signal/signal = new
 	signal.transmission_method = 1 //radio signal
@@ -304,7 +304,7 @@
 
 	//log_admin("DEBUG \[[world.timeofday]\]: /obj/machinery/atmospherics/unary/vent_pump/receive_signal([signal.debug_print()])")
 	if(!signal.data["tag"] || (signal.data["tag"] != id_tag) || (signal.data["sigtype"]!="command"))
-		return 0
+		return FALSE
 
 	if(signal.data["purge"] != null)
 		pressure_checks &= ~1

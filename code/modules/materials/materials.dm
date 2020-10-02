@@ -58,7 +58,7 @@ var/list/name_to_material
 		if(!new_mineral.name)
 			continue
 		name_to_material[lowertext(new_mineral.name)] = new_mineral
-	return 1
+	return TRUE
 
 // Safety proc to make sure the material list exists before trying to grab from it.
 /proc/get_material_by_name(name)
@@ -175,7 +175,7 @@ var/list/name_to_material
 
 // This is a placeholder for proper integration of windows/windoors into the system.
 /datum/material/proc/build_windows(var/mob/living/user, var/obj/item/stack/used_stack)
-	return 0
+	return FALSE
 
 // Weapons handle applying a divisor for this value locally.
 /datum/material/proc/get_blunt_damage()
@@ -197,7 +197,7 @@ var/list/name_to_material
 
 // Snowflakey, only checked for alien doors at the moment.
 /datum/material/proc/can_open_material_door(var/mob/living/user)
-	return 1
+	return TRUE
 
 // Currently used for weapons and objects made of uranium to irradiate things.
 /datum/material/proc/products_need_process()
@@ -299,7 +299,7 @@ var/list/name_to_material
 //R-UST port
 /datum/material/supermatter
 	name = "supermatter"
-	icon_color = "#FFFF00"
+	icon_color = COLOR_YELLOW
 	stack_type = /obj/item/stack/material/supermatter
 	shard_type = SHARD_SHARD
 	radioactivity = 20
@@ -332,9 +332,9 @@ var/list/name_to_material
 // Commenting this out while fires are so spectacularly lethal, as I can't seem to get this balanced appropriately.
 /datum/material/phoron/combustion_effect(var/turf/T, var/temperature, var/effect_multiplier)
 	if(isnull(ignition_point))
-		return 0
+		return FALSE
 	if(temperature < ignition_point)
-		return 0
+		return FALSE
 	var/totalPhoron = 0
 	for(var/turf/simulated/floor/target_tile in range(2,T))
 		var/phoronToDeduce = (temperature/30) * effect_multiplier
@@ -378,7 +378,7 @@ var/list/name_to_material
 	protectiveness = 10 // 33%
 	icon_base = "solid"
 	icon_reinf = "reinf_over"
-	icon_color = "#666666"
+	icon_color = COLOR_STEEL
 
 /datum/material/steel/hull
 	name = MAT_STEELHULL
@@ -488,7 +488,7 @@ var/list/name_to_material
 	name = "glass"
 	stack_type = /obj/item/stack/material/glass
 	flags = MATERIAL_BRITTLE
-	icon_color = "#00E1FF"
+	icon_color = COLOR_DEEP_SKY_BLUE
 	opacity = 0.3
 	integrity = 100
 	shard_type = SHARD_SHARD
@@ -508,22 +508,22 @@ var/list/name_to_material
 /datum/material/glass/build_windows(var/mob/living/user, var/obj/item/stack/used_stack)
 
 	if(!user || !used_stack || !created_window || !created_fulltile_window || !window_options.len)
-		return 0
+		return FALSE
 
 	if(!user.IsAdvancedToolUser())
 		to_chat(user, "<span class='warning'>This task is too complex for your clumsy hands.</span>")
-		return 1
+		return TRUE
 
 	var/turf/T = user.loc
 	if(!istype(T))
 		to_chat(user, "<span class='warning'>You must be standing on open flooring to build a window.</span>")
-		return 1
+		return TRUE
 
 	var/title = "Sheet-[used_stack.name] ([used_stack.get_amount()] sheet\s left)"
 	var/choice = input(title, "What would you like to construct?") as null|anything in window_options
 
 	if(!choice || !used_stack || !user || used_stack.loc != user || user.stat || user.loc != T)
-		return 1
+		return TRUE
 
 	// Get data for building windows here.
 	var/list/possible_directions = cardinal.Copy()
@@ -555,7 +555,7 @@ var/list/name_to_material
 				failed_to_build = 1
 	if(failed_to_build)
 		to_chat(user, "<span class='warning'>There is no room in this location.</span>")
-		return 1
+		return TRUE
 
 	var/build_path = /obj/structure/windoor_assembly
 	var/sheets_needed = window_options[choice]
@@ -569,12 +569,12 @@ var/list/name_to_material
 
 	if(used_stack.get_amount() < sheets_needed)
 		to_chat(user, "<span class='warning'>You need at least [sheets_needed] sheets to build this.</span>")
-		return 1
+		return TRUE
 
 	// Build the structure and update sheet count etc.
 	used_stack.use(sheets_needed)
 	new build_path(T, build_dir, 1)
-	return 1
+	return TRUE
 
 /datum/material/glass/proc/is_reinforced()
 	return (hardness > 35) //todo
@@ -584,7 +584,7 @@ var/list/name_to_material
 	display_name = "reinforced glass"
 	stack_type = /obj/item/stack/material/glass/reinforced
 	flags = MATERIAL_BRITTLE
-	icon_color = "#00E1FF"
+	icon_color = COLOR_DEEP_SKY_BLUE
 	opacity = 0.3
 	integrity = 100
 	shard_type = SHARD_SHARD
@@ -803,26 +803,26 @@ var/list/name_to_material
 /datum/material/alienalloy/elevatorium
 	name = "elevatorium"
 	display_name = "elevator panelling"
-	icon_color = "#666666"
+	icon_color = COLOR_STEEL
 
 // Ditto.
 /datum/material/alienalloy/dungeonium
 	name = "dungeonium"
 	display_name = "ultra-durable"
 	icon_base = "dungeon"
-	icon_color = "#FFFFFF"
+	icon_color = COLOR_WHITE
 
 /datum/material/alienalloy/bedrock
 	name = "bedrock"
 	display_name = "impassable rock"
 	icon_base = "rock"
-	icon_color = "#FFFFFF"
+	icon_color = COLOR_WHITE
 
 /datum/material/alienalloy/alium
 	name = "alium"
 	display_name = "alien"
 	icon_base = "alien"
-	icon_color = "#FFFFFF"
+	icon_color = COLOR_WHITE
 
 /datum/material/resin
 	name = "resin"
@@ -843,8 +843,8 @@ var/list/name_to_material
 /datum/material/resin/can_open_material_door(var/mob/living/user)
 	var/mob/living/carbon/M = user
 	if(istype(M) && locate(/obj/item/organ/internal/xenos/hivenode) in M.internal_organs)
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /datum/material/resin/wall_touch_special(var/turf/simulated/wall/W, var/mob/living/L)
 	var/mob/living/carbon/M = L
@@ -855,8 +855,8 @@ var/list/name_to_material
 			spawn(2)
 				playsound(W, 'sound/effects/attackblob.ogg', 100, 1)
 				W.dismantle_wall()
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /datum/material/wood
 	name = MAT_WOOD
@@ -932,7 +932,7 @@ var/list/name_to_material
 	flags = MATERIAL_BRITTLE
 	icon_base = "solid"
 	icon_reinf = "reinf_over"
-	icon_color = "#FFFFFF"
+	icon_color = COLOR_WHITE
 	integrity = 1
 	hardness = 1
 	weight = 1
@@ -1036,8 +1036,8 @@ var/list/name_to_material
 /datum/material/flesh/can_open_material_door(var/mob/living/user)
 	var/mob/living/carbon/M = user
 	if(istype(M))
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /datum/material/flesh/wall_touch_special(var/turf/simulated/wall/W, var/mob/living/L)
 	var/mob/living/carbon/M = L
@@ -1048,8 +1048,8 @@ var/list/name_to_material
 			spawn(2)
 				playsound(W, 'sound/effects/attackblob.ogg', 100, 1)
 				W.dismantle_wall()
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /datum/material/bone
 	name = "bone"
@@ -1073,8 +1073,8 @@ var/list/name_to_material
 			spawn(2)
 				playsound(W, 'sound/effects/attackblob.ogg', 100, 1)
 				W.dismantle_wall()
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 //TODO PLACEHOLDERS:
 /datum/material/leather
@@ -1102,7 +1102,7 @@ var/list/name_to_material
 /datum/material/cotton
 	name = "cotton"
 	display_name ="cotton"
-	icon_color = "#FFFFFF"
+	icon_color = COLOR_WHITE
 	flags = MATERIAL_PADDING
 	ignition_point = T0C+232
 	melting_point = T0C+300
@@ -1194,7 +1194,7 @@ var/list/name_to_material
 	flags = MATERIAL_PADDING
 	ignition_point = T0C+232
 	melting_point = T0C+300
-	icon_color = "#ff9900"
+	icon_color = COLOR_ORANGE
 	hardness = 1
 	weight = 1
 	protectiveness = 0 // 0%
@@ -1240,3 +1240,24 @@ var/list/name_to_material
 
 	default_type = "sandbags"
 	perunit = 1
+
+/datum/material/flesh
+	name = "flesh"
+	display_name = "chunk of flesh"
+	icon_color = "#dd90aa"
+	sheet_singular_name = "meat"
+	sheet_plural_name = "meats"
+	integrity = 1200
+	melting_point = 6000
+	explosion_resistance = 200
+	hardness = 500
+	weight = 500
+
+/datum/material/fluff //This is to allow for 2 handed weapons that don't want to have a prefix.
+	name = " "
+	display_name = ""
+	icon_color = COLOR_BLACK
+	sheet_singular_name = "fluff"
+	sheet_plural_name = "fluffs"
+	hardness = 60
+	weight = 20 //Strong as iron.

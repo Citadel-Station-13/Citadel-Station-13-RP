@@ -256,7 +256,7 @@
 /obj/machinery/computer/HolodeckControl/proc/checkInteg(var/area/A)
 	for(var/turf/T in A)
 		if(istype(T, /turf/space))
-			return 0
+			return FALSE
 
 	return 1
 
@@ -293,11 +293,11 @@
 	if(check_delay)
 		if(world.time < (last_change + 25))
 			if(world.time < (last_change + 15))//To prevent super-spam clicking, reduced process size and annoyance -Sieve
-				return 0
+				return FALSE
 			for(var/mob/M in range(3,src))
 				M.show_message("<b>ERROR. Recalibrating projection apparatus.</b>")
 				last_change = world.time
-				return 0
+				return FALSE
 
 	last_change = world.time
 	active = 1

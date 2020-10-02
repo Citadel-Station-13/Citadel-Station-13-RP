@@ -298,11 +298,11 @@
 
 //Bad mobs! - Remember to add a comment explaining what's wrong with the mob
 	if(!MP)
-		return 0	//Sanity, this should never happen.
+		return FALSE	//Sanity, this should never happen.
 
 /*
 	if(ispath(MP, /mob/living/simple_mob/space_worm))
-		return 0 //Unfinished. Very buggy, they seem to just spawn additional space worms everywhere and eating your own tail results in new worms spawning.
+		return FALSE //Unfinished. Very buggy, they seem to just spawn additional space worms everywhere and eating your own tail results in new worms spawning.
 */
 
 //Good mobs!
@@ -326,7 +326,7 @@
 		return 1 //Parrots are no longer unfinished! -Nodrak
 
 	//Not in here? Must be untested!
-	return 0
+	return FALSE
 
 
 

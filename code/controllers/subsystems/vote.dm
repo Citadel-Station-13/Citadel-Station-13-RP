@@ -189,7 +189,7 @@ SUBSYSTEM_DEF(vote)
 		if(started_time != null && !(check_rights(R_ADMIN) || automatic))
 			var/next_allowed_time = (started_time + config_legacy.vote_delay)
 			if(next_allowed_time > world.time)
-				return 0
+				return FALSE
 
 		reset()
 
@@ -198,7 +198,7 @@ SUBSYSTEM_DEF(vote)
 				choices.Add("Restart Round", "Continue Playing")
 			if(VOTE_GAMEMODE)
 				if(SSticker.current_state >= GAME_STATE_SETTING_UP)
-					return 0
+					return FALSE
 				choices.Add(config_legacy.votable_modes)
 				for(var/F in choices)
 					var/datum/game_mode/M = config_legacy.gamemode_cache[F]
@@ -211,15 +211,15 @@ SUBSYSTEM_DEF(vote)
 				if(!check_rights(R_ADMIN|R_MOD, 0)) // The gods care not for the affairs of the mortals
 					if(get_security_level() == "red" || get_security_level() == "delta")
 						to_chat(initiator_key, "The current alert status is too high to call for a crew transfer!")
-						return 0
+						return FALSE
 					if(SSticker.current_state <= GAME_STATE_SETTING_UP)
 						to_chat(initiator_key, "The crew transfer button has been disabled!")
-						return 0
+						return FALSE
 				question = "Your PDA beeps with a message from Central. Would you like an additional hour to finish ongoing projects?" //VOREStation Edit
 				choices.Add("Initiate Crew Transfer", "Extend the Shift")  //VOREStation Edit
 			if(VOTE_ADD_ANTAGONIST)
 				if(!config_legacy.allow_extra_antags || SSticker.current_state >= GAME_STATE_SETTING_UP)
-					return 0
+					return FALSE
 				for(var/antag_type in all_antag_types)
 					var/datum/antagonist/antag = all_antag_types[antag_type]
 					if(!(antag.id in additional_antag_types) && antag.is_votable())
@@ -228,14 +228,14 @@ SUBSYSTEM_DEF(vote)
 			if(VOTE_CUSTOM)
 				question = sanitizeSafe(input(usr, "What is the vote for?") as text|null)
 				if(!question)
-					return 0
+					return FALSE
 				for(var/i = 1 to 10)
 					var/option = capitalize(sanitize(input(usr, "Please enter an option or hit cancel to finish") as text|null))
 					if(!option || mode || !usr.client)
 						break
 					choices.Add(option)
 			else
-				return 0
+				return FALSE
 
 		mode = vote_type
 		initiator = initiator_key
@@ -253,7 +253,7 @@ SUBSYSTEM_DEF(vote)
 
 		time_remaining = round(config_legacy.vote_period / 10)
 		return 1
-	return 0
+	return FALSE
 
 /datum/controller/subsystem/vote/proc/interface(var/client/C)
 	if(!istype(C))

@@ -51,7 +51,7 @@
 	description = "A chemical element with a characteristic odour."
 	taste_description = "pool water"
 	reagent_state = GAS
-	color = "#808080"
+	color = COLOR_GRAY
 
 /datum/reagent/chlorine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	M.take_organ_damage(1*REM, 0)
@@ -207,7 +207,7 @@
 	description = "A highly-reactive chemical element."
 	taste_description = "acid"
 	reagent_state = GAS
-	color = "#808080"
+	color = COLOR_GRAY
 
 /datum/reagent/fluorine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	M.adjustToxLoss(removed)
@@ -221,7 +221,7 @@
 	description = "A colorless, odorless, nonmetallic, tasteless, highly combustible diatomic gas."
 	taste_mult = 0 //no taste
 	reagent_state = GAS
-	color = "#808080"
+	color = COLOR_GRAY
 
 /datum/reagent/iron
 	name = "Iron"
@@ -241,7 +241,7 @@
 	description = "A chemical element, used as antidepressant."
 	taste_description = "metal"
 	reagent_state = SOLID
-	color = "#808080"
+	color = COLOR_GRAY
 
 /datum/reagent/lithium/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien != IS_DIONA)
@@ -272,7 +272,7 @@
 	description = "A colorless, odorless, tasteless gas."
 	taste_mult = 0 //no taste
 	reagent_state = GAS
-	color = "#808080"
+	color = COLOR_GRAY
 
 /datum/reagent/oxygen
 	name = "Oxygen"
@@ -280,7 +280,7 @@
 	description = "A colorless, odorless gas."
 	taste_mult = 0
 	reagent_state = GAS
-	color = "#808080"
+	color = COLOR_GRAY
 
 /datum/reagent/oxygen/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_VOX)
@@ -442,7 +442,7 @@
 	description = "A chemical element, readily reacts with water."
 	taste_description = "salty metal"
 	reagent_state = SOLID
-	color = "#808080"
+	color = COLOR_GRAY
 
 /datum/reagent/sugar
 	name = "Sugar"
@@ -451,7 +451,7 @@
 	taste_description = "sugar"
 	taste_mult = 1.8
 	reagent_state = SOLID
-	color = "#FFFFFF"
+	color = COLOR_WHITE
 
 	glass_name = "sugar"
 	glass_desc = "The organic compound commonly known as table sugar and sometimes called saccharose. This white, odorless, crystalline powder has a pleasing, sweet taste."

@@ -154,7 +154,7 @@
 	if(isturf(src.loc)) //else, there's considered to be no light
 		var/turf/T = src.loc
 		return T.get_lumcount() * 5
-	else return 0
+	else return FALSE
 
 /mob/living/carbon/human/proc/handle_feral()
 	if(handling_hal) return

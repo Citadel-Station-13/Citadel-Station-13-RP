@@ -119,13 +119,13 @@
 	return
 
 /atom/movable/lighting_overlay/forceMove()
-	return 0 //should never move
+	return FALSE //should never move
 
 /atom/movable/lighting_overlay/Move()
-	return 0
+	return FALSE
 
 /atom/movable/lighting_overlay/throw_at()
-	return 0
+	return FALSE
 
 /atom/movable/lighting_overlay/Destroy(var/force)
 	if (force)

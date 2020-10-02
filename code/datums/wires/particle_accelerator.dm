@@ -12,7 +12,7 @@ var/const/PARTICLE_LIMIT_POWER_WIRE = 8 // Determines how strong the PA can be.
 	var/obj/machinery/particle_accelerator/control_box/C = holder
 	if(C.construction_state == 2)
 		return 1
-	return 0
+	return FALSE
 
 /datum/wires/particle_acc/control_box/UpdatePulsed(var/index)
 	var/obj/machinery/particle_accelerator/control_box/C = holder

@@ -29,7 +29,7 @@ Divergence proc, used in mutation to make unique datums.
 	if(traitdat.traits[TRAIT_XENO_BIOLUMESCENT])
 		set_light(traitdat.traits[TRAIT_XENO_GLOW_RANGE], traitdat.traits[TRAIT_XENO_GLOW_STRENGTH], traitdat.traits[TRAIT_XENO_BIO_COLOR])
 	else
-		set_light(0, 0, "#000000")	//Should kill any light that shouldn't be there.
+		set_light(0, 0, COLOR_BLACK)	//Should kill any light that shouldn't be there.
 
 	hostile = traitdat.traits[TRAIT_XENO_HOSTILE]
 
@@ -82,9 +82,9 @@ Divergence proc, used in mutation to make unique datums.
 
 		temp_chem_holder.reagents.clear_reagents()
 
-		return 1 //Everything worked out okay.
+		return TRUE //Everything worked out okay.
 
-	return 0
+	return FALSE
 
 /mob/living/simple_mob/xeno/proc/diverge()
 	var/datum/xeno/traits/newtraits = new()
@@ -107,7 +107,7 @@ Divergence proc, used in mutation to make unique datums.
 		//Placeholder, currently no xenos that have species mutations.
 	RandomizeTraits()
 	ProcessTraits()
-	return 1
+	return TRUE
 
 /mob/living/simple_mob/xeno/proc/RandomizeTraits()
 	return

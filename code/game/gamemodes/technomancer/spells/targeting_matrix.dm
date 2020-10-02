@@ -20,7 +20,7 @@
 		var/mob/living/chosen_target = targeting_assist(T,5)		//The person who's about to get attacked.
 
 		if(!chosen_target)
-			return 0
+			return FALSE
 
 		var/obj/item/I = user.get_inactive_hand()
 		if(I && pay_energy(200))

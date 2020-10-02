@@ -15,8 +15,8 @@
 /proc/turf_clear(turf/T)
 	for(var/atom/A in T)
 		if(A.simulated)
-			return 0
-	return 1
+			return FALSE
+	return TRUE
 
 // Picks a turf without a mob from the given list of turfs, if one exists.
 // If no such turf exists, picks any random turf from the given list of turfs.

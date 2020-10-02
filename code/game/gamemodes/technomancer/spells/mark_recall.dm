@@ -29,7 +29,7 @@
 /obj/item/spell/mark/on_use_cast(mob/living/user)
 	if(!allowed_to_teleport()) // Otherwise you could teleport back to the admin Z-level.
 		to_chat(user, "<span class='warning'>You can't teleport here!</span>")
-		return 0
+		return FALSE
 	if(pay_energy(1000))
 		if(!mark_spell_ref)
 			mark_spell_ref = new(get_turf(user))
@@ -41,7 +41,7 @@
 		return 1
 	else
 		to_chat(user, "<span class='warning'>You can't afford the energy cost!</span>")
-		return 0
+		return FALSE
 
 //Recall
 
@@ -66,7 +66,7 @@
 	if(pay_energy(3000))
 		if(!mark_spell_ref)
 			to_chat(user, "<span class='danger'>There's no Mark!</span>")
-			return 0
+			return FALSE
 		else
 			if(!allowed_to_teleport())
 				to_chat(user, "<span class='warning'>Teleportation doesn't seem to work here.</span>")
@@ -80,7 +80,7 @@
 				if(user.incapacitated())
 					visible_message("<span class='notice'>\The [user]'s glow fades.</span>")
 					to_chat(user, "<span class='danger'>You cannot Recall while incapacitated!</span>")
-					return 0
+					return FALSE
 				light_intensity++
 				set_light(light_intensity, light_intensity, l_color = "#006AFF")
 				time_left--
@@ -107,5 +107,5 @@
 			return 1
 	else
 		to_chat(user, "<span class='warning'>You can't afford the energy cost!</span>")
-		return 0
+		return FALSE
 

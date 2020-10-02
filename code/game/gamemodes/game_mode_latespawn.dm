@@ -24,7 +24,7 @@
 	if(!character.mind)
 		return
 	try_latespawn(character.mind)
-	return 0
+	return FALSE
 
 /datum/game_mode/proc/try_latespawn(var/datum/mind/player, var/latejoin_only)
 

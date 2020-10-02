@@ -19,11 +19,11 @@
 
 /obj/machinery/door/blast/puzzle/proc/check_locks()
 	if(!locks || locks.len <= 0)	// Puzzle doors with no locks will only listen to boring buttons.
-		return 0
+		return FALSE
 
 	for(var/obj/structure/prop/lock/L in locks)
 		if(!L.enabled)
-			return 0
+			return FALSE
 	return 1
 
 /obj/machinery/door/blast/puzzle/bullet_act(var/obj/item/projectile/Proj)
@@ -85,7 +85,7 @@
 		else if(istype(C, /obj/item/plastique))
 			to_chat(user, "<span class='danger'>On contacting \the [src], a flash of light envelops \the [C] as it is turned to ash. Oh.</span>")
 			qdel(C)
-			return 0
+			return FALSE
 
 /obj/machinery/door/blast/puzzle/attack_generic(var/mob/user, var/damage)
 	if(check_locks())

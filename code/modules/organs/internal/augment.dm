@@ -138,16 +138,16 @@
 
 /mob/living/carbon/human/proc/equip_augment_item(var/slot, var/obj/item/equipping = null, var/make_sound = TRUE, var/destroy_on_drop = FALSE, var/obj/item/organ/cling_to_organ = null)
 	if(!ishuman(src))
-		return 0
+		return FALSE
 
 	if(!equipping)
-		return 0
+		return FALSE
 
 	var/mob/living/carbon/human/M = src
 
 	if((slot == slot_l_hand && l_hand) || (slot == slot_r_hand && r_hand))
 		to_chat(M,"<span class='warning'>Your hand is full.  Drop something first.</span>")
-		return 0
+		return FALSE
 
 	var/del_if_failure = destroy_on_drop
 
@@ -163,7 +163,7 @@
 			equip_to_slot(equipping, slot, 1, 1)
 		else if(destroy_on_drop || del_if_failure)
 			qdel(equipping)
-			return 0
+			return FALSE
 
 	if(cling_to_organ) // Does the object automatically return to the organ?
 		equipping.my_augment = cling_to_organ

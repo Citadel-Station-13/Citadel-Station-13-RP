@@ -181,7 +181,7 @@
 	cost = round(cost/build_eff)
 	if(cost > points)
 		menustat = "nopoints"
-		return 0
+		return FALSE
 	processing = 1
 	update_icon()
 	updateUsrDialog()

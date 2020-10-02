@@ -339,10 +339,10 @@ var/list/global/slot_flags_enumeration = list(
 //Set disable_warning to 1 if you wish it to not give you outputs.
 //Should probably move the bulk of this into mob code some time, as most of it is related to the definition of slots and not item-specific
 /obj/item/proc/mob_can_equip(M as mob, slot, disable_warning = 0)
-	if(!slot) return 0
-	if(!M) return 0
+	if(!slot) return FALSE
+	if(!M) return FALSE
 
-	if(!ishuman(M)) return 0
+	if(!ishuman(M)) return FALSE
 
 	var/mob/living/carbon/human/H = M
 	var/list/mob_equip = list()
@@ -350,62 +350,62 @@ var/list/global/slot_flags_enumeration = list(
 		mob_equip = H.species.hud.equip_slots
 
 	if(H.species && !(slot in mob_equip))
-		return 0
+		return FALSE
 
 	//First check if the item can be equipped to the desired slot.
 	if("[slot]" in slot_flags_enumeration)
 		var/req_flags = slot_flags_enumeration["[slot]"]
 		if(!(req_flags & slot_flags))
-			return 0
+			return FALSE
 
 	//Next check that the slot is free
 	if(H.get_equipped_item(slot))
-		return 0
+		return FALSE
 
 	//Next check if the slot is accessible.
 	var/mob/_user = disable_warning? null : H
 	if(!H.slot_is_accessible(slot, src, _user))
-		return 0
+		return FALSE
 
 	//Lastly, check special rules for the desired slot.
 	switch(slot)
 		if(slot_l_ear, slot_r_ear)
 			var/slot_other_ear = (slot == slot_l_ear)? slot_r_ear : slot_l_ear
 			if( (w_class > ITEMSIZE_TINY) && !(slot_flags & SLOT_EARS) )
-				return 0
+				return FALSE
 			if( (slot_flags & SLOT_TWOEARS) && H.get_equipped_item(slot_other_ear) )
-				return 0
+				return FALSE
 		if(slot_wear_id)
 			if(!H.w_uniform && (slot_w_uniform in mob_equip))
 				if(!disable_warning)
 					to_chat(H, "<span class='warning'>You need a jumpsuit before you can attach this [name].</span>")
-				return 0
+				return FALSE
 		if(slot_l_store, slot_r_store)
 			if(!H.w_uniform && (slot_w_uniform in mob_equip))
 				if(!disable_warning)
 					to_chat(H, "<span class='warning'>You need a jumpsuit before you can attach this [name].</span>")
-				return 0
+				return FALSE
 			if(slot_flags & SLOT_DENYPOCKET)
-				return 0
+				return FALSE
 			if( w_class > ITEMSIZE_SMALL && !(slot_flags & SLOT_POCKET) )
-				return 0
+				return FALSE
 		if(slot_s_store)
 			if(!H.wear_suit && (slot_wear_suit in mob_equip))
 				if(!disable_warning)
 					to_chat(H, "<span class='warning'>You need a suit before you can attach this [name].</span>")
-				return 0
+				return FALSE
 			if(!H.wear_suit.allowed)
 				if(!disable_warning)
 					to_chat(usr, "<span class='warning'>You somehow have a suit with no defined allowed items for suit storage, stop that.</span>")
-				return 0
+				return FALSE
 			if( !(istype(src, /obj/item/pda) || istype(src, /obj/item/pen) || is_type_in_list(src, H.wear_suit.allowed)) )
-				return 0
+				return FALSE
 		if(slot_legcuffed) //Going to put this check above the handcuff check because the survival of the universe depends on it.
 			if(!istype(src, /obj/item/handcuffs/legcuffs)) //Putting it here might actually do nothing.
-				return 0
+				return FALSE
 		if(slot_handcuffed)
 			if(!istype(src, /obj/item/handcuffs) || istype(src, /obj/item/handcuffs/legcuffs)) //Legcuffs are a child of handcuffs, but we don't want to use legcuffs as handcuffs...
-				return 0 //In theory, this would never happen, but let's just do the legcuff check anyways.
+				return FALSE //In theory, this would never happen, but let's just do the legcuff check anyways.
 		if(slot_in_backpack) //used entirely for equipping spawned mobs or at round start
 			var/allow = 0
 			if(H.back && istype(H.back, /obj/item/storage/backpack))
@@ -413,7 +413,7 @@ var/list/global/slot_flags_enumeration = list(
 				if(B.can_be_inserted(src,1))
 					allow = 1
 			if(!allow)
-				return 0
+				return FALSE
 		if(slot_tie)
 			var/allow = 0
 			for(var/obj/item/clothing/C in H.worn_clothing)	//Runs through everything you're wearing, returns if you can't attach the thing
@@ -423,17 +423,17 @@ var/list/global/slot_flags_enumeration = list(
 			if(!allow)
 				if(!disable_warning)
 					to_chat(H, "<span class='warning'>You're not wearing anything you can attach this [name] to.</span>")
-				return 0
+				return FALSE
 	return 1
 
 /obj/item/proc/mob_can_unequip(mob/M, slot, disable_warning = 0)
-	if(!slot) return 0
-	if(!M) return 0
+	if(!slot) return FALSE
+	if(!M) return FALSE
 
 	if(!canremove)
-		return 0
+		return FALSE
 	if(!M.slot_is_accessible(slot, src, disable_warning? null : M))
-		return 0
+		return FALSE
 	return 1
 
 /obj/item/verb/verb_pickup()
@@ -476,9 +476,9 @@ var/list/global/slot_flags_enumeration = list(
 //handle_shield should return a positive value to indicate that the attack is blocked and should be prevented.
 //If a negative value is returned, it should be treated as a special return value for bullet_act() and handled appropriately.
 //For non-projectile attacks this usually means the attack is blocked.
-//Otherwise should return 0 to indicate that the attack is not affected in any way.
+//Otherwise should return FALSE to indicate that the attack is not affected in any way.
 /obj/item/proc/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	return 0
+	return FALSE
 
 /obj/item/proc/get_loc_turf()
 	var/atom/L = loc
@@ -581,7 +581,7 @@ var/list/global/slot_flags_enumeration = list(
 
 /obj/item/add_blood(mob/living/carbon/human/M as mob)
 	if (!..())
-		return 0
+		return FALSE
 
 	if(istype(src, /obj/item/melee/energy))
 		return
@@ -597,7 +597,7 @@ var/list/global/slot_flags_enumeration = list(
 	//if this blood isn't already in the list, add it
 	if(istype(M))
 		if(blood_DNA[M.dna.unique_enzymes])
-			return 0 //already bloodied with this blood. Cannot add more.
+			return FALSE //already bloodied with this blood. Cannot add more.
 		blood_DNA[M.dna.unique_enzymes] = M.dna.b_type
 	return 1 //we applied blood to the item
 
@@ -703,7 +703,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	return
 
 /obj/item/proc/pwr_drain()
-	return 0 // Process Kill
+	return FALSE // Process Kill
 
 // Used for non-adjacent melee attacks with specific weapons capable of reaching more than one tile.
 // This uses changeling range string A* but for this purpose its also applicable.

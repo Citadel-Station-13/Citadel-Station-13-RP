@@ -145,7 +145,7 @@
 			to_chat(usr, "<span class='notice'>Laws displayed.</span>")
 		return 1
 
-	return 0
+	return FALSE
 
 /datum/nano_module/law_manager/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = default_state)
 	var/data[0]
@@ -212,7 +212,7 @@
 		return FALSE
 
 /mob/living/silicon/proc/is_slaved()
-	return 0
+	return FALSE
 
 /mob/living/silicon/robot/is_slaved()
 	return lawupdate && connected_ai ? sanitize(connected_ai.name) : null

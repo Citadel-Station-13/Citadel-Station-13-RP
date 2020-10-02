@@ -94,7 +94,7 @@
 				continue
 			if(!f) H += " | "
 			else f = 0
-			H += "<a href='?src=\ref[src];what=species;toggle=[k]' style='color:[(k in species) ? "#006600" : "#ff0000"]'>[k]</a>"
+			H += "<a href='?src=\ref[src];what=species;toggle=[k]' style='color:[(k in species) ? "#006600" : COLOR_RED]'>[k]</a>"
 		H += {"
 		<a href="?src=\ref[src];what=species;reset=1" style="color:#0000aa">Reset</a>
 		<br />
@@ -108,7 +108,7 @@
 		for(var/k in ALL_ANTIGENS)
 			if(!f) H += " | "
 			else f = 0
-			H += "<a href='?src=\ref[src];what=antigen;toggle=[k]' style='color:[(k in antigens) ? "#006600" : "#ff0000"]'>[k]</a>"
+			H += "<a href='?src=\ref[src];what=antigen;toggle=[k]' style='color:[(k in antigens) ? "#006600" : COLOR_RED]'>[k]</a>"
 		H += {"
 		<a href="?src=\ref[src];what=antigen;reset=1" style="color:#0000aa">Reset</a>
 		<br />

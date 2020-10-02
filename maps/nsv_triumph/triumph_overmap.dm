@@ -123,7 +123,7 @@ Warning, unable to scan through sensor shielding systems at location. Possible h
 	in_space = 1
 	known = FALSE
 	icon_state = "piratebase"
-	color = "#FF3333"
+	color = COLOR_RED_LIGHT
 	initial_generic_waypoints = list("piratebase_hanger")
 
 /obj/effect/overmap/visitable/sector/mining_planet

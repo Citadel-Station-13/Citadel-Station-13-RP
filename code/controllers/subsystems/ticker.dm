@@ -174,7 +174,7 @@ SUBSYSTEM_DEF(ticker)
 			current_state = GAME_STATE_PREGAME
 			Master.SetRunLevel(RUNLEVEL_LOBBY)
 			to_chat(world, "<B>Unable to choose playable game mode.</B> Reverting to pregame lobby.")
-			return 0
+			return FALSE
 		if(secret_force_mode != "secret")
 			src.mode = config_legacy.pick_mode(secret_force_mode)
 		if(!src.mode)
@@ -189,7 +189,7 @@ SUBSYSTEM_DEF(ticker)
 		current_state = GAME_STATE_PREGAME
 		Master.SetRunLevel(RUNLEVEL_LOBBY)
 		to_chat(world, "<span class='danger'>Serious error in mode setup!</span> Reverting to pregame lobby.") //Uses setup instead of set up due to computational context.
-		return 0
+		return FALSE
 
 	SSjobs.ResetOccupations()
 	src.mode.create_antagonists()
@@ -203,7 +203,7 @@ SUBSYSTEM_DEF(ticker)
 		mode.fail_setup()
 		mode = null
 		SSjobs.ResetOccupations()
-		return 0
+		return FALSE
 
 	if(hide_mode)
 		to_chat(world, "<B>The current game mode is - Secret!</B>")
@@ -406,7 +406,7 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/proc/round_process()
 	if(current_state != GAME_STATE_PLAYING)
-		return 0
+		return FALSE
 
 	mode.process()
 

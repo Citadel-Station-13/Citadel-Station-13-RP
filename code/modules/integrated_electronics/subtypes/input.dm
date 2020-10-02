@@ -406,11 +406,11 @@
 	if(isnum(new_code))
 		code = new_code
 	if(!signal)
-		return 0
+		return FALSE
 	if(signal.encryption != code)
-		return 0
+		return FALSE
 	if(signal.source == src) // Don't trigger ourselves.
-		return 0
+		return FALSE
 
 	activate_pin(3)
 

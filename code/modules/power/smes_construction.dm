@@ -161,7 +161,7 @@
 			output_level_max += C.IOCapacity
 		charge = between(0, charge, capacity)
 		return 1
-	return 0
+	return FALSE
 
 // Proc: total_system_failure()
 // Parameters: 2 (intensity - how strong the failure is, user - person which caused the failure)

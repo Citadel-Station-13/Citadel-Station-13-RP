@@ -61,7 +61,7 @@
 			network_node1 = new_network
 
 	if(new_network.normal_members.Find(src))
-		return 0
+		return FALSE
 
 	new_network.normal_members += src
 
@@ -89,7 +89,7 @@
 	node2 = null
 
 /obj/machinery/atmospherics/valve/proc/open()
-	if(open) return 0
+	if(open) return FALSE
 
 	open = 1
 	update_icon()
@@ -107,7 +107,7 @@
 
 /obj/machinery/atmospherics/valve/proc/close()
 	if(!open)
-		return 0
+		return FALSE
 
 	open = 0
 	update_icon()
@@ -270,7 +270,7 @@
 
 /obj/machinery/atmospherics/valve/digital/receive_signal(datum/signal/signal)
 	if(!signal.data["tag"] || (signal.data["tag"] != id))
-		return 0
+		return FALSE
 
 	switch(signal.data["command"])
 		if("valve_open")
@@ -305,7 +305,7 @@
 				"<span class='notice'>\The [user] uploads access data to \the [src].</span>", \
 				"<span class='notice'>You copied access data from \the [W] to \the [src].</span>", \
 				"You hear a faint beep.")
-		return 0
+		return FALSE
 
 	if (!W.is_wrench())
 		return ..()

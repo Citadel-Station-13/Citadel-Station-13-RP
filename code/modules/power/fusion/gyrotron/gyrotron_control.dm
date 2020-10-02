@@ -92,7 +92,7 @@
 		updateUsrDialog()
 		return 1
 
-	return 0
+	return FALSE
 
 /obj/machinery/computer/gyrotron_control/attackby(var/obj/item/W, var/mob/user)
 	..()

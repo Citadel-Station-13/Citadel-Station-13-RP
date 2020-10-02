@@ -17,7 +17,7 @@
 	return ..()
 
 /obj/machinery/embedded_controller/proc/post_signal(datum/signal/signal, comm_line)
-	return 0
+	return FALSE
 
 /obj/machinery/embedded_controller/receive_signal(datum/signal/signal, receive_method, receive_param)
 	if(!signal || signal.encryption) return
@@ -49,7 +49,7 @@
 /obj/machinery/embedded_controller/attack_hand(mob/user as mob)
 
 	if(!user.IsAdvancedToolUser())
-		return 0
+		return FALSE
 
 	src.ui_interact(user)
 

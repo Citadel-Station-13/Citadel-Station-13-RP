@@ -14,7 +14,7 @@
 	var/difficulty = EVENT_LEVEL_MODERATE
 	var/weaknesses		// If the BSA can destroy them and with what
 	var/list/victims	// Basically cached events on which Z level
-	color = "#FFFFFF"
+	color = COLOR_WHITE
 
 /obj/effect/overmap/event/Initialize()
 	. = ..()

@@ -42,7 +42,7 @@
 		return 1
 	if(isAI(usr))
 		return 1
-	return 0
+	return FALSE
 
 /datum/file/program/secure_data/interact()
 	if(!computer.cardslot)

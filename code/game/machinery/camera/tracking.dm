@@ -33,7 +33,7 @@
 		return
 
 	if (!camera)
-		return 0
+		return FALSE
 
 	var/obj/machinery/camera/C = track.cameras[camera]
 	src.eyeobj.setLoc(C)
@@ -215,9 +215,9 @@
 
 mob/living/proc/near_camera()
 	if (!isturf(loc))
-		return 0
+		return FALSE
 	else if(!cameranet.checkVis(src))
-		return 0
+		return FALSE
 	return 1
 
 /mob/living/proc/tracking_status()

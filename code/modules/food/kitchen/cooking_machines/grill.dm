@@ -38,16 +38,16 @@
 /obj/machinery/appliance/grill/has_space(var/obj/item/I)
 	var/datum/cooking_item/CI = cooking_objs[1]
 	if (!CI || !CI.container)
-		return 0
+		return FALSE
 
 	if (CI.container.can_fit(I))
 		return CI
 
-	return 0
+	return FALSE
 
 //Container is not removable
 /obj/machinery/appliance/grill/removal_menu(var/mob/user)
-	if (!can_remove_items(user)) return 0
+	if (!can_remove_items(user)) return FALSE
 
 	var/datum/cooking_item/CI = cooking_objs[1]
 

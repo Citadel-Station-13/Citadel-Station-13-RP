@@ -104,11 +104,11 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 /obj/machinery/telecomms/proc/is_freq_listening(datum/signal/signal)
 	// return 1 if found, 0 if not found
 	if(!signal)
-		return 0
+		return FALSE
 	if((signal.frequency in freq_listening) || (!freq_listening.len))
 		return 1
 	else
-		return 0
+		return FALSE
 
 
 /obj/machinery/telecomms/New()
@@ -297,7 +297,7 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 					connected_levels |= R.listening_level
 			if(signal.data["level"] in connected_levels)
 				return 1
-		return 0
+		return FALSE
 	return 1
 
 
@@ -411,19 +411,19 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 
 /obj/machinery/telecomms/relay/proc/can(datum/signal/signal)
 	if(!on)
-		return 0
+		return FALSE
 	if(!is_freq_listening(signal))
-		return 0
+		return FALSE
 	return 1
 
 /obj/machinery/telecomms/relay/proc/can_send(datum/signal/signal)
 	if(!can(signal))
-		return 0
+		return FALSE
 	return broadcasting
 
 /obj/machinery/telecomms/relay/proc/can_receive(datum/signal/signal)
 	if(!can(signal))
-		return 0
+		return FALSE
 	return receiving
 
 /*

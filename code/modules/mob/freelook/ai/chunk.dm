@@ -37,7 +37,7 @@
 	..()
 
 /mob/living/silicon/proc/provides_camera_vision()
-	return 0
+	return FALSE
 
 /mob/living/silicon/ai/provides_camera_vision()
 	return stat != DEAD

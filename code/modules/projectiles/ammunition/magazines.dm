@@ -846,7 +846,7 @@
 	name = "speedloader (caps)"
 	icon_state = "T38"
 	caliber = "caps"
-	color = "#FF0000"
+	color = COLOR_RED
 	ammo_type = /obj/item/ammo_casing/cap
 	matter = list(DEFAULT_WALL_MATERIAL = 600)
 	max_ammo = 7

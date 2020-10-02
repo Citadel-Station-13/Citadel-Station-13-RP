@@ -63,7 +63,7 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/receive_signal(datum/signal/signal)
 	if(!signal.data["tag"] || (signal.data["tag"] != scrub_id) || (signal.data["sigtype"] != "command"))
-		return 0
+		return FALSE
 	if(signal.data["power"])
 		on = text2num(signal.data["power"]) ? TRUE : FALSE
 	if("power_toggle" in signal.data)
@@ -79,7 +79,7 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/proc/broadcast_status()
 	if(!radio_connection)
-		return 0
+		return FALSE
 	var/datum/signal/signal = new
 	signal.transmission_method = 1 //radio signal
 	signal.source = src
@@ -89,7 +89,7 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 		"sigtype" = "status"
 	)
 	radio_connection.post_signal(src, signal, radio_filter = RADIO_AIRLOCK)
-	return 1
+	return TRUE
 
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock		//Special scrubber with bonus inbuilt heater
 	volume_rate = 40000
@@ -167,7 +167,7 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 	if(clean)
 		program.receive_user_command(href_list["command"])
 
-	return 1
+	return TRUE
 
 //
 // PHORON LOCK CONTROLLER PROGRAM
@@ -204,7 +204,7 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 /datum/computer/file/embedded_program/airlock/phoron/receive_signal(datum/signal/signal, receive_method, receive_param)
 	var/receive_tag = signal.data["tag"]
 	if(!receive_tag) return
-	if(..()) return 1
+	if(..()) return TRUE
 
 	if(receive_tag==tag_chamber_sensor)
 		memory["chamber_sensor_phoron"] = text2num(signal.data["phoron"])
@@ -281,7 +281,7 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 				target_state = TARGET_NONE
 
 	memory["processing"] = (state != target_state)
-	return 1
+	return TRUE
 
 /datum/computer/file/embedded_program/airlock/phoron/stop_cycling()
 	state = STATE_IDLE

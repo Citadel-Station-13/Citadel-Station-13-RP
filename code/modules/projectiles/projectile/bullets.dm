@@ -27,7 +27,7 @@
 /obj/item/projectile/bullet/can_embed()
 	//prevent embedding if the projectile is passing through the mob
 	if(mob_passthrough_check)
-		return 0
+		return FALSE
 	return ..()
 
 /obj/item/projectile/bullet/check_penetrate(var/atom/A)
@@ -38,7 +38,7 @@
 
 	if(ismob(A))
 		if(!mob_passthrough_check)
-			return 0
+			return FALSE
 		if(iscarbon(A))
 			damage *= 0.7 //squishy mobs absorb KE
 		return 1
@@ -60,7 +60,7 @@
 			A.visible_message("<span class='warning'>\The [src] pierces through \the [A]!</span>")
 		return 1
 
-	return 0
+	return FALSE
 
 /* short-casing projectiles, like the kind used in pistols or SMGs */
 

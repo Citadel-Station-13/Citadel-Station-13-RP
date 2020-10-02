@@ -126,7 +126,7 @@
 	else if(position.z == TELECOMM_Z)
 		src.listening_level = STATION_Z
 		return 1
-	return 0
+	return FALSE
 
 // Returns a multitool from a user depending on their mobtype.
 
@@ -332,7 +332,7 @@
 /obj/machinery/telecomms/proc/canAccess(var/mob/user)
 	if(issilicon(user) || in_range(user, src))
 		return 1
-	return 0
+	return FALSE
 
 #undef TELECOMM_Z
 #undef STATION_Z

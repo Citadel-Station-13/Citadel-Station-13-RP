@@ -118,8 +118,8 @@
 //returns 0..1, with 1 being no protection and 0 being fully protected
 /proc/GetAnomalySusceptibility(var/mob/living/carbon/human/H)
 	if(!istype(H))
-		return 1
-	if(istype(get_area(H),/area/crew_quarters/sleep)) return 0 //VOREStation Edit - Dorms are protected from anomalies
+		return TRUE
+	if(istype(get_area(H),/area/crew_quarters/sleep)) return FALSE //VOREStation Edit - Dorms are protected from anomalies
 	var/protected = 0
 
 	//anomaly suits give best protection, but excavation suits are almost as good
@@ -145,4 +145,4 @@
 	if(istype(H.glasses,/obj/item/clothing/glasses/science))
 		protected += 0.1
 
-	return 1 - protected
+	return TRUE - protected

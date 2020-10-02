@@ -438,7 +438,7 @@
 	var/turf/T = current.loc
 	if(!istype(T))
 		brigged_since = -1
-		return 0
+		return FALSE
 	var/is_currently_brigged = 0
 	if(istype(T.loc,/area/security/brig))
 		is_currently_brigged = 1
@@ -452,7 +452,7 @@
 
 	if(!is_currently_brigged)
 		brigged_since = -1
-		return 0
+		return FALSE
 
 	if(brigged_since == -1)
 		brigged_since = world.time
@@ -481,7 +481,7 @@
 		else
 			return (mind.special_role == role) ? 1 : 0
 	else
-		return 0
+		return FALSE
 
 //Initialisation procs
 /mob/living/proc/mind_initialize()

@@ -157,7 +157,7 @@
 		loc = get_turf(A) // Careful.
 		permutated.Add(A)
 		MI.GetDrilled(TRUE)
-		return 0
+		return FALSE
 	else if(istype(A, /turf/simulated/wall) || istype(A, /turf/simulated/shuttle/wall))	// Cause a loud, but relatively minor explosion on the wall it hits.
 		explosion(A, -1, -1, 1, 3)
 		qdel(src)

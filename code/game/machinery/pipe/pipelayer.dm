@@ -132,7 +132,7 @@
 			MM.use(to_load)
 			return to_load
 		else
-			return 0
+			return FALSE
 	return
 
 /obj/machinery/pipelayer/proc/use_metal(amount)

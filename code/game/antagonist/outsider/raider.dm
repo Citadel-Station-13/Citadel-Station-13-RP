@@ -119,7 +119,7 @@ var/datum/antagonist/raider/raiders
 /datum/antagonist/raider/create_global_objectives()
 
 	if(!..())
-		return 0
+		return FALSE
 
 	var/i = 1
 	var/max_objectives = pick(2,2,2,2,3,3,3,4)
@@ -193,17 +193,17 @@ var/datum/antagonist/raider/raiders
 /datum/antagonist/raider/proc/is_raider_crew_safe()
 
 	if(!current_antagonists || current_antagonists.len == 0)
-		return 0
+		return FALSE
 
 	for(var/datum/mind/player in current_antagonists)
 		if(!player.current || get_area(player.current) != locate(/area/skipjack_station/start))
-			return 0
+			return FALSE
 	return 1
 
 /datum/antagonist/raider/equip(var/mob/living/carbon/human/player)
 
 	if(!..())
-		return 0
+		return FALSE
 
 	if(player.species && player.species.get_bodytype() == SPECIES_VOX)
 		equip_vox(player)

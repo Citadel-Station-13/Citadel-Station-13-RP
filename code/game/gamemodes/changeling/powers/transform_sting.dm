@@ -14,7 +14,7 @@
 
 	var/datum/changeling/changeling = changeling_power(40)
 	if(!changeling)
-		return 0
+		return FALSE
 
 
 
@@ -32,10 +32,10 @@
 
 	var/mob/living/carbon/T = changeling_sting(40,/mob/proc/changeling_transformation_sting)
 	if(!T)
-		return 0
+		return FALSE
 	if((HUSK in T.mutations) || (!ishuman(T) && !issmall(T)))
 		to_chat(src, "<span class='warning'>Our sting appears ineffective against its DNA.</span>")
-		return 0
+		return FALSE
 	add_attack_logs(src,T,"Transformation sting (changeling)")
 	T.visible_message("<span class='warning'>[T] transforms!</span>")
 	T.dna = chosen_dna.Clone()

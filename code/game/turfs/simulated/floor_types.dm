@@ -111,7 +111,7 @@
 /turf/simulated/shuttle/proc/underlay_update()
 	if(!takes_underlays)
 		// Basically, if it's not forced, and we don't care, don't do it.
-		return 0
+		return FALSE
 
 	var/turf/under	// May be a path or a turf
 	var/mutable_appearance/us = new(src)	// We'll use this for changes later
@@ -213,7 +213,7 @@
 	icon_state = "alienpod1"
 	light_range = 3
 	light_power = 0.6
-	light_color = "#66ffff"	// Bright cyan.
+	light_color = COLOR_LUMINOL	// Bright cyan.
 	block_tele = TRUE
 
 /turf/simulated/shuttle/floor/alien/Initialize()
@@ -241,7 +241,7 @@
 	icon = 'icons/turf/shuttle_parts.dmi'
 	icon_state = "carry"
 	takes_underlays = 1
-	blocks_air = 1	// I'd make these unsimulated but it just fucks with so much stuff so many other places.
+	blocks_air = TRUE	// I'd make these unsimulated but it just fucks with so much stuff so many other places.
 
 /turf/simulated/shuttle/plating/carry/Initialize()
 	. = ..()
@@ -252,7 +252,7 @@
 	icon = 'icons/turf/shuttle_parts.dmi'
 	icon_state = "carry"
 	takes_underlays = 1
-	blocks_air = 1
+	blocks_air = TRUE
 
 /turf/simulated/shuttle/plating/airless/carry/Initialize()
 	. = ..()

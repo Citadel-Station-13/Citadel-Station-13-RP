@@ -77,7 +77,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 /obj/item/var/suitlink = 1 //makes belt items require a jumpsuit- set individual items to suitlink = 0 to allow wearing on belt slot without suit
 
 /mob/living/carbon/human/u_equip(obj/W as obj)
-	if(!W)	return 0
+	if(!W)	return FALSE
 
 	if (W == wear_suit)
 		if(s_store)
@@ -183,7 +183,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 			update_inv_l_hand()
 		update_inv_l_hand()
 	else
-		return 0
+		return FALSE
 
 	update_action_buttons()
 	return 1
@@ -358,7 +358,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 
 	if(covering && (covering.body_parts_covered & (I.body_parts_covered|check_flags)))
 		to_chat(user, "<span class='warning'>\The [covering] is in the way.</span>")
-		return 0
+		return FALSE
 	return 1
 
 /mob/living/carbon/human/get_equipped_item(var/slot)
@@ -400,7 +400,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 
 /mob/living/carbon/human/put_in_l_hand(var/obj/item/W)
 	if(!..() || l_hand)
-		return 0
+		return FALSE
 	W.forceMove(src)
 	l_hand = W
 	W.equipped(src,slot_l_hand)
@@ -410,7 +410,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 
 /mob/living/carbon/human/put_in_r_hand(var/obj/item/W)
 	if(!..() || r_hand)
-		return 0
+		return FALSE
 	W.forceMove(src)
 	r_hand = W
 	W.equipped(src,slot_r_hand)

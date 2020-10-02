@@ -10,7 +10,7 @@
 	body_parts_covered = UPPER_TORSO|ARMS
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	siemens_coefficient = 0.9
-	flags_inv = HIDEHOLSTER //VOREStation Add - These obviously do.
+	flags_inv = HIDEHOLSTER
 	allowed = list(/obj/item/tank/emergency/oxygen,/obj/item/flashlight,/obj/item/pen,/obj/item/clothing/head/soft,/obj/item/clothing/head/beret,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/analyzer,/obj/item/radio,/obj/item/barrier_tape_roll)
 
 /obj/item/clothing/suit/storage/service/sifguard
@@ -153,6 +153,18 @@
 	name = "marine command dress jacket"
 	desc = "A tailored black SCG Marine Corps dress jacket with gold trim. Smells like ceremony."
 	icon_state = "blackdress_com"
+
+/obj/item/clothing/suit/dress/marine/command/hos
+	name = "head of security's dress jacket"
+	desc = "A sleek, buttoned coat with gold trim. The fabric feels sturdy, could come in handy"
+	icon_state = "blackdress_com"
+	armor = list(melee = 50, bullet = 40, laser = 40, energy = 25, bomb = 25, bio = 0, rad = 0)
+
+/obj/item/clothing/suit/dress/expedition/command/cd
+	name = "Facility Director's dress jacket"
+	desc = "A grey dress jacket, adorned with gold trim and buttons. Makes those wearing it look powerful."
+	icon_state = "greydress_com"
+
 //Misc
 
 /obj/item/clothing/suit/storage/toggle/marshal_jacket

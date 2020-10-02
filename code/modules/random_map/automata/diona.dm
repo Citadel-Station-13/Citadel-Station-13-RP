@@ -67,22 +67,22 @@
 // This is disgusting.
 /datum/random_map/automata/diona/proc/search_neighbors_for(var/search_val, var/x, var/y)
 	var/current_cell = get_map_cell(x-1,y-1)
-	if(current_cell && map[current_cell] == search_val) return 1
+	if(current_cell && map[current_cell] == search_val) return TRUE
 	current_cell = get_map_cell(x-1,y)
-	if(current_cell && map[current_cell] == search_val) return 1
+	if(current_cell && map[current_cell] == search_val) return TRUE
 	current_cell = get_map_cell(x-1,y+1)
-	if(current_cell && map[current_cell] == search_val) return 1
+	if(current_cell && map[current_cell] == search_val) return TRUE
 	current_cell = get_map_cell(x,y-1)
-	if(current_cell && map[current_cell] == search_val) return 1
+	if(current_cell && map[current_cell] == search_val) return TRUE
 	current_cell = get_map_cell(x,y+1)
-	if(current_cell && map[current_cell] == search_val) return 1
+	if(current_cell && map[current_cell] == search_val) return TRUE
 	current_cell = get_map_cell(x+1,y-1)
-	if(current_cell && map[current_cell] == search_val) return 1
+	if(current_cell && map[current_cell] == search_val) return TRUE
 	current_cell = get_map_cell(x+1,y)
-	if(current_cell && map[current_cell] == search_val) return 1
+	if(current_cell && map[current_cell] == search_val) return TRUE
 	current_cell = get_map_cell(x+1,y+1)
-	if(current_cell && map[current_cell] == search_val) return 1
-	return 0
+	if(current_cell && map[current_cell] == search_val) return TRUE
+	return FALSE
 
 /datum/random_map/automata/diona/cleanup()
 

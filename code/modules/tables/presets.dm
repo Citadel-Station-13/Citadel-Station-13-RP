@@ -9,7 +9,7 @@
 
 /obj/structure/table/steel
 	icon_state = "plain_preview"
-	color = "#666666"
+	color = COLOR_STEEL
 
 /obj/structure/table/steel/New()
 	material = get_material_by_name(DEFAULT_WALL_MATERIAL)
@@ -34,7 +34,7 @@
 
 /obj/structure/table/steel_reinforced
 	icon_state = "reinf_preview"
-	color = "#666666"
+	color = COLOR_STEEL
 
 /obj/structure/table/steel_reinforced/New()
 	material = get_material_by_name(DEFAULT_WALL_MATERIAL)
@@ -85,7 +85,7 @@
 
 /obj/structure/table/glass
 	icon_state = "plain_preview"
-	color = "#00E1FF"
+	color = COLOR_DEEP_SKY_BLUE
 	alpha = 77 // 0.3 * 255
 
 /obj/structure/table/glass/New()
@@ -144,7 +144,7 @@
 
 /obj/structure/table/bench/steel
 	icon_state = "plain_preview"
-	color = "#666666"
+	color = COLOR_STEEL
 
 /obj/structure/table/bench/steel/New()
 	material = get_material_by_name(DEFAULT_WALL_MATERIAL)
@@ -170,7 +170,7 @@
 
 /obj/structure/table/bench/steel_reinforced
 	icon_state = "reinf_preview"
-	color = "#666666"
+	color = COLOR_STEEL
 
 /obj/structure/table/bench/steel_reinforced/New()
 	material = get_material_by_name(DEFAULT_WALL_MATERIAL)
@@ -216,7 +216,7 @@
 
 /obj/structure/table/bench/glass
 	icon_state = "plain_preview"
-	color = "#00E1FF"
+	color = COLOR_DEEP_SKY_BLUE
 	alpha = 77 // 0.3 * 255
 
 /obj/structure/table/bench/glass/New()

@@ -168,7 +168,7 @@
 /mob/living/carbon/slime/bullet_act(var/obj/item/projectile/Proj)
 	attacked += 10
 	..(Proj)
-	return 0
+	return FALSE
 
 /mob/living/carbon/slime/emp_act(severity)
 	powerlevel = 0 // oh no, the power!
@@ -367,7 +367,7 @@
 	..()
 
 /mob/living/carbon/slime/restrained()
-	return 0
+	return FALSE
 
 /mob/living/carbon/slime/var/co2overloadtime = null
 /mob/living/carbon/slime/var/temperature_resistance = T0C+75

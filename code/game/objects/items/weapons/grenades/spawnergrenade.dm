@@ -89,7 +89,7 @@
 		if(T.z in GLOB.using_map.map_levels)
 			icon_state = initial(icon_state)
 			active = 0
-			return 0
+			return FALSE
 	return ..()
 
 /obj/item/grenade/spawnergrenade/manhacks/station/locked/attackby(obj/item/I, mob/user)

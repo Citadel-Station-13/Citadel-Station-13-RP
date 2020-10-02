@@ -694,9 +694,9 @@ var/list/admin_verbs_event_manager = list(
 	var/choice = input("What size explosion would you like to produce?") in choices
 	switch(choice)
 		if(null)
-			return 0
+			return FALSE
 		if("Cancel")
-			return 0
+			return FALSE
 		if("Small Bomb")
 			explosion(epicenter, 1, 2, 3, 3)
 		if("Medium Bomb")

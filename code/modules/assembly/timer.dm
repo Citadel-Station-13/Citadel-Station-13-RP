@@ -14,12 +14,12 @@
 
 
 /obj/item/assembly/timer/activate()
-	if(!..())	return 0//Cooldown check
+	if(!..())	return FALSE//Cooldown check
 
 	timing = !timing
 
 	update_icon()
-	return 0
+	return FALSE
 
 
 /obj/item/assembly/timer/toggle_secure()
@@ -34,7 +34,7 @@
 
 
 /obj/item/assembly/timer/proc/timer_end()
-	if(!secured)	return 0
+	if(!secured)	return FALSE
 	pulse(0)
 	if(!holder)
 		visible_message("\icon[src] *beep* *beep*", "*beep* *beep*")
@@ -68,7 +68,7 @@
 /obj/item/assembly/timer/interact(mob/user as mob)//TODO: Have this use the wires
 	if(!secured)
 		user.show_message("<font color='red'>The [name] is unsecured!</font>")
-		return 0
+		return FALSE
 	var/second = time % 60
 	var/minute = (time - second) / 60
 	var/dat = text("<TT><B>Timing Unit</B>\n[] []:[]\n<A href='?src=\ref[];tp=-30'>-</A> <A href='?src=\ref[];tp=-1'>-</A> <A href='?src=\ref[];tp=1'>+</A> <A href='?src=\ref[];tp=30'>+</A>\n</TT>", (timing ? text("<A href='?src=\ref[];time=0'>Timing</A>", src) : text("<A href='?src=\ref[];time=1'>Not Timing</A>", src)), minute, second, src, src, src, src)

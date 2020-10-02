@@ -39,7 +39,7 @@
 
 /obj/item/nifrepairer/afterattack(var/atom/target, var/mob/user, var/proximity)
 	if(!target.is_open_container() || !target.reagents)
-		return 0
+		return FALSE
 
 	if(!supply || !supply.total_volume)
 		to_chat(user,"<span class='warning'>[src] is empty. Feed it nanopaste.</span>")

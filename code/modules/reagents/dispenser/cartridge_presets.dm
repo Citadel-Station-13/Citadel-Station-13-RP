@@ -107,3 +107,9 @@
 	chloral		spawn_reagent = "chloralhydrate"
 	cryoxadone	spawn_reagent = "cryoxadone"
 	clonexadone	spawn_reagent = "clonexadone"
+
+	//Xenoflora
+	ammonia			spawn_reagent = "ammonia"
+	diethylamine	spawn_reagent = "diethylamine"
+	plantbgone		spawn_reagent = "plantbgone"
+	mutagen			spawn_reagent = "mutagen"

@@ -8,7 +8,7 @@
 /proc/getAssignedBlock(var/name,var/list/blocksLeft, var/activity_bounds=DNA_DEFAULT_BOUNDS)
 	if(blocksLeft.len==0)
 		warning("[name]: No more blocks left to assign!")
-		return 0
+		return FALSE
 	var/assigned = pick(blocksLeft)
 	blocksLeft.Remove(assigned)
 	assigned_blocks[assigned]=name

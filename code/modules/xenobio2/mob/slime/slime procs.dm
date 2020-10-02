@@ -98,7 +98,7 @@ Slime specific procs go here.
 			I.icon = src.icon
 			I.icon_state = "slime shiny"
 			I.layer = src.layer + 0.1
-			I.color = "#FFFFFF"
+			I.color = COLOR_WHITE
 			overlays += I
 		if(LIGHTOVERLAY)
 			var/image/I = new(src.icon)
@@ -106,7 +106,7 @@ Slime specific procs go here.
 			I.icon_state = ""
 			I.icon_state = "slime light"
 			I.layer = src.layer + 0.1
-			I.color = "#FFFFFF"
+			I.color = COLOR_WHITE
 			overlays += I
 
 /mob/living/simple_mob/xeno/slime/handle_reagents()

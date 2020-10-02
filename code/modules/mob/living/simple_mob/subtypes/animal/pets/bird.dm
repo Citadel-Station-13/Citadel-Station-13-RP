@@ -96,3 +96,8 @@
 	tt_desc = "E Streptopelia risoria" // This is actually disputed IRL but since we can't tell the future it'll stay the same for 500+ years.
 	icon_scale_x = 0.5
 	icon_scale_y = 0.5
+
+/mob/living/simple_mob/animal/passive/bird/azure_tit/tweeter
+	name = "Tweeter"
+	desc = "A beautiful little blue and white bird, if only excessively loud for no reason sometimes."
+	makes_dirt = FALSE

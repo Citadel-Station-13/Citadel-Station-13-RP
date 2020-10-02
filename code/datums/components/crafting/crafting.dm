@@ -81,10 +81,10 @@
 							continue main_loop
 						else
 							continue
-			return 0
+			return FALSE
 	for(var/A in R.chem_catalysts)
 		if(contents[A] < R.chem_catalysts[A])
-			return 0
+			return FALSE
 	return 1
 
 /datum/component/personal_crafting/proc/get_environment(mob/user)
@@ -175,7 +175,7 @@
 					user.put_in_hands(I)
 				if(send_feedback)
 					SSblackbox.record_feedback("tally", "object_crafted", 1, I.type)
-				return 0
+				return FALSE
 			return "."
 		return ", missing tool."
 	return ", missing component."

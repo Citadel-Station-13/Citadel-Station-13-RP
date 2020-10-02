@@ -99,7 +99,7 @@ var/global/list/narsie_list = list()
 
 /obj/singularity/narsie/move(var/force_move = 0)
 	if(!move_self)
-		return 0
+		return FALSE
 
 	var/movement_dir = pick(alldirs - last_failed_movement)
 
@@ -117,7 +117,7 @@ var/global/list/narsie_list = list()
 
 /obj/singularity/narsie/large/move(var/force_move = 0)
 	if(!move_self)
-		return 0
+		return FALSE
 
 	var/movement_dir = pick(alldirs - last_failed_movement)
 
@@ -171,7 +171,7 @@ var/global/list/narsie_list = list()
 		var/mob/M = A
 
 		if(M.status_flags & GODMODE)
-			return 0
+			return FALSE
 
 		M.cultify()
 
@@ -197,13 +197,13 @@ var/global/list/narsie_list = list()
 
 /obj/singularity/narsie/proc/old_narsie(const/atom/A)
 	if(!(A.singuloCanEat()))
-		return 0
+		return FALSE
 
 	if (istype(A, /mob/living/))
 		var/mob/living/C2 = A
 
 		if(C2.status_flags & GODMODE)
-			return 0
+			return FALSE
 
 		C2.dust() // Changed from gib(), just for less lag.
 
@@ -229,13 +229,13 @@ var/global/list/narsie_list = list()
 
 /obj/singularity/narsie/consume(const/atom/A) //This one is for the small ones.
 	if(!(A.singuloCanEat()))
-		return 0
+		return FALSE
 
 	if (istype(A, /mob/living/))
 		var/mob/living/C2 = A
 
 		if(C2.status_flags & GODMODE)
-			return 0
+			return FALSE
 
 		C2.dust() // Changed from gib(), just for less lag.
 

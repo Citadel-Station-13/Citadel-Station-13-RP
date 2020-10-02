@@ -72,4 +72,4 @@
 		if(pin)
 			debugger.write_data(pin, usr)
 			return 1
-	return 0
+	return FALSE

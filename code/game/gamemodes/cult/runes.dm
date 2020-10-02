@@ -134,7 +134,7 @@ var/list/sacrificed = list()
 					converting -= target
 					if(target.getFireLoss() < 100)
 						target.hallucination = min(target.hallucination, 500)
-					return 0
+					return FALSE
 
 				target.take_overall_damage(0, rand(5, 20)) // You dirty resister cannot handle the damage to your mind. Easily. - even cultists who accept right away should experience some effects
 				// Resist messages go!
@@ -629,9 +629,9 @@ var/list/sacrificed = list()
 			if(!input)
 				if (istype(src))
 					fizzle()
-					return 0
+					return FALSE
 				else
-					return 0
+					return FALSE
 
 			if(istype(src,/obj/effect/rune))
 				usr.say("O bidai nabora se[pick("'","`")]sma!")

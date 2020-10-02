@@ -563,7 +563,7 @@
 	else
 		if (world.time % 3)
 			occupant_message("<span class='warning'>[src] is not ready to fire again!</span>")
-		return 0
+		return FALSE
 
 	switch(mode)
 		if(1)
@@ -635,7 +635,7 @@
 	if(..())
 		if(!M.proc_res["dynattackby"])
 			return 1
-	return 0
+	return FALSE
 
 /obj/item/mecha_parts/mecha_equipment/anticcw_armor_booster/attach(obj/mecha/M as obj)
 	..()
@@ -686,7 +686,7 @@
 	if(..())
 		if(!M.proc_res["dynbulletdamage"] && !M.proc_res["dynhitby"])
 			return 1
-	return 0
+	return FALSE
 
 /obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster/attach(obj/mecha/M as obj)
 	..()
@@ -879,7 +879,7 @@
 	if(..())
 		if(!M.proc_res["dyngetcharge"])// && !M.proc_res["dynusepower"])
 			return 1
-	return 0
+	return FALSE
 
 /obj/item/mecha_parts/mecha_equipment/tesla_energy_relay/proc/dyngetcharge()
 	if(equip_ready) //disabled
@@ -1119,7 +1119,7 @@
 				P.use(units)
 				return units
 		else
-			return 0
+			return FALSE
 	return
 
 /obj/item/mecha_parts/mecha_equipment/generator/attackby(weapon,mob/user)
@@ -1154,19 +1154,19 @@
 	if(!EG.chassis)
 		stop()
 		EG.set_ready_state(1)
-		return 0
+		return FALSE
 	if(EG.fuel.amount<=0)
 		stop()
 		EG.log_message("Deactivated - no fuel.")
 		EG.set_ready_state(1)
-		return 0
+		return FALSE
 	var/cur_charge = EG.chassis.get_charge()
 	if(isnull(cur_charge))
 		EG.set_ready_state(1)
 		EG.occupant_message("No powercell detected.")
 		EG.log_message("Deactivated.")
 		stop()
-		return 0
+		return FALSE
 	var/use_fuel = EG.fuel_per_cycle_idle
 	if(cur_charge<EG.chassis.cell.maxcharge)
 		use_fuel = EG.fuel_per_cycle_active
@@ -1291,7 +1291,7 @@
 	return ..()
 
 /obj/item/mecha_parts/mecha_equipment/tool/passenger/Exit(atom/movable/O)
-	return 0
+	return FALSE
 
 /obj/item/mecha_parts/mecha_equipment/tool/passenger/proc/move_inside(var/mob/user)
 	if (chassis)
@@ -1491,15 +1491,15 @@
 			chassis.pr_inertial_movement.set_process_args(list(chassis,direction))
 		do_after_cooldown()
 		return 1
-	return 0
+	return FALSE
 
 /obj/item/mecha_parts/mecha_equipment/tool/jetpack/action_checks()
 	if(equip_ready || wait)
-		return 0
+		return FALSE
 	if(energy_drain && !chassis.has_charge(energy_drain))
-		return 0
+		return FALSE
 	if(chassis.check_for_support())
-		return 0
+		return FALSE
 	return 1
 
 /obj/item/mecha_parts/mecha_equipment/tool/jetpack/get_equip_info()
@@ -1608,7 +1608,7 @@
 			CC.use(to_load)
 			return to_load
 		else
-			return 0
+			return FALSE
 	return
 
 /obj/item/mecha_parts/mecha_equipment/tool/cable_layer/proc/use_cable(amount)

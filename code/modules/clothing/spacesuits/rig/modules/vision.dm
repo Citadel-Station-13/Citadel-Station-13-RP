@@ -201,7 +201,7 @@
 	var/starting_up = !active
 
 	if(!..() || !vision_modes)
-		return 0
+		return FALSE
 
 	// Don't cycle if this engage() is being called by activate().
 	if(starting_up)

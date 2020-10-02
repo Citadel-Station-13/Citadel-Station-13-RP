@@ -29,26 +29,26 @@
 /datum/chemical_reaction/distilling/can_happen(var/datum/reagents/holder)
 	//check that all the required reagents are present
 	if(!holder.has_all_reagents(required_reagents))
-		return 0
+		return FALSE
 
 	//check that all the required catalysts are present in the required amount
 	if(!holder.has_all_reagents(catalysts))
-		return 0
+		return FALSE
 
 	//check that none of the inhibitors are present in the required amount
 	if(holder.has_any_reagent(inhibitors))
-		return 0
+		return FALSE
 
 	if(!istype(holder.my_atom, /obj/item/reagent_containers/glass/distilling))
-		return 0
+		return FALSE
 
 	else // Super special temperature check.
 		var/obj/item/reagent_containers/glass/distilling/D = holder.my_atom
 		var/obj/machinery/portable_atmospherics/powered/reagent_distillery/RD = D.Master
 		if(RD.current_temp < temp_range[1] || RD.current_temp > temp_range[2])
-			return 0
+			return FALSE
 
-	return 1
+	return TRUE
 
 /datum/chemical_reaction/distilling/on_reaction(var/datum/reagents/holder, var/created_volume)
 	if(istype(holder.my_atom, /obj/item/reagent_containers/glass/distilling))

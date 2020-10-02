@@ -21,7 +21,7 @@
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 15
 	active_power_usage = 200
-	light_color = "#FF0000"
+	light_color = COLOR_RED
 
 /obj/machinery/vr_sleeper/New()
 	..()
@@ -146,7 +146,7 @@
 
 /obj/machinery/vr_sleeper/relaymove(mob/user as mob)
 	if(user.incapacitated())
-		return 0 //maybe they should be able to get out with cuffs, but whatever
+		return FALSE //maybe they should be able to get out with cuffs, but whatever
 	go_out()
 
 /obj/machinery/vr_sleeper/proc/go_in(var/mob/M, var/mob/user)
@@ -236,7 +236,7 @@
 
 		S = input(occupant, "Please select a location to spawn your avatar at:", "Spawn location") as null|anything in vr_landmarks
 		if(!S)
-			return 0
+			return FALSE
 
 		for(var/obj/effect/landmark/virtual_reality/i in landmarks_list)
 			if(i.name == S)

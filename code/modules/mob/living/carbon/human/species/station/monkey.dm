@@ -160,7 +160,7 @@
 	greater_form = "Vulpkanin"
 	default_language = LANGUAGE_CANILUNZT
 	flesh_color = "#966464"
-	base_color = "#000000"
+	base_color = COLOR_BLACK
 	tail = null
 
 //INSERT CODE HERE SO MONKEYS CAN BE SPAWNED.

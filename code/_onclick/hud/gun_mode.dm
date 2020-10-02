@@ -7,7 +7,7 @@
 /obj/screen/gun/Click(location, control, params)
 	if(!usr)
 		return
-	return 1
+	return TRUE
 
 /obj/screen/gun/move
 	name = "Allow Movement"
@@ -20,8 +20,8 @@
 		if(istype(user))
 			if(!user.aiming) user.aiming = new(user)
 			user.aiming.toggle_permission(TARGET_CAN_MOVE)
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /obj/screen/gun/item
 	name = "Allow Item Use"
@@ -34,8 +34,8 @@
 		if(istype(user))
 			if(!user.aiming) user.aiming = new(user)
 			user.aiming.toggle_permission(TARGET_CAN_CLICK)
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /obj/screen/gun/mode
 	name = "Toggle Gun Mode"
@@ -48,8 +48,8 @@
 		if(istype(user))
 			if(!user.aiming) user.aiming = new(user)
 			user.aiming.toggle_active()
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /obj/screen/gun/radio
 	name = "Allow Radio Use"
@@ -62,5 +62,5 @@
 		if(istype(user))
 			if(!user.aiming) user.aiming = new(user)
 			user.aiming.toggle_permission(TARGET_CAN_RADIO)
-		return 1
-	return 0
+		return TRUE
+	return FALSE

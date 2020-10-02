@@ -32,7 +32,7 @@
 			if(istype(ME, /obj/item/mecha_parts/mecha_equipment/tool/sleeper))
 				var/obj/item/mecha_parts/mecha_equipment/tool/sleeper/S = ME
 				if(S.occupant != null)
-					return 0
+					return FALSE
 
 	return istype(O, /obj/mecha) || istype(O, /obj/vehicle)
 

@@ -10,7 +10,7 @@ var/global/universe_has_ended = 0
 /datum/universal_state/supermatter_cascade/OnShuttleCall(var/mob/user)
 	if(user)
 		to_chat(user, "<span class='sinister'>All you hear on the frequency is static and panicked screaming. There will be no shuttle call today.</span>")
-	return 0
+	return FALSE
 
 /datum/universal_state/supermatter_cascade/OnTurfChange(var/turf/T)
 	var/turf/space/S = T

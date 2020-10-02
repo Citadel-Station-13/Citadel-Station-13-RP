@@ -48,10 +48,10 @@
 	..()
 
 /mob/living/proc/can_use_rig()
-	return 0
+	return FALSE
 
 /mob/living/carbon/human/can_use_rig()
-	return 1
+	return TRUE
 
 /mob/living/carbon/brain/can_use_rig()
 	return istype(loc, /obj/item/mmi)
@@ -64,19 +64,19 @@
 
 /mob/living/proc/HardsuitClickOn(var/atom/A, var/alert_ai = 0)
 	if(!can_use_rig() || !canClick())
-		return 0
+		return FALSE
 	var/obj/item/rig/rig = get_rig()
 	if(istype(rig) && !rig.offline && rig.selected_module)
 		if(src != rig.wearer)
 			if(rig.ai_can_move_suit(src, check_user_module = 1))
 				message_admins("[key_name_admin(src, include_name = 1)] is trying to force \the [key_name_admin(rig.wearer, include_name = 1)] to use a hardsuit module.")
 			else
-				return 0
+				return FALSE
 		rig.selected_module.engage(A, alert_ai)
 		if(ismob(A)) // No instant mob attacking - though modules have their own cooldowns
 			setClickCooldown(get_attack_speed())
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 #undef MIDDLE_CLICK
 #undef ALT_CLICK

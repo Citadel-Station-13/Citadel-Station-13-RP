@@ -24,14 +24,14 @@
 
 /obj/machinery/containment_field/attack_hand(mob/user as mob)
 	if(get_dist(src, user) > 1)
-		return 0
+		return FALSE
 	else
 		shock(user)
 		return 1
 
 
 /obj/machinery/containment_field/ex_act(severity)
-	return 0
+	return FALSE
 
 /obj/machinery/containment_field/HasProximity(atom/movable/AM as mob|obj)
 	if(istype(AM,/mob/living/silicon) && prob(40))
@@ -40,16 +40,16 @@
 	if(istype(AM,/mob/living/carbon) && prob(50))
 		shock(AM)
 		return 1
-	return 0
+	return FALSE
 
 
 
 /obj/machinery/containment_field/shock(mob/living/user as mob)
 	if(hasShocked)
-		return 0
+		return FALSE
 	if(!FG1 || !FG2)
 		qdel(src)
-		return 0
+		return FALSE
 	if(isliving(user))
 		hasShocked = 1
 		var/shock_damage = min(rand(30,40),rand(30,40))
@@ -64,7 +64,7 @@
 
 /obj/machinery/containment_field/proc/set_master(var/master1,var/master2)
 	if(!master1 || !master2)
-		return 0
+		return FALSE
 	FG1 = master1
 	FG2 = master2
 	return 1

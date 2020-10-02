@@ -38,7 +38,7 @@
 		coat = mover
 		coat.loc = src
 		update_icon()
-		return 0
+		return FALSE
 	else
 		return 1
 

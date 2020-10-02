@@ -85,7 +85,7 @@ var/list/uristrune_cache = list()
 				var/e = I.GetPixel(x + 1, y)
 				var/w = I.GetPixel(x - 1, y)
 
-				if(n == "#000000" || s == "#000000" || e == "#000000" || w == "#000000")
+				if(n == COLOR_BLACK || s == COLOR_BLACK || e == COLOR_BLACK || w == COLOR_BLACK)
 					I.DrawBox(rgb(200, 0, 0, 200), x, y)
 
 				else
@@ -94,7 +94,7 @@ var/list/uristrune_cache = list()
 					var/nw = I.GetPixel(x - 1, y + 1)
 					var/sw = I.GetPixel(x - 1, y - 1)
 
-					if(ne == "#000000" || se == "#000000" || nw == "#000000" || sw == "#000000")
+					if(ne == COLOR_BLACK || se == COLOR_BLACK || nw == COLOR_BLACK || sw == COLOR_BLACK)
 						I.DrawBox(rgb(200, 0, 0, 100), x, y)
 
 	var/icon/result = icon(I, "")

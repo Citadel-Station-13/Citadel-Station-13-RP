@@ -198,7 +198,7 @@
 		container.forceMove(get_turf(src))
 		container = null
 		return 1
-	return 0
+	return FALSE
 
 // Checks for reagents, then reports how much biomass it has in it
 /obj/machinery/organ_printer/proc/get_biomass_volume()
@@ -214,11 +214,11 @@
 	var/biomass = get_biomass_volume()
 	if(biomass < products[choice][2])
 		visible_message("<span class='notice'>\The [src] displays a warning: 'Not enough biomass. [biomass] stored and [products[choice][2]] needed.'</span>")
-		return 0
+		return FALSE
 
 	if(!loaded_dna || !loaded_dna["donor"])
 		visible_message("<span class='info'>\The [src] displays a warning: 'No DNA saved. Insert a blood sample.'</span>")
-		return 0
+		return FALSE
 
 	return 1
 

@@ -130,11 +130,11 @@
 	if(!get_acceleration())
 		return INFINITY
 	if(is_still())
-		return 0
+		return FALSE
 	if(!burn_delay)
-		return 0
+		return FALSE
 	if(!get_speed())
-		return 0
+		return FALSE
 	var/num_burns = get_speed()/get_acceleration() + 2	// Some padding in case acceleration drops form fuel usage
 	var/burns_per_grid = 1/ (burn_delay * get_speed())
 	return round(num_burns/burns_per_grid)
@@ -220,9 +220,9 @@
 
 /obj/effect/overmap/visitable/ship/proc/can_burn()
 	if(halted)
-		return 0
+		return FALSE
 	if (world.time < last_burn + burn_delay)
-		return 0
+		return FALSE
 	for(var/datum/ship_engine/E in engines)
 		. |= E.can_burn()
 

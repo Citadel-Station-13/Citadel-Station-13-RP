@@ -35,10 +35,10 @@
 
 	var/obj/structure/bed/B = A
 	if (istype(A, /obj/structure/bed) && B.has_buckled_mobs())//if it's a bed/chair and someone is buckled, it will not pass
-		return 0
+		return FALSE
 
 	if(istype(A, /obj/vehicle) || istype (A, /obj/mecha)) //no vehicles
-		return 0
+		return FALSE
 
 	var/mob/living/M = A
 	if(istype(M))

@@ -16,7 +16,7 @@
 	var/obj/effect/beam/i_beam/first = null
 
 /obj/item/assembly/infra/activate()
-		if(!..())	return 0//Cooldown check
+		if(!..())	return FALSE//Cooldown check
 		on = !on
 		update_icon()
 		return 1
@@ -87,14 +87,14 @@
 
 
 /obj/item/assembly/infra/holder_movement()
-	if(!holder)	return 0
+	if(!holder)	return FALSE
 //		setDir(holder.dir)
 	qdel(first)
 	return 1
 
 
 /obj/item/assembly/infra/proc/trigger_beam()
-	if((!secured)||(!on)||(cooldown > 0))	return 0
+	if((!secured)||(!on)||(cooldown > 0))	return FALSE
 	pulse(0)
 	if(!holder)
 		visible_message("\icon[src] *beep* *beep*")

@@ -136,14 +136,14 @@
 
 /datum/antagonist/proc/attempt_late_spawn(var/datum/mind/player)
 	if(!can_late_spawn())
-		return 0
+		return FALSE
 	if(!istype(player))
 		var/list/players = get_candidates(is_latejoin_template())
 		if(players && players.len)
 			player = pick(players)
 	if(!istype(player))
 		message_admins("[uppertext(SSticker.mode.name)]: Failed to find a candidate for [role_text].")
-		return 0
+		return FALSE
 	to_chat(player.current, "<span class='danger'><i>You have been selected this round as an antagonist!</i></span>")
 	message_admins("[uppertext(SSticker.mode.name)]: Selected [player] as a [role_text].")
 	if(istype(player.current, /mob/observer/dead))
@@ -166,7 +166,7 @@
 
 	// Update our boundaries.
 	if(!candidates.len)
-		return 0
+		return FALSE
 
 	//Grab candidates randomly until we have enough.
 	while(candidates.len && pending_antagonists.len < initial_spawn_target)
@@ -180,13 +180,13 @@
 	//Check if the player can join in this antag role, or if the player has already been given an antag role.
 	if(!can_become_antag(player) || player.assigned_role in roundstart_restricted)
 		log_debug("[player.key] was selected for [role_text] by lottery, but is not allowed to be that role.")
-		return 0
+		return FALSE
 	if(player.special_role)
 		log_debug("[player.key] was selected for [role_text] by lottery, but they already have a special role.")
-		return 0
+		return FALSE
 	if(!(flags & ANTAG_OVERRIDE_JOB) && (!player.current || istype(player.current, /mob/new_player)))
 		log_debug("[player.key] was selected for [role_text] by lottery, but they have not joined the game.")
-		return 0
+		return FALSE
 
 	pending_antagonists |= player
 	log_debug("[player.key] has been selected for [role_text] by lottery.")

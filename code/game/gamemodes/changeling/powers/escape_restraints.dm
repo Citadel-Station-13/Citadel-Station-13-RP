@@ -17,13 +17,13 @@
 	var/mob/living/carbon/human/C = src
 	var/datum/changeling/changeling = changeling_power(40,0,100,CONSCIOUS)
 	if(!changeling)
-		return 0
+		return FALSE
 	if(world.time < changeling.next_escape)
 		to_chat(src, "<span class='warning'>We are still recovering from our last escape...</span>")
-		return 0
+		return FALSE
 	if(!(C.handcuffed || C.legcuffed || istype(C.wear_suit,/obj/item/clothing/suit/straight_jacket)))	// No need to waste chems if there's nothing to break out of
 		to_chat(C, "<span class='warning'>We are are not restrained in a way we can escape...</span>")
-		return 0
+		return FALSE
 
 	changeling.chem_charges -= 40
 

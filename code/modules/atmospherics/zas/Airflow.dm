@@ -5,16 +5,16 @@ Contains helper procs for airflow, handled in /connection_group.
 mob/var/tmp/last_airflow_stun = 0
 mob/proc/airflow_stun()
 	if(stat == 2)
-		return 0
+		return FALSE
 	CACHE_VSC_PROP(atmos_vsc, /atmos/airflow/stun_cooldown, stuncd)
-	if(last_airflow_stun > world.time - stuncd)	return 0
+	if(last_airflow_stun > world.time - stuncd)	return FALSE
 
 	if(!(status_flags & CANSTUN) && !(status_flags & CANWEAKEN))
 		to_chat(src, "<span class='notice'>You stay upright as the air rushes past you.</span>")
-		return 0
+		return FALSE
 	if(buckled)
 		to_chat(src, "<span class='notice'>Air suddenly rushes past you!</span>")
-		return 0
+		return FALSE
 	if(!lying)
 		to_chat(src, "<span class='warning'>The sudden rush of air knocks you over!</span>")
 	Weaken(5)
@@ -26,53 +26,53 @@ mob/living/silicon/airflow_stun()
 mob/living/carbon/human/airflow_stun()
 	if(shoes && (shoes.item_flags & NOSLIP))
 		to_chat(src, "<span class='notice'>Air suddenly rushes past you!</span>")
-		return 0
+		return FALSE
 	..()
 
 atom/movable/proc/check_airflow_movable(n)
 	CACHE_VSC_PROP(atmos_vsc, /atmos/airflow/dense_pressure, dense_pressure)
 	if(!simulated)
-		return 0
+		return FALSE
 
 	if(anchored && !ismob(src))
-		return 0
+		return FALSE
 
 	if(!isobj(src) && n < dense_pressure)
-		return 0
+		return FALSE
 
 	return 1
 
 mob/check_airflow_movable(n)
 	CACHE_VSC_PROP(atmos_vsc, /atmos/airflow/heavy_pressure, heavy_pressure)
 	if(n < heavy_pressure)
-		return 0
+		return FALSE
 	return 1
 
 mob/observer/check_airflow_movable()
-	return 0
+	return FALSE
 
 mob/living/silicon/check_airflow_movable()
-	return 0
+	return FALSE
 
 
 obj/check_airflow_movable(n)
 	if (!(. = ..()))
-		return 0
+		return FALSE
 	CACHE_VSC_PROP(atmos_vsc, /atmos/airflow/dense_pressure, dense_pressure)
 	CACHE_VSC_PROP(atmos_vsc, /atmos/airflow/dense_pressure, light_pressure)
 	CACHE_VSC_PROP(atmos_vsc, /atmos/airflow/dense_pressure, lightest_pressure)
 	CACHE_VSC_PROP(atmos_vsc, /atmos/airflow/dense_pressure, medium_pressure)
 	if(isnull(w_class))
-		if(n < dense_pressure) return 0 //most non-item objs don't have a w_class yet
+		if(n < dense_pressure) return FALSE //most non-item objs don't have a w_class yet
 	switch(w_class)
 		if(ITEMSIZE_TINY,ITEMSIZE_SMALL)
-			if(n < lightest_pressure) return 0
+			if(n < lightest_pressure) return FALSE
 		if(ITEMSIZE_NORMAL)
-			if(n < light_pressure) return 0
+			if(n < light_pressure) return FALSE
 		if(ITEMSIZE_LARGE,ITEMSIZE_HUGE)
-			if(n < medium_pressure) return 0
+			if(n < medium_pressure) return FALSE
 		else
-			if(n < dense_pressure) return 0
+			if(n < dense_pressure) return FALSE
 
 /atom/movable/var/tmp/turf/airflow_dest
 /atom/movable/var/tmp/airflow_speed = 0
@@ -84,12 +84,12 @@ obj/check_airflow_movable(n)
 
 /mob/AirflowCanMove(n)
 	if(status_flags & GODMODE)
-		return 0
+		return FALSE
 	if(buckled)
-		return 0
+		return FALSE
 	var/obj/item/shoes = get_equipped_item(slot_shoes)
 	if(istype(shoes) && (shoes.item_flags & NOSLIP))
-		return 0
+		return FALSE
 	return 1
 
 /atom/movable/Bump(atom/A)

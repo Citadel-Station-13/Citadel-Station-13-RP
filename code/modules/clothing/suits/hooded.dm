@@ -255,6 +255,10 @@
 		/obj/item/gun/projectile/sec/flash
 		)
 
+// Field Medic Suit - Someone who can sprite should probably reskin this
+/obj/item/clothing/suit/storage/hooded/explorer/medic
+	starting_accessories = list(/obj/item/clothing/accessory/armband/med/cross)
+
 /obj/item/clothing/suit/storage/hooded/ronincoat
 	name = "ronin coat"
 	desc = "Outfitted with integrated heating coils, this fashionable coat is a favorite of gangsters and mercenaries alike."

@@ -60,10 +60,10 @@ var/list/possible_cable_coil_colors = list(
 
 /obj/structure/cable/drain_power(var/drain_check, var/surge, var/amount = 0)
 	if(drain_check)
-		return 1
+		return TRUE
 
 	if(!powernet)
-		return 0
+		return FALSE
 
 	return powernet.draw_power(amount)
 
@@ -163,7 +163,7 @@ var/list/possible_cable_coil_colors = list(
 	update_icon()
 
 /obj/structure/cable/hides_under_flooring()
-	return 1
+	return TRUE
 
 /obj/structure/cable/update_icon()
 	icon_state = "[d1]-[d2]"
@@ -248,14 +248,14 @@ var/list/possible_cable_coil_colors = list(
 // shock the user with probability prb
 /obj/structure/cable/proc/shock(mob/user, prb, var/siemens_coeff = 1.0)
 	if(!prob(prb))
-		return 0
+		return FALSE
 	if (electrocute_mob(user, powernet, src, siemens_coeff))
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(5, 1, src)
 		s.start()
 		if(usr.stunned)
-			return 1
-	return 0
+			return TRUE
+	return FALSE
 
 //explosion handling
 /obj/structure/cable/ex_act(severity)
@@ -964,16 +964,16 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	icon_state = initial(icon_state)
 
 /obj/item/stack/cable_coil/alien/can_use(var/used)
-	return 1
+	return TRUE
 
 /obj/item/stack/cable_coil/alien/use()	//It's endless
-	return 1
+	return TRUE
 
 /obj/item/stack/cable_coil/alien/add()	//Still endless
-	return 0
+	return FALSE
 
 /obj/item/stack/cable_coil/alien/update_wclass()
-	return 0
+	return FALSE
 
 /obj/item/stack/cable_coil/alien/examine(mob/user)
 	var/msg = "A spool of cable. It doesn't seem to have a beginning, or an end."

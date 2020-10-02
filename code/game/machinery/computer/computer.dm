@@ -28,7 +28,7 @@
 
 /obj/machinery/computer/process()
 	if(stat & (NOPOWER|BROKEN))
-		return 0
+		return FALSE
 	return 1
 
 /obj/machinery/computer/emp_act(severity)

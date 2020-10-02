@@ -48,7 +48,7 @@
 			if(slot && slot == slot_shoes)
 				to_chat(user, "You are unable to wear \the [src] as \the [H.shoes] are in the way.")
 			shoes = null
-			return 0
+			return FALSE
 		H.drop_from_inventory(shoes)	//Remove the old shoes so you can put on the magboots.
 		shoes.forceMove(src)
 
@@ -56,7 +56,7 @@
 		if(shoes) 	//Put the old shoes back on if the check fails.
 			if(H.equip_to_slot_if_possible(shoes, slot_shoes))
 				src.shoes = null
-		return 0
+		return FALSE
 
 	if (shoes)
 		if(slot && slot == slot_shoes)

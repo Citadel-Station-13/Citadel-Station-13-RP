@@ -26,7 +26,7 @@
 	for(var/mob/living/carbon/slime/met in view())
 		if(met.Victim == M && met != src)
 			return "The [met.name] is already feeding on this subject..."
-	return 0
+	return FALSE
 
 /mob/living/carbon/slime/proc/Feedon(var/mob/living/M)
 	Victim = M

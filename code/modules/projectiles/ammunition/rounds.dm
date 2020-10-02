@@ -440,7 +440,7 @@
 	desc = "A cap for children toys."
 	caliber = "caps"
 	icon_state = "r-casing"
-	color = "#FF0000"
+	color = COLOR_RED
 	projectile_type = /obj/item/projectile/bullet/pistol/cap
 	matter = list(DEFAULT_WALL_MATERIAL = 85)
 

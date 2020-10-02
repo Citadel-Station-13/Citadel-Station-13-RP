@@ -1,14 +1,14 @@
 // Returns which access is relevant to passed network. Used by the program.
 /proc/get_camera_access(var/network)
 	if(!network)
-		return 0
+		return FALSE
 	. = GLOB.using_map.get_network_access(network)
 	if(.)
 		return
 
 	switch(network)
 		if(NETWORK_THUNDER)
-			return 0
+			return FALSE
 		if(NETWORK_ENGINE,NETWORK_ALARM_ATMOS,NETWORK_ALARM_FIRE,NETWORK_ALARM_POWER)
 			return access_engine
 		if(NETWORK_CIRCUITS)
@@ -122,7 +122,7 @@
 		var/mob/living/silicon/ai/A = user
 		// Only allow non-carded AIs to view because the interaction with the eye gets all wonky otherwise.
 		if(!A.is_in_chassis())
-			return 0
+			return FALSE
 
 		A.eyeobj.setLoc(get_turf(C))
 		A.client.eye = A.eyeobj
@@ -155,7 +155,7 @@
 
 /datum/nano_module/camera_monitor/check_eye(var/mob/user as mob)
 	if(!current_camera)
-		return 0
+		return FALSE
 	var/viewflag = current_camera.check_eye(user)
 	if ( viewflag < 0 ) //camera doesn't work
 		reset_current()

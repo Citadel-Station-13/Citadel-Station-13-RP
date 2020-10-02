@@ -111,7 +111,7 @@
 	else if(istype(W,/obj/item/stack/material))
 		var/obj/item/stack/material/ST = W
 		if(!ST.material.created_window)
-			return 0
+			return FALSE
 
 		var/dir_to_set = 1
 		if(loc == user.loc)
@@ -185,11 +185,11 @@
 /obj/structure/grille/proc/shock(mob/user as mob, prb)
 
 	if(!anchored || destroyed)		// anchored/destroyed grilles are never connected
-		return 0
+		return FALSE
 	if(!prob(prb))
-		return 0
+		return FALSE
 	if(!in_range(src, user))//To prevent TK and mech users from getting shocked
-		return 0
+		return FALSE
 	var/turf/T = get_turf(src)
 	var/obj/structure/cable/C = T.get_cable_node()
 	if(C)
@@ -202,8 +202,8 @@
 			if(user.stunned)
 				return 1
 		else
-			return 0
-	return 0
+			return FALSE
+	return FALSE
 
 /obj/structure/grille/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	if(!destroyed)

@@ -67,7 +67,7 @@
 
 /mob/living/simple_mob/construct/place_spell_in_hand(var/path)
 	if(!path || !ispath(path))
-		return 0
+		return FALSE
 
 	//var/obj/item/spell/S = new path(src)
 	var/obj/item/spell/construct/S = new path(src)
@@ -88,14 +88,14 @@
 				l_spell.on_combine_cast(S, src)
 		else //Welp
 			to_chat(src, "<span class='warning'>You require a free manipulator to use this power.</span>")
-			return 0
+			return FALSE
 
 	if(S.run_checks())
 		put_in_hands(S)
 		return 1
 	else
 		qdel(S)
-		return 0
+		return FALSE
 
 /mob/living/simple_mob/construct/cultify()
 	return
@@ -159,7 +159,7 @@
 	var/image/eye_glow = image(icon,"glow-[icon_state]")
 	eye_glow.plane = PLANE_LIGHTING_ABOVE
 	overlays += eye_glow
-	set_light(2, -2, l_color = "#FFFFFF")
+	set_light(2, -2, l_color = COLOR_WHITE)
 
 /mob/living/simple_mob/construct/proc/remove_glow()
 	overlays.Cut()

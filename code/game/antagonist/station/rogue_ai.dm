@@ -40,7 +40,7 @@ var/datum/antagonist/rogue_ai/malf
 		if(istype(p))
 			p.stop_malf()
 		return 1
-	return 0
+	return FALSE
 
 // Malf setup things have to be here, since game tends to break when it's moved somewhere else. Don't blame me, i didn't design this system.
 /datum/antagonist/rogue_ai/greet(var/datum/mind/player)
@@ -54,7 +54,7 @@ var/datum/antagonist/rogue_ai/malf
 		if(!istype(A))
 			log_world("Non-AI mob designated malf AI! Report this.")
 			to_chat(world, "##ERROR: Non-AI mob designated malf AI! Report this.")
-			return 0
+			return FALSE
 
 		A.setup_for_malf()
 		A.laws = new /datum/ai_laws/nanotrasen/malfunction

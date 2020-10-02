@@ -26,19 +26,19 @@
 		if(access in using_access)
 			return 1
 		else
-			return 0
+			return FALSE
 
 	if(!istype(user))
-		return 0
+		return FALSE
 
 	var/obj/item/card/id/I = user.GetIdCard()
 	if(!I)
-		return 0
+		return FALSE
 
 	if(access in I.access)
 		return 1
 
-	return 0
+	return FALSE
 
 /datum/nano_module/Topic(href, href_list)
 	if(topic_manager && topic_manager.Topic(href, href_list))

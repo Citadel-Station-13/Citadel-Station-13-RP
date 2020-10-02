@@ -55,7 +55,7 @@
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	else
-		return 0 //No accidental bludgeons!
+		return FALSE //No accidental bludgeons!
 
 
 /obj/item/inducer/afterattack(atom/A, mob/living/carbon/user, proximity)

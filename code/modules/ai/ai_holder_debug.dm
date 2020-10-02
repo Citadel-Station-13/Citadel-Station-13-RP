@@ -49,25 +49,25 @@
 	var/new_color = null
 	switch(stance)
 		if(STANCE_SLEEP)
-			new_color = "#FFFFFF" // White
+			new_color = COLOR_WHITE // White
 		if(STANCE_IDLE)
-			new_color = "#00FF00" // Green
+			new_color = COLOR_LIME // Green
 		if(STANCE_ALERT)
-			new_color = "#FFFF00" // Yellow
+			new_color = COLOR_YELLOW // Yellow
 		if(STANCE_APPROACH)
 			new_color = "#FF9933" // Orange
 		if(STANCE_FIGHT)
-			new_color = "#FF0000" // Red
+			new_color = COLOR_RED // Red
 		if(STANCE_MOVE)
-			new_color = "#0000FF" // Blue
+			new_color = COLOR_BLUE // Blue
 		if(STANCE_REPOSITION)
-			new_color = "#FF00FF" // Purple
+			new_color = COLOR_PINK // Purple
 		if(STANCE_FOLLOW)
-			new_color = "#00FFFF" // Cyan
+			new_color = COLOR_CYAN // Cyan
 		if(STANCE_FLEE)
-			new_color = "#666666" // Grey
+			new_color = COLOR_STEEL // Grey
 		if(STANCE_DISABLED)
-			new_color = "#000000" // Black
+			new_color = COLOR_BLACK // Black
 	holder.color = new_color
 
 // Turns on all the debugging stuff.

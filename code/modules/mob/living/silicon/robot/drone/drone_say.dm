@@ -3,7 +3,7 @@
 		if (src.client)
 			if(client.prefs.muted & MUTE_IC)
 				to_chat(src, "You cannot send IC messages (muted).")
-				return 0
+				return FALSE
 
 		message = sanitize(message)
 
@@ -20,7 +20,7 @@
 
 		//Must be concious to speak
 		if (stat)
-			return 0
+			return FALSE
 
 		var/list/listeners = hearers(5,src)
 		listeners |= src

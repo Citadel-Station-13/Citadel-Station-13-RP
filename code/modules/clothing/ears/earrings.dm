@@ -12,7 +12,7 @@
 
 /obj/item/clothing/ears/earring/stud/glass
 	name = "glass stud earrings"
-	color = "#00e1ff"
+	color = COLOR_DEEP_SKY_BLUE
 
 /obj/item/clothing/ears/earring/stud/wood
 	name = "wood stud earrings"
@@ -24,7 +24,7 @@
 
 /obj/item/clothing/ears/earring/stud/steel
 	name = "steel stud earrings"
-	color = "#666666"
+	color = COLOR_STEEL
 
 /obj/item/clothing/ears/earring/stud/silver
 	name = "silver stud earrings"
@@ -47,7 +47,7 @@
 
 /obj/item/clothing/ears/earring/dangle/glass
 	name = "glass dangle earrings"
-	color = "#00e1ff"
+	color = COLOR_DEEP_SKY_BLUE
 
 /obj/item/clothing/ears/earring/dangle/wood
 	name = "wood dangle earrings"
@@ -59,7 +59,7 @@
 
 /obj/item/clothing/ears/earring/dangle/steel
 	name = "steel dangle earrings"
-	color = "#666666"
+	color = COLOR_STEEL
 
 /obj/item/clothing/ears/earring/dangle/silver
 	name = "silver dangle earrings"

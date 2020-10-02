@@ -156,12 +156,12 @@
 */
 		EndOfExpression(end[])
 			if(!curToken)
-				return 1
+				return TRUE
 			if(istype(curToken, /token/symbol) && end.Find(curToken.value))
-				return 1
+				return TRUE
 			if(istype(curToken, /token/end) && end.Find(/token/end))
-				return 1
-			return 0
+				return TRUE
+			return FALSE
 
 /*
 	Proc: ParseExpression

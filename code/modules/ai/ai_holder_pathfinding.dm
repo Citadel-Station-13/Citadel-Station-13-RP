@@ -52,7 +52,7 @@
 				T.overlays |= path_overlay
 	else
 		ai_log("get_path() : Failed to make new path. Exiting.",AI_LOG_DEBUG)
-		return 0
+		return FALSE
 
 	ai_log("get_path() : Exiting.", AI_LOG_DEBUG)
 	return path.len

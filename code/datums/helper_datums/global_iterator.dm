@@ -76,20 +76,20 @@ Data storage vars:
 			last_exec = world.timeofday
 			if(check_for_null && has_null_args())
 				stop()
-				return 0
+				return FALSE
 			result = process(arglist(arg_list))
 			for(var/sleep_time=delay;sleep_time>0;sleep_time--) //uhh, this is ugly. But I see no other way to terminate sleeping proc. Such disgrace.
 				if(!control_switch)
-					return 0
+					return FALSE
 				sleep(1)
-		return 0
+		return FALSE
 
 	proc/start(list/arguments=null)
 		if(active())
 			return
 		if(arguments)
 			if(!set_process_args(arguments))
-				return 0
+				return FALSE
 		if(!state_check()) //the main loop is sleeping, wait for it to terminate.
 			return
 		control_switch = 1
@@ -119,7 +119,7 @@ Data storage vars:
 	proc/has_null_args()
 		if(null in arg_list)
 			return 1
-		return 0
+		return FALSE
 
 
 	proc/set_delay(new_delay)
@@ -127,7 +127,7 @@ Data storage vars:
 			delay = max(1, round(new_delay))
 			return 1
 		else
-			return 0
+			return FALSE
 
 	proc/get_last_exec_time()
 		return (last_exec||0)
@@ -141,7 +141,7 @@ Data storage vars:
 			return 1
 		else
 //			world << "<span class='danger'>Invalid arguments supplied for [src.type], ref = \ref[src]</span>"
-			return 0
+			return FALSE
 
 	proc/toggle_null_checks()
 		check_for_null = !check_for_null

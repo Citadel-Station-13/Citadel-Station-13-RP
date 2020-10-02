@@ -98,7 +98,7 @@
 				if(player.ready)totalPlayersReady++
 
 /mob/new_player/Topic(href, href_list[])
-	if(!client)	return 0
+	if(!client)	return FALSE
 
 	if(href_list["show_preferences"])
 		client.prefs.ShowChoices(src)
@@ -151,7 +151,7 @@
 				observer.verbs -= /mob/observer/dead/verb/toggle_antagHUD	// Poor guys, don't know what they are missing!
 			observer.key = key
 			observer.client?.holder?.update_stealth_ghost()
-			observer.set_respawn_timer(time_till_respawn())	// Will keep their existing time if any, or return 0 and pass 0 into set_respawn_timer which will use the defaults
+			observer.set_respawn_timer(time_till_respawn())	// Will keep their existing time if any, or return FALSE and pass 0 into set_respawn_timer which will use the defaults
 			qdel(src)
 
 			return 1
@@ -173,7 +173,7 @@
 			if (config_legacy.usealienwhitelist)
 				if(!is_alien_whitelisted(src, client.prefs.species))
 					src << alert("You are currently not whitelisted to Play [client.prefs.species].")
-					return 0
+					return FALSE
 */
 		LateChoices()
 
@@ -198,12 +198,12 @@
 /*
 		if(!is_alien_whitelisted(src, GLOB.all_species[client.prefs.species]))
 			src << alert("You are currently not whitelisted to play [client.prefs.species].")
-			return 0
+			return FALSE
 */
 		var/datum/species/S = GLOB.all_species[client.prefs.species]
 		if(!(S.spawn_flags & SPECIES_CAN_JOIN))
 			src << alert("Your current species, [client.prefs.species], is not available for play on the station.")
-			return 0
+			return FALSE
 
 		AttemptLateSpawn(href_list["SelectedJob"],client.prefs.spawnpoint)
 		return
@@ -341,43 +341,43 @@
 	var/timer = GLOB.respawn_timers[ckey]
 	// No timer at all
 	if(!timer)
-		return 0
+		return FALSE
 	// Special case, infinite timer
 	if(timer == -1)
 		return -1
 	// Timer expired
 	if(timer <= world.time)
 		GLOB.respawn_timers -= ckey
-		return 0
+		return FALSE
 	// Timer still going
 	return timer - world.time
 
 /mob/new_player/proc/IsJobAvailable(rank)
 	var/datum/job/job = SSjobs.GetJob(rank)
-	if(!job)	return 0
-	if(!job.is_position_available()) return 0
-	if(jobban_isbanned(src,rank))	return 0
-	if(!job.player_old_enough(src.client))	return 0
-	if(!is_job_whitelisted(src,rank))	return 0
-	if(!job.player_has_enough_pto(src.client)) return 0
+	if(!job)	return FALSE
+	if(!job.is_position_available()) return FALSE
+	if(jobban_isbanned(src,rank))	return FALSE
+	if(!job.player_old_enough(src.client))	return FALSE
+	if(!is_job_whitelisted(src,rank))	return FALSE
+	if(!job.player_has_enough_pto(src.client)) return FALSE
 	return 1
 
 
 /mob/new_player/proc/AttemptLateSpawn(rank, spawning_at)
 	if (src != usr)
-		return 0
+		return FALSE
 	if(SSticker.current_state != GAME_STATE_PLAYING)
 		to_chat(usr, "<font color='red'>The round is either not ready, or has already finished...</font>")
-		return 0
+		return FALSE
 	if(!config_legacy.enter_allowed)
 		to_chat(usr, "<span class='notice'>There is an administrative lock on entering the game!</span>")
-		return 0
+		return FALSE
 	if(!IsJobAvailable(rank))
 		src << alert("[rank] is not available. Please try another.")
-		return 0
-	if(!attempt_vr(src,"spawn_checks_vr",list())) return 0
+		return FALSE
+	if(!attempt_vr(src,"spawn_checks_vr",list())) return FALSE
 	if(!client)
-		return 0
+		return FALSE
 
 	//Find our spawning point.
 	var/list/join_props = SSjobs.LateSpawn(client, rank)
@@ -385,7 +385,7 @@
 	var/join_message = join_props["msg"]
 
 	if(!T || !join_message)
-		return 0
+		return FALSE
 
 	spawning = 1
 	close_spawn_windows()
@@ -486,7 +486,7 @@
 
 /mob/new_player/proc/create_character(var/turf/T)
 	if (!attempt_vr(src,"spawn_checks_vr",list()))
-		return 0
+		return FALSE
 	spawning = 1
 	close_spawn_windows()
 
@@ -566,7 +566,7 @@
 	popup.open()
 
 /mob/new_player/Move()
-	return 0
+	return FALSE
 
 /mob/new_player/proc/close_spawn_windows()
 

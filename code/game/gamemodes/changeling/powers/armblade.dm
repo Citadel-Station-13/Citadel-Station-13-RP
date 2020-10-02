@@ -20,7 +20,7 @@
 	else
 		if(changeling_generic_weapon(/obj/item/melee/changeling/arm_blade))
 			return 1
-		return 0
+		return FALSE
 
 //Claws
 /datum/power/changeling/claw
@@ -45,7 +45,7 @@
 	else
 		if(changeling_generic_weapon(/obj/item/melee/changeling/claw, 1, 15))
 			return 1
-		return 0
+		return FALSE
 
 /obj/item/melee/changeling
 	name = "arm weapon"
@@ -120,15 +120,15 @@
 		playsound(user.loc, 'sound/weapons/slash.ogg', 50, 1)
 		return 1
 
-	return 0
+	return FALSE
 
 /obj/item/melee/changeling/unique_parry_check(mob/user, mob/attacker, atom/damage_source)
 	if(user.incapacitated() || !istype(damage_source, /obj/item/projectile))
-		return 0
+		return FALSE
 
 	var/bad_arc = reverse_direction(user.dir)
 	if(!check_shield_arc(user, bad_arc, damage_source, attacker))
-		return 0
+		return FALSE
 
 	return 1
 

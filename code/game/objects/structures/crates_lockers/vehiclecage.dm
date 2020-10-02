@@ -6,7 +6,7 @@
 	density = 1
 	var/obj/vehicle/my_vehicle
 	var/my_vehicle_type
-	var/paint_color = "#666666"
+	var/paint_color = COLOR_STEEL
 
 /obj/structure/vehiclecage/examine(mob/user)
 	..()

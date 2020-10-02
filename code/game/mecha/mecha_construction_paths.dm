@@ -8,7 +8,7 @@
 		if (W.remove_fuel(0, user))
 			playsound(holder, 'sound/items/Welder2.ogg', 50, 1)
 		else
-			return 0
+			return FALSE
 	else if(I.is_wrench())
 		playsound(holder, 'sound/items/Ratchet.ogg', 50, 1)
 
@@ -24,12 +24,12 @@
 			playsound(holder, 'sound/items/Deconstruct.ogg', 50, 1)
 		else
 			to_chat(user, "There's not enough cable to finish the task.")
-			return 0
+			return FALSE
 	else if(istype(I, /obj/item/stack))
 		var/obj/item/stack/S = I
 		if(S.get_amount() < 5)
 			to_chat(user, "There's not enough material in this stack.")
-			return 0
+			return FALSE
 		else
 			S.use(5)
 	return 1
@@ -40,7 +40,7 @@
 		if (W.remove_fuel(0, user))
 			playsound(holder, 'sound/items/Welder2.ogg', 50, 1)
 		else
-			return 0
+			return FALSE
 	else if(I.is_wrench())
 		playsound(holder, 'sound/items/Ratchet.ogg', 50, 1)
 
@@ -56,12 +56,12 @@
 			playsound(holder, 'sound/items/Deconstruct.ogg', 50, 1)
 		else
 			to_chat(user, "There's not enough cable to finish the task.")
-			return 0
+			return FALSE
 	else if(istype(I, /obj/item/stack))
 		var/obj/item/stack/S = I
 		if(S.get_amount() < 5)
 			to_chat(user, "There's not enough material in this stack.")
-			return 0
+			return FALSE
 		else
 			S.use(5)
 	return 1
@@ -163,7 +163,7 @@
 
 /datum/construction/reversible/mecha/ripley/custom_action(index, diff, obj/item/I, mob/user)
 	if(!..())
-		return 0
+		return FALSE
 
 	//TODO: better messages.
 	switch(index)
@@ -398,7 +398,7 @@
 
 /datum/construction/reversible/mecha/gygax/custom_action(index, diff, obj/item/I, mob/user)
 	if(!..())
-		return 0
+		return FALSE
 
 	//TODO: better messages.
 	switch(index)
@@ -682,7 +682,7 @@
 
 /datum/construction/reversible/mecha/serenity/custom_action(index, diff, obj/item/I, mob/user)
 	if(!..())
-		return 0
+		return FALSE
 
  	//TODO: better messages.
 	switch(index)
@@ -948,7 +948,7 @@
 
 /datum/construction/reversible/mecha/firefighter/custom_action(index, diff, obj/item/I, mob/user)
 	if(!..())
-		return 0
+		return FALSE
 
 	//TODO: better messages.
 	switch(index)
@@ -1193,7 +1193,7 @@
 
 /datum/construction/reversible/mecha/durand/custom_action(index, diff, obj/item/I, mob/user)
 	if(!..())
-		return 0
+		return FALSE
 
 	//TODO: better messages.
 	switch(index)
@@ -1452,7 +1452,7 @@
 
 /datum/construction/reversible/mecha/odysseus/custom_action(index, diff, obj/item/I, mob/user)
 	if(!..())
-		return 0
+		return FALSE
 
 	//TODO: better messages.
 	switch(index)
@@ -1688,7 +1688,7 @@
 
 /datum/construction/reversible/mecha/phazon/custom_action(index, diff, obj/item/I, mob/user)
 	if(!..())
-		return 0
+		return FALSE
 
 	switch(index)
 		if(20)
@@ -1978,7 +1978,7 @@
 
 /datum/construction/reversible/mecha/janus/custom_action(index, diff, obj/item/I, mob/user)
 	if(!..())
-		return 0
+		return FALSE
 
 	switch(index)
 		if(22)

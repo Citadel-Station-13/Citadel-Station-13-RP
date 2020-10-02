@@ -908,7 +908,7 @@
 	set desc = "Give your plushie a cute name!"
 	var/mob/M = usr
 	if(!M.mind)
-		return 0
+		return FALSE
 
 	var/input = sanitizeSafe(input("What do you want to name the plushie?", ,""), MAX_NAME_LEN)
 

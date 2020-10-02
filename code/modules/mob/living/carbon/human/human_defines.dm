@@ -151,7 +151,7 @@
 	var/datum/species/shadekin/SK = species
 
 	if(!istype(SK))
-		return 0
+		return FALSE
 
 	return SK.get_energy(src)
 
@@ -159,7 +159,7 @@
 	var/datum/species/shadekin/SK = species
 
 	if(!istype(SK))
-		return 0
+		return FALSE
 
 	return SK.get_max_energy(src)
 
@@ -167,7 +167,7 @@
 	var/datum/species/shadekin/SK = species
 
 	if(!istype(SK))
-		return 0
+		return FALSE
 
 	SK.set_energy(src, new_energy)
 
@@ -175,7 +175,7 @@
 	var/datum/species/shadekin/SK = species
 
 	if(!istype(SK))
-		return 0
+		return FALSE
 
 	SK.set_max_energy(src, new_max_energy)
 
@@ -183,7 +183,7 @@
 	var/datum/species/shadekin/SK = species
 
 	if(!istype(SK))
-		return 0
+		return FALSE
 
 	if(amount > 0 || !(SK.check_infinite_energy(src)))
 		var/new_amount = SK.get_energy(src) + amount

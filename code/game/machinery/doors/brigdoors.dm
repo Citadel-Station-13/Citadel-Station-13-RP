@@ -99,8 +99,8 @@
 
 // Closes and locks doors, power check
 /obj/machinery/door_timer/proc/timer_start()
-	if(stat & (NOPOWER|BROKEN))	return 0
-	if(!LAZYLEN(targets)) return 0
+	if(stat & (NOPOWER|BROKEN))	return FALSE
+	if(!LAZYLEN(targets)) return FALSE
 
 	// Set releasetime
 	releasetime = world.timeofday + timetoset
@@ -120,8 +120,8 @@
 
 // Opens and unlocks doors, power check
 /obj/machinery/door_timer/proc/timer_end()
-	if(stat & (NOPOWER|BROKEN))	return 0
-	if(!LAZYLEN(targets)) return 0
+	if(stat & (NOPOWER|BROKEN))	return FALSE
+	if(!LAZYLEN(targets)) return FALSE
 
 	// Reset releasetime
 	releasetime = 0

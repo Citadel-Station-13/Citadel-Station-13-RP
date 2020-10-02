@@ -51,7 +51,7 @@ Also includes Life and New
 		stasis--
 		if(stasis < 0)
 			stasis = 0
-		return 0
+		return FALSE
 
 	..()
 	if(!(stat == DEAD))

@@ -501,7 +501,7 @@
 
 //Returns a key corresponding to an entry in the global seed list.
 /datum/seed/proc/get_mutant_variant()
-	if(!mutants || !mutants.len || get_trait(TRAIT_IMMUTABLE) > 0) return 0
+	if(!mutants || !mutants.len || get_trait(TRAIT_IMMUTABLE) > 0) return FALSE
 	return pick(mutants)
 
 //Mutates the plant overall (randomly).
@@ -632,7 +632,7 @@
 //Returns a list of the desired trait values.
 /datum/seed/proc/get_gene(var/genetype)
 
-	if(!genetype) return 0
+	if(!genetype) return FALSE
 
 	var/list/traits_to_copy
 	var/datum/plantgene/P = new()

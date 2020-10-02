@@ -4,7 +4,8 @@
 	icon_state = "taser"
 	item_state = null	//so the human update icon uses the icon_state instead.
 	projectile_type = /obj/item/projectile/beam/stun
-	charge_cost = 480
+	charge_cost = 160
+	fire_delay = 4
 
 /obj/item/gun/energy/taser/mounted
 	name = "mounted taser gun"
@@ -36,7 +37,7 @@
 	item_state = "stunrevolver"
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3, TECH_POWER = 2)
 	projectile_type = /obj/item/projectile/energy/electrode/strong
-	charge_cost = 300
+	charge_cost = 400
 
 /obj/item/gun/energy/crossbow
 	name = "mini energy-crossbow"

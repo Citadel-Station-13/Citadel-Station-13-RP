@@ -33,7 +33,7 @@
 /obj/item/rig_module/stealth_field/activate()
 
 	if(!..())
-		return 0
+		return FALSE
 
 	var/mob/living/carbon/human/H = holder.wearer
 
@@ -47,7 +47,7 @@
 /obj/item/rig_module/stealth_field/deactivate()
 
 	if(!..())
-		return 0
+		return FALSE
 
 	var/mob/living/carbon/human/H = holder.wearer
 
@@ -101,7 +101,7 @@
 
 	if(!istype(H.loc, /turf))
 		to_chat(H, "<span class='warning'>You cannot teleport out of your current location.</span>")
-		return 0
+		return FALSE
 
 	var/turf/T
 	if(target)
@@ -111,25 +111,25 @@
 
 	if(!T)
 		to_chat(H, "<span class='warning'>No valid teleport target found.</span>")
-		return 0
+		return FALSE
 
 	if(T.density)
 		to_chat(H, "<span class='warning'>You cannot teleport into solid walls.</span>")
-		return 0
+		return FALSE
 
 	if(T.z in GLOB.using_map.admin_levels)
 		to_chat(H, "<span class='warning'>You cannot use your teleporter on this Z-level.</span>")
-		return 0
+		return FALSE
 
 	if(T.contains_dense_objects())
 		to_chat(H, "<span class='warning'>You cannot teleport to a location with solid objects.</span>")
-		return 0
+		return FALSE
 
 	if(T.z != H.z || get_dist(T, get_turf(H)) > world.view)
 		to_chat(H, "<span class='warning'>You cannot teleport to such a distant object.</span>")
-		return 0
+		return FALSE
 
-	if(!..()) return 0
+	if(!..()) return FALSE
 
 	phase_out(H,get_turf(H))
 	H.forceMove(T)
@@ -164,7 +164,7 @@
 			setDir(get_dir(src,target))  // Face the target
 			holder.wearer.Beam(target,"n_beam",,10)
 		return 1
-	return 0
+	return FALSE
 
 /obj/item/rig_module/self_destruct
 
@@ -202,7 +202,7 @@
 
 	// Not being worn, leave it alone.
 	if(!holder || !holder.wearer || !holder.wearer.wear_suit == holder)
-		return 0
+		return FALSE
 
 	//OH SHIT.
 	if(holder.wearer.stat == 2)

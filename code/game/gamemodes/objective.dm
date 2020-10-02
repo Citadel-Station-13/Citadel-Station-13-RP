@@ -61,7 +61,7 @@ datum/objective/assassinate
 		if(target && target.current)
 			if(target.current.stat == DEAD || issilicon(target.current) || isbrain(target.current) || target.current.z > 6 || !target.current.ckey) //Borgs/brains/AIs count as dead for traitor objectives. --NeoFite
 				return 1
-			return 0
+			return FALSE
 		return 1
 
 
@@ -89,7 +89,7 @@ datum/objective/anti_revolution/execute
 		if(target && target.current)
 			if(target.current.stat == DEAD || !ishuman(target.current))
 				return 1
-			return 0
+			return FALSE
 		return 1
 
 datum/objective/anti_revolution/brig
@@ -118,12 +118,12 @@ datum/objective/anti_revolution/brig
 
 		if(target && target.current)
 			if(target.current.stat == DEAD)
-				return 0
+				return FALSE
 			if(target.is_brigged(10 * 60 * 10))
 				already_completed = 1
 				return 1
-			return 0
-		return 0
+			return FALSE
+		return FALSE
 
 datum/objective/anti_revolution/demote
 	find_target()
@@ -156,7 +156,7 @@ datum/objective/anti_revolution/demote
 			if(I.assignment == USELESS_JOB) //VOREStation Edit - Visitor not Assistant
 				return 1
 			else
-				return 0
+				return FALSE
 		return 1
 
 datum/objective/debrain//I want braaaainssss
@@ -181,15 +181,15 @@ datum/objective/debrain//I want braaaainssss
 		if(!target)//If it's a free objective.
 			return 1
 		if( !owner.current || owner.current.stat==DEAD )//If you're otherwise dead.
-			return 0
+			return FALSE
 		if( !target.current || !isbrain(target.current) )
-			return 0
+			return FALSE
 		var/atom/A = target.current
 		while(A.loc)			//check to see if the brainmob is on our person
 			A = A.loc
 			if(A == owner.current)
 				return 1
-		return 0
+		return FALSE
 
 
 datum/objective/protect//The opposite of killing a dude.
@@ -215,9 +215,9 @@ datum/objective/protect//The opposite of killing a dude.
 			return 1
 		if(target.current)
 			if(target.current.stat == DEAD || issilicon(target.current) || isbrain(target.current))
-				return 0
+				return FALSE
 			return 1
-		return 0
+		return FALSE
 
 
 datum/objective/hijack
@@ -225,11 +225,11 @@ datum/objective/hijack
 
 	check_completion()
 		if(!owner.current || owner.current.stat)
-			return 0
+			return FALSE
 		if(!SSemergencyshuttle.returned())
-			return 0
+			return FALSE
 		if(issilicon(owner.current))
-			return 0
+			return FALSE
 		var/area/shuttle = locate(/area/shuttle/escape/centcom)
 		var/list/protected_mobs = list(/mob/living/silicon/ai, /mob/living/silicon/pai)
 		for(var/mob/living/player in player_list)
@@ -237,7 +237,7 @@ datum/objective/hijack
 			if (player.mind && (player.mind != owner))
 				if(player.stat != DEAD)			//they're not dead!
 					if(get_turf(player) in shuttle)
-						return 0
+						return FALSE
 		return 1
 
 
@@ -247,11 +247,11 @@ datum/objective/block
 
 	check_completion()
 		if(!istype(owner.current, /mob/living/silicon))
-			return 0
+			return FALSE
 		if(!SSemergencyshuttle.returned())
-			return 0
+			return FALSE
 		if(!owner.current)
-			return 0
+			return FALSE
 		var/area/shuttle = locate(/area/shuttle/escape/centcom)
 		var/protected_mobs[] = list(/mob/living/silicon/ai, /mob/living/silicon/pai, /mob/living/silicon/robot)
 		for(var/mob/living/player in player_list)
@@ -259,7 +259,7 @@ datum/objective/block
 			if (player.mind)
 				if (player.stat != 2)
 					if (get_turf(player) in shuttle)
-						return 0
+						return FALSE
 		return 1
 
 datum/objective/silence
@@ -267,7 +267,7 @@ datum/objective/silence
 
 	check_completion()
 		if(!SSemergencyshuttle.returned())
-			return 0
+			return FALSE
 
 		for(var/mob/living/player in player_list)
 			if(player == owner.current)
@@ -278,7 +278,7 @@ datum/objective/silence
 					if(!T)	continue
 					switch(T.loc.type)
 						if(/area/shuttle/escape/centcom, /area/shuttle/escape_pod1/centcom, /area/shuttle/escape_pod2/centcom, /area/shuttle/escape_pod3/centcom, /area/shuttle/escape_pod5/centcom)
-							return 0
+							return FALSE
 		return 1
 
 
@@ -288,23 +288,23 @@ datum/objective/escape
 
 	check_completion()
 		if(issilicon(owner.current))
-			return 0
+			return FALSE
 		if(isbrain(owner.current))
-			return 0
+			return FALSE
 		if(!SSemergencyshuttle.returned())
-			return 0
+			return FALSE
 		if(!owner.current || owner.current.stat ==2)
-			return 0
+			return FALSE
 		var/turf/location = get_turf(owner.current.loc)
 		if(!location)
-			return 0
+			return FALSE
 
 		if(istype(location, /turf/simulated/shuttle/floor4)) // Fails traitors if they are in the shuttle brig -- Polymorph
 			if(istype(owner.current, /mob/living/carbon))
 				var/mob/living/carbon/C = owner.current
 				if (!C.handcuffed)
 					return 1
-			return 0
+			return FALSE
 
 		var/area/check_area = location.loc
 		if(istype(check_area, /area/shuttle/escape/centcom))
@@ -318,7 +318,7 @@ datum/objective/escape
 		if(istype(check_area, /area/shuttle/escape_pod5/centcom))
 			return 1
 		else
-			return 0
+			return FALSE
 
 
 
@@ -327,9 +327,9 @@ datum/objective/survive
 
 	check_completion()
 		if(!owner.current || owner.current.stat == DEAD || isbrain(owner.current))
-			return 0		//Brains no longer win survive objectives. --NEO
+			return FALSE		//Brains no longer win survive objectives. --NEO
 		if(issilicon(owner.current) && owner.current != owner.original)
-			return 0
+			return FALSE
 		return 1
 
 // Similar to the anti-rev objective, but for traitors
@@ -359,13 +359,13 @@ datum/objective/brig
 
 		if(target && target.current)
 			if(target.current.stat == DEAD)
-				return 0
+				return FALSE
 			// Make the actual required time a bit shorter than the official time
 			if(target.is_brigged(10 * 60 * 5))
 				already_completed = 1
 				return 1
-			return 0
-		return 0
+			return FALSE
+		return FALSE
 
 // Harm a crew member, making an example of them
 datum/objective/harm
@@ -394,7 +394,7 @@ datum/objective/harm
 
 		if(target && target.current && istype(target.current, /mob/living/carbon/human))
 			if(target.current.stat == DEAD)
-				return 0
+				return FALSE
 
 			var/mob/living/carbon/human/H = target.current
 			for(var/obj/item/organ/external/E in H.organs)
@@ -414,7 +414,7 @@ datum/objective/harm
 			var/obj/item/organ/external/head/head = H.get_organ(BP_HEAD)
 			if(head.disfigured)
 				return 1
-		return 0
+		return FALSE
 
 
 datum/objective/nuclear
@@ -494,8 +494,8 @@ datum/objective/steal
 		return steal_target
 
 	check_completion()
-		if(!steal_target || !owner.current)	return 0
-		if(!isliving(owner.current))	return 0
+		if(!steal_target || !owner.current)	return FALSE
+		if(!isliving(owner.current))	return FALSE
 		var/list/all_items = owner.current.get_contents()
 		switch (target_name)
 			if("28 moles of phoron (full tank)","10 diamonds","50 gold bars","25 refined uranium bars")
@@ -543,7 +543,7 @@ datum/objective/steal
 				for(var/obj/I in all_items) //Check for items
 					if(istype(I, steal_target))
 						return 1
-		return 0
+		return FALSE
 
 
 
@@ -556,9 +556,9 @@ datum/objective/download
 
 	check_completion()
 		if(!ishuman(owner.current))
-			return 0
+			return FALSE
 		if(!owner.current || owner.current.stat == 2)
-			return 0
+			return FALSE
 
 		var/current_amount
 		var/obj/item/rig/S
@@ -567,11 +567,11 @@ datum/objective/download
 			S = H.back
 
 		if(!istype(S) || !S.installed_modules || !S.installed_modules.len)
-			return 0
+			return FALSE
 
 		var/obj/item/rig_module/datajack/stolen_data = locate() in S.installed_modules
 		if(!istype(stolen_data))
-			return 0
+			return FALSE
 
 		for(var/datum/tech/current_data in stolen_data.stored_research)
 			if(current_data.level > 1)
@@ -605,7 +605,7 @@ datum/objective/capture
 
 
 		if(captured_amount<target_amount)
-			return 0
+			return FALSE
 		return 1
 
 
@@ -631,7 +631,7 @@ datum/objective/capture
 		if(owner && owner.changeling && owner.changeling.absorbed_dna && (owner.changeling.absorbedcount >= target_amount))
 			return 1
 		else
-			return 0
+			return FALSE
 
 // Heist objectives.
 datum/objective/heist
@@ -666,16 +666,16 @@ datum/objective/heist/kidnap
 	check_completion()
 		if(target && target.current)
 			if (target.current.stat == 2)
-				return 0 // They're dead. Fail.
+				return FALSE // They're dead. Fail.
 			//if (!target.current.restrained())
-			//	return 0 // They're loose. Close but no cigar.
+			//	return FALSE // They're loose. Close but no cigar.
 
 			var/area/skipjack_station/start/A = locate()
 			for(var/mob/living/carbon/human/M in A)
 				if(target.current == M)
 					return 1 //They're restrained on the shuttle. Success.
 		else
-			return 0
+			return FALSE
 
 datum/objective/heist/loot
 
@@ -733,7 +733,7 @@ datum/objective/heist/loot
 					if(istype(O,target)) total_amount++
 					if(total_amount >= target_amount) return 1
 
-		return 0
+		return FALSE
 
 datum/objective/heist/salvage
 
@@ -792,7 +792,7 @@ datum/objective/heist/salvage
 							total_amount += S.get_amount()
 
 		if(total_amount >= target_amount) return 1
-		return 0
+		return FALSE
 
 
 /datum/objective/heist/preserve_crew
@@ -800,7 +800,7 @@ datum/objective/heist/salvage
 
 	check_completion()
 		if(raiders && raiders.is_raider_crew_safe()) return 1
-		return 0
+		return FALSE
 
 //Borer objective(s).
 /datum/objective/borer_survive
@@ -810,7 +810,7 @@ datum/objective/heist/salvage
 	if(owner)
 		var/mob/living/simple_mob/animal/borer/B = owner
 		if(istype(B) && B.stat < 2 && B.host && B.host.stat < 2) return 1
-	return 0
+	return FALSE
 
 /datum/objective/borer_reproduce
 	explanation_text = "Reproduce at least once."
@@ -819,7 +819,7 @@ datum/objective/heist/salvage
 	if(owner && owner.current)
 		var/mob/living/simple_mob/animal/borer/B = owner.current
 		if(istype(B) && B.has_reproduced) return 1
-	return 0
+	return FALSE
 
 /datum/objective/ninja_highlander
 	explanation_text = "You aspire to be a Grand Master of the Spider Clan. Kill all of your fellow acolytes."
@@ -828,9 +828,9 @@ datum/objective/heist/salvage
 	if(owner)
 		for(var/datum/mind/ninja in get_antags("ninja"))
 			if(ninja != owner)
-				if(ninja.current.stat < 2) return 0
+				if(ninja.current.stat < 2) return FALSE
 		return 1
-	return 0
+	return FALSE
 
 /datum/objective/cult/survive
 	explanation_text = "Our knowledge must live on."
@@ -843,14 +843,14 @@ datum/objective/heist/salvage
 /datum/objective/cult/survive/check_completion()
 	var/acolytes_survived = 0
 	if(!cult)
-		return 0
+		return FALSE
 	for(var/datum/mind/cult_mind in cult.current_antagonists)
 		if (cult_mind.current && cult_mind.current.stat!=2)
 			var/area/A = get_area(cult_mind.current )
 			if ( is_type_in_list(A, centcom_areas))
 				acolytes_survived++
 	if(acolytes_survived >= target_amount)
-		return 0
+		return FALSE
 	else
 		return 1
 
@@ -907,6 +907,6 @@ datum/objective/heist/salvage
 		var/turf/T = get_turf(H)
 		if(T && isNotStationLevel(T.z))			//If they leave the station they count as dead for this
 			rval = 2
-		return 0
+		return FALSE
 	return rval
 

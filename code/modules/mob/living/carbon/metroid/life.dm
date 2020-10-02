@@ -517,11 +517,11 @@
 
 /mob/living/carbon/slime/proc/will_hunt(var/hunger) // Check for being stopped from feeding and chasing
 	if (hunger == 2 || rabid || attacked) return 1
-	if (Leader) return 0
-	if (holding_still) return 0
+	if (Leader) return FALSE
+	if (holding_still) return FALSE
 	if (hunger == 1 || prob(25))
 		return 1
-	return 0
+	return FALSE
 
 /mob/living/carbon/slime/slip() //Can't slip something without legs.
-	return 0
+	return FALSE

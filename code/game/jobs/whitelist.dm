@@ -18,7 +18,7 @@ var/list/job_whitelist = list()
 
 /proc/check_whitelist(mob/M /*, var/rank*/)
 	if(!whitelist)
-		return 0
+		return FALSE
 	return ("[M.ckey]" in whitelist)
 
 /var/list/alien_whitelist = list()
@@ -42,7 +42,7 @@ var/list/job_whitelist = list()
 
 	//You did something wrong
 	if(!M || !species)
-		return 0
+		return FALSE
 
 	//The species isn't even whitelisted
 	if(!(species.spawn_flags & SPECIES_IS_WHITELISTED))
@@ -63,7 +63,7 @@ var/list/job_whitelist = list()
 
 	//You did something wrong
 	if(!M || !language)
-		return 0
+		return FALSE
 
 	//The language isn't even whitelisted
 	if(!(language.flags & WHITELISTED))
@@ -83,7 +83,7 @@ var/list/job_whitelist = list()
 	if(check_rights(R_ADMIN, 0, M))
 		return 1
 
-	return 0
+	return FALSE
 
 
 /proc/load_jobwhitelist()
@@ -102,13 +102,13 @@ var/list/job_whitelist = list()
 	if(check_rights(R_ADMIN, 0))
 		return 1
 	if(!job_whitelist)
-		return 0
+		return FALSE
 	if(M && rank)
 		for (var/s in job_whitelist)
 			if(findtext(s,"[lowertext(M.ckey)] - [lowertext(rank)]"))
 				return 1
 			if(findtext(s,"[M.ckey] - All"))
 				return 1
-	return 0
+	return FALSE
 
 #undef WHITELISTFILE

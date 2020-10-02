@@ -35,7 +35,7 @@
 	if(standard_feed_mob(user, M))
 		return
 
-	return 0
+	return FALSE
 
 /obj/item/reagent_containers/food/drinks/afterattack(obj/target, mob/user, proximity)
 	if(!proximity) return

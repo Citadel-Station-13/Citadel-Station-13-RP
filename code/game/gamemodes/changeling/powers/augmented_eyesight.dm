@@ -16,7 +16,7 @@
 
 	var/datum/changeling/changeling = changeling_power(5,0,100,CONSCIOUS)
 	if(!changeling)
-		return 0
+		return FALSE
 	src.mind.changeling.chem_charges -= 5
 	src.sight |= SEE_MOBS
 	/*

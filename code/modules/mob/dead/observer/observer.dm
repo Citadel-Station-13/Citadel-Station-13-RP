@@ -161,7 +161,7 @@ Works together with spawning an observer, noted above.
 /mob/observer/dead/Life()
 	..()
 	if(!loc) return
-	if(!client) return 0
+	if(!client) return FALSE
 
 	handle_regular_hud_updates()
 	handle_vision()
@@ -172,7 +172,7 @@ Works together with spawning an observer, noted above.
 			var/mob/living/carbon/human/H = src
 			if(H.vr_holder && !can_reenter_corpse)
 				H.exit_vr()
-				return 0
+				return FALSE
 		var/mob/observer/dead/ghost = new(src)	//Transfer safety to observer spawning proc.
 		ghost.can_reenter_corpse = can_reenter_corpse
 		ghost.timeofdeath = src.timeofdeath //BS12 EDIT
@@ -225,8 +225,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			ghost.set_respawn_timer()
 			announce_ghost_joinleave(ghost)
 
-/mob/observer/dead/can_use_hands()	return 0
-/mob/observer/dead/is_active()		return 0
+/mob/observer/dead/can_use_hands()	return FALSE
+/mob/observer/dead/is_active()		return FALSE
 
 /mob/observer/dead/Stat()
 	..()
@@ -493,7 +493,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	if (usr != src)
-		return 0 //something is terribly wrong
+		return FALSE //something is terribly wrong
 
 	var/ghosts_can_write
 	if(SSticker.mode.name == "cult")
@@ -555,7 +555,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 /mob/observer/dead/pointed(atom/A as mob|obj|turf in view())
 	if(!..())
-		return 0
+		return FALSE
 	usr.visible_message("<span class='deadsay'><b>[src]</b> points to [A]</span>")
 	return 1
 
@@ -653,15 +653,15 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 mob/observer/dead/MayRespawn(var/feedback = 0)
 	if(!client)
-		return 0
+		return FALSE
 	if(mind && mind.current && mind.current.stat != DEAD && can_reenter_corpse)
 		if(feedback)
 			to_chat(src, "<span class='warning'>Your non-dead body prevent you from respawning.</span>")
-		return 0
+		return FALSE
 	if(config_legacy.antag_hud_restricted && has_enabled_antagHUD == 1)
 		if(feedback)
 			to_chat(src, "<span class='warning'>antagHUD restrictions prevent you from respawning.</span>")
-		return 0
+		return FALSE
 	return 1
 
 /atom/proc/extra_ghost_link()
@@ -692,7 +692,7 @@ mob/observer/dead/MayRespawn(var/feedback = 0)
 			options += Ms
 		var/mob/living/M = input(src, "Select who to whisper to:", "Whisper to?", null) as null|mob in options
 		if(!M)
-			return 0
+			return FALSE
 		var/msg = sanitize(input(src, "Message:", "Spectral Whisper") as text|null)
 		if(msg)
 			log_say("(SPECWHISP to [key_name(M)]): [msg]", src)

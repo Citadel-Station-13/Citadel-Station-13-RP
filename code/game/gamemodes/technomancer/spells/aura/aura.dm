@@ -4,7 +4,7 @@
 	icon_state = "generic"
 	cast_methods = null
 	aspect = null
-	var/glow_color = "#FFFFFF"
+	var/glow_color = COLOR_WHITE
 
 /obj/item/spell/aura/New()
 	..()

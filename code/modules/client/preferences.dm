@@ -25,7 +25,7 @@ datum/preferences
 	var/ooccolor = "#010000"			//Whatever this is set to acts as 'reset' color and is thus unusable as an actual custom color
 	var/be_special = 0					//Special role selection
 	var/UI_style = "Midnight"
-	var/UI_style_color = "#ffffff"
+	var/UI_style_color = COLOR_WHITE
 	var/UI_style_alpha = 255
 	var/tooltipstyle = "Midnight"		//Style for popup tooltips
 	var/client_fps = 0
@@ -286,7 +286,7 @@ datum/preferences
 		close_load_dialog(usr)
 	else if(href_list["resetslot"])
 		if("No" == alert("This will reset the current slot. Continue?", "Reset current slot?", "No", "Yes"))
-			return 0
+			return FALSE
 		load_character(SAVE_RESET)
 		sanitize_preferences()
 	else if(href_list["copy"])
@@ -298,7 +298,7 @@ datum/preferences
 		sanitize_preferences()
 		close_load_dialog(usr)
 	else
-		return 0
+		return FALSE
 
 	ShowChoices(usr)
 	return 1

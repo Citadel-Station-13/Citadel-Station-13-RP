@@ -101,7 +101,7 @@
 							   "<span class='warning'>You accidentally trigger [src]!</span>")
 		triggered(finder, finder.hand ? "l_hand" : "r_hand")
 		return 1	//end the search!
-	return 0
+	return FALSE
 
 
 /obj/item/assembly/mousetrap/hitby(A as mob|obj)

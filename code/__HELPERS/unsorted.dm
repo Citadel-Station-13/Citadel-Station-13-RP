@@ -38,7 +38,7 @@
 	return text("#[][][]", textr, textg, textb)
 
 /proc/Get_Angle(atom/movable/start,atom/movable/end)//For beams.
-	if(!start || !end) return 0
+	if(!start || !end) return FALSE
 	var/dy
 	var/dx
 	dy=(32*end.y+end.pixel_y)-(32*start.y+start.pixel_y)
@@ -147,41 +147,41 @@ Turf and target are seperate in case you want to teleport some distance from a t
 
 
 /proc/LinkBlocked(turf/A, turf/B)
-	if(A == null || B == null) return 1
+	if(A == null || B == null) return TRUE
 	var/adir = get_dir(A,B)
 	var/rdir = get_dir(B,A)
 	if((adir & (NORTH|SOUTH)) && (adir & (EAST|WEST)))	//	diagonal
 		var/iStep = get_step(A,adir&(NORTH|SOUTH))
-		if(!LinkBlocked(A,iStep) && !LinkBlocked(iStep,B)) return 0
+		if(!LinkBlocked(A,iStep) && !LinkBlocked(iStep,B)) return FALSE
 
 		var/pStep = get_step(A,adir&(EAST|WEST))
-		if(!LinkBlocked(A,pStep) && !LinkBlocked(pStep,B)) return 0
-		return 1
+		if(!LinkBlocked(A,pStep) && !LinkBlocked(pStep,B)) return FALSE
+		return TRUE
 
-	if(DirBlocked(A,adir)) return 1
-	if(DirBlocked(B,rdir)) return 1
-	return 0
+	if(DirBlocked(A,adir)) return TRUE
+	if(DirBlocked(B,rdir)) return TRUE
+	return FALSE
 
 
 /proc/DirBlocked(turf/loc,var/dir)
 	for(var/obj/structure/window/D in loc)
 		if(!D.density)			continue
-		if(D.dir == SOUTHWEST)	return 1
-		if(D.dir == dir)		return 1
+		if(D.dir == SOUTHWEST)	return TRUE
+		if(D.dir == dir)		return TRUE
 
 	for(var/obj/machinery/door/D in loc)
 		if(!D.density)			continue
 		if(istype(D, /obj/machinery/door/window))
-			if((dir & SOUTH) && (D.dir & (EAST|WEST)))		return 1
-			if((dir & EAST ) && (D.dir & (NORTH|SOUTH)))	return 1
-		else return 1	// it's a real, air blocking door
-	return 0
+			if((dir & SOUTH) && (D.dir & (EAST|WEST)))		return TRUE
+			if((dir & EAST ) && (D.dir & (NORTH|SOUTH)))	return TRUE
+		else return TRUE	// it's a real, air blocking door
+	return FALSE
 
 /proc/TurfBlockedNonWindow(turf/loc)
 	for(var/obj/O in loc)
 		if(O.density && !istype(O, /obj/structure/window))
-			return 1
-	return 0
+			return TRUE
+	return FALSE
 
 /proc/sign(x)
 	return x!=0?x/abs(x):0
@@ -247,7 +247,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 //Returns whether or not a player is a guest using their ckey as an input
 /proc/IsGuestKey(key)
 	if (findtext(key, "Guest-", 1, 7) != 1) //was findtextEx
-		return 0
+		return FALSE
 
 	var/i = 7, ch, len = length(key)
 
@@ -257,8 +257,8 @@ Turf and target are seperate in case you want to teleport some distance from a t
 	for (, i <= len, ++i)
 		ch = text2ascii(key, i)
 		if (ch < 48 || ch > 57)
-			return 0
-	return 1
+			return FALSE
+	return TRUE
 
 //Ensure the frequency is within bounds of what it should be sending/recieving at
 /proc/sanitize_frequency(var/f, var/low = PUBLIC_LOW_FREQ, var/high = PUBLIC_HIGH_FREQ)
@@ -278,7 +278,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 //This will update a mob's name, real_name, mind.name, data_core records, pda and id
 //Calling this proc without an oldname will only update the mob and skip updating the pda, id and records ~Carn
 /mob/proc/fully_replace_character_name(var/oldname,var/newname)
-	if(!newname)	return 0
+	if(!newname)	return FALSE
 	real_name = newname
 	name = newname
 	if(mind)
@@ -315,7 +315,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 					PDA.name = "PDA-[newname] ([PDA.ownjob])"
 					if(!search_id)	break
 					search_pda = 0
-	return 1
+	return TRUE
 
 
 
@@ -529,7 +529,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 
 	var/turf/target = locate(A.x, A.y, A.z)
 	if(!A || !target)
-		return 0
+		return FALSE
 		//since NORTHEAST == NORTH & EAST, etc, doing it this way allows for diagonal mass drivers in the future
 		//and isn't really any more complicated
 
@@ -608,17 +608,17 @@ proc/GaussRandRound(var/sigma,var/roundto)
 	var/steps = 0
 
 	if(!current || !target_turf)
-		return 0
+		return FALSE
 
 	while(current != target_turf)
-		if(steps > length) return 0
-		if(current.opacity) return 0
+		if(steps > length) return FALSE
+		if(current.opacity) return FALSE
 		for(var/atom/A in current)
-			if(A.opacity) return 0
+			if(A.opacity) return FALSE
 		current = get_step_towards(current, target_turf)
 		steps++
 
-	return 1
+	return TRUE
 
 /proc/is_blocked_turf(var/turf/T)
 	var/cant_pass = 0
@@ -659,8 +659,8 @@ proc/GaussRandRound(var/sigma,var/roundto)
 //Takes: Anything that could possibly have variables and a varname to check.
 //Returns: 1 if found, 0 if not.
 /proc/hasvar(var/datum/A, var/varname)
-	if(A.vars.Find(lowertext(varname))) return 1
-	else return 0
+	if(A.vars.Find(lowertext(varname))) return TRUE
+	else return FALSE
 
 //Returns: all the areas in the world
 /proc/return_areas()
@@ -730,7 +730,7 @@ proc/GaussRandRound(var/sigma,var/roundto)
 	//       Movement based on lower left corner. Tiles that do not fit
 	//		 into the new area will not be moved.
 
-	if(!A || !src) return 0
+	if(!A || !src) return FALSE
 
 	var/list/turfs_src = get_area_turfs(src.type)
 	var/list/turfs_trg = get_area_turfs(A.type)
@@ -876,7 +876,7 @@ proc/DuplicateObject(obj/original, var/perfectcopy = 0 , var/sameloc = 0)
 
 	// Does *not* affect gases etc; copied turfs will be changed via ChangeTurf, and the dir, icon, and icon_state copied. All other vars will remain default.
 
-	if(!A || !src) return 0
+	if(!A || !src) return FALSE
 
 	var/list/turfs_src = get_area_turfs(src.type)
 	var/list/turfs_trg = get_area_turfs(A.type)
@@ -1067,8 +1067,8 @@ var/global/list/common_tools = list(
 
 /proc/istool(O)
 	if(O && is_type_in_list(O, common_tools))
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 
 /proc/is_wire_tool(obj/item/I)
@@ -1085,28 +1085,28 @@ proc/is_hot(obj/item/W as obj)
 			if(WT.isOn())
 				return 3800
 			else
-				return 0
+				return FALSE
 		if(/obj/item/flame/lighter)
 			if(W:lit)
 				return 1500
 			else
-				return 0
+				return FALSE
 		if(/obj/item/flame/match)
 			if(W:lit)
 				return 1000
 			else
-				return 0
+				return FALSE
 		if(/obj/item/clothing/mask/smokable/cigarette)
 			if(W:lit)
 				return 1000
 			else
-				return 0
+				return FALSE
 		if(/obj/item/pickaxe/plasmacutter)
 			return 3800
 		if(/obj/item/melee/energy)
 			return 3500
 		else
-			return 0
+			return FALSE
 
 //Whether or not the given item counts as sharp in terms of dealing damage
 /proc/is_sharp(obj/O as obj)
@@ -1207,22 +1207,22 @@ var/list/WALLITEMS = list(
 			if(istype(O, item))
 				//Direction works sometimes
 				if(O.dir == dir)
-					return 1
+					return TRUE
 
 				//Some stuff doesn't use dir properly, so we need to check pixel instead
 				switch(dir)
 					if(SOUTH)
 						if(O.pixel_y > 10)
-							return 1
+							return TRUE
 					if(NORTH)
 						if(O.pixel_y < -10)
-							return 1
+							return TRUE
 					if(WEST)
 						if(O.pixel_x > 10)
-							return 1
+							return TRUE
 					if(EAST)
 						if(O.pixel_x < -10)
-							return 1
+							return TRUE
 
 
 	//Some stuff is placed directly on the wallturf (signs)
@@ -1230,8 +1230,8 @@ var/list/WALLITEMS = list(
 		for(var/item in WALLITEMS)
 			if(istype(O, item))
 				if(O.pixel_x == 0 && O.pixel_y == 0)
-					return 1
-	return 0
+					return TRUE
+	return FALSE
 
 /proc/format_text(text)
 	return replacetext(replacetext(text,"\proper ",""),"\improper ","")
@@ -1473,7 +1473,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	return list(part1, part2, part3)
 
 //Sender is optional
-/proc/admin_chat_message(var/message = "Debug Message", var/color = "#FFFFFF", var/sender)
+/proc/admin_chat_message(var/message = "Debug Message", var/color = COLOR_WHITE, var/sender)
 	if(message)
 		world.TgsTargetedChatBroadcast(message, TRUE)
 	if (!config_legacy.chat_webhook_url || !message)

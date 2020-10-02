@@ -8,7 +8,7 @@ proc/findNullRod(var/atom/target)
 		for(var/atom/A in target.contents)
 			if(findNullRod(A))
 				return 1
-	return 0
+	return FALSE
 
 /spell/aoe_turf/conjure/construct
 	name = "Artificer"
@@ -458,7 +458,7 @@ proc/findNullRod(var/atom/target)
 		if((iscultist(owner) || istype(owner, /mob/living/simple_mob/construct)) && (world.time >= (last_castcheck + cooldown))) //Are they a cultist or a construct, and has the cooldown time passed?
 			last_castcheck = world.time
 			return 1
-	return 0
+	return FALSE
 
 /obj/item/spell/construct/pay_energy(var/amount)
 	if(owner)
@@ -466,7 +466,7 @@ proc/findNullRod(var/atom/target)
 			return 1
 		if(iscultist(owner) && pay_blood(amount))
 			return 1
-	return 0
+	return FALSE
 
 /obj/item/spell/construct/proc/pay_blood(var/amount) //If, for some reason, this is put into the hands of a cultist, by a talisnam or whatever.
 	if(ishuman(owner))
@@ -475,7 +475,7 @@ proc/findNullRod(var/atom/target)
 			return 1
 		if(H.vessel.remove_reagent("blood", amount))
 			return 1
-	return 0
+	return FALSE
 
 /obj/item/spell/construct/afterattack(atom/target, mob/user, proximity_flag, click_parameters) //Not overriding it caused runtimes, because cooldown checked for core.
 	if(!run_checks())
@@ -517,7 +517,7 @@ proc/findNullRod(var/atom/target)
 		if(fire_sound)
 			playsound(get_turf(src), fire_sound, 75, 1)
 		return 1
-	return 0
+	return FALSE
 
 /obj/item/spell/construct/projectile/proc/make_projectile(obj/item/projectile/projectile_type, mob/living/user)
 	var/obj/item/projectile/P = new projectile_type(get_turf(user))
@@ -575,7 +575,7 @@ proc/findNullRod(var/atom/target)
 	armor_penetration = 60
 	light_range = 2
 	light_power = -2
-	light_color = "#FFFFFF"
+	light_color = COLOR_WHITE
 
 	muzzle_type = /obj/effect/projectile/muzzle/inversion
 	tracer_type = /obj/effect/projectile/tracer/inversion
@@ -606,7 +606,7 @@ proc/findNullRod(var/atom/target)
 	time_to_die = null
 	light_range = 4
 	light_power = 5
-	light_color = "#FF0000"
+	light_color = COLOR_RED
 	pulses_remaining = 10
 	pulse_delay = 1 SECOND
 

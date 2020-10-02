@@ -594,7 +594,7 @@
 			return held_item
 
 	to_chat(src, "<font color='red'>There is nothing of interest to take.</font>")
-	return 0
+	return FALSE
 
 /mob/living/simple_mob/parrot/proc/steal_from_mob()
 	set name = "Steal from mob"
@@ -625,7 +625,7 @@
 			return held_item
 
 	to_chat(src, "<font color='red'>There is nothing of interest to take.</font>")
-	return 0
+	return FALSE
 
 /mob/living/simple_mob/parrot/verb/drop_held_item_player()
 	set name = "Drop held item"
@@ -649,7 +649,7 @@
 
 	if(!held_item)
 		to_chat(usr, "<font color='red'>You have nothing to drop!</font>")
-		return 0
+		return FALSE
 
 	if(!drop_gently)
 		if(istype(held_item, /obj/item/grenade))
@@ -760,7 +760,7 @@
 		parrot_sleep_dur = parrot_sleep_max //Reset it's sleep timer if it was perched
 
 	if(!success)
-		return 0
+		return FALSE
 
 	parrot_interest = user
 	parrot_state = PARROT_SWOOP | PARROT_ATTACK //Attack other animals regardless

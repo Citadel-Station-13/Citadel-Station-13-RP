@@ -193,10 +193,10 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 
 /mob/living/carbon/human/proc/remove_blood(var/amt)
 	if(!should_have_organ(O_HEART)) //TODO: Make drips come from the reagents instead.
-		return 0
+		return FALSE
 
 	if(!amt)
-		return 0
+		return FALSE
 
 	if(amt > vessel.get_reagent_amount("blood"))
 		amt = vessel.get_reagent_amount("blood") - 1	// Bit of a safety net; it's impossible to add blood if there's not blood already in the vessel.
@@ -297,7 +297,7 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 	return res
 
 proc/blood_incompatible(donor,receiver,donor_species,receiver_species)
-	if(!donor || !receiver) return 0
+	if(!donor || !receiver) return FALSE
 
 	if(donor_species && receiver_species)
 		if(donor_species != receiver_species)
@@ -317,7 +317,7 @@ proc/blood_incompatible(donor,receiver,donor_species,receiver_species)
 		if("O")
 			if(donor_antigen != "O") return 1
 		//AB is a universal receiver.
-	return 0
+	return FALSE
 
 proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large)
 

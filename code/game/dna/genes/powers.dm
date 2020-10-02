@@ -134,7 +134,7 @@
 	can_activate(var/mob/M,var/flags)
 		// Can't be big and small.
 		if(HULK in M.mutations)
-			return 0
+			return FALSE
 		return ..(M,flags)
 
 	activate(var/mob/M, var/connected, var/flags)
@@ -156,7 +156,7 @@
 	can_activate(var/mob/M,var/flags)
 		// Can't be big and small.
 		if(mSmallsize in M.mutations)
-			return 0
+			return FALSE
 		return ..(M,flags)
 
 	OnDrawUnderlays(var/mob/M,var/g,var/fat)

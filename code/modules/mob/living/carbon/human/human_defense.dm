@@ -22,7 +22,7 @@ emp_act
 		if(shield_check < 0) // The shield did something weird and the bullet needs to keep doing things (e.g. it was reflected).
 			return shield_check // Likely equal to PROJECTILE_FORCE_MISS or PROJECTILE_CONTINUE.
 		else // Otherwise we blocked normally and stopped all the damage.
-			return 0
+			return FALSE
 
 	if(!P.nodamage)
 		organ.add_autopsy_data("[P.name]", P.damage)
@@ -168,7 +168,7 @@ emp_act
 //this proc returns the armour value for a particular external organ.
 /mob/living/carbon/human/proc/getarmor_organ(var/obj/item/organ/external/def_zone, var/type)
 	if(!type || !def_zone)
-		return 0
+		return FALSE
 	var/protection = 0
 	var/list/protective_gear = def_zone.get_covering_clothing()
 	for(var/obj/item/clothing/gear in protective_gear)
@@ -177,7 +177,7 @@ emp_act
 
 /mob/living/carbon/human/proc/getsoak_organ(var/obj/item/organ/external/def_zone, var/type)
 	if(!type || !def_zone)
-		return 0
+		return FALSE
 	var/soaked = 0
 	var/list/protective_gear = def_zone.get_covering_clothing()
 	for(var/obj/item/clothing/gear in protective_gear)
@@ -190,7 +190,7 @@ emp_act
 	var/list/body_parts = H.get_covering_clothing(EYES)
 	if(LAZYLEN(body_parts))
 		return 1
-	return 0
+	return FALSE
 
 //Used to check if they can be fed food/drinks/pills
 /mob/living/carbon/human/proc/check_mouth_coverage()
@@ -214,7 +214,7 @@ emp_act
 		if(!shield) continue
 		. = shield.handle_shield(src, damage, damage_source, attacker, def_zone, attack_text)
 		if(.) return
-	return 0
+	return FALSE
 
 /mob/living/carbon/human/resolve_item_attack(obj/item/I, mob/living/user, var/target_zone)
 	if(check_neckgrab_attack(I, user, target_zone))
@@ -259,7 +259,7 @@ emp_act
 /mob/living/carbon/human/standard_weapon_hit_effects(obj/item/I, mob/living/user, var/effective_force, var/blocked, var/soaked, var/hit_zone)
 	var/obj/item/organ/external/affecting = get_organ(hit_zone)
 	if(!affecting)
-		return 0
+		return FALSE
 
 	// Allow clothing to respond to being hit.
 	// This is done up here so that clothing damage occurs even if fully blocked.
@@ -273,13 +273,13 @@ emp_act
 	if(user.a_intent == INTENT_DISARM)
 		effective_force *= 0.5 //reduced effective force...
 		if(!..(I, user, effective_force, blocked, soaked, hit_zone))
-			return 0
+			return FALSE
 
 		//set the dislocate mult less than the effective force mult so that
 		//dislocating limbs on disarm is a bit easier than breaking limbs on harm
 		attack_joint(affecting, I, effective_force, 0.75, blocked, soaked) //...but can dislocate joints
 	else if(!..())
-		return 0
+		return FALSE
 
 	if(effective_force > 10 || effective_force >= 5 && prob(33))
 		forcesay(hit_appends)	//forcesay checks stat already
@@ -330,10 +330,10 @@ emp_act
 
 /mob/living/carbon/human/proc/attack_joint(var/obj/item/organ/external/organ, var/obj/item/W, var/effective_force, var/dislocate_mult, var/blocked, var/soaked)
 	if(!organ || (organ.dislocated == 2) || (organ.dislocated == -1) || blocked >= 100)
-		return 0
+		return FALSE
 
 	if(W.damtype != BRUTE)
-		return 0
+		return FALSE
 
 	if(soaked >= round(effective_force*0.8))
 		effective_force -= round(effective_force*0.8)
@@ -344,7 +344,7 @@ emp_act
 		visible_message("<span class='danger'>[src]'s [organ.joint] [pick("gives way","caves in","crumbles","collapses")]!</span>")
 		organ.dislocate(1)
 		return 1
-	return 0
+	return FALSE
 
 /mob/living/carbon/human/emag_act(var/remaining_charges, mob/user, var/emag_source)
 	var/obj/item/organ/external/affecting = get_organ(user.zone_sel.selecting)
@@ -591,7 +591,7 @@ emp_act
 /mob/living/carbon/human/shank_attack(obj/item/W, obj/item/grab/G, mob/user, hit_zone)
 
 	if(!..())
-		return 0
+		return FALSE
 
 	var/organ_chance = 50
 	var/damage = shank_armor_helper(W, G, user)
@@ -602,9 +602,9 @@ emp_act
 	user.next_move = world.time + 20
 	user.visible_message("<span class='danger'>\The [user] begins to twist \the [W] around inside [src]'s [chest]!</span>")
 	if(!do_after(user, 20))
-		return 0
+		return FALSE
 	if(!(G && G.assailant == user && G.affecting == src)) //check that we still have a grab
-		return 0
+		return FALSE
 
 	user.visible_message("<span class='danger'>\The [user] twists \the [W] around inside [src]'s [chest]!</span>")
 

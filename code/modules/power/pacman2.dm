@@ -24,7 +24,7 @@
 	HasFuel()
 		if(P.air_contents.phoron >= 0.1)
 			return 1
-		return 0
+		return FALSE
 
 	UseFuel()
 		P.air_contents.phoron -= 0.01

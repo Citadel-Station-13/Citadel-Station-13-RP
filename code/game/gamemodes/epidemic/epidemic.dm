@@ -22,7 +22,7 @@
 			break
 
 	if(doctors < 1)
-		return 0
+		return FALSE
 
 	return 1
 
@@ -134,7 +134,7 @@
 		if(!finished)
 			SSticker.mode.check_win()
 		checkwin_counter = 0
-	return 0
+	return FALSE
 
 //////////////////////////////////////
 //Checks if the revs have won or not//
@@ -159,7 +159,7 @@
 	if(finished != 0)
 		return 1
 	else
-		return 0
+		return FALSE
 
 ///////////////////////////////////////////
 ///Handle crew failure(station explodes)///

@@ -86,7 +86,7 @@ var/datum/antagonist/traitor/traitors
 		return 1
 
 	if(!..())
-		return 0
+		return FALSE
 
 	spawn_uplink(traitor_mob)
 	traitor_mob.mind.tcrystals = DEFAULT_TELECRYSTAL_AMOUNT

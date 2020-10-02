@@ -13,7 +13,7 @@ var/const/AALARM_WIRE_AALARM = 16
 	var/obj/machinery/alarm/A = holder
 	if(A.panel_open)
 		return 1
-	return 0
+	return FALSE
 
 /datum/wires/alarm/GetInteractWindow()
 	var/obj/machinery/alarm/A = holder

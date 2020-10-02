@@ -138,10 +138,10 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 
 /obj/machinery/photocopier/faxmachine/proc/receivefax(var/obj/item/incoming)
 	if(stat & (BROKEN|NOPOWER))
-		return 0
+		return FALSE
 
 	if(department == "Unknown")
-		return 0	//You can't send faxes to "Unknown"
+		return FALSE	//You can't send faxes to "Unknown"
 
 	flick("faxreceive", src)
 	playsound(loc, "sound/effects/printer.ogg", 50, 1)
@@ -157,7 +157,7 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 	else if (istype(incoming, /obj/item/paper_bundle))
 		bundlecopy(incoming)
 	else
-		return 0
+		return FALSE
 
 	use_power(active_power_usage)
 	return 1

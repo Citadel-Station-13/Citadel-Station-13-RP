@@ -146,7 +146,7 @@
 				contents += objectOrMob
 				return 1
 
-		return 0
+		return FALSE
 
 	proc/Attach(var/mob/living/simple_mob/space_worm/attachement)
 		if(!attachement)

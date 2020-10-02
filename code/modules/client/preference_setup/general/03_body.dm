@@ -553,7 +553,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		*/ //VOREStation Removal End
 		var/new_marking = input(user, "Choose a body marking:", "Character Preference")  as null|anything in usable_markings
 		if(new_marking && CanUseTopic(user))
-			pref.body_markings[new_marking] = "#000000" //New markings start black
+			pref.body_markings[new_marking] = COLOR_BLACK //New markings start black
 			return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["marking_up"])

@@ -30,7 +30,7 @@
 
 	taser_kill = 0 //It -is- the taser.
 
-	base_attack_cooldown = 10
+	base_attack_cooldown = 15
 	projectilesound = 'sound/weapons/taser2.ogg'
 	projectiletype = /obj/item/projectile/beam/stun/electric_spider
 

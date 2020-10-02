@@ -194,7 +194,7 @@
 	icon_state = "crayonred"
 	w_class = ITEMSIZE_TINY
 	attack_verb = list("attacked", "colored")
-	color = "#FF0000" //RGB
+	color = COLOR_RED //RGB
 	var/shadeColour = "#220000" //RGB
 	var/uses = 30 //0 for unlimited uses
 	var/instant = 0
@@ -224,8 +224,8 @@
 	icon_state = "chalkwhite"
 	w_class = ITEMSIZE_TINY
 	attack_verb = list("attacked", "colored")
-	color = "#FFFFFF" //RGB
-	shadeColour = "#000000" //RGB
+	color = COLOR_WHITE //RGB
+	shadeColour = COLOR_BLACK //RGB
 	uses = 66 //0 for unlimited uses
 	instant = 0
 	colorName = "white" //for updateIcon purposes

@@ -120,7 +120,7 @@
 	else if(istype(O, /obj/item/card/id)||istype(O, /obj/item/pda))
 		if (!mmi)
 			to_chat(user, "<span class='danger'>There's no reason to swipe your ID - \the [src] has no brain to remove.</span>")
-			return 0
+			return FALSE
 
 		var/obj/item/card/id/id_card
 
@@ -139,7 +139,7 @@
 			return 1
 		else
 			to_chat(user, "<span class='danger'>You swipe your card with no effect.</span>")
-			return 0
+			return FALSE
 
 	else
 		O.attack(src, user, user.zone_sel.selecting)
@@ -147,12 +147,12 @@
 /mob/living/simple_mob/spiderbot/emag_act(var/remaining_charges, var/mob/user)
 	if (emagged)
 		to_chat(user, "<span class='warning'>[src] is already overloaded - better run.</span>")
-		return 0
+		return FALSE
 	else
 		to_chat(user, "<span class='notice'>You short out the security protocols and overload [src]'s cell, priming it to explode in a short time.</span>")
 		spawn(100)
 			to_chat(src, "<span class='danger'>Your cell seems to be outputting a lot of power...</span>")
-		spawn(200)	
+		spawn(200)
 			to_chat(src, "<span class='danger'>Internal heat sensors are spiking! Something is badly wrong with your cell!</span>")
 		spawn(300)	src.explode()
 
@@ -234,7 +234,7 @@
 
 	if(!held_item)
 		to_chat(usr, "<font color='red'>You have nothing to drop!</font>")
-		return 0
+		return FALSE
 
 	if(istype(held_item, /obj/item/grenade))
 		visible_message("<span class='danger'>\The [src] launches \the [held_item]!</span>", \
@@ -285,10 +285,10 @@
 					"You hear a skittering noise and a clink.")
 				return held_item
 		to_chat(src, "<span class='warning'>\The [selection] is too far away.</span>")
-		return 0
+		return FALSE
 
 	to_chat(src, "<span class='warning'>There is nothing of interest to take.</span>")
-	return 0
+	return FALSE
 
 /mob/living/simple_mob/spiderbot/examine(mob/user)
 	..(user)

@@ -604,7 +604,7 @@ obj/machinery/atmospherics/mains_pipe/valve
 			setDir(4)
 
 	proc/open()
-		if(open) return 0
+		if(open) return FALSE
 
 		open = 1
 		update_icon()
@@ -614,7 +614,7 @@ obj/machinery/atmospherics/mains_pipe/valve
 		return 1
 
 	proc/close()
-		if(!open) return 0
+		if(!open) return FALSE
 
 		open = 0
 		update_icon()
@@ -690,7 +690,7 @@ obj/machinery/atmospherics/mains_pipe/valve
 
 		receive_signal(datum/signal/signal)
 			if(!signal.data["tag"] || (signal.data["tag"] != id))
-				return 0
+				return FALSE
 
 			switch(signal.data["command"])
 				if("valve_open")

@@ -10,7 +10,7 @@ mob/var/next_pain_time = 0
 // force means it ignores anti-spam timer
 mob/living/carbon/proc/custom_pain(message, power, force)
 	if(!message || stat || !can_feel_pain() || chem_effects[CE_PAINKILLER] > power)
-		return 0
+		return FALSE
 	message = "<span class='danger'>[message]</span>"
 	if(power >= 50)
 		message = "<font size=3>[message]</font>"

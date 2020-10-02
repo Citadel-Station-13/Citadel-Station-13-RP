@@ -22,7 +22,7 @@
 	if(parent && parent.size >= mysize)
 		parent.AddParticles(name, quantity)
 		return 1
-	return 0
+	return FALSE
 
 /obj/effect/fusion_particle_catcher/proc/UpdateSize()
 	if(parent.size >= mysize)
@@ -35,7 +35,7 @@
 /obj/effect/fusion_particle_catcher/bullet_act(var/obj/item/projectile/Proj)
 	parent.AddEnergy(Proj.damage)
 	update_icon()
-	return 0
+	return FALSE
 
 /obj/effect/fusion_particle_catcher/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover, /obj/effect/accelerated_particle) || istype(mover, /obj/item/projectile/beam))

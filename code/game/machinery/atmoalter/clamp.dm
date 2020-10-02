@@ -55,7 +55,7 @@
 
 /obj/machinery/clamp/proc/open()
 	if(open || !target)
-		return 0
+		return FALSE
 
 	target.build_network()
 
@@ -78,7 +78,7 @@
 
 /obj/machinery/clamp/proc/close()
 	if(!open)
-		return 0
+		return FALSE
 
 	qdel(target.parent)
 

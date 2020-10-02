@@ -97,7 +97,7 @@ var/global/list/navbeacons = list()	// no I don't like putting this in, but it w
 /obj/machinery/navbeacon/attack_hand(var/mob/user)
 
 	if(!user.IsAdvancedToolUser())
-		return 0
+		return FALSE
 
 	interact(user, 0)
 

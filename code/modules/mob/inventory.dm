@@ -41,7 +41,7 @@ var/list/slot_equipment_priority = list( \
 		return 1
 	else if(equip_to_slot_if_possible(W, slot_r_hand, del_on_fail, disable_warning, redraw_mob))
 		return 1
-	return 0
+	return FALSE
 
 //This is a SAFE proc. Use this instead of equip_to_slot()!
 //set del_on_fail to have it delete W if it fails to equip
@@ -49,7 +49,7 @@ var/list/slot_equipment_priority = list( \
 //unset redraw_mob to prevent the mob from being redrawn at the end.
 /mob/proc/equip_to_slot_if_possible(obj/item/W as obj, slot, del_on_fail = 0, disable_warning = 0, redraw_mob = 1)
 	if(!W)
-		return 0
+		return FALSE
 	if(!W.mob_can_equip(src, slot, disable_warning)) //Previously did not propagate disable_warning. I can't imagine why not.
 		if(del_on_fail)
 			qdel(W)
@@ -57,7 +57,7 @@ var/list/slot_equipment_priority = list( \
 		else
 			if(!disable_warning)
 				to_chat(src, "<font color='red'>You are unable to equip that.</font>") //Only print if del_on_fail is false
-		return 0
+		return FALSE
 
 	equip_to_slot(W, slot, redraw_mob) //This proc should not ever fail.
 	return 1
@@ -82,7 +82,7 @@ var/list/slot_equipment_priority = list( \
 		if(equip_to_slot_if_possible(W, slot, del_on_fail=0, disable_warning=1, redraw_mob=1))
 			return 1
 
-	return 0
+	return FALSE
 
 /obj/item/proc/equip_to_best_slot(mob/M)
 	if(src != M.get_active_hand())
@@ -119,7 +119,7 @@ var/list/slot_equipment_priority = list( \
 	return FALSE
 
 /mob/proc/equip_to_storage(obj/item/newitem)
-	return 0
+	return FALSE
 
 /* Hands */
 
@@ -136,22 +136,22 @@ var/list/slot_equipment_priority = list( \
 //Puts the item into your l_hand if possible and calls all necessary triggers/updates. returns 1 on success.
 /mob/proc/put_in_l_hand(var/obj/item/W)
 	if(lying || !istype(W))
-		return 0
+		return FALSE
 	return 1
 
 //Puts the item into your r_hand if possible and calls all necessary triggers/updates. returns 1 on success.
 /mob/proc/put_in_r_hand(var/obj/item/W)
 	if(lying || !istype(W))
-		return 0
+		return FALSE
 	return 1
 
 //Puts the item into our active hand if possible. returns 1 on success.
 /mob/proc/put_in_active_hand(var/obj/item/W)
-	return 0 // Moved to human procs because only they need to use hands.
+	return FALSE // Moved to human procs because only they need to use hands.
 
 //Puts the item into our inactive hand if possible. returns 1 on success.
 /mob/proc/put_in_inactive_hand(var/obj/item/W)
-	return 0 // As above.
+	return FALSE // As above.
 
 //Puts the item our active hand if possible. Failing that it tries other hands. Returns TRUE on success.
 //If both fail it drops it on the floor and returns FALSE.
@@ -220,15 +220,15 @@ var/list/slot_equipment_priority = list( \
 		if(!(W && W.loc))
 			return 1 // self destroying objects (tk, grabs)
 		return 1
-	return 0
+	return FALSE
 
 //Drops the item in our left hand
 /mob/proc/drop_l_hand(var/atom/Target)
-	return 0
+	return FALSE
 
 //Drops the item in our right hand
 /mob/proc/drop_r_hand(var/atom/Target)
-	return 0
+	return FALSE
 
 //Drops the item in our active hand. TODO: rename this to drop_active_hand or something
 /mob/proc/drop_item(var/atom/Target)
@@ -249,7 +249,7 @@ var/list/slot_equipment_priority = list( \
 
 /mob/proc/isEquipped(obj/item/I)
 	if(!I)
-		return 0
+		return FALSE
 	return get_inventory_slot(I) != 0
 
 /mob/proc/canUnEquip(obj/item/I)

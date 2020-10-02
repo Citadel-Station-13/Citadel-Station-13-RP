@@ -32,11 +32,11 @@
 	if(..())
 		if(tow)
 			tow.Move(old_loc)
-		return 1
+		return TRUE
 	else
 		if(lead)
 			unattach()
-		return 0
+		return FALSE
 
 /obj/vehicle/train/Bump(atom/Obstacle)
 	if(!istype(Obstacle, /atom/movable))
@@ -90,19 +90,19 @@
 	var/turf/T = get_step_to(src, get_step(src, direction))
 	if(!T)
 		to_chat(user, "You can't find a clear area to step onto.")
-		return 0
+		return FALSE
 
 	if(user != load)
 		if(user in src)		//for handling players stuck in src - this shouldn't happen - but just in case it does
 			user.forceMove(T)
-			return 1
-		return 0
+			return TRUE
+		return FALSE
 
 	unload(user, direction)
 
 	to_chat(user, "<font color='blue'>You climb down from [src].</font>")
 
-	return 1
+	return TRUE
 
 /obj/vehicle/train/MouseDrop_T(var/atom/movable/C, mob/user as mob)
 	if(user.buckled || user.stat || user.restrained() || !Adjacent(user) || !user.Adjacent(C) || !istype(C) || (user == C && !user.canmove))
@@ -115,7 +115,7 @@
 
 /obj/vehicle/train/attack_hand(mob/user as mob)
 	if(user.stat || user.restrained() || !Adjacent(user))
-		return 0
+		return FALSE
 
 	if(user != load && (user in src))
 		user.forceMove(loc)			//for handling players stuck in src
@@ -124,7 +124,7 @@
 	else if(!load && !user.buckled)
 		load(user, user)				//else try climbing on board
 	else
-		return 0
+		return FALSE
 
 /obj/vehicle/train/verb/unlatch_v()
 	set name = "Unlatch"
@@ -195,7 +195,7 @@
 
 /obj/vehicle/train/proc/latch(obj/vehicle/train/T, mob/user)
 	if(!istype(T) || !Adjacent(T))
-		return 0
+		return FALSE
 
 	var/T_dir = get_dir(src, T)	//figure out where T is wrt src
 
@@ -207,8 +207,8 @@
 //returns 1 if this is the lead car of the train
 /obj/vehicle/train/proc/is_train_head()
 	if (lead)
-		return 0
-	return 1
+		return FALSE
+	return TRUE
 
 //-------------------------------------------------------
 // Stat update procs

@@ -91,7 +91,7 @@
 	icon_state = "light"
 	opacity = 1
 	density = 1
-	blocks_air = 1
+	blocks_air = TRUE
 
 	var/base_state = "light" //The base iconstate to base sprites on
 	var/hard_corner = 0 //Forces hard corners (as opposed to diagonals)
@@ -230,13 +230,13 @@
 	join_group = null
 
 /turf/simulated/shuttle/wall/voidcraft/red
-	stripe_color = "#FF0000"
+	stripe_color = COLOR_RED
 
 /turf/simulated/shuttle/wall/voidcraft/blue
-	stripe_color = "#0000FF"
+	stripe_color = COLOR_BLUE
 
 /turf/simulated/shuttle/wall/voidcraft/green
-	stripe_color = "#00FF00"
+	stripe_color = COLOR_LIME
 
 /turf/simulated/shuttle/wall/voidcraft/Initialize()
 	. = ..()
@@ -256,7 +256,7 @@
 	icon_state = "flesh"
 	opacity = 1
 	density = 1
-	blocks_air = 1
+	blocks_air = TRUE
 
 /turf/simulated/flesh/color
 	name = "flesh wall"
@@ -265,7 +265,7 @@
 	icon_state = "colorable-wall"
 	opacity = 1
 	density = 1
-	blocks_air = 1
+	blocks_air = TRUE
 
 /turf/simulated/flesh/attackby()
 	return
@@ -303,7 +303,7 @@ var/list/flesh_overlay_cache = list()
 	icon_state = "bone"
 	opacity = 1
 	density = 1
-	blocks_air = 1
+	blocks_air = TRUE
 
 /turf/simulated/bone/attackby()
 	return

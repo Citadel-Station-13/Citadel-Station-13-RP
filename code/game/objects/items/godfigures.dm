@@ -121,7 +121,7 @@
 	set desc = "Rename your icon."
 
 	var/mob/M = usr
-	if(!M.mind)	return 0
+	if(!M.mind)	return FALSE
 
 	var/input = sanitizeSafe(input("What do you want to name the icon?", ,""), MAX_NAME_LEN)
 

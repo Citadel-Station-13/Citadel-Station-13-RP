@@ -9,7 +9,7 @@
 	wires = WIRE_RECEIVE
 
 /obj/item/assembly/igniter/activate()
-	if(!..())	return 0//Cooldown check
+	if(!..())	return FALSE//Cooldown check
 
 	if(holder && istype(holder.loc,/obj/item/grenade/chem_grenade))
 		var/obj/item/grenade/chem_grenade/grenade = holder.loc

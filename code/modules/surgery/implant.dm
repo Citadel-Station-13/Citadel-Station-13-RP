@@ -8,7 +8,7 @@
 	priority = 1
 	can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 		if(!hasorgans(target))
-			return 0
+			return FALSE
 		var/obj/item/organ/external/affected = target.get_organ(target_zone)
 		return affected && affected.open == (affected.encased ? 3 : 2) && !(affected.status & ORGAN_BLEEDING)
 
@@ -20,7 +20,7 @@
 				return ITEMSIZE_NORMAL
 			if (BP_GROIN)
 				return ITEMSIZE_SMALL
-		return 0
+		return FALSE
 
 	proc/get_cavity(var/obj/item/organ/external/affected)
 		switch (affected.organ_tag)
