@@ -5144,13 +5144,13 @@
 /area/engineering/atmos/backup)
 "yn" = (
 /obj/structure/table/reinforced,
-/mob/living/simple_mob/animal/passive/bird/parrot/polly/ultimate,
 /obj/item/flashlight/lamp,
 /obj/item/radio/intercom{
 	dir = 1;
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
+/mob/living/simple_mob/animal/passive/bird/parrot/polly/ultimate,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
 "yo" = (
@@ -7344,6 +7344,7 @@
 /obj/structure/table/reinforced,
 /obj/item/paper_bin,
 /obj/item/pen,
+/obj/item/stamp/ce,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
 "IU" = (
