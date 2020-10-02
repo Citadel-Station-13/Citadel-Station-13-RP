@@ -360,4 +360,4 @@
 			scanned_item = null
 
 	add_fingerprint(usr)
-	return 1 // update UIs attached to this object
+	return TRUE // update UIs attached to this object

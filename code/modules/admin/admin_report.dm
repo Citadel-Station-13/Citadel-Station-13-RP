@@ -75,7 +75,7 @@ client/proc/unhandled_reports()
 	for(var/datum/admin_report/N in reports)
 		if(N.done)
 			continue
-		else return 1
+		else return TRUE
 
 	return FALSE
 
@@ -85,7 +85,7 @@ client/proc/is_reported()
 
 	for(var/datum/admin_report/N in reports) if(!N.done)
 		if(N.offender_key == src.key)
-			return 1
+			return TRUE
 
 	return FALSE
 

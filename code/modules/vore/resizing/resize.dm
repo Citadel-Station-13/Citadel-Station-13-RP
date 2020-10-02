@@ -63,7 +63,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
  */
 /mob/living/proc/resize(var/new_size, var/animate = TRUE)
 	if(size_multiplier == new_size)
-		return 1
+		return TRUE
 
 	size_multiplier = new_size //Change size_multiplier so that other items can interact with them
 	if(animate)
@@ -118,7 +118,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 //Add the set_size() proc to usable verbs. By commenting this out, we can leave the proc and hand it to species that need it.
 /hook/living_new/proc/resize_setup(mob/living/H)
 	H.verbs += /mob/living/proc/set_size
-	return 1
+	return TRUE
 */
 
 /**
@@ -143,7 +143,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 		var/obj/item/holder/m_holder = get_scooped(M)
 		holder_type = holder_default
 		if (m_holder)
-			return 1
+			return TRUE
 		else
 			return FALSE; // Unable to scoop, let other code run
 

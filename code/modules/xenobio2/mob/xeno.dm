@@ -72,7 +72,7 @@ Also includes Life and New
 			if(traitdat.traits[TRAIT_XENO_EATS])
 				health = starve_damage
 
-		return 1	//Everything worked okay.
+		return TRUE	//Everything worked okay.
 
 /mob/living/simple_mob/xeno/New()
 

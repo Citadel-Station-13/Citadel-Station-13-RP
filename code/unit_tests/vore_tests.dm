@@ -15,7 +15,7 @@
 	if(!istype(prey))
 		return FALSE
 
-	return 1
+	return TRUE
 
 /datum/unit_test/belly_nonsuffocation/check_result()
 	// Unfortuantely we need to wait for the pred's belly to initialize. (Currently after a spawn())
@@ -25,7 +25,7 @@
 	// Now that pred belly exists, we can eat the prey.
 	if(!pred.vore_selected)
 		fail("[pred] has no vore_selected.")
-		return 1
+		return TRUE
 
 	// Attempt to eat the prey
 	if(prey.loc != pred.vore_selected)
@@ -33,7 +33,7 @@
 
 		if(prey.loc != pred.vore_selected)
 			fail("[pred.vore_selected].nom_mob([prey]) did not put prey inside [pred]")
-			return 1
+			return TRUE
 
 		// Okay, we succeeded in eating them, now lets wait a bit
 		startLifeTick = pred.life_tick
@@ -52,7 +52,7 @@
 
 	qdel(prey)
 	qdel(pred)
-	return 1
+	return TRUE
 ////////////////////////////////////////////////////////////////
 /datum/unit_test/belly_spacesafe
 	name = "MOB: human mob protected from space in a belly"
@@ -71,7 +71,7 @@
 	if(!istype(prey))
 		return FALSE
 
-	return 1
+	return TRUE
 
 /datum/unit_test/belly_spacesafe/check_result()
 	// Unfortuantely we need to wait for the pred's belly to initialize. (Currently after a spawn())
@@ -81,7 +81,7 @@
 	// Now that pred belly exists, we can eat the prey.
 	if(!pred.vore_selected)
 		fail("[pred] has no vore_selected.")
-		return 1
+		return TRUE
 
 	// Attempt to eat the prey
 	if(prey.loc != pred.vore_selected)
@@ -89,12 +89,12 @@
 
 		if(prey.loc != pred.vore_selected)
 			fail("[pred.vore_selected].nom_mob([prey]) did not put prey inside [pred]")
-			return 1
+			return TRUE
 		else
 			var/turf/T = locate(/turf/space)
 			if(!T)
 				fail("could not find a space turf for testing")
-				return 1
+				return TRUE
 			else
 				pred.forceMove(T)
 
@@ -115,7 +115,7 @@
 
 	qdel(prey)
 	qdel(pred)
-	return 1
+	return TRUE
 ////////////////////////////////////////////////////////////////
 /datum/unit_test/belly_damage
 	name = "MOB: human mob takes damage from digestion"
@@ -134,7 +134,7 @@
 	if(!istype(prey))
 		return FALSE
 
-	return 1
+	return TRUE
 
 /datum/unit_test/belly_damage/check_result()
 	// Unfortuantely we need to wait for the pred's belly to initialize. (Currently after a spawn())
@@ -144,7 +144,7 @@
 	// Now that pred belly exists, we can eat the prey.
 	if(!pred.vore_selected)
 		fail("[pred] has no vore_selected.")
-		return 1
+		return TRUE
 
 	// Attempt to eat the prey
 	if(prey.loc != pred.vore_selected)
@@ -152,7 +152,7 @@
 
 		if(prey.loc != pred.vore_selected)
 			fail("[pred.vore_selected].nom_mob([prey]) did not put prey inside [pred]")
-			return 1
+			return TRUE
 
 		// Okay, we succeeded in eating them, now lets wait a bit
 		pred.vore_selected.digest_mode = DM_DIGEST
@@ -172,4 +172,4 @@
 
 	qdel(prey)
 	qdel(pred)
-	return 1
+	return TRUE

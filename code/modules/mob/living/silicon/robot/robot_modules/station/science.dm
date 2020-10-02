@@ -10,8 +10,10 @@
 					"Droid" = "droid-science",
 					"Drone" = "drone-science",
 					"Handy" = "handy-science",
-					"Insekt" = "insekt-Sci"
-					)
+					"Insekt" = "insekt-Sci",
+					"Acheron" = "mechoid-Science",
+					"ZOOM-BA" = "zoomba-research",
+					 )
 
 /obj/item/robot_module/robot/research/New()
 	..()

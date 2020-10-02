@@ -2,6 +2,7 @@
 	name = "Cave Submap Area"
 	icon_state = "submap"
 	ambience = AMBIENCE_RUINS
+	base_turf = /turf/simulated/mineral/floor/ignore_mapgen/cave
 
 /area/submap/cave/deadBeacon
 	name = "POI - abandoned relay"

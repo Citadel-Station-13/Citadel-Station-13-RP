@@ -18,8 +18,11 @@
 					"Landmate - Treaded" = "engiborg+tread",
 					"Drone" = "drone-engineer",
 					"Treadwell" = "treadwell",
-					"Handy" = "handy-engineer"
-					)
+					"Handy" = "handy-engineer",
+					"Acheron" = "mechoid-Engineering",
+					"Shellguard Noble" = "Noble-ENG",
+					"ZOOM-BA" = "zoomba-engineering"
+					 )
 
 /obj/item/robot_module/robot/engineering/construction
 	name = "construction robot module"

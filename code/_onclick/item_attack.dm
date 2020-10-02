@@ -46,7 +46,7 @@ avoid code duplication. This includes items that may sometimes act as a standard
 		return FALSE
 	if(can_operate(src) && I.do_surgery(src,user))
 		if(I.can_do_surgery(src,user))
-			return 1
+			return TRUE
 		else
 			return FALSE
 	if(attempt_vr(src,"vore_attackby",args)) return //VOREStation Add - The vore, of course.
@@ -95,7 +95,7 @@ avoid code duplication. This includes items that may sometimes act as a standard
 	if(hit_zone)
 		apply_hit_effect(M, user, hit_zone, attack_modifier)
 
-	return 1
+	return TRUE
 
 //Called when a weapon is used to make a successful melee attack on a mob. Returns the blocked result
 /obj/item/proc/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone, var/attack_modifier)

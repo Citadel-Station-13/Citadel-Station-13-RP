@@ -47,7 +47,7 @@ var/list/mob_hat_cache = list()
 	mob_push_flags = SIMPLE_ANIMAL
 	mob_always_swap = 1
 
-	mob_size = MOB_LARGE // Small mobs can't open doors, it's a huge pain for drones.
+	mob_size = MOB_SMALL
 
 	//Used for self-mailing.
 	var/mail_destination = ""

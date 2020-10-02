@@ -194,7 +194,7 @@
 	if(chargereduction())
 		var/obj/item/ammo_casing/W = new ammo_type(src)
 		stored_ammo.Insert(1, W) //add to the head of the list
-		return 1
+		return TRUE
 	return FALSE
 
 

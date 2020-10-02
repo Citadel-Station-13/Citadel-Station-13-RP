@@ -109,7 +109,7 @@
 	if(check_flags & AB_CHECK_INSIDE)
 		if(!(target in owner))
 			return FALSE
-	return 1
+	return TRUE
 
 /datum/action/proc/UpdateName()
 	return name
@@ -122,11 +122,11 @@
 	var/list/modifiers = params2list(params)
 	if(modifiers["shift"])
 		moved = 0
-		return 1
+		return TRUE
 	if(usr.next_move >= world.time) // Is this needed ?
 		return
 	owner.Trigger()
-	return 1
+	return TRUE
 
 /obj/screen/movable/action_button/proc/UpdateIcon()
 	if(!owner)

@@ -21,8 +21,11 @@
 					"Needles" = "medicalrobot",
 					"Drone" = "drone-surgery",
 					"Handy" = "handy-med",
-					"Insekt" = "insekt-Med"
-					)
+					"Insekt" = "insekt-Med",
+					"Acheron" = "mechoid-Medical",
+					"Shellguard Noble" = "Noble-MED",
+					"ZOOM-BA" = "zoomba-medical"
+					 )
 
 /obj/item/robot_module/robot/medical/surgeon/New()
 	..()
@@ -42,6 +45,7 @@
 	src.modules += new /obj/item/gripper/medical(src)
 	src.modules += new /obj/item/shockpaddles/robot(src)
 	src.modules += new /obj/item/reagent_containers/dropper(src) // Allows surgeon borg to fix necrosis
+	src.modules += new /obj/item/sleevemate(src) //Lets them scan people.
 	src.modules += new /obj/item/reagent_containers/syringe(src)
 	src.emag = new /obj/item/reagent_containers/spray(src)
 	src.emag.reagents.add_reagent("pacid", 250)
@@ -92,8 +96,12 @@
 					"Needles" = "medicalrobot",
 					"Drone - Medical" = "drone-medical",
 					"Drone - Chemistry" = "drone-chemistry",
-					"Insekt" = "insekt-Med"
-					)
+					"Insekt" = "insekt-Med",
+					"Handy" = "handy-med",
+					"Acheron" = "mechoid-Medical",
+					"Shellguard Noble" = "Noble-MED",
+					"ZOOM-BA" = "zoomba-crisis"
+					 )
 
 /obj/item/robot_module/robot/medical/crisis/New()
 	..()
@@ -108,6 +116,7 @@
 	src.modules += new /obj/item/gripper/medical(src)
 	src.modules += new /obj/item/shockpaddles/robot(src)
 	src.emag = new /obj/item/reagent_containers/spray(src)
+	src.modules += new /obj/item/sleevemate(src) //Lets them scan people.
 	src.emag.reagents.add_reagent("pacid", 250)
 	src.emag.name = "Polyacid spray"
 
@@ -186,7 +195,7 @@
 	B.water = water
 	src.modules += B
 
-	var/datum/matter_synth/medicine = new /datum/matter_synth/medicine(15000) // BEGIN CITADEL CHANGES - adds trauma kits to medihounds
+	var/datum/matter_synth/medicine = new /datum/matter_synth/medicine(15000)
 	synths += medicine
 
 	var/obj/item/stack/medical/advanced/ointment/K = new /obj/item/stack/medical/advanced/ointment(src)
@@ -198,7 +207,7 @@
 	L.charge_costs = list(1000)
 	L.synths = list(medicine)
 	src.modules += K
-	src.modules += L // END CITADEL CHANGES
+	src.modules += L
 
 	R.icon = 'icons/mob/widerobot_vr.dmi'
 	R.hands.icon = 'icons/mob/screen1_robot_vr.dmi'

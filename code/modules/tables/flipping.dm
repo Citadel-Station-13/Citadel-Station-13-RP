@@ -9,7 +9,7 @@
 			return FALSE
 	T = locate() in get_step(src.loc,direction)
 	if (!T || T.flipped == 1 || T.material != material)
-		return 1
+		return TRUE
 	return T.straight_table_check(direction)
 
 /obj/structure/table/verb/do_flip()
@@ -53,7 +53,7 @@
 		if(T && T.material.name == material.name)
 			if(T.flipped == 1 && T.dir == src.dir && !T.unflipping_check(new_dir))
 				return FALSE
-	return 1
+	return TRUE
 
 /obj/structure/table/proc/do_put()
 	set name = "Put table back"
@@ -97,7 +97,7 @@
 	update_connections(1)
 	update_icon()
 
-	return 1
+	return TRUE
 
 /obj/structure/table/proc/unflip()
 	verbs -=/obj/structure/table/proc/do_put
@@ -115,4 +115,4 @@
 	update_connections(1)
 	update_icon()
 
-	return 1
+	return TRUE

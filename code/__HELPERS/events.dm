@@ -22,5 +22,5 @@
 			continue
 		var/area/A = get_area(H)
 		if(A == myarea) //The loc of a turf is the area it is in.
-			return 1
+			return TRUE
 	return FALSE

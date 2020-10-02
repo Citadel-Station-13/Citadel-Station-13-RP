@@ -67,7 +67,7 @@
 		admin_notice("<span class='danger'>Insufficient deep minerals. Rerolling...</span>", R_DEBUG)
 		return FALSE
 	else
-		return 1
+		return TRUE
 	admin_notice("RARE COUNT [rare_count]", R_DEBUG)
 	admin_notice("SURFACE COUNT [surface_count]", R_DEBUG)
 	admin_notice("DEEP COUNT [deep_count]", R_DEBUG)

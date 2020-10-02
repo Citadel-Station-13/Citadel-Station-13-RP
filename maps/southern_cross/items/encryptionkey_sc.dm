@@ -1,12 +1,12 @@
 /obj/item/encryptionkey/pilot
 	name = "pilot's encryption key"
-	icon_state = "com_cypherkey"
+	icon_state = "cypherkey"
 	channels = list("Supply" = 1, "Explorer" = 1)
 
 /obj/item/encryptionkey/explorer
 	name = "explorer radio encryption key"
 	icon_state = "com_cypherkey"
-	channels = list("Explorer" = 1)
+	channels = list("Science" = 1, "Explorer" = 1)
 
 /obj/item/encryptionkey/sar
 	name = "sar's encryption key"

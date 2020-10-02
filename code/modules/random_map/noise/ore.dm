@@ -34,7 +34,7 @@
 		admin_notice("<span class='danger'>Insufficient deep minerals. Rerolling...</span>", R_DEBUG)
 		return FALSE
 	else
-		return 1
+		return TRUE
 
 /datum/random_map/noise/ore/apply_to_turf(var/x,var/y)
 

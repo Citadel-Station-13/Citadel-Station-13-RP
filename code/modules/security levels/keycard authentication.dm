@@ -181,7 +181,7 @@
 			feedback_inc("alert_keycard_auth_ert",1)
 
 /obj/machinery/keycard_auth/proc/is_ert_blocked()
-	if(config_legacy.ert_admin_call_only) return 1
+	if(config_legacy.ert_admin_call_only) return TRUE
 	return SSticker.mode && SSticker.mode.ert_disabled
 
 var/global/maint_all_access = 0
@@ -198,5 +198,5 @@ var/global/maint_all_access = 0
 
 /obj/machinery/door/airlock/allowed(mob/M)
 	if(maint_all_access && src.check_access_list(list(access_maint_tunnels)))
-		return 1
+		return TRUE
 	return ..(M)

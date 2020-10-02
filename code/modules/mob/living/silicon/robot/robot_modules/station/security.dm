@@ -21,15 +21,19 @@
 					"Basic" = "secborg",
 					"Black Knight" = "securityrobot",
 					"Drone" = "drone-sec",
-					"Insekt" = "insekt-Sec"
-					)
+					"Insekt" = "insekt-Sec",
+					"Handy" = "handy-sec",
+					"Acheron" = "mechoid-Security",
+					"Shellguard Noble" = "Noble-SEC",
+					"ZOOM-BA" = "zoomba-security"
+					 )
 
 /obj/item/robot_module/robot/security/general/New()
 	..()
 	src.modules += new /obj/item/handcuffs/cyborg(src)
 	src.modules += new /obj/item/melee/baton/robot(src)
 	src.modules += new /obj/item/gun/energy/taser/mounted/cyborg(src)
-	// src.modules += new /obj/item/gun/energy/taser/xeno/sec/robot(src) // VOREStation Edit - We don't need these
+	src.modules += new /obj/item/gun/energy/taser/xeno/sec/robot(src)
 	src.modules += new /obj/item/barrier_tape_roll/police(src)
 	src.modules += new /obj/item/reagent_containers/spray/pepper(src)
 	src.modules += new /obj/item/gripper/security(src)
@@ -57,13 +61,15 @@
 					"Haruka" = "marinaCB",
 					"Cabeiri" = "eyebot-combat",
 					"Combat Android" = "droid-combat",
-					"Insekt" = "insekt-Combat"
-					)
+					"Insekt" = "insekt-Combat",
+					"Acheron" = "mechoid-Combat",
+					"ZOOM-BA" = "zoomba-combat"
+					 )
 
 /obj/item/robot_module/robot/security/combat/New()
 	..()
 	src.modules += new /obj/item/flash(src)
-	//src.modules += new /obj/item/borg/sight/thermal(src) // VOREStation Edit
+	src.modules += new /obj/item/borg/sight/thermal(src)
 	src.modules += new /obj/item/gun/energy/laser/mounted(src)
 	src.modules += new /obj/item/pickaxe/plasmacutter(src)
 	src.modules += new /obj/item/borg/combat/shield(src)
@@ -164,7 +170,7 @@
 	src.modules += new /obj/item/barrier_tape_roll/police(src)
 	src.modules += new /obj/item/gun/energy/taser/mounted/cyborg/ertgun(src)
 	src.modules += new /obj/item/dogborg/swordtail(src)
-	src.emag     = new /obj/item/gun/energy/laser/mounted(src)
+	src.emag	 = new /obj/item/gun/energy/laser/mounted(src)
 
 	var/datum/matter_synth/water = new /datum/matter_synth(500)
 	water.name = "Water reserves"

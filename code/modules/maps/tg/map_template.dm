@@ -97,6 +97,9 @@ var/list/global/map_templates = list()
 
 	admin_notice("<span class='danger'>Submap initializations finished.</span>", R_DEBUG)
 
+/datum/map_template/proc/on_map_loaded(z)
+	return
+
 /datum/map_template/proc/load_new_z(var/centered = FALSE, var/orientation = SOUTH, list/traits = src.ztraits || list(ZTRAIT_AWAY = TRUE))
 	var/x = 1
 	var/y = 1

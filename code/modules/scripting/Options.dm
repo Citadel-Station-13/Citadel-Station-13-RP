@@ -31,11 +31,11 @@ n_scriptOptions
 		IsValidID(id)    //returns true if all the characters in the string are okay to be in an identifier name
 			if(!CanStartID(id)) //don't need to grab first char in id, since text2ascii does it automatically
 				return FALSE
-			if(length(id)==1) return 1
+			if(length(id)==1) return TRUE
 			for(var/i=2 to length(id))
 				if(!IsValidIDChar(copytext(id, i, i+1)))
 					return FALSE
-			return 1
+			return TRUE
 
 /*
 	Class: nS_Options

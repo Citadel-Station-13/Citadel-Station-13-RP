@@ -191,7 +191,7 @@
 	if(!AMS_linking && !AMS.link_control(src)) return FALSE
 	linked_shielding.Add(AMS)
 	update_shield_icons = 1
-	return 1
+	return TRUE
 
 
 /obj/machinery/power/am_control_unit/proc/remove_shielding(var/obj/machinery/am_shielding/AMS)
@@ -199,7 +199,7 @@
 	linked_shielding.Remove(AMS)
 	update_shield_icons = 2
 	if(active)	toggle_power()
-	return 1
+	return TRUE
 
 
 /obj/machinery/power/am_control_unit/proc/check_stability()//TODO: make it break when low also might want to add a way to fix it like a part or such that can be replaced

@@ -12,8 +12,12 @@
 					"Basic" = "JanBot2",
 					"Mopbot"  = "janitorrobot",
 					"Mop Gear Rex" = "mopgearrex",
-					"Drone" = "drone-janitor"
-					)
+					"Drone" = "drone-janitor",
+					"Handy" = "handy-janitor",
+					"Acheron" = "mechoid-Janitor",
+					"Shellguard Noble" = "Noble-CLN",
+					"ZOOM-BA" = "zoomba-janitor"
+					 )
 
 /obj/item/robot_module/robot/janitor/New()
 	..()
@@ -32,24 +36,26 @@
 		var/obj/item/reagent_containers/spray/S = src.emag
 		S.reagents.add_reagent("lube", 2 * amount)
 
-/obj/item/robot_module/robot/clerical
+/obj/item/robot_module/robot/clerical	// Did you know Clerical Borgs could understand almost any language? Neither did I.
 	name = "service robot module"
 	channels = list("Service" = 1)
 	languages = list(
 					LANGUAGE_SOL_COMMON	= 1,
+					LANGUAGE_TRADEBAND	= 1,
 					LANGUAGE_UNATHI		= 1,
 					LANGUAGE_SIIK		= 1,
-					LANGUAGE_AKHANI		= 1,
 					LANGUAGE_SKRELLIAN	= 1,
-					LANGUAGE_SKRELLIANFAR = 0,
 					LANGUAGE_ROOTLOCAL	= 0,
-					LANGUAGE_TRADEBAND	= 1,
 					LANGUAGE_GUTTER		= 1,
 					LANGUAGE_SCHECHI	= 1,
 					LANGUAGE_EAL		= 1,
-					LANGUAGE_TERMINUS	= 1,
 					LANGUAGE_SIGN		= 0,
-					LANGUAGE_ZADDAT		= 1,
+					LANGUAGE_BIRDSONG	= 1,
+					LANGUAGE_SAGARU		= 1,
+					LANGUAGE_CANILUNZT	= 1,
+					LANGUAGE_ECUREUILIAN= 1,
+					LANGUAGE_DAEMON		= 1,
+					LANGUAGE_ENOCHIAN	= 1
 					)
 
 /obj/item/robot_module/robot/clerical/butler
@@ -69,8 +75,13 @@
 					"Bro" = "Brobot",
 					"Rich" = "maximillion",
 					"Drone - Service" = "drone-service",
-					"Drone - Hydro" = "drone-hydro"
-				  	)
+					"Drone - Hydro" = "drone-hydro",
+					"Handy - Service" = "handy-service",
+					"Handy - Hydro" = "handy-hydro",
+					"Acheron" = "mechoid-Service",
+					"Shellguard Noble" = "Noble-SRV",
+					"ZOOM-BA" = "zoomba-service"
+					 )
 
 /obj/item/robot_module/robot/clerical/butler/New()
 	..()
@@ -121,8 +132,12 @@
 					"Bro" = "Brobot",
 					"Rich" = "maximillion",
 					"Default" = "Service2",
-					"Drone" = "drone-blu"
-					)
+					"Drone" = "drone-blu",
+					"Handy" = "handy-clerk",
+					"Acheron" = "mechoid-Service",
+					"Shellguard Noble" = "Noble-SRV",
+					"ZOOM-BA" = "zoomba-clerical"
+					 )
 
 /obj/item/robot_module/robot/clerical/general/New()
 	..()

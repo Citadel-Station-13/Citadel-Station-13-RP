@@ -42,7 +42,7 @@
 			if(reagents.total_volume)
 				reagents.trans_to_mob(M, reagents.total_volume, CHEM_TOUCH)
 			qdel(src)
-			return 1
+			return TRUE
 
 	else if(istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
@@ -77,6 +77,6 @@
 			reagents.trans_to_mob(M, reagents.total_volume, CHEM_TOUCH)
 		qdel(src)
 
-		return 1
+		return TRUE
 
 	return FALSE

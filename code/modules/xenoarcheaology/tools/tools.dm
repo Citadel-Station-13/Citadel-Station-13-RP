@@ -91,8 +91,8 @@
 /obj/item/depth_scanner
 	name = "depth analysis scanner"
 	desc = "Used to check spatial depth and density of rock outcroppings."
-	icon = 'icons/obj/xenoarchaeology.dmi'
-	icon_state = "depth_scanner"
+	icon = 'icons/obj/xenoarchaeology_vr.dmi'
+	icon_state = "ano_scanner"
 	item_state = "analyzer"
 	origin_tech = list(TECH_MAGNET = 2, TECH_ENGINEERING = 2, TECH_BLUESPACE = 2)
 	matter = list(DEFAULT_WALL_MATERIAL = 1000,"glass" = 1000)

@@ -136,7 +136,7 @@ proc/cardinalrange(var/center)
 	if(control_unit && control_unit != AMC) return FALSE//Already have one
 	control_unit = AMC
 	control_unit.add_shielding(src,1)
-	return 1
+	return TRUE
 
 
 //Scans cards for shields or the control unit and if all there it
@@ -145,7 +145,7 @@ proc/cardinalrange(var/center)
 		var/machine = locate(/obj/machinery, get_step(loc, direction))
 		if(!machine) return FALSE//Need all for a core
 		if(!istype(machine, /obj/machinery/am_shielding) && !istype(machine, /obj/machinery/power/am_control_unit))	return FALSE
-	return 1
+	return TRUE
 
 
 /obj/machinery/am_shielding/proc/setup_core()

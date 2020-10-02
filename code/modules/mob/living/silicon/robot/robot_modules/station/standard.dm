@@ -13,8 +13,12 @@
 					"Basic" = "robot_old",
 					"Android" = "droid",
 					"Drone" = "drone-standard",
-					"Insekt" = "insekt-Default"
-					)
+					"Insekt" = "insekt-Default",
+					"Handy" = "handy-standard",
+					"Acheron" = "mechoid-Standard",
+					"Shellguard Noble" = "Noble-STD",
+					"ZOOM-BA" = "zoomba-standard"
+					 )
 
 
 /obj/item/robot_module/robot/standard/New()

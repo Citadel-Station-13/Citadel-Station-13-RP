@@ -28,7 +28,7 @@
 /obj/item/assembly/voice/attack_self(mob/user)
 	if(!user)	return FALSE
 	activate()
-	return 1
+	return TRUE
 
 
 /obj/item/assembly/voice/toggle_secure()

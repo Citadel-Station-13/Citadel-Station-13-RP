@@ -191,13 +191,13 @@ var/global/list/total_extraction_beacons = list()
 	if(isliving(A))
 		var/mob/living/L = A
 		if(L.stat != DEAD)
-			return 1
+			return TRUE
 	for(var/thing in A.GetAllContents())
 		if(isliving(A))
 			var/mob/living/L = A
 			update_icon()
 			if(L.stat != DEAD)
-				return 1
+				return TRUE
 	return FALSE
 
 /obj/effect/extraction_holder/singularity_pull()

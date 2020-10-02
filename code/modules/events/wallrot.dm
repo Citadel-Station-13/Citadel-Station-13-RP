@@ -10,7 +10,7 @@
 		var/turf/candidate = locate(rand(1, world.maxx), rand(1, world.maxy), 1)
 		if(istype(candidate, /turf/simulated/wall))
 			center = candidate
-			return 1
+			return TRUE
 	return FALSE
 
 /datum/event/wallrot/announce()

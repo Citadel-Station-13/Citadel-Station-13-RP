@@ -40,7 +40,7 @@
 		else
 			map[check_cell] = EMPTY_CHAR // Rare mineral block.
 		ore_count--
-	return 1
+	return TRUE
 
 /datum/random_map/automata/cave_system/apply_to_turf(var/x,var/y)
 	var/current_cell = get_map_cell(x,y)

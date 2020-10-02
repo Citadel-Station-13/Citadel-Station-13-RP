@@ -26,7 +26,7 @@
 			if(!attached_lock.controller_dna)
 				attached_lock.controller_dna = M.dna
 				to_chat(M, "<span class='notice'>\The [src] processes the dna sample and pings, acknowledging you as the primary controller.</span>")
-			return 1
+			return TRUE
 	else
 		to_chat(M, "<span class='warning'>\The [src] buzzes and displays a locked symbol. It is not allowing DNA samples at this time.</span>")
 		return FALSE
@@ -51,7 +51,7 @@
 				to_chat(M, "<span class='notice'>\The [src] beeps and removes you as the primary controller.</span>")
 				if(attached_lock.controller_lock)
 					attached_lock.controller_lock = 0
-			return 1
+			return TRUE
 	else
 		to_chat(M, "<span class='warning'>\The [src] buzzes and displays a locked symbol. It is not allowing DNA modifcation at this time.</span>")
 		return FALSE
@@ -82,7 +82,7 @@
 
 /obj/item/gun/proc/authorized_user(mob/user)
 	if(!attached_lock.stored_dna || !attached_lock.stored_dna.len)
-		return 1
+		return TRUE
 	if(!(user.dna in attached_lock.stored_dna))
 		return FALSE
-	return 1
+	return TRUE

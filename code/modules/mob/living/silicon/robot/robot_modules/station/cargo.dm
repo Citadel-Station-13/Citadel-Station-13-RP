@@ -13,8 +13,12 @@
 					"Basic" = "Miner_old",
 					"Advanced Droid" = "droid-miner",
 					"Treadhead" = "Miner",
-					"Drone" = "drone-miner"
-				)
+					"Drone" = "drone-miner",
+					"Handy" = "handy-miner",
+					"Acheron" = "mechoid-Miner",
+					"Shellguard Noble" = "Noble-DIG",
+					"ZOOM-BA" = "zoomba-miner"
+					 )
 
 /obj/item/robot_module/robot/miner/New()
 	..()

@@ -33,3 +33,10 @@
 	name = "sar radio bowman headset"
 	desc = "A bowman headset for search and rescue."
 	icon_state = "sar_headset_alt"
+
+/obj/item/radio/headset/volunteer
+	name = "volunteer's headset"
+	desc = "A headset used by volunteers to expedition teams, has access to the exploration channel."
+	icon_state = "pilot_headset"
+	adhoc_fallback = TRUE
+	ks2type = /obj/item/encryptionkey/pilot

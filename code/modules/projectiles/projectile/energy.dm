@@ -14,7 +14,7 @@
 	damage = 5
 	range = 15 //if the shell hasn't hit anything after travelling this far it just explodes.
 	light_color = COLOR_WHITE
-	var/flash_range = 0
+	var/flash_range = 1
 	var/brightness = 7
 
 /obj/item/projectile/energy/flash/on_impact(var/atom/A)
@@ -50,7 +50,7 @@
 /obj/item/projectile/energy/flash/flare
 	fire_sound = 'sound/weapons/grenade_launcher.ogg'
 	damage = 20
-	flash_range = 1
+	flash_range = 2
 	brightness = 15
 	flash_strength = 10
 	incendiary = 1
@@ -76,7 +76,7 @@
 	//Damage will be handled on the MOB side, to prevent window shattering.
 
 /obj/item/projectile/energy/electrode/strong
-	agony = 55
+	agony = 70
 
 /obj/item/projectile/energy/electrode/stunshot
 	name = "stunshot"

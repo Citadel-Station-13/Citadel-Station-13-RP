@@ -20,7 +20,7 @@
 		return FALSE
 	if (affected.robotic >= ORGAN_ROBOT)
 		return FALSE
-	return 1
+	return TRUE
 
 ///////////////////////////////////////////////////////////////
 // Scalpel Surgery

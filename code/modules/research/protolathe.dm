@@ -94,7 +94,7 @@
 /obj/machinery/r_n_d/protolathe/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(busy)
 		to_chat(user, "<span class='notice'>\The [src] is busy. Please wait for completion of previous operation.</span>")
-		return 1
+		return TRUE
 	if(default_deconstruction_screwdriver(user, O))
 		if(linked_console)
 			linked_console.linked_lathe = null
@@ -105,20 +105,20 @@
 	if(default_part_replacement(user, O))
 		return
 	if(O.is_open_container())
-		return 1
+		return TRUE
 	if(istype(O, /obj/item/gripper/no_use/loader))
 		return FALSE		//Sheet loaders weren't finishing attack(), this prevents the message "You can't stuff that gripper into this" without preventing the rest of the attack sequence from finishing
 	if(panel_open)
 		to_chat(user, "<span class='notice'>You can't load \the [src] while it's opened.</span>")
-		return 1
+		return TRUE
 	if(!linked_console)
 		to_chat(user, "<span class='notice'>\The [src] must be linked to an R&D console first!</span>")
-		return 1
+		return TRUE
 	if(!istype(O, /obj/item/stack/material))
 		to_chat(user, "<span class='notice'>You cannot insert this item into \the [src]!</span>")
-		return 1
+		return TRUE
 	if(stat)
-		return 1
+		return TRUE
 
 	var/obj/item/stack/material/S = O
 	if(!(S.material.name in materials))
@@ -171,7 +171,7 @@
 	for(var/C in D.chemicals)
 		if(!reagents.has_reagent(C, D.chemicals[C] * mat_efficiency))
 			return FALSE
-	return 1
+	return TRUE
 
 /obj/machinery/r_n_d/protolathe/proc/getLackingMaterials(var/datum/design/D)
 	var/ret = ""

@@ -56,6 +56,7 @@ var/global/list/ore_data = list()
 	spread_chance = 25
 	ore = /obj/item/ore/coal
 	scan_icon = "mineral_common"
+	compresses_to = "carbon"
 
 /datum/ore/glass
 	name = "sand"

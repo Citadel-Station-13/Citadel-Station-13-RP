@@ -337,6 +337,10 @@
 /obj/item/ammo_magazine/m9mm/large/preban // Sold by traders.
 	desc = "A large capacity magazine that was built before the SolGov Assault Weapons Ban, so it's legal to own."
 
+/obj/item/ammo_magazine/m9mm/large/preban/hp // Hollow Point Version
+	name = "magazine (9mm hollow-point)"
+	ammo_type = /obj/item/ammo_casing/a9mm/hp
+
 /obj/item/ammo_magazine/m9mm/empty
 	initial_ammo = 0
 
