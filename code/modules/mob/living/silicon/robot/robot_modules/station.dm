@@ -30,7 +30,7 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	var/channels = list()
 	var/networks = list()
 	var/vr_sprites = list()
-	languages = list(LANGUAGE_SOL_COMMON= 1,
+	var/languages = list(LANGUAGE_SOL_COMMON= 1,
 					LANGUAGE_TRADEBAND	= 1,
 					LANGUAGE_UNATHI		= 0,
 					LANGUAGE_SIIK		= 0,
@@ -73,8 +73,6 @@ GLOBAL_LIST_INIT(robot_modules, list(
 		if(R.shell)
 			channels = R.mainframe.aiRadio.channels
 		R.radio.recalculateChannels()
-
-	vr_add_sprites() // For vorestation only sprites
 
 	R.set_module_sprites(sprites)
 	R.choose_icon(R.module_sprites.len + 1, R.module_sprites)

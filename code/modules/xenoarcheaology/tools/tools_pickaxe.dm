@@ -1,6 +1,6 @@
 /obj/item/pickaxe/brush
 	name = "brush"
-	icon = 'icons/obj/xenoarchaeology.dmi'
+	icon = 'icons/obj/xenoarchaeology_vr.dmi'
 	icon_state = "pick_brush"
 	item_state = "syringe_0"
 	slot_flags = SLOT_EARS
@@ -15,7 +15,7 @@
 
 /obj/item/pickaxe/one_pick
 	name = "2cm pick"
-	icon = 'icons/obj/xenoarchaeology.dmi'
+	icon = 'icons/obj/xenoarchaeology_vr.dmi'
 	icon_state = "pick1"
 	item_state = "syringe_0"
 	force = 2
@@ -28,7 +28,7 @@
 
 /obj/item/pickaxe/two_pick
 	name = "4cm pick"
-	icon = 'icons/obj/xenoarchaeology.dmi'
+	icon = 'icons/obj/xenoarchaeology_vr.dmi'
 	icon_state = "pick2"
 	item_state = "syringe_0"
 	force = 2
@@ -41,7 +41,7 @@
 
 /obj/item/pickaxe/three_pick
 	name = "6cm pick"
-	icon = 'icons/obj/xenoarchaeology.dmi'
+	icon = 'icons/obj/xenoarchaeology_vr.dmi'
 	icon_state = "pick3"
 	item_state = "syringe_0"
 	force = 3
@@ -54,7 +54,7 @@
 
 /obj/item/pickaxe/four_pick
 	name = "8cm pick"
-	icon = 'icons/obj/xenoarchaeology.dmi'
+	icon = 'icons/obj/xenoarchaeology_vr.dmi'
 	icon_state = "pick4"
 	item_state = "syringe_0"
 	force = 3
@@ -67,7 +67,7 @@
 
 /obj/item/pickaxe/five_pick
 	name = "10cm pick"
-	icon = 'icons/obj/xenoarchaeology.dmi'
+	icon = 'icons/obj/xenoarchaeology_vr.dmi'
 	icon_state = "pick5"
 	item_state = "syringe_0"
 	force = 5
@@ -80,7 +80,7 @@
 
 /obj/item/pickaxe/six_pick
 	name = "12cm pick"
-	icon = 'icons/obj/xenoarchaeology.dmi'
+	icon = 'icons/obj/xenoarchaeology_vr.dmi'
 	icon_state = "pick6"
 	item_state = "syringe_0"
 	force = 5
@@ -93,7 +93,7 @@
 
 /obj/item/pickaxe/hand
 	name = "hand pickaxe"
-	icon = 'icons/obj/xenoarchaeology.dmi'
+	icon = 'icons/obj/xenoarchaeology_vr.dmi'
 	icon_state = "pick_hand"
 	item_state = "syringe_0"
 	force = 10

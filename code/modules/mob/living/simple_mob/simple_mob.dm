@@ -1,10 +1,10 @@
 // Reorganized and somewhat cleaned up.
 // AI code has been made into a datum, inside the AI module folder.
 
-// Flags for specifying which states we have vore icon_states for.
-#define SA_ICON_LIVING	0x01
-#define SA_ICON_DEAD	0x02
-#define SA_ICON_REST	0x04
+#define ai_log(M,V)	if(debug_ai) ai_log_output(M,V)
+
+//Talky things
+#define try_say_list(L) if(L.len) say(pick(L))
 
 /mob/living/simple_mob
 	name = "animal"
@@ -16,22 +16,23 @@
 
 	// Generally we don't want simple_mobs to get displaced when bumped into due to it trivializing combat with windup attacks.
 	// Some subtypes allow displacement, like passive animals.
-	mob_bump_flag = HEAVY
-	mob_swap_flags = ~HEAVY
-	mob_push_flags = ~HEAVY
+	mob_bump_flag  = SIMPLE_ANIMAL
+	mob_swap_flags = MONKEY|SLIME|HUMAN
+	mob_push_flags = MONKEY|SLIME|HUMAN
 
-	var/tt_desc = null //Tooltip description
+	var/tt_desc = "Uncataloged Life Form" //Tooltip description
 
 	//Settings for played mobs
 	var/show_stat_health = 1		// Does the percentage health show in the stat panel for the mob
-	var/has_hands = 0				// Set to 1 to enable the use of hands and the hands hud
-	var/humanoid_hands = 0			// Can a player in this mob use things like guns or AI cards?
+	var/has_hands = FALSE			// Set to TRUE to enable the use of hands and the hands hud
+	var/humanoid_hands = FALSE		// Can a player in this mob use things like guns or AI cards?
 	var/hand_form = "hands"			// Used in IsHumanoidToolUser. 'Your X are not fit-'.
 	var/list/hud_gears				// Slots to show on the hud (typically none)
 	var/ui_icons					// Icon file path to use for the HUD, otherwise generic icons are used
 	var/r_hand_sprite				// If they have hands,
 	var/l_hand_sprite				// they could use some icons.
 	var/player_msg					// Message to print to players about 'how' to play this mob on login.
+	var/ai_inactive = FALSE 		// Set to 1 to turn off most AI actions
 
 	//Mob icon/appearance settings
 	var/icon_living = ""			// The iconstate if we're alive, required
@@ -45,15 +46,34 @@
 	attack_icon_state = "slash" //Just the default
 
 	//Mob talking settings
-	universal_speak = 0				// Can all mobs in the entire universe understand this one?
+	universal_speak = FALSE			// Can all mobs in the entire universe understand this one?
 	var/has_langs = list(LANGUAGE_GALCOM)// Text name of their language if they speak something other than galcom. They speak the first one.
+	var/speak_chance = 0			// Probability that I talk (this is 'X in 200' chance since even 1/100 is pretty noisy)
+	var/reacts = FALSE				// Reacts to some things being said
+	var/list/speak = list()			// Things I might say if I talk
+	var/list/emote_hear = list()	// Hearable emotes I might perform
+	var/list/emote_see = list()		// Unlike speak_emote, the list of things in this variable only show by themselves with no spoken text. IE: Ian barks, Ian yaps
+	var/list/say_understood = list()// List of things to say when accepting an order
+	var/list/say_cannot = list()	// List of things to say when they cannot comply
+	var/list/say_maybe_target = list()// List of things to say when they spot something barely
+	var/list/say_got_target = list()// List of things to say when they engage a target
+	var/list/reactions = list() 	// List of "string" = "reaction" and things they hear will be searched for string.
 
 	//Movement things.
-	var/movement_cooldown = 5			// Lower is faster.
-	var/movement_sound = null			// If set, will play this sound when it moves on its own will.
-	var/turn_sound = null				// If set, plays the sound when the mob's dir changes in most cases.
-	var/movement_shake_radius = 0		// If set, moving will shake the camera of all living mobs within this radius slightly.
-	var/aquatic_movement = 0			// If set, the mob will move through fluids with no hinderance.
+	var/wander = TRUE				// Does the mob wander around when idle?
+	var/wander_distance = 3			// How far the mob will wander before going home (assuming they are allowed to do that)
+	var/returns_home = FALSE		// Mob knows how to return to wherever it started
+	var/turns_per_move = 1			// How many life() cycles to wait between each wander mov?
+	var/stop_when_pulled = TRUE 	// When set to TRUE this stops the animal from moving when someone is pulling it.
+	var/follow_dist = 2				// Distance the mob tries to follow a friend
+	var/obstacles = list()			// Things this mob refuses to move through
+	var/movement_cooldown = 5		// Lower is faster.
+	var/movement_sound = null		// If set, will play this sound when it moves on its own will.
+	var/turn_sound = null			// If set, plays the sound when the mob's dir changes in most cases.
+	var/movement_shake_radius = 0	// If set, moving will shake the camera of all living mobs within this radius slightly.
+	var/aquatic_movement = FALSE		// If set, the mob will move through fluids with no hinderance.
+	var/speed = 0					// Higher speed is slower, negative speed is faster.
+	var/turf/home_turf				// Set when they spawned, they try to come back here sometimes.
 
 	//Mob interaction
 	var/response_help   = "tries to help"	// If clicked on help intent
@@ -65,6 +85,9 @@
 	var/obj/meat_type				// The meat object to drop
 	var/list/loot_list = list()		// The list of lootable objects to drop, with "/path = prob%" structure
 	var/obj/item/card/id/myid// An ID card if they have one to give them access to stuff.
+	var/recruitable = FALSE			// Mob can be bossed around
+	var/recruit_cmd_str = "Hey,"	// The thing you prefix commands with when bossing them around
+	var/intelligence_level = SA_ANIMAL// How 'smart' the mob is ICly, used to deliniate between animal, robot, and humanoid SAs.
 
 	//Mob environment settings
 	var/minbodytemp = 250			// Minimum "okay" temperature in kelvin
@@ -86,9 +109,21 @@
 	var/unsuitable_atoms_damage = 2	// This damage is taken when atmos doesn't fit all the requirements above
 
 	//Hostility settings
-	var/taser_kill = 1				// Is the mob weak to tasers
+	var/hostile = FALSE				// Do I even attack?
+	var/retaliate = FALSE			// Do I respond to damage against specific targets.
+	var/view_range = 7				// Scan for targets in this range.
+	var/specific_targets = FALSE	// Only use Found() targets, ignore others.
+	var/investigates = FALSE		// Do I investigate if I saw someone briefly?
+	var/attack_same = FALSE			// Do I attack members of my own faction?
+	var/cooperative = FALSE			// Do I ask allies to help me?
+	var/assist_distance = 25		// Radius in which I'll ask my comrades for help.
+	var/taser_kill = TRUE			// Is the mob weak to tasers
 
 	//Attack ranged settings
+	var/ranged = FALSE					// Do I attack at range?
+	var/shoot_range = 7				// How far away do I start shooting from?
+	var/rapid = FALSE				// Three-round-burst fire mode
+	var/firing_lines = FALSE		// Avoids shooting allies
 	var/projectiletype				// The projectiles I shoot
 	var/projectilesound				// The sound I make when I do it
 	var/projectile_accuracy = 0		// Accuracy modifier to add onto the bullet when its fired.
@@ -103,12 +138,15 @@
 	var/reload_sound = 'sound/weapons/flipblade.ogg'	// What sound gets played when the mob successfully reloads. Defaults to the same sound as reloading guns. Can be null.
 
 	//Mob melee settings
-	var/melee_damage_lower = 2		// Lower bound of randomized melee damage
-	var/melee_damage_upper = 6		// Upper bound of randomized melee damage
+	var/melee_damage_lower = 2			// Lower bound of randomized melee damage
+	var/melee_damage_upper = 6			// Upper bound of randomized melee damage
 	var/list/attacktext = list("attacked") // "You are [attacktext] by the mob!"
-	var/list/friendly = list("nuzzles") // "The mob [friendly] the person."
+	var/list/friendly = list("nuzzles")	// "The mob [friendly] the person."
 	var/attack_sound = null				// Sound to play when I attack
-	var/melee_miss_chance = 0			// percent chance to miss a melee attack.
+	var/environment_smash = 0			// How much environment damage do I do when I hit stuff?
+	var/melee_miss_chance = 15			// percent chance to miss a melee attack.
+	var/melee_attack_minDelay = 5		// How long between attacks at least
+	var/melee_attack_maxDelay = 10		// How long between attacks at most
 	var/attack_armor_type = "melee"		// What armor does this check?
 	var/attack_armor_pen = 0			// How much armor pen this attack has.
 	var/attack_sharp = FALSE			// Is the attack sharp?
@@ -127,6 +165,16 @@
 	var/special_attack_charges = null		// If set, special attacks will work off of a charge system, and won't be usable if all charges are expended. Good for grenades.
 	var/special_attack_cooldown = null		// If set, special attacks will have a cooldown between uses.
 	var/last_special_attack = null			// world.time when a special attack occured last, for cooldown calculations.
+
+	var/spattack_prob = 0			// Chance of the mob doing a special attack (0 for never)
+	var/spattack_min_range = 0		// Min range to perform the special attacks from
+	var/spattack_max_range = 0		// Max range to perform special attacks from
+
+	//Attack movement settings
+	var/run_at_them = 1				// Don't use A* pathfinding, use walk_to
+	var/move_to_delay = 4			// Delay for the automated movement (deciseconds)
+	var/destroy_surroundings = 1	// Should I smash things to get to my target?
+	var/astar_adjacent_proc = /turf/proc/CardinalTurfsWithAccess // Proc to use when A* pathfinding.  Default makes them bound to cardinals.
 
 	//Damage resistances
 	var/grab_resist = 0				// Chance for a grab attempt to fail. Note that this is not a true resist and is just a prob() of failure.
@@ -156,38 +204,45 @@
 	var/shock_resist = 0.0
 	var/water_resist = 1.0
 	var/poison_resist = 0.0
+	var/shock_resistance = 0		// Siemens modifier, directly subtracted from 1. Value of 0.4 means 0.6 siemens on shocks.
 	var/thick_armor = FALSE // Stops injections and "injections".
-	var/purge = 0					// Cult stuff.
-	var/supernatural = FALSE		// Ditto.
+	var/supernatural = FALSE		// If the mob is supernatural (used in null-rod stuff for banishing?)
+
+	//Scary debug things
+	var/debug_ai = 0				// Logging level for this mob (1,2,3)
+	var/path_display = 0			// Will display the path in green when pathing
+	var/path_icon = 'icons/misc/debug_group.dmi' // What icon to use for the overlay
+	var/path_icon_state = "red"		// What state to use for the overlay
+	var/icon/path_overlay			// A reference to restart
 
 	// contained in a cage
-	var/in_stasis = 0
+	var/in_stasis = FALSE
 
 	// Vore Stuff
-	var/vore_active = 0					// If vore behavior is enabled for this mob
+	var/vore_active = FALSE					// If vore behavior is enabled for this mob
 
-	var/vore_capacity = 1				// The capacity (in people) this person can hold
-	var/vore_max_size = RESIZE_HUGE		// The max size this mob will consider eating
-	var/vore_min_size = RESIZE_TINY 	// The min size this mob will consider eating
-	var/vore_bump_chance = 0			// Chance of trying to eat anyone that bumps into them, regardless of hostility
-	var/vore_bump_emote	= "grabs hold of"				// Allow messages for bumpnom mobs to have a flavorful bumpnom
-	var/vore_pounce_chance = 5			// Chance of this mob knocking down an opponent
-	var/vore_pounce_cooldown = 0		// Cooldown timer - if it fails a pounce it won't pounce again for a while
-	var/vore_pounce_successrate	= 100	// Chance of a pounce succeeding against a theoretical 0-health opponent
-	var/vore_pounce_falloff = 1			// Success rate falloff per %health of target mob.
-	var/vore_pounce_maxhealth = 80		// Mob will not attempt to pounce targets above this %health
-	var/vore_standing_too = 0			// Can also eat non-stunned mobs
-	var/vore_ignores_undigestable = 1	// Refuse to eat mobs who are undigestable by the prefs toggle.
-	var/swallowsound = null				// What noise plays when you succeed in eating the mob.
+	var/vore_capacity = 1					// The capacity (in people) this person can hold
+	var/vore_max_size = RESIZE_HUGE			// The max size this mob will consider eating
+	var/vore_min_size = RESIZE_TINY 		// The min size this mob will consider eating
+	var/vore_bump_chance = 0				// Chance of trying to eat anyone that bumps into them, regardless of hostility
+	var/vore_bump_emote	= "grabs hold of"	// Allow messages for bumpnom mobs to have a flavorful bumpnom
+	var/vore_pounce_chance = 5				// Chance of this mob knocking down an opponent
+	var/vore_pounce_cooldown = 0			// Cooldown timer - if it fails a pounce it won't pounce again for a while
+	var/vore_pounce_successrate	= 100		// Chance of a pounce succeeding against a theoretical 0-health opponent
+	var/vore_pounce_falloff = 1				// Success rate falloff per %health of target mob.
+	var/vore_pounce_maxhealth = 80			// Mob will not attempt to pounce targets above this %health
+	var/vore_standing_too = FALSE			// Can also eat non-stunned mobs
+	var/vore_ignores_undigestable = TRUE	// Refuse to eat mobs who are undigestable by the prefs toggle.
+	var/swallowsound = null					// What noise plays when you succeed in eating the mob.
 
-	var/vore_default_mode = DM_DIGEST	// Default bellymode (DM_DIGEST, DM_HOLD, DM_ABSORB)
-	var/vore_default_flags = 0			// No flags
-	var/vore_digest_chance = 25			// Chance to switch to digest mode if resisted
-	var/vore_absorb_chance = 0			// Chance to switch to absorb mode if resisted
-	var/vore_escape_chance = 25			// Chance of resisting out of mob
+	var/vore_default_mode = DM_DIGEST		// Default bellymode (DM_DIGEST, DM_HOLD, DM_ABSORB)
+	var/vore_default_flags = 0				// No flags
+	var/vore_digest_chance = 25				// Chance to switch to digest mode if resisted
+	var/vore_absorb_chance = 0				// Chance to switch to absorb mode if resisted
+	var/vore_escape_chance = 25				// Chance of resisting out of mob
 
-	var/vore_stomach_name				// The name for the first belly if not "stomach"
-	var/vore_stomach_flavor				// The flavortext for the first belly if not the default
+	var/vore_stomach_name					// The name for the first belly if not "stomach"
+	var/vore_stomach_flavor					// The flavortext for the first belly if not the default
 
 	var/vore_default_item_mode = IM_DIGEST_FOOD			//How belly will interact with items
 	var/vore_default_contaminates = TRUE				//Will it contaminate?
@@ -205,27 +260,71 @@
 	does_spin = FALSE
 
 
+	////// These are used for inter-proc communications so don't edit them manually //////
+	var/stance = STANCE_IDLE		// Used to determine behavior
+	var/stop_automated_movement = 0 // Use this to temporarely stop random movement or to if you write special movement code for animals.
+	var/lifes_since_move = 0 		// A counter for how many life() cycles since move
+	var/shuttletarget = null		// Shuttle's here, time to get to it
+	var/enroute = 0					// If the shuttle is en-route
+	var/purge = 0					// A counter used for null-rod stuff
+	var/mob/living/target_mob		// Who I'm trying to attack
+	var/mob/living/follow_mob		// Who I'm recruited by
+	var/mob/living/simple_mob/list/faction_friends = list() // Other simple mobs I am friends with
+	var/turf/list/walk_list = list()// List of turfs to walk through to get somewhere
+	var/astarpathing = 0			// Am I currently pathing to somewhere?
+	var/stance_changed = 0			// When our stance last changed (world.time)
+	var/last_target_time = 0		// When we last set our target, to prevent juggles
+	var/last_follow_time = 0		// When did we last get asked to follow someone?
+	var/last_helpask_time = 0		// When did we last call for help?
+	var/follow_until_time = 0		// Give up following when we reach this time (0 = never)
+	var/annoyed = 0					// Do people keep distract-kiting us?
+	////// ////// //////
+
+
 /mob/living/simple_mob/Initialize()
+	. = ..()
 	verbs -= /mob/verb/observe
-	health = maxHealth
+	home_turf = get_turf(src)
+	path_overlay = new(path_icon,path_icon_state)
+	move_to_delay = max(2,move_to_delay) //Protection against people coding things incorrectly and A* pathing 100% of the time
+	maxHealth = health
 
 	for(var/L in has_langs)
 		languages |= GLOB.all_languages[L]
 	if(languages.len)
 		default_language = languages[1]
 
+	if(cooperative)
+		var/mob/living/simple_mob/first_friend
+		for(var/mob/living/simple_mob/M in living_mob_list)
+			if(M.faction == src.faction)
+				first_friend = M
+				break
+		if(first_friend)
+			faction_friends = first_friend.faction_friends
+			faction_friends |= src
+		else
+			faction_friends |= src
+
 	if(has_eye_glow)
 		add_eyes()
 	return ..()
 
-
 /mob/living/simple_mob/Destroy()
+	home_turf = null
+	path_overlay = null
 	default_language = null
+	target_mob = null
+	follow_mob = null
 	if(myid)
 		qdel(myid)
 		myid = null
 
-	friends.Cut()
+	if(faction_friends.len) //This list is shared amongst the faction
+		faction_friends -= src
+
+	friends.Cut() //This one is not
+	walk_list.Cut()
 	languages.Cut()
 
 	if(has_eye_glow)
@@ -245,13 +344,75 @@
 //Client attached
 /mob/living/simple_mob/Login()
 	. = ..()
-	to_chat(src,"<b>You are \the [src].</b> [player_msg]")
+	ai_inactive = 1
+	handle_stance(STANCE_IDLE)
+	LoseTarget()
+	to_chat(src,"<span class='notice'>Mob AI disabled while you are controlling the mob.</span><br><b>You are \the [src]. [player_msg]</b>")
 
+//Client detatched
+/mob/living/simple_mob/Logout()
+	spawn(15 SECONDS) //15 seconds to get back into the mob before it goes wild
+		if(src && !src.client)
+			ai_inactive = initial(ai_inactive) //So if they never have an AI, they stay that way.
+	..()
+
+//For debug purposes!
+/mob/living/simple_mob/proc/ai_log_output(var/msg = "missing message", var/ver = 1)
+	if(ver <= debug_ai)
+		log_debug("SA-AI: ([src]:[x],[y],[z])(@[world.time]): [msg] ")
 
 /mob/living/simple_mob/emote(var/act, var/type, var/desc)
 	if(act)
 		..(act, type, desc)
 
+//Should we be dead?
+/mob/living/simple_mob/updatehealth()
+	health = getMaxHealth() - getToxLoss() - getFireLoss() - getBruteLoss()
+
+	//Alive, becoming dead
+	if((stat < DEAD) && (health <= 0))
+		death()
+
+	//Overhealth
+	if(health > getMaxHealth())
+		health = getMaxHealth()
+
+	//Update our hud if we have one
+	if(healths)
+		if(stat != DEAD)
+			var/heal_per = (health / getMaxHealth()) * 100
+			switch(heal_per)
+				if(100 to INFINITY)
+					healths.icon_state = "health0"
+				if(80 to 100)
+					healths.icon_state = "health1"
+				if(60 to 80)
+					healths.icon_state = "health2"
+				if(40 to 60)
+					healths.icon_state = "health3"
+				if(20 to 40)
+					healths.icon_state = "health4"
+				if(0 to 20)
+					healths.icon_state = "health5"
+				else
+					healths.icon_state = "health6"
+		else
+			healths.icon_state = "health7"
+
+	//Updates the nutrition while we're here
+	if(nutrition_icon)
+		var/food_per = (nutrition / initial(nutrition)) * 100
+		switch(food_per)
+			if(90 to INFINITY)
+				nutrition_icon.icon_state = "nutrition0"
+			if(75 to 90)
+				nutrition_icon.icon_state = "nutrition1"
+			if(50 to 75)
+				nutrition_icon.icon_state = "nutrition2"
+			if(25 to 50)
+				nutrition_icon.icon_state = "nutrition3"
+			if(0 to 25)
+				nutrition_icon.icon_state = "nutrition4"
 
 /mob/living/simple_mob/SelfMove(turf/n, direct)
 	var/turf/old_turf = get_turf(src)
@@ -371,6 +532,42 @@
 
 /mob/living/simple_mob/update_icon()
 	. = ..()
+	var/mutable_appearance/ma = new(src)
+	ma.layer = layer
+	ma.plane = plane
+
+	ma.overlays = list(modifier_overlay)
+
+	//Awake and normal
+	if((stat == CONSCIOUS) && (!icon_rest || !resting || !incapacitated(INCAPACITATION_DISABLED) ))
+		ma.icon_state = icon_living
+
+	//Dead
+	else if(stat >= DEAD)
+		ma.icon_state = icon_dead
+
+	//Resting or KO'd
+	else if(((stat == UNCONSCIOUS) || resting || incapacitated(INCAPACITATION_DISABLED) ) && icon_rest)
+		ma.icon_state = icon_rest
+
+	//Backup
+	else
+		ma.icon_state = initial(icon_state)
+
+	//VOREStation edit start
+	var/vore_icon_state = update_vore_icon()
+	if(vore_icon_state)
+		ma.icon_state = vore_icon_state
+	//VOREStation edit end
+
+	if(has_hands)
+		if(r_hand_sprite)
+			ma.overlays += r_hand_sprite
+		if(l_hand_sprite)
+			ma.overlays += l_hand_sprite
+
+	appearance = ma
+
 	if(vore_active)
 		update_fullness()
 		if(!vore_fullness)
@@ -381,6 +578,72 @@
 			icon_state = "[icon_dead]-[vore_fullness]"
 		else if(((stat == UNCONSCIOUS) || resting || incapacitated(INCAPACITATION_DISABLED) ) && icon_rest && (vore_icons & SA_ICON_REST))
 			icon_state = "[icon_rest]-[vore_fullness]"
+
+// If your simple mob's update_icon() call calls overlays.Cut(), this needs to be called after this, or manually apply modifier_overly to overlays.
+/mob/living/simple_mob/update_modifier_visuals()
+	var/image/effects = null
+	if(modifier_overlay)
+		overlays -= modifier_overlay
+		modifier_overlay.overlays.Cut()
+		effects = modifier_overlay
+	else
+		effects = new()
+
+	for(var/datum/modifier/M in modifiers)
+		if(M.mob_overlay_state)
+			var/image/I = image("icon" = 'icons/mob/modifier_effects.dmi', "icon_state" = M.mob_overlay_state)
+			I.appearance_flags = RESET_COLOR // So colored mobs don't affect the overlay.
+			effects.overlays += I
+
+	modifier_overlay = effects
+	overlays += modifier_overlay
+
+/mob/living/simple_mob/Life()
+
+	if(life_disabled)
+		return FALSE
+
+	..()
+
+	//Health
+	updatehealth()
+	if(stat >= DEAD)
+		return FALSE
+
+	handle_stunned()
+	handle_weakened()
+	handle_paralysed()
+	handle_supernatural()
+	handle_atmos() //Atmos
+
+	ai_log("Life() - stance=[stance] ai_inactive=[ai_inactive]", 4)
+
+	//AI Actions
+	if(!ai_inactive)
+		//Stanceyness
+		handle_stance()
+
+		//Movement
+		if(!stop_automated_movement && wander && !anchored) //Allowed to move?
+			handle_wander_movement()
+
+		//Speaking
+		if(speak_chance && stance == STANCE_IDLE) // Allowed to chatter?
+			handle_idle_speaking()
+
+		//Resisting out buckles
+		if(stance != STANCE_IDLE && incapacitated(INCAPACITATION_BUCKLED_PARTIALLY))
+			handle_resist()
+
+		//Resisting out of closets
+		if(istype(loc,/obj/structure/closet))
+			var/obj/structure/closet/C = loc
+			if(C.sealed)
+				handle_resist()
+			else
+				C.open()
+
+	return 1
 
 /mob/living/simple_mob/proc/will_eat(var/mob/living/M)
 	if(client) //You do this yourself, dick!

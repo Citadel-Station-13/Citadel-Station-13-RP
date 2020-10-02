@@ -51,7 +51,7 @@
 		..()
 
 /turf/ex_act(severity)
-	return FLASE
+	return FALSE
 
 /turf/proc/is_space()
 	return FALSE

@@ -251,7 +251,7 @@
 		flash_protection = FLASH_PROTECTION_NONE
 		blessed = FALSE
 		to_chat(user, "<font color='blue'>The OM visor doesn't respond to you.</font>")
-/*
+
 /obj/item/clothing/head/helmet/solgov
 	name = "\improper Solar Central Government helmet"
 	desc = "A helmet painted in Peacekeeper blue. Stands out like a sore thumb."
@@ -267,7 +267,7 @@
 	item_state = "unsc_helm"
 	icon = 'icons/obj/clothing/hats_vr.dmi'
 	icon_override = 'icons/mob/head_vr.dmi'
-*/
+
 /obj/item/clothing/head/helmet/combat/imperial
 	name = "imperial soldier helmet"
 	desc = "Veni, vidi, vici; I came, I saw, I conquered."

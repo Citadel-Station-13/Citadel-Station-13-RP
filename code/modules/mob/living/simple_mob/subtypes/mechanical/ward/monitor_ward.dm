@@ -36,7 +36,7 @@
 	ai_holder_type = /datum/ai_holder/simple_mob/monitor
 
 	var/list/seen_mobs = list()
-	var/view_range = 5
+	view_range = 5
 
 // For PoIs.
 /mob/living/simple_mob/mechanical/ward/monitor/syndicate

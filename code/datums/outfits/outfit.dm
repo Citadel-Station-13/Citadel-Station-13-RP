@@ -202,7 +202,7 @@ var/list/outfits_decls_by_type_
 	C.assignment = "USDF"
 	C.registered_name = H.real_name
 	return C
-
+/*
 /decl/hierarchy/outfit/USDF/Officer
 	name = "USDF officer"
 	head = /obj/item/clothing/head/dress/marine/command/admiral
@@ -215,7 +215,7 @@ var/list/outfits_decls_by_type_
 	r_pocket = /obj/item/ammo_magazine/s44
 	r_hand = /obj/item/clothing/accessory/holster/hip
 	l_hand = /obj/item/clothing/accessory/tie/black
-
+*/
 /decl/hierarchy/outfit/USDF/Officer/equip_id(mob/living/carbon/human/H)
 	var/obj/item/card/id/C = ..()
 	C.name = "[H.real_name]'s military ID Card"

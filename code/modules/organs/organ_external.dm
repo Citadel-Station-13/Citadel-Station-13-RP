@@ -1127,7 +1127,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 	dislocated = -1
 	cannot_break = 1
-	min_broken_damage = ROBOLIMB_REPAIR_CAP //VOREStation Addition - Makes robotic limb damage scalable
+	min_broken_damage = ROBOLIMB_REPAIR_CAP // Makes robotic limb damage scalable
 	remove_splint()
 	get_icon()
 	unmutate()
@@ -1135,6 +1135,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	for(var/obj/item/organ/external/T in children)
 		T.robotize(company, keep_organs = keep_organs)
 
+	var/original_robotic = robotic
 	if(original_robotic >= ORGAN_NANOFORM)
 		var/o_encased = encased
 		var/o_max_damage = max_damage

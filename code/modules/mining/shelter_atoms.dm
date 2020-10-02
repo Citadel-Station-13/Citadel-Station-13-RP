@@ -304,7 +304,7 @@
 	anchored = TRUE
 	layer = BELOW_MOB_LAYER
 	density = FALSE
-
+/*
 /obj/structure/fans/hardlight
 	name = "hardlight shield"
 	desc = "Retains air, allows passage."
@@ -318,3 +318,4 @@
 	light_range = 3
 	light_power = 1
 	light_color = COLOR_WHITE
+*/
