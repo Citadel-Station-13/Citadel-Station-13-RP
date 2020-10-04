@@ -100,20 +100,20 @@
 	origin_tech = list(TECH_MAGNET = 2, TECH_ILLEGAL = 2)
 	var/uses = 10
 
-/obj/item/card/emag/resolve_attackby(atom/A, mob/user)
+/obj/item/card/emag/resolve_attackby(obj/item/W, mob/user, params, attack_modifier)
 	var/used_uses = A.emag_act(uses, user, src)
 	if(used_uses < 0)
-		return ..(A, user)
+		return ..(W, user)
 
 	uses -= used_uses
-	A.add_fingerprint(user)
+	W.add_fingerprint(user)
 	//Vorestation Edit: Because some things (read lift doors) don't get emagged
 	if(used_uses)
-		log_and_message_admins("emagged \an [A].")
+		log_and_message_admins("emagged \an [W].")
 	else
-		log_and_message_admins("attempted to emag \an [A].")
+		log_and_message_admins("attempted to emag \an [W].")
 	// Vorestation Edit: End of Edit
-	log_and_message_admins("emagged \an [A].")
+	log_and_message_admins("emagged \an [W].")
 
 	if(uses<1)
 		user.visible_message("<span class='warning'>\The [src] fizzles and sparks - it seems it's been used once too often, and is now spent.</span>")

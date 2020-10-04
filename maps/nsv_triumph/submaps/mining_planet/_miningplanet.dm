@@ -56,6 +56,9 @@
 			rare_count++
 		else
 			deep_count++
+	admin_notice("RARE COUNT [rare_count]", R_DEBUG)
+	admin_notice("SURFACE COUNT [surface_count]", R_DEBUG)
+	admin_notice("DEEP COUNT [deep_count]", R_DEBUG)
 	// Sanity check.
 	if(surface_count < 100)
 		admin_notice("<span class='danger'>Insufficient surface minerals. Rerolling...</span>", R_DEBUG)
@@ -68,6 +71,3 @@
 		return 0
 	else
 		return 1
-	admin_notice("RARE COUNT [rare_count]", R_DEBUG)
-	admin_notice("SURFACE COUNT [surface_count]", R_DEBUG)
-	admin_notice("DEEP COUNT [deep_count]", R_DEBUG)

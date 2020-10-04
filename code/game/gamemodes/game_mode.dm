@@ -309,11 +309,11 @@ var/global/list/additional_antag_types = list()
 			if(ishuman(M))
 				if(M.stat != DEAD)
 					surviving_humans++
-					if(M.loc && M.loc.loc && M.loc.loc.type in escape_locations)
+					if(M.loc && M.loc.loc && (M.loc.loc.type in escape_locations))
 						escaped_humans++
 			if(M.stat != DEAD)
 				surviving_total++
-				if(M.loc && M.loc.loc && M.loc.loc.type in escape_locations)
+				if(M.loc && M.loc.loc && (M.loc.loc.type in escape_locations))
 					escaped_total++
 
 				if(M.loc && M.loc.loc && M.loc.loc.type == /area/shuttle/escape/centcom)

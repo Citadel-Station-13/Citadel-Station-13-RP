@@ -211,7 +211,8 @@ Barricades
 		icon_state = "barrier[locked]"
 
 /obj/machinery/deployable/barrier/CanAllowThrough(atom/movable/mover, turf/target)//So bullets will fly over and stuff.
-	if(istype(mover) && mover.checkpass(PASSTABLE))
+	. = ..()
+	if(mover.checkpass(PASSTABLE))
 		return TRUE
 	return FALSE
 

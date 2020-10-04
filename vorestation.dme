@@ -886,7 +886,6 @@
 #include "code\game\machinery\telecomms\presets_vr.dm"
 #include "code\game\machinery\telecomms\telecomunications.dm"
 #include "code\game\machinery\telecomms\telemonitor.dm"
-#include "code\game\machinery\telecomms\traffic_control.dm"
 #include "code\game\machinery\virtual_reality\ar_console.dm"
 #include "code\game\machinery\virtual_reality\vr_console.dm"
 #include "code\game\magic\Uristrunes.dm"

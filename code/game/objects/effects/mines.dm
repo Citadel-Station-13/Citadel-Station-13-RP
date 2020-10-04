@@ -36,6 +36,7 @@
 	..()
 
 /obj/effect/mine/Crossed(AM as mob|obj)
+	. = ..()
 	Bumped(AM)
 
 /obj/effect/mine/Bumped(mob/M as mob|obj)

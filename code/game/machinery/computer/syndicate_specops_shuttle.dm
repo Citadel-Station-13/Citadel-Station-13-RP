@@ -130,7 +130,7 @@ var/syndicate_elite_shuttle_timeleft = 0
 					spawn(0)
 						M.close()
 						*/
-		elite_squad.readyreset()//Reset firealarm after the team launched.
+	elite_squad.readyreset()//Reset firealarm after the team launched.
 	//End Marauder launchpad.
 /*
 	var/obj/explosionmarker = locate("Syndicate Breach Area")

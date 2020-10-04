@@ -29,6 +29,7 @@
 	return ..()
 
 /obj/effect/decal/cleanable/chemcoating/Crossed(AM as mob|obj)
+	. = ..()
 	Bumped(AM)
 
 /obj/effect/decal/cleanable/chemcoating/update_icon()

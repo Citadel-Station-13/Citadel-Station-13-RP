@@ -65,6 +65,7 @@
 	return TryToSwitchState(user)
 
 /obj/structure/simple_door/CanAllowThrough(atom/movable/mover, turf/target)
+	. = ..()
 	if(istype(mover, /obj/effect/beam))
 		return !opacity
 	return !density
