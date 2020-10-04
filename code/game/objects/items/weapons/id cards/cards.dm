@@ -101,7 +101,7 @@
 	var/uses = 10
 
 /obj/item/card/emag/resolve_attackby(obj/item/W, mob/user, params, attack_modifier)
-	var/used_uses = A.emag_act(uses, user, src)
+	var/used_uses = W.emag_act(uses, user, src)
 	if(used_uses < 0)
 		return ..(W, user)
 
