@@ -108,9 +108,6 @@ What is the naming convention for planes or layers?
 	#define SCREEN_LAYER			22	// Mob HUD/effects layer
 
 #define PLANE_ADMIN1			3 //Purely for shenanigans (below lighting)
-#define PLANE_PLANETLIGHTING	4 //Lighting on planets
-#define PLANE_LIGHTING			5 //Where the lighting (and darkness) lives
-#define PLANE_LIGHTING_ABOVE	6 //For glowy eyes etc. that shouldn't be affected by darkness
 
 #define PLANE_GHOSTS			10 //Spooooooooky ghooooooosts
 #define PLANE_AI_EYE			11 //The AI eye lives here
@@ -129,7 +126,37 @@ What is the naming convention for planes or layers?
 
 #define PLANE_MESONS			30 //Stuff seen with mesons, like open ceilings. This is 30 for downstreams.
 
-#define PLANE_ADMIN2			33 //Purely for shenanigans (above lighting)
+// "Character HUDs", aka HUDs, but not the game's UI. Things like medhuds.
+#define PLANE_CH_HEALTH_VR			26 //Hidden healthbar when at full health
+#define PLANE_CH_STATUS_R			27 //Right-side status icon
+#define PLANE_CH_BACKUP				28 //Backup implant
+#define PLANE_CH_VANTAG				29 //Vore Antag hud
+
+#define EMISSIVE_BLOCKER_PLANE 34
+#define EMISSIVE_BLOCKER_LAYER 34
+#define EMISSIVE_BLOCKER_RENDER_TARGET "*EMISSIVE_BLOCKER_PLANE"
+
+#define EMISSIVE_PLANE 35
+#define EMISSIVE_LAYER 35
+#define EMISSIVE_RENDER_TARGET "*EMISSIVE_PLANE"
+
+#define EMISSIVE_UNBLOCKABLE_PLANE 36
+#define EMISSIVE_UNBLOCKABLE_LAYER 36
+#define EMISSIVE_UNBLOCKABLE_RENDER_TARGET "*EMISSIVE_UNBLOCKABLE_PLANE"
+
+#define LIGHTING_PLANE 37
+#define LIGHTING_LAYER 37
+#define LIGHTING_RENDER_TARGET "LIGHT_PLANE"
+
+#define ABOVE_LIGHTING_PLANE 38
+#define ABOVE_LIGHTING_LAYER 38
+#define ABOVE_LIGHTING_RENDER_TARGET "ABOVE_LIGHTING_PLANE"
+
+#define BYOND_LIGHTING_PLANE 39
+#define BYOND_LIGHTING_LAYER 39
+#define BYOND_LIGHTING_RENDER_TARGET "BYOND_LIGHTING_PLANE"
+
+#define PLANE_AUGMENTED				40 //Augmented-reality plane
 
 //Fullscreen overlays under inventory
 #define PLANE_FULLSCREEN		90 //Blindness, mesons, druggy, etc

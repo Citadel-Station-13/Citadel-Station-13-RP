@@ -4,17 +4,24 @@
 
 /datum/plane_holder
 	var/mob/my_mob
-	var/list/plane_masters[VIS_COUNT]
+	var/list/plane_masters
 
+#define OPERATE(path, mymob, index) operating = new path;operating.backdrop(mymob);plane_masters[index] = operating;
 /datum/plane_holder/New(mob/this_guy)
 	ASSERT(ismob(this_guy))
 	my_mob = this_guy
+	plane_masters = list()
+	plane_masters.len = VIS_COUNT
+	var/obj/screen/plane_master/operating
 
 	//It'd be nice to lazy init these but some of them are important to just EXIST. Like without ghost planemaster, you can see ghosts. Go figure.
 
 	// 'Utility' planes
-	plane_masters[VIS_FULLBRIGHT] 	= new /obj/screen/plane_master/fullbright						//Lighting system (lighting_overlay objects)
-	plane_masters[VIS_LIGHTING] 	= new /obj/screen/plane_master/lighting							//Lighting system (but different!)
+
+	OPERATE(/obj/screen/plane_master/lighting, my_mob, VIS_LIGHTING)
+	OPERATE(/obj/screen/plane_master/emissive, my_mob, VIS_EMISSIVE)
+	OPERATE(/obj/screen/plane_master/emissive_unblockable, my_mob, VIS_EMISSIVE_UNBLOCKABLE)
+
 	plane_masters[VIS_GHOSTS] 		= new /obj/screen/plane_master/ghosts							//Ghosts!
 	plane_masters[VIS_AI_EYE]		= new /obj/screen/plane_master{plane = PLANE_AI_EYE}			//AI Eye!
 
@@ -40,7 +47,16 @@
 	plane_masters[VIS_OBJS]		= new /obj/screen/plane_master/main{plane = OBJ_PLANE}
 	plane_masters[VIS_MOBS]		= new /obj/screen/plane_master/main{plane = MOB_PLANE}
 
+	plane_masters[VIS_CH_STATUS_R] 		= new /obj/screen/plane_master{plane = PLANE_CH_STATUS_R}			//Right-side status icon
+	plane_masters[VIS_CH_HEALTH_VR] 	= new /obj/screen/plane_master{plane = PLANE_CH_HEALTH_VR}			//Health bar but transparent at 100
+	plane_masters[VIS_CH_BACKUP] 		= new /obj/screen/plane_master{plane = PLANE_CH_BACKUP}				//Backup implant status
+	plane_masters[VIS_CH_VANTAG] 		= new /obj/screen/plane_master{plane = PLANE_CH_VANTAG}				//Vore Antags
+
+	plane_masters[VIS_AUGMENTED]		= new /obj/screen/plane_master/augmented(my_mob)					//Augmented reality
+
 	..()
+
+#undef OPERATE
 
 /datum/plane_holder/Destroy()
 	my_mob = null
@@ -151,21 +167,6 @@
 ////////////////////
 // Special masters
 ////////////////////
-
-/////////////////
-//Lighting is weird and has matrix shenanigans. Think of this as turning on/off darkness.
-/obj/screen/plane_master/fullbright
-	plane = PLANE_LIGHTING
-	layer = LAYER_HUD_BASE+1 // This MUST be above the lighting plane_master
-	color = null //To break lighting when visible (this is sorta backwards)
-	alpha = 0 //Starts full opaque
-	invisibility = 101
-	invis_toggle = TRUE
-
-/obj/screen/plane_master/lighting
-	plane = PLANE_LIGHTING
-	blend_mode = BLEND_MULTIPLY
-	alpha = 255
 
 /////////////////
 //Ghosts has a special alpha level

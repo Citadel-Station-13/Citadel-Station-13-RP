@@ -388,7 +388,17 @@
 #define VIS_OBJS			20
 #define VIS_MOBS			21
 
-#define VIS_COUNT			21 //Must be highest number from above.
+#define VIS_CH_STATUS_R		22
+#define VIS_CH_HEALTH_VR	23
+#define VIS_CH_BACKUP		24
+#define VIS_CH_VANTAG		25
+
+#define VIS_AUGMENTED		26
+
+#define VIS_EMISSIVE					27
+#define VIS_EMISSIVE_UNBLOCKABLE		28
+
+#define VIS_COUNT			28
 
 //Some mob icon layering defines
 #define BODY_LAYER		-100
