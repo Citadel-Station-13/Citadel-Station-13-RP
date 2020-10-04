@@ -211,3 +211,5 @@
 	if(prob(75))
 		new /obj/item/storage/backpack/dufflebag/sec(src)
 	return ..()
+
+//Mark for merge with security.dm and deletion later. Unknown conflict emerged this time.
