@@ -25,6 +25,9 @@
 	var/cache_b  = LIGHTING_SOFT_THRESHOLD
 	var/cache_mx = 0
 
+	/// Only used for planet lighting right now - update generation for planet lighting.
+	var/update_gen = 0
+
 // Diagonal is our direction FROM them, not to.
 /datum/lighting_corner/New(turf/new_turf, diagonal)
 	. = ..()

@@ -32,10 +32,16 @@
 			N = /turf/simulated/open
 
 	var/obj/fire/old_fire = fire
+
 	var/old_opacity = opacity
 	var/old_dynamic_lighting = dynamic_lighting
 	var/old_affecting_lights = affecting_lights
-	var/old_lighting_overlay = lighting_overlay
+	var/old_lighting_object = lighting_object
+	var/old_lc_topright = lc_topright
+	var/old_lc_topleft = lc_topleft
+	var/old_lc_bottomright = lc_bottomright
+	var/old_lc_bottomleft = lc_bottomleft
+
 	var/old_corners = corners
 	var/old_outdoors = outdoors
 	var/old_dangerous_objects = dangerous_objects
@@ -94,21 +100,27 @@
 		W.post_change()
 		. =  W
 
-	recalc_atom_opacity()
-
 	dangerous_objects = old_dangerous_objects
 
-	if(lighting_overlays_initialised)
-		lighting_overlay = old_lighting_overlay
+	if(SSlighting.subsystem_initialized)
+		recalc_atom_opacity()
+		lighting_object = old_lighting_object
 		affecting_lights = old_affecting_lights
-		corners = old_corners
-		if((old_opacity != opacity) || (dynamic_lighting != old_dynamic_lighting))
+		lc_topright = old_lc_topright
+		lc_topleft = old_lc_topleft
+		lc_bottomright = old_lc_bottomright
+		lc_bottomleft = old_lc_bottomleft
+		if (old_opacity != opacity || dynamic_lighting != old_dynamic_lighting)
 			reconsider_lights()
-		if(dynamic_lighting != old_dynamic_lighting)
-			if(dynamic_lighting)
+
+		if (dynamic_lighting != old_dynamic_lighting)
+			if (IS_DYNAMIC_LIGHTING(src))
 				lighting_build_overlay()
 			else
 				lighting_clear_overlay()
+
+		for(var/turf/open/space/S in RANGE_TURFS(1, src)) //RANGE_TURFS is in code\__HELPERS\game.dm
+			S.update_starlight()
 
 	if(preserve_outdoors)
 		outdoors = old_outdoors
