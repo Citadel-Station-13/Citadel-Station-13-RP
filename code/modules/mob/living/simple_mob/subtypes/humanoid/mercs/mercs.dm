@@ -5,15 +5,16 @@
 // Probably shouldn't use this directly, there are a bunch of sub-classes that are more complete.
 /mob/living/simple_mob/humanoid/merc
 	name = "mercenary"
-	desc = "A tough looking heavily-armed individual."
+	desc = "A tough looking individual armed with only a knife."
 	tt_desc = "E Homo sapiens"
+	icon = 'icons/mob/merc.dmi'
 	icon_state = "syndicate"
 	icon_living = "syndicate"
 	icon_dead = "syndicate_dead"
 	icon_gib = "syndicate_gib"
 
 	faction = "syndicate"
-	movement_cooldown = 4
+	movement_cooldown = 2
 
 	status_flags = 0
 
@@ -91,6 +92,8 @@
 	firing_lanes = TRUE		// But not your buddies!
 	conserve_ammo = TRUE	// And don't go wasting bullets!
 
+/datum/ai_holder/simple_mob/merc/ranged/surpressor
+	conserve_ammo = FALSE //For Surpressive Fire Mercs like the Heavy and Tommy-Las
 
 ////////////////////////////////
 //			Melee
@@ -143,6 +146,8 @@
 
 // Base Ranged Merc, so we don't have to redefine a million vars for every subtype. Uses a pistol.
 /mob/living/simple_mob/humanoid/merc/ranged
+	name = "mercenary"
+	desc = "A tough looking individual armed with an pistol."
 	icon_state = "syndicateranged"
 	icon_living = "syndicateranged"
 	projectiletype = /obj/item/projectile/bullet/pistol/medium
@@ -156,10 +161,14 @@
 
 // C20r SMG
 /mob/living/simple_mob/humanoid/merc/ranged/smg
+	name = "mercenary soldier"
+	desc = "A tough looking individual armed with an submachine gun."
 	icon_state = "syndicateranged_smg"
 	icon_living = "syndicateranged_smg"
 
 	loot_list = list(/obj/item/gun/projectile/automatic/c20r = 100)
+
+	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/surpressor
 
 	base_attack_cooldown = 5 // Two attacks a second or so.
 	reload_max = 20
@@ -176,6 +185,8 @@
 
 // Laser Rifle
 /mob/living/simple_mob/humanoid/merc/ranged/laser
+	name = "mercenary marksman"
+	desc = "A tough looking individual armed with an laser rifle."
 	icon_state = "syndicateranged_laser"
 	icon_living = "syndicateranged_laser"
 	projectiletype = /obj/item/projectile/beam/midlaser
@@ -187,6 +198,8 @@
 
 // Ion Rifle
 /mob/living/simple_mob/humanoid/merc/ranged/ionrifle
+	name = "mercenary anti-technical"
+	desc = "A tough looking individual armed with an ion rifle."
 	icon_state = "syndicateranged_ionrifle"
 	icon_living = "syndicateranged_ionrifle"
 	projectiletype = /obj/item/projectile/ion
@@ -196,8 +209,37 @@
 
 	reload_max = 10
 
-// Grenadier, Basically a miniboss
+//Garand
+/mob/living/simple_mob/humanoid/merc/ranged/garand
+	name = "mercenary rifleman"
+	desc = "A tough looking individual armed with a semiautomatic rifle."
+	icon_state = "syndicateranged_veteran"
+	icon_living = "syndicateranged_veteran"
+	projectiletype = /obj/item/projectile/bullet/rifle/a762
+	projectilesound = 'sound/weapons/Gunshot_heavy.ogg'
+
+	loot_list = list(/obj/item/gun/projectile/garand = 100)
+
+	reload_max = 8
+	reload_time = 2 // It takes a bit to jam a stripper clip into the rifle.
+
+//Hand Cannon
+/mob/living/simple_mob/humanoid/merc/ranged/deagle
+	name = "mercenary officer"
+	desc = "A tough looking individual armed with an handcannon."
+	icon_state = "syndicate_handcannon"
+	icon_living = "syndicate_handcannon"
+	projectiletype = /obj/item/projectile/bullet/pistol/strong
+	projectilesound = 'sound/weapons/Gunshot_deagle.ogg'
+	loot_list = list(/obj/item/gun/projectile/deagle = 100)
+
+	needs_reload = TRUE
+	reload_max = 7		// Deagle Reload
+
+// Grenadier, Basically a miniboss,
 /mob/living/simple_mob/humanoid/merc/ranged/grenadier
+	name = "mercenary grenadier"
+	desc = "A tough looking individual armed with a shotgun and a belt of grenades."
 	icon_state = "syndicateranged_shotgun"
 	icon_living = "syndicateranged_shotgun"
 	projectiletype = /obj/item/projectile/bullet/pellet/shotgun		// Buckshot
@@ -210,7 +252,6 @@
 
 	special_attack_charges = 5
 
-
 ////////////////////////////////
 //		Space Mercs
 ////////////////////////////////
@@ -218,8 +259,9 @@
 // Sword Space Merc
 /mob/living/simple_mob/humanoid/merc/melee/sword/space
 	name = "mercenary commando"
-	icon_state = "syndicatemeleespace"
-	icon_living = "syndicatemeleespace"
+	desc = "A tough looking individual, armred with an energy sword and shield."
+	icon_state = "syndicatespace-melee"
+	icon_living = "syndicatespace-melee"
 
 	movement_cooldown = 0
 
@@ -242,11 +284,14 @@
 
 // Ranged Space Merc
 /mob/living/simple_mob/humanoid/merc/ranged/space
-	name = "mercenary commando"
-	icon_state = "syndicaterangedspace"
-	icon_living = "syndicaterangedspace"
+	name = "armored mercenary"
+	desc = "A tough looking individual, armed with a submachine gun."
+	icon_state = "syndicatespace-ranged"
+	icon_living = "syndicatespceace-ranged"
 
 	movement_cooldown = 0
+
+	armor = list(melee = 60, bullet = 50, laser = 30, energy = 15, bomb = 35, bio = 100, rad = 100)	// Same armor as their voidsuit. This should already have been here when polaris patched these guys in.
 
 	min_oxy = 0
 	max_oxy = 0
@@ -260,12 +305,93 @@
 
 	corpse = /obj/effect/landmark/mobcorpse/syndicatecommando
 
-	loot_list = list(/obj/item/gun/projectile/automatic/c20r = 100)
 	base_attack_cooldown = 5 // Two attacks a second or so.
 	reload_max = 20
 
+	loot_list = list(/obj/item/gun/projectile/automatic/c20r = 100)
+
 /mob/living/simple_mob/humanoid/merc/ranged/space/Process_Spacemove(var/check_drift = 0)
 	return
+
+//Combat Shotgun Merc
+/mob/living/simple_mob/humanoid/merc/ranged/space/shotgun
+	name = "mercenary tactical"
+	desc = "A tough looking individual armed with a combat shotgun."
+	icon_state = "syndicatespace-shotgun"
+	icon_living = "syndicatespace-shotgun"
+
+	base_attack_cooldown = 10
+	reload_max = 7
+	reload_time = 2 SECONDS //Takes a While to load all those shells.
+
+	projectiletype = /obj/item/projectile/bullet/pellet/shotgun		// Buckshot
+	projectilesound = 'sound/weapons/Gunshot_shotgun.ogg'
+
+	loot_list = list(/obj/item/gun/projectile/shotgun/pump/combat = 100)
+
+//Auto-Shotgun Space Merc
+/mob/living/simple_mob/humanoid/merc/ranged/space/shotgun/auto
+	name = "mercenary sweeper"
+	desc = "A tough looking individual armed with an automatic shotgun."
+	icon_state = "syndicatespace-ashotgun"
+	icon_living = "syndicatespace-ashotgun"
+
+	base_attack_cooldown = 5 // Two attacks a second or so.
+	reload_max = 24
+
+	projectiletype = /obj/item/projectile/bullet/pellet/shotgun		// Buckshot
+	projectilesound = 'sound/weapons/Gunshot_shotgun.ogg'
+
+	loot_list = list(/obj/item/gun/projectile/automatic/as24 = 100)
+
+	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/surpressor
+
+//Machine Gun Merc
+/mob/living/simple_mob/humanoid/merc/ranged/space/heavy
+	name = "mercenary heavy gunner"
+	desc = "A tough looking individual armed with an light machinegun."
+	icon_state = "syndicatespace-heavy"
+	icon_living = "syndicatespace-heavy"
+
+	base_attack_cooldown = 2.5 // Four Attacks a Second. MOAR DAKKA
+	reload_max = 50
+
+	projectiletype = /obj/item/projectile/bullet/rifle/a545
+	projectilesound = 'sound/weapons/Gunshot_light.ogg'
+
+	loot_list = list(/obj/item/gun/projectile/automatic/l6_saw = 100)
+
+	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/surpressor
+
+//Tommy-Las Merc
+/mob/living/simple_mob/humanoid/merc/ranged/space/tommylas
+	name = "mercenary light burster"
+	desc = "A tough looking individual armed with an automatic laser."
+	icon_state = "syndicatespace-tommylas"
+	icon_living = "syndicatespace-tommylas"
+
+	base_attack_cooldown = 2.5 // Four Attacks a Second. MOAR DAKKA
+	reload_max = 3
+	reload_time = 0.5  // Meant to Simulate controlled Supressive Bursts
+
+	projectiletype = /obj/item/projectile/beam/weaklaser
+	projectilesound = 'sound/weapons/Laser.ogg'
+
+	loot_list = list(/obj/item/gun/energy/tommylaser = 100)
+
+	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/surpressor
+
+/mob/living/simple_mob/humanoid/merc/ranged/space/fal
+	name = "mercenary commando"
+	desc = "A tough looking individual armed with a assault rifle."
+	icon_state = "syndicatespace-commando"
+	icon_living = "syndicatespace-commando"
+	projectiletype = /obj/item/projectile/bullet/rifle/a762
+	projectilesound = 'sound/weapons/Gunshot_heavy.ogg'
+
+	loot_list = list(/obj/item/gun/projectile/automatic/fal = 100)
+
+	reload_max = 20
 
 // suppressors are just assholes and are intended to be a piss poor experience for everyone on both sides
 
@@ -369,6 +495,7 @@
 /mob/living/simple_mob/humanoid/merc/voxpirate
 	name = "vox pirate"
 	desc = "A desperate looking Vox. Get your gun."
+	icon = 'icons/mob/animal.dmi'
 	icon_state = "voxpirate"
 	icon_living = "voxpirate"
 	icon_dead = "voxpirate_dead"

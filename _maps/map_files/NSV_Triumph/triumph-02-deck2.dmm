@@ -10265,9 +10265,6 @@
 /area/quartermaster/warehouse)
 "FT" = (
 /obj/machinery/light,
-/obj/structure/closet/crate/bin{
-	anchored = 1
-	},
 /obj/machinery/ai_status_display{
 	pixel_y = -32
 	},

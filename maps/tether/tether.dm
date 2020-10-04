@@ -10,16 +10,18 @@
 	#include "tether_shuttles.dm"
 	#include "tether_telecomms.dm"
 
-	#include "../../_maps/map_files/Tether/tether-01-surface1.dmm"
-	#include "../../_maps/map_files/Tether/tether-02-surface2.dmm"
-	#include "../../_maps/map_files/Tether/tether-03-surface3.dmm"
-	#include "../../_maps/map_files/Tether/tether-04-transit.dmm"
-	#include "../../_maps/map_files/Tether/tether-05-station1.dmm"
-	#include "../../_maps/map_files/Tether/tether-06-station2.dmm"
-	#include "../../_maps/map_files/Tether/tether-07-station3.dmm"
-	#include "../../_maps/map_files/Tether/tether-08-mining.dmm"
-	#include "../../_maps/map_files/Tether/tether-09-solars.dmm"
-	#include "../../_maps/map_files/Tether/tether-10-colony.dmm"
+	#if !AWAY_MISSION_TEST //Don't include these for just testing away missions
+		#include "tether-01-surface1.dmm"
+		#include "tether-02-surface2.dmm"
+		#include "tether-03-surface3.dmm"
+		#include "tether-04-transit.dmm"
+		#include "tether-05-station1.dmm"
+		#include "tether-06-station2.dmm"
+		#include "tether-07-station3.dmm"
+		#include "tether-08-mining.dmm"
+		#include "tether-09-solars.dmm"
+		#include "tether-10-colony.dmm"
+	#endif
 
 	#include "submaps/_tether_submaps.dm"
 

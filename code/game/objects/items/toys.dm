@@ -1076,7 +1076,7 @@
 	icon_state = "tuxedocat"
 	pokephrase = "Mrowww!!"
 
-// nah, squids are better than foxes :>
+// nah, squids are better than foxes :>	//there are no squidgirls on citadel this is factually false
 /obj/item/toy/plushie/squid/green
 	name = "green squid plushie"
 	desc = "A small, cute and loveable squid friend. This one is green."
@@ -1178,6 +1178,31 @@
 	name = "baby penguin plushie"
 	icon_state = "baby_penguin_plush"
 	pokephrase = "Noot!"
+
+//dogborg plushies because why not
+/obj/item/toy/plushie/borgplushie
+	name = "medihound plushie"
+	desc = "An adorable, stuffed toy of a cyborg. This one looks like a Medihound model!"
+	icon_state = "medihound"
+	slot_flags = SLOT_HEAD
+	pokephrase = "Beep!"
+	attack_verb = list("beeped", "booped", "pinged")
+
+/obj/item/toy/plushie/borgplushie/securityk9
+	name = "k9 plushie"
+	desc = "An adorable, stuffed toy of a cyborg. This one looks like a K9 model!"
+	icon_state = "securityk9"
+
+/obj/item/toy/plushie/borgplushie/scrubpuppy
+	name = "scrubpuppy plushie"
+	desc = "An adorable, stuffed toy of a cyborg. This one looks like a Scrubpup model!"
+	icon_state = "scrubpuppy"
+
+/obj/item/toy/plushie/borgplushie/pupdozer
+	name = "pupdozer plushie"
+	desc = "An adorable, stuffed toy of a cyborg. This one looks like a Pup Dozer model!"
+	icon_state = "pupdozer"
+
 
 //More Misc Plushies
 /obj/item/toy/plushie/gondola

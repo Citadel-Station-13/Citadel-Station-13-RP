@@ -1,6 +1,0 @@
-author: "RobotAlice"
-delete-after: True
-changes: 
-  - rscadd: "Steel sheet recipe to make dance poles (1 sheet)"
-  - rscadd: "Added construction/deconstruction functionality to dance poles"
-  - tweak: "Fancy bluetext instructions for moving/removing dance poles"
