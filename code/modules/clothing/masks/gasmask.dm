@@ -27,6 +27,12 @@
 
 	return gas_filtered
 
+// Our clear gas masks don't hide faces, but changing the var on mask/gas would require un-chaging it on all children. This is nicer.
+/obj/item/clothing/mask/gas/New()
+	if(type == /obj/item/clothing/mask/gas)
+		flags_inv &= ~HIDEFACE
+	..()
+
 /obj/item/clothing/mask/gas/clear
 	name = "gas mask"
 	desc = "A face-covering mask with a transparent faceplate that can be connected to an air supply."
@@ -196,3 +202,11 @@
 	desc = "Twoooo!"
 	icon_state = "owl"
 	body_parts_covered = HEAD|FACE|EYES
+
+/obj/item/clothing/mask/gas/old
+	icon_state = "gas_mask"
+
+/obj/item/clothing/mask/gas/imperial
+	name = "imperial soldier facemask"
+	desc = "A close-fitting tactical mask that can be connected to an air supply."
+	icon_state = "ge_visor"
