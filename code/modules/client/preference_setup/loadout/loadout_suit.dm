@@ -638,3 +638,6 @@ datum/gear/suit/miscellaneous/storage/lawyer/bridgeofficerparade
 	path = /obj/item/clothing/suit/storage/toggle/operations_coat/engineering
 	allowed_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer")
 
+/datum/gear/suit/highwayman_jacket
+	display_name = "Black Jacket w/ Fur Lining"
+	path = /obj/item/clothing/suit/highwayman_jacket

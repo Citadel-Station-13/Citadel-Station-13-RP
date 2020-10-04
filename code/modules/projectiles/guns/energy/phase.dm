@@ -10,6 +10,7 @@
 	charge_cost = 240
 	projectile_type = /obj/item/projectile/energy/phase
 	one_handed_penalty = 15
+	no_pin_required = 1
 
 /obj/item/gun/energy/phasegun/pistol
 	name = "phase pistol"

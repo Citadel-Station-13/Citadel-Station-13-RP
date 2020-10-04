@@ -1177,3 +1177,23 @@
 	name = "Short Skirt"
 	desc = "A light blue sweater with a black skirt."
 	icon_state = "blueshortskirt_female"
+
+/obj/item/clothing/under/greyskirt_female
+	name = "Grey Skirt"
+	desc = "A medium length, grey skirt with a long-sleeve, black sweater on top."
+	icon_state = "greyskirt_female"
+
+/obj/item/clothing/under/highwayman_clothes
+	name = "Highwayman Clothes"
+	desc = "For the dungeon crawling, adventurous robber."
+	icon_state = "highwayman_clothes"
+
+/obj/item/clothing/under/businessskirt_female
+	name = "Business Skirt"
+	desc = "A professional black jacket with a mundane brown skirt. Perfect for the office."
+	icon_state = "businessskirt_female"
+
+/obj/item/clothing/under/simpledress
+	name = "White Simple Dress"
+	desc = "A very short, plain white dress with a light blue sash."
+	icon_state = "simpledress"

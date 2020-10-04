@@ -25,6 +25,22 @@ var/const/standard_monitor_styles = "blank=ipc_blank;\
 	smiley=ipc_smiley;\
 	database=ipc_database"
 
+var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
+	default=cyber_default;\
+	static=cyber_static;\
+	alert=cyber_alert;\
+	happy=cyber_happ;\
+	unhappy=cyber_unhapp;\
+	flat=cyber_flat;\
+	sad=cyber_sad;\
+	heart=cyber_heart;\
+	cross=cyber_cross;\
+	wave=cyber_wave;\
+	uwu=cyber_uwu;\
+	question=cyber_question;\
+	lowpower=cyber_lowpower;\
+	idle=cyber_idle"
+
 /proc/populate_robolimb_list()
 	basic_robolimb = new()
 	for(var/limb_type in typesof(/datum/robolimb))
@@ -45,6 +61,7 @@ var/const/standard_monitor_styles = "blank=ipc_blank;\
 	var/company = "Unbranded"                            // Shown when selecting the limb.
 	var/desc = "A generic unbranded robotic prosthesis." // Seen when examining a limb.
 	var/icon = 'icons/mob/human_races/robotic.dmi'       // Icon base to draw from.
+	var/monitor_icon = "icons/mob/monitor_icons.dmi"     // Where it draws the monitor icon from.
 	var/unavailable_at_chargen                           // If set, not available at chargen.
 	var/unavailable_to_build							 // If set, can't be constructed.
 	var/lifelike										 // If set, appears organic.
@@ -423,6 +440,16 @@ var/const/standard_monitor_styles = "blank=ipc_blank;\
 	icon = 'icons/mob/human_races/cyberlimbs/zenghu/zenghu_main.dmi'
 	unavailable_to_build = 1
 	skin_tone = 1
+
+
+
+/datum/robolimb/cyber_beast
+	company = "Cyber Tech"
+	desc = "Adjusted for deep space the material is durable, and heavy."
+	icon = 'icons/mob/human_races/cyberlimbs/c-tech/c_beast.dmi'
+	unavailable_to_build = 1
+	parts = list(BP_HEAD)
+	monitor_styles = cyberbeast_monitor_styles
 
 
 
