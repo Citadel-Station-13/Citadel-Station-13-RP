@@ -101,7 +101,7 @@
 		material_layer = image(icon, "[initial(icon_state)]-material")
 	if(!material_glow)
 		material_glow = image(icon, "[initial(icon_state)]-material-glow")
-		material_glow.plane = PLANE_LIGHTING_ABOVE
+		material_glow.plane = ABOVE_LIGHTING_PLANE
 	if(!reagent_layer)
 		reagent_layer = image(icon, "[initial(icon_state)]-reagent")
 	if(anchored)

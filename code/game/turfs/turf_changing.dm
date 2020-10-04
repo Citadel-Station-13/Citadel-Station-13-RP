@@ -42,7 +42,6 @@
 	var/old_lc_bottomright = lc_bottomright
 	var/old_lc_bottomleft = lc_bottomleft
 
-	var/old_corners = corners
 	var/old_outdoors = outdoors
 	var/old_dangerous_objects = dangerous_objects
 
@@ -119,7 +118,7 @@
 			else
 				lighting_clear_overlay()
 
-		for(var/turf/open/space/S in RANGE_TURFS(1, src)) //RANGE_TURFS is in code\__HELPERS\game.dm
+		for(var/turf/space/S in RANGE_TURFS(1, src)) //RANGE_TURFS is in code\__HELPERS\game.dm
 			S.update_starlight()
 
 	if(preserve_outdoors)

@@ -12,7 +12,7 @@
 	dsoverlay = image('icons/mob/darksight.dmi', GLOB.global_hud.darksight) //This is a secret overlay! Go look at the file, you'll see.
 	var/mutable_appearance/dsma = new(dsoverlay) //Changing like ten things, might as well.
 	dsma.alpha = 0
-	dsma.plane = PLANE_LIGHTING
+	dsma.plane = LIGHTING_PLANE
 	dsma.blend_mode = BLEND_ADD
 	dsoverlay.appearance = dsma
 

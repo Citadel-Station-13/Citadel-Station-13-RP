@@ -60,7 +60,7 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	darksight = new /obj/screen()
 	darksight.icon = null
 	darksight.screen_loc = "1,1"
-	darksight.plane = PLANE_LIGHTING
+	darksight.plane = LIGHTING_PLANE
 
 	//Marks the center of the screen, for things like ventcrawl
 	centermarker = new /obj/screen()

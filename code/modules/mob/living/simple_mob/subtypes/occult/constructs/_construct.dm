@@ -157,7 +157,7 @@
 //Glowing Procs
 /mob/living/simple_mob/construct/proc/add_glow()
 	var/image/eye_glow = image(icon,"glow-[icon_state]")
-	eye_glow.plane = PLANE_LIGHTING_ABOVE
+	eye_glow.plane = ABOVE_LIGHTING_PLANE
 	overlays += eye_glow
 	set_light(2, -2, l_color = "#FFFFFF")
 

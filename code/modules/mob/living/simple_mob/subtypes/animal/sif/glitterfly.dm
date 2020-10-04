@@ -76,7 +76,7 @@
 
 	melee_damage_upper = 5
 
-	plane = PLANE_LIGHTING_ABOVE
+	plane = ABOVE_LIGHTING_PLANE
 
 /mob/living/simple_mob/animal/sif/glitterfly/rare/Initialize()
 	..()

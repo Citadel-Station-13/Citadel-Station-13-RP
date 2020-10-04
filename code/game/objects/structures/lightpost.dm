@@ -22,7 +22,7 @@
 	if(lit)
 		set_light(5, 1, "#E9E4AF")
 		var/image/glow = image(icon_state = "[icon_state]-glow")
-		glow.plane = PLANE_LIGHTING_ABOVE
+		glow.plane = ABOVE_LIGHTING_PLANE
 		add_overlay(glow)
 	else
 		set_light(0)

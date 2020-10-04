@@ -157,10 +157,10 @@ SUBSYSTEM_DEF(planets)
 		var/turf/simulated/T = I
 		if(!T.lighting_corners_initialised)
 			T.generate_missing_corners()
-		mod_corner(T.lc_bottomleft, lum_r, lum_g, lum_b, sunlit_corners)
-		mod_corner(T.lc_bottomright, lum_r, lum_g, lum_b, sunlit_corners)
-		mod_corner(T.lc_topright, lum_r, lum_g, lum_b, sunlit_corners)
-		mod_corner(T.lc_topleft, lum_r, lum_g, lum_b, sunlit_corners)
+		mod_corner(T.lc_bottomleft, lum_r, lum_g, lum_b, sunlit_corners, update_gen)
+		mod_corner(T.lc_bottomright, lum_r, lum_g, lum_b, sunlit_corners, update_gen)
+		mod_corner(T.lc_topright, lum_r, lum_g, lum_b, sunlit_corners, update_gen)
+		mod_corner(T.lc_topleft, lum_r, lum_g, lum_b, sunlit_corners, update_gen)
 		CHECK_TICK
 	update_gen--
 	P.sun["lum_r"] = lum_r
@@ -168,7 +168,7 @@ SUBSYSTEM_DEF(planets)
 	P.sun["lum_b"] = lum_b
 
 // sunlit corners passed in as reference
-/datum/controller/subsystem/planets/proc/mod_corner(datum/lighting_corner/LC, lum_r, lum_g, lum_b, list/sunlit_corners)
+/datum/controller/subsystem/planets/proc/mod_corner(datum/lighting_corner/LC, lum_r, lum_g, lum_b, list/sunlit_corners, update_gen)
 	if(!LC)
 		return
 	if(LC.update_gen != update_gen && LC.active)

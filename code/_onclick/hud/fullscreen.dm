@@ -122,7 +122,34 @@
 	layer = FULLSCREEN_LAYER
 
 /obj/screen/fullscreen/fishbed
-	icon_state = "fishbed" 
+	icon_state = "fishbed"
+
+/obj/screen/fullscreen/lighting_backdrop
+	icon = 'icons/mob/screen_gen.dmi'
+	icon_state = "flash"
+	transform = matrix(200, 0, 0, 0, 200, 0)
+	plane = LIGHTING_PLANE
+	blend_mode = BLEND_OVERLAY
+	show_when_dead = TRUE
+
+//Provides darkness to the back of the lighting plane
+/obj/screen/fullscreen/lighting_backdrop/lit
+	invisibility = INVISIBILITY_LIGHTING
+	layer = BACKGROUND_LAYER+21
+	color = "#000"
+	show_when_dead = TRUE
+
+//Provides whiteness in case you don't see lights so everything is still visible
+/obj/screen/fullscreen/lighting_backdrop/unlit
+	layer = BACKGROUND_LAYER+20
+	show_when_dead = TRUE
+
+/obj/screen/fullscreen/see_through_darkness
+	icon_state = "nightvision"
+	plane = LIGHTING_PLANE
+	layer = LIGHTING_LAYER
+	blend_mode = BLEND_ADD
+	show_when_dead = TRUE
 
 #undef FULLSCREEN_LAYER
 #undef BLIND_LAYER

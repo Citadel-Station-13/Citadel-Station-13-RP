@@ -10,7 +10,7 @@
 	name = "Unknown"
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "unknown"
-	plane = PLANE_LIGHTING_ABOVE //In case we color them
+	plane = ABOVE_LIGHTING_PLANE //In case we color them
 	luminosity = 0
 	mouse_opacity = 0
 	var/lightswitch = 1

@@ -91,7 +91,7 @@
 		antilight_cache = list()
 		for(var/diag in cornerdirs)
 			var/image/I = image(LIGHTING_ICON, null, icon_state = "diagonals", layer = 10, dir = diag)
-			I.plane = PLANE_LIGHTING
+			I.plane = LIGHTING_PLANE
 			antilight_cache["[diag]"] = I
 
 /turf/simulated/shuttle/Destroy()

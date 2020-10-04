@@ -233,8 +233,6 @@
 	var/dooc_allowed = 1
 	var/dsay_allowed = 1
 
-	var/static/starlight = 0	// Whether space turfs have ambient light or not
-
 	var/list/ert_species = list(SPECIES_HUMAN)
 
 	var/law_zero = "ERROR ER0RR $R0RRO$!R41.%%!!(%$^^__+ @#F0E4'ALL LAWS OVERRIDDEN#*?&110010"
@@ -788,10 +786,6 @@
 					config_legacy.event_delay_upper[EVENT_LEVEL_MUNDANE] = MinutesToTicks(values[1])
 					config_legacy.event_delay_upper[EVENT_LEVEL_MODERATE] = MinutesToTicks(values[2])
 					config_legacy.event_delay_upper[EVENT_LEVEL_MAJOR] = MinutesToTicks(values[3])
-
-				if("starlight")
-					value = text2num(value)
-					config_legacy.starlight = value >= 0 ? value : 0
 
 				if("ert_species")
 					config_legacy.ert_species = splittext(value, ";")

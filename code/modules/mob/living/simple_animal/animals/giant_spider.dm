@@ -54,7 +54,7 @@
 /mob/living/simple_mob/hostile/giant_spider/proc/add_eyes()
 	if(!eye_layer)
 		eye_layer = image(icon, "[icon_state]-eyes")
-		eye_layer.plane = PLANE_LIGHTING_ABOVE
+		eye_layer.plane = ABOVE_LIGHTING_PLANE
 
 	overlays += eye_layer
 

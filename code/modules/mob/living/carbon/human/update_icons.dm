@@ -497,7 +497,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 		eyes_icon.Blend(rgb(128,0,0), ICON_ADD)
 
 	var/image/eyes_image = image(eyes_icon)
-	eyes_image.plane = PLANE_LIGHTING_ABOVE
+	eyes_image.plane = ABOVE_LIGHTING_PLANE
 
 	overlays_standing[EYES_LAYER] = eyes_image
 	apply_layer(EYES_LAYER)

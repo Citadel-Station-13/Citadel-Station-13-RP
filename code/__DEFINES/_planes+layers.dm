@@ -132,6 +132,8 @@ What is the naming convention for planes or layers?
 #define PLANE_CH_BACKUP				28 //Backup implant
 #define PLANE_CH_VANTAG				29 //Vore Antag hud
 
+#define PLANE_ADMIN2			30
+
 #define EMISSIVE_BLOCKER_PLANE 34
 #define EMISSIVE_BLOCKER_LAYER 34
 #define EMISSIVE_BLOCKER_RENDER_TARGET "*EMISSIVE_BLOCKER_PLANE"
@@ -156,7 +158,10 @@ What is the naming convention for planes or layers?
 #define BYOND_LIGHTING_LAYER 39
 #define BYOND_LIGHTING_RENDER_TARGET "BYOND_LIGHTING_PLANE"
 
-#define PLANE_AUGMENTED				40 //Augmented-reality plane
+#define PLANET_LIGHTING_PLANE 40
+#define PLANET_LIGHTING_LAYER 40
+
+#define PLANE_AUGMENTED				45 //Augmented-reality plane
 
 //Fullscreen overlays under inventory
 #define PLANE_FULLSCREEN		90 //Blindness, mesons, druggy, etc

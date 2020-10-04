@@ -289,5 +289,5 @@
 /obj/structure/flora/tree/sif/update_icon()
 	set_light(5 - light_shift, 1, "#33ccff")	// 5 variants, missing bulbs. 5th has no bulbs, so no glow.
 	var/image/glow = image(icon = icon, icon_state = "[base_state][light_shift]_glow")
-	glow.plane = PLANE_LIGHTING_ABOVE
+	glow.plane = ABOVE_LIGHTING_PLANE
 	overlays = list(glow)

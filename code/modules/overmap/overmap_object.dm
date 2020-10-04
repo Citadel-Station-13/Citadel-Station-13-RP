@@ -23,7 +23,7 @@
 
 	if(known)
 		//layer = ABOVE_LIGHTING_LAYER
-		plane = PLANE_LIGHTING_ABOVE
+		plane = ABOVE_LIGHTING_PLANE
 		for(var/obj/machinery/computer/ship/helm/H in global.machines)
 			H.get_known_sectors()
 	update_icon()

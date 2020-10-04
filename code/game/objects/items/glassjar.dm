@@ -97,7 +97,7 @@
 				var/image/victim = image(M.icon, M.icon_state)
 				victim.pixel_y = 6
 				victim.color = M.color
-				if(M.plane == PLANE_LIGHTING_ABOVE)	// This will only show up on the ground sprite, due to the HuD being over it, so we need both images.
+				if(M.plane == ABOVE_LIGHTING_PLANE)	// This will only show up on the ground sprite, due to the HuD being over it, so we need both images.
 					var/image/victim_glow = image(M.icon, M.icon_state)
 					victim_glow.pixel_y = 6
 					victim_glow.color = M.color

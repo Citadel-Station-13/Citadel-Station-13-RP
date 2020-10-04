@@ -252,9 +252,9 @@
 /atom/movable/weather_visuals
 	icon = 'icons/effects/weather.dmi'
 	mouse_opacity = 0
-	plane = PLANE_PLANETLIGHTING
+	plane = PLANET_LIGHTING_PLANE
 
 // This is for special effects for specific types of weather, such as lightning flashes in a storm.
 // It's a seperate object to allow the use of flick().
 /atom/movable/weather_visuals/special
-	plane = PLANE_LIGHTING_ABOVE
+	plane = ABOVE_LIGHTING_PLANE

@@ -188,7 +188,7 @@
 		if(M.client)
 			showto.Add(M.client)
 	var/image/I = image('icons/obj/projectiles.dmi',targloc,pointer_icon_state,cooldown)
-	I.plane = PLANE_LIGHTING_ABOVE
+	I.plane = ABOVE_LIGHTING_PLANE
 	I.pixel_x = target.pixel_x + rand(-5,5)
 	I.pixel_y = target.pixel_y + rand(-5,5)
 

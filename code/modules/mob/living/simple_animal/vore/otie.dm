@@ -368,7 +368,7 @@
 /mob/living/simple_mob/otie/proc/add_eyes()
 	if(!eye_layer)
 		eye_layer = image(icon, "[eyetype]-eyes")
-		eye_layer.plane = PLANE_LIGHTING_ABOVE
+		eye_layer.plane = ABOVE_LIGHTING_PLANE
 	add_overlay(eye_layer)
 
 /mob/living/simple_mob/otie/proc/remove_eyes()

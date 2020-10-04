@@ -32,7 +32,7 @@
 /obj/machinery/light_switch/proc/updateicon()
 	if(!overlay)
 		overlay = image(icon, "light1-overlay")
-		overlay.plane = PLANE_LIGHTING_ABOVE
+		overlay.plane = ABOVE_LIGHTING_PLANE
 
 	overlays.Cut()
 	if(stat & NOPOWER)
