@@ -121,6 +121,9 @@
 		icon_state = "wt550"
 	return
 
+/obj/item/gun/projectile/automatic/wt550/lethal
+	magazine_type = /obj/item/ammo_magazine/m9mmt
+
 /obj/item/gun/projectile/automatic/z8
 	name = "designated marksman rifle"
 	desc = "The Z8 Bulldog is an older model designated marksman rifle, made by the now defunct Zendai Foundries. Makes you feel like a space marine when you hold it, even though it can only hold 10 round magazines. Uses 7.62mm rounds and has an under barrel grenade launcher."

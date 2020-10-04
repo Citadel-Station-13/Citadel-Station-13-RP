@@ -322,6 +322,19 @@
 	else
 		icon_state = "[initial(icon_state)]-e"
 
+/obj/item/gun/projectile/p92x/sec
+	magazine_type = /obj/item/ammo_magazine/m9mm/rubber
+
+//Ported this over from the _vr before deletion. Commenting them out because I'm not sure we want these in.
+/*
+/obj/item/gun/projectile/p92x/large/preban
+	icon_state = "p92x-brown"
+	magazine_type = /obj/item/ammo_magazine/m9mm/large/preban // Spawns with big magazines that are legal.
+
+/obj/item/gun/projectile/p92x/large/preban/hp
+	magazine_type = /obj/item/ammo_magazine/m9mm/large/preban/hp // Spawns with legal hollow-point mag
+*/
+
 /obj/item/gun/projectile/p92x/brown
 	icon_state = "p92x-brown"
 
