@@ -198,3 +198,9 @@
 	sort_category = "Donator"
 	path = /obj/item/clothing/accessory/armband/veterancargo
 	ckeywhitelist = list("yourdoom9898")
+
+/datum/gear/donator/customcamcorder
+	display_name = "Prop Video Recorder"
+	sort_category = "Donator"
+	path = /obj/item/faketvcamera
+	ckeywhitelist = list("fauxmagician")

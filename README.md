@@ -1,15 +1,15 @@
 ## Citadel Station 13 - RP Server
 
-[![Build Status](https://travis-ci.org/Citadel-Station-13/Citadel-Station-13-RP.png)](https://travis-ci.org/Citadel-Station-13/Citadel-Station-13-RP) 
+[![Build Status](https://travis-ci.org/Citadel-Station-13/Citadel-Station-13-RP.png)](https://travis-ci.org/Citadel-Station-13/Citadel-Station-13-RP)
 [![Percentage of issues still open](https://isitmaintained.com/badge/open/Citadel-Station-13/Citadel-Station-13-RP.svg)](https://isitmaintained.com/project/Citadel-Station-13/Citadel-Station-13-RP "Percentage of issues still open")
 [![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/Citadel-Station-13/Citadel-Station-13-RP.svg)](https://isitmaintained.com/project/Citadel-Station-13/Citadel-Station-13-RP "Average time to resolve an issue")
 
 [![forthebadge](http://forthebadge.com/images/badges/60-percent-of-the-time-works-every-time.svg)](http://forthebadge.com) [![forthebadge](http://forthebadge.com/images/badges/compatibility-club-penguin.svg)](http://forthebadge.com) [![forthebadge](http://forthebadge.com/images/badges/no-ragrets.svg)](http://forthebadge.com) [![forinfinityandbyond](https://user-images.githubusercontent.com/5211576/29499758-4efff304-85e6-11e7-8267-62919c3688a9.gif)](https://www.reddit.com/r/SS13/comments/5oplxp/what_is_the_main_problem_with_byond_as_an_engine/dclbu1a)
 
-**Upstream Information**  
+**Upstream Information**
 * **Code:** <https://github.com/VOREStation/VOREStation>
 
-**Citadel Station RP Information**  
+**Citadel Station RP Information**
 * **Website:** <http://citadel-station.net>
 * **Code:** <https://github.com/Citadel-Station-13/Citadel-Station-13-RP>
 * **Wiki:** <https://citadel-station.net/wiki/index.php?title=Main_Page>
@@ -26,8 +26,8 @@ Citadel Station 13 - RP was originally a fork of VOREStation, which separated on
 There are a number of ways to download the source code. Some are described here.
 
 Option 1: The more complicated and easier to update method is using git.
-You'll need to download git or some client from [here](http://git-scm.com/).  
-When that's installed, right click in any folder and click on "Git Bash".  
+You'll need to download git or some client from [here](http://git-scm.com/).
+When that's installed, right click in any folder and click on "Git Bash".
 When that opens, type in:
 
 ```
@@ -79,7 +79,7 @@ byondkey = Rank
 ```
 
 where the BYOND key must be in lowercase and the admin rank must be properly
-capitalised. There are a bunch more admin ranks, but these two should be 
+capitalised. There are a bunch more admin ranks, but these two should be
 enough for most servers, assuming you have trustworthy admins.
 
 Finally, to start the server, run Dream Daemon and enter the path to your
@@ -111,7 +111,7 @@ For a basic setup, simply copy every file from config/example to config.
 
 ## SQL Setup
 
-The SQL backend for the library and stats tracking requires a MySQL server. 
+The SQL backend for the library and stats tracking requires a MySQL server.
 Your server details go in /config/dbconfig.txt, and the SQL schema is in /SQL/tgstation_schema.sql.
 More detailed setup instructions arecoming soon, for now ask in our Discord.
 

@@ -1,5 +1,0 @@
-author: "Enzo-Leon"
-delete-after: True
-changes: 
-  - rscadd: "cameras, and holopads for AI players and sec"
-  - tweak: "fixed water and last bit of lighting."

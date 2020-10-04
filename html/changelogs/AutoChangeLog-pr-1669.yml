@@ -1,8 +1,0 @@
-author: "KillianKirilenko"
-delete-after: True
-changes: 
-  - rscadd: "Added a special bandolier for the Pathfinder's use, found in their locker. Holds a wide variety of useful items such as tools, medical supplies, batteries, ammo, small melee weapons, misc. gadgets (gps, geiger, recorder, camera), and so on. It can only hold NORMAL or below size items, so larger drills/etc. will not fit."
-  - rscdel: "Cleaned up some bits of Station 2 that are seen only by ghosts or curious people with meson scanners."
-  - tweak: "Removed the mini-ponds on the Station 1 Atrium and replaced the weird boring sandscape in front of the bridge with a fish-tank. Now the koi have more room to swim!"
-  - tweak: "Remapped the exploration hangar/area pretty extensively, seperating the showers for privacy and adding a seperate ready room adjacent to the hangar that holds vendors and a table."
-  - tweak: "Minor changes to the abandoned observation lounge on station 1; made it its own new area, added vent/scrubber/apc/emergency shutters, and added a wall block to fix an odd spot introduced by the addition of the club."

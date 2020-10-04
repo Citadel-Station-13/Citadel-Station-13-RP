@@ -1,4 +1,4 @@
-/*
+	/*
 
 	Hello and welcome to sprite_accessories: For sprite accessories, such as hair,
 	facial hair, and possibly tattoos and stuff somewhere along the line. This file is
@@ -1896,7 +1896,7 @@
 */
 
 /datum/sprite_accessory/marking
-	icon = 'icons/mob/human_races/markings.dmi'
+	icon = "icons/mob/human_races/markings.dmi"
 	do_colouration = 1 //Almost all of them have it, COLOR_ADD
 	var/color_blend_mode = ICON_ADD
 
@@ -2134,6 +2134,39 @@
 		icon_state = "vox_two_tone"
 		body_parts = list(BP_HEAD,BP_L_HAND,BP_R_HAND,BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM)
 		species_allowed = list(SPECIES_VOX)
+
+	vox_alt
+		name = "Vox Alternate"
+		icon_state = "bay_vox"
+		body_parts = list (BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_TORSO,BP_GROIN,BP_HEAD)
+		species_allowed = list(SPECIES_VOX)
+
+	vox_alt_eyes
+		name = "Alternate Vox Eyes"
+		icon_state = "bay_vox_eyes"
+		body_parts = list(BP_HEAD)
+		species_allowed = list(SPECIES_VOX)
+
+	// Misc
+	c_beast_body
+		name = "Cyber Body"
+		icon_state = "c_beast_body"
+		body_parts = list(BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_TORSO,BP_GROIN)
+
+	c_beast_band
+		name = "Cyber Band (Use with Cybertech head)"
+		icon_state = "c_beast_band"
+		body_parts = list(BP_HEAD)
+
+	c_beast_cheek_a
+		name = "Cyber Beast Cheeks A(Use A and B)"
+		icon_state = "c_beast_add_a"
+		body_parts = list(BP_HEAD)
+
+	c_beast_cheek_b
+		name = "Cyber Beast Cheeks B(Use A and B)"
+		icon_state = "c_beast_add_b"
+		body_parts = list(BP_HEAD)
 
 /datum/sprite_accessory/marking/vr
 	icon = 'icons/mob/human_races/markings_vr.dmi'
