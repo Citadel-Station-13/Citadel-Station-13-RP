@@ -798,7 +798,7 @@ END OF CITADEL CHANGES */
 /obj/item/gun/energy/frontier/locked/holdout
 	name = "holdout frontier phaser"
 	desc = "An minaturized weapon designed for the purpose of expeditionary support to defend themselves on the field. Includes a built-in crank charger for recharging away from civilization. This one has a safety interlock that prevents firing while in proximity to the facility."
-	icon = 'icons/obj/gun_vr.dmi'
+	icon = 'icons/obj/gun/energy.dmi'
 	icon_state = "holdoutkill"
 	item_state = null
 	phase_power = 100
