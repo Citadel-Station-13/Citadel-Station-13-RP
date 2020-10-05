@@ -166,9 +166,6 @@
 	if(!istype(M))
 		return 0
 
-	if (user.a_intent == INTENT_HELP)
-		return ..()
-
 	if(target_name != M.name)
 		target_name = M.name
 		src.wdata = list()
