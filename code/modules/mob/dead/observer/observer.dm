@@ -152,6 +152,7 @@
 		M.manifest(user)
 
 /mob/observer/dead/CanAllowThrough(atom/movable/mover, turf/target)
+	. = ..()
 	return TRUE
 /*
 Transfer_mind is there to check if mob is being deleted/not going to have a body.

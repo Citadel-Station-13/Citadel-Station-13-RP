@@ -101,9 +101,8 @@
 					playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 					return
 
-
 /obj/item/projectile/energy/hook/proc/perform_intent_unique(atom/target)
-	playsound(src.loc, impact_sound, 40, 1)
+	playsound(src, impact_sound, 40, 1)
 	var/success = FALSE
 	if(istype(target,/turf))
 		if(launcher_intent)
@@ -113,7 +112,7 @@
 				if(!target_mob)
 					return
 
-				if(Bump(target_mob, forced=1))	//If we hit a turf, try to force an interaction with a mob on the turf.
+				if(Bump(target_mob))	//If we hit a turf, try to force an interaction with a mob on the turf.
 					done_mob_unique = TRUE
 				success = TRUE
 			else if(firer)

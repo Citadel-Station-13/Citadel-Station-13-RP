@@ -666,6 +666,11 @@
 /area/shuttle/excursion/cargo
 	name = "\improper Excursion Shuttle Cockpit"
 
+// Library
+
+/area/library/study
+	name = "\improper Library Private Study"
+
 // Pirate Skiff
 
 /area/shuttle/pirate

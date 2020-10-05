@@ -145,7 +145,7 @@ var/datum/controller/rogue/rm_controller
 	return oldest_zone
 
 /datum/controller/rogue/proc/mark_clean(var/datum/rogue/zonemaster/ZM)
-	if(!ZM in all_zones) //What? Who?
+	if(!(ZM in all_zones)) //What? Who?
 		rm_controller.dbg("RMC(mc): Some unknown zone asked to be listed.")
 
 	if(ZM in ready_zones)
@@ -154,7 +154,7 @@ var/datum/controller/rogue/rm_controller
 	clean_zones += ZM
 
 /datum/controller/rogue/proc/mark_ready(var/datum/rogue/zonemaster/ZM)
-	if(!ZM in all_zones) //What? Who?
+	if(!(ZM in all_zones)) //What? Who?
 		rm_controller.dbg("RMC(mr): Some unknown zone asked to be listed.")
 
 	if(ZM in clean_zones)
@@ -163,19 +163,19 @@ var/datum/controller/rogue/rm_controller
 	ready_zones += ZM
 
 /datum/controller/rogue/proc/unmark_clean(var/datum/rogue/zonemaster/ZM)
-	if(!ZM in all_zones) //What? Who?
+	if(!(ZM in all_zones)) //What? Who?
 		rm_controller.dbg("RMC(umc): Some unknown zone asked to be listed.")
 
-	if(!ZM in clean_zones)
+	if(!(ZM in clean_zones))
 		rm_controller.dbg("RMC(umc): Finite state machine broken.")
 
 	clean_zones -= ZM
 
 /datum/controller/rogue/proc/unmark_ready(var/datum/rogue/zonemaster/ZM)
-	if(!ZM in all_zones) //What? Who?
+	if(!(ZM in all_zones)) //What? Who?
 		rm_controller.dbg("RMC(umr): Some unknown zone asked to be listed.")
 
-	if(!ZM in ready_zones)
+	if(!(ZM in ready_zones))
 		rm_controller.dbg("RMC(umr): Finite state machine broken.")
 
 	ready_zones -= ZM

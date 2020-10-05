@@ -238,7 +238,7 @@
 					return
 				else if(!isnull(seed.chems["pineapplejuice"]))
 					to_chat(user, "You slice \the [src] into slices.")
-					for(var/i=i;i<=4;i++)
+					for(var/i in 1 to 4)
 						new /obj/item/reagent_containers/food/snacks/pineapple_ring(get_turf(src))
 					qdel(src)
 					return
