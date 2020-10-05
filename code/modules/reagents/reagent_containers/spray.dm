@@ -14,6 +14,7 @@
 	unacidable = 1 //plastic
 	possible_transfer_amounts = list(5,10) //Set to null instead of list, if there is only one.
 	var/spray_size = 3
+	var/spray_speed = 1
 	var/list/spray_sizes = list(1,3)
 	volume = 250
 
@@ -65,8 +66,7 @@
 				return
 			reagents.trans_to_obj(D, amount_per_transfer_from_this)
 			D.set_color()
-			D.set_up(my_target, spray_size, 10)
-	return
+			D.set_up(my_target, spray_size, spray_speed)
 
 /obj/item/reagent_containers/spray/attack_self(var/mob/user)
 	if(!possible_transfer_amounts)
