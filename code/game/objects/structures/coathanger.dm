@@ -28,6 +28,7 @@
 		return ..()
 
 /obj/structure/coatrack/CanAllowThrough(atom/movable/mover, turf/target)
+	. = ..()
 	var/can_hang = 0
 	for (var/T in allowed)
 		if(istype(mover,T))
@@ -36,7 +37,7 @@
 	if (can_hang && !coat)
 		src.visible_message("[mover] lands on \the [src].")
 		coat = mover
-		coat.loc = src
+		coat.forceMove(src)
 		update_icon()
 		return 0
 	else
