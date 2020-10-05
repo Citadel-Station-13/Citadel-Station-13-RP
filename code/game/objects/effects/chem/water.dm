@@ -5,11 +5,9 @@
 	mouse_opacity = 0
 	pass_flags = PASSTABLE | PASSGRILLE | PASSBLOB
 
-/obj/effect/effect/water/New(loc)
-	..()
-	spawn(150) // In case whatever made it forgets to delete it
-		if(src)
-			qdel(src)
+/obj/effect/effect/water/Initialize(mapload)
+	. = ..()
+	QDEL_IN(src, 150)
 
 /obj/effect/effect/water/proc/set_color() // Call it after you move reagents to it
 	icon += reagents.get_color()
@@ -36,8 +34,7 @@
 			if(T == get_turf(target))
 				break
 		sleep(delay)
-	sleep(10)
-	qdel(src)
+	QDEL_IN(src, 10)
 
 /obj/effect/effect/water/Move(turf/newloc)
 	if(newloc.density)
