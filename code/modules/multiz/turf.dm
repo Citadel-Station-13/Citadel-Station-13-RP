@@ -66,12 +66,12 @@
 	for(var/obj/O in src)
 		O.hide(0)
 
-/turf/simulated/open/examine(mob/user, distance, infix, suffix)
-	if(..(user, 2))
+/turf/simulated/open/examine(mob/user)
+	. = ..()
 		var/depth = 1
 		for(var/T = GetBelow(src); isopenspace(T); T = GetBelow(T))
 			depth += 1
-		to_chat(user, "It is about [depth] levels deep.")
+		. += "It is about [depth] levels deep."
 
 /**
 * Update icon and overlays of open space to be that of the turf below, plus any visible objects on that turf.

@@ -67,9 +67,8 @@
 	if(morphed)
 		form.examine(user)
 		if(get_dist(user,src)<=3)
-			to_chat(user, "<span class='warning'>It doesn't look quite right...</span>")
-	else
-		..()
+			. = ..()
+			. += "<span class='warning'>It doesn't look quite right...</span>"
 	return
 
 /mob/living/simple_mob/vore/hostile/morph/ShiftClickOn(atom/movable/A)

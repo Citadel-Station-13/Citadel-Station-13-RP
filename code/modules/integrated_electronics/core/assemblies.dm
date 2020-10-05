@@ -172,14 +172,10 @@
 			return id_card
 
 /obj/item/electronic_assembly/examine(mob/user)
-	. = ..(user, 1)
-	if(.)
-		for(var/obj/item/integrated_circuit/IC in contents)
-			IC.external_examine(user)
-	//	for(var/obj/item/integrated_circuit/output/screen/S in contents)
-	//		if(S.stuff_to_display)
-	//			to_chat(user, "There's a little screen labeled '[S.name]', which displays '[S.stuff_to_display]'.")
-		if(opened)
+	. = ..()
+	for(var/obj/item/integrated_circuit/IC in contents)
+		IC.external_examine(user)
+	if(opened)
 			interact(user)
 
 /obj/item/electronic_assembly/proc/get_part_complexity()

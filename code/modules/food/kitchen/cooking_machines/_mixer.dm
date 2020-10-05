@@ -17,8 +17,8 @@ fundamental differences
 	idle_power_usage = 50
 
 /obj/machinery/appliance/mixer/examine(var/mob/user)
-	..()
-	user << span("notice", "It is currently set to make a [selected_option]")
+	. = ..()
+	. += "<span class = 'notice'>It is currently set to make a [selected_option].</span>"
 
 /obj/machinery/appliance/mixer/New()
 	. = ..()

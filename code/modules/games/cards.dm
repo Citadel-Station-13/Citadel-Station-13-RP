@@ -347,11 +347,11 @@
 	user.visible_message("<span class = 'notice'>\The [user] [concealed ? "conceals" : "reveals"] their hand.</span>")
 
 /obj/item/hand/examine(mob/user)
-	..(user)
+	. = ..()
 	if((!concealed) && cards.len)
-		to_chat(user,"It contains: ")
+		. += "It contains: "
 		for(var/datum/playingcard/P in cards)
-			to_chat(user,"\The [P.name].")
+			. += "\The [P.name]."
 
 /obj/item/hand/verb/Removecard()
 

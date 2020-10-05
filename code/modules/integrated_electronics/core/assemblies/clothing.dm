@@ -49,7 +49,7 @@
 /obj/item/clothing/examine(mob/user)
 	if(IC)
 		IC.examine(user)
-	..()
+	. = ..()
 
 /obj/item/clothing/attackby(obj/item/I, mob/user)
 	if(IC)

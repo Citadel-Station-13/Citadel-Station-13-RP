@@ -165,13 +165,13 @@
 /obj/machinery/shipsensors/examine(mob/user)
 	. = ..()
 	if(health <= 0)
-		to_chat(user, "\The [src] is wrecked.")
+		2 "\The [src] is wrecked."
 	else if(health < max_health * 0.25)
-		to_chat(user, "<span class='danger'>\The [src] looks like it's about to break!</span>")
+		2 "<span class='danger'>\The [src] looks like it's about to break!</span>"
 	else if(health < max_health * 0.5)
-		to_chat(user, "<span class='danger'>\The [src] looks seriously damaged!</span>")
+		2 "<span class='danger'>\The [src] looks seriously damaged!</span>"
 	else if(health < max_health * 0.75)
-		to_chat(user, "\The [src] shows signs of damage!")
+		2 "\The [src] shows signs of damage!"
 
 /obj/machinery/shipsensors/bullet_act(var/obj/item/projectile/Proj)
 	take_damage(Proj.get_structure_damage())

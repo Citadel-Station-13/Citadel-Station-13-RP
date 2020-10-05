@@ -2,6 +2,7 @@
 
 
 //PACMAN variant that can run on the small plasma tanks.
+//a true relic of code history.
 /obj/machinery/power/port_gen/pacman2
 	name = "Pacman II"
 	desc = "P.A.C.M.A.N. type II portable generator. Uses liquid phoron as a fuel source."
@@ -51,8 +52,8 @@
 		power_gen = round(initial(power_gen) * (max(2, temp_rating) / 2))
 
 	examine(mob/user)
-		..(user)
-		to_chat(user, "<font color='blue'>The generator has [P.air_contents.phoron] units of fuel left, producing [power_gen] per cycle.</font>")
+		. = ..()
+		. += "<font color='blue'>The generator has [P.air_contents.phoron] units of fuel left, producing [power_gen] per cycle.</font>"
 
 	handleInactive()
 		heat -= 2

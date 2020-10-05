@@ -75,11 +75,11 @@
 	wearer = null
 
 /obj/item/clothing/shoes/magboots/examine(mob/user)
-	..(user)
+	. = ..()
 	var/state = "disabled"
 	if(item_flags & NOSLIP)
 		state = "enabled"
-	to_chat(user, "Its mag-pulse traction system appears to be [state].")
+	. += "Its mag-pulse traction system appears to be [state]."
 
 /obj/item/clothing/shoes/magboots/vox
 
@@ -121,8 +121,3 @@
 		item_flags &= ~NOSLIP
 		magpulse = 0
 		canremove = 1
-
-/obj/item/clothing/shoes/magboots/vox/examine(mob/user)
-	..(user)
-	if (magpulse)
-		to_chat(user, "It would be hard to take these off without relaxing your grip first.")//theoretically this message should only be seen by the wearer when the claws are equipped.

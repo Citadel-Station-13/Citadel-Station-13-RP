@@ -705,15 +705,15 @@
 		recoil = initial(recoil)
 
 /obj/item/gun/examine(mob/user)
-	..(user)
+	. = ..()
 	if(!no_pin_required)
 		if(pin)
-			to_chat(user, "It has \a [pin] installed.")
+			. += "It has \a [pin] installed."
 		else
-			to_chat(user, "It doesn't have a firing pin installed, and won't fire.")
+			. += "It doesn't have a firing pin installed, and won't fire."
 	if(firemodes.len > 1)
 		var/datum/firemode/current_mode = firemodes[sel_mode]
-		to_chat(user, "The fire selector is set to [current_mode.name].")
+		. += "The fire selector is set to [current_mode.name]."
 
 /obj/item/gun/proc/switch_firemodes(mob/user)
 	if(firemodes.len <= 1)

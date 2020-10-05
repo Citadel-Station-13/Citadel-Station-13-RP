@@ -135,11 +135,11 @@
 	free_space -= length(strip_html_properly(new_text))
 
 /obj/item/paper/examine(mob/user)
-	..()
+	. = ..()
 	if(in_range(user, src) || istype(user, /mob/observer/dead))
 		show_content(usr)
 	else
-		to_chat(user, "<span class='notice'>You have to go closer if you want to read it.</span>")
+		. += "<span class='notice'>You have to go closer if you want to read it.</span>"
 	return
 
 /obj/item/paper/proc/show_content(var/mob/user, var/forceshow=0)

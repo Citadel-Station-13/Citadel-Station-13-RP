@@ -151,18 +151,17 @@
 	return ..()
 
 /mob/living/simple_animal/construct/examine(mob/user)
-	..(user)
-	var/msg = "<span cass='info'>*---------*\nThis is \icon[src] \a <EM>[src]</EM>!\n"
+	. = ..()
+	. += "<span cass='info'>*---------*\nThis is \icon[src] \a <EM>[src]</EM>!\n"
 	if (src.health < src.getMaxHealth())
-		msg += "<span class='warning'>"
+		. += "<span class='warning'>"
 		if (src.health >= src.getMaxHealth()/2)
-			msg += "It looks slightly dented.\n"
+			. += "It looks slightly dented.\n"
 		else
-			msg += "<B>It looks severely dented!</B>\n"
-		msg += "</span>"
-	msg += "*---------*</span>"
+			. += "<B>It looks severely dented!</B>\n"
+		. += "</span>"
+	. += "*---------*</span>"
 
-	user << msg
 
 /mob/living/simple_animal/construct/Process_Spacemove()
 	return 1 //Constructs levitate, can fall from a shuttle with no harm, and are piloted by either damned spirits or some otherworldly entity. It's not hard to believe.

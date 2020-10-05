@@ -179,12 +179,12 @@
 	flags |= NOBLUDGEON //No more attack messages
 
 /obj/item/dogborg/tongue/examine(user)
-	if(!..(user, 1))
+	. = ..()
 		return
 	if(water.energy)
-		to_chat(user, "<span class='notice'>[src] is wet. Just like it should be.</span>")
+		. += "<span class='notice'>[src] is wet.</span>"
 	if(water.energy < 5)
-		to_chat(user, "<span class='notice'>[src] is dry.</span>")
+		. += "<span class='notice'>[src] is dry.</span>"
 
 /obj/item/dogborg/tongue/attack_self(mob/user)
 	var/mob/living/silicon/robot.R = user

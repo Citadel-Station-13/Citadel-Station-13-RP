@@ -43,17 +43,7 @@
 			stored_ore[O.name] = 1
 
 /obj/structure/ore_box/examine(mob/user)
-	to_chat(user,"That's [src].")
-	to_chat(user,desc)
-
-	// Borgs can now check contents too.
-	if((!istype(user, /mob/living/carbon/human)) && (!istype(user, /mob/living/silicon/robot)))
-		return
-
-	if(!Adjacent(user)) //Can only check the contents of ore boxes if you can physically reach them.
-		return
-
-	add_fingerprint(user)
+	. = ..()
 
 	if(!contents.len)
 		to_chat(user,"It is empty.")

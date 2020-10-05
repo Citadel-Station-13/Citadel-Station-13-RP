@@ -33,10 +33,10 @@
 /obj/item/material/fishing_rod/built
 	strung = FALSE
 
-/obj/item/material/fishing_rod/examine(mob/M as mob)
-	..()
+/obj/item/material/fishing_rod/examine(mob/user)
+	. = ..()
 	if(Bait)
-		to_chat(M, "<span class='notice'>\The [src] has \the [Bait] hanging on its hook.</span>")
+		. += "<span class='notice'>\The [src] has \the [Bait] hanging on its hook.</span>"
 		Bait.examine(M)
 
 /obj/item/material/fishing_rod/CtrlClick(mob/user)

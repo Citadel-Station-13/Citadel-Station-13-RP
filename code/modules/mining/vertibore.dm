@@ -5,7 +5,7 @@
 	description_fluff = "A phoron bore used for rapidly digging through rock that has been modified to allow it to fire straight down at a much higher power. However, this has resulted in a loss of power and resource efficiency, compactness, and modularity as the proprietary capacitor and manipulator cannot be swapped."
 	w_class = ITEMSIZE_NO_CONTAINER //haha harold can't powergame itemsize with BoHs if it doesn't even fit in a BoH
 	//he's just going to locker it isn't he
-	slowdown = 1 //chonker bore is heavy boy 
+	slowdown = 1 //chonker bore is heavy boy
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "vertibore"
 	item_state = "vertibore"
@@ -22,9 +22,9 @@
 
 /obj/item/vertibore/examine(mob/user)
 	. = ..()
-	to_chat(user, "<span class='notice'>The shaft excavator has [mat_storage]cm^3 of phoron inside, and can hold a maximum of [max_mat_storage].</span>")
+	. += "<span class='notice'>The shaft excavator has [mat_storage]cm^3 of phoron inside, and can hold a maximum of [max_mat_storage].</span>"
 	if(cell)
-		to_chat(user, "<span class='notice'>The installed [cell.name] has a charge level of [round((cell.charge/cell.maxcharge)*100)]%.</span>")
+		. += "<span class='notice'>The installed [cell.name] has a charge level of [round((cell.charge/cell.maxcharge)*100)]%.</span>"
 
 /obj/item/vertibore/attackby(var/obj/item/thing, var/mob/user)
 	if(istype(thing, /obj/item/cell))

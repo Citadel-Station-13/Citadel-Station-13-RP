@@ -67,10 +67,10 @@
 		src.add_fingerprint(usr)
 
 /obj/item/clothing/examine(var/mob/user)
-	..(user)
+	. = ..()
 	if(LAZYLEN(accessories))
 		for(var/obj/item/clothing/accessory/A in accessories)
-			to_chat(user, "\A [A] is attached to it.")
+			. += "\A [A] is attached to it."
 
 /**
  *  Attach accessory A to src
