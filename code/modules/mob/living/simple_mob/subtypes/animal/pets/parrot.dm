@@ -112,10 +112,6 @@
 	my_headset = /obj/item/radio/headset/headset_eng
 	say_list_type = /datum/say_list/bird/polly
 
-// Best Bird with best headset.
-/mob/living/simple_mob/animal/passive/bird/parrot/polly/ultimate
-	my_headset = /obj/item/radio/headset/omni
-
 /mob/living/simple_mob/animal/passive/bird/parrot/kea
 	name = "kea"
 	desc = "A species of parrot. On Earth, they are unique among other parrots for residing in alpine climates. \
