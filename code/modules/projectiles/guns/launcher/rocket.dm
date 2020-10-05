@@ -17,9 +17,8 @@
 	var/list/rockets = new/list()
 
 /obj/item/gun/launcher/rocket/examine(mob/user)
-	if(!..(user, 2))
-		return
-	to_chat(user, "<font color='blue'>[rockets.len] / [max_rockets] rockets.</font>")
+	. = ..()
+	. += "<font color='blue'>[rockets.len] / [max_rockets] rockets.</font>"
 
 /obj/item/gun/launcher/rocket/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I, /obj/item/ammo_casing/rocket))

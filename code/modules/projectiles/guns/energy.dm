@@ -169,15 +169,15 @@
 	return null
 
 /obj/item/gun/energy/examine(mob/user)
-	..(user)
+	. = ..()
 	if(power_supply)
 		if(charge_cost)
 			var/shots_remaining = round(power_supply.charge / max(1, charge_cost))	// Paranoia
-			to_chat(user, "Has [shots_remaining] shot\s remaining.")
+			. += "Has [shots_remaining] shot\s remaining."
 		else
-			to_chat(user, "Has infinite shots remaining.")
+			. += "Has infinite shots remaining."
 	else
-		to_chat(user, "Does not have a power cell.")
+		. += "Does not have a power cell."
 	return
 
 /obj/item/gun/energy/update_icon(var/ignore_inhands)

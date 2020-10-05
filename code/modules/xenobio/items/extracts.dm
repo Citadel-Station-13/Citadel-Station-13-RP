@@ -33,11 +33,11 @@
 	..()
 
 /obj/item/slime_extract/examine(mob/user)
-	..()
+	. = ..()
 	if(uses)
-		to_chat(user, "This extract has [uses] more use\s.")
+		. += "This extract has [uses] more use\s."
 	else
-		to_chat(user, "This extract is inert.")
+		. += "This extract is inert."
 
 /datum/chemical_reaction/slime
 	var/required = null
@@ -997,6 +997,3 @@
 /datum/chemical_reaction/slime/rainbow_unity/on_reaction(var/datum/reagents/holder)
 	new /obj/item/slimepotion/unity(get_turf(holder.my_atom))
 	..()
-
-
-

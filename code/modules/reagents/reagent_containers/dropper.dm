@@ -12,13 +12,12 @@
 	slot_flags = SLOT_EARS
 	volume = 5
 
-/obj/item/reagent_containers/dropper/examine(var/mob/user)
-	if(!..(user, 2))
-		return
+/obj/item/reagent_containers/dropper/examine(mob/user)
+	. = ..()
 	if(reagents && reagents.reagent_list.len)
-		to_chat(user, "<span class='notice'>It contains [reagents.total_volume] units of liquid.</span>")
+		. += "<span class='notice'>It contains [reagents.total_volume] units of liquid.</span>"
 	else
-		to_chat(user, "<span class='notice'>It is empty.</span>")
+		. += "<span class='notice'>It is empty.</span>"
 
 /obj/item/reagent_containers/dropper/afterattack(var/obj/target, var/mob/user, var/proximity)
 	if(!target.reagents || !proximity) return

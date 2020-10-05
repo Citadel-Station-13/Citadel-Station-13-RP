@@ -76,9 +76,9 @@
 	to_chat(user, "<span class='notice'>You adjusted the pressure nozzle. You'll now use [amount_per_transfer_from_this] units per spray.</span>")
 
 /obj/item/reagent_containers/spray/examine(mob/user)
-	if(..(user, 0) && loc == user)
-		to_chat(user, "[round(reagents.total_volume)] units left.")
-	return
+	. = ..()
+	if(loc == user)
+		. += "[round(reagents.total_volume)] units left."
 
 /obj/item/reagent_containers/spray/verb/empty()
 
@@ -129,8 +129,8 @@
 	reagents.add_reagent("condensedcapsaicin", 40)
 
 /obj/item/reagent_containers/spray/pepper/examine(mob/user)
-	if(..(user, 1))
-		to_chat(user, "The safety is [safety ? "on" : "off"].")
+	. = ..()
+	. += "The safety is [safety ? "on" : "off"]."
 
 /obj/item/reagent_containers/spray/pepper/attack_self(var/mob/user)
 	safety = !safety
