@@ -1,0 +1,4 @@
+author: "RealDonaldTrump"
+delete-after: True
+changes: 
+  - bugfix: "Optical Meson Scanner aviators can now be chosen again in the loadout"

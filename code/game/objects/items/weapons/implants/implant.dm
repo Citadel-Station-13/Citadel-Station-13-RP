@@ -9,7 +9,7 @@
 	w_class = ITEMSIZE_TINY
 	var/implanted = null
 	var/mob/imp_in = null
-	var/obj/item/organ/external/part = null
+	var/obj/item/organ/external/part
 	var/implant_color = "b"
 	var/allow_reagents = 0
 	var/malfunction = 0

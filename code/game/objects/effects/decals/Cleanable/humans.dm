@@ -66,6 +66,7 @@ var/global/list/image/splatter_cache=list()
 		desc = initial(desc)
 
 /obj/effect/decal/cleanable/blood/Crossed(mob/living/carbon/human/perp)
+	. = ..()
 	if (!istype(perp))
 		return
 	if(amount < 1)

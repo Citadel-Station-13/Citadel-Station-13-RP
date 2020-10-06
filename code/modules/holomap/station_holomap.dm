@@ -48,10 +48,9 @@
 	SSholomaps.station_holomaps -= src
 	stopWatching()
 	holomap_datum = null
-	. = ..()
+	return ..()
 
 /obj/machinery/station_map/proc/setup_holomap()
-	. = ..()
 	bogus = FALSE
 	var/turf/T = get_turf(src)
 	original_zLevel = T.z

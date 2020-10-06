@@ -472,7 +472,7 @@
 		if(37)
 			// Alien boats.
 			apply_prefix = FALSE
-			var/new_boat_mat = pickweight(
+			var/new_boat_mat = pickweight(list(
 				MAT_WOOD = 100,
 				MAT_SIFWOOD = 200,
 				DEFAULT_WALL_MATERIAL = 60,
@@ -489,7 +489,7 @@
 				MAT_DURASTEEL = 2,
 				MAT_MORPHIUM = 2,
 				MAT_SUPERMATTER = 1
-				)
+				))
 			var/list/alien_stuff = list(
 				/obj/vehicle/boat,
 				/obj/vehicle/boat/dragon
@@ -522,7 +522,7 @@
 			new_item = new /obj/item/telecube/randomized(src.loc)
 
 	if(istype(new_item, /obj/item/material))
-		var/new_item_mat = pickweight(
+		var/new_item_mat = pickweight(list(
 			DEFAULT_WALL_MATERIAL = 80,
 			MAT_WOOD = 20,
 			MAT_SIFWOOD = 40,
@@ -539,7 +539,7 @@
 			MAT_DURASTEEL = 2,
 			MAT_MORPHIUM = 2,
 			MAT_SUPERMATTER = 1
-			)
+			))
 		var/obj/item/material/MW = new_item
 		MW.applies_material_colour = TRUE
 		MW.set_material(new_item_mat)
