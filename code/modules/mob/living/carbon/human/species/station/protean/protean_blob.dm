@@ -374,7 +374,7 @@
 
 	if(istype(loc, /obj/item/rig/protean))
 		var/obj/item/rig/protean/prig = loc
-		STOP_PROCESSING(SSobj, prig)
+		verbs -= /mob/living/simple_mob/protean_blob/proc/usehardsuit
 		src.forceMove(get_turf(prig))
 		prig.forceMove(humanform)
 		return
@@ -385,9 +385,20 @@
 			break
 		if(prig)
 			prig.forceMove(get_turf(src))
-			START_PROCESSING(SSobj, prig)
 			src.forceMove(prig)
+			verbs |= /mob/living/simple_mob/protean_blob/proc/usehardsuit
 			return
+
+/mob/living/simple_mob/protean_blob/proc/usehardsuit()
+	set name = "Utilize Hardsuit Interface"
+	set desc = "Allows a protean blob to open hardsuit interface."
+	set category = "Abilities"
+
+	if(istype(loc, /obj/item/rig/protean))
+		var/obj/item/rig/protean/prig = loc
+		prig.ui_interact(src, state = interactive_state)
+
+
 
 /mob/living/carbon/human/proc/nano_outofblob(var/mob/living/simple_mob/protean_blob/blob)
 	if(!istype(blob))
