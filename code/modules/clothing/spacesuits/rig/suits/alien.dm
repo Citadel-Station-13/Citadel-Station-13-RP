@@ -151,7 +151,7 @@
 /obj/item/rig/protean/relaymove(mob/user, var/direction)
 	if(user.stat || user.stunned)
 		return
-	world.log << "The relaymove works, pack it up people."
+
 	forced_move(direction, user)
 
 /obj/item/clothing/head/helmet/space/rig/protean
