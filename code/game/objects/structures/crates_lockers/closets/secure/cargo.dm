@@ -100,3 +100,7 @@
 	else
 		starts_with += /obj/item/storage/backpack/satchel/eng
 	return ..()
+
+/obj/structure/closet/secure_closet/miner/Initialize()
+	starts_with += /obj/item/gps/mining
+	return ..()

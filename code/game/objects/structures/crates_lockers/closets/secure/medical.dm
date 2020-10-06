@@ -141,6 +141,10 @@
 		/obj/item/clothing/accessory/storage/white_vest,
 		/obj/item/barrier_tape_roll/medical)
 
+/obj/structure/closet/secure_closet/paramedic/Initialize()
+	starts_with += /obj/item/gps/medical
+	return ..()
+
 /obj/structure/closet/secure_closet/CMO
 	name = "chief medical officer's locker"
 	req_access = list(access_cmo)
