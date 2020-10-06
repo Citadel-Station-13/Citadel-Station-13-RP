@@ -176,7 +176,7 @@
 	for(var/obj/item/integrated_circuit/IC in contents)
 		IC.external_examine(user)
 	if(opened)
-			interact(user)
+		interact(user)
 
 /obj/item/electronic_assembly/proc/get_part_complexity()
 	. = 0

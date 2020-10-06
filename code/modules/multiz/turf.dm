@@ -68,10 +68,10 @@
 
 /turf/simulated/open/examine(mob/user)
 	. = ..()
-		var/depth = 1
-		for(var/T = GetBelow(src); isopenspace(T); T = GetBelow(T))
-			depth += 1
-		. += "It is about [depth] levels deep."
+	var/depth = 1
+	for(var/T = GetBelow(src); isopenspace(T); T = GetBelow(T))
+		depth += 1
+	. += "It is about [depth] levels deep."
 
 /**
 * Update icon and overlays of open space to be that of the turf below, plus any visible objects on that turf.

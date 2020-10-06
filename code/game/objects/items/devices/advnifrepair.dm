@@ -55,7 +55,8 @@
 	return 1
 
 /obj/item/nifrepairer/examine(mob/user)
+	. = ..()
 	if(supply.total_volume)
-	. += "<span class='notice'>\The [src] contains [supply.total_volume] units of programmed nanites, ready for dispensing.</span>"
+		. += "<span class='notice'>\The [src] contains [supply.total_volume] units of programmed nanites, ready for dispensing.</span>"
 	else
 		. += "<span class='notice'>\The [src] is empty and ready to accept nanopaste.</span>"

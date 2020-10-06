@@ -305,7 +305,7 @@
 /obj/item/rcd/electric/update_icon()
 	return
 
-/obj/item/rcd/electric/display_resources()
+/obj/item/rcd/electric/proc/display_resources()
 	var/obj/item/cell/cell = get_cell()
 	if(cell)
 		return "The power source connected to \the [src] has a charge of [cell.percent()]%."
@@ -398,9 +398,6 @@
 		to_chat(user, span("notice", "\The [src] makes its own material, no need to add more."))
 		return FALSE
 	return ..()
-
-/obj/item/rcd/debug/display_resources()
-	return "It has UNLIMITED POWER!"
 
 
 

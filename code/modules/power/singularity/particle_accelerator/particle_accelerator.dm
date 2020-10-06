@@ -119,9 +119,9 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 		if(1)
 			. += "A [name], it is missing some cables."
 		if(2)
-			. += "A [name], the panel is open".
+			. += "A [name], the panel is open."
 		if(3)
-			s. += "The [name] is assembled."
+			. += "The [name] is assembled."
 			if(powered)
 				. += desc_holder
 
@@ -297,9 +297,9 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 		if(1)
 			. += "A [name], it is missing some cables."
 		if(2)
-			. += "A [name], the panel is open".
+			. += "A [name], the panel is open."
 		if(3)
-			s. += "The [name] is assembled."
+			. += "The [name] is assembled."
 			if(powered)
 				. += desc_holder
 

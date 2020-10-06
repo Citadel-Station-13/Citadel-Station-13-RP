@@ -102,13 +102,16 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 
 
 /obj/effect/rune/attack_hand(mob/user)
-		to_chat(user, "You can't mouth the arcane scratchings without fumbling over them.")
-		if(!iscultist(user))
+	if(!ishuman(user))
+		return
+	var/mob/living/carbon/human/H = user
+	to_chat(user, "You can't mouth the arcane scratchings without fumbling over them.")
+	if(!iscultist(H))
 		return
 	if(user.is_muzzled())
-		to_chat(user, "You are unable to speak the words of the rune.")
+		to_chat(H, "You are unable to speak the words of the rune.")
 		return
-	if(!word1 || !word2 || !word3 || prob(user.getBrainLoss()))
+	if(!word1 || !word2 || !word3 || prob(H.getBrainLoss()))
 		return fizzle()
 //	if(!src.visibility)
 //		src.visibility=1
@@ -305,16 +308,19 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 	to_chat(M, "<span class='danger'>You feel searing heat inside!</span>")
 
 /obj/item/book/tome/attack_self(mob/user)
-	if(!user.canmove || user.stat || user.restrained())
+	if(!ishuman(user))
+		return
+	var/mob/living/carbon/human/H = user
+	if(!H.canmove || H.stat || H.restrained())
 		return
 	if(!cultwords["travel"])
 		runerandom()
-	if(iscultist(user))
+	if(iscultist(H))
 		var/C = 0
 		for(var/obj/effect/rune/N in rune_list)
 			C++
-		if (!istype(user.loc,/turf))
-			to_chat(user, "<span class='warning'>You do not have enough space to write a proper rune.</span>")
+		if (!istype(H.loc,/turf))
+			to_chat(H, "<span class='warning'>You do not have enough space to write a proper rune.</span>")
 			return
 		if (C>=26 + runedec + cult.current_antagonists.len) //including the useless rune at the secret room, shouldn't count against the limit of 25 runes - Urist
 			alert("The cloth of reality can't take that much of a strain. Remove some runes first!")
@@ -324,11 +330,11 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 				if("Cancel")
 					return
 				if("Read it")
-					if(usr.get_active_hand() != src)
+					if(H.get_active_hand() != src)
 						return
-					user << browse("[tomedat]", "window=Arcane Tome")
+					H << browse("[tomedat]", "window=Arcane Tome")
 					return
-		if(usr.get_active_hand() != src)
+		if(H.get_active_hand() != src)
 			return
 		var/list/dictionary = list (
 			"convert" = list("join","blood","self"),
@@ -366,31 +372,30 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 			if (length(english&required) == required.len)
 				scribewords += entry
 		var/chosen_rune = null
-		if(usr)
+		if(H)
 			chosen_rune = input ("Choose a rune to scribe.") in scribewords
 			if (!chosen_rune)
 				return
 			if (chosen_rune == "none")
-				to_chat(user, "<span class='notice'>You decide against scribing a rune, perhaps you should take this time to study your notes.</span>")
+				to_chat(H, "<span class='notice'>You decide against scribing a rune, perhaps you should take this time to study your notes.</span>")
 				return
 			if (chosen_rune == "teleport")
 				dictionary[chosen_rune] += input ("Choose a destination word") in english
 			if (chosen_rune == "teleport other")
 				dictionary[chosen_rune] += input ("Choose a destination word") in english
-		if(usr.get_active_hand() != src)
+		if(H.get_active_hand() != src)
 			return
 		for (var/mob/V in viewers(src))
 			V.show_message("<span class='danger'>\The [user] slices open a finger and begins to chant and paint symbols on the floor.</span>", 3, "<span class='danger'>You hear chanting.</span>", 2)
 		to_chat(user, "<span class='danger'>You slice open one of your fingers and begin drawing a rune on the floor whilst chanting the ritual that binds your life essence with the dark arcane energies flowing through the surrounding world.</span>")
-		user.take_overall_damage((rand(9)+1)/10) // 0.1 to 1.0 damage
-		if(do_after(user, 50))
+		H.take_overall_damage((rand(9)+1)/10) // 0.1 to 1.0 damage
+		if(do_after(H, 50))
 			var/area/A = get_area(user)
 			log_and_message_admins("created \an [chosen_rune] rune at \the [A.name] - [user.loc.x]-[user.loc.y]-[user.loc.z].")
-			if(usr.get_active_hand() != src)
+			if(H.get_active_hand() != src)
 				return
-			var/mob/living/carbon/human/H = user
 			var/obj/effect/rune/R = new /obj/effect/rune(user.loc)
-			to_chat(user, "<span class='notice'>You finish drawing the arcane markings of the Geometer.</span>")
+			to_chat(H, "<span class='notice'>You finish drawing the arcane markings of the Geometer.</span>")
 			var/list/required = dictionary[chosen_rune]
 			R.word1 = english[required[1]]
 			R.word2 = english[required[2]]

@@ -329,13 +329,13 @@
 /obj/machinery/door/examine(mob/user)
 	. = ..()
 	if(src.health <= 0)
-		. += "<span class = 'notice'>The [src] is broken!</span>")
+		. += "<span class = 'notice'>The [src] is broken!</span>"
 	if(src.health < src.maxhealth / 4)
-		. += "<span class = 'notice'>The [src] looks like it's about to break!</span>")
+		. += "<span class = 'notice'>The [src] looks like it's about to break!</span>"
 	else if(src.health < src.maxhealth / 2)
-		. += "<span class = 'notice'>The [src] looks seriously damaged!</span>")
+		. += "<span class = 'notice'>The [src] looks seriously damaged!</span>"
 	else if(src.health < src.maxhealth * 3/4)
-		. += "<span class = 'notice'>The [src] shows signs of damage!</span>")
+		. += "<span class = 'notice'>The [src] shows signs of damage!</span>"
 
 
 /obj/machinery/door/proc/set_broken()

@@ -37,7 +37,7 @@
 	. = ..()
 	if(Bait)
 		. += "<span class='notice'>\The [src] has \the [Bait] hanging on its hook.</span>"
-		Bait.examine(M)
+		Bait.examine(user)
 
 /obj/item/material/fishing_rod/CtrlClick(mob/user)
 	if((src.loc == user || Adjacent(user)) && Bait)

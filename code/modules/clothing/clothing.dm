@@ -27,6 +27,7 @@
 	var/update_icon_define = null	// Only needed if you've got multiple files for the same type of clothing
 	var/recent_struggle = 0
 
+	var/clothing_flags = 0
 //Updates the icons of the mob wearing the clothing item, if any.
 /obj/item/clothing/proc/update_clothing_icon()
 	return

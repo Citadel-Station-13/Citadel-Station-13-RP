@@ -157,7 +157,7 @@ MRE Stuff
 
 /obj/item/storage/mre/menu11
 	name = "emergency MRE"
-	meal = "A vacuum-sealed bag containing a day's worth of nutrients for an adult in strenuous situations. There is no visible expiration date on the package. This one is menu 11, nutriment paste. Only for emergencies."
+	desc = "A vacuum-sealed bag containing a day's worth of nutrients for an adult in strenuous situations. There is no visible expiration date on the package. This one is menu 11, nutriment paste. Only for emergencies."
 	icon_state = "crayonmre"
 	starts_with = list(
 	/obj/item/reagent_containers/food/snacks/liquidfood,
@@ -170,7 +170,7 @@ MRE Stuff
 
 /obj/item/storage/mre/menu12
 	name = "crayon MRE"
-	meal_desc = "This one doesn't have a menu listing. How very odd."
+	desc = "This one doesn't have a menu listing. How very odd."
 	icon_state = "crayonmre"
 	starts_with = list(
 	/obj/item/storage/fancy/crayons,
@@ -182,7 +182,7 @@ MRE Stuff
 
 /obj/item/storage/mre/menu13
 	name = "medical MRE"
-	meal_desc = "This one is menu 13, vitamin paste & dessert. Only for emergencies."
+	desc = "This one is menu 13, vitamin paste & dessert. Only for emergencies."
 	icon_state = "crayonmre"
 	starts_with = list(
 	/obj/item/reagent_containers/food/snacks/liquidvitamin,
@@ -195,7 +195,7 @@ MRE Stuff
 	)
 
 /obj/item/storage/mre/random
-	meal_desc = "The menu label is faded out."
+	desc = "The menu label is faded out."
 	starts_with = list(
 	/obj/random/mre/main,
 	/obj/item/storage/mrebag/side,

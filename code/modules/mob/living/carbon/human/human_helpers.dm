@@ -221,3 +221,12 @@ var/static/icon/ingame_hud_med_vr = icon('icons/mob/hud_med_vr.dmi')
 #undef HUMAN_EATING_NO_ISSUE
 #undef HUMAN_EATING_NO_MOUTH
 #undef HUMAN_EATING_BLOCKED_MOUTH
+
+/mob/living/carbon/human/can_see_reagents()
+	. = ..()
+	if(.) //No need to run through all of this if it's already true.
+		return
+	if(istype(glasses, /obj/item/clothing))
+		var/obj/item/clothing/C = glasses
+		if(C.clothing_flags & SCAN_REAGENTS)
+			return TRUE

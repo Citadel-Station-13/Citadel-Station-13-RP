@@ -49,7 +49,6 @@
 
 /obj/machinery/power/port_gen/examine(mob/user)
 	. = ..()
-		return
 	if(active)
 		. += "<span class='notice'>The generator is on.</span>"
 	else

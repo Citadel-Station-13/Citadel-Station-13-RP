@@ -117,7 +117,8 @@
 
 /obj/item/reagent_containers/borghypo/examine(mob/user)
 	var/datum/reagent/R = SSchemistry.chemical_reagents[reagent_ids[mode]]
-	. = ..() "<span class='notice'>It is currently producing [R.name] and has [reagent_volumes[reagent_ids[mode]]] out of [volume] units left.</span>"
+	. = ..()
+	. += "<span class='notice'>It is currently producing [R.name] and has [reagent_volumes[reagent_ids[mode]]] out of [volume] units left.</span>"
 
 /obj/item/reagent_containers/borghypo/service
 	name = "cyborg drink synthesizer"

@@ -180,7 +180,6 @@
 
 /obj/item/dogborg/tongue/examine(user)
 	. = ..()
-		return
 	if(water.energy)
 		. += "<span class='notice'>[src] is wet.</span>"
 	if(water.energy < 5)

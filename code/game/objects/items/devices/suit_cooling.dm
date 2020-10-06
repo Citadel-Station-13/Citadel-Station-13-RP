@@ -191,7 +191,7 @@
 		if(cell)
 			. += "The panel is open, exposing the [cell]."
 		else
-		. += "The panel is open."
+			. += "The panel is open."
 
 	if (cell)
 		. += "The charge meter reads [round(cell.percent())]%."

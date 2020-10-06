@@ -199,6 +199,23 @@
 			found += A.search_contents_for(path,filter_path)
 	return found
 
+/atom/proc/get_examine_name(mob/user)
+	. = "\a [src]"
+	var/list/override = list(gender == PLURAL ? "some" : "a", " ", "[name]")
+
+	var/should_override = FALSE
+
+	if(SEND_SIGNAL(src, COMSIG_ATOM_GET_EXAMINE_NAME, user, override) & COMPONENT_EXNAME_CHANGED)
+		should_override = TRUE
+
+
+	if(blood_DNA && !istype(src, /obj/effect/decal))
+		override[EXAMINE_POSITION_BEFORE] = " blood-stained "
+		should_override = TRUE
+
+	if(should_override)
+		. = override.Join("")
+
 ///Generate the full examine string of this atom (including icon for goonchat)
 /atom/proc/get_examine_string(mob/user, thats = FALSE)
 	return "[icon2html(src, user)] [thats? "That's ":""][get_examine_name(user)]"
@@ -209,14 +226,8 @@
 	if(desc)
 		. += desc
 
-	if(custom_materials)
-		var/list/materials_list = list()
-		for(var/i in custom_materials)
-			var/datum/material/M = i
-			materials_list += "[M.name]"
-		. += "<u>It is made out of [english_list(materials_list)]</u>."
 	if(reagents)
-		if(reagents.reagents_holder_flags & TRANSPARENT)
+		if(is_open_container())
 			. += "It contains:"
 			if(length(reagents.reagent_list))
 				if(user.can_see_reagents()) //Show each individual reagent
@@ -229,11 +240,8 @@
 					. += "[total_volume] units of various reagents"
 			else
 				. += "Nothing."
-		else if(reagents.reagents_holder_flags & AMOUNT_VISIBLE)
-			if(reagents.total_volume)
-				. += "<span class='notice'>It has [reagents.total_volume] unit\s left.</span>"
-			else
-				. += "<span class='danger'>It's empty.</span>"
+		else
+			. += "<span class='danger'>You can't see inside.</span>"
 
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
 

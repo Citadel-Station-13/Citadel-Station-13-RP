@@ -58,14 +58,6 @@
 	base_name = name
 	base_desc = desc
 
-/obj/item/reagent_containers/glass/examine(mob/user)
-	. = ..()
-	if(reagents && reagents.reagent_list.len)
-		. += "<span class='notice'>It contains [reagents.total_volume] units of liquid.</span>"
-	else
-		. += "<span class='notice'>It is empty.</span>"
-	if(!is_open_container())
-		. += "<span class='notice'>Airtight lid seals it completely.</span>"
 
 /obj/item/reagent_containers/glass/attack_self()
 	..()

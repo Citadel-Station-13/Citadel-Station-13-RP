@@ -270,7 +270,7 @@
 	var/integrity = health/initial(health)*100
 	switch(integrity)
 		if(85 to 100)
-		. += "<span class = 'notice'>It's fully intact.</span>"
+			. += "<span class = 'notice'>It's fully intact.</span>"
 		if(65 to 85)
 			. += "<span class = 'notice'>It's slightly damaged.</span>"
 		if(45 to 65)

@@ -50,7 +50,7 @@
 
 /obj/machinery/cablelayer/examine(mob/user)
 	. = ..()
-	. +="<span class = 'notice'>The [src]'s cable reel has [cable.amount] lengths left.</span>")
+	. +="<span class = 'notice'>The [src]'s cable reel has [cable.amount] lengths left.</span>"
 
 /obj/machinery/cablelayer/proc/load_cable(var/obj/item/stack/cable_coil/CC)
 	if(istype(CC) && CC.amount)

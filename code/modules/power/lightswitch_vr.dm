@@ -69,7 +69,6 @@
 
 /obj/structure/construction/examine(mob/user)
 	. = ..()
-		return
 	switch(stage)
 		if(FRAME_UNFASTENED)
 			. += "It's an empty frame."

@@ -61,7 +61,7 @@
 	. = ..()
 	if(air_contents.gas[/datum/gas/oxygen] < 1 && loc==user)
 		. += "<span class='danger'>The meter on the [src.name] indicates you are almost out of air!</span>"
-		user.playsound('sound/effects/alert.ogg')
+		//user.playsound('sound/effects/alert.ogg')
 
 /obj/item/tank/air/Initialize()
 	. = ..()
@@ -136,8 +136,8 @@
 /obj/item/tank/emergency/oxygen/examine(mob/user)
 	. = ..()
 	if(air_contents.gas[/datum/gas/oxygen] < 0.2 && loc==user)
-		. += ("<span class='danger'>The meter on the [src.name] indicates you are almost out of air!</span>"))
-		user.playsound('sound/effects/alert.ogg')
+		. += "<span class='danger'>The meter on the [src.name] indicates you are almost out of air!</span>"
+		//user.playsound('sound/effects/alert.ogg')
 
 /obj/item/tank/emergency/oxygen/engi
 	name = "extended-capacity emergency oxygen tank"
@@ -253,4 +253,4 @@
 /obj/item/tank/emergency/carbon_dioxide/examine(mob/user)
 	if(air_contents.gas[/datum/gas/carbon_dioxide] < 0.2 && loc==user)
 		. += "<span class='danger'>The meter on the [src.name] indicates you are almost out of air!</span>"
-		user.playsound('sound/effects/alert.ogg')
+	//	user.playsound('sound/effects/alert.ogg')

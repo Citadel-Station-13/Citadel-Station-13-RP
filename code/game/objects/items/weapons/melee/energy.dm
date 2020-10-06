@@ -180,7 +180,7 @@
 /obj/item/melee/energy/examine(mob/user)
 	. = ..()
 	if(colorable)
-	. += "<span class='notice'>Alt-click to recolor it.</span>"
+		. += "<span class='notice'>Alt-click to recolor it.</span>"
 
 /*
  * Energy Axe

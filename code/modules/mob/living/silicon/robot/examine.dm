@@ -1,7 +1,5 @@
 /mob/living/silicon/robot/examine(mob/user)
 	. = ..()
-
-	var/. = ""
 	. += "<span class='warning'>"
 	if (src.getBruteLoss())
 		if (src.getBruteLoss() < 75)
