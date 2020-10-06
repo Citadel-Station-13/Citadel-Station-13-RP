@@ -199,10 +199,9 @@
 // Test for if stepping on a tile containing this obj is safe to do, used for things like landmines and cliffs.
 /obj/proc/is_safe_to_step(mob/living/L)
 	return TRUE
-
 /obj/examine(mob/user)
 	. = ..()
-	if(matter.len)
+	if(matter)
 		var/materials_list
 		for(var/i in matter)
 			materials_list += i
