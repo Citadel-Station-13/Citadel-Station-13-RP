@@ -210,7 +210,7 @@
 			return
 		if(refactory.add_stored_material(S.material.name,1*S.perunit) && S.use(1))
 			visible_message("<b>[name]</b> gloms over some of \the [S], absorbing it.")
-	else if(isitem(A) && a_intent = "grab")
+	else if(isitem(A) && a_intent == "grab")
 		var/obj/item/I = A
 		if(!vore_selected)
 			to_chat(src,"<span class='warning'>You either don't have a belly selected, or don't have a belly!</span>")
