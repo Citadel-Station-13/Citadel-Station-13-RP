@@ -4,7 +4,6 @@
 	var/maxnutrition = 1000000 //previously this was uncapped, normal nutrition is i think 0-1000. 1 million should be a fine cap
 	if(owner.isSynthetic())
 		maxnutrition = 450
-		owner.nutrition = min(owner.nutrition+, maxnutrition)
 	if((times_fired < next_process) || !contents.len)
 		recent_sound = FALSE
 		return SSBELLIES_IGNORED

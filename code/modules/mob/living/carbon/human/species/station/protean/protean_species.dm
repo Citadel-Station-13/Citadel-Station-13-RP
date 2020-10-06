@@ -123,8 +123,7 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 		/mob/living/carbon/human/proc/tie_hair,
 		/mob/living/proc/glow_toggle,
 		/mob/living/proc/glow_color,
-		/mob/living/carbon/human/proc/lick_wounds
-		/mob/living/carbon/human/proc/rig_transform) //prots get all the special verbs since they can't select traits.
+		/mob/living/carbon/human/proc/lick_wounds) //prots get all the special verbs since they can't select traits.
 	var/global/list/abilities = list()
 
 	var/monochromatic = FALSE //IGNORE ME
@@ -175,8 +174,8 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 		else
 			H.nif.durability = rand(21,25)
 
-	var/obj/item/rig/protean/prig = /obj/item/rig/protean
-	new prig(H)
+	var/obj/item/rig/protean/prig = new /obj/item/rig/protean(H)
+	prig.myprotean = H
 
 /datum/species/protean/hug(var/mob/living/carbon/human/H, var/mob/living/target)
 	return ..() //Wut

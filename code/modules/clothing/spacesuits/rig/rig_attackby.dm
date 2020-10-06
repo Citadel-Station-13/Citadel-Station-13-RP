@@ -134,9 +134,9 @@
 
 			switch(to_remove)
 
-				if("cell" && !unremovable_cell)
+				if("cell")
 
-					if(cell)
+					if(cell && !unremovable_cell)
 						to_chat(user, "You detach \the [cell] from \the [src]'s battery mount.")
 						for(var/obj/item/rig_module/module in installed_modules)
 							module.deactivate()
