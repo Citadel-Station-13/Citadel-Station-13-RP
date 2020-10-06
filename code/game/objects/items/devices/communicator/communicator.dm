@@ -102,8 +102,8 @@ var/global/list/obj/item/communicator/all_communicators = list()
 // Description: Allows the user to click a link when examining to look at video if one is going.
 /obj/item/communicator/examine(mob/user)
 	. = ..()
-	if(. && video_source)
-		. += "<span class='notice'>It looks like it's on a video call: <a href='?src=\ref[src];watchvideo=1'>\[view\]</a></span
+	if(video_source)
+		. += "<span class='notice'>It looks like it's on a video call: <a href='?src=\ref[src];watchvideo=1'>\[view\]</a></span>"
 
 // Proc: initialize_exonet()
 // Parameters: 1 (user - the person the communicator belongs to)
