@@ -218,8 +218,8 @@
 
 ///Generate the full examine string of this atom (including icon for goonchat)
 /atom/proc/get_examine_string(mob/user, thats = FALSE)
-	return "\icon[src] [thats? "That's ":""][get_examine_name(user)]"
-//[icon2html(thing = src, target = user)] todo:
+	return "\[icon2html(thing = src, target = user)] [thats? "That's ":""][get_examine_name(user)]"
+// todo:
 /atom/proc/examine(mob/user)
 	. = list("[get_examine_string(user, TRUE)].")
 
