@@ -192,7 +192,7 @@
 			var/list/potentials = living_mobs(0)
 			if(potentials.len)
 				var/mob/living/target = pick(potentials)
-				if(istype(target) && vore_selected)
+				if(istype(target) && vore_selected && target.can_be_drop_prey) //no more ooc-noncon vore, thanks
 					if(target.buckled)
 						target.buckled.unbuckle_mob(target, force = TRUE)
 					target.forceMove(vore_selected)
@@ -210,6 +210,13 @@
 			return
 		if(refactory.add_stored_material(S.material.name,1*S.perunit) && S.use(1))
 			visible_message("<b>[name]</b> gloms over some of \the [S], absorbing it.")
+	else if(isitem(A) && a_intent = "grab")
+		var/obj/item/I = A
+		if(!vore_selected)
+			to_chat(src,"<span class='warning'>You either don't have a belly selected, or don't have a belly!</span>")
+			return FALSE
+		visible_message("<b>[name]</b> stretches itself over the [I], engulfing it whole!")
+		I.forceMove(vore_selected)
 	else
 		return ..()
 
