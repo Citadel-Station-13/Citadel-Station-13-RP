@@ -1,0 +1,6 @@
+author: "drofoljaelisglis"
+delete-after: True
+changes: 
+  - bugfix: "Fixed the white/default ribbon sprite not showing up."
+  - bugfix: "Fixed a missing pixel on the butterfly hairpin object sprite."
+  - code_imp: "Merged some _vr files."
