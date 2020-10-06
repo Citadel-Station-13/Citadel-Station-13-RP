@@ -203,8 +203,13 @@
 /obj/examine(mob/user)
 	. = ..()
 	if(matter)
+		if(!matter.len)
+			return
 		var/materials_list
-		for(var/i in matter)
-			materials_list += i
-		. += "<u>It is made out of [english_list(materials_list)]</u>."
+		var/i = 1
+		for(var/m in matter)
+			materials_list += matter[i]
+			materials_list += ", "
+			i++
+		. += "<u>It is made out of [materials_list]</u>."
 	return
