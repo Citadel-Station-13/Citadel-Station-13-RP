@@ -151,26 +151,29 @@
 /obj/item/rig/protean/relaymove(mob/user, var/direction)
 	if(user.stat || user.stunned)
 		return
-
 	forced_move(direction, user)
 
 /obj/item/clothing/head/helmet/space/rig/protean
-	name = "massed nanomachines"
+	name = "mass"
 	desc = "A helmet-shaped clump of nanomachines."
 	siemens_coefficient= 0
+	species_restricted = list(SPECIES_HUMAN, SPECIES_PROMETHEAN, SPECIES_VASILISSAN, SPECIES_ALRAUNE) //anything that's roughly humanoid ie uses human spritesheets
 
 /obj/item/clothing/gloves/gauntlets/rig/protean
-	name = "massed nanomachines"
+	name = "mass"
 	desc = "Glove-shaped clusters of nanomachines."
 	siemens_coefficient= 0
+	species_restricted = list(SPECIES_HUMAN, SPECIES_PROMETHEAN, SPECIES_VASILISSAN, SPECIES_ALRAUNE) //anything that's roughly humanoid.
 
 /obj/item/clothing/shoes/magboots/rig/protean
-	name = "massed nanomachines"
+	name = "mass"
 	desc = "Boot-shaped clusters of nanomachines."
 	siemens_coefficient= 0
+	species_restricted = list(SPECIES_HUMAN, SPECIES_PROMETHEAN, SPECIES_VASILISSAN, SPECIES_ALRAUNE) //anything that's roughly humanoid.
 
 /obj/item/clothing/suit/space/rig/protean
-	name = "massed nanomachines"
+	name = "mass"
 	desc = "A body-hugging mass of nanomachines."
 	siemens_coefficient= 0
 	can_breach = 0
+	species_restricted = list(SPECIES_HUMAN, SPECIES_PROMETHEAN, SPECIES_VASILISSAN, SPECIES_ALRAUNE) //anything that's roughly humanoid, ie uses human spritesheets
