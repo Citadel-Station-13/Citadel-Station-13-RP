@@ -272,7 +272,7 @@
 
 	//Drop all our things
 	var/list/things_to_drop = contents.Copy()
-	var/list/things_to_not_drop = list(w_uniform,nif,l_store,r_store,wear_id,l_ear,r_ear,gloves,glasses,shoes,/obj/item/rig/protean) //And whatever else we decide for balancing.
+	var/list/things_to_not_drop = list(w_uniform,nif,l_store,r_store,wear_id,l_ear,r_ear,gloves,glasses,shoes) //And whatever else we decide for balancing.
 	//you can instaflash or pepperspray on unblob with pockets anyways
 	if(l_hand && l_hand.w_class <= ITEMSIZE_SMALL) //Hands but only if small or smaller
 		things_to_not_drop += l_hand
@@ -281,7 +281,8 @@
 	things_to_drop -= things_to_not_drop //Crunch the lists
 	things_to_drop -= organs //Mah armbs
 	things_to_drop -= internal_organs //Mah sqeedily spooch
-
+	for(var/obj/item/rig/protean/O in things_to_drop)
+		things_to_drop -= O
 
 	for(var/obj/item/I in things_to_drop) //rip hoarders
 		drop_from_inventory(I)

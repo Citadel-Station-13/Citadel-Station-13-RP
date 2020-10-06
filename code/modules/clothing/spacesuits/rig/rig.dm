@@ -985,13 +985,16 @@
 	wearer.lay_down()
 	to_chat(user, "<span class='notice'>\The [wearer] is now [wearer.resting ? "resting" : "getting up"].</span>")
 
-/obj/item/rig/proc/forced_move(var/direction, var/mob/user)
+/obj/item/rig/proc/forced_move(var/direction, var/mob/user, var/ai_moving = TRUE)
 
 	// Why is all this shit in client/Move()? Who knows?
 	if(world.time < wearer_move_delay)
 		return
 
-	if(!wearer || !wearer.loc || !ai_can_move_suit(user, check_user_module = 1))
+	if(!wearer || !wearer.loc)
+		return
+
+	if(!ai_can_move_suit(user, check_user_module = 1) && ai_moving)
 		return
 
 	//This is sota the goto stop mobs from moving var
