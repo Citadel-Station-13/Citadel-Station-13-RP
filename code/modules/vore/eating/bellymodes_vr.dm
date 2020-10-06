@@ -1,5 +1,10 @@
 // Process the predator's effects upon the contents of its belly (i.e digestion/transformation etc)
 /obj/belly/proc/process_belly(var/times_fired,var/wait) //Passed by controller
+	//robot stuff
+	var/maxnutrition = 1000000 //previously this was uncapped, normal nutrition is i think 0-1000. 1 million should be a fine cap
+	if(owner.isSynthetic())
+		maxnutrition = 450
+		owner.nutrition = min(owner.nutrition+, maxnutrition)
 	if((times_fired < next_process) || !contents.len)
 		recent_sound = FALSE
 		return SSBELLIES_IGNORED
@@ -193,7 +198,7 @@
 						var/mob/living/silicon/robot/R = owner
 						R.cell.charge += 25*compensation
 					else
-						owner.nutrition += 4.5*compensation
+						owner.nutrition = min(owner.nutrition+(4.5*compensation), maxnutrition)
 				to_update = TRUE
 
 				continue
@@ -213,9 +218,9 @@
 				var/mob/living/silicon/robot/R = owner
 				R.cell.charge += 25*damage_gain
 			if(offset) // If any different than default weight, multiply the % of offset.
-				owner.nutrition += offset*(4.5*(damage_gain)/difference) //4.5 nutrition points per health point. Normal same size 100+100 health prey with average weight would give 900 points if the digestion was instant. With all the size/weight offset taxes plus over time oxyloss+hunger taxes deducted with non-instant digestion, this should be enough to not leave the pred starved.
+				owner.nutrition = min(owner.nutrition+(offset*(4.5*(damage_gain)/difference)), maxnutrition)  //4.5 nutrition points per health point. Normal same size 100+100 health prey with average weight would give 900 points if the digestion was instant. With all the size/weight offset taxes plus over time oxyloss+hunger taxes deducted with non-instant digestion, this should be enough to not leave the pred starved.
 			else
-				owner.nutrition += 4.5*(damage_gain)/difference
+				owner.nutrition = min(owner.nutrition+(4.5*(damage_gain)/difference), maxnutrition)
 
 
 //////////////////////////// DM_ABSORB ////////////////////////////
@@ -234,7 +239,7 @@
 			if(M.nutrition >= 100) //Drain them until there's no nutrients left. Slowly "absorb" them.
 				var/oldnutrition = (M.nutrition * 0.05)
 				M.nutrition = (M.nutrition * 0.95)
-				owner.nutrition += oldnutrition
+				owner.nutrition = min(owner.nutrition+oldnutrition, maxnutrition)
 			else if(M.nutrition < 100) //When they're finally drained.
 				absorb_living(M)
 				to_update = TRUE
@@ -266,7 +271,7 @@
 			if(M.nutrition >= 100) //Drain them until there's no nutrients left.
 				var/oldnutrition = (M.nutrition * 0.05)
 				M.nutrition = (M.nutrition * 0.95)
-				owner.nutrition += oldnutrition
+				owner.nutrition = min(owner.nutrition+oldnutrition, maxnutrition)
 
 //////////////////////////// DM_SHRINK ////////////////////////////
 	else if(digest_mode == DM_SHRINK)
@@ -285,7 +290,7 @@
 				if(M.nutrition >= 100) //Absorbing bodymass results in nutrition if possible.
 					var/oldnutrition = (M.nutrition * 0.05)
 					M.nutrition = (M.nutrition * 0.95)
-					owner.nutrition += oldnutrition
+					owner.nutrition = min(owner.nutrition+oldnutrition, maxnutrition)
 
 //////////////////////////// DM_GROW ////////////////////////////
 	else if(digest_mode == DM_GROW)
@@ -321,8 +326,7 @@
 				if(M.nutrition >= 100)
 					var/oldnutrition = (M.nutrition * 0.05)
 					M.nutrition = (M.nutrition * 0.95)
-					owner.nutrition += oldnutrition
-
+					owner.nutrition = min(owner.nutrition+oldnutrition, maxnutrition)
 ///////////////////////////// DM_HEAL /////////////////////////////
 	else if(digest_mode == DM_HEAL)
 

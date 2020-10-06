@@ -134,7 +134,7 @@
 
 			switch(to_remove)
 
-				if("cell")
+				if("cell" && !unremovable_cell)
 
 					if(cell)
 						to_chat(user, "You detach \the [cell] from \the [src]'s battery mount.")

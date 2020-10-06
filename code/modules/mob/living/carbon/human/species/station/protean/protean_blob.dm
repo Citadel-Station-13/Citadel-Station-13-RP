@@ -68,7 +68,7 @@
 		verbs |= /mob/living/proc/hide
 		verbs |= /mob/living/simple_mob/protean_blob/proc/useradio
 		verbs |= /mob/living/simple_mob/protean_blob/proc/appearanceswitch
-
+		verbs |= /mob/living/simple_mob/protean_blob/proc/rig_transform
 	else
 		update_icon()
 
@@ -268,6 +268,7 @@
 	things_to_drop -= things_to_not_drop //Crunch the lists
 	things_to_drop -= organs //Mah armbs
 	things_to_drop -= internal_organs //Mah sqeedily spooch
+//	things_to_drop -= /obj/item/rig/protean //ugh
 
 	for(var/obj/item/I in things_to_drop) //rip hoarders
 		drop_from_inventory(I)
@@ -351,6 +352,28 @@
 
 	if(mob_radio)
 		mob_radio.ui_interact(src, state = interactive_state)
+
+/mob/living/simple_mob/protean_blob/proc/rig_transform
+	set name = "Modify Form - Hardsuit"
+	set desc = "Allows a protean blob to solidify its form into one extremely similar to a hardsuit."
+	set category = "Abilities"
+
+	var/obj/item/rig/protean/prig
+	if(istype(loc, /obj/item/rig/protean)
+		prig = loc
+		STOP_PROCESSING(SSobj, prig)
+		src.forceMove(get_turf(prig))
+		prig.myprotean = humanform
+		prig.forceMove(humanform)
+	else if(isturf(loc))
+		for(var/O in humanform.contents)
+			if(istype(O, /obj/item/rig/protean))
+				prig = O
+				prig.forceMove(get_turf(src))
+				prig.myprotean = humanform
+				START_PROCESSING(SSobj, prig)
+				src.forceMove(prig)
+				return
 
 /mob/living/carbon/human/proc/nano_outofblob(var/mob/living/simple_mob/protean_blob/blob)
 	if(!istype(blob))

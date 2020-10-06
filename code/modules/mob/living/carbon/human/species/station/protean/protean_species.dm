@@ -123,7 +123,8 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 		/mob/living/carbon/human/proc/tie_hair,
 		/mob/living/proc/glow_toggle,
 		/mob/living/proc/glow_color,
-		/mob/living/carbon/human/proc/lick_wounds) //prots get all the special verbs since they can't select traits.
+		/mob/living/carbon/human/proc/lick_wounds
+		/mob/living/carbon/human/proc/rig_transform) //prots get all the special verbs since they can't select traits.
 	var/global/list/abilities = list()
 
 	var/monochromatic = FALSE //IGNORE ME
@@ -154,18 +155,18 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 	H.synth_color = TRUE
 
 /datum/species/protean/equip_survival_gear(var/mob/living/carbon/human/H)
-	var/obj/item/stack/material/steel/metal_stack = new()
-	metal_stack.amount = 3
-
-	var/obj/item/clothing/accessory/permit/nanotech/permit = new()
+	var/obj/item/storage/box/box = new /obj/item/storage/box/survival/synth(H)
+	var/obj/item/stack/material/steel/metal_stack = new(box)
+	metal_stack.amount = 5
+	new /obj/item/fbp_backup_cell(box)
+	var/obj/item/clothing/accessory/permit/nanotech/permit = new(box)
 	permit.set_name(H.real_name)
 
 	if(H.backbag == 1) //Somewhat misleading, 1 == no bag (not boolean)
-		H.equip_to_slot_or_del(permit, slot_l_hand)
-		H.equip_to_slot_or_del(metal_stack, slot_r_hand)
+		H.equip_to_slot_or_del(box, slot_l_hand)
 	else
-		H.equip_to_slot_or_del(permit, slot_in_backpack)
-		H.equip_to_slot_or_del(metal_stack, slot_in_backpack)
+		H.equip_to_slot_or_del(box, slot_in_backpack)
+
 
 	spawn(0) //Let their real nif load if they have one
 		if(!H.nif)
@@ -173,6 +174,9 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 			new_nif.quick_implant(H)
 		else
 			H.nif.durability = rand(21,25)
+
+	var/obj/item/rig/protean/prig = /obj/item/rig/protean
+	new prig(H)
 
 /datum/species/protean/hug(var/mob/living/carbon/human/H, var/mob/living/target)
 	return ..() //Wut

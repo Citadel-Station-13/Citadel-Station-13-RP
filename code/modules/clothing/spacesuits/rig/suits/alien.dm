@@ -118,3 +118,26 @@
 		/obj/item/rig_module/power_sink,
 		/obj/item/rig_module/self_destruct
 		)
+
+
+/*
+ proteans
+*/
+/obj/item/rig/protean
+	name = "nanosuit control cluster"
+	suit_type = "nanomachines"
+	armor = list(melee = 15, bullet = 15, laser = 0, energy = 100, bomb = 15, bio = 100, rad = 100)
+	emp_protection = -100 //nice.
+	siemens_coefficient= 0
+	slowdown = 0
+	offline_slowdown = 0
+	can_breach = 0
+	unremovable_cell = TRUE //it is the protean. kinda.
+	var/mob/living/carbon/human/myprotean
+	initial_modules = list(/obj/item/rig_module/power_sink)
+
+/obj/item/rig/protean/process()
+	if(myprotean.nutrition > 50)
+		H.nutrition = max(H.nutrition-10, 50)
+	cell.give(7000/450*10) //this is the same amount of power as a cyborg station uses btw
+	..()
