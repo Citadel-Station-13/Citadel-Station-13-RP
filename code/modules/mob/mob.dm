@@ -259,16 +259,23 @@
 	return
 
 //mob verbs are faster than object verbs. See http://www.byond.com/forum/?post=1326139&page=2#comment8198716 for why this isn't atom/verb/examine()
-/mob/verb/examinate(atom/A as mob|obj|turf in view())
+/mob/verb/examinate(atom/A as mob|obj|turf in view()) //It used to be oview(12), but I can't really say why
 	set name = "Examine"
 	set category = "IC"
 
-	if((is_blind(src) || usr.stat) && !isobserver(src))
-		to_chat(src, "<span class='notice'>Something is there but you can't see it.</span>")
-		return 1
+	if(isturf(A) && !(sight & SEE_TURFS) && !(A in view(client ? client.view : world.view, src)))
+		// shift-click catcher may issue examinate() calls for out-of-sight turfs
+		return
+
+	if(is_blind()) //blind people see things differently (through touch)
+		return
 
 	face_atom(A)
-	A.examine(src)
+	var/list/result
+	if(client)
+		result = A.examine(src) // if a tree is examined but no client is there to see it, did the tree ever really exist?
+
+	to_chat(src, result.Join("\n"))
 
 /mob/verb/pointed(atom/A as mob|obj|turf in view())
 	set name = "Point To"
