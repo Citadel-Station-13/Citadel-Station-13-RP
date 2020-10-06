@@ -28,7 +28,8 @@
 		/obj/item/clothing/head/beret/sec/corporate/hos,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/security,
 		/obj/item/clothing/mask/gas/half,
-		/obj/item/clothing/under/bodysuit/bodysuitseccom)
+		/obj/item/clothing/under/bodysuit/bodysuitseccom,
+		/obj/item/clothing/under/rank/head_of_security/turtleneck)
 
 /obj/structure/closet/secure_closet/hos2
 	name = "head of security's gear"
