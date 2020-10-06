@@ -127,7 +127,7 @@
 	name = "nanosuit control cluster"
 	suit_type = "nanomachine"
 	icon_state = "nanomachine_rig"
-	armor = list(melee = 15, bullet = 15, laser = 0, energy = 100, bomb = 15, bio = 100, rad = 100)
+	armor = list(melee = 60, bullet = 50, laser = -15,energy = -30, bomb = 30, bio = 100, rad = 100)
 	emp_protection = -100 //nice.
 	siemens_coefficient= 0
 	slowdown = 0
@@ -157,6 +157,7 @@
 	name = "mass"
 	desc = "A helmet-shaped clump of nanomachines."
 	siemens_coefficient= 0
+	light_overlay = "should not use a light overlay"
 	species_restricted = list(SPECIES_HUMAN, SPECIES_PROMETHEAN, SPECIES_VASILISSAN, SPECIES_ALRAUNE) //anything that's roughly humanoid ie uses human spritesheets
 
 /obj/item/clothing/gloves/gauntlets/rig/protean
