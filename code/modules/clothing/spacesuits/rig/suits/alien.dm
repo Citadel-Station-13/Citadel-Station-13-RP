@@ -148,7 +148,11 @@
 		cell.give(7000/450*10) //this is the same amount of power as a cyborg station uses btw
 	..()
 
-
+/obj/item/rig/protean/relaymove(mob/user, var/direction)
+	if(user.stat || user.stunned)
+		return
+	world.log << "The relaymove works, pack it up people."
+	forced_move(direction, user)
 
 /obj/item/clothing/head/helmet/space/rig/protean
 	name = "massed nanomachines"

@@ -230,14 +230,14 @@
 
 /mob/living/simple_mob/protean_blob/attack_hand(mob/living/L)
 	if(L.get_effective_size() >= (src.get_effective_size() + 0.5) )
-		src.get_scooped(L) //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+		src.get_scooped(L)
 	else
 		..()
 
 /mob/living/simple_mob/protean_blob/MouseDrop(var/atom/over_object)
 	if(ishuman(over_object))
 		var/mob/living/carbon/human/H = over_object
-		get_scooped(H, true)
+		get_scooped(H, TRUE)
 
 /mob/living/simple_mob/protean_blob/MouseEntered(location,control,params)
 	if(resting)
