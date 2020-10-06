@@ -1,6 +1,0 @@
-author: "RobotAlice"
-delete-after: True
-changes: 
-  - bugfix: "autopsy scanner now works on help intent"
-  - tweak: "autopsy scanner no longer used for external repair surgery"
-  - tweak: "health analyzer now the right tool for external repair surgery"
