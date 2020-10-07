@@ -216,8 +216,8 @@
 		if(!vore_selected)
 			to_chat(src,"<span class='warning'>You either don't have a belly selected, or don't have a belly!</span>")
 			return FALSE
-		if(is_type_in_list(I,item_vore_blacklist))
-			to_chat(src, "<span class='warning'>You are not allowed to eat this.</span>")
+		if(is_type_in_list(I,GLOB.item_vore_blacklist) || I.anchored)
+			to_chat(src, "<span class='warning'>You can't eat this.</span>")
 			return
 
 		if(is_type_in_list(I,edible_trash) | adminbus_trash)
@@ -407,7 +407,7 @@
 
 	if(istype(loc, /obj/item/rig/protean))
 		var/obj/item/rig/protean/prig = loc
-		prig.ui_interact(src, state = interactive_state)
+		prig.ui_interact(src, nano_state = interactive_state)
 	else
 		to_chat(src, "You are not in RIG form.")
 
