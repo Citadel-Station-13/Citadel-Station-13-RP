@@ -389,7 +389,8 @@
 		src.forceMove(get_turf(prig))
 		prig.forceMove(humanform)
 		return
-	else if(isturf(loc))
+
+	if(isturf(loc))
 		var/obj/item/rig/protean/prig
 		for(var/obj/item/rig/protean/O in humanform.contents)
 			prig = O
