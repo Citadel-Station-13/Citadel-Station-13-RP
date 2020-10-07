@@ -132,7 +132,7 @@
 	siemens_coefficient= 0
 	slowdown = 0
 	offline_slowdown = 0
-//	can_breach = 0
+	seal_delay = 1
 	unremovable_cell = TRUE //it is the protean. kinda.
 	var/mob/living/carbon/human/myprotean
 	initial_modules = list(/obj/item/rig_module/power_sink)
@@ -178,3 +178,4 @@
 	siemens_coefficient= 0
 	can_breach = 0
 	species_restricted = list(SPECIES_HUMAN, SPECIES_PROMETHEAN, SPECIES_VASILISSAN, SPECIES_ALRAUNE) //anything that's roughly humanoid, ie uses human spritesheets
+	allowed = list(/obj/item/gun,/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/melee/baton,/obj/item/storage/backpack,/obj/item/subspaceradio)
