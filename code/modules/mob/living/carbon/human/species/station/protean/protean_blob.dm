@@ -215,6 +215,15 @@
 		if(!vore_selected)
 			to_chat(src,"<span class='warning'>You either don't have a belly selected, or don't have a belly!</span>")
 			return FALSE
+		if(is_type_in_list(I,item_vore_blacklist))
+			to_chat(src, "<span class='warning'>You are not allowed to eat this.</span>")
+			return
+
+		if(is_type_in_list(I,edible_trash) | adminbus_trash)
+			if(I.hidden_uplink)
+				to_chat(src, "<span class='warning'>You really should not be eating this.</span>")
+				message_admins("[key_name(src)] has attempted to ingest an uplink item. ([src ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>" : "null"])")
+				return
 		visible_message("<b>[name]</b> stretches itself over the [I], engulfing it whole!")
 		I.forceMove(vore_selected)
 	else
