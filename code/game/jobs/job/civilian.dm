@@ -23,8 +23,8 @@
 	department = "Civilian"
 	department_flag = CIVILIAN
 	faction = "Station"
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 2 //IT TAKES A LOT TO MAKE A STEW
+	spawn_positions = 2 //A PINCH OF SALT AND LAUGHTER, TOO
 	supervisors = "the head of personnel"
 	selection_color = "#515151"
 	idtype = /obj/item/card/id/civilian/chef
@@ -79,8 +79,8 @@
 	department = "Cargo"
 	department_flag = CIVILIAN
 	faction = "Station"
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 3
+	spawn_positions = 3
 	supervisors = "the quartermaster and the head of personnel"
 	selection_color = "#9b633e"
 	idtype = /obj/item/card/id/cargo/cargo_tech
@@ -96,8 +96,8 @@
 	department = "Cargo"
 	department_flag = CIVILIAN
 	faction = "Station"
-	total_positions = 3
-	spawn_positions = 3
+	total_positions = 4
+	spawn_positions = 4
 	supervisors = "the quartermaster and the head of personnel"
 	selection_color = "#9b633e"
 	idtype = /obj/item/card/id/cargo/mining
@@ -124,7 +124,7 @@
 	minimal_access = list(access_janitor, access_maint_tunnels)
 
 	outfit_type = /decl/hierarchy/outfit/job/service/janitor
-	alt_titles = list("Custodian")
+	alt_titles = list("Custodian", "Sanitation Technician", "Maid")
 
 //More or less assistants
 /datum/job/librarian
@@ -142,7 +142,7 @@
 	minimal_access = list(access_library)
 
 	outfit_type = /decl/hierarchy/outfit/job/librarian
-	alt_titles = list("Journalist", "Writer","Film Crew")
+	alt_titles = list("Journalist", "Historian", "Writer","Film Crew")
 
 //var/global/lawyer = 0//Checks for another lawyer //This changed clothes on 2nd lawyer, both IA get the same dreds.
 /datum/job/lawyer

@@ -12,7 +12,7 @@
 	var/max_spikes = 5
 	var/spikes = 5
 	release_force = 30
-	icon = 'icons/obj/gun.dmi'
+	icon = 'icons/obj/gun/launcher.dmi'
 	icon_state = "spikethrower3"
 	item_state = "spikethrower"
 	fire_sound = 'sound/weapons/bladeslice.ogg'
