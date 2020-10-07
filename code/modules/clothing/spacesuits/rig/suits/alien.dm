@@ -151,7 +151,7 @@
 /obj/item/rig/protean/relaymove(mob/user, var/direction)
 	if(user.stat || user.stunned)
 		return
-	forced_move(direction, user, TRUE)
+	forced_move(direction, user, FALSE)
 
 /obj/item/clothing/head/helmet/space/rig/protean
 	name = "mass"

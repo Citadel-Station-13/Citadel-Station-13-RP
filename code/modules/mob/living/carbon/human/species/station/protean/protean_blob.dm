@@ -69,6 +69,7 @@
 		verbs |= /mob/living/simple_mob/protean_blob/proc/useradio
 		verbs |= /mob/living/simple_mob/protean_blob/proc/appearanceswitch
 		verbs |= /mob/living/simple_mob/protean_blob/proc/rig_transform
+		verbs |= /mob/living/simple_mob/protean_blob/proc/usehardsuit
 	else
 		update_icon()
 
@@ -385,7 +386,6 @@
 
 	if(istype(loc, /obj/item/rig/protean))
 		var/obj/item/rig/protean/prig = loc
-		verbs -= /mob/living/simple_mob/protean_blob/proc/usehardsuit
 		src.forceMove(get_turf(prig))
 		prig.forceMove(humanform)
 		return
@@ -397,7 +397,6 @@
 		if(prig)
 			prig.forceMove(get_turf(src))
 			src.forceMove(prig)
-			verbs |= /mob/living/simple_mob/protean_blob/proc/usehardsuit
 			return
 
 /mob/living/simple_mob/protean_blob/proc/usehardsuit()
@@ -408,6 +407,8 @@
 	if(istype(loc, /obj/item/rig/protean))
 		var/obj/item/rig/protean/prig = loc
 		prig.ui_interact(src, state = interactive_state)
+	else
+		to_chat(src, "You are not in RIG form.")
 
 
 

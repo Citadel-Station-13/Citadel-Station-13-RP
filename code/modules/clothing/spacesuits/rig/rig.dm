@@ -994,8 +994,9 @@
 	if(!wearer || !wearer.loc)
 		return
 
-	if(!ai_can_move_suit(user, check_user_module = 1) && ai_moving)
-		return
+	if(ai_moving)
+		if(!ai_can_move_suit(user, check_user_module = 1))
+			return
 
 	//This is sota the goto stop mobs from moving var
 	if(wearer.transforming || !wearer.canmove)
