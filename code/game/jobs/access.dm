@@ -111,6 +111,7 @@
 
 /var/list/priv_station_access
 /proc/get_all_station_access()
+	RETURN_TYPE(/list)
 	if(!priv_station_access)
 		priv_station_access = get_access_ids(ACCESS_TYPE_STATION)
 
@@ -118,6 +119,7 @@
 
 /var/list/priv_centcom_access
 /proc/get_all_centcom_access()
+	RETURN_TYPE(/list)
 	if(!priv_centcom_access)
 		priv_centcom_access = get_access_ids(ACCESS_TYPE_CENTCOM)
 
@@ -125,6 +127,7 @@
 
 /var/list/priv_syndicate_access
 /proc/get_all_syndicate_access()
+	RETURN_TYPE(/list)
 	if(!priv_syndicate_access)
 		priv_syndicate_access = get_access_ids(ACCESS_TYPE_SYNDICATE)
 
@@ -132,6 +135,7 @@
 
 /var/list/priv_private_access
 /proc/get_all_private_access()
+	RETURN_TYPE(/list)
 	if(!priv_private_access)
 		priv_private_access = get_access_ids(ACCESS_TYPE_PRIVATE)
 
@@ -139,6 +143,7 @@
 
 /var/list/priv_region_access
 /proc/get_region_accesses(var/code)
+	RETURN_TYPE(/list)
 	if(code == ACCESS_REGION_ALL)
 		return get_all_station_access()
 

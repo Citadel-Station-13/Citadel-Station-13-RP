@@ -331,9 +331,9 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 	var/list/select_text
 		//Runtime tracked
 			//These three are weird. For best performance, they are only a number when they're not being changed by the SDQL searching/execution code. They only become numbers when they finish changing.
-	var/list/obj_count_all
-	var/list/obj_count_eligible
-	var/list/obj_count_finished
+	var/obj_count_all
+	var/obj_count_eligible
+	var/obj_count_finished
 
 	//Statclick
 	var/obj/effect/statclick/SDQL2_delete/delete_click
@@ -716,50 +716,76 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 					SDQL2_TICK_CHECK
 					SDQL2_HALT_CHECK
 	if(islist(obj_count_finished))
-		obj_count_finished = obj_count_finished.len
+		obj_count_finished = length(obj_count_finished)
 	state = SDQL2_STATE_SWITCHING
 
-/datum/SDQL2_query/proc/SDQL_print(object, list/text_list, print_nulls = TRUE)
+
+/**
+  * Recursively prints out an object to text list for SDQL2 output to admins, with VV links and all.
+  * Recursion limit: 50
+  * Limit imposed by callers should be around 10000 objects
+  * Seriously, if you hit those limits, you're doing something wrong.
+  */
+/datum/SDQL2_query/proc/SDQL_print(datum/object, list/text_list, print_nulls = TRUE, recursion = 1, linebreak = TRUE)
+	if(recursion > 50)
+		text_list += "<br><font color='red'><b>RECURSION LIMIT REACHED.</font></b><br>"
+		return
 	if(is_object_datatype(object))
-		text_list += "<A HREF='?_src_=vars;[HrefToken(TRUE)];Vars=[REF(object)]'>[REF(object)]</A> : [object]"
-		if(istype(object, /atom))
-			var/atom/A = object
-			var/turf/T = A.loc
-			var/area/a
-			if(istype(T))
-				text_list += " <font color='gray'>at</font> [T] [ADMIN_COORDJMP(T)]"
-				a = T.loc
-			else
-				var/turf/final = get_turf(T)		//Recursive, hopefully?
-				if(istype(final))
-					text_list += " <font color='gray'>at</font> [final] [ADMIN_COORDJMP(final)]"
-					a = final.loc
+		if(!islist(object))
+			text_list += "<A HREF='?_src_=vars;[HrefToken(TRUE)];Vars=[REF(object)]'>[object.type] [REF(object)]</A>: [object]"
+			if(istype(object, /atom))
+				if(istype(object, /turf))
+					var/turf/T = object
+					text_list += " [ADMIN_COORDJMP(T)] <font color='gray'>at</font> [T.loc]"
 				else
-					text_list += " <font color='gray'>at</font> nonexistant location"
-			if(a)
-				text_list += " <font color='gray'>in</font> area [a]"
-				if(T.loc != a)
-					text_list += " <font color='gray'>inside</font> [T]"
-		text_list += "<br>"
-	else if(islist(object))
-		var/list/L = object
-		var/first = TRUE
-		text_list += "\["
-		for (var/x in L)
-			if (!first)
-				text_list += ", "
-			first = FALSE
-			SDQL_print(x, text_list)
-			if (!isnull(x) && !isnum(x) && L[x] != null)
-				text_list += " -> "
-				SDQL_print(L[L[x]])
-		text_list += "]<br>"
+					var/atom/A = object
+					var/atom/container = A.loc
+					if(isturf(container))
+						text_list += " <font color='gray'>in</font> [container] [ADMIN_COORDJMP(container)] <font color='gray'>at</font> [container.loc]"
+					else if(container)
+						var/turf/T = get_turf(container)
+						var/cref = REF(container)
+						text_list += " <font color='gray'>in</font> <A HREF='?_src_=vars;[HrefToken(TRUE)];Vars=[cref]'>[container]([cref])</A>"
+						if(T)
+							text_list += " <font color='gray'>on</font> [T] [ADMIN_COORDJMP(T)] <font color='gray'>at</font>[T.loc]"
+					else
+						text_list += " <font color='gray'>in</font> nullspace"
+		else		// lists are snowflake and get special treatment.
+			text_list += "<A HREF='?_src_=vars;[HrefToken(TRUE)];Vars=[REF(object)]'>/list [REF(object)]</A> \[<br>"
+			var/list/L = object
+			if(length(L))
+				for(var/key in object)
+					if(islist(key))
+						text_list += "<span style='margin-left: [min(10, recursion) * 2]em;'>"
+						SDQL_print(key, text_list, TRUE, recursion + 1, FALSE)
+						text_list += "</span>"
+					else
+						SDQL_print(key, text_list, TRUE, recursion, FALSE)
+					if(IS_VALID_ASSOC_KEY(key) && !isnull(L[key]))
+						var/value = L[key]
+						text_list += " --> "
+						if(islist(value))
+							text_list += "<span style='margin-left: [min(10, recursion) * 2]em;'>"
+							SDQL_print(value, text_list, TRUE, recursion + 1, FALSE)
+							text_list += "</span>"
+						else
+							SDQL_print(value, text_list, TRUE, recursion, FALSE)
+					text_list += "<br>"
+			text_list += "\]"
+		if(linebreak)
+			text_list += "<br>"
 	else
 		if(isnull(object))
 			if(print_nulls)
-				text_list += "NULL<br>"
+				text_list += "NULL"
+		else if(istext(object))
+			text_list += "\"[object]\""
+		else if(isnum(object) || ispath(object))
+			text_list += "[object]"
 		else
-			text_list += "[object]<br>"
+			text_list += "UNKNOWN: [object]"
+		if(linebreak)
+			text_list += "<br>"
 
 /datum/SDQL2_query/CanProcCall()
 	if(!allow_admin_interact)

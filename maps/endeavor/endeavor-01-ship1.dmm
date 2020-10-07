@@ -957,10 +957,6 @@
 	},
 /area/tcommsat/chamber)
 "cl" = (
-/obj/machinery/computer/telecomms/traffic{
-	dir = 8;
-	network = "tcommsat"
-	},
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
 "cm" = (

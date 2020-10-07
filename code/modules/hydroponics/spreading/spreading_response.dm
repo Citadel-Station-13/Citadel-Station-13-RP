@@ -41,6 +41,7 @@
 	manual_unbuckle(user)
 
 /obj/effect/plant/Crossed(atom/movable/O)
+	. = ..()
 	if(isliving(O))
 		trodden_on(O)
 

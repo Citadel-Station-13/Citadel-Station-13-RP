@@ -137,7 +137,7 @@
 /obj/item/toy/crossbow
 	name = "foam dart crossbow"
 	desc = "A weapon favored by many overactive children. Ages 8 and up."
-	icon = 'icons/obj/gun.dmi'
+	icon = 'icons/obj/gun/energy.dmi'
 	icon_state = "crossbow"
 	item_icons = list(
 		icon_l_hand = 'icons/mob/items/lefthand_guns.dmi',
@@ -322,6 +322,7 @@
 		qdel(src)
 
 /obj/item/toy/snappop/Crossed(H as mob|obj)
+	. = ..()
 	if((ishuman(H))) //i guess carp and shit shouldn't set them off
 		var/mob/living/carbon/M = H
 		if(M.m_intent == "run")
