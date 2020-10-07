@@ -40,7 +40,7 @@ GLOBAL_LIST_INIT(item_vore_blacklist, list(
 		/obj/item/clothing/shoes/magboots,
 		/obj/item/blueprints,
 		/obj/item/clothing/head/helmet/space,
-		/obj/item/disk/nuclear)
+		/obj/item/disk/nuclear))
 //		/obj/item/clothing/suit/storage/hooded/wintercoat/roiz)
 
 //Classic Vore sounds
