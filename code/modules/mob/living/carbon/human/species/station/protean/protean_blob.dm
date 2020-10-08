@@ -257,7 +257,7 @@
 		..()
 
 /mob/living/simple_mob/protean_blob/MouseDrop(var/atom/over_object)
-	if(ishuman(over_object) && istype(src, /mob/living/simple_mob/protean_blob))
+	if(ishuman(over_object) && usr == src)
 		var/mob/living/carbon/human/H = over_object
 		get_scooped(H, TRUE)
 	else
