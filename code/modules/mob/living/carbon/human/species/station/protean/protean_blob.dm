@@ -193,7 +193,10 @@
 			var/list/potentials = living_mobs(0)
 			if(potentials.len)
 				var/mob/living/target = pick(potentials)
-				if(istype(target) && vore_selected && target.can_be_drop_prey) //no more ooc-noncon vore, thanks
+				var/allowed = TRUE
+				if(target.client && target.can_be_drop_prey)//you can still vore ai mobs with the pref off
+					allowed = FALSE
+				if(istype(target) && vore_selected && allowed) //no more ooc-noncon vore, thanks
 					if(target.buckled)
 						target.buckled.unbuckle_mob(target, force = TRUE)
 					target.forceMove(vore_selected)
