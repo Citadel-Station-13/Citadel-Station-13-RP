@@ -235,7 +235,7 @@
 		var/obj/item/stack/material/S = O
 		var/substance = S.material.name
 		var/list/edible_materials = list("steel", "plasteel", "diamond", "mhydrogen") //Can't eat all materials, just useful ones.
-		var allowed = FALSE
+			var allowed = FALSE
 		for(var/material in edible_materials)
 			if(material == substance) allowed = TRUE
 		if(!allowed)
@@ -252,7 +252,7 @@
 		..()
 
 /mob/living/simple_mob/protean_blob/MouseDrop(var/atom/over_object)
-	if(ishuman(over_object) && istype(user, /mob/living/simple_mob/protean_blob))
+	if(ishuman(over_object) && istype(src, /mob/living/simple_mob/protean_blob))
 		var/mob/living/carbon/human/H = over_object
 		get_scooped(H, TRUE)
 	else
