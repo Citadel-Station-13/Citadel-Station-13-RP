@@ -270,6 +270,8 @@
 
 // Helpers - Unsafe, WILL perform change.
 /mob/living/carbon/human/proc/nano_intoblob()
+	if(loc == /obj/item/rig/protean)
+		return
 	handle_grasp() //It's possible to blob out before some key parts of the life loop. This results in things getting dropped at null. TODO: Fix the code so this can be done better.
 	remove_micros(src, src) //Living things don't fare well in roblobs.
 	if(buckled)
