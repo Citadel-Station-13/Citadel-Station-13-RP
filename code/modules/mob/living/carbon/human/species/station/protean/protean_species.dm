@@ -124,7 +124,8 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 		/mob/living/proc/glow_toggle,
 		/mob/living/proc/glow_color,
 		/mob/living/carbon/human/proc/lick_wounds,
-		/mob/living/carbon/human/proc/rig_transform) //prots get all the special verbs since they can't select traits.
+		/mob/living/carbon/human/proc/rig_transform,
+		/mob/living/proc/usehardsuit) //prots get all the special verbs since they can't select traits.
 	var/global/list/abilities = list()
 
 	var/monochromatic = FALSE //IGNORE ME

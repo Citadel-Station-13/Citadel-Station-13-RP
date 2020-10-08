@@ -69,7 +69,7 @@
 		verbs |= /mob/living/simple_mob/protean_blob/proc/useradio
 		verbs |= /mob/living/simple_mob/protean_blob/proc/appearanceswitch
 		verbs |= /mob/living/simple_mob/protean_blob/proc/rig_transform
-		verbs |= /mob/living/simple_mob/protean_blob/proc/usehardsuit
+		verbs |= /mob/living/proc/usehardsuit
 	else
 		update_icon()
 
@@ -407,7 +407,7 @@
 			src.forceMove(prig)
 			return
 
-/mob/living/simple_mob/protean_blob/proc/usehardsuit()
+/mob/living/proc/usehardsuit()
 	set name = "Utilize Hardsuit Interface"
 	set desc = "Allows a protean blob to open hardsuit interface."
 	set category = "Abilities"

@@ -136,6 +136,7 @@
 	unremovable_cell = TRUE //it is the protean. kinda.
 	var/mob/living/carbon/human/myprotean
 	initial_modules = list(/obj/item/rig_module/power_sink)
+	ai_override_enabled = TRUE
 
 	helm_type = /obj/item/clothing/head/helmet/space/rig/protean
 	boot_type = /obj/item/clothing/shoes/magboots/rig/protean
@@ -143,6 +144,7 @@
 	glove_type = /obj/item/clothing/gloves/gauntlets/rig/protean
 
 /obj/item/rig/protean/process()
+	ai_override_enabled = TRUE
 	if(myprotean.nutrition > 50 && cell.charge < cell.maxcharge)
 		myprotean.nutrition = max(myprotean.nutrition-10, 50)
 		cell.give(7000/450*10) //this is the same amount of power as a cyborg station uses btw
