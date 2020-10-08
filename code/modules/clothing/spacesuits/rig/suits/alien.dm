@@ -145,8 +145,8 @@
 
 /obj/item/rig/protean/process()
 	ai_override_enabled = TRUE
-	if(myprotean.nutrition > 50 && cell.charge < cell.maxcharge)
-		myprotean.nutrition = max(myprotean.nutrition-10, 50)
+	if(myprotean.nutrition > 40 && cell.charge < cell.maxcharge)
+		myprotean.nutrition = max(myprotean.nutrition-10, 45)
 		cell.give(7000/450*10) //this is the same amount of power as a cyborg station uses btw
 	..()
 
