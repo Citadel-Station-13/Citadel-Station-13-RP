@@ -1037,7 +1037,9 @@
 		return 0
 
 	// AIs are a bit slower than regular and ignore move intent.
-	wearer_move_delay = world.time + (ai_controlled_move_delay * ai_moving) //haha true = 1 false = 0
+	wearer_move_delay = world.time
+	if(ai_moving)
+		wearer_move_delay = world.time + ai_controlled_move_delay
 
 	if(istype(wearer.buckled, /obj/vehicle))
 		//manually set move_delay for vehicles so we don't inherit any mob movement penalties

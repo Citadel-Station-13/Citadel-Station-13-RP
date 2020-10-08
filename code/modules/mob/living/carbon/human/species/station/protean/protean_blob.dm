@@ -412,6 +412,7 @@
 
 	if(istype(loc, /obj/item/rig/protean))
 		var/obj/item/rig/protean/prig = loc
+		to_chat(src, "You attempt to interface with the [prig].")
 		prig.ui_interact(src, nano_state = interactive_state)
 	else
 		to_chat(src, "You are not in RIG form.")
@@ -421,7 +422,7 @@
 /mob/living/carbon/human/proc/nano_outofblob(var/mob/living/simple_mob/protean_blob/blob)
 	if(!istype(blob))
 		return
-	if(blob.loc = /obj/item/rig/protean)
+	if(blob.loc == /obj/item/rig/protean)
 		return
 	if(buckled)
 		buckled.unbuckle_mob()
