@@ -361,7 +361,7 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 	if(istype(loc, /obj/item/rig/protean))
 		var/obj/item/rig/protean/prig = loc
 		src.forceMove(get_turf(prig))
-		prig.forceMove(humanform)
+		prig.forceMove(src)
 		return
 
 	if(isturf(loc))
