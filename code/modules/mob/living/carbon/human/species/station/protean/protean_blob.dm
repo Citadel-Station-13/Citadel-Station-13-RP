@@ -236,9 +236,10 @@
 		var/obj/item/stack/material/S = O
 		var/substance = S.material.name
 		var/list/edible_materials = list("steel", "plasteel", "diamond", "mhydrogen") //Can't eat all materials, just useful ones.
-			var allowed = FALSE
+		var/allowed = FALSE
 		for(var/material in edible_materials)
-			if(material == substance) allowed = TRUE
+			if(material == substance)
+				allowed = TRUE
 		if(!allowed)
 			return
 		if(refactory.add_stored_material(S.material.name,1*S.perunit) && S.use(1))
