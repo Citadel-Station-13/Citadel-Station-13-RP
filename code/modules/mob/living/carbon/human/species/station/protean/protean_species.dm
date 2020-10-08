@@ -123,7 +123,8 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 		/mob/living/carbon/human/proc/tie_hair,
 		/mob/living/proc/glow_toggle,
 		/mob/living/proc/glow_color,
-		/mob/living/carbon/human/proc/lick_wounds) //prots get all the special verbs since they can't select traits.
+		/mob/living/carbon/human/proc/lick_wounds,
+		/mob/living/carbon/human/proc/rig_transform) //prots get all the special verbs since they can't select traits.
 	var/global/list/abilities = list()
 
 	var/monochromatic = FALSE //IGNORE ME
@@ -351,6 +352,27 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 	if(new_name)
 		src.name += " ([new_name])"
 		desc += "\nVALID THROUGH END OF: [time2text(world.timeofday, "Month") +" "+ num2text(text2num(time2text(world.timeofday, "YYYY"))+544)]\nREGISTRANT: [new_name]"
+
+/mob/living/carbon/human/proc/rig_transform()
+	set name = "Modify Form - Hardsuit"
+	set desc = "Allows a protean to solidify its form into one extremely similar to a hardsuit."
+	set category = "Abilities"
+
+	if(istype(loc, /obj/item/rig/protean))
+		var/obj/item/rig/protean/prig = loc
+		src.forceMove(get_turf(prig))
+		prig.forceMove(humanform)
+		return
+
+	if(isturf(loc))
+		var/obj/item/rig/protean/prig
+		for(var/obj/item/rig/protean/O in contents)
+			prig = O
+			break
+		if(prig)
+			prig.forceMove(get_turf(src))
+			src.forceMove(prig)
+			return
 
 #undef DAM_SCALE_FACTOR
 #undef METAL_PER_TICK
