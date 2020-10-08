@@ -421,6 +421,8 @@
 /mob/living/carbon/human/proc/nano_outofblob(var/mob/living/simple_mob/protean_blob/blob)
 	if(!istype(blob))
 		return
+	if(blob.loc = /obj/item/rig/protean)
+		return
 	if(buckled)
 		buckled.unbuckle_mob()
 	if(LAZYLEN(buckled_mobs))
