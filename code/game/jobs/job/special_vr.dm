@@ -37,7 +37,8 @@
 		return 1
 
 	get_access()
-		return get_all_accesses().Copy()
+		var/list/all = get_all_accesses()
+		return all.Copy()
 
 /*/datum/job/centcom_visitor //For Pleasure // You mean for admin abuse... -Ace
 	title = "CentCom Visitor"

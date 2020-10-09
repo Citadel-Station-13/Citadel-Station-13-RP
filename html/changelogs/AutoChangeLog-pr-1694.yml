@@ -1,4 +1,0 @@
-author: "RobotAlice"
-delete-after: True
-changes: 
-  - bugfix: "Loadout now respects capacity and size rules when spawning into backpack; will not nest duffelbags."

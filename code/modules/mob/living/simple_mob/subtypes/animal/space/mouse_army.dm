@@ -193,15 +193,6 @@
 	T.assume_air(GM)
 	return
 
-	spawn(rand(1,5))
-		if(src && !ruptured)
-			visible_message("<span class='critical'>\The [src]'s suit sparks!</span>")
-			spark_system.set_up(5, 0, src)
-			spark_system.attach(src)
-			spark_system.start()
-			ruptured = 1
-	return ..()
-
 //Ammo Mouse
 /mob/living/simple_mob/animal/space/mouse_army/ammo
 	name = "ammo mouse"

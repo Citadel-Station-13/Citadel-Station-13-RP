@@ -363,7 +363,7 @@
 
 /datum/gear/uniform/longdress/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/uniform/shortplaindress
 	display_name = "Civilian Plain Dress"
@@ -371,7 +371,7 @@
 
 /datum/gear/uniform/shortplaindress/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/uniform/longwidedress
 	display_name = "Civilian Long Wide Dress"
@@ -379,7 +379,7 @@
 
 /datum/gear/uniform/longwidedress/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/uniform/reddress
 	display_name = "Civilian Red Dress - Belted"
@@ -476,7 +476,7 @@
 
 /datum/gear/uniform/yogapants/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/uniform/black_corset
 	display_name = "Civilian Black Corset"
@@ -636,7 +636,7 @@
 
 /datum/gear/uniform/pleated/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/uniform/lilacdress
 	display_name = "Civilian Lilac Dress"
@@ -739,7 +739,7 @@ datum/gear/uniform/leotardcolor
 
 /datum/gear/uniform/leotardcolor/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 datum/gear/uniform/verglasdress
 	display_name = "Civilian Verglas Dress"
@@ -751,7 +751,7 @@ datum/gear/uniform/fashionminiskirt
 
 /datum/gear/uniform/fashionminiskirt/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 datum/gear/uniform/bodysuiteva
 	display_name = "Civilian EVA Bodysuit"
@@ -878,3 +878,20 @@ Swimsuits
 	display_name = "Janitor Jumpsuit - Alt"
 	path = /obj/item/clothing/under/rank/janitor/starcon
 	allowed_roles = list("Janitor")
+
+/datum/gear/uniform/greyskirt_female
+	display_name = "Civilian Grey Skirt"
+	path = /obj/item/clothing/under/greyskirt_female
+
+/datum/gear/uniform/highwayman_clothes
+	display_name = "Civilian Highwayman Outfit"
+	path = /obj/item/clothing/under/highwayman_clothes
+
+/datum/gear/uniform/businessskirt
+	display_name = "Civilian Business Skirt"
+	path = /obj/item/clothing/under/businessskirt_female
+
+/datum/gear/uniform/simpledress
+	display_name = "Civilian Simple Dress"
+	path = /obj/item/clothing/under/simpledress
+

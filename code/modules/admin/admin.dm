@@ -889,13 +889,13 @@ var/datum/announcement/minor/admin_min_announcer = new
 
 /datum/admins/proc/toggleaban()
 	set category = "Server"
-	set desc="Respawn basically"
-	set name="Toggle Respawn"
+	set desc = "Respawn basically"
+	set name = "Toggle Return to Menu"
 	config_legacy.abandon_allowed = !(config_legacy.abandon_allowed)
 	if(config_legacy.abandon_allowed)
-		to_chat(world, "<B>You may now respawn.</B>")
+		to_chat(world, "<B>Returning to menu as a ghost is now allowed.</B>")
 	else
-		to_chat(world, "<B>You may no longer respawn :(</B>")
+		to_chat(world, "<B>Returning to menu as a ghost is no longer allowed :(</B>")
 	message_admins("<font color='blue'>[key_name_admin(usr)] toggled respawn to [config_legacy.abandon_allowed ? "On" : "Off"].</font>", 1)
 	log_admin("[key_name(usr)] toggled respawn to [config_legacy.abandon_allowed ? "On" : "Off"].")
 	world.update_status()

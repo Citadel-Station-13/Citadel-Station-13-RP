@@ -239,8 +239,6 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 			if(prob(50))
 				isbroken=1
 			update_icon()
-			return
-	return
 
 /obj/machinery/newscaster/attack_ai(mob/user as mob)
 	return attack_hand(user)

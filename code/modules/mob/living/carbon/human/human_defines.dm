@@ -19,11 +19,45 @@
 	var/s_tone = 0	//Skin tone
 
 	//Skin colour
-	var/r_skin = 0
-	var/g_skin = 0
-	var/b_skin = 0
+	var/r_skin = 238 // TO DO: Set defaults for other races.
+	var/g_skin = 206
+	var/b_skin = 179
 
 	var/skin_state = SKIN_NORMAL
+
+	//ears, tails, wings and custom species.
+	var/datum/sprite_accessory/ears/ear_style = null
+	var/r_ears = 30
+	var/g_ears = 30
+	var/b_ears = 30
+	var/r_ears2 = 30
+	var/g_ears2 = 30
+	var/b_ears2 = 30
+
+	var/datum/sprite_accessory/tail/tail_style = null
+	var/r_tail = 30
+	var/g_tail = 30
+	var/b_tail = 30
+	var/r_tail2 = 30
+	var/g_tail2 = 30
+	var/b_tail2 = 30
+
+	var/datum/sprite_accessory/wing/wing_style = null
+	var/r_wing = 30
+	var/g_wing = 30
+	var/b_wing = 30
+	var/r_wing2 = 30
+	var/g_wing2 = 30
+	var/b_wing2 = 30
+
+	var/wagging = 0 //UGH.
+	var/flapping = 0
+	var/vantag_pref = VANTAG_NONE //What's my status?
+	var/impersonate_bodytype //For impersonating a bodytype
+	var/ability_flags = 0	//Shadekin abilities/potentially other species-based?
+	var/sensorpref = 5		//Suit sensor loadout pref
+
+	var/custom_species
 
 	//Synth colors
 	var/synth_color	= 0					//Lets normally uncolorable synth parts be colorable.
@@ -112,3 +146,45 @@
 	var/mob/living/carbon/human/vr_link = null
 
 	var/obj/machinery/machine_visual //machine that is currently applying visual effects to this mob. Only used for camera monitors currently.
+
+/mob/living/carbon/human/proc/shadekin_get_energy()
+	var/datum/species/shadekin/SK = species
+
+	if(!istype(SK))
+		return 0
+
+	return SK.get_energy(src)
+
+/mob/living/carbon/human/proc/shadekin_get_max_energy()
+	var/datum/species/shadekin/SK = species
+
+	if(!istype(SK))
+		return 0
+
+	return SK.get_max_energy(src)
+
+/mob/living/carbon/human/proc/shadekin_set_energy(var/new_energy)
+	var/datum/species/shadekin/SK = species
+
+	if(!istype(SK))
+		return 0
+
+	SK.set_energy(src, new_energy)
+
+/mob/living/carbon/human/proc/shadekin_set_max_energy(var/new_max_energy)
+	var/datum/species/shadekin/SK = species
+
+	if(!istype(SK))
+		return 0
+
+	SK.set_max_energy(src, new_max_energy)
+
+/mob/living/carbon/human/proc/shadekin_adjust_energy(var/amount)
+	var/datum/species/shadekin/SK = species
+
+	if(!istype(SK))
+		return 0
+
+	if(amount > 0 || !(SK.check_infinite_energy(src)))
+		var/new_amount = SK.get_energy(src) + amount
+		SK.set_energy(src, new_amount)

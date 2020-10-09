@@ -4,6 +4,7 @@
 	head_position = 1
 	department = "Engineering"
 	department_flag = ENGSEC
+	disallow_jobhop = TRUE
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
@@ -58,7 +59,7 @@
 	department_flag = ENGSEC
 	faction = "Station"
 	total_positions = 3
-	spawn_positions = 2
+	spawn_positions = 3
 	supervisors = "the chief engineer"
 	selection_color = "#5B4D20"
 	idtype = /obj/item/card/id/engineering/atmos

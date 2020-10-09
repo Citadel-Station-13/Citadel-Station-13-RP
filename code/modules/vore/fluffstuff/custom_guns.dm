@@ -39,9 +39,8 @@
 /obj/item/gun/projectile/automatic/battlerifle
 	name = "\improper USDF service rifle"
 	desc = "You had your chance to be afraid before you joined my beloved Corps! But, to guide you back to the true path, I have brought this motivational device! Uses 9.5x40mm rounds."
-	icon = 'icons/obj/gun_vr.dmi'
 	icon_state = "battlerifle"
-	icon_override = 'icons/obj/gun_vr.dmi'
+	icon_override = 'icons/obj/gun/ballistic.dmi'
 	item_state = "battlerifle_i"
 	item_icons = null
 	w_class = ITEMSIZE_LARGE
@@ -60,9 +59,8 @@
 /obj/item/gun/projectile/shotgun/pump/USDF
 	name = "\improper USDF tactical shotgun"
 	desc = "All you greenhorns who wanted to see Xenomorphs up close... this is your lucky day. Uses 12g rounds."
-	icon = 'icons/obj/gun_vr.dmi'
 	icon_state = "haloshotgun"
-	icon_override = 'icons/obj/gun_vr.dmi'
+	icon_override = 'icons/obj/gun/ballistic.dmi'
 	item_state = "haloshotgun_i"
 	item_icons = null
 	ammo_type = /obj/item/ammo_casing/a12g
@@ -72,7 +70,6 @@
 /obj/item/gun/projectile/automatic/pdw
 	name = "personal defense weapon"
 	desc = "The X-9MM is a select-fire personal defense weapon designed in-house by Xing Private Security. It was made to compete with the WT550 Saber, but never caught on with NanoTrasen. Uses 9mm rounds."
-	icon = 'icons/obj/gun_vr.dmi'
 	icon_state = "pdw"
 	item_state = "c20r" // Placeholder
 	w_class = ITEMSIZE_NORMAL
@@ -103,8 +100,7 @@
 	icon_state = "ge_pistol"
 	item_state = "ge_pistol"
 	fire_sound = 'sound/weapons/mandalorian.ogg'
-	icon = 'icons/obj/gun_vr.dmi'
-	item_icons = list(slot_r_hand_str = 'icons/obj/gun_vr.dmi', slot_l_hand_str = 'icons/obj/gun_vr.dmi') // WORK YOU FUCKING CUNT PIECE OF SHIT BASTARD STUPID BITCH ITEM ICON AAAAHHHH
+	item_icons = list(slot_r_hand_str = 'icons/obj/gun/energy.dmi', slot_l_hand_str = 'icons/obj/gun/energy.dmi') // WORK YOU FUCKING CUNT PIECE OF SHIT BASTARD STUPID BITCH ITEM ICON AAAAHHHH
 	item_state_slots = list(slot_r_hand_str = "ge_pistol_r", slot_l_hand_str = "ge_pistol_l")
 	slot_flags = SLOT_BELT
 	w_class = ITEMSIZE_NORMAL
@@ -219,7 +215,6 @@ END OF CITADEL CHANGES */
 /obj/item/gun/projectile/automatic/stg
 	name = "\improper Sturmgewehr"
 	desc = "An STG-560 built by RauMauser. Experience the terror of the Siegfried line, redone for the 26th century! The Kaiser would be proud. Uses unique 7.92x33mm Kurz rounds."
-	icon = 'icons/obj/gun_vr.dmi'
 	icon_state = "stg60"
 	item_state = "arifle"
 	w_class = ITEMSIZE_LARGE
@@ -363,7 +358,6 @@ END OF CITADEL CHANGES */
 /obj/item/gun/energy/gun/eluger
 	name = "energy Luger"
 	desc = "The finest sidearm produced by RauMauser. Although its battery cannot be removed, its ergonomic design makes it easy to shoot, allowing for rapid follow-up shots. It also has the ability to toggle between stun and kill."
-	icon = 'icons/obj/gun_vr.dmi'
 	icon_state = "elugerstun100"
 	item_state = "gun"
 	fire_delay = null // Lugers are quite comfortable to shoot, thus allowing for more controlled follow-up shots. Rate of fire similar to a laser carbine.
@@ -406,7 +400,6 @@ END OF CITADEL CHANGES */
 /obj/item/gun/projectile/giskard
 	name = "\improper \"Giskard\" holdout pistol"
 	desc = "The FS HG .380 \"Giskard\" can even fit into the pocket! Uses .380 rounds."
-	icon = 'icons/obj/gun_vr.dmi'
 	icon_state = "giskardcivil"
 	caliber = ".380"
 	magazine_type = /obj/item/ammo_magazine/m380
@@ -444,7 +437,6 @@ END OF CITADEL CHANGES */
 /obj/item/gun/projectile/revolver/consul
 	name = "\improper \"Consul\" Revolver"
 	desc = "Are you feeling lucky, punk? Uses .44 rounds."
-	icon = 'icons/obj/gun_vr.dmi'
 	icon_state = "inspector"
 	item_state = "revolver"
 	caliber = ".44"
@@ -466,7 +458,6 @@ END OF CITADEL CHANGES */
 /obj/item/gun/projectile/automatic/sol
 	name = "\improper \"Sol\" SMG"
 	desc = "The FS 9x19mm \"Sol\" is a compact and reliable submachine gun. Uses 9mm rounds."
-	icon = 'icons/obj/gun_vr.dmi'
 	icon_state = "SMG-IS"
 	item_state = "wt550"
 	w_class = ITEMSIZE_LARGE
@@ -501,7 +492,6 @@ END OF CITADEL CHANGES */
 /obj/item/gun/energy/gun/martin
 	name = "holdout energy gun"
 	desc = "The FS PDW E \"Martin\" is small holdout e-gun. Don't miss!"
-	icon = 'icons/obj/gun_vr.dmi'
 	icon_state = "PDW"
 	item_state = "gun"
 	w_class = ITEMSIZE_SMALL
@@ -729,7 +719,6 @@ END OF CITADEL CHANGES */
 /obj/item/gun/energy/frontier
 	name = "frontier phaser"
 	desc = "An extraordinarily rugged laser weapon, built to last and requiring effectively no maintenance. Includes a built-in crank charger for recharging away from civilization."
-	icon = 'icons/obj/gun_vr.dmi'
 	icon_state = "phaser"
 	item_state = "phaser"
 	item_icons = list(slot_l_hand_str = 'icons/mob/items/lefthand_guns_vr.dmi', slot_r_hand_str = 'icons/mob/items/righthand_guns_vr.dmi', "slot_belt" = 'icons/mob/belt_vr.dmi')
@@ -788,7 +777,6 @@ END OF CITADEL CHANGES */
 /obj/item/gun/energy/frontier/locked/carbine
 	name = "frontier carbine"
 	desc = "An ergonomically improved version of the venerable frontier phaser, the carbine is a fairly new weapon, and has only been produced in limited numbers so far. Includes a built-in crank charger for recharging away from civilization. This one has a safety interlock that prevents firing while in proximity to the facility."
-	icon = 'icons/obj/gun_vr.dmi'
 	icon_state = "carbinekill"
 	item_state = "retro"
 	item_icons = list(slot_l_hand_str = 'icons/mob/items/lefthand_guns.dmi', slot_r_hand_str = 'icons/mob/items/righthand_guns.dmi')
@@ -810,7 +798,7 @@ END OF CITADEL CHANGES */
 /obj/item/gun/energy/frontier/locked/holdout
 	name = "holdout frontier phaser"
 	desc = "An minaturized weapon designed for the purpose of expeditionary support to defend themselves on the field. Includes a built-in crank charger for recharging away from civilization. This one has a safety interlock that prevents firing while in proximity to the facility."
-	icon = 'icons/obj/gun_vr.dmi'
+	icon = 'icons/obj/gun/energy.dmi'
 	icon_state = "holdoutkill"
 	item_state = null
 	phase_power = 100

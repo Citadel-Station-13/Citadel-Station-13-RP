@@ -16,7 +16,7 @@
 /obj/effect/overmap/proc/get_scan_data(mob/user)
 	return desc
 
-/obj/effect/overmap/Initialize()
+/obj/effect/overmap/Initialize(mapload)
 	. = ..()
 	if(!GLOB.using_map.use_overmap)
 		return INITIALIZE_HINT_QDEL
@@ -29,11 +29,13 @@
 	update_icon()
 
 /obj/effect/overmap/Crossed(var/obj/effect/overmap/visitable/other)
+	. = ..()
 	if(istype(other))
 		for(var/obj/effect/overmap/visitable/O in loc)
 			SSskybox.rebuild_skyboxes(O.map_z)
 
 /obj/effect/overmap/Uncrossed(var/obj/effect/overmap/visitable/other)
+	. = ..()
 	if(istype(other))
 		SSskybox.rebuild_skyboxes(other.map_z)
 		for(var/obj/effect/overmap/visitable/O in loc)

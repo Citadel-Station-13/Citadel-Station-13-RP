@@ -11,12 +11,13 @@
 	#include "triumph_telecomms.dm"
 	#include "triumph_overmap.dm"
 
-	#include "../../_maps/map_files/NSV_Triumph/triumph-01-deck1.dmm"
-	#include "../../_maps/map_files/NSV_Triumph/triumph-02-deck2.dmm"
-	#include "../../_maps/map_files/NSV_Triumph/triumph-03-deck3.dmm"
-	#include "../../_maps/map_files/NSV_Triumph/triumph-04-deck4.dmm"
-	#include "../../_maps/map_files/NSV_Triumph/triumph-05-flagship.dmm"
-
+	#if !AWAY_MISSION_TEST //Don't include these for just testing away missions
+		#include  "../../_maps/map_files/NSV_Triumph/triumph-01-deck1.dmm"
+		#include "../../_maps/map_files/NSV_Triumph/triumph-02-deck2.dmm"
+		#include "../../_maps/map_files/NSV_Triumph/triumph-03-deck3.dmm"
+		#include "../../_maps/map_files/NSV_Triumph/triumph-04-deck4.dmm"
+		#include "../../_maps/map_files/NSV_Triumph/triumph-05-flagship.dmm"
+	#endif
 
 	#include "submaps/_triumph_submaps.dm"
 

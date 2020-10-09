@@ -191,8 +191,8 @@
 	icon_state = "anodev[round(p,25)]"
 
 /obj/item/anodevice/Destroy()
-	return ..()
 	STOP_PROCESSING(SSobj, src)
+	return ..()
 
 /obj/item/anodevice/attack(mob/living/M as mob, mob/living/user as mob, def_zone)
 	if (!istype(M))

@@ -1,5 +1,0 @@
-author: "Enzo-Leon"
-delete-after: True
-changes: 
-  - rscadd: "NSV Triumph"
-  - server: "Adjust the Z-Level map config from 10 to 5."
