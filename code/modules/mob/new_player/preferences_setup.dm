@@ -302,7 +302,7 @@
 	var/list/valid_hairstyles = list()
 	for(var/hairstyle in hair_styles_list)
 		var/datum/sprite_accessory/S = hair_styles_list[hairstyle]
-		if(!(species in S.species_allowed))
+		if(!(species in S.species_allowed) && (!custom_base || !(custom_base in S.species_allowed))) //Custom species base species allowance
 			continue
 
 		valid_hairstyles[hairstyle] = hair_styles_list[hairstyle]
@@ -317,7 +317,7 @@
 			continue
 		if(biological_gender == FEMALE && S.gender == MALE)
 			continue
-		if(!(species in S.species_allowed))
+		if(!(species in S.species_allowed) && (!custom_base || !(custom_base in S.species_allowed))) //Custom species base species allowance
 			continue
 
 		valid_facialhairstyles[facialhairstyle] = facial_hair_styles_list[facialhairstyle]
