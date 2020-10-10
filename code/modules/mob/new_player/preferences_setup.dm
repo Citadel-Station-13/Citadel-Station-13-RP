@@ -297,3 +297,29 @@
 //TFF 5/8/19 - add randomised sensor setting for random button clicking
 /datum/preferences/randomize_appearance_and_body_for(var/mob/living/carbon/human/H)
 	sensorpref = rand(1,5)
+
+/datum/preferences/proc/get_valid_hairstyles()
+	var/list/valid_hairstyles = list()
+	for(var/hairstyle in hair_styles_list)
+		var/datum/sprite_accessory/S = hair_styles_list[hairstyle]
+		if(!(species in S.species_allowed))
+			continue
+
+		valid_hairstyles[hairstyle] = hair_styles_list[hairstyle]
+
+	return valid_hairstyles
+
+/datum/preferences/proc/get_valid_facialhairstyles()
+	var/list/valid_facialhairstyles = list()
+	for(var/facialhairstyle in facial_hair_styles_list)
+		var/datum/sprite_accessory/S = facial_hair_styles_list[facialhairstyle]
+		if(biological_gender == MALE && S.gender == FEMALE)
+			continue
+		if(biological_gender == FEMALE && S.gender == MALE)
+			continue
+		if(!(species in S.species_allowed))
+			continue
+
+		valid_facialhairstyles[facialhairstyle] = facial_hair_styles_list[facialhairstyle]
+
+	return valid_facialhairstyles
