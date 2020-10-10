@@ -2,7 +2,7 @@
 
 	//The name of the job
 	var/title = "NOPE"
-	//Job access. The use of minimal_access or access is determined by a config setting: config.jobs_have_minimal_access
+	//Job access. The use of minimal_access or access is determined by a config setting: config_legacy.jobs_have_minimal_access
 	var/list/minimal_access = list()      // Useful for servers which prefer to only have access given to the places a job absolutely needs (Larger server population)
 	var/list/access = list()              // Useful for servers which either have fewer players, so each person needs to fill more than one role, or servers which like to give more access, so players can't hide forever in their super secure departments (I'm looking at you, chemistry!)
 	var/flag = 0 	                      // Bitflags for the job
@@ -13,7 +13,7 @@
 	var/current_positions = 0             // How many players have this job
 	var/supervisors = null                // Supervisors, who this person answers to directly
 	var/selection_color = "#ffffff"       // Selection screen color
-	var/idtype = /obj/item/weapon/card/id // The type of the ID the player will have
+	var/idtype = /obj/item/card/id // The type of the ID the player will have
 	var/list/alt_titles                   // List of alternate titles, if any
 	var/req_admin_notify                  // If this is set to 1, a text is printed to the player when jobs are assigned, telling him that he should let admins know that he has to disconnect.
 	var/minimal_player_age = 0            // If you have use_age_restriction_for_jobs config option enabled and the database set up, this option will add a requirement for players to be at least minimal_player_age days old. (meaning they first signed in at least that many days before.)
@@ -26,6 +26,25 @@
 	var/economic_modifier = 2			  // With how much does this job modify the initial account amount?
 
 	var/outfit_type
+
+//_vr Vars, ported here:
+	//Requires a ckey to be whitelisted in jobwhitelist.txt
+	var/whitelist_only = 0
+
+	//Does not display this job on the occupation setup screen
+	var/latejoin_only = 0
+
+	//Every hour playing this role gains this much time off. (Can be negative for off duty jobs!)
+	var/timeoff_factor = 3
+
+	//Disallow joining as this job midround from off-duty position via going on-duty
+	var/disallow_jobhop = FALSE
+
+// Check client-specific availability rules.
+/datum/job/proc/player_has_enough_pto(client/C)
+	return timeoff_factor >= 0 || (C && LAZYACCESS(C.department_hours, department) > 0)
+
+//End _vr Vars and Procs
 
 /datum/job/proc/equip(var/mob/living/carbon/human/H, var/alt_title)
 	var/decl/hierarchy/outfit/outfit = get_outfit(H, alt_title)
@@ -42,10 +61,10 @@
 
 /datum/job/proc/equip_backpack(var/mob/living/carbon/human/H)
 	switch(H.backbag)
-		if(2) H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack(H), slot_back)
-		if(3) H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/satchel/norm(H), slot_back)
-		if(4) H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/satchel(H), slot_back)
-		if(5) H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/messenger(H), slot_back)
+		if(2) H.equip_to_slot_or_del(new /obj/item/storage/backpack(H), slot_back)
+		if(3) H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm(H), slot_back)
+		if(4) H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), slot_back)
+		if(5) H.equip_to_slot_or_del(new /obj/item/storage/backpack/messenger(H), slot_back)
 
 /datum/job/proc/setup_account(var/mob/living/carbon/human/H)
 	if(!account_allowed || (H.mind && H.mind.initial_account))
@@ -76,7 +95,7 @@
 
 		H.mind.initial_account = M
 
-	H << "<span class='notice'><b>Your account number is: [M.account_number], your account pin is: [M.remote_access_pin]</b></span>"
+	to_chat(H, "<span class='notice'><b>Your account number is: [M.account_number], your account pin is: [M.remote_access_pin]</b></span>")
 
 // overrideable separately so AIs/borgs can have cardborg hats without unneccessary new()/qdel()
 /datum/job/proc/equip_preview(mob/living/carbon/human/H, var/alt_title)
@@ -86,7 +105,7 @@
 	. = outfit.equip_base(H, title, alt_title)
 
 /datum/job/proc/get_access()
-	if(!config || config.jobs_have_minimal_access)
+	if(!config || config_legacy.jobs_have_minimal_access)
 		return src.minimal_access.Copy()
 	else
 		return src.access.Copy()
@@ -96,7 +115,7 @@
 	return (available_in_days(C) == 0) //Available in 0 days = available right now = player is old enough to play.
 
 /datum/job/proc/available_in_days(client/C)
-	if(C && config.use_age_restriction_for_jobs && isnum(C.player_age) && isnum(minimal_player_age))
+	if(C && config_legacy.use_age_restriction_for_jobs && isnum(C.player_age) && isnum(minimal_player_age))
 		return max(0, minimal_player_age - C.player_age)
 	return 0
 

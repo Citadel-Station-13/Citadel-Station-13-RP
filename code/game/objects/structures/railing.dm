@@ -23,7 +23,7 @@
 	if(climbable)
 		verbs += /obj/structure/proc/climb_on
 
-/obj/structure/railing/initialize()
+/obj/structure/railing/Initialize()
 	. = ..()
 	if(src.anchored)
 		update_icon(0)
@@ -34,15 +34,21 @@
 	for(var/obj/structure/railing/R in orange(location, 1))
 		R.update_icon()
 
-/obj/structure/railing/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
-	if(!mover)
-		return 1
-	if(istype(mover) && mover.checkpass(PASSTABLE))
-		return 1
-	if(get_dir(loc, target) == dir)
+/obj/structure/railing/CanAllowThrough(atom/movable/mover, turf/target)
+	. = ..()
+	if(mover.checkpass(PASSTABLE) || mover.throwing)
+		return TRUE
+	if(get_dir(mover, target) & turn(dir, 180))
 		return !density
-	else
-		return 1
+	return TRUE
+
+/obj/structure/railing/CheckExit(atom/movable/mover, atom/newLoc)
+	if(mover.checkpass(PASSTABLE) || mover.throwing)
+		return TRUE
+	if(mover.loc == get_turf(src))	//moving out of us
+		if(get_dir(mover, newLoc) & dir)
+			return !density
+	return TRUE
 
 /obj/structure/railing/examine(mob/user)
 	. = ..()
@@ -55,7 +61,7 @@
 			if(0.5 to 1.0)
 				to_chat(user, "<span class='notice'>It has a few scrapes and dents.</span>")
 
-/obj/structure/railing/proc/take_damage(amount)
+/obj/structure/railing/take_damage(amount)
 	health -= amount
 	if(health <= 0)
 		visible_message("<span class='warning'>\The [src] breaks down!</span>")
@@ -126,7 +132,7 @@
 					if (WEST)
 						overlays += image ('icons/obj/railing.dmi', src, "mcorneroverlay", pixel_y = 32)
 
-/obj/structure/railing/verb/rotate()
+/obj/structure/railing/verb/rotate_counterclockwise()
 	set name = "Rotate Railing Counter-Clockwise"
 	set category = "Object"
 	set src in oview(1)
@@ -141,11 +147,11 @@
 		to_chat(usr, "It is fastened to the floor therefore you can't rotate it!")
 		return 0
 
-	set_dir(turn(dir, 90))
+	src.setDir(turn(src.dir, 90))
 	update_icon()
 	return
 
-/obj/structure/railing/verb/revrotate()
+/obj/structure/railing/verb/rotate_clockwise()
 	set name = "Rotate Railing Clockwise"
 	set category = "Object"
 	set src in oview(1)
@@ -160,7 +166,7 @@
 		to_chat(usr, "It is fastened to the floor therefore you can't rotate it!")
 		return 0
 
-	set_dir(turn(dir, -90))
+	src.setDir(turn(src.dir, 270))
 	update_icon()
 	return
 
@@ -185,7 +191,7 @@
 		return 0
 
 	src.loc = get_step(src, src.dir)
-	set_dir(turn(dir, 180))
+	setDir(turn(dir, 180))
 	update_icon()
 	return
 
@@ -198,7 +204,7 @@
 
 /obj/structure/railing/attackby(obj/item/W as obj, mob/user as mob)
 	// Dismantle
-	if(istype(W, /obj/item/weapon/wrench) && !anchored)
+	if(W.is_wrench() && !anchored)
 		playsound(src.loc, W.usesound, 50, 1)
 		if(do_after(user, 20, src))
 			user.visible_message("<span class='notice'>\The [user] dismantles \the [src].</span>", "<span class='notice'>You dismantle \the [src].</span>")
@@ -207,8 +213,8 @@
 			return
 
 	// Repair
-	if(health < maxhealth && istype(W, /obj/item/weapon/weldingtool))
-		var/obj/item/weapon/weldingtool/F = W
+	if(health < maxhealth && istype(W, /obj/item/weldingtool))
+		var/obj/item/weldingtool/F = W
 		if(F.welding)
 			playsound(src.loc, F.usesound, 50, 1)
 			if(do_after(user, 20, src))
@@ -217,7 +223,7 @@
 				return
 
 	// Install
-	if(istype(W, /obj/item/weapon/screwdriver))
+	if(W.is_screwdriver())
 		user.visible_message(anchored ? "<span class='notice'>\The [user] begins unscrewing \the [src].</span>" : "<span class='notice'>\The [user] begins fasten \the [src].</span>" )
 		playsound(loc, W.usesound, 75, 1)
 		if(do_after(user, 10, src))
@@ -227,8 +233,8 @@
 			return
 
 	// Handle harm intent grabbing/tabling.
-	if(istype(W, /obj/item/weapon/grab) && get_dist(src,user)<2)
-		var/obj/item/weapon/grab/G = W
+	if(istype(W, /obj/item/grab) && get_dist(src,user)<2)
+		var/obj/item/grab/G = W
 		if (istype(G.affecting, /mob/living))
 			var/mob/living/M = G.affecting
 			var/obj/occupied = turf_is_crowded()
@@ -236,7 +242,7 @@
 				to_chat(user, "<span class='danger'>There's \a [occupied] in the way.</span>")
 				return
 			if (G.state < 2)
-				if(user.a_intent == I_HURT)
+				if(user.a_intent == INTENT_HARM)
 					if (prob(15))	M.Weaken(5)
 					M.apply_damage(8,def_zone = "head")
 					take_damage(8)

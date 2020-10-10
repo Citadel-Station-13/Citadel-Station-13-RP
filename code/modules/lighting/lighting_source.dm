@@ -189,7 +189,10 @@
 	);
 
 // This is the define used to calculate falloff.
-#define LUM_FALLOFF(C, T)(1 - CLAMP01(sqrt((C.x - T.x) ** 2 +(C.y - T.y) ** 2 + LIGHTING_HEIGHT) / max(1, light_range)))
+//#define LUM_FALLOFF(C, T)		(1 - CLAMP01( ((C.x - T.x) ** 2 +(C.y - T.y) ** 2 + LIGHTING_HEIGHT) ** 0.6 / max(1, light_range))) VORESTATION
+//#define LUM_FALLOFF(C, T)		(1 - CLAMP01( sqrt((C.x - T.x) ** 2 +(C.y - T.y) ** 2 + LIGHTING_HEIGHT) / max(1, light_range))) CITRP
+#define GET_LUM_DIST(DISTX, DISTY) (DISTX + DISTY + abs(DISTX - DISTY)*0.4)
+#define LUM_FALLOFF(C, T) (1 - CLAMP01(max(GET_LUM_DIST(abs(C.x - T.x), abs(C.y - T.y)),LIGHTING_HEIGHT) / max(1, light_range+1))) // TG
 
 /datum/light_source/proc/apply_lum()
 	var/static/update_gen = 1

@@ -4,12 +4,13 @@
 	head_position = 1
 	department = "Medical"
 	department_flag = MEDSCI
+	disallow_jobhop = TRUE
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the Colony Director"
+	supervisors = "the Facility Director"
 	selection_color = "#026865"
-	idtype = /obj/item/weapon/card/id/medical/head
+	idtype = /obj/item/card/id/medical/head
 	req_admin_notify = 1
 	economic_modifier = 10
 	access = list(access_medical, access_medical_equip, access_morgue, access_genetics, access_heads,
@@ -24,6 +25,7 @@
 	ideal_character_age = 50
 
 	outfit_type = /decl/hierarchy/outfit/job/medical/cmo
+	alt_titles = list ("Surgeon General","Chief Physician","Director of Medicine")
 
 /datum/job/doctor
 	title = "Medical Doctor"
@@ -32,10 +34,10 @@
 	department_flag = MEDSCI
 	faction = "Station"
 	total_positions = 5
-	spawn_positions = 3
+	spawn_positions = 5
 	supervisors = "the chief medical officer"
 	selection_color = "#013D3B"
-	idtype = /obj/item/weapon/card/id/medical/doctor
+	idtype = /obj/item/card/id/medical/doctor
 	economic_modifier = 7
 	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics, access_eva)
 	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_virology, access_eva)
@@ -44,7 +46,8 @@
 		"Surgeon" = /decl/hierarchy/outfit/job/medical/doctor/surgeon,
 		"Emergency Physician" = /decl/hierarchy/outfit/job/medical/doctor/emergency_physician,
 		"Nurse" = /decl/hierarchy/outfit/job/medical/doctor/nurse,
-		"Virologist" = /decl/hierarchy/outfit/job/medical/doctor/virologist)
+		"Virologist" = /decl/hierarchy/outfit/job/medical/doctor/virologist,
+		"Medical Resident")
 
 //Chemist is a medical job damnit	//YEAH FUCK YOU SCIENCE	-Pete	//Guys, behave -Erro
 /datum/job/chemist
@@ -57,11 +60,11 @@
 	spawn_positions = 2
 	supervisors = "the chief medical officer"
 	selection_color = "#013D3B"
-	idtype = /obj/item/weapon/card/id/medical/chemist
+	idtype = /obj/item/card/id/medical/chemist
 	economic_modifier = 5
 	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics)
 	minimal_access = list(access_medical, access_medical_equip, access_chemistry)
-	alt_titles = list("Pharmacist")
+	alt_titles = list("Pharmacist", "Apothecary")
 
 	minimal_player_age = 3
 
@@ -78,7 +81,7 @@
 	spawn_positions = 0
 	supervisors = "the chief medical officer and research director"
 	selection_color = "#013D3B"
-	idtype = /obj/item/weapon/card/id/medical/geneticist
+	idtype = /obj/item/card/id/medical/geneticist
 	economic_modifier = 7
 	access = list(access_medical, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics, access_research)
 	minimal_access = list(access_medical, access_morgue, access_genetics, access_research)
@@ -92,16 +95,19 @@
 	department = "Medical"
 	department_flag = MEDSCI
 	faction = "Station"
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 2
+	spawn_positions = 2
 	economic_modifier = 5
 	supervisors = "the chief medical officer"
 	selection_color = "#013D3B"
-	idtype = /obj/item/weapon/card/id/medical/psychiatrist
+	idtype = /obj/item/card/id/medical/psychiatrist
 	access = list(access_medical, access_medical_equip, access_morgue, access_psychiatrist)
-	minimal_access = list(access_medical, access_medical_equip, access_psychiatrist)
+	minimal_access = list(access_medical, access_medical_equip, access_psychiatrist, access_chemistry)
 	outfit_type = /decl/hierarchy/outfit/job/medical/psychiatrist
-	alt_titles = list("Psychologist" = /decl/hierarchy/outfit/job/medical/psychiatrist/psychologist)
+	alt_titles = list(
+	"Psychologist" = /decl/hierarchy/outfit/job/medical/psychiatrist/psychologist,
+	"Therapist",
+	"Counselor")
 
 /datum/job/paramedic
 	title = "Paramedic"
@@ -113,7 +119,7 @@
 	spawn_positions = 2
 	supervisors = "the chief medical officer"
 	selection_color = "#013D3B"
-	idtype = /obj/item/weapon/card/id/medical/paramedic
+	idtype = /obj/item/card/id/medical/paramedic
 	economic_modifier = 4
 	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_eva, access_maint_tunnels, access_external_airlocks, access_psychiatrist)
 	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_eva, access_maint_tunnels, access_external_airlocks)

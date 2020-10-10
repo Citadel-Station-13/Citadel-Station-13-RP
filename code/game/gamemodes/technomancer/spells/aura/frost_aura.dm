@@ -5,11 +5,11 @@
 	enhancement_desc = "Will make nearby entities even slower."
 	spell_power_desc = "Radius and rate of cooling are scaled."
 	cost = 100
-	obj_path = /obj/item/weapon/spell/aura/frost
+	obj_path = /obj/item/spell/aura/frost
 	ability_icon_state = "tech_frostaura"
 	category = DEFENSIVE_SPELLS // Scepter-less frost aura is nonlethal.
 
-/obj/item/weapon/spell/aura/frost
+/obj/item/spell/aura/frost
 	name = "chilling aura"
 	desc = "Your enemies will find it hard to chase you if they freeze to death."
 	icon_state = "generic"
@@ -17,13 +17,13 @@
 	aspect = ASPECT_FROST
 	glow_color = "#00B3FF"
 
-/obj/item/weapon/spell/aura/frost/process()
+/obj/item/spell/aura/frost/process()
 	if(!pay_energy(100))
 		qdel(src)
 	var/list/nearby_mobs = range(round(calculate_spell_power(4)),owner)
 
 	var/temp_change = calculate_spell_power(40)
-	var/datum/species/baseline = all_species["Human"]
+	var/datum/species/baseline = GLOB.all_species["Human"]
 	var/temp_cap = baseline.cold_level_2 - 5
 
 	if(check_for_scepter())

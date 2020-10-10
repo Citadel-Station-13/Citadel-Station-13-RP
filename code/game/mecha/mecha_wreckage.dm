@@ -30,13 +30,13 @@
 	return
 
 
-/obj/effect/decal/mecha_wreckage/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/weapon/weldingtool))
-		var/obj/item/weapon/weldingtool/WT = W
+/obj/effect/decal/mecha_wreckage/attackby(obj/item/W as obj, mob/user as mob)
+	if(istype(W, /obj/item/weldingtool))
+		var/obj/item/weldingtool/WT = W
 		if(salvage_num <= 0)
-			user << "You don't see anything that can be cut with [W]."
+			to_chat(user, "You don't see anything that can be cut with [W].")
 			return
-		if (!isemptylist(welder_salvage) && WT.remove_fuel(0,user))
+		if (!!length(welder_salvage) && WT.remove_fuel(0,user))
 			var/type = prob(70)?pick(welder_salvage):null
 			if(type)
 				var/N = new type(get_turf(user))
@@ -45,24 +45,24 @@
 					welder_salvage -= type
 				salvage_num--
 			else
-				user << "You failed to salvage anything valuable from [src]."
+				to_chat(user, "You failed to salvage anything valuable from [src].")
 		else
-			user << "<span class='notice'>You need more welding fuel to complete this task.</span>"
+			to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
 			return
-	if(istype(W, /obj/item/weapon/wirecutters))
+	if(W.is_wirecutter())
 		if(salvage_num <= 0)
-			user << "You don't see anything that can be cut with [W]."
+			to_chat(user, "You don't see anything that can be cut with [W].")
 			return
-		else if(!isemptylist(wirecutters_salvage))
+		else if(!!length(wirecutters_salvage))
 			var/type = prob(70)?pick(wirecutters_salvage):null
 			if(type)
 				var/N = new type(get_turf(user))
 				user.visible_message("[user] cuts [N] from [src].", "You cut [N] from [src].")
 				salvage_num--
 			else
-				user << "You failed to salvage anything valuable from [src]."
-	if(istype(W, /obj/item/weapon/crowbar))
-		if(!isemptylist(crowbar_salvage))
+				to_chat(user, "You failed to salvage anything valuable from [src].")
+	if(W.is_crowbar())
+		if(!!length(crowbar_salvage))
 			var/obj/S = pick(crowbar_salvage)
 			if(S)
 				S.loc = get_turf(user)
@@ -70,7 +70,7 @@
 				user.visible_message("[user] pries [S] from [src].", "You pry [S] from [src].")
 			return
 		else
-			user << "You don't see anything that can be pried with [W]."
+			to_chat(user, "You don't see anything that can be pried with [W].")
 	else
 		..()
 	return
@@ -89,7 +89,7 @@
 									/obj/item/mecha_parts/part/gygax_left_leg,
 									/obj/item/mecha_parts/part/gygax_right_leg)
 		for(var/i=0;i<2;i++)
-			if(!isemptylist(parts) && prob(40))
+			if(!!length(parts) && prob(40))
 				var/part = pick(parts)
 				welder_salvage += part
 				parts -= part
@@ -98,6 +98,18 @@
 /obj/effect/decal/mecha_wreckage/gygax/dark
 	name = "Dark Gygax wreckage"
 	icon_state = "darkgygax-broken"
+
+/obj/effect/decal/mecha_wreckage/gygax/adv
+	name = "Advanced Dark Gygax wreckage"
+	icon_state = "darkgygax_adv-broken"
+
+/obj/effect/decal/mecha_wreckage/gygax/medgax
+	name = "Medgax wreckage"
+	icon_state = "medgax-broken"
+
+/obj/effect/decal/mecha_wreckage/gygax/serenity
+	name = "Serenity wreckage"
+	icon_state = "medgax-broken"
 
 /obj/effect/decal/mecha_wreckage/marauder
 	name = "Marauder wreckage"
@@ -124,7 +136,7 @@
 									/obj/item/mecha_parts/part/ripley_left_leg,
 									/obj/item/mecha_parts/part/ripley_right_leg)
 		for(var/i=0;i<2;i++)
-			if(!isemptylist(parts) && prob(40))
+			if(!!length(parts) && prob(40))
 				var/part = pick(parts)
 				welder_salvage += part
 				parts -= part
@@ -143,7 +155,7 @@
 									/obj/item/mecha_parts/part/ripley_right_leg,
 									/obj/item/clothing/suit/fire)
 		for(var/i=0;i<2;i++)
-			if(!isemptylist(parts) && prob(40))
+			if(!!length(parts) && prob(40))
 				var/part = pick(parts)
 				welder_salvage += part
 				parts -= part
@@ -167,7 +179,7 @@
 									/obj/item/mecha_parts/part/durand_left_leg,
 									/obj/item/mecha_parts/part/durand_right_leg)
 		for(var/i=0;i<2;i++)
-			if(!isemptylist(parts) && prob(40))
+			if(!!length(parts) && prob(40))
 				var/part = pick(parts)
 				welder_salvage += part
 				parts -= part
@@ -192,12 +204,28 @@
 									/obj/item/mecha_parts/part/odysseus_left_leg,
 									/obj/item/mecha_parts/part/odysseus_right_leg)
 		for(var/i=0;i<2;i++)
-			if(!isemptylist(parts) && prob(40))
+			if(!!length(parts) && prob(40))
 				var/part = pick(parts)
 				welder_salvage += part
 				parts -= part
 		return
 
+/obj/effect/decal/mecha_wreckage/odysseus/murdysseus
+	icon_state = "murdysseus-broken"
+
 /obj/effect/decal/mecha_wreckage/hoverpod
 	name = "Hover pod wreckage"
 	icon_state = "engineering_pod-broken"
+
+/obj/effect/decal/mecha_wreckage/janus
+	name = "Janus wreckage"
+	icon_state = "janus-broken"
+	description_info = "Due to the incredibly intricate design of this exosuit, it is impossible to salvage components from it."
+
+/obj/effect/decal/mecha_wreckage/shuttlecraft
+	name = "Shuttlecraft wreckage"
+	desc = "Remains of some unfortunate shuttlecraft. Completely unrepairable."
+	icon = 'icons/mecha/mecha64x64.dmi'
+	icon_state = "shuttle_standard-broken"
+	bound_width = 64
+	bound_height = 64

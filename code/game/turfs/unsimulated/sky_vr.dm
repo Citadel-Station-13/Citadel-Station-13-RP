@@ -8,25 +8,30 @@
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "sky_slow"
 	dir = SOUTH
-	initialized = FALSE
 	var/does_skyfall = TRUE
 	var/list/skyfall_levels
 
-/turf/unsimulated/floor/sky/initialize()
+/turf/unsimulated/floor/sky/Initialize()
 	. = ..()
 	if(does_skyfall && !LAZYLEN(skyfall_levels))
-		error("[x],[y],[z], [get_area(src)] doesn't have skyfall_levels defined! Can't skyfall!")
+		log_world("[x],[y],[z], [get_area(src)] doesn't have skyfall_levels defined! Can't skyfall!")
 	if(locate(/turf/simulated) in orange(src,1))
 		set_light(2, 2, color)
 
 /turf/unsimulated/floor/sky/Entered(atom/movable/AM,atom/oldloc)
-	. = ..()
+	..()
 	if(!does_skyfall)
 		return //We don't do that
 	if(isobserver(AM))
 		return //Don't ghostport, very annoying
 	if(AM.throwing)
 		return //Being thrown over, not fallen yet
+	if(!(AM.can_fall()))
+		return // Phased shifted kin should not fall
+	if(istype(AM, /obj/item/projectile))
+		return // pewpew should not fall out of the sky. pew.
+	if(istype(AM, /obj/effect/projectile))
+		return // ...neither should the effects be falling
 
 	var/mob/living/L
 	if(isliving(AM))

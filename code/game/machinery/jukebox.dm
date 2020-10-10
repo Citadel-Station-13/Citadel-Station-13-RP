@@ -16,28 +16,52 @@
 	anchored = 1
 	density = 1
 	power_channel = EQUIP
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 100
-	circuit = /obj/item/weapon/circuitboard/jukebox
+	circuit = /obj/item/circuitboard/jukebox
 
 	// Vars for hacking
 	var/datum/wires/jukebox/wires = null
 	var/hacked = 0 // Whether to show the hidden songs or not
 	var/freq = 0 // Currently no effect, will return in phase II of mediamanager.
-
+	//VOREStation Add
 	var/loop_mode = JUKEMODE_PLAY_ONCE			// Behavior when finished playing a song
 	var/max_queue_len = 3						// How many songs are we allowed to queue up?
-	var/datum/track/current_track				// Currently playing song
-	var/list/datum/track/queue = list()			// Queued songs
-	var/list/datum/track/tracks = list()		// Available tracks
-	var/list/datum/track/secret_tracks = list() // Only visible if hacked
+	var/list/queue = list()
+	//VOREStation Add End
+	var/current_genre = "Electronic" //What is our current genre?
+	var/list/genres = list("Classical and Orchestral", "Country and Western", "Disco, Funk, Soul, and R&B", "Electronic", "Folk and Indie", "Hip-Hop and Rap", "Jazz", "Metal", "Pop", "Rock") //Avaliable genres.
+	var/datum/track/current_track
+	var/list/datum/track/tracks = list(
+		new/datum/track("Beyond", 'sound/ambience/ambispace.ogg'),
+		new/datum/track("Clouds of Fire", 'sound/music/clouds.s3m'),
+		new/datum/track("D`Bert", 'sound/music/title2.ogg'),
+		new/datum/track("D`Fort", 'sound/ambience/song_game.ogg'),
+		new/datum/track("Floating", 'sound/music/main.ogg'),
+		new/datum/track("Endless Space", 'sound/music/space.ogg'),
+		new/datum/track("Part A", 'sound/misc/TestLoop1.ogg'),
+		new/datum/track("Scratch", 'sound/music/title1.ogg'),
+		new/datum/track("Trai`Tor", 'sound/music/traitor.ogg'),
+		new/datum/track("Stellar Transit", 'sound/ambience/space/space_serithi.ogg'),
+	)
+
+	// Only visible if hacked
+	var/list/datum/track/secret_tracks = list(
+		new/datum/track("Clown", 'sound/music/clown.ogg'),
+		new/datum/track("Space Asshole", 'sound/music/space_asshole.ogg'),
+		new/datum/track("Thunderdome", 'sound/music/THUNDERDOME.ogg'),
+		new/datum/track("Russkiy rep Diskoteka", 'sound/music/russianrapdisco.ogg')
+	)
+
+	// Only visible if emagged
+	var/list/datum/track/emag_tracks = list(
+	)
+
 
 /obj/machinery/media/jukebox/New()
-	..()
+	. = ..()
 	default_apply_parts()
-	wires = new/datum/wires/jukebox(src)
-	update_icon()
 
 /obj/machinery/media/jukebox/Destroy()
 	qdel(wires)
@@ -45,18 +69,25 @@
 	..()
 
 // On initialization, copy our tracks from the global list
-/obj/machinery/media/jukebox/initialize()
+/obj/machinery/media/jukebox/Initialize()
 	. = ..()
-	if(all_jukebox_tracks.len < 1)
+	wires = new/datum/wires/jukebox(src)
+	update_icon()
+	if(LAZYLEN(all_jukebox_tracks)) //Global list has tracks
+		tracks.Cut()
+		secret_tracks.Cut()
+		emag_tracks.Cut()
+		for(var/datum/track/T in all_jukebox_tracks) //Load them
+			if(!T.jukebox)
+				continue
+			if(T.secret)
+				secret_tracks |= T
+			if(T.emag)
+				emag_tracks |=T
+			else
+				tracks |= T
+	else if(!LAZYLEN(tracks)) //We don't even have default tracks
 		stat |= BROKEN // No tracks configured this round!
-		return
-	// Ootherwise load from the global list!
-	for(var/datum/track/T in all_jukebox_tracks)
-		if(T.secret)
-			secret_tracks |= T
-		else
-			tracks |= T
-	return
 
 /obj/machinery/media/jukebox/process()
 	if(!playing)
@@ -120,11 +151,13 @@
 		return
 	if(default_deconstruction_crowbar(user, W))
 		return
-	if(istype(W, /obj/item/weapon/wirecutters))
+	if(W.is_wirecutter())
 		return wires.Interact(user)
-	if(istype(W, /obj/item/device/multitool))
+	if(istype(W, /obj/item/multitool))
 		return wires.Interact(user)
-	if(istype(W, /obj/item/weapon/wrench))
+	if(W.is_wrench())
+		if(playing)
+			StopPlaying()
 		user.visible_message("<span class='warning'>[user] has [anchored ? "un" : ""]secured \the [src].</span>", "<span class='notice'>You [anchored ? "un" : ""]secure \the [src].</span>")
 		anchored = !anchored
 		playsound(src, W.usesound, 50, 1)
@@ -170,11 +203,11 @@
 		return
 
 	if(!anchored)
-		usr << "<span class='warning'>You must secure \the [src] first.</span>"
+		to_chat(usr, "<span class='warning'>You must secure \the [src] first.</span>")
 		return
 
 	if(inoperable())
-		usr << "\The [src] doesn't appear to function."
+		to_chat(usr, "\The [src] doesn't appear to function.")
 		return
 
 	if(href_list["change_track"])
@@ -182,6 +215,9 @@
 		if(istype(T))
 			current_track = T
 			StartPlaying()
+	else if(href_list["change_genre"])
+		var/new_genre = input("Choose Genre", "Genre Selection") in genres
+		current_genre = new_genre
 	else if(href_list["loopmode"])
 		var/newval = text2num(href_list["loopmode"])
 		loop_mode = sanitize_inlist(newval, list(JUKEMODE_NEXT, JUKEMODE_RANDOM, JUKEMODE_REPEAT_SONG, JUKEMODE_PLAY_ONCE), loop_mode)
@@ -194,23 +230,23 @@
 		StopPlaying()
 	else if(href_list["play"])
 		if(emagged)
-			playsound(src.loc, 'sound/items/AirHorn.ogg', 100, 1)
-			for(var/mob/living/carbon/M in ohearers(6, src))
-				if(M.get_ear_protection() >= 2)
-					continue
-				M.sleeping = 0
-				M.stuttering += 20
-				M.ear_deaf += 30
-				M.Weaken(3)
-				if(prob(30))
-					M.Stun(10)
-					M.Paralyse(4)
-				else
-					M.make_jittery(500)
-			spawn(15)
-				explode()
+			//playsound(src.loc, 'sound/items/AirHorn.ogg', 100, 1)
+			//for(var/mob/living/carbon/M in ohearers(6, src))
+				//if(M.get_ear_protection() >= 2)
+					//continue
+				//M.sleeping = 0
+				//M.stuttering += 20
+				//M.ear_deaf += 30
+				//M.Weaken(3)
+				//if(prob(30))
+					//M.Stun(10)
+					//M.Paralyse(4)
+				//else
+					//M.make_jittery(500)
+			//spawn(15)
+				//explode()
 		else if(current_track == null)
-			usr << "No track selected."
+			to_chat(usr, "No track selected.")
 		else
 			StartPlaying()
 
@@ -218,7 +254,7 @@
 
 /obj/machinery/media/jukebox/interact(mob/user)
 	if(inoperable())
-		usr << "\The [src] doesn't appear to function."
+		to_chat(usr, "\The [src] doesn't appear to function.")
 		return
 	ui_interact(user)
 
@@ -238,13 +274,17 @@
 			data["current_track"] = current_track.toNanoList()
 		data["percent"] = playing ? min(100, round(world.time - media_start_time) / current_track.duration) : 0;
 
+		data["current_genre"] = current_genre
+
 		var/list/nano_tracks = new
 		for(var/datum/track/T in tracks)
+			if(T.genre != current_genre)
+				continue
 			nano_tracks[++nano_tracks.len] = T.toNanoList()
 		data["tracks"] = nano_tracks
 
 	// update the ui if it exists, returns null if no ui is passed/found
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "jukebox.tmpl", title, 450, 600)
 		ui.set_initial_data(data)
@@ -263,7 +303,7 @@
 
 	explosion(src.loc, 0, 0, 1, rand(1,2), 1)
 
-	var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(3, 1, src)
 	s.start()
 
@@ -277,7 +317,7 @@
 		return
 	if(default_deconstruction_crowbar(user, W))
 		return
-	if(istype(W, /obj/item/weapon/wrench))
+	if(W.is_wrench())
 		if(playing)
 			StopPlaying()
 		user.visible_message("<span class='warning'>[user] has [anchored ? "un" : ""]secured \the [src].</span>", "<span class='notice'>You [anchored ? "un" : ""]secure \the [src].</span>")
@@ -292,13 +332,19 @@
 	if(!emagged)
 		emagged = 1
 		StopPlaying()
-		visible_message("<span class='danger'>\The [src] makes a fizzling sound.</span>")
+	else
+		StopPlaying()
+		visible_message("<span class='notice'>\The [src] abruptly stops and reboots itself, but nothing else happens.</span>")
+		return 1
+	if (emagged == 1)
+		tracks.Add(emag_tracks)
+		visible_message("<span class='notice'>\The [src] abruptly stops before rebooting itself. A notice flashes on the screen indicating new songs have been added to the tracklist.</span>")
 		update_icon()
 		return 1
 
 /obj/machinery/media/jukebox/proc/StopPlaying()
 	playing = 0
-	update_use_power(1)
+	update_use_power(USE_POWER_IDLE)
 	update_icon()
 	start_stop_song()
 
@@ -306,7 +352,7 @@
 	if(!current_track)
 		return
 	playing = 1
-	update_use_power(2)
+	update_use_power(USE_POWER_ACTIVE)
 	update_icon()
 	start_stop_song()
 	updateDialog()

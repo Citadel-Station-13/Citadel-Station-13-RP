@@ -1,6 +1,6 @@
 //////////////////////Scrying orb//////////////////////
 
-/obj/item/weapon/scrying
+/obj/item/scrying
 	name = "scrying orb"
 	desc = "An incandescent orb of otherworldly energy, staring into it gives you vision beyond mortal means."
 	icon = 'icons/obj/projectiles.dmi'
@@ -12,12 +12,12 @@
 	force = 10
 	hitsound = 'sound/items/welder2.ogg'
 
-/obj/item/weapon/scrying/attack_self(mob/user as mob)
+/obj/item/scrying/attack_self(mob/user as mob)
 	if((user.mind && !wizards.is_antagonist(user.mind)))
-		user << "<span class='warning'>You stare into the orb and see nothing but your own reflection.</span>"
+		to_chat(user, "<span class='warning'>You stare into the orb and see nothing but your own reflection.</span>")
 		return
 
-	user << "<span class='info'>You can see... everything!</span>"
+	to_chat(user, "<span class='info'>You can see... everything!</span>")
 	visible_message("<span class='danger'>[user] stares into [src], their eyes glazing over.</span>")
 	
 	user.teleop = user.ghostize(1)

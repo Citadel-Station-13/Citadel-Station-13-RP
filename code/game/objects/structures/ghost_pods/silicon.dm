@@ -60,52 +60,48 @@
 	R.Namepick()
 	..()
 
-/obj/structure/ghost_pod/manual/corgi
-	name = "glowing rune"
-	desc = "This rune slowly lights up and goes dim in a repeating pattern, like a slow heartbeat. It's almost as if it's calling out to you to touch it..."
-	description_info = "This will summon some manner of creature through quite dubious means. The creature will be controlled by a player."
-	icon_state = "corgirune"
-	icon_state_opened = "corgirune-inert"
+/obj/structure/ghost_pod/ghost_activated/swarm_drone
+	name = "drone shell"
+	desc = "A heavy metallic ball."
+	icon = 'icons/mob/swarmbot.dmi'
+	icon_state = "swarmer_unactivated"
 	density = FALSE
-	anchored = TRUE
-	ghost_query_type = /datum/ghost_query/corgi_rune
-	confirm_before_open = TRUE
+	anchored = FALSE
 
-/obj/structure/ghost_pod/manual/corgi/trigger()
-	..("<span class='warning'>\The [usr] places their hand on the rune!</span>", "is attempting to summon a corgi.")
+	var/drone_class = "general"
+	var/drone_type = /mob/living/silicon/robot/drone/swarm
 
-/obj/structure/ghost_pod/manual/corgi/create_occupant(var/mob/M)
-	density = FALSE
-	var/mob/living/simple_animal/corgi/R = new(get_turf(src))
+/obj/structure/ghost_pod/ghost_activated/swarm_drone/create_occupant(var/mob/M)
+	var/mob/living/silicon/robot/drone/swarm/R = new drone_type(get_turf(src))
 	if(M.mind)
 		M.mind.transfer_to(R)
-	to_chat(M, "<span class='notice'>You are a <b>Corgi</b>! Woof!</span>")
+	to_chat(M, "<span class='cult'>You are <b>[R]</b>, the remnant of some distant species, mechanical or flesh, living or dead.</span>")
 	R.ckey = M.ckey
-	visible_message("<span class='warning'>With a bright flash of light, \the [src] disappears, and in its place stands a small corgi.</span>")
-	log_and_message_admins("successfully touched \a [src] and summoned a corgi.")
+	visible_message("<span class='cult'>As \the [src] shudders, it glows before lifting itself with three shimmering limbs!</span>")
+	spawn(3 SECONDS)
+		to_chat(R,"<span class='notice'>Many of your tools are standard drone devices, however others provide you with particular benefits.</span>")
+		to_chat(R,"<span class='notice'>Unlike standard drones, you are capable of utilizing 'zero point wells', found in your 'spells' tab.</span>")
+		to_chat(R,"<span class='notice'>Here you will also find your replication ability(s), depending on the type of drone you are.</span>")
+		to_chat(R,"<span class='notice'>Gunners have a special anti-personnel gun capable of shocking or punching through armor with low damage.</span>")
+		to_chat(R,"<span class='notice'>Impalers have an energy-lance.</span>")
+		to_chat(R,"<span class='notice'>General drones have the unique ability to produce one of each of these two types of shells per generation.</span>")
+	if(!QDELETED(src))
+		qdel(src)
+
+/obj/structure/ghost_pod/ghost_activated/swarm_drone/event/Initialize()
 	..()
 
-/obj/structure/ghost_pod/manual/cursedblade
-	name = "abandoned blade"
-	desc = "A red crystal blade that someone jammed deep into a stone. If you try hard enough, you might be able to remove it."
-	icon_state = "soulblade-embedded"
-	icon_state_opened = "soulblade-released"
-	density = TRUE
-	anchored = TRUE
-	ghost_query_type = /datum/ghost_query/cursedblade
-	confirm_before_open = TRUE
+	var/turf/T = get_turf(src)
+	say_dead_object("A <span class='notice'>[drone_class] swarm drone</span> shell is now available in \the [T.loc].", src)
 
-/obj/structure/ghost_pod/manual/cursedblade/trigger()
-	..("<span class='warning'>\The [usr] attempts to pull out the sword!</span>", "is activating a cursed blade.")
+/obj/structure/ghost_pod/ghost_activated/swarm_drone/event/gunner
+	name = "gunner shell"
 
-/obj/structure/ghost_pod/manual/cursedblade/create_occupant(var/mob/M)
-	density = FALSE
-	var/obj/item/weapon/melee/cursedblade/R = new(get_turf(src))
-	to_chat(M, "<span class='notice'>You are a <b>Cursed Sword</b>, discovered by a hapless explorer. \
-	You were once an explorer yourself, when one day you discovered a strange sword made from a red crystal. As soon as you touched it,\
-	your body was reduced to ashes and your soul was cursed to remain trapped in the blade forever. \
-	Now it is up to you to decide whether you want to be a faithful companion, or a bitter prisoner of the blade.</span>")
-	R.ghost_inhabit(M)
-	visible_message("<span class='warning'>The blade shines brightly for a brief moment as [usr] pulls it out of the stone!</span>")
-	log_and_message_admins("successfully acquired a cursed sword.")
-	..()
+	drone_class = "gunner"
+	drone_type = /mob/living/silicon/robot/drone/swarm/gunner
+
+/obj/structure/ghost_pod/ghost_activated/swarm_drone/event/melee
+	name = "impaler shell"
+
+	drone_class = "impaler"
+	drone_type = /mob/living/silicon/robot/drone/swarm/melee

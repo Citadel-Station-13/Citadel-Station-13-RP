@@ -8,6 +8,7 @@ var/datum/antagonist/renegade/renegades
 	bantype = "renegade"
 	restricted_jobs = list("AI", "Cyborg")
 	welcome_text = "Something's going to go wrong today, you can just feel it. You're paranoid, you've got a gun, and you're going to survive."
+	antag_sound = 'sound/effects/antag_notice/general_goodie_alert.ogg'
 	antag_text = "You are a <b>minor</b> antagonist! Within the rules, \
 		try to protect yourself and what's important to you. You aren't here to cause trouble, \
 		you're just more willing (and equipped) to go to extremes to stop it than others are. \
@@ -17,7 +18,7 @@ var/datum/antagonist/renegade/renegades
 		Think through your actions and make the roleplay immersive! <b>Please remember all \
 		rules aside from those without explicit exceptions apply to antagonists.</b>"
 	flags = ANTAG_SUSPICIOUS | ANTAG_IMPLANT_IMMUNE | ANTAG_RANDSPAWN | ANTAG_VOTABLE
-	can_use_aooc = FALSE
+	can_speak_aooc = FALSE	// They aren't 'true' antags, but they still need to hear blanket antag instructions
 
 	hard_cap = 8
 	hard_cap_round = 12
@@ -25,43 +26,41 @@ var/datum/antagonist/renegade/renegades
 	initial_spawn_target = 4
 
 	var/list/spawn_guns = list(
-		/obj/item/weapon/gun/energy/laser,
-		/obj/item/weapon/gun/energy/captain,
-		/obj/item/weapon/gun/energy/lasercannon,
-		/obj/item/weapon/gun/energy/xray,
-		/obj/item/weapon/gun/energy/gun,
-		/obj/item/weapon/gun/energy/gun/burst,
-		/obj/item/weapon/gun/energy/gun/nuclear,
-		/obj/item/weapon/gun/energy/crossbow,
-		/obj/item/weapon/gun/energy/crossbow/largecrossbow,
-		/obj/item/weapon/gun/projectile/automatic,
-		/obj/item/weapon/gun/projectile/automatic/mini_uzi,
-		/obj/item/weapon/gun/projectile/automatic/c20r,
-		/obj/item/weapon/gun/projectile/automatic/sts35,
-		/obj/item/weapon/gun/projectile/automatic/bullpup,
-		/obj/item/weapon/gun/projectile/automatic/wt550,
-		/obj/item/weapon/gun/projectile/automatic/z8,
-		/obj/item/weapon/gun/projectile/automatic/tommygun,
-		/obj/item/weapon/gun/projectile/colt/detective,
-		/obj/item/weapon/gun/projectile/sec/wood,
-		/obj/item/weapon/gun/projectile/silenced,
-		/obj/item/weapon/gun/projectile/pistol,
-		/obj/item/weapon/gun/projectile/p92x,
-		/obj/item/weapon/gun/projectile/revolver,
-		/obj/item/weapon/gun/projectile/derringer,
-		/obj/item/weapon/gun/projectile/shotgun/pump,
-		/obj/item/weapon/gun/projectile/shotgun/pump/rifle,
-		/obj/item/weapon/gun/projectile/shotgun/pump/combat,
-		/obj/item/weapon/gun/projectile/shotgun/doublebarrel,
-		/obj/item/weapon/gun/projectile/revolver/judge,
-		/obj/item/weapon/gun/projectile/revolver/lemat,
-		list(/obj/item/weapon/gun/projectile/shotgun/doublebarrel/pellet, /obj/item/weapon/gun/projectile/shotgun/doublebarrel/sawn),
-		list(/obj/item/weapon/gun/projectile/deagle, /obj/item/weapon/gun/projectile/deagle/gold, /obj/item/weapon/gun/projectile/deagle/camo),
-		list(/obj/item/weapon/gun/projectile/revolver/detective, /obj/item/weapon/gun/projectile/revolver/deckard),
-		list(/obj/item/weapon/gun/projectile/luger,/obj/item/weapon/gun/projectile/luger/brown)
+		/obj/item/gun/energy/laser,
+		/obj/item/gun/energy/captain,
+		/obj/item/gun/energy/lasercannon,
+		/obj/item/gun/energy/xray,
+		/obj/item/gun/energy/gun,
+		/obj/item/gun/energy/gun/burst,
+		/obj/item/gun/energy/gun/nuclear,
+		/obj/item/gun/energy/crossbow,
+		/obj/item/gun/energy/crossbow/largecrossbow,
+		/obj/item/gun/projectile/automatic,
+		/obj/item/gun/projectile/automatic/mini_uzi,
+		/obj/item/gun/projectile/automatic/c20r,
+		/obj/item/gun/projectile/automatic/sts35,
+		/obj/item/gun/projectile/automatic/bullpup,
+		/obj/item/gun/projectile/automatic/wt550,
+		/obj/item/gun/projectile/automatic/z8,
+		/obj/item/gun/projectile/automatic/tommygun,
+		/obj/item/gun/projectile/colt/detective,
+		/obj/item/gun/projectile/sec/wood,
+		/obj/item/gun/projectile/silenced,
+		/obj/item/gun/projectile/pistol,
+		/obj/item/gun/projectile/p92x,
+		/obj/item/gun/projectile/revolver,
+		/obj/item/gun/projectile/derringer,
+		/obj/item/gun/projectile/shotgun/pump,
+		/obj/item/gun/projectile/shotgun/pump/rifle,
+		/obj/item/gun/projectile/shotgun/pump/combat,
+		/obj/item/gun/projectile/shotgun/doublebarrel,
+		/obj/item/gun/projectile/revolver/judge,
+		/obj/item/gun/projectile/revolver/lemat,
+		list(/obj/item/gun/projectile/shotgun/doublebarrel/pellet, /obj/item/gun/projectile/shotgun/doublebarrel/sawn),
+		list(/obj/item/gun/projectile/deagle, /obj/item/gun/projectile/deagle/gold, /obj/item/gun/projectile/deagle/camo),
+		list(/obj/item/gun/projectile/revolver/detective, /obj/item/gun/projectile/revolver/deckard),
+		list(/obj/item/gun/projectile/luger,/obj/item/gun/projectile/luger/brown)
 		)
-
-	can_use_aooc = FALSE // They aren't 'true' antags.
 
 /datum/antagonist/renegade/New()
 	..()
@@ -99,7 +98,7 @@ var/datum/antagonist/renegade/renegades
 
 
 /proc/rightandwrong()
-	usr << "<B>You summoned guns!</B>"
+	to_chat(usr, "<B>You summoned guns!</B>")
 	message_admins("[key_name_admin(usr, 1)] summoned guns!")
 	for(var/mob/living/carbon/human/H in player_list)
 		if(H.stat == 2 || !(H.client)) continue

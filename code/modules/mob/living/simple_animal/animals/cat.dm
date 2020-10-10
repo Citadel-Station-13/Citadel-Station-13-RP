@@ -6,9 +6,9 @@
 	intelligence_level = SA_ANIMAL
 	icon_state = "cat2"
 	item_state = "cat2"
-	icon_living = "cat2"
-	icon_dead = "cat2_dead"
-	icon_rest = "cat2_rest"
+	icon_living = "[initial(icon_state)]"
+	icon_dead = "[initial(icon_state)]_dead"
+	icon_rest = "[initial(icon_state)]_rest"
 
 	investigates = 1
 	specific_targets = 1 //Only targets with Found()
@@ -26,7 +26,7 @@
 	minbodytemp = 223		//Below -50 Degrees Celcius
 	maxbodytemp = 323	//Above 50 Degrees Celcius
 
-	holder_type = /obj/item/weapon/holder/cat
+	holder_type = /obj/item/holder/cat
 	mob_size = MOB_SMALL
 
 	has_langs = list("Cat")
@@ -39,7 +39,7 @@
 	say_got_target = list("MEOW!","HSSSS!","REEER!")
 
 	meat_amount = 1
-	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat
+	meat_type = /obj/item/reagent_containers/food/snacks/meat
 
 	var/turns_since_scan = 0
 	var/mob/flee_target
@@ -63,8 +63,8 @@
 	handle_flee_target()
 
 /mob/living/simple_animal/cat/PunchTarget()
-	if(istype(target_mob,/mob/living/simple_animal/mouse))
-		var/mob/living/simple_animal/mouse/mouse = target_mob
+	if(ismouse(target_mob))
+		var/mob/living/simple_mob/animal/passive/mouse/mouse = target_mob
 		mouse.splat()
 		visible_emote(pick("bites \the [mouse]!","toys with \the [mouse].","chomps on \the [mouse]!"))
 		return mouse
@@ -72,7 +72,7 @@
 		..()
 
 /mob/living/simple_animal/cat/Found(var/atom/found_atom)
-	if(istype(found_atom,/mob/living/simple_animal/mouse) && SA_attackable(found_atom))
+	if(ismouse(found_atom) && SA_attackable(found_atom))
 		return found_atom
 
 /mob/living/simple_animal/cat/proc/handle_flee_target()
@@ -101,6 +101,7 @@
 /mob/living/simple_animal/cat/fluff
 	var/mob/living/carbon/human/friend
 	var/befriend_job = null
+	var/friend_name = null
 
 /mob/living/simple_animal/cat/fluff/Life()
 	. = ..()
@@ -114,7 +115,7 @@
 				handle_stance(STANCE_FOLLOW)
 
 	if (friend_dist <= 1)
-		if (friend.stat >= DEAD || friend.health <= config.health_threshold_softcrit)
+		if (friend.stat >= DEAD || friend.health <= config_legacy.health_threshold_softcrit)
 			if (prob((friend.stat < DEAD)? 50 : 15))
 				var/verb = pick("meows", "mews", "mrowls")
 				audible_emote(pick("[verb] in distress.", "[verb] anxiously."))
@@ -136,20 +137,20 @@
 
 	if(!friend)
 		var/mob/living/carbon/human/H = usr
-		if(istype(H) && (!befriend_job || H.job == befriend_job))
+		if(istype(H) && (!befriend_job || H.job == befriend_job) && (!friend_name || H.real_name == friend_name))
 			friend = usr
 			. = 1
 	else if(usr == friend)
 		. = 1 //already friends, but show success anyways
 
 	if(.)
-		set_dir(get_dir(src, friend))
+		setDir(get_dir(src, friend))
 		visible_emote(pick("nuzzles [friend].",
 						   "brushes against [friend].",
 						   "rubs against [friend].",
 						   "purrs."))
 	else
-		usr << "<span class='notice'>[src] ignores you.</span>"
+		to_chat(usr, "<span class='notice'>[src] ignores you.</span>")
 	return
 
 //RUNTIME IS ALIVE! SQUEEEEEEEE~
@@ -160,9 +161,6 @@
 	gender = FEMALE
 	icon_state = "cat"
 	item_state = "cat"
-	icon_living = "cat"
-	icon_dead = "cat_dead"
-	icon_rest = "cat_rest"
 	befriend_job = "Chief Medical Officer"
 
 /mob/living/simple_animal/cat/kitten
@@ -175,7 +173,7 @@
 	gender = NEUTER
 
 // Leaving this here for now.
-/obj/item/weapon/holder/cat/fluff/bones
+/obj/item/holder/cat/fluff/bones
 	name = "Bones"
 	desc = "It's Bones! Meow."
 	gender = MALE
@@ -187,11 +185,8 @@
 	gender = MALE
 	icon_state = "cat3"
 	item_state = "cat3"
-	icon_living = "cat3"
-	icon_dead = "cat3_dead"
-	icon_rest = "cat3_rest"
-	holder_type = /obj/item/weapon/holder/cat/fluff/bones
-	var/friend_name = "Erstatz Vryroxes"
+	holder_type = /obj/item/holder/cat/fluff/bones
+	friend_name = "Erstatz Vryroxes"
 
 /mob/living/simple_animal/cat/kitten/New()
 	gender = pick(MALE, FEMALE)

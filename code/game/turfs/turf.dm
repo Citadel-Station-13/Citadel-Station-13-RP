@@ -5,53 +5,50 @@
 	level = 1
 	var/holy = 0
 
-	// Initial air contents (in moles)
-	var/oxygen = 0
-	var/carbon_dioxide = 0
-	var/nitrogen = 0
-	var/phoron = 0
+	// Atmospherics / ZAS Environmental
+	/// Initial air contents, as a specially formatted gas string.
+	var/initial_gas_mix = GAS_STRING_TURF_DEFAULT
+	// End
 
-	//Properties for airtight tiles (/wall)
+	// Properties for airtight tiles (/wall)
 	var/thermal_conductivity = 0.05
 	var/heat_capacity = 1
 
-	//Properties for both
-	var/temperature = T20C      // Initial turf temperature.
-	var/blocks_air = 0          // Does this turf contain air/let air through?
+	// Properties for both
+	var/temperature = T20C		// Initial turf temperature.
+	var/blocks_air = 0			// Does this turf contain air/let air through?
 
 	// General properties.
 	var/icon_old = null
-	var/pathweight = 1          // How much does it cost to pathfind over this turf?
-	var/blessed = 0             // Has the turf been blessed?
+	var/pathweight = 1			// How much does it cost to pathfind over this turf?
+	var/blessed = 0				// Has the turf been blessed?
 
 	var/list/decals
 
-	var/movement_cost = 0       // How much the turf slows down movement, if any.
+	var/movement_cost = 0		// How much the turf slows down movement, if any.
 
 	var/list/footstep_sounds = null
 
-	var/block_tele = FALSE      // If true, most forms of teleporting to or from this turf tile will fail.
+	var/block_tele = FALSE			 // If true, most forms of teleporting to or from this turf tile will fail.
+	var/can_build_into_floor = FALSE // Used for things like RCDs (and maybe lattices/floor tiles in the future), to see if a floor should replace it.
+	var/list/dangerous_objects		 // List of 'dangerous' objs that the turf holds that can cause something bad to happen when stepped on, used for AI mobs.
 
-/turf/New()
-	..()
-	for(var/atom/movable/AM as mob|obj in src)
-		spawn( 0 )
-			src.Entered(AM)
-			return
-	turfs |= src
+/turf/Initialize(mapload)
+	. = ..()
+	for(var/atom/movable/AM in src)
+		Entered(AM)
 
-	if(dynamic_lighting)
-		luminosity = 0
-	else
-		luminosity = 1
+	//Lighting related
+	luminosity = !(dynamic_lighting)
+	has_opaque_atom = (opacity)
 
-	if(movement_cost && pathweight == 1) // This updates pathweight automatically.
+	//Pathfinding related
+	if(movement_cost && pathweight == 1)	// This updates pathweight automatically.
 		pathweight = movement_cost
 
 /turf/Destroy()
-	turfs -= src
-	..()
-	return QDEL_HINT_IWILLGC
+	. = QDEL_HINT_IWILLGC
+		..()
 
 /turf/ex_act(severity)
 	return 0
@@ -62,44 +59,35 @@
 /turf/proc/is_intact()
 	return 0
 
-/turf/attack_hand(mob/user)
-	if(!(user.canmove) || user.restrained() || !(user.pulling))
-		return 0
-	if(user.pulling.anchored || !isturf(user.pulling.loc))
-		return 0
-	if(user.pulling.loc != user.loc && get_dist(user, user.pulling) > 1)
-		return 0
-	if(ismob(user.pulling))
-		var/mob/M = user.pulling
-		var/atom/movable/t = M.pulling
-		M.stop_pulling()
-		step(user.pulling, get_dir(user.pulling.loc, src))
-		M.start_pulling(t)
-	else
-		step(user.pulling, get_dir(user.pulling.loc, src))
+// Used by shuttle code to check if this turf is empty enough to not crush want it lands on.
+/turf/proc/is_solid_structure()
 	return 1
 
-turf/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/weapon/storage))
-		var/obj/item/weapon/storage/S = W
+/turf/attack_hand(mob/user)
+	. = ..()
+	user.move_pulled_towards(src)
+
+/turf/attackby(obj/item/W as obj, mob/user as mob)
+	if(istype(W, /obj/item/storage))
+		var/obj/item/storage/S = W
 		if(S.use_to_pickup && S.collection_mode)
 			S.gather_all(src, user)
 	return ..()
 
 // Hits a mob on the tile.
-/turf/proc/attack_tile(obj/item/weapon/W, mob/living/user)
+/turf/proc/attack_tile(obj/item/W, mob/living/user)
 	if(!istype(W))
 		return FALSE
 
 	var/list/viable_targets = list()
-	var/success = FALSE // Hitting something makes this true. If its still false, the miss sound is played.
+	var/success = FALSE	// Hitting something makes this true. If its still false, the miss sound is played.
 
 	for(var/mob/living/L in contents)
-		if(L == user) // Don't hit ourselves.
+		if(L == user)	// Don't hit ourselves.
 			continue
 		viable_targets += L
 
-	if(!viable_targets.len) // No valid targets on this tile.
+	if(!viable_targets.len)	// No valid targets on this tile.
 		if(W.can_cleave)
 			success = W.cleave(user, src)
 	else
@@ -109,7 +97,7 @@ turf/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	user.setClickCooldown(user.get_attack_speed(W))
 	user.do_attack_animation(src, no_attack_icons = TRUE)
 
-	if(!success) // Nothing got hit.
+	if(!success)	// Nothing got hit.
 		user.visible_message("<span class='warning'>\The [user] swipes \the [W] over \the [src].</span>")
 		playsound(src, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
 	return success
@@ -140,90 +128,6 @@ turf/attackby(obj/item/weapon/W as obj, mob/user as mob)
 			sleep(2)
 			O.update_transform()
 
-/turf/Enter(atom/movable/mover as mob|obj, atom/forget as mob|obj|turf|area)
-	if(movement_disabled && usr.ckey != movement_disabled_exception)
-		usr << "<span class='warning'>Movement is admin-disabled.</span>" //This is to identify lag problems
-		return
-
-	..()
-
-	if (!mover || !isturf(mover.loc))
-		return 1
-
-	//First, check objects to block exit that are not on the border
-	for(var/obj/obstacle in mover.loc)
-		if(!(obstacle.flags & ON_BORDER) && (mover != obstacle) && (forget != obstacle))
-			if(!obstacle.CheckExit(mover, src))
-				mover.Bump(obstacle, 1)
-				return 0
-
-	//Now, check objects to block exit that are on the border
-	for(var/obj/border_obstacle in mover.loc)
-		if((border_obstacle.flags & ON_BORDER) && (mover != border_obstacle) && (forget != border_obstacle))
-			if(!border_obstacle.CheckExit(mover, src))
-				mover.Bump(border_obstacle, 1)
-				return 0
-
-	//Next, check objects to block entry that are on the border
-	for(var/obj/border_obstacle in src)
-		if(border_obstacle.flags & ON_BORDER)
-			if(!border_obstacle.CanPass(mover, mover.loc, 1, 0) && (forget != border_obstacle))
-				mover.Bump(border_obstacle, 1)
-				return 0
-
-	//Then, check the turf itself
-	if (!src.CanPass(mover, src))
-		mover.Bump(src, 1)
-		return 0
-
-	//Finally, check objects/mobs to block entry that are not on the border
-	for(var/atom/movable/obstacle in src)
-		if(!(obstacle.flags & ON_BORDER))
-			if(!obstacle.CanPass(mover, mover.loc, 1, 0) && (forget != obstacle))
-				mover.Bump(obstacle, 1)
-				return 0
-	return 1 //Nothing found to block so return success!
-
-var/const/enterloopsanity = 100
-/turf/Entered(atom/atom as mob|obj)
-
-	if(movement_disabled)
-		usr << "<span class='warning'>Movement is admin-disabled.</span>" //This is to identify lag problems
-		return
-	..()
-
-	if(!istype(atom, /atom/movable))
-		return
-
-	var/atom/movable/A = atom
-
-	if(ismob(A))
-		var/mob/M = A
-		if(!M.lastarea)
-			M.lastarea = get_area(M.loc)
-		if(M.lastarea.has_gravity == 0)
-			inertial_drift(M)
-		if(M.flying) //VORESTATION Edit Start. This overwrites the above is_space without touching it all that much.
-			inertial_drift(M)
-			M.make_floating(1) //VOREStation Edit End.
-		else if(!is_space())
-			M.inertia_dir = 0
-			M.make_floating(0)
-		if(isliving(M))
-			var/mob/living/L = M
-			L.handle_footstep(src)
-	..()
-	var/objects = 0
-	if(A && (A.flags & PROXMOVE))
-		for(var/atom/movable/thing in range(1))
-			if(objects > enterloopsanity) break
-			objects++
-			spawn(0)
-				if(A) //Runtime prevention
-					A.HasProximity(thing, 1)
-					if ((thing && A) && (thing.flags & PROXMOVE))
-						thing.HasProximity(A, 1)
-	return
 
 /turf/proc/adjacent_fire_act(turf/simulated/floor/source, temperature, volume)
 	return
@@ -231,40 +135,27 @@ var/const/enterloopsanity = 100
 /turf/proc/is_plating()
 	return 0
 
-/turf/proc/inertial_drift(atom/movable/A as mob|obj)
-	if(!(A.last_move))	return
-	if((istype(A, /mob/) && src.x > 2 && src.x < (world.maxx - 1) && src.y > 2 && src.y < (world.maxy-1)))
-		var/mob/M = A
-		if(M.Process_Spacemove(1))
-			M.inertia_dir  = 0
-			return
-		spawn(5)
-			if((M && !(M.anchored) && !(M.pulledby) && (M.loc == src)))
-				if(M.inertia_dir)
-					step(M, M.inertia_dir)
-					return
-				M.inertia_dir = M.last_move
-				step(M, M.inertia_dir)
-	return
-
 /turf/proc/levelupdate()
 	for(var/obj/O in src)
 		O.hide(O.hides_under_flooring() && !is_plating())
 
-/turf/proc/AdjacentTurfs()
-	var/L[] = new()
-	for(var/turf/simulated/t in oview(src,1))
-		if(!t.density)
-			if(!LinkBlocked(src, t) && !TurfBlockedNonWindow(t))
-				L.Add(t)
-	return L
+/turf/proc/AdjacentTurfs(var/check_blockage = TRUE)
+	. = list()
+	for(var/t in (trange(1,src) - src))
+		var/turf/T = t
+		if(check_blockage)
+			if(!T.density)
+				if(!LinkBlocked(src, T) && !TurfBlockedNonWindow(T))
+					. += t
+		else
+			. += t
 
-/turf/proc/CardinalTurfs()
-	var/L[] = new()
-	for(var/turf/simulated/T in AdjacentTurfs())
+/turf/proc/CardinalTurfs(var/check_blockage = TRUE)
+	. = list()
+	for(var/ad in AdjacentTurfs(check_blockage))
+		var/turf/T = ad
 		if(T.x == src.x || T.y == src.y)
-			L.Add(T)
-	return L
+			. += T
 
 /turf/proc/Distance(turf/t)
 	if(get_dist(src,t) == 1)
@@ -282,9 +173,6 @@ var/const/enterloopsanity = 100
 				L.Add(t)
 	return L
 
-/turf/proc/process()
-	return PROCESS_KILL
-
 /turf/proc/contains_dense_objects()
 	if(density)
 		return 1
@@ -293,7 +181,7 @@ var/const/enterloopsanity = 100
 			return 1
 	return 0
 
-//expects an atom containing the reagents used to clean the turf
+// Expects an atom containing the reagents used to clean the turf
 /turf/proc/clean(atom/source, mob/user)
 	if(source.reagents.has_reagent("water", 1) || source.reagents.has_reagent("cleaner", 1))
 		clean_blood()
@@ -304,8 +192,8 @@ var/const/enterloopsanity = 100
 			if(istype(O,/obj/effect/rune) || istype(O,/obj/effect/decal/cleanable) || istype(O,/obj/effect/overlay))
 				qdel(O)
 	else
-		user << "<span class='warning'>\The [source] is too dry to wash that.</span>"
-	source.reagents.trans_to_turf(src, 1, 10)	//10 is the multiplier for the reaction effect. probably needed to wet the floor properly.
+		to_chat(user, "<span class='warning'>\The [source] is too dry to wash that.</span>")
+	source.reagents.trans_to_turf(src, 1, 10)	// 10 is the multiplier for the reaction effect. probably needed to wet the floor properly.
 
 /turf/proc/update_blood_overlays()
 	return
@@ -321,3 +209,58 @@ var/const/enterloopsanity = 100
 
 /turf/AllowDrop()
 	return TRUE
+
+// Returns false if stepping into a tile would cause harm (e.g. open space while unable to fly, water tile while a slime, lava, etc).
+/turf/proc/is_safe_to_enter(mob/living/L)
+	if(LAZYLEN(dangerous_objects))
+		for(var/obj/O in dangerous_objects)
+			if(!O.is_safe_to_step(L))
+				return FALSE
+	return TRUE
+
+// Tells the turf that it currently contains something that automated movement should consider if planning to enter the tile.
+// This uses lazy list macros to reduce memory footprint, since for 99% of turfs the list would've been empty anyways.
+/turf/proc/register_dangerous_object(obj/O)
+	if(!istype(O))
+		return FALSE
+	LAZYADD(dangerous_objects, O)
+//	color = "#FF0000"
+
+// Similar to above, for when the dangerous object stops being dangerous/gets deleted/moved/etc.
+/turf/proc/unregister_dangerous_object(obj/O)
+	if(!istype(O))
+		return FALSE
+	LAZYREMOVE(dangerous_objects, O)
+	UNSETEMPTY(dangerous_objects)	// This nulls the list var if it's empty.
+//	color = "#00FF00"
+
+// This is all the way up here since its the common ancestor for things that need to get replaced with a floor when an RCD is used on them.
+// More specialized turfs like walls should instead override this.
+// The code for applying lattices/floor tiles onto lattices could also utilize something similar in the future.
+/turf/rcd_values(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
+	if(density || !can_build_into_floor)
+		return FALSE
+	if(passed_mode == RCD_FLOORWALL)
+		var/obj/structure/lattice/L = locate() in src
+		// A lattice costs one rod to make. A sheet can make two rods, meaning a lattice costs half of a sheet.
+		// A sheet also makes four floor tiles, meaning it costs 1/4th of a sheet to place a floor tile on a lattice.
+		// Therefore it should cost 3/4ths of a sheet if a lattice is not present, or 1/4th of a sheet if it does.
+		return list(
+			RCD_VALUE_MODE = RCD_FLOORWALL,
+			RCD_VALUE_DELAY = 0,
+			RCD_VALUE_COST = L ? RCD_SHEETS_PER_MATTER_UNIT * 0.25 : RCD_SHEETS_PER_MATTER_UNIT * 0.75
+			)
+	return FALSE
+
+/turf/rcd_act(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
+	if(passed_mode == RCD_FLOORWALL)
+		to_chat(user, span("notice", "You build a floor."))
+		ChangeTurf(/turf/simulated/floor/airless, preserve_outdoors = TRUE)
+		return TRUE
+	return FALSE
+
+/**
+  * Returns if things have gravity on us
+  */
+/turf/has_gravity(turf/T)
+	return loc.has_gravity(src)

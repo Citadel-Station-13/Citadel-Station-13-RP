@@ -10,9 +10,9 @@
 	icon_state = "scanner_0old"
 	density = 1
 	anchored = 1
-	circuit = /obj/item/weapon/circuitboard/slimeextractor
+	circuit = /obj/item/circuitboard/slimeextractor
 	var/inuse
-	var/mob/living/simple_animal/xeno/slime/occupant = null
+	var/mob/living/simple_mob/xeno/slime/occupant = null
 	var/occupiedcolor = "#22FF22"
 	var/emptycolor = "#FF2222"
 	var/operatingcolor = "#FFFF22"
@@ -22,34 +22,34 @@
 	..()
 	update_light_color()
 	component_parts = list()
-	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
-	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
-	component_parts += new /obj/item/weapon/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/weapon/stock_parts/micro_laser(src)
-	component_parts += new /obj/item/weapon/stock_parts/micro_laser(src)
+	component_parts += new /obj/item/stock_parts/manipulator(src)
+	component_parts += new /obj/item/stock_parts/manipulator(src)
+	component_parts += new /obj/item/stock_parts/matter_bin(src)
+	component_parts += new /obj/item/stock_parts/micro_laser(src)
+	component_parts += new /obj/item/stock_parts/micro_laser(src)
 	RefreshParts()
 
 /obj/machinery/slime/extractor/attackby(var/obj/item/W, var/mob/user)
 
 	//Let's try to deconstruct first.
-	if(istype(W, /obj/item/weapon/screwdriver) && !inuse)
+	if(W.is_screwdriver() && !inuse)
 		default_deconstruction_screwdriver(user, W)
 		return
 
-	if(istype(W, /obj/item/weapon/crowbar))
+	if(W.is_crowbar())
 		default_deconstruction_crowbar(user, W)
 		return
 
 	if(panel_open)
-		user << "<span class='warning'>Close the panel first!</span>"
+		to_chat(user, "<span class='warning'>Close the panel first!</span>")
 
-	var/obj/item/weapon/grab/G = W
+	var/obj/item/grab/G = W
 
 	if(!istype(G))
 		return ..()
 
 	if(G.state < 2)
-		user << "<span class='danger'>You need a better grip to do that!</span>"
+		to_chat(user, "<span class='danger'>You need a better grip to do that!</span>")
 		return
 
 	move_into_extractor(user,G.affecting)
@@ -62,20 +62,20 @@
 /obj/machinery/slime/extractor/proc/move_into_extractor(var/mob/user,var/mob/living/victim)
 
 	if(src.occupant)
-		user << "<span class='danger'>The core extractor is full, empty it first!</span>"
+		to_chat(user, "<span class='danger'>The core extractor is full, empty it first!</span>")
 		return
 
 	if(inuse)
-		user << "<span class='danger'>The core extractor is locked and running, wait for it to finish.</span>"
+		to_chat(user, "<span class='danger'>The core extractor is locked and running, wait for it to finish.</span>")
 		return
 
-	if(!(istype(victim, /mob/living/simple_animal/xeno/slime)) )
-		user << "<span class='danger'>This is not a suitable subject for the core extractor!</span>"
+	if(!(istype(victim, /mob/living/simple_mob/xeno/slime)))
+		to_chat(user, "<span class='danger'>This is not a suitable subject for the core extractor!</span>")
 		return
 
-	var/mob/living/simple_animal/xeno/slime/S = victim
+	var/mob/living/simple_mob/xeno/slime/S = victim
 	if(S.is_child)
-		user << "<span class='danger'>This subject is not developed enough for the core extractor!</span>"
+		to_chat(user, "<span class='danger'>This subject is not developed enough for the core extractor!</span>")
 		return
 
 	user.visible_message("<span class='danger'>[user] starts to put [victim] into the core extractor!</span>")
@@ -181,13 +181,13 @@
 	return
 
 //Circuit board below,
-/obj/item/weapon/circuitboard/slimeextractor
+/obj/item/circuitboard/slimeextractor
 	name = T_BOARD("Slime extractor")
 	build_path = "/obj/machinery/slime/extractor"
 	board_type = "machine"
 	origin_tech = list(TECH_DATA = 3, TECH_BIO = 3)
 	req_components = list(
-							/obj/item/weapon/stock_parts/manipulator = 2,
-							/obj/item/weapon/stock_parts/matter_bin = 1,
-							/obj/item/weapon/stock_parts/micro_laser = 2
+							/obj/item/stock_parts/manipulator = 2,
+							/obj/item/stock_parts/matter_bin = 1,
+							/obj/item/stock_parts/micro_laser = 2
 							)

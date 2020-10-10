@@ -4,7 +4,7 @@
 		return
 
 	if (Victim)
-		src << "I am already feeding..."
+		to_chat(src, "I am already feeding...")
 		return
 
 	var t = invalidFeedTarget(M)
@@ -21,7 +21,7 @@
 		return "I cannot feed on other slimes..."
 	if (!Adjacent(M))
 		return "This subject is too far away..."
-	if (istype(M, /mob/living/carbon) && M.getCloneLoss() >= M.getMaxHealth() * 1.5 || istype(M, /mob/living/simple_animal) && M.stat == DEAD)
+	if (istype(M, /mob/living/carbon) && M.getCloneLoss() >= M.getMaxHealth() * 1.5 || istype(M, /mob/living/simple_mob) && M.stat == DEAD)
 		return "This subject does not have an edible life energy..."
 	for(var/mob/living/carbon/slime/met in view())
 		if(met.Victim == M && met != src)
@@ -48,11 +48,11 @@
 				if(Victim.health <= 0)
 					Victim.adjustToxLoss(rand(2,4))
 
-			else if(istype(M, /mob/living/simple_animal))
+			else if(istype(M, /mob/living/simple_mob))
 				Victim.adjustBruteLoss(is_adult ? rand(7, 15) : rand(4, 12))
 
 			else
-				src << "<span class='warning'>[pick("This subject is incompatable", "This subject does not have a life energy", "This subject is empty", "I am not satisified", "I can not feed from this subject", "I do not feel nourished", "This subject is not food")]...</span>"
+				to_chat(src, "<span class='warning'>[pick("This subject is incompatable", "This subject does not have a life energy", "This subject is empty", "I am not satisified", "I can not feed from this subject", "I do not feel nourished", "This subject is not food")]...</span>")
 				Feedstop()
 				break
 
@@ -64,7 +64,7 @@
 				else if (istype(M, /mob/living/carbon))
 					var/mob/living/carbon/C = M
 					if (C.can_feel_pain())
-						M << "<span class='danger'>[painMes]</span>"
+						to_chat(M, "<span class='danger'>[painMes]</span>")
 
 			gain_nutrition(rand(20,25))
 
@@ -92,7 +92,7 @@
 					++Friends[Victim.LAssailant]
 
 		else
-			src << "<span class='notice'>This subject does not have a strong enough life energy anymore...</span>"
+			to_chat(src, "<span class='notice'>This subject does not have a strong enough life energy anymore...</span>")
 
 	Victim = null
 
@@ -111,7 +111,7 @@
 	set desc = "This will let you evolve from baby to adult slime."
 
 	if(stat)
-		src << "<span class='notice'>I must be conscious to do this...</span>"
+		to_chat(src, "<span class='notice'>I must be conscious to do this...</span>")
 		return
 
 	if(!is_adult)
@@ -122,22 +122,22 @@
 			regenerate_icons()
 			name = text("[colour] [is_adult ? "adult" : "baby"] slime ([number])")
 		else
-			src << "<span class='notice'>I am not ready to evolve yet...</span>"
+			to_chat(src, "<span class='notice'>I am not ready to evolve yet...</span>")
 	else
-		src << "<span class='notice'>I have already evolved...</span>"
+		to_chat(src, "<span class='notice'>I have already evolved...</span>")
 
 /mob/living/carbon/slime/verb/Reproduce()
 	set category = "Slime"
 	set desc = "This will make you split into four Slimes."
 
 	if(stat)
-		src << "<span class='notice'>I must be conscious to do this...</span>"
+		to_chat(src, "<span class='notice'>I must be conscious to do this...</span>")
 		return
 
 	if(is_adult)
 		if(amount_grown >= 10)
 			if(stat)
-				src << "<span class='notice'>I must be conscious to do this...</span>"
+				to_chat(src, "<span class='notice'>I must be conscious to do this...</span>")
 				return
 
 			var/list/babies = list()
@@ -163,6 +163,6 @@
 				new_slime.key = src.key
 			qdel(src)
 		else
-			src << "<span class='notice'>I am not ready to reproduce yet...</span>"
+			to_chat(src, "<span class='notice'>I am not ready to reproduce yet...</span>")
 	else
-		src << "<span class='notice'>I am not old enough to reproduce yet...</span>"
+		to_chat(src, "<span class='notice'>I am not old enough to reproduce yet...</span>")

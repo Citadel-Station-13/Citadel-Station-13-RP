@@ -9,7 +9,7 @@ var/global/universe_has_ended = 0
 
 /datum/universal_state/supermatter_cascade/OnShuttleCall(var/mob/user)
 	if(user)
-		user << "<span class='sinister'>All you hear on the frequency is static and panicked screaming. There will be no shuttle call today.</span>"
+		to_chat(user, "<span class='sinister'>All you hear on the frequency is static and panicked screaming. There will be no shuttle call today.</span>")
 	return 0
 
 /datum/universal_state/supermatter_cascade/OnTurfChange(var/turf/T)
@@ -37,16 +37,16 @@ var/global/universe_has_ended = 0
 // Apply changes when entering state
 /datum/universal_state/supermatter_cascade/OnEnter()
 	set background = 1
-	world << "<span class='sinister' style='font-size:22pt'>You are blinded by a brilliant flash of energy.</span>"
+	to_chat(world, "<span class='sinister' style='font-size:22pt'>You are blinded by a brilliant flash of energy.</span>")
 
 	world << sound('sound/effects/cascade.ogg')
 
 	for(var/mob/M in player_list)
 		M.flash_eyes()
 
-	if(emergency_shuttle.can_recall())
+	if(SSemergencyshuttle.can_recall())
 		priority_announcement.Announce("The emergency shuttle has returned due to bluespace distortion.")
-		emergency_shuttle.recall()
+		SSemergencyshuttle.recall()
 
 	AreaSet()
 	MiscSet()
@@ -79,7 +79,7 @@ The access requirements on the Asteroid Shuttles' consoles have now been revoked
 				C.req_one_access = list()
 
 		spawn(5 MINUTES)
-			ticker.station_explosion_cinematic(0,null) // TODO: Custom cinematic
+			SSticker.station_explosion_cinematic(0,null) // TODO: Custom cinematic
 			universe_has_ended = 1
 		return
 
@@ -93,12 +93,12 @@ The access requirements on the Asteroid Shuttles' consoles have now been revoked
 /datum/universal_state/supermatter_cascade/OverlayAndAmbientSet()
 	spawn(0)
 		for(var/datum/lighting_corner/L in world)
-			if(L.z in using_map.admin_levels)
+			if(L.z in GLOB.using_map.admin_levels)
 				L.update_lumcount(1,1,1)
 			else
 				L.update_lumcount(0.0, 0.4, 1)
 
-		for(var/turf/space/T in turfs)
+		for(var/turf/space/T in world)
 			OnTurfChange(T)
 
 /datum/universal_state/supermatter_cascade/proc/MiscSet()

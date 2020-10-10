@@ -2,11 +2,16 @@
 // An asteroid object, could be spawned in, or not
 // May or may not include phat lewt
 //////////////////////////////
+/turf/simulated/mineral/vacuum
+	initial_gas_mix = GAS_STRING_VACUUM
+
+/turf/simulated/mineral/floor/vacuum
+	initial_gas_mix = GAS_STRING_VACUUM
 
 /datum/rogue/asteroid
 	//Composition
-	var/type_wall	= /turf/simulated/mineral		//Type of turf used to generate the asteroid
-	var/type_under	= /turf/simulated/mineral/floor	//Type of turf that's under the normal one
+	var/type_wall	= /turf/simulated/mineral/vacuum		//Type of turf used to generate the asteroid
+	var/type_under	= /turf/simulated/mineral/floor/vacuum	//Type of turf that's under the normal one
 
 	//Dimensions
 	var/coresize 	= 3		//The size of the center square
@@ -99,7 +104,7 @@
 		spot_add(1,3,type_wall)
 		spot_add(2,1,type_wall)
 		spot_add(2,2,type_under) //Center floor
-		spot_add(2,2,/obj/random/cargopod) //Loot!
+		spot_add(2,2,/obj/random/roguemineloot) //Loot!
 		spot_add(2,3,type_wall)
 		spot_add(3,1,type_wall)
 		spot_add(3,2,type_wall)
@@ -112,8 +117,8 @@
 
 	New()
 		..()
-		spot_add(2,2,/obj/random/cargopod) //EXTRA loot!
-		spot_add(2,2,/mob/living/simple_animal/hostile/alien) //GRRR
+		spot_add(2,2,/obj/random/roguemineloot) //EXTRA loot!
+		spot_add(2,2,/mob/living/simple_mob/animal/space/alien) //GRRR
 
 //Longer cargo container for higher difficulties
 /datum/rogue/asteroid/predef/cargo_large
@@ -142,9 +147,9 @@
 		spot_add(3,3,type_under) //Mid floor
 		spot_add(4,3,type_under) //Right floor
 
-		spot_add(2,3,/obj/random/cargopod) //Left loot
-		spot_add(3,3,/obj/random/cargopod) //Mid loot
-		spot_add(4,3,/obj/random/cargopod) //Right loot
+		spot_add(2,3,/obj/random/roguemineloot) //Left loot
+		spot_add(3,3,/obj/random/roguemineloot) //Mid loot
+		spot_add(4,3,/obj/random/roguemineloot) //Right loot
 
 		if(prob(30))
-			spot_add(3,3,/mob/living/simple_animal/hostile/alien) //And maybe a friend.
+			spot_add(3,3,/mob/living/simple_mob/animal/space/alien/sentinel/praetorian) //And maybe a big friend for big loot.

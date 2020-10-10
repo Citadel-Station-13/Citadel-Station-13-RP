@@ -6,9 +6,9 @@
 		if (radiation > 100)
 			radiation = 100
 			if(!container)//If it's not in an MMI
-				src << "<font color='red'>You feel weak.</font>"
+				to_chat(src, "<font color='red'>You feel weak.</font>")
 			else//Fluff-wise, since the brain can't detect anything itself, the MMI handles thing like that
-				src << "<font color='red'>STATUS: CRITICAL AMOUNTS OF RADIATION DETECTED.</font>"
+				to_chat(src, "<font color='red'>STATUS: CRITICAL AMOUNTS OF RADIATION DETECTED.</font>")
 
 		switch(radiation)
 			if(1 to 49)
@@ -23,9 +23,9 @@
 				if(prob(5))
 					radiation -= 5
 					if(!container)
-						src << "<font color='red'>You feel weak.</font>"
+						to_chat(src, "<font color='red'>You feel weak.</font>")
 					else
-						src << "<font color='red'>STATUS: DANGEROUS LEVELS OF RADIATION DETECTED.</font>"
+						to_chat(src, "<font color='red'>STATUS: DANGEROUS LEVELS OF RADIATION DETECTED.</font>")
 				updatehealth()
 
 			if(75 to 100)
@@ -76,7 +76,6 @@
 	if(ingested) ingested.metabolize()
 	if(bloodstr) bloodstr.metabolize()
 
-	AdjustConfused(-1)
 	// decrement dizziness counter, clamped to 0
 	if(resting)
 		dizziness = max(0, dizziness - 5)
@@ -94,7 +93,7 @@
 		blinded = 1
 		silent = 0
 	else				//ALIVE. LIGHTS ARE ON
-		if( !container && (health < config.health_threshold_dead || ((world.time - timeofhostdeath) > config.revival_brain_life)) )
+		if( !container && (health < config_legacy.health_threshold_dead || ((world.time - timeofhostdeath) > config_legacy.revival_brain_life)) )
 			death()
 			blinded = 1
 			silent = 0
@@ -102,7 +101,7 @@
 
 		//Handling EMP effect in the Life(), it's made VERY simply, and has some additional effects handled elsewhere
 		if(emp_damage)			//This is pretty much a damage type only used by MMIs, dished out by the emp_act
-			if(!(container && istype(container, /obj/item/device/mmi)))
+			if(!(container && istype(container, /obj/item/mmi)))
 				emp_damage = 0
 			else
 				emp_damage = round(emp_damage,1)//Let's have some nice numbers to work with
@@ -116,7 +115,7 @@
 					silent = 1
 					if(!alert)//Sounds an alarm, but only once per 'level'
 						emote("alarm")
-						src << "<font color='red'>Major electrical distruption detected: System rebooting.</font>"
+						to_chat(src, "<font color='red'>Major electrical distruption detected: System rebooting.</font>")
 						alert = 1
 					if(prob(75))
 						emp_damage -= 1
@@ -132,7 +131,7 @@
 					ear_damage = 1
 					if(!alert)
 						emote("alert")
-						src << "<font color='red'>Primary systems are now online.</font>"
+						to_chat(src, "<font color='red'>Primary systems are now online.</font>")
 						alert = 1
 					if(prob(50))
 						emp_damage -= 1
@@ -144,13 +143,13 @@
 				if(2 to 9)//Low level of EMP damage, has few effects(handled elsewhere)
 					if(!alert)
 						emote("notice")
-						src << "<font color='red'>System reboot nearly complete.</font>"
+						to_chat(src, "<font color='red'>System reboot nearly complete.</font>")
 						alert = 1
 					if(prob(25))
 						emp_damage -= 1
 				if(1)
 					alert = 0
-					src << "<font color='red'>All systems restored.</font>"
+					to_chat(src, "<font color='red'>All systems restored.</font>")
 					emp_damage -= 1
 
 	return 1
@@ -202,7 +201,7 @@
 			see_in_dark = 2
 			see_invisible = SEE_INVISIBLE_LIVING
 	if (client)
-		client.screen.Remove(global_hud.blurry,global_hud.druggy,global_hud.vimpaired)
+		client.screen.Remove(GLOB.global_hud.blurry,GLOB.global_hud.druggy,GLOB.global_hud.vimpaired)
 
 	if (stat != 2)
 		if ((blinded))

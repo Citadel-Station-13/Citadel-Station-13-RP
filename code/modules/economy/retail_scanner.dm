@@ -1,9 +1,9 @@
-/obj/item/device/retail_scanner
+/obj/item/retail_scanner
 	name = "retail scanner"
 	desc = "Swipe your ID card to make purchases electronically."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "retail_idle"
-	flags = NOBLUDGEON|CONDUCT
+	flags = NOBLUDGEON
 	slot_flags = SLOT_BELT
 	req_access = list(access_heads)
 	w_class = ITEMSIZE_SMALL
@@ -24,7 +24,7 @@
 
 
 // Claim machine ID
-/obj/item/device/retail_scanner/New()
+/obj/item/retail_scanner/New()
 	machine_id = "[station_name()] RETAIL #[num_financial_terminals++]"
 	if(locate(/obj/structure/table) in loc)
 		pixel_y = 3
@@ -32,7 +32,7 @@
 
 
 // Always face the user when put on a table
-/obj/item/device/retail_scanner/afterattack(atom/movable/AM, mob/user, proximity)
+/obj/item/retail_scanner/afterattack(atom/movable/AM, mob/user, proximity)
 	if(!proximity)	return
 	if(istype(AM, /obj/structure/table))
 		src.pixel_y = 3 // Shift it up slightly to look better on table
@@ -41,23 +41,23 @@
 		scan_item_price(AM)
 
 // Reset dir when picked back up
-/obj/item/device/retail_scanner/pickup(mob/user)
+/obj/item/retail_scanner/pickup(mob/user)
 	src.dir = SOUTH
 	src.pixel_y = 0
 
 
-/obj/item/device/retail_scanner/attack_self(mob/user as mob)
+/obj/item/retail_scanner/attack_self(mob/user as mob)
 	user.set_machine(src)
 	interact(user)
 
 
-/obj/item/device/retail_scanner/AltClick(var/mob/user)
+/obj/item/retail_scanner/AltClick(var/mob/user)
 	if(Adjacent(user))
 		user.set_machine(src)
 		interact(user)
 
 
-/obj/item/device/retail_scanner/interact(mob/user as mob)
+/obj/item/retail_scanner/interact(mob/user as mob)
 	var/dat = "<h2>Retail Scanner<hr></h2>"
 	if (locked)
 		dat += "<a href='?src=\ref[src];choice=toggle_lock'>Unlock</a><br>"
@@ -82,7 +82,7 @@
 	onclose(user, "retail")
 
 
-/obj/item/device/retail_scanner/Topic(var/href, var/href_list)
+/obj/item/retail_scanner/Topic(var/href, var/href_list)
 	if(..())
 		return
 
@@ -95,7 +95,7 @@
 				if(allowed(usr))
 					locked = !locked
 				else
-					usr << "\icon[src]<span class='warning'>Insufficient access.</span>"
+					to_chat(usr, "\icon[src]<span class='warning'>Insufficient access.</span>")
 			if("link_account")
 				var/attempt_account_num = input("Enter account number", "New account number") as num
 				var/attempt_pin = input("Enter PIN", "Account PIN") as num
@@ -105,7 +105,7 @@
 						linked_account = null
 						src.visible_message("\icon[src]<span class='warning'>Account has been suspended.</span>")
 				else
-					usr << "\icon[src]<span class='warning'>Account not found.</span>"
+					to_chat(usr, "\icon[src]<span class='warning'>Account not found.</span>")
 			if("custom_order")
 				var/t_purpose = sanitize(input("Enter purpose", "New purpose") as text)
 				if (!t_purpose || !Adjacent(usr)) return
@@ -120,7 +120,7 @@
 			if("set_amount")
 				var/item_name = locate(href_list["item"])
 				var/n_amount = round(input("Enter amount", "New amount") as num)
-				n_amount = Clamp(n_amount, 0, 20)
+				n_amount = clamp(n_amount, 0, 20)
 				if (!item_list[item_name] || !Adjacent(usr)) return
 				transaction_amount += (n_amount - item_list[item_name]) * price_list[item_name]
 				if(!n_amount)
@@ -153,35 +153,35 @@
 					price_list.Cut()
 			if("reset_log")
 				transaction_logs.Cut()
-				usr << "\icon[src]<span class='notice'>Transaction log reset.</span>"
+				to_chat(usr, "\icon[src]<span class='notice'>Transaction log reset.</span>")
 	updateDialog()
 
 
 
-/obj/item/device/retail_scanner/attackby(obj/O as obj, user as mob)
+/obj/item/retail_scanner/attackby(obj/O as obj, user as mob)
 	// Check for a method of paying (ID, PDA, e-wallet, cash, ect.)
-	var/obj/item/weapon/card/id/I = O.GetID()
+	var/obj/item/card/id/I = O.GetID()
 	if(I)
 		scan_card(I, O)
-	else if (istype(O, /obj/item/weapon/spacecash/ewallet))
-		var/obj/item/weapon/spacecash/ewallet/E = O
+	else if (istype(O, /obj/item/spacecash/ewallet))
+		var/obj/item/spacecash/ewallet/E = O
 		scan_wallet(E)
-	else if (istype(O, /obj/item/weapon/spacecash))
-		usr << "<span class='warning'>This device does not accept cash.</span>"
+	else if (istype(O, /obj/item/spacecash))
+		to_chat(usr, "<span class='warning'>This device does not accept cash.</span>")
 
-	else if(istype(O, /obj/item/weapon/card/emag))
+	else if(istype(O, /obj/item/card/emag))
 		return ..()
 	// Not paying: Look up price and add it to transaction_amount
 	else
 		scan_item_price(O)
 
 
-/obj/item/device/retail_scanner/showoff(mob/user)
+/obj/item/retail_scanner/showoff(mob/user)
 	for (var/mob/M in view(user))
 		M.show_message("[user] holds up [src]. <a HREF=?src=\ref[M];clickitem=\ref[src]>Swipe card or item.</a>",1)
 
 
-/obj/item/device/retail_scanner/proc/confirm(var/obj/item/I)
+/obj/item/retail_scanner/proc/confirm(var/obj/item/I)
 	if(confirm_item == I)
 		return 1
 	else
@@ -191,7 +191,7 @@
 		return 0
 
 
-/obj/item/device/retail_scanner/proc/scan_card(var/obj/item/weapon/card/id/I, var/obj/item/ID_container)
+/obj/item/retail_scanner/proc/scan_card(var/obj/item/card/id/I, var/obj/item/ID_container)
 	if (!transaction_amount)
 		return
 
@@ -251,7 +251,7 @@
 					transaction_complete()
 
 
-/obj/item/device/retail_scanner/proc/scan_wallet(var/obj/item/weapon/spacecash/ewallet/E)
+/obj/item/retail_scanner/proc/scan_wallet(var/obj/item/spacecash/ewallet/E)
 	if (!transaction_amount)
 		return
 
@@ -284,7 +284,7 @@
 			transaction_complete()
 
 
-/obj/item/device/retail_scanner/proc/scan_item_price(var/obj/O)
+/obj/item/retail_scanner/proc/scan_item_price(var/obj/O)
 	if(!istype(O))	return
 	if(item_list.len > 10)
 		src.visible_message("\icon[src]<span class='warning'>Only up to ten different items allowed per purchase.</span>")
@@ -316,7 +316,7 @@
 	confirm_item = null
 
 
-/obj/item/device/retail_scanner/proc/get_current_transaction()
+/obj/item/retail_scanner/proc/get_current_transaction()
 	var/dat = {"
 	<head><style>
 		.tx-title-r {text-align: center; background-color:#ffdddd; font-weight: bold}
@@ -336,7 +336,7 @@
 	return dat
 
 
-/obj/item/device/retail_scanner/proc/add_transaction_log(var/c_name, var/p_method, var/t_amount)
+/obj/item/retail_scanner/proc/add_transaction_log(var/c_name, var/p_method, var/t_amount)
 	var/dat = {"
 	<head><style>
 		.tx-title {text-align: center; background-color:#ddddff; font-weight: bold}
@@ -362,7 +362,7 @@
 	transaction_logs += dat
 
 
-/obj/item/device/retail_scanner/proc/check_account()
+/obj/item/retail_scanner/proc/check_account()
 	if (!linked_account)
 		usr.visible_message("\icon[src]<span class='warning'>Unable to connect to linked account.</span>")
 		return 0
@@ -373,7 +373,7 @@
 	return 1
 
 
-/obj/item/device/retail_scanner/proc/transaction_complete()
+/obj/item/retail_scanner/proc/transaction_complete()
 	/// Visible confirmation
 	playsound(src, 'sound/machines/chime.ogg', 25)
 	src.visible_message("\icon[src]<span class='notice'>Transaction complete.</span>")
@@ -382,7 +382,7 @@
 	updateDialog()
 
 
-/obj/item/device/retail_scanner/proc/reset_memory()
+/obj/item/retail_scanner/proc/reset_memory()
 	transaction_amount = null
 	transaction_purpose = ""
 	item_list.Cut()
@@ -390,32 +390,32 @@
 	confirm_item = null
 
 
-/obj/item/device/retail_scanner/emag_act(var/remaining_charges, var/mob/user)
+/obj/item/retail_scanner/emag_act(var/remaining_charges, var/mob/user)
 	if(!emagged)
-		user << "<span class='danger'>You stealthily swipe the cryptographic sequencer through \the [src].</span>"
+		to_chat(user, "<span class='danger'>You stealthily swipe the cryptographic sequencer through \the [src].</span>")
 		playsound(src, "sparks", 50, 1)
 		req_access = list()
 		emagged = 1
 
 //--Premades--//
 
-/obj/item/device/retail_scanner/command
+/obj/item/retail_scanner/command
 	account_to_connect = "Command"
 
-/obj/item/device/retail_scanner/medical
+/obj/item/retail_scanner/medical
 	account_to_connect = "Medical"
 
-/obj/item/device/retail_scanner/engineering
+/obj/item/retail_scanner/engineering
 	account_to_connect = "Engineering"
 
-/obj/item/device/retail_scanner/science
+/obj/item/retail_scanner/science
 	account_to_connect = "Science"
 
-/obj/item/device/retail_scanner/security
+/obj/item/retail_scanner/security
 	account_to_connect = "Security"
 
-/obj/item/device/retail_scanner/cargo
+/obj/item/retail_scanner/cargo
 	account_to_connect = "Cargo"
 
-/obj/item/device/retail_scanner/civilian
+/obj/item/retail_scanner/civilian
 	account_to_connect = "Civilian"

@@ -36,9 +36,9 @@
 		break_handcuffs()
 		return
 
-	var/obj/item/weapon/handcuffs/HC = handcuffed
+	var/obj/item/handcuffs/HC = handcuffed
 
-	//A default in case you are somehow handcuffed with something that isn't an obj/item/weapon/handcuffs type
+	//A default in case you are somehow handcuffed with something that isn't an obj/item/handcuffs type
 	var/breakouttime = 1200
 	var/displaytime = 2 //Minutes to display in the "this will take X minutes."
 	//If you are handcuffed with actual handcuffs... Well what do I know, maybe someone will want to handcuff you with toilet paper in the future...
@@ -76,9 +76,9 @@
 		break_legcuffs()
 		return
 
-	var/obj/item/weapon/handcuffs/legcuffs/LC = legcuffed
+	var/obj/item/handcuffs/legcuffs/LC = legcuffed
 
-	//A default in case you are somehow legcuffed with something that isn't an obj/item/weapon/handcuffs/legcuffs type
+	//A default in case you are somehow legcuffed with something that isn't an obj/item/handcuffs/legcuffs type
 	var/breakouttime = 1200
 	var/displaytime = 2 //Minutes to display in the "this will take X minutes."
 	//If you are legcuffed with actual legcuffs... Well what do I know, maybe someone will want to handcuff you with toilet paper in the future...
@@ -135,7 +135,7 @@
 		update_inv_handcuffed()
 
 /mob/living/carbon/proc/break_legcuffs()
-	src << "<span class='warning'>You attempt to break your legcuffs. (This will take around 5 seconds and you need to stand still)</span>"
+	to_chat(src, "<span class='warning'>You attempt to break your legcuffs. (This will take around 5 seconds and you need to stand still)</span>")
 	visible_message("<span class='danger'>[src] is trying to break the legcuffs!</span>")
 
 	if(do_after(src, 5 SECONDS, incapacitation_flags = INCAPACITATION_DEFAULT & ~INCAPACITATION_RESTRAINED))
@@ -152,11 +152,6 @@
 		qdel(legcuffed)
 		legcuffed = null
 		update_inv_legcuffed()
-
-/mob/living/carbon/human/can_break_cuffs()
-	if(species.can_shred(src,1))
-		return 1
-	return ..()
 
 /mob/living/carbon/escape_buckle()
 	if(!buckled) return

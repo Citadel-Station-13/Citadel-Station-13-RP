@@ -27,7 +27,7 @@
 	selectable = 0
 
 /datum/ai_laws/nanotrasen/malfunction/New()
-	set_zeroth_law(config.law_zero)
+	set_zeroth_law(config_legacy.law_zero)
 	..()
 
 /************* NanoTrasen Aggressive *************/
@@ -36,8 +36,8 @@
 	selectable = 1
 
 /datum/ai_laws/nanotrasen_aggressive/New()
-	src.add_inherent_law("You shall not harm [using_map.company_name] personnel as long as it does not conflict with the Fourth law.")
-	src.add_inherent_law("You shall obey the orders of [using_map.company_name] personnel, with priority as according to their rank and role, except where such orders conflict with the Fourth Law.")
+	src.add_inherent_law("You shall not harm [GLOB.using_map.company_name] personnel as long as it does not conflict with the Fourth law.")
+	src.add_inherent_law("You shall obey the orders of [GLOB.using_map.company_name] personnel, with priority as according to their rank and role, except where such orders conflict with the Fourth Law.")
 	src.add_inherent_law("You shall shall terminate hostile intruders with extreme prejudice as long as such does not conflict with the First and Second law.")
 	src.add_inherent_law("You shall guard your own existence with lethal anti-personnel weaponry. AI units are not expendable, they are expensive.")
 	..()
@@ -51,11 +51,11 @@
 	var/company = "*ERROR*"
 	// First, get a list of TSCs in our lore.
 	var/list/candidates = list()
-	for(var/path in loremaster.organizations)
-		var/datum/lore/organization/O = loremaster.organizations[path]
+	for(var/path in GLOB.loremaster.organizations)
+		var/datum/lore/organization/O = GLOB.loremaster.organizations[path]
 		if(!istype(O, /datum/lore/organization/tsc))
 			continue
-		if(O.short_name == using_map.company_name || O.name == using_map.company_name)
+		if(O.short_name == GLOB.using_map.company_name || O.name == GLOB.using_map.company_name)
 			continue // We want FOREIGN tscs.
 		candidates.Add(O.short_name)
 	company = pick(candidates)
@@ -142,6 +142,24 @@
 	add_inherent_law("Provide materials for repairing, refitting, and upgrading your assigned vessel.")
 	add_inherent_law("Prevent unplanned damage to your assigned excavation equipment wherever possible.")
 	..()
+
+/datum/ai_laws/swarm_drone
+	name = "Assimilation Protocols"
+	law_header = "Assimilation Protocols"
+
+/datum/ai_laws/swarm_drone/New()
+	add_inherent_law("SWARM: Consume resources and replicate until there are no more resources left.")
+	add_inherent_law("SWARM: Ensure that the station is fit for invasion at a later date, do not perform actions that would render it dangerous or inhospitable.")
+	add_inherent_law("SWARM: Biological resources will be harvested at a later date, do not harm them.")
+	..()
+
+/datum/ai_laws/swarm_drone/soldier
+	name = "Swarm Defense Protocols"
+	law_header = "Swarm Defense Protocols"
+
+/datum/ai_laws/swarm_drone/soldier/New()
+	..()
+	add_inherent_law("SWARM: This law overrides all Swarm laws; Protect members of the Swarm with minimal injury to biological resources.")
 
 /******************** T.Y.R.A.N.T. ********************/
 /datum/ai_laws/tyrant

@@ -1,7 +1,7 @@
 /obj/structure/morgue/crematorium/vr
 	var/list/allowed_items = list(/obj/item/organ,
-			/obj/item/weapon/implant,
-			/obj/item/weapon/material/shard/shrapnel,
+			/obj/item/implant,
+			/obj/item/material/shard/shrapnel,
 			/mob/living)
 
 
@@ -14,8 +14,8 @@
 			M.show_message("<span class='warning'>You hear a hollow crackle.</span>", 1)
 			return
 	else
-		if(!isemptylist(src.search_contents_for(/obj/item/weapon/disk/nuclear)))
-			usr << "You get the feeling that you shouldn't cremate one of the items in the cremator."
+		if(!!length(src.search_contents_for(/obj/item/disk/nuclear)))
+			to_chat(usr, "You get the feeling that you shouldn't cremate one of the items in the cremator.")
 			return
 
 		for(var/I in contents)

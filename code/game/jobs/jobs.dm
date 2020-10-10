@@ -45,12 +45,17 @@ var/const/BRIDGE			=(1<<12)
 var/const/CLOWN				=(1<<13) //VOREStation Add
 var/const/MIME				=(1<<14) //VOREStation Add
 
+var/const/PATHFINDER 		=(1<<11)
+var/const/EXPLORER 			=(1<<12)
+var/const/PILOT 			=(1<<13)
+var/const/SAR 				=(1<<14)
+
 var/list/assistant_occupations = list(
 )
 
 
 var/list/command_positions = list(
-	"Colony Director",
+	"Facility Director",
 	"Head of Personnel",
 	"Head of Security",
 	"Chief Engineer",
@@ -73,19 +78,19 @@ var/list/medical_positions = list(
 	"Geneticist",
 	"Psychiatrist",
 	"Chemist",
-	"Search and Rescue", // VOREStation Edit - Moved SAR from planetary -> medical
-	"Paramedic"
+	"Paramedic",
+	"Field Medic"
 )
 
 
 var/list/science_positions = list(
 	"Research Director",
-	"Pathfinder", // VOREStation Edit - Added Pathfinder
 	"Scientist",
 	"Geneticist",	//Part of both medical and science
 	"Roboticist",
-	"Explorer", // VOREStation Edit - Moved Explorer from planetary -> science
-	"Xenobiologist"
+	"Xenobiologist",
+	"Explorer",
+	"Pathfinder"
 )
 
 //BS12 EDIT
@@ -104,7 +109,7 @@ var/list/civilian_positions = list(
 	"Librarian",
 	"Lawyer",
 	"Chaplain",
-	"Pilot",  // VOREStation Edit - Moved Pilot from planetary -> civ
+	"Pilot",
 	USELESS_JOB, //VOREStation Edit - Visitor not Assistant
 	"Intern" //VOREStation Edit - Intern
 )
@@ -119,9 +124,10 @@ var/list/security_positions = list(
 
 
 var/list/planet_positions = list(
-	// "Explorer", // VOREStation Edit - Moved Explorer from planetary -> science
-	// "Pilot",  // VOREStation Edit - Moved Pilot from planetary -> civ
-	// "Search and Rescue"  // VOREStation Edit - Moved SAR from planetary -> medical
+	"Pathfinder", // VOREStation Edit - Added Pathfinder
+	"Explorer",
+	"Pilot",
+	"Field Medic"  // VOREStation Edit - Field Medic
 )
 
 

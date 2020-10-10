@@ -1,4 +1,4 @@
-#define NEIGHBOR_REFRESH_TIME 100
+#define NEIGHBOR_REFRESH_TIME 50
 
 /obj/effect/plant/proc/get_cardinal_neighbors()
 	var/list/cardinal_neighbors = list()
@@ -52,6 +52,14 @@
 		if(smoke.reagents.has_reagent("plantbgone"))
 			die_off()
 			return
+		else if(smoke.reagents.has_reagent("fluorine"))
+			if(prob(40))
+				die_off()
+				return
+		else if(smoke.reagents.has_reagent("chlorine"))
+			if(prob(15))
+				die_off()
+				return
 
 	// Handle life.
 	var/turf/simulated/T = get_turf(src)
@@ -102,7 +110,7 @@
 
 		for(var/i in 1 to max_spread)
 			if(prob(spread_chance))
-				sleep(rand(3,5))
+				sleep(rand(1,2)) // Adjusting Sleep timer to be lower.
 				if(!neighbors.len)
 					break
 				spread_to(pick(neighbors))

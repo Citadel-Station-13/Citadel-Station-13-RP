@@ -67,7 +67,7 @@
 	// the comms computer, solar trackers, etc, that should function when all else is off.
 	// Laptops will require batteries and have no mains power.
 
-	var/obj/item/weapon/cell/battery	= null // uninterruptible power supply aka battery
+	var/obj/item/cell/battery	= null // uninterruptible power supply aka battery
 
 /obj/machinery/computer3/New(var/L, var/built = 0)
 	..()
@@ -192,7 +192,7 @@
 			toybox.init(src)
 			continue
 
-		if(ispath(typekey,/obj/item/weapon/cell))
+		if(ispath(typekey,/obj/item/cell))
 			if(battery)
 				continue
 			battery = new typekey(src)
@@ -309,8 +309,8 @@
 	if(os)
 		os.error = BUSTED_ASS_COMPUTER
 
-/obj/machinery/computer3/attackby(I as obj, mob/user as mob)
-	if(istype(I, /obj/item/weapon/screwdriver) && allow_disassemble)
+/obj/machinery/computer3/attackby(obj/item/I as obj, mob/user as mob)
+	if(I.is_screwdriver() && allow_disassemble)
 		disassemble(user)
 		return
 
@@ -443,7 +443,7 @@
 //Returns percentage of battery charge remaining. Returns -1 if no battery is installed.
 /obj/machinery/computer3/proc/check_battery_status()
 	if (battery)
-		var/obj/item/weapon/cell/B = battery
+		var/obj/item/cell/B = battery
 		return round(B.charge / (B.maxcharge / 100))
 	else
 		return -1

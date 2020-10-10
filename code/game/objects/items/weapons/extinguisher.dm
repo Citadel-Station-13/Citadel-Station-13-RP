@@ -1,11 +1,10 @@
-/obj/item/weapon/extinguisher
+/obj/item/extinguisher
 	name = "fire extinguisher"
 	desc = "A traditional red fire extinguisher."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "fire_extinguisher0"
 	item_state = "fire_extinguisher"
 	hitsound = 'sound/weapons/smash.ogg'
-	flags = CONDUCT
 	throwforce = 10
 	w_class = ITEMSIZE_NORMAL
 	throw_speed = 2
@@ -21,7 +20,7 @@
 	var/safety = 1
 	var/sprite_name = "fire_extinguisher"
 
-/obj/item/weapon/extinguisher/mini
+/obj/item/extinguisher/mini
 	name = "fire extinguisher"
 	desc = "A light and compact fibreglass-framed model fire extinguisher."
 	icon_state = "miniFE0"
@@ -34,24 +33,27 @@
 	spray_particles = 3
 	sprite_name = "miniFE"
 
-/obj/item/weapon/extinguisher/New()
+/obj/item/extinguisher/mini/plasman
+	name = "emergency phoronoid extinguisher"
+	desc = "A mini fire extinguisher for use by burning phoronoids. Let's just hope it works."
+	max_water = 300
+
+/obj/item/extinguisher/Initialize()
+	. = ..()
 	create_reagents(max_water)
 	reagents.add_reagent("water", max_water)
-	..()
 
-/obj/item/weapon/extinguisher/examine(mob/user)
+/obj/item/extinguisher/examine(mob/user)
 	if(..(user, 0))
-		user << text("\icon[] [] contains [] units of water left!", src, src.name, src.reagents.total_volume)
-	return
+		to_chat(user, text("\icon[] [] contains [] units of water left!", src, src.name, src.reagents.total_volume))
 
-/obj/item/weapon/extinguisher/attack_self(mob/user as mob)
+/obj/item/extinguisher/attack_self(mob/user as mob)
 	safety = !safety
-	src.icon_state = "[sprite_name][!safety]"
-	src.desc = "The safety is [safety ? "on" : "off"]."
-	user << "The safety is [safety ? "on" : "off"]."
-	return
+	icon_state = "[sprite_name][!safety]"
+	desc = "The safety is [safety ? "on" : "off"]."
+	to_chat(user, "The safety is [safety ? "on" : "off"].")
 
-/obj/item/weapon/extinguisher/proc/propel_object(var/obj/O, mob/user, movementdirection)
+/obj/item/extinguisher/proc/propel_object(var/obj/O, mob/user, movementdirection)
 	if(O.anchored) return
 
 	var/obj/structure/bed/chair/C
@@ -69,19 +71,19 @@
 		O.Move(get_step(user,movementdirection), movementdirection)
 		sleep(3)
 
-/obj/item/weapon/extinguisher/afterattack(var/atom/target, var/mob/user, var/flag)
+/obj/item/extinguisher/afterattack(var/atom/target, var/mob/user, var/flag)
 	//TODO; Add support for reagents in water.
 
 	if( istype(target, /obj/structure/reagent_dispensers/watertank) && flag)
 		var/obj/o = target
 		var/amount = o.reagents.trans_to_obj(src, 50)
-		user << "<span class='notice'>You fill [src] with [amount] units of the contents of [target].</span>"
+		to_chat(user, "<span class='notice'>You fill [src] with [amount] units of the contents of [target].</span>")
 		playsound(src.loc, 'sound/effects/refill.ogg', 50, 1, -6)
 		return
 
 	if (!safety)
 		if (src.reagents.total_volume < 1)
-			usr << "<span class='notice'>\The [src] is empty.</span>"
+			to_chat(usr, "<span class='notice'>\The [src] is empty.</span>")
 			return
 
 		if (world.time < src.last_use + 20)
@@ -119,8 +121,7 @@
 				W.set_up(my_target)
 
 		if((istype(usr.loc, /turf/space)) || (usr.lastarea.has_gravity == 0))
-			user.inertia_dir = get_dir(target, user)
-			step(user, user.inertia_dir)
+			user.newtonian_move(get_dir(target, user))
 	else
 		return ..()
 	return

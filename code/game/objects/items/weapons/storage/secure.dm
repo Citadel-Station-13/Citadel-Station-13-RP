@@ -1,5 +1,5 @@
 /*
- *	Absorbs /obj/item/weapon/secstorage.
+ *	Absorbs /obj/item/secstorage.
  *	Reimplements it only slightly to use existing storage functionality.
  *
  *	Contains:
@@ -10,7 +10,7 @@
 // -----------------------------
 //         Generic Item
 // -----------------------------
-/obj/item/weapon/storage/secure
+/obj/item/storage/secure
 	name = "secstorage"
 	var/icon_locking = "secureb"
 	var/icon_sparking = "securespark"
@@ -31,23 +31,23 @@
 		if(..(user, 1))
 			user << text("The service panel is [src.open ? "open" : "closed"].")
 
-	attackby(obj/item/weapon/W as obj, mob/user as mob)
+	attackby(obj/item/W as obj, mob/user as mob)
 		if(locked)
-			if (istype(W, /obj/item/weapon/melee/energy/blade) && emag_act(INFINITY, user, "You slice through the lock of \the [src]"))
-				var/datum/effect/effect/system/spark_spread/spark_system = new /datum/effect/effect/system/spark_spread()
+			if (istype(W, /obj/item/melee/energy/blade) && emag_act(INFINITY, user, "You slice through the lock of \the [src]"))
+				var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 				spark_system.set_up(5, 0, src.loc)
 				spark_system.start()
 				playsound(src.loc, 'sound/weapons/blade1.ogg', 50, 1)
 				playsound(src.loc, "sparks", 50, 1)
 				return
 
-			if (istype(W, /obj/item/weapon/screwdriver))
+			if (W.is_screwdriver())
 				if (do_after(user, 20 * W.toolspeed))
 					src.open =! src.open
 					playsound(src, W.usesound, 50, 1)
 					user.show_message(text("<span class='notice'>You [] the service panel.</span>", (src.open ? "open" : "close")))
 				return
-			if ((istype(W, /obj/item/device/multitool)) && (src.open == 1)&& (!src.l_hacking))
+			if (istype(W, /obj/item/multitool) && (src.open == 1)&& (!src.l_hacking))
 				user.show_message("<span class='notice'>Now attempting to reset internal memory, please hold.</span>", 1)
 				src.l_hacking = 1
 				if (do_after(usr, 100))
@@ -127,7 +127,7 @@
 				return
 		return
 
-/obj/item/weapon/storage/secure/emag_act(var/remaining_charges, var/mob/user, var/feedback)
+/obj/item/storage/secure/emag_act(var/remaining_charges, var/mob/user, var/feedback)
 	if(!emagged)
 		emagged = 1
 		src.overlays += image('icons/obj/storage.dmi', icon_sparking)
@@ -135,13 +135,13 @@
 		src.overlays = null
 		overlays += image('icons/obj/storage.dmi', icon_locking)
 		locked = 0
-		user << (feedback ? feedback : "You short out the lock of \the [src].")
+		to_chat(user, (feedback ? feedback : "You short out the lock of \the [src]."))
 		return 1
 
 // -----------------------------
 //        Secure Briefcase
 // -----------------------------
-/obj/item/weapon/storage/secure/briefcase
+/obj/item/storage/secure/briefcase
 	name = "secure briefcase"
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "secure"
@@ -156,7 +156,7 @@
 
 	attack_hand(mob/user as mob)
 		if ((src.loc == user) && (src.locked == 1))
-			usr << "<span class='warning'>[src] is locked and cannot be opened!</span>"
+			to_chat(user, "<span class='warning'>[src] is locked and cannot be opened!</span>")
 		else if ((src.loc == user) && (!src.locked))
 			src.open(usr)
 		else
@@ -171,7 +171,7 @@
 //        Secure Safe
 // -----------------------------
 
-/obj/item/weapon/storage/secure/safe
+/obj/item/storage/secure/safe
 	name = "secure safe"
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "safe"
@@ -183,11 +183,11 @@
 	max_w_class = ITEMSIZE_LARGE // This was 8 previously...
 	anchored = 1.0
 	density = 0
-	cant_hold = list(/obj/item/weapon/storage/secure/briefcase)
+	cant_hold = list(/obj/item/storage/secure/briefcase)
 	starts_with = list(
-		/obj/item/weapon/paper,
-		/obj/item/weapon/pen
+		/obj/item/paper,
+		/obj/item/pen
 	)
 
-/obj/item/weapon/storage/secure/safe/attack_hand(mob/user as mob)
+/obj/item/storage/secure/safe/attack_hand(mob/user as mob)
 	return attack_self(user)

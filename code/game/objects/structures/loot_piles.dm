@@ -115,7 +115,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 	var/path = pick(rare_loot)
 	return new path(src)
 
-/obj/structure/loot_pile/initialize()
+/obj/structure/loot_pile/Initialize()
 	if(icon_states_to_use && icon_states_to_use.len)
 		icon_state = pick(icon_states_to_use)
 	. = ..()
@@ -127,28 +127,28 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 	icon_states_to_use = list("junk_pile1", "junk_pile2", "junk_pile3", "junk_pile4", "junk_pile5")
 
 	common_loot = list(
-		/obj/item/device/flashlight/flare,
-		/obj/item/device/flashlight/glowstick,
-		/obj/item/device/flashlight/glowstick/blue,
-		/obj/item/device/flashlight/glowstick/orange,
-		/obj/item/device/flashlight/glowstick/red,
-		/obj/item/device/flashlight/glowstick/yellow,
-		/obj/item/device/flashlight/pen,
-		/obj/item/weapon/cell,
-		/obj/item/weapon/cell/device,
+		/obj/item/flashlight/flare,
+		/obj/item/flashlight/glowstick,
+		/obj/item/flashlight/glowstick/blue,
+		/obj/item/flashlight/glowstick/orange,
+		/obj/item/flashlight/glowstick/red,
+		/obj/item/flashlight/glowstick/yellow,
+		/obj/item/flashlight/pen,
+		/obj/item/cell,
+		/obj/item/cell/device,
 		/obj/item/clothing/mask/gas,
 		/obj/item/clothing/mask/gas/half,
 		/obj/item/clothing/mask/breath,
-		/obj/item/weapon/reagent_containers/glass/rag,
-		/obj/item/weapon/reagent_containers/food/snacks/liquidfood,
-		/obj/item/weapon/storage/secure/briefcase,
-		/obj/item/weapon/storage/briefcase,
-		/obj/item/weapon/storage/backpack,
-		/obj/item/weapon/storage/backpack/satchel/norm,
-		/obj/item/weapon/storage/backpack/satchel,
-		/obj/item/weapon/storage/backpack/dufflebag,
-		/obj/item/weapon/storage/box,
-		/obj/item/weapon/storage/wallet,
+		/obj/item/reagent_containers/glass/rag,
+		/obj/item/reagent_containers/food/snacks/liquidfood,
+		/obj/item/storage/secure/briefcase,
+		/obj/item/storage/briefcase,
+		/obj/item/storage/backpack,
+		/obj/item/storage/backpack/satchel/norm,
+		/obj/item/storage/backpack/satchel,
+		/obj/item/storage/backpack/dufflebag,
+		/obj/item/storage/box,
+		/obj/item/storage/wallet,
 		/obj/item/clothing/shoes/galoshes,
 		/obj/item/clothing/shoes/black,
 		/obj/item/clothing/shoes/laceup,
@@ -184,27 +184,28 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/clothing/under/pants/camo,
 		/obj/item/clothing/under/harness,
 		/obj/item/clothing/accessory/storage/webbing,
-		/obj/item/weapon/spacecash/c1,
-		/obj/item/weapon/spacecash/c10,
-		/obj/item/weapon/spacecash/c20,
-		/obj/item/weapon/camera_assembly,
-		/obj/item/weapon/caution,
-		/obj/item/weapon/caution/cone,
-		/obj/item/weapon/card/emag_broken,
-		/obj/item/device/camera,
-		/obj/item/device/pda,
-		/obj/item/device/radio/headset,
-		/obj/item/device/paicard
+		/obj/item/spacecash/c1,
+		/obj/item/spacecash/c10,
+		/obj/item/spacecash/c20,
+		/obj/item/camera_assembly,
+		/obj/item/caution,
+		/obj/item/caution/cone,
+		/obj/item/card/emag_broken,
+		/obj/item/camera,
+		/obj/item/pda,
+		/obj/item/radio/headset,
+		/obj/item/paicard,
+		/obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose
 	)
 
 	uncommon_loot = list(
 		/obj/item/clothing/shoes/syndigaloshes,
 		/obj/item/clothing/gloves/yellow,
 		/obj/item/clothing/under/tactical,
-		/obj/item/weapon/beartrap,
+		/obj/item/beartrap,
 		/obj/item/clothing/suit/storage/vest/press,
-		/obj/item/weapon/material/knife/tacknife,
-		/obj/item/weapon/material/butterfly/switchblade
+		/obj/item/material/knife/tacknife,
+		/obj/item/material/butterfly/switchblade
 	)
 
 	rare_loot = list(
@@ -237,27 +238,27 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/trash/tray,
 		/obj/item/trash/unajerky,
 		/obj/item/trash/waffles,
-		/obj/item/weapon/reagent_containers/food/snacks/xenomeat/spidermeat,
-		/obj/item/weapon/reagent_containers/food/snacks/mysterysoup,
-		/obj/item/weapon/reagent_containers/food/snacks/hotdog/old,
-		/obj/item/pizzabox/old,
+		/obj/item/reagent_containers/food/snacks/xenomeat/spidermeat,
+		/obj/item/reagent_containers/food/snacks/mysterysoup,
+		/obj/item/reagent_containers/food/snacks/hotdog,
+		/obj/item/pizzabox,
 		/obj/item/ammo_casing/spent,
 		/obj/item/stack/rods{amount = 5},
 		/obj/item/stack/material/steel{amount = 5},
 		/obj/item/stack/material/cardboard{amount = 5},
-		/obj/item/weapon/contraband/poster,
-		/obj/item/weapon/material/wirerod,
-		/obj/item/weapon/contraband/poster,
-		/obj/item/weapon/newspaper,
-		/obj/item/weapon/paper/crumpled,
-		/obj/item/weapon/paper/crumpled/bloody
+		/obj/item/contraband/poster,
+		/obj/item/material/wirerod,
+		/obj/item/contraband/poster,
+		/obj/item/newspaper,
+		/obj/item/paper/crumpled,
+		/obj/item/paper/crumpled/bloody
 	)
 
 	uncommon_loot = list(
-		/obj/item/weapon/reagent_containers/syringe/steroid,
-		/obj/item/weapon/storage/pill_bottle/zoom,
-		/obj/item/weapon/storage/pill_bottle/happy,
-		/obj/item/weapon/storage/pill_bottle/tramadol
+		/obj/item/reagent_containers/syringe/steroid,
+		/obj/item/storage/pill_bottle/zoom,
+		/obj/item/storage/pill_bottle/happy,
+		/obj/item/storage/pill_bottle/tramadol
 	)
 
 // Contains loads of different types of boxes, which may have items inside!
@@ -268,44 +269,44 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 	icon_states_to_use = list("boxfort")
 
 	common_loot = list(
-		/obj/item/weapon/storage/box,
-		/obj/item/weapon/storage/box/beakers,
-		/obj/item/weapon/storage/box/botanydisk,
-		/obj/item/weapon/storage/box/cups,
-		/obj/item/weapon/storage/box/disks,
-		/obj/item/weapon/storage/box/donkpockets,
-		/obj/item/weapon/storage/box/donut,
-		/obj/item/weapon/storage/box/donut/empty,
-		/obj/item/weapon/storage/box/evidence,
-		/obj/item/weapon/storage/box/lights/mixed,
-		/obj/item/weapon/storage/box/lights/tubes,
-		/obj/item/weapon/storage/box/lights/bulbs,
-		/obj/item/weapon/storage/box/injectors,
-		/obj/item/weapon/storage/box/masks,
-		/obj/item/weapon/storage/box/ids,
-		/obj/item/weapon/storage/box/mousetraps,
-		/obj/item/weapon/storage/box/syringes,
-		/obj/item/weapon/storage/box/survival,
-		/obj/item/weapon/storage/box/gloves,
-		/obj/item/weapon/storage/box/PDAs
+		/obj/item/storage/box,
+		/obj/item/storage/box/beakers,
+		/obj/item/storage/box/botanydisk,
+		/obj/item/storage/box/cups,
+		/obj/item/storage/box/disks,
+		/obj/item/storage/box/donkpockets,
+		/obj/item/storage/box/donut,
+		/obj/item/storage/box/donut/empty,
+		/obj/item/storage/box/evidence,
+		/obj/item/storage/box/lights/mixed,
+		/obj/item/storage/box/lights/tubes,
+		/obj/item/storage/box/lights/bulbs,
+		/obj/item/storage/box/injectors,
+		/obj/item/storage/box/masks,
+		/obj/item/storage/box/ids,
+		/obj/item/storage/box/mousetraps,
+		/obj/item/storage/box/syringes,
+		/obj/item/storage/box/survival,
+		/obj/item/storage/box/gloves,
+		/obj/item/storage/box/PDAs
 	)
 
 	uncommon_loot = list(
-		/obj/item/weapon/storage/box/sinpockets,
-		/obj/item/weapon/storage/box/practiceshells,
-		/obj/item/weapon/storage/box/blanks,
-		/obj/item/weapon/storage/box/smokes,
-		/obj/item/weapon/storage/box/metalfoam,
-		/obj/item/weapon/storage/box/handcuffs,
-		/obj/item/weapon/storage/box/seccarts
+		/obj/item/storage/box/sinpockets,
+		/obj/item/storage/box/practiceshells,
+		/obj/item/storage/box/blanks,
+		/obj/item/storage/box/smokes,
+		/obj/item/storage/box/metalfoam,
+		/obj/item/storage/box/handcuffs,
+		/obj/item/storage/box/seccarts
 	)
 
 	rare_loot = list(
-		/obj/item/weapon/storage/box/flashbangs,
-		/obj/item/weapon/storage/box/empslite,
-		/obj/item/weapon/storage/box/flashshells,
-		/obj/item/weapon/storage/box/stunshells,
-		/obj/item/weapon/storage/box/teargas
+		/obj/item/storage/box/flashbangs,
+		/obj/item/storage/box/empslite,
+		/obj/item/storage/box/flashshells,
+		/obj/item/storage/box/stunshells,
+		/obj/item/storage/box/teargas
 	)
 
 // One of the more useful maint piles, contains electrical components.
@@ -316,59 +317,59 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 	icon_states_to_use = list("technical_pile1", "technical_pile2", "technical_pile3")
 
 	common_loot = list(
-		/obj/item/weapon/stock_parts/gear,
-		/obj/item/weapon/stock_parts/console_screen,
-		/obj/item/weapon/stock_parts/spring,
-		/obj/item/weapon/stock_parts/capacitor,
-		/obj/item/weapon/stock_parts/capacitor/adv,
-		/obj/item/weapon/stock_parts/capacitor/super,
-		/obj/item/weapon/stock_parts/manipulator,
-		/obj/item/weapon/stock_parts/manipulator/nano,
-		/obj/item/weapon/stock_parts/manipulator/pico,
-		/obj/item/weapon/stock_parts/matter_bin,
-		/obj/item/weapon/stock_parts/matter_bin/adv,
-		/obj/item/weapon/stock_parts/matter_bin/super,
-		/obj/item/weapon/stock_parts/scanning_module,
-		/obj/item/weapon/stock_parts/scanning_module/adv,
-		/obj/item/weapon/stock_parts/scanning_module/phasic,
-		/obj/item/weapon/stock_parts/subspace/amplifier,
-		/obj/item/weapon/stock_parts/subspace/analyzer,
-		/obj/item/weapon/stock_parts/subspace/ansible,
-		/obj/item/weapon/stock_parts/subspace/crystal,
-		/obj/item/weapon/stock_parts/subspace/sub_filter,
-		/obj/item/weapon/stock_parts/subspace/transmitter,
-		/obj/item/weapon/stock_parts/subspace/treatment,
+		/obj/item/stock_parts/gear,
+		/obj/item/stock_parts/console_screen,
+		/obj/item/stock_parts/spring,
+		/obj/item/stock_parts/capacitor,
+		/obj/item/stock_parts/capacitor/adv,
+		/obj/item/stock_parts/capacitor/super,
+		/obj/item/stock_parts/manipulator,
+		/obj/item/stock_parts/manipulator/nano,
+		/obj/item/stock_parts/manipulator/pico,
+		/obj/item/stock_parts/matter_bin,
+		/obj/item/stock_parts/matter_bin/adv,
+		/obj/item/stock_parts/matter_bin/super,
+		/obj/item/stock_parts/scanning_module,
+		/obj/item/stock_parts/scanning_module/adv,
+		/obj/item/stock_parts/scanning_module/phasic,
+		/obj/item/stock_parts/subspace/amplifier,
+		/obj/item/stock_parts/subspace/analyzer,
+		/obj/item/stock_parts/subspace/ansible,
+		/obj/item/stock_parts/subspace/crystal,
+		/obj/item/stock_parts/subspace/sub_filter,
+		/obj/item/stock_parts/subspace/transmitter,
+		/obj/item/stock_parts/subspace/treatment,
 		/obj/item/frame,
-		/obj/item/broken_device,
+		/obj/item/broken_device/random,
 		/obj/item/borg/upgrade/restart,
-		/obj/item/weapon/cell,
-		/obj/item/weapon/cell/high,
-		/obj/item/weapon/cell/device,
-		/obj/item/weapon/circuitboard/broken,
-		/obj/item/weapon/circuitboard/arcade,
-		/obj/item/weapon/circuitboard/autolathe,
-		/obj/item/weapon/circuitboard/atmos_alert,
-		/obj/item/weapon/circuitboard/airalarm,
-		/obj/item/weapon/circuitboard/fax,
-		/obj/item/weapon/circuitboard/ghettosmes,
-		/obj/item/weapon/circuitboard/jukebox,
-		/obj/item/weapon/circuitboard/message_monitor,
-		/obj/item/weapon/circuitboard/rcon_console,
-		/obj/item/weapon/smes_coil,
-		/obj/item/weapon/cartridge/engineering,
-		/obj/item/device/analyzer,
-		/obj/item/device/healthanalyzer,
-		/obj/item/device/robotanalyzer,
-		/obj/item/device/lightreplacer,
-		/obj/item/device/radio,
-		/obj/item/device/hailer,
-		/obj/item/device/gps,
-		/obj/item/device/geiger,
-		/obj/item/device/mass_spectrometer,
-		/obj/item/weapon/wrench,
-		/obj/item/weapon/screwdriver,
-		/obj/item/weapon/wirecutters,
-		/obj/item/device/multitool,
+		/obj/item/cell,
+		/obj/item/cell/high,
+		/obj/item/cell/device,
+		/obj/item/circuitboard/broken,
+		/obj/item/circuitboard/arcade,
+		/obj/item/circuitboard/autolathe,
+		/obj/item/circuitboard/atmos_alert,
+		/obj/item/circuitboard/airalarm,
+		/obj/item/circuitboard/fax,
+		/obj/item/circuitboard/ghettosmes,
+		/obj/item/circuitboard/jukebox,
+		/obj/item/circuitboard/message_monitor,
+		/obj/item/circuitboard/rcon_console,
+		/obj/item/smes_coil,
+		/obj/item/cartridge/engineering,
+		/obj/item/analyzer,
+		/obj/item/healthanalyzer,
+		/obj/item/robotanalyzer,
+		/obj/item/lightreplacer,
+		/obj/item/radio,
+		/obj/item/hailer,
+		/obj/item/gps,
+		/obj/item/geiger,
+		/obj/item/mass_spectrometer,
+		/obj/item/tool/wrench,
+		/obj/item/tool/screwdriver,
+		/obj/item/tool/wirecutters,
+		/obj/item/multitool,
 		/obj/item/mecha_parts/mecha_equipment/generator,
 		/obj/item/mecha_parts/mecha_equipment/tool/cable_layer,
 		/obj/item/mecha_parts/mecha_equipment/tool/drill,
@@ -385,18 +386,18 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 	)
 
 	uncommon_loot = list(
-		/obj/item/weapon/cell/super,
-		/obj/item/weapon/cell/device/weapon,
-		/obj/item/weapon/circuitboard/security,
-		/obj/item/weapon/circuitboard/crew,
-		/obj/item/weapon/aiModule/reset,
-		/obj/item/weapon/smes_coil/super_capacity,
-		/obj/item/weapon/smes_coil/super_io,
-		/obj/item/weapon/cartridge/captain,
-		/obj/item/weapon/disk/integrated_circuit/upgrade/advanced,
-		/obj/item/device/tvcamera,
-		/obj/item/device/universal_translator,
-		/obj/item/device/aicard,
+		/obj/item/cell/super,
+		/obj/item/cell/device/weapon,
+		/obj/item/circuitboard/security,
+		/obj/item/circuitboard/crew,
+		/obj/item/aiModule/reset,
+		/obj/item/smes_coil/super_capacity,
+		/obj/item/smes_coil/super_io,
+		/obj/item/cartridge/captain,
+		/obj/item/disk/integrated_circuit/upgrade/advanced,
+		/obj/item/tvcamera,
+		/obj/item/universal_translator,
+		/obj/item/aicard,
 		/obj/item/borg/upgrade/jetpack,
 		/obj/item/borg/upgrade/advhealth,
 		/obj/item/borg/upgrade/vtec,
@@ -416,12 +417,12 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 	)
 
 	rare_loot = list(
-		/obj/item/weapon/cell/hyper,
-		/obj/item/weapon/aiModule/freeform,
-		/obj/item/weapon/aiModule/asimov,
-		/obj/item/weapon/aiModule/paladin,
-		/obj/item/weapon/aiModule/safeguard,
-		/obj/item/weapon/disposable_teleporter,
+		/obj/item/cell/hyper,
+		/obj/item/aiModule/freeform,
+		/obj/item/aiModule/asimov,
+		/obj/item/aiModule/paladin,
+		/obj/item/aiModule/safeguard,
+		/obj/item/disposable_teleporter,
 		/obj/item/mecha_parts/mecha_equipment/tesla_energy_relay
 	)
 
@@ -448,44 +449,44 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 // May contain alien tools.
 /obj/structure/loot_pile/surface/alien/engineering
 	uncommon_loot = list(
-		/obj/item/device/multitool/alien,
+		/obj/item/multitool/alien,
 		/obj/item/stack/cable_coil/alien,
-		/obj/item/weapon/crowbar/alien,
-		/obj/item/weapon/screwdriver/alien,
-		/obj/item/weapon/weldingtool/alien,
-		/obj/item/weapon/wirecutters/alien,
-		/obj/item/weapon/wrench/alien
+		/obj/item/tool/crowbar/alien,
+		/obj/item/tool/screwdriver/alien,
+		/obj/item/weldingtool/alien,
+		/obj/item/tool/wirecutters/alien,
+		/obj/item/tool/wrench/alien
 	)
 	rare_loot = list(
-		/obj/item/weapon/storage/belt/utility/alien/full
+		/obj/item/storage/belt/utility/alien/full
 	)
 
 // May contain alien surgery equipment or powerful medication.
 /obj/structure/loot_pile/surface/alien/medical
 	uncommon_loot = list(
-		/obj/item/weapon/surgical/FixOVein/alien,
-		/obj/item/weapon/surgical/bone_clamp/alien,
-		/obj/item/weapon/surgical/cautery/alien,
-		/obj/item/weapon/surgical/circular_saw/alien,
-		/obj/item/weapon/surgical/hemostat/alien,
-		/obj/item/weapon/surgical/retractor/alien,
-		/obj/item/weapon/surgical/scalpel/alien,
-		/obj/item/weapon/surgical/surgicaldrill/alien
+		/obj/item/surgical/FixOVein/alien,
+		/obj/item/surgical/bone_clamp/alien,
+		/obj/item/surgical/cautery/alien,
+		/obj/item/surgical/circular_saw/alien,
+		/obj/item/surgical/hemostat/alien,
+		/obj/item/surgical/retractor/alien,
+		/obj/item/surgical/scalpel/alien,
+		/obj/item/surgical/surgicaldrill/alien
 	)
 	rare_loot = list(
-		/obj/item/weapon/storage/belt/medical/alien
+		/obj/item/storage/belt/medical/alien
 	)
 
 // May contain powercells or alien weaponry.
 /obj/structure/loot_pile/surface/alien/security
 	uncommon_loot = list(
-		/obj/item/weapon/cell/device/weapon/recharge/alien,
+		/obj/item/cell/device/weapon/recharge/alien,
 		/obj/item/clothing/suit/armor/alien,
 		/obj/item/clothing/head/helmet/alien
 	)
 	rare_loot = list(
 		/obj/item/clothing/suit/armor/alien/tank,
-		/obj/item/weapon/gun/energy/alien
+		/obj/item/gun/energy/alien
 	)
 
 // The pile found at the very end, and as such has the best loot.
@@ -494,29 +495,29 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 	chance_rare = 10
 
 	common_loot = list(
-		/obj/item/device/multitool/alien,
+		/obj/item/multitool/alien,
 		/obj/item/stack/cable_coil/alien,
-		/obj/item/weapon/crowbar/alien,
-		/obj/item/weapon/screwdriver/alien,
-		/obj/item/weapon/weldingtool/alien,
-		/obj/item/weapon/wirecutters/alien,
-		/obj/item/weapon/wrench/alien,
-		/obj/item/weapon/surgical/FixOVein/alien,
-		/obj/item/weapon/surgical/bone_clamp/alien,
-		/obj/item/weapon/surgical/cautery/alien,
-		/obj/item/weapon/surgical/circular_saw/alien,
-		/obj/item/weapon/surgical/hemostat/alien,
-		/obj/item/weapon/surgical/retractor/alien,
-		/obj/item/weapon/surgical/scalpel/alien,
-		/obj/item/weapon/surgical/surgicaldrill/alien,
-		/obj/item/weapon/cell/device/weapon/recharge/alien,
+		/obj/item/tool/crowbar/alien,
+		/obj/item/tool/screwdriver/alien,
+		/obj/item/weldingtool/alien,
+		/obj/item/tool/wirecutters/alien,
+		/obj/item/tool/wrench/alien,
+		/obj/item/surgical/FixOVein/alien,
+		/obj/item/surgical/bone_clamp/alien,
+		/obj/item/surgical/cautery/alien,
+		/obj/item/surgical/circular_saw/alien,
+		/obj/item/surgical/hemostat/alien,
+		/obj/item/surgical/retractor/alien,
+		/obj/item/surgical/scalpel/alien,
+		/obj/item/surgical/surgicaldrill/alien,
+		/obj/item/cell/device/weapon/recharge/alien,
 		/obj/item/clothing/suit/armor/alien,
 		/obj/item/clothing/head/helmet/alien,
-		/obj/item/weapon/gun/energy/alien
+		/obj/item/gun/energy/alien
 	)
 	uncommon_loot = list(
-		/obj/item/weapon/storage/belt/medical/alien,
-		/obj/item/weapon/storage/belt/utility/alien/full,
+		/obj/item/storage/belt/medical/alien,
+		/obj/item/storage/belt/utility/alien/full,
 		/obj/item/clothing/suit/armor/alien/tank,
 		/obj/item/clothing/head/helmet/alien/tank,
 	)
@@ -529,26 +530,26 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
     delete_on_depletion = TRUE
 
     common_loot = list(
-        /obj/item/weapon/bone,
-        /obj/item/weapon/bone/skull,
-        /obj/item/weapon/bone/skull/tajaran,
-        /obj/item/weapon/bone/skull/unathi,
-        /obj/item/weapon/bone/skull/unknown,
-        /obj/item/weapon/bone/leg,
-        /obj/item/weapon/bone/arm,
-        /obj/item/weapon/bone/ribs,
+        /obj/item/bone,
+        /obj/item/bone/skull,
+        /obj/item/bone/skull/tajaran,
+        /obj/item/bone/skull/unathi,
+        /obj/item/bone/skull/unknown,
+        /obj/item/bone/leg,
+        /obj/item/bone/arm,
+        /obj/item/bone/ribs,
     )
     uncommon_loot = list(
-        /obj/item/weapon/coin/gold,
-        /obj/item/weapon/coin/silver,
-        /obj/item/weapon/deck/tarot,
-        /obj/item/weapon/flame/lighter/zippo/gold,
-        /obj/item/weapon/flame/lighter/zippo/black,
-        /obj/item/weapon/material/knife/tacknife/survival,
-        /obj/item/weapon/material/knife/tacknife/combatknife,
-        /obj/item/weapon/material/knife/machete/hatchet,
-        /obj/item/weapon/material/knife/butch,
-        /obj/item/weapon/storage/wallet/random,
+        /obj/item/coin/gold,
+        /obj/item/coin/silver,
+        /obj/item/deck/tarot,
+        /obj/item/flame/lighter/zippo/gold,
+        /obj/item/flame/lighter/zippo/black,
+        /obj/item/material/knife/tacknife/survival,
+        /obj/item/material/knife/tacknife/combatknife,
+        /obj/item/material/knife/machete/hatchet,
+        /obj/item/material/knife/butch,
+        /obj/item/storage/wallet/random,
         /obj/item/clothing/accessory/bracelet/material/gold,
         /obj/item/clothing/accessory/bracelet/material/silver,
         /obj/item/clothing/accessory/locket,
@@ -561,10 +562,10 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
         /obj/item/clothing/under/sl_suit
     )
     rare_loot = list(
-        /obj/item/weapon/storage/belt/utility/alien/full,
-        /obj/item/weapon/gun/projectile/revolver,
-        /obj/item/weapon/gun/projectile/sec,
-        /obj/item/weapon/gun/launcher/crossbow
+        /obj/item/storage/belt/utility/alien/full,
+        /obj/item/gun/projectile/revolver,
+        /obj/item/gun/projectile/sec,
+        /obj/item/gun/launcher/crossbow
     )
 
 // Subtype for mecha and mecha accessories. These might not always be on the surface.
@@ -574,6 +575,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 	icon = 'icons/mecha/mecha.dmi'
 	icon_state = "engineering_pod-broken"
 	density = TRUE
+	anchored = FALSE // In case a dead mecha-mob dies in a bad spot.
 
 	chance_uncommon = 20
 	chance_rare = 10
@@ -615,7 +617,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 /obj/structure/loot_pile/mecha/ripley
 	name = "ripley wreckage"
 	desc = "The ruins of some unfortunate ripley. Perhaps something is salvageable."
-	icon_states_to_use = list("ripley-broken", "firefighter-broken", "ripley-broken-old")
+	icon_state = "ripley-broken"
 
 	common_loot = list(
 		/obj/random/tool,
@@ -631,9 +633,9 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/mecha_parts/part/ripley_right_arm,
 		/obj/item/mecha_parts/part/ripley_left_leg,
 		/obj/item/mecha_parts/part/ripley_right_leg,
-		/obj/item/device/kit/paint/ripley,
-		/obj/item/device/kit/paint/ripley/flames_red,
-		/obj/item/device/kit/paint/ripley/flames_blue
+		/obj/item/kit/paint/ripley,
+		/obj/item/kit/paint/ripley/flames_red,
+		/obj/item/kit/paint/ripley/flames_blue
 		)
 
 	uncommon_loot = list(
@@ -648,6 +650,15 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/mecha_parts/mecha_equipment/tool/rcd,
 		/obj/item/mecha_parts/mecha_equipment/weapon/energy/flamer/rigged
 		)
+
+/obj/structure/loot_pile/mecha/ripley/firefighter
+	icon_state = "firefighter-broken"
+
+/obj/structure/loot_pile/mecha/ripley/pirate
+	icon_state = "pirate-broken"
+
+/obj/structure/loot_pile/mecha/ripley/random_sprite
+	icon_states_to_use = list("ripley-broken", "firefighter-broken", "ripley-broken-old")
 
 //Death-Ripley, same common, but more combat-exosuit-based
 /obj/structure/loot_pile/mecha/deathripley
@@ -668,7 +679,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/mecha_parts/part/ripley_right_arm,
 		/obj/item/mecha_parts/part/ripley_left_leg,
 		/obj/item/mecha_parts/part/ripley_right_leg,
-		/obj/item/device/kit/paint/ripley/death
+		/obj/item/kit/paint/ripley/death
 		)
 
 	uncommon_loot = list(
@@ -719,6 +730,14 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/mecha_parts/mecha_equipment/shocker
 		)
 
+/obj/structure/loot_pile/mecha/odysseus/murdysseus
+	icon_state = "murdysseus-broken"
+
+/obj/structure/loot_pile/mecha/hoverpod
+	name = "hoverpod wreckage"
+	desc = "The ruins of some unfortunate hoverpod. Perhaps something is salvageable."
+	icon_state = "engineering_pod"
+
 /obj/structure/loot_pile/mecha/gygax
 	name = "gygax wreckage"
 	desc = "The ruins of some unfortunate gygax. Perhaps something is salvageable."
@@ -744,12 +763,12 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 
 	uncommon_loot = list(
 		/obj/item/mecha_parts/mecha_equipment/shocker,
-		/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/flashbang,
+		/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/grenade,
 		/obj/item/mecha_parts/mecha_equipment/weapon/energy/laser,
 		/obj/item/mecha_parts/mecha_equipment/weapon/energy/taser,
-		/obj/item/device/kit/paint/gygax,
-		/obj/item/device/kit/paint/gygax/darkgygax,
-		/obj/item/device/kit/paint/gygax/recitence
+		/obj/item/kit/paint/gygax,
+		/obj/item/kit/paint/gygax/darkgygax,
+		/obj/item/kit/paint/gygax/recitence
 		)
 
 	rare_loot = list(
@@ -758,6 +777,19 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/mecha_parts/mecha_equipment/repair_droid,
 		/obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/heavy
 		)
+
+/obj/structure/loot_pile/mecha/gygax/dark
+	icon_state = "darkgygax-broken"
+
+// Todo: Better loot.
+/obj/structure/loot_pile/mecha/gygax/dark/adv
+	icon_state = "darkgygax_adv-broken"
+	icon_scale_x = 1.5
+	icon_scale_y = 1.5
+	pixel_y = 8
+
+/obj/structure/loot_pile/mecha/gygax/medgax
+	icon_state = "medgax-broken"
 
 /obj/structure/loot_pile/mecha/durand
 	name = "durand wreckage"
@@ -784,12 +816,12 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 
 	uncommon_loot = list(
 		/obj/item/mecha_parts/mecha_equipment/shocker,
-		/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/flashbang,
+		/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/grenade,
 		/obj/item/mecha_parts/mecha_equipment/weapon/energy/laser,
 		/obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster,
-		/obj/item/device/kit/paint/durand,
-		/obj/item/device/kit/paint/durand/seraph,
-		/obj/item/device/kit/paint/durand/phazon
+		/obj/item/kit/paint/durand,
+		/obj/item/kit/paint/durand/seraph,
+		/obj/item/kit/paint/durand/phazon
 		)
 
 	rare_loot = list(
@@ -799,13 +831,29 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/heavy
 		)
 
+/obj/structure/loot_pile/mecha/marauder
+	name = "marauder wreckage"
+	desc = "The ruins of some unfortunate marauder. Perhaps something is salvagable."
+	icon_state = "marauder-broken"
+	// Todo: Better loot.
+
+/obj/structure/loot_pile/mecha/marauder/seraph
+	name = "seraph wreckage"
+	desc = "The ruins of some unfortunate seraph. Perhaps something is salvagable."
+	icon_state = "seraph-broken"
+
+/obj/structure/loot_pile/mecha/marauder/mauler
+	name = "mauler wreckage"
+	desc = "The ruins of some unfortunate mauler. Perhaps something is salvagable."
+	icon_state = "mauler-broken"
+
 /obj/structure/loot_pile/mecha/phazon
 	name = "phazon wreckage"
 	desc = "The ruins of some unfortunate phazon. Perhaps something is salvageable."
 	icon_state = "phazon-broken"
 
 	common_loot = list(
-		/obj/item/weapon/storage/toolbox/syndicate/powertools,
+		/obj/item/storage/toolbox/syndicate/powertools,
 		/obj/item/stack/material/plasteel{amount = 20},
 		/obj/item/stack/material/durasteel{amount = 10},
 		/obj/item/mecha_parts/chassis/phazon,
@@ -831,6 +879,114 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/mecha_parts/mecha_equipment/teleporter
 		)
 
+//Micro mecha loot.
+/obj/structure/loot_pile/mecha/mouse_tank
+	name = "\improper Whisker wreckage"
+	desc = "The ruins of a small tank. Perhaps some child's toy?"
+	icon = 'icons/mecha/micro.dmi'
+	icon_state = "whisker-broken"
+	density = TRUE
+	anchored = FALSE // In case a dead mecha-mob dies in a bad spot.
+
+	chance_uncommon = 20
+	chance_rare = 10
+
+	loot_depletion = TRUE
+	loot_left = 5
+
+	common_loot = list(
+		/obj/random/tool,
+		/obj/random/tool,
+		/obj/item/stack/cable_coil/random,
+		/obj/random/tank,
+		/obj/random/tech_supply/component,
+		/obj/random/tech_supply/component,
+		/obj/effect/decal/remains/mouse,
+		/obj/item/stack/material/steel{amount = 20}
+		)
+
+	uncommon_loot = list(
+		/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg/rigged,
+		/obj/item/mecha_parts/mecha_equipment/generator
+		)
+
+	rare_loot = list(
+		/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg,
+		/obj/item/mecha_parts/mecha_equipment/generator/nuclear
+		)
+
+/obj/structure/loot_pile/mecha/mouse_tank/livewire
+	name = "\improper Livewire wreckage"
+	desc = "The smoldering ruins of a small tank. Perhaps some child's toy?"
+	icon = 'icons/mecha/micro.dmi'
+	icon_state = "livewire-broken"
+	density = TRUE
+	anchored = FALSE // In case a dead mecha-mob dies in a bad spot.
+
+	chance_uncommon = 20
+	chance_rare = 10
+
+	loot_depletion = TRUE
+	loot_left = 5
+
+	common_loot = list(
+		/obj/random/tool,
+		/obj/random/tool,
+		/obj/item/stack/cable_coil/random,
+		/obj/random/tank,
+		/obj/random/tech_supply/component,
+		/obj/random/tech_supply/component,
+		/obj/effect/decal/remains/mouse,
+		/obj/item/stack/material/steel{amount = 20}
+		)
+
+	uncommon_loot = list(
+		/obj/item/mecha_parts/mecha_equipment/weapon/energy/flamer/rigged,
+		/obj/item/mecha_parts/mecha_equipment/tool/extinguisher
+		)
+
+	rare_loot = list(
+		/obj/item/mecha_parts/mecha_equipment/weapon/energy/flamer,
+		/obj/item/mecha_parts/mecha_equipment/generator
+		)
+
+/obj/structure/loot_pile/mecha/mouse_tank/eraticator
+	name = "\improper Eraticator wreckage"
+	desc = "The blasted ruins of a small tank. Perhaps some child's toy?"
+	icon = 'icons/mecha/micro.dmi'
+	icon_state = "eraticator-broken"
+	density = TRUE
+	anchored = FALSE // In case a dead mecha-mob dies in a bad spot.
+
+	chance_uncommon = 20
+	chance_rare = 10
+
+	loot_depletion = TRUE
+	loot_left = 5
+
+	common_loot = list(
+		/obj/random/tool,
+		/obj/random/tool,
+		/obj/item/stack/cable_coil/random,
+		/obj/random/tank,
+		/obj/random/tech_supply/component,
+		/obj/random/tech_supply/component,
+		/obj/item/clothing/head/helmet/eraticator,
+		/obj/effect/decal/remains/mouse,
+		/obj/item/stack/material/steel{amount = 20}
+		)
+
+	uncommon_loot = list(
+		/obj/item/ammo_magazine/m75,
+		/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/mortar
+		)
+
+	rare_loot = list(
+		/obj/item/gun/projectile/gyropistol,
+		/obj/item/mecha_parts/mecha_equipment/generator/nuclear
+		)
+
+//Drone loot
 /obj/structure/loot_pile/surface/drone
 	name = "drone wreckage"
 	desc = "The ruins of some unfortunate drone. Perhaps something is salvageable."
@@ -847,12 +1003,12 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/stack/material/steel{amount = 25},
 		/obj/item/stack/material/glass{amount = 10},
 		/obj/item/stack/material/plasteel{amount = 5},
-		/obj/item/weapon/cell,
-		/obj/item/weapon/material/shard
+		/obj/item/cell,
+		/obj/item/material/shard
 		)
 
 	uncommon_loot = list(
-		/obj/item/weapon/cell/high,
+		/obj/item/cell/high,
 		/obj/item/robot_parts/robot_component/actuator,
 		/obj/item/robot_parts/robot_component/armour,
 		/obj/item/robot_parts/robot_component/binary_communication_device,
@@ -862,10 +1018,34 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		)
 
 	rare_loot = list(
-		/obj/item/weapon/cell/super,
+		/obj/item/cell/super,
 		/obj/item/borg/upgrade/restart,
 		/obj/item/borg/upgrade/jetpack,
 		/obj/item/borg/upgrade/tasercooler,
 		/obj/item/borg/upgrade/syndicate,
 		/obj/item/borg/upgrade/vtec
 		)
+
+// Contains old mediciation, most of it unidentified and has a good chance of being useless.
+/obj/structure/loot_pile/surface/medicine_cabinet
+	name = "abandoned medicine cabinet"
+	desc = "An old cabinet, it might still have something of use inside."
+	icon_state = "medicine_cabinet"
+	density = FALSE
+	chance_uncommon = 0
+	chance_rare = 0
+
+	common_loot = list(
+		/obj/random/unidentified_medicine/old_medicine
+	)
+
+// Like the above but has way better odds, in exchange for being in a place still inhabited (or was recently).
+/obj/structure/loot_pile/surface/medicine_cabinet/fresh
+	name = "medicine cabinet"
+	desc = "A cabinet designed to hold medicine, it might still have something of use inside."
+	icon_state = "medicine_cabinet"
+	density = FALSE
+
+	common_loot = list(
+		/obj/random/unidentified_medicine/fresh_medicine
+	)

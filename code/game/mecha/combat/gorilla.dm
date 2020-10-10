@@ -4,7 +4,7 @@
 	icon_state = "mecha_uac2"
 	equip_cooldown = 60 // 6 seconds
 	projectile = /obj/item/projectile/bullet/cannon
-	fire_sound = 'sound/weapons/cannon.ogg'
+	fire_sound = 'sound/weapons/Gunshot_cannon.ogg'
 	projectiles = 1
 	projectile_energy_cost = 1000
 	salvageable = 0 // We don't want players ripping this off a dead mech. Could potentially be a prize for beating it if Devs bless me and someone offers a nerf idea.
@@ -64,6 +64,7 @@
 	pixel_x = -16
 	step_in = 10
 	health = 5000
+	maxhealth = 5000
 	opacity = 0 // Because there's big tall legs to look through. Also it looks fucky if this is set to 1.
 	deflect_chance = 50
 	damage_absorption = list("brute"=0.1,"fire"=0.8,"bullet"=0.1,"laser"=0.6,"energy"=0.7,"bomb"=0.7) //values show how much damage will pass through, not how much will be absorbed.
@@ -73,14 +74,20 @@
 	var/smoke = 5
 	var/smoke_ready = 1
 	var/smoke_cooldown = 100
-	var/datum/effect/effect/system/smoke_spread/smoke_system = new
+	var/datum/effect_system/smoke_spread/smoke_system = new
 	wreckage = /obj/effect/decal/mecha_wreckage/gorilla
 	add_req_access = 0
 	internal_damage_threshold = 25
 	force = 60
 	max_equip = 5
+//This will (Should) never be in the hands of players. If it is, the one who inflicted this monster upon the server can edit these vars to not be insane.
+	max_hull_equip = 5
+	max_weapon_equip = 5
+	max_utility_equip = 5
+	max_universal_equip = 5
+	max_special_equip = 2
 
-/obj/mecha/combat/gorilla/New()
+/obj/mecha/combat/gorilla/Initialize()
 	..()
 	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/tesla_energy_relay(src) // This thing basically cannot function without an external power supply.
 	ME.attach(src)
@@ -171,10 +178,10 @@
 		src.log_message("Toggled zoom mode.")
 		src.occupant_message("<font color='[src.zoom?"blue":"red"]'>Zoom mode [zoom?"en":"dis"]abled.</font>")
 		if(zoom)
-			src.occupant.client.view = 12
+			src.occupant.set_viewsize(12)
 			playsound(src.occupant, 'sound/mecha/imag_enh.ogg',50)
 		else
-			src.occupant.client.view = world.view//world.view - default mob view size
+			src.occupant.set_viewsize()	// Reset to default
 	return
 
 

@@ -24,18 +24,19 @@
 	sync_icon(L)
 
 /mob/zshadow/Destroy()
+	owner.shadow = null
 	owner = null
 	..() //But we don't return because the hint is wrong
 	return QDEL_HINT_QUEUE
 
 /mob/Destroy()
-	qdel_null(shadow)
+	QDEL_NULL(shadow)
 	. = ..()
 
 /mob/zshadow/examine(mob/user, distance, infix, suffix)
 	if(!owner)
 	 	// The only time we should have a null owner is if we are in nullspace. Help figure out why we were examined.
-		crash_with("[src] ([type]) @ [log_info_line()] was examined by [user] @ [global.log_info_line(user)]")
+		stack_trace("[src] ([type]) @ [log_info_line()] was examined by [user] @ [global.log_info_line(user)]")
 		return
 	return owner.examine(user, distance, infix, suffix)
 
@@ -60,21 +61,13 @@
 	if(shadow)
 		shadow.sync_icon(src)
 
-/mob/living/Move()
+/mob/living/Moved()
 	. = ..()
 	check_shadow()
 
 /mob/living/forceMove()
 	. = ..()
 	check_shadow()
-
-/mob/living/on_mob_jump()
-	// We're about to be admin-jumped.
-	// Unfortuantely loc isn't set until after this proc is called. So we must spawn() so check_shadow executes with the new loc.
-	. = ..()
-	if(shadow)
-		spawn(0)
-			check_shadow()
 
 /mob/living/proc/check_shadow()
 	var/mob/M = src
@@ -107,10 +100,10 @@
 	if(shadow)
 		shadow.sync_icon(src)
 
-/mob/set_dir(new_dir)
+/mob/setDir(new_dir)
 	. = ..()
 	if(shadow)
-		shadow.set_dir(new_dir)
+		shadow.setDir(new_dir)
 
 // Transfer messages about what we are doing to upstairs
 /mob/visible_message(var/message, var/self_message, var/blind_message)

@@ -5,6 +5,8 @@
 	var/maxHealth = 100 //Maximum health that should be possible.  Avoid adjusting this if you can, and instead use modifiers datums.
 	var/health = 100 	//A mob's health
 
+	var/mob_class = null	// A mob's "class", e.g. human, mechanical, animal, etc. Used for certain projectile effects. See __defines/mob.dm for available classes.
+
 	var/hud_updateflag = 0
 
 	//Damage related vars, NOTE: THESE SHOULD ONLY BE MODIFIED BY PROCS
@@ -13,14 +15,14 @@
 	var/toxloss = 0.0	//Toxic damage caused by being poisoned or radiated
 	var/fireloss = 0.0	//Burn damage caused by being way too hot, too cold or burnt.
 	var/cloneloss = 0	//Damage caused by being cloned or ejected from the cloner early. slimes also deal cloneloss damage to victims
-	var/brainloss = 0	//'Retardation' damage caused by someone hitting you in the head with a bible or being infected with brainrot.
+	var/brainloss = 0	//Damage caused by someone hitting you in the head with a bible or being infected with brainrot.
 	var/halloss = 0		//Hallucination damage. 'Fake' damage obtained through hallucinating or the holodeck. Sleeping should cause it to wear off.
-
 
 	var/hallucination = 0 //Directly affects how long a mob will hallucinate for
 	var/list/atom/hallucinations = list() //A list of hallucinated people that try to attack the mob. See /obj/effect/fake_attacker in hallucinations.dm
 
 	var/last_special = 0 //Used by the resist verb, likely used to prevent players from bypassing next_move by logging in/out.
+	var/base_attack_cooldown = DEFAULT_ATTACK_COOLDOWN
 
 	var/t_phoron = null
 	var/t_oxygen = null
@@ -57,5 +59,13 @@
 
 	var/see_invisible_default = SEE_INVISIBLE_LIVING
 
+	var/nest				//Not specific, because a Nest may be the prop nest, or blob factory in this case.
+
 	var/list/hud_list		//Holder for health hud, status hud, wanted hud, etc (not like inventory slots)
 	var/has_huds = FALSE	//Whether or not we should bother initializing the above list
+
+	var/makes_dirt = TRUE	//FALSE if the mob shouldn't be making dirt on the ground when it walks
+
+	var/looking_elsewhere = FALSE //If the mob's view has been relocated to somewhere else, like via a camera or with binocs
+
+	var/image/selected_image = null // Used for buildmode AI control stuff.

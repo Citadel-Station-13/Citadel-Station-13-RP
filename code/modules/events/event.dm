@@ -1,10 +1,11 @@
+// Event Meta instances represent choices for the event manager to choose for random events.
 /datum/event_meta
 	var/name 		= ""
 	var/enabled 	= 1	// Whether or not the event is available for random selection at all
-	var/weight 		= 0 // The base weight of this event. A zero means it may never fire, but see get_weight()
-	var/min_weight	= 0 // The minimum weight that this event will have. Only used if non-zero.
-	var/max_weight	= 0 // The maximum weight that this event will have. Only use if non-zero.
-	var/severity 	= 0 // The current severity of this event
+	var/weight 		= 0	// The base weight of this event. A zero means it may never fire, but see get_weight()
+	var/min_weight	= 0	// The minimum weight that this event will have. Only used if non-zero.
+	var/max_weight	= 0	// The maximum weight that this event will have. Only use if non-zero.
+	var/severity 	= 0	// The current severity of this event
 	var/one_shot	= 0	// If true, then the event will not be re-added to the list of available events
 	var/add_to_queue= 1	// If true, add back to the queue of events upon finishing.
 	var/list/role_weights = list()
@@ -39,62 +40,74 @@
 
 	return total_weight
 
-/datum/event	//NOTE: Times are measured in master controller ticks!
+/datum/event_meta/no_overmap/get_weight()	// These events have overmap equivalents, and shouldn't fire randomly if overmap is used
+	return GLOB.using_map.use_overmap ? 0 : ..()
+
+// Event datums define and execute the actual events themselves.
+/datum/event			//NOTE: Times are measured in master controller ticks!
 	var/startWhen		= 0	//When in the lifetime to call start().
 	var/announceWhen	= 0	//When in the lifetime to call announce().
 	var/endWhen			= 0	//When in the lifetime the event should end.
 
-	var/severity		= 0 //Severity. Lower means less severe, higher means more severe. Does not have to be supported. Is set on New().
+	var/severity		= 0	//Severity. Lower means less severe, higher means more severe. Does not have to be supported. Is set on New().
 	var/activeFor		= 0	//How long the event has existed. You don't need to change this.
-	var/isRunning		= 1 //If this event is currently running. You should not change this.
-	var/startedAt		= 0 //When this event started.
-	var/endedAt			= 0 //When this event ended.
+	var/isRunning		= 1	//If this event is currently running. You should not change this.
+	var/startedAt		= 0	//When this event started.
+	var/endedAt			= 0	//When this event ended.
+	var/processing_active 	= TRUE
 	var/datum/event_meta/event_meta = null
+	var/list/affecting_z	= null	// List of z-levels to affect, null lets the event choose (usally station_levels)
+	var/has_skybox_image	= FALSE	// True if SSskybox should query this event for an image to put in the skybox.
+	var/obj/effect/overmap/visitable/ship/victim = null	// Ship that triggered this event on itself.  Some messages might be different etc.
 
 /datum/event/nothing
 
-//Called first before processing.
-//Allows you to setup your event, such as randomly
-//setting the startWhen and or announceWhen variables.
-//Only called once.
+// Called first before processing.
+// Allows you to setup your event, such as randomly
+//	 setting the startWhen and or announceWhen variables.
+// Only called once.
 /datum/event/proc/setup()
 	return
 
-//Called when the tick is equal to the startWhen variable.
-//Allows you to start before announcing or vice versa.
-//Only called once.
+// Called when the tick is equal to the startWhen variable.
+// Allows you to start before announcing or vice versa.
+// Only called once.
 /datum/event/proc/start()
+	if(has_skybox_image)
+		SSskybox.rebuild_skyboxes(affecting_z)
 	return
 
-//Called when the tick is equal to the announceWhen variable.
-//Allows you to announce before starting or vice versa.
-//Only called once.
+// Called when the tick is equal to the announceWhen variable.
+// Allows you to announce before starting or vice versa.
+// Only called once.
 /datum/event/proc/announce()
 	return
 
-//Called on or after the tick counter is equal to startWhen.
-//You can include code related to your event or add your own
-//time stamped events.
-//Called more than once.
+// Called on or after the tick counter is equal to startWhen.
+// You can include code related to your event or add your own
+//	 time stamped events.
+// Called more than once.
 /datum/event/proc/tick()
 	return
 
-//Called on or after the tick is equal or more than endWhen
-//You can include code related to the event ending.
-//Do not place spawn() in here, instead use tick() to check for
-//the activeFor variable.
-//For example: if(activeFor == myOwnVariable + 30) doStuff()
-//Only called once.
+// Called on or after the tick is equal or more than endWhen
+// You can include code related to the event ending.
+// Do not place spawn() in here, instead use tick() to check for
+//	 the activeFor variable.
+// For example: if(activeFor == myOwnVariable + 30) doStuff()
+// Only called once.
 /datum/event/proc/end()
+	if(has_skybox_image)
+		SSskybox.rebuild_skyboxes(affecting_z)
 	return
 
-//Returns the latest point of event processing.
+// Returns the latest point of event processing.
 /datum/event/proc/lastProcessAt()
 	return max(startWhen, max(announceWhen, endWhen))
 
-//Do not override this proc, instead use the appropiate procs.
-//This proc will handle the calls to the appropiate procs.
-/datum/event/proc/process()
+// Do not override this proc, instead use the appropiate procs.
+// This proc will handle the calls to the appropiate procs.
+/datum/event/process()
 	if(activeFor > startWhen && activeFor < endWhen)
 		tick()
 
@@ -115,7 +128,7 @@
 
 	activeFor++
 
-//Called when start(), announce() and end() has all been called.
+// Called when start(), announce() and end() has all been called.
 /datum/event/proc/kill()
 	// If this event was forcefully killed run end() for individual cleanup
 	if(isRunning)
@@ -123,12 +136,15 @@
 		end()
 
 	endedAt = world.time
-	event_manager.active_events -= src
-	event_manager.event_complete(src)
+	SSevents.event_complete(src)
+
+// Called during building of skybox to get overlays
+/datum/event/proc/get_skybox_image()
+	return
 
 /datum/event/New(var/datum/event_meta/EM)
-	// event needs to be responsible for this, as stuff like APLUs currently make their own events for curious reasons
-	event_manager.active_events += src
+	// Event needs to be responsible for this, as stuff like APLUs currently make their own events for curious reasons
+	SSevents.active_events += src
 
 	event_meta = EM
 	severity = event_meta.severity
@@ -137,5 +153,17 @@
 
 	startedAt = world.time
 
+	if(!affecting_z)
+		affecting_z = GLOB.using_map.station_levels.Copy()
+
 	setup()
 	..()
+
+/datum/event/Destroy()
+	victim = null
+	. = ..()
+
+/datum/event/proc/location_name()
+	if(victim)
+		return victim.name
+	return station_name()

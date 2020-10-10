@@ -122,8 +122,8 @@
 /area/submap/virgo2/Blackshuttledown)
 "av" = (
 /obj/structure/table/steel,
-/obj/item/weapon/gun/projectile/automatic/wt550,
-/obj/item/weapon/gun/projectile/automatic/p90,
+/obj/item/gun/projectile/automatic/wt550,
+/obj/item/gun/projectile/automatic/p90,
 /turf/simulated/floor/tiled/steel,
 /area/submap/virgo2/Blackshuttledown)
 "aw" = (
@@ -147,15 +147,21 @@
 	name = "Unknown Shuttle"
 	},
 /area/submap/virgo2/Blackshuttledown)
+"aA" = (
+/obj/machinery/computer/communications{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
+/area/submap/virgo2/Blackshuttledown)
 "aB" = (
-/mob/living/simple_animal/hostile/viscerator,
-/mob/living/simple_animal/hostile/viscerator,
-/mob/living/simple_animal/hostile/viscerator,
+/mob/living/simple_mob/mechanical/viscerator,
+/mob/living/simple_mob/mechanical/viscerator,
+/mob/living/simple_mob/mechanical/viscerator,
 /turf/simulated/floor/tiled/steel,
 /area/submap/virgo2/Blackshuttledown)
 "aC" = (
 /obj/structure/table/steel,
-/obj/item/weapon/gun/projectile/automatic/c20r,
+/obj/item/gun/projectile/automatic/c20r,
 /obj/machinery/light/small{
 	dir = 4;
 	pixel_y = 0
@@ -163,7 +169,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/submap/virgo2/Blackshuttledown)
 "aD" = (
-/mob/living/simple_animal/hostile/syndicate/ranged/space,
+/mob/living/simple_mob/humanoid/merc/ranged/space,
 /turf/simulated/floor/tiled/steel,
 /area/submap/virgo2/Blackshuttledown)
 "aE" = (
@@ -180,12 +186,12 @@
 /area/submap/virgo2/Blackshuttledown)
 "aG" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/firstaid/surgery,
+/obj/item/storage/firstaid/surgery,
 /turf/simulated/floor/tiled/steel,
 /area/submap/virgo2/Blackshuttledown)
 "aH" = (
 /obj/structure/table/standard,
-/obj/item/weapon/tank/anesthetic,
+/obj/item/tank/anesthetic,
 /turf/simulated/floor/tiled/steel,
 /area/submap/virgo2/Blackshuttledown)
 "aI" = (
@@ -196,13 +202,13 @@
 /area/submap/virgo2/Blackshuttledown)
 "aJ" = (
 /obj/structure/table/standard,
-/obj/item/weapon/reagent_containers/spray/sterilizine,
-/obj/item/weapon/reagent_containers/spray/sterilizine,
+/obj/item/reagent_containers/spray/sterilizine,
+/obj/item/reagent_containers/spray/sterilizine,
 /turf/simulated/floor/tiled/steel,
 /area/submap/virgo2/Blackshuttledown)
 "aK" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/box/masks,
+/obj/item/storage/box/masks,
 /turf/simulated/floor/tiled/steel,
 /area/submap/virgo2/Blackshuttledown)
 "aL" = (
@@ -228,8 +234,19 @@
 /obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/steel,
 /area/submap/virgo2/Blackshuttledown)
+"aP" = (
+/obj/machinery/power/apc{
+	cell_type = /obj/item/cell/hyper;
+	dir = 4;
+	name = "Unknown APC";
+	pixel_x = -24
+	},
+/turf/simulated/floor/tiled/steel,
+/area/submap/virgo2/Blackshuttledown)
 "aQ" = (
-/obj/machinery/computer/communications,
+/obj/machinery/computer/area_atmos{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/submap/virgo2/Blackshuttledown)
 "aR" = (
@@ -238,16 +255,7 @@
 /area/submap/virgo2/Blackshuttledown)
 "aS" = (
 /obj/structure/table/steel,
-/obj/item/weapon/material/knife,
-/turf/simulated/floor/tiled/steel,
-/area/submap/virgo2/Blackshuttledown)
-"aT" = (
-/mob/living/simple_animal/hostile/syndicate/ranged{
-	desc = "Dosen't look friendly in the slightest.";
-	name = "Unknown Individual";
-	say_got_target = list("Looks like trouble!","Contact!","We've got company!","Perimeter Breached!!");
-	speak = list("One day the'll fix that damn engine..","Next time, We're hidding on the tropical beach planet.","Wish I had better equipment...","I knew I should have been a line chef...","Fuckin' helmet keeps fogging up.","Hate this blocky ass ship.")
-	},
+/obj/item/material/knife,
 /turf/simulated/floor/tiled/steel,
 /area/submap/virgo2/Blackshuttledown)
 "aU" = (
@@ -277,7 +285,7 @@
 /turf/simulated/floor/plating,
 /area/submap/virgo2/Blackshuttledown)
 "aX" = (
-/obj/item/weapon/stool,
+/obj/item/stool,
 /turf/simulated/floor/tiled/steel,
 /area/submap/virgo2/Blackshuttledown)
 "aY" = (
@@ -310,25 +318,9 @@
 	},
 /turf/simulated/floor/plating,
 /area/submap/virgo2/Blackshuttledown)
-"bc" = (
-/obj/machinery/power/apc{
-	cell_type = /obj/item/weapon/cell/hyper;
-	dir = 4;
-	name = "Unknown APC";
-	pixel_x = 24
-	},
-/turf/simulated/shuttle/wall/dark{
-	icon_state = "dark0";
-	name = "Unknown Shuttle"
-	},
-/area/submap/virgo2/Blackshuttledown)
-"bd" = (
-/obj/machinery/computer/area_atmos,
-/turf/simulated/floor/tiled/steel,
-/area/submap/virgo2/Blackshuttledown)
 "be" = (
 /obj/structure/table/steel,
-/obj/item/weapon/paper{
+/obj/item/paper{
 	info = "We need to take a short stop. The engine's are in need of minor repairs due to turbulence, should be a week's time. We've got reserve food supplies but pleanty of locale fauna to subsist on too if need be. PCRC is keeping most of there assets near New Reykjavik and locale authorities are more mindful then most to travel in this kind of weather. Our outfit should be at the rendezvous point in less then ten days assuming the upper ecehelon hasn't dropped ties with us yet.";
 	name = "Operation Progress/M-53"
 	},
@@ -336,7 +328,7 @@
 /area/submap/virgo2/Blackshuttledown)
 "bf" = (
 /obj/structure/table/steel,
-/obj/item/weapon/paper_bin,
+/obj/item/paper_bin,
 /turf/simulated/floor/tiled/steel,
 /area/submap/virgo2/Blackshuttledown)
 "bg" = (
@@ -365,21 +357,21 @@
 /area/submap/virgo2/Blackshuttledown)
 "bl" = (
 /obj/structure/table/steel,
-/obj/item/weapon/gun/projectile/automatic/c20r,
+/obj/item/gun/projectile/automatic/c20r,
 /turf/simulated/floor/tiled/steel,
 /area/submap/virgo2/Blackshuttledown)
 "bm" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet,
+/obj/item/bedsheet,
 /turf/simulated/floor/tiled/steel,
 /area/submap/virgo2/Blackshuttledown)
 "bn" = (
-/mob/living/simple_animal/hostile/viscerator,
+/mob/living/simple_mob/mechanical/viscerator,
 /turf/simulated/floor/tiled/steel,
 /area/submap/virgo2/Blackshuttledown)
 "bo" = (
 /obj/structure/table/steel,
-/obj/item/weapon/gun/projectile/pistol,
+/obj/item/gun/projectile/pistol,
 /obj/machinery/light/small{
 	dir = 4;
 	pixel_y = 0
@@ -388,19 +380,19 @@
 /area/submap/virgo2/Blackshuttledown)
 "bp" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet,
+/obj/item/bedsheet,
 /obj/structure/bed,
 /turf/simulated/floor/tiled/steel,
 /area/submap/virgo2/Blackshuttledown)
 "bq" = (
-/mob/living/simple_animal/hostile/viscerator,
-/mob/living/simple_animal/hostile/viscerator,
+/mob/living/simple_mob/mechanical/viscerator,
+/mob/living/simple_mob/mechanical/viscerator,
 /turf/simulated/floor/tiled/steel,
 /area/submap/virgo2/Blackshuttledown)
 "br" = (
 /obj/structure/table/steel,
-/obj/item/weapon/gun/projectile/pistol,
-/obj/item/weapon/gun/projectile/shotgun/pump,
+/obj/item/gun/projectile/pistol,
+/obj/item/gun/projectile/shotgun/pump,
 /turf/simulated/floor/tiled/steel,
 /area/submap/virgo2/Blackshuttledown)
 "bs" = (
@@ -424,13 +416,13 @@
 /area/submap/virgo2/Blackshuttledown)
 "bu" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet,
+/obj/item/bedsheet,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/steel,
 /area/submap/virgo2/Blackshuttledown)
 "bv" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet,
+/obj/item/bedsheet,
 /obj/item/toy/plushie/spider,
 /turf/simulated/floor/tiled/steel,
 /area/submap/virgo2/Blackshuttledown)
@@ -439,7 +431,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/Blackshuttledown)
 "bz" = (
-/mob/living/simple_animal/hostile/syndicate/ranged/space,
+/mob/living/simple_mob/humanoid/merc/ranged/space,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/Blackshuttledown)
 
@@ -717,12 +709,12 @@ af
 af
 ai
 aj
+aA
+aF
+aF
+aF
+aF
 aQ
-aF
-aF
-aF
-aF
-bd
 aj
 au
 af
@@ -796,7 +788,7 @@ aq
 aq
 aq
 aq
-aT
+aD
 bk
 aF
 aj
@@ -1350,7 +1342,7 @@ aj
 aj
 ba
 ba
-bc
+aj
 aj
 aj
 aq
@@ -1387,7 +1379,7 @@ aU
 aF
 aq
 aq
-aq
+aP
 bh
 aj
 ba

@@ -3,7 +3,7 @@
 // Makes mining zones more difficult as you enter new ones
 // THIS IS THE FIRST UNIT INITIALIZED THAT STARTS EVERYTHING
 //////////////////////////////
-var/datum/controller/rogue/rm_controller = new()
+var/datum/controller/rogue/rm_controller
 
 /datum/controller/rogue
 	var/list/datum/rogue/zonemaster/all_zones = list()
@@ -11,13 +11,23 @@ var/datum/controller/rogue/rm_controller = new()
 	var/list/datum/rogue/zonemaster/ready_zones = list()
 
 	//So I don't have to do absurd list[list[thing]] over and over.
+	// Adjusting the numbers to where, yes, the first scan is going to suck for mining, but hopefully with the base difficulty still at 100 with this then *spawning*
+	// onto the level 5 difficulty will make up for this. - Enzo 9/8/2020
 	var/list/diffstep_nums = list(
+		1,
+		2,
+		3,
+		50,
 		100,
-		200,
-		300,
-		450,
-		600,
-		800)
+		200)
+
+	var/list/diffstep_chances = list(
+		10,
+		20,
+		30,
+		45,
+		60,
+		80)
 
 	var/list/diffstep_strs = list(
 		"Low",
@@ -33,13 +43,16 @@ var/datum/controller/rogue/rm_controller = new()
 	//Info about our current step
 	var/diffstep = 1
 
+	//Difficulty cap
+	var/max_diffstep = 6
+
 	//The current mining zone that the shuttle goes to and whatnot
 	var/datum/rogue/zonemaster/current_zone = null
 	var/datum/rogue/zonemaster/previous_zone = null
 
 	// The world.time at which the scanner was last run (for cooldown)
 	var/last_scan = 0
-	var/scan_wait = 10 //In minutes
+	var/scan_wait = 5 //In minutes
 
 	var/debugging = 0
 
@@ -47,29 +60,46 @@ var/datum/controller/rogue/rm_controller = new()
 	var/prefabs = list(
 		"tier1" = list(/datum/rogue/asteroid/predef/cargo),
 		"tier2" = list(/datum/rogue/asteroid/predef/cargo,/datum/rogue/asteroid/predef/cargo/angry),
-		"tier3" = list(/datum/rogue/asteroid/predef/cargo/angry,/datum/rogue/asteroid/predef/cargo_large),
-		"tier4" = list(/datum/rogue/asteroid/predef/cargo/angry,/datum/rogue/asteroid/predef/cargo_large),
+		"tier3" = list(/datum/rogue/asteroid/predef/cargo,/datum/rogue/asteroid/predef/cargo/angry),
+		"tier4" = list(/datum/rogue/asteroid/predef/cargo,/datum/rogue/asteroid/predef/cargo/angry,/datum/rogue/asteroid/predef/cargo_large),
 		"tier5" = list(/datum/rogue/asteroid/predef/cargo/angry,/datum/rogue/asteroid/predef/cargo_large),
 		"tier6" = list(/datum/rogue/asteroid/predef/cargo/angry,/datum/rogue/asteroid/predef/cargo_large)
 	)
 
 	///// Monster Lists /////
 	var/mobs = list(
-		"tier1" = list(/mob/living/simple_animal/hostile/carp, /mob/living/simple_animal/hostile/goose),
+		"tier1" = list(
+						/mob/living/simple_mob/animal/space/bats/roguemines = 3,
+						/mob/living/simple_mob/animal/space/carp/roguemines = 2,
+						/mob/living/simple_mob/animal/space/goose/roguemines = 1),
 
-		"tier2" = list(/mob/living/simple_animal/hostile/carp, /mob/living/simple_animal/hostile/goose),
+		"tier2" = list(
+						/mob/living/simple_mob/animal/space/bats/roguemines = 1,
+						/mob/living/simple_mob/animal/space/carp/roguemines = 2,
+						/mob/living/simple_mob/animal/space/goose/roguemines = 2,
+						/mob/living/simple_mob/animal/wolf/space/roguemines = 1),
 
-		"tier3" = list(/mob/living/simple_animal/hostile/carp, /mob/living/simple_animal/hostile/goose,
-						/mob/living/simple_animal/hostile/bear, /mob/living/simple_animal/hostile/carp/strong),
+		"tier3" = list(
+						/mob/living/simple_mob/animal/space/carp/roguemines = 1,
+						/mob/living/simple_mob/animal/space/goose/roguemines = 1,
+						/mob/living/simple_mob/animal/wolf/space/roguemines = 3,
+						/mob/living/simple_mob/animal/space/carp/large/roguemines = 2,
+						/mob/living/simple_mob/animal/space/bear/roguemines = 1),
 
-		"tier4" = list(/mob/living/simple_animal/hostile/carp, /mob/living/simple_animal/hostile/goose, /mob/living/simple_animal/hostile/bear,
-						/mob/living/simple_animal/hostile/carp/strong, /mob/living/simple_animal/hostile/carp/pike/weak),
+		"tier4" = list(
+						/mob/living/simple_mob/animal/wolf/space/roguemines = 1,
+						/mob/living/simple_mob/animal/space/carp/large/roguemines = 4,
+						/mob/living/simple_mob/animal/space/bear/roguemines = 2),
 
-		"tier5" = list(/mob/living/simple_animal/hostile/carp, /mob/living/simple_animal/hostile/bear, /mob/living/simple_animal/hostile/carp/pike/weak,
-						/mob/living/simple_animal/hostile/carp/strong, /mob/living/simple_animal/hostile/carp/pike),
+		"tier5" = list(
+						/mob/living/simple_mob/animal/space/carp/large/roguemines = 2,
+						/mob/living/simple_mob/animal/space/bear/roguemines = 4,
+						/mob/living/simple_mob/vore/aggressive/corrupthound/space/roguemines = 1),
 
-		"tier6" = list(/mob/living/simple_animal/hostile/bear, /mob/living/simple_animal/hostile/carp/strong,
-						/mob/living/simple_animal/hostile/carp/pike, /mob/living/simple_animal/hostile/carp/pike/weak)
+		"tier6" = list(
+						/mob/living/simple_mob/animal/space/bear/roguemines = 6,
+						/mob/living/simple_mob/vore/aggressive/corrupthound/space/roguemines = 4,
+						/mob/living/simple_mob/animal/space/carp/large/huge/roguemines = 1)
 	)
 
 /datum/controller/rogue/New()
@@ -99,8 +129,9 @@ var/datum/controller/rogue/rm_controller = new()
 
 	if(difficulty < diffstep_nums[diffstep])
 		diffstep--
-	else if(difficulty >= diffstep_nums[diffstep+1])
-		diffstep++
+	else if(diffstep < max_diffstep)
+		if(difficulty >= diffstep_nums[diffstep+1])
+			diffstep++
 
 /datum/controller/rogue/proc/get_oldest_zone()
 	var/oldest_time = world.time
@@ -114,7 +145,7 @@ var/datum/controller/rogue/rm_controller = new()
 	return oldest_zone
 
 /datum/controller/rogue/proc/mark_clean(var/datum/rogue/zonemaster/ZM)
-	if(!ZM in all_zones) //What? Who?
+	if(!(ZM in all_zones)) //What? Who?
 		rm_controller.dbg("RMC(mc): Some unknown zone asked to be listed.")
 
 	if(ZM in ready_zones)
@@ -123,7 +154,7 @@ var/datum/controller/rogue/rm_controller = new()
 	clean_zones += ZM
 
 /datum/controller/rogue/proc/mark_ready(var/datum/rogue/zonemaster/ZM)
-	if(!ZM in all_zones) //What? Who?
+	if(!(ZM in all_zones)) //What? Who?
 		rm_controller.dbg("RMC(mr): Some unknown zone asked to be listed.")
 
 	if(ZM in clean_zones)
@@ -132,19 +163,19 @@ var/datum/controller/rogue/rm_controller = new()
 	ready_zones += ZM
 
 /datum/controller/rogue/proc/unmark_clean(var/datum/rogue/zonemaster/ZM)
-	if(!ZM in all_zones) //What? Who?
+	if(!(ZM in all_zones)) //What? Who?
 		rm_controller.dbg("RMC(umc): Some unknown zone asked to be listed.")
 
-	if(!ZM in clean_zones)
+	if(!(ZM in clean_zones))
 		rm_controller.dbg("RMC(umc): Finite state machine broken.")
 
 	clean_zones -= ZM
 
 /datum/controller/rogue/proc/unmark_ready(var/datum/rogue/zonemaster/ZM)
-	if(!ZM in all_zones) //What? Who?
+	if(!(ZM in all_zones)) //What? Who?
 		rm_controller.dbg("RMC(umr): Some unknown zone asked to be listed.")
 
-	if(!ZM in ready_zones)
+	if(!(ZM in ready_zones))
 		rm_controller.dbg("RMC(umr): Finite state machine broken.")
 
 	ready_zones -= ZM

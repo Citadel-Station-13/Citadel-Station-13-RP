@@ -1,11 +1,13 @@
+GLOBAL_LIST_EMPTY(all_turbines)
+
 /obj/machinery/power/generator
 	name = "thermoelectric generator"
 	desc = "It's a high efficiency thermoelectric generator."
-	icon_state = "teg"
+	icon_state = "teg-unassembled"
 	density = 1
 	anchored = 0
 
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 100 //Watts, I hope.  Just enough to do the computer and display things.
 
 	var/max_power = 500000
@@ -22,12 +24,22 @@
 	var/lastgen2 = 0
 	var/effective_gen = 0
 	var/lastgenlev = 0
+	var/datum/looping_sound/generator/soundloop
 
-/obj/machinery/power/generator/New()
-	..()
+/obj/machinery/power/generator/Initialize()
+	soundloop = new(list(src), FALSE)
 	desc = initial(desc) + " Rated for [round(max_power/1000)] kW."
-	spawn(1)
-		reconnect()
+	GLOB.all_turbines += src
+	..() //Not returned, because...
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/machinery/power/generator/LateInitialize()
+	reconnect()
+
+/obj/machinery/power/generator/Destroy()
+	QDEL_NULL(soundloop)
+	GLOB.all_turbines -= src
+	return ..()
 
 //generators connect in dir and reverse_dir(dir) directions
 //mnemonic to determine circulator/generator directions: the cirulators orbit clockwise around the generator
@@ -56,13 +68,26 @@
 				circ2 = null
 
 /obj/machinery/power/generator/proc/updateicon()
-	if(stat & (NOPOWER|BROKEN))
-		overlays.Cut()
+	icon_state = anchored ? "teg-assembled" : "teg-unassembled"
+	cut_overlays()
+	if (circ1)
+		circ1.temperature_overlay = null
+	if (circ2)
+		circ2.temperature_overlay = null
+	if (stat & (NOPOWER|BROKEN))
+		return 1
 	else
-		overlays.Cut()
-
-		if(lastgenlev != 0)
-			overlays += image('icons/obj/power.dmi', "teg-op[lastgenlev]")
+		if (lastgenlev != 0)
+			add_overlay("teg-op[lastgenlev]")
+			if (circ1 && circ2)
+				var/extreme = (lastgenlev > 9) ? "ex" : ""
+				if (circ1.last_temperature < circ2.last_temperature)
+					circ1.temperature_overlay = "circ-[extreme]cold"
+					circ2.temperature_overlay = "circ-[extreme]hot"
+				else
+					circ1.temperature_overlay = "circ-[extreme]hot"
+					circ2.temperature_overlay = "circ-[extreme]cold"
+		return 1
 
 /obj/machinery/power/generator/process()
 	if(!circ1 || !circ2 || !anchored || stat & (BROKEN|NOPOWER))
@@ -111,7 +136,7 @@
 
 	//Exceeding maximum power leads to some power loss
 	if(effective_gen > max_power && prob(5))
-		var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(3, 1, src)
 		s.start()
 		stored_energy *= 0.5
@@ -123,6 +148,13 @@
 	lastgen1 = stored_energy*0.4 //smoothened power generation to prevent slingshotting as pressure is equalized, then restored by pumps
 	stored_energy -= lastgen1
 	effective_gen = (lastgen1 + lastgen2) / 2
+
+	// Sounds.
+	if(effective_gen > (max_power * 0.05)) // More than 5% and sounds start.
+		soundloop.start()
+		soundloop.volume = LERP(1, 40, effective_gen / max_power)
+	else
+		soundloop.stop()
 
 	// update icon overlays and power usage only if displayed level has changed
 	var/genlev = max(0, min( round(11*effective_gen / max_power), 11))
@@ -136,19 +168,22 @@
 /obj/machinery/power/generator/attack_ai(mob/user)
 	attack_hand(user)
 
-/obj/machinery/power/generator/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/weapon/wrench))
+/obj/machinery/power/generator/attackby(obj/item/W as obj, mob/user as mob)
+	if(W.is_wrench())
 		playsound(src, W.usesound, 75, 1)
 		anchored = !anchored
 		user.visible_message("[user.name] [anchored ? "secures" : "unsecures"] the bolts holding [src.name] to the floor.", \
 					"You [anchored ? "secure" : "unsecure"] the bolts holding [src] to the floor.", \
 					"You hear a ratchet.")
-		use_power = anchored
+		update_use_power(anchored ? USE_POWER_IDLE : USE_POWER_ACTIVE)
 		if(anchored) // Powernet connection stuff.
 			connect_to_network()
 		else
 			disconnect_from_network()
 		reconnect()
+		lastgenlev = 0
+		effective_gen = 0
+		updateicon()
 	else
 		..()
 
@@ -198,7 +233,7 @@
 
 
 	// update the ui if it exists, returns null if no ui is passed/found
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
 		// the ui does not exist, so we'll create a new() one
         // for a list of parameters and their descriptions see the code docs in \code\modules\nano\nanoui.dm
@@ -215,25 +250,25 @@
 	updateicon()
 
 
-/obj/machinery/power/generator/verb/rotate_clock()
+/obj/machinery/power/generator/verb/rotate_clockwise()
 	set category = "Object"
-	set name = "Rotate Generator (Clockwise)"
+	set name = "Rotate Generator Clockwise"
 	set src in view(1)
 
 	if (usr.stat || usr.restrained()  || anchored)
 		return
 
-	src.set_dir(turn(src.dir, 90))
+	src.setDir(turn(src.dir, 270))
 
-/obj/machinery/power/generator/verb/rotate_anticlock()
+/obj/machinery/power/generator/verb/rotate_counterclockwise()
 	set category = "Object"
-	set name = "Rotate Generator (Counterclockwise)"
+	set name = "Rotate Generator Counterclockwise"
 	set src in view(1)
 
 	if (usr.stat || usr.restrained()  || anchored)
 		return
 
-	src.set_dir(turn(src.dir, -90))
+	src.setDir(turn(src.dir, 90))
 
 /obj/machinery/power/generator/power_spike()
 //	if(!effective_gen >= max_power / 2 && powernet) // Don't make a spike if we're not making a whole lot of power.

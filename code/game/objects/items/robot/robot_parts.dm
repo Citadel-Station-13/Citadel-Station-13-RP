@@ -3,18 +3,11 @@
 	icon = 'icons/obj/robot_parts.dmi'
 	item_state = "buildpipe"
 	icon_state = "blank"
-	flags = CONDUCT
 	slot_flags = SLOT_BELT
 	var/list/part = null // Order of args is important for installing robolimbs.
 	var/sabotaged = 0 //Emagging limbs can have repercussions when installed as prosthetics.
 	var/model_info
 	dir = SOUTH
-
-/obj/item/robot_parts/set_dir()
-	return
-
-/obj/item/robot_parts/New(var/newloc, var/model)
-	..(newloc)
 
 /obj/item/robot_parts/l_arm
 	name = "cyborg left arm"
@@ -50,15 +43,15 @@
 	icon_state = "chest"
 	part = list(BP_GROIN,BP_TORSO)
 	var/wires = 0.0
-	var/obj/item/weapon/cell/cell = null
+	var/obj/item/cell/cell = null
 
 /obj/item/robot_parts/head
 	name = "cyborg head"
 	desc = "A standard reinforced braincase, with spine-plugged neural socket and sensor gimbals."
 	icon_state = "head"
 	part = list(BP_HEAD)
-	var/obj/item/device/flash/flash1 = null
-	var/obj/item/device/flash/flash2 = null
+	var/obj/item/flash/flash1 = null
+	var/obj/item/flash/flash2 = null
 
 /obj/item/robot_parts/robot_suit
 	name = "endoskeleton"
@@ -104,7 +97,7 @@
 	if(istype(W, /obj/item/stack/material) && W.get_material_name() == DEFAULT_WALL_MATERIAL && !l_arm && !r_arm && !l_leg && !r_leg && !chest && !head)
 		var/obj/item/stack/material/M = W
 		if (M.use(1))
-			var/obj/item/weapon/secbot_assembly/ed209_assembly/B = new /obj/item/weapon/secbot_assembly/ed209_assembly
+			var/obj/item/secbot_assembly/ed209_assembly/B = new /obj/item/secbot_assembly/ed209_assembly
 			B.loc = get_turf(src)
 			to_chat(user, "<span class='notice'>You armed the robot frame.</span>")
 			if (user.get_inactive_hand()==src)
@@ -163,34 +156,35 @@
 		else
 			to_chat(user, "<span class='warning'>You need to attach a flash to it first!</span>")
 
-	if(istype(W, /obj/item/device/mmi))
-		var/obj/item/device/mmi/M = W
+	if(istype(W, /obj/item/mmi))
+		var/obj/item/mmi/M = W
 		if(check_completion())
 			if(!istype(loc,/turf))
 				to_chat(user, "<span class='warning'>You can't put \the [W] in, the frame has to be standing on the ground to be perfectly precise.</span>")
 				return
-			if(!M.brainmob)
-				to_chat(user, "<span class='warning'>Sticking an empty [W] into the frame would sort of defeat the purpose.</span>")
-				return
-			if(!M.brainmob.key)
-				var/ghost_can_reenter = 0
-				if(M.brainmob.mind)
-					for(var/mob/observer/dead/G in player_list)
-						if(G.can_reenter_corpse && G.mind == M.brainmob.mind)
-							ghost_can_reenter = 1 //May come in use again at another point.
-							to_chat(user, "<span class='notice'>\The [W] is completely unresponsive; though it may be able to auto-resuscitate.</span>") //Jamming a ghosted brain into a borg is likely detrimental, and may result in some problems.
-							return
-				if(!ghost_can_reenter)
-					to_chat(user, "<span class='notice'>\The [W] is completely unresponsive; there's no point.</span>")
+			if(!istype(W, /obj/item/mmi/inert))
+				if(!M.brainmob)
+					to_chat(user, "<span class='warning'>Sticking an empty [W] into the frame would sort of defeat the purpose.</span>")
+					return
+				if(!M.brainmob.key)
+					var/ghost_can_reenter = 0
+					if(M.brainmob.mind)
+						for(var/mob/observer/dead/G in player_list)
+							if(G.can_reenter_corpse && G.mind == M.brainmob.mind)
+								ghost_can_reenter = 1 //May come in use again at another point.
+								to_chat(user, "<span class='notice'>\The [W] is completely unresponsive; though it may be able to auto-resuscitate.</span>") //Jamming a ghosted brain into a borg is likely detrimental, and may result in some problems.
+								return
+					if(!ghost_can_reenter)
+						to_chat(user, "<span class='notice'>\The [W] is completely unresponsive; there's no point.</span>")
+						return
+
+				if(M.brainmob.stat == DEAD)
+					to_chat(user, "<span class='warning'>Sticking a dead [W] into the frame would sort of defeat the purpose.</span>")
 					return
 
-			if(M.brainmob.stat == DEAD)
-				to_chat(user, "<span class='warning'>Sticking a dead [W] into the frame would sort of defeat the purpose.</span>")
-				return
-
-			if(jobban_isbanned(M.brainmob, "Cyborg"))
-				to_chat(user, "<span class='warning'>This [W] does not seem to fit.</span>")
-				return
+				if(jobban_isbanned(M.brainmob, "Cyborg"))
+					to_chat(user, "<span class='warning'>This [W] does not seem to fit.</span>")
+					return
 
 			var/mob/living/silicon/robot/O = new /mob/living/silicon/robot(get_turf(loc), unfinished = 1)
 			if(!O)	return
@@ -198,20 +192,18 @@
 			user.drop_item()
 
 			O.mmi = W
+			O.post_mmi_setup()
 			O.invisibility = 0
 			O.custom_name = created_name
 			O.updatename("Default")
 
-			M.brainmob.mind.transfer_to(O)
-
-			if(O.mind && O.mind.special_role)
-				O.mind.store_memory("In case you look at this after being borged, the objectives are only here until I find a way to make them not show up for you, as I can't simply delete them without screwing up round-end reporting. --NeoFite")
-
+			if(M.brainmob)
+				M.brainmob.mind.transfer_to(O)
+				if(O.mind && O.mind.special_role)
+					O.mind.store_memory("In case you look at this after being borged, the objectives are only here until I find a way to make them not show up for you, as I can't simply delete them without screwing up round-end reporting. --NeoFite")
+				for(var/datum/language/L in M.brainmob.languages)
+					O.add_language(L.name)
 			O.job = "Cyborg"
-
-			for(var/datum/language/L in M.brainmob.languages)
-				O.add_language(L.name)
-
 			O.cell = chest.cell
 			O.cell.loc = O
 			W.loc = O//Should fix cybros run time erroring when blown up. It got deleted before, along with the frame.
@@ -230,7 +222,7 @@
 		else
 			to_chat(user, "<span class='warning'>The MMI must go in after everything else!</span>")
 
-	if (istype(W, /obj/item/weapon/pen))
+	if (istype(W, /obj/item/pen))
 		var/t = sanitizeSafe(input(user, "Enter new robot name", src.name, src.created_name), MAX_NAME_LEN)
 		if (!t)
 			return
@@ -243,7 +235,7 @@
 
 /obj/item/robot_parts/chest/attackby(obj/item/W as obj, mob/user as mob)
 	..()
-	if(istype(W, /obj/item/weapon/cell))
+	if(istype(W, /obj/item/cell))
 		if(src.cell)
 			to_chat(user, "<span class='warning'>You have already inserted a cell!</span>")
 			return
@@ -265,7 +257,7 @@
 
 /obj/item/robot_parts/head/attackby(obj/item/W as obj, mob/user as mob)
 	..()
-	if(istype(W, /obj/item/device/flash))
+	if(istype(W, /obj/item/flash))
 		if(istype(user,/mob/living/silicon/robot))
 			var/current_module = user.get_active_hand()
 			if(current_module == W)
@@ -275,13 +267,6 @@
 				add_flashes(W,user)
 		else
 			add_flashes(W,user)
-	else if(istype(W, /obj/item/weapon/stock_parts/manipulator))
-		to_chat(user, "<span class='notice'>You install some manipulators and modify the head, creating a functional spider-bot!</span>")
-		new /mob/living/simple_animal/spiderbot(get_turf(loc))
-		user.drop_item()
-		qdel(W)
-		qdel(src)
-		return
 	return
 
 /obj/item/robot_parts/head/proc/add_flashes(obj/item/W as obj, mob/user as mob) //Made into a seperate proc to avoid copypasta

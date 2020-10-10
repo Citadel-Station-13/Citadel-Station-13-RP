@@ -1,4 +1,4 @@
-/obj/item/weapon/grenade/spawnergrenade
+/obj/item/grenade/spawnergrenade
 	desc = "It is set to detonate in 5 seconds. It will unleash unleash an unspecified anomaly into the vicinity."
 	name = "delivery grenade"
 	icon = 'icons/obj/grenade.dmi'
@@ -9,8 +9,8 @@
 	var/spawner_type = null // must be an object path
 	var/deliveryamt = 1 // amount of type to deliver
 
-// Prime now just handles the two loops that query for people in lockers and people who can see it.
-/obj/item/weapon/grenade/spawnergrenade/prime()
+// Detonate now just handles the two loops that query for people in lockers and people who can see it.
+/obj/item/grenade/spawnergrenade/detonate()
 
 	if(spawner_type && deliveryamt)
 		// Make a quick flash
@@ -29,31 +29,49 @@
 	qdel(src)
 	return
 
-/obj/item/weapon/grenade/spawnergrenade/manhacks
+/obj/item/grenade/spawnergrenade/manhacks
 	name = "manhack delivery grenade"
-	spawner_type = /mob/living/simple_animal/hostile/viscerator
+	spawner_type = /mob/living/simple_mob/mechanical/viscerator
 	deliveryamt = 5
 	origin_tech = list(TECH_MATERIAL = 3, TECH_MAGNET = 4, TECH_ILLEGAL = 4)
 
-/obj/item/weapon/grenade/spawnergrenade/spesscarp
+/obj/item/grenade/spawnergrenade/manhacks/mercenary
+	spawner_type = /mob/living/simple_mob/mechanical/viscerator/mercenary
+
+/obj/item/grenade/spawnergrenade/manhacks/raider
+	spawner_type = /mob/living/simple_mob/mechanical/viscerator/raider
+
+/obj/item/grenade/spawnergrenade/manhacks/station
+	desc = "It is set to detonate in 5 seconds. It will deploy three weaponized survey drones."
+	deliveryamt = 3
+	spawner_type = /mob/living/simple_mob/mechanical/viscerator/station
+	origin_tech = list(TECH_MATERIAL = 3, TECH_MAGNET = 3, TECH_ILLEGAL = 1)
+
+/obj/item/grenade/spawnergrenade/ward
+	name = "sentry delivery grenade"
+	desc = "It is set to detonate in 5 seconds. It will deploy a single thermal-optic sentry drone."
+	spawner_type = /mob/living/simple_mob/mechanical/ward/monitor/crew
+	deliveryamt = 1
+	origin_tech = list(TECH_MATERIAL = 4, TECH_MAGNET = 3, TECH_BLUESPACE = 2)
+
+/obj/item/grenade/spawnergrenade/spesscarp
 	name = "carp delivery grenade"
-	spawner_type = /mob/living/simple_animal/hostile/carp
+	spawner_type = /mob/living/simple_mob/animal/space/carp
 	deliveryamt = 5
 	origin_tech = list(TECH_MATERIAL = 3, TECH_MAGNET = 4, TECH_ILLEGAL = 4)
 
-/obj/item/weapon/grenade/spawnergrenade/spider
+/obj/item/grenade/spawnergrenade/spider
 	name = "spider delivery grenade"
-	spawner_type = /mob/living/simple_animal/hostile/giant_spider/hunter
+	spawner_type = /mob/living/simple_mob/animal/giant_spider/hunter
 	deliveryamt = 3
 	origin_tech = list(TECH_MATERIAL = 3, TECH_MAGNET = 4, TECH_ILLEGAL = 4)
 
 //Sometimes you just need a sudden influx of spiders.
-/obj/item/weapon/grenade/spawnergrenade/spider/briefcase
+/obj/item/grenade/spawnergrenade/spider/briefcase
 	name = "briefcase"
 	desc = "It's made of AUTHENTIC faux-leather and has a price-tag still attached. Its owner must be a real professional."
 	icon_state = "briefcase"
 	item_state = "briefcase"
-	flags = CONDUCT
 	force = 8.0
 	throw_speed = 1
 	throw_range = 4

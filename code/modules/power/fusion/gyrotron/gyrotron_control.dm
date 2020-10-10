@@ -3,6 +3,7 @@
 	icon = 'icons/obj/machines/power/fusion.dmi'
 	icon_state = "engine"
 	light_color = COLOR_BLUE
+	circuit = /obj/item/circuitboard/gyrotron_control
 
 	var/id_tag
 	var/scan_range = 25
@@ -15,6 +16,11 @@
 	interact(user)
 
 /obj/machinery/computer/gyrotron_control/interact(var/mob/user)
+
+	if(stat & (BROKEN|NOPOWER))
+		user.unset_machine()
+		user << browse(null, "window=gyrotron_controller_[id_tag]")
+		return
 
 	if(!id_tag)
 		to_chat(user, "<span class='warning'>This console has not been assigned an ident tag. Please contact your system administrator or conduct a manual update with a standard multitool.</span>")
@@ -67,7 +73,7 @@
 		if(!new_val)
 			to_chat(usr, "<span class='warning'>That's not a valid number.</span>")
 			return 1
-		G.mega_energy = Clamp(new_val, 1, 50)
+		G.mega_energy = clamp(new_val, 1, 50)
 		G.active_power_usage = G.mega_energy * 1500
 		updateUsrDialog()
 		return 1
@@ -77,7 +83,7 @@
 		if(!new_val)
 			to_chat(usr, "<span class='warning'>That's not a valid number.</span>")
 			return 1
-		G.rate = Clamp(new_val, 1, 10)
+		G.rate = clamp(new_val, 1, 10)
 		updateUsrDialog()
 		return 1
 
@@ -89,9 +95,25 @@
 	return 0
 
 /obj/machinery/computer/gyrotron_control/attackby(var/obj/item/W, var/mob/user)
-	if(ismultitool(W))
+	..()
+	if(istype(W, /obj/item/multitool))
 		var/new_ident = input("Enter a new ident tag.", "Gyrotron Control", id_tag) as null|text
 		if(new_ident && user.Adjacent(src))
 			id_tag = new_ident
 		return
-	return ..()
+
+/obj/machinery/computer/gyrotron_control/update_icon()
+	if(stat & (BROKEN))
+		icon = 'icons/obj/computer.dmi'
+		icon_state = "broken"
+		set_light(0)
+
+	if(stat & (NOPOWER))
+		icon = 'icons/obj/computer.dmi'
+		icon_state = "computer"
+		set_light(0)
+
+	if(!stat & (BROKEN|NOPOWER))
+		icon = initial(icon)
+		icon_state = initial(icon_state)
+		set_light(light_range_on, light_power_on)

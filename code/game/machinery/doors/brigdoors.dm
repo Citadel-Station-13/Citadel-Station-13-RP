@@ -31,7 +31,7 @@
 	maptext_height = 26
 	maptext_width = 32
 
-/obj/machinery/door_timer/initialize()
+/obj/machinery/door_timer/Initialize()
 	..()
 	//Doors need to go first, and can't rely on init order, so come back to me.
 	return INITIALIZE_HINT_LATELOAD
@@ -47,7 +47,7 @@
 		if(F.id == src.id)
 			LAZYADD(targets,F)
 
-	for(var/obj/structure/closet/secure_closet/brig/C in all_brig_closets)
+	for(var/obj/structure/closet/secure_closet/brig/C in GLOB.all_brig_closets)
 		if(C.id == src.id)
 			LAZYADD(targets,C)
 
@@ -314,7 +314,7 @@
 //Stolen from status_display
 /obj/machinery/door_timer/proc/texticon(var/tn, var/px = 0, var/py = 0)
 	var/image/I = image('icons/obj/status_display.dmi', "blank")
-	var/len = lentext(tn)
+	var/len = length(tn)
 
 	for(var/d = 1 to len)
 		var/char = copytext(tn, len-d+1, len-d+2)
@@ -350,6 +350,12 @@
 /obj/machinery/door_timer/cell_6
 	name = "Cell 6"
 	id = "Cell 6"
+
+
+/obj/machinery/door_timer/tactical_pet_storage //Vorestation Addition
+	name = "Tactical Pet Storage"
+	id = "tactical_pet_storage"
+	desc = "Opens and Closes on a timer. This one seals away a tactical boost in morale."
 
 #undef FONT_SIZE
 #undef FONT_COLOR

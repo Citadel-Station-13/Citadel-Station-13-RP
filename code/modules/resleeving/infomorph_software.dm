@@ -34,7 +34,7 @@
 		// This is dumb, but NanoUI breaks if it has no data to send
 		data["manifest"] = PDA_Manifest
 
-		ui = nanomanager.try_update_ui(user, user, id, ui, data, force_open)
+		ui = SSnanoui.try_update_ui(user, user, id, ui, data, force_open)
 		if(!ui)
 			// Don't copy-paste this unless you're making a pAI software module!
 			ui = new(user, user, id, "pai_manifest.tmpl", "Crew Manifest", 450, 600)
@@ -66,7 +66,7 @@
 		data["medical"] = M ? M.fields : null
 		data["could_not_find"] = user.medical_cannotfind
 
-		ui = nanomanager.try_update_ui(user, user, id, ui, data, force_open)
+		ui = SSnanoui.try_update_ui(user, user, id, ui, data, force_open)
 		if(!ui)
 			// Don't copy-paste this unless you're making a pAI software module!
 			ui = new(user, user, id, "pai_medrecords.tmpl", "Medical Records", 450, 600)
@@ -120,7 +120,7 @@
 		data["security"] = S ? S.fields : null
 		data["could_not_find"] = user.security_cannotfind
 
-		ui = nanomanager.try_update_ui(user, user, id, ui, data, force_open)
+		ui = SSnanoui.try_update_ui(user, user, id, ui, data, force_open)
 		if(!ui)
 			// Don't copy-paste this unless you're making a pAI software module!
 			ui = new(user, user, id, "pai_secrecords.tmpl", "Security Records", 450, 600)
@@ -170,7 +170,7 @@
 		data["progress_b"] = user.hackprogress % 10
 		data["aborted"] = user.hack_aborted
 
-		ui = nanomanager.try_update_ui(user, user, id, ui, data, force_open)
+		ui = SSnanoui.try_update_ui(user, user, id, ui, data, force_open)
 		if(!ui)
 			// Don't copy-paste this unless you're making a pAI software module!
 			ui = new(user, user, id, "pai_doorjack.tmpl", "Door Jack", 300, 150)
@@ -193,7 +193,7 @@
 		else if(href_list["cable"])
 			var/turf/T = get_turf(P)
 			P.hack_aborted = 0
-			P.cable = new /obj/item/weapon/pai_cable(T)
+			P.cable = new /obj/item/pai_cable(T)
 			if(ishuman(P.card.loc))
 				var/mob/living/carbon/human/H = P.card.loc
 				H.put_in_any_hand_if_possible(P.cable)
@@ -205,9 +205,9 @@
 	if(prob(20))
 		for(var/mob/living/silicon/ai/AI in player_list)
 			if(T.loc)
-				AI << "<font color = red><b>Network Alert: Brute-force encryption crack in progress in [T.loc].</b></font>"
+				to_chat(AI, "<font color = red><b>Network Alert: Brute-force encryption crack in progress in [T.loc].</b></font>")
 			else
-				AI << "<font color = red><b>Network Alert: Brute-force encryption crack in progress. Unable to pinpoint location.</b></font>"
+				to_chat(AI, "<font color = red><b>Network Alert: Brute-force encryption crack in progress. Unable to pinpoint location.</b></font>")
 
 	var/obj/machinery/door/D = cable.machine
 	if(!istype(D))
@@ -265,12 +265,12 @@
 			var/gases[0]
 			for(var/g in env.gas)
 				var/gas[0]
-				gas["name"] = gas_data.name[g]
+				gas["name"] = GLOB.meta_gas_names[g]
 				gas["percent"] = round((env.gas[g] / t_moles) * 100)
 				gases[++gases.len] = gas
 			data["gas"] = gases
 
-		ui = nanomanager.try_update_ui(user, user, id, ui, data, force_open)
+		ui = SSnanoui.try_update_ui(user, user, id, ui, data, force_open)
 		if(!ui)
 			// Don't copy-paste this unless you're making a pAI software module!
 			ui = new(user, user, id, "pai_atmosphere.tmpl", "Atmosphere Sensor", 350, 300)
@@ -314,7 +314,7 @@
 		data["frequency"] = format_frequency(user.sradio.frequency)
 		data["code"] = user.sradio.code
 
-		ui = nanomanager.try_update_ui(user, user, id, ui, data, force_open)
+		ui = SSnanoui.try_update_ui(user, user, id, ui, data, force_open)
 		if(!ui)
 			// Don't copy-paste this unless you're making a pAI software module!
 			ui = new(user, user, id, "pai_signaller.tmpl", "Signaller", 320, 150)

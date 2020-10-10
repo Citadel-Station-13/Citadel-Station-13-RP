@@ -2,7 +2,7 @@
  *	UNATHI
  */
 
-/obj/item/weapon/rig/breacher
+/obj/item/rig/breacher
 	name = "\improper NT breacher chassis control module"
 	desc = "A cheap NT knock-off of an Unathi battle-rig. Looks like a fish, moves like a fish, steers like a cow."
 	suit_type = "\improper NT breacher"
@@ -18,7 +18,7 @@
 	helm_type = /obj/item/clothing/head/helmet/space/rig/breacher
 	boot_type = /obj/item/clothing/shoes/magboots/rig/breacher
 
-/obj/item/weapon/rig/breacher/fancy
+/obj/item/rig/breacher/fancy
 	name = "breacher chassis control module"
 	desc = "An authentic Unathi breacher chassis. Huge, bulky and absurdly heavy. It must be like wearing a tank."
 	suit_type = "breacher chassis"
@@ -41,20 +41,19 @@
  *	VOX
  */
 
-/obj/item/weapon/rig/vox	//Just to get the flags set up
+/obj/item/rig/vox	//Just to get the flags set up
 	name = "alien control module"
 	desc = "This metal box writhes and squirms as if it were alive..."
 	suit_type = "alien"
 	icon_state = "vox_rig"
 	armor = list(melee = 60, bullet = 50, laser = 40, energy = 15, bomb = 30, bio = 100, rad = 50)
+	flags = PHORONGUARD
 	item_flags = THICKMATERIAL
 	siemens_coefficient = 0.2
-	phoronproof = 1
 	offline_slowdown = 5
-	slowdown = 2
-	allowed = list(/obj/item/weapon/gun,/obj/item/device/flashlight,/obj/item/weapon/tank,/obj/item/device/suit_cooling_unit)
+	allowed = list(/obj/item/gun,/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit)
 
-	air_type = /obj/item/weapon/tank/vox
+	air_type = /obj/item/tank/vox
 
 	helm_type = /obj/item/clothing/head/helmet/space/rig/vox
 	boot_type = /obj/item/clothing/shoes/magboots/rig/vox
@@ -64,7 +63,6 @@
 /obj/item/clothing/head/helmet/space/rig/vox
 	species_restricted = list(SPECIES_VOX)
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
-	phoronproof = 1
 
 /obj/item/clothing/shoes/magboots/rig/vox
 	name = "talons"
@@ -72,11 +70,9 @@
 	sprite_sheets = list(
 		SPECIES_VOX = 'icons/mob/species/vox/shoes.dmi'
 		)
-	phoronproof = 1
 
 /obj/item/clothing/suit/space/rig/vox
 	species_restricted = list(SPECIES_VOX)
-	phoronproof = 1
 
 /obj/item/clothing/gloves/gauntlets/rig/vox
 	siemens_coefficient = 0
@@ -84,18 +80,16 @@
 	sprite_sheets = list(
 		SPECIES_VOX = 'icons/mob/species/vox/gloves.dmi'
 		)
-	phoronproof = 1
 
-/obj/item/weapon/rig/vox/carapace
+/obj/item/rig/vox/carapace
 	name = "dense alien control module"
 	suit_type = "dense alien"
 	armor = list(melee = 60, bullet = 50, laser = 40, energy = 15, bomb = 30, bio = 100, rad = 50)
 	emp_protection = 40 //change this to 30 if too high.
-	phoronproof = 1
 
 	req_access = list(access_syndicate)
 
-	cell_type =  /obj/item/weapon/cell/hyper
+	cell_type =  /obj/item/cell/hyper
 
 	initial_modules = list(
 		/obj/item/rig_module/mounted/energy_blade,
@@ -106,17 +100,16 @@
 		/obj/item/rig_module/self_destruct
 		)
 
-/obj/item/weapon/rig/vox/stealth
+/obj/item/rig/vox/stealth
 	name = "sinister alien control module"
 	suit_type = "sinister alien"
 	icon_state = "voxstealth_rig"
 	armor = list(melee = 40, bullet = 30, laser = 30, energy = 15, bomb = 30, bio = 100, rad = 50)
 	emp_protection = 40 //change this to 30 if too high.
-	phoronproof = 1
 
 	req_access = list(access_syndicate)
 
-	cell_type =  /obj/item/weapon/cell/hyper
+	cell_type =  /obj/item/cell/hyper
 
 	initial_modules = list(
 		/obj/item/rig_module/stealth_field,

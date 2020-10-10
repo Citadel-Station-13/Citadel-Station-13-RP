@@ -35,7 +35,7 @@
 	for(var/d in cardinal)
 		var/turf/simulated/target = get_step(src,d)
 		var/turf/simulated/origin = get_turf(src)
-		if(origin.CanPass(null, target, 0, 0) && target.CanPass(null, origin, 0, 0))
+		if(target.Enter(src, origin))
 			var/obj/effect/decal/cleanable/liquid_fuel/other_fuel = locate() in target
 			if(other_fuel)
 				other_fuel.amount += amount*0.25
@@ -51,7 +51,7 @@
 	anchored = 0
 
 /obj/effect/decal/cleanable/liquid_fuel/flamethrower_fuel/New(newLoc, amt = 1, d = 0)
-	set_dir(d) //Setting this direction means you won't get torched by your own flamethrower.
+	setDir(d) //Setting this direction means you won't get torched by your own flamethrower.
 	if(istype(newLoc, /turf/simulated))
 		var/turf/simulated/T = newLoc
 		T.hotspot_expose((T20C*2) + 380,500) //Ignite the fuel.
@@ -64,13 +64,14 @@
 			qdel(src)
 		return
 	var/turf/simulated/S = loc
-	if(!istype(S)) return
+	if(!istype(S))
+		return
 
 	for(var/d in list(turn(dir,90),turn(dir,-90), dir))
 		var/turf/simulated/O = get_step(S,d)
 		if(locate(/obj/effect/decal/cleanable/liquid_fuel/flamethrower_fuel) in O)
 			continue
-		if(O.CanPass(null, S, 0, 0) && S.CanPass(null, O, 0, 0))
+		if(O.Enter(src, S))
 			var/new_pool_amount = amount * 0.25
 			if(new_pool_amount > 0.1)
 				var/obj/effect/decal/cleanable/liquid_fuel/flamethrower_fuel/F = new(O, new_pool_amount, d)

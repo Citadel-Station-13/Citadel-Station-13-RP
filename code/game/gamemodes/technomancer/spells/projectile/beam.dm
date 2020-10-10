@@ -4,10 +4,10 @@
 	spell_power_desc = "Increases damage dealt."
 	cost = 100
 	ability_icon_state = "tech_beam"
-	obj_path = /obj/item/weapon/spell/projectile/beam
+	obj_path = /obj/item/spell/projectile/beam
 	category = OFFENSIVE_SPELLS
 
-/obj/item/weapon/spell/projectile/beam
+/obj/item/spell/projectile/beam
 	name = "beam"
 	icon_state = "beam"
 	desc = "Boring, but practical."
@@ -22,6 +22,6 @@
 /obj/item/projectile/beam/blue
 	damage = 30
 
-	muzzle_type = /obj/effect/projectile/laser_blue/muzzle
-	tracer_type = /obj/effect/projectile/laser_blue/tracer
-	impact_type = /obj/effect/projectile/laser_blue/impact
+	muzzle_type = /obj/effect/projectile/muzzle/laser_blue
+	tracer_type = /obj/effect/projectile/tracer/laser_blue
+	impact_type = /obj/effect/projectile/impact/laser_blue

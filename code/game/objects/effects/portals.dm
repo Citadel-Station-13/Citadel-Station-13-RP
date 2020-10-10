@@ -13,24 +13,24 @@ GLOBAL_LIST_BOILERPLATE(all_portals, /obj/effect/portal)
 	anchored = 1.0
 
 /obj/effect/portal/Bumped(mob/M as mob|obj)
-	spawn(0)
-		src.teleport(M)
-		return
-	return
+	if(istype(M,/mob) && !(istype(M,/mob/living)))
+		return	//do not send ghosts, zshadows, ai eyes, etc
+	teleport(M)
 
 /obj/effect/portal/Crossed(AM as mob|obj)
-	spawn(0)
-		src.teleport(AM)
-		return
-	return
+	. = ..()
+	teleport(AM)
 
 /obj/effect/portal/attack_hand(mob/user as mob)
+	if(istype(user) && !(istype(user,/mob/living)))
+		return	//do not send ghosts, zshadows, ai eyes, etc
 	spawn(0)
 		src.teleport(user)
 		return
 	return
 
 /obj/effect/portal/New()
+	..() // Necessary for the list boilerplate to work
 	spawn(300)
 		qdel(src)
 		return

@@ -19,6 +19,9 @@
 	if(modifiers["shift"] && modifiers["ctrl"])
 		CtrlShiftClickOn(A)
 		return
+	if(modifiers["shift"] && modifiers["middle"])
+		ShiftMiddleClickOn(A)
+		return
 	if(modifiers["middle"])
 		MiddleClickOn(A)
 		return
@@ -45,7 +48,7 @@
 		if(is_component_functioning("camera"))
 			aiCamera.captureimage(A, usr)
 		else
-			src << "<span class='userdanger'>Your camera isn't functional.</span>"
+			to_chat(src, "<span class='userdanger'>Your camera isn't functional.</span>")
 		return
 
 	/*
@@ -76,7 +79,7 @@
 	if(A == loc || (A in loc) || (A in contents))
 		// No adjacency checks
 
-		var/resolved = A.attackby(W,src)
+		var/resolved = A.attackby(W, src, 1)
 		if(!resolved && A && W)
 			W.afterattack(A,src,1,params)
 		return
@@ -88,7 +91,7 @@
 	if(isturf(A) || isturf(A.loc))
 		if(A.Adjacent(src)) // see adjacent.dm
 
-			var/resolved = A.attackby(W, src)
+			var/resolved = A.attackby(W, src, 1)
 			if(!resolved && A && W)
 				W.afterattack(A, src, 1, params)
 			return
@@ -114,6 +117,7 @@
 	A.BorgCtrlClick(src)
 
 /mob/living/silicon/robot/AltClickOn(var/atom/A)
+	. = ..()
 	A.BorgAltClick(src)
 
 /atom/proc/BorgCtrlShiftClick(var/mob/living/silicon/robot/user) //forward to human click if not overriden

@@ -12,12 +12,12 @@
 	idle_power_usage = 50
 	active_power_usage = 1.5 KILOWATTS
 
-	circuit = /obj/item/weapon/circuitboard/bomb_tester
+	circuit = /obj/item/circuitboard/bomb_tester
 
 	var/icon_name = "generic"
 
-	var/obj/item/weapon/tank/tank1
-	var/obj/item/weapon/tank/tank2
+	var/obj/item/tank/tank1
+	var/obj/item/tank/tank2
 	var/obj/machinery/portable_atmospherics/canister/test_canister
 
 	var/sim_mode = MODE_SINGLE
@@ -32,8 +32,8 @@
 	var/datum/gas_mixture/faketank
 	var/faketank_integrity
 
-/obj/machinery/bomb_tester/New()
-	..()
+/obj/machinery/bomb_tester/Initialize()
+	.=..()
 	default_apply_parts()
 	RefreshParts()
 	faketank = new
@@ -81,7 +81,7 @@
 /obj/machinery/bomb_tester/RefreshParts()
 	..()
 	var/scan_rating = 0
-	for(var/obj/item/weapon/stock_parts/scanning_module/S in component_parts)
+	for(var/obj/item/stock_parts/scanning_module/S in component_parts)
 		scan_rating += S.rating
 	simulation_delay = 25 SECONDS - scan_rating SECONDS
 
@@ -92,7 +92,7 @@
 		return
 	if(default_part_replacement(user, I))
 		return
-	if(istype(I, /obj/item/weapon/tank))
+	if(istype(I, /obj/item/tank))
 		if(!tank1 || !tank2)
 			user.drop_item(I)
 			I.forceMove(src)
@@ -177,12 +177,12 @@
 
 	if(href_list["tank"])
 		var/tankvar = "tank[href_list["tank"]]"
-		var/obj/item/weapon/tank/T
+		var/obj/item/tank/T
 		if(vars[tankvar])
 			T = vars[tankvar]
 			T.forceMove(get_turf(src))
 			vars[tankvar] = null
-		else if(istype(usr.get_active_hand(),/obj/item/weapon/tank))
+		else if(istype(usr.get_active_hand(),/obj/item/tank))
 			T = usr.get_active_hand()
 			usr.drop_item(T)
 			T.forceMove(src)
@@ -201,7 +201,7 @@
 
 	if(href_list["set_can_pressure"])
 		var/change = text2num(href_list["set_can_pressure"])
-		sim_canister_output = Clamp(sim_canister_output+change, ONE_ATMOSPHERE/10, ONE_ATMOSPHERE*10)
+		sim_canister_output = clamp(sim_canister_output+change, ONE_ATMOSPHERE/10, ONE_ATMOSPHERE*10)
 
 	if(href_list["start_sim"])
 		start_simulating()
@@ -210,7 +210,7 @@
 
 /obj/machinery/bomb_tester/proc/start_simulating()
 	simulating = 1
-	update_use_power(2)
+	update_use_power(USE_POWER_ACTIVE)
 	simulation_started = world.time
 	update_icon()
 	switch(sim_mode)
@@ -350,7 +350,7 @@
 
 /obj/machinery/bomb_tester/proc/simulation_finish(cancelled = 0)
 	simulating = 0
-	update_use_power(1)
+	update_use_power(USE_POWER_IDLE)
 	update_icon()
 	if(test_canister && test_canister.anchored && !test_canister.connected_port)
 		test_canister.anchored = 0
@@ -362,7 +362,7 @@
 	else
 		ping("Simulation complete!")
 		playsound(loc, "sound/effects/printer.ogg", 50, 1)
-		var/obj/item/weapon/paper/P = new(get_turf(src))
+		var/obj/item/paper/P = new(get_turf(src))
 		P.name = "Explosive Simulator printout"
 		P.info = simulation_results
 
@@ -375,7 +375,7 @@
 	if(G.total_moles)
 		results += "<br>Temperature: [round(G.temperature-T0C)]&deg;C"
 		for(var/mix in G.gas)
-			results += "<br>[gas_data.name[mix]]: [round((G.gas[mix] / G.total_moles) * 100)]%"
+			results += "<br>[GLOB.meta_gas_names[mix]]: [round((G.gas[mix] / G.total_moles) * 100)]%"
 
 	return results
 

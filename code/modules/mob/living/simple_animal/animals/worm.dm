@@ -1,4 +1,4 @@
-/mob/living/simple_animal/space_worm
+/mob/living/simple_mob/space_worm
 	name = "space worm segment"
 	desc = "A part of a space worm."
 	icon = 'icons/mob/animal.dmi'
@@ -35,8 +35,8 @@
 	speak_emote = list("transmits") //not supposed to be used under AI control
 	emote_hear = list("transmits")  //I'm just adding it so it doesn't runtime if controlled by player who speaks
 
-	var/mob/living/simple_animal/space_worm/previous //next/previous segments, correspondingly
-	var/mob/living/simple_animal/space_worm/next     //head is the nextest segment
+	var/mob/living/simple_mob/space_worm/previous //next/previous segments, correspondingly
+	var/mob/living/simple_mob/space_worm/next     //head is the nextest segment
 
 	var/stomachProcessProbability = 50
 	var/digestionProbability = 20
@@ -60,13 +60,13 @@
 
 		animate_movement = SLIDE_STEPS
 
-		New(var/location, var/segments = 6)
-			..()
+		Initialize(mapload, segments = 6)
+			. = ..()
 
-			var/mob/living/simple_animal/space_worm/current = src
+			var/mob/living/simple_mob/space_worm/current = src
 
 			for(var/i = 1 to segments)
-				var/mob/living/simple_animal/space_worm/newSegment = new /mob/living/simple_animal/space_worm(loc)
+				var/mob/living/simple_mob/space_worm/newSegment = new /mob/living/simple_mob/space_worm(loc)
 				current.Attach(newSegment)
 				current = newSegment
 
@@ -74,7 +74,7 @@
 			if(stat == CONSCIOUS || stat == UNCONSCIOUS)
 				icon_state = "spacewormhead[previous?1:0]"
 				if(previous)
-					set_dir(get_dir(previous,src))
+					setDir(get_dir(previous,src))
 			else
 				icon_state = "spacewormheaddead"
 
@@ -128,7 +128,7 @@
 				icon_state = "spaceworm[get_dir(src,previous) | get_dir(src,next)]" //see 3 lines below
 			else //tail
 				icon_state = "spacewormtail"
-				set_dir(get_dir(src,next)) //next will always be present since it's not a head and if it's dead, it goes in the other if branch
+				setDir(get_dir(src,next)) //next will always be present since it's not a head and if it's dead, it goes in the other if branch
 		else
 			icon_state = "spacewormdead"
 
@@ -148,7 +148,7 @@
 
 		return 0
 
-	proc/Attach(var/mob/living/simple_animal/space_worm/attachement)
+	proc/Attach(var/mob/living/simple_mob/space_worm/attachement)
 		if(!attachement)
 			return
 
@@ -158,8 +158,8 @@
 		return
 
 	proc/Detach(die = 0)
-		var/mob/living/simple_animal/space_worm/newHead = new /mob/living/simple_animal/space_worm/head(loc,0)
-		var/mob/living/simple_animal/space_worm/newHeadPrevious = previous
+		var/mob/living/simple_mob/space_worm/newHead = new /mob/living/simple_mob/space_worm/head(loc,0)
+		var/mob/living/simple_mob/space_worm/newHeadPrevious = previous
 
 		previous = null //so that no extra heads are spawned
 

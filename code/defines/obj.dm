@@ -4,7 +4,7 @@
 	anchored = 1
 	density = 1
 
-	attackby(obj/item/weapon/W as obj, mob/user as mob)
+	attackby(obj/item/W as obj, mob/user as mob)
 		return attack_hand(user)
 
 	attack_hand(mob/user as mob)
@@ -87,7 +87,7 @@ var/global/list/PDA_Manifest = list()
 			heads[++heads.len] = list("name" = name, "rank" = rank, "active" = isactive)
 			department = 1
 			depthead = 1
-			if(rank=="Colony Director" && heads.len != 1)
+			if(rank=="Facility Director" && heads.len != 1)
 				heads.Swap(1,heads.len)
 
 		if(real_rank in security_positions)
@@ -143,8 +143,8 @@ var/global/list/PDA_Manifest = list()
 		bot[++bot.len] = list("name" = ai.real_name, "rank" = "Artificial Intelligence", "active" = "Active")
 
 	for(var/mob/living/silicon/robot/robot in mob_list)
-		// No combat/syndicate cyborgs, no drones.
-		if(robot.module && robot.module.hide_on_manifest)
+		// No combat/syndicate cyborgs, no drones, and no AI shells.
+		if(robot.scrambledcodes || robot.shell || (robot.module && robot.module.hide_on_manifest))
 			continue
 
 		bot[++bot.len] = list("name" = robot.real_name, "rank" = "[robot.modtype] [robot.braintype]", "active" = "Active")
@@ -157,7 +157,7 @@ var/global/list/PDA_Manifest = list()
 		list("cat" = "Medical", "elems" = med),
 		list("cat" = "Science", "elems" = sci),
 		list("cat" = "Cargo", "elems" = car),
-		// list("cat" = "Planetside", "elems" = pla), // VOREStation Edit - Don't show empty dpt in PDA
+		list("cat" = "Exploration", "elems" = pla), // VOREStation Edit
 		list("cat" = "Civilian", "elems" = civ),
 		list("cat" = "Silicon", "elems" = bot),
 		list("cat" = "Miscellaneous", "elems" = misc)
@@ -211,7 +211,7 @@ var/global/list/PDA_Manifest = list()
 
 /obj/item/mouse_drag_pointer = MOUSE_ACTIVE_POINTER
 
-/obj/item/weapon/beach_ball
+/obj/item/beach_ball
 	icon = 'icons/misc/beach.dmi'
 	icon_state = "beachball"
 	name = "beach ball"
@@ -222,18 +222,21 @@ var/global/list/PDA_Manifest = list()
 	throwforce = 0.0
 	throw_speed = 1
 	throw_range = 20
-	flags = CONDUCT
 
 	afterattack(atom/target as mob|obj|turf|area, mob/user as mob)
 		user.drop_item()
 		src.throw_at(target, throw_range, throw_speed, user)
 
 /obj/effect/stop
-	var/victim = null
 	icon_state = "empty"
 	name = "Geas"
 	desc = "You can't resist."
-	// name = ""
+	var/atom/movable/victim
+
+/obj/effect/stop/Uncross(atom/movable/AM)
+	. = ..()
+	if(AM == victim)
+		return FALSE
 
 /obj/effect/spawner
 	name = "object spawner"

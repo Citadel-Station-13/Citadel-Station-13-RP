@@ -3,7 +3,7 @@
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "pipe_d"
 	density = 1
-	circuit = /obj/item/weapon/circuitboard/pipelayer
+	circuit = /obj/item/circuitboard/pipelayer
 	var/turf/old_turf		// Last turf we were on.
 	var/old_dir				// Last direction we were facing.
 	var/on = 0				// Pipelaying online?
@@ -13,7 +13,7 @@
 	var/max_metal = 50		// Max capacity for internal metal storage
 	var/metal = 0			// Current amount in internal metal storage
 	var/pipe_cost = 0.25	// Cost in steel for each pipe.
-	var/obj/item/weapon/wrench/W // Internal wrench used for wrenching down the pipes
+	var/obj/item/tool/wrench/W // Internal wrench used for wrenching down the pipes
 	var/list/Pipes = list(
 		"regular pipes" = /obj/machinery/atmospherics/pipe/simple,
 		"scrubbers pipes" = /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -28,12 +28,12 @@
 	update_icon()
 
 /obj/machinery/pipelayer/Destroy()
-	qdel_null(W)
+	QDEL_NULL(W)
 	. = ..()
 
 /obj/machinery/pipelayer/RefreshParts()
 	var/mb_rating = 0
-	for(var/obj/item/weapon/stock_parts/matter_bin/M in component_parts)
+	for(var/obj/item/stock_parts/matter_bin/M in component_parts)
 		mb_rating += M.rating
 	max_metal = mb_rating * initial(max_metal)
 
@@ -57,7 +57,7 @@
 		return
 	if(panel_open)
 		if(metal < 1)
-			user << "\The [src] is empty."
+			to_chat(user, "\The [src] is empty.")
 			return
 		var/answer = alert(user, "Do you want to eject all the metal in \the [src]?", , "Yes","No")
 		if(answer == "Yes")
@@ -66,7 +66,7 @@
 				"<span class='notice'>You remove [amount_ejected] sheet\s of [DEFAULT_WALL_MATERIAL] from \the [src].</span>")
 		return
 	if(!metal && !on)
-		user << "<span class='warning'>\The [src] doesn't work without metal.</span>"
+		to_chat(user, "<span class='warning'>\The [src] doesn't work without metal.</span>")
 		return
 	on = !on
 	old_turf = get_turf(src)
@@ -81,33 +81,33 @@
 		return
 	if(default_part_replacement(user, W))
 		return
-	if (!panel_open && iswrench(W))
+	if (!panel_open && W.is_wrench())
 		P_type_t = input("Choose pipe type", "Pipe type") as null|anything in Pipes
 		P_type = Pipes[P_type_t]
 		user.visible_message("<span class='notice'>[user] has set \the [src] to manufacture [P_type_t].</span>", "<span class='notice'>You set \the [src] to manufacture [P_type_t].</span>")
 		return
-	if(!panel_open && iscrowbar(W))
+	if(!panel_open && W.is_crowbar())
 		a_dis = !a_dis
 		user.visible_message("<span class='notice'>[user] has [!a_dis?"de":""]activated auto-dismantling.</span>", "<span class='notice'>You [!a_dis?"de":""]activate auto-dismantling.</span>")
 		return
 	if(istype(W, /obj/item/pipe))
 		// NOTE - We must check for matter, otherwise the (free) pipe dispenser can be used to get infinite steel.
 		if(!W.matter || W.matter[DEFAULT_WALL_MATERIAL] < pipe_cost * SHEET_MATERIAL_AMOUNT)
-			user << "<span class='warning'>\The [W] doesn't contain enough [DEFAULT_WALL_MATERIAL] to recycle.</span>"
+			to_chat(user, "<span class='warning'>\The [W] doesn't contain enough [DEFAULT_WALL_MATERIAL] to recycle.</span>")
 		else if(metal + pipe_cost > max_metal)
-			user << "<span class='notice'>\The [src] is full.</span>"
+			to_chat(user, "<span class='notice'>\The [src] is full.</span>")
 		else
 			user.drop_from_inventory(W)
 			metal += pipe_cost
-			usr << "<span class='notice'>You recycle \the [W].</span>"
+			to_chat(user, "<span class='notice'>You recycle \the [W].</span>")
 			qdel(W)
 		return
 	if(istype(W, /obj/item/stack/material) && W.get_material_name() == DEFAULT_WALL_MATERIAL)
 		var/result = load_metal(W)
 		if(isnull(result))
-			user << "<span class='warning'>Unable to load [W] - no metal found.</span>"
+			to_chat(user, "<span class='warning'>Unable to load [W] - no metal found.</span>")
 		else if(!result)
-			user << "<span class='notice'>\The [src] is full.</span>"
+			to_chat(user, "<span class='notice'>\The [src] is full.</span>")
 		else
 			user.visible_message("<span class='notice'>[user] has loaded metal into \the [src].</span>", "<span class='notice'>You load metal into \the [src]</span>")
 		return
@@ -116,7 +116,7 @@
 
 /obj/machinery/pipelayer/examine(mob/user)
 	..()
-	user << "\The [src] has [metal] sheet\s, is set to produce [P_type_t], and auto-dismantling is [!a_dis?"de":""]activated."
+	to_chat(user, "\The [src] has [metal] sheet\s, is set to produce [P_type_t], and auto-dismantling is [!a_dis?"de":""]activated.")
 
 /obj/machinery/pipelayer/proc/reset()
 	on = 0
@@ -145,7 +145,7 @@
 /obj/machinery/pipelayer/proc/eject_metal()
 	var/amount_ejected = 0
 	while (metal >= 1)
-		var/material/M = get_material_by_name(DEFAULT_WALL_MATERIAL)
+		var/datum/material/M = get_material_by_name(DEFAULT_WALL_MATERIAL)
 		var/obj/item/stack/material/S = new M.stack_type(get_turf(src))
 		S.amount = min(metal, S.max_amount)
 		metal -= S.amount

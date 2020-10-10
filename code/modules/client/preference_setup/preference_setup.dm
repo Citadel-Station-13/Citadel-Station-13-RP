@@ -18,11 +18,6 @@
 	sort_order = 2
 	category_item_type = /datum/category_item/player_setup_item/skills
 
-/datum/category_group/player_setup_category/occupation_preferences
-	name = "Occupation"
-	sort_order = 3
-	category_item_type = /datum/category_item/player_setup_item/occupation
-
 /datum/category_group/player_setup_category/appearance_preferences
 	name = "Antagonism"
 	sort_order = 4
@@ -40,7 +35,7 @@
 */ //VOREStation Removal End
 /datum/category_group/player_setup_category/global_preferences
 	name = "Global"
-	sort_order = 6 //VOREStation Edit due to above commented out
+	sort_order = 6
 	category_item_type = /datum/category_item/player_setup_item/player_global
 
 /****************************
@@ -107,7 +102,7 @@
 
 	if(href_list["category"])
 		var/category = locate(href_list["category"])
-		if(category && category in categories)
+		if(category && (category in categories))
 			selected_category = category
 		. = 1
 
@@ -166,10 +161,6 @@
 			. += "</td><td></td><td style='width:50%'>"
 		. += "[PI.content(user)]<br>"
 	. += "</td></tr></table>"
-
-/datum/category_group/player_setup_category/occupation_preferences/content(var/mob/user)
-	for(var/datum/category_item/player_setup_item/PI in items)
-		. += "[PI.content(user)]<br>"
 
 /**********************
 * Category Item Setup *
@@ -237,6 +228,7 @@
 		return 1
 
 	. = OnTopic(href, href_list, usr)
+
 	if(. & TOPIC_UPDATE_PREVIEW)
 		pref_mob.client.prefs.preview_icon = null
 	if(. & TOPIC_REFRESH)
@@ -278,22 +270,15 @@
 				return PREF_FBP_SOFTWARE
 	return 0 //Something went wrong!
 
-/datum/category_item/player_setup_item/proc/get_min_age()
-	var/datum/species/S = all_species[pref.species ? pref.species : "Human"]
-	if(!is_FBP())
-		return S.min_age // If they're not a robot, we can just use the species var.
-	var/FBP_type = get_FBP_type()
-	switch(FBP_type)
-		if(PREF_FBP_CYBORG)
-			return S.min_age
-		if(PREF_FBP_POSI)
-			return 1
-		if(PREF_FBP_SOFTWARE)
-			return 1
-	return S.min_age // welp
+/datum/category_item/player_setup_item/proc/get_min_age() //Minimum limit is 18
+	var/min_age = 18
+	var/datum/species/S = GLOB.all_species[pref.species ? pref.species : "Human"]
+	if(!is_FBP() && S.min_age > 18)
+		min_age = S.min_age
+	return min_age
 
 /datum/category_item/player_setup_item/proc/get_max_age()
-	var/datum/species/S = all_species[pref.species ? pref.species : "Human"]
+	var/datum/species/S = GLOB.all_species[pref.species ? pref.species : "Human"]
 	if(!is_FBP())
 		return S.max_age // If they're not a robot, we can just use the species var.
 	var/FBP_type = get_FBP_type()

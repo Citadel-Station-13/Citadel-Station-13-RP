@@ -19,6 +19,7 @@
 	var/list/med = new()
 	var/list/sci = new()
 	var/list/car = new()
+	var/list/pla = new() //VOREStation Edit
 	var/list/civ = new()
 	var/list/bot = new()
 	var/list/misc = new()
@@ -72,6 +73,11 @@
 		if(real_rank in cargo_positions)
 			car[name] = rank
 			department = 1
+		//VOREStation Edit Begin
+		if(real_rank in planet_positions)
+			pla[name] = rank
+			department = 1
+		//VOREStation Edit End
 		if(real_rank in civilian_positions)
 			civ[name] = rank
 			department = 1
@@ -83,11 +89,9 @@
 		bot[ai.name] = "Artificial Intelligence"
 
 	for(var/mob/living/silicon/robot/robot in mob_list)
-		// No combat/syndicate cyborgs, no drones.
-		if(robot.module && robot.module.hide_on_manifest)
-			continue
-
-		bot[robot.name] = "[robot.modtype] [robot.braintype]"
+		// No combat/syndicate cyborgs, no drones, and no AI shells.
+		if(!robot.scrambledcodes && !robot.shell && !(robot.module && robot.module.hide_on_manifest))
+			bot[robot.name] = "[robot.modtype] [robot.braintype]"
 
 
 	if(heads.len > 0)
@@ -120,6 +124,13 @@
 		for(name in car)
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[car[name]]</td><td>[isactive[name]]</td></tr>"
 			even = !even
+	//VOREStation Edit Begin
+	if(pla.len > 0)
+		dat += "<tr><th colspan=3>Exploration</th></tr>"
+		for(name in pla)
+			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[pla[name]]</td><td>[isactive[name]]</td></tr>"
+			even = !even
+	//VOREStation Edit End
 	if(civ.len > 0)
 		dat += "<tr><th colspan=3>Civilian</th></tr>"
 		for(name in civ)
@@ -264,6 +275,9 @@
 		var/icon/charicon = cached_character_icon(H)
 		front = icon(charicon, dir = SOUTH)
 		side = icon(charicon, dir = WEST)
+	else // Sending null things through browse_rsc() makes a runtime and breaks the console trying to view the record.
+		front = icon('html/images/no_image32.png')
+		side = icon('html/images/no_image32.png')
 
 	if(!id)
 		id = text("[]", add_zero(num2hex(rand(1, 65536)), 4))

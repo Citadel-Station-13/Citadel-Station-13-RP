@@ -86,12 +86,12 @@
 		var/obj/item/organ/external/E = organs_by_name[limb_tag]
 		if(!E || !E.is_usable())
 			stance_damage += 2 // let it fail even if just foot&leg
-		else if (E.is_malfunctioning())
+		else if (E.is_malfunctioning() && !(lying || resting))
 			//malfunctioning only happens intermittently so treat it as a missing limb when it procs
 			stance_damage += 2
 			if(isturf(loc) && prob(10))
 				visible_message("\The [src]'s [E.name] [pick("twitches", "shudders")] and sparks!")
-				var/datum/effect/effect/system/spark_spread/spark_system = new ()
+				var/datum/effect_system/spark_spread/spark_system = new ()
 				spark_system.set_up(5, 0, src)
 				spark_system.attach(src)
 				spark_system.start()
@@ -107,9 +107,9 @@
 	// Canes and crutches help you stand (if the latter is ever added)
 	// One cane mitigates a broken leg+foot, or a missing foot.
 	// Two canes are needed for a lost leg. If you are missing both legs, canes aren't gonna help you.
-	if (l_hand && istype(l_hand, /obj/item/weapon/cane))
+	if (l_hand && istype(l_hand, /obj/item/cane))
 		stance_damage -= 2
-	if (r_hand && istype(r_hand, /obj/item/weapon/cane))
+	if (r_hand && istype(r_hand, /obj/item/cane))
 		stance_damage -= 2
 
 	// standing is poor
@@ -176,7 +176,7 @@
 
 			emote("me", 1, "drops what they were holding, their [E.name] malfunctioning!")
 
-			var/datum/effect/effect/system/spark_spread/spark_system = new /datum/effect/effect/system/spark_spread()
+			var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 			spark_system.set_up(5, 0, src)
 			spark_system.attach(src)
 			spark_system.start()

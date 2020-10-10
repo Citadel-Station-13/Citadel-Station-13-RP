@@ -1,7 +1,7 @@
 /datum/preferences
 	//The mob should have a gender you want before running this proc. Will run fine without H
 /datum/preferences/proc/randomize_appearance_and_body_for(var/mob/living/carbon/human/H)
-	var/datum/species/current_species = all_species[species ? species : "Human"]
+	var/datum/species/current_species = GLOB.all_species[species ? species : "Human"]
 	set_biological_gender(pick(current_species.genders))
 
 	h_style = random_hair_style(biological_gender, species)
@@ -24,13 +24,13 @@
 			b_skin = rand (0,255)
 	if(current_species.appearance_flags & HAS_UNDERWEAR)
 		all_underwear.Cut()
-		for(var/datum/category_group/underwear/WRC in global_underwear.categories)
+		for(var/datum/category_group/underwear/WRC in GLOB.global_underwear.categories)
 			var/datum/category_item/underwear/WRI = pick(WRC.items)
 			all_underwear[WRC.name] = WRI.name
 
 
 	backbag = rand(1,5)
-	pdachoice = rand(1,4)
+	pdachoice = rand(1,6)
 	age = rand(current_species.min_age, current_species.max_age)
 	b_type = RANDOM_BLOOD_TYPE
 	if(H)
@@ -202,9 +202,9 @@
 	var/datum/job/previewJob
 	// Determine what job is marked as 'High' priority, and dress them up as such.
 	if(job_civilian_low & ASSISTANT)
-		previewJob = job_master.GetJob(USELESS_JOB)
+		previewJob = SSjobs.GetJob(USELESS_JOB)
 	else
-		for(var/datum/job/job in job_master.occupations)
+		for(var/datum/job/job in SSjobs.occupations)
 			var/job_flag
 			switch(job.department_flag)
 				if(CIVILIAN)
@@ -251,6 +251,7 @@
 	var/mob/living/carbon/human/dummy/mannequin/mannequin = get_mannequin(client_ckey)
 	mannequin.delete_inventory(TRUE)
 	dress_preview_mob(mannequin)
+	COMPILE_OVERLAYS(mannequin)
 
 	preview_icon = icon('icons/effects/128x48.dmi', bgstate)
 	preview_icon.Scale(48+32, 16+32)
@@ -265,3 +266,34 @@
 	preview_icon.Blend(stamp, ICON_OVERLAY, 49, 1)
 
 	preview_icon.Scale(preview_icon.Width() * 2, preview_icon.Height() * 2) // Scaling here to prevent blurring in the browser.
+
+//Taur support & sensor setting in prefs.
+/datum/preferences/update_preview_icon() // Lines up and un-overlaps character edit previews. Also un-splits taurs.
+	var/mob/living/carbon/human/dummy/mannequin/mannequin = get_mannequin(client_ckey)
+	mannequin.delete_inventory(TRUE)
+	dress_preview_mob(mannequin)
+	COMPILE_OVERLAYS(mannequin)
+
+	preview_icon = icon('icons/effects/128x72_vr.dmi', bgstate)
+	preview_icon.Scale(128, 72)
+
+	mannequin.dir = NORTH
+	var/icon/stamp = getFlatIcon(mannequin)
+	stamp.Scale(stamp.Width()*size_multiplier,stamp.Height()*size_multiplier)
+	preview_icon.Blend(stamp, ICON_OVERLAY, 64-stamp.Width()/2, 5)
+
+	mannequin.dir = WEST
+	stamp = getFlatIcon(mannequin)
+	stamp.Scale(stamp.Width()*size_multiplier,stamp.Height()*size_multiplier)
+	preview_icon.Blend(stamp, ICON_OVERLAY, 16-stamp.Width()/2, 5)
+
+	mannequin.dir = SOUTH
+	stamp = getFlatIcon(mannequin)
+	stamp.Scale(stamp.Width()*size_multiplier,stamp.Height()*size_multiplier)
+	preview_icon.Blend(stamp, ICON_OVERLAY, 112-stamp.Width()/2, 5)
+
+	preview_icon.Scale(preview_icon.Width() * 2, preview_icon.Height() * 2) // Scaling here to prevent blurring in the browser.
+
+//TFF 5/8/19 - add randomised sensor setting for random button clicking
+/datum/preferences/randomize_appearance_and_body_for(var/mob/living/carbon/human/H)
+	sensorpref = rand(1,5)

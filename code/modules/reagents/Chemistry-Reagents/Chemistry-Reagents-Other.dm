@@ -103,6 +103,30 @@
 	id = "marker_ink_brown"
 	color = "#846F35"
 
+/datum/reagent/chalk_dust
+	name = "chalk dust"
+	id = "chalk_dust"
+	description = "Dusty powder obtained by grinding chalk."
+	taste_description = "powdered chalk"
+	reagent_state = LIQUID
+	color = "#FFFFFF"
+	overdose = 5
+
+/datum/reagent/chalk_dust/red
+	name = "red chalk dust"
+	id = "chalk_dust_red"
+	color = "#aa0000"
+
+/datum/reagent/chalk_dust/black
+	name = "black chalk dust"
+	id = "chalk_dust_black"
+	color = "#180000"
+
+/datum/reagent/chalk_dust/blue
+	name = "blue chalk dust"
+	id = "chalk_dust_blue"
+	color = "#000370"
+
 /datum/reagent/paint
 	name = "Paint"
 	id = "paint"
@@ -168,6 +192,7 @@
 	reagent_state = LIQUID
 	color = "#C8A5DC"
 	affects_dead = 1 //This can even heal dead people.
+	metabolism = 0.1
 	mrate_static = TRUE //Just in case
 
 	glass_name = "liquid gold"
@@ -180,8 +205,8 @@
 	M.setCloneLoss(0)
 	M.setOxyLoss(0)
 	M.radiation = 0
-	M.heal_organ_damage(5,5)
-	M.adjustToxLoss(-5)
+	M.heal_organ_damage(20,20)
+	M.adjustToxLoss(-20)
 	M.hallucination = 0
 	M.setBrainLoss(0)
 	M.disabilities = 0
@@ -198,6 +223,28 @@
 	M.SetConfused(0)
 	M.sleeping = 0
 	M.jitteriness = 0
+	M.radiation = 0
+	M.ExtinguishMob()
+	M.fire_stacks = 0
+	if(M.bodytemperature > 310)
+		M.bodytemperature = max(310, M.bodytemperature - (40 * TEMPERATURE_DAMAGE_COEFFICIENT))
+	else if(M.bodytemperature < 311)
+		M.bodytemperature = min(310, M.bodytemperature + (40 * TEMPERATURE_DAMAGE_COEFFICIENT))
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		var/wound_heal = 5
+		for(var/obj/item/organ/external/O in H.bad_external_organs)
+			if(O.status & ORGAN_BROKEN)
+				O.mend_fracture()		//Only works if the bone won't rebreak, as usual
+			for(var/datum/wound/W in O.wounds)
+				if(W.bleeding())
+					W.damage = max(W.damage - wound_heal, 0)
+					if(W.damage <= 0)
+						O.wounds -= W
+				if(W.internal)
+					W.damage = max(W.damage - wound_heal, 0)
+					if(W.damage <= 0)
+						O.wounds -= W
 
 /datum/reagent/gold
 	name = "Gold"
@@ -292,6 +339,13 @@
 	reagent_state = GAS
 	color = "#404030"
 
+/datum/reagent/ammonia/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	if(alien == IS_ALRAUNE)
+		if(prob(5))
+			to_chat(M, "<span class='vox'>You feel a rush of nutrients fill your body.</span>")
+		M.nutrition += removed * 2 //cit change: fertilizer is waste for plants
+		return
+
 /datum/reagent/diethylamine
 	name = "Diethylamine"
 	id = "diethylamine"
@@ -299,6 +353,13 @@
 	taste_description = "iron"
 	reagent_state = LIQUID
 	color = "#604030"
+
+/datum/reagent/diethylamine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	if(alien == IS_ALRAUNE)
+		if(prob(5))
+			to_chat(M, "<span class='vox'>You feel a rush of nutrients fill your body.</span>")
+		M.nutrition += removed * 5 //cit change: fertilizer is waste for plants
+		return
 
 /datum/reagent/fluorosurfactant // Foam precursor
 	name = "Fluorosurfactant"
@@ -360,7 +421,7 @@
 			S.dirt = 0
 		T.clean_blood()
 
-		for(var/mob/living/simple_animal/slime/M in T)
+		for(var/mob/living/simple_mob/slime/M in T)
 			M.adjustToxLoss(rand(5, 10))
 
 /datum/reagent/space_cleaner/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
@@ -490,3 +551,28 @@
 	taste_description = "salty meat"
 	reagent_state = LIQUID
 	color = "#DF9FBF"
+
+// The opposite to healing nanites, exists to make unidentified hypos implied to have nanites not be 100% safe.
+/datum/reagent/defective_nanites
+	name = "Defective Nanites"
+	id = "defective_nanites"
+	description = "Miniature medical robots that are malfunctioning and cause bodily harm. Fortunately, they cannot self-replicate."
+	taste_description = "metal"
+	reagent_state = SOLID
+	color = "#333333"
+	metabolism = REM * 3 // Broken nanomachines go a bit slower.
+	scannable = 1
+
+/datum/reagent/defective_nanites/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	M.take_organ_damage(2 * removed, 2 * removed)
+	M.adjustOxyLoss(4 * removed)
+	M.adjustToxLoss(2 * removed)
+	M.adjustCloneLoss(2 * removed)
+
+/datum/reagent/fishbait
+	name = "Fish Bait"
+	id = "fishbait"
+	description = "A natural slurry that particularily appeals to fish."
+	taste_description = "earthy"
+	reagent_state = LIQUID
+	color = "#62764E"

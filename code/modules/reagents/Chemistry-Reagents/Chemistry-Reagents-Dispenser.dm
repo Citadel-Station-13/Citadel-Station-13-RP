@@ -7,6 +7,15 @@
 	reagent_state = SOLID
 	color = "#A8A8A8"
 
+/datum/reagent/calcium
+	name = "Calcium"
+	id = "calcium"
+	description = "A chemical element, the building block of bones."
+	taste_description = "metallic chalk" // Apparently, calcium tastes like calcium.
+	taste_mult = 1.3
+	reagent_state = SOLID
+	color = "#e9e6e4"
+
 /datum/reagent/carbon
 	name = "Carbon"
 	id = "carbon"
@@ -65,7 +74,7 @@
 	reagent_state = LIQUID
 	color = "#404030"
 
-	ingest_met = REM
+	ingest_met = REM * 2
 
 	var/nutriment_factor = 0
 	var/strength = 10 // This is, essentially, units between stages - the lower, the stronger. Less fine tuning, more clarity.
@@ -96,22 +105,27 @@
 		strength_mod = 0
 	if(alien == IS_SLIME)
 		strength_mod *= 2 // VOREStation Edit - M.adjustToxLoss(removed)
-	
-	M.add_chemical_effect(CE_ALCOHOL, 1)
+	if(alien == IS_ALRAUNE)
+		if(prob(5))
+			to_chat(M, "<span class='danger'>You feel your leaves start to wilt.</span>")
+		strength_mod *=5 //cit change - alcohol ain't good for plants
 
-	if(dose * strength_mod >= strength) // Early warning
+	M.add_chemical_effect(CE_ALCOHOL, 1)
+	var/effective_dose = dose * strength_mod * (1 + volume/60) //drinking a LOT will make you go down faster
+
+	if(effective_dose >= strength) // Early warning
 		M.make_dizzy(18) // It is decreased at the speed of 3 per tick
-	if(dose * strength_mod >= strength * 2) // Slurring
+	if(effective_dose >= strength * 2) // Slurring
 		M.slurring = max(M.slurring, 90)
-	if(dose * strength_mod >= strength * 3) // Confusion - walking in random directions
+	if(effective_dose >= strength * 3) // Confusion - walking in random directions
 		M.Confuse(60)
-	if(dose * strength_mod >= strength * 4) // Blurry vision
+	if(effective_dose >= strength * 4) // Blurry vision
 		M.eye_blurry = max(M.eye_blurry, 30)
-	if(dose * strength_mod >= strength * 5) // Drowsyness - periodically falling asleep
+	if(effective_dose >= strength * 5) // Drowsyness - periodically falling asleep
 		M.drowsyness = max(M.drowsyness, 60)
-	if(dose * strength_mod >= strength * 6) // Toxic dose
+	if(effective_dose >= strength * 6) // Toxic dose
 		M.add_chemical_effect(CE_ALCOHOL_TOXIC, toxicity*3)
-	if(dose * strength_mod >= strength * 7) // Pass out
+	if(effective_dose >= strength * 7) // Pass out
 		M.paralysis = max(M.paralysis, 60)
 		M.sleeping  = max(M.sleeping, 90)
 
@@ -171,20 +185,20 @@
 		M.hallucination = max(M.hallucination, halluci)
 
 /datum/reagent/ethanol/touch_obj(var/obj/O)
-	if(istype(O, /obj/item/weapon/paper))
-		var/obj/item/weapon/paper/paperaffected = O
+	if(istype(O, /obj/item/paper))
+		var/obj/item/paper/paperaffected = O
 		paperaffected.clearpaper()
-		usr << "The solution dissolves the ink on the paper."
+		to_chat(usr, "The solution dissolves the ink on the paper.")
 		return
-	if(istype(O, /obj/item/weapon/book))
+	if(istype(O, /obj/item/book))
 		if(volume < 5)
 			return
-		if(istype(O, /obj/item/weapon/book/tome))
-			usr << "<span class='notice'>The solution does nothing. Whatever this is, it isn't normal ink.</span>"
+		if(istype(O, /obj/item/book/tome))
+			to_chat(usr, "<span class='notice'>The solution does nothing. Whatever this is, it isn't normal ink.</span>")
 			return
-		var/obj/item/weapon/book/affectedbook = O
+		var/obj/item/book/affectedbook = O
 		affectedbook.dat = null
-		usr << "<span class='notice'>The solution dissolves the ink on the book.</span>"
+		to_chat(usr, "<span class='notice'>The solution dissolves the ink on the book.</span>")
 	return
 
 /datum/reagent/fluorine
@@ -280,6 +294,12 @@
 	reagent_state = SOLID
 	color = "#832828"
 
+/datum/reagent/phosphorus/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	if(alien == IS_ALRAUNE)
+		if(prob(5))
+			to_chat(M, "<span class='vox'>You feel a rush of nutrients fill your body.</span>")
+		M.nutrition += removed * 2 //cit change - phosphorus is good for plants
+
 /datum/reagent/potassium
 	name = "Potassium"
 	id = "potassium"
@@ -342,11 +362,11 @@
 		var/mob/living/carbon/human/H = M
 		if(H.head)
 			if(H.head.unacidable)
-				H << "<span class='danger'>Your [H.head] protects you from the acid.</span>"
+				to_chat(H, "<span class='danger'>Your [H.head] protects you from the acid.</span>")
 				remove_self(volume)
 				return
 			else if(removed > meltdose)
-				H << "<span class='danger'>Your [H.head] melts away!</span>"
+				to_chat(H, "<span class='danger'>Your [H.head] melts away!</span>")
 				qdel(H.head)
 				H.update_inv_head(1)
 				H.update_hair(1)
@@ -356,11 +376,11 @@
 
 		if(H.wear_mask)
 			if(H.wear_mask.unacidable)
-				H << "<span class='danger'>Your [H.wear_mask] protects you from the acid.</span>"
+				to_chat(H, "<span class='danger'>Your [H.wear_mask] protects you from the acid.</span>")
 				remove_self(volume)
 				return
 			else if(removed > meltdose)
-				H << "<span class='danger'>Your [H.wear_mask] melts away!</span>"
+				to_chat(H, "<span class='danger'>Your [H.wear_mask] melts away!</span>")
 				qdel(H.wear_mask)
 				H.update_inv_wear_mask(1)
 				H.update_hair(1)
@@ -370,10 +390,10 @@
 
 		if(H.glasses)
 			if(H.glasses.unacidable)
-				H << "<span class='danger'>Your [H.glasses] partially protect you from the acid!</span>"
+				to_chat(H, "<span class='danger'>Your [H.glasses] partially protect you from the acid!</span>")
 				removed /= 2
 			else if(removed > meltdose)
-				H << "<span class='danger'>Your [H.glasses] melt away!</span>"
+				to_chat(H, "<span class='danger'>Your [H.glasses] melt away!</span>")
 				qdel(H.glasses)
 				H.update_inv_glasses(1)
 				removed -= meltdose / 2
@@ -404,7 +424,7 @@
 		var/obj/effect/decal/cleanable/molten_item/I = new/obj/effect/decal/cleanable/molten_item(O.loc)
 		I.desc = "Looks like this was \an [O] some time ago."
 		for(var/mob/M in viewers(5, O))
-			M << "<span class='warning'>\The [O] melts.</span>"
+			to_chat(M, "<span class='warning'>\The [O] melts.</span>")
 		qdel(O)
 		remove_self(meltdose) // 10 units of acid will not melt EVERYTHING on the tile
 
@@ -457,6 +477,12 @@
 		else
 			M.sleeping = max(M.sleeping, 20)
 			M.drowsyness = max(M.drowsyness, 60)
+
+	if(alien == IS_ALRAUNE) //cit change - too much sugar isn't good for plants
+		if(effective_dose < 2)
+			if(prob(5))
+				to_chat(M, "<span class='danger'>You feel an imbalance of energy.</span>")
+			M.make_jittery(4)
 
 /datum/reagent/sulfur
 	name = "Sulfur"

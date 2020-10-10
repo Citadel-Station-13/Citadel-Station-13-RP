@@ -6,7 +6,7 @@
 	icon_state = "portgen0"
 	density = 1
 	anchored = 0
-	use_power = 0
+	use_power = USE_POWER_OFF
 
 	var/active = 0
 	var/power_gen = 5000
@@ -51,9 +51,9 @@
 	if(!..(user,1 ))
 		return
 	if(active)
-		usr << "<span class='notice'>The generator is on.</span>"
+		to_chat(user, "<span class='notice'>The generator is on.</span>")
 	else
-		usr << "<span class='notice'>The generator is off.</span>"
+		to_chat(user, "<span class='notice'>The generator is off.</span>")
 
 /obj/machinery/power/port_gen/emp_act(severity)
 	var/duration = 6000 //ten minutes
@@ -87,7 +87,7 @@
 /obj/machinery/power/port_gen/pacman
 	name = "\improper P.A.C.M.A.N.-type Portable Generator"
 	desc = "A power generator that runs on solid phoron sheets. Rated for 80 kW max safe output."
-	circuit = /obj/item/weapon/circuitboard/pacman
+	circuit = /obj/item/circuitboard/pacman
 	var/sheet_name = "Phoron Sheets"
 	var/sheet_path = /obj/item/stack/material/phoron
 
@@ -110,7 +110,7 @@
 	var/temperature = 0		//The current temperature
 	var/overheating = 0		//if this gets high enough the generator explodes
 
-/obj/machinery/power/port_gen/pacman/initialize()
+/obj/machinery/power/port_gen/pacman/Initialize()
 	. = ..()
 	if(anchored)
 		connect_to_network()
@@ -118,10 +118,10 @@
 /obj/machinery/power/port_gen/pacman/New()
 	..()
 	component_parts = list()
-	component_parts += new /obj/item/weapon/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/weapon/stock_parts/micro_laser(src)
+	component_parts += new /obj/item/stock_parts/matter_bin(src)
+	component_parts += new /obj/item/stock_parts/micro_laser(src)
 	component_parts += new /obj/item/stack/cable_coil(src, 2)
-	component_parts += new /obj/item/weapon/stock_parts/capacitor(src)
+	component_parts += new /obj/item/stock_parts/capacitor(src)
 	RefreshParts()
 
 /obj/machinery/power/port_gen/pacman/Destroy()
@@ -135,20 +135,22 @@
 
 /obj/machinery/power/port_gen/pacman/RefreshParts()
 	var/temp_rating = 0
-	for(var/obj/item/weapon/stock_parts/SP in component_parts)
-		if(istype(SP, /obj/item/weapon/stock_parts/matter_bin))
+	for(var/obj/item/stock_parts/SP in component_parts)
+		if(istype(SP, /obj/item/stock_parts/matter_bin))
 			max_sheets = SP.rating * SP.rating * 50
-		else if(istype(SP, /obj/item/weapon/stock_parts/micro_laser) || istype(SP, /obj/item/weapon/stock_parts/capacitor))
+		else if(istype(SP, /obj/item/stock_parts/micro_laser) || istype(SP, /obj/item/stock_parts/capacitor))
 			temp_rating += SP.rating
 
 	power_gen = round(initial(power_gen) * (max(2, temp_rating) / 2))
 
 /obj/machinery/power/port_gen/pacman/examine(mob/user)
 	..(user)
-	user << "\The [src] appears to be producing [power_gen*power_output] W."
-	user << "There [sheets == 1 ? "is" : "are"] [sheets] sheet\s left in the hopper."
-	if(IsBroken()) user << "<span class='warning'>\The [src] seems to have broken down.</span>"
-	if(overheating) user << "<span class='danger'>\The [src] is overheating!</span>"
+	to_chat(user, "\The [src] appears to be producing [power_gen*power_output] W.")
+	to_chat(user, "There [sheets == 1 ? "is" : "are"] [sheets] sheet\s left in the hopper.")
+	if(IsBroken())
+		to_chat(user, "<span class='warning'>\The [src] seems to have broken down.</span>")
+	if(overheating)
+		to_chat(user, "<span class='danger'>\The [src] is overheating!</span>")
 
 /obj/machinery/power/port_gen/pacman/HasFuel()
 	var/needed_sheets = power_output / time_per_sheet
@@ -244,7 +246,7 @@
 	var/phoron = (sheets+sheet_left)*20
 	var/datum/gas_mixture/environment = loc.return_air()
 	if (environment)
-		environment.adjust_gas_temp("phoron", phoron/10, temperature + T0C)
+		environment.adjust_gas_temp(/datum/gas/phoron, phoron/10, temperature + T0C)
 
 	sheets = 0
 	sheet_left = 0
@@ -263,23 +265,24 @@
 		var/obj/item/stack/addstack = O
 		var/amount = min((max_sheets - sheets), addstack.amount)
 		if(amount < 1)
-			user << "<span class='warning'>The [src.name] is full!</span>"
+			to_chat(user, "<span class='warning'>The [src.name] is full!</span>")
 			return
-		user << "<span class='notice'>You add [amount] sheet\s to the [src.name].</span>"
+		to_chat(user, "<span class='notice'>You add [amount] sheet\s to the [src.name].</span>")
 		sheets += amount
 		addstack.use(amount)
 		updateUsrDialog()
 		return
 	else if(!active)
-		if(istype(O, /obj/item/weapon/wrench))
+		if(O.is_wrench())
 			if(!anchored)
 				connect_to_network()
-				user << "<span class='notice'>You secure the generator to the floor.</span>"
+				to_chat(user, "<span class='notice'>You secure the generator to the floor.</span>")
 			else
 				disconnect_from_network()
-				user << "<span class='notice'>You unsecure the generator from the floor.</span>"
+				to_chat(user, "<span class='notice'>You unsecure the generator from the floor.</span>")
 			playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
 			anchored = !anchored
+			return
 		else if(default_deconstruction_screwdriver(user, O))
 			return
 		else if(default_deconstruction_crowbar(user, O))
@@ -324,7 +327,7 @@
 
 
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "pacman.tmpl", src.name, 500, 560)
 		ui.set_initial_data(data)
@@ -337,7 +340,7 @@
 	if (get_dist(src, user) > 1 )
 		if (!istype(user, /mob/living/silicon/ai))
 			user.unset_machine()
-			user << browse(null, "window=port_gen")
+			user << browse(null, "window=port_gen"
 			return
 
 	user.set_machine(src)
@@ -391,18 +394,18 @@
 	sheet_path = /obj/item/stack/material/uranium
 	sheet_name = "Uranium Sheets"
 	time_per_sheet = 576 //same power output, but a 50 sheet stack will last 2 hours at max safe power
-	circuit = /obj/item/weapon/circuitboard/pacman/super
+	circuit = /obj/item/circuitboard/pacman/super
 
 /obj/machinery/power/port_gen/pacman/super/UseFuel()
 	//produces a tiny amount of radiation when in use
 	if (prob(2*power_output))
-		radiation_repository.radiate(src, 4)
+		SSradiation.radiate(src, 4)
 	..()
 
 /obj/machinery/power/port_gen/pacman/super/explode()
 	//a nice burst of radiation
 	var/rads = 50 + (sheets + sheet_left)*1.5
-	radiation_repository.radiate(src, (max(20, rads)))
+	SSradiation.radiate(src, (max(20, rads)))
 
 	explosion(src.loc, 3, 3, 5, 3)
 	qdel(src)
@@ -422,7 +425,7 @@
 	time_per_sheet = 576
 	max_temperature = 800
 	temperature_gain = 90
-	circuit = /obj/item/weapon/circuitboard/pacman/mrs
+	circuit = /obj/item/circuitboard/pacman/mrs
 
 /obj/machinery/power/port_gen/pacman/mrs/explode()
 	//no special effects, but the explosion is pretty big (same as a supermatter shard).

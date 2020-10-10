@@ -68,3 +68,22 @@
 	name = "Long John Bottoms"
 	icon_state = "ljonb"
 	has_color = TRUE
+
+/datum/category_item/underwear/bottom/maebari
+	name = "Maebari"
+	icon_state = "maebari"
+	has_color = TRUE
+
+/datum/category_item/underwear/bottom/chastbelt
+	name = "Chastity Belt"
+	icon_state = "chastbelt"
+
+/datum/category_item/underwear/bottom/chastcage
+	name = "Chastity Cage"
+	icon_state = "chastcage"
+	has_color = TRUE
+
+/datum/category_item/underwear/bottom/cfishnet_bottom
+	name = "Dyed Fishnets"
+	icon_state = "c_fishnet_lower"
+	has_color = TRUE

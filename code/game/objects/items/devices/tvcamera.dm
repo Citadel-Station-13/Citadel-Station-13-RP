@@ -1,19 +1,20 @@
-/obj/item/device/tvcamera
+/obj/item/tvcamera
 	name = "press camera drone"
 	desc = "A Ward-Takahashi EyeBuddy media streaming hovercam. Weapon of choice for war correspondents and reality show cameramen."
+	icon = 'icons/obj/device.dmi'
 	icon_state = "camcorder"
 	item_state = "camcorder"
 	w_class = ITEMSIZE_LARGE
 	slot_flags = SLOT_BELT
-	var/channel = "NCS Northern Star News Feed"
+	var/channel = "Tether News Feed"
 	var/obj/machinery/camera/network/thunder/camera
-	var/obj/item/device/radio/radio
+	var/obj/item/radio/radio
 
-/obj/item/device/tvcamera/New()
-	..()
+/obj/item/tvcamera/Initialize()
+	. = ..()
 	listening_objects += src
 
-/obj/item/device/tvcamera/Destroy()
+/obj/item/tvcamera/Destroy()
 	listening_objects -= src
 	qdel(camera)
 	qdel(radio)
@@ -21,12 +22,12 @@
 	radio = null
 	..()
 
-/obj/item/device/tvcamera/examine()
+/obj/item/tvcamera/examine()
 	..()
 	to_chat(usr, "Video feed is [camera.status ? "on" : "off"]")
 	to_chat(usr, "Audio feed is [radio.broadcasting ? "on" : "off"]")
 
-/obj/item/device/tvcamera/initialize()
+/obj/item/tvcamera/Initialize()
 	. = ..()
 	camera = new(src)
 	camera.c_tag = channel
@@ -38,11 +39,11 @@
 	radio.icon_state = src.icon_state
 	update_icon()
 
-/obj/item/device/tvcamera/hear_talk(mob/living/M, msg, var/verb="says", datum/language/speaking=null)
+/obj/item/tvcamera/hear_talk(mob/living/M, msg, var/verb="says", datum/language/speaking=null)
 	radio.hear_talk(M,msg,verb,speaking)
 	..()
 
-/obj/item/device/tvcamera/attack_self(mob/user)
+/obj/item/tvcamera/attack_self(mob/user)
 	add_fingerprint(user)
 	user.set_machine(src)
 	var/dat = list()
@@ -54,7 +55,7 @@
 	popup.set_content(jointext(dat,null))
 	popup.open()
 
-/obj/item/device/tvcamera/Topic(bred, href_list, state = physical_state)
+/obj/item/tvcamera/Topic(bred, href_list, state = physical_state)
 	if(..())
 		return 1
 	if(href_list["channel"])
@@ -79,7 +80,7 @@
 	if(!href_list["close"])
 		attack_self(usr)
 
-/obj/item/device/tvcamera/update_icon()
+/obj/item/tvcamera/update_icon()
 	..()
 	if(camera.status)
 		icon_state = "camcorder_on"

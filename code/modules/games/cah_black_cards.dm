@@ -1,11 +1,11 @@
 // Black cards.
-/obj/item/weapon/deck/cah/black/card_text_list = list(
+/obj/item/deck/cah/black/card_text_list = list(
 	"Why am I itchy?",
 	"Today, Security shot ____.",
 	"The Chaplain this shift is worshiping _____.",
 	"Cargo ordered a crate full of _____.",
 	"An ERT was called due to ______.",
-	"Alert! The Colony Director has armed themselves with _____.",
+	"Alert! The Facility Director has armed themselves with _____.",
 	"Current Laws: ________ is your master.",
 	"Current Laws: ________ is the enemy.",
 	"_____ vented the entirety of Cargo.",
@@ -14,7 +14,7 @@
 	"Caution, ______ have been detected in collision course with the station.",
 	"Today's kitchen menu includes _______.",
 	"What did the mercenaries want when they attacked the station?",
-	"I think the Colony Director is insane. He just demanded ______ in his office.",
+	"I think the Facility Director is insane. He just demanded ______ in his office.",
 	"Fuckin' scientists, they just turned Misc. Research into _______ .",
 	"What's my fetish?",
 	"Hello, _______ here with _______",

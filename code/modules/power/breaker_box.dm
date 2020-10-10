@@ -13,12 +13,13 @@
 	var/icon_state_off = "bbox_off"
 	density = 1
 	anchored = 1
-	circuit = /obj/item/weapon/circuitboard/breakerbox
+	circuit = /obj/item/circuitboard/breakerbox
 	var/on = 0
 	var/busy = 0
 	var/directions = list(1,2,4,8,5,6,9,10)
 	var/RCon_tag = "NO_TAG"
 	var/update_locked = 0
+	var/datum/wires/breakerbox/wires
 
 /obj/machinery/power/breakerbox/Destroy()
 	for(var/obj/structure/cable/C in src.loc)
@@ -27,39 +28,40 @@
 	for(var/datum/nano_module/rcon/R in world)
 		R.FindDevices()
 
-/obj/machinery/power/breakerbox/initialize()
+/obj/machinery/power/breakerbox/Initialize()
 	. = ..()
+	wires = new(src)
 	default_apply_parts()
 
 /obj/machinery/power/breakerbox/activated
 	icon_state = "bbox_on"
 
 // Enabled on server startup. Used in substations to keep them in bypass mode.
-/obj/machinery/power/breakerbox/activated/initialize()
+/obj/machinery/power/breakerbox/activated/Initialize()
 	. = ..()
 	set_state(1)
 
 /obj/machinery/power/breakerbox/examine(mob/user)
-	user << "Large machine with heavy duty switching circuits used for advanced grid control"
+	to_chat(user, "Large machine with heavy duty switching circuits used for advanced grid control")
 	if(on)
-		user << "<font color='green'>It seems to be online.</font>"
+		to_chat(user, "<font color='green'>It seems to be online.</font>")
 	else
-		user << "<font color='red'>It seems to be offline.</font>"
+		to_chat(user, "<font color='red'>It seems to be offline.</font>")
 
 /obj/machinery/power/breakerbox/attack_ai(mob/user)
 	if(update_locked)
-		user << "<font color='red'>System locked. Please try again later.</font>"
+		to_chat(user, "<font color='red'>System locked. Please try again later.</font>")
 		return
 
 	if(busy)
-		user << "<font color='red'>System is busy. Please wait until current operation is finished before changing power settings.</font>"
+		to_chat(user, "<font color='red'>System is busy. Please wait until current operation is finished before changing power settings.</font>")
 		return
 
 	busy = 1
-	user << "<font color='green'>Updating power settings...</font>"
+	to_chat(user, "<font color='green'>Updating power settings...</font>")
 	if(do_after(user, 50))
 		set_state(!on)
-		user << "<font color='green'>Update Completed. New setting:[on ? "on": "off"]</font>"
+		to_chat(user, "<font color='green'>Update Completed. New setting:[on ? "on": "off"]</font>")
 		update_locked = 1
 		spawn(600)
 			update_locked = 0
@@ -68,11 +70,11 @@
 
 /obj/machinery/power/breakerbox/attack_hand(mob/user)
 	if(update_locked)
-		user << "<font color='red'>System locked. Please try again later.</font>"
+		to_chat(user, "<font color='red'>System locked. Please try again later.</font>")
 		return
 
 	if(busy)
-		user << "<font color='red'>System is busy. Please wait until current operation is finished before changing power settings.</font>"
+		to_chat(user, "<font color='red'>System is busy. Please wait until current operation is finished before changing power settings.</font>")
 		return
 
 	busy = 1
@@ -89,12 +91,12 @@
 			update_locked = 0
 	busy = 0
 
-/obj/machinery/power/breakerbox/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
-	if(istype(W, /obj/item/device/multitool))
+/obj/machinery/power/breakerbox/attackby(var/obj/item/W as obj, var/mob/user as mob)
+	if(istype(W, /obj/item/multitool))
 		var/newtag = input(user, "Enter new RCON tag. Use \"NO_TAG\" to disable RCON or leave empty to cancel.", "SMES RCON system") as text
 		if(newtag)
 			RCon_tag = newtag
-			user << "<span class='notice'>You changed the RCON tag to: [newtag]</span>"
+			to_chat(user, "<span class='notice'>You changed the RCON tag to: [newtag]</span>")
 	if(on)
 		to_chat(user, "<font color='red'>Disable the breaker before performing maintenance.</font>")
 		return
@@ -104,6 +106,8 @@
 		return
 	if(default_part_replacement(user, W))
 		return
+	if(W.is_multitool() || W.is_wirecutter() && panel_open)
+		wires.Interact(user)
 
 /obj/machinery/power/breakerbox/proc/set_state(var/state)
 	on = state

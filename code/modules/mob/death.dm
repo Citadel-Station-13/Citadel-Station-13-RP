@@ -70,7 +70,7 @@
 
 	if(stat == DEAD)
 		return 0
-	if(src.loc && istype(loc,/obj/belly)) deathmessage = "no message" //VOREStation Add - Prevents death messages from inside mobs
+	if(src.loc && istype(loc,/obj/belly) || istype(loc,/obj/item/dogborg/sleeper)) deathmessage = "no message" //VOREStation Add - Prevents death messages from inside mobs
 	facing_dir = null
 
 	if(!gibbed && deathmessage != "no message") // This is gross, but reliable. Only brains use it.
@@ -101,11 +101,13 @@
 	living_mob_list -= src
 	dead_mob_list |= src
 
+	set_respawn_timer()
 	updateicon()
 	handle_regular_hud_updates()
+	handle_vision()
 
-	if(ticker && ticker.mode)
-		ticker.mode.check_win()
+	if(SSticker && SSticker.mode)
+		SSticker.mode.check_win()
 
 
 	return 1

@@ -31,7 +31,6 @@ var/list/wireColours = list("red", "blue", "green", "darkred", "orange", "brown"
 	src.holder = holder
 	if(!istype(holder, holder_type))
 		CRASH("Our holder is null/the wrong type!")
-		return
 
 	// Generate new wires
 	if(random)
@@ -85,14 +84,14 @@ var/list/wireColours = list("red", "blue", "green", "darkred", "orange", "brown"
 
 	var/datum/browser/popup = new(user, "wires", holder.name, window_x, window_y)
 	popup.set_content(html)
-	popup.set_title_image(user.browse_rsc_icon(holder.icon, holder.icon_state))
 	popup.open()
 
 /datum/wires/proc/GetInteractWindow()
-	var/html = "<div class='block'>"
+	var/html = "<A href='?src=\ref[src];action=1;rename=[holder]'>Rename</A>" //kicking off the html with this set of buttons that will affect any object with the wires interface
+	html += "<A href='?src=\ref[src];action=1;description=[holder]'>Describe</A>"
+	html += "<div class='block'>"
 	html += "<h3>Exposed Wires</h3>"
 	html += "<table[table_options]>"
-
 	for(var/colour in wires)
 		html += "<tr>"
 		html += "<td[row_options1]><font color='[colour]'>[capitalize(colour)]</font></td>"
@@ -117,20 +116,20 @@ var/list/wireColours = list("red", "blue", "green", "darkred", "orange", "brown"
 			var/obj/item/I = L.get_active_hand()
 			holder.add_hiddenprint(L)
 			if(href_list["cut"]) // Toggles the cut/mend status
-				if(istype(I, /obj/item/weapon/wirecutters))
+				if(I.is_wirecutter())
 					var/colour = href_list["cut"]
 					CutWireColour(colour)
 					playsound(holder, I.usesound, 20, 1)
 				else
-					L << "<span class='error'>You need wirecutters!</span>"
+					to_chat(L, "<span class='error'>You need wirecutters!</span>")
 
 			else if(href_list["pulse"])
-				if(istype(I, /obj/item/device/multitool))
+				if(I.is_multitool())
 					var/colour = href_list["pulse"]
 					PulseColour(colour)
 					playsound(holder, 'sound/weapons/empty.ogg', 20, 1)
 				else
-					L << "<span class='error'>You need a multitool!</span>"
+					to_chat(L, "<span class='error'>You need a multitool!</span>")
 
 			else if(href_list["attach"])
 				var/colour = href_list["attach"]
@@ -142,13 +141,23 @@ var/list/wireColours = list("red", "blue", "green", "darkred", "orange", "brown"
 
 				// Attach
 				else
-					if(istype(I, /obj/item/device/assembly/signaler))
+					if(istype(I, /obj/item/assembly/signaler))
 						L.drop_item()
 						Attach(colour, I)
 					else
-						L << "<span class='error'>You need a remote signaller!</span>"
+						to_chat(L, "<span class='error'>You need a remote signaller!</span>")
 
+			else if(href_list["rename"]) //add the ability to rename doors via multitool
+				if(I.is_multitool())
+					RenameDoor(src)
+				else
+					to_chat(L, "<span class='error'>You need a multitool!</span>")
 
+			else if(href_list["description"]) // and describe them!
+				if(I.is_multitool())
+					DescribeDoor(src)
+				else
+					to_chat(L, "<span class='error'>You need a multitool!</span>")
 
 
 		// Update Window
@@ -207,6 +216,20 @@ var/const/POWER = 8
 		return
 	UpdatePulsed(index)
 
+/datum/wires/proc/RenameDoor(var/obj/machinery/door/airlock/A = holder)
+	var/t = sanitizeSafe(input(usr, "Enter a new name.", holder.name), MAX_NAME_LEN)
+	holder.name = t
+	holder.update_icon()
+	message_admins("[usr]([usr.ckey]) renamed a door to ''[t]'' at [holder.x],[holder.y],[holder.z].")
+	log_admin("[usr]([usr.ckey]) renamed a door to ''[t]'' at [holder.x],[holder.y],[holder.z].")
+
+/datum/wires/proc/DescribeDoor(var/obj/machinery/door/airlock/A = holder)
+	var/t = sanitizeSafe(input(usr, "Enter a new description.", holder.desc), MAX_MESSAGE_LEN) // max len values are in misc.dm for reference, can be set to MAX_NAME_LEN to reduce length allowance
+	holder.desc = t
+	holder.update_icon()
+	message_admins("[usr]([usr.key]) described a door as ''[t]'' at [holder.x],[holder.y],[holder.z].")
+	log_admin("([usr]([usr.ckey]) described a door as ''[t]'' at [holder.x],[holder.y],[holder.z].")
+
 /datum/wires/proc/GetIndex(var/colour)
 	if(wires[colour])
 		var/index = wires[colour]
@@ -239,7 +262,7 @@ var/const/POWER = 8
 		return signallers[colour]
 	return null
 
-/datum/wires/proc/Attach(var/colour, var/obj/item/device/assembly/signaler/S)
+/datum/wires/proc/Attach(var/colour, var/obj/item/assembly/signaler/S)
 	if(colour && S)
 		if(!IsAttached(colour))
 			signallers[colour] = S
@@ -249,15 +272,14 @@ var/const/POWER = 8
 
 /datum/wires/proc/Detach(var/colour)
 	if(colour)
-		var/obj/item/device/assembly/signaler/S = GetAttached(colour)
+		var/obj/item/assembly/signaler/S = GetAttached(colour)
 		if(S)
 			signallers -= colour
 			S.connected = null
 			S.loc = holder.loc
 			return S
 
-
-/datum/wires/proc/Pulse(var/obj/item/device/assembly/signaler/S)
+/datum/wires/proc/Pulse(var/obj/item/assembly/signaler/S)
 
 	for(var/colour in signallers)
 		if(S == signallers[colour])

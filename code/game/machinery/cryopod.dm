@@ -13,7 +13,7 @@
 	desc = "An interface between crew and the cryogenic storage oversight systems."
 	icon = 'icons/obj/Cryogenic2_vr.dmi' //VOREStation Edit - New Icon
 	icon_state = "cellconsole"
-	circuit = /obj/item/weapon/circuitboard/cryopodcontrol
+	circuit = /obj/item/circuitboard/cryopodcontrol
 	density = 0
 	interact_offline = 1
 	var/mode = null
@@ -41,7 +41,7 @@
 	desc = "An interface between crew and the robotic storage systems"
 	icon = 'icons/obj/robot_storage.dmi'
 	icon_state = "console"
-	circuit = /obj/item/weapon/circuitboard/robotstoragecontrol
+	circuit = /obj/item/circuitboard/robotstoragecontrol
 
 	storage_type = "cyborgs"
 	storage_name = "Robotic Storage Control"
@@ -50,7 +50,7 @@
 /obj/machinery/computer/cryopod/dorms
 	name = "residential oversight console"
 	desc = "An interface between visitors and the residential oversight systems tasked with keeping track of all visitors in the deeper section of the colony."
-	circuit = "/obj/item/weapon/circuitboard/robotstoragecontrol"
+	circuit = "/obj/item/circuitboard/robotstoragecontrol"
 
 	storage_type = "visitors"
 	storage_name = "Residential Oversight Control"
@@ -59,7 +59,7 @@
 /obj/machinery/computer/cryopod/travel
 	name = "docking oversight console"
 	desc = "An interface between visitors and the docking oversight systems tasked with keeping track of all visitors who enter or exit from the docks."
-	circuit = "/obj/item/weapon/circuitboard/robotstoragecontrol"
+	circuit = "/obj/item/circuitboard/robotstoragecontrol"
 
 	storage_type = "visitors"
 	storage_name = "Travel Oversight Control"
@@ -68,7 +68,7 @@
 /obj/machinery/computer/cryopod/gateway
 	name = "gateway oversight console"
 	desc = "An interface between visitors and the gateway oversight systems tasked with keeping track of all visitors who enter or exit from the gateway."
-	circuit = "/obj/item/weapon/circuitboard/robotstoragecontrol"
+	circuit = "/obj/item/circuitboard/robotstoragecontrol"
 
 	storage_type = "visitors"
 	storage_name = "Travel Oversight Control"
@@ -86,7 +86,7 @@
 
 	var/dat
 
-	if(!(ticker))
+	if(!(SSticker))
 		return
 
 	dat += "<hr/><br/><b>[storage_name]</b><br/>"
@@ -134,7 +134,7 @@
 		if(!allow_items) return
 
 		if(frozen_items.len == 0)
-			user << "<span class='notice'>There is nothing to recover from storage.</span>"
+			to_chat(user, "<span class='notice'>There is nothing to recover from storage.</span>")
 			return
 
 		var/obj/item/I = input(usr, "Please choose which object to retrieve.","Object recovery",null) as null|anything in frozen_items
@@ -142,7 +142,7 @@
 			return
 
 		if(!(I in frozen_items))
-			user << "<span class='notice'>\The [I] is no longer in storage.</span>"
+			to_chat(user, "<span class='notice'>\The [I] is no longer in storage.</span>")
 			return
 
 		visible_message("<span class='notice'>The console beeps happily as it disgorges \the [I].</span>", 3)
@@ -154,7 +154,7 @@
 		if(!allow_items) return
 
 		if(frozen_items.len == 0)
-			user << "<span class='notice'>There is nothing to recover from storage.</span>"
+			to_chat(user, "<span class='notice'>There is nothing to recover from storage.</span>")
 			return
 
 		visible_message("<span class='notice'>The console beeps happily as it disgorges the desired objects.</span>", 3)
@@ -166,27 +166,27 @@
 	updateUsrDialog()
 	return
 
-/obj/item/weapon/circuitboard/cryopodcontrol
+/obj/item/circuitboard/cryopodcontrol
 	name = "Circuit board (Cryogenic Oversight Console)"
 	build_path = "/obj/machinery/computer/cryopod"
 	origin_tech = list(TECH_DATA = 3)
 
-/obj/item/weapon/circuitboard/robotstoragecontrol
+/obj/item/circuitboard/robotstoragecontrol
 	name = "Circuit board (Robotic Storage Console)"
 	build_path = "/obj/machinery/computer/cryopod/robot"
 	origin_tech = list(TECH_DATA = 3)
 
-/obj/item/weapon/circuitboard/dormscontrol
+/obj/item/circuitboard/dormscontrol
 	name = "Circuit board (Residential Oversight Console)"
 	build_path = "/obj/machinery/computer/cryopod/door/dorms"
 	origin_tech = list(TECH_DATA = 3)
 
-/obj/item/weapon/circuitboard/travelcontrol
+/obj/item/circuitboard/travelcontrol
 	name = "Circuit board (Travel Oversight Console - Docks)"
 	build_path = "/obj/machinery/computer/cryopod/door/travel"
 	origin_tech = list(TECH_DATA = 3)
 
-/obj/item/weapon/circuitboard/gatewaycontrol
+/obj/item/circuitboard/gatewaycontrol
 	name = "Circuit board (Travel Oversight Console - Gateway)"
 	build_path = "/obj/machinery/computer/cryopod/door/gateway"
 	origin_tech = list(TECH_DATA = 3)
@@ -225,11 +225,11 @@
 	var/mob/occupant = null       // Person waiting to be despawned.
 	var/time_till_despawn = 599  // Down to 1 minute to reflect Vorestation respawn times.
 	var/time_entered = 0          // Used to keep track of the safe period.
-	var/obj/item/device/radio/intercom/announce //
+	var/obj/item/radio/intercom/announce //
 
 	var/obj/machinery/computer/cryopod/control_computer
 	var/last_no_computer_message = 0
-	var/applies_stasis = 1
+	var/applies_stasis = 0	//VOREStation Edit: allow people to change their mind
 
 /obj/machinery/cryopod/robot
 	name = "robotic storage unit"
@@ -294,7 +294,7 @@
 	time_till_despawn = 60 //1 second, because gateway.
 
 /obj/machinery/cryopod/New()
-	announce = new /obj/item/device/radio/intercom(src)
+	announce = new /obj/item/radio/intercom(src)
 	..()
 
 /obj/machinery/cryopod/Destroy()
@@ -303,7 +303,7 @@
 		occupant.resting = 1
 	return ..()
 
-/obj/machinery/cryopod/initialize()
+/obj/machinery/cryopod/Initialize()
 	. = ..()
 
 	find_control_computer()
@@ -391,6 +391,13 @@
 			var/obj/belly/B = belly
 			for(var/mob/living/sub_L in B)
 				despawn_occupant(sub_L)
+			for(var/obj/item/W in B)
+				W.forceMove(src)
+				if(W.contents.len)
+					for(var/obj/item/O in W.contents)
+						if(istype(O,/obj/item/storage/internal))
+							continue
+						O.forceMove(src)
 		if(ishuman(to_despawn))
 			var/mob/living/carbon/human/H = to_despawn
 			if(H.nif)
@@ -407,7 +414,7 @@
 
 		if(W.contents.len) //Make sure we catch anything not handled by qdel() on the items.
 			for(var/obj/item/O in W.contents)
-				if(istype(O,/obj/item/weapon/storage/internal)) //Stop eating pockets, you fuck!
+				if(istype(O,/obj/item/storage/internal)) //Stop eating pockets, you fuck!
 					continue
 				O.forceMove(src)
 
@@ -423,7 +430,7 @@
 		if(W.preserve_item)
 			preserve = 1
 
-		if(istype(W,/obj/item/weapon/implant/health))
+		if(istype(W,/obj/item/implant/health))
 			for(var/obj/machinery/computer/cloning/com in machines)
 				for(var/datum/dna2/record/R in com.records)
 					if(locate(R.implant) == W)
@@ -451,7 +458,7 @@
 		// them win or lose based on cryo is silly so we remove the objective.
 		if(O.target == to_despawn.mind)
 			if(O.owner && O.owner.current)
-				O.owner.current << "<span class='warning'>You get the feeling your target is no longer within your reach...</span>"
+				to_chat(O.owner.current, "<span class='warning'>You get the feeling your target is no longer within your reach...</span>")
 			qdel(O)
 
 	//VOREStation Edit - Resleeving.
@@ -467,15 +474,15 @@
 	//Handle job slot/tater cleanup.
 	var/job = to_despawn.mind.assigned_role
 
-	job_master.FreeRole(job)
+	SSjobs.FreeRole(job)
 
 	if(to_despawn.mind.objectives.len)
 		qdel(to_despawn.mind.objectives)
 		to_despawn.mind.special_role = null
 
 	//else
-		//if(ticker.mode.name == "AutoTraitor")
-			//var/datum/game_mode/traitor/autotraitor/current_mode = ticker.mode
+		//if(SSticker.mode.name == "AutoTraitor")
+			//var/datum/game_mode/traitor/autotraitor/current_mode = SSticker.mode
 			//current_mode.possible_traitors.Remove(to_despawn)
 
 	// Delete them from datacore.
@@ -506,6 +513,12 @@
 	//visible_message("<span class='notice'>\The [initial(name)] hums and hisses as it moves [to_despawn.real_name] into storage.</span>", 3)
 	visible_message("<span class='notice'>\The [initial(name)] [on_store_visible_message_1] [to_despawn.real_name] [on_store_visible_message_2].</span>", 3)
 
+	//VOREStation Edit begin: Dont delete mobs-in-mobs
+	if(to_despawn.client && to_despawn.stat<2)
+		var/mob/observer/dead/newghost = to_despawn.ghostize()
+		newghost.timeofdeath = world.time
+	//VOREStation Edit end: Dont delete mobs-in-mobs
+
 	//This should guarantee that ghosts don't spawn.
 	to_despawn.ckey = null
 
@@ -513,13 +526,13 @@
 	qdel(to_despawn)
 	set_occupant(null)
 
-/obj/machinery/cryopod/attackby(var/obj/item/weapon/G as obj, var/mob/user as mob)
+/obj/machinery/cryopod/attackby(var/obj/item/G as obj, var/mob/user as mob)
 
-	if(istype(G, /obj/item/weapon/grab))
+	if(istype(G, /obj/item/grab))
 
-		var/obj/item/weapon/grab/grab = G
+		var/obj/item/grab/grab = G
 		if(occupant)
-			user << "<span class='notice'>\The [src] is in use.</span>"
+			to_chat(user, "<span class='notice'>\The [src] is in use.</span>")
 			return
 
 		if(!ismob(grab.affecting))
@@ -564,12 +577,13 @@
 		return
 
 	if(occupant)
-		usr << "<span class='notice'><B>\The [src] is in use.</B></span>"
+		to_chat(usr, "<span class='notice'><B>\The [src] is in use.</B></span>")
 		return
 
-	for(var/mob/living/simple_animal/slime/M in range(1,usr))
-		if(M.victim == usr)
-			usr << "You're too busy getting your life sucked out of you."
+	if(isliving(usr))
+		var/mob/living/L = usr
+		if(L.has_buckled_mobs())
+			to_chat(L, span("warning", "You have other entities attached to yourself. Remove them first."))
 			return
 
 	visible_message("[usr] [on_enter_visible_message] [src].", 3)
@@ -580,7 +594,7 @@
 			return
 
 		if(occupant)
-			usr << "<span class='notice'><B>\The [src] is in use.</B></span>"
+			to_chat(usr, "<span class='notice'><B>\The [src] is in use.</B></span>")
 			return
 
 		usr.stop_pulling()
@@ -596,8 +610,8 @@
 
 		icon_state = occupied_icon_state
 
-		usr << "<span class='notice'>[on_enter_occupant_message]</span>"
-		usr << "<span class='notice'><b>If you ghost, log out or close your client now, your character will shortly be permanently removed from the round.</b></span>"
+		to_chat(usr, "<span class='notice'>[on_enter_occupant_message]</span>")
+		to_chat(usr, "<span class='notice'><b>If you ghost, log out or close your client now, your character will shortly be permanently removed from the round.</b></span>")
 
 		time_entered = world.time
 
@@ -683,8 +697,8 @@
 
 		icon_state = occupied_icon_state
 
-		M << "<span class='notice'>[on_enter_occupant_message]</span>"
-		M << "<span class='notice'><b>If you ghost, log out or close your client now, your character will shortly be permanently removed from the round.</b></span>"
+		to_chat(M, "<span class='notice'>[on_enter_occupant_message]</span>")
+		to_chat(M, "<span class='notice'><b>If you ghost, log out or close your client now, your character will shortly be permanently removed from the round.</b></span>")
 		set_occupant(M)
 		time_entered = world.time
 		if(ishuman(M) && applies_stasis)

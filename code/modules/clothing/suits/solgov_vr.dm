@@ -98,3 +98,14 @@
 /obj/item/clothing/suit/dress/marine/command
 	name = "marine command dress jacket"
 	desc = "A tailored black USDF Marine Corps dress jacket with gold trim. Smells like ceremony."
+
+/obj/item/clothing/suit/dress/marine/command/hos
+	name = "head of security's dress jacket"
+	desc = "A sleek, buttoned coat with gold trim. The fabric feels sturdy, could come in handy"
+	icon_state = "blackdress_com"
+	armor = list(melee = 50, bullet = 40, laser = 40, energy = 25, bomb = 25, bio = 0, rad = 0)
+
+/obj/item/clothing/suit/dress/expedition/command/cd
+	name = "Facility Director's dress jacket"
+	desc = "A grey dress jacket, adorned with gold trim and buttons. Makes those wearing it look powerful."
+	icon_state = "greydress_com"

@@ -11,6 +11,8 @@
 	var/icon_state_override = null // Used for special slime appearances like the rainbow slime.
 	pass_flags = PASSTABLE
 
+	makes_dirt = FALSE	// Goop
+
 	speak_emote = list("chirps")
 
 	maxHealth = 150
@@ -96,7 +98,8 @@
 	/obj/item/clothing/head,
 	)
 
-/mob/living/simple_animal/slime/New(var/location, var/start_as_adult = FALSE)
+/mob/living/simple_animal/slime/Initialize(mapload, start_as_adult = FALSE)
+	. = ..()
 	verbs += /mob/living/proc/ventcrawl
 	if(start_as_adult)
 		make_adult()
@@ -105,7 +108,6 @@
 	update_icon()
 	number = rand(1, 1000)
 	update_name()
-	..(location)
 
 /mob/living/simple_animal/slime/Destroy()
 	if(hat)
@@ -267,7 +269,7 @@
 	if(bodytemperature < 183.222)
 		. += (283.222 - bodytemperature) / 10 * 1.75
 
-	. += config.slime_delay
+	. += config_legacy.slime_delay
 
 /mob/living/simple_animal/slime/Process_Spacemove()
 	return 2

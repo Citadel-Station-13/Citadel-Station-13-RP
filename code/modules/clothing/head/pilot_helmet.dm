@@ -6,7 +6,7 @@
 	icon_state = "pilot_helmet1"
 	item_icons = list(slot_head_str = 'icons/mob/pilot_helmet.dmi')
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/seromi/pilot_helmet.dmi'
+		SPECIES_TESHARI = 'icons/mob/species/teshari/pilot_helmet.dmi'
 		)
 	flags = THICKMATERIAL
 	armor = list(melee = 20, bullet = 10, laser = 10, energy = 5, bomb = 10, bio = 0, rad = 0)
@@ -17,13 +17,13 @@
 	max_heat_protection_temperature = HELMET_MAX_HEAT_PROTECTION_TEMPERATURE
 	w_class = ITEMSIZE_NORMAL
 
-	var/obj/machinery/computer/shuttle_control/web/shuttle_comp
+	var/obj/machinery/computer/shuttle_control/shuttle_comp
 	var/obj/screen/pilot_hud
 	var/list/images
 	var/list/raw_images
 	var/last_status
 
-/obj/item/clothing/head/pilot/initialize()
+/obj/item/clothing/head/pilot/Initialize()
 	. = ..()
 
 	images = list()
@@ -194,8 +194,8 @@
 /obj/item/clothing/head/pilot/alt/attack_self(mob/user as mob)
 	if(src.icon_state == initial(icon_state))
 		src.icon_state = "[icon_state]up"
-		user << "You raise the visor on the pilot helmet."
+		to_chat(user, "You raise the visor on the pilot helmet.")
 	else
 		src.icon_state = initial(icon_state)
-		user << "You lower the visor on the pilot helmet."
+		to_chat(user, "You lower the visor on the pilot helmet.")
 	update_clothing_icon() //so our mob-overlays update

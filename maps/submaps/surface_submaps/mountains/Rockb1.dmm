@@ -16,7 +16,7 @@
 /area/submap/Rockb1)
 "f" = (
 /obj/structure/table/woodentable,
-/obj/item/device/flashlight/lamp,
+/obj/item/flashlight/lamp,
 /turf/simulated/floor/lino,
 /area/submap/Rockb1)
 "g" = (
@@ -25,7 +25,7 @@
 	icon_opened = "cabinet_open";
 	icon_state = "cabinet_closed"
 	},
-/obj/item/weapon/gun/projectile/pistol,
+/obj/item/gun/projectile/pistol,
 /obj/item/ammo_magazine/m9mm/compact,
 /turf/simulated/floor/lino,
 /area/submap/Rockb1)
@@ -55,7 +55,7 @@
 /area/submap/Rockb1)
 "n" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/material/shard,
+/obj/item/material/shard,
 /turf/simulated/floor/plating,
 /area/submap/Rockb1)
 "o" = (
@@ -84,7 +84,7 @@
 /area/submap/Rockb1)
 "u" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/material/shard{
+/obj/item/material/shard{
 	icon_state = "medium"
 	},
 /turf/simulated/floor/tiled,
@@ -199,7 +199,7 @@
 /area/submap/Rockb1)
 "K" = (
 /obj/structure/table/standard,
-/obj/item/weapon/pickaxe/drill,
+/obj/item/pickaxe/drill,
 /turf/simulated/floor/tiled,
 /area/submap/Rockb1)
 "L" = (
@@ -210,12 +210,12 @@
 /area/submap/Rockb1)
 "M" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/toolbox/electrical,
+/obj/item/storage/toolbox/electrical,
 /turf/simulated/floor/tiled,
 /area/submap/Rockb1)
 "N" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/mechanical,
 /turf/simulated/floor/tiled,
 /area/submap/Rockb1)
 "O" = (

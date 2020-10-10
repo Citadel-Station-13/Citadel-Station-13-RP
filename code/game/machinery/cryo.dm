@@ -10,7 +10,7 @@
 	interact_offline = 1
 
 	var/on = 0
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 20
 	active_power_usage = 200
 	buckle_lying = FALSE
@@ -18,7 +18,7 @@
 
 	var/temperature_archived
 	var/mob/living/carbon/occupant = null
-	var/obj/item/weapon/reagent_containers/glass/beaker = null
+	var/obj/item/reagent_containers/glass/beaker = null
 
 	var/current_heat_capacity = 50
 
@@ -30,7 +30,7 @@
 	icon_state = "base"
 	initialize_directions = dir
 
-/obj/machinery/atmospherics/unary/cryo_cell/initialize()
+/obj/machinery/atmospherics/unary/cryo_cell/Initialize()
 	. = ..()
 	var/image/tank = image(icon,"tank")
 	tank.alpha = 200
@@ -109,7 +109,7 @@
 		occupantData["stat"] = occupant.stat
 		occupantData["health"] = occupant.health
 		occupantData["maxHealth"] = occupant.getMaxHealth()
-		occupantData["minHealth"] = config.health_threshold_dead
+		occupantData["minHealth"] = config_legacy.health_threshold_dead
 		occupantData["bruteLoss"] = occupant.getBruteLoss()
 		occupantData["oxyLoss"] = occupant.getOxyLoss()
 		occupantData["toxLoss"] = occupant.getToxLoss()
@@ -141,7 +141,7 @@
 				data["beakerVolume"] += R.volume
 
 	// update the ui if it exists, returns null if no ui is passed/found
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
 		// the ui does not exist, so we'll create a new() one
         // for a list of parameters and their descriptions see the code docs in \code\modules\nano\nanoui.dm
@@ -182,10 +182,10 @@
 	add_fingerprint(usr)
 	return 1 // update UIs attached to this object
 
-/obj/machinery/atmospherics/unary/cryo_cell/attackby(var/obj/item/weapon/G as obj, var/mob/user as mob)
-	if(istype(G, /obj/item/weapon/reagent_containers/glass))
+/obj/machinery/atmospherics/unary/cryo_cell/attackby(var/obj/item/G as obj, var/mob/user as mob)
+	if(istype(G, /obj/item/reagent_containers/glass))
 		if(beaker)
-			user << "<span class='warning'>A beaker is already loaded into the machine.</span>"
+			to_chat(user, "<span class='warning'>A beaker is already loaded into the machine.</span>")
 			return
 
 		beaker =  G
@@ -193,20 +193,19 @@
 		G.loc = src
 		user.visible_message("[user] adds \a [G] to \the [src]!", "You add \a [G] to \the [src]!")
 		update_icon()
-	else if(istype(G, /obj/item/weapon/grab))
-		var/obj/item/weapon/grab/grab = G
+	else if(istype(G, /obj/item/grab))
+		var/obj/item/grab/grab = G
 		if(!ismob(grab.affecting))
 			return
 		if(occupant)
 			to_chat(user,"<span class='warning'>\The [src] is already occupied by [occupant].</span>")
-		for(var/mob/living/simple_animal/slime/M in range(1,grab.affecting))
-			if(M.victim == grab.affecting)
-				usr << "[grab.affecting.name] will not fit into the cryo because they have a slime latched onto their head."
-				return
+		if(grab.affecting.has_buckled_mobs())
+			to_chat(user, span("warning", "\The [grab.affecting] has other entities attached to it. Remove them first."))
+			return
 		var/mob/M = grab.affecting
 		qdel(grab)
 		put_mob(M)
-			
+
 	return
 
 /obj/machinery/atmospherics/unary/cryo_cell/MouseDrop_T(var/mob/target, var/mob/user) //Allows borgs to put people into cryo without external assistance
@@ -235,7 +234,7 @@
 		if(occupant.bodytemperature < T0C)
 			occupant.sleeping = max(5, (1/occupant.bodytemperature)*2000)
 			occupant.Paralyse(max(5, (1/occupant.bodytemperature)*3000))
-			if(air_contents.gas["oxygen"] > 2)
+			if(air_contents.gas[/datum/gas/oxygen] > 2)
 				if(occupant.getOxyLoss()) occupant.adjustOxyLoss(-1)
 			else
 				occupant.adjustOxyLoss(-1)
@@ -289,38 +288,40 @@
 	unbuckle_mob(occupant, force = TRUE)
 	occupant = null
 	current_heat_capacity = initial(current_heat_capacity)
-	update_use_power(1)
+	update_use_power(USE_POWER_IDLE)
 	return
 /obj/machinery/atmospherics/unary/cryo_cell/proc/put_mob(mob/living/carbon/M as mob)
 	if(stat & (NOPOWER|BROKEN))
-		usr << "<span class='warning'>The cryo cell is not functioning.</span>"
+		to_chat(usr, "<span class='warning'>The cryo cell is not functioning.</span>")
 		return
 	if(!istype(M))
-		usr << "<span class='danger'>The cryo cell cannot handle such a lifeform!</span>"
+		to_chat(usr, "<span class='danger'>The cryo cell cannot handle such a lifeform!</span>")
 		return
 	if(occupant)
-		usr << "<span class='danger'>The cryo cell is already occupied!</span>"
+		to_chat(usr, "<span class='danger'>The cryo cell is already occupied!</span>")
 		return
 	if(M.abiotic())
-		usr << "<span class='warning'>Subject may not have abiotic items on.</span>"
+		to_chat(usr, "<span class='warning'>Subject may not have abiotic items on.</span>")
+		return
+	if(M.buckled)
+		to_chat(usr, "<span class='warning'>[M] is buckled to something!</span>")
 		return
 	if(!node)
-		usr << "<span class='warning'>The cell is not correctly connected to its pipe network!</span>"
+		to_chat(usr, "<span class='warning'>The cell is not correctly connected to its pipe network!</span>")
 		return
 	if(M.client)
 		M.client.perspective = EYE_PERSPECTIVE
 		M.client.eye = src
-	M.stop_pulling()
-	M.loc = src
+	M.forceMove(src)
 	M.ExtinguishMob()
 	if(M.health > -100 && (M.health < 0 || M.sleeping))
-		M << "<span class='notice'><b>You feel a cold liquid surround you. Your skin starts to freeze up.</b></span>"
+		to_chat(M, "<span class='notice'><b>You feel a cold liquid surround you. Your skin starts to freeze up.</b></span>")
 	occupant = M
 	buckle_mob(occupant, forced = TRUE, check_loc = FALSE)
 	vis_contents |= occupant
 	occupant.pixel_y += 19
 	current_heat_capacity = HEAT_CAPACITY_HUMAN
-	update_use_power(2)
+	update_use_power(USE_POWER_ACTIVE)
 //	M.metabslow = 1
 	add_fingerprint(usr)
 	update_icon()
@@ -333,7 +334,7 @@
 	if(usr == occupant)//If the user is inside the tube...
 		if(usr.stat == 2)//and he's not dead....
 			return
-		usr << "<span class='notice'>Release sequence activated. This will take two minutes.</span>"
+		to_chat(usr, "<span class='notice'>Release sequence activated. This will take two minutes.</span>")
 		sleep(1200)
 		if(!src || !usr || !occupant || (occupant != usr)) //Check if someone's released/replaced/bombed him already
 			return
@@ -349,14 +350,14 @@
 	set name = "Move Inside"
 	set category = "Object"
 	set src in oview(1)
-	for(var/mob/living/simple_animal/slime/M in range(1,usr))
-		if(M.victim == usr)
-			usr << "You're too busy getting your life sucked out of you."
+	if(isliving(usr))
+		var/mob/living/L = usr
+		if(L.has_buckled_mobs())
+			to_chat(L, span("warning", "You have other entities attached to yourself. Remove them first."))
 			return
-	if(usr.stat != 0)
-		return
-	put_mob(usr)
-	return
+		if(L.stat != CONSCIOUS)
+			return
+		put_mob(L)
 
 /atom/proc/return_air_for_internal_lifeform(var/mob/living/lifeform)
 	return return_air()

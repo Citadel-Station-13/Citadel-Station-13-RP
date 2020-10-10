@@ -26,12 +26,12 @@
 	else if(material.opacity < 0.5 && opacity)
 		set_light(0)
 
-	radiation_repository.resistance_cache.Remove(src)
+	SSradiation.resistance_cache.Remove(src)
 	update_connections(1)
 	update_icon()
 
 
-/turf/simulated/wall/proc/set_material(var/material/newmaterial, var/material/newrmaterial, var/material/newgmaterial)
+/turf/simulated/wall/proc/set_material(var/datum/material/newmaterial, var/datum/material/newrmaterial, var/datum/material/newgmaterial)
 	material = newmaterial
 	reinf_material = newrmaterial
 	if(!newgmaterial)

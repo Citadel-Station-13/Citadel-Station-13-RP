@@ -17,20 +17,20 @@
 	can_pull_size = ITEMSIZE_SMALL
 	can_pull_mobs = MOB_PULL_SMALLER
 
-	holder_type = /obj/item/weapon/holder/diona
+	holder_type = /obj/item/holder/diona
 	var/obj/item/hat
 
 /mob/living/carbon/alien/diona/New()
 
 	..()
-	species = all_species[SPECIES_DIONA]
+	species = GLOB.all_species[SPECIES_DIONA]
 	add_language(LANGUAGE_ROOTGLOBAL)
 	add_language(LANGUAGE_GALCOM)
 	verbs += /mob/living/carbon/alien/diona/proc/merge
 
-/mob/living/carbon/alien/diona/put_in_hands(var/obj/item/W) // No hands.
-	W.loc = get_turf(src)
-	return 1
+/mob/living/carbon/alien/diona/put_in_hands(obj/item/I, del_on_fail = FALSE, merge_stacks = TRUE, forced = FALSE)
+	I.forceMove(drop_location())
+	return TRUE
 
 /mob/living/carbon/alien/diona/proc/wear_hat(var/obj/item/new_hat)
 	if(hat)

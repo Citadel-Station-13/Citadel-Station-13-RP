@@ -1,18 +1,15 @@
-//a controller for a docking port with multiple independent airlocks
-//this is the master controller, that things will try to dock with.
+// A controller for a docking port with multiple independent airlocks
+// This is the master controller, that things will try to dock with.
 /obj/machinery/embedded_controller/radio/docking_port_multi
 	name = "docking port controller"
 
+	program = /datum/computer/file/embedded_program/docking/multi
 	var/child_tags_txt
 	var/child_names_txt
 	var/list/child_names = list()
 
-	var/datum/computer/file/embedded_program/docking/multi/docking_program
-
-/obj/machinery/embedded_controller/radio/docking_port_multi/initialize()
+/obj/machinery/embedded_controller/radio/docking_port_multi/Initialize()
 	. = ..()
-	docking_program = new/datum/computer/file/embedded_program/docking/multi(src)
-	program = docking_program
 
 	var/list/names = splittext(child_names_txt, ";")
 	var/list/tags = splittext(child_tags_txt, ";")
@@ -24,6 +21,7 @@
 
 /obj/machinery/embedded_controller/radio/docking_port_multi/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/data[0]
+	var/datum/computer/file/embedded_program/docking/multi/docking_program = program	// Cast to proper type
 
 	var/list/airlocks[child_names.len]
 	var/i = 1
@@ -35,7 +33,7 @@
 		"airlocks" = airlocks,
 	)
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 
 	if (!ui)
 		ui = new(user, src, ui_key, "multi_docking_console.tmpl", name, 470, 290)
@@ -44,24 +42,21 @@
 		ui.set_auto_update(1)
 
 /obj/machinery/embedded_controller/radio/docking_port_multi/Topic(href, href_list)
-	return
+	return 1	// Apparently we swallow all input (this is corrected legacy code)
 
 
 
-//a docking port based on an airlock
+// A docking port based on an airlock
+// This is the actual controller that will be commanded by the master defined above
 /obj/machinery/embedded_controller/radio/airlock/docking_port_multi
 	name = "docking port controller"
-	var/master_tag	//for mapping
-	var/datum/computer/file/embedded_program/airlock/multi_docking/airlock_program
+	program = /datum/computer/file/embedded_program/airlock/multi_docking
+	var/master_tag	// For mapping
 	tag_secure = 1
-
-/obj/machinery/embedded_controller/radio/airlock/docking_port_multi/initialize()
-	. = ..()
-	airlock_program = new/datum/computer/file/embedded_program/airlock/multi_docking(src)
-	program = airlock_program
 
 /obj/machinery/embedded_controller/radio/airlock/docking_port_multi/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/data[0]
+	var/datum/computer/file/embedded_program/airlock/multi_docking/airlock_program	// Cast to proper type
 
 	data = list(
 		"chamber_pressure" = round(airlock_program.memory["chamber_sensor_pressure"]),
@@ -73,7 +68,7 @@
 		"override_enabled" = airlock_program.override_enabled,
 	)
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 
 	if (!ui)
 		ui = new(user, src, ui_key, "docking_airlock_console.tmpl", name, 470, 290)
@@ -82,14 +77,11 @@
 		ui.set_auto_update(1)
 
 /obj/machinery/embedded_controller/radio/airlock/docking_port_multi/Topic(href, href_list)
-	if(..())
+	if((. = ..()))
 		return
 
-	usr.set_machine(src)
-	src.add_fingerprint(usr)
-
 	var/clean = 0
-	switch(href_list["command"])	//anti-HTML-hacking checks
+	switch(href_list["command"])	// Anti-HTML-hacking checks
 		if("cycle_ext")
 			clean = 1
 		if("cycle_int")
@@ -113,16 +105,16 @@
 /*** DEBUG VERBS ***
 
 /datum/computer/file/embedded_program/docking/multi/proc/print_state()
-	world << "id_tag: [id_tag]"
-	world << "dock_state: [dock_state]"
-	world << "control_mode: [control_mode]"
-	world << "tag_target: [tag_target]"
-	world << "response_sent: [response_sent]"
+	to_chat(world, "id_tag: [id_tag]")
+	to_chat(world, "dock_state: [dock_state]")
+	to_chat(world, "control_mode: [control_mode]")
+	to_chat(world, "tag_target: [tag_target]")
+	to_chat(world, "response_sent: [response_sent]")
 
 /datum/computer/file/embedded_program/docking/multi/post_signal(datum/signal/signal, comm_line)
-	world << "Program [id_tag] sent a message!"
+	to_chat(world, "Program [id_tag] sent a message!")
 	print_state()
-	world << "[id_tag] sent command \"[signal.data["command"]]\" to \"[signal.data["recipient"]]\""
+	to_chat(world, "[id_tag] sent command \"[signal.data["command"]]\" to \"[signal.data["recipient"]]\"")
 	..(signal)
 
 /obj/machinery/embedded_controller/radio/docking_port_multi/verb/view_state()

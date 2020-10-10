@@ -60,7 +60,7 @@
 /datum/artifact_effect/proc/DoEffectPulse(var/atom/holder)
 /datum/artifact_effect/proc/UpdateMove()
 
-/datum/artifact_effect/proc/process()
+/datum/artifact_effect/process()
 	if(chargelevel < chargelevelmax)
 		chargelevel++
 
@@ -123,8 +123,8 @@
 	var/protected = 0
 
 	//anomaly suits give best protection, but excavation suits are almost as good
-	if(istype(H.back,/obj/item/weapon/rig/hazmat))
-		var/obj/item/weapon/rig/hazmat/rig = H.back
+	if(istype(H.back,/obj/item/rig/hazmat))
+		var/obj/item/rig/hazmat/rig = H.back
 		if(rig.suit_is_deployed() && !rig.offline)
 			protected += 1
 

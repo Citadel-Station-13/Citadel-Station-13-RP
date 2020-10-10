@@ -7,9 +7,10 @@
 	name = "window grille spawner"
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "wingrille"
-	density = 1
+	density = TRUE
 	anchored = 1.0
 	pressure_resistance = 4*ONE_ATMOSPHERE
+	can_atmos_pass = ATMOS_PASS_NO
 	var/win_path = /obj/structure/window/basic
 	var/activated
 
@@ -22,14 +23,11 @@
 /obj/effect/wingrille_spawn/attack_generic()
 	activate()
 
-/obj/effect/wingrille_spawn/CanPass(atom/movable/mover, turf/target, height=1.5, air_group = 0)
-	return FALSE
-
-/obj/effect/wingrille_spawn/initialize()
+/obj/effect/wingrille_spawn/Initialize()
 	. = ..()
 	if(!win_path)
 		return
-	if(ticker && ticker.current_state < GAME_STATE_PLAYING)
+	if(SSticker && SSticker.current_state < GAME_STATE_PLAYING)
 		activate()
 
 /obj/effect/wingrille_spawn/proc/activate()
@@ -50,7 +48,7 @@
 						qdel(W)
 			if(!found_connection)
 				var/obj/structure/window/new_win = new win_path(src.loc)
-				new_win.set_dir(dir)
+				new_win.setDir(dir)
 				handle_window_spawn(new_win)
 		else
 			neighbours |= other

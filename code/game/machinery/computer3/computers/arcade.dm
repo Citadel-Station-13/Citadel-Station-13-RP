@@ -3,14 +3,14 @@
 	spawn_parts		= list(/obj/item/part/computer/toybox) //NO HDD - the game is loaded on the circuitboard's OS slot
 
 /obj/item/part/computer/toybox
-	var/list/prizes = list(	/obj/item/weapon/storage/box/snappops			= 2,
+	var/list/prizes = list(	/obj/item/storage/box/snappops			= 2,
 							/obj/item/toy/blink								= 2,
 							/obj/item/clothing/under/syndicate/tacticool	= 2,
 							/obj/item/toy/sword								= 2,
-							/obj/item/weapon/gun/projectile/revolver/capgun	= 2,
+							/obj/item/gun/projectile/revolver/capgun	= 2,
 							/obj/item/toy/crossbow							= 2,
 							/obj/item/clothing/suit/syndicatefake			= 2,
-							/obj/item/weapon/storage/fancy/crayons			= 2,
+							/obj/item/storage/fancy/crayons			= 2,
 							/obj/item/toy/spinningtoy						= 2,
 							/obj/item/toy/prize/ripley						= 1,
 							/obj/item/toy/prize/fireripley					= 1,
@@ -22,7 +22,9 @@
 							/obj/item/toy/prize/seraph						= 1,
 							/obj/item/toy/prize/mauler						= 1,
 							/obj/item/toy/prize/odysseus					= 1,
-							/obj/item/toy/prize/phazon						= 1
+							/obj/item/toy/prize/phazon						= 1,
+							/obj/item/toy/cowgirlprize						= 1,
+							/obj/item/toy/snakeoilprize						= 1
 							)
 
 /obj/item/part/computer/toybox/allow_attackby(var/obj/item/I, var/mob/user)
@@ -32,7 +34,7 @@
 	if(computer && !computer.stat)
 		var/prizeselect = pickweight(prizes)
 		new prizeselect(computer.loc)
-		if(istype(prizeselect, /obj/item/weapon/gun/projectile/revolver/capgun)) //Ammo comes with the gun
+		if(istype(prizeselect, /obj/item/gun/projectile/revolver/capgun)) //Ammo comes with the gun
 			new /obj/item/projectile/bullet/pistol/cap(src.loc)
 		else if(istype(prizeselect, /obj/item/clothing/suit/syndicatefake)) //Helmet is part of the suit
 			new	/obj/item/clothing/head/syndicatefake(computer.loc)

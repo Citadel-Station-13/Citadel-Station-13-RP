@@ -8,6 +8,7 @@
 	var/max_field_radius = 150
 	var/list/field = list()
 	density = 1
+	req_one_access = list(access_engine,access_captain,access_security)
 	var/locked = 0
 	var/average_field_strength = 0
 	var/strengthen_rate = 0.2
@@ -22,14 +23,14 @@
 	var/time_since_fail = 100
 	var/energy_conversion_rate = 0.0006	//how many renwicks per watt?  Higher numbers equals more effiency.
 	var/z_range = 0 // How far 'up and or down' to extend the shield to, in z-levels.  Only works on MultiZ supported z-levels.
-	use_power = 0	//doesn't use APC power
+	use_power = USE_POWER_OFF	//doesn't use APC power
 
 /obj/machinery/shield_gen/advanced
 	name = "advanced bubble shield generator"
 	desc = "A machine that generates a field of energy optimized for blocking meteorites when activated.  This version comes with a more efficent shield matrix."
 	energy_conversion_rate = 0.0012
 
-/obj/machinery/shield_gen/initialize()
+/obj/machinery/shield_gen/Initialize()
 	if(anchored)
 		for(var/obj/machinery/shield_capacitor/cap in range(1, src))
 			if(!cap.anchored)
@@ -42,29 +43,31 @@
 	return ..()
 
 /obj/machinery/shield_gen/Destroy()
-	qdel_null_list(field)
+	QDEL_LIST_NULL(field)
 	return ..()
 
 /obj/machinery/shield_gen/emag_act(var/remaining_charges, var/mob/user)
 	if(prob(75))
 		src.locked = !src.locked
-		user << "Controls are now [src.locked ? "locked." : "unlocked."]"
+		to_chat(user, "Controls are now [src.locked ? "locked." : "unlocked."]")
 		. = 1
 		updateDialog()
-	var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(5, 1, src)
 	s.start()
 
 /obj/machinery/shield_gen/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/weapon/card/id))
-		var/obj/item/weapon/card/id/C = W
-		if(access_captain in C.access || access_security in C.access || access_engine in C.access)
+	if(istype(W, /obj/item/card/id) || istype(W, /obj/item/pda))
+		if(emagged)
+			to_chat(user, "<span class='warning'>The lock seems to be broken.</span>")
+			return
+		if(src.allowed(user))
 			src.locked = !src.locked
-			user << "Controls are now [src.locked ? "locked." : "unlocked."]"
+			to_chat(user, "Controls are now [src.locked ? "locked." : "unlocked."]")
 			updateDialog()
 		else
-			user << "<font color='red'>Access denied.</font>"
-	else if(istype(W, /obj/item/weapon/wrench))
+			to_chat(user, "<span class='warning'>Access denied.</span>")
+	else if(W.is_wrench())
 		src.anchored = !src.anchored
 		playsound(src, W.usesound, 75, 1)
 		src.visible_message("<font color='blue'>\icon[src] [src] has been [anchored?"bolted to the floor":"unbolted from the floor"] by [user].</font>")
@@ -213,7 +216,7 @@
 		return
 	else if( href_list["toggle"] )
 		if (!active && !anchored)
-			usr << "<font color='red'>The [src] needs to be firmly secured to the floor first.</font>"
+			to_chat(usr, "<font color='red'>The [src] needs to be firmly secured to the floor first.</font>")
 			return
 		toggle()
 	else if( href_list["change_radius"] )
@@ -248,7 +251,7 @@
 		covered_turfs = null
 
 		for(var/mob/M in view(5,src))
-			M << "\icon[src] You hear heavy droning start up."
+			to_chat(M, "\icon[src] You hear heavy droning start up.")
 		for(var/obj/effect/energy_field/E in field) // Update the icons here to ensure all the shields have been made already.
 			E.update_icon()
 	else
@@ -258,7 +261,7 @@
 			qdel(D)
 
 		for(var/mob/M in view(5,src))
-			M << "\icon[src] You hear heavy droning fade out."
+			to_chat(M, "\icon[src] You hear heavy droning fade out.")
 
 /obj/machinery/shield_gen/update_icon()
 	if(stat & BROKEN)

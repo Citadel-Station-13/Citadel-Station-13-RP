@@ -1,21 +1,24 @@
-/obj/item/weapon/pickaxe/brush
+/obj/item/pickaxe/brush
 	name = "brush"
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	icon_state = "pick_brush"
 	item_state = "syringe_0"
 	slot_flags = SLOT_EARS
 	digspeed = 20
+	force = 0
+	throwforce = 0
 	desc = "Thick metallic wires for clearing away dust and loose scree (1 centimetre excavation depth)."
 	excavation_amount = 1
 	drill_sound = 'sound/weapons/thudswoosh.ogg'
 	drill_verb = "brushing"
 	w_class = ITEMSIZE_SMALL
 
-/obj/item/weapon/pickaxe/one_pick
+/obj/item/pickaxe/one_pick
 	name = "2cm pick"
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	icon_state = "pick1"
 	item_state = "syringe_0"
+	force = 2
 	digspeed = 20
 	desc = "A miniature excavation tool for precise digging (2 centimetre excavation depth)."
 	excavation_amount = 2
@@ -23,11 +26,12 @@
 	drill_verb = "delicately picking"
 	w_class = ITEMSIZE_SMALL
 
-/obj/item/weapon/pickaxe/two_pick
+/obj/item/pickaxe/two_pick
 	name = "4cm pick"
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	icon_state = "pick2"
 	item_state = "syringe_0"
+	force = 2
 	digspeed = 20
 	desc = "A miniature excavation tool for precise digging (4 centimetre excavation depth)."
 	excavation_amount = 4
@@ -35,11 +39,12 @@
 	drill_verb = "delicately picking"
 	w_class = ITEMSIZE_SMALL
 
-/obj/item/weapon/pickaxe/three_pick
+/obj/item/pickaxe/three_pick
 	name = "6cm pick"
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	icon_state = "pick3"
 	item_state = "syringe_0"
+	force = 3
 	digspeed = 20
 	desc = "A miniature excavation tool for precise digging (6 centimetre excavation depth)."
 	excavation_amount = 6
@@ -47,11 +52,12 @@
 	drill_verb = "delicately picking"
 	w_class = ITEMSIZE_SMALL
 
-/obj/item/weapon/pickaxe/four_pick
+/obj/item/pickaxe/four_pick
 	name = "8cm pick"
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	icon_state = "pick4"
 	item_state = "syringe_0"
+	force = 3
 	digspeed = 20
 	desc = "A miniature excavation tool for precise digging (8 centimetre excavation depth)."
 	excavation_amount = 8
@@ -59,11 +65,12 @@
 	drill_verb = "delicately picking"
 	w_class = ITEMSIZE_SMALL
 
-/obj/item/weapon/pickaxe/five_pick
+/obj/item/pickaxe/five_pick
 	name = "10cm pick"
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	icon_state = "pick5"
 	item_state = "syringe_0"
+	force = 5
 	digspeed = 20
 	desc = "A miniature excavation tool for precise digging (10 centimetre excavation depth)."
 	excavation_amount = 10
@@ -71,11 +78,12 @@
 	drill_verb = "delicately picking"
 	w_class = ITEMSIZE_SMALL
 
-/obj/item/weapon/pickaxe/six_pick
+/obj/item/pickaxe/six_pick
 	name = "12cm pick"
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	icon_state = "pick6"
 	item_state = "syringe_0"
+	force = 5
 	digspeed = 20
 	desc = "A miniature excavation tool for precise digging (12 centimetre excavation depth)."
 	excavation_amount = 12
@@ -83,11 +91,12 @@
 	drill_verb = "delicately picking"
 	w_class = ITEMSIZE_SMALL
 
-/obj/item/weapon/pickaxe/hand
+/obj/item/pickaxe/hand
 	name = "hand pickaxe"
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	icon_state = "pick_hand"
 	item_state = "syringe_0"
+	force = 10
 	digspeed = 30
 	desc = "A smaller, more precise version of the pickaxe (30 centimetre excavation depth)."
 	excavation_amount = 30
@@ -98,7 +107,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Pack for holding pickaxes
 
-/obj/item/weapon/storage/excavation
+/obj/item/storage/excavation
 	name = "excavation pick set"
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "excavation"
@@ -106,51 +115,51 @@
 	item_state = "syringe_kit"
 	storage_slots = 7
 	w_class = ITEMSIZE_SMALL
-	can_hold = list(/obj/item/weapon/pickaxe/brush,
-	/obj/item/weapon/pickaxe/one_pick,
-	/obj/item/weapon/pickaxe/two_pick,
-	/obj/item/weapon/pickaxe/three_pick,
-	/obj/item/weapon/pickaxe/four_pick,
-	/obj/item/weapon/pickaxe/five_pick,
-	/obj/item/weapon/pickaxe/six_pick,
-	/obj/item/weapon/pickaxe/hand)
+	can_hold = list(/obj/item/pickaxe/brush,
+	/obj/item/pickaxe/one_pick,
+	/obj/item/pickaxe/two_pick,
+	/obj/item/pickaxe/three_pick,
+	/obj/item/pickaxe/four_pick,
+	/obj/item/pickaxe/five_pick,
+	/obj/item/pickaxe/six_pick,
+	/obj/item/pickaxe/hand)
 	max_storage_space = ITEMSIZE_COST_SMALL * 9
 	max_w_class = ITEMSIZE_SMALL
 	use_to_pickup = 1
 
-/obj/item/weapon/storage/excavation/New()
-	..()
-	new /obj/item/weapon/pickaxe/brush(src)
-	new /obj/item/weapon/pickaxe/one_pick(src)
-	new /obj/item/weapon/pickaxe/two_pick(src)
-	new /obj/item/weapon/pickaxe/three_pick(src)
-	new /obj/item/weapon/pickaxe/four_pick(src)
-	new /obj/item/weapon/pickaxe/five_pick(src)
-	new /obj/item/weapon/pickaxe/six_pick(src)
+/obj/item/storage/excavation/PopulateContents()
+	. = ..()
+	new /obj/item/pickaxe/brush(src)
+	new /obj/item/pickaxe/one_pick(src)
+	new /obj/item/pickaxe/two_pick(src)
+	new /obj/item/pickaxe/three_pick(src)
+	new /obj/item/pickaxe/four_pick(src)
+	new /obj/item/pickaxe/five_pick(src)
+	new /obj/item/pickaxe/six_pick(src)
 
-/obj/item/weapon/storage/excavation/handle_item_insertion()
+/obj/item/storage/excavation/handle_item_insertion()
 	..()
 	sort_picks()
 
-/obj/item/weapon/storage/excavation/proc/sort_picks()
-	var/list/obj/item/weapon/pickaxe/picksToSort = list()
-	for(var/obj/item/weapon/pickaxe/P in src)
+/obj/item/storage/excavation/proc/sort_picks()
+	var/list/obj/item/pickaxe/picksToSort = list()
+	for(var/obj/item/pickaxe/P in src)
 		picksToSort += P
 		P.loc = null
 	while(picksToSort.len)
 		var/min = 200 // No pick is bigger than 200
 		var/selected = 0
 		for(var/i = 1 to picksToSort.len)
-			var/obj/item/weapon/pickaxe/current = picksToSort[i]
+			var/obj/item/pickaxe/current = picksToSort[i]
 			if(current.excavation_amount <= min)
 				selected = i
 				min = current.excavation_amount
-		var/obj/item/weapon/pickaxe/smallest = picksToSort[selected]
+		var/obj/item/pickaxe/smallest = picksToSort[selected]
 		smallest.loc = src
 		picksToSort -= smallest
 	orient2hud()
 
-/obj/item/weapon/pickaxe/excavationdrill
+/obj/item/pickaxe/excavationdrill
 	name = "excavation drill"
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	icon_state = "excavationdrill2"
@@ -164,7 +173,7 @@
 	w_class = 2
 	attack_verb = list("drilled")
 
-/obj/item/weapon/pickaxe/excavationdrill/attack_self(mob/user as mob)
+/obj/item/pickaxe/excavationdrill/attack_self(mob/user as mob)
 	var/depth = input("Put the desired depth (1-30 centimeters).", "Set Depth", 30) as num
 	if(depth>30 || depth<1)
 		to_chat(user, "<span class='notice'>Invalid depth.</span>")
@@ -185,7 +194,7 @@
 		if(25 to 30)
 			icon_state = "excavationdrill5" //The other 2 sprites are comically long. Let's just cut it at 5.
 
-/obj/item/weapon/pickaxe/excavationdrill/examine(mob/user)
+/obj/item/pickaxe/excavationdrill/examine(mob/user)
 	..()
 	var/depth = excavation_amount
 	to_chat(user, "<span class='info'>It is currently set at [depth]cms.</span>")

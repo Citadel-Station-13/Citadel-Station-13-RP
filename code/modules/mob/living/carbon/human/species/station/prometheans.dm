@@ -10,6 +10,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 	mimic many forms of life. Derived from the Aetolian giant slime (Macrolimus vulgaris) inhabiting the warm, tropical planet \
 	of Aetolus, they are a relatively new lab-created sapient species, and as such many things about them have yet to be comprehensively studied. \
 	What has Science done?"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/promethean)
 	show_ssd =         "totally quiescent"
 	death_message =    "rapidly loses cohesion, splattering across the ground..."
 	knockout_message = "collapses inwards, forming a disordered puddle of goo."
@@ -18,18 +19,20 @@ var/datum/species/shapeshifter/promethean/prometheans
 	blood_color = "#05FF9B"
 	flesh_color = "#05FFFB"
 
-	hunger_factor =    0.2
+	hunger_factor = 0.07 //As of writing, original was 0.1 - Slows hunger rate (some more)
 	reagent_tag =      IS_SLIME
-	mob_size =         MOB_SMALL
+	mob_size =         MOB_MEDIUM
 	bump_flag =        SLIME
-	swap_flags =       MONKEY|SLIME|SIMPLE_ANIMAL
-	push_flags =       MONKEY|SLIME|SIMPLE_ANIMAL
+	push_flags = ~HEAVY
+	swap_flags = ~HEAVY
 	flags =            NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT
 	appearance_flags = HAS_SKIN_COLOR | HAS_EYE_COLOR | HAS_HAIR_COLOR | RADIATION_GLOWS | HAS_UNDERWEAR
-	spawn_flags		 = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED
+	spawn_flags		 = SPECIES_CAN_JOIN
 	health_hud_intensity = 2
-	num_alternate_languages = 3
+	num_alternate_languages = 2 // citadel change, not stuck with one other lang
 	species_language = LANGUAGE_SOL_COMMON
+	secondary_langs = list(LANGUAGE_SOL_COMMON)	// For some reason, having this as their species language does not allow it to be chosen.
+	assisted_langs = list(LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)	// Prometheans are weird, let's just assume they can use basically any language.
 
 	breath_type = null
 	poison_type = null
@@ -39,19 +42,20 @@ var/datum/species/shapeshifter/promethean/prometheans
 	male_cough_sounds = list('sound/effects/slime_squish.ogg')
 	female_cough_sounds = list('sound/effects/slime_squish.ogg')
 
-	min_age =		1
-	max_age =		10
+	min_age =		18
+	max_age =		80
 
 	economic_modifier = 3
 
-	//gluttonous =	1 // VOREStation Edit. Redundant feature.
+	gluttonous =	0
 	virus_immune =	1
 	blood_volume =	560
-	brute_mod =		0.75
+	slowdown = -0.2 // citadel change
+	brute_mod =		0.5 // citadel change, used to be 0.75
 	burn_mod =		2
 	oxy_mod =		0
 	flash_mod =		0.5 //No centralized, lensed eyes.
-	item_slowdown_mod = 1.33
+	item_slowdown_mod = 0.66 // citadel change, used to be 1.33
 
 	cloning_modifier = /datum/modifier/cloning_sickness/promethean
 
@@ -63,15 +67,21 @@ var/datum/species/shapeshifter/promethean/prometheans
 	heat_level_2 = 370 //Default 400
 	heat_level_3 = 600 //Default 1000
 
-	body_temperature =      310.15
+	body_temperature = T20C	// Room temperature
 
-	siemens_coefficient =   0.4
-	rarity_value =          5
+	rarity_value = 5
+	siemens_coefficient = 1 //As of writing, original was 0.4 (bad)
 
 	genders = list(MALE, FEMALE, NEUTER, PLURAL)
 
 	unarmed_types = list(/datum/unarmed_attack/slime_glomp)
-	has_organ =     list(O_BRAIN = /obj/item/organ/internal/brain/slime) // Slime core.
+
+	has_organ =     list(O_BRAIN = /obj/item/organ/internal/brain/slime,
+						O_HEART = /obj/item/organ/internal/heart/grey/colormatch/slime,
+						O_REGBRUTE = /obj/item/organ/internal/regennetwork,
+						O_REGBURN = /obj/item/organ/internal/regennetwork/burn,
+						O_REGOXY = /obj/item/organ/internal/regennetwork/oxy,
+						O_REGTOX = /obj/item/organ/internal/regennetwork/tox)
 
 	dispersed_eyes = TRUE
 
@@ -95,30 +105,52 @@ var/datum/species/shapeshifter/promethean/prometheans
 		/mob/living/carbon/human/proc/shapeshifter_select_shape,
 		/mob/living/carbon/human/proc/shapeshifter_select_colour,
 		/mob/living/carbon/human/proc/shapeshifter_select_hair,
-		/mob/living/carbon/human/proc/shapeshifter_select_eye_colour,
 		/mob/living/carbon/human/proc/shapeshifter_select_hair_colors,
 		/mob/living/carbon/human/proc/shapeshifter_select_gender,
-		/mob/living/carbon/human/proc/shapeshifter_select_wings, //VOREStation Add,
-		/mob/living/carbon/human/proc/shapeshifter_select_tail, //VOREStation Add,
-		/mob/living/carbon/human/proc/shapeshifter_select_ears, //VOREStation Add,
-		/mob/living/carbon/human/proc/regenerate
+		/mob/living/carbon/human/proc/regenerate,
+		/mob/living/carbon/human/proc/shapeshifter_select_wings,
+		/mob/living/carbon/human/proc/shapeshifter_select_tail,
+		/mob/living/carbon/human/proc/shapeshifter_select_ears,
+		/mob/living/proc/set_size,
+		/mob/living/carbon/human/proc/succubus_drain,
+		/mob/living/carbon/human/proc/succubus_drain_finalize,
+		/mob/living/carbon/human/proc/succubus_drain_lethal,
+		/mob/living/carbon/human/proc/slime_feed,
+		/mob/living/proc/eat_trash,
+		/mob/living/carbon/human/proc/promethean_select_opaqueness
 		)
 
-	valid_transform_species = list(SPECIES_HUMAN, SPECIES_HUMAN_VATBORN, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_SKRELL, SPECIES_DIONA, SPECIES_TESHARI, SPECIES_MONKEY)
+	valid_transform_species = list(
+		"Human", "Unathi", "Tajara", "Skrell",
+		"Diona", "Teshari", "Monkey","Sergal",
+		"Akula","Nevrean","Highlander Zorren",
+		"Flatland Zorren", "Vulpkanin", "Vasilissan",
+		"Rapala", "Neaera", "Stok", "Farwa", "Sobaka",
+		"Wolpin", "Saru", "Sparra")
 
-	var/heal_rate = 0.5 // Temp. Regen per tick.
+	var/heal_rate = 0.35 //As of writing, original was 0.2 - speeds up regen
+	active_regen_mult = 0.66 //As of writing, original was 1 (good)
+
+	color_mult = 1
+	trashcan = 1 //They have goopy bodies. They can just dissolve things within them.
+
+	wikilink="https://wiki.vore-station.net/Promethean"
 
 /datum/species/shapeshifter/promethean/New()
 	..()
 	prometheans = src
 
 /datum/species/shapeshifter/promethean/equip_survival_gear(var/mob/living/carbon/human/H)
-	var/boxtype = pick(typesof(/obj/item/weapon/storage/toolbox/lunchbox))
-	var/obj/item/weapon/storage/toolbox/lunchbox/L = new boxtype(get_turf(H))
-	var/mob/living/simple_animal/mouse/mouse = new (L)
-	var/obj/item/weapon/holder/holder = new (L)
-	mouse.forceMove(holder)
-	holder.sync(mouse)
+	var/boxtype = pick(list(/obj/item/storage/toolbox/lunchbox,
+							/obj/item/storage/toolbox/lunchbox/heart,
+							/obj/item/storage/toolbox/lunchbox/cat,
+							/obj/item/storage/toolbox/lunchbox/nt,
+							/obj/item/storage/toolbox/lunchbox/mars,
+							/obj/item/storage/toolbox/lunchbox/cti,
+							/obj/item/storage/toolbox/lunchbox/nymph,
+							/obj/item/storage/toolbox/lunchbox/syndicate))	//Only pick the empty types
+	var/obj/item/storage/toolbox/lunchbox/L = new boxtype(get_turf(H))
+	new /obj/item/reagent_containers/food/snacks/candy/proteinbar(L)
 	if(H.backbag == 1)
 		H.equip_to_slot_or_del(L, slot_r_hand)
 	else

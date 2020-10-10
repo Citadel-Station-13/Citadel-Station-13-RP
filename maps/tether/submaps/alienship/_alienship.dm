@@ -1,22 +1,15 @@
 // -- Datums -- //
 
-/datum/shuttle_destination/excursion/alienship
-	name = "Unknown Ship"
-	my_area = /area/shuttle/excursion/away_alienship
-	preferred_interim_area = /area/shuttle/excursion/space_moving
-	skip_me = TRUE
-
-	routes_to_make = list(
-		/datum/shuttle_destination/excursion/bluespace = 30 SECONDS
-	)
+/obj/effect/overmap/visitable/sector/alienship
+	name = "Unknown Vessel"
+	desc = "An unknown vessel detected by sensors."
+	start_x = 12
+	start_y = 12
+	icon_state = "ship"
+	color = "#ff00ff"	// Sandy
+	initial_generic_waypoints = list("tether_excursion_alienship")
 
 // -- Objs -- //
-
-/obj/shuttle_connector/alienship
-	name = "shuttle connector - alienship"
-	shuttle_name = "Excursion Shuttle"
-	destinations = list(/datum/shuttle_destination/excursion/alienship)
-	initialized = TRUE //Just don't.
 
 /obj/away_mission_init/alienship
 	name = "away mission initializer - alienship"
@@ -34,7 +27,7 @@
 	var/door_on_mode
 	var/teleport_on_mode
 
-/obj/away_mission_init/alienship/initialize()
+/obj/away_mission_init/alienship/Initialize()
 	. = ..()
 
 	if(!mission_mode) //WE ARE NUMBER ONE
@@ -61,7 +54,7 @@
 /obj/machinery/porta_turret/alien/ion
 	name = "interior anti-boarding turret"
 	desc = "A very tough looking turret made by alien hands."
-	installation = /obj/item/weapon/gun/energy/ionrifle/weak
+	installation = /obj/item/gun/energy/ionrifle/weak
 	enabled = TRUE
 	lethal = TRUE
 	ailock = TRUE
@@ -101,7 +94,7 @@
 	icon_state = "w2e"
 	teleport_on_mode = "w2e"
 
-/obj/item/weapon/reagent_containers/hypospray/autoinjector/alien
+/obj/item/reagent_containers/hypospray/autoinjector/alien
 	name = "alien injector(?)"
 	desc = "It appears to contain some sort of liquid and has a needle for injecting."
 	icon = 'alienship.dmi'
@@ -112,15 +105,7 @@
 
 // -- Areas -- //
 
-/area/shuttle/excursion/away_alienship
-	name = "\improper Excursion Shuttle - Alien Ship"
-	base_turf = /turf/simulated/shuttle/floor/alienplating
-	var/did_entry = FALSE
-	var/list/teleport_to
-	var/area/dump_area
-	var/obj/shuttle_connector/shuttle_friend
-
-/area/shuttle/excursion/away_alienship/initialize()
+/area/shuttle/excursion/away_alienship/Initialize()
 	. = ..()
 	dump_area = locate(/area/tether_away/alienship/equip_dump)
 
@@ -139,35 +124,44 @@
 		for(var/mob in player_list) //This is extreme, but it's very hard to find people hiding in things, and this is pretty cheap.
 			try
 				if(isliving(mob) && get_area(mob) == src)
-					var/mob/living/L = mob
-
-					//Situations to get the mob out of
-					if(L.buckled)
-						L.buckled.unbuckle_mob()
-					if(istype(L.loc,/obj/mecha))
-						var/obj/mecha/M = L.loc
-						M.go_out()
-					else if(istype(L.loc,/obj/machinery/sleeper))
-						var/obj/machinery/sleeper/SL = L.loc
-						SL.go_out()
-					else if(istype(L.loc,/obj/machinery/recharge_station))
-						var/obj/machinery/recharge_station/RS = L.loc
-						RS.go_out()
-
-					L.forceMove(pick(get_area_turfs(dump_area)))
-					if(!issilicon(L)) //Don't drop borg modules...
-						for(var/obj/item/I in L)
-							if(istype(I,/obj/item/weapon/implant) || istype(I,/obj/item/device/nif))
-								continue
-							L.drop_from_inventory(I, loc)
-					L.Paralyse(10)
-					L.forceMove(get_turf(pick(teleport_to)))
-					L << 'sound/effects/bamf.ogg'
-					to_chat(L,"<span class='warning'>You're starting to come to. You feel like you've been out for a few minutes, at least...</span>")
+					abduct(mob)
 			catch
 				log_debug("Problem doing [mob] for Alienship arrival teleport!")
 
 		did_entry = TRUE
+
+/area/shuttle/excursion/away_alienship/proc/abduct(var/mob/living/mob)
+	if(isliving(mob))
+		var/mob/living/L = mob
+
+		//Situations to get the mob out of
+		if(L.buckled)
+			L.buckled.unbuckle_mob()
+		if(istype(L.loc,/obj/mecha))
+			var/obj/mecha/M = L.loc
+			M.go_out()
+		else if(istype(L.loc,/obj/machinery/sleeper))
+			var/obj/machinery/sleeper/SL = L.loc
+			SL.go_out()
+		else if(istype(L.loc,/obj/machinery/recharge_station))
+			var/obj/machinery/recharge_station/RS = L.loc
+			RS.go_out()
+
+		L.forceMove(pick(get_area_turfs(dump_area)))
+		if(!issilicon(L)) //Don't drop borg modules...
+			for(var/obj/item/I in L)
+				if(istype(I,/obj/item/implant) || istype(I,/obj/item/nif))
+					continue
+				if(istype(I,/obj/item/holder))
+					var/obj/item/holder/H = I
+					var/mob/living/M = H.held_mob
+					M.forceMove(get_turf(H))
+					abduct(M)
+				L.drop_from_inventory(I, loc)
+		L.Paralyse(10)
+		L.forceMove(get_turf(pick(teleport_to)))
+		L << 'sound/effects/bamf.ogg'
+		to_chat(L,"<span class='warning'>You're starting to come to. You feel like you've been out for a few minutes, at least...</span>")
 
 /area/tether_away/alienship
 	name = "\improper Away Mission - Unknown Vessel"
@@ -179,6 +173,4 @@
 
 // -- Turfs -- //
 /turf/simulated/shuttle/floor/alienplating/vacuum
-	oxygen = 0
-	nitrogen = 0
-	temperature = TCMB
+	initial_gas_mix = GAS_STRING_VACUUM

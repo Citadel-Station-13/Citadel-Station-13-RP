@@ -1,10 +1,10 @@
-/obj/item/weapon/material/kitchen
+/obj/item/material/kitchen
 	icon = 'icons/obj/kitchen.dmi'
 
 /*
  * Utensils
  */
-/obj/item/weapon/material/kitchen/utensil
+/obj/item/material/kitchen/utensil
 	w_class = ITEMSIZE_TINY
 	thrown_force_divisor = 1
 	origin_tech = list(TECH_MATERIAL = 1)
@@ -16,18 +16,17 @@
 	var/loaded      //Descriptive string for currently loaded food object.
 	var/scoop_food = 1
 
-/obj/item/weapon/material/kitchen/utensil/New()
-	..()
+/obj/item/material/kitchen/utensil/Initialize(mapload)
+	. = ..()
 	if (prob(60))
 		src.pixel_y = rand(0, 4)
 	create_reagents(5)
-	return
 
-/obj/item/weapon/material/kitchen/utensil/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
+/obj/item/material/kitchen/utensil/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
 	if(!istype(M))
 		return ..()
 
-	if(user.a_intent != I_HELP)
+	if(user.a_intent != INTENT_HELP)
 		if(user.zone_sel.selecting == BP_HEAD || user.zone_sel.selecting == O_EYES)
 			if((CLUMSY in user.mutations) && prob(50))
 				M = user
@@ -50,20 +49,20 @@
 		overlays.Cut()
 		return
 	else
-		user << "<span class='warning'>You don't have anything on \the [src].</span>"	//if we have help intent and no food scooped up DON'T STAB OURSELVES WITH THE FORK
+		to_chat(user, "<span class='warning'>You don't have anything on \the [src].</span>")	//if we have help intent and no food scooped up DON'T STAB OURSELVES WITH THE FORK
 		return
 
-/obj/item/weapon/material/kitchen/utensil/fork
+/obj/item/material/kitchen/utensil/fork
 	name = "fork"
 	desc = "It's a fork. Sure is pointy."
 	icon_state = "fork"
 	sharp = 1
 	edge = 0
 
-/obj/item/weapon/material/kitchen/utensil/fork/plastic
+/obj/item/material/kitchen/utensil/fork/plastic
 	default_material = "plastic"
 
-/obj/item/weapon/material/kitchen/utensil/spoon
+/obj/item/material/kitchen/utensil/spoon
 	name = "spoon"
 	desc = "It's a spoon. You can see your own upside-down face in it."
 	icon_state = "spoon"
@@ -72,39 +71,29 @@
 	sharp = 0
 	force_divisor = 0.1 //2 when wielded with weight 20 (steel)
 
-/obj/item/weapon/material/kitchen/utensil/spoon/plastic
+/obj/item/material/kitchen/utensil/spoon/plastic
 	default_material = "plastic"
 
 /*
  * Knives
  */
 
-// Identical to the tactical knife but nowhere near as stabby.
-// Kind of like the toy esword compared to the real thing.
-/obj/item/weapon/material/knife/boot
-	name = "boot knife"
-	desc = "A small fixed-blade knife for putting inside a boot."
-	icon = 'icons/obj/weapons.dmi'
-	icon_state = "tacknife"
-	item_state = "knife"
-	applies_material_colour = 0
-
 /* From the time of Clowns. Commented out for posterity, and sanity.
-/obj/item/weapon/material/knife/attack(target as mob, mob/living/user as mob)
+/obj/item/material/knife/attack(target as mob, mob/living/user as mob)
 	if ((CLUMSY in user.mutations) && prob(50))
-		user << "<span class='warning'>You accidentally cut yourself with \the [src].</span>"
+		to_chat(user, "<span class='warning'>You accidentally cut yourself with \the [src].</span>")
 		user.take_organ_damage(20)
 		return
 	return ..()
 */
-/obj/item/weapon/material/knife/plastic
+/obj/item/material/knife/plastic
 	default_material = "plastic"
 
 /*
  * Rolling Pins
  */
 
-/obj/item/weapon/material/kitchen/rollingpin
+/obj/item/material/kitchen/rollingpin
 	name = "rolling pin"
 	desc = "Used to knock out the Bartender."
 	icon_state = "rolling_pin"
@@ -114,9 +103,9 @@
 	dulled_divisor = 0.75	// Still a club
 	thrown_force_divisor = 1 // as above
 
-/obj/item/weapon/material/kitchen/rollingpin/attack(mob/living/M as mob, mob/living/user as mob)
+/obj/item/material/kitchen/rollingpin/attack(mob/living/M as mob, mob/living/user as mob)
 	if ((CLUMSY in user.mutations) && prob(50))
-		user << "<span class='warning'>\The [src] slips out of your hand and hits your head.</span>"
+		to_chat(user, "<span class='warning'>\The [src] slips out of your hand and hits your head.</span>")
 		user.take_organ_damage(10)
 		user.Paralyse(2)
 		return

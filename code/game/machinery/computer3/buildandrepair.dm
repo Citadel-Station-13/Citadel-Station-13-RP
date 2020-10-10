@@ -60,7 +60,7 @@
 	// Battery must be installed BEFORE wiring the computer.
 	// if installing it in an existing computer, you will have to
 	// get back to this state first.
-	var/obj/item/weapon/cell/battery	= null
+	var/obj/item/cell/battery	= null
 
 /obj/structure/computer3frame/server
 	name = "server frame"
@@ -78,14 +78,14 @@
 /obj/structure/computer3frame/attackby(obj/item/P as obj, mob/user as mob)
 	switch(state)
 		if(0)
-			if(istype(P, /obj/item/weapon/wrench))
+			if(P.is_wrench())
 				playsound(src.loc, P.usesound, 50, 1)
 				if(do_after(user, 20 * P.toolspeed))
 					to_chat(user, "<span class='notice'>You wrench the frame into place.</span>")
 					src.anchored = 1
 					src.state = 1
-			if(istype(P, /obj/item/weapon/weldingtool))
-				var/obj/item/weapon/weldingtool/WT = P
+			if(istype(P, /obj/item/weldingtool))
+				var/obj/item/weldingtool/WT = P
 				if(!WT.remove_fuel(0, user))
 					to_chat(user, "The welding tool must be on to complete this task.")
 					return
@@ -96,14 +96,14 @@
 					new /obj/item/stack/material/steel( src.loc, 5 )
 					qdel(src)
 		if(1)
-			if(istype(P, /obj/item/weapon/wrench))
+			if(P.is_wrench())
 				playsound(src.loc, P.usesound, 50, 1)
 				if(do_after(user, 20 * P.toolspeed))
 					to_chat(user, "<span class='notice'>You unfasten the frame.</span>")
 					src.anchored = 0
 					src.state = 0
-			if(istype(P, /obj/item/weapon/circuitboard) && !circuit)
-				var/obj/item/weapon/circuitboard/B = P
+			if(istype(P, /obj/item/circuitboard) && !circuit)
+				var/obj/item/circuitboard/B = P
 				if(B.board_type == "computer")
 					playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
 					to_chat(user, "<span class='notice'>You place the circuit board inside the frame.</span>")
@@ -113,12 +113,12 @@
 					P.loc = src
 				else
 					to_chat(user, "<span class='warning'>This frame does not accept circuit boards of this type!</span>")
-			if(istype(P, /obj/item/weapon/screwdriver) && circuit)
+			if(P.is_screwdriver() && circuit)
 				playsound(src.loc, P.usesound, 50, 1)
 				to_chat(user, "<span class='notice'>You screw the circuit board into place.</span>")
 				src.state = 2
 				src.icon_state = "2"
-			if(istype(P, /obj/item/weapon/crowbar) && circuit)
+			if(P.is_crowbar() && circuit)
 				playsound(src.loc, P.usesound, 50, 1)
 				to_chat(user, "<span class='notice'>You remove the circuit board.</span>")
 				src.state = 1
@@ -126,13 +126,13 @@
 				circuit.loc = src.loc
 				src.circuit = null
 		if(2)
-			if(istype(P, /obj/item/weapon/screwdriver) && circuit)
+			if(P.is_screwdriver() && circuit)
 				playsound(src.loc, P.usesound, 50, 1)
 				to_chat(user, "<span class='notice'>You unfasten the circuit board.</span>")
 				src.state = 1
 				src.icon_state = "1"
 
-			if(istype(P, /obj/item/weapon/crowbar))
+			if(P.is_crowbar())
 				if(battery)
 					playsound(src.loc, P.usesound, 50, 1)
 					if(do_after(10 * P.toolspeed))
@@ -142,7 +142,7 @@
 				else
 					to_chat(user, "<span class='warning'>There's no battery to remove!</span>")
 
-			if(istype(P, /obj/item/weapon/cell))
+			if(istype(P, /obj/item/cell))
 				if(!battery)
 					playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
 					if(do_after(5))
@@ -164,7 +164,7 @@
 							src.state = 3
 							src.icon_state = "3"
 		if(3)
-			if(istype(P, /obj/item/weapon/wirecutters))
+			if(P.is_wirecutter())
 				if(components.len)
 					to_chat(user, "There are parts in the way!")
 					return
@@ -175,7 +175,7 @@
 				var/obj/item/stack/cable_coil/A = new /obj/item/stack/cable_coil( src.loc )
 				A.amount = 5
 
-			if(istype(P, /obj/item/weapon/crowbar)) // complicated check
+			if(P.is_crowbar())
 				remove_peripheral()
 
 			if(istype(P, /obj/item/stack/material) && P.get_material_name() == "glass")
@@ -189,13 +189,13 @@
 							src.state = 4
 							src.icon_state = "4"
 		if(4)
-			if(istype(P, /obj/item/weapon/crowbar))
+			if(P.is_crowbar())
 				playsound(src.loc, P.usesound, 50, 1)
 				to_chat(user, "<span class='notice'>You remove the glass panel.</span>")
 				src.state = 3
 				src.icon_state = "3"
 				new /obj/item/stack/material/glass( src.loc, 2 )
-			if(istype(P, /obj/item/weapon/screwdriver))
+			if(P.is_screwdriver())
 				playsound(src.loc, P.usesound, 50, 1)
 				to_chat(user, "<span class='notice'>You connect the monitor.</span>")
 				var/obj/machinery/computer3/B = new src.circuit.build_path ( src.loc, built=1 )
@@ -203,9 +203,9 @@
 				if(circuit.id) B:id = circuit.id
 				//if(circuit.records) B:records = circuit.records
 				if(circuit.frequency) B:frequency = circuit.frequency
-				if(istype(circuit,/obj/item/weapon/circuitboard/supplycomp))
+				if(istype(circuit,/obj/item/circuitboard/supplycomp))
 					var/obj/machinery/computer/supplycomp/SC = B
-					var/obj/item/weapon/circuitboard/supplycomp/C = circuit
+					var/obj/item/circuitboard/supplycomp/C = circuit
 					SC.can_order_contraband = C.contraband_enabled*/
 				B.circuit = circuit
 				circuit.loc = B

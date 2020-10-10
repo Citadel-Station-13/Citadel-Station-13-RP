@@ -17,7 +17,7 @@
 
 	var/const/climb_time = 2 SECONDS
 
-/obj/structure/ladder/initialize()
+/obj/structure/ladder/Initialize()
 	. = ..()
 	// the upper will connect to the lower
 	if(allowed_directions & DOWN) //we only want to do the top one, as it will initialize the ones before it.
@@ -48,7 +48,7 @@
 	var/obj/structure/ladder/target_ladder = getTargetLadder(M)
 	if(!target_ladder)
 		return
-	if(!M.Move(get_turf(src)))
+	if(!(M.loc == loc) && !M.Move(get_turf(src)))
 		to_chat(M, "<span class='notice'>You fail to reach \the [src].</span>")
 		return
 
@@ -67,6 +67,10 @@
 	var/target_ladder = getTargetLadder(M)
 	if(target_ladder)
 		M.forceMove(get_turf(target_ladder))
+
+/obj/structure/ladder/attack_robot(var/mob/M)
+	attack_hand(M)
+	return
 
 /obj/structure/ladder/proc/getTargetLadder(var/mob/M)
 	if((!target_up && !target_down) || (target_up && !istype(target_up.loc, /turf) || (target_down && !istype(target_down.loc,/turf))))
@@ -107,9 +111,9 @@
 		if(!A.CanPass(M, M.loc, 1.5, 0))
 			to_chat(M, "<span class='notice'>\The [A] is blocking \the [src].</span>")
 			return FALSE
-	return M.Move(T)
+	return M.forceMove(T) //VOREStation Edit - Fixes adminspawned ladders
 
-/obj/structure/ladder/CanPass(obj/mover, turf/source, height, airflow)
+/obj/structure/ladder/CanAllowThrough(obj/mover, turf/source, height, airflow)
 	return airflow || !density
 
 /obj/structure/ladder/update_icon()
@@ -130,9 +134,10 @@
 	density = 0
 	opacity = 0
 	anchored = 1
-	layer = 2.4 // Above turf, but they're sort of the floor, so below objects.
+	flags = ON_BORDER
+	layer = STAIRS_LAYER
 
-/obj/structure/stairs/initialize()
+/obj/structure/stairs/Initialize(mapload)
 	. = ..()
 	for(var/turf/turf in locs)
 		var/turf/simulated/open/above = GetAbove(turf)
@@ -142,24 +147,24 @@
 		if(!istype(above))
 			above.ChangeTurf(/turf/simulated/open)
 
-/obj/structure/stairs/Uncross(atom/movable/A)
-	if(A.dir == dir && upperStep(A.loc))
-		// This is hackish but whatever.
-		var/turf/target = get_step(GetAbove(A), dir)
-		var/turf/source = A.loc
-		if(target.Enter(A, source))
-			A.forceMove(target)
-			if(isliving(A))
-				var/mob/living/L = A
-				if(L.pulling)
-					L.pulling.forceMove(target)
-		return 0
-	return 1
+/obj/structure/stairs/CheckExit(atom/movable/mover as mob|obj, turf/target as turf)
+	if(get_dir(loc, target) == dir && upperStep(mover.loc))
+		return FALSE
+	. = ..()
+
+/obj/structure/stairs/Bumped(atom/movable/A)
+	. = ..()
+	// This is hackish but whatever.
+	var/turf/target = get_step(GetAbove(A), dir)
+	for(var/i in A.getLocationTransitForceMoveTargets(target))		//make sure they can all go through.
+		if(!target.Enter(i, src))
+			return
+	A.locationTransitForceMove(target)
 
 /obj/structure/stairs/proc/upperStep(var/turf/T)
 	return (T == loc)
 
-/obj/structure/stairs/CanPass(obj/mover, turf/source, height, airflow)
+/obj/structure/stairs/CanAllowThrough(obj/mover, turf/source, height, airflow)
 	return airflow || !density
 
 // type paths to make mapping easier.

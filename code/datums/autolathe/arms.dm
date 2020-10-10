@@ -1,6 +1,6 @@
 /datum/category_item/autolathe/arms/syringegun_ammo
 	name = "syringe gun cartridge"
-	path =/obj/item/weapon/syringe_cartridge
+	path =/obj/item/syringe_cartridge
 
 ////////////////
 /*Ammo casings*/
@@ -14,9 +14,9 @@
 	name = "ammunition (12g, beanbag)"
 	path =/obj/item/ammo_casing/a12g/beanbag
 
-/datum/category_item/autolathe/arms/shotgun_flash
-	name = "ammunition (12g, flash)"
-	path =/obj/item/ammo_casing/a12g/flash
+/datum/category_item/autolathe/arms/shotgun_flare
+	name = "ammunition (12g, flare)"
+	path =/obj/item/ammo_casing/a12g/flare
 
 /datum/category_item/autolathe/arms/shotgun
 	name = "ammunition (12g, slug)"
@@ -45,11 +45,32 @@
 	category = "Arms and Ammunition"
 	hidden = 1
 */
+////// 10x24mm
+/datum/category_item/autolathe/arms/usmc/small
+	name = "small m41a magazine"
+	path =/obj/item/ammo_magazine/m10x24mm/small
+	hidden = 1
+
+/datum/category_item/autolathe/arms/usmc/small/hp
+	name = "small m41a hp magazine"
+	path =/obj/item/ammo_magazine/m10x24mm/small/hp
+	hidden = 1
+
+/datum/category_item/autolathe/arms/usmc/small/ap
+	name = "small m41a ap magazine"
+	path =/obj/item/ammo_magazine/m10x24mm/small/ap
+	hidden = 1
+
 
 /////// .45
 /datum/category_item/autolathe/arms/pistol_45
 	name = "pistol magazine (.45)"
 	path =/obj/item/ammo_magazine/m45
+	hidden = 1
+
+/datum/category_item/autolathe/arms/pistol_45h
+	name = "pistol magazine (.45 hunter)"
+	path =/obj/item/ammo_magazine/m45/hunter
 	hidden = 1
 
 /datum/category_item/autolathe/arms/pistol_45p
@@ -70,12 +91,12 @@
 	hidden = 1
 
 /datum/category_item/autolathe/arms/tommymag
-	name = "Tommygun magazine (.45)"
+	name = "Tommy Gun magazine (.45)"
 	path =/obj/item/ammo_magazine/m45tommy
 	hidden = 1
 
 /datum/category_item/autolathe/arms/tommydrum
-	name = "Tommygun drum magazine (.45)"
+	name = "Tommy Gun drum magazine (.45)"
 	path =/obj/item/ammo_magazine/m45tommydrum
 	hidden = 1
 
@@ -126,6 +147,11 @@
 	path =/obj/item/ammo_magazine/m9mmt
 	hidden = 1
 
+/datum/category_item/autolathe/arms/smg_9mmh
+	name = "top-mounted SMG magazine (9mm hunter)"
+	path =/obj/item/ammo_magazine/m9mmt/hunter
+	hidden = 1
+
 /datum/category_item/autolathe/arms/smg_9mmr
 	name = "top-mounted SMG magazine (9mm rubber)"
 	path =/obj/item/ammo_magazine/m9mmt/rubber
@@ -137,6 +163,11 @@
 /datum/category_item/autolathe/arms/smg_9mmf
 	name = "top-mounted SMG magazine (9mm flash)"
 	path =/obj/item/ammo_magazine/m9mmt/flash
+	
+/datum/category_item/autolathe/arms/smg_9mmp90h
+	name = "large capacity top mounted magazine (9mm hunter)"
+	path =/obj/item/ammo_magazine/m9mmp90/hunter
+	hidden = 1
 
 /////// 10mm
 /datum/category_item/autolathe/arms/smg_10mm
@@ -234,13 +265,13 @@
 	hidden = 1
 
 /datum/category_item/autolathe/arms/tommymag
-	name = "Tommygun magazine (.45)"
+	name = "Tommy Gun magazine (.45)"
 	path =/obj/item/ammo_magazine/m45tommy/empty
 	category = "Arms and Ammunition"
 	hidden = 1
 
 /datum/category_item/autolathe/arms/tommydrum
-	name = "Tommygun drum magazine (.45)"
+	name = "Tommy Gun drum magazine (.45)"
 	path =/obj/item/ammo_magazine/m45tommydrum/empty
 	category = "Arms and Ammunition"
 	hidden = 1
@@ -421,10 +452,10 @@
 
 /datum/category_item/autolathe/arms/tacknife
 	name = "tactical knife"
-	path =/obj/item/weapon/material/knife/tacknife
+	path =/obj/item/material/knife/tacknife
 	hidden = 1
 
 /datum/category_item/autolathe/arms/flamethrower
 	name = "flamethrower"
-	path =/obj/item/weapon/flamethrower/full
+	path =/obj/item/flamethrower/full
 	hidden = 1

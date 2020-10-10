@@ -1,9 +1,8 @@
 /obj/item/clothing/mask/gas
 	name = "gas mask"
 	desc = "A face-covering mask that can be connected to an air supply. Filters harmful gases from the air."
-	//icon = 'icons/obj/clothing/masks_vr.dmi' // Vorestation Edit?
 	icon_state = "gas_alt"
-	item_flags = BLOCK_GAS_SMOKE_EFFECT | AIRTIGHT
+	item_flags = BLOCK_GAS_SMOKE_EFFECT | AIRTIGHT | ALLOW_SURVIVALFOOD
 	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE
 	body_parts_covered = FACE|EYES
 	w_class = ITEMSIZE_NORMAL
@@ -12,7 +11,7 @@
 	permeability_coefficient = 0.01
 	siemens_coefficient = 0.9
 	var/gas_filter_strength = 1			//For gas mask filters
-	var/list/filtered_gases = list("phoron", "sleeping_agent")
+	var/list/filtered_gases = list(/datum/gas/phoron, /datum/gas/nitrous_oxide)
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 75, rad = 0)
 
 /obj/item/clothing/mask/gas/filter_air(datum/gas_mixture/air)
@@ -28,6 +27,12 @@
 
 	return gas_filtered
 
+// Our clear gas masks don't hide faces, but changing the var on mask/gas would require un-chaging it on all children. This is nicer.
+/obj/item/clothing/mask/gas/New()
+	if(type == /obj/item/clothing/mask/gas)
+		flags_inv &= ~HIDEFACE
+	..()
+
 /obj/item/clothing/mask/gas/clear
 	name = "gas mask"
 	desc = "A face-covering mask with a transparent faceplate that can be connected to an air supply."
@@ -42,6 +47,41 @@
 	body_parts_covered = FACE
 	w_class = ITEMSIZE_SMALL
 	armor = list(melee = 10, bullet = 10, laser = 10, energy = 0, bomb = 0, bio = 55, rad = 0)
+	var/hanging = FALSE
+	flags_inv = HIDEFACE
+	action_button_name = "Adjust Face Mask"
+
+/obj/item/clothing/mask/gas/half/proc/adjust_mask(mob/user)
+	if(usr.canmove && !usr.stat)
+		src.hanging = !src.hanging
+		if (src.hanging)
+			gas_transfer_coefficient = 1
+			gas_filter_strength = 0
+			body_parts_covered = body_parts_covered & ~FACE
+			item_flags = item_flags & ~BLOCK_GAS_SMOKE_EFFECT & ~AIRTIGHT
+			flags_inv = 0
+			armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
+			icon_state = "halfgas_up"
+			to_chat(usr, "Your mask is now hanging on your neck.")
+		else
+			gas_transfer_coefficient = initial(gas_transfer_coefficient)
+			gas_filter_strength = initial(gas_filter_strength)
+			body_parts_covered = initial(body_parts_covered)
+			item_flags = initial(item_flags)
+			flags_inv = initial(flags_inv)
+			armor = initial(armor)
+			icon_state = initial(icon_state)
+			to_chat(usr, "You pull the mask up to cover your face.")
+		update_clothing_icon()
+
+/obj/item/clothing/mask/gas/half/verb/toggle()
+	set category = "Object"
+	set name = "Adjust mask"
+	set src in usr
+	adjust_mask(usr)
+
+/obj/item/clothing/mask/gas/half/attack_self(mob/user)
+	adjust_mask(user)
 
 //Plague Dr suit can be found in clothing/suits/bio.dm
 /obj/item/clothing/mask/gas/plaguedoctor
@@ -59,14 +99,41 @@
 	siemens_coefficient = 0.7
 	body_parts_covered = FACE|EYES
 
+// Vox mask, has special code for eating
 /obj/item/clothing/mask/gas/swat/vox
 	name = "\improper alien mask"
 	desc = "Clearly not designed for a human face."
-	body_parts_covered = 0 //Hack to allow vox to eat while wearing this mask.
-	item_flags = BLOCK_GAS_SMOKE_EFFECT | AIRTIGHT | PHORONGUARD
-	phoronproof = 1
+	flags = PHORONGUARD
+	item_flags = BLOCK_GAS_SMOKE_EFFECT | AIRTIGHT
 	species_restricted = list(SPECIES_VOX)
-	filtered_gases = list("oxygen", "sleeping_agent")
+	filtered_gases = list(/datum/gas/oxygen, /datum/gas/nitrous_oxide)
+	var/mask_open = FALSE	// Controls if the Vox can eat through this mask
+	action_button_name = "Toggle Feeding Port"
+
+/obj/item/clothing/mask/gas/swat/vox/proc/feeding_port(mob/user)
+	if(user.canmove && !user.stat)
+		mask_open = !mask_open
+		if(mask_open)
+			body_parts_covered = EYES
+			to_chat(user, "Your mask moves to allow you to eat.")
+		else
+			body_parts_covered = FACE|EYES
+			to_chat(user, "Your mask moves to cover your mouth.")
+	return
+
+/obj/item/clothing/mask/gas/swat/vox/attack_self(mob/user)
+	feeding_port(user)
+	..()
+
+/obj/item/clothing/mask/gas/zaddat
+	name = "Zaddat Veil"
+	desc = "A clear survival mask used by the Zaddat to filter out harmful nitrogen. Can be connected to an air supply and reconfigured to allow for safe eating."
+	icon_state = "zaddat_mask"
+	item_state = "vax_mask"
+	//body_parts_covered = 0
+	species_restricted = list(SPECIES_ZADDAT)
+	flags_inv = HIDEEARS //semi-transparent
+	filtered_gases = list(/datum/gas/phoron, /datum/gas/nitrous_oxide, /datum/gas/nitrogen)
 
 /obj/item/clothing/mask/gas/syndicate
 	name = "tactical mask"
@@ -135,3 +202,11 @@
 	desc = "Twoooo!"
 	icon_state = "owl"
 	body_parts_covered = HEAD|FACE|EYES
+
+/obj/item/clothing/mask/gas/old
+	icon_state = "gas_mask"
+
+/obj/item/clothing/mask/gas/imperial
+	name = "imperial soldier facemask"
+	desc = "A close-fitting tactical mask that can be connected to an air supply."
+	icon_state = "ge_visor"

@@ -12,14 +12,14 @@
 	playsound(user,'sound/items/screwdriver.ogg', 50, 1)
 
 //Prescription kit
-/obj/item/device/glasses_kit
+/obj/item/glasses_kit
 	name = "prescription glasses kit"
 	desc = "A kit containing all the needed tools and parts to develop and apply a prescription for someone."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "modkit"
 	var/scrip_loaded = 0
 
-/obj/item/device/glasses_kit/afterattack(var/target, var/mob/living/carbon/human/user, var/proximity)
+/obj/item/glasses_kit/afterattack(var/target, var/mob/living/carbon/human/user, var/proximity)
 	if(!proximity)
 		return
 	if(!istype(user))
@@ -27,14 +27,14 @@
 
 	//Too difficult
 	if(target == user)
-		user << "<span class='warning'>You can't use this on yourself. Get someone to help you.</span>"
+		to_chat(user, "<span class='warning'>You can't use this on yourself. Get someone to help you.</span>")
 		return
 
 	//We're applying a prescription
 	if(istype(target,/obj/item/clothing/glasses))
 		var/obj/item/clothing/glasses/G = target
 		if(!scrip_loaded)
-			user << "<span class='warning'>You need to build a prescription from someone first! Use the kit on someone.</span>"
+			to_chat(user, "<span class='warning'>You need to build a prescription from someone first! Use the kit on someone.</span>")
 			return
 
 		if(do_after(user,5 SECONDS))
@@ -45,7 +45,7 @@
 	else if(ishuman(target))
 		var/mob/living/carbon/human/T = target
 		if(T.glasses || (T.head && T.head.flags_inv & HIDEEYES))
-			user << "<span class='warning'>The person's eyes can't be covered!</span>"
+			to_chat(user, "<span class='warning'>The person's eyes can't be covered!</span>")
 			return
 
 		T.visible_message("[user] begins making measurements for prescription lenses for [target].","[user] begins measuring your eyes. Hold still!")
@@ -60,3 +60,61 @@
 /obj/item/clothing/glasses/sunglasses/sechud/tactical
 	item_flags = AIRTIGHT
 	body_parts_covered = EYES
+
+/*---Tajaran-specific Eyewear---*/
+
+/obj/item/clothing/glasses/tajblind
+	name = "embroidered veil"
+	desc = "An Tajaran made veil that allows the user to see while obscuring their eyes."
+	icon = 'icons/obj/clothing/glasses_vr.dmi'
+	icon_override = 'icons/mob/eyes_vr.dmi'
+	icon_state = "tajblind"
+	item_state = "tajblind"
+	prescription = 1
+	body_parts_covered = EYES
+
+/obj/item/clothing/glasses/hud/health/tajblind
+	name = "lightweight veil"
+	desc = "An Tajaran made veil that allows the user to see while obscuring their eyes. This one has an installed medical HUD."
+	icon = 'icons/obj/clothing/glasses_vr.dmi'
+	icon_override = 'icons/mob/eyes_vr.dmi'
+	icon_state = "tajblind_med"
+	item_state = "tajblind_med"
+	body_parts_covered = EYES
+
+/obj/item/clothing/glasses/sunglasses/sechud/tajblind
+	name = "sleek veil"
+	desc = "An Tajaran made veil that allows the user to see while obscuring their eyes. This one has an in-built security HUD."
+	icon = 'icons/obj/clothing/glasses_vr.dmi'
+	icon_override = 'icons/mob/eyes_vr.dmi'
+	icon_state = "tajblind_sec"
+	item_state = "tajblind_sec"
+	prescription = 1
+	body_parts_covered = EYES
+
+/obj/item/clothing/glasses/meson/prescription/tajblind
+	name = "industrial veil"
+	desc = "An Tajaran made veil that allows the user to see while obscuring their eyes. This one has installed mesons."
+	icon = 'icons/obj/clothing/glasses_vr.dmi'
+	icon_override = 'icons/mob/eyes_vr.dmi'
+	icon_state = "tajblind_meson"
+	item_state = "tajblind_meson"
+	off_state = "tajblind"
+	body_parts_covered = EYES
+
+/obj/item/clothing/glasses/material/prescription/tajblind
+	name = "mining veil"
+	desc = "An Tajaran made veil that allows the user to see while obscuring their eyes. This one has an installed material scanner."
+	icon = 'icons/obj/clothing/glasses_vr.dmi'
+	icon_override = 'icons/mob/eyes_vr.dmi'
+	icon_state = "tajblind_meson"
+	item_state = "tajblind_meson"
+	off_state = "tajblind"
+	body_parts_covered = EYES
+
+/obj/item/clothing/glasses
+	sprite_sheets = list(
+		SPECIES_TESHARI = 'icons/mob/species/teshari/eyes.dmi',
+		SPECIES_VOX = 'icons/mob/species/vox/eyes.dmi',
+		SPECIES_WEREBEAST = 'icons/mob/species/werebeast/eyes.dmi'
+		)

@@ -4,7 +4,7 @@
 	icon_state = "computer"
 	density = 1
 	anchored = 1.0
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 300
 	active_power_usage = 300
 	var/processing = 0
@@ -15,11 +15,13 @@
 	var/light_power_on = 1
 	var/overlay_layer
 
+	clicksound = "keyboard"
+
 /obj/machinery/computer/New()
 	overlay_layer = layer
 	..()
 
-/obj/machinery/computer/initialize()
+/obj/machinery/computer/Initialize()
 	. = ..()
 	power_change()
 	update_icon()
@@ -103,14 +105,14 @@
 	if(computer_deconstruction_screwdriver(user, I))
 		return
 	else
-		if(istype(I,/obj/item/weapon/gripper)) //Behold, Grippers and their horribleness. If ..() is called by any computers' attackby() now or in the future, this should let grippers work with them appropriately.
-			var/obj/item/weapon/gripper/B = I	//B, for Borg.
+		if(istype(I,/obj/item/gripper)) //Behold, Grippers and their horribleness. If ..() is called by any computers' attackby() now or in the future, this should let grippers work with them appropriately.
+			var/obj/item/gripper/B = I	//B, for Borg.
 			if(!B.wrapped)
-				user << "\The [B] is not holding anything."
+				to_chat(user, "\The [B] is not holding anything.")
 				return
 			else
 				var/B_held = B.wrapped
-				user << "You use \the [B] to use \the [B_held] with \the [src]."
+				to_chat(user, "You use \the [B] to use \the [B_held] with \the [src].")
 				playsound(src, "keyboard", 100, 1, 0)
 			return
 		attack_hand(user)

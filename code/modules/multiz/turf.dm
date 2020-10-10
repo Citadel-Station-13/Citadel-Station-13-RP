@@ -1,11 +1,11 @@
 /turf/proc/CanZPass(atom/A, direction)
-	if(z == A.z) //moving FROM this turf
-		return direction == UP //can't go below
+	if(z == A.z)	// Moving FROM this turf
+		return direction == UP	//Can't go below
 	else
-		if(direction == UP) //on a turf below, trying to enter
+		if(direction == UP)	// On a turf below, trying to enter
 			return 0
-		if(direction == DOWN) //on a turf above, trying to enter
-			return !density && isopenspace(GetAbove(src)) // VOREStation Edit
+		if(direction == DOWN)	// On a turf above, trying to enter
+			return !density && isopenspace(GetAbove(src))
 
 /turf/simulated/open/CanZPass(atom, direction)
 	return 1
@@ -24,8 +24,9 @@
 	desc = "\..."
 	density = 0
 	plane = OPENSPACE_PLANE_START
-	pathweight = 100000 //Seriously, don't try and path over this one numbnuts
-	dynamic_lighting = 0 // Someday lets do proper lighting z-transfer.  Until then we are leaving this off so it looks nicer.
+	pathweight = 100000		// Seriously, don't try and path over this one numbnuts
+	dynamic_lighting = 0	// Someday lets do proper lighting z-transfer.  Until then we are leaving this off so it looks nicer.
+	can_build_into_floor = TRUE
 
 	var/turf/below
 
@@ -33,31 +34,34 @@
 	..()
 	update()
 
-/turf/simulated/open/initialize()
+/turf/simulated/open/Initialize()
 	. = ..()
 	ASSERT(HasBelow(z))
 	update()
 
 /turf/simulated/open/Entered(var/atom/movable/mover)
-	. = ..()
-	mover.fall()
+	..()
+	if(mover.movement_type & GROUND)
+		mover.fall()
 
 // Called when thrown object lands on this turf.
 /turf/simulated/open/hitby(var/atom/movable/AM, var/speed)
 	. = ..()
-	AM.fall()
+	if(AM.movement_type & GROUND)
+		AM.fall()
 
 /turf/simulated/open/proc/update()
 	plane = OPENSPACE_PLANE + src.z
 	below = GetBelow(src)
-	turf_changed_event.register(below, src, /turf/simulated/open/update_icon)
+	GLOB.turf_changed_event.register(below, src, /atom/proc/update_icon)
 	levelupdate()
-	below.update_icon() // So the 'ceiling-less' overlay gets added.
+	below.update_icon()	// So the 'ceiling-less' overlay gets added.
 	for(var/atom/movable/A in src)
-		A.fall()
-	OS_controller.add_turf(src, 1)
+		if(A.movement_type & GROUND)
+			A.fall()
+	SSopenspace.add_turf(src, 1)
 
-// override to make sure nothing is hidden
+// Override to make sure nothing is hidden
 /turf/simulated/open/levelupdate()
 	for(var/obj/O in src)
 		O.hide(0)
@@ -88,11 +92,11 @@
 			underlays = list(bottom_turf)
 		copy_overlays(below)
 
-		// get objects (not mobs, they are handled by /obj/zshadow)
+		// Get objects (not mobs, they are handled by /obj/zshadow)
 		var/list/o_img = list()
 		for(var/obj/O in below)
-			if(O.invisibility) continue // Ignore objects that have any form of invisibility
-			if(O.loc != below) continue // Ignore multi-turf objects not directly below
+			if(O.invisibility) continue	// Ignore objects that have any form of invisibility
+			if(O.loc != below) continue	// Ignore multi-turf objects not directly below
 			var/image/temp2 = image(O, dir = O.dir, layer = O.layer)
 			temp2.plane = src.plane
 			temp2.color = O.color
@@ -102,10 +106,16 @@
 		add_overlay(o_img)
 
 		if(!below_is_open)
-			add_overlay(over_OS_darkness)
+			add_overlay(/obj/effect/abstract/over_openspace_darkness)
 
 		return 0
 	return PROCESS_KILL
+
+/obj/effect/abstract/over_openspace_darkness
+	icon = 'icons/turf/open_space.dmi'
+	icon_state = "black_open"
+	plane = OVER_OPENSPACE_PLANE
+	layer = MOB_LAYER
 
 // Straight copy from space.
 /turf/simulated/open/attackby(obj/item/C as obj, mob/user as mob)
@@ -134,17 +144,26 @@
 		else
 			to_chat(user, "<span class='warning'>The plating is going to need some support.</span>")
 
-	//To lay cable.
+	// To lay cable.
 	if(istype(C, /obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/coil = C
 		coil.turf_place(src, user)
 		return
 	return
 
-//Most things use is_plating to test if there is a cover tile on top (like regular floors)
+// Most things use is_plating to test if there is a cover tile on top (like regular floors)
 /turf/simulated/open/is_plating()
 	return TRUE
 
 /turf/simulated/open/is_space()
 	var/turf/below = GetBelow(src)
 	return !below || below.is_space()
+
+/turf/simulated/open/is_solid_structure()
+	return locate(/obj/structure/lattice, src)	// Counts as solid structure if it has a lattice (same as space)
+
+/turf/simulated/open/is_safe_to_enter(mob/living/L)
+	if(L.can_fall())
+		if(!locate(/obj/structure/stairs) in GetBelow(src))
+			return FALSE
+	return ..()

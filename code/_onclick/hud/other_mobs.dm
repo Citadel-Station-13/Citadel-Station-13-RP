@@ -23,7 +23,7 @@
 
 	mymob.client.screen += list(blobpwrdisplay, blobhealthdisplay)
 	mymob.client.screen += mymob.client.void
-
+/*
 /datum/hud/proc/slime_hud(ui_style = 'icons/mob/screen1_Midnight.dmi')
 
 	src.adding = list()
@@ -32,7 +32,7 @@
 
 	using = new /obj/screen()
 	using.name = "act_intent"
-	using.set_dir(SOUTHWEST)
+	using.setDir(SOUTHWEST)
 	using.icon = ui_style
 	using.icon_state = "intent_"+mymob.a_intent
 	using.screen_loc = ui_zonesel
@@ -80,7 +80,7 @@
 	ico.MapColors(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0, -1,-1,-1,-1)
 	ico.DrawBox(rgb(255,255,255,1),1,1,ico.Width()/2,ico.Height()/2)
 	using = new /obj/screen( src )
-	using.name = I_HURT
+	using.name = INTENT_HARM
 	using.icon = ico
 	using.screen_loc = ui_zonesel
 	using.layer = HUD_LAYER+0.01
@@ -92,23 +92,20 @@
 	mymob.client.screen += mymob.client.void
 
 	return
-
-
-/mob/living/simple_animal/construct/instantiate_hud(var/datum/hud/HUD)
-	..(HUD)
+*/
 
 //	HUD.construct_hud() //Archaic.
 /*
 /datum/hud/proc/construct_hud()
 	var/constructtype
 
-	if(istype(mymob,/mob/living/simple_animal/construct/armoured) || istype(mymob,/mob/living/simple_animal/construct/behemoth))
+	if(istype(mymob,/mob/living/simple_mob/construct/armoured) || istype(mymob,/mob/living/simple_mob/construct/behemoth))
 		constructtype = "juggernaut"
-	else if(istype(mymob,/mob/living/simple_animal/construct/builder))
+	else if(istype(mymob,/mob/living/simple_mob/construct/builder))
 		constructtype = "artificer"
-	else if(istype(mymob,/mob/living/simple_animal/construct/wraith))
+	else if(istype(mymob,/mob/living/simple_mob/construct/wraith))
 		constructtype = "wraith"
-	else if(istype(mymob,/mob/living/simple_animal/construct/harvester))
+	else if(istype(mymob,/mob/living/simple_mob/construct/harvester))
 		constructtype = "harvester"
 
 	if(constructtype)

@@ -1,37 +1,8 @@
-/datum/nifsoft/crewmonitor
-	name = "Crew Monitor"
-	desc = "A link to the local crew monitor sensors. Useful for finding people in trouble."
-	list_pos = NIF_CREWMONITOR
-	access = access_medical
-	cost = 1250
-	p_drain = 0.025
-	var/datum/nano_module/crew_monitor/arscreen
-
-	New()
-		..()
-		arscreen = new(nif)
-
-	Destroy()
-		qdel_null(arscreen)
-		return ..()
-
-	activate()
-		if((. = ..()))
-			arscreen.ui_interact(nif.human,"main",null,1,nif_state)
-			return TRUE
-
-	deactivate()
-		if((. = ..()))
-			return TRUE
-
-	stat_text()
-		return "Show Monitor"
-
 /datum/nifsoft/medichines_org
 	name = "Medichines"
 	desc = "An internal swarm of nanites to make sure you stay in good shape and to promote healing, or to preserve you if you are critically injured."
 	list_pos = NIF_ORGANIC_HEAL
-	cost = 2500
+	cost = 1250
 	p_drain = 0.05
 	a_drain = 0.1 //This is messed with manually below.
 	wear = 2
@@ -46,7 +17,7 @@
 		if((. = ..()))
 			mode = 1
 
-	deactivate()
+	deactivate(force = FALSE)
 		if((. = ..()))
 			a_drain = initial(a_drain)
 			mode = initial(mode)
@@ -74,7 +45,7 @@
 				mode = 3
 				if(!ishuman(H.loc)) //Not notified in case of vore, for gameplay purposes.
 					var/turf/T = get_turf(H)
-					var/obj/item/device/radio/headset/a = new /obj/item/device/radio/headset/heads/captain(null)
+					var/obj/item/radio/headset/a = new /obj/item/radio/headset/heads/captain(null)
 					a.autosay("[H.real_name] has been put in emergency stasis, located at ([T.x],[T.y],[T.z])!", "[H.real_name]'s NIF", "Medical")
 					qdel(a)
 
@@ -104,7 +75,7 @@
 	name = "Medichines"
 	desc = "A swarm of mechanical repair nanites, able to repair relatively minor damage to synthetic bodies. Large repairs must still be performed manually."
 	list_pos = NIF_SYNTH_HEAL
-	cost = 2500
+	cost = 1250
 	p_drain = 0.05
 	a_drain = 0.00 //This is manually drained below.
 	wear = 2
@@ -119,7 +90,7 @@
 		if((. = ..()))
 			mode = 1
 
-	deactivate()
+	deactivate(force = FALSE)
 		if((. = ..()))
 			mode = 0
 
@@ -157,7 +128,7 @@
 	name = "Respirocytes"
 	desc = "Nanites simulating red blood cells will filter and recycle oxygen for a short time, preventing suffocation in hostile environments. NOTE: Only capable of supplying OXYGEN."
 	list_pos = NIF_SPAREBREATH
-	cost = 650
+	cost = 325
 	p_drain = 0.05
 	a_drain = 0.1
 	wear = 2
@@ -173,7 +144,7 @@
 		if((. = ..()))
 			nif.notify("Now taking air from reserves.")
 
-	deactivate()
+	deactivate(force = FALSE)
 		if((. = ..()))
 			nif.notify("Now taking air from environment and refilling reserves.")
 
@@ -204,7 +175,7 @@
 	proc/resp_breath()
 		if(!active) return null
 		var/datum/gas_mixture/breath = new(BREATH_VOLUME)
-		breath.adjust_gas("oxygen", BREATH_MOLES)
+		breath.adjust_gas(/datum/gas/oxygen, BREATH_MOLES)
 		breath.temperature = T20C
 		return breath
 
@@ -212,7 +183,7 @@
 	name = "Mind Backup"
 	desc = "Backup your mind on the go. Stores a one-time sync of your current mindstate upon activation."
 	list_pos = NIF_BACKUP
-	cost = 250
+	cost = 125
 
 	activate()
 		if((. = ..()))
@@ -222,10 +193,6 @@
 			nif.notify("Mind backed up!")
 			nif.use_charge(0.1)
 			deactivate()
-			return TRUE
-
-	deactivate()
-		if((. = ..()))
 			return TRUE
 
 	stat_text()

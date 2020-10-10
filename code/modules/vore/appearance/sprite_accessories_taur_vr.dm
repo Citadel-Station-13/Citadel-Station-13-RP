@@ -1,5 +1,5 @@
 /datum/riding/taur
-	keytype = /obj/item/weapon/material/twohanded/fluff/riding_crop // Crack!
+	keytype = /obj/item/material/twohanded/fluff/riding_crop // Crack!
 	nonhuman_key_exemption = FALSE	// If true, nonhumans who can't hold keys don't need them, like borgs and simplemobs.
 	key_name = "a riding crop"		// What the 'keys' for the thing being rided on would be called.
 	only_one_driver = TRUE			// If true, only the person in 'front' (first on list of riding mobs) can drive.
@@ -11,7 +11,9 @@
 		else
 			ridden.layer = initial(ridden.layer)
 	else
-		ridden.layer = initial(ridden.layer)
+		var/mob/living/L = ridden
+		if(!(istype(L) && (L.status_flags & HIDING)))
+			ridden.layer = initial(ridden.layer)
 
 /datum/riding/taur/ride_check(mob/living/M)
 	var/mob/living/L = ridden
@@ -32,8 +34,8 @@
 	var/list/values = list(
 		"[NORTH]" = list(0, 8*scale, ABOVE_MOB_LAYER),
 		"[SOUTH]" = list(0, 8*scale, BELOW_MOB_LAYER),
-		"[EAST]" = list(-10*scale, 8*scale, BELOW_MOB_LAYER),
-		"[WEST]" = list(10*scale, 8*scale, BELOW_MOB_LAYER))
+		"[EAST]" = list(-10*scale, 8*scale, ABOVE_MOB_LAYER),
+		"[WEST]" = list(10*scale, 8*scale, ABOVE_MOB_LAYER))
 
 	return values
 
@@ -43,10 +45,6 @@
 	can_buckle = TRUE
 	buckle_movable = TRUE
 	buckle_lying = FALSE
-
-/mob/living/carbon/human/New()
-	..()
-	riding_datum = new /datum/riding/taur(src)
 
 /mob/living/carbon/human/buckle_mob(mob/living/M, forced = FALSE, check_loc = TRUE)
 	if(forced)
@@ -61,25 +59,44 @@
 		return FALSE
 	if(!ishuman(M))
 		return FALSE
-	if(M.size_multiplier > size_multiplier)
-		to_chat(M,"<span class='warning'>This isn't a pony show! They need to be bigger to ride.</span>")
+	if(M in buckled_mobs)
 		return FALSE
+	if(M.size_multiplier > size_multiplier * 1.2)
+		to_chat(M,"<span class='warning'>This isn't a pony show! You need to be bigger for them to ride.</span>")
+		return FALSE
+	if(M.loc != src.loc)
+		if(M.Adjacent(src))
+			M.forceMove(get_turf(src))
 
 	var/mob/living/carbon/human/H = M
 
 	if(isTaurTail(H.tail_style))
-		to_chat(H,"<span class='warning'>Too many legs. TOO MANY LEGS!!</span>")
+		to_chat(src,"<span class='warning'>Too many legs. TOO MANY LEGS!!</span>")
 		return FALSE
 
 	. = ..()
 	if(.)
 		buckled_mobs[M] = "riding"
 
-/mob/living/carbon/human/MouseDrop_T(mob/living/M, mob/living/user)
-	if(can_buckle && istype(M))
-		if(user_buckle_mob(M, user, silent = TRUE))
-			visible_message("<span class='notice'>[M] starts riding [name]!</span>")
-			return TRUE
+/mob/living/carbon/human/MouseDrop_T(mob/living/M, mob/living/user) //Prevention for forced relocation caused by can_buckle. Base proc has no other use.
+	return
+
+/mob/living/carbon/human/proc/taur_mount(var/mob/living/M in living_mobs(1))
+	set name = "Taur Mount/Dismount"
+	set category = "Abilities"
+	set desc = "Let people ride on you."
+
+	if(LAZYLEN(buckled_mobs))
+		var/datum/riding/R = riding_datum
+		for(var/rider in buckled_mobs)
+			R.force_dismount(rider)
+		return
+	if (stat != CONSCIOUS)
+		return
+	if(!can_buckle || !istype(M) || !M.Adjacent(src) || M.buckled)
+		return
+	if(buckle_mob(M))
+		visible_message("<span class='notice'>[M] starts riding [name]!</span>")
 
 /mob/living/carbon/human/attack_hand(mob/user as mob)
 	if(LAZYLEN(buckled_mobs))
@@ -139,22 +156,57 @@
 	//Messages for smalls moving under larges
 	var/msg_owner_stepunder		= "%owner runs between your legs." //Weird becuase in the case this is used, %owner is the 'bumper' (src)
 	var/msg_prey_stepunder		= "You run between %prey's legs." //Same, inverse
+	hide_body_parts	= list(BP_L_LEG, BP_L_FOOT, BP_R_LEG, BP_R_FOOT) //Exclude pelvis just in case.
+	clip_mask_icon = 'icons/mob/vore/taurs_vr.dmi'
+	clip_mask_state = "taur_clip_mask_def" //Used to clip off the lower part of suits & uniforms.
 
 /datum/sprite_accessory/tail/taur/roiz_long_lizard // Not ACTUALLY a taur, but it uses 32x64 so it wouldn't fit in tails.dmi, and having it as a tail bugs up the sprite.
 	name = "Long Lizard Tail (Roiz Lizden)"
 	icon_state = "roiz_tail_s"
 	do_colouration = 0
 	ckeys_allowed = list("spoopylizz")
+// Species-unique long tails/taurhalves
+
+/datum/sprite_accessory/tail/taur/shadekin_tail
+	name = "Shadekin Tail (Shadekin)"
+	icon_state = "shadekin_s"
+	can_ride = 0
+	hide_body_parts = null
+	clip_mask_icon = null
+	clip_mask_state = null
+	apply_restrictions = TRUE
+	species_allowed = list(SPECIES_SHADEKIN)
+
+/datum/sprite_accessory/tail/taur/shadekin_tail/shadekin_tail_2c
+	name = "Shadekin Tail dual-color (Shadekin)"
+	extra_overlay = "shadekin_markings"
+
+/datum/sprite_accessory/tail/taur/shadekin_tail/shadekin_tail_long
+	name = "Shadekin Long Tail (Shadekin)"
+	icon_state = "shadekin_long_s"
+
+// Tails/taurhalves for everyone
 
 /datum/sprite_accessory/tail/taur/wolf
 	name = "Wolf (Taur)"
 	icon_state = "wolf_s"
 	suit_sprites = 'icons/mob/taursuits_wolf_vr.dmi'
 
+//TFF 22/11/19 - CHOMPStation port of fat taur sprites
+/datum/sprite_accessory/tail/taur/fatwolf
+	name = "Fat Wolf (Taur)"
+	icon_state = "fatwolf_s"
+
 /datum/sprite_accessory/tail/taur/wolf/wolf_2c
 	name = "Wolf dual-color (Taur)"
 	icon_state = "wolf_s"
 	extra_overlay = "wolf_markings"
+
+//TFF 22/11/19 - CHOMPStation port of fat taur sprites
+/datum/sprite_accessory/tail/taur/wolf/fatwolf_2c
+	name = "Fat Wolf dual-color (Taur)"
+	icon_state = "fatwolf_s"
+	extra_overlay = "fatwolf_markings"
 
 /datum/sprite_accessory/tail/taur/wolf/synthwolf
 	name = "SynthWolf dual-color (Taur)"
@@ -247,6 +299,7 @@
 	name = "Deer dual-color (Taur)"
 	icon_state = "deer_s"
 	extra_overlay = "deer_markings"
+	suit_sprites = 'icons/mob/taursuits_deer_vr.dmi'
 
 	msg_owner_disarm_run = "You quickly push %prey to the ground with your hoof!"
 	msg_prey_disarm_run = "%owner pushes you down to the ground with their hoof!"
@@ -281,6 +334,7 @@
 /datum/sprite_accessory/tail/taur/spider
 	name = "Spider (Taur)"
 	icon_state = "spider_s"
+	suit_sprites = 'icons/mob/taursuits_spider_vr.dmi'
 
 	msg_owner_disarm_run = "You quickly push %prey to the ground with your leg!"
 	msg_prey_disarm_run = "%owner pushes you down to the ground with their leg!"
@@ -326,11 +380,28 @@
 /datum/sprite_accessory/tail/taur/feline
 	name = "Feline (Taur)"
 	icon_state = "feline_s"
+	suit_sprites = 'icons/mob/taursuits_feline_vr.dmi'
+
+//TFF 22/11/19 - CHOMPStation port of fat taur sprites
+/datum/sprite_accessory/tail/taur/fatfeline
+	name = "Fat Feline (Taur)"
+	icon_state = "fatfeline_s"
+
+/datum/sprite_accessory/tail/taur/fatfeline_wag
+	name = "Fat Feline (Taur) (vwag)"
+	icon_state = "fatfeline_s"
+	ani_state = "fatfeline_w"
 
 /datum/sprite_accessory/tail/taur/feline/feline_2c
 	name = "Feline dual-color (Taur)"
 	icon_state = "feline_s"
 	extra_overlay = "feline_markings"
+
+//TFF 22/11/19 - CHOMPStation port of fat taur sprites
+/datum/sprite_accessory/tail/taur/feline/fatfeline_2c
+	name = "Fat Feline dual-color (Taur)"
+	icon_state = "fatfeline_s"
+	extra_overlay = "fatfeline_markings"
 
 /datum/sprite_accessory/tail/taur/feline/synthfeline
 	name = "SynthFeline dual-color (Taur)"
@@ -340,6 +411,7 @@
 /datum/sprite_accessory/tail/taur/slug
 	name = "Slug (Taur)"
 	icon_state = "slug_s"
+	suit_sprites = 'icons/mob/taursuits_slug_vr.dmi'
 
 	msg_owner_help_walk = "You carefully slither around %prey."
 	msg_prey_help_walk = "%owner's huge tail slithers past beside you!"
@@ -376,11 +448,56 @@
 	name = "Drake (Taur)"
 	icon_state = "drake_s"
 	extra_overlay = "drake_markings"
+	suit_sprites = 'icons/mob/taursuits_drake_vr.dmi'
 
 /datum/sprite_accessory/tail/taur/otie
 	name = "Otie (Taur)"
 	icon_state = "otie_s"
 	extra_overlay = "otie_markings"
+	suit_sprites = 'icons/mob/taursuits_otie_vr.dmi'
+
+/datum/sprite_accessory/tail/taur/alraune/alraune_2c
+	name = "Alraune (dual color)"
+	icon_state = "alraunecolor_s"
+	ani_state = "alraunecolor_closed_s"
+	ckeys_allowed = null
+	do_colouration = 1
+	extra_overlay = "alraunecolor_markings"
+	extra_overlay_w = "alraunecolor_closed_markings"
+	clip_mask_state = "taur_clip_mask_alraune"
+
+/datum/sprite_accessory/tail/taur/wasp
+	name = "Wasp (dual color)"
+	icon_state = "wasp_s"
+	extra_overlay = "wasp_markings"
+	clip_mask_state = "taur_clip_mask_wasp"
+
+	msg_owner_disarm_run = "You quickly push %prey to the ground with your leg!"
+	msg_prey_disarm_run = "%owner pushes you down to the ground with their leg!"
+
+	msg_owner_disarm_walk = "You firmly push your leg down on %prey, painfully but harmlessly pinning them to the ground!"
+	msg_prey_disarm_walk = "%owner firmly pushes their leg down on you, quite painfully but harmlessly pinning you to the ground!"
+
+	msg_owner_harm_walk = "You methodically place your leg down upon %prey's body, slowly applying pressure, crushing them against the floor!"
+	msg_prey_harm_walk = "%owner methodically places their leg upon your body, slowly applying pressure, crushing you against the floor!"
+
+	msg_owner_grab_success = "You pin %prey down on the ground with your front leg before using your other leg to pick them up, trapping them between two of your front legs!"
+	msg_prey_grab_success = "%owner pins you down on the ground with their front leg before using their other leg to pick you up, trapping you between two of their front legs!"
+
+	msg_owner_grab_fail = "You step down onto %prey, squishing them and forcing them down to the ground!"
+	msg_prey_grab_fail = "%owner steps down and squishes you with their leg, forcing you down to the ground!"
+
+// Special snowflake tails/taurhalves
+
+//spoopylizz: Roiz Lizden
+/datum/sprite_accessory/tail/taur/roiz_long_lizard // Not ACTUALLY a taur, but it uses 32x64 so it wouldn't fit in tails.dmi, and having it as a tail bugs up the sprite.
+	name = "Long Lizard Tail (Roiz Lizden)"
+	icon_state = "roiz_tail_s"
+	do_colouration = 0
+	ckeys_allowed = list("spoopylizz")
+	hide_body_parts = null
+	clip_mask_icon = null
+	clip_mask_state = null
 
 //wickedtemp: Chakat Tempest
 /datum/sprite_accessory/tail/taur/feline/tempest
@@ -416,7 +533,7 @@
 	msg_owner_grab_fail = "You step down onto %prey, squishing them and forcing them down to the ground!"
 	msg_prey_grab_fail = "%owner steps down and squishes you with their leg, forcing you down to the ground!"
 
-//liquidfirefly: Ariana Scol
+//natje:
 /datum/sprite_accessory/tail/taur/alraune
 	name = "Alraune (natje) (Taur)"
 	icon_state = "alraune_s"
@@ -424,6 +541,7 @@
 	ckeys_allowed = list("natje")
 	do_colouration = 0
 	can_ride = 0
+	clip_mask_state = "taur_clip_mask_alraune"
 
 
 	msg_prey_stepunder = "You run between %prey's vines."
@@ -446,3 +564,24 @@
 
 	msg_owner_grab_fail = "You step down onto %prey with one of your vines, forcing them onto the ground!"
 	msg_prey_grab_fail = "%owner steps down onto you with one of their vines, squishing you and forcing you onto the ground!"
+
+/datum/sprite_accessory/tail/taur/alraune/alraune_2c
+	name = "Alraune (dual color)"
+	icon_state = "alraunecolor_s"
+	ani_state = "alraunecolor_closed_s"
+	ckeys_allowed = null
+	do_colouration = 1
+	extra_overlay = "alraunecolor_markings"
+	extra_overlay_w = "alraunecolor_closed_markings"
+
+/datum/sprite_accessory/tail/taur/long_lizard
+	name = "Large Dragon Tail"
+	icon_state = "big_liz"
+	can_ride = 0
+	hide_body_parts = null
+	clip_mask_icon = null
+	clip_mask_state = null
+
+/datum/sprite_accessory/tail/taur/long_lizard/scaled
+	name = "Large Dragon Tail/W scales"
+	extra_overlay = "big_liz_mark"

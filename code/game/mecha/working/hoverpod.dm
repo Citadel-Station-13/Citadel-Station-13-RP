@@ -8,16 +8,23 @@
 	step_energy_drain = 10
 	max_temperature = 20000
 	health = 150
+	maxhealth = 150
 	infra_luminosity = 6
 	wreckage = /obj/effect/decal/mecha_wreckage/hoverpod
 	cargo_capacity = 5
 	max_equip = 3
-	var/datum/effect/effect/system/ion_trail_follow/ion_trail
+	var/datum/effect_system/ion_trail_follow/ion_trail
 	var/stabilization_enabled = 1
+
+	max_hull_equip = 2
+	max_weapon_equip = 0
+	max_utility_equip = 2
+	max_universal_equip = 1
+	max_special_equip = 1
 
 /obj/mecha/working/hoverpod/New()
 	..()
-	ion_trail = new /datum/effect/effect/system/ion_trail_follow()
+	ion_trail = new /datum/effect_system/ion_trail_follow()
 	ion_trail.set_up(src)
 	ion_trail.start()
 
@@ -51,12 +58,12 @@
 			ion_trail.start()
 		if (stabilization_enabled)
 			return 1
-	
+
 	return ..()
 
 //these three procs overriden to play different sounds
 /obj/mecha/working/hoverpod/mechturn(direction)
-	set_dir(direction)
+	setDir(direction)
 	//playsound(src,'sound/machines/hiss.ogg',40,1)
 	return 1
 
@@ -79,9 +86,15 @@
 	desc = "An ancient, run-down combat spacecraft." // Ideally would have a seperate icon.
 	name = "Combat Hoverpod"
 	health = 200
+	maxhealth = 200
 	internal_damage_threshold = 35
 	cargo_capacity = 2
 	max_equip = 2
+	max_hull_equip = 2
+	max_weapon_equip = 2
+	max_utility_equip = 2
+	max_universal_equip = 1
+	max_special_equip = 1
 
 /obj/mecha/working/hoverpod/combatpod/New()
 	..()

@@ -1,12 +1,13 @@
 /datum/species/vox
 	name = SPECIES_VOX
 	name_plural = "Vox"
-	icobase = 'icons/mob/human_races/r_vox.dmi'
-	deform = 'icons/mob/human_races/r_def_vox.dmi'
+	icobase = 'icons/mob/human_races/r_vox_old.dmi'
+	deform = 'icons/mob/human_races/r_def_vox_old.dmi'
 	default_language = LANGUAGE_VOX
 	language = LANGUAGE_GALCOM
 	species_language = LANGUAGE_VOX
 	num_alternate_languages = 1
+	assisted_langs = list(LANGUAGE_ROOTGLOBAL)
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick,  /datum/unarmed_attack/claws/strong, /datum/unarmed_attack/bite/strong)
 	rarity_value = 4
 	blurb = "The Vox are the broken remnants of a once-proud race, now reduced to little more than \
@@ -15,6 +16,7 @@
 	refer to them as 'shitbirds' for their violent and offensive nature, as well as their horrible \
 	smell.<br/><br/>Most humans will never meet a Vox raider, instead learning of this insular species through \
 	dealing with their traders and merchants; those that do rarely enjoy the experience."
+	catalogue_data = list(/datum/category_item/catalogue/fauna/vox)
 
 //	taste_sensitivity = TASTE_DULL
 
@@ -38,18 +40,19 @@
 	cold_level_2 = 50
 	cold_level_3 = 0
 
-	gluttonous = 1
+	gluttonous = 0
 
-	breath_type = "phoron"
-	poison_type = "oxygen"
+	breath_type = /datum/gas/phoron
+	poison_type = /datum/gas/oxygen
 	siemens_coefficient = 0.2
 
 	flags = NO_SCAN
-	spawn_flags = SPECIES_IS_WHITELISTED
-	appearance_flags = HAS_EYE_COLOR | HAS_HAIR_COLOR
+	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
+	appearance_flags = HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_SKIN_COLOR
 
 	blood_color = "#9066BD"
-	flesh_color = "#808D11"
+	flesh_color = "#a3a593"
+	base_color = "#2e3302"
 
 	reagent_tag = IS_VOX
 
@@ -71,6 +74,7 @@
 	has_organ = list(
 		O_HEART =    /obj/item/organ/internal/heart/vox,
 		O_LUNGS =    /obj/item/organ/internal/lungs/vox,
+		O_VOICE =	 /obj/item/organ/internal/voicebox,
 		O_LIVER =    /obj/item/organ/internal/liver/vox,
 		O_KIDNEYS =  /obj/item/organ/internal/kidneys/vox,
 		O_BRAIN =    /obj/item/organ/internal/brain/vox,
@@ -79,8 +83,20 @@
 
 	genders = list(NEUTER)
 
+	descriptors = list(
+		/datum/mob_descriptor/vox_markings = 0
+		)
+
+	min_age = 18
+	wikilink="https://wiki.vore-station.net/Vox"
+	inherent_verbs = list(
+		/mob/living/proc/shred_limb,
+		/mob/living/proc/eat_trash,
+		/mob/living/carbon/human/proc/tie_hair
+		)
+
 /datum/species/vox/get_random_name(var/gender)
-	var/datum/language/species_language = all_languages[default_language]
+	var/datum/language/species_language = GLOB.all_languages[default_language]
 	return species_language.get_random_name(gender)
 
 /datum/species/vox/equip_survival_gear(var/mob/living/carbon/human/H, var/extendedtank = 0,var/comprehensive = 0)
@@ -88,11 +104,11 @@
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/breath(H), slot_wear_mask)
 	if(H.backbag == 1)
-		H.equip_to_slot_or_del(new /obj/item/weapon/tank/vox(H), slot_back)
+		H.equip_to_slot_or_del(new /obj/item/tank/vox(H), slot_back)
 		H.internal = H.back
 	else
-		H.equip_to_slot_or_del(new /obj/item/weapon/tank/vox(H), slot_r_hand)
+		H.equip_to_slot_or_del(new /obj/item/tank/vox(H), slot_r_hand)
 		H.internal = H.r_hand
-	H.internal = locate(/obj/item/weapon/tank) in H.contents
-	if(istype(H.internal,/obj/item/weapon/tank) && H.internals)
+	H.internal = locate(/obj/item/tank) in H.contents
+	if(istype(H.internal,/obj/item/tank) && H.internals)
 		H.internals.icon_state = "internal1"

@@ -18,20 +18,24 @@
 	var/checkrange_mult = 1
 
 /obj/machinery/door/blast/puzzle/proc/check_locks()
+	if(!locks || locks.len <= 0)	// Puzzle doors with no locks will only listen to boring buttons.
+		return 0
+
 	for(var/obj/structure/prop/lock/L in locks)
 		if(!L.enabled)
 			return 0
 	return 1
 
 /obj/machinery/door/blast/puzzle/bullet_act(var/obj/item/projectile/Proj)
-	visible_message("<span class='cult'>\The [src] is completely unaffected by \the [Proj].</span>")
+	if(!istype(Proj, /obj/item/projectile/test))
+		visible_message("<span class='cult'>\The [src] is completely unaffected by \the [Proj].</span>")
 	qdel(Proj) //No piercing. No.
 
 /obj/machinery/door/blast/puzzle/ex_act(severity)
 	visible_message("<span class='cult'>\The [src] is completely unaffected by the blast.</span>")
 	return
 
-/obj/machinery/door/blast/puzzle/initialize()
+/obj/machinery/door/blast/puzzle/Initialize()
 	. = ..()
 	implicit_material = get_material_by_name("dungeonium")
 	if(locks.len)
@@ -55,11 +59,11 @@
 	else
 		to_chat(user, "<span class='notice'>\The [src] does not respond to your touch.</span>")
 
-/obj/machinery/door/blast/puzzle/attackby(obj/item/weapon/C as obj, mob/user as mob)
-	if(istype(C, /obj/item/weapon))
-		if(C.pry == 1 && (user.a_intent != I_HURT || (stat & BROKEN)))
-			if(istype(C,/obj/item/weapon/material/twohanded/fireaxe))
-				var/obj/item/weapon/material/twohanded/fireaxe/F = C
+/obj/machinery/door/blast/puzzle/attackby(obj/item/C as obj, mob/user as mob)
+	if(istype(C, /obj/item))
+		if(C.pry == 1 && (user.a_intent != INTENT_HARM || (stat & BROKEN)))
+			if(istype(C,/obj/item/material/twohanded/fireaxe))
+				var/obj/item/material/twohanded/fireaxe/F = C
 				if(!F.wielded)
 					to_chat(user, "<span class='warning'>You need to be wielding \the [F] to do that.</span>")
 					return
@@ -71,14 +75,14 @@
 				to_chat(user, "<span class='notice'>[src]'s arcane workings resist your effort.</span>")
 			return
 
-		else if(src.density && (user.a_intent == I_HURT))
-			var/obj/item/weapon/W = C
+		else if(src.density && (user.a_intent == INTENT_HARM))
+			var/obj/item/W = C
 			user.setClickCooldown(user.get_attack_speed(W))
 			if(W.damtype == BRUTE || W.damtype == BURN)
 				user.do_attack_animation(src)
 				user.visible_message("<span class='danger'>\The [user] hits \the [src] with \the [W] with no visible effect.</span>")
 
-		else if(istype(C, /obj/item/weapon/plastique))
+		else if(istype(C, /obj/item/plastique))
 			to_chat(user, "<span class='danger'>On contacting \the [src], a flash of light envelops \the [C] as it is turned to ash. Oh.</span>")
 			qdel(C)
 			return 0

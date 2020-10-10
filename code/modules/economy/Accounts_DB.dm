@@ -9,7 +9,7 @@
 	anchored = 1
 	var/receipt_num
 	var/machine_id = ""
-	var/obj/item/weapon/card/id/held_card
+	var/obj/item/card/id/held_card
 	var/datum/money_account/detailed_account_view
 	var/creating_new_account = 0
 	var/const/fund_cap = 1000000
@@ -45,7 +45,7 @@
 	..()
 
 /obj/machinery/account_database/attackby(obj/O, mob/user)
-	if(!istype(O, /obj/item/weapon/card/id))
+	if(!istype(O, /obj/item/card/id))
 		return ..()
 
 	if(!held_card)
@@ -53,7 +53,7 @@
 		O.loc = src
 		held_card = O
 
-		nanomanager.update_uis(src)
+		SSnanoui.update_uis(src)
 
 	attack_hand(user)
 
@@ -107,7 +107,7 @@
 	if (accounts.len > 0)
 		data["accounts"] = accounts
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "accounts_terminal.tmpl", src.name, 400, 640)
 		ui.set_initial_data(data)
@@ -117,7 +117,7 @@
 	if(..())
 		return 1
 
-	var/datum/nanoui/ui = nanomanager.get_open_ui(usr, src, "main")
+	var/datum/nanoui/ui = SSnanoui.get_open_ui(usr, src, "main")
 
 	if(href_list["choice"])
 		switch(href_list["choice"])
@@ -143,7 +143,7 @@
 				var/account_name = href_list["holder_name"]
 				var/starting_funds = max(text2num(href_list["starting_funds"]), 0)
 
-				starting_funds = Clamp(starting_funds, 0, station_account.money)	// Not authorized to put the station in debt.
+				starting_funds = clamp(starting_funds, 0, station_account.money)	// Not authorized to put the station in debt.
 				starting_funds = min(starting_funds, fund_cap)						// Not authorized to give more than the fund cap.
 
 				create_account(account_name, starting_funds, src)
@@ -169,8 +169,8 @@
 
 				else
 					var/obj/item/I = usr.get_active_hand()
-					if (istype(I, /obj/item/weapon/card/id))
-						var/obj/item/weapon/card/id/C = I
+					if (istype(I, /obj/item/card/id))
+						var/obj/item/card/id/C = I
 						usr.drop_item()
 						C.loc = src
 						held_card = C
@@ -199,7 +199,7 @@
 
 			if("print")
 				var/text
-				var/obj/item/weapon/paper/P = new(loc)
+				var/obj/item/paper/P = new(loc)
 				if (detailed_account_view)
 					P.name = "account #[detailed_account_view.account_number] details"
 					var/title = "Account #[detailed_account_view.account_number] Details"

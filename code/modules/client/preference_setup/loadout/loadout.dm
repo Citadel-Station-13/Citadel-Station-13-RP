@@ -5,13 +5,58 @@ var/list/gear_datums = list()
 	var/category = ""
 	var/list/gear = list()
 
+/datum/gear
+	var/display_name			  // Name/index. Must be unique.
+	var/description				  // Description of this gear. If left blank will default to the description of the pathed item.
+	var/path					  // Path to item.
+	var/cost = 1				  // Number of points used. Items in general cost 1 point, storage/armor/gloves/special use costs 2 points.
+	var/slot					  // Slot to equip to.
+	var/list/allowed_roles		  // Roles that can spawn with this item.
+	var/whitelisted				  // Term to check the whitelist for..
+	var/sort_category = "General"
+	var/list/gear_tweaks = list() // List of datums which will alter the item after it has been spawned.
+	var/exploitable = 0			  // Does it go on the exploitable information list?
+	var/type_category = null
+	var/static/datum/gear_tweak/color/gear_tweak_free_color_choice = new
+	var/list/ckeywhitelist
+	var/list/character_name
+
+/datum/gear/New()
+	..()
+	if(!description)
+		var/obj/O = path
+		description = initial(O.desc)
+	gear_tweaks = list(gear_tweak_free_name, gear_tweak_free_desc)
+
+/datum/gear_data
+	var/path
+	var/location
+
+/datum/gear_data/New(var/path, var/location)
+	src.path = path
+	src.location = location
+
+/datum/gear/proc/spawn_item(var/location, var/metadata)
+	var/datum/gear_data/gd = new(path, location)
+	if(metadata)
+		for(var/datum/gear_tweak/gt in gear_tweaks)
+			gt.tweak_gear_data(metadata["[gt]"], gd)
+	var/item = new gd.path(gd.location)
+	if(metadata)
+		for(var/datum/gear_tweak/gt in gear_tweaks)
+			gt.tweak_item(item, metadata["[gt]"])
+	var/mob/M = location
+	if(istype(M) && exploitable)	// Update exploitable info records for the mob without creating a duplicate object at their feet.
+		M.amend_exploitable(item)
+	return item
+
 /datum/loadout_category/New(var/cat)
 	category = cat
 	..()
 
 /hook/startup/proc/populate_gear_list()
 
-	//create a list of gear datums to sort
+	// Create a list of gear datums to sort
 	for(var/geartype in typesof(/datum/gear)-/datum/gear)
 		var/datum/gear/G = geartype
 		if(initial(G.type_category) == geartype)
@@ -20,13 +65,13 @@ var/list/gear_datums = list()
 		var/use_category = initial(G.sort_category)
 
 		if(!use_name)
-			error("Loadout - Missing display name: [G]")
+			log_world("Loadout - Missing display name: [G]")
 			continue
 		if(isnull(initial(G.cost)))
-			error("Loadout - Missing cost: [G]")
+			log_world("Loadout - Missing cost: [G]")
 			continue
 		if(!initial(G.path))
-			error("Loadout - Missing path definition: [G]")
+			log_world("Loadout - Missing path definition: [G]")
 			continue
 
 		if(!loadout_categories[use_category])
@@ -35,10 +80,10 @@ var/list/gear_datums = list()
 		gear_datums[use_name] = new geartype
 		LC.gear[use_name] = gear_datums[use_name]
 
-	loadout_categories = sortAssoc(loadout_categories)
+	loadout_categories = sortTim(loadout_categories, /proc/cmp_text_asc)
 	for(var/loadout_category in loadout_categories)
 		var/datum/loadout_category/LC = loadout_categories[loadout_category]
-		LC.gear = sortAssoc(LC.gear)
+		LC.gear = sortTim(LC.gear, /proc/cmp_text_asc)	// DO NOT ADD A ", TRUE" TO THE END OF THIS FUCKING LINE IT'S WHAT WAS CAUSING ALPHABETIZATION TO BREAK
 	return 1
 
 /datum/category_item/player_setup_item/loadout
@@ -66,12 +111,15 @@ var/list/gear_datums = list()
 	for(var/gear_name in gear_datums)
 		var/datum/gear/G = gear_datums[gear_name]
 
-		if(G.whitelisted && !is_alien_whitelisted(preference_mob, all_species[G.whitelisted]))
+		if(G.whitelisted && !is_alien_whitelisted(preference_mob, GLOB.all_species[G.whitelisted]))
 			continue
 		if(max_cost && G.cost > max_cost)
 			continue
-		if(G.ckeywhitelist && !(preference_mob.ckey in G.ckeywhitelist))		//CITADEL CHANGE
-			continue		//CITADEL CHANGE
+		if(preference_mob && preference_mob.client)
+			if(G.ckeywhitelist && !(preference_mob.ckey in G.ckeywhitelist))
+				continue
+			if(G.character_name && !(preference_mob.client.prefs.real_name in G.character_name))
+				continue
 		. += gear_name
 
 /datum/category_item/player_setup_item/loadout/sanitize_character()
@@ -87,22 +135,22 @@ var/list/gear_datums = list()
 	var/total_cost = 0
 	for(var/gear_name in pref.gear)
 		if(!gear_datums[gear_name])
-			preference_mob << "<span class='warning'>You cannot have more than one of the \the [gear_name]</span>"
+			to_chat(preference_mob, "<span class='warning'>You cannot have more than one of the \the [gear_name]</span>")
 			pref.gear -= gear_name
 		else if(!(gear_name in valid_gear_choices()))
-			preference_mob << "<span class='warning'>You cannot take \the [gear_name] as you are not whitelisted for the species or item.</span>"		//CITADEL CHANGE
+			to_chat(preference_mob, "<span class='warning'>You cannot take \the [gear_name] as you are not whitelisted for the species or item.</span>")		//Vorestation Edit
 			pref.gear -= gear_name
 		else
 			var/datum/gear/G = gear_datums[gear_name]
 			if(total_cost + G.cost > MAX_GEAR_COST)
 				pref.gear -= gear_name
-				preference_mob << "<span class='warning'>You cannot afford to take \the [gear_name]</span>"
+				to_chat(preference_mob, "<span class='warning'>You cannot afford to take \the [gear_name]</span>")
 			else
 				total_cost += G.cost
 
 /datum/category_item/player_setup_item/loadout/content()
 	. = list()
-	var/mob/preference_mob = preference_mob()	//CITADEL CHANGE
+	var/mob/preference_mob = preference_mob()
 	var/total_cost = 0
 	if(pref.gear && pref.gear.len)
 		for(var/i = 1; i <= pref.gear.len; i++)
@@ -148,8 +196,13 @@ var/list/gear_datums = list()
 	. += "<tr><td colspan=3><hr></td></tr>"
 	for(var/gear_name in LC.gear)
 		var/datum/gear/G = LC.gear[gear_name]
-		if(G.ckeywhitelist && !(preference_mob.ckey in G.ckeywhitelist))	//CITADEL CHANGE
-			continue	//CITADEL CHANGE
+		//VOREStation Edit Start
+		if(preference_mob && preference_mob.client)
+			if(G.ckeywhitelist && !(preference_mob.ckey in G.ckeywhitelist))
+				continue
+			if(G.character_name && !(preference_mob.client.prefs.real_name in G.character_name))
+				continue
+		//VOREStation Edit End
 		var/ticked = (G.display_name in pref.gear)
 		. += "<tr style='vertical-align:top;'><td width=25%><a style='white-space:normal;' [ticked ? "class='linkOn' " : ""]href='?src=\ref[src];toggle_gear=[html_encode(G.display_name)]'>[G.display_name]</a></td>"
 		. += "<td width = 10% style='vertical-align:top'>[G.cost]</td>"
@@ -203,20 +256,20 @@ var/list/gear_datums = list()
 		set_tweak_metadata(gear, tweak, metadata)
 		return TOPIC_REFRESH_UPDATE_PREVIEW
 	if(href_list["next_slot"] || href_list["prev_slot"])
-		//Set the current slot in the gear list to the currently selected gear
+		// Set the current slot in the gear list to the currently selected gear
 		pref.gear_list["[pref.gear_slot]"] = pref.gear
-		//If we're moving up a slot..
+		// If we're moving up a slot..
 		if(href_list["next_slot"])
-			//change the current slot number
+			// Change the current slot number
 			pref.gear_slot = pref.gear_slot+1
-			if(pref.gear_slot>config.loadout_slots)
+			if(pref.gear_slot>config_legacy.loadout_slots)
 				pref.gear_slot = 1
-		//If we're moving down a slot..
+		// If we're moving down a slot..
 		else if(href_list["prev_slot"])
-			//change current slot one down
+			// Change current slot one down
 			pref.gear_slot = pref.gear_slot-1
 			if(pref.gear_slot<1)
-				pref.gear_slot = config.loadout_slots
+				pref.gear_slot = config_legacy.loadout_slots
 		// Set the currently selected gear to whatever's in the new slot
 		if(pref.gear_list["[pref.gear_slot]"])
 			pref.gear = pref.gear_list["[pref.gear_slot]"]
@@ -232,39 +285,3 @@ var/list/gear_datums = list()
 		pref.gear.Cut()
 		return TOPIC_REFRESH_UPDATE_PREVIEW
 	return ..()
-
-/datum/gear
-	var/display_name       //Name/index. Must be unique.
-	var/description        //Description of this gear. If left blank will default to the description of the pathed item.
-	var/path               //Path to item.
-	var/cost = 1           //Number of points used. Items in general cost 1 point, storage/armor/gloves/special use costs 2 points.
-	var/slot               //Slot to equip to.
-	var/list/allowed_roles //Roles that can spawn with this item.
-	var/whitelisted        //Term to check the whitelist for..
-	var/sort_category = "General"
-	var/list/gear_tweaks = list() //List of datums which will alter the item after it has been spawned.
-	var/exploitable = 0		//Does it go on the exploitable information list?
-	var/type_category = null
-
-/datum/gear/New()
-	..()
-	if(!description)
-		var/obj/O = path
-		description = initial(O.desc)
-
-/datum/gear_data
-	var/path
-	var/location
-
-/datum/gear_data/New(var/path, var/location)
-	src.path = path
-	src.location = location
-
-/datum/gear/proc/spawn_item(var/location, var/metadata)
-	var/datum/gear_data/gd = new(path, location)
-	for(var/datum/gear_tweak/gt in gear_tweaks)
-		gt.tweak_gear_data(metadata["[gt]"], gd)
-	var/item = new gd.path(gd.location)
-	for(var/datum/gear_tweak/gt in gear_tweaks)
-		gt.tweak_item(item, metadata["[gt]"])
-	return item

@@ -8,7 +8,7 @@
 	name = "north bump";
 	pixel_x = 0;
 	pixel_y = 24;
-	alarms_hidden = TRUE
+	alarms_hidden = 1
 	},
 /turf/simulated/floor/outdoors/dirt/virgo3b,
 /area/mine/explored/underdark)
@@ -107,7 +107,7 @@
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored/underdark)
 "u" = (
-/obj/item/weapon/newspaper{
+/obj/item/newspaper{
 	pixel_x = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
@@ -144,6 +144,10 @@
 /obj/structure/ore_box,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored/underdark)
+"A" = (
+/obj/machinery/mineral/equipment_vendor,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/mine/explored/underdark)
 "B" = (
 /obj/machinery/light/small{
 	icon_state = "bulb1";
@@ -163,7 +167,7 @@
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored/underdark)
 "E" = (
-/obj/item/weapon/wrench,
+/obj/item/tool/wrench,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored/underdark)
 "F" = (
@@ -206,11 +210,11 @@
 /turf/simulated/floor/outdoors/dirt/virgo3b,
 /area/mine/explored/underdark)
 "R" = (
-/obj/item/weapon/bone,
+/obj/item/bone,
 /turf/simulated/floor/outdoors/dirt/virgo3b,
 /area/mine/explored/underdark)
 "S" = (
-/obj/item/weapon/bone,
+/obj/item/bone,
 /turf/simulated/mineral/floor/virgo3b{
 	ignore_mapgen = 1
 	},
@@ -219,8 +223,12 @@
 /obj/effect/decal/remains/mouse,
 /turf/simulated/floor/outdoors/dirt/virgo3b,
 /area/mine/explored/underdark)
+"U" = (
+/obj/machinery/mineral/equipment_vendor/survey,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/mine/explored/underdark)
 "W" = (
-/obj/item/weapon/bone/skull,
+/obj/item/bone/skull,
 /turf/simulated/mineral/floor/virgo3b{
 	ignore_mapgen = 1
 	},
@@ -376,148 +384,149 @@ e
 "}
 (2,1,1) = {"
 e
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
 e
 "}
 (3,1,1) = {"
 e
+g
 f
 f
 f
@@ -654,12 +663,12 @@ f
 f
 f
 f
-f
-f
+g
 e
 "}
 (4,1,1) = {"
 e
+g
 f
 f
 f
@@ -796,12 +805,12 @@ f
 f
 f
 f
-f
-f
+g
 e
 "}
 (5,1,1) = {"
 e
+g
 f
 f
 f
@@ -938,12 +947,12 @@ f
 f
 f
 f
-f
-f
+g
 e
 "}
 (6,1,1) = {"
 e
+g
 f
 f
 f
@@ -1080,12 +1089,12 @@ f
 f
 f
 f
-f
-f
+g
 e
 "}
 (7,1,1) = {"
 e
+g
 f
 f
 f
@@ -1222,12 +1231,12 @@ f
 f
 f
 f
-f
-f
+g
 e
 "}
 (8,1,1) = {"
 e
+g
 f
 f
 f
@@ -1364,12 +1373,12 @@ f
 f
 f
 f
-f
-f
+g
 e
 "}
 (9,1,1) = {"
 e
+g
 f
 f
 f
@@ -1506,12 +1515,12 @@ f
 f
 f
 f
-f
-f
+g
 e
 "}
 (10,1,1) = {"
 e
+g
 f
 f
 f
@@ -1648,12 +1657,12 @@ f
 f
 f
 f
-f
-f
+g
 e
 "}
 (11,1,1) = {"
 e
+g
 f
 f
 f
@@ -1790,12 +1799,12 @@ f
 f
 f
 f
-f
-f
+g
 e
 "}
 (12,1,1) = {"
 e
+g
 f
 f
 f
@@ -1932,12 +1941,12 @@ f
 f
 f
 f
-f
-f
+g
 e
 "}
 (13,1,1) = {"
 e
+g
 f
 f
 f
@@ -2074,12 +2083,12 @@ f
 f
 f
 f
-f
-f
+g
 e
 "}
 (14,1,1) = {"
 e
+g
 f
 f
 f
@@ -2216,12 +2225,12 @@ f
 f
 f
 f
-f
-f
+g
 e
 "}
 (15,1,1) = {"
 e
+g
 f
 f
 f
@@ -2358,12 +2367,12 @@ f
 f
 f
 f
-f
-f
+g
 e
 "}
 (16,1,1) = {"
 e
+g
 f
 f
 f
@@ -2500,12 +2509,12 @@ f
 f
 f
 f
-f
-f
+g
 e
 "}
 (17,1,1) = {"
 e
+g
 f
 f
 f
@@ -2642,12 +2651,12 @@ f
 f
 f
 f
-f
-f
+g
 e
 "}
 (18,1,1) = {"
 e
+g
 f
 f
 f
@@ -2784,12 +2793,12 @@ f
 f
 f
 f
-f
-f
+g
 e
 "}
 (19,1,1) = {"
 e
+g
 f
 f
 f
@@ -2926,12 +2935,12 @@ f
 f
 f
 f
-f
-f
+g
 e
 "}
 (20,1,1) = {"
 e
+g
 f
 f
 f
@@ -3068,12 +3077,12 @@ f
 f
 f
 f
-f
-f
+g
 e
 "}
 (21,1,1) = {"
 e
+g
 f
 f
 f
@@ -3210,12 +3219,12 @@ f
 f
 f
 f
-f
-f
+g
 e
 "}
 (22,1,1) = {"
 e
+g
 f
 f
 f
@@ -3352,12 +3361,12 @@ f
 f
 f
 f
-f
-f
+g
 e
 "}
 (23,1,1) = {"
 e
+g
 f
 f
 f
@@ -3494,12 +3503,12 @@ f
 f
 f
 f
-f
-f
+g
 e
 "}
 (24,1,1) = {"
 e
+g
 f
 f
 f
@@ -3636,12 +3645,12 @@ f
 f
 f
 f
-f
-f
+g
 e
 "}
 (25,1,1) = {"
 e
+g
 f
 f
 f
@@ -3778,12 +3787,12 @@ f
 f
 f
 f
-f
-f
+g
 e
 "}
 (26,1,1) = {"
 e
+g
 f
 f
 f
@@ -3920,12 +3929,12 @@ f
 f
 f
 f
-f
-f
+g
 e
 "}
 (27,1,1) = {"
 e
+g
 f
 f
 f
@@ -4062,12 +4071,12 @@ f
 f
 f
 f
-f
-f
+g
 e
 "}
 (28,1,1) = {"
 e
+g
 f
 f
 f
@@ -4204,12 +4213,12 @@ f
 f
 f
 f
-f
-f
+g
 e
 "}
 (29,1,1) = {"
 e
+g
 f
 f
 f
@@ -4346,12 +4355,12 @@ f
 f
 f
 f
-f
-f
+g
 e
 "}
 (30,1,1) = {"
 e
+g
 f
 f
 f
@@ -4488,12 +4497,12 @@ f
 f
 f
 f
-f
-f
+g
 e
 "}
 (31,1,1) = {"
 e
+g
 f
 f
 f
@@ -4630,12 +4639,12 @@ f
 f
 f
 f
-f
-f
+g
 e
 "}
 (32,1,1) = {"
 e
+g
 f
 f
 f
@@ -4772,12 +4781,12 @@ f
 f
 f
 f
-f
-f
+g
 e
 "}
 (33,1,1) = {"
 e
+g
 f
 f
 f
@@ -4914,12 +4923,12 @@ f
 f
 f
 f
-f
-f
+g
 e
 "}
 (34,1,1) = {"
 e
+g
 f
 f
 f
@@ -5056,12 +5065,12 @@ f
 f
 f
 f
-f
-f
+g
 e
 "}
 (35,1,1) = {"
 e
+g
 f
 f
 f
@@ -5198,12 +5207,12 @@ f
 f
 f
 f
-f
-f
+g
 e
 "}
 (36,1,1) = {"
 e
+g
 f
 f
 f
@@ -5340,12 +5349,12 @@ f
 f
 f
 f
-f
-f
+g
 e
 "}
 (37,1,1) = {"
 e
+g
 f
 f
 f
@@ -5482,12 +5491,12 @@ f
 f
 f
 f
-f
-f
+g
 e
 "}
 (38,1,1) = {"
 e
+g
 f
 f
 f
@@ -5624,13 +5633,12 @@ f
 f
 f
 f
-f
-f
+g
 e
 "}
 (39,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -5767,12 +5775,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (40,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -5909,12 +5917,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (41,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -6051,12 +6059,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (42,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -6193,12 +6201,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (43,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -6335,12 +6343,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (44,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -6477,12 +6485,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (45,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -6619,12 +6627,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (46,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -6761,12 +6769,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (47,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -6903,12 +6911,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (48,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -7045,12 +7053,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (49,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -7187,12 +7195,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (50,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -7329,12 +7337,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (51,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -7471,12 +7479,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (52,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -7613,12 +7621,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (53,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -7755,12 +7763,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (54,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -7897,12 +7905,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (55,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -8039,12 +8047,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (56,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -8181,12 +8189,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (57,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -8323,12 +8331,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (58,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -8465,12 +8473,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (59,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -8607,12 +8615,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (60,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -8749,12 +8757,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (61,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -8891,12 +8899,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (62,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -9033,12 +9041,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (63,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -9175,12 +9183,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (64,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -9317,12 +9325,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (65,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -9459,12 +9467,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (66,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -9601,12 +9609,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (67,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -9743,12 +9751,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (68,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -9885,12 +9893,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (69,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -10027,12 +10035,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (70,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -10169,12 +10177,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (71,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -10311,12 +10319,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (72,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -10453,12 +10461,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (73,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -10595,12 +10603,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (74,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -10737,12 +10745,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (75,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -10879,12 +10887,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (76,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -11021,12 +11029,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (77,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -11163,12 +11171,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (78,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -11305,12 +11313,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (79,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -11447,12 +11455,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (80,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -11589,12 +11597,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (81,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -11731,12 +11739,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (82,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -11873,12 +11881,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (83,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -12015,12 +12023,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (84,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -12157,12 +12165,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (85,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -12299,12 +12307,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (86,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -12441,12 +12449,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (87,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -12583,12 +12591,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (88,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -12725,12 +12733,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (89,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -12867,12 +12875,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (90,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -13009,12 +13017,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (91,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -13151,12 +13159,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (92,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -13293,12 +13301,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (93,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -13435,12 +13443,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (94,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -13577,12 +13585,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (95,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -13719,12 +13727,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (96,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -13861,12 +13869,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (97,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -14003,12 +14011,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (98,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -14145,12 +14153,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (99,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -14287,12 +14295,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (100,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -14429,12 +14437,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (101,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -14571,12 +14579,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (102,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -14713,12 +14721,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (103,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -14855,12 +14863,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (104,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -14997,12 +15005,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (105,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -15139,12 +15147,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (106,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -15281,12 +15289,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (107,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -15423,12 +15431,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (108,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -15565,12 +15573,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (109,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -15707,12 +15715,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (110,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -15849,12 +15857,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (111,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -15991,12 +15999,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (112,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -16133,12 +16141,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (113,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -16275,12 +16283,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (114,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -16417,12 +16425,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (115,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -16559,12 +16567,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (116,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -16701,12 +16709,12 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (117,1,1) = {"
 e
-f
+g
 f
 f
 f
@@ -16843,7 +16851,7 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (118,1,1) = {"
@@ -16985,7 +16993,7 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (119,1,1) = {"
@@ -17127,7 +17135,7 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (120,1,1) = {"
@@ -17269,7 +17277,7 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (121,1,1) = {"
@@ -17411,7 +17419,7 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (122,1,1) = {"
@@ -17553,7 +17561,7 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (123,1,1) = {"
@@ -17695,7 +17703,7 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (124,1,1) = {"
@@ -17706,10 +17714,10 @@ g
 g
 g
 h
-g
-g
-g
-g
+U
+s
+s
+o
 T
 o
 B
@@ -17837,7 +17845,7 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (125,1,1) = {"
@@ -17848,9 +17856,9 @@ g
 g
 g
 h
-g
-g
-g
+A
+s
+o
 o
 R
 o
@@ -17979,7 +17987,7 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (126,1,1) = {"
@@ -17990,7 +17998,7 @@ g
 g
 g
 h
-g
+s
 N
 o
 o
@@ -18121,7 +18129,7 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (127,1,1) = {"
@@ -18263,7 +18271,7 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (128,1,1) = {"
@@ -18405,7 +18413,7 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (129,1,1) = {"
@@ -18547,7 +18555,7 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (130,1,1) = {"
@@ -18689,7 +18697,7 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (131,1,1) = {"
@@ -18831,7 +18839,7 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (132,1,1) = {"
@@ -18973,7 +18981,7 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (133,1,1) = {"
@@ -19115,7 +19123,7 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (134,1,1) = {"
@@ -19257,7 +19265,7 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (135,1,1) = {"
@@ -19399,7 +19407,7 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (136,1,1) = {"
@@ -19541,7 +19549,7 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (137,1,1) = {"
@@ -19683,7 +19691,7 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (138,1,1) = {"
@@ -19825,7 +19833,7 @@ f
 f
 f
 f
-f
+g
 e
 "}
 (139,1,1) = {"
@@ -19850,124 +19858,124 @@ g
 g
 g
 g
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
-f
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
 e
 "}
 (140,1,1) = {"

@@ -9,12 +9,12 @@
 /datum/event/grub_infestation/setup()
 	announceWhen = rand(announceWhen, announceWhen + 60)
 
-	spawncount = rand(4 * severity, 6 * severity)	//grub larva only have a 50% chance to grow big and strong
+	spawncount = rand(2 * severity, 6 * severity)
 
 	for(var/obj/machinery/atmospherics/unary/vent_pump/temp_vent in machines)
 		if(istype(get_area(temp_vent), /area/crew_quarters/sleep))
 			continue
-		if(!temp_vent.welded && temp_vent.network && temp_vent.loc.z in using_map.station_levels)
+		if(!temp_vent.welded && temp_vent.network && temp_vent.loc.z in GLOB.using_map.station_levels)
 			if(temp_vent.network.normal_members.len > 50)
 				vents += temp_vent
 
@@ -24,14 +24,14 @@
 /datum/event/grub_infestation/start()
 	while((spawncount >= 1) && vents.len)
 		var/obj/vent = pick(vents)
-		new /mob/living/simple_animal/solargrub_larva(get_turf(vent))
+		new /mob/living/simple_mob/animal/solargrub_larva(get_turf(vent))
 		vents -= vent
 		spawncount--
 	vents.Cut()
 
 /datum/event/grub_infestation/end()
 	var/list/area_names = list()
-	for(var/grub in grubs)
+	for(var/grub in GLOB.solargrubs)
 		var/mob/living/G = grub
 		if(!G || G.stat == DEAD)
 			continue
@@ -43,5 +43,5 @@
 		area_names |= grub_area.name
 	if(area_names.len)
 		var/english_list = english_list(area_names)
-		command_announcement.Announce("Sensors have narrowed down remaining active solargrubs to the followng areas: [english_list]", "Lifesign Alert", new_sound = 'sound/AI/aliens.ogg')
+		command_announcement.Announce("Sensors have narrowed down remaining active solargrubs to the following areas: [english_list]", "Lifesign Alert", new_sound = 'sound/AI/aliens.ogg')
 	grubs.Cut()

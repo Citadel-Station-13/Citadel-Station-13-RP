@@ -169,13 +169,13 @@
 	icon_state = "gentlesuit_skirt"
 
 /obj/item/clothing/under/gimmick/rank/captain/suit
-	name = "colony director's suit"
+	name = "Facility Director's suit"
 	desc = "A green suit and yellow necktie. Exemplifies authority."
 	icon_state = "green_suit"
 	item_state_slots = list(slot_r_hand_str = "centcom", slot_l_hand_str = "centcom")
 
 /obj/item/clothing/under/gimmick/rank/captain/suit/skirt
-	name = "colony director's skirt suit"
+	name = "Facility Director's skirt suit"
 	icon_state = "green_suit_skirt"
 
 /obj/item/clothing/under/gimmick/rank/head_of_personnel/suit
@@ -230,8 +230,8 @@
 	icon_state = "red_suit_skirt"
 
 /obj/item/clothing/under/schoolgirl
-	name = "schoolgirl uniform"
-	desc = "It's just like one of my Japanese animes!"
+	name = "frilly blue skirt" //Citadel change REEEFETISHCONTENT
+	desc = "A clean white shirt with a blue collar and skirt. Looks like something out of an anime." //Citadel change REEEFETISHCONTENT
 	icon_state = "schoolgirl"
 	item_state_slots = list(slot_r_hand_str = "blue", slot_l_hand_str = "blue")
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
@@ -241,6 +241,11 @@
 	desc = "A set of durable overalls for getting the job done."
 	icon_state = "overalls"
 	item_state_slots = list(slot_r_hand_str = "cargo", slot_l_hand_str = "cargo")
+
+/obj/item/clothing/under/overalls/sleek
+	name = "sleek overalls"
+	desc = "A set of modern pleather reinforced overalls."
+	icon_state = "overalls_sleek"
 
 /obj/item/clothing/under/pirate
 	name = "pirate outfit"
@@ -282,6 +287,39 @@
 	icon_state = "gladiator"
 	item_state_slots = list(slot_r_hand_str = "yellow", slot_l_hand_str = "yellow")
 	body_parts_covered = LOWER_TORSO
+
+/obj/item/clothing/under/moderncoat
+	name = "modern wrapped coat"
+	desc = "The cutting edge of fashion."
+	icon_state = "moderncoat"
+	item_state_slots = list(slot_r_hand_str = "red", slot_l_hand_str = "red")
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS
+
+/obj/item/clothing/under/ascetic
+	name = "plain ascetic garb"
+	desc = "Popular with freshly grown vatborn and new age cultists alike."
+	icon_state = "ascetic"
+	item_state_slots = list(slot_r_hand_str = "white", slot_l_hand_str = "white")
+
+/obj/item/clothing/under/robe
+	name = "black robe"
+	desc = "A black robe. It gives off uncomfortable cult vibes."
+	icon_state = "robe"
+
+/obj/item/clothing/under/whiterobe
+	name = "white robe"
+	desc = "A white robe. It gives off uncomfortable cult vibes."
+	icon_state = "whiterobe"
+
+/obj/item/clothing/under/goldrobe
+	name = "black gold-lined robe"
+	desc = "A gold-lined black robe. It gives off uncomfortable cult vibes, but fancy."
+	icon_state = "goldrobe"
+
+/obj/item/clothing/under/whitegoldrobe
+	name = "white gold-lined robe"
+	desc = "A gold-lined white robe. It gives off uncomfortable cult vibes, but fancy."
+	icon_state = "whitegoldrobe"
 
 /*
  * dress
@@ -362,8 +400,8 @@
 	item_state_slots = list(slot_r_hand_str = "dress_white", slot_l_hand_str = "dress_white")
 
 /obj/item/clothing/under/dress/dress_cap
-	name = "colony director's dress uniform"
-	desc = "Feminine fashion for the style conscious Colony Director."
+	name = "Facility Director's dress uniform"
+	desc = "Feminine fashion for the style conscious Facility Director."
 	icon_state = "dress_cap"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 
@@ -403,6 +441,22 @@
 	name = "western bustle"
 	desc = "A western bustle dress from Earth's late 1800's."
 	icon_state = "westernbustle"
+
+/obj/item/clothing/under/dress/sari
+	name = "red sari"
+	desc = "A colorful traditional dress originating from India."
+	icon_state = "sari_red"
+	item_state_slots = list(slot_r_hand_str = "darkreddress", slot_l_hand_str = "darkreddress")
+
+/obj/item/clothing/under/dress/sari/green
+	name = "green sari"
+	icon_state = "sari_green"
+	item_state_slots = list(slot_r_hand_str = "dress_green", slot_l_hand_str = "dress_green")
+
+/obj/item/clothing/under/dress/lilacdress
+	name = "lilac dress"
+	desc = "A simple black dress adorned in fake purple lilacs."
+	icon_state = "lilacdress"
 
 /*
  * wedding stuff
@@ -454,8 +508,8 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 
 /obj/item/clothing/under/captainformal
-	name = "colony director's formal uniform"
-	desc = "A Colony Director's formal-wear, for special occasions."
+	name = "Facility Director's formal uniform"
+	desc = "A Facility Director's formal-wear, for special occasions."
 	icon_state = "captain_formal"
 	item_state_slots = list(slot_r_hand_str = "lawyer_blue", slot_l_hand_str = "lawyer_blue")
 
@@ -717,8 +771,13 @@
 
 /obj/item/clothing/under/swimsuit/stripper/mankini
 	name = "mankini"
-	desc = "No honest man would wear this abomination"
+	desc = "No honest man would wear this abomination."
 	icon_state = "mankini"
+
+/obj/item/clothing/under/swimsuit/stripper/cowbikini
+	name = "cow print bikini"
+	desc = "A rather skimpy cow patterned swimsuit."
+	icon_state = "swim_cow"
 
 /*
  * pyjamas
@@ -771,6 +830,7 @@
 	desc = "A uniform belonging to Major Bill's Transportation, a shipping megacorporation."
 	icon_state = "mbill"
 	worn_state = "mbill"
+	catalogue_data = list(/datum/category_item/catalogue/information/organization/major_bills)
 
 /obj/item/clothing/under/confederacy
 	name = "\improper Confederacy uniform"
@@ -807,6 +867,37 @@
 	name = "sweater"
 	icon_state = "turtleneck"
 	worn_state = "turtleneck"
+
+//And this is where the real game begins
+/obj/item/clothing/under/future_fashion_dark_blue_striped
+	name = "Futuristic Dark Blue-Striped Jumpsuit"
+	desc = "Show your love for the fasion of today viewed through the lens of yesterday! All come in black, but this one has dark blue stripes."
+	icon_state = "future_fashion_dark_blue"
+
+/obj/item/clothing/under/future_fashion_green_striped
+	name = "Futuristic Green-Striped Jumpsuit"
+	desc = "Show your love for the fasion of today viewed through the lens of yesterday! All come in black, but this one has green stripes."
+	icon_state = "future_fashion_green"
+
+/obj/item/clothing/under/future_fashion_light_blue_striped
+	name = "Futuristic Light Blue-Striped Jumpsuit"
+	desc = "Show your love for the fasion of today viewed through the lens of yesterday! All come in black, but this one has light blue stripes."
+	icon_state = "future_fashion_light_blue"
+
+/obj/item/clothing/under/future_fashion_orange_striped
+	name = "Futuristic Orange-Striped Jumpsuit"
+	desc = "Show your love for the fasion of today viewed through the lens of yesterday! All come in black, but this one has orange-brownish stripes."
+	icon_state = "future_fashion_orange"
+
+/obj/item/clothing/under/future_fashion_purple_striped
+	name = "Futuristic Purple-Striped Jumpsuit"
+	desc = "Show your love for the fasion of today viewed through the lens of yesterday! All come in black, but this one has purple stripes."
+	icon_state = "future_fashion_purple"
+
+/obj/item/clothing/under/future_fashion_red_striped
+	name = "Futuristic Red-Striped Jumpsuit"
+	desc = "Show your love for the fasion of today viewed through the lens of yesterday! All come in black, but this one has red stripes."
+	icon_state = "future_fashion_red"
 
 //Uniforms end above here.
 
@@ -853,3 +944,256 @@
 	name = "hazard cohesion suit"
 	desc = "An orange cohesion suit with yellow hazard stripes intended to assist Prometheans in maintaining their form and prevent direct skin exposure."
 	icon_state = "cohesionsuit_hazard"
+
+//Uniforms
+//On-mob sprites go in icons\mob\uniform.dmi with the format "white_ranger_uniform_s" - with 'white' replaced with green, cyan, etc... of course! Note the _s - this is not optional.
+//Item sprites go in icons\obj\clothing\ranger.dmi with the format "white_ranger_uniform"
+/obj/item/clothing/under/color/ranger
+	var/unicolor = "white"
+	name = "ranger uniform"
+	desc = "Made from a space-proof fibre and tight fitting, this uniform usually gives the agile Rangers all kinds of protection while not inhibiting their movement. \
+	This costume is instead made from genuine cotton fibre and is based on the season three uniform."
+	icon = 'icons/obj/clothing/ranger.dmi'
+	icon_state = "ranger_uniform"
+	rolled_down = 0
+	rolled_sleeves = 0
+
+/obj/item/clothing/under/color/ranger/Initialize()
+	. = ..()
+	if(icon_state == "ranger_uniform") //allows for custom items
+		name = "[unicolor] ranger uniform"
+		icon_state = "[unicolor]_ranger_uniform"
+
+/obj/item/clothing/under/color/ranger/black
+	unicolor = "black"
+
+/obj/item/clothing/under/color/ranger/pink
+	unicolor = "pink"
+
+/obj/item/clothing/under/color/ranger/green
+	unicolor = "green"
+
+/obj/item/clothing/under/color/ranger/cyan
+	unicolor = "cyan"
+
+/obj/item/clothing/under/color/ranger/orange
+	unicolor = "orange"
+
+/obj/item/clothing/under/color/ranger/yellow
+	unicolor = "yellow"
+
+/obj/item/clothing/under/haltertop
+	name = "halter top"
+	desc = "A black halter top with denim jean shorts."
+	icon_state = "haltertop"
+
+/obj/item/clothing/under/festivedress
+	name = "festive dress"
+	desc = "A red dress with a fur-like white trim that is associated with the Christmas season."
+	icon_state = "festivedress"
+
+/obj/item/clothing/under/littleblackdress
+	name = "little black dress"
+	desc = "A small black dress with a red sash."
+	icon_state = "littleblackdress"
+
+/obj/item/clothing/under/bridgeofficer
+	name = "bridge officer uniform"
+	desc = "A jumpsuit for those ranked high enough to stand at the bridge, but not high enough to touch any buttons."
+	icon_state = "bridgeofficer"
+	item_state = "bridgeofficer"
+
+/obj/item/clothing/under/paramedunidark
+	name = "Paramedic Uniform"
+	desc = "A dark jumpsuit for those brave souls who have to deal with a CMO who thinks they're the do everything person."
+	icon_state = "paramedic-dark"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+
+/obj/item/clothing/under/parameduniskirtdark
+	name = "Paramedic Uniskirt"
+	desc = "A dark jumpskirt for those brave souls who have to deal with a CMO who thinks they're the do everything person."
+	icon_state = "paramedic-dark_skirt"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+
+/obj/item/clothing/under/btcbartender
+	name = "BTC Bartender"
+	desc = "For the classy bartender who converts their paychecks into Spesscoin."
+	icon_state = "btc_bartender_s"
+
+/obj/item/clothing/under/paramedunilight
+	name = "\improper Paramedic Uniform"
+	desc = "A light jumpsuit for those brave souls who have to deal with a CMO who thinks they're the do everything person."
+	icon_state = "paramedic-light"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+
+/obj/item/clothing/under/parameduniskirtlight
+	name = "\improper Paramedic Uniskirt"
+	desc = "A light jumpskirt for those brave souls who have to deal with a CMO who thinks they're the do everything person."
+	icon_state = "paramedic-light_skirt"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+
+/obj/item/clothing/under/dutchuniform
+	name = "\improper Western suit"
+	desc = "We can't always fight nature. We can't fight change, we can't fight gravity, we can't fight nothing."
+	icon_state = "dutchuniform"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+
+/obj/item/clothing/under/victorianblred
+    name = "red shirted victorian suit"
+    desc = "Don't you see? I have thirteen lives."
+    icon_state = "victorianblred"
+
+/obj/item/clothing/under/victorianredvest
+    name = "red vested victorian suit"
+    desc = "Why are we going to the back of the ship? Because the front crashes first. Think it though."
+    icon_state = "victorianredvest"
+
+/obj/item/clothing/under/victorianvest
+    name = "victorian suit"
+    desc = "Four minutes? That's ages. What if I get bored, or need a television, couple of books? Anyone for chess? Bring me knitting."
+    icon_state = "victorianvest"
+
+/obj/item/clothing/under/victorianlightfire
+    name = "light blue shirted victorian suit"
+    desc = "Have you ever thought what it's like to be wanderers in the Fourth Dimension?"
+    icon_state = "victorianlightfire"
+
+/obj/item/clothing/under/victorianreddress
+    name = "red victorian dress"
+    desc = "A little gratitude wouldn't irretrievably damage my ego."
+    icon_state = "victorianreddress"
+
+/obj/item/clothing/under/victorianblackdress
+    name = "black victorian dress"
+    desc = "What's the use of a good quotation if you can't change it?"
+    icon_state = "victorianblackdress"
+
+/obj/item/clothing/under/bridgeofficerskirt
+	name = "bridge officer skirt"
+	desc = "A jumpskirt for those ranked high enough to stand at the bridge, but not high enough to touch any buttons."
+	icon_state = "bridgeofficerskirt"
+
+/obj/item/clothing/under/fiendsuit
+	name = "fiendish suit"
+	desc = "A red and black suit befitting someone from the dark pits themselves....Or a thirteen year old."
+	icon_state = "fiendsuit"
+
+/obj/item/clothing/under/fienddress
+	name = "fiendish dress"
+	desc = "A red and black dress befitting someone from the dark pits themselves....Or a thirteen year old."
+	icon_state = "fienddress"
+
+/obj/item/clothing/under/leotard
+	name = "black leotard"
+	desc = "A black leotard with a piece of semi-transparent cloth near the bust. Perfect for showing off cleavage. Bunny ears not included."
+	icon_state = "leotard"
+
+/obj/item/clothing/under/leotardcolor
+	name = "colored leotard"
+	desc = "A colorable leotard with a piece of semi-transparent cloth near the bust. Perfect for showing off cleavage. Bunny ears not included."
+	icon_state = "leotard_color"
+
+/obj/item/clothing/under/verglasdress
+    name = "verglas dress"
+    desc = "The modern twist on a forgotten pattern, the Verglas style utilizes comfortable velvet and silver white satin to create an otherworldly effect evocative of winter, or the void."
+    icon_state = "verglas_dress"
+
+/obj/item/clothing/under/fashionminiskirt
+    name = "fashionable miniskirt"
+    desc = "An impractically short miniskirt allegedly making waves through the local fashion scene."
+    icon_state = "miniskirt_fashion"
+
+/obj/item/clothing/under/bodysuit/bodysuiteva
+	name = "\improper EVA bodysuit"
+	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one has bright white plating for easy visibility and thick cuffs to lock into your thrust controls."
+	icon_state = "bodysuit_eva"
+
+/obj/item/clothing/under/bodysuit/bodysuitemt
+	name = "\improper EMT bodysuit"
+	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a deep blue base with white and blue coloration."
+	icon_state = "bodysuit_emt"
+
+/obj/item/clothing/under/bodysuit/bodysuithazard
+	name = "hazard bodysuit"
+	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a black base with striking orange plating and reflective stripes."
+	icon_state = "bodysuit_hazard"
+
+/obj/item/clothing/under/bodysuit/bodysuitexplocom
+	name = "exploration command bodysuit"
+	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a black base with striking purple plating and eyecatching golden stripes."
+	icon_state = "bodysuit_pathfinder"
+
+/obj/item/clothing/under/bodysuit/bodysuitexplo
+	name = "exploration bodysuit"
+	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a black base with striking purple plating."
+	icon_state = "bodysuit_explo"
+
+/obj/item/clothing/under/bodysuit/bodysuitminer
+	name = "mining bodysuit"
+	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a dark grey base with tan and purple coloration."
+	icon_state = "bodysuit_miner"
+
+/obj/item/clothing/under/bodysuit/bodysuitsec
+	name = "security bodysuit"
+	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a dark grey base with red and yellow coloration."
+	icon_state = "bodysuit_security"
+
+/obj/item/clothing/under/bodysuit/bodysuitsecweewoo
+	name = "advanced security bodysuit"
+	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a dark grey base with red and yellow coloration. The flashing lights fill you with confidence."
+	icon_state = "bodysuit_secweewoo"
+
+/obj/item/clothing/under/bodysuit/bodysuitseccom
+	name = "security command bodysuit"
+	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a dark grey base with striking red plating and eyecatching golden stripes."
+	icon_state = "bodysuit_seccom"
+
+/obj/item/clothing/under/bodysuit/bodysuitcommand
+	name = "command bodysuit"
+	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a flashy blue base with white plating and eyecatching golden stripes."
+	icon_state = "bodysuit_command"
+
+/obj/item/clothing/under/bodysuit/bodysuitcentcom
+	name = "central command bodysuit"
+	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a sleek black base with an elegant golden trim and grey plating. It fits your corporate badges nicely."
+	icon_state = "bodysuit_centcom"
+
+/obj/item/clothing/under/bodysuit/blueskirt
+	name = "blue skirt"
+	desc = "A comfy blue sweater paired with a stylish charcoal skirt!"
+	icon_state = "blueskirt"
+
+/obj/item/clothing/under/bodysuit/redskirt
+	name = "red skirt"
+	desc = "A comfy red sweater paired with a stylish charcoal skirt!"
+	icon_state = "redskirt"
+
+/obj/item/clothing/under/ert/para
+	name = "PARA tactical uniform"
+	desc = "A standard grey jumpsuit, emblazoned with the Icon of the PMD. Close inspection of the embroidery reveals a complex web of glyphs written in an unknown language."
+	icon_state = "para_ert_uniform"
+
+/obj/item/clothing/under/blueshortskirt
+	name = "Short Skirt"
+	desc = "A light blue sweater with a black skirt."
+	icon_state = "blueshortskirt_female"
+
+/obj/item/clothing/under/greyskirt_female
+	name = "Grey Skirt"
+	desc = "A medium length, grey skirt with a long-sleeve, black sweater on top."
+	icon_state = "greyskirt_female"
+
+/obj/item/clothing/under/highwayman_clothes
+	name = "Highwayman Clothes"
+	desc = "For the dungeon crawling, adventurous robber."
+	icon_state = "highwayman_clothes"
+
+/obj/item/clothing/under/businessskirt_female
+	name = "Business Skirt"
+	desc = "A professional black jacket with a mundane brown skirt. Perfect for the office."
+	icon_state = "businessskirt_female"
+
+/obj/item/clothing/under/simpledress
+	name = "White Simple Dress"
+	desc = "A very short, plain white dress with a light blue sash."
+	icon_state = "simpledress"

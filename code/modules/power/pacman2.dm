@@ -6,8 +6,8 @@
 	name = "Pacman II"
 	desc = "P.A.C.M.A.N. type II portable generator. Uses liquid phoron as a fuel source."
 	power_gen = 4500
-	var/obj/item/weapon/tank/phoron/P = null
-	var/board_path = "/obj/item/weapon/circuitboard/pacman2"
+	var/obj/item/tank/phoron/P = null
+	var/board_path = "/obj/item/circuitboard/pacman2"
 	var/emagged = 0
 	var/heat = 0
 /*
@@ -33,26 +33,26 @@
 	New()
 		..()
 		component_parts = list()
-		component_parts += new /obj/item/weapon/stock_parts/matter_bin(src)
-		component_parts += new /obj/item/weapon/stock_parts/micro_laser(src)
+		component_parts += new /obj/item/stock_parts/matter_bin(src)
+		component_parts += new /obj/item/stock_parts/micro_laser(src)
 		component_parts += new /obj/item/stack/cable_coil(src)
 		component_parts += new /obj/item/stack/cable_coil(src)
-		component_parts += new /obj/item/weapon/stock_parts/capacitor(src)
+		component_parts += new /obj/item/stock_parts/capacitor(src)
 		component_parts += new board_path(src)
 		RefreshParts()
 
 	RefreshParts()
 		var/temp_rating = 0
-		for(var/obj/item/weapon/stock_parts/SP in component_parts)
-			if(istype(SP, /obj/item/weapon/stock_parts/matter_bin))
+		for(var/obj/item/stock_parts/SP in component_parts)
+			if(istype(SP, /obj/item/stock_parts/matter_bin))
 				//max_coins = SP.rating * SP.rating * 1000
-			else if(istype(SP, /obj/item/weapon/stock_parts/micro_laser) || istype(SP, /obj/item/weapon/stock_parts/capacitor))
+			else if(istype(SP, /obj/item/stock_parts/micro_laser) || istype(SP, /obj/item/stock_parts/capacitor))
 				temp_rating += SP.rating
 		power_gen = round(initial(power_gen) * (max(2, temp_rating) / 2))
 
 	examine(mob/user)
 		..(user)
-		user << "<font color='blue'>The generator has [P.air_contents.phoron] units of fuel left, producing [power_gen] per cycle.</font>"
+		to_chat(user, "<font color='blue'>The generator has [P.air_contents.phoron] units of fuel left, producing [power_gen] per cycle.</font>")
 
 	handleInactive()
 		heat -= 2
@@ -68,31 +68,31 @@
 			explosion(get_turf(src), 2, 5, 2, -1)
 
 	attackby(var/obj/item/O as obj, var/mob/user as mob)
-		if(istype(O, /obj/item/weapon/tank/phoron))
+		if(istype(O, /obj/item/tank/phoron))
 			if(P)
-				user << "<font color='red'>The generator already has a phoron tank loaded!</font>"
+				to_chat(user, "<font color='red'>The generator already has a phoron tank loaded!</font>")
 				return
 			P = O
 			user.drop_item()
 			O.loc = src
-			user << "<font color='blue'>You add the phoron tank to the generator.</font>"
+			to_chat(user, "<font color='blue'>You add the phoron tank to the generator.</font>")
 		else if(!active)
-			if(istype(O, /obj/item/weapon/wrench))
+			if(O.is_wrench())
 				anchored = !anchored
 				playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
 				if(anchored)
-					user << "<font color='blue'>You secure the generator to the floor.</font>"
+					to_chat(user, "<font color='blue'>You secure the generator to the floor.</font>")
 				else
-					user << "<font color='blue'>You unsecure the generator from the floor.</font>"
+					to_chat(user, "<font color='blue'>You unsecure the generator from the floor.</font>")
 				SSmachines.makepowernets()
-			else if(istype(O, /obj/item/weapon/screwdriver))
+			else if(O.is_screwdriver())
 				open = !open
 				playsound(loc, O.usesound, 50, 1)
 				if(open)
-					user << "<font color='blue'>You open the access panel.</font>"
+					to_chat(user, "<font color='blue'>You open the access panel.</font>")
 				else
-					user << "<font color='blue'>You close the access panel.</font>"
-			else if(istype(O, /obj/item/weapon/crowbar) && !open)
+					to_chat(user, "<font color='blue'>You close the access panel.</font>")
+			else if(O.is_crowbar() && !open)
 				playsound(loc, O.usesound, 50, 1)
 				var/obj/machinery/constructable_frame/machine_frame/new_frame = new /obj/machinery/constructable_frame/machine_frame(src.loc)
 				for(var/obj/item/I in component_parts)

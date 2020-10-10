@@ -37,7 +37,7 @@
 		slot_info["[inv_box.slot_id]"] = inv_box.screen_loc
 
 		if(slot_data["dir"])
-			inv_box.set_dir(slot_data["dir"])
+			inv_box.setDir(slot_data["dir"])
 
 		if(slot_data["toggle"])
 			src.other += inv_box
@@ -78,7 +78,7 @@
 		ico.MapColors(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0, -1,-1,-1,-1)
 		ico.DrawBox(rgb(255,255,255,1),1,ico.Height()/2,ico.Width()/2,ico.Height())
 		using = new /obj/screen()
-		using.name = I_HELP
+		using.name = INTENT_HELP
 		using.icon = ico
 		using.screen_loc = ui_acti
 		using.alpha = ui_alpha
@@ -90,7 +90,7 @@
 		ico.MapColors(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0, -1,-1,-1,-1)
 		ico.DrawBox(rgb(255,255,255,1),ico.Width()/2,ico.Height()/2,ico.Width(),ico.Height())
 		using = new /obj/screen()
-		using.name = I_DISARM
+		using.name = INTENT_DISARM
 		using.icon = ico
 		using.screen_loc = ui_acti
 		using.alpha = ui_alpha
@@ -102,7 +102,7 @@
 		ico.MapColors(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0, -1,-1,-1,-1)
 		ico.DrawBox(rgb(255,255,255,1),ico.Width()/2,1,ico.Width(),ico.Height()/2)
 		using = new /obj/screen()
-		using.name = I_GRAB
+		using.name = INTENT_GRAB
 		using.icon = ico
 		using.screen_loc = ui_acti
 		using.alpha = ui_alpha
@@ -114,7 +114,7 @@
 		ico.MapColors(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0, -1,-1,-1,-1)
 		ico.DrawBox(rgb(255,255,255,1),1,1,ico.Width()/2,ico.Height()/2)
 		using = new /obj/screen()
-		using.name = I_HURT
+		using.name = INTENT_HARM
 		using.icon = ico
 		using.screen_loc = ui_acti
 		using.alpha = ui_alpha
@@ -235,7 +235,7 @@
 	if(hud_data.has_internals)
 		mymob.internals = new /obj/screen()
 		mymob.internals.icon = ui_style
-		mymob.internals.icon_state = "internal0"
+		mymob.internals.icon_state = "internal[target?.internal? 1 : 0]"
 		mymob.internals.name = "internal"
 		mymob.internals.screen_loc = ui_internal
 		hud_elements |= mymob.internals
@@ -292,6 +292,23 @@
 		mymob.nutrition_icon.name = "nutrition"
 		mymob.nutrition_icon.screen_loc = ui_nutrition
 		hud_elements |= mymob.nutrition_icon
+
+	//VOREStation Addition begin
+	mymob.shadekin_dark_display = new /obj/screen/shadekin/darkness()
+	mymob.shadekin_dark_display.screen_loc = ui_shadekin_dark_display
+	mymob.shadekin_dark_display.icon_state = "dark"
+	hud_elements |= mymob.shadekin_dark_display
+
+	mymob.shadekin_energy_display = new /obj/screen/shadekin/energy()
+	mymob.shadekin_energy_display.screen_loc = ui_shadekin_energy_display
+	mymob.shadekin_energy_display.icon_state = "energy0"
+	hud_elements |= mymob.shadekin_energy_display
+
+	mymob.xenochimera_danger_display = new /obj/screen/xenochimera/danger_level()
+	mymob.xenochimera_danger_display.screen_loc = ui_xenochimera_danger_display
+	mymob.xenochimera_danger_display.icon_state = "danger00"
+	hud_elements |= mymob.xenochimera_danger_display
+	//VOREStation Addition end
 
 	mymob.ling_chem_display = new /obj/screen/ling/chems()
 	mymob.ling_chem_display.screen_loc = ui_ling_chemical_display

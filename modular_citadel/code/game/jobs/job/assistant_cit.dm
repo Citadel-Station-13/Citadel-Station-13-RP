@@ -5,6 +5,5 @@
 /datum/job/assistant
 	alt_titles = list(
 					"Entertainer",
-					"Morale Officer",
-					"Off-Duty Employee"
+					"Morale Officer"
 					)

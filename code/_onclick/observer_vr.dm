@@ -1,4 +1,4 @@
-/obj/item/device/paicard/attack_ghost(mob/user as mob)
+/obj/item/paicard/attack_ghost(mob/user as mob)
 	if(src.pai != null) //Have a person in them already?
 		user.examinate(src)
 		return
@@ -13,7 +13,7 @@
 	else
 		return
 	var/turf/location = get_turf(src)
-	var/obj/item/device/paicard/card = new(location)
+	var/obj/item/paicard/card = new(location)
 	var/mob/living/silicon/pai/pai = new(card)
 	qdel(src)
 	pai.key = pai_key

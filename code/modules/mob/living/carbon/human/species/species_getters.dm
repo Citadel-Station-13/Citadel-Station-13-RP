@@ -41,7 +41,7 @@
 	return ((H && H.isSynthetic()) ? "encounters a hardware fault and suddenly reboots!" : knockout_message)
 
 /datum/species/proc/get_death_message(var/mob/living/carbon/human/H)
-	if(config.show_human_death_message)
+	if(config_legacy.show_human_death_message)
 		return ((H && H.isSynthetic()) ? "gives one shrill beep before falling lifeless." : death_message)
 	else
 		return "no message"
@@ -50,8 +50,10 @@
 	if(H)
 		if(H.looksSynthetic())
 			return "flashing a 'system offline' light"
-		else
+		else if(!H.ai_holder)
 			return show_ssd
+		else
+			return
 
 /datum/species/proc/get_blood_colour(var/mob/living/carbon/human/H)
 	if(H)
@@ -83,10 +85,10 @@
 	switch(msg_type)
 		if("cold")
 			if(!covered)
-				H << "<span class='danger'>[pick(cold_discomfort_strings)]</span>"
+				to_chat(H, "<span class='danger'>[pick(cold_discomfort_strings)]</span>")
 		if("heat")
 			if(covered)
-				H << "<span class='danger'>[pick(heat_discomfort_strings)]</span>"
+				to_chat(H, "<span class='danger'>[pick(heat_discomfort_strings)]</span>")
 
 /datum/species/proc/get_random_name(var/gender)
 	if(!name_language)
@@ -95,12 +97,19 @@
 		else
 			return capitalize(pick(first_names_male)) + " " + capitalize(pick(last_names))
 
-	var/datum/language/species_language = all_languages[name_language]
+	var/datum/language/species_language = GLOB.all_languages[name_language]
 	if(!species_language)
-		species_language = all_languages[default_language]
+		species_language = GLOB.all_languages[default_language]
 	if(!species_language)
 		return "unknown"
 	return species_language.get_random_name(gender)
 
 /datum/species/proc/get_vision_flags(var/mob/living/carbon/human/H)
 	return vision_flags
+
+/datum/species/proc/get_wing_hair(var/mob/living/carbon/human/H) //I have no idea what this is even used for other than teshari, but putting it in just in case.
+	return wing_hair //Since the tail has it.
+/datum/species/proc/get_wing(var/mob/living/carbon/human/H)
+		return wing
+/datum/species/proc/get_wing_animation(var/mob/living/carbon/human/H)
+	return wing_animation

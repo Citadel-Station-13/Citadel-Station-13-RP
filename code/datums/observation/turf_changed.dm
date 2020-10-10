@@ -9,8 +9,7 @@
 //			/new_density: Density after the change
 //			/old_opacity: Opacity before the change
 //			/new_opacity: Opacity after the change
-
-var/decl/observ/turf_changed/turf_changed_event = new()
+GLOBAL_DATUM_INIT(turf_changed_event, /decl/observ/turf_changed, new)
 
 /decl/observ/turf_changed
 	name = "Turf Changed"
@@ -20,9 +19,9 @@ var/decl/observ/turf_changed/turf_changed_event = new()
 * Turf Changed Handling *
 ************************/
 
-/turf/ChangeTurf()
+/turf/ChangeTurf(var/turf/N, var/tell_universe, var/force_lighting_update, var/preserve_outdoors)
 	var/old_density = density
 	var/old_opacity = opacity
-	. = ..()
+	. = ..(N, tell_universe, force_lighting_update, preserve_outdoors)
 	if(.)
-		turf_changed_event.raise_event(src, old_density, density, old_opacity, opacity)
+		GLOB.turf_changed_event.raise_event(src, old_density, density, old_opacity, opacity)

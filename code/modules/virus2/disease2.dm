@@ -39,14 +39,17 @@
 	spreadtype = prob(70) ? "Airborne" : "Contact"
 	resistance = rand(15,70)
 
-	if(all_species.len)
+	if(severity >= 2 && prob(33))
+		resistance += 10
+
+	if(GLOB.all_species.len)
 		affected_species = get_infectable_species()
 
 /proc/get_infectable_species()
 	var/list/meat = list()
 	var/list/res = list()
-	for (var/specie in all_species)
-		var/datum/species/S = all_species[specie]
+	for (var/specie in GLOB.all_species)
+		var/datum/species/S = GLOB.all_species[specie]
 		if(!S.get_virus_immune())
 			meat += S
 	if(meat.len)
@@ -87,6 +90,13 @@
 			src.cure(mob)
 		else
 			resistance += rand(1,9)
+
+	//VOREStation Add Start - Corophazine can treat higher stages
+	var/antibiotics = mob.chem_effects[CE_ANTIBIOTIC]
+	if(antibiotics == ANTIBIO_SUPER)
+		if(prob(70))
+			src.cure(mob)
+	//VOREStation Add End
 
 	//Resistance is capped at 90 without being manually set to 100
 	if(resistance > 90 && resistance < 100)
@@ -129,7 +139,7 @@
 	for(var/datum/disease2/effectholder/e in effects)
 		e.effect.deactivate(mob)
 	mob.virus2.Remove("[uniqueID]")
-	BITSET(mob.hud_updateflag, STATUS_HUD)
+	ENABLE_BITFIELD(mob.hud_updateflag, STATUS_HUD)
 
 /datum/disease2/disease/proc/minormutate()
 	//uniqueID = rand(0,10000)
@@ -148,7 +158,7 @@
 	if (prob(5) && prob(100-resistance)) // The more resistant the disease,the lower the chance of randomly developing the antibodies
 		antigen = list(pick(ALL_ANTIGENS))
 		antigen |= pick(ALL_ANTIGENS)
-	if (prob(5) && all_species.len)
+	if (prob(5) && GLOB.all_species.len)
 		affected_species = get_infectable_species()
 	if (prob(10))
 		resistance += rand(1,9)

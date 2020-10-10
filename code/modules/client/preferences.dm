@@ -14,6 +14,12 @@ datum/preferences
 	var/last_ip
 	var/last_id
 
+	//Cooldowns for saving/loading. These are four are all separate due to loading code calling these one after another
+	var/saveprefcooldown
+	var/loadprefcooldown
+	var/savecharcooldown
+	var/loadcharcooldown
+
 	//game-preferences
 	var/lastchangelog = ""				//Saved changlog filesize to detect if there was a change
 	var/ooccolor = "#010000"			//Whatever this is set to acts as 'reset' color and is thus unusable as an actual custom color
@@ -60,6 +66,7 @@ datum/preferences
 	var/r_synth							//Used with synth_color to color synth parts that normaly can't be colored.
 	var/g_synth							//Same as above
 	var/b_synth							//Same as above
+	var/synth_markings = 1				//Enable/disable markings on synth parts. //VOREStation Edit - 1 by default
 
 		//Some faction information.
 	var/home_system = "Unset"           //System of birth.
@@ -103,6 +110,8 @@ datum/preferences
 	var/list/flavor_texts = list()
 	var/list/flavour_texts_robot = list()
 
+	var/list/body_descriptors = list()
+
 	var/med_record = ""
 	var/sec_record = ""
 	var/gen_record = ""
@@ -123,10 +132,16 @@ datum/preferences
 	// Communicator identity data
 	var/communicator_visibility = 0
 
+	// Default ringtone for character; if blank, use job default
+	var/ringtone = null
+
 	var/datum/category_collection/player_setup_collection/player_setup
 	var/datum/browser/panel
 
 	var/lastnews // Hash of last seen lobby news content.
+
+	var/show_in_directory = 1	//TFF 5/8/19 - show in Character Directory
+	var/sensorpref = 5			//TFF 5/8/19 - set character's suit sensor level
 
 /datum/preferences/New(client/C)
 	player_setup = new(src)
@@ -146,6 +161,9 @@ datum/preferences
 			if(load_preferences())
 				if(load_character())
 					return
+
+	key_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
+	C?.update_movement_keys(src)
 
 /datum/preferences/proc/ZeroSkills(var/forced = 0)
 	for(var/V in SKILLS) for(var/datum/skill/S in SKILLS[V])
@@ -203,7 +221,7 @@ datum/preferences
 	if(!user || !user.client)	return
 
 	if(!get_mob_by_key(client_ckey))
-		user << "<span class='danger'>No mob exists for the given client!</span>"
+		to_chat(user, "<span class='danger'>No mob exists for the given client!</span>")
 		close_load_dialog(user)
 		return
 
@@ -214,7 +232,8 @@ datum/preferences
 		dat += "<a href='?src=\ref[src];load=1'>Load slot</a> - "
 		dat += "<a href='?src=\ref[src];save=1'>Save slot</a> - "
 		dat += "<a href='?src=\ref[src];reload=1'>Reload slot</a> - "
-		dat += "<a href='?src=\ref[src];resetslot=1'>Reset slot</a>"
+		dat += "<a href='?src=\ref[src];resetslot=1'>Reset slot</a> - "
+		dat += "<a href='?src=\ref[src];copy=1'>Copy slot</a>"
 
 	else
 		dat += "Please create an account to save your preferences."
@@ -236,10 +255,10 @@ datum/preferences
 	if(!istype(user, /mob/new_player))	return
 
 	if(href_list["preference"] == "open_whitelist_forum")
-		if(config.forumurl)
-			user << link(config.forumurl)
+		if(config_legacy.forumurl)
+			user << link(config_legacy.forumurl)
 		else
-			user << "<span class='danger'>The forum URL is not set in the server configuration.</span>"
+			to_chat(user, "<span class='danger'>The forum URL is not set in the server configuration.</span>")
 			return
 	ShowChoices(usr)
 	return 1
@@ -270,6 +289,14 @@ datum/preferences
 			return 0
 		load_character(SAVE_RESET)
 		sanitize_preferences()
+	else if(href_list["copy"])
+		if(!IsGuestKey(usr.key))
+			open_copy_dialog(usr)
+			return 1
+	else if(href_list["overwrite"])
+		overwrite_character(text2num(href_list["overwrite"]))
+		sanitize_preferences()
+		close_load_dialog(usr)
 	else
 		return 0
 
@@ -299,6 +326,10 @@ datum/preferences
 		character.update_underwear()
 		character.update_hair()
 
+	if(LAZYLEN(character.descriptors))
+		for(var/entry in body_descriptors)
+			character.descriptors[entry] = body_descriptors[entry]
+
 /datum/preferences/proc/open_load_dialog(mob/user)
 	var/dat = "<body>"
 	dat += "<tt><center>"
@@ -307,7 +338,7 @@ datum/preferences
 	if(S)
 		dat += "<b>Select a character slot to load</b><hr>"
 		var/name
-		for(var/i=1, i<= config.character_slots, i++)
+		for(var/i=1, i<= config_legacy.character_slots, i++)
 			S.cd = "/character[i]"
 			S["real_name"] >> name
 			if(!name)	name = "Character[i]"
@@ -325,3 +356,58 @@ datum/preferences
 /datum/preferences/proc/close_load_dialog(mob/user)
 	//user << browse(null, "window=saves")
 	panel.close()
+
+/datum/preferences/proc/open_copy_dialog(mob/user)
+	var/dat = "<body>"
+	dat += "<tt><center>"
+
+	var/savefile/S = new /savefile(path)
+	if(S)
+		dat += "<b>Select a character slot to overwrite</b><br>"
+		dat += "<b>You will then need to save to confirm</b><hr>"
+		var/name
+		for(var/i=1, i<= config_legacy.character_slots, i++)
+			S.cd = "/character[i]"
+			S["real_name"] >> name
+			if(!name)	name = "Character[i]"
+			if(i==default_slot)
+				name = "<b>[name]</b>"
+			dat += "<a href='?src=\ref[src];overwrite=[i]'>[name]</a><br>"
+
+	dat += "<hr>"
+	dat += "</center></tt>"
+	panel = new(user, "Character Slots", "Character Slots", 300, 390, src)
+	panel.set_content(dat)
+	panel.open()
+
+//Vore noises.
+/client/verb/toggle_eating_noises()
+	set name = "Eating Noises"
+	set category = "Vore"
+	set desc = "Toggles Vore Eating noises."
+
+	var/pref_path = /datum/client_preference/eating_noises
+
+	toggle_preference(pref_path)
+
+	to_chat(src, "You will [ (is_preference_enabled(pref_path)) ? "now" : "no longer"] hear eating related vore noises.")
+
+	SScharacter_setup.queue_preferences_save(prefs)
+
+	feedback_add_details("admin_verb","TEatNoise") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+
+/client/verb/toggle_digestion_noises()
+	set name = "Digestion Noises"
+	set category = "Vore"
+	set desc = "Toggles Vore Digestion noises."
+
+	var/pref_path = /datum/client_preference/digestion_noises
+
+	toggle_preference(pref_path)
+
+	to_chat(src, "You will [ (is_preference_enabled(pref_path)) ? "now" : "no longer"] hear digestion related vore noises.")
+
+	SScharacter_setup.queue_preferences_save(prefs)
+
+	feedback_add_details("admin_verb","TDigestNoise") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

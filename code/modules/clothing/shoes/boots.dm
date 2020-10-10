@@ -74,7 +74,7 @@
 	icon_state = "winterboots_sci"
 
 /obj/item/clothing/shoes/boots/winter/command
-	name = "colony director's winter boots"
+	name = "Facility Director's winter boots"
 	desc = "A pair of winter boots. They're lined with dark fur, and trimmed in the colours of superiority."
 	icon_state = "winterboots_cap"
 
@@ -113,6 +113,13 @@
 	desc = "Steel-toed winter boots for mining or exploration in hazardous environments. Very good at keeping toes warm and uncrushed."
 	icon_state = "explorer"
 	armor = list(melee = 30, bullet = 10, laser = 10, energy = 15, bomb = 20, bio = 0, rad = 0)
+
+// Allows the wearer to climb cliffs, which could allow for shortcuts or sequence-breaking.
+/obj/item/clothing/shoes/boots/winter/climbing
+	name = "climbing winter boots"
+	desc = "A pair of winter boots, with metal bracing attached to assist in climbing rocky terrain."
+	icon_state = "climbing_boots"
+	rock_climbing = TRUE
 
 /obj/item/clothing/shoes/boots/tactical
 	name = "tactical boots"
@@ -164,3 +171,29 @@
 	icon_state = "jackboots"
 	armor = list(melee = 80, bullet = 60, laser = 50,energy = 25, bomb = 50, bio = 10, rad = 0)
 	siemens_coefficient = 0.6
+
+/obj/item/clothing/shoes/cowboyboots/black
+	name = "black cowboy boots"
+	desc = "A pair of black cowboy boots, pretty easy to scuff up."
+	icon_state = "cowboyboots_black"
+
+/obj/item/clothing/shoes/boots/swat/para
+	name = "PARA boots"
+	desc = "PMD issued gloves, stamped with protective seals and spells."
+	icon_state = "para_ert_boots"
+	action_button_name = "Enable Boot Sigils"
+
+	var/blessed = FALSE
+
+/obj/item/clothing/shoes/boots/swat/para/attack_self(mob/user as mob)
+	if(user.mind.isholy && !blessed)
+		blessed = TRUE
+		item_flags |= NOSLIP
+		to_chat(user, "<font color='blue'>You repeat the incantations etched into the boots.</font>")
+	else
+		blessed = FALSE
+		item_flags &= ~NOSLIP
+		to_chat(user, "<font color='blue'>You dispel the incantations etched into the boots for now.</font>")
+
+	if(!user.mind.isholy)
+		to_chat(user, "<font color='red'>You're not sure what language this is.</font>")

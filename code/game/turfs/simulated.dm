@@ -8,11 +8,19 @@
 	var/list/resources
 
 	var/thermite = 0
-	oxygen = MOLES_O2STANDARD
-	nitrogen = MOLES_N2STANDARD
+	initial_gas_mix = GAS_STRING_STP
 	var/to_be_destroyed = 0 //Used for fire, if a melting temperature was reached, it will be destroyed
 	var/max_fire_temperature_sustained = 0 //The max temperature of the fire which it was subjected to
+	var/can_dirty = TRUE	// If false, tile never gets dirty
+	var/can_start_dirty = TRUE	// If false, cannot start dirty roundstart
+	var/dirty_prob = 2	// Chance of being dirty roundstart
 	var/dirt = 0
+
+/turf/simulated/Initialize(mapload)
+	. = ..()
+	levelupdate()
+	// HOOK FOR MOB/FREELOOK SYSTEM
+	updateVisibility(src)
 
 // This is not great.
 /turf/simulated/proc/wet_floor(var/wet_val = 1)
@@ -52,12 +60,6 @@
 		B.clean_blood()
 	..()
 
-/turf/simulated/New()
-	..()
-	if(istype(loc, /area/chapel))
-		holy = 1
-	levelupdate()
-
 /turf/simulated/proc/AddTracks(var/typepath,var/bloodDNA,var/comingdir,var/goingdir,var/bloodcolor="#A10808")
 	var/obj/effect/decal/cleanable/blood/tracks/tracks = locate(typepath) in src
 	if(!tracks)
@@ -65,25 +67,25 @@
 	tracks.AddTracks(bloodDNA,comingdir,goingdir,bloodcolor)
 
 /turf/simulated/proc/update_dirt()
-	dirt = min(dirt+1, 101)
-	var/obj/effect/decal/cleanable/dirt/dirtoverlay = locate(/obj/effect/decal/cleanable/dirt, src)
-	if (dirt > 50)
-		if (!dirtoverlay)
-			dirtoverlay = new/obj/effect/decal/cleanable/dirt(src)
-		dirtoverlay.alpha = min((dirt - 50) * 5, 255)
+	if(can_dirty)
+		dirt = min(dirt+1, 101)
+		var/obj/effect/decal/cleanable/dirt/dirtoverlay = locate(/obj/effect/decal/cleanable/dirt, src)
+		if (dirt > 50)
+			if (!dirtoverlay)
+				dirtoverlay = new/obj/effect/decal/cleanable/dirt(src)
+			dirtoverlay.alpha = min((dirt - 50) * 5, 255)
 
 /turf/simulated/Entered(atom/A, atom/OL)
-	if(movement_disabled && usr.ckey != movement_disabled_exception)
-		usr << "<span class='danger'>Movement is admin-disabled.</span>" //This is to identify lag problems
-		return
+	..()
 
 	if (istype(A,/mob/living))
 		var/mob/living/M = A
 		if(M.lying)
-			return ..()
+			return
 
-		// Dirt overlays.
-		update_dirt()
+		if(M.dirties_floor())
+			// Dirt overlays.
+			update_dirt()
 
 		if(istype(M, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = M
@@ -135,12 +137,6 @@
 				for(var/i = 1 to slip_dist)
 					step(M, M.dir)
 					sleep(1)
-			else
-				M.inertia_dir = 0
-		else
-			M.inertia_dir = 0
-
-	..()
 
 //returns 1 if made bloody, returns 0 otherwise
 /turf/simulated/add_blood(mob/living/carbon/human/M as mob)

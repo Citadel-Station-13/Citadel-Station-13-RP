@@ -16,7 +16,7 @@
 	walk(src, 0) // Because we might have called walk_to, we must stop the walk loop or BYOND keeps an internal reference to us forever.
 	return ..()
 
-/datum/effect/effect/system/smoke_spread/chem
+/datum/effect_system/smoke_spread/chem
 	smoke_type = /obj/effect/effect/smoke/chem
 	var/obj/chemholder
 	var/range
@@ -25,18 +25,18 @@
 	var/density
 	var/show_log = 1
 
-/datum/effect/effect/system/smoke_spread/chem/spores
+/datum/effect_system/smoke_spread/chem/spores
 	show_log = 0
 	var/datum/seed/seed
 
-/datum/effect/effect/system/smoke_spread/chem/spores/New(seed_name)
+/datum/effect_system/smoke_spread/chem/spores/New(seed_name)
 	if(seed_name && plant_controller)
 		seed = plant_controller.seeds[seed_name]
 	if(!seed)
 		qdel(src)
 	..()
 
-/datum/effect/effect/system/smoke_spread/chem/New()
+/datum/effect_system/smoke_spread/chem/New()
 	..()
 	chemholder = new/obj()
 	chemholder.create_reagents(500)
@@ -45,7 +45,7 @@
 // Calculates the max range smoke can travel, then gets all turfs in that view range.
 // Culls the selected turfs to a (roughly) circle shape, then calls smokeFlow() to make
 // sure the smoke can actually path to the turfs. This culls any turfs it can't reach.
-/datum/effect/effect/system/smoke_spread/chem/set_up(var/datum/reagents/carry = null, n = 10, c = 0, loca, direct)
+/datum/effect_system/smoke_spread/chem/set_up(var/datum/reagents/carry = null, n = 10, c = 0, loca, direct)
 	range = n * 0.3
 	cardinals = c
 	carry.trans_to_obj(chemholder, carry.total_volume, copy = 1)
@@ -96,7 +96,7 @@
 // Applies reagents to walls that affect walls (only thermite and plant-b-gone at the moment).
 // Also calculates target locations to spawn the visual smoke effect on, so the whole area
 // is covered fairly evenly.
-/datum/effect/effect/system/smoke_spread/chem/start()
+/datum/effect_system/smoke_spread/chem/start()
 	if(!location)
 		return
 
@@ -130,9 +130,9 @@
 
 		var/offset = 0
 		var/points = round((radius * 2 * M_PI) / arcLength)
-		var/angle = round(ToDegrees(arcLength / radius), 1)
+		var/angle = round(TODEGREES(arcLength / radius), 1)
 
-		if(!IsInteger(radius))
+		if(!ISINTEGER(radius))
 			offset = 45		//degrees
 
 		for(var/j = 0, j < points, j++)
@@ -150,7 +150,7 @@
 // Randomizes and spawns the smoke effect.
 // Also handles deleting the smoke once the effect is finished.
 //------------------------------------------
-/datum/effect/effect/system/smoke_spread/chem/proc/spawnSmoke(var/turf/T, var/icon/I, var/dist = 1, var/obj/effect/effect/smoke/chem/passed_smoke)
+/datum/effect_system/smoke_spread/chem/proc/spawnSmoke(var/turf/T, var/icon/I, var/dist = 1, var/obj/effect/effect/smoke/chem/passed_smoke)
 
 	var/obj/effect/effect/smoke/chem/smoke
 	if(passed_smoke)
@@ -162,7 +162,7 @@
 		chemholder.reagents.trans_to_obj(smoke, chemholder.reagents.total_volume / dist, copy = 1) //copy reagents to the smoke so mob/breathe() can handle inhaling the reagents
 	smoke.icon = I
 	smoke.plane = ABOVE_PLANE
-	smoke.set_dir(pick(cardinal))
+	smoke.setDir(pick(cardinal))
 	smoke.pixel_x = -32 + rand(-8, 8)
 	smoke.pixel_y = -32 + rand(-8, 8)
 	walk_to(smoke, T)
@@ -172,12 +172,12 @@
 	fadeOut(smoke)
 	qdel(smoke)
 
-/datum/effect/effect/system/smoke_spread/chem/spores/spawnSmoke(var/turf/T, var/icon/I, var/dist = 1)
+/datum/effect_system/smoke_spread/chem/spores/spawnSmoke(var/turf/T, var/icon/I, var/dist = 1)
 	var/obj/effect/effect/smoke/chem/spores = new /obj/effect/effect/smoke/chem(location)
 	spores.name = "cloud of [seed.seed_name] [seed.seed_noun]"
 	..(T, I, dist, spores)
 
-/datum/effect/effect/system/smoke_spread/chem/proc/fadeOut(var/atom/A, var/frames = 16) // Fades out the smoke smoothly using it's alpha variable.
+/datum/effect_system/smoke_spread/chem/proc/fadeOut(var/atom/A, var/frames = 16) // Fades out the smoke smoothly using it's alpha variable.
 	if(A.alpha == 0) //Handle already transparent case
 		return
 	if(frames == 0)
@@ -189,7 +189,7 @@
 	return
 
 
-/datum/effect/effect/system/smoke_spread/chem/proc/smokeFlow() // Smoke pathfinder. Uses a flood fill method based on zones to quickly check what turfs the smoke (airflow) can actually reach.
+/datum/effect_system/smoke_spread/chem/proc/smokeFlow() // Smoke pathfinder. Uses a flood fill method based on zones to quickly check what turfs the smoke (airflow) can actually reach.
 
 	var/list/pending = new()
 	var/list/complete = new()

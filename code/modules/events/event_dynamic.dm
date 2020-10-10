@@ -3,7 +3,7 @@
 /proc/start_events()
 	//changed to a while(1) loop since they are more efficient.
 	//Moved the spawn in here to allow it to be called with advance proc call if it crashes.
-	//and also to stop spawn copying variables from the game ticker
+	//and also to stop spawn copying variables from the game SSticker
 	spawn(3000)
 		while(1)
 			/*if(prob(50))//Every 120 seconds and prob 50 2-4 weak spacedusts will hit the station
@@ -11,7 +11,7 @@
 					dust_swarm("weak")*/
 			if(!event)
 				//CARN: checks to see if random events are enabled.
-				if(config.allow_random_events)
+				if(config_legacy.allow_random_events)
 					hadevent = event()
 				else
 					Holiday_Random_Event()
@@ -24,7 +24,7 @@ var/list/event_last_fired = list()
 
 //Always triggers an event when called, dynamically chooses events based on job population
 /proc/spawn_dynamic_event()
-	if(!config.allow_random_events)
+	if(!config_legacy.allow_random_events)
 		return
 
 	var/minutes_passed = world.time/600
@@ -53,7 +53,7 @@ var/list/event_last_fired = list()
 	possibleEvents[/datum/event/pda_spam] = max(min(25, player_list.len) * 4, 200)
 	possibleEvents[/datum/event/money_lotto] = max(min(5, player_list.len), 50)
 	if(account_hack_attempted)
-		possibleEvents[/datum/event/money_hacker] = max(min(25, player_list.len) * 4, 200)
+		possibleEvents[/datum/gm_action/money_hacker] = max(min(25, player_list.len) * 4, 200)
 
 
 	possibleEvents[/datum/event/carp_migration] = 20 + 10 * active_with_role["Engineer"]
@@ -62,7 +62,7 @@ var/list/event_last_fired = list()
 	possibleEvents[/datum/event/rogue_drone] = 5 + 25 * active_with_role["Engineer"] + 25 * active_with_role["Security"]
 	possibleEvents[/datum/event/infestation] = 100 + 100 * active_with_role["Janitor"]
 
-	possibleEvents[/datum/event/communications_blackout] = 50 + 25 * active_with_role["AI"] + active_with_role["Scientist"] * 25
+	possibleEvents[/datum/event/communications_blackout] = 25 + 10 * active_with_role["AI"] + active_with_role["Scientist"] * 10
 	possibleEvents[/datum/event/ionstorm] = active_with_role["AI"] * 25 + active_with_role["Cyborg"] * 25 + active_with_role["Engineer"] * 10 + active_with_role["Scientist"] * 5
 	possibleEvents[/datum/event/grid_check] = 25 + 10 * active_with_role["Engineer"]
 	possibleEvents[/datum/event/electrical_storm] = 15 * active_with_role["Janitor"] + 5 * active_with_role["Engineer"]
@@ -197,13 +197,13 @@ var/list/event_last_fired = list()
 		if(istype(M, /mob/living/silicon/robot))
 			var/mob/living/silicon/robot/R = M
 			if(R.module)
-				if(istype(R.module, /obj/item/weapon/robot_module/robot/engineering))
+				if(istype(R.module, /obj/item/robot_module/robot/engineering))
 					active_with_role["Engineer"]++
-				else if(istype(R.module, /obj/item/weapon/robot_module/robot/security))
+				else if(istype(R.module, /obj/item/robot_module/robot/security))
 					active_with_role["Security"]++
-				else if(istype(R.module, /obj/item/weapon/robot_module/robot/medical))
+				else if(istype(R.module, /obj/item/robot_module/robot/medical))
 					active_with_role["Medical"]++
-				else if(istype(R.module, /obj/item/weapon/robot_module/robot/research))
+				else if(istype(R.module, /obj/item/robot_module/robot/research))
 					active_with_role["Scientist"]++
 
 		if(M.mind.assigned_role in engineering_positions)

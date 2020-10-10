@@ -3,8 +3,8 @@
 /obj/item/clothing/under/permit
 	name = "public nudity permit"
 	desc = "This permit entitles the bearer to conduct their duties without a uniform. Normally issued to furred crewmembers or those with nothing to hide."
-	icon = 'icons/obj/card.dmi'
-	icon_state = "guest"
+	icon = 'icons/obj/card_cit.dmi'
+	icon_state = "permit-civilian"
 	body_parts_covered = 0
 
 	sprite_sheets = list()
@@ -26,16 +26,13 @@
 	hides_bulges = TRUE
 	var/original_size
 
-
-
 /obj/item/clothing/under/bluespace/verb/toggle_fibers()
-		set category = "Object"
-		set name = "Adjust fibers"
-		set desc = "Adjust your suit fibers. This makes it so your stomach(s) will show or not."
-		set src in usr
+	set category = "Object"
+	set name = "Adjust fibers"
+	set desc = "Adjust your suit fibers. This makes it so your stomach(s) will show or not."
+	set src in usr
 
-		adjust_fibers(usr)
-		..()
+	adjust_fibers(usr)
 
 /obj/item/clothing/under/bluespace/proc/adjust_fibers(mob/user)
 	if(hides_bulges == FALSE)
@@ -45,16 +42,11 @@
 		hides_bulges = FALSE
 		to_chat(user, "You relax the suit fibers, showing your stomach(s).")
 
-
-
 /obj/item/clothing/under/bluespace/verb/resize()
 	set name = "Adjust Size"
 	set category = "Object"
 	set src in usr
 	bluespace_size(usr)
-	..()
-
-
 
 /obj/item/clothing/under/bluespace/proc/bluespace_size(mob/usr as mob)
 	if (!ishuman(usr))
@@ -85,7 +77,7 @@
 		H.update_icons() //Just want the matrix transform
 		return
 
-	if (!IsInRange(new_size,25,200))
+	if (!ISINRANGE(new_size,25,200))
 		to_chat(H,"<span class='notice'>The safety features of the uniform prevent you from choosing this size.</span>")
 		return
 
@@ -105,3 +97,7 @@
 		H.resize(original_size)
 		original_size = null
 		H.visible_message("<span class='warning'>The space around [H] distorts as they return to their original size!</span>","<span class='notice'>The space around you distorts as you return to your original size!</span>")
+
+//Same as Nanotrasen Security Uniforms
+/obj/item/clothing/under/ert
+	armor = list(melee = 5, bullet = 10, laser = 10, energy = 5, bomb = 5, bio = 0, rad = 0)

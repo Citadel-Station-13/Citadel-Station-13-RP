@@ -25,10 +25,10 @@ var/global/list/station_networks = list(
 var/global/list/engineering_networks = list(
 										NETWORK_ENGINE,
 										NETWORK_ENGINEERING,
-										NETWORK_ENGINEERING_OUTPOST,
-										"Atmosphere Alarms",
-										"Fire Alarms",
-										"Power Alarms")
+										//NETWORK_ENGINEERING_OUTPOST,	//VOREStation Edit: Tether has no Engineering Outpost,
+										NETWORK_ALARM_ATMOS,
+										NETWORK_ALARM_FIRE,
+										NETWORK_ALARM_POWER)
 /obj/machinery/camera/network/crescent
 	network = list(NETWORK_CRESCENT)
 
@@ -42,6 +42,9 @@ var/global/list/engineering_networks = list(
 
 /obj/machinery/camera/network/civilian
 	network = list(NETWORK_CIVILIAN)
+
+/obj/machinery/camera/network/circuits
+	network = list(NETWORK_CIRCUITS)
 
 /*
 /obj/machinery/camera/network/civilian_east
@@ -102,8 +105,8 @@ var/global/list/engineering_networks = list(
 
 // EMP
 
-/obj/machinery/camera/emp_proof/New()
-	..()
+/obj/machinery/camera/emp_proof/Initialize(mapload)
+	. = ..()
 	upgradeEmpProof()
 
 // X-RAY
@@ -123,14 +126,14 @@ var/global/list/engineering_networks = list(
 /obj/machinery/camera/xray/research
 	network = list(NETWORK_RESEARCH)
 
-/obj/machinery/camera/xray/New()
-	..()
+/obj/machinery/camera/xray/Initialize(mapload)
+	. = ..()
 	upgradeXRay()
 
 // MOTION
 
-/obj/machinery/camera/motion/New()
-	..()
+/obj/machinery/camera/motion/Initialize(mapload)
+	. = ..()
 	upgradeMotion()
 
 /obj/machinery/camera/motion/engineering_outpost
@@ -145,8 +148,8 @@ var/global/list/engineering_networks = list(
 /obj/machinery/camera/all/command
 	network = list(NETWORK_COMMAND)
 
-/obj/machinery/camera/all/New()
-	..()
+/obj/machinery/camera/all/Initialize(mapload)
+	. = ..()
 	upgradeEmpProof()
 	upgradeXRay()
 	upgradeMotion()
@@ -156,8 +159,8 @@ var/global/list/engineering_networks = list(
 	var/number = 0 //camera number in area
 
 //This camera type automatically sets it's name to whatever the area that it's in is called.
-/obj/machinery/camera/autoname/New()
-	..()
+/obj/machinery/camera/autoname/Initialize(mapload)
+	. = ..()
 	spawn(10)
 		number = 1
 		var/area/A = get_area(src)
@@ -171,7 +174,6 @@ var/global/list/engineering_networks = list(
 			c_tag = "[A.name] #[number]"
 		invalidateCameraCache()
 
-
 // CHECKS
 
 /obj/machinery/camera/proc/isEmpProof()
@@ -179,13 +181,13 @@ var/global/list/engineering_networks = list(
 	return O
 
 /obj/machinery/camera/proc/isXRay()
-	var/obj/item/weapon/stock_parts/scanning_module/O = locate(/obj/item/weapon/stock_parts/scanning_module) in assembly.upgrades
+	var/obj/item/stock_parts/scanning_module/O = locate(/obj/item/stock_parts/scanning_module) in assembly.upgrades
 	if (O && O.rating >= 2)
 		return O
 	return null
 
 /obj/machinery/camera/proc/isMotion()
-	var/O = locate(/obj/item/device/assembly/prox_sensor) in assembly.upgrades
+	var/O = locate(/obj/item/assembly/prox_sensor) in assembly.upgrades
 	return O
 
 // UPGRADE PROCS
@@ -196,12 +198,12 @@ var/global/list/engineering_networks = list(
 	update_coverage()
 
 /obj/machinery/camera/proc/upgradeXRay()
-	assembly.upgrades.Add(new /obj/item/weapon/stock_parts/scanning_module/adv(assembly))
+	assembly.upgrades.Add(new /obj/item/stock_parts/scanning_module/adv(assembly))
 	setPowerUsage()
 	update_coverage()
 
 /obj/machinery/camera/proc/upgradeMotion()
-	assembly.upgrades.Add(new /obj/item/device/assembly/prox_sensor(assembly))
+	assembly.upgrades.Add(new /obj/item/assembly/prox_sensor(assembly))
 	setPowerUsage()
 	START_MACHINE_PROCESSING(src)
 	update_coverage()

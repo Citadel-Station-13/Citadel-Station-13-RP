@@ -10,7 +10,7 @@
 	can_buckle = TRUE
 	buckle_lying = FALSE
 
-	circuit = /obj/item/weapon/circuitboard/tesla_coil
+	circuit = /obj/item/circuitboard/tesla_coil
 
 	var/power_loss = 2
 	var/input_power_multiplier = 1
@@ -18,22 +18,25 @@
 	var/last_zap = 0
 	var/datum/wires/tesla_coil/wires = null
 
+/obj/machinery/power/tesla_coil/pre_mapped
+	anchored = TRUE
+
 /obj/machinery/power/tesla_coil/New()
 	..()
 	wires = new(src)
 
-/obj/machinery/power/tesla_coil/initialize()
+/obj/machinery/power/tesla_coil/Initialize()
 	. = ..()
 	default_apply_parts()
 
 /obj/machinery/power/tesla_coil/Destroy()
-	qdel_null(wires)
+	QDEL_NULL(wires)
 	return ..()
 
 /obj/machinery/power/tesla_coil/RefreshParts()
 	var/power_multiplier = 0
 	zap_cooldown = 100
-	for(var/obj/item/weapon/stock_parts/capacitor/C in component_parts)
+	for(var/obj/item/stock_parts/capacitor/C in component_parts)
 		power_multiplier += C.rating
 		zap_cooldown -= (C.rating * 20)
 	input_power_multiplier = power_multiplier
@@ -62,7 +65,7 @@
 	return ..()
 
 /obj/machinery/power/tesla_coil/attack_hand(mob/user)
-	if(user.a_intent == I_GRAB && user_buckle_mob(user.pulling, user))
+	if(user.a_intent == INTENT_GRAB && user_buckle_mob(user.pulling, user))
 		return
 	..()
 
@@ -92,6 +95,7 @@
 	playsound(src.loc, 'sound/effects/lightningshock.ogg', 100, 1, extrarange = 5)
 	tesla_zap(src, 10, power/(coeff/2))
 
+//TFF 3/6/19 - Port Cit RP fix for infinite frames
 /obj/machinery/power/grounding_rod
 	name = "grounding rod"
 	desc = "Keep an area from being fried from Edison's Bane."
@@ -102,6 +106,10 @@
 
 	can_buckle = TRUE
 	buckle_lying = FALSE
+	circuit = /obj/item/circuitboard/grounding_rod
+
+/obj/machinery/power/grounding_rod/pre_mapped
+	anchored = TRUE
 
 /obj/machinery/power/grounding_rod/update_icon()
 	if(panel_open)
@@ -122,7 +130,7 @@
 	return ..()
 
 /obj/machinery/power/grounding_rod/attack_hand(mob/user)
-	if(user.a_intent == I_GRAB && user_buckle_mob(user.pulling, user))
+	if(user.a_intent == INTENT_GRAB && user_buckle_mob(user.pulling, user))
 		return
 	..()
 

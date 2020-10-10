@@ -9,41 +9,41 @@
 	var/shred_anim = "shredder-shredding"
 	density = 1
 	anchored = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 200
 	power_channel = EQUIP
-	circuit = /obj/item/weapon/circuitboard/papershredder
+	circuit = /obj/item/circuitboard/papershredder
 	var/max_paper = 10
 	var/paperamount = 0
 	var/list/shred_amounts = list(
-		/obj/item/weapon/photo = 1,
-		/obj/item/weapon/shreddedp = 1,
-		/obj/item/weapon/paper = 1,
-		/obj/item/weapon/newspaper = 3,
-		/obj/item/weapon/card/id = 3,
-		/obj/item/weapon/paper_bundle = 3,
+		/obj/item/photo = 1,
+		/obj/item/shreddedp = 1,
+		/obj/item/paper = 1,
+		/obj/item/newspaper = 3,
+		/obj/item/card/id = 3,
+		/obj/item/paper_bundle = 3,
 		)
 
 /obj/machinery/papershredder/New()
 	..()
 	component_parts = list()
-	component_parts += new /obj/item/weapon/stock_parts/motor(src)
-	component_parts += new /obj/item/weapon/stock_parts/gear(src)
-	component_parts += new /obj/item/weapon/stock_parts/gear(src)
-	component_parts += new /obj/item/weapon/stock_parts/micro_laser(src)
+	component_parts += new /obj/item/stock_parts/motor(src)
+	component_parts += new /obj/item/stock_parts/gear(src)
+	component_parts += new /obj/item/stock_parts/gear(src)
+	component_parts += new /obj/item/stock_parts/micro_laser(src)
 	RefreshParts()
 	update_icon()
 
 /obj/machinery/papershredder/attackby(var/obj/item/W, var/mob/user)
 
-	if(istype(W, /obj/item/weapon/storage))
+	if(istype(W, /obj/item/storage))
 		empty_bin(user, W)
 		return
-	else if(istype(W, /obj/item/weapon/wrench))
+	else if(W.is_wrench())
 		playsound(src, W.usesound, 50, 1)
 		anchored = !anchored
-		user << "<span class='notice'>You [anchored ? "wrench" : "unwrench"] \the [src].</span>"
+		to_chat(user, "<span class='notice'>You [anchored ? "wrench" : "unwrench"] \the [src].</span>")
 		return
 	else if(default_part_replacement(user, W))
 		return
@@ -60,7 +60,7 @@
 			if(inoperable())
 				return // Need powah!
 			if(paperamount == max_paper)
-				user << "<span class='warning'>\The [src] is full; please empty it before you continue.</span>"
+				to_chat(user, "<span class='warning'>\The [src] is full; please empty it before you continue.</span>")
 				return
 			paperamount += paper_result
 			user.drop_from_inventory(W)
@@ -68,9 +68,9 @@
 			playsound(src.loc, 'sound/items/pshred.ogg', 75, 1)
 			flick(shred_anim, src)
 			if(paperamount > max_paper)
-				user <<"<span class='danger'>\The [src] was too full, and shredded paper goes everywhere!</span>"
+				to_chat(user,"<span class='danger'>\The [src] was too full, and shredded paper goes everywhere!</span>")
 				for(var/i=(paperamount-max_paper);i>0;i--)
-					var/obj/item/weapon/shreddedp/SP = get_shredded_paper()
+					var/obj/item/shreddedp/SP = get_shredded_paper()
 					SP.loc = get_turf(src)
 					SP.throw_at(get_edge_target_turf(src,pick(alldirs)),1,5)
 				paperamount = max_paper
@@ -87,23 +87,23 @@
 		return
 
 	if(!paperamount)
-		usr << "<span class='notice'>\The [src] is empty.</span>"
+		to_chat(usr, "<span class='notice'>\The [src] is empty.</span>")
 		return
 
 	empty_bin(usr)
 
-/obj/machinery/papershredder/proc/empty_bin(var/mob/living/user, var/obj/item/weapon/storage/empty_into)
+/obj/machinery/papershredder/proc/empty_bin(var/mob/living/user, var/obj/item/storage/empty_into)
 
 	// Sanity.
 	if(empty_into && !istype(empty_into))
 		empty_into = null
 
 	if(empty_into && empty_into.contents.len >= empty_into.storage_slots)
-		user << "<span class='notice'>\The [empty_into] is full.</span>"
+		to_chat(user, "<span class='notice'>\The [empty_into] is full.</span>")
 		return
 
 	while(paperamount)
-		var/obj/item/weapon/shreddedp/SP = get_shredded_paper()
+		var/obj/item/shreddedp/SP = get_shredded_paper()
 		if(!SP) break
 		if(empty_into)
 			empty_into.handle_item_insertion(SP)
@@ -111,19 +111,19 @@
 				break
 	if(empty_into)
 		if(paperamount)
-			user << "<span class='notice'>You fill \the [empty_into] with as much shredded paper as it will carry.</span>"
+			to_chat(user, "<span class='notice'>You fill \the [empty_into] with as much shredded paper as it will carry.</span>")
 		else
-			user << "<span class='notice'>You empty \the [src] into \the [empty_into].</span>"
+			to_chat(user, "<span class='notice'>You empty \the [src] into \the [empty_into].</span>")
 
 	else
-		user << "<span class='notice'>You empty \the [src].</span>"
+		to_chat(user, "<span class='notice'>You empty \the [src].</span>")
 	update_icon()
 
 /obj/machinery/papershredder/proc/get_shredded_paper()
 	if(!paperamount)
 		return
 	paperamount--
-	return new /obj/item/weapon/shreddedp(get_turf(src))
+	return new /obj/item/shreddedp(get_turf(src))
 
 /obj/machinery/papershredder/power_change()
 	..()
@@ -137,7 +137,7 @@
 	else
 		icon_state = "shredder-off"
 	// Fullness overlay
-	overlays += "shredder-[max(0,min(5,Floor(paperamount/max_paper*5)))]"
+	overlays += "shredder-[max(0,min(5,FLOOR(paperamount/max_paper*5, 1)))]"
 	if (panel_open)
 		overlays += "panel_open"
 
@@ -145,7 +145,7 @@
 // Shredded Paper Item
 //
 
-/obj/item/weapon/shreddedp
+/obj/item/shreddedp
 	name = "shredded paper"
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "shredp"
@@ -154,35 +154,35 @@
 	throw_range = 3
 	throw_speed = 1
 
-/obj/item/weapon/shreddedp/New()
+/obj/item/shreddedp/New()
 	..()
 	pixel_x = rand(-5,5)
 	pixel_y = rand(-5,5)
 	if(prob(65)) color = pick("#BABABA","#7F7F7F")
 
-/obj/item/weapon/shreddedp/attackby(var/obj/item/W as obj, var/mob/user)
-	if(istype(W, /obj/item/weapon/flame/lighter))
+/obj/item/shreddedp/attackby(var/obj/item/W as obj, var/mob/user)
+	if(istype(W, /obj/item/flame/lighter))
 		burnpaper(W, user)
 	else
 		..()
 
-/obj/item/weapon/shreddedp/proc/burnpaper(var/obj/item/weapon/flame/lighter/P, var/mob/user)
+/obj/item/shreddedp/proc/burnpaper(var/obj/item/flame/lighter/P, var/mob/user)
 	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
 	if(user.restrained())
 		return
 	if(!P.lit)
-		user << "<span class='warning'>\The [P] is not lit.</span>"
+		to_chat(user, "<span class='warning'>\The [P] is not lit.</span>")
 		return
 	user.visible_message("<span class='warning'>\The [user] holds \the [P] up to \the [src]. It looks like [TU.he] [TU.is] trying to burn it!</span>", \
 		"<span class='warning'>You hold \the [P] up to \the [src], burning it slowly.</span>")
 	if(!do_after(user,20))
-		user << "<span class='warning'>You must hold \the [P] steady to burn \the [src].</span>"
+		to_chat(user, "<span class='warning'>You must hold \the [P] steady to burn \the [src].</span>")
 		return
 	user.visible_message("<span class='danger'>\The [user] burns right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap.</span>", \
 		"<span class='danger'>You burn right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap.</span>")
 	FireBurn()
 
-/obj/item/weapon/shreddedp/proc/FireBurn()
+/obj/item/shreddedp/proc/FireBurn()
 	var/mob/living/M = loc
 	if(istype(M))
 		M.drop_from_inventory(src)

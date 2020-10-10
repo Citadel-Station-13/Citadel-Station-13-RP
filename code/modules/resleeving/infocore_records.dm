@@ -14,6 +14,7 @@
 	//0: Normal, 1: Might be dead, 2: Definitely dead, show on console
 	var/dead_state = 0
 	var/last_update = 0
+	var/last_notification
 
 	//Backend
 	var/ckey = ""
@@ -107,7 +108,7 @@
 	locked = ckeylock
 
 	//Prevent people from printing restricted and whitelisted species
-	var/datum/species/S = all_species["[M.dna.species]"]
+	var/datum/species/S = GLOB.all_species["[M.dna.species]"]
 	if(S)
 		toocomplex = (S.spawn_flags & SPECIES_IS_WHITELISTED) || (S.spawn_flags & SPECIES_IS_RESTRICTED)
 

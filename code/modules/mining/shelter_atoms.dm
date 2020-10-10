@@ -7,7 +7,7 @@
 	has_gravity = TRUE
 
 //Survival Capsule
-/obj/item/device/survivalcapsule
+/obj/item/survivalcapsule
 	name = "surfluid shelter capsule"
 	desc = "An emergency shelter programmed into construction nanomachines. It has a license for use printed on the bottom."
 	icon_state = "houseball"
@@ -15,29 +15,27 @@
 	w_class = ITEMSIZE_TINY
 	var/template_id = "shelter_alpha"
 	var/datum/map_template/shelter/template
-	var/datum/map_template/shelter/template_roof
 	var/used = FALSE
 
-/obj/item/device/survivalcapsule/proc/get_template()
+/obj/item/survivalcapsule/proc/get_template()
 	if(template)
 		return
 	template = SSmapping.shelter_templates[template_id]
-	template_roof = SSmapping.shelter_templates[template.roof]
 	if(!template)
 		throw EXCEPTION("Shelter template ([template_id]) not found!")
 		qdel(src)
 
-/obj/item/device/survivalcapsule/Destroy()
+/obj/item/survivalcapsule/Destroy()
 	template = null // without this, capsules would be one use. per round.
 	. = ..()
 
-/obj/item/device/survivalcapsule/examine(mob/user)
+/obj/item/survivalcapsule/examine(mob/user)
 	. = ..()
 	get_template()
 	to_chat(user, "This capsule has the [template.name] stored.")
 	to_chat(user, template.description)
 
-/obj/item/device/survivalcapsule/attack_self()
+/obj/item/survivalcapsule/attack_self()
 	//Can't grab when capsule is New() because templates aren't loaded then
 	get_template()
 	if(!used)
@@ -51,12 +49,12 @@
 		var/turf/above_location = GetAbove(deploy_location)
 		if(above_location && status == SHELTER_DEPLOY_ALLOWED)
 			status = template.check_deploy(above_location)
-		
+
 		switch(status)
 			//Not allowed due to /area technical reasons
 			if(SHELTER_DEPLOY_BAD_AREA)
 				src.loc.visible_message("<span class='warning'>\The [src] will not function in this area.</span>")
-			
+
 			//Anchored objects or no space
 			if(SHELTER_DEPLOY_BAD_TURFS, SHELTER_DEPLOY_ANCHORED_OBJECTS)
 				var/width = template.width
@@ -68,7 +66,7 @@
 			return
 
 		var/turf/T = deploy_location
-		var/datum/effect/effect/system/smoke_spread/smoke = new /datum/effect/effect/system/smoke_spread()
+		var/datum/effect_system/smoke_spread/smoke = new /datum/effect_system/smoke_spread()
 		smoke.attach(T)
 		smoke.set_up(10, 0, T)
 		smoke.start()
@@ -77,21 +75,42 @@
 		playsound(get_turf(src), 'sound/effects/phasein.ogg', 100, 1)
 
 		log_and_message_admins("[key_name_admin(usr)] activated a bluespace capsule at [get_area(T)]!")
-		if(above_location && template_roof)
-			template_roof.load(above_location, centered = TRUE)
+		if(above_location)
+			template.add_roof(above_location)
+		template.annihilate_plants(deploy_location)
 		template.load(deploy_location, centered = TRUE)
+		template.update_lighting(deploy_location)
 		qdel(src)
 
-/obj/item/device/survivalcapsule/luxury
+/obj/item/survivalcapsule/luxury
 	name = "luxury surfluid shelter capsule"
 	desc = "An exorbitantly expensive luxury suite programmed into construction nanomachines. There's a license for use printed on the bottom."
 	template_id = "shelter_beta"
+
+/obj/item/survivalcapsule/luxurybar
+	name = "luxury surfluid bar capsule"
+	desc = "A luxury bar in a capsule. Bartender required and not included. There's a license for use printed on the bottom."
+	template_id = "shelter_gamma"
+
+/obj/item/survivalcapsule/military
+	name = "military surfluid shelter capsule"
+	desc = "A prefabricated firebase in a capsule. Contains basic weapons, building materials, and combat suits. There's a license for use printed on the bottom."
+	template_id = "shelter_delta"
+
+//Custom Shelter Capsules
+/obj/item/survivalcapsule/tabiranth
+	name = "silver-trimmed surfluid shelter capsule"
+	desc = "An exorbitantly expensive luxury suite programmed into construction nanomachines. This one is a particularly rare and expensive model. There's a license for use printed on the bottom."
+	template_id = "shelter_phi"
 
 //Pod objects
 //Walls
 /turf/simulated/shuttle/wall/voidcraft/survival
 	name = "survival shelter"
 	stripe_color = "#efbc3b"
+
+/turf/simulated/shuttle/wall/voidcraft/survival/hard_corner
+	hard_corner = 1
 
 //Doors
 /obj/machinery/door/airlock/voidcraft/survival_pod
@@ -106,7 +125,7 @@
 	id = "placeholder_id_do_not_use" //This has to be this way, otherwise it will control ALL doors if left blank.
 	var/obj/machinery/door/airlock/voidcraft/survival_pod/door
 
-/obj/machinery/button/remote/airlock/survival_pod/attack_hand(obj/item/weapon/W, mob/user as mob)
+/obj/machinery/button/remote/airlock/survival_pod/attack_hand(obj/item/W, mob/user as mob)
 	if(..()) return 1 //1 is failure on machines (for whatever reason)
 	if(!door)
 		var/turf/dT = get_step(src,dir)
@@ -123,7 +142,7 @@
 	basestate = "pwindow"
 
 //The windows have diagonal versions, and will never be a full window
-/obj/structure/window/reinforced/survival_pod/is_full_window()
+/obj/structure/window/reinforced/survival_pod/is_fulltile()
 	return FALSE
 
 /obj/structure/window/reinforced/survival_pod/update_icon()
@@ -152,7 +171,7 @@
 	verbs -= /obj/structure/table/proc/do_put
 	..()
 
-/obj/structure/table/survival_pod/dismantle(obj/item/weapon/wrench/W, mob/user)
+/obj/structure/table/survival_pod/dismantle(obj/item/wrench/W, mob/user)
 	to_chat(user, "<span class='warning'>You cannot dismantle \the [src].</span>")
 	return
 
@@ -170,32 +189,37 @@
 		cut_overlays()
 
 //Computer
-/obj/item/device/gps/computer
+/obj/item/gps/computer
 	name = "pod computer"
 	icon_state = "pod_computer"
 	icon = 'icons/obj/survival_pod_comp.dmi'
 	anchored = TRUE
 	density = TRUE
 	pixel_y = -32
+	gps_tag = "SHELTER"
+	tracking = TRUE
 
-/obj/item/device/gps/computer/attackby(obj/item/I, mob/living/user)
-	if(istype(I, /obj/item/weapon/wrench))
+/obj/item/gps/computer/attackby(obj/item/I, mob/living/user)
+	if(I.is_wrench())
 		user.visible_message("<span class='warning'>[user] disassembles [src].</span>",
 			"<span class='notice'>You start to disassemble [src]...</span>", "You hear clanking and banging noises.")
 		if(do_after(user,4 SECONDS,src))
-			new /obj/item/device/gps(loc)
+			new /obj/item/gps(loc)
 			qdel(src)
 			return TRUE
 
 	return FALSE
 
-/obj/item/device/gps/computer/attack_hand(mob/user)
+/obj/item/gps/computer/attack_hand(mob/user)
 	attack_self(user)
 
 //Bed
 /obj/structure/bed/pod
 	icon = 'icons/obj/survival_pod.dmi'
 	icon_state = "bed"
+
+/obj/structure/bed/pod/New(var/newloc)
+	..(newloc,DEFAULT_WALL_MATERIAL,"cotton")
 
 //Survival Storage Unit
 /obj/machinery/smartfridge/survival_pod
@@ -209,25 +233,13 @@
 	light_power = 1.2
 	light_color = "#DDFFD3"
 	pixel_y = -4
-	max_n_of_items = 10
-	var/empty = FALSE
+	max_n_of_items = 100
 
-/obj/machinery/smartfridge/survival_pod/initialize(mapload)
+/obj/machinery/smartfridge/survival_pod/Initialize()
 	. = ..()
-	if(empty)
-		return
-	for(var/i in 1 to 5)
-		var/obj/item/weapon/reagent_containers/food/snacks/liquidfood/W = new(src)
-		stock(W)
-	for(var/i in 1 to 2)
-		var/obj/item/device/fbp_backup_cell/W = new(src)
-		stock(W)
-	if(prob(50))
-		var/obj/item/weapon/storage/pill_bottle/dice/D = new(src)
-		stock(D)
-	else
-		var/obj/item/device/violin/V = new(src)
-		stock(V)
+	for(var/obj/item/O in loc)
+		if(accept_check(O))
+			stock(O)
 
 /obj/machinery/smartfridge/survival_pod/accept_check(obj/item/O)
 	return isitem(O)
@@ -235,7 +247,6 @@
 /obj/machinery/smartfridge/survival_pod/empty
 	name = "dusty survival pod storage"
 	desc = "A heated storage unit. This one's seen better days."
-	empty = TRUE
 
 //Fans
 /obj/structure/fans
@@ -245,20 +256,16 @@
 	desc = "A large machine releasing a constant gust of air."
 	anchored = TRUE
 	density = TRUE
+	can_atmos_pass = ATMOS_PASS_NO
 	var/buildstacktype = /obj/item/stack/material/steel
 	var/buildstackamount = 5
-
-/obj/structure/fans/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
-	if(!height)
-		return FALSE
-	return TRUE
 
 /obj/structure/fans/proc/deconstruct()
 	new buildstacktype(loc,buildstackamount)
 	qdel(src)
 
 /obj/structure/fans/attackby(obj/item/I, mob/living/user)
-	if(istype(I, /obj/item/weapon/wrench))
+	if(I.is_wrench())
 		user.visible_message("<span class='warning'>[user] disassembles [src].</span>",
 			"<span class='notice'>You start to disassemble [src]...</span>", "You hear clanking and banging noises.")
 		if(do_after(user,4 SECONDS,src))

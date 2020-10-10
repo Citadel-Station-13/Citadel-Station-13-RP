@@ -4,6 +4,7 @@
 	name = "engagement ring"
 	desc = "An engagement ring. It certainly looks expensive."
 	icon_state = "diamond"
+	item_state = "diamond_s"
 
 /obj/item/clothing/gloves/ring/engagement/attack_self(mob/user)
 	user.visible_message("<span class='warning'>\The [user] gets down on one knee, presenting \the [src].</span>","<span class='warning'>You get down on one knee, presenting \the [src].</span>")
@@ -18,7 +19,32 @@
 	desc = "A ring commemorating graduation from Mariner University."
 	icon_state = "mariner-grad"
 
+/obj/item/clothing/gloves/ring/custom
+	name = "ring"
+	desc = "Alt-click to name and add a description."
+	icon_state = "material"
+	var/described = FALSE
+	var/named = FALSE
+	var/coloured = FALSE
 
+/obj/item/clothing/gloves/ring/custom/AltClick(mob/user)
+	if(!named)
+		var/inputname = sanitizeSafe(input("Enter a prefix for the ring's name.", ,""), MAX_NAME_LEN)
+		if(src && inputname && in_range(user,src))
+			name = "[inputname] ring"
+			to_chat(user, "You describe the [name].")
+			named = TRUE
+	if(!described)
+		var/inputdesc = sanitizeSafe(input("Enter the new description for the ring. 2048 character limit.", ,""), 2048) // 2048 character limit
+		if(src && inputdesc && in_range(user,src))
+			desc = "[inputdesc]"
+			to_chat(user, "You describe the [name].")
+			described = TRUE
+	if(!coloured)
+		var/colour_input = input(usr,"","Choose Color",color) as color|null
+		if(colour_input)
+			color = sanitize_hexcolor(colour_input)
+			coloured = TRUE
 /////////////////////////////////////////
 //Reagent Rings
 
@@ -51,7 +77,7 @@
 
 /obj/item/clothing/gloves/ring/reagent/sleepy/New()
 	..()
-	reagents.add_reagent(/datum/reagent/chloralhydrate, 15) // Less than a sleepy-pen, but still enough to knock someone out
+	reagents.add_reagent("chloralhydrate", 15) // Less than a sleepy-pen, but still enough to knock someone out
 
 /////////////////////////////////////////
 //Seals and Signet Rings
@@ -69,7 +95,7 @@
 	name = "signet ring"
 	desc = "A signet ring, for when you're too sophisticated to sign letters."
 	icon_state = "seal-signet"
-	var/nameset = 0
+	var/nameset = FALSE
 
 /obj/item/clothing/gloves/ring/seal/signet/attack_self(mob/user)
 	if(nameset)
@@ -78,7 +104,7 @@
 
 	to_chat(user, "<span class='notice'>You claim the [src] as your own!</span>")
 	change_name(user)
-	nameset = 1
+	nameset = TRUE
 
 /obj/item/clothing/gloves/ring/seal/signet/proc/change_name(var/signet_name = "Unknown")
 	name = "[signet_name]'s signet ring"

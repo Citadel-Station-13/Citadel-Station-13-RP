@@ -1,26 +1,23 @@
 /obj/machinery/portable_atmospherics/hydroponics/soil
 	name = "soil"
 	icon_state = "soil"
-	density = 0
-	use_power = 0
+	density = FALSE
+	use_power = USE_POWER_OFF
 	mechanical = 0
 	tray_light = 0
 	frozen = -1
 
 /obj/machinery/portable_atmospherics/hydroponics/soil/attackby(var/obj/item/O as obj, var/mob/user as mob)
-	if(istype(O,/obj/item/weapon/tank))
+	if(istype(O,/obj/item/tank))
 		return
 	else
-		..()
+		return ..()
 
 /obj/machinery/portable_atmospherics/hydroponics/soil/New()
 	..()
 	verbs -= /obj/machinery/portable_atmospherics/hydroponics/verb/close_lid_verb
 	verbs -= /obj/machinery/portable_atmospherics/hydroponics/verb/remove_label
 	verbs -= /obj/machinery/portable_atmospherics/hydroponics/verb/setlight
-
-/obj/machinery/portable_atmospherics/hydroponics/soil/CanPass()
-	return 1
 
 // Holder for vine plants.
 // Icons for plants are generated as overlays, so setting it to invisible wouldn't work.

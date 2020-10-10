@@ -6,7 +6,15 @@
 /////// Grower Pod ///////
 /obj/machinery/clonepod/transhuman
 	name = "grower pod"
-	circuit = /obj/item/weapon/circuitboard/transhuman_clonepod
+	catalogue_data = list(///datum/category_item/catalogue/information/organization/vey_med,
+						/datum/category_item/catalogue/technology/resleeving)
+	circuit = /obj/item/circuitboard/transhuman_clonepod
+
+//A full version of the pod
+/obj/machinery/clonepod/transhuman/full/Initialize()
+	. = ..()
+	for(var/i = 1 to container_limit)
+		containers += new /obj/item/reagent_containers/glass/bottle/biomass(src)
 
 /obj/machinery/clonepod/transhuman/growclone(var/datum/transhuman/body_record/current_project)
 	//Manage machine-specific stuff.
@@ -77,7 +85,7 @@
 		H.add_modifier(modifier_type)
 
 	//Apply damage
-	H.adjustCloneLoss((H.getMaxHealth() - config.health_threshold_dead)*0.75)
+	H.adjustCloneLoss((H.getMaxHealth() - config_legacy.health_threshold_dead)*-0.75)
 	H.Paralyse(4)
 	H.updatehealth()
 
@@ -132,7 +140,7 @@
 			occupant.adjustCloneLoss(-2 * heal_rate)
 
 			//Premature clones may have brain damage.
-			occupant.adjustBrainLoss(-(ceil(0.5*heal_rate)))
+			occupant.adjustBrainLoss(-(CEILING((0.5*heal_rate), 1)))
 
 			//So clones don't die of oxyloss in a running pod.
 			if(occupant.reagents.get_reagent_amount("inaprovaline") < 30)
@@ -164,9 +172,11 @@
 /obj/machinery/transhuman/synthprinter
 	name = "SynthFab 3000"
 	desc = "A rapid fabricator for synthetic bodies."
+	catalogue_data = list(///datum/category_item/catalogue/information/organization/vey_med,
+						/datum/category_item/catalogue/technology/resleeving)
 	icon = 'icons/obj/machines/synthpod.dmi'
 	icon_state = "pod_0"
-	circuit = /obj/item/weapon/circuitboard/transhuman_synthprinter
+	circuit = /obj/item/circuitboard/transhuman_synthprinter
 	density = 1
 	anchored = 1
 
@@ -183,10 +193,10 @@
 /obj/machinery/transhuman/synthprinter/New()
 	..()
 	component_parts = list()
-	component_parts += new /obj/item/weapon/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/weapon/stock_parts/scanning_module(src)
-	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
-	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
+	component_parts += new /obj/item/stock_parts/matter_bin(src)
+	component_parts += new /obj/item/stock_parts/scanning_module(src)
+	component_parts += new /obj/item/stock_parts/manipulator(src)
+	component_parts += new /obj/item/stock_parts/manipulator(src)
 	component_parts += new /obj/item/stack/cable_coil(src, 2)
 	RefreshParts()
 	update_icon()
@@ -195,19 +205,19 @@
 
 	//Scanning modules reduce burn rating by 15 each
 	var/burn_rating = initial(burn_value)
-	for(var/obj/item/weapon/stock_parts/scanning_module/SM in component_parts)
+	for(var/obj/item/stock_parts/scanning_module/SM in component_parts)
 		burn_rating = burn_rating - (SM.rating*15)
 	burn_value = burn_rating
 
 	//Manipulators reduce brute by 10 each
 	var/brute_rating = initial(burn_value)
-	for(var/obj/item/weapon/stock_parts/manipulator/M in component_parts)
+	for(var/obj/item/stock_parts/manipulator/M in component_parts)
 		brute_rating = brute_rating - (M.rating*10)
 	brute_value = brute_rating
 
 	//Matter bins multiply the storage amount by their rating.
 	var/store_rating = initial(max_res_amount)
-	for(var/obj/item/weapon/stock_parts/matter_bin/MB in component_parts)
+	for(var/obj/item/stock_parts/matter_bin/MB in component_parts)
 		store_rating = store_rating * MB.rating
 	max_res_amount = store_rating
 
@@ -342,7 +352,7 @@
 /obj/machinery/transhuman/synthprinter/attackby(obj/item/W as obj, mob/user as mob)
 	src.add_fingerprint(user)
 	if(busy)
-		user << "<span class='notice'>\The [src] is busy. Please wait for completion of previous operation.</span>"
+		to_chat(user, "<span class='notice'>\The [src] is busy. Please wait for completion of previous operation.</span>")
 		return
 	if(default_deconstruction_screwdriver(user, W))
 		return
@@ -351,15 +361,15 @@
 	if(default_part_replacement(user, W))
 		return
 	if(panel_open)
-		user << "<span class='notice'>You can't load \the [src] while it's opened.</span>"
+		to_chat(user, "<span class='notice'>You can't load \the [src] while it's opened.</span>")
 		return
 	if(!istype(W, /obj/item/stack/material))
-		user << "<span class='notice'>You cannot insert this item into \the [src]!</span>"
+		to_chat(user, "<span class='notice'>You cannot insert this item into \the [src]!</span>")
 		return
 
 	var/obj/item/stack/material/S = W
 	if(!(S.material.name in stored_material))
-		user << "<span class='warning'>\the [src] doesn't accept [S.material]!</span>"
+		to_chat(user, "<span class='warning'>\the [src] doesn't accept [S.material]!</span>")
 		return
 
 	var/amnt = S.perunit
@@ -370,9 +380,9 @@
 				stored_material[S.material.name] += amnt
 				S.use(1)
 				count++
-			user << "You insert [count] [S.name] into \the [src]."
+			to_chat(user, "You insert [count] [S.name] into \the [src].")
 	else
-		user << "\the [src] cannot hold more [S.name]."
+		to_chat(user, "\the [src] cannot hold more [S.name].")
 
 	updateUsrDialog()
 	return
@@ -389,9 +399,11 @@
 /obj/machinery/transhuman/resleever
 	name = "resleeving pod"
 	desc = "Used to combine mind and body into one unit."
+	catalogue_data = list(///datum/category_item/catalogue/information/organization/vey_med,
+						/datum/category_item/catalogue/technology/resleeving)
 	icon = 'icons/obj/machines/implantchair.dmi'
 	icon_state = "implantchair"
-	circuit = /obj/item/weapon/circuitboard/transhuman_resleever
+	circuit = /obj/item/circuitboard/transhuman_resleever
 	density = 1
 	opacity = 0
 	anchored = 1
@@ -406,23 +418,23 @@
 /obj/machinery/transhuman/resleever/New()
 	..()
 	component_parts = list()
-	component_parts += new /obj/item/weapon/stock_parts/scanning_module(src)
-	component_parts += new /obj/item/weapon/stock_parts/scanning_module(src)
-	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
-	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
-	component_parts += new /obj/item/weapon/stock_parts/console_screen(src)
+	component_parts += new /obj/item/stock_parts/scanning_module(src)
+	component_parts += new /obj/item/stock_parts/scanning_module(src)
+	component_parts += new /obj/item/stock_parts/manipulator(src)
+	component_parts += new /obj/item/stock_parts/manipulator(src)
+	component_parts += new /obj/item/stock_parts/console_screen(src)
 	component_parts += new /obj/item/stack/cable_coil(src, 2)
 	RefreshParts()
 	update_icon()
 
 /obj/machinery/transhuman/resleever/RefreshParts()
 	var/scan_rating = 0
-	for(var/obj/item/weapon/stock_parts/scanning_module/SM in component_parts)
+	for(var/obj/item/stock_parts/scanning_module/SM in component_parts)
 		scan_rating += SM.rating
 	confuse_amount = (48 - scan_rating * 8)
 
 	var/manip_rating = 0
-	for(var/obj/item/weapon/stock_parts/manipulator/M in component_parts)
+	for(var/obj/item/stock_parts/manipulator/M in component_parts)
 		manip_rating += M.rating
 	blur_amount = (48 - manip_rating * 8)
 
@@ -458,21 +470,21 @@
 		return
 	if(default_part_replacement(user, W))
 		return
-	if(istype(W, /obj/item/weapon/grab))
-		var/obj/item/weapon/grab/G = W
+	if(istype(W, /obj/item/grab))
+		var/obj/item/grab/G = W
 		if(!ismob(G.affecting))
 			return
 		for(var/mob/living/carbon/slime/M in range(1, G.affecting))
 			if(M.Victim == G.affecting)
-				usr << "[G.affecting:name] will not fit into the [src.name] because they have a slime latched onto their head."
+				to_chat(usr, "[G.affecting:name] will not fit into the [src.name] because they have a slime latched onto their head.")
 				return
 		var/mob/M = G.affecting
 		if(put_mob(M))
 			qdel(G)
 			src.updateUsrDialog()
 			return //Don't call up else we'll get attack messsages
-	if(istype(W, /obj/item/device/sleevecard))
-		var/obj/item/device/sleevecard/C = W
+	if(istype(W, /obj/item/sleevecard))
+		var/obj/item/sleevecard/C = W
 		user.unEquip(C)
 		C.removePersonality()
 		qdel(C)
@@ -482,12 +494,43 @@
 
 	return ..()
 
+/obj/machinery/transhuman/resleever/MouseDrop_T(mob/living/carbon/O, mob/user as mob)
+	if(!istype(O))
+		return 0 //not a mob
+	if(user.incapacitated())
+		return 0 //user shouldn't be doing things
+	if(O.anchored)
+		return 0 //mob is anchored???
+	if(get_dist(user, src) > 1 || get_dist(user, O) > 1)
+		return 0 //doesn't use adjacent() to allow for non-cardinal (fuck my life)
+	if(!ishuman(user) && !isrobot(user))
+		return 0 //not a borg or human
+	if(panel_open)
+		to_chat(user, "<span class='notice'>Close the maintenance panel first.</span>")
+		return 0 //panel open
+
+	if(O.buckled)
+		return 0
+	if(O.has_buckled_mobs())
+		to_chat(user, span("warning", "\The [O] has other entities attached to it. Remove them first."))
+		return
+
+	if(put_mob(O))
+		if(O == user)
+			src.updateUsrDialog()
+			visible_message("[user] climbs into \the [src].")
+		else
+			src.updateUsrDialog()
+			visible_message("[user] puts [O] into \the [src].")
+
+	add_fingerprint(user)
+
 /obj/machinery/transhuman/resleever/proc/putmind(var/datum/transhuman/mind_record/MR, mode = 1, var/mob/living/carbon/human/override = null)
 	if((!occupant || !istype(occupant) || occupant.stat >= DEAD) && mode == 1)
 		return 0
 
 	if(mode == 2 && sleevecards) //Card sleeving
-		var/obj/item/device/sleevecard/card = new /obj/item/device/sleevecard(get_turf(src))
+		var/obj/item/sleevecard/card = new /obj/item/sleevecard(get_turf(src))
 		card.sleeveInto(MR)
 		sleevecards--
 		return 1
@@ -500,7 +543,7 @@
 
 	//In case they already had a mind!
 	if(occupant && occupant.mind)
-		occupant << "<span class='warning'>You feel your mind being overwritten...</span>"
+		to_chat(occupant, "<span class='warning'>You feel your mind being overwritten...</span>")
 		log_and_message_admins("was resleeve-wiped from their body.",occupant.mind)
 		occupant.ghostize()
 
@@ -519,7 +562,7 @@
 
 	//Re-supply a NIF if one was backed up with them.
 	if(MR.nif_path)
-		var/obj/item/device/nif/nif = new MR.nif_path(occupant,null,MR.nif_savedata)
+		var/obj/item/nif/nif = new MR.nif_path(occupant,null,MR.nif_savedata)
 		for(var/path in MR.nif_software)
 			new path(nif)
 		nif.durability = MR.nif_durability //Restore backed up durability after restoring the softs.
@@ -531,22 +574,17 @@
 		occupant.dna.real_name = occupant.real_name
 
 	//Give them a backup implant
-	var/obj/item/weapon/implant/backup/new_imp = new()
-	if(new_imp.implanted(occupant))
-		new_imp.loc = occupant
-		new_imp.imp_in = occupant
-		new_imp.implanted = 1
-		//Put it in the head! Makes sense.
-		var/obj/item/organ/external/affected = occupant.get_organ(BP_HEAD)
-		affected.implants += new_imp
-		new_imp.part = affected
+	var/obj/item/implant/backup/new_imp = new()
+	if(new_imp.handle_implant(occupant, BP_HEAD))
+		new_imp.post_implant(occupant)
 
 	//Inform them and make them a little dizzy.
 	if(confuse_amount + blur_amount <= 16)
-		occupant << "<span class='notice'>You feel a small pain in your head as you're given a new backup implant. Your new body feels comfortable already, however.</span>"
+	//cit change start
+		to_chat(occupant, "<span class='notice'>You feel a small pain in your head as you're given a new backup implant. Oh, and a new body. Your brain will struggle for some time to relearn its neurological pathways, and you may feel disorientation, moments of confusion, and random pain or spasms. You also feel a constant disconnect, and your body feels foreign. You can't shake the final thoughts and feelings of your past life, and they linger at the forefront of your memory. </span>")
 	else
-		occupant << "<span class='warning'>You feel a small pain in your head as you're given a new backup implant. Oh, and a new body. It's disorienting, to say the least.</span>"
-
+		to_chat(occupant, "<span class='warning'>You feel a small pain in your head as you're given a new backup implant. Oh, and a new body. Your brain will struggle for some time to relearn its neurological pathways, and you may feel disorientation, moments of confusion, and random pain or spasms. You also feel a constant disconnect, and your body feels foreign. You can't shake the final thoughts and feelings of your past life, and they linger at the forefront of your memory.  </span>")
+	//cit change end
 	occupant.confused = max(occupant.confused, confuse_amount)
 	occupant.eye_blurry = max(occupant.eye_blurry, blur_amount)
 
@@ -571,10 +609,10 @@
 
 /obj/machinery/transhuman/resleever/proc/put_mob(mob/living/carbon/human/M as mob)
 	if(!ishuman(M))
-		usr << "<span class='warning'>\The [src] cannot hold this!</span>"
+		to_chat(usr, "<span class='warning'>\The [src] cannot hold this!</span>")
 		return
 	if(src.occupant)
-		usr << "<span class='warning'>\The [src] is already occupied!</span>"
+		to_chat(usr, "<span class='warning'>\The [src] is already occupied!</span>")
 		return
 	if(M.client)
 		M.client.perspective = EYE_PERSPECTIVE

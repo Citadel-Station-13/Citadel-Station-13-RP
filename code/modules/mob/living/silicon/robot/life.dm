@@ -18,6 +18,7 @@
 
 	if(client)
 		handle_regular_hud_updates()
+		handle_vision()
 		update_items()
 	if (src.stat != DEAD) //still using power
 		use_power()
@@ -59,7 +60,7 @@
 		src.has_power = 1
 	else
 		if (src.has_power)
-			src << "<font color='red'>You are now running on emergency backup power.</font>"
+			to_chat(src, "<font color='red'>You are now running on emergency backup power.</font>")
 		src.has_power = 0
 		if(lights_on) // Light is on but there is no power!
 			lights_on = 0
@@ -82,7 +83,7 @@
 	//if(src.resting) // VOREStation edit. Our borgos would rather not.
 	//	Weaken(5)
 
-	if(health < config.health_threshold_dead && src.stat != 2) //die only once
+	if(health < config_legacy.health_threshold_dead && src.stat != 2) //die only once
 		death()
 
 	if (src.stat != 2) //Alive.
@@ -103,9 +104,8 @@
 
 		AdjustConfused(-1)
 
-	else //Dead.
+	else //Dead or just unconscious.
 		src.blinded = 1
-		src.stat = 2
 
 	if (src.stuttering) src.stuttering--
 
@@ -152,6 +152,7 @@
 
 /mob/living/silicon/robot/handle_regular_hud_updates()
 	var/fullbright = FALSE
+	var/seemeson = FALSE
 	if (src.stat == 2 || (XRAY in mutations) || (src.sight_mode & BORGXRAY))
 		src.sight |= SEE_TURFS
 		src.sight |= SEE_MOBS
@@ -169,6 +170,7 @@
 		src.see_in_dark = 8
 		see_invisible = SEE_INVISIBLE_MINIMUM
 		fullbright = TRUE
+		seemeson = TRUE
 	else if (src.sight_mode & BORGMATERIAL)
 		src.sight |= SEE_OBJS
 		src.see_in_dark = 8
@@ -193,6 +195,7 @@
 		src.see_invisible = SEE_INVISIBLE_LIVING // This is normal vision (25), setting it lower for normal vision means you don't "see" things like darkness since darkness
 							 // has a "invisible" value of 15
 	plane_holder.set_vis(VIS_FULLBRIGHT,fullbright)
+	plane_holder.set_vis(VIS_MESONS,seemeson)
 	..()
 
 	if (src.healths)
@@ -225,7 +228,7 @@
 						src.healths.icon_state = "health3"
 					if(0 to 50)
 						src.healths.icon_state = "health4"
-					if(config.health_threshold_dead to 0)
+					if(config_legacy.health_threshold_dead to 0)
 						src.healths.icon_state = "health5"
 					else
 						src.healths.icon_state = "health6"
@@ -301,7 +304,7 @@
 	if (src.client)
 		src.client.screen -= src.contents
 		for(var/obj/I in src.contents)
-			if(I && !(istype(I,/obj/item/weapon/cell) || istype(I,/obj/item/device/radio)  || istype(I,/obj/machinery/camera) || istype(I,/obj/item/device/mmi)))
+			if(I && !(istype(I,/obj/item/cell) || istype(I,/obj/item/radio)  || istype(I,/obj/machinery/camera) || istype(I,/obj/item/mmi)))
 				src.client.screen += I
 	if(src.module_state_1)
 		src.module_state_1:screen_loc = ui_inv1
@@ -316,7 +319,7 @@
 		killswitch_time --
 		if(killswitch_time <= 0)
 			if(src.client)
-				src << "<span class='danger'>Killswitch Activated</span>"
+				to_chat(src, "<span class='danger'>Killswitch Activated</span>")
 			killswitch = 0
 			spawn(5)
 				gib()
@@ -327,7 +330,7 @@
 		weaponlock_time --
 		if(weaponlock_time <= 0)
 			if(src.client)
-				src << "<span class='danger'>Weapon Lock Timed Out!</span>"
+				to_chat(src, "<span class='danger'>Weapon Lock Timed Out!</span>")
 			weapon_lock = 0
 			weaponlock_time = 120
 

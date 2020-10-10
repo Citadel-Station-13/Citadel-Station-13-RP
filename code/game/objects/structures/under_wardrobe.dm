@@ -7,14 +7,14 @@
 
 /obj/structure/undies_wardrobe/attack_hand(var/mob/user)
 	if(!human_who_can_use_underwear(user))
-		user << "<span class='warning'>Sadly there's nothing in here for you to wear.</span>"
+		to_chat(user, "<span class='warning'>Sadly there's nothing in here for you to wear.</span>")
 		return
 	interact(user)
 
 /obj/structure/undies_wardrobe/interact(var/mob/living/carbon/human/H)
 	var/dat = list()
 	dat += "<b>Underwear:</b><br>"
-	for(var/datum/category_group/underwear/UWC in global_underwear.categories)
+	for(var/datum/category_group/underwear/UWC in GLOB.global_underwear.categories)
 		var/datum/category_item/underwear/UWI = H.all_underwear[UWC.name]
 		var/item_name = UWI ? UWI.name : "None"
 		dat += "[UWC.name]: <a href='?src=\ref[src];change_underwear=[UWC.name]'>[item_name]</a>"
@@ -63,7 +63,7 @@
 			H.all_underwear -= href_list["remove_underwear"]
 			. = TRUE
 	else if(href_list["change_underwear"])
-		var/datum/category_group/underwear/UWC = global_underwear.categories_by_name[href_list["change_underwear"]]
+		var/datum/category_group/underwear/UWC = GLOB.global_underwear.categories_by_name[href_list["change_underwear"]]
 		if(!UWC)
 			return
 		var/datum/category_item/underwear/selected_underwear = input(H, "Choose underwear:", "Choose underwear", H.all_underwear[UWC.name]) as null|anything in UWC.items

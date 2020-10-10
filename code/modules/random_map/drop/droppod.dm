@@ -15,7 +15,7 @@
 	floor_type = /turf/simulated/floor/reinforced
 	var/list/supplied_drop_types = list()
 	var/door_type = /obj/structure/droppod_door
-	var/drop_type = /mob/living/simple_animal/parrot
+	var/drop_type = /mob/living/simple_mob/animal/passive/bird/parrot
 	var/auto_open_doors
 
 	var/placement_explosion_dev =   1
@@ -41,8 +41,8 @@
 /datum/random_map/droppod/generate_map()
 
 	// No point calculating these 200 times.
-	var/x_midpoint = n_ceil(limit_x / 2)
-	var/y_midpoint = n_ceil(limit_y / 2)
+	var/x_midpoint = CEILING(limit_x / 2, 1)
+	var/y_midpoint = CEILING(limit_y / 2, 1)
 
 	// Draw walls/floors/doors.
 	for(var/x = 1, x <= limit_x, x++)
@@ -80,7 +80,7 @@
 
 /datum/random_map/droppod/apply_to_map()
 	if(placement_explosion_dev || placement_explosion_heavy || placement_explosion_light || placement_explosion_flash)
-		var/turf/T = locate((origin_x + n_ceil(limit_x / 2)-1), (origin_y + n_ceil(limit_y / 2)-1), origin_z)
+		var/turf/T = locate((origin_x + CEILING(limit_x / 2, 1)-1), (origin_y + CEILING(limit_y / 2, 1)-1), origin_z)
 		if(istype(T))
 			explosion(T, placement_explosion_dev, placement_explosion_heavy, placement_explosion_light, placement_explosion_flash)
 			sleep(15) // Let the explosion finish proccing before we ChangeTurf(), otherwise it might destroy our spawned objects.
@@ -97,8 +97,8 @@
 
 // Pods are circular. Get the direction this object is facing from the center of the pod.
 /datum/random_map/droppod/get_spawn_dir(var/x, var/y)
-	var/x_midpoint = n_ceil(limit_x / 2)
-	var/y_midpoint = n_ceil(limit_y / 2)
+	var/x_midpoint = CEILING(limit_x / 2, 1)
+	var/y_midpoint = CEILING(limit_y / 2, 1)
 	if(x == x_midpoint && y == y_midpoint)
 		return null
 	var/turf/target = locate(origin_x+x-1, origin_y+y-1, origin_z)
@@ -118,7 +118,7 @@
 	// Also spawn doors and loot.
 	if(value == SD_DOOR_TILE)
 		var/obj/structure/S = new door_type(T, auto_open_doors)
-		S.set_dir(spawn_dir)
+		S.setDir(spawn_dir)
 
 	else if(value == SD_SUPPLY_TILE)
 		get_spawned_drop(T)
@@ -172,12 +172,12 @@
 			spawned_mobs |= M
 	else
 		var/list/candidates = list()
-		for(var/client/player in clients)
+		for(var/client/player in GLOB.clients)
 			if(player.mob && istype(player.mob, /mob/observer/dead))
 				candidates |= player
 
 		if(!candidates.len)
-			usr << "There are no candidates for a drop pod launch."
+			to_chat(usr, "There are no candidates for a drop pod launch.")
 			return
 
 		// Get a player and a mob type.

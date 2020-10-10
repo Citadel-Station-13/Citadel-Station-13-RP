@@ -23,26 +23,23 @@
 	var/energy_to_raise = 32
 	var/energy_to_lower = -20
 
-/obj/singularity/energy_ball/New(loc, starting_energy = 50, is_miniball = FALSE)
-	..()
+/obj/singularity/energy_ball/Initialize(mapload, starting_energy = 50, is_miniball = FALSE)
 	miniball = is_miniball
-
-/obj/singularity/energy_ball/initialize()
 	. = ..()
-	if(!miniball)
+	if(!is_miniball)
 		set_light(10, 7, "#EEEEFF")
 
 /obj/singularity/energy_ball/ex_act(severity, target)
 	return
 
 /obj/singularity/energy_ball/Destroy()
-	if(orbiting && istype(orbiting.orbiting, /obj/singularity/energy_ball))
-		var/obj/singularity/energy_ball/EB = orbiting.orbiting
+	if(orbiting && istype(orbiting.parent, /obj/singularity/energy_ball))
+		var/obj/singularity/energy_ball/EB = orbiting.parent
 		EB.orbiting_balls -= src
 
 	for(var/ball in orbiting_balls)
 		var/obj/singularity/energy_ball/EB = ball
-		qdel(EB)
+		QDEL_NULL(EB)
 
 	. = ..()
 
@@ -51,34 +48,38 @@
 		return //don't annnounce miniballs
 	..()
 
-
-/obj/singularity/energy_ball/process(var/wait = 20)
+/obj/singularity/energy_ball/process(wait)
 	set waitfor = FALSE
 	if(!orbiting)
-		if (handle_energy())
+		if(handle_energy())
 			return
 
-		move_the_basket_ball(max(wait - 5, 4 + orbiting_balls.len * 1.5))
+		move_the_basket_ball(4 + orbiting_balls.len * 1.5, wait)
 
 		playsound(src.loc, 'sound/effects/lightningbolt.ogg', 100, 1, extrarange = 30)
 
-		set_dir(tesla_zap(src, 7, TESLA_DEFAULT_POWER, TRUE))
+		pixel_x = 0
+		pixel_y = 0
 
+		setDir(tesla_zap(src, 7, TESLA_DEFAULT_POWER, TRUE))
+
+		pixel_x = -32
+		pixel_y = -32
 		for (var/ball in orbiting_balls)
-			var/range = rand(1, Clamp(orbiting_balls.len, 3, 7))
+			var/range = rand(1, clamp(orbiting_balls.len, 3, 7))
 			tesla_zap(ball, range, TESLA_MINI_POWER/7*range, TRUE)
 	else
 		energy = 0 // ensure we dont have miniballs of miniballs
 
 /obj/singularity/energy_ball/examine(mob/user)
-	..()
+	. = ..()
 	if(orbiting_balls.len)
 		to_chat(user, "The amount of orbiting mini-balls is [orbiting_balls.len].")
 
-
-/obj/singularity/energy_ball/proc/move_the_basket_ball(var/move_amount)
+/obj/singularity/energy_ball/proc/move_the_basket_ball(move_amount, time)
 	//we face the last thing we zapped, so this lets us favor that direction a bit
 	var/move_bias = dir
+	var/sleep_time = FLOOR(time/move_amount, world.tick_lag)
 	for(var/i in 0 to move_amount)
 		var/move_dir = pick(global.alldirs + move_bias) //ensures large-ball teslas don't just sit around
 		if(target && prob(10))
@@ -86,25 +87,22 @@
 		var/turf/T = get_step(src, move_dir)
 		if(can_move(T))
 			forceMove(T)
-			set_dir(move_dir)
+			setDir(move_dir)
 			for(var/mob/living/carbon/C in loc)
 				dust_mobs(C)
-			sleep(1) // So movement is smooth
+			sleep(sleep_time) // So movement is smooth
 
 /obj/singularity/energy_ball/proc/handle_energy()
 	if (energy <= 0)
-		log_game("TESLA([x],[y],[z]) Collapsed entirely.")
 		investigate_log("collapsed.", I_SINGULO)
 		qdel(src)
 		return TRUE
-
 	if(energy >= energy_to_raise)
 		energy_to_lower = energy_to_raise - 20
 		energy_to_raise = energy_to_raise * 1.25
 
 		playsound(src.loc, 'sound/effects/lightning_chargeup.ogg', 100, 1, extrarange = 30)
-		//addtimer(CALLBACK(src, .proc/new_mini_ball), 100)
-		spawn(100) new_mini_ball()
+		addtimer(CALLBACK(src, .proc/new_mini_ball), 100)
 
 	else if(energy < energy_to_lower && orbiting_balls.len)
 		energy_to_raise = energy_to_raise / 1.25
@@ -129,7 +127,6 @@
 
 	EB.orbit(src, orbitsize, pick(FALSE, TRUE), rand(10, 25), pick(3, 4, 5, 6, 36))
 
-
 /obj/singularity/energy_ball/Bump(atom/A)
 	dust_mobs(A)
 
@@ -139,19 +136,18 @@
 /obj/singularity/energy_ball/orbit(obj/singularity/energy_ball/target)
 	if (istype(target))
 		target.orbiting_balls += src
-		//TODO-LESH-DEL global.poi_list -= src
+//		GLOB.poi_list -= src
 		target.dissipate_strength = target.orbiting_balls.len
-
 	. = ..()
+
 /obj/singularity/energy_ball/stop_orbit()
-	if (orbiting && istype(orbiting.orbiting, /obj/singularity/energy_ball))
-		var/obj/singularity/energy_ball/orbitingball = orbiting.orbiting
+	if (orbiting && istype(orbiting.parent, /obj/singularity/energy_ball))
+		var/obj/singularity/energy_ball/orbitingball = orbiting.parent
 		orbitingball.orbiting_balls -= src
 		orbitingball.dissipate_strength = orbitingball.orbiting_balls.len
-	..()
-	if (!loc && !QDELETED(src))
+	. = ..()
+	if (!QDELETED(src))
 		qdel(src)
-
 
 /obj/singularity/energy_ball/proc/dust_mobs(atom/A)
 	if(isliving(A))
@@ -185,7 +181,6 @@
 										/obj/machinery/atmospherics,
 										/obj/machinery/power/emitter,
 										/obj/machinery/field_generator,
-										/mob/living/simple_animal,
 										/obj/machinery/door/blast,
 										/obj/machinery/particle_accelerator/control_box,
 										/obj/structure/particle_accelerator/fuel_chamber,
@@ -248,7 +243,7 @@
 				closest_atom = A
 				closest_dist = dist
 
-		else if(closest_mob)
+		else if(closest_machine)
 			continue
 
 		else if(istype(A, /obj/structure/blob))
@@ -279,7 +274,7 @@
 		if(zapdir)
 			. = zapdir
 
-	var/drain_energy = FALSE // VOREStation Edit - Safety First! Drain Tesla fast when its loose
+	var/drain_energy = TRUE // Citadel Station Edit: Reactivates drain for reactor. Keeping VS Edits for legacy knowledge.
 
 	//per type stuff:
 	if(closest_tesla_coil)
@@ -289,8 +284,8 @@
 		closest_grounding_rod.tesla_act(power, explosive, stun_mobs)
 
 	else if(closest_mob)
-		var/shock_damage = Clamp(round(power/400), 10, 90) + rand(-5, 5)
-		closest_mob.electrocute_act(shock_damage, source, 1, ran_zone())
+		var/shock_damage = clamp(round(power/400), 10, 90) + rand(-5, 5)
+		closest_mob.electrocute_act(shock_damage, source, 1 - closest_mob.get_shock_protection(), ran_zone())
 		log_game("TESLA([source.x],[source.y],[source.z]) Shocked [key_name(closest_mob)] for [shock_damage]dmg.")
 		message_admins("Tesla zapped [key_name_admin(closest_mob)]!")
 		if(issilicon(closest_mob))
@@ -317,5 +312,5 @@
 	if(drain_energy && istype(source, /obj/singularity/energy_ball))
 		var/obj/singularity/energy_ball/EB = source
 		if (EB.energy > 0)
-			EB.energy -= min(EB.energy, max(10, round(EB.energy * 0.05)))
+			EB.energy -= min(EB.energy, max(1, round(EB.energy * 0.05))) // Citadel Station Edit: Reduces Drain speed to allow contained balls to lose power too /Vore station has set to 10 causing rapid decay
 	// VOREStation Edit End

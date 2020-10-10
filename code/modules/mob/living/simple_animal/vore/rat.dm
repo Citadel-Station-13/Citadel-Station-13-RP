@@ -1,4 +1,4 @@
-/mob/living/simple_animal/hostile/rat
+/mob/living/simple_mob/hostile/rat
 	name = "giant rat"
 	desc = "In what passes for a hierarchy among verminous rodents, this one is king."
 	tt_desc = "Mus muscular"
@@ -36,6 +36,12 @@
 	pixel_x = -16
 	pixel_y = 0
 
+	max_buckled_mobs = 1 //Yeehaw
+	can_buckle = TRUE
+	buckle_movable = TRUE
+	buckle_lying = FALSE
+	mount_offset_y = 10
+
 	vore_active = TRUE
 	vore_capacity = 1
 	vore_pounce_chance = 45
@@ -43,21 +49,21 @@
 
 	var/life_since_foodscan = 0
 
-/mob/living/simple_animal/hostile/rat/passive
+/mob/living/simple_mob/hostile/rat/passive
 	name = "curious giant rat"
 	desc = "In what passes for a hierarchy among verminous rodents, this one is king. It seems to be more interested on scavenging."
 	follow_dist = 1
 	var/mob/living/carbon/human/food
 	var/hunger = 0
 
-/mob/living/simple_animal/hostile/rat/passive/Life()
+/mob/living/simple_mob/hostile/rat/passive/Life()
 	. = ..()
 	if(!. || ai_inactive)
 		return
 
 	if(hunger > 0 && life_since_foodscan++ > 5) //Only look for floor food when hungry.
 		life_since_foodscan = 0
-		for(var/obj/item/weapon/reagent_containers/food/snacks/S in oview(src,3)) //Accept thrown offerings and scavenge surroundings.
+		for(var/obj/item/reagent_containers/food/snacks/S in oview(src,3)) //Accept thrown offerings and scavenge surroundings.
 			if(get_dist(src,S) <=1)
 				visible_emote("hungrily devours \the [S].")
 				playsound(src.loc,'sound/items/eatfood.ogg', rand(10,50), 1)
@@ -110,7 +116,9 @@
 								   "almost sinks its teeth into [food], just stopping to give them another chance."))
 				hunger += 5
 		else if(hunger < 50)
-			visible_emote("appears to have had enough and prepares to strike!")
+			if(prob(25))
+				visible_emote("appears to have had enough and prepares to strike!")
+				hunger += 5
 		else
 			food.Weaken(5)
 			food.visible_message("<span class='danger'>\the [src] pounces on \the [food]!</span>!")
@@ -119,8 +127,8 @@
 			hunger = 0
 			food = null
 
-/mob/living/simple_animal/hostile/rat/passive/attackby(var/obj/item/O, var/mob/user) // Feed the rat your food to satisfy it.
-	if(istype(O, /obj/item/weapon/reagent_containers/food/snacks))
+/mob/living/simple_mob/hostile/rat/passive/attackby(var/obj/item/O, var/mob/user) // Feed the rat your food to satisfy it.
+	if(istype(O, /obj/item/reagent_containers/food/snacks))
 		qdel(O)
 		playsound(src.loc,'sound/items/eatfood.ogg', rand(10,50), 1)
 		hunger = 0
@@ -128,12 +136,12 @@
 		return
 	. = ..()
 
-/mob/living/simple_animal/hostile/rat/passive/Found(var/atom/found_atom)
+/mob/living/simple_mob/hostile/rat/passive/Found(var/atom/found_atom)
 	if(!SA_attackable(found_atom))
 		return null
 	else if(ishuman(found_atom) && will_eat(found_atom))
 		var/mob/living/carbon/human/H = found_atom
-		for(var/obj/item/weapon/reagent_containers/food/snacks/S in H)
+		for(var/obj/item/reagent_containers/food/snacks/S in H)
 			if(!food)
 				visible_emote("sniffs around the air intently, seeming to have caught a whiff of food!")
 			if(resting)
@@ -143,7 +151,7 @@
 			break
 	return null
 
-/mob/living/simple_animal/hostile/rat/passive/FindTarget()
+/mob/living/simple_mob/hostile/rat/passive/FindTarget()
 	var/atom/T = null
 	for(var/atom/A in ListTargets(view_range))
 		if(A == src)
@@ -154,6 +162,15 @@
 			break
 	return T
 
-/mob/living/simple_animal/hostile/rat/death()
+/mob/living/simple_mob/hostile/rat/death()
 	playsound(src, 'sound/effects/mouse_squeak_loud.ogg', 50, 1)
 	..()
+
+/mob/living/simple_animal/hostile/rat/Login()
+	. = ..()
+	if(!riding_datum)
+		riding_datum = new /datum/riding/simple_animal(src)
+	verbs |= /mob/living/simple_animal/proc/animal_mount
+
+/mob/living/simple_animal/hostile/rat/MouseDrop_T(mob/living/M, mob/living/user)
+	return

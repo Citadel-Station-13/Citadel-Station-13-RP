@@ -10,22 +10,22 @@
 	if(stat & (BROKEN|NOPOWER))
 		return
 	if(--process_tick <= 0)
-		process_tick = 15
+		process_tick = 5
 		. = 0
 		for(var/id in dispense_reagents)
-			var/datum/reagent/R = chemical_reagents_list[id]
+			var/datum/reagent/R = SSchemistry.chemical_reagents[id]
 			if(!R)
-				crash_with("[src] at [x],[y],[z] failed to find reagent '[id]'!")
+				stack_trace("[src] at [x],[y],[z] failed to find reagent '[id]'!")
 				dispense_reagents -= id
 				continue
-			var/obj/item/weapon/reagent_containers/chem_disp_cartridge/C = cartridges[R.name]
+			var/obj/item/reagent_containers/chem_disp_cartridge/C = cartridges[R.name]
 			if(C && C.reagents.total_volume < C.reagents.maximum_volume)
 				var/to_restore = min(C.reagents.maximum_volume - C.reagents.total_volume, 5)
-				use_power(to_restore * 500)
+				use_power(to_restore * 200)
 				C.reagents.add_reagent(id, to_restore)
 				. = 1
 		if(.)
-			nanomanager.update_uis(src)
+			SSnanoui.update_uis(src)
 
 /obj/machinery/chemical_dispenser
 	dispense_reagents = list(
@@ -46,13 +46,15 @@
 /obj/machinery/chemical_dispenser/bar_soft
 	dispense_reagents = list(
 		"water", "ice", "coffee", "cream", "tea", "icetea", "cola", "spacemountainwind", "dr_gibb", "space_up", "tonic",
-		"sodawater", "lemon_lime", "sugar", "orangejuice", "limejuice", "watermelonjuice", "thirteenloko", "grapesoda"
+		"sodawater", "lemon_lime", "sugar", "orangejuice", "limejuice", "watermelonjuice", "thirteenloko", "grapesoda",
+		"sarsaparilla", "sassafras"
 		)
 
 /obj/machinery/chemical_dispenser/bar_alc
 	dispense_reagents = list(
 		"lemon_lime", "sugar", "orangejuice", "limejuice", "sodawater", "tonic", "beer", "kahlua",
-		"whiskey", "wine", "vodka", "gin", "rum", "tequilla", "vermouth", "cognac", "ale", "mead", "bitters"
+		"whiskey", "wine", "vodka", "cider", "gin", "rum", "tequilla", "vermouth", "cognac", "ale", "mead", "bitters",
+		"alcsassafras"
 		)
 
 /obj/machinery/chemical_dispenser/bar_coffee

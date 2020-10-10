@@ -7,6 +7,7 @@
 
 	// Strings.
 	var/welcome_text = "Cry havoc and let slip the dogs of war!"
+	var/antag_sound = 'sound/effects/antag_notice/general_baddie_alert.ogg' // The sound file to play when someone gets this role. Only they can hear it.
 	var/leader_welcome_text                 // Text shown to the leader, if any.
 	var/victory_text                        // World output at roundend for victory.
 	var/loss_text                           // As above for loss.
@@ -70,7 +71,7 @@
 
 	// ID card stuff.
 	var/default_access = list()
-	var/id_type = /obj/item/weapon/card/id
+	var/id_type = /obj/item/card/id
 
 	var/antag_text = "You are an antagonist! Within the rules, \
 		try to act as an opposing force to the crew. Further RP and try to make sure \
@@ -79,7 +80,9 @@
 		Think through your actions and make the roleplay immersive! <b>Please remember all \
 		rules aside from those without explicit exceptions apply to antagonists.</b>"
 
-	var/can_use_aooc = TRUE                // If true, will be given the AOOC verb, along with the ability to use it.
+//	var/can_use_aooc = TRUE                // If true, will be given the AOOC verb, along with the ability to use it.
+	var/can_hear_aooc = TRUE		// If FALSE, the antag can neither speak nor hear AOOC. If TRUE, they can at least hear it.
+	var/can_speak_aooc = TRUE		// If TRUE, the antag can freely spean in AOOC.
 
 /datum/antagonist/New()
 	..()
@@ -87,7 +90,7 @@
 	get_starting_locations()
 	if(!role_text_plural)
 		role_text_plural = role_text
-	if(config.protect_roles_from_antagonist)
+	if(config_legacy.protect_roles_from_antagonist)
 		restricted_jobs |= protected_jobs
 	if(antaghud_indicator)
 		if(!hud_icon_reference)
@@ -103,12 +106,12 @@
 
 	// Prune restricted status. Broke it up for readability.
 	// Note that this is done before jobs are handed out.
-	candidates = ticker.mode.get_players_for_role(role_type, id, ghosts_only)
+	candidates = SSticker.mode.get_players_for_role(role_type, id, ghosts_only)
 	for(var/datum/mind/player in candidates)
 		if(ghosts_only && !istype(player.current, /mob/observer/dead))
 			candidates -= player
 			log_debug("[key_name(player)] is not eligible to become a [role_text]: Only ghosts may join as this role! They have been removed from the draft.")
-		else if(config.use_age_restriction_for_antags && player.current.client.player_age < minimum_player_age)
+		else if(config_legacy.use_age_restriction_for_antags && player.current.client.player_age < minimum_player_age)
 			candidates -= player
 			log_debug("[key_name(player)] is not eligible to become a [role_text]: Is only [player.current.client.player_age] day\s old, has to be [minimum_player_age] day\s!")
 		else if(player.special_role)
@@ -139,10 +142,10 @@
 		if(players && players.len)
 			player = pick(players)
 	if(!istype(player))
-		message_admins("[uppertext(ticker.mode.name)]: Failed to find a candidate for [role_text].")
+		message_admins("[uppertext(SSticker.mode.name)]: Failed to find a candidate for [role_text].")
 		return 0
-	player.current << "<span class='danger'><i>You have been selected this round as an antagonist!</i></span>"
-	message_admins("[uppertext(ticker.mode.name)]: Selected [player] as a [role_text].")
+	to_chat(player.current, "<span class='danger'><i>You have been selected this round as an antagonist!</i></span>")
+	message_admins("[uppertext(SSticker.mode.name)]: Selected [player] as a [role_text].")
 	if(istype(player.current, /mob/observer/dead))
 		create_default(player.current)
 	else

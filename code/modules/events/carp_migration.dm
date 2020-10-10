@@ -1,51 +1,101 @@
-/datum/event/carp_migration
-	announceWhen	= 50
-	endWhen 		= 900
+GLOBAL_LIST_INIT(carp_count,list())// a list of Z levels (string), associated with a list of all the carp spawned by carp events
 
-	var/list/spawned_carp = list()
+/datum/event/carp_migration
+	var/no_show = FALSE // Carp are laggy, so if there is too much stuff going on we're going to dial it down.
+	var/spawned_carp	//for debugging purposes only?
+	var/carp_per_z = 8
+	var/carp_per_event = 5
+	has_skybox_image = FALSE
+	var/list/players = list()
 
 /datum/event/carp_migration/setup()
-	announceWhen = rand(40, 60)
-	endWhen = rand(600,1200)
+	announceWhen = rand(5, 10)
+	endWhen += severity*25
 
-/datum/event/carp_migration/announce()
-	var/announcement = ""
-	if(severity == EVENT_LEVEL_MAJOR)
-		announcement = "Massive migration of unknown biological entities has been detected near [station_name()], please stand-by."
+/datum/event/carp_migration/proc/count_carps()
+	var/total_carps
+	var/local_carps
+	for(var/Z in GLOB.carp_count)
+		var/list/L = GLOB.carp_count[Z]
+		total_carps += L.len
+		if(text2num(Z) in affecting_z)
+			local_carps += L.len
+
+	if(total_carps >= 65)
+		no_show = TRUE
 	else
-		announcement = "Unknown biological [spawned_carp.len == 1 ? "entity has" : "entities have"] been detected near [station_name()], please stand-by."
-	command_announcement.Announce(announcement, "Lifesign Alert")
+		no_show = FALSE
 
 /datum/event/carp_migration/start()
-	if(severity == EVENT_LEVEL_MAJOR)
-		spawn_fish(landmarks_list.len)
-	else if(severity == EVENT_LEVEL_MODERATE)
-		spawn_fish(rand(4, 6)) 			//12 to 30 carp, in small groups
+	count_carps()
+	if(no_show && prob(95))
+		return
 	else
-		spawn_fish(rand(1, 3), 1, 2)	//1 to 6 carp, alone or in pairs
+		spawn_carp()
 
-/datum/event/carp_migration/proc/spawn_fish(var/num_groups, var/group_size_min=3, var/group_size_max=5)
-	var/list/spawn_locations = list()
 
-	for(var/obj/effect/landmark/C in landmarks_list)
-		if(C.name == "carpspawn")
-			spawn_locations.Add(C.loc)
-	spawn_locations = shuffle(spawn_locations)
-	num_groups = min(num_groups, spawn_locations.len)
+/datum/event/carp_migration/announce()
+	if(severity > EVENT_LEVEL_MODERATE)
+		command_announcement.Announce("A massive migration of unknown biological entities has been detected in the vicinity of the [location_name()]. Exercise external operations with caution.")
+	else
+		command_announcement.Announce("A large migration of unknown biological entities has been detected in the vicinity of the [location_name()]. Caution is advised.")
 
-	var/i = 1
-	while (i <= num_groups)
-		var/group_size = rand(group_size_min, group_size_max)
-		for (var/j = 1, j <= group_size, j++)
-			spawned_carp.Add(new /mob/living/simple_animal/hostile/carp(spawn_locations[i]))
-		i++
+
+/datum/event/carp_migration/proc/spawn_carp(var/num_groups, var/group_size_min, var/group_size_max, var/dir, var/speed)
+	var/Z = pick(affecting_z)
+
+	if(!dir)
+		dir = pick(GLOB.cardinal)
+	if(!speed)
+		speed = rand(1,3)
+
+	var/n = rand(severity, severity*2)
+	var/I = 0
+	while(I < n)
+		var/turf/T = get_random_edge_turf(dir,TRANSITIONEDGE + 2, Z)
+		if(istype(T,/turf/space))
+			var/mob/living/simple_mob/animal/space/M
+			if(prob(96))
+				M = new /mob/living/simple_mob/animal/space/carp(T)
+				I++
+			else
+				M = new /mob/living/simple_mob/animal/space/carp/large(T)
+				I += 3
+			LAZYADD(GLOB.carp_count["[Z]"], M)
+			spawned_carp ++
+			M.throw_at(get_random_edge_turf(GLOB.reverse_dir[dir],TRANSITIONEDGE + 2, Z), 5, speed, callback = CALLBACK(src,/datum/event/carp_migration/proc/check_gib,M))
+		if(no_show)
+			break
+
+/proc/get_random_edge_turf(var/dir, var/clearance = TRANSITIONEDGE + 1, var/Z)
+	if(!dir)
+		return
+
+	switch(dir)
+		if(NORTH)
+			return locate(rand(clearance, world.maxx - clearance), world.maxy - clearance, Z)
+		if(SOUTH)
+			return locate(rand(clearance, world.maxx - clearance), clearance, Z)
+		if(EAST)
+			return locate(world.maxx - clearance, rand(clearance, world.maxy - clearance), Z)
+		if(WEST)
+			return locate(clearance, rand(clearance, world.maxy - clearance), Z)
+
+/datum/event/carp_migration/proc/check_gib(var/mob/living/simple_mob/hostile/carp/M)	//awesome road kills
+	if(M.health <= 0 && prob(60))
+		M.gib()
+
+/datum/event/carp_migration/proc/reduce_carp_count(var/mob/M)
+	for(var/Z in affecting_z)
+		var/list/L = GLOB.carp_count["[Z]"]
+		if(M in L)
+			LAZYREMOVE(L,M)
+			break
 
 /datum/event/carp_migration/end()
-	spawn(0)
-		for(var/mob/living/simple_animal/hostile/C in spawned_carp)
-			if(!C.stat)
-				var/turf/T = get_turf(C)
-				if(istype(T, /turf/space))
-					if(prob(75))
-						qdel(C)
-			sleep(1)
+	message_admins("Carp migration event spawned [spawned_carp] carp.")
+
+
+// Overmap version
+/datum/event/carp_migration/overmap/announce()
+	return

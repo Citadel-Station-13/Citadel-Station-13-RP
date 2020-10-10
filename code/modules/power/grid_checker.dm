@@ -3,7 +3,7 @@
 	desc = "A machine that reacts to unstable conditions in the powernet, by safely shutting everything down.  Probably better \
 	than the alternative."
 	icon_state = "gridchecker_on"
-	circuit = /obj/item/weapon/circuitboard/grid_checker
+	circuit = /obj/item/circuitboard/grid_checker
 	density = 1
 	anchored = 1
 	var/power_failing = FALSE // Turns to TRUE when the grid check event is fired by the Game Master, or perhaps a cheeky antag.
@@ -21,9 +21,9 @@
 	update_icon()
 	wires = new(src)
 	component_parts = list()
-	component_parts += new /obj/item/weapon/stock_parts/capacitor(src)
-	component_parts += new /obj/item/weapon/stock_parts/capacitor(src)
-	component_parts += new /obj/item/weapon/stock_parts/capacitor(src)
+	component_parts += new /obj/item/stock_parts/capacitor(src)
+	component_parts += new /obj/item/stock_parts/capacitor(src)
+	component_parts += new /obj/item/stock_parts/capacitor(src)
 	component_parts += new /obj/item/stack/cable_coil(src, 10)
 	RefreshParts()
 
@@ -43,12 +43,12 @@
 /obj/machinery/power/grid_checker/attackby(obj/item/W, mob/user)
 	if(!user)
 		return
-	if(istype(W, /obj/item/weapon/screwdriver))
+	if(W.is_screwdriver())
 		default_deconstruction_screwdriver(user, W)
 		opened = !opened
-	else if(istype(W, /obj/item/weapon/crowbar))
+	else if(W.is_crowbar())
 		default_deconstruction_crowbar(user, W)
-	else if(istype(W, /obj/item/device/multitool) || istype(W, /obj/item/weapon/wirecutters) )
+	else if(istype(W, /obj/item/multitool) || W.is_wirecutter())
 		attack_hand(user)
 
 /obj/machinery/power/grid_checker/attack_hand(mob/user)

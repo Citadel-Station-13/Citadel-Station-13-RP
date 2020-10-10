@@ -5,8 +5,8 @@
 	icon_state = "sheater0"
 	name = "space heater"
 	desc = "Made by Space Amish using traditional space techniques, this heater is guaranteed not to set the station on fire."
-	var/obj/item/weapon/cell/cell
-	var/cell_type = /obj/item/weapon/cell/high
+	var/obj/item/cell/cell
+	var/cell_type = /obj/item/cell/high
 	var/on = 0
 	var/set_temperature = T0C + 20	//K
 	var/heating_power = 40000
@@ -30,11 +30,11 @@
 /obj/machinery/space_heater/examine(mob/user)
 	..(user)
 
-	user << "The heater is [on ? "on" : "off"] and the hatch is [panel_open ? "open" : "closed"]."
+	to_chat(user, "The heater is [on ? "on" : "off"] and the hatch is [panel_open ? "open" : "closed"].")
 	if(panel_open)
-		user << "The power cell is [cell ? "installed" : "missing"]."
+		to_chat(user, "The power cell is [cell ? "installed" : "missing"].")
 	else
-		user << "The charge meter reads [cell ? round(cell.percent(),1) : 0]%"
+		to_chat(user, "The charge meter reads [cell ? round(cell.percent(),1) : 0]%")
 	return
 
 /obj/machinery/space_heater/powered()
@@ -51,14 +51,14 @@
 	..(severity)
 
 /obj/machinery/space_heater/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/weapon/cell))
+	if(istype(I, /obj/item/cell))
 		if(panel_open)
 			if(cell)
-				user << "There is already a power cell inside."
+				to_chat(user, "There is already a power cell inside.")
 				return
 			else
 				// insert cell
-				var/obj/item/weapon/cell/C = usr.get_active_hand()
+				var/obj/item/cell/C = usr.get_active_hand()
 				if(istype(C))
 					user.drop_item()
 					cell = C
@@ -68,9 +68,9 @@
 					user.visible_message("<span class='notice'>[user] inserts a power cell into [src].</span>", "<span class='notice'>You insert the power cell into [src].</span>")
 					power_change()
 		else
-			user << "The hatch must be open to insert a power cell."
+			to_chat(user, "The hatch must be open to insert a power cell.")
 			return
-	else if(istype(I, /obj/item/weapon/screwdriver))
+	else if(I.is_screwdriver())
 		panel_open = !panel_open
 		playsound(src, I.usesound, 50, 1)
 		user.visible_message("<span class='notice'>[user] [panel_open ? "opens" : "closes"] the hatch on the [src].</span>", "<span class='notice'>You [panel_open ? "open" : "close"] the hatch on the [src].</span>")
@@ -128,11 +128,11 @@
 				var/value = text2num(href_list["val"])
 
 				// limit to 0-90 degC
-				set_temperature = dd_range(T0C, T0C + 90, set_temperature + value)
+				set_temperature = clamp(set_temperature + value, T0C, T0C + 90)
 
 			if("cellremove")
 				if(panel_open && cell && !usr.get_active_hand())
-					usr.visible_message("<span class='notice'>\The usr] removes \the [cell] from \the [src].</span>", "<span class='notice'>You remove \the [cell] from \the [src].</span>")
+					usr.visible_message("<span class='notice'>\The [usr] removes \the [cell] from \the [src].</span>", "<span class='notice'>You remove \the [cell] from \the [src].</span>")
 					cell.update_icon()
 					usr.put_in_hands(cell)
 					cell.add_fingerprint(usr)
@@ -142,7 +142,7 @@
 
 			if("cellinstall")
 				if(panel_open && !cell)
-					var/obj/item/weapon/cell/C = usr.get_active_hand()
+					var/obj/item/cell/C = usr.get_active_hand()
 					if(istype(C))
 						usr.drop_item()
 						cell = C

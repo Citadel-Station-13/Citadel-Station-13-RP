@@ -86,7 +86,7 @@
 // PoI compatability, to stop active edges.
 // In hindsight it would've been better to do this first instead of making a billion /sif subtypes above,
 // but maybe we can transition to this instead now and over time get rid of the /sif subtypes.
-// The downside is if someone wants to use this in normal/vaccum they'll need to make a new subtype, but since the typical use case has changed, this might be acceptable.
+// The downside is if someone wants to use this in normal/vacuum they'll need to make a new subtype, but since the typical use case has changed, this might be acceptable.
 
 /turf/simulated/mineral
 	oxygen		= MOLES_O2SIF
@@ -161,6 +161,5 @@
 	temperature = TCMB
 
 // Step trigger to fall down to planet Sif
-/obj/effect/step_trigger/teleporter/planetary_fall/sif/initialize()
+/obj/effect/step_trigger/teleporter/planetary_fall/sif/find_planet()
 	planet = planet_sif
-	. = ..()

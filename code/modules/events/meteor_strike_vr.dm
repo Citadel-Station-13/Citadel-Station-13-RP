@@ -4,14 +4,14 @@
 
 /datum/event/meteor_strike/setup()
 	startWhen = rand(8,15)
-	if(LAZYLEN(using_map.meteor_strike_areas))
-		strike_target = pick(get_area_turfs(pick(using_map.meteor_strike_areas)))
+	if(LAZYLEN(GLOB.using_map.meteor_strike_areas))
+		strike_target = pick(get_area_turfs(pick(GLOB.using_map.meteor_strike_areas)))
 
 	if(!strike_target)
 		kill()
 
 /datum/event/meteor_strike/announce()
-	command_announcement.Announce("A meteoroid has been detected entering the atmosphere on a trajectory that will terminate near the surface facilty. Brace for impact.", "NanoTrasen Orbital Monitoring")
+	command_announcement.Announce("A meteoroid has been detected entering the atmosphere on a trajectory that will terminate near the surface facilty. Brace for impact.", "NanoTrasen Orbital Monitoring", new_sound = 'sound/effects/meteor_strike.ogg')
 
 /datum/event/meteor_strike/start()
 	new /obj/effect/meteor_falling(strike_target)
@@ -36,7 +36,7 @@
 			meteor_impact()
 			return
 		for(var/atom/movable/A in current)
-			A.ex_act(2) //Let's have it be heavy, but not devistation in case it hits walls or something.
+			A.ex_act(3) //Let's have it be heavy, but not devistation in case it hits walls or something.
 		forceMove(below)
 		meteor_fall()
 		return
@@ -45,7 +45,7 @@
 /obj/effect/meteor_falling/proc/meteor_impact()
 	var/turf/current = get_turf(src)
 	spawn()
-		explosion(current, -1, 2, 4, 8, 0) //Was previously 2,4,6,10. Way too big.
+		explosion(current, 1, 2, 4, 8, 0) //Was previously 2,4,6,10. Way too big.
 	anim(get_step(current,SOUTHWEST),, 'icons/effects/96x96.dmi',, "explosion")
 	new /obj/structure/meteorite(current)
 
@@ -84,15 +84,15 @@
 	..()
 	icon = turn(icon, 90)
 	switch(rand(1,100))
-		if(1 to 60)
+		if(1 to 30)
 			for(var/i=1 to rand(12,36))
-				new /obj/item/weapon/ore/iron(src)
-		if(61 to 90)
+				new /obj/item/ore/iron(src)
+		if(31 to 90)
 			for(var/i=1 to rand(8,24))
-				new /obj/item/weapon/ore/silver(src)
-				new /obj/item/weapon/ore/gold(src)
-				new /obj/item/weapon/ore/osmium(src)
-				new /obj/item/weapon/ore/diamond(src)
+				new /obj/item/ore/silver(src)
+				new /obj/item/ore/gold(src)
+				new /obj/item/ore/osmium(src)
+				new /obj/item/ore/diamond(src)
 		if(91 to 100)
 			new /obj/machinery/artifact(src)
 
@@ -100,8 +100,8 @@
 	return
 
 /obj/structure/meteorite/attackby(var/obj/item/I, var/mob/M)
-	if(istype(I, /obj/item/weapon/pickaxe))
-		var/obj/item/weapon/pickaxe/P = I
+	if(istype(I, /obj/item/pickaxe))
+		var/obj/item/pickaxe/P = I
 		M.visible_message("<span class='warning'>[M] starts [P.drill_verb] \the [src].</span>", "<span class='warning'>You start [P.drill_verb] \the [src].</span>")
 
 		if(!do_after(M, P.digspeed*3))

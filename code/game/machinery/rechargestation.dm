@@ -5,11 +5,11 @@
 	icon_state = "borgcharger0"
 	density = 1
 	anchored = 1
-	circuit = /obj/item/weapon/circuitboard/recharge_station
-	use_power = 1
+	circuit = /obj/item/circuitboard/recharge_station
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 50
 	var/mob/occupant = null
-	var/obj/item/weapon/cell/cell = null
+	var/obj/item/cell/cell = null
 	var/icon_update_tick = 0	// Used to rebuild the overlay only once every 10 ticks
 	var/charging = 0
 
@@ -25,11 +25,11 @@
 /obj/machinery/recharge_station/New()
 	..()
 	component_parts = list()
-	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
-	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
-	component_parts += new /obj/item/weapon/stock_parts/capacitor(src)
-	component_parts += new /obj/item/weapon/stock_parts/capacitor(src)
-	component_parts += new /obj/item/weapon/cell/high(src)
+	component_parts += new /obj/item/stock_parts/manipulator(src)
+	component_parts += new /obj/item/stock_parts/manipulator(src)
+	component_parts += new /obj/item/stock_parts/capacitor(src)
+	component_parts += new /obj/item/stock_parts/capacitor(src)
+	component_parts += new /obj/item/cell/super(src)
 	component_parts += new /obj/item/stack/cable_coil(src, 5)
 	RefreshParts()
 
@@ -78,9 +78,9 @@
 
 	if(!has_cell_power())
 		return 0
-	if(use_power == 1)
+	if(use_power == USE_POWER_IDLE)
 		cell.use(idle_power_usage * CELLRATE)
-	else if(use_power >= 2)
+	else if(use_power >= USE_POWER_ACTIVE)
 		cell.use(active_power_usage * CELLRATE)
 	return 1
 
@@ -126,7 +126,7 @@
 
 /obj/machinery/recharge_station/examine(mob/user)
 	..(user)
-	user << "The charge meter reads: [round(chargepercentage())]%"
+	to_chat(user, "The charge meter reads: [round(chargepercentage())]%")
 
 /obj/machinery/recharge_station/proc/chargepercentage()
 	if(!cell)
@@ -155,8 +155,8 @@
 			return
 		if(default_part_replacement(user, O))
 			return
-		if (istype(O, /obj/item/weapon/grab) && get_dist(src,user)<2)
-			var/obj/item/weapon/grab/G = O
+		if (istype(O, /obj/item/grab) && get_dist(src,user)<2)
+			var/obj/item/grab/G = O
 			if(istype(G.affecting,/mob/living))
 				var/mob/living/M = G.affecting
 				qdel(O)
@@ -175,12 +175,12 @@
 	var/man_rating = 0
 	var/cap_rating = 0
 
-	for(var/obj/item/weapon/stock_parts/P in component_parts)
-		if(istype(P, /obj/item/weapon/stock_parts/capacitor))
+	for(var/obj/item/stock_parts/P in component_parts)
+		if(istype(P, /obj/item/stock_parts/capacitor))
 			cap_rating += P.rating
-		if(istype(P, /obj/item/weapon/stock_parts/manipulator))
+		if(istype(P, /obj/item/stock_parts/manipulator))
 			man_rating += P.rating
-	cell = locate(/obj/item/weapon/cell) in component_parts
+	cell = locate(/obj/item/cell) in component_parts
 
 	charging_power = 40000 + 40000 * cap_rating
 	restore_power_active = 10000 + 15000 * cap_rating
@@ -292,7 +292,7 @@
 
 	if(usr.incapacitated() || !isliving(usr))
 		return
-	
+
 	go_in(usr)
 
 /obj/machinery/recharge_station/ghost_pod_recharger

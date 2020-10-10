@@ -2,7 +2,7 @@
 	name = "APC Connector"
 	desc = "A small attachment that allows synthmorphs to recharge themselves from APCs."
 	list_pos = NIF_APCCHARGE
-	cost = 1250
+	cost = 625
 	wear = 2
 	applies_to = NIF_SYNTHETIC
 	tick_flags = NIF_ACTIVETICK
@@ -23,8 +23,9 @@
 
 			H.visible_message("<span class='warning'>Thin snakelike tendrils grow from [H] and connect to \the [apc].</span>","<span class='notice'>Thin snakelike tendrils grow from you and connect to \the [apc].</span>")
 
-	deactivate()
-		if((. = ..()))
+	deactivate(force = FALSE)
+		. = ..()
+		if(.)
 			apc = null
 
 	life()
@@ -44,7 +45,7 @@
 	name = "Pressure Seals"
 	desc = "Creates pressure seals around important synthetic components to protect them from vacuum. Almost impossible on organics."
 	list_pos = NIF_PRESSURE
-	cost = 1750
+	cost = 875
 	a_drain = 0.5
 	wear = 3
 	applies_to = NIF_SYNTHETIC
@@ -54,7 +55,7 @@
 	name = "Heat Sinks"
 	desc = "Advanced heat sinks for internal heat storage of heat on a synth until able to vent it in atmosphere."
 	list_pos = NIF_HEATSINK
-	cost = 1450
+	cost = 725
 	a_drain = 0.25
 	wear = 3
 	var/used = 0
@@ -71,7 +72,7 @@
 				return FALSE
 
 	stat_text()
-		return "[active ? "Active" : "Disabled"] (Stored Heat: [Floor(used/20)]%)"
+		return "[active ? "Active" : "Disabled"] (Stored Heat: [FLOOR((used/20), 1)]%)"
 
 	life()
 		if((. = ..()))
@@ -105,11 +106,16 @@
 
 	activate()
 		if((. = ..()))
-			to_chat(nif.human,"<span class='danger'>You are compelled to follow these rules: </span>\n<span class='notify'>[laws]</span>")
+			to_chat(nif.human,"<span class='danger'>You feel a strong compulsion towards these directives: </span><br><span class='notify'>[laws]</span>\
+			<br><span class='danger'>While the disk has a considerable hold on your mind, you feel like you would be able to resist the control if you were pushed to do something you would consider utterly unacceptable.\
+			<br>\[OOC NOTE: Compliance laws are only a scene tool, and not something that is effective in actual gameplay, hence the above. For example, if you are compelled to do something that would affect the round or other players (kill a crewmember, steal an item, give the disker elevated access), you should not do so.\]</span>")
 
 	install()
 		if((. = ..()))
-			to_chat(nif.human,"<span class='danger'>You feel suddenly compelled to follow these rules: </span>\n<span class='notify'>[laws]</span>")
+			log_game("[nif.human? nif.human : "ERROR: NO HUMAN ON NIF"] was compliance disked with [laws]")
+			to_chat(nif.human,"<span class='danger'>You feel a strong compulsion towards these directives: </span><br><span class='notify'>[laws]</span>\
+			<br><span class='danger'>While the disk has a considerable hold on your mind, you feel like you would be able to resist the control if you were pushed to do something you would consider utterly unacceptable.\
+			<br>\[OOC NOTE: Compliance laws are only a scene tool, and not something that is effective in actual gameplay, hence the above. For example, if you are compelled to do something that would affect the round or other players (kill a crewmember, steal an item, give the disker elevated access), you should not do so.\]</span>")
 
 	uninstall()
 		nif.notify("ERROR! Unable to comply!",TRUE)
@@ -122,14 +128,14 @@
 	name = "Mass Alteration"
 	desc = "A system that allows one to change their size, through drastic mass rearrangement. Causes significant wear when installed."
 	list_pos = NIF_SIZECHANGE
-	cost = 750
+	cost = 375
 	wear = 6
 
 	activate()
 		if((. = ..()))
 			var/new_size = input("Put the desired size (25-200%)", "Set Size", 200) as num
 
-			if (!IsInRange(new_size,25,200))
+			if (!ISINRANGE(new_size,25,200))
 				to_chat(nif.human,"<span class='notice'>The safety features of the NIF Program prevent you from choosing this size.</span>")
 				return
 			else
@@ -139,12 +145,16 @@
 			nif.human.visible_message("<span class='warning'>Swirling grey mist envelops [nif.human] as they change size!</span>","<span class='notice'>Swirling streams of nanites wrap around you as you change size!</span>")
 			nif.human.update_icons() //Apply matrix transform asap
 
-			spawn(0)
-				deactivate()
+			if (new_size < 75)
+				to_chat(nif.human,"<span class='warning'>You get dizzy as the floor rushes up to you!</span>")
+			else if(new_size > 125)
+				to_chat(nif.human,"<span class='warning'>You feel disoriented as the floor falls away from you!</span>")
+			else
+				to_chat(nif.human,"<span class='warning'>You feel sick as your mass is rearranged!</span>")
 
-	deactivate()
-		if((. = ..()))
-			return TRUE
+			nif.human.Stun(10)
+
+			deactivate()
 
 	stat_text()
 		return "Change Size"
@@ -153,7 +163,7 @@
 	name = "World Bender"
 	desc = "Alters your perception of various objects in the world. Only has one setting for now: displaying all your crewmates as farm animals."
 	list_pos = NIF_WORLDBEND
-	cost = 200
+	cost = 100
 	a_drain = 0.01
 
 	activate()
@@ -166,7 +176,7 @@
 				H.display_alt_appearance("animals", justme)
 				alt_farmanimals += nif.human
 
-	deactivate()
+	deactivate(force = FALSE)
 		if((. = ..()))
 			var/list/justme = list(nif.human)
 			for(var/human in human_mob_list)

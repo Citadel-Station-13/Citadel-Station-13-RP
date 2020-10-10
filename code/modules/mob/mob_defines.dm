@@ -3,10 +3,20 @@
 	layer = MOB_LAYER
 	plane = MOB_PLANE
 	animate_movement = 2
-	flags = PROXMOVE
+	flags = PROXMOVE | HEAR
+
+	// Intents
+	/// How are we intending to move? Walk/run/etc.
+	var/m_intent = MOVE_INTENT_RUN
+
 	var/datum/mind/mind
 
 	var/stat = 0 //Whether a mob is alive or dead. TODO: Move this to living - Nodrak
+	/// Next world.time we will be able to move.
+	var/move_delay = 0
+	/// Last world.time we turned in our spot without moving (see: facing directions)
+	var/last_turn = 0
+	var/next_move = null // For click delay, despite the misleading name.
 
 	//Not in use yet
 	var/obj/effect/organstructure/organStructure = null
@@ -61,8 +71,6 @@
 	var/poll_answer = 0.0
 	var/sdisabilities = 0	//Carbon
 	var/disabilities = 0	//Carbon
-	var/atom/movable/pulling = null
-	var/next_move = null
 	var/transforming = null	//Carbon
 	var/other = 0.0
 	var/eye_blind = null	//Carbon
@@ -90,6 +98,10 @@
 	var/resting = 0			//Carbon
 	var/lying = 0
 	var/lying_prev = 0
+
+	/// Player pixel shifting, if TRUE, we need to reset on move.
+	var/is_shifted = FALSE
+
 	var/canmove = 1
 	//Allows mobs to move through dense areas without restriction. For instance, in space or out of holder objects.
 	var/incorporeal_move = 0 //0 is off, 1 is normal, 2 is for ninjas.
@@ -118,11 +130,10 @@
 	var/stunned = 0.0
 	var/weakened = 0.0
 	var/losebreath = 0.0//Carbon
-	var/intent = null//Living
+	var/_intent = null//Living
 	var/shakecamera = 0
-	var/a_intent = I_HELP//Living
+	var/a_intent = INTENT_HELP//Living
 	var/m_int = null//Living
-	var/m_intent = "run"//Living
 	var/lastKnownIP = null
 	var/obj/buckled = null//Living
 
@@ -135,8 +146,6 @@
 	var/list/mapobjs = list()
 
 	var/in_throw_mode = 0
-
-	var/inertia_dir = 0
 
 	var/music_lastplayed = "null"
 
@@ -178,7 +187,7 @@
 	var/mob/living/carbon/LAssailant = null
 
 //Wizard mode, but can be used in other modes thanks to the brand new "Give Spell" badmin button
-	var/spell/list/spell_list = list()
+	var/list/spell/spell_list = list()
 
 //Changlings, but can be used in other modes
 //	var/obj/effect/proc_holder/changpower/list/power_list = list()
@@ -214,7 +223,6 @@
 
 	var/list/active_genes=list()
 	var/mob_size = MOB_MEDIUM
-	var/disconnect_time = null		//Time of client loss, set by Logout(), for timekeeping
 	var/forbid_seeing_deadchat = FALSE // Used for lings to not see deadchat, and to have ghosting behave as if they were not really dead.
 
 	var/seedarkness = 1	//Determines mob's ability to see shadows. 1 = Normal vision, 0 = darkvision
@@ -231,3 +239,5 @@
 
 	var/attack_icon //Icon to use when attacking w/o anything in-hand
 	var/attack_icon_state //State for above
+
+	var/registered_z

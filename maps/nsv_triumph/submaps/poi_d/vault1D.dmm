@@ -1,0 +1,15 @@
+"b" = (/turf/simulated/wall/iron,/area/triumph_away/poi_d/explored)
+"c" = (/turf/template_noop,/area/template_noop)
+"d" = (/turf/simulated/mineral/floor/vacuum,/area/triumph_away/poi_d/explored)
+"e" = (/obj/effect/floor_decal/rust,/obj/structure/closet/crate/mimic/cointoss,/obj/random/bomb_supply,/obj/random/medical/lite,/obj/random/medical/lite,/obj/random/medical/lite,/turf/simulated/floor/airless,/area/triumph_away/poi_d/explored)
+"f" = (/obj/effect/floor_decal/rust,/obj/structure/closet/crate/mimic/safe,/obj/random/energy,/turf/simulated/floor/airless,/area/triumph_away/poi_d/explored)
+"N" = (/obj/effect/floor_decal/rust,/turf/simulated/floor/airless,/area/triumph_away/poi_d/explored)
+
+(1,1,1) = {"
+bbbbcc
+bNddcc
+bedddc
+bNNddb
+bNfNdb
+bbbbbb
+"}

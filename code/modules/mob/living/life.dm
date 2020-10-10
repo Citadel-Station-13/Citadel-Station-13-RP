@@ -1,7 +1,4 @@
 /mob/living/Life()
-	set invisibility = 0
-	set background = BACKGROUND_ENABLED
-
 	..()
 
 	if (transforming)
@@ -9,6 +6,10 @@
 	handle_modifiers() //VOREStation Edit - Needs to be done even if in nullspace.
 	if(!loc)
 		return
+
+	if(machine && !CanMouseDrop(machine, src))
+		machine = null
+
 	var/datum/gas_mixture/environment = loc.return_air()
 
 	//handle_modifiers() // Do this early since it might affect other things later. //VOREStation Edit
@@ -49,7 +50,7 @@
 
 	update_pulling()
 
-	for(var/obj/item/weapon/grab/G in src)
+	for(var/obj/item/grab/G in src)
 		G.process()
 
 	if(handle_regular_status_updates()) // Status & health update, are we dead or alive etc.
@@ -61,6 +62,8 @@
 	update_canmove()
 
 	handle_regular_hud_updates()
+
+	handle_vision()
 
 /mob/living/proc/handle_breathing()
 	return
@@ -108,6 +111,7 @@
 	handle_silent()
 	handle_drugged()
 	handle_slurring()
+	handle_confused()
 
 /mob/living/proc/handle_stunned()
 	if(stunned)
@@ -144,6 +148,11 @@
 		AdjustParalysis(-1)
 	return paralysis
 
+/mob/living/proc/handle_confused()
+	if(confused)
+		AdjustConfused(-1)
+	return confused
+
 /mob/living/proc/handle_disabilities()
 	//Eyes
 	if(sdisabilities & BLIND || stat)	//blindness from disability or unconsciousness doesn't get better on its own
@@ -172,9 +181,6 @@
 	handle_hud_icons()
 
 	return 1
-
-/mob/living/proc/handle_vision()
-	return
 
 /mob/living/proc/update_sight()
 	if(!seedarkness)
@@ -225,7 +231,7 @@
 	//Snowflake treatment of potential locations
 	else if(istype(loc,/obj/mecha)) //I imagine there's like displays and junk in there. Use the lights!
 		brightness = 1
-	else if(istype(loc,/obj/item/weapon/holder)) //Poor carried teshari and whatnot should adjust appropriately
+	else if(istype(loc,/obj/item/holder)) //Poor carried teshari and whatnot should adjust appropriately
 		var/turf/T = get_turf(src)
 		brightness = T.get_lumcount()
 

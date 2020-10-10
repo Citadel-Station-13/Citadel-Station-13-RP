@@ -4,7 +4,7 @@
 	name = "Commlink"
 	desc = "An internal communicator for keeping in touch with people."
 	list_pos = NIF_COMMLINK
-	cost = 500
+	cost = 250
 	wear = 0
 	p_drain = 0.01
 	other_flags = (NIF_O_COMMLINK)
@@ -14,9 +14,9 @@
 			nif.comm = new(nif,src)
 
 	uninstall()
-		var/obj/item/device/nif/lnif = nif //Awkward. Parent clears it in an attempt to clean up.
+		var/obj/item/nif/lnif = nif //Awkward. Parent clears it in an attempt to clean up.
 		if((. = ..()) && lnif)
-			qdel_null(lnif.comm)
+			QDEL_NULL(lnif.comm)
 
 	activate()
 		if((. = ..()))
@@ -32,18 +32,18 @@
 	if(href_list["open"])
 		activate()
 
-/obj/item/device/communicator/commlink
+/obj/item/communicator/commlink
 	name = "commlink"
 	desc = "An internal communicator, basically."
 	occupation = "\[Commlink\]"
-	var/obj/item/device/nif/nif
+	var/obj/item/nif/nif
 	var/datum/nifsoft/commlink/nifsoft
 
 	New(var/newloc,var/soft)
 		..()
 		nif = newloc
 		nifsoft = soft
-		qdel_null(camera) //Not supported on internal one.
+		QDEL_NULL(camera) //Not supported on internal one.
 
 	Destroy()
 		if(nif)
@@ -52,15 +52,15 @@
 		nifsoft = null
 		return ..()
 
-/obj/item/device/communicator/commlink/register_device(var/new_name)
+/obj/item/communicator/commlink/register_device(var/new_name)
 	owner = new_name
 	name = "[owner]'s [initial(name)]"
 	nif.save_data["commlink_name"] = owner
 
 //So that only the owner's chat is relayed to others.
-/obj/item/device/communicator/commlink/hear_talk(mob/living/M, text, verb, datum/language/speaking)
+/obj/item/communicator/commlink/hear_talk(mob/living/M, text, verb, datum/language/speaking)
 	if(M != nif.human) return
-	for(var/obj/item/device/communicator/comm in communicating)
+	for(var/obj/item/communicator/comm in communicating)
 
 		var/turf/T = get_turf(comm)
 		if(!T) return
@@ -68,8 +68,8 @@
 		var/icon_object = src
 
 		var/list/mobs_to_relay
-		if(istype(comm,/obj/item/device/communicator/commlink))
-			var/obj/item/device/communicator/commlink/CL = comm
+		if(istype(comm,/obj/item/communicator/commlink))
+			var/obj/item/communicator/commlink/CL = comm
 			mobs_to_relay = list(CL.nif.human)
 			icon_object = CL.nif.big_icon
 		else
@@ -92,18 +92,18 @@
 			mob.show_message(rendered, 2)
 
 //Not supported by the internal one
-/obj/item/device/communicator/commlink/show_message(msg, type, alt, alt_type)
+/obj/item/communicator/commlink/show_message(msg, type, alt, alt_type)
 	return
 
 //The silent treatment
-/obj/item/device/communicator/commlink/request(var/atom/candidate)
+/obj/item/communicator/commlink/request(var/atom/candidate)
 	if(candidate in voice_requests)
 		return
 	var/who = null
 	if(isobserver(candidate))
 		who = candidate.name
-	else if(istype(candidate, /obj/item/device/communicator))
-		var/obj/item/device/communicator/comm = candidate
+	else if(istype(candidate, /obj/item/communicator))
+		var/obj/item/communicator/comm = candidate
 		who = comm.owner
 		comm.voice_invites |= src
 
@@ -116,14 +116,14 @@
 		nif.notify("New commlink call from [who]. (<a href='?src=\ref[nifsoft];open=1'>Open</a>)")
 
 //Similar reason
-/obj/item/device/communicator/commlink/request_im(var/atom/candidate, var/origin_address, var/text)
+/obj/item/communicator/commlink/request_im(var/atom/candidate, var/origin_address, var/text)
 	var/who = null
 	if(isobserver(candidate))
 		var/mob/observer/dead/ghost = candidate
 		who = ghost
 		im_list += list(list("address" = origin_address, "to_address" = exonet.address, "im" = text))
-	else if(istype(candidate, /obj/item/device/communicator))
-		var/obj/item/device/communicator/comm = candidate
+	else if(istype(candidate, /obj/item/communicator))
+		var/obj/item/communicator/comm = candidate
 		who = comm.owner
 		comm.im_contacts |= src
 		im_list += list(list("address" = origin_address, "to_address" = exonet.address, "im" = text))

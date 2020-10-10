@@ -9,7 +9,7 @@
 	icon_opened = "base"
 	req_one_access = list(access_armory)
 
-/obj/structure/closet/secure_closet/guncabinet/initialize()
+/obj/structure/closet/secure_closet/guncabinet/Initialize()
 	. = ..()
 	update_icon()
 
@@ -24,10 +24,10 @@
 	else
 		var/lazors = 0
 		var/shottas = 0
-		for (var/obj/item/weapon/gun/G in contents)
-			if (istype(G, /obj/item/weapon/gun/energy))
+		for (var/obj/item/gun/G in contents)
+			if (istype(G, /obj/item/gun/energy))
 				lazors++
-			if (istype(G, /obj/item/weapon/gun/projectile))
+			if (istype(G, /obj/item/gun/projectile))
 				shottas++
 		for (var/i = 0 to 2)
 			if(lazors || shottas) // only make icons if we have one of the two types.
@@ -43,8 +43,8 @@
 
 		overlays += icon(src.icon, "door")
 
-		if(welded)
-			overlays += icon(src.icon,"welded")
+		if(sealed)
+			overlays += icon(src.icon,"sealed")
 
 		if(broken)
 			overlays += icon(src.icon,"broken")
@@ -53,3 +53,35 @@
 		else
 			overlays += icon(src.icon,"open")
 
+//SC Guncabinet files
+/obj/structure/closet/secure_closet/guncabinet/sidearm
+	name = "emergency weapon cabinet"
+	req_one_access = list(access_armory,access_captain)
+
+	starts_with = list(
+		/obj/item/gun/energy/gun = 4)
+
+
+/obj/structure/closet/secure_closet/guncabinet/rifle
+	name = "rifle cabinet"
+	req_one_access = list(access_explorer,access_brig)
+
+	starts_with = list(
+		/obj/item/ammo_magazine/clip/c762/hunter = 9,
+		/obj/item/gun/projectile/shotgun/pump/rifle = 2)
+
+/obj/structure/closet/secure_closet/guncabinet/rifle/Initialize()
+	if(prob(85))
+		starts_with += /obj/item/gun/projectile/shotgun/pump/rifle
+	else
+		starts_with += /obj/item/gun/projectile/shotgun/pump/rifle/lever
+	return ..()
+
+/obj/structure/closet/secure_closet/guncabinet/phase
+	name = "explorer weapon cabinet"
+	req_one_access = list(access_explorer,access_brig)
+
+	starts_with = list(
+		/obj/item/gun/energy/phasegun = 2,
+		/obj/item/cell/device/weapon = 2,
+		/obj/item/clothing/accessory/permit/gun/planetside)

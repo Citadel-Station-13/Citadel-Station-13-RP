@@ -58,6 +58,23 @@
 	material = get_material_by_name("wood")
 	..()
 
+/obj/structure/table/sifwoodentable
+	icon_state = "plain_preview"
+	color = "#824B28"
+
+/obj/structure/table/sifwoodentable/New()
+	material = get_material_by_name("alien wood")
+	..()
+
+/obj/structure/table/sifwooden_reinforced
+	icon_state = "reinf_preview"
+	color = "#824B28"
+
+/obj/structure/table/sifwooden_reinforced/New()
+	material = get_material_by_name("alien wood")
+	reinforced = get_material_by_name(DEFAULT_WALL_MATERIAL)
+	..()
+
 /obj/structure/table/gamblingtable
 	icon_state = "gamble_preview"
 
@@ -73,6 +90,15 @@
 
 /obj/structure/table/glass/New()
 	material = get_material_by_name("glass")
+	..()
+
+/obj/structure/table/borosilicate
+	icon_state = "plain_preview"
+	color = "#4D3EAC"
+	alpha = 77
+
+/obj/structure/table/borosilicate/New()
+	material = get_material_by_name("borosilicate glass")
 	..()
 
 /obj/structure/table/holotable
@@ -103,7 +129,7 @@
 	verbs -= /obj/structure/table/proc/do_put
 	..()
 
-/obj/structure/table/alien/dismantle(obj/item/weapon/wrench/W, mob/user)
+/obj/structure/table/alien/dismantle(obj/item/wrench/W, mob/user)
 	to_chat(user, "<span class='warning'>You cannot dismantle \the [src].</span>")
 	return
 
@@ -168,6 +194,18 @@
 	material = get_material_by_name("wood")
 	..()
 
+/obj/structure/table/bench/sifwooden
+	icon_state = "plain_preview"
+	color = "#824B28"
+
+/obj/structure/table/bench/sifwooden/New()
+	material = get_material_by_name("alien wood")
+	..()
+
+/obj/structure/table/bench/sifwooden/padded
+	icon_state = "padded_preview"
+	carpeted = 1
+
 /obj/structure/table/bench/padded
 	icon_state = "padded_preview"
 
@@ -201,3 +239,29 @@
 	material = get_material_by_name("holowood")
 	..()
 */
+
+//Sandbags.
+/obj/structure/table/sandbags
+	name = "sandbag barrier"
+	icon = 'icons/obj/tables.dmi'
+	icon_state = "sandbags"
+	desc = "A barrier made of stacked sandbags."
+	density = 1
+	anchored = 1
+	climbable = 1
+	layer = TABLE_LAYER
+	throwpass = 1
+	surgery_odds = 66
+	can_plate = 0
+	can_reinforce = 0
+	flipped = -1
+	maxhealth = 100
+	health = 100
+	item_place = TRUE
+	item_pixel_place = FALSE
+
+	connections = list("nw0", "ne0", "sw0", "se0")
+
+/obj/structure/table/sandbags/New()
+	material = get_material_by_name("sandbag")
+	..()

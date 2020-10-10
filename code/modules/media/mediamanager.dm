@@ -11,7 +11,7 @@
 
 #ifdef DEBUG_MEDIAPLAYER
 #define MP_DEBUG(x) owner << x
-#warning Please comment out #define DEBUG_MEDIAPLAYER before committing.
+#warn Please comment out #define DEBUG_MEDIAPLAYER before committing.
 #else
 #define MP_DEBUG(x)
 #endif
@@ -31,7 +31,7 @@
 		if(M && M.client)
 			M.stop_all_music()
 	//  SHITTY HACK TO AVOID RACE CONDITION WITH SERVER REBOOT.
-	sleep(10)  // TODO - Leshana - see if this is needed
+	sleep(10)  // TODO see if this is needed
 
 // Update when moving between areas.
 // TODO - While this direct override might technically be faster, probably better code to use observer or hooks ~Leshana
@@ -149,7 +149,7 @@
 	if (url != targetURL || abs(targetStartTime - start_time) > 1 || abs(targetVolume - source_volume) > 0.1 /* 10% */)
 		url = targetURL
 		start_time = targetStartTime
-		source_volume = Clamp(targetVolume, 0, 1)
+		source_volume = clamp(targetVolume, 0, 1)
 		send_update()
 
 /datum/media_manager/proc/stop_music()

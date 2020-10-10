@@ -12,6 +12,7 @@
 	S["backbag"]	>> pref.backbag
 	S["pdachoice"]	>> pref.pdachoice
 	S["communicator_visibility"]	>> pref.communicator_visibility
+	S["ringtone"]	>> pref.ringtone
 
 /datum/category_item/player_setup_item/general/equipment/save_character(var/savefile/S)
 	S["all_underwear"] << pref.all_underwear
@@ -19,6 +20,7 @@
 	S["backbag"]	<< pref.backbag
 	S["pdachoice"]	<< pref.pdachoice
 	S["communicator_visibility"]	<< pref.communicator_visibility
+	S["ringtone"]	<< pref.ringtone
 
 // Moved from /datum/preferences/proc/copy_to()
 /datum/category_item/player_setup_item/general/equipment/copy_to_mob(var/mob/living/carbon/human/character)
@@ -26,7 +28,7 @@
 	character.all_underwear_metadata.Cut()
 
 	for(var/underwear_category_name in pref.all_underwear)
-		var/datum/category_group/underwear/underwear_category = global_underwear.categories_by_name[underwear_category_name]
+		var/datum/category_group/underwear/underwear_category = GLOB.global_underwear.categories_by_name[underwear_category_name]
 		if(underwear_category)
 			var/underwear_item_name = pref.all_underwear[underwear_category_name]
 			character.all_underwear[underwear_category_name] = underwear_category.items_by_name[underwear_item_name]
@@ -40,7 +42,7 @@
 		pref.backbag = 1 //Same as above
 	character.backbag = pref.backbag
 
-	if(pref.pdachoice > 4 || pref.pdachoice < 1)
+	if(pref.pdachoice > 7 || pref.pdachoice < 1)
 		pref.pdachoice = 1
 	character.pdachoice = pref.pdachoice
 
@@ -50,7 +52,7 @@
 	if(!istype(pref.all_underwear))
 		pref.all_underwear = list()
 
-		for(var/datum/category_group/underwear/WRC in global_underwear.categories)
+		for(var/datum/category_group/underwear/WRC in GLOB.global_underwear.categories)
 			for(var/datum/category_item/underwear/WRI in WRC.items)
 				if(WRI.is_default(pref.identifying_gender ? pref.identifying_gender : MALE))
 					pref.all_underwear[WRC.name] = WRI.name
@@ -60,7 +62,7 @@
 		pref.all_underwear_metadata = list()
 
 	for(var/underwear_category in pref.all_underwear)
-		var/datum/category_group/underwear/UWC = global_underwear.categories_by_name[underwear_category]
+		var/datum/category_group/underwear/UWC = GLOB.global_underwear.categories_by_name[underwear_category]
 		if(!UWC)
 			pref.all_underwear -= underwear_category
 		else
@@ -73,11 +75,12 @@
 			pref.all_underwear_metadata -= underwear_metadata
 	pref.backbag	= sanitize_integer(pref.backbag, 1, backbaglist.len, initial(pref.backbag))
 	pref.pdachoice	= sanitize_integer(pref.pdachoice, 1, pdachoicelist.len, initial(pref.pdachoice))
+	pref.ringtone	= sanitize(pref.ringtone, 20)
 
 /datum/category_item/player_setup_item/general/equipment/content()
 	. = list()
 	. += "<b>Equipment:</b><br>"
-	for(var/datum/category_group/underwear/UWC in global_underwear.categories)
+	for(var/datum/category_group/underwear/UWC in GLOB.global_underwear.categories)
 		var/item_name = pref.all_underwear[UWC.name] ? pref.all_underwear[UWC.name] : "None"
 		. += "[UWC.name]: <a href='?src=\ref[src];change_underwear=[UWC.name]'><b>[item_name]</b></a>"
 		var/datum/category_item/underwear/UWI = UWC.items_by_name[item_name]
@@ -89,6 +92,7 @@
 	. += "Backpack Type: <a href='?src=\ref[src];change_backpack=1'><b>[backbaglist[pref.backbag]]</b></a><br>"
 	. += "PDA Type: <a href='?src=\ref[src];change_pda=1'><b>[pdachoicelist[pref.pdachoice]]</b></a><br>"
 	. += "Communicator Visibility: <a href='?src=\ref[src];toggle_comm_visibility=1'><b>[(pref.communicator_visibility) ? "Yes" : "No"]</b></a><br>"
+	. += "Ringtone (leave blank for job default): <a href='?src=\ref[src];set_ringtone=1'><b>[pref.ringtone]</b></a><br>"
 
 	return jointext(.,null)
 
@@ -123,7 +127,7 @@
 			return TOPIC_REFRESH
 
 	else if(href_list["change_underwear"])
-		var/datum/category_group/underwear/UWC = global_underwear.categories_by_name[href_list["change_underwear"]]
+		var/datum/category_group/underwear/UWC = GLOB.global_underwear.categories_by_name[href_list["change_underwear"]]
 		if(!UWC)
 			return
 		var/datum/category_item/underwear/selected_underwear = input(user, "Choose underwear:", "Character Preference", pref.all_underwear[UWC.name]) as null|anything in UWC.items
@@ -146,6 +150,9 @@
 		if(CanUseTopic(user))
 			pref.communicator_visibility = !pref.communicator_visibility
 			return TOPIC_REFRESH
-
+	else if(href_list["set_ringtone"])
+		if(CanUseTopic(user))
+			pref.ringtone = sanitize(input(user, "Please enter a new ringtone.", "Character Preference") as null|text, 20)
+			return TOPIC_REFRESH
 
 	return ..()

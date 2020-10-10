@@ -35,28 +35,28 @@
 	resistance = 0
 	melee_miss_chance = 0
 
-	var/obj/item/weapon/technomancer_core/golem/core = null
-	var/obj/item/weapon/spell/active_spell = null // Shield and ranged spells
+	var/obj/item/technomancer_core/golem/core = null
+	var/obj/item/spell/active_spell = null // Shield and ranged spells
 	var/mob/living/master = null
 
 	var/list/known_spells = list(
-		"beam"				= /obj/item/weapon/spell/projectile/beam,
-		"chain lightning"	= /obj/item/weapon/spell/projectile/chain_lightning,
-		"force missile"		= /obj/item/weapon/spell/projectile/force_missile,
-		"ionic bolt"		= /obj/item/weapon/spell/projectile/ionic_bolt,
-		"lightning"			= /obj/item/weapon/spell/projectile/lightning,
-		"blink"				= /obj/item/weapon/spell/blink,
-		"dispel"			= /obj/item/weapon/spell/dispel,
-		"oxygenate"			= /obj/item/weapon/spell/oxygenate,
-		"mend life"			= /obj/item/weapon/spell/modifier/mend_life,
-		"mend synthetic"	= /obj/item/weapon/spell/modifier/mend_synthetic,
-		"mend organs"		= /obj/item/weapon/spell/mend_organs,
-		"purify"			= /obj/item/weapon/spell/modifier/purify,
-		"resurrect"			= /obj/item/weapon/spell/resurrect,
-		"passwall"			= /obj/item/weapon/spell/passwall,
-		"repel missiles"	= /obj/item/weapon/spell/modifier/repel_missiles,
-		"corona"			= /obj/item/weapon/spell/modifier/corona,
-		"haste"				= /obj/item/weapon/spell/modifier/haste
+		"beam"				= /obj/item/spell/projectile/beam,
+		"chain lightning"	= /obj/item/spell/projectile/chain_lightning,
+		"force missile"		= /obj/item/spell/projectile/force_missile,
+		"ionic bolt"		= /obj/item/spell/projectile/ionic_bolt,
+		"lightning"			= /obj/item/spell/projectile/lightning,
+		"blink"				= /obj/item/spell/blink,
+		"dispel"			= /obj/item/spell/dispel,
+		"oxygenate"			= /obj/item/spell/oxygenate,
+		"mend life"			= /obj/item/spell/modifier/mend_life,
+		"mend synthetic"	= /obj/item/spell/modifier/mend_synthetic,
+		"mend organs"		= /obj/item/spell/mend_organs,
+		"purify"			= /obj/item/spell/modifier/purify,
+		"resurrect"			= /obj/item/spell/resurrect,
+		"passwall"			= /obj/item/spell/passwall,
+		"repel missiles"	= /obj/item/spell/modifier/repel_missiles,
+		"corona"			= /obj/item/spell/modifier/corona,
+		"haste"				= /obj/item/spell/modifier/haste
 		)
 
 	// Holds the overlays, when idle or attacking.
@@ -104,7 +104,7 @@
 	..()
 	visible_message("\The [src] disintegrates!")
 	new /obj/effect/decal/cleanable/blood/gibs/robot(src.loc)
-	var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(3, 1, src)
 	s.start()
 	qdel(src)
@@ -163,7 +163,7 @@
 	if(active_spell)
 		qdel(active_spell) // Get rid of our old spell.
 
-	var/obj/item/weapon/spell/S = new path(src)
+	var/obj/item/spell/S = new path(src)
 	active_spell = S
 
 /mob/living/simple_animal/technomancer_golem/verb/test_giving_spells()
@@ -250,7 +250,7 @@
 		return
 
 /mob/living/simple_animal/technomancer_golem/proc/targeted_blink(var/atom/target)
-	var/datum/effect/effect/system/spark_spread/spark_system = new()
+	var/datum/effect_system/spark_spread/spark_system = new()
 	spark_system.set_up(5, 0, get_turf(src))
 	spark_system.start()
 	src.visible_message("<span class='notice'>\The [src] vanishes!</span>")

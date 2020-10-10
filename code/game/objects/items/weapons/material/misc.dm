@@ -1,4 +1,4 @@
-/obj/item/weapon/material/harpoon
+/obj/item/material/harpoon
 	name = "harpoon"
 	sharp = 1
 	edge = 0
@@ -8,7 +8,7 @@
 	force_divisor = 0.3 // 18 with hardness 60 (steel)
 	attack_verb = list("jabbed","stabbed","ripped")
 
-/obj/item/weapon/material/knife/machete/hatchet
+/obj/item/material/knife/machete/hatchet
 	name = "hatchet"
 	desc = "A very sharp axe blade upon a short fibremetal handle. It has a long history of chopping things, but now it is used for chopping wood."
 	icon = 'icons/obj/weapons.dmi'
@@ -22,7 +22,7 @@
 	attack_verb = list("chopped", "torn", "cut")
 	applies_material_colour = 0
 
-/obj/item/weapon/material/knife/machete/hatchet/unathiknife
+/obj/item/material/knife/machete/hatchet/unathiknife
 	name = "duelling knife"
 	desc = "A length of leather-bound wood studded with razor-sharp teeth. How crude."
 	icon = 'icons/obj/weapons.dmi'
@@ -31,44 +31,22 @@
 	can_cleave = FALSE
 	var/hits = 0
 
-/obj/item/weapon/material/knife/machete/hatchet/unathiknife/attack(mob/M as mob, mob/user as mob)
+/obj/item/material/knife/machete/hatchet/unathiknife/attack(mob/M as mob, mob/user as mob)
 	if(hits > 0)
 		return
 	var/obj/item/I = user.get_inactive_hand()
-	if(istype(I, /obj/item/weapon/material/knife/machete/hatchet/unathiknife))
+	if(istype(I, /obj/item/material/knife/machete/hatchet/unathiknife))
 		hits ++
-		var/obj/item/weapon/W = I
+		var/obj/item/W = I
 		W.attack(M, user)
 		W.afterattack(M, user)
 	..()
 
-/obj/item/weapon/material/knife/machete/hatchet/unathiknife/afterattack(mob/M as mob, mob/user as mob)
+/obj/item/material/knife/machete/hatchet/unathiknife/afterattack(mob/M as mob, mob/user as mob)
 	hits = initial(hits)
 	..()
 
-// These no longer inherit from hatchets.
-/obj/item/weapon/material/knife/tacknife
-	name = "tactical knife"
-	desc = "You'd be killing loads of people if this was Medal of Valor: Heroes of Space."
-	icon = 'icons/obj/weapons.dmi'
-	icon_state = "tacknife"
-	item_state = "knife"
-	force_divisor = 0.25 //15 when hardness 60 (steel)
-	attack_verb = list("stabbed", "chopped", "cut")
-	applies_material_colour = 1
-
-/obj/item/weapon/material/knife/tacknife/combatknife
-	name = "combat knife"
-	desc = "If only you had a boot to put it in."
-	icon = 'icons/obj/weapons.dmi'
-	icon_state = "tacknife"
-	item_state = "knife"
-	force_divisor = 0.34 // 20 with hardness 60 (steel)
-	thrown_force_divisor = 1.75 // 20 with weight 20 (steel)
-	attack_verb = list("sliced", "stabbed", "chopped", "cut")
-	applies_material_colour = 1
-
-/obj/item/weapon/material/minihoe // -- Numbers
+/obj/item/material/minihoe // -- Numbers
 	name = "mini hoe"
 	desc = "It's used for removing weeds or scratching your back."
 	icon = 'icons/obj/weapons.dmi'
@@ -79,7 +57,7 @@
 	w_class = ITEMSIZE_SMALL
 	attack_verb = list("slashed", "sliced", "cut", "clawed")
 
-/obj/item/weapon/material/snow/snowball
+/obj/item/material/snow/snowball
 	name = "loose packed snowball"
 	desc = "A fun snowball. Throw it at your friends!"
 	icon = 'icons/obj/weapons.dmi'
@@ -92,8 +70,8 @@
 	w_class = ITEMSIZE_SMALL
 	attack_verb = list("mushed", "splatted", "splooshed", "splushed") // Words that totally exist.
 
-/obj/item/weapon/material/snow/snowball/attack_self(mob/user as mob)
-	if(user.a_intent == I_HURT)
+/obj/item/material/snow/snowball/attack_self(mob/user as mob)
+	if(user.a_intent == INTENT_HARM)
 		visible_message("[user] has smashed the snowball in their hand!", "You smash the snowball in your hand.")
 		var/atom/S = new /obj/item/stack/material/snow(user.loc)
 		del(src)
@@ -101,13 +79,49 @@
 	else
 		visible_message("[user] starts compacting the snowball.", "You start compacting the snowball.")
 		if(do_after(user, 2 SECONDS))
-			var/atom/S = new /obj/item/weapon/material/snow/snowball/reinforced(user.loc)
+			var/atom/S = new /obj/item/material/snow/snowball/reinforced(user.loc)
 			del(src)
 			user.put_in_hands(S)
 
-/obj/item/weapon/material/snow/snowball/reinforced
+/obj/item/material/snow/snowball/reinforced
 	name = "snowball"
 	desc = "A well-formed and fun snowball. It looks kind of dangerous."
 	//icon_state = "reinf-snowball"
 	force_divisor = 0.20
 	thrown_force_divisor = 0.25
+	
+/obj/item/material/butterfly/saw //This Saw Cleaver is in here since I do not know where else to put it
+	name = "Saw Cleaver"
+	desc = "A weapon consisting of a long handle and a heavy serrated blade. Using centrifrical force the blade extends outword allowing it to slice it long cleaves. The smell of blood hangs in the air around it."
+	icon = 'icons/obj/weapons.dmi'
+	icon_state = "sawcleaver"
+	item_icons = list(
+			slot_l_hand_str = 'icons/mob/items/64x64_lefthand.dmi',
+			slot_r_hand_str = 'icons/mob/items/64x64_righthand.dmi',
+			)
+	item_state = "cleaving_saw"
+	active = 0
+	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	w_class = ITEMSIZE_LARGE
+	edge = 1
+	sharp = 1
+	force_divisor = 0.7 //42 When Wielded in line with a sword
+	thrown_force_divisor = 0.1 // 2 when thrown with weight 20 (steel) since frankly its too bulk to throw
+	//holy = TRUE		// Holy trait commented out until Dark Corners of the Galaxy: Awakening Merge
+
+/obj/item/material/butterfly/saw/update_force()
+	if(active)
+		..() //Updates force.
+		w_class = ITEMSIZE_HUGE
+		can_cleave = TRUE
+		force_divisor = 0.4 //24 when wielded, Gains cleave and is better than a machete
+		icon_state = "sawcleaver_open"
+		item_state = "cleaving_saw_open"
+	else
+		w_class = initial(w_class)
+		can_cleave = initial(can_cleave)
+		force_divisor = initial(force_divisor)
+		icon_state = initial(icon_state)
+		item_state = initial(item_state)
+

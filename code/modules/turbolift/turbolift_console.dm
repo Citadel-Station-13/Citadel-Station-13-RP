@@ -8,7 +8,7 @@
 
 	var/datum/turbolift/lift
 
-/obj/structure/lift/set_dir(var/newdir)
+/obj/structure/lift/setDir(var/newdir)
 	. = ..()
 	pixel_x = 0
 	pixel_y = 0
@@ -23,7 +23,7 @@
 
 /obj/structure/lift/proc/pressed(var/mob/user)
 	if(!istype(user, /mob/living/silicon))
-		if(user.a_intent == I_HURT)
+		if(user.a_intent == INTENT_HARM)
 			user.visible_message("<span class='danger'>\The [user] hammers on the lift button!</span>")
 		else
 			user.visible_message("<span class='notice'>\The [user] presses the lift button.</span>")
@@ -69,7 +69,7 @@
 
 // Hit it with a PDA or ID to enable priority call mode
 /obj/structure/lift/button/attackby(obj/item/W as obj, mob/user as mob)
-	var/obj/item/weapon/card/id/id = W.GetID()
+	var/obj/item/card/id/id = W.GetID()
 	if(istype(id))
 		if(!check_access(id))
 			playsound(src.loc, 'sound/machines/buzz-two.ogg', 50, 0)
@@ -122,7 +122,7 @@
 
 // Hit it with a PDA or ID to enable priority call mode
 /obj/structure/lift/panel/attackby(obj/item/W as obj, mob/user as mob)
-	var/obj/item/weapon/card/id/id = W.GetID()
+	var/obj/item/card/id/id = W.GetID()
 	if(istype(id))
 		if(!check_access(id))
 			playsound(src.loc, 'sound/machines/buzz-two.ogg', 50, 0)

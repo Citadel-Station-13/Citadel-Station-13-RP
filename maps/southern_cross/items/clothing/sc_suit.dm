@@ -8,7 +8,8 @@
 	item_state_slots = list(slot_r_hand_str = "brown_jacket", slot_l_hand_str = "brown_jacket")
 	icon = 'maps/southern_cross/icons/obj/sc_suit.dmi'
 	sprite_sheets = list(
-			"Teshari" = 'maps/southern_cross/icons/mob/species/teshari/sc_suit.dmi'
+			"Teshari" = 'maps/southern_cross/icons/mob/species/teshari/sc_suit.dmi',
+			"Vox" = 'maps/southern_cross/icons/mob/species/vox/sc_suit.dmi'
 			)
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 
@@ -22,3 +23,8 @@
 	icon = 'maps/southern_cross/icons/obj/sc_suit.dmi'
 	armor = list(melee = 15, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 50, rad = 5)
 	valid_accessory_slots = (ACCESSORY_SLOT_INSIGNIA)
+	allowed = list (/obj/item/gun,/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
+	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/analyzer,/obj/item/stack/medical,
+	/obj/item/dnainjector,/obj/item/reagent_containers/dropper,/obj/item/reagent_containers/syringe,/obj/item/reagent_containers/hypospray,
+	/obj/item/healthanalyzer,/obj/item/reagent_containers/glass/bottle,/obj/item/reagent_containers/glass/beaker,
+	/obj/item/reagent_containers/pill,/obj/item/storage/pill_bottle)

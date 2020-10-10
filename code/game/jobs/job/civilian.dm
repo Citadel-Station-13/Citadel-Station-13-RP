@@ -9,7 +9,7 @@
 	spawn_positions = 2
 	supervisors = "the head of personnel"
 	selection_color = "#515151"
-	idtype = /obj/item/weapon/card/id/civilian/bartender
+	idtype = /obj/item/card/id/civilian/bartender
 	access = list(access_hydroponics, access_bar, access_kitchen)
 	minimal_access = list(access_bar)
 
@@ -23,16 +23,16 @@
 	department = "Civilian"
 	department_flag = CIVILIAN
 	faction = "Station"
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 2 //IT TAKES A LOT TO MAKE A STEW
+	spawn_positions = 2 //A PINCH OF SALT AND LAUGHTER, TOO
 	supervisors = "the head of personnel"
 	selection_color = "#515151"
-	idtype = /obj/item/weapon/card/id/civilian/chef
+	idtype = /obj/item/card/id/civilian/chef
 	access = list(access_hydroponics, access_bar, access_kitchen)
 	minimal_access = list(access_kitchen)
 
 	outfit_type = /decl/hierarchy/outfit/job/service/chef
-	alt_titles = list("Cook")
+	alt_titles = list("Cook","Line Cook")
 
 /datum/job/hydro
 	title = "Botanist"
@@ -44,7 +44,7 @@
 	spawn_positions = 1
 	supervisors = "the head of personnel"
 	selection_color = "#515151"
-	idtype = /obj/item/weapon/card/id/civilian/botanist
+	idtype = /obj/item/card/id/civilian/botanist
 	access = list(access_hydroponics, access_bar, access_kitchen)
 	minimal_access = list(access_hydroponics)
 
@@ -63,7 +63,7 @@
 	spawn_positions = 1
 	supervisors = "the head of personnel"
 	selection_color = "#7a4f33"
-	idtype = /obj/item/weapon/card/id/cargo/head
+	idtype = /obj/item/card/id/cargo/head
 	economic_modifier = 5
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station)
 	minimal_access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station)
@@ -71,7 +71,7 @@
 	ideal_character_age = 40
 
 	outfit_type = /decl/hierarchy/outfit/job/cargo/qm
-	alt_titles = list("Supply Chief")
+	alt_titles = list("Supply Chief", "Inventory Chief")
 
 /datum/job/cargo_tech
 	title = "Cargo Technician"
@@ -79,15 +79,16 @@
 	department = "Cargo"
 	department_flag = CIVILIAN
 	faction = "Station"
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 3
+	spawn_positions = 3
 	supervisors = "the quartermaster and the head of personnel"
 	selection_color = "#9b633e"
-	idtype = /obj/item/weapon/card/id/cargo/cargo_tech
+	idtype = /obj/item/card/id/cargo/cargo_tech
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_mining, access_mining_station)
 	minimal_access = list(access_maint_tunnels, access_cargo, access_cargo_bot, access_mailsorting)
 
 	outfit_type = /decl/hierarchy/outfit/job/cargo/cargo_tech
+	alt_titles = list("Logistics Specialist")
 
 /datum/job/mining
 	title = "Shaft Miner"
@@ -95,17 +96,17 @@
 	department = "Cargo"
 	department_flag = CIVILIAN
 	faction = "Station"
-	total_positions = 3
-	spawn_positions = 3
+	total_positions = 4
+	spawn_positions = 4
 	supervisors = "the quartermaster and the head of personnel"
 	selection_color = "#9b633e"
-	idtype = /obj/item/weapon/card/id/cargo/mining
+	idtype = /obj/item/card/id/cargo/mining
 	economic_modifier = 5
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_mining, access_mining_station)
-	minimal_access = list(access_mining, access_mining_station, access_mailsorting)
+	minimal_access = list(access_mining, access_mining_station, access_mailsorting, access_cargo, access_cargo_bot)
 
 	outfit_type = /decl/hierarchy/outfit/job/cargo/mining
-	alt_titles = list("Drill Technician")
+	alt_titles = list("Drill Technician","Belt Miner")
 
 //Service
 /datum/job/janitor
@@ -118,12 +119,12 @@
 	spawn_positions = 2
 	supervisors = "the head of personnel"
 	selection_color = "#515151"
-	idtype = /obj/item/weapon/card/id/civilian/janitor
+	idtype = /obj/item/card/id/civilian/janitor
 	access = list(access_janitor, access_maint_tunnels)
 	minimal_access = list(access_janitor, access_maint_tunnels)
 
 	outfit_type = /decl/hierarchy/outfit/job/service/janitor
-	alt_titles = list("Custodian")
+	alt_titles = list("Custodian", "Sanitation Technician", "Maid")
 
 //More or less assistants
 /datum/job/librarian
@@ -132,16 +133,16 @@
 	department = "Civilian"
 	department_flag = CIVILIAN
 	faction = "Station"
-	total_positions = 2 // VOREStation Edit. Original number is 1.
-	spawn_positions = 2 // VOREStation Edit. Original number is 1.
+	total_positions = 1
+	spawn_positions = 1
 	supervisors = "the head of personnel"
 	selection_color = "#515151"
-	idtype = /obj/item/weapon/card/id/civilian/librarian
+	idtype = /obj/item/card/id/civilian/librarian
 	access = list(access_library, access_maint_tunnels)
 	minimal_access = list(access_library)
 
 	outfit_type = /decl/hierarchy/outfit/job/librarian
-	alt_titles = list("Journalist", "Writer")
+	alt_titles = list("Journalist", "Historian", "Writer","Film Crew")
 
 //var/global/lawyer = 0//Checks for another lawyer //This changed clothes on 2nd lawyer, both IA get the same dreds.
 /datum/job/lawyer
@@ -154,13 +155,14 @@
 	spawn_positions = 2
 	supervisors = "company officials and Corporate Regulations"
 	selection_color = "#515151"
-	idtype = /obj/item/weapon/card/id/civilian/internal_affairs_agent
+	idtype = /obj/item/card/id/civilian/internal_affairs_agent
 	economic_modifier = 7
 	access = list(access_lawyer, access_sec_doors, access_maint_tunnels, access_heads)
 	minimal_access = list(access_lawyer, access_sec_doors, access_heads)
 	minimal_player_age = 7
 
 	outfit_type = /decl/hierarchy/outfit/job/internal_affairs_agent
+	alt_titles = list("Ethical Compliance Analyst")
 
 /*
 /datum/job/lawyer/equip(var/mob/living/carbon/human/H)

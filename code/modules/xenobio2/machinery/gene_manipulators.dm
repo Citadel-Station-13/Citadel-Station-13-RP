@@ -10,7 +10,7 @@
 	Biological genetic bombarder:
 	Takes traits from a disk and replaces/adds to the genes in a xenobiological creature.
 */
-/obj/item/weapon/disk/xenobio
+/obj/item/disk/xenobio
 	name = "biological data disk"
 	desc = "A small disk used for carrying data on genetics."
 	icon = 'icons/obj/hydroponics_machines.dmi'
@@ -20,31 +20,31 @@
 	var/list/genes = list()
 	var/genesource = "unknown"
 
-/obj/item/weapon/disk/xenobio/attack_self(var/mob/user as mob)
+/obj/item/disk/xenobio/attack_self(var/mob/user as mob)
 	if(genes.len)
 		var/choice = alert(user, "Are you sure you want to wipe the disk?", "Xenobiological Data", "No", "Yes")
 		if(src && user && genes && choice && choice == "Yes" && user.Adjacent(get_turf(src)))
-			user << "You wipe the disk data."
+			to_chat(user, "You wipe the disk data.")
 			name = initial(name)
 			desc = initial(name)
 			genes = list()
 			genesource = "unknown"
 
-/obj/item/weapon/storage/box/xenobiodisk
+/obj/item/storage/box/xenobiodisk
 	name = "biological disk box"
 	desc = "A box of biological data disks, apparently."
 
-/obj/item/weapon/storage/box/xenobiodisk/New()
+/obj/item/storage/box/xenobiodisk/New()
 	..()
 	for(var/i = 0 to 7)
-		new /obj/item/weapon/disk/xenobio(src)
+		new /obj/item/disk/xenobio(src)
 
 /obj/machinery/xenobio
 	density = 1
 	anchored = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 
-	var/obj/item/weapon/disk/xenobio/loaded_disk //Currently loaded data disk.
+	var/obj/item/disk/xenobio/loaded_disk //Currently loaded data disk.
 
 	var/open = 0
 	var/active = 0
@@ -60,31 +60,31 @@
 /obj/machinery/xenobio/attack_hand(mob/user as mob)
 	ui_interact(user)
 
-/obj/machinery/xenobio/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/machinery/xenobio/attackby(obj/item/W as obj, mob/user as mob)
 	if(default_deconstruction_screwdriver(user, W))
 		return
 	if(default_deconstruction_crowbar(user, W))
 		return
-	if(istype(W,/obj/item/weapon/disk/xenobio))
+	if(istype(W,/obj/item/disk/xenobio))
 		if(loaded_disk)
-			user << "There is already a data disk loaded."
+			to_chat(user, "There is already a data disk loaded.")
 			return
 		else
-			var/obj/item/weapon/disk/xenobio/B = W
+			var/obj/item/disk/xenobio/B = W
 
 			if(B.genes && B.genes.len)
 				if(!disk_needs_genes)
-					user << "That disk already has gene data loaded."
+					to_chat(user, "That disk already has gene data loaded.")
 					return
 			else
 				if(disk_needs_genes)
-					user << "That disk does not have any gene data loaded."
+					to_chat(user, "That disk does not have any gene data loaded.")
 					return
 
 			user.drop_from_inventory(W)
 			W.forceMove(src)
 			loaded_disk = W
-			user << "You load [W] into [src]."
+			to_chat(user, "You load [W] into [src].")
 
 		return
 	..()
@@ -117,7 +117,7 @@
 	name = "biological product destructive analyzer"
 	icon = 'icons/obj/hydroponics_machines.dmi'
 	icon_state = "traitcopier"
-	circuit = /obj/item/weapon/circuitboard/bioproddestanalyzer
+	circuit = /obj/item/circuitboard/bioproddestanalyzer
 
 	var/obj/item/xenoproduct/product
 	var/datum/xeno/traits/genetics // Currently scanned xeno genetic structure.
@@ -126,25 +126,25 @@
 /obj/machinery/xenobio/extractor/New()
 	..()
 	component_parts = list()
-	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
-	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
-	component_parts += new /obj/item/weapon/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/weapon/stock_parts/scanning_module(src)
-	component_parts += new /obj/item/weapon/stock_parts/scanning_module(src)
-	component_parts += new /obj/item/weapon/stock_parts/scanning_module(src)
+	component_parts += new /obj/item/stock_parts/manipulator(src)
+	component_parts += new /obj/item/stock_parts/manipulator(src)
+	component_parts += new /obj/item/stock_parts/matter_bin(src)
+	component_parts += new /obj/item/stock_parts/scanning_module(src)
+	component_parts += new /obj/item/stock_parts/scanning_module(src)
+	component_parts += new /obj/item/stock_parts/scanning_module(src)
 	RefreshParts()
 
-/obj/machinery/xenobio/extractor/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/machinery/xenobio/extractor/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/xenoproduct))
 		if(product)
-			user << "There is already a xenobiological product loaded."
+			to_chat(user, "There is already a xenobiological product loaded.")
 			return
 		else
 			var/obj/item/xenoproduct/B = W
 			user.drop_from_inventory(B)
 			B.forceMove(src)
 			product = B
-			user << "You load [B] into [src]."
+			to_chat(user, "You load [B] into [src].")
 
 		return
 	..()
@@ -180,7 +180,7 @@
 		data["hasGenetics"] = 0
 		data["sourceName"] = 0
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "xenobio_isolator.tmpl", "B.P.D. Analyzer UI", 470, 450)
 		ui.set_initial_data(data)
@@ -261,37 +261,37 @@
 	icon = 'icons/obj/cryogenics.dmi'
 	icon_state = "cellold0"
 	disk_needs_genes = 1
-	circuit = /obj/item/weapon/circuitboard/biobombarder
+	circuit = /obj/item/circuitboard/biobombarder
 
-	var/mob/living/simple_animal/xeno/slime/occupant
+	var/mob/living/simple_mob/xeno/slime/occupant
 
 /obj/machinery/xenobio/editor/New()
 	..()
 	component_parts = list()
-	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
-	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
-	component_parts += new /obj/item/weapon/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/weapon/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/weapon/stock_parts/scanning_module(src)
-	component_parts += new /obj/item/weapon/stock_parts/scanning_module(src)
+	component_parts += new /obj/item/stock_parts/manipulator(src)
+	component_parts += new /obj/item/stock_parts/manipulator(src)
+	component_parts += new /obj/item/stock_parts/matter_bin(src)
+	component_parts += new /obj/item/stock_parts/matter_bin(src)
+	component_parts += new /obj/item/stock_parts/scanning_module(src)
+	component_parts += new /obj/item/stock_parts/scanning_module(src)
 	RefreshParts()
 
-/obj/machinery/xenobio/editor/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(istype(W,/obj/item/weapon/grab))
-		var/obj/item/weapon/grab/G = W
+/obj/machinery/xenobio/editor/attackby(obj/item/W as obj, mob/user as mob)
+	if(istype(W,/obj/item/grab))
+		var/obj/item/grab/G = W
 		if(occupant)
-			user << "There is already an organism loaded."
+			to_chat(user, "There is already an organism loaded.")
 			return
 		else
 			if(isxeno(G.affecting))
-				var/mob/living/simple_animal/xeno/X = G.affecting
+				var/mob/living/simple_mob/xeno/X = G.affecting
 				if(do_after(user, 30) && X.Adjacent(src) && user.Adjacent(src) && X.Adjacent(user) && !occupant)
 					user.drop_from_inventory(G)
 					X.forceMove(src)
 					occupant = X
-					user << "You load [X] into [src]."
+					to_chat(user, "You load [X] into [src]."
 			else
-				user << "<span class='danger'>This specimen is incompatible with the machinery!</span>"
+				to_chat(user, "<span class='danger'>This specimen is incompatible with the machinery!</span>")
 		return
 	..()
 
@@ -329,7 +329,7 @@
 	else
 		data["loaded"] = 0
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "xenobio_editor.tmpl", "biological genetic bombarder UI", 470, 450)
 		ui.set_initial_data(data)
@@ -374,15 +374,15 @@
 /obj/machinery/xenobio/editor/proc/move_into_editor(var/mob/user,var/mob/living/victim)
 
 	if(src.occupant)
-		user << "<span class='danger'>The [src] is full, empty it first!</span>"
+		to_chat(user, "<span class='danger'>The [src] is full, empty it first!</span>")
 		return
 
 	if(in_use)
-		user << "<span class='danger'>The [src] is locked and running, wait for it to finish.</span>"
+		to_chat(user, "<span class='danger'>The [src] is locked and running, wait for it to finish.</span>")
 		return
 
-	if(!(istype(victim, /mob/living/simple_animal/xeno/slime)) )
-		user << "<span class='danger'>This is not a suitable subject for the [src]!</span>"
+	if(!(istype(victim, /mob/living/simple_mob/xeno/slime)) )
+		to_chat(user, "<span class='danger'>This is not a suitable subject for the [src]!</span>")
 		return
 
 	user.visible_message("<span class='danger'>[user] starts to put [victim] into the [src]!</span>")
@@ -404,24 +404,24 @@
 		occupant.forceMove(loc)
 		occupant = null
 
-/obj/item/weapon/circuitboard/bioproddestanalyzer
+/obj/item/circuitboard/bioproddestanalyzer
 	name = T_BOARD("biological product destructive analyzer")
 	build_path = "/obj/machinery/xenobio/extractor"
 	board_type = "machine"
 	origin_tech = list(TECH_DATA = 4, TECH_BIO = 4)
 	req_components = list(
-							/obj/item/weapon/stock_parts/manipulator = 2,
-							/obj/item/weapon/stock_parts/matter_bin = 1,
-							/obj/item/weapon/stock_parts/scanning_module = 3
+							/obj/item/stock_parts/manipulator = 2,
+							/obj/item/stock_parts/matter_bin = 1,
+							/obj/item/stock_parts/scanning_module = 3
 							)
 
-/obj/item/weapon/circuitboard/biobombarder
+/obj/item/circuitboard/biobombarder
 	name = T_BOARD("biological genetic bombarder")
 	build_path = "/obj/machinery/xenobio/editor"
 	board_type = "machine"
 	origin_tech = list(TECH_DATA = 4, TECH_BIO = 4)
 	req_components = list(
-							/obj/item/weapon/stock_parts/manipulator = 2,
-							/obj/item/weapon/stock_parts/matter_bin = 2,
-							/obj/item/weapon/stock_parts/scanning_module = 2
+							/obj/item/stock_parts/manipulator = 2,
+							/obj/item/stock_parts/matter_bin = 2,
+							/obj/item/stock_parts/scanning_module = 2
 							)

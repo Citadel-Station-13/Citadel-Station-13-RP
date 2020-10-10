@@ -1,4 +1,11 @@
 /mob/living/carbon/human/gib()
+	//Drop the NIF, they're expensive, why not recover them? Also important for prometheans.
+	if(nif)
+		var/obj/item/nif/deadnif = nif //Unimplant removes the reference on the mob
+		deadnif.unimplant(src)
+		deadnif.forceMove(drop_location())
+		deadnif.throw_at(get_edge_target_turf(src,pick(alldirs)), rand(1,3), round(30/deadnif.w_class))
+		deadnif.wear(10) //Presumably it's gone through some shit if they got gibbed?
 
 	if(vr_holder)
 		exit_vr()
@@ -43,9 +50,9 @@
 
 	if(stat == DEAD) return
 
-	BITSET(hud_updateflag, HEALTH_HUD)
-	BITSET(hud_updateflag, STATUS_HUD)
-	BITSET(hud_updateflag, LIFE_HUD)
+	ENABLE_BITFIELD(hud_updateflag, HEALTH_HUD)
+	ENABLE_BITFIELD(hud_updateflag, STATUS_HUD)
+	ENABLE_BITFIELD(hud_updateflag, LIFE_HUD)
 
 	//Handle species-specific deaths.
 	species.handle_death(src)
@@ -61,11 +68,11 @@
 
 	//Handle brain slugs.
 	var/obj/item/organ/external/Hd = get_organ(BP_HEAD)
-	var/mob/living/simple_animal/borer/B
+	var/mob/living/simple_mob/animal/borer/B
 
 	if(Hd)
 		for(var/I in Hd.implants)
-			if(istype(I,/mob/living/simple_animal/borer))
+			if(istype(I,/mob/living/simple_mob/animal/borer))
 				B = I
 	if(B)
 		if(!B.ckey && ckey && B.controlling)
@@ -84,9 +91,9 @@
 	if(!gibbed && species.death_sound)
 		playsound(loc, species.death_sound, 80, 1, 1)
 
-	if(ticker && ticker.mode)
+	if(SSticker && SSticker.mode)
 		sql_report_death(src)
-		ticker.mode.check_win()
+		SSticker.mode.check_win()
 
 	if(wearing_rig)
 		wearing_rig.notify_ai("<span class='danger'>Warning: user death event. Mobility control passed to integrated intelligence system.</span>")

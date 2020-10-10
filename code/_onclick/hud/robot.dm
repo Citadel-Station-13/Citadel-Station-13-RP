@@ -24,7 +24,7 @@ var/obj/screen/robot_inventory
 //Radio
 	using = new /obj/screen()
 	using.name = "radio"
-	using.set_dir(SOUTHWEST)
+	using.setDir(SOUTHWEST)
 	using.icon = ui_style
 	using.color = ui_color
 	using.alpha = ui_alpha
@@ -37,7 +37,7 @@ var/obj/screen/robot_inventory
 
 	using = new /obj/screen()
 	using.name = "module1"
-	using.set_dir(SOUTHWEST)
+	using.setDir(SOUTHWEST)
 	using.icon = ui_style
 	using.color = ui_color
 	using.alpha = ui_alpha
@@ -49,7 +49,7 @@ var/obj/screen/robot_inventory
 
 	using = new /obj/screen()
 	using.name = "module2"
-	using.set_dir(SOUTHWEST)
+	using.setDir(SOUTHWEST)
 	using.icon = ui_style
 	using.color = ui_color
 	using.alpha = ui_alpha
@@ -61,7 +61,7 @@ var/obj/screen/robot_inventory
 
 	using = new /obj/screen()
 	using.name = "module3"
-	using.set_dir(SOUTHWEST)
+	using.setDir(SOUTHWEST)
 	using.icon = ui_style
 	using.color = ui_color
 	using.alpha = ui_alpha
@@ -76,7 +76,7 @@ var/obj/screen/robot_inventory
 //Intent
 	using = new /obj/screen()
 	using.name = "act_intent"
-	using.set_dir(SOUTHWEST)
+	using.setDir(SOUTHWEST)
 	using.icon = ui_style
 	using.alpha = ui_alpha
 	using.icon_state = mymob.a_intent
@@ -223,11 +223,11 @@ var/obj/screen/robot_inventory
 		//r.client.screen += robot_inventory	//"store" icon
 
 		if(!r.module)
-			usr << "<span class='danger'>No module selected</span>"
+			to_chat(usr, "<span class='danger'>No module selected</span>")
 			return
 
 		if(!r.module.modules)
-			usr << "<span class='danger'>Selected module has no modules to select</span>"
+			to_chat(usr, "<span class='danger'>Selected module has no modules to select</span>")
 			return
 
 		if(!r.robot_modules_background)
