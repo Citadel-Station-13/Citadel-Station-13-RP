@@ -49,7 +49,7 @@
 	idtype = /obj/item/card/id/explorer/head/pathfinder
 	economic_modifier = 7
 	minimal_player_age = 7
-	alt_titles = list("Expedition Manager")
+	alt_titles = list("Expedition Manager", "Lead Scout", "Exploration Chief")
 
 	access = list(access_eva, access_maint_tunnels, access_tox, access_external_airlocks, access_pilot, access_explorer, access_research, access_gateway, access_pathfinder)
 	minimal_access = list(access_eva, access_maint_tunnels, access_tox, access_external_airlocks, access_pilot, access_explorer, access_research, access_gateway, access_pathfinder)

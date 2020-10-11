@@ -1,5 +1,0 @@
-author: "Enzo-Leon"
-delete-after: True
-changes: 
-  - rscadd: "a new emote for people to use. A rodent squeak"
-  - code_imp: "added *squeak as a usable sound emote."

@@ -206,4 +206,5 @@
 		icon_state = "blob_damaged"
 
 /obj/effect/blob/shield/CanAllowThrough(var/atom/movable/mover, var/turf/target)
+	. = ..()
 	return !density

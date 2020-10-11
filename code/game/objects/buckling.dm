@@ -120,6 +120,9 @@
 	if(M in buckled_mobs)
 		to_chat(user, "<span class='warning'>\The [M] is already buckled to \the [src].</span>")
 		return FALSE
+	if(M.buckled) //actually check if the mob is already buckled before forcemoving it jfc
+		to_chat(user, "<span class='warning'>\The [M] is already buckled to \the [M.buckled].</span>")
+		return FALSE
 	//can't buckle unless you share locs so try to move M to the obj.
 	if(M.loc != src.loc)
 		if(M.Adjacent(src) && user.Adjacent(src))

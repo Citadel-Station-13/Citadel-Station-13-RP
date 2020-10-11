@@ -1,5 +1,5 @@
 // Inherits from /book/ so it can fit on bookshelves.
-/obj/item/book/codex // Vorestation Edits throughout this object.
+/obj/item/book/codex
 	name = "The Traveler's Guide to Human Space: Virgo-Erigone Edition"
 	desc = "Contains useful information about the world around you.  It seems to have been written for travelers to Virgo-Erigone, human or not. It also \
 	has the words 'Don't Panic' in small, friendly letters on the cover."
@@ -18,7 +18,7 @@
 	icon_state = "[initial(icon_state)]-open"
 	tree.display(user)
 
-/obj/item/book/codex/lore/vir // Vorestation Edits throughout this object.
+/obj/item/book/codex/lore/vir
 	name = "The Traveler's Guide to Human Space: Virgo-Erigone Edition"
 	desc = "Contains useful information about the world around you.  It seems to have been written for travelers to Virgo-Erigone, human or not. It also \
 	has the words 'Don't Panic' in small, friendly letters on the cover."

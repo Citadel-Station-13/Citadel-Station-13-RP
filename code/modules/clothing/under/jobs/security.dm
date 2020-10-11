@@ -143,6 +143,13 @@
 	item_state_slots = list(slot_r_hand_str = "black", slot_l_hand_str = "black")
 	rolled_sleeves = 0
 
+/obj/item/clothing/under/rank/head_of_security/turtleneck
+	name = "head of security's turtleneck"
+	desc = "A stylish alternative to the normal head of security jumpsuit, complete with tactical pants."
+	icon_state = "hosturtle"
+	item_state_slots = list(slot_r_hand_str = "black", slot_l_hand_str = "black")
+	rolled_sleeves = 0
+
 //Jensen cosplay gear
 /obj/item/clothing/under/rank/head_of_security/jensen
 	desc = "You never asked for anything that stylish."

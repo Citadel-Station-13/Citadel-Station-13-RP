@@ -1,8 +1,0 @@
-author: "Mewchild"
-delete-after: True
-changes: 
-  - rscadd: "Added a vat of cooking oil to the kitchen"
-  - rscadd: "Added a sink to the bar"
-  - tweak: "Fixed up some of the air pipes and wires near the bar"
-  - tweak: "Moved the meat coolers into the freezer"
-  - tweak: "Sets the air alarm in the kitchen freezers to 4C/39F (Within food safe temperatures). They'll spawn this cold, due to a change to the tiles."

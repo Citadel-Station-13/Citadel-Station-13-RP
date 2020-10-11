@@ -33,10 +33,14 @@
 /// Away Missions
 #if AWAY_MISSION_TEST
 #include "space/debrisfield.dmm"
-#include "poi_d/Class-D.dmm"
+#include "space/piratebase.dmm"
+#include "mining_planet/mining_planet.dmm"
+#include "poi_d/Class_D.dmm"
+#include "poi_h/Class_H.dmm"
+#include "frozen_planet/frozen_planet.dmm"
 #endif
 
-// Debris Field Exploration Zone.
+// Debris Fields
 #include "space/_debrisfield.dm"
 #include "space/_templates.dm"
 #include "space/debrisfield_things.dm"
@@ -56,6 +60,44 @@
 	. = ..()
 	seed_submaps(list(Z_LEVEL_DEBRISFIELD), 125, /area/triumph_away/debrisfield/unexplored, /datum/map_template/debrisfield/)
 
+// Pirate base
+#include "space/_piratebase.dm"
+#include "space/piratebase_things.dm"
+
+/datum/map_template/triumph_lateload/away_piratebase
+	name = "Away Mission - Pirate Base"
+	desc = "A Vox Marauder Base, oh no!"
+	mappath = 'space/piratebase.dmm'
+	associated_map_datum = /datum/map_z_level/triumph_lateload/away_piratebase
+	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = FALSE)
+
+/datum/map_z_level/triumph_lateload/away_piratebase
+	name = "Away Mission - Pirate Base"
+	z = Z_LEVEL_PIRATEBASE
+
+/datum/map_template/triumph_lateload/away_piratebase/on_map_loaded(z)
+	. = ..()
+
+// Mining Planet
+#include "mining_planet/_miningplanet.dm"
+
+/datum/map_template/triumph_lateload/away_mining_planet
+	name = "Away Mission - Mining Planet"
+	desc = "Mining Plante. For the miners to get actual supplies."
+	mappath = 'mining_planet/mining_planet.dmm'
+	associated_map_datum = /datum/map_z_level/triumph_lateload/away_mining_planet
+	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
+
+/datum/map_z_level/triumph_lateload/away_mining_planet
+	name = "Away Mission - Mining Planet"
+	z = Z_LEVEL_MININGPLANET
+
+
+/datum/map_template/triumph_lateload/away_mining_planet/on_map_loaded(z)
+	. = ..()
+	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_MININGPLANET, world.maxx - 4, world.maxy - 4) // Create the mining Z-level.
+	new /datum/random_map/noise/ore/mining_planet(null, 1, 1, Z_LEVEL_MININGPLANET, 64, 64)         // Create the mining ore distribution map.
+
 // Class D Rogue Planet Exploration Zone.
 #include "poi_d/_class_d.dm"
 #include "poi_d/_templates.dm"
@@ -63,7 +105,7 @@
 /datum/map_template/triumph_lateload/away_d_world
 	name = "ExoPlanet - Z1 Planet"
 	desc = "A random unknown planet."
-	mappath = 'poi_d/Class-D.dmm'
+	mappath = 'poi_d/Class_D.dmm'
 	associated_map_datum = /datum/map_z_level/triumph_lateload/away_d_world
 	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
 
@@ -77,6 +119,73 @@
 /datum/map_z_level/triumph_lateload/away_d_world
 	name = "Away Mission - Rogue Planet"
 	z = Z_LEVEL_UNKNOWN_PLANET
+
+// Class H Desert Planet Exploration Zone.
+#include "poi_h/_class_h.dm"
+#include "poi_h/_templates.dm"
+#include "poi_h/h_world_things.dm"
+/datum/map_template/triumph_lateload/away_h_world
+	name = "ExoPlanet - Z2 Planet"
+	desc = "A random unknown planet."
+	mappath = 'poi_h/Class_H.dmm'
+	associated_map_datum = /datum/map_z_level/triumph_lateload/away_h_world
+	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
+
+/datum/map_template/triumph_lateload/away_h_world/on_map_loaded(z)
+	. = ..()
+	seed_submaps(list(Z_LEVEL_DESERT_PLANET), 150, /area/triumph_away/poi_h/unexplored, /datum/map_template/Class_H)
+
+	//new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, Z_LEVEL_UNKNOWN_PLANET, world.maxx - 30, world.maxy - 30)
+	//new /datum/random_map/noise/ore/poi_d(null, 1, 1, Z_LEVEL_UNKNOWN_PLANET, 64, 64)
+
+/datum/map_z_level/triumph_lateload/away_h_world
+	name = "Away Mission - Desert Planet"
+	z = Z_LEVEL_DESERT_PLANET
+
+// Gaia Planet Zone.
+#include "gaia_planet/_gaia_planet.dm"
+#include "gaia_planet/gaia_planet_things.dm"
+/datum/map_template/triumph_lateload/gaia_planet
+	name = "Gaia Planet - Z3 Planet"
+	desc = "A lush Gaia Class Planet."
+	mappath = 'gaia_planet/gaia_planet.dmm'
+	associated_map_datum = /datum/map_z_level/triumph_lateload/gaia_planet
+	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
+
+/datum/map_template/triumph_lateload/gaia_planet/on_map_loaded(z)
+	. = ..()
+//	seed_submaps(list(Z_LEVEL_DESERT_PLANET), 150, /area/triumph_away/poi_h/unexplored, /datum/map_template/Class_H)
+
+	//new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, Z_LEVEL_UNKNOWN_PLANET, world.maxx - 30, world.maxy - 30)
+	//new /datum/random_map/noise/ore/poi_d(null, 1, 1, Z_LEVEL_UNKNOWN_PLANET, 64, 64)
+
+/datum/map_z_level/triumph_lateload/gaia_planet
+	name = "Away Mission - Gaia Planet"
+	z = Z_LEVEL_GAIA_PLANET
+
+
+// Frozen Planet Zone.
+#include "frozen_planet/_frozen_planet.dm"
+#include "frozen_planet/frozen_planet_things.dm"
+#include "frozen_planet/_templates.dm"
+/datum/map_template/triumph_lateload/frozen_planet
+	name = "Forzen Planet - Z4 Planet"
+	desc = "A Cold Frozen Planet."
+	mappath = 'frozen_planet/frozen_planet.dmm'
+	associated_map_datum = /datum/map_z_level/triumph_lateload/frozen_planet
+	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
+
+/datum/map_template/triumph_lateload/frozen_planet/on_map_loaded(z)
+	. = ..()
+	seed_submaps(list(Z_LEVEL_FROZEN_PLANET), 125, /area/triumph_away/frozen_planet/ruins, /datum/map_template/frozen_planet/)
+
+
+/datum/map_z_level/triumph_lateload/frozen_planet
+	name = "Away Mission - Frozen Planet"
+	z = Z_LEVEL_FROZEN_PLANET
+
+
+
 
 //////////////////////////////////////////////////////////////////////////////////////
 // Admin-use z-levels for loading whenever an admin feels like

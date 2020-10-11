@@ -45,8 +45,11 @@ SUBSYSTEM_DEF(lighting)
 /datum/controller/subsystem/lighting/fire(resumed = FALSE)
 	var/timer
 	if(!resumed)
-		ASSERT(LAZYLEN(currentrun) == 0)  // Santity checks to make sure we don't somehow have items left over from last cycle
-		ASSERT(stage == null) // Or somehow didn't finish all the steps from last cycle
+		if(LAZYLEN(currentrun))
+			stack_trace("Currentrun was not empty on lighting subsystem non-resumed fire. Something's wrong.")
+			currentrun.len = 0
+		if(stage != null)
+			stack_trace("Stage was [stage] instead of null on lighting subsystem non-resumed fire. Something's wrong.")
 		stage = SSLIGHTING_STAGE_LIGHTS // Start with Step 1 of course
 
 	if(stage == SSLIGHTING_STAGE_LIGHTS)
@@ -76,10 +79,11 @@ SUBSYSTEM_DEF(lighting)
 		resumed = 0
 		stage = SSLIGHTING_STAGE_DONE
 
-	// Okay, we're done! Woo! Got thru a whole air_master cycle!
-	ASSERT(LAZYLEN(currentrun) == 0) // Sanity checks to make sure there are really none left
-	ASSERT(stage == SSLIGHTING_STAGE_DONE) // And that we didn't somehow skip past the last step
-	currentrun = null
+	if(length(currentrun))
+		stack_trace("Currentrun was not empty after a complete lighting system cycle. Something's wrong.")
+		currentrun.len = 0
+	if(stage != SSLIGHTING_STAGE_DONE)
+		stack_trace("Stage was not done (instead [stage]) on complete lighting system fire cycle. Something's wrong.")
 	stage = null
 
 /datum/controller/subsystem/lighting/proc/internal_process_lights(resumed = FALSE, init_tick_checks = FALSE)

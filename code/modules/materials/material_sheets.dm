@@ -447,6 +447,9 @@
 	no_variants = FALSE
 	var/fill_type = /obj/item/stack/material/sandbags
 
+	default_type = "emptysandbag"
+	perunit = 1
+
 /obj/item/stack/material/emptysandbag/attackby(var/obj/item/W, var/mob/user)
 	if(!istype(W, /obj/item/ore/glass))
 		var/time = (3 SECONDS)
@@ -460,7 +463,7 @@
 	if(istype(W, /obj/item/ore/glass) && !interact(user, src))
 		if(do_after(user, 3 SECONDS, src) && use(1) && qdel(W))
 			var/turf/T = get_turf(user)
-				to_chat(user, "<span class='notice'>You fill the sandbag.</span>")
+			to_chat(user, "<span class='notice'>You fill the sandbag.</span>")
 			new /obj/item/stack/material/sandbags && !get(T)
 	else
 		return ..()
@@ -471,3 +474,6 @@
 	singular_name = "sandbag"
 	icon_state = "sandbags"
 	no_variants = FALSE
+
+	default_type = "sandbags"
+	perunit = 1

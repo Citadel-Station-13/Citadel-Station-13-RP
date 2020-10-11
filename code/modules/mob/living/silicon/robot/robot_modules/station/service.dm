@@ -146,7 +146,8 @@
 	name = "Custodial Hound module"
 	sprites = list(
 					"Custodial Hound" = "scrubpup",
-					"Borgi" = "borgi-jani"
+					"Borgi" = "borgi-jani",
+					"Otieborg" = "otiej"
 					)
 	channels = list("Service" = 1)
 	can_be_pushed = 0
@@ -275,6 +276,7 @@
 
 	src.modules += new /obj/item/tray/robotray(src)
 	src.modules += new /obj/item/reagent_containers/borghypo/service(src)
+	src.modules += new /obj/item/storage/bag/trash(src)
 
 /* // I don't know what kind of sleeper to put here, but also no need if you already have "Robot Nom" verb.
 	var/obj/item/dogborg/sleeper/K9/B = new /obj/item/dogborg/sleeper/K9(src)

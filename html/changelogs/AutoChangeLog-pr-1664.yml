@@ -1,4 +1,0 @@
-author: "Mewchild"
-delete-after: True
-changes: 
-  - rscadd: "The facility PA will now chime in after a period of time, if not all solar grubs have been killed."

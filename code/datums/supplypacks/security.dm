@@ -20,13 +20,11 @@
 			/obj/item/clothing/suit/storage/vest/officer,
 			/obj/item/clothing/suit/storage/vest/warden,
 			/obj/item/clothing/suit/storage/vest/hos,
-			/obj/item/clothing/suit/storage/vest/pcrc,
 			/obj/item/clothing/suit/storage/vest/detective,
 			/obj/item/clothing/suit/storage/vest/heavy,
 			/obj/item/clothing/suit/storage/vest/heavy/officer,
 			/obj/item/clothing/suit/storage/vest/heavy/warden,
-			/obj/item/clothing/suit/storage/vest/heavy/hos,
-			/obj/item/clothing/suit/storage/vest/heavy/pcrc
+			/obj/item/clothing/suit/storage/vest/heavy/hos
 			)
 	cost = 40
 	containertype = /obj/structure/closet/crate/secure/gear

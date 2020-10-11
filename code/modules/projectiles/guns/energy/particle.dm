@@ -1,9 +1,8 @@
 /obj/item/gun/energy/particle //base gun, similar stats to an egun
 	name = "Anti-particle projector pistol"
-	icon = 'icons/obj/gun_vr.dmi'
 	icon_state = "ppistol"
 	item_state = "ppistol_item"
-	icon_override = 'icons/obj/gun_vr.dmi'
+	icon_override = 'icons/obj/gun/energy.dmi'
 	item_icons = null
 	desc = "A Kawashima Material Technology Model 7 anti-particle projector, housed in a rugged casing."
 	description_info = "An unconventional weapon, APP guns generate attogram-scale quantities of antimatter which \
@@ -159,7 +158,7 @@
 
 /obj/item/pressurelock
 	name = "Pressure interlock"
-	icon = 'icons/obj/gun_vr.dmi'
+	icon = 'icons/obj/gun/energy.dmi'
 	icon_state = "pressurelock"
 	desc = "A safety interlock that can be installed in an antiparticle projector. It prevents the weapon from discharging in pressurised environments."
 	w_class = ITEMSIZE_TINY

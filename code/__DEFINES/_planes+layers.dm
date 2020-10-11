@@ -40,8 +40,10 @@ What is the naming convention for planes or layers?
 
 */
 
-#define SPACE_PLANE     		-82	// Reserved for use in space/parallax
-#define PARALLAX_PLANE  		-80	// Reserved for use in space/parallax
+#define SPACE_PLANE				-82	// Reserved for use in space/parallax
+#define PARALLAX_PLANE			-80	// Reserved for use in space/parallax
+#define SKYBOX_PLANE			-79	// Skybox parallax
+#define DUST_PLANE				-78 // For dust overlay on space turfs. Should be above skybox for parallax effect.
 
 // OPENSPACE_PLANE reserves all planes between OPENSPACE_PLANE_START and OPENSPACE_PLANE_END inclusive
 #define OPENSPACE_PLANE 		-75 // /turf/simulated/open will use OPENSPACE_PLANE + z (Valid z's being 2 thru 17)

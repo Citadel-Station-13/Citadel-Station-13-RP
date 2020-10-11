@@ -12,13 +12,23 @@
 	cold_protection =    HEAD|FACE|EYES
 	brightness_on = 4
 	sprite_sheets = list(
-		SPECIES_TAJ = 'icons/mob/species/tajaran/helmet.dmi',
-		SPECIES_SKRELL = 'icons/mob/species/skrell/helmet.dmi',
-		SPECIES_UNATHI = 'icons/mob/species/unathi/helmet.dmi',
-		SPECIES_VOX = 'icons/mob/species/vox/head.dmi',
-		SPECIES_TESHARI = 'icons/mob/species/teshari/head.dmi'
+		SPECIES_TAJ 			= 'icons/mob/species/tajaran/helmet.dmi',
+		SPECIES_SKRELL 			= 'icons/mob/species/skrell/helmet.dmi',
+		SPECIES_UNATHI 			= 'icons/mob/species/unathi/helmet.dmi',
+		SPECIES_NEVREAN			= 'icons/mob/species/nevrean/helmet_vr.dmi',
+		SPECIES_AKULA 			= 'icons/mob/species/akula/helmet_vr.dmi',
+		SPECIES_SERGAL			= 'icons/mob/species/sergal/helmet_vr.dmi',
+		SPECIES_ZORREN_FLAT		= 'icons/mob/species/fennec/helmet_vr.dmi',
+		SPECIES_ZORREN_HIGH 	= 'icons/mob/species/fox/helmet_vr.dmi',
+		SPECIES_VULPKANIN 		= 'icons/mob/species/vulpkanin/helmet.dmi',
+		SPECIES_PROMETHEAN		= 'icons/mob/species/skrell/helmet.dmi',
+		SPECIES_XENOHYBRID		= 'icons/mob/species/unathi/helmet.dmi',
+		SPECIES_VOX 			= 'icons/mob/species/vox/head.dmi',
+		SPECIES_TESHARI 		= 'icons/mob/species/teshari/head.dmi',
+		SPECIES_ZADDAT 			= 'icons/mob/species/zaddat/head.dmi',
+		SPECIES_PLASMAMAN		= 'icons/mob/species/phoronoid/head.dmi'
 		)
-	species_restricted = null
+	species_restricted = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_TAJ, SPECIES_UNATHI, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_PROMETHEAN, SPECIES_XENOHYBRID, SPECIES_VOX, SPECIES_TESHARI, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_ALRAUNE, SPECIES_ZADDAT, SPECIES_PLASMAMAN)
 	max_pressure_protection = null
 	min_pressure_protection = null
 	force = 3 // if you're headbutting someone with something meant to protect you from space...
@@ -30,7 +40,8 @@
 	body_parts_covered = HANDS
 	heat_protection =    HANDS
 	cold_protection =    HANDS
-	species_restricted = null
+	species_restricted = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_TAJ, SPECIES_UNATHI, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_PROMETHEAN, SPECIES_XENOHYBRID, SPECIES_VOX, SPECIES_TESHARI, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_ALRAUNE, SPECIES_ZADDAT, SPECIES_PLASMAMAN)
+
 	gender = PLURAL
 
 /obj/item/clothing/shoes/magboots/rig
@@ -39,9 +50,16 @@
 	body_parts_covered = FEET
 	cold_protection = FEET
 	heat_protection = FEET
-	species_restricted = null
+	species_restricted = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_TAJ, SPECIES_UNATHI, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_PROMETHEAN, SPECIES_XENOHYBRID, SPECIES_VOX, SPECIES_TESHARI, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_ALRAUNE, SPECIES_ZADDAT, SPECIES_PLASMAMAN)
 	gender = PLURAL
 	icon_base = null
+	sprite_sheets = list(
+		SPECIES_TESHARI = 'icons/mob/species/teshari/shoes.dmi',
+		SPECIES_VOX = 'icons/mob/species/vox/shoes.dmi',
+		SPECIES_WEREBEAST = 'icons/mob/species/werebeast/feet.dmi',
+		SPECIES_ZADDAT = 'icons/mob/species/zaddat/shoes.dmi'
+		) //Zaddat Engi RIG appearance is unique. List inherited from code\modules\clothing\clothing.dm (merged from now-defunct clothing_vr..
+
 	force = 5 // if you're kicking someone with something meant to keep you locked on a hunk of metal...
 
 /obj/item/clothing/suit/space/rig
@@ -59,11 +77,23 @@
 	resilience = 0.2
 	can_breach = 1
 	sprite_sheets = list(
-		SPECIES_TAJ = 'icons/mob/species/tajaran/suit.dmi',
-		SPECIES_UNATHI = 'icons/mob/species/unathi/suit.dmi',
-		SPECIES_VOX = 'icons/mob/species/vox/suit.dmi',
-		SPECIES_TESHARI = 'icons/mob/species/teshari/suit.dmi'
-		)
+        SPECIES_TAJ             = 'icons/mob/species/tajaran/suit.dmi',
+        SPECIES_SKRELL             = 'icons/mob/species/skrell/suit.dmi',
+        SPECIES_UNATHI             = 'icons/mob/species/unathi/suit.dmi',
+        SPECIES_NEVREAN         = 'icons/mob/species/nevrean/suit_vr.dmi',
+        SPECIES_AKULA             = 'icons/mob/species/akula/suit_vr.dmi',
+        SPECIES_SERGAL            = 'icons/mob/species/sergal/suit_vr.dmi',
+        SPECIES_ZORREN_FLAT        = 'icons/mob/species/fennec/suit_vr.dmi',
+        SPECIES_ZORREN_HIGH        = 'icons/mob/species/fox/suit_vr.dmi',
+        SPECIES_VULPKANIN        = 'icons/mob/species/vulpkanin/suit.dmi',
+        SPECIES_PROMETHEAN        = 'icons/mob/species/skrell/suit.dmi',
+        SPECIES_XENOHYBRID        = 'icons/mob/species/unathi/suit.dmi',
+        SPECIES_VOX             = 'icons/mob/species/vox/suit.dmi',
+        SPECIES_TESHARI            = 'icons/mob/species/teshari/suit.dmi',
+        SPECIES_ZADDAT            = 'icons/mob/species/zaddat/suit.dmi',
+		SPECIES_PLASMAMAN			= 'icons/mob/species/phoronoid/suit.dmi'
+        )
+	species_restricted = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_TAJ, SPECIES_UNATHI, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_PROMETHEAN, SPECIES_XENOHYBRID, SPECIES_VOX, SPECIES_TESHARI, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_ALRAUNE, SPECIES_ZADDAT, SPECIES_PLASMAMAN)
 	supporting_limbs = list()
 	var/obj/item/material/knife/tacknife
 	max_pressure_protection = null

@@ -342,3 +342,29 @@
 	armor = list(melee = 60, bullet = 35, laser = 35,energy = 15, bomb = 50, bio = 100, rad = 50)
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun)
 	slowdown = 1.5
+
+/obj/item/clothing/head/helmet/space/void/security/alt/para
+	name = "PARA void helmet"
+	desc = "A voidsuit helmet bearing the icon of the PMD. Much like the 'MAW' system, this shields from memetic effects."
+	icon_state = "para_ert_void"
+	light_overlay = "helmet_light_dual" //explorer_light
+
+/obj/item/clothing/helmet/space/void/security/alt/para/Initialize(mob/living/carbon/human/H, src)
+	. = ..()
+	if(H.mind.isholy)
+		flash_protection = FLASH_PROTECTION_MAJOR
+	return
+
+/obj/item/clothing/suit/space/void/security/alt/para
+	name = "PARA void suit"
+	desc = "A spaceproof suit covered in foreign spells and magical protection, meant to defend a trained wearer in more than one way."
+	icon_state = "para_ert_void"
+	allowed = list(/obj/item/gun,/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/melee/baton, /obj/item/nullrod)
+
+	var/anti_magic = FALSE
+
+/obj/item/clothing/suit/space/void/security/alt/para/Initialize(mob/living/carbon/human/H, src)
+	. = ..()
+	if(H.mind.isholy)
+		anti_magic = TRUE
+	return

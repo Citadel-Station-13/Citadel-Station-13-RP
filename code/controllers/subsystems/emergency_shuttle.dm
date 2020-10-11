@@ -2,7 +2,9 @@ SUBSYSTEM_DEF(emergencyshuttle)
 	name = "Emergency Shuttle"
 	wait = 20
 
-	var/datum/shuttle/ferry/emergency/shuttle
+/datum/controller/subsystem/emergencyshuttle
+	var/datum/shuttle/autodock/ferry/emergency/shuttle	// Set in shuttle_emergency.dm TODO - is it really?
+	var/list/escape_pod
 
 	var/launch_time			//the time at which the shuttle will be launched
 	var/auto_recall = 0		//if set, the shuttle will be auto-recalled
@@ -18,6 +20,9 @@ SUBSYSTEM_DEF(emergencyshuttle)
 	var/datum/announcement/priority/emergency_shuttle_called = new(0, new_sound = sound('sound/AI/shuttlecalled.ogg'))
 	var/datum/announcement/priority/emergency_shuttle_recalled = new(0, new_sound = sound('sound/AI/shuttlerecalled.ogg'))
 
+/datum/controller/subsystem/emergencyshuttle/New()
+	escape_pod = list()
+	..()
 /datum/controller/subsystem/emergencyshuttle/fire()
 	if (wait_for_launch)
 		if (evac && auto_recall && world.time >= auto_recall_time)
@@ -27,10 +32,10 @@ SUBSYSTEM_DEF(emergencyshuttle)
 
 			if (!shuttle.location)	//leaving from the station
 				//launch the pods!
-				for (var/EP in SSshuttle.escape_pods)
-					var/datum/shuttle/ferry/escape_pod/pod
-					if(istype(SSshuttle.escape_pods[EP], /datum/shuttle/ferry/escape_pod))
-						pod = SSshuttle.escape_pods[EP]
+				for (var/EP in escape_pod)
+					var/datum/shuttle/autodock/ferry/escape_pod/pod
+					if(istype(escape_pod[EP], /datum/shuttle/autodock/ferry/escape_pod))
+						pod = escape_pod[EP]
 					else
 						continue
 					if (!pod.arming_controller || pod.arming_controller.armed)
@@ -54,10 +59,10 @@ SUBSYSTEM_DEF(emergencyshuttle)
 
 		//arm the escape pods
 		if (evac)
-			for (var/EP in SSshuttle.escape_pods)
-				var/datum/shuttle/ferry/escape_pod/pod
-				if(istype(SSshuttle.escape_pods[EP], /datum/shuttle/ferry/escape_pod))
-					pod = SSshuttle.escape_pods[EP]
+			for (var/EP in escape_pod)
+				var/datum/shuttle/autodock/ferry/escape_pod/pod
+				if(istype(escape_pod[EP], /datum/shuttle/autodock/ferry/escape_pod))
+					pod = escape_pod[EP]
 				else
 					continue
 				if (pod.arming_controller)
@@ -90,7 +95,7 @@ SUBSYSTEM_DEF(emergencyshuttle)
 		if(istype(A, /area/hallway))
 			A.readyalert()
 
-	atc.reroute_traffic(yes = 1)
+	GLOB.lore_atc.reroute_traffic(TRUE)
 
 //calls the shuttle for a routine crew transfer
 /datum/controller/subsystem/emergencyshuttle/proc/call_transfer()
@@ -106,7 +111,7 @@ SUBSYSTEM_DEF(emergencyshuttle)
 	var/estimated_time = round(estimate_arrival_time()/60,1)
 
 	priority_announcement.Announce(replacetext(replacetext(GLOB.using_map.shuttle_called_message, "%dock_name%", "[GLOB.using_map.dock_name]"),  "%ETA%", "[estimated_time] minute\s"))
-	atc.shift_ending()
+	GLOB.lore_atc.shift_ending()
 
 //recalls the shuttle
 /datum/controller/subsystem/emergencyshuttle/proc/recall()
@@ -166,7 +171,7 @@ SUBSYSTEM_DEF(emergencyshuttle)
 		return 0	//not at station
 	return (wait_for_launch || shuttle.moving_status != SHUTTLE_INTRANSIT)
 
-//so we don't have emergency_shuttle.shuttle.location everywhere
+//so we don't have emergencyshuttleshuttle.location everywhere
 /datum/controller/subsystem/emergencyshuttle/proc/location()
 	if (!shuttle)
 		return 1 	//if we dont have a shuttle datum, just act like it's at centcom
@@ -207,11 +212,11 @@ SUBSYSTEM_DEF(emergencyshuttle)
 
 //returns 1 if the shuttle is currently in transit (or just leaving) to the station
 /datum/controller/subsystem/emergencyshuttle/proc/going_to_station()
-	return (!shuttle.direction && shuttle.moving_status != SHUTTLE_IDLE)
+	return shuttle && (!shuttle.direction && shuttle.moving_status != SHUTTLE_IDLE)
 
 //returns 1 if the shuttle is currently in transit (or just leaving) to centcom
 /datum/controller/subsystem/emergencyshuttle/proc/going_to_centcom()
-	return (shuttle.direction && shuttle.moving_status != SHUTTLE_IDLE)
+	return shuttle && (shuttle.direction && shuttle.moving_status != SHUTTLE_IDLE)
 
 
 /datum/controller/subsystem/emergencyshuttle/proc/get_status_panel_eta()

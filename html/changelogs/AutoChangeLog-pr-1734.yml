@@ -1,7 +1,0 @@
-author: "Enzo-Leon"
-delete-after: True
-changes: 
-  - tweak: "Lots o' number crunching and adjustment."
-  - balance: "Balanced Shaker to contain 30 protein and 10 nutriment vs 35/30. The protein value it to not immediately screw over species that depend on this, and can slowly figure out food from the chef can keep them alive a bit easier now."
-  - spellcheck: "One food contained a \"/\" in the name. Removed it and added the proper capitalization to its name."
-  - code_imp: "Adjusted a large amount of food items to contain more protein, and nutriment where needed. Most meats now will contain more than 1 or 2 units of protein to help with crew that rely on this."

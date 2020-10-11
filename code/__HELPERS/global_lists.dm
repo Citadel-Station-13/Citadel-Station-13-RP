@@ -18,10 +18,13 @@ var/global/list/side_effects = list()				//list of all medical sideeffects types
 var/global/list/mechas_list = list()				//list of all mechs. Used by hostile mobs target tracking.
 var/global/list/joblist = list()					//list of all jobstypes, minus borg and AI
 
-#define all_genders_define_list list(MALE,FEMALE,PLURAL,NEUTER,HERM) //VOREStaton Edit
-#define all_genders_text_list list("Male","Female","Plural","Neuter","Herm") //VOREStation Edit
+#define all_genders_define_list list(MALE,FEMALE,PLURAL,NEUTER,HERM)
+#define all_genders_text_list list("Male","Female","Plural","Neuter","Herm")
 
 var/list/mannequins_
+
+// Times that players are allowed to respawn ("ckey" = world.time)
+GLOBAL_LIST_EMPTY(respawn_timers)
 
 // Posters
 var/global/list/poster_designs = list()

@@ -4,6 +4,8 @@ GLOBAL_PROTECT(log_directory)
 /// General game log for anything that doesn't fit elsewhere
 GLOBAL_VAR(world_game_log)
 GLOBAL_PROTECT(world_game_log)
+GLOBAL_VAR(world_asset_log)
+GLOBAL_PROTECT(world_asset_log)
 /// Runtimes go in here
 GLOBAL_VAR(world_runtime_log)
 GLOBAL_PROTECT(world_runtime_log)

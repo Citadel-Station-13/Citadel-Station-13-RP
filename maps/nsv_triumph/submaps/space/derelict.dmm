@@ -2,43 +2,29 @@
 "aa" = (
 /turf/space,
 /area/triumph_away/debrisfield/explored)
-"ab" = (
-/obj/structure/shuttle/engine/propulsion{
-	dir = 8;
-	icon_state = "burst_l"
-	},
-/turf/space,
-/area/triumph_away/debrisfield/derelict)
-"ac" = (
-/obj/structure/shuttle/engine/propulsion{
-	dir = 4;
-	icon_state = "burst_l"
-	},
-/turf/space,
-/area/triumph_away/debrisfield/derelict)
 "ad" = (
 /obj/effect/decal/mecha_wreckage/gygax/adv,
 /turf/simulated/floor/plating,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "ae" = (
 /obj/effect/map_effect/interval/effect_emitter/sparks/frequent,
 /obj/effect/map_effect/interval/effect_emitter/smoke,
 /obj/machinery/door/airlock/alien,
 /turf/simulated/floor/plating,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "af" = (
 /obj/effect/map_effect/interval/effect_emitter/sparks/frequent,
 /obj/structure/door_assembly/door_assembly_alien,
 /turf/simulated/floor/plating,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "ag" = (
 /obj/machinery/door/airlock/alien,
 /turf/simulated/floor/tiled/dark,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "ah" = (
 /obj/machinery/door/airlock/alien,
 /turf/simulated/floor/plating,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "al" = (
 /obj/structure/shuttle/engine/propulsion{
 	dir = 8;
@@ -56,19 +42,19 @@
 "an" = (
 /obj/structure/prop/alien/computer,
 /turf/simulated/floor/tiled/dark,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "ao" = (
 /turf/simulated/wall/r_wall,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "ap" = (
 /mob/living/simple_mob/mechanical/infectionbot{
 	faction = "derelict"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "aq" = (
 /turf/simulated/wall,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "ar" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -77,23 +63,23 @@
 	pixel_y = 0
 	},
 /turf/simulated/wall,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "as" = (
 /obj/structure/prop/alien/dispenser,
 /turf/simulated/floor/tiled/dark,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "at" = (
 /obj/random/humanoidremains,
 /obj/item/gun/energy/ionrifle,
 /turf/simulated/floor/tiled/steel_ridged,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "au" = (
 /turf/simulated/floor/tiled/steel_dirty,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "av" = (
 /obj/machinery/bomb_tester,
 /turf/simulated/floor/tiled/steel_ridged,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "aw" = (
 /obj/structure/prop/alien/power,
 /obj/structure/cable{
@@ -104,28 +90,28 @@
 	invisibility = 101
 	},
 /turf/simulated/floor/reinforced,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "ax" = (
 /obj/structure/prop/alien/computer/camera/flipped,
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/reinforced,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "ay" = (
 /obj/machinery/transhuman/resleever,
 /turf/simulated/floor/tiled/steel_grid,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "az" = (
 /obj/machinery/artifact,
 /turf/simulated/floor/tiled/dark,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "aA" = (
 /mob/living/simple_mob/mechanical/infectionbot{
 	faction = "derelict"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "aE" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -141,14 +127,14 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "aF" = (
 /obj/machinery/porta_turret/alien{
 	faction = "derelict";
 	use_power = 0
 	},
 /turf/simulated/floor/plating,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "aH" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -156,7 +142,7 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/reinforced,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "aI" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -164,14 +150,11 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/reinforced,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "aJ" = (
 /obj/machinery/drone_fabricator/derelict,
 /turf/simulated/floor/tiled/dark,
-/area/triumph_away/debrisfield/derelict)
-"aK" = (
-/turf/space,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "aL" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -186,38 +169,38 @@
 	pixel_y = 0
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "aM" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "aN" = (
 /obj/machinery/transhuman/synthprinter,
 /turf/simulated/floor/tiled/steel_grid,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "aO" = (
 /obj/triumph_away_spawner/debrisfield/derelict/mech_wizard,
 /turf/simulated/floor/tiled/steel_grid,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "aP" = (
 /turf/simulated/floor/plating,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "aQ" = (
 /obj/machinery/vr_sleeper/alien,
 /obj/item/grenade/empgrenade,
 /turf/simulated/floor/tiled/dark,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "aR" = (
 /obj/triumph_away_spawner/debrisfield/derelict/corrupt_maint_swarm,
 /mob/living/simple_mob/mechanical/corrupt_maint_drone{
 	faction = "derelict"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "aS" = (
 /obj/effect/decal/remains/human,
 /turf/simulated/floor/tiled/steel_grid,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "aT" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -225,25 +208,25 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/reinforced,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "aU" = (
 /obj/random/energy,
 /turf/simulated/floor/tiled/dark,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "aV" = (
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/reinforced,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "aX" = (
 /obj/random/tool/alien,
 /turf/simulated/floor/tiled/dark,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "aY" = (
 /obj/triumph_away_spawner/debrisfield/derelict,
 /turf/simulated/floor/tiled/steel_grid,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "aZ" = (
 /obj/machinery/door/airlock/alien,
 /obj/structure/cable{
@@ -253,22 +236,22 @@
 	pixel_y = 0
 	},
 /turf/simulated/floor/tiled/dark,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "ba" = (
 /obj/machinery/auto_cloner,
 /turf/simulated/floor/tiled/steel_ridged,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "bb" = (
 /obj/structure/shuttle/engine/propulsion{
 	dir = 1;
 	icon_state = "burst_l"
 	},
 /turf/space,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "bc" = (
 /obj/structure/prop/alien/computer/camera,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "bd" = (
 /obj/structure/prop/alien/power,
 /obj/structure/cable{
@@ -281,14 +264,14 @@
 	invisibility = 101
 	},
 /turf/simulated/floor/reinforced,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "be" = (
 /obj/machinery/door/airlock/alien,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "bf" = (
 /obj/structure/cable{
 	icon_state = "2-8"
@@ -300,7 +283,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "bh" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -309,7 +292,7 @@
 	pixel_y = 0
 	},
 /turf/simulated/floor/reinforced,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "bj" = (
 /obj/random/humanoidremains,
 /obj/structure/cable{
@@ -318,7 +301,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "bk" = (
 /obj/machinery/door/airlock/alien,
 /obj/structure/cable{
@@ -327,7 +310,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "bm" = (
 /obj/item/xenos_claw,
 /obj/structure/cable{
@@ -337,7 +320,7 @@
 	pixel_y = 0
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "bn" = (
 /obj/machinery/door/airlock/alien,
 /obj/structure/cable{
@@ -346,18 +329,18 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/reinforced,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "bo" = (
 /obj/triumph_away_spawner/debrisfield/derelict/corrupt_maint_swarm,
 /mob/living/simple_mob/mechanical/corrupt_maint_drone{
 	faction = "derelict"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "bp" = (
 /obj/triumph_away_spawner/debrisfield/derelict,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "bq" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -371,18 +354,18 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "br" = (
 /obj/machinery/implantchair,
 /turf/simulated/floor/tiled/white,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "bs" = (
 /obj/machinery/door/airlock/alien,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "bt" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -392,13 +375,13 @@
 	},
 /obj/triumph_away_spawner/debrisfield/derelict,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "bu" = (
 /mob/living/simple_mob/mechanical/infectionbot{
 	faction = "derelict"
 	},
 /turf/simulated/floor/tiled/white,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "bv" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -406,7 +389,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "bw" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -415,14 +398,14 @@
 	pixel_y = 0
 	},
 /turf/simulated/floor/tiled/white,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "bx" = (
 /obj/random/firstaid,
 /turf/simulated/floor/tiled/white,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "bz" = (
 /turf/simulated/floor/tiled/steel_grid,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "bA" = (
 /obj/machinery/door/airlock/alien,
 /obj/structure/cable{
@@ -432,10 +415,10 @@
 	pixel_y = 0
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "bB" = (
 /turf/simulated/floor/reinforced,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "bC" = (
 /obj/triumph_away_spawner/debrisfield/derelict/corrupt_maint_swarm,
 /obj/structure/cable{
@@ -444,30 +427,30 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/reinforced,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "bD" = (
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/reinforced,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "bE" = (
 /obj/machinery/door/airlock/alien,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/reinforced,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "bF" = (
 /obj/random/humanoidremains,
 /turf/simulated/floor/tiled/white,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "bG" = (
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "bH" = (
 /obj/effect/map_effect/interval/effect_emitter/sparks/frequent,
 /obj/structure/door_assembly/door_assembly_alien,
@@ -477,11 +460,11 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "bI" = (
 /obj/structure/prop/prism,
 /turf/simulated/floor/tiled/dark,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "bJ" = (
 /obj/structure/cable,
 /obj/machinery/power/apc{
@@ -491,7 +474,7 @@
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/dark,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "bK" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -499,13 +482,13 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "bL" = (
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "bM" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -513,32 +496,26 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/reinforced,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "bN" = (
 /obj/machinery/replicator,
 /turf/simulated/floor/tiled/neutral,
-/area/triumph_away/debrisfield/derelict)
-"bO" = (
-/turf/template_noop,
 /area/triumph_away/debrisfield/explored)
 "bP" = (
 /obj/triumph_away_spawner/debrisfield/derelict/corrupt_maint_swarm,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "bQ" = (
 /obj/machinery/door/airlock/alien,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/debrisfield/derelict)
-"bR" = (
-/turf/template_noop,
-/area/triumph_away/debrisfield/unexplored)
+/area/triumph_away/debrisfield/explored)
 "bS" = (
 /obj/machinery/door/airlock/alien,
 /turf/simulated/floor/tiled/steel_dirty,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "bT" = (
 /turf/simulated/floor/tiled/dark,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "bU" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -546,7 +523,7 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/neutral,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "bV" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -560,21 +537,21 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "bW" = (
 /obj/triumph_away_spawner/debrisfield/derelict/corrupt_maint_swarm,
 /turf/simulated/floor/tiled/steel_ridged,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "bX" = (
 /obj/machinery/porta_turret/alien{
 	faction = "derelict";
 	use_power = 0
 	},
 /turf/simulated/floor/tiled/dark,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "bY" = (
 /turf/simulated/floor/tiled/white,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "bZ" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -582,39 +559,39 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "ca" = (
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "cb" = (
 /obj/random/humanoidremains,
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "cd" = (
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/white,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "ce" = (
 /obj/effect/alien/egg,
 /obj/effect/alien/weeds,
 /turf/simulated/floor/tiled/dark,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "cf" = (
 /obj/machinery/dna_scannernew,
 /turf/simulated/floor/tiled/white,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "cg" = (
 /obj/item/gun/energy/ionrifle,
 /turf/simulated/floor/plating,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "ch" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -623,7 +600,7 @@
 	pixel_y = 0
 	},
 /turf/simulated/floor/tiled/dark,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "ci" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -635,47 +612,47 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "cj" = (
 /obj/machinery/optable,
 /obj/random/humanoidremains,
 /turf/simulated/floor/tiled/white,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "ck" = (
 /obj/structure/prop/alien/pod,
 /turf/simulated/floor/tiled/dark,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "cl" = (
 /obj/structure/ghost_pod/manual/lost_drone,
 /turf/simulated/floor/tiled/dark,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "cm" = (
 /obj/item/grenade/empgrenade,
 /obj/item/grenade/empgrenade,
 /obj/item/grenade/empgrenade,
 /turf/simulated/floor/plating,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "co" = (
 /obj/random/humanoidremains,
 /turf/simulated/floor/tiled/dark,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "cp" = (
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "cq" = (
 /obj/structure/ghost_pod/manual/lost_drone/dogborg,
 /turf/simulated/floor/tiled/dark,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "cr" = (
 /obj/machinery/door/airlock/alien/locked,
 /turf/simulated/floor/plating,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "cs" = (
 /turf/simulated/floor/tiled/neutral,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "ct" = (
 /obj/random/humanoidremains,
 /obj/structure/cable{
@@ -685,7 +662,7 @@
 	pixel_y = 0
 	},
 /turf/simulated/floor/tiled/dark,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "cu" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -693,7 +670,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/neutral,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "cv" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -701,7 +678,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/neutral,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "cx" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -710,7 +687,7 @@
 	pixel_y = 0
 	},
 /turf/simulated/floor/tiled/neutral,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "cy" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -719,7 +696,7 @@
 	pixel_y = 0
 	},
 /turf/simulated/floor/plating,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "cz" = (
 /obj/structure/cable{
 	icon_state = "0-8"
@@ -731,10 +708,10 @@
 	pixel_x = 28
 	},
 /turf/simulated/floor/tiled/dark,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "cA" = (
 /turf/simulated/floor/tiled/steel_ridged,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "cB" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -748,25 +725,25 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/plating,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "cC" = (
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "cD" = (
 /obj/structure/shuttle/engine/heater,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "cE" = (
 /obj/triumph_away_spawner/debrisfield/derelict/corrupt_maint_swarm,
 /turf/simulated/floor/tiled/dark,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "cF" = (
 /obj/structure/ghost_pod/manual/lost_drone/dogborg,
 /turf/simulated/floor/plating,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "cG" = (
 /obj/machinery/door/airlock/hatch{
 	icon_state = "door_locked";
@@ -776,7 +753,7 @@
 	req_access = list(16)
 	},
 /turf/simulated/floor/plating,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "cH" = (
 /obj/machinery/door/airlock/hatch{
 	icon_state = "door_locked";
@@ -792,11 +769,11 @@
 	pixel_y = 0
 	},
 /turf/simulated/floor/plating,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "cI" = (
 /obj/structure/shuttle/engine/propulsion,
 /turf/space,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "cJ" = (
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -809,7 +786,7 @@
 	pixel_y = 24
 	},
 /turf/simulated/floor/greengrid,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "cK" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -821,15 +798,15 @@
 	invisibility = 101
 	},
 /turf/simulated/floor/plating,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "cL" = (
 /obj/triumph_away_spawner/debrisfield/derelict/mech_wizard,
 /turf/simulated/floor/plating,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "cM" = (
 /obj/structure/prop/alien/computer,
 /turf/simulated/floor/greengrid,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "cN" = (
 /obj/structure/cable{
 	d2 = 8;
@@ -842,11 +819,11 @@
 	pixel_x = 28
 	},
 /turf/simulated/floor/plating,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "cO" = (
 /obj/structure/prop/fake_ai,
 /turf/simulated/floor/greengrid,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "cR" = (
 /obj/structure/catwalk,
 /obj/machinery/porta_turret/alien{
@@ -854,10 +831,10 @@
 	use_power = 0
 	},
 /turf/simulated/floor/plating,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "cV" = (
 /turf/simulated/floor/greengrid,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "cW" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -865,13 +842,13 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "cX" = (
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/plating,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "cZ" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -880,22 +857,22 @@
 	pixel_y = 0
 	},
 /turf/simulated/floor/tiled/steel_dirty,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "da" = (
 /obj/structure/prop/blackbox/xenofrigate,
 /turf/simulated/floor/greengrid,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "dc" = (
 /obj/machinery/porta_turret/alien{
 	faction = "derelict";
 	use_power = 0
 	},
 /turf/simulated/floor/greengrid,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "dd" = (
 /obj/structure/prop/prism,
 /turf/simulated/floor/greengrid,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 "vL" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -903,14 +880,9 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/triumph_away/debrisfield/derelict)
+/area/triumph_away/debrisfield/explored)
 
 (1,1,1) = {"
-bR
-bR
-bR
-bR
-bR
 aa
 aa
 aa
@@ -948,23 +920,28 @@ aa
 aa
 aa
 aa
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 "}
 (2,1,1) = {"
-bR
-bR
-bR
-bR
-bR
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -1002,23 +979,23 @@ ao
 ao
 aa
 aa
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 "}
 (3,1,1) = {"
-bR
-bR
-bR
-bR
-bR
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -1053,26 +1030,26 @@ bB
 cD
 aq
 cI
-aK
 aa
 aa
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 "}
 (4,1,1) = {"
-bR
-bR
-bR
-bR
-bR
+aa
+aa
+aa
+aa
+aa
 aa
 ao
 ao
@@ -1110,23 +1087,23 @@ aq
 cI
 aa
 aa
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 "}
 (5,1,1) = {"
-bR
-bR
-bR
-bR
-bR
+aa
+aa
+aa
+aa
+aa
 aa
 ao
 ao
@@ -1164,23 +1141,23 @@ aq
 cI
 aa
 aa
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 "}
 (6,1,1) = {"
-bR
-bR
-bR
-bR
-bR
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -1215,26 +1192,26 @@ bB
 cD
 aq
 cI
-aK
 aa
 aa
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 "}
 (7,1,1) = {"
-bR
-bR
-bR
-bR
-bR
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -1272,23 +1249,23 @@ ao
 ao
 aa
 aa
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 "}
 (8,1,1) = {"
-bR
-bR
-bR
-bR
-bR
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -1326,23 +1303,23 @@ aa
 aa
 aa
 aa
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 "}
 (9,1,1) = {"
-bR
-bR
-bR
-bR
-bR
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -1383,16 +1360,16 @@ aa
 aa
 aa
 aa
-bO
-bO
-bO
-bO
-bO
-bO
-bR
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 "}
 (10,1,1) = {"
-bO
+aa
 aa
 aa
 aa
@@ -1437,16 +1414,16 @@ ao
 ao
 aa
 aa
-bO
-bO
-bO
-bO
-bO
-bO
-bR
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 "}
 (11,1,1) = {"
-bO
+aa
 aa
 aa
 aa
@@ -1492,15 +1469,15 @@ ao
 ao
 aa
 aa
-bO
-bO
-bO
-bO
-bO
-bO
+aa
+aa
+aa
+aa
+aa
+aa
 "}
 (12,1,1) = {"
-bO
+aa
 aa
 aa
 aa
@@ -1547,14 +1524,14 @@ ao
 ao
 aa
 aa
-bO
-bO
-bO
-bO
-bO
+aa
+aa
+aa
+aa
+aa
 "}
 (13,1,1) = {"
-bO
+aa
 aa
 aa
 aa
@@ -1602,13 +1579,13 @@ ao
 ao
 aa
 aa
-bO
-bO
-bO
-bO
+aa
+aa
+aa
+aa
 "}
 (14,1,1) = {"
-bO
+aa
 aa
 aa
 aa
@@ -1657,9 +1634,9 @@ ao
 ao
 aa
 aa
-bO
-bO
-bO
+aa
+aa
+aa
 "}
 (15,1,1) = {"
 aa
@@ -1712,12 +1689,12 @@ ao
 ao
 aa
 aa
-bO
-bO
+aa
+aa
 "}
 (16,1,1) = {"
 aa
-ab
+al
 aq
 aP
 aq
@@ -1767,7 +1744,7 @@ ao
 ao
 aa
 aa
-bO
+aa
 "}
 (17,1,1) = {"
 aa
@@ -1878,7 +1855,7 @@ ao
 aa
 "}
 (19,1,1) = {"
-aF
+aa
 aq
 ad
 aP
@@ -2148,7 +2125,7 @@ ao
 aa
 "}
 (24,1,1) = {"
-aF
+aa
 aq
 ad
 aP
@@ -2311,7 +2288,7 @@ aa
 "}
 (27,1,1) = {"
 aa
-ac
+am
 aq
 aP
 aq
@@ -2361,7 +2338,7 @@ ao
 ao
 aa
 aa
-bO
+aa
 "}
 (28,1,1) = {"
 aa
@@ -2414,11 +2391,11 @@ ao
 ao
 aa
 aa
-bO
-bO
+aa
+aa
 "}
 (29,1,1) = {"
-bO
+aa
 aa
 aa
 aa
@@ -2467,12 +2444,12 @@ ao
 ao
 aa
 aa
-bO
-bO
-bO
+aa
+aa
+aa
 "}
 (30,1,1) = {"
-bO
+aa
 aa
 aa
 aa
@@ -2520,13 +2497,13 @@ ao
 ao
 aa
 aa
-bO
-bO
-bO
-bO
+aa
+aa
+aa
+aa
 "}
 (31,1,1) = {"
-bO
+aa
 aa
 aa
 aa
@@ -2573,14 +2550,14 @@ ao
 ao
 aa
 aa
-bO
-bO
-bO
-bO
-bO
+aa
+aa
+aa
+aa
+aa
 "}
 (32,1,1) = {"
-bO
+aa
 aa
 aa
 aa
@@ -2626,15 +2603,15 @@ ao
 ao
 aa
 aa
-bO
-bO
-bO
-bO
-bO
-bO
+aa
+aa
+aa
+aa
+aa
+aa
 "}
 (33,1,1) = {"
-bO
+aa
 aa
 aa
 aa
@@ -2679,20 +2656,20 @@ ao
 ao
 aa
 aa
-bO
-bO
-bO
-bO
-bO
-bO
-bO
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 "}
 (34,1,1) = {"
-bR
-bR
-bR
-bR
-bR
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -2732,21 +2709,21 @@ aa
 aa
 aa
 aa
-bO
-bO
-bO
-bO
-bO
-bO
-bO
-bO
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 "}
 (35,1,1) = {"
-bR
-bR
-bR
-bR
-bR
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -2784,23 +2761,23 @@ aa
 aa
 aa
 aa
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bO
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 "}
 (36,1,1) = {"
-bR
-bR
-bR
-bR
-bR
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -2838,23 +2815,23 @@ ao
 ao
 aa
 aa
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bO
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 "}
 (37,1,1) = {"
-bR
-bR
-bR
-bR
-bR
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -2889,26 +2866,26 @@ bB
 cD
 aq
 cI
-aK
 aa
 aa
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 "}
 (38,1,1) = {"
-bR
-bR
-bR
-bR
-bR
+aa
+aa
+aa
+aa
+aa
 aa
 ao
 ao
@@ -2946,23 +2923,23 @@ aq
 cI
 aa
 aa
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 "}
 (39,1,1) = {"
-bR
-bR
-bR
-bR
-bR
+aa
+aa
+aa
+aa
+aa
 aa
 ao
 ao
@@ -3000,23 +2977,23 @@ aq
 cI
 aa
 aa
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 "}
 (40,1,1) = {"
-bR
-bR
-bR
-bR
-bR
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -3051,26 +3028,26 @@ bB
 cD
 aq
 cI
-aK
 aa
 aa
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 "}
 (41,1,1) = {"
-bR
-bR
-bR
-bR
-bR
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -3108,14 +3085,14 @@ ao
 ao
 aa
 aa
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
-bR
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 "}
