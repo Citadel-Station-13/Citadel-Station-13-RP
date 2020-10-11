@@ -2870,6 +2870,9 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
 	},
+/obj/machinery/vending/wallmed1{
+	pixel_x = 32
+	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "cfh" = (
@@ -18054,7 +18057,6 @@
 "nht" = (
 /obj/structure/closet/secure_closet/detective,
 /obj/item/reagent_containers/spray/pepper,
-/obj/item/gun/energy/taser,
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
 "nif" = (
@@ -18118,6 +18120,10 @@
 /obj/structure/flora/ausbushes/brflowers,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
+"nla" = (
+/obj/structure/closet/secure_closet/detective,
+/turf/simulated/floor/carpet,
+/area/security/detectives_office)
 "nll" = (
 /obj/structure/cable/green{
 	d2 = 2;
@@ -44195,7 +44201,7 @@ mJo
 cFK
 ioF
 kWg
-nht
+nla
 bJS
 ruW
 eMU

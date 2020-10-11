@@ -337,6 +337,8 @@
 	starts_with = list(
 		/obj/item/clothing/accessory/badge/holo/detective,
 		/obj/item/clothing/gloves/black,
+		/obj/item/gun/projectile/revolver/detective,
+		/obj/item/reagent_containers/spray/pepper,
 		///obj/item/gunbox, //VOREStation Removal,
 		/obj/item/storage/belt/detective,
 		/obj/item/storage/box/evidence,
