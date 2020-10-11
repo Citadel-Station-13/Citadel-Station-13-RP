@@ -171,6 +171,70 @@ obj/item/gun/projectile/shotgun/doublebarrel/quad
 		list(mode_name="fire one barrel at a time", burst=1),
 		)
 
+/obj/item/gun/projectile/shotgun/doublebarrel/sawn/super
+	name = "super shotgun"
+	desc = "Rip and tear, until it is done."
+	icon_state = "supershotgun"
+	item_state = "supershotgun"
+	recoil = 0
+	slot_flags = SLOT_BELT|SLOT_HOLSTER
+	ammo_type = /obj/item/ammo_casing/a12g/pellet
+	w_class = ITEMSIZE_NORMAL
+	force = 15
+
+	var/mode = 1  // 1 mode - teleport you to turf  0 mode teleport turf to you
+	var/last_fire = 0
+	var/cooldown = 10 SECONDS
+	var/range = 8
+	var/failchance = 5
+	var/failrange = 24
+
+/obj/item/gun/projectile/shotgun/doublebarrel/sawn/super/afterattack(atom/A, mob/user as mob)
+	var/current_fire = world.time
+	if(!user || !A)
+		return
+	if((get_dist(A, get_turf(user)) <= range) || (A in view(get_turf(user), range)))
+		to_chat(user, "<span class='warning'>The target is out of range!</span>")
+		return
+	if((current_fire - last_fire) <= cooldown)
+		to_chat(user,"<span class = 'warning'>\The [src] is recharging...</span>")
+		return
+	var/turf/T = get_turf(A)
+	if(!T || T.check_density())
+		to_chat(user,"<span class = 'warning'>That's a little too solid to harpoon into!</span>")
+		return
+
+	last_fire = current_fire
+
+	user.visible_message("<span class='warning'>[user] fires \the [src]!</span>","<span class='warning'>You fire \the [src]!</span>")
+
+	var/turf/FromTurf = mode ? get_turf(user) : get_turf(A)
+	var/turf/ToTurf = mode ? get_turf(A) : get_turf(user)
+
+	for(var/obj/O in FromTurf)
+		if(O.anchored) continue
+		if(prob(failchance))
+			O.forceMove(pick(trange(failrange,user)))
+		else
+			O.forceMove(ToTurf)
+
+	for(var/mob/living/M in FromTurf)
+		if(prob(failchance))
+			M.forceMove(pick(trange(failrange,user)))
+		else
+			M.forceMove(ToTurf)
+
+/obj/item/bluespace_harpoon/attack_self(mob/living/user as mob)
+	return change_fire_mode(user)
+
+/obj/item/bluespace_harpoon/verb/change_fire_mode(mob/user as mob)
+	set name = "Change fire mode"
+	set category = "Object"
+	set src in oview(1)
+	if(transforming) return
+	mode = !mode
+	to_chat(user,"<span class = 'info'>You choose to fire the [mode ? "shotgun" : "meat hook"].</span>")
+
 //Flaregun Code that may work?
 /obj/item/gun/projectile/shotgun/flare
 	name = "Emergency Flare Gun"

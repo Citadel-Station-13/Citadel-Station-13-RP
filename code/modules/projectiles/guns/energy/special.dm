@@ -40,7 +40,7 @@
 	projectile_type = /obj/item/projectile/energy/floramut
 	origin_tech = list(TECH_MATERIAL = 2, TECH_BIO = 3, TECH_POWER = 3)
 	modifystate = "floramut"
-	cell_type = /obj/item/cell/device/weapon/recharge	
+	cell_type = /obj/item/cell/device/weapon/recharge
 	no_pin_required = 1
 	battery_lock = 1
 	var/decl/plantgene/gene = null
@@ -311,3 +311,74 @@ obj/item/gun/energy/staff/focus
 	accept_cell_type = /obj/item/cell
 	cell_type = /obj/item/cell/high
 	charge_cost = 2500
+
+/obj/item/gun/energy/service
+	name = "service weapon"
+	icon_state = "service_grip"
+	item_state = "service_grip"
+	desc = "An anomalous weapon, long kept secure. It has recently been acquired by NanoTrasen's Paracausal Monitoring Division. How did it get here?"
+	force = 5
+	slot_flags = SLOT_BELT
+	w_class = ITEMSIZE_NORMAL
+	projectile_type = /obj/item/projectile/bullet/pistol/medium
+	origin_tech = null
+	fire_delay = 10		//Old pistol
+	charge_cost = 480	//to compensate a bit for self-recharging
+	cell_type = /obj/item/cell/device/weapon/recharge/captain
+	battery_lock = 1
+
+/obj/item/gun/energy/service/attack_self(mob/user)
+	cycle_weapon(user)
+
+/obj/item/gun/energy/service/proc/cycle_weapon(mob/living/L)
+	var/list/service_weapon_list = subtypesof(/obj/item/gun/energy/service)
+	var/list/display_names = list()
+	var/list/service_icons = list()
+	for(var/V in service_weapon_list)
+		var/obj/item/gun/energy/service/weapontype = V
+		if (V)
+			display_names[initial(weapontype.name)] = weapontype
+			service_icons += list(initial(weapontype.name) = image(icon = initial(weapontype.icon), icon_state = initial(weapontype.icon_state)))
+
+	service_icons = sortList(service_icons)
+
+	var/choice = show_radial_menu(L, src, service_icons)
+	if(!choice || !check_menu(L))
+		return
+
+/obj/item/gun/energy/service/proc/check_menu(mob/user)
+	if(!istype(user))
+		return FALSE
+	if(QDELETED(src))
+		return FALSE
+	if(user.incapacitated())
+		return FALSE
+	return TRUE
+
+/obj/item/gun/energy/service/shatter
+	name = "service weapon (shatter)"
+	icon_state = "service_shatter"
+	projectile_type = /obj/item/projectile/bullet/pellet/shotgun
+	fire_delay = 20		//Doubled for strength.
+	charge_cost = 600	//Charge increased due to shotgun round.
+
+/obj/item/gun/energy/service/spin
+	name = "service weapon (spin)"
+	icon_state = "service_spin"
+	projectile_type = /obj/item/projectile/bullet/pistol/spin
+	fire_delay = 1		//High fire rate.
+	charge_cost = 50	//Lower cost per shot to encourage rapid fire.
+
+/obj/item/gun/energy/service/pierce
+	name = "service weapon (pierce)"
+	icon_state = "service_pierce"
+	projectile_type = /obj/item/projectile/bullet/rifle/a762/ap
+	fire_delay = 20		//Doubled for strength.
+	charge_cost = 600	//Charge increased due to sniper round.
+
+/obj/item/gun/energy/service/charge
+	name = "service weapon (charge)"
+	icon_state = "service_charge"
+	projectile_type = /obj/item/projectile/bullet/gyro
+	fire_delay = 30
+	charge_cost = 800	//Three shots.
