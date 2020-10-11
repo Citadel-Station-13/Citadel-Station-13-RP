@@ -502,6 +502,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	item_state = "lighter-g"
 	w_class = ITEMSIZE_TINY
 	throwforce = 4
+	flags = CONDUCT
 	slot_flags = SLOT_BELT
 	attack_verb = list("burnt", "singed")
 	var/base_state
@@ -513,11 +514,11 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "zippo"
 	item_state = "zippo"
 
-/obj/item/flame/lighter/random/Initialize(mapload)
-	. = ..()
-	icon_state = "lighter-[pick("r","c","y","g")]"
-	item_state = icon_state
-	base_state = icon_state
+/obj/item/flame/lighter/random
+	New()
+		icon_state = "lighter-[pick("r","c","y","g")]"
+		item_state = icon_state
+		base_state = icon_state
 
 /obj/item/flame/lighter/attack_self(mob/living/user)
 	if(!base_state)
@@ -527,31 +528,31 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		icon_state = "[base_state]on"
 		item_state = "[base_state]on"
 		if(istype(src, /obj/item/flame/lighter/zippo) )
-			user.visible_message("<span class='rose'>Without even breaking stride, [user] flips open and lights [src] in one smooth movement.</span>")
-		else
-			if(prob(95))
-				user.visible_message("<span class='notice'>After a few attempts, [user] manages to light the [src].</span>")
+			if(user.a_intent == I_GRAB)
+				user.visible_message("<span class='rose'>Without as much as a hint of difficulty, [user] spins [src] in their fingers, before lighting it. Smooth.</span>")
 			else
-				to_chat(user, "<span class='warning'>You burn yourself while lighting the lighter.</span>")
-				if (user.get_left_hand() == src)
-					user.apply_damage(2,BURN,"l_hand")
-				else
-					user.apply_damage(2,BURN,"r_hand")
-				user.visible_message("<span class='notice'>After a few attempts, [user] manages to light the [src], they however burn their finger in the process.</span>")
+				user.visible_message("<span class='rose'>Without even breaking stride, [user] flips open and lights [src] in one smooth movement.</span>")
+			playsound(loc, "modular_citadel/sound/items/zippo_open.ogg", 75, 1, -1)
+		else
+			user.visible_message("<span class='notice'>After a few attempts, [user] manages to light the [src].</span>")
 
 		set_light(2)
-		START_PROCESSING(SSobj, src)
+		processing_objects.Add(src)
 	else
 		lit = 0
 		icon_state = "[base_state]"
 		item_state = "[base_state]"
 		if(istype(src, /obj/item/flame/lighter/zippo) )
-			user.visible_message("<span class='rose'>You hear a quiet click, as [user] shuts off [src] without even looking at what they're doing.</span>")
+			if(user.a_intent == I_GRAB)
+				user.visible_message("<span class='rose'>You hear a pronounced click, as [user] spins [src] in their palm, before closing it with a flourish.</span>")
+			else
+				user.visible_message("<span class='rose'>You hear a quiet click, as [user] shuts off [src] without even looking at what they're doing.</span>")
+			playsound(loc, "modular_citadel/sound/items/zippo_close.ogg", 75, 1, -1)
 		else
 			user.visible_message("<span class='notice'>[user] quietly shuts off the [src].</span>")
 
 		set_light(0)
-		STOP_PROCESSING(SSobj, src)
+		processing_objects.Remove(src)
 	return
 
 
@@ -642,3 +643,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/flame/lighter/zippo/cowgirl
 	name = "\improper Cyan Cowgirl Zippo lighter"
 	icon_state = "cowzippo"
+
+/obj/item/weapon/flame/lighter/zippo/bullet
+	name = "\improper bullet lighter"
+	desc = "A lighter fashioned out of an old bullet casing."
+	icon_state = "bulletlighter"
