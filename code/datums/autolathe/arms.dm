@@ -360,8 +360,7 @@
 	name = "speedloader (.45 rubber)"
 	path = /obj/item/ammo_magazine/s45/rubber
 
-// Commented out until metal exploits with autolathe is fixed.
-/*/datum/category_item/autolathe/arms/pistol_clip_45
+/datum/category_item/autolathe/arms/pistol_clip_45
 	name = "ammo clip (.45)"
 	path =/obj/item/ammo_magazine/clip/c45
 	category = "Arms and Ammunition"
@@ -420,7 +419,7 @@
 	path =/obj/item/ammo_magazine/clip/c50
 	category = "Arms and Ammunition"
 	hidden = 1
-*/
+
 /datum/category_item/autolathe/arms/rifle_clip_545
 	name = "ammo clip (5.45mm)"
 	path =/obj/item/ammo_magazine/clip/c545
@@ -437,9 +436,13 @@
 	path =/obj/item/ammo_magazine/clip/c762
 	hidden = 1
 
-/*/datum/category_item/autolathe/arms/rifle_clip_762_hunter //VOREStation Edit Start. By request of Ace
+/datum/category_item/autolathe/arms/rifle_clip_762_hunter 
 	name = "ammo clip (7.62mm hunting)"
-	path =/obj/item/ammo_magazine/clip/c762/hunter*/ //VOREStation Edit End.
+	path =/obj/item/ammo_magazine/clip/c762/hunter
+
+/datum/category_item/autolathe/arms/rifle_clip_762_sniperhunter 
+	name = "ammo clip (7.62mm HV hunting)"
+	path =/obj/item/ammo_magazine/clip/c762/sniperhunter
 
 /datum/category_item/autolathe/arms/rifle_clip_762_practice
 	name = "ammo clip (7.62mm practice)"

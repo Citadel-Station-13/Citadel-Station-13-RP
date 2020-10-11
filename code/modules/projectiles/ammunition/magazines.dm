@@ -715,6 +715,14 @@
 	name = "rifle clip (7.62mm hunting)"
 	ammo_type = /obj/item/ammo_casing/a762/hunter
 
+/obj/item/ammo_magazine/clip/c762/sniper
+	name "rifle clip (7.62mm HV)"
+	ammo_type = /obj/item/ammo_casing/a762/sniper
+
+/obj/item/ammo_magazine/clip/c762/sniperhunter
+	name = "rifle clip (7.62mm HV hunting)"
+	ammo_type = /obj/item/ammo_casing/a762/sniperhunter
+
 /obj/item/ammo_magazine/m762svd
 	name = "\improper SVD magazine (7.62mm)"
 	icon_state = "SVD"
