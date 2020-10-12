@@ -5237,7 +5237,7 @@
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
-/mob/living/simple_mob/animal/passive/bird/parrot/polly/ultimate,
+/mob/living/simple_mob/animal/passive/bird/parrot/polly,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
 "yo" = (
