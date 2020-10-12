@@ -9718,7 +9718,7 @@
 "Ej" = (
 /obj/machinery/chem_master/condimaster,
 /turf/simulated/floor/tiled/freezer,
-/area/hallway/primary/port)
+/area/crew_quarters/freezer)
 "El" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -10393,7 +10393,7 @@
 "Gn" = (
 /obj/machinery/gibber,
 /turf/simulated/floor/tiled/freezer,
-/area/hallway/primary/port)
+/area/crew_quarters/freezer)
 "Gq" = (
 /obj/machinery/door/firedoor/glass/hidden/steel,
 /turf/simulated/floor/carpet/sblucarpet,
@@ -16519,7 +16519,7 @@
 	pixel_y = 0
 	},
 /turf/simulated/floor/tiled/freezer,
-/area/hallway/primary/port)
+/area/crew_quarters/freezer)
 "ZG" = (
 /obj/machinery/power/terminal{
 	dir = 1
