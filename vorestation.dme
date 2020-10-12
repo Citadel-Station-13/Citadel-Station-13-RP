@@ -1689,6 +1689,7 @@
 #include "code\modules\client\preference_setup\loadout\loadout_cosmetics.dm"
 #include "code\modules\client\preference_setup\loadout\loadout_donator.dm"
 #include "code\modules\client\preference_setup\loadout\loadout_ears.dm"
+#include "code\modules\client\preference_setup\loadout\loadout_event_rewards.dm"
 #include "code\modules\client\preference_setup\loadout\loadout_eyes.dm"
 #include "code\modules\client\preference_setup\loadout\loadout_general.dm"
 #include "code\modules\client\preference_setup\loadout\loadout_gloves.dm"
