@@ -3374,7 +3374,7 @@
 /obj/machinery/door/window/brigdoor/westright{
 	dir = 4;
 	name = "Firing Range Door";
-	req_access = list(1,2)
+	req_access = list(1,38)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/range)
@@ -19659,15 +19659,17 @@
 /turf/simulated/floor/tiled,
 /area/bridge/hallway)
 "ose" = (
-/obj/item/ammo_magazine/clip/c762/practice,
-/obj/item/ammo_magazine/clip/c762/practice,
-/obj/item/ammo_magazine/clip/c762/practice,
 /obj/machinery/light_switch{
 	dir = 4;
 	pixel_x = -24
 	},
 /obj/structure/table/reinforced,
 /obj/machinery/recharger,
+/obj/item/ammo_magazine/s45/practice,
+/obj/item/ammo_magazine/s45/practice,
+/obj/item/ammo_magazine/clip/c762/practice,
+/obj/item/ammo_magazine/clip/c762/practice,
+/obj/item/ammo_magazine/clip/c762/practice,
 /turf/simulated/floor/tiled/dark,
 /area/security/range)
 "osH" = (
@@ -27141,7 +27143,8 @@
 	dir = 4;
 	pixel_x = -22
 	},
-/obj/item/ammo_magazine/clip/c762/practice,
+/obj/item/ammo_magazine/s45/practice,
+/obj/item/ammo_magazine/s45/practice,
 /obj/item/ammo_magazine/clip/c762/practice,
 /obj/item/ammo_magazine/clip/c762/practice,
 /turf/simulated/floor/tiled/dark,
@@ -31554,7 +31557,7 @@
 /obj/machinery/door/window/brigdoor/westright{
 	dir = 4;
 	name = "Firing Range Door";
-	req_access = list(1,2)
+	req_access = list(1,38)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/range)
