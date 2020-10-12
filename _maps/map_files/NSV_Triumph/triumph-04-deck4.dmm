@@ -20659,6 +20659,11 @@
 /area/bridge/meeting_room)
 "pbV" = (
 /obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass_security{
+	name = "Brig Cells";
+	req_access = newlist();
+	req_one_access = list(2,4)
+	},
 /turf/simulated/floor/tiled,
 /area/security/prison)
 "pcj" = (
@@ -21050,11 +21055,6 @@
 	},
 /obj/effect/floor_decal/corner/red/border{
 	dir = 1
-	},
-/obj/machinery/door/airlock/glass_security{
-	name = "Brig Cells";
-	req_access = newlist();
-	req_one_access = list(2,4)
 	},
 /turf/simulated/floor/tiled,
 /area/security/prison)
@@ -30675,16 +30675,6 @@
 	},
 /turf/simulated/floor/carpet/sblucarpet,
 /area/chapel/main)
-"vUm" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/red/border,
-/obj/machinery/door/airlock/glass_security{
-	name = "Brig Cells";
-	req_access = newlist();
-	req_one_access = list(2,4)
-	},
-/turf/simulated/floor/tiled,
-/area/security/prison)
 "vUq" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/wood,
@@ -32257,6 +32247,11 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass_security{
+	name = "Brig Cells";
+	req_access = newlist();
+	req_one_access = list(2,4)
+	},
 /turf/simulated/floor/tiled,
 /area/security/prison)
 "xdx" = (
@@ -37670,7 +37665,7 @@ hzP
 hzP
 hur
 pno
-vUm
+jhE
 hur
 hur
 hur
