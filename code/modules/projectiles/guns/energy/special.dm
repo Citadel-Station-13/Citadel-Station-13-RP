@@ -331,6 +331,7 @@ obj/item/gun/energy/staff/focus
 	cycle_weapon(user)
 
 /obj/item/gun/energy/service/proc/cycle_weapon(mob/living/L)
+	var/obj/item/service_weapon
 	var/list/service_weapon_list = subtypesof(/obj/item/gun/energy/service)
 	var/list/display_names = list()
 	var/list/service_icons = list()
@@ -346,6 +347,13 @@ obj/item/gun/energy/staff/focus
 	if(!choice || !check_menu(L))
 		return
 
+	var/A = display_names[choice] // This needs to be on a separate var as list member access is not allowed for new
+	service_weapon = new A
+
+	if(service_weapon)
+		qdel(src)
+		L.put_in_active_hand(service_weapon)
+
 /obj/item/gun/energy/service/proc/check_menu(mob/user)
 	if(!istype(user))
 		return FALSE
@@ -354,6 +362,8 @@ obj/item/gun/energy/staff/focus
 	if(user.incapacitated())
 		return FALSE
 	return TRUE
+
+/obj/item/gun/energy/service/grip
 
 /obj/item/gun/energy/service/shatter
 	name = "service weapon (shatter)"

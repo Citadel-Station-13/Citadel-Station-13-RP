@@ -839,7 +839,7 @@
 /obj/item/ammo_magazine/holyshot_mag/stake
 	name = "blessed drum magazine (stakes)"
 	desc = "Thrice-blessed, this drum magazine is loaded with wooden stakes soaked in sacred oils."
-	ammo_type = /obj/item/projectile/bullet/shotgun/stake
+	ammo_type = /obj/item/ammo_casing/a12g/stake
 
 ///////// .75 Gyrojet /////////
 
