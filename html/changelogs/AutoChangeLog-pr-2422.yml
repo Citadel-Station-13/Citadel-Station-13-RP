@@ -1,0 +1,5 @@
+author: "GrayRachnid"
+delete-after: True
+changes: 
+  - rscadd: "Added the Chief Surgeon fluff title for the CMO"
+  - rscdel: "Removed the Surgeon General fluff Title from the CMO due to its misuse."
