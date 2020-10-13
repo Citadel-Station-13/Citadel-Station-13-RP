@@ -1,6 +1,7 @@
 /datum/gear/donator
-	display_name = "If this item can be chosen or seen, ping a coder immediately!"
 	sort_category = "Donator"
+	cost = 0 // If they went out of their way to PAY for a custom item, given our no-gameplay-advantage-granting-items rule, it's only right that they aren't penalized and need to re-adjust their loadout to compensate for their new item's cost.
+	display_name = "If this item can be chosen or seen, ping a coder immediately!"
 	path = /obj/item/bikehorn
 	ckeywhitelist = list("This entry should never be choosable with this variable set.") //If it does, then that means somebody fucked up the whitelist system pretty hard
 
