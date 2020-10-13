@@ -1,0 +1,5 @@
+author: "drofoljaelisglis"
+delete-after: True
+changes: 
+  - rscadd: "Added an \"Event Rewards\" category to the loadout."
+  - tweak: "Donator Items now cost 0 loadout points."
