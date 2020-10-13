@@ -457,6 +457,17 @@
 /obj/machinery/fitness/heavy/lifter,
 /turf/simulated/floor/carpet/bcarpet,
 /area/security/training)
+"atZ" = (
+/obj/machinery/alarm{
+	pixel_y = 22
+	},
+/obj/structure/closet/secure_closet/brig{
+	id = "Cell 4"
+	},
+/obj/machinery/camera/network/prison,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled,
+/area/security/prison)
 "aue" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -27752,7 +27763,7 @@
 /obj/effect/floor_decal/corner/red/border,
 /obj/machinery/button/remote/blast_door{
 	dir = 1;
-	id = "Cell 4";
+	id = "Cell 4 B";
 	name = "Cell 4 Door";
 	pixel_x = 26;
 	pixel_y = -27;
@@ -29443,7 +29454,7 @@
 	},
 /obj/machinery/door/window/brigdoor/southleft{
 	dir = 1;
-	id = "Cell 4 B";
+	id = "Cell 4";
 	name = "Cell 4";
 	req_access = list(2)
 	},
@@ -37812,7 +37823,7 @@ hur
 fVF
 sNt
 hur
-wne
+atZ
 bjf
 eDN
 nZM
