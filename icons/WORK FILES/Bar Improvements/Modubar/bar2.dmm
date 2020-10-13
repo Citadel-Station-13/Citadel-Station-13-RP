@@ -1,0 +1,106 @@
+"be" = (/obj/structure/railing{dir = 8},/turf/simulated/floor/tiled/dark,/area/crew_quarters/bar)
+"bs" = (/obj/structure/toilet{dir = 1},/obj/machinery/light/small,/turf/simulated/floor/tiled/techfloor/grid,/area/crew_quarters/barrestroom)
+"bz" = (/turf/simulated/floor/tiled,/area/crew_quarters/bar)
+"bR" = (/obj/structure/table/steel{icon_state = "stone_preview"},/obj/machinery/recharger,/turf/simulated/floor/tiled/techmaint,/area/crew_quarters/bar)
+"cz" = (/obj/structure/table/steel{icon_state = "stone_preview"},/obj/machinery/recharger,/turf/simulated/floor/tiled/techfloor,/area/crew_quarters/bar)
+"dE" = (/obj/structure/table/bench/glass,/turf/simulated/floor/tiled/dark,/area/crew_quarters/bar)
+"ed" = (/turf/simulated/wall,/area/crew_quarters/bar)
+"eN" = (/obj/structure/table/steel{icon_state = "stone_preview"},/obj/item/electronic_assembly/medium/clam{desc = "It's stripped of almost every electronic component worth anything, leaving it a sad, hollow husk of a laptop."; icon_state = "setup_medium_clam-open"; name = "abandoned laptop"},/turf/simulated/floor/tiled/techfloor,/area/crew_quarters/bar)
+"eY" = (/obj/structure/closet/crate/bin,/turf/simulated/floor/tiled,/area/crew_quarters/bar)
+"gf" = (/obj/structure/table/steel{icon_state = "stone_preview"},/turf/simulated/floor/tiled/dark,/area/crew_quarters/bar)
+"iR" = (/turf/simulated/floor/tiled/dark,/area/crew_quarters/bar)
+"iV" = (/turf/simulated/floor/tiled/techmaint,/area/crew_quarters/barrestroom)
+"jp" = (/turf/simulated/wall/r_lead,/area/crew_quarters/bar)
+"jD" = (/obj/structure/bed/chair/sofa/left{dir = 8; icon_state = "sofaend_left"},/obj/structure/railing{dir = 4},/turf/simulated/floor/tiled/dark,/area/crew_quarters/bar)
+"kG" = (/obj/structure/sink{layer = 3.3; pixel_y = 22},/obj/structure/mirror{dir = 4; layer = 3.2; pixel_y = 32},/turf/simulated/floor/tiled/techmaint,/area/crew_quarters/barrestroom)
+"lj" = (/obj/structure/table/steel{icon_state = "stone_preview"},/turf/simulated/floor/tiled/techfloor,/area/crew_quarters/bar)
+"lq" = (/obj/structure/railing{dir = 8},/obj/structure/railing{dir = 1},/turf/simulated/floor/tiled/dark,/area/crew_quarters/bar)
+"ly" = (/obj/structure/grille,/obj/structure/window/basic/full,/obj/machinery/door/blast/regular,/turf/simulated/floor/plating,/area/crew_quarters/bar)
+"mq" = (/turf/simulated/floor/tiled/techfloor,/area/crew_quarters/bar)
+"nW" = (/obj/structure/table/steel{icon_state = "stone_preview"},/obj/structure/dancepole,/turf/simulated/floor/tiled/techfloor,/area/crew_quarters/bar)
+"oj" = (/obj/structure/bed/chair/office/dark{dir = 8},/turf/simulated/floor/tiled/techmaint,/area/crew_quarters/bar)
+"pd" = (/obj/structure/table/steel{icon_state = "stone_preview"},/obj/item/electronic_assembly/large/terminal{anchored = 1},/turf/simulated/floor/tiled/techfloor,/area/crew_quarters/bar)
+"qK" = (/obj/structure/bed/chair/sofa/left{icon_state = "sofaend_left"},/obj/structure/railing{dir = 1},/turf/simulated/floor/tiled/dark,/area/crew_quarters/bar)
+"rH" = (/obj/structure/bed/chair/comfy/black{dir = 4},/turf/simulated/floor/tiled/techfloor,/area/crew_quarters/bar)
+"rQ" = (/obj/machinery/door/airlock{name = "Charging"},/turf/simulated/floor/tiled/techmaint,/area/crew_quarters/barrestroom)
+"sM" = (/obj/structure/bed/chair/sofa{dir = 8; icon_state = "sofamiddle"},/obj/structure/railing{dir = 4},/turf/simulated/floor/tiled/dark,/area/crew_quarters/bar)
+"tj" = (/obj/structure/bed/chair/sofa/right{dir = 4; icon_state = "sofaend_right"},/obj/structure/railing{dir = 8},/turf/simulated/floor/tiled/dark,/area/crew_quarters/bar)
+"ts" = (/obj/structure/table/steel,/obj/item/integrated_circuit_printer,/turf/simulated/floor/tiled/techmaint,/area/crew_quarters/bar)
+"tK" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/simulated/wall,/area/crew_quarters/bar)
+"uz" = (/obj/structure/undies_wardrobe,/turf/simulated/floor/tiled/techmaint,/area/crew_quarters/barrestroom)
+"uA" = (/obj/structure/bed/chair/office{dir = 8},/turf/simulated/floor/tiled/techfloor,/area/crew_quarters/bar)
+"vc" = (/obj/structure/bed/chair/sofa{icon_state = "sofamiddle"},/obj/structure/railing{dir = 1},/turf/simulated/floor/tiled/dark,/area/crew_quarters/bar)
+"ve" = (/obj/structure/closet/crate/bin,/turf/simulated/floor/tiled/techmaint,/area/crew_quarters/barrestroom)
+"vS" = (/obj/machinery/door/blast/regular,/turf/simulated/wall/r_lead,/area/crew_quarters/barrestroom)
+"vU" = (/obj/item/stool/padded,/turf/simulated/floor/tiled/techfloor,/area/crew_quarters/bar)
+"wl" = (/obj/structure/bed/chair/office/dark{dir = 8},/turf/simulated/floor/tiled/techfloor,/area/crew_quarters/bar)
+"wt" = (/obj/item/stool,/turf/simulated/floor/tiled/techfloor,/area/crew_quarters/bar)
+"wz" = (/obj/structure/bed/chair/office/dark,/turf/simulated/floor/tiled/techfloor,/area/crew_quarters/bar)
+"wN" = (/obj/machinery/vending/boozeomat,/turf/simulated/floor/tiled/techfloor,/area/crew_quarters/bar)
+"xR" = (/obj/machinery/door/blast/regular{dir = 4},/turf/simulated/wall/r_lead,/area/crew_quarters/bar)
+"ys" = (/obj/machinery/door/blast/regular,/turf/simulated/wall/r_lead,/area/crew_quarters/bar)
+"yL" = (/turf/simulated/wall,/area/crew_quarters/barrestroom)
+"yW" = (/obj/effect/floor_decal/borderfloor{dir = 1},/obj/effect/floor_decal/borderfloor/shifted{dir = 1},/turf/simulated/floor/tiled/dark,/area/crew_quarters/bar)
+"Ak" = (/obj/machinery/door/airlock{name = "Toilet"},/turf/simulated/floor/tiled/techmaint,/area/crew_quarters/barrestroom)
+"AG" = (/obj/structure/bed/chair/sofa/right{icon_state = "sofaend_right"},/obj/structure/railing{dir = 1},/turf/simulated/floor/tiled/dark,/area/crew_quarters/bar)
+"BA" = (/obj/item/electronic_assembly/large/tall{anchored = 1; name = "tall server setup"},/turf/simulated/floor/tiled/techmaint,/area/crew_quarters/bar)
+"BI" = (/obj/item/electronic_assembly/large/tall{anchored = 1; name = "tall server setup"},/turf/simulated/floor/tiled/techfloor,/area/crew_quarters/bar)
+"CK" = (/obj/structure/bed/chair/sofa/corner{dir = 4; icon_state = "sofacorner"},/obj/structure/railing{dir = 8},/obj/structure/railing{dir = 1},/turf/simulated/floor/tiled/dark,/area/crew_quarters/bar)
+"Dg" = (/obj/structure/bed/chair/office/dark{dir = 1},/turf/simulated/floor/tiled/techmaint,/area/crew_quarters/bar)
+"Eg" = (/obj/machinery/light/small,/obj/machinery/recharge_station,/turf/simulated/floor/tiled/techfloor/grid,/area/crew_quarters/barrestroom)
+"Ev" = (/obj/machinery/vending/snack,/obj/structure/railing{dir = 8},/turf/simulated/floor/tiled/dark,/area/crew_quarters/bar)
+"EJ" = (/obj/structure/table/steel{icon_state = "stone_preview"},/obj/item/electronic_assembly/calc,/turf/simulated/floor/tiled/techmaint,/area/crew_quarters/bar)
+"Hg" = (/obj/structure/table/steel{icon_state = "stone_preview"},/turf/simulated/floor/tiled/techmaint,/area/crew_quarters/bar)
+"HO" = (/obj/structure/table/steel{icon_state = "stone_preview"},/obj/machinery/media/jukebox{icon_state = "mixer"; name = "music mixer'; state_base = "mixer"},/turf/simulated/floor/tiled/techfloor,/area/crew_quarters/bar)
+"Kl" = (/obj/structure/railing{dir = 4},/turf/simulated/floor/tiled/dark,/area/crew_quarters/bar)
+"LC" = (/obj/machinery/light_switch{pixel_x = -25; pixel_y = 25},/turf/simulated/floor/tiled/techfloor,/area/crew_quarters/bar)
+"NI" = (/obj/structure/grille,/obj/structure/window/reinforced/full,/obj/structure/window/reinforced,/turf/simulated/floor/plating,/area/crew_quarters/bar)
+"NN" = (/obj/machinery/button/remote/blast_door{pixel_y = 25},/obj/machinery/button/holosign{id = "barsign1"; pixel_x = -6; pixel_y = 25},/turf/simulated/floor/tiled/techfloor,/area/crew_quarters/bar)
+"Pz" = (/obj/structure/bed/chair/sofa{dir = 4; icon_state = "sofamiddle"},/obj/structure/railing{dir = 8},/turf/simulated/floor/tiled/dark,/area/crew_quarters/bar)
+"PO" = (/obj/machinery/holosign/bar{id = "barsign1"},/turf/simulated/wall,/area/crew_quarters/bar)
+"Qg" = (/obj/structure/bed/chair/office{dir = 4},/turf/simulated/floor/tiled/techfloor,/area/crew_quarters/bar)
+"QV" = (/obj/structure/bed/chair/sofa/corner{icon_state = "sofacorner"},/obj/structure/railing{dir = 4},/obj/structure/railing{dir = 1},/turf/simulated/floor/tiled/dark,/area/crew_quarters/bar)
+"QY" = (/obj/machinery/vending/cola{contraband = list(/obj/item/reagent_containers/food/drinks/cans/phoronsoda = 10,/obj/item/reagent_containers/food/drinks/cans/thirteenloko = 5, /obj/item/reagent_containers/food/snacks/liquidfood = 6); desc = "A NanoTrasen branded vendor, featuring a few new items!"; icon = 'icons/obj/vending_vr.dmi'; name = "Thirst Reduction Center"; prices = list(/obj/item/reagent_containers/food/drinks/cans/ntsoda = 1, /obj/item/reagent_containers/food/drinks/cans/space_mountain_wind = 1, /obj/item/reagent_containers/food/drinks/cans/dr_gibb = 1, /obj/item/reagent_containers/food/drinks/cans/starkist = 1, /obj/item/reagent_containers/food/drinks/cans/waterbottle = 2, /obj/item/reagent_containers/food/drinks/cans/space_up = 1, /obj/item/reagent_containers/food/drinks/cans/iced_tea = 1, /obj/item/reagent_containers/food/drinks/cans/grape_juice = 1, /obj/item/reagent_containers/food/drinks/cans/gingerale = 1, /obj/item/reagent_containers/food/drinks/bottle/small/sarsaparilla = 1, /obj/item/reagent_containers/food/drinks/bottle/small/sassafras = 1); product_ads = "Drink!;A cold soda sure sounds good right now!;Refreshing!;Hope you're thirsty!;Over 1 million drinks sold!;Thirsty? Why not cola?;Please, have a drink!;Drink up!;The best drinks in space."; product_slogans = "NanoTrasen Cola, a New Classic!"; products = list(/obj/item/reagent_containers/food/drinks/cans/ntsoda = 10, /obj/item/reagent_containers/food/drinks/cans/space_mountain_wind = 10, /obj/item/reagent_containers/food/drinks/cans/dr_gibb = 10, /obj/item/reagent_containers/food/drinks/cans/starkist = 10, /obj/item/reagent_containers/food/drinks/cans/waterbottle = 10, /obj/item/reagent_containers/food/drinks/cans/space_up = 10, /obj/item/reagent_containers/food/drinks/cans/iced_tea = 10, /obj/item/reagent_containers/food/drinks/cans/grape_juice = 10, /obj/item/reagent_containers/food/drinks/cans/gingerale = 10, /obj/item/reagent_containers/food/drinks/bottle/small/sarsaparilla = 10, /obj/item/reagent_containers/food/drinks/bottle/small/sassafras = 10)},/obj/structure/railing{dir = 4},/turf/simulated/floor/tiled/dark,/area/crew_quarters/bar)
+"Re" = (/obj/machinery/vending/cigarette,/turf/simulated/floor/tiled/techmaint,/area/crew_quarters/bar)
+"Rn" = (/obj/machinery/vending/cola{contraband = list(/obj/item/reagent_containers/food/drinks/cans/phoronsoda = 10,/obj/item/reagent_containers/food/drinks/cans/thirteenloko = 5, /obj/item/reagent_containers/food/snacks/liquidfood = 6); desc = "A NanoTrasen branded vendor, featuring a few new items!"; icon = 'icons/obj/vending_vr.dmi'; name = "Thirst Reduction Center"; prices = list(/obj/item/reagent_containers/food/drinks/cans/ntsoda = 1, /obj/item/reagent_containers/food/drinks/cans/space_mountain_wind = 1, /obj/item/reagent_containers/food/drinks/cans/dr_gibb = 1, /obj/item/reagent_containers/food/drinks/cans/starkist = 1, /obj/item/reagent_containers/food/drinks/cans/waterbottle = 2, /obj/item/reagent_containers/food/drinks/cans/space_up = 1, /obj/item/reagent_containers/food/drinks/cans/iced_tea = 1, /obj/item/reagent_containers/food/drinks/cans/grape_juice = 1, /obj/item/reagent_containers/food/drinks/cans/gingerale = 1, /obj/item/reagent_containers/food/drinks/bottle/small/sarsaparilla = 1, /obj/item/reagent_containers/food/drinks/bottle/small/sassafras = 1); product_ads = "Drink!;A cold soda sure sounds good right now!;Refreshing!;Hope you're thirsty!;Over 1 million drinks sold!;Thirsty? Why not cola?;Please, have a drink!;Drink up!;The best drinks in space."; product_slogans = "NanoTrasen Cola, a New Classic!"; products = list(/obj/item/reagent_containers/food/drinks/cans/ntsoda = 10, /obj/item/reagent_containers/food/drinks/cans/space_mountain_wind = 10, /obj/item/reagent_containers/food/drinks/cans/dr_gibb = 10, /obj/item/reagent_containers/food/drinks/cans/starkist = 10, /obj/item/reagent_containers/food/drinks/cans/waterbottle = 10, /obj/item/reagent_containers/food/drinks/cans/space_up = 10, /obj/item/reagent_containers/food/drinks/cans/iced_tea = 10, /obj/item/reagent_containers/food/drinks/cans/grape_juice = 10, /obj/item/reagent_containers/food/drinks/cans/gingerale = 10, /obj/item/reagent_containers/food/drinks/bottle/small/sarsaparilla = 10, /obj/item/reagent_containers/food/drinks/bottle/small/sassafras = 10)},/turf/simulated/floor/tiled,/area/crew_quarters/bar)
+"Rs" = (/obj/structure/bed/chair/office{dir = 4},/turf/simulated/floor/tiled/techmaint,/area/crew_quarters/bar)
+"SH" = (/obj/machinery/door/airlock{name = "Bar Backroom"; req_access = list(25); req_one_access = list(25)},/turf/simulated/floor/tiled/techmaint,/area/crew_quarters/bar)
+"SI" = (/obj/structure/bed/chair/office{dir = 8},/turf/simulated/floor/tiled/techmaint,/area/crew_quarters/bar)
+"Tt" = (/obj/machinery/door/airlock/hatch{name = "Hacker bar"; req_one_access = null},/turf/simulated/floor/tiled/techmaint,/area/crew_quarters/bar)
+"Ua" = (/obj/structure/table/steel{icon_state = "stone_preview"},/obj/item/electronic_assembly/large/terminal{anchored = 1},/turf/simulated/floor/tiled/techmaint,/area/crew_quarters/bar)
+"Vg" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/simulated/floor/tiled,/area/crew_quarters/bar)
+"VG" = (/obj/structure/sign/double/barsign{icon_state = "The Net"},/turf/simulated/wall,/area/crew_quarters/bar)
+"Wp" = (/obj/machinery/vending/sovietsoda,/turf/simulated/floor/tiled/techmaint,/area/crew_quarters/bar)
+"XF" = (/obj/machinery/door/airlock{name = "Unisex Restrooms"},/turf/simulated/floor/tiled/techmaint,/area/crew_quarters/barrestroom)
+"YK" = (/turf/unsimulated/mineral,/area/crew_quarters/bar)
+"YW" = (/obj/structure/table/steel,/turf/simulated/floor/tiled/techfloor,/area/crew_quarters/bar)
+"Zc" = (/turf/simulated/floor/tiled/techmaint,/area/crew_quarters/bar)
+"Zr" = (/obj/structure/railing{dir = 4},/obj/structure/railing{dir = 1},/turf/simulated/floor/tiled/dark,/area/crew_quarters/bar)
+
+(1,1,1) = {"
+edededededededxRxRxRxRedyLyLyLyLyLyLyLYK
+edtsZcZcZcSHZcZcZcZcZcBAyLuzkGkGkGvevSYK
+edZcZcZcZcedZcZcZcZcZcZcXFiViViViViVvSYK
+edSHedVGededZcZcZcZcZcZcyLiViViViViVvSYK
+edmqNNLCHOwtZcZcZcZcZcZcyLAkyLAkyLrQyLYK
+lyYWmqmqljwtZcZcZcZcZcZcyLbsyLbsyLEgyLYK
+lyYWmqrHljwtZcZcZcZcZcZcyLyLyLyLyLyLyLYK
+lyYWmqmqljwtZcZcZcZcZcZcpdmqQgljuABIysYK
+edwNYWmqljwtZcZcZcZcZcZcljwlmqmqmqmqysYK
+edVGedPOededZcZcZcZcZcZcljmqwzmqmqmqysYK
+bzbzbzbzeYedZcZcZcZcZcZcczljljeNmqmqedYK
+bzbzbzbzbzTtZcZcZcZcZcZcZcZcZcZcZcZcysYK
+VgVgVgVgVgtKZcZcZcZcZcZcZcZcZcbRHgUaedYK
+bzbzbzbzbzTtZcZcZcZcZcZcZcZcZcHgojZcysYK
+bzbzbzbzRnedZcZcZcZcZcZcZcZcZcZcZcZcysYK
+ededededededZcZcZcZcZcZcZcZcZcEJHgUaedYK
+edReZcZcZcZcZcZcZcZcZcZcZcZcZcHgDgZcedYK
+edZcZcZcZcZcZcZcZcZcZcZcZcZcZcZcZcZcysYK
+edvUvUvUvUmqZcRsHgSIZcZcZcZcRsHgSIZcysYK
+edljljnWljmqZcCKvcqKZryWyWlqAGvcQVZcysYK
+edljljljljmqZcPzdEdEiRiRiRiRdEdEsMZcysYK
+edvUvUvUvUmqZctjdEiRiRiRiRiRiRdEjDZcysYK
+edZcZcZcZcZcZcbeiRiRiRiRiRiRiRiRKlZcysYK
+edWpZcZcZcZcZcEviRiRiRgfgfiRiRiRQYZcedYK
+ededxRxRxRjpededNININIededNININIedededYK
+"}

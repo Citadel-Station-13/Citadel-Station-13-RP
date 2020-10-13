@@ -1,0 +1,34 @@
+"ad" = (/obj/structure/sign/double/barsign{icon_state = "Palace"},/turf/simulated/wall,/area/space)
+"bm" = (/turf/simulated/floor/tiled/dark,/area/space)
+"gH" = (/obj/structure/grille,/obj/structure/window/phoronreinforced/full,/turf/simulated/floor/plating,/area/space)
+"vc" = (/turf/unsimulated/mineral,/area/space)
+"JI" = (/turf/simulated/wall,/area/space)
+"TM" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/simulated/floor/tiled/dark,/area/space)
+
+(1,1,1) = {"
+JIJIadJIJIJIJIJIJIJIJIJIJIJIJIJIJIJIJIvc
+JIbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmvc
+JIbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmvc
+JIbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmvc
+JIbmbmbmbmJIbmbmbmbmbmbmbmbmbmbmbmbmbmvc
+JIbmbmbmbmJIbmbmbmbmbmbmbmbmbmbmbmbmbmvc
+JIbmbmbmbmJIbmbmbmbmbmbmbmbmbmbmbmbmbmvc
+JIbmbmbmbmJIbmbmbmbmbmbmbmbmbmbmbmbmbmvc
+JIbmbmbmbmJIbmbmbmbmbmbmbmbmbmbmbmbmbmvc
+JIbmbmbmbmJIbmbmbmbmbmbmbmbmbmbmbmbmbmvc
+JIbmbmbmbmJIbmbmbmbmbmbmbmbmbmbmbmbmbmvc
+gHbmbmbmbmJIbmbmbmbmbmbmbmbmbmbmbmbmbmvc
+TMbmbmbmbmJIbmbmbmbmbmbmbmbmbmbmbmbmbmvc
+gHbmbmbmbmJIbmbmbmbmbmbmbmbmbmbmbmbmbmvc
+JIJIJIJIJIJIbmbmbmbmbmbmbmbmbmbmbmbmbmvc
+JIbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmvc
+JIbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmvc
+JIbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmvc
+JIbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmvc
+JIbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmvc
+JIbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmvc
+JIbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmvc
+JIbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmvc
+JIbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmbmvc
+JIJIJIJIJIJIJIJIJIJIJIJIJIJIJIJIJIJIJIvc
+"}

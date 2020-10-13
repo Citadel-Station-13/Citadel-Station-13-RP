@@ -1,0 +1,103 @@
+"bq" = (/obj/structure/railing,/obj/structure/railing{dir = 4},/turf/simulated/floor/plating,/area/space)
+"eq" = (/obj/structure/railing{dir = 4},/obj/structure/railing{dir = 8},/obj/structure/railing{dir = 1},/turf/simulated/floor/plating,/area/space)
+"eW" = (/turf/unsimulated/mineral,/area/space)
+"fb" = (/obj/structure/bed/chair{dir = 4},/turf/simulated/floor/tiled/techmaint,/area/space)
+"fQ" = (/obj/structure/table/steel{icon_state = "stone_preview"},/obj/machinery/recharger,/obj/effect/floor_decal/spline/plain{dir = 6},/turf/simulated/floor/tiled/techmaint,/area/space)
+"fT" = (/obj/structure/bed/chair/sofa/right{dir = 4; icon_state = "sofaend_right"},/turf/simulated/floor/tiled/techmaint,/area/space)
+"ht" = (/obj/structure/table/steel,/obj/effect/floor_decal/spline/fancy/wood/corner{color = "#696969"; dir = 8},/turf/simulated/floor/tiled/techmaint,/area/space)
+"hX" = (/obj/structure/railing{dir = 8},/obj/structure/railing{dir = 1},/turf/simulated/floor/plating,/area/space)
+"jr" = (/obj/machinery/media/jukebox,/turf/simulated/floor/tiled/techmaint,/area/space)
+"jw" = (/obj/structure/railing{dir = 8},/turf/simulated/floor/plating,/area/space)
+"kr" = (/obj/structure/catwalk,/obj/structure/cable,/turf/simulated/floor/plating,/area/space)
+"kv" = (/obj/structure/bed/chair,/obj/effect/floor_decal/spline/plain{dir = 1},/turf/simulated/floor/tiled/techmaint,/area/space)
+"ly" = (/turf/simulated/wall,/area/space)
+"nt" = (/obj/structure/bed/chair{dir = 1},/obj/effect/floor_decal/spline/plain{dir = 8},/turf/simulated/floor/tiled/techmaint,/area/space)
+"og" = (/obj/item/stool/padded,/obj/effect/floor_decal/spline/plain,/turf/simulated/floor/tiled/techmaint,/area/space)
+"oq" = (/obj/structure/sign/double/barsign{icon_state = "The Lightbulb"},/turf/simulated/wall,/area/space)
+"or" = (/obj/structure/bed/chair{dir = 1},/obj/effect/floor_decal/spline/plain,/turf/simulated/floor/tiled/techmaint,/area/space)
+"ov" = (/obj/machinery/vending/coffee,/turf/simulated/floor/tiled/techmaint,/area/space)
+"pr" = (/obj/item/stool/padded,/obj/effect/floor_decal/spline/plain{dir = 1},/turf/simulated/floor/tiled/techmaint,/area/space)
+"qb" = (/obj/structure/toilet{dir = 4},/turf/simulated/floor/tiled/techmaint,/area/space)
+"qS" = (/obj/effect/floor_decal/spline/plain{dir = 8},/turf/simulated/floor/tiled/techmaint,/area/space)
+"rD" = (/obj/structure/railing,/obj/structure/railing{dir = 8},/turf/simulated/floor/plating,/area/space)
+"sa" = (/obj/structure/catwalk,/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"},/turf/simulated/floor/plating,/area/space)
+"sj" = (/obj/machinery/vending/boozeomat,/turf/simulated/floor/tiled/techmaint,/area/space)
+"sp" = (/turf/simulated/floor/tiled/techmaint,/area/space)
+"sy" = (/obj/machinery/door/airlock/hatch{name = "Bar"},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/simulated/floor/plating,/area/space)
+"sK" = (/obj/structure/bed/chair{dir = 1},/turf/simulated/floor/tiled/techmaint,/area/space)
+"sN" = (/obj/structure/grille,/obj/structure/window/reinforced/full,/obj/structure/window/reinforced,/turf/simulated/floor/plating,/area/space)
+"ta" = (/obj/structure/railing{dir = 8},/obj/structure/railing,/turf/simulated/floor/plating,/area/space)
+"ug" = (/turf/simulated/floor/plating,/area/space)
+"uC" = (/obj/structure/table/steel{icon_state = "stone_preview"},/obj/machinery/chemical_dispenser/bar_alc/full{dir = 8},/turf/simulated/floor/tiled/techmaint,/area/space)
+"uS" = (/obj/item/stool/padded,/obj/effect/floor_decal/spline/plain{dir = 10},/turf/simulated/floor/tiled/techmaint,/area/space)
+"uX" = (/obj/effect/floor_decal/spline/plain{dir = 1},/turf/simulated/floor/tiled/techmaint,/area/space)
+"vo" = (/obj/structure/table/steel,/obj/effect/floor_decal/spline/fancy/wood/corner{color = "#696969"; dir = 4},/turf/simulated/floor/tiled/techmaint,/area/space)
+"wk" = (/obj/structure/catwalk,/turf/simulated/floor/plating,/area/space)
+"xy" = (/obj/structure/bed/chair/sofa/corner{dir = 4; icon_state = "sofacorner"},/turf/simulated/floor/tiled/techmaint,/area/space)
+"yv" = (/obj/item/stool/padded,/obj/effect/floor_decal/spline/plain{dir = 9},/turf/simulated/floor/tiled/techmaint,/area/space)
+"zm" = (/obj/structure/bed/chair/sofa{icon_state = "sofamiddle"},/turf/simulated/floor/tiled/techmaint,/area/space)
+"zQ" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/simulated/floor/tiled,/area/space)
+"Bq" = (/obj/machinery/smartfridge/drinks,/turf/simulated/floor/tiled/techmaint,/area/space)
+"Bv" = (/obj/structure/table/steel,/turf/simulated/floor/tiled/techmaint,/area/space)
+"BJ" = (/obj/structure/bed/chair/sofa/left{icon_state = "sofaend_left"},/obj/effect/floor_decal/spline/plain{dir = 4},/turf/simulated/floor/tiled/techmaint,/area/space)
+"CW" = (/obj/structure/table/steel{icon_state = "stone_preview"},/obj/machinery/chemical_dispenser/bar_soft/full{dir = 8},/turf/simulated/floor/tiled/techmaint,/area/space)
+"Dd" = (/obj/machinery/chem_master,/obj/effect/floor_decal/spline/plain{dir = 5},/turf/simulated/floor/tiled/techmaint,/area/space)
+"DT" = (/obj/machinery/door/airlock{name = "Charging"},/obj/effect/floor_decal/spline/plain{dir = 4},/turf/simulated/floor/tiled/techmaint,/area/space)
+"FW" = (/obj/structure/table/bench/steel,/turf/simulated/floor/tiled/techmaint,/area/space)
+"Ga" = (/obj/structure/grille,/obj/structure/window/basic/full,/turf/simulated/floor/plating,/area/space)
+"Go" = (/obj/structure/bed/chair,/obj/effect/floor_decal/spline/plain{dir = 8},/turf/simulated/floor/tiled/techmaint,/area/space)
+"HT" = (/obj/structure/table/bench/steel,/obj/effect/floor_decal/spline/plain{dir = 4},/turf/simulated/floor/tiled/techmaint,/area/space)
+"It" = (/obj/structure/railing,/turf/simulated/floor/plating,/area/space)
+"IV" = (/obj/structure/railing{dir = 4},/obj/structure/railing{dir = 1},/turf/simulated/floor/plating,/area/space)
+"Jm" = (/obj/structure/railing{dir = 1},/turf/simulated/floor/plating,/area/space)
+"Md" = (/obj/machinery/vending/fitness,/turf/simulated/floor/tiled/techmaint,/area/space)
+"NF" = (/obj/structure/bed/chair{dir = 8},/turf/simulated/floor/tiled/techmaint,/area/space)
+"Ob" = (/turf/simulated/floor/tiled,/area/space)
+"Oh" = (/obj/structure/railing{dir = 1},/obj/structure/railing{dir = 8},/turf/simulated/floor/plating,/area/space)
+"Pa" = (/obj/machinery/vending/cola{contraband = list(/obj/item/reagent_containers/food/drinks/cans/phoronsoda = 10,/obj/item/reagent_containers/food/drinks/cans/thirteenloko = 5, /obj/item/reagent_containers/food/snacks/liquidfood = 6); desc = "A NanoTrasen branded vendor, featuring a few new items!"; icon = 'icons/obj/vending_vr.dmi'; name = "Thirst Reduction Center"; prices = list(/obj/item/reagent_containers/food/drinks/cans/ntsoda = 1, /obj/item/reagent_containers/food/drinks/cans/space_mountain_wind = 1, /obj/item/reagent_containers/food/drinks/cans/dr_gibb = 1, /obj/item/reagent_containers/food/drinks/cans/starkist = 1, /obj/item/reagent_containers/food/drinks/cans/waterbottle = 2, /obj/item/reagent_containers/food/drinks/cans/space_up = 1, /obj/item/reagent_containers/food/drinks/cans/iced_tea = 1, /obj/item/reagent_containers/food/drinks/cans/grape_juice = 1, /obj/item/reagent_containers/food/drinks/cans/gingerale = 1, /obj/item/reagent_containers/food/drinks/bottle/small/sarsaparilla = 1, /obj/item/reagent_containers/food/drinks/bottle/small/sassafras = 1); product_ads = "Drink!;A cold soda sure sounds good right now!;Refreshing!;Hope you're thirsty!;Over 1 million drinks sold!;Thirsty? Why not cola?;Please, have a drink!;Drink up!;The best drinks in space."; product_slogans = "NanoTrasen Cola, a New Classic!"; products = list(/obj/item/reagent_containers/food/drinks/cans/ntsoda = 10, /obj/item/reagent_containers/food/drinks/cans/space_mountain_wind = 10, /obj/item/reagent_containers/food/drinks/cans/dr_gibb = 10, /obj/item/reagent_containers/food/drinks/cans/starkist = 10, /obj/item/reagent_containers/food/drinks/cans/waterbottle = 10, /obj/item/reagent_containers/food/drinks/cans/space_up = 10, /obj/item/reagent_containers/food/drinks/cans/iced_tea = 10, /obj/item/reagent_containers/food/drinks/cans/grape_juice = 10, /obj/item/reagent_containers/food/drinks/cans/gingerale = 10, /obj/item/reagent_containers/food/drinks/bottle/small/sarsaparilla = 10, /obj/item/reagent_containers/food/drinks/bottle/small/sassafras = 10)},/turf/simulated/floor/tiled/techmaint,/area/space)
+"Pr" = (/obj/machinery/door/airlock{name = "Bar Backroom"; req_access = list(25); req_one_access = list(25)},/turf/simulated/floor/tiled/techmaint,/area/space)
+"Qv" = (/obj/structure/bed/chair{dir = 4},/obj/effect/floor_decal/spline/plain{dir = 8},/turf/simulated/floor/tiled/techmaint,/area/space)
+"Qy" = (/obj/structure/bed/chair,/turf/simulated/floor/tiled/techmaint,/area/space)
+"RG" = (/obj/item/stool/padded,/obj/effect/floor_decal/spline/plain{dir = 8},/turf/simulated/floor/tiled/techmaint,/area/space)
+"Tr" = (/obj/structure/table/steel,/obj/effect/floor_decal/spline/plain{dir = 8},/turf/simulated/floor/tiled/techmaint,/area/space)
+"TP" = (/obj/effect/floor_decal/spline/plain{dir = 6},/turf/simulated/floor/tiled/techmaint,/area/space)
+"Uu" = (/obj/structure/railing{dir = 8},/obj/structure/railing,/obj/structure/railing{dir = 4},/turf/simulated/floor/plating,/area/space)
+"UY" = (/obj/structure/railing{dir = 1},/obj/structure/railing{dir = 4},/turf/simulated/floor/plating,/area/space)
+"Wc" = (/obj/machinery/vending/snack,/turf/simulated/floor/tiled/techmaint,/area/space)
+"Wx" = (/obj/effect/floor_decal/spline/plain{dir = 5},/turf/simulated/floor/tiled/techmaint,/area/space)
+"WH" = (/obj/machinery/door/airlock{name = "Toilet"},/obj/effect/floor_decal/spline/plain{dir = 4},/turf/simulated/floor/tiled/techmaint,/area/space)
+"Xf" = (/obj/machinery/door/window/eastleft{name = "Bar"; req_access = list(25); req_one_access = list(25)},/turf/simulated/floor/tiled/techmaint,/area/space)
+"Xj" = (/obj/structure/table/survival_pod,/obj/item/soap/nanotrasen,/turf/simulated/floor/tiled/techmaint,/area/space)
+"Xm" = (/obj/effect/floor_decal/spline/plain{dir = 4},/turf/simulated/floor/tiled/techmaint,/area/space)
+"Yk" = (/obj/structure/railing{dir = 4},/obj/structure/railing,/turf/simulated/floor/plating,/area/space)
+"YT" = (/obj/structure/railing{dir = 4},/turf/simulated/floor/plating,/area/space)
+"Zb" = (/obj/structure/sink{layer = 3.3; pixel_y = 22},/obj/structure/mirror{dir = 4; layer = 3.2; pixel_y = 32},/turf/simulated/floor/tiled/techmaint,/area/space)
+"ZP" = (/obj/machinery/recharge_station,/turf/simulated/floor/tiled/techmaint,/area/space)
+
+(1,1,1) = {"
+lylylylylylylylylylylylylylylylylylylyeW
+lyItItItItItItItItItItItItItlyspspsplyeW
+lyQyQyXmwkwkwkwkwkwkwkwkwkwkPrspspsplyeW
+lyBvBvXmwkwkwkwkwkwkwkwkwkwklyspspsplyeW
+GaororTPwkwkOhJmJmUYwkwkwkOhlyspspsplyeW
+GawkwkwkwkwkjwugugYTwkwkwkjwlylylylylyeW
+GawkwkwkwkwkjwugugYTwkwkwkjwuguguguglyeW
+GakvkvWxwkwkjwugugbqwkwkwktauguguguglyeW
+lyBvBvXmwkwkjwugbqwkwkwkwkwkrDuguguglyeW
+lysKsKXmwkwkjwbqwkwkyvprWxwkwkrDuguglyeW
+lyoqlylywkwkUuwkwkyvvoBvsjDdwkwkrDItlyeW
+ObObOblywkwkwkwkyvvospspspuCWxwkGoQylyeW
+zQzQzQsysawkwkwkRGBvspspspXfXmwkTrBvlyeW
+ObObOblykrwkwkwkuShtspspspCWTPwkntsKlyeW
+lylylylywkwkeqwkwkuShtBvBqfQwkwkOhJmlyeW
+lyxyzmBJwkwkjwIVwkwkuSogTPwkwkhXuguglyeW
+lyfTFWHTwkwkjwugIVwkwkwkwkwkhXuguguglyeW
+lyspspXmwkwkjwugugIVwkwkwkhXuguguguglyeW
+lylylylywkwkjwugugYTwkwkwkjwuguguguglyeW
+lyXjZbWHwkwkjwugugYkwkwkwktauguguguglyeW
+lyqbsplywkwkjwugbqPauXuXuXMdrDuguguglyeW
+lylylylywkwktaYkovspspspspspWcjwuguglyeW
+lyspspDTwkwkwkwkqSspspspspspspjwuguglyeW
+lyZPZPlywkwkwkwkQvBvNFjrfbBvNFjwuguglyeW
+lylylylylylylylysNsNsNlysNsNsNlylylylyeW
+"}

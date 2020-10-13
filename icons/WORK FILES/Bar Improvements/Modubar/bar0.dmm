@@ -1,0 +1,138 @@
+"ab" = (/obj/machinery/door/airlock{name = "Bar Backroom"; req_access = list(25); req_one_access = list(25)},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/simulated/floor/wood,/area/triumph/surfacebase/bar_backroom)
+"ai" = (/obj/item/gun/projectile/shotgun/doublebarrel{pixel_y = 20},/obj/structure/table/rack/shelf/steel,/obj/item/storage/box/beanbags,/obj/item/clothing/accessory/permit/gun/bar,/obj/machinery/light{dir = 1},/turf/simulated/floor/wood,/area/triumph/surfacebase/bar_backroom)
+"bc" = (/obj/machinery/media/jukebox,/turf/simulated/floor/wood,/area/crew_quarters/bar)
+"bZ" = (/turf/simulated/wall,/area/crew_quarters/bar)
+"ce" = (/obj/machinery/door/airlock/multi_tile/glass{dir = 1; name = "Bar"},/turf/simulated/floor/tiled,/area/crew_quarters/bar)
+"dV" = (/obj/structure/bed/chair/comfy/black,/turf/simulated/floor/tiled,/area/crew_quarters/bar)
+"eu" = (/turf/simulated/floor/wood,/area/triumph/surfacebase/bar_backroom)
+"ew" = (/turf/unsimulated/mineral,/area/crew_quarters/bar)
+"eC" = (/obj/machinery/chem_master,/turf/simulated/floor/wood,/area/crew_quarters/bar)
+"fq" = (/obj/structure/table/marble,/obj/machinery/light{dir = 4},/turf/simulated/floor/tiled,/area/crew_quarters/bar)
+"fv" = (/obj/item/reagent_containers/food/drinks/shaker{pixel_x = 5; pixel_y = 11},/obj/item/reagent_containers/food/drinks/shaker{pixel_x = -1; pixel_y = 7},/obj/structure/table/marble,/obj/item/reagent_containers/glass/rag,/obj/machinery/light{dir = 4},/turf/simulated/floor/wood,/area/crew_quarters/bar)
+"fH" = (/obj/machinery/computer/arcade,/turf/simulated/floor/carpet/sblucarpet,/area/crew_quarters/bar)
+"gk" = (/turf/simulated/mineral/cave,/area/crew_quarters/bar)
+"gm" = (/obj/machinery/light{dir = 1},/turf/simulated/floor/carpet/bcarpet,/area/crew_quarters/bar)
+"gp" = (/obj/structure/bed/chair/comfy/black,/obj/structure/window/basic{dir = 1},/turf/simulated/floor/tiled,/area/crew_quarters/bar)
+"gr" = (/obj/structure/table/woodentable,/obj/machinery/firealarm{dir = 1; pixel_y = -24},/obj/item/paper_bin,/obj/item/pen/click,/turf/simulated/floor/wood,/area/triumph/surfacebase/bar_backroom)
+"hz" = (/obj/machinery/light/small{dir = 8},/turf/simulated/floor/tiled,/area/crew_quarters/barrestroom)
+"ix" = (/obj/structure/window/reinforced/polarized{icon_state = "fwindow"; id = "barvip"},/obj/structure/bed/chair/sofa/right{dir = 4; icon_state = "sofaend_right"},/turf/simulated/floor/carpet/bcarpet,/area/crew_quarters/bar)
+"iV" = (/obj/structure/bed/chair/comfy/black{dir = 4},/turf/simulated/floor/tiled,/area/crew_quarters/bar)
+"jL" = (/obj/structure/table/marble,/obj/machinery/recharger,/turf/simulated/floor/wood,/area/crew_quarters/bar)
+"jP" = (/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"},/turf/simulated/floor/wood,/area/triumph/surfacebase/bar_backroom)
+"kX" = (/obj/structure/toilet{dir = 4},/turf/simulated/floor/tiled,/area/crew_quarters/barrestroom)
+"la" = (/obj/machinery/alarm{pixel_y = 22},/turf/simulated/floor/carpet/bcarpet,/area/crew_quarters/bar)
+"ld" = (/obj/machinery/light{dir = 1},/turf/simulated/floor/carpet/sblucarpet,/area/crew_quarters/bar)
+"lv" = (/obj/structure/window/reinforced/polarized{icon_state = "fwindow"; id = "barvip"},/obj/machinery/vending/boozeomat,/turf/simulated/floor/carpet/bcarpet,/area/crew_quarters/bar)
+"ly" = (/obj/machinery/light/small{dir = 8},/turf/simulated/floor/wood,/area/triumph/surfacebase/bar_backroom)
+"lF" = (/obj/structure/closet/secure_closet/bar,/turf/simulated/floor/wood,/area/triumph/surfacebase/bar_backroom)
+"lR" = (/obj/machinery/alarm{dir = 8; pixel_x = 25},/turf/simulated/floor/tiled,/area/crew_quarters/barrestroom)
+"mx" = (/obj/structure/table/marble,/turf/simulated/floor/wood,/area/crew_quarters/bar)
+"nQ" = (/obj/structure/sign/poster/nanotrasen{pixel_y = 32},/turf/simulated/floor/tiled,/area/crew_quarters/barrestroom)
+"nX" = (/turf/simulated/floor/wood,/area/crew_quarters/bar)
+"oa" = (/obj/structure/window/reinforced/polarized{icon_state = "fwindow"; id = "barvip"},/obj/structure/table/bench/glass,/obj/item/material/ashtray/bronze,/turf/simulated/floor/carpet/bcarpet,/area/crew_quarters/bar)
+"ox" = (/obj/machinery/chemical_dispenser/bar_alc/full{dir = 8},/obj/structure/table/marble,/turf/simulated/floor/wood,/area/crew_quarters/bar)
+"oI" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/machinery/door/airlock{name = "Unisex Restrooms"},/turf/simulated/floor/tiled,/area/crew_quarters/barrestroom)
+"pn" = (/obj/machinery/vending/boozeomat,/turf/simulated/floor/wood,/area/crew_quarters/bar)
+"pq" = (/obj/structure/table/glass,/obj/machinery/chemical_dispenser/bar_alc/full{dir = 8},/turf/simulated/floor/carpet/bcarpet,/area/crew_quarters/bar)
+"pA" = (/obj/machinery/light{dir = 8},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/simulated/floor/tiled,/area/crew_quarters/bar)
+"pQ" = (/obj/structure/sign/poster/nanotrasen{pixel_y = 32},/obj/machinery/power/apc{dir = 4; name = "east bump"; pixel_x = 28},/obj/structure/cable{dir = 4},/turf/simulated/floor/tiled,/area/crew_quarters/barrestroom)
+"qy" = (/obj/machinery/alarm{pixel_y = 22},/turf/simulated/floor/carpet/sblucarpet,/area/crew_quarters/bar)
+"qD" = (/turf/simulated/floor/tiled,/area/crew_quarters/bar)
+"rR" = (/obj/structure/closet/gmcloset{name = "formal wardrobe"},/obj/item/glass_jar,/obj/item/retail_scanner/civilian,/obj/item/retail_scanner/civilian,/obj/item/clothing/accessory/hawaii/random,/turf/simulated/floor/wood,/area/triumph/surfacebase/bar_backroom)
+"sm" = (/obj/structure/window/reinforced/polarized{icon_state = "fwindow"; id = "barvip"},/obj/structure/table/bench/glass,/obj/item/storage/fancy/cigar/havana,/obj/item/flame/lighter/zippo/capitalist,/turf/simulated/floor/carpet/bcarpet,/area/crew_quarters/bar)
+"sG" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/obj/machinery/alarm{dir = 1; pixel_y = -22},/turf/simulated/floor/tiled,/area/crew_quarters/bar)
+"sY" = (/obj/structure/bed/chair/comfy/black{dir = 4},/obj/structure/window/basic{dir = 8},/turf/simulated/floor/tiled,/area/crew_quarters/bar)
+"tX" = (/obj/structure/sink/kitchen{dir = 8; name = "sink"; pixel_x = 13},/turf/simulated/floor/wood,/area/crew_quarters/bar)
+"uc" = (/turf/simulated/floor/tiled,/area/crew_quarters/barrestroom)
+"uE" = (/obj/structure/table/marble,/obj/item/reagent_containers/food/snacks/chipplate/nachos,/turf/simulated/floor/tiled,/area/crew_quarters/bar)
+"uH" = (/obj/item/storage/secure/safe{pixel_y = 27},/turf/simulated/floor/wood,/area/triumph/surfacebase/bar_backroom)
+"uO" = (/obj/machinery/door/window/westright{name = "Bar"; req_access = list(25); req_one_access = list(25)},/obj/machinery/light,/turf/simulated/floor/wood,/area/crew_quarters/bar)
+"vt" = (/turf/unsimulated/mineral,/area/triumph/surfacebase/bar_backroom)
+"vy" = (/turf/simulated/wall,/area/triumph/surfacebase/bar_backroom)
+"we" = (/obj/machinery/vending/cola{desc = "A NanoTrasen branded vendor, featuring a few new items!"; icon = 'icons/obj/vending_vr.dmi'; name = "Thirst Reduction Center"},/turf/simulated/floor/carpet/sblucarpet,/area/crew_quarters/bar)
+"wp" = (/turf/simulated/floor/carpet/bcarpet,/area/crew_quarters/bar)
+"wT" = (/turf/simulated/floor/carpet/sblucarpet,/area/crew_quarters/bar)
+"xe" = (/obj/machinery/door/window/northleft{name = "Bar"; req_access = list(25); req_one_access = list(25)},/turf/simulated/floor/wood,/area/crew_quarters/bar)
+"xx" = (/obj/machinery/door/airlock{name = "Toilet"},/turf/simulated/floor/tiled,/area/crew_quarters/barrestroom)
+"yV" = (/obj/machinery/holosign/bar{id = "barsign1"},/turf/simulated/wall,/area/crew_quarters/bar)
+"yZ" = (/obj/machinery/door/airlock{name = "Bar Backroom"; req_access = list(25); req_one_access = list(25)},/turf/simulated/floor/wood,/area/triumph/surfacebase/bar_backroom)
+"zo" = (/obj/machinery/door/airlock{name = "Charging"},/turf/simulated/floor/tiled,/area/crew_quarters/barrestroom)
+"zW" = (/obj/item/stool/padded,/turf/simulated/floor/wood,/area/crew_quarters/bar)
+"Ce" = (/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor/tiled,/area/crew_quarters/barrestroom)
+"CR" = (/obj/structure/reagent_dispensers/beerkeg,/turf/simulated/floor/wood,/area/triumph/surfacebase/bar_backroom)
+"CS" = (/obj/machinery/door/airlock{name = "Restroom"},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/simulated/floor/tiled,/area/crew_quarters/barrestroom)
+"EZ" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/simulated/floor/tiled,/area/crew_quarters/bar)
+"Fy" = (/obj/structure/sink{dir = 4; pixel_x = 14},/obj/structure/mirror{pixel_x = 30},/turf/simulated/floor/tiled,/area/crew_quarters/barrestroom)
+"FE" = (/obj/structure/table/steel,/obj/item/reagent_scanner,/turf/simulated/floor/wood,/area/triumph/surfacebase/bar_backroom)
+"FG" = (/obj/machinery/reagentgrinder,/obj/structure/table/marble,/turf/simulated/floor/wood,/area/crew_quarters/bar)
+"FU" = (/obj/structure/window/basic/full,/obj/structure/grille,/turf/simulated/floor/plating,/area/crew_quarters/bar)
+"Hn" = (/obj/machinery/smartfridge/drinks,/turf/simulated/floor/tiled,/area/crew_quarters/bar)
+"JU" = (/obj/item/stool/padded,/turf/simulated/floor/carpet/sblucarpet,/area/crew_quarters/bar)
+"Ki" = (/obj/structure/table/marble,/turf/simulated/floor/tiled,/area/crew_quarters/bar)
+"Kv" = (/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/turf/simulated/floor/tiled,/area/crew_quarters/barrestroom)
+"KT" = (/obj/machinery/light{dir = 8},/turf/simulated/floor/tiled,/area/crew_quarters/bar)
+"KU" = (/obj/machinery/light{dir = 8},/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor/tiled,/area/crew_quarters/barrestroom)
+"Lk" = (/obj/structure/table/marble,/obj/item/storage/box/wings,/turf/simulated/floor/wood,/area/crew_quarters/bar)
+"LL" = (/obj/machinery/light/small{dir = 8},/obj/structure/sign/poster/nanotrasen{pixel_y = 32},/turf/simulated/floor/tiled,/area/crew_quarters/barrestroom)
+"MS" = (/obj/structure/cable,/obj/machinery/power/apc{dir = 8; name = "west bump"; pixel_x = -28},/turf/simulated/floor/wood,/area/triumph/surfacebase/bar_backroom)
+"Nk" = (/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"},/turf/simulated/floor/tiled,/area/crew_quarters/bar)
+"Nl" = (/obj/structure/bed/chair/comfy/black{dir = 8},/obj/structure/window/basic{dir = 4},/turf/simulated/floor/tiled,/area/crew_quarters/bar)
+"Oe" = (/obj/machinery/door/airlock/glass{name = "Arcade Lounge"},/turf/simulated/floor/tiled,/area/crew_quarters/bar)
+"Qc" = (/turf/simulated/wall,/area/crew_quarters/barrestroom)
+"Qo" = (/obj/structure/sign/double/barsign{dir = 8},/turf/simulated/wall,/area/crew_quarters/bar)
+"Re" = (/obj/structure/bed/chair/sofa{icon_state = "sofamiddle"},/turf/simulated/floor/carpet/bcarpet,/area/crew_quarters/bar)
+"Sf" = (/obj/machinery/chemical_dispenser/bar_soft/full{dir = 8},/obj/structure/table/marble,/obj/machinery/light{dir = 4},/turf/simulated/floor/wood,/area/crew_quarters/bar)
+"SE" = (/obj/machinery/light/small{dir = 8},/obj/machinery/recharge_station{icon_rotation = 1},/turf/simulated/floor/tiled,/area/crew_quarters/barrestroom)
+"SH" = (/obj/machinery/door/airlock/gold{desc = "A little pretentous, yeah?"; name = "VIP Lounge"; req_one_access = list(4,19,101,44,67)},/turf/simulated/floor/carpet/bcarpet,/area/crew_quarters/bar)
+"SO" = (/obj/structure/bed/chair/sofa/corner{dir = 4; icon_state = "sofacorner"},/turf/simulated/floor/carpet/bcarpet,/area/crew_quarters/bar)
+"SS" = (/obj/structure/disposalpipe/trunk{dir = 8},/obj/machinery/disposal,/obj/machinery/light_switch{pixel_x = 8; pixel_y = -25},/obj/machinery/button/remote/blast_door{dir = 1; id = "bar"; name = "Bar shutters"; pixel_y = -25},/obj/machinery/button/holosign{id = "barsign1"; pixel_x = -7; pixel_y = -26},/obj/machinery/light{dir = 4},/turf/simulated/floor/wood,/area/crew_quarters/bar)
+"TT" = (/obj/structure/grille,/obj/structure/window/reinforced/full,/obj/structure/window/reinforced,/turf/simulated/floor/plating,/area/triumph/surfacebase/bar_backroom)
+"Uc" = (/obj/structure/cable,/obj/machinery/power/apc{name = "south bump"; pixel_y = -28},/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/turf/simulated/floor/tiled,/area/crew_quarters/bar)
+"US" = (/obj/machinery/chemical_dispenser/bar_coffee/full,/obj/structure/table/marble,/turf/simulated/floor/wood,/area/crew_quarters/bar)
+"UW" = (/obj/structure/bed/chair/comfy/black{dir = 1},/turf/simulated/floor/tiled,/area/crew_quarters/bar)
+"UY" = (/obj/structure/cable{d1 = 2; d2 = 4; icon_state = "2-4"},/turf/simulated/floor/tiled,/area/crew_quarters/bar)
+"Vk" = (/obj/structure/closet/toolcloset,/obj/item/storage/toolbox/mechanical,/obj/fiftyspawner/steel,/obj/fiftyspawner/glass,/obj/item/stack/cable_coil/random,/obj/fiftyspawner/wood,/turf/simulated/floor/wood,/area/triumph/surfacebase/bar_backroom)
+"VY" = (/turf/simulated/mineral/cave,/area/triumph/surfacebase/bar_backroom)
+"WL" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/simulated/floor/tiled,/area/crew_quarters/barrestroom)
+"Xd" = (/obj/structure/grille,/obj/structure/window/reinforced/full,/obj/structure/window/reinforced,/turf/simulated/floor/plating,/area/crew_quarters/bar)
+"Xv" = (/obj/structure/grille,/obj/structure/window/basic/full,/turf/simulated/floor/plating,/area/crew_quarters/bar)
+"XH" = (/obj/item/stool/padded,/turf/simulated/floor/wood,/area/triumph/surfacebase/bar_backroom)
+"XS" = (/obj/item/stool/padded,/obj/machinery/alarm{dir = 1; pixel_y = -22},/turf/simulated/floor/wood,/area/triumph/surfacebase/bar_backroom)
+"XY" = (/obj/structure/table/marble,/obj/item/reagent_containers/food/snacks/fries,/obj/machinery/light{dir = 4},/turf/simulated/floor/tiled,/area/crew_quarters/bar)
+"XZ" = (/obj/structure/table/marble,/obj/item/storage/box/glasses/meta,/turf/simulated/floor/wood,/area/crew_quarters/bar)
+"YG" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor/tiled,/area/crew_quarters/bar)
+"YL" = (/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/turf/simulated/floor/tiled,/area/crew_quarters/bar)
+"YN" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor/tiled,/area/crew_quarters/barrestroom)
+"YR" = (/obj/structure/bed/chair/sofa/left{icon_state = "sofaend_left"},/turf/simulated/floor/carpet/bcarpet,/area/crew_quarters/bar)
+"Zi" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/simulated/wall,/area/crew_quarters/bar)
+"Zy" = (/obj/structure/sink{layer = 3.3; pixel_y = 22},/obj/structure/mirror{dir = 4; layer = 3.2; pixel_y = 32},/turf/simulated/floor/tiled,/area/crew_quarters/barrestroom)
+"ZR" = (/obj/machinery/smartfridge/drinks,/turf/simulated/floor/wood,/area/crew_quarters/bar)
+"ZX" = (/obj/structure/window/reinforced/polarized{icon_state = "fwindow"; id = "barvip"},/turf/simulated/floor/carpet/bcarpet,/area/crew_quarters/bar)
+
+(1,1,1) = {"
+bZbZbZbZbZbZbZbZbZbZbZbZbZbZbZbZbZbZbZew
+XvweqyldwTwTSHwplagmwpwpSHqDqDqDgkgkgkew
+XvfHfHwTfHfHbZSOReYRwppqbZKTqDqDqDgkgkew
+XvJUJUwTJUJUbZixoasmZXlvHnqDqDqDdVdVgkew
+XvfHfHwTfHfHXvqDqDqDqDqDqDqDqDiVuEKigkew
+XvJUJUwTJUJUFUqDqDqDqDqDqDqDqDiVKiKigkew
+bZXvXvOeXvXvbZKTqDqDqDqDqDqDqDqDUWUWgkew
+bZqDqDqDsYKiNlqDqDqDqDnXbcjLmxxepngkgkew
+QoqDqDqDsYKiNlqDqDqDqDzWmxnXnXnXoxgkgkew
+bZqDqDqDqDqDqDqDqDqDqDzWLknXnXnXSfgkgkew
+qDqDqDqDqDqDqDqDqDqDqDzWmxnXnXnXUSgkgkew
+ceqDqDqDqDqDqDqDqDqDqDzWmxzWnXnXZRgkgkew
+ZipANkqDqDqDqDqDqDqDqDzWmxnXnXnXnXFGgkew
+qDqDYGqDqDqDqDqDqDqDqDzWLknXnXnXnXfvgkew
+ceqDYGqDqDqDqDqDqDqDqDzWmxnXnXnXnXXZgkew
+bZqDUcsGNkqDqDqDqDqDqDzWmxnXnXnXnXeCbZew
+yVQcQcQcoIQcQcKTqDqDqDnXuOnXnXnXnXtXbZew
+QchzZyQcCepQQcqDqDqDgpgpbZmxnXnXnXSSbZew
+QckXucxxYNlRQcqDqDqDKiXYvyvyyZvyyZvyvyvt
+QcQcQcQcYNFyQcqDqDqDUWUWvyuHeuaieuFEVYvt
+QcLLZyQcKUFyQcKTUYEZEZEZabjPeueueurRVYvt
+QckXucxxYNucQcqDYGqDdVdVvyMSeueueulFVYvt
+QcQcQcQcKvWLCSEZYLqDKifqvylyeueueuVkVYvt
+QcSEnQzoucucQcqDqDqDUWUWvyXSgrXHCRVYVYvt
+QcQcQcQcQcQcQcbZXdXdXdbZvyvyvyTTTTvyvyvt
+"}

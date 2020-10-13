@@ -1,0 +1,77 @@
+"a" = (/turf/simulated/shuttle/wall,/area/space)
+"b" = (/obj/machinery/door/airlock{name = "Unisex Restrooms"},/turf/simulated/floor/tiled/dark,/area/space)
+"c" = (/obj/machinery/vending/snack,/turf/simulated/shuttle/floor/white,/area/space)
+"d" = (/turf/simulated/shuttle/wall/hard_corner,/area/space)
+"e" = (/obj/structure/table/marble,/obj/machinery/chemical_dispenser/bar_alc/full{dir = 1},/turf/simulated/shuttle/floor/white,/area/space)
+"f" = (/obj/structure/prop/fake_ai/dead,/turf/simulated/shuttle/floor/white,/area/space)
+"g" = (/obj/machinery/door/airlock{name = "Charging"},/turf/simulated/floor/tiled/dark,/area/space)
+"h" = (/obj/structure/shuttle/engine/heater{dir = 1},/turf/simulated/shuttle/wall,/area/space)
+"i" = (/obj/structure/table/marble,/obj/machinery/reagentgrinder,/turf/simulated/shuttle/floor/white,/area/space)
+"j" = (/obj/structure/shuttle/engine/platform{dir = 8},/obj/structure/railing{dir = 4},/turf/simulated/shuttle/floor/white,/area/space)
+"k" = (/turf/simulated/shuttle/floor/white,/area/space)
+"l" = (/obj/structure/table/marble,/obj/machinery/chemical_dispenser/bar_soft/full{dir = 1},/turf/simulated/shuttle/floor/white,/area/space)
+"m" = (/obj/machinery/door/airlock/glass{name = "Arcade Lounge"},/turf/simulated/shuttle/floor/white,/area/space)
+"n" = (/obj/structure/shuttle/engine/platform{dir = 5},/obj/structure/railing,/obj/structure/railing{dir = 8},/turf/simulated/shuttle/floor/white,/area/space)
+"o" = (/obj/machinery/vending/cola{contraband = list(/obj/item/reagent_containers/food/drinks/cans/phoronsoda = 10,/obj/item/reagent_containers/food/drinks/cans/thirteenloko = 5, /obj/item/reagent_containers/food/snacks/liquidfood = 6); desc = "A NanoTrasen branded vendor, featuring a few new items!"; icon = 'icons/obj/vending_vr.dmi'; name = "Thirst Reduction Center"; prices = list(/obj/item/reagent_containers/food/drinks/cans/ntsoda = 1, /obj/item/reagent_containers/food/drinks/cans/space_mountain_wind = 1, /obj/item/reagent_containers/food/drinks/cans/dr_gibb = 1, /obj/item/reagent_containers/food/drinks/cans/starkist = 1, /obj/item/reagent_containers/food/drinks/cans/waterbottle = 2, /obj/item/reagent_containers/food/drinks/cans/space_up = 1, /obj/item/reagent_containers/food/drinks/cans/iced_tea = 1, /obj/item/reagent_containers/food/drinks/cans/grape_juice = 1, /obj/item/reagent_containers/food/drinks/cans/gingerale = 1, /obj/item/reagent_containers/food/drinks/bottle/small/sarsaparilla = 1, /obj/item/reagent_containers/food/drinks/bottle/small/sassafras = 1); product_ads = "Drink!;A cold soda sure sounds good right now!;Refreshing!;Hope you're thirsty!;Over 1 million drinks sold!;Thirsty? Why not cola?;Please, have a drink!;Drink up!;The best drinks in space."; product_slogans = "NanoTrasen Cola, a New Classic!"; products = list(/obj/item/reagent_containers/food/drinks/cans/ntsoda = 10, /obj/item/reagent_containers/food/drinks/cans/space_mountain_wind = 10, /obj/item/reagent_containers/food/drinks/cans/dr_gibb = 10, /obj/item/reagent_containers/food/drinks/cans/starkist = 10, /obj/item/reagent_containers/food/drinks/cans/waterbottle = 10, /obj/item/reagent_containers/food/drinks/cans/space_up = 10, /obj/item/reagent_containers/food/drinks/cans/iced_tea = 10, /obj/item/reagent_containers/food/drinks/cans/grape_juice = 10, /obj/item/reagent_containers/food/drinks/cans/gingerale = 10, /obj/item/reagent_containers/food/drinks/bottle/small/sarsaparilla = 10, /obj/item/reagent_containers/food/drinks/bottle/small/sassafras = 10)},/turf/simulated/floor/carpet/sblucarpet,/area/space)
+"p" = (/obj/structure/sign/poi/engineright,/turf/simulated/floor/tiled/monotile,/area/space)
+"q" = (/obj/structure/mirror{pixel_x = -28},/obj/structure/sink{dir = 8; pixel_x = -12; pixel_y = 2},/turf/simulated/floor/tiled/dark,/area/space)
+"r" = (/obj/structure/grille,/obj/structure/shuttle/window,/turf/simulated/floor/plating,/area/space)
+"s" = (/obj/machinery/door/airlock/glass_external{name = "Shuttle Bar"; req_one_access = null},/turf/simulated/shuttle/floor/white,/area/space)
+"t" = (/turf/simulated/floor/tiled/monofloor{dir = 4},/area/space)
+"u" = (/obj/structure/toilet{dir = 4},/turf/simulated/floor/tiled/dark,/area/space)
+"v" = (/turf/simulated/floor/tiled/dark,/area/space)
+"w" = (/obj/machinery/holosign/bar{id = "barsign1"},/turf/simulated/shuttle/wall,/area/space)
+"x" = (/obj/item/stool/padded,/turf/simulated/floor/carpet/sblucarpet,/area/space)
+"y" = (/obj/structure/bed/chair/shuttle,/turf/simulated/shuttle/floor/white,/area/space)
+"z" = (/obj/structure/table/bench/padded,/turf/simulated/shuttle/floor/white,/area/space)
+"B" = (/obj/structure/bed/chair/shuttle{dir = 8},/turf/simulated/shuttle/floor/white,/area/space)
+"C" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/simulated/shuttle/wall,/area/space)
+"D" = (/obj/structure/bed/chair/shuttle{dir = 4},/turf/simulated/shuttle/floor/white,/area/space)
+"E" = (/turf/unsimulated/fake_space,/area/space)
+"F" = (/obj/structure/shuttle/engine/platform{dir = 9},/obj/structure/railing,/obj/structure/railing{dir = 4},/turf/simulated/shuttle/floor/white,/area/space)
+"G" = (/obj/machinery/crystal/lava{name = "replica supermatter crystal"},/turf/simulated/floor/tiled/old_cargo/gray,/area/space)
+"H" = (/obj/structure/toilet{pixel_y = 10},/turf/simulated/floor/tiled/dark,/area/space)
+"I" = (/obj/machinery/recharge_station,/turf/simulated/floor/tiled/dark,/area/space)
+"J" = (/turf/simulated/floor/carpet/sblucarpet,/area/space)
+"K" = (/obj/machinery/vending/boozeomat,/turf/simulated/shuttle/floor/white,/area/space)
+"L" = (/obj/structure/shuttle/engine/platform{dir = 4},/obj/structure/railing{dir = 8},/turf/simulated/shuttle/floor/white,/area/space)
+"M" = (/obj/structure/shuttle/engine/platform{dir = 1},/obj/structure/railing,/turf/simulated/shuttle/floor/white,/area/space)
+"N" = (/obj/machinery/smartfridge/drinks,/turf/simulated/shuttle/floor/white,/area/space)
+"O" = (/obj/structure/sign/double/barsign{dir = 8; icon_state = "The Outer Spess"},/turf/simulated/shuttle/wall,/area/space)
+"P" = (/turf/unsimulated/mineral,/area/space)
+"Q" = (/obj/structure/bed/chair/shuttle{dir = 1},/turf/simulated/shuttle/floor/white,/area/space)
+"R" = (/obj/machinery/door/airlock{name = "Toilet"},/turf/simulated/floor/tiled/dark,/area/space)
+"T" = (/obj/structure/table/marble,/turf/simulated/shuttle/floor/white,/area/space)
+"U" = (/obj/machinery/door/airlock{name = "Bar Backroom"; req_access = list(25); req_one_access = list(25)},/turf/simulated/floor/tiled/dark,/area/space)
+"W" = (/obj/machinery/computer/arcade,/turf/simulated/floor/carpet/sblucarpet,/area/space)
+"X" = (/obj/structure/sign/vacuum,/turf/simulated/shuttle/wall/hard_corner,/area/space)
+"Y" = (/obj/structure/reagent_dispensers/water_cooler/full,/turf/simulated/floor/carpet/sblucarpet,/area/space)
+"Z" = (/obj/structure/sign/poi/engineleft,/turf/simulated/floor/tiled/monofloor{dir = 8},/area/space)
+
+(1,1,1) = {"
+aaaaaahhhahhhaaaaaaP
+akkkkkkkLfjkkkkkkkaP
+arrraykknMFkkyarrraP
+aEEErTkkZptkkTrEEEaP
+aEEErTkkkkkkkTrEEEaP
+arrrXQkkkkkkkQXrrraP
+aDTBkkkkkkkkkkaWoWaP
+akkkkkkkkkkkkkrxJxaP
+OkkkkkkkkkkkkkrWJWaP
+rkkkkkkDTBkkkkrxJxaP
+skkkkkkDTBkkkkaJJJaP
+rkkkkyyarayykkmJJYaP
+CkkkkTTrGrTTkkaaaaaP
+rkkkkQQaraQQkkavvvaP
+skkkkkkDTBkkkkavvvaP
+rkkkkkkDTBkkkkavvvaP
+wkkkkkkkkkkkkkaaUaaP
+aaaabdkkkkkkkkkkkcaP
+aHavvakkkzzzzzzkkkaP
+avRvvakzzTTTTTTzzkaP
+aaaqvakTTTkkkkTTTkaP
+auRvvakkkQkkkkQkkkaP
+aaaqvakkkkkkkkkkkkaP
+aIgvvakkTiKelNTTkkaP
+aaaaaaarrrarrarrraaP
+"}
