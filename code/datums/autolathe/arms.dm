@@ -437,9 +437,13 @@
 	path =/obj/item/ammo_magazine/clip/c762
 	hidden = 1
 
-/*/datum/category_item/autolathe/arms/rifle_clip_762_hunter //VOREStation Edit Start. By request of Ace
+/datum/category_item/autolathe/arms/rifle_clip_762_hunter 
 	name = "ammo clip (7.62mm hunting)"
-	path =/obj/item/ammo_magazine/clip/c762/hunter*/ //VOREStation Edit End.
+	path =/obj/item/ammo_magazine/clip/c762/hunter
+
+/datum/catagory_item/autolathe/arms/rifle_clip_762_sniperhunter
+	name = "ammo clip (7.62mm HV hunting)"
+	path =/obj/item/ammo_magazine/clip/c762/sniperhunter
 
 /datum/category_item/autolathe/arms/rifle_clip_762_practice
 	name = "ammo clip (7.62mm practice)"
