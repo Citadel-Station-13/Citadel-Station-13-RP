@@ -29,6 +29,13 @@
 	projectile_type = /obj/item/projectile/bullet/pistol/strong
 	matter = list(DEFAULT_WALL_MATERIAL = 210)
 
+/obj/item/ammo_casing/a357/silver
+	desc = "A .357 silver bullet casing. Bless and Sancitfied to banish otherworlds entities."
+	caliber = ".357"
+	icon_state = "ag-casing"
+	projectile_type = /obj/item/projectile/bullet/pistol/strong
+	matter = list(DEFAULT_WALL_MATERIAL = 350, "silver" = 200)
+
 /*
  * .38
  */
@@ -51,6 +58,13 @@
 	projectile_type = /obj/item/projectile/ion/small
 	matter = list(DEFAULT_WALL_MATERIAL = 130, "uranium" = 100)
 
+/obj/item/ammo_casing/a38/silver
+	desc = "A .38 silver bullet casing. Bless and Sancitfied to banish otherworlds entities."
+	icon_state = "ag-casing"
+	projectile_type = /obj/item/projectile/bullet/pistol/silver
+	matter = list(DEFAULT_WALL_MATERIAL = 130, "silver" = 100)
+
+
 /*
  * .44
  */
@@ -66,6 +80,12 @@
 	desc = "A .44 rubber bullet casing."
 	projectile_type = /obj/item/projectile/bullet/pistol/rubber/strong
 	matter = list(DEFAULT_WALL_MATERIAL = 60)
+
+/obj/item/ammo_casing/a44/silver
+	desc = "A .44 silver bullet casing. Bless and Sancitfied to banish otherworlds entities."
+	icon_state = "ag_casing"
+	projectile_type = /obj/item/projectile/bullet/pistol/strong/silver
+	matter = list(DEFAULT_WALL_MATERIAL = 350, "silver" = 200)
 
 /*
  * .75 (aka Gyrojet Rockets, aka admin abuse)
@@ -117,6 +137,12 @@
 	icon_state = "r-casing"
 	projectile_type = /obj/item/projectile/bullet/practice
 
+/obj/item/ammo_casing/a9mm/silver
+	desc = "A 9mm silver bullet casing. Bless and Sancitfied to banish otherworlds entities."
+	icon_state = "ag-casing"
+	projectile_type = /obj/item/projectile/bullet/pistol/silver
+	matter = list(DEFAULT_WALL_MATERIAL = 130, "silver" = 100)
+
 /*
  * .45
  */
@@ -165,6 +191,14 @@
 /obj/item/ammo_casing/a45/hp
 	desc = "A .45 hollow-point bullet casing."
 	projectile_type = /obj/item/projectile/bullet/pistol/medium/hp
+
+/obj/item/ammo_casing/a45/silver
+	name = ".45 silver round"
+	desc = "A .45 silver bullet casing. Bless and Sancitfied to banish otherworlds entities."
+	icon_state = "ag-casing"
+	projectile_type = /obj/item/projectile/bullet/pistol/silver
+	matter = list(DEFAULT_WALL_MATERIAL = 130, "silver" = 100)
+
 
 /*
  * 10mm
@@ -251,6 +285,15 @@
 //	projectile_type = /obj/item/projectile/bullet/shotgun/ion
 	matter = list(DEFAULT_WALL_MATERIAL = 360, "uranium" = 240)
 
+//Silver 12g
+/obj/item/ammo_casing/a12g/silver
+	name = " Silver shotgun shell"
+	desc = "A 12 gauge slug. Bless and Sancitfied to banish otherworlds entities."
+	icon_state = "agshell"
+	caliber = "12g"
+	projectile_type = /obj/item/projectile/bullet/pellet/shotgun/silver
+	matter = list(DEFAULT_WALL_MATERIAL = 360, "silver" = 240)
+
 /*
  * 7.62mm
  */
@@ -285,6 +328,21 @@
 /obj/item/ammo_casing/a762/hunter
 	desc = "A 7.62mm hunting bullet casing."
 	projectile_type = /obj/item/projectile/bullet/rifle/a762/hunter
+
+
+/obj/item/ammo_casing/a762/sniper
+	desc = "A 7.62mm high velocity bullet casing optimised for a marksman rifle."
+	projectile_type = /obj/item/projectile/bullet/rifle/a762/sniper
+
+/obj/item/ammo_casing/a762/sniperhunter
+	desc = "A 7.62mm high velocity hunter bullet casing optimised for a marksman rifle."
+	projectile_type = /obj/item/projectile/bullet/rifle/a762/sniperhunter
+
+/obj/item/ammo_casing/a762/silver
+	desc = "A 7.62mm hunting bullet casing. Bless and Sancitfied to banish otherworlds entities."
+	icon_state = "agrifle-casing"
+	projectile_type = /obj/item/projectile/bullet/rifle/a762/silver
+	matter = list(DEFAULT_WALL_MATERIAL = 300, "silver" = 150)
 
 /*
  * 14.5mm (anti-materiel rifle round)
@@ -331,11 +389,11 @@
 /obj/item/ammo_casing/a545/hunter
 	desc = "A 5.45mm hunting bullet casing."
 	projectile_type = /obj/item/projectile/bullet/rifle/a545/hunter
-	
+
 /*
  * 10x24mm Caseless
  */
- 
+
 /obj/item/ammo_casing/a10x24mmcaseless
 	desc = "A 10x24mm caseless round, common during the Xenomorph wars due to its use the the battle rifles of the United Solar Marine Corps."
 	caliber = "10x24mm caseless"
