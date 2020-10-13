@@ -1,5 +1,0 @@
-author: "KasparoVy"
-delete-after: True
-changes: 
-  - bugfix: "Character preview will now show all loadout accessories (within usual logic) in the order you selected them."
-  - bugfix: "All loadout accessories will be equipped to your character when you spawn (within usual logic) in the order you selected them."
