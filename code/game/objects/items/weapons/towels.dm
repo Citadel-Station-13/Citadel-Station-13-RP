@@ -9,6 +9,16 @@
 	hitsound = 'sound/weapons/towelwhip.ogg'
 	desc = "A soft cotton towel."
 
+/obj/item/weapon/towel/equipped(var/M, var/slot)
+	..()
+	switch(slot)
+		if(slot_head)
+			sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/species/teshari/head.dmi')
+		if(slot_wear_suit)
+			sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/species/teshari/suit.dmi')
+		if(slot_belt)
+			sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/species/teshari/belt.dmi')
+
 /obj/item/towel/attack_self(mob/living/user as mob)
 	user.visible_message(text("<span class='notice'>[] uses [] to towel themselves off.</span>", user, src))
 	playsound(user, 'sound/weapons/towelwipe.ogg', 25, 1)

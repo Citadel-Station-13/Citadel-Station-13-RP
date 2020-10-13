@@ -3,31 +3,9 @@
 	icon_state = "fwindow"
 	maxhealth = 80
 
-//Special map objects
+// Special map objects
 /obj/effect/landmark/map_data/triumph
-    height = 4
-/*
-/obj/turbolift_map_holder/tether
-	name = "Tether Climber"
-	depth = 7
-	lift_size_x = 3
-	lift_size_y = 3
-	icon = 'icons/obj/turbolift_preview_3x3.dmi'
-	wall_type = null // Don't make walls
-
-	areas_to_use = list(
-		/area/turbolift/t_surface/level1,
-		/area/turbolift/t_surface/level2,
-		/area/turbolift/t_surface/level3,
-		/area/turbolift/tether/transit,
-		/area/turbolift/t_station/level1,
-		/area/turbolift/t_station/level2,
-		/area/turbolift/t_station/level3
-		)
-
-/datum/turbolift
-	music = list('sound/music/elevator.ogg')  // Woo elevator music!
-*/
+	height = 4
 
 /obj/effect/step_trigger/lost_in_space
 	var/deathmessage = "You drift off into space, floating alone in the void until your life support runs out."
@@ -66,6 +44,7 @@
 	return TRUE
 
 /obj/effect/ceiling/CanAllowThrough(atom/movable/mover, turf/target, height=0, air_group=0)
+	. = ..()
 	if(mover && mover.z > src.z)
 		return FALSE // Block entry from above to our turf
 	return TRUE
@@ -114,7 +93,7 @@
 	can_atmos_pass = ATMOS_PASS_NO
 	base_icon_state = "door_closed"
 	occupied_icon_state = "door_locked"
-	desc = "The shuttle bay you might've came in from.  You could leave the base easily using this."
+	desc = "The shuttle bay you might've came in from.  You could leave the base easily using this.<br><span class='userdanger'>Drag-drop yourself onto it while adjacent to leave.</span>"
 	on_store_message = "has departed on the shuttle."
 	on_store_name = "Crew Shift Transfer Services"
 	on_enter_occupant_message = "The shuttle arrives at the platform; you step inside and take a seat."
@@ -122,6 +101,7 @@
 	on_store_visible_message_2 = "to the commanding ship"
 	time_till_despawn = 10 SECONDS
 	spawnpoint_type = /datum/spawnpoint/shuttle
+
 /obj/machinery/cryopod/robot/door/shuttle/process()
 	if(SSemergencyshuttle.online() || SSemergencyshuttle.returned())
 		// Transform into a door!  But first despawn anyone inside
@@ -135,12 +115,9 @@
 	// Otherwise just operate normally
 	return ..()
 
-/obj/machinery/cryopod/robot/door/shuttle/Bumped(var/atom/movable/AM)
-	if(!ishuman(AM))
-		return
-
-	var/mob/living/carbon/human/user = AM
-
+/obj/machinery/cryopod/robot/door/tram/go_in(mob/living/M, mob/living/user)
+	if(M != user)
+		return ..()
 	var/choice = alert(user, "Do you want to depart via the shuttle? Your character will leave the round.","Departure","No","Yes")
 	if(user && Adjacent(user) && choice == "Yes")
 		var/mob/observer/dead/newghost = user.ghostize()
@@ -378,23 +355,6 @@ var/global/list/latejoin_shuttle   = list()
 /obj/machinery/cryopod/robot/door/dorms
 	spawnpoint_type = /datum/spawnpoint/shuttle
 
-//Dance pole
-/obj/structure/dancepole
-	name = "dance pole"
-	desc = "Engineered for your entertainment"
-	icon = 'icons/obj/objects.dmi'
-	icon_state = "dancepole"
-	density = 0
-	anchored = 1
-
-/obj/structure/dancepole/attackby(var/obj/item/O as obj, var/mob/user as mob)
-	if(O.is_wrench())
-		anchored = !anchored
-		playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
-		if(anchored)
-			to_chat(user, "<font color='blue'>You secure \the [src].</font>")
-		else
-			to_chat(user, "<font color='blue'>You unsecure \the [src].</font>")
 //
 // ### Wall Machines On Full Windows ###
 // To make sure wall-mounted machines placed on full-tile windows are clickable they must be above the window

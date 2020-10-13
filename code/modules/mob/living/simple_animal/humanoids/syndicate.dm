@@ -172,8 +172,8 @@
 
 /mob/living/simple_mob/hostile/syndicate/ranged/space
 	name = "space mercenary" //VOREStation Edit
-	icon_state = "syndicaterangedpsace"
-	icon_living = "syndicaterangedpsace"
+	icon_state = "syndicaterangedspace"
+	icon_living = "syndicaterangedspace"
 
 	speed = 0
 

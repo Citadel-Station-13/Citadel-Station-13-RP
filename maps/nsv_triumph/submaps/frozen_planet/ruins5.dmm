@@ -1,0 +1,17 @@
+"a" = (/turf/simulated/wall/frozen_world,/area/triumph_away/frozen_planet/ruins)
+"f" = (/turf/simulated/floor/old_tile/green/frozen_world{color = "#63A83A"; icon = 'icons/turf/flooring/tiles_vr.dmi'; icon_state = "tile_full"},/area/triumph_away/frozen_planet/ruins)
+"i" = (/turf/simulated/floor/outdoors/snow/frozen_world,/area/triumph_away/frozen_planet/ruins)
+"v" = (/obj/structure/closet/crate/secure/loot,/turf/simulated/floor/outdoors/snow/frozen_world,/area/triumph_away/frozen_planet/ruins)
+"B" = (/obj/structure/loot_pile/mecha/gygax,/turf/simulated/floor/outdoors/snow/frozen_world,/area/triumph_away/frozen_planet/ruins)
+"C" = (/obj/random/mob/sif/hostile{mob_faction = "frozen"},/turf/simulated/floor/outdoors/snow/frozen_world,/area/triumph_away/frozen_planet/ruins)
+"G" = (/turf/simulated/floor/frozen_world,/area/triumph_away/frozen_planet/ruins)
+"R" = (/obj/random/mob/sif/hostile{mob_faction = "frozen"},/turf/simulated/floor/frozen_world,/area/triumph_away/frozen_planet/ruins)
+
+(1,1,1) = {"
+aiiGii
+ivfGCa
+ifRifi
+iGffii
+iiBGGi
+aaaiGa
+"}

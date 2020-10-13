@@ -55,6 +55,7 @@
 #define LANGUAGE_ZADDAT "Vedahq"
 #define LANGUAGE_GIBBERISH "Babel"
 #define LANGUAGE_SQUEAKISH "Squeakish"
+#define LANGUAGE_VERNAL "Vernal"
 
 // Language flags.
 #define WHITELISTED  1   // Language is available if the speaker is whitelisted.

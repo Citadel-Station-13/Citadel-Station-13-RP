@@ -1,5 +1,0 @@
-author: "Enzo-Leon"
-delete-after: True
-changes: 
-  - rscadd: "emergency atmos shutters for robotics glass windows"
-  - bugfix: "adjusted rotation of some bar shutters"

@@ -389,6 +389,9 @@
 /mob/living/simple_mob/slime/feral/dark_blue,
 /turf/simulated/floor/airless,
 /area/triumph_away/debrisfield/explored)
+"gH" = (
+/turf/space,
+/area/triumph_away/debrisfield/explored)
 "MV" = (
 /obj/structure/closet/crate,
 /obj/item/stack/material/phoron{
@@ -490,9 +493,9 @@ ab
 bh
 bh
 ab
-aa
-aa
-aa
+gH
+gH
+gH
 ab
 bh
 bh

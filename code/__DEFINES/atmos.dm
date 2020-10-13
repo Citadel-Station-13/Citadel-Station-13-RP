@@ -28,6 +28,7 @@
 #define MINIMUM_AIR_TO_SUSPEND       0.01 		// Minimum amount of air that has to move before a group processing can be suspended
 #define MINIMUM_MOLES_DELTA_TO_MOVE  0.01		// Either this must be active
 #define MINIMUM_TEMPERATURE_TO_MOVE  (T20C + 100)                                        // or this (or both, obviously)
+#define MINIMUM_PRESSURE_DIFFERENCE_TO_SUSPEND (MINIMUM_AIR_TO_SUSPEND*R_IDEAL_GAS_EQUATION*T20C)/CELL_VOLUME		// Minimum pressure difference between zones to suspend
 
 #define MINIMUM_TEMPERATURE_RATIO_TO_SUSPEND      0.5        // Minimum temperature difference before group processing is suspended.
 #define MINIMUM_TEMPERATURE_DELTA_TO_SUSPEND      0.5

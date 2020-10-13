@@ -826,14 +826,6 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	build_path = /obj/item/firing_pin/test_range
 	sort_string = "MAVGA"
 
-/datum/design/item/pin/mindshield
-	name = "Loyalty"
-	id = "loyalty_pin"
-	req_tech = list(TECH_MATERIAL = 3, TECH_BIO = 3, TECH_POWER = 4, TECH_COMBAT = 4)
-	materials = list(DEFAULT_WALL_MATERIAL = 1000, "glass" = 500, "phoron" = 500, "gold" = 500)
-	build_path = /obj/item/firing_pin/implant/mindshield
-	sort_string = "MAVGB"
-
 /datum/design/item/pin/explorer
 	name = "Exploration"
 	id = "explorer_pin"
@@ -841,12 +833,4 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	materials = list(DEFAULT_WALL_MATERIAL = 1000, "glass" = 500)
 	build_path = /obj/item/firing_pin/explorer
 	sort_string = "MAVGC"
-
-/datum/design/item/pin/dna
-	name = "DNA"
-	id = "dna_pin"
-	req_tech = list(TECH_MATERIAL = 3, TECH_BIO = 4, TECH_POWER = 3, TECH_COMBAT = 3)
-	materials = list(DEFAULT_WALL_MATERIAL = 1000, "glass" = 500, "uranium" = 500)
-	build_path = /obj/item/firing_pin/dna
-	sort_string = "MAVGD"
 

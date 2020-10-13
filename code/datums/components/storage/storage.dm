@@ -391,7 +391,7 @@
 	M.client.screen |= closer
 	M.client.screen |= real_location.contents
 	M.active_storage = src
-	LAZYOR(is_using, M)
+	LAZYDISTINCTADD(is_using, M)
 	return TRUE
 
 /datum/component/storage/proc/hide_from(mob/M)

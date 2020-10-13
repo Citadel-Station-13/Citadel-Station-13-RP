@@ -19,23 +19,23 @@
 	density = 0
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
-	circuit =  /obj/item/circuitboard/status_display
+	circuit = /obj/item/circuitboard/status_display
 	var/mode = 1	// 0 = Blank
 					// 1 = Shuttle timer
 					// 2 = Arbitrary message(s)
-					// 3 = alert picture
+					// 3 = Alert picture
 					// 4 = Supply shuttle timer
 
-	var/picture_state	// icon_state of alert picture
-	var/message1 = ""	// message line 1
-	var/message2 = ""	// message line 2
-	var/index1			// display index for scrolling messages or 0 if non-scrolling
+	var/picture_state	// Icon_state of alert picture
+	var/message1 = ""	// Message line 1
+	var/message2 = ""	// Message line 2
+	var/index1			// Display index for scrolling messages or 0 if non-scrolling
 	var/index2
 	var/picture = null
 
-	var/frequency = 1435		// radio frequency
+	var/frequency = 1435	// Radio frequency
 
-	var/friendc = 0      // track if Friend Computer mode
+	var/friendc = 0			// Track if Friend Computer mode
 	var/ignore_friendc = 0
 
 	maptext_height = 26
@@ -63,13 +63,13 @@
 		attack_hand(user)
 	return
 
-// register for radio system
+// Register for radio system
 /obj/machinery/status_display/Initialize()
 	. = ..()
 	if(radio_controller)
 		radio_controller.add_object(src, frequency)
 
-// timed process
+// Timed process
 /obj/machinery/status_display/process()
 	if(stat & NOPOWER)
 		remove_display()
@@ -83,7 +83,7 @@
 	set_picture("ai_bsod")
 	..(severity)
 
-// set what is displayed
+// Set what is displayed
 /obj/machinery/status_display/proc/update()
 	remove_display()
 	if(friendc && !ignore_friendc)
@@ -91,12 +91,12 @@
 		return 1
 
 	switch(mode)
-		if(STATUS_DISPLAY_BLANK)	//blank
+		if(STATUS_DISPLAY_BLANK)	// Blank
 			return 1
-		if(STATUS_DISPLAY_TRANSFER_SHUTTLE_TIME)				//emergency shuttle timer
+		if(STATUS_DISPLAY_TRANSFER_SHUTTLE_TIME)	// Emergency shuttle timer
 			if(!SSemergencyshuttle)
 				message1 = "-ETA-"
-				message2 = "Never" // You're here forever.
+				message2 = "Never"	// You're here forever.
 				return 1
 			if(SSemergencyshuttle.waiting_to_leave())
 				message1 = "-ETD-"
@@ -114,7 +114,7 @@
 					message2 = "Error"
 				update_display(message1, message2)
 			return 1
-		if(STATUS_DISPLAY_MESSAGE)	//custom messages
+		if(STATUS_DISPLAY_MESSAGE)	// Custom messages
 			var/line1
 			var/line2
 
@@ -210,7 +210,7 @@
 	return "[add_zero(num2text((timeleft / 60) % 60),2)]:[add_zero(num2text(timeleft % 60), 2)]"
 
 /obj/machinery/status_display/proc/get_supply_shuttle_timer()
-	var/datum/shuttle/ferry/supply/shuttle = SSsupply.shuttle
+	var/datum/shuttle/autodock/ferry/supply/shuttle = SSsupply.shuttle
 	if(!shuttle)
 		return "Error"
 

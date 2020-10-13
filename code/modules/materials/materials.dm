@@ -187,7 +187,7 @@ var/list/name_to_material
 	if(islist(composite_material))
 		for(var/material_string in composite_material)
 			temp_matter[material_string] = composite_material[material_string]
-	else if(SHEET_MATERIAL_AMOUNT)
+	else
 		temp_matter[name] = SHEET_MATERIAL_AMOUNT
 	return temp_matter
 
@@ -973,6 +973,28 @@ var/list/name_to_material
 	conductive = 0
 	pass_stack_colors = TRUE
 
+/datum/material/emptysandbag
+	name = "empty sandbag"
+	stack_type = /obj/item/stack/material/emptysandbag
+	icon_colour = "#D9C179"
+	weight = 1
+	hardness = 1
+	protectiveness = 0 // 0%
+	conductive = 0
+	sheet_singular_name = "empty sandbag"
+	sheet_plural_name = "empty sandbags"
+
+/datum/material/sandbags
+	name = "sandbag"
+	stack_type = /obj/item/stack/material/sandbags
+	icon_colour = "#D9C179"
+	weight = 5
+	hardness = 50
+	protectiveness = 5 // 20%
+	conductive = 0
+	sheet_singular_name = "sandbag"
+	sheet_plural_name = "sandbags"
+
 /datum/material/cult
 	name = "cult"
 	display_name = "disturbing stone"
@@ -995,6 +1017,64 @@ var/list/name_to_material
 
 /datum/material/cult/reinf/place_dismantled_product(var/turf/target)
 	new /obj/effect/decal/remains/human(target)
+
+/datum/material/flesh
+	name = "flesh"
+	icon_colour = "#35343a"
+	icon_base = "flesh"
+	dooropen_noise = 'sound/effects/attackblob.ogg'
+	door_icon_base = "fleshclosed"
+	icon_reinf = "reinf_mesh"
+	melting_point = T0C+300
+	sheet_singular_name = "glob"
+	sheet_plural_name = "globs"
+	conductive = 0
+	explosion_resistance = 60
+	radiation_resistance = 10
+	stack_origin_tech = list(TECH_MATERIAL = 8, TECH_PHORON = 4, TECH_BLUESPACE = 4, TECH_BIO = 7)
+
+/datum/material/flesh/can_open_material_door(var/mob/living/user)
+	var/mob/living/carbon/M = user
+	if(istype(M))
+		return 1
+	return 0
+
+/datum/material/flesh/wall_touch_special(var/turf/simulated/wall/W, var/mob/living/L)
+	var/mob/living/carbon/M = L
+	if(istype(M) && L.mind.isholy)
+		to_chat(M, "<span class = 'notice'>\The [W] shudders under your touch, starting to become porous.</span>")
+		playsound(W, 'sound/effects/attackblob.ogg', 50, 1)
+		if(do_after(L, 5 SECONDS))
+			spawn(2)
+				playsound(W, 'sound/effects/attackblob.ogg', 100, 1)
+				W.dismantle_wall()
+		return 1
+	return 0
+
+/datum/material/bone
+	name = "bone"
+	icon_colour = "#35343a"
+	icon_base = "bone"
+	icon_reinf = "reinf_mesh"
+	melting_point = T0C+300
+	sheet_singular_name = "bone"
+	sheet_plural_name = "boness"
+	conductive = 0
+	explosion_resistance = 60
+	radiation_resistance = 10
+	stack_origin_tech = list(TECH_MATERIAL = 8, TECH_PHORON = 4, TECH_BLUESPACE = 4, TECH_BIO = 7)
+
+/datum/material/bone/wall_touch_special(var/turf/simulated/wall/W, var/mob/living/L)
+	var/mob/living/carbon/M = L
+	if(istype(M) && L.mind.isholy)
+		to_chat(M, "<span class = 'notice'>\The [W] shudders under your touch, starting to become porous.</span>")
+		playsound(W, 'sound/effects/attackblob.ogg', 50, 1)
+		if(do_after(L, 5 SECONDS))
+			spawn(2)
+				playsound(W, 'sound/effects/attackblob.ogg', 100, 1)
+				W.dismantle_wall()
+		return 1
+	return 0
 
 //TODO PLACEHOLDERS:
 /datum/material/leather
@@ -1120,26 +1200,43 @@ var/list/name_to_material
 	protectiveness = 0 // 0%
 	conductive = 0
 
-/datum/material/emptysandbag
+//CitMain Sandbag port.
+/obj/item/stack/material/emptysandbag
 	name = "empty sandbag"
-	stack_type = /obj/item/stack/material/emptysandbag
-	icon_base = ""
-	icon_colour = "#D9C179"
-	weight = 1
-	hardness = 1
-	protectiveness = 0 // 0%
-	conductive = 0
-	sheet_singular_name = "empty sandbag"
-	sheet_plural_name = "empty sandbags"
+	desc = "A bag to be filled with sand."
+	icon_state = "sandbag"
+	max_amount = 50
+	description_info = "Fill with sand to convert this into a sandbag."
+	no_variants = FALSE
+	fill_type = /obj/item/stack/material/sandbags
 
-/datum/material/sandbags
-	name = "sandbag"
-	stack_type = /obj/item/stack/material/sandbags
-	icon_base = ""
-	icon_colour = "#D9C179"
-	weight = 5
-	hardness = 50
-	protectiveness = 5 // 20%
-	conductive = 0
-	sheet_singular_name = "sandbag"
-	sheet_plural_name = "sandbags"
+	default_type = "emptysandbag"
+	perunit = 1
+
+/obj/item/stack/material/emptysandbag/attackby(var/obj/item/W, var/mob/user)
+	if(!istype(W, /obj/item/ore/glass))
+		var/time = (3 SECONDS)
+		user.setClickCooldown(time)
+		if(do_after(user, time, src) && use(1))
+			to_chat(user, "<span class='notice'>You fill the sandbag.</span>")
+	else
+		return ..()
+
+/obj/item/stack/material/emptysandbag/attackby(var/obj/item/W, var/mob/user)
+	if(istype(W, /obj/item/ore/glass) && !interact(user, src))
+		if(do_after(user, 3 SECONDS, src) && use(1) && qdel(W))
+			var/turf/T = get_turf(user)
+			to_chat(user, "<span class='notice'>You fill the sandbag.</span>")
+			new /obj/item/stack/material/sandbags && !get(T)
+	else
+		return ..()
+
+/obj/item/stack/material/sandbags
+	name = "sandbags"
+	desc = "This is a synthetic bag tightly packed with sand. It is designed to provide structural support and serve as a portable barrier."
+	singular_name = "sandbag"
+	icon_state = "sandbags"
+	no_variants = FALSE
+
+	default_type = "sandbags"
+	perunit = 1

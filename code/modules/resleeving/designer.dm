@@ -3,7 +3,7 @@
 
 /obj/machinery/computer/transhuman/designer
 	name = "body design console"
-	catalogue_data = list(///datum/category_item/catalogue/information/organization/khi,
+	catalogue_data = list(///datum/category_item/catalogue/information/organization/vey_med,
 						/datum/category_item/catalogue/technology/resleeving)
 	icon = 'icons/obj/computer_vr.dmi'
 	icon_keyboard = "med_key"
@@ -334,7 +334,7 @@
 	ASSERT(istype(B))
 	var/datum/category_item/player_setup_item/general/basic/G = CG.items_by_name["Basic"]
 	ASSERT(istype(G))
-	CG = CC.categories_by_name["VORE"]
+	CG = CC.categories_by_name["Species Customization"]
 	var/datum/category_item/player_setup_item/vore/ears/E = CG.items_by_name["Appearance"]
 	ASSERT(istype(E))
 

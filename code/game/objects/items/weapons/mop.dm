@@ -73,16 +73,16 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 	.=..()
 	if (mopmode == MOPMODE_TILE)
 		mopmode = MOPMODE_SWEEP
-		to_chat(user, "<span class='warning'>You will now clean with broad sweeping motions")
+		to_chat(user, "<span class='warning'>You will now clean with broad sweeping motions</span>")
 	else if (mopmode == MOPMODE_SWEEP)
 		mopmode = MOPMODE_TILE
-		to_chat(user, "<span class='warning'>You will now thoroughly clean a single tile at a time")
+		to_chat(user, "<span class='warning'>You will now thoroughly clean a single tile at a time</span>")
 */
 /obj/item/mop/afterattack(atom/A, mob/user, proximity)
 	if(!proximity) return
 	if(istype(A, /turf) || istype(A, /obj/effect/decal/cleanable) || istype(A, /obj/effect/overlay))
 		if(reagents.total_volume < 1)
-			to_chat(user, "<span class='warning'>Your mop is dry!")
+			to_chat(user, "<span class='warning'>Your mop is dry!</span>")
 			return
 		var/turf/T = get_turf(A)
 		if(!T)
@@ -95,7 +95,7 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 			if(do_after(user, 23, T))
 				if(T)
 					T.clean(src, user)
-				to_chat(user, "<span class='warning'>You have finished mopping!")
+				to_chat(user, "<span class='warning'>You have finished mopping!</span>")
 		//Sweep mopmode. Light and fast aoe cleaning
 		//else if (mopmode == MOPMODE_SWEEP)
 		//	sweep(user, T)
@@ -138,7 +138,7 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 		qdel(mopimage)
 
 	if(!do_after(user, sweep_time,target))
-		to_chat(user, "<span class='warning'>Mopping cancelled")
+		to_chat(user, "<span class='warning'>Mopping cancelled</span>")
 		return
 
 	for (var/t in turfs)
@@ -157,20 +157,20 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 			user.Stun(2)
 			shake_camera(user, 1, 1)
 			playsound(T,"thud", 20, 1, -3)
-			to_chat(user, "<span class='warning'>There's not enough space for broad sweeps here!")
+			to_chat(user, "<span class='warning'>There's not enough space for broad sweeps here!</span>")
 			return
 */
 /obj/item/mop/proc/makeWet(atom/A, mob/user)
 	if(A.is_open_container())
 		if(A.reagents)
 			if(A.reagents.total_volume < 1)
-				to_chat(user, "<span class='warning'>\The [A] is out of water!")
+				to_chat(user, "<span class='warning'>\The [A] is out of water!</span>")
 				return
 			A.reagents.trans_to_obj(src, reagents.maximum_volume)
 		else
 			reagents.add_reagent("water", reagents.maximum_volume)
 
-		to_chat(user, "<span class='warning'>You wet \the [src] with \the [A].")
+		to_chat(user, "<span class='warning'>You wet \the [src] with \the [A].</span>")
 		playsound(loc, 'sound/effects/slosh.ogg', 25, 1)
 
 

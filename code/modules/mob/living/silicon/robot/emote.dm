@@ -254,6 +254,23 @@
 			else
 				to_chat(src, "You're not a dog!")
 
+		if("gonk")
+			var/M = null
+			if(param)
+				for (var/mob/A in view(null, null))
+					if (param == A.name)
+						M = A
+						break
+			if(!M)
+				param = null
+
+			if (param)
+				message = "gonks at [param]."
+			else
+				message = "gonks."
+			playsound(src.loc, 'sound/machines/gonk.ogg', 50, 0)
+			m_type = 1
+
 		if ("help")
 			to_chat(src, "salute, bow-(none)/mob, clap, flap, aflap, twitch, twitch_s, nod, deathgasp, glare-(none)/mob, stare-(none)/mob, look, beep, ping, \nbuzz, law, halt, yes, no")
 		else

@@ -334,7 +334,7 @@
 
 			if(!ispath(atom_def, /atom)) // Skip the item if the path does not exist.  Fix your crap, mappers!
 				if(bad_paths)
-					LAZYOR(bad_paths[path_text], model_key)
+					LAZYDISTINCTADD(bad_paths[path_text], model_key)
 				continue
 			members.Add(atom_def)
 

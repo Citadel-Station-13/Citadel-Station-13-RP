@@ -1,7 +1,0 @@
-author: "drofoljaelisglis"
-delete-after: True
-changes: 
-  - rscdel: "Removed emagged jukeboxes exploding for the time being."
-  - tweak: "Changed some of the genre names on the jukebox."
-  - soundadd: "Added ~250 songs to the jukebox."
-  - spellcheck: "Fixed jukebox-related typos."

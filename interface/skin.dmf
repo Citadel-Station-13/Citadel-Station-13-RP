@@ -2,31 +2,36 @@ macro "default"
 
 
 menu "menu"
-	elem 
+	elem
 		name = "&File"
 		command = ""
 		saved-params = "is-checked"
-	elem 
+	elem
 		name = "&Quick screenshot\tF2"
 		command = ".screenshot auto"
 		category = "&File"
 		saved-params = "is-checked"
-	elem 
+	elem
 		name = "&Save screenshot as...\tShift+F2"
 		command = ".screenshot"
 		category = "&File"
 		saved-params = "is-checked"
-	elem 
+	elem
 		name = ""
 		command = ""
 		category = "&File"
 		saved-params = "is-checked"
-	elem 
-		name = "&Quit"
+	elem "reconnectbutton"
+		name = "&Reconnect"
+		command = ".reconnect"
+		category = "&File"
+		saved-params = "is-checked"
+	elem
+		name = "&Quit\tAlt-F4"
 		command = ".quit"
 		category = "&File"
 		saved-params = "is-checked"
-	elem 
+	elem
 		name = "&Icons"
 		command = ""
 		saved-params = "is-checked"
@@ -73,7 +78,7 @@ menu "menu"
 		can-check = true
 		group = "size"
 		saved-params = "is-checked"
-	elem 
+	elem
 		name = ""
 		command = ""
 		category = "&Icons"
@@ -84,16 +89,16 @@ menu "menu"
 		category = "&Icons"
 		can-check = true
 		saved-params = "is-checked"
-	elem 
+	elem
 		name = "&Help"
 		command = ""
 		saved-params = "is-checked"
-	elem 
+	elem
 		name = "&Admin help\tF1"
 		command = "adminhelp"
 		category = "&Help"
 		saved-params = "is-checked"
-	elem 
+	elem
 		name = "&Hotkeys"
 		command = "hotkeys-help"
 		category = "&Help"
@@ -183,19 +188,16 @@ window "Telecomms IDE"
 window "mainwindow"
 	elem "mainwindow"
 		type = MAIN
-		pos = 418,0
+		pos = 0,0
 		size = 1024x768
 		anchor1 = none
 		anchor2 = none
 		background-color = none
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
-		title = "Citadel Station 13"
-		icon = 'icons\\ss13_64.png'
+		icon = 'icons\\CS13.png'
 		macro = "default"
 		menu = "menu"
-		outer-size = 1046x879
-		inner-size = 1024x793
 	elem "mainvsplit"
 		type = CHILD
 		pos = 3,0
@@ -206,6 +208,15 @@ window "mainwindow"
 		saved-params = "splitter"
 		right = "rpane"
 		is-vert = true
+	elem "asset_cache_browser"
+		type = BROWSER
+		pos = 0,0
+		size = 200x200
+		anchor1 = none
+		anchor2 = none
+		is-visible = false
+		auto-format = false
+		saved-params = ""
 	elem "input"
 		type = INPUT
 		pos = 3,746
@@ -229,7 +240,7 @@ window "mainwindow"
 		button-type = pushbox
 	elem "tooltip"
 		type = BROWSER
-		pos = -15,1
+		pos = 0,0
 		size = 999x999
 		anchor1 = none
 		anchor2 = none
@@ -245,11 +256,6 @@ window "mapwindow"
 		anchor1 = none
 		anchor2 = none
 		saved-params = "pos;size;is-minimized;is-maximized"
-		titlebar = false
-		statusbar = false
-		can-close = false
-		can-minimize = false
-		can-resize = false
 		is-pane = true
 	elem "map"
 		type = MAP
@@ -257,12 +263,13 @@ window "mapwindow"
 		size = 640x480
 		anchor1 = 0,0
 		anchor2 = 100,100
-		font-family = "Arial Rounded MT Bold,Arial Black,Arial,sans-serif"
+		font-family = "Arial"
 		font-size = 7
 		is-default = true
 		saved-params = "icon-size"
 		on-show = ".winset\"mainwindow.mainvsplit.left=mapwindow\""
 		on-hide = ".winset\"mainwindow.mainvsplit.left=\""
+
 
 window "outputwindow"
 	elem "outputwindow"

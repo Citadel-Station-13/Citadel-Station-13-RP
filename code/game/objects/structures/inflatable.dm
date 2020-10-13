@@ -174,6 +174,7 @@
 	return TryToSwitchState(user)
 
 /obj/structure/inflatable/door/CanAllowThrough(atom/movable/mover, turf/target)
+	. = ..()
 	if(istype(mover, /obj/effect/beam))
 		return !opacity
 	return !density
