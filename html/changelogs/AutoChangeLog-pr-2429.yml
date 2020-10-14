@@ -1,7 +1,0 @@
-author: "VailTheWolf"
-delete-after: True
-changes: 
-  - rscadd: "Bullet Lighter and sounds for all Zippos"
-  - soundadd: "Zippoopen.oog"
-  - soundadd: "Zippoclose.oog"
-  - imageadd: "\"Bulletlighter\" into zippo.dmi"
