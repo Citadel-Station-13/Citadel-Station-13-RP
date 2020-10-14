@@ -428,8 +428,5 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 #define MR_UNSURE	1
 #define MR_DEAD		2
 
-/// No hitsound define
-#define HITSOUND_UNSET "UNSET"
-
 //Holy Weapon defines from Main. Lists null rod weapons and classifies them as HOLY.
 #define HOLY_WEAPONS /obj/item/nullrod
