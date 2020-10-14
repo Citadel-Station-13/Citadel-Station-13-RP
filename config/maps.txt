@@ -15,10 +15,10 @@ Format:
 	disabled (disables the map)
 endmap
 
-map triumph
-	default
-endmap
-
 map tether
 	disabled
+endmap
+
+map triumph
+	default
 endmap
