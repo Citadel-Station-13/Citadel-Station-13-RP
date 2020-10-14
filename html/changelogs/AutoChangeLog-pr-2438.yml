@@ -1,0 +1,4 @@
+author: "Zandario"
+delete-after: True
+changes: 
+  - config: "Puts Maps.txt into use"
