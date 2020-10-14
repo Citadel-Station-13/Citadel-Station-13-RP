@@ -1,5 +1,0 @@
-author: "Zandario"
-delete-after: True
-changes: 
-  - bugfix: "Lighting Runtimes"
-  - bugfix: "Many other Runtimes, I recommend checking the PRs linked above."
