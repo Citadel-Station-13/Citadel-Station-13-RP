@@ -1,5 +1,6 @@
 #define TANK_MAX_RELEASE_PRESSURE (3*ONE_ATMOSPHERE)
 #define TANK_DEFAULT_RELEASE_PRESSURE ONE_ATMOSPHERE
+#define TANK_IDEAL_PRESSURE 1015 //Arbitrary.
 
 /obj/machinery/oxygen_pump
 	name = "emergency oxygen pump"
