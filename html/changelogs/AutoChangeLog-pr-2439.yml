@@ -1,0 +1,4 @@
+author: "Zandario"
+delete-after: True
+changes: 
+  - bugfix: "Fixes some Linter Errors. Suprise!"
