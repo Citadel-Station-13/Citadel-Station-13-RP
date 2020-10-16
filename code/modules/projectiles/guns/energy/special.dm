@@ -377,7 +377,7 @@ obj/item/gun/energy/staff/focus
 	icon_state = "service_spin"
 	projectile_type = /obj/item/projectile/bullet/pistol/spin
 	fire_delay = 1		//High fire rate.
-	charge_cost = 50	//Lower cost per shot to encourage rapid fire.
+	charge_cost = 100	//Lower cost per shot to encourage rapid fire.
 
 /obj/item/gun/energy/service/pierce
 	name = "service weapon (pierce)"
@@ -389,6 +389,6 @@ obj/item/gun/energy/staff/focus
 /obj/item/gun/energy/service/charge
 	name = "service weapon (charge)"
 	icon_state = "service_charge"
-	projectile_type = /obj/item/projectile/bullet/gyro
+	projectile_type = /obj/item/projectile/bullet/burstbullet    //Formerly: obj/item/projectile/bullet/gyro. A little too robust.
 	fire_delay = 30
 	charge_cost = 800	//Three shots.
