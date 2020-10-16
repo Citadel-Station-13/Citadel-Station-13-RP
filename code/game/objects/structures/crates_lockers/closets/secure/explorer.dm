@@ -45,7 +45,7 @@
 	return ..()
 
 //SAR Lockers
-
+/*This one is actually not the right one.
 /obj/structure/closet/secure_closet/sar
 	name = "search and rescue locker"
 	desc = "Supplies for a wilderness first responder."
@@ -83,8 +83,9 @@
 		/obj/item/gps/medical,
 		/obj/item/geiger,
 		/obj/item/bodybag/cryobag)
+*/
 
-/* SC Misc_vr locker.
+//SC Misc_vr locker.
 /obj/structure/closet/secure_closet/sar
 	name = "field medic locker"
 
@@ -122,7 +123,6 @@
 		/obj/item/geiger,
 		/obj/item/bodybag/cryobag,
 		/obj/item/cataloguer/compact)
-*/
 
 //Pilot Locker
 
