@@ -989,6 +989,9 @@
 	if(world.time < wearer_move_delay)
 		return
 
+	// AIs are a bit slower than regular and ignore move intent.
+	wearer_move_delay = world.time + ai_controlled_move_delay
+
 	if(!wearer || !wearer.loc || !ai_can_move_suit(user, check_user_module = 1))
 		return
 
@@ -1029,9 +1032,6 @@
 	if(wearer.pinned.len)
 		to_chat(src, "<span class='notice'>Your host is pinned to a wall by [wearer.pinned[1]]</span>!")
 		return 0
-
-	// AIs are a bit slower than regular and ignore move intent.
-	wearer_move_delay = world.time + ai_controlled_move_delay
 
 	if(istype(wearer.buckled, /obj/vehicle))
 		//manually set move_delay for vehicles so we don't inherit any mob movement penalties

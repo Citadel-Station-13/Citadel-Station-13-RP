@@ -1,7 +1,0 @@
-author: "KasparoVy"
-delete-after: True
-changes: 
-  - rscadd: "Added buttons to go forward or backward hair & facial hair styles."
-  - rscadd: "Added a button to move a marking to a specific place in the order."
-  - tweak: "Markings are now properly aligned."
-  - refactor: "Ports Para's colour_square and improves customization colour previews."
