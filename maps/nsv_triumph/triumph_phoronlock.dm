@@ -176,7 +176,7 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 //Handles the control of airlocks
 
 #define STATE_IDLE			0
-#define STATE_PREPARE		1
+//#define STATE_PREPARE		1
 #define STATE_CLEAN			16
 #define STATE_PRESSURIZE	17
 

@@ -1869,10 +1869,6 @@
 /turf/simulated/floor/tiled,
 /area/vacant/vacant_shop)
 "fQ" = (
-/obj/machinery/firealarm{
-	dir = 1;
-	pixel_y = -24
-	},
 /obj/machinery/light_switch{
 	pixel_x = -25
 	},
@@ -3357,6 +3353,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/structure/kitchenspike,
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/freezer)
 "kc" = (
@@ -7018,10 +7015,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/dormitory)
-"vk" = (
-/obj/machinery/gibber,
-/turf/simulated/floor/tiled/freezer,
-/area/crew_quarters/freezer)
 "vl" = (
 /turf/simulated/wall/r_wall,
 /area/maintenance/lower/bar)
@@ -7706,10 +7699,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
-"xC" = (
-/obj/machinery/chem_master/condimaster,
-/turf/simulated/floor/tiled/freezer,
-/area/crew_quarters/freezer)
 "xD" = (
 /obj/machinery/light_switch{
 	pixel_x = 25;
@@ -9726,6 +9715,10 @@
 "Eh" = (
 /turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/sleep/Dorm_8)
+"Ej" = (
+/obj/machinery/chem_master/condimaster,
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters/freezer)
 "El" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -10397,6 +10390,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
+"Gn" = (
+/obj/machinery/gibber,
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters/freezer)
 "Gq" = (
 /obj/machinery/door/firedoor/glass/hidden/steel,
 /turf/simulated/floor/carpet/sblucarpet,
@@ -11508,17 +11505,6 @@
 	},
 /turf/simulated/wall,
 /area/quartermaster/qm)
-"JI" = (
-/obj/machinery/alarm{
-	dir = 8;
-	pixel_x = 25
-	},
-/obj/machinery/camera/network/civilian{
-	dir = 8
-	},
-/obj/structure/closet/secure_closet/freezer/kitchen,
-/turf/simulated/floor/tiled/dark,
-/area/crew_quarters/kitchen)
 "JJ" = (
 /obj/machinery/light{
 	dir = 4
@@ -12504,10 +12490,6 @@
 "Np" = (
 /obj/structure/dogbed,
 /obj/machinery/camera/network/civilian,
-/mob/living/simple_mob/animal/passive/bird/ringneck_dove{
-	desc = "The bartenders newest pet on the station. They seem like they want to help you out.";
-	name = "Brewster"
-	},
 /obj/machinery/light{
 	dir = 4
 	},
@@ -12515,6 +12497,10 @@
 	dir = 1;
 	name = "Station Intercom (General)";
 	pixel_y = 26
+	},
+/mob/living/simple_mob/animal/passive/bird/ringneck_dove{
+	desc = "The bartenders newest pet on the station. They seem like they want to help you out.";
+	name = "Brewster"
 	},
 /turf/simulated/floor/wood,
 /area/triumph/surfacebase/bar_backroom)
@@ -15908,6 +15894,17 @@
 /obj/machinery/chemical_dispenser/bar_coffee/full,
 /turf/simulated/floor/lino,
 /area/crew_quarters/coffee_shop)
+"Xy" = (
+/obj/structure/closet/secure_closet/freezer/kitchen,
+/obj/machinery/alarm{
+	dir = 8;
+	pixel_x = 25
+	},
+/obj/machinery/camera/network/civilian{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/crew_quarters/kitchen)
 "Xz" = (
 /obj/structure/undies_wardrobe,
 /turf/simulated/floor/wood,
@@ -16515,6 +16512,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
+"ZF" = (
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_x = -28;
+	pixel_y = 0
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters/freezer)
 "ZG" = (
 /obj/machinery/power/terminal{
 	dir = 1
@@ -22984,7 +22989,7 @@ ej
 Mx
 SG
 SQ
-XW
+Xy
 XW
 Ce
 sU
@@ -23126,7 +23131,7 @@ rI
 Zy
 Zy
 Zy
-JI
+Zy
 yC
 Zy
 Nw
@@ -23267,7 +23272,7 @@ FU
 eW
 aU
 fQ
-ZK
+ZF
 ZK
 ZK
 IN
@@ -23408,8 +23413,8 @@ yD
 kr
 PZ
 Wx
-vk
-ZK
+kr
+Gn
 Ij
 Ij
 Ij
@@ -23550,8 +23555,8 @@ ML
 KX
 uH
 kb
-xC
-ZK
+kr
+Ej
 Ij
 OF
 vC
