@@ -25305,7 +25305,7 @@
 /area/triumph/station/explorer_prep)
 "rWr" = (
 /obj/machinery/shield_diffuser,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/airless/ceiling,
 /area/hallway/secondary/docking_hallway)
 "rWY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
