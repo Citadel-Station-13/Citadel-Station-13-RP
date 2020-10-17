@@ -156,6 +156,10 @@
 	check_armour = "melee"
 	fire_sound ='sound/weapons/Gunshot_pathetic.ogg' // Rubber shots have less powder in the casing.
 
+/obj/item/projectile/bullet/pistol/spin // Special weak ammo for Service Spin mode.
+	fire_sound = 'sound/weapons/gunshot2.ogg'
+	damage = 5
+
 /* shotgun projectiles */
 
 /obj/item/projectile/bullet/shotgun
@@ -199,6 +203,15 @@
 	pellets = 6
 	range_step = 1
 	spread_step = 20
+	holy = TRUE
+
+/obj/item/projectile/bullet/shotgun/stake
+	name = "stake"
+	fire_sound = 'sound/weapons/Gunshot_shotgun.ogg'
+	damage = 50
+	armor_penetration = 15
+	SA_bonus_damage = 16 // Potential 156 Damage against demons at point blank.
+	SA_vulnerability = MOB_CLASS_DEMONIC
 	holy = TRUE
 
 //EMP shotgun 'slug', it's basically a beanbag that pops a tiny emp when it hits. //Not currently used

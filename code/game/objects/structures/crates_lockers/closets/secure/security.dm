@@ -201,7 +201,8 @@
 		/obj/item/clothing/suit/storage/hooded/wintercoat/security,
 		/obj/item/clothing/shoes/boots/winter/security,
 		/obj/item/gps/security/hos,
-		/obj/item/flashlight/maglight)
+		/obj/item/flashlight/maglight,
+		/obj/item/clothing/under/rank/head_of_security/turtleneck)
 
 
 /obj/structure/closet/secure_closet/warden
@@ -336,6 +337,10 @@
 	starts_with = list(
 		/obj/item/clothing/accessory/badge/holo/detective,
 		/obj/item/clothing/gloves/black,
+		/obj/item/gun/projectile/revolver/detective45,
+		/obj/item/ammo_magazine/s45/rubber,
+		/obj/item/ammo_magazine/s45/rubber,
+		/obj/item/reagent_containers/spray/pepper,
 		///obj/item/gunbox, //VOREStation Removal,
 		/obj/item/storage/belt/detective,
 		/obj/item/storage/box/evidence,

@@ -826,6 +826,21 @@
 	ammo_type = /obj/item/ammo_casing/a12g/silver
 	matter = list(DEFAULT_WALL_MATERIAL = 1070, "silver" = 480)
 
+/obj/item/ammo_magazine/holyshot_mag
+	name = "blessed drum magazine (12 gauge)"
+	icon_state = "holyshotgun_mag"
+	desc = "Thrice-blessed, this drum magazine is loaded with silver shot designed to combat supernatural threats."
+	mag_type = MAGAZINE
+	caliber = "12g"
+	matter = list(DEFAULT_WALL_MATERIAL = 100, "silver" = 1100)
+	ammo_type = /obj/item/ammo_casing/a12g/silver
+	max_ammo = 12
+
+/obj/item/ammo_magazine/holyshot_mag/stake
+	name = "blessed drum magazine (stakes)"
+	desc = "Thrice-blessed, this drum magazine is loaded with wooden stakes soaked in sacred oils."
+	ammo_type = /obj/item/ammo_casing/a12g/stake
+
 ///////// .75 Gyrojet /////////
 
 /obj/item/ammo_magazine/m75

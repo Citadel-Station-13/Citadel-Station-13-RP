@@ -157,9 +157,6 @@
 	build_path = /obj/machinery/computer/roguezones
 	origin_tech = list(TECH_DATA = 3, TECH_BLUESPACE = 1)
 
-// Undefine our constants to not pollute namespace
-#undef SHUTTLETAG_BELTER
-
 
 /obj/item/paper/rogueminer
 	name = "R-38 Scanner Console Guide"

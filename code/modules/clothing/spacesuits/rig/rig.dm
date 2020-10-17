@@ -991,8 +991,11 @@
 	if(world.time < wearer_move_delay)
 		return
 
+
 	if(!wearer || !wearer.loc)
-		return
+    return
+
+
 
 	if(ai_moving)
 		if(!ai_can_move_suit(user, check_user_module = 1))
