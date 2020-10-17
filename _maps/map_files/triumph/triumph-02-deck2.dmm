@@ -1163,10 +1163,8 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/lounge/kitchen_freezer)
 "dT" = (
-/obj/item/radio/intercom{
-	pixel_y = -24
-	},
-/turf/simulated/floor/wood,
+/obj/structure/railing,
+/turf/simulated/floor/tiled,
 /area/triumph/station/stairs_two)
 "dV" = (
 /obj/machinery/light{
@@ -1745,12 +1743,11 @@
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/port)
 "fv" = (
-/obj/machinery/light/small{
-	dir = 1
+/obj/item/radio/intercom{
+	pixel_y = -24
 	},
-/obj/random/trash_pile,
-/turf/simulated/floor/plating,
-/area/maintenance/dormitory)
+/turf/simulated/floor/wood,
+/area/triumph/station/stairs_two)
 "fx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -2540,13 +2537,16 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
 "hy" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/maintenance/common,
-/obj/structure/catwalk,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "hz" = (
-/obj/structure/closet/crate/trashcart,
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/maintenance/common,
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "hA" = (
@@ -2972,12 +2972,7 @@
 /turf/simulated/floor/wood,
 /area/triumph/station/stairs_two)
 "iL" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
+/obj/structure/closet/crate/trashcart,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "iM" = (
@@ -3050,6 +3045,15 @@
 "iW" = (
 /obj/structure/reagent_dispensers/watertank,
 /obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/dormitory)
+"iX" = (
+/obj/machinery/door/firedoor/glass,
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/obj/structure/window/reinforced{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
@@ -3427,6 +3431,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/machinery/computer/timeclock/premade/south,
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_two)
 "kq" = (
@@ -3563,7 +3568,6 @@
 /obj/machinery/camera/network/civilian{
 	dir = 1
 	},
-/obj/machinery/computer/timeclock/premade/south,
 /obj/machinery/door/firedoor/glass/hidden/steel,
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_two)
@@ -16092,6 +16096,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_8)
+"Zp" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/triumph/station/stairs_two)
 "Zr" = (
 /obj/structure/closet/crate,
 /obj/random/maintenance/clean,
@@ -31280,7 +31290,7 @@ gR
 jT
 ai
 ai
-hy
+hz
 ai
 ai
 LH
@@ -31413,17 +31423,17 @@ kF
 Dt
 Gy
 Sv
-dD
+DE
 dD
 jT
 VN
 Rh
 kp
 jT
-oE
+qH
 ai
 CU
-iM
+CU
 ai
 Ip
 tA
@@ -31555,16 +31565,16 @@ dD
 Dt
 dD
 Sv
-DE
-dD
+Sv
+Sv
 jT
 IZ
 zz
 tz
 jT
-qH
 ai
-CU
+ai
+ai
 CU
 ai
 ai
@@ -31697,15 +31707,15 @@ bM
 Dt
 dD
 jT
-jT
-jT
-jT
+pg
+pg
+pg
 wW
 pg
 kI
-jT
-jT
-jT
+pg
+pg
+pg
 jT
 CU
 CU
@@ -31841,11 +31851,11 @@ dD
 jT
 Yz
 Yz
-pg
+Zp
 Kd
 pg
 NU
-pg
+dT
 Yz
 Yz
 jT
@@ -31983,15 +31993,15 @@ dD
 jT
 Yz
 Yz
-pg
+Zp
 Kd
 Qs
 NU
-pg
+dT
 Yz
 Yz
 jT
-oE
+iM
 CU
 oE
 tA
@@ -32697,10 +32707,10 @@ dd
 yv
 dd
 tO
-dT
+fv
 ai
 oE
-hz
+iL
 oE
 CU
 oE
@@ -32983,7 +32993,7 @@ bV
 dd
 dd
 ai
-fv
+hy
 oE
 oE
 oE
@@ -33127,9 +33137,9 @@ ZN
 tA
 tA
 tA
-iL
-iL
-iL
+iX
+iX
+iX
 tA
 ii
 ii
