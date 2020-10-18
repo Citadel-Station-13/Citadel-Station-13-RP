@@ -27,7 +27,7 @@
 /// Scans directions, sets network_directions to have every direction that we can link to. If there's another power cable builder detected, make sure they know we're here by adding us to their cable directions list before we're deleted.
 /obj/effect/mapping_helpers/network_builder/power_cable/scan_directions()
 	var/turf/T
-	for(var/i in GLOB.cardinals)
+	for(var/i in GLOB.cardinal)
 		if(i in network_directions)
 			continue				//we're already set, that means another builder set us.
 		T = get_step(loc, i)
