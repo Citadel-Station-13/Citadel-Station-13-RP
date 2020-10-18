@@ -56,9 +56,6 @@
 /obj/item/bedsheet/bluedouble,
 /turf/simulated/floor/carpet/tealcarpet,
 /area/crew_quarters/sleep/CMO_quarters)
-"adJ" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
-/area/hydroponics/garden)
 "aeh" = (
 /obj/machinery/button/remote/airlock{
 	id = "exp_gateway";
@@ -7314,9 +7311,9 @@
 /turf/simulated/floor/tiled/monotile,
 /area/triumph/station/explorer_prep)
 "fgy" = (
-/obj/machinery/disposal,
-/obj/structure/disposalpipe/trunk{
-	dir = 4
+/obj/machinery/alarm{
+	dir = 8;
+	pixel_x = 24
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
@@ -8524,14 +8521,12 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "gkj" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 1
+/obj/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/hallway/primary/aft)
+/turf/simulated/floor/plating,
+/area/maintenance/chapel)
 "gkm" = (
 /obj/structure/flora/pottedplant/stoutbush,
 /obj/effect/floor_decal/borderfloor{
@@ -11956,6 +11951,15 @@
 "iFf" = (
 /turf/simulated/shuttle/wall/voidcraft/green,
 /area/shuttle/civvie/cockpit)
+"iFI" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/hallway/primary/aft)
 "iFQ" = (
 /obj/machinery/light{
 	dir = 4
@@ -16675,13 +16679,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/primary/aft)
-"mcV" = (
-/obj/machinery/alarm{
-	dir = 8;
-	pixel_x = 24
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/chapel)
 "mdm" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -24855,9 +24852,6 @@
 /obj/item/melee/baton/loaded,
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
-"rDo" = (
-/turf/simulated/shuttle/wall/voidcraft/blue,
-/area/hydroponics/garden)
 "rDp" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -27447,18 +27441,6 @@
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
-"tzZ" = (
-/obj/machinery/camera/network/civilian,
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/hallway/primary/aft)
 "tAQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -41257,7 +41239,7 @@ rXs
 mew
 mfn
 dBL
-fgy
+gkj
 quD
 inp
 dcC
@@ -41833,8 +41815,8 @@ nge
 pKG
 pKG
 nge
-tzZ
-vyP
+pgC
+hvu
 uNu
 brg
 aKb
@@ -42112,12 +42094,12 @@ xIn
 kKQ
 gEf
 kKQ
-kKQ
+rXs
 pKG
 lNa
 lNa
 lNa
-gkj
+iFI
 tzJ
 vPz
 brg
@@ -42250,16 +42232,16 @@ amB
 nLj
 kKQ
 kKQ
-kKQ
+fgy
 kKQ
 kKQ
 fwU
-mcV
+rXs
 pKG
 lNa
 lNa
 lNa
-gkj
+iFI
 tzJ
 uuO
 brg
@@ -42539,10 +42521,10 @@ slE
 wwF
 ruM
 mIQ
-adJ
-rDo
-rDo
-adJ
+nge
+pKG
+pKG
+nge
 pWo
 nyf
 pWo
