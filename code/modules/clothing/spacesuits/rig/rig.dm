@@ -993,7 +993,7 @@
 
 
 	if(!wearer || !wearer.loc)
-    return
+		return
 
 
 
