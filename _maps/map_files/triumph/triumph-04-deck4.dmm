@@ -8523,6 +8523,15 @@
 /obj/item/storage/box/donut,
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
+"gkj" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/hallway/primary/aft)
 "gkm" = (
 /obj/structure/flora/pottedplant/stoutbush,
 /obj/effect/floor_decal/borderfloor{
@@ -9096,7 +9105,7 @@
 	dir = 4;
 	icon_state = "tube1"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/wall,
 /area/maintenance/substation/command)
 "gGi" = (
 /obj/machinery/firealarm{
@@ -13827,13 +13836,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/hallway)
-"kaG" = (
-/obj/machinery/alarm{
-	dir = 8;
-	pixel_x = 24
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/substation/command)
 "kaQ" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -18163,6 +18165,9 @@
 	},
 /turf/simulated/shuttle/wall/voidcraft/blue,
 /area/shuttle/excursion/general)
+"nge" = (
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/hallway/primary/aft)
 "ngM" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/blast/regular{
@@ -29299,8 +29304,12 @@
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/security/hanger)
 "uSJ" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
-/area/hallway/primary/aft)
+/obj/machinery/alarm{
+	dir = 8;
+	pixel_x = 24
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/substation/command)
 "uSQ" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
@@ -41536,7 +41545,7 @@ oCE
 oZg
 vvM
 eHF
-pVs
+uSJ
 pVs
 pVs
 quD
@@ -41677,10 +41686,10 @@ kOi
 kKQ
 quD
 noW
-pVs
-pVs
+quD
+quD
 gFO
-pVs
+quD
 quD
 fOb
 wkX
@@ -41819,11 +41828,11 @@ uvs
 gfo
 quD
 pVs
-kaG
-uSJ
+quD
+nge
 pKG
 pKG
-uSJ
+nge
 tzZ
 vyP
 uNu
@@ -42108,7 +42117,7 @@ pKG
 lNa
 lNa
 lNa
-ssI
+gkj
 tzJ
 vPz
 brg
@@ -42250,7 +42259,7 @@ pKG
 lNa
 lNa
 lNa
-ssI
+gkj
 tzJ
 uuO
 brg

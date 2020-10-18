@@ -425,9 +425,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/port)
-"bt" = (
-/turf/simulated/shuttle/wall/voidcraft/blue,
-/area/crew_quarters/coffee_shop)
 "bu" = (
 /obj/machinery/power/apc{
 	cell_type = /obj/item/cell/super;
@@ -1056,6 +1053,9 @@
 "dv" = (
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/Dorm_11)
+"dw" = (
+/turf/simulated/shuttle/wall/voidcraft/blue,
+/area/janitor)
 "dx" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /obj/effect/floor_decal/borderfloor,
@@ -1450,6 +1450,9 @@
 /obj/machinery/floor_light/prebuilt,
 /turf/simulated/floor/tiled/old_tile/red,
 /area/crew_quarters/bar)
+"eE" = (
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/hallway/primary/port)
 "eF" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -2104,9 +2107,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
-"gq" = (
-/turf/simulated/shuttle/wall/voidcraft/blue,
-/area/janitor)
 "gr" = (
 /obj/structure/sink{
 	pixel_y = 22
@@ -2363,6 +2363,10 @@
 /obj/structure/closet/wardrobe/black,
 /turf/simulated/floor/wood,
 /area/crew_quarters/visitor_dining)
+"hd" = (
+/obj/turbolift_map_holder/triumph,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/hallway/primary/port)
 "he" = (
 /obj/structure/undies_wardrobe,
 /turf/simulated/floor/wood,
@@ -6331,7 +6335,10 @@
 /obj/machinery/alarm{
 	pixel_y = 22
 	},
-/obj/structure/closet/l3closet/janitor,
+/obj/structure/closet/jcloset,
+/obj/random/soap,
+/obj/item/mop,
+/obj/item/storage/bag/trash,
 /turf/simulated/floor/tiled/dark,
 /area/janitor)
 "tE" = (
@@ -6862,10 +6869,6 @@
 "vl" = (
 /turf/simulated/wall/r_wall,
 /area/maintenance/lower/bar)
-"vm" = (
-/obj/turbolift_map_holder/triumph,
-/turf/simulated/floor/holofloor/tiled/dark,
-/area/hallway/primary/port)
 "vo" = (
 /turf/simulated/wall/r_wall,
 /area/vacant/vacant_shop)
@@ -7236,9 +7239,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/vacant/vacant_shop)
-"wM" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
-/area/crew_quarters/coffee_shop)
 "wO" = (
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_1)
@@ -8624,9 +8624,6 @@
 "Bp" = (
 /turf/simulated/wall,
 /area/crew_quarters/sleep/Dorm_4)
-"Br" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
-/area/hallway/primary/port)
 "Bt" = (
 /obj/structure/sign/double/barsign,
 /turf/simulated/wall,
@@ -8936,6 +8933,9 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
+"Cm" = (
+/turf/simulated/shuttle/wall/voidcraft/blue,
+/area/crew_quarters/coffee_shop)
 "Cn" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -14235,6 +14235,9 @@
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/kitchen)
+"TL" = (
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/crew_quarters/coffee_shop)
 "TM" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/machinery/light_switch{
@@ -16038,6 +16041,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_two)
+"Zq" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/hallway/primary/port)
 "Zr" = (
 /obj/structure/closet/crate,
 /obj/random/maintenance/clean,
@@ -23975,9 +23987,9 @@ tD
 YH
 cM
 oL
-gq
+dw
 RE
-Br
+eE
 sU
 ub
 RH
@@ -24118,7 +24130,7 @@ fu
 cM
 RE
 vd
-vm
+hd
 RE
 sc
 VT
@@ -24262,7 +24274,7 @@ RE
 vd
 vd
 vd
-sU
+Zq
 ub
 PT
 mQ
@@ -24404,7 +24416,7 @@ RE
 vd
 vd
 vd
-sU
+Zq
 ub
 RH
 mQ
@@ -24684,10 +24696,10 @@ qT
 QU
 vq
 Ib
-wM
-bt
-bt
-wM
+TL
+Cm
+Cm
+TL
 nv
 zV
 Iw

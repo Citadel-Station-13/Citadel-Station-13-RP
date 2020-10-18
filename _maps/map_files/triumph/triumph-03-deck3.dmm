@@ -1861,6 +1861,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/workshop)
+"bJO" = (
+/obj/structure/table/reinforced,
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/hallway/primary/aft)
 "bKp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -5270,6 +5277,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
+"eIO" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/primary/aft)
 "eJd" = (
 /obj/machinery/alarm{
 	dir = 8;
@@ -5461,6 +5474,15 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/effect/floor_decal/corner/mauve/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/primary/aft)
+"eRj" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/techfloor/hole{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -7799,6 +7821,12 @@
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 1
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
@@ -11386,6 +11414,12 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 1
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "kKP" = (
@@ -11680,7 +11714,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/wall,
 /area/maintenance/substation/medical_science)
 "laE" = (
 /obj/structure/cable{
@@ -12093,13 +12127,13 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 5
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/civilian_hallway_mid)
@@ -15426,6 +15460,9 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
+/obj/effect/floor_decal/techfloor/corner{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "oLu" = (
@@ -16522,6 +16559,9 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "pIL" = (
@@ -16650,6 +16690,9 @@
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
@@ -19290,7 +19333,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/wall,
 /area/maintenance/substation/medical_science)
 "sdm" = (
 /obj/effect/floor_decal/techfloor{
@@ -21710,6 +21753,9 @@
 "tVV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/floor_decal/techfloor/corner{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "tWd" = (
@@ -21842,12 +21888,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/starboard)
-"ugs" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
-/turf/simulated/floor/tiled,
-/area/hallway/primary/aft)
 "uhK" = (
 /obj/structure/table/woodentable,
 /obj/item/toy/plushie/girly_corgi,
@@ -25847,13 +25887,6 @@
 /obj/structure/reagent_dispensers/fueltank,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay)
-"xBy" = (
-/obj/structure/table/reinforced,
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 8
-	},
-/turf/simulated/floor/wood,
-/area/hallway/primary/aft)
 "xBB" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/red{
 	dir = 8
@@ -26444,10 +26477,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/techfloor/hole{
-	dir = 1
+	dir = 9
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
@@ -34308,7 +34338,7 @@ gAk
 nll
 sbB
 kZS
-csv
+kZS
 ltk
 pLa
 oJZ
@@ -35021,7 +35051,7 @@ uqB
 qGk
 qGk
 uqB
-wCQ
+eIO
 kVZ
 rvZ
 oBY
@@ -35163,7 +35193,7 @@ vVr
 uqB
 uqB
 vVr
-wCQ
+eIO
 kVZ
 hVB
 oBY
@@ -35444,9 +35474,9 @@ pPV
 gvu
 oST
 eTE
-xBy
+bJO
 mpr
-ugs
+eRj
 wCQ
 nuZ
 cqr
