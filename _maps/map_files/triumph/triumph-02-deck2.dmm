@@ -1414,6 +1414,10 @@
 /obj/item/instrument/bikehorn,
 /turf/simulated/floor/tiled,
 /area/maintenance/dormitory)
+"ex" = (
+/obj/structure/table/rack,
+/turf/simulated/floor/plating,
+/area/maintenance/dormitory)
 "ez" = (
 /obj/structure/sign/double/barsign,
 /turf/simulated/wall,
@@ -1482,13 +1486,6 @@
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/plating,
 /area/quartermaster/office)
-"eK" = (
-/obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = -24
-	},
-/turf/simulated/floor/tiled,
-/area/maintenance/dormitory)
 "eM" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -1829,6 +1826,13 @@
 /obj/machinery/smartfridge/drying_rack,
 /turf/simulated/floor/tiled/techfloor,
 /area/hydroponics)
+"fJ" = (
+/obj/machinery/alarm{
+	pixel_y = 22
+	},
+/obj/machinery/camera/network/civilian,
+/turf/simulated/floor/wood,
+/area/triumph/station/stairs_two)
 "fK" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -4093,6 +4097,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hydroponics)
+"mz" = (
+/obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor,
+/obj/structure/catwalk,
+/turf/space,
+/area/maintenance/dormitory)
 "mA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -4412,13 +4422,6 @@
 /obj/item/stool/padded,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
-"nu" = (
-/obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = -24
-	},
-/turf/simulated/floor/tiled,
-/area/triumph/station/stairs_two)
 "nv" = (
 /obj/machinery/alarm{
 	pixel_y = 22
@@ -6015,6 +6018,12 @@
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/coffee_shop)
+"sK" = (
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 2
+	},
+/turf/simulated/floor/tiled,
+/area/triumph/station/stairs_two)
 "sL" = (
 /obj/structure/table/bench/padded,
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -6581,10 +6590,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/barrestroom)
-"ur" = (
-/obj/structure/table/rack,
-/turf/simulated/floor/plating,
-/area/maintenance/dormitory)
 "uu" = (
 /obj/structure/toilet{
 	dir = 1
@@ -6982,9 +6987,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
-"vF" = (
-/turf/simulated/floor/tiled,
-/area/maintenance/dormitory)
 "vH" = (
 /turf/simulated/floor/airless,
 /area/space)
@@ -7204,6 +7206,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/barrestroom)
+"wz" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/wall,
+/area/triumph/station/stairs_two)
 "wA" = (
 /obj/machinery/vending/cigarette,
 /turf/simulated/floor/wood,
@@ -7478,6 +7486,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
+"xu" = (
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
+	},
+/turf/simulated/floor/tiled,
+/area/triumph/station/stairs_two)
 "xv" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -7879,12 +7894,6 @@
 	},
 /turf/simulated/floor/airless,
 /area/space)
-"yJ" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
-	dir = 2
-	},
-/turf/simulated/floor/tiled,
-/area/triumph/station/stairs_two)
 "yL" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
@@ -7974,6 +7983,12 @@
 "ze" = (
 /turf/simulated/wall,
 /area/triumph/surfacebase/bar_backroom)
+"zg" = (
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/triumph/station/stairs_two)
 "zh" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -9840,13 +9855,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/hallway/primary/port)
-"Fw" = (
-/obj/machinery/alarm{
-	pixel_y = 22
-	},
-/obj/machinery/camera/network/civilian,
-/turf/simulated/floor/wood,
-/area/triumph/station/stairs_two)
 "Fz" = (
 /obj/machinery/firealarm{
 	pixel_y = 24
@@ -10073,12 +10081,6 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/belter)
-"Gh" = (
-/obj/machinery/camera/network/civilian{
-	dir = 1
-	},
-/turf/simulated/open,
-/area/triumph/station/stairs_two)
 "Gi" = (
 /obj/machinery/power/smes/buildable{
 	RCon_tag = "Solar Farm - SMES 1"
@@ -10353,6 +10355,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_5)
+"GW" = (
+/obj/machinery/camera/network/civilian{
+	dir = 1
+	},
+/turf/simulated/open,
+/area/triumph/station/stairs_two)
 "GX" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
@@ -12664,6 +12672,11 @@
 /obj/structure/closet/crate/plastic,
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
+"OX" = (
+/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/tiled,
+/area/triumph/station/stairs_two)
 "OY" = (
 /turf/simulated/wall,
 /area/quartermaster/warehouse)
@@ -13846,12 +13859,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_4)
-"SI" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
-	dir = 1
-	},
-/turf/simulated/floor/tiled,
-/area/triumph/station/stairs_two)
 "SK" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -15126,12 +15133,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/vacant/vacant_shop)
-"Wv" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
-/turf/simulated/wall,
-/area/maintenance/dormitory)
 "Ww" = (
 /obj/machinery/light{
 	dir = 1
@@ -15888,12 +15889,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/coffee_shop)
-"YR" = (
-/obj/machinery/door/airlock/maintenance/common,
-/obj/machinery/door/firedoor,
-/obj/structure/catwalk,
-/turf/space,
-/area/maintenance/dormitory)
 "YS" = (
 /obj/machinery/light{
 	dir = 1
@@ -16127,11 +16122,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
-"ZA" = (
-/obj/machinery/door/airlock/maintenance,
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/tiled,
-/area/maintenance/dormitory)
 "ZD" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 5
@@ -31264,7 +31254,7 @@ jT
 ai
 ai
 ai
-YR
+mz
 ai
 LH
 tA
@@ -31403,9 +31393,9 @@ VN
 Rh
 kp
 jT
-Wv
-ai
-ai
+wz
+jT
+jT
 CU
 ai
 Ip
@@ -31539,15 +31529,15 @@ Dt
 Dt
 hz
 pg
-nu
-yJ
+xu
+sK
 IZ
 pg
 tz
-SI
-eK
-vF
-ZA
+zg
+xu
+pg
+OX
 CU
 ai
 ai
@@ -31682,17 +31672,17 @@ dD
 jT
 qV
 pg
-yJ
+sK
 IZ
 pg
 tz
-SI
+zg
 pg
 XB
 jT
 CU
 CU
-ur
+ex
 tA
 ii
 ii
@@ -31830,11 +31820,11 @@ pg
 tz
 dT
 Yz
-Gh
+GW
 jT
 qH
 CU
-ur
+ex
 tA
 ii
 ii
@@ -32960,7 +32950,7 @@ wF
 dD
 Gy
 jT
-Fw
+fJ
 dd
 bV
 dd
