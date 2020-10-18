@@ -1377,6 +1377,15 @@
 /obj/effect/floor_decal/techfloor,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/starboard)
+"blB" = (
+/obj/machinery/camera/network/civilian{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/triumph/station/stairs_three)
 "blI" = (
 /obj/machinery/camera/network/civilian{
 	dir = 1
@@ -3580,6 +3589,16 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/teleporter/departing)
+"dot" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass/hidden/steel,
+/turf/simulated/floor/tiled,
+/area/triumph/station/stairs_three)
 "doH" = (
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless,
@@ -4139,8 +4158,12 @@
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
 "dRj" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
-/area/maintenance/substation/medical_science)
+/obj/structure/table/reinforced,
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/hallway/primary/aft)
 "dRn" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
@@ -5645,15 +5668,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/escape/medical_escape_pod_hallway)
-"fbQ" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/techfloor/hole{
-	dir = 1
-	},
-/turf/simulated/floor/tiled,
-/area/hallway/primary/aft)
 "fcp" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -31
@@ -7719,7 +7733,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
-/area/hallway/secondary/civilian_hallway_mid)
+/area/hallway/primary/aft)
 "gSo" = (
 /obj/structure/grille,
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -11206,12 +11220,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery_hallway)
-"kDh" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
-/turf/simulated/floor/tiled,
-/area/hallway/primary/aft)
 "kDD" = (
 /turf/simulated/wall/r_wall,
 /area/medical/medbay_emt_bay)
@@ -12133,7 +12141,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled,
-/area/hallway/secondary/civilian_hallway_mid)
+/area/hallway/primary/aft)
 "ltL" = (
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 4;
@@ -13793,22 +13801,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virology)
-"mZY" = (
-/obj/structure/table/reinforced,
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 8
-	},
-/turf/simulated/floor/wood,
-/area/hallway/primary/aft)
-"nbr" = (
-/obj/machinery/camera/network/civilian{
-	dir = 1
-	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
-	dir = 1
-	},
-/turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
 "ncc" = (
 /obj/effect/floor_decal/techfloor/orange,
 /turf/simulated/floor/tiled/techfloor,
@@ -13989,16 +13981,6 @@
 "nll" = (
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical_science)
-"nmc" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/door/firedoor/glass/hidden/steel,
-/turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
 "nmd" = (
 /obj/machinery/sleeper{
 	dir = 8
@@ -14479,7 +14461,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/hallway/secondary/civilian_hallway_mid)
+/area/hallway/primary/aft)
 "nQZ" = (
 /obj/structure/table/standard,
 /obj/item/multitool,
@@ -22323,8 +22305,14 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "uAU" = (
-/turf/simulated/wall,
-/area/hallway/secondary/civilian_hallway_mid)
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/techfloor/hole{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/primary/aft)
 "uBj" = (
 /obj/machinery/computer/crew,
 /obj/structure/window/reinforced{
@@ -24590,8 +24578,11 @@
 	name = "\improper Operating Theatre 3"
 	})
 "wvK" = (
-/turf/simulated/shuttle/wall/voidcraft/blue,
-/area/hallway/secondary/civilian_hallway_mid)
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/primary/aft)
 "wvO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
@@ -25169,9 +25160,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
-"wYn" = (
-/turf/simulated/shuttle/wall/voidcraft/blue,
-/area/maintenance/substation/medical_science)
 "wZC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5;
@@ -33937,7 +33925,7 @@ gjt
 kus
 pwn
 csv
-uAU
+eWy
 eWy
 mSw
 fUk
@@ -34503,9 +34491,9 @@ csv
 jQO
 twh
 csv
-dRj
-wYn
-wvK
+vVr
+uqB
+uqB
 vVr
 pIB
 ahs
@@ -35075,7 +35063,7 @@ uqB
 qGk
 qGk
 uqB
-kDh
+wvK
 kVZ
 rvZ
 oBY
@@ -35217,7 +35205,7 @@ vVr
 uqB
 uqB
 vVr
-kDh
+wvK
 kVZ
 hVB
 oBY
@@ -35498,9 +35486,9 @@ pPV
 gvu
 oST
 eTE
-mZY
+dRj
 mpr
-fbQ
+uAU
 wCQ
 nuZ
 cqr
@@ -43028,8 +43016,8 @@ fxx
 fxx
 fxx
 tix
-nmc
-nbr
+dot
+blB
 fxx
 fxx
 fxx
