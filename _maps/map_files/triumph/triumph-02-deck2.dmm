@@ -147,8 +147,7 @@
 "az" = (
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 1;
-	frequency = 1379;
-	id_tag = "solar_pump"
+	id_tag = null
 	},
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -158,6 +157,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/dormitory)
 "aB" = (
@@ -990,12 +990,11 @@
 "dq" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "cargo_bay_door";
-	locked = 1;
+	frequency = null;
+	id_tag = null;
 	name = "Cargo Docking Hatch"
 	},
+/obj/effect/map_helper/airlock/door/simple,
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
 "dr" = (
@@ -1519,15 +1518,6 @@
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
-	},
-/obj/machinery/access_button{
-	command = "cycle_exterior";
-	frequency = 1379;
-	master_tag = "solar_dock";
-	name = "exterior access button";
-	pixel_x = -26;
-	pixel_y = 26;
-	req_one_access = null
 	},
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless,
@@ -2370,12 +2360,11 @@
 	id = "QMLoad2"
 	},
 /obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "cargo_bay_door";
-	locked = 1;
+	frequency = null;
+	id_tag = null;
 	name = "Cargo Docking Hatch"
 	},
+/obj/effect/map_helper/airlock/door/simple,
 /turf/simulated/floor/plating,
 /area/quartermaster/warehouse)
 "hh" = (
@@ -3737,16 +3726,15 @@
 "ln" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "cargo_bay_door";
-	locked = 1;
+	frequency = null;
+	id_tag = null;
 	name = "Cargo Docking Hatch"
 	},
 /obj/machinery/conveyor{
 	dir = 4;
 	id = "QMLoad"
 	},
+/obj/effect/map_helper/airlock/door/simple,
 /turf/simulated/floor/plating,
 /area/quartermaster/warehouse)
 "lo" = (
@@ -4339,14 +4327,6 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/obj/machinery/access_button{
-	command = "cycle_interior";
-	frequency = 1379;
-	master_tag = "solar_dock";
-	name = "interior access button";
-	pixel_x = -28;
-	pixel_y = -24
-	},
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/dormitory)
 "nc" = (
@@ -4429,10 +4409,8 @@
 /area/maintenance/lower/bar)
 "nm" = (
 /obj/machinery/door/airlock/glass_external{
-	frequency = 1379;
-	icon_state = "door_locked";
-	id_tag = "solar_outer";
-	locked = 1;
+	frequency = null;
+	id_tag = null;
 	name = "Solars"
 	},
 /obj/structure/cable/yellow{
@@ -4440,6 +4418,13 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/effect/map_helper/airlock/door/ext_door,
+/obj/machinery/access_button{
+	master_tag = null;
+	pixel_x = -32;
+	pixel_y = -10
+	},
+/obj/effect/map_helper/airlock/button/ext_button,
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/dormitory)
 "nn" = (
@@ -6779,24 +6764,21 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
-	id_tag = "solar_dock";
-	pixel_x = -24;
-	req_one_access = null;
-	tag_airpump = "solar_pump";
-	tag_chamber_sensor = "solar_sensor";
-	tag_exterior_door = "solar_outer";
-	tag_interior_door = "solar_inner"
+	dir = 4;
+	id_tag = "solar_airlock";
+	pixel_x = -25
 	},
 /obj/machinery/airlock_sensor{
-	id_tag = "solar_sensor";
-	pixel_x = 28;
-	pixel_y = -1
+	dir = 8;
+	id_tag = null;
+	pixel_x = 22
 	},
 /obj/machinery/meter{
 	frequency = 1443;
 	id = "dist_aux_meter";
 	name = "Distribution Loop"
 	},
+/obj/effect/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/dormitory)
 "uC" = (
@@ -10160,8 +10142,7 @@
 "FK" = (
 /obj/machinery/computer/roguezones,
 /obj/effect/floor_decal/industrial/warning/cee{
-	dir = 1;
-	icon_state = "warningcee"
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
@@ -10970,12 +10951,18 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/glass_external{
-	frequency = 1379;
-	icon_state = "door_locked";
-	id_tag = "solar_inner";
-	locked = 1;
+	frequency = null;
+	id_tag = null;
 	name = "Solars"
 	},
+/obj/effect/map_helper/airlock/door/int_door,
+/obj/machinery/access_button{
+	dir = 1;
+	master_tag = null;
+	pixel_x = -32;
+	pixel_y = 10
+	},
+/obj/effect/map_helper/airlock/button/int_button,
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/dormitory)
 "In" = (
@@ -13596,10 +13583,8 @@
 "QZ" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "cargo_bay_door";
-	locked = 1;
+	frequency = null;
+	id_tag = null;
 	name = "Cargo Docking Hatch"
 	},
 /obj/machinery/conveyor{
@@ -13607,6 +13592,7 @@
 	id = "QMLoad"
 	},
 /obj/machinery/shield_diffuser,
+/obj/effect/map_helper/airlock/door/simple,
 /turf/simulated/floor/plating,
 /area/quartermaster/warehouse)
 "Ra" = (
@@ -14838,12 +14824,11 @@
 	},
 /obj/machinery/shield_diffuser,
 /obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "cargo_bay_door";
-	locked = 1;
+	frequency = null;
+	id_tag = null;
 	name = "Cargo Docking Hatch"
 	},
+/obj/effect/map_helper/airlock/door/simple,
 /turf/simulated/floor/plating,
 /area/quartermaster/warehouse)
 "UH" = (
@@ -15944,13 +15929,15 @@
 /area/triumph/surfacebase/mining_main/storage)
 "XI" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
+	dir = 8;
 	frequency = 1380;
 	id_tag = "supply_shuttle";
 	layer = 3.3;
 	name = "cargo bay hatch controller";
-	pixel_x = 30;
+	pixel_x = 25;
+	pixel_y = 1;
 	req_one_access = list(13,31);
-	tag_door = "cargo_bay_door"
+	tag_door = null
 	},
 /obj/machinery/camera/network/cargo{
 	dir = 8
@@ -15960,13 +15947,12 @@
 "XJ" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "cargo_bay_door";
-	locked = 1;
+	frequency = null;
+	id_tag = null;
 	name = "Cargo Docking Hatch"
 	},
 /obj/machinery/shield_diffuser,
+/obj/effect/map_helper/airlock/door/simple,
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
 "XK" = (
@@ -16515,8 +16501,7 @@
 "ZF" = (
 /obj/machinery/firealarm{
 	dir = 1;
-	pixel_x = -28;
-	pixel_y = 0
+	pixel_x = -28
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/freezer)
