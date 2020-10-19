@@ -1,6 +1,0 @@
-author: "Mewchild"
-delete-after: True
-changes: 
-  - tweak: "Reworked some of the wiring/piping in hydroponics, so they're not going under walls"
-  - tweak: "Added a second pair of Pumps/Vents to Hydro, to better suit the size of the room"
-  - tweak: "Added a couple holopads to the bar"

@@ -31,6 +31,7 @@
 	tail = "teshtail"
 //	tail_hair = "feathers"
 	reagent_tag = IS_TESHARI
+	meat_type = /obj/item/reagent_containers/food/snacks/meat/chicken/teshari
 
 	move_trail = /obj/effect/decal/cleanable/blood/tracks/paw
 

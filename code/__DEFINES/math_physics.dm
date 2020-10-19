@@ -18,7 +18,5 @@
 #define RADIATOR_EXPOSED_SURFACE_AREA_RATIO 0.04 // (3 cm + 100 cm * sin(3deg))/(2*(3+100 cm)). Unitless ratio.
 #define HUMAN_EXPOSED_SURFACE_AREA          5.2 //m^2, surface area of 1.7m (H) x 0.46m (D) cylinder
 
-#define QUANTIZE(variable) (round(variable,0.0001))
-
 #define TICKS_IN_DAY 		(TICKS_IN_SECOND * 60 * 60 * 24)
 #define TICKS_IN_SECOND 	(world.fps)

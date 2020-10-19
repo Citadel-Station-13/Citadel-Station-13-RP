@@ -76,6 +76,18 @@
 	damage = 4
 	armor_penetration = 40
 
+/obj/item/projectile/bullet/pellet/fragment/rubber
+	name = "stingball shrapnel"
+	damage = 3
+	agony = 8
+	sharp = FALSE
+	edge = FALSE
+	check_armour = "melee"
+
+/obj/item/projectile/bullet/pellet/fragment/rubber/strong
+	damage = 8
+	agony = 16
+
 // Tank rupture fragments
 /obj/item/projectile/bullet/pellet/fragment/tank
 	name = "metal fragment"

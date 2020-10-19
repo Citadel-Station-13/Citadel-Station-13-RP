@@ -100,7 +100,7 @@
 	src.modules += new /obj/item/healthanalyzer(src)
 	src.modules += new /obj/item/reagent_scanner/adv(src)
 	src.modules += new /obj/item/roller_holder(src)
-	src.modules += new /obj/item/reagent_containers/borghypo/crisis(src)
+	src.modules += new /obj/item/reagent_containers/borghypo/lost(src)
 	src.modules += new /obj/item/reagent_containers/glass/beaker/large(src)
 	src.modules += new /obj/item/reagent_containers/dropper/industrial(src)
 	src.modules += new /obj/item/reagent_containers/syringe(src)

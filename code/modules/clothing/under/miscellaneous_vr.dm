@@ -26,16 +26,13 @@
 	hides_bulges = TRUE
 	var/original_size
 
-
-
 /obj/item/clothing/under/bluespace/verb/toggle_fibers()
-		set category = "Object"
-		set name = "Adjust fibers"
-		set desc = "Adjust your suit fibers. This makes it so your stomach(s) will show or not."
-		set src in usr
+	set category = "Object"
+	set name = "Adjust fibers"
+	set desc = "Adjust your suit fibers. This makes it so your stomach(s) will show or not."
+	set src in usr
 
-		adjust_fibers(usr)
-		..()
+	adjust_fibers(usr)
 
 /obj/item/clothing/under/bluespace/proc/adjust_fibers(mob/user)
 	if(hides_bulges == FALSE)
@@ -45,16 +42,11 @@
 		hides_bulges = FALSE
 		to_chat(user, "You relax the suit fibers, showing your stomach(s).")
 
-
-
 /obj/item/clothing/under/bluespace/verb/resize()
 	set name = "Adjust Size"
 	set category = "Object"
 	set src in usr
 	bluespace_size(usr)
-	..()
-
-
 
 /obj/item/clothing/under/bluespace/proc/bluespace_size(mob/usr as mob)
 	if (!ishuman(usr))

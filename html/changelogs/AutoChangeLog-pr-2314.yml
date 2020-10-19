@@ -1,4 +1,0 @@
-author: "drofoljaelisglis"
-delete-after: True
-changes: 
-  - bugfix: "Fixed the poorly sorted loadouts to sort properly."

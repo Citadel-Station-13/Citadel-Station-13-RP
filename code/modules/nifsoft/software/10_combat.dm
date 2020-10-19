@@ -99,6 +99,6 @@ var/global/datum/unarmed_attack/hardclaws/unarmed_hardclaws = new()
 	name = "Microlaser"
 	desc = "A tiny nanofabricated laser."
 
-	icon = 'icons/obj/gun_vr.dmi'
+	icon = 'icons/obj/gun/energy.dmi'
 	icon_state = "PDW"
 	item_state = "gun"

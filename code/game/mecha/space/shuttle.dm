@@ -42,7 +42,7 @@
 	max_special_equip = 1
 
 /obj/mecha/working/hoverpod/Initialize()
-	..()
+	. = ..()
 	ion_trail.stop()
 
 /obj/mecha/working/hoverpod/shuttlecraft/moved_inside(var/mob/living/carbon/human/H as mob)

@@ -9,6 +9,7 @@
  * Banana Peals
  */
 /obj/item/bananapeel/Crossed(AM as mob|obj)
+	. = ..()
 	if (istype(AM, /mob/living))
 		var/mob/living/M = AM
 		M.slip("the [src.name]",4)
@@ -24,6 +25,7 @@
 	reagents.add_reagent("cleaner", 5)
 
 /obj/item/soap/Crossed(AM as mob|obj)
+	. = ..()
 	if (istype(AM, /mob/living))
 		var/mob/living/M =	AM
 		M.slip("the [src.name]",3)

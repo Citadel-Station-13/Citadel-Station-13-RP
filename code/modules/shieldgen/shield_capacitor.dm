@@ -61,7 +61,7 @@
 						owned_gen.capacitors |= src
 						owned_gen.updateDialog()
 		else
-			if(owned_gen && src in owned_gen.capacitors)
+			if(owned_gen && (src in owned_gen.capacitors))
 				owned_gen.capacitors -= src
 			owned_gen = null
 	else

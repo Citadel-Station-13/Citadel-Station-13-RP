@@ -19,17 +19,17 @@ var/datum/species/shapeshifter/promethean/prometheans
 	blood_color = "#05FF9B"
 	flesh_color = "#05FFFB"
 
-	hunger_factor =    0.2
+	hunger_factor = 0.07 //As of writing, original was 0.1 - Slows hunger rate (some more)
 	reagent_tag =      IS_SLIME
-	mob_size =         MOB_SMALL
+	mob_size =         MOB_MEDIUM
 	bump_flag =        SLIME
-	swap_flags =       MONKEY|SLIME|SIMPLE_ANIMAL
-	push_flags =       MONKEY|SLIME|SIMPLE_ANIMAL
+	push_flags = ~HEAVY
+	swap_flags = ~HEAVY
 	flags =            NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT
 	appearance_flags = HAS_SKIN_COLOR | HAS_EYE_COLOR | HAS_HAIR_COLOR | RADIATION_GLOWS | HAS_UNDERWEAR
-	spawn_flags		 = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED
+	spawn_flags		 = SPECIES_CAN_JOIN
 	health_hud_intensity = 2
-	num_alternate_languages = 3
+	num_alternate_languages = 2 // citadel change, not stuck with one other lang
 	species_language = LANGUAGE_SOL_COMMON
 	secondary_langs = list(LANGUAGE_SOL_COMMON)	// For some reason, having this as their species language does not allow it to be chosen.
 	assisted_langs = list(LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)	// Prometheans are weird, let's just assume they can use basically any language.
@@ -42,12 +42,12 @@ var/datum/species/shapeshifter/promethean/prometheans
 	male_cough_sounds = list('sound/effects/slime_squish.ogg')
 	female_cough_sounds = list('sound/effects/slime_squish.ogg')
 
-	min_age =		1
-	max_age =		10
+	min_age =		18
+	max_age =		80
 
 	economic_modifier = 3
 
-	gluttonous =	1
+	gluttonous =	0
 	virus_immune =	1
 	blood_volume =	560
 	slowdown = -0.2 // citadel change
@@ -70,7 +70,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 	body_temperature = T20C	// Room temperature
 
 	rarity_value = 5
-	siemens_coefficient = 0.8
+	siemens_coefficient = 1 //As of writing, original was 0.4 (bad)
 
 	genders = list(MALE, FEMALE, NEUTER, PLURAL)
 
@@ -105,18 +105,36 @@ var/datum/species/shapeshifter/promethean/prometheans
 		/mob/living/carbon/human/proc/shapeshifter_select_shape,
 		/mob/living/carbon/human/proc/shapeshifter_select_colour,
 		/mob/living/carbon/human/proc/shapeshifter_select_hair,
-		/mob/living/carbon/human/proc/shapeshifter_select_eye_colour,
 		/mob/living/carbon/human/proc/shapeshifter_select_hair_colors,
 		/mob/living/carbon/human/proc/shapeshifter_select_gender,
-		/mob/living/carbon/human/proc/shapeshifter_select_wings, //VOREStation Add,
-		/mob/living/carbon/human/proc/shapeshifter_select_tail, //VOREStation Add,
-		/mob/living/carbon/human/proc/shapeshifter_select_ears, //VOREStation Add,
-		/mob/living/carbon/human/proc/regenerate
+		/mob/living/carbon/human/proc/regenerate,
+		/mob/living/carbon/human/proc/shapeshifter_select_wings,
+		/mob/living/carbon/human/proc/shapeshifter_select_tail,
+		/mob/living/carbon/human/proc/shapeshifter_select_ears,
+		/mob/living/proc/set_size,
+		/mob/living/carbon/human/proc/succubus_drain,
+		/mob/living/carbon/human/proc/succubus_drain_finalize,
+		/mob/living/carbon/human/proc/succubus_drain_lethal,
+		/mob/living/carbon/human/proc/slime_feed,
+		/mob/living/proc/eat_trash,
+		/mob/living/carbon/human/proc/promethean_select_opaqueness
 		)
 
-	valid_transform_species = list(SPECIES_HUMAN, SPECIES_HUMAN_VATBORN, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_SKRELL, SPECIES_DIONA, SPECIES_TESHARI, SPECIES_MONKEY)
+	valid_transform_species = list(
+		"Human", "Unathi", "Tajara", "Skrell",
+		"Diona", "Teshari", "Monkey","Sergal",
+		"Akula","Nevrean","Highlander Zorren",
+		"Flatland Zorren", "Vulpkanin", "Vasilissan",
+		"Rapala", "Neaera", "Stok", "Farwa", "Sobaka",
+		"Wolpin", "Saru", "Sparra")
 
-	var/heal_rate = 0.5 // Temp. Regen per tick.
+	var/heal_rate = 0.35 //As of writing, original was 0.2 - speeds up regen
+	active_regen_mult = 0.66 //As of writing, original was 1 (good)
+
+	color_mult = 1
+	trashcan = 1 //They have goopy bodies. They can just dissolve things within them.
+
+	wikilink="https://wiki.vore-station.net/Promethean"
 
 /datum/species/shapeshifter/promethean/New()
 	..()

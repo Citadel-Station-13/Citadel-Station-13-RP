@@ -13,6 +13,25 @@
 	var/deployed = 0
 	var/camo_net = FALSE
 	var/stun_length = 0.25 SECONDS
+	slot_flags = SLOT_MASK
+	item_icons = list(
+		slot_wear_mask_str = 'icons/mob/mask.dmi'
+		)
+
+/obj/item/beartrap/equipped()
+	if(ishuman(src.loc))
+		var/mob/living/carbon/human/H = src.loc
+		if(H.wear_mask == src)
+			H.verbs |= /mob/living/proc/shred_limb_temp
+		else
+			H.verbs -= /mob/living/proc/shred_limb_temp
+	..()
+
+/obj/item/beartrap/dropped(var/mob/user)
+	user.verbs -= /mob/living/proc/shred_limb_temp
+	..()
+
+
 
 /obj/item/beartrap/suicide_act(mob/user)
 	var/datum/gender/T = gender_datums[user.get_visible_gender()]

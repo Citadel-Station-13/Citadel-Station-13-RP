@@ -249,7 +249,6 @@
 
 /obj/item/gun/energy/lasershotgun
 	name = "laser scattergun"
-	icon = 'icons/obj/energygun.dmi'
 	item_state = "laser"
 	icon_state = "scatter"
 	desc = "A strange Almachi weapon, utilizing a refracting prism to turn a single laser blast into a diverging cluster."

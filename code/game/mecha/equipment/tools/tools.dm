@@ -1016,7 +1016,6 @@
 	return
 
 /obj/item/mecha_parts/mecha_equipment/combat_shield/proc/toggle_shield()
-	..()
 	if(chassis)
 		my_shield.attack_self(chassis.occupant)
 		if(my_shield.active)

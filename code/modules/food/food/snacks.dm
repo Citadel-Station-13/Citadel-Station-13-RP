@@ -3201,6 +3201,20 @@
 	reagents.add_reagent("radium", 2)
 	bitesize = 2
 
+/obj/item/reagent_containers/food/snacks/teshariroast
+	name = "roast teshari"
+	desc = "It's almost disturbing how closely this resembles a chicken. Plucking the feathers must have taken forever."
+	icon_state = "teshari_roast"
+	trash = /obj/item/trash/plate
+	filling_color = "#75754B"
+	nutriment_amt = 6
+	nutriment_desc = list("lemon pepper wet" = 6)
+
+/obj/item/reagent_containers/food/snacks/tehsariroast/Initialize()
+	. = ..()
+	reagents.add_reagent("protein", 2)
+	bitesize = 2
+
 ///////////////////////////////////////////
 // new old food stuff from bs12
 ///////////////////////////////////////////
@@ -3223,6 +3237,8 @@
 		new /obj/item/reagent_containers/food/snacks/sliceable/flatdough(src)
 		to_chat(user, "You flatten the dough.")
 		qdel(src)
+	else
+		. = ..()
 
 // slicable into 3xdoughslices
 /obj/item/reagent_containers/food/snacks/sliceable/flatdough
@@ -4458,6 +4474,11 @@ END CITADEL CHANGE */
 
 // Moved /bun/attackby() from /code/modules/food/food/snacks.dm
 /obj/item/reagent_containers/food/snacks/bun/attackby(obj/item/W as obj, mob/user as mob)
+	//i honestly should probably refactor this whole thing but idgaf
+	if(istype(W,/obj/item/storage))
+		. = ..() //if you want to bag a ton of buns idk i don't play chef
+		return
+
 	var/obj/item/reagent_containers/food/snacks/result = null
 	// Bun + meatball = burger
 	if(istype(W,/obj/item/reagent_containers/food/snacks/meatball))

@@ -294,6 +294,15 @@
 	projectile_type = /obj/item/projectile/bullet/pellet/shotgun/silver
 	matter = list(DEFAULT_WALL_MATERIAL = 360, "silver" = 240)
 
+//Wooden Stake 12g
+/obj/item/ammo_casing/a12g/stake
+	name = "Wooden stake shell"
+	desc = "A specialized shell designed to launch a wooden stake. Bless and Sancitfied to banish otherworlds entities."
+	icon_state = "agshell"
+	caliber = "12g"
+	projectile_type = /obj/item/projectile/bullet/shotgun/stake
+	matter = list(DEFAULT_WALL_MATERIAL = 500)
+
 /*
  * 7.62mm
  */

@@ -1029,3 +1029,8 @@ obj/item/clothing/suit/kamishimo
 	name = "Modern Security Operations Jacket"
 	desc = "A jacket issued to Security staff on NT vessels. This one is modern."
 	icon_state = "fedmodernsec"
+
+/obj/item/clothing/suit/highwayman_jacket
+	name = "Civilian Highwayman Jacket"
+	desc = "A black jacket with a white, fur lined neck. For dashing rogues who dare to plunder the deepest dungeons."
+	icon_state = "highwayman_jacket"

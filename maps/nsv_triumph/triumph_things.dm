@@ -7,6 +7,25 @@
 /obj/effect/landmark/map_data/triumph
 	height = 4
 
+/obj/turbolift_map_holder/triumph
+	name = "Triumph Climber"
+	depth = 3
+	lift_size_x = 3
+	lift_size_y = 1
+	icon = 'icons/obj/turbolift_preview_3x3.dmi'
+	wall_type = null // Don't make walls
+
+	areas_to_use = list(
+		/area/turbolift/t_ship/level2,
+		/area/turbolift/t_ship/level3,
+		/area/turbolift/t_ship/level4
+		)
+
+/datum/turbolift
+	music = list('sound/music/elevator.ogg')  // Woo elevator music!
+
+////////////////////////////
+
 /obj/effect/step_trigger/lost_in_space
 	var/deathmessage = "You drift off into space, floating alone in the void until your life support runs out."
 
@@ -44,6 +63,7 @@
 	return TRUE
 
 /obj/effect/ceiling/CanAllowThrough(atom/movable/mover, turf/target, height=0, air_group=0)
+	. = ..()
 	if(mover && mover.z > src.z)
 		return FALSE // Block entry from above to our turf
 	return TRUE
@@ -291,46 +311,6 @@ var/global/list/latejoin_shuttle   = list()
 
 /obj/machinery/camera/network/exploration
 	network = list(NETWORK_EXPLORATION)
-/*
-// Underdark mob spawners
-/obj/tether_away_spawner/underdark_normal
-	name = "Underdark Normal Spawner"
-	faction = "underdark"
-	atmos_comp = TRUE
-	prob_spawn = 100
-	prob_fall = 50
-	guard = 20
-	mobs_to_pick_from = list(
-		/mob/living/simple_animal/hostile/jelly = 3,
-		/mob/living/simple_animal/hostile/giant_spider/hunter = 1,
-		/mob/living/simple_animal/hostile/giant_spider/phorogenic = 1,
-		/mob/living/simple_animal/hostile/giant_spider/lurker = 1,
-	)
-
-/obj/tether_away_spawner/underdark_hard
-	name = "Underdark Hard Spawner"
-	faction = "underdark"
-	atmos_comp = TRUE
-	prob_spawn = 100
-	prob_fall = 50
-	guard = 20
-	mobs_to_pick_from = list(
-		/mob/living/simple_animal/hostile/corrupthound = 1,
-		/mob/living/simple_animal/hostile/rat = 1,
-		/mob/living/simple_animal/hostile/mimic = 1
-	)
-
-/obj/tether_away_spawner/underdark_boss
-	name = "Underdark Boss Spawner"
-	faction = "underdark"
-	atmos_comp = TRUE
-	prob_spawn = 100
-	prob_fall = 100
-	guard = 70
-	mobs_to_pick_from = list(
-		/mob/living/simple_animal/hostile/dragon = 1
-	)
-*/
 
 /obj/machinery/camera/network/research/xenobio
 	network = list(NETWORK_RESEARCH, NETWORK_XENOBIO)
@@ -354,23 +334,6 @@ var/global/list/latejoin_shuttle   = list()
 /obj/machinery/cryopod/robot/door/dorms
 	spawnpoint_type = /datum/spawnpoint/shuttle
 
-//Dance pole
-/obj/structure/dancepole
-	name = "dance pole"
-	desc = "Engineered for your entertainment"
-	icon = 'icons/obj/objects.dmi'
-	icon_state = "dancepole"
-	density = 0
-	anchored = 1
-
-/obj/structure/dancepole/attackby(var/obj/item/O as obj, var/mob/user as mob)
-	if(O.is_wrench())
-		anchored = !anchored
-		playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
-		if(anchored)
-			to_chat(user, "<font color='blue'>You secure \the [src].</font>")
-		else
-			to_chat(user, "<font color='blue'>You unsecure \the [src].</font>")
 //
 // ### Wall Machines On Full Windows ###
 // To make sure wall-mounted machines placed on full-tile windows are clickable they must be above the window

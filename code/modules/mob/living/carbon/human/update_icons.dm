@@ -244,6 +244,9 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 	else
 		icon_key += "[r_eyes], [g_eyes], [b_eyes]"
 
+	var/obj/item/organ/external/head/head = organs_by_name[BP_HEAD]
+	if(head)
+		icon_key += "[head.eye_icon]"
 	for(var/organ_tag in species.has_limbs)
 		var/obj/item/organ/external/part = organs_by_name[organ_tag]
 		if(isnull(part) || part.is_stump() || part.is_hidden_by_tail()) //VOREStation Edit allowing tails to prevent bodyparts rendering, granting more spriter freedom for taur/digitigrade stuff.
@@ -589,11 +592,11 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 
 	//Build a uniform sprite
 	//VOREStation Edit start.
-	var/icon/c_mask = null
-	if(tail_style && tail_style.clip_mask_icon && tail_style.clip_mask_state)
+	var/icon/c_mask = tail_style?.clip_mask
+	if(c_mask)
 		var/obj/item/clothing/suit/S = wear_suit
-		if(!(wear_suit && ((wear_suit.flags_inv & HIDETAIL) || (istype(S) && S.taurized)))) //Clip the lower half of the uniform off using the tail's clip mask.
-			c_mask = new /icon(tail_style.clip_mask_icon, tail_style.clip_mask_state)
+		if((wear_suit?.flags_inv & HIDETAIL) || (istype(S) && S.taurized)) // Reasons to not mask: 1. If you're wearing a suit that hides the tail or if you're wearing a taurized suit.
+			c_mask = null
 	overlays_standing[UNIFORM_LAYER] = w_uniform.make_worn_icon(body_type = species.get_bodytype(src), slot_name = slot_w_uniform_str, default_icon = INV_W_UNIFORM_DEF_ICON, default_layer = UNIFORM_LAYER, clip_mask = c_mask)
 	//VOREStation Edit end.
 
@@ -776,10 +779,10 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 	//VOREStation Edit start.
 	var/icon/c_mask = null
 	var/tail_is_rendered = (overlays_standing[TAIL_LAYER] || overlays_standing[TAIL_LAYER_ALT])
-	var/valid_clip_mask = (tail_style && tail_style.clip_mask_icon && tail_style.clip_mask_state)
+	var/valid_clip_mask = tail_style?.clip_mask
 
-	if(tail_is_rendered && valid_clip_mask && !(S && S.taurized)) //Clip the lower half of the suit off using the tail's clip mask for taurs since taur bodies aren't hidden.
-		c_mask = new /icon(tail_style.clip_mask_icon, tail_style.clip_mask_state)
+	if(tail_is_rendered && valid_clip_mask && !(istype(S) && S.taurized)) //Clip the lower half of the suit off using the tail's clip mask for taurs since taur bodies aren't hidden.
+		c_mask = valid_clip_mask
 	overlays_standing[SUIT_LAYER] = wear_suit.make_worn_icon(body_type = species.get_bodytype(src), slot_name = slot_wear_suit_str, default_icon = iconFile, default_layer = SUIT_LAYER, clip_mask = c_mask)
 	//VOREStation Edit end.
 
@@ -1100,6 +1103,39 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 	if(total.overlays.len)
 		overlays_standing[SURGERY_LAYER] = total
 		apply_layer(SURGERY_LAYER)
+
+/mob/living/carbon/human/proc/get_wing_image() //redbull gives you wings
+	if(QDESTROYING(src))
+		return
+
+	//If you are FBP with wing style and didn't set a custom one
+	if(synthetic && synthetic.includes_wing && !wing_style)
+		var/icon/wing_s = new/icon("icon" = synthetic.icon, "icon_state" = "wing") //I dunno. If synths have some custom wing?
+		wing_s.Blend(rgb(src.r_skin, src.g_skin, src.b_skin), species.color_mult ? ICON_MULTIPLY : ICON_ADD)
+		return image(wing_s)
+
+	//If you have custom wings selected
+	if(wing_style && !(wear_suit && wear_suit.flags_inv & HIDETAIL))
+		var/icon/wing_s = new/icon("icon" = wing_style.icon, "icon_state" = flapping && wing_style.ani_state ? wing_style.ani_state : wing_style.icon_state)
+		if(wing_style.do_colouration)
+			wing_s.Blend(rgb(src.r_wing, src.g_wing, src.b_wing), wing_style.color_blend_mode)
+		if(wing_style.extra_overlay)
+			var/icon/overlay = new/icon("icon" = wing_style.icon, "icon_state" = wing_style.extra_overlay)
+			overlay.Blend(rgb(src.r_wing2, src.g_wing2, src.b_wing2), wing_style.color_blend_mode)
+			wing_s.Blend(overlay, ICON_OVERLAY)
+			qdel(overlay)
+		return image(wing_s)
+
+// TODO - Move this to where it should go ~Leshana
+/mob/proc/stop_flying()
+	if(QDESTROYING(src))
+		return
+	flying = FALSE
+	return 1
+
+/mob/living/carbon/human/stop_flying()
+	if((. = ..()))
+		update_wing_showing()
 
 //Human Overlays Indexes/////////
 #undef MUTATIONS_LAYER

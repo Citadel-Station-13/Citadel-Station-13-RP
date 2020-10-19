@@ -1,4 +1,3 @@
-#define ADIABATIC_EXPONENT 0.667 //Actually adiabatic exponent - 1.
 
 /obj/machinery/atmospherics/pipeturbine
 	name = "turbine"

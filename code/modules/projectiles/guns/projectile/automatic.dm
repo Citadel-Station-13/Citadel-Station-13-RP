@@ -16,7 +16,6 @@
 /obj/item/gun/projectile/automatic/advanced_smg
 	name = "advanced SMG"
 	desc = "An advanced submachine gun with a reflective laser optic that makes burst fire less inaccurate than other SMGs. Uses 9mm rounds."
-	icon = 'icons/obj/gun.dmi'
 	icon_state = "advanced_smg-empty"
 	w_class = ITEMSIZE_NORMAL
 	load_method = MAGAZINE
@@ -121,6 +120,9 @@
 	else
 		icon_state = "wt550"
 	return
+
+/obj/item/gun/projectile/automatic/wt550/lethal
+	magazine_type = /obj/item/ammo_magazine/m9mmt
 
 /obj/item/gun/projectile/automatic/z8
 	name = "designated marksman rifle"
@@ -454,3 +456,33 @@ obj/item/gun/projectile/automatic/automat
 obj/item/gun/projectile/automatic/automat/holy
 	ammo_type = /obj/item/ammo_casing/a762/silver
 	holy = TRUE
+
+/obj/item/gun/projectile/automatic/holyshot
+	name = "Holy automatic shotgun"
+	desc = "Based off of an ancient design, this hand crafted weapon has been gilded with the gold of melted icons and inscribed with sacred runes and hexagrammic wards. Works best with blessed 12g rounds."
+	icon_state = "holyshotgun"
+	item_state = null
+	w_class = ITEMSIZE_LARGE
+	force = 10
+	caliber = "12g"
+	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
+	slot_flags = SLOT_BACK
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/holyshot_mag
+	allowed_magazines = list(/obj/item/ammo_magazine/holyshot_mag, /obj/item/ammo_magazine/holyshot_mag/stake)
+	projectile_type = /obj/item/projectile/bullet/shotgun
+
+//	one_handed_penalty = 60
+
+	firemodes = list(
+		list(mode_name="semiauto", burst=1, fire_delay=0),
+		list(mode_name="2-round burst", burst=2, move_delay=6, burst_accuracy = list(0,-15,-15,-30,-30), dispersion = list(0.0, 0.6, 0.6))
+		)
+
+/obj/item/gun/projectile/automatic/holyshot/update_icon()
+	..()
+	if(ammo_magazine)
+		icon_state = "holyshotgun"
+	else
+		icon_state = "holyshotgun_empty"
+	return

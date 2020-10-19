@@ -232,7 +232,7 @@
 /obj/item/silencer
 	name = "silencer"
 	desc = "a silencer"
-	icon = 'icons/obj/gun.dmi'
+	icon = 'icons/obj/gun/ballistic.dmi'
 	icon_state = "silencer"
 	w_class = ITEMSIZE_SMALL
 
@@ -322,6 +322,19 @@
 	else
 		icon_state = "[initial(icon_state)]-e"
 
+/obj/item/gun/projectile/p92x/sec
+	magazine_type = /obj/item/ammo_magazine/m9mm/rubber
+
+//Ported this over from the _vr before deletion. Commenting them out because I'm not sure we want these in.
+/*
+/obj/item/gun/projectile/p92x/large/preban
+	icon_state = "p92x-brown"
+	magazine_type = /obj/item/ammo_magazine/m9mm/large/preban // Spawns with big magazines that are legal.
+
+/obj/item/gun/projectile/p92x/large/preban/hp
+	magazine_type = /obj/item/ammo_magazine/m9mm/large/preban/hp // Spawns with legal hollow-point mag
+*/
+
 /obj/item/gun/projectile/p92x/brown
 	icon_state = "p92x-brown"
 
@@ -337,9 +350,9 @@
 	load_method = SPEEDLOADER
 	max_shells = 10
 	ammo_type = /obj/item/ammo_casing/a9mm
-	
+
 /obj/item/gun/projectile/r9/holy
-	name = "Blessed Red 9"	
+	name = "Blessed Red 9"
 	desc = "Ah, the choice of an avid gun collector! It's a nice gun, stranger."
 	ammo_type = /obj/item/ammo_casing/a9mm/silver
 	holy = TRUE

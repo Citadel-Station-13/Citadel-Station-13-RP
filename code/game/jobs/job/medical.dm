@@ -4,6 +4,7 @@
 	head_position = 1
 	department = "Medical"
 	department_flag = MEDSCI
+	disallow_jobhop = TRUE
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
@@ -24,7 +25,7 @@
 	ideal_character_age = 50
 
 	outfit_type = /decl/hierarchy/outfit/job/medical/cmo
-	alt_titles = list ("Surgeon General","Chief Physician","Director of Medicine")
+	alt_titles = list ("Chief Physician","Director of Medicine","Chief Surgeon")
 
 /datum/job/doctor
 	title = "Medical Doctor"
@@ -33,7 +34,7 @@
 	department_flag = MEDSCI
 	faction = "Station"
 	total_positions = 5
-	spawn_positions = 3
+	spawn_positions = 5
 	supervisors = "the chief medical officer"
 	selection_color = "#013D3B"
 	idtype = /obj/item/card/id/medical/doctor
@@ -63,7 +64,7 @@
 	economic_modifier = 5
 	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics)
 	minimal_access = list(access_medical, access_medical_equip, access_chemistry)
-	alt_titles = list("Pharmacist")
+	alt_titles = list("Pharmacist", "Apothecary")
 
 	minimal_player_age = 3
 

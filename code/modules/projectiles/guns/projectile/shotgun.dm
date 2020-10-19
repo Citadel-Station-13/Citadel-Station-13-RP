@@ -60,7 +60,7 @@
 /obj/item/gun/projectile/shotgun/pump/combat
 	name = "combat shotgun"
 	desc = "Built for close quarters combat, the Hephaestus Industries KS-40 is widely regarded as a weapon of choice for repelling boarders. Uses 12g rounds."
-	icon_state = "cshotgun"
+	icon_state = "shotgun_c"
 	item_state = "cshotgun"
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2)
 	max_shells = 7 //match the ammo box capacity, also it can hold a round in the chamber anyways, for a total of 8.
@@ -70,7 +70,7 @@
 /obj/item/gun/projectile/shotgun/doublebarrel
 	name = "double-barreled shotgun"
 	desc = "A truely classic weapon. No need to change what works. Uses 12g rounds."
-	icon_state = "dshotgun"
+	icon_state = "shotgun_d"
 	item_state = "dshotgun"
 	//SPEEDLOADER because rapid unloading.
 	//In principle someone could make a speedloader for it, so it makes sense.
@@ -92,7 +92,7 @@
 
 /obj/item/gun/projectile/shotgun/doublebarrel/pellet
 	ammo_type = /obj/item/ammo_casing/a12g/pellet
-	
+
 /obj/item/gun/projectile/shotgun/doublebarrel/holy
 	ammo_type = /obj/item/ammo_casing/a12g/silver
 	desc = "Alright you primitive screw heads, listen up. See this? This... is my BOOMSTICK."
@@ -140,7 +140,7 @@
 	ammo_type = /obj/item/ammo_casing/a12g/pellet
 	w_class = ITEMSIZE_NORMAL
 	force = 5
-	
+
 /obj/item/gun/projectile/shotgun/doublebarrel/sawn/alt
 	icon_state = "shotpistol"
 
@@ -151,7 +151,7 @@
 obj/item/gun/projectile/shotgun/doublebarrel/quad
 	name = "quad-barreled shotgun"
 	desc = "A shotgun pattern designed to make the most out of the limited machining capability of the frontier. 4 Whole barrels of death, loads using 12 gauge rounds."
-	icon_state = "qshotgun"
+	icon_state = "shotgun_q"
 	item_state = "qshotgun"
 	recoil = 2
 	load_method = SINGLE_CASING|SPEEDLOADER
@@ -170,6 +170,17 @@ obj/item/gun/projectile/shotgun/doublebarrel/quad
 	firemodes = list(
 		list(mode_name="fire one barrel at a time", burst=1),
 		)
+
+/obj/item/gun/projectile/shotgun/doublebarrel/sawn/super
+	name = "super shotgun"
+	desc = "Rip and tear, until it is done."
+	icon_state = "supershotgun"
+	item_state = "supershotgun"
+	recoil = 0
+	slot_flags = SLOT_BELT|SLOT_HOLSTER
+	ammo_type = /obj/item/ammo_casing/a12g/pellet
+	w_class = ITEMSIZE_NORMAL
+	force = 15
 
 //Flaregun Code that may work?
 /obj/item/gun/projectile/shotgun/flare

@@ -1,5 +1,0 @@
-author: "KasparoVy"
-delete-after: True
-changes: 
-  - bugfix: "RIG-wearing Teshari will no longer have Human-sized boots."
-  - imageadd: "Adds EVA RIG sprites for Sergals, Akula, Nevreans & Nagas."
