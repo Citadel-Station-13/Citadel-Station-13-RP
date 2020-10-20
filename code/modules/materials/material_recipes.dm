@@ -175,6 +175,7 @@
 	recipes += new/datum/stack_recipe("box", /obj/item/storage/box, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("donut box", /obj/item/storage/box/donut/empty, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("egg box", /obj/item/storage/fancy/egg_box, pass_stack_color = TRUE)
+	recipes += new/datum/stack_recipe("large box", /obj/structure/closet/cardboard, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("light tubes box", /obj/item/storage/box/lights/tubes, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("light bulbs box", /obj/item/storage/box/lights/bulbs, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("mouse traps box", /obj/item/storage/box/mousetraps, pass_stack_color = TRUE)
