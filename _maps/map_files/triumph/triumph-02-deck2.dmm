@@ -4121,7 +4121,7 @@
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/door/firedoor,
 /obj/structure/catwalk,
-/turf/space,
+/turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "mA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
