@@ -19326,7 +19326,10 @@
 /turf/simulated/wall/r_wall,
 /area/security/brig)
 "nZO" = (
-/obj/machinery/door/airlock/command,
+/obj/machinery/door/airlock/command{
+	name = "Bridge"
+	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_one)
 "oan" = (
