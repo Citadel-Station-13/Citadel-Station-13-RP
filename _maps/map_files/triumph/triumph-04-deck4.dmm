@@ -30766,6 +30766,16 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/triumph/station/stairs_one)
+"vFZ" = (
+/obj/machinery/camera/network/civilian,
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/structure/closet/hydrant{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/dark,
+/area/hallway/primary/aft)
 "vGj" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -34405,9 +34415,6 @@
 "yhr" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 5
-	},
-/obj/structure/closet/hydrant{
-	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/primary/aft)
@@ -42275,7 +42282,7 @@ nge
 pKG
 pKG
 nge
-pgC
+vFZ
 hvu
 uNu
 brg
