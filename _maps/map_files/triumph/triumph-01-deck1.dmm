@@ -884,6 +884,16 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
+"dL" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled{
+	icon_state = "techmaint"
+	},
+/area/tcommsat/entrance)
 "dM" = (
 /obj/machinery/light{
 	dir = 4
@@ -5074,6 +5084,12 @@
 	},
 /turf/simulated/floor/reinforced/phoron,
 /area/engineering/atmos)
+"uV" = (
+/obj/structure/catwalk,
+/obj/machinery/door/airlock/maintenance/engi,
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/plating,
+/area/maintenance/engineering/pumpstation)
 "uW" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -6001,6 +6017,27 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
+"yI" = (
+/obj/machinery/power/rad_collector,
+/obj/structure/cable/yellow{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/obj/machinery/atmospherics/unary/vent_pump{
+	dir = 8;
+	external_pressure_bound = 0;
+	external_pressure_bound_default = 0;
+	icon_state = "map_vent_in";
+	initialize_directions = 1;
+	internal_pressure_bound = 4000;
+	internal_pressure_bound_default = 4000;
+	pressure_checks = 2;
+	pressure_checks_default = 2;
+	pump_direction = 0;
+	use_power = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/engineering/engine_room)
 "yJ" = (
 /obj/machinery/washing_machine,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -6320,12 +6357,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
-"Aq" = (
-/obj/structure/catwalk,
-/obj/machinery/door/airlock/maintenance/engi,
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/plating,
-/area/maintenance/engineering/pumpstation)
 "Ar" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -6796,6 +6827,16 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/lower/corridor)
+"Cu" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled{
+	icon_state = "techmaint"
+	},
+/area/tcommsat/entrance)
 "Cw" = (
 /obj/structure/closet/firecloset,
 /obj/effect/floor_decal/techfloor/orange{
@@ -7047,6 +7088,12 @@
 	icon_state = "techmaint"
 	},
 /area/tcommsat/chamber)
+"Dz" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/black{
+	dir = 4
+	},
+/turf/simulated/wall/r_lead,
+/area/engineering/engine_room)
 "DB" = (
 /obj/machinery/door/airlock{
 	name = "Shell Recharging"
@@ -8631,22 +8678,6 @@
 /obj/machinery/portable_atmospherics/canister/phoron,
 /turf/simulated/floor/reinforced/phoron,
 /area/engineering/atmos)
-"IN" = (
-/obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/tcommsat/entrance)
 "IO" = (
 /obj/machinery/firealarm{
 	dir = 8;
@@ -10941,6 +10972,22 @@
 	},
 /turf/simulated/floor/tiled/hydro,
 /area/engineering/atmos)
+"RR" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/tcommsat/entrance)
 "RU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -11818,18 +11865,6 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/unary/vent_pump{
-	external_pressure_bound = 0;
-	external_pressure_bound_default = 0;
-	icon_state = "map_vent_in";
-	initialize_directions = 1;
-	internal_pressure_bound = 4000;
-	internal_pressure_bound_default = 4000;
-	pressure_checks = 2;
-	pressure_checks_default = 2;
-	pump_direction = 0;
-	use_power = 1
-	},
 /obj/machinery/light/small{
 	dir = 8
 	},
@@ -12013,16 +12048,6 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled/white,
 /area/engineering/foyer_mezzenine)
-"VV" = (
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled{
-	icon_state = "techmaint"
-	},
-/area/tcommsat/entrance)
 "VW" = (
 /obj/machinery/light,
 /turf/simulated/floor/tiled/techmaint,
@@ -12109,6 +12134,9 @@
 /obj/item/clothing/glasses/meson,
 /obj/machinery/camera/network/engine{
 	dir = 9
+	},
+/obj/machinery/atmospherics/binary/pump/on{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_room)
@@ -12220,16 +12248,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/storage/tech)
-"WM" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/turf/simulated/floor/tiled{
-	icon_state = "techmaint"
-	},
-/area/tcommsat/entrance)
 "WN" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
@@ -12547,10 +12565,12 @@
 /turf/space,
 /area/space)
 "XW" = (
-/obj/machinery/atmospherics/pipe/simple/visible/black,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/manifold/visible/black{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_room)
@@ -12837,9 +12857,6 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/black{
-	dir = 4
-	},
 /obj/machinery/button/remote/blast_door{
 	desc = "A remote control-switch for the engine charging port.";
 	dir = 4;
@@ -12848,6 +12865,9 @@
 	pixel_x = -26;
 	pixel_y = -25;
 	req_access = list(10)
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/black{
+	dir = 10
 	},
 /turf/simulated/floor/reinforced,
 /area/engineering/engine_room)
@@ -18822,7 +18842,7 @@ RM
 Bi
 Bi
 xl
-xl
+Dz
 xl
 Yz
 xl
@@ -18964,7 +18984,7 @@ GH
 RL
 VM
 xl
-Uh
+yI
 Vm
 Zi
 mt
@@ -19687,7 +19707,7 @@ DF
 aW
 zz
 cg
-Aq
+uV
 cg
 cg
 cg
@@ -23213,7 +23233,7 @@ Xp
 aP
 Il
 nJ
-VV
+Cu
 gS
 VK
 XM
@@ -23355,7 +23375,7 @@ nJ
 tx
 gV
 nJ
-VV
+Cu
 gS
 VK
 Rx
@@ -23497,7 +23517,7 @@ jY
 lb
 rY
 Sg
-IN
+RR
 kk
 KN
 jq
@@ -23639,7 +23659,7 @@ nJ
 kp
 RO
 TM
-WM
+dL
 gS
 qR
 Si
