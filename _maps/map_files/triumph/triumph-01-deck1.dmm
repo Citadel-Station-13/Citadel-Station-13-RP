@@ -3623,6 +3623,22 @@
 	icon_state = "techmaint"
 	},
 /area/engineering/engine_eva)
+"pm" = (
+/obj/machinery/door/firedoor/glass,
+/obj/structure/grille,
+/obj/structure/window/phoronreinforced/full,
+/obj/structure/window/phoronreinforced{
+	dir = 8;
+	icon_state = "phoronrwindow"
+	},
+/obj/structure/window/phoronreinforced{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/cyan{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/engine_room)
 "po" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
 /obj/machinery/meter,
@@ -3971,8 +3987,8 @@
 /obj/structure/window/phoronreinforced{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
-	dir = 8
+/obj/machinery/atmospherics/pipe/simple/visible/green{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
@@ -9498,6 +9514,12 @@
 /obj/item/tool/wrench,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/engineering/atmos/storage)
+"Ne" = (
+/obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
+	dir = 8
+	},
+/turf/space,
+/area/space)
 "Nh" = (
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
@@ -17789,9 +17811,9 @@ Sk
 fN
 fN
 Zj
-Rg
+Ne
 fN
-Ww
+Ne
 fN
 zz
 EF
@@ -17802,9 +17824,9 @@ Hz
 Pg
 VW
 zz
-Rg
+Ne
 Zj
-Rg
+Ne
 fN
 Zj
 fN
@@ -17933,7 +17955,7 @@ eD
 zz
 qN
 zb
-qN
+pm
 zz
 zz
 JJ
@@ -17946,7 +17968,7 @@ Pg
 zz
 qN
 zb
-qN
+pm
 zz
 zz
 Sk
