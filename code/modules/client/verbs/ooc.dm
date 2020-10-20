@@ -148,12 +148,11 @@
 		display_name = holder.fakekey
 	if(mob.stat != DEAD)
 		display_name = mob.name
-	//VOREStation Add - Resleeving shenanigan prevention
+	// Resleeving shenanigan prevention
 	if(ishuman(mob))
 		var/mob/living/carbon/human/H = mob
 		if(H.original_player && H.original_player != H.ckey) //In a body not their own
 			display_name = "[H.mind.name] (as [H.name])"
-	//VOREStation Add End
 
 	// Everyone in normal viewing range of the LOOC
 	for(var/mob/viewer in m_viewers)
@@ -176,12 +175,12 @@
 		if(target in admins)
 			admin_stuff += "/([key])"
 
-		to_chat(target, "<span class='ooc'><span class='looc'>" + create_text_tag("looc", "LOOC:", target) + " <EM>[display_name][admin_stuff]:</EM> <span class='message'>[msg]</span></span></span>")
+		to_chat(target, "<span class='ooc looc'>" + create_text_tag("looc", "LOOC:", target) + " <EM>[display_name][admin_stuff]:</EM> <span class='message'>[msg]</span></span>")
 
 	for(var/client/target in r_receivers)
 		var/admin_stuff = "/([key])([admin_jump_link(mob, target.holder)])"
 
-		to_chat(target, "<span class='ooc'><span class='looc'>" + create_text_tag("looc", "LOOC:", target) + " <span class='prefix'>(R)</span><EM>[display_name][admin_stuff]:</EM> <span class='message'>[msg]</span></span></span>")
+		to_chat(target, "<span class='ooc looc'>" + create_text_tag("looc", "LOOC:", target) + " <span class='prefix'>(R)</span><EM>[display_name][admin_stuff]:</EM> <span class='message'>[msg]</span></span>")
 
 /mob/proc/get_looc_source()
 	return src

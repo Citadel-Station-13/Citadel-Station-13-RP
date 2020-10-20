@@ -162,29 +162,31 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		del(src)
 		return
 
-	to_chat(src, "<font color='red'>If the title screen is black, resources are still downloading. Please be patient until the title screen appears.</font>")
+	chatOutput = new /datum/chatOutput(src)	// veechat
+	chatOutput.send_resources()
+	spawn()
+		chatOutput.start()
+
+	// Only show this if they are put into a new_player mob. Otherwise, "what title screen?"
+	if(isnewplayer(src.mob))
+		to_chat(src, "<font color='red'>If the title screen is black, resources are still downloading. Please be patient until the title screen appears.</font>")
 
 	GLOB.clients += src
 	GLOB.directory[ckey] = src
 
-	// Initialize goonchat
-	chatOutput = new /datum/chatOutput(src)
-
 	GLOB.ahelp_tickets.ClientLogin(src)
-	var/connecting_admin = FALSE //because de-admined admins connecting should be treated like admins.
-	//Admin Authorisation
+	var/connecting_admin = FALSE	// Because de-admined admins connecting should be treated like admins.
+	// Admin Authorisation
 	holder = admin_datums[ckey]
-	var/debug_tools_allowed = FALSE			//CITADEL EDIT
+	var/debug_tools_allowed = FALSE
 	if(holder)
 		GLOB.admins |= src
 		admins |= src // i hate this.
 		holder.owner = src
 		connecting_admin = TRUE
-		//CITADEL EDIT
 		//if(check_rights_for(src, R_DEBUG))
-		if(R_DEBUG & holder?.rights) //same wiht this, check_rights when?
+		if(R_DEBUG & holder?.rights)
 			debug_tools_allowed = TRUE
-		//END CITADEL EDIT
 	/*
 	else if(GLOB.deadmins[ckey])
 		verbs += /client/proc/readmin
@@ -364,7 +366,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		void.MakeGreed()
 	screen += void
 
-	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
+	if((prefs.lastchangelog != GLOB.changelog_hash) && isnewplayer(src.mob)) //bolds the changelog button on the interface so we know there are updates.
 		to_chat(src, "<span class='info'>You have unread updates in the changelog.</span>")
 		winset(src, "rpane.changelog", "background-color=#eaeaea;font-style=bold")
 		if(config_legacy.aggressive_changelog)
@@ -658,6 +660,26 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			change_view(var_value)
 			return TRUE
 	. = ..()
+
+/client/verb/reload_vchat()
+	set name = "Reload VChat"
+	set category = "OOC"
+
+	// Timing
+	if(src.chatOutputLoadedAt > (world.time - 10 SECONDS))
+		alert(src, "You can only try to reload VChat every 10 seconds at most.")
+		return
+
+	// Log, disable
+	log_debug("[key_name(src)] reloaded VChat.")
+
+	// The hard way
+	qdel_null(src.chatOutput)
+	chatOutput = new /datum/chatOutput(src)	// Veechat
+	chatOutput.send_resources()
+	spawn()
+		chatOutput.start()
+
 
 /client/proc/change_view(new_size)
 	if (isnull(new_size))

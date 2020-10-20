@@ -56,6 +56,7 @@ GLOBAL_LIST(topic_status_cache)
 	GLOB.timezoneOffset = text2num(time2text(0,"hh")) * 36000
 
 	callHook("startup")
+	init_vchat()
 	//Emergency Fix
 	load_mods()
 	//end-emergency fix

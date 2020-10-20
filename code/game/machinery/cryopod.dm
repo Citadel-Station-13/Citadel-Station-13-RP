@@ -122,10 +122,8 @@
 		if(!allow_items) return
 
 		var/dat = "<b>Recently stored objects</b><br/><hr/><br/>"
-		//VOREStation Edit Start
 		for(var/I in frozen_items)
 			dat += "[I]<br/>"
-		//VOREStation Edit End
 		dat += "<hr/>"
 
 		user << browse(dat, "window=cryoitems")

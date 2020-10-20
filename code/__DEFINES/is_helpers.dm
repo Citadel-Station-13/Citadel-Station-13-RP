@@ -4,6 +4,8 @@
 
 #define isatom(A) (isloc(A))
 
+#define isclient(D) istype(D, /client)
+
 #define isweakref(D) (istype(D, /datum/weakref))
 
 //Datums

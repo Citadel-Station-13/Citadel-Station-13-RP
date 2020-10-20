@@ -8,6 +8,9 @@
 /cfg/**/*
 
 #Ignore compiled files and other files generated during compilation.
+Thumbs.db
+vchat.db
+vchat.db*
 *.mdme
 *.dmb
 *.rsc

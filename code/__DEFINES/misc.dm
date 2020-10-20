@@ -83,6 +83,8 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 // Total number of HUDs. Like body layers, and other things, it comes up sometimes.
 #define TOTAL_HUDS 14
 
+#define CLIENT_FROM_VAR(I) (ismob(I) ? I:client : (istype(I, /client) ? I : null))
+
 //	Shuttles.
 
 // These define the time taken for the shuttle to get to the space station, and the time before it leaves again.
