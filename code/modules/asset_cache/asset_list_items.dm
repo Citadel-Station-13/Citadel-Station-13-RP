@@ -146,7 +146,7 @@
 		/datum/asset/simple/jquery,
 		/datum/asset/simple/IRV
 	)
-*/
+
 
 /datum/asset/group/goonchat
 	children = list(
@@ -168,7 +168,7 @@
 		"font-awesome.css"	       = 'code/modules/goonchat/browserassets/css/font-awesome.css',
 		"browserOutput.css"	       = 'code/modules/goonchat/browserassets/css/browserOutput.css',
 	)
-
+*/
 
 /datum/asset/simple/namespaced/changelog
 	assets = list(

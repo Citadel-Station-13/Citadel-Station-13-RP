@@ -10,16 +10,16 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 
 //On client, created on login
 /datum/chatOutput
-	var/client/owner	 //client ref
-	var/total_checks = 0
-	var/last_check = 0
-	var/loaded       = TRUE // Has the client loaded the browser output area?
-	var/list/messageQueue //If they haven't loaded chat, this is where messages will go until they do
-	var/cookieSent   = FALSE // Has the client sent a cookie for analysis
-	var/broken       = FALSE
+//	var/client/owner	 //client ref
+//	var/total_checks = 0
+//	var/last_check = 0
+//	var/loaded       = TRUE // Has the client loaded the browser output area?
+//	var/list/messageQueue //If they haven't loaded chat, this is where messages will go until they do
+//	var/cookieSent   = FALSE // Has the client sent a cookie for analysis
+//	var/broken       = FALSE
 	var/list/connectionHistory //Contains the connection history passed from chat cookie
 	var/adminMusicVolume = 75 //This is for the Play Global Sound verb
-
+/*
 /datum/chatOutput/New(client/C)
 	owner = C
 	messageQueue = list()
@@ -115,7 +115,7 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 /datum/chatOutput/proc/showChat()
 	winset(owner, "output", "is-visible=false")
 	winset(owner, "browseroutput", "is-disabled=false;is-visible=true")
-
+*/
 /datum/chatOutput/proc/ehjax_send(client/C = owner, window = "browseroutput", data)
 	if(islist(data))
 		data = json_encode(data)
@@ -135,7 +135,7 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 /datum/chatOutput/proc/setMusicVolume(volume = "")
 	if(volume)
 		adminMusicVolume = min(max(text2num(volume), 0), 100)
-
+/*
 //Sends client connection details to the chat to handle and save
 /datum/chatOutput/proc/sendClientData()
 	//Get dem deets
@@ -200,7 +200,6 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 //Called by js client on js error
 /datum/chatOutput/proc/debug(error)
 	log_world("\[[time2text(world.realtime, "YYYY-MM-DD hh:mm:ss")]\] Client: [(src.owner.key ? src.owner.key : src.owner)] triggered JS error: [error]")
-
 //Global chat procs
 /proc/to_chat(target, message, handle_whitespace=TRUE)
 	if(!target)
@@ -273,3 +272,4 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 		// url_encode it TWICE, this way any UTF-8 characters are able to be decoded by the Javascript.
 		C << output(url_encode(url_encode(message)), "browseroutput:output")
 #endif
+*/

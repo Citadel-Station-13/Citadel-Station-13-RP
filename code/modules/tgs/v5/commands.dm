@@ -5,12 +5,14 @@
 		var/datum/tgs_chat_command/stc = new I
 		var/command_name = stc.name
 		if(!command_name || findtext(command_name, " ") || findtext(command_name, "'") || findtext(command_name, "\""))
-			TGS_WARNING_LOG("Custom command [command_name] ([I]) can't be used as it is empty or contains illegal characters!")
+			var/tgs_message = "Custom command [command_name] ([I]) can't be used as it is empty or contains illegal characters!"
+			TGS_WARNING_LOG(tgs_message)	// Temp Bandage Fix
 			continue
 
 		if(results[command_name])
 			var/datum/other = custom_commands[command_name]
-			TGS_WARNING_LOG("Custom commands [other.type] and [I] have the same name (\"[command_name]\"), only [other.type] will be available!")
+			var/tgs_message = "Custom commands [other.type] and [I] have the same name (\"[command_name]\"), only [other.type] will be available!"
+			TGS_WARNING_LOG(tgs_message)	// Temp Bandage Fix
 			continue
 		results += list(list(DMAPI5_CUSTOM_CHAT_COMMAND_NAME = command_name, DMAPI5_CUSTOM_CHAT_COMMAND_HELP_TEXT = stc.help_text, DMAPI5_CUSTOM_CHAT_COMMAND_ADMIN_ONLY = stc.admin_only))
 		custom_commands[command_name] = stc
@@ -33,7 +35,8 @@
 		var/text_response = sc.Run(u, params)
 		var/list/topic_response = list()
 		if(!istext(text_response))
-			TGS_ERROR_LOG("Custom command [command] should return a string! Got: \"[text_response]\"")
+			var/tgs_message = "Custom command [command] should return a string! Got: \"[text_response]\""
+			TGS_ERROR_LOG(tgs_message)	// Temp Bandage Fix
 			text_response = null
 		topic_response[DMAPI5_TOPIC_RESPONSE_COMMAND_RESPONSE_MESSAGE] = text_response
 		return json_encode(topic_response)

@@ -10,19 +10,22 @@
 	var/warned_about_the_dangers_of_robutussin = !warnings_only
 	for(var/I in typesof(/datum/tgs_chat_command) - /datum/tgs_chat_command)
 		if(!warned_about_the_dangers_of_robutussin)
-			TGS_ERROR_LOG("Custom chat commands in [ApiVersion()] lacks the /datum/tgs_chat_user/sender.channel field!")
+			var/tgs_message = "Custom chat commands in [ApiVersion()] lacks the /datum/tgs_chat_user/sender.channel field!"
+			TGS_ERROR_LOG(tgs_message)	// Temp Bandage Fix
 			warned_about_the_dangers_of_robutussin = TRUE
 		var/datum/tgs_chat_command/stc = I
 		var/command_name = initial(stc.name)
 		if(!command_name || findtext(command_name, " ") || findtext(command_name, "'") || findtext(command_name, "\""))
 			if(warnings_only && !warned_command_names[command_name])
-				TGS_ERROR_LOG("Custom command [command_name] can't be used as it is empty or contains illegal characters!")
+				var/tgs_message = "Custom command [command_name] can't be used as it is empty or contains illegal characters!"
+				TGS_ERROR_LOG(tgs_message)	// Temp Bandage Fix
 				warned_command_names[command_name] = TRUE
 			continue
 
 		if(command_name_types[command_name])
 			if(warnings_only)
-				TGS_ERROR_LOG("Custom commands [command_name_types[command_name]] and [stc] have the same name, only [command_name_types[command_name]] will be available!")
+				var/tgs_message = "Custom commands [command_name_types[command_name]] and [stc] have the same name, only [command_name_types[command_name]] will be available!"
+				TGS_ERROR_LOG(tgs_message)	// Temp Bandage Fix
 			continue
 		command_name_types[stc] = command_name
 

@@ -1,11 +1,13 @@
 /world/TgsNew(datum/tgs_event_handler/event_handler, minimum_required_security_level = TGS_SECURITY_ULTRASAFE)
 	var/current_api = TGS_READ_GLOBAL(tgs)
 	if(current_api)
-		TGS_ERROR_LOG("API datum already set (\ref[current_api] ([current_api]))! Was TgsNew() called more than once?")
+		var/tgs_message = "API datum already set (\ref[current_api] ([current_api]))! Was TgsNew() called more than once?"
+		TGS_ERROR_LOG(tgs_message)	// Temp Bandage Fix
 		return
 
 	if(!(minimum_required_security_level in list(TGS_SECURITY_ULTRASAFE, TGS_SECURITY_SAFE, TGS_SECURITY_TRUSTED)))
-		TGS_ERROR_LOG("Invalid minimum_required_security_level: [minimum_required_security_level]!")
+		var/tgs_message = "Invalid minimum_required_security_level: [minimum_required_security_level]!"
+		TGS_ERROR_LOG(tgs_message)	// Temp Bandage Fix
 		return
 
 #ifdef TGS_V3_API
@@ -19,7 +21,8 @@
 
 	var/datum/tgs_version/version = new(raw_parameter)
 	if(!version.Valid(FALSE))
-		TGS_ERROR_LOG("Failed to validate DMAPI version parameter: [raw_parameter]!")
+		var/tgs_message = "Failed to validate DMAPI version parameter: [raw_parameter]!"
+		TGS_ERROR_LOG(tgs_message)	// Temp Bandage Fix
 		return
 
 	var/api_datum
@@ -42,17 +45,20 @@
 
 	var/datum/tgs_version/max_api_version = TgsMaximumAPIVersion();
 	if(version.suite != null && version.minor != null && version.patch != null && version.deprecated_patch != null && version.deprefixed_parameter > max_api_version.deprefixed_parameter)
-		TGS_ERROR_LOG("Detected unknown API version! Defaulting to latest. Update the DMAPI to fix this problem.")
+		var/tgs_message = "Detected unknown API version! Defaulting to latest. Update the DMAPI to fix this problem."
+		TGS_ERROR_LOG(tgs_message)	// Temp Bandage Fix
 		api_datum = /datum/tgs_api/latest
 
 	if(!api_datum)
-		TGS_ERROR_LOG("Found unsupported API version: [raw_parameter]. If this is a valid version please report this, backporting is done on demand.")
+		var/tgs_message = "Found unsupported API version: [raw_parameter]. If this is a valid version please report this, backporting is done on demand."
+		TGS_ERROR_LOG(tgs_message)	// Temp Bandage Fix
 		return
 
 	TGS_INFO_LOG("Activating API for version [version.deprefixed_parameter]")
 
 	if(event_handler && !istype(event_handler))
-		TGS_ERROR_LOG("Invalid parameter for event_handler: [event_handler]")
+		var/tgs_message = "Invalid parameter for event_handler: [event_handler]"
+		TGS_ERROR_LOG(tgs_message)	// Temp Bandage Fix
 		event_handler = null
 
 	var/datum/tgs_api/new_api = new api_datum(event_handler, version)

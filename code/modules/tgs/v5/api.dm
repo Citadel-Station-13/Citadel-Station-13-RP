@@ -37,7 +37,8 @@
 		return FALSE
 
 	if(runtime_information[DMAPI5_RUNTIME_INFORMATION_API_VALIDATE_ONLY])
-		TGS_INFO_LOG("DMAPI validation, exiting...")
+		var/tgs_message = "DMAPI validation, exiting..."
+		TGS_INFO_LOG(tgs_message)	// Temp Bandage Fix
 		del(world)
 
 	version = new /datum/tgs_version(runtime_information[DMAPI5_RUNTIME_INFORMATION_SERVER_VERSION])
@@ -242,17 +243,20 @@
 
 	var/response_json = file2text(export_response["CONTENT"])
 	if(!response_json)
-		TGS_ERROR_LOG("Failed export request, missing content!")
+		var/tgs_message = "Failed export request, missing content!"
+		TGS_ERROR_LOG(tgs_message)	// Temp Bandage Fix
 		return
 
 	var/list/bridge_response = json_decode(response_json)
 	if(!bridge_response)
-		TGS_ERROR_LOG("Failed export request, bad json: [response_json]")
+		var/tgs_message = "Failed export request, bad json: [response_json]"
+		TGS_ERROR_LOG(tgs_message)	// Temp Bandage Fix
 		return
 
 	var/error = bridge_response[DMAPI5_RESPONSE_ERROR_MESSAGE]
 	if(error)
-		TGS_ERROR_LOG("Failed export request, bad request: [error]")
+		var/tgs_message = "Failed export request, bad request: [error]"
+		TGS_ERROR_LOG(tgs_message)	// Temp Bandage Fix
 		return
 
 	return bridge_response

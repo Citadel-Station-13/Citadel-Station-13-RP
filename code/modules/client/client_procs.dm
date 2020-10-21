@@ -674,7 +674,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	log_debug("[key_name(src)] reloaded VChat.")
 
 	// The hard way
-	qdel_null(src.chatOutput)
+	QDEL_NULL(src.chatOutput)
 	chatOutput = new /datum/chatOutput(src)	// Veechat
 	chatOutput.send_resources()
 	spawn()
