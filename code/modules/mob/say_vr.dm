@@ -37,7 +37,7 @@
 
 	if(input)
 		log_subtle(message,src)
-		message = "<B>[src]</B> <I>[input]</I>"
+		message = "<span class='emote'><B>[src]</B> <I>[input]</I></span>"
 	else
 		return
 
@@ -93,7 +93,7 @@
 
 	if(input)
 		log_subtle_anti_ghost(message,src)
-		message = "<B>[src]</B> <I>[input]</I>"
+		message = "<span class='emote'><B>[src]</B> <I>[input]</I></span>"
 	else
 		return
 
