@@ -148,6 +148,13 @@ function start_vue() {
 					admin: false
 				},
 				{
+					matches: ".nif",
+					becomes: "vc_nif",
+					pretty: "NIF Messages",
+					required: false,
+					admin: false
+				},
+				{
 					matches: ".pm",
 					becomes: "vc_adminpm",
 					pretty: "Admin PMs",
