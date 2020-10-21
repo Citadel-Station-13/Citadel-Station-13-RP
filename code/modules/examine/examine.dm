@@ -56,7 +56,7 @@
 	description_holders["interactions"] = A.get_description_interaction()
 
 	description_holders["name"] = "[A.name]"
-	description_holders["icon"] = "\icon[A]"
+	description_holders["icon"] = "[bicon(A)]"
 	description_holders["desc"] = A.desc
 
 /mob/Stat()

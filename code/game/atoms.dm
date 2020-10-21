@@ -213,7 +213,7 @@
 		else
 			f_name += "oil-stained [name][infix]."
 
-	to_chat(user, "\icon[src] That's [f_name] [suffix]")
+	to_chat(user, "[bicon(src)] That's [f_name] [suffix]")
 	user << desc
 
 	return distance == -1 || (get_dist(src, user) <= distance)
