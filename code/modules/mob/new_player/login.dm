@@ -7,6 +7,10 @@ var/obj/effect/lobby_image = new /obj/effect/lobby_image
 	desc = "How are you reading this?"
 	screen_loc = "1,1"
 
+	// Loading Screen
+	icon = 'icons/misc/loading.dmi'
+	icon_state = "loading"
+
 /obj/effect/lobby_image/Initialize()
 	icon = GLOB.using_map.lobby_icon
 	var/known_icon_states = icon_states(icon)
