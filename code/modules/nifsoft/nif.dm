@@ -365,7 +365,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 /obj/item/nif/proc/notify(var/message,var/alert = 0)
 	if(!human || stat == NIF_TEMPFAIL) return
 
-	to_chat(human,"<b>\[\icon[src.big_icon]NIF\]</b> displays, \"<span class='[alert ? "danger" : "notice"]'>[message]</span>\"")
+	to_chat(human,"<b>\[[bicon(src).big_icon]NIF\]</b> displays, \"<span class='[alert ? "danger" : "notice"]'>[message]</span>\"")
 	if(prob(1)) human.visible_message("<span class='notice'>\The [human] [pick(look_messages)].</span>")
 	if(alert)
 		human << bad_sound

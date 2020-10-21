@@ -45,7 +45,7 @@
 
 /obj/item/extinguisher/examine(mob/user)
 	if(..(user, 0))
-		to_chat(user, text("\icon[] [] contains [] units of water left!", src, src.name, src.reagents.total_volume))
+		to_chat(user, "[bicon(src)] [src.name] contains [src.reagents.total_volume] units of water left!")
 
 /obj/item/extinguisher/attack_self(mob/user as mob)
 	safety = !safety

@@ -1134,7 +1134,7 @@ GLOBAL_DATUM_INIT(dummySave, /savefile, new("tmp/dummySave.sav")) //Cache of ico
 	var/iconData = GLOB.dummySave.ExportText("dummy")
 	var/list/partial = splittext(iconData, "{")
 	return replacetext(copytext_char(partial[2], 3, -5), "\n", "")
-*/
+
 /proc/icon2html(thing, target, icon_state, dir = SOUTH, frame = 1, moving = FALSE, sourceonly = FALSE)
 	if (!thing)
 		return
@@ -1229,7 +1229,7 @@ GLOBAL_DATUM_INIT(dummySave, /savefile, new("tmp/dummySave.sav")) //Cache of ico
 
 		bicon_cache[key] = icon2base64(I, key)
 
-	return "<img class='icon icon-[A.icon_state]' src='data:image/png;base64,[bicon_cache[key]]'>"
+	return "<img class='icon icon-[A.icon_state]' src='data:image/png;base64,[bicon(_cache[key)]]'>"
 
 //Costlier version of icon2html() that uses getFlatIcon() to account for overlays, underlays, etc. Use with extreme moderation, ESPECIALLY on mobs.
 /proc/costly_icon2html(thing, target)
@@ -1241,7 +1241,7 @@ GLOBAL_DATUM_INIT(dummySave, /savefile, new("tmp/dummySave.sav")) //Cache of ico
 
 	var/icon/I = getFlatIcon(thing)
 	return icon2html(I, target)
-
+*/
 /// VSTATION SPECIFIC ///
 
 //For photo camera.

@@ -84,7 +84,7 @@
 			..()
 	else if(istype(W,/obj/item/pen))
 		plaque_contents = sanitize(input("What would you like to write on the plaque:","Skeleton plaque",""))
-		user.visible_message("[user] writes something on the base of [src].","You relabel the plaque on the base of \icon[src] [src].")
+		user.visible_message("[user] writes something on the base of [src].","You relabel the plaque on the base of [bicon(src)] [src].")
 		if(contents.Find(/obj/item/fossil/skull/horned))
 			desc = "A creature made of [contents.len-1] assorted bones and a horned skull. The plaque reads \'[plaque_contents]\'."
 		else

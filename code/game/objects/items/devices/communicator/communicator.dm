@@ -311,7 +311,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 /obj/item/communicator/Destroy()
 	for(var/mob/living/voice/voice in contents)
 		voice_mobs.Remove(voice)
-		to_chat(voice, "<span class='danger'>\icon[src] Connection timed out with remote host.</span>")
+		to_chat(voice, "<span class='danger'>[bicon(src)] Connection timed out with remote host.</span>")
 		qdel(voice)
 	close_connection(reason = "Connection timed out")
 

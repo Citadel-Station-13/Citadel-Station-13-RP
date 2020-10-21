@@ -1131,7 +1131,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 		if(!P.conversations.Find("\ref[src]"))
 			P.conversations.Add("\ref[src]")
 
-		to_chat(U, "\icon[src] <b>Sent message to [P.owner] ([P.ownjob]), </b>\"[t]\"")
+		to_chat(U, "[bicon(src)] <b>Sent message to [P.owner] ([P.ownjob]), </b>\"[t]\"")
 
 
 		if (prob(15)) //Give the AI a chance of intercepting the message
@@ -1152,7 +1152,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	if (!beep_silent)
 		playsound(loc, 'sound/machines/twobeep.ogg', 50, 1)
 		for (var/mob/O in hearers(2, loc))
-			O.show_message(text("\icon[src] *[message_tone]*"))
+			O.show_message(text("[bicon(src)] *[message_tone]*"))
 	//Search for holder of the PDA.
 	var/mob/living/L = null
 	if(loc && isliving(loc))
@@ -1167,7 +1167,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 		SSnanoui.update_user_uis(L, src) // Update the receiving user's PDA UI so that they can see the new message
 
 /obj/item/pda/proc/new_news(var/message)
-	new_info(news_silent, newstone, news_silent ? "" : "\icon[src] <b>[message]</b>")
+	new_info(news_silent, newstone, news_silent ? "" : "[bicon(src)] <b>[message]</b>")
 
 	if(!news_silent)
 		new_news = 1
@@ -1182,7 +1182,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	new_message(sending_device, sending_device.owner, sending_device.ownjob, message)
 
 /obj/item/pda/proc/new_message(var/sending_unit, var/sender, var/sender_job, var/message, var/reply = 1)
-	var/reception_message = "\icon[src] <b>Message from [sender] ([sender_job]), </b>\"[message]\" ([reply ? "<a href='byond://?src=\ref[src];choice=Message;notap=[istype(loc, /mob/living/silicon)];skiprefresh=1;target=\ref[sending_unit]'>Reply</a>" : "Unable to Reply"])"
+	var/reception_message = "[bicon(src)] <b>Message from [sender] ([sender_job]), </b>\"[message]\" ([reply ? "<a href='byond://?src=\ref[src];choice=Message;notap=[istype(loc, /mob/living/silicon)];skiprefresh=1;target=\ref[sending_unit]'>Reply</a>" : "Unable to Reply"])"
 	new_info(message_silent, ringtone, reception_message)
 
 	log_pda("(PDA: [sending_unit]) sent \"[message]\" to [name]", usr)
@@ -1194,7 +1194,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	if(ismob(sending_unit.loc) && isAI(loc))
 		track = "(<a href='byond://?src=\ref[loc];track=\ref[sending_unit.loc];trackname=[html_encode(sender)]'>Follow</a>)"
 
-	var/reception_message = "\icon[src] <b>Message from [sender] ([sender_job]), </b>\"[message]\" (<a href='byond://?src=\ref[src];choice=Message;notap=1;skiprefresh=1;target=\ref[sending_unit]'>Reply</a>) [track]"
+	var/reception_message = "[bicon(src)] <b>Message from [sender] ([sender_job]), </b>\"[message]\" (<a href='byond://?src=\ref[src];choice=Message;notap=1;skiprefresh=1;target=\ref[sending_unit]'>Reply</a>) [track]"
 	new_info(message_silent, newstone, reception_message)
 
 	log_pda("(PDA: [sending_unit]) sent \"[message]\" to [name]",usr)

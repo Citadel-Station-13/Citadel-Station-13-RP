@@ -66,7 +66,7 @@
 				else
 					metals[ore_type] = T.resources[metal]
 
-	to_chat(user, "\icon[src] <span class='notice'>The scanner beeps and displays a readout.</span>")
+	to_chat(user, "[bicon(src)] <span class='notice'>The scanner beeps and displays a readout.</span>")
 	var/list/results = list()
 	for(var/ore_type in metals)
 		var/result = "no sign"
