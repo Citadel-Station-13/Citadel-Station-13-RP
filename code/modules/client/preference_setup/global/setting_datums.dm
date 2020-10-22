@@ -251,6 +251,12 @@ var/list/_client_preferences_by_type
 	enabled_description = "Announce"
 	disabled_description = "Silent"
 
+/datum/client_preference/vchat_enable
+	description = "Enable/Disable VChat"
+	key = "VCHAT_ENABLE"
+	enabled_description =  "Enabled"
+	disabled_description = "Disabled"
+
 /********************
 * Staff Preferences *
 ********************/
