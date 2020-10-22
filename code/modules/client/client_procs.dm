@@ -669,6 +669,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		alert(src, "You can only try to reload VChat every 10 seconds at most.")
 		return
 
+	verbs -= /client/proc/vchat_export_log
+
 	// Log, disable
 	log_debug("[key_name(src)] reloaded VChat.")
 	winset(src, null, "outputwindow.htmloutput.is-visible=false;outputwindow.oldoutput.is-visible=false;outputwindow.chatloadlabel.is-visible=true")
