@@ -83,8 +83,6 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 // Total number of HUDs. Like body layers, and other things, it comes up sometimes.
 #define TOTAL_HUDS 14
 
-#define CLIENT_FROM_VAR(I) (ismob(I) ? I:client : (istype(I, /client) ? I : null))
-
 //	Shuttles.
 
 // These define the time taken for the shuttle to get to the space station, and the time before it leaves again.
@@ -394,7 +392,7 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 #define RAD_LEVEL_HIGH		25
 #define RAD_LEVEL_VERY_HIGH	75
 
-#define CLIENT_FROM_VAR(I) (ismob(I) ? I:client : (istype(I, /client) ? I : (istype(I, /datum/mind) ? I:current?:client : null)))
+#define CLIENT_FROM_VAR(I) (ismob(I) ? I:client : (isclient(I) ? I : null))
 #define RADIATION_THRESHOLD_CUTOFF	0.1	// Radiation will not affect a tile when below this value.
 
 

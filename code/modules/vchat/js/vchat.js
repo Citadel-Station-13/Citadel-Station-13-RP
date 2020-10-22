@@ -155,7 +155,7 @@ function start_vue() {
 					admin: false
 				},
 				{
-					matches: ".notice, .adminnotice, .info, .sinister, .cult",
+					matches: ".notice:not(.pm), .adminnotice, .info, .sinister, .cult",
 					becomes: "vc_info",
 					pretty: "Notices",
 					tooltip: "Non-urgent messages from the game and items",
@@ -163,7 +163,7 @@ function start_vue() {
 					admin: false
 				},
 				{
-					matches: ".critical, .danger, .userdanger, .warning, .italics",
+					matches: ".critical, .danger, .userdanger, .warning:not(.pm), .italics",
 					becomes: "vc_warnings",
 					pretty: "Warnings",
 					tooltip: "Urgent messages from the game and items",

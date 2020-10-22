@@ -9,33 +9,33 @@ var/global/list/additional_antag_types = list()
 	var/votable = 1
 	var/probability = 0
 
-	var/required_players = 0                 // Minimum players for round to start if voted in.
-	var/required_players_secret = 0          // Minimum number of players for that game mode to be chose in Secret
-	var/required_enemies = 0                 // Minimum antagonists for round to start.
+	var/required_players = 0				// Minimum players for round to start if voted in.
+	var/required_players_secret = 0			// Minimum number of players for that game mode to be chose in Secret
+	var/required_enemies = 0				// Minimum antagonists for round to start.
 	var/newscaster_announcements = null
-	var/end_on_antag_death = 0               // Round will end when all antagonists are dead.
-	var/ert_disabled = 0                     // ERT cannot be called.
-	var/deny_respawn = 0	                 // Disable respawn during this round.
+	var/end_on_antag_death = 0				// Round will end when all antagonists are dead.
+	var/ert_disabled = 0					// ERT cannot be called.
+	var/deny_respawn = 0					// Disable respawn during this round.
 
-	var/list/disabled_jobs = list()           // Mostly used for Malf.  This check is performed in job_controller so it doesn't spawn a regular AI.
+	var/list/disabled_jobs = list()			// Mostly used for Malf.  This check is performed in job_controller so it doesn't spawn a regular AI.
 
-	var/shuttle_delay = 1                    // Shuttle transit time is multiplied by this.
-	var/auto_recall_shuttle = 0              // Will the shuttle automatically be recalled?
+	var/shuttle_delay = 1					// Shuttle transit time is multiplied by this.
+	var/auto_recall_shuttle = 0				// Will the shuttle automatically be recalled?
 
-	var/list/antag_tags = list()             // Core antag templates to spawn.
-	var/list/antag_templates                 // Extra antagonist types to include.
+	var/list/antag_tags = list()			// Core antag templates to spawn.
+	var/list/antag_templates				// Extra antagonist types to include.
 	var/list/latejoin_templates = list()
-	var/round_autoantag = 0                  // Will this round attempt to periodically spawn more antagonists?
-	var/antag_scaling_coeff = 5              // Coefficient for scaling max antagonists to player count.
-	var/require_all_templates = 0            // Will only start if all templates are checked and can spawn.
+	var/round_autoantag = 0					// Will this round attempt to periodically spawn more antagonists?
+	var/antag_scaling_coeff = 5				// Coefficient for scaling max antagonists to player count.
+	var/require_all_templates = 0			// Will only start if all templates are checked and can spawn.
 
-	var/station_was_nuked = 0                // See nuclearbomb.dm and malfunction.dm.
-	var/explosion_in_progress = 0            // Sit back and relax
-	var/waittime_l = 600                     // Lower bound on time before intercept arrives (in tenths of seconds)
-	var/waittime_h = 1800                    // Upper bound on time before intercept arrives (in tenths of seconds)
+	var/station_was_nuked = 0				// See nuclearbomb.dm and malfunction.dm.
+	var/explosion_in_progress = 0			// Sit back and relax
+	var/waittime_l = 600					// Lower bound on time before intercept arrives (in tenths of seconds)
+	var/waittime_h = 1800					// Upper bound on time before intercept arrives (in tenths of seconds)
 
-	var/event_delay_mod_moderate             // Modifies the timing of random events.
-	var/event_delay_mod_major                // As above.
+	var/event_delay_mod_moderate			// Modifies the timing of random events.
+	var/event_delay_mod_major				// As above.
 
 /datum/game_mode/Topic(href, href_list[])
 	if(..())
@@ -533,15 +533,15 @@ proc/get_nt_opposed()
 	set category = "OOC"
 
 	if(!SSticker || !SSticker.mode)
-		usr << "Something is terribly wrong; there is no gametype."
+		to_chat(usr, "<span class='warning'>Something is terribly wrong; there is no gametype.</span>")
 		return
 
 	if(master_mode != "secret")
-		to_chat(usr, "<b>The roundtype is [capitalize(SSticker.mode.name)]</b>")
+		to_chat(usr, "<span class='notice'><b>The roundtype is [capitalize(SSticker.mode.name)]</b></span>")
 		if(SSticker.mode.round_description)
-			to_chat(usr, "<i>[SSticker.mode.round_description]</i>")
+			to_chat(usr, "<span class='notice'><i>[SSticker.mode.round_description]</i></span>")
 		if(SSticker.mode.extended_round_description)
-			to_chat(usr, "[SSticker.mode.extended_round_description]")
+			to_chat(usr, "<span class='notice'>[SSticker.mode.extended_round_description]</span>")
 	else
-		to_chat(usr, "<i>Shhhh</i>. It's a secret.")
+		to_chat(usr, "<span class='notice'><i>Shhhh</i>. It's a secret.</span>")
 	return

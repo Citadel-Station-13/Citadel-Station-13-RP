@@ -136,6 +136,10 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("data/iconCache.sav")) //Cache of ic
 	broken = TRUE
 	loaded = FALSE
 
+	if(!owner)
+		qdel(src)
+		return
+
 	update_vis()
 
 	spawn()
