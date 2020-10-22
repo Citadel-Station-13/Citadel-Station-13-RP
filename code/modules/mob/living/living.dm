@@ -88,9 +88,9 @@ default behaviour is:
 	set hidden = 1
 	if ((src.health < 0 && src.health > (5-src.getMaxHealth()))) // Health below Zero but above 5-away-from-death, as before, but variable
 		src.death()
-		to_chat(src, "<font color='blue'>You have given up life and succumbed to death.</font>")
+		to_chat(src, "<span class='notice'>You have given up life and succumbed to death.</span>")
 	else
-		to_chat(src, "<font color='blue'>You are not injured enough to succumb to death!</font>")
+		to_chat(src, "<span class='notice'>You are not injured enough to succumb to death!</span>")
 
 /mob/living/proc/updatehealth()
 	if(status_flags & GODMODE)

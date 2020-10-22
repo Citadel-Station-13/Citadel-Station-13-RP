@@ -6,7 +6,7 @@
 			switch(reagents.get_master_reagent_id())
 				if("blood")
 					user.show_message("<span class='warning'>You sink your fangs into \the [src] and suck the blood out of it!</span>")
-					user.visible_message("<font color='red'>[user] sinks their fangs into \the [src] and drains it!</font>")
+					user.visible_message("<span class='danger'>[user] sinks their fangs into \the [src] and drains it!</span>")
 					user.nutrition += remove_volume*5
 					reagents.remove_reagent(reagent_to_remove, remove_volume)
 					update_icon()
@@ -51,7 +51,7 @@
 	name = "IV Pack (AB+)"
 	desc = "Holds liquids used for transfusion. This one's label seems to be hardprinted. This one is labeled AB+"
 	blood_type = "AB+"
-	
+
 /obj/item/reagent_containers/blood/prelabeled/ABMinus
 	name = "IV Pack (AB-)"
 	desc = "Holds liquids used for transfusion. This one's label seems to be hardprinted. This one is labeled AB-"

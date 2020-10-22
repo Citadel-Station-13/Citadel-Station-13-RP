@@ -140,7 +140,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 //This stops files larger than UPLOAD_LIMIT being sent from client to server via input(), client.Import() etc.
 /client/AllowUpload(filename, filelength)
 	if(filelength > UPLOAD_LIMIT)
-		to_chat(src, "<font color='red'>Error: AllowUpload(): File Upload too large. Upload Limit: [UPLOAD_LIMIT/1024]KiB.</font>")
+		to_chat(src, "<span class='danger'>Error: AllowUpload(): File Upload too large. Upload Limit: [UPLOAD_LIMIT/1024]KiB.</span>")
 		return 0
 	return 1
 
@@ -169,7 +169,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	// Only show this if they are put into a new_player mob. Otherwise, "what title screen?"
 	if(isnewplayer(src.mob))
-		to_chat(src, "<font color='red'>If the title screen is black, resources are still downloading. Please be patient until the title screen appears.</font>")
+		to_chat(src, "<span class='danger'>If the title screen is black, resources are still downloading. Please be patient until the title screen appears.</span>")
 
 	GLOB.clients += src
 	GLOB.directory[ckey] = src

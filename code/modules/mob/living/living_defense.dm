@@ -106,7 +106,7 @@
 		var/obj/item/assembly/signaler/signaler = get_active_hand()
 		if(signaler.deadman && prob(80))
 			log_and_message_admins("has triggered a signaler deadman's switch")
-			src.visible_message("<font color='red'>[src] triggers their deadman's switch!</font>")
+			src.visible_message("<span class='danger'>[src] triggers their deadman's switch!</span>")
 			signaler.signal()
 
 	if(ai_holder && P.firer)
@@ -129,7 +129,7 @@
 	//Stun Beams
 	if(P.taser_effect)
 		stun_effect_act(0, P.agony, def_zone, P)
-		to_chat(src, "<font color='red'>You have been hit by [P]!</font>")
+		to_chat(src, "<span class='danger'>You have been hit by [P]!</span>")
 		if(!P.nodamage)
 			apply_damage(P.damage, P.damage_type, def_zone, absorb, soaked, 0, P, sharp=proj_sharp, edge=proj_edge)
 		qdel(P)
@@ -263,10 +263,10 @@
 			miss_chance = max(15*(distance-2), 0)
 
 		if (prob(miss_chance))
-			visible_message("<font color='blue'>\The [O] misses [src] narrowly!</font>")
+			visible_message("<span class='notice'>\The [O] misses [src] narrowly!</span>")
 			return
 
-		src.visible_message("<font color='red'>[src] has been hit by [O].</font>")
+		src.visible_message("<span class='danger'>[src] has been hit by [O].</span>")
 		var/armor = run_armor_check(null, "melee")
 		var/soaked = get_armor_soak(null, "melee")
 
@@ -293,7 +293,7 @@
 		if(O.throw_source && momentum >= THROWNOBJ_KNOCKBACK_SPEED)
 			var/dir = get_dir(O.throw_source, src)
 
-			visible_message("<font color='red'>[src] staggers under the impact!</font>","<font color='red'>You stagger under the impact!</font>")
+			visible_message("<span class='danger'>[src] staggers under the impact!</span>","<span class='danger'>You stagger under the impact!</span>")
 			src.throw_at(get_edge_target_turf(src,dir),1,momentum)
 
 			if(!O || !src) return

@@ -432,7 +432,7 @@
 
 	if(scanner)
 		var/mob/living/carbon/human/occupant = scanner.occupant
-		dat = "<font color='blue'><b>Occupant Statistics:</b></font><br>" //Blah obvious
+		dat = "<span class='notice'><b>Occupant Statistics:</b></span><br>" //Blah obvious
 		if(istype(occupant)) //is there REALLY someone in there?
 			var/t1
 			switch(occupant.stat) // obvious, see what their status is
@@ -445,7 +445,7 @@
 			dat += "<font color=[occupant.health > (occupant.getMaxHealth() / 2) ? "blue" : "red"]>\tHealth %: [(occupant.health / occupant.getMaxHealth())*100], ([t1])</font><br>"
 
 			if(occupant.virus2.len)
-				dat += "<font color='red'>Viral pathogen detected in blood stream.</font><BR>"
+				dat += "<span class='danger'>Viral pathogen detected in blood stream.</span><BR>"
 
 			var/extra_font = null
 			extra_font = "<font color=[occupant.getBruteLoss() < 60 ? "blue" : "red"]>"
@@ -594,12 +594,12 @@
 				dat += "</tr>"
 			dat += "</table>"
 			if(occupant.sdisabilities & BLIND)
-				dat += "<font color='red'>Cataracts detected.</font><BR>"
+				dat += "<span class='danger'>Cataracts detected.</span><BR>"
 			if(occupant.disabilities & NEARSIGHTED)
-				dat += "<font color='red'>Retinal misalignment detected.</font><BR>"
+				dat += "<span class='danger'>Retinal misalignment detected.</span><BR>"
 		else
 			dat += "\The [src] is empty."
 	else
-		dat = "<font color='red'> Error: No Body Scanner connected.</font>"
+		dat = "<span class='danger'> Error: No Body Scanner connected.</span>"
 
 	printing_text = dat

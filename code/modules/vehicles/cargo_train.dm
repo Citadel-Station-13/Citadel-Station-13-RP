@@ -161,19 +161,19 @@
 
 /obj/vehicle/train/trolley/RunOver(var/mob/living/carbon/human/H)
 	..()
-	attack_log += text("\[[time_stamp()]\] <font color='red'>ran over [H.name] ([H.ckey])</font>")
+	attack_log += text("\[[time_stamp()]\] <span class='danger'>ran over [H.name] ([H.ckey])</span>")
 
 /obj/vehicle/train/engine/RunOver(var/mob/living/carbon/human/H)
 	..()
 
 	if(is_train_head() && istype(load, /mob/living/carbon/human))
 		var/mob/living/carbon/human/D = load
-		to_chat(D, "<font color='red'><B>You ran over [H]!</B></font>")
-		visible_message("<B><font color='red'>\The [src] ran over [H]!</B></font>")
+		to_chat(D, "<span class='danger'><B>You ran over [H]!</B></span>")
+		visible_message("<B><span class='danger'>\The [src] ran over [H]!</B></span>")
 		add_attack_logs(D,H,"Ran over with [src.name]")
-		attack_log += text("\[[time_stamp()]\] <font color='red'>ran over [H.name] ([H.ckey]), driven by [D.name] ([D.ckey])</font>")
+		attack_log += text("\[[time_stamp()]\] <span class='danger'>ran over [H.name] ([H.ckey]), driven by [D.name] ([D.ckey])</span>")
 	else
-		attack_log += text("\[[time_stamp()]\] <font color='red'>ran over [H.name] ([H.ckey])</font>")
+		attack_log += text("\[[time_stamp()]\] <span class='danger'>ran over [H.name] ([H.ckey])</span>")
 
 
 //-------------------------------------------

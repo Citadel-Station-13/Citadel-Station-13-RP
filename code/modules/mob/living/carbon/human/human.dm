@@ -414,7 +414,7 @@
 												U.handle_regular_hud_updates()
 
 			if(!modified)
-				to_chat(usr, "<font color='red'>Unable to locate a data core entry for this person.</font>")
+				to_chat(usr, "<span class='danger'>Unable to locate a data core entry for this person.</span>")
 
 	if (href_list["secrecord"])
 		if(hasHUD(usr,"security"))
@@ -441,7 +441,7 @@
 								read = 1
 
 			if(!read)
-				to_chat(usr, "<font color='red'>Unable to locate a data core entry for this person.</font>")
+				to_chat(usr, "<span class='danger'>Unable to locate a data core entry for this person.</span>")
 
 	if (href_list["secrecordComment"])
 		if(hasHUD(usr,"security"))
@@ -468,7 +468,7 @@
 								usr << "<a href='?src=\ref[src];secrecordadd=`'>\[Add comment\]</a>"
 
 			if(!read)
-				to_chat(usr, "<font color='red'>Unable to locate a data core entry for this person.</font>")
+				to_chat(usr, "<span class='danger'>Unable to locate a data core entry for this person.</span>")
 
 	if (href_list["secrecordadd"])
 		if(hasHUD(usr,"security"))
@@ -530,7 +530,7 @@
 											U.handle_regular_hud_updates()
 
 			if(!modified)
-				to_chat(usr, "<font color='red'>Unable to locate a data core entry for this person.</font>")
+				to_chat(usr, "<span class='danger'>Unable to locate a data core entry for this person.</span>")
 
 	if (href_list["medrecord"])
 		if(hasHUD(usr,"medical"))
@@ -558,7 +558,7 @@
 								read = 1
 
 			if(!read)
-				to_chat(usr, "<font color='red'>Unable to locate a data core entry for this person.</font>")
+				to_chat(usr, "<span class='danger'>Unable to locate a data core entry for this person.</span>")
 
 	if (href_list["medrecordComment"])
 		if(hasHUD(usr,"medical"))
@@ -585,7 +585,7 @@
 								usr << "<a href='?src=\ref[src];medrecordadd=`'>\[Add comment\]</a>"
 
 			if(!read)
-				to_chat(usr, "<font color='red'>Unable to locate a data core entry for this person.</font>")
+				to_chat(usr, "<span class='danger'>Unable to locate a data core entry for this person.</span>")
 
 	if (href_list["medrecordadd"])
 		if(hasHUD(usr,"medical"))
@@ -740,7 +740,7 @@
 /mob/living/carbon/human/proc/play_xylophone()
 	if(!src.xylophone)
 		var/datum/gender/T = gender_datums[get_visible_gender()]
-		visible_message("<font color='red'>\The [src] begins playing [T.his] ribcage like a xylophone. It's quite spooky.</font>","<font color='blue'>You begin to play a spooky refrain on your ribcage.</font>","<font color='red'>You hear a spooky xylophone melody.</font>")
+		visible_message("<span class='danger'>\The [src] begins playing [T.his] ribcage like a xylophone. It's quite spooky.</span>","<span class='notice'>You begin to play a spooky refrain on your ribcage.</span>","<span class='danger'>You hear a spooky xylophone melody.</span>")
 		var/song = pick('sound/effects/xylophone1.ogg','sound/effects/xylophone2.ogg','sound/effects/xylophone3.ogg')
 		playsound(loc, song, 50, 1, -1)
 		xylophone = 1
@@ -831,7 +831,7 @@
 	regenerate_icons()
 	check_dna()
 	var/datum/gender/T = gender_datums[get_visible_gender()]
-	visible_message("<font color='blue'>\The [src] morphs and changes [T.his] appearance!</font>", "<font color='blue'>You change your appearance!</font>", "<font color='red'>Oh, god!  What the hell was that?  It sounded like flesh getting squished and bone ground into a different shape!</font>")
+	visible_message("<span class='notice'>\The [src] morphs and changes [T.his] appearance!</span>", "<span class='notice'>You change your appearance!</span>", "<span class='danger'>Oh, god!  What the hell was that?  It sounded like flesh getting squished and bone ground into a different shape!</span>")
 
 /mob/living/carbon/human/proc/remotesay()
 	set name = "Project mind"
@@ -854,10 +854,10 @@
 
 	var/say = sanitize(input("What do you wish to say"))
 	if(mRemotetalk in target.mutations)
-		target.show_message("<font color='blue'> You hear [src.real_name]'s voice: [say]</font>")
+		target.show_message("<span class='notice'> You hear [src.real_name]'s voice: [say]</span>")
 	else
-		target.show_message("<font color='blue'> You hear a voice that seems to echo around the room: [say]</font>")
-	usr.show_message("<font color='blue'> You project your mind into [target.real_name]: [say]</font>")
+		target.show_message("<span class='notice'> You hear a voice that seems to echo around the room: [say]</span>")
+	usr.show_message("<span class='notice'> You project your mind into [target.real_name]: [say]</span>")
 	log_say("(TPATH to [key_name(target)]) [say]",src)
 	for(var/mob/observer/dead/G in mob_list)
 		G.show_message("<i>Telepathic message from <b>[src]</b> to <b>[target]</b>: [say]</i>")

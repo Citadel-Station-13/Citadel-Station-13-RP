@@ -89,7 +89,7 @@
 					HTML += "		<td>[L.definition]</td>"
 					HTML += "		<td>[L.suggested_punishments]</td>"
 					HTML += "		<td>[L.notes]</td>"
-					HTML += "		<td>[L.mandated ? "<font color='red'>Yes</font>" : "<font color='green'>No</font>"]</td>"
+					HTML += "		<td>[L.mandated ? "<span class='danger'>Yes</span>" : "<font color='green'>No</font>"]</td>"
 					HTML += "	</tr>"
 					j++
 

@@ -62,7 +62,7 @@
 
 	dat += "<hr>"
 	dat += "<hr>"
-	dat += "<font color='blue'><b>Always wear safety gear and consult a field manual before operation.</b></font><br>"
+	dat += "<span class='notice'><b>Always wear safety gear and consult a field manual before operation.</b></span><br>"
 	if(!locked)
 		dat += "<A href='?src=\ref[src];lock=1'>Lock console</A><br>"
 	else
@@ -183,10 +183,10 @@
 
 	for(var/mob/living/M in T)
 		M.weakened += 5
-		M.visible_message("<font color='blue'>[bicon(M)] [M] begins to float in the air!</font>","You feel tingly and light, but it is difficult to move.")
+		M.visible_message("<span class='notice'>[bicon(M)] [M] begins to float in the air!</span>","You feel tingly and light, but it is difficult to move.")
 
 	suspension_field = new(T)
-	visible_message("<font color='blue'>[bicon(src)] [src] activates with a low hum.</font>")
+	visible_message("<span class='notice'>[bicon(src)] [src] activates with a low hum.</span>")
 	icon_state = "suspension3"
 
 	for(var/obj/item/I in T)
@@ -196,7 +196,7 @@
 	if(collected)
 		suspension_field.icon_state = "energynet"
 		suspension_field.overlays += "shield2"
-		visible_message("<font color='blue'>[bicon(suspension_field)] [suspension_field] gently absconds [collected > 1 ? "something" : "several things"].</font>")
+		visible_message("<span class='notice'>[bicon(suspension_field)] [suspension_field] gently absconds [collected > 1 ? "something" : "several things"].</span>")
 	else
 		if(istype(T,/turf/simulated/mineral) || istype(T,/turf/simulated/wall))
 			suspension_field.icon_state = "shieldsparkles"
@@ -211,7 +211,7 @@
 		to_chat(M, "<span class='info'>You no longer feel like floating.</span>")
 		M.weakened = min(M.weakened, 3)
 
-	visible_message("<font color='blue'>[bicon(src)] [src] deactivates with a gentle shudder.</font>")
+	visible_message("<span class='notice'>[bicon(src)] [src] deactivates with a gentle shudder.</span>")
 	qdel(suspension_field)
 	suspension_field = null
 	icon_state = "suspension2"
@@ -226,7 +226,7 @@
 	set category = "Object"
 
 	if(anchored)
-		to_chat(usr, "<font color='red'>You cannot rotate [src], it has been firmly fixed to the floor.</font>")
+		to_chat(usr, "<span class='danger'>You cannot rotate [src], it has been firmly fixed to the floor.</span>")
 		return
 	src.setDir(turn(src.dir, 90))
 
@@ -236,7 +236,7 @@
 	set category = "Object"
 
 	if(anchored)
-		to_chat(usr, "<font color='red'>You cannot rotate [src], it has been firmly fixed to the floor.</font>")
+		to_chat(usr, "<span class='danger'>You cannot rotate [src], it has been firmly fixed to the floor.</span>")
 		return
 	src.setDir(turn(src.dir, 270))
 

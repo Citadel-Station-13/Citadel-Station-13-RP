@@ -63,11 +63,11 @@ HALOGEN COUNTER	- Radcount on mobs
 	if (!ishuman(M) || M.isSynthetic())
 		//these sensors are designed for organic life
 		dat += "<span class='notice'>Analyzing Results for ERROR:\n\tOverall Status: ERROR<br>"
-		dat += "\tKey: <font color='cyan'>Suffocation</font>/<font color='green'>Toxin</font>/<font color='#FFA500'>Burns</font>/<font color='red'>Brute</font><br>"
-		dat += "\tDamage Specifics: <font color='cyan'>?</font> - <font color='green'>?</font> - <font color='#FFA500'>?</font> - <font color='red'>?</font><br>"
+		dat += "\tKey: <font color='cyan'>Suffocation</font>/<font color='green'>Toxin</font>/<font color='#FFA500'>Burns</font>/<span class='danger'>Brute</span><br>"
+		dat += "\tDamage Specifics: <font color='cyan'>?</font> - <font color='green'>?</font> - <font color='#FFA500'>?</font> - <span class='danger'>?</span><br>"
 		dat += "Body Temperature: [M.bodytemperature-T0C]&deg;C ([M.bodytemperature*1.8-459.67]&deg;F)</span><br>"
 		dat += "<span class='warning'>Warning: Blood Level ERROR: --% --cl.</span> <span class='notice'>Type: ERROR</span><br>"
-		dat += "<span class='notice'>Subject's pulse: <font color='red'>-- bpm.</font></span>"
+		dat += "<span class='notice'>Subject's pulse: <span class='danger'>-- bpm.</span></span>"
 		user.show_message(dat, 1)
 		return
 
@@ -82,8 +82,8 @@ HALOGEN COUNTER	- Radcount on mobs
 		dat += "<span class='notice'>Overall Status: dead</span><br>"
 	else
 		dat += 	"<span class='notice'>Analyzing Results for [M]:\n\t Overall Status: [M.stat > 1 ? "dead" : "[round((M.health/M.getMaxHealth())*100) ]% healthy"]<br>"
-	dat += 		"\tKey: <font color='cyan'>Suffocation</font>/<font color='green'>Toxin</font>/<font color='#FFA500'>Burns</font>/<font color='red'>Brute</font><br>"
-	dat += 		"\tDamage Specifics: <font color='cyan'>[OX]</font> - <font color='green'>[TX]</font> - <font color='#FFA500'>[BU]</font> - <font color='red'>[BR]</font><br>"
+	dat += 		"\tKey: <font color='cyan'>Suffocation</font>/<font color='green'>Toxin</font>/<font color='#FFA500'>Burns</font>/<span class='danger'>Brute</span><br>"
+	dat += 		"\tDamage Specifics: <font color='cyan'>[OX]</font> - <font color='green'>[TX]</font> - <font color='#FFA500'>[BU]</font> - <span class='danger'>[BR]</span><br>"
 	dat +=		"Body Temperature: [M.bodytemperature-T0C]&deg;C ([M.bodytemperature*1.8-459.67]&deg;F)</span><br>"
 	//VOREStation edit/addition starts
 	if(M.timeofdeath && (M.stat == DEAD || (M.status_flags & FAKEDEATH)))
@@ -110,7 +110,7 @@ HALOGEN COUNTER	- Radcount on mobs
 	OX = M.getOxyLoss() > 50 ? 	 "<font color='cyan'><b>Severe oxygen deprivation detected</b></font>" 		: 	"Subject bloodstream oxygen level normal"
 	TX = M.getToxLoss() > 50 ? 	 "<font color='green'><b>Dangerous amount of toxins detected</b></font>" 	: 	"Subject bloodstream toxin level minimal"
 	BU = M.getFireLoss() > 50 ?  "<font color='#FFA500'><b>Severe burn damage detected</b></font>" 			:	"Subject burn injury status O.K"
-	BR = M.getBruteLoss() > 50 ? "<font color='red'><b>Severe anatomical damage detected</b></font>" 		: 	"Subject brute-force injury status O.K"
+	BR = M.getBruteLoss() > 50 ? "<span class='danger'><b>Severe anatomical damage detected</b></span>" 		: 	"Subject brute-force injury status O.K"
 	if(M.status_flags & FAKEDEATH)
 		OX = fake_oxy > 50 ? 		"<span class='warning'>Severe oxygen deprivation detected</span>" 	: 	"Subject bloodstream oxygen level normal"
 	dat += "[OX] | [TX] | [BU] | [BR]<br>"

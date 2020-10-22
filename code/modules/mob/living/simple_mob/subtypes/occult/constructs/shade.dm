@@ -42,7 +42,7 @@
 	..()
 	for(var/mob/M in viewers(src, null))
 		if((M.client && !( M.blinded )))
-			M.show_message("<font color='red'>[src] lets out a contented sigh as their form unwinds.</font>")
+			M.show_message("<span class='danger'>[src] lets out a contented sigh as their form unwinds.</span>")
 
 	ghostize()
 	qdel(src)

@@ -60,7 +60,7 @@
 		src.has_power = 1
 	else
 		if (src.has_power)
-			to_chat(src, "<font color='red'>You are now running on emergency backup power.</font>")
+			to_chat(src, "<span class='danger'>You are now running on emergency backup power.</span>")
 		src.has_power = 0
 		if(lights_on) // Light is on but there is no power!
 			lights_on = 0

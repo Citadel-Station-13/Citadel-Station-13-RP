@@ -85,7 +85,7 @@ log transactions
 	if(istype(I, /obj/item/card))
 		if(emagged > 0)
 			//prevent inserting id into an emagged ATM
-			to_chat(user, "<font color='red'>[bicon(src)] CARD READER ERROR. This system has been compromised!</font>")
+			to_chat(user, "<span class='danger'>[bicon(src)] CARD READER ERROR. This system has been compromised!</span>")
 			return
 		else if(istype(I,/obj/item/card/emag))
 			I.resolve_attackby(src, user)
@@ -143,7 +143,7 @@ log transactions
 				dat += "<span class='alert'>Maximum number of pin attempts exceeded! Access to this ATM has been temporarily disabled.</span>"
 			else if(authenticated_account)
 				if(authenticated_account.suspended)
-					dat += "<font color='red'><b>Access to this account has been suspended, and the funds within frozen.</b></font>"
+					dat += "<span class='danger'><b>Access to this account has been suspended, and the funds within frozen.</b></span>"
 				else
 					switch(view_screen)
 						if(CHANGE_SECURITY_LEVEL)
@@ -288,11 +288,11 @@ log transactions
 									T.time = stationtime2text()
 									failed_account.transaction_log.Add(T)
 							else
-								to_chat(usr, "<font color='red'>[bicon(src)] Incorrect pin/account combination entered, [max_pin_attempts - number_incorrect_tries] attempts remaining.</font>")
+								to_chat(usr, "<span class='danger'>[bicon(src)] Incorrect pin/account combination entered, [max_pin_attempts - number_incorrect_tries] attempts remaining.</span>")
 								previous_account_number = tried_account_num
 								playsound(src, 'sound/machines/buzz-sigh.ogg', 50, 1)
 						else
-							to_chat(usr, "<font color='red'>[bicon(src)] incorrect pin/account combination entered.</font>")
+							to_chat(usr, "<span class='danger'>[bicon(src)] incorrect pin/account combination entered.</span>")
 							number_incorrect_tries = 0
 					else
 						playsound(src, 'sound/machines/twobeep.ogg', 50, 1)
@@ -308,7 +308,7 @@ log transactions
 						T.time = stationtime2text()
 						authenticated_account.transaction_log.Add(T)
 
-						to_chat(usr, "<font color='blue'>[bicon(src)] Access granted. Welcome user '[authenticated_account.owner_name].</font>'")
+						to_chat(usr, "<span class='notice'>[bicon(src)] Access granted. Welcome user '[authenticated_account.owner_name].</span>'")
 
 					previous_account_number = tried_account_num
 			if("e_withdrawal")
@@ -433,7 +433,7 @@ log transactions
 				if(!held_card)
 					//this might happen if the user had the browser window open when somebody emagged it
 					if(emagged > 0)
-						to_chat(usr, "<font color='red'>[bicon(src)] The ATM card reader rejected your ID because this machine has been sabotaged!</font>")
+						to_chat(usr, "<span class='danger'>[bicon(src)] The ATM card reader rejected your ID because this machine has been sabotaged!</span>")
 					else
 						var/obj/item/I = usr.get_active_hand()
 						if (istype(I, /obj/item/card/id))
@@ -461,7 +461,7 @@ log transactions
 			if(I)
 				authenticated_account = attempt_account_access(I.associated_account_number)
 				if(authenticated_account)
-					to_chat(human_user, "<font color='blue'>[bicon(src)] Access granted. Welcome user '[authenticated_account.owner_name].</font>'")
+					to_chat(human_user, "<span class='notice'>[bicon(src)] Access granted. Welcome user '[authenticated_account.owner_name].</span>'")
 
 					//create a transaction log entry
 					var/datum/transaction/T = new()

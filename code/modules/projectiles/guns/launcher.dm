@@ -16,7 +16,7 @@
 
 //Override this to avoid a runtime with suicide handling.
 /obj/item/gun/launcher/handle_suicide(mob/living/user)
-	to_chat(user, "<font color='red'>Shooting yourself with \a [src] is pretty tricky. You can't seem to manage it.</font>")
+	to_chat(user, "<span class='danger'>Shooting yourself with \a [src] is pretty tricky. You can't seem to manage it.</span>")
 	return
 
 /obj/item/gun/launcher/proc/update_release_force(obj/item/projectile)

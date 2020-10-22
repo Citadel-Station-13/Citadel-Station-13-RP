@@ -40,7 +40,7 @@
 			entry += " - [age]"
 
 			if(is_special_character(C.mob))
-				entry += " - <b><font color='red'>Antagonist</font></b>"
+				entry += " - <b><span class='danger'>Antagonist</span></b>"
 
 			if(C.is_afk())
 				var/seconds = C.last_activity_seconds()

@@ -112,7 +112,7 @@
 
 /obj/item/assembly/prox_sensor/interact(mob/user as mob)//TODO: Change this to the wires thingy
 	if(!secured)
-		user.show_message("<font color='red'>The [name] is unsecured!</font>")
+		user.show_message("<span class='danger'>The [name] is unsecured!</span>")
 		return 0
 	var/second = time % 60
 	var/minute = (time - second) / 60

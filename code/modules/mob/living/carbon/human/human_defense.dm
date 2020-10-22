@@ -408,7 +408,7 @@ emp_act
 		var/obj/item/organ/external/affecting = get_organ(zone)
 		var/hit_area = affecting.name
 
-		src.visible_message("<font color='red'>[src] has been hit in the [hit_area] by [O].</font>")
+		src.visible_message("<span class='danger'>[src] has been hit in the [hit_area] by [O].</span>")
 
 		if(ismob(O.thrower))
 			add_attack_logs(O.thrower,src,"Hit with thrown [O.name]")
@@ -454,7 +454,7 @@ emp_act
 		if(O.throw_source && momentum >= THROWNOBJ_KNOCKBACK_SPEED)
 			var/dir = get_dir(O.throw_source, src)
 
-			visible_message("<font color='red'>[src] staggers under the impact!</font>","<font color='red'>You stagger under the impact!</font>")
+			visible_message("<span class='danger'>[src] staggers under the impact!</span>","<span class='danger'>You stagger under the impact!</span>")
 			src.throw_at(get_edge_target_turf(src,dir),1,momentum)
 
 			if(!O || !src) return

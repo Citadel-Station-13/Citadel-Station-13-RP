@@ -369,7 +369,7 @@ proc/admin_notice(var/message, var/rights)
 					if(CHANNEL.is_admin_channel)
 						dat+="<B><FONT style='BACKGROUND-COLOR: LightGreen'><A href='?src=\ref[src];ac_show_channel=\ref[CHANNEL]'>[CHANNEL.channel_name]</A></FONT></B><BR>"
 					else
-						dat+="<B><A href='?src=\ref[src];ac_show_channel=\ref[CHANNEL]'>[CHANNEL.channel_name]</A> [(CHANNEL.censored) ? ("<FONT COLOR='red'>***</FONT>") : null]<BR></B>"
+						dat+="<B><A href='?src=\ref[src];ac_show_channel=\ref[CHANNEL]'>[CHANNEL.channel_name]</A> [(CHANNEL.censored) ? ("<span class='danger'>***</span>") : null]<BR></B>"
 			dat+={"<BR><HR><A href='?src=\ref[src];ac_refresh=1'>Refresh</A>
 				<BR><A href='?src=\ref[src];ac_setScreen=[0]'>Back</A>
 			"}
@@ -423,7 +423,7 @@ proc/admin_notice(var/message, var/rights)
 			dat+="<B>[src.admincaster_feed_channel.channel_name]: </B><FONT SIZE=1>\[created by: <FONT COLOR='maroon'>[src.admincaster_feed_channel.author]</FONT>\]</FONT><HR>"
 			if(src.admincaster_feed_channel.censored)
 				dat+={"
-					<FONT COLOR='red'><B>ATTENTION: </B></FONT>This channel has been deemed as threatening to the welfare of the station, and marked with a [GLOB.using_map.company_name] D-Notice.<BR>
+					<span class='danger'><B>ATTENTION: </B></span>This channel has been deemed as threatening to the welfare of the station, and marked with a [GLOB.using_map.company_name] D-Notice.<BR>
 					No further feed story additions are allowed while the D-Notice is in effect.<BR><BR>
 				"}
 			else
@@ -453,7 +453,7 @@ proc/admin_notice(var/message, var/rights)
 				dat+="<I>No feed channels found active...</I><BR>"
 			else
 				for(var/datum/feed_channel/CHANNEL in news_network.network_channels)
-					dat+="<A href='?src=\ref[src];ac_pick_censor_channel=\ref[CHANNEL]'>[CHANNEL.channel_name]</A> [(CHANNEL.censored) ? ("<FONT COLOR='red'>***</FONT>") : null]<BR>"
+					dat+="<A href='?src=\ref[src];ac_pick_censor_channel=\ref[CHANNEL]'>[CHANNEL.channel_name]</A> [(CHANNEL.censored) ? ("<span class='danger'>***</span>") : null]<BR>"
 			dat+="<BR><A href='?src=\ref[src];ac_setScreen=[0]'>Cancel</A>"
 		if(11)
 			dat+={"
@@ -466,7 +466,7 @@ proc/admin_notice(var/message, var/rights)
 				dat+="<I>No feed channels found active...</I><BR>"
 			else
 				for(var/datum/feed_channel/CHANNEL in news_network.network_channels)
-					dat+="<A href='?src=\ref[src];ac_pick_d_notice=\ref[CHANNEL]'>[CHANNEL.channel_name]</A> [(CHANNEL.censored) ? ("<FONT COLOR='red'>***</FONT>") : null]<BR>"
+					dat+="<A href='?src=\ref[src];ac_pick_d_notice=\ref[CHANNEL]'>[CHANNEL.channel_name]</A> [(CHANNEL.censored) ? ("<span class='danger'>***</span>") : null]<BR>"
 
 			dat+="<BR><A href='?src=\ref[src];ac_setScreen=[0]'>Back</A>"
 		if(12)
@@ -490,7 +490,7 @@ proc/admin_notice(var/message, var/rights)
 			"}
 			if(src.admincaster_feed_channel.censored)
 				dat+={"
-					<FONT COLOR='red'><B>ATTENTION: </B></FONT>This channel has been deemed as threatening to the welfare of the station, and marked with a [GLOB.using_map.company_name] D-Notice.<BR>
+					<span class='danger'><B>ATTENTION: </B></span>This channel has been deemed as threatening to the welfare of the station, and marked with a [GLOB.using_map.company_name] D-Notice.<BR>
 					No further feed story additions are allowed while the D-Notice is in effect.<BR><BR>
 				"}
 			else
@@ -853,11 +853,11 @@ var/datum/announcement/minor/admin_min_announcer = new
 		SSticker.current_state = GAME_STATE_SETTING_UP
 		Master.SetRunLevel(RUNLEVEL_SETUP)
 		log_admin("[usr.key] has started the game.")
-		message_admins("<font color='blue'>[usr.key] has started the game.</font>")
+		message_admins("<span class='notice'>[usr.key] has started the game.</span>")
 		feedback_add_details("admin_verb","SN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 		return 1
 	else
-		to_chat(usr, "<font color='red'>Error: Start Now: Game has already started.</font>")
+		to_chat(usr, "<span class='danger'>Error: Start Now: Game has already started.</span>")
 		return 0
 
 /datum/admins/proc/toggleenter()
@@ -870,7 +870,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 	else
 		to_chat(world, "<B>New players may now enter the game.</B>")
 	log_admin("[key_name(usr)] toggled new player game entering.")
-	message_admins("<font color='blue'>[key_name_admin(usr)] toggled new player game entering.</font>", 1)
+	message_admins("<span class='notice'>[key_name_admin(usr)] toggled new player game entering.</span>", 1)
 	world.update_status()
 	feedback_add_details("admin_verb","TE") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -896,7 +896,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 		to_chat(world, "<B>Returning to menu as a ghost is now allowed.</B>")
 	else
 		to_chat(world, "<B>Returning to menu as a ghost is no longer allowed :(</B>")
-	message_admins("<font color='blue'>[key_name_admin(usr)] toggled respawn to [config_legacy.abandon_allowed ? "On" : "Off"].</font>", 1)
+	message_admins("<span class='notice'>[key_name_admin(usr)] toggled respawn to [config_legacy.abandon_allowed ? "On" : "Off"].</span>", 1)
 	log_admin("[key_name(usr)] toggled respawn to [config_legacy.abandon_allowed ? "On" : "Off"].")
 	world.update_status()
 	feedback_add_details("admin_verb","TR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -958,7 +958,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 	set desc="Toggle admin jumping"
 	set name="Toggle Jump"
 	config_legacy.allow_admin_jump = !(config_legacy.allow_admin_jump)
-	message_admins("<font color='blue'>Toggled admin jumping to [config_legacy.allow_admin_jump].</font>")
+	message_admins("<span class='notice'>Toggled admin jumping to [config_legacy.allow_admin_jump].</span>")
 	feedback_add_details("admin_verb","TJ") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/adspawn()
@@ -966,7 +966,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 	set desc="Toggle admin spawning"
 	set name="Toggle Spawn"
 	config_legacy.allow_admin_spawning = !(config_legacy.allow_admin_spawning)
-	message_admins("<font color='blue'>Toggled admin item spawning to [config_legacy.allow_admin_spawning].</font>")
+	message_admins("<span class='notice'>Toggled admin item spawning to [config_legacy.allow_admin_spawning].</span>")
 	feedback_add_details("admin_verb","TAS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/adrev()
@@ -974,7 +974,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 	set desc="Toggle admin revives"
 	set name="Toggle Revive"
 	config_legacy.allow_admin_rev = !(config_legacy.allow_admin_rev)
-	message_admins("<font color='blue'>Toggled reviving to [config_legacy.allow_admin_rev].</font>")
+	message_admins("<span class='notice'>Toggled reviving to [config_legacy.allow_admin_rev].</span>")
 	feedback_add_details("admin_verb","TAR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/unprison(var/mob/M in mob_list)
@@ -1230,7 +1230,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 	else
 		to_chat(world, "<B>Guests may now enter the game.</B>")
 	log_admin("[key_name(usr)] toggled guests game entering [config_legacy.guests_allowed?"":"dis"]allowed.")
-	message_admins("<font color='blue'>[key_name_admin(usr)] toggled guests game entering [config_legacy.guests_allowed?"":"dis"]allowed.</font>", 1)
+	message_admins("<span class='notice'>[key_name_admin(usr)] toggled guests game entering [config_legacy.guests_allowed?"":"dis"]allowed.</span>", 1)
 	feedback_add_details("admin_verb","TGU") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/output_ai_laws()

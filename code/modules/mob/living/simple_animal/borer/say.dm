@@ -14,7 +14,7 @@
 
 	if (src.client)
 		if(client.prefs.muted & MUTE_IC)
-			to_chat(src, "<font color='red'>You cannot speak in IC (muted).</font>")
+			to_chat(src, "<span class='danger'>You cannot speak in IC (muted).</span>")
 			return
 
 	if (copytext(message, 1, 2) == "*")

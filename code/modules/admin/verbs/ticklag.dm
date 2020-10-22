@@ -19,6 +19,6 @@
 			if("Yes")	config_legacy.Tickcomp = 1
 			else		config_legacy.Tickcomp = 0
 	else
-		to_chat(src, "<font color='red'>Error: ticklag(): Invalid world.ticklag value. No changes made.</font>")
+		to_chat(src, "<span class='danger'>Error: ticklag(): Invalid world.ticklag value. No changes made.</span>")
 
 

@@ -38,14 +38,14 @@ world/IsBanned(key,address,computer_id,type,real_bans_only=FALSE)
 	//Guest Checking
 	if(!config_legacy.guests_allowed && IsGuestKey(key))
 		log_adminwarn("Failed Login: [key] - Guests not allowed")
-		message_admins("<font color='blue'>Failed Login: [key] - Guests not allowed</font>")
+		message_admins("<span class='notice'>Failed Login: [key] - Guests not allowed</span>")
 		key_cache[key] = 0
 		return list("reason"="guest", "desc"="\nReason: Guests not allowed. Please sign in with a byond account.")
 
 	//check if the IP address is a known TOR node
 	if(config && config_legacy.ToRban && ToRban_isbanned(address))
 		log_adminwarn("Failed Login: [src] - Banned: ToR")
-		message_admins("<font color='blue'>Failed Login: [src] - Banned: ToR</font>")
+		message_admins("<span class='notice'>Failed Login: [src] - Banned: ToR</span>")
 		//ban their computer_id and ckey for posterity
 		AddBan(ckey, computer_id, "Use of ToR", "Automated Ban", 0, 0)
 		key_cache[key] = 0
@@ -58,7 +58,7 @@ world/IsBanned(key,address,computer_id,type,real_bans_only=FALSE)
 		. = CheckBan( ckey, computer_id, address )
 		if(.)
 			log_adminwarn("Failed Login: [key] [computer_id] [address] - Banned [.["reason"]]")
-			message_admins("<font color='blue'>Failed Login: [key] id:[computer_id] ip:[address] - Banned [.["reason"]]</font>")
+			message_admins("<span class='notice'>Failed Login: [key] id:[computer_id] ip:[address] - Banned [.["reason"]]</span>")
 			key_cache[key] = 0
 			return .
 		key_cache[key] = 0

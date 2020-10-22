@@ -1182,7 +1182,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 		return
 	if(owner.species.flags & IS_SLIME)
 		createwound( CUT, 15 )  //fixes proms being bugged into paincrit;instead whatever would embed now just takes a chunk out
-		src.visible_message("<font color='red'>[owner] has been seriously wounded by [W]!</font>")
+		src.visible_message("<span class='danger'>[owner] has been seriously wounded by [W]!</span>")
 		W.add_blood(owner)
 		return 0
 	if(!silent)

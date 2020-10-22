@@ -260,6 +260,6 @@ obj/machinery/gateway/centerstation/process()
 				return
 			// VOREStation Add End
 			else
-				to_chat(user, "<font color='blue'><b>Recalibration successful!</b>:</font><font color='black'> This gate's systems have been fine tuned. Travel to this gate will now be on target.</font>")
+				to_chat(user, "<span class='notice'><b>Recalibration successful!</b>:</span><font color='black'> This gate's systems have been fine tuned. Travel to this gate will now be on target.</font>")
 				calibrated = 1
 				return

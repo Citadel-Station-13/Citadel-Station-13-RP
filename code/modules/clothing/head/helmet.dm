@@ -239,15 +239,15 @@
 		blessed = FALSE
 		flash_protection = FLASH_PROTECTION_NONE
 		src.icon_state = "[icon_state]_up"
-		to_chat(user, "<font color='blue'>The helmet's protective sigil fades as you raise the OM visor.</font>")
+		to_chat(user, "<span class='notice'>The helmet's protective sigil fades as you raise the OM visor.</span>")
 	else
 		blessed = TRUE
 		flash_protection = FLASH_PROTECTION_MAJOR
 		src.icon_state = initial(icon_state)
-		to_chat(user, "<font color='blue'>The helmet's protective sigil glows as you lower the OM visor.</font>")
+		to_chat(user, "<span class='notice'>The helmet's protective sigil glows as you lower the OM visor.</span>")
 	update_clothing_icon()	//so our mob-overlays update
 
 	if(!user.mind.isholy)
 		flash_protection = FLASH_PROTECTION_NONE
 		blessed = FALSE
-		to_chat(user, "<font color='blue'>The OM visor doesn't respond to you.</font>")
+		to_chat(user, "<span class='notice'>The OM visor doesn't respond to you.</span>")

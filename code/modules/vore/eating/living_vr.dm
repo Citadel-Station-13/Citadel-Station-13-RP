@@ -507,41 +507,41 @@
 	if(ishuman(C.loc)) //In a /mob/living/carbon/human
 		var/mob/living/carbon/human/H = C.loc
 		if(H.shoes == C) //Being worn
-			to_chat(src,"<font color='blue'> You start to climb around the larger creature's feet and ankles!</font>")
-			to_chat(H,"<font color='red'>Something is trying to climb out of your [C]!</font>")
+			to_chat(src,"<span class='notice'> You start to climb around the larger creature's feet and ankles!</span>")
+			to_chat(H,"<span class='danger'>Something is trying to climb out of your [C]!</span>")
 			var/original_loc = H.loc
 			for(var/escape_time = 100,escape_time > 0,escape_time--)
 				if(H.loc != original_loc)
-					to_chat(src,"<font color='red'>You're pinned back underfoot!</font>")
-					to_chat(H,"<font color='blue'>You pin the escapee back underfoot!</font>")
+					to_chat(src,"<span class='danger'>You're pinned back underfoot!</span>")
+					to_chat(H,"<span class='notice'>You pin the escapee back underfoot!</span>")
 					return
 				if(src.loc != C)
 					return
 				sleep(1)
 
-			to_chat(src,"<font color='blue'>You manage to escape \the [C]!</font>")
-			to_chat(H,"<font color='red'>Somone has climbed out of your [C]!</font>")
+			to_chat(src,"<span class='notice'>You manage to escape \the [C]!</span>")
+			to_chat(H,"<span class='danger'>Somone has climbed out of your [C]!</span>")
 			forceMove(H.loc)
 
 		else //Being held by a human
-			to_chat(src,"<font color='blue'>You start to climb out of \the [C]!</font>")
-			to_chat(H,"<font color='red'>Something is trying to climb out of your [C]!</font>")
+			to_chat(src,"<span class='notice'>You start to climb out of \the [C]!</span>")
+			to_chat(H,"<span class='danger'>Something is trying to climb out of your [C]!</span>")
 			for(var/escape_time = 60,escape_time > 0,escape_time--)
 				if(H.shoes == C)
-					to_chat(src,"<font color='red'>You're pinned underfoot!</font>")
-					to_chat(H,"<font color='blue'>You pin the escapee underfoot!</font>")
+					to_chat(src,"<span class='danger'>You're pinned underfoot!</span>")
+					to_chat(H,"<span class='notice'>You pin the escapee underfoot!</span>")
 					return
 				if(src.loc != C)
 					return
 				sleep(1)
-			to_chat(src,"<font color='blue'>You manage to escape \the [C]!</font>")
-			to_chat(H,"<font color='red'>Somone has climbed out of your [C]!</font>")
+			to_chat(src,"<span class='notice'>You manage to escape \the [C]!</span>")
+			to_chat(H,"<span class='danger'>Somone has climbed out of your [C]!</span>")
 			forceMove(H.loc)
 
-	to_chat(src,"<font color='blue'>You start to climb out of \the [C]!</font>")
+	to_chat(src,"<span class='notice'>You start to climb out of \the [C]!</span>")
 	sleep(50)
 	if(loc == C)
-		to_chat(src,"<font color='blue'>You climb out of \the [C]!</font>")
+		to_chat(src,"<span class='notice'>You climb out of \the [C]!</span>")
 		forceMove(C.loc)
 	return
 
@@ -703,9 +703,9 @@
 	var/dispvoreprefs = "<b>[src]'s vore preferences</b><br><br><br>"
 	if(client && client.prefs)
 		if("CHAT_OOC" in client.prefs.preferences_disabled)
-			dispvoreprefs += "<font color='red'><b>OOC DISABLED</b></font><br>"
+			dispvoreprefs += "<span class='danger'><b>OOC DISABLED</b></span><br>"
 		if("CHAT_LOOC" in client.prefs.preferences_disabled)
-			dispvoreprefs += "<font color='red'><b>LOOC DISABLED</b></font><br>"
+			dispvoreprefs += "<span class='danger'><b>LOOC DISABLED</b></span><br>"
 	dispvoreprefs += "<b>Digestable:</b> [digestable ? "Enabled" : "Disabled"]<br>"
 	dispvoreprefs += "<b>Devourable:</b> [devourable ? "Enabled" : "Disabled"]<br>"
 	dispvoreprefs += "<b>Feedable:</b> [feeding ? "Enabled" : "Disabled"]<br>"

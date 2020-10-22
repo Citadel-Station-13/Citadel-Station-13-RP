@@ -74,7 +74,7 @@
 		if(ishuman(target))
 			var/mob/living/carbon/human/H = M
 			H.resize(set_size)
-			H.show_message("<font color='blue'> The beam fires into your body, changing your size!</font>")
+			H.show_message("<span class='notice'> The beam fires into your body, changing your size!</span>")
 			H.updateicon()
 		else if (istype(target, /mob/living/))
 			var/mob/living/H = M

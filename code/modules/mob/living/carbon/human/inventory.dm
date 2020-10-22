@@ -319,7 +319,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 					if(C.attempt_attach_accessory(A, src))
 						return
 		else
-			to_chat(src, "<font color='red'>You are trying to equip this item to an unsupported inventory slot. How the heck did you manage that? Stop it...</font>")
+			to_chat(src, "<span class='danger'>You are trying to equip this item to an unsupported inventory slot. How the heck did you manage that? Stop it...</span>")
 			return
 
 	if((W == src.l_hand) && (slot != slot_l_hand))

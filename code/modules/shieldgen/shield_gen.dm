@@ -70,7 +70,7 @@
 	else if(W.is_wrench())
 		src.anchored = !src.anchored
 		playsound(src, W.usesound, 75, 1)
-		src.visible_message("<font color='blue'>[bicon(src)] [src] has been [anchored?"bolted to the floor":"unbolted from the floor"] by [user].</font>")
+		src.visible_message("<span class='notice'>[bicon(src)] [src] has been [anchored?"bolted to the floor":"unbolted from the floor"] by [user].</span>")
 
 		if(active)
 			toggle()
@@ -216,7 +216,7 @@
 		return
 	else if( href_list["toggle"] )
 		if (!active && !anchored)
-			to_chat(usr, "<font color='red'>The [src] needs to be firmly secured to the floor first.</font>")
+			to_chat(usr, "<span class='danger'>The [src] needs to be firmly secured to the floor first.</span>")
 			return
 		toggle()
 	else if( href_list["change_radius"] )

@@ -349,7 +349,7 @@
 					total_system_failure(failure_probability, user)
 					return
 
-				to_chat(user, "<font color='red'>You have disassembled the SMES cell!</font>")
+				to_chat(user, "<span class='danger'>You have disassembled the SMES cell!</span>")
 				dismantle()
 				return
 
@@ -368,7 +368,7 @@
 				W.loc = src
 				recalc_coils()
 			else
-				to_chat(user, "<font color='red'>You can't insert more coils into this SMES unit!</font>")
+				to_chat(user, "<span class='danger'>You can't insert more coils into this SMES unit!</span>")
 
 // Proc: toggle_input()
 // Parameters: None

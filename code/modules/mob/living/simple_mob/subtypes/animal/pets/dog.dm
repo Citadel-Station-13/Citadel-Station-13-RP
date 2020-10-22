@@ -32,7 +32,7 @@
 		if(!stat)
 			for(var/mob/M in viewers(user, null))
 				if ((M.client && !( M.blinded )))
-					M.show_message("<font color='blue'>[user] baps [name] on the nose with the rolled up [O]</font>")
+					M.show_message("<span class='notice'>[user] baps [name] on the nose with the rolled up [O]</span>")
 			spawn(0)
 				for(var/i in list(1,2,4,8,4,2,1,2))
 					setDir(i)
@@ -107,7 +107,7 @@
 //pupplies cannot wear anything.
 /mob/living/simple_mob/animal/passive/dog/corgi/puppy/Topic(href, href_list)
 	if(href_list["remove_inv"] || href_list["add_inv"])
-		to_chat(usr, "<font color='red'>You can't fit this on [src]</font>")
+		to_chat(usr, "<span class='danger'>You can't fit this on [src]</span>")
 		return
 	..()
 
@@ -250,7 +250,7 @@
 //Lisa already has a cute bow!
 /mob/living/simple_mob/animal/passive/dog/corgi/Lisa/Topic(href, href_list)
 	if(href_list["remove_inv"] || href_list["add_inv"])
-		to_chat(usr, "<font color='red'>[src] already has a cute bow!</font>")
+		to_chat(usr, "<span class='danger'>[src] already has a cute bow!</span>")
 		return
 	..()
 

@@ -4,7 +4,7 @@
 
 	if(client)
 		if(client.prefs.muted & MUTE_IC)
-			to_chat(src, "<font color='red'>You cannot speak in IC (Muted).</font>")
+			to_chat(src, "<span class='danger'>You cannot speak in IC (Muted).</span>")
 			return
 
 	message = sanitize(message)

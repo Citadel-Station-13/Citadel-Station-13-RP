@@ -141,7 +141,7 @@ var/savefile/Banlistjob
 
 	Banlistjob.cd = "/base"
 	if ( Banlistjob.dir.Find("[ckey][computerid][rank]") )
-		usr << text("<font color='red'>Banjob already exists.</font>")
+		usr << text("<span class='danger'>Banjob already exists.</span>")
 		return 0
 	else
 		Banlistjob.dir.Add("[ckey][computerid][rank]")
@@ -206,7 +206,7 @@ var/savefile/Banlistjob
 /datum/admins/proc/unjobbanpanel()
 	var/count = 0
 	var/dat
-	//var/dat = "<HR><B>Unban Player:</B> <font color='blue'>(U) = Unban , (E) = Edit Ban</font> <font color='green'>(Total<HR><table border=1 rules=all frame=void cellspacing=0 cellpadding=3 </font>>"
+	//var/dat = "<HR><B>Unban Player:</B> <span class='notice'>(U) = Unban , (E) = Edit Ban</span> <font color='green'>(Total<HR><table border=1 rules=all frame=void cellspacing=0 cellpadding=3 </font>>"
 	Banlistjob.cd = "/base"
 	for (var/A in Banlistjob.dir)
 		count++
@@ -219,24 +219,24 @@ var/savefile/Banlistjob
 
 /*/datum/admins/proc/permjobban(ckey, computerid, reason, bannedby, temp, minutes, rank)
 	if(AddBanjob(ckey, computerid, reason, usr.ckey, 0, 0, job))
-		to_chat(M, "<font color='red'><BIG><B>You have been banned from [job] by [usr.client.ckey].\nReason: [reason].</B></BIG></font>")
-		to_chat(M, "<font color='red'>This is a permanent ban.</font>")
+		to_chat(M, "<span class='danger'><BIG><B>You have been banned from [job] by [usr.client.ckey].\nReason: [reason].</B></BIG></span>")
+		to_chat(M, "<span class='danger'>This is a permanent ban.</span>")
 		if(config_legacy.banappeals)
-			to_chat(M, "<font color='red'>To try to resolve this matter head to [config_legacy.banappeals]</font>")
+			to_chat(M, "<span class='danger'>To try to resolve this matter head to [config_legacy.banappeals]</span>")
 		else
-			to_chat(M, "<font color='red'>No ban appeals URL has been set.</font>")
+			to_chat(M, "<span class='danger'>No ban appeals URL has been set.</span>")
 		log_admin("[usr.client.ckey] has banned from [job] [ckey].\nReason: [reason]\nThis is a permanent ban.")
-		message_admins("<font color='blue'>[usr.client.ckey] has banned from [job] [ckey].\nReason: [reason]\nThis is a permanent ban.</font>")
+		message_admins("<span class='notice'>[usr.client.ckey] has banned from [job] [ckey].\nReason: [reason]\nThis is a permanent ban.</span>")
 /datum/admins/proc/timejobban(ckey, computerid, reason, bannedby, temp, minutes, rank)
 	if(AddBanjob(ckey, computerid, reason, usr.ckey, 1, mins, job))
-		to_chat(M, "<font color='red'><BIG><B>You have been jobbanned from [job] by [usr.client.ckey].\nReason: [reason].</B></BIG></font>")
-		to_chat(M, "<font color='red'>This is a temporary ban, it will be removed in [mins] minutes.</font>")
+		to_chat(M, "<span class='danger'><BIG><B>You have been jobbanned from [job] by [usr.client.ckey].\nReason: [reason].</B></BIG></span>")
+		to_chat(M, "<span class='danger'>This is a temporary ban, it will be removed in [mins] minutes.</span>")
 		if(config_legacy.banappeals)
-			to_chat(M, "<font color='red'>To try to resolve this matter head to [config_legacy.banappeals]</font>")
+			to_chat(M, "<span class='danger'>To try to resolve this matter head to [config_legacy.banappeals]</span>")
 		else
-			to_chat(M, "<font color='red'>No ban appeals URL has been set.</font>")
+			to_chat(M, "<span class='danger'>No ban appeals URL has been set.</span>")
 		log_admin("[usr.client.ckey] has jobbanned from [job] [ckey].\nReason: [reason]\nThis will be removed in [mins] minutes.")
-		message_admins("<font color='blue'>[usr.client.ckey] has banned from [job] [ckey].\nReason: [reason]\nThis will be removed in [mins] minutes.</font>")*/
+		message_admins("<span class='notice'>[usr.client.ckey] has banned from [job] [ckey].\nReason: [reason]\nThis will be removed in [mins] minutes.</span>")*/
 //////////////////////////////////// DEBUG ////////////////////////////////////
 
 /proc/CreateBansjob()

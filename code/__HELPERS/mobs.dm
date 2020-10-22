@@ -156,7 +156,7 @@ Proc for attack log creation, because really why not
 	var/target_str = key_name(target)
 
 	if(ismob(user))
-		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Attacked [target_str]: [what_done]</font>")
+		user.attack_log += text("\[[time_stamp()]\] <span class='danger'>Attacked [target_str]: [what_done]</span>")
 	if(ismob(target))
 		target.attack_log += text("\[[time_stamp()]\] <font color='orange'>Attacked by [user_str]: [what_done]</font>")
 	log_attack(user_str,target_str,what_done)

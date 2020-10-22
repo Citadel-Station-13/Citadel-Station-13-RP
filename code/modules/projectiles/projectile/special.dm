@@ -146,10 +146,10 @@
 				M.Weaken(5)
 				var/datum/gender/TM = gender_datums[M.get_visible_gender()]
 				for (var/mob/V in viewers(src))
-					V.show_message("<font color='red'>[M] writhes in pain as [TM.his] vacuoles boil.</font>", 3, "<font color='red'>You hear the crunching of leaves.</font>", 2)
+					V.show_message("<span class='danger'>[M] writhes in pain as [TM.his] vacuoles boil.</span>", 3, "<span class='danger'>You hear the crunching of leaves.</span>", 2)
 			if(prob(35))
 			//	for (var/mob/V in viewers(src)) //Public messages commented out to prevent possible metaish genetics experimentation and stuff. - Cheridan
-			//		V.show_message("<font color='red'>[M] is mutated by the radiation beam.</font>", 3, "<font color='red'> You hear the snapping of twigs.</font>", 2)
+			//		V.show_message("<span class='danger'>[M] is mutated by the radiation beam.</span>", 3, "<span class='danger'> You hear the snapping of twigs.</span>", 2)
 				if(prob(80))
 					randmutb(M)
 					domutcheck(M,null)
@@ -158,13 +158,13 @@
 					domutcheck(M,null)
 			else
 				M.adjustFireLoss(rand(5,15))
-				M.show_message("<font color='red'>The radiation beam singes you!</font>")
+				M.show_message("<span class='danger'>The radiation beam singes you!</span>")
 			//	for (var/mob/V in viewers(src))
-			//		V.show_message("<font color='red'>[M] is singed by the radiation beam.</font>", 3, "<font color='red'> You hear the crackle of burning leaves.</font>", 2)
+			//		V.show_message("<span class='danger'>[M] is singed by the radiation beam.</span>", 3, "<span class='danger'> You hear the crackle of burning leaves.</span>", 2)
 	else if(istype(target, /mob/living/carbon/))
 	//	for (var/mob/V in viewers(src))
 	//		V.show_message("The radiation beam dissipates harmlessly through [M]", 3)
-		M.show_message("<font color='blue'>The radiation beam dissipates harmlessly through your body.</font>")
+		M.show_message("<span class='notice'>The radiation beam dissipates harmlessly through your body.</span>")
 	else
 		return 1
 
@@ -197,7 +197,7 @@
 		if((H.species.flags & IS_PLANT) && (M.nutrition < 500))
 			M.nutrition += 30
 	else if (istype(target, /mob/living/carbon/))
-		M.show_message("<font color='blue'>The radiation beam dissipates harmlessly through your body.</font>")
+		M.show_message("<span class='notice'>The radiation beam dissipates harmlessly through your body.</span>")
 	else
 		return 1
 

@@ -16,7 +16,7 @@
 				return
 			if (src.client)
 				if (client.prefs.muted & MUTE_IC)
-					to_chat(src, "<font color='red'>You cannot send IC messages (muted).</font>")
+					to_chat(src, "<span class='danger'>You cannot send IC messages (muted).</span>")
 					return
 			if (stat)
 				return

@@ -51,12 +51,12 @@
 	if(emagged)
 		if(istype(A, /mob/living))
 			var/mob/living/M = A
-			visible_message("<font color='red'>[src] knocks over [M]!</font>")
+			visible_message("<span class='danger'>[src] knocks over [M]!</span>")
 			M.apply_effects(5, 5)				//knock people down if you hit them
 			M.apply_damages(22 / move_delay)	// and do damage according to how fast the train is going
 			if(istype(load, /mob/living/carbon/human))
 				var/mob/living/D = load
-				to_chat(D, "<font color='red'>You hit [M]!</font>")
+				to_chat(D, "<span class='danger'>You hit [M]!</span>")
 				add_attack_logs(D,M,"Ran over with [src.name]")
 
 //trains are commonly open topped, so there is a chance the projectile will hit the mob riding the train instead
@@ -100,7 +100,7 @@
 
 	unload(user, direction)
 
-	to_chat(user, "<font color='blue'>You climb down from [src].</font>")
+	to_chat(user, "<span class='notice'>You climb down from [src].</span>")
 
 	return 1
 
@@ -111,7 +111,7 @@
 		latch(C, user)
 	else
 		if(!load(C, user))
-			to_chat(user, "<font color='red'>You were unable to load [C] on [src].</font>")
+			to_chat(user, "<span class='danger'>You were unable to load [C] on [src].</span>")
 
 /obj/vehicle/train/attack_hand(mob/user as mob)
 	if(user.stat || user.restrained() || !Adjacent(user))
@@ -149,22 +149,22 @@
 //Note: there is a modified version of this in code\modules\vehicles\cargo_train.dm specifically for cargo train engines
 /obj/vehicle/train/proc/attach_to(obj/vehicle/train/T, mob/user)
 	if (get_dist(src, T) > 1)
-		to_chat(user, "<font color='red'>[src] is too far away from [T] to hitch them together.</font>")
+		to_chat(user, "<span class='danger'>[src] is too far away from [T] to hitch them together.</span>")
 		return
 
 	if (lead)
-		to_chat(user, "<font color='red'>[src] is already hitched to something.</font>")
+		to_chat(user, "<span class='danger'>[src] is already hitched to something.</span>")
 		return
 
 	if (T.tow)
-		to_chat(user, "<font color='red'>[T] is already towing something.</font>")
+		to_chat(user, "<span class='danger'>[T] is already towing something.</span>")
 		return
 
 	//check for cycles.
 	var/obj/vehicle/train/next_car = T
 	while (next_car)
 		if (next_car == src)
-			to_chat(user, "<font color='red'>That seems very silly.</font>")
+			to_chat(user, "<span class='danger'>That seems very silly.</span>")
 			return
 		next_car = next_car.lead
 
@@ -174,7 +174,7 @@
 	setDir(lead.dir)
 
 	if(user)
-		to_chat(user, "<font color='blue'>You hitch [src] to [T].</font>")
+		to_chat(user, "<span class='notice'>You hitch [src] to [T].</span>")
 
 	update_stats()
 
@@ -182,13 +182,13 @@
 //detaches the train from whatever is towing it
 /obj/vehicle/train/proc/unattach(mob/user)
 	if (!lead)
-		to_chat(user, "<font color='red'>[src] is not hitched to anything.</font>")
+		to_chat(user, "<span class='danger'>[src] is not hitched to anything.</span>")
 		return
 
 	lead.tow = null
 	lead.update_stats()
 
-	to_chat(user, "<font color='blue'>You unhitch [src] from [lead].</font>")
+	to_chat(user, "<span class='notice'>You unhitch [src] from [lead].</span>")
 	lead = null
 
 	update_stats()

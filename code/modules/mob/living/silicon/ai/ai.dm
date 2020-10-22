@@ -473,7 +473,7 @@ var/list/ai_verbs_default = list(
 		if(target && (!istype(target, /mob/living/carbon/human) || html_decode(href_list["trackname"]) == target:get_face_name()))
 			ai_actual_track(target)
 		else
-			to_chat(src, "<font color='red'>System error. Cannot locate [html_decode(href_list["trackname"])].</font>")
+			to_chat(src, "<span class='danger'>System error. Cannot locate [html_decode(href_list["trackname"])].</span>")
 		return
 
 	return
@@ -545,7 +545,7 @@ var/list/ai_verbs_default = list(
 		if(network in C.network)
 			eyeobj.setLoc(get_turf(C))
 			break
-	to_chat(src, "<font color='blue'>Switched to [network] camera network.</font>")
+	to_chat(src, "<span class='notice'>Switched to [network] camera network.</span>")
 //End of code by Mord_Sith
 
 /mob/living/silicon/ai/proc/ai_statuschange()
@@ -756,20 +756,20 @@ var/list/ai_verbs_default = list(
 			return
 		if(anchored)
 			playsound(src, W.usesound, 50, 1)
-			user.visible_message("<font color='blue'>\The [user] starts to unbolt \the [src] from the plating...</font>")
+			user.visible_message("<span class='notice'>\The [user] starts to unbolt \the [src] from the plating...</span>")
 			if(!do_after(user,40 * W.toolspeed))
-				user.visible_message("<font color='blue'>\The [user] decides not to unbolt \the [src].</font>")
+				user.visible_message("<span class='notice'>\The [user] decides not to unbolt \the [src].</span>")
 				return
-			user.visible_message("<font color='blue'>\The [user] finishes unfastening \the [src]!</font>")
+			user.visible_message("<span class='notice'>\The [user] finishes unfastening \the [src]!</span>")
 			anchored = 0
 			return
 		else
 			playsound(src, W.usesound, 50, 1)
-			user.visible_message("<font color='blue'>\The [user] starts to bolt \the [src] to the plating...</font>")
+			user.visible_message("<span class='notice'>\The [user] starts to bolt \the [src] to the plating...</span>")
 			if(!do_after(user,40 * W.toolspeed))
-				user.visible_message("<font color='blue'>\The [user] decides not to bolt \the [src].</font>")
+				user.visible_message("<span class='notice'>\The [user] decides not to bolt \the [src].</span>")
 				return
-			user.visible_message("<font color='blue'>\The [user] finishes fastening down \the [src]!</font>")
+			user.visible_message("<span class='notice'>\The [user] finishes fastening down \the [src]!</span>")
 			anchored = 1
 			return
 	else

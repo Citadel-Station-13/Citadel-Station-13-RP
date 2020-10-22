@@ -40,7 +40,7 @@
 			entry += " - [age]"
 
 			if(is_special_character(C.mob))
-				entry += " - <b><font color='red'>Antagonist</font></b>"
+				entry += " - <b><span class='danger'>Antagonist</span></b>"
 
 			if(C.is_afk())
 				var/seconds = C.last_activity_seconds()
@@ -62,7 +62,7 @@
 				if(isobserver(C.mob))
 					entry += " - <font color='gray'>Observing</font>"
 				else if(istype(C.mob, /mob/new_player))
-					entry += " - <font color='blue'>In Lobby</font>"
+					entry += " - <span class='notice'>In Lobby</span>"
 				else
 					entry += " - <font color='green'>Playing</font>"
 			Lines += entry

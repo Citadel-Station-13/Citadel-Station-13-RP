@@ -88,7 +88,7 @@
 						return
 				M.updatehealth()
 			src.occupant_message("You hit [T].")
-			src.visible_message("<font color='red'><b>[src.name] hits [T].</b></font>")
+			src.visible_message("<span class='danger'><b>[src.name] hits [T].</b></span>")
 		else
 			step_away(M,src)
 			src.occupant_message("You push [T] out of the way.")
@@ -105,7 +105,7 @@
 		if(src.occupant.a_intent == INTENT_HARM || istype(src.occupant, /mob/living/carbon/brain)) // Don't smash unless we mean it
 			if(damtype == "brute")
 				src.occupant_message("You hit [T].")
-				src.visible_message("<font color='red'><b>[src.name] hits [T]</b></font>")
+				src.visible_message("<span class='danger'><b>[src.name] hits [T]</b></span>")
 				playsound(src, 'sound/weapons/heavysmash.ogg', 50, 1)
 
 				if(istype(T, /obj/structure/girder))

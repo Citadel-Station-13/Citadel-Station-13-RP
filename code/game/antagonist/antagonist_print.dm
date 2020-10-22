@@ -19,12 +19,12 @@
 					text += "<font color='green'><B>Success!</B></font>"
 					feedback_add_details(feedback_tag,"[O.type]|SUCCESS")
 				else
-					text += "<font color='red'>Fail.</font>"
+					text += "<span class='danger'>Fail.</span>"
 					feedback_add_details(feedback_tag,"[O.type]|FAIL")
 					failed = 1
 				num++
 				if(failed)
-					text += "<br><font color='red'><B>The [role_text] has failed.</B></font>"
+					text += "<br><span class='danger'><B>The [role_text] has failed.</B></span>"
 				else
 					text += "<br><font color='green'><B>The [role_text] was successful!</B></font>"
 
@@ -44,7 +44,7 @@
 		if(O.check_completion())
 			text += "<font color='green'><B>Success!</B></font>"
 		else
-			text += "<font color='red'>Fail.</font>"
+			text += "<span class='danger'>Fail.</span>"
 	return text
 
 /datum/antagonist/proc/print_player_lite(var/datum/mind/ply)

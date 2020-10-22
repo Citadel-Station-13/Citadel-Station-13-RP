@@ -19,7 +19,7 @@
 /obj/item/gun/launcher/rocket/examine(mob/user)
 	if(!..(user, 2))
 		return
-	to_chat(user, "<font color='blue'>[rockets.len] / [max_rockets] rockets.</font>")
+	to_chat(user, "<span class='notice'>[rockets.len] / [max_rockets] rockets.</span>")
 
 /obj/item/gun/launcher/rocket/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I, /obj/item/ammo_casing/rocket))
@@ -27,10 +27,10 @@
 			user.drop_item()
 			I.loc = src
 			rockets += I
-			to_chat(user, "<font color='blue'>You put the rocket in [src].</font>")
-			to_chat(user, "<font color='blue'>[rockets.len] / [max_rockets] rockets.</font>")
+			to_chat(user, "<span class='notice'>You put the rocket in [src].</span>")
+			to_chat(user, "<span class='notice'>[rockets.len] / [max_rockets] rockets.</span>")
 		else
-			to_chat(usr, "<font color='red'>[src] cannot hold more rockets.</font>")
+			to_chat(usr, "<span class='danger'>[src] cannot hold more rockets.</span>")
 
 /obj/item/gun/launcher/rocket/consume_next_projectile()
 	if(rockets.len)

@@ -215,11 +215,11 @@
 	dat += "<div class='statusDisplay'>"
 
 	if(!delivery && compactor && length(contents))//garbage counter for trashpup
-		dat += "<font color='red'><B>Current load:</B> [length(contents)] / [max_item_count] objects.</font><BR>"
+		dat += "<span class='danger'><B>Current load:</B> [length(contents)] / [max_item_count] objects.</span><BR>"
 		dat += "<font color='gray'>([list2text(contents,", ")])</font><BR><BR>"
 
 	if(delivery && length(contents))
-		dat += "<font color='red'><B>Current load:</B> [length(contents)] / [max_item_count] objects.</font><BR>"
+		dat += "<span class='danger'><B>Current load:</B> [length(contents)] / [max_item_count] objects.</span><BR>"
 		dat += "<font color='gray'>Cargo compartment slot: Cargo 1.</font><BR>"
 		if(length(deliveryslot_1))
 			dat += "<font color='gray'>([list2text(deliveryslot_1,", ")])</font><BR>"
@@ -229,23 +229,23 @@
 		dat += "<font color='gray'>Cargo compartment slot: Cargo 3.</font><BR>"
 		if(length(deliveryslot_3))
 			dat += "<font color='gray'>([list2text(deliveryslot_3,", ")])</font><BR>"
-		dat += "<font color='red'>Cargo compartment slot: Fuel.</font><BR>"
-		dat += "<font color='red'>([list2text(contents - (deliveryslot_1 + deliveryslot_2 + deliveryslot_3),", ")])</font><BR><BR>"
+		dat += "<span class='danger'>Cargo compartment slot: Fuel.</span><BR>"
+		dat += "<span class='danger'>([list2text(contents - (deliveryslot_1 + deliveryslot_2 + deliveryslot_3),", ")])</span><BR><BR>"
 
 	if(analyzer && !synced)
 		dat += "<A href='?src=\ref[src];sync=1'>Sync Files</A><BR>"
 
 	//Cleaning and there are still un-preserved items
 	if(cleaning && length(contents - items_preserved))
-		dat += "<font color='red'><B>Self-cleaning mode.</B> [length(contents - items_preserved)] object(s) remaining.</font><BR>"
+		dat += "<span class='danger'><B>Self-cleaning mode.</B> [length(contents - items_preserved)] object(s) remaining.</span><BR>"
 
 	//There are no items to be processed other than un-preserved items
 	else if(cleaning && length(items_preserved))
-		dat += "<font color='red'><B>Self-cleaning done. Eject remaining objects now.</B></font><BR>"
+		dat += "<span class='danger'><B>Self-cleaning done. Eject remaining objects now.</B></span><BR>"
 
 	//Preserved items count when the list is populated
 	if(length(items_preserved))
-		dat += "<font color='red'>[length(items_preserved)] uncleanable object(s).</font><BR>"
+		dat += "<span class='danger'>[length(items_preserved)] uncleanable object(s).</span><BR>"
 
 	if(!patient)
 		dat += "[src.name] Unoccupied"

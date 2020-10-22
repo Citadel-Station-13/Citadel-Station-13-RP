@@ -104,14 +104,14 @@
 	if(ishuman(src.loc))
 		var/mob/living/carbon/human/H = src.loc
 		if(H.shoes == src)
-			to_chat(H, "<font color='red'>[user]'s tiny body presses against you in \the [src], squirming!</font>")
-			to_chat(user, "<font color='red'>Your body presses out against [H]'s form! Well, what little you can get to!</font>")
+			to_chat(H, "<span class='danger'>[user]'s tiny body presses against you in \the [src], squirming!</span>")
+			to_chat(user, "<span class='danger'>Your body presses out against [H]'s form! Well, what little you can get to!</span>")
 		else
-			to_chat(H, "<font color='red'>[user]'s form shifts around in the \the [src], squirming!</font>")
-			to_chat(user, "<font color='red'>You move around inside the [src], to no avail.</font>")
+			to_chat(H, "<span class='danger'>[user]'s form shifts around in the \the [src], squirming!</span>")
+			to_chat(user, "<span class='danger'>You move around inside the [src], to no avail.</span>")
 	else
-		src.visible_message("<font color='red'>\The [src] moves a little!</font>")
-		to_chat(user, "<font color='red'>You throw yourself against the inside of \the [src]!</font>")
+		src.visible_message("<span class='danger'>\The [src] moves a little!</span>")
+		to_chat(user, "<span class='danger'>You throw yourself against the inside of \the [src]!</span>")
 
 /obj/item/clothing/proc/refit_for_species(var/target_species)
 	if(!species_restricted)
@@ -272,7 +272,7 @@
 			return
 
 		playsound(src.loc, W.usesound, 50, 1)
-		user.visible_message("<font color='red'>[user] cuts the fingertips off of the [src].</font>","<font color='red'>You cut the fingertips off of the [src].</font>")
+		user.visible_message("<span class='danger'>[user] cuts the fingertips off of the [src].</span>","<span class='danger'>You cut the fingertips off of the [src].</span>")
 
 		clipped = 1
 		name = "modified [name]"
@@ -550,10 +550,10 @@
 
 /obj/item/clothing/shoes/New()
 	inside_emotes = list(
-		"<font color='red'>You feel weightless for a moment as \the [name] moves upwards.</font>",
-		"<font color='red'>\The [name] are a ride you've got no choice but to participate in as the wearer moves.</font>",
-		"<font color='red'>The wearer of \the [name] moves, pressing down on you.</font>",
-		"<font color='red'>More motion while \the [name] move, feet pressing down against you.</font>"
+		"<span class='danger'>You feel weightless for a moment as \the [name] moves upwards.</span>",
+		"<span class='danger'>\The [name] are a ride you've got no choice but to participate in as the wearer moves.</span>",
+		"<span class='danger'>The wearer of \the [name] moves, pressing down on you.</span>",
+		"<span class='danger'>More motion while \the [name] move, feet pressing down against you.</span>"
 	)
 
 /obj/item/clothing/shoes/proc/draw_knife()

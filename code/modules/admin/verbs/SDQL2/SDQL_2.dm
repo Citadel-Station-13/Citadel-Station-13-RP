@@ -728,7 +728,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
   */
 /datum/SDQL2_query/proc/SDQL_print(datum/object, list/text_list, print_nulls = TRUE, recursion = 1, linebreak = TRUE)
 	if(recursion > 50)
-		text_list += "<br><font color='red'><b>RECURSION LIMIT REACHED.</font></b><br>"
+		text_list += "<br><span class='danger'><b>RECURSION LIMIT REACHED.</span></b><br>"
 		return
 	if(is_object_datatype(object))
 		if(!islist(object))
@@ -1181,7 +1181,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 
 		else if(char == "'")
 			if(word != "")
-				to_chat(usr, "<font color='red'>SDQL2: You have an error in your SDQL syntax, unexpected ' in query: \"<font color=gray>[query_text]</font>\" following \"<font color=gray>[word]</font>\". Please check your syntax, and try again.</font>")
+				to_chat(usr, "<span class='danger'>SDQL2: You have an error in your SDQL syntax, unexpected ' in query: \"<font color=gray>[query_text]</span>\" following \"<font color=gray>[word]</font>\". Please check your syntax, and try again.</font>")
 				return null
 
 			word = "'"
@@ -1201,7 +1201,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 					word += char
 
 			if(i > len)
-				to_chat(usr, "<font color='red'>SDQL2: You have an error in your SDQL syntax, unmatched ' in query: \"<font color=gray>[query_text]</font>\". Please check your syntax, and try again.</font>")
+				to_chat(usr, "<span class='danger'>SDQL2: You have an error in your SDQL syntax, unmatched ' in query: \"<font color=gray>[query_text]</span>\". Please check your syntax, and try again.</font>")
 				return null
 
 			query_list += "[word]'"
@@ -1209,7 +1209,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 
 		else if(char == "\"")
 			if(word != "")
-				to_chat(usr, "<font color='red'>SDQL2: You have an error in your SDQL syntax, unexpected \" in query: \"<font color=gray>[query_text]</font>\" following \"<font color=gray>[word]</font>\". Please check your syntax, and try again.</font>")
+				to_chat(usr, "<span class='danger'>SDQL2: You have an error in your SDQL syntax, unexpected \" in query: \"<font color=gray>[query_text]</span>\" following \"<font color=gray>[word]</font>\". Please check your syntax, and try again.</font>")
 				return null
 
 			word = "\""
@@ -1229,7 +1229,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 					word += char
 
 			if(i > len)
-				to_chat(usr, "<font color='red'>SDQL2: You have an error in your SDQL syntax, unmatched \" in query: \"<font color=gray>[query_text]</font>\". Please check your syntax, and try again.</font>")
+				to_chat(usr, "<span class='danger'>SDQL2: You have an error in your SDQL syntax, unmatched \" in query: \"<font color=gray>[query_text]</span>\". Please check your syntax, and try again.</font>")
 				return null
 
 			query_list += "[word]\""

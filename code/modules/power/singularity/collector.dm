@@ -38,7 +38,7 @@ var/global/list/rad_collectors = list()
 
 	if(P)
 		if(P.air_contents.gas[/datum/gas/phoron] == 0)
-			investigate_log("<font color='red'>out of fuel</font>.","singulo")
+			investigate_log("<span class='danger'>out of fuel</span>.","singulo")
 			eject()
 		else
 			P.air_contents.adjust_gas(/datum/gas/phoron, -0.001*drainratio)
@@ -51,20 +51,20 @@ var/global/list/rad_collectors = list()
 			toggle_power()
 			user.visible_message("[user.name] turns the [src.name] [active? "on":"off"].", \
 			"You turn the [src.name] [active? "on":"off"].")
-			investigate_log("turned [active?"<font color='green'>on</font>":"<font color='red'>off</font>"] by [user.key]. [P?"Fuel: [round(P.air_contents.gas[/datum/gas/phoron]/0.29)]%":"<font color='red'>It is empty</font>"].","singulo")
+			investigate_log("turned [active?"<font color='green'>on</font>":"<span class='danger'>off</span>"] by [user.key]. [P?"Fuel: [round(P.air_contents.gas[/datum/gas/phoron]/0.29)]%":"<span class='danger'>It is empty</span>"].","singulo")
 			return
 		else
-			to_chat(user, "<font color='red'>The controls are locked!</font>")
+			to_chat(user, "<span class='danger'>The controls are locked!</span>")
 			return
 
 
 /obj/machinery/power/rad_collector/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/tank/phoron))
 		if(!src.anchored)
-			to_chat(user, "<font color='red'>The [src] needs to be secured to the floor first.</font>")
+			to_chat(user, "<span class='danger'>The [src] needs to be secured to the floor first.</span>")
 			return 1
 		if(src.P)
-			to_chat(user, "<font color='red'>There's already a phoron tank loaded.</font>")
+			to_chat(user, "<span class='danger'>There's already a phoron tank loaded.</span>")
 			return 1
 		user.drop_item()
 		src.P = W
@@ -77,7 +77,7 @@ var/global/list/rad_collectors = list()
 			return 1
 	else if(W.is_wrench())
 		if(P)
-			to_chat(user, "<font color='blue'>Remove the phoron tank first.</font>")
+			to_chat(user, "<span class='notice'>Remove the phoron tank first.</span>")
 			return 1
 		playsound(src, W.usesound, 75, 1)
 		src.anchored = !src.anchored
@@ -96,9 +96,9 @@ var/global/list/rad_collectors = list()
 				to_chat(user, "The controls are now [src.locked ? "locked." : "unlocked."]")
 			else
 				src.locked = 0 //just in case it somehow gets locked
-				to_chat(user, "<font color='red'>The controls can only be locked when the [src] is active.</font>")
+				to_chat(user, "<span class='danger'>The controls can only be locked when the [src] is active.</span>")
 		else
-			to_chat(user, "<font color='red'>Access denied!</font>")
+			to_chat(user, "<span class='danger'>Access denied!</span>")
 		return 1
 	return ..()
 

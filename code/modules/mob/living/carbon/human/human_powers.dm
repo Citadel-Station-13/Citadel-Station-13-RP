@@ -78,7 +78,7 @@
 
 	for(var/mob/O in viewers(src, null))
 		if ((O.client && !( O.blinded )))
-			O.show_message(text("<font color='red'><B>[] [failed ? "tried to tackle" : "has tackled"] down []!</font></B>", src, T), 1)
+			O.show_message(text("<span class='danger'><B>[] [failed ? "tried to tackle" : "has tackled"] down []!</span></B>", src, T), 1)
 
 /mob/living/carbon/human/proc/commune()
 	set category = "Abilities"
@@ -108,12 +108,12 @@
 
 	log_say("(COMMUNE to [key_name(M)]) [text]",src)
 
-	to_chat(M, "<font color='blue'>Like lead slabs crashing into the ocean, alien thoughts drop into your mind: [text]</font>")
+	to_chat(M, "<span class='notice'>Like lead slabs crashing into the ocean, alien thoughts drop into your mind: [text]</span>")
 	if(istype(M,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
 		if(H.species.name == src.species.name)
 			return
-		to_chat(H, "<font color='red'>Your nose begins to bleed...</font>")
+		to_chat(H, "<span class='danger'>Your nose begins to bleed...</span>")
 		H.drip(1)
 
 /mob/living/carbon/human/proc/regurgitate()
@@ -126,7 +126,7 @@
 			if(M in stomach_contents)
 				stomach_contents.Remove(M)
 				M.loc = loc
-		src.visible_message("<font color='red'><B>[src] hurls out the contents of their stomach!</B></font>")
+		src.visible_message("<span class='danger'><B>[src] hurls out the contents of their stomach!</B></span>")
 	return
 
 /mob/living/carbon/human/proc/psychic_whisper(mob/M as mob in oview())

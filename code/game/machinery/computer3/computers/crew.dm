@@ -32,7 +32,7 @@
 				var/dam4 = round(H.getBruteLoss(),1)
 
 				var/life_status = "[H.stat > 1 ? "<font color=red>Deceased</font>" : "Living"]"
-				var/damage_report = "(<font color='blue'>[dam1]</font>/<font color='green'>[dam2]</font>/<font color='orange'>[dam3]</font>/<font color='red'>[dam4]</font>)"
+				var/damage_report = "(<span class='notice'>[dam1]</span>/<font color='green'>[dam2]</font>/<font color='orange'>[dam3]</font>/<span class='danger'>[dam4]</span>)"
 
 				log += "<tr><td width='40%'>[H.get_authentification_name()] ([H.get_assignment()])</td>"
 

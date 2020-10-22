@@ -57,7 +57,7 @@
 				if("Description")
 					var/str = sanitize(input(usr,"Label text?","Set label",""))
 					if(!str || !length(str))
-						to_chat(user, "<font color='red'>Invalid text.</font>")
+						to_chat(user, "<span class='danger'>Invalid text.</span>")
 						return
 					if(!examtext && !nameset)
 						examtext = str
@@ -165,7 +165,7 @@
 				if("Description")
 					var/str = sanitize(input(usr,"Label text?","Set label",""))
 					if(!str || !length(str))
-						to_chat(user, "<font color='red'>Invalid text.</font>")
+						to_chat(user, "<span class='danger'>Invalid text.</span>")
 						return
 					if(!examtext && !nameset)
 						examtext = str
@@ -232,7 +232,7 @@
 		if(user in target) //no wrapping closets that you are inside - it's not physically possible
 			return
 
-		user.attack_log += text("\[[time_stamp()]\] <font color='blue'>Has used [src.name] on \ref[target]</font>")
+		user.attack_log += text("\[[time_stamp()]\] <span class='notice'>Has used [src.name] on \ref[target]</span>")
 
 
 		if (istype(target, /obj/item) && !(istype(target, /obj/item/storage) && !istype(target,/obj/item/storage/box)))
@@ -293,7 +293,7 @@
 			else if(src.amount < 3)
 				to_chat(user, "<span class='warning'>You need more paper.</span>")
 		else
-			to_chat(user, "<font color='blue'>The object you are trying to wrap is unsuitable for the sorting machinery!</font>")
+			to_chat(user, "<span class='notice'>The object you are trying to wrap is unsuitable for the sorting machinery!</span>")
 		if (src.amount <= 0)
 			new /obj/item/c_tube( src.loc )
 			qdel(src)
@@ -302,7 +302,7 @@
 
 	examine(mob/user)
 		if(..(user, 0))
-			to_chat(user, "<font color='blue'>There are [amount] units of package wrap left!</font>")
+			to_chat(user, "<span class='notice'>There are [amount] units of package wrap left!</span>")
 
 		return
 

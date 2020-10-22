@@ -159,7 +159,7 @@
 	if(href_list["late_join"])
 
 		if(!SSticker || SSticker.current_state != GAME_STATE_PLAYING)
-			to_chat(usr, "<font color='red'>The round is either not ready, or has already finished...</font>")
+			to_chat(usr, "<span class='danger'>The round is either not ready, or has already finished...</span>")
 			return
 
 		var/time_till_respawn = time_till_respawn()
@@ -367,7 +367,7 @@
 	if (src != usr)
 		return 0
 	if(SSticker.current_state != GAME_STATE_PLAYING)
-		to_chat(usr, "<font color='red'>The round is either not ready, or has already finished...</font>")
+		to_chat(usr, "<span class='danger'>The round is either not ready, or has already finished...</span>")
 		return 0
 	if(!config_legacy.enter_allowed)
 		to_chat(usr, "<span class='notice'>There is an administrative lock on entering the game!</span>")
@@ -454,12 +454,12 @@
 
 	if(SSemergencyshuttle) //In case NanoTrasen decides reposess CentCom's shuttles.
 		if(SSemergencyshuttle.going_to_centcom()) //Shuttle is going to CentCom, not recalled
-			dat += "<font color='red'><b>The station has been evacuated.</b></font><br>"
+			dat += "<span class='danger'><b>The station has been evacuated.</b></span><br>"
 		if(SSemergencyshuttle.online())
 			if (SSemergencyshuttle.evac)	// Emergency shuttle is past the point of no recall
-				dat += "<font color='red'>The station is currently undergoing evacuation procedures.</font><br>"
+				dat += "<span class='danger'>The station is currently undergoing evacuation procedures.</span><br>"
 			else						// Crew transfer initiated
-				dat += "<font color='red'>The station is currently undergoing crew transfer procedures.</font><br>"
+				dat += "<span class='danger'>The station is currently undergoing crew transfer procedures.</span><br>"
 
 	dat += "Choose from the following open/valid positions:<br>"
 	dat += "<a href='byond://?src=\ref[src];hidden_jobs=1'>[show_hidden_jobs ? "Hide":"Show"] Hidden Jobs.</a><br>"

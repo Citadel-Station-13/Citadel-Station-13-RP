@@ -105,25 +105,25 @@
 	//	return
 	..()
 	if (beakers.len)
-		to_chat(user, "<font color='blue'>[src] contains:</font>")
+		to_chat(user, "<span class='notice'>[src] contains:</span>")
 		for(var/obj/item/reagent_containers/glass/beaker/B in beakers)
 			if(B.reagents && B.reagents.reagent_list.len)
 				for(var/datum/reagent/R in B.reagents.reagent_list)
-					to_chat(user, "<font color='blue'>[R.volume] units of [R.name]</font>")
+					to_chat(user, "<span class='notice'>[R.volume] units of [R.name]</span>")
 
 /obj/item/gun/projectile/dartgun/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I, /obj/item/reagent_containers/glass))
 		if(!istype(I, container_type))
-			to_chat(user, "<font color='blue'>[I] doesn't seem to fit into [src].</font>")
+			to_chat(user, "<span class='notice'>[I] doesn't seem to fit into [src].</span>")
 			return
 		if(beakers.len >= max_beakers)
-			to_chat(user, "<font color='blue'>[src] already has [max_beakers] beakers in it - another one isn't going to fit!</font>")
+			to_chat(user, "<span class='notice'>[src] already has [max_beakers] beakers in it - another one isn't going to fit!</span>")
 			return
 		var/obj/item/reagent_containers/glass/beaker/B = I
 		user.drop_item()
 		B.loc = src
 		beakers += B
-		to_chat(user, "<font color='blue'>You slot [B] into [src].</font>")
+		to_chat(user, "<span class='notice'>You slot [B] into [src].</span>")
 		src.updateUsrDialog()
 		return 1
 	..()
@@ -149,7 +149,7 @@
 				if (check_beaker_mixing(B))
 					dat += text("<A href='?src=\ref[src];stop_mix=[i]'><font color='green'>Mixing</font></A> ")
 				else
-					dat += text("<A href='?src=\ref[src];mix=[i]'><font color='red'>Not mixing</font></A> ")
+					dat += text("<A href='?src=\ref[src];mix=[i]'><span class='danger'>Not mixing</span></A> ")
 			else
 				dat += "nothing."
 			dat += " \[<A href='?src=\ref[src];eject=[i]'>Eject</A>\]<br>"
@@ -161,7 +161,7 @@
 		if(ammo_magazine.stored_ammo && ammo_magazine.stored_ammo.len)
 			dat += "The dart cartridge has [ammo_magazine.stored_ammo.len] shots remaining."
 		else
-			dat += "<font color='red'>The dart cartridge is empty!</font>"
+			dat += "<span class='danger'>The dart cartridge is empty!</span>"
 		dat += " \[<A href='?src=\ref[src];eject_cart=1'>Eject</A>\]"
 
 	user << browse(dat, "window=dartgun")

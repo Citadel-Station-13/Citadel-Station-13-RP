@@ -53,7 +53,7 @@
 	if(..())
 		return 1
 	if (GLOB.using_map && !(src.z in GLOB.using_map.contact_levels))
-		to_chat(usr, "<font color='red'><b>Unable to establish a connection:</b></font> <font color='black'>You're too far away from the station!</font>")
+		to_chat(usr, "<span class='danger'><b>Unable to establish a connection:</b></span> <font color='black'>You're too far away from the station!</font>")
 		return
 	usr.set_machine(src)
 
@@ -186,13 +186,13 @@
 		if("MessageCentCom")
 			if(src.authenticated==2)
 				if(centcomm_message_cooldown)
-					to_chat(usr, "<font color='red'>Arrays recycling.  Please stand by.</font>")
+					to_chat(usr, "<span class='danger'>Arrays recycling.  Please stand by.</span>")
 					return
 				var/input = sanitize(input("Please choose a message to transmit to [GLOB.using_map.boss_short] via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination.  Transmission does not guarantee a response. There is a 30 second delay before you may send another message, be clear, full and concise.", "To abort, send an empty message.", ""))
 				if(!input || !(usr in view(1,src)))
 					return
 				CentCom_announce(input, usr)
-				to_chat(usr, "<font color='blue'>Message transmitted.</font>")
+				to_chat(usr, "<span class='notice'>Message transmitted.</span>")
 				log_game("[key_name(usr)] has made an IA [GLOB.using_map.boss_short] announcement: [input]")
 				centcomm_message_cooldown = 1
 				spawn(300)//10 minute cooldown
@@ -203,13 +203,13 @@
 		if("MessageSyndicate")
 			if((src.authenticated==2) && (src.emagged))
 				if(centcomm_message_cooldown)
-					to_chat(usr, "<font color='red'>Arrays recycling.  Please stand by.</font>")
+					to_chat(usr, "<span class='danger'>Arrays recycling.  Please stand by.</span>")
 					return
 				var/input = sanitize(input(usr, "Please choose a message to transmit to \[ABNORMAL ROUTING CORDINATES\] via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination. Transmission does not guarantee a response. There is a 30 second delay before you may send another message, be clear, full and concise.", "To abort, send an empty message.", ""))
 				if(!input || !(usr in view(1,src)))
 					return
 				Syndicate_announce(input, usr)
-				to_chat(usr, "<font color='blue'>Message transmitted.</font>")
+				to_chat(usr, "<span class='notice'>Message transmitted.</span>")
 				log_game("[key_name(usr)] has made an illegal announcement: [input]")
 				centcomm_message_cooldown = 1
 				spawn(300)//10 minute cooldown
@@ -281,7 +281,7 @@
 	if(..())
 		return
 	if (GLOB.using_map && !(src.z in GLOB.using_map.contact_levels))
-		to_chat(user, "<font color='red'><b>Unable to establish a connection:</b></font> <font color='black'>You're too far away from the station!</font>")
+		to_chat(user, "<span class='danger'><b>Unable to establish a connection:</b></span> <font color='black'>You're too far away from the station!</font>")
 		return
 
 	user.set_machine(src)
@@ -362,7 +362,7 @@
 		if(STATE_ALERT_LEVEL)
 			dat += "Current alert level: [get_security_level()]<BR>"
 			if(security_level == SEC_LEVEL_DELTA)
-				dat += "<font color='red'><b>The self-destruct mechanism is active. Find a way to deactivate the mechanism to lower the alert level or evacuate.</b></font>"
+				dat += "<span class='danger'><b>The self-destruct mechanism is active. Find a way to deactivate the mechanism to lower the alert level or evacuate.</b></span>"
 			else
 				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_BLUE]'>Blue</A><BR>"
 				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_ORANGE]'>Orange</A><BR>"

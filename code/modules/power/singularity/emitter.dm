@@ -49,7 +49,7 @@
 /obj/machinery/power/emitter/Destroy()
 	message_admins("Emitter deleted at ([x],[y],[z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)",0,1)
 	log_game("EMITTER([x],[y],[z]) Destroyed/deleted.")
-	investigate_log("<font color='red'>deleted</font> at ([x],[y],[z])","singulo")
+	investigate_log("<span class='danger'>deleted</span> at ([x],[y],[z])","singulo")
 	..()
 
 /obj/machinery/power/emitter/update_icon()
@@ -73,7 +73,7 @@
 				to_chat(user, "You turn off [src].")
 				message_admins("Emitter turned off by [key_name(user, user.client)](<A HREF='?_src_=holder;adminmoreinfo=\ref[user]'>?</A>) in ([x],[y],[z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)",0,1)
 				log_game("EMITTER([x],[y],[z]) OFF by [key_name(user)]")
-				investigate_log("turned <font color='red'>off</font> by [user.key]","singulo")
+				investigate_log("turned <span class='danger'>off</span> by [user.key]","singulo")
 			else
 				src.active = 1
 				to_chat(user, "You turn on [src].")
@@ -119,7 +119,7 @@
 				powered = 0
 				update_icon()
 				log_game("EMITTER([x],[y],[z]) Lost power and was ON.")
-				investigate_log("lost power and turned <font color='red'>off</font>","singulo")
+				investigate_log("lost power and turned <span class='danger'>off</span>","singulo")
 			return
 
 		src.last_shot = world.time

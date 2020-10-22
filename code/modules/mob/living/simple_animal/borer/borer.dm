@@ -65,16 +65,16 @@
 			if(host.reagents.has_reagent("sugar"))
 				if(!docile)
 					if(controlling)
-						to_chat(host, "<font color='blue'>You feel the soporific flow of sugar in your host's blood, lulling you into docility.</font>")
+						to_chat(host, "<span class='notice'>You feel the soporific flow of sugar in your host's blood, lulling you into docility.</span>")
 					else
-						to_chat(src, "<font color='blue'>You feel the soporific flow of sugar in your host's blood, lulling you into docility.</font>")
+						to_chat(src, "<span class='notice'>You feel the soporific flow of sugar in your host's blood, lulling you into docility.</span>")
 					docile = 1
 			else
 				if(docile)
 					if(controlling)
-						to_chat(host, "<font color='blue'>You shake off your lethargy as the sugar leaves your host's blood.</font>")
+						to_chat(host, "<span class='notice'>You shake off your lethargy as the sugar leaves your host's blood.</span>")
 					else
-						to_chat(src, "<font color='blue'>You shake off your lethargy as the sugar leaves your host's blood.</font>")
+						to_chat(src, "<span class='notice'>You shake off your lethargy as the sugar leaves your host's blood.</span>")
 					docile = 0
 
 			if(chemicals < 250)
@@ -82,7 +82,7 @@
 			if(controlling)
 
 				if(docile)
-					to_chat(host, "<font color='blue'>You are feeling far too docile to continue controlling your host...</font>")
+					to_chat(host, "<span class='notice'>You are feeling far too docile to continue controlling your host...</span>")
 					host.release_control()
 					return
 

@@ -314,12 +314,12 @@ update_flag
 			if (holding)
 				release_log += "Valve was <b>closed</b> by [usr] ([usr.ckey]), stopping the transfer into the [holding]<br>"
 			else
-				release_log += "Valve was <b>closed</b> by [usr] ([usr.ckey]), stopping the transfer into the <font color='red'><b>air</b></font><br>"
+				release_log += "Valve was <b>closed</b> by [usr] ([usr.ckey]), stopping the transfer into the <span class='danger'><b>air</b></span><br>"
 		else
 			if (holding)
 				release_log += "Valve was <b>opened</b> by [usr] ([usr.ckey]), starting the transfer into the [holding]<br>"
 			else
-				release_log += "Valve was <b>opened</b> by [usr] ([usr.ckey]), starting the transfer into the <font color='red'><b>air</b></font><br>"
+				release_log += "Valve was <b>opened</b> by [usr] ([usr.ckey]), starting the transfer into the <span class='danger'><b>air</b></span><br>"
 				log_open()
 		valve_open = !valve_open
 

@@ -10,7 +10,7 @@ datum/admins/proc/notes_show(var/ckey)
 
 datum/admins/proc/notes_gethtml(var/ckey)
 	var/savefile/notesfile = new(NOTESFILE)
-	if(!notesfile)	return "<font color='red'>Error: Cannot access [NOTESFILE]</font>"
+	if(!notesfile)	return "<span class='danger'>Error: Cannot access [NOTESFILE]</span>"
 	if(ckey)
 		. = "<b>Notes for <a href='?src=\ref[src];notes=show'>[ckey]</a>:</b> <a href='?src=\ref[src];notes=add;ckey=[ckey]'>\[+\]</a> <a href='?src=\ref[src];notes=remove;ckey=[ckey]'>\[-\]</a><br>"
 		notesfile.cd = "/[ckey]"
@@ -103,7 +103,7 @@ datum/admins/proc/notes_gethtml(var/ckey)
 	infos += P
 	info << infos
 
-	message_admins("<font color='blue'>[key_name_admin(user)] has edited [key]'s notes.</font>")
+	message_admins("<span class='notice'>[key_name_admin(user)] has edited [key]'s notes.</span>")
 	log_admin("[key_name(user)] has edited [key]'s notes.")
 
 	del(info) // savefile, so NOT qdel
@@ -128,7 +128,7 @@ datum/admins/proc/notes_gethtml(var/ckey)
 	infos.Remove(item)
 	info << infos
 
-	message_admins("<font color='blue'>[key_name_admin(usr)] deleted one of [key]'s notes.</font>")
+	message_admins("<span class='notice'>[key_name_admin(usr)] deleted one of [key]'s notes.</span>")
 	log_admin("[key_name(usr)] deleted one of [key]'s notes.")
 
 	qdel(info)

@@ -92,7 +92,7 @@
 			if(UNCONSCIOUS)
 				data["stat"] = "Unconscious"
 			if(DEAD)
-				data["stat"] = "<font color='red'>Dead</font>"
+				data["stat"] = "<span class='danger'>Dead</span>"
 		data["health"] = occupant.health
 		data["maxHealth"] = occupant.getMaxHealth()
 		if(iscarbon(occupant))

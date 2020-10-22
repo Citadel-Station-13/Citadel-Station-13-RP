@@ -381,7 +381,7 @@
 				qdel(src)
 
 			else
-				to_chat(user, "<font color='red'>You must hold \the [P] steady to burn \the [src].</font>")
+				to_chat(user, "<span class='danger'>You must hold \the [P] steady to burn \the [src].</span>")
 
 
 /obj/item/paper/Topic(href, href_list)
@@ -429,7 +429,7 @@
 		// check for exploits
 		for(var/bad in paper_blacklist)
 			if(findtext(t,bad))
-				to_chat(usr, "<font color='blue'>You think to yourself, \"Hm.. this is only paper...\</font>"")
+				to_chat(usr, "<span class='notice'>You think to yourself, \"Hm.. this is only paper...\</span>"")
 				log_admin("PAPER: [usr] ([usr.ckey]) tried to use forbidden word in [src]: [bad].")
 				message_admins("PAPER: [usr] ([usr.ckey]) tried to use forbidden word in [src]: [bad].")
 				return

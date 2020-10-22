@@ -97,7 +97,7 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 	if (!count)
 		message_admins("A singulo has been created without containment fields active ([x], [y], [z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>).")
 
-	investigate_log("was created. [count ? "" : "<font color='red'>No containment fields were active.</font>"]", I_SINGULO)
+	investigate_log("was created. [count ? "" : "<span class='danger'>No containment fields were active.</span>"]", I_SINGULO)
 
 /obj/singularity/proc/dissipate()
 	if (!dissipate)
@@ -233,7 +233,7 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 			visible_message("<span class='sinister'><font size='3'>You witness the creation of a destructive force that cannot possibly be stopped by human hands.</font></span>")
 
 	if (current_size == allowed_size)
-		investigate_log("<font color='red'>grew to size [current_size].</font>", I_SINGULO)
+		investigate_log("<span class='danger'>grew to size [current_size].</span>", I_SINGULO)
 		return 1
 	else if (current_size < (--temp_allowed_size) && current_size != STAGE_SUPER)
 		expand(temp_allowed_size)

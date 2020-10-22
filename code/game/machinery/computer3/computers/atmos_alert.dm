@@ -66,7 +66,7 @@
 
 	if(priority_air_alarms.len)
 		for(var/zone in priority_air_alarms)
-			priority_text += "<FONT color='red'><B>[format_text(zone)]</B></FONT> [topic_link(src,"priority_clear=[ckey(zone)]","X")]<BR>"
+			priority_text += "<span class='danger'><B>[format_text(zone)]</B></span> [topic_link(src,"priority_clear=[ckey(zone)]","X")]<BR>"
 	else
 		priority_text += "No priority alerts detected.<BR>"
 

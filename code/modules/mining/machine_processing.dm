@@ -78,20 +78,20 @@
 		if(machine.ores_processing[ore])
 			switch(machine.ores_processing[ore])
 				if(PROCESS_NONE)
-					dat += "<font color='red'>not processing</font>"
+					dat += "<span class='danger'>not processing</span>"
 				if(PROCESS_SMELT)
 					dat += "<font color='orange'>smelting</font>"
 				if(PROCESS_COMPRESS)
-					dat += "<font color='blue'>compressing</font>"
+					dat += "<span class='notice'>compressing</span>"
 				if(PROCESS_ALLOY)
 					dat += "<font color='gray'>alloying</font>"
 		else
-			dat += "<font color='red'>not processing</font>"
+			dat += "<span class='danger'>not processing</span>"
 		dat += ".</td><td width = 30><a href='?src=\ref[src];toggle_smelting=[ore]'>\[change\]</a></td></tr>"
 
 	dat += "</table><hr>"
 	dat += "Currently displaying [show_all_ores ? "all ore types" : "only available ore types"]. <A href='?src=\ref[src];toggle_ores=1'>\[[show_all_ores ? "show less" : "show more"]\]</a></br>"
-	dat += "The ore processor is currently <A href='?src=\ref[src];toggle_power=1'>[(machine.active ? "<font color='green'>processing</font>" : "<font color='red'>disabled</font>")]</a>."
+	dat += "The ore processor is currently <A href='?src=\ref[src];toggle_power=1'>[(machine.active ? "<font color='green'>processing</font>" : "<span class='danger'>disabled</span>")]</a>."
 	user << browse(dat, "window=processor_console;size=400x500")
 	onclose(user, "processor_console")
 	return

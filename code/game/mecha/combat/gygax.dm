@@ -78,12 +78,12 @@
 		overload = 0
 		step_in = initial(step_in)
 		step_energy_drain = initial(step_energy_drain)
-		src.occupant_message("<font color='blue'>You disable leg actuators overload.</font>")
+		src.occupant_message("<span class='notice'>You disable leg actuators overload.</span>")
 	else
 		overload = 1
 		step_in = min(1, round(step_in/2))
 		step_energy_drain = step_energy_drain*overload_coeff
-		src.occupant_message("<font color='red'>You enable leg actuators overload.</font>")
+		src.occupant_message("<span class='danger'>You enable leg actuators overload.</span>")
 	src.log_message("Toggled leg actuators overload.")
 	playsound(src, 'sound/mecha/mechanical_toggle.ogg', 50, 1)
 	return
@@ -96,7 +96,7 @@
 			overload = 0
 			step_in = initial(step_in)
 			step_energy_drain = initial(step_energy_drain)
-			src.occupant_message("<font color='red'>Leg actuators damage threshold exceded. Disabling overload.</font>")
+			src.occupant_message("<span class='danger'>Leg actuators damage threshold exceded. Disabling overload.</span>")
 	return
 
 
@@ -154,7 +154,7 @@
 /obj/mecha/combat/gygax/serenity/moved_inside(var/mob/living/carbon/human/H as mob)
 	if(..())
 		if(H.glasses)
-			occupant_message("<font color='red'>[H.glasses] prevent you from using [src] [hud]</font>")
+			occupant_message("<span class='danger'>[H.glasses] prevent you from using [src] [hud]</span>")
 		else
 			H.glasses = hud
 			H.recalculate_vis()

@@ -158,7 +158,7 @@
 
 			if (src.client)
 				if (client.prefs.muted & MUTE_IC)
-					to_chat(src, "<font color='red'>You cannot send IC messages (muted).</font>")
+					to_chat(src, "<span class='danger'>You cannot send IC messages (muted).</span>")
 					return
 			if (stat)
 				return
@@ -807,7 +807,7 @@
 					twitch_v, vomit, weh, whimper, wink, yawn. Synthetics: beep, buzz, yes, no, rcough, rsneeze, ping. Vox: shriekshort, shriekloud")
 
 		else
-			to_chat(src, "<font color='blue'>Unusable emote '[act]'. Say *help or *vhelp for a list.</font>") //VOREStation Edit, mention *vhelp for Virgo-specific emotes located in emote_vr.dm.
+			to_chat(src, "<span class='notice'>Unusable emote '[act]'. Say *help or *vhelp for a list.</span>") //VOREStation Edit, mention *vhelp for Virgo-specific emotes located in emote_vr.dm.
 
 	if (message)
 		custom_emote(m_type,message)

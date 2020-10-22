@@ -31,7 +31,7 @@
 			qdel(src)
 
 		else
-			to_chat(user,"<font color='red'>You must hold \the [P] steady to burn \the [src].</font>")
+			to_chat(user,"<span class='danger'>You must hold \the [P] steady to burn \the [src].</span>")
 
 		if(isliving(user))
 			var/mob/living/L = user

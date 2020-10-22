@@ -189,8 +189,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	_interactions = list()
 
 	if(is_bwoink)
-		AddInteraction("<font color='blue'>[key_name_admin(usr)] PM'd [LinkedReplyName()]</font>")
-		message_admins("<font color='blue'>Ticket [TicketHref("#[id]")] created</font>")
+		AddInteraction("<span class='notice'>[key_name_admin(usr)] PM'd [LinkedReplyName()]</span>")
+		message_admins("<span class='notice'>Ticket [TicketHref("#[id]")] created</span>")
 	else
 		MessageNoRecipient(parsed_message)
 
@@ -250,7 +250,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	var/ref_src = "\ref[src]"
 	var/chat_msg = "<span class='adminnotice'><span class='adminhelp'>Ticket [TicketHref("#[id]", ref_src)]</span><b>: [LinkedReplyName(ref_src)] [FullMonty(ref_src)]:</b> [msg]</span>"
 
-	AddInteraction("<font color='red'>[LinkedReplyName(ref_src)]: [msg]</font>")
+	AddInteraction("<span class='danger'>[LinkedReplyName(ref_src)]: [msg]</span>")
 	//send this msg to all admins
 
 	for(var/client/X in admins)
@@ -309,9 +309,9 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	RemoveActive()
 	state = AHELP_CLOSED
 	GLOB.ahelp_tickets.ListInsert(src)
-	AddInteraction("<font color='red'>Closed by [key_name_admin(usr)].</font>")
+	AddInteraction("<span class='danger'>Closed by [key_name_admin(usr)].</span>")
 	if(initiator)
-		to_chat(initiator, "<font color='red'>Ticket [TicketHref("#[id]")] was closed by [key_name(usr,FALSE,FALSE)].</font>")
+		to_chat(initiator, "<span class='danger'>Ticket [TicketHref("#[id]")] was closed by [key_name(usr,FALSE,FALSE)].</span>")
 	if(!silent)
 		feedback_inc("ahelp_close")
 		var/msg = "Ticket [TicketHref("#[id]")] closed by [key_name_admin(usr)]."
@@ -345,7 +345,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 			initiator << 'sound/effects/adminhelp.ogg'
 
 		to_chat(initiator, "<font color='red' size='4'><b>- AdminHelp Rejected! -</b></font>")
-		to_chat(initiator, "<font color='red'><b>Your admin help was rejected.</b></font>")
+		to_chat(initiator, "<span class='danger'><b>Your admin help was rejected.</b></span>")
 		to_chat(initiator, "Please try to be calm, clear, and descriptive in admin helps, do not assume the admin has seen any related events, and clearly state the names of anybody you are reporting.")
 
 	feedback_inc("ahelp_reject")
@@ -361,8 +361,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		return
 
 	var/msg = "<font color='red' size='4'><b>- AdminHelp marked as IC issue! -</b></font><br>"
-	msg += "<font color='red'><b>This is something that can be solved ICly, and does not currently require staff intervention.</b></font><br>"
-	msg += "<font color='red'>Your AdminHelp may also be unanswerable due to ongoing events.</font>"
+	msg += "<span class='danger'><b>This is something that can be solved ICly, and does not currently require staff intervention.</b></span><br>"
+	msg += "<span class='danger'>Your AdminHelp may also be unanswerable due to ongoing events.</span>"
 
 	if(initiator)
 		to_chat(initiator, msg)
@@ -379,7 +379,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	if(state != AHELP_ACTIVE)
 		return
 
-	var/msg = "<font color='red'>Your AdminHelp is being handled by [key_name(usr,FALSE,FALSE)] please be patient.</font>"
+	var/msg = "<span class='danger'>Your AdminHelp is being handled by [key_name(usr,FALSE,FALSE)] please be patient.</span>"
 
 	if(initiator)
 		to_chat(initiator, msg)
@@ -398,7 +398,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	dat += "<b>State: "
 	switch(state)
 		if(AHELP_ACTIVE)
-			dat += "<font color='red'>OPEN</font>"
+			dat += "<span class='danger'>OPEN</span>"
 		if(AHELP_RESOLVED)
 			dat += "<font color='green'>RESOLVED</font>"
 		if(AHELP_CLOSED)

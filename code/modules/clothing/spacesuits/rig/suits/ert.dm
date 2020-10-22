@@ -120,15 +120,15 @@
 		anti_magic = TRUE
 		blessed = TRUE
 		emp_proof = TRUE
-		to_chat(user, "<font color='blue'>You enable the RIG's protective sigils.</font>")
+		to_chat(user, "<span class='notice'>You enable the RIG's protective sigils.</span>")
 	else
 		anti_magic = FALSE
 		blessed = FALSE
 		emp_proof = FALSE
-		to_chat(user, "<font color='blue'>You disable the RIG's protective sigils.</font>")
+		to_chat(user, "<span class='notice'>You disable the RIG's protective sigils.</span>")
 
 	if(!user.mind.isholy)
-		to_chat(user, "<font color='red'>You can't figure out what these symbols do.</font>")
+		to_chat(user, "<span class='danger'>You can't figure out what these symbols do.</span>")
 
 /obj/item/rig/ert/para/emp_act(severity)
 	if(emp_proof)

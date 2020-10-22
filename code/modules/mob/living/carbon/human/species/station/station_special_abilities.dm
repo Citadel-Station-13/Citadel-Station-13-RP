@@ -379,15 +379,15 @@
 		to_chat(src, "You cannot bite in your current state.")
 		return
 	if(B.vessel.total_volume <= 0 || B.isSynthetic()) //Do they have any blood in the first place, and are they synthetic?
-		to_chat(src, "<font color='red'>There appears to be no blood in this prey...</font>")
+		to_chat(src, "<span class='danger'>There appears to be no blood in this prey...</span>")
 		return
 
 	last_special = world.time + 600
-	src.visible_message("<font color='red'><b>[src] moves their head next to [B]'s neck, seemingly looking for something!</b></font>")
+	src.visible_message("<span class='danger'><b>[src] moves their head next to [B]'s neck, seemingly looking for something!</b></span>")
 
 	if(do_after(src, 300, B)) //Thrirty seconds.
 		if(!Adjacent(B)) return
-		src.visible_message("<font color='red'><b>[src] suddenly extends their fangs and plunges them down into [B]'s neck!</b></font>")
+		src.visible_message("<span class='danger'><b>[src] suddenly extends their fangs and plunges them down into [B]'s neck!</b></span>")
 		B.apply_damage(5, BRUTE, BP_HEAD) //You're getting fangs pushed into your neck. What do you expect????
 		B.drip(80) //Remove enough blood to make them a bit woozy, but not take oxyloss.
 		src.nutrition += 400

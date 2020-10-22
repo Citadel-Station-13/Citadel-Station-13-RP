@@ -185,7 +185,7 @@ Code:
 	deadman = TRUE
 	START_PROCESSING(SSobj, src)
 	log_and_message_admins("is threatening to trigger a signaler deadman's switch")
-	usr.visible_message("<font color='red'>[usr] moves their finger over [src]'s signal button...</font>")
+	usr.visible_message("<span class='danger'>[usr] moves their finger over [src]'s signal button...</span>")
 
 /obj/item/assembly/signaler/Destroy()
 	if(radio_controller)

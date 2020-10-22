@@ -369,7 +369,7 @@
 
 /obj/item/storage/box/mousetraps
 	name = "box of Pest-B-Gon mousetraps"
-	desc = "<B><FONT color='red'>WARNING:</FONT></B> <I>Keep out of reach of children</I>."
+	desc = "<B><span class='danger'>WARNING:</span></B> <I>Keep out of reach of children</I>."
 	icon_state = "mousetraps"
 	starts_with = list(/obj/item/assembly/mousetrap = 7)
 

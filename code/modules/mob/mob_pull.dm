@@ -122,7 +122,7 @@
 		if(ishuman(AM))
 			var/mob/living/carbon/human/H = AM
 			if(H.pull_damage())
-				to_chat(src, "<font color='red'><B>Pulling \the [H] in their current condition would probably be a bad idea.</B></font>")
+				to_chat(src, "<span class='danger'><B>Pulling \the [H] in their current condition would probably be a bad idea.</B></span>")
 		// vorecode end
 
 /mob/verb/stop_pulling_verb()

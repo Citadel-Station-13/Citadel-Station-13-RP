@@ -185,13 +185,13 @@
 	dat += "<center>[shuttle_tag] Ship Control<hr>"
 
 	if(WS.moving_status != SHUTTLE_IDLE)
-		dat += "Location: <font color='red'>Moving</font> <br>"
+		dat += "Location: <span class='danger'>Moving</span> <br>"
 	else
 		var/area/areacheck = get_area(src)
 		dat += "Location: [areacheck.name]<br>"
 
 		if((WS.last_move + WS.cooldown) > world.time)
-			dat += "<font color='red'>Engines charging.</font><br>"
+			dat += "<span class='danger'>Engines charging.</span><br>"
 		else
 			dat += "<font color='green'>Engines ready.</font><br>"
 
@@ -222,7 +222,7 @@
 					dat += "<font color='[override_en? "red" : "green"]'>Docked</font>"
 
 			if(override_en)
-				dat += " <font color='red'>(Override Enabled)</font>"
+				dat += " <span class='danger'>(Override Enabled)</span>"
 
 			dat += ". <A href='?src=\ref[src];refresh=[1]'>\[Refresh\]</A><br><br>"
 
@@ -344,7 +344,7 @@
 		ui_interact(usr)
 
 	if (WS.moving_status != SHUTTLE_IDLE)
-		to_chat(usr, "<font color='blue'>[WS.visible_name] is busy moving.</font>")
+		to_chat(usr, "<span class='notice'>[WS.visible_name] is busy moving.</span>")
 		return
 
 	if(href_list["rename_command"])
@@ -386,7 +386,7 @@
 			return
 
 		if((WS.last_move + WS.cooldown) > world.time)
-			to_chat(usr, "<font color='red'>The ship's drive is inoperable while the engines are charging.</font>")
+			to_chat(usr, "<span class='danger'>The ship's drive is inoperable while the engines are charging.</span>")
 			return
 
 		var/index = text2num(href_list["traverse"])

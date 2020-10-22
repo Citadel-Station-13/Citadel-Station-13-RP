@@ -164,7 +164,7 @@
 
 		if(output_used < 0.0001)			// either from no charge or set to 0
 			outputting(0)
-			investigate_log("lost power and turned <font color='red'>off</font>","singulo")
+			investigate_log("lost power and turned <span class='danger'>off</span>","singulo")
 			log_game("SMES([x],[y],[z]) Power depleted.")
 	else if(output_attempt && output_level > 0)
 		outputting = 1
@@ -402,7 +402,7 @@
 		lastsolaralert = world.time + 12000
 		lastenginealert = world.time + 12000
 
-	investigate_log("input/output; <font color='[input_level>output_level?"green":"red"][input_level]/[output_level]</font> | Output-mode: [output_attempt?"<font color='green'>on</font>":"<font color='red'>off</font>"] | Input-mode: [input_attempt?"<font color='green'>auto</font>":"<font color='red'>off</font>"] by [usr.key]","singulo")
+	investigate_log("input/output; <font color='[input_level>output_level?"green":"red"][input_level]/[output_level]</font> | Output-mode: [output_attempt?"<font color='green'>on</font>":"<span class='danger'>off</span>"] | Input-mode: [input_attempt?"<font color='green'>auto</font>":"<span class='danger'>off</span>"] by [usr.key]","singulo")
 	log_game("SMES([x],[y],[z]) [key_name(usr)] changed settings: I:[input_level]([input_attempt]), O:[output_level]([output_attempt])")
 	return 1
 
@@ -411,7 +411,7 @@
 	if(src.z in GLOB.using_map.station_levels)
 		if(prob(1)) //explosion
 			for(var/mob/M in viewers(src))
-				M.show_message("<font color='red'>The [src.name] is making strange noises!</font>", 3, "<font color='red'>You hear sizzling electronics.</font>", 2)
+				M.show_message("<span class='danger'>The [src.name] is making strange noises!</span>", 3, "<span class='danger'>You hear sizzling electronics.</span>", 2)
 			sleep(10*pick(4,5,6,7,10,14))
 			var/datum/effect_system/smoke_spread/smoke = new /datum/effect_system/smoke_spread()
 			smoke.set_up(3, 0, src.loc)

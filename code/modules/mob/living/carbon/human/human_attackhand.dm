@@ -33,7 +33,7 @@
 		if(H.hand)
 			temp = H.organs_by_name["l_hand"]
 		if(!temp || !temp.is_usable())
-			to_chat(H, "<font color='red'>You can't use your hand.</font>")
+			to_chat(H, "<span class='danger'>You can't use your hand.</span>")
 			return
 	if(H.lying)
 		return
@@ -48,7 +48,7 @@
 			if(!hit_zone)
 				H.do_attack_animation(src)
 				playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
-				visible_message("<font color='red'><B>[H] reaches for [src], but misses!</B></font>")
+				visible_message("<span class='danger'><B>[H] reaches for [src], but misses!</B></span>")
 				return FALSE
 
 		if(H != src && check_shields(0, null, H, H.zone_sel.selecting, H.name))
@@ -325,7 +325,7 @@
 						return
 
 			playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
-			visible_message("<font color='red'> <B>[M] attempted to disarm [src]!</B></font>")
+			visible_message("<span class='danger'> <B>[M] attempted to disarm [src]!</B></span>")
 	return
 
 /mob/living/carbon/human/proc/afterattack(atom/target as mob|obj|turf|area, mob/living/user as mob|obj, inrange, params)

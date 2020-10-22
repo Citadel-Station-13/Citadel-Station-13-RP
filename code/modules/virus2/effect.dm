@@ -142,7 +142,7 @@
 /datum/disease2/effect/suicide/activate(var/mob/living/carbon/mob,var/multiplier)
 	var/datum/gender/TM = gender_datums[mob.get_visible_gender()]
 	if(prob(25))
-		viewers(mob) << "<font color='red'><b>[mob.name] is holding [TM.his] breath. It looks like [TM.his] ability to breath [TM.is] constricted!</b></font>"
+		viewers(mob) << "<span class='danger'><b>[mob.name] is holding [TM.his] breath. It looks like [TM.his] ability to breath [TM.is] constricted!</b></span>"
 		mob.apply_damage(15, OXY)
 
 // Nerfing from 15 to 10

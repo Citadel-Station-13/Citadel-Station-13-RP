@@ -1560,7 +1560,7 @@
 	var/result = load_cable(target)
 	var/message
 	if(isnull(result))
-		message = "<font color='red'>Unable to load [target] - no cable found.</font>"
+		message = "<span class='danger'>Unable to load [target] - no cable found.</span>"
 	else if(!result)
 		message = "Reel is full."
 	else

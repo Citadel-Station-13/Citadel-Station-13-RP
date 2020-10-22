@@ -244,8 +244,8 @@ proc/check_panel(mob/M)
 	attackby(var/obj/item/P as obj, mob/user as mob)
 		step_away(src,my_target,2)
 		for(var/mob/M in oviewers(world.view,my_target))
-			to_chat(M, "<font color='red'><B>[my_target] flails around wildly.</B></font>")
-		my_target.show_message("<font color='red'><B>[src] has been attacked by [my_target] </B></font>", 1) //Lazy.
+			to_chat(M, "<span class='danger'><B>[my_target] flails around wildly.</B></span>")
+		my_target.show_message("<span class='danger'><B>[src] has been attacked by [my_target] </B></span>", 1) //Lazy.
 
 		src.health -= P.force
 
@@ -257,7 +257,7 @@ proc/check_panel(mob/M)
 			step_away(src,my_target,2)
 			if(prob(30))
 				for(var/mob/O in oviewers(world.view , my_target))
-					to_chat(O, "<font color='red'><B>[my_target] stumbles around.</B></font>")
+					to_chat(O, "<span class='danger'><B>[my_target] stumbles around.</B></span>")
 
 	New()
 		..()
@@ -302,7 +302,7 @@ proc/check_panel(mob/M)
 				if(prob(15))
 					if(weapon_name)
 						my_target << sound(pick('sound/weapons/genhit1.ogg', 'sound/weapons/genhit2.ogg', 'sound/weapons/genhit3.ogg'))
-						my_target.show_message("<font color='red'><B>[my_target] has been attacked with [weapon_name] by [src.name] </B></font>", 1)
+						my_target.show_message("<span class='danger'><B>[my_target] has been attacked with [weapon_name] by [src.name] </B></span>", 1)
 						my_target.halloss += 8
 						if(prob(20)) my_target.eye_blurry += 3
 						if(prob(33))
@@ -310,7 +310,7 @@ proc/check_panel(mob/M)
 								fake_blood(my_target)
 					else
 						my_target << sound(pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg'))
-						my_target.show_message("<font color='red'><B>[src.name] has punched [my_target]!</B></font>", 1)
+						my_target.show_message("<span class='danger'><B>[src.name] has punched [my_target]!</B></span>", 1)
 						my_target.halloss += 4
 						if(prob(33))
 							if(!locate(/obj/effect/overlay) in my_target.loc)

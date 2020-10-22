@@ -40,7 +40,7 @@
 		M.loc = src.loc
 		for(var/mob/N in viewers(src, null))
 			if(N.client)
-				N.show_message(text("<font color='red'><B>[M] bursts out of [src]!</B></font>"), 2)
+				N.show_message(text("<span class='danger'><B>[M] bursts out of [src]!</B></span>"), 2)
 	..()
 
 /mob/living/carbon/attack_hand(mob/M as mob)
@@ -51,7 +51,7 @@
 		if (H.hand)
 			temp = H.organs_by_name["l_hand"]
 		if(temp && !temp.is_usable())
-			to_chat(H, "<font color='red'>You can't use your [temp.name]</font>")
+			to_chat(H, "<span class='danger'>You can't use your [temp.name]</span>")
 			return
 
 	return
@@ -303,7 +303,7 @@
 	set category = "IC"
 
 	if(usr.sleeping)
-		to_chat(usr, "<font color='red'>You are already sleeping</font>")
+		to_chat(usr, "<span class='danger'>You are already sleeping</span>")
 		return
 	if(alert(src,"You sure you want to sleep for a while?","Sleep","Yes","No") == "Yes")
 		usr.sleeping = 20 //Short nap

@@ -22,7 +22,7 @@ proc/admin_attack_log(var/mob/attacker, var/mob/victim, var/attacker_message, va
 	if(victim)
 		victim.attack_log += text("\[[time_stamp()]\] <font color='orange'>[key_name(attacker)] - [victim_message]</font>")
 	if(attacker)
-		attacker.attack_log += text("\[[time_stamp()]\] <font color='red'>[key_name(victim)] - [attacker_message]</font>")
+		attacker.attack_log += text("\[[time_stamp()]\] <span class='danger'>[key_name(victim)] - [attacker_message]</span>")
 
 	msg_admin_attack("[key_name(attacker)] [admin_message] [key_name(victim)] (INTENT: [attacker? uppertext(attacker.a_intent) : "N/A"]) (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[attacker.x];Y=[attacker.y];Z=[attacker.z]'>JMP</a>)")
 

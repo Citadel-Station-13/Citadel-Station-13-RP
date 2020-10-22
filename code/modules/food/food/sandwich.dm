@@ -23,16 +23,16 @@
 			sandwich_limit += 4
 
 	if(istype(W,/obj/item/material/shard))
-		to_chat(user, "<font color='blue'>You hide [W] in \the [src].</font>")
+		to_chat(user, "<span class='notice'>You hide [W] in \the [src].</span>")
 		user.drop_item()
 		W.loc = src
 		update()
 		return
 	else if(istype(W,/obj/item/reagent_containers/food/snacks))
 		if(src.contents.len > sandwich_limit)
-			to_chat(user, "<font color='red'>If you put anything else on \the [src] it's going to collapse.</font>")
+			to_chat(user, "<span class='danger'>If you put anything else on \the [src] it's going to collapse.</span>")
 			return
-		to_chat(user, "<font color='blue'>You layer [W] over \the [src].</font>")
+		to_chat(user, "<span class='notice'>You layer [W] over \the [src].</span>")
 		var/obj/item/reagent_containers/F = W
 		F.reagents.trans_to_obj(src, F.reagents.total_volume)
 		user.drop_item()
@@ -81,7 +81,7 @@
 /obj/item/reagent_containers/food/snacks/csandwich/examine(mob/user)
 	..(user)
 	var/obj/item/O = pick(contents)
-	to_chat(user, "<font color='blue'>You think you can see [O.name] in there.</font>")
+	to_chat(user, "<span class='notice'>You think you can see [O.name] in there.</span>")
 
 /obj/item/reagent_containers/food/snacks/csandwich/attack(mob/M as mob, mob/user as mob, def_zone)
 
@@ -96,6 +96,6 @@
 		H = M
 
 	if(H && shard && M == user) //This needs a check for feeding the food to other people, but that could be abusable.
-		to_chat(H, "<font color='red'>You lacerate your mouth on a [shard.name] in the sandwich!</font>")
+		to_chat(H, "<span class='danger'>You lacerate your mouth on a [shard.name] in the sandwich!</span>")
 		H.adjustBruteLoss(5) //TODO: Target head if human. //This TODO has been here for 4 years.
 	..()

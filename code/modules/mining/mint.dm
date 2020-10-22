@@ -69,10 +69,10 @@
 
 	if (!input)
 		dat += text("input connection status: ")
-		dat += text("<b><font color='red'>NOT CONNECTED</font></b><br>")
+		dat += text("<b><span class='danger'>NOT CONNECTED</span></b><br>")
 	if (!output)
 		dat += text("<br>output connection status: ")
-		dat += text("<b><font color='red'>NOT CONNECTED</font></b><br>")
+		dat += text("<b><span class='danger'>NOT CONNECTED</span></b><br>")
 
 	dat += text("<br><font color='#ffcc00'><b>Gold inserted: </b>[amt_gold]</font> ")
 	if (chosen == "gold")
@@ -124,7 +124,7 @@
 	usr.set_machine(src)
 	src.add_fingerprint(usr)
 	if(processing==1)
-		to_chat(usr, "<font color='blue'>The machine is processing.</font>")
+		to_chat(usr, "<span class='notice'>The machine is processing.</span>")
 		return
 	if(href_list["choose"])
 		chosen = href_list["choose"]

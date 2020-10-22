@@ -490,13 +490,13 @@ var/list/admin_verbs_event_manager = list(
 		if(ghost.can_reenter_corpse)
 			ghost.reenter_corpse()
 		else
-			to_chat(ghost, "<font color='red'>Error:  Aghost:  Can't reenter corpse.</font>")
+			to_chat(ghost, "<span class='danger'>Error:  Aghost:  Can't reenter corpse.</span>")
 			return
 
 		feedback_add_details("admin_verb","P") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 	else if(istype(mob,/mob/new_player))
-		to_chat(src, "<font color='red'>Error: Aghost: Can't admin-ghost whilst in the lobby. Join or Observe first.</font>")
+		to_chat(src, "<span class='danger'>Error: Aghost: Can't admin-ghost whilst in the lobby. Join or Observe first.</span>")
 	else
 		//ghostize
 		var/mob/body = mob
@@ -515,11 +515,11 @@ var/list/admin_verbs_event_manager = list(
 	if(holder && mob)
 		if(mob.invisibility == INVISIBILITY_OBSERVER)
 			mob.invisibility = initial(mob.invisibility)
-			to_chat(mob, "<font color='red'><b>Invisimin off. Invisibility reset.</b></font>")
+			to_chat(mob, "<span class='danger'><b>Invisimin off. Invisibility reset.</b></span>")
 			mob.alpha = max(mob.alpha + 100, 255)
 		else
 			mob.invisibility = INVISIBILITY_OBSERVER
-			to_chat(mob, "<font color='blue'><b>Invisimin on. You are now as invisible as a ghost.</b></font>")
+			to_chat(mob, "<span class='notice'><b>Invisimin on. You are now as invisible as a ghost.</b></span>")
 			mob.alpha = max(mob.alpha - 100, 0)
 
 
@@ -650,7 +650,7 @@ var/list/admin_verbs_event_manager = list(
 
 	if(!warned_ckey || !istext(warned_ckey))	return
 	if(warned_ckey in admin_datums)
-		to_chat(usr, "<font color='red'>Error: warn(): You can't warn admins.</font>")
+		to_chat(usr, "<span class='danger'>Error: warn(): You can't warn admins.</span>")
 		return
 
 	var/datum/preferences/D
@@ -659,14 +659,14 @@ var/list/admin_verbs_event_manager = list(
 	else	D = preferences_datums[warned_ckey]
 
 	if(!D)
-		to_chat(src, "<font color='red'>Error: warn(): No such ckey found.</font>")
+		to_chat(src, "<span class='danger'>Error: warn(): No such ckey found.</span>")
 		return
 
 	if(++D.warns >= MAX_WARNS)					//uh ohhhh...you'reee iiiiin trouuuubble O:)
 		ban_unban_log_save("[ckey] warned [warned_ckey], resulting in a [AUTOBANTIME] minute autoban.")
 		if(C)
 			message_admins("[key_name_admin(src)] has warned [key_name_admin(C)] resulting in a [AUTOBANTIME] minute ban.")
-			to_chat(C, "<font color='red'><BIG><B>You have been autobanned due to a warning by [ckey].</B></BIG><br>This is a temporary ban, it will be removed in [AUTOBANTIME] minutes.</font>")
+			to_chat(C, "<span class='danger'><BIG><B>You have been autobanned due to a warning by [ckey].</B></BIG><br>This is a temporary ban, it will be removed in [AUTOBANTIME] minutes.</span>")
 			del(C)
 		else
 			message_admins("[key_name_admin(src)] has warned [warned_ckey] resulting in a [AUTOBANTIME] minute ban.")
@@ -674,7 +674,7 @@ var/list/admin_verbs_event_manager = list(
 		feedback_inc("ban_warn",1)
 	else
 		if(C)
-			to_chat(C, "<font color='red'><BIG><B>You have been formally warned by an administrator.</B></BIG><br>Further warnings will result in an autoban.</font>")
+			to_chat(C, "<span class='danger'><BIG><B>You have been formally warned by an administrator.</B></BIG><br>Further warnings will result in an autoban.</span>")
 			message_admins("[key_name_admin(src)] has warned [key_name_admin(C)]. They have [MAX_WARNS-D.warns] strikes remaining.")
 		else
 			message_admins("[key_name_admin(src)] has warned [warned_ckey] (DC). They have [MAX_WARNS-D.warns] strikes remaining.")
@@ -709,7 +709,7 @@ var/list/admin_verbs_event_manager = list(
 			var/light_impact_range = input("Light impact range (in tiles):") as num
 			var/flash_range = input("Flash range (in tiles):") as num
 			explosion(epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range)
-	message_admins("<font color='blue'>[ckey] creating an admin explosion at [epicenter.loc].</font>")
+	message_admins("<span class='notice'>[ckey] creating an admin explosion at [epicenter.loc].</span>")
 	feedback_add_details("admin_verb","DB") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/give_disease2(mob/T as mob in mob_list) // -- Giacom
@@ -741,7 +741,7 @@ var/list/admin_verbs_event_manager = list(
 
 	feedback_add_details("admin_verb","GD2") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	log_admin("[key_name(usr)] gave [key_name(T)] a [greater] disease2 with infection chance [D.infectionchance].")
-	message_admins("<font color='blue'>[key_name_admin(usr)] gave [key_name(T)] a [greater] disease2 with infection chance [D.infectionchance].</font>", 1)
+	message_admins("<span class='notice'>[key_name_admin(usr)] gave [key_name(T)] a [greater] disease2 with infection chance [D.infectionchance].</span>", 1)
 
 /client/proc/admin_give_modifier(var/mob/living/L)
 	set category = "Debug"
@@ -778,7 +778,7 @@ var/list/admin_verbs_event_manager = list(
 		for (var/mob/V in hearers(O))
 			V.show_message(message, 2)
 		log_admin("[key_name(usr)] made [O] at [O.x], [O.y], [O.z]. make a sound")
-		message_admins("<font color='blue'>[key_name_admin(usr)] made [O] at [O.x], [O.y], [O.z]. make a sound.</font>", 1)
+		message_admins("<span class='notice'>[key_name_admin(usr)] made [O] at [O.x], [O.y], [O.z]. make a sound.</span>", 1)
 		feedback_add_details("admin_verb","MS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 
@@ -812,7 +812,7 @@ var/list/admin_verbs_event_manager = list(
 		to_chat(usr, "<b>Disabled air processing.</b>")
 	feedback_add_details("admin_verb","KA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	log_admin("[key_name(usr)] used 'kill air'.")
-	message_admins("<font color='blue'>[key_name_admin(usr)] used 'kill air'.</font>", 1)
+	message_admins("<span class='notice'>[key_name_admin(usr)] used 'kill air'.</span>", 1)
 
 /client/proc/readmin_self()
 	set name = "Re-Admin self"
@@ -940,7 +940,7 @@ var/list/admin_verbs_event_manager = list(
 	var/mob/living/carbon/human/M = input("Select mob.", "Edit Appearance") as null|anything in human_mob_list
 
 	if(!istype(M, /mob/living/carbon/human))
-		to_chat(usr, "<font color='red'>You can only do this to humans!</font>")
+		to_chat(usr, "<span class='danger'>You can only do this to humans!</span>")
 		return
 	switch(alert("Are you sure you wish to edit this mob's appearance? Skrell, Unathi, Tajaran can result in unintended consequences.",,"Yes","No"))
 		if("No")
@@ -1063,7 +1063,7 @@ var/list/admin_verbs_event_manager = list(
 	to_chat(T, "<span class='notice'>Move along.</span>")
 
 	log_admin("[key_name(usr)] told [key_name(T)] to man up and deal with it.")
-	message_admins("<font color='blue'>[key_name_admin(usr)] told [key_name(T)] to man up and deal with it.</font>", 1)
+	message_admins("<span class='notice'>[key_name_admin(usr)] told [key_name(T)] to man up and deal with it.</span>", 1)
 
 /client/proc/global_man_up()
 	set category = "Fun"
@@ -1077,7 +1077,7 @@ var/list/admin_verbs_event_manager = list(
 		T << 'sound/voice/ManUp1.ogg'
 
 	log_admin("[key_name(usr)] told everyone to man up and deal with it.")
-	message_admins("<font color='blue'>[key_name_admin(usr)] told everyone to man up and deal with it.</font>", 1)
+	message_admins("<span class='notice'>[key_name_admin(usr)] told everyone to man up and deal with it.</span>", 1)
 
 /client/proc/give_spell(mob/T as mob in mob_list) // -- Urist
 	set category = "Fun"
@@ -1088,4 +1088,4 @@ var/list/admin_verbs_event_manager = list(
 	T.spell_list += new S
 	feedback_add_details("admin_verb","GS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	log_admin("[key_name(usr)] gave [key_name(T)] the spell [S].")
-	message_admins("<font color='blue'>[key_name_admin(usr)] gave [key_name(T)] the spell [S].</font>", 1)
+	message_admins("<span class='notice'>[key_name_admin(usr)] gave [key_name(T)] the spell [S].</span>", 1)

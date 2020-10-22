@@ -258,14 +258,14 @@
 		return
 
 	if (src.active)
-		user.visible_message("<font color='blue'>[bicon(src)] [user] deactivated the shield generator.</font>", \
-			"<font color='blue'>[bicon(src)] You deactivate the shield generator.</font>", \
+		user.visible_message("<span class='notice'>[bicon(src)] [user] deactivated the shield generator.</span>", \
+			"<span class='notice'>[bicon(src)] You deactivate the shield generator.</span>", \
 			"You hear heavy droning fade out.")
 		src.shields_down()
 	else
 		if(anchored)
-			user.visible_message("<font color='blue'>[bicon(src)] [user] activated the shield generator.</font>", \
-				"<font color='blue'>[bicon(src)] You activate the shield generator.</font>", \
+			user.visible_message("<span class='notice'>[bicon(src)] [user] activated the shield generator.</span>", \
+				"<span class='notice'>[bicon(src)] You activate the shield generator.</span>", \
 				"You hear heavy droning.")
 			src.shields_up()
 		else
@@ -282,10 +282,10 @@
 	if(W.is_screwdriver())
 		playsound(src, W.usesound, 100, 1)
 		if(is_open)
-			to_chat(user, "<font color='blue'>You close the panel.</font>")
+			to_chat(user, "<span class='notice'>You close the panel.</span>")
 			is_open = 0
 		else
-			to_chat(user, "<font color='blue'>You open the panel and expose the wiring.</font>")
+			to_chat(user, "<span class='notice'>You open the panel and expose the wiring.</span>")
 			is_open = 1
 
 	else if(istype(W, /obj/item/stack/cable_coil) && malfunction && is_open)
@@ -305,15 +305,15 @@
 			return
 		if(anchored)
 			playsound(src, W.usesound, 100, 1)
-			to_chat(user, "<font color='blue'>You unsecure the [src] from the floor!</font>")
+			to_chat(user, "<span class='notice'>You unsecure the [src] from the floor!</span>")
 			if(active)
-				to_chat(user, "<font color='blue'>The [src] shuts off!</font>")
+				to_chat(user, "<span class='notice'>The [src] shuts off!</span>")
 				src.shields_down()
 			anchored = 0
 		else
 			if(istype(get_turf(src), /turf/space)) return //No wrenching these in space!
 			playsound(src, W.usesound, 100, 1)
-			to_chat(user, "<font color='blue'>You secure the [src] to the floor!</font>")
+			to_chat(user, "<span class='notice'>You secure the [src] to the floor!</span>")
 			anchored = 1
 
 
@@ -322,7 +322,7 @@
 			src.locked = !src.locked
 			to_chat(user, "The controls are now [src.locked ? "locked." : "unlocked."]")
 		else
-			to_chat(user, "<font color='red'>Access denied.</font>")
+			to_chat(user, "<span class='danger'>Access denied.</span>")
 
 	else
 		..()

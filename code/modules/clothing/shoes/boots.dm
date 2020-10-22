@@ -189,11 +189,11 @@
 	if(user.mind.isholy && !blessed)
 		blessed = TRUE
 		item_flags |= NOSLIP
-		to_chat(user, "<font color='blue'>You repeat the incantations etched into the boots.</font>")
+		to_chat(user, "<span class='notice'>You repeat the incantations etched into the boots.</span>")
 	else
 		blessed = FALSE
 		item_flags &= ~NOSLIP
-		to_chat(user, "<font color='blue'>You dispel the incantations etched into the boots for now.</font>")
+		to_chat(user, "<span class='notice'>You dispel the incantations etched into the boots for now.</span>")
 
 	if(!user.mind.isholy)
-		to_chat(user, "<font color='red'>You're not sure what language this is.</font>")
+		to_chat(user, "<span class='danger'>You're not sure what language this is.</span>")

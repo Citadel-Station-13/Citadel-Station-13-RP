@@ -124,7 +124,7 @@
 		accesses += "<td style='width:14%' valign='top'>"
 		for(var/A in get_region_accesses(i))
 			if(A in writer.access)
-				accesses += topic_link(src,"access=[A]","<font color='red'>[replacetext(get_access_desc(A), " ", "&nbsp")]</font>") + " "
+				accesses += topic_link(src,"access=[A]","<span class='danger'>[replacetext(get_access_desc(A), " ", "&nbsp")]</span>") + " "
 			else
 				accesses += topic_link(src,"access=[A]",replacetext(get_access_desc(A), " ", "&nbsp")) + " "
 			accesses += "<br>"
@@ -336,7 +336,7 @@
 	var/accesses = "<h5>[GLOB.using_map.boss_name]:</h5>"
 	for(var/A in get_all_centcom_access())
 		if(A in writer.access)
-			accesses += topic_link(src,"access=[A]","<font color='red'>[replacetext(get_centcom_access_desc(A), " ", "&nbsp")]</font>") + " "
+			accesses += topic_link(src,"access=[A]","<span class='danger'>[replacetext(get_centcom_access_desc(A), " ", "&nbsp")]</span>") + " "
 		else
 			accesses += topic_link(src,"access=[A]",replacetext(get_centcom_access_desc(A), " ", "&nbsp")) + " "
 	return accesses

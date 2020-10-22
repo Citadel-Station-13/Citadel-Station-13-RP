@@ -234,7 +234,7 @@ SUBSYSTEM_DEF(ticker)
 			//Deleting Startpoints but we need the ai point to AI-ize people later
 			if (S.name != "AI")
 				qdel(S)
-		to_chat(world, "<FONT color='blue'><B>Enjoy the game!</B></FONT>")
+		to_chat(world, "<span class='notice'><B>Enjoy the game!</B></span>")
 		world << sound('sound/AI/welcome.ogg') // Skie
 		//Holiday Round-start stuff	~Carn
 		Holiday_Game_Start()
@@ -467,7 +467,7 @@ SUBSYSTEM_DEF(ticker)
 				var/turf/playerTurf = get_turf(Player)
 				if(SSemergencyshuttle.departed && SSemergencyshuttle.evac)
 					if(isNotAdminLevel(playerTurf.z))
-						to_chat(Player, "<font color='blue'><b>You survived the round, but remained on [station_name()] as [Player.real_name].</b></font>")
+						to_chat(Player, "<span class='notice'><b>You survived the round, but remained on [station_name()] as [Player.real_name].</b></span>")
 					else
 						to_chat(Player, "<font color='green'><b>You managed to survive the events on [station_name()] as [Player.real_name].</b></font>")
 				else if(isAdminLevel(playerTurf.z))
@@ -475,14 +475,14 @@ SUBSYSTEM_DEF(ticker)
 				else if(issilicon(Player))
 					to_chat(Player, "<font color='green'><b>You remain operational after the events on [station_name()] as [Player.real_name].</b></font>")
 				else
-					to_chat(Player, "<font color='blue'><b>You missed the crew transfer after the events on [station_name()] as [Player.real_name].</b></font>")
+					to_chat(Player, "<span class='notice'><b>You missed the crew transfer after the events on [station_name()] as [Player.real_name].</b></span>")
 			else
 				if(istype(Player,/mob/observer/dead))
 					var/mob/observer/dead/O = Player
 					if(!O.started_as_observer)
-						to_chat(Player, "<font color='red'><b>You did not survive the events on [station_name()]...</b></font>")
+						to_chat(Player, "<span class='danger'><b>You did not survive the events on [station_name()]...</b></span>")
 				else
-					to_chat(Player, "<font color='red'><b>You did not survive the events on [station_name()]...</b></font>")
+					to_chat(Player, "<span class='danger'><b>You did not survive the events on [station_name()]...</b></span>")
 	to_chat(world, "<br>")
 
 	for (var/mob/living/silicon/ai/aiPlayer in mob_list)

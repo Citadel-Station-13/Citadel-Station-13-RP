@@ -46,15 +46,15 @@
 	if(on)
 		to_chat(user, "<font color='green'>It seems to be online.</font>")
 	else
-		to_chat(user, "<font color='red'>It seems to be offline.</font>")
+		to_chat(user, "<span class='danger'>It seems to be offline.</span>")
 
 /obj/machinery/power/breakerbox/attack_ai(mob/user)
 	if(update_locked)
-		to_chat(user, "<font color='red'>System locked. Please try again later.</font>")
+		to_chat(user, "<span class='danger'>System locked. Please try again later.</span>")
 		return
 
 	if(busy)
-		to_chat(user, "<font color='red'>System is busy. Please wait until current operation is finished before changing power settings.</font>")
+		to_chat(user, "<span class='danger'>System is busy. Please wait until current operation is finished before changing power settings.</span>")
 		return
 
 	busy = 1
@@ -70,16 +70,16 @@
 
 /obj/machinery/power/breakerbox/attack_hand(mob/user)
 	if(update_locked)
-		to_chat(user, "<font color='red'>System locked. Please try again later.</font>")
+		to_chat(user, "<span class='danger'>System locked. Please try again later.</span>")
 		return
 
 	if(busy)
-		to_chat(user, "<font color='red'>System is busy. Please wait until current operation is finished before changing power settings.</font>")
+		to_chat(user, "<span class='danger'>System is busy. Please wait until current operation is finished before changing power settings.</span>")
 		return
 
 	busy = 1
 	for(var/mob/O in viewers(user))
-		O.show_message(text("<font color='red'>[user] started reprogramming [src]!</font>"), 1)
+		O.show_message(text("<span class='danger'>[user] started reprogramming [src]!</span>"), 1)
 
 	if(do_after(user, 50))
 		set_state(!on)
@@ -98,7 +98,7 @@
 			RCon_tag = newtag
 			to_chat(user, "<span class='notice'>You changed the RCON tag to: [newtag]</span>")
 	if(on)
-		to_chat(user, "<font color='red'>Disable the breaker before performing maintenance.</font>")
+		to_chat(user, "<span class='danger'>Disable the breaker before performing maintenance.</span>")
 		return
 	if(default_deconstruction_screwdriver(user, W))
 		return

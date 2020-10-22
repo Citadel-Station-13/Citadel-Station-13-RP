@@ -10,7 +10,7 @@
 			var/mob/living/silicon/robot/R = user
 			for (var/obj/item/cell/D in R.contents)
 				D.charge = max(D.charge - rand() * 100, 0)
-				to_chat(R, "<font color='blue'>SYSTEM ALERT: Energy drain detected!</font>")
+				to_chat(R, "<span class='notice'>SYSTEM ALERT: Energy drain detected!</span>")
 			return 1
 
 		return 1
@@ -27,7 +27,7 @@
 			for (var/obj/item/cell/D in M.contents)
 				D.charge = max(D.charge - 50,0)
 				if(world.time - last_message > 200)
-					to_chat(M, "<font color='red'>SYSTEM ALERT: Energy drain detected!</font>")
+					to_chat(M, "<span class='danger'>SYSTEM ALERT: Energy drain detected!</span>")
 					last_message = world.time
 	return 1
 
@@ -43,6 +43,6 @@
 			for (var/obj/item/cell/D in M.contents)
 				D.charge = max(D.charge - rand() * 150,0)
 				if(world.time - last_message > 200)
-					to_chat(M, "<font color='red'>SYSTEM ALERT: Energy drain detected!</font>")
+					to_chat(M, "<span class='danger'>SYSTEM ALERT: Energy drain detected!</span>")
 					last_message = world.time
 	return 1

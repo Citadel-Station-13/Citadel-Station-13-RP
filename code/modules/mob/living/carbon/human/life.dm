@@ -187,7 +187,7 @@
 
 	if (disabilities & EPILEPSY)
 		if ((prob(1) && paralysis < 1))
-			to_chat(src, "<font color='red'>You have a seizure!</font>")
+			to_chat(src, "<span class='danger'>You have a seizure!</span>")
 			for(var/mob/O in viewers(src, null))
 				if(O == src)
 					continue

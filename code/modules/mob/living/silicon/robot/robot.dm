@@ -261,7 +261,7 @@
 	var/list/modules = list()
 	modules.Add(robot_module_types)
 	if(crisis || security_level == SEC_LEVEL_RED || crisis_override)
-		to_chat(src, "<font color='red'>Crisis mode active. Combat module available.</font>")
+		to_chat(src, "<span class='danger'>Crisis mode active. Combat module available.</span>")
 		modules+="Combat"
 		modules+="ERT"
 	modtype = input("Please, select a module!", "Robot module", null, null) as null|anything in modules
@@ -375,11 +375,11 @@
 	set name = "Self Diagnosis"
 
 	if(!is_component_functioning("diagnosis unit"))
-		to_chat(src, "<font color='red'>Your self-diagnosis component isn't functioning.</font>")
+		to_chat(src, "<span class='danger'>Your self-diagnosis component isn't functioning.</span>")
 
 	var/datum/robot_component/CO = get_component("diagnosis unit")
 	if (!cell_use_power(CO.active_usage))
-		to_chat(src, "<font color='red'>Low Power.</font>")
+		to_chat(src, "<span class='danger'>Low Power.</span>")
 	var/dat = self_diagnosis()
 	src << browse(dat, "window=robotdiagnosis")
 
@@ -403,10 +403,10 @@
 	var/datum/robot_component/C = components[toggle]
 	if(C.toggled)
 		C.toggled = 0
-		to_chat(src, "<font color='red'>You disable [C.name].</font>")
+		to_chat(src, "<span class='danger'>You disable [C.name].</span>")
 	else
 		C.toggled = 1
-		to_chat(src, "<font color='red'>You enable [C.name].</font>")
+		to_chat(src, "<span class='danger'>You enable [C.name].</span>")
 
 /mob/living/silicon/robot/verb/spark_plug() //So you can still sparkle on demand without violence.
 	set category = "Robot Commands"
@@ -477,7 +477,7 @@
 					C.brute_damage = WC.brute
 					C.electronics_damage = WC.burn
 
-				to_chat(usr, "<font color='blue'>You install the [W.name].</font>")
+				to_chat(usr, "<span class='notice'>You install the [W.name].</span>")
 
 				return
 
@@ -509,7 +509,7 @@
 			updatehealth()
 			add_fingerprint(user)
 			for(var/mob/O in viewers(user, null))
-				O.show_message(text("<font color='red'>[user] has fixed some of the dents on [src]!</font>"), 1)
+				O.show_message(text("<span class='danger'>[user] has fixed some of the dents on [src]!</span>"), 1)
 		else
 			to_chat(user, "Need more welding fuel!")
 			return
@@ -524,7 +524,7 @@
 			adjustFireLoss(-30)
 			updatehealth()
 			for(var/mob/O in viewers(user, null))
-				O.show_message(text("<font color='red'>[user] has fixed some of the burnt wires on [src]!</font>"), 1)
+				O.show_message(text("<span class='danger'>[user] has fixed some of the burnt wires on [src]!</span>"), 1)
 
 	else if (W.is_crowbar() && user.a_intent != INTENT_HARM)	// crowbar means open or close the cover
 		if(opened)
@@ -639,7 +639,7 @@
 				to_chat(user, "You [ locked ? "lock" : "unlock"] [src]'s interface.")
 				updateicon()
 			else
-				to_chat(user, "<font color='red'>Access denied.</font>")
+				to_chat(user, "<span class='danger'>Access denied.</span>")
 
 	else if(istype(W, /obj/item/borg/upgrade/))
 		var/obj/item/borg/upgrade/U = W
@@ -783,7 +783,7 @@
 
 /mob/living/silicon/robot/proc/installed_modules()
 	if(weapon_lock)
-		to_chat(src, "<font color='red'>Weapon lock active, unable to use modules! Count:[weaponlock_time]</font>")
+		to_chat(src, "<span class='danger'>Weapon lock active, unable to use modules! Count:[weaponlock_time]</span>")
 		return
 
 	if(!module)
@@ -932,7 +932,7 @@
 								cleaned_human.shoes.clean_blood()
 								cleaned_human.update_inv_shoes(0)
 							cleaned_human.clean_blood(1)
-							to_chat(cleaned_human, "<font color='red'>[src] cleans your face!</font>")
+							to_chat(cleaned_human, "<span class='danger'>[src] cleans your face!</span>")
 
 		if((module_state_1 && istype(module_state_1, /obj/item/storage/bag/ore)) || (module_state_2 && istype(module_state_2, /obj/item/storage/bag/ore)) || (module_state_3 && istype(module_state_3, /obj/item/storage/bag/ore))) //Borgs and drones can use their mining bags ~automagically~ if they're deployed in a slot. Only mining bags, as they're optimized for mass use.
 			var/obj/item/storage/bag/ore/B = null

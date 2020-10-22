@@ -219,7 +219,7 @@
 		return FALSE
 
 	if(length(mob.pinned))
-		to_chat(src, "<font color='blue'>You're pinned to a wall by [mob.pinned[1]]!</font>")
+		to_chat(src, "<span class='notice'>You're pinned to a wall by [mob.pinned[1]]!</span>")
 		return FALSE
 
 	if(mob.pulledby || mob.buckled) // Wheelchair driving!		//this is shitcode
