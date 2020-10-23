@@ -3444,6 +3444,7 @@
 	name = "Head of Personnel";
 	req_access = list(57)
 	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/hop)
 "cuS" = (

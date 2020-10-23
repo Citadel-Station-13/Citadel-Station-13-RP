@@ -1456,6 +1456,23 @@
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/plating,
 /area/quartermaster/office)
+"eK" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals_central6{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/hallway/primary/port)
 "eM" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -7070,19 +7087,12 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
+/obj/structure/catwalk,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/hologram/holopad,
-/obj/structure/cable/green{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/turf/simulated/floor/tiled/monotile,
+/obj/effect/floor_decal/spline/fancy/wood,
+/turf/simulated/floor/plating,
 /area/hallway/primary/port)
 "vW" = (
 /obj/machinery/camera/network/civilian{
@@ -7265,6 +7275,23 @@
 /obj/machinery/vending/cigarette,
 /turf/simulated/floor/wood,
 /area/quartermaster/foyer)
+"wC" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals_central6{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/hallway/primary/port)
 "wD" = (
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
@@ -10297,6 +10324,25 @@
 "Gt" = (
 /turf/simulated/floor/carpet/sblucarpet,
 /area/quartermaster/foyer)
+"Gu" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/catwalk,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/fancy/wood,
+/turf/simulated/floor/plating,
+/area/hallway/primary/port)
 "Gw" = (
 /obj/item/radio/intercom{
 	dir = 1;
@@ -10408,7 +10454,12 @@
 	icon_state = "4-8"
 	},
 /obj/item/radio/beacon,
-/turf/simulated/floor/tiled/monotile,
+/obj/structure/catwalk,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/fancy/wood,
+/turf/simulated/floor/plating,
 /area/hallway/primary/port)
 "GO" = (
 /obj/machinery/alarm{
@@ -11223,8 +11274,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals_central6,
-/turf/simulated/floor/tiled/monotile,
+/obj/structure/catwalk,
+/obj/effect/floor_decal/spline/fancy/wood/cee{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
 /area/hallway/primary/port)
 "Jk" = (
 /obj/structure/cable/green{
@@ -12508,6 +12562,21 @@
 "NB" = (
 /turf/simulated/floor/wood/broken,
 /area/maintenance/cargo)
+"NC" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/hologram/holopad,
+/turf/simulated/floor/tiled/monotile,
+/area/hallway/primary/port)
 "NG" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/tiled/dark,
@@ -13180,8 +13249,11 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals_central6,
-/turf/simulated/floor/tiled/monotile,
+/obj/structure/catwalk,
+/obj/effect/floor_decal/spline/fancy/wood/cee{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
 /area/hallway/primary/port)
 "Qc" = (
 /obj/structure/sign/directions/medical{
@@ -13682,7 +13754,11 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/monotile,
+/obj/structure/catwalk,
+/obj/effect/floor_decal/spline/fancy/wood/cee{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
 /area/hallway/primary/port)
 "RH" = (
 /obj/effect/floor_decal/techfloor,
@@ -15124,7 +15200,11 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/monotile,
+/obj/structure/catwalk,
+/obj/effect/floor_decal/spline/fancy/wood/cee{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
 /area/hallway/primary/port)
 "VV" = (
 /obj/effect/floor_decal/techfloor,
@@ -21783,7 +21863,7 @@ qv
 Le
 WU
 sU
-RG
+vT
 Bo
 ai
 gW
@@ -22351,7 +22431,7 @@ wE
 XW
 TK
 sU
-ub
+wC
 RH
 Ki
 xn
@@ -22493,7 +22573,7 @@ pw
 XW
 TK
 sU
-ub
+Sr
 RH
 Wg
 VG
@@ -22635,7 +22715,7 @@ XW
 XW
 ZZ
 sU
-ub
+Gu
 RH
 Wg
 Yt
@@ -22777,7 +22857,7 @@ Xy
 XW
 Ce
 sU
-ub
+Jj
 RH
 Wg
 Hd
@@ -23061,7 +23141,7 @@ ZK
 ZK
 IN
 bs
-ub
+NC
 RH
 US
 Ki
@@ -23203,7 +23283,7 @@ Ij
 Ij
 Ij
 nB
-vT
+UN
 GQ
 Ij
 Ij
@@ -23345,7 +23425,7 @@ Ij
 OF
 vC
 sU
-ub
+eK
 RH
 GE
 OF
@@ -23629,7 +23709,7 @@ cM
 pA
 As
 sU
-ub
+Gu
 RH
 As
 bn
@@ -24183,7 +24263,7 @@ vl
 Nh
 Ty
 Rr
-Nh
+op
 zB
 oB
 Nh
@@ -24481,7 +24561,7 @@ vd
 vd
 vd
 gO
-ub
+Gu
 PT
 mQ
 qm
@@ -24623,7 +24703,7 @@ vd
 vd
 vd
 gO
-ub
+Gu
 RH
 mQ
 mQ
@@ -24765,7 +24845,7 @@ vd
 vd
 RE
 sU
-ub
+Jj
 RH
 VL
 iq
