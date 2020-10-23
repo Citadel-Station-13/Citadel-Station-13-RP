@@ -281,6 +281,10 @@
 		"sos_14.png" = 'icons/spideros_icons/sos_14.png'
 	)
 
+/datum/asset/simple/motd
+	assets = list("CS13.png" = 'icons/CS13.png')
+
+
 /*
 /datum/asset/simple/notes
 	assets = list(
