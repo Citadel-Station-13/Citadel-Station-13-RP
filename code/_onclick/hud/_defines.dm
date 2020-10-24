@@ -142,3 +142,16 @@
 
 #define ui_spell_master "EAST-2:16,NORTH-1:26"
 #define ui_genetic_master "EAST-1:16,NORTH-3:16"
+
+#define ui_shadekin_dark_display "EAST-1:28,CENTER-3:15"
+#define ui_shadekin_energy_display "EAST-1:28,CENTER-4:15"
+#define ui_xenochimera_danger_display "EAST-1:28,CENTER-3:15"
+
+// Ghost ones
+#define ui_ghost_returntomenu "SOUTH:6,CENTER-3:24"
+#define ui_ghost_jumptomob "SOUTH:6,CENTER-2:24"
+#define ui_ghost_orbit "SOUTH:6,CENTER-1:24"
+#define ui_ghost_reenter_corpse "SOUTH:6,CENTER:24"
+#define ui_ghost_teleport "SOUTH:6,CENTER+1:24"
+#define ui_ghost_pai "SOUTH: 6,CENTER+2:24"
+#define ui_ghost_updown "SOUTH: 6,CENTER+3:24"
