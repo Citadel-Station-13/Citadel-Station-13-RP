@@ -12389,6 +12389,9 @@
 	layer = 3.3;
 	name = "Reactor Blast Door"
 	},
+/obj/machinery/atmospherics/pipe/simple/visible/red{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "Vc" = (
