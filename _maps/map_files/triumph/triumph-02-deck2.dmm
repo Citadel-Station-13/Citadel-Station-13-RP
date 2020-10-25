@@ -783,12 +783,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/structure/catwalk,
-/obj/effect/floor_decal/spline/fancy/wood,
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "cE" = (
 /obj/structure/closet/wardrobe/white,
@@ -4093,12 +4088,7 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/obj/structure/catwalk,
-/obj/effect/floor_decal/spline/fancy/wood,
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled,
 /area/hallway/primary/starboard)
 "ms" = (
 /obj/structure/cable{
@@ -5684,12 +5674,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
-/obj/structure/catwalk,
-/obj/effect/floor_decal/spline/fancy/wood,
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "rM" = (
 /obj/machinery/alarm{
@@ -5953,12 +5938,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/catwalk,
-/obj/effect/floor_decal/spline/fancy/wood,
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled,
 /area/hallway/primary/starboard)
 "sz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -6877,12 +6857,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/catwalk,
-/obj/effect/floor_decal/spline/fancy/wood,
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled,
 /area/hallway/primary/starboard)
 "vb" = (
 /obj/effect/floor_decal/techfloor{
@@ -7081,19 +7056,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
-"vT" = (
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/catwalk,
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
-	},
-/obj/effect/floor_decal/spline/fancy/wood,
-/turf/simulated/floor/plating,
-/area/hallway/primary/port)
 "vW" = (
 /obj/machinery/camera/network/civilian{
 	dir = 8
@@ -7381,25 +7343,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hydroponics)
-"wX" = (
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/catwalk,
-/obj/effect/floor_decal/spline/fancy/wood,
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
-/area/hallway/primary/starboard)
 "wY" = (
 /obj/machinery/camera/network/civilian,
 /obj/item/radio/intercom{
@@ -9421,23 +9364,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/bar)
-"Dv" = (
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 1
-	},
-/obj/structure/catwalk,
-/obj/effect/floor_decal/spline/fancy/wood,
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
-/area/hallway/primary/starboard)
 "Dy" = (
 /obj/structure/sink{
 	dir = 8;
@@ -10020,11 +9946,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/structure/catwalk,
-/obj/effect/floor_decal/spline/fancy/wood/cee{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled,
 /area/hallway/primary/starboard)
 "FD" = (
 /obj/structure/dancepole,
@@ -10252,12 +10174,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/obj/structure/catwalk,
-/obj/effect/floor_decal/spline/fancy/wood,
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled,
 /area/hallway/primary/starboard)
 "Gm" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -10324,25 +10241,6 @@
 "Gt" = (
 /turf/simulated/floor/carpet/sblucarpet,
 /area/quartermaster/foyer)
-"Gu" = (
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/catwalk,
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
-	},
-/obj/effect/floor_decal/spline/fancy/wood,
-/turf/simulated/floor/plating,
-/area/hallway/primary/port)
 "Gw" = (
 /obj/item/radio/intercom{
 	dir = 1;
@@ -10454,12 +10352,7 @@
 	icon_state = "4-8"
 	},
 /obj/item/radio/beacon,
-/obj/structure/catwalk,
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
-	},
-/obj/effect/floor_decal/spline/fancy/wood,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/port)
 "GO" = (
 /obj/machinery/alarm{
@@ -10556,12 +10449,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/structure/catwalk,
-/obj/effect/floor_decal/spline/fancy/wood,
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled,
 /area/hallway/primary/starboard)
 "Hd" = (
 /obj/machinery/seed_extractor,
@@ -11262,24 +11150,6 @@
 	},
 /turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/sleep/Dorm_6)
-"Jj" = (
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/catwalk,
-/obj/effect/floor_decal/spline/fancy/wood/cee{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/hallway/primary/port)
 "Jk" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -13243,18 +13113,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
-"Qb" = (
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/catwalk,
-/obj/effect/floor_decal/spline/fancy/wood/cee{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/hallway/primary/port)
 "Qc" = (
 /obj/structure/sign/directions/medical{
 	dir = 8;
@@ -13303,11 +13161,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
-/obj/structure/catwalk,
-/obj/effect/floor_decal/spline/fancy/wood/cee{
-	dir = 8
-	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled,
 /area/hallway/primary/starboard)
 "Qi" = (
 /obj/machinery/light/small,
@@ -13754,11 +13608,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/structure/catwalk,
-/obj/effect/floor_decal/spline/fancy/wood/cee{
-	dir = 8
-	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/port)
 "RH" = (
 /obj/effect/floor_decal/techfloor,
@@ -13981,24 +13831,6 @@
 /obj/machinery/fitness/heavy/lifter,
 /turf/simulated/floor/wood,
 /area/crew_quarters/fitness)
-"Sr" = (
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/catwalk,
-/obj/effect/floor_decal/spline/fancy/wood/cee{
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/hallway/primary/port)
 "Ss" = (
 /obj/machinery/camera/network/cargo{
 	dir = 4
@@ -14049,12 +13881,7 @@
 	dir = 4
 	},
 /obj/machinery/hologram/holopad,
-/obj/structure/catwalk,
-/obj/effect/floor_decal/spline/fancy/wood,
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "Sy" = (
 /obj/machinery/firealarm{
@@ -15016,12 +14843,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/structure/catwalk,
-/obj/effect/floor_decal/spline/fancy/wood,
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "Vw" = (
 /obj/structure/disposalpipe/segment{
@@ -15200,11 +15022,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
-/obj/structure/catwalk,
-/obj/effect/floor_decal/spline/fancy/wood/cee{
-	dir = 8
-	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/port)
 "VV" = (
 /obj/effect/floor_decal/techfloor,
@@ -15290,11 +15108,7 @@
 	icon_state = "1-2"
 	},
 /obj/item/radio/beacon,
-/obj/structure/catwalk,
-/obj/effect/floor_decal/spline/fancy/wood/cee{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "Wc" = (
 /obj/effect/floor_decal/techfloor{
@@ -16277,7 +16091,7 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/tiled/steel,
+/turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "Zl" = (
 /obj/structure/cable/green{
@@ -21863,7 +21677,7 @@ qv
 Le
 WU
 sU
-vT
+RG
 Bo
 ai
 gW
@@ -22005,7 +21819,7 @@ xW
 Zy
 ez
 IC
-Qb
+RG
 qd
 Ki
 Ki
@@ -22573,7 +22387,7 @@ pw
 XW
 TK
 sU
-Sr
+ub
 RH
 Wg
 VG
@@ -22715,7 +22529,7 @@ XW
 XW
 ZZ
 sU
-Gu
+ub
 RH
 Wg
 Yt
@@ -22857,7 +22671,7 @@ Xy
 XW
 Ce
 sU
-Jj
+ub
 RH
 Wg
 Hd
@@ -23709,7 +23523,7 @@ cM
 pA
 As
 sU
-Gu
+ub
 RH
 As
 bn
@@ -23851,7 +23665,7 @@ cM
 Fu
 As
 sU
-Jj
+ub
 RH
 As
 Ny
@@ -24561,7 +24375,7 @@ vd
 vd
 vd
 gO
-Gu
+ub
 PT
 mQ
 qm
@@ -24703,7 +24517,7 @@ vd
 vd
 vd
 gO
-Gu
+ub
 RH
 mQ
 mQ
@@ -24845,7 +24659,7 @@ vd
 vd
 RE
 sU
-Jj
+ub
 RH
 VL
 iq
@@ -25413,7 +25227,7 @@ AW
 vP
 xm
 VQ
-Sr
+Vv
 Vx
 nz
 lX
@@ -27827,7 +27641,7 @@ aV
 Kx
 GJ
 IY
-wX
+FC
 hT
 Uy
 Xz
@@ -27969,7 +27783,7 @@ aV
 Rt
 GJ
 HM
-wX
+FC
 Jh
 Uy
 MR
@@ -28679,7 +28493,7 @@ Rt
 Rt
 Or
 nM
-wX
+FC
 BH
 cX
 gY
@@ -28821,7 +28635,7 @@ Rt
 Rt
 Or
 nM
-wX
+FC
 VV
 cX
 LY
@@ -28963,7 +28777,7 @@ Rt
 Rt
 GJ
 rY
-wX
+FC
 SN
 zk
 zk
@@ -29105,7 +28919,7 @@ mQ
 mQ
 mQ
 Cq
-wX
+FC
 tY
 zk
 KW
@@ -29247,7 +29061,7 @@ wg
 Nq
 sD
 IY
-wX
+FC
 Lm
 zk
 QR
@@ -29389,7 +29203,7 @@ uC
 GM
 mQ
 Rf
-wX
+FC
 hT
 zk
 jL
@@ -29531,7 +29345,7 @@ bb
 GM
 mQ
 Yp
-Dv
+Qg
 mB
 Ai
 CE
@@ -29673,7 +29487,7 @@ bb
 GM
 wH
 nM
-wX
+FC
 hT
 Ai
 uz
@@ -29957,7 +29771,7 @@ wn
 eo
 mQ
 nM
-wX
+FC
 hT
 zk
 hV
@@ -30241,7 +30055,7 @@ wn
 Tj
 mQ
 nM
-wX
+FC
 hT
 nX
 OO
@@ -30383,7 +30197,7 @@ wn
 GM
 lP
 Yp
-Dv
+Qg
 ct
 zk
 cK
@@ -30525,7 +30339,7 @@ GC
 GM
 hf
 nM
-wX
+FC
 hT
 zk
 WC
@@ -30809,7 +30623,7 @@ fP
 fP
 mQ
 lf
-wX
+FC
 Jh
 zk
 uz
@@ -30951,7 +30765,7 @@ vo
 vo
 vo
 Cf
-wX
+FC
 gy
 zk
 uz
