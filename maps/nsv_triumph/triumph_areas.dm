@@ -35,7 +35,6 @@
 	lift_floor_label = "Deck 2"
 	lift_floor_name = "Dorms, Cargo, Mining, Bar, Cafe, Solars, Shops"
 	lift_announce_str = "Arriving at Deck 2."
-	base_turf = /turf/simulated/floor/plating
 
 /area/turbolift/t_ship/level3
 	name = "Deck 3"
