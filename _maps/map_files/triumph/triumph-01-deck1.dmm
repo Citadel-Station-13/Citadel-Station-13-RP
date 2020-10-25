@@ -9833,8 +9833,8 @@
 /area/maintenance/engi_engine)
 "Lw" = (
 /obj/machinery/power/sensor{
-	name = "Powernet Sensor - Telecomms Subgrid";
-	name_tag = "Telecomms Subgrid"
+	name = "Powernet Sensor - Engineering Subgrid";
+	name_tag = "Engineering Subgrid"
 	},
 /obj/structure/cable/green{
 	d1 = 1;
@@ -13766,6 +13766,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/visible/red,
 /turf/simulated/floor/reinforced,
 /area/engineering/engine_room)
 
