@@ -19,7 +19,7 @@
 	var/warning_delay = 20
 	var/meltwarned = 0
 	var/lastwarning = 0
-	var/cutoff_temp = 600
+	var/cutoff_temp = 1200
 	var/rod_capacity = 9
 	var/mapped_in = 0
 	var/repairing = 0
