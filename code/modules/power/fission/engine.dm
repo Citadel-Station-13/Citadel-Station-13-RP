@@ -36,13 +36,12 @@
 
 /obj/machinery/power/fission/New()
 	. = ..()
+	uid = gl_uid++
 	rods = new()
 	pipes = new()
 	radio = new /obj/item/radio{channels=list("Engineering")
 		icon = 'icons/obj/robot_component.dmi'
 		icon_state = "radio"}(src)
-	if(mapped_in)
-		anchor()
 
 /obj/machinery/power/fission/Destroy()
 	for(var/i=1,i<=rods.len,i++)
@@ -116,39 +115,10 @@
 	ui_interact(user)
 
 /obj/machinery/power/fission/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-	if(!src.powered())
+	if(!powered() || !anchored)
 		return
 
-	var/data[0]
-
-	data["integrity_percentage"] = round(get_integrity())
-	var/datum/gas_mixture/env = null
-	if(!isnull(src.loc) && !istype(src.loc, /turf/space))
-		env = src.loc.return_air()
-
-	if(!env)
-		data["ambient_temp"] = 0
-		data["ambient_pressure"] = 0
-	else
-		data["ambient_temp"] = round(env.temperature)
-		data["ambient_pressure"] = round(env.return_pressure())
-
-	data["core_temp"] = round(temperature)
-	data["max_temp"] = round(max_temp)
-	data["cutoff_point"] = cutoff_temp
-
-	data["rods"] = new /list(rods.len)
-	for(var/i=1,i<=rods.len,i++)
-		var/obj/item/fuelrod/rod = rods[i]
-		var/roddata[0]
-		roddata["rod"] = "\ref[rod]"
-		roddata["name"] = rod.name
-		roddata["integrity_percentage"] = round(between(0, rod.integrity, 100))
-		roddata["life_percentage"] = round(between(0, rod.life, 100))
-		roddata["heat"] = round(rod.temperature)
-		roddata["melting_point"] = rod.melting_point
-		roddata["insertion"] = round(rod.insertion * 100)
-		data["rods"][i] = roddata
+	var/data = ui_data()
 
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
@@ -156,6 +126,46 @@
 		ui.set_initial_data(data)
 		ui.open()
 		ui.set_auto_update(1)
+
+/obj/machinery/power/fission/proc/ui_data(need_power = FALSE)
+	var/data[0]
+
+	data["integrity_percentage"] = round(get_integrity())
+	data["core_temp"] = round(temperature)
+	data["max_temp"] = round(max_temp)
+	if(need_power && !powered())
+		data["powered"] = 0
+	else
+		if(need_power)
+			data["powered"] = 1
+
+		var/datum/gas_mixture/env = null
+		if(!isnull(src.loc) && !istype(src.loc, /turf/space))
+			env = src.loc.return_air()
+
+		if(!env)
+			data["ambient_temp"] = 0
+			data["ambient_pressure"] = 0
+		else
+			data["ambient_temp"] = round(env.temperature)
+			data["ambient_pressure"] = round(env.return_pressure())
+
+		data["cutoff_point"] = cutoff_temp
+
+		data["rods"] = new /list(rods.len)
+		for(var/i=1,i<=rods.len,i++)
+			var/obj/item/fuelrod/rod = rods[i]
+			var/roddata[0]
+			roddata["rod"] = "\ref[rod]"
+			roddata["name"] = rod.name
+			roddata["integrity_percentage"] = round(between(0, rod.integrity, 100))
+			roddata["life_percentage"] = round(between(0, rod.life, 100))
+			roddata["heat"] = round(rod.temperature)
+			roddata["melting_point"] = rod.melting_point
+			roddata["insertion"] = round(rod.insertion * 100)
+			data["rods"][i] = roddata
+
+	return data
 
 /obj/machinery/power/fission/Topic(href,href_list)
 	if(..())
@@ -165,7 +175,7 @@
 
 	if(href_list["rod_eject"])
 		var/obj/item/fuelrod/rod = locate(href_list["rod_eject"])
-		if(istype(rod))
+		if(istype(rod) && rod.loc == src)
 			eject_rod(rod)
 
 	if(href_list["rod_insertion"])
