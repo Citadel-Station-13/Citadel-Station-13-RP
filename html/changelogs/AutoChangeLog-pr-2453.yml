@@ -1,0 +1,4 @@
+author: "ForFoxSake"
+delete-after: True
+changes: 
+  - rscadd: "Added modular fission monitor program."
