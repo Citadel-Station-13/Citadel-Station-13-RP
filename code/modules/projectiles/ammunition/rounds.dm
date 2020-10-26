@@ -30,7 +30,7 @@
 	matter = list(DEFAULT_WALL_MATERIAL = 210)
 
 /obj/item/ammo_casing/a357/silver
-	desc = "A .357 silver bullet casing. Bless and Sancitfied to banish otherworlds entities."
+	desc = "A .357 silver bullet casing. Bless and sanctified to banish otherworlds entities."
 	caliber = ".357"
 	icon_state = "ag-casing"
 	projectile_type = /obj/item/projectile/bullet/pistol/strong
@@ -59,7 +59,7 @@
 	matter = list(DEFAULT_WALL_MATERIAL = 130, "uranium" = 100)
 
 /obj/item/ammo_casing/a38/silver
-	desc = "A .38 silver bullet casing. Bless and Sancitfied to banish otherworlds entities."
+	desc = "A .38 silver bullet casing. Bless and sanctified to banish otherworlds entities."
 	icon_state = "ag-casing"
 	projectile_type = /obj/item/projectile/bullet/pistol/silver
 	matter = list(DEFAULT_WALL_MATERIAL = 130, "silver" = 100)
@@ -82,7 +82,7 @@
 	matter = list(DEFAULT_WALL_MATERIAL = 60)
 
 /obj/item/ammo_casing/a44/silver
-	desc = "A .44 silver bullet casing. Bless and Sancitfied to banish otherworlds entities."
+	desc = "A .44 silver bullet casing. Bless and sanctified to banish otherworlds entities."
 	icon_state = "ag_casing"
 	projectile_type = /obj/item/projectile/bullet/pistol/strong/silver
 	matter = list(DEFAULT_WALL_MATERIAL = 350, "silver" = 200)
@@ -138,7 +138,7 @@
 	projectile_type = /obj/item/projectile/bullet/practice
 
 /obj/item/ammo_casing/a9mm/silver
-	desc = "A 9mm silver bullet casing. Bless and Sancitfied to banish otherworlds entities."
+	desc = "A 9mm silver bullet casing. Bless and sanctified to banish otherworlds entities."
 	icon_state = "ag-casing"
 	projectile_type = /obj/item/projectile/bullet/pistol/silver
 	matter = list(DEFAULT_WALL_MATERIAL = 130, "silver" = 100)
@@ -194,7 +194,7 @@
 
 /obj/item/ammo_casing/a45/silver
 	name = ".45 silver round"
-	desc = "A .45 silver bullet casing. Bless and Sancitfied to banish otherworlds entities."
+	desc = "A .45 silver bullet casing. Bless and sanctified to banish otherworlds entities."
 	icon_state = "ag-casing"
 	projectile_type = /obj/item/projectile/bullet/pistol/silver
 	matter = list(DEFAULT_WALL_MATERIAL = 130, "silver" = 100)
@@ -288,7 +288,7 @@
 //Silver 12g
 /obj/item/ammo_casing/a12g/silver
 	name = " Silver shotgun shell"
-	desc = "A 12 gauge slug. Bless and Sancitfied to banish otherworlds entities."
+	desc = "A 12 gauge slug. Bless and sanctified to banish otherworlds entities."
 	icon_state = "agshell"
 	caliber = "12g"
 	projectile_type = /obj/item/projectile/bullet/pellet/shotgun/silver
@@ -297,7 +297,7 @@
 //Wooden Stake 12g
 /obj/item/ammo_casing/a12g/stake
 	name = "Wooden stake shell"
-	desc = "A specialized shell designed to launch a wooden stake. Bless and Sancitfied to banish otherworlds entities."
+	desc = "A specialized shell designed to launch a wooden stake. Bless and sanctified to banish otherworlds entities."
 	icon_state = "agshell"
 	caliber = "12g"
 	projectile_type = /obj/item/projectile/bullet/shotgun/stake
@@ -338,8 +338,12 @@
 	desc = "A 7.62mm hunting bullet casing."
 	projectile_type = /obj/item/projectile/bullet/rifle/a762/hunter
 
+/obj/item/ammo_casing/a762/disruptor
+	desc = "A 7.62mm disruptor round casing."
+	projectile_type = /obj/item/projectile/bullet/rifle/a762/disruptor
+
 /obj/item/ammo_casing/a762/silver
-	desc = "A 7.62mm hunting bullet casing. Bless and Sancitfied to banish otherworlds entities."
+	desc = "A 7.62mm hunting bullet casing. Bless and sanctified to banish otherworlds entities."
 	icon_state = "agrifle-casing"
 	projectile_type = /obj/item/projectile/bullet/rifle/a762/silver
 	matter = list(DEFAULT_WALL_MATERIAL = 300, "silver" = 150)
@@ -410,7 +414,7 @@
 	matter = list(DEFAULT_WALL_MATERIAL = 180)
 
 /obj/item/ammo_casing/a10x24mmcaseless/hp
-	desc = "A 10x24mm caseless round, common during the Xenomorph wars due to its use the the battle rifles of the United Solar Marine Corps. This one was meant to shred armored targets."
+	desc = "A 10x24mm caseless round, common during the Xenomorph wars due to its use the the battle rifles of the United Solar Marine Corps. This one was meant to shred unarmored targets."
 	caliber = "10x24mm caseless"
 	icon_state = "casing"
 	projectile_type = /obj/item/projectile/bullet/pistol/medium/hp

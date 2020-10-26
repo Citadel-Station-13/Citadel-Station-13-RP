@@ -745,6 +745,10 @@
 	name = "rifle clip (7.62mm hunting)"
 	ammo_type = /obj/item/ammo_casing/a762/hunter
 
+/obj/item/ammo_magazine/clip/c762/disruptor
+	name = "rifle clip (7.62mm disruptor)"
+	ammo_type = /obj/item/ammo_casing/a762/disruptor
+
 /obj/item/ammo_magazine/clip/c762/silver
 	name = "rifle clip (7.62mm silver)"
 	icon_state = "agclip_rifle"

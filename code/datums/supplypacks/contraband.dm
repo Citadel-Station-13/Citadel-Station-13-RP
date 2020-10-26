@@ -54,6 +54,19 @@
  	containertype = /obj/structure/closet/crate/secure/weapon
  	containername = "Ballistic weapons crate"
 
+/datum/supply_pack/randomised/munitions/disruptor_ammo_bundle
+	// if i could write out a blurb for these for flavortext, i would
+	// disruptor rounds: experimental, expensive, vaguely illegal due to the weird composition?
+	name = "Ammunition - Disruptor Value Pack"
+	num_contained = 5
+	contains = list(
+		/obj/item/ammo_magazine/clip/c762/disruptor
+	)
+	cost = 20
+	contraband = 1
+ 	containertype = /obj/structure/closet/crate/secure/weapon
+ 	containername = "Disruptor ammunition crate"
+
 /datum/supply_pack/randomised/misc/telecrate //you get something awesome, a couple of decent things, and a few weak/filler things
 	name = "ERR_NULL_ENTRY" //null crate! also dream maker is hell,
 	num_contained = 1

@@ -237,6 +237,8 @@
 	fire_sound = 'sound/weapons/Gunshot_generic_rifle.ogg'
 	armor_penetration = 15
 	penetrating = 1
+	accuracy = 30 // 2 tiles closer, for reasons
+	// the day where rng miss is removed couldn't come soon enough
 
 /obj/item/projectile/bullet/rifle/a762
 	fire_sound = 'sound/weapons/Gunshot_heavy.ogg'
@@ -265,6 +267,11 @@
 	SA_bonus_damage = 50 // 70 total on animals.
 	SA_vulnerability = MOB_CLASS_DEMONIC
 	holy = TRUE
+
+/obj/item/projectile/bullet/rifle/a762/disruptor // hunter++
+	damage = 25
+	SA_bonus_damage = 70 // 95 total on animals/bots/xenos because it's a premium round
+	SA_vulnerability = MOB_CLASS_ANIMAL|MOB_CLASS_SYNTHETIC|MOB_CLASS_ABERRATION // not fucking around
 
 /obj/item/projectile/bullet/rifle/a545
 	fire_sound = 'sound/weapons/Gunshot_light.ogg'
