@@ -1,6 +1,0 @@
-author: "CharlesWedge"
-delete-after: True
-changes: 
-  - rscadd: "Added 2 new types of mimics"
-  - imageadd: "Sprites for the new mimics plus updated sprites for existing mimics."
-  - code_imp: "Mimics updates so they may make use of their monstrous sprites, in addition to the crate sprites. Active mimics are now unmistakably mimics visually."
