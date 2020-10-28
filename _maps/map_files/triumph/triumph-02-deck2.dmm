@@ -3058,6 +3058,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "iX" = (
+/obj/random/trash_pile,
 /obj/machinery/light/small,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
@@ -32748,8 +32749,8 @@ Rj
 bM
 Dt
 dD
+dD
 iX
-Gy
 jT
 dd
 yv

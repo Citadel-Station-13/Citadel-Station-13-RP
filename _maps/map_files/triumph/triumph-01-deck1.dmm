@@ -193,6 +193,9 @@
 	pump_direction = 0;
 	use_power = 1
 	},
+/obj/machinery/light/small{
+	dir = 8
+	},
 /turf/simulated/floor/reinforced,
 /area/engineering/engine_room)
 "aO" = (
@@ -775,6 +778,7 @@
 /obj/machinery/camera/network/engineering{
 	dir = 4
 	},
+/obj/structure/closet/radiation,
 /turf/simulated/floor/tiled,
 /area/engineering/lower/corridor)
 "da" = (
@@ -1655,7 +1659,8 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/monitoring)
 "gx" = (
-/obj/machinery/computer/fission_monitor,
+/obj/structure/table/standard,
+/obj/random/powercell,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_monitoring)
 "gy" = (
@@ -3132,11 +3137,15 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 1
-	},
 /obj/machinery/camera/network/engine{
 	dir = 4
+	},
+/obj/machinery/atmospherics/unary/outlet_injector{
+	dir = 1;
+	frequency = 1441;
+	id = "atmos_out";
+	power_rating = 5000;
+	use_power = 1
 	},
 /turf/simulated/floor/reinforced,
 /area/engineering/engine_room)
@@ -5593,7 +5602,9 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/engineering,
+/obj/machinery/door/airlock/engineering{
+	name = "Reactor Foyer"
+	},
 /obj/machinery/door/firedoor,
 /obj/structure/catwalk,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -6638,6 +6649,7 @@
 /obj/structure/table/standard,
 /obj/item/multitool,
 /obj/effect/floor_decal/techfloor/orange,
+/obj/random/powercell,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_smes)
 "zf" = (
@@ -7736,6 +7748,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/structure/closet/radiation,
 /turf/simulated/floor/tiled,
 /area/engineering/lower/corridor)
 "DR" = (
@@ -7819,12 +7832,11 @@
 /turf/simulated/floor/reinforced/n20,
 /area/engineering/atmos)
 "El" = (
-/obj/structure/bed/chair/office/dark{
-	dir = 1
-	},
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/structure/table/standard,
+/obj/item/clothing/gloves/yellow,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_monitoring)
 "Em" = (
@@ -8507,7 +8519,6 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/structure/closet/radiation,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "Gj" = (
@@ -8518,16 +8529,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_smes)
 "Go" = (
-/obj/machinery/computer/general_air_control/supermatter_core{
-	dir = 1;
-	frequency = 1438;
-	input_tag = "cooling_in";
-	name = "Engine Cooling Control";
-	output_tag = "cooling_out";
-	pressure_setting = 100;
-	sensors = list("engine_sensor" = "Engine Core");
-	throwpass = 1
-	},
+/obj/machinery/computer/fission_monitor,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_monitoring)
 "Gp" = (
@@ -9349,11 +9351,17 @@
 /turf/simulated/floor/carpet/blucarpet,
 /area/crew_quarters/heads/chief)
 "IW" = (
-/obj/machinery/light/small{
-	dir = 1
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
-/turf/simulated/floor/reinforced,
-/area/engineering/engine_room)
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 10
+	},
+/obj/structure/closet/radiation,
+/turf/simulated/floor/tiled,
+/area/engineering/lower/corridor)
 "Ja" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -9462,7 +9470,6 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/structure/closet/radiation,
 /obj/machinery/firealarm{
 	dir = 1;
 	pixel_y = -24
@@ -10592,6 +10599,20 @@
 /obj/machinery/atmospherics/pipe/simple/visible/universal,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
+"NR" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/hallway)
 "NS" = (
 /obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
@@ -11116,6 +11137,9 @@
 "Pz" = (
 /obj/machinery/power/rad_collector,
 /obj/structure/cable/yellow,
+/obj/machinery/light/small{
+	dir = 8
+	},
 /turf/simulated/floor/reinforced,
 /area/engineering/engine_room)
 "PB" = (
@@ -11387,9 +11411,6 @@
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
-	},
-/obj/machinery/light/small{
-	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 4
@@ -12404,6 +12425,9 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/red,
+/obj/machinery/light/small{
+	dir = 4
+	},
 /turf/simulated/floor/reinforced,
 /area/engineering/engine_room)
 "Uj" = (
@@ -12698,9 +12722,6 @@
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
-	},
-/obj/machinery/light/small{
-	dir = 8
 	},
 /turf/simulated/floor/reinforced,
 /area/engineering/engine_room)
@@ -13720,6 +13741,14 @@
 "YW" = (
 /obj/machinery/atmospherics/binary/pump/high_power,
 /turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/engine_room)
+"YX" = (
+/obj/machinery/power/rad_collector,
+/obj/structure/cable/yellow,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced,
 /area/engineering/engine_room)
 "YY" = (
 /obj/machinery/atmospherics/binary/algae_farm/filled{
@@ -20074,7 +20103,7 @@ yM
 Ut
 Zn
 XD
-Sn
+XD
 xl
 tg
 tg
@@ -20354,7 +20383,7 @@ RM
 VD
 tg
 xl
-IW
+XD
 dh
 JF
 dh
@@ -20500,7 +20529,7 @@ Uh
 WC
 aC
 QA
-Pz
+YX
 xl
 tg
 tg
@@ -22767,7 +22796,7 @@ Mr
 tH
 DO
 cZ
-UA
+IW
 dW
 Gz
 PS
@@ -24747,7 +24776,7 @@ Pv
 Pr
 yC
 yC
-sU
+NR
 hj
 UV
 uH
