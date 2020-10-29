@@ -1,0 +1,4 @@
+author: "AvaricePleonexia"
+delete-after: True
+changes: 
+  - bugfix: "fixed simple_dress. Had some funky pixels."
