@@ -266,7 +266,8 @@
 	matter = list(DEFAULT_WALL_MATERIAL = 360, "glass" = 720)
 
 /obj/item/ammo_casing/a12g/stunshell/emp_act(severity)
-	if(prob(100/severity)) BB = null
+	if(prob(100/severity))
+		BB = null
 	update_icon()
 
 //Does not stun, only blinds, but has area of effect.
@@ -287,7 +288,7 @@
 
 //Silver 12g
 /obj/item/ammo_casing/a12g/silver
-	name = " Silver shotgun shell"
+	name = "silver shotgun shell"
 	desc = "A 12 gauge slug. Bless and sanctified to banish otherworlds entities."
 	icon_state = "agshell"
 	caliber = "12g"
@@ -296,8 +297,8 @@
 
 //Wooden Stake 12g
 /obj/item/ammo_casing/a12g/stake
-	name = "Wooden stake shell"
-	desc = "A specialized shell designed to launch a wooden stake. Bless and sanctified to banish otherworlds entities."
+	name = "wooden stake shell"
+	desc = "A specialized shell designed to launch a wooden stake. Blessed and sanctified to banish otherworlds entities."
 	icon_state = "agshell"
 	caliber = "12g"
 	projectile_type = /obj/item/projectile/bullet/shotgun/stake
@@ -340,10 +341,11 @@
 
 /obj/item/ammo_casing/a762/disruptor
 	desc = "A 7.62mm disruptor round casing."
+	description_info = "Disruptor rounds are hard to get ahold of and harder to manufacture, but prove themselves against creatures both mundane and less so, along with synthetic threats. Rumor has it the tips are durasteel with a hollow uranium core, letting it punch through targets and still expand inside."
 	projectile_type = /obj/item/projectile/bullet/rifle/a762/disruptor
 
 /obj/item/ammo_casing/a762/silver
-	desc = "A 7.62mm hunting bullet casing. Bless and sanctified to banish otherworlds entities."
+	desc = "A 7.62mm hunting bullet casing. Blessed and sanctified to banish otherworldly entities."
 	icon_state = "agrifle-casing"
 	projectile_type = /obj/item/projectile/bullet/rifle/a762/silver
 	matter = list(DEFAULT_WALL_MATERIAL = 300, "silver" = 150)

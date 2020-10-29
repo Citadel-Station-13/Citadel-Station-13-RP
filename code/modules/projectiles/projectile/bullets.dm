@@ -264,13 +264,13 @@
 
 /obj/item/projectile/bullet/rifle/a762/silver // Hunting Demons with bolt action rifles.
 	damage = 20
-	SA_bonus_damage = 50 // 70 total on animals.
+	SA_bonus_damage = 50 // 70 total on demons.
 	SA_vulnerability = MOB_CLASS_DEMONIC
 	holy = TRUE
 
 /obj/item/projectile/bullet/rifle/a762/disruptor // hunter++
 	damage = 25
-	SA_bonus_damage = 70 // 95 total on animals/bots/xenos because it's a premium round
+	SA_bonus_damage = 50 // 75 total on animals/bots/xenos because it's a premium round
 	SA_vulnerability = MOB_CLASS_ANIMAL|MOB_CLASS_SYNTHETIC|MOB_CLASS_ABERRATION // not fucking around
 
 /obj/item/projectile/bullet/rifle/a545
