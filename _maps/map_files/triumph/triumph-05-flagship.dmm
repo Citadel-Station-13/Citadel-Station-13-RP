@@ -311,12 +311,11 @@
 /area/shuttle/specialops)
 "aD" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
-	dir = 1;
 	frequency = 1380;
 	id_tag = "specops_shuttle_fore";
 	name = "forward docking hatch controller";
-	pixel_y = -23;
-	tag_door = null
+	pixel_y = -25;
+	tag_door = "specops_shuttle_fore_hatch"
 	},
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_red"
@@ -324,11 +323,12 @@
 /area/shuttle/specialops)
 "aE" = (
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
-	id_tag = null;
+	frequency = 1380;
+	icon_state = "door_locked";
+	id_tag = "specops_shuttle_fore_hatch";
+	locked = 1;
 	name = "Forward Docking Hatch"
 	},
-/obj/effect/map_helper/airlock/door/simple,
 /turf/simulated/shuttle/plating,
 /area/shuttle/specialops)
 "aF" = (
@@ -503,11 +503,10 @@
 /area/shuttle/specialops)
 "aS" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
-	dir = 1;
 	frequency = 1380;
 	id_tag = "specops_shuttle_port";
 	name = "port docking hatch controller";
-	pixel_y = -23;
+	pixel_y = -25;
 	tag_door = "specops_shuttle_port_hatch"
 	},
 /turf/simulated/shuttle/floor{
@@ -713,11 +712,12 @@
 /area/shuttle/specialops)
 "bi" = (
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
-	id_tag = null;
+	frequency = 1380;
+	icon_state = "door_locked";
+	id_tag = "specops_shuttle_port_hatch";
+	locked = 1;
 	name = "Port Docking Hatch"
 	},
-/obj/effect/map_helper/airlock/door/simple,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -994,10 +994,11 @@
 /area/centcom/specops)
 "by" = (
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
-	id_tag = null
+	frequency = 1380;
+	icon_state = "door_locked";
+	id_tag = "specops_centcom_dock_door";
+	locked = 1
 	},
-/obj/effect/map_helper/airlock/door/simple,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},

@@ -97,7 +97,8 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
+	dir = 5;
+	icon_state = "intact-scrubbers"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -516,7 +517,9 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
 	},
-/obj/structure/dispenser,
+/obj/structure/dispenser{
+	phorontanks = 10
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
 "axT" = (
@@ -763,7 +766,8 @@
 /area/rnd/reception_desk)
 "aJD" = (
 /obj/structure/window/phoronreinforced{
-	dir = 8
+	dir = 8;
+	icon_state = "phoronrwindow"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 4
@@ -1552,7 +1556,8 @@
 	dir = 8
 	},
 /obj/structure/window/phoronreinforced{
-	dir = 8
+	dir = 8;
+	icon_state = "phoronrwindow"
 	},
 /obj/machinery/ai_status_display{
 	pixel_y = -32
@@ -2565,7 +2570,8 @@
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
+	dir = 5;
+	icon_state = "intact-scrubbers"
 	},
 /obj/structure/cable/green{
 	d1 = 1;
@@ -5297,17 +5303,17 @@
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	frequency = 1380;
 	id_tag = "deck3_airlock";
-	pixel_y = 26;
-	tag_airpump = null;
-	tag_chamber_sensor = null;
-	tag_exterior_door = null;
-	tag_interior_door = null
+	pixel_y = 28;
+	tag_airpump = "deck3_airlock_pump";
+	tag_chamber_sensor = "deck3_airlock_sensor";
+	tag_exterior_door = "deck3_airlock_outer";
+	tag_interior_door = "deck3_airlock_inner"
 	},
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 4;
-	id_tag = null
+	frequency = 1380;
+	id_tag = "deck3_airlock_pump"
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
@@ -5847,7 +5853,8 @@
 /area/medical/virologyaccess)
 "fjh" = (
 /obj/machinery/light{
-	dir = 4
+	dir = 4;
+	icon_state = "tube1"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -5867,26 +5874,12 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/research_restroom)
 "fkj" = (
-/obj/machinery/door/airlock/glass_external{
-	frequency = null;
-	id_tag = null;
-	name = "Public Airlock"
+/obj/machinery/atmospherics/pipe/manifold/visible/red{
+	dir = 4;
+	icon_state = "map"
 	},
-/obj/machinery/shield_diffuser,
-/obj/machinery/access_button{
-	command = "cycle_exterior";
-	frequency = 1380;
-	master_tag = "deck3_airlock";
-	name = "exterior access button";
-	pixel_x = 32;
-	pixel_y = -10
-	},
-/obj/effect/map_helper/airlock/door/ext_door,
-/obj/effect/map_helper/airlock/button/ext_button,
-/turf/simulated/floor/tiled{
-	icon_state = "techmaint"
-	},
-/area/triumph/station/stairs_three)
+/turf/simulated/floor/tiled,
+/area/rnd/test_area)
 "fkV" = (
 /obj/structure/sink{
 	pixel_y = 19
@@ -6315,6 +6308,7 @@
 /obj/machinery/door/blast/regular{
 	dir = 8;
 	id = "burn_chamber_v";
+	layer = 2.7;
 	name = "Burn Chamber Vent"
 	},
 /turf/simulated/floor/reinforced/airless,
@@ -8217,7 +8211,8 @@
 /area/rnd/research/testingrange)
 "hrb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
+	dir = 5;
+	icon_state = "intact-scrubbers"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -8435,7 +8430,8 @@
 "hBa" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
+	dir = 5;
+	icon_state = "intact-scrubbers"
 	},
 /obj/structure/cable/green{
 	d1 = 1;
@@ -8579,6 +8575,17 @@
 /area/medical/surgery{
 	name = "\improper Robotics Surgery Room"
 	})
+"hHp" = (
+/obj/machinery/access_button{
+	command = "cycle_exterior";
+	frequency = 1380;
+	master_tag = "deck3_airlock";
+	name = "exterior access button";
+	pixel_x = 26;
+	pixel_y = 26
+	},
+/turf/space,
+/area/space)
 "hHQ" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
@@ -9272,7 +9279,8 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/warning/cee{
-	dir = 1
+	dir = 1;
+	icon_state = "warningcee"
 	},
 /obj/machinery/computer/general_air_control/large_tank_control{
 	input_tag = "atmos_out";
@@ -10320,12 +10328,13 @@
 /area/rnd/breakroom)
 "jEo" = (
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
-	id_tag = null;
-	name = "Public Airlock"
+	frequency = 1380;
+	icon_state = "door_locked";
+	id_tag = "deck3_airlock_inner";
+	locked = 1;
+	name = "Docking Port Airlock"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/effect/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
@@ -10553,7 +10562,8 @@
 /area/triumph/station/stairs_three)
 "jRZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
+	dir = 5;
+	icon_state = "intact-scrubbers"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -10968,7 +10978,8 @@
 	dir = 8
 	},
 /obj/machinery/light{
-	dir = 4
+	dir = 4;
+	icon_state = "tube1"
 	},
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/medical/surgery{
@@ -12104,10 +12115,13 @@
 /area/triumph/station/stairs_three)
 "loh" = (
 /obj/machinery/access_button{
-	master_tag = null;
-	pixel_y = -22
+	command = "cycle_interior";
+	frequency = 1380;
+	master_tag = "deck3_airlock";
+	name = "interior access button";
+	pixel_x = -11;
+	pixel_y = -24
 	},
-/obj/effect/map_helper/airlock/button/int_button,
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
 "loB" = (
@@ -12201,12 +12215,12 @@
 "lyq" = (
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 4;
-	id_tag = null
+	frequency = 1380;
+	id_tag = "deck3_airlock_pump"
 	},
 /obj/machinery/camera/network/civilian{
 	dir = 4
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
@@ -12540,17 +12554,16 @@
 /area/rnd/xenobiology)
 "lSr" = (
 /obj/machinery/airlock_sensor{
-	dir = 1;
 	frequency = 1380;
 	id_tag = "deck3_airlock_sensor";
-	pixel_y = -22
+	pixel_x = -2;
+	pixel_y = -24
 	},
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 4;
-	id_tag = null
+	frequency = 1380;
+	id_tag = "deck3_airlock_pump"
 	},
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
@@ -12713,7 +12726,8 @@
 	})
 "mdq" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/red{
-	dir = 4
+	dir = 4;
+	icon_state = "map"
 	},
 /obj/machinery/meter,
 /turf/simulated/floor/tiled,
@@ -13570,7 +13584,8 @@
 /area/rnd/research_foyer_auxiliary)
 "mQw" = (
 /obj/machinery/light{
-	dir = 4
+	dir = 4;
+	icon_state = "tube1"
 	},
 /obj/machinery/light_switch{
 	pixel_x = 25
@@ -13651,7 +13666,8 @@
 /obj/item/storage/fancy/vials,
 /obj/item/storage/fancy/vials,
 /obj/machinery/light{
-	dir = 4
+	dir = 4;
+	icon_state = "tube1"
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
@@ -13971,11 +13987,12 @@
 /area/assembly/robotics)
 "nig" = (
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
-	id_tag = null;
-	name = "Public Airlock"
+	frequency = 1380;
+	icon_state = "door_locked";
+	id_tag = "deck3_airlock_inner";
+	locked = 1;
+	name = "Docking Port Airlock"
 	},
-/obj/effect/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
@@ -15069,7 +15086,8 @@
 /area/rnd/xenobiology/xenoflora)
 "osx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
+	dir = 5;
+	icon_state = "intact-scrubbers"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -16157,7 +16175,8 @@
 	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
+	dir = 5;
+	icon_state = "intact-scrubbers"
 	},
 /turf/simulated/floor/wood,
 /area/triumph/station/stairs_three)
@@ -16479,7 +16498,8 @@
 /area/hallway/primary/starboard)
 "pEd" = (
 /obj/structure/window/phoronreinforced{
-	dir = 8
+	dir = 8;
+	icon_state = "phoronrwindow"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 4
@@ -16712,21 +16732,22 @@
 /obj/item/hand_labeler,
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
-	id_tag = "large_escape_pod_berth";
+	id_tag = "large_escape_pod_1";
 	pixel_x = 8;
 	pixel_y = -23;
 	req_one_access = list(5);
-	tag_door = null
+	tag_door = "large_escape_pod_1_hatch"
 	},
 /turf/simulated/floor/tiled/white,
 /area/hallway/secondary/escape/medical_escape_pod_hallway)
 "pLN" = (
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
-	id_tag = null;
+	frequency = 1380;
+	icon_state = "door_locked";
+	id_tag = "large_escape_pod_1_hatch";
+	locked = 1;
 	name = "Emergency Airlock"
 	},
-/obj/effect/map_helper/airlock/door/simple,
 /turf/simulated/shuttle/floor,
 /area/shuttle/large_escape_pod1)
 "pLO" = (
@@ -17440,7 +17461,8 @@
 	dir = 8
 	},
 /obj/structure/window/phoronreinforced{
-	dir = 8
+	dir = 8;
+	icon_state = "phoronrwindow"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 1
@@ -18613,7 +18635,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/light{
-	dir = 4
+	dir = 4;
+	icon_state = "tube1"
 	},
 /obj/structure/table/bench/padded,
 /turf/simulated/floor/tiled,
@@ -18642,7 +18665,8 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/light{
-	dir = 4
+	dir = 4;
+	icon_state = "tube1"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/medical/morgue)
@@ -18737,7 +18761,8 @@
 "rzv" = (
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
-	dir = 8
+	dir = 8;
+	icon_state = "phoronrwindow"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 4
@@ -20534,12 +20559,13 @@
 /area/triumph/station/stairs_three)
 "sYB" = (
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
-	id_tag = null;
-	name = "Public Airlock"
+	frequency = 1380;
+	icon_state = "door_locked";
+	id_tag = "deck3_airlock_outer";
+	locked = 1;
+	name = "Docking Port Airlock"
 	},
 /obj/machinery/shield_diffuser,
-/obj/effect/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
@@ -21700,7 +21726,8 @@
 /area/rnd/test_area)
 "tSY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
+	dir = 5;
+	icon_state = "intact-scrubbers"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -21742,7 +21769,8 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
+	dir = 5;
+	icon_state = "intact-scrubbers"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/fore)
@@ -22111,11 +22139,12 @@
 "uva" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
-	id_tag = null;
+	frequency = 1380;
+	icon_state = "door_locked";
+	id_tag = "large_escape_pod_1_hatch";
+	locked = 1;
 	name = "Emergency Airlock"
 	},
-/obj/effect/map_helper/airlock/door/simple,
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/escape/medical_escape_pod_hallway)
 "uvj" = (
@@ -22774,7 +22803,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/light{
-	dir = 4
+	dir = 4;
+	icon_state = "tube1"
 	},
 /obj/machinery/vending/cola,
 /turf/simulated/floor/tiled,
@@ -22932,7 +22962,8 @@
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
+	dir = 5;
+	icon_state = "intact-scrubbers"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -24158,7 +24189,8 @@
 	pixel_x = 25
 	},
 /obj/machinery/light{
-	dir = 4
+	dir = 4;
+	icon_state = "tube1"
 	},
 /turf/simulated/floor/wood,
 /area/medical/psych)
@@ -24219,7 +24251,8 @@
 /area/medical/surgery_hallway)
 "wiT" = (
 /obj/machinery/light{
-	dir = 4
+	dir = 4;
+	icon_state = "tube1"
 	},
 /turf/simulated/floor/wood,
 /area/medical/psych{
@@ -24770,7 +24803,8 @@
 /area/medical/medbay)
 "wAy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
+	dir = 5;
+	icon_state = "intact-scrubbers"
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
@@ -25209,7 +25243,8 @@
 /area/rnd/xenobiology/xenoflora/lab_atmos)
 "wZC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
+	dir = 5;
+	icon_state = "intact-scrubbers"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -25837,7 +25872,8 @@
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
+	dir = 5;
+	icon_state = "intact-scrubbers"
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
@@ -26745,7 +26781,9 @@
 	})
 "yhu" = (
 /obj/machinery/light{
-	dir = 8
+	dir = 8;
+	icon_state = "tube1";
+	pixel_y = 0
 	},
 /obj/machinery/atmospherics/portables_connector,
 /turf/simulated/floor/tiled,
@@ -36654,7 +36692,7 @@ uld
 ctk
 neu
 toW
-bqR
+fkj
 mdq
 ebZ
 iyu
@@ -41077,8 +41115,8 @@ nig
 sYt
 sYt
 sYt
-fkj
-gVh
+sYB
+hHp
 bdR
 gVh
 gVh

@@ -14,18 +14,6 @@
 	name = "Bar Maintenance Catwalk"
 	icon_state = "maint_bar"
 
-/*
-// Triumph Areas itself
-/area/tether/surfacebase/tether
-	icon = 'icons/turf/areas_vr.dmi'
-	icon_state = "tether1"
-/area/tether/transit/tether
-	icon = 'icons/turf/areas_vr.dmi'
-	icon_state = "tether2"
-/area/tether/space/tether
-	icon = 'icons/turf/areas_vr.dmi'
-	icon_state = "tether3"
-
 // Elevator areas.
 /area/turbolift
 	delay_time = 2 SECONDS
@@ -48,36 +36,18 @@
 	lift_floor_name = "Dorms, Cargo, Mining, Bar, Cafe, Solars, Shops"
 	lift_announce_str = "Arriving at Deck 2."
 
-/area/turbolift/t_surface/level2
-	name = "surface (level 2)"
-	lift_floor_label = "Surface 2"
-	lift_floor_name = "Atmos, Maintenance"
-	lift_announce_str = "Arriving at Base Level 2."
+/area/turbolift/t_ship/level3
+	name = "Deck 3"
+	lift_floor_label = "Deck 3"
+	lift_floor_name = "Medical, Science, Holo Deck, Teleporter"
+	lift_announce_str = "Arriving at Deck 3."
 
-/area/turbolift/t_surface/level3
-	name = "surface (level 3)"
-	lift_floor_label = "Surface 3"
-	lift_floor_name = "Science, Bar, Pool"
-	lift_announce_str = "Arriving at Base Level 3."
+/area/turbolift/t_ship/level4
+	name = "Deck 4"
+	lift_floor_label = "Deck 4"
+	lift_floor_name = "Exploration, Arrivals & Departures, Security, Command, Chapel, Sauna, Docking Arm, Library, Garden, Tool Storage"
+	lift_announce_str = "Arriving at Deck 4."
 
-/area/turbolift/t_station/level1
-	name = "asteroid (level 1)"
-	lift_floor_label = "Asteroid 1"
-	lift_floor_name = "Eng, Bridge, Park, Cryo"
-	lift_announce_str = "Arriving at Station Level 1."
-
-/area/turbolift/t_station/level2
-	name = "asteroid (level 2)"
-	lift_floor_label = "Asteroid 2"
-	lift_floor_name = "Chapel, AI Core, EVA Gear"
-	lift_announce_str = "Arriving at Station Level 2."
-
-/area/turbolift/t_station/level3
-	name = "asteroid (level 3)"
-	lift_floor_label = "Asteroid 3"
-	lift_floor_name = "Medical, Security, Cargo"
-	lift_announce_str = "Arriving at Station Level 3."
-*/
 
 /area/vacant/vacant_restaurant_upper
 	name = "\improper Vacant Restaurant"
