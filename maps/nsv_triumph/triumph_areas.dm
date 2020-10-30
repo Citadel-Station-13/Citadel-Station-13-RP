@@ -34,19 +34,19 @@
 
 	requires_power = FALSE
 
-/area/turbolift/tether/transit
-	name = "tether (midway)"
-	lift_floor_label = "Tether Midpoint"
-	lift_floor_name = "Midpoint"
-	lift_announce_str = "Arriving at tether midway point."
-	delay_time = 5 SECONDS
-
-/area/turbolift/t_surface/level1
-	name = "surface (level 1)"
-	lift_floor_label = "Surface 1"
-	lift_floor_name = "Tram, Dorms, Mining, Surf. EVA"
-	lift_announce_str = "Arriving at Base Level 1."
+/area/turbolift/t_ship/level1
+	name = "Deck 1"
+	lift_floor_label = "Deck 1"
+	lift_floor_name = "Engineering, Reactor, Telecomms, Trash Pit, Atmospherics"
+	lift_announce_str = "Arriving at Deck 1."
 	base_turf = /turf/simulated/floor/plating
+
+
+/area/turbolift/t_ship/level2
+	name = "Deck 2"
+	lift_floor_label = "Deck 2"
+	lift_floor_name = "Dorms, Cargo, Mining, Bar, Cafe, Solars, Shops"
+	lift_announce_str = "Arriving at Deck 2."
 
 /area/turbolift/t_surface/level2
 	name = "surface (level 2)"

@@ -2945,6 +2945,7 @@
 #include "code\modules\power\fission\carry.dm"
 #include "code\modules\power\fission\computer.dm"
 #include "code\modules\power\fission\engine.dm"
+#include "code\modules\power\fission\modular_computer.dm"
 #include "code\modules\power\fission\rods.dm"
 #include "code\modules\power\fusion\_setup.dm"
 #include "code\modules\power\fusion\fusion_circuits.dm"
