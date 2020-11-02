@@ -735,9 +735,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
 "aFu" = (
-/obj/effect/shuttle_landmark/automatic{
-	docking_controller = "d1d_dock"
-	},
+/obj/effect/shuttle_landmark/automatic/station_dockpoint1,
 /turf/space,
 /area/space)
 "aFw" = (
@@ -1173,8 +1171,14 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "aUx" = (
-/obj/effect/floor_decal/sign/dock/two,
-/turf/simulated/wall/r_wall,
+/obj/machinery/shield_diffuser,
+/obj/machinery/door/airlock/glass_external{
+	frequency = null;
+	id_tag = null;
+	name = "Docking Port Airlock"
+	},
+/obj/effect/map_helper/airlock/door/ext_door,
+/turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "aVr" = (
 /obj/structure/bed/double/padded,
@@ -1833,17 +1837,9 @@
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/tram)
 "bqP" = (
-/obj/machinery/access_button{
-	command = "cycle_exterior";
-	frequency = 1380;
-	master_tag = "d1d_dock";
-	name = "exterior access button";
-	pixel_x = -26;
-	pixel_y = -24;
-	req_one_access = list(13)
-	},
-/turf/space,
-/area/space)
+/obj/effect/floor_decal/sign/dock/one,
+/turf/simulated/wall/r_wall,
+/area/hallway/secondary/docking_hallway)
 "bqS" = (
 /obj/machinery/vending/coffee,
 /obj/effect/floor_decal/spline/plain,
@@ -1901,7 +1897,6 @@
 /obj/structure/table/reinforced,
 /obj/machinery/alarm/alarms_hidden{
 	dir = 8;
-	icon_state = "alarm0";
 	pixel_x = 27
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -2324,15 +2319,12 @@
 /area/hallway/secondary/civilian_hallway_mid)
 "bHp" = (
 /obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "d1b_dock_inner";
-	locked = 1;
-	name = "Docking Port Airlock"
+	name = "Public Airlock"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
+/obj/effect/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "bHx" = (
@@ -2988,12 +2980,20 @@
 "cgx" = (
 /obj/machinery/shield_diffuser,
 /obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "d1d_dock_outer";
-	locked = 1;
+	frequency = null;
+	id_tag = null;
 	name = "Docking Port Airlock"
 	},
+/obj/machinery/access_button{
+	dir = 1;
+	master_tag = null;
+	name = "exterior access button";
+	pixel_x = -24;
+	pixel_y = 9;
+	req_one_access = list(13)
+	},
+/obj/effect/map_helper/airlock/door/ext_door,
+/obj/effect/map_helper/airlock/button/ext_button,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "cgH" = (
@@ -3194,17 +3194,9 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/hallway/secondary/civilian_hallway_mid)
 "cmP" = (
-/obj/machinery/access_button{
-	command = "cycle_exterior";
-	frequency = 1380;
-	master_tag = "d1b_dock";
-	name = "exterior access button";
-	pixel_x = 26;
-	pixel_y = 26;
-	req_one_access = null
-	},
-/turf/space,
-/area/space)
+/obj/effect/floor_decal/sign/dock/three,
+/turf/simulated/wall/r_wall,
+/area/hallway/secondary/docking_hallway)
 "cnz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -3346,13 +3338,20 @@
 /area/hallway/secondary/civilian_hallway_mid)
 "crT" = (
 /obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "d1a_dock_outer";
-	locked = 1;
+	frequency = null;
+	id_tag = null;
 	name = "Docking Port Airlock"
 	},
 /obj/machinery/shield_diffuser,
+/obj/effect/map_helper/airlock/door/ext_door,
+/obj/machinery/access_button{
+	master_tag = null;
+	name = "exterior access button";
+	pixel_x = -24;
+	pixel_y = -9;
+	req_one_access = list(13)
+	},
+/obj/effect/map_helper/airlock/button/ext_button,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "ctb" = (
@@ -3460,8 +3459,7 @@
 /obj/machinery/door/firedoor/glass/hidden/steel,
 /obj/machinery/door/window/brigdoor/westright{
 	dir = 4;
-	name = "Firing Range Door";
-	req_access = list(1)
+	name = "Firing Range Door"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/range)
@@ -4717,13 +4715,9 @@
 "duk" = (
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	frequency = 1380;
-	id_tag = "d1b_dock";
-	pixel_y = 28;
-	req_one_access = null;
-	tag_airpump = "d1b_dock_pump";
-	tag_chamber_sensor = "d1b_dock_sensor";
-	tag_exterior_door = "d1b_dock_outer";
-	tag_interior_door = "d1b_dock_inner"
+	id_tag = "deck4_airlock";
+	pixel_x = 1;
+	pixel_y = 26
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
@@ -5868,10 +5862,8 @@
 /area/library)
 "ehK" = (
 /obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "civvie_dock_inner";
-	locked = 1;
+	frequency = null;
+	id_tag = null;
 	name = "Docking Port Airlock"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -6119,9 +6111,7 @@
 /area/crew_quarters/sleep/RD_quarters)
 "esl" = (
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -6781,8 +6771,7 @@
 /area/hydroponics/garden)
 "eMH" = (
 /obj/machinery/light/small{
-	dir = 8;
-	pixel_x = 0
+	dir = 8
 	},
 /turf/simulated/floor/carpet/tealcarpet,
 /area/crew_quarters/sleep/CMO_quarters)
@@ -8536,6 +8525,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/excursion_dock)
+"gbC" = (
+/obj/machinery/door/airlock/glass_external{
+	name = "Public Airlock"
+	},
+/obj/machinery/shield_diffuser,
+/obj/effect/map_helper/airlock/door/ext_door,
+/turf/simulated/floor/tiled/dark,
+/area/hallway/secondary/docking_hallway)
 "gcJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -9223,8 +9220,7 @@
 /area/shuttle/excursion/general)
 "gFO" = (
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /turf/simulated/wall,
 /area/maintenance/substation/command)
@@ -10619,12 +10615,10 @@
 /area/chapel/main)
 "hDG" = (
 /obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "d1b_dock_inner";
-	locked = 1;
-	name = "Docking Port Airlock"
+	name = "Public Airlock"
 	},
+/obj/effect/map_helper/airlock/door/int_door,
+/obj/effect/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "hDH" = (
@@ -11396,8 +11390,7 @@
 /area/maintenance/chapel)
 "ibO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5;
-	icon_state = "intact-scrubbers"
+	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -11567,8 +11560,7 @@
 /area/triumph/station/explorer_entry)
 "ijD" = (
 /obj/structure/window/phoronreinforced{
-	dir = 8;
-	icon_state = "phoronrwindow"
+	dir = 8
 	},
 /obj/structure/window/phoronreinforced/full,
 /obj/structure/grille,
@@ -12199,8 +12191,7 @@
 "iHh" = (
 /obj/structure/table/woodentable,
 /obj/machinery/light/small{
-	dir = 8;
-	pixel_x = 0
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
@@ -12960,10 +12951,8 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "civvie_dock_outer";
-	locked = 1;
+	frequency = null;
+	id_tag = null;
 	name = "Docking Port Airlock"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -13407,8 +13396,7 @@
 /area/crew_quarters/sleep/HOP_quarters)
 "jzd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5;
-	icon_state = "intact-scrubbers"
+	dir = 5
 	},
 /turf/simulated/floor/tiled/dark,
 /area/gateway)
@@ -13444,8 +13432,7 @@
 /area/security/hanger)
 "jAx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5;
-	icon_state = "intact-scrubbers"
+	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -15902,17 +15889,6 @@
 	},
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/security/hanger)
-"luR" = (
-/obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "d1a_dock_inner";
-	locked = 1;
-	name = "Docking Port Airlock"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/turf/simulated/floor/tiled/dark,
-/area/hallway/secondary/docking_hallway)
 "lvd" = (
 /obj/structure/sign/directions/medical{
 	dir = 1;
@@ -16005,7 +15981,6 @@
 "lyv" = (
 /obj/machinery/atmospherics/unary/outlet_injector{
 	dir = 1;
-	icon_state = "map_injector";
 	use_power = 1
 	},
 /turf/simulated/floor/airless,
@@ -16074,14 +16049,11 @@
 /area/security/hallwayaux)
 "lAR" = (
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
+	dir = 4;
 	frequency = 1380;
-	id_tag = "d1a_dock";
-	pixel_x = -24;
-	req_one_access = list(13);
-	tag_airpump = "d1a_dock_pump";
-	tag_chamber_sensor = "d1a_dock_sensor";
-	tag_exterior_door = "d1a_dock_outer";
-	tag_interior_door = "d1a_dock_inner"
+	id_tag = "deck4_dockarm2";
+	pixel_x = -26;
+	req_one_access = list(13)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
@@ -16777,16 +16749,13 @@
 	pixel_x = -22
 	},
 /obj/machinery/light/small{
-	dir = 8;
-	pixel_x = 0
+	dir = 8
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/sleep/RD_quarters)
 "lXQ" = (
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /obj/structure/bed/chair/comfy/black{
 	dir = 1
@@ -17605,8 +17574,7 @@
 /area/triumph/surfacebase/tram)
 "mFh" = (
 /obj/structure/window/phoronreinforced{
-	dir = 8;
-	icon_state = "phoronrwindow"
+	dir = 8
 	},
 /obj/structure/window/phoronreinforced/full,
 /obj/structure/grille,
@@ -18352,10 +18320,8 @@
 /area/maintenance/security_starboard)
 "nfc" = (
 /obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "civvie_dock_outer";
-	locked = 1;
+	frequency = null;
+	id_tag = null;
 	name = "Docking Port Airlock"
 	},
 /obj/machinery/access_button{
@@ -18517,8 +18483,7 @@
 	dir = 4
 	},
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /obj/structure/table/woodentable,
 /obj/item/towel/random,
@@ -18793,13 +18758,21 @@
 /area/security/brig)
 "nuT" = (
 /obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "d1b_dock_outer";
-	locked = 1;
-	name = "Docking Port Airlock"
+	name = "Public Airlock"
 	},
 /obj/machinery/shield_diffuser,
+/obj/effect/map_helper/airlock/door/ext_door,
+/obj/machinery/access_button{
+	command = "cycle_exterior";
+	dir = 8;
+	frequency = 1380;
+	master_tag = "d1b_dock";
+	name = "exterior access button";
+	pixel_x = -9;
+	pixel_y = 24;
+	req_one_access = null
+	},
+/obj/effect/map_helper/airlock/button/ext_button,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "nvw" = (
@@ -18962,7 +18935,6 @@
 /area/crew_quarters/heads/hos)
 "nzz" = (
 /obj/machinery/door/window{
-	dir = 4;
 	name = "Mass Driver";
 	req_access = list(22)
 	},
@@ -18974,8 +18946,7 @@
 	pixel_y = 25
 	},
 /obj/effect/floor_decal/industrial/warning{
-	dir = 4;
-	icon_state = "warning"
+	dir = 4
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
@@ -19151,14 +19122,12 @@
 /area/hallway/secondary/docking_hallway)
 "nHU" = (
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
+	dir = 4;
 	frequency = 1380;
-	id_tag = "d1d_dock";
-	pixel_x = -24;
-	req_one_access = list(13);
-	tag_airpump = "d1d_dock_pump";
-	tag_chamber_sensor = "d1d_dock_sensor";
-	tag_exterior_door = "d1d_dock_outer";
-	tag_interior_door = "d1d_dock_inner"
+	id_tag = "deck4_dockarm1";
+	pixel_x = -26;
+	pixel_y = 1;
+	req_one_access = list(13)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
@@ -19239,9 +19208,7 @@
 "nLY" = (
 /obj/structure/table/reinforced,
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /obj/machinery/recharger,
 /obj/random/tech_supply,
@@ -19872,8 +19839,7 @@
 /area/triumph/station/stairs_one)
 "okL" = (
 /obj/structure/window/phoronreinforced{
-	dir = 8;
-	icon_state = "phoronrwindow"
+	dir = 8
 	},
 /obj/structure/window/phoronreinforced/full,
 /obj/structure/grille,
@@ -20151,9 +20117,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "owu" = (
-/obj/effect/shuttle_landmark/station_dockpoint2,
-/turf/space,
-/area/space)
+/obj/effect/floor_decal/sign/dock/two,
+/turf/simulated/wall/r_wall,
+/area/hallway/secondary/docking_hallway)
 "oxu" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
@@ -20875,9 +20841,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
 "oVF" = (
-/obj/effect/landmark/map_data/triumph{
-	height = 4
-	},
+/obj/effect/landmark/map_data/triumph,
 /turf/space,
 /area/space)
 "oVI" = (
@@ -21030,8 +20994,7 @@
 	opacity = 0
 	},
 /obj/structure/window/phoronreinforced{
-	dir = 8;
-	icon_state = "phoronrwindow"
+	dir = 8
 	},
 /turf/simulated/shuttle/floor/voidcraft,
 /area/bridge)
@@ -22337,8 +22300,7 @@
 /area/triumph/surfacebase/sauna)
 "pVB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5;
-	icon_state = "intact-scrubbers"
+	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -22489,8 +22451,7 @@
 /area/security/security_equiptment_storage)
 "pXD" = (
 /obj/machinery/light/small{
-	dir = 8;
-	pixel_x = 0
+	dir = 8
 	},
 /obj/structure/table/bench/padded,
 /turf/simulated/floor/plating,
@@ -22573,8 +22534,7 @@
 /area/security/training)
 "pZU" = (
 /obj/structure/window/phoronreinforced{
-	dir = 8;
-	icon_state = "phoronrwindow"
+	dir = 8
 	},
 /obj/structure/window/phoronreinforced/full,
 /obj/structure/grille,
@@ -25006,8 +24966,7 @@
 /area/triumph/surfacebase/sauna)
 "rzp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5;
-	icon_state = "intact-scrubbers"
+	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -25090,16 +25049,16 @@
 /area/security/warden)
 "rBC" = (
 /obj/machinery/airlock_sensor{
-	frequency = 1380;
-	id_tag = "d1d_dock_sensor";
-	pixel_x = 28;
-	pixel_y = -1
+	dir = 8;
+	id_tag = null;
+	pixel_x = 23
 	},
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 8;
-	frequency = 1380;
-	id_tag = "d1d_dock_pump"
+	id_tag = null
 	},
+/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "rBF" = (
@@ -25365,6 +25324,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/gateway)
+"rIM" = (
+/obj/effect/shuttle_landmark/automatic/station_dockpoint2,
+/turf/space,
+/area/space)
 "rJT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -25742,8 +25705,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5;
-	icon_state = "intact-scrubbers"
+	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -25868,8 +25830,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/portables_connector{
-	dir = 4;
-	icon_state = "map_connector"
+	dir = 4
 	},
 /obj/machinery/portable_atmospherics/canister/air/airlock{
 	start_pressure = 9119.25
@@ -25985,15 +25946,15 @@
 "slh" = (
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 8;
-	frequency = 1380;
-	id_tag = "d1a_dock_pump"
+	id_tag = null
 	},
 /obj/machinery/airlock_sensor{
-	frequency = 1380;
-	id_tag = "d1a_dock_sensor";
-	pixel_x = 28;
-	pixel_y = -1
+	dir = 8;
+	id_tag = null;
+	pixel_x = 23
 	},
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/effect/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "slq" = (
@@ -26400,8 +26361,7 @@
 /area/security/forensics)
 "sAi" = (
 /obj/machinery/light/small{
-	dir = 8;
-	pixel_x = 0
+	dir = 8
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/sleep/HOP_quarters)
@@ -26492,8 +26452,12 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 5
 	},
-/obj/effect/floor_decal/sign/dock/three{
-	pixel_y = 31
+/obj/machinery/access_button{
+	command = "cycle_interior";
+	frequency = 1380;
+	master_tag = "civvie_dock";
+	name = "interior access button";
+	pixel_y = 23
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
@@ -26911,13 +26875,12 @@
 /area/security/hanger)
 "sPW" = (
 /obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "d1d_dock_inner";
-	locked = 1;
+	frequency = null;
+	id_tag = null;
 	name = "Docking Port Airlock"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/effect/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "sQg" = (
@@ -27069,10 +27032,8 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "civvie_dock_inner";
-	locked = 1;
+	frequency = null;
+	id_tag = null;
 	name = "Docking Port Airlock"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -27374,21 +27335,12 @@
 /turf/simulated/floor/tiled,
 /area/teleporter)
 "tkT" = (
-/obj/machinery/access_button{
-	command = "cycle_exterior";
-	frequency = 1380;
-	master_tag = "d1a_dock";
-	name = "exterior access button";
-	pixel_x = -26;
-	pixel_y = 29;
-	req_one_access = list(13)
-	},
-/turf/space,
-/area/space)
+/obj/effect/floor_decal/sign/a,
+/turf/simulated/wall/r_wall,
+/area/hallway/secondary/docking_hallway)
 "tlr" = (
 /obj/machinery/light/small{
-	dir = 8;
-	pixel_x = 0
+	dir = 8
 	},
 /obj/machinery/light_switch{
 	dir = 4;
@@ -27436,14 +27388,13 @@
 	dir = 1
 	},
 /obj/machinery/access_button{
-	command = "cycle_interior";
-	frequency = 1380;
-	master_tag = "d1d_dock";
+	master_tag = null;
 	name = "interior access button";
-	pixel_x = 22;
-	pixel_y = 22;
+	pixel_x = 32;
+	pixel_y = 23;
 	req_one_access = list(13)
 	},
+/obj/effect/map_helper/airlock/button/int_button,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "tnk" = (
@@ -27474,7 +27425,6 @@
 /obj/structure/table/reinforced,
 /obj/machinery/alarm/alarms_hidden{
 	dir = 8;
-	icon_state = "alarm0";
 	pixel_x = 27
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on,
@@ -27696,8 +27646,7 @@
 /area/shuttle/civvie/general)
 "tuM" = (
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/old_tile/green,
@@ -28119,16 +28068,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/brig)
-"tPH" = (
-/obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "d1d_dock_inner";
-	locked = 1;
-	name = "Docking Port Airlock"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/hallway/secondary/docking_hallway)
 "tQm" = (
 /obj/machinery/light,
 /obj/machinery/recharge_station,
@@ -28650,8 +28589,7 @@
 /area/hallway/secondary/civilian_hallway_mid)
 "ujc" = (
 /obj/machinery/light/small{
-	dir = 8;
-	pixel_x = 0
+	dir = 8
 	},
 /turf/simulated/floor/carpet/oracarpet,
 /area/crew_quarters/sleep/CE_quarters)
@@ -29099,28 +29037,29 @@
 /area/triumph/station/explorer_entry)
 "uxk" = (
 /obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "d1a_dock_inner";
-	locked = 1;
+	frequency = null;
+	id_tag = null;
 	name = "Docking Port Airlock"
 	},
+/obj/effect/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "uxr" = (
 /obj/effect/floor_decal/techfloor/orange,
 /obj/machinery/access_button{
 	command = "cycle_interior";
+	dir = 1;
 	frequency = 1380;
 	master_tag = "d1a_dock";
 	name = "interior access button";
-	pixel_x = -28;
+	pixel_x = -32;
 	pixel_y = -23;
 	req_one_access = list(13)
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
 	},
+/obj/effect/map_helper/airlock/button/int_button,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "uxB" = (
@@ -29741,8 +29680,7 @@
 /obj/machinery/button/remote/driver{
 	id = "chapelgun";
 	name = "Chapel Mass Driver";
-	pixel_x = -25;
-	pixel_y = 0
+	pixel_x = -25
 	},
 /turf/simulated/floor/wood,
 /area/hallway/secondary/docking_hallway)
@@ -30021,8 +29959,7 @@
 /area/security/prison)
 "vde" = (
 /obj/structure/window/phoronreinforced{
-	dir = 8;
-	icon_state = "phoronrwindow"
+	dir = 8
 	},
 /obj/structure/window/phoronreinforced/full,
 /obj/structure/grille,
@@ -31294,8 +31231,7 @@
 /area/crew_quarters/sleep/CMO_quarters)
 "vUs" = (
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/excursion_dock)
@@ -31488,15 +31424,15 @@
 "wbn" = (
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 1;
-	frequency = 1380;
-	id_tag = "d1b_dock_pump"
+	id_tag = null
 	},
 /obj/machinery/airlock_sensor{
-	frequency = 1380;
-	id_tag = "d1b_dock_sensor";
-	pixel_x = -2;
-	pixel_y = -24
+	dir = 1;
+	id_tag = null;
+	pixel_y = -22
 	},
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/effect/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "wbv" = (
@@ -31507,14 +31443,13 @@
 	dir = 4
 	},
 /obj/machinery/access_button{
-	command = "cycle_interior";
-	frequency = 1380;
-	master_tag = "d1b_dock";
+	dir = 4;
+	master_tag = null;
 	name = "interior access button";
-	pixel_x = -26;
-	pixel_y = 26;
-	req_one_access = null
+	pixel_x = -23;
+	pixel_y = 32
 	},
+/obj/effect/map_helper/airlock/button/int_button,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "wbC" = (
@@ -31658,8 +31593,7 @@
 /area/hydroponics/garden)
 "wfj" = (
 /obj/structure/window/phoronreinforced{
-	dir = 8;
-	icon_state = "phoronrwindow"
+	dir = 8
 	},
 /obj/structure/window/phoronreinforced/full,
 /obj/structure/grille,
@@ -32176,8 +32110,7 @@
 /obj/machinery/door/firedoor/glass/hidden/steel,
 /obj/machinery/door/window/brigdoor/westright{
 	dir = 4;
-	name = "Firing Range Door";
-	req_access = list(1)
+	name = "Firing Range Door"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/range)
@@ -33365,12 +33298,13 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/triumph/station/excursion_dock)
 "xsS" = (
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 1
+/obj/machinery/door/airlock/glass_external{
+	frequency = null;
+	id_tag = null;
+	name = "Docking Port Airlock"
 	},
-/obj/effect/floor_decal/sign/dock{
-	pixel_y = 32
-	},
+/obj/machinery/shield_diffuser,
+/obj/effect/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "xts" = (
@@ -45363,7 +45297,7 @@ nIK
 nIK
 nIK
 nIK
-cmP
+nIK
 nIK
 nIK
 nIK
@@ -45506,7 +45440,7 @@ nIK
 nIK
 nPD
 nuT
-nuT
+gbC
 nPD
 nIK
 nIK
@@ -45788,7 +45722,7 @@ nPD
 nPD
 nPD
 nPD
-nPD
+tkT
 bHp
 hDG
 nPD
@@ -46348,7 +46282,7 @@ nIK
 nIK
 nIK
 aFu
-bqP
+nIK
 cgx
 nHU
 sPW
@@ -46491,9 +46425,9 @@ nIK
 nIK
 nIK
 nIK
-cgx
+aUx
 rBC
-tPH
+uxk
 tmH
 lba
 hSs
@@ -46635,8 +46569,8 @@ nIK
 nIK
 nPD
 nPD
-nPD
-xsS
+bqP
+fMX
 lba
 ctC
 nPD
@@ -48201,7 +48135,7 @@ nPD
 urK
 uyA
 hSs
-aUx
+nPD
 nIK
 nIK
 nIK
@@ -48343,7 +48277,7 @@ gKV
 fMX
 uyA
 ctC
-nPD
+owu
 nPD
 nPD
 nIK
@@ -48485,11 +48419,11 @@ gKV
 fMX
 uyA
 uxr
-luR
+sPW
 lAR
 crT
-tkT
-owu
+nIK
+rIM
 nIK
 nIK
 nIK
@@ -48623,13 +48557,13 @@ nIK
 nIK
 nIK
 nIK
-nPD
+cmP
 sCr
 lGo
 bIw
 uxk
 slh
-crT
+xsS
 nIK
 nIK
 nIK

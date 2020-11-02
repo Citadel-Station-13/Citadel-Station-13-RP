@@ -312,6 +312,46 @@ var/global/list/latejoin_shuttle   = list()
 
 /obj/machinery/camera/network/exploration
 	network = list(NETWORK_EXPLORATION)
+/*
+// Underdark mob spawners
+/obj/tether_away_spawner/underdark_normal
+	name = "Underdark Normal Spawner"
+	faction = "underdark"
+	atmos_comp = TRUE
+	prob_spawn = 100
+	prob_fall = 50
+	guard = 20
+	mobs_to_pick_from = list(
+		/mob/living/simple_animal/hostile/jelly = 3,
+		/mob/living/simple_animal/hostile/giant_spider/hunter = 1,
+		/mob/living/simple_animal/hostile/giant_spider/phorogenic = 1,
+		/mob/living/simple_animal/hostile/giant_spider/lurker = 1,
+	)
+
+/obj/tether_away_spawner/underdark_hard
+	name = "Underdark Hard Spawner"
+	faction = "underdark"
+	atmos_comp = TRUE
+	prob_spawn = 100
+	prob_fall = 50
+	guard = 20
+	mobs_to_pick_from = list(
+		/mob/living/simple_animal/hostile/corrupthound = 1,
+		/mob/living/simple_animal/hostile/rat = 1,
+		/mob/living/simple_animal/hostile/mimic = 1
+	)
+
+/obj/tether_away_spawner/underdark_boss
+	name = "Underdark Boss Spawner"
+	faction = "underdark"
+	atmos_comp = TRUE
+	prob_spawn = 100
+	prob_fall = 100
+	guard = 70
+	mobs_to_pick_from = list(
+		/mob/living/simple_animal/hostile/dragon = 1
+	)
+*/
 
 /obj/machinery/camera/network/research/xenobio
 	network = list(NETWORK_RESEARCH, NETWORK_XENOBIO)
