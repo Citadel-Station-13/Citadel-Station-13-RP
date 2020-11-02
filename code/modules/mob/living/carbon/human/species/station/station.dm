@@ -949,17 +949,6 @@
 	hunger_factor = 0.1 //In exchange, they get hungry a tad faster.
 	num_alternate_languages = 2
 
-	//Return Xeno space immunity and racial resistances/vulnerabilities to Hybrids, since they're literally still Xenomorphs in terms of biology.
-	brute_mod = 0.5 // Hardened carapace.
-	burn_mod = 2    // Weak to fire.
-
-	warning_low_pressure = 50
-	hazard_low_pressure = -1
-
-	cold_level_1 = 50
-	cold_level_2 = -1
-	cold_level_3 = -1
-
 	min_age = 18
 	max_age = 80
 

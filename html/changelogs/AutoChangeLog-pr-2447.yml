@@ -1,0 +1,6 @@
+author: "Zandario"
+delete-after: True
+changes: 
+  - rscadd: "Airlock Helpers"
+  - imageadd: "tweaked some of the icons from the port"
+  - imageadd: "directional sprites for airlock components, like buttons, sensors, etc."

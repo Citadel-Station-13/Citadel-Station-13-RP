@@ -22,12 +22,19 @@
 
 	requires_power = FALSE
 
+/area/turbolift/t_ship/level1
+	name = "Deck 1"
+	lift_floor_label = "Deck 1"
+	lift_floor_name = "Engineering, Reactor, Telecomms, Trash Pit, Atmospherics"
+	lift_announce_str = "Arriving at Deck 1."
+	base_turf = /turf/simulated/floor/plating
+
+
 /area/turbolift/t_ship/level2
 	name = "Deck 2"
 	lift_floor_label = "Deck 2"
-	lift_floor_name = "Dorms, Mining, Bar, Cafe, Solars, Shops"
+	lift_floor_name = "Dorms, Cargo, Mining, Bar, Cafe, Solars, Shops"
 	lift_announce_str = "Arriving at Deck 2."
-	base_turf = /turf/simulated/floor/plating
 
 /area/turbolift/t_ship/level3
 	name = "Deck 3"
