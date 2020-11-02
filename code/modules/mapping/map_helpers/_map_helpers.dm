@@ -1,24 +1,24 @@
 //Landmarks and other helpers which speed up the mapping process and reduce the number of unique instances/subtypes of items/turf/ect
-/obj/effect/mapping_helpers
+/obj/effect/map_helper
 	icon = 'icons/map/mapping_helpers.dmi'
 	icon_state = ""
 	var/late = FALSE
 
-/obj/effect/mapping_helpers/Initialize()
+/obj/effect/map_helper/Initialize()
 	..()
 	return late ? INITIALIZE_HINT_LATELOAD : INITIALIZE_HINT_QDEL
 
 /*
 
 //airlock helpers
-/obj/effect/mapping_helpers/airlock
+/obj/effect/map_helper/airlock
 	layer = DOOR_HELPER_LAYER
 
-/obj/effect/mapping_helpers/airlock/cyclelink_helper
+/obj/effect/map_helper/airlock/cyclelink_helper
 	name = "airlock cyclelink helper"
 	icon_state = "airlock_cyclelink_helper"
 
-/obj/effect/mapping_helpers/airlock/cyclelink_helper/Initialize(mapload)
+/obj/effect/map_helper/airlock/cyclelink_helper/Initialize(mapload)
 	. = ..()
 	if(!mapload)
 		log_mapping("[src] spawned outside of mapload!")
@@ -33,11 +33,11 @@
 		log_mapping("[src] failed to find an airlock at [AREACOORD(src)]")
 
 
-/obj/effect/mapping_helpers/airlock/locked
+/obj/effect/map_helper/airlock/locked
 	name = "airlock lock helper"
 	icon_state = "airlock_locked_helper"
 
-/obj/effect/mapping_helpers/airlock/locked/Initialize(mapload)
+/obj/effect/map_helper/airlock/locked/Initialize(mapload)
 	. = ..()
 	if(!mapload)
 		log_mapping("[src] spawned outside of mapload!")
@@ -51,11 +51,11 @@
 	else
 		log_mapping("[src] failed to find an airlock at [AREACOORD(src)]")
 
-/obj/effect/mapping_helpers/airlock/unres
+/obj/effect/map_helper/airlock/unres
 	name = "airlock unresctricted side helper"
 	icon_state = "airlock_unres_helper"
 
-/obj/effect/mapping_helpers/airlock/unres/Initialize(mapload)
+/obj/effect/map_helper/airlock/unres/Initialize(mapload)
 	. = ..()
 	if(!mapload)
 		log_mapping("[src] spawned outside of mapload!")
@@ -68,19 +68,19 @@
 
 
 //needs to do its thing before spawn_rivers() is called
-INITIALIZE_IMMEDIATE(/obj/effect/mapping_helpers/no_lava)
+INITIALIZE_IMMEDIATE(/obj/effect/map_helper/no_lava)
 
-/obj/effect/mapping_helpers/no_lava
+/obj/effect/map_helper/no_lava
 	icon_state = "no_lava"
 
-/obj/effect/mapping_helpers/no_lava/Initialize()
+/obj/effect/map_helper/no_lava/Initialize()
 	. = ..()
 	var/turf/T = get_turf(src)
 	T.flags_1 |= NO_LAVA_GEN_1
 */
 
 //This helper applies components to things on the map directly.
-/obj/effect/mapping_helpers/component_injector
+/obj/effect/map_helper/component_injector
 	name = "Component Injector"
 	late = TRUE
 	var/target_type
@@ -88,7 +88,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/mapping_helpers/no_lava)
 	var/component_type
 
 //Late init so everything is likely ready and loaded (no warranty)
-/obj/effect/mapping_helpers/component_injector/LateInitialize()
+/obj/effect/map_helper/component_injector/LateInitialize()
 	if(!ispath(component_type,/datum/component))
 		CRASH("Wrong component type in [type] - [component_type] is not a component")
 	var/turf/T = get_turf(src)
@@ -104,17 +104,17 @@ INITIALIZE_IMMEDIATE(/obj/effect/mapping_helpers/no_lava)
 		qdel(src)
 		return
 
-/obj/effect/mapping_helpers/component_injector/proc/build_args()
+/obj/effect/map_helper/component_injector/proc/build_args()
 	return list(component_type)
 
 /*
-/obj/effect/mapping_helpers/component_injector/infective
+/obj/effect/map_helper/component_injector/infective
 	name = "Infective Injector"
 	icon_state = "component_infective"
 	component_type = /datum/component/infective
 	var/disease_type
 
-/obj/effect/mapping_helpers/component_injector/infective/build_args()
+/obj/effect/map_helper/component_injector/infective/build_args()
 	if(!ispath(disease_type,/datum/disease))
 		CRASH("Wrong disease type passed in.")
 	var/datum/disease/D = new disease_type()
