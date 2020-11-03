@@ -1,6 +1,0 @@
-author: "Hatterhat"
-delete-after: True
-changes: 
-  - rscadd: "The mining supply vendor now spits out scabbards to go along with their machetes."
-  - tweak: "Belter goes faster."
-  - balance: "Ore yields for phoron, diamond, verdantite, marble, and lead are up. Ore spread rates have been slightly increased."
