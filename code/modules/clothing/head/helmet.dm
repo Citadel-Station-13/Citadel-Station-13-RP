@@ -192,6 +192,16 @@
 	siemens_coefficient = 0.7
 	valid_accessory_slots = null
 
+/obj/item/clothing/head/helmet/roman
+	name = "Roman Galea"
+	desc = "A reproduction helmet fashioned to look like an ancient Roman Galea. It affords the same protections as standard helmets."
+	icon_state = "roman"
+
+/obj/item/clothing/head/helmet/romancent
+	name = "Roman Crested Galea"
+	desc = "A reproduction helmet fashioned to look like an ancient Roman Galea. It affords the same protections as standard helmets."
+	icon_state = "roman_c"
+
 //Non-hardsuit ERT helmets.
 /obj/item/clothing/head/helmet/ert
 	name = "emergency response team helmet"

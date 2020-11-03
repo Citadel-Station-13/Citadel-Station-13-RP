@@ -102,3 +102,94 @@
 		/obj/item/clothing/accessory/medal/gold/captain,
 		/obj/item/clothing/accessory/medal/gold/heroism
 	)
+
+//Exploration "Gimmick" Boxes
+/obj/item/storage/lockbox/colonial
+	name = "Colonial Equipment Pack"
+	req_access = list(access_pathfinder)
+	storage_slots = 34
+	starts_with = list(
+		/obj/item/clothing/under/customs/khaki = 4,
+		/obj/item/clothing/suit/colonial_redcoat = 4,
+		/obj/item/clothing/head/redcoat = 4,
+		/obj/item/gun/projectile/contender = 1,
+		/obj/item/ammo_magazine/s357 = 2,
+		/obj/item/storage/belt/sheath = 1,
+		/obj/item/gun/projectile/shotgun/pump/rifle = 3,
+		/obj/item/ammo_magazine/clip/c762 = 6,
+		/obj/item/reagent_containers/food/drinks/tea = 8
+	)
+
+/obj/item/storage/lockbox/gateway
+	name = "Gateway Guardian Pack"
+	req_access = list(access_pathfinder)
+	storage_slots = 24
+	starts_with = list(
+		/obj/item/clothing/under/tactical = 4,
+		/obj/item/clothing/accessory/storage/black_vest = 4,
+		/obj/item/clothing/head/soft/black = 4,
+		/obj/item/gun/projectile/automatic/p90 = 3,
+		/obj/item/ammo_magazine/m9mmp90 = 6,
+		/obj/item/gun/projectile/p92x = 1,
+		/obj/item/ammo_magazine/m9mm = 2
+	)
+
+/obj/item/storage/lockbox/cowboy
+	name = "Cyan Posse Pack"
+	req_access = list(access_pathfinder)
+	storage_slots = 33
+	starts_with = list(
+		/obj/item/clothing/suit/leathercoat = 4,
+		/obj/item/clothing/shoes/boots/cowboy/classic = 4,
+		/obj/item/clothing/head/cowboy_hat = 4,
+		/obj/item/gun/projectile/revolver/dirty_harry = 2,
+		/obj/item/ammo_magazine/s44 = 4,
+		/obj/item/gun/projectile/shotgun/pump/rifle/lever/win1895 = 1,
+		/obj/item/ammo_magazine/clip/c762 = 2,
+		/obj/item/gun/projectile/shotgun/doublebarrel/pellet = 1,
+		/obj/item/storage/box/shotgunshells = 1,
+		/obj/item/reagent_containers/food/drinks/bottle/small/sarsaparilla = 3,
+		/obj/item/reagent_containers/food/drinks/bottle/small/sassafras = 3,
+		/obj/item/reagent_containers/food/snacks/baschbeans = 4
+	)
+
+/obj/item/storage/lockbox/russian
+	name = "Conscript Pack"
+	req_access = list(access_pathfinder)
+	storage_slots = 17
+	starts_with = list(
+		/obj/item/clothing/under/soviet = 4,
+		/obj/item/clothing/head/ushanka = 3,
+		/obj/item/clothing/head/bearpelt = 1,
+		/obj/item/gun/projectile/shotgun/pump/rifle = 3,
+		/obj/item/ammo_magazine/clip/c762 = 3,
+		/obj/item/gun/projectile/pistol = 1,
+		/obj/item/ammo_magazine/m9mm/compact = 1,
+		/obj/item/reagent_containers/food/drinks/bottle/vodka = 1
+	)
+
+/obj/item/storage/lockbox/crusade
+	name = "Holy Crusade Pack"
+	req_access = list(access_pathfinder)
+	storage_slots = 34
+	starts_with = list(
+		/obj/item/clothing/suit/medieval/crusader/cross/templar = 4,
+		/obj/item/clothing/head/helmet/medieval/crusader/templar = 4,
+		/obj/item/material/sword = 2,
+		/obj/item/shield/riot/buckler = 2,
+		/obj/item/material/twohanded/sledgehammer  = 1,
+		/obj/item/gun/launcher/crossbow = 1,
+		/obj/item/arrow = 20
+	)
+
+/obj/item/storage/lockbox/maniple
+	name = "Maniple Pack"
+	req_access = list(access_pathfinder)
+	storage_slots = 16
+	starts_with = list(
+		/obj/item/clothing/under/roman = 4,
+		/obj/item/clothing/head/helmet/roman = 3,
+		/obj/item/clothing/head/helmet/romancent = 1,
+		/obj/item/clothing/shoes/roman = 4,
+		/obj/item/shield/riot/roman = 4
+	)
