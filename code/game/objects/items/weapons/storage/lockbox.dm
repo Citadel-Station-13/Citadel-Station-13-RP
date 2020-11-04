@@ -139,7 +139,7 @@
 	req_access = list(access_pathfinder)
 	storage_slots = 33
 	starts_with = list(
-		/obj/item/clothing/suit/leathercoat = 4,
+		/obj/item/clothing/suit/storage/toggle/brown_jacket = 4,
 		/obj/item/clothing/shoes/boots/cowboy/classic = 4,
 		/obj/item/clothing/head/cowboy_hat = 4,
 		/obj/item/gun/projectile/revolver/dirty_harry = 2,
@@ -173,13 +173,12 @@
 	req_access = list(access_pathfinder)
 	storage_slots = 34
 	starts_with = list(
-		/obj/item/clothing/suit/medieval/crusader/cross/templar = 4,
+		/obj/item/clothing/suit/armor/medieval/crusader/cross/templar = 4,
 		/obj/item/clothing/head/helmet/medieval/crusader/templar = 4,
 		/obj/item/material/sword = 2,
 		/obj/item/shield/riot/buckler = 2,
 		/obj/item/material/twohanded/sledgehammer  = 1,
-		/obj/item/gun/launcher/crossbow = 1,
-		/obj/item/arrow = 20
+		/obj/item/gun/launcher/crossbow = 1
 	)
 
 /obj/item/storage/lockbox/maniple
