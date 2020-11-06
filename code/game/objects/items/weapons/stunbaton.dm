@@ -276,3 +276,9 @@
 // Borg version, for the lost module.
 /obj/item/melee/baton/shocker/robot
 	use_external_power = TRUE
+
+/obj/item/melee/baton/stunsword
+	name = "stunsword"
+	desc = "Not actually sharp, this sword is functionally identical to its baton counterpart."
+	icon_state = "stunsword"
+	item_state = "baton"
