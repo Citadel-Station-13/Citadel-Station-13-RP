@@ -28,6 +28,11 @@
 	base_turf = /turf/space
 	base_area = /area/space
 
+/obj/effect/shuttle_landmark/triumph/deck2/mining
+	name = "NSV Triumph Mining Dock"
+	landmark_tag = "triumph_mining_port"
+	base_turf = /turf/space
+	base_area = /area/space
 
 // Shared landmark for docking *inside* the station
 
@@ -106,6 +111,10 @@
 /obj/effect/shuttle_landmark/transit/triumph/civvie
 	name = "In transit"
 	landmark_tag = "nav_transit_civvie"
+
+/obj/effect/shuttle_landmark/transit/triumph/mining
+	name = "In transit"
+	landmark_tag = "nav_transit_mining"
 
 ////////////////////////////////////////
 // Triumph custom shuttle implemnetations
@@ -247,8 +256,6 @@
 /obj/machinery/computer/shuttle_control/explore/civvie
 	name = "civilian jump console"
 	shuttle_tag = "Civilian Transport"
-	req_one_access = list(access_pilot)
-
 
 // PIRATE SHIP (Yaya!)
 /datum/shuttle/autodock/overmap/pirate
@@ -269,6 +276,24 @@
 	name = "short jump raiding console"
 	shuttle_tag = "Pirate Skiff"
 
+// Mining Shuttle
+
+/datum/shuttle/autodock/overmap/mining
+	name = "Mining Shuttle"
+	warmup_time = 10
+	shuttle_area = list(/area/shuttle/mining_ship/general)
+	current_location = "triumph_mining_port"
+	docking_controller_tag = "mining_docker"
+	landmark_transition = "nav_transit_mining"
+	move_time = 30
+
+/area/shuttle/mining
+	name = "Mining Shuttle"
+	icon_state = "shuttle"
+
+/obj/machinery/computer/shuttle_control/explore/mining
+	name = "mining jump console"
+	shuttle_tag = "Mining Shuttle"
 
 ////////////////////////////////////////
 ////////      Tour Bus     /////////////
