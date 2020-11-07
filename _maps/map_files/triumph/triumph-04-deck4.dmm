@@ -4922,6 +4922,7 @@
 /obj/machinery/camera/network/civilian{
 	dir = 4
 	},
+/obj/structure/musician/piano,
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
 "dCg" = (
@@ -18725,7 +18726,6 @@
 /obj/effect/floor_decal/chapel{
 	dir = 4
 	},
-/obj/structure/musician/piano,
 /obj/structure/cable/pink{
 	icon_state = "1-2"
 	},
@@ -27279,6 +27279,13 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload)
+"tgF" = (
+/obj/effect/floor_decal/chapel{
+	dir = 8
+	},
+/obj/structure/table/bench/padded,
+/turf/simulated/floor/tiled/dark,
+/area/chapel/main)
 "tgM" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /turf/simulated/floor/plating,
@@ -44591,7 +44598,7 @@ rNF
 ucJ
 gpk
 vmK
-vRL
+tgF
 muJ
 qpo
 vRL
