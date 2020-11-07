@@ -338,6 +338,14 @@
 	desc = "A 7.62mm hunting bullet casing."
 	projectile_type = /obj/item/projectile/bullet/rifle/a762/hunter
 
+/obj/item/ammo_casing/a762/sniper
+	desc = "A 7.62mm high velocity bullet casing optimised for a marksman rifle."
+	projectile_type = /obj/item/projectile/bullet/rifle/a762/sniper
+
+/obj/item/ammo_casing/a762/sniperhunter
+	desc = "A 7.62mm high velocity hunter bullet casing optimised for a marksman rifle."
+	projectile_type = /obj/item/projectile/bullet/rifle/a762/sniperhunter
+
 /obj/item/ammo_casing/a762/silver
 	desc = "A 7.62mm hunting bullet casing. Bless and Sancitfied to banish otherworlds entities."
 	icon_state = "agrifle-casing"
