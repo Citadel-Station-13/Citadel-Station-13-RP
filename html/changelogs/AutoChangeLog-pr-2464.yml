@@ -1,0 +1,5 @@
+author: "VailTheWolf"
+delete-after: True
+changes: 
+  - rscadd: "Sniper Hunter ammo"
+  - bugfix: "Makes Phase energy balls behave against appropriate mob types"
