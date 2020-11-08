@@ -189,3 +189,8 @@
 
 /obj/item/clothing/shoes/boots/ranger/yellow
 	bootcolor = "yellow"
+
+/obj/item/clothing/shoes/roman
+	name = "Roman Caligae"
+	desc = "Hardy leather sandles capable of holding up for many miles."
+	icon_state = "roman"

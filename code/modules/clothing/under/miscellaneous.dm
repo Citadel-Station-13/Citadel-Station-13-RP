@@ -1197,3 +1197,8 @@
 	name = "White Simple Dress"
 	desc = "A very short, plain white dress with a light blue sash."
 	icon_state = "simpledress"
+
+/obj/item/clothing/under/roman
+	name = "Roman Lorica"
+	desc = "Replica lorica segmentata. It doesn't feel like it would actually afford much protection against modern weaponry."
+	icon_state = "roman"
