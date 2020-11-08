@@ -7,6 +7,9 @@
 #define NIF_SC_BACKUPS				0x10
 #define NIF_SC_PROJECTING			0x20
 
+/// 10 tile maximum.
+#define SOULCATCHER_RANGE 10
+
 ///////////
 // Soulcatcher - Like a posibrain, sorta!
 /datum/nifsoft/soulcatcher
@@ -434,7 +437,7 @@
 		var/turf/stepn = get_turf(get_step(src, direct))
 		if(stepn)
 			setDir(direct)
-			if(can_see(parent_human, stepn))
+			if(get_dist(parent_human, stepn) > SOULCATCHER_RANGE)
 				forceMove(stepn)
 
 	cooldown = world.timeofday + 5
@@ -445,7 +448,7 @@
 	return 1
 
 /mob/observer/eye/ar_soul/proc/human_moved()
-	if(!can_see(parent_human,src))
+	if(get_dist(parent_human,src) > SOULCATCHER_RANGE)
 		forceMove(get_turf(parent_human))
 
 ///////////////////
