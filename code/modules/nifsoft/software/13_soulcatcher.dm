@@ -354,7 +354,8 @@
 		return ..(direction)
 
 /mob/living/carbon/brain/caught_soul/say(var/message)
-	if(silent) return FALSE
+	if(silent)
+		return FALSE
 	soulcatcher.say_into(message,src,eyeobj)
 
 /mob/living/carbon/brain/caught_soul/emote(var/act,var/m_type=1,var/message = null)
@@ -375,7 +376,8 @@
 		return FALSE
 
 /mob/living/carbon/brain/caught_soul/custom_emote(var/m_type, var/message)
-	if(silent) return FALSE
+	if(silent)
+		return FALSE
 	soulcatcher.emote_into(message,src,eyeobj)
 
 /mob/living/carbon/brain/caught_soul/resist()
@@ -392,7 +394,7 @@
 	icon_state = "beacon"
 	var/mob/living/carbon/human/parent_human
 
-/mob/observer/eye/ar_soul/New(var/mob/brainmob, var/human)
+/mob/observer/eye/ar_soul/New(var/mob/brainmob, var/mob/living/carbon/human/human)
 	ASSERT(brainmob && brainmob.client)
 	..()
 
@@ -404,6 +406,7 @@
 	real_name = brainmob.real_name	//And the OTHER name
 
 	forceMove(get_turf(parent_human))
+	human.client?.eye = src
 	RegisterSignal(parent_human, COMSIG_MOVABLE_MOVED, .proc/human_moved)
 
 	//Time to play dressup
@@ -420,6 +423,7 @@
 /mob/observer/eye/ar_soul/Destroy()
 	if(parent_human) //It's POSSIBLE they've been deleted before the NIF somehow
 		UnregisterSignal(parent_human, COMSIG_MOVABLE_MOVED)
+		parent_human.client.eye = parent_human
 		parent_human = null
 	return ..()
 
@@ -528,7 +532,7 @@
 	if(!client || !client.prefs)
 		return //Um...
 
-	eyeobj = new/mob/observer/eye/ar_soul(src,nif.human)
+	eyeobj = new/mob/observer/eye/ar_soul(src, nif.human)
 	soulcatcher.notify_into("[src] now AR projecting.")
 
 /mob/living/carbon/brain/caught_soul/verb/jump_to_owner()
