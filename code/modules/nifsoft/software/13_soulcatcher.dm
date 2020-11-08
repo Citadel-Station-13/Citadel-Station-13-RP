@@ -8,7 +8,7 @@
 #define NIF_SC_PROJECTING			0x20
 
 /// 10 tile maximum.
-#define SOULCATCHER_RANGE 10
+#define SOULCATCHER_RANGE 7
 
 ///////////
 // Soulcatcher - Like a posibrain, sorta!
