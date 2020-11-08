@@ -71,6 +71,7 @@
 			brainmob << sound
 
 	proc/say_into(var/message, var/mob/living/sender, var/mob/eyeobj)
+		message = sender.say_emphasis(message)
 		var/sender_name = eyeobj ? eyeobj.name : sender.name
 
 		//AR Projecting
@@ -87,11 +88,12 @@
 		log_nsay(message,nif.human.real_name,sender)
 
 	proc/emote_into(var/message, var/mob/living/sender, var/mob/eyeobj)
+		message = sender.say_emphasis(message)
 		var/sender_name = eyeobj ? eyeobj.name : sender.name
 
 		//AR Projecting
 		if(eyeobj)
-			sender.eyeobj.visible_message("[sender_name] [message]")
+			sender.eyeobj.visible_message("<b>[sender_name]</b> [message]")
 
 		//Not AR Projecting
 		else
@@ -354,7 +356,8 @@
 		return ..(direction)
 
 /mob/living/carbon/brain/caught_soul/say(var/message)
-	if(silent) return FALSE
+	if(silent || !length(message))
+		return FALSE
 	soulcatcher.say_into(message,src,eyeobj)
 
 /mob/living/carbon/brain/caught_soul/emote(var/act,var/m_type=1,var/message = null)
