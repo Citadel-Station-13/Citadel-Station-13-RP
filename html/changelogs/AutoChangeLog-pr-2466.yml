@@ -1,4 +1,0 @@
-author: "Hatterhat"
-delete-after: True
-changes: 
-  - tweak: "Bear traps now have an activation proc, instead of relying on manual placement."
