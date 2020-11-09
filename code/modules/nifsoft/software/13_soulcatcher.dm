@@ -429,9 +429,9 @@
 /mob/observer/eye/ar_soul/Destroy()
 	if(parent_human) //It's POSSIBLE they've been deleted before the NIF somehow
 		UnregisterSignal(parent_human, COMSIG_MOVABLE_MOVED)
-	if(brainmob)
-		brainmob.client?.eye = brainmob
-		brainmob = null
+	if(owner)
+		owner.client?.eye = owner
+		owner = null
 	return ..()
 
 /mob/observer/eye/ar_soul/EyeMove(n, direct)
