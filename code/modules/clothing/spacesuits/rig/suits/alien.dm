@@ -127,7 +127,7 @@
 	name = "nanosuit control cluster"
 	suit_type = "nanomachine"
 	icon_state = "nanomachine_rig"
-	armor = list(melee = 60, bullet = 50, laser = -15,energy = -30, bomb = 30, bio = 100, rad = 100)
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 100, rad = 100)
 	emp_protection = -100 //nice.
 	siemens_coefficient= 0
 	slowdown = 0
@@ -161,21 +161,18 @@
 	siemens_coefficient= 0
 	light_overlay = "should not use a light overlay"
 	species_restricted = list(SPECIES_HUMAN, SPECIES_PROMETHEAN, SPECIES_VASILISSAN, SPECIES_ALRAUNE) //anything that's roughly humanoid ie uses human spritesheets
-	armor = list(melee = 60, bullet = 50, laser = -15,energy = -30, bomb = 30, bio = 100, rad = 100)
 
 /obj/item/clothing/gloves/gauntlets/rig/protean
 	name = "mass"
 	desc = "Glove-shaped clusters of nanomachines."
 	siemens_coefficient= 0
 	species_restricted = list(SPECIES_HUMAN, SPECIES_PROMETHEAN, SPECIES_VASILISSAN, SPECIES_ALRAUNE) //anything that's roughly humanoid.
-	armor = list(melee = 60, bullet = 50, laser = -15,energy = -30, bomb = 30, bio = 100, rad = 100)
 
 /obj/item/clothing/shoes/magboots/rig/protean
 	name = "mass"
 	desc = "Boot-shaped clusters of nanomachines."
 	siemens_coefficient= 0
 	species_restricted = list(SPECIES_HUMAN, SPECIES_PROMETHEAN, SPECIES_VASILISSAN, SPECIES_ALRAUNE) //anything that's roughly humanoid.
-	armor = list(melee = 60, bullet = 50, laser = -15,energy = -30, bomb = 30, bio = 100, rad = 100)
 
 /obj/item/clothing/suit/space/rig/protean
 	name = "mass"
@@ -184,4 +181,3 @@
 	can_breach = 0
 	species_restricted = list(SPECIES_HUMAN, SPECIES_PROMETHEAN, SPECIES_VASILISSAN, SPECIES_ALRAUNE) //anything that's roughly humanoid, ie uses human spritesheets
 	allowed = list(/obj/item/gun,/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/melee/baton,/obj/item/storage/backpack,/obj/item/subspaceradio)
-	armor = list(melee = 60, bullet = 50, laser = -15,energy = -30, bomb = 30, bio = 100, rad = 100)
