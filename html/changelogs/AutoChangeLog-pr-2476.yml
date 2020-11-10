@@ -1,0 +1,4 @@
+author: "Mouseofthecake"
+delete-after: True
+changes: 
+  - rscadd: "Adds soulcatchers to NIFs by default."
