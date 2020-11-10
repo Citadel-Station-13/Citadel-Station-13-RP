@@ -413,7 +413,6 @@
 
 	forceMove(get_turf(parent_human))
 	RegisterSignal(parent_human, COMSIG_MOVABLE_MOVED, .proc/human_moved)
-	brainmob.client?.eye = src
 
 	//Time to play dressup
 	if(brainmob.client.prefs)
@@ -429,10 +428,6 @@
 /mob/observer/eye/ar_soul/Destroy()
 	if(parent_human) //It's POSSIBLE they've been deleted before the NIF somehow
 		UnregisterSignal(parent_human, COMSIG_MOVABLE_MOVED)
-	if(owner)
-		if(owner.client)
-			owner.client.eye = owner
-		owner = null
 	return ..()
 
 /mob/observer/eye/ar_soul/EyeMove(n, direct)
