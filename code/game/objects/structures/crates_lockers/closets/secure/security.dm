@@ -201,7 +201,8 @@
 		/obj/item/clothing/suit/storage/hooded/wintercoat/security,
 		/obj/item/clothing/shoes/boots/winter/security,
 		/obj/item/gps/security/hos,
-		/obj/item/flashlight/maglight)
+		/obj/item/flashlight/maglight,
+		/obj/item/clothing/under/rank/head_of_security/turtleneck)
 
 
 /obj/structure/closet/secure_closet/warden

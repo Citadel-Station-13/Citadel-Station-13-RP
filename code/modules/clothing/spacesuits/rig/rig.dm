@@ -44,8 +44,6 @@
 	var/cell_type =  /obj/item/cell/high
 	var/air_type =   /obj/item/tank/oxygen
 
-	var/unremovable_cell = FALSE
-
 	//Component/device holders.
 	var/obj/item/tank/air_supply                       // Air tank, if any.
 	var/obj/item/clothing/shoes/boots = null                  // Deployable boots, if any.
@@ -985,18 +983,17 @@
 	wearer.lay_down()
 	to_chat(user, "<span class='notice'>\The [wearer] is now [wearer.resting ? "resting" : "getting up"].</span>")
 
-/obj/item/rig/proc/forced_move(var/direction, var/mob/user, var/ai_moving = TRUE)
+/obj/item/rig/proc/forced_move(var/direction, var/mob/user)
 
 	// Why is all this shit in client/Move()? Who knows?
 	if(world.time < wearer_move_delay)
 		return
 
-	if(!wearer || !wearer.loc)
-		return
+	// AIs are a bit slower than regular and ignore move intent.
+	wearer_move_delay = world.time + ai_controlled_move_delay
 
-	if(ai_moving)
-		if(!ai_can_move_suit(user, check_user_module = 1))
-			return
+	if(!wearer || !wearer.loc || !ai_can_move_suit(user, check_user_module = 1))
+		return
 
 	//This is sota the goto stop mobs from moving var
 	if(wearer.transforming || !wearer.canmove)
@@ -1036,12 +1033,6 @@
 		to_chat(src, "<span class='notice'>Your host is pinned to a wall by [wearer.pinned[1]]</span>!")
 		return 0
 
-	// AIs are a bit slower than regular and ignore move intent.
-	if(!ai_moving)
-		wearer_move_delay = world.time + wearer.move_delay
-	else
-		wearer_move_delay = world.time + ai_controlled_move_delay
-
 	if(istype(wearer.buckled, /obj/vehicle))
 		//manually set move_delay for vehicles so we don't inherit any mob movement penalties
 		//specific vehicle move delays are set in code\modules\vehicles\vehicle.dm
@@ -1066,10 +1057,7 @@
 			wearer_move_delay += 2
 			return wearer.buckled.relaymove(wearer,direction)
 
-	var/power_cost = 200
-	if(!ai_moving)
-		power_cost = 20
-	cell.use(power_cost) //Arbitrary, TODO
+	cell.use(200) //Arbitrary, TODO
 	wearer.Move(get_step(get_turf(wearer),direction),direction)
 
 // This returns the rig if you are contained inside one, but not if you are wearing it
