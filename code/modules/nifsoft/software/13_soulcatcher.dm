@@ -430,7 +430,8 @@
 	if(parent_human) //It's POSSIBLE they've been deleted before the NIF somehow
 		UnregisterSignal(parent_human, COMSIG_MOVABLE_MOVED)
 	if(owner)
-		owner.client?.eye = owner
+		if(owner.client)
+			owner.client.eye = owner
 		owner = null
 	return ..()
 
