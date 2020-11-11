@@ -73,8 +73,8 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	var/list/planes_visible = list()
 
 //Constructor comes with a free AR HUD
-/obj/item/nif/New(var/newloc,var/wear,var/list/load_data)
-	..(newloc)
+/obj/item/nif/Initialize(mapload, wear, list/load_data)
+	. = ..()
 
 	//First one to spawn in the game, make a big icon
 	if(!big_icon)
@@ -90,23 +90,21 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	examine_msg = saved_examine_msg
 
 	//If given a human on spawn (probably from persistence)
-	if(ishuman(newloc))
+	if(ishuman(loc))
 		var/mob/living/carbon/human/H = newloc
 		if(!quick_implant(H))
 			WARNING("NIF spawned in [H] failed to implant")
-			spawn(0)
-				qdel(src)
-			return FALSE
+			return INITIALIZE_HINT_QDEL
 		else
 			//Free commlink for return customers
 			new /datum/nifsoft/commlink(src)
 
+			//Free soulcatcher because why not, people barely even use it.
+			new /datum/nifsoft/soulcatcher(src)
+
 	//Free civilian AR included
 	new /datum/nifsoft/ar_civ(src)
 	
-	//Free soulcatcher because why not, people barely even use it.
-	new /datum/nifsoft/soulcatcher(src)
-
 	//If given wear (like when spawned) then done
 	if(wear)
 		durability = wear
@@ -156,12 +154,10 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 			return FALSE
 		forceMove(parent)
 		parent.implants += src
-		spawn(0) //Let the character finish spawning yo.
-			if(H.mind)
-				owner = H.mind.name
-			implant(H)
+		if(H.mind)
+			owner = H.mind.name
+		implant(H)
 		return TRUE
-
 	return FALSE
 
 //Being removed from some mob
