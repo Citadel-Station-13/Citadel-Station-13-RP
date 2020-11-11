@@ -13,7 +13,11 @@
 	var/rigged = 0
 
 /obj/structure/closet/crate/CanPass(atom/movable/AM, turf/T)
-	return ..() || (opened && istype(AM, /obj/item))
+	. = ..()
+	if(. || !istype(AM, /obj/item))
+		return
+	var/obj/item/I = AM
+	return I.throwing
 
 /obj/structure/closet/crate/can_open()
 	return 1
