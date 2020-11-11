@@ -1,7 +1,0 @@
-author: "silicons"
-delete-after: True
-changes: 
-  - bugfix: "soulcatcher emotes now format properly for the person emoting"
-  - bugfix: "soulcatcher AR projections now support text formatting"
-  - tweak: "soulcatchers now use distance rather than view/linetrace check, less cpu usage. range bumped to 7."
-  - tweak: "soulcatcher AR projections now use their eyeobj perspective rather than host perspective"

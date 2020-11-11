@@ -1,4 +1,0 @@
-author: "silicons"
-delete-after: True
-changes: 
-  - bugfix: "brainmobs can understand AIs without a snowflake MMI check."
