@@ -73,6 +73,7 @@
 		brainmob << sound
 
 /datum/nifsoft/soulcatcher/proc/say_into(var/message, var/mob/living/sender, var/mob/eyeobj)
+	message = trim(message)
 	if(!length(message))
 		return
 	message = sender.say_emphasis(message)
@@ -92,6 +93,7 @@
 	log_nsay(message,nif.human.real_name,sender)
 
 /datum/nifsoft/soulcatcher/proc/emote_into(var/message, var/mob/living/sender, var/mob/eyeobj)
+	message = trim(message)
 	if(!length(message))
 		return
 	message = sender.say_emphasis(message)
