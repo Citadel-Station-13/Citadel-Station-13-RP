@@ -13,7 +13,7 @@
 	fore_dir = EAST	// Which direction the ship/z-level is facing.  It will move dust particles from that direction when moving.
 	base = TRUE		// Honestly unsure what this does but it seems the main sector or "Map" we're at has this so here it stays
 	// The waypoints that are avaliable once you are at this Navpoint
-	initial_generic_waypoints = list("nav_capitalship_docking2", "triumph_excursion_hangar", "triumph_space_SW")
+	initial_generic_waypoints = list("nav_capitalship_docking2", "triumph_excursion_hangar", "triumph_space_SW", "triumph_mining_port")
 
 	initial_restricted_waypoints = list(
 		"Excursion Shuttle" = list("triumph_excursion_hangar"),
@@ -79,6 +79,17 @@
 	name = "short jump raiding console"
 	shuttle_tag = "Pirate Skiff"
 */
+
+// Mining Shuttle
+
+/obj/effect/overmap/visitable/ship/landable/mining
+	name = "Mining Shuttle"
+	desc = "It ain't much, but it's honest work."
+	fore_dir = WEST
+	vessel_mass = 7000
+	vessel_size = SHIP_SIZE_SMALL
+	shuttle = "Mining Shuttle"
+
 // STATIC PLANET/BASE LOCATIONS
 
 // -- Datums -- //
