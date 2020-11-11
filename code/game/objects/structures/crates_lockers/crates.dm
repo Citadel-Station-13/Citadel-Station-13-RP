@@ -12,6 +12,9 @@
 //	mouse_drag_pointer = MOUSE_ACTIVE_POINTER	//???
 	var/rigged = 0
 
+/obj/structure/closet/crate/CanPass(atom/movable/AM, turf/T)
+	return ..() || (opened && istype(AM, /obj/item))
+
 /obj/structure/closet/crate/can_open()
 	return 1
 
@@ -348,7 +351,6 @@
 	starts_with = list(
 		/obj/random/mre = 6)
 
-
 /obj/structure/closet/crate/bin
 	name = "large bin"
 	desc = "A large bin."
@@ -356,7 +358,6 @@
 	icon_state = "largebin"
 	icon_opened = "largebinopen"
 	icon_closed = "largebin"
-
 
 /obj/structure/closet/crate/radiation
 	name = "radioactive gear crate"
