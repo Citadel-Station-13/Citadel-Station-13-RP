@@ -363,6 +363,34 @@
 		return FALSE
 	soulcatcher.say_into(message,src,eyeobj)
 
+/mob/living/carbon/brain/caught_soul/eastshift()
+	if(!eyeobj)
+		return
+	if(eyeobj.pixel_x <= 16)
+		eyeobj.pixel_x++
+		eyeobj.is_shifted = TRUE
+
+/mob/living/carbon/brain/caught_soul/westshift()
+	if(!eyeobj)
+		return
+	if(eyeobj.pixel_x >= -16)
+		eyeobj.pixel_x--
+		eyeobj.is_shifted = TRUE
+
+/mob/living/carbon/brain/caught_soul/northshift()
+	if(!eyeobj)
+		return
+	if(eyeobj.pixel_y <= 16)
+		eyeobj.pixel_y++
+		eyeobj.is_shifted = TRUE
+
+/mob/living/carbon/brain/caught_soul/southshift()
+	if(!eyeobj)
+		return
+	if(eyeobj.pixel_y >= -16)
+		eyeobj.pixel_y--
+		eyeobj.is_shifted = TRUE
+
 /mob/living/carbon/brain/caught_soul/emote(var/act,var/m_type=1,var/message = null)
 	if(silent)
 		return FALSE
@@ -454,6 +482,12 @@
 /mob/observer/eye/ar_soul/proc/human_moved()
 	if(get_dist(parent_human,src) > SOULCATCHER_RANGE)
 		forceMove(get_turf(parent_human))
+
+/mob/observer/eye/ar_soul/Moved()
+	. = ..()
+	if(is_shifted)
+		pixel_x = 0
+		pixel_y = 0
 
 ///////////////////
 //The catching hook
