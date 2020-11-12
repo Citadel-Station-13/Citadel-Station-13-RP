@@ -50,7 +50,7 @@
 	//If you had a NIF...
 	if((character.type == /mob/living/carbon/human) && pref.nif_id && pref.nif_durability)
 		var/nif_path = GLOB.nif_id_lookup[pref.nif_id]
-		new nif_path(character,pref.nif_durability,pref.nif_savedata)
+		new nif_path(character,pref.nif_durability,pref.nif_savedata, pref.real_name)
 
 		//And now here's the trick. We wipe these so that if they die, they lose the NIF.
 		//Backup implants will start saving this again periodically, and so will cryo'ing out.
