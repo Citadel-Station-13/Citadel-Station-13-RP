@@ -73,7 +73,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	var/list/planes_visible = list()
 
 //Constructor comes with a free AR HUD
-/obj/item/nif/Initialize(mapload, wear, list/load_data)
+/obj/item/nif/Initialize(mapload, wear, list/load_data, force_name)
 	. = ..()
 
 	//First one to spawn in the game, make a big icon
@@ -92,7 +92,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	//If given a human on spawn (probably from persistence)
 	if(ishuman(loc))
 		var/mob/living/carbon/human/H = loc
-		if(!quick_implant(H))
+		if(!quick_implant(H, force_name))
 			WARNING("NIF spawned in [H] failed to implant")
 			return INITIALIZE_HINT_QDEL
 		else
@@ -140,7 +140,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	return FALSE
 
 //For debug or antag purposes
-/obj/item/nif/proc/quick_implant(var/mob/living/carbon/human/H)
+/obj/item/nif/proc/quick_implant(var/mob/living/carbon/human/H, force_name)
 	if(istype(H))
 		var/obj/item/organ/external/parent
 		//Try to find their brain and put it near that
@@ -154,7 +154,9 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 			return FALSE
 		forceMove(parent)
 		parent.implants += src
-		if(H.mind)
+		if(!isnull(force_name))
+			owner = force_name
+		else if(H.mind)
 			owner = H.mind.name
 		implant(H)
 		return TRUE
