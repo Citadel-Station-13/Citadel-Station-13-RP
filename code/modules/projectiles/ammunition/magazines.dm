@@ -214,89 +214,73 @@
 	matter = list(DEFAULT_WALL_MATERIAL = 780, "silver" = 600)
 
 ///////// 10x24mm Caseless /////////
-/obj/item/ammo_magazine/m10x24mm/large
-	name = "Large 10x24mm Caseless Magazine"
+
+/obj/item/ammo_magazine/m10x24mm
+	name = "debug magazine that shouldn't appear please report it if you do (10x24mm-C)"
 	ammo_type = /obj/item/ammo_casing/a10x24mmcaseless
 	icon_state = "usmc-large"
-	caliber = "10x24mm caseless"
+	caliber = "10mmCL"
 	w_class = ITEMSIZE_NORMAL
 	matter = list(DEFAULT_WALL_MATERIAL = 8500)
 	mag_type = MAGAZINE
 	max_ammo = 96
 	multiple_sprites = 1
 
+/obj/item/ammo_magazine/m10x24mm/large
+	name = "magazine (large) (10x24mm-C)"
+	icon_state = "usmc-large"
+	matter = list(DEFAULT_WALL_MATERIAL = 8500)
+	max_ammo = 96
+
+/obj/item/ammo_magazine/m10x24mm/large/hp
+	name = "magazine (large) (10x24mm-C hollow-point)"
+	ammo_type = /obj/item/ammo_casing/a10x24mmcaseless/hp
+	icon_state = "usmc-large-hp"
+
+/obj/item/ammo_magazine/m10x24mm/large/ap
+	name = "magazine (large) (10x24mm-C armor-piercing)"
+	ammo_type = /obj/item/ammo_casing/a10x24mmcaseless/ap
+	icon_state = "usmc-large-ap"
+
 /obj/item/ammo_magazine/m10x24mm/med
-	name = "Medium 10x24mm Caseless Magazine"
-	ammo_type = /obj/item/ammo_casing/a10x24mmcaseless
+	name = "magazine (medium) (10x24mm-C)"
 	icon_state = "usmc-med"
-	caliber = "10x24mm caseless"
-	mag_type = MAGAZINE
-	w_class = ITEMSIZE_NORMAL
+	caliber = "10mmCL"
 	matter = list(DEFAULT_WALL_MATERIAL = 5500)
 	max_ammo = 64
 	multiple_sprites = 1
 
+/obj/item/ammo_magazine/m10x24mm/med/hp
+	name = "magazine (medium) (10x24mm-C hollow-point)"
+	ammo_type = /obj/item/ammo_casing/a10x24mmcaseless/hp
+	icon_state = "usmc-med-hp"
+
+/obj/item/ammo_magazine/m10x24mm/med/ap
+	name = "magazine (medium) (10x24mm-C armor-piercing)"
+	ammo_type = /obj/item/ammo_casing/a10x24mmcaseless/ap
+	icon_state = "usmc-med-ap"
+
 /obj/item/ammo_magazine/m10x24mm/small
-	name = "Small 10x24mm Caseless Magazine"
-	ammo_type = /obj/item/ammo_casing/a10x24mmcaseless
+	name = "magazine (small) (10x24mm-C)"
 	icon_state = "usmc-small"
-	caliber = "10x24mm caseless"
-	mag_type = MAGAZINE
+	caliber = "10mmCL"
 	matter = list(DEFAULT_WALL_MATERIAL = 2500)
 	max_ammo = 32
 	multiple_sprites = 1
 
-/obj/item/ammo_magazine/m10x24mm/large/hp
-	name = "Large 10x24mm Caseless HP Magazine"
-	ammo_type = /obj/item/ammo_casing/a10x24mmcaseless/hp
-	icon_state = "usmc-large-hp"
-	caliber = "10x24mm caseless"
-	mag_type = MAGAZINE
-	max_ammo = 96
-	multiple_sprites = 1
-
-/obj/item/ammo_magazine/m10x24mm/med/hp
-	name = "Medium 10x24mm Caseless HP Magazine"
-	ammo_type = /obj/item/ammo_casing/a10x24mmcaseless/hp
-	icon_state = "usmc-med-hp"
-	caliber = "10x24mm caseless"
-	mag_type = MAGAZINE
-	max_ammo = 64
-	multiple_sprites = 1
-
 /obj/item/ammo_magazine/m10x24mm/small/hp
-	name = "Small 10x24mm Caseless HP Magazine"
+	name = "magazine (small) (10x24mm-C hollow-point)"
 	ammo_type = /obj/item/ammo_casing/a10x24mmcaseless/hp
 	icon_state = "usmc-small-hp"
-	caliber = "10x24mm caseless"
-	mag_type = MAGAZINE
+	caliber = "10mmCL"
 	max_ammo = 32
 	multiple_sprites = 1
 
-/obj/item/ammo_magazine/m10x24mm/large/ap
-	name = "Large 10x24mm Caseless AP Magazine"
-	ammo_type = /obj/item/ammo_casing/a10x24mmcaseless/ap
-	icon_state = "usmc-large-ap"
-	caliber = "10x24mm caseless"
-	mag_type = MAGAZINE
-	max_ammo = 96
-	multiple_sprites = 1
-
-/obj/item/ammo_magazine/m10x24mm/med/ap
-	name = "Medium 10x24mm Caseless AP Magazine"
-	ammo_type = /obj/item/ammo_casing/a10x24mmcaseless/ap
-	icon_state = "usmc-med-ap"
-	caliber = "10x24mm caseless"
-	mag_type = MAGAZINE
-	max_ammo = 64
-	multiple_sprites = 1
-
 /obj/item/ammo_magazine/m10x24mm/small/ap
-	name = "Small 10x24mm Caseless AP Magazine"
+	name = "magazine (small) (10x24mm-C armor-piercing)"
 	ammo_type = /obj/item/ammo_casing/a10x24mmcaseless/ap
 	icon_state = "usmc-small-ap"
-	caliber = "10x24mm caseless"
-	mag_type = MAGAZINE
+	caliber = "10mmCL"
 	max_ammo = 32
 	multiple_sprites = 1
 

@@ -1,6 +1,6 @@
 /obj/item/gun/projectile/caseless/prototype
 	name = "prototype caseless rifle"
-	desc = "A rifle cooked up in NanoTrasen's R&D labs that operates with Kraut Space Magic™ clockwork internals. Uses solid phoron 5mm caseless rounds."
+	desc = "A rifle cooked up in NanoTrasen's R&D labs that operates with Kraut Space Magicï¿½ clockwork internals. Uses solid phoron 5mm caseless rounds."
 	icon_state = "caseless"
 	item_state = "caseless"
 	w_class = ITEMSIZE_LARGE
@@ -26,7 +26,7 @@
 	icon_state = "usmc"
 	item_state = "usmc"
 	w_class = ITEMSIZE_LARGE
-	caliber = "10x24mm caseless"
+	caliber = "10mmCL"
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 3)
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
