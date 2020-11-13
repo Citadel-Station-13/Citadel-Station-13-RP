@@ -284,6 +284,15 @@
 	max_ammo = 32
 	multiple_sprites = 1
 
+/obj/item/ammo_magazine/m10x24mm/small/snark
+	desc = "A magazine for some kind of gun. Taped on it is a reminder to \"watch those firing lanes\" and a drawing of a stickman wearing a helmet. The helmet has a hole in it. The stickman is dead."
+
+/obj/item/ammo_magazine/m10x24mm/small/hp/snark
+	desc = "A magazine for some kind of gun. Taped on it is a reminder to \"watch those firing lanes\" and a drawing of a stickman wearing a helmet. The helmet has a hole in it. The stickman is dead."
+
+/obj/item/ammo_magazine/m10x24mm/small/ap/snark
+	desc = "A magazine for some kind of gun. Taped on it is a reminder to \"watch those firing lanes\" and a drawing of a stickman wearing a helmet. The helmet has a hole in it. The stickman is dead."
+
 ///////// 5mm Caseless /////////
 
 /obj/item/ammo_magazine/m5mmcaseless
