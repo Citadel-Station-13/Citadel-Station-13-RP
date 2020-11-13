@@ -82,7 +82,7 @@
 				if(76 to INFINITY)
 					result = "huge quantities of [ore_type]"
 		results += result
-	to_chat(user, results.Join("<br>"))
+	to_chat(user, results)
 
 /obj/item/mining_scanner/advanced
 	name = "advanced ore detector"

@@ -427,7 +427,7 @@ turf/simulated/mineral/floor/light_corner
 					else if(newDepth > F.excavation_required - F.clearance_range) // Not quite right but you still extract your find, the closer to the bottom the better, but not above 80%
 						excavate_find(prob(80 * (F.excavation_required - newDepth) / F.clearance_range), F)
 
-				to_chat(user, "<span class='notice'>You finish [P.drill_verb] \the [src].</span>")
+				//to_chat(user, "<span class='notice'>You finish [P.drill_verb] \the [src].</span>")
 
 				if(newDepth >= 200) // This means the rock is mined out fully
 					if(P.destroy_artefacts)
