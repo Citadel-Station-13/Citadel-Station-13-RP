@@ -61,13 +61,18 @@
 			else
 				ore_type = metal
 			if(ore_type)
-				metals[ore_type] += T.resources[metal]
+				if(metals[ore_type])
+					metals[ore_type] += T.resources[metal]
+				else
+					metals[ore_type] = T.resources[metal]
 
-	var/message = "\icon[src] <span class='notice'>The scanner beeps and displays a readout.</span>"
+	to_chat(user, "\icon[src] <span class='notice'>The scanner beeps and displays a readout.</span>")
+	var/list/results = list()
 	for(var/ore_type in metals)
 		var/result = "no sign"
+
 		if(exact_amount)
-			result = "- [metals[ore_type]] [ore_type]"
+			result = "- [metals[ore_type]] of [ore_type]"
 		else
 			switch(metals[ore_type])
 				if(1 to 25)
@@ -76,8 +81,9 @@
 					result = "significant amounts of [ore_type]"
 				if(76 to INFINITY)
 					result = "huge quantities of [ore_type]"
-		message += "<br><span class='notice'>[result]</span>"
-	to_chat(user, message)
+		results += result
+	to_chat(user, results.Join("<br>"))
+
 
 /obj/item/mining_scanner/advanced
 	name = "advanced ore detector"
