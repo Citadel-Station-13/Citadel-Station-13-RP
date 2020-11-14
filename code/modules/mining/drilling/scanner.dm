@@ -8,7 +8,7 @@
 	matter = list(DEFAULT_WALL_MATERIAL = 150)
 	var/scanrange = 2
 	var/maxscanrange = 2
-	var/scan_time = 5 SECONDS
+	var/scan_time = 3 SECONDS
 	var/scan_exact_ores = FALSE
 	var/scan_exact_amounts = FALSE
 
@@ -28,7 +28,7 @@
 	. = ..()
 
 /obj/item/mining_scanner/attack_self(mob/user)
-	to_chat(user,"You begin sweeping \the [src] about, scanning for metal deposits.")
+	to_chat(user, "<span class='notice'>You begin sweeping \the [src] about, scanning for metal deposits.</span>")
 	playsound(loc, 'sound/items/goggles_charge.ogg', 50, 1, -6)
 
 	if(!do_after(user, scan_time))
@@ -61,18 +61,13 @@
 			else
 				ore_type = metal
 			if(ore_type)
-				if(metals[ore_type])
-					metals[ore_type] += T.resources[metal]
-				else
-					metals[ore_type] = T.resources[metal]
+				metals[ore_type] += T.resources[metal]
 
-	to_chat(user, "\icon[src] <span class='notice'>The scanner beeps and displays a readout.</span>")
-	var/list/results = list()
+	var/message = "\icon[src] <span class='notice'>The scanner beeps and displays a readout.</span>"
 	for(var/ore_type in metals)
 		var/result = "no sign"
-
 		if(exact_amount)
-			result = "- [metals[ore_type]] of [ore_type]"
+			result = "- [metals[ore_type]] [ore_type]"
 		else
 			switch(metals[ore_type])
 				if(1 to 25)
@@ -81,8 +76,8 @@
 					result = "significant amounts of [ore_type]"
 				if(76 to INFINITY)
 					result = "huge quantities of [ore_type]"
-		results += result
-	to_chat(user, results)
+		message += "<br><span class='notice'>[result]</span>"
+	to_chat(user, message)
 
 /obj/item/mining_scanner/advanced
 	name = "advanced ore detector"
