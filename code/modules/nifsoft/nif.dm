@@ -98,8 +98,9 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 				qdel(src)
 			return FALSE
 		else
-			//Free commlink for return customers
+			//Free commlink and soulcatcher for return customers
 			new /datum/nifsoft/commlink(src)
+			new /datum/nifsoft/soulcatcher(src)
 
 	//Free civilian AR included
 	new /datum/nifsoft/ar_civ(src)
