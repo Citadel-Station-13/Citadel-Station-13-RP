@@ -1,4 +1,4 @@
-w//replaces our stun baton code with /tg/station's code
+//replaces our stun baton code with /tg/station's code
 /obj/item/melee/baton
 	name = "stunbaton"
 	desc = "A stun baton for incapacitating people with."
