@@ -1,4 +1,0 @@
-author: "king5327"
-delete-after: True
-changes: 
-  - bugfix: "The path for the pathfinder sprite stacks is fixed to allow the icon to actually show up."
