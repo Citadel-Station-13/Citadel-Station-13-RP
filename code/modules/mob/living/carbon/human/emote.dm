@@ -931,7 +931,7 @@
 				return 1
 			else
 				src.SpinAnimation(7,1)
-				message = "does a flip!"
+				// message = "does a flip!"
 				m_type = 1
 // New emotes below this line
 		if ("purr")
