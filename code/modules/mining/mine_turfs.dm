@@ -302,12 +302,15 @@ turf/simulated/mineral/floor/light_corner
 			)
 */
 		if(istype(W, /obj/item/shovel))
+			var/obj/item/shovel/S = W
 			valid_tool = 1
+			digspeed = S.digspeed
 
 		if(istype(W, /obj/item/pickaxe))
 			var/obj/item/pickaxe/P = W
-			valid_tool = 1
-			digspeed = P.digspeed
+			if(P.sand_dig)
+				valid_tool = 1
+				digspeed = P.digspeed
 
 		if(valid_tool)
 			if(sand_dug)
