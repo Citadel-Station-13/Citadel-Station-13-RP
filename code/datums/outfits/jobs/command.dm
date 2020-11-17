@@ -37,7 +37,7 @@
 	shoes = /obj/item/clothing/shoes/brown
 	id_type = /obj/item/card/id/silver/secretary
 	pda_type = /obj/item/pda/heads/hop
-	r_hand = /obj/item/clipboard
+	l_hand = /obj/item/clipboard
 
 /decl/hierarchy/outfit/job/secretary/pre_equip(mob/living/carbon/human/H)
 	..()

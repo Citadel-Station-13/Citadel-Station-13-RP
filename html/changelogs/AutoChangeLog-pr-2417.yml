@@ -1,5 +1,0 @@
-author: "lolman360"
-delete-after: True
-changes: 
-  - rscadd: "Proteans are also fully functional rigsuits now."
-  - bugfix: "proteans and being picked up, mostly"
