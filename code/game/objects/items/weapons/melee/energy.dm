@@ -589,6 +589,16 @@
 		w_class = WEIGHT_CLASS_NORMAL
 		// user.lazy_unregister_event(/lazy_event/on_moved, src, .proc/mob_moved)
 	update_icon()
+
+/obj/item/melee/energy/hfmachete/afterattack(atom/target, mob/user, proximity)
+	if(!proximity)
+		return
+	..()
+	if(target)
+		if(istype(target,/obj/effect/plant))
+			var/obj/effect/plant/P = target
+			P.die_off()
+
 /*
 /obj/item/melee/energy/hfmachete/dropped(mob/user)
 	user.lazy_unregister_event(/lazy_event/on_moved, src, .proc/mob_moved)
