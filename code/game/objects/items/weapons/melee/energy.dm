@@ -181,7 +181,8 @@
 
 /obj/item/melee/energy/examine(mob/user)
 	..()
-	to_chat(user, "<span class='notice'>Alt-click to recolor it.</span>")
+	if(colorable)
+		to_chat(user, "<span class='notice'>Alt-click to recolor it.</span>")
 
 /*
  * Energy Axe
@@ -529,3 +530,116 @@
 		playsound(user.loc, 'sound/weapons/blade1.ogg', 50, 1)
 		return 1
 	return 0
+
+/obj/item/melee/energy/hfmachete // ported from /vg/station - vgstation-coders/vgstation13#13913, fucked up by hatterhat
+	name = "high-frequency machete"
+	desc = "A high-frequency broad blade used either as an implement or in combat like a short sword."
+	icon_state = "hfmachete0"
+	sharp = TRUE
+	edge = TRUE
+	force = 20 // You can be crueler than that, Jack.
+	throwforce = 40
+	throw_speed = 8
+	throw_range = 8
+	w_class = WEIGHT_CLASS_NORMAL
+	siemens_coefficient = 1
+	origin_tech = list(TECH_COMBAT = 3, TECH_ILLEGAL = 3)
+	attack_verb = list("attacks", "dices", "cleaves", "tears", "cuts", "slashes")
+	armor_penetration = 50
+	var/base_state = "hfmachete"
+	hitsound = 'sound/weapons/bladeslice.ogg' // man it would be NICE if i knew how the sound thing worked
+	can_cleave = TRUE
+	embed_chance = 0 // let's not
+
+/obj/item/melee/energy/hfmachete/update_icon()
+	icon_state = "[base_state][active]"
+
+/obj/item/melee/energy/hfmachete/attack_self(mob/living/user)
+	toggleActive(user)
+	add_fingerprint(user)
+
+/obj/item/melee/energy/hfmachete/proc/toggleActive(mob/user, var/togglestate = "")
+	switch(togglestate)
+		if("on")
+			active = 1
+		if("off")
+			active = 0
+		else
+			active = !active
+	if(active)
+		force = 40
+		throwforce = 20
+		throw_speed = 3
+		// sharpness = 1.7
+		// sharpness_flags += HOT_EDGE | CUT_WALL | CUT_AIRLOCK - if only there  a good sharpness system
+		armor_penetration = 100
+		to_chat(user, "<span class='warning'> [src] starts vibrating.</span>")
+		playsound(user, 'sound/weapons/hf_machete/hfmachete1.ogg', 40, 0)
+		w_class = WEIGHT_CLASS_BULKY
+		// user.lazy_register_event(/lazy_event/on_moved, src, .proc/mob_moved)
+	else
+		force = initial(force)
+		throwforce = initial(throwforce)
+		throw_speed = initial(throw_speed)
+		// sharpness = initial(sharpness)
+		// sharpness_flags = initial(sharpness_flags) - if only there was a good sharpness system
+		armor_penetration = initial(armor_penetration)
+		to_chat(user, "<span class='notice'> [src] stops vibrating.</span>")
+		playsound(user, 'sound/weapons/hf_machete/hfmachete0.ogg', 40, 0)
+		w_class = WEIGHT_CLASS_NORMAL
+		// user.lazy_unregister_event(/lazy_event/on_moved, src, .proc/mob_moved)
+	update_icon()
+/*
+/obj/item/melee/energy/hfmachete/dropped(mob/user)
+	user.lazy_unregister_event(/lazy_event/on_moved, src, .proc/mob_moved)
+
+/obj/item/melee/energy/hfmachete/throw_at(atom/target, range, speed, thrower) // todo: get silicons to interpret this because >sleeps
+	if(!usr)
+		return ..()
+	spawn()
+		playsound(src, get_sfx("machete_throw"),30, 0)
+		animate(src, transform = turn(matrix(), -30), time = 1, loop = -1)
+		animate(transform = turn(matrix(), -60), time = 1)
+		animate(transform = turn(matrix(), -90), time = 1)
+		animate(transform = turn(matrix(), -120), time = 1)
+		animate(transform = turn(matrix(), -150), time = 1)
+		animate(transform = null, time = 1)
+		while(throwing)
+			sleep(5)
+		animate(src)
+	..(target, range, speed = 3, thrower)
+*/
+
+// none of these are working properly in testing which is something you absolutely hate to see
+/*
+/obj/item/melee/energy/hfmachete/throw_at(atom/target, range, speed, thrower)
+	playsound(src, get_sfx("machete_throw"), 30, 0)
+	. = ..()
+
+/obj/item/melee/energy/hfmachete/throw_impact(atom/hit_atom, speed)
+	if(isturf(hit_atom))
+		for(var/mob/M in hit_atom)
+			playsound(M, get_sfx("machete_throw_hit"), 60, 0)
+	..()
+
+/obj/item/melee/energy/hfmachete/attack(mob/M, mob/living/user)
+	playsound(M, get_sfx("machete_hit"), 50, 0)
+	..()
+*/
+/*
+/obj/item/melee/energy/hfmachete/proc/mob_moved(atom/movable/mover)
+	if(iscarbon(mover) && active)
+		for(var/obj/effect/plantsegment/P in range(mover,0))
+			qdel(P)
+
+/obj/item/melee/energy/hfmachete/attackby(obj/item/weapon/W, mob/living/user)
+	..()
+	if(istype(W, /obj/item/melee/energy/hfmachete))
+		to_chat(user, "<span class='notice'>You combine the two [W] together, making a single scissor-bladed weapon! You feel fucking invincible!</span>")
+		qdel(W)
+		W = null
+		qdel(src)
+		var/B = new /obj/item/weapon/bloodlust(user.loc)
+		user.put_in_hands(B)
+		// blust one day lads.
+*/
