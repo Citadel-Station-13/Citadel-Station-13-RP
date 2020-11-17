@@ -1,0 +1,7 @@
+author: "Hatterhat"
+delete-after: True
+changes: 
+  - tweak: "A fair bit of feedback messages from your ore satchel or hitting rocks has been removed. Except the bit that pops up when you hit an anomaly-bearing rock. That's still there. Use your eyes."
+  - tweak: "Digging-capable mining tools (cyborg jackhammer, advanced drill, diamond drill, etc) now use their digspeeds instead of the default 40 digspeed when digging up sand."
+  - tweak: "Sand tiles now yield a flat 5 sand. All the time. Forever."
+  - balance: "Exosuit drills are faster. Theoretically."

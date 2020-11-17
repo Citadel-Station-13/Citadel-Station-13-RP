@@ -291,34 +291,43 @@ turf/simulated/mineral/floor/light_corner
 
 	if(!density)
 
+		var/valid_tool = 0
+		var/digspeed = 40
+/*
 		var/list/usable_tools = list(
 			/obj/item/shovel,
 			/obj/item/pickaxe/diamonddrill,
 			/obj/item/pickaxe/drill,
 			/obj/item/pickaxe/borgdrill
 			)
+*/
+		if(istype(W, /obj/item/shovel))
+			var/obj/item/shovel/S = W
+			valid_tool = 1
+			digspeed = S.digspeed
 
-		var/valid_tool
-		for(var/valid_type in usable_tools)
-			if(istype(W,valid_type))
+		if(istype(W, /obj/item/pickaxe))
+			var/obj/item/pickaxe/P = W
+			if(P.sand_dig)
 				valid_tool = 1
-				break
+				digspeed = P.digspeed
 
 		if(valid_tool)
-			if (sand_dug)
+			if(sand_dug)
 				to_chat(user, "<span class='warning'>This area has already been dug.</span>")
 				return
 
 			var/turf/T = user.loc
-			if (!(istype(T)))
+			if(!(istype(T)))
 				return
 
-			to_chat(user, "<span class='notice'>You start digging.</span>")
+			// to_chat(user, "<span class='notice'>You start digging.</span>")
 			playsound(user.loc, 'sound/effects/rustle1.ogg', 50, 1)
 
-			if(!do_after(user,40)) return
+			if(!do_after(user,digspeed))
+				return
 
-			to_chat(user, "<span class='notice'>You dug a hole.</span>")
+			// to_chat(user, "<span class='notice'>You dug a hole.</span>")
 			GetDrilled()
 
 		else if(istype(W,/obj/item/storage/bag/ore))
@@ -407,9 +416,10 @@ turf/simulated/mineral/floor/light_corner
 			if(finds && finds.len)
 				var/datum/find/F = finds[1]
 				if(newDepth > F.excavation_required) // Digging too deep can break the item. At least you won't summon a Balrog (probably)
-					fail_message = ". <b>[pick("There is a crunching noise","[W] collides with some different rock","Part of the rock face crumbles away","Something breaks under [W]")]</b>"
+					fail_message = "<b>[pick("There is a crunching noise","[W] collides with some different rock","Part of the rock face crumbles away","Something breaks under [W]")]</b>"
 				wreckfinds(P.destroy_artefacts)
-			to_chat(user, "<span class='notice'>You start [P.drill_verb][fail_message].</span>")
+			if(fail_message)
+				to_chat(user, "<span class='notice'>[fail_message].</span>")
 
 			if(do_after(user,P.digspeed))
 
@@ -420,7 +430,7 @@ turf/simulated/mineral/floor/light_corner
 					else if(newDepth > F.excavation_required - F.clearance_range) // Not quite right but you still extract your find, the closer to the bottom the better, but not above 80%
 						excavate_find(prob(80 * (F.excavation_required - newDepth) / F.clearance_range), F)
 
-				to_chat(user, "<span class='notice'>You finish [P.drill_verb] \the [src].</span>")
+				//to_chat(user, "<span class='notice'>You finish [P.drill_verb] \the [src].</span>")
 
 				if(newDepth >= 200) // This means the rock is mined out fully
 					if(P.destroy_artefacts)
@@ -530,7 +540,7 @@ turf/simulated/mineral/floor/light_corner
 	if(!density)
 		if(!sand_dug)
 			sand_dug = 1
-			for(var/i=0;i<(rand(3)+2);i++)
+			for(var/i=0;i<5;i++)
 				new/obj/item/ore/glass(src)
 			update_icon()
 		return
