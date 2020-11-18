@@ -245,11 +245,3 @@
 	containertype = /obj/structure/closet/crate/secure
 	containername = "frontier phaser crate"
 	access = access_explorer
-
-/datum/supply_pack/munitions/expeditionmarksmanbox
-	name = "Marksman Rifle Box (station-locked) crate"
-	contains = list(/obj/item/gunbox/marksman = 1)
-	cost = 100
-	containertype = /obj/structure/closet/crate/secure
-	containername = "marksman rifle box crate"
-	access = access_explorer
