@@ -187,7 +187,7 @@
 
 /obj/item/gun/projectile/shotgun/pump/scopedrifle
 	name = "scoped bolt action"
-	desc = "A bolt-action rifle with a scope afixed to it by a gun smith. Designed for the Field Scout. Uses 7.62 rounds."
+	desc = "A bolt-action rifle with a scope afixed to it by a gun smith. Uses 7.62 rounds."
 	item_state = "boltaction"
 	icon_state = "boltaction-scoped"
 	fire_sound = 'sound/weapons/Gunshot_generic_rifle.ogg'

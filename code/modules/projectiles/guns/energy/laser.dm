@@ -185,7 +185,7 @@
 
 /obj/item/gun/energy/sniperrifle/locked
 	name = "expedition marksman energy rifle"
-	desc = "A modified version of the HI DMR 9E with a replacement firing pin and reduced shot capacity in exchange for a self recharging cell. Designed for the Field Scout."
+	desc = "A modified version of the HI DMR 9E with a replacement firing pin and reduced shot capacity in exchange for a self recharging cell."
 	pin = /obj/item/firing_pin/explorer
 	cell_type = /obj/item/cell/device/weapon/recharge/sniper
 	accuracy = 0 //Forced missing fucking sucks ass
