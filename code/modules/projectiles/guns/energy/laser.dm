@@ -188,8 +188,8 @@
 	desc = "A modified version of the HI DMR 9E with a replacement firing pin and reduced shot capacity in exchange for a self recharging cell. Designed for the Field Scout."
 	pin = /obj/item/firing_pin/explorer
 	cell_type = /obj/item/cell/device/weapon/recharge/sniper
-	accuracy = -10 //shooting at the hip
-	scoped_accuracy = 30
+	accuracy = 0 //Forced missing fucking sucks ass
+	scoped_accuracy = 60
 	charge_cost = 1200
 
 /obj/item/gun/energy/monorifle
