@@ -544,10 +544,10 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	siemens_coefficient = 1
 	origin_tech = list(TECH_COMBAT = 3, TECH_ILLEGAL = 3)
-	attack_verb = list("attacks", "dices", "cleaves", "tears", "cuts", "slashes")
+	attack_verb = list("attacked", "diced", "cleaved", "torn", "cut", "slashed")
 	armor_penetration = 50
 	var/base_state = "hfmachete"
-	hitsound = 'sound/weapons/bladeslice.ogg' // man it would be NICE if i knew how the sound thing worked
+	hitsound = "machete_hit_sound" // dont mind the meaty hit sounds if you hit something that isnt meaty
 	can_cleave = TRUE
 	embed_chance = 0 // let's not
 
