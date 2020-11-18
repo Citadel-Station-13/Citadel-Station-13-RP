@@ -3771,7 +3771,6 @@
 /obj/machinery/door/window/northright{
 	req_one_access = list(5)
 	},
-/obj/item/shield_projector/line,
 /obj/item/reagent_containers/hypospray/autoinjector/biginjector/bonemed,
 /obj/item/reagent_containers/hypospray/autoinjector/biginjector/clotting,
 /obj/item/reagent_containers/hypospray/autoinjector/biginjector/organ,
@@ -11175,7 +11174,6 @@
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 1
 	},
-/obj/item/shield_projector/rectangle,
 /obj/item/reagent_containers/hypospray/autoinjector/biginjector/healing_nanites,
 /obj/item/reagent_containers/hypospray/autoinjector/biginjector/pain,
 /obj/item/reagent_containers/hypospray/autoinjector/biginjector/pain,
@@ -23724,7 +23722,6 @@
 	req_one_access = list(5)
 	},
 /obj/machinery/light,
-/obj/item/shield_projector/line,
 /obj/item/reagent_containers/hypospray/autoinjector/biginjector/bonemed,
 /obj/item/reagent_containers/hypospray/autoinjector/biginjector/clotting,
 /obj/item/reagent_containers/hypospray/autoinjector/biginjector/organ,

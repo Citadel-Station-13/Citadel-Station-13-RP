@@ -502,6 +502,7 @@
 	storage_slots = 1
 	can_hold = list(
 		/obj/item/melee/sabre,
+		/obj/item/melee/baton/stunsword,
 		)
 	starts_with = list(
 		/obj/item/melee/sabre,
