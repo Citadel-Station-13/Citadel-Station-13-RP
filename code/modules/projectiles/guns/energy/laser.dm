@@ -183,6 +183,15 @@
 
 	toggle_scope(2.0)
 
+/obj/item/gun/energy/sniperrifle/locked
+	name = "expedition marksman energy rifle"
+	desc = "A modified version of the HI DMR 9E with a replacement firing pin and reduced shot capacity in exchange for a self recharging cell. Designed for the Field Scout."
+	pin = /obj/item/firing_pin/explorer
+	cell_type = /obj/item/cell/device/weapon/recharge/sniper
+	accuracy = -10 //shooting at the hip
+	scoped_accuracy = 30
+	charge_cost = 1200
+
 /obj/item/gun/energy/monorifle
 	name = "antique mono-rifle"
 	desc = "An old laser rifle. This one can only fire once before requiring recharging."

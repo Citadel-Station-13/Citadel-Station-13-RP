@@ -184,3 +184,27 @@
 	name = "blessed lever-action"
 	ammo_type = /obj/item/ammo_casing/a762/silver
 	holy = TRUE
+
+/obj/item/gun/projectile/shotgun/pump/scopedrifle
+	name = "scoped bolt action"
+	desc = "A bolt-action rifle with a scope afixed to it by a gun smith. Designed for the Field Scout. Uses 7.62 rounds."
+	item_state = "boltaction"
+	icon_state = "boltaction-scoped"
+	fire_sound = 'sound/weapons/Gunshot_generic_rifle.ogg'
+	max_shells = 5
+	caliber = "7.62mm"
+	origin_tech = list(TECH_COMBAT = 1)
+	load_method = SINGLE_CASING|SPEEDLOADER
+	action_sound = 'sound/weapons/riflebolt.ogg'
+	pin = /obj/item/firing_pin/explorer
+	w_class = ITEMSIZE_HUGE // So it can't fit in a backpack.
+	ammo_type = /obj/item/ammo_casing/a762/sniperhunter
+	accuracy = -10 //shooting at the hip
+	scoped_accuracy = 30
+
+/obj/item/gun/projectile/shotgun/pump/scopedrifle/verb/scope()
+	set category = "Object"
+	set name = "Use Scope"
+	set popup_menu = 1
+
+	toggle_scope(2.0)
