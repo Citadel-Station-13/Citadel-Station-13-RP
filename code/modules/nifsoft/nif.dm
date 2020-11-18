@@ -98,14 +98,12 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 				qdel(src)
 			return FALSE
 		else
-			//Free commlink for return customers
+			//Free commlink and soulcatcher for return customers
 			new /datum/nifsoft/commlink(src)
+			new /datum/nifsoft/soulcatcher(src)
 
 	//Free civilian AR included
 	new /datum/nifsoft/ar_civ(src)
-	
-	//Free soulcatcher because why not, people barely even use it.
-	new /datum/nifsoft/soulcatcher(src)
 
 	//If given wear (like when spawned) then done
 	if(wear)
