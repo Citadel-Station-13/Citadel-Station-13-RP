@@ -1,0 +1,4 @@
+author: "Hatterhat"
+delete-after: True
+changes: 
+  - balance: "Items with negative slowdown now work nicely for people of any hardiness. This is a re-implementation of something lost in the hardsync."
