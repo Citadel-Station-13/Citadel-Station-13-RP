@@ -67,8 +67,8 @@
 		return
 
 	update_icon()
-	return
 
+GLOBAL_VAR_INIT(heat_exchange_pipe_conductivity, 100)
 
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/process()
 	if(!parent)
@@ -85,7 +85,7 @@
 			if(abs(environment_temperature-pipe_air.temperature) > minimum_temperature_difference)
 				parent.temperature_interact(loc, volume, thermal_conductivity)
 		else if(istype(loc, /turf/space/))
-			parent.radiate_heat_to_space(surface, 1)
+			parent.radiate_heat_to_space(surface, GLOB.heat_exchange_pipe_conductivity)
 
 		if(has_buckled_mobs())
 			for(var/M in buckled_mobs)
