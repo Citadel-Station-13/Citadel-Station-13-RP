@@ -1,0 +1,6 @@
+author: "realbuffalowing"
+delete-after: True
+changes: 
+  - bugfix: "fixes chameleon items"
+  - bugfix: "fixes service borg bags"
+  - bugfix: "fixes service borg booze dispenser"
