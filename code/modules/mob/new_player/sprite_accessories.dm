@@ -2156,7 +2156,13 @@
 	c_beast_body
 		name = "Cyber Body"
 		icon_state = "c_beast_body"
+		color_blend_mode = ICON_MULTIPLY
 		body_parts = list(BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_TORSO,BP_GROIN)
+
+	c_beast_plating
+		name = "Cyber Plating (Use with Cyber Body)"
+		icon_state = "c_beast_plating"
+		body_parts = list(BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM)
 
 	c_beast_band
 		name = "Cyber Band (Use with Cybertech head)"
