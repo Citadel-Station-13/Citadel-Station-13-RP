@@ -67,3 +67,18 @@
 	id_pda_assignment = "Mercenary"
 
 	flags = OUTFIT_HAS_BACKPACK
+
+/decl/hierarchy/outfit/PARA
+	name = "Spec ops - PARA"
+	uniform = /obj/item/clothing/under/ert/para
+	suit = /obj/item/clothing/suit/armor/vest/ert/para
+	shoes = /obj/item/clothing/shoes/boots/swat/para
+	gloves = /obj/item/clothing/gloves/swat/para
+	l_ear = /obj/item/radio/headset/ert
+	belt = /obj/item/nullrod
+	head = /obj/item/clothing/head/helmet/ert/para
+	back = /obj/item/storage/backpack/ert/para
+	l_pocket = /obj/item/grenade/chem_grenade/holy
+
+	id_slot = slot_wear_id
+	id_type = /obj/item/card/id/centcom/ERT/PARA

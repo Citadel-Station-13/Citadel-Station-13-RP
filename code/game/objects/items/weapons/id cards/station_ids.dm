@@ -207,6 +207,15 @@
 	. = ..()
 	access |= get_all_station_access()
 
+/obj/item/card/id/centcom/ERT/PARA
+	name = "\improper PARA ID"
+	assignment = "Paracausal Anomaly Respone Agent"
+	icon_state = "ert-id"
+
+/obj/item/card/id/centcom/ERT/PARA/Initialize()
+	. = ..()
+	access |= get_all_station_access()
+
 // Department-flavor IDs
 /obj/item/card/id/medical
 	name = "medical identification card"
