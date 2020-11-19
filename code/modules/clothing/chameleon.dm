@@ -2,38 +2,59 @@
 //**Cham Jumpsuit**
 //*****************
 
-/obj/item/proc/disguise(var/newtype)
+/obj/item/proc/disguise(var/newtype, var/mob/user)
 	//this is necessary, unfortunately, as initial() does not play well with list vars
 	var/obj/item/copy = new newtype(null) //so that it is GCed once we exit
-
 	desc = copy.desc
 	name = copy.name
+	icon = copy.icon
+	icon_override = copy.icon_override
 	icon_state = copy.icon_state
+	color = copy.color
 	item_state = copy.item_state
 	body_parts_covered = copy.body_parts_covered
 	flags_inv = copy.flags_inv
+	gender = copy.gender
 
-	item_icons = copy.item_icons.Copy()
-	if(copy.item_state_slots) //Runtime prevention for backpacks
+	if(copy.item_icons)
+		item_icons = copy.item_icons.Copy()
+	if(copy.item_state_slots)
 		item_state_slots = copy.item_state_slots.Copy()
-	sprite_sheets = copy.sprite_sheets.Copy()
+	if(copy.sprite_sheets)
+		sprite_sheets = copy.sprite_sheets.Copy()
+
+	OnDisguise(copy, user)
+	qdel(copy)
+
+	return copy
+
+// Subtypes shall override this, not /disguise()
+/obj/item/proc/OnDisguise(var/obj/item/copy, var/mob/user)
+	return
 	//copying sprite_sheets_obj should be unnecessary as chameleon items are not refittable.
 
-	return copy //for inheritance
 
-/proc/generate_chameleon_choices(var/basetype, var/blacklist=list())
-	. = list()
-
-	var/i = 1 //in case there is a collision with both name AND icon_state
-	for(var/typepath in typesof(basetype) - blacklist)
-		var/obj/O = typepath
-		if(initial(O.icon) && initial(O.icon_state))
-			var/name = initial(O.name)
-			if(name in .)
-				name += " ([initial(O.icon_state)])"
-			if(name in .)
-				name += " \[[i++]\]"
-			.[name] = typepath
+/proc/generate_chameleon_choices(var/basetype, var/blacklist = list())
+  . = list()
+  var/i = 0 // in case there's a collision with both name/icon_state
+  var/list/icon_state_cache = list()
+  for(var/path in typesof(basetype) - blacklist)
+    i = 0
+    var/obj/item/clothing/C = path
+    var/icon = initial(C.icon)
+    var/icon_state = initial(C.icon_state)
+    if(!icon || !icon_state)
+      continue
+    if(!icon_state_cache[icon])
+      icon_state_cache[icon] = icon_states(icon)
+    if(!(icon_state in icon_state_cache[icon]))      // state doesn't exist, do not let user pick
+      continue
+    var/name = initial(C.name)
+    if(name in .)
+      name += " ([icon_state])"
+    if(name in .)    // STILL?
+      name += " \[[++i]\]"
+    .[name] = path
 
 /obj/item/clothing/under/chameleon
 //starts off as black
@@ -46,8 +67,9 @@
 
 /obj/item/clothing/under/chameleon/New()
 	..()
+
 	if(!clothing_choices)
-		var/blocked = list(src.type, /obj/item/clothing/under/gimmick)//Prevent infinite loops and bad jumpsuits.
+		var/blocked = list(src.type, /obj/item/clothing/under/gimmick,)
 		clothing_choices = generate_chameleon_choices(/obj/item/clothing/under, blocked)
 
 /obj/item/clothing/under/chameleon/emp_act(severity)
@@ -119,7 +141,13 @@
 /obj/item/clothing/suit/chameleon/New()
 	..()
 	if(!clothing_choices)
-		var/blocked = list(src.type, /obj/item/clothing/suit/cyborg_suit, /obj/item/clothing/suit/justice, /obj/item/clothing/suit/greatcoat, /obj/item/clothing/under/donator/pinksuit)
+		var/blocked = list(src.type, /obj/item/clothing/suit/cyborg_suit,
+		/obj/item/clothing/suit/justice,
+		/obj/item/clothing/suit/greatcoat,
+
+
+
+		)
 		clothing_choices = generate_chameleon_choices(/obj/item/clothing/suit, blocked)
 
 /obj/item/clothing/suit/chameleon/emp_act(severity) //Because we don't have psych for all slots right now but still want a downside to EMP.  In this case your cover's blown.

@@ -58,7 +58,7 @@
 			updateUsrDialog()
 	else if(processing)
 		to_chat(user, "<span class='notice'>\The [src] is currently processing.</span>")
-	else if(istype(O, /obj/item/storage/bag/plants))
+	else if(istype(O, /obj/item/storage/bag))
 		var/i = 0
 		for(var/obj/item/reagent_containers/food/snacks/grown/G in contents)
 			i++
