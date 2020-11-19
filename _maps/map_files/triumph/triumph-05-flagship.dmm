@@ -10,16 +10,16 @@
 	dir = 8;
 	icon_state = "burst_l"
 	},
-/turf/unsimulated/floor/shuttle_ceiling,
+/turf/unsimulated/floor/techfloor_grid,
 /turf/simulated/shuttle/plating/airless/carry,
-/area/shuttle/specialops)
+/area/shuttle/specops/centcom)
 "af" = (
 /turf/simulated/shuttle/wall/dark{
 	join_group = "shuttle_ert"
 	},
-/area/shuttle/specialops)
+/area/shuttle/specops/centcom)
 "ag" = (
-/turf/unsimulated/floor/shuttle_ceiling,
+/turf/unsimulated/floor/techfloor_grid,
 /area/centcom/specops)
 "ah" = (
 /turf/unsimulated/wall,
@@ -28,9 +28,9 @@
 /obj/structure/shuttle/engine/propulsion{
 	dir = 8
 	},
-/turf/unsimulated/floor/shuttle_ceiling,
+/turf/unsimulated/floor/techfloor_grid,
 /turf/simulated/shuttle/plating/airless/carry,
-/area/shuttle/specialops)
+/area/shuttle/specops/centcom)
 "aj" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 8
@@ -39,7 +39,7 @@
 	dir = 4
 	},
 /turf/simulated/shuttle/plating/airless,
-/area/shuttle/specialops)
+/area/shuttle/specops/centcom)
 "ak" = (
 /obj/machinery/computer/security/telescreen{
 	desc = "";
@@ -47,17 +47,17 @@
 	network = list("NETWORK_ERT");
 	pixel_y = 30
 	},
-/obj/machinery/computer/shuttle_control/specops,
+/obj/machinery/computer/specops_shuttle,
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_red"
 	},
-/area/shuttle/specialops)
+/area/shuttle/specops/centcom)
 "al" = (
 /obj/structure/bed/chair,
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_red"
 	},
-/area/shuttle/specialops)
+/area/shuttle/specops/centcom)
 "am" = (
 /obj/machinery/recharger/wallcharger{
 	pixel_x = 4;
@@ -67,7 +67,7 @@
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_red"
 	},
-/area/shuttle/specialops)
+/area/shuttle/specops/centcom)
 "an" = (
 /obj/machinery/recharger/wallcharger{
 	pixel_x = 4;
@@ -85,13 +85,13 @@
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_red"
 	},
-/area/shuttle/specialops)
+/area/shuttle/specops/centcom)
 "ao" = (
 /turf/simulated/shuttle/wall/dark{
 	hard_corner = 1;
 	join_group = "shuttle_ert"
 	},
-/area/shuttle/specialops)
+/area/shuttle/specops/centcom)
 "ap" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -303,12 +303,12 @@
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_red"
 	},
-/area/shuttle/specialops)
+/area/shuttle/specops/centcom)
 "aC" = (
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_red"
 	},
-/area/shuttle/specialops)
+/area/shuttle/specops/centcom)
 "aD" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
@@ -320,7 +320,7 @@
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_red"
 	},
-/area/shuttle/specialops)
+/area/shuttle/specops/centcom)
 "aE" = (
 /obj/machinery/door/airlock/glass_external{
 	frequency = 1380;
@@ -330,7 +330,7 @@
 	name = "Forward Docking Hatch"
 	},
 /turf/simulated/shuttle/plating,
-/area/shuttle/specialops)
+/area/shuttle/specops/centcom)
 "aF" = (
 /obj/structure/table/rack,
 /obj/item/ammo_casing/rocket,
@@ -492,7 +492,7 @@
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_red"
 	},
-/area/shuttle/specialops)
+/area/shuttle/specops/centcom)
 "aR" = (
 /obj/machinery/computer/prisoner{
 	name = "Implant Management"
@@ -500,19 +500,7 @@
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_red"
 	},
-/area/shuttle/specialops)
-"aS" = (
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	frequency = 1380;
-	id_tag = "specops_shuttle_port";
-	name = "port docking hatch controller";
-	pixel_y = -25;
-	tag_door = "specops_shuttle_port_hatch"
-	},
-/turf/simulated/shuttle/floor{
-	icon_state = "floor_red"
-	},
-/area/shuttle/specialops)
+/area/shuttle/specops/centcom)
 "aT" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -520,7 +508,7 @@
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_red"
 	},
-/area/shuttle/specialops)
+/area/shuttle/specops/centcom)
 "aU" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -531,7 +519,7 @@
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_red"
 	},
-/area/shuttle/specialops)
+/area/shuttle/specops/centcom)
 "aV" = (
 /obj/structure/table/rack,
 /obj/item/gun/energy/pulse_rifle,
@@ -707,21 +695,27 @@
 	dir = 8;
 	icon_state = "burst_r"
 	},
-/turf/unsimulated/floor/shuttle_ceiling,
+/turf/unsimulated/floor/techfloor_grid,
 /turf/simulated/shuttle/plating/airless/carry,
-/area/shuttle/specialops)
+/area/shuttle/specops/centcom)
 "bi" = (
 /obj/machinery/door/airlock/glass_external{
 	frequency = 1380;
 	icon_state = "door_locked";
-	id_tag = "specops_shuttle_port_hatch";
-	locked = 1;
+	id_tag = "corporate_shuttle_port_hatch";
 	name = "Port Docking Hatch"
+	},
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	frequency = 1380;
+	id_tag = "marksman_corporate_docker";
+	name = "port docking hatch controller";
+	pixel_x = -25;
+	tag_door = "corporate_shuttle_port_hatch"
 	},
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
-/area/shuttle/specialops)
+/area/shuttle/specops/centcom)
 "bj" = (
 /obj/structure/table/rack,
 /obj/item/clothing/gloves/swat{
@@ -1169,7 +1163,7 @@
 "bN" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
-	id_tag = "specops_centcom_dock";
+	id_tag = "marksman_corporate_dock";
 	name = "docking port controller";
 	pixel_y = 25;
 	req_one_access = list(103);
@@ -16388,6 +16382,17 @@
 	icon_state = "dark"
 	},
 /area/centcom/specops)
+"Kt" = (
+/obj/machinery/door/airlock/glass_external{
+	frequency = 1380;
+	icon_state = "door_locked";
+	id_tag = "corporate_shuttle_port_hatch";
+	name = "Port Docking Hatch"
+	},
+/turf/unsimulated/floor{
+	icon_state = "dark"
+	},
+/area/shuttle/specops/centcom)
 "Lf" = (
 /obj/machinery/vending/cola,
 /turf/simulated/shuttle/floor/darkred,
@@ -33797,7 +33802,7 @@ ad
 af
 al
 aC
-aS
+aC
 af
 ah
 ah
@@ -34082,7 +34087,7 @@ af
 al
 aC
 aC
-bi
+Kt
 by
 aX
 aX
