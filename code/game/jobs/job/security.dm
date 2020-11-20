@@ -79,4 +79,4 @@
 	minimal_access = list(access_security, access_eva, access_sec_doors, access_brig, access_maint_tunnels, access_external_airlocks)
 	minimal_player_age = 3
 	outfit_type = /decl/hierarchy/outfit/job/security/officer
-	alt_titles = list("Patrolman","Junior Officer", "Constable", "Peacekeeper")
+	alt_titles = list("Patrolman","Junior Officer", "Constable", "Peacekeeper", "Security Cadet")

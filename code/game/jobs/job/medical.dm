@@ -47,7 +47,8 @@
 		"Emergency Physician" = /decl/hierarchy/outfit/job/medical/doctor/emergency_physician,
 		"Nurse" = /decl/hierarchy/outfit/job/medical/doctor/nurse,
 		"Virologist" = /decl/hierarchy/outfit/job/medical/doctor/virologist,
-		"Medical Resident")
+		"Medical Resident",
+		"Medical Intern")
 
 //Chemist is a medical job damnit	//YEAH FUCK YOU SCIENCE	-Pete	//Guys, behave -Erro
 /datum/job/chemist
