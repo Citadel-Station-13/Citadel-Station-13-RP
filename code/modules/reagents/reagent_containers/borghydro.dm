@@ -19,7 +19,10 @@
 	var/list/reagent_names = list()
 
 /obj/item/reagent_containers/borghypo/surgeon
-	reagent_ids = list("tricordrazine", "inaprovaline", "oxycodone", "dexalin" ,"spaceacillin")
+	reagent_ids = list("bicaridine", "kelotane", "alkysine", "imidazoline", "tricordrazine", "inaprovaline", "bicaridine", "dexalin", "anti_toxin", "tramadol", "spaceacillin", "paracetamol")
+
+/obj/item/reagent_containers/borghypo/crisis
+	reagent_ids = list("bicaridine", "kelotane", "alkysine", "imidazoline", "tricordrazine", "inaprovaline", "bicaridine", "dexalin", "anti_toxin", "tramadol", "spaceacillin", "paracetamol")
 
 /obj/item/reagent_containers/borghypo/lost
 	reagent_ids = list("bicaridine", "kelotane", "alkysine", "imidazoline", "tricordrazine", "inaprovaline", "bicaridine", "dexalin", "anti_toxin", "tramadol", "spaceacillin", "paracetamol")
@@ -73,9 +76,11 @@
 		if(!affected)
 			to_chat(user, "<span class='danger'>\The [H] is missing that limb!</span>")
 			return
+		/* since synths have oil/coolant streams now, it only makes sense that you should be able to inject stuff. preserved for posterity.
 		else if(affected.robotic >= ORGAN_ROBOT)
 			to_chat(user, "<span class='danger'>You cannot inject a robotic limb.</span>")
 			return
+		*/
 
 	if(M.can_inject(user, 1, ignore_thickness = bypass_protection))
 		to_chat(user, "<span class='notice'>You inject [M] with the injector.</span>")
@@ -99,7 +104,7 @@
 		else
 			t += "<a href='?src=\ref[src];reagent=[reagent_ids[i]]'>[reagent_names[i]]</a>"
 	t = "Available reagents: [t]."
-	user << t
+	to_chat(user,t)
 
 	return
 
@@ -107,29 +112,68 @@
 	if(href_list["reagent"])
 		var/t = reagent_ids.Find(href_list["reagent"])
 		if(t)
-			playsound(loc, 'sound/effects/pop.ogg', 50, 0)
+			playsound(src, 'sound/effects/pop.ogg', 50, 0)
 			mode = t
 			var/datum/reagent/R = SSchemistry.chemical_reagents[reagent_ids[mode]]
 			to_chat(usr, "<span class='notice'>Synthesizer is now producing '[R.name]'.</span>")
 
 /obj/item/reagent_containers/borghypo/examine(mob/user)
-	if(!..(user, 2))
-		return
-
-	var/datum/reagent/R = SSchemistry.chemical_reagents[reagent_ids[mode]]
-
-	to_chat(user, "<span class='notice'>It is currently producing [R.name] and has [reagent_volumes[reagent_ids[mode]]] out of [volume] units left.</span>")
+	. = ..()
+	if(get_dist(user, src) <= 2)
+		var/datum/reagent/R = SSchemistry.chemical_reagents[reagent_ids[mode]]
+		. += "<span class='notice'>It is currently producing [R.name] and has [reagent_volumes[reagent_ids[mode]]] out of [volume] units left.</span>"
 
 /obj/item/reagent_containers/borghypo/service
 	name = "cyborg drink synthesizer"
-	desc = "A portable drink dispenser." // why was this 'dispencer'
+	desc = "A portable drink dispenser."
 	icon = 'icons/obj/drinks.dmi'
 	icon_state = "shaker"
 	charge_cost = 20
 	recharge_time = 3
 	volume = 60
 	possible_transfer_amounts = list(5, 10, 20, 30)
-	reagent_ids = list("ale", "beer", "berryjuice", "bitters", "coffee", "cognac", "cola", "dr_gibb", "egg", "gin", "gingerale", "honey", "hot_coco", "ice", "icetea", "kahlua", "lemonjuice", "lemon_lime", "limejuice", "mead", "milk", "mint", "orangejuice", "rum", "sake", "sodawater", "soymilk", "space_up", "spacemountainwind", "spacespice", "specialwhiskey", "sugar", "tea", "tequila", "tomatojuice", "tonic", "vermouth", "vodka", "water", "watermelonjuice", "whiskey", "wine")
+	reagent_ids = list("ale",
+		"cider",
+		"beer",
+		"berryjuice",
+		"bitters",
+		"coffee",
+		"cognac",
+		"cola",
+		"dr_gibb",
+		"egg",
+		"gin",
+		"gingerale",
+		"hot_coco",
+		"ice",
+		"icetea",
+		"kahlua",
+		"lemonjuice",
+		"lemon_lime",
+		"limejuice",
+		"mead",
+		"milk",
+		"mint",
+		"orangejuice",
+		"rum",
+		"sake",
+		"sodawater",
+		"soymilk",
+		"space_up",
+		"spacemountainwind",
+		"spacespice",
+		"specialwhiskey",
+		"sugar",
+		"tea",
+		"tequilla",
+		"tomatojuice",
+		"tonic",
+		"vermouth",
+		"vodka",
+		"water",
+		"watermelonjuice",
+		"whiskey",
+		"wine")
 
 /obj/item/reagent_containers/borghypo/service/attack(var/mob/M, var/mob/user)
 	return
