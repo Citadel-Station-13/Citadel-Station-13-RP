@@ -298,6 +298,10 @@
 	display_name = "Civilian Sundress - White"
 	path = /obj/item/clothing/under/sundress_white
 
+/datum/gear/uniform/pentagramdress
+	display_name = "Pentagram Dress"
+	path = /obj/item/clothing/under/pentagramdress
+
 /datum/gear/uniform/dress_fire
 	display_name = "Civilian Flame Dress"
 	path = /obj/item/clothing/under/dress/dress_fire

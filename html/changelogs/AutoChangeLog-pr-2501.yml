@@ -1,0 +1,5 @@
+author: "KasparoVy"
+delete-after: True
+changes: 
+  - tweak: "Make Protogen markings more suitable for colouration."
+  - imageadd: "Add a marking that lets you colour the light & dark parts of your synth independently."
