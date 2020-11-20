@@ -298,6 +298,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_two)
+"aT" = (
+/obj/machinery/vending/cigarette,
+/turf/simulated/floor/wood,
+/area/crew_quarters/bar)
 "aU" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
@@ -698,7 +702,6 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/toilet)
 "cl" = (
-/obj/machinery/vending/cigarette,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
 	d1 = 2;
@@ -1784,7 +1787,7 @@
 /area/janitor)
 "fr" = (
 /obj/machinery/light,
-/obj/machinery/recharge_station,
+/obj/machinery/telecomms/relay/preset/mining,
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/belter)
 "fu" = (
@@ -2760,10 +2763,6 @@
 /obj/effect/floor_decal/techfloor,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/starboard)
-"hU" = (
-/obj/machinery/light,
-/turf/simulated/floor/wood,
-/area/crew_quarters/bar)
 "hV" = (
 /obj/machinery/computer/cryopod{
 	pixel_y = 32
@@ -4012,6 +4011,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "lJ" = (
+/obj/machinery/telecomms/relay/preset/mining,
 /turf/simulated/floor/airless,
 /area/shuttle/mining_ship/general)
 "lK" = (
@@ -5779,9 +5779,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/light{
 	dir = 8
-	},
-/obj/structure/closet/crate/bin{
-	anchored = 1
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
@@ -7822,10 +7819,6 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
 "xJ" = (
-/obj/machinery/media/jukebox{
-	icon_state = "superjuke-nopower";
-	state_base = "superjuke"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
 	d1 = 1;
@@ -9615,6 +9608,10 @@
 	},
 /obj/machinery/light{
 	dir = 8
+	},
+/obj/machinery/media/jukebox{
+	icon_state = "superjuke-nopower";
+	state_base = "superjuke"
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
@@ -21206,7 +21203,7 @@ kq
 VR
 td
 Le
-CD
+aT
 JX
 Dm
 Dm
@@ -21348,7 +21345,7 @@ UZ
 Ok
 Le
 Le
-hU
+CD
 JX
 SD
 Dy
