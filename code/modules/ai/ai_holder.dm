@@ -62,11 +62,10 @@
 // Reverses the above proc.
 // Revived mobs will wake their AI if they have one.
 /datum/ai_holder/proc/go_wake()
-/*	if(stance != STANCE_SLEEP)
+	if(stance != STANCE_SLEEP)
 		return
 	if(!should_wake())
 		return
-*/
 	set_stance(STANCE_IDLE)
 	SSai.processing += src
 
