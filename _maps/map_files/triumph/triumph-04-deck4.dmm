@@ -967,6 +967,9 @@
 /obj/structure/table/steel,
 /turf/simulated/floor/tiled,
 /area/security/interrogation)
+"aNI" = (
+/turf/space,
+/area/shuttle/specops/station)
 "aOb" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -4718,9 +4721,16 @@
 	pixel_x = 1;
 	pixel_y = 26
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 6
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	dir = 4
 	},
+/obj/machinery/airlock_sensor{
+	dir = 1;
+	id_tag = null;
+	pixel_y = -22
+	},
+/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "duu" = (
@@ -8503,14 +8513,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/excursion_dock)
-"gbC" = (
-/obj/machinery/door/airlock/glass_external{
-	name = "Public Airlock"
-	},
-/obj/machinery/shield_diffuser,
-/obj/effect/map_helper/airlock/door/ext_door,
-/turf/simulated/floor/tiled/dark,
-/area/hallway/secondary/docking_hallway)
 "gcJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -10591,14 +10593,6 @@
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/carpet/sblucarpet,
 /area/chapel/main)
-"hDG" = (
-/obj/machinery/door/airlock/glass_external{
-	name = "Public Airlock"
-	},
-/obj/effect/map_helper/airlock/door/int_door,
-/obj/effect/map_helper/airlock/door/int_door,
-/turf/simulated/floor/tiled/dark,
-/area/hallway/secondary/docking_hallway)
 "hDH" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/borderfloorblack/corner2{
@@ -31409,20 +31403,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
-"wbn" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 1;
-	id_tag = null
-	},
-/obj/machinery/airlock_sensor{
-	dir = 1;
-	id_tag = null;
-	pixel_y = -22
-	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
-/turf/simulated/floor/tiled/dark,
-/area/hallway/secondary/docking_hallway)
 "wbv" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
@@ -43721,11 +43701,11 @@ nIK
 nIK
 nIK
 nIK
-nIK
-nIK
-nIK
-nIK
-nIK
+aNI
+aNI
+aNI
+aNI
+aNI
 kgT
 nPD
 pOM
@@ -43863,11 +43843,11 @@ nIK
 nIK
 nIK
 nIK
-nIK
-nIK
-nIK
-nIK
-nIK
+aNI
+aNI
+aNI
+aNI
+aNI
 nIK
 nPD
 nzz
@@ -44005,11 +43985,11 @@ nIK
 nIK
 nIK
 nIK
-nIK
-nIK
-nIK
-nIK
-nIK
+aNI
+aNI
+aNI
+aNI
+aNI
 nIK
 nPD
 inW
@@ -44147,11 +44127,11 @@ nIK
 nIK
 nIK
 nIK
-nIK
-nIK
-nIK
-nIK
-nIK
+aNI
+aNI
+aNI
+aNI
+aNI
 nIK
 nPD
 wDz
@@ -44289,11 +44269,11 @@ nIK
 nIK
 nIK
 nIK
-nIK
-nIK
-nIK
-nIK
-nIK
+aNI
+aNI
+aNI
+aNI
+aNI
 nIK
 nPD
 gjx
@@ -44431,11 +44411,11 @@ nIK
 nIK
 nIK
 nIK
-nIK
-nIK
-nIK
-nIK
-nIK
+aNI
+aNI
+aNI
+aNI
+aNI
 nIK
 nPD
 nPD
@@ -44573,11 +44553,11 @@ nIK
 nIK
 nIK
 nIK
-nIK
-nIK
-nIK
-nIK
-nIK
+aNI
+aNI
+aNI
+aNI
+aNI
 nIK
 nIK
 nIK
@@ -44715,11 +44695,11 @@ nIK
 nIK
 nIK
 nIK
-nIK
-nIK
-nIK
-nIK
-nIK
+aNI
+aNI
+aNI
+aNI
+aNI
 nIK
 nIK
 nIK
@@ -44857,11 +44837,11 @@ nIK
 nIK
 nIK
 nIK
-nIK
-nIK
-nIK
-nIK
-nIK
+aNI
+aNI
+aNI
+aNI
+aNI
 nIK
 nIK
 nIK
@@ -44999,11 +44979,11 @@ nIK
 nIK
 nIK
 nIK
-nIK
-nIK
-nIK
-nIK
-nIK
+aNI
+aNI
+aNI
+aNI
+aNI
 nIK
 nIK
 nIK
@@ -45141,11 +45121,11 @@ nIK
 nIK
 nIK
 nIK
-nIK
-nIK
-nIK
-nIK
-nIK
+aNI
+aNI
+aNI
+aNI
+aNI
 nIK
 nIK
 nIK
@@ -45284,9 +45264,9 @@ nIK
 nIK
 nIK
 nIK
-nIK
-nIK
-nIK
+aNI
+aNI
+aNI
 nIK
 nIK
 nIK
@@ -45428,8 +45408,8 @@ nIK
 nIK
 nPD
 nuT
-gbC
 nPD
+nIK
 nIK
 nIK
 nIK
@@ -45570,8 +45550,8 @@ nIK
 nIK
 nPD
 duk
-wbn
 nPD
+nIK
 nIK
 nIK
 nIK
@@ -45712,7 +45692,7 @@ nPD
 nPD
 tkT
 bHp
-hDG
+nPD
 nPD
 nPD
 nPD
