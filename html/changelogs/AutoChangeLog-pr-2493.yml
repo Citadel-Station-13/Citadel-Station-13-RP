@@ -1,0 +1,4 @@
+author: "Hatterhat"
+delete-after: True
+changes: 
+  - rscadd: "Admin-spawn only HF machete for throwing at things (while off) and stabbing things (while on)."
