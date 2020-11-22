@@ -109,7 +109,8 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 				rendered = "<i><span class='game say'>Holopad received, <span class='name'>[name_used]</span> [verb], <span class='message'>\"[text]\"</span></span></i>"
 			master.show_message(rendered, 2)
 
-/obj/machinery/hologram/holopad/see_emote(mob/living/M, text)
+/obj/machinery/hologram/holopad/see_emote(mob/living/M, text, user as mob)
+	if(istype(user, /mob/observer/dead)) return
 	if(M)
 		for(var/mob/living/silicon/ai/master in masters)
 			//var/name_used = M.GetVoice()
