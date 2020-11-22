@@ -88,7 +88,7 @@
 	minimal_access = list(access_maint_tunnels, access_cargo, access_cargo_bot, access_mailsorting)
 
 	outfit_type = /decl/hierarchy/outfit/job/cargo/cargo_tech
-	alt_titles = list("Logistics Specialist")
+	alt_titles = list("Logistics Specialist", "Jr. Cargo Tech")
 
 /datum/job/mining
 	title = "Shaft Miner"

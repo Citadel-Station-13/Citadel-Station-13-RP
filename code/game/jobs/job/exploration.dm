@@ -85,7 +85,7 @@
 	selection_color = "#999440"
 	idtype = /obj/item/card/id/explorer/explorer
 	economic_modifier = 6
-	alt_titles = list("Field Scout", "Pioneer")
+	alt_titles = list("Field Scout", "Pioneer", "Jr. Explorer")
 	access = list(access_explorer, access_research)
 	minimal_access = list(access_explorer, access_research)
 	outfit_type = /decl/hierarchy/outfit/job/explorer2
