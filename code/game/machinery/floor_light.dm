@@ -18,7 +18,6 @@ var/list/floor_light_cache = list()
 	var/default_light_range = 4
 	var/default_light_power = 0.75
 	var/default_light_colour = LIGHT_COLOR_INCANDESCENT_BULB
-	var/newcolor
 
 /obj/machinery/floor_light/prebuilt
 	anchored = 1
@@ -41,21 +40,6 @@ var/list/floor_light_cache = list()
 		stat &= ~BROKEN
 		damaged = null
 		update_brightness()
-
-	else if(istype(W, /obj/item/multitool))
-		var/obj/item/multitool/MT = W
-		playsound(src.loc, MT.usesound, 50, 1)
-		if(!on)
-			to_chat(user, "<span class='warning'>\The [src] must be on to complete this task.</span>")
-			return
-		to_chat(user, "\ Enter the text name of the color. For example, green")
-		to_chat(user, "Alternatively, enter the full hex code of your desired color. For example, #28FF01")
-		var/newcolor = input("","Enter a new color.") as text|null //ask for text input of what the color should be e.g. green, blue, yellow, etc
-		src.default_light_colour = newcolor
-		src.color = newcolor
-		src.light_color = newcolor
-		update_brightness()
-		visible_message("<span class='notice'>\The [user] has changed \the [src] color.</span>")
 	else if(W.force && user.a_intent == "hurt")
 		attack_hand(user)
 	return
