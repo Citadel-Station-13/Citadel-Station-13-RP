@@ -320,7 +320,7 @@ var/list/tape_roll_applications = list()
 /obj/item/barrier_tape_segment/Crossed(atom/movable/AM, oldloc)
 	. = ..()
 	if(!lifted && ismob(AM))
-		var/mob/living/M = AM
+		var/mob/living/M = AM //so that ghosts don't get spammed
 		add_fingerprint(M)
 		if(!allowed(M))	//only select few learn art of not crumpling the tape
 			to_chat(M, span("warning", "You are not supposed to go past \the [src]..."))
