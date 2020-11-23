@@ -91,6 +91,12 @@
 	command_announcement.Announce("Attention [station_name()], the ship has ran into a hostile sub-sector and reports of humanoid and non-humanoid entities are warping onto the ships! Advise immediate removal of these intruders before productivy aboard gets hindered!", "Screaming Signals Intercepted", new_sound = 'sound/effects/c_alarm.mp3')
 	return
 
+/datum/event/cult/overmap/start()		// override - cancel if not main ship since it doesn't properly target the actual triggering ship
+	if(!istype(victim, /obj/effect/overmap/visitable/ship/triumph))
+		kill()
+		return
+	return ..()
+
 #undef LOC_LIBRARY
 #undef LOC_SECURITY
 #undef LOC_RESEARCH
