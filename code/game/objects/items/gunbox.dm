@@ -28,7 +28,7 @@
 /obj/item/gunbox/marksman/attack_self(mob/living/user)
 	var/list/options = list()
 	options["Marksman Energy Rifle"] = list(/obj/item/gun/energy/sniperrifle/locked)
-	options["Scoped Bolt Action"] = list(/obj/item/gun/projectile/shotgun/pump/scopedrifle, /obj/item/ammo_magazine/clip/c762/sniperhunter, /obj/item/ammo_magazine/clip/c762/sniperhunter, /obj/item/ammo_magazine/clip/c762/sniperhunter, /obj/item/ammo_magazine/clip/c762/sniperhunter, /obj/item/ammo_magazine/clip/c762/sniperhunter)
+	options["Scoped Bolt Action"] = list(/obj/item/gun/projectile/shotgun/pump/scopedrifle, /obj/item/storage/belt/security/tactical/bandolier, /obj/item/ammo_magazine/clip/c762/sniperhunter, /obj/item/ammo_magazine/clip/c762/sniperhunter, /obj/item/ammo_magazine/clip/c762/sniperhunter, /obj/item/ammo_magazine/clip/c762/sniperhunter, /obj/item/ammo_magazine/clip/c762/sniperhunter, /obj/item/ammo_magazine/clip/c762/sniperhunter, /obj/item/ammo_magazine/clip/c762/sniperhunter, /obj/item/ammo_magazine/clip/c762/sniperhunter, /obj/item/ammo_magazine/clip/c762/sniperhunter)
 	var/choice = input(user,"Would you prefer a ballistic rifle or a laser?") as null|anything in options
 	if(src && choice)
 		var/list/things_to_spawn = options[choice]
