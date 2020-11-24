@@ -189,8 +189,8 @@
 	pin = /obj/item/firing_pin/explorer
 	cell_type = /obj/item/cell/device/weapon/recharge/sniper
 	accuracy = 0 //Forced missing fucking sucks ass
-	scoped_accuracy = 60
-	charge_cost = 1200
+	scoped_accuracy = 80
+	charge_cost = 600
 
 /obj/item/gun/energy/monorifle
 	name = "antique mono-rifle"

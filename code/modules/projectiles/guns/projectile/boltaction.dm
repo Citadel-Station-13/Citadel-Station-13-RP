@@ -200,7 +200,7 @@
 	w_class = ITEMSIZE_HUGE // So it can't fit in a backpack.
 	ammo_type = /obj/item/ammo_casing/a762/sniperhunter
 	accuracy = 0 //Forced missing fucking sucks ass
-	scoped_accuracy = 60
+	scoped_accuracy = 80
 
 /obj/item/gun/projectile/shotgun/pump/scopedrifle/verb/scope()
 	set category = "Object"
