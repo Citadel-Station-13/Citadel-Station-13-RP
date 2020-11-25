@@ -111,7 +111,7 @@
 	else
 		return ..()
 
-/obj/machinery/chemical_dispenser/ui_interact(mob/user, ui_key = "main",var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/chemical_dispenser/nano_ui_interact(mob/user, ui_key = "main",var/datum/nanoui/ui = null, var/force_open = 1)
 	if(stat & (BROKEN|NOPOWER)) return
 	if(user.stat || user.restrained()) return
 
@@ -175,4 +175,4 @@
 /obj/machinery/chemical_dispenser/attack_hand(mob/user as mob)
 	if(stat & BROKEN)
 		return
-	ui_interact(user)
+	nano_ui_interact(user)

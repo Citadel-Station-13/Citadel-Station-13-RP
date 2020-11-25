@@ -18,7 +18,7 @@
 		to_chat(user, "<span class='warning'>Access Denied.</span>")
 		return 1
 
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /obj/machinery/computer/shuttle_control/attackby(obj/I, mob/user)
 	var/datum/shuttle/autodock/shuttle = SSshuttle.shuttles[shuttle_tag]
@@ -122,7 +122,7 @@
 		return TOPIC_REFRESH
 
 // We delegate populating data to another proc to make it easier for overriding types to add their data.
-/obj/machinery/computer/shuttle_control/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/computer/shuttle_control/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/datum/shuttle/autodock/shuttle = SSshuttle.shuttles[shuttle_tag]
 	if (!istype(shuttle))
 		to_chat(user, "<span class='warning'>Unable to establish link with the shuttle.</span>")

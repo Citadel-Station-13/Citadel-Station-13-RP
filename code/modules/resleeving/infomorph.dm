@@ -417,7 +417,7 @@ var/list/infomorph_emotions = list(
 	desc = "Modify the settings on your integrated radio."
 
 	if(radio)
-		radio.ui_interact(src,"main",null,1,conscious_state)
+		radio.nano_ui_interact(src,"main",null,1,conscious_state)
 	else
 		to_chat(src,"<span class='warning'>You don't have a radio!</span>")
 
@@ -460,9 +460,9 @@ var/global/list/default_infomorph_software = list()
 	set category = "Card Commands"
 	set name = "Software Interface"
 
-	ui_interact(src)
+	nano_ui_interact(src)
 
-/mob/living/silicon/infomorph/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, key_state = self_state)
+/mob/living/silicon/infomorph/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, key_state = self_state)
 	if(user != src)
 		if(ui) ui.set_status(STATUS_CLOSE, 0)
 		return
@@ -470,7 +470,7 @@ var/global/list/default_infomorph_software = list()
 	if(ui_key != "main")
 		var/datum/infomorph_software/S = software[ui_key]
 		if(S && !S.toggle)
-			S.on_ui_interact(src, ui, force_open)
+			S.on_nano_ui_interact(src, ui, force_open)
 		else
 			if(ui) ui.set_status(STATUS_CLOSE, 0)
 		return
@@ -526,7 +526,7 @@ var/global/list/default_infomorph_software = list()
 		if(S.toggle)
 			S.toggle(src)
 		else
-			ui_interact(src, ui_key = soft)
+			nano_ui_interact(src, ui_key = soft)
 		return 1
 
 	else if(href_list["stopic"])

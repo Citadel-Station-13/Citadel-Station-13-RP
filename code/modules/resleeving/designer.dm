@@ -50,10 +50,10 @@
 	add_fingerprint(user)
 	if(inoperable())
 		return
-	ui_interact(user)
+	nano_ui_interact(user)
 
-/obj/machinery/computer/transhuman/designer/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-	// log_debug("designer.ui_interact([user], force_open = [force_open])")
+/obj/machinery/computer/transhuman/designer/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+	// log_debug("designer.nano_ui_interact([user], force_open = [force_open])")
 	user.set_machine(src)
 
 	var/data[0]

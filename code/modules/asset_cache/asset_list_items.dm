@@ -29,7 +29,7 @@
 		"tgui-common.chunk.js" = 'tgui/packages/tgui/public/tgui-common.chunk.js',
 	)
 /*
-/datum/asset/simple/tgui
+/datum/asset/simple/tgui // soon(TM)
 	keep_local_name = TRUE
 	assets = list(
 		"tgui.bundle.js" = 'tgui/packages/tgui/public/tgui.bundle.js',

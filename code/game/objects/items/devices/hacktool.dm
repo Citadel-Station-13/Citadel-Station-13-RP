@@ -39,7 +39,7 @@
 	if(!attempt_hack(user, W))
 		return 0
 
-	W.ui_interact(user, state = hack_state)
+	W.nano_ui_interact(user, state = hack_state)
 	return 1
 
 /obj/item/multitool/hacktool/proc/attempt_hack(var/mob/user, var/atom/target)

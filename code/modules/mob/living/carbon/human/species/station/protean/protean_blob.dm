@@ -384,7 +384,7 @@
 	set category = "Abilities"
 
 	if(mob_radio)
-		mob_radio.ui_interact(src, state = interactive_state)
+		mob_radio.nano_ui_interact(src, state = interactive_state)
 
 /mob/living/simple_mob/protean_blob/proc/rig_transform()
 	set name = "Modify Form - Hardsuit"
@@ -415,7 +415,7 @@
 	if(istype(loc, /obj/item/rig/protean))
 		var/obj/item/rig/protean/prig = loc
 		to_chat(src, "You attempt to interface with the [prig].")
-		prig.ui_interact(src, nano_state = interactive_state)
+		prig.nano_ui_interact(src, nano_state = interactive_state)
 	else
 		to_chat(src, "You are not in RIG form.")
 

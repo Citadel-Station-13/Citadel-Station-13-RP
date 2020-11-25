@@ -42,7 +42,7 @@
 	return
 
 /obj/machinery/computer/station_alert/interact(mob/user)
-	alarm_monitor.ui_interact(user)
+	alarm_monitor.nano_ui_interact(user)
 
 /obj/machinery/computer/station_alert/update_icon()
 	if(!(stat & (BROKEN|NOPOWER)))

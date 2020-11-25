@@ -27,7 +27,7 @@
 	. += "<a href='?src=[REF(src)];togglesustainhold=1'>Sustain indefinitely last held note</a>: [full_sustain_held_note? "Enabled" : "Disabled"].<br>"
 	. += "</div>"
 
-/datum/song/ui_interact(mob/user)
+/datum/song/nano_ui_interact(mob/user)
 	var/list/dat = list()
 
 	dat += instrument_status_ui()

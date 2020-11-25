@@ -50,9 +50,9 @@
 		refresh = TRUE
 
 	if(refresh)
-		ui_interact(usr, category)
+		nano_ui_interact(usr, category)
 
-/datum/variable_settings_controller/ui_interact(mob/user, category)
+/datum/variable_settings_controller/nano_ui_interact(mob/user, category)
 	if(!(category in entries_by_category))
 		category = entries_by_category[1]
 	var/datum/browser/B = new(user, "vsc_[name]", name, 500, 1000, src)

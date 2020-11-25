@@ -9,7 +9,7 @@
 	C.icon = H.ui_style
 	H.static_inventory += C
 	CL.screen += C
-	RegisterSignal(C, COMSIG_CLICK, .proc/component_ui_interact)
+	RegisterSignal(C, COMSIG_CLICK, .proc/component_nano_ui_interact)
 
 /datum/component/personal_crafting
 	var/busy
@@ -303,11 +303,11 @@
 		Deletion.Cut(Deletion.len)
 		qdel(DL)
 
-/datum/component/personal_crafting/proc/component_ui_interact(obj/screen/craft/image, location, control, params, user)
+/datum/component/personal_crafting/proc/component_nano_ui_interact(obj/screen/craft/image, location, control, params, user)
 	if(user == parent)
-		ui_interact(user)
+		nano_ui_interact(user)
 
-/datum/component/personal_crafting/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.not_incapacitated_turf_state)
+/datum/component/personal_crafting/nano_ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.not_incapacitated_turf_state)
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
 		ui = new(user, src, ui_key, "personal_crafting", "Crafting Menu", 700, 800, master_ui, state)
@@ -359,7 +359,7 @@
 		if("make")
 			var/datum/crafting_recipe/TR = locate(params["recipe"]) in GLOB.crafting_recipes
 			busy = TRUE
-			ui_interact(usr)
+			nano_ui_interact(usr)
 			var/fail_msg = construct_item(usr, TR)
 			if(!fail_msg)
 				to_chat(usr, "<span class='notice'>[TR.name] constructed.</span>")

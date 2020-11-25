@@ -51,7 +51,7 @@
 		return
 
 	if(sleeper)
-		return ui_interact(user)
+		return nano_ui_interact(user)
 
 /obj/machinery/sleep_console/attackby(var/obj/item/I, var/mob/user)
 	if(computer_deconstruction_screwdriver(user, I))
@@ -66,7 +66,7 @@
 	else
 		icon_state = initial(icon_state)
 
-/obj/machinery/sleep_console/ui_interact(var/mob/user, var/ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = outside_state)
+/obj/machinery/sleep_console/nano_ui_interact(var/mob/user, var/ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = outside_state)
 	var/data[0]
 
 	var/obj/machinery/sleeper/S = sleeper

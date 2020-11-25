@@ -39,7 +39,7 @@ somewhere on that shuttle. Subtypes of these can be then used to perform ship ov
 
 // In computer_shims for now - we had to define it.
 // /obj/machinery/computer/ship/interface_interact(var/mob/user)
-// 	ui_interact(user)
+// 	nano_ui_interact(user)
 // 	return TRUE
 
 /obj/machinery/computer/ship/OnTopic(var/mob/user, var/list/href_list)

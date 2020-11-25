@@ -389,7 +389,7 @@
 		)
 
 // Collects the current status of the supply shuttle
-// Copied from /obj/machinery/computer/supplycomp/ui_interact(),
+// Copied from /obj/machinery/computer/supplycomp/nano_ui_interact(),
 // code\game\machinery\computer\supply.dm, starting at line 55
 /obj/item/commcard/proc/get_supply_shuttle_status()
 	var/shuttle_status[0]
@@ -449,7 +449,7 @@
 	return shuttle_status
 
 // Compiles the list of supply orders
-// Copied from /obj/machinery/computer/supplycomp/ui_interact(),
+// Copied from /obj/machinery/computer/supplycomp/nano_ui_interact(),
 // code\game\machinery\computer\supply.dm, starting at line 130
 /obj/item/commcard/proc/get_supply_orders()
 	var/orders[0]
@@ -472,7 +472,7 @@
 	return orders
 
 // Compiles the list of supply export receipts
-// Copied from /obj/machinery/computer/supplycomp/ui_interact(),
+// Copied from /obj/machinery/computer/supplycomp/nano_ui_interact(),
 // code\game\machinery\computer\supply.dm, starting at line 147
 /obj/item/commcard/proc/get_supply_receipts()
 	var/receipts[0]
@@ -490,7 +490,7 @@
 
 
 // Compiles the list of supply packs for the category currently stored in internal_data["supply_category"]
-// Copied from /obj/machinery/computer/supplycomp/ui_interact(),
+// Copied from /obj/machinery/computer/supplycomp/nano_ui_interact(),
 // code\game\machinery\computer\supply.dm, starting at line 147
 /obj/item/commcard/proc/get_supply_pack_list()
 	var/supply_packs[0]

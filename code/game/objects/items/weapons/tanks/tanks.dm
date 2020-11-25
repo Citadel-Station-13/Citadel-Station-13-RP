@@ -208,14 +208,14 @@ var/list/global/tank_gauge_cache = list()
 	add_fingerprint(user)
 	if (!(src.air_contents))
 		return
-	ui_interact(user)
+	nano_ui_interact(user)
 
 // There's GOT to be a better way to do this
 	if (src.proxyassembly.assembly)
 		src.proxyassembly.assembly.attack_self(user)
 
 
-/obj/item/tank/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/item/tank/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/mob/living/carbon/location = null
 
 	if(istype(loc, /obj/item/rig))		// check for tanks in rigs

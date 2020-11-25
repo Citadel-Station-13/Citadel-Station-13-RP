@@ -130,7 +130,7 @@
 			AC = new(src, user)
 			AC.name = "SalonPro Porta-Makeover Deluxe&trade;"
 			ui_users[user] = AC
-		AC.ui_interact(user)
+		AC.nano_ui_interact(user)
 		var/mob/living/carbon/human/H = user
 		var/obj/item/organ/internal/eyes/E = H.internal_organs_by_name[O_EYES]
 		if(istype(E))

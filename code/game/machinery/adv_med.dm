@@ -267,9 +267,9 @@
 		return
 
 	if(scanner)
-		return ui_interact(user)
+		return nano_ui_interact(user)
 
-/obj/machinery/body_scanconsole/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/body_scanconsole/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/data[0]
 
 	data["connected"] = scanner ? 1 : 0

@@ -17,7 +17,7 @@
 
 	activate()
 		if((. = ..()))
-			arscreen.ui_interact(nif.human,"main",null,1,nif_state)
+			arscreen.nano_ui_interact(nif.human,"main",null,1,nif_state)
 			return TRUE
 
 	stat_text()
@@ -42,7 +42,7 @@
 
 	activate()
 		if((. = ..()))
-			arscreen.ui_interact(nif.human,"main",null,1,nif_state)
+			arscreen.nano_ui_interact(nif.human,"main",null,1,nif_state)
 			return TRUE
 
 	stat_text()

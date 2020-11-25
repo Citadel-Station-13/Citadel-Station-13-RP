@@ -28,7 +28,7 @@
 			AC = new(src, user)
 			AC.name = "SalonPro Nano-Mirror&trade;"
 			ui_users[user] = AC
-		AC.ui_interact(user)
+		AC.nano_ui_interact(user)
 
 /obj/structure/mirror/proc/shatter()
 	if(!glass) return

@@ -15,7 +15,7 @@
 	name = "NTNet Diagnostics and Monitoring"
 	//available_to_ai = TRUE
 
-/datum/nano_module/computer_ntnetmonitor/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = default_state)
+/datum/nano_module/computer_ntnetmonitor/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = default_state)
 	if(!ntnet_global)
 		return
 	var/list/data = host.initial_data()
@@ -99,4 +99,4 @@
 		var/nid = input(user,"Enter NID of device which you want to unblock from the network:", "Enter NID") as null|num
 		if(nid && CanUseTopic(user, state))
 			ntnet_global.banned_nids -= nid
-		return 1 
+		return 1
