@@ -1,0 +1,4 @@
+author: "buffyuwu"
+delete-after: True
+changes: 
+  - bugfix: "fixes simple_mob ai so that it doesn't freeze when you ghost from it"
