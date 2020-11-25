@@ -44,6 +44,11 @@
 
 	wizard_garb = 1
 
+obj/item/clothing/shoes/sandal/clogs
+	name = "plastic clogs"
+	desc = "A pair of plastic clog shoes."
+	icon_state = "clogs"
+
 /obj/item/clothing/shoes/sandal/marisa
 	desc = "A pair of magic, black shoes."
 	name = "magic shoes"
@@ -97,9 +102,7 @@
 	name = "bunny slippers"
 	desc = "Fluffy!"
 	icon_state = "slippers"
-	force = 0
 	species_restricted = null
-	w_class = ITEMSIZE_SMALL
 
 /obj/item/clothing/shoes/slippers_worn
 	name = "worn bunny slippers"
@@ -110,9 +113,16 @@
 	w_class = ITEMSIZE_SMALL
 
 /obj/item/clothing/shoes/laceup
-	name = "laceup shoes"
-	desc = "The height of fashion, and they're pre-polished!"
-	icon_state = "laceups"
+	name = "black oxford  shoes"
+	icon_state = "oxford_black"
+
+/obj/item/clothing/shoes/laceup/grey
+	name = "grey oxford shoes"
+	icon_state = "oxford_grey"
+
+/obj/item/clothing/shoes/laceup/brown
+	name = "brown oxford shoes"
+	icon_state = "oxford_brown"
 
 /obj/item/clothing/shoes/swimmingfins
 	desc = "Help you swim good."
