@@ -111,10 +111,14 @@ var/list/wrapped_species_by_ref = list()
 	visible_message("<span class='notice'>\The [src]'s form contorts subtly.</span>")
 	if(valid_hairstyles.len)
 		var/new_hair = input("Select a hairstyle.", "Shapeshifter Hair") as null|anything in valid_hairstyles
-		change_hair(new_hair ? new_hair : "Bald")
+		if(!new_hair)
+			return
+		change_hair(new_hair)
 	if(valid_facialhairstyles.len)
 		var/new_hair = input("Select a facial hair style.", "Shapeshifter Hair") as null|anything in valid_facialhairstyles
-		change_facial_hair(new_hair ? new_hair : "Shaved")
+		if(!new_hair)
+			return
+		change_facial_hair(new_hair)
 
 /mob/living/carbon/human/proc/shapeshifter_select_gender()
 
