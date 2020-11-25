@@ -22,27 +22,27 @@
 				assets[filename] = file(path + filename)
 	. = ..()
 
-/*
+
 /datum/asset/simple/tgui_common
 	keep_local_name = TRUE
 	assets = list(
 		"tgui-common.chunk.js" = 'tgui/packages/tgui/public/tgui-common.chunk.js',
 	)
-
+/*
 /datum/asset/simple/tgui
 	keep_local_name = TRUE
 	assets = list(
 		"tgui.bundle.js" = 'tgui/packages/tgui/public/tgui.bundle.js',
 		"tgui.bundle.css" = 'tgui/packages/tgui/public/tgui.bundle.css',
 	)
-
+*/
 /datum/asset/simple/tgui_panel
 	keep_local_name = TRUE
 	assets = list(
 		"tgui-panel.bundle.js" = 'tgui/packages/tgui/public/tgui-panel.bundle.js',
 		"tgui-panel.bundle.css" = 'tgui/packages/tgui/public/tgui-panel.bundle.css',
 	)
-
+/*
 /datum/asset/simple/headers
 	assets = list(
 		"alarm_green.gif" = 'icons/program_icons/alarm_green.gif',
@@ -148,28 +148,6 @@
 	)
 */
 
-/datum/asset/group/goonchat
-	children = list(
-		/datum/asset/simple/jquery,
-		/datum/asset/simple/goonchat//,
-	//	/datum/asset/spritesheet/goonchat
-	)
-
-/datum/asset/simple/goonchat
-	legacy = TRUE
-	assets = list(
-		"json2.min.js"             = 'code/modules/goonchat/browserassets/js/json2.min.js',
-		"errorHandler.js"          = 'code/modules/goonchat/browserassets/js/errorHandler.js',
-		"browserOutput.js"         = 'code/modules/goonchat/browserassets/js/browserOutput.js',
-		"fontawesome-webfont.eot"  = 'tgui/assets/fonts/fontawesome-webfont.eot',
-		"fontawesome-webfont.svg"  = 'tgui/assets/fonts/fontawesome-webfont.svg',
-		"fontawesome-webfont.ttf"  = 'tgui/assets/fonts/fontawesome-webfont.ttf',
-		"fontawesome-webfont.woff" = 'tgui/assets/fonts/fontawesome-webfont.woff',
-		"font-awesome.css"	       = 'code/modules/goonchat/browserassets/css/font-awesome.css',
-		"browserOutput.css"	       = 'code/modules/goonchat/browserassets/css/browserOutput.css',
-	)
-
-
 /datum/asset/simple/namespaced/changelog
 	assets = list(
 		"88x31.png" = 'html/88x31.png',
@@ -200,7 +178,7 @@
 	assets = list(
 		"jquery.min.js" = 'html/jquery.min.js',
 	)
-/*
+
 /datum/asset/simple/namespaced/fontawesome
 	legacy = TRUE
 	assets = list(
@@ -214,7 +192,7 @@
 
 /datum/asset/spritesheet/chat
 	name = "chat"
-
+/*
 /datum/asset/spritesheet/chat/register()
 	InsertAll("emoji", 'icons/emoji.dmi')
 	InsertAll("emoji", 'icons/emoji_32.dmi')
