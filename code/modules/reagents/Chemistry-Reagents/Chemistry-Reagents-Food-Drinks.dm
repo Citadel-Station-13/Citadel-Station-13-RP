@@ -1478,6 +1478,20 @@ End Citadel Change */
 	glass_desc = "Space Mountain Wind. As you know, there are no mountains in space, only wind."
 	glass_special = list(DRINK_FIZZ)
 
+/datum/reagent/drink/soda/astral_wind
+	name = "Astral Wind"
+	id = "astral_wind"
+	description = "The soda is spiked with spices, lending it an unusual flavour."
+	taste_description = "bittersweet acidity"
+	color = "#002010"
+	adj_drowsy = -7
+	adj_sleepy = -2
+	adj_temp = -8
+
+	glass_name = "Astral Wind"
+	glass_desc = "Astral Wind. It's a touch more solid than most drinks."
+	glass_special = list(DRINK_FIZZ)
+
 /datum/reagent/drink/soda/dr_gibb
 	name = "Dr. Gibb"
 	id = "dr_gibb"

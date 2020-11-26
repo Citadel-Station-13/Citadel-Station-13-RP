@@ -1758,6 +1758,13 @@
 	required_reagents = list("grapejuice" = 2, "cola" = 1)
 	result_amount = 3
 
+/datum/chemical_reaction/drinks/astral_wind
+	name = "Astral Wind"
+	id = "astral_wind"
+	result = "astral_wind"
+	required_reagents = list("spacemountainwind" = 1, "space_up" = 1, "spacespice" = 1)
+	result_amount = 3
+
 /datum/chemical_reaction/drinks/sbiten
 	name = "Sbiten"
 	id = "sbiten"
