@@ -34,22 +34,23 @@
 	var/list/obj/machinery/atmospherics/pipe/pipes
 	var/obj/item/radio/radio
 
-/obj/machinery/power/fission/New()
+/obj/machinery/power/fission/Initialize(mapload, newdir)
 	. = ..()
 	uid = gl_uid++
 	rods = new()
 	pipes = new()
-	radio = new /obj/item/radio{channels=list("Engineering")
-		icon = 'icons/obj/robot_component.dmi'
-		icon_state = "radio"}(src)
+	radio = new /obj/item/radio(src)
+	radio.icon = 'icons/obj/robot_component.dmi'
+	radio.icon_state = "radio"
+	radio.channels = list("Engineering")
 
 /obj/machinery/power/fission/Destroy()
-	for(var/i=1,i<=rods.len,i++)
-		eject_rod(rods[i])
+	for(var/rod in rods) // assume the rods are valid.
+		eject_rod(rod)
 	rods = null
 	pipes = null
-	qdel(radio)
-	. = ..()
+	QDEL_NULL(radio)
+	return ..()
 
 /obj/machinery/power/fission/process()
 	var/turf/L = loc
@@ -105,20 +106,20 @@
 	var/power = (decay_heat / REACTOR_RADS_TO_MJ) * max(healthmul, 0.1)
 	SSradiation.radiate(src, max(power * REACTOR_RADIATION_MULTIPLIER, 0))
 
-/obj/machinery/power/fission/attack_hand(mob/user as mob)
+/obj/machinery/power/fission/attack_hand(mob/user)
 	nano_ui_interact(user)
 
-/obj/machinery/power/fission/attack_robot(mob/user as mob)
+/obj/machinery/power/fission/attack_robot(mob/user)
 	nano_ui_interact(user)
 
-/obj/machinery/power/fission/attack_ai(mob/user as mob)
+/obj/machinery/power/fission/attack_ai(mob/user)
 	nano_ui_interact(user)
 
-/obj/machinery/power/fission/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/power/fission/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
 	if(!powered() || !anchored)
 		return
 
-	var/data = ui_data()
+	var/data = nuke_ui_data()
 
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
@@ -127,7 +128,7 @@
 		ui.open()
 		ui.set_auto_update(1)
 
-/obj/machinery/power/fission/proc/ui_data(need_power = FALSE)
+/obj/machinery/power/fission/proc/nuke_ui_data(need_power = FALSE)
 	var/data[0]
 
 	data["integrity_percentage"] = round(get_integrity())
@@ -194,7 +195,7 @@
 	usr.set_machine(src)
 	src.add_fingerprint(usr)
 
-/obj/machinery/power/fission/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/machinery/power/fission/attackby(obj/item/W , mob/user)
 	add_fingerprint(user)
 	if(exploded)
 		return ..()
@@ -235,8 +236,7 @@
 		if(rods.len == 0)
 			to_chat(user, "<span class='notice'>There's nothing left to remove.</span>")
 			return
-		for(var/i=1,i<=rods.len,i++)
-			var/obj/item/fuelrod/rod = rods[i]
+		for(var/obj/item/fuelrod/rod in rods)
 			if(rod.health == 0 || rod.life == 0)
 				to_chat(user, "<span class='notice'>You carefully start removing \the [rod] from \the [src].</span>")
 				if(do_after(user, 40))
@@ -491,13 +491,13 @@
 				now_you_done_it(L)
 
 /obj/machinery/power/fission/proc/now_you_done_it(var/turf/L)
-	spawn(3 SECONDS)
+	sleep(3 SECONDS)
 	if (!istype(L))
 		return
 	var/tx = L.x - 3
 	var/ty = L.y - 3
 	var/turf/spider_spawn
-	for(var/iy = 0,iy < 6, iy++)
+	for(var/iy = 0, iy < 6, iy++)
 		for(var/ix = 0, ix < 6, ix++)
 			spider_spawn = locate(tx + ix, ty + iy, L.z)
 			if (!istype(spider_spawn, /turf/space))

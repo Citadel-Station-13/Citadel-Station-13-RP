@@ -15,18 +15,21 @@ GLOBAL_VAR_INIT(tgs_initialized, FALSE)
 GLOBAL_VAR(topic_status_lastcache)
 GLOBAL_LIST(topic_status_cache)
 
+//This happens after the Master subsystem new(s) (it's a global datum)
+//So subsystems globals exist, but are not initialised
 /world/New()
 	var/extools = world.GetConfig("env", "EXTOOLS_DLL") || (world.system_type == MS_WINDOWS ? "./byond-extools.dll" : "./libbyond-extools.so")
 	if (fexists(extools))
 		call(extools, "maptick_initialize")()
 	enable_debugger()
 
-	make_datum_reference_lists()
-
 	log_world("World loaded at [TIME_STAMP("hh:mm:ss", FALSE)]!")
 
 	var/tempfile = "data/logs/config_error.[GUID()].log"	//temporary file used to record errors with loading config, moved to log directory once logging is set
 	GLOB.config_error_log = GLOB.world_href_log = GLOB.world_runtime_log = GLOB.world_map_error_log = GLOB.world_attack_log = GLOB.world_game_log = tempfile
+
+	make_datum_reference_lists()	//initialises global lists for referencing frequently used datums (so that we only ever do it once)
+
 
 	GLOB.revdata = new
 
@@ -105,8 +108,6 @@ GLOBAL_LIST(topic_status_cache)
 		if(config_legacy.ToRban)
 			ToRban_autoupdate()
 
-#undef RECOMMENDED_VERSION
-
 	return
 
 /world/proc/InitTgs()
@@ -143,14 +144,20 @@ GLOBAL_LIST(topic_status_cache)
 	GLOB.world_qdel_log = "[GLOB.log_directory]/qdel.log"
 	GLOB.world_map_error_log = "[GLOB.log_directory]/map_errors.log"
 	GLOB.world_runtime_log = "[GLOB.log_directory]/runtime.log"
+	GLOB.tgui_log = "[GLOB.log_directory]/tgui.log"
 	GLOB.subsystem_log = "[GLOB.log_directory]/subsystem.log"
 
+#ifdef UNIT_TESTS
+	GLOB.test_log = file("[GLOB.log_directory]/tests.log")
+	start_log(GLOB.test_log)
+#endif
 	start_log(GLOB.world_game_log)
 	start_log(GLOB.world_attack_log)
 	start_log(GLOB.world_href_log)
 	start_log(GLOB.world_qdel_log)
 	start_log(GLOB.world_map_error_log)
 	start_log(GLOB.world_runtime_log)
+	start_log(GLOB.tgui_log)
 	start_log(GLOB.subsystem_log)
 
 	GLOB.changelog_hash = md5('html/changelog.html') //for telling if the changelog has changed recently
@@ -187,7 +194,7 @@ GLOBAL_LIST(topic_status_cache)
 			break
 
 	if(!handler || initial(handler.log))
-		log_topic("\"[T]\", from:[addr], aster:[master], key:[key]")
+		log_topic("\"[T]\", from:[addr], master:[master], key:[key]")
 
 	if(!handler)
 		return

@@ -4,8 +4,15 @@
 #define SEND_SOUND(target, sound) DIRECT_OUTPUT(target, sound)
 #define SEND_TEXT(target, text) DIRECT_OUTPUT(target, text)
 #define WRITE_FILE(file, text) DIRECT_OUTPUT(file, text)
-#define WRITE_LOG(log, text) rustg_log_write(log, text)
-
+#ifdef EXTOOLS_LOGGING
+// proc hooked, so we can just put in standard TRUE and FALSE
+#define WRITE_LOG(log, text) extools_log_write(log,text,TRUE)
+//#define WRITE_LOG_NO_FORMAT(log, text) extools_log_write(log,text,FALSE)
+#else
+//This is an external call, "true" and "false" are how rust parses out booleans
+#define WRITE_LOG(log, text) rustg_log_write(log, text) //, "true"
+//#define WRITE_LOG_NO_FORMAT(log, text) rustg_log_write(log, text, "false")
+#endif
 //print a warning message to world.log
 #define WARNING(MSG) warning("[MSG] in [__FILE__] at line [__LINE__] src: [UNLINT(src)] usr: [usr].")
 /proc/warning(msg)
@@ -45,7 +52,10 @@
 
 /proc/log_adminsay(text, mob/speaker)
 	if (config_legacy.log_adminchat)
-		WRITE_LOG(GLOB.world_game_log, "ADMINSAY: [speaker.simple_info_line()]: [html_decode(text)]")
+		if(speaker)
+			WRITE_LOG(GLOB.world_game_log, "ADMINPRIVATE: ASAY: [speaker.simple_info_line()]: [text]")
+		else
+			WRITE_LOG(GLOB.world_game_log, "ADMINPRIVATE: ASAY: [text]")
 
 /proc/log_modsay(text, mob/speaker)
 	if (config_legacy.log_adminchat)
@@ -177,22 +187,45 @@
 /proc/start_log(log)
 	WRITE_LOG(log, "Starting up round ID [GLOB.round_id].\n-------------------------")
 
+/**
+ * Appends a tgui-related log entry. All arguments are optional.
+ */
+/proc/log_tgui(user, message, context,
+		datum/tgui_window/window,
+		datum/src_object)
+	var/entry = ""
+	// Insert user info
+	if(!user)
+		entry += "<nobody>"
+	else if(istype(user, /mob))
+		var/mob/mob = user
+		entry += "[mob.ckey] (as [mob] at [mob.x],[mob.y],[mob.z])"
+	else if(istype(user, /client))
+		var/client/client = user
+		entry += "[client.ckey]"
+	// Insert context
+	if(context)
+		entry += " in [context]"
+	else if(window)
+		entry += " in [window.id]"
+	// Resolve src_object
+	if(!src_object && window && window.locked_by)
+		src_object = window.locked_by.src_object
+	// Insert src_object info
+	if(src_object)
+		entry += "\nUsing: [src_object.type] [REF(src_object)]"
+	// Insert message
+	if(message)
+		entry += "\n[message]"
+	WRITE_LOG(GLOB.tgui_log, entry)
+
 /* Close open log handles. This should be called as late as possible, and no logging should hapen after. */
 /proc/shutdown_logging()
+#ifdef EXTOOLS_LOGGING
+	extools_finalize_logging()
+#else
 	rustg_log_close_all()
-
-/proc/loc_name(atom/A)
-	if(!istype(A))
-		return "(INVALID LOCATION)"
-
-	var/turf/T = A
-	if (!istype(T))
-		T = get_turf(A)
-
-	if(istype(T))
-		return "([AREACOORD(T)])"
-	else if(A.loc)
-		return "(UNKNOWN (?, ?, ?))"
+#endif
 
 /* Helper procs for building detailed log lines */
 /proc/key_name(whom, include_link = null, include_name = TRUE, highlight_special_characters = TRUE)
@@ -286,7 +319,18 @@
 /proc/key_name_admin(whom, include_name = TRUE)
 	return key_name(whom, TRUE, include_name)
 
+/proc/loc_name(atom/A)
+	if(!istype(A))
+		return "(INVALID LOCATION)"
 
+	var/turf/T = A
+	if (!istype(T))
+		T = get_turf(A)
+
+	if(istype(T))
+		return "([AREACOORD(T)])"
+	else if(A.loc)
+		return "(UNKNOWN (?, ?, ?))"
 
 /// VSTATION SPECIFIC LOGGING. ///
 /proc/log_debug(text)

@@ -30,7 +30,8 @@ GLOBAL_PROTECT(world_map_error_log)
 /// datum/controller/subsystem logging in general
 GLOBAL_VAR(subsystem_log)
 GLOBAL_PROTECT(subsystem_log)
-
+GLOBAL_VAR(tgui_log)
+GLOBAL_PROTECT(tgui_log)
 /////Picture logging
 GLOBAL_VAR(picture_log_directory)
 GLOBAL_PROTECT(picture_log_directory)
