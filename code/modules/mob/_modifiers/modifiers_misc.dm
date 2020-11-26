@@ -51,7 +51,7 @@ the artifact triggers the rage.
 	stacks = MODIFIER_STACK_EXTEND
 
 	// The good stuff.
-	slowdown = -1							// Move a bit faster.
+	slowdown = -0.75							// Move a bit faster.
 	attack_speed_percent = 0.66				// Attack at 2/3 the normal delay.
 	outgoing_melee_damage_percent = 1.5		// 50% more damage from melee.
 	max_health_percent = 1.5				// More health as a buffer, however the holder might fall into crit after this expires if they're mortally wounded.
