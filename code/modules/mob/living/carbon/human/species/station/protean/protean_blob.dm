@@ -283,6 +283,8 @@
 		pulledby.stop_pulling()
 	stop_pulling()
 
+	var/panel_selected = client?.statpanel == "Protean"
+
 	//Record where they should go
 	var/atom/creation_spot = drop_location()
 
@@ -352,6 +354,9 @@
 
 	//Mail them to nullspace
 	moveToNullspace()
+	
+	if(blob.client && panel_selected)
+		blob.client.statpanel = "Protean"
 
 	//Message
 	blob.visible_message("<b>[src.name]</b> collapses into a gooey blob!")
@@ -435,6 +440,8 @@
 		pulledby.stop_pulling()
 	stop_pulling()
 
+	var/panel_selected = blob.client?.statpanel == "Protean"
+
 	//Stop healing if we are
 	if(blob.healing)
 		blob.healing.expire()
@@ -460,6 +467,9 @@
 	//Put our owner in it (don't transfer var/mind)
 	ckey = blob.ckey
 	temporary_form = null
+	
+	if(client && panel_selected)
+		client.statpanel = "Protean"
 
 	//Transfer vore organs
 	vore_selected = blob.vore_selected
