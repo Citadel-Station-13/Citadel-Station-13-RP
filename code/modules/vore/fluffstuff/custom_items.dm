@@ -1446,7 +1446,7 @@
 	update_icon()
 	
 	//Failure chance
-	if(prob(failure_chance) && (beacons.len >= 2)
+	if(prob(failure_chance) && (beacons.len >= 2))
 		var/list/wrong_choices = beacons - destination.tele_name
 		var/wrong_name = pick(wrong_choices)
 		destination = beacons[wrong_name]
