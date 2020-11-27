@@ -1442,16 +1442,24 @@
 	if(!teleport_checks(target,user))
 		return //The checks proc can send them a message if it wants.
 
-	//Bzzt.
-	ready = 0
-	power_source.use(charge_cost)
-
+	ready = FALSE
+	update_icon()
+	
 	//Failure chance
-	if(prob(failure_chance) && beacons.len >= 2)
+	if(prob(failure_chance) && (beacons.len >= 2)
 		var/list/wrong_choices = beacons - destination.tele_name
 		var/wrong_name = pick(wrong_choices)
 		destination = beacons[wrong_name]
-		to_chat(user,"<span class='warning'>\The [src] malfunctions and sends you to the wrong beacon!</span>")
+		if(!teleport_checks(target, user))	// no using this to bypass range checks
+			to_chat(user, "<span class='warning'>[src] malfunctions and fizzles out uselessly!</span>")
+			// penalty: 10 second recharge, but no using charge.
+			addtimer(CALLBACK(src, .proc/recharge), 10 SECONDS)
+			return
+		else
+			to_chat(user,"<span class='warning'>\The [src] malfunctions and sends you to the wrong beacon!</span>")
+
+	//Bzzt.
+	power_source.use(charge_cost)
 
 	//Destination beacon vore checking
 	var/turf/dT = get_turf(destination)
@@ -1502,12 +1510,13 @@
 			//Phase-in effect for grabbed person
 			phase_in(G.affecting,get_turf(G.affecting))
 
-	update_icon()
-	spawn(30 SECONDS)
-		ready = 1
-		update_icon()
+	addtimer(CALLBACK(src, .proc/recharge), 30 SECONDS)
 
 	logged_events["[world.time]"] = "[user] teleported [target] to [real_dest] [televored ? "(Belly: [lowertext(real_dest.name)])" : null]"
+
+/obj/item/perfect_tele/proc/recharge()
+	ready = TRUE
+	update_icon()
 
 /obj/item/perfect_tele/proc/phase_out(var/mob/M,var/turf/T)
 
