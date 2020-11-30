@@ -1492,6 +1492,34 @@ End Citadel Change */
 	glass_desc = "Astral Wind. It's a touch more solid than most drinks."
 	glass_special = list(DRINK_FIZZ)
 
+/datum/reagent/drink/soda/solar_wind
+	name = "Solar Wind"
+	id = "solar_wind"
+	description = "The spices have reacted energetically, making the soda give off a warm orange hue."
+	taste_description = "Ultraviolet heat"
+	color = "#002010"
+	adj_drowsy = -10
+	adj_sleepy = -5
+	adj_temp = +15
+
+	glass_name = "Solar Wind"
+	glass_desc = "Solar Wind. Even the glass feels like it's been soaking up the sun."
+	glass_special = list(DRINK_FIZZ)
+
+/datum/reagent/drink/soda/vortex_chill
+	name = "Vortex Chill"
+	id = "vortex_chill"
+	description = "A splash of mint, and the temperature rapidly drops"
+	taste_description = "The wind-chill of the universe"
+	color = "#002010"
+	adj_drowsy = -10
+	adj_sleepy = -5
+	adj_temp = -15
+
+	glass_name = "Vortex Chill"
+	glass_desc = "Vortex Chill. Despite lacking ice it's constantly flowing cold."
+	glass_special = list(DRINK_FIZZ)
+
 /datum/reagent/drink/soda/dr_gibb
 	name = "Dr. Gibb"
 	id = "dr_gibb"
@@ -2552,6 +2580,19 @@ End Citadel Change */
 
 	glass_name = "gin fizz"
 	glass_desc = "Refreshingly lemony, deliciously dry."
+
+/datum/reagent/ethanol/nebula_riptide
+	name = "Nebula Riptide"
+	id = "nebula_riptide"
+	description = "The drink is compounded into form from a larger volume, leaving little to drink."
+	taste_description = "Burning hot, Freezing cold, and bitter irony"
+	color = "#09dbf7"
+	strength = 10
+	adj_drowsy = -30
+	adj_sleepy = -30
+
+	glass_name = "Nebula Riptide"
+	glass_desc = "Nebula Riptide. It's thick enough to stand on it's own, almost even parts spice and liquid."
 
 /datum/reagent/ethanol/grog
 	name = "Grog"
