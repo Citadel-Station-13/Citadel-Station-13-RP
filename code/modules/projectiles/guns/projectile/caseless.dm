@@ -29,6 +29,7 @@
 	caliber = "10mmCL"
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 3)
 	slot_flags = SLOT_BACK
+	pin = /obj/item/firing_pin/explorer
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/m10x24mm/small
 	allowed_magazines = list(/obj/item/ammo_magazine/m10x24mm/small, /obj/item/ammo_magazine/m10x24mm/med, /obj/item/ammo_magazine/m10x24mm/large)
