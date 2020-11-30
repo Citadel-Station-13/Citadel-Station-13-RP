@@ -31,9 +31,8 @@
 
 		//Machine-only emotes
 		if("ping", "beep", "buzz", "yes", "ye", "no", "rcough", "rsneeze")
-
-			if(!isSynthetic())
-				to_chat(src, "<span class='warning'>You are not a synthetic.</span>")
+			if(!isSynthetic() && src.can_speak(/datum/language/machine)) // whaaat the fuck is this
+				to_chat(src, "<span class='warning'>You are incapable of making those sounds, due to not being synthetic or having the capability to speak EAL.</span>")
 				return
 
 			var/M = null
