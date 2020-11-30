@@ -663,5 +663,5 @@ Drinks Data
 /datum/reagent/ethanol/vortex_chill
 	glass_icon_state = "vortex_chill"
 
-	/datum/reagent/ethanol/nebula_riptide
+/datum/reagent/ethanol/nebula_riptide
 	glass_icon_state = "nebula_riptide"
