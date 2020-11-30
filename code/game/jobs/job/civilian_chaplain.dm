@@ -14,7 +14,7 @@
 	minimal_access = list(access_chapel_office, access_crematorium)
 
 	outfit_type = /decl/hierarchy/outfit/job/chaplain
-	alt_titles = list("Paracausal Scholar", "Religious Affairs Liason")
+	alt_titles = list("Religious Affairs Liason")
 
 /datum/job/chaplain/equip(mob/living/carbon/human/H, src)
 	. = ..()
