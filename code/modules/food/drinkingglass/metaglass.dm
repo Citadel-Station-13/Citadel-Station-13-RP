@@ -665,3 +665,4 @@ Drinks Data
 
 /datum/reagent/ethanol/nebula_riptide
 	glass_icon_state = "nebula_riptide"
+	
