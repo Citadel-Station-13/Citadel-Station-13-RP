@@ -21,11 +21,11 @@
 	display_name = "Toe-Less Jackboots"
 	path = /obj/item/clothing/shoes/boots/jackboots/toeless
 
-/datum/gear/shoes/toeless
+/datum/gear/shoes/toelessknee
 	display_name = "Toe-Less Jackboots - Knee-Length"
 	path = /obj/item/clothing/shoes/boots/jackboots/toeless/knee
 
-/datum/gear/shoes/toeless
+/datum/gear/shoes/toelessthigh
 	display_name = "Toe-Less Jackboots - Thigh-Length"
 	path = /obj/item/clothing/shoes/boots/jackboots/toeless/thigh
 
