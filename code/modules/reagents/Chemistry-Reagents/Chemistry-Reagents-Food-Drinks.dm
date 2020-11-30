@@ -1500,7 +1500,7 @@ End Citadel Change */
 	color = "#002010"
 	adj_drowsy = -10
 	adj_sleepy = -5
-	adj_temp = +15
+	adj_temp = 15
 
 	glass_name = "Solar Wind"
 	glass_desc = "Solar Wind. Even the glass feels like it's been soaking up the sun."
@@ -1510,7 +1510,7 @@ End Citadel Change */
 	name = "Vortex Chill"
 	id = "vortex_chill"
 	description = "A splash of mint, and the temperature rapidly drops"
-	taste_description = "The wind-chill of the universe"
+	taste_description = "the wind-chill of the universe"
 	color = "#002010"
 	adj_drowsy = -10
 	adj_sleepy = -5
@@ -2588,8 +2588,6 @@ End Citadel Change */
 	taste_description = "Burning hot, Freezing cold, and bitter irony"
 	color = "#09dbf7"
 	strength = 10
-	adj_drowsy = -30
-	adj_sleepy = -30
 
 	glass_name = "Nebula Riptide"
 	glass_desc = "Nebula Riptide. It's thick enough to stand on it's own, almost even parts spice and liquid."
