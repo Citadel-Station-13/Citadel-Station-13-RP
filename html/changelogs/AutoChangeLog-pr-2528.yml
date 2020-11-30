@@ -1,0 +1,4 @@
+author: "silicons"
+delete-after: True
+changes: 
+  - balance: "berserk modifier used by saviks reduces slowdown by 0.75 instead of 1"
