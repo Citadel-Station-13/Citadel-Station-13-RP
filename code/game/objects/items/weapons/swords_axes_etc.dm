@@ -106,3 +106,47 @@
 		force = old_force
 	else
 		return ..()
+
+/obj/item/melee/disruptor
+	name = "disruptor blade"
+	desc = "A long, machete-like blade, designed to mount onto the arm or some rough equivalent. Electricity courses through it."
+	description_info = "This blade deals bonus damage against animals (space bears, carp) and aberrations (xenomorphs)."
+	icon = 'icons/obj/kitchen.dmi'
+	icon_state = "armblade"
+	item_icons = list(
+			slot_l_hand_str = 'icons/mob/items/lefthand_material.dmi',
+			slot_r_hand_str = 'icons/mob/items/righthand_material.dmi',
+			)
+	item_state = "armblade"
+	force = 15 // same force as a drill
+	defend_chance = 20 // did you know melee weapons have a default 5% chance to block frontal melee?
+	sharp = TRUE
+	edge = TRUE
+	var/SA_bonus_damage = 35 // 50 total against animals and aberrations.
+	var/SA_vulnerability = MOB_CLASS_ANIMAL | MOB_CLASS_ABERRATION
+
+/obj/item/melee/disruptor/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+	. = ..()
+	if(isliving(target))
+		var/mob/living/tm = target // targeted mob
+		if(SA_vulnerability & tm.mob_class)
+			tm.apply_damage(SA_bonus_damage) // fuck em
+
+/obj/item/melee/disruptor/borg
+	desc = "A long, machete-like blade, designed to mount onto a facility-bound synthetic's chassis."
+
+/obj/item/melee/spike
+	name = "jagged spike"
+	desc = "A polished spike with miniscule edges all over its surface. You won't be holding onto it for long if you stab someone with it."
+	embed_chance = 100 // these should probably come in a bandolier or have some sort of fabricator, tbf
+	force = 5 // HAVING A STICK JAMMED INTO YOU IS LIKELY BAD FOR YOUR HEALTH // well to be fair most of the damage comes from the embed not the stab
+	w_class = WEIGHT_CLASS_SMALL
+	matter = list(DEFAULT_WALL_MATERIAL = 2500)
+	sharp = TRUE
+	edge = TRUE
+	icon_state = "embed_spike"
+	item_icons = list(
+			slot_l_hand_str = 'icons/mob/items/lefthand_material.dmi',
+			slot_r_hand_str = 'icons/mob/items/righthand_material.dmi',
+			)
+	item_state = "switchblade_open"

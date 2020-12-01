@@ -9,7 +9,7 @@
 	var/list/cant_hold // cit add
 	var/sound_in = 'sound/effects/holster/holsterin.ogg'
 	var/sound_out = 'sound/effects/holster/holsterout.ogg'
-	var/holster_verb = "holsters"
+	var/holster_verb = "holster"
 
 /obj/item/clothing/accessory/holster/proc/holster(var/obj/item/I, var/mob/living/user)
 	if(holstered && istype(user))
@@ -161,7 +161,7 @@
 	cant_hold = list(/obj/item/material/knife/machete/armblade)
 	sound_in = 'sound/effects/holster/sheathin.ogg'
 	sound_out = 'sound/effects/holster/sheathout.ogg'
-	holster_verb = "sheathes"
+	holster_verb = "sheathe"
 
 /obj/item/clothing/accessory/holster/machete/occupied
 	var/holstered_spawn = /obj/item/material/knife/machete

@@ -330,6 +330,9 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 	..()
 	holder.adjustBruteLoss(-9 ,include_robo = TRUE) //Looks high, but these are modified by species resistances to equal out at 3hp/sec.
 	holder.adjustFireLoss(-2.14,include_robo = TRUE) //Looks high, but these are modified by species resistances to equal out at 3hp/sec.
+	holder.adjustToxLoss(-3)
+	holder.radiation = max(holder.radiation - 15, 0)
+
 
 
 	var/mob/living/carbon/human/H = holder
