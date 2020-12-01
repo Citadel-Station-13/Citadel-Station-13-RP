@@ -373,6 +373,19 @@
 		B.forceMove(blob)
 		B.owner = blob
 
+	var/datum/vore_preferences/P = blob.client?.prefs_vr
+	
+	if(P)
+		blob.digestable = P.digestable
+		blob.devourable = P.devourable
+		blob.feeding = P.feeding
+		blob.digest_leave_remains = P.digest_leave_remains
+		blob.allowmobvore = P.allowmobvore
+		blob.vore_taste = P.vore_taste
+		blob.permit_healbelly = P.permit_healbelly
+		blob.can_be_drop_prey = P.can_be_drop_prey
+		blob.can_be_drop_pred = P.can_be_drop_pred
+
 	//Return our blob in case someone wants it
 	return blob
 
