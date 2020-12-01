@@ -297,12 +297,20 @@
 	nif = null
 	return ..()
 
+/mob/living/carbon/brain/caught_soul/ghostize(can_reenter_corpse)
+	. = ..()
+	if(!can_reenter_corpse)
+		qdel(src)
+
 /mob/living/carbon/brain/caught_soul/Life()
 	if(!mind || !key)
 		qdel(src)
 		return
 
 	. = ..()
+	
+	if(!client)
+		return
 
 	if(!parent_mob && !transient &&(life_tick % 150 == 0) && soulcatcher.setting_flags & NIF_SC_BACKUPS)
 		SStranscore.m_backup(mind,0) //Passed 0 means "Don't touch the nif fields on the mind record"

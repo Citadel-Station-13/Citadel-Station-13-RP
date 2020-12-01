@@ -53,6 +53,47 @@
 		-->
 		<div class="commit sansserif">
 
+			<h2 class="date">01 December 2020</h2>
+			<h3 class="author">Lorilili (Port from Aurora) updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Added knee-high and thigh-high jackboots.</li>
+				<li class="imageadd">Replaced laceup and leather shoes with oxford shoes.</li>
+				<li class="imageadd">Replaced standard shoe and high-top sprites with newer ones.</li>
+			</ul>
+			<h3 class="author">silicons updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="balance">berserk modifier used by saviks reduces slowdown by 0.75 instead of 1</li>
+				<li class="balance">teshari have been given a bit less damage vulnerability and item slowdown mod.</li>
+			</ul>
+
+			<h2 class="date">27 November 2020</h2>
+			<h3 class="author">GrayRachnid updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="balance">Reduced teshari speed but gave them a health buff to improve gameplay.</li>
+			</ul>
+
+			<h2 class="date">26 November 2020</h2>
+			<h3 class="author">buffyuwu updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">fixes simple_mob ai so that it doesn't freeze when you ghost from it</li>
+				<li class="bugfix">fixes cult sound volume</li>
+				<li class="bugfix">fixes engineering tape</li>
+			</ul>
+
+			<h2 class="date">23 November 2020</h2>
+			<h3 class="author">Hatterhat updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Admin-spawn only HF machete for throwing at things (while off) and stabbing things (while on).</li>
+			</ul>
+			<h3 class="author">buffyuwu updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">fixed floorlights</li>
+			</ul>
+			<h3 class="author">zeroisthebiggay updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">demisock sprite pixel</li>
+			</ul>
+
 			<h2 class="date">21 November 2020</h2>
 			<h3 class="author">KasparoVy updated:</h3>
 			<ul class="changes bgimages16">
@@ -331,101 +372,6 @@
 			<h3 class="author">lolman360 updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="balance">R&D guns no longer start with firing pins.</li>
-			</ul>
-
-			<h2 class="date">29 September 2020</h2>
-			<h3 class="author">CharlesWedge updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Pirates with Knives, Pirates with Machetes, Pirates with Zip-Guns, Pirates with Sawn Offs, Pirates with Zip-Las, Armored versions of all the above.</li>
-				<li class="rscadd">First Mates with, rifles, retro lasers, quad barreled shotguns and energy swords of course.</li>
-				<li class="rscadd">The Pirate Captain and the Pirate Ripley piloted by a loyal Bosun</li>
-				<li class="rscadd">Expanded Say_list for pirates</li>
-				<li class="tweak">Pirates now use merc AI making them a bit more competent and allowing them to use say_list.</li>
-				<li class="balance">Unarmored Pirates move a bit faster than they did. I mean they are only getting shot at. Armored Pirate remain at their slow speed.</li>
-				<li class="imageadd">New Sprites for the pirate gang and their new mecha.</li>
-			</ul>
-			<h3 class="author">Enzo-Leon updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="balance">Armory Stock</li>
-				<li class="bugfix">Airlock siphon BS</li>
-			</ul>
-			<h3 class="author">Greenjoe12345 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">The ability to add a custom name/description to loadout items was added.</li>
-				<li class="rscadd">the white cane got a new sprite, new variation, and also a crutch was added, and a new eyepatch</li>
-				<li class="imageadd">Teshari got a sprite for the white blindfold</li>
-				<li class="code_imp">where 'gear_tweaks = list(gear_tweak_free_color_choice)' was used before for color selection in the loadout, now 'gear_tweaks += gear_tweak_free_color_choice' will need to be used, otherwise the item will not be able to be given a custom name or description</li>
-				<li class="admin">A jobban option was added for disabling a specific person's access to the custom loadout name/desc feature</li>
-			</ul>
-			<h3 class="author">Hatterhat updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Rumors around the sector have mentioned something about experimental high-velocity 10mm cartridges being field-tested by operatives and elite mercenaries alike. Be on guard for so-called "suppressors".</li>
-				<li class="rscadd">Stingbangs! Like flashbangs, except they also fire rubbershot pellets. Adminspawn only.</li>
-				<li class="bugfix">Threat sounds from mercenary simplemobs now play properly.</li>
-				<li class="bugfix">Vox pirates with swords can now block things, which they somehow couldn't do before.</li>
-			</ul>
-			<h3 class="author">KasparoVy updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">You can now speak Sagaru with ,T. Why there wasn't a language key at all before is a mystery.</li>
-				<li class="bugfix">RIG-wearing Teshari will no longer have Human-sized boots.</li>
-				<li class="imageadd">Adds EVA RIG sprites for Sergals, Akula, Nevreans & Nagas.</li>
-				<li class="rscadd">Tajaran hairstyles can now be selected by Vulpkanin, Sergals & Zorren (allowed species copied from Vulpkanin hair)</li>
-				<li class="bugfix">Updates taur clip-masking to correct logical issues and improve performance</li>
-				<li class="bugfix">Accessories attached to Taurized suits will be centered properly now</li>
-				<li class="bugfix">Fixes a bug causing accessories to inherit the colour of what they're attached to</li>
-				<li class="rscadd">Adds support for secondary wing colour (spriters go wild)</li>
-				<li class="tweak">Merged a bunch of _vr files into the regular files, file bugreport if anything is busted</li>
-				<li class="imageadd">Ports all taurclothes from Virgo, namely aprons & old poncho</li>
-				<li class="imageadd">Adds a few Nevrean tails</li>
-				<li class="imageadd">Adds Vulp Alt. face, Vulp Short Nose, Talons, Claws, Tajaran Nose Alt., Equine Snout & Equine Nose markings</li>
-				<li class="imageadd">Adds Donkey, Vulp Short + dual-colour & Vulp Jackal ear styles</li>
-				<li class="imageadd">Adds Ward-Takahashi cybernetic tail with dual-colour support</li>
-				<li class="imageadd">Adds darkened Teshari hair sprites ported to Virgo from Arkstation. More flexible colouration.</li>
-			</ul>
-			<h3 class="author">LetterN updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="code_imp">cleaned up /busyspace/</li>
-			</ul>
-			<h3 class="author">Max-023 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Adds the helmsman alt title</li>
-				<li class="tweak">Tweaks the amount of command secs that can be had delete: Deletes herobrine</li>
-				<li class="tweak">Amount of parameds</li>
-			</ul>
-			<h3 class="author">RealDonaldTrump updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Remodels the civilian shuttle</li>
-				<li class="bugfix">Pilot helmets can once again be linked to shuttle jump consoles.</li>
-			</ul>
-			<h3 class="author">RobotAlice updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Steel sheet recipe to make dance poles (1 sheet)</li>
-				<li class="rscadd">Added construction/deconstruction functionality to dance poles</li>
-				<li class="tweak">Fancy bluetext instructions for moving/removing dance poles</li>
-				<li class="bugfix">Makes buns and dough enter foodbags normally</li>
-			</ul>
-			<h3 class="author">Zandario updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Automatic Changelogs</li>
-				<li class="rscadd">github workflows</li>
-				<li class="rscdel">Old records that are no longer needed</li>
-				<li class="tweak">Changelog systems</li>
-				<li class="tweak">Updated Changelog Header</li>
-				<li class="imageadd">New Modern Logo</li>
-				<li class="imagedel">Old Outdated Logos</li>
-			</ul>
-			<h3 class="author">corin9090 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Ported ram horns from main</li>
-			</ul>
-			<h3 class="author">lolman360 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">protean blobs can be worn as jumpsuits, id now. also tiny size. they also share the sec rig's allowed contents list.</li>
-			</ul>
-			<h3 class="author">silicons updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="admin">toggle-respawn renamed to toggle-return-to-menu</li>
-				<li class="tweak">tram station now requires drag-drop to leave instead of bump. behavior for other people shoving you in is unchanged.</li>
 			</ul>
 		</div>
 

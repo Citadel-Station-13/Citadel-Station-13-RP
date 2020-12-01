@@ -69,7 +69,7 @@
 				if(CC)
 					CC.post_status("alert", "redalert")*/
 			if(SEC_LEVEL_DELTA)
-				security_announcement_up.Announce("[config_legacy.alert_desc_delta]", "Attention! Delta alert level reached!", new_sound = 'sound/misc/deltakalaxon.ogg')
+				security_announcement_up.Announce("[config_legacy.alert_desc_delta]", "Attention! Delta alert level reached!", new_sound = 'sound/misc/deltakalaxon.ogg',volume=5)
 				security_level = SEC_LEVEL_DELTA
 
 		var/newlevel = get_security_level()
