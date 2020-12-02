@@ -142,7 +142,7 @@
 	minimal_access = list(access_library)
 
 	outfit_type = /decl/hierarchy/outfit/job/librarian
-	alt_titles = list("Journalist", "Historian", "Writer","Film Crew", "Paracausal Scholar")
+	alt_titles = list("Journalist", "Historian", "Writer","Film Crew")
 
 //var/global/lawyer = 0//Checks for another lawyer //This changed clothes on 2nd lawyer, both IA get the same dreds.
 /datum/job/lawyer
