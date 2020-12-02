@@ -21,7 +21,7 @@
 		icon_state = "[initial(icon_state)]-e"
 
 /obj/item/gun/projectile/garand/sniper
-	name - \improper M1A Garand
+	name - "\improper M1A Garand"
 	desc = "A reproduction model of the rare M1A Garand rifle. This one seems to have been modified by a gun smith."
 	icon_state = "sgarand"
 	pin = /obj/item/firing_pin/explorer
