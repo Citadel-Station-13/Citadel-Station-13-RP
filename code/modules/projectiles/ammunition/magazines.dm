@@ -713,11 +713,11 @@
 	ammo_type = /obj/item/ammo_casing/a762/ap
 
 /obj/item/ammo_magazine/m762garand/hunter
-	name = garand clip (7.62mm Hunting)
+	name = "garand clip (7.62mm Hunting)"
 	ammo_type = /obj/item/ammo_casing/a762/hunter
 
 /obj/item/ammo_magazine/m762garand/sniperhunter
-	name = "garand clip (7.62mm HV Hunting)
+	name = "garand clip (7.62mm HV Hunting)"
 	ammo_type = /obj/item/ammo_casing/a762/sniperhunter
 
 /obj/item/ammo_magazine/m762/empty
