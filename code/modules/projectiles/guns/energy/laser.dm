@@ -188,8 +188,8 @@
 	desc = "A modified version of the HI DMR 9E with a replacement firing pin and reduced shot capacity in exchange for a self recharging cell."
 	pin = /obj/item/firing_pin/explorer
 	cell_type = /obj/item/cell/device/weapon/recharge/sniper
-	accuracy = 0 //Forced missing fucking sucks ass
-	scoped_accuracy = 80
+	accuracy = 20 //Forced missing fucking sucks ass
+	scoped_accuracy = 100
 	charge_cost = 600
 
 /obj/item/gun/energy/monorifle

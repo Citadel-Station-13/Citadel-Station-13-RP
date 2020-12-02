@@ -199,8 +199,8 @@
 	pin = /obj/item/firing_pin/explorer
 	w_class = ITEMSIZE_HUGE // So it can't fit in a backpack.
 	ammo_type = /obj/item/ammo_casing/a762/sniperhunter
-	accuracy = 0 //Forced missing fucking sucks ass
-	scoped_accuracy = 80
+	accuracy = 20 //Forced missing fucking sucks ass
+	scoped_accuracy = 100
 
 /obj/item/gun/projectile/shotgun/pump/scopedrifle/verb/scope()
 	set category = "Object"
