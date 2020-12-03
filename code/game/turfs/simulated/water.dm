@@ -10,7 +10,6 @@
 	edge_blending_priority = -1
 	movement_cost = 4
 	outdoors = TRUE
-
 	layer = WATER_FLOOR_LAYER
 
 	can_dirty = FALSE	// It's water
@@ -174,9 +173,8 @@ var/list/shoreline_icon_cache = list()
 	edge_blending_priority = 0
 	movement_cost = 4
 	outdoors = TRUE
-
+	depth = 4
 	layer = WATER_FLOOR_LAYER
-
 	can_dirty = FALSE	// It's acid
 
 /turf/simulated/floor/water/acid/Initialize()
@@ -286,7 +284,7 @@ var/list/shoreline_icon_cache = list()
 	under_state = "abyss"
 	edge_blending_priority = -2
 	movement_cost = 8
-	depth = 2
+	depth = 5
 
 //Blood
 /turf/simulated/floor/water/blood
@@ -298,9 +296,8 @@ var/list/shoreline_icon_cache = list()
 	edge_blending_priority = -1
 	movement_cost = 4
 	outdoors = TRUE
-
 	layer = WATER_FLOOR_LAYER
-
+	depth = 6
 	can_dirty = FALSE	// It's blood
 
 /turf/simulated/floor/water/blood/Initialize()
@@ -308,8 +305,7 @@ var/list/shoreline_icon_cache = list()
 	update_icon()
 
 /turf/simulated/floor/water/blood/update_icon()
-	..() // To get the edges.
-
+	..()
 	icon_state = under_state // This isn't set at compile time in order for it to show as water in the map editor.
 	var/image/blood_sprite = image(icon = 'icons/turf/outdoors.dmi', icon_state = blood_state, layer = WATER_LAYER)
 	add_overlay(blood_sprite)
@@ -375,7 +371,7 @@ var/list/shoreline_icon_cache = list()
 			return
 		if(!istype(oldloc, /turf/simulated/floor/water/blood))
 			to_chat(L, "<span class='warning'>You get covered in blood from entering \the [src]!</span>")
-	AM.acid_act(5)
+			AM.blood_act(1)
 	..()
 
 /turf/simulated/floor/water/blood/Exited(atom/movable/AM, atom/newloc)
@@ -395,4 +391,4 @@ var/list/shoreline_icon_cache = list()
 	under_state = "abyss"
 	edge_blending_priority = -2
 	movement_cost = 8
-	depth = 2
+	depth = 7
