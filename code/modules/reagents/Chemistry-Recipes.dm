@@ -1758,6 +1758,34 @@
 	required_reagents = list("grapejuice" = 2, "cola" = 1)
 	result_amount = 3
 
+/datum/chemical_reaction/drinks/astral_wind
+	name = "Astral Wind"
+	id = "astral_wind"
+	result = "astral_wind"
+	required_reagents = list("spacemountainwind" = 2, "space_up" = 2, "spacespice" = 1)
+	result_amount = 5
+
+/datum/chemical_reaction/drinks/solar_wind
+	name = "Solar Wind"
+	id = "solar_wind"
+	result = "solar_wind"
+	required_reagents = list("astral_wind" = 1, "capsaicin" = 1)
+	result_amount = 1
+
+/datum/chemical_reaction/drinks/vortex_chill
+	name = "Vortex Chill"
+	id = "vortex_chill"
+	result = "vortex_chill"
+	required_reagents = list("astral_wind" = 1, "mint" = 1)
+	result_amount = 1
+
+/datum/chemical_reaction/drinks/nebula_riptide
+	name = "Nebula Riptide"
+	id = "nebula_riptide"
+	result = "nebula_riptide"
+	required_reagents = list("vortex_chill" = 1, "solar_wind" = 1)
+	result_amount = 1
+
 /datum/chemical_reaction/drinks/sbiten
 	name = "Sbiten"
 	id = "sbiten"
