@@ -346,11 +346,12 @@ proc/TextPreview(var/string,var/len=40)
 //For generating neat chat tag-images
 //The icon var could be local in the proc, but it's a waste of resources
 //	to always create it and then throw it out.
-/var/icon/text_tag_icons = new('./icons/chattags.dmi')
-/proc/create_text_tag(var/tagname, var/tagdesc = tagname, var/client/C = null)
+GLOBAL_VAR_INIT(text_tag_icons, new /icon('./icons/chattags.dmi'))
+
+/proc/create_text_tag(tagname, tagdesc = tagname, client/C)
 	if(!(C && C.is_preference_enabled(/datum/client_preference/chat_tags)))
 		return tagdesc
-	return "<IMG src='\ref[text_tag_icons.icon]' class='text_tag' iconstate='[tagname]'" + (tagdesc ? " alt='[tagdesc]'" : "") + ">"
+	return icon2html(GLOB.text_tag_icons, C, tagname)
 
 /proc/contains_az09(var/input)
 	for(var/i=1, i<=length(input), i++)
