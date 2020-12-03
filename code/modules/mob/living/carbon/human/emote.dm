@@ -938,7 +938,7 @@
 			playsound(loc, 'modular_citadel/sound/voice/purr.ogg', 50, 1, -1)
 
 		else
-			to_chat(src, "<font color='blue'>Unusable emote '[act]'. Say *help or *vhelp for a list.</font>")
+			to_chat(src, "<font color='blue'>Unusable emote '[act]'. Say *help for a list.</font>")
 
 	if (message)
 		custom_emote(m_type,message)
