@@ -375,7 +375,7 @@ var/list/shoreline_icon_cache = list()
 			return
 		if(!istype(oldloc, /turf/simulated/floor/water/blood))
 			to_chat(L, "<span class='warning'>You get covered in blood from entering \the [src]!</span>")
-	AM.acid_act(5)
+	AM.blood_act(5)
 	..()
 
 /turf/simulated/floor/water/blood/Exited(atom/movable/AM, atom/newloc)
@@ -390,7 +390,7 @@ var/list/shoreline_icon_cache = list()
 
 /turf/simulated/floor/water/blood/deep
 	name = "deep coagulating pool"
-	desc = "A body of crimson fluid. It smells like pennies and gasoline.  It seems quite deep."
+	desc = "A body of crimson fluid. It smells like pennies and gasoline. It seems quite deep."
 	icon_state = "acidb_deep"
 	under_state = "abyss"
 	edge_blending_priority = -2
