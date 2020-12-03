@@ -379,5 +379,12 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 			src.forceMove(prig)
 			return
 
+/mob/living/carbon/human/proc/toggle_glowing_eyes()
+	set name = "Toggle Glowing Eyes"
+	set category = "Abilities"
+	
+	species?.has_glowing_eyes = !species.has_glowing_eyes
+	update_eyes()
+
 #undef DAM_SCALE_FACTOR
 #undef METAL_PER_TICK
