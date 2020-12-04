@@ -1,0 +1,5 @@
+author: "GrayRachnid"
+delete-after: True
+changes: 
+  - tweak: "altered job titles to make them more setting and common sense compliant."
+  - code_imp: "removed all non-modular files that edited jobs and put everything in their non-modular counterparts."
