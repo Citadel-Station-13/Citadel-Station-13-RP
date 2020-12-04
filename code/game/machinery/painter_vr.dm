@@ -72,25 +72,26 @@
 			dat += "<A href='?src=\ref[src];paint=1'>Apply new color.</A><BR><BR>"
 		else
 			// POGGERS
-#define MATRIX_FIELD(field) "<label for='[##field]'>[##field]</label><input type='number' name='[##name]'>"
+#define MATRIX_FIELD(field) "<b><label for='[##field]'>[##field]</label></b> <input type='number' name='[field]'>"
 			dat += "<br><form name='matrix paint' action='?src=[REF(src)]'>"
 			dat += "<input type='hidden' name='src' value='[REF(src)]'>"
+			dat += "<br><br>"
 			dat += MATRIX_FIELD("rr")
 			dat += MATRIX_FIELD("rg")
 			dat += MATRIX_FIELD("rb")
-			dat += "<br>"
+			dat += "<br><br>"
 			dat += MATRIX_FIELD("gr")
 			dat += MATRIX_FIELD("gg")
 			dat += MATRIX_FIELD("gb")
-			dat += "<br>"
+			dat += "<br><br>"
 			dat += MATRIX_FIELD("br")
 			dat += MATRIX_FIELD("bg")
 			dat += MATRIX_FIELD("bb")
-			dat += "<br>"
+			dat += "<br><br>"
 			dat += MATRIX_FIELD("cr")
 			dat += MATRIX_FIELD("cg")
 			dat += MATRIX_FIELD("cb")
-			dat += "<br>"
+			dat += "<br><br>"
 			dat += "<input type='submit' value='Matrix Paint'>"
 			dat += "</form><br>"
 #undef MATRIX_FIELD
