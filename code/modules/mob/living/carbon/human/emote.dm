@@ -808,6 +808,7 @@
 
 		else
 			to_chat(src, "<font color='blue'>Unusable emote '[act]'. Say *help for a list.</font>")
+			return
 
 	if (message)
 		custom_emote(m_type,message)
