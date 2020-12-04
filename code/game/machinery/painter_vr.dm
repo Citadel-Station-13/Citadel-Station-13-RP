@@ -3,10 +3,11 @@
 	desc = "A machine to give your apparel a fresh new color! Recommended to use with white items for best results."
 	icon = 'icons/obj/vending_vr.dmi'
 	icon_state = "colormate"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	var/list/processing = list()
 	var/activecolor = "#FFFFFF"
+	var/matrix_mode = FALSE
 	var/list/allowed_types = list(
 			/obj/item/clothing,
 			/obj/item/storage/backpack,
@@ -64,9 +65,35 @@
 	else
 		for(var/atom/movable/O in processing)
 			dat += "Item inserted: [O]<HR>"
-		dat += "<A href='?src=\ref[src];select=1'>Select new color.</A><BR>"
-		dat += "Color: <font color='[activecolor]'>&#9899;</font>"
-		dat += "<A href='?src=\ref[src];paint=1'>Apply new color.</A><BR><BR>"
+			dat += "<a href='?src=[REF(src)];toggle_matrix_mode=1'>Matrix mode: [matrix_mode? "On" : "Off"]</a>"
+		if(!matrix_mode)
+			dat += "<A href='?src=\ref[src];select=1'>Select new color.</A><BR>"
+			dat += "Color: <font color='[activecolor]'>&#9899;</font>"
+			dat += "<A href='?src=\ref[src];paint=1'>Apply new color.</A><BR><BR>"
+		else
+			// POGGERS
+#define MATRIX_FIELD(field) "<label for='[##field]'>[##field]</label><input type='number' name='[##name]'>"
+			dat += "<br><form name='matrix paint' action='?src=[REF(src)]'>"
+			dat += "<input type='hidden' name='src' value='[REF(src)]'>"
+			dat += MATRIX_FIELD("rr")
+			dat += MATRIX_FIELD("rg")
+			dat += MATRIX_FIELD("rb")
+			dat += "<br>"
+			dat += MATRIX_FIELD("gr")
+			dat += MATRIX_FIELD("gg")
+			dat += MATRIX_FIELD("gb")
+			dat += "<br>"
+			dat += MATRIX_FIELD("br")
+			dat += MATRIX_FIELD("bg")
+			dat += MATRIX_FIELD("bb")
+			dat += "<br>"
+			dat += MATRIX_FIELD("cr")
+			dat += MATRIX_FIELD("cg")
+			dat += MATRIX_FIELD("cb")
+			dat += "<br>"
+			dat += "<input type='submit' value='Matrix Paint'>"
+			dat += "</form><br>"
+#undef MATRIX_FIELD
 		dat += "<A href='?src=\ref[src];clear=1'>Remove paintjob.</A><BR><BR>"
 		dat += "<A href='?src=\ref[src];eject=1'>Eject item.</A><BR><BR>"
 
@@ -92,13 +119,36 @@
 
 	if(href_list["paint"])
 		for(var/atom/movable/O in processing)
-			O.color = activecolor
-		playsound(src.loc, 'sound/effects/spray3.ogg', 50, 1)
+			O.add_atom_colour(activecolor, FIXED_COLOUR_PRIORITY)
+		playsound(src, 'sound/effects/spray3.ogg', 50, 1)
+
+	if(href_list["toggle_matrix_mode"])
+		matrix_mode = !matrix_mode
+
+	if(href_list["matrix_paint"])
+		// assemble matrix
+		var/list/cm = rgb_construct_color_matrix(
+			text2num(href_list["rr"]),
+			text2num(href_list["rg"]),
+			text2num(href_list["rb"]),
+			text2num(href_list["gr"]),
+			text2num(href_list["gg"]),
+			text2num(href_list["gb"]),
+			text2num(href_list["br"]),
+			text2num(href_list["bg"]),
+			text2num(href_list["bb"]),
+			text2num(href_list["cr"]),
+			text2num(href_list["cg"]),
+			text2num(href_list["cb"])
+		)
+		for(var/atom/movable/AM in processing)
+			AM.add_atom_colour(cm, FIXED_COLOUR_PRIORITY)
+		playsound(src, 'sound/effects/spray3.ogg', 50, 1)
 
 	if(href_list["clear"])
 		for(var/atom/movable/O in processing)
-			O.color = initial(O.color)
-		playsound(src.loc, 'sound/effects/spray3.ogg', 50, 1)
+			O.remove_atom_colour(FIXED_COLOUR_PRIORITY)
+		playsound(src, 'sound/effects/spray3.ogg', 50, 1)
 
 	if(href_list["eject"])
 		for(var/atom/movable/O in processing)
