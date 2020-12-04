@@ -27,7 +27,7 @@
 	pin = /obj/item/firing_pin/explorer
 	magazine_type = /obj/item/ammo_magazine/m762garand/hunter
 	w_class = ITEMSIZE_HUGE // We don't need this fitting in backpacks. 
-	accuracy = 20 //Forced missing fucking sucks ass
+	accuracy = 100 //Forced missing fucking sucks ass
 	scoped_accuracy = 100
 
 /obj/item/gun/projectile/garand/sniper/verb/scope()

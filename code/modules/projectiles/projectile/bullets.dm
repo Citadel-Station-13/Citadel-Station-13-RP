@@ -262,8 +262,8 @@
 	embed_chance = -1
 
 /obj/item/projectile/bullet/rifle/a762/sniperhunter
-	damage = 30 
-	SA_bonus_damage = 40 // 70 total on animals.
+	damage = 20 
+	SA_bonus_damage = 50 // 70 total on animals.
 	SA_vulnerability = MOB_CLASS_ANIMAL
 	embed_chance = -1
 	speed = 0.4
