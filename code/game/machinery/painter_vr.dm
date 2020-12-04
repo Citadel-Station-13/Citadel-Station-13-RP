@@ -7,12 +7,17 @@
 	anchored = TRUE
 	var/list/processing = list()
 	var/activecolor = "#FFFFFF"
+	var/list/color_matrix_last
 	var/matrix_mode = FALSE
 	var/list/allowed_types = list(
 			/obj/item/clothing,
 			/obj/item/storage/backpack,
 			/obj/item/storage/belt
 			)
+
+/obj/machinery/gear_painter/Initialize(mapload)
+	. = ..()
+	color_matrix_last = color_matrix_identity()
 
 /obj/machinery/gear_painter/update_icon()
 	if(panel_open)
@@ -72,26 +77,26 @@
 			dat += "<A href='?src=\ref[src];paint=1'>Apply new color.</A><BR><BR>"
 		else
 			// POGGERS
-#define MATRIX_FIELD(field, default) "<b><label for='[##field]'>[##field]</label></b> <input type='number' name='[field]' value='[default]'>"
+#define MATRIX_FIELD(field, default) "<b><label for='[##field]'>[##field]</label></b> <input type='number' step='0.001' name='[field]' value='[default]'>"
 			dat += "<br><form name='matrix paint' action='?src=[REF(src)]'>"
 			dat += "<input type='hidden' name='src' value='[REF(src)]'>"
 			dat += "<input type='hidden' name='matrix_paint' value='1'"
 			dat += "<br><br>"
-			dat += MATRIX_FIELD("rr", 1)
-			dat += MATRIX_FIELD("rg", 0)
-			dat += MATRIX_FIELD("rb", 0)
+			dat += MATRIX_FIELD("rr", color_matrix_last[1])
+			dat += MATRIX_FIELD("rg", color_matrix_last[2])
+			dat += MATRIX_FIELD("rb", color_matrix_last[3])
 			dat += "<br><br>"
-			dat += MATRIX_FIELD("gr", 0)
-			dat += MATRIX_FIELD("gg", 1)
-			dat += MATRIX_FIELD("gb", 0)
+			dat += MATRIX_FIELD("gr", color_matrix_last[4])
+			dat += MATRIX_FIELD("gg", color_matrix_last[5])
+			dat += MATRIX_FIELD("gb", color_matrix_last[6])
 			dat += "<br><br>"
-			dat += MATRIX_FIELD("br", 0)
-			dat += MATRIX_FIELD("bg", 0)
-			dat += MATRIX_FIELD("bb", 1)
+			dat += MATRIX_FIELD("br", color_matrix_last[7])
+			dat += MATRIX_FIELD("bg", color_matrix_last[8])
+			dat += MATRIX_FIELD("bb", color_matrix_last[9])
 			dat += "<br><br>"
-			dat += MATRIX_FIELD("cr", 0)
-			dat += MATRIX_FIELD("cg", 0)
-			dat += MATRIX_FIELD("cb", 0)
+			dat += MATRIX_FIELD("cr", color_matrix_last[10])
+			dat += MATRIX_FIELD("cg", color_matrix_last[11])
+			dat += MATRIX_FIELD("cb", color_matrix_last[12])
 			dat += "<br><br>"
 			dat += "<input type='submit' value='Matrix Paint'>"
 			dat += "</form><br>"
@@ -143,6 +148,7 @@
 			text2num(href_list["cg"]),
 			text2num(href_list["cb"])
 		)
+		color_matrix_last = cm.Copy()
 		for(var/atom/movable/AM in processing)
 			AM.add_atom_colour(cm, FIXED_COLOUR_PRIORITY)
 		playsound(src, 'sound/effects/spray3.ogg', 50, 1)
