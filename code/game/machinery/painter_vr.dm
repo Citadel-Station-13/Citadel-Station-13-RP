@@ -17,7 +17,12 @@
 
 /obj/machinery/gear_painter/Initialize(mapload)
 	. = ..()
-	color_matrix_last = color_matrix_identity()
+	color_matrix_last = list(
+		1, 0, 0,
+		0, 1, 0,
+		0, 0, 1,
+		0, 0, 0
+	)
 
 /obj/machinery/gear_painter/update_icon()
 	if(panel_open)
