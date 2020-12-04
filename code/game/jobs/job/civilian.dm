@@ -71,7 +71,7 @@
 	ideal_character_age = 40
 
 	outfit_type = /decl/hierarchy/outfit/job/cargo/qm
-	alt_titles = list("Supply Chief", "Inventory Chief")
+	alt_titles = list("Supply Chief")
 
 /datum/job/cargo_tech
 	title = "Cargo Technician"
@@ -115,8 +115,8 @@
 	department = "Civilian"
 	department_flag = CIVILIAN
 	faction = "Station"
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 3
+	spawn_positions = 3
 	supervisors = "the head of personnel"
 	selection_color = "#515151"
 	idtype = /obj/item/card/id/civilian/janitor
@@ -124,7 +124,7 @@
 	minimal_access = list(access_janitor, access_maint_tunnels)
 
 	outfit_type = /decl/hierarchy/outfit/job/service/janitor
-	alt_titles = list("Custodian", "Sanitation Technician", "Maid")
+	alt_titles = list("Custodian", "Sanitation Technician", "Viscera Cleaner", "Maid")
 
 //More or less assistants
 /datum/job/librarian
@@ -162,7 +162,7 @@
 	minimal_player_age = 7
 
 	outfit_type = /decl/hierarchy/outfit/job/internal_affairs_agent
-	alt_titles = list("Ethical Compliance Analyst")
+	alt_titles = list("Regulatory Affairs Agent")
 
 /*
 /datum/job/lawyer/equip(var/mob/living/carbon/human/H)

@@ -26,7 +26,7 @@
 	ideal_character_age = 50
 
 	outfit_type = /decl/hierarchy/outfit/job/science/rd
-	alt_titles = list("Research Supervisor","Exploration Director","Regulatory Affairs Director")
+	alt_titles = list("Research Supervisor","Expedition Director")
 
 /datum/job/scientist
 	title = "Scientist"
@@ -46,7 +46,7 @@
 	minimal_player_age = 14
 
 	outfit_type = /decl/hierarchy/outfit/job/science/scientist
-	alt_titles = list("Xenoarchaeologist", "Anomalist", "Phoron Researcher", "Circuit Designer", "Field Technician", "Lab Assistant")
+	alt_titles = list("Xenoarchaeologist", "Anomalist", "Phoron Researcher", "Circuit Designer", "Research Field Technician", "Lab Assistant", "Junior Scientist")
 
 /datum/job/xenobiologist
 	title = "Xenobiologist"
