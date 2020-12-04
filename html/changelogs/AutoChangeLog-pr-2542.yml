@@ -1,5 +1,0 @@
-author: "buffyuwu"
-delete-after: True
-changes: 
-  - bugfix: "fixes curtains so they dont vanish underneath the window"
-  - bugfix: "fixes plushie code typo"
