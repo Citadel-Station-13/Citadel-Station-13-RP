@@ -72,25 +72,26 @@
 			dat += "<A href='?src=\ref[src];paint=1'>Apply new color.</A><BR><BR>"
 		else
 			// POGGERS
-#define MATRIX_FIELD(field) "<b><label for='[##field]'>[##field]</label></b> <input type='number' name='[field]'>"
+#define MATRIX_FIELD(field, default) "<b><label for='[##field]'>[##field]</label></b> <input type='number' name='[field]' value='[default]'>"
 			dat += "<br><form name='matrix paint' action='?src=[REF(src)]'>"
 			dat += "<input type='hidden' name='src' value='[REF(src)]'>"
+			dat += "<input type='hidden' name='matrix_paint' value='1'"
 			dat += "<br><br>"
-			dat += MATRIX_FIELD("rr")
-			dat += MATRIX_FIELD("rg")
-			dat += MATRIX_FIELD("rb")
+			dat += MATRIX_FIELD("rr", 1)
+			dat += MATRIX_FIELD("rg", 0)
+			dat += MATRIX_FIELD("rb", 0)
 			dat += "<br><br>"
-			dat += MATRIX_FIELD("gr")
-			dat += MATRIX_FIELD("gg")
-			dat += MATRIX_FIELD("gb")
+			dat += MATRIX_FIELD("gr", 0)
+			dat += MATRIX_FIELD("gg", 1)
+			dat += MATRIX_FIELD("gb", 0)
 			dat += "<br><br>"
-			dat += MATRIX_FIELD("br")
-			dat += MATRIX_FIELD("bg")
-			dat += MATRIX_FIELD("bb")
+			dat += MATRIX_FIELD("br", 0)
+			dat += MATRIX_FIELD("bg", 0)
+			dat += MATRIX_FIELD("bb", 1)
 			dat += "<br><br>"
-			dat += MATRIX_FIELD("cr")
-			dat += MATRIX_FIELD("cg")
-			dat += MATRIX_FIELD("cb")
+			dat += MATRIX_FIELD("cr", 0)
+			dat += MATRIX_FIELD("cg", 0)
+			dat += MATRIX_FIELD("cb", 0)
 			dat += "<br><br>"
 			dat += "<input type='submit' value='Matrix Paint'>"
 			dat += "</form><br>"
@@ -98,7 +99,7 @@
 		dat += "<A href='?src=\ref[src];clear=1'>Remove paintjob.</A><BR><BR>"
 		dat += "<A href='?src=\ref[src];eject=1'>Eject item.</A><BR><BR>"
 
-	var/datum/browser/menu = new(user, "colormate","Color Mate Control Panel", 400, 600, src)
+	var/datum/browser/menu = new(user, "colormate","Color Mate Control Panel", 800, 600, src)
 	menu.set_content(dat)
 	menu.open()
 	return
