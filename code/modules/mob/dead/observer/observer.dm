@@ -316,6 +316,11 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		to_chat(usr, "Not when you're not dead!")
 		return
 
+	if(!A)
+		A = input(usr, "Select an area:", "Ghost Teleport") as null|anything in return_sorted_areas()
+	if(!A)
+		return
+
 	usr.forceMove(pick(get_area_turfs(A)))
 
 /mob/observer/dead/verb/follow(input in getmobs_ghost_follow())
@@ -323,9 +328,13 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Follow" // "Haunt"
 	set desc = "Follow and haunt a mob."
 
-	var/target = getmobs_ghost_follow()[input]
-	if(!target)
+	if(!input)
+		input = input(usr, "Select a mob:", "Ghost Follow") as null|anything in getmobs_ghost_follow()
+	if(!input)
 		return
+
+	var/target = getmobs_ghost_follow()[input]
+	if(!target) return
 	ManualFollow(target)
 
 // This is the ghost's follow verb with an argument
@@ -333,25 +342,52 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if (!istype(target))
 		return
 
-	orbit(target, actually_orbit = FALSE)
+	//Attempt to orbit based on target size
+	var/icon/I = icon(target.icon,target.icon_state,target.dir)
+
+	var/orbitsize = (I.Width()+I.Height())*0.5
+	orbitsize -= (orbitsize/world.icon_size)*(world.icon_size*0.25)
+
+	orbit(target, orbitsize)
+	pixel_x = (orbitsize) //Bandaid until someone fixes the orbit datum. Or I do.
+
+/mob/observer/dead/orbit()
+	setDir(2) //reset dir so the right directional sprites show up
+	return ..()
+
+/mob/observer/dead/stop_orbit(datum/component/orbiter/orbits)
+	. = ..()
+	//restart our floating animation after orbit is done.
+	pixel_y = 0
+	pixel_x = 0
+	transform = null
+	animate(src, pixel_y = 2, time = 10, loop = -1)
 
 /mob/observer/dead/verb/jumptomob(input in getmobs_ghost_follow()) //Moves the ghost instead of just changing the ghosts's eye -Nodrak
 	set category = "Ghost"
 	set name = "Jump to Mob"
 	set desc = "Teleport to a mob"
-	set popup_menu = FALSE //VOREStation Edit - Declutter.
-	if(istype(usr, /mob/observer/dead)) //Make sure they're an observer!
-		var/target = getmobs_ghost_follow()[input]
-		if (!target)//Make sure we actually have a target
-			return
-		else
-			var/mob/M = target //Destination mob
-			var/turf/T = get_turf(M) //Turf of the destination mob
+	set popup_menu = FALSE
 
-			if(T && isturf(T))	//Make sure the turf exists, then move the source to that destination.
-				forceMove(T)
-			else
-				to_chat(src, "This mob is not located in the game world.")
+	if(!istype(usr, /mob/observer/dead)) //Make sure they're an observer!
+		return
+
+	if(!input)
+		input = input(usr, "Select a mob:", "Ghost Jump") as null|anything in getmobs_ghost_follow()
+	if(!input)
+		return
+
+	var/target = getmobs_ghost_follow()[input]
+	if (!target)//Make sure we actually have a target
+		return
+	else
+		var/mob/M = target //Destination mob
+		var/turf/T = get_turf(M) //Turf of the destination mob
+
+		if(T && isturf(T))	//Make sure the turf exists, then move the source to that destination.
+			forceMove(T)
+		else
+			to_chat(src, "This mob is not located in the game world.")
 /*
 /mob/observer/dead/verb/boo()
 	set category = "Ghost"
@@ -743,14 +779,20 @@ mob/observer/dead/MayRespawn(var/feedback = 0)
 	set category = "Ghost"
 	set name = "Blank pAI alert"
 	set desc = "Flash an indicator light on available blank pAI devices for a smidgen of hope."
-	if(usr.client.prefs.be_special & BE_PAI)
+
+	if(usr.client.prefs?.be_special & BE_PAI)
+		var/count = 0
 		for(var/obj/item/paicard/p in GLOB.all_pai_cards)
 			var/obj/item/paicard/PP = p
 			if(PP.pai == null)
+				count++
 				PP.icon = 'icons/obj/pda_vr.dmi' // VOREStation Edit
 				PP.overlays += "pai-ghostalert"
 				spawn(54)
 					PP.overlays.Cut()
+		to_chat(usr,"<span class='notice'>Flashing the displays of [count] unoccupied PAIs.</span>")
+	else
+		to_chat(usr,"<span class='warning'>You have 'Be pAI' disabled in your character prefs, so we can't help you.</span>")
 
 /mob/observer/dead/speech_bubble_appearance()
 	return "ghost"
