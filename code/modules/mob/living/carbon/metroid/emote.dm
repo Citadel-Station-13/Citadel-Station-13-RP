@@ -85,8 +85,7 @@
 		if ("help") //This is an exception
 			to_chat(src, "Help for slime emotes. You can use these emotes with say \"*emote\":\n\nbounce, custom, jiggle, light, moan, shiver, sway, twitch, vibrate. You can also set your face with: \n\nnomood, pout, sad, angry, frown, smile")
 
-		else
-			to_chat(src, "<font color='blue'>Unusable emote '[act]'. Say *help for a list.</font>")
+
 	if ((message && src.stat == 0))
 		if (m_type & 1)
 			for(var/mob/O in viewers(src, null))

@@ -59,8 +59,7 @@
 			m_type = 2
 		if ("help")
 			to_chat(src, "alarm,alert,notice,flash,blink,whistle,beep,boop")
-		else
-			to_chat(src, "<font color='blue'>Unusable emote '[act]'. Say *help for a list.</font>")
+
 
 	if (message)
 		log_emote(message, src)
