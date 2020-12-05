@@ -212,7 +212,7 @@
 		/obj/item/material/knife/tacknife/survival,
 		/obj/item/material/knife/machete/deluxe,
 		/obj/item/gun/energy/frontier/locked/carbine,
-		/obj/item/gun/projectile/automatic/p90,
+		/obj/item/gun/projectile/automatic/p90/custom,
 		/obj/item/ammo_magazine/m9mmt,
 		/obj/item/ammo_magazine/m9mmp90,
 		/obj/item/ammo_magazine/m9mmp90/hunter,
