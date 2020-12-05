@@ -353,7 +353,10 @@
 /obj/item/gun/projectile/automatic/p90/custom
 	name = "custom personal defense weapon"
 	desc = "An H90K from Hephaestus Industries. This one has a different colored receiver and a sling."
+	icon_state = "p90smgC"
+	magazine_type = /obj/item/ammo_magazine/m9mmp90/hunter
 	slot_flags = SLOT_BELT|SLOT_BACK 
+	pin = /obj/item/firing_pin/explorer
 
 /obj/item/gun/projectile/automatic/tommygun
 	name = "\improper Tommy Gun"
