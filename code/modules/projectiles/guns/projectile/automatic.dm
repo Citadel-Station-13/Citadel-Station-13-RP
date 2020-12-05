@@ -358,6 +358,9 @@
 	slot_flags = SLOT_BELT|SLOT_BACK 
 	pin = /obj/item/firing_pin/explorer
 
+/obj/item/gun/projectile/automatic/p90/custom/update_icon()
+	icon_state = "p90smgC-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 6) : "empty"]"
+
 /obj/item/gun/projectile/automatic/tommygun
 	name = "\improper Tommy Gun"
 	desc = "This weapon was made famous by gangsters in the 20th century. Cybersun Industries is currently reproducing these for a target market of historic gun collectors and classy criminals. Uses .45 rounds."
