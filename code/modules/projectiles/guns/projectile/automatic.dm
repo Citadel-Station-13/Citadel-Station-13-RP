@@ -350,6 +350,11 @@
 /obj/item/gun/projectile/automatic/p90/update_icon()
 	icon_state = "p90smg-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 6) : "empty"]"
 
+/obj/item/gun/projectile/automatic/p90/custom
+	name = "custom personal defense weapon"
+	desc = "An H90K from Hephaestus Industries. This one has a different colored receiver and a sling."
+	slot_flags = SLOT_BELT|SLOT_BACK 
+
 /obj/item/gun/projectile/automatic/tommygun
 	name = "\improper Tommy Gun"
 	desc = "This weapon was made famous by gangsters in the 20th century. Cybersun Industries is currently reproducing these for a target market of historic gun collectors and classy criminals. Uses .45 rounds."
