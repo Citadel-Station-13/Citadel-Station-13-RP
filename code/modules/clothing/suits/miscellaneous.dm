@@ -1034,3 +1034,8 @@ obj/item/clothing/suit/kamishimo
 	name = "Civilian Highwayman Jacket"
 	desc = "A black jacket with a white, fur lined neck. For dashing rogues who dare to plunder the deepest dungeons."
 	icon_state = "highwayman_jacket"
+
+/obj/item/clothing/suit/colonial_redcoat
+	name = "Colonial Red Coat"
+	desc = "A thick cotton long coat, adorned with antique buttons. Dyed a brilliant red, it's hard not to be seen in this."
+	icon_state = "pineapple_trench"

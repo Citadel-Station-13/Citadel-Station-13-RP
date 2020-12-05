@@ -171,6 +171,17 @@ obj/item/gun/projectile/shotgun/doublebarrel/quad
 		list(mode_name="fire one barrel at a time", burst=1),
 		)
 
+/obj/item/gun/projectile/shotgun/doublebarrel/sawn/super
+	name = "super shotgun"
+	desc = "Rip and tear, until it is done."
+	icon_state = "supershotgun"
+	item_state = "supershotgun"
+	recoil = 0
+	slot_flags = SLOT_BELT|SLOT_HOLSTER
+	ammo_type = /obj/item/ammo_casing/a12g/pellet
+	w_class = ITEMSIZE_NORMAL
+	force = 15
+
 //Flaregun Code that may work?
 /obj/item/gun/projectile/shotgun/flare
 	name = "Emergency Flare Gun"

@@ -20,6 +20,9 @@
 			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
 			)
 
+	var/SA_bonus_damage = 25 // 40 total against demons and aberrations.
+	var/SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
+
 /obj/item/nullrod/Initialize()
 	. = ..()
 	AddComponent(/datum/component/anti_magic, TRUE, TRUE, FALSE, null, null, FALSE)
@@ -30,6 +33,11 @@
 	if (istype(A, /turf/simulated/floor))
 		to_chat(user, "<span class='notice'>You hit the floor with the [src].</span>")
 		call(/obj/effect/rune/proc/revealrunes)(src)
+	if (isliving(A))
+		var/mob/living/tm = A // targeted mob
+		if(SA_vulnerability & tm.mob_class)
+			tm.apply_damage(SA_bonus_damage) // fuck em
+
 
 /obj/item/nullrod/attack_self(mob/user)
 	if(user && (user.mind.isholy) && !reskinned)

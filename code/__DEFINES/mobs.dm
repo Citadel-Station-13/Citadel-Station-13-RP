@@ -25,7 +25,7 @@
 #define BORGMESON 0x1
 #define BORGTHERM 0x2
 #define BORGXRAY  0x4
-#define BORGMATERIAL  8
+#define BORGMATERIAL  0x8
 
 #define STANCE_ATTACK    11 // Backwards compatability
 #define STANCE_ATTACKING 12 // Ditto
@@ -152,9 +152,6 @@
 #define FLASH_PROTECTION_NONE 0
 #define FLASH_PROTECTION_MODERATE 1
 #define FLASH_PROTECTION_MAJOR 2
-
-#define ANIMAL_SPAWN_DELAY round(config_legacy.respawn_delay / 6)
-#define DRONE_SPAWN_DELAY  round(config_legacy.respawn_delay / 3)
 
 #define ANIMAL_SPAWN_DELAY round(config_legacy.respawn_delay / 6)
 #define DRONE_SPAWN_DELAY  round(config_legacy.respawn_delay / 3)

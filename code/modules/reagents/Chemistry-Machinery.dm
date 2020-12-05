@@ -47,9 +47,10 @@
 				return
 
 /obj/machinery/chem_master/attackby(var/obj/item/B as obj, var/mob/user as mob)
-
 	if(istype(B, /obj/item/reagent_containers/glass) || istype(B, /obj/item/reagent_containers/food))
-
+		if(!B.is_open_container())
+			to_chat(user, "<span class='warning'>You don't see how \the [src] could dispense reagents into \the [B]. Try removing the lid.</span>")
+			return
 		if(src.beaker)
 			to_chat(user, "\A [beaker] is already loaded into the machine.")
 			return

@@ -412,7 +412,8 @@ SUBSYSTEM_DEF(jobs)
 							custom_equip_leftovers += thing
 						else if(H.equip_to_slot_or_del(G.spawn_item(H, metadata), G.slot))
 							H << "<span class='notice'>Equipping you with \the [thing]!</span>"
-							custom_equip_slots.Add(G.slot)
+							if(G.slot != slot_tie)
+								custom_equip_slots.Add(G.slot)
 						else
 							custom_equip_leftovers.Add(thing)
 					else

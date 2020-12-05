@@ -1,13 +1,33 @@
 // Shoelocker
 /datum/gear/shoes
-	display_name = "Jackboots"
-	path = /obj/item/clothing/shoes/boots/jackboots
+	display_name = "Sandals"
+	path = /obj/item/clothing/shoes/sandal
 	slot = slot_shoes
 	sort_category = "Shoes and Footwear"
+
+/datum/gear/shoes/jackboots
+	display_name = "Jackboots"
+	path = /obj/item/clothing/shoes/boots/jackboots
+
+/datum/gear/shoes/kneeboots
+	display_name = "Jackboots - Knee-Length"
+	path = /obj/item/clothing/shoes/boots/jackboots/knee
+
+/datum/gear/shoes/thighboots
+	display_name = "Jackboots - Thigh-Length"
+	path = /obj/item/clothing/shoes/boots/jackboots/thigh
 
 /datum/gear/shoes/toeless
 	display_name = "Toe-Less Jackboots"
 	path = /obj/item/clothing/shoes/boots/jackboots/toeless
+
+/datum/gear/shoes/toelessknee
+	display_name = "Toe-Less Jackboots - Knee-Length"
+	path = /obj/item/clothing/shoes/boots/jackboots/toeless/knee
+
+/datum/gear/shoes/toelessthigh
+	display_name = "Toe-Less Jackboots - Thigh-Length"
+	path = /obj/item/clothing/shoes/boots/jackboots/toeless/thigh
 
 /datum/gear/shoes/workboots
 	display_name = "Workboots"
@@ -16,10 +36,6 @@
 /datum/gear/shoes/workboots/toeless
 	display_name = "Toe-Less Workboots"
 	path = /obj/item/clothing/shoes/boots/workboots/toeless
-
-/datum/gear/shoes/sandals
-	display_name = "Sandals"
-	path = /obj/item/clothing/shoes/sandal
 
 /datum/gear/shoes/black
 	display_name = "Shoes - Black"
@@ -34,20 +50,20 @@
 	path = /obj/item/clothing/shoes/brown
 
 /datum/gear/shoes/lacey
-	display_name = "Shoes - Classy"
+	display_name = "Shoes, Oxford Selection"
 	path = /obj/item/clothing/shoes/laceup
 
-/datum/gear/shoes/dress
-	display_name = "Shoes - Dress"
-	path = /obj/item/clothing/shoes/laceup
+/datum/gear/shoes/lacey/New()
+	..()
+	var/list/laces = list()
+	for(var/lace in typesof(/obj/item/clothing/shoes/laceup))
+		var/obj/item/clothing/shoes/laceup/lace_type = lace
+		laces[initial(lace_type.name)] = lace_type
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(laces, /proc/cmp_text_asc))
 
 /datum/gear/shoes/green
 	display_name = "Shoes - Green"
 	path = /obj/item/clothing/shoes/green
-
-/datum/gear/shoes/leather
-	display_name = "Shoes - Leather"
-	path = /obj/item/clothing/shoes/leather
 
 /datum/gear/shoes/orange
 	display_name = "Shoes - Orange"
@@ -74,36 +90,16 @@
 	path = /obj/item/clothing/shoes/yellow
 
 /datum/gear/shoes/hitops/
-	display_name = "High-Top - White"
+	display_name = "High-Tops - Selection"
 	path = /obj/item/clothing/shoes/hitops/
 
-/datum/gear/shoes/hitops/red
-	display_name = "High-Top - Red"
-	path = /obj/item/clothing/shoes/hitops/red
-
-/datum/gear/shoes/hitops/black
-	display_name = "High-Top - Black"
-	path = /obj/item/clothing/shoes/hitops/black
-
-/datum/gear/shoes/hitops/orange
-	display_name = "High-Top - Orange"
-	path = /obj/item/clothing/shoes/hitops/orange
-
-/datum/gear/shoes/hitops/blue
-	display_name = "High-Top - Blue"
-	path = /obj/item/clothing/shoes/hitops/blue
-
-/datum/gear/shoes/hitops/green
-	display_name = "High-Top - Green"
-	path = /obj/item/clothing/shoes/hitops/green
-
-/datum/gear/shoes/hitops/purple
-	display_name = "High-Top - Purple"
-	path = /obj/item/clothing/shoes/hitops/purple
-
-/datum/gear/shoes/hitops/yellow
-	display_name = "High-Top - Yellow"
-	path = /obj/item/clothing/shoes/hitops/yellow
+/datum/gear/shoes/hitops/New()
+	..()
+	var/list/hitops = list()
+	for(var/hitop in typesof(/obj/item/clothing/shoes/hitops))
+		var/obj/item/clothing/shoes/hitops/hitop_type = hitop
+		hitops[initial(hitop_type.name)] = hitop_type
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(hitops, /proc/cmp_text_asc))
 
 /datum/gear/shoes/flipflops
 	display_name = "Flip Flops"

@@ -382,6 +382,16 @@
 	desc = "Can hold security gear like handcuffs and flashes, with more pouches for more storage."
 	icon_state = "bandolier"
 
+/obj/item/storage/belt/spike_bandolier
+	name = "spike bandolier"
+	desc = "A bandolier used to hold spikes, and only spikes."
+	icon_state = "bandolier"
+	storage_slots = 14
+	max_w_class = ITEMSIZE_SMALL
+	max_storage_space = ITEMSIZE_COST_SMALL * 14
+	can_hold = list(/obj/item/melee/spike)
+	starts_with = list(/obj/item/melee/spike = 14)
+
 /obj/item/storage/belt/janitor
 	name = "janitorial belt"
 	desc = "A belt used to hold most janitorial supplies."
@@ -502,6 +512,7 @@
 	storage_slots = 1
 	can_hold = list(
 		/obj/item/melee/sabre,
+		/obj/item/melee/baton/stunsword,
 		)
 	starts_with = list(
 		/obj/item/melee/sabre,

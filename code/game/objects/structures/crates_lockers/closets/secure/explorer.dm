@@ -45,7 +45,7 @@
 	return ..()
 
 //SAR Lockers
-
+/*This one is actually not the right one.
 /obj/structure/closet/secure_closet/sar
 	name = "search and rescue locker"
 	desc = "Supplies for a wilderness first responder."
@@ -83,8 +83,9 @@
 		/obj/item/gps/medical,
 		/obj/item/geiger,
 		/obj/item/bodybag/cryobag)
+*/
 
-/* SC Misc_vr locker.
+//SC Misc_vr locker.
 /obj/structure/closet/secure_closet/sar
 	name = "field medic locker"
 
@@ -122,7 +123,6 @@
 		/obj/item/geiger,
 		/obj/item/bodybag/cryobag,
 		/obj/item/cataloguer/compact)
-*/
 
 //Pilot Locker
 
@@ -212,11 +212,14 @@
 		/obj/item/material/knife/tacknife/survival,
 		/obj/item/material/knife/machete/deluxe,
 		/obj/item/gun/energy/frontier/locked/carbine,
-		/obj/item/gun/projectile/caseless/usmc,
-		/obj/item/ammo_magazine/m10x24mm/small = 3,
+		/obj/item/gun/projectile/automatic/p90,
+		/obj/item/ammo_magazine/m9mmt,
+		/obj/item/ammo_magazine/m9mmp90,
+		/obj/item/ammo_magazine/m9mmp90/hunter,
 		/obj/item/clothing/accessory/holster/machete,
 		/obj/item/reagent_containers/food/snacks/liquidfood,
 		/obj/item/reagent_containers/food/snacks/liquidprotein,
+		/obj/item/card/mining_point_card/survey/gimmick,
 		/obj/item/cataloguer/compact/pathfinder)
 
 /obj/structure/closet/secure_closet/pathfinder/Initialize()

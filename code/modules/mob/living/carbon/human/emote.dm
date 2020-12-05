@@ -806,8 +806,6 @@
 					raise, salute, scream, sneeze, shake, shiver, shrug, sigh, signal-#1-10, slap-(none)/mob, smile, sneeze, sniff, snore, stare-(none)/mob, stopsway/swag, squeak, sway/wag, swish, tremble, twitch, \
 					twitch_v, vomit, weh, whimper, wink, yawn. Synthetics: beep, buzz, yes, no, rcough, rsneeze, ping. Vox: shriekshort, shriekloud")
 
-		else
-			to_chat(src, "<font color='blue'>Unusable emote '[act]'. Say *help or *vhelp for a list.</font>") //VOREStation Edit, mention *vhelp for Virgo-specific emotes located in emote_vr.dm.
 
 	if (message)
 		custom_emote(m_type,message)
@@ -931,13 +929,16 @@
 				return 1
 			else
 				src.SpinAnimation(7,1)
-				message = "does a flip!"
+				// message = "does a flip!"
 				m_type = 1
 // New emotes below this line
 		if ("purr")
 			message = "purrs softly."
 			m_type = 2
 			playsound(loc, 'modular_citadel/sound/voice/purr.ogg', 50, 1, -1)
+
+		else
+			to_chat(src, "<font color='blue'>Unusable emote '[act]'. Say *help for a list.</font>")
 
 	if (message)
 		custom_emote(m_type,message)

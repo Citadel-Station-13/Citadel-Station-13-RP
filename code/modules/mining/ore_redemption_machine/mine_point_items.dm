@@ -57,3 +57,8 @@
 /obj/item/card/mining_point_card/survey
 	mine_points = 0
 	survey_points = 50
+
+/obj/item/card/mining_point_card/survey/gimmick
+	name = "exploration equipment voucher"
+	mine_points = 0
+	survey_points = 300
