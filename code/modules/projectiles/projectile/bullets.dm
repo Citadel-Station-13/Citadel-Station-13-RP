@@ -256,14 +256,14 @@
 	penetrating = 0
 
 /obj/item/projectile/bullet/rifle/a762/hunter // Optimized for killing simple animals and not people, because Balance(tm)
-	damage = 20
-	SA_bonus_damage = 50 // 70 total on animals.
+	damage = 25
+	SA_bonus_damage = 45 // 70 total on animals.
 	SA_vulnerability = MOB_CLASS_ANIMAL
 	embed_chance = -1
 
 /obj/item/projectile/bullet/rifle/a762/sniperhunter
-	damage = 20 
-	SA_bonus_damage = 50 // 70 total on animals.
+	damage = 25 
+	SA_bonus_damage = 45 // 70 total on animals.
 	SA_vulnerability = MOB_CLASS_ANIMAL
 	embed_chance = -1
 	speed = 0.4
