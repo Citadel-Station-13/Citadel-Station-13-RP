@@ -1055,10 +1055,21 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 	var/depth = check_submerged()
 	if(!depth || lying)
 		return
-
-	overlays_standing[WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "human_swimming_[depth]", layer = BODY_LAYER+WATER_LAYER) //TODO: Improve
-
-	apply_layer(WATER_LAYER)
+	if(depth < 3)
+		overlays_standing[WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "human_swimming_[depth]", layer = BODY_LAYER+WATER_LAYER) //TODO: Improve
+		apply_layer(WATER_LAYER)
+	if(depth == 4)
+		overlays_standing[WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "hacid_1", layer = BODY_LAYER+WATER_LAYER)
+		apply_layer(WATER_LAYER)
+	if(depth == 5)
+		overlays_standing[WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "hacid_2", layer = BODY_LAYER+WATER_LAYER)
+		apply_layer(WATER_LAYER)
+	if(depth == 6)
+		overlays_standing[WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "hblood_1", layer = BODY_LAYER+WATER_LAYER)
+		apply_layer(WATER_LAYER)
+	if(depth == 7)
+		overlays_standing[WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "hblood_2", layer = BODY_LAYER+WATER_LAYER)
+		apply_layer(WATER_LAYER)
 
 /mob/living/carbon/human/update_acidsub()
 	if(QDESTROYING(src))
@@ -1070,7 +1081,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 	if(!depth || lying)
 		return
 
-	overlays_standing[WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "hacid_[depth]", layer = BODY_LAYER+WATER_LAYER) //TODO: Improve
+	overlays_standing[WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "hacid_1", layer = BODY_LAYER+WATER_LAYER) //TODO: Improve
 
 	apply_layer(WATER_LAYER)
 
