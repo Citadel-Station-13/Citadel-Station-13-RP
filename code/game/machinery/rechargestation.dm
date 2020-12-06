@@ -104,25 +104,37 @@
 	else if(ishuman(occupant))
 		var/mob/living/carbon/human/H = occupant
 
-		// In case they somehow end up with positive values for otherwise unobtainable damage...
-		if(H.getToxLoss() > 0)
-			H.adjustToxLoss(-(rand(1,3)))
-		if(H.getOxyLoss() > 0)
-			H.adjustOxyLoss(-(rand(1,3)))
-		if(H.getCloneLoss() > 0)
-			H.adjustCloneLoss(-(rand(1,3)))
-		if(H.getBrainLoss() > 0)
-			H.adjustBrainLoss(-(rand(1,3)))
+		if(H.isSynthetic())
+			// In case they somehow end up with positive values for otherwise unobtainable damage...
+			if(H.getToxLoss() > 0)
+				H.adjustToxLoss(-(rand(1,3)))
+			if(H.getOxyLoss() > 0)
+				H.adjustOxyLoss(-(rand(1,3)))
+			if(H.getCloneLoss() > 0)
+				H.adjustCloneLoss(-(rand(1,3)))
+			if(H.getBrainLoss() > 0)
+				H.adjustBrainLoss(-(rand(1,3)))
 
-		// Also recharge their internal battery.
-		if(H.isSynthetic() && H.nutrition < 450)
-			H.nutrition = min(H.nutrition+10, 450)
-			cell.use(7000/450*10)
+			// Also recharge their internal battery.
+			if(H.isSynthetic() && H.nutrition < 450)
+				H.nutrition = min(H.nutrition+10, 450)
+				cell.use(7000/450*10)
 
-		// And clear up radiation
-		if(H.radiation > 0)
-			H.radiation = max(H.radiation - rand(5, 15), 0)
-
+			// And clear up radiation
+			if(H.radiation > 0)
+				H.radiation = max(H.radiation - rand(5, 15), 0)
+		if(H.wearing_rig) // stepping into a borg charger to charge your rig and fix your shit
+			var/obj/item/rig/wornrig = H.get_rig()
+			if(wornrig) // just to make sure
+				for(var/obj/item/rig_module/storedmod in wornrig)
+					if(weld_rate && storedmod.damage != 0 && cell.checked_use(weld_power_use * weld_rate * CELLRATE))
+						to_chat(H, "<span class='notice'>\The [storedmod] is repaired!</span>")
+						storedmod.damage = 0
+				var/obj/item/cell/rigcell = wornrig.get_cell()
+				if(rigcell)
+					var/diff = min(rigcell.maxcharge - rigcell.charge, charging_power * CELLRATE) // Capped by charging_power / tick
+					var/charge_used = cell.use(diff)
+					rigcell.give(charge_used)
 
 /obj/machinery/recharge_station/examine(mob/user)
 	..(user)
@@ -254,7 +266,7 @@
 
 	else if(istype(L,  /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = L
-		if(H.isSynthetic())
+		if(H.isSynthetic() || H.wearing_rig)
 			add_fingerprint(H)
 			H.reset_view(src)
 			H.forceMove(src)
