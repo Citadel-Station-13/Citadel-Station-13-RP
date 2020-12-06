@@ -1,0 +1,5 @@
+author: "VailTheWolf"
+delete-after: True
+changes: 
+  - rscadd: "Gunbox with two \"new\" rifles."
+  - rscadd: "Exploration Vendor selection for Gunbox"
