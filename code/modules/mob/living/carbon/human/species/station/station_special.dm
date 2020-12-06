@@ -46,13 +46,13 @@
 		/mob/living/carbon/human/proc/atmos_biomorph,
 		/mob/living/carbon/human/proc/vocal_biomorph,
 		/mob/living/carbon/human/proc/shapeshifter_select_hair,
-        /mob/living/carbon/human/proc/shapeshifter_select_hair_colors,
-        /mob/living/carbon/human/proc/shapeshifter_select_colour,
-        /mob/living/carbon/human/proc/shapeshifter_select_eye_colour,
-        /mob/living/carbon/human/proc/shapeshifter_select_gender,
-        /mob/living/carbon/human/proc/shapeshifter_select_wings,
-        /mob/living/carbon/human/proc/shapeshifter_select_tail,
-        /mob/living/carbon/human/proc/shapeshifter_select_ears,) //Xenochimera get all the special verbs since they can't select traits.
+		/mob/living/carbon/human/proc/shapeshifter_select_hair_colors,
+		/mob/living/carbon/human/proc/shapeshifter_select_colour,
+		/mob/living/carbon/human/proc/shapeshifter_select_eye_colour,
+		/mob/living/carbon/human/proc/shapeshifter_select_gender,
+		/mob/living/carbon/human/proc/shapeshifter_select_wings,
+		/mob/living/carbon/human/proc/shapeshifter_select_tail,
+		/mob/living/carbon/human/proc/shapeshifter_select_ears) //Xenochimera get all the special verbs since they can't select traits.
 
 	virus_immune = 1 // They practically ARE one.
 	min_age = 18
