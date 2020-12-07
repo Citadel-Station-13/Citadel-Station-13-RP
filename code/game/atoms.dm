@@ -490,7 +490,9 @@
 		O.show_message(message, 1, blind_message, 2)
 	for(var/mob in seeing_mobs)
 		var/mob/M = mob
-		if(M.see_invisible >= invisibility && MOB_CAN_SEE_PLANE(M, plane))
+		if(self_message && (M == src))
+			M.show_message( self_message, 1, blind_message, 2)
+		else if((M.see_invisible >= invisibility) && MOB_CAN_SEE_PLANE(M, plane))
 			M.show_message(message, 1, blind_message, 2)
 		else if(blind_message)
 			M.show_message(blind_message, 2)
