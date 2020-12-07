@@ -383,19 +383,19 @@
 		return
 
 	last_special = world.time + 600
-	src.visible_message("<font color='red'><b>[src] moves their head next to [B]'s neck, seemingly looking for something!</b></font>")
+	src.visible_message("<font color='red'><b>[src] moves their head next to [B]'s neck, leaning in closer...</b></font>")
 
-	if(do_after(src, 300, B)) //Thrirty seconds.
+	if(do_after(src, 150, B)) //Fifteen seconds, because thirty is just awkward.
 		if(!Adjacent(B)) return
-		src.visible_message("<font color='red'><b>[src] suddenly extends their fangs and plunges them down into [B]'s neck!</b></font>")
-		B.apply_damage(5, BRUTE, BP_HEAD) //You're getting fangs pushed into your neck. What do you expect????
+		src.visible_message("<font color='red'><b>[src] suddenly extends their fangs and sinks them into [B]'s neck!</b></font>")
+		B.apply_damage(5, BRUTE, BP_TORSO) //changed to torso from head
 		B.drip(80) //Remove enough blood to make them a bit woozy, but not take oxyloss.
 		src.nutrition += 400
 		sleep(50)
 		B.drip(1)
 		sleep(50)
 		B.drip(1)
-
+		B.bitten = 1
 
 //Welcome to the adapted changeling absorb code.
 /mob/living/carbon/human/proc/succubus_drain()
