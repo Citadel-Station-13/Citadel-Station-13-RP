@@ -318,9 +318,10 @@
 	var/obj/item/reagent_containers/glass/beaker/B1 = new(src)
 	var/obj/item/reagent_containers/glass/beaker/B2 = new(src)
 
-	B1.reagents.add_reagent("fluorosurfactant", 40)
-	B2.reagents.add_reagent("holywater", 40)
-	B2.reagents.add_reagent("cleaner", 10)
+	B1.reagents.add_reagent("fluorosurfactant", 30)
+	B2.reagents.add_reagent("cleaner", 30)
+	B2.reagents.add_reagent("holywater", 30)
+	B2.reagents.add_reagent("water", 30)
 
 	detonator = new/obj/item/assembly_holder/timer_igniter(src)
 
