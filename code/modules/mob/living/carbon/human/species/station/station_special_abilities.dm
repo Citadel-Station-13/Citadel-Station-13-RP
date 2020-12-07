@@ -388,7 +388,7 @@
 	if(do_after(src, 150, B)) //Fifteen seconds, because thirty is just awkward.
 		if(!Adjacent(B)) return
 		src.visible_message("<font color='red'><b>[src] suddenly extends their fangs and sinks them into [B]'s neck!</b></font>")
-		B.apply_damage(5, BRUTE, BP_TORSO) //changed to torso from head
+		//B.apply_damage(5, BRUTE, BP_TORSO) //changed to torso from head
 		B.drip(80) //Remove enough blood to make them a bit woozy, but not take oxyloss.
 		src.nutrition += 400
 		sleep(50)
