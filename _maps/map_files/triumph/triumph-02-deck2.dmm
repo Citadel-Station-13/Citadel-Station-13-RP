@@ -1787,7 +1787,6 @@
 /area/janitor)
 "fr" = (
 /obj/machinery/light,
-/obj/machinery/telecomms/relay/preset/telecomms,
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/belter)
 "fu" = (
@@ -4011,7 +4010,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "lJ" = (
-/obj/machinery/telecomms/relay/preset/telecomms,
 /turf/simulated/floor/airless,
 /area/shuttle/mining_ship/general)
 "lK" = (
