@@ -1,4 +1,4 @@
-#define DEFIB_TIME_LIMIT (10 MINUTES) //past this many seconds, defib is useless.
+#define DEFIB_TIME_LIMIT (10 MINUTES) //past this many seconds, defib will cause maximum brain damage.
 #define DEFIB_TIME_LOSS  (2 MINUTES) //past this many seconds, brain damage occurs.
 
 //backpack item
@@ -262,7 +262,7 @@
 
 //Checks for various conditions to see if the mob is revivable
 /obj/item/shockpaddles/proc/can_defib(mob/living/carbon/human/H) //This is checked before doing the defib operation
-	if((H.species.flags & NO_SCAN))
+	if((H.species.flags & NO_DEFIB))
 		return "buzzes, \"Unrecogized physiology. Operation aborted.\""
 	else if(H.isSynthetic() && !use_on_synthetic)
 		return "buzzes, \"Synthetic Body. Operation aborted.\""
@@ -278,11 +278,6 @@
 	return null
 
 /obj/item/shockpaddles/proc/can_revive(mob/living/carbon/human/H) //This is checked right before attempting to revive
-
-	var/deadtime = world.time - H.timeofdeath
-	if (deadtime > DEFIB_TIME_LIMIT && !H.isSynthetic())
-		return "buzzes, \"Resuscitation failed - Excessive neural degeneration. Further attempts futile.\""
-
 	H.updatehealth()
 
 	if(H.isSynthetic())
@@ -505,6 +500,8 @@
 
 	var/brain_damage = clamp((deadtime - DEFIB_TIME_LOSS)/(DEFIB_TIME_LIMIT - DEFIB_TIME_LOSS)*brain.max_damage, H.getBrainLoss(), brain.max_damage)
 	H.setBrainLoss(brain_damage)
+	make_announcement("beeps, \"Warning. Subject neurological structure has sustained damage.\"", "notice")
+	playsound(get_turf(src), 'sound/machines/defib_failed.ogg', 50, 0)
 
 /obj/item/shockpaddles/proc/make_announcement(var/message, var/msg_class)
 	audible_message("<b>\The [src]</b> [message]", "\The [src] vibrates slightly.")
