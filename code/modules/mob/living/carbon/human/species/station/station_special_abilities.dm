@@ -75,7 +75,7 @@
 				revive_ready = REVIVING_READY //reset their cooldown
 
 /mob/living/carbon/human/proc/hasnutriment()
-	return (nutrition+ bloodstream.get_reagent("protein") * 10 + bloodstream.get_reagent("nutriment") * 5 + ingested.get_reagent("protein") * 5 + ingested.get_reagent("nutriment") * 2.5) > 425
+	return (nutrition+ bloodstr.get_reagent("protein") * 10 + bloodstr.get_reagent("nutriment") * 5 + ingested.get_reagent("protein") * 5 + ingested.get_reagent("nutriment") * 2.5) > 425
 
 
 /mob/living/carbon/human/proc/hatch()
