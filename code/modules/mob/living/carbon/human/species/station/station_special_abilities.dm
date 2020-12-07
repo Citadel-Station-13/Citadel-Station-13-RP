@@ -383,11 +383,13 @@
 		return
 
 	last_special = world.time + 600
-	src.visible_message("<font color='red'><b>[src] moves their head next to [B]'s neck, leaning in closer...</b></font>")
+	src.visible_message("<font color='red'><b>[src] leans in close to [B]'s neck...</b></font>")
 
 	if(do_after(src, 150, B)) //Fifteen seconds, because thirty is just awkward.
 		if(!Adjacent(B)) return
 		src.visible_message("<font color='red'><b>[src] suddenly extends their fangs and sinks them into [B]'s neck!</b></font>")
+		sleep(25)
+		to_chat(B, "<span class='danger'>You feel light headed as the bite of those fangs grip your senses!</span>")
 		//B.apply_damage(5, BRUTE, BP_TORSO) //changed to torso from head
 		B.drip(80) //Remove enough blood to make them a bit woozy, but not take oxyloss.
 		src.nutrition += 400
