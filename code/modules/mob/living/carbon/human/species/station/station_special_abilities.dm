@@ -392,7 +392,10 @@
 		to_chat(B, "<span class='danger'>You feel light headed as the bite of those fangs grip your senses!</span>")
 		//B.apply_damage(5, BRUTE, BP_TORSO) //changed to torso from head
 		B.drip(80) //Remove enough blood to make them a bit woozy, but not take oxyloss.
-		src.nutrition += 400
+		if(!B.bitten)
+			src.nutrition += 400
+		if(src.nutrition > 901) //prevent going into the fat ranges of nutrition needlessly
+			src.nutrition = 900
 		sleep(50)
 		B.drip(1)
 		sleep(50)
