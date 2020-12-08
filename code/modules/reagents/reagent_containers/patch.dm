@@ -63,6 +63,7 @@
 		if(!affecting)
 			to_chat(user, "<span class='warning'>The limb is missing!</span>")
 			return
+		
 		if(affecting.status >= ORGAN_ROBOT)
 			to_chat(user, "<span class='notice'>\The [src] won't work on a robotic limb!</span>")
 			return
