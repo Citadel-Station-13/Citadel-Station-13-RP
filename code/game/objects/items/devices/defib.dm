@@ -263,7 +263,7 @@
 //Checks for various conditions to see if the mob is revivable
 /obj/item/shockpaddles/proc/can_defib(mob/living/carbon/human/H) //This is checked before doing the defib operation
 	if((H.species.flags & NO_DEFIB))
-		return "buzzes, \"Unrecogized physiology. Operation aborted.\""
+		return "buzzes, \"Alien physiology. Operation aborted. Consider alternative resucitation methods.\""
 	else if(H.isSynthetic() && !use_on_synthetic)
 		return "buzzes, \"Synthetic Body. Operation aborted.\""
 	else if(!H.isSynthetic() && use_on_synthetic)
