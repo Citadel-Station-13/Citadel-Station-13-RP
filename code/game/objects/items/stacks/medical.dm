@@ -194,6 +194,7 @@
 				// W.disinfect() // VOREStation - Tech1 should not disinfect
 				playsound(src, pick(apply_sounds), 25)
 				used++
+				M.bitten = 0
 			affecting.update_damages()
 			if(used == amount)
 				if(affecting.is_bandaged())

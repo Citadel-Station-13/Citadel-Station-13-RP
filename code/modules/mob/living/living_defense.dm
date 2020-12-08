@@ -463,15 +463,28 @@
 	adjustFireLoss(20) // Lava cannot be 100% resisted with fire protection.
 
 //Acid
-/mob/living/acid_act()
-	make_dizzy(1)
-	adjustHalLoss(1)
-	if(!confused) confused = 1
-	confused = max(confused, 20)
-	inflict_heat_damage(30) // This is instantly applied to unprotected mobs.
-	inflict_poison_damage(10)
-	adjustFireLoss(15) // Acid cannot be 100% resisted by protection.
-	adjustToxLoss(5)
+/mob/living/acid_act(var/mob/living/H)
+	if(H.mind.isholy)
+		return
+	else
+		make_dizzy(1)
+		adjustHalLoss(1)
+		if(!confused) confused = 1
+		confused = max(confused, 1)
+		inflict_heat_damage(5) // This is instantly applied to unprotected mobs.
+		inflict_poison_damage(5)
+		adjustFireLoss(5) // Acid cannot be 100% resisted by protection.
+		adjustToxLoss(5)
+
+//Blood
+//Acid
+/mob/living/blood_act(var/mob/living/H)
+	if(H.mind.isholy)
+		return
+	else
+		inflict_poison_damage(5)
+		adjustToxLoss(5)
+
 
 /mob/living/proc/reagent_permeability()
 	return 1
