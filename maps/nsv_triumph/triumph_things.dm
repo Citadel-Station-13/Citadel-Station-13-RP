@@ -7,6 +7,26 @@
 /obj/effect/landmark/map_data/triumph
 	height = 4
 
+/obj/turbolift_map_holder/triumph
+	name = "Triumph Climber"
+	depth = 4
+	lift_size_x = 3
+	lift_size_y = 1
+	icon = 'icons/obj/turbolift_preview_3x3.dmi'
+	wall_type = null // Don't make walls
+
+	areas_to_use = list(
+		/area/turbolift/t_ship/level1,
+		/area/turbolift/t_ship/level2,
+		/area/turbolift/t_ship/level3,
+		/area/turbolift/t_ship/level4
+		)
+
+/datum/turbolift
+	music = list('sound/music/elevator.ogg')  // Woo elevator music!
+
+////////////////////////////
+
 /obj/effect/step_trigger/lost_in_space
 	var/deathmessage = "You drift off into space, floating alone in the void until your life support runs out."
 
@@ -44,6 +64,7 @@
 	return TRUE
 
 /obj/effect/ceiling/CanAllowThrough(atom/movable/mover, turf/target, height=0, air_group=0)
+	. = ..()
 	if(mover && mover.z > src.z)
 		return FALSE // Block entry from above to our turf
 	return TRUE

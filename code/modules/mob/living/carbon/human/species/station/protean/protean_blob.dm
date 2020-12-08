@@ -68,7 +68,8 @@
 		verbs |= /mob/living/proc/hide
 		verbs |= /mob/living/simple_mob/protean_blob/proc/useradio
 		verbs |= /mob/living/simple_mob/protean_blob/proc/appearanceswitch
-
+		verbs |= /mob/living/simple_mob/protean_blob/proc/rig_transform
+		verbs |= /mob/living/proc/usehardsuit
 	else
 		update_icon()
 
@@ -192,7 +193,10 @@
 			var/list/potentials = living_mobs(0)
 			if(potentials.len)
 				var/mob/living/target = pick(potentials)
-				if(istype(target) && vore_selected)
+				var/allowed = TRUE
+				if(target.client && target.can_be_drop_prey)//you can still vore ai mobs with the pref off
+					allowed = FALSE
+				if(istype(target) && vore_selected && allowed) //no more ooc-noncon vore, thanks
 					if(target.buckled)
 						target.buckled.unbuckle_mob(target, force = TRUE)
 					target.forceMove(vore_selected)
@@ -202,14 +206,31 @@
 	if(refactory && istype(A,/obj/item/stack/material))
 		var/obj/item/stack/material/S = A
 		var/substance = S.material.name
-		var/list/edible_materials = list("steel", "plasteel", "diamond", "mhydrogen") //Can't eat all materials, just useful ones.
-		var allowed = FALSE
+		var/list/edible_materials = list(MAT_STEEL, MAT_SILVER, MAT_GOLD, MAT_URANIUM, MAT_METALHYDROGEN) //Can't eat all materials, just useful ones.
+		var/allowed = FALSE
 		for(var/material in edible_materials)
-			if(material == substance) allowed = TRUE
+			if(material == substance)
+				allowed = TRUE
 		if(!allowed)
 			return
 		if(refactory.add_stored_material(S.material.name,1*S.perunit) && S.use(1))
 			visible_message("<b>[name]</b> gloms over some of \the [S], absorbing it.")
+	else if(isitem(A) && a_intent == "grab")
+		var/obj/item/I = A
+		if(!vore_selected)
+			to_chat(src,"<span class='warning'>You either don't have a belly selected, or don't have a belly!</span>")
+			return FALSE
+		if(is_type_in_list(I,GLOB.item_vore_blacklist) || I.anchored)
+			to_chat(src, "<span class='warning'>You can't eat this.</span>")
+			return
+
+		if(is_type_in_list(I,edible_trash) | adminbus_trash)
+			if(I.hidden_uplink)
+				to_chat(src, "<span class='warning'>You really should not be eating this.</span>")
+				message_admins("[key_name(src)] has attempted to ingest an uplink item. ([src ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>" : "null"])")
+				return
+		visible_message("<b>[name]</b> stretches itself over the [I], engulfing it whole!")
+		I.forceMove(vore_selected)
 	else
 		return ..()
 
@@ -218,9 +239,10 @@
 		var/obj/item/stack/material/S = O
 		var/substance = S.material.name
 		var/list/edible_materials = list("steel", "plasteel", "diamond", "mhydrogen") //Can't eat all materials, just useful ones.
-		var allowed = FALSE
+		var/allowed = FALSE
 		for(var/material in edible_materials)
-			if(material == substance) allowed = TRUE
+			if(material == substance)
+				allowed = TRUE
 		if(!allowed)
 			return
 		if(refactory.add_stored_material(S.material.name,1*S.perunit) && S.use(1))
@@ -229,10 +251,18 @@
 		return ..()
 
 /mob/living/simple_mob/protean_blob/attack_hand(mob/living/L)
-	if(src.get_effective_size() <= 0.5)
-		src.get_scooped(L) //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	if(L.get_effective_size() >= (src.get_effective_size() + 0.5) )
+		src.get_scooped(L)
 	else
 		..()
+
+/mob/living/simple_mob/protean_blob/MouseDrop(var/atom/over_object)
+	if(ishuman(over_object) && usr == src)
+		var/mob/living/carbon/human/H = over_object
+		get_scooped(H, TRUE)
+	else
+		return ..()
+
 /mob/living/simple_mob/protean_blob/MouseEntered(location,control,params)
 	if(resting)
 		return
@@ -240,6 +270,8 @@
 
 // Helpers - Unsafe, WILL perform change.
 /mob/living/carbon/human/proc/nano_intoblob()
+	if(loc == /obj/item/rig/protean)
+		return
 	handle_grasp() //It's possible to blob out before some key parts of the life loop. This results in things getting dropped at null. TODO: Fix the code so this can be done better.
 	remove_micros(src, src) //Living things don't fare well in roblobs.
 	if(buckled)
@@ -250,6 +282,8 @@
 	if(pulledby)
 		pulledby.stop_pulling()
 	stop_pulling()
+
+	var/panel_selected = client?.statpanel == "Protean"
 
 	//Record where they should go
 	var/atom/creation_spot = drop_location()
@@ -268,6 +302,8 @@
 	things_to_drop -= things_to_not_drop //Crunch the lists
 	things_to_drop -= organs //Mah armbs
 	things_to_drop -= internal_organs //Mah sqeedily spooch
+	for(var/obj/item/rig/protean/O in things_to_drop)
+		things_to_drop -= O
 
 	for(var/obj/item/I in things_to_drop) //rip hoarders
 		drop_from_inventory(I)
@@ -318,6 +354,9 @@
 
 	//Mail them to nullspace
 	moveToNullspace()
+	
+	if(blob.client && panel_selected)
+		blob.client.statpanel = "Protean"
 
 	//Message
 	blob.visible_message("<b>[src.name]</b> collapses into a gooey blob!")
@@ -333,6 +372,19 @@
 		var/obj/belly/B = belly
 		B.forceMove(blob)
 		B.owner = blob
+
+	var/datum/vore_preferences/P = blob.client?.prefs_vr
+	
+	if(P)
+		blob.digestable = P.digestable
+		blob.devourable = P.devourable
+		blob.feeding = P.feeding
+		blob.digest_leave_remains = P.digest_leave_remains
+		blob.allowmobvore = P.allowmobvore
+		blob.vore_taste = P.vore_taste
+		blob.permit_healbelly = P.permit_healbelly
+		blob.can_be_drop_prey = P.can_be_drop_prey
+		blob.can_be_drop_pred = P.can_be_drop_pred
 
 	//Return our blob in case someone wants it
 	return blob
@@ -352,8 +404,45 @@
 	if(mob_radio)
 		mob_radio.ui_interact(src, state = interactive_state)
 
+/mob/living/simple_mob/protean_blob/proc/rig_transform()
+	set name = "Modify Form - Hardsuit"
+	set desc = "Allows a protean blob to solidify its form into one extremely similar to a hardsuit."
+	set category = "Abilities"
+
+	if(istype(loc, /obj/item/rig/protean))
+		var/obj/item/rig/protean/prig = loc
+		src.forceMove(get_turf(prig))
+		prig.forceMove(humanform)
+		return
+
+	if(isturf(loc))
+		var/obj/item/rig/protean/prig
+		for(var/obj/item/rig/protean/O in humanform.contents)
+			prig = O
+			break
+		if(prig)
+			prig.forceMove(get_turf(src))
+			src.forceMove(prig)
+			return
+
+/mob/living/proc/usehardsuit()
+	set name = "Utilize Hardsuit Interface"
+	set desc = "Allows a protean blob to open hardsuit interface."
+	set category = "Abilities"
+
+	if(istype(loc, /obj/item/rig/protean))
+		var/obj/item/rig/protean/prig = loc
+		to_chat(src, "You attempt to interface with the [prig].")
+		prig.ui_interact(src, nano_state = interactive_state)
+	else
+		to_chat(src, "You are not in RIG form.")
+
+
+
 /mob/living/carbon/human/proc/nano_outofblob(var/mob/living/simple_mob/protean_blob/blob)
 	if(!istype(blob))
+		return
+	if(blob.loc == /obj/item/rig/protean)
 		return
 	if(buckled)
 		buckled.unbuckle_mob()
@@ -363,6 +452,8 @@
 	if(pulledby)
 		pulledby.stop_pulling()
 	stop_pulling()
+
+	var/panel_selected = blob.client?.statpanel == "Protean"
 
 	//Stop healing if we are
 	if(blob.healing)
@@ -389,6 +480,9 @@
 	//Put our owner in it (don't transfer var/mind)
 	ckey = blob.ckey
 	temporary_form = null
+	
+	if(client && panel_selected)
+		client.statpanel = "Protean"
 
 	//Transfer vore organs
 	vore_selected = blob.vore_selected
@@ -407,6 +501,7 @@
 
 	//Return ourselves in case someone wants it
 	return src
+
 
 /mob/living/simple_mob/protean_blob/proc/appearanceswitch()
 	set name = "Switch Appearance"

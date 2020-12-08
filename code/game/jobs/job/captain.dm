@@ -4,6 +4,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	title = "Facility Director"
 	flag = CAPTAIN
 	department = "Command"
+	disallow_jobhop = TRUE
 	head_position = 1
 	department_flag = ENGSEC
 	faction = "Station"
@@ -39,6 +40,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	department = "Command"
 	head_position = 1
 	department_flag = CIVILIAN
+	disallow_jobhop = TRUE
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
@@ -53,7 +55,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	ideal_character_age = 50
 
 	outfit_type = /decl/hierarchy/outfit/job/hop
-	alt_titles = list("Crew Resources Officer","First Officer")
+	alt_titles = list("Crew Resources Officer","First Officer", "Executive Officer", "Deputy Director")
 
 	access = list(access_security, access_sec_doors, access_brig, access_forensics_lockers,
 			            access_medical, access_engine, access_change_ids, access_ai_upload, access_eva, access_heads,
@@ -74,6 +76,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	department = "Command"
 	head_position = 1
 	department_flag = CIVILIAN
+	disallow_jobhop = TRUE
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 2
@@ -88,3 +91,23 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	alt_titles = list("Bridge Officer", "Helmsman")
 
 	outfit_type = /decl/hierarchy/outfit/job/secretary
+
+//_vr file HoP access
+/*
+/datum/job/hop
+
+	alt_titles = list("Deputy Director", "Crew Resources Officer", "Underseer")
+
+	access = list(access_security, access_sec_doors, access_brig, access_forensics_lockers,
+			            access_medical, access_engine, access_change_ids, access_ai_upload, access_eva, access_heads,
+			            access_all_personal_lockers, access_maint_tunnels, access_bar, access_janitor, access_construction, access_morgue,
+			            access_crematorium, access_kitchen, access_cargo, access_cargo_bot, access_mailsorting, access_qm, access_hydroponics, access_lawyer,
+			            access_chapel_office, access_library, access_research, access_mining, access_heads_vault, access_mining_station,
+			            access_hop, access_RC_announce, access_keycard_auth)
+	minimal_access = list(access_security, access_sec_doors, access_brig, access_forensics_lockers,
+			            access_medical, access_engine, access_change_ids, access_ai_upload, access_eva, access_heads,
+			            access_all_personal_lockers, access_maint_tunnels, access_bar, access_janitor, access_construction, access_morgue,
+			            access_crematorium, access_kitchen, access_cargo, access_cargo_bot, access_mailsorting, access_qm, access_hydroponics, access_lawyer,
+			            access_chapel_office, access_library, access_research, access_mining, access_heads_vault, access_mining_station,
+			            access_hop, access_RC_announce, access_keycard_auth)
+*/

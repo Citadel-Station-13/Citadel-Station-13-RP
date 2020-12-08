@@ -507,6 +507,12 @@
 	icon_state = "sundress_white"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 
+/obj/item/clothing/under/pentagramdress
+	name = "pentagram dress"
+	desc = "A black dress with straps over the chest in the shape of a pentagram."
+	icon_state = "pentagram" 
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+
 /obj/item/clothing/under/captainformal
 	name = "Facility Director's formal uniform"
 	desc = "A Facility Director's formal-wear, for special occasions."
@@ -1197,3 +1203,8 @@
 	name = "White Simple Dress"
 	desc = "A very short, plain white dress with a light blue sash."
 	icon_state = "simpledress"
+
+/obj/item/clothing/under/roman
+	name = "Roman Lorica"
+	desc = "Replica lorica segmentata. It doesn't feel like it would actually afford much protection against modern weaponry."
+	icon_state = "roman"

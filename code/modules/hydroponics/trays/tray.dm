@@ -218,6 +218,7 @@
 	..()
 
 /obj/machinery/portable_atmospherics/hydroponics/CanAllowThrough(atom/movable/mover, turf/target)
+	. = ..()
 	if(istype(mover) && mover.checkpass(PASSTABLE))
 		return TRUE
 	return FALSE

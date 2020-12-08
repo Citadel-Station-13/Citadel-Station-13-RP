@@ -95,11 +95,9 @@
 	activate()
 
 /obj/machinery/holoplant/Crossed(var/mob/living/L)
+	. = ..()
 	if(!interference && plant && istype(L))
 		flicker()
 
-
 /obj/machinery/holoplant/shipped
 	anchored = FALSE
-/obj/machinery/holoplant/shipped/Initialize()
-	. = ..()

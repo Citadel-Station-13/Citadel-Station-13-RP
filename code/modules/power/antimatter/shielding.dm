@@ -64,19 +64,16 @@ proc/cardinalrange(var/center)
 			qdel(src)
 	return
 
-
 /obj/machinery/am_shielding/Destroy()
 	if(control_unit)	control_unit.remove_shielding(src)
 	if(processing)	shutdown_core()
 	visible_message("<font color='red'>The [src.name] melts!</font>")
 	//Might want to have it leave a mess on the floor but no sprites for now
-	..()
-	return
-
+	return ..()
 
 /obj/machinery/am_shielding/CanAllowThrough(atom/movable/mover, turf/target)
+	. = ..()
 	return FALSE
-
 
 /obj/machinery/am_shielding/process()
 	if(!processing) . = PROCESS_KILL

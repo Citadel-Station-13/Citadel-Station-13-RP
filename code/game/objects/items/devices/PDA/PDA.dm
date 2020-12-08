@@ -498,7 +498,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	var/auto_update = 1
 	if(mode in no_auto_update)
 		auto_update = 0
-	if(old_ui && (mode == lastmode && ui_tick % 5 && mode in update_every_five))
+	if(old_ui && (mode == lastmode && (ui_tick % 5) && (mode in update_every_five)))
 		return
 
 	lastmode = mode
@@ -1484,6 +1484,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	return ..()
 
 /obj/item/pda/clown/Crossed(AM as mob|obj) //Clown PDA is slippery.
+	. = ..()
 	if (istype(AM, /mob/living))
 		var/mob/living/M = AM
 

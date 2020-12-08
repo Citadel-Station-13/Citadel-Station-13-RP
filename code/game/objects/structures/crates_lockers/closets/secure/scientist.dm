@@ -46,7 +46,7 @@
 		/obj/item/clothing/suit/storage/toggle/labcoat,
 		/obj/item/cartridge/rd,
 		/obj/item/clothing/shoes/white,
-		/obj/item/clothing/shoes/leather,
+		/obj/item/clothing/shoes/laceup/brown,
 		/obj/item/clothing/gloves/sterile/latex,
 		/obj/item/radio/headset/heads/rd,
 		/obj/item/radio/headset/heads/rd/alt,
@@ -57,4 +57,5 @@
 		/obj/item/clothing/shoes/boots/winter/science,
 		/obj/item/gps/science/rd,
 		/obj/item/bluespace_harpoon, //VOREStation Add
-		/obj/item/clothing/suit/storage/toggle/labcoat/rd) // epic coat
+		/obj/item/clothing/suit/storage/toggle/labcoat/rd,
+		/obj/item/clothing/under/rank/research_director/turtleneck)

@@ -82,7 +82,7 @@
 		new /datum/data/mining_equipment("Defense Equipment - Smoke Bomb",/obj/item/grenade/smokebomb,								100),
 		new /datum/data/mining_equipment("Defense Equipment - Razor Drone Deployer",/obj/item/grenade/spawnergrenade/manhacks/station/locked,	1000),
 		new /datum/data/mining_equipment("Defense Equipment - Sentry Drone Deployer",/obj/item/grenade/spawnergrenade/ward,			1500),
-		new /datum/data/mining_equipment("Defense Equipment - Plasteel Machete",	/obj/item/material/knife/machete,				500),
+		new /datum/data/mining_equipment("Defense Equipment - Plasteel Machete",	/obj/item/clothing/accessory/holster/machete/occupied,				500),
 		new /datum/data/mining_equipment("Fishing Net",					/obj/item/material/fishing_net,								500),
 		new /datum/data/mining_equipment("Titanium Fishing Rod",		/obj/item/material/fishing_rod/modern,						1000),
 		new /datum/data/mining_equipment("Durasteel Fishing Rod",		/obj/item/material/fishing_rod/modern/strong,				7500),

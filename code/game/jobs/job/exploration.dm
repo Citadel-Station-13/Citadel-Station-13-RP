@@ -49,7 +49,7 @@
 	idtype = /obj/item/card/id/explorer/head/pathfinder
 	economic_modifier = 7
 	minimal_player_age = 7
-	alt_titles = list("Expedition Manager")
+	alt_titles = list("Expedition Leader", "Lead Pioneer", "Exploration Chief")
 
 	access = list(access_eva, access_maint_tunnels, access_tox, access_external_airlocks, access_pilot, access_explorer, access_research, access_gateway, access_pathfinder)
 	minimal_access = list(access_eva, access_maint_tunnels, access_tox, access_external_airlocks, access_pilot, access_explorer, access_research, access_gateway, access_pathfinder)
@@ -68,7 +68,7 @@
 	idtype = /obj/item/card/id/explorer/pilot
 	economic_modifier = 5
 	minimal_player_age = 3
-	alt_titles = list("Aviator", "Combat Pilot")
+	alt_titles = list("Aviator")
 	access = list(access_pilot)
 	minimal_access = list(access_pilot)
 	outfit_type = /decl/hierarchy/outfit/job/pilot
@@ -85,7 +85,7 @@
 	selection_color = "#999440"
 	idtype = /obj/item/card/id/explorer/explorer
 	economic_modifier = 6
-	alt_titles = list("Field Scout", "Pioneer")
+	alt_titles = list("Field Scout", "Pioneer", "Jr. Explorer")
 	access = list(access_explorer, access_research)
 	minimal_access = list(access_explorer, access_research)
 	outfit_type = /decl/hierarchy/outfit/job/explorer2

@@ -5,6 +5,7 @@
 /obj/item/gun/projectile
 	name = "gun"
 	desc = "A gun that fires bullets."
+	icon = 'icons/obj/gun/ballistic.dmi'
 	icon_state = "revolver"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	w_class = ITEMSIZE_NORMAL

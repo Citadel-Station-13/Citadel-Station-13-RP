@@ -183,6 +183,15 @@
 
 	toggle_scope(2.0)
 
+/obj/item/gun/energy/sniperrifle/locked
+	name = "expedition marksman energy rifle"
+	desc = "A modified version of the HI DMR 9E with a replacement firing pin and reduced shot capacity in exchange for a self recharging cell."
+	pin = /obj/item/firing_pin/explorer
+	cell_type = /obj/item/cell/device/weapon/recharge/sniper
+	accuracy = 100 //Forced missing fucking sucks ass
+	scoped_accuracy = 100
+	charge_cost = 600
+
 /obj/item/gun/energy/monorifle
 	name = "antique mono-rifle"
 	desc = "An old laser rifle. This one can only fire once before requiring recharging."
@@ -249,7 +258,6 @@
 
 /obj/item/gun/energy/lasershotgun
 	name = "laser scattergun"
-	icon = 'icons/obj/energygun.dmi'
 	item_state = "laser"
 	icon_state = "scatter"
 	desc = "A strange Almachi weapon, utilizing a refracting prism to turn a single laser blast into a diverging cluster."

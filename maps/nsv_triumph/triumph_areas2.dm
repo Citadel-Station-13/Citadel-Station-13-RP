@@ -666,6 +666,11 @@
 /area/shuttle/excursion/cargo
 	name = "\improper Excursion Shuttle Cockpit"
 
+// Library
+
+/area/library/study
+	name = "\improper Library Private Study"
+
 // Pirate Skiff
 
 /area/shuttle/pirate
@@ -691,6 +696,15 @@
 
 /area/shuttle/civvie/cockpit
 	name = "\improper Civilian Transport Cockpit"
+
+// Mining Shuttle
+// Civilian Transport
+/area/shuttle/mining_ship
+	requires_power = 1
+	icon_state = "shuttle2"
+
+/area/shuttle/mining_ship/general
+	name = "\improper Mining Shuttle"
 
 // Tourbus
 /area/shuttle/tourbus

@@ -9,6 +9,7 @@
 	var/list/cant_hold // cit add
 	var/sound_in = 'sound/effects/holster/holsterin.ogg'
 	var/sound_out = 'sound/effects/holster/holsterout.ogg'
+	var/holster_verb = "holster"
 
 /obj/item/clothing/accessory/holster/proc/holster(var/obj/item/I, var/mob/living/user)
 	if(holstered && istype(user))
@@ -32,7 +33,7 @@
 	holstered.forceMove(src)
 	holstered.add_fingerprint(user)
 	w_class = max(w_class, holstered.w_class)
-	user.visible_message("<span class='notice'>[user] holsters [holstered].</span>", "<span class='notice'>You holster \the [holstered].</span>")
+	user.visible_message("<span class='notice'>[user] [holster_verb] [holstered].</span>", "<span class='notice'>You [holster_verb] \the [holstered].</span>")
 	name = "occupied [initial(name)]"
 	playsound(user, "[sound_in]", 75, 0)
 
@@ -156,10 +157,11 @@
 	icon_state = "holster_machete"
 	slot = ACCESSORY_SLOT_WEAPON
 	concealed_holster = 0
-	can_hold = list(/obj/item/material/knife/machete)
+	can_hold = list(/obj/item/material/knife/machete, /obj/item/melee/energy/hfmachete)
 	cant_hold = list(/obj/item/material/knife/machete/armblade)
 	sound_in = 'sound/effects/holster/sheathin.ogg'
 	sound_out = 'sound/effects/holster/sheathout.ogg'
+	holster_verb = "sheathe"
 
 /obj/item/clothing/accessory/holster/machete/occupied
 	var/holstered_spawn = /obj/item/material/knife/machete
@@ -175,5 +177,5 @@
 
 /obj/item/clothing/accessory/holster/waist/kinetic_accelerator
 	name = "KA holster"
-	desc = "A specialized holster, made specifically for Kinetic Accelerator."
+	desc = "A specialized holster, made specifically for kinetic accelerators."
 	can_hold = list(/obj/item/gun/energy/kinetic_accelerator)

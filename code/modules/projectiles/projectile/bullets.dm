@@ -156,6 +156,10 @@
 	check_armour = "melee"
 	fire_sound ='sound/weapons/Gunshot_pathetic.ogg' // Rubber shots have less powder in the casing.
 
+/obj/item/projectile/bullet/pistol/spin // Special weak ammo for Service Spin mode.
+	fire_sound = 'sound/weapons/gunshot2.ogg'
+	damage = 5
+
 /* shotgun projectiles */
 
 /obj/item/projectile/bullet/shotgun
@@ -201,6 +205,15 @@
 	spread_step = 20
 	holy = TRUE
 
+/obj/item/projectile/bullet/shotgun/stake
+	name = "stake"
+	fire_sound = 'sound/weapons/Gunshot_shotgun.ogg'
+	damage = 50
+	armor_penetration = 15
+	SA_bonus_damage = 16 // Potential 156 Damage against demons at point blank.
+	SA_vulnerability = MOB_CLASS_DEMONIC
+	holy = TRUE
+
 //EMP shotgun 'slug', it's basically a beanbag that pops a tiny emp when it hits. //Not currently used
 /obj/item/projectile/bullet/shotgun/ion
 	name = "ion slug"
@@ -243,9 +256,17 @@
 	penetrating = 0
 
 /obj/item/projectile/bullet/rifle/a762/hunter // Optimized for killing simple animals and not people, because Balance(tm)
-	damage = 20
-	SA_bonus_damage = 50 // 70 total on animals.
+	damage = 25
+	SA_bonus_damage = 45 // 70 total on animals.
 	SA_vulnerability = MOB_CLASS_ANIMAL
+	embed_chance = -1
+
+/obj/item/projectile/bullet/rifle/a762/sniperhunter
+	damage = 25 
+	SA_bonus_damage = 45 // 70 total on animals.
+	SA_vulnerability = MOB_CLASS_ANIMAL
+	embed_chance = -1
+	speed = 0.4
 
 /obj/item/projectile/bullet/rifle/a762/silver // Hunting Demons with bolt action rifles.
 	damage = 20

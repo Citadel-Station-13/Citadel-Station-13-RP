@@ -1,4 +1,4 @@
-#define DEFIB_TIME_LIMIT (10 MINUTES) //VOREStation addition- past this many seconds, defib is useless.
+#define DEFIB_TIME_LIMIT (10 MINUTES)	// Past this many seconds, defib is useless.
 /*
 CONTAINS:
 T-RAY

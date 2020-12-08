@@ -44,6 +44,7 @@
 	return
 
 /obj/structure/closet/grave/CanAllowThrough(atom/movable/mover, turf/target)
+	. = ..()
 	if(opened && ismob(mover))
 		var/mob/M = mover
 		add_fingerprint(M)

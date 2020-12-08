@@ -30,16 +30,16 @@
 	else
 		..()
 
-/obj/item/multitool/hacktool/resolve_attackby(atom/A, mob/user)
+/obj/item/multitool/hacktool/resolve_attackby(obj/item/W, mob/user, params, attack_modifier)
 	sanity_check()
 
 	if(!in_hack_mode)
 		return ..()
 
-	if(!attempt_hack(user, A))
+	if(!attempt_hack(user, W))
 		return 0
 
-	A.ui_interact(user, state = hack_state)
+	W.ui_interact(user, state = hack_state)
 	return 1
 
 /obj/item/multitool/hacktool/proc/attempt_hack(var/mob/user, var/atom/target)

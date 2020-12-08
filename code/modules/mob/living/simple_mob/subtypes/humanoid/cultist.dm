@@ -9,6 +9,7 @@
 	icon = 'icons/mob/cult.dmi'
 	icon_state = "initiate"
 	faction = "cult"
+	mob_class = MOB_CLASS_DEMONIC
 
 /mob/living/simple_mob/humanoid/cultist/human
 	name = "cultist"

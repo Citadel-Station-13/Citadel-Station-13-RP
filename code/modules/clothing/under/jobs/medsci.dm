@@ -21,6 +21,13 @@
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 
+/obj/item/clothing/under/rank/research_director/turtleneck
+	desc = "A dark purple turtleneck and tan khakis, for a director with a superior sense of style."
+	name = "research director's turtleneck"
+	icon_state = "rdturtle"
+	item_state_slots = list(slot_r_hand_str = "director", slot_l_hand_str = "director")
+	rolled_sleeves = 0
+
 /obj/item/clothing/under/rank/scientist
 	desc = "It's made of a special fiber that provides minor protection against biohazards. It has markings that denote the wearer as a scientist."
 	name = "scientist's jumpsuit"
@@ -57,6 +64,12 @@
 	item_state_slots = list(slot_r_hand_str = "white", slot_l_hand_str = "white")
 	permeability_coefficient = 0.50
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
+	rolled_sleeves = 0
+
+/obj/item/clothing/under/rank/chief_medical_officer/turtleneck
+	desc = "It's a turtleneck worn by those with the experience to be \"Chief Medical Officer\". It provides minor biological protection, for an officer with a superior sense of style and practicality."
+	name = "chief medical officer's turtleneck"
+	icon_state = "cmoturtle"
 	rolled_sleeves = 0
 
 /obj/item/clothing/under/rank/geneticist

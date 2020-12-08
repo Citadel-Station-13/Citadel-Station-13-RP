@@ -75,11 +75,7 @@
 				revive_ready = REVIVING_READY //reset their cooldown
 
 /mob/living/carbon/human/proc/hasnutriment()
-	if (bloodstr.has_reagent("nutriment", 30) || src.bloodstr.has_reagent("protein", 15)) //protein needs half as much. For reference, a steak contains 9u protein.
-		return TRUE
-	else if (ingested.has_reagent("nutriment", 60) || src.ingested.has_reagent("protein", 30)) //try forcefeeding them, why not. Less effective.
-		return TRUE
-	else return FALSE
+	return (nutrition+ bloodstr.get_reagent("protein") * 10 + bloodstr.get_reagent("nutriment") * 5 + ingested.get_reagent("protein") * 5 + ingested.get_reagent("nutriment") * 2.5) > 425
 
 
 /mob/living/carbon/human/proc/hatch()
@@ -189,7 +185,7 @@
 							halitem.layer = 50
 							switch(rand(1,6))
 								if(1) //revolver
-									halitem.icon = 'icons/obj/gun.dmi'
+									halitem.icon = 'icons/obj/gun/ballistic.dmi'
 									halitem.icon_state = "revolver"
 									halitem.name = "Revolver"
 								if(2) //c4
@@ -383,19 +379,24 @@
 		return
 
 	last_special = world.time + 600
-	src.visible_message("<font color='red'><b>[src] moves their head next to [B]'s neck, seemingly looking for something!</b></font>")
+	src.visible_message("<font color='red'><b>[src] leans in close to [B]'s neck...</b></font>")
 
-	if(do_after(src, 300, B)) //Thrirty seconds.
+	if(do_after(src, 150, B)) //Fifteen seconds, because thirty is just awkward.
 		if(!Adjacent(B)) return
-		src.visible_message("<font color='red'><b>[src] suddenly extends their fangs and plunges them down into [B]'s neck!</b></font>")
-		B.apply_damage(5, BRUTE, BP_HEAD) //You're getting fangs pushed into your neck. What do you expect????
+		src.visible_message("<font color='red'><b>[src] suddenly extends their fangs and sinks them into [B]'s neck!</b></font>")
+		sleep(25)
+		to_chat(B, "<span class='danger'>You feel light headed as the bite of those fangs grip your senses!</span>")
+		//B.apply_damage(5, BRUTE, BP_TORSO) //changed to torso from head
 		B.drip(80) //Remove enough blood to make them a bit woozy, but not take oxyloss.
-		src.nutrition += 400
+		if(!B.bitten)
+			src.nutrition += 400
+		if(src.nutrition > 901) //prevent going into the fat ranges of nutrition needlessly
+			src.nutrition = 900
 		sleep(50)
 		B.drip(1)
 		sleep(50)
 		B.drip(1)
-
+		B.bitten = 1
 
 //Welcome to the adapted changeling absorb code.
 /mob/living/carbon/human/proc/succubus_drain()

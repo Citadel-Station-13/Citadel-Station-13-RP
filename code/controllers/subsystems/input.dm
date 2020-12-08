@@ -69,7 +69,7 @@ SUBSYSTEM_DEF(input)
 	//  conflicts occur with something like say indicator vs say), we're going to snowflake this anyways
 	var/list/hard_bind_anti_collision = list()
 	var/list/anti_collision_modifiers = list("Ctrl", "Alt", "Shift", "Ctrl+Alt", "Ctrl+Shift", "Alt+Shift", "Ctrl+Alt+Shift")
-	for(var/key in classic_ctrl_override_keys)
+	for(var/key in list("T", "O", "M"))
 		for(var/modifier in anti_collision_modifiers)
 			hard_bind_anti_collision["[modifier]+[key]"] = ".NONSENSICAL_VERB_THAT_DOES_NOTHING"
 

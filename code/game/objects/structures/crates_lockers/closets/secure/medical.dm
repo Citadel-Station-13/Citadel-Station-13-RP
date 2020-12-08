@@ -141,6 +141,10 @@
 		/obj/item/clothing/accessory/storage/white_vest,
 		/obj/item/barrier_tape_roll/medical)
 
+/obj/structure/closet/secure_closet/paramedic/Initialize()
+	starts_with += /obj/item/gps/medical
+	return ..()
+
 /obj/structure/closet/secure_closet/CMO
 	name = "chief medical officer's locker"
 	req_access = list(access_cmo)
@@ -172,7 +176,8 @@
 		/obj/item/clothing/head/bio_hood/cmo,
 		/obj/item/gps/medical/cmo,
 		/obj/item/clothing/shoes/white,
-		/obj/item/reagent_containers/glass/beaker/vial) //VOREStation Add
+		/obj/item/reagent_containers/glass/beaker/vial, //VOREStation Add
+		/obj/item/clothing/under/rank/chief_medical_officer/turtleneck)
 
 /obj/structure/closet/secure_closet/CMO/Initialize()
 	if(prob(50))

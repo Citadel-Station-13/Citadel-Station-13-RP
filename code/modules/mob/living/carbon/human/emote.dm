@@ -807,7 +807,8 @@
 					twitch_v, vomit, weh, whimper, wink, yawn. Synthetics: beep, buzz, yes, no, rcough, rsneeze, ping. Vox: shriekshort, shriekloud")
 
 		else
-			to_chat(src, "<font color='blue'>Unusable emote '[act]'. Say *help or *vhelp for a list.</font>") //VOREStation Edit, mention *vhelp for Virgo-specific emotes located in emote_vr.dm.
+			to_chat(src, "<font color='blue'>Unusable emote '[act]'. Say *help for a list.</font>")
+			return
 
 	if (message)
 		custom_emote(m_type,message)
@@ -931,7 +932,7 @@
 				return 1
 			else
 				src.SpinAnimation(7,1)
-				message = "does a flip!"
+				// message = "does a flip!"
 				m_type = 1
 // New emotes below this line
 		if ("purr")

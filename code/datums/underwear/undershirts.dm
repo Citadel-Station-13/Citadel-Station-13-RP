@@ -178,3 +178,13 @@
 /datum/category_item/underwear/undershirt/pinkblack_tshirt
 	name = "Pink and Black T-Shirt"
 	icon_state = "pinkblack_tshirt"
+
+/datum/category_item/underwear/undershirt/shibari
+	name = "Shibari Rope"
+	icon_state = "shibari"
+	has_color = TRUE
+
+/datum/category_item/underwear/undershirt/shibari_sleeve
+	name = "Shibari Rope with sleeves"
+	icon_state = "shibari_sleeve"
+	has_color = TRUE
