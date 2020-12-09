@@ -27644,7 +27644,8 @@
 /area/bridge/meeting_room)
 "tuX" = (
 /obj/machinery/computer/shuttle_control/explore/excursion{
-	dir = 4
+	dir = 4;
+	req_one_access = null
 	},
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/cockpit)
