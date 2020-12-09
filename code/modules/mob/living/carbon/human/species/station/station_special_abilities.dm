@@ -350,53 +350,78 @@
 	set desc = "Bites prey and drains them of a significant portion of blood, feeding you in the process. You may only do this once per minute."
 	set category = "Abilities"
 
-	if(last_special > world.time)
-		return
+	/*if(last_special > world.time)
+		return*/
 
 	if(stat || paralysis || stunned || weakened || lying || restrained() || buckled)
 		to_chat(src, "You cannot bite anyone in your current state!")
 		return
 
 	var/list/choices = list()
-	for(var/mob/living/carbon/human/M in view(1,src))
-		if(!istype(M,/mob/living/silicon) && Adjacent(M))
+	for(var/mob/living/M in view(1,src))
+		if(istype(M,/mob/living) && Adjacent(M))
 			choices += M
-	choices -= src
+			choices -= src
 
-	var/mob/living/carbon/human/B = input(src,"Who do you wish to bite?") as null|anything in choices
+	var/mob/living/B = input(src,"Who do you wish to bite?") as null|anything in choices
 
-	if(!B || !src || src.stat) return
+	if(!B || !src || src.stat == DEAD) return
 
 	if(!Adjacent(B)) return
 
-	if(last_special > world.time) return
+	//if(last_special > world.time) return
 
 	if(stat || paralysis || stunned || weakened || lying || restrained() || buckled)
 		to_chat(src, "You cannot bite in your current state.")
-		return
-	if(B.vessel.total_volume <= 0 || B.isSynthetic()) //Do they have any blood in the first place, and are they synthetic?
-		to_chat(src, "<font color='red'>There appears to be no blood in this prey...</font>")
-		return
+		return	
 
 	last_special = world.time + 600
-	src.visible_message("<font color='red'><b>[src] leans in close to [B]'s neck...</b></font>")
+	src.visible_message("<font color='red'><b>[src] leans in close to [B]...</b></font>")
+	B.add_fingerprint(src)
+	add_attack_logs(src,B,"used bloodsuck() on [B]")
+	if(istype(B,/mob/living/carbon/human) && istype(src,/mob/living/carbon))
+		if(do_after(src, 50, B)) //Five seconds seems best
+			if(!Adjacent(B)) return
+			if(!src.isSynthetic())
+				src.visible_message("<font color='red'><b>[src] suddenly extends their fangs and sinks them into [B]'s neck!</b></font>")
+			else
+				src.visible_message("<font color='red'><b>[src] suddenly bites [B]!</b></font>")
+			sleep(25)
+			if(!src.isSynthetic())
+				to_chat(B, "<span class='danger'>You feel light headed as your blood is being drained!</span>")
+			else
+				to_chat(B, "<span class='danger'>Your sensors flare wildly as your power is being drained!</span>")
+			var/mob/living/carbon/human/H = B
+			H.drip(80) //Remove enough blood to make them a bit woozy, but not take oxyloss.
+			sleep(50)
+			H.drip(1)
+			sleep(50)
+			H.drip(1)
+				
+			if(!B.bitten) // first time biting them
+				src.nutrition += 300
+				B.nutrition -= 150
+			else
+				src.nutrition += 150 // halves our reward if we've already fed on this person before
+				B.nutrition -= 75
+			if(src.nutrition > 901) //prevent going into the fat ranges of nutrition needlessly and prevents minmaxing certain racial traits/abilities that rely on nutrition via farming one victim
+				src.nutrition = 900
+			if(B.nutrition < 100)
+				B.apply_damage(15, BRUTE, BP_TORSO) // if they have nothing to give, this just harms them
+			B.bitten = 1 //debuff tracking for balance
+	else if(!istype(B,/mob/living/carbon) && src.isSynthetic() || istype(B,/mob/living/carbon) && B.isSynthetic() && src.isSynthetic()) // for synths to feed on robots and other synths
+		if(do_after(src, 50, B)) 
+			if(!Adjacent(B)) return
+			src.visible_message("<font color='red'><b>[src] suddenly lunges at [B]!</b></font>")
+			if(B.nutrition > 100)
+				src.nutrition += 300
+				B.nutrition -= 150
+			if(B.nutrition < 100)
+				B.apply_damage(15, BRUTE, BP_TORSO)
+	else if(istype(B,/mob/living/silicon) && !istype(src,/mob/living/silicon))
+		if(do_after(src, 50, B)) 
+			to_chat(src, "You don't sense any viable blood...")
 
-	if(do_after(src, 150, B)) //Fifteen seconds, because thirty is just awkward.
-		if(!Adjacent(B)) return
-		src.visible_message("<font color='red'><b>[src] suddenly extends their fangs and sinks them into [B]'s neck!</b></font>")
-		sleep(25)
-		to_chat(B, "<span class='danger'>You feel light headed as the bite of those fangs grip your senses!</span>")
-		//B.apply_damage(5, BRUTE, BP_TORSO) //changed to torso from head
-		B.drip(80) //Remove enough blood to make them a bit woozy, but not take oxyloss.
-		if(!B.bitten)
-			src.nutrition += 400
-		if(src.nutrition > 901) //prevent going into the fat ranges of nutrition needlessly
-			src.nutrition = 900
-		sleep(50)
-		B.drip(1)
-		sleep(50)
-		B.drip(1)
-		B.bitten = 1
 
 //Welcome to the adapted changeling absorb code.
 /mob/living/carbon/human/proc/succubus_drain()
