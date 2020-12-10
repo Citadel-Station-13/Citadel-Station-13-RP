@@ -1,0 +1,5 @@
+author: "Enzo-Leon"
+delete-after: True
+changes: 
+  - rscadd: "New secondary explosion sound that will \"shake\" the station/ship with a creaking sound effect"
+  - soundadd: "New sound files for explosions and ship creaking"
