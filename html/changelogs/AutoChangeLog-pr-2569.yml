@@ -1,6 +1,0 @@
-author: "TheLordME"
-delete-after: True
-changes: 
-  - rscadd: "Chemical Patches work as a single use bruisepack. Applying thier Chemical and bandaging a single wound."
-  - bugfix: "Chemical Patches can no longer be placed on surgical sites."
-  - bugfix: "Chemical Patches now correctly check for robotic limbs."
