@@ -4667,6 +4667,11 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
+"emv" = (
+/obj/structure/table/reinforced,
+/obj/item/surgical/bioregen,
+/turf/simulated/floor/tiled,
+/area/medical/surgery)
 "ens" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -8931,6 +8936,11 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/xenobiology/xenoflora)
+"iby" = (
+/obj/structure/table/reinforced,
+/obj/item/surgical/bioregen,
+/turf/simulated/floor/tiled,
+/area/medical/surgery2)
 "idh" = (
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
@@ -13480,6 +13490,7 @@
 "mOG" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/firstaid/surgery,
+/obj/item/surgical/bioregen,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery{
 	name = "\improper Operating Theatre 3"
@@ -21061,6 +21072,7 @@
 	},
 /obj/structure/table/standard,
 /obj/machinery/cell_charger,
+/obj/item/surgical/bioregen,
 /turf/simulated/floor/tiled/old_cargo/purple,
 /area/medical/surgery{
 	name = "\improper Robotics Surgery Room"
@@ -32704,7 +32716,7 @@ eUg
 fBo
 xIz
 qao
-uyN
+iby
 dUX
 gVh
 pYD
@@ -33556,7 +33568,7 @@ ohV
 rps
 cnv
 rYV
-tKa
+emv
 seM
 gVh
 pYD
