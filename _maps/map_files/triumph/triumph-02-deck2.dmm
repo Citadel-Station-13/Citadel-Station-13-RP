@@ -1787,7 +1787,6 @@
 /area/janitor)
 "fr" = (
 /obj/machinery/light,
-/obj/machinery/telecomms/relay/preset/mining,
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/belter)
 "fu" = (
@@ -4011,7 +4010,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "lJ" = (
-/obj/machinery/telecomms/relay/preset/mining,
 /turf/simulated/floor/airless,
 /area/shuttle/mining_ship/general)
 "lK" = (
@@ -10256,8 +10254,7 @@
 "FK" = (
 /obj/machinery/computer/roguezones,
 /obj/effect/floor_decal/industrial/warning/cee{
-	dir = 1;
-	icon_state = "warningcee"
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
@@ -16732,8 +16729,7 @@
 "ZF" = (
 /obj/machinery/firealarm{
 	dir = 1;
-	pixel_x = -28;
-	pixel_y = 0
+	pixel_x = -28
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/freezer)
