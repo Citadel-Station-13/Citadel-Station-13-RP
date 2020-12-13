@@ -1,3 +1,5 @@
+#define SYNTHETIC_NUTRITION_CHARGE_RATE 15			// amount of cell charge to use per 1 nutrition, given that synthetics are full at 450 nutrition
+
 /obj/machinery/recharge_station
 	name = "cyborg recharging station"
 	desc = "A heavy duty rapid charging system, designed to quickly recharge cyborg power reserves."
@@ -7,7 +9,7 @@
 	anchored = 1
 	circuit = /obj/item/circuitboard/recharge_station
 	use_power = USE_POWER_IDLE
-	idle_power_usage = 50
+	idle_power_usage = 10
 	var/mob/occupant = null
 	var/obj/item/cell/cell = null
 	var/icon_update_tick = 0	// Used to rebuild the overlay only once every 10 ticks
@@ -117,8 +119,10 @@
 
 			// Also recharge their internal battery.
 			if(H.isSynthetic() && H.nutrition < 450)
-				H.nutrition = min(H.nutrition+10, 450)
-				cell.use(7000/450*10)
+				var/needed = min(10, H.nutrition)
+				var/drained = cell.use(needed * SYNTHETIC_NUTRITION_CHARGE_RATE)
+				H.nutrition += drained / SYNTHETIC_NUTRITION_CHARGE_RATE
+				// cell.use(7000/450*10)		YOU CAN JUST SAY 155.333, JACKASS
 
 			// And clear up radiation
 			if(H.radiation > 0)
