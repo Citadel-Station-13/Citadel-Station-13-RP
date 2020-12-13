@@ -4,6 +4,7 @@
 	desc = "yummy"
 	icon = 'icons/obj/food.dmi'
 	icon_state = null
+	flags = OPENCONTAINER
 	var/bitesize = 1
 	var/bitecount = 0
 	var/trash = null
