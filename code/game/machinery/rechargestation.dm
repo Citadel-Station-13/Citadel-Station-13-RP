@@ -119,7 +119,7 @@
 
 			// Also recharge their internal battery.
 			if(H.isSynthetic() && H.nutrition < 450)
-				var/needed = min(10, 450 - H.nutrition)
+				var/needed = clamp(450 - H.nutrition, 0, 10)
 				var/drained = cell.use(needed * SYNTHETIC_NUTRITION_CHARGE_RATE)
 				H.nutrition += drained / SYNTHETIC_NUTRITION_CHARGE_RATE
 				// cell.use(7000/450*10)		YOU CAN JUST SAY 155.333, JACKASS
