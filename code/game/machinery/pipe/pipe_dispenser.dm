@@ -57,6 +57,8 @@
 	else if(href_list["makepipe"])
 		if(!wait)
 			var/obj/machinery/atmospherics/p_type = text2path(href_list["makepipe"])
+			if(!ispath(p_type, /obj/machinery/atmospherics))
+				return
 			var/p_dir = text2num(href_list["dir"])
 			var/pi_type = initial(p_type.construction_type)
 			var/obj/item/pipe/P = new pi_type(src.loc, p_type, p_dir)
