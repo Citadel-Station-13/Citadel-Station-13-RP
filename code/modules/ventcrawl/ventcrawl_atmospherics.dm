@@ -29,6 +29,8 @@
 	ventcrawl_to(user,findConnecting(direction, user.ventcrawl_layer),direction)
 
 /obj/machinery/atmospherics/proc/ventcrawl_to(var/mob/living/user, var/obj/machinery/atmospherics/target_move, var/direction)
+	if(direction & (direction-1))//supresses Diagonal movement
+		return
 	if(target_move)
 		if(is_type_in_list(target_move, ventcrawl_machinery) && target_move.can_crawl_through())
 			user.remove_ventcrawl()
