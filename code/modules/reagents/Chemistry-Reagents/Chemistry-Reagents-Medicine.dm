@@ -16,7 +16,7 @@
 		M.add_chemical_effect(CE_STABLE, 15)
 		M.add_chemical_effect(CE_PAINKILLER, 10)
 
-/datum/reagent/inaprovaline/topical
+/datum/reagent/inaprovaline/topical//Main way to obtain is destiller
 	name = "Inaprovalaze"
 	id = "inaprovalaze"
 	description = "Inaprovalaze is a topical variant of Inaprovaline."
@@ -74,7 +74,7 @@
 					if(W.damage <= 0)
 						O.wounds -= W
 
-/datum/reagent/bicaridine/topical
+/datum/reagent/bicaridine/topical//Main way to obtain is destiller
 	name = "Bicaridaze"
 	id = "bicaridaze"
 	description = "Bicaridaze is a topical variant of the chemical Bicaridine."
@@ -157,7 +157,7 @@
 	if(alien != IS_DIONA)
 		M.heal_organ_damage(0, 8 * removed * chem_effective) //VOREStation edit
 
-/datum/reagent/dermaline/topical
+/datum/reagent/dermaline/topical//Main way to obtain is destiller
 	name = "Dermalaze"
 	id = "dermalaze"
 	description = "Dermalaze is a topical variant of the chemical Dermaline."
@@ -309,7 +309,7 @@
 	if(alien != IS_DIONA)
 		affect_blood(M, alien, removed * 0.4)
 
-/datum/reagent/tricorlidaze
+/datum/reagent/tricorlidaze//Main way to obtain is destiller
 	name = "Tricorlidaze"
 	id = "tricorlidaze"
 	description = "Tricorlidaze is a topical gel produced with tricordrazine and sterilizine."
@@ -324,9 +324,9 @@
 		var/chem_effective = 1
 		if(alien == IS_SLIME)
 			chem_effective = 0.5
-		M.adjustOxyLoss(-2 * removed * chem_effective)
-		M.heal_organ_damage(1 * removed, 1 * removed * chem_effective)
-		M.adjustToxLoss(-2 * removed * chem_effective)
+		M.adjustOxyLoss(-0.5 * removed * chem_effective)
+		M.heal_organ_damage(2 * removed, 2 * removed * chem_effective)
+		M.adjustToxLoss(-0.5 * removed * chem_effective)
 
 /datum/reagent/tricorlidaze/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien != IS_DIONA)
