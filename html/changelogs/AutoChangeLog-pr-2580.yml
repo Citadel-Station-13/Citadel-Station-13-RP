@@ -1,0 +1,7 @@
+author: "Hatterhat"
+delete-after: True
+changes: 
+  - bugfix: "Destructive analyzers now return material to their lathes properly."
+  - tweak: "RPEDs now drop lowest part tier when used inhand."
+  - tweak: "RPEDs can be clickdragged onto destructive analyzers to recycle lowest part tier."
+  - tweak: "Protolathes and autolathes are now less awful to look at."
