@@ -863,3 +863,12 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 
 /obj/item/proc/is_welder()
 	return FALSE
+
+// These procs are for RPEDs and part ratings. The concept for this was borrowed from /vg/station.
+// Gets the rating of the item, used in stuff like machine construction.
+/obj/item/proc/get_rating()
+	return FALSE
+
+// Like the above, but used for RPED sorting of parts.
+/obj/item/proc/rped_rating()
+	return get_rating()
