@@ -659,6 +659,8 @@
 		M.visible_message("<font color='blue'>[user] decided life was worth living</font>")
 		mouthshoot = 0
 		return
+	if(!special_check)
+		return
 	var/obj/item/projectile/in_chamber = consume_next_projectile()
 	if (istype(in_chamber))
 		user.visible_message("<span class = 'warning'>[user] pulls the trigger.</span>")
