@@ -1828,6 +1828,11 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload)
+"bqw" = (
+/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/tree/sif,
+/turf/simulated/floor/grass,
+/area/hydroponics/garden)
 "bqH" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -31579,6 +31584,7 @@
 	dir = 4
 	},
 /obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/tree/sif,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "wgA" = (
@@ -43454,7 +43460,7 @@ fpp
 amB
 mIQ
 avA
-ecI
+bqw
 rSA
 vBd
 xJI

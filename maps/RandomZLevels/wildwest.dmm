@@ -6,24 +6,24 @@
 /turf/simulated/shuttle/wall,
 /area/awaymission/wwvault)
 "ac" = (
-/turf/simulated/floor/engine/cult,
+/turf/simulated/floor/cult,
 /area/awaymission/wwvault)
 "ad" = (
 /obj/structure/cult/pylon,
-/turf/simulated/floor/engine/cult,
+/turf/simulated/floor/cult,
 /area/awaymission/wwvault)
 "ae" = (
 /turf/simulated/shuttle/plating{
-	 icon_state = "cultdamage5"
+	= = _state = "cultdamage5"
 	},
 /area/awaymission/wwvault)
 "af" = (
 /mob/living/simple_mob/faithless,
-/turf/simulated/floor/engine/cult,
+/turf/simulated/floor/cult,
 /area/awaymission/wwvault)
 "ag" = (
 /turf/simulated/shuttle/plating{
-	 icon_state = "bcircuitoff"
+	= = _state = "bcircuitoff"
 	},
 /area/awaymission/wwvault)
 "ah" = (
@@ -39,22 +39,22 @@
 /area/awaymission/wwvault)
 "aj" = (
 /turf/simulated/shuttle/plating{
-	 icon_state = "cultdamage3"
+	= = _state = "cultdamage3"
 	},
 /area/awaymission/wwvault)
 "ak" = (
 /turf/simulated/shuttle/plating{
-	 icon_state = "cultdamage6"
+	= = _state = "cultdamage6"
 	},
 /area/awaymission/wwvault)
 "al" = (
 /obj/effect/gateway,
-/turf/simulated/floor/engine/cult,
+/turf/simulated/floor/cult,
 /area/awaymission/wwvault)
 "am" = (
 /mob/living/simple_mob/faithless,
 /turf/simulated/shuttle/plating{
-	 icon_state = "bcircuitoff"
+	= = _state = "bcircuitoff"
 	},
 /area/awaymission/wwvault)
 "an" = (
@@ -67,19 +67,19 @@
 /area/awaymission/wwvault)
 "ao" = (
 /turf/simulated/shuttle/plating{
-	 icon_state = "gcircuitoff"
+	= = _state = "gcircuitoff"
 	},
 /area/awaymission/wwvault)
 "ap" = (
-/obj/machinery/wish_granter_dark,
+/obj/machinery/wish_granter,
 /turf/simulated/shuttle/plating{
-	 icon_state = "gcircuitoff"
+	= = _state = "gcircuitoff"
 	},
 /area/awaymission/wwvault)
 "aq" = (
 /obj/structure/cult/pylon,
 /turf/simulated/shuttle/plating{
-	 icon_state = "gcircuitoff"
+	= = _state = "gcircuitoff"
 	},
 /area/awaymission/wwvault)
 "ar" = (
@@ -87,7 +87,7 @@
 	dir = 9
 	},
 /turf/simulated/shuttle/plating{
-	 icon_state = "gcircuitoff"
+	= = _state = "gcircuitoff"
 	},
 /area/awaymission/wwvault)
 "as" = (
@@ -95,7 +95,7 @@
 	dir = 1
 	},
 /turf/simulated/shuttle/plating{
-	 icon_state = "gcircuitoff"
+	= = _state = "gcircuitoff"
 	},
 /area/awaymission/wwvault)
 "at" = (
@@ -103,7 +103,7 @@
 	dir = 5
 	},
 /turf/simulated/shuttle/plating{
-	 icon_state = "gcircuitoff"
+	= = _state = "gcircuitoff"
 	},
 /area/awaymission/wwvault)
 "au" = (
@@ -111,7 +111,7 @@
 	dir = 8
 	},
 /turf/simulated/shuttle/plating{
-	 icon_state = "gcircuitoff"
+	= = _state = "gcircuitoff"
 	},
 /area/awaymission/wwvault)
 "av" = (
@@ -119,7 +119,7 @@
 	calibrated = 0
 	},
 /turf/simulated/shuttle/plating{
-	 icon_state = "gcircuitoff"
+	= = _state = "gcircuitoff"
 	},
 /area/awaymission/wwvault)
 "aw" = (
@@ -127,7 +127,7 @@
 	dir = 4
 	},
 /turf/simulated/shuttle/plating{
-	 icon_state = "gcircuitoff"
+	= = _state = "gcircuitoff"
 	},
 /area/awaymission/wwvault)
 "ax" = (
@@ -135,13 +135,13 @@
 	dir = 10
 	},
 /turf/simulated/shuttle/plating{
-	 icon_state = "gcircuitoff"
+	= = _state = "gcircuitoff"
 	},
 /area/awaymission/wwvault)
 "ay" = (
 /obj/machinery/gateway,
 /turf/simulated/shuttle/plating{
-	 icon_state = "gcircuitoff"
+	= = _state = "gcircuitoff"
 	},
 /area/awaymission/wwvault)
 "az" = (
@@ -149,24 +149,24 @@
 	dir = 6
 	},
 /turf/simulated/shuttle/plating{
-	 icon_state = "gcircuitoff"
+	= = _state = "gcircuitoff"
 	},
 /area/awaymission/wwvault)
 "aA" = (
-/obj/effect/meatgrinder,
+/obj/machinery/gibber,
 /turf/simulated/shuttle/plating{
-	 icon_state = "gcircuitoff"
+	= = _state = "gcircuitoff"
 	},
 /area/awaymission/wwvault)
 "aB" = (
 /obj/structure/cult/pylon,
 /turf/simulated/shuttle/plating{
-	 icon_state = "bcircuitoff"
+	= = _state = "bcircuitoff"
 	},
 /area/awaymission/wwvault)
 "aC" = (
 /turf/simulated/shuttle/plating{
-	 icon_state = "cultdamage2"
+	= = _state = "cultdamage2"
 	},
 /area/awaymission/wwvault)
 "aD" = (
@@ -180,7 +180,7 @@
 /obj/machinery/door/airlock/vault{
 	locked = 1
 	},
-/turf/simulated/floor/engine/cult,
+/turf/simulated/floor/cult,
 /area/awaymission/wwvaultdoors)
 "aG" = (
 /turf/simulated/mineral,
@@ -205,11 +205,11 @@
 /obj/machinery/door/airlock/vault{
 	locked = 1
 	},
-/turf/simulated/floor/engine/cult,
+/turf/simulated/floor/cult,
 /area/awaymission/wwvault)
 "aK" = (
 /obj/effect/landmark/corpse/miner/rig,
-/turf/simulated/floor/engine/cult,
+/turf/simulated/floor/cult,
 /area/awaymission/wwvault)
 "aL" = (
 /obj/effect/forcefield{
@@ -219,90 +219,45 @@
 	},
 /turf/simulated/mineral,
 /area/awaymission/wwmines)
-"aM" = (
-/turf/simulated/mineral/silver,
-/area/awaymission/wwmines)
 "aN" = (
 /turf/simulated/mineral,
 /area/awaymission/wwmines)
-"aO" = (
-/obj/effect/forcefield{
-	desc = "You can't get in. Heh.";
-	layer = 1;
-	name = "Blocker"
-	},
-/turf/simulated/mineral/diamond,
-/area/awaymission/wwmines)
-"aP" = (
-/obj/effect/forcefield{
-	desc = "You can't get in. Heh.";
-	layer = 1;
-	name = "Blocker"
-	},
-/turf/simulated/mineral/silver,
-/area/awaymission/wwmines)
-"aQ" = (
-/obj/effect/forcefield{
-	desc = "You can't get in. Heh.";
-	layer = 1;
-	name = "Blocker"
-	},
-/turf/simulated/mineral/gold,
-/area/awaymission/wwmines)
 "aR" = (
 /obj/structure/ore_box,
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
 /area/awaymission/wwmines)
 "aS" = (
 /obj/item/paper{
 	info = "meat grinder requires sacri"
 	},
-/turf/simulated/floor/engine/cult,
+/turf/simulated/floor/cult,
 /area/awaymission/wwvault)
 "aT" = (
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
 /area/awaymission/wwmines)
 "aU" = (
 /obj/effect/landmark/corpse/syndicatecommando,
-/turf/simulated/floor/engine/cult,
+/turf/simulated/floor/cult,
 /area/awaymission/wwvault)
 "aV" = (
 /turf/simulated/mineral,
 /area/awaymission/wwrefine)
-"aW" = (
-/turf/simulated/wall/mineral/sandstone,
-/area/awaymission/wwrefine)
-"aX" = (
-/obj/effect/forcefield{
-	desc = "You can't get in. Heh.";
-	layer = 1;
-	name = "Blocker"
-	},
-/turf/simulated/wall/mineral/sandstone,
-/area/awaymission/wwmines)
 "aY" = (
 /obj/effect/decal/cleanable/blood/gibs/body{
-	 icon_state = "gibup1"
+	= = _state = "gibup1"
 	},
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
 /area/awaymission/wwmines)
 "aZ" = (
 /obj/effect/mine/dnascramble,
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
-	},
-/area/awaymission/wwmines)
-"ba" = (
-/obj/effect/mine/dnascramble,
-/obj/item/ammo_magazine/a10mm,
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
 /area/awaymission/wwmines)
 "bb" = (
@@ -316,21 +271,6 @@
 /obj/machinery/door/airlock/sandstone,
 /turf/simulated/floor/plating,
 /area/awaymission/wwrefine)
-"be" = (
-/obj/item/ammo_magazine/a10mm,
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
-	},
-/area/awaymission/wwmines)
-"bf" = (
-/mob/living/simple_mob/hostile/syndicate/ranged,
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
-	},
-/area/awaymission/wwmines)
-"bg" = (
-/turf/simulated/wall/mineral/sandstone,
-/area)
 "bh" = (
 /obj/structure/largecrate,
 /turf/simulated/floor/plating,
@@ -338,8 +278,8 @@
 "bi" = (
 /obj/effect/landmark/corpse/miner/rig,
 /obj/effect/mine/dnascramble,
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
 /area/awaymission/wwmines)
 "bj" = (
@@ -351,7 +291,7 @@
 /area/awaymission/wwmines)
 "bl" = (
 /obj/effect/decal/cleanable/blood/gibs/body{
-	 icon_state = "gibup1"
+	= = _state = "gibup1"
 	},
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
@@ -359,10 +299,6 @@
 /obj/effect/mine/dnascramble,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
-"bn" = (
-/mob/living/simple_mob/hostile/syndicate/ranged,
-/turf/simulated/floor/plating,
-/area/awaymission/wwrefine)
 "bo" = (
 /obj/structure/closet/crate,
 /turf/simulated/floor/plating,
@@ -379,49 +315,34 @@
 /obj/structure/lattice,
 /turf/space,
 /area)
-"bs" = (
-/obj/effect/mine/dnascramble,
-/obj/item/ammo_magazine/a10mm,
-/turf/simulated/floor/wood,
-/area/awaymission/wwmines)
 "bt" = (
 /obj/structure/closet/crate,
 /obj/effect/decal/cleanable/cobweb,
 /turf/simulated/floor/plating,
 /area/awaymission/wwrefine)
-"bu" = (
-/turf/simulated/wall/mineral/sandstone,
-/area/awaymission/wwmines)
 "bv" = (
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow"
+	= = _state = "fwindow"
 	},
 /turf/space,
 /area)
 "bw" = (
 /obj/structure/lattice,
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow"
+	= = _state = "fwindow"
 	},
 /turf/space,
 /area)
 "bx" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /turf/simulated/floor{
-	 icon_state = "cafeteria";
+	= = _state = "cafeteria";
 	dir = 5
 	},
 /area/awaymission/wwmines)
 "by" = (
 /turf/simulated/floor{
-	 icon_state = "cafeteria";
-	dir = 5
-	},
-/area/awaymission/wwmines)
-"bz" = (
-/mob/living/simple_mob/hostile/syndicate/ranged,
-/turf/simulated/floor{
-	 icon_state = "cafeteria";
+	= = _state = "cafeteria";
 	dir = 5
 	},
 /area/awaymission/wwmines)
@@ -433,10 +354,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
-"bB" = (
-/obj/structure/stool/bed,
-/turf/simulated/floor/wood,
-/area/awaymission/wwmines)
 "bC" = (
 /obj/structure/table/woodentable,
 /obj/item/gun/projectile,
@@ -444,10 +361,6 @@
 /area/awaymission/wwmines)
 "bD" = (
 /obj/structure/table/woodentable,
-/turf/simulated/floor/wood,
-/area/awaymission/wwmines)
-"bE" = (
-/mob/living/simple_mob/hostile/syndicate/ranged,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "bF" = (
@@ -468,11 +381,11 @@
 /area/awaymission/wwmines)
 "bJ" = (
 /obj/structure/closet/secure_closet/freezer/kitchen,
-/obj/item/reagent_containers/food/drinks/flour,
-/obj/item/reagent_containers/food/drinks/flour,
-/obj/item/reagent_containers/food/drinks/flour,
+/obj/item/reagent_containers/food/condiment/flour,
+/obj/item/reagent_containers/food/condiment/flour,
+/obj/item/reagent_containers/food/condiment/flour,
 /turf/simulated/floor{
-	 icon_state = "cafeteria";
+	= = _state = "cafeteria";
 	dir = 5
 	},
 /area/awaymission/wwmines)
@@ -480,7 +393,7 @@
 /obj/structure/table/woodentable,
 /obj/item/book/manual/chef_recipes,
 /turf/simulated/floor{
-	 icon_state = "cafeteria";
+	= = _state = "cafeteria";
 	dir = 5
 	},
 /area/awaymission/wwmines)
@@ -488,14 +401,14 @@
 /obj/structure/table/woodentable,
 /obj/machinery/microwave,
 /turf/simulated/floor{
-	 icon_state = "cafeteria";
+	= = _state = "cafeteria";
 	dir = 5
 	},
 /area/awaymission/wwmines)
 "bM" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor{
-	 icon_state = "cafeteria";
+	= = _state = "cafeteria";
 	dir = 5
 	},
 /area/awaymission/wwmines)
@@ -507,151 +420,125 @@
 /obj/item/reagent_containers/food/snacks/meat/syntiflesh,
 /obj/item/reagent_containers/food/snacks/meat/syntiflesh,
 /turf/simulated/floor{
-	 icon_state = "cafeteria";
+	= = _state = "cafeteria";
 	dir = 5
 	},
 /area/awaymission/wwmines)
 "bO" = (
 /obj/structure/lattice,
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 4
 	},
 /turf/space,
 /area)
 "bP" = (
-/turf/simulated/wall/mineral/sandstone,
+/turf/simulated/mineral,
 /area/awaymission/wwgov)
 "bQ" = (
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow"
+	= = _state = "fwindow"
 	},
 /obj/structure/grille,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
 /area/awaymission/wwgov)
 "bR" = (
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow"
+	= = _state = "fwindow"
 	},
 /obj/structure/grille,
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
 /area/awaymission/wwgov)
 "bS" = (
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow"
+	= = _state = "fwindow"
 	},
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 4
 	},
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
 /area/awaymission/wwgov)
 "bT" = (
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 8
 	},
 /turf/space,
 /area)
-"bU" = (
-/obj/structure/stool/bed/chair/wood/normal{
-	dir = 4
-	},
-/turf/simulated/floor{
-	 icon_state = "cafeteria";
-	dir = 5
-	},
-/area/awaymission/wwmines)
-"bV" = (
-/obj/structure/stool/bed/chair/wood/normal{
-	dir = 8
-	},
-/turf/simulated/floor{
-	 icon_state = "cafeteria";
-	dir = 5
-	},
-/area/awaymission/wwmines)
 "bW" = (
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 4
 	},
 /turf/space,
 /area)
 "bX" = (
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 8
 	},
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 4
 	},
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 1
 	},
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
 /area/awaymission/wwgov)
 "bY" = (
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
 /area/awaymission/wwgov)
 "bZ" = (
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand2"
-	},
 /area/awaymission/wwgov)
 "ca" = (
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 8
 	},
 /obj/structure/grille,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
 /area/awaymission/wwgov)
 "cb" = (
 /obj/machinery/door/window,
-/turf/simulated/floor/wood,
-/area/awaymission/wwmines)
-"cc" = (
-/obj/structure/table/woodentable,
-/obj/item/ammo_magazine/a357,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "cd" = (
@@ -659,36 +546,36 @@
 	mobname = "Chef"
 	},
 /turf/simulated/floor{
-	 icon_state = "cafeteria";
+	= = _state = "cafeteria";
 	dir = 5
 	},
 /area/awaymission/wwmines)
 "ce" = (
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 8
 	},
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 4
 	},
 /obj/structure/grille,
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
 /area/awaymission/wwgov)
 "cf" = (
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 8
 	},
 /obj/structure/grille,
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
 /area/awaymission/wwgov)
 "cg" = (
@@ -698,7 +585,7 @@
 	name = "Planer Saul's Journal: Page 4"
 	},
 /turf/simulated/floor{
-	 icon_state = "cafeteria";
+	= = _state = "cafeteria";
 	dir = 5
 	},
 /area/awaymission/wwmines)
@@ -706,31 +593,13 @@
 /obj/structure/table/woodentable,
 /obj/item/gun/projectile,
 /turf/simulated/floor{
-	 icon_state = "cafeteria";
+	= = _state = "cafeteria";
 	dir = 5
 	},
 /area/awaymission/wwmines)
-"ci" = (
-/obj/structure/mineral_door/wood{
-	 icon_state = "woodopening"
-	},
-/turf/simulated/floor/wood,
-/area/awaymission/wwmines)
-"cj" = (
-/obj/structure/stool,
-/turf/simulated/floor/carpet,
-/area/awaymission/wwmines)
-"ck" = (
-/obj/item/ammo_magazine/a10mm,
-/turf/simulated/floor/carpet,
-/area/awaymission/wwmines)
-"cl" = (
-/obj/structure/stool,
-/turf/simulated/floor/wood,
-/area/awaymission/wwmines)
 "cm" = (
 /obj/structure/bookcase{
-	 icon_state = "book-5"
+	= = _state = "book-5"
 	},
 /turf/simulated/floor/wood,
 /area/awaymission/wwgov)
@@ -744,32 +613,32 @@
 "cp" = (
 /obj/structure/closet/secure_closet/freezer/kitchen,
 /turf/simulated/floor{
-	 icon_state = "stage_bleft"
+	= = _state = "stage_bleft"
 	},
 /area/awaymission/wwgov)
 "cq" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor{
-	 icon_state = "stage_bleft"
+	= = _state = "stage_bleft"
 	},
 /area/awaymission/wwgov)
 "cr" = (
 /obj/structure/table/woodentable,
 /obj/machinery/microwave,
 /turf/simulated/floor{
-	 icon_state = "stage_bleft"
+	= = _state = "stage_bleft"
 	},
 /area/awaymission/wwgov)
 "cs" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /turf/simulated/floor{
-	 icon_state = "stage_bleft"
+	= = _state = "stage_bleft"
 	},
 /area/awaymission/wwgov)
 "ct" = (
 /obj/structure/lattice,
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 8
 	},
 /turf/space,
@@ -790,13 +659,9 @@
 /obj/item/moneybag,
 /turf/simulated/floor/carpet,
 /area/awaymission/wwgov)
-"cy" = (
-/obj/structure/stool/bed/chair/wood/wings,
-/turf/simulated/floor/wood,
-/area/awaymission/wwgov)
 "cz" = (
 /turf/simulated/floor{
-	 icon_state = "stage_bleft"
+	= = _state = "stage_bleft"
 	},
 /area/awaymission/wwgov)
 "cA" = (
@@ -804,10 +669,9 @@
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "cB" = (
-/obj/effect/mine/plasma,
-/obj/item/ammo_magazine/a10mm,
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
+/obj/item/mine/phoron,
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
 /area/awaymission/wwmines)
 "cC" = (
@@ -821,20 +685,14 @@
 /obj/item/multitool,
 /turf/simulated/floor/wood,
 /area/awaymission/wwgov)
-"cE" = (
-/obj/structure/stool/bed/chair/wood/normal{
-	dir = 4
-	},
-/turf/simulated/floor/wood,
-/area/awaymission/wwgov)
 "cF" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/wood,
 /area/awaymission/wwgov)
 "cG" = (
-/mob/living/simple_mob/hostile/creature,
+/mob/living/simple_mob/creature,
 /turf/simulated/floor{
-	 icon_state = "stage_bleft"
+	= = _state = "stage_bleft"
 	},
 /area/awaymission/wwgov)
 "cH" = (
@@ -842,93 +700,63 @@
 	mobname = "Chef"
 	},
 /turf/simulated/floor{
-	 icon_state = "stage_bleft"
+	= = _state = "stage_bleft"
 	},
 /area/awaymission/wwgov)
 "cI" = (
 /obj/structure/bookcase{
-	 icon_state = "book-5"
+	= = _state = "book-5"
 	},
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
-"cJ" = (
-/obj/structure/table/woodentable,
-/obj/item/reagent_containers/food/condiment/peppermill,
-/turf/simulated/floor/wood,
-/area/awaymission/wwmines)
-"cK" = (
-/obj/structure/table/woodentable,
-/obj/item/reagent_containers/food/condiment/saltshaker,
-/turf/simulated/floor/wood,
-/area/awaymission/wwmines)
-"cL" = (
-/obj/structure/table/woodentable,
-/obj/item/twohanded/dualsaber,
-/turf/simulated/floor/wood,
-/area/awaymission/wwgov)
 "cM" = (
 /obj/effect/landmark/corpse/miner/rig,
 /turf/simulated/floor/wood,
 /area/awaymission/wwgov)
 "cN" = (
-/mob/living/simple_mob/hostile/creature,
-/turf/simulated/floor/wood,
-/area/awaymission/wwgov)
-"cO" = (
-/obj/structure/mineral_door/wood{
-	 icon_state = "woodopening"
-	},
+/mob/living/simple_mob/creature,
 /turf/simulated/floor/wood,
 /area/awaymission/wwgov)
 "cP" = (
-/mob/living/simple_mob/hostile/creature,
+/mob/living/simple_mob/creature,
 /turf/simulated/floor/carpet,
 /area/awaymission/wwgov)
 "cQ" = (
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 8
 	},
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 4
 	},
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow"
+	= = _state = "fwindow"
 	},
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
-/area/awaymission/wwgov)
-"cR" = (
-/obj/structure/stool/bed/chair/wood/wings{
-	dir = 4
-	},
-/turf/simulated/floor/wood,
 /area/awaymission/wwgov)
 "cS" = (
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 8
 	},
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow"
+	= = _state = "fwindow"
 	},
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
 /area/awaymission/wwgov)
 "cT" = (
 /obj/effect/decal/remains/human,
-/mob/living/simple_mob/hostile/syndicate/ranged/space{
-	name = "Syndicate Commander"
-	},
 /turf/simulated/floor/plating,
 /area/awaymission/wwrefine)
 "cU" = (
@@ -942,101 +770,75 @@
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/snacks/monkeysdelight,
 /turf/simulated/floor{
-	 icon_state = "stage_bleft"
-	},
-/area/awaymission/wwgov)
-"cW" = (
-/obj/structure/table/woodentable,
-/obj/item/butch,
-/turf/simulated/floor{
-	 icon_state = "stage_bleft"
+	= = _state = "stage_bleft"
 	},
 /area/awaymission/wwgov)
 "cX" = (
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/snacks/stew,
 /turf/simulated/floor{
-	 icon_state = "stage_bleft"
+	= = _state = "stage_bleft"
 	},
 /area/awaymission/wwgov)
 "cY" = (
-/obj/structure/stool/bed/chair/comfy/black{
+/obj/structure/bed/chair/comfy/black{
 	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "cZ" = (
-/obj/structure/stool/bed/chair/comfy/teal{
-	dir = 8
-	},
-/turf/simulated/floor/wood,
-/area/awaymission/wwmines)
-"da" = (
-/obj/structure/stool/bed/chair/wood/normal{
-	dir = 4
-	},
-/turf/simulated/floor/wood,
-/area/awaymission/wwmines)
-"db" = (
-/obj/structure/stool/bed/chair/wood/normal{
+/obj/structure/bed/chair/comfy/teal{
 	dir = 8
 	},
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "dc" = (
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 8
 	},
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 4
 	},
 /obj/structure/grille,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
 /area/awaymission/wwgov)
 "dd" = (
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/snacks/sliceable/creamcheesebread,
 /turf/simulated/floor{
-	 icon_state = "stage_bleft"
-	},
-/area/awaymission/wwgov)
-"de" = (
-/obj/structure/table/woodentable,
-/obj/item/kitchen/rollingpin,
-/turf/simulated/floor{
-	 icon_state = "stage_bleft"
+	= = _state = "stage_bleft"
 	},
 /area/awaymission/wwgov)
 "df" = (
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/snacks/sliceable/lemoncake,
 /turf/simulated/floor{
-	 icon_state = "stage_bleft"
+	= = _state = "stage_bleft"
 	},
 /area/awaymission/wwgov)
 "dg" = (
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 8
 	},
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 1
 	},
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
 /area/awaymission/wwgov)
 "dh" = (
@@ -1058,27 +860,16 @@
 /area/awaymission/wwmines)
 "dk" = (
 /obj/structure/shuttle/engine/propulsion/burst/left,
-/turf/simulated/wall/mineral/sandstone,
+/turf/simulated/mineral,
 /area/awaymission/wwmines)
 "dl" = (
-/obj/structure/sign/maltesefalcon/right,
-/turf/simulated/wall/mineral/sandstone,
-/area/awaymission/wwmines)
-"dm" = (
-/obj/structure/mineral_door/wood{
-	 icon_state = "woodopening"
-	},
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
-	},
+/obj/machinery/holosign/bar,
+/turf/simulated/mineral,
 /area/awaymission/wwmines)
 "dn" = (
-/obj/structure/mineral_door/wood{
-	 icon_state = "woodopening"
-	},
 /obj/effect/decal/cleanable/blood/tracks,
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
 /area/awaymission/wwmines)
 "do" = (
@@ -1088,7 +879,6 @@
 /turf/space,
 /area)
 "dp" = (
-/obj/structure/stool/bed,
 /obj/item/bedsheet/brown,
 /turf/simulated/floor/wood,
 /area/awaymission/wwgov)
@@ -1096,7 +886,7 @@
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/drinks/bottle/wine,
 /turf/simulated/floor{
-	 icon_state = "stage_bleft"
+	= = _state = "stage_bleft"
 	},
 /area/awaymission/wwgov)
 "dr" = (
@@ -1106,109 +896,68 @@
 /obj/item/reagent_containers/food/drinks/drinkingglass,
 /obj/item/reagent_containers/food/drinks/drinkingglass,
 /turf/simulated/floor{
-	 icon_state = "stage_bleft"
+	= = _state = "stage_bleft"
 	},
 /area/awaymission/wwgov)
 "ds" = (
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/drinks/bottle/patron,
 /turf/simulated/floor{
-	 icon_state = "stage_bleft"
+	= = _state = "stage_bleft"
 	},
 /area/awaymission/wwgov)
-"dt" = (
-/obj/effect/decal/cleanable/blood/tracks,
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
-	},
-/area/awaymission/wwmines)
 "du" = (
 /obj/effect/decal/cleanable/blood/tracks,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "dv" = (
-/obj/effect/mine/plasma,
-/obj/item/ammo_magazine/a10mm,
+/obj/item/mine/phoron,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "dw" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
 /area/awaymission/wwmines)
-"dx" = (
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand4"
-	},
-/area/awaymission/wwgov)
 "dy" = (
 /obj/effect/landmark/corpse/miner/rig,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
-"dz" = (
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand12"
-	},
-/area/awaymission/wwgov)
-"dA" = (
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand14"
-	},
-/area/awaymission/wwgov)
 "dB" = (
 /obj/structure/toilet,
-/mob/living/simple_mob/hostile/creature,
+/mob/living/simple_mob/creature,
 /turf/simulated/floor{
-	 icon_state = "white"
-	},
-/area/awaymission/wwgov)
-"dC" = (
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand9"
-	},
-/area/awaymission/wwgov)
-"dD" = (
-/obj/structure/mineral_door/wood{
-	 icon_state = "woodopening"
-	},
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
+	= = _state = "white"
 	},
 /area/awaymission/wwgov)
 "dE" = (
 /obj/structure/largecrate,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
-"dF" = (
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand7"
-	},
-/area/awaymission/wwgov)
 "dG" = (
 /obj/machinery/washing_machine,
 /turf/simulated/floor{
-	 icon_state = "cafeteria";
+	= = _state = "cafeteria";
 	dir = 5
 	},
 /area/awaymission/wwmines)
 "dH" = (
-/obj/structure/stool/bed,
 /obj/item/bedsheet/blue,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "dI" = (
 /obj/effect/decal/cleanable/blood/gibs/body{
-	 icon_state = "gibdown1"
+	= = _state = "gibdown1"
 	},
 /turf/simulated/floor/carpet,
 /area/awaymission/wwmines)
 "dJ" = (
-/obj/structure/stool/bed/chair/comfy/brown,
+/obj/structure/bed/chair/comfy/brown,
 /turf/simulated/floor/carpet,
 /area/awaymission/wwmines)
 "dK" = (
-/obj/structure/stool/bed/chair/comfy/beige,
+/obj/structure/bed/chair/comfy/beige,
 /turf/simulated/floor/carpet,
 /area/awaymission/wwmines)
 "dL" = (
@@ -1221,107 +970,94 @@
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "dN" = (
-/obj/structure/stool/bed/chair/comfy/brown{
-	 icon_state = "comfychair_brown";
+/obj/structure/bed/chair/comfy/brown{
+	= = _state = "comfychair_brown";
 	dir = 8
-	},
-/turf/simulated/floor/wood,
-/area/awaymission/wwmines)
-"dO" = (
-/obj/structure/stool/bed/chair/comfy/brown{
-	 icon_state = "comfychair_brown";
-	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "dP" = (
 /obj/effect/decal/cleanable/blood/gibs/body{
-	 icon_state = "gibdown1"
+	= = _state = "gibdown1"
 	},
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "dQ" = (
 /obj/machinery/computer/security/telescreen/entertainment,
-/turf/simulated/wall/mineral/sandstone,
+/turf/simulated/mineral,
 /area/awaymission/wwmines)
 "dR" = (
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow"
+	= = _state = "fwindow"
 	},
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 1
 	},
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 8
 	},
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
 /area/awaymission/wwgov)
 "dS" = (
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow"
+	= = _state = "fwindow"
 	},
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 1
 	},
 /obj/structure/grille,
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
 /area/awaymission/wwgov)
 "dT" = (
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow"
+	= = _state = "fwindow"
 	},
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 1
 	},
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 4
 	},
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
 /area/awaymission/wwgov)
 "dU" = (
 /obj/machinery/door/airlock/sandstone,
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
 /area/awaymission/wwgov)
 "dV" = (
 /obj/machinery/shower{
-	 icon_state = "shower";
+	= = _state = "shower";
 	dir = 4
 	},
 /turf/simulated/floor{
-	 icon_state = "cafeteria";
+	= = _state = "cafeteria";
 	dir = 5
 	},
 /area/awaymission/wwmines)
 "dW" = (
 /obj/machinery/shower{
-	 icon_state = "shower";
+	= = _state = "shower";
 	dir = 8
 	},
 /turf/simulated/floor{
-	 icon_state = "cafeteria";
+	= = _state = "cafeteria";
 	dir = 5
 	},
-/area/awaymission/wwmines)
-"dX" = (
-/obj/structure/stool/bed/chair/comfy/beige{
-	dir = 4
-	},
-/turf/simulated/floor/carpet,
 /area/awaymission/wwmines)
 "dY" = (
 /obj/structure/table/woodentable,
@@ -1343,15 +1079,9 @@
 /obj/item/reagent_containers/food/snacks/donut/normal,
 /turf/simulated/floor/carpet,
 /area/awaymission/wwmines)
-"ec" = (
-/obj/structure/stool/bed/chair/comfy/beige{
-	dir = 8
-	},
-/turf/simulated/floor/carpet,
-/area/awaymission/wwmines)
 "ed" = (
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 1
 	},
 /turf/space,
@@ -1359,14 +1089,14 @@
 "ee" = (
 /obj/structure/lattice,
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 1
 	},
 /turf/space,
 /area)
 "ef" = (
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 1
 	},
 /obj/structure/window/reinforced{
@@ -1376,42 +1106,42 @@
 /area)
 "eg" = (
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 8
 	},
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
 /area/awaymission/wwgov)
 "eh" = (
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
 /area/awaymission/wwgov)
 "ei" = (
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 8
 	},
 /turf/space,
 /area)
 "ej" = (
 /obj/effect/decal/cleanable/blood,
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
 /area/awaymission/wwmines)
 "ek" = (
-/obj/effect/mine/plasma,
+/obj/item/mine/phoron,
 /turf/simulated/floor{
-	 icon_state = "cafeteria";
+	= = _state = "cafeteria";
 	dir = 5
 	},
 /area/awaymission/wwmines)
@@ -1419,30 +1149,17 @@
 /obj/effect/decal/cleanable/blood,
 /obj/machinery/washing_machine,
 /turf/simulated/floor{
-	 icon_state = "cafeteria";
+	= = _state = "cafeteria";
 	dir = 5
 	},
-/area/awaymission/wwmines)
-"em" = (
-/obj/structure/stool/bed,
-/obj/item/bedsheet/blue,
-/obj/item/ammo_magazine/a357,
-/turf/simulated/floor/wood,
-/area/awaymission/wwmines)
-"en" = (
-/obj/structure/stool/bed/chair/comfy/brown{
-	 icon_state = "comfychair_brown";
-	dir = 4
-	},
-/turf/simulated/floor/carpet,
 /area/awaymission/wwmines)
 "eo" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/carpet,
 /area/awaymission/wwmines)
 "ep" = (
-/obj/structure/stool/bed/chair/comfy/brown{
-	 icon_state = "comfychair_brown";
+/obj/structure/bed/chair/comfy/brown{
+	= = _state = "comfychair_brown";
 	dir = 8
 	},
 /turf/simulated/floor/carpet,
@@ -1453,19 +1170,13 @@
 /area/awaymission/wwmines)
 "er" = (
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 8
-	},
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand12"
 	},
 /area/awaymission/wwgov)
 "es" = (
 /obj/structure/window/reinforced{
 	dir = 4
-	},
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand2"
 	},
 /area/awaymission/wwgov)
 "et" = (
@@ -1477,31 +1188,10 @@
 "ev" = (
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor{
-	 icon_state = "cafeteria";
+	= = _state = "cafeteria";
 	dir = 5
 	},
 /area/awaymission/wwmines)
-"ew" = (
-/mob/living/simple_mob/hostile/syndicate/ranged,
-/turf/simulated/floor/carpet,
-/area/awaymission/wwmines)
-"ex" = (
-/obj/structure/window/reinforced{
-	 icon_state = "fwindow";
-	dir = 8
-	},
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand7"
-	},
-/area/awaymission/wwgov)
-"ey" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand4"
-	},
-/area/awaymission/wwgov)
 "ez" = (
 /obj/machinery/mineral/input,
 /turf/simulated/floor,
@@ -1515,26 +1205,16 @@
 /turf/simulated/floor,
 /area/awaymission/wwrefine)
 "eC" = (
-/obj/structure/stool/bed/chair/comfy/brown,
+/obj/structure/bed/chair/comfy/brown,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
-"eD" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand12"
-	},
-/area/awaymission/wwgov)
 "eE" = (
-/obj/structure/stool/bed,
 /obj/item/bedsheet/blue,
 /obj/item/gun/projectile,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "eF" = (
 /obj/effect/decal/cleanable/blood,
-/obj/structure/stool/bed,
 /obj/item/bedsheet/blue,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
@@ -1544,23 +1224,6 @@
 /obj/item/reagent_containers/food/snacks/donut/slimejelly,
 /turf/simulated/floor/carpet,
 /area/awaymission/wwmines)
-"eH" = (
-/obj/structure/stool/bed/chair/comfy/beige{
-	dir = 8
-	},
-/obj/effect/decal/cleanable/blood/gibs/body{
-	 icon_state = "gibdown1"
-	},
-/turf/simulated/floor/carpet,
-/area/awaymission/wwmines)
-"eI" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand7"
-	},
-/area/awaymission/wwgov)
 "eJ" = (
 /obj/structure/sign/vacuum,
 /turf/simulated/wall/r_wall,
@@ -1569,8 +1232,8 @@
 /obj/effect/decal/mecha_wreckage/gygax{
 	anchored = 1
 	},
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
 /area/awaymission/wwmines)
 "eL" = (
@@ -1580,25 +1243,16 @@
 /area/awaymission/wwmines)
 "eM" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/turf/simulated/wall/mineral/sandstone,
+/turf/simulated/mineral,
 /area/awaymission/wwmines)
-"eN" = (
-/obj/structure/window/reinforced{
-	 icon_state = "fwindow";
-	dir = 8
-	},
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand14"
-	},
-/area/awaymission/wwgov)
 "eO" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 8
 	},
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 1
 	},
 /obj/structure/grille,
@@ -1607,7 +1261,7 @@
 "eP" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 1
 	},
 /obj/structure/grille,
@@ -1615,56 +1269,39 @@
 /area/awaymission/wwrefine)
 "eQ" = (
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow"
+	= = _state = "fwindow"
 	},
 /obj/structure/grille,
 /turf/simulated/floor,
 /area/awaymission/wwrefine)
 "eR" = (
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow"
+	= = _state = "fwindow"
 	},
 /obj/structure/grille,
 /turf/simulated/floor,
 /area/awaymission/wwrefine)
-"eS" = (
-/obj/effect/mine/plasma,
-/turf/simulated/floor/wood,
-/area/awaymission/wwmines)
 "eT" = (
 /obj/effect/decal/mecha_wreckage/gygax{
 	anchored = 1
 	},
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
-"eU" = (
-/obj/structure/stool/bed/chair/comfy/beige{
-	dir = 1;
-	icon_state = "comfychair_beige"
-	},
-/turf/simulated/floor/carpet,
-/area/awaymission/wwmines)
-"eV" = (
-/obj/structure/stool/bed/chair/comfy/brown{
-	dir = 1
-	},
-/turf/simulated/floor/carpet,
-/area/awaymission/wwmines)
 "eW" = (
 /obj/effect/decal/cleanable/blood/gibs/body{
-	 icon_state = "gibup1"
+	= = _state = "gibup1"
 	},
 /turf/simulated/floor/carpet,
 /area/awaymission/wwmines)
@@ -1702,14 +1339,6 @@
 	icon_state = "barber"
 	},
 /area/awaymission/wwmines)
-"fc" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand9"
-	},
-/area/awaymission/wwgov)
 "fd" = (
 /obj/machinery/door/airlock/external,
 /turf/simulated/floor,
@@ -1726,7 +1355,7 @@
 /area/awaymission/wwmines)
 "fg" = (
 /obj/effect/decal/cleanable/blood/gibs/body{
-	 icon_state = "gibdown1"
+	= = _state = "gibdown1"
 	},
 /turf/simulated/floor{
 	dir = 8;
@@ -1751,11 +1380,11 @@
 /area/awaymission/wwmines)
 "fj" = (
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 1
 	},
 /obj/structure/grille,
@@ -1765,8 +1394,8 @@
 /obj/effect/decal/mecha_wreckage/seraph{
 	anchored = 1
 	},
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
 /area/awaymission/wwmines)
 "fl" = (
@@ -1776,7 +1405,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "fm" = (
-/turf/simulated/wall/mineral{
+/turf/simulated/mineral{
 	icon_state = "sandstone0";
 	mineral = "sandstone";
 	walltype = "sandstone"
@@ -1791,11 +1420,11 @@
 /area/awaymission/wwmines)
 "fo" = (
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 8
 	},
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 4
 	},
 /obj/structure/grille,
@@ -1807,57 +1436,26 @@
 	},
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
-"fq" = (
-/obj/structure/toilet{
-	dir = 1
-	},
-/obj/item/ammo_magazine/a357,
-/turf/simulated/floor/wood,
-/area/awaymission/wwmines)
 "fr" = (
 /obj/effect/decal/mecha_wreckage/ripley/deathripley{
 	anchored = 1
 	},
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
 /area/awaymission/wwmines)
 "fs" = (
 /obj/effect/decal/cleanable/blood,
-/turf/simulated/wall/mineral/sandstone,
+/turf/simulated/mineral,
 /area/awaymission/wwmines)
 "ft" = (
 /obj/effect/decal/cleanable/blood/gibs/body{
-	 icon_state = "gibdown1"
+	= = _state = "gibdown1"
 	},
-/turf/simulated/wall/mineral/sandstone,
-/area/awaymission/wwmines)
-"fu" = (
-/obj/structure/stool/bed/chair/comfy/beige{
-	dir = 4
-	},
-/turf/simulated/floor/wood,
-/area/awaymission/wwmines)
-"fv" = (
-/obj/structure/stool/bed/chair/wood/normal{
-	dir = 4
-	},
-/turf/simulated/floor{
-	dir = 8;
-	icon_state = "barber"
-	},
+/turf/simulated/mineral,
 /area/awaymission/wwmines)
 "fw" = (
 /obj/structure/table/woodentable,
-/turf/simulated/floor{
-	dir = 8;
-	icon_state = "barber"
-	},
-/area/awaymission/wwmines)
-"fx" = (
-/obj/structure/stool/bed/chair/wood/normal{
-	dir = 8
-	},
 /turf/simulated/floor{
 	dir = 8;
 	icon_state = "barber"
@@ -1868,82 +1466,52 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow"
+	= = _state = "fwindow"
 	},
 /turf/space,
 /area)
 "fz" = (
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 8
 	},
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow"
+	= = _state = "fwindow"
 	},
 /turf/space,
 /area)
 "fA" = (
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 8
 	},
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 4
 	},
 /obj/structure/grille,
 /obj/structure/window/reinforced,
 /turf/simulated/floor,
 /area/awaymission/wwrefine)
-"fB" = (
-/obj/effect/mine/plasma,
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
-	},
-/area/awaymission/wwmines)
 "fC" = (
 /obj/effect/decal/cleanable/blood/gibs/body{
-	 icon_state = "gibdown1"
+	= = _state = "gibdown1"
 	},
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
 /area/awaymission/wwmines)
 "fD" = (
 /obj/effect/decal/mecha_wreckage/mauler{
 	anchored = 1
 	},
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
-/area/awaymission/wwmines)
-"fE" = (
-/obj/structure/stool/bed/chair/office/dark{
-	dir = 8
-	},
-/turf/simulated/floor/wood,
-/area/awaymission/wwmines)
-"fF" = (
-/obj/structure/stool/bed/chair/office/dark{
-	dir = 4
-	},
-/turf/simulated/floor/wood,
-/area/awaymission/wwmines)
-"fG" = (
-/obj/structure/stool/bed/chair/office/light{
-	dir = 4
-	},
-/turf/simulated/floor/wood,
-/area/awaymission/wwmines)
-"fH" = (
-/obj/structure/stool/bed/chair/office/light{
-	dir = 8
-	},
-/turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "fI" = (
 /obj/effect/decal/cleanable/blood/gibs/body{
-	 icon_state = "gibup1"
+	= = _state = "gibup1"
 	},
 /turf/simulated/floor{
 	dir = 8;
@@ -1952,18 +1520,18 @@
 /area/awaymission/wwmines)
 "fJ" = (
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 8
 	},
 /turf/simulated/floor/grass,
 /area/awaymission/wwgov)
 "fK" = (
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 1
 	},
 /turf/simulated/floor/grass,
@@ -1976,21 +1544,21 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 1
 	},
 /turf/simulated/floor/grass,
 /area/awaymission/wwgov)
 "fN" = (
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 8
 	},
 /obj/structure/lattice,
 /turf/space,
 /area)
 "fO" = (
-/mob/living/simple_mob/hostile/syndicate,
+/mob/living/simple_mob/humanoid/merc/melee/sword,
 /turf/simulated/floor,
 /area/awaymission/wwrefine)
 "fP" = (
@@ -1998,14 +1566,14 @@
 	anchored = 1
 	},
 /obj/effect/decal/cleanable/blood,
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
 /area/awaymission/wwmines)
 "fQ" = (
 /obj/effect/decal/cleanable/blood/gibs/body,
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
 /area/awaymission/wwmines)
 "fR" = (
@@ -2018,22 +1586,15 @@
 /obj/item/gun/projectile/shotgun,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
-"fT" = (
-/obj/structure/stool/bed/chair/wood/normal,
-/turf/simulated/floor{
-	dir = 8;
-	icon_state = "barber"
-	},
-/area/awaymission/wwmines)
 "fU" = (
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 8
 	},
 /turf/simulated/floor/grass,
 /area/awaymission/wwgov)
 "fV" = (
-/obj/machinery/hydroponics/soil,
+/obj/machinery/portable_atmospherics/hydroponics/soil,
 /turf/simulated/floor/grass,
 /area/awaymission/wwgov)
 "fW" = (
@@ -2044,16 +1605,16 @@
 /area/awaymission/wwgov)
 "fX" = (
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 8
 	},
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 4
 	},
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 1
 	},
 /turf/simulated/floor,
@@ -2072,7 +1633,7 @@
 /area/awaymission/wwmines)
 "ga" = (
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow"
+	= = _state = "fwindow"
 	},
 /turf/simulated/floor/grass,
 /area/awaymission/wwgov)
@@ -2081,13 +1642,13 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow"
+	= = _state = "fwindow"
 	},
 /turf/simulated/floor/grass,
 /area/awaymission/wwgov)
 "gc" = (
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 8
 	},
 /turf/simulated/floor,
@@ -2105,17 +1666,8 @@
 /area/awaymission/wwmines)
 "gg" = (
 /obj/structure/table/woodentable,
-/obj/item/gun/projectile/russian,
+/obj/item/gun/projectile/revolver,
 /turf/simulated/floor/wood,
-/area/awaymission/wwmines)
-"gh" = (
-/obj/structure/stool/bed/chair/wood/normal{
-	dir = 1
-	},
-/turf/simulated/floor{
-	dir = 8;
-	icon_state = "barber"
-	},
 /area/awaymission/wwmines)
 "gi" = (
 /obj/machinery/door/airlock/external,
@@ -2126,7 +1678,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "gk" = (
-/mob/living/simple_mob/hostile/syndicate,
+/mob/living/simple_mob/humanoid/merc/melee/sword,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "gl" = (
@@ -2138,7 +1690,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "gn" = (
-/mob/living/simple_mob/hostile/creature,
+/mob/living/simple_mob/creature,
 /turf/simulated/floor/grass,
 /area/awaymission/wwgov)
 "go" = (
@@ -2167,31 +1719,12 @@
 /obj/effect/decal/cleanable/blood/gibs/down,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
-"gs" = (
-/obj/structure/stool/bed/chair/comfy/beige{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/blood/gibs/body{
-	 icon_state = "gibdown1"
-	},
-/turf/simulated/floor/wood,
-/area/awaymission/wwmines)
 "gt" = (
 /obj/machinery/washing_machine,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
-"gu" = (
-/obj/effect/decal/cleanable/blood/gibs/body{
-	 icon_state = "gibup1"
-	},
-/obj/structure/stool/bed/chair/wood/normal,
-/turf/simulated/floor{
-	dir = 8;
-	icon_state = "barber"
-	},
-/area/awaymission/wwmines)
 "gv" = (
-/obj/item/hatchet,
+/obj/item/material/knife/machete/hatchet,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "gw" = (
@@ -2200,8 +1733,8 @@
 /area/awaymission/wwmines)
 "gx" = (
 /obj/item/gun/projectile/shotgun,
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
 /area/awaymission/wwmines)
 "gy" = (
@@ -2213,23 +1746,23 @@
 "gz" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 1
 	},
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 8
 	},
 /turf/simulated/floor,
 /area/awaymission/wwrefine)
 "gA" = (
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 8
 	},
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 1
 	},
 /obj/structure/grille,
@@ -2238,12 +1771,12 @@
 "gB" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 1
 	},
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 4
 	},
 /turf/simulated/floor,
@@ -2251,11 +1784,11 @@
 "gC" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 4
 	},
 /obj/structure/grille,
@@ -2263,7 +1796,7 @@
 /area/awaymission/wwrefine)
 "gD" = (
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 8
 	},
 /obj/structure/window/reinforced,
@@ -2283,11 +1816,11 @@
 "gG" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow";
+	= = _state = "fwindow";
 	dir = 8
 	},
 /obj/structure/grille,
@@ -2304,78 +1837,71 @@
 /area/awaymission/wwmines)
 "gI" = (
 /turf/simulated/shuttle/wall{
-	 icon_state = "swall_s";
+	= = _state = "swall_s";
 	dir = 14
 	},
 /area/awaymission/wwrefine)
 "gJ" = (
 /turf/simulated/shuttle/wall{
-	 icon_state = "swall_straight";
+	= = _state = "swall_straight";
 	dir = 4
 	},
 /area/awaymission/wwrefine)
 "gK" = (
 /turf/simulated/shuttle/wall{
-	 icon_state = "swall";
+	= = _state = "swall";
 	dir = 8
 	},
 /area/awaymission/wwrefine)
 "gL" = (
 /obj/machinery/door/unpowered/shuttle,
 /turf/simulated/shuttle{
-	 icon_state = "floor2"
+	= = _state = "floor2"
 	},
 /area/awaymission/wwrefine)
 "gM" = (
 /turf/simulated/shuttle/wall{
-	 icon_state = "swall";
+	= = _state = "swall";
 	dir = 4
 	},
 /area/awaymission/wwrefine)
 "gN" = (
 /turf/simulated/shuttle/wall{
-	 icon_state = "swall_s";
-	dir = 2
+	= = _state = "swall_s"
 	},
 /area/awaymission/wwrefine)
 "gO" = (
 /turf/simulated/shuttle/wall{
-	 icon_state = "swall_straight";
+	= = _state = "swall_straight";
 	dir = 1
 	},
 /area/awaymission/wwrefine)
 "gP" = (
-/obj/structure/stool/bed/chair,
 /turf/simulated/shuttle{
-	 icon_state = "floor2"
-	},
-/area/awaymission/wwrefine)
-"gQ" = (
-/turf/simulated/shuttle{
-	 icon_state = "floor2"
+	= = _state = "floor2"
 	},
 /area/awaymission/wwrefine)
 "gR" = (
 /turf/simulated/shuttle/wall{
-	 icon_state = "swall_s";
+	= = _state = "swall_s";
 	dir = 1
 	},
 /area/awaymission/wwrefine)
 "gS" = (
 /turf/simulated/shuttle/wall{
-	 icon_state = "swall";
+	= = _state = "swall";
 	dir = 10
 	},
 /area/awaymission/wwrefine)
 "gT" = (
 /turf/simulated/shuttle/wall{
-	 icon_state = "swall";
+	= = _state = "swall";
 	dir = 6
 	},
 /area/awaymission/wwrefine)
 "gU" = (
 /turf/simulated/shuttle/wall{
-	 icon_state = "swall_s";
+	= = _state = "swall_s";
 	dir = 8
 	},
 /area/awaymission/wwrefine)
@@ -2383,8 +1909,8 @@
 /obj/effect/landmark{
 	name = "awaystart"
 	},
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
 /area/awaymission/wwmines)
 "gW" = (
@@ -2394,7 +1920,7 @@
 /obj/item/clothing/mask/gas/syndicate,
 /obj/item/tank/oxygen,
 /turf/simulated/shuttle{
-	 icon_state = "floor2"
+	= = _state = "floor2"
 	},
 /area/awaymission/wwrefine)
 "gX" = (
@@ -2409,10 +1935,10 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced{
-	 icon_state = "fwindow"
+	= = _state = "fwindow"
 	},
 /turf/simulated/shuttle{
-	 icon_state = "floor2"
+	= = _state = "floor2"
 	},
 /area/awaymission/wwrefine)
 "gY" = (
@@ -2420,8 +1946,8 @@
 	info = "The syndicate have invaded.  Their ships appeared out of nowhere and now they likely intend to kill us all and take everything.  On the off-chance that the Vault may grant us sanctuary, many of us have decided to force our way inside and bolt the door, taking as many provisions with us as we can carry.  In case you find this, send for help immediately and open the Vault. Find us inside.";
 	name = "Planer Saul's Journal: Page 8"
 	},
-/turf/simulated/floor/plating/ironsand{
-	 icon_state = "ironsand1"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
 /area/awaymission/wwmines)
 
@@ -6755,7 +6281,7 @@ bY
 bY
 bY
 bY
-dA
+bZ
 bY
 dR
 ed
@@ -7009,7 +6535,7 @@ bP
 bP
 bP
 bY
-dx
+bZ
 bY
 bY
 bY
@@ -7258,7 +6784,7 @@ bP
 cm
 cn
 cC
-cL
+cF
 cC
 cn
 cn
@@ -7783,7 +7309,7 @@ bY
 bY
 bP
 dB
-dD
+bY
 bY
 dS
 ed
@@ -8550,7 +8076,7 @@ cn
 co
 cn
 bP
-dx
+bZ
 bY
 bY
 bY
@@ -8800,7 +8326,7 @@ bP
 bP
 bP
 bP
-cO
+cn
 bP
 bP
 bP
@@ -9067,7 +8593,7 @@ bP
 bY
 bY
 bY
-dA
+bZ
 bY
 bY
 dS
@@ -9834,7 +9360,7 @@ cU
 cw
 dh
 cn
-cO
+cn
 bY
 bY
 bY
@@ -9844,12 +9370,12 @@ bY
 dU
 eg
 er
-ex
+er
 eg
 er
-eN
+er
 eg
-ex
+er
 eg
 dU
 fL
@@ -10091,9 +9617,9 @@ cw
 cw
 cw
 cn
-cO
+cn
 bY
-dz
+bZ
 bZ
 bY
 bY
@@ -10101,11 +9627,11 @@ bY
 dU
 eh
 es
-ey
-eD
-eI
+es
+es
+es
 eh
-fc
+es
 eh
 es
 dU
@@ -11112,11 +10638,11 @@ bY
 bP
 cn
 cn
-cE
-cE
-cR
-cR
-cR
+cn
+cn
+cn
+cn
+cn
 cn
 cn
 bP
@@ -11125,7 +10651,7 @@ bY
 bY
 bY
 bY
-dF
+bZ
 dS
 ed
 aa
@@ -11368,7 +10894,7 @@ bR
 bY
 bP
 cn
-cy
+cn
 cF
 cF
 cF
@@ -11625,7 +11151,7 @@ bR
 bY
 bP
 cn
-cy
+cn
 cF
 cF
 cF
@@ -11892,8 +11418,8 @@ cn
 cn
 bP
 bY
-dx
-dz
+bZ
+bZ
 bY
 bY
 bY
@@ -12399,7 +11925,7 @@ bP
 bP
 bP
 bP
-cO
+cn
 bP
 bP
 bP
@@ -12407,9 +11933,9 @@ bP
 bP
 bY
 bY
-dA
+bZ
 bY
-dx
+bZ
 bY
 dS
 ed
@@ -12920,7 +12446,7 @@ cz
 dq
 bP
 bY
-dA
+bZ
 bY
 bY
 bY
@@ -13171,8 +12697,8 @@ cz
 cG
 cz
 cz
-cW
-de
+cq
+cq
 cz
 dr
 bP
@@ -13180,7 +12706,7 @@ bY
 bY
 bY
 bY
-dA
+bZ
 bY
 dS
 ed
@@ -13436,7 +12962,7 @@ bP
 bY
 bY
 bY
-dC
+bZ
 bY
 bY
 dS
@@ -14204,7 +13730,7 @@ bY
 bY
 bY
 bY
-dx
+bZ
 bY
 bY
 bY
@@ -17321,9 +16847,9 @@ gK
 gP
 gP
 gP
-gQ
-gQ
-gQ
+gP
+gP
+gP
 gW
 gJ
 aa
@@ -17575,11 +17101,11 @@ eu
 eu
 fd
 gL
-gQ
-gQ
-gQ
-gQ
-gQ
+gP
+gP
+gP
+gP
+gP
 gP
 gW
 gX
@@ -17802,14 +17328,14 @@ aa
 aa
 aG
 aG
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+aV
 et
 eB
 eu
@@ -17835,9 +17361,9 @@ gM
 gP
 gP
 gP
-gQ
-gQ
-gQ
+gP
+gP
+gP
 gW
 gJ
 aa
@@ -18059,7 +17585,7 @@ aG
 aG
 aG
 aG
-aW
+aV
 bb
 bc
 bc
@@ -18316,7 +17842,7 @@ aG
 aG
 aG
 aG
-aW
+aV
 bc
 bc
 bh
@@ -18573,14 +18099,14 @@ aG
 aG
 aG
 aG
-aW
+aV
 bo
 bc
 bc
 bc
 bc
 bc
-aW
+aV
 et
 eu
 eu
@@ -18830,14 +18356,14 @@ aG
 aG
 aG
 aG
-aW
+aV
 bc
 bc
 bc
 bc
 bc
 bc
-aW
+aV
 et
 eu
 eu
@@ -19087,14 +18613,14 @@ aG
 aG
 aG
 aG
-aW
+aV
 bc
 bc
 bc
 bc
 bh
 bc
-aW
+aV
 et
 et
 eu
@@ -19344,15 +18870,15 @@ aG
 aG
 aG
 aG
-aW
+aV
 bh
 bc
-bn
 bc
 bc
 bc
-aW
-aW
+bc
+aV
+aV
 et
 eu
 eu
@@ -19601,7 +19127,7 @@ aG
 aG
 aG
 aG
-aW
+aV
 bc
 bc
 bc
@@ -19609,7 +19135,7 @@ bc
 bc
 bo
 bc
-aW
+aV
 et
 eu
 eu
@@ -19856,9 +19382,9 @@ aG
 aG
 aG
 aG
-aW
-aW
-aW
+aV
+aV
+aV
 bc
 bc
 bc
@@ -19866,7 +19392,7 @@ bc
 bc
 bc
 bo
-aW
+aV
 et
 et
 et
@@ -20112,8 +19638,8 @@ aG
 aG
 aG
 aG
-aW
-aW
+aV
+aV
 bb
 bc
 bc
@@ -20122,8 +19648,8 @@ bc
 bc
 bc
 bc
-aW
-aW
+aV
+aV
 aN
 aN
 aN
@@ -20356,20 +19882,20 @@ aG
 aG
 aG
 aG
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+aV
 bh
 bc
 bc
@@ -20377,9 +19903,9 @@ bc
 bc
 bc
 bh
-aW
-aW
-aW
+aV
+aV
+aV
 aN
 aN
 aN
@@ -20609,11 +20135,11 @@ aG
 aG
 aG
 aG
-aW
-aW
-aW
-aW
-aW
+aV
+aV
+aV
+aV
+aV
 bt
 bc
 bc
@@ -20634,7 +20160,7 @@ bc
 bc
 bc
 bc
-aW
+aV
 aN
 aN
 aN
@@ -20864,9 +20390,9 @@ aG
 aG
 aG
 aG
-bg
-bg
-aW
+aG
+aG
+aV
 bh
 bc
 bc
@@ -20891,7 +20417,7 @@ bc
 bh
 bc
 bc
-aW
+aV
 aN
 aN
 aN
@@ -21118,10 +20644,10 @@ aG
 aG
 aG
 aG
-aW
-aW
-aW
-aW
+aV
+aV
+aV
+aV
 bc
 bc
 bc
@@ -21146,9 +20672,9 @@ bc
 bc
 bc
 bc
-aW
-aW
-aW
+aV
+aV
+aV
 aN
 aL
 aL
@@ -21375,7 +20901,7 @@ aG
 aG
 aG
 aG
-aW
+aV
 bb
 bc
 bc
@@ -21402,8 +20928,8 @@ bc
 bc
 bh
 bo
-aW
-aW
+aV
+aV
 aN
 aN
 aL
@@ -21632,13 +21158,13 @@ aG
 aG
 aG
 aG
-aW
+aV
 bc
 bc
 bc
 bc
 bc
-bn
+bc
 bc
 bc
 bh
@@ -21659,7 +21185,7 @@ bo
 bc
 bc
 bc
-aW
+aV
 aN
 aN
 aN
@@ -21889,7 +21415,7 @@ aG
 aG
 aG
 aV
-aW
+aV
 bc
 bc
 bc
@@ -21914,9 +21440,9 @@ bc
 bc
 bc
 bc
-aW
-aW
-aW
+aV
+aV
+aV
 aN
 aL
 aL
@@ -22146,7 +21672,7 @@ aG
 aG
 aG
 aV
-aW
+aV
 bc
 bc
 bc
@@ -22171,7 +21697,7 @@ bc
 di
 bc
 bh
-aW
+aV
 aN
 aL
 aL
@@ -22402,33 +21928,33 @@ aG
 aG
 aG
 aG
-aW
-aW
+aV
+aV
 bc
 bc
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
-aW
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+aV
+aV
 aL
 aL
 aT
@@ -22659,11 +22185,11 @@ aG
 aN
 aL
 aL
-aX
-aW
+aL
+aV
 bd
 bd
-aW
+aV
 aL
 aL
 aL
@@ -23193,7 +22719,7 @@ aT
 aT
 aT
 aT
-ba
+aZ
 aT
 aT
 aT
@@ -23214,7 +22740,7 @@ aT
 aT
 aT
 aT
-bf
+aT
 aT
 aT
 aT
@@ -23428,7 +22954,7 @@ aG
 aG
 aL
 aL
-aQ
+aL
 aT
 aT
 aT
@@ -23683,9 +23209,9 @@ aG
 aG
 aG
 aG
-aO
+aL
 aT
-aQ
+aL
 aT
 aT
 aT
@@ -23940,7 +23466,7 @@ aG
 aG
 aG
 aG
-aP
+aL
 aT
 aT
 aT
@@ -23958,7 +23484,7 @@ aT
 aT
 aT
 aT
-bf
+aT
 aT
 aT
 aT
@@ -24197,7 +23723,7 @@ aI
 aI
 aI
 aI
-aQ
+aL
 aT
 aT
 aT
@@ -24229,7 +23755,7 @@ bj
 bj
 bj
 bk
-bs
+bm
 aT
 aY
 aT
@@ -24454,7 +23980,7 @@ aG
 aG
 aG
 aL
-aQ
+aL
 aT
 aT
 aT
@@ -24718,7 +24244,7 @@ aT
 aT
 aT
 aT
-be
+aT
 aT
 aT
 bj
@@ -24968,7 +24494,7 @@ aG
 aG
 aG
 aL
-aP
+aL
 aT
 aT
 aT
@@ -25224,8 +24750,8 @@ aG
 aG
 aG
 aG
-aM
-aP
+aN
+aL
 aT
 aT
 aT
@@ -25482,7 +25008,7 @@ aG
 aG
 aG
 aG
-aO
+aL
 aT
 aT
 aT
@@ -25497,19 +25023,19 @@ bj
 bj
 bj
 aT
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
 aT
 bj
 bj
@@ -25740,7 +25266,7 @@ aG
 aG
 aG
 aL
-aO
+aL
 aT
 aT
 aT
@@ -25754,19 +25280,19 @@ bj
 bj
 bj
 aT
-bu
+aN
 bx
 by
 by
 by
 by
-bu
+aN
 cI
 cI
 cI
 cI
 cI
-bu
+aN
 aT
 bj
 bj
@@ -25997,7 +25523,7 @@ aG
 aG
 aG
 aN
-aO
+aL
 aT
 aT
 aT
@@ -26011,38 +25537,38 @@ bj
 bj
 bj
 aT
-bu
+aN
 by
-bU
 by
-bU
 by
-bu
+by
+by
+aN
 bj
 bj
-bE
 bj
 bj
-bu
+bj
+aN
 aT
 bj
 bj
 bj
 bp
 aT
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
 aT
 aT
 aT
@@ -26254,7 +25780,7 @@ aG
 aG
 aG
 aN
-aO
+aL
 aT
 aT
 aT
@@ -26268,38 +25794,38 @@ bj
 bj
 bj
 aT
-bu
+aN
 by
 bM
 bM
 cg
 by
-bu
+aN
 bj
 bj
 bj
 bj
 bj
-bu
+aN
 aT
 bj
 bj
 bj
 bj
 aT
-bu
+aN
 by
 dV
 dV
 dV
 dV
-bu
+aN
 bj
 bj
 bj
 bj
 fp
-bu
+aN
 aT
 aT
 aT
@@ -26511,7 +26037,7 @@ aG
 aG
 aG
 aG
-aP
+aL
 aT
 aT
 aT
@@ -26525,38 +26051,38 @@ bj
 bj
 bj
 aT
-bu
-bz
+aN
+by
 bM
 bM
 ch
 by
-bu
+aN
 bj
-bu
+aN
 cI
 cI
 cI
-bu
+aN
 aT
 bj
 bj
 bj
 bj
 aT
-bu
+aN
 by
 by
-bz
 by
 by
-bu
+by
+aN
 bj
 bj
 bj
 bj
-bu
-bu
+aN
+aN
 aT
 aT
 aT
@@ -26768,7 +26294,7 @@ aG
 aG
 aG
 aL
-aO
+aL
 aT
 aT
 aT
@@ -26782,26 +26308,26 @@ bk
 bj
 bj
 aT
-bu
+aN
 by
 bM
 bM
 bM
 by
-bu
+aN
 bj
-bu
-bu
-bu
-bu
-bu
+aN
+aN
+aN
+aN
+aN
 aT
 bj
 bj
 bj
 bj
 aT
-bu
+aN
 by
 by
 ek
@@ -26809,11 +26335,11 @@ by
 by
 by
 bj
-eS
+dv
 bj
 bj
 fp
-bu
+aN
 aT
 aT
 aT
@@ -27024,7 +26550,7 @@ aG
 aG
 aG
 aG
-aP
+aL
 aT
 aT
 aT
@@ -27039,26 +26565,26 @@ bm
 bj
 bj
 aT
-bu
+aN
 by
-bV
 by
-bV
 by
-bu
+by
+by
+aN
 bj
 bj
 bj
 bj
 bj
-ci
-dt
+bj
+dn
 du
 du
 bj
 bj
 aT
-bu
+aN
 by
 by
 by
@@ -27069,17 +26595,17 @@ bj
 bj
 bj
 bj
-bu
-bu
+aN
+aN
 aT
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
 aL
 aL
 gH
@@ -27281,7 +26807,7 @@ aG
 aG
 aG
 aG
-aP
+aL
 aT
 aT
 aT
@@ -27296,47 +26822,47 @@ bj
 bj
 bj
 aT
-bu
+aN
 by
 by
 by
 by
 by
-bu
+aN
 bj
 bj
 bj
 bj
 bj
-ci
+bj
 aT
 bm
 bj
 bj
 bj
 aT
-bu
+aN
 by
 by
 by
 by
 by
-bu
+aN
 bj
-bu
+aN
 bj
 dy
 fp
-bu
+aN
 aT
-bu
+aN
 gf
 bj
 bj
 bj
 bj
 bj
-bu
+aN
 aT
 aT
 aT
@@ -27553,47 +27079,47 @@ bj
 bj
 bj
 aT
-bu
-bu
-bu
-bu
-bu
-ci
-bu
+aN
+aN
+aN
+aN
+aN
 bj
-bu
-bu
-bu
-bu
-bu
+aN
+bj
+aN
+aN
+aN
+aN
+aN
 aT
 bj
 bj
 bj
 bj
 aT
-bu
+aN
 by
 dW
 dW
 dW
 dW
-bu
+aN
 bj
-bu
+aN
 fe
 bk
-bu
-bu
+aN
+aN
 aT
-bu
+aN
 bj
 bj
 bj
 dy
 bj
 bj
-bu
+aN
 aT
 aT
 aY
@@ -27802,55 +27328,55 @@ aT
 aT
 aT
 aT
-bf
 aT
 aT
+aT
 bj
 bj
 bj
 bj
 aT
-bu
+aN
 bA
 bj
 bj
-bu
+aN
 bj
 bj
 bj
-bu
+aN
 bj
 cY
 cY
-bu
+aN
 aT
 bj
 bj
 bj
 bj
 aT
-bu
-bu
-bu
-bu
-bu
-bu
-bu
+aN
+aN
+aN
+aN
+aN
+aN
+aN
 bj
-bu
+aN
 fe
 bj
 fp
-bu
+aN
 aT
-bu
+aN
 bj
 bj
 bj
 bj
 bl
 bj
-bu
+aN
 aT
 ej
 aT
@@ -28067,11 +27593,11 @@ bj
 bj
 bj
 aT
-bu
-bB
+aN
 bj
 bj
-bu
+bj
+aN
 bj
 bj
 bj
@@ -28085,29 +27611,29 @@ bj
 bj
 bk
 du
-dt
-ci
+dn
 bj
 bj
 bj
 bj
 bj
-ci
 bj
-bu
+bj
+bj
+aN
 fe
 bj
-bu
-bu
+aN
+aN
 aT
-bu
+aN
 bj
 bj
 bj
 bj
 bj
 bj
-bu
+aN
 aT
 aT
 aT
@@ -28324,11 +27850,11 @@ bj
 bj
 bj
 aT
-bu
+aN
 bC
 bj
 bj
-bu
+aN
 bj
 bj
 bj
@@ -28343,21 +27869,21 @@ bj
 bj
 bj
 aT
-bu
-bu
-bu
-bu
-bu
-bu
-bu
+aN
+aN
+aN
+aN
+aN
+aN
+aN
 bj
-bu
+aN
 fe
 bj
-bu
-bu
+aN
+aN
 aT
-bu
+aN
 bj
 bl
 bj
@@ -28581,40 +28107,40 @@ bj
 bj
 bj
 aT
-bu
-bB
-bj
-bj
-bu
+aN
 bj
 bj
 bj
-bu
+aN
 bj
 bj
 bj
-bu
+aN
+bj
+bj
+bj
+aN
 aT
 bj
 bj
 bj
 bm
 aT
-bu
+aN
 dG
 dG
 el
 dG
 dG
-bu
+aN
 bj
-bu
+aN
 bj
 bj
 fp
-bu
+aN
 aT
-bu
+aN
 bj
 bj
 gk
@@ -28838,26 +28364,26 @@ bj
 bj
 bj
 aT
-bu
+aN
 bD
 bj
 bj
-ci
 bj
 bj
 bj
-bu
+bj
+aN
 bj
 cZ
 cZ
-bu
+aN
 aT
 bj
 bj
 bj
 bj
 aT
-bu
+aN
 by
 by
 by
@@ -28868,17 +28394,17 @@ bj
 bj
 bj
 bj
-bu
+aN
 fs
 aT
-bu
+aN
 bj
 gj
 gq
 bj
 bj
 bj
-bu
+aN
 fs
 aL
 aN
@@ -29095,26 +28621,26 @@ bj
 bj
 bj
 aT
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
 aT
 bj
 bj
 bj
 bj
 aT
-bu
+aN
 by
 by
 ek
@@ -29126,17 +28652,17 @@ bj
 bj
 bj
 fp
-bu
+aN
 aT
-bu
+aN
 bj
 bj
 dy
 bj
 dy
 bj
-bu
-bu
+aN
+aN
 aL
 aN
 aG
@@ -29371,29 +28897,29 @@ bj
 bj
 bj
 aT
-bu
+aN
 by
 by
 by
-bz
 by
-bu
+by
+aN
 bj
 bj
 bj
 bj
-bu
-bu
+aN
+aN
 aT
-bu
+aN
 bj
 bl
 bj
 gv
 bj
 dP
-bu
-bu
+aN
+aN
 aL
 aN
 aG
@@ -29608,7 +29134,7 @@ bj
 bj
 bj
 bj
-bs
+bm
 bj
 bj
 bj
@@ -29628,28 +29154,28 @@ bj
 bj
 bj
 aT
-bu
+aN
 by
 by
 by
 by
 by
-bu
+aN
 bj
 bj
 bj
 bj
-fq
-bu
+fp
+aN
 aT
-bu
+aN
 bj
 dP
 gr
 bj
 bj
 bj
-bu
+aN
 aT
 aL
 aN
@@ -29885,28 +29411,28 @@ bj
 bj
 bj
 aT
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
 fP
-bu
+aN
 bj
 bj
 bj
 bj
 bj
 bj
-bu
+aN
 aT
 aL
 aN
@@ -30124,7 +29650,7 @@ bj
 bj
 bj
 bj
-bE
+bj
 bj
 bj
 bj
@@ -30149,21 +29675,21 @@ aT
 aT
 aT
 aY
-dt
-dt
-dt
-dt
+dn
+dn
+dn
+dn
 fr
 aT
 aY
 fs
-bu
-bu
-ci
+aN
+aN
+bj
 eM
-bu
-bu
-bu
+aN
+aN
+aN
 aT
 aL
 aL
@@ -30413,8 +29939,8 @@ fk
 aZ
 aT
 fQ
-dt
-dt
+dn
+dn
 fC
 aT
 aT
@@ -30656,28 +30182,28 @@ bj
 bj
 bj
 aT
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
 fs
-fB
+cB
 fs
-bu
+aN
 eM
-bu
-bu
-bu
-bu
-bu
-bu
+aN
+aN
+aN
+aN
+aN
+aN
 aT
 aT
 aL
@@ -30894,26 +30420,26 @@ bj
 bj
 bj
 aT
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
 aT
 bj
 bj
 bj
 bj
 aT
-bu
+aN
 bj
 bj
 bj
@@ -30924,9 +30450,9 @@ bj
 bj
 bj
 bj
-bu
+aN
 aT
-bu
+aN
 fY
 bj
 bj
@@ -30934,7 +30460,7 @@ bj
 bj
 bj
 bj
-bu
+aN
 aT
 aL
 aL
@@ -31151,7 +30677,7 @@ bj
 bj
 bj
 aT
-bu
+aN
 bF
 bF
 bF
@@ -31161,16 +30687,16 @@ bF
 bD
 bj
 bj
-da
 bj
-bu
+bj
+aN
 aT
 bj
 bj
 bj
 bj
 aT
-bu
+aN
 dH
 bj
 dH
@@ -31181,9 +30707,9 @@ bj
 dH
 bj
 bj
-bu
+aN
 aY
-bu
+aN
 bj
 bj
 bj
@@ -31191,7 +30717,7 @@ bj
 bj
 bj
 bj
-bu
+aN
 aT
 aL
 aN
@@ -31408,26 +30934,26 @@ bm
 bj
 bj
 aT
-bu
+aN
 bF
 bF
 bF
-cj
+bF
 bF
 bF
 bD
-cl
+bj
 bj
 bD
 bj
-bu
+aN
 aT
 bj
 bj
 bj
 bj
 aT
-bu
+aN
 bj
 bj
 bj
@@ -31438,9 +30964,9 @@ bj
 bj
 bj
 bj
-bu
+aN
 aT
-bu
+aN
 bj
 bj
 dP
@@ -31448,7 +30974,7 @@ bj
 bj
 cA
 bj
-bu
+aN
 aT
 aL
 aN
@@ -31665,7 +31191,7 @@ bj
 bj
 bj
 aT
-bu
+aN
 bF
 bF
 bF
@@ -31673,18 +31199,18 @@ bF
 bF
 bF
 bD
-cl
 bj
-db
 bj
-bu
+bj
+bj
+aN
 aT
 bj
 bj
 bm
 bj
 aT
-bu
+aN
 dH
 bj
 dH
@@ -31697,7 +31223,7 @@ bj
 bj
 eM
 aT
-bu
+aN
 bj
 bj
 bj
@@ -31922,7 +31448,7 @@ bj
 bj
 bj
 aT
-bu
+aN
 bF
 bF
 bF
@@ -31930,7 +31456,7 @@ bF
 cv
 bF
 bD
-cl
+bj
 bj
 bj
 bj
@@ -31941,7 +31467,7 @@ bj
 bj
 bj
 aT
-bu
+aN
 bj
 bj
 bj
@@ -31952,9 +31478,9 @@ bj
 bj
 bj
 bj
-bu
+aN
 aT
-bu
+aN
 bj
 dy
 bj
@@ -32179,17 +31705,17 @@ bj
 bj
 bj
 aT
-bu
+aN
 bF
 bF
 bF
-ck
+bF
 bF
 bF
 bD
-cl
 bj
-da
+bj
+bj
 bj
 dj
 aT
@@ -32198,18 +31724,18 @@ bj
 bj
 bj
 aT
-bu
-dH
-bj
-dH
-bj
-bE
+aN
 dH
 bj
 dH
 bj
 bj
-bu
+dH
+bj
+dH
+bj
+bj
+aN
 aT
 eM
 bj
@@ -32436,15 +31962,15 @@ bj
 bj
 bj
 aT
-bu
+aN
 bF
 bF
 bF
-cj
+bF
 bF
 bF
 bD
-cl
+bj
 bj
 bD
 bj
@@ -32455,7 +31981,7 @@ bj
 bj
 bj
 aT
-bu
+aN
 bj
 bj
 bj
@@ -32466,9 +31992,9 @@ bj
 bj
 bj
 bj
-bu
+aN
 fC
-bu
+aN
 bj
 bj
 bj
@@ -32476,7 +32002,7 @@ bj
 dy
 bk
 bj
-bu
+aN
 aT
 aT
 aL
@@ -32693,7 +32219,7 @@ bj
 bj
 bm
 aT
-bu
+aN
 bF
 bF
 bF
@@ -32701,21 +32227,21 @@ bF
 bF
 bF
 bD
-cl
 bj
-db
 bj
-bu
+bj
+bj
+aN
 aT
 bj
 bj
 bj
 bj
 aT
-bu
+aN
 dH
 bj
-em
+dH
 bj
 bj
 eF
@@ -32723,9 +32249,9 @@ bj
 dH
 bj
 bj
-bu
+aN
 fD
-bu
+aN
 bj
 bj
 bj
@@ -32733,7 +32259,7 @@ bj
 bj
 bj
 bj
-bu
+aN
 aT
 aL
 aL
@@ -32950,7 +32476,7 @@ bj
 bj
 bj
 aT
-bu
+aN
 bD
 bj
 bD
@@ -32962,14 +32488,14 @@ bj
 bj
 bj
 bj
-bu
+aN
 aT
 bj
 bj
 bj
 bj
 aT
-bu
+aN
 bj
 bj
 bj
@@ -32980,9 +32506,9 @@ bj
 bj
 bj
 bj
-bu
+aN
 aY
-bu
+aN
 bj
 bj
 bj
@@ -32990,7 +32516,7 @@ bj
 bj
 bj
 bj
-bu
+aN
 aT
 aL
 aL
@@ -33207,26 +32733,26 @@ bj
 bj
 bj
 aT
-bu
+aN
 bD
 bj
 bD
-cl
 bj
 bj
 bj
 bj
 bj
-da
 bj
-bu
+bj
+bj
+aN
 aT
 dv
 bj
 bj
 bj
 aT
-bu
+aN
 dH
 bj
 dH
@@ -33237,9 +32763,9 @@ bj
 dH
 bj
 bj
-bu
+aN
 aT
-bu
+aN
 bj
 bj
 cA
@@ -33247,7 +32773,7 @@ bj
 dP
 bj
 bj
-bu
+aN
 aT
 aT
 aL
@@ -33464,11 +32990,11 @@ bj
 bj
 bj
 aT
-bu
+aN
 bD
 bj
 bD
-cl
+bj
 bj
 bj
 bj
@@ -33476,14 +33002,14 @@ bj
 bj
 bD
 bj
-bu
+aN
 aT
 bj
 bk
 bj
 bj
 aT
-bu
+aN
 bj
 bj
 bj
@@ -33494,9 +33020,9 @@ bj
 bj
 bj
 bj
-bu
+aN
 aT
-bu
+aN
 bj
 bj
 bj
@@ -33504,7 +33030,7 @@ bj
 bj
 bj
 bj
-bu
+aN
 aT
 aT
 aL
@@ -33721,17 +33247,17 @@ bj
 bj
 bj
 aT
-bu
+aN
 bG
 bj
 bD
-cl
 bj
 bj
 bj
 bj
 bj
-db
+bj
+bj
 bj
 dk
 aT
@@ -33740,28 +33266,28 @@ bj
 bj
 bj
 aT
-bu
-bu
-bu
-bu
-bu
-ci
-bu
-bu
-bu
-bu
-bu
-bu
+aN
+aN
+aN
+aN
+aN
+bj
+aN
+aN
+aN
+aN
+aN
+aN
 aT
-bu
-bu
-dm
-bu
-bu
+aN
+aN
+aT
+aN
+aN
 eM
-bu
+aN
 fs
-bu
+aN
 fr
 aL
 aL
@@ -33968,21 +33494,21 @@ aL
 aT
 aT
 aT
-ba
+aZ
 aT
 aT
-bf
+aT
 aT
 bj
 bj
 bj
 bj
 aT
-bu
+aN
 bD
 bj
 bD
-cl
+bj
 bj
 bj
 cA
@@ -34235,19 +33761,19 @@ bj
 bj
 bj
 aT
-bu
+aN
 bH
 bj
 bD
-cl
 bj
 bj
 bj
 bj
 bj
-da
 bj
-bu
+bj
+bj
+aN
 aT
 bj
 bj
@@ -34492,11 +34018,11 @@ bj
 bj
 bk
 aT
-bu
+aN
 bI
 bj
 bD
-cl
+bj
 bj
 bj
 bj
@@ -34504,7 +34030,7 @@ bj
 bj
 bD
 bj
-dm
+aT
 aZ
 bj
 bj
@@ -34749,20 +34275,20 @@ bj
 bj
 bj
 aT
-bu
+aN
 bD
 bj
 bC
-cl
 bj
 bj
 bj
 bj
 bj
-db
+bj
+bj
 bj
 dn
-dt
+dn
 du
 du
 du
@@ -35006,11 +34532,10 @@ bj
 bj
 bj
 aT
-bu
+aN
 bD
 bj
 bD
-cl
 bj
 bj
 bj
@@ -35018,7 +34543,8 @@ bj
 bj
 bj
 bj
-bu
+bj
+aN
 aT
 bj
 bj
@@ -35263,7 +34789,7 @@ bp
 bj
 bj
 aT
-bu
+aN
 bj
 bj
 cb
@@ -35273,37 +34799,37 @@ bj
 bj
 bj
 bj
-da
 bj
-bu
+bj
+aN
 aT
 bj
 bj
 bj
 bj
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
 ft
-bu
-ci
-ci
-bu
-bu
+aN
+bj
+bj
+aN
+aN
 eM
-bu
-bu
-bu
-bu
+aN
+aN
+aN
+aN
 aL
 aL
 aL
@@ -35520,7 +35046,7 @@ bj
 bj
 bj
 aT
-bu
+aN
 bj
 bj
 bD
@@ -35532,13 +35058,13 @@ bj
 bj
 bD
 bj
-bu
+aN
 aT
 bj
 bj
 bj
 bj
-bu
+aN
 bj
 bj
 bj
@@ -35549,18 +35075,18 @@ dP
 bj
 bj
 bj
-bu
-fu
-fu
+aN
 bj
 bj
-fu
-fu
-gs
-fu
 bj
 bj
-bu
+bj
+bj
+dP
+bj
+bj
+bj
+aN
 aN
 aN
 aN
@@ -35777,7 +35303,7 @@ bj
 bj
 bj
 aT
-bu
+aN
 bj
 bj
 bD
@@ -35787,15 +35313,15 @@ bj
 bj
 bj
 bj
-db
 bj
-bu
+bj
+aN
 aT
 bm
 bj
 bj
 bj
-bu
+aN
 bj
 bF
 bF
@@ -35806,7 +35332,7 @@ bF
 bF
 bF
 bj
-bu
+aN
 bj
 bj
 bj
@@ -35817,7 +35343,7 @@ bj
 bj
 bj
 bj
-bu
+aN
 aN
 aN
 aN
@@ -36034,7 +35560,7 @@ bj
 bj
 bj
 aT
-bu
+aN
 bj
 bj
 bD
@@ -36046,24 +35572,24 @@ bj
 bj
 bj
 bj
-bu
+aN
 aT
 bj
 bj
 bl
 bj
-bu
+aN
 bj
 dI
-dX
-en
-dX
-en
-dX
-en
+bF
+bF
+bF
+bF
+bF
+bF
 bF
 bj
-bu
+aN
 bj
 bj
 bj
@@ -36074,7 +35600,7 @@ bj
 bj
 cA
 bj
-bu
+aN
 aN
 aN
 aN
@@ -36291,25 +35817,25 @@ bj
 bj
 bj
 aT
-bu
+aN
 bj
 bj
-cc
 bD
 bD
 bD
 bD
+bD
 bj
 bj
-da
 bj
-bu
+bj
+aN
 aT
 bj
 bj
 bj
 bj
-bu
+aN
 bj
 bF
 dY
@@ -36320,7 +35846,7 @@ dZ
 eb
 bF
 bj
-bu
+aN
 bD
 bD
 bD
@@ -36331,7 +35857,7 @@ bD
 bD
 bD
 bj
-bu
+aN
 aN
 aN
 aN
@@ -36548,7 +36074,7 @@ bj
 bj
 bj
 aT
-bu
+aN
 by
 by
 by
@@ -36556,17 +36082,17 @@ by
 by
 by
 bD
-cl
+bj
 bj
 bD
 bj
-bu
+aN
 aT
 bj
 bj
 bj
 bj
-bu
+aN
 bj
 dJ
 dZ
@@ -36575,20 +36101,20 @@ eo
 eo
 eo
 dZ
-eU
+bF
 bj
 fm
 bj
-fE
-bj
-fE
 bj
 bj
-fE
+bj
+bj
+bj
+bj
 bj
 bD
 bj
-bu
+aN
 aN
 aN
 aN
@@ -36805,7 +36331,7 @@ bj
 bj
 bj
 aT
-bu
+aN
 by
 by
 by
@@ -36813,9 +36339,9 @@ by
 by
 by
 bD
-cl
 bj
-db
+bj
+bj
 bj
 dj
 aT
@@ -36823,7 +36349,7 @@ bj
 bj
 cA
 bj
-bu
+aN
 bj
 dK
 ea
@@ -36832,7 +36358,7 @@ eo
 eo
 eo
 dY
-eV
+bF
 bj
 fm
 bj
@@ -36845,7 +36371,7 @@ bj
 bj
 bj
 cA
-bu
+aN
 aN
 aN
 aN
@@ -37062,15 +36588,15 @@ bj
 bj
 bj
 aT
-bu
+aN
 bJ
 by
 by
 by
 by
 by
-cJ
-cl
+bD
+bj
 bj
 bj
 bj
@@ -37080,7 +36606,7 @@ bj
 bj
 bj
 bj
-bu
+aN
 bj
 bF
 eb
@@ -37091,18 +36617,18 @@ eG
 ea
 eW
 bj
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-ci
-bu
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+bj
+aN
 aN
 aN
 aN
@@ -37319,17 +36845,17 @@ bj
 bj
 bj
 aT
-bu
+aN
 bK
 by
 by
 by
 by
 by
-cK
-cl
+bD
 bj
-da
+bj
+bj
 bj
 dj
 aT
@@ -37337,18 +36863,18 @@ bj
 bj
 bm
 bj
-bu
+aN
 bk
 bF
-ec
+bF
 ep
-ec
+bF
 ep
-eH
+dI
 ep
 bF
 bj
-bu
+aN
 bj
 bj
 bj
@@ -37356,10 +36882,10 @@ bj
 bj
 bj
 bj
-bu
+aN
 bj
 bj
-bu
+aN
 aN
 aN
 aN
@@ -37576,7 +37102,7 @@ bj
 bj
 bj
 aT
-bu
+aN
 bL
 by
 cd
@@ -37584,39 +37110,39 @@ by
 by
 by
 bD
-cl
+bj
 bj
 bD
 bj
-bu
+aN
 aT
 bj
 bj
 bj
 bj
-bu
+aN
 bj
 bF
 bF
 dI
-ew
+bF
 bF
 bF
 eL
 bF
 bj
-bu
-bj
-fF
-bj
-fF
-bj
-fF
-bj
-bu
+aN
 bj
 bj
-bu
+bj
+bj
+bj
+bj
+bj
+aN
+bj
+bj
+aN
 aN
 aN
 aN
@@ -37833,7 +37359,7 @@ bj
 bj
 bj
 aT
-bu
+aN
 bM
 by
 by
@@ -37841,17 +37367,17 @@ by
 by
 by
 bD
-cl
 bj
-db
 bj
-bu
+bj
+bj
+aN
 aT
 bj
 bj
 bj
 bj
-bu
+aN
 bj
 bj
 bj
@@ -37862,7 +37388,7 @@ bj
 bj
 bj
 bj
-bu
+aN
 bj
 bD
 fS
@@ -37870,10 +37396,10 @@ bD
 bD
 bD
 bj
-ci
+bj
 bl
 bj
-bu
+aN
 aN
 aN
 aN
@@ -38090,7 +37616,7 @@ bj
 bj
 bj
 aT
-bu
+aN
 bN
 by
 by
@@ -38102,35 +37628,35 @@ bj
 bj
 bj
 bj
-bu
+aN
 aT
 bj
 bj
 bj
 bj
-bu
-bu
+aN
+aN
 dL
-bu
-bu
-bu
-bu
-bu
-bu
+aN
+aN
+aN
+aN
+aN
+aN
 dL
-bu
-bu
-bj
-fE
-bj
-fE
-bj
-fE
-bj
-bu
+aN
+aN
 bj
 bj
-bu
+bj
+bj
+bj
+bj
+bj
+aN
+bj
+bj
+aN
 aN
 aN
 aN
@@ -38347,39 +37873,39 @@ bj
 bj
 bj
 aT
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
 aT
 bj
 bj
 bj
 bj
-bu
+aN
 dE
 bj
 bj
 dE
 dE
-bu
+aN
 bA
 bj
 bj
 bj
-bu
+aN
 bj
 bj
-bE
+bj
 bl
 bj
 bj
@@ -38387,7 +37913,7 @@ bj
 eM
 bj
 dP
-bu
+aN
 aN
 aN
 aN
@@ -38622,29 +38148,29 @@ bj
 bj
 bj
 bp
-bu
+aN
 dE
 bj
 bj
 eq
 dE
-bu
+aN
 bA
 bj
 cA
 bj
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
 cA
 bj
-bu
+aN
 aN
 aN
 aN
@@ -38879,18 +38405,18 @@ bl
 bj
 bj
 bj
-bu
+aN
 dE
 bj
 bj
 bj
 bj
-bu
+aN
 bA
 bj
 bj
 bj
-bu
+aN
 bj
 bj
 bl
@@ -38898,10 +38424,10 @@ bj
 bj
 bj
 bj
-bu
+aN
 bj
 bj
-bu
+aN
 aN
 aN
 aN
@@ -39136,29 +38662,29 @@ bj
 bj
 bj
 bj
-bu
+aN
 dE
 bj
 bj
 bj
 bj
-bu
+aN
 bA
 bj
 bj
 bj
-bu
+aN
 bj
-fG
 bj
-fG
+bj
+bj
 cA
-fG
-bj
-bu
 bj
 bj
-bu
+aN
+bj
+bj
+aN
 aN
 aN
 aN
@@ -39379,7 +38905,7 @@ bj
 bj
 bj
 bj
-bE
+bj
 bj
 bj
 bp
@@ -39393,29 +38919,29 @@ bj
 bj
 bm
 bj
-bu
+aN
 dE
 bj
 dP
 bj
 bj
-bu
+aN
 bA
 bj
 bl
 bj
-bu
+aN
 bj
 bD
-cc
+bD
 bD
 gg
 bD
 bj
-ci
 bj
 bj
-bu
+bj
+aN
 aN
 aN
 aN
@@ -39650,29 +39176,29 @@ bj
 bj
 bj
 bj
-bu
+aN
 bj
 bj
 bj
 bj
 cA
-bu
+aN
 bA
 bj
 bj
 bj
-bu
-bj
-fH
-bj
-fH
-bj
-fH
-bj
-bu
+aN
 bj
 bj
-bu
+bj
+bj
+bj
+bj
+bj
+aN
+bj
+bj
+aN
 aN
 aN
 aN
@@ -39907,18 +39433,18 @@ aT
 aT
 aT
 aT
-bu
+aN
 dE
 bj
 bj
 bj
 bj
-bu
+aN
 bA
 bj
 bj
 bj
-bu
+aN
 bj
 bj
 bj
@@ -39926,10 +39452,10 @@ bj
 bj
 bj
 bj
-bu
+aN
 bj
 bj
-bu
+aN
 aN
 aN
 aN
@@ -40141,7 +39667,7 @@ aT
 aT
 aT
 aT
-bf
+aT
 aT
 aT
 aT
@@ -40164,29 +39690,29 @@ aT
 aT
 aT
 aT
-bu
-bu
-bu
-bu
-bu
+aN
+aN
+aN
+aN
+aN
 dL
-bu
-bu
-bu
+aN
+aN
+aN
 dL
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
 bj
 gk
-bu
+aN
 aN
 aN
 aN
@@ -40421,7 +39947,7 @@ aT
 aT
 aT
 aT
-bu
+aN
 bj
 dM
 bD
@@ -40429,21 +39955,21 @@ dM
 bj
 bj
 bj
-bu
+aN
 eX
 eX
 eX
-fv
+eX
 eX
 dj
 bj
-bu
+aN
 gl
 gt
-bu
+aN
 bj
 cA
-bu
+aN
 aN
 aN
 aN
@@ -40672,13 +40198,13 @@ aT
 aZ
 aT
 aT
-ba
+aZ
 aT
 aT
 aT
 aT
 aT
-bu
+aN
 bj
 cA
 bj
@@ -40686,7 +40212,7 @@ bj
 bj
 eC
 dM
-bu
+aN
 eX
 eX
 eX
@@ -40694,13 +40220,13 @@ fw
 eX
 dj
 bj
-bu
+aN
 gm
 bj
 eM
 bj
 bj
-bu
+aN
 aN
 aN
 aN
@@ -40935,7 +40461,7 @@ dw
 aT
 aT
 aT
-bu
+aN
 bj
 dN
 dN
@@ -40943,21 +40469,21 @@ dN
 bj
 eC
 bD
-bu
+aN
 eY
 eX
 fn
-fx
+eX
 eX
 dj
 bj
-bu
-bu
-ci
-bu
+aN
+aN
+bj
+aN
 bj
 bj
-bu
+aN
 aN
 aN
 aN
@@ -41200,13 +40726,13 @@ bj
 dP
 eC
 bD
-bu
+aN
 eZ
 fg
 eX
 eX
 fI
-bu
+aN
 bj
 bj
 dP
@@ -41214,7 +40740,7 @@ bj
 bj
 bl
 bj
-bu
+aN
 aN
 aN
 aN
@@ -41457,11 +40983,11 @@ bj
 bj
 eC
 dM
-bu
+aN
 fa
 fh
 eX
-fv
+eX
 eX
 dL
 bj
@@ -41471,7 +40997,7 @@ bj
 bj
 bj
 bj
-bu
+aN
 aN
 aN
 aG
@@ -41706,7 +41232,7 @@ aT
 aZ
 aT
 aT
-bu
+aN
 bj
 bj
 bj
@@ -41720,15 +41246,15 @@ fi
 fi
 fw
 eX
-bu
+aN
 dj
 dj
 dj
 dj
 dj
-bu
-bu
-bu
+aN
+aN
+aN
 aN
 aN
 aG
@@ -41963,19 +41489,18 @@ aT
 aT
 aT
 aT
-bu
+aN
 bj
-dO
-dO
-dO
-dO
-dO
 bj
-bu
+bj
+bj
+bj
+bj
+bj
+aN
 fb
 eX
 eX
-fx
 eX
 eX
 eX
@@ -41985,7 +41510,8 @@ eX
 eX
 eX
 eX
-bu
+eX
+aN
 aN
 aG
 aG
@@ -42220,7 +41746,7 @@ aT
 aT
 aT
 aT
-bu
+aN
 bj
 dP
 bj
@@ -42228,21 +41754,21 @@ bj
 bj
 bj
 bj
-bu
+aN
 fb
 eX
 eX
 eX
 fI
-fT
-fw
-gh
 eX
-gu
 fw
-gh
 eX
-bu
+eX
+fI
+fw
+eX
+eX
+aN
 aN
 aG
 aG
@@ -42477,7 +42003,7 @@ aT
 aT
 aT
 aT
-bu
+aN
 bj
 bj
 bj
@@ -42485,7 +42011,7 @@ bj
 bj
 bj
 bj
-bu
+aN
 eX
 eX
 eX
@@ -42499,7 +42025,7 @@ eX
 eX
 eX
 eX
-bu
+aN
 aN
 aG
 aG
@@ -42734,29 +42260,29 @@ aT
 aT
 aT
 aT
-bu
-bu
+aN
+aN
 dQ
-bu
+aN
 dQ
-bu
+aN
 dQ
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
-bu
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
 aN
 aG
 aG

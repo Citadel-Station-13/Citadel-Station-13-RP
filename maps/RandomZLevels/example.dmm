@@ -19,9 +19,9 @@
 	charge = 5e+006
 	},
 /obj/structure/cable{
+	d2 = 2;
 	icon_state = "0-2";
-	pixel_y = 1;
-	d2 = 2
+	pixel_y = 1
 	},
 /turf/simulated/floor,
 /area/awaymission/example)
@@ -30,23 +30,21 @@
 	dir = 8
 	},
 /obj/structure/cable{
+	d2 = 2;
 	icon_state = "0-2";
-	pixel_y = 1;
-	d2 = 2
+	pixel_y = 1
 	},
 /turf/simulated/floor,
 /area/awaymission/example)
 "ag" = (
 /obj/machinery/power/apc{
 	dir = 1;
-	name = "area power controller";
-	pixel_x = 0;
 	pixel_y = 24
 	},
 /obj/structure/cable{
+	d2 = 2;
 	icon_state = "0-2";
-	pixel_y = 1;
-	d2 = 2
+	pixel_y = 1
 	},
 /turf/simulated/floor,
 /area/awaymission/example)
@@ -95,8 +93,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor,
 /area/awaymission/example)
@@ -116,9 +113,9 @@
 /area/awaymission/example)
 "ao" = (
 /obj/structure/cable{
+	d2 = 2;
 	icon_state = "0-2";
-	pixel_y = 1;
-	d2 = 2
+	pixel_y = 1
 	},
 /obj/machinery/gateway/centeraway,
 /turf/simulated/floor,
@@ -145,7 +142,6 @@
 /obj/machinery/gateway{
 	dir = 10
 	},
-/obj/effect/decal/cleanable/oil,
 /turf/simulated/floor,
 /area/awaymission/example)
 "at" = (
@@ -164,8 +160,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor,
 /area/awaymission/example)
@@ -181,8 +176,8 @@
 /area/awaymission/example)
 "ax" = (
 /obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+	d2 = 4;
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/example)
@@ -191,8 +186,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/example)
@@ -200,23 +194,12 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
-/turf/simulated/floor,
-/area/awaymission/example)
-"aA" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/obj/effect/decal/cleanable/oil,
 /turf/simulated/floor,
 /area/awaymission/example)
 "aB" = (
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 8
 	},
 /obj/structure/table/standard,
@@ -225,8 +208,7 @@
 /area/awaymission/example)
 "aC" = (
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /turf/simulated/floor,
 /area/awaymission/example)
@@ -301,22 +283,13 @@
 /area/awaymission/example)
 "aQ" = (
 /turf/simulated/floor{
-	 icon_state = "yellowfull";
+	 = on_state = "yellowfull";
 	dir = 8
 	},
 /area/awaymission/example)
 "aR" = (
 /turf/simulated/floor{
-	icon_state = "whitehall";
-	dir = 2
-	},
-/area/awaymission/example)
-"aS" = (
-/obj/structure/stool/bed/chair{
-	dir = 4
-	},
-/turf/simulated/floor{
-	icon_state = "white"
+	icon_state = "whitehall"
 	},
 /area/awaymission/example)
 "aT" = (
@@ -350,67 +323,9 @@
 	icon_state = "white"
 	},
 /area/awaymission/example)
-"aY" = (
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/grille,
-/obj/machinery/door/poddoor/shutters{
-	density = 0;
-	icon_state = "shutter0";
-	id = "example";
-	name = "Privacy Shutters";
-	opacity = 0
-	},
-/turf/simulated/floor/plating,
-/area/awaymission/example)
-"aZ" = (
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/grille,
-/obj/machinery/door/poddoor/shutters{
-	density = 0;
-	icon_state = "shutter0";
-	id = "example";
-	name = "Privacy Shutters";
-	opacity = 0
-	},
-/turf/simulated/floor/plating,
-/area/awaymission/example)
-"ba" = (
-/obj/machinery/door_control{
-	id = "example";
-	name = "Privacy Shutters";
-	pixel_y = 25
-	},
-/turf/simulated/floor{
-	icon_state = "white"
-	},
-/area/awaymission/example)
 "bb" = (
 /obj/structure/table/standard,
 /obj/item/healthanalyzer,
-/turf/simulated/floor{
-	icon_state = "white"
-	},
-/area/awaymission/example)
-"bc" = (
-/obj/structure/stool/bed,
-/turf/simulated/floor{
-	icon_state = "white"
-	},
-/area/awaymission/example)
-"bd" = (
-/obj/structure/stool,
 /turf/simulated/floor{
 	icon_state = "white"
 	},
@@ -453,7 +368,6 @@
 /area/awaymission/example)
 "bj" = (
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 8
 	},
 /turf/simulated/floor,
@@ -492,7 +406,7 @@
 /area/awaymission/example)
 "bo" = (
 /turf/simulated/floor{
-	 icon_state = "stage_stairs";
+	 = on_state = "stage_stairs";
 	dir = 8
 	},
 /area/awaymission/example)
@@ -578,12 +492,6 @@
 	icon_state = "bar"
 	},
 /area/awaymission/example)
-"bz" = (
-/obj/structure/stool,
-/turf/simulated/floor{
-	icon_state = "bar"
-	},
-/area/awaymission/example)
 "bA" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -601,14 +509,13 @@
 	},
 /area/awaymission/example)
 "bC" = (
-/obj/structure/stool/bed/chair/wood/normal,
+/obj/structure/bed/chair/wood,
 /turf/simulated/floor{
 	icon_state = "bar"
 	},
 /area/awaymission/example)
 "bD" = (
 /obj/structure/sink{
-	icon_state = "sink";
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -648,7 +555,7 @@
 /area/awaymission/example)
 "bI" = (
 /obj/structure/table/standard,
-/obj/item/reagent_containers/food/drinks/sodawater,
+/obj/item/reagent_containers/food/drinks/cans/cola,
 /turf/simulated/floor{
 	icon_state = "bar"
 	},
@@ -665,26 +572,8 @@
 	icon_state = "bar"
 	},
 /area/awaymission/example)
-"bK" = (
-/obj/structure/stool/bed/chair/wood/normal{
-	 icon_state = "wooden_chair";
-	dir = 4
-	},
-/turf/simulated/floor{
-	icon_state = "bar"
-	},
-/area/awaymission/example)
 "bL" = (
 /obj/structure/table/woodentable,
-/turf/simulated/floor{
-	icon_state = "bar"
-	},
-/area/awaymission/example)
-"bM" = (
-/obj/structure/stool/bed/chair/wood/normal{
-	 icon_state = "wooden_chair";
-	dir = 8
-	},
 /turf/simulated/floor{
 	icon_state = "bar"
 	},
@@ -707,15 +596,6 @@
 	icon_state = "bar"
 	},
 /area/awaymission/example)
-"bP" = (
-/obj/structure/stool/bed/chair/wood/normal{
-	 icon_state = "wooden_chair";
-	dir = 1
-	},
-/turf/simulated/floor{
-	icon_state = "bar"
-	},
-/area/awaymission/example)
 "bQ" = (
 /obj/machinery/vending/snack,
 /turf/simulated/floor,
@@ -731,7 +611,7 @@
 	},
 /area/awaymission/example)
 "bS" = (
-/obj/structure/device/piano,
+/obj/structure/musician/piano,
 /turf/simulated/floor{
 	icon_state = "bar"
 	},
@@ -764,7 +644,7 @@
 /area/awaymission/example)
 "bY" = (
 /obj/structure/table/standard,
-/obj/item/rack_parts,
+/obj/structure/table/rack,
 /turf/simulated/floor,
 /area/awaymission/example)
 "bZ" = (
@@ -816,13 +696,12 @@
 /obj/item/tool/screwdriver,
 /obj/item/hand_labeler,
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 8
 	},
 /turf/simulated/floor,
 /area/awaymission/example)
 "ci" = (
-/obj/structure/stool/bed/chair/office/dark{
+/obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
 /turf/simulated/floor,
@@ -892,7 +771,7 @@
 	name = "awaystart"
 	},
 /obj/machinery/light_construct/small{
-	 icon_state = "bulb-construct-stage1";
+	 = on_state = "bulb-construct-stage1";
 	dir = 8
 	},
 /turf/simulated/floor,
@@ -911,13 +790,6 @@
 "cw" = (
 /obj/structure/table/standard,
 /obj/item/cell/high,
-/turf/simulated/floor,
-/area/awaymission/example)
-"cx" = (
-/obj/structure/stool,
-/obj/effect/landmark{
-	name = "awaystart"
-	},
 /turf/simulated/floor,
 /area/awaymission/example)
 "cy" = (
@@ -2027,10 +1899,10 @@ aQ
 bk
 bn
 bt
-bz
-bz
-bz
-bz
+bt
+bt
+bt
+bt
 ab
 bY
 ac
@@ -2174,7 +2046,7 @@ bl
 ck
 cq
 cq
-cx
+cq
 ab
 aa
 aa
@@ -2292,9 +2164,9 @@ ac
 bp
 aa
 bp
-bK
 bt
-bz
+bt
+bt
 ab
 cb
 ac
@@ -2424,9 +2296,9 @@ ac
 br
 aa
 br
-bM
 bt
-bK
+bt
+bt
 ab
 ab
 ab
@@ -2558,7 +2430,7 @@ bt
 bB
 bt
 bt
-bM
+bt
 ab
 aw
 aJ
@@ -2689,7 +2561,7 @@ bn
 bt
 bC
 bO
-bP
+bt
 bA
 ab
 ce
@@ -3591,9 +3463,9 @@ ac
 aQ
 ac
 ab
-aS
-aS
-aS
+aT
+aT
+aT
 ab
 aT
 aT
@@ -3662,7 +3534,7 @@ aT
 aT
 aX
 aT
-bc
+aT
 bg
 ab
 aa
@@ -3727,7 +3599,7 @@ aU
 aT
 aT
 ab
-ba
+aT
 aT
 bh
 ab
@@ -3792,9 +3664,9 @@ aR
 aT
 aT
 aT
-aY
+bp
 aT
-bd
+aT
 aT
 ab
 aa
@@ -3858,7 +3730,7 @@ aR
 aT
 aT
 aT
-aZ
+br
 bb
 be
 bi
@@ -4504,7 +4376,7 @@ ab
 ae
 ak
 aq
-aA
+am
 aD
 ab
 aa
