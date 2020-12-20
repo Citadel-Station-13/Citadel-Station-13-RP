@@ -28,8 +28,7 @@
 	teleport_z = 7
 	},
 /turf/unsimulated/floor{
-	icon_state = "rampbottom";
-	name = "stairs"
+	icon_state = "white"
 	},
 /area/awaymission/labyrinth/temple/north_east)
 "af" = (
@@ -40,8 +39,7 @@
 	teleport_z = 7
 	},
 /turf/unsimulated/floor{
-	icon_state = "rampbottom";
-	name = "stairs"
+	icon_state = "white"
 	},
 /area/awaymission/labyrinth/temple/north_east)
 "ag" = (
@@ -477,11 +475,15 @@
 	desc = "A portable generator for power. It's still warm.";
 	name = "Generator"
 	},
-/turf/unsimulated/floor,
+/turf/unsimulated/floor{
+	icon_state = "white"
+	},
 /area/awaymission/labyrinth/arrival)
 "bE" = (
 /obj/machinery/door/airlock/maintenance,
-/turf/unsimulated/floor,
+/turf/unsimulated/floor{
+	icon_state = "white"
+	},
 /area/awaymission/labyrinth/arrival)
 "bF" = (
 /turf/unsimulated/floor{
@@ -538,7 +540,9 @@
 /area/awaymission/labyrinth/arrival)
 "bN" = (
 /obj/machinery/power/smes/magical,
-/turf/unsimulated/floor,
+/turf/unsimulated/floor{
+	icon_state = "white"
+	},
 /area/awaymission/labyrinth/arrival)
 "bO" = (
 /turf/unsimulated/wall{
@@ -701,12 +705,6 @@
 	icon_state = "freezerfloor"
 	},
 /area/awaymission/labyrinth/arrival)
-"ck" = (
-/turf/unsimulated/floor{
-	dir = 1;
-	icon_state = "warnwhite"
-	},
-/area/awaymission/labyrinth/arrival)
 "cl" = (
 /turf/unsimulated/floor{
 	icon = 'icons/jungle.dmi';
@@ -821,9 +819,7 @@
 /area/awaymission/labyrinth/arrival)
 "cy" = (
 /turf/unsimulated/floor{
-	dir = 1;
-	icon_state = "rampbottom";
-	name = "stairs"
+	icon_state = "white"
 	},
 /area/awaymission/labyrinth/temple/south)
 "cz" = (
@@ -897,8 +893,7 @@
 	name = "Catacombs"
 	},
 /turf/unsimulated/floor{
-	icon_state = "cult";
-	name = "plating"
+	icon_state = "white"
 	},
 /area/awaymission/labyrinth/temple/entry)
 "cJ" = (
@@ -1157,8 +1152,7 @@
 	teleport_z = 7
 	},
 /turf/unsimulated/floor{
-	icon_state = "rampbottom";
-	name = "stairs"
+	icon_state = "white"
 	},
 /area/awaymission/labyrinth/boss)
 "dm" = (
@@ -1206,8 +1200,7 @@
 /area/awaymission/labyrinth/cave)
 "dt" = (
 /turf/unsimulated/floor{
-	icon_state = "rampbottom";
-	name = "stairs"
+	icon_state = "white"
 	},
 /area/awaymission/labyrinth/cave)
 "du" = (
@@ -1643,9 +1636,7 @@
 	teleport_z = 7
 	},
 /turf/unsimulated/floor{
-	dir = 1;
-	icon_state = "rampbottom";
-	name = "stairs"
+	icon_state = "white"
 	},
 /area/awaymission/labyrinth/boss)
 "ef" = (
@@ -1656,9 +1647,7 @@
 	teleport_z = 7
 	},
 /turf/unsimulated/floor{
-	dir = 1;
-	icon_state = "rampbottom";
-	name = "stairs"
+	icon_state = "white"
 	},
 /area/awaymission/labyrinth/boss)
 
@@ -40090,7 +40079,7 @@ bJ
 bP
 bX
 ce
-ck
+bF
 bV
 bF
 bF
@@ -40322,7 +40311,7 @@ bK
 bQ
 bY
 ce
-ck
+bF
 cq
 bF
 bF
@@ -40554,7 +40543,7 @@ bL
 bR
 bZ
 ce
-ck
+bF
 co
 bF
 bF

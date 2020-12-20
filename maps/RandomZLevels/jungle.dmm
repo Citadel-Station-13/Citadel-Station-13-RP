@@ -27,14 +27,10 @@
 /area/jungle/temple_six)
 "ag" = (
 /obj/effect/landmark/loot_spawn,
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/tiled/white,
 /area/jungle/temple_six)
 "ah" = (
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/tiled/white,
 /area/jungle/temple_six)
 "aj" = (
 /turf/unsimulated/wall{
@@ -58,20 +54,14 @@
 /area/jungle/temple_two)
 "an" = (
 /obj/effect/landmark/loot_spawn/low,
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/tiled/white,
 /area/jungle/temple_two)
 "ao" = (
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/tiled/white,
 /area/jungle/temple_two)
 "ap" = (
 /obj/effect/landmark/loot_spawn,
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/tiled/white,
 /area/jungle/temple_two)
 "aq" = (
 /turf/unsimulated/wall{
@@ -95,20 +85,14 @@
 /area/jungle/temple_four)
 "aw" = (
 /obj/effect/landmark/loot_spawn/low,
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/tiled/white,
 /area/jungle/temple_four)
 "ax" = (
 /obj/effect/landmark/loot_spawn,
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/tiled/white,
 /area/jungle/temple_four)
 "ay" = (
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/tiled/white,
 /area/jungle/temple_four)
 "az" = (
 /turf/unsimulated/wall{
@@ -117,9 +101,7 @@
 /area/jungle/temple_six)
 "aC" = (
 /obj/effect/landmark/loot_spawn/low,
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/tiled/white,
 /area/jungle/temple_six)
 "aE" = (
 /turf/unsimulated/wall{
@@ -288,14 +270,10 @@
 /area/jungle/temple_one)
 "bv" = (
 /obj/effect/landmark/loot_spawn,
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/tiled/white,
 /area/jungle/temple_one)
 "bw" = (
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/tiled/white,
 /area/jungle/temple_one)
 "by" = (
 /turf/unsimulated/wall{
@@ -314,9 +292,7 @@
 /area/jungle/temple_three)
 "bB" = (
 /obj/effect/landmark/loot_spawn/low,
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/tiled/white,
 /area/jungle/temple_one)
 "bC" = (
 /turf/unsimulated/wall{
@@ -325,20 +301,14 @@
 /area/jungle/temple_three)
 "bD" = (
 /obj/effect/landmark/loot_spawn/low,
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/tiled/white,
 /area/jungle/temple_three)
 "bF" = (
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/tiled/white,
 /area/jungle/temple_three)
 "bG" = (
 /obj/effect/landmark/loot_spawn,
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/tiled/white,
 /area/jungle/temple_three)
 "bJ" = (
 /turf/unsimulated/wall{
@@ -367,14 +337,10 @@
 /area/jungle/temple_five)
 "bO" = (
 /obj/effect/landmark/loot_spawn,
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/tiled/white,
 /area/jungle/temple_five)
 "bP" = (
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/tiled/white,
 /area/jungle/temple_five)
 "bQ" = (
 /turf/unsimulated/wall{
@@ -423,9 +389,7 @@
 /area/jungle/temple_three)
 "cb" = (
 /obj/effect/landmark/loot_spawn/low,
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/tiled/white,
 /area/jungle/temple_five)
 "cd" = (
 /turf/unsimulated/wall{
@@ -551,14 +515,14 @@
 /area/jungle)
 "cN" = (
 /obj/structure/bed/roller,
-/turf/unsimulated/floor,
+/turf/simulated/floor/tiled/white,
 /area/jungle)
 "cO" = (
 /obj/item/storage/firstaid,
-/turf/unsimulated/floor,
+/turf/simulated/floor/tiled/white,
 /area/jungle)
 "cQ" = (
-/turf/unsimulated/floor,
+/turf/simulated/floor/tiled/white,
 /area/jungle)
 "cR" = (
 /obj/item/trash/chips,
@@ -575,28 +539,28 @@
 "cU" = (
 /obj/structure/barricade,
 /obj/structure/sign/redcross,
-/turf/unsimulated/floor,
+/turf/simulated/floor/tiled/white,
 /area/jungle)
 "cV" = (
 /obj/machinery/gateway{
 	 = on_state = "off";
 	dir = 9
 	},
-/turf/unsimulated/floor,
+/turf/simulated/floor/tiled/white,
 /area/jungle)
 "cW" = (
 /obj/machinery/gateway{
 	 = on_state = "off";
 	dir = 1
 	},
-/turf/unsimulated/floor,
+/turf/simulated/floor/tiled/white,
 /area/jungle)
 "cX" = (
 /obj/machinery/gateway{
 	 = on_state = "off";
 	dir = 5
 	},
-/turf/unsimulated/floor,
+/turf/simulated/floor/tiled/white,
 /area/jungle)
 "cY" = (
 /obj/structure/barricade,
@@ -604,25 +568,25 @@
 /area/jungle)
 "cZ" = (
 /obj/item/storage/pill_bottle/antitox,
-/turf/unsimulated/floor,
+/turf/simulated/floor/tiled/white,
 /area/jungle)
 "db" = (
 /obj/machinery/gateway{
 	 = on_state = "off";
 	dir = 8
 	},
-/turf/unsimulated/floor,
+/turf/simulated/floor/tiled/white,
 /area/jungle)
 "dc" = (
 /obj/machinery/gateway/centeraway,
-/turf/unsimulated/floor,
+/turf/simulated/floor/tiled/white,
 /area/jungle)
 "dd" = (
 /obj/machinery/gateway{
 	 = on_state = "off";
 	dir = 4
 	},
-/turf/unsimulated/floor,
+/turf/simulated/floor/tiled/white,
 /area/jungle)
 "de" = (
 /obj/structure/reagent_dispensers,
@@ -630,25 +594,25 @@
 /area/jungle)
 "df" = (
 /obj/item/pen,
-/turf/unsimulated/floor,
+/turf/simulated/floor/tiled/white,
 /area/jungle)
 "dg" = (
 /obj/machinery/gateway{
 	 = on_state = "off";
 	dir = 10
 	},
-/turf/unsimulated/floor,
+/turf/simulated/floor/tiled/white,
 /area/jungle)
 "dh" = (
 /obj/machinery/gateway,
-/turf/unsimulated/floor,
+/turf/simulated/floor/tiled/white,
 /area/jungle)
 "di" = (
 /obj/machinery/gateway{
 	 = on_state = "off";
 	dir = 6
 	},
-/turf/unsimulated/floor,
+/turf/simulated/floor/tiled/white,
 /area/jungle)
 "dj" = (
 /obj/item/trash/raisins,
@@ -665,7 +629,7 @@
 /area/jungle)
 "dn" = (
 /obj/item/trash/chips,
-/turf/unsimulated/floor,
+/turf/simulated/floor/tiled/white,
 /area/jungle)
 "do" = (
 /turf/simulated/floor/outdoors/grass,
@@ -688,7 +652,7 @@
 /area/jungle)
 "dt" = (
 /obj/structure/largecrate,
-/turf/unsimulated/floor,
+/turf/simulated/floor/tiled/white,
 /area/jungle)
 "du" = (
 /turf/simulated/floor/outdoors/grass,
@@ -715,26 +679,26 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced,
-/turf/unsimulated/floor,
+/turf/simulated/floor/tiled/white,
 /area/jungle/crash_ship_source)
 "dC" = (
 /obj/structure/grille,
-/turf/unsimulated/floor,
+/turf/simulated/floor/tiled/white,
 /area/jungle/crash_ship_source)
 "dD" = (
 /obj/structure/grille{
 	density = 0;
 	icon_state = "brokengrille"
 	},
-/turf/unsimulated/floor,
+/turf/simulated/floor/tiled/white,
 /area/jungle/crash_ship_source)
 "dE" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced,
-/turf/unsimulated/floor,
+/turf/simulated/floor/tiled/white,
 /area/jungle/crash_ship_source)
 "dF" = (
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/floor/tiled/white,
 /turf/simulated/shuttle/wall{
 	icon_state = "swall_c"
 	},
@@ -746,22 +710,22 @@
 /area/jungle/crash_ship_source)
 "dH" = (
 /obj/effect/landmark/loot_spawn/low,
-/turf/unsimulated/floor,
+/turf/simulated/floor/tiled/white,
 /area/jungle/crash_ship_source)
 "dI" = (
-/turf/unsimulated/floor,
+/turf/simulated/floor/tiled/white,
 /area/jungle/crash_ship_source)
 "dJ" = (
 /obj/item/material/knife/machete/hatchet,
-/turf/unsimulated/floor,
+/turf/simulated/floor/tiled/white,
 /area/jungle/crash_ship_source)
 "dL" = (
 /obj/structure/girder,
-/turf/unsimulated/floor,
+/turf/simulated/floor/tiled/white,
 /area/jungle/crash_ship_source)
 "dN" = (
 /obj/item/cell,
-/turf/unsimulated/floor,
+/turf/simulated/floor/tiled/white,
 /area/jungle/crash_ship_source)
 "dO" = (
 /obj/structure/grille{
@@ -772,18 +736,18 @@
 /area/jungle/crash_ship_source)
 "dP" = (
 /obj/item/storage/toolbox/mechanical,
-/turf/unsimulated/floor,
+/turf/simulated/floor/tiled/white,
 /area/jungle/crash_ship_source)
 "dR" = (
 /obj/item/storage/toolbox/emergency,
-/turf/unsimulated/floor,
+/turf/simulated/floor/tiled/white,
 /area/jungle/crash_ship_source)
 "dS" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/unsimulated/floor,
+/turf/simulated/floor/tiled/white,
 /area/jungle/crash_ship_source)
 "dT" = (
 /obj/item/storage/firstaid/regular,
@@ -791,7 +755,7 @@
 /area/jungle/crash_ship_source)
 "dV" = (
 /obj/item/storage/toolbox/electrical,
-/turf/unsimulated/floor,
+/turf/simulated/floor/tiled/white,
 /area/jungle/crash_ship_source)
 "dY" = (
 /turf/simulated/floor/outdoors/grass/forest,
@@ -13195,7 +13159,7 @@ am
 am
 am
 am
-am
+ao
 am
 am
 am

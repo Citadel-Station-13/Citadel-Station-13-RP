@@ -1305,38 +1305,28 @@
 	},
 /turf/simulated/floor/carpet,
 /area/awaymission/wwmines)
-"eX" = (
-/turf/simulated/floor{
-	dir = 8;
-	icon_state = "barber"
-	},
-/area/awaymission/wwmines)
 "eY" = (
 /obj/machinery/vending/cigarette,
-/turf/simulated/floor{
-	dir = 8;
-	icon_state = "barber"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
 /area/awaymission/wwmines)
 "eZ" = (
 /obj/machinery/vending/coffee,
-/turf/simulated/floor{
-	dir = 8;
-	icon_state = "barber"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
 /area/awaymission/wwmines)
 "fa" = (
 /obj/machinery/vending/snack,
-/turf/simulated/floor{
-	dir = 8;
-	icon_state = "barber"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
 /area/awaymission/wwmines)
 "fb" = (
 /obj/machinery/vending/cola,
-/turf/simulated/floor{
-	dir = 8;
-	icon_state = "barber"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
 /area/awaymission/wwmines)
 "fd" = (
@@ -1353,29 +1343,18 @@
 	},
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
-"fg" = (
-/obj/effect/decal/cleanable/blood/gibs/body{
-	= = _state = "gibdown1"
-	},
-/turf/simulated/floor{
-	dir = 8;
-	icon_state = "barber"
-	},
-/area/awaymission/wwmines)
 "fh" = (
 /obj/effect/landmark/corpse/doctor{
 	mobname = "Doctor Mugabee"
 	},
-/turf/simulated/floor{
-	dir = 8;
-	icon_state = "barber"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
 /area/awaymission/wwmines)
 "fi" = (
 /obj/item/stack/medical/bruise_pack,
-/turf/simulated/floor{
-	dir = 8;
-	icon_state = "barber"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
 /area/awaymission/wwmines)
 "fj" = (
@@ -1409,13 +1388,6 @@
 	icon_state = "sandstone0";
 	mineral = "sandstone";
 	walltype = "sandstone"
-	},
-/area/awaymission/wwmines)
-"fn" = (
-/obj/effect/decal/cleanable/blood/splatter,
-/turf/simulated/floor{
-	dir = 8;
-	icon_state = "barber"
 	},
 /area/awaymission/wwmines)
 "fo" = (
@@ -1456,9 +1428,8 @@
 /area/awaymission/wwmines)
 "fw" = (
 /obj/structure/table/woodentable,
-/turf/simulated/floor{
-	dir = 8;
-	icon_state = "barber"
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
 	},
 /area/awaymission/wwmines)
 "fy" = (
@@ -1507,15 +1478,6 @@
 	},
 /turf/simulated/floor/plating{
 	= = _state = "ironsand1"
-	},
-/area/awaymission/wwmines)
-"fI" = (
-/obj/effect/decal/cleanable/blood/gibs/body{
-	= = _state = "gibup1"
-	},
-/turf/simulated/floor{
-	dir = 8;
-	icon_state = "barber"
 	},
 /area/awaymission/wwmines)
 "fJ" = (
@@ -1855,9 +1817,7 @@
 /area/awaymission/wwrefine)
 "gL" = (
 /obj/machinery/door/unpowered/shuttle,
-/turf/simulated/shuttle{
-	= = _state = "floor2"
-	},
+/turf/simulated/floor,
 /area/awaymission/wwrefine)
 "gM" = (
 /turf/simulated/shuttle/wall{
@@ -1874,11 +1834,6 @@
 /turf/simulated/shuttle/wall{
 	= = _state = "swall_straight";
 	dir = 1
-	},
-/area/awaymission/wwrefine)
-"gP" = (
-/turf/simulated/shuttle{
-	= = _state = "floor2"
 	},
 /area/awaymission/wwrefine)
 "gR" = (
@@ -1919,9 +1874,7 @@
 /obj/item/clothing/head/helmet/space/syndicate/black/orange,
 /obj/item/clothing/mask/gas/syndicate,
 /obj/item/tank/oxygen,
-/turf/simulated/shuttle{
-	= = _state = "floor2"
-	},
+/turf/simulated/floor,
 /area/awaymission/wwrefine)
 "gX" = (
 /obj/structure/grille,
@@ -1937,15 +1890,19 @@
 /obj/structure/window/reinforced{
 	= = _state = "fwindow"
 	},
-/turf/simulated/shuttle{
-	= = _state = "floor2"
-	},
+/turf/simulated/floor,
 /area/awaymission/wwrefine)
 "gY" = (
 /obj/item/paper{
 	info = "The syndicate have invaded.  Their ships appeared out of nowhere and now they likely intend to kill us all and take everything.  On the off-chance that the Vault may grant us sanctuary, many of us have decided to force our way inside and bolt the door, taking as many provisions with us as we can carry.  In case you find this, send for help immediately and open the Vault. Find us inside.";
 	name = "Planer Saul's Journal: Page 8"
 	},
+/turf/simulated/floor/plating{
+	= = _state = "ironsand1"
+	},
+/area/awaymission/wwmines)
+"zb" = (
+/obj/machinery/door/airlock/sandstone,
 /turf/simulated/floor/plating{
 	= = _state = "ironsand1"
 	},
@@ -16587,9 +16544,9 @@ aa
 aa
 aa
 gJ
-gP
-gP
-gP
+eu
+eu
+eu
 gS
 gO
 gO
@@ -16844,12 +16801,12 @@ fo
 fo
 gG
 gK
-gP
-gP
-gP
-gP
-gP
-gP
+eu
+eu
+eu
+eu
+eu
+eu
 gW
 gJ
 aa
@@ -17101,12 +17058,12 @@ eu
 eu
 fd
 gL
-gP
-gP
-gP
-gP
-gP
-gP
+eu
+eu
+eu
+eu
+eu
+eu
 gW
 gX
 aa
@@ -17358,12 +17315,12 @@ fo
 fo
 gG
 gM
-gP
-gP
-gP
-gP
-gP
-gP
+eu
+eu
+eu
+eu
+eu
+eu
 gW
 gJ
 aa
@@ -17615,9 +17572,9 @@ aa
 aa
 aa
 gJ
-gP
-gP
-gP
+eu
+eu
+eu
 gT
 gO
 gO
@@ -39956,11 +39913,11 @@ bj
 bj
 bj
 aN
-eX
-eX
-eX
-eX
-eX
+aT
+aT
+aT
+aT
+aT
 dj
 bj
 aN
@@ -40213,11 +40170,11 @@ bj
 eC
 dM
 aN
-eX
-eX
-eX
+aT
+aT
+aT
 fw
-eX
+aT
 dj
 bj
 aN
@@ -40471,10 +40428,10 @@ eC
 bD
 aN
 eY
-eX
-fn
-eX
-eX
+aT
+dw
+aT
+aT
 dj
 bj
 aN
@@ -40728,10 +40685,10 @@ eC
 bD
 aN
 eZ
-fg
-eX
-eX
-fI
+fC
+aT
+aT
+aY
 aN
 bj
 bj
@@ -40986,10 +40943,10 @@ dM
 aN
 fa
 fh
-eX
-eX
-eX
-dL
+aT
+aT
+aT
+zb
 bj
 bj
 bj
@@ -41245,7 +41202,7 @@ fa
 fi
 fi
 fw
-eX
+aT
 aN
 dj
 dj
@@ -41499,18 +41456,18 @@ bj
 bj
 aN
 fb
-eX
-eX
-eX
-eX
-eX
-eX
-eX
-eX
-eX
-eX
-eX
-eX
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
 aN
 aN
 aG
@@ -41756,18 +41713,18 @@ bj
 bj
 aN
 fb
-eX
-eX
-eX
-fI
-eX
+aT
+aT
+aT
+aY
+aT
 fw
-eX
-eX
-fI
+aT
+aT
+aY
 fw
-eX
-eX
+aT
+aT
 aN
 aN
 aG
@@ -42012,19 +41969,19 @@ bj
 bj
 bj
 aN
-eX
-eX
-eX
-eX
-eX
-eX
-eX
-eX
-eX
-eX
-eX
-eX
-eX
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
 aN
 aN
 aG

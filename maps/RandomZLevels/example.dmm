@@ -266,20 +266,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/example)
 "aN" = (
-/turf/simulated/floor{
-	icon_state = "yellowcorner"
-	},
-/area/awaymission/example)
-"aO" = (
-/turf/simulated/floor{
-	icon_state = "yellow"
-	},
-/area/awaymission/example)
-"aP" = (
-/turf/simulated/floor{
-	dir = 8;
-	icon_state = "yellowcorner"
-	},
+/turf/simulated/floor/tiled/white,
 /area/awaymission/example)
 "aQ" = (
 /turf/simulated/floor{
@@ -287,84 +274,54 @@
 	dir = 8
 	},
 /area/awaymission/example)
-"aR" = (
-/turf/simulated/floor{
-	icon_state = "whitehall"
-	},
-/area/awaymission/example)
-"aT" = (
-/turf/simulated/floor{
-	icon_state = "white"
-	},
-/area/awaymission/example)
 "aU" = (
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor{
-	icon_state = "white"
-	},
+/turf/simulated/floor/tiled/white,
 /area/awaymission/example)
 "aV" = (
 /obj/machinery/vending/cola,
-/turf/simulated/floor{
-	icon_state = "white"
-	},
+/turf/simulated/floor/tiled/white,
 /area/awaymission/example)
 "aW" = (
 /obj/machinery/vending/coffee,
-/turf/simulated/floor{
-	icon_state = "white"
-	},
+/turf/simulated/floor/tiled/white,
 /area/awaymission/example)
 "aX" = (
 /obj/machinery/door/airlock/medical,
-/turf/simulated/floor{
-	icon_state = "white"
-	},
+/turf/simulated/floor/tiled/white,
 /area/awaymission/example)
 "bb" = (
 /obj/structure/table/standard,
 /obj/item/healthanalyzer,
-/turf/simulated/floor{
-	icon_state = "white"
-	},
+/turf/simulated/floor/tiled/white,
 /area/awaymission/example)
 "be" = (
 /obj/structure/table/standard,
 /obj/item/mass_spectrometer/adv,
-/turf/simulated/floor{
-	icon_state = "white"
-	},
+/turf/simulated/floor/tiled/white,
 /area/awaymission/example)
 "bf" = (
 /obj/structure/table/standard,
 /obj/item/reagent_containers/glass/beaker,
-/turf/simulated/floor{
-	icon_state = "white"
-	},
+/turf/simulated/floor/tiled/white,
 /area/awaymission/example)
 "bg" = (
 /obj/structure/table/standard,
 /obj/item/folder/white,
 /obj/item/pen/red,
-/turf/simulated/floor{
-	icon_state = "white"
-	},
+/turf/simulated/floor/tiled/white,
 /area/awaymission/example)
 "bh" = (
 /obj/machinery/light,
-/turf/simulated/floor{
-	icon_state = "white"
-	},
+/turf/simulated/floor/tiled/white,
 /area/awaymission/example)
 "bi" = (
 /obj/structure/table/standard,
 /obj/item/clipboard,
 /obj/item/reagent_containers/syringe/antiviral,
-/turf/simulated/floor{
-	icon_state = "white"
-	},
+/turf/simulated/floor/tiled/white,
 /area/awaymission/example)
 "bj" = (
 /obj/machinery/light{
@@ -373,22 +330,7 @@
 /turf/simulated/floor,
 /area/awaymission/example)
 "bk" = (
-/turf/simulated/floor{
-	dir = 4;
-	icon_state = "yellowcorner"
-	},
-/area/awaymission/example)
-"bl" = (
-/turf/simulated/floor{
-	dir = 1;
-	icon_state = "yellow"
-	},
-/area/awaymission/example)
-"bm" = (
-/turf/simulated/floor{
-	dir = 1;
-	icon_state = "yellowcorner"
-	},
+/turf/simulated/floor/wood,
 /area/awaymission/example)
 "bn" = (
 /obj/structure/window/reinforced,
@@ -447,22 +389,13 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
-/area/awaymission/example)
-"bt" = (
-/turf/simulated/floor{
-	icon_state = "bar"
-	},
+/turf/simulated/floor/tiled/white,
 /area/awaymission/example)
 "bu" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor{
-	icon_state = "bar"
-	},
+/turf/simulated/floor/wood,
 /area/awaymission/example)
 "bv" = (
 /obj/effect/landmark{
@@ -474,45 +407,33 @@
 /obj/machinery/door/airlock{
 	name = "Unit 1"
 	},
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/tiled/white,
 /area/awaymission/example)
 "bx" = (
 /obj/machinery/door/airlock{
 	name = "Unit 2"
 	},
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/tiled/white,
 /area/awaymission/example)
 "by" = (
 /obj/structure/table/standard,
-/turf/simulated/floor{
-	icon_state = "bar"
-	},
+/turf/simulated/floor/wood,
 /area/awaymission/example)
 "bA" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/simulated/floor{
-	icon_state = "bar"
-	},
+/turf/simulated/floor/wood,
 /area/awaymission/example)
 "bB" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/simulated/floor{
-	icon_state = "bar"
-	},
+/turf/simulated/floor/wood,
 /area/awaymission/example)
 "bC" = (
 /obj/structure/bed/chair/wood,
-/turf/simulated/floor{
-	icon_state = "bar"
-	},
+/turf/simulated/floor/wood,
 /area/awaymission/example)
 "bD" = (
 /obj/structure/sink{
@@ -520,45 +441,26 @@
 	pixel_x = -12;
 	pixel_y = 2
 	},
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
-/area/awaymission/example)
-"bE" = (
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
-/area/awaymission/example)
-"bF" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/tiled/white,
 /area/awaymission/example)
 "bG" = (
 /obj/machinery/door/airlock{
 	name = "Unisex Restrooms";
 	req_access_txt = "0"
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/tiled/white,
 /area/awaymission/example)
 "bH" = (
 /obj/machinery/vending/boozeomat{
 	density = 0;
 	pixel_x = -32
 	},
-/turf/simulated/floor{
-	icon_state = "bar"
-	},
+/turf/simulated/floor/wood,
 /area/awaymission/example)
 "bI" = (
 /obj/structure/table/standard,
 /obj/item/reagent_containers/food/drinks/cans/cola,
-/turf/simulated/floor{
-	icon_state = "bar"
-	},
+/turf/simulated/floor/wood,
 /area/awaymission/example)
 "bJ" = (
 /obj/structure/bookcase{
@@ -568,15 +470,11 @@
 /obj/item/book/manual/barman_recipes,
 /obj/item/book/manual/chef_recipes,
 /obj/item/book/manual/ripley_build_and_repair,
-/turf/simulated/floor{
-	icon_state = "bar"
-	},
+/turf/simulated/floor/wood,
 /area/awaymission/example)
 "bL" = (
 /obj/structure/table/woodentable,
-/turf/simulated/floor{
-	icon_state = "bar"
-	},
+/turf/simulated/floor/wood,
 /area/awaymission/example)
 "bN" = (
 /obj/structure/bookcase{
@@ -585,16 +483,12 @@
 	},
 /obj/item/book/manual/security_space_law,
 /obj/item/book/manual/security_space_law,
-/turf/simulated/floor{
-	icon_state = "bar"
-	},
+/turf/simulated/floor/wood,
 /area/awaymission/example)
 "bO" = (
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/drinks/bottle/wine,
-/turf/simulated/floor{
-	icon_state = "bar"
-	},
+/turf/simulated/floor/wood,
 /area/awaymission/example)
 "bQ" = (
 /obj/machinery/vending/snack,
@@ -606,28 +500,20 @@
 /obj/item/paper{
 	info = "X X O<br>X O X<br>O X"
 	},
-/turf/simulated/floor{
-	icon_state = "bar"
-	},
+/turf/simulated/floor/wood,
 /area/awaymission/example)
 "bS" = (
 /obj/structure/musician/piano,
-/turf/simulated/floor{
-	icon_state = "bar"
-	},
+/turf/simulated/floor/wood,
 /area/awaymission/example)
 "bT" = (
 /obj/machinery/light/small,
-/turf/simulated/floor{
-	icon_state = "bar"
-	},
+/turf/simulated/floor/wood,
 /area/awaymission/example)
 "bU" = (
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/snacks/validsalad,
-/turf/simulated/floor{
-	icon_state = "bar"
-	},
+/turf/simulated/floor/wood,
 /area/awaymission/example)
 "bV" = (
 /obj/machinery/vending/cigarette,
@@ -715,12 +601,6 @@
 /obj/machinery/door/airlock,
 /turf/simulated/floor,
 /area/awaymission/example)
-"cl" = (
-/turf/simulated/floor{
-	dir = 4;
-	icon_state = "yellow"
-	},
-/area/awaymission/example)
 "cm" = (
 /obj/item/paper{
 	info = "Hey Ted, remind me to take Angeline out some time before I ship out. You know how bad my memory is, so don't get all high and mighty with me. READ THIS.";
@@ -741,9 +621,7 @@
 	name = "friday night"
 	},
 /obj/item/cigbutt,
-/turf/simulated/floor{
-	icon_state = "yellowcorner"
-	},
+/turf/simulated/floor/wood,
 /area/awaymission/example)
 "cp" = (
 /obj/item/trash/pistachios,
@@ -1240,8 +1118,8 @@ aa
 ab
 bs
 bw
-bE
-bE
+aN
+aN
 ab
 aa
 aa
@@ -1306,8 +1184,8 @@ aa
 ab
 ab
 ab
-bF
-bE
+aU
+aN
 ab
 aa
 aa
@@ -1372,8 +1250,8 @@ aa
 ab
 bs
 bx
-bE
-bE
+aN
+aN
 ab
 aa
 aa
@@ -1766,11 +1644,11 @@ ac
 aQ
 ac
 ab
-bt
-bt
+bk
+bk
 bH
-bt
-bt
+bk
+bk
 ab
 bW
 ch
@@ -1842,7 +1720,7 @@ bX
 ac
 ac
 cn
-aO
+bk
 aQ
 aD
 ab
@@ -1898,17 +1776,17 @@ ac
 aQ
 bk
 bn
-bt
-bt
-bt
-bt
-bt
+bk
+bk
+bk
+bk
+bk
 ab
 bY
 ac
 ac
 bp
-aP
+bk
 aQ
 ac
 ab
@@ -1962,13 +1840,13 @@ aa
 ab
 ac
 aQ
-bl
+bk
 bo
-bt
-bt
-bt
-bt
-bt
+bk
+bk
+bk
+bk
+bk
 ab
 ac
 ac
@@ -2028,13 +1906,13 @@ aa
 ab
 ac
 aQ
-bm
+bk
 bn
-bt
+bk
 bA
-bt
-bt
-bt
+bk
+bk
+bk
 ab
 bZ
 ac
@@ -2042,7 +1920,7 @@ ac
 bq
 ac
 aQ
-bl
+bk
 ck
 cq
 cq
@@ -2099,16 +1977,16 @@ ab
 ab
 ab
 bJ
-bt
+bk
 bS
 ab
 ca
 ac
 ac
 br
-aN
+bk
 aQ
-bm
+bk
 ab
 cr
 cu
@@ -2164,15 +2042,15 @@ ac
 bp
 aa
 bp
-bt
-bt
-bt
+bk
+bk
+bk
 ab
 cb
 ac
 ac
 cn
-aO
+bk
 aQ
 ac
 ab
@@ -2231,14 +2109,14 @@ bq
 bv
 bq
 bL
-bt
+bk
 bT
 ab
 cc
 aC
 ac
 ab
-aP
+bk
 aQ
 aD
 ab
@@ -2296,9 +2174,9 @@ ac
 br
 aa
 br
-bt
-bt
-bt
+bk
+bk
+bk
 ab
 ab
 ab
@@ -2363,7 +2241,7 @@ ab
 ab
 ab
 bN
-bt
+bk
 bU
 ab
 cd
@@ -2426,11 +2304,11 @@ ac
 aQ
 bk
 bn
-bt
+bk
 bB
-bt
-bt
-bt
+bk
+bk
+bk
 ab
 aw
 aJ
@@ -2490,13 +2368,13 @@ aa
 ab
 ac
 aQ
-bl
+bk
 bo
-bt
-bt
-bt
-bt
-bt
+bk
+bk
+bk
+bk
+bk
 ab
 ab
 ab
@@ -2556,12 +2434,12 @@ aa
 ab
 ac
 aQ
-bm
+bk
 bn
-bt
+bk
 bC
 bO
-bt
+bk
 bA
 ab
 ce
@@ -2828,8 +2706,8 @@ ac
 ac
 bj
 ac
-aN
-cl
+bk
+bk
 bk
 ac
 ac
@@ -3463,12 +3341,12 @@ ac
 aQ
 ac
 ab
-aT
-aT
-aT
+aN
+aN
+aN
 ab
-aT
-aT
+aN
+aN
 bf
 ab
 aa
@@ -3529,12 +3407,12 @@ ac
 aQ
 aD
 ab
-aT
-aT
-aT
+aN
+aN
+aN
 aX
-aT
-aT
+aN
+aN
 bg
 ab
 aa
@@ -3596,11 +3474,11 @@ aQ
 ac
 ab
 aU
-aT
-aT
+aN
+aN
 ab
-aT
-aT
+aN
+aN
 bh
 ab
 aa
@@ -3660,14 +3538,14 @@ ab
 ac
 aQ
 ac
-aR
-aT
-aT
-aT
+aN
+aN
+aN
+aN
 bp
-aT
-aT
-aT
+aN
+aN
+aN
 ab
 aa
 aa
@@ -3726,10 +3604,10 @@ ab
 ac
 aQ
 ac
-aR
-aT
-aT
-aT
+aN
+aN
+aN
+aN
 br
 bb
 be
@@ -3855,7 +3733,7 @@ ac
 aK
 aL
 aK
-aO
+aN
 aQ
 ac
 ab
@@ -3921,7 +3799,7 @@ ac
 ab
 ab
 ab
-aP
+aN
 aQ
 aD
 ab
