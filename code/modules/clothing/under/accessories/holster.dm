@@ -179,3 +179,24 @@
 	name = "KA holster"
 	desc = "A specialized holster, made specifically for kinetic accelerators."
 	can_hold = list(/obj/item/gun/energy/kinetic_accelerator)
+
+/obj/item/clothing/accessory/holster/holy
+	name = "holy weapon scabbard"
+	desc = "A consecrated morphic scabbard etched with arcane runes. The device of a golden eye has been worked into the buckle."
+	icon_state = "holster_machete"
+	slot = ACCESSORY_SLOT_WEAPON
+	concealed_holster = 0
+	can_hold = list(/obj/item/nullrod)
+	sound_in = 'sound/effects/holster/sheathin.ogg'
+	sound_out = 'sound/effects/holster/sheathout.ogg'
+	holster_verb = "sheathe"
+//List of Cans and Cant's for if we ever want to restrict weapons that can fit the scabbard.
+/*
+	can_hold = list(/obj/item/nullrod, /obj/item/nullrod/claymore, /obj/item/nullrod/scythe/vibro, /obj/item/nullrod/scythe/spellblade, /obj/item/nullrod/clown, /obj/item/nullrod/whip,
+					/obj/item/nullrod/tribal_knife
+				)
+	cant_hold = list(/obj/item/nullrod/godhand, /obj/item/nullrod/staff, /obj/item/nullrod/scythe, /obj/item/nullrod/hammmer, /obj/item/nullrod/chainsaw, /obj/item/nullrod/pride_hammer,
+					/obj/item/nullrod/fedora, /obj/item/nullrod/armblade, /obj/item/nullrod/carp, /obj/item/nullrod/claymore/bostaff, /obj/item/nullrod/pitchfork, /obj/item/nullrod/egyptian,
+					/obj/item/nullrod/rosary
+				)
+*/
