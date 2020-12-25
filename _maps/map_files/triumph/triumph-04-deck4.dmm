@@ -518,6 +518,7 @@
 /obj/effect/floor_decal/grass_edge{
 	dir = 1
 	},
+/obj/machinery/camera/network/civilian,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "avO" = (
@@ -2767,6 +2768,7 @@
 /obj/effect/floor_decal/grass_edge{
 	dir = 1
 	},
+/obj/machinery/camera/network/civilian,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "bXv" = (
@@ -6416,6 +6418,9 @@
 /area/shuttle/excursion/general)
 "eDN" = (
 /obj/structure/table/steel,
+/obj/machinery/camera/network/security{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/security/prison)
 "eDP" = (
@@ -8161,6 +8166,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
+"fNk" = (
+/obj/machinery/camera/network/security{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/security/riot_control)
 "fOb" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/effect/floor_decal/techfloor{
@@ -9008,6 +9019,11 @@
 /obj/structure/table/steel,
 /turf/simulated/floor/tiled,
 /area/security/interrogation)
+"gxf" = (
+/obj/effect/floor_decal/steeldecal/steel_decals6,
+/obj/machinery/camera/network/security,
+/turf/simulated/floor/tiled,
+/area/security/brig)
 "gxh" = (
 /obj/structure/cable/cyan{
 	d1 = 2;
@@ -12937,6 +12953,10 @@
 /obj/item/book/manual/chef_recipes,
 /turf/simulated/floor/wood,
 /area/library)
+"jjl" = (
+/obj/machinery/camera/network/security,
+/turf/simulated/floor/tiled,
+/area/security/brig)
 "jjp" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -14018,6 +14038,10 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
+/area/security/hallway)
+"kaK" = (
+/obj/machinery/camera/network/security,
+/turf/simulated/floor/wood,
 /area/security/hallway)
 "kaQ" = (
 /obj/structure/cable{
@@ -15135,6 +15159,16 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
+"kUG" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 1
+	},
+/obj/machinery/camera/network/security,
+/turf/simulated/floor/tiled,
+/area/security/hallwayaux)
 "kVu" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass_security{
@@ -15562,6 +15596,9 @@
 /area/maintenance/chapel)
 "lmI" = (
 /obj/machinery/hologram/holopad,
+/obj/machinery/camera/network/security{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/security/visitor)
 "lmK" = (
@@ -20218,6 +20255,9 @@
 	dir = 4;
 	pixel_x = 24
 	},
+/obj/machinery/camera/network/security{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/security/visitor)
 "oCE" = (
@@ -23011,10 +23051,9 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/lawoffice)
 "qos" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/maintenance,
-/turf/simulated/floor/plating,
-/area/library)
+/obj/machinery/camera/network/exploration,
+/turf/simulated/floor/tiled,
+/area/triumph/station/explorer_prep)
 "qpb" = (
 /obj/structure/closet/crate/mimic,
 /turf/simulated/floor/plating,
@@ -29376,8 +29415,8 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/red/border{
-	dir = 8
+/obj/machinery/camera/network/security{
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/security/security_cell_hallway)
@@ -33066,9 +33105,6 @@
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/cargo)
 "xnz" = (
-/obj/machinery/camera/network/security{
-	dir = 1
-	},
 /obj/machinery/button/remote/blast_door{
 	dir = 4;
 	id = "Visitor 2";
@@ -37243,7 +37279,7 @@ rmO
 bjf
 eDN
 nZM
-aIm
+jjl
 tZM
 vnf
 aIm
@@ -37811,7 +37847,7 @@ wne
 bjf
 eDN
 nZM
-qKY
+gxf
 aIm
 iMY
 dgA
@@ -39513,7 +39549,7 @@ oVv
 oVv
 luu
 pks
-kGr
+fNk
 kGr
 qbl
 kGr
@@ -42313,7 +42349,7 @@ iEQ
 wFO
 wFO
 fXg
-qos
+iEQ
 xkZ
 amB
 rXs
@@ -43050,7 +43086,7 @@ vqd
 rPo
 dFV
 dFV
-xWo
+kaK
 oFO
 xWo
 xVF
@@ -43433,7 +43469,7 @@ nIK
 nIK
 nIK
 sJC
-cVO
+qos
 cVO
 cMy
 cMy
@@ -44328,7 +44364,7 @@ mkI
 dHb
 dHb
 qHU
-jiv
+kUG
 igD
 umM
 bJS
