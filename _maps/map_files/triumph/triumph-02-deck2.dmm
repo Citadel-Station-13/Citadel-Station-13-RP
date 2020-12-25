@@ -977,6 +977,9 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
+/obj/machinery/camera/network/engineering{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/dormitory)
 "dh" = (
@@ -9310,6 +9313,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
+/obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "Cy" = (
@@ -11117,15 +11121,6 @@
 "Ij" = (
 /turf/simulated/wall/r_wall,
 /area/hallway/primary/port)
-"Il" = (
-/obj/machinery/hologram/holopad,
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled,
-/area/quartermaster/office)
 "Im" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/structure/cable/yellow{
@@ -11519,6 +11514,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/miningdock)
 "Jn" = (
+/obj/machinery/hologram/holopad,
 /turf/simulated/floor/lino,
 /area/crew_quarters/coffee_shop)
 "Jo" = (
@@ -15137,10 +15133,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
-"Va" = (
-/obj/machinery/hologram/holopad,
-/turf/simulated/floor/tiled/monotile,
-/area/crew_quarters/coffee_shop)
 "Vb" = (
 /obj/machinery/mineral/equipment_vendor,
 /obj/effect/floor_decal/borderfloor{
@@ -26160,7 +26152,7 @@ op
 Ib
 dk
 WB
-Va
+AW
 Li
 AW
 tk
@@ -26431,7 +26423,7 @@ Js
 iI
 sb
 Ak
-Il
+zX
 FO
 Bc
 aI
