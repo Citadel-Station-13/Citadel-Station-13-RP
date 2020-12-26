@@ -37,6 +37,8 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
 "ah" = (
@@ -357,9 +359,6 @@
 /turf/simulated/floor/tiled,
 /area/vacant/vacant_shop)
 "bd" = (
-/obj/machinery/status_display/supply_display{
-	pixel_y = -32
-	},
 /obj/structure/ore_box,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled,
@@ -709,6 +708,9 @@
 	icon_state = "2-4"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/camera/network/civilian{
+	dir = 4
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "cm" = (
@@ -976,9 +978,6 @@
 	d1 = 1;
 	d2 = 8;
 	icon_state = "1-8"
-	},
-/obj/machinery/camera/network/engineering{
-	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/dormitory)
@@ -1259,6 +1258,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
 "ed" = (
@@ -1643,6 +1644,7 @@
 /area/crew_quarters/freezer)
 "eY" = (
 /obj/machinery/status_display/supply_display{
+	mode = 99;
 	pixel_y = 32
 	},
 /obj/structure/table/rack,
@@ -2787,12 +2789,12 @@
 /obj/machinery/alarm{
 	pixel_y = 22
 	},
-/obj/structure/ore_box,
-/obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /obj/machinery/camera/network/cargo,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/ore_box,
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/uxstorage)
 "hZ" = (
@@ -3163,6 +3165,7 @@
 /area/janitor)
 "iZ" = (
 /obj/machinery/status_display/supply_display{
+	mode = 99;
 	pixel_y = -32
 	},
 /obj/effect/floor_decal/industrial/outline/red,
@@ -3361,6 +3364,7 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
+/obj/machinery/hologram/holopad,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "jI" = (
@@ -3865,8 +3869,8 @@
 	name = "Cargo Docking Hatch"
 	},
 /obj/machinery/conveyor{
-	dir = 4;
-	id = "QMLoad"
+	dir = 8;
+	id = "QMLoad2"
 	},
 /turf/simulated/floor/plating,
 /area/quartermaster/warehouse)
@@ -4036,6 +4040,9 @@
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
+	},
+/obj/machinery/camera/network/engineering{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/dormitory)
@@ -4842,6 +4849,9 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/camera/network/civilian{
+	dir = 8
+	},
 /turf/simulated/floor/wood,
 /area/hallway/primary/port)
 "oh" = (
@@ -5557,12 +5567,14 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
 "qR" = (
-/obj/machinery/conveyor{
-	dir = 4;
-	id = "QMLoad"
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/quartermaster/warehouse)
+/area/triumph/surfacebase/mining_main/refinery)
 "qS" = (
 /obj/machinery/light_switch{
 	pixel_x = 25
@@ -5842,6 +5854,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
+/obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "rM" = (
@@ -6516,6 +6529,8 @@
 /obj/machinery/door/airlock/glass_mining{
 	name = "Mining Prep Room"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
 "tw" = (
@@ -7459,11 +7474,9 @@
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/mining_ship/general)
 "wz" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
-/turf/simulated/wall,
-/area/triumph/station/stairs_two)
+/obj/machinery/hologram/holopad,
+/turf/simulated/floor/wood,
+/area/crew_quarters/bar)
 "wA" = (
 /obj/machinery/vending/cigarette,
 /turf/simulated/floor/wood,
@@ -7524,12 +7537,8 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
 "wQ" = (
@@ -7833,15 +7842,11 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "xK" = (
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
+/obj/machinery/camera/network/civilian{
+	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/refinery)
+/turf/simulated/floor/wood,
+/area/hallway/primary/port)
 "xL" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -8918,6 +8923,7 @@
 	dir = 8
 	},
 /obj/structure/table/rack,
+/obj/item/camera_assembly,
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/dormitory)
 "Bo" = (
@@ -9004,7 +9010,6 @@
 /obj/machinery/status_display/supply_display{
 	pixel_y = 32
 	},
-/obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "BH" = (
@@ -9250,15 +9255,10 @@
 /turf/simulated/floor/airless,
 /area/space)
 "Cp" = (
-/obj/structure/table/rack,
-/obj/item/clothing/head/helmet/space/void/mining,
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/shoes/magboots,
-/obj/item/clothing/suit/space/void/mining,
-/obj/item/mining_scanner,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
-/obj/item/tank/jetpack/oxygen,
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
 "Cq" = (
@@ -9489,8 +9489,12 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "Da" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
 "Db" = (
@@ -9828,14 +9832,24 @@
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/freezer)
 "El" = (
+/obj/structure/table/rack,
+/obj/item/clothing/head/helmet/space/void/mining,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/shoes/magboots,
+/obj/item/clothing/suit/space/void/mining,
+/obj/item/mining_scanner,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/item/tank/jetpack/oxygen,
+/obj/item/radio/intercom{
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 26
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
 "En" = (
@@ -9943,15 +9957,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/dormitory)
-"EG" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/airlock/glass_mining{
-	name = "Mining Prep Room"
-	},
-/turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
 "EH" = (
 /obj/structure/closet/crate/trashcart,
 /obj/random/maintenance/cargo,
@@ -11767,25 +11772,20 @@
 /area/crew_quarters/recreation_area_hallway)
 "Kf" = (
 /obj/structure/table/rack,
+/obj/item/clothing/head/helmet/space/void/mining,
+/obj/item/clothing/mask/breath,
 /obj/item/clothing/shoes/magboots,
 /obj/item/clothing/suit/space/void/mining,
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/head/helmet/space/void/mining,
 /obj/item/mining_scanner,
+/obj/item/tank/jetpack/oxygen,
+/obj/machinery/light{
+	dir = 1
+	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
 	},
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 5
-	},
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/item/tank/jetpack/oxygen,
-/obj/item/radio/intercom{
-	dir = 1;
-	name = "Station Intercom (General)";
-	pixel_y = 26
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
@@ -12308,6 +12308,7 @@
 /area/crew_quarters/coffee_shop)
 "Mc" = (
 /obj/machinery/status_display/supply_display{
+	mode = 99;
 	pixel_y = 32
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -12433,6 +12434,7 @@
 	id = "QMLoad2"
 	},
 /obj/machinery/status_display/supply_display{
+	mode = 99;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled,
@@ -13379,10 +13381,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/port)
-"PH" = (
-/obj/machinery/hologram/holopad,
-/turf/simulated/floor/wood,
-/area/crew_quarters/bar)
 "PI" = (
 /obj/machinery/firealarm{
 	dir = 8;
@@ -13497,7 +13495,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/hologram/holopad,
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
@@ -13807,11 +13804,11 @@
 	locked = 1;
 	name = "Cargo Docking Hatch"
 	},
-/obj/machinery/conveyor{
-	dir = 4;
-	id = "QMLoad"
-	},
 /obj/machinery/shield_diffuser,
+/obj/machinery/conveyor{
+	dir = 8;
+	id = "QMLoad2"
+	},
 /turf/simulated/floor/plating,
 /area/quartermaster/warehouse)
 "Ra" = (
@@ -14287,21 +14284,6 @@
 "Sv" = (
 /turf/simulated/wall,
 /area/maintenance/cargo)
-"Sx" = (
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/hologram/holopad,
-/turf/simulated/floor/tiled,
-/area/hallway/primary/port)
 "Sy" = (
 /obj/machinery/firealarm{
 	dir = 1;
@@ -14505,15 +14487,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
-"Tb" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 1
-	},
-/turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/refinery)
 "Tc" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -14725,13 +14698,6 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
-"TH" = (
-/obj/machinery/conveyor{
-	dir = 4;
-	id = "QMLoad"
-	},
-/turf/simulated/floor,
-/area/quartermaster/warehouse)
 "TI" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -31
@@ -14900,6 +14866,9 @@
 "Uf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
+	},
+/obj/machinery/camera/network/civilian{
+	dir = 8
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/fitness)
@@ -19768,7 +19737,7 @@ Le
 Le
 Le
 Le
-Le
+wz
 Le
 Le
 qv
@@ -20335,7 +20304,7 @@ ze
 Az
 pZ
 Az
-PH
+Le
 en
 MN
 bA
@@ -20765,7 +20734,7 @@ eB
 jG
 Le
 Le
-PH
+Le
 Og
 Ng
 Ms
@@ -22035,7 +22004,7 @@ wD
 lK
 Lh
 tJ
-PH
+Le
 qv
 Le
 UW
@@ -24172,7 +24141,7 @@ As
 sU
 ub
 RH
-As
+xK
 Ny
 mQ
 xj
@@ -26158,7 +26127,7 @@ AW
 tk
 Ib
 VQ
-Sx
+Vv
 uU
 nz
 Ci
@@ -26555,7 +26524,7 @@ Ad
 KO
 or
 Ym
-Es
+qR
 ag
 ts
 ec
@@ -26697,9 +26666,9 @@ wp
 cP
 RB
 Ky
-Tb
-xK
-EG
+Es
+uW
+as
 El
 Da
 RQ
@@ -28265,7 +28234,7 @@ Mt
 kk
 kk
 kk
-qR
+GU
 kk
 KP
 KP
@@ -28407,7 +28376,7 @@ GU
 kk
 CK
 kk
-qR
+GU
 kk
 KP
 iZ
@@ -28549,7 +28518,7 @@ GU
 ZD
 XI
 DF
-qR
+GU
 Nj
 kk
 aQ
@@ -28833,7 +28802,7 @@ wl
 kk
 Uv
 kk
-TH
+wl
 kz
 ii
 ii
@@ -31983,7 +31952,7 @@ VN
 Rh
 kp
 jT
-wz
+jT
 jT
 jT
 CU
