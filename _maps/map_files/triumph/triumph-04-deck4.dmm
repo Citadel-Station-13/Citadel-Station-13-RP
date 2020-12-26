@@ -4578,7 +4578,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/security/evidence_storage)
+/area/security/hallway)
 "dpH" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 4
@@ -6886,7 +6886,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/security/evidence_storage)
+/area/security/hallway)
 "ePg" = (
 /obj/effect/landmark/shuttle,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -9253,7 +9253,7 @@
 	},
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/tiled,
-/area/security/evidence_storage)
+/area/security/hallway)
 "gHc" = (
 /obj/structure/cable/green{
 	d1 = 4;
