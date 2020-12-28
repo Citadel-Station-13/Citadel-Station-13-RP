@@ -944,14 +944,14 @@
 /area/engineering/atmos)
 "dR" = (
 /obj/effect/floor_decal/techfloor/orange,
-/obj/item/storage/belt,
-/obj/item/storage/belt,
-/obj/item/storage/belt,
-/obj/item/storage/belt,
 /obj/structure/table/rack{
 	dir = 8;
 	layer = 2.6
 	},
+/obj/item/storage/belt,
+/obj/item/storage/belt,
+/obj/item/storage/belt,
+/obj/item/storage/belt,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "dS" = (
@@ -1044,11 +1044,8 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/storage)
 "ei" = (
-/obj/machinery/light{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 9
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
@@ -2852,9 +2849,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
-	},
-/obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
@@ -5165,7 +5159,9 @@
 /turf/simulated/floor,
 /area/engineering/lower/corridor)
 "tI" = (
-/obj/machinery/atmospherics/pipe/manifold/visible/red,
+/obj/machinery/atmospherics/pipe/manifold/visible/red{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "tJ" = (
@@ -5362,7 +5358,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/red,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "uB" = (
@@ -5813,7 +5808,6 @@
 /turf/simulated/floor/plating,
 /area/engineering/storage)
 "wF" = (
-/obj/machinery/light,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -6890,6 +6884,9 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "AP" = (
@@ -7026,15 +7023,6 @@
 /obj/structure/lattice,
 /turf/space,
 /area/space)
-"Bt" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
-	dir = 2
-	},
-/obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 9
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/engineering/engine_room)
 "Bu" = (
 /obj/structure/railing{
 	dir = 8
@@ -8276,12 +8264,6 @@
 "FC" = (
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
-"FD" = (
-/obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 6
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/engineering/engine_room)
 "FF" = (
 /obj/machinery/camera/network/engineering,
 /obj/effect/landmark/start{
@@ -9616,6 +9598,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/light,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_airlock)
 "Kq" = (
@@ -10155,8 +10138,11 @@
 /turf/simulated/floor/tiled,
 /area/engineering/lower/corridor)
 "Mt" = (
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 2
+	},
 /obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 4
+	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
@@ -20758,7 +20744,7 @@ Cr
 Cr
 TW
 af
-FD
+tg
 ei
 np
 TW
@@ -20900,8 +20886,8 @@ aO
 gs
 iP
 YW
+HB
 tI
-xl
 Mt
 tg
 tg
@@ -21044,7 +21030,7 @@ rG
 AF
 kR
 uz
-Bt
+iE
 tg
 tg
 yW
@@ -21472,7 +21458,7 @@ uZ
 pB
 zz
 Oe
-tg
+Oe
 IN
 Nm
 HN
