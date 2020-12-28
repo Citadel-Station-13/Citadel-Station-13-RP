@@ -9176,6 +9176,7 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
+/mob/living/simple_mob/animal/sif/fluffy,
 /turf/simulated/floor/wood,
 /area/quartermaster/qm)
 "Ce" = (
