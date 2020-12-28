@@ -314,6 +314,7 @@
 /obj/machinery/light/small/emergency{
 	dir = 1
 	},
+/obj/machinery/computer/ship/engines,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_gas)
 "bd" = (
@@ -404,8 +405,8 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "bq" = (
-/obj/machinery/computer/ship/engines,
 /obj/machinery/camera/network/engineering,
+/obj/machinery/atmospherics/pipe/tank/phoron,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_gas)
 "br" = (
@@ -803,7 +804,9 @@
 /turf/simulated/floor/tiled,
 /area/engineering/lower/corridor)
 "dn" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow,
+/obj/machinery/atmospherics/pipe/manifold/visible/yellow{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_gas)
 "dr" = (
@@ -842,6 +845,7 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc{
+	cell_type = /obj/item/cell/super;
 	dir = 1;
 	name = "north bump";
 	pixel_y = 24
@@ -5522,6 +5526,15 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/storage)
+"vm" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/visible/fuel{
+	dir = 4
+	},
+/turf/simulated/wall/r_wall,
+/area/engineering/engine_gas)
 "vn" = (
 /obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
@@ -6770,6 +6783,12 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
 /area/engineering/locker_room)
+"Aj" = (
+/obj/machinery/atmospherics/pipe/simple/visible/yellow{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/engine_gas)
 "Al" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -17654,7 +17673,7 @@ XU
 XU
 XU
 XU
-Bs
+XU
 He
 Zj
 fN
@@ -17796,7 +17815,7 @@ Zj
 fN
 fN
 fN
-Zj
+fN
 fN
 Zj
 fN
@@ -17906,7 +17925,7 @@ fN
 fN
 fN
 Zj
-fN
+lc
 lc
 lc
 lc
@@ -17938,7 +17957,7 @@ Zj
 lc
 lc
 lc
-Zj
+lc
 fN
 Zj
 fN
@@ -18047,9 +18066,9 @@ fN
 fN
 fN
 fN
-Zj
 Sk
 lh
+vm
 ew
 hH
 Sk
@@ -18079,9 +18098,9 @@ fN
 Sk
 lh
 ew
+vm
 hH
 Sk
-fN
 Zj
 fN
 fN
@@ -18222,7 +18241,7 @@ Sk
 cR
 fa
 cR
-Sk
+cR
 Sk
 Zj
 fN
@@ -18475,7 +18494,7 @@ fN
 fN
 Sk
 bq
-cR
+Aj
 Ho
 Wp
 NK
@@ -18503,7 +18522,7 @@ Jc
 fN
 Sk
 bq
-cR
+Aj
 fm
 cR
 NK
