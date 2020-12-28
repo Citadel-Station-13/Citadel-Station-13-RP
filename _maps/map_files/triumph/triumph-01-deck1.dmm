@@ -5247,11 +5247,6 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "tW" = (
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /obj/machinery/door/airlock/hatch,
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
