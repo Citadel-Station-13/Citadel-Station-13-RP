@@ -1,0 +1,6 @@
+author: "UrsaMajora"
+delete-after: True
+changes: 
+  - rscadd: "cloakglowing and cloakglowingdark icons"
+  - rscadd: "cloakglowing and cloakglowingdark accessory items"
+  - rscadd: "Civilian Cloak - Glowing Light and Civilian Cloak - Glowing Dark as loadout selections"
