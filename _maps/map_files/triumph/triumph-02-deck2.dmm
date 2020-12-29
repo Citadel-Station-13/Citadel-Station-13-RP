@@ -262,6 +262,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/vacant/vacant_shop)
+"aP" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/airless,
+/area/space)
 "aQ" = (
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
@@ -20712,7 +20716,7 @@ ii
 ii
 ii
 ii
-ii
+aP
 SA
 ys
 Qh
@@ -20854,7 +20858,7 @@ ii
 ii
 ii
 ii
-ii
+aP
 IW
 MY
 vM

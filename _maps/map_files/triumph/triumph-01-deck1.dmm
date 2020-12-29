@@ -314,7 +314,7 @@
 /obj/machinery/light/small/emergency{
 	dir = 1
 	},
-/obj/machinery/computer/ship/engines,
+/obj/machinery/atmospherics/pipe/tank/phoron,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_gas)
 "bd" = (
@@ -2302,6 +2302,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "jf" = (
@@ -4765,7 +4766,6 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
@@ -4979,6 +4979,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
+"tc" = (
+/obj/machinery/computer/ship/engines,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/engine_gas)
 "td" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -6778,9 +6782,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/locker_room)
 "Aj" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
-	dir = 5
-	},
+/obj/machinery/atmospherics/pipe/manifold/visible/yellow,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_gas)
 "Al" = (
@@ -13446,6 +13448,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/lower/corridor)
+"Yi" = (
+/obj/machinery/atmospherics/pipe/simple/visible/yellow{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/engine_gas)
 "Yj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -13954,7 +13962,9 @@
 	req_access = null
 	},
 /obj/machinery/door/firedoor,
-/turf/simulated/wall/r_wall,
+/turf/simulated/floor/tiled{
+	icon_state = "techmaint"
+	},
 /area/engineering/atmos/storage)
 "ZX" = (
 /obj/structure/table/rack{
@@ -18314,7 +18324,7 @@ fN
 fN
 Sk
 bc
-cR
+Yi
 dz
 cR
 iT
@@ -18342,7 +18352,7 @@ zX
 fN
 Sk
 bc
-cR
+Yi
 dz
 cR
 iT
@@ -18884,7 +18894,7 @@ fN
 Sk
 dy
 fK
-cR
+tc
 Sk
 fN
 fN
@@ -18910,7 +18920,7 @@ Zj
 fN
 fN
 Sk
-cR
+tc
 pP
 cR
 Sk
