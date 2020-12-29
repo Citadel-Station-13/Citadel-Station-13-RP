@@ -265,7 +265,7 @@
 "aP" = (
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless,
-/area/space)
+/area/crew_quarters/bar)
 "aQ" = (
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
