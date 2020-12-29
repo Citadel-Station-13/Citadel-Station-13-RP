@@ -8925,7 +8925,8 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass_security{
 	name = "Security EVA";
-	req_one_access = list(2,18)
+	req_access = list(1,18);
+	req_one_access = null
 	},
 /turf/simulated/floor/tiled,
 /area/security/security_equiptment_storage)
@@ -21458,7 +21459,7 @@
 	},
 /obj/machinery/door/airlock/security{
 	name = "Evidence Storage";
-	req_one_access = list(2,4,18)
+	req_one_access = list(1,2,4)
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/dark,
@@ -21619,7 +21620,8 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass_security{
 	name = "Security EVA";
-	req_one_access = list(2,18)
+	req_access = list(1,18);
+	req_one_access = null
 	},
 /turf/simulated/floor/tiled,
 /area/security/security_equiptment_storage)
