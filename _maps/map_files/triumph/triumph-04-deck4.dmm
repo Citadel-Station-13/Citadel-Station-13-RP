@@ -4503,6 +4503,11 @@
 	req_access = list(3);
 	secured_wires = 1
 	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
 "dma" = (
@@ -5903,6 +5908,11 @@
 /obj/item/clothing/accessory/armor/legguards,
 /obj/item/clothing/accessory/armor/legguards,
 /obj/item/clothing/accessory/armor/legguards,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
 "egQ" = (
@@ -18324,11 +18334,6 @@
 	name = "Armory Access"
 	},
 /obj/machinery/door/firedoor,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -32655,6 +32660,11 @@
 /obj/item/shield_projector,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
