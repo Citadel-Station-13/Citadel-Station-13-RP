@@ -1126,6 +1126,7 @@
 	pixel_y = 25;
 	req_access = list(3)
 	},
+/obj/machinery/camera/network/security,
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
 "aRM" = (
@@ -12783,11 +12784,17 @@
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
 "iYU" = (
-/obj/machinery/camera/network/security{
-	dir = 1
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
 	},
-/turf/simulated/wall/r_wall,
-/area/security/range)
+/obj/effect/floor_decal/corner/green/border{
+	dir = 4
+	},
+/obj/machinery/camera/network/security{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/tactical)
 "jaL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -13431,6 +13438,18 @@
 /obj/structure/railing,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
+"jvA" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 4
+	},
+/obj/machinery/camera/network/security{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/armoury)
 "jwb" = (
 /obj/machinery/vending/coffee,
 /turf/simulated/floor/wood,
@@ -18446,6 +18465,16 @@
 /obj/effect/floor_decal/spline/plain,
 /turf/simulated/wall/r_wall,
 /area/security/riot_control)
+"nbs" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 1
+	},
+/obj/machinery/camera/network/security,
+/turf/simulated/floor/tiled/dark,
+/area/security/armoury)
 "nbt" = (
 /turf/simulated/floor/tiled/white,
 /area/security/security_bathroom)
@@ -46361,7 +46390,7 @@ rlP
 sbO
 mSD
 mSD
-iYU
+wZa
 dkV
 mJI
 mJI
@@ -48491,7 +48520,7 @@ qCI
 fJZ
 wXd
 vgx
-wha
+nbs
 oBA
 loy
 vgx
@@ -48628,7 +48657,7 @@ ash
 euU
 fRw
 ifO
-fRw
+iYU
 qDq
 fRw
 xnD
@@ -49625,7 +49654,7 @@ kYK
 pJf
 bZf
 urL
-cNP
+jvA
 cNP
 bZf
 cNP
