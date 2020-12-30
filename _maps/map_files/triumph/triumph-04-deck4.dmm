@@ -1451,6 +1451,7 @@
 /obj/structure/table/reinforced,
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/phase,
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/phase,
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/phase,
 /turf/simulated/floor/tiled,
 /area/security/security_equiptment_storage)
 "bem" = (
@@ -8193,6 +8194,7 @@
 	pixel_y = 26
 	},
 /obj/structure/table/reinforced,
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/microtaser,
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/microtaser,
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/microtaser,
 /turf/simulated/floor/tiled,
@@ -42629,8 +42631,8 @@ teu
 wcm
 wcm
 wcm
-iEQ
-deA
+qos
+kKQ
 amB
 rXs
 kKQ
@@ -42913,8 +42915,8 @@ iEQ
 wFO
 rel
 wFO
-qos
-kKQ
+iEQ
+deA
 amB
 rXs
 rXs
