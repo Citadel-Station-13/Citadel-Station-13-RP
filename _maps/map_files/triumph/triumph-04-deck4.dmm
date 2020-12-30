@@ -8908,7 +8908,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass_security{
 	name = "Security EVA";
-	req_access = list(1,18);
+	req_access = list(2,18);
 	req_one_access = null
 	},
 /turf/simulated/floor/tiled,
@@ -14967,7 +14967,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass_security{
 	name = "Security EVA";
-	req_access = list(1,18);
+	req_access = list(2,18);
 	req_one_access = null
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -20696,10 +20696,6 @@
 	name = "\improper Official On-Site Office"
 	})
 "oIi" = (
-/obj/machinery/door/airlock/glass_security{
-	name = "Interrogation";
-	req_one_access = list(1,2,4,38)
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -20710,6 +20706,11 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/security{
+	name = "Security Breakroom";
+	req_one_access = list(1,2,4)
 	},
 /turf/simulated/floor/wood,
 /area/security/breakroom)
