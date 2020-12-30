@@ -10,7 +10,8 @@
 					"Droid" = "droid-science",
 					"Drone" = "drone-science",
 					"Handy" = "handy-science",
-					"Insekt" = "insekt-Sci"
+					"Insekt" = "insekt-Sci",
+					"L3P1-D0T" = "Glitterfly-Research"
 					)
 
 /obj/item/robot_module/robot/research/New()

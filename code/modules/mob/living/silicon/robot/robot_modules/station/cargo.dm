@@ -13,7 +13,10 @@
 					"Basic" = "Miner_old",
 					"Advanced Droid" = "droid-miner",
 					"Treadhead" = "Miner",
-					"Drone" = "drone-miner"
+					"Drone" = "drone-miner",
+					"Misato" = "tall2miner",
+					"L3P1-D0T" = "Glitterfly-Miner",
+					"Miss M" = "miss-miner"
 				)
 
 /obj/item/robot_module/robot/miner/New()
