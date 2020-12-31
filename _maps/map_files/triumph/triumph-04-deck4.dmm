@@ -20796,6 +20796,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/tiled,
 /area/security/interrogation)
 "oFO" = (
@@ -44811,7 +44812,7 @@ nIw
 bxS
 tzJ
 sKM
-bbd
+brg
 qaE
 pZO
 pZO
@@ -45379,7 +45380,7 @@ mIQ
 qNU
 tzJ
 sKM
-brg
+bbd
 sfo
 sfo
 fRS
