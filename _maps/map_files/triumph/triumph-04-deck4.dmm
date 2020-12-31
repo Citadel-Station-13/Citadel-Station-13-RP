@@ -2242,6 +2242,8 @@
 /obj/effect/floor_decal/corner/green/border{
 	dir = 9
 	},
+/obj/item/gun/projectile/shotgun/pump/combat,
+/obj/item/gun/projectile/shotgun/pump/combat,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "bEA" = (
@@ -3245,6 +3247,8 @@
 /obj/item/gun/energy/laser,
 /obj/item/gun/energy/laser,
 /obj/item/gun/energy/laser,
+/obj/item/gun/energy/laser,
+/obj/item/gun/energy/laser,
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "cot" = (
@@ -3460,6 +3464,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/security/interrogation)
 "cvt" = (
@@ -5583,6 +5588,7 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/item/gun/projectile/colt,
 /obj/item/gun/projectile/colt,
+/obj/item/gun/projectile/colt,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "dZf" = (
@@ -5829,6 +5835,7 @@
 	dir = 1
 	},
 /obj/structure/table/rack/shelf/steel,
+/obj/item/gun/projectile/revolver,
 /obj/item/gun/projectile/revolver,
 /obj/item/gun/projectile/revolver,
 /turf/simulated/floor/tiled/dark,
@@ -6162,18 +6169,14 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 8
-	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/red/border{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/security/hallwayaux)
 "etn" = (
@@ -6212,6 +6215,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/item/gun/projectile/p92x/sec,
 /obj/item/gun/projectile/p92x/sec,
 /obj/item/gun/projectile/p92x/sec,
 /turf/simulated/floor/tiled/dark,
@@ -6639,9 +6643,6 @@
 /area/security/security_lockerroom)
 "eIX" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
-/obj/machinery/light{
-	dir = 1
-	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
@@ -7049,8 +7050,6 @@
 "eSY" = (
 /obj/structure/table/steel,
 /obj/fiftyspawner/glass,
-/obj/fiftyspawner/glass,
-/obj/fiftyspawner/steel,
 /obj/fiftyspawner/steel,
 /obj/fiftyspawner/steel,
 /obj/effect/floor_decal/borderfloorblack{
@@ -7059,6 +7058,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 1
 	},
+/obj/fiftyspawner/glass,
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "eTa" = (
@@ -10139,6 +10139,7 @@
 "hos" = (
 /obj/structure/closet/secure_closet/hos2,
 /obj/item/storage/box/firingpins,
+/obj/item/storage/belt/security,
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
 "hoy" = (
@@ -12308,9 +12309,6 @@
 /turf/simulated/floor/tiled,
 /area/security/riot_control)
 "iGl" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
-	dir = 8
-	},
 /obj/machinery/light{
 	dir = 1
 	},
@@ -12319,6 +12317,9 @@
 	},
 /obj/effect/floor_decal/corner/red/border{
 	dir = 1
+	},
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 2
 	},
 /turf/simulated/floor/tiled,
 /area/security/hallwayaux)
@@ -14894,13 +14895,13 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
-	dir = 8
-	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/red/border,
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = -37
+	},
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/security/hallwayaux)
@@ -16306,9 +16307,6 @@
 "lyp" = (
 /obj/structure/closet/secure_closet/hos,
 /obj/item/clothing/accessory/poncho/roles/cloak/hos,
-/obj/machinery/camera/network/security{
-	dir = 1
-	},
 /obj/machinery/newscaster{
 	pixel_y = 32
 	},
@@ -16837,8 +16835,10 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/security/interrogation)
 "lQQ" = (
@@ -21993,8 +21993,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/security/interrogation)
@@ -25816,6 +25816,9 @@
 /obj/structure/closet/crate/bin{
 	anchored = 1
 	},
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/security/interrogation)
 "rEZ" = (
@@ -29596,8 +29599,6 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
@@ -29608,6 +29609,12 @@
 	d1 = 1;
 	d2 = 4;
 	icon_state = "1-4"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/security/hallwayaux)
@@ -31624,6 +31631,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/item/gun/energy/gun/burst,
+/obj/item/gun/energy/gun/burst,
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "vJe" = (
@@ -34824,6 +34833,16 @@
 /obj/machinery/vending/coffee,
 /turf/simulated/floor/wood,
 /area/triumph/station/explorer_meeting)
+"xSb" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/security/interrogation)
 "xSo" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
@@ -43662,7 +43681,7 @@ hFX
 pnI
 hFe
 lQf
-lQf
+xSb
 mYQ
 oFB
 vPg
@@ -43801,7 +43820,7 @@ pWo
 brg
 lEQ
 cuW
-ufw
+dUE
 tLP
 msd
 iZw
@@ -45227,7 +45246,7 @@ dFV
 dFV
 dFV
 dFV
-jiv
+xcc
 igD
 umM
 bJS
@@ -45937,7 +45956,7 @@ mkI
 qHU
 lXQ
 qHU
-jiv
+xcc
 igD
 vXo
 xcn
