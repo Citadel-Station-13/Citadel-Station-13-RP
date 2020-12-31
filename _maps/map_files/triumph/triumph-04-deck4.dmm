@@ -10227,12 +10227,14 @@
 /area/hallway/primary/aft)
 "hqX" = (
 /obj/effect/floor_decal/borderfloor{
-	dir = 1
+	dir = 8
 	},
 /obj/effect/floor_decal/corner/red/border{
-	dir = 1
+	dir = 8
 	},
-/obj/machinery/camera/network/security,
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/security/hallwayaux)
 "hro" = (
@@ -12811,6 +12813,9 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
 	},
+/obj/machinery/light/small{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/security/interrogation)
 "jaL" = (
@@ -13011,6 +13016,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 1
 	},
+/obj/machinery/camera/network/security,
 /turf/simulated/floor/tiled,
 /area/security/hallwayaux)
 "jgZ" = (
@@ -13928,6 +13934,16 @@
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_entry)
+"jKV" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 1
+	},
+/obj/machinery/camera/network/security,
+/turf/simulated/floor/tiled,
+/area/security/hallwayaux)
 "jLt" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -21092,6 +21108,25 @@
 /area/bridge{
 	name = "\improper Official On-Site Office"
 	})
+"oOP" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/security/hallwayaux)
 "oPH" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -29569,9 +29604,6 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 4
 	},
-/obj/machinery/light{
-	dir = 4
-	},
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 4;
@@ -31851,9 +31883,6 @@
 /turf/simulated/floor/wood,
 /area/security/breakroom)
 "vPg" = (
-/obj/machinery/light{
-	dir = 1
-	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
@@ -31922,6 +31951,9 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/security/hallway)
 "vQy" = (
@@ -33594,6 +33626,18 @@
 	dir = 1
 	},
 /area/triumph/station/explorer_prep)
+"xcc" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/security/hallwayaux)
 "xce" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -45899,7 +45943,7 @@ vXo
 xcn
 xcn
 rgM
-xcn
+hqX
 jWc
 xcn
 fMx
@@ -46046,7 +46090,7 @@ upU
 upU
 uue
 plW
-wMx
+oOP
 wMx
 qAA
 lpq
@@ -46334,7 +46378,7 @@ wZa
 wZa
 wZa
 wZa
-hqX
+jiv
 jGz
 uWb
 rwW
@@ -46618,7 +46662,7 @@ gwd
 xZQ
 xZQ
 wZa
-jiv
+xcc
 dlU
 uWb
 omx
@@ -46760,7 +46804,7 @@ bwx
 eQz
 bwx
 wZa
-jiv
+jKV
 kgr
 vBq
 joY
@@ -47186,7 +47230,7 @@ gwN
 hQl
 jCj
 wZa
-hqX
+jiv
 jGz
 uWb
 uWb
@@ -48038,7 +48082,7 @@ vgx
 vgx
 vgx
 vgx
-jiv
+xcc
 dlU
 mSC
 trW
@@ -48180,7 +48224,7 @@ yaD
 qqE
 nwI
 vgx
-hqX
+jiv
 jGz
 nqG
 trW
