@@ -21454,15 +21454,7 @@
 	dir = 1
 	},
 /obj/item/clothing/shoes/magboots,
-/obj/item/clothing/suit/space/void/exploration,
-/obj/item/clothing/head/helmet/space/void/exploration,
 /obj/item/tank/jetpack/oxygen,
-/obj/item/clothing/suit/space/void/exploration{
-	armor = list("melee" = 50, "bullet" = 40, "laser" = 45, "energy" = 45, "bomb" = 30, "bio" = 100, "rad" = 70);
-	desc = "A heavier varient of the radiation-resistant voidsuit for explorations. This one features increased armor protection against small and medium arms fire, but comes at the cost of extra weight.";
-	move_speed = 7;
-	name = "heavy exploration voidsuit"
-	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
 	},
@@ -21470,6 +21462,8 @@
 	dir = 6
 	},
 /obj/item/pickaxe/drill,
+/obj/item/clothing/suit/space/void/exploration/pathfinder,
+/obj/item/clothing/head/helmet/space/void/exploration/pathfinder,
 /turf/simulated/floor/tiled/monotile,
 /area/triumph/station/pathfinder_office)
 "oVk" = (
