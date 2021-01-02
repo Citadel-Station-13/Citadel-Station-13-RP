@@ -1,4 +1,0 @@
-author: "TheLordME"
-delete-after: True
-changes: 
-  - bugfix: "Fixes ventcrawl-ejection on dieagonal movement"

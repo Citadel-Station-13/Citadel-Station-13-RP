@@ -12,7 +12,7 @@
 	access = list()			//See /datum/job/assistant/get_access()
 	minimal_access = list()	//See /datum/job/assistant/get_access()
 	outfit_type = /decl/hierarchy/outfit/job/assistant
-	alt_titles = list("Visitor" = /decl/hierarchy/outfit/job/assistant/visitor, "Server" = /decl/hierarchy/outfit/job/service/server, "Tourist", "Entertainer", "Morale Officer")
+	alt_titles = list("Visitor" = /decl/hierarchy/outfit/job/assistant/visitor, "Server" = /decl/hierarchy/outfit/job/service/server, "Assistant", "Entertainer", "Morale Officer")
 
 /datum/job/assistant/get_access()
 	if(config_legacy.assistant_maint)

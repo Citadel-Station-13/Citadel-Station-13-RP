@@ -18,7 +18,10 @@
 					"Landmate - Treaded" = "engiborg+tread",
 					"Drone" = "drone-engineer",
 					"Treadwell" = "treadwell",
-					"Handy" = "handy-engineer"
+					"Handy" = "handy-engineer",
+					"Misato" = "tall2engineer",
+					"L3P1-D0T" = "Glitterfly-Engineering",
+					"Miss M" = "miss-engineer"
 					)
 
 /obj/item/robot_module/robot/engineering/construction

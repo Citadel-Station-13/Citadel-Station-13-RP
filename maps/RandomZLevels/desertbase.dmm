@@ -27,7 +27,6 @@
 /area/space)
 "ah" = (
 /obj/effect/floor_decal/corner_steel_grid/full{
-	icon_state = "steel_grid_full";
 	dir = 4
 	},
 /turf/simulated/floor/beach/sand/desert,
@@ -102,28 +101,24 @@
 /area/space)
 "az" = (
 /obj/effect/floor_decal/corner_steel_grid/full{
-	icon_state = "steel_grid_full";
 	dir = 8
 	},
 /turf/simulated/floor/beach/sand/desert,
 /area/space)
 "aA" = (
 /obj/effect/floor_decal/corner_steel_grid/full{
-	icon_state = "steel_grid_full";
 	dir = 1
 	},
 /turf/simulated/floor/beach/sand/desert,
 /area/space)
 "aB" = (
 /obj/effect/floor_decal/corner_steel_grid{
-	icon_state = "steel_grid";
 	dir = 6
 	},
 /turf/simulated/floor/beach/sand/desert,
 /area/space)
 "aC" = (
 /obj/effect/floor_decal/corner_steel_grid{
-	icon_state = "steel_grid";
 	dir = 9
 	},
 /turf/simulated/floor/beach/sand/desert,
@@ -134,49 +129,42 @@
 /area/space)
 "aE" = (
 /obj/effect/floor_decal/corner_steel_grid{
-	icon_state = "steel_grid";
 	dir = 10
 	},
 /turf/simulated/floor/beach/sand/desert,
 /area/space)
 "aF" = (
 /obj/effect/floor_decal/corner_steel_grid{
-	icon_state = "steel_grid";
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/space)
 "aG" = (
 /obj/effect/floor_decal/corner_steel_grid{
-	icon_state = "steel_grid";
 	dir = 8
 	},
 /turf/simulated/floor/beach/sand/desert,
 /area/space)
 "aH" = (
 /obj/effect/floor_decal/industrial/danger{
-	icon_state = "danger";
 	dir = 9
 	},
 /turf/simulated/floor/reinforced,
 /area/space)
 "aI" = (
 /obj/effect/floor_decal/industrial/danger{
-	icon_state = "danger";
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
 /area/space)
 "aJ" = (
 /obj/effect/floor_decal/industrial/danger{
-	icon_state = "danger";
 	dir = 5
 	},
 /turf/simulated/floor/reinforced,
 /area/space)
 "aK" = (
 /obj/effect/floor_decal/industrial/danger{
-	icon_state = "danger";
 	dir = 8
 	},
 /turf/simulated/floor/reinforced,
@@ -186,7 +174,6 @@
 /area/space)
 "aM" = (
 /obj/effect/floor_decal/industrial/danger{
-	icon_state = "danger";
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
@@ -274,9 +261,7 @@
 	pixel_y = 3
 	},
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /turf/simulated/shuttle/floor/darkred,
 /area/space)
@@ -334,7 +319,6 @@
 "bd" = (
 /obj/structure/closet/secure_closet/medical_wall{
 	pixel_x = -32;
-	pixel_y = 0;
 	req_access = list(150)
 	},
 /obj/item/stack/medical/splint,
@@ -396,9 +380,7 @@
 	pixel_x = -25
 	},
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /turf/simulated/shuttle/floor/darkred,
 /area/space)
@@ -430,7 +412,6 @@
 "bp" = (
 /obj/machinery/flasher{
 	id = "syndieflash";
-	pixel_x = 0;
 	pixel_y = 28
 	},
 /obj/machinery/light/small{
@@ -443,7 +424,6 @@
 	desc = "Talk through this. Evilly";
 	frequency = 1213;
 	name = "Syndicate Intercom";
-	pixel_x = 0;
 	pixel_y = -32;
 	subspace_transmission = 1;
 	syndie = 1
@@ -494,9 +474,7 @@
 /area/space)
 "by" = (
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /turf/simulated/shuttle/floor/darkred,
 /area/space)
@@ -527,14 +505,12 @@
 /area/space)
 "bB" = (
 /obj/effect/floor_decal/corner_steel_grid{
-	icon_state = "steel_grid";
 	dir = 9
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/space)
 "bC" = (
 /obj/effect/floor_decal/corner_steel_grid{
-	icon_state = "steel_grid";
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -554,9 +530,7 @@
 /obj/machinery/button/flasher{
 	id = "syndieflash";
 	name = "Flasher";
-	pixel_x = 27;
-	pixel_y = 0;
-	
+	pixel_x = 27
 	},
 /turf/simulated/shuttle/floor/darkred,
 /area/space)
@@ -568,7 +542,7 @@
 /area/space)
 "bG" = (
 /obj/structure/table/standard,
-/obj/item/material/kitchen/utensil/knife{
+/obj/item/material/kitchen/utensil/fork/plastic{
 	pixel_x = -6
 	},
 /obj/item/reagent_containers/syringe/drugs{
@@ -584,9 +558,7 @@
 	pixel_y = 9
 	},
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /turf/simulated/shuttle/floor/darkred,
 /area/space)
@@ -626,9 +598,7 @@
 /area/space)
 "bN" = (
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /obj/machinery/sleeper{
 	dir = 8
@@ -685,9 +655,7 @@
 /obj/structure/table/standard,
 /obj/item/clothing/gloves/yellow,
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /turf/simulated/shuttle/floor/darkred,
 /area/space)
@@ -897,9 +865,7 @@
 /obj/structure/table/rack,
 /obj/item/multitool,
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /turf/simulated/shuttle/floor/darkred,
 /area/space)
@@ -959,9 +925,7 @@
 "ct" = (
 /obj/item/weldingtool,
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /turf/simulated/shuttle/floor/darkred,
 /area/space)
@@ -999,13 +963,10 @@
 "cy" = (
 /obj/structure/sink{
 	dir = 4;
-	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /obj/structure/closet/secure_closet/medical_wall{
 	pixel_x = 32;
-	pixel_y = 0;
 	req_access = list(150)
 	},
 /obj/item/tank/anesthetic,
@@ -1099,7 +1060,6 @@
 /area/space)
 "cO" = (
 /obj/effect/floor_decal/industrial/danger{
-	icon_state = "danger";
 	dir = 10
 	},
 /turf/simulated/floor/reinforced,
@@ -1110,28 +1070,24 @@
 /area/space)
 "cQ" = (
 /obj/effect/floor_decal/industrial/danger{
-	icon_state = "danger";
 	dir = 6
 	},
 /turf/simulated/floor/reinforced,
 /area/space)
 "cR" = (
 /obj/effect/floor_decal/corner_steel_grid{
-	icon_state = "steel_grid";
 	dir = 4
 	},
 /turf/simulated/floor/beach/sand/desert,
 /area/space)
 "cS" = (
 /obj/effect/floor_decal/corner_steel_grid{
-	icon_state = "steel_grid";
 	dir = 5
 	},
 /turf/simulated/floor/beach/sand/desert,
 /area/space)
 "cT" = (
 /obj/effect/floor_decal/corner_steel_grid{
-	icon_state = "steel_grid";
 	dir = 1
 	},
 /turf/simulated/floor/beach/sand/desert,
