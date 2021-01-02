@@ -7597,6 +7597,7 @@
 /obj/machinery/door/airlock/glass_medical{
 	name = "Paramedic Storage"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay)
 "gKp" = (
@@ -9442,6 +9443,7 @@
 /obj/machinery/door/airlock/medical{
 	name = "Operating Theatre 3 Viewing"
 	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/medical/surgery_hallway)
 "iDt" = (
@@ -11332,6 +11334,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery{
 	name = "\improper Operating Theatre 3"
@@ -13735,6 +13738,7 @@
 	name = "Operating Theatre 3 Prep";
 	req_access = list(45)
 	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "mWE" = (
