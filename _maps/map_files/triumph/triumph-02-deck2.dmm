@@ -7383,6 +7383,9 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -37
+	},
 /turf/simulated/floor/wood,
 /area/quartermaster/qm)
 "wg" = (
@@ -11799,6 +11802,9 @@
 	},
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 5
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 25
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
