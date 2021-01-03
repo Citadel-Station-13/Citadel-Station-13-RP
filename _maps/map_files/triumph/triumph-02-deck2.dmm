@@ -3616,6 +3616,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
+"ky" = (
+/obj/effect/step_trigger/teleporter/triumph_loop/west,
+/turf/space,
+/area/space)
 "kz" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -4153,6 +4157,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civilian)
+"me" = (
+/obj/effect/step_trigger/teleporter/triumph_loop/north,
+/turf/space,
+/area/space)
 "mh" = (
 /obj/machinery/hologram/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -11838,6 +11846,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/Dorm_11)
+"Kn" = (
+/obj/effect/step_trigger/teleporter/triumph_loop/east,
+/turf/space,
+/area/space)
 "Ko" = (
 /obj/structure/table/marble,
 /obj/machinery/chemical_dispenser/bar_alc/full,
@@ -12487,6 +12499,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_7)
+"MA" = (
+/obj/effect/step_trigger/teleporter/triumph_loop/south,
+/turf/space,
+/area/space)
 "MC" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -16832,148 +16848,149 @@
 /area/crew_quarters/kitchen)
 
 (1,1,1) = {"
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
 "}
 (2,1,1) = {"
+me
 ii
 ii
 ii
@@ -17112,10 +17129,10 @@ ii
 ii
 ii
 ii
-ii
-ii
+MA
 "}
 (3,1,1) = {"
+me
 ii
 ii
 ii
@@ -17254,10 +17271,10 @@ ii
 ii
 ii
 ii
-ii
-ii
+MA
 "}
 (4,1,1) = {"
+me
 ii
 ii
 ii
@@ -17396,10 +17413,10 @@ ii
 ii
 ii
 ii
-ii
-ii
+MA
 "}
 (5,1,1) = {"
+me
 ii
 ii
 ii
@@ -17538,10 +17555,10 @@ ii
 ii
 ii
 ii
-ii
-ii
+MA
 "}
 (6,1,1) = {"
+me
 ii
 ii
 ii
@@ -17680,10 +17697,10 @@ ii
 ii
 ii
 ii
-ii
-ii
+MA
 "}
 (7,1,1) = {"
+me
 ii
 ii
 ii
@@ -17822,10 +17839,10 @@ ii
 ii
 ii
 ii
-ii
-ii
+MA
 "}
 (8,1,1) = {"
+me
 ii
 ii
 ii
@@ -17964,10 +17981,10 @@ ii
 ii
 ii
 ii
-ii
-ii
+MA
 "}
 (9,1,1) = {"
+me
 ii
 ii
 ii
@@ -18106,11 +18123,10 @@ ii
 ii
 ii
 ii
-ii
-ii
+MA
 "}
 (10,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -18249,10 +18265,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (11,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -18391,9 +18407,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (12,1,1) = {"
+me
 ii
 ii
 ii
@@ -18532,10 +18549,10 @@ ii
 ii
 ii
 ii
-ii
-ii
+MA
 "}
 (13,1,1) = {"
+me
 ii
 ii
 ii
@@ -18674,10 +18691,10 @@ ii
 ii
 ii
 ii
-ii
-ii
+MA
 "}
 (14,1,1) = {"
+me
 ii
 ii
 ii
@@ -18816,11 +18833,10 @@ ii
 ii
 ii
 ii
-ii
-ii
+MA
 "}
 (15,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -18959,10 +18975,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (16,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -19101,10 +19117,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (17,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -19243,10 +19259,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (18,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -19385,10 +19401,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (19,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -19527,10 +19543,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (20,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -19669,10 +19685,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (21,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -19811,10 +19827,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (22,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -19953,10 +19969,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (23,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -20095,10 +20111,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (24,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -20237,10 +20253,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (25,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -20379,10 +20395,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (26,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -20521,10 +20537,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (27,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -20663,10 +20679,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (28,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -20805,10 +20821,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (29,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -20947,10 +20963,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (30,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -21089,10 +21105,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (31,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -21231,10 +21247,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (32,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -21373,10 +21389,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (33,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -21515,10 +21531,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (34,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -21657,10 +21673,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (35,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -21799,10 +21815,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (36,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -21941,10 +21957,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (37,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -22083,10 +22099,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (38,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -22225,10 +22241,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (39,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -22367,10 +22383,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (40,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -22509,10 +22525,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (41,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -22651,10 +22667,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (42,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -22793,10 +22809,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (43,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -22935,10 +22951,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (44,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -23077,10 +23093,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (45,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -23219,10 +23235,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (46,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -23361,10 +23377,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (47,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -23503,10 +23519,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (48,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -23645,10 +23661,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (49,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -23787,10 +23803,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (50,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -23929,10 +23945,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (51,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -24071,10 +24087,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (52,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -24213,10 +24229,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (53,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -24355,10 +24371,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (54,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -24497,10 +24513,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (55,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -24639,10 +24655,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (56,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -24781,10 +24797,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (57,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -24923,10 +24939,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (58,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -25065,10 +25081,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (59,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -25207,10 +25223,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (60,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -25349,10 +25365,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (61,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -25491,10 +25507,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (62,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -25633,10 +25649,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (63,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -25775,10 +25791,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (64,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -25917,10 +25933,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (65,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -26059,10 +26075,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (66,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -26201,10 +26217,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (67,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -26343,10 +26359,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (68,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -26485,10 +26501,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (69,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -26627,10 +26643,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (70,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -26769,10 +26785,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (71,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -26911,10 +26927,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (72,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -27053,10 +27069,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (73,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -27195,10 +27211,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (74,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -27337,10 +27353,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (75,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -27479,10 +27495,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (76,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -27621,10 +27637,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (77,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -27763,10 +27779,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (78,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -27905,10 +27921,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (79,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -28047,10 +28063,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (80,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -28189,10 +28205,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (81,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -28331,10 +28347,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (82,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -28473,10 +28489,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (83,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -28615,10 +28631,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (84,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -28757,10 +28773,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (85,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -28899,10 +28915,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (86,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -29041,10 +29057,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (87,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -29183,10 +29199,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (88,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -29325,10 +29341,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (89,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -29467,10 +29483,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (90,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -29609,10 +29625,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (91,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -29751,10 +29767,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (92,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -29893,10 +29909,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (93,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -30035,10 +30051,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (94,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -30177,10 +30193,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (95,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -30319,10 +30335,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (96,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -30461,10 +30477,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (97,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -30603,10 +30619,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (98,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -30745,10 +30761,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (99,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -30887,10 +30903,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (100,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -31029,10 +31045,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (101,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -31171,10 +31187,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (102,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -31313,10 +31329,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (103,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -31455,10 +31471,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (104,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -31597,10 +31613,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (105,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -31739,10 +31755,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (106,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -31881,10 +31897,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (107,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -32023,10 +32039,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (108,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -32165,10 +32181,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (109,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -32307,10 +32323,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (110,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -32449,10 +32465,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (111,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -32591,10 +32607,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (112,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -32733,10 +32749,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (113,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -32875,10 +32891,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (114,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -33017,10 +33033,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (115,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -33159,10 +33175,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (116,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -33301,10 +33317,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (117,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -33443,10 +33459,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (118,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -33585,10 +33601,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (119,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -33727,10 +33743,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (120,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -33869,10 +33885,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (121,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -34011,10 +34027,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (122,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -34153,10 +34169,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (123,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -34295,10 +34311,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (124,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -34437,10 +34453,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (125,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -34579,9 +34595,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (126,1,1) = {"
+me
 ii
 ii
 ii
@@ -34720,10 +34737,10 @@ ii
 ii
 ii
 ii
-ii
-ii
+MA
 "}
 (127,1,1) = {"
+me
 ii
 ii
 ii
@@ -34862,11 +34879,10 @@ ii
 ii
 ii
 ii
-ii
-ii
+MA
 "}
 (128,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -35005,9 +35021,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (129,1,1) = {"
+me
 ii
 ii
 ii
@@ -35146,10 +35163,10 @@ ii
 ii
 ii
 ii
-ii
-ii
+MA
 "}
 (130,1,1) = {"
+me
 ii
 ii
 ii
@@ -35288,11 +35305,10 @@ ii
 ii
 ii
 ii
-ii
-ii
+MA
 "}
 (131,1,1) = {"
-ii
+me
 ii
 ii
 ii
@@ -35431,9 +35447,10 @@ ii
 ii
 ii
 ii
-ii
+MA
 "}
 (132,1,1) = {"
+me
 ii
 ii
 ii
@@ -35572,10 +35589,10 @@ ii
 ii
 ii
 ii
-ii
-ii
+MA
 "}
 (133,1,1) = {"
+me
 ii
 ii
 ii
@@ -35714,10 +35731,10 @@ ii
 ii
 ii
 ii
-ii
-ii
+MA
 "}
 (134,1,1) = {"
+me
 ii
 ii
 ii
@@ -35856,10 +35873,10 @@ ii
 ii
 ii
 ii
-ii
-ii
+MA
 "}
 (135,1,1) = {"
+me
 ii
 ii
 ii
@@ -35998,10 +36015,10 @@ ii
 ii
 ii
 ii
-ii
-ii
+MA
 "}
 (136,1,1) = {"
+me
 ii
 ii
 ii
@@ -36140,10 +36157,10 @@ ii
 ii
 ii
 ii
-ii
-ii
+MA
 "}
 (137,1,1) = {"
+me
 ii
 ii
 ii
@@ -36282,10 +36299,10 @@ ii
 ii
 ii
 ii
-ii
-ii
+MA
 "}
 (138,1,1) = {"
+me
 ii
 ii
 ii
@@ -36424,10 +36441,10 @@ ii
 ii
 ii
 ii
-ii
-ii
+MA
 "}
 (139,1,1) = {"
+me
 ii
 ii
 ii
@@ -36566,148 +36583,147 @@ ii
 ii
 ii
 ii
-ii
-ii
+MA
 "}
 (140,1,1) = {"
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
 "}

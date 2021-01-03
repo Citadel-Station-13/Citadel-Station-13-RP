@@ -1552,6 +1552,10 @@
 	},
 /turf/simulated/floor/carpet/blucarpet,
 /area/crew_quarters/heads/chief)
+"fY" = (
+/obj/effect/step_trigger/teleporter/triumph_loop/west,
+/turf/space,
+/area/space)
 "fZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -2818,6 +2822,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/lower/corridor)
+"kJ" = (
+/obj/effect/step_trigger/teleporter/triumph_loop/south,
+/turf/space,
+/area/space)
 "kL" = (
 /obj/machinery/telecomms/server/presets/supply,
 /turf/simulated/floor/tiled/dark{
@@ -5828,6 +5836,10 @@
 /obj/machinery/shield_gen,
 /turf/simulated/floor/plating,
 /area/engineering/storage)
+"wD" = (
+/obj/effect/step_trigger/teleporter/triumph_loop/east,
+/turf/space,
+/area/space)
 "wF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -10709,6 +10721,10 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
+"Op" = (
+/obj/effect/step_trigger/teleporter/triumph_loop/north,
+/turf/space,
+/area/space)
 "Oq" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
@@ -14034,148 +14050,149 @@
 /area/engineering/engine_room)
 
 (1,1,1) = {"
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
 "}
 (2,1,1) = {"
+Op
 fN
 fN
 fN
@@ -14314,10 +14331,10 @@ fN
 fN
 fN
 fN
-fN
-fN
+kJ
 "}
 (3,1,1) = {"
+Op
 fN
 fN
 fN
@@ -14456,10 +14473,10 @@ fN
 fN
 fN
 fN
-fN
-fN
+kJ
 "}
 (4,1,1) = {"
+Op
 fN
 fN
 fN
@@ -14598,10 +14615,10 @@ fN
 fN
 fN
 fN
-fN
-fN
+kJ
 "}
 (5,1,1) = {"
+Op
 fN
 fN
 fN
@@ -14740,10 +14757,10 @@ fN
 fN
 fN
 fN
-fN
-fN
+kJ
 "}
 (6,1,1) = {"
+Op
 fN
 fN
 fN
@@ -14882,10 +14899,10 @@ fN
 fN
 fN
 fN
-fN
-fN
+kJ
 "}
 (7,1,1) = {"
+Op
 fN
 fN
 fN
@@ -15024,10 +15041,10 @@ fN
 fN
 fN
 fN
-fN
-fN
+kJ
 "}
 (8,1,1) = {"
+Op
 fN
 fN
 fN
@@ -15166,10 +15183,10 @@ fN
 fN
 fN
 fN
-fN
-fN
+kJ
 "}
 (9,1,1) = {"
+Op
 fN
 fN
 fN
@@ -15308,10 +15325,10 @@ fN
 fN
 fN
 fN
-fN
-fN
+kJ
 "}
 (10,1,1) = {"
+Op
 fN
 fN
 fN
@@ -15450,10 +15467,10 @@ fN
 fN
 fN
 fN
-fN
-fN
+kJ
 "}
 (11,1,1) = {"
+Op
 fN
 fN
 fN
@@ -15592,11 +15609,10 @@ fN
 fN
 fN
 fN
-fN
-fN
+kJ
 "}
 (12,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -15735,10 +15751,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (13,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -15877,9 +15893,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (14,1,1) = {"
+Op
 fN
 fN
 fN
@@ -16018,10 +16035,10 @@ fN
 fN
 fN
 fN
-fN
-fN
+kJ
 "}
 (15,1,1) = {"
+Op
 fN
 fN
 fN
@@ -16160,11 +16177,10 @@ fN
 fN
 fN
 fN
-fN
-fN
+kJ
 "}
 (16,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -16303,10 +16319,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (17,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -16445,10 +16461,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (18,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -16587,10 +16603,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (19,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -16729,10 +16745,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (20,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -16871,10 +16887,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (21,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -17013,10 +17029,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (22,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -17155,10 +17171,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (23,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -17297,10 +17313,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (24,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -17439,10 +17455,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (25,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -17581,10 +17597,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (26,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -17723,10 +17739,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (27,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -17865,10 +17881,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (28,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -18007,10 +18023,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (29,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -18149,10 +18165,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (30,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -18291,10 +18307,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (31,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -18433,10 +18449,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (32,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -18575,10 +18591,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (33,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -18717,10 +18733,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (34,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -18859,10 +18875,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (35,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -19001,10 +19017,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (36,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -19143,10 +19159,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (37,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -19285,10 +19301,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (38,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -19427,10 +19443,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (39,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -19569,10 +19585,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (40,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -19711,10 +19727,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (41,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -19853,10 +19869,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (42,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -19995,10 +20011,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (43,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -20137,10 +20153,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (44,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -20279,10 +20295,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (45,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -20421,10 +20437,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (46,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -20563,10 +20579,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (47,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -20705,10 +20721,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (48,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -20847,10 +20863,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (49,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -20989,10 +21005,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (50,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -21131,10 +21147,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (51,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -21273,10 +21289,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (52,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -21415,10 +21431,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (53,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -21557,10 +21573,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (54,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -21699,10 +21715,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (55,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -21841,10 +21857,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (56,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -21983,10 +21999,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (57,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -22125,10 +22141,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (58,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -22267,10 +22283,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (59,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -22409,10 +22425,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (60,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -22551,10 +22567,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (61,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -22693,10 +22709,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (62,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -22835,10 +22851,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (63,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -22977,10 +22993,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (64,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -23119,10 +23135,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (65,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -23261,10 +23277,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (66,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -23403,10 +23419,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (67,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -23545,10 +23561,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (68,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -23687,10 +23703,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (69,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -23829,10 +23845,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (70,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -23971,10 +23987,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (71,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -24113,10 +24129,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (72,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -24255,10 +24271,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (73,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -24397,10 +24413,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (74,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -24539,10 +24555,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (75,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -24681,10 +24697,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (76,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -24823,10 +24839,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (77,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -24965,10 +24981,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (78,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -25107,10 +25123,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (79,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -25249,10 +25265,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (80,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -25391,10 +25407,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (81,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -25533,10 +25549,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (82,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -25675,10 +25691,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (83,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -25817,10 +25833,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (84,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -25959,10 +25975,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (85,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -26101,10 +26117,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (86,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -26243,10 +26259,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (87,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -26385,10 +26401,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (88,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -26527,10 +26543,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (89,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -26669,10 +26685,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (90,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -26811,10 +26827,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (91,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -26953,10 +26969,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (92,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -27095,10 +27111,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (93,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -27237,10 +27253,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (94,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -27379,10 +27395,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (95,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -27521,10 +27537,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (96,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -27663,10 +27679,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (97,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -27805,10 +27821,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (98,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -27947,10 +27963,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (99,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -28089,10 +28105,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (100,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -28231,10 +28247,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (101,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -28373,10 +28389,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (102,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -28515,10 +28531,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (103,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -28657,10 +28673,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (104,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -28799,10 +28815,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (105,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -28941,10 +28957,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (106,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -29083,10 +29099,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (107,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -29225,10 +29241,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (108,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -29367,10 +29383,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (109,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -29509,10 +29525,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (110,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -29651,10 +29667,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (111,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -29793,10 +29809,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (112,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -29935,10 +29951,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (113,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -30077,10 +30093,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (114,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -30219,10 +30235,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (115,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -30361,10 +30377,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (116,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -30503,10 +30519,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (117,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -30645,10 +30661,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (118,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -30787,10 +30803,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (119,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -30929,10 +30945,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (120,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -31071,10 +31087,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (121,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -31213,10 +31229,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (122,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -31355,10 +31371,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (123,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -31497,10 +31513,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (124,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -31639,10 +31655,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (125,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -31781,9 +31797,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (126,1,1) = {"
+Op
 fN
 fN
 fN
@@ -31922,10 +31939,10 @@ fN
 fN
 fN
 fN
-fN
-fN
+kJ
 "}
 (127,1,1) = {"
+Op
 fN
 fN
 fN
@@ -32064,10 +32081,10 @@ fN
 fN
 fN
 fN
-fN
-fN
+kJ
 "}
 (128,1,1) = {"
+Op
 fN
 fN
 fN
@@ -32206,10 +32223,10 @@ fN
 fN
 fN
 fN
-fN
-fN
+kJ
 "}
 (129,1,1) = {"
+Op
 fN
 fN
 fN
@@ -32348,10 +32365,10 @@ fN
 fN
 fN
 fN
-fN
-fN
+kJ
 "}
 (130,1,1) = {"
+Op
 fN
 fN
 fN
@@ -32490,10 +32507,10 @@ fN
 fN
 fN
 fN
-fN
-fN
+kJ
 "}
 (131,1,1) = {"
+Op
 fN
 fN
 fN
@@ -32632,10 +32649,10 @@ fN
 fN
 fN
 fN
-fN
-fN
+kJ
 "}
 (132,1,1) = {"
+Op
 fN
 fN
 fN
@@ -32774,11 +32791,10 @@ fN
 fN
 fN
 fN
-fN
-fN
+kJ
 "}
 (133,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -32917,10 +32933,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (134,1,1) = {"
-fN
+Op
 fN
 fN
 fN
@@ -33059,9 +33075,10 @@ fN
 fN
 fN
 fN
-fN
+kJ
 "}
 (135,1,1) = {"
+Op
 fN
 fN
 fN
@@ -33200,10 +33217,10 @@ fN
 fN
 fN
 fN
-fN
-fN
+kJ
 "}
 (136,1,1) = {"
+Op
 fN
 fN
 fN
@@ -33342,10 +33359,10 @@ fN
 fN
 fN
 fN
-fN
-fN
+kJ
 "}
 (137,1,1) = {"
+Op
 fN
 fN
 fN
@@ -33484,10 +33501,10 @@ fN
 fN
 fN
 fN
-fN
-fN
+kJ
 "}
 (138,1,1) = {"
+Op
 fN
 fN
 fN
@@ -33626,10 +33643,10 @@ fN
 fN
 fN
 fN
-fN
-fN
+kJ
 "}
 (139,1,1) = {"
+Op
 fN
 fN
 fN
@@ -33768,148 +33785,147 @@ fN
 fN
 fN
 fN
-fN
-fN
+kJ
 "}
 (140,1,1) = {"
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
+wD
 "}

@@ -2447,6 +2447,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
+"bNZ" = (
+/obj/effect/step_trigger/teleporter/triumph_loop/west,
+/turf/space,
+/area/space)
 "bOh" = (
 /obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
@@ -5767,6 +5771,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/lobby)
+"ect" = (
+/obj/effect/step_trigger/teleporter/triumph_loop/south,
+/turf/space,
+/area/space)
 "ecw" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
@@ -18261,6 +18269,10 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
+"mMy" = (
+/obj/effect/step_trigger/teleporter/triumph_loop/east,
+/turf/space,
+/area/space)
 "mMK" = (
 /obj/structure/bookcase{
 	name = "bookcase (Reference)"
@@ -35105,6 +35117,10 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/ai_upload)
+"xTT" = (
+/obj/effect/step_trigger/teleporter/triumph_loop/north,
+/turf/space,
+/area/space)
 "xUa" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -35584,8 +35600,149 @@
 /area/security/armoury)
 
 (1,1,1) = {"
-nIK
-nIK
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+bNZ
+"}
+(2,1,1) = {"
+xTT
 nIK
 nIK
 nIK
@@ -35724,150 +35881,10 @@ nIK
 nIK
 nIK
 oVF
-"}
-(2,1,1) = {"
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
+ect
 "}
 (3,1,1) = {"
+xTT
 nIK
 nIK
 nIK
@@ -36006,10 +36023,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
-nIK
+ect
 "}
 (4,1,1) = {"
+xTT
 nIK
 nIK
 nIK
@@ -36148,11 +36165,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
-nIK
+ect
 "}
 (5,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -36291,9 +36307,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (6,1,1) = {"
+xTT
 nIK
 nIK
 nIK
@@ -36432,10 +36449,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
-nIK
+ect
 "}
 (7,1,1) = {"
+xTT
 nIK
 nIK
 nIK
@@ -36574,11 +36591,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
-nIK
+ect
 "}
 (8,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -36717,10 +36733,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (9,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -36859,10 +36875,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (10,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -37001,10 +37017,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (11,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -37143,10 +37159,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (12,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -37285,10 +37301,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (13,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -37427,10 +37443,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (14,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -37569,10 +37585,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (15,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -37711,10 +37727,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (16,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -37853,10 +37869,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (17,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -37995,10 +38011,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (18,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -38137,10 +38153,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (19,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -38279,10 +38295,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (20,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -38421,10 +38437,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (21,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -38563,10 +38579,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (22,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -38705,10 +38721,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (23,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -38847,10 +38863,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (24,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -38989,10 +39005,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (25,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -39131,10 +39147,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (26,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -39273,10 +39289,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (27,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -39415,10 +39431,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (28,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -39557,10 +39573,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (29,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -39699,10 +39715,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (30,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -39841,10 +39857,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (31,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -39983,10 +39999,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (32,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -40125,10 +40141,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (33,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -40267,10 +40283,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (34,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -40409,10 +40425,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (35,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -40551,10 +40567,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (36,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -40693,10 +40709,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (37,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -40835,10 +40851,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (38,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -40977,10 +40993,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (39,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -41119,10 +41135,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (40,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -41261,10 +41277,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (41,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -41403,10 +41419,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (42,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -41545,10 +41561,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (43,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -41687,10 +41703,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (44,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -41829,10 +41845,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (45,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -41971,10 +41987,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (46,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -42113,10 +42129,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (47,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -42255,10 +42271,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (48,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -42397,10 +42413,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (49,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -42539,10 +42555,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (50,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -42681,10 +42697,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (51,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -42823,10 +42839,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (52,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -42965,10 +42981,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (53,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -43107,10 +43123,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (54,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -43249,10 +43265,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (55,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -43391,10 +43407,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (56,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -43533,10 +43549,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (57,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -43675,10 +43691,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (58,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -43817,10 +43833,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (59,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -43959,10 +43975,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (60,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -44101,10 +44117,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (61,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -44243,10 +44259,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (62,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -44385,10 +44401,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (63,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -44527,10 +44543,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (64,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -44669,10 +44685,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (65,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -44811,10 +44827,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (66,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -44953,10 +44969,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (67,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -45095,10 +45111,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (68,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -45237,10 +45253,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (69,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -45379,10 +45395,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (70,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -45521,10 +45537,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (71,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -45663,10 +45679,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (72,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -45805,10 +45821,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (73,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -45947,10 +45963,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (74,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -46089,10 +46105,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (75,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -46231,10 +46247,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (76,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -46373,10 +46389,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (77,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -46515,10 +46531,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (78,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -46657,10 +46673,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (79,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -46799,10 +46815,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (80,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -46941,10 +46957,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (81,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -47083,10 +47099,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (82,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -47225,10 +47241,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (83,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -47367,10 +47383,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (84,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -47509,10 +47525,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (85,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -47651,10 +47667,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (86,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -47793,10 +47809,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (87,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -47935,10 +47951,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (88,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -48077,10 +48093,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (89,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -48219,10 +48235,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (90,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -48361,10 +48377,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (91,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -48503,10 +48519,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (92,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -48645,10 +48661,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (93,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -48787,10 +48803,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (94,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -48929,10 +48945,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (95,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -49071,10 +49087,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (96,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -49213,10 +49229,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (97,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -49355,10 +49371,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (98,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -49497,10 +49513,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (99,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -49639,10 +49655,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (100,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -49781,10 +49797,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (101,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -49923,10 +49939,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (102,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -50065,10 +50081,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (103,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -50207,10 +50223,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (104,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -50349,10 +50365,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (105,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -50491,10 +50507,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (106,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -50633,10 +50649,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (107,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -50775,10 +50791,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (108,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -50917,10 +50933,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (109,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -51059,10 +51075,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (110,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -51201,10 +51217,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (111,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -51343,10 +51359,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (112,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -51485,10 +51501,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (113,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -51627,10 +51643,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (114,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -51769,10 +51785,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (115,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -51911,10 +51927,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (116,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -52053,10 +52069,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (117,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -52195,10 +52211,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (118,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -52337,10 +52353,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (119,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -52479,10 +52495,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (120,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -52621,10 +52637,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (121,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -52763,10 +52779,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (122,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -52905,10 +52921,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (123,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -53047,10 +53063,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (124,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -53189,10 +53205,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (125,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -53331,10 +53347,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (126,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -53473,10 +53489,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (127,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -53615,10 +53631,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (128,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -53757,10 +53773,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (129,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -53899,10 +53915,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (130,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -54041,10 +54057,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (131,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -54183,10 +54199,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (132,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -54325,10 +54341,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (133,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -54467,10 +54483,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (134,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -54609,10 +54625,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (135,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -54751,10 +54767,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (136,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -54893,10 +54909,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (137,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -55035,9 +55051,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (138,1,1) = {"
+xTT
 nIK
 nIK
 nIK
@@ -55176,11 +55193,10 @@ nIK
 nIK
 nIK
 nIK
-nIK
-nIK
+ect
 "}
 (139,1,1) = {"
-nIK
+xTT
 nIK
 nIK
 nIK
@@ -55319,147 +55335,147 @@ nIK
 nIK
 nIK
 nIK
-nIK
+ect
 "}
 (140,1,1) = {"
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
-nIK
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
+mMy
 "}

@@ -179,6 +179,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/holodeck_control)
+"ait" = (
+/obj/effect/step_trigger/teleporter/triumph_loop/east,
+/turf/space,
+/area/space)
 "aiD" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/black{
 	dir = 8
@@ -5958,6 +5962,10 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/test_area)
+"fog" = (
+/obj/effect/step_trigger/teleporter/triumph_loop/north,
+/turf/space,
+/area/space)
 "foy" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
@@ -12994,6 +13002,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/hallway/primary/aft)
+"mqe" = (
+/obj/effect/step_trigger/teleporter/triumph_loop/south,
+/turf/space,
+/area/space)
 "mqx" = (
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/wood/sif,
@@ -18952,6 +18964,10 @@
 /obj/machinery/computer/med_data/laptop,
 /turf/simulated/floor/wood,
 /area/medical/psych)
+"rLr" = (
+/obj/effect/step_trigger/teleporter/triumph_loop/west,
+/turf/space,
+/area/space)
 "rLt" = (
 /obj/machinery/recharge_station,
 /turf/simulated/floor/tiled/techfloor,
@@ -26815,148 +26831,149 @@
 /area/triumph/station/stairs_three)
 
 (1,1,1) = {"
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
+rLr
 "}
 (2,1,1) = {"
+fog
 gVh
 gVh
 gVh
@@ -27095,11 +27112,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
-gVh
+mqe
 "}
 (3,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -27238,9 +27254,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (4,1,1) = {"
+fog
 gVh
 gVh
 gVh
@@ -27379,10 +27396,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
-gVh
+mqe
 "}
 (5,1,1) = {"
+fog
 gVh
 gVh
 gVh
@@ -27521,11 +27538,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
-gVh
+mqe
 "}
 (6,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -27664,10 +27680,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (7,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -27806,10 +27822,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (8,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -27948,10 +27964,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (9,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -28090,10 +28106,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (10,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -28232,10 +28248,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (11,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -28374,10 +28390,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (12,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -28516,10 +28532,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (13,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -28658,10 +28674,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (14,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -28800,10 +28816,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (15,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -28942,10 +28958,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (16,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -29084,10 +29100,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (17,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -29226,10 +29242,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (18,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -29368,10 +29384,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (19,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -29510,10 +29526,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (20,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -29652,10 +29668,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (21,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -29794,10 +29810,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (22,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -29936,10 +29952,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (23,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -30078,10 +30094,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (24,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -30220,10 +30236,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (25,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -30362,10 +30378,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (26,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -30504,10 +30520,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (27,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -30646,10 +30662,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (28,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -30788,10 +30804,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (29,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -30930,10 +30946,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (30,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -31072,10 +31088,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (31,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -31214,10 +31230,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (32,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -31356,10 +31372,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (33,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -31498,10 +31514,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (34,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -31640,10 +31656,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (35,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -31782,10 +31798,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (36,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -31924,10 +31940,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (37,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -32066,10 +32082,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (38,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -32208,10 +32224,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (39,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -32350,10 +32366,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (40,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -32492,10 +32508,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (41,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -32634,10 +32650,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (42,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -32776,10 +32792,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (43,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -32918,10 +32934,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (44,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -33060,10 +33076,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (45,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -33202,10 +33218,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (46,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -33344,10 +33360,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (47,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -33486,10 +33502,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (48,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -33628,10 +33644,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (49,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -33770,10 +33786,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (50,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -33912,10 +33928,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (51,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -34054,10 +34070,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (52,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -34196,10 +34212,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (53,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -34338,10 +34354,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (54,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -34480,10 +34496,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (55,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -34622,10 +34638,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (56,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -34764,10 +34780,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (57,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -34906,10 +34922,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (58,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -35048,10 +35064,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (59,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -35190,10 +35206,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (60,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -35332,10 +35348,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (61,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -35474,10 +35490,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (62,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -35616,10 +35632,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (63,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -35758,10 +35774,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (64,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -35900,10 +35916,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (65,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -36042,10 +36058,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (66,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -36184,10 +36200,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (67,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -36326,10 +36342,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (68,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -36468,10 +36484,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (69,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -36610,10 +36626,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (70,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -36752,10 +36768,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (71,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -36894,10 +36910,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (72,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -37036,10 +37052,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (73,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -37178,10 +37194,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (74,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -37320,10 +37336,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (75,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -37462,10 +37478,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (76,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -37604,10 +37620,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (77,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -37746,10 +37762,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (78,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -37888,10 +37904,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (79,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -38030,10 +38046,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (80,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -38172,10 +38188,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (81,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -38314,10 +38330,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (82,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -38456,10 +38472,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (83,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -38598,10 +38614,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (84,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -38740,10 +38756,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (85,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -38882,10 +38898,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (86,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -39024,10 +39040,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (87,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -39166,10 +39182,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (88,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -39308,10 +39324,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (89,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -39450,10 +39466,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (90,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -39592,10 +39608,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (91,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -39734,10 +39750,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (92,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -39876,10 +39892,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (93,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -40018,10 +40034,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (94,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -40160,10 +40176,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (95,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -40302,10 +40318,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (96,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -40444,10 +40460,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (97,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -40586,10 +40602,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (98,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -40728,10 +40744,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (99,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -40870,10 +40886,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (100,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -41012,10 +41028,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (101,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -41154,10 +41170,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (102,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -41296,10 +41312,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (103,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -41438,10 +41454,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (104,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -41580,10 +41596,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (105,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -41722,10 +41738,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (106,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -41864,10 +41880,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (107,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -42006,10 +42022,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (108,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -42148,10 +42164,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (109,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -42290,10 +42306,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (110,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -42432,10 +42448,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (111,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -42574,10 +42590,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (112,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -42716,10 +42732,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (113,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -42858,10 +42874,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (114,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -43000,10 +43016,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (115,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -43142,10 +43158,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (116,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -43284,10 +43300,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (117,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -43426,10 +43442,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (118,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -43568,10 +43584,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (119,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -43710,10 +43726,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (120,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -43852,10 +43868,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (121,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -43994,10 +44010,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (122,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -44136,10 +44152,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (123,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -44278,10 +44294,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (124,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -44420,10 +44436,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (125,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -44562,10 +44578,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (126,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -44704,10 +44720,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (127,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -44846,10 +44862,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (128,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -44988,10 +45004,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (129,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -45130,10 +45146,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (130,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -45272,10 +45288,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (131,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -45414,10 +45430,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (132,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -45556,9 +45572,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (133,1,1) = {"
+fog
 gVh
 gVh
 gVh
@@ -45697,11 +45714,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
-gVh
+mqe
 "}
 (134,1,1) = {"
-gVh
+fog
 gVh
 gVh
 gVh
@@ -45840,9 +45856,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
+mqe
 "}
 (135,1,1) = {"
+fog
 gVh
 gVh
 gVh
@@ -45981,10 +45998,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
-gVh
+mqe
 "}
 (136,1,1) = {"
+fog
 gVh
 gVh
 gVh
@@ -46123,10 +46140,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
-gVh
+mqe
 "}
 (137,1,1) = {"
+fog
 gVh
 gVh
 gVh
@@ -46265,10 +46282,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
-gVh
+mqe
 "}
 (138,1,1) = {"
+fog
 gVh
 gVh
 gVh
@@ -46407,10 +46424,10 @@ gVh
 gVh
 gVh
 gVh
-gVh
-gVh
+mqe
 "}
 (139,1,1) = {"
+fog
 gVh
 gVh
 gVh
@@ -46549,148 +46566,147 @@ gVh
 gVh
 gVh
 gVh
-gVh
-gVh
+mqe
 "}
 (140,1,1) = {"
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
-gVh
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
+ait
 "}

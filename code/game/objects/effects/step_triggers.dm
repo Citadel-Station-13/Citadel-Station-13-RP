@@ -145,6 +145,30 @@
 			return
 	move_object(AM, T)
 
+//Triumph Teleporter
+/obj/effect/step_trigger/teleporter/triumph_loop/north/New()
+	..()
+	teleport_x = x
+	teleport_y = 2
+	teleport_z = z
+
+/obj/effect/step_trigger/teleporter/triumph_loop/south/New()
+	..()
+	teleport_x = x
+	teleport_y = world.maxy - 1
+	teleport_z = z
+
+/obj/effect/step_trigger/teleporter/triumph_loop/west/New()
+	..()
+	teleport_x = world.maxx - 1
+	teleport_y = y
+	teleport_z = z
+
+/obj/effect/step_trigger/teleporter/triumph_loop/east/New()
+	..()
+	teleport_x = 2
+	teleport_y = y
+	teleport_z = z
 
 
 /* Random teleporter, teleports atoms to locations ranging from teleport_x - teleport_x_offset, etc */
