@@ -145,6 +145,8 @@
 			return
 	move_object(AM, T)
 
+
+
 /* Random teleporter, teleports atoms to locations ranging from teleport_x - teleport_x_offset, etc */
 
 /obj/effect/step_trigger/teleporter/random
