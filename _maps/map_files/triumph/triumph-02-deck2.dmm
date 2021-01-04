@@ -13873,6 +13873,7 @@
 "QU" = (
 /obj/structure/table/marble,
 /obj/item/hand_labeler,
+/obj/machinery/recharger,
 /turf/simulated/floor/tiled/steel,
 /area/vacant/vacant_shop)
 "QV" = (
