@@ -3616,10 +3616,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
-"ky" = (
-/obj/effect/step_trigger/teleporter/triumph_loop/west,
-/turf/space,
-/area/space)
 "kz" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -4157,10 +4153,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civilian)
-"me" = (
-/obj/effect/step_trigger/teleporter/triumph_loop/north,
-/turf/space,
-/area/space)
 "mh" = (
 /obj/machinery/hologram/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -11852,10 +11844,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/Dorm_11)
-"Kn" = (
-/obj/effect/step_trigger/teleporter/triumph_loop/east,
-/turf/space,
-/area/space)
 "Ko" = (
 /obj/structure/table/marble,
 /obj/machinery/chemical_dispenser/bar_alc/full,
@@ -12505,10 +12493,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_7)
-"MA" = (
-/obj/effect/step_trigger/teleporter/triumph_loop/south,
-/turf/space,
-/area/space)
 "MC" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -16849,149 +16833,148 @@
 /area/crew_quarters/kitchen)
 
 (1,1,1) = {"
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
 "}
 (2,1,1) = {"
-me
 ii
 ii
 ii
@@ -17130,10 +17113,10 @@ ii
 ii
 ii
 ii
-MA
+ii
+ii
 "}
 (3,1,1) = {"
-me
 ii
 ii
 ii
@@ -17272,10 +17255,10 @@ ii
 ii
 ii
 ii
-MA
+ii
+ii
 "}
 (4,1,1) = {"
-me
 ii
 ii
 ii
@@ -17414,10 +17397,10 @@ ii
 ii
 ii
 ii
-MA
+ii
+ii
 "}
 (5,1,1) = {"
-me
 ii
 ii
 ii
@@ -17556,10 +17539,10 @@ ii
 ii
 ii
 ii
-MA
+ii
+ii
 "}
 (6,1,1) = {"
-me
 ii
 ii
 ii
@@ -17698,10 +17681,10 @@ ii
 ii
 ii
 ii
-MA
+ii
+ii
 "}
 (7,1,1) = {"
-me
 ii
 ii
 ii
@@ -17840,10 +17823,10 @@ ii
 ii
 ii
 ii
-MA
+ii
+ii
 "}
 (8,1,1) = {"
-me
 ii
 ii
 ii
@@ -17982,10 +17965,10 @@ ii
 ii
 ii
 ii
-MA
+ii
+ii
 "}
 (9,1,1) = {"
-me
 ii
 ii
 ii
@@ -18124,10 +18107,11 @@ ii
 ii
 ii
 ii
-MA
+ii
+ii
 "}
 (10,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -18266,10 +18250,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (11,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -18408,10 +18392,9 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (12,1,1) = {"
-me
 ii
 ii
 ii
@@ -18550,10 +18533,10 @@ ii
 ii
 ii
 ii
-MA
+ii
+ii
 "}
 (13,1,1) = {"
-me
 ii
 ii
 ii
@@ -18692,10 +18675,10 @@ ii
 ii
 ii
 ii
-MA
+ii
+ii
 "}
 (14,1,1) = {"
-me
 ii
 ii
 ii
@@ -18834,10 +18817,11 @@ ii
 ii
 ii
 ii
-MA
+ii
+ii
 "}
 (15,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -18976,10 +18960,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (16,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -19118,10 +19102,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (17,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -19260,10 +19244,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (18,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -19402,10 +19386,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (19,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -19544,10 +19528,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (20,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -19686,10 +19670,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (21,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -19828,10 +19812,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (22,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -19970,10 +19954,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (23,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -20112,10 +20096,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (24,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -20254,10 +20238,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (25,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -20396,10 +20380,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (26,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -20538,10 +20522,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (27,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -20680,10 +20664,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (28,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -20822,10 +20806,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (29,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -20964,10 +20948,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (30,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -21106,10 +21090,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (31,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -21248,10 +21232,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (32,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -21390,10 +21374,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (33,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -21532,10 +21516,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (34,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -21674,10 +21658,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (35,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -21816,10 +21800,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (36,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -21958,10 +21942,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (37,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -22100,10 +22084,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (38,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -22242,10 +22226,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (39,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -22384,10 +22368,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (40,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -22526,10 +22510,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (41,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -22668,10 +22652,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (42,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -22810,10 +22794,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (43,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -22952,10 +22936,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (44,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -23094,10 +23078,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (45,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -23236,10 +23220,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (46,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -23378,10 +23362,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (47,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -23520,10 +23504,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (48,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -23662,10 +23646,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (49,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -23804,10 +23788,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (50,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -23946,10 +23930,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (51,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -24088,10 +24072,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (52,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -24230,10 +24214,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (53,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -24372,10 +24356,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (54,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -24514,10 +24498,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (55,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -24656,10 +24640,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (56,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -24798,10 +24782,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (57,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -24940,10 +24924,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (58,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -25082,10 +25066,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (59,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -25224,10 +25208,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (60,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -25366,10 +25350,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (61,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -25508,10 +25492,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (62,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -25650,10 +25634,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (63,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -25792,10 +25776,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (64,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -25934,10 +25918,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (65,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -26076,10 +26060,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (66,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -26218,10 +26202,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (67,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -26360,10 +26344,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (68,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -26502,10 +26486,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (69,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -26644,10 +26628,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (70,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -26786,10 +26770,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (71,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -26928,10 +26912,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (72,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -27070,10 +27054,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (73,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -27212,10 +27196,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (74,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -27354,10 +27338,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (75,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -27496,10 +27480,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (76,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -27638,10 +27622,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (77,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -27780,10 +27764,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (78,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -27922,10 +27906,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (79,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -28064,10 +28048,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (80,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -28206,10 +28190,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (81,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -28348,10 +28332,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (82,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -28490,10 +28474,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (83,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -28632,10 +28616,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (84,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -28774,10 +28758,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (85,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -28916,10 +28900,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (86,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -29058,10 +29042,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (87,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -29200,10 +29184,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (88,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -29342,10 +29326,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (89,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -29484,10 +29468,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (90,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -29626,10 +29610,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (91,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -29768,10 +29752,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (92,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -29910,10 +29894,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (93,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -30052,10 +30036,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (94,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -30194,10 +30178,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (95,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -30336,10 +30320,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (96,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -30478,10 +30462,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (97,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -30620,10 +30604,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (98,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -30762,10 +30746,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (99,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -30904,10 +30888,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (100,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -31046,10 +31030,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (101,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -31188,10 +31172,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (102,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -31330,10 +31314,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (103,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -31472,10 +31456,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (104,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -31614,10 +31598,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (105,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -31756,10 +31740,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (106,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -31898,10 +31882,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (107,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -32040,10 +32024,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (108,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -32182,10 +32166,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (109,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -32324,10 +32308,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (110,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -32466,10 +32450,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (111,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -32608,10 +32592,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (112,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -32750,10 +32734,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (113,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -32892,10 +32876,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (114,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -33034,10 +33018,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (115,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -33176,10 +33160,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (116,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -33318,10 +33302,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (117,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -33460,10 +33444,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (118,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -33602,10 +33586,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (119,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -33744,10 +33728,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (120,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -33886,10 +33870,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (121,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -34028,10 +34012,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (122,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -34170,10 +34154,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (123,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -34312,10 +34296,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (124,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -34454,10 +34438,10 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (125,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -34596,10 +34580,9 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (126,1,1) = {"
-me
 ii
 ii
 ii
@@ -34738,10 +34721,10 @@ ii
 ii
 ii
 ii
-MA
+ii
+ii
 "}
 (127,1,1) = {"
-me
 ii
 ii
 ii
@@ -34880,10 +34863,11 @@ ii
 ii
 ii
 ii
-MA
+ii
+ii
 "}
 (128,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -35022,10 +35006,9 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (129,1,1) = {"
-me
 ii
 ii
 ii
@@ -35164,10 +35147,10 @@ ii
 ii
 ii
 ii
-MA
+ii
+ii
 "}
 (130,1,1) = {"
-me
 ii
 ii
 ii
@@ -35306,10 +35289,11 @@ ii
 ii
 ii
 ii
-MA
+ii
+ii
 "}
 (131,1,1) = {"
-me
+ii
 ii
 ii
 ii
@@ -35448,10 +35432,9 @@ ii
 ii
 ii
 ii
-MA
+ii
 "}
 (132,1,1) = {"
-me
 ii
 ii
 ii
@@ -35590,10 +35573,10 @@ ii
 ii
 ii
 ii
-MA
+ii
+ii
 "}
 (133,1,1) = {"
-me
 ii
 ii
 ii
@@ -35732,10 +35715,10 @@ ii
 ii
 ii
 ii
-MA
+ii
+ii
 "}
 (134,1,1) = {"
-me
 ii
 ii
 ii
@@ -35874,10 +35857,10 @@ ii
 ii
 ii
 ii
-MA
+ii
+ii
 "}
 (135,1,1) = {"
-me
 ii
 ii
 ii
@@ -36016,10 +35999,10 @@ ii
 ii
 ii
 ii
-MA
+ii
+ii
 "}
 (136,1,1) = {"
-me
 ii
 ii
 ii
@@ -36158,10 +36141,10 @@ ii
 ii
 ii
 ii
-MA
+ii
+ii
 "}
 (137,1,1) = {"
-me
 ii
 ii
 ii
@@ -36300,10 +36283,10 @@ ii
 ii
 ii
 ii
-MA
+ii
+ii
 "}
 (138,1,1) = {"
-me
 ii
 ii
 ii
@@ -36442,10 +36425,10 @@ ii
 ii
 ii
 ii
-MA
+ii
+ii
 "}
 (139,1,1) = {"
-me
 ii
 ii
 ii
@@ -36584,147 +36567,148 @@ ii
 ii
 ii
 ii
-MA
+ii
+ii
 "}
 (140,1,1) = {"
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
-Kn
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
+ii
 "}
