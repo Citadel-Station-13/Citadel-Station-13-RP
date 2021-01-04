@@ -3487,7 +3487,7 @@
 /turf/simulated/wall,
 /area/crew_quarters/sleep/Dorm_5)
 "jX" = (
-/obj/machinery/recharge_station,
+/obj/structure/closet/firecloset,
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
 "jY" = (
@@ -5059,6 +5059,9 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
 "oQ" = (
@@ -9162,7 +9165,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/miningdock)
 "BR" = (
-/obj/structure/closet/firecloset,
+/obj/machinery/recharge_station,
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
 "BU" = (
@@ -9894,12 +9897,11 @@
 /turf/space,
 /area/space)
 "Eg" = (
-/obj/structure/plasticflaps,
-/obj/machinery/conveyor{
-	id = "mining_interior"
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/triumph/surfacebase/mining_main/refinery)
+/obj/machinery/mineral/input,
+/obj/effect/floor_decal/industrial/loading,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/tiled,
+/area/quartermaster/warehouse)
 "Eh" = (
 /turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/sleep/Dorm_8)
@@ -9907,6 +9909,15 @@
 /obj/machinery/chem_master/condimaster,
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/freezer)
+"Ek" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 5
+	},
+/obj/machinery/mineral/stacking_unit_console{
+	pixel_y = 30
+	},
+/turf/simulated/floor/tiled,
+/area/triumph/surfacebase/mining_main/refinery)
 "El" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -13092,6 +13103,7 @@
 	dir = 9;
 	id = "mining_interior"
 	},
+/obj/machinery/mineral/input,
 /turf/simulated/floor/tiled/steel_grid,
 /area/triumph/surfacebase/mining_main/refinery)
 "Ok" = (
@@ -14863,6 +14875,7 @@
 /obj/machinery/light_switch{
 	pixel_x = 25
 	},
+/obj/machinery/mineral/output,
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
 "TN" = (
@@ -16580,6 +16593,14 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/janitor)
+"YI" = (
+/obj/machinery/mineral/output,
+/obj/effect/floor_decal/industrial/loading{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/tiled,
+/area/quartermaster/warehouse)
 "YK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
@@ -26835,7 +26856,7 @@ Ed
 wp
 cP
 RB
-Ky
+Ek
 Tb
 xK
 EG
@@ -26976,7 +26997,7 @@ ii
 ii
 wp
 Oi
-Eg
+CC
 TM
 oK
 Aq
@@ -27970,7 +27991,7 @@ ii
 ii
 rP
 jX
-kk
+Eg
 Oo
 kk
 xc
@@ -28113,7 +28134,7 @@ ii
 Ux
 BR
 kk
-kk
+YI
 kk
 we
 we
