@@ -13561,7 +13561,7 @@
 /area/hallway/secondary/civilian_hallway_mid)
 "juX" = (
 /obj/machinery/door/airlock/voidcraft/vertical{
-	req_access = list(13)
+	req_access = null
 	},
 /obj/structure/cable/cyan{
 	d1 = 4;
@@ -18824,11 +18824,10 @@
 /obj/machinery/shield_diffuser,
 /obj/machinery/access_button{
 	dir = 1;
-	master_tag = null;
 	name = "exterior access button";
 	pixel_x = 6;
 	pixel_y = 22;
-	req_one_access = list(13)
+	req_one_access = null
 	},
 /obj/effect/map_helper/airlock/button/ext_button,
 /obj/effect/map_helper/airlock/door/ext_door,
@@ -27852,11 +27851,10 @@
 	name = "Docking Port Airlock"
 	},
 /obj/machinery/access_button{
-	master_tag = null;
 	name = "interior access button";
 	pixel_x = -6;
 	pixel_y = -25;
-	req_one_access = list(13)
+	req_one_access = null
 	},
 /obj/effect/map_helper/airlock/button/int_button,
 /obj/effect/map_helper/airlock/door/int_door,

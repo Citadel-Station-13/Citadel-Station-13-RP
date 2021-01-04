@@ -9249,6 +9249,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/research{
 	name = "Xenobiology Lab";
 	req_access = list();
