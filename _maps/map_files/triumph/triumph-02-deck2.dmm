@@ -324,7 +324,11 @@
 "aV" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/carpet/sblucarpet,
+<<<<<<< Updated upstream
 /area/crew_quarters/coffee_shop)
+=======
+/area/vacant/vacant_site2)
+>>>>>>> Stashed changes
 "aW" = (
 /obj/structure/cable{
 	d2 = 8;
@@ -368,7 +372,11 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
+<<<<<<< Updated upstream
 /area/vacant/vacant_site)
+=======
+/area/vacant/vacant_shop)
+>>>>>>> Stashed changes
 "bd" = (
 /obj/effect/floor_decal/industrial/loading,
 /obj/machinery/mineral/input,
@@ -490,6 +498,14 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
+<<<<<<< Updated upstream
+=======
+"by" = (
+/obj/machinery/appliance/cooker/oven,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/tiled,
+/area/maintenance/cargo)
+>>>>>>> Stashed changes
 "bz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -626,6 +642,7 @@
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /turf/simulated/floor/lino,
+<<<<<<< Updated upstream
 /area/crew_quarters/coffee_shop)
 "cb" = (
 /obj/machinery/door/airlock/multi_tile/glass{
@@ -635,6 +652,13 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/vacant/vacant_shop)
+=======
+/area/vacant/vacant_site2)
+"cb" = (
+/obj/structure/sign/double/barsign,
+/turf/simulated/wall,
+/area/vacant/vacant_site2)
+>>>>>>> Stashed changes
 "cc" = (
 /obj/structure/table/marble,
 /obj/machinery/door/firedoor/glass/hidden/steel{
@@ -674,6 +698,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/belter)
+"ch" = (
+/obj/structure/flora/pottedplant/subterranean,
+/turf/simulated/floor/carpet/sblucarpet,
+/area/vacant/vacant_site2)
 "ci" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /obj/effect/floor_decal/borderfloor,
@@ -931,7 +959,11 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plating,
+<<<<<<< Updated upstream
 /area/vacant/vacant_site)
+=======
+/area/vacant/vacant_shop)
+>>>>>>> Stashed changes
 "cP" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -1021,7 +1053,11 @@
 "dk" = (
 /obj/machinery/vending/loadout/loadout_misc,
 /turf/simulated/floor/tiled/steel,
+<<<<<<< Updated upstream
 /area/vacant/vacant_shop)
+=======
+/area/crew_quarters/coffee_shop)
+>>>>>>> Stashed changes
 "dl" = (
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_6)
@@ -1217,6 +1253,7 @@
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/wood,
 /area/quartermaster/foyer)
+<<<<<<< Updated upstream
 "dR" = (
 /obj/machinery/light{
 	dir = 8;
@@ -1224,6 +1261,8 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
+=======
+>>>>>>> Stashed changes
 "dT" = (
 /obj/structure/railing,
 /obj/machinery/door/firedoor/glass/hidden/steel{
@@ -1270,7 +1309,11 @@
 	dir = 1
 	},
 /turf/simulated/floor/lino,
+<<<<<<< Updated upstream
 /area/crew_quarters/coffee_shop)
+=======
+/area/vacant/vacant_site2)
+>>>>>>> Stashed changes
 "ea" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/simulated/floor/plating,
@@ -1580,7 +1623,11 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/plating,
+<<<<<<< Updated upstream
 /area/vacant/vacant_site)
+=======
+/area/vacant/vacant_shop)
+>>>>>>> Stashed changes
 "eO" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -2003,6 +2050,18 @@
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
+<<<<<<< Updated upstream
+=======
+"fP" = (
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
+/obj/machinery/alarm{
+	pixel_y = 22
+	},
+/turf/simulated/floor/tiled,
+/area/maintenance/cargo)
+>>>>>>> Stashed changes
 "fQ" = (
 /obj/machinery/light_switch{
 	pixel_x = -25
@@ -2044,7 +2103,11 @@
 	},
 /obj/structure/table/rack/shelf,
 /turf/simulated/floor/tiled/steel,
+<<<<<<< Updated upstream
 /area/vacant/vacant_shop)
+=======
+/area/crew_quarters/coffee_shop)
+>>>>>>> Stashed changes
 "fV" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -2270,7 +2333,11 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/wall,
+<<<<<<< Updated upstream
 /area/vacant/vacant_shop)
+=======
+/area/crew_quarters/coffee_shop)
+>>>>>>> Stashed changes
 "gy" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -31
@@ -2512,7 +2579,11 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/plating,
+<<<<<<< Updated upstream
 /area/vacant/vacant_site)
+=======
+/area/vacant/vacant_shop)
+>>>>>>> Stashed changes
 "hg" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/conveyor{
@@ -2631,7 +2702,11 @@
 	},
 /obj/machinery/vending/loadout/overwear,
 /turf/simulated/floor/tiled/steel,
+<<<<<<< Updated upstream
 /area/vacant/vacant_shop)
+=======
+/area/crew_quarters/coffee_shop)
+>>>>>>> Stashed changes
 "hs" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -2650,6 +2725,21 @@
 	},
 /turf/space,
 /area/space)
+<<<<<<< Updated upstream
+=======
+"hu" = (
+/obj/structure/closet/secure_closet/freezer/fridge,
+/obj/item/reagent_containers/food/condiment/flour,
+/obj/item/reagent_containers/food/condiment/flour,
+/obj/item/reagent_containers/food/condiment/flour,
+/obj/item/reagent_containers/food/condiment/flour,
+/obj/item/reagent_containers/food/condiment/flour,
+/obj/item/reagent_containers/food/condiment/flour,
+/obj/item/reagent_containers/food/condiment/flour,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/tiled,
+/area/maintenance/cargo)
+>>>>>>> Stashed changes
 "hv" = (
 /obj/machinery/power/apc{
 	cell_type = /obj/item/cell/super;
@@ -2684,7 +2774,11 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
+<<<<<<< Updated upstream
 /area/vacant/vacant_shop)
+=======
+/area/crew_quarters/coffee_shop)
+>>>>>>> Stashed changes
 "hz" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/machinery/door/firedoor,
@@ -2698,6 +2792,13 @@
 /obj/structure/closet/wardrobe,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_6)
+"hB" = (
+/obj/structure/window/reinforced/full,
+/obj/structure/grille,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/curtain/black,
+/turf/simulated/floor/plating,
+/area/vacant/vacant_site2)
 "hC" = (
 /obj/machinery/mech_recharger,
 /turf/simulated/floor/tiled,
@@ -2735,6 +2836,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
+"hI" = (
+/obj/structure/sign/directions/evac{
+	dir = 8
+	},
+/turf/simulated/wall,
+/area/vacant/vacant_site2)
 "hK" = (
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
@@ -2833,6 +2940,7 @@
 /turf/simulated/floor/wood,
 /area/quartermaster/qm)
 "ib" = (
+<<<<<<< Updated upstream
 /obj/effect/floor_decal/industrial/loading{
 	dir = 4
 	},
@@ -2840,6 +2948,13 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
+=======
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/crew_quarters/coffee_shop)
+>>>>>>> Stashed changes
 "id" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
@@ -2864,11 +2979,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hydroponics)
+<<<<<<< Updated upstream
 "ig" = (
 /obj/machinery/appliance/cooker/fryer,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/lounge/kitchen_freezer)
+=======
+>>>>>>> Stashed changes
 "ii" = (
 /turf/space,
 /area/space)
@@ -3111,7 +3229,11 @@
 	},
 /obj/structure/table/rack/shelf,
 /turf/simulated/floor/tiled/steel,
+<<<<<<< Updated upstream
 /area/vacant/vacant_shop)
+=======
+/area/crew_quarters/coffee_shop)
+>>>>>>> Stashed changes
 "iS" = (
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 2
@@ -3337,7 +3459,11 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/lino,
+<<<<<<< Updated upstream
 /area/crew_quarters/coffee_shop)
+=======
+/area/vacant/vacant_site2)
+>>>>>>> Stashed changes
 "jz" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -3740,6 +3866,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/port)
+"kI" = (
+/turf/simulated/floor/lino,
+/area/vacant/vacant_site2)
 "kK" = (
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/crew_quarters/kitchen)
@@ -3840,7 +3969,11 @@
 	},
 /obj/structure/table/rack/shelf,
 /turf/simulated/floor/tiled/steel,
+<<<<<<< Updated upstream
 /area/vacant/vacant_shop)
+=======
+/area/crew_quarters/coffee_shop)
+>>>>>>> Stashed changes
 "kZ" = (
 /obj/structure/table/woodentable,
 /obj/item/flashlight/lamp/green,
@@ -3857,6 +3990,14 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
+"lb" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/wood,
+/area/vacant/vacant_site2)
 "lc" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -3970,7 +4111,11 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
+<<<<<<< Updated upstream
 /area/crew_quarters/lounge/kitchen_freezer)
+=======
+/area/maintenance/cargo)
+>>>>>>> Stashed changes
 "lv" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -4113,16 +4258,27 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/dormitory)
+<<<<<<< Updated upstream
 "lN" = (
 /obj/item/stool/padded,
 /turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
+=======
+"lM" = (
+/obj/machinery/hologram/holopad,
+/turf/simulated/floor/lino,
+/area/vacant/vacant_site2)
+>>>>>>> Stashed changes
 "lP" = (
 /obj/machinery/door/firedoor,
 /obj/structure/window/reinforced/full,
 /obj/structure/grille,
 /turf/simulated/floor/plating,
+<<<<<<< Updated upstream
 /area/vacant/vacant_site)
+=======
+/area/vacant/vacant_shop)
+>>>>>>> Stashed changes
 "lQ" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/ore_box,
@@ -4244,11 +4400,14 @@
 	},
 /turf/simulated/floor/carpet/sblucarpet,
 /area/quartermaster/foyer)
+<<<<<<< Updated upstream
 "mj" = (
 /obj/machinery/appliance/cooker/oven,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/lounge/kitchen_freezer)
+=======
+>>>>>>> Stashed changes
 "ml" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -4323,7 +4482,11 @@
 	},
 /obj/structure/table/rack/shelf,
 /turf/simulated/floor/tiled/steel,
+<<<<<<< Updated upstream
 /area/vacant/vacant_shop)
+=======
+/area/crew_quarters/coffee_shop)
+>>>>>>> Stashed changes
 "mx" = (
 /obj/structure/closet/crate/trashcart,
 /turf/simulated/floor/plating,
@@ -4367,7 +4530,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
+<<<<<<< Updated upstream
 /area/vacant/vacant_shop)
+=======
+/area/crew_quarters/coffee_shop)
+>>>>>>> Stashed changes
 "mD" = (
 /obj/structure/cryofeed,
 /obj/effect/floor_decal/corner_techfloor_grid{
@@ -4424,6 +4591,20 @@
 /obj/machinery/chem_master/condimaster,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
+<<<<<<< Updated upstream
+=======
+"mK" = (
+/obj/structure/closet/secure_closet/freezer/fridge,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/item/reagent_containers/food/condiment/sugar,
+/obj/item/reagent_containers/food/condiment/sugar,
+/obj/item/reagent_containers/food/condiment/sugar,
+/obj/item/storage/fancy/egg_box,
+/obj/item/storage/fancy/egg_box,
+/obj/item/storage/fancy/egg_box,
+/turf/simulated/floor/tiled,
+/area/maintenance/cargo)
+>>>>>>> Stashed changes
 "mL" = (
 /obj/machinery/recharge_station,
 /obj/machinery/light{
@@ -4563,7 +4744,11 @@
 	pixel_y = 36
 	},
 /turf/simulated/floor/tiled/steel,
+<<<<<<< Updated upstream
 /area/vacant/vacant_shop)
+=======
+/area/crew_quarters/coffee_shop)
+>>>>>>> Stashed changes
 "ni" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -4908,6 +5093,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_11)
 "oj" = (
+<<<<<<< Updated upstream
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -4915,6 +5101,14 @@
 /obj/structure/curtain/black,
 /turf/simulated/floor/plating,
 /area/crew_quarters/coffee_shop)
+=======
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1
+	},
+/obj/structure/flora/pottedplant/minitree,
+/turf/simulated/floor/wood,
+/area/vacant/vacant_site2)
+>>>>>>> Stashed changes
 "on" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -4951,6 +5145,21 @@
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
+<<<<<<< Updated upstream
+=======
+"ou" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/turf/simulated/floor/tiled,
+/area/maintenance/cargo)
+"ov" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/turf/simulated/floor/wood,
+/area/vacant/vacant_site2)
+>>>>>>> Stashed changes
 "ow" = (
 /turf/simulated/floor/wood,
 /area/triumph/station/stairs_two)
@@ -5096,7 +5305,11 @@
 	},
 /obj/structure/table/marble,
 /turf/simulated/floor/tiled/steel,
+<<<<<<< Updated upstream
 /area/vacant/vacant_shop)
+=======
+/area/crew_quarters/coffee_shop)
+>>>>>>> Stashed changes
 "oZ" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -5241,6 +5454,15 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/showers)
+"py" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/vacant/vacant_site2)
 "pz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
@@ -5334,7 +5556,11 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
+<<<<<<< Updated upstream
 /area/vacant/vacant_shop)
+=======
+/area/crew_quarters/coffee_shop)
+>>>>>>> Stashed changes
 "pK" = (
 /obj/machinery/mineral/input,
 /obj/machinery/conveyor{
@@ -5407,7 +5633,11 @@
 	dir = 4
 	},
 /turf/simulated/floor/carpet/sblucarpet,
+<<<<<<< Updated upstream
 /area/crew_quarters/coffee_shop)
+=======
+/area/vacant/vacant_site2)
+>>>>>>> Stashed changes
 "pZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -5448,7 +5678,11 @@
 "qg" = (
 /obj/machinery/vending/loadout/costume,
 /turf/simulated/floor/tiled/steel,
+<<<<<<< Updated upstream
 /area/vacant/vacant_shop)
+=======
+/area/crew_quarters/coffee_shop)
+>>>>>>> Stashed changes
 "qh" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
@@ -5501,7 +5735,11 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
+<<<<<<< Updated upstream
 /area/vacant/vacant_site)
+=======
+/area/vacant/vacant_shop)
+>>>>>>> Stashed changes
 "qv" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -5641,6 +5879,7 @@
 	},
 /turf/simulated/floor/wood,
 /area/quartermaster/qm)
+<<<<<<< Updated upstream
 "qT" = (
 /obj/machinery/mineral/stacking_unit_console{
 	pixel_y = 30
@@ -5650,6 +5889,8 @@
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
+=======
+>>>>>>> Stashed changes
 "qV" = (
 /obj/machinery/light{
 	dir = 1
@@ -5819,6 +6060,12 @@
 "rr" = (
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
+"rs" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/vacant/vacant_shop)
 "rt" = (
 /obj/machinery/door/firedoor,
 /obj/structure/cable{
@@ -5838,6 +6085,14 @@
 "rv" = (
 /turf/simulated/shuttle/wall/voidcraft/no_join,
 /area/shuttle/mining_ship/general)
+"rw" = (
+/obj/machinery/door/firedoor/glass,
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/obj/structure/window/reinforced,
+/obj/structure/curtain/black,
+/turf/simulated/floor/plating,
+/area/vacant/vacant_site2)
 "rx" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -6299,7 +6554,11 @@
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /obj/item/stool/padded,
 /turf/simulated/floor/tiled/steel,
+<<<<<<< Updated upstream
 /area/vacant/vacant_shop)
+=======
+/area/crew_quarters/coffee_shop)
+>>>>>>> Stashed changes
 "sK" = (
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 2
@@ -6327,7 +6586,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/table/rack/shelf,
 /turf/simulated/floor/tiled/steel,
+<<<<<<< Updated upstream
 /area/vacant/vacant_shop)
+=======
+/area/crew_quarters/coffee_shop)
+>>>>>>> Stashed changes
 "sP" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -6480,7 +6743,16 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
+<<<<<<< Updated upstream
 /area/vacant/vacant_site)
+=======
+/area/vacant/vacant_shop)
+"tj" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/chem_master/condimaster,
+/turf/simulated/floor/tiled,
+/area/maintenance/cargo)
+>>>>>>> Stashed changes
 "tk" = (
 /obj/machinery/power/apc{
 	name = "south bump";
@@ -6493,7 +6765,11 @@
 	},
 /obj/structure/table/rack/shelf,
 /turf/simulated/floor/tiled/steel,
+<<<<<<< Updated upstream
 /area/vacant/vacant_shop)
+=======
+/area/crew_quarters/coffee_shop)
+>>>>>>> Stashed changes
 "tl" = (
 /obj/structure/table/woodentable,
 /obj/item/deck/tarot,
@@ -6529,7 +6805,11 @@
 	pixel_y = 32
 	},
 /turf/simulated/floor/carpet/sblucarpet,
+<<<<<<< Updated upstream
 /area/crew_quarters/coffee_shop)
+=======
+/area/vacant/vacant_site2)
+>>>>>>> Stashed changes
 "tp" = (
 /obj/machinery/door/firedoor,
 /obj/structure/cable/green{
@@ -6585,7 +6865,11 @@
 	dir = 1
 	},
 /turf/simulated/floor/lino,
+<<<<<<< Updated upstream
 /area/crew_quarters/coffee_shop)
+=======
+/area/vacant/vacant_site2)
+>>>>>>> Stashed changes
 "ty" = (
 /obj/machinery/newscaster{
 	pixel_y = 32
@@ -6674,7 +6958,11 @@
 	pixel_y = 32
 	},
 /turf/simulated/floor/plating,
+<<<<<<< Updated upstream
 /area/maintenance/lower/bar)
+=======
+/area/crew_quarters/lounge/kitchen_freezer)
+>>>>>>> Stashed changes
 "tO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -6859,7 +7147,11 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
+<<<<<<< Updated upstream
 /area/maintenance/lower/bar)
+=======
+/area/crew_quarters/lounge/kitchen_freezer)
+>>>>>>> Stashed changes
 "um" = (
 /obj/machinery/light{
 	dir = 1
@@ -6877,6 +7169,9 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/barrestroom)
+"uq" = (
+/turf/simulated/floor/carpet/sblucarpet,
+/area/vacant/vacant_site2)
 "uu" = (
 /obj/structure/toilet{
 	dir = 1
@@ -6917,6 +7212,20 @@
 	},
 /turf/simulated/floor/airless,
 /area/shuttle/mining_ship/general)
+"uy" = (
+/obj/structure/table/marble,
+/obj/machinery/cash_register/civilian{
+	dir = 4
+	},
+/obj/machinery/door/blast/shutters{
+	dir = 2;
+	id = "cafe";
+	layer = 3.1;
+	name = "Cafe Shutters"
+	},
+/obj/machinery/door/firedoor/glass/hidden/steel,
+/turf/simulated/floor/lino,
+/area/vacant/vacant_site2)
 "uz" = (
 /obj/structure/cryofeed{
 	dir = 2
@@ -7174,7 +7483,11 @@
 /area/maintenance/lower/bar)
 "vo" = (
 /turf/simulated/wall/r_wall,
+<<<<<<< Updated upstream
 /area/vacant/vacant_site)
+=======
+/area/vacant/vacant_shop)
+>>>>>>> Stashed changes
 "vr" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -7229,6 +7542,15 @@
 "vv" = (
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_4)
+<<<<<<< Updated upstream
+=======
+"vw" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/maintenance/cargo)
+>>>>>>> Stashed changes
 "vz" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -7250,7 +7572,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel,
+<<<<<<< Updated upstream
 /area/vacant/vacant_shop)
+=======
+/area/crew_quarters/coffee_shop)
+>>>>>>> Stashed changes
 "vC" = (
 /obj/structure/stairs/west,
 /obj/structure/railing,
@@ -7312,10 +7638,17 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel,
+<<<<<<< Updated upstream
 /area/vacant/vacant_shop)
 "vQ" = (
 /turf/simulated/floor/plating,
 /area/vacant/vacant_site)
+=======
+/area/crew_quarters/coffee_shop)
+"vQ" = (
+/turf/simulated/floor/tiled,
+/area/maintenance/cargo)
+>>>>>>> Stashed changes
 "vR" = (
 /obj/machinery/computer/arcade/battle,
 /turf/simulated/floor/carpet/bcarpet,
@@ -7408,11 +7741,26 @@
 /area/quartermaster/qm)
 "wg" = (
 /obj/machinery/alarm{
-	dir = 4;
-	pixel_x = -23
+	pixel_y = 22
 	},
+<<<<<<< Updated upstream
 /turf/simulated/floor/plating,
 /area/vacant/vacant_site)
+=======
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/wood,
+/area/vacant/vacant_site2)
+>>>>>>> Stashed changes
 "wh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/universal{
 	dir = 4
@@ -7513,6 +7861,15 @@
 /obj/machinery/vending/cigarette,
 /turf/simulated/floor/wood,
 /area/quartermaster/foyer)
+"wB" = (
+/obj/structure/table/woodentable,
+/obj/item/instrument/harmonica,
+/obj/machinery/camera/network/civilian{
+	dir = 1
+	},
+/obj/machinery/recharger,
+/turf/simulated/floor/wood,
+/area/vacant/vacant_site2)
 "wC" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -7559,6 +7916,7 @@
 	name = "Vacant Shop"
 	},
 /turf/simulated/floor/plating,
+<<<<<<< Updated upstream
 /area/vacant/vacant_site)
 "wL" = (
 /obj/machinery/light{
@@ -7571,6 +7929,9 @@
 /obj/machinery/chem_master/condimaster,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/lounge/kitchen_freezer)
+=======
+/area/vacant/vacant_shop)
+>>>>>>> Stashed changes
 "wO" = (
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_1)
@@ -7629,7 +7990,11 @@
 "wY" = (
 /obj/machinery/vending/loadout/uniform,
 /turf/simulated/floor/tiled/steel,
+<<<<<<< Updated upstream
 /area/vacant/vacant_shop)
+=======
+/area/crew_quarters/coffee_shop)
+>>>>>>> Stashed changes
 "wZ" = (
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/belter)
@@ -7725,7 +8090,11 @@
 /obj/machinery/door/firedoor,
 /obj/structure/grille,
 /turf/simulated/floor/tiled/steel,
+<<<<<<< Updated upstream
 /area/vacant/vacant_shop)
+=======
+/area/crew_quarters/coffee_shop)
+>>>>>>> Stashed changes
 "xn" = (
 /obj/machinery/alarm{
 	pixel_y = 22
@@ -7933,6 +8302,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/dormitory)
+"xQ" = (
+/obj/item/stool/padded,
+/turf/simulated/floor/wood,
+/area/vacant/vacant_site2)
 "xR" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/power/apc{
@@ -7976,6 +8349,17 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/wood,
 /area/crew_quarters/kitchen)
+"xX" = (
+/obj/structure/table/marble,
+/obj/machinery/door/blast/shutters{
+	dir = 2;
+	id = "cafe";
+	layer = 3.1;
+	name = "Cafe Shutters"
+	},
+/obj/machinery/door/firedoor/glass/hidden/steel,
+/turf/simulated/floor/lino,
+/area/vacant/vacant_site2)
 "ya" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -8054,7 +8438,11 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
+<<<<<<< Updated upstream
 /area/maintenance/lower/bar)
+=======
+/area/crew_quarters/lounge/kitchen_freezer)
+>>>>>>> Stashed changes
 "ym" = (
 /obj/machinery/door/firedoor,
 /obj/structure/cable/green{
@@ -8109,7 +8497,11 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel,
+<<<<<<< Updated upstream
 /area/vacant/vacant_shop)
+=======
+/area/crew_quarters/coffee_shop)
+>>>>>>> Stashed changes
 "yu" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/effect/landmark/start{
@@ -8331,6 +8723,15 @@
 "ze" = (
 /turf/simulated/wall,
 /area/triumph/surfacebase/bar_backroom)
+"zf" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/turf/simulated/floor/wood,
+/area/vacant/vacant_site2)
 "zg" = (
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 1
@@ -8386,6 +8787,7 @@
 /obj/machinery/vending/loadout/gadget,
 /obj/machinery/camera/network/civilian,
 /turf/simulated/floor/tiled/steel,
+<<<<<<< Updated upstream
 /area/vacant/vacant_shop)
 "zn" = (
 /obj/item/radio/intercom{
@@ -8395,6 +8797,8 @@
 	},
 /obj/machinery/recharge_station,
 /turf/simulated/floor/carpet/sblucarpet,
+=======
+>>>>>>> Stashed changes
 /area/crew_quarters/coffee_shop)
 "zo" = (
 /obj/structure/closet/toolcloset,
@@ -8522,12 +8926,15 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_3)
+<<<<<<< Updated upstream
 "zL" = (
 /obj/structure/bed/chair/comfy/beige{
 	dir = 4
 	},
 /turf/simulated/floor/carpet/sblucarpet,
 /area/crew_quarters/coffee_shop)
+=======
+>>>>>>> Stashed changes
 "zN" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -8719,6 +9126,10 @@
 "As" = (
 /turf/simulated/floor/wood,
 /area/hallway/primary/port)
+"Ay" = (
+/obj/structure/table/marble,
+/turf/simulated/floor/tiled/steel,
+/area/crew_quarters/coffee_shop)
 "Az" = (
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
@@ -8985,6 +9396,7 @@
 /turf/simulated/wall,
 /area/crew_quarters/sleep/Dorm_4)
 "Bt" = (
+<<<<<<< Updated upstream
 /obj/structure/closet/secure_closet/freezer/fridge,
 /obj/item/reagent_containers/food/condiment/flour,
 /obj/item/reagent_containers/food/condiment/flour,
@@ -8996,6 +9408,30 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/lounge/kitchen_freezer)
+=======
+/obj/machinery/door/window{
+	dir = 8;
+	name = "Cafe";
+	req_one_access = list(25)
+	},
+/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/noticeboard{
+	pixel_y = 32
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/lino,
+/area/vacant/vacant_site2)
+>>>>>>> Stashed changes
 "Bv" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -9105,7 +9541,11 @@
 	light_range = 12
 	},
 /turf/simulated/floor/plating,
+<<<<<<< Updated upstream
 /area/maintenance/lower/bar)
+=======
+/area/crew_quarters/lounge/kitchen_freezer)
+>>>>>>> Stashed changes
 "BL" = (
 /obj/structure/closet/secure_closet/freezer/meat,
 /obj/item/radio/intercom{
@@ -9421,7 +9861,11 @@
 	pixel_x = -13
 	},
 /turf/simulated/floor/tiled,
+<<<<<<< Updated upstream
 /area/crew_quarters/lounge/kitchen_freezer)
+=======
+/area/maintenance/cargo)
+>>>>>>> Stashed changes
 "CJ" = (
 /obj/machinery/door/firedoor,
 /obj/structure/cable/green{
@@ -9430,7 +9874,11 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
+<<<<<<< Updated upstream
 /area/vacant/vacant_site)
+=======
+/area/vacant/vacant_shop)
+>>>>>>> Stashed changes
 "CK" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central6{
 	dir = 4
@@ -9443,7 +9891,11 @@
 	},
 /obj/machinery/vending/loadout/clothing,
 /turf/simulated/floor/tiled/steel,
+<<<<<<< Updated upstream
 /area/vacant/vacant_shop)
+=======
+/area/crew_quarters/coffee_shop)
+>>>>>>> Stashed changes
 "CM" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -9697,6 +10149,11 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/barrestroom)
+"Dz" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/carpet/sblucarpet,
+/area/vacant/vacant_site2)
 "DA" = (
 /obj/structure/curtain/open/shower/engineering,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -9782,6 +10239,7 @@
 	},
 /turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/sleep/Dorm_8)
+<<<<<<< Updated upstream
 "DO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -9792,6 +10250,14 @@
 	},
 /turf/simulated/floor/carpet/sblucarpet,
 /area/crew_quarters/coffee_shop)
+=======
+"DP" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/vacant/vacant_site2)
+>>>>>>> Stashed changes
 "DQ" = (
 /obj/item/radio/intercom{
 	dir = 1;
@@ -9834,6 +10300,31 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/starboard)
+<<<<<<< Updated upstream
+=======
+"DV" = (
+/obj/machinery/camera/network/civilian,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/lino,
+/area/vacant/vacant_site2)
+"DW" = (
+/obj/machinery/camera/network/civilian{
+	dir = 8
+	},
+/obj/structure/table/rack/shelf,
+/turf/simulated/floor/tiled/steel,
+/area/crew_quarters/coffee_shop)
+>>>>>>> Stashed changes
 "DX" = (
 /obj/machinery/light,
 /obj/machinery/computer/ship/navigation/telescreen{
@@ -10082,7 +10573,11 @@
 	dir = 4
 	},
 /turf/simulated/floor/lino,
+<<<<<<< Updated upstream
 /area/crew_quarters/coffee_shop)
+=======
+/area/vacant/vacant_site2)
+>>>>>>> Stashed changes
 "EQ" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
@@ -10138,7 +10633,17 @@
 	dir = 6
 	},
 /turf/simulated/floor/plating,
+<<<<<<< Updated upstream
 /area/maintenance/lower/bar)
+=======
+/area/crew_quarters/lounge/kitchen_freezer)
+"EX" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/sblucarpet,
+/area/vacant/vacant_site2)
+>>>>>>> Stashed changes
 "EY" = (
 /obj/machinery/camera/network/cargo{
 	dir = 4
@@ -10211,6 +10716,19 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_7)
+"Fe" = (
+/obj/structure/table/marble,
+/obj/machinery/door/blast/shutters{
+	dir = 2;
+	id = "cafe";
+	layer = 3.1;
+	name = "Cafe Shutters"
+	},
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 2
+	},
+/turf/simulated/floor/lino,
+/area/vacant/vacant_site2)
 "Ff" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -10254,6 +10772,7 @@
 /obj/machinery/chemical_dispenser/bar_coffee/full,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
+<<<<<<< Updated upstream
 "Fj" = (
 /obj/machinery/door/airlock/freezer{
 	name = "Cafe Backroom";
@@ -10278,6 +10797,12 @@
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/tiled/steel,
 /area/vacant/vacant_shop)
+=======
+"Fl" = (
+/obj/machinery/atmospherics/unary/vent_pump/on,
+/turf/simulated/floor/tiled/steel,
+/area/crew_quarters/coffee_shop)
+>>>>>>> Stashed changes
 "Fm" = (
 /obj/structure/undies_wardrobe,
 /turf/simulated/floor/wood,
@@ -10368,7 +10893,11 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
+<<<<<<< Updated upstream
 /area/crew_quarters/lounge/kitchen_freezer)
+=======
+/area/maintenance/cargo)
+>>>>>>> Stashed changes
 "FE" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -31
@@ -10637,7 +11166,11 @@
 /obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
+<<<<<<< Updated upstream
 /area/vacant/vacant_shop)
+=======
+/area/crew_quarters/coffee_shop)
+>>>>>>> Stashed changes
 "Gr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -10684,7 +11217,11 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating,
+<<<<<<< Updated upstream
 /area/maintenance/lower/bar)
+=======
+/area/crew_quarters/lounge/kitchen_freezer)
+>>>>>>> Stashed changes
 "Gy" = (
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
@@ -10722,11 +11259,30 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area_hallway)
 "GC" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 8
+/obj/machinery/door/airlock/freezer{
+	name = "Cafe Backroom";
+	req_access = list(28);
+	req_one_access = newlist()
 	},
+<<<<<<< Updated upstream
 /turf/simulated/floor/plating,
 /area/vacant/vacant_site)
+=======
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/plating,
+/area/maintenance/cargo)
+>>>>>>> Stashed changes
 "GD" = (
 /obj/machinery/power/apc{
 	cell_type = /obj/item/cell/super;
@@ -10893,7 +11449,11 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/wood,
+<<<<<<< Updated upstream
 /area/crew_quarters/coffee_shop)
+=======
+/area/vacant/vacant_site2)
+>>>>>>> Stashed changes
 "Hh" = (
 /obj/structure/closet/crate/bin{
 	anchored = 1
@@ -10925,6 +11485,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_2)
 "Hk" = (
+<<<<<<< Updated upstream
 /obj/structure/closet/secure_closet/freezer/fridge,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/item/reagent_containers/food/condiment/sugar,
@@ -10934,6 +11495,9 @@
 /obj/item/storage/fancy/egg_box,
 /obj/item/storage/fancy/egg_box,
 /turf/simulated/floor/tiled,
+=======
+/turf/simulated/floor/plating,
+>>>>>>> Stashed changes
 /area/crew_quarters/lounge/kitchen_freezer)
 "Hl" = (
 /obj/structure/cable{
@@ -10961,7 +11525,11 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
+<<<<<<< Updated upstream
 /area/vacant/vacant_shop)
+=======
+/area/crew_quarters/coffee_shop)
+>>>>>>> Stashed changes
 "Hs" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
@@ -11247,7 +11815,11 @@
 	},
 /obj/structure/table/rack/shelf,
 /turf/simulated/floor/tiled/steel,
+<<<<<<< Updated upstream
 /area/vacant/vacant_shop)
+=======
+/area/crew_quarters/coffee_shop)
+>>>>>>> Stashed changes
 "Ih" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -11411,6 +11983,15 @@
 /obj/machinery/camera/network/cargo,
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/eva)
+<<<<<<< Updated upstream
+=======
+"IG" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/sblucarpet,
+/area/vacant/vacant_site2)
+>>>>>>> Stashed changes
 "IH" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -31
@@ -11496,8 +12077,16 @@
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
 "IR" = (
+<<<<<<< Updated upstream
 /turf/simulated/floor/lino,
 /area/crew_quarters/coffee_shop)
+=======
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/sblucarpet,
+/area/vacant/vacant_site2)
+>>>>>>> Stashed changes
 "IS" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /obj/effect/floor_decal/borderfloor,
@@ -11656,7 +12245,11 @@
 "Jn" = (
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled/steel,
+<<<<<<< Updated upstream
 /area/vacant/vacant_shop)
+=======
+/area/crew_quarters/coffee_shop)
+>>>>>>> Stashed changes
 "Jo" = (
 /obj/machinery/alarm{
 	dir = 4;
@@ -11689,6 +12282,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
+"Jr" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/sblucarpet,
+/area/vacant/vacant_site2)
 "Js" = (
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
@@ -12002,6 +12601,7 @@
 	},
 /obj/machinery/vending/loadout/accessory,
 /turf/simulated/floor/tiled/steel,
+<<<<<<< Updated upstream
 /area/vacant/vacant_shop)
 "Kt" = (
 /obj/machinery/camera/network/civilian,
@@ -12017,6 +12617,8 @@
 	dir = 4
 	},
 /turf/simulated/floor/lino,
+=======
+>>>>>>> Stashed changes
 /area/crew_quarters/coffee_shop)
 "Kv" = (
 /turf/simulated/floor/tiled/white,
@@ -12039,7 +12641,11 @@
 	},
 /obj/machinery/light,
 /turf/simulated/floor/carpet/sblucarpet,
+<<<<<<< Updated upstream
 /area/crew_quarters/coffee_shop)
+=======
+/area/vacant/vacant_site2)
+>>>>>>> Stashed changes
 "Ky" = (
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
@@ -12162,6 +12768,12 @@
 /obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_two)
+"KV" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/hologram/holopad,
+/turf/simulated/floor/carpet/sblucarpet,
+/area/vacant/vacant_site2)
 "KW" = (
 /obj/structure/cryofeed{
 	dir = 4
@@ -12257,7 +12869,11 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
+<<<<<<< Updated upstream
 /area/vacant/vacant_shop)
+=======
+/area/crew_quarters/coffee_shop)
+>>>>>>> Stashed changes
 "Ll" = (
 /obj/structure/closet/walllocker{
 	pixel_y = 32
@@ -12393,6 +13009,15 @@
 "LL" = (
 /turf/simulated/floor/carpet/sblucarpet,
 /area/quartermaster/qm)
+"LN" = (
+/obj/item/radio/intercom{
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 26
+	},
+/obj/machinery/recharge_station,
+/turf/simulated/floor/carpet/sblucarpet,
+/area/vacant/vacant_site2)
 "LO" = (
 /obj/structure/window/reinforced/full,
 /obj/structure/grille,
@@ -12716,6 +13341,30 @@
 /obj/item/flashlight/lamp/green,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
+"MP" = (
+/obj/structure/table/woodentable,
+/obj/item/reagent_containers/food/condiment/small/peppermill{
+	pixel_x = 9
+	},
+/obj/item/reagent_containers/food/condiment/small/peppermill{
+	pixel_x = 3
+	},
+/obj/item/reagent_containers/food/condiment/small/saltshaker{
+	pixel_x = -3
+	},
+/obj/item/reagent_containers/food/condiment/small/saltshaker{
+	pixel_x = -9
+	},
+/obj/item/reagent_containers/food/drinks/cup{
+	pixel_x = -4;
+	pixel_y = 12
+	},
+/obj/item/reagent_containers/food/drinks/cup{
+	pixel_x = 8;
+	pixel_y = 12
+	},
+/turf/simulated/floor/wood,
+/area/vacant/vacant_site2)
 "MR" = (
 /obj/machinery/firealarm{
 	dir = 4;
@@ -12788,7 +13437,11 @@
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/plating,
+<<<<<<< Updated upstream
 /area/maintenance/lower/bar)
+=======
+/area/crew_quarters/lounge/kitchen_freezer)
+>>>>>>> Stashed changes
 "Nc" = (
 /obj/structure/table/woodentable,
 /obj/machinery/recharger,
@@ -12842,7 +13495,11 @@
 	dir = 2
 	},
 /turf/simulated/floor/lino,
+<<<<<<< Updated upstream
 /area/crew_quarters/coffee_shop)
+=======
+/area/vacant/vacant_site2)
+>>>>>>> Stashed changes
 "Nl" = (
 /obj/structure/flora/pottedplant/smelly,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -12880,7 +13537,11 @@
 	pixel_x = -27
 	},
 /turf/simulated/floor/plating,
+<<<<<<< Updated upstream
 /area/vacant/vacant_site)
+=======
+/area/vacant/vacant_shop)
+>>>>>>> Stashed changes
 "Nr" = (
 /obj/structure/bed/chair/comfy/teal{
 	dir = 1
@@ -12968,8 +13629,15 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_2)
 "NB" = (
+<<<<<<< Updated upstream
 /turf/simulated/wall,
 /area/crew_quarters/lounge/kitchen_freezer)
+=======
+/obj/machinery/appliance/cooker/fryer,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/tiled,
+/area/maintenance/cargo)
+>>>>>>> Stashed changes
 "NC" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -12989,6 +13657,14 @@
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
+"NH" = (
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 8;
+	name = "Vacant Shop"
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/steel,
+/area/crew_quarters/coffee_shop)
 "NI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -13056,6 +13732,26 @@
 	},
 /turf/simulated/floor/carpet/sblucarpet,
 /area/quartermaster/foyer)
+<<<<<<< Updated upstream
+=======
+"NQ" = (
+/obj/machinery/power/apc{
+	name = "south bump";
+	pixel_y = -28
+	},
+/obj/structure/cable/green{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/turf/simulated/floor/tiled,
+/area/maintenance/cargo)
+>>>>>>> Stashed changes
 "NS" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/tiled,
@@ -13196,8 +13892,17 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/Dorm_11)
 "Ow" = (
+<<<<<<< Updated upstream
 /turf/simulated/floor/tiled,
 /area/vacant/vacant_site)
+=======
+/obj/structure/table/marble,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/item/reagent_containers/glass/beaker/large,
+/obj/item/hand_labeler,
+/turf/simulated/floor/tiled,
+/area/maintenance/cargo)
+>>>>>>> Stashed changes
 "Ox" = (
 /turf/simulated/wall,
 /area/crew_quarters/sleep/Dorm_9)
@@ -13312,6 +14017,18 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/structure/sign/directions/engineering{
+	dir = 4;
+	pixel_y = 38
+	},
+/obj/structure/sign/directions/cargo{
+	dir = 1;
+	pixel_y = 32
+	},
+/obj/structure/sign/directions/cryo{
+	dir = 4;
+	pixel_y = 25
+	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "OU" = (
@@ -13366,7 +14083,11 @@
 	},
 /obj/structure/table/rack/shelf,
 /turf/simulated/floor/tiled/steel,
+<<<<<<< Updated upstream
 /area/vacant/vacant_shop)
+=======
+/area/crew_quarters/coffee_shop)
+>>>>>>> Stashed changes
 "Pg" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -13483,6 +14204,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area_hallway)
+<<<<<<< Updated upstream
 "Py" = (
 /obj/structure/table/marble,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -13490,6 +14212,8 @@
 /obj/item/hand_labeler,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/lounge/kitchen_freezer)
+=======
+>>>>>>> Stashed changes
 "PA" = (
 /obj/machinery/computer/security/telescreen{
 	pixel_x = -32
@@ -13680,6 +14404,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "Qf" = (
+<<<<<<< Updated upstream
 /obj/machinery/alarm{
 	pixel_y = 22
 	},
@@ -13696,6 +14421,11 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
+=======
+/obj/random/trash_pile,
+/turf/simulated/floor/plating,
+/area/crew_quarters/lounge/kitchen_freezer)
+>>>>>>> Stashed changes
 "Qg" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -13876,6 +14606,13 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_8)
+"QO" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/sblucarpet,
+/area/vacant/vacant_site2)
 "QP" = (
 /obj/structure/toilet{
 	pixel_y = 10
@@ -14041,7 +14778,11 @@
 "Rm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel,
+<<<<<<< Updated upstream
 /area/vacant/vacant_shop)
+=======
+/area/crew_quarters/coffee_shop)
+>>>>>>> Stashed changes
 "Rn" = (
 /obj/machinery/light{
 	dir = 8
@@ -14050,7 +14791,11 @@
 	pixel_x = -32
 	},
 /turf/simulated/floor/plating,
+<<<<<<< Updated upstream
 /area/vacant/vacant_site)
+=======
+/area/vacant/vacant_shop)
+>>>>>>> Stashed changes
 "Ro" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -14091,7 +14836,11 @@
 	pixel_y = 26
 	},
 /turf/simulated/floor/carpet/sblucarpet,
+<<<<<<< Updated upstream
 /area/crew_quarters/coffee_shop)
+=======
+/area/vacant/vacant_site2)
+>>>>>>> Stashed changes
 "Ru" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
@@ -14308,6 +15057,10 @@
 	},
 /turf/simulated/floor/carpet/sblucarpet,
 /area/quartermaster/foyer)
+"RZ" = (
+/obj/structure/table/rack/shelf,
+/turf/simulated/floor/tiled/steel,
+/area/crew_quarters/coffee_shop)
 "Sa" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /obj/structure/closet/wardrobe,
@@ -14384,7 +15137,11 @@
 	},
 /obj/machinery/light,
 /turf/simulated/floor/wood,
+<<<<<<< Updated upstream
 /area/crew_quarters/coffee_shop)
+=======
+/area/vacant/vacant_site2)
+>>>>>>> Stashed changes
 "Si" = (
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 1
@@ -14402,7 +15159,11 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
+<<<<<<< Updated upstream
 /area/vacant/vacant_shop)
+=======
+/area/crew_quarters/coffee_shop)
+>>>>>>> Stashed changes
 "Sm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/white,
@@ -14483,6 +15244,14 @@
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
+<<<<<<< Updated upstream
+=======
+"SC" = (
+/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/tiled/steel,
+/area/crew_quarters/coffee_shop)
+>>>>>>> Stashed changes
 "SD" = (
 /obj/structure/sink{
 	dir = 8;
@@ -14581,6 +15350,16 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/starboard)
+"SO" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/turf/simulated/floor/carpet/sblucarpet,
+/area/vacant/vacant_site2)
 "SP" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
@@ -14891,7 +15670,11 @@
 "TN" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/steel,
+<<<<<<< Updated upstream
 /area/vacant/vacant_shop)
+=======
+/area/crew_quarters/coffee_shop)
+>>>>>>> Stashed changes
 "TO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -15004,7 +15787,11 @@
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/wood,
+<<<<<<< Updated upstream
 /area/crew_quarters/coffee_shop)
+=======
+/area/vacant/vacant_site2)
+>>>>>>> Stashed changes
 "Ub" = (
 /obj/structure/table/woodentable,
 /obj/structure/flora/pottedplant/small,
@@ -15018,7 +15805,11 @@
 	},
 /obj/machinery/media/jukebox,
 /turf/simulated/floor/wood,
+<<<<<<< Updated upstream
 /area/crew_quarters/coffee_shop)
+=======
+/area/vacant/vacant_site2)
+>>>>>>> Stashed changes
 "Uf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -15128,6 +15919,20 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_11)
+"UD" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/wood,
+/area/vacant/vacant_site2)
 "UE" = (
 /obj/machinery/firealarm{
 	dir = 1;
@@ -15879,11 +16684,64 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+<<<<<<< Updated upstream
+/turf/simulated/floor/plating,
+/area/vacant/vacant_shop)
+"Ww" = (
+/obj/structure/table/marble,
+/obj/item/reagent_containers/food/drinks/cup{
+	pixel_x = 8;
+	pixel_y = -4
+	},
+/obj/item/reagent_containers/food/drinks/cup{
+	pixel_x = -4;
+	pixel_y = -4
+	},
+/obj/item/reagent_containers/food/drinks/cup{
+	pixel_x = -4
+	},
+/obj/item/reagent_containers/food/drinks/cup{
+	pixel_x = 8
+	},
+/obj/item/reagent_containers/food/drinks/cup{
+	pixel_x = 8;
+	pixel_y = 8
+	},
+/obj/item/reagent_containers/food/drinks/cup{
+	pixel_x = -4;
+	pixel_y = 8
+	},
+/obj/item/reagent_containers/food/drinks/cup{
+	pixel_x = 8;
+	pixel_y = 12
+	},
+/obj/item/reagent_containers/food/drinks/cup{
+	pixel_x = -4;
+	pixel_y = 12
+	},
+/obj/machinery/computer/security/telescreen{
+	pixel_y = 32
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
 /turf/simulated/floor/lino,
 /area/crew_quarters/coffee_shop)
+=======
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/lino,
+/area/vacant/vacant_site2)
+>>>>>>> Stashed changes
 "Wx" = (
 /mob/living/simple_mob/animal/passive/penguin/emperor{
 	desc = "There's a tag on this pengiun that says Skipper. You're not even sure where the chef found them.";
@@ -15924,6 +16782,12 @@
 	},
 /turf/simulated/shuttle/wall/voidcraft/green,
 /area/shuttle/mining_ship/general)
+<<<<<<< Updated upstream
+=======
+"WB" = (
+/turf/simulated/floor/tiled/steel,
+/area/crew_quarters/coffee_shop)
+>>>>>>> Stashed changes
 "WC" = (
 /obj/structure/cryofeed{
 	dir = 2
@@ -16257,8 +17121,13 @@
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
 "Xx" = (
+<<<<<<< Updated upstream
 /turf/simulated/floor/tiled/steel,
 /area/vacant/vacant_shop)
+=======
+/turf/simulated/floor/plating,
+/area/crew_quarters/coffee_shop)
+>>>>>>> Stashed changes
 "Xy" = (
 /obj/structure/closet/secure_closet/freezer/kitchen,
 /obj/machinery/alarm{
@@ -16620,7 +17489,11 @@
 "YA" = (
 /obj/structure/bed/chair/comfy/beige,
 /turf/simulated/floor/carpet/sblucarpet,
+<<<<<<< Updated upstream
 /area/crew_quarters/coffee_shop)
+=======
+/area/vacant/vacant_site2)
+>>>>>>> Stashed changes
 "YC" = (
 /obj/machinery/power/breakerbox/activated{
 	RCon_tag = "DECK 2"
@@ -16664,7 +17537,11 @@
 "YM" = (
 /obj/machinery/camera/network/civilian,
 /turf/simulated/floor/plating,
+<<<<<<< Updated upstream
 /area/vacant/vacant_site)
+=======
+/area/vacant/vacant_shop)
+>>>>>>> Stashed changes
 "YO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -16784,7 +17661,11 @@
 	},
 /obj/machinery/vending/loadout,
 /turf/simulated/floor/tiled/steel,
+<<<<<<< Updated upstream
 /area/vacant/vacant_shop)
+=======
+/area/crew_quarters/coffee_shop)
+>>>>>>> Stashed changes
 "Zk" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -16982,6 +17863,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/eva)
+"ZM" = (
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/structure/flora/pottedplant/orientaltree,
+/turf/simulated/floor/wood,
+/area/vacant/vacant_site2)
 "ZN" = (
 /obj/machinery/firealarm{
 	dir = 1;
@@ -25075,10 +25963,17 @@ op
 kP
 sM
 vA
+<<<<<<< Updated upstream
 Rr
 Nh
 BK
 op
+=======
+yy
+Hk
+BK
+Qf
+>>>>>>> Stashed changes
 cM
 jp
 oH
@@ -25362,11 +26257,19 @@ II
 Rr
 tN
 ul
+<<<<<<< Updated upstream
 Nh
 Nh
 cz
 Nh
 Rr
+=======
+Hk
+Xx
+ib
+Xx
+Ib
+>>>>>>> Stashed changes
 RE
 vd
 vd
@@ -25504,11 +26407,19 @@ Ty
 Rr
 op
 yk
+<<<<<<< Updated upstream
 Nh
 Nh
 Nh
 Nh
 Rr
+=======
+Hk
+Xx
+Xx
+Xx
+Ib
+>>>>>>> Stashed changes
 IX
 RE
 RE
@@ -25646,6 +26557,7 @@ Ty
 Rr
 Rr
 Ya
+<<<<<<< Updated upstream
 Rr
 mQ
 mQ
@@ -25655,6 +26567,17 @@ mQ
 mQ
 mQ
 mQ
+=======
+yy
+Ib
+Ib
+SC
+Ib
+Ib
+Ib
+Ib
+Ib
+>>>>>>> Stashed changes
 tE
 BC
 LX
@@ -25931,6 +26854,7 @@ eA
 eA
 dy
 qf
+<<<<<<< Updated upstream
 mQ
 Xx
 TN
@@ -25939,6 +26863,16 @@ pJ
 Xx
 vP
 cb
+=======
+Ib
+WB
+TN
+Rm
+pJ
+WB
+vP
+NH
+>>>>>>> Stashed changes
 VQ
 Vv
 Vx
@@ -26076,7 +27010,11 @@ sf
 mQ
 wY
 Jn
+<<<<<<< Updated upstream
 Xx
+=======
+WB
+>>>>>>> Stashed changes
 Sl
 vB
 yt
@@ -26217,10 +27155,17 @@ gl
 Nh
 mQ
 hr
+<<<<<<< Updated upstream
 Xx
 Xx
 hy
 Xx
+=======
+WB
+WB
+hy
+WB
+>>>>>>> Stashed changes
 kY
 mQ
 mO
@@ -26359,10 +27304,17 @@ gz
 op
 mQ
 dk
+<<<<<<< Updated upstream
 Xx
 Xx
 Li
 Xx
+=======
+WB
+WB
+Li
+WB
+>>>>>>> Stashed changes
 tk
 mQ
 VQ
@@ -26501,7 +27453,11 @@ gz
 Nh
 mQ
 zm
+<<<<<<< Updated upstream
 Xx
+=======
+WB
+>>>>>>> Stashed changes
 sI
 oX
 Hq
@@ -26643,11 +27599,19 @@ gz
 Nh
 Ib
 qg
+<<<<<<< Updated upstream
 Xx
 Xx
 EM
 Xx
 Xx
+=======
+WB
+WB
+Ay
+WB
+WB
+>>>>>>> Stashed changes
 Gq
 VQ
 Vv
@@ -26785,11 +27749,19 @@ gz
 Nh
 mQ
 CL
+<<<<<<< Updated upstream
 Xx
 Xx
 Xx
 Xx
 Xx
+=======
+WB
+WB
+WB
+WB
+WB
+>>>>>>> Stashed changes
 Gq
 ar
 rL
@@ -26927,12 +27899,21 @@ gz
 Nh
 mQ
 Kr
+<<<<<<< Updated upstream
 Xx
 Xx
 Xx
 Xx
 jv
 mQ
+=======
+WB
+WB
+WB
+WB
+RZ
+Ib
+>>>>>>> Stashed changes
 BG
 Vv
 hK
@@ -27069,12 +28050,21 @@ rt
 Rr
 mQ
 Zj
+<<<<<<< Updated upstream
 Xx
 Xx
 Xx
 mw
 yS
 mQ
+=======
+WB
+WB
+WB
+mw
+DW
+Ib
+>>>>>>> Stashed changes
 kM
 Vv
 hK
@@ -27214,9 +28204,15 @@ mQ
 mQ
 xm
 Gq
+<<<<<<< Updated upstream
 mQ
 mQ
 mF
+=======
+Ib
+Ib
+Ib
+>>>>>>> Stashed changes
 OR
 Vv
 hK
@@ -27785,7 +28781,11 @@ GJ
 GJ
 GJ
 GJ
+<<<<<<< Updated upstream
 Fg
+=======
+XZ
+>>>>>>> Stashed changes
 dJ
 XZ
 Uy
@@ -27922,11 +28922,19 @@ rV
 dO
 wA
 yc
+<<<<<<< Updated upstream
 zn
 pX
 zL
 zL
 Jp
+=======
+LN
+pX
+IG
+IG
+hB
+>>>>>>> Stashed changes
 TW
 DL
 Wc
@@ -28064,8 +29072,13 @@ Sv
 GJ
 GJ
 GJ
+<<<<<<< Updated upstream
 rn
 oJ
+=======
+ch
+uq
+>>>>>>> Stashed changes
 aV
 aV
 Or
@@ -28206,10 +29219,17 @@ ji
 GJ
 YA
 aV
+<<<<<<< Updated upstream
 ry
 oJ
 bO
 bO
+=======
+EX
+uq
+Jr
+Jr
+>>>>>>> Stashed changes
 jl
 Yp
 Qg
@@ -28348,12 +29368,21 @@ WY
 GJ
 Rt
 aV
+<<<<<<< Updated upstream
 ry
 oJ
 Wb
 Kx
 GJ
 gb
+=======
+EX
+uq
+IR
+Kx
+hI
+IY
+>>>>>>> Stashed changes
 FC
 hT
 Uy
@@ -28489,11 +29518,19 @@ aC
 Sy
 GJ
 tn
+<<<<<<< Updated upstream
 nT
 nT
 XS
 tR
 DO
+=======
+Dz
+Dz
+KV
+QO
+SO
+>>>>>>> Stashed changes
 GJ
 nM
 FC
@@ -28630,11 +29667,19 @@ et
 rk
 Ne
 GJ
+<<<<<<< Updated upstream
 Qf
 Wz
 Wz
 Wz
 jo
+=======
+wg
+lb
+lb
+lb
+UD
+>>>>>>> Stashed changes
 Hg
 Ua
 vb
@@ -28772,6 +29817,7 @@ et
 Sb
 Ne
 GJ
+<<<<<<< Updated upstream
 Rf
 iV
 Ve
@@ -28780,6 +29826,16 @@ iy
 Uc
 Cz
 nM
+=======
+Bt
+uy
+xX
+xQ
+py
+Uc
+cb
+lf
+>>>>>>> Stashed changes
 uZ
 hT
 cX
@@ -28916,9 +29972,15 @@ Ne
 GJ
 jy
 dZ
+<<<<<<< Updated upstream
 rq
 lN
 iy
+=======
+Fe
+xQ
+py
+>>>>>>> Stashed changes
 Sg
 GJ
 nM
@@ -29058,10 +30120,17 @@ yQ
 XO
 ca
 tw
+<<<<<<< Updated upstream
 rq
 lN
 iy
 Pp
+=======
+Fe
+xQ
+py
+wB
+>>>>>>> Stashed changes
 GJ
 Fz
 uZ
@@ -29199,12 +30268,21 @@ RI
 EH
 GJ
 EO
+<<<<<<< Updated upstream
 NW
 rq
 lN
 ps
 ll
 oj
+=======
+lM
+Fe
+xQ
+zf
+ZM
+rw
+>>>>>>> Stashed changes
 nM
 FC
 BH
@@ -29341,12 +30419,21 @@ Sv
 Sv
 GJ
 Ww
+<<<<<<< Updated upstream
 IR
 rq
 lN
 Ie
 aZ
 oj
+=======
+kI
+Fe
+xQ
+ov
+oj
+rw
+>>>>>>> Stashed changes
 nM
 FC
 VV
@@ -29480,6 +30567,7 @@ dD
 dD
 dR
 dD
+<<<<<<< Updated upstream
 Gy
 GJ
 Kt
@@ -29488,6 +30576,17 @@ Nk
 lN
 wL
 EJ
+=======
+dD
+Gy
+GJ
+DV
+kI
+Nk
+xQ
+DP
+MP
+>>>>>>> Stashed changes
 GJ
 rY
 FC
@@ -29621,6 +30720,7 @@ im
 dD
 dD
 dD
+<<<<<<< Updated upstream
 NB
 NB
 NB
@@ -29632,6 +30732,19 @@ Ib
 Ib
 Ib
 lf
+=======
+Sv
+Sv
+Sv
+GC
+mQ
+mQ
+mQ
+mQ
+mQ
+mQ
+Cq
+>>>>>>> Stashed changes
 FC
 tY
 zk
@@ -29763,14 +30876,24 @@ Sv
 Sv
 Gy
 dD
+<<<<<<< Updated upstream
+=======
+Hp
+Sv
+>>>>>>> Stashed changes
 NB
 ig
 CI
 lu
+<<<<<<< Updated upstream
 NB
 vQ
+=======
+mQ
+xj
+>>>>>>> Stashed changes
 Rn
-wg
+gH
 Nq
 sD
 IY
@@ -29905,6 +31028,7 @@ Gy
 Sv
 Sv
 Sv
+<<<<<<< Updated upstream
 NB
 mj
 Cq
@@ -29916,6 +31040,19 @@ uC
 vQ
 sD
 nM
+=======
+Sv
+by
+ou
+NQ
+mQ
+xj
+qu
+uC
+xj
+sD
+Rf
+>>>>>>> Stashed changes
 FC
 hT
 zk
@@ -30047,17 +31184,29 @@ Bj
 YL
 Zz
 ji
+<<<<<<< Updated upstream
 NB
 yy
 Ut
+=======
+Sv
+fP
+vw
+>>>>>>> Stashed changes
 FD
 NB
 YM
 GY
 bb
+<<<<<<< Updated upstream
 vQ
 Ib
 QF
+=======
+xj
+mQ
+Yp
+>>>>>>> Stashed changes
 Qg
 mB
 Ai
@@ -30189,6 +31338,7 @@ Rj
 Rj
 Sb
 WY
+<<<<<<< Updated upstream
 NB
 Bt
 Hp
@@ -30198,6 +31348,17 @@ Ow
 Vp
 bb
 vQ
+=======
+Sv
+hu
+vQ
+Ow
+mQ
+GM
+rs
+bb
+xj
+>>>>>>> Stashed changes
 wH
 nM
 FC
@@ -30331,11 +31492,19 @@ ii
 Rj
 aC
 Gy
+<<<<<<< Updated upstream
 NB
 Hk
 Hp
 wM
 NB
+=======
+Sv
+mK
+vQ
+tj
+mQ
+>>>>>>> Stashed changes
 YS
 GY
 wn
@@ -30473,12 +31642,21 @@ ii
 Rj
 aC
 ea
+<<<<<<< Updated upstream
 NB
 NB
 NB
 NB
 NB
 Ow
+=======
+Sv
+Sv
+Sv
+Sv
+mQ
+GM
+>>>>>>> Stashed changes
 GY
 wn
 eo
@@ -30623,8 +31801,13 @@ Ui
 Pd
 cN
 Hu
+<<<<<<< Updated upstream
 vQ
 Ib
+=======
+xj
+mQ
+>>>>>>> Stashed changes
 fj
 Gl
 cH
@@ -30907,7 +32090,11 @@ Ib
 Gw
 GY
 bb
+<<<<<<< Updated upstream
 Ow
+=======
+GM
+>>>>>>> Stashed changes
 lP
 Yp
 Qg
@@ -31048,8 +32235,13 @@ aC
 Ib
 In
 aX
+<<<<<<< Updated upstream
 GC
 vQ
+=======
+DH
+xj
+>>>>>>> Stashed changes
 hf
 nM
 FC
@@ -31187,12 +32379,21 @@ ii
 ii
 Rj
 tV
+<<<<<<< Updated upstream
 Ib
 vQ
 vQ
 vQ
 vQ
 Ib
+=======
+mQ
+xj
+xj
+xj
+xj
+mQ
+>>>>>>> Stashed changes
 Je
 Ha
 oI
@@ -31329,12 +32530,21 @@ ii
 ii
 Rj
 cm
+<<<<<<< Updated upstream
 Ib
 vQ
 th
 vQ
 vQ
 Ib
+=======
+mQ
+xj
+th
+xj
+xj
+mQ
+>>>>>>> Stashed changes
 lf
 FC
 Jh
