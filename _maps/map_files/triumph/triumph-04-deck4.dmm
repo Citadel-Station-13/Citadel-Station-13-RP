@@ -9813,6 +9813,13 @@
 	},
 /obj/machinery/camera/network/security,
 /obj/machinery/recharger,
+/obj/machinery/access_button{
+	command = "cycle_exterior";
+	frequency = 1380;
+	master_tag = "civvie_docker";
+	pixel_x = -12;
+	pixel_y = -21
+	},
 /turf/simulated/floor/lino,
 /area/security/detectives_office)
 "hat" = (
@@ -19968,9 +19975,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/primary/aft)
 "nWe" = (
-/obj/machinery/disposal,
-/obj/structure/disposalpipe/trunk{
-	dir = 1
+/obj/structure/closet/crate/bin{
+	anchored = 1
 	},
 /turf/simulated/floor/lino,
 /area/security/detectives_office)
