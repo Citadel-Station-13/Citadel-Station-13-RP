@@ -1801,7 +1801,7 @@
 "fj" = (
 /obj/structure/coatrack,
 /obj/machinery/button/remote/airlock{
-	id = "dorm1";
+	id = "Vacant Site";
 	name = "Dressroom Lock";
 	pixel_x = 26;
 	pixel_y = -4;
@@ -1812,7 +1812,7 @@
 	pixel_y = 22
 	},
 /turf/simulated/floor/carpet/bcarpet,
-/area/vacant/vacant_shop)
+/area/vacant/vacant_site)
 "fk" = (
 /obj/machinery/status_display/supply_display{
 	pixel_y = 32
@@ -2905,7 +2905,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /obj/item/stool/padded,
 /turf/simulated/floor/carpet/bcarpet,
-/area/vacant/vacant_shop)
+/area/vacant/vacant_site)
 "id" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
@@ -6842,6 +6842,9 @@
 /obj/structure/closet/walllocker/emerglocker/north,
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/mining_ship/general)
+"tQ" = (
+/turf/simulated/wall,
+/area/vacant/vacant_site)
 "tS" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
@@ -7671,6 +7674,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/barrestroom)
+"ww" = (
+/obj/machinery/hologram/holopad,
+/turf/simulated/floor/lino,
+/area/crew_quarters/coffee_shop)
 "wx" = (
 /obj/machinery/recharge_station,
 /turf/simulated/floor/tiled/steel,
@@ -9037,7 +9044,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/carpet/bcarpet,
-/area/vacant/vacant_shop)
+/area/vacant/vacant_site)
 "AS" = (
 /obj/structure/table/woodentable,
 /obj/item/instrument/eguitar,
@@ -10721,7 +10728,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/carpet/bcarpet,
-/area/vacant/vacant_shop)
+/area/vacant/vacant_site)
 "Gi" = (
 /obj/machinery/power/smes/buildable{
 	RCon_tag = "Solar Farm - SMES 1"
@@ -14703,7 +14710,7 @@
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/wood,
-/area/vacant/vacant_shop)
+/area/vacant/vacant_site)
 "SD" = (
 /obj/structure/sink{
 	dir = 8;
@@ -16487,6 +16494,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
+/obj/machinery/hologram/holopad,
 /turf/simulated/floor/carpet/sblucarpet,
 /area/crew_quarters/coffee_shop)
 "Xy" = (
@@ -25451,10 +25459,10 @@ Sv
 Nb
 EW
 Gx
-mQ
-mQ
-mQ
-mQ
+tQ
+tQ
+tQ
+tQ
 RE
 vd
 vd
@@ -25593,10 +25601,10 @@ Sv
 dD
 ul
 dD
-mQ
+tQ
 ib
 AR
-mQ
+tQ
 RE
 vd
 vd
@@ -25735,10 +25743,10 @@ Sv
 Hp
 yk
 dD
-mQ
+tQ
 fj
 Gf
-mQ
+tQ
 IX
 RE
 RE
@@ -25877,10 +25885,10 @@ Sv
 Sv
 Ya
 Sv
-mQ
-mQ
+tQ
+tQ
 SC
-mQ
+tQ
 mQ
 mQ
 mQ
@@ -29429,7 +29437,7 @@ RI
 EH
 GJ
 EO
-Bt
+ww
 Ow
 gG
 ZA
