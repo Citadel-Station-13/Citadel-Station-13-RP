@@ -649,9 +649,6 @@
 	req_access = list(access_explorer) //Old Exploration needs fixing up
 	departments = list("Exploration", "No Change")
 
-/obj/machinery/suit_cycler/exploration/Initialize()
-	species -= SPECIES_TESHARI
-	return ..()
 
 /obj/machinery/suit_cycler/pilot
 	name = "Pilot suit cycler"
