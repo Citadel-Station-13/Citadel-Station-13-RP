@@ -3248,16 +3248,6 @@
 /obj/machinery/washing_machine,
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_showers)
-"cok" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
-/turf/simulated/floor/tiled/dark,
-/area/security/armoury)
 "cot" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -7088,6 +7078,18 @@
 	dir = 1
 	},
 /obj/fiftyspawner/glass,
+/obj/item/cell/device/weapon{
+	pixel_x = 3
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = 3
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = 3
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = 3
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "eTa" = (
@@ -7191,7 +7193,7 @@
 /obj/item/gun/projectile/shotgun/pump/USDF,
 /obj/item/gun/projectile/shotgun/pump/USDF,
 /obj/item/gun/projectile/shotgun/pump/USDF,
-/obj/item/gun/projectile/heavysniper,
+/obj/item/gun/projectile/heavysniper/collapsible,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "eXf" = (
@@ -10579,8 +10581,9 @@
 /area/ai_upload)
 "hxj" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/temperature,
-/obj/item/gun/energy/temperature,
+/obj/item/gun/energy/laser,
+/obj/item/gun/energy/laser,
+/obj/item/gun/energy/laser,
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "hxu" = (
@@ -10615,6 +10618,7 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/item/gun/energy/sniperrifle,
 /obj/item/gun/energy/sniperrifle,
+/obj/item/gun/energy/temperature,
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "hyv" = (
@@ -31784,16 +31788,15 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/item/gun/energy/gun/burst,
-/obj/item/gun/energy/gun/burst,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/item/gun/energy/gun/burst,
-/obj/item/gun/energy/gun/burst,
+/obj/item/gun/energy/gun,
+/obj/item/gun/energy/gun,
+/obj/item/gun/energy/gun,
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "vJe" = (
@@ -31960,9 +31963,6 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/item/gun/energy/gun,
-/obj/item/gun/energy/gun,
-/obj/item/gun/energy/gun,
 /obj/item/gun/energy/gun,
 /obj/item/gun/energy/gun,
 /obj/item/gun/energy/gun,
@@ -49881,7 +49881,7 @@ pxh
 mrO
 nVK
 yhQ
-cok
+hxj
 nVK
 qUs
 uPw
