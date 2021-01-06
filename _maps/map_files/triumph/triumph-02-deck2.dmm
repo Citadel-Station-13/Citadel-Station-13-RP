@@ -561,7 +561,6 @@
 "bJ" = (
 /obj/structure/plasticflaps/mining,
 /obj/machinery/conveyor{
-	dir = 1;
 	id = "mining_interior"
 	},
 /turf/simulated/floor/tiled/steel_grid,
