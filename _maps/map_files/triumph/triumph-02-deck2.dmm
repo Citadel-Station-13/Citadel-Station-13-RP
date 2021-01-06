@@ -559,8 +559,11 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/foyer)
 "bJ" = (
-/obj/machinery/conveyor,
 /obj/structure/plasticflaps/mining,
+/obj/machinery/conveyor{
+	dir = 1;
+	id = "mining_interior"
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/triumph/surfacebase/mining_main/refinery)
 "bK" = (
@@ -829,6 +832,7 @@
 /area/quartermaster/warehouse)
 "cy" = (
 /obj/machinery/status_display/supply_display{
+	mode = 99;
 	pixel_y = 32
 	},
 /obj/structure/closet/l3closet/janitor,
@@ -1706,6 +1710,7 @@
 /area/crew_quarters/freezer)
 "eY" = (
 /obj/machinery/status_display/supply_display{
+	mode = 99;
 	pixel_y = 32
 	},
 /obj/structure/table/rack,
@@ -1820,6 +1825,7 @@
 /area/vacant/vacant_site)
 "fk" = (
 /obj/machinery/status_display/supply_display{
+	mode = 99;
 	pixel_y = 32
 	},
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -3254,6 +3260,7 @@
 /area/janitor)
 "iZ" = (
 /obj/machinery/status_display/supply_display{
+	mode = 99;
 	pixel_y = -32
 	},
 /obj/effect/floor_decal/industrial/outline/red,
@@ -4907,6 +4914,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/status_display/supply_display{
+	mode = 99;
 	pixel_y = 32
 	},
 /turf/simulated/floor/wood,
@@ -6145,6 +6153,7 @@
 	dir = 1
 	},
 /obj/machinery/status_display/supply_display{
+	mode = 99;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled,
@@ -7483,6 +7492,7 @@
 	dir = 1
 	},
 /obj/machinery/status_display/supply_display{
+	mode = 99;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled,
@@ -8604,6 +8614,7 @@
 /area/quartermaster/storage)
 "zm" = (
 /obj/machinery/status_display/supply_display{
+	mode = 99;
 	pixel_y = 32
 	},
 /obj/machinery/light{
@@ -9312,6 +9323,7 @@
 /area/crew_quarters/sleep/Dorm_3)
 "BG" = (
 /obj/machinery/status_display/supply_display{
+	mode = 99;
 	pixel_y = 32
 	},
 /obj/machinery/hologram/holopad,
@@ -10146,18 +10158,18 @@
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
 "El" = (
+/obj/structure/table/rack,
+/obj/item/clothing/head/helmet/space/void/mining,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/shoes/magboots,
+/obj/item/clothing/suit/space/void/mining,
+/obj/item/mining_scanner,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 1
 	},
-/obj/structure/table/rack,
-/obj/item/mining_scanner,
-/obj/item/clothing/suit/space/void/mining,
-/obj/item/clothing/shoes/magboots,
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/head/helmet/space/void/mining,
 /obj/item/tank/jetpack/oxygen,
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
@@ -11234,6 +11246,7 @@
 /area/hydroponics)
 "Hy" = (
 /obj/machinery/status_display/supply_display{
+	mode = 99;
 	pixel_y = 32
 	},
 /obj/machinery/light{
@@ -11341,6 +11354,7 @@
 /area/shuttle/mining_ship/general)
 "HM" = (
 /obj/machinery/status_display/supply_display{
+	mode = 99;
 	pixel_y = 32
 	},
 /obj/effect/floor_decal/techfloor{
@@ -12255,6 +12269,7 @@
 	dir = 4
 	},
 /obj/machinery/status_display/supply_display{
+	mode = 99;
 	pixel_y = 32
 	},
 /turf/simulated/floor/wood,
@@ -12699,6 +12714,7 @@
 /area/triumph/surfacebase/mining_main/eva)
 "Mc" = (
 /obj/machinery/status_display/supply_display{
+	mode = 99;
 	pixel_y = 32
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -12827,6 +12843,7 @@
 	id = "QMLoad2"
 	},
 /obj/machinery/status_display/supply_display{
+	mode = 99;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled,
@@ -16217,6 +16234,7 @@
 	dir = 2
 	},
 /obj/machinery/status_display/supply_display{
+	mode = 99;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
