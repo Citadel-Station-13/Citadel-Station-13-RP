@@ -364,11 +364,12 @@
 /turf/simulated/floor/plating,
 /area/vacant/vacant_shop)
 "bd" = (
-/obj/machinery/status_display/supply_display{
-	pixel_y = -32
-	},
 /obj/structure/ore_box,
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/status_display/supply_display{
+	mode = 99;
+	pixel_y = -32
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
 "be" = (
@@ -831,7 +832,7 @@
 /area/quartermaster/warehouse)
 "cy" = (
 /obj/machinery/status_display/supply_display{
-	mode = 99;
+	mode = 1;
 	pixel_y = 32
 	},
 /obj/structure/closet/l3closet/janitor,
@@ -1709,7 +1710,7 @@
 /area/crew_quarters/freezer)
 "eY" = (
 /obj/machinery/status_display/supply_display{
-	mode = 99;
+	mode = 1;
 	pixel_y = 32
 	},
 /obj/structure/table/rack,
@@ -1824,7 +1825,7 @@
 /area/vacant/vacant_site)
 "fk" = (
 /obj/machinery/status_display/supply_display{
-	mode = 99;
+	mode = 1;
 	pixel_y = 32
 	},
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -4913,7 +4914,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/status_display/supply_display{
-	mode = 99;
+	mode = 1;
 	pixel_y = 32
 	},
 /turf/simulated/floor/wood,
@@ -6152,7 +6153,7 @@
 	dir = 1
 	},
 /obj/machinery/status_display/supply_display{
-	mode = 99;
+	mode = 1;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled,
@@ -7491,7 +7492,7 @@
 	dir = 1
 	},
 /obj/machinery/status_display/supply_display{
-	mode = 99;
+	mode = 1;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled,
@@ -8614,7 +8615,7 @@
 /area/quartermaster/storage)
 "zm" = (
 /obj/machinery/status_display/supply_display{
-	mode = 99;
+	mode = 1;
 	pixel_y = 32
 	},
 /obj/machinery/light{
@@ -9324,7 +9325,7 @@
 /area/crew_quarters/sleep/Dorm_3)
 "BG" = (
 /obj/machinery/status_display/supply_display{
-	mode = 99;
+	mode = 1;
 	pixel_y = 32
 	},
 /obj/machinery/hologram/holopad,
@@ -11247,7 +11248,7 @@
 /area/hydroponics)
 "Hy" = (
 /obj/machinery/status_display/supply_display{
-	mode = 99;
+	mode = 1;
 	pixel_y = 32
 	},
 /obj/machinery/light{
@@ -11355,7 +11356,7 @@
 /area/shuttle/mining_ship/general)
 "HM" = (
 /obj/machinery/status_display/supply_display{
-	mode = 99;
+	mode = 1;
 	pixel_y = 32
 	},
 /obj/effect/floor_decal/techfloor{
@@ -12270,7 +12271,7 @@
 	dir = 4
 	},
 /obj/machinery/status_display/supply_display{
-	mode = 99;
+	mode = 1;
 	pixel_y = 32
 	},
 /turf/simulated/floor/wood,
@@ -12714,10 +12715,6 @@
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/eva)
 "Mc" = (
-/obj/machinery/status_display/supply_display{
-	mode = 99;
-	pixel_y = 32
-	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
@@ -12726,6 +12723,10 @@
 	},
 /obj/machinery/light{
 	dir = 1
+	},
+/obj/machinery/status_display/supply_display{
+	mode = 99;
+	pixel_y = 32
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
@@ -16236,7 +16237,7 @@
 	dir = 2
 	},
 /obj/machinery/status_display/supply_display{
-	mode = 99;
+	mode = 1;
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
