@@ -2085,15 +2085,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 1
 	},
-/obj/structure/table/standard,
-/obj/item/storage/box/beakers,
-/obj/item/storage/firstaid/adv,
-/obj/item/storage/firstaid/adv,
-/obj/item/storage/firstaid/adv,
-/obj/item/stack/material/phoron{
-	amount = 5
-	},
-/obj/item/reagent_containers/glass/beaker/large,
+/obj/machinery/iv_drip,
 /turf/simulated/floor/tiled/white,
 /area/triumph/station/explorer_medical)
 "bAt" = (
@@ -2673,6 +2665,11 @@
 /area/security/forensics)
 "bVl" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_showers)
 "bVJ" = (
@@ -3583,8 +3580,8 @@
 "czA" = (
 /obj/structure/cable/green{
 	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_showers)
@@ -3775,16 +3772,12 @@
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 1
 	},
-/obj/item/rig/medical/equipped,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
 /obj/machinery/door/window/northright{
 	req_one_access = list(5)
 	},
-/obj/item/reagent_containers/hypospray/autoinjector/biginjector/bonemed,
-/obj/item/reagent_containers/hypospray/autoinjector/biginjector/clotting,
-/obj/item/reagent_containers/hypospray/autoinjector/biginjector/organ,
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
 "cEx" = (
@@ -3886,13 +3879,11 @@
 	name = "\improper Official On-Site Office"
 	})
 "cHX" = (
-/obj/structure/cable/green{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 8
+	},
+/obj/machinery/sleep_console{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
 /area/triumph/station/explorer_medical)
@@ -5268,14 +5259,15 @@
 /turf/simulated/floor/tiled,
 /area/security/security_cell_hallway)
 "dLn" = (
-/obj/machinery/chemical_dispenser/full,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 1
 	},
-/obj/structure/table/standard,
+/obj/machinery/bodyscanner{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/white,
 /area/triumph/station/explorer_medical)
 "dLP" = (
@@ -5890,7 +5882,8 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 1
 	},
-/obj/machinery/reagentgrinder,
+/obj/item/roller,
+/obj/item/bodybag/cryobag,
 /turf/simulated/floor/tiled/white,
 /area/triumph/station/explorer_medical)
 "egB" = (
@@ -9626,11 +9619,10 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 1
 	},
-/obj/item/bodybag/cryobag,
-/obj/item/bodybag/cryobag,
-/obj/structure/table/standard,
-/obj/item/roller,
-/obj/item/roller,
+/obj/machinery/vending/medical{
+	req_access = null;
+	req_one_access = list(5,44)
+	},
 /turf/simulated/floor/tiled/white,
 /area/triumph/station/explorer_medical)
 "gTp" = (
@@ -9922,12 +9914,17 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/security/training)
 "heR" = (
-/obj/machinery/iv_drip,
-/obj/effect/floor_decal/steeldecal/steel_decals5{
-	dir = 8
+/obj/structure/closet/secure_closet/sar{
+	req_access = list(5);
+	req_one_access = list(5)
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals5,
-/turf/simulated/floor/tiled/white,
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/autoinjectors,
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/item/tank/jetpack/oxygen,
+/obj/item/clothing/accessory/permit/gun/planetside,
+/turf/simulated/floor/tiled/monotile,
 /area/triumph/station/explorer_medical)
 "hfs" = (
 /obj/effect/floor_decal/techfloor/orange,
@@ -12294,16 +12291,9 @@
 /turf/simulated/floor/plating,
 /area/security/hanger)
 "iCQ" = (
-/obj/machinery/door/airlock/research{
-	name = "Exploration Showers"
-	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled,
-/area/triumph/station/explorer_showers)
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/turf/simulated/floor/tiled/white,
+/area/triumph/station/explorer_medical)
 "iDw" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -12628,12 +12618,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/security/forensics)
-"iQm" = (
-/obj/machinery/sleeper{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/white,
-/area/triumph/station/explorer_medical)
 "iQv" = (
 /obj/machinery/door/firedoor,
 /obj/structure/cable{
@@ -14406,13 +14390,9 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/structure/table/standard,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
 	},
-/obj/item/reagent_containers/hypospray/autoinjector/biginjector/pain,
-/obj/item/reagent_containers/hypospray/autoinjector/biginjector/organ,
-/obj/item/reagent_containers/hypospray/autoinjector/biginjector/organ,
 /turf/simulated/floor/tiled/white,
 /area/triumph/station/explorer_medical)
 "kbd" = (
@@ -16508,21 +16488,14 @@
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
 "lBF" = (
-/obj/structure/closet/secure_closet/medical_wall{
-	name = "O- Blood Locker";
-	pixel_x = 32;
-	req_access = null;
-	req_one_access = list(5,44)
-	},
-/obj/item/reagent_containers/blood/OMinus,
-/obj/item/reagent_containers/blood/OMinus,
-/obj/item/reagent_containers/blood/OMinus,
-/obj/item/reagent_containers/blood/OMinus,
-/obj/item/reagent_containers/blood/OMinus,
-/obj/item/reagent_containers/blood/OMinus,
-/obj/item/reagent_containers/blood/OMinus,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
+	},
+/obj/structure/table/standard,
+/obj/item/defib_kit/loaded,
+/obj/machinery/alarm{
+	dir = 8;
+	pixel_x = 25
 	},
 /turf/simulated/floor/tiled/white,
 /area/triumph/station/explorer_medical)
@@ -16961,10 +16934,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/hallwayaux)
-"lSo" = (
-/obj/effect/floor_decal/steeldecal/steel_decals_central7,
-/turf/simulated/floor/tiled/white,
-/area/triumph/station/explorer_medical)
 "lSC" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green{
@@ -17077,9 +17046,8 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
 	},
-/obj/item/defib_kit/loaded,
 /obj/structure/table/standard,
-/obj/item/storage/firstaid/surgery,
+/obj/item/storage/firstaid/adv,
 /turf/simulated/floor/tiled/white,
 /area/triumph/station/explorer_medical)
 "lUq" = (
@@ -17231,10 +17199,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
-"lZa" = (
-/obj/machinery/sleep_console,
-/turf/simulated/floor/tiled/white,
-/area/triumph/station/explorer_medical)
 "lZt" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -17841,11 +17805,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
-"mxw" = (
-/obj/machinery/body_scanconsole,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/white,
-/area/triumph/station/explorer_medical)
 "mxx" = (
 /obj/machinery/camera/network/command,
 /turf/simulated/floor/tiled/techfloor,
@@ -20435,6 +20394,11 @@
 	dir = 8;
 	pixel_x = 25
 	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_showers)
 "oln" = (
@@ -21530,17 +21494,13 @@
 /turf/simulated/floor/carpet/purcarpet,
 /area/triumph/station/explorer_meeting)
 "oWj" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 8
 	},
 /obj/machinery/camera/network/exploration{
 	dir = 4
 	},
+/obj/machinery/sleeper,
 /turf/simulated/floor/tiled/white,
 /area/triumph/station/explorer_medical)
 "oWZ" = (
@@ -23624,7 +23584,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/triumph/station/excursion_dock)
 "qmb" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/white,
 /area/triumph/station/explorer_medical)
 "qmu" = (
@@ -24405,9 +24365,6 @@
 	req_one_access = list(5)
 	},
 /obj/machinery/light,
-/obj/item/reagent_containers/hypospray/autoinjector/biginjector/bonemed,
-/obj/item/reagent_containers/hypospray/autoinjector/biginjector/clotting,
-/obj/item/reagent_containers/hypospray/autoinjector/biginjector/organ,
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
 "qKd" = (
@@ -28280,36 +28237,6 @@
 /obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/central)
-"tol" = (
-/obj/structure/closet/secure_closet/sar{
-	req_access = list(5);
-	req_one_access = list(5)
-	},
-/obj/effect/floor_decal/industrial/outline/blue,
-/obj/effect/floor_decal/steeldecal/steel_decals9,
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 8
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/item/storage/box/pillbottles,
-/obj/item/storage/box/autoinjectors,
-/obj/item/storage/bag/chemistry,
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
-/obj/item/tank/jetpack/oxygen,
-/obj/item/clothing/accessory/permit/gun/planetside,
-/turf/simulated/floor/tiled/monotile,
-/area/triumph/station/explorer_prep)
 "toP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -29934,16 +29861,19 @@
 /turf/simulated/wall/r_wall,
 /area/triumph/station/explorer_medical)
 "uxZ" = (
-/obj/machinery/alarm{
-	dir = 1;
-	pixel_y = -25
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/structure/closet/secure_closet/sar{
+	req_access = list(5);
+	req_one_access = list(5)
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals5,
-/obj/machinery/vending/medical{
-	req_access = null;
-	req_one_access = list(5,44)
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/autoinjectors,
+/obj/structure/window/reinforced{
+	dir = 4
 	},
-/turf/simulated/floor/tiled/white,
+/obj/item/tank/jetpack/oxygen,
+/obj/item/clothing/accessory/permit/gun/planetside,
+/turf/simulated/floor/tiled/monotile,
 /area/triumph/station/explorer_medical)
 "uyA" = (
 /obj/structure/cable/green{
@@ -30056,35 +29986,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/sleep/HOS_quarters)
-"uEB" = (
-/obj/effect/floor_decal/industrial/outline/blue,
-/obj/effect/floor_decal/steeldecal/steel_decals9,
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 8
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/closet/secure_closet/sar{
-	req_access = list(5);
-	req_one_access = list(5)
-	},
-/obj/item/storage/box/pillbottles,
-/obj/item/storage/box/autoinjectors,
-/obj/item/storage/bag/chemistry,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/item/tank/jetpack/oxygen,
-/obj/item/clothing/accessory/permit/gun/planetside,
-/turf/simulated/floor/tiled/monotile,
-/area/triumph/station/explorer_prep)
 "uEJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -30376,16 +30277,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/obj/machinery/recharger/wallcharger{
-	pixel_x = -24
-	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 8
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/white,
 /area/triumph/station/explorer_medical)
@@ -31116,6 +31014,11 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_showers)
@@ -33766,8 +33669,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 1
 	},
-/obj/machinery/chem_master,
-/obj/structure/table/standard,
+/obj/machinery/body_scanconsole,
 /turf/simulated/floor/tiled/white,
 /area/triumph/station/explorer_medical)
 "wYh" = (
@@ -33972,11 +33874,6 @@
 /turf/simulated/floor/tiled,
 /area/security/brig)
 "xfo" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/machinery/recharger/wallcharger{
 	pixel_x = -24
 	},
@@ -35032,12 +34929,6 @@
 "xRN" = (
 /turf/simulated/floor/carpet/purcarpet,
 /area/triumph/station/explorer_meeting)
-"xRP" = (
-/obj/machinery/bodyscanner{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/white,
-/area/triumph/station/explorer_medical)
 "xRX" = (
 /obj/structure/grille,
 /obj/machinery/door/firedoor/border_only,
@@ -35329,7 +35220,15 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/wall,
+/obj/machinery/door/airlock/research{
+	name = "Exploration Showers"
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/white,
 /area/triumph/station/explorer_showers)
 "yep" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -37623,7 +37522,7 @@ oMu
 lsL
 lsL
 lsL
-iCQ
+lsL
 lsL
 lsL
 ydn
@@ -37907,9 +37806,9 @@ bFl
 bFL
 wYd
 wMf
-iQm
-lSo
-xRP
+wMf
+wMf
+wMf
 uiG
 uxZ
 uxK
@@ -38048,10 +37947,10 @@ xRN
 uQT
 bFL
 egr
-wMf
-lZa
+iCQ
 qmb
-mxw
+qmb
+qmb
 bQE
 idJ
 uxK
@@ -42441,7 +42340,7 @@ nIK
 nIK
 nIK
 sJC
-tol
+tMS
 lVm
 dmD
 fLm
@@ -42583,7 +42482,7 @@ nIK
 nIK
 nIK
 sJC
-uEB
+cVO
 cVO
 vcE
 cVO
