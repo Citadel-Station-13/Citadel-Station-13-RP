@@ -2651,6 +2651,7 @@
 	name = "Shuttle Bay";
 	req_one_access = list(2)
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/security/hanger)
 "bSB" = (
@@ -3247,16 +3248,6 @@
 /obj/machinery/washing_machine,
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_showers)
-"cok" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
-/turf/simulated/floor/tiled/dark,
-/area/security/armoury)
 "cot" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -4599,12 +4590,6 @@
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 2
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
@@ -4615,6 +4600,8 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/security/hallwayaux)
 "dpH" = (
@@ -7087,6 +7074,18 @@
 	dir = 1
 	},
 /obj/fiftyspawner/glass,
+/obj/item/cell/device/weapon{
+	pixel_x = 3
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = 3
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = 3
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = 3
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "eTa" = (
@@ -7190,7 +7189,7 @@
 /obj/item/gun/projectile/shotgun/pump/USDF,
 /obj/item/gun/projectile/shotgun/pump/USDF,
 /obj/item/gun/projectile/shotgun/pump/USDF,
-/obj/item/gun/projectile/heavysniper,
+/obj/item/gun/projectile/heavysniper/collapsible,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "eXf" = (
@@ -9805,13 +9804,6 @@
 	},
 /obj/machinery/camera/network/security,
 /obj/machinery/recharger,
-/obj/machinery/access_button{
-	command = "cycle_exterior";
-	frequency = 1380;
-	master_tag = "civvie_docker";
-	pixel_x = -12;
-	pixel_y = -21
-	},
 /turf/simulated/floor/lino,
 /area/security/detectives_office)
 "hat" = (
@@ -10585,8 +10577,9 @@
 /area/ai_upload)
 "hxj" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/temperature,
-/obj/item/gun/energy/temperature,
+/obj/item/gun/energy/laser,
+/obj/item/gun/energy/laser,
+/obj/item/gun/energy/laser,
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "hxu" = (
@@ -10621,6 +10614,7 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/item/gun/energy/sniperrifle,
 /obj/item/gun/energy/sniperrifle,
+/obj/item/gun/energy/temperature,
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "hyv" = (
@@ -12099,6 +12093,13 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
+/obj/machinery/button/remote/blast_door{
+	id = "armoryred";
+	name = "Armoury Access";
+	pixel_x = -6;
+	pixel_y = 25;
+	req_access = list(3)
+	},
 /turf/simulated/floor/tiled,
 /area/security/hallwayaux)
 "iwo" = (
@@ -12626,6 +12627,7 @@
 	pixel_x = 10;
 	pixel_y = 36
 	},
+/obj/structure/filingcabinet,
 /turf/simulated/floor/tiled/white,
 /area/security/forensics)
 "iQm" = (
@@ -14384,11 +14386,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 5
-	},
 /obj/machinery/computer/secure_data{
 	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
 	},
 /turf/simulated/floor/tiled/white,
 /area/security/forensics)
@@ -14893,6 +14895,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/security/hanger)
 "kwq" = (
@@ -15579,13 +15582,6 @@
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled,
 /area/security/hallway)
-"kVY" = (
-/obj/machinery/alarm{
-	dir = 4;
-	pixel_x = -22
-	},
-/turf/simulated/wall/r_wall,
-/area/security/hanger)
 "kWa" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
@@ -17450,7 +17446,6 @@
 	dir = 5
 	},
 /obj/machinery/hologram/holopad,
-/obj/structure/filingcabinet,
 /turf/simulated/floor/tiled/white,
 /area/security/forensics)
 "miC" = (
@@ -31789,16 +31784,15 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/item/gun/energy/gun/burst,
-/obj/item/gun/energy/gun/burst,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/item/gun/energy/gun/burst,
-/obj/item/gun/energy/gun/burst,
+/obj/item/gun/energy/gun,
+/obj/item/gun/energy/gun,
+/obj/item/gun/energy/gun,
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "vJe" = (
@@ -31965,9 +31959,6 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/item/gun/energy/gun,
-/obj/item/gun/energy/gun,
-/obj/item/gun/energy/gun,
 /obj/item/gun/energy/gun,
 /obj/item/gun/energy/gun,
 /obj/item/gun/energy/gun,
@@ -34100,6 +34091,13 @@
 	},
 /obj/machinery/door/airlock/maintenance/sec,
 /obj/machinery/door/firedoor,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "security_lockdown";
+	name = "Security Blast Doors";
+	opacity = 0
+	},
 /turf/simulated/floor/tiled,
 /area/maintenance/security_port)
 "xjB" = (
@@ -43781,7 +43779,7 @@ dQE
 hlA
 jhz
 jAq
-kVY
+jAq
 jAq
 aQa
 aQa
@@ -49879,7 +49877,7 @@ pxh
 mrO
 nVK
 yhQ
-cok
+hxj
 nVK
 qUs
 uPw
