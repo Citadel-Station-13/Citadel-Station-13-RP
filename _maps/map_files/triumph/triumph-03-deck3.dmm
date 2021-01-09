@@ -2569,6 +2569,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
+"cty" = (
+/obj/machinery/atmospherics/pipe/tank/air{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/fpmaint2)
 "ctD" = (
 /obj/machinery/light,
 /obj/machinery/smartfridge/secure/extract,
@@ -9235,6 +9241,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/research{
 	name = "Xenobiology Lab";
 	req_access = list();
@@ -14958,13 +14965,6 @@
 	},
 /turf/simulated/floor/airless,
 /area/space)
-"olM" = (
-/obj/structure/table/rack,
-/obj/random/maintenance/engineering,
-/obj/random/maintenance/medical,
-/obj/random/maintenance/medical,
-/turf/simulated/floor/plating,
-/area/maintenance/fpmaint2)
 "olZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow{
 	dir = 4
@@ -21379,6 +21379,14 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virology)
+"tzi" = (
+/obj/structure/table/rack,
+/obj/random/maintenance/medical,
+/obj/random/maintenance/medical,
+/obj/random/maintenance/medical,
+/obj/random/maintenance/medical,
+/turf/simulated/floor/plating,
+/area/maintenance/fpmaint2)
 "tzJ" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
@@ -22115,7 +22123,9 @@
 	name = "\improper Robotics Surgery Room"
 	})
 "uux" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
+	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/fpmaint2)
@@ -25095,10 +25105,14 @@
 /turf/simulated/floor/plating,
 /area/maintenance/fore)
 "wOu" = (
-/obj/machinery/atmospherics/portables_connector{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
 	},
-/obj/machinery/portable_atmospherics/canister/air/airlock,
+/obj/machinery/meter{
+	frequency = 1443;
+	id = "dist_aux_meter";
+	name = "Distribution Loop"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/fpmaint2)
 "wOO" = (
@@ -40103,7 +40117,7 @@ eKB
 eKB
 eKB
 gwr
-fVs
+tzi
 aCH
 eLn
 gVh
@@ -40245,7 +40259,7 @@ fVs
 gAN
 fVs
 xZo
-fVs
+fJp
 aCH
 iBC
 gVh
@@ -40527,9 +40541,9 @@ mBS
 eKB
 uyz
 eKB
-olM
 rGf
-fJp
+rGf
+cty
 aCH
 dlt
 pYD

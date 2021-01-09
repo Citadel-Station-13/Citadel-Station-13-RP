@@ -2651,6 +2651,7 @@
 	name = "Shuttle Bay";
 	req_one_access = list(2)
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/security/hanger)
 "bSB" = (
@@ -3247,16 +3248,6 @@
 /obj/machinery/washing_machine,
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_showers)
-"cok" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
-/turf/simulated/floor/tiled/dark,
-/area/security/armoury)
 "cot" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -4599,12 +4590,6 @@
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 2
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
@@ -4615,6 +4600,8 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/security/hallwayaux)
 "dpH" = (
@@ -7087,6 +7074,18 @@
 	dir = 1
 	},
 /obj/fiftyspawner/glass,
+/obj/item/cell/device/weapon{
+	pixel_x = 3
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = 3
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = 3
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = 3
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "eTa" = (
@@ -7190,7 +7189,7 @@
 /obj/item/gun/projectile/shotgun/pump/USDF,
 /obj/item/gun/projectile/shotgun/pump/USDF,
 /obj/item/gun/projectile/shotgun/pump/USDF,
-/obj/item/gun/projectile/heavysniper,
+/obj/item/gun/projectile/heavysniper/collapsible,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "eXf" = (
@@ -10578,8 +10577,9 @@
 /area/ai_upload)
 "hxj" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/temperature,
-/obj/item/gun/energy/temperature,
+/obj/item/gun/energy/laser,
+/obj/item/gun/energy/laser,
+/obj/item/gun/energy/laser,
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "hxu" = (
@@ -10614,6 +10614,7 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/item/gun/energy/sniperrifle,
 /obj/item/gun/energy/sniperrifle,
+/obj/item/gun/energy/temperature,
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "hyv" = (
@@ -12092,6 +12093,13 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
+/obj/machinery/button/remote/blast_door{
+	id = "armoryred";
+	name = "Armoury Access";
+	pixel_x = -6;
+	pixel_y = 25;
+	req_access = list(3)
+	},
 /turf/simulated/floor/tiled,
 /area/security/hallwayaux)
 "iwo" = (
@@ -12619,6 +12627,7 @@
 	pixel_x = 10;
 	pixel_y = 36
 	},
+/obj/structure/filingcabinet,
 /turf/simulated/floor/tiled/white,
 /area/security/forensics)
 "iQm" = (
@@ -13553,7 +13562,7 @@
 /area/hallway/secondary/civilian_hallway_mid)
 "juX" = (
 /obj/machinery/door/airlock/voidcraft/vertical{
-	req_access = list(13)
+	req_access = null
 	},
 /obj/structure/cable/cyan{
 	d1 = 4;
@@ -14377,11 +14386,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 5
-	},
 /obj/machinery/computer/secure_data{
 	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
 	},
 /turf/simulated/floor/tiled/white,
 /area/security/forensics)
@@ -14886,6 +14895,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/security/hanger)
 "kwq" = (
@@ -15572,13 +15582,6 @@
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled,
 /area/security/hallway)
-"kVY" = (
-/obj/machinery/alarm{
-	dir = 4;
-	pixel_x = -22
-	},
-/turf/simulated/wall/r_wall,
-/area/security/hanger)
 "kWa" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
@@ -17443,7 +17446,6 @@
 	dir = 5
 	},
 /obj/machinery/hologram/holopad,
-/obj/structure/filingcabinet,
 /turf/simulated/floor/tiled/white,
 /area/security/forensics)
 "miC" = (
@@ -18812,11 +18814,10 @@
 /obj/machinery/shield_diffuser,
 /obj/machinery/access_button{
 	dir = 1;
-	master_tag = null;
 	name = "exterior access button";
 	pixel_x = 6;
 	pixel_y = 22;
-	req_one_access = list(13)
+	req_one_access = null
 	},
 /obj/effect/map_helper/airlock/button/ext_button,
 /obj/effect/map_helper/airlock/door/ext_door,
@@ -19957,9 +19958,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/primary/aft)
 "nWe" = (
-/obj/machinery/disposal,
-/obj/structure/disposalpipe/trunk{
-	dir = 1
+/obj/structure/closet/crate/bin{
+	anchored = 1
 	},
 /turf/simulated/floor/lino,
 /area/security/detectives_office)
@@ -21454,15 +21454,7 @@
 	dir = 1
 	},
 /obj/item/clothing/shoes/magboots,
-/obj/item/clothing/suit/space/void/exploration,
-/obj/item/clothing/head/helmet/space/void/exploration,
 /obj/item/tank/jetpack/oxygen,
-/obj/item/clothing/suit/space/void/exploration{
-	armor = list("melee" = 50, "bullet" = 40, "laser" = 45, "energy" = 45, "bomb" = 30, "bio" = 100, "rad" = 70);
-	desc = "A heavier varient of the radiation-resistant voidsuit for explorations. This one features increased armor protection against small and medium arms fire, but comes at the cost of extra weight.";
-	move_speed = 7;
-	name = "heavy exploration voidsuit"
-	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
 	},
@@ -21470,6 +21462,8 @@
 	dir = 6
 	},
 /obj/item/pickaxe/drill,
+/obj/item/clothing/suit/space/void/exploration/pathfinder,
+/obj/item/clothing/head/helmet/space/void/exploration/pathfinder,
 /turf/simulated/floor/tiled/monotile,
 /area/triumph/station/pathfinder_office)
 "oVk" = (
@@ -27846,11 +27840,10 @@
 	name = "Docking Port Airlock"
 	},
 /obj/machinery/access_button{
-	master_tag = null;
 	name = "interior access button";
 	pixel_x = -6;
 	pixel_y = -25;
-	req_one_access = list(13)
+	req_one_access = null
 	},
 /obj/effect/map_helper/airlock/button/int_button,
 /obj/effect/map_helper/airlock/door/int_door,
@@ -31791,16 +31784,15 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/item/gun/energy/gun/burst,
-/obj/item/gun/energy/gun/burst,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/item/gun/energy/gun/burst,
-/obj/item/gun/energy/gun/burst,
+/obj/item/gun/energy/gun,
+/obj/item/gun/energy/gun,
+/obj/item/gun/energy/gun,
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "vJe" = (
@@ -31967,9 +31959,6 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/item/gun/energy/gun,
-/obj/item/gun/energy/gun,
-/obj/item/gun/energy/gun,
 /obj/item/gun/energy/gun,
 /obj/item/gun/energy/gun,
 /obj/item/gun/energy/gun,
@@ -34102,6 +34091,13 @@
 	},
 /obj/machinery/door/airlock/maintenance/sec,
 /obj/machinery/door/firedoor,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "security_lockdown";
+	name = "Security Blast Doors";
+	opacity = 0
+	},
 /turf/simulated/floor/tiled,
 /area/maintenance/security_port)
 "xjB" = (
@@ -35729,7 +35725,7 @@ nIK
 nIK
 nIK
 nIK
-oVF
+nIK
 "}
 (2,1,1) = {"
 nIK
@@ -35870,7 +35866,7 @@ nIK
 nIK
 nIK
 nIK
-nIK
+oVF
 nIK
 "}
 (3,1,1) = {"
@@ -43783,7 +43779,7 @@ dQE
 hlA
 jhz
 jAq
-kVY
+jAq
 jAq
 aQa
 aQa
@@ -49881,7 +49877,7 @@ pxh
 mrO
 nVK
 yhQ
-cok
+hxj
 nVK
 qUs
 uPw
