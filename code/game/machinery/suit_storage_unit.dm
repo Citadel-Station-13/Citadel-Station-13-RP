@@ -1059,7 +1059,7 @@
 			parent_helmet = /obj/item/clothing/head/helmet/space/void/security/alt
 			parent_suit = /obj/item/clothing/suit/space/void/security/alt
 		//Exploration styles
-		if("Exploration")
+		if("Exploration")//now with Teshari-Sprite from royalderg#0651
 			parent_helmet = /obj/item/clothing/head/helmet/space/void/exploration
 			parent_suit = /obj/item/clothing/suit/space/void/exploration
 		if("Old Exploration")
