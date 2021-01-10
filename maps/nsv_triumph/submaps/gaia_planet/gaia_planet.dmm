@@ -76,7 +76,7 @@
 "lv" = (/obj/structure/window/reinforced/tinted/frosted{dir = 8},/obj/machinery/vending/coffee,/turf/simulated/floor/carpet,/area/triumph_away/gaia_planet/inside)
 "lJ" = (/obj/structure/closet/chefcloset,/obj/item/glass_jar,/obj/item/retail_scanner/civilian,/obj/item/soap/nanotrasen,/obj/item/destTagger{pixel_x = 4; pixel_y = 3},/obj/item/packageWrap,/obj/item/packageWrap,/obj/item/packageWrap,/turf/simulated/floor/tiled/dark,/area/triumph_away/gaia_planet/inside)
 "lL" = (/obj/structure/bed/double/padded,/obj/item/bedsheet/bluedouble,/turf/simulated/floor/wood/gaia_world,/area/triumph_away/gaia_planet/inside)
-"ma" = (/obj/machinery/door/window/westright{name = "Bar"; req_access = list(25); req_one_access = list(25)},/turf/simulated/floor/wood/gaia_world,/area/triumph_away/gaia_planet/inside)
+"ma" = (/obj/machinery/door/window/westright{name = "Self-Service Bar"},/turf/simulated/floor/wood/gaia_world,/area/triumph_away/gaia_planet/inside)
 "mb" = (/obj/machinery/vending/cola,/turf/simulated/floor/tiled/gaia_world,/area/triumph_away/gaia_planet/inside)
 "mi" = (/obj/structure/flora/tree/jungle,/obj/structure/flora/ausbushes/grassybush,/turf/simulated/floor/outdoors/grass/gaia_world,/area/triumph_away/gaia_planet/outside)
 "mm" = (/obj/item/stool/padded,/obj/machinery/light{dir = 4},/turf/simulated/floor/wood/gaia_world,/area/triumph_away/gaia_planet/inside)
