@@ -28,7 +28,6 @@
 "ex" = (/obj/structure/table/marble,/obj/machinery/chemical_dispenser/bar_coffee/full,/turf/simulated/floor/wood/gaia_world,/area/triumph_away/gaia_planet/inside)
 "eA" = (/obj/structure/flora/pottedplant/thinbush,/turf/simulated/floor/wood/gaia_world,/area/triumph_away/gaia_planet/inside)
 "eT" = (/obj/structure/sink{dir = 4; pixel_x = 11},/obj/structure/mirror{pixel_x = 28},/turf/simulated/floor/tiled/white,/area/triumph_away/gaia_planet/inside)
-"fc" = (/turf/simulated/floor/outdoors/grass/gaia_world,/area/triumph_away/gaia_planet/inside)
 "fe" = (/obj/structure/flora/ausbushes/sparsegrass,/turf/simulated/floor/water/deep/gaia_world,/area/triumph_away/gaia_planet/outside)
 "fg" = (/obj/structure/bonfire/permanent,/turf/simulated/mineral/floor/gaia_world,/area/triumph_away/gaia_planet/inside)
 "fx" = (/obj/structure/closet/crate/bin{anchored = 1},/obj/structure/railing{dir = 1},/turf/simulated/floor/tiled,/area/triumph_away/gaia_planet/inside)
@@ -89,11 +88,11 @@
 "nx" = (/obj/structure/bed/double/padded,/obj/item/bedsheet/purpledouble,/turf/simulated/floor/wood/gaia_world,/area/triumph_away/gaia_planet/inside)
 "nK" = (/obj/structure/flora/ausbushes/fernybush,/turf/simulated/floor/water/deep/gaia_world,/area/triumph_away/gaia_planet/outside)
 "nW" = (/obj/structure/flora/tree/jungle_small,/turf/simulated/floor/outdoors/grass/gaia_world,/area/triumph_away/gaia_planet/outside)
-"ob" = (/obj/machinery/portable_atmospherics/hydroponics,/turf/simulated/floor/outdoors/grass/gaia_world,/area/triumph_away/gaia_planet/inside)
+"ob" = (/obj/machinery/portable_atmospherics/hydroponics,/turf/simulated/floor/tiled/gaia_world,/area/triumph_away/gaia_planet/inside)
 "oc" = (/obj/machinery/light,/obj/structure/closet/crate/trashcart,/turf/simulated/floor/tiled,/area/triumph_away/gaia_planet/outside)
 "om" = (/mob/living/simple_mob/animal/passive/cat,/turf/simulated/floor/outdoors/grass/gaia_world,/area/triumph_away/gaia_planet/outside)
 "oA" = (/obj/structure/railing{dir = 1},/obj/structure/closet/crate/bin{anchored = 1},/turf/simulated/floor/tiled,/area/triumph_away/gaia_planet/inside)
-"oC" = (/obj/machinery/door/airlock/glass,/turf/simulated/floor/tiled/dark,/area/triumph_away/gaia_planet/inside)
+"oC" = (/obj/machinery/door/airlock/glass,/turf/simulated/floor/tiled/gaia_world,/area/triumph_away/gaia_planet/inside)
 "oN" = (/obj/item/stool/padded,/obj/machinery/light{dir = 8},/turf/simulated/floor/carpet/bcarpet,/area/triumph_away/gaia_planet/inside)
 "pa" = (/obj/machinery/microwave,/obj/structure/table/marble,/obj/machinery/light{dir = 8},/turf/simulated/floor/tiled/dark,/area/triumph_away/gaia_planet/inside)
 "pb" = (/obj/machinery/embedded_controller/radio/simple_docking_controller{frequency = 1380; id_tag = "gaia_1"; layer = 3.3; name = "Gaia Dock Controller"; pixel_y = 30},/obj/machinery/light{dir = 1},/turf/simulated/floor/tiled/gaia_world,/area/triumph_away/gaia_planet/outside)
@@ -104,7 +103,7 @@
 "pR" = (/obj/structure/bed/chair/comfy/beige{dir = 4},/turf/simulated/floor/carpet/turcarpet,/area/triumph_away/gaia_planet/inside)
 "pU" = (/obj/structure/railing{dir = 4},/obj/structure/railing{dir = 1},/turf/simulated/floor/tiled,/area/triumph_away/gaia_planet/inside)
 "pV" = (/obj/machinery/light{dir = 1},/turf/simulated/floor/outdoors/grass/gaia_world,/area/triumph_away/gaia_planet/outside)
-"qa" = (/obj/structure/closet/secure_closet/hydroponics{req_access = list(28)},/turf/simulated/floor/outdoors/grass/gaia_world,/area/triumph_away/gaia_planet/inside)
+"qa" = (/obj/structure/closet/secure_closet/hydroponics{req_access = list(28)},/turf/simulated/floor/tiled/gaia_world,/area/triumph_away/gaia_planet/inside)
 "qj" = (/obj/machinery/button/remote/airlock{id = "room1"; name = "Room 1 Lock"; pixel_x = 26; pixel_y = -4; specialfunctions = 4},/turf/simulated/floor/wood/gaia_world,/area/triumph_away/gaia_planet/inside)
 "qk" = (/obj/structure/bed/chair/wood/wings{dir = 1},/turf/simulated/floor/carpet/bcarpet,/area/triumph_away/gaia_planet/inside)
 "ql" = (/turf/simulated/floor/water/shoreline/corner/gaia_world{dir = 1},/area/triumph_away/gaia_planet/outside)
@@ -141,7 +140,7 @@
 "uo" = (/obj/structure/railing,/obj/structure/railing{dir = 8},/turf/simulated/floor/wood,/area/triumph_away/gaia_planet/inside)
 "us" = (/obj/machinery/light/small{dir = 1},/turf/simulated/floor/wood,/area/triumph_away/gaia_planet/inside)
 "uv" = (/obj/structure/fence{dir = 4},/turf/simulated/floor/outdoors/dirt/gaia_world,/area/triumph_away/gaia_planet/outside)
-"uF" = (/obj/machinery/smartfridge,/turf/simulated/floor/outdoors/grass/gaia_world,/area/triumph_away/gaia_planet/inside)
+"uF" = (/obj/machinery/smartfridge,/turf/simulated/floor/tiled/gaia_world,/area/triumph_away/gaia_planet/inside)
 "uM" = (/obj/machinery/light{dir = 8},/turf/simulated/floor/tiled/white,/area/triumph_away/gaia_planet/inside)
 "uW" = (/obj/machinery/light{dir = 8},/turf/simulated/floor/wood/gaia_world,/area/triumph_away/gaia_planet/inside)
 "vd" = (/obj/structure/bed/chair/comfy/beige{dir = 8},/turf/simulated/floor/carpet/turcarpet,/area/triumph_away/gaia_planet/inside)
@@ -186,18 +185,18 @@
 "Al" = (/obj/machinery/button/remote/airlock{id = "room4"; name = "Room 4 Lock"; pixel_x = -25; pixel_y = -2; specialfunctions = 4},/turf/simulated/floor/wood/gaia_world,/area/triumph_away/gaia_planet/inside)
 "Am" = (/turf/simulated/wall/wood,/area/triumph_away/gaia_planet/inside)
 "Ao" = (/obj/machinery/vending/fishing,/turf/simulated/floor/outdoors/dirt/gaia_world,/area/triumph_away/gaia_planet/outside)
-"Aq" = (/obj/machinery/seed_storage/garden,/turf/simulated/floor/outdoors/grass/gaia_world,/area/triumph_away/gaia_planet/inside)
+"Aq" = (/obj/machinery/seed_storage/garden,/turf/simulated/floor/tiled/gaia_world,/area/triumph_away/gaia_planet/inside)
 "AH" = (/obj/machinery/light{dir = 4},/turf/simulated/floor/wood/gaia_world,/area/triumph_away/gaia_planet/inside)
 "Be" = (/obj/structure/table/rack,/obj/item/stack/material/log{amount = 50},/obj/item/stack/material/log{amount = 50},/obj/item/stack/material/log{amount = 50},/obj/machinery/light/small{dir = 4},/turf/simulated/floor/wood/gaia_world,/area/triumph_away/gaia_planet/inside)
 "Bp" = (/obj/effect/floor_decal/steeldecal/steel_decals10{dir = 4},/obj/effect/floor_decal/steeldecal/steel_decals10,/obj/machinery/light{dir = 1},/turf/simulated/floor/tiled/white,/area/triumph_away/gaia_planet/inside)
-"Bs" = (/obj/structure/grille,/obj/structure/grille,/obj/structure/window/reinforced/full,/turf/simulated/floor/outdoors/grass/gaia_world,/area/triumph_away/gaia_planet/inside)
+"Bs" = (/obj/structure/grille,/obj/structure/grille,/obj/structure/window/reinforced/full,/turf/simulated/floor/tiled/gaia_world,/area/triumph_away/gaia_planet/inside)
 "Bv" = (/obj/machinery/light/small{dir = 1},/turf/simulated/floor/wood/gaia_world,/area/triumph_away/gaia_planet/inside)
 "By" = (/obj/item/ore/coal,/obj/item/ore/coal,/turf/simulated/mineral/floor/gaia_world,/area/triumph_away/gaia_planet/inside)
 "BE" = (/obj/structure/railing{dir = 8},/turf/simulated/floor/tiled,/area/triumph_away/gaia_planet/inside)
 "BJ" = (/obj/structure/sign/warning/secure_area/armory{desc = "Hello! We here at the Happy Days and Sunshine Corporation we strive to ensure all our locations are a safe haven for ALL to enjoy. As such we very kindly ask that you put away any guns or other forms of weapons you may have in your craft. Violation of such will result in a small fine to make up for the breach of this request. Again, we here at the Happy Days and Sunshine Corporation thank you for your compliance. Please enjoy the facility and knowledge that you're safe here."; name = "NO WEAPONS BEYOND THIS POINT"; pixel_y = 32},/obj/machinery/light{dir = 1},/turf/simulated/floor/tiled/gaia_world,/area/triumph_away/gaia_planet/inside)
 "BU" = (/turf/simulated/floor/outdoors/beach/sand/gaia_world{icon_state = "sand"},/area/triumph_away/gaia_planet/outside)
 "Ca" = (/obj/item/ore/coal,/obj/item/ore/coal,/obj/item/ore/coal,/obj/item/ore/coal,/turf/simulated/mineral/floor/gaia_world,/area/triumph_away/gaia_planet/inside)
-"Ce" = (/obj/machinery/biogenerator,/turf/simulated/floor/outdoors/grass/gaia_world,/area/triumph_away/gaia_planet/inside)
+"Ce" = (/obj/machinery/biogenerator,/turf/simulated/floor/tiled/gaia_world,/area/triumph_away/gaia_planet/inside)
 "CC" = (/mob/living/simple_mob/animal/passive/fish/perch,/turf/simulated/floor/water/deep/gaia_world,/area/triumph_away/gaia_planet/outside)
 "CE" = (/obj/item/stool/padded,/turf/simulated/floor/carpet/turcarpet,/area/triumph_away/gaia_planet/inside)
 "Dc" = (/obj/structure/closet/secure_closet/freezer/meat,/turf/simulated/floor/tiled/freezer,/area/triumph_away/gaia_planet/inside)
@@ -208,17 +207,16 @@
 "Dv" = (/obj/structure/flora/pottedplant/flower,/turf/simulated/floor/wood/gaia_world,/area/triumph_away/gaia_planet/inside)
 "DD" = (/obj/item/stool/padded,/turf/simulated/floor/wood/gaia_world,/area/triumph_away/gaia_planet/inside)
 "DJ" = (/turf/simulated/floor/tiled/gaia_world,/area/triumph_away/gaia_planet/outside)
-"DU" = (/obj/structure/reagent_dispensers/watertank,/obj/item/reagent_containers/glass/bucket,/turf/simulated/floor/outdoors/grass/gaia_world,/area/triumph_away/gaia_planet/inside)
+"DU" = (/obj/structure/reagent_dispensers/watertank,/obj/item/reagent_containers/glass/bucket,/turf/simulated/floor/tiled/gaia_world,/area/triumph_away/gaia_planet/inside)
 "DY" = (/obj/structure/flora/tree/jungle,/obj/structure/flora/ausbushes/genericbush,/turf/simulated/floor/outdoors/grass/gaia_world,/area/triumph_away/gaia_planet/outside)
 "DZ" = (/turf/simulated/floor/water/shoreline/gaia_world,/area/triumph_away/gaia_planet/outside)
 "El" = (/turf/simulated/floor/outdoors/dirt/gaia_world,/area/triumph_away/gaia_planet/outside)
 "Eo" = (/obj/structure/railing{dir = 4},/turf/simulated/floor/wood,/area/triumph_away/gaia_planet/outside)
-"Ex" = (/obj/item/bee_pack,/obj/item/honey_frame,/obj/item/honey_frame,/obj/item/honey_frame,/obj/item/honey_frame,/obj/item/honey_frame,/obj/item/tool/crowbar,/obj/item/bee_smoker,/obj/item/beehive_assembly,/obj/structure/closet/crate/hydroponics{desc = "All you need to start your own honey farm."; name = "beekeeping crate"},/turf/simulated/floor/outdoors/grass/gaia_world,/area/triumph_away/gaia_planet/inside)
+"Ex" = (/obj/item/bee_pack,/obj/item/honey_frame,/obj/item/honey_frame,/obj/item/honey_frame,/obj/item/honey_frame,/obj/item/honey_frame,/obj/item/tool/crowbar,/obj/item/bee_smoker,/obj/item/beehive_assembly,/obj/structure/closet/crate/hydroponics{desc = "All you need to start your own honey farm."; name = "beekeeping crate"},/turf/simulated/floor/tiled/gaia_world,/area/triumph_away/gaia_planet/inside)
 "Ez" = (/obj/structure/fence/corner{dir = 8},/turf/simulated/floor/outdoors/grass/gaia_world,/area/triumph_away/gaia_planet/outside)
 "ED" = (/obj/machinery/chem_master/condimaster,/obj/structure/table/marble,/turf/simulated/floor/wood/gaia_world,/area/triumph_away/gaia_planet/inside)
 "EL" = (/obj/structure/table/marble,/obj/machinery/microwave,/turf/simulated/floor/tiled/dark,/area/triumph_away/gaia_planet/inside)
-"EM" = (/turf/simulated/floor/outdoors/dirt/gaia_world,/area/triumph_away/gaia_planet/inside)
-"EN" = (/obj/machinery/honey_extractor,/turf/simulated/floor/outdoors/grass/gaia_world,/area/triumph_away/gaia_planet/inside)
+"EN" = (/obj/machinery/honey_extractor,/turf/simulated/floor/tiled/gaia_world,/area/triumph_away/gaia_planet/inside)
 "EQ" = (/obj/structure/railing{dir = 4},/obj/structure/table/glass,/turf/simulated/floor/tiled,/area/triumph_away/gaia_planet/inside)
 "Fl" = (/obj/machinery/vending/hydronutrients,/turf/simulated/floor/outdoors/dirt/gaia_world,/area/triumph_away/gaia_planet/outside)
 "Fq" = (/obj/item/melee/umbrella/random,/obj/structure/closet/lasertag/blue,/turf/simulated/floor/wood/gaia_world,/area/triumph_away/gaia_planet/inside)
@@ -236,7 +234,7 @@
 "GH" = (/obj/machinery/door/airlock{id_tag = "room1"; name = "Room 1"},/turf/simulated/floor/wood/gaia_world,/area/triumph_away/gaia_planet/inside)
 "GN" = (/obj/machinery/shower{dir = 8},/obj/effect/floor_decal/steeldecal/steel_decals10{dir = 4},/obj/effect/floor_decal/steeldecal/steel_decals10,/turf/simulated/floor/tiled/white,/area/triumph_away/gaia_planet/inside)
 "Hl" = (/obj/structure/flora/ausbushes/sparsegrass,/turf/simulated/floor/outdoors/grass/gaia_world,/area/triumph_away/gaia_planet/outside)
-"Hr" = (/obj/machinery/vending/hydronutrients,/turf/simulated/floor/outdoors/grass/gaia_world,/area/triumph_away/gaia_planet/inside)
+"Hr" = (/obj/machinery/vending/hydronutrients,/turf/simulated/floor/tiled/gaia_world,/area/triumph_away/gaia_planet/inside)
 "Hz" = (/obj/structure/grille,/obj/structure/window/reinforced/full,/obj/structure/curtain/black,/turf/simulated/floor/tiled/gaia_world,/area/triumph_away/gaia_planet/inside)
 "HC" = (/obj/effect/overmap/visitable/sector/gaia_planet,/turf/simulated/floor/water/deep/gaia_world,/area/triumph_away/gaia_planet/outside)
 "HE" = (/obj/structure/flora/tree/jungle,/obj/structure/flora/ausbushes/pointybush,/turf/simulated/floor/outdoors/grass/gaia_world,/area/triumph_away/gaia_planet/outside)
@@ -249,7 +247,7 @@
 "IP" = (/obj/machinery/chem_master/condimaster,/turf/simulated/floor/tiled/freezer,/area/triumph_away/gaia_planet/inside)
 "Jb" = (/obj/machinery/gibber,/turf/simulated/floor/tiled/freezer,/area/triumph_away/gaia_planet/inside)
 "JE" = (/obj/structure/fence/post{dir = 8},/turf/simulated/floor/outdoors/grass/gaia_world,/area/triumph_away/gaia_planet/outside)
-"JX" = (/obj/machinery/smartfridge/drying_rack,/turf/simulated/floor/outdoors/grass/gaia_world,/area/triumph_away/gaia_planet/inside)
+"JX" = (/obj/machinery/smartfridge/drying_rack,/turf/simulated/floor/tiled/gaia_world,/area/triumph_away/gaia_planet/inside)
 "JY" = (/obj/machinery/door/airlock{id_tag = "room4"; name = "Room 4"},/turf/simulated/floor/wood/gaia_world,/area/triumph_away/gaia_planet/inside)
 "JZ" = (/obj/machinery/vending/dinnerware,/turf/simulated/floor/tiled/dark,/area/triumph_away/gaia_planet/inside)
 "Ke" = (/obj/structure/flora/ausbushes/brflowers,/obj/structure/flora/ausbushes/brflowers,/obj/structure/flora/ausbushes/brflowers,/turf/simulated/floor/outdoors/grass/gaia_world,/area/triumph_away/gaia_planet/outside)
@@ -266,7 +264,6 @@
 "Lg" = (/obj/machinery/appliance/cooker/fryer,/turf/simulated/floor/tiled/dark,/area/triumph_away/gaia_planet/inside)
 "Lk" = (/obj/item/stool,/turf/simulated/floor/outdoors/beach/sand/gaia_world{icon_state = "sand"},/area/triumph_away/gaia_planet/outside)
 "LA" = (/obj/machinery/button/remote/airlock{id = "room5"; name = "Room 5 Lock"; pixel_x = -25; specialfunctions = 4},/turf/simulated/floor/wood/gaia_world,/area/triumph_away/gaia_planet/inside)
-"LP" = (/obj/machinery/light,/turf/simulated/floor/outdoors/grass/gaia_world,/area/triumph_away/gaia_planet/inside)
 "LS" = (/obj/machinery/vending/fishing,/turf/simulated/floor/tiled/gaia_world,/area/triumph_away/gaia_planet/outside)
 "LW" = (/turf/simulated/floor/tiled/freezer,/area/triumph_away/gaia_planet/inside)
 "Ma" = (/obj/item/stack/material/log{amount = 50},/obj/item/stack/material/log{amount = 50},/obj/item/stack/material/log{amount = 50},/turf/simulated/mineral/floor/gaia_world,/area/triumph_away/gaia_planet/inside)
@@ -277,7 +274,6 @@
 "MV" = (/turf/simulated/mineral/floor/gaia_world,/area/triumph_away/gaia_planet/inside)
 "Nb" = (/obj/structure/railing,/turf/simulated/floor/tiled,/area/triumph_away/gaia_planet/inside)
 "Ne" = (/turf/simulated/wall/gaia_world,/area/triumph_away/gaia_planet/inside)
-"Np" = (/obj/machinery/light{dir = 1},/turf/simulated/floor/outdoors/grass/gaia_world,/area/triumph_away/gaia_planet/inside)
 "NE" = (/obj/structure/railing{dir = 4},/turf/simulated/floor/wood,/area/triumph_away/gaia_planet/inside)
 "NM" = (/obj/machinery/light/small,/turf/simulated/floor/wood/gaia_world,/area/triumph_away/gaia_planet/inside)
 "Oi" = (/obj/structure/flora/ausbushes/lavendergrass,/turf/simulated/floor/outdoors/dirt/gaia_world,/area/triumph_away/gaia_planet/outside)
@@ -320,20 +316,20 @@
 "TD" = (/obj/machinery/button/remote/airlock{id = "room6"; name = "Room 6 Lock"; pixel_x = -26; pixel_y = -4; specialfunctions = 4},/turf/simulated/floor/wood/gaia_world,/area/triumph_away/gaia_planet/inside)
 "TP" = (/obj/structure/grille,/obj/structure/window/reinforced/full,/obj/structure/curtain/open/bed,/turf/simulated/floor/tiled/gaia_world,/area/triumph_away/gaia_planet/inside)
 "Ua" = (/obj/structure/table/woodentable,/turf/simulated/floor/carpet/bcarpet,/area/triumph_away/gaia_planet/inside)
-"Uq" = (/obj/machinery/seed_extractor,/turf/simulated/floor/outdoors/grass/gaia_world,/area/triumph_away/gaia_planet/inside)
+"Uq" = (/obj/machinery/seed_extractor,/turf/simulated/floor/tiled/gaia_world,/area/triumph_away/gaia_planet/inside)
 "Ux" = (/obj/structure/kitchenspike,/turf/simulated/floor/tiled/freezer,/area/triumph_away/gaia_planet/inside)
 "UD" = (/mob/living/simple_mob/animal/passive/mouse/brown,/turf/simulated/floor/outdoors/grass/gaia_world,/area/triumph_away/gaia_planet/outside)
-"UQ" = (/turf/simulated/mineral/floor,/area/triumph_away/gaia_planet/outside)
+"UQ" = (/turf/simulated/mineral/floor,/area/triumph_away/gaia_planet/inside)
 "UW" = (/obj/structure/closet/crate/bin{anchored = 1},/turf/simulated/floor/carpet/turcarpet,/area/triumph_away/gaia_planet/inside)
 "Vc" = (/mob/living/simple_mob/animal/passive/fish/rockfish,/turf/simulated/floor/water/deep/gaia_world,/area/triumph_away/gaia_planet/outside)
-"Ve" = (/obj/structure/closet/secure_closet/hydroponics{req_access = list(28)},/obj/machinery/light{dir = 1},/turf/simulated/floor/outdoors/grass/gaia_world,/area/triumph_away/gaia_planet/inside)
+"Ve" = (/obj/structure/closet/secure_closet/hydroponics{req_access = list(28)},/obj/machinery/light{dir = 1},/turf/simulated/floor/tiled/gaia_world,/area/triumph_away/gaia_planet/inside)
 "Vi" = (/obj/item/bone,/turf/simulated/mineral/floor/gaia_world,/area/triumph_away/gaia_planet/inside)
 "Vm" = (/obj/structure/flora/tree/jungle,/obj/structure/flora/ausbushes/ywflowers,/turf/simulated/floor/outdoors/grass/gaia_world,/area/triumph_away/gaia_planet/outside)
 "Vs" = (/obj/structure/lightpost,/turf/simulated/floor/outdoors/grass/gaia_world,/area/triumph_away/gaia_planet/outside)
 "Vy" = (/obj/machinery/vending/snack,/obj/machinery/light{dir = 4},/turf/simulated/floor/tiled/gaia_world,/area/triumph_away/gaia_planet/inside)
 "VG" = (/obj/structure/table/marble,/obj/machinery/reagentgrinder,/obj/item/hand_labeler,/turf/simulated/floor/tiled/dark,/area/triumph_away/gaia_planet/inside)
 "VH" = (/obj/structure/flora/bush,/turf/simulated/floor/outdoors/grass/gaia_world,/area/triumph_away/gaia_planet/outside)
-"VX" = (/obj/structure/grille,/obj/structure/window/reinforced/full,/turf/simulated/floor/outdoors/grass/gaia_world,/area/triumph_away/gaia_planet/inside)
+"VX" = (/obj/structure/grille,/obj/structure/window/reinforced/full,/turf/simulated/floor/tiled/gaia_world,/area/triumph_away/gaia_planet/inside)
 "Wa" = (/obj/structure/railing{dir = 8},/obj/structure/railing{dir = 1},/turf/simulated/floor/tiled,/area/triumph_away/gaia_planet/inside)
 "Wc" = (/obj/structure/flora/pottedplant/largebush,/turf/simulated/floor/wood/gaia_world,/area/triumph_away/gaia_planet/inside)
 "Wj" = (/obj/item/ore/coal,/turf/simulated/floor/outdoors/dirt/gaia_world,/area/triumph_away/gaia_planet/outside)
@@ -408,9 +404,9 @@ rZTxTxTxTxTxTxTxDjTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxHzTriYGbDDtStStSUaUaHzTxTx
 rZTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxpnpnTxTxTxTxTxTxTxTxHzykDDGbDDtStStSqkqkHzTxTxTxTxTxTxTxTxPfTxPfPfTxmPTxTxTxTxzjzyPfTxPfTxTxTxTxPfPfTxTxTxElvyvyvyPuElTxTxTxTxTxTxTxTxpnTxTxTxHlTxmPHlTxaNTxTxTxTxTxTxTxTxTxTxTxmPPfTxTxTxTxTxTxElWjQHQHQHQHQHQHQHQHQHQHQHQHQHQHQHQHQHQHQHQHQHQHQHQHQH
 rZTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxmPTxTxTxTxpnmPTxTxTxTxAmzHZCGbiYiYNMiYiYXRAmTxTxTxTxmPTxTxTxTxTxTxmPTxTxTxTxTxTxTxPfPfTxTxTxTxTxPfTxTxTxElElElvyvyfevyElTxTxTxTxTxTxmPpnpnpnTxHlHlHlTxTxTxHlTxmPTxVsElTxTxnWTxTxTxTxTxTxTxTxTxmPDjElElQHQHQHQHQHQHQHvXMVsLMVQHQHQHQHQHCavXMVMVQHQHQHQHQH
 rZTxTxTxTxnWTxTxTxDjmPTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxAmAmAmAmmIAmAmtfAmAmAmTxTxTxQQTxTxpnTxTxTxTxTxTxTxTxTxTxTxTxmPTxTxTxTxPfmPTxTxTxTxElvyvyvyvyfevyElTxTxTxTxTxpnUDTxTxTxTxTxTxTxTxTxTxHlTxHlTxTxElElTxTxTxTxTxTxTxTxTxTxTxTxElTxQHQHViMVZbMaMVMVMVMVMVMVvXMVQHQHQHvXMVMVMVQHQHQHQHQH
-rZTxTxTxTxTxTxTxDjTxTxTxTxTxTxTxTxTxTxmPTxTxTxTxQQTxTxAmnoQLUWZniYAmiYiYZSAmTxTxTxTxTxTxTxTxTxTxTxpnpnTxTxTxTxTxTxTxTxPfTxPfTxTxTxTxTxTxElvyvyvyvyfevyElTxTxTxpnTxTxTxTxTxTxPfZOPfPfPfPfnWHlHlHlTxTxTxElTxTxnWTxTxmPTxmPTxElTxUQTxElQHQHMVvXMVMVMVtzMVMVMVMVMVMVMVQHQHMVsLMVvXQHQHQHQHQH
-rZTxTxTxTxTxTxTxDjTxTxTxTxmPTxTxTxTxTxTxTxTxTxTxTxTxTxAmnononoiYidAmiYiYBeAmTxTxTxTxTxTxTxTxTxTxTxpnTxTxTxTxTxTxTxTxPfTxTxTxTxTxTxTxTxTxElvyvyvyfevyvyElTxmPTxTxmPTxTxnWTxTxZOTxTxTxTxTxTxHlHlTxTxTxTxTxElTxTxElTxTxElTxTxKeTxTxElUQEMMVMVMVMVfgMVMVMVMVQHMVMVMVMVQHMVMVMVMVMVQHQHQHQHQH
-rZTxTxmPTxTxDjDjTxTxpnpnTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxAmpRvRvdXRPeAmiYiYwpAmTxTxTxTxTxTxpnTxTxTxTxTxTxTxTxTxTxPfPfPfTxTxTxTxTxPfTxTxTxTxElvyvyfevyvyvyElTxTxTxpnTxTxTxTxTxTxPfPfTxTxTxTxTxTxxITxTxTxTxTxElElElElTxTxTxTxTxElTxElUQElEMEMMVMVMVMVMVMVMVsLQHQHMVMVMVQHMVMVMVMVvXMVQHQHQHQH
+rZTxTxTxTxTxTxTxDjTxTxTxTxTxTxTxTxTxTxmPTxTxTxTxQQTxTxAmnoQLUWZniYAmiYiYZSAmTxTxTxTxTxTxTxTxTxTxTxpnpnTxTxTxTxTxTxTxTxPfTxPfTxTxTxTxTxTxElvyvyvyvyfevyElTxTxTxpnTxTxTxTxTxTxPfZOPfPfPfPfnWHlHlHlTxTxTxElTxTxnWTxTxmPTxmPTxElTxElTxElQHQHMVvXMVMVMVtzMVMVMVMVMVMVMVQHQHMVsLMVvXQHQHQHQHQH
+rZTxTxTxTxTxTxTxDjTxTxTxTxmPTxTxTxTxTxTxTxTxTxTxTxTxTxAmnononoiYidAmiYiYBeAmTxTxTxTxTxTxTxTxTxTxTxpnTxTxTxTxTxTxTxTxPfTxTxTxTxTxTxTxTxTxElvyvyvyfevyvyElTxmPTxTxmPTxTxnWTxTxZOTxTxTxTxTxTxHlHlTxTxTxTxTxElTxTxElTxTxElTxTxKeTxElElUQUQUQMVMVMVfgMVMVMVMVQHMVMVMVMVQHMVMVMVMVMVQHQHQHQHQH
+rZTxTxmPTxTxDjDjTxTxpnpnTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxAmpRvRvdXRPeAmiYiYwpAmTxTxTxTxTxTxpnTxTxTxTxTxTxTxTxTxTxPfPfPfTxTxTxTxTxPfTxTxTxTxElvyvyfevyvyvyElTxTxTxpnTxTxTxTxTxTxPfPfTxTxTxTxTxTxxITxTxTxTxTxElElElElTxTxTxTxTxElTxElElElUQUQMVMVMVMVMVMVMVsLQHQHMVMVMVQHMVMVMVMVvXMVQHQHQHQH
 rZTxTxTxTxDjTxTxTxTxTxTxTxTxmPTxpnTxTxpnTxTxpnTxTxTxTxAmTPTPTPAmAmAmtfAmAmAmTxTxTxmPTxTxTxTxTxmPTxTxTxTxTxTxZOTxTxTxTxTxTxTxPfElElElElElElvyvyPuPuPuvyElTxTxTxTxpnTxTxTxTxTxTxHlHlxIxIHlHlHlTxmPTxTxTxTxTxElElElTxPfTxTxTxTxTxTxTxElQHQHMVMVMVMVMVMVMVMVMVQHMVMVMVQHMVMVMVMVMVMVQHQHQHQH
 rZTxTxDjTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxQiaWaWbAusbANETxTxTxyQTxTxTxTxTxTxTxTxTxTxTxTxTxPfTxPfPfTxPfPfElElvyvyvyvyvyfevyvyvyvyvyElTxTxTxTxTxTxTxTxnWHlHlHlTxTxmPTxmPnWTxTxTxTxTxTxTxElTxmPTxTxTxmPTxElTxTxTxElQHQHvXpoMVMVMVMVMVMVMVQHMVMVMVMVMVsLMVMVMVMVQHQHQHQH
 rZTxTxTxTxyQTxTxTxTxTxTxTxTxTxTxTxTxTxTxOMOMOMOMTxTxTxTxTxTxTxuoKRKRbAbAbAjdTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxElElElElElElvyvyvyvyvyvyfeElElElElElElTxTxTxTxTxTxpnTxHlHlHlHlTxTxTxTxTxTxTxTxVsTxmPTxElTxTxTxTxTxTxPfTxTxTxTxTxElQHQHQHMVsLvXMVMVQIMVQHQHsLMVMVMVMVMVMVMVMVMVMVQHQHQH
@@ -465,11 +461,11 @@ rZTxTxmPTxmPTxvyvyTxTxTxTxTxOMTxjrNbNeNeNeNeNeNeNeNeNeNeiOLWDcNepaELdYQEFAvnNeNe
 rZmPTxTxTxTxTxvyvyTxTxTxTxTxOMTxTxTxTxTxTxTxpVTxTxTxTxNerlLWIPNeFAFAFAFAFALgNegFvxvxvxgFNeiYiYiYiYIKiYiYiYIKiYiYiYiYNeTxTxpVTxTxTxTxTxTxTxTxiHTxiHTxiHmPTxTxTxHlnWTxElTxTxTxTxTxTxTxTxmPTxOMOMwlTxTxTxrZTxDJDJDJDJDJDJDJDJDJDJDJDJDJDJDJDJDJDJDJDJDJDJDJDJDJDJDJDJDJDJDJDJDJDJTxTxOMTxrZ
 rZTxTxTxTxTxvyvyvyTxTxTxTxTxTxOMTxTxTxTxTxTxTxTxtbTxTxNerlLWJbNeFCFCFCVGFALgNewlvxvxvxwlNeiYiYiYiYiYiYiYiYiYiYiYiYiYNeTxTxTxTxTxpnpnTxTxTxTxiHnWTxTxTxTxTxTxHlTxTxTxElTxHlTxTxmPTxTxTxTxTxOMOMmPwlTxTxKYTxDJDJDJyWDJDJDJDJDJDJDJDJDJDJDJyWDJDJDJDJDJyWDJDJDJDJDJDJDJDJyWDJDJDJTxTxOMTxrZ
 rZTxTxTxTxTxvyvyvyTxTxmPTxTxTxOMTxTxTxTxTxTxTxTxTxTxTxNeNeNeNeNeNeNeNeNeoCNeNewlvxgGvxwlNeNeNeNeNeNeNeNeNeNeNeNeNeNeNeTxTxTxTxpnpnpnTxTxTxTxTxTxTxTxTxmPTxTxHlOMTxTxTxTxHlTxTxTxTxTxTxTxTxOMTxTxwlTxTxrZTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxvxtcvxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxrZ
-rZTxTxTxTxTxvyvyvyTxTxTxTxTxOMTxTxtbTxTxTxTxTxTxTxTxTxVXobNpuFJXAqHrqaVefcExVXTxvxNevxTxTxwlwlwlTxTxtbTxTxTxDjTxTxTxtbtbTxtbtbTxpnTxTxmPTxTxTxTxTxTxTxTxTxmPHlOMTxTxElTxHlTxTxmPTxTxmPTxTxTxTxwlwlTxTxhxgygygygyJEgygygygygygygyJEgygygygyJEsdNesdJEgygygyJEgygygygygyJEgygygygygygygypQ
-rZTxTxTxTxTxvyvyvyTxTxTxTxTxTxTxTxTxTxTxTxOMOMOMTxTxTxVXobfcfcfcfcfcfcfcfcENVXTxvxbDvxTxTxTxTxTxwlwlTxTxDjDjTxTxTxTxTxwlTxTxtbTxpnpnTxTxTxwlwlwlwlTxOMOMTxTxOMOMVsElTxVsTxTxTxTxwlwlwlwlwlwlTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxvxbDvxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxrZ
-rZTxTxTxTxTxvyvyvyTxTxTxTxTxTxTxTxTxOMOMTxTxTxTxTxTxOMVXobfcobfcobfcobfcfcUqVXTxvxvxvxTxTxTxTxTxTxTxTxTxTxTxTxTxTxwlwlTxTxTxTxTxTxpnTxTxTxTxTxTxTxTxTxOMOMTxTxTxTxElElTxTxTxTxTxTxTxTxTxTxTxTxmPTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxvxvxvxTxTxTxTxOMOMTxTxTxTxTxTxTxTxTxTxTxTxrZ
-rZTxTxmPTxTxvyvyvyTxTxTxtbtbTxTxOMOMTxTxTxTxTxTxtbTxOMVXobfcobfcobfcobfcfcCeVXTxvxgGvxvxvxvxvxvxvxvxvxgGvxvxvxvxvxvxvxvxvxvxvxvxgGvxvxvxvxvxvxvxvxvxgGvxvxvxvxvxvxvxvxvxgGvxvxvxvxvxvxvxvxvxvxvxvxvxgGvxvxvxvxvxvxvxvxvxvxvxvxgGvxvxvxvxvxvxvxgGvxTxTxTxOMTxTxtbTxTxTxpnpnpnpnpnpnTxTxrZ
-rZTxTxTxTxTxvyvyvyTxTxTxtbTxTxTxTxTxTxOMTxTxmPTxTxOMTxVXobLPobfcobfcobLPfcDUVXTxvxNevxvxvxvxvxvxvxvxvxNevxvxvxvxvxvxvxvxvxvxvxvxNevxvxvxvxvxvxvxvxvxNevxvxvxvxvxvxvxvxvxNevxvxvxvxvxvxvxvxvxvxvxvxvxNevxvxvxvxvxvxvxvxvxvxvxvxNevxvxvxvxvxvxvxNevxTxTxOMOMTxTxTxtbTxTxTxTxTxTxTxTxTxTxrZ
+rZTxTxTxTxTxvyvyvyTxTxTxTxTxOMTxTxtbTxTxTxTxTxTxTxTxTxVXobbDuFJXAqHrqaVevxExVXTxvxNevxTxTxwlwlwlTxTxtbTxTxTxDjTxTxTxtbtbTxtbtbTxpnTxTxmPTxTxTxTxTxTxTxTxTxmPHlOMTxTxElTxHlTxTxmPTxTxmPTxTxTxTxwlwlTxTxhxgygygygyJEgygygygygygygyJEgygygygyJEsdNesdJEgygygyJEgygygygygyJEgygygygygygygypQ
+rZTxTxTxTxTxvyvyvyTxTxTxTxTxTxTxTxTxTxTxTxOMOMOMTxTxTxVXobvxvxvxvxvxvxvxvxENVXTxvxbDvxTxTxTxTxTxwlwlTxTxDjDjTxTxTxTxTxwlTxTxtbTxpnpnTxTxTxwlwlwlwlTxOMOMTxTxOMOMVsElTxVsTxTxTxTxwlwlwlwlwlwlTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxvxbDvxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxrZ
+rZTxTxTxTxTxvyvyvyTxTxTxTxTxTxTxTxTxOMOMTxTxTxTxTxTxOMVXobvxobvxobvxobvxvxUqVXTxvxvxvxTxTxTxTxTxTxTxTxTxTxTxTxTxTxwlwlTxTxTxTxTxTxpnTxTxTxTxTxTxTxTxTxOMOMTxTxTxTxElElTxTxTxTxTxTxTxTxTxTxTxTxmPTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxvxvxvxTxTxTxTxOMOMTxTxTxTxTxTxTxTxTxTxTxTxrZ
+rZTxTxmPTxTxvyvyvyTxTxTxtbtbTxTxOMOMTxTxTxTxTxTxtbTxOMVXobvxobvxobvxobvxvxCeVXTxvxgGvxvxvxvxvxvxvxvxvxgGvxvxvxvxvxvxvxvxvxvxvxvxgGvxvxvxvxvxvxvxvxvxgGvxvxvxvxvxvxvxvxvxgGvxvxvxvxvxvxvxvxvxvxvxvxvxgGvxvxvxvxvxvxvxvxvxvxvxvxgGvxvxvxvxvxvxvxgGvxTxTxTxOMTxTxtbTxTxTxpnpnpnpnpnpnTxTxrZ
+rZTxTxTxTxTxvyvyvyTxTxTxtbTxTxTxTxTxTxOMTxTxmPTxTxOMTxVXobgGobvxobvxobgGvxDUVXTxvxNevxvxvxvxvxvxvxvxvxNevxvxvxvxvxvxvxvxvxvxvxvxNevxvxvxvxvxvxvxvxvxNevxvxvxvxvxvxvxvxvxNevxvxvxvxvxvxvxvxvxvxvxvxvxNevxvxvxvxvxvxvxvxvxvxvxvxNevxvxvxvxvxvxvxNevxTxTxOMOMTxTxTxtbTxTxTxTxTxTxTxTxTxTxrZ
 rZTxTxTxTxTxvyvyvyTxTxTxTxTxTxOMTxTxTxTxTxTxOMTxOMTxTxBsVXVXVXVXVXVXVXVXVXVXVXTxvxbDvxvxvxvxvxvxvxvxvxbDvxvxvxvxvxvxvxvxvxvxvxvxbDvxvxvxvxvxvxvxvxvxbDvxvxvxvxvxvxvxvxvxbDvxvxvxvxvxvxvxvxvxvxvxvxvxbDvxvxvxvxvxvxvxvxvxvxvxvxbDvxvxvxvxvxvxvxbDvxTxOMTxtbTxTxTxtbtbTxTxTxTxTxpnpnpnTxrZ
 rZTxTxTxmPTxvyvyvyTxtbTxTxTxOMTxOMOMOMOMOMOMTxOMTxOMOMTxTxTxTxTxTxTxTxTxTxtbTxtbtbTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxElElElTxTxTxElTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxvxvxvxTxOMOMtbTxOMTxTxTxTxTxpnpnpnTxTxTxTxrZ
 rZTxmPTxTxTxvyvyvyTxtbTxTxTxOMTxTxnWTxTxTxTxTxTxTxTxTxOMTxTxTxTxTxTxTxtbtbTxTxTxTxTxTxTxtbtbTxTxTxTxTxTxTxTxTxElElTxTxTxTxTxElElTxTxTxTxHlHlTxTxTxTxTxTxTxHlHlHlHlTxTxTxTxTxTxTxTxTxTxpnTxpnTxTxTxTxTxTxTxTxpnpnpnTxTxTxTxTxpnpnTxTxTxTxTxTxvxvxvxTxTxTxtbTxOMTxpnpnpnTxTxTxpnpnTxTxTxrZ
