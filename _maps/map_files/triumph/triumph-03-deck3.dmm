@@ -13511,9 +13511,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/secondary/escape/medical_escape_pod_hallway)
 "mJf" = (
-/obj/structure/closet/crate/bin{
-	anchored = 1
-	},
+/obj/machinery/scale,
 /turf/simulated/floor/tiled/white,
 /area/medical/ward)
 "mJq" = (
@@ -14547,6 +14545,9 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/ward)
 "nHY" = (
@@ -15263,6 +15264,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
+	},
+/obj/item/healthanalyzer{
+	pixel_x = -12;
+	pixel_y = 5
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/ward)
