@@ -7314,6 +7314,11 @@
 "eXw" = (
 /obj/structure/table/woodentable,
 /obj/item/storage/fancy/cigarettes/dromedaryco,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
 "eXC" = (
@@ -7326,25 +7331,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/CMO_quarters)
-"eYc" = (
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/cable/green{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/turf/simulated/floor/lino,
-/area/security/detectives_office)
 "eZd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -8928,6 +8914,9 @@
 	pixel_y = 26
 	},
 /obj/machinery/media/jukebox,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/security/training)
 "gnk" = (
@@ -14842,9 +14831,9 @@
 /area/vacant/vacant_bar)
 "krn" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
@@ -19168,11 +19157,6 @@
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/general)
 "nnL" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
@@ -25307,6 +25291,11 @@
 /obj/structure/table/woodentable,
 /obj/item/handcuffs,
 /obj/item/flashlight/lamp/green,
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
 "riB" = (
@@ -45093,8 +45082,8 @@ lSC
 brg
 cuC
 qaE
-eYc
-krn
+czK
+xIg
 nnL
 krn
 vFo
