@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ad" = (
-/obj/structure/closet/wardrobe/mixed,
+/obj/machinery/vending/loadout/gadget,
 /turf/simulated/floor/wood,
 /area/triumph_away/tradeport/commons)
 "af" = (
@@ -70,6 +70,15 @@
 /obj/item/lipstick/random,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
+"aJ" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/structure/cryofeed{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/triumph_away/tradeport/commons)
 "aN" = (
 /obj/machinery/atmospherics/pipe/cap/hidden{
 	dir = 4
@@ -89,7 +98,7 @@
 /turf/space,
 /area/space)
 "ba" = (
-/obj/structure/closet/wardrobe/white,
+/obj/machinery/vending/loadout/uniform,
 /turf/simulated/floor/wood,
 /area/triumph_away/tradeport/commons)
 "bj" = (
@@ -117,6 +126,16 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/triumph_away/tradeport/facility)
+"by" = (
+/obj/structure/bed/chair,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/triumph_away/tradeport/commons)
 "bA" = (
 /turf/simulated/wall/r_wall,
 /area/triumph_away/tradeport/commons)
@@ -161,7 +180,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "bV" = (
-/obj/structure/closet/wardrobe/black,
+/obj/machinery/vending/loadout,
 /turf/simulated/floor/wood,
 /area/triumph_away/tradeport/commons)
 "bZ" = (
@@ -771,10 +790,10 @@
 /turf/simulated/floor/tiled/freezer,
 /area/triumph_away/tradeport)
 "hk" = (
-/obj/structure/closet/wardrobe/yellow,
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/machinery/vending/loadout/loadout_misc,
 /turf/simulated/floor/wood,
 /area/triumph_away/tradeport/commons)
 "hA" = (
@@ -803,6 +822,18 @@
 /obj/effect/overmap/visitable/sector/trade_post,
 /turf/space,
 /area/triumph_away/tradeport/space)
+"hW" = (
+/obj/machinery/computer/cryopod{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/triumph_away/tradeport/commons)
+"hX" = (
+/obj/machinery/camera{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_tile/blue,
+/area/triumph_away/tradeport)
 "ia" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/paper_bin{
@@ -831,6 +862,10 @@
 "if" = (
 /turf/simulated/floor/tiled/steel,
 /area/triumph_away/tradeport)
+"ig" = (
+/obj/structure/cryofeed,
+/turf/simulated/floor/tiled/techfloor,
+/area/triumph_away/tradeport/commons)
 "ii" = (
 /obj/structure/closet/crate/trashcart,
 /turf/simulated/floor/plating,
@@ -1320,6 +1355,20 @@
 	},
 /turf/simulated/shuttle/wall/voidcraft,
 /area/shuttle/trade_ship/general)
+"mc" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/catwalk,
+/obj/machinery/camera{
+	dir = 4
+	},
+/turf/space,
+/area/triumph_away/tradeport/space)
 "mj" = (
 /obj/structure/table/steel_reinforced,
 /obj/random/plushie,
@@ -1920,6 +1969,10 @@
 /obj/structure/largecrate/hoverpod,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
+"ro" = (
+/obj/machinery/cryopod,
+/turf/simulated/floor/tiled/techfloor,
+/area/triumph_away/tradeport/commons)
 "rp" = (
 /obj/machinery/atmospherics/pipe/simple/visible/purple,
 /obj/structure/catwalk,
@@ -2245,6 +2298,13 @@
 	},
 /turf/simulated/wall,
 /area/triumph_away/tradeport/pads)
+"um" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/camera{
+	dir = 8
+	},
+/turf/simulated/shuttle/floor/darkred/airless,
+/area/triumph_away/tradeport/pads)
 "up" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -2407,7 +2467,7 @@
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/trade_ship/cockpit)
 "vp" = (
-/obj/structure/closet/wardrobe/green,
+/obj/machinery/vending/loadout/clothing,
 /turf/simulated/floor/wood,
 /area/triumph_away/tradeport/commons)
 "vr" = (
@@ -2462,6 +2522,13 @@
 /obj/structure/catwalk,
 /turf/simulated/shuttle/floor/darkred/airless,
 /area/triumph_away/tradeport/pads)
+"vC" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/machinery/camera{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/old_tile/blue,
+/area/triumph_away/tradeport)
 "vK" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
@@ -2687,6 +2754,10 @@
 /obj/structure/cable/yellow,
 /turf/simulated/floor/plating,
 /area/triumph_away/tradeport/engineering)
+"xl" = (
+/obj/machinery/camera,
+/turf/simulated/floor/tiled/old_tile/red,
+/area/triumph_away/tradeport)
 "xo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -2794,6 +2865,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
+"yi" = (
+/obj/structure/cryofeed{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/triumph_away/tradeport/commons)
 "yn" = (
 /obj/machinery/atmospherics/pipe/simple/visible/purple{
 	dir = 9
@@ -3046,7 +3123,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/cockpit)
 "Az" = (
-/obj/structure/closet/wardrobe/grey,
+/obj/machinery/vending/loadout/costume,
 /turf/simulated/floor/wood,
 /area/triumph_away/tradeport/commons)
 "AA" = (
@@ -3330,6 +3407,15 @@
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/trade_ship/general)
+"CM" = (
+/obj/machinery/door/firedoor{
+	req_one_access = list(160)
+	},
+/obj/machinery/door/airlock/glass{
+	name = "Cryogenics"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/triumph_away/tradeport/commons)
 "CQ" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /turf/simulated/floor/tiled/old_cargo/red,
@@ -3530,6 +3616,13 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/triumph_away/tradeport)
+"Ea" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/machinery/camera{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_tile/red,
+/area/triumph_away/tradeport)
 "Ec" = (
 /obj/machinery/light{
 	dir = 1
@@ -3611,6 +3704,9 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/triumph_away/tradeport)
+"ET" = (
+/turf/simulated/floor/tiled/techfloor,
+/area/triumph_away/tradeport/commons)
 "EY" = (
 /obj/item/stool/padded,
 /obj/effect/landmark{
@@ -3826,6 +3922,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/triumph_away/tradeport)
+"GC" = (
+/obj/machinery/vending/loadout/overwear,
+/turf/simulated/floor/wood,
+/area/triumph_away/tradeport/commons)
 "GI" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -4384,6 +4484,20 @@
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/simulated/floor/plating,
 /area/triumph_away/tradeport/engineering)
+"LD" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/catwalk,
+/obj/machinery/camera{
+	dir = 8
+	},
+/turf/space,
+/area/triumph_away/tradeport/space)
 "LF" = (
 /obj/structure/railing{
 	dir = 8
@@ -4600,6 +4714,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
+"Ng" = (
+/obj/structure/table/standard,
+/obj/structure/bedsheetbin,
+/obj/item/soap/deluxe,
+/turf/simulated/shuttle/floor/white,
+/area/triumph_away/tradeport/commons)
 "No" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -5152,10 +5272,10 @@
 /turf/simulated/floor/tiled/neutral,
 /area/triumph_away/tradeport/facility)
 "RE" = (
-/obj/structure/closet/wardrobe/pink,
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/machinery/vending/loadout/accessory,
 /turf/simulated/floor/wood,
 /area/triumph_away/tradeport/commons)
 "RM" = (
@@ -5267,6 +5387,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/triumph_away/tradeport/engineering)
+"To" = (
+/obj/machinery/cryopod{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/triumph_away/tradeport/commons)
 "Tp" = (
 /obj/effect/step_trigger/teleporter/tradeport_loop/north,
 /turf/space,
@@ -5300,6 +5426,13 @@
 /obj/vehicle/train/engine,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
+"TL" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/machinery/camera{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_tile/red,
+/area/triumph_away/tradeport)
 "TN" = (
 /obj/machinery/button/remote/blast_door{
 	id = "storeshutter";
@@ -5317,18 +5450,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/triumph_away/tradeport)
-"Ub" = (
-/obj/structure/table/standard,
-/obj/structure/bedsheetbin,
-/obj/item/soap/deluxe,
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 4
-	},
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/simulated/shuttle/floor/white,
-/area/triumph_away/tradeport/commons)
 "Uc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -5716,6 +5837,17 @@
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/triumph_away/tradeport/facility)
+"Xp" = (
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/camera{
+	dir = 4
+	},
+/turf/simulated/shuttle/floor/darkred/airless,
+/area/triumph_away/tradeport/pads)
 "Xt" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -5742,6 +5874,12 @@
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/triumph_away/tradeport)
+"XB" = (
+/obj/effect/landmark{
+	name = "Trader"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/triumph_away/tradeport/commons)
 "XF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -5894,6 +6032,15 @@
 /obj/machinery/vending/sovietsoda,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/cockpit)
+"YX" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/cryopod{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/triumph_away/tradeport/commons)
 "YY" = (
 /obj/random/trash_pile,
 /obj/machinery/light/small{
@@ -17932,10 +18079,10 @@ ut
 HB
 Dk
 eh
-WI
-WI
-WI
-WI
+bA
+bA
+bA
+bA
 WI
 FK
 FK
@@ -18074,10 +18221,10 @@ nG
 nG
 fu
 eh
-WI
-WI
-WI
-WI
+yi
+yi
+aJ
+bA
 WI
 WM
 Qk
@@ -18216,10 +18363,10 @@ nG
 nG
 Ck
 eh
-WI
-WI
-WI
-WI
+YX
+To
+To
+bA
 WI
 dK
 dK
@@ -18358,10 +18505,10 @@ nG
 nG
 fu
 eh
-WI
-WI
-WI
-WI
+hW
+XB
+ET
+bA
 WI
 WI
 WI
@@ -18500,10 +18647,10 @@ nG
 nG
 fu
 eh
-cJ
-WI
-WI
-WI
+ET
+ET
+ET
+bA
 WI
 WI
 WI
@@ -18642,11 +18789,11 @@ nG
 nG
 fu
 eh
-cJ
-cJ
-WI
-WI
-WI
+ro
+OK
+CM
+bA
+bA
 WI
 WI
 WI
@@ -18784,10 +18931,10 @@ nG
 nG
 fu
 eh
-bA
-bA
-bA
-bA
+ig
+OK
+qw
+Ng
 bA
 WI
 WI
@@ -18926,9 +19073,9 @@ nG
 nG
 Ck
 eh
-bA
 OK
-Ub
+OK
+xb
 FT
 bA
 cJ
@@ -20632,7 +20779,7 @@ fu
 eh
 Az
 VW
-ip
+by
 mP
 vx
 nK
@@ -20820,7 +20967,7 @@ tu
 XO
 tu
 XO
-cn
+LD
 XO
 XO
 XO
@@ -20836,7 +20983,7 @@ XO
 XO
 XO
 XO
-cn
+LD
 XO
 XO
 XO
@@ -21079,7 +21226,7 @@ Nt
 iq
 Yx
 cA
-cT
+vC
 gM
 bo
 vr
@@ -21198,7 +21345,7 @@ nG
 wR
 jQ
 eh
-Td
+GC
 VW
 If
 ss
@@ -21368,7 +21515,7 @@ EL
 if
 vY
 LO
-vr
+TL
 ej
 WI
 WI
@@ -21520,7 +21667,7 @@ zF
 ej
 HM
 ZS
-LO
+hX
 on
 YC
 Rh
@@ -21670,20 +21817,7 @@ ZL
 ZL
 Vg
 ZL
-ZL
-ZL
-ZL
-ZL
-ZL
-ZL
-ZL
-ZL
-ZL
-ZL
-ZL
-Vg
-ZL
-ZL
+Xp
 ZL
 ZL
 ZL
@@ -21697,6 +21831,19 @@ ZL
 Vg
 ZL
 ZL
+ZL
+ZL
+ZL
+ZL
+ZL
+ZL
+ZL
+ZL
+ZL
+ZL
+Vg
+ZL
+Xp
 ZL
 ZL
 ZL
@@ -21822,7 +21969,7 @@ Ft
 Ft
 Ft
 Ft
-Ft
+um
 xM
 Ft
 Ft
@@ -22212,7 +22359,7 @@ Ie
 zi
 QO
 Nt
-vY
+xl
 RX
 vY
 cT
@@ -22357,7 +22504,7 @@ Nt
 MU
 Dq
 Vb
-vr
+Ea
 Ox
 Bv
 cT
@@ -22666,7 +22813,7 @@ tu
 XO
 tu
 XO
-Qo
+mc
 XO
 XO
 XO
@@ -22682,7 +22829,7 @@ XO
 XO
 XO
 XO
-Qo
+mc
 XO
 XO
 XO

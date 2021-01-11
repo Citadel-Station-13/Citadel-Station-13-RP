@@ -2321,7 +2321,7 @@
 /area/space)
 "yZ" = (
 /obj/machinery/shipsensors,
-/turf/simulated/floor/plating,
+/turf/space,
 /area/space)
 "zb" = (
 /obj/machinery/door/airlock/voidcraft/vertical,
