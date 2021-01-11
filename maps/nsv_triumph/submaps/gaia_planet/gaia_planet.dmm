@@ -22,6 +22,7 @@
 "cU" = (/obj/item/stool/padded,/turf/simulated/floor/carpet/bcarpet,/area/triumph_away/gaia_planet/inside)
 "cY" = (/obj/structure/closet/athletic_mixed,/obj/item/melee/umbrella/random,/turf/simulated/floor/wood/gaia_world,/area/triumph_away/gaia_planet/inside)
 "dw" = (/obj/structure/flora/ausbushes/palebush,/obj/structure/flora/ausbushes/pointybush,/turf/simulated/floor/outdoors/grass/gaia_world,/area/triumph_away/gaia_planet/outside)
+"dQ" = (/obj/structure/sink{pixel_y = 22},/turf/simulated/floor/tiled/gaia_world,/area/triumph_away/gaia_planet/inside)
 "dY" = (/obj/structure/table/marble,/obj/item/reagent_containers/food/condiment/small/saltshaker{pixel_x = -3},/obj/item/reagent_containers/food/condiment/small/saltshaker{pixel_x = -9},/obj/item/reagent_containers/food/condiment/small/peppermill{pixel_x = 3},/obj/item/reagent_containers/food/condiment/small/peppermill{pixel_x = 9},/obj/item/reagent_containers/food/condiment/spacespice{pixel_x = -8; pixel_y = 13},/obj/item/reagent_containers/food/condiment/enzyme{layer = 5; pixel_y = 16},/obj/item/reagent_containers/food/condiment/soysauce{pixel_x = 8; pixel_y = 16},/turf/simulated/floor/tiled/dark,/area/triumph_away/gaia_planet/inside)
 "eo" = (/obj/machinery/appliance/cooker/oven,/turf/simulated/floor/tiled/dark,/area/triumph_away/gaia_planet/inside)
 "ep" = (/obj/machinery/light{dir = 4},/turf/simulated/floor/tiled/gaia_world,/area/triumph_away/gaia_planet/inside)
@@ -194,7 +195,7 @@
 "Aq" = (/obj/machinery/seed_storage/garden,/turf/simulated/floor/tiled/gaia_world,/area/triumph_away/gaia_planet/inside)
 "AH" = (/obj/machinery/light{dir = 4},/turf/simulated/floor/wood/gaia_world,/area/triumph_away/gaia_planet/inside)
 "AL" = (/obj/structure/sink/kitchen{dir = 8; name = "sink"; pixel_x = 13},/turf/simulated/floor/wood/gaia_world,/area/triumph_away/gaia_planet/inside)
-"Be" = (/obj/structure/table/rack,/obj/item/stack/material/log{amount = 50},/obj/item/stack/material/log{amount = 50},/obj/item/stack/material/log{amount = 50},/obj/machinery/light/small{dir = 4},/turf/simulated/floor/wood/gaia_world,/area/triumph_away/gaia_planet/inside)
+"Be" = (/obj/structure/table/rack,/obj/item/stack/material/log{amount = 50},/obj/item/stack/material/log{amount = 50},/obj/machinery/light/small{dir = 4},/turf/simulated/floor/wood/gaia_world,/area/triumph_away/gaia_planet/inside)
 "Bp" = (/obj/effect/floor_decal/steeldecal/steel_decals10{dir = 4},/obj/effect/floor_decal/steeldecal/steel_decals10,/obj/machinery/light{dir = 1},/turf/simulated/floor/tiled/white,/area/triumph_away/gaia_planet/inside)
 "Bs" = (/obj/structure/grille,/obj/structure/grille,/obj/structure/window/reinforced/full,/turf/simulated/floor/tiled/gaia_world,/area/triumph_away/gaia_planet/inside)
 "Bv" = (/obj/machinery/light/small{dir = 1},/turf/simulated/floor/wood/gaia_world,/area/triumph_away/gaia_planet/inside)
@@ -206,6 +207,7 @@
 "Ce" = (/obj/machinery/biogenerator,/turf/simulated/floor/tiled/gaia_world,/area/triumph_away/gaia_planet/inside)
 "CC" = (/mob/living/simple_mob/animal/passive/fish/perch,/turf/simulated/floor/water/deep/gaia_world,/area/triumph_away/gaia_planet/outside)
 "CE" = (/obj/item/stool/padded,/turf/simulated/floor/carpet/turcarpet,/area/triumph_away/gaia_planet/inside)
+"CZ" = (/mob/living/bot/farmbot{replaces_nutriment = 1},/turf/simulated/floor/tiled/gaia_world,/area/triumph_away/gaia_planet/inside)
 "Dc" = (/obj/structure/closet/secure_closet/freezer/meat,/turf/simulated/floor/tiled/freezer,/area/triumph_away/gaia_planet/inside)
 "Df" = (/obj/structure/closet/secure_closet/freezer/meat,/obj/machinery/light_switch{pixel_x = 25},/turf/simulated/floor/tiled/freezer,/area/triumph_away/gaia_planet/inside)
 "Di" = (/obj/structure/bed/chair/comfy/black{dir = 8},/turf/simulated/floor/wood/gaia_world,/area/triumph_away/gaia_planet/inside)
@@ -258,7 +260,7 @@
 "Jr" = (/obj/item/melee/umbrella/random,/obj/structure/closet/lasertag/blue,/obj/machinery/light{dir = 1},/turf/simulated/floor/wood/gaia_world,/area/triumph_away/gaia_planet/inside)
 "JE" = (/obj/structure/fence/post{dir = 8},/turf/simulated/floor/outdoors/grass/gaia_world,/area/triumph_away/gaia_planet/outside)
 "JW" = (/obj/machinery/chem_master/condimaster,/turf/simulated/floor/wood/gaia_world,/area/triumph_away/gaia_planet/inside)
-"JX" = (/obj/machinery/smartfridge/drying_rack,/turf/simulated/floor/tiled/gaia_world,/area/triumph_away/gaia_planet/inside)
+"JX" = (/obj/machinery/smartfridge/drying_rack,/obj/machinery/light{dir = 1},/turf/simulated/floor/tiled/gaia_world,/area/triumph_away/gaia_planet/inside)
 "JY" = (/obj/machinery/door/airlock{id_tag = "room4"; name = "Room 4"},/turf/simulated/floor/wood/gaia_world,/area/triumph_away/gaia_planet/inside)
 "JZ" = (/obj/machinery/vending/dinnerware,/turf/simulated/floor/tiled/dark,/area/triumph_away/gaia_planet/inside)
 "Ke" = (/obj/structure/flora/ausbushes/brflowers,/obj/structure/flora/ausbushes/brflowers,/obj/structure/flora/ausbushes/brflowers,/turf/simulated/floor/outdoors/grass/gaia_world,/area/triumph_away/gaia_planet/outside)
@@ -278,7 +280,6 @@
 "LA" = (/obj/machinery/button/remote/airlock{id = "room5"; name = "Room 5 Lock"; pixel_x = -25; specialfunctions = 4},/turf/simulated/floor/wood/gaia_world,/area/triumph_away/gaia_planet/inside)
 "LS" = (/obj/machinery/vending/fishing,/turf/simulated/floor/tiled/gaia_world,/area/triumph_away/gaia_planet/outside)
 "LW" = (/turf/simulated/floor/tiled/freezer,/area/triumph_away/gaia_planet/inside)
-"Ma" = (/obj/item/stack/material/log{amount = 50},/obj/item/stack/material/log{amount = 50},/obj/item/stack/material/log{amount = 50},/turf/simulated/mineral/floor/gaia_world,/area/triumph_away/gaia_planet/inside)
 "Mb" = (/obj/machinery/vending/sovietsoda,/turf/simulated/floor/tiled/gaia_world,/area/triumph_away/gaia_planet/inside)
 "MG" = (/obj/structure/table/marble,/obj/machinery/chemical_dispenser/bar_alc/full,/obj/machinery/light{dir = 1},/turf/simulated/floor/wood/gaia_world,/area/triumph_away/gaia_planet/inside)
 "MK" = (/obj/structure/flora/tree/jungle,/mob/living/simple_mob/animal/passive/mouse/brown,/turf/simulated/floor/outdoors/grass/gaia_world,/area/triumph_away/gaia_planet/outside)
@@ -367,7 +368,7 @@
 "YP" = (/obj/machinery/computer/arcade/orion_trail,/turf/simulated/floor/carpet/bcarpet,/area/triumph_away/gaia_planet/inside)
 "YW" = (/obj/structure/bed/chair/comfy/beige{dir = 4},/turf/simulated/floor/carpet,/area/triumph_away/gaia_planet/inside)
 "YZ" = (/obj/structure/fence/end,/turf/simulated/floor/outdoors/beach/sand/gaia_world{icon_state = "sand"},/area/triumph_away/gaia_planet/outside)
-"Zb" = (/obj/item/stack/material/log{amount = 50},/obj/item/stack/material/log{amount = 50},/obj/item/stack/material/log{amount = 50},/obj/item/stack/material/log{amount = 50},/turf/simulated/mineral/floor/gaia_world,/area/triumph_away/gaia_planet/inside)
+"Zb" = (/obj/item/stack/material/log{amount = 50},/obj/item/stack/material/log{amount = 50},/turf/simulated/mineral/floor/gaia_world,/area/triumph_away/gaia_planet/inside)
 "Zf" = (/turf/simulated/floor/carpet,/area/triumph_away/gaia_planet/inside)
 "Zn" = (/obj/machinery/button/remote/airlock{id = "room7"; name = "Room 7 Lock"; pixel_x = 26; pixel_y = 26; specialfunctions = 4},/turf/simulated/floor/wood/gaia_world,/area/triumph_away/gaia_planet/inside)
 "Zr" = (/obj/machinery/door/airlock{id_tag = "room5"; name = "Room 5"},/turf/simulated/floor/wood/gaia_world,/area/triumph_away/gaia_planet/inside)
@@ -421,7 +422,7 @@ rZTxTxTxTxTxTxDjTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxnWTxTxHzlsiYiYiYtStStSjNjNHzTxTx
 rZTxTxTxTxTxTxTxDjTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxHzTriYGbDDtStStSUaUaHzTxTxTxPfPfPfZOTxTxTxPfPfTxTxTxTxTxTxTxTxTxTxTxPfTxTxTxTxPfTxTxTxElvyvyvyPuElTxmPTxTxTxTxpnTxTxTxTxTxHlTxTxTxTxHlTxTxTxmPElElTxTxTxmPTxTxTxTxPfTxTxPfTxTxElElQHQHQHQHQHQHQHQHQHQHQHQHQHQHQHQHQHQHQHQHQHQHQHQH
 rZTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxpnpnTxTxTxTxTxTxTxTxHzykDDGbDDtStStSqkqkHzTxTxTxTxTxTxTxTxPfTxPfPfTxmPTxTxTxTxzjzyPfTxPfTxTxTxTxPfPfTxTxTxElvyvyvyPuElTxTxTxTxTxTxTxTxpnTxTxTxHlTxmPHlTxaNTxTxTxTxTxTxTxTxTxTxTxmPPfTxTxTxTxTxTxElWjQHQHQHQHQHQHQHQHQHQHQHQHQHQHQHQHQHQHQHQHQHQHQHQHQH
 rZTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxmPTxTxTxTxpnmPTxTxTxTxAmzHZCGbiYiYNMiYiYXRAmTxTxTxTxmPTxTxTxTxTxTxmPTxTxTxTxTxTxTxPfPfTxTxTxTxTxPfTxTxTxElElElvyvyfevyElTxTxTxTxTxTxmPpnpnpnTxHlHlHlTxTxTxHlTxmPTxVsElTxTxnWTxTxTxTxTxTxTxTxTxmPDjElElQHQHQHQHQHQHQHvXMVsLMVQHQHQHQHQHCavXMVMVQHQHQHQHQH
-rZTxTxTxTxnWTxTxTxDjmPTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxAmAmAmAmmIAmAmtfAmAmAmTxTxTxQQTxTxpnTxTxTxTxTxTxTxTxTxTxTxTxmPTxTxTxTxPfmPTxTxTxTxElvyvyvyvyfevyElTxTxTxTxTxpnUDTxTxTxTxTxTxTxTxTxTxHlTxHlTxTxElElTxTxTxTxTxTxTxTxTxTxTxTxElTxQHQHViMVZbMaMVMVMVMVMVMVvXMVQHQHQHvXMVMVMVQHQHQHQHQH
+rZTxTxTxTxnWTxTxTxDjmPTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxAmAmAmAmmIAmAmtfAmAmAmTxTxTxQQTxTxpnTxTxTxTxTxTxTxTxTxTxTxTxmPTxTxTxTxPfmPTxTxTxTxElvyvyvyvyfevyElTxTxTxTxTxpnUDTxTxTxTxTxTxTxTxTxTxHlTxHlTxTxElElTxTxTxTxTxTxTxTxTxTxTxTxElTxQHQHViMVZbZbMVMVMVMVMVMVvXMVQHQHQHvXMVMVMVQHQHQHQHQH
 rZTxTxTxTxTxTxTxDjTxTxTxTxTxTxTxTxTxTxmPTxTxTxTxQQTxTxAmnoQLUWZniYAmiYiYZSAmTxTxTxTxTxTxTxTxTxTxTxpnpnTxTxTxTxTxTxTxTxPfTxPfTxTxTxTxTxTxElvyvyvyvyfevyElTxTxTxpnTxTxTxTxTxTxPfZOPfPfPfPfnWHlHlHlTxTxTxElTxTxnWTxTxmPTxmPTxElTxElTxElQHQHMVvXMVMVMVtzMVMVMVMVMVMVMVQHQHMVsLMVvXQHQHQHQHQH
 rZTxTxTxTxTxTxTxDjTxTxTxTxmPTxTxTxTxTxTxTxTxTxTxTxTxTxAmnononoiYidAmiYiYBeAmTxTxTxTxTxTxTxTxTxTxTxpnTxTxTxTxTxTxTxTxPfTxTxTxTxTxTxTxTxTxElvyvyvyfevyvyElTxmPTxTxmPTxTxnWTxTxZOTxTxTxTxTxTxHlHlTxTxTxTxTxElTxTxElTxTxElTxTxKeTxElElUQUQUQMVMVMVfgMVMVMVMVQHMVMVMVMVQHMVMVMVMVMVQHQHQHQHQH
 rZTxTxmPTxTxDjDjTxTxpnpnTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxAmpRvRvdXRPeAmiYiYwpAmTxTxTxTxTxTxpnTxTxTxTxTxTxTxTxTxTxPfPfPfTxTxTxTxTxPfTxTxTxTxElvyvyfevyvyvyElTxTxTxpnTxTxTxTxTxTxPfPfTxTxTxTxTxTxxITxTxTxTxTxElElElElTxTxTxTxTxElTxElElElUQUQMVMVMVMVMVMVMVsLQHQHMVMVMVQHMVMVMVMVvXMVQHQHQHQH
@@ -431,7 +432,7 @@ rZTxTxTxTxyQTxTxTxTxTxTxTxTxTxTxTxTxTxTxOMOMOMOMTxTxTxTxTxTxTxuoKRKRbAbAbAjdTxTx
 rZTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxnWTxTxTxTxTxmPTxTxTxpnTxTxElElElElElElTxTxTxTxZxTxTxTxmPTxTxTxTxTxTxTxTxTxElElvyvyvyvyPuPuPuvyvyvyvyvyElwaTxTxTxTxTxTxTxTxTxTxTxpnHlHlHlTxTxTxElElElElElElElElTxElTxHlHlTxmPTxmPTxTxTxTxmPElElQHQHQHQHQHQHQHQHQHQHQHQHQHMVMVMVMVMVsLMVMVMVvXQHQHQH
 rZTxTxTxTxTxTxTxmPTxTxTxTxnWTxTxTxyQTxTxDjDjDjTxTxTxTxTxTxTxTxTxTxElElElElTxnWTxTxZxZxTxTxTxTxTxTxTxTxElElElElElElvyvyvyvyvyvyvyvyvyvyElElElElwaTxTxTxnWTxTxTxTxmPTxhSpnHlHlTxmPTxElElTxTxTxElElElElElTxHlHlTxTxTxTxTxTxTxTxPfTxTxssElQHQHQHQHQHQHQHQHQHQHQHQHQHByMVMVMVMVMVMVvXMVQHQHQH
 rZTxTxTxnWTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxDjTxTxTxTxTxnWTxTxTxTxElElElTxTxZxZxZxZxTxTxTxTxTxTxTxElElvyvyvyvyPuvyPuPuPuvyvyvyvyvyvyElTxTxwawaTxTxTxTxTxTxTxTxpnpnTxTxTxTxTxElElElTxTxTxElElElElElHlHlTxTxTxTxTxTxTxTxTxTxTxTxTxDjTxPfElQHQHQHQHQHQHQHQHQHQHQHQHMVMVvXMVMVMVsLMVQHQHQH
-rZTxTxTxTxTxTxTxTxmPTxTxTxTxTxTxTxTxmPTxTxTxTxDjTxTxmPTxTxTxTxOMOMOMTxTxTxTxZxZxZxZxZxTxElElElElElElElvyvyvyPuPuPuvyvyvyvyvyvyvyElElElElwawaTxTxTxTxTxTxTxTxTxnWTxTxTxmPElElElTxTxVsmPTxTxTxTxTxTxTxHlTxTxnWTxTxTxTxmPDjTxDjTxTxTxTxTxPfTxTxElElQHQHQHQHQHQHQHQHQHMVvXMVQHQHQHQHQHQHQHQH
+rZTxTxTxTxTxTxTxTxmPTxTxTxTxTxTxTxTxmPTxTxTxTxDjTxTxmPTxTxTxTxOMOMOMElTxTxTxZxZxZxZxZxTxElElElElElElElvyvyvyPuPuPuvyvyvyvyvyvyvyElElElElwawaTxTxTxTxTxTxTxTxTxnWTxTxTxmPElElElTxTxVsmPTxTxTxTxTxTxTxHlTxTxnWTxTxTxTxmPDjTxDjTxTxTxTxTxPfTxTxElElQHQHQHQHQHQHQHQHQHMVvXMVQHQHQHQHQHQHQHQH
 rZTxTxTxTxTxTxTxTxTxTxTxmPTxTxTxmPTxpnTxpnTxDjDjTxTxTxTxTxTxTxTxTxTxTxElTxZxZxZxZxTxElElElvyvyvyvyvyPuvyPuPuPuvyvyvyvyvyElElElElElTxTxwaTxTxTxTxTxmPTxTxTxTxTxnWTxVsTxElTxTxTxHlHlTxTxTxTxTxTxTxTxTxTxTxTxTxTxmPTxTxTxTxPfTxTxlpmPTxTxTxTxTxTxElQHQHQHQHQHQHQHQHQHQHQHQHQHQHQHQHQHQHQHQH
 rZTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxDjDjDjTxTxTxTxTxTxTxTxTxTxTxTxTxElElZxTxElElElElvyvyvyvyPuPuvyvyElElElElElElElElElElTxTxTxTxTxTxTxTxTxTxTxpnTxpnpnTxnWTxTxTxTxElElTxHlHlHlTxTxTxTxTxmPTxTxTxTxTxTxTxTxTxTxTxTxZOTxTxTxTxPfTxTxDjTxTxTxmPElElElElQHQHQHQHQHQHQHQHQHQHQHQHQHQHQHQHQH
 rZTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxZxZxOEElElTxTxElElvyvyvyvyvyvyvyPuvyvyvyElElTxTxwaTxTxTxTxTxTxTxTxTxTxpnTxTxpnTxTxmPTxTxTxTxTxTxTxTxElTxTxTxHlTxTxTxTxTxTxTxTxTxTxTxmPTxmPTxTxTxZOPfTxmPTxTxDjTxTxTxTxTxTxTxTxTxTxTxTxElElElQHQHQHQHQHQHQHQHQHQHQHQHQHQHQH
@@ -479,10 +480,10 @@ rZTxTxmPTxmPTxvyvyTxTxTxTxTxOMTxjrNbNeNeNeNeNeNeNeNeNeNeiOLWDcNepaELdYQEFAvnNeNe
 rZmPTxTxTxTxTxvyvyTxTxTxTxTxOMTxTxTxTxTxTxTxpVTxTxTxTxNerlLWIPNeFAFAFAFAFALgNegFvxvxvxgFNeiYiYiYiYiYiYiYiYiYiYiYiYiYNeTxTxpVTxTxTxTxTxTxTxTxiHTxiHTxiHmPTxTxTxHlnWTxElTxTxTxTxTxTxTxTxmPTxOMOMwlTxTxTxrZTxDJDJDJDJDJDJDJDJDJDJDJDJDJDJDJDJDJDJDJDJDJDJDJDJDJDJDJDJDJDJDJDJDJDJTxTxOMTxrZ
 rZTxTxTxTxTxvyvyvyTxTxTxTxTxTxOMTxTxTxTxTxTxTxTxtbTxTxNerlLWJbNeFCFCFCVGFALgNewlvxvxvxwlNeiYiYiYiYiYiYiYiYiYiYiYiYiYNeTxTxTxTxTxpnpnTxTxTxTxiHnWTxTxTxTxTxTxHlTxTxTxElTxHlTxTxmPTxTxTxTxTxOMOMmPwlTxTxKYTxDJDJDJyWDJDJDJDJDJDJDJDJDJDJDJyWDJDJDJDJDJyWDJDJDJDJDJDJDJDJyWDJDJDJTxTxOMTxrZ
 rZTxTxTxTxTxvyvyvyTxTxmPTxTxTxOMTxTxTxTxTxTxTxTxTxTxTxNeNeNeNeNeNeNeNeNeoCNeNewlvxgGvxwlNeNeNeNeNeNeNeNeNeNeNeNeNeNeNeTxTxTxTxpnpnpnTxTxTxTxTxTxTxTxTxmPTxTxHlOMTxTxTxTxHlTxTxTxTxTxTxTxTxOMTxTxwlTxTxrZTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxvxtcvxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxrZ
-rZTxTxTxTxTxvyvyvyTxTxTxTxTxOMTxTxtbTxTxTxTxTxTxTxTxTxVXobbDuFJXAqHrqaVevxExVXTxvxNevxTxTxwlwlwlTxTxtbTxTxTxDjTxTxTxtbtbTxtbtbTxpnTxTxmPTxTxTxTxTxTxTxTxTxmPHlOMTxTxElTxHlTxTxmPTxTxmPTxTxTxTxwlwlTxTxhxgygygygyJEgygygygygygygyJEgygygygyJEsdNesdNeNeNeNeNeNeNeNegygyJEgygygygygygygypQ
+rZTxTxTxTxTxvyvyvyTxTxTxTxTxOMTxTxtbTxTxTxTxTxTxTxTxTxVXobdQuFJXAqHrqaVevxExVXTxvxNevxTxTxwlwlwlTxTxtbTxTxTxDjTxTxTxtbtbTxtbtbTxpnTxTxmPTxTxTxTxTxTxTxTxTxmPHlOMTxTxElTxHlTxTxmPTxTxmPTxTxTxTxwlwlTxTxhxgygygygyJEgygygygygygygyJEgygygygyJEsdNesdNeNeNeNeNeNeNeNegygyJEgygygygygygygypQ
 rZTxTxTxTxTxvyvyvyTxTxTxTxTxTxTxTxTxTxTxTxOMOMOMTxTxTxVXobvxvxvxvxvxvxvxvxENVXTxvxbDvxTxTxTxTxTxwlwlTxTxDjDjTxTxTxTxTxwlTxTxtbTxpnpnTxTxTxwlwlwlwlTxOMOMTxTxOMOMVsElTxVsTxTxTxTxwlwlwlwlwlwlTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxvxbDvxNeqdqdqdqdqdqdNeTxTxTxTxTxTxTxTxTxTxrZ
 rZTxTxTxTxTxvyvyvyTxTxTxTxTxTxTxTxTxOMOMTxTxTxTxTxTxOMVXobvxobvxobvxobvxvxUqVXTxvxvxvxTxTxTxTxTxTxTxTxTxTxTxTxTxTxwlwlTxTxTxTxTxTxpnTxTxTxTxTxTxTxTxTxOMOMTxTxTxTxElElTxTxTxTxTxTxTxTxTxTxTxTxmPTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxvxvxepHmiYiYiYiYiYiYNeTxTxTxTxTxTxTxTxTxTxrZ
-rZTxTxmPTxTxvyvyvyTxTxTxtbtbTxTxOMOMTxTxTxTxTxTxtbTxOMVXobvxobvxobvxobvxvxCeVXTxvxvxvxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxvxvxvxHmiYiYiYiYiYiYNeTxTxpnpnpnpnpnpnTxTxrZ
+rZTxTxmPTxTxvyvyvyTxTxTxtbtbTxTxOMOMTxTxTxTxTxTxtbTxOMVXobCZobvxobCZobvxvxCeVXTxvxvxvxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxTxvxvxvxHmiYiYiYiYiYiYNeTxTxpnpnpnpnpnpnTxTxrZ
 rZTxTxTxTxTxvyvyvyTxTxTxtbTxTxTxTxTxTxOMTxTxmPTxTxOMTxVXobgGobvxobvxobgGvxDUVXTxvxgGvxvxvxvxvxvxvxvxvxgGvxvxvxvxvxvxvxvxvxvxvxvxgGvxvxvxvxvxvxvxvxvxgGvxvxvxvxvxvxvxvxvxgGvxvxvxvxvxvxvxvxvxvxvxvxvxgGvxvxvxvxvxvxvxvxvxvxvxvxgGvxvxvxvxvxvxvxvxOUNeiYiYqdqdqdqdNeTxTxTxTxTxTxTxTxTxTxrZ
 rZTxTxTxTxTxvyvyvyTxTxTxTxTxTxOMTxTxTxTxTxTxOMTxOMTxTxBsVXVXVXVXVXVXVXVXVXVXVXTxvxNevxvxvxvxvxvxvxvxvxNevxvxvxvxvxvxvxvxvxvxvxvxNevxvxvxvxvxvxvxvxvxNevxvxvxvxvxvxvxvxvxNevxvxvxvxvxvxvxvxvxvxvxvxvxNevxvxvxvxvxvxvxvxvxvxvxvxNevxvxvxvxvxvxvxvxvxXviYiYSjvJvJvJNetbTxTxTxTxTxpnpnpnTxrZ
 rZTxTxTxmPTxvyvyvyTxtbTxTxTxOMTxOMOMOMOMOMOMTxOMTxOMOMTxTxTxTxTxTxTxTxTxTxtbTxtbvxbDvxvxvxvxvxvxvxvxvxbDvxvxvxvxvxvxvxvxvxvxvxvxbDvxvxvxvxvxvxvxvxvxbDvxvxvxvxvxvxvxvxvxbDvxvxvxvxvxvxvxvxvxvxvxvxvxbDvxvxvxvxvxvxvxvxvxvxvxvxbDvxvxvxvxvxvxvxvxOUNeiYiYqdqdqdqdNeTxTxTxpnpnpnTxTxTxTxrZ
