@@ -12262,9 +12262,13 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/starboard)
 "lmr" = (
-/obj/structure/closet/crate/bin{
-	anchored = 1
-	},
+/obj/item/storage/box/syringes,
+/obj/item/storage/box/syringes,
+/obj/item/storage/box/syringes,
+/obj/item/storage/box/syringes,
+/obj/item/storage/box/syringes,
+/obj/structure/table/glass,
+/obj/item/storage/box/syringes,
 /turf/simulated/floor/tiled/white,
 /area/medical/cmostore)
 "lnI" = (
@@ -21908,6 +21912,7 @@
 /area/hallway/primary/aft)
 "tKa" = (
 /obj/structure/table/reinforced,
+/obj/item/storage/box/syringes,
 /turf/simulated/floor/tiled,
 /area/medical/surgery)
 "tKl" = (
@@ -22658,6 +22663,7 @@
 /area/medical/ward)
 "uyN" = (
 /obj/structure/table/reinforced,
+/obj/item/storage/box/syringes,
 /turf/simulated/floor/tiled,
 /area/medical/surgery2)
 "uyR" = (
@@ -22960,6 +22966,8 @@
 	},
 /obj/structure/table/standard,
 /obj/item/stack/nanopaste,
+/obj/item/storage/box/syringes,
+/obj/item/storage/box/syringes,
 /turf/simulated/floor/tiled/dark,
 /area/medical/medbay_emt_bay)
 "uIG" = (
