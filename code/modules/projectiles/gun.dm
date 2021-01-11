@@ -67,6 +67,7 @@
 	var/mode_name = null
 	var/projectile_type = /obj/item/projectile	//On ballistics, only used to check for the cham gun
 	var/holy = FALSE //For Divinely blessed guns
+	var/obj/item/ammo_casing/chambered = null
 
 	var/wielded_item_state
 	var/one_handed_penalty = 0 // Penalty applied if someone fires a two-handed gun with one hand.
