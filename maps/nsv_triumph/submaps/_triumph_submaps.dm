@@ -38,7 +38,7 @@
 #include "poi_d/Class_D.dmm"
 #include "poi_h/Class_H.dmm"
 #include "frozen_planet/frozen_planet.dmm"
-#include "trade_port/tradeport.dmm"
+#include "space/trade_port/tradeport.dmm"
 #endif
 
 // Debris Fields
