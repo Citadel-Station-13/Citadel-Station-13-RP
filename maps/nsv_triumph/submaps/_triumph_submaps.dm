@@ -38,6 +38,7 @@
 #include "poi_d/Class_D.dmm"
 #include "poi_h/Class_H.dmm"
 #include "frozen_planet/frozen_planet.dmm"
+#include "trade_port/tradeport.dmm"
 #endif
 
 // Debris Fields
@@ -184,6 +185,22 @@
 	name = "Away Mission - Frozen Planet"
 	z = Z_LEVEL_FROZEN_PLANET
 
+// Trade post
+#include "space/trade_port/_tradeport.dm"
+
+/datum/map_template/triumph_lateload/away_tradeport
+	name = "Away Mission - Trade Port"
+	desc = "A space gas station! Stretch your legs!"
+	mappath = 'space/trade_port/tradeport.dmm'
+	associated_map_datum = /datum/map_z_level/triumph_lateload/away_tradeport
+	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = FALSE)
+
+/datum/map_z_level/triumph_lateload/away_tradeport
+	name = "Away Mission - Trade Port"
+	z = Z_LEVEL_TRADEPORT
+
+/datum/map_template/triumph_lateload/away_tradeport/on_map_loaded(z)
+	. = ..()
 
 
 
