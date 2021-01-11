@@ -69,6 +69,7 @@
 	ahoge
 		name = "Ahoge"
 		icon_state = "hair_ahoge"
+		icon = 'icons/mob/human_face_vr.dmi'
 		icon_add = null
 
 	bald //Everyone goes bald.
@@ -661,6 +662,13 @@
 		name = "Short Hair 2"
 		icon_state = "hair_shorthair3"
 		flags = HAIR_VERY_SHORT
+
+	shortalt2
+		name = "Short Hair 2 Alt"
+		icon_state = "shorthair3a"
+		flags = HAIR_VERY_SHORT
+		icon = 'icons/mob/human_face_vr.dmi'
+		icon_add = 'icons/mob/human_face_vr_add.dmi'
 
 	short3
 		name = "Short Hair 3"
@@ -2798,6 +2806,17 @@
 		color_blend_mode = ICON_MULTIPLY
 		body_parts = list(BP_L_LEG,BP_R_LEG,BP_L_HAND,BP_R_HAND,BP_TORSO,BP_GROIN,BP_HEAD)
 		species_allowed = list(SPECIES_TESHARI)
+
+	short_snoot
+		name = "Short Snout"
+		icon_state = "shortsnoot"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_HEAD)
+
+	thirdeye
+		name = "Third Eye"
+		icon_state = "thirdeye"
+		body_parts = list(BP_HEAD)
 
 //skin styles - WIP
 //going to have to re-integrate this with surgery
