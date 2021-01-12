@@ -714,3 +714,11 @@
 
 		//Despawning occurs when process() is called with an occupant without a client.
 		add_fingerprint(M)
+
+//Disabled intercom cryo for ghost roles.
+
+/obj/machinery/cryopod/outsider
+	name = "cryogenic freezer"
+	desc = "A man-sized pod for entering suspended animation."
+
+	obj/item/radio/intercom/announce = 0

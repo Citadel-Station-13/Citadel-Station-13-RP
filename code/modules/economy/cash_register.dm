@@ -537,3 +537,9 @@
 
 /obj/machinery/cash_register/civilian
 	account_to_connect = "Civilian"
+
+/obj/machinery/cash_register/trader
+	name = "Nebula Gas Cash Register"
+	account_to_connect = "Civilian"
+	machine_id = "Nebula Gas RETAIL UNIT"
+	req_access = list(160)

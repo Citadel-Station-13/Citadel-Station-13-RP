@@ -407,9 +407,6 @@
 /obj/structure/table/steel_reinforced,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/cash_register/civilian{
-	dir = 1
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/door/blast/shutters{
 	dir = 2;
@@ -420,6 +417,10 @@
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
+	},
+/obj/machinery/cash_register/trader{
+	dir = 1;
+	req_access = list(160)
 	},
 /turf/simulated/floor/tiled/steel,
 /area/triumph_away/tradeport)
@@ -781,7 +782,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/triumph_away/tradeport/facility)
 "hi" = (
-/obj/machinery/suit_cycler/syndicate,
+/obj/machinery/suit_cycler/syndicate{
+	locked = 0;
+	req_access = list(160)
+	},
 /turf/simulated/floor/tiled/dark,
 /area/triumph_away/tradeport/engineering)
 "hj" = (
@@ -1453,6 +1457,15 @@
 "mG" = (
 /turf/simulated/floor/plating,
 /area/triumph_away/tradeport/engineering)
+"mK" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/item/radio/intercom/trader{
+	pixel_y = -25
+	},
+/turf/simulated/floor/wood,
+/area/triumph_away/tradeport/commons)
 "mL" = (
 /turf/simulated/wall,
 /area/triumph_away/tradeport/engineering)
@@ -1970,7 +1983,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "ro" = (
-/obj/machinery/cryopod,
+/obj/machinery/cryopod/outsider,
 /turf/simulated/floor/tiled/techfloor,
 /area/triumph_away/tradeport/commons)
 "rp" = (
@@ -2030,6 +2043,12 @@
 	},
 /turf/simulated/floor/tiled/old_tile/white,
 /area/triumph_away/tradeport)
+"rJ" = (
+/obj/item/radio/intercom/trader{
+	pixel_y = -25
+	},
+/turf/simulated/floor/wood,
+/area/shuttle/trade_ship/general)
 "rQ" = (
 /obj/machinery/light{
 	dir = 1
@@ -2756,6 +2775,10 @@
 /area/triumph_away/tradeport/engineering)
 "xl" = (
 /obj/machinery/camera,
+/obj/item/radio/intercom/trader{
+	dir = 1;
+	pixel_y = 25
+	},
 /turf/simulated/floor/tiled/old_tile/red,
 /area/triumph_away/tradeport)
 "xo" = (
@@ -3112,6 +3135,10 @@
 	pixel_y = -1
 	},
 /obj/item/storage/secure/briefcase,
+/obj/item/radio/intercom/trader{
+	dir = 1;
+	pixel_y = 25
+	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "Aw" = (
@@ -4165,6 +4192,10 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
+/obj/item/radio/intercom/trader{
+	dir = 4;
+	pixel_x = 25
+	},
 /turf/simulated/floor/carpet,
 /area/shuttle/trade_ship/general)
 "II" = (
@@ -4852,6 +4883,9 @@
 /obj/structure/sign/poster{
 	pixel_y = -32
 	},
+/obj/machinery/atm{
+	pixel_x = -32
+	},
 /turf/simulated/floor/tiled/old_tile/red,
 /area/triumph_away/tradeport)
 "NX" = (
@@ -5097,6 +5131,12 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/old_cargo/red,
+/area/shuttle/trade_ship/general)
+"Qc" = (
+/obj/item/radio/intercom/trader{
+	pixel_y = -25
+	},
+/turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "Qe" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -5355,6 +5395,10 @@
 /obj/machinery/computer/ship/engines{
 	dir = 1
 	},
+/obj/item/radio/intercom/trader{
+	dir = 8;
+	pixel_x = -25
+	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/cockpit)
 "SD" = (
@@ -5388,7 +5432,7 @@
 /turf/simulated/floor/plating,
 /area/triumph_away/tradeport/engineering)
 "To" = (
-/obj/machinery/cryopod{
+/obj/machinery/cryopod/outsider{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -6036,7 +6080,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/cryopod{
+/obj/machinery/cryopod/outsider{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -20062,7 +20106,7 @@ tm
 Og
 QD
 QD
-QD
+rJ
 tm
 nG
 fu
@@ -20483,7 +20527,7 @@ Rm
 Za
 wD
 xB
-Fy
+Qc
 tm
 Fo
 iS
@@ -20782,7 +20826,7 @@ VW
 by
 mP
 vx
-nK
+mK
 OK
 CI
 Uc

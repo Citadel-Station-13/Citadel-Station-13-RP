@@ -103,6 +103,17 @@
 	. = ..()
 	internal_channels[num2text(RAID_FREQ)] = list(access_syndicate)
 
+/obj/item/radio/intercom/trader
+	name = "commercial intercom"
+	desc = "Good luck finding a 'Skip Advertisements' button here."
+	frequency = TRADE_FREQ
+	subspace_transmission = 1
+	syndie = 0
+
+/obj/item/radio/intercom/trader/Initialize()
+	. = ..()
+	internal_channels[num2text(TRADE_FREQ)] = list(access_trader)
+
 /obj/item/radio/intercom/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	return ..()

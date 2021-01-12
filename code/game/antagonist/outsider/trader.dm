@@ -47,6 +47,7 @@ var/datum/antagonist/trader/traders
 	player.equip_to_slot_or_del(new /obj/item/clothing/gloves/brown(src), slot_gloves)
 	player.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses(src), slot_glasses)
 	player.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(src), slot_back)
+	player.equip_to_slot_or_del(new /obj/item/radio/headset/trader(src), slot_l_ear)
 
 	create_radio(PUB_FREQ, player) //Assume they tune their headsets into the station's public radio as they approach
 

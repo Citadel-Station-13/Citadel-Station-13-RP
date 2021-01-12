@@ -99,6 +99,16 @@
 	. = ..()
 	set_frequency(RAID_FREQ)
 
+/obj/item/radio/headset/trader
+	name = "trade headset"
+	origin_tech = list(TECH_ILLEGAL = 2)
+	syndie = 0
+	ks1type = /obj/item/encryptionkey/trader
+
+/obj/item/radio/headset/trader/Initialize()
+	. = ..()
+	set_frequency(TRADE_FREQ)
+
 /obj/item/radio/headset/binary
 	origin_tech = list(TECH_ILLEGAL = 3)
 	ks1type = /obj/item/encryptionkey/binary
