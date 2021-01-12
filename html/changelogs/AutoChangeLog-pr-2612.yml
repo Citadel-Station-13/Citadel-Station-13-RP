@@ -1,5 +1,0 @@
-author: "TheLordME"
-delete-after: True
-changes: 
-  - bugfix: "Teshari explorer can now refit their suits in exploration."
-  - bugfix: "Refitted suits no longer suggest they have their paintjobs armor and resistances and instead show their true values on examination."
