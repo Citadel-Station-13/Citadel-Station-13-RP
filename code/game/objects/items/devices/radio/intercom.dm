@@ -107,7 +107,7 @@
 	name = "commercial intercom"
 	desc = "Good luck finding a 'Skip Advertisements' button here."
 	frequency = TRADE_FREQ
-	subspace_transmission = 1
+	subspace_transmission = 0
 	syndie = 0
 
 /obj/item/radio/intercom/trader/Initialize()

@@ -151,10 +151,10 @@ var/list/radiochannels = list(
 var/list/CENT_FREQS = list(ERT_FREQ, DTH_FREQ)
 
 // Antag channels, i.e. Syndicate
-var/list/ANTAG_FREQS = list(SYND_FREQ, RAID_FREQ, TRADE_FREQ)
+var/list/ANTAG_FREQS = list(SYND_FREQ, RAID_FREQ)
 
 //Department channels, arranged lexically
-var/list/DEPT_FREQS = list(AI_FREQ, COMM_FREQ, ENG_FREQ, ENT_FREQ, MED_FREQ, SEC_FREQ, SCI_FREQ, SRV_FREQ, SUP_FREQ)
+var/list/DEPT_FREQS = list(AI_FREQ, COMM_FREQ, ENG_FREQ, ENT_FREQ, MED_FREQ, SEC_FREQ, SCI_FREQ, SRV_FREQ, SUP_FREQ, TRADE_FREQ)
 
 #define TRANSMISSION_WIRE	0
 #define TRANSMISSION_RADIO	1
@@ -189,6 +189,8 @@ var/list/DEPT_FREQS = list(AI_FREQ, COMM_FREQ, ENG_FREQ, ENT_FREQ, MED_FREQ, SEC
 		return "expradio"
 	if(frequency == ENT_FREQ) // entertainment
 		return "entradio"
+	if(frequency == TRADE_FREQ)
+		return "syndradio"
 	if(frequency in DEPT_FREQS)
 		return "deptradio"
 

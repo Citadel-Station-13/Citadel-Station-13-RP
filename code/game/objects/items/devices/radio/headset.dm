@@ -102,7 +102,8 @@
 /obj/item/radio/headset/trader
 	name = "trade headset"
 	origin_tech = list(TECH_ILLEGAL = 2)
-	syndie = 0
+	syndie = 1
+	adhoc_fallback = TRUE
 	ks1type = /obj/item/encryptionkey/trader
 
 /obj/item/radio/headset/trader/Initialize()
