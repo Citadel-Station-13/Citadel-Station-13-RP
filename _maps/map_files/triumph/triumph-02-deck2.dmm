@@ -9343,7 +9343,6 @@
 /area/hallway/primary/starboard)
 "BI" = (
 /obj/machinery/conveyor_switch/oneway{
-	convdir = -1;
 	id = "QMLoad2"
 	},
 /obj/machinery/light{
@@ -26153,12 +26152,12 @@ iM
 ai
 oE
 oE
-Ou
+oE
 LW
 oE
 Mr
 OQ
-oE
+Ou
 KT
 cp
 ii
