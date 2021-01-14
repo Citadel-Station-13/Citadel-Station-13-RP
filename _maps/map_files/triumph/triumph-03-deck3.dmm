@@ -1264,10 +1264,6 @@
 /obj/structure/bed/chair/office/dark,
 /turf/simulated/floor/tiled/white,
 /area/medical/biostorage)
-"bkV" = (
-/obj/machinery/organ_printer/flesh,
-/turf/simulated/floor/tiled/white,
-/area/medical/surgeryprep)
 "blh" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -3112,6 +3108,7 @@
 /obj/item/storage/box/gloves{
 	pixel_x = 6
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "cXI" = (
@@ -3734,7 +3731,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/research)
 "dCf" = (
-/obj/structure/closet/secure_closet/personal/patient,
+/obj/machinery/organ_printer/flesh,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "dCC" = (
@@ -4752,10 +4749,10 @@
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/assembly/robotics)
 "euR" = (
-/obj/structure/closet/secure_closet/personal/patient,
 /obj/machinery/alarm{
 	pixel_y = 22
 	},
+/obj/machinery/organ_printer/flesh,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "euX" = (
@@ -5662,6 +5659,11 @@
 /obj/machinery/alarm{
 	pixel_y = 22
 	},
+/obj/structure/closet/secure_closet/medical3{
+	name = "surgeon's locker"
+	},
+/obj/item/clothing/head/surgery,
+/obj/item/clothing/under/rank/medical/scrubs,
 /turf/simulated/floor/tiled/white,
 /area/medical/biostorage)
 "fpS" = (
@@ -6006,9 +6008,6 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
@@ -7806,10 +7805,8 @@
 /turf/simulated/floor/plating,
 /area/rnd/research_foyer_auxiliary)
 "hlY" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment,
+/obj/structure/disposalpipe/trunk,
+/obj/machinery/disposal,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "hnC" = (
@@ -9164,6 +9161,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "iIA" = (
@@ -10672,12 +10670,21 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/ward)
 "kjn" = (
-/obj/machinery/light{
-	dir = 8;
-	light_range = 12
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
-/obj/structure/disposalpipe/trunk,
-/obj/machinery/disposal,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "kjq" = (
@@ -12032,14 +12039,17 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
 "lGN" = (
-/obj/structure/closet/secure_closet/medical3{
-	name = "surgeon's locker"
-	},
-/obj/item/clothing/under/rank/medical/scrubs,
-/obj/item/clothing/head/surgery,
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/structure/closet/secure_closet/medical_wall{
+	name = "O- Blood Locker";
+	pixel_x = 32
+	},
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "lHd" = (
@@ -12492,11 +12502,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
 "mds" = (
-/obj/structure/closet/secure_closet/medical3{
-	name = "surgeon's locker"
-	},
-/obj/item/clothing/under/rank/medical/scrubs,
-/obj/item/clothing/head/surgery,
 /obj/machinery/camera/network/medbay{
 	dir = 8
 	},
@@ -13887,11 +13892,7 @@
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
 "nmZ" = (
-/obj/structure/closet/secure_closet/medical3{
-	name = "surgeon's locker"
-	},
-/obj/item/clothing/under/rank/medical/scrubs,
-/obj/item/clothing/head/surgery,
+/obj/structure/closet/secure_closet/personal/patient,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "nnm" = (
@@ -19803,19 +19804,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery_hallway)
-"sre" = (
-/obj/structure/closet/secure_closet/medical_wall{
-	name = "O- Blood Locker";
-	pixel_x = -32
-	},
-/obj/structure/table/steel_reinforced,
-/obj/item/reagent_containers/blood/OMinus,
-/obj/item/reagent_containers/blood/OMinus,
-/obj/item/reagent_containers/blood/OMinus,
-/obj/item/reagent_containers/blood/OMinus,
-/obj/item/reagent_containers/blood/OMinus,
-/turf/simulated/floor/tiled/white,
-/area/medical/surgeryprep)
 "ssO" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
@@ -19852,10 +19840,6 @@
 /area/medical/morgue)
 "suN" = (
 /obj/machinery/body_scanconsole,
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "suR" = (
@@ -21222,6 +21206,9 @@
 /area/hallway/primary/port)
 "tuB" = (
 /obj/structure/table/steel_reinforced,
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -37
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/biostorage)
 "tuC" = (
@@ -22362,9 +22349,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
@@ -23759,10 +23743,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/teleporter/departing)
-"vOq" = (
-/obj/structure/disposalpipe/segment,
-/turf/simulated/floor/tiled/white,
-/area/medical/surgeryprep)
 "vOF" = (
 /obj/structure/cable/green,
 /obj/machinery/light{
@@ -26064,6 +26044,11 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "xSQ" = (
+/obj/structure/closet/secure_closet/medical3{
+	name = "surgeon's locker"
+	},
+/obj/item/clothing/under/rank/medical/scrubs,
+/obj/item/clothing/head/surgery,
 /turf/simulated/floor/tiled/white,
 /area/medical/biostorage)
 "xTr" = (
@@ -26105,6 +26090,11 @@
 	name = "north bump";
 	pixel_y = 24
 	},
+/obj/structure/closet/secure_closet/medical3{
+	name = "surgeon's locker"
+	},
+/obj/item/clothing/head/surgery,
+/obj/item/clothing/under/rank/medical/scrubs,
 /turf/simulated/floor/tiled/white,
 /area/medical/biostorage)
 "xUD" = (
@@ -33813,10 +33803,10 @@ oBY
 fWR
 kEf
 kpH
-sre
-kjn
-hlY
-vOq
+bKW
+cvy
+kpH
+bKW
 suN
 dOD
 kIT
@@ -34239,11 +34229,11 @@ oBY
 nmZ
 mds
 lGN
-bkV
-bkV
+nmZ
+hlY
 iIp
 cXA
-fFt
+kjn
 bKW
 kIT
 yhl
