@@ -4,10 +4,11 @@
 /turf/simulated/floor/wood,
 /area/triumph_away/tradeport/commons)
 "af" = (
-/obj/structure/cable/yellow{
-	dir = 1
+/obj/structure/cable/green{
+	d2 = 2;
+	icon_state = "0-2"
 	},
-/obj/machinery/power/solar_control,
+/obj/machinery/power/solar_control/autostart,
 /turf/simulated/floor/tiled/dark,
 /area/triumph_away/tradeport/engineering)
 "ak" = (
@@ -50,6 +51,11 @@
 /obj/item/clothing/suit/space/void/merc,
 /obj/item/clothing/head/helmet/space/void/merc,
 /obj/item/tank/oxygen,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/triumph_away/tradeport/engineering)
 "aA" = (
@@ -74,7 +80,8 @@
 /obj/machinery/atmospherics/pipe/cap/hidden{
 	dir = 4
 	},
-/turf/simulated/shuttle/floor/darkred/airless,
+/obj/structure/catwalk,
+/turf/simulated/floor/airless,
 /area/triumph_away/tradeport/pads)
 "aQ" = (
 /obj/structure/window/reinforced,
@@ -226,6 +233,16 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
+"cQ" = (
+/obj/machinery/airlock_sensor/airlock_exterior/shuttle{
+	frequency = 8018;
+	id_tag = "beru_ex_sensor";
+	master_tag = "tradeport_hangar_docker";
+	pixel_x = -8;
+	pixel_y = -10
+	},
+/turf/simulated/shuttle/wall/voidcraft,
+/area/shuttle/trade_ship/general)
 "cT" = (
 /obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/tiled/old_tile/blue,
@@ -260,11 +277,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
 /obj/structure/cable/yellow,
+/obj/machinery/power/apc/alarms_hidden{
+	pixel_y = -28;
+	req_access = list(160)
+	},
 /turf/simulated/floor/plating,
 /area/triumph_away/tradeport/engineering)
 "cZ" = (
@@ -277,13 +294,26 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/machinery/alarm{
-	pixel_y = 22
+/obj/machinery/alarm/alarms_hidden{
+	pixel_y = 22;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/old_tile/white,
 /area/triumph_away/tradeport)
 "dd" = (
 /obj/machinery/suit_cycler/syndicate,
+/obj/machinery/airlock_sensor/airlock_interior{
+	frequency = 8018;
+	id_tag = "beru_int_sensor";
+	master_tag = "tradeport_hangar_docker";
+	pixel_x = 25;
+	pixel_y = 5
+	},
+/obj/structure/cable/yellow{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "de" = (
@@ -345,13 +375,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/trade_ship/general)
-"dK" = (
-/obj/machinery/power/solar,
-/obj/structure/cable/yellow{
-	dir = 4
-	},
-/turf/simulated/floor/airless,
-/area/space)
 "dL" = (
 /obj/machinery/gibber,
 /turf/simulated/floor/tiled/freezer,
@@ -425,6 +448,11 @@
 /obj/item/clothing/head/helmet/space/void/merc,
 /obj/item/clothing/head/helmet/space/void/merc,
 /obj/item/clothing/head/helmet/space/void/merc,
+/obj/structure/cable/yellow{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "eo" = (
@@ -433,6 +461,24 @@
 	},
 /turf/simulated/shuttle/wall/voidcraft,
 /area/shuttle/trade_ship/general)
+"ep" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/airless,
+/area/space)
 "er" = (
 /obj/item/stool/padded,
 /turf/simulated/floor/carpet/bcarpet,
@@ -563,7 +609,7 @@
 /obj/machinery/door/firedoor{
 	req_one_access = list(160)
 	},
-/obj/structure/cable/yellow{
+/obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
@@ -574,9 +620,10 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/machinery/alarm{
+/obj/machinery/alarm/alarms_hidden{
 	dir = 8;
-	pixel_x = 25
+	pixel_x = 22;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/carpet,
 /area/shuttle/trade_ship/general)
@@ -678,9 +725,10 @@
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/trade_ship/general)
 "gq" = (
-/obj/machinery/alarm{
+/obj/machinery/alarm/alarms_hidden{
 	dir = 1;
-	pixel_y = -22
+	pixel_y = -22;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
@@ -693,18 +741,20 @@
 /obj/structure/closet/walllocker/emerglocker{
 	pixel_y = -32
 	},
-/obj/machinery/alarm{
+/obj/machinery/alarm/alarms_hidden{
 	dir = 8;
-	pixel_x = 25
+	pixel_x = 22;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "gB" = (
 /obj/structure/table/woodentable,
 /obj/item/modular_computer/laptop,
-/obj/machinery/alarm{
+/obj/machinery/alarm/alarms_hidden{
 	dir = 8;
-	pixel_x = 25
+	pixel_x = 22;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/shuttle/trade_ship/general)
@@ -723,13 +773,12 @@
 /turf/simulated/floor/tiled/neutral,
 /area/triumph_away/tradeport/facility)
 "gI" = (
-/obj/machinery/power/smes/buildable/main{
-	capacity = 9e+007;
-	charge = 9e+007;
-	lastcharge = 9e+007;
-	name = "heavy duty smes"
-	},
 /obj/structure/cable/yellow,
+/obj/machinery/power/smes/buildable{
+	charge = 1.5e+007;
+	cur_coils = 3;
+	input_attempt = 1
+	},
 /turf/simulated/floor/plating,
 /area/triumph_away/tradeport/engineering)
 "gM" = (
@@ -831,9 +880,10 @@
 /obj/item/pen{
 	pixel_y = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/alarm/alarms_hidden{
 	dir = 8;
-	pixel_x = 25
+	pixel_x = 22;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/cockpit)
@@ -855,12 +905,12 @@
 /turf/simulated/floor/plating,
 /area/triumph_away/tradeport/facility)
 "io" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
 /obj/structure/cable/yellow,
-/turf/simulated/shuttle/floor/darkred/airless,
+/obj/machinery/power/apc/alarms_hidden{
+	pixel_y = -28;
+	req_access = list(160)
+	},
+/turf/simulated/floor/reinforced/airless,
 /area/triumph_away/tradeport/pads)
 "ip" = (
 /obj/structure/bed/chair,
@@ -913,7 +963,7 @@
 	name = "Pump One"
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/floor/darkred/airless,
+/turf/simulated/floor/airless,
 /area/triumph_away/tradeport/pads)
 "iF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -934,15 +984,6 @@
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/plating,
 /area/triumph_away/tradeport/facility)
-"iH" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/turf/simulated/floor/tiled/old_cargo/red,
-/area/shuttle/trade_ship/general)
 "iK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -978,13 +1019,21 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
+"iX" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/triumph_away/tradeport/engineering)
 "iY" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "jb" = (
@@ -992,6 +1041,15 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
+/area/shuttle/trade_ship/general)
+"jm" = (
+/obj/machinery/door/airlock/multi_tile/glass,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/old_cargo/red,
 /area/shuttle/trade_ship/general)
 "jn" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -1049,14 +1107,15 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/alarm{
-	dir = 1;
-	pixel_y = -22
-	},
 /obj/structure/cable/yellow{
 	d1 = 1;
 	d2 = 4;
 	icon_state = "1-4"
+	},
+/obj/machinery/alarm/alarms_hidden{
+	dir = 1;
+	pixel_y = -22;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/triumph_away/tradeport/dock)
@@ -1064,14 +1123,10 @@
 /obj/structure/closet/walllocker/emerglocker{
 	pixel_y = 32
 	},
-/obj/machinery/alarm{
+/obj/machinery/alarm/alarms_hidden{
 	dir = 8;
-	pixel_x = 25
-	},
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
+	pixel_x = 22;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
@@ -1085,6 +1140,14 @@
 /obj/machinery/computer/arcade/orion_trail,
 /turf/simulated/floor/carpet/bcarpet,
 /area/triumph_away/tradeport/commons)
+"kv" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/tiled/old_cargo/red,
+/area/shuttle/trade_ship/general)
 "kx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -1184,6 +1247,19 @@
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/triumph_away/tradeport/facility)
+"kS" = (
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/airless,
+/area/space)
 "kV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -1213,14 +1289,19 @@
 /obj/machinery/washing_machine,
 /turf/simulated/shuttle/floor/white,
 /area/triumph_away/tradeport/commons)
-"ln" = (
-/obj/structure/cable/yellow{
-	d1 = 2;
+"ll" = (
+/obj/structure/cable/green{
+	d1 = 1;
 	d2 = 8;
-	icon_state = "2-8"
+	icon_state = "1-8"
 	},
-/turf/simulated/floor/tiled/old_cargo/red,
-/area/shuttle/trade_ship/general)
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/airless,
+/area/space)
 "lo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -1232,14 +1313,6 @@
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/triumph_away/tradeport/facility)
-"lp" = (
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/airless,
-/area/space)
 "lq" = (
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	cycle_to_external_air = null;
@@ -1270,10 +1343,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/structure/cable/yellow{
+/obj/structure/cable/green{
 	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
@@ -1285,9 +1358,15 @@
 /obj/item/stack/material/glass{
 	amount = 15
 	},
-/obj/machinery/alarm{
+/obj/machinery/alarm/alarms_hidden{
 	dir = 1;
-	pixel_y = -22
+	pixel_y = -22;
+	req_one_access = list(160)
+	},
+/obj/structure/cable/yellow{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
@@ -1524,17 +1603,16 @@
 /turf/simulated/floor/reinforced/airless,
 /area/triumph_away/tradeport/pads)
 "nw" = (
-/obj/machinery/power/smes/buildable/main{
-	capacity = 9e+007;
-	charge = 9e+007;
-	lastcharge = 9e+007;
-	name = "heavy duty smes"
-	},
 /obj/structure/cable/yellow,
 /obj/structure/cable/yellow{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
+	},
+/obj/machinery/power/smes/buildable{
+	charge = 1.5e+007;
+	cur_coils = 3;
+	input_attempt = 1
 	},
 /turf/simulated/floor/plating,
 /area/triumph_away/tradeport/engineering)
@@ -1561,6 +1639,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/triumph_away/tradeport/commons)
+"nM" = (
+/obj/structure/railing,
+/turf/simulated/mineral/floor/vacuum,
+/area/space)
 "nR" = (
 /obj/machinery/computer/arcade/battle,
 /obj/machinery/light{
@@ -1574,14 +1656,6 @@
 	},
 /turf/space,
 /area/triumph_away/tradeport/space)
-"nZ" = (
-/obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/cockpit)
 "oe" = (
 /obj/structure/sign/atmos_plasma{
 	desc = "WARNING! Plasma flow tube nearby.";
@@ -1626,6 +1700,17 @@
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/triumph_away/tradeport)
+"os" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/trade_ship/general)
 "ou" = (
 /obj/machinery/light{
 	dir = 4
@@ -1647,24 +1732,29 @@
 /turf/simulated/shuttle/floor/white,
 /area/triumph_away/tradeport/commons)
 "ox" = (
-/obj/machinery/alarm{
-	dir = 4;
-	pixel_x = -22
-	},
 /obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/machinery/alarm/alarms_hidden{
+	dir = 4;
+	pixel_x = -22;
+	req_one_access = list(160)
+	},
 /turf/simulated/floor/tiled/dark,
 /area/triumph_away/tradeport/engineering)
 "oy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
 	},
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
+"oz" = (
+/obj/machinery/atmospherics/pipe/simple/visible/red{
+	dir = 4
+	},
+/obj/machinery/light/small/flicker{
+	dir = 1
+	},
+/turf/simulated/mineral/floor/vacuum,
+/area/triumph_away/tradeport/engineering)
 "oB" = (
 /obj/machinery/door/window/southleft{
 	name = "Cargo Hold";
@@ -1737,7 +1827,7 @@
 	dir = 1
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/floor/darkred/airless,
+/turf/simulated/floor/airless,
 /area/triumph_away/tradeport/pads)
 "oY" = (
 /obj/structure/table/rack,
@@ -1750,14 +1840,6 @@
 /obj/item/kit/paint/ripley,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
-"pa" = (
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/cockpit)
 "pg" = (
 /obj/structure/sign/poster{
 	pixel_y = -32
@@ -1766,7 +1848,8 @@
 /area/triumph_away/tradeport/commons)
 "pn" = (
 /obj/effect/shuttle_landmark/triumph/trade/civvie,
-/turf/simulated/shuttle/floor/darkred/airless,
+/obj/structure/catwalk,
+/turf/simulated/floor/airless,
 /area/triumph_away/tradeport/pads)
 "pp" = (
 /obj/machinery/portable_atmospherics/canister/phoron,
@@ -1801,17 +1884,14 @@
 	},
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/triumph_away/tradeport)
-"pK" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
-/obj/structure/cable/yellow{
+"pJ" = (
+/obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
+/turf/simulated/floor/airless,
+/area/space)
 "pM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -1859,11 +1939,12 @@
 /area/shuttle/trade_ship/general)
 "qf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/alarm{
-	dir = 8;
-	pixel_x = 25
-	},
 /obj/machinery/meter,
+/obj/machinery/alarm/alarms_hidden{
+	dir = 8;
+	pixel_x = 22;
+	req_one_access = list(160)
+	},
 /turf/simulated/floor/plating,
 /area/triumph_away/tradeport/facility)
 "qg" = (
@@ -2002,14 +2083,6 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/triumph_away/tradeport/pads)
-"rA" = (
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "rG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -2039,6 +2112,21 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/triumph_away/tradeport/dock)
+"rS" = (
+/obj/machinery/power/port_gen/pacman{
+	anchored = 1
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/structure/cable/green{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/trade_ship/general)
 "rT" = (
 /obj/structure/filingcabinet/filingcabinet,
 /turf/simulated/floor/wood,
@@ -2102,11 +2190,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
 	},
-/obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
 /turf/simulated/floor/tiled/dark,
 /area/triumph_away/tradeport/engineering)
 "sr" = (
@@ -2138,7 +2221,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/shuttle/floor/darkred/airless,
+/turf/simulated/floor/reinforced/airless,
 /area/triumph_away/tradeport/pads)
 "sK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -2213,9 +2296,9 @@
 	name = "Trader"
 	},
 /obj/structure/cable/yellow,
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
+/obj/machinery/power/apc/alarms_hidden{
+	pixel_y = -28;
+	req_access = list(160)
 	},
 /turf/simulated/floor/carpet,
 /area/triumph_away/tradeport/commons)
@@ -2228,7 +2311,8 @@
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/triumph_away/tradeport/pads)
 "tu" = (
-/turf/simulated/shuttle/floor/darkred/airless,
+/obj/structure/catwalk,
+/turf/simulated/floor/airless,
 /area/triumph_away/tradeport/pads)
 "ty" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -2257,9 +2341,10 @@
 /turf/simulated/floor/tiled/steel,
 /area/triumph_away/tradeport)
 "tU" = (
-/obj/machinery/alarm{
+/obj/machinery/alarm/alarms_hidden{
 	dir = 8;
-	pixel_x = 25
+	pixel_x = 22;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/triumph_away/tradeport/facility)
@@ -2300,7 +2385,7 @@
 /obj/machinery/camera{
 	dir = 8
 	},
-/turf/simulated/shuttle/floor/darkred/airless,
+/turf/simulated/floor/reinforced/airless,
 /area/triumph_away/tradeport/pads)
 "up" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -2309,8 +2394,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/alarm{
-	pixel_y = 22
+/obj/machinery/alarm/alarms_hidden{
+	pixel_y = 22;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/steel,
 /area/triumph_away/tradeport)
@@ -2346,6 +2432,11 @@
 /obj/item/clothing/gloves/yellow,
 /obj/item/clothing/gloves/yellow,
 /obj/item/clothing/gloves/yellow,
+/obj/structure/cable/yellow{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "uE" = (
@@ -2381,7 +2472,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/turf/simulated/shuttle/floor/darkred/airless,
+/turf/simulated/floor/reinforced/airless,
 /area/triumph_away/tradeport/pads)
 "uR" = (
 /obj/machinery/door/airlock/glass_external{
@@ -2390,13 +2481,6 @@
 	id_tag = "beru_inner";
 	locked = 1;
 	name = "Ship Hatch"
-	},
-/obj/machinery/airlock_sensor/airlock_interior{
-	frequency = 8018;
-	id_tag = "beru_int_sensor";
-	master_tag = "tradeport_hangar_docker";
-	pixel_x = 25;
-	pixel_y = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/visible,
 /obj/structure/cable/yellow{
@@ -2413,13 +2497,6 @@
 	id_tag = "beru_outer";
 	locked = 1;
 	name = "Ship Hatch"
-	},
-/obj/machinery/airlock_sensor/airlock_exterior/shuttle{
-	frequency = 8018;
-	id_tag = "beru_ex_sensor";
-	master_tag = "tradeport_hangar_docker";
-	pixel_x = -25;
-	pixel_y = -10
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
@@ -2440,11 +2517,12 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "vc" = (
-/obj/machinery/alarm{
+/obj/machinery/alarm/alarms_hidden{
 	dir = 1;
-	pixel_y = -22
+	pixel_y = -22;
+	req_one_access = list(160)
 	},
-/obj/structure/cable/yellow{
+/obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
@@ -2517,7 +2595,7 @@
 	name = "Pump 3"
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/floor/darkred/airless,
+/turf/simulated/floor/airless,
 /area/triumph_away/tradeport/pads)
 "vC" = (
 /obj/structure/table/rack/shelf/steel,
@@ -2530,7 +2608,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
 	},
-/obj/structure/cable/yellow{
+/obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
@@ -2539,15 +2617,10 @@
 /area/triumph_away/tradeport/engineering)
 "vL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/structure/cable/yellow{
-	d1 = 2;
+/obj/structure/cable/green{
+	d1 = 4;
 	d2 = 8;
-	icon_state = "2-8"
-	},
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
@@ -2565,20 +2638,20 @@
 /turf/space,
 /area/triumph_away/tradeport/space)
 "vV" = (
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/cable/yellow{
+/obj/structure/cable/green{
 	d1 = 2;
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/obj/structure/cable/yellow{
+/obj/structure/cable/green{
 	d1 = 1;
 	d2 = 4;
 	icon_state = "1-4"
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/airless,
 /area/space)
@@ -2639,7 +2712,7 @@
 /obj/machinery/door/firedoor{
 	req_one_access = list(160)
 	},
-/obj/structure/cable/yellow{
+/obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
@@ -2653,23 +2726,16 @@
 /area/shuttle/trade_ship/general)
 "wq" = (
 /obj/structure/closet/crate,
-/obj/machinery/alarm{
+/obj/machinery/alarm/alarms_hidden{
 	dir = 8;
-	pixel_x = 25
+	pixel_x = 22;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/triumph_away/tradeport/facility)
 "ww" = (
 /obj/machinery/light{
 	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
-"wB" = (
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
@@ -2743,12 +2809,10 @@
 /obj/machinery/power/terminal{
 	dir = 4
 	},
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
+/obj/structure/cable/green{
+	d2 = 8;
+	icon_state = "0-8"
 	},
-/obj/structure/cable/yellow,
 /turf/simulated/floor/plating,
 /area/triumph_away/tradeport/engineering)
 "xl" = (
@@ -2763,21 +2827,22 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/triumph_away/tradeport/engineering)
 "xq" = (
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/alarm/alarms_hidden{
 	dir = 8;
-	pixel_x = 25
+	pixel_x = 22;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/triumph_away/tradeport)
@@ -2790,7 +2855,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/triumph_away/tradeport/pads)
 "xB" = (
-/obj/structure/cable/yellow{
+/obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
@@ -2822,7 +2887,7 @@
 /area/triumph_away/tradeport/facility)
 "xM" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
-/turf/simulated/shuttle/floor/darkred/airless,
+/turf/simulated/floor/reinforced/airless,
 /area/triumph_away/tradeport/pads)
 "xN" = (
 /obj/structure/table/steel_reinforced,
@@ -2843,11 +2908,14 @@
 /turf/space,
 /area/triumph_away/tradeport/space)
 "yc" = (
-/obj/machinery/power/apc/super{
+/obj/machinery/power/apc/alarms_hidden{
 	pixel_y = -28;
 	req_access = list(160)
 	},
-/obj/structure/cable/yellow,
+/obj/structure/cable/green{
+	d2 = 8;
+	icon_state = "0-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "yd" = (
@@ -2979,23 +3047,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/triumph_away/tradeport/facility)
 "zz" = (
-/obj/machinery/power/terminal{
-	dir = 1
-	},
-/obj/structure/cable/yellow{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
-"zE" = (
-/obj/structure/cable/yellow{
-	dir = 4
-	},
-/obj/machinery/power/smes/buildable/main{
-	capacity = 9e+007;
-	charge = 9e+007;
-	lastcharge = 9e+007;
-	name = "heavy duty smes"
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
@@ -3063,8 +3118,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/triumph_away/tradeport/facility)
 "zX" = (
-/obj/machinery/alarm{
-	pixel_y = 22
+/obj/machinery/alarm/alarms_hidden{
+	pixel_y = 22;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/plating,
 /area/triumph_away/tradeport/facility)
@@ -3091,6 +3147,14 @@
 	},
 /turf/simulated/floor/tiled/old_tile/red,
 /area/triumph_away/tradeport)
+"Ap" = (
+/obj/structure/cable/green{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/power/solar,
+/turf/simulated/floor/airless,
+/area/space)
 "As" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/shuttle/wall/voidcraft,
@@ -3114,11 +3178,14 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "Aw" = (
-/obj/machinery/power/apc/super{
+/obj/machinery/power/apc/alarms_hidden{
 	pixel_y = -28;
 	req_access = list(160)
 	},
-/obj/structure/cable/yellow,
+/obj/structure/cable/green{
+	d2 = 4;
+	icon_state = "0-4"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/cockpit)
 "Az" = (
@@ -3148,6 +3215,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/triumph_away/tradeport/dock)
+"AI" = (
+/obj/structure/catwalk,
+/turf/simulated/mineral/floor/vacuum,
+/area/space)
 "AK" = (
 /obj/structure/urinal,
 /turf/simulated/wall/r_wall,
@@ -3239,7 +3310,7 @@
 	dir = 4
 	},
 /obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/structure/cable/yellow{
+/obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
@@ -3261,20 +3332,20 @@
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/trade_ship/cockpit)
 "Bm" = (
-/obj/structure/cable/yellow{
+/obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/obj/structure/cable/yellow{
+/obj/structure/cable/green{
 	d1 = 1;
 	d2 = 4;
 	icon_state = "1-4"
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/airless,
 /area/space)
@@ -3285,15 +3356,15 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/obj/structure/cable/yellow{
+/obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/triumph_away/tradeport/engineering)
@@ -3344,9 +3415,10 @@
 "BP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/alarm{
+/obj/machinery/alarm/alarms_hidden{
 	dir = 4;
-	pixel_x = -22
+	pixel_x = -22;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/triumph_away/tradeport)
@@ -3359,6 +3431,19 @@
 /obj/item/soap/deluxe,
 /turf/simulated/shuttle/floor/white,
 /area/triumph_away/tradeport/commons)
+"Ch" = (
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/tiled/old_cargo/red,
+/area/shuttle/trade_ship/general)
 "Ci" = (
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
@@ -3374,12 +3459,21 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/triumph_away/tradeport/dock)
 "Cm" = (
-/obj/machinery/alarm{
+/obj/machinery/alarm/alarms_hidden{
 	dir = 8;
-	pixel_x = 25
+	pixel_x = 22;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/triumph_away/tradeport/facility)
+"Cq" = (
+/obj/machinery/power/tracker,
+/obj/structure/cable/green{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/airless,
+/area/space)
 "Cr" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 9
@@ -3450,15 +3544,15 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "Db" = (
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/obj/structure/cable/yellow{
+/obj/structure/cable/green{
 	d1 = 1;
 	d2 = 4;
 	icon_state = "1-4"
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/airless,
 /area/space)
@@ -3545,7 +3639,7 @@
 "DB" = (
 /obj/machinery/light,
 /obj/structure/catwalk,
-/turf/simulated/shuttle/floor/darkred/airless,
+/turf/simulated/floor/airless,
 /area/triumph_away/tradeport/pads)
 "DE" = (
 /obj/structure/closet/wardrobe/pjs,
@@ -3557,9 +3651,10 @@
 	dir = 9
 	},
 /obj/machinery/light,
-/obj/machinery/alarm{
+/obj/machinery/alarm/alarms_hidden{
 	dir = 1;
-	pixel_y = -22
+	pixel_y = -22;
+	req_one_access = list(160)
 	},
 /turf/simulated/shuttle/floor/white,
 /area/triumph_away/tradeport/commons)
@@ -3637,6 +3732,19 @@
 	},
 /turf/simulated/mineral/floor/vacuum,
 /area/triumph_away/tradeport/engineering)
+"Ek" = (
+/obj/machinery/door/airlock/glass_engineering{
+	name = "Engineering";
+	req_access = list(160);
+	req_one_access = null
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/trade_ship/general)
 "En" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
@@ -3647,7 +3755,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/structure/cable/yellow{
+/obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
@@ -3753,7 +3861,7 @@
 /area/triumph_away/tradeport/commons)
 "Ft" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/turf/simulated/shuttle/floor/darkred/airless,
+/turf/simulated/floor/reinforced/airless,
 /area/triumph_away/tradeport/pads)
 "Fv" = (
 /obj/machinery/door/blast/shutters{
@@ -3782,7 +3890,7 @@
 	name = "Pump Two"
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/floor/darkred/airless,
+/turf/simulated/floor/airless,
 /area/triumph_away/tradeport/pads)
 "FB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -3796,17 +3904,11 @@
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/triumph_away/tradeport)
-"FK" = (
-/obj/machinery/power/solar,
-/obj/structure/cable/yellow{
-	dir = 8
-	},
-/turf/simulated/floor/airless,
-/area/space)
 "FM" = (
-/obj/machinery/alarm{
+/obj/machinery/alarm/alarms_hidden{
 	dir = 4;
-	pixel_x = -22
+	pixel_x = -22;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/wood,
 /area/triumph_away/tradeport/commons)
@@ -3895,19 +3997,6 @@
 	opacity = 0
 	},
 /turf/simulated/floor/tiled/old_cargo/red,
-/area/shuttle/trade_ship/general)
-"GA" = (
-/obj/machinery/door/airlock/glass_engineering{
-	name = "Engineering";
-	req_access = list(160);
-	req_one_access = null
-	},
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "GB" = (
 /obj/structure/table/steel_reinforced,
@@ -4035,7 +4124,7 @@
 	dir = 1
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/floor/darkred/airless,
+/turf/simulated/floor/airless,
 /area/triumph_away/tradeport/pads)
 "HH" = (
 /obj/away_mission_init/tradeport,
@@ -4184,7 +4273,7 @@
 /obj/machinery/atmospherics/pipe/cap/hidden{
 	dir = 1
 	},
-/turf/simulated/shuttle/floor/darkred/airless,
+/turf/simulated/floor/reinforced/airless,
 /area/triumph_away/tradeport/pads)
 "IR" = (
 /obj/machinery/light{
@@ -4202,6 +4291,14 @@
 "IZ" = (
 /turf/simulated/floor/carpet,
 /area/triumph_away/tradeport/commons)
+"Jc" = (
+/obj/structure/cable/green{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/obj/machinery/power/solar,
+/turf/simulated/floor/airless,
+/area/space)
 "Jf" = (
 /obj/machinery/door/firedoor/multi_tile{
 	req_one_access = list(160)
@@ -4304,20 +4401,6 @@
 	},
 /turf/simulated/shuttle/wall/voidcraft,
 /area/shuttle/trade_ship/general)
-"Ke" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "Kg" = (
 /obj/effect/shuttle_landmark/triumph/trade/mining,
 /turf/simulated/floor/reinforced/airless,
@@ -4374,9 +4457,9 @@
 	dir = 4
 	},
 /obj/structure/cable/yellow,
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
+/obj/machinery/power/apc/alarms_hidden{
+	pixel_y = -28;
+	req_access = list(160)
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/triumph_away/tradeport/dock)
@@ -4454,11 +4537,11 @@
 /turf/simulated/floor/plating,
 /area/triumph_away/tradeport/engineering)
 "Lp" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
 /obj/structure/cable/yellow,
+/obj/machinery/power/apc/alarms_hidden{
+	pixel_y = -28;
+	req_access = list(160)
+	},
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/triumph_away/tradeport)
 "Lu" = (
@@ -4477,7 +4560,8 @@
 /obj/machinery/atmospherics/pipe/cap/hidden{
 	dir = 8
 	},
-/turf/simulated/shuttle/floor/darkred/airless,
+/obj/structure/catwalk,
+/turf/simulated/floor/airless,
 /area/triumph_away/tradeport/pads)
 "LB" = (
 /obj/structure/window/reinforced,
@@ -4537,12 +4621,6 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/power/smes/buildable/main{
-	capacity = 9e+007;
-	charge = 9e+007;
-	lastcharge = 9e+007;
-	name = "heavy duty smes"
-	},
 /obj/structure/cable/yellow{
 	d1 = 1;
 	d2 = 2;
@@ -4551,6 +4629,11 @@
 /obj/structure/cable/yellow,
 /obj/structure/window/reinforced{
 	dir = 1
+	},
+/obj/machinery/power/smes/buildable{
+	charge = 1.5e+007;
+	cur_coils = 3;
+	input_attempt = 1
 	},
 /turf/simulated/floor/plating,
 /area/triumph_away/tradeport/engineering)
@@ -4570,17 +4653,12 @@
 /obj/machinery/power/terminal{
 	dir = 4
 	},
-/obj/structure/cable/yellow,
+/obj/structure/cable/green{
+	d2 = 8;
+	icon_state = "0-8"
+	},
 /turf/simulated/floor/plating,
 /area/triumph_away/tradeport/engineering)
-"Mm" = (
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
-/area/shuttle/trade_ship/general)
 "Mn" = (
 /obj/machinery/door/airlock/silver{
 	name = "Cyborgs"
@@ -4693,26 +4771,13 @@
 /area/triumph_away/tradeport)
 "MY" = (
 /obj/effect/shuttle_landmark/triumph/trade/medical,
-/turf/simulated/shuttle/floor/darkred/airless,
+/obj/structure/catwalk,
+/turf/simulated/floor/airless,
 /area/triumph_away/tradeport/pads)
 "Nd" = (
 /obj/structure/table/standard,
 /obj/machinery/chemical_dispenser/bar_alc/full,
 /turf/simulated/floor/tiled/old_tile/gray,
-/area/shuttle/trade_ship/general)
-"Nf" = (
-/obj/structure/cable/yellow{
-	dir = 4
-	},
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/power/port_gen/pacman{
-	anchored = 1
-	},
-/turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "No" = (
 /obj/structure/table/rack/shelf/steel,
@@ -4736,9 +4801,27 @@
 "Nt" = (
 /turf/simulated/wall,
 /area/triumph_away/tradeport)
+"Nx" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/trade_ship/general)
 "NA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/triumph_away/tradeport/engineering)
@@ -4798,6 +4881,11 @@
 	name = "Shop Shutters";
 	opacity = 0
 	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "NM" = (
@@ -4832,7 +4920,7 @@
 	name = "Pump Four"
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/floor/darkred/airless,
+/turf/simulated/floor/airless,
 /area/triumph_away/tradeport/pads)
 "NP" = (
 /obj/machinery/door/firedoor,
@@ -4866,14 +4954,18 @@
 	},
 /turf/simulated/floor/tiled/old_tile/white,
 /area/triumph_away/tradeport)
-"Ob" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
+"Oa" = (
+/obj/structure/cable/green{
+	d2 = 4;
+	icon_state = "0-4"
 	},
-/turf/simulated/shuttle/wall/voidcraft,
+/obj/machinery/power/smes/buildable{
+	capacity = 1.5e+007;
+	charge = 1.5e+007;
+	cur_coils = 3;
+	input_attempt = 1
+	},
+/turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "Od" = (
 /obj/structure/closet/jcloset,
@@ -4966,9 +5058,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/obj/machinery/alarm{
+/obj/machinery/alarm/alarms_hidden{
 	dir = 1;
-	pixel_y = -22
+	pixel_y = -22;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/plating,
 /area/triumph_away/tradeport/engineering)
@@ -4978,13 +5071,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/triumph_away/tradeport/facility)
-"OT" = (
-/obj/machinery/power/tracker,
-/obj/structure/cable/yellow{
-	dir = 8
-	},
-/turf/simulated/floor/airless,
-/area/space)
 "OY" = (
 /obj/structure/railing{
 	dir = 4
@@ -4992,18 +5078,6 @@
 /obj/structure/railing,
 /turf/space,
 /area/triumph_away/tradeport/space)
-"OZ" = (
-/obj/machinery/power/terminal{
-	dir = 4
-	},
-/obj/structure/cable/yellow,
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/plating,
-/area/triumph_away/tradeport/engineering)
 "Pd" = (
 /turf/simulated/floor/tiled/neutral,
 /area/triumph_away/tradeport/engineering)
@@ -5017,6 +5091,11 @@
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 2;
 	req_access = list(160)
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/cockpit)
@@ -5075,6 +5154,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
+"PN" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/space,
+/area/triumph_away/tradeport/space)
 "PP" = (
 /obj/machinery/light,
 /turf/simulated/floor/tiled/dark,
@@ -5089,6 +5175,14 @@
 	},
 /turf/simulated/floor/plating,
 /area/triumph_away/tradeport/engineering)
+"PX" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/old_cargo/red,
+/area/shuttle/trade_ship/general)
 "Qb" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
@@ -5104,9 +5198,9 @@
 "Qe" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
@@ -5118,20 +5212,20 @@
 /turf/simulated/floor/tiled/dark,
 /area/triumph_away/tradeport/facility)
 "Qk" = (
-/obj/structure/cable/yellow{
+/obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/obj/structure/cable/yellow{
+/obj/structure/cable/green{
 	d1 = 2;
 	d2 = 4;
 	icon_state = "2-4"
+	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/airless,
 /area/space)
@@ -5170,6 +5264,12 @@
 	},
 /turf/simulated/floor/carpet,
 /area/shuttle/trade_ship/general)
+"QB" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/mineral/floor/vacuum,
+/area/space)
 "QC" = (
 /obj/structure/table/standard,
 /obj/item/storage/box/glasses/square,
@@ -5182,8 +5282,9 @@
 /obj/structure/toilet{
 	dir = 4
 	},
-/obj/machinery/alarm{
-	pixel_y = 22
+/obj/machinery/alarm/alarms_hidden{
+	pixel_y = 22;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/old_tile/white,
 /area/triumph_away/tradeport)
@@ -5370,19 +5471,13 @@
 	},
 /turf/simulated/mineral/floor/vacuum,
 /area/triumph_away/tradeport/engineering)
-"SS" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
+"SU" = (
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/old_cargo/red,
+/turf/simulated/shuttle/wall/voidcraft,
 /area/shuttle/trade_ship/general)
 "Td" = (
 /obj/structure/undies_wardrobe,
@@ -5481,13 +5576,21 @@
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/plating,
 /area/triumph_away/tradeport)
+"Uk" = (
+/obj/structure/cable/yellow{
+	dir = 4
+	},
+/obj/machinery/power/terminal,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/trade_ship/general)
 "Um" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/alarm/alarms_hidden{
 	dir = 4;
-	pixel_x = -22
+	pixel_x = -22;
+	req_one_access = list(160)
 	},
 /turf/simulated/shuttle/floor/white,
 /area/triumph_away/tradeport/commons)
@@ -5558,7 +5661,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/shuttle/floor/darkred/airless,
+/turf/simulated/floor/reinforced/airless,
 /area/triumph_away/tradeport/pads)
 "Vh" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -5785,15 +5888,15 @@
 /turf/simulated/floor/tiled/neutral,
 /area/triumph_away/tradeport/commons)
 "WM" = (
-/obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/obj/structure/cable/yellow{
+/obj/structure/cable/green{
 	d1 = 2;
 	d2 = 4;
 	icon_state = "2-4"
+	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/airless,
 /area/space)
@@ -5810,7 +5913,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/obj/structure/cable/yellow{
+/obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
@@ -5828,14 +5931,15 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/alarm{
-	dir = 4;
-	pixel_x = -22
-	},
 /obj/structure/cable/yellow{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
+	},
+/obj/machinery/alarm/alarms_hidden{
+	dir = 4;
+	pixel_x = -22;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/triumph_away/tradeport/facility)
@@ -5848,7 +5952,7 @@
 /obj/machinery/camera{
 	dir = 4
 	},
-/turf/simulated/shuttle/floor/darkred/airless,
+/turf/simulated/floor/reinforced/airless,
 /area/triumph_away/tradeport/pads)
 "Xt" = (
 /obj/structure/window/reinforced{
@@ -5895,6 +5999,11 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "XI" = (
@@ -5989,6 +6098,11 @@
 /obj/item/towel{
 	color = "#0000FF"
 	},
+/obj/machinery/alarm/alarms_hidden{
+	dir = 1;
+	pixel_y = -22;
+	req_one_access = list(160)
+	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/cockpit)
 "YJ" = (
@@ -6022,7 +6136,7 @@
 	dir = 1
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/floor/darkred/airless,
+/turf/simulated/floor/airless,
 /area/triumph_away/tradeport/pads)
 "YW" = (
 /obj/machinery/vending/sovietsoda,
@@ -6044,10 +6158,10 @@
 /area/shuttle/trade_ship/general)
 "Zc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/old_cargo/red,
 /area/shuttle/trade_ship/general)
@@ -6111,9 +6225,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj/machinery/alarm{
+/obj/machinery/alarm/alarms_hidden{
 	dir = 8;
-	pixel_x = 25
+	pixel_x = 22;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/triumph_away/tradeport)
@@ -6125,11 +6240,11 @@
 /turf/simulated/floor/reinforced/airless,
 /area/triumph_away/tradeport/pads)
 "Zs" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
 /obj/structure/cable/yellow,
+/obj/machinery/power/apc/alarms_hidden{
+	pixel_y = -28;
+	req_access = list(160)
+	},
 /turf/simulated/floor/tiled/dark,
 /area/triumph_away/tradeport/facility)
 "Zw" = (
@@ -6192,7 +6307,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/shuttle/floor/darkred/airless,
+/turf/simulated/floor/reinforced/airless,
 /area/triumph_away/tradeport/pads)
 "ZM" = (
 /turf/simulated/mineral/floor/vacuum,
@@ -16087,7 +16202,7 @@ YG
 YG
 YG
 YG
-YG
+YC
 YG
 YG
 YG
@@ -16221,23 +16336,23 @@ YG
 YG
 YG
 YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
+YC
+YC
+YC
+YC
+YC
+YC
+YC
+PN
+Cq
+xZ
+YC
+YC
+YC
+YC
+YC
+YC
+YC
 YG
 YG
 YG
@@ -16362,25 +16477,25 @@ YG
 YG
 YG
 YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
+Yk
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+pJ
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+zP
 YG
 YG
 YG
@@ -16504,25 +16619,25 @@ YG
 YG
 YG
 YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
+Yk
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+kS
+ep
+ll
+ll
+ll
+ll
+ll
+ll
+ll
+ll
+zP
 YG
 YG
 YG
@@ -16646,25 +16761,25 @@ YG
 YG
 YG
 YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
+Yk
+Ap
+Ap
+Ap
+Ap
+Ap
+Ap
+Ap
+Ap
+pJ
+Ap
+Ap
+Ap
+Ap
+Ap
+Ap
+Ap
+Ap
+zP
 YG
 YG
 YG
@@ -16788,25 +16903,25 @@ WI
 WI
 YG
 YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-OT
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
+Yk
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+pJ
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+zP
 YG
 YG
 YG
@@ -16930,25 +17045,25 @@ WI
 WI
 WI
 YG
-YG
-YG
-YG
-YG
-YG
-FK
-FK
-FK
-FK
-lp
-FK
-FK
-FK
-FK
-YG
-YG
-YG
-YG
-YG
+Yk
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+pJ
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+zP
 YG
 YG
 YG
@@ -17072,11 +17187,11 @@ WI
 WI
 WI
 WI
-YG
-YG
-YG
-YG
-YG
+Yk
+kS
+kS
+kS
+kS
 WM
 Qk
 Qk
@@ -17086,11 +17201,11 @@ Bm
 Bm
 Bm
 Db
-YG
-YG
-YG
-YG
-YG
+ll
+ll
+ll
+ll
+zP
 YG
 YG
 YG
@@ -17214,25 +17329,25 @@ WI
 WI
 WI
 WI
-WI
-YG
-YG
-YG
-YG
-dK
-dK
-dK
-dK
-lp
-dK
-dK
-dK
-dK
-YG
-YG
-YG
-YG
-YG
+nM
+Ap
+Ap
+Ap
+Ap
+Ap
+Ap
+Ap
+Ap
+pJ
+Ap
+Ap
+Ap
+Ap
+Ap
+Ap
+Ap
+Ap
+zP
 YG
 YG
 YG
@@ -17356,25 +17471,25 @@ WI
 WI
 WI
 WI
-WI
-WI
-YG
-YG
-YG
+nM
+AI
 aY
 aY
 aY
 aY
-lp
+aY
+aY
+aY
+pJ
 aY
 aY
 aY
 aY
-YG
-YG
-YG
-YG
-YG
+aY
+aY
+aY
+aY
+zP
 YG
 YG
 YG
@@ -17498,25 +17613,25 @@ WI
 WI
 WI
 WI
-WI
-WI
-YG
-YG
-YG
-FK
-FK
-FK
-FK
-lp
-FK
-FK
-FK
-FK
-YG
-YG
-YG
-YG
-YG
+nM
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+pJ
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+zP
 YG
 YG
 YG
@@ -17640,11 +17755,11 @@ WI
 WI
 WI
 WI
-WI
-WI
-WI
-YG
-YG
+nM
+kS
+kS
+kS
+kS
 WM
 Qk
 Qk
@@ -17654,11 +17769,11 @@ Bm
 Bm
 Bm
 Db
-YG
-YG
-YG
-YG
-YG
+ll
+ll
+ll
+ll
+zP
 YG
 YG
 YG
@@ -17782,25 +17897,25 @@ TW
 TW
 TW
 eh
-WI
-WI
-WI
-WI
-YG
-dK
-dK
-dK
-dK
-lp
-dK
-dK
-dK
-dK
-YG
-YG
-YG
-YG
-YG
+nM
+Ap
+Ap
+Ap
+Ap
+Ap
+Ap
+Ap
+Ap
+pJ
+Ap
+Ap
+Ap
+Ap
+Ap
+Ap
+Ap
+Ap
+zP
 YG
 YG
 YG
@@ -17924,25 +18039,25 @@ wZ
 nG
 nG
 eh
-WI
-WI
-WI
-WI
-WI
+nM
+AI
+AI
+AI
+AI
 aY
 aY
 aY
 aY
-lp
+pJ
 aY
 aY
 aY
 aY
-YG
-YG
-YG
-YG
-YG
+aY
+aY
+aY
+aY
+zP
 YG
 YG
 YG
@@ -18066,25 +18181,25 @@ ut
 HB
 Dk
 eh
-WI
-WI
-WI
-WI
-WI
-FK
-FK
-FK
-FK
-lp
-FK
-FK
-FK
-FK
-YG
-YG
-YG
-YG
-YG
+nM
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+pJ
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+Jc
+zP
 YG
 YG
 YG
@@ -18208,11 +18323,11 @@ nG
 nG
 fu
 eh
-WI
-WI
-WI
-WI
-WI
+nM
+kS
+kS
+kS
+kS
 WM
 Qk
 Qk
@@ -18222,11 +18337,11 @@ Bm
 Bm
 Bm
 Db
-YG
-YG
-YG
-YG
-YG
+ll
+ll
+ll
+ll
+zP
 YG
 YG
 YG
@@ -18350,25 +18465,25 @@ nG
 nG
 Ck
 eh
-WI
-WI
-WI
-WI
-WI
-dK
-dK
-dK
-dK
-lp
-dK
-dK
-dK
-dK
-YG
-YG
-YG
-YG
-YG
+nM
+Ap
+Ap
+Ap
+Ap
+Ap
+Ap
+Ap
+Ap
+pJ
+Ap
+Ap
+Ap
+Ap
+Ap
+Ap
+Ap
+Ap
+zP
 YG
 YG
 YG
@@ -18493,23 +18608,23 @@ nG
 fu
 eh
 WI
-WI
-WI
-WI
-WI
-WI
-WI
-WI
-WI
-lp
-WI
-WI
-WI
-WI
-WI
-YG
-YG
-YG
+QB
+QB
+QB
+QB
+QB
+QB
+QB
+QB
+pJ
+QB
+QB
+QB
+QB
+QB
+nS
+nS
+nS
 YG
 YG
 YG
@@ -18643,7 +18758,7 @@ WI
 WI
 WI
 WI
-lp
+pJ
 WI
 WI
 WI
@@ -18785,7 +18900,7 @@ WI
 WI
 WI
 WI
-lp
+pJ
 WI
 WI
 WI
@@ -19644,7 +19759,7 @@ ox
 fH
 cJ
 cJ
-SD
+oz
 cJ
 cJ
 WI
@@ -19758,7 +19873,7 @@ tm
 tm
 LW
 wJ
-nZ
+IA
 Aw
 RM
 tm
@@ -19781,7 +19896,7 @@ ZT
 hc
 xo
 NA
-Yv
+iX
 as
 fH
 cJ
@@ -19900,7 +20015,7 @@ tm
 tm
 tm
 tm
-pa
+IA
 Pn
 Hl
 tm
@@ -19923,7 +20038,7 @@ Yv
 Mc
 sl
 xf
-OZ
+xf
 Ml
 fH
 cJ
@@ -20042,8 +20157,8 @@ tm
 HW
 rt
 fR
-wB
 Fy
+Nx
 hI
 tm
 Og
@@ -20184,8 +20299,8 @@ pO
 Fy
 Fy
 Rm
-ln
-rA
+Rm
+Nx
 Fy
 Fj
 QD
@@ -21327,7 +21442,7 @@ ZP
 GY
 rd
 tm
-tm
+cQ
 nG
 wR
 jQ
@@ -21605,7 +21720,7 @@ tm
 Fy
 Rm
 Rm
-wB
+Nx
 tm
 Bz
 Bz
@@ -21747,10 +21862,10 @@ zI
 Rm
 Rm
 Rm
-xB
-zI
-Rm
-Rm
+Ch
+jm
+PX
+kv
 Rm
 Fy
 sg
@@ -21888,12 +22003,12 @@ bU
 GK
 GK
 Fk
-iH
+Fk
 vL
-Qe
-Ke
+GK
+GK
 Zc
-SS
+Fk
 Qe
 uR
 lB
@@ -21973,12 +22088,12 @@ Ft
 xM
 Ft
 IO
-tu
-tu
-tu
-tu
-tu
-tu
+XO
+XO
+XO
+XO
+XO
+XO
 mR
 zP
 YG
@@ -22034,8 +22149,8 @@ OH
 NK
 Hl
 jV
+Nx
 Fy
-wB
 dd
 Hl
 tm
@@ -22172,13 +22287,13 @@ Hl
 Hl
 Av
 ka
-ln
+Rm
 yc
 Hl
-Mm
+Hl
+Ek
 cP
-GA
-tm
+SU
 tm
 tm
 nG
@@ -22317,8 +22432,8 @@ II
 Rm
 Rm
 op
-Ob
-GK
+As
+vL
 oy
 en
 ZW
@@ -22459,7 +22574,7 @@ CQ
 Rm
 Rm
 op
-Ob
+As
 XH
 iY
 uw
@@ -22601,9 +22716,9 @@ GW
 We
 wd
 Hl
-Mm
-Fy
-pK
+Hl
+Nx
+GW
 lA
 Hl
 tm
@@ -22743,11 +22858,11 @@ Tv
 UF
 UF
 lZ
-Nf
-Fy
-pK
-Fy
-CJ
+Xv
+Nx
+GW
+Uk
+Oa
 tm
 tm
 fu
@@ -22885,11 +23000,11 @@ MF
 MF
 MF
 Kc
-zE
+CJ
 zz
 lx
-ww
-Xv
+os
+rS
 tm
 tm
 fu
