@@ -33,7 +33,6 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
 	},
-/obj/structure/bed,
 /obj/item/bedsheet/medical,
 /obj/machinery/light{
 	dir = 8;
@@ -42,6 +41,7 @@
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_x = -32
 	},
+/obj/structure/bed/padded,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "abY" = (
@@ -632,8 +632,8 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/virology)
 "aBM" = (
-/obj/structure/bed,
 /obj/item/bedsheet/medical,
+/obj/structure/bed/padded,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryobs)
 "aBN" = (
@@ -1410,8 +1410,8 @@
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
 "brC" = (
-/obj/structure/bed,
 /obj/item/bedsheet/medical,
+/obj/structure/bed/padded,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_d)
 "brK" = (
@@ -2236,11 +2236,11 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medical_restroom)
 "ckY" = (
-/obj/structure/bed,
 /obj/item/bedsheet/medical,
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/structure/bed/padded,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryobs)
 "clf" = (
@@ -15130,8 +15130,8 @@
 /turf/simulated/wall/r_wall,
 /area/medical/virologyaccess)
 "oWH" = (
-/obj/structure/bed,
 /obj/item/bedsheet/medical,
+/obj/structure/bed/padded,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_c)
 "oWX" = (
@@ -17169,8 +17169,8 @@
 /turf/simulated/wall/r_wall,
 /area/rnd/test_area)
 "qEs" = (
-/obj/structure/bed,
 /obj/item/bedsheet/medical,
+/obj/structure/bed/padded,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_b)
 "qEL" = (
@@ -18758,7 +18758,6 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
 	},
-/obj/structure/bed,
 /obj/item/bedsheet/medical,
 /obj/machinery/light{
 	dir = 8;
@@ -18767,6 +18766,7 @@
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_x = -32
 	},
+/obj/structure/bed/padded,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "rSI" = (
@@ -21710,8 +21710,8 @@
 /turf/simulated/floor/carpet/purcarpet,
 /area/rnd/breakroom)
 "uxH" = (
-/obj/structure/bed,
 /obj/item/bedsheet/medical,
+/obj/structure/bed/padded,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_a)
 "uxJ" = (
@@ -22174,7 +22174,6 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/structure/bed,
 /obj/item/bedsheet/medical,
 /obj/machinery/light{
 	dir = 8;
@@ -22183,6 +22182,7 @@
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_x = -32
 	},
+/obj/structure/bed/padded,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "uTg" = (
