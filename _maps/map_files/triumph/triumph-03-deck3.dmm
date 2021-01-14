@@ -9870,15 +9870,6 @@
 "jEz" = (
 /turf/simulated/floor/tiled/techfloor,
 /area/assembly/chargebay)
-"jFh" = (
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass_medical{
-	name = "Chemistry";
-	req_access = list();
-	req_one_access = list(33)
-	},
-/turf/simulated/floor/tiled/white,
-/area/medical/chemistry)
 "jFO" = (
 /obj/machinery/light{
 	dir = 8;
@@ -37820,7 +37811,7 @@ qJZ
 qIt
 szd
 qIt
-jFh
+qJZ
 qJZ
 xRb
 uWd
