@@ -527,10 +527,6 @@
 	pixel_x = 24;
 	pixel_y = 24
 	},
-/obj/structure/curtain/open/shower/medical{
-	anchored = 1;
-	pixel_y = 32
-	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_a)
 "axT" = (
@@ -1433,10 +1429,6 @@
 "brC" = (
 /obj/item/bedsheet/medical,
 /obj/structure/bed/padded,
-/obj/structure/curtain/open/shower/medical{
-	anchored = 1;
-	pixel_y = -32
-	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_d)
 "brK" = (
@@ -4155,6 +4147,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced,
 /obj/structure/window/phoronreinforced/full,
+/obj/structure/curtain/open/shower/medical,
 /turf/simulated/floor/plating,
 /area/medical/patient_a)
 "dVT" = (
@@ -5441,10 +5434,6 @@
 /obj/structure/table/reinforced,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
-	},
-/obj/structure/curtain/open/shower/medical{
-	anchored = 1;
-	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_a)
@@ -8580,10 +8569,6 @@
 	dir = 8;
 	pixel_x = 25
 	},
-/obj/structure/curtain/open/shower/medical{
-	anchored = 1;
-	pixel_y = -32
-	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_a)
 "ibD" = (
@@ -8614,10 +8599,6 @@
 /obj/machinery/alarm{
 	dir = 8;
 	pixel_x = 25
-	},
-/obj/structure/curtain/open/shower/medical{
-	anchored = 1;
-	pixel_y = -32
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_c)
@@ -9392,10 +9373,6 @@
 	id = "ward_c";
 	pixel_x = 24;
 	pixel_y = 24
-	},
-/obj/structure/curtain/open/shower/medical{
-	anchored = 1;
-	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_c)
@@ -10997,10 +10974,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
-	},
-/obj/structure/curtain/open/shower/medical{
-	anchored = 1;
-	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_d)
@@ -13062,6 +13035,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced,
 /obj/structure/window/phoronreinforced/full,
+/obj/structure/curtain/open/shower/medical,
 /turf/simulated/floor/plating,
 /area/medical/patient_c)
 "mzU" = (
@@ -13212,10 +13186,6 @@
 /obj/machinery/alarm{
 	dir = 8;
 	pixel_x = 25
-	},
-/obj/structure/curtain/open/shower/medical{
-	anchored = 1;
-	pixel_y = -32
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_d)
@@ -15442,10 +15412,6 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/structure/curtain/open/shower/medical{
-	anchored = 1;
-	pixel_y = 32
-	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_b)
 "oSC" = (
@@ -15580,10 +15546,6 @@
 "oWH" = (
 /obj/item/bedsheet/medical,
 /obj/structure/bed/padded,
-/obj/structure/curtain/open/shower/medical{
-	anchored = 1;
-	pixel_y = -32
-	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_c)
 "oWX" = (
@@ -16577,10 +16539,6 @@
 	pixel_x = 24;
 	pixel_y = 24
 	},
-/obj/structure/curtain/open/shower/medical{
-	anchored = 1;
-	pixel_y = 32
-	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_b)
 "pHc" = (
@@ -16968,10 +16926,6 @@
 /obj/machinery/alarm{
 	dir = 8;
 	pixel_x = 25
-	},
-/obj/structure/curtain/open/shower/medical{
-	anchored = 1;
-	pixel_y = -32
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_b)
@@ -17679,10 +17633,6 @@
 "qEs" = (
 /obj/item/bedsheet/medical,
 /obj/structure/bed/padded,
-/obj/structure/curtain/open/shower/medical{
-	anchored = 1;
-	pixel_y = -32
-	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_b)
 "qED" = (
@@ -19153,10 +19103,6 @@
 /area/triumph/station/stairs_three)
 "rKV" = (
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass_medical{
-	name = "Patient Ward A";
-	req_one_access = null
-	},
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -19164,6 +19110,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/airlock/medical{
+	name = "Patient Ward A"
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_a)
 "rLi" = (
@@ -19557,6 +19506,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced,
 /obj/structure/window/phoronreinforced/full,
+/obj/structure/curtain/open/shower/medical,
 /turf/simulated/floor/plating,
 /area/medical/patient_b)
 "seO" = (
@@ -19968,10 +19918,6 @@
 /area/rnd/rdoffice)
 "sxO" = (
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass_medical{
-	name = "Patient Ward B";
-	req_one_access = null
-	},
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -19979,6 +19925,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/airlock/medical{
+	name = "Patient Ward B"
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_b)
 "sxP" = (
@@ -20131,10 +20080,6 @@
 /area/hallway/primary/aft)
 "sDf" = (
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass_medical{
-	name = "Patient Ward D";
-	req_one_access = null
-	},
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -20142,6 +20087,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/airlock/medical{
+	name = "Patient Ward D"
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_d)
 "sDs" = (
@@ -20760,10 +20708,6 @@
 /obj/structure/table/reinforced,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
-	},
-/obj/structure/curtain/open/shower/medical{
-	anchored = 1;
-	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_c)
@@ -22310,10 +22254,6 @@
 "uxH" = (
 /obj/item/bedsheet/medical,
 /obj/structure/bed/padded,
-/obj/structure/curtain/open/shower/medical{
-	anchored = 1;
-	pixel_y = -32
-	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_a)
 "uxJ" = (
@@ -24393,6 +24333,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced,
 /obj/structure/window/phoronreinforced/full,
+/obj/structure/curtain/open/shower/medical,
 /turf/simulated/floor/plating,
 /area/medical/patient_d)
 "wpE" = (
@@ -24524,10 +24465,6 @@
 /area/medical/psych_ward)
 "wxf" = (
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass_medical{
-	name = "Patient Ward C";
-	req_one_access = null
-	},
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -24535,6 +24472,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/airlock/medical{
+	name = "Patient Ward C"
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_c)
 "wyA" = (
