@@ -754,6 +754,10 @@
 	name = "O- Blood Locker";
 	pixel_x = 32
 	},
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "aHU" = (
@@ -2367,7 +2371,6 @@
 /obj/machinery/door/window/northleft,
 /obj/structure/closet/l3closet/virology,
 /obj/machinery/door/window/southleft,
-/obj/machinery/door/window/southleft,
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
@@ -3063,6 +3066,21 @@
 /obj/machinery/recharger,
 /obj/machinery/camera/network/medbay{
 	dir = 8
+	},
+/obj/item/storage/box/masks{
+	pixel_x = -7
+	},
+/obj/item/storage/box/masks{
+	pixel_x = -7
+	},
+/obj/item/storage/box/gloves{
+	pixel_x = 6
+	},
+/obj/item/storage/box/gloves{
+	pixel_x = 6
+	},
+/obj/item/storage/box/gloves{
+	pixel_x = 6
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
@@ -11957,6 +11975,13 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
+/obj/machinery/button/remote/airlock{
+	desc = "A remote control switch for the medbay recovery room door.";
+	id = "MedbayFoyer";
+	name = "Door Switch";
+	pixel_x = 22;
+	pixel_y = 26
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
 "lNl" = (
@@ -19486,21 +19511,11 @@
 	pixel_x = -32
 	},
 /obj/structure/table/steel_reinforced,
-/obj/item/storage/box/masks{
-	pixel_x = -7
-	},
-/obj/item/storage/box/masks{
-	pixel_x = -7
-	},
-/obj/item/storage/box/gloves{
-	pixel_x = 6
-	},
-/obj/item/storage/box/gloves{
-	pixel_x = 6
-	},
-/obj/item/storage/box/gloves{
-	pixel_x = 6
-	},
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "ssO" = (
