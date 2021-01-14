@@ -2791,6 +2791,8 @@
 /area/rnd/xenobiology)
 "cHO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/structure/table/steel_reinforced,
+/obj/item/storage/box/bodybags,
 /turf/simulated/floor/tiled/white,
 /area/medical/resleeving)
 "cHU" = (
@@ -4479,6 +4481,8 @@
 /obj/random/medical,
 /obj/random/medical,
 /obj/random/medical,
+/obj/item/bodybag/cryobag,
+/obj/item/bodybag/cryobag,
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "emb" = (
@@ -5316,6 +5320,8 @@
 	dir = 1;
 	pixel_y = -24
 	},
+/obj/item/bodybag/cryobag,
+/obj/item/bodybag/cryobag,
 /turf/simulated/floor/tiled/dark,
 /area/medical/medbay_emt_bay)
 "eYS" = (
@@ -21378,6 +21384,7 @@
 /obj/item/pen,
 /obj/item/clothing/head/surgery/black,
 /obj/item/clothing/under/rank/medical/scrubs/black,
+/obj/item/storage/box/bodybags,
 /turf/simulated/floor/tiled/white,
 /area/medical/morgue)
 "tRd" = (
@@ -24742,6 +24749,15 @@
 "wSL" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/recharger,
+/obj/item/bodybag/cryobag{
+	pixel_x = -8
+	},
+/obj/item/bodybag/cryobag{
+	pixel_x = -8
+	},
+/obj/item/bodybag/cryobag{
+	pixel_x = -8
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_primary_storage)
 "wTn" = (
@@ -25189,6 +25205,8 @@
 /obj/item/material/knife/machete,
 /obj/item/clothing/accessory/holster/machete,
 /obj/item/clothing/accessory/permit/gun/paramedic,
+/obj/item/bodybag/cryobag,
+/obj/item/bodybag/cryobag,
 /turf/simulated/floor/tiled/dark,
 /area/medical/medbay_emt_bay)
 "xua" = (
