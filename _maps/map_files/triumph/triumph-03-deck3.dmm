@@ -699,6 +699,11 @@
 /obj/structure/bed/chair/comfy/brown{
 	dir = 1
 	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/medbreak)
 "aDo" = (
@@ -2977,6 +2982,11 @@
 /area/hallway/primary/starboard)
 "cQb" = (
 /obj/machinery/hologram/holopad,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/medbreak)
 "cSR" = (
@@ -6524,6 +6534,24 @@
 /obj/structure/flora/pottedplant/bamboo,
 /turf/simulated/floor/wood,
 /area/triumph/station/stairs_three)
+"geA" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/surgeryprep)
 "gfE" = (
 /obj/structure/disposaloutlet{
 	dir = 1
@@ -7794,10 +7822,16 @@
 /turf/simulated/floor/plating,
 /area/rnd/research_foyer_auxiliary)
 "hlY" = (
-/obj/structure/disposalpipe/trunk,
-/obj/machinery/disposal,
-/turf/simulated/floor/tiled/white,
-/area/medical/surgeryprep)
+/obj/structure/cable/green{
+	icon_state = "0-2"
+	},
+/obj/machinery/power/apc{
+	dir = 8;
+	name = "west bump";
+	pixel_x = -28
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/fpmaint2)
 "hnC" = (
 /obj/structure/closet/secure_closet/medical2,
 /obj/item/clothing/suit/straight_jacket,
@@ -10474,6 +10508,11 @@
 "kbD" = (
 /obj/machinery/door/airlock/maintenance/medical,
 /obj/machinery/door/firedoor,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/fpmaint2)
 "kcr" = (
@@ -10647,23 +10686,20 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/ward)
 "kjn" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
-/turf/simulated/floor/tiled/white,
-/area/medical/surgeryprep)
+/turf/simulated/floor/wood,
+/area/crew_quarters/medbreak)
 "kjq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/purple{
 	dir = 10
@@ -13752,6 +13788,11 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red,
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
+"neO" = (
+/obj/structure/disposalpipe/trunk,
+/obj/machinery/disposal,
+/turf/simulated/floor/tiled/white,
+/area/medical/surgeryprep)
 "neR" = (
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/light,
@@ -19754,6 +19795,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery_hallway)
+"sre" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/medbreak)
 "ssO" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
@@ -23683,6 +23732,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/teleporter/departing)
+"vOq" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/fpmaint2)
 "vOF" = (
 /obj/structure/cable/green,
 /obj/machinery/light{
@@ -34170,10 +34227,10 @@ nmZ
 mds
 lGN
 nmZ
-hlY
+neO
 iIp
 cXA
-kjn
+geA
 bKW
 kIT
 yhl
@@ -38854,7 +38911,7 @@ wjw
 ecT
 cxN
 fYV
-cxN
+kjn
 eGz
 rna
 dYE
@@ -39138,7 +39195,7 @@ rzy
 eKB
 yhM
 yhM
-yhM
+sre
 yhM
 qwH
 dYE
@@ -39705,8 +39762,8 @@ rzy
 rzy
 eKB
 fJp
-xZo
-xZo
+hlY
+vOq
 fJp
 gwr
 jMS
