@@ -2860,10 +2860,6 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/medical_restroom)
 "cKy" = (
-/obj/machinery/light{
-	color = "#0098c8";
-	dir = 1
-	},
 /obj/machinery/firealarm{
 	dir = 1;
 	pixel_y = -24
@@ -18334,15 +18330,22 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/virology)
 "rbK" = (
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/maintenance/medical{
-	icon_state = "door_locked";
-	id_tag = "medical_emergency";
-	locked = 1;
-	name = "Emergency Maintenance Access Use Only"
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
-/turf/simulated/floor/plating,
-/area/maintenance/medbay_fore)
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/closet/hydrant{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
 "rbP" = (
 /obj/structure/closet/crate,
 /obj/random/maintenance/research,
@@ -25992,6 +25995,9 @@
 /turf/simulated/floor/tiled,
 /area/rnd/rdoffice)
 "xQE" = (
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/medbay_fore)
 "xRb" = (
@@ -29552,7 +29558,7 @@ gVh
 bdR
 gVh
 oHo
-bTp
+rbK
 cOK
 gDf
 nFy
@@ -31665,7 +31671,7 @@ nvl
 nOd
 bWQ
 ydf
-rbK
+ydf
 ydf
 mhs
 mhs
