@@ -56,6 +56,9 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/triumph_away/tradeport/engineering)
 "aA" = (
@@ -313,6 +316,9 @@
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
@@ -818,6 +824,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
+/obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/dark,
 /area/triumph_away/tradeport/facility)
 "hi" = (
@@ -825,6 +832,7 @@
 	locked = 0;
 	req_access = list(160)
 	},
+/obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/dark,
 /area/triumph_away/tradeport/engineering)
 "hj" = (
@@ -1029,6 +1037,9 @@
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/triumph_away/tradeport/engineering)
@@ -1572,6 +1583,7 @@
 /area/triumph_away/tradeport/commons)
 "nb" = (
 /obj/structure/closet/crate,
+/obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/dark,
 /area/triumph_away/tradeport/facility)
 "no" = (
@@ -1579,6 +1591,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/dark,
 /area/triumph_away/tradeport/facility)
 "ns" = (
@@ -1688,6 +1701,7 @@
 /obj/structure/window/reinforced/tinted{
 	dir = 1
 	},
+/obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/plating,
 /area/shuttle/trade_ship/general)
 "oq" = (
@@ -1738,6 +1752,7 @@
 	pixel_x = -22;
 	req_one_access = list(160)
 	},
+/obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/dark,
 /area/triumph_away/tradeport/engineering)
 "oy" = (
@@ -2125,6 +2140,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "rT" = (
@@ -2190,6 +2206,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
 	},
+/obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/dark,
 /area/triumph_away/tradeport/engineering)
 "sr" = (
@@ -2197,6 +2214,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
+/obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/plating,
 /area/triumph_away/tradeport/facility)
 "ss" = (
@@ -2514,6 +2532,9 @@
 /area/shuttle/trade_ship/general)
 "va" = (
 /obj/structure/largecrate/animal/cat,
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "vc" = (
@@ -2660,6 +2681,7 @@
 	dir = 4;
 	start_pressure = 740.5
 	},
+/obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "vX" = (
@@ -2731,6 +2753,7 @@
 	pixel_x = 22;
 	req_one_access = list(160)
 	},
+/obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/dark,
 /area/triumph_away/tradeport/facility)
 "ww" = (
@@ -2791,6 +2814,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/dark,
 /area/triumph_away/tradeport/facility)
 "wZ" = (
@@ -2813,6 +2837,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
 /area/triumph_away/tradeport/engineering)
 "xl" = (
@@ -2833,6 +2858,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
+/obj/effect/floor_decal/industrial/warning/corner,
 /turf/simulated/floor/tiled/dark,
 /area/triumph_away/tradeport/engineering)
 "xq" = (
@@ -3076,6 +3102,7 @@
 "zK" = (
 /obj/machinery/atmospherics/pipe/tank/phoron,
 /obj/structure/window/reinforced/tinted,
+/obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/plating,
 /area/shuttle/trade_ship/general)
 "zP" = (
@@ -4228,6 +4255,7 @@
 /area/triumph_away/tradeport/facility)
 "Iq" = (
 /obj/machinery/atmospherics/pipe/tank/phoron,
+/obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/triumph_away/tradeport/pads)
 "Ir" = (
@@ -4529,6 +4557,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/dark,
 /area/triumph_away/tradeport/engineering)
 "Ll" = (
@@ -4657,6 +4686,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
 /area/triumph_away/tradeport/engineering)
 "Mn" = (
@@ -4822,6 +4852,9 @@
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/triumph_away/tradeport/engineering)
@@ -5202,6 +5235,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
+/obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "Qj" = (
@@ -5209,6 +5243,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/dark,
 /area/triumph_away/tradeport/facility)
 "Qk" = (
@@ -5493,6 +5528,13 @@
 /obj/effect/step_trigger/teleporter/tradeport_loop/north,
 /turf/space,
 /area/triumph_away/tradeport/space)
+"Tu" = (
+/obj/machinery/atm{
+	pixel_x = -32
+	},
+/obj/effect/floor_decal/industrial/warning/corner,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/trade_ship/general)
 "Tv" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /turf/simulated/shuttle/wall/voidcraft,
@@ -5565,6 +5607,7 @@
 /area/triumph_away/tradeport/facility)
 "Uf" = (
 /obj/machinery/atmospherics/pipe/tank/air,
+/obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/plating,
 /area/triumph_away/tradeport/facility)
 "Uh" = (
@@ -5603,6 +5646,9 @@
 "Uu" = (
 /obj/machinery/atm{
 	pixel_x = -32
+	},
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
@@ -5683,6 +5729,13 @@
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/triumph_away/tradeport/facility)
+"Vo" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/trade_ship/general)
 "Vr" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -21725,7 +21778,7 @@ tm
 Bz
 Bz
 TI
-Uu
+Tu
 Hl
 tm
 Hl
@@ -21854,7 +21907,7 @@ Ec
 NN
 ak
 dA
-Fy
+Sy
 Rm
 FB
 FB
@@ -21867,7 +21920,7 @@ jm
 PX
 kv
 Rm
-Fy
+Wc
 sg
 lq
 uT
@@ -21996,7 +22049,7 @@ nG
 zS
 iW
 WF
-GK
+Vo
 Fk
 Qb
 bU
