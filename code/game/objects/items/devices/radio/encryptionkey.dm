@@ -180,9 +180,14 @@
 /obj/item/encryptionkey/explorer
 	name = "explorer radio encryption key"
 	icon_state = "com_cypherkey"
-	channels = list("Science" = 1, "Explorer" = 1)
+	channels = list("Explorer" = 1)
 
 /obj/item/encryptionkey/sar
 	name = "sar's encryption key"
 	icon_state = "med_cypherkey"
 	channels = list("Medical" = 1, "Explorer" = 1)
+
+/obj/item/encryptionkey/pathfinder
+	name = "pathfinder radio encryption key"
+	icon_state = "com_cypherkey"
+	channels = list("Supply" = 1, "Explorer" = 1, "Science" = 1)
