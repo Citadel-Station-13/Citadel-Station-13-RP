@@ -17,7 +17,8 @@
 
 	initial_restricted_waypoints = list(
 		"Excursion Shuttle" = list("triumph_excursion_hangar"),
-		"Civilian Transport" = list("triumph_civvie_home")
+		"Civilian Transport" = list("triumph_civvie_home"),
+		"Beruang Trade Ship" = list("triumph_annex_dock")
 		)
 
 // EXCURSION SHUTTLE DATA
@@ -89,6 +90,16 @@
 	vessel_mass = 7000
 	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Mining Shuttle"
+
+// Trade Shuttle
+
+/obj/effect/overmap/visitable/ship/landable/trade
+	name = "Beruang Trade Ship"
+	desc = "You know our motto: 'We deliver!'"
+	fore_dir = WEST
+	vessel_mass = 25000
+	vessel_size = SHIP_SIZE_SMALL
+	shuttle = "Beruang Trade Ship"
 
 // STATIC PLANET/BASE LOCATIONS
 
@@ -176,3 +187,23 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 	color = "#3434AA"
 	known = FALSE
 	in_space = 0
+
+/obj/effect/overmap/visitable/sector/trade_post
+	name = "Nebula Gas Food Mart"
+	desc = "A ubiquitous chain of traders common in this area of the Galaxy."
+	scanner_desc = @{"[i]Information[/i]: A trade post and fuel depot. Possible life signs detected."}
+	in_space = 1
+	known = FALSE
+	icon_state = "fueldepot"
+	color = "#8F6E4C"
+
+	initial_generic_waypoints = list("nebula_space_SW")
+
+	initial_restricted_waypoints = list(
+		"Beruang Trade Ship" = list("tradeport_hangar"),
+		//Medical Ambulance - Doesn't exist yet: "Landing Pad 1" = list("nebula_pad_1"),
+		"Mining Shuttle" = list("nebula_pad_2"),
+		"Excursion Shuttle" = list("nebula_pad_3"),
+		"Pirate Skiff" = list("nebula_pad_4"),
+		"Civilian Transport" = list("nebula_pad_6")
+		)
