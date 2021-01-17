@@ -109,6 +109,7 @@ var/const/AI_FREQ	= 1343
 var/const/DTH_FREQ	= 1341
 var/const/SYND_FREQ = 1213
 var/const/RAID_FREQ	= 1277
+var/const/TRADE_FREQ = 1278
 var/const/ENT_FREQ	= 1461 //entertainment frequency. This is not a diona exclusive frequency.
 
 // department channels
@@ -136,6 +137,7 @@ var/list/radiochannels = list(
 	"Special Ops" 	= DTH_FREQ,
 	"Mercenary" 	= SYND_FREQ,
 	"Raider"		= RAID_FREQ,
+	"Trader"		= TRADE_FREQ,
 	"Supply" 		= SUP_FREQ,
 	"Service" 		= SRV_FREQ,
 	"Explorer"		= EXP_FREQ,
@@ -152,7 +154,7 @@ var/list/CENT_FREQS = list(ERT_FREQ, DTH_FREQ)
 var/list/ANTAG_FREQS = list(SYND_FREQ, RAID_FREQ)
 
 //Department channels, arranged lexically
-var/list/DEPT_FREQS = list(AI_FREQ, COMM_FREQ, ENG_FREQ, ENT_FREQ, MED_FREQ, SEC_FREQ, SCI_FREQ, SRV_FREQ, SUP_FREQ)
+var/list/DEPT_FREQS = list(AI_FREQ, COMM_FREQ, ENG_FREQ, ENT_FREQ, MED_FREQ, SEC_FREQ, SCI_FREQ, SRV_FREQ, SUP_FREQ, TRADE_FREQ)
 
 #define TRANSMISSION_WIRE	0
 #define TRANSMISSION_RADIO	1
@@ -187,6 +189,8 @@ var/list/DEPT_FREQS = list(AI_FREQ, COMM_FREQ, ENG_FREQ, ENT_FREQ, MED_FREQ, SEC
 		return "expradio"
 	if(frequency == ENT_FREQ) // entertainment
 		return "entradio"
+	if(frequency == TRADE_FREQ)
+		return "syndradio"
 	if(frequency in DEPT_FREQS)
 		return "deptradio"
 
