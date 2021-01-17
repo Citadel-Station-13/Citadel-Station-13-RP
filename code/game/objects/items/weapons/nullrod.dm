@@ -20,7 +20,7 @@
 			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
 			)
 
-	var/SA_bonus_damage = 25 // 40 total against demons and aberrations.
+	var/SA_bonus_damage = 35 // 50 total against demons and aberrations.
 	var/SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
 
 /obj/item/nullrod/Initialize()
