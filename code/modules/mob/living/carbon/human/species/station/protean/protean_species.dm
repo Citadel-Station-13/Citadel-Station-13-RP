@@ -34,6 +34,7 @@
 	brute_mod =		0.30 // 70% brute reduction
 	burn_mod =		1.4 //60% burn weakness
 	oxy_mod =		0
+	radiation_mod = 0 // Their blobforms have rad immunity, so it only makes sense that their humanoid forms do too
  /*
 These values assume all limbs are hit by the damage. To get individual limb damages divide by 11.
 A worst-case sev 4 emp will do 88 damage pre-mitigation, and 140.8 post-mitigation (as resist is negative) spread out over all the limbs.
@@ -331,7 +332,7 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 	holder.adjustBruteLoss(-9 ,include_robo = TRUE) //Looks high, but these are modified by species resistances to equal out at 3hp/sec.
 	holder.adjustFireLoss(-2.14,include_robo = TRUE) //Looks high, but these are modified by species resistances to equal out at 3hp/sec.
 	holder.adjustToxLoss(-3)
-	holder.radiation = max(holder.radiation - 15, 0)
+	// holder.radiation = max(holder.radiation - 15, 0)  As they now have rad immunity, this is a bit redundant
 
 
 
