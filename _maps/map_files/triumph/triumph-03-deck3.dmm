@@ -5299,9 +5299,6 @@
 /obj/machinery/camera/network/medbay,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/CMO_quarters)
-"eNG" = (
-/turf/simulated/shuttle/wall/voidcraft/blue,
-/area/space)
 "eNP" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock{
@@ -9599,6 +9596,14 @@
 	dir = 1
 	},
 /obj/machinery/light,
+/obj/machinery/power/apc{
+	name = "south bump";
+	pixel_y = -32
+	},
+/obj/structure/cable/green{
+	d2 = 8;
+	icon_state = "0-8"
+	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "iUe" = (
@@ -12458,14 +12463,14 @@
 /area/hallway/primary/port)
 "lHL" = (
 /obj/structure/cable/green{
-	d1 = 1;
+	d1 = 2;
 	d2 = 8;
-	icon_state = "1-8"
+	icon_state = "2-8"
 	},
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
@@ -13249,13 +13254,11 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "moV" = (
-/obj/machinery/power/terminal{
-	dir = 1
-	},
 /obj/structure/cable/green{
 	d2 = 4;
 	icon_state = "0-4"
 	},
+/obj/machinery/power/terminal,
 /turf/simulated/floor,
 /area/shuttle/emt/general)
 "mpd" = (
@@ -15668,11 +15671,6 @@
 /area/rnd/storage)
 "oFm" = (
 /obj/structure/bed/chair/wheelchair,
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	cycle_to_external_air = null;
 	frequency = 1380;
@@ -15903,12 +15901,6 @@
 /obj/structure/reagent_dispensers/watertank,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
-"oPh" = (
-/obj/machinery/computer/ship/engines{
-	dir = 1
-	},
-/turf/simulated/floor,
-/area/shuttle/emt/general)
 "oPl" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
@@ -16672,6 +16664,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/reception_desk)
+"ptw" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/white,
+/area/shuttle/emt/general)
 "ptI" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -17538,13 +17538,10 @@
 	pixel_y = 2
 	},
 /obj/item/storage/box/freezer,
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -32
-	},
 /obj/structure/cable/green{
-	d2 = 4;
-	icon_state = "0-4"
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
@@ -23746,8 +23743,8 @@
 	frequency = 1380;
 	id_tag = "emt_ext_sensor";
 	master_tag = "emt_shuttle_docker";
-	pixel_x = 8;
-	pixel_y = 10
+	pixel_x = -8;
+	pixel_y = -10
 	},
 /turf/simulated/shuttle/wall/voidcraft/blue,
 /area/shuttle/emt/general)
@@ -24231,6 +24228,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
+"vts" = (
+/obj/machinery/computer/ship/engines,
+/turf/simulated/floor,
+/area/shuttle/emt/general)
 "vun" = (
 /obj/structure/closet{
 	name = "robotics parts"
@@ -25293,14 +25294,6 @@
 "wqC" = (
 /turf/simulated/floor/tiled,
 /area/holodeck_control)
-"wrc" = (
-/obj/structure/cable/green{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/turf/simulated/floor/tiled/white,
-/area/shuttle/emt/general)
 "wrm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/shuttle/wall/voidcraft/blue,
@@ -40453,9 +40446,9 @@ grz
 htH
 okn
 grz
-ktP
+vts
 moV
-oPh
+ktP
 grz
 sNc
 xYs
@@ -40595,9 +40588,9 @@ grz
 dbA
 eJu
 grz
-mgW
-siD
 grz
+siD
+mgW
 grz
 grz
 sNc
@@ -40879,8 +40872,8 @@ fqS
 hTp
 aoV
 qzf
+ptw
 een
-wrc
 lHL
 pZq
 wSP
@@ -41023,7 +41016,7 @@ nRz
 bWI
 xpb
 xpb
-xpb
+aBb
 grz
 hAr
 cMX
@@ -41872,11 +41865,11 @@ gVh
 gVh
 gVh
 gVh
-grz
+cgk
 cgk
 rtU
 cgk
-grz
+cgk
 gVh
 gVh
 gVh
@@ -42014,11 +42007,11 @@ gVh
 gVh
 gVh
 gVh
-grz
-grz
+cgk
+cgk
 dZg
-grz
-grz
+cgk
+cgk
 gVh
 gVh
 gVh
@@ -42156,11 +42149,11 @@ gVh
 gVh
 gVh
 gVh
-eNG
 grz
+cgk
 wRi
+cgk
 grz
-eNG
 gVh
 gVh
 gVh
