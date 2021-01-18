@@ -5299,6 +5299,9 @@
 /obj/machinery/camera/network/medbay,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/CMO_quarters)
+"eNG" = (
+/turf/simulated/shuttle/wall/voidcraft/blue,
+/area/space)
 "eNP" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock{
@@ -41869,11 +41872,11 @@ gVh
 gVh
 gVh
 gVh
-cgk
+grz
 cgk
 rtU
 cgk
-cgk
+grz
 gVh
 gVh
 gVh
@@ -42012,9 +42015,9 @@ gVh
 gVh
 gVh
 grz
-cgk
+grz
 dZg
-cgk
+grz
 grz
 gVh
 gVh
@@ -42153,11 +42156,11 @@ gVh
 gVh
 gVh
 gVh
-gVh
+eNG
 grz
 wRi
 grz
-gVh
+eNG
 gVh
 gVh
 gVh
