@@ -1516,8 +1516,6 @@
 	tag_interior_door = "emt_shuttle_interior";
 	tag_interior_sensor = "emt_int_sensor"
 	},
-/obj/effect/shuttle_landmark/triumph/deck3/emt,
-/obj/effect/overmap/visitable/ship/landable/emt,
 /turf/simulated/floor/tiled/white,
 /area/space)
 "ne" = (
@@ -1846,6 +1844,11 @@
 	req_one_access = newlist()
 	},
 /turf/simulated/shuttle/floor/black,
+/area/space)
+"sa" = (
+/turf/unsimulated/wall/seperator{
+	name = "Unified Dimensions for All Shuttles to Land"
+	},
 /area/space)
 "se" = (
 /obj/machinery/computer/shuttle_control{
@@ -13297,22 +13300,22 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
 aa
 "}
 (62,1,1) = {"
@@ -13439,6 +13442,7 @@ aa
 aa
 aa
 aa
+dJ
 aa
 aa
 aa
@@ -13453,8 +13457,7 @@ aa
 aa
 aa
 aa
-aa
-aa
+dJ
 aa
 "}
 (63,1,1) = {"
@@ -13581,6 +13584,7 @@ aa
 aa
 aa
 aa
+dJ
 aa
 aa
 aa
@@ -13595,8 +13599,7 @@ aa
 aa
 aa
 aa
-aa
-aa
+dJ
 aa
 "}
 (64,1,1) = {"
@@ -13723,6 +13726,7 @@ aa
 aa
 aa
 aa
+dJ
 aa
 aa
 aa
@@ -13737,8 +13741,7 @@ aa
 aa
 aa
 aa
-aa
-aa
+dJ
 aa
 "}
 (65,1,1) = {"
@@ -13865,6 +13868,7 @@ aa
 aa
 aa
 aa
+dJ
 aa
 aa
 aa
@@ -13879,8 +13883,7 @@ aa
 aa
 aa
 aa
-aa
-aa
+dJ
 aa
 "}
 (66,1,1) = {"
@@ -14007,6 +14010,7 @@ aa
 aa
 aa
 aa
+dJ
 aa
 aa
 aa
@@ -14021,8 +14025,7 @@ aa
 aa
 aa
 aa
-aa
-aa
+dJ
 aa
 "}
 (67,1,1) = {"
@@ -14149,6 +14152,7 @@ aa
 aa
 aa
 aa
+dJ
 aa
 aa
 aa
@@ -14163,8 +14167,7 @@ aa
 aa
 aa
 aa
-aa
-aa
+dJ
 aa
 "}
 (68,1,1) = {"
@@ -14291,6 +14294,7 @@ aa
 aa
 aa
 aa
+dJ
 aa
 aa
 aa
@@ -14305,8 +14309,7 @@ aa
 aa
 aa
 aa
-aa
-aa
+dJ
 aa
 "}
 (69,1,1) = {"
@@ -14433,6 +14436,7 @@ aa
 aa
 aa
 aa
+dJ
 aa
 aa
 aa
@@ -14447,8 +14451,7 @@ aa
 aa
 aa
 aa
-aa
-aa
+dJ
 aa
 "}
 (70,1,1) = {"
@@ -14575,6 +14578,7 @@ aa
 aa
 aa
 aa
+dJ
 aa
 aa
 aa
@@ -14589,8 +14593,7 @@ aa
 aa
 aa
 aa
-aa
-aa
+dJ
 aa
 "}
 (71,1,1) = {"
@@ -14717,6 +14720,7 @@ aa
 aa
 aa
 aa
+dJ
 aa
 aa
 aa
@@ -14731,8 +14735,7 @@ aa
 aa
 aa
 aa
-aa
-aa
+dJ
 aa
 "}
 (72,1,1) = {"
@@ -14859,6 +14862,7 @@ aa
 aa
 aa
 aa
+dJ
 aa
 aa
 aa
@@ -14873,8 +14877,7 @@ aa
 aa
 aa
 aa
-aa
-aa
+dJ
 aa
 "}
 (73,1,1) = {"
@@ -15001,6 +15004,11 @@ aa
 aa
 aa
 aa
+dJ
+aa
+aa
+aa
+sa
 aa
 aa
 aa
@@ -15011,12 +15019,7 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+dJ
 aa
 "}
 (74,1,1) = {"
@@ -15143,6 +15146,7 @@ aa
 aa
 aa
 aa
+dJ
 aa
 aa
 aa
@@ -15157,8 +15161,7 @@ aa
 aa
 aa
 aa
-aa
-aa
+dJ
 aa
 "}
 (75,1,1) = {"
@@ -15285,6 +15288,7 @@ aa
 aa
 aa
 aa
+dJ
 aa
 aa
 aa
@@ -15299,8 +15303,7 @@ aa
 aa
 aa
 aa
-aa
-aa
+dJ
 aa
 "}
 (76,1,1) = {"
@@ -15427,6 +15430,7 @@ aa
 aa
 aa
 aa
+dJ
 aa
 aa
 aa
@@ -15441,8 +15445,7 @@ aa
 aa
 aa
 aa
-aa
-aa
+dJ
 aa
 "}
 (77,1,1) = {"
@@ -15569,6 +15572,7 @@ aa
 aa
 aa
 aa
+dJ
 aa
 aa
 aa
@@ -15583,8 +15587,7 @@ aa
 aa
 aa
 aa
-aa
-aa
+dJ
 aa
 "}
 (78,1,1) = {"
@@ -15711,6 +15714,7 @@ aa
 aa
 aa
 aa
+dJ
 aa
 aa
 aa
@@ -15725,8 +15729,7 @@ aa
 aa
 aa
 aa
-aa
-aa
+dJ
 aa
 "}
 (79,1,1) = {"
@@ -15853,6 +15856,7 @@ aa
 aa
 aa
 aa
+dJ
 aa
 aa
 aa
@@ -15867,8 +15871,7 @@ aa
 aa
 aa
 aa
-aa
-aa
+dJ
 aa
 "}
 (80,1,1) = {"
@@ -15995,6 +15998,7 @@ aa
 aa
 aa
 aa
+dJ
 aa
 aa
 aa
@@ -16009,8 +16013,7 @@ aa
 aa
 aa
 aa
-aa
-aa
+dJ
 aa
 "}
 (81,1,1) = {"
@@ -16137,6 +16140,7 @@ aa
 aa
 aa
 aa
+dJ
 aa
 aa
 aa
@@ -16151,8 +16155,7 @@ aa
 aa
 aa
 aa
-aa
-aa
+dJ
 aa
 "}
 (82,1,1) = {"
@@ -16279,6 +16282,7 @@ aa
 aa
 aa
 aa
+dJ
 aa
 aa
 aa
@@ -16293,8 +16297,7 @@ aa
 aa
 aa
 aa
-aa
-aa
+dJ
 aa
 "}
 (83,1,1) = {"
@@ -16421,6 +16424,7 @@ aa
 aa
 aa
 aa
+dJ
 aa
 aa
 aa
@@ -16435,8 +16439,7 @@ aa
 aa
 aa
 aa
-aa
-aa
+dJ
 aa
 "}
 (84,1,1) = {"
@@ -16563,6 +16566,7 @@ aa
 aa
 aa
 aa
+dJ
 aa
 aa
 aa
@@ -16577,8 +16581,7 @@ aa
 aa
 aa
 aa
-aa
-aa
+dJ
 aa
 "}
 (85,1,1) = {"
@@ -16705,22 +16708,22 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
 aa
 "}
 (86,1,1) = {"
