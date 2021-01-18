@@ -11738,6 +11738,7 @@
 "kTk" = (
 /obj/machinery/light,
 /obj/structure/bed/roller,
+/obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "kTM" = (
@@ -13358,6 +13359,15 @@
 	dir = 1
 	},
 /obj/machinery/sleeper{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
@@ -15686,6 +15696,7 @@
 	},
 /obj/effect/shuttle_landmark/triumph/deck3/emt,
 /obj/effect/overmap/visitable/ship/landable/emt,
+/obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "oFD" = (
@@ -19461,6 +19472,7 @@
 /obj/item/reagent_containers/blood/empty,
 /obj/item/reagent_containers/blood/empty,
 /obj/item/defib_kit/loaded,
+/obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "ruk" = (
@@ -20392,6 +20404,7 @@
 /obj/structure/closet/walllocker/emerglocker{
 	pixel_y = 32
 	},
+/obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "sjJ" = (
@@ -24803,6 +24816,7 @@
 	name = "Emergency NanoMed";
 	pixel_x = 28
 	},
+/obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "waO" = (

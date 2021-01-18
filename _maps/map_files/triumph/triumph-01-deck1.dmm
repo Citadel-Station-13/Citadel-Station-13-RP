@@ -3440,6 +3440,10 @@
 	pixel_y = -24
 	},
 /obj/structure/table/bench/wooden,
+/obj/machinery/computer/guestpass{
+	dir = 8;
+	pixel_x = 30
+	},
 /turf/simulated/floor/wood,
 /area/engineering/lower/corridor)
 "lx" = (
@@ -4128,6 +4132,10 @@
 "nL" = (
 /obj/structure/railing,
 /obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/computer/guestpass{
+	dir = 4;
+	pixel_x = -28
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_one)
 "nM" = (
@@ -5484,6 +5492,10 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "si" = (
+/obj/machinery/computer/guestpass{
+	dir = 1;
+	pixel_y = -28
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/break_room)
 "sj" = (
@@ -9528,7 +9540,9 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/obj/machinery/power/smes/buildable/engine,
+/obj/machinery/power/smes/buildable/engine{
+	charge = 3e+006
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_smes)
 "Fo" = (
@@ -10104,7 +10118,9 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engine_monitoring)
 "GS" = (
-/obj/machinery/power/smes/buildable/main,
+/obj/machinery/power/smes/buildable/main{
+	charge = 4e+007
+	},
 /obj/structure/cable{
 	d2 = 4;
 	icon_state = "0-4"
