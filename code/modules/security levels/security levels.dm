@@ -1,9 +1,9 @@
 /var/security_level = 0
 //0 = code green
-//1 = code yellow
-//2 = code violet
-//3 = code orange
-//4 = code blue
+//1 = code blue
+//2 = code yellow
+//3 = code violet
+//4 = code orange
 //5 = code red
 //6 = code delta
 
