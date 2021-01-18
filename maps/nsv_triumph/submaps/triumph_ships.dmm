@@ -2,6 +2,19 @@
 "aa" = (
 /turf/space,
 /area/space)
+"ab" = (
+/obj/machinery/door/firedoor/glass,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/voidcraft/vertical{
+	frequency = 1380;
+	id_tag = "emt_shuttle_interior"
+	},
+/turf/simulated/floor/tiled/white,
+/area/space)
 "ac" = (
 /turf/simulated/floor/reinforced/airless{
 	name = "outer hull"
@@ -26,6 +39,16 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
+/area/space)
+"ap" = (
+/obj/machinery/airlock_sensor/airlock_interior{
+	frequency = 1380;
+	id_tag = "emt_int_sensor";
+	master_tag = "emt_shuttle_docker";
+	pixel_x = -5;
+	pixel_y = -10
+	},
+/turf/simulated/shuttle/wall/voidcraft/blue,
 /area/space)
 "ay" = (
 /obj/effect/floor_decal/industrial/warning/corner{
@@ -145,12 +168,6 @@
 /obj/structure/bed/chair/shuttle,
 /turf/simulated/floor/reinforced,
 /area/space)
-"bq" = (
-/obj/machinery/sleeper{
-	dir = 8
-	},
-/turf/simulated/shuttle/floor,
-/area/space)
 "bs" = (
 /obj/machinery/light,
 /obj/machinery/alarm/alarms_hidden{
@@ -222,6 +239,15 @@
 /obj/item/kit/paint/ripley/flames_red,
 /obj/item/kit/paint/ripley,
 /turf/simulated/shuttle/floor/black,
+/area/space)
+"cD" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/sleeper{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/white,
 /area/space)
 "cG" = (
 /obj/machinery/door/airlock/silver{
@@ -300,7 +326,10 @@
 /turf/simulated/shuttle/floor/black,
 /area/space)
 "cY" = (
-/turf/simulated/shuttle/wall,
+/obj/machinery/computer/ship/engines{
+	dir = 1
+	},
+/turf/simulated/floor,
 /area/space)
 "da" = (
 /obj/structure/cable/cyan{
@@ -355,6 +384,10 @@
 	},
 /turf/simulated/shuttle/plating,
 /area/space)
+"dq" = (
+/obj/machinery/sleep_console,
+/turf/simulated/floor/tiled/white,
+/area/space)
 "dz" = (
 /obj/machinery/vending/sovietsoda,
 /turf/simulated/shuttle/floor/black,
@@ -379,13 +412,6 @@
 /area/space)
 "dJ" = (
 /turf/unsimulated/wall/seperator,
-/area/space)
-"dL" = (
-/obj/structure/bed/chair{
-	dir = 1
-	},
-/obj/machinery/light,
-/turf/simulated/shuttle/floor,
 /area/space)
 "dN" = (
 /obj/machinery/light,
@@ -489,6 +515,19 @@
 	},
 /turf/unsimulated/wall,
 /area/space)
+"eO" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/voidcraft/vertical{
+	frequency = 1380;
+	id_tag = "emt_shuttle_exterior"
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/white,
+/area/space)
 "eP" = (
 /obj/effect/overlay/palmtree_r,
 /turf/simulated/floor/holofloor/beach/sand,
@@ -506,6 +545,16 @@
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/simulated/floor/holofloor/desert,
 /area/houseboat/holodeck/desert)
+"fb" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 5
+	},
+/turf/simulated/floor,
+/area/space)
+"fc" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor,
+/area/space)
 "fd" = (
 /turf/unsimulated/beach/sand{
 	icon_state = "beach"
@@ -545,6 +594,18 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/old_tile/green,
+/area/space)
+"ft" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/cyan,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/white,
 /area/space)
 "fv" = (
 /obj/machinery/ion_engine{
@@ -884,12 +945,6 @@
 /obj/item/clothing/head/helmet/space/void/merc,
 /turf/simulated/shuttle/floor/black,
 /area/space)
-"gP" = (
-/obj/structure/bed/chair{
-	dir = 8
-	},
-/turf/simulated/shuttle/floor,
-/area/space)
 "gQ" = (
 /obj/machinery/door/blast/shutters{
 	density = 0;
@@ -948,6 +1003,10 @@
 	},
 /turf/simulated/shuttle/floor/black,
 /area/space)
+"hf" = (
+/obj/effect/shuttle_landmark/transit/triumph/emt,
+/turf/space/transit/east,
+/area/space)
 "hp" = (
 /obj/effect/step_trigger/lost_in_space,
 /turf/space/transit/east,
@@ -958,6 +1017,17 @@
 /area/space)
 "hr" = (
 /turf/simulated/shuttle/wall/voidcraft/blue,
+/area/space)
+"hs" = (
+/obj/machinery/computer/ship/helm{
+	dir = 8
+	},
+/obj/item/gps/internal/base{
+	desc = "A tracking beacon embedded in the shuttle systems, to help explorers find where they landed.";
+	gps_tag = "EMT";
+	name = "shuttle beacon"
+	},
+/turf/simulated/floor/tiled/white,
 /area/space)
 "ht" = (
 /obj/machinery/alarm/alarms_hidden{
@@ -982,12 +1052,6 @@
 	},
 /obj/machinery/door/airlock/external,
 /turf/simulated/floor/reinforced,
-/area/space)
-"hB" = (
-/obj/machinery/atmospherics/unary/cryo_cell{
-	layer = 3.3
-	},
-/turf/simulated/shuttle/floor,
 /area/space)
 "hE" = (
 /obj/item/paper_bin{
@@ -1060,6 +1124,17 @@
 	},
 /turf/simulated/shuttle/floor/black,
 /area/space)
+"ia" = (
+/obj/machinery/power/smes/buildable{
+	charge = 1.5e+007;
+	cur_coils = 3
+	},
+/obj/structure/cable/green{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/turf/simulated/floor,
+/area/space)
 "ih" = (
 /obj/machinery/door/window/southright{
 	name = "Cargo Hold";
@@ -1076,17 +1151,9 @@
 	},
 /turf/space/sandyscroll,
 /area/space)
-"im" = (
-/obj/structure/bed/chair,
-/obj/machinery/vending/wallmed1{
-	layer = 3.3;
-	name = "Emergency NanoMed";
-	pixel_x = 28
-	},
-/obj/structure/closet/walllocker/emerglocker{
-	pixel_y = 32
-	},
-/turf/simulated/shuttle/floor,
+"ip" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/shuttle/wall/voidcraft/blue,
 /area/space)
 "iw" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -1140,13 +1207,6 @@
 /area/space)
 "iT" = (
 /turf/simulated/shuttle/wall/voidcraft/red,
-/area/space)
-"iU" = (
-/obj/structure/closet/walllocker/emerglocker{
-	pixel_y = 32
-	},
-/obj/structure/bed/roller,
-/turf/simulated/shuttle/floor,
 /area/space)
 "iZ" = (
 /obj/structure/shuttle/engine/heater{
@@ -1313,11 +1373,15 @@
 /turf/simulated/floor/tiled,
 /area/space)
 "kH" = (
-/obj/structure/bed/chair,
-/obj/machinery/light{
-	dir = 1
+/obj/machinery/door/firedoor/glass,
+/obj/structure/grille,
+/obj/machinery/door/blast/regular/open{
+	id = "emtblast";
+	name = "Emergency Blast Shield"
 	},
-/turf/simulated/shuttle/floor,
+/obj/structure/window/reinforced,
+/obj/structure/window/phoronreinforced/full,
+/turf/simulated/floor,
 /area/space)
 "kM" = (
 /obj/vehicle/train/engine,
@@ -1325,6 +1389,23 @@
 	dir = 8
 	},
 /turf/simulated/shuttle/floor/black,
+/area/space)
+"kO" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/voidcraft/vertical{
+	frequency = 1380;
+	id_tag = "emt_shuttle_exterior"
+	},
+/turf/simulated/floor/tiled/white,
+/area/space)
+"kU" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 9
+	},
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/space)
 "kW" = (
 /obj/structure/cable/cyan{
@@ -1362,15 +1443,22 @@
 /obj/structure/closet/crate/internals,
 /turf/simulated/shuttle/floor/black,
 /area/space)
-"lZ" = (
-/turf/simulated/shuttle/wall/hard_corner,
-/area/space)
 "mg" = (
 /obj/machinery/light{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/old_tile/green,
+/area/space)
+"mk" = (
+/obj/machinery/door/firedoor/glass,
+/obj/structure/grille,
+/obj/machinery/door/blast/regular/open{
+	id = "emtblast";
+	name = "Emergency Blast Shield"
+	},
+/obj/structure/window/phoronreinforced/full,
+/turf/simulated/floor,
 /area/space)
 "mr" = (
 /obj/machinery/power/apc{
@@ -1427,6 +1515,34 @@
 	},
 /turf/space/transit/west,
 /area/space)
+"mR" = (
+/obj/structure/bed/chair/wheelchair,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	cycle_to_external_air = null;
+	frequency = 1380;
+	id_tag = "emt_shuttle_docker";
+	pixel_y = 25;
+	tag_airpump = "emt_vent";
+	tag_chamber_sensor = "emt_sensor";
+	tag_exterior_door = "emt_shuttle_exterior";
+	tag_exterior_sensor = "emt_ext_sensor";
+	tag_interior_door = "emt_shuttle_interior";
+	tag_interior_sensor = "emt_int_sensor"
+	},
+/obj/effect/shuttle_landmark/triumph/deck3/emt,
+/obj/effect/overmap/visitable/ship/landable/emt,
+/turf/simulated/floor/tiled/white,
+/area/space)
+"ne" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/meter,
+/turf/simulated/floor,
+/area/space)
 "nh" = (
 /obj/structure/cable/cyan{
 	d1 = 1;
@@ -1435,14 +1551,11 @@
 	},
 /turf/simulated/floor/tiled,
 /area/space)
-"nk" = (
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 5
+"nl" = (
+/obj/structure/closet/walllocker/emerglocker{
+	pixel_y = 32
 	},
-/obj/structure/bed/chair{
-	dir = 4
-	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/tiled/white,
 /area/space)
 "nD" = (
 /obj/effect/step_trigger/lost_in_space/shuttle,
@@ -1488,51 +1601,10 @@
 /turf/simulated/floor/reinforced,
 /area/space)
 "nV" = (
-/obj/structure/closet/crate/medical,
-/obj/item/storage/firstaid/regular{
-	pixel_x = -2;
-	pixel_y = 4
+/obj/machinery/computer/shuttle_control/explore/emt{
+	dir = 8
 	},
-/obj/item/storage/firstaid/regular{
-	pixel_x = -2;
-	pixel_y = 4
-	},
-/obj/item/bodybag/cryobag{
-	pixel_x = 5
-	},
-/obj/item/bodybag/cryobag{
-	pixel_x = 5
-	},
-/obj/item/storage/firstaid/o2{
-	layer = 2.8;
-	pixel_x = 4;
-	pixel_y = 6
-	},
-/obj/item/storage/box/masks,
-/obj/item/storage/box/gloves{
-	pixel_x = 3;
-	pixel_y = 4
-	},
-/obj/item/storage/firstaid/toxin,
-/obj/item/storage/firstaid/fire{
-	layer = 2.9;
-	pixel_x = 2;
-	pixel_y = 3
-	},
-/obj/item/storage/firstaid/adv{
-	pixel_x = -2
-	},
-/obj/item/reagent_containers/blood/empty,
-/obj/item/reagent_containers/blood/empty,
-/obj/item/reagent_containers/blood/empty,
-/obj/item/reagent_containers/blood/empty,
-/obj/item/reagent_containers/blood/empty,
-/obj/machinery/status_display{
-	layer = 4;
-	pixel_y = -32
-	},
-/obj/item/defib_kit/loaded,
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/tiled/white,
 /area/space)
 "oo" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
@@ -1546,6 +1618,19 @@
 	dir = 4
 	},
 /turf/simulated/shuttle/floor/black,
+/area/space)
+"oE" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/white,
 /area/space)
 "oG" = (
 /obj/structure/closet/hydrant{
@@ -1687,6 +1772,14 @@
 /obj/machinery/atmospherics/pipe/simple/visible,
 /turf/simulated/shuttle/floor/black,
 /area/space)
+"rp" = (
+/obj/machinery/atmospherics/portables_connector{
+	dir = 1
+	},
+/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/light/small,
+/turf/simulated/floor,
+/area/space)
 "rr" = (
 /obj/machinery/computer/ship/engines{
 	dir = 8
@@ -1714,6 +1807,19 @@
 /obj/structure/table/steel_reinforced,
 /obj/item/inflatable_duck,
 /turf/simulated/shuttle/floor/black,
+/area/space)
+"ry" = (
+/obj/machinery/door/firedoor/glass,
+/obj/structure/grille,
+/obj/machinery/door/blast/regular/open{
+	id = "emtblast";
+	name = "Emergency Blast Shield"
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/phoronreinforced/full,
+/turf/simulated/floor,
 /area/space)
 "rG" = (
 /obj/structure/window/reinforced{
@@ -1773,6 +1879,13 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/space)
+"sn" = (
+/obj/structure/bed/chair,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/space)
 "sB" = (
 /obj/machinery/light{
 	dir = 1
@@ -1822,14 +1935,6 @@
 /obj/structure/closet/wardrobe/captain,
 /turf/simulated/shuttle/floor/black,
 /area/space)
-"tg" = (
-/obj/machinery/light,
-/obj/machinery/atmospherics/portables_connector{
-	dir = 8
-	},
-/obj/machinery/portable_atmospherics/canister/oxygen/prechilled,
-/turf/simulated/shuttle/floor,
-/area/space)
 "tp" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -1871,6 +1976,11 @@
 	},
 /turf/simulated/shuttle/floor/black,
 /area/space)
+"tV" = (
+/obj/machinery/meter,
+/obj/machinery/atmospherics/pipe/manifold/hidden/cyan,
+/turf/simulated/floor,
+/area/space)
 "tW" = (
 /obj/structure/cable/cyan{
 	d1 = 1;
@@ -1883,10 +1993,28 @@
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/shuttle/floor/black,
 /area/space)
+"uj" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 10
+	},
+/turf/simulated/shuttle/wall/voidcraft/blue,
+/area/space)
 "uq" = (
 /obj/structure/table/standard,
 /obj/item/storage/toolbox/mechanical,
 /turf/simulated/shuttle/floor/black,
+/area/space)
+"ux" = (
+/obj/machinery/door/firedoor/glass,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/voidcraft/vertical{
+	name = "Engine Bay"
+	},
+/turf/simulated/floor,
 /area/space)
 "uy" = (
 /obj/structure/table/steel_reinforced,
@@ -1966,6 +2094,10 @@
 /obj/machinery/vending/engivend,
 /turf/simulated/shuttle/floor/black,
 /area/space)
+"uT" = (
+/obj/machinery/atmospherics/pipe/tank/air,
+/turf/simulated/floor,
+/area/space)
 "uU" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -1998,6 +2130,26 @@
 /obj/item/clothing/suit/pirate,
 /turf/simulated/shuttle/floor/black,
 /area/space)
+"vy" = (
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	dir = 8;
+	frequency = 1380;
+	id_tag = "emt_vent"
+	},
+/obj/machinery/airlock_sensor{
+	frequency = 1380;
+	id_tag = "emt_sensor";
+	master_tag = "emt_shuttle_docker";
+	pixel_x = 25
+	},
+/turf/simulated/floor/tiled/white,
+/area/space)
+"vG" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/turf/simulated/shuttle/wall/voidcraft/blue,
+/area/space)
 "vK" = (
 /obj/effect/wingrille_spawn/reinforced_phoron,
 /turf/simulated/shuttle/floor/voidcraft,
@@ -2009,6 +2161,14 @@
 	req_one_access = newlist()
 	},
 /turf/simulated/shuttle/floor/black,
+/area/space)
+"vV" = (
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/tiled/white,
 /area/space)
 "vX" = (
 /obj/machinery/vending/tool,
@@ -2190,6 +2350,19 @@
 /obj/machinery/light,
 /turf/simulated/shuttle/floor/black,
 /area/space)
+"xt" = (
+/obj/structure/table/standard,
+/obj/item/soap/nanotrasen,
+/obj/item/reagent_containers/glass/beaker/cryoxadone{
+	pixel_x = -4
+	},
+/obj/random/medical/lite,
+/obj/random/medical/lite,
+/obj/random/medical/lite,
+/obj/random/medical/lite,
+/obj/random/medical/lite,
+/turf/simulated/floor/tiled/white,
+/area/space)
 "xv" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/structure/largecrate/animal/corgi,
@@ -2239,6 +2412,14 @@
 	},
 /turf/simulated/shuttle/floor/black,
 /area/space)
+"xH" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/voidcraft/vertical{
+	frequency = 1380;
+	id_tag = "emt_shuttle_interior"
+	},
+/turf/simulated/floor/tiled/white,
+/area/space)
 "xV" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 4
@@ -2267,15 +2448,73 @@
 /obj/structure/window/reinforced,
 /turf/simulated/shuttle/plating,
 /area/space)
-"yj" = (
-/obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "large_escape_pod_1_hatch";
-	locked = 1;
-	name = "Emergency Airlock"
+"xZ" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/floor/tiled/white,
+/area/space)
+"yd" = (
+/obj/structure/closet/crate/medical,
+/obj/item/storage/firstaid/regular{
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/item/storage/firstaid/regular{
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/item/bodybag/cryobag{
+	pixel_x = 5
+	},
+/obj/item/bodybag/cryobag{
+	pixel_x = 5
+	},
+/obj/item/storage/firstaid/o2{
+	layer = 2.8;
+	pixel_x = 4;
+	pixel_y = 6
+	},
+/obj/item/storage/box/masks,
+/obj/item/storage/box/gloves{
+	pixel_x = 3;
+	pixel_y = 4
+	},
+/obj/item/storage/firstaid/toxin,
+/obj/item/storage/firstaid/fire{
+	layer = 2.9;
+	pixel_x = 2;
+	pixel_y = 3
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = -2
+	},
+/obj/item/reagent_containers/blood/empty,
+/obj/item/reagent_containers/blood/empty,
+/obj/item/reagent_containers/blood/empty,
+/obj/item/reagent_containers/blood/empty,
+/obj/item/reagent_containers/blood/empty,
+/obj/item/defib_kit/loaded,
+/turf/simulated/floor/tiled/white,
+/area/space)
+"yj" = (
+/obj/structure/table/standard,
+/obj/item/storage/box/freezer{
+	pixel_x = 5;
+	pixel_y = 2
+	},
+/obj/item/storage/box/freezer,
+/obj/machinery/power/apc{
+	name = "south bump";
+	pixel_y = -32
+	},
+/obj/structure/cable/green{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/tiled/white,
 /area/space)
 "yk" = (
 /obj/structure/shuttle/engine/heater{
@@ -2312,6 +2551,17 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/space)
+"yT" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 6
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/white,
+/area/space)
 "yW" = (
 /obj/structure/shuttle/engine/propulsion{
 	dir = 4;
@@ -2347,12 +2597,6 @@
 	id_tag = "shuttlesens_exp_int"
 	},
 /turf/simulated/shuttle/wall/voidcraft/blue,
-/area/space)
-"zy" = (
-/obj/structure/bed/chair{
-	dir = 1
-	},
-/turf/simulated/shuttle/floor,
 /area/space)
 "zB" = (
 /obj/structure/bed/chair/shuttle{
@@ -2396,6 +2640,17 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/shuttle/wall/voidcraft/green,
+/area/space)
+"zW" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/machinery/button/remote/blast_door{
+	id = "emtblast";
+	name = "emergency blast shields";
+	pixel_y = 30
+	},
+/turf/simulated/floor/tiled/white,
 /area/space)
 "zX" = (
 /obj/effect/wingrille_spawn/reinforced_phoron,
@@ -2593,11 +2848,25 @@
 /obj/structure/stasis_cage,
 /turf/simulated/floor/tiled,
 /area/space)
+"CG" = (
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	dir = 8;
+	frequency = 1380;
+	id_tag = "emt_vent"
+	},
+/turf/simulated/floor/tiled/white,
+/area/space)
 "CH" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
+/area/space)
+"CN" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
 /area/space)
 "Dg" = (
 /obj/structure/shuttle/engine/heater{
@@ -2619,6 +2888,15 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
+/area/space)
+"Dm" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 4
+	},
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/space)
 "Dt" = (
 /obj/machinery/computer/shuttle_control/explore/excursion{
@@ -2723,6 +3001,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/space)
+"Es" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 4
+	},
+/turf/simulated/floor,
+/area/space)
 "Ev" = (
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/machinery/atmospherics/pipe/tank/phoron{
@@ -2772,26 +3056,9 @@
 	},
 /turf/simulated/floor/tiled,
 /area/space)
-"ET" = (
-/obj/machinery/sleep_console,
-/turf/simulated/shuttle/floor,
-/area/space)
 "Fb" = (
 /obj/machinery/body_scanconsole,
 /turf/simulated/shuttle/floor/black,
-/area/space)
-"Fg" = (
-/obj/structure/table/standard,
-/obj/item/reagent_containers/glass/beaker/cryoxadone{
-	pixel_x = -4
-	},
-/obj/item/tool/wrench,
-/obj/random/medical/lite,
-/obj/random/medical/lite,
-/obj/random/medical/lite,
-/obj/random/medical/lite,
-/obj/random/medical/lite,
-/turf/simulated/shuttle/floor,
 /area/space)
 "Fj" = (
 /obj/effect/shuttle_landmark/transit/triumph/excursion,
@@ -2972,17 +3239,56 @@
 /turf/simulated/shuttle/floor/black,
 /area/space)
 "Hk" = (
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 4
+/obj/machinery/power/apc{
+	name = "south bump";
+	pixel_y = -32
 	},
-/turf/simulated/shuttle/floor,
+/obj/structure/cable/green{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
+	},
+/turf/simulated/floor/tiled/white,
 /area/space)
 "Hn" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/voidcraft/vertical{
+	name = "Cockpit"
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/white,
+/area/space)
+"HM" = (
 /obj/structure/bed/roller,
-/turf/simulated/shuttle/floor,
+/obj/machinery/vending/wallmed1{
+	layer = 3.3;
+	name = "Emergency NanoMed";
+	pixel_x = 28
+	},
+/turf/simulated/floor/tiled/white,
 /area/space)
 "Ia" = (
 /turf/simulated/shuttle/floor/darkred,
+/area/space)
+"Iq" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold4w/hidden,
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/space)
 "Iu" = (
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
@@ -3043,7 +3349,8 @@
 /turf/simulated/floor/tiled/old_tile/green,
 /area/space)
 "IX" = (
-/turf/simulated/shuttle/floor,
+/obj/machinery/computer/ship/sensors,
+/turf/simulated/floor/tiled/white,
 /area/space)
 "Jn" = (
 /obj/structure/cable{
@@ -3215,6 +3522,14 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/space)
+"Lj" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/shuttle/wall/voidcraft/blue,
+/area/space)
 "Ln" = (
 /obj/structure/bed/chair,
 /turf/simulated/floor/carpet,
@@ -3270,6 +3585,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/space)
+"Me" = (
+/obj/machinery/atmospherics/pipe/tank/air,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor,
+/area/space)
 "Mf" = (
 /obj/machinery/atmospherics/unary/outlet_injector{
 	dir = 1;
@@ -3286,6 +3608,19 @@
 	name = "Excursion Bluespace Transit"
 	},
 /turf/space/bluespace,
+/area/space)
+"Mm" = (
+/obj/machinery/door/firedoor/glass,
+/obj/structure/grille,
+/obj/machinery/door/blast/regular/open{
+	id = "emtblast";
+	name = "Emergency Blast Shield"
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/phoronreinforced/full,
+/turf/simulated/floor,
 /area/space)
 "Mn" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
@@ -3390,6 +3725,13 @@
 	},
 /turf/simulated/shuttle/plating/airless/carry,
 /area/space)
+"Oj" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden,
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/space)
 "OA" = (
 /obj/machinery/door/airlock/voidcraft/vertical{
 	frequency = 1380;
@@ -3431,16 +3773,6 @@
 "OJ" = (
 /obj/machinery/mineral/equipment_vendor/survey,
 /turf/simulated/floor/tiled,
-/area/space)
-"OO" = (
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	frequency = 1380;
-	id_tag = "large_escape_pod_1";
-	pixel_x = 25;
-	pixel_y = 26;
-	req_one_access = list(5)
-	},
-/turf/simulated/shuttle/floor,
 /area/space)
 "OS" = (
 /obj/structure/cable/cyan{
@@ -3546,6 +3878,13 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/space)
+"PO" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/machinery/light,
+/turf/simulated/floor/tiled/white,
+/area/space)
 "PQ" = (
 /obj/item/radio/intercom{
 	pixel_y = -24
@@ -3566,10 +3905,17 @@
 /obj/machinery/recharge_station,
 /turf/simulated/floor/tiled/steel,
 /area/space)
-"Qe" = (
-/obj/structure/shuttle/window,
-/obj/structure/grille,
-/turf/simulated/shuttle/plating,
+"Qg" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled/white,
+/area/space)
+"Qh" = (
+/obj/machinery/atmospherics/pipe/tank/phoron,
+/turf/simulated/floor,
 /area/space)
 "Qn" = (
 /obj/machinery/access_button{
@@ -3618,9 +3964,15 @@
 	},
 /turf/simulated/floor/carpet,
 /area/space)
-"QC" = (
-/obj/structure/bed/chair,
-/turf/simulated/shuttle/floor,
+"QF" = (
+/obj/machinery/airlock_sensor/airlock_exterior/shuttle{
+	frequency = 1380;
+	id_tag = "emt_ext_sensor";
+	master_tag = "emt_shuttle_docker";
+	pixel_x = 8;
+	pixel_y = 10
+	},
+/turf/simulated/shuttle/wall/voidcraft/blue,
 /area/space)
 "QM" = (
 /obj/structure/cable/cyan{
@@ -3639,12 +3991,28 @@
 /obj/fiftyspawner/phoron,
 /turf/simulated/floor/reinforced,
 /area/space)
+"Rc" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 8
+	},
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/space)
 "Ri" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
 /obj/structure/largecrate/hoverpod,
 /turf/simulated/shuttle/floor/black,
+/area/space)
+"Rk" = (
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/obj/structure/cable/green{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/turf/simulated/floor,
 /area/space)
 "Rn" = (
 /obj/machinery/ion_engine{
@@ -3658,6 +4026,14 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
+/area/space)
+"Ru" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/white,
 /area/space)
 "Rw" = (
 /obj/machinery/door/window/westright{
@@ -3705,6 +4081,11 @@
 	},
 /turf/simulated/shuttle/plating,
 /area/space)
+"Sn" = (
+/obj/machinery/light,
+/obj/structure/bed/roller,
+/turf/simulated/floor/tiled/white,
+/area/space)
 "St" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -3741,6 +4122,15 @@
 "SE" = (
 /obj/machinery/computer/ship/engines,
 /turf/simulated/floor/airless,
+/area/space)
+"SN" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 10
+	},
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/space)
 "SQ" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -3876,15 +4266,6 @@
 /obj/structure/bed/chair/shuttle,
 /turf/simulated/floor/tiled/steel,
 /area/space)
-"Ud" = (
-/obj/structure/shuttle/engine/heater{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/turf/simulated/floor/airless,
-/area/space)
 "Ul" = (
 /obj/machinery/door/airlock/voidcraft/vertical,
 /turf/simulated/floor/tiled,
@@ -3903,6 +4284,10 @@
 /obj/structure/bed/chair/shuttle,
 /obj/structure/closet/walllocker/emerglocker/north,
 /turf/simulated/floor/tiled/steel,
+/area/space)
+"UF" = (
+/obj/structure/bed/chair,
+/turf/simulated/floor/tiled/white,
 /area/space)
 "UH" = (
 /obj/effect/step_trigger/thrower{
@@ -3944,6 +4329,9 @@
 	},
 /obj/structure/largecrate/animal/corgi,
 /turf/simulated/shuttle/floor/black,
+/area/space)
+"Vr" = (
+/turf/simulated/floor/tiled/white,
 /area/space)
 "Vw" = (
 /obj/machinery/light{
@@ -4831,14 +5219,14 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+hr
+az
+az
+hr
+az
+az
+az
+hr
 aa
 aa
 aa
@@ -4973,15 +5361,15 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+hr
+SN
+Dm
+ip
+Dm
+Iq
+Rc
+vG
+az
 aa
 aa
 aa
@@ -5115,15 +5503,15 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-az
-az
+hr
+Qh
+fc
+ne
+fc
+Es
+rp
+uj
+Oj
 az
 aa
 aa
@@ -5257,17 +5645,17 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+hr
+Me
+fb
+hr
+ia
+Rk
 cY
-Ud
-Ud
-Ud
-cY
+hr
+uj
+Oj
+az
 aa
 aa
 aa
@@ -5399,17 +5787,17 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-yj
-IX
-hB
-nk
-cY
+hr
+uT
+tV
+hr
+Lj
+ux
+hr
+hr
+hr
+uj
+kU
 aa
 aa
 aa
@@ -5541,17 +5929,17 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+hr
+hr
+hr
+hr
+mR
+Ru
 yj
-OO
+hr
 IX
 Hk
-cY
+hr
 aa
 aa
 aa
@@ -5683,17 +6071,17 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-cY
+eO
+yT
+ft
+ab
+Qg
+vV
+oE
 Hn
-IX
-tg
-cY
+xZ
+Qg
+hr
 aa
 aa
 aa
@@ -5825,17 +6213,17 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-cY
-iU
-IX
-Fg
-cY
+kO
+CG
+vy
+xH
+Vr
+Vr
+Vr
+hr
+zW
+Vr
+hr
 aa
 aa
 aa
@@ -5967,17 +6355,17 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-cY
-QC
-IX
+QF
+hr
+hr
+ap
+sn
+Vr
+PO
+hr
+hs
 nV
-cY
+hr
 aa
 aa
 aa
@@ -6110,16 +6498,16 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-cY
-QC
-IX
-bq
-cY
+hr
+hr
+hr
+UF
+Vr
+CN
+hr
+Mm
+Mm
+hr
 aa
 aa
 aa
@@ -6253,15 +6641,15 @@ aa
 aa
 aa
 aa
+uH
+hr
+nl
+Vr
+xt
+hr
 aa
 aa
 aa
-aa
-cY
-QC
-IX
-ET
-cY
 aa
 aa
 aa
@@ -6396,14 +6784,14 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-cY
+ry
+cD
+Vr
+Sn
 kH
-IX
-dL
-cY
+aa
+aa
+aa
 aa
 aa
 aa
@@ -6538,14 +6926,14 @@ aa
 aa
 aa
 aa
+ry
+dq
+Vr
+HM
+kH
 aa
 aa
 aa
-cY
-QC
-IX
-zy
-cY
 aa
 aa
 aa
@@ -6680,14 +7068,14 @@ aa
 aa
 aa
 aa
+hr
+Mn
+yd
+Mn
+hr
 aa
 aa
 aa
-cY
-im
-IX
-zy
-cY
 aa
 aa
 aa
@@ -6822,14 +7210,14 @@ aa
 aa
 aa
 aa
+hr
+hr
+mk
+hr
+hr
 aa
 aa
 aa
-cY
-lZ
-gP
-lZ
-cY
 aa
 aa
 aa
@@ -6965,12 +7353,12 @@ aa
 aa
 aa
 aa
+hr
+Mm
+hr
 aa
 aa
 aa
-cY
-Qe
-cY
 aa
 aa
 aa
@@ -17831,27 +18219,27 @@ Kv
 Kv
 DW
 dJ
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+My
+My
+My
+My
+My
+My
+My
+My
+My
+My
+My
+My
+My
+My
+My
+My
+My
+My
+My
+My
+dJ
 aa
 aa
 dJ
@@ -17973,27 +18361,27 @@ Kv
 Kv
 DW
 dJ
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+My
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+My
+dJ
 aa
 aa
 dJ
@@ -18115,27 +18503,27 @@ Kv
 Kv
 DW
 dJ
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+My
+gT
+gT
+gT
+DI
+DI
+DI
+DI
+DI
+DI
+DI
+DI
+DI
+DI
+gT
+gT
+gT
+gT
+gT
+My
+dJ
 aa
 aa
 dJ
@@ -18257,27 +18645,27 @@ Kv
 Kv
 DW
 dJ
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+My
+gT
+gT
+gT
+DI
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+DI
+DI
+gT
+gT
+gT
+gT
+My
+dJ
 aa
 aa
 dJ
@@ -18399,27 +18787,27 @@ Kv
 Kv
 DW
 dJ
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+My
+gT
+gT
+gT
+DI
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+DI
+DI
+gT
+gT
+gT
+My
+dJ
 aa
 aa
 aa
@@ -18541,27 +18929,27 @@ Kv
 Kv
 DW
 dJ
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+My
+gT
+gT
+gT
+DI
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+DI
+DI
+gT
+gT
+My
+dJ
 aa
 aa
 aa
@@ -18683,27 +19071,27 @@ Kv
 Kv
 DW
 dJ
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+My
+gT
+gT
+gT
+DI
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+DI
+gT
+gT
+My
+dJ
 aa
 aa
 aa
@@ -18825,27 +19213,27 @@ Kv
 Kv
 DW
 dJ
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+My
+gT
+gT
+gT
+DI
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+DI
+gT
+gT
+My
+dJ
 aa
 aa
 aa
@@ -18967,27 +19355,27 @@ Kv
 Kv
 DW
 dJ
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+My
+gT
+gT
+gT
+DI
+gT
+gT
+gT
+gT
+hf
+gT
+gT
+gT
+gT
+gT
+gT
+DI
+gT
+gT
+My
+dJ
 aa
 aa
 aa
@@ -19109,27 +19497,27 @@ Kv
 Kv
 DW
 dJ
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+My
+gT
+gT
+gT
+DI
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+DI
+gT
+gT
+My
+dJ
 aa
 aa
 aa
@@ -19251,27 +19639,27 @@ Kv
 Kv
 DW
 dJ
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+My
+gT
+gT
+gT
+DI
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+DI
+gT
+gT
+My
+dJ
 aa
 aa
 aa
@@ -19393,27 +19781,27 @@ Kv
 Kv
 DW
 dJ
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+My
+gT
+gT
+gT
+DI
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+DI
+gT
+gT
+My
+dJ
 aa
 aa
 aa
@@ -19535,27 +19923,27 @@ Kv
 Kv
 DW
 dJ
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+My
+gT
+gT
+gT
+DI
+DI
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+DI
+gT
+gT
+My
+dJ
 aa
 aa
 aa
@@ -19677,27 +20065,27 @@ Kv
 Kv
 DW
 dJ
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+My
+gT
+gT
+gT
+gT
+DI
+DI
+gT
+gT
+gT
+gT
+gT
+gT
+DI
+DI
+DI
+DI
+gT
+gT
+My
+dJ
 aa
 aa
 aa
@@ -19819,27 +20207,27 @@ Kv
 Kv
 DW
 dJ
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+My
+gT
+gT
+gT
+gT
+gT
+DI
+DI
+gT
+gT
+gT
+gT
+gT
+DI
+gT
+gT
+gT
+gT
+gT
+My
+dJ
 aa
 aa
 aa
@@ -19961,27 +20349,27 @@ Kv
 Kv
 DW
 dJ
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+My
+gT
+gT
+gT
+gT
+gT
+gT
+DI
+gT
+gT
+gT
+gT
+gT
+DI
+gT
+gT
+gT
+gT
+gT
+My
+dJ
 aa
 aa
 aa
@@ -20103,27 +20491,27 @@ Kv
 Kv
 DW
 dJ
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+My
+gT
+gT
+gT
+gT
+gT
+gT
+DI
+gT
+gT
+gT
+gT
+gT
+DI
+gT
+gT
+gT
+gT
+gT
+My
+dJ
 aa
 aa
 aa
@@ -20245,27 +20633,27 @@ Kv
 Kv
 DW
 dJ
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+My
+gT
+gT
+gT
+gT
+gT
+gT
+DI
+gT
+gT
+gT
+gT
+gT
+DI
+gT
+gT
+gT
+gT
+gT
+My
+dJ
 aa
 aa
 aa
@@ -20387,27 +20775,27 @@ Kv
 Kv
 DW
 dJ
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+My
+gT
+gT
+gT
+gT
+gT
+gT
+DI
+DI
+gT
+gT
+gT
+DI
+DI
+gT
+gT
+gT
+gT
+gT
+My
+dJ
 aa
 aa
 aa
@@ -20529,27 +20917,27 @@ Kv
 Kv
 DW
 dJ
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+My
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+DI
+DI
+DI
+DI
+DI
+gT
+gT
+gT
+gT
+gT
+gT
+My
+dJ
 aa
 aa
 aa
@@ -20671,27 +21059,27 @@ DW
 DW
 DW
 dJ
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+My
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+gT
+My
+dJ
 aa
 aa
 aa
@@ -20813,27 +21201,27 @@ Kv
 Kv
 Kv
 dJ
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+My
+My
+My
+My
+My
+My
+My
+My
+My
+My
+My
+My
+My
+My
+My
+My
+My
+My
+My
+My
+dJ
 aa
 aa
 aa
@@ -20955,27 +21343,27 @@ dJ
 dJ
 dJ
 dJ
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
 aa
 aa
 aa
