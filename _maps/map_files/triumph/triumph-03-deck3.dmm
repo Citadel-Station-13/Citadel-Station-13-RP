@@ -1714,8 +1714,9 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "bFw" = (
-/obj/structure/shuttle/engine/propulsion{
-	dir = 8
+/obj/machinery/ion_engine{
+	density = 1;
+	dir = 4
 	},
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/emt/general)
