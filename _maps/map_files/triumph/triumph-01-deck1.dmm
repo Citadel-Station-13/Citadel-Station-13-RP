@@ -2007,9 +2007,6 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "gH" = (
-/obj/structure/bed/chair{
-	dir = 4
-	},
 /obj/item/cigbutt,
 /obj/item/cigbutt,
 /obj/structure/sign/nosmoking_1{
@@ -2104,8 +2101,6 @@
 	frequency = 1441;
 	pixel_y = 22
 	},
-/obj/structure/table/reinforced,
-/obj/random/cigarettes,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "ha" = (
@@ -4115,7 +4110,10 @@
 /obj/structure/sign/nosmoking_1{
 	pixel_y = 30
 	},
-/obj/item/cigbutt/cigarbutt,
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/item/cigbutt,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "nG" = (
@@ -8836,6 +8834,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"Dd" = (
+/obj/structure/closet/crate/mimic/closet/cointoss,
+/turf/simulated/floor/plating,
+/area/maintenance/engineering)
 "De" = (
 /obj/structure/closet/radiation,
 /turf/simulated/floor/tiled/techfloor,
@@ -12883,6 +12885,15 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
+"PL" = (
+/obj/structure/lattice,
+/obj/structure/grille,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing,
+/turf/space,
+/area/space)
 "PN" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 9
@@ -14623,6 +14634,11 @@
 "UR" = (
 /turf/simulated/wall,
 /area/maintenance/engineering)
+"US" = (
+/obj/machinery/light/small,
+/obj/item/cigbutt/cigarbutt,
+/turf/simulated/floor/plating,
+/area/maintenance/engineering)
 "UT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -14855,6 +14871,8 @@
 /area/engineering/break_room)
 "Vt" = (
 /obj/item/cigbutt,
+/obj/structure/table/reinforced,
+/obj/random/cigarettes,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "Vv" = (
@@ -28544,7 +28562,7 @@ dv
 dv
 dv
 nF
-Zc
+US
 dv
 Sq
 yu
@@ -28970,7 +28988,7 @@ fU
 ID
 We
 dv
-dv
+Yb
 dv
 ua
 dv
@@ -29111,9 +29129,9 @@ fN
 LO
 ID
 XV
-FG
 dv
-dv
+Yb
+Yb
 qb
 tX
 yk
@@ -29137,9 +29155,9 @@ KY
 ay
 cS
 uA
+Yb
+Dd
 dv
-dv
-FG
 FG
 FG
 cj
@@ -29253,8 +29271,8 @@ fN
 fU
 ID
 ID
-ID
-ID
+dv
+dv
 dv
 qb
 pO
@@ -29280,8 +29298,8 @@ ie
 Nk
 Zr
 dv
-ID
-ID
+dv
+dv
 ID
 ID
 ID
@@ -29393,9 +29411,9 @@ iC
 Zj
 Zj
 Zj
-tS
-zH
-Lg
+PL
+ID
+ID
 ID
 dv
 qb
@@ -29423,9 +29441,9 @@ iu
 qb
 dv
 ID
-II
-ek
-ek
+ID
+ID
+Bu
 ek
 ek
 fN
@@ -29536,8 +29554,8 @@ fN
 fN
 fN
 fN
-fN
-fU
+ek
+Lg
 ID
 dv
 qb
@@ -29565,8 +29583,8 @@ iu
 qb
 dv
 ID
-ns
-fN
+II
+ek
 fN
 fN
 fN
