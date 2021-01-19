@@ -642,6 +642,12 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "aBc" = (
@@ -2403,6 +2409,12 @@
 /area/medical/patient_wing)
 "cnn" = (
 /obj/machinery/sleep_console,
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 5
+	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "cnv" = (
@@ -3018,6 +3030,8 @@
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
 "cMX" = (
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/corner/blue/border,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/cockpit)
 "cNF" = (
@@ -3059,6 +3073,8 @@
 /obj/random/medical/lite,
 /obj/random/medical/lite,
 /obj/random/medical/lite,
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/corner/blue/border,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "cPj" = (
@@ -3315,6 +3331,7 @@
 /area/rnd/xenobiology)
 "dbA" = (
 /obj/machinery/atmospherics/pipe/tank/air,
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor,
 /area/shuttle/emt/general)
 "dcl" = (
@@ -4910,6 +4927,12 @@
 /area/maintenance/research)
 "ewB" = (
 /obj/structure/bed/chair,
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "ewD" = (
@@ -7838,6 +7861,12 @@
 /area/rnd/research_foyer_auxiliary)
 "hby" = (
 /obj/machinery/computer/ship/sensors,
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 9
+	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/cockpit)
 "hda" = (
@@ -8165,6 +8194,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor,
 /area/shuttle/emt/general)
 "htI" = (
@@ -8334,6 +8364,12 @@
 	id = "emtblast";
 	name = "emergency blast shields";
 	pixel_y = 30
+	},
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/cockpit)
@@ -9605,6 +9641,8 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/corner/blue/border,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "iUe" = (
@@ -10403,6 +10441,12 @@
 /obj/machinery/light{
 	dir = 8;
 	light_range = 12
+	},
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 10
 	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/cockpit)
@@ -11399,6 +11443,16 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
+"kDQ" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/corner/blue/border,
+/turf/simulated/floor/tiled/white,
+/area/shuttle/emt/general)
 "kEf" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -11738,6 +11792,8 @@
 "kTk" = (
 /obj/machinery/light,
 /obj/structure/bed/roller,
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/corner/blue/border,
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
@@ -11995,6 +12051,7 @@
 	frequency = 1380;
 	id_tag = "emt_vent"
 	},
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "lid" = (
@@ -12474,6 +12531,8 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/corner/blue/border,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "lIp" = (
@@ -12515,6 +12574,12 @@
 "lJz" = (
 /obj/machinery/computer/shuttle_control/explore/emt{
 	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 5
 	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/cockpit)
@@ -13364,11 +13429,20 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 8
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
@@ -14821,6 +14895,15 @@
 /area/medical/psych{
 	name = "\improper Psych Room 2"
 	})
+"nPW" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/shuttle/emt/general)
 "nQm" = (
 /obj/machinery/firealarm{
 	dir = 4;
@@ -14887,6 +14970,7 @@
 	master_tag = "emt_shuttle_docker";
 	pixel_x = 25
 	},
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "nRA" = (
@@ -15696,6 +15780,12 @@
 	},
 /obj/effect/shuttle_landmark/triumph/deck3/emt,
 /obj/effect/overmap/visitable/ship/landable/emt,
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 9
+	},
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
@@ -15787,6 +15877,8 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/corner/blue/border,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "oLk" = (
@@ -15882,6 +15974,8 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/corner/blue/border,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/cockpit)
 "oOE" = (
@@ -16681,6 +16775,12 @@
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
@@ -17555,6 +17655,12 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 10
+	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "pTe" = (
@@ -18319,6 +18425,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
+"qCC" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/shuttle/emt/general)
 "qEn" = (
 /obj/structure/sign/warning/caution,
 /turf/simulated/wall/r_wall,
@@ -18972,6 +19087,12 @@
 	gps_tag = "EMT";
 	name = "shuttle beacon"
 	},
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 6
+	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/cockpit)
 "rbr" = (
@@ -19472,7 +19593,7 @@
 /obj/item/reagent_containers/blood/empty,
 /obj/item/reagent_containers/blood/empty,
 /obj/item/defib_kit/loaded,
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/floor_decal/corner/blue/borderfull,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "ruk" = (
@@ -20404,6 +20525,12 @@
 /obj/structure/closet/walllocker/emerglocker{
 	pixel_y = 32
 	},
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 1
+	},
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
@@ -20475,6 +20602,7 @@
 /area/rnd/anomaly_lab)
 "smg" = (
 /obj/machinery/atmospherics/pipe/tank/phoron,
+/obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor,
 /area/shuttle/emt/general)
 "smK" = (
@@ -24816,6 +24944,12 @@
 	name = "Emergency NanoMed";
 	pixel_x = 28
 	},
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 6
+	},
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
@@ -26011,6 +26145,12 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/cockpit)
 "wTn" = (
@@ -26114,6 +26254,7 @@
 	},
 /obj/machinery/portable_atmospherics/canister/phoron,
 /obj/machinery/light/small,
+/obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor,
 /area/shuttle/emt/general)
 "xbC" = (
@@ -26907,6 +27048,12 @@
 "xOw" = (
 /obj/structure/bed/chair,
 /obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/blue/border{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -41029,9 +41176,9 @@ jNn
 lhX
 nRz
 bWI
+nPW
 xpb
-xpb
-aBb
+kDQ
 grz
 hAr
 cMX
@@ -41740,7 +41887,7 @@ gVh
 gVh
 uBl
 cnn
-xpb
+qCC
 vZx
 hLS
 gVh
