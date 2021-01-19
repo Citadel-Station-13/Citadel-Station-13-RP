@@ -14488,7 +14488,6 @@
 /obj/machinery/power/breakerbox/activated{
 	RCon_tag = "ENGINEERING"
 	},
-/obj/structure/cable,
 /turf/simulated/floor/plating,
 /area/maintenance/engi_engine)
 "Ut" = (
