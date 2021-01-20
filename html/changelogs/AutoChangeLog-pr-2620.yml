@@ -1,5 +1,0 @@
-author: "Enzo-Leon"
-delete-after: True
-changes: 
-  - tweak: "Re-enabled syringes giving infections if re-used"
-  - balance: "Adjusted Germ Levels to prep for Virology rework"
