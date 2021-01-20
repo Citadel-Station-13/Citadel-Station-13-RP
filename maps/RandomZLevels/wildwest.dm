@@ -6,7 +6,7 @@
 
 /*
  * Wish Granter
- */
+
 /obj/machinery/wish_granter_dark
 	name = "Wish Granter"
 	desc = "You're not so sure about this, anymore..."
@@ -73,15 +73,9 @@
 				user.dna.mutantrace = "shadow"
 				user.update_mutantrace()
 			if("To Kill")
-<<<<<<< HEAD
 				to_chat(user, "<B>Your wish is granted, but at a terrible cost...</B>")
 				to_chat(user, "The Wish Granter punishes you for your wickedness, claiming your soul and warping your body to match the darkness in your heart.")
-				ticker.mode.traitors += user.mind
-=======
-				user << "<B>Your wish is granted, but at a terrible cost...</B>"
-				user << "The Wish Granter punishes you for your wickedness, claiming your soul and warping your body to match the darkness in your heart."
 				SSticker.mode.traitors += user.mind
->>>>>>> citrp/master
 				user.mind.special_role = "traitor"
 				var/datum/objective/hijack/hijack = new
 				hijack.owner = user.mind
@@ -104,7 +98,7 @@
 
 ///////////////Meatgrinder//////////////
 
-
+/*
 /obj/effect/meatgrinder
 	name = "Meat Grinder"
 	desc = "What is that thing?"
@@ -144,7 +138,7 @@
 	name = "Meat Grinder"
 	icon_state = "blob"
 	triggerproc = "triggerrad1"
-
+*/
 
 /////For the Wishgranter///////////
 
@@ -177,3 +171,4 @@
 		C.visible_message("<span class='warning'>[usr] appears to wake from the dead, having healed all wounds.</span>")
 		C.update_canmove()
 	return 1
+*/

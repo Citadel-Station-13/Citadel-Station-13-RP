@@ -290,6 +290,14 @@ datum/gear/suit/duster
 	..()
 	gear_tweaks += gear_tweak_free_color_choice
 
+/datum/gear/suit/roles/poncho/cloak/cloakglowing
+	display_name = "Civilian Cloak - Glowing Light"
+	path = /obj/item/clothing/accessory/poncho/roles/cloak/glowing
+
+/datum/gear/suit/roles/poncho/cloak/cloakglowingdark
+	display_name = "Civilian Cloak - Glowing Dark"
+	path = /obj/item/clothing/accessory/poncho/roles/cloak/glowingdark
+
 /datum/gear/suit/unathi_robe
 	display_name = "Civilian Roughspun Robe"
 	path = /obj/item/clothing/suit/unathi/robe

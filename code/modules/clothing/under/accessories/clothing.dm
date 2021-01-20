@@ -235,6 +235,18 @@
 	icon_state = "cloak"
 	item_state = "cloak"
 
+/obj/item/clothing/accessory/poncho/roles/cloak/glowing
+	name = "glowing cloak"
+	desc = "A fancy cloak with a RGB LED color strip along the trim, cycling through the colors of the rainbow."
+	icon_state = "cloakglowing"
+	item_state = "cloakglowing"
+
+/obj/item/clothing/accessory/poncho/roles/cloak/glowingdark
+	name = "dark glowing cloak"
+	desc = "A fancy, dark cloak with a RGB LED color strip along the trim, cycling through the colors of the rainbow."
+	icon_state = "cloakglowingdark"
+	item_state = "cloakglowingdark"
+
 /obj/item/clothing/accessory/hawaii
 	name = "flower-pattern shirt"
 	desc = "You probably need some welder googles to look at this."

@@ -4,7 +4,7 @@
 /area)
 "ab" = (
 /obj/machinery/power/tracker,
-/turf/simulated/floor/plating/airless,
+/turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "ac" = (
 /obj/machinery/power/tracker,
@@ -22,9 +22,6 @@
 /area/awaymission/northblock)
 "af" = (
 /turf/space,
-/area/awaymission/northblock)
-"ag" = (
-/turf/simulated/floor/plating/airless,
 /area/awaymission/northblock)
 "ah" = (
 /turf/simulated/floor/airless{
@@ -46,31 +43,14 @@
 /obj/machinery/door/window/westright,
 /turf/simulated/floor/airless,
 /area/awaymission/northblock)
-"am" = (
-/turf/simulated/floor/airless{
-	icon_state = "floorscorched1"
-	},
-/area/awaymission/northblock)
-"an" = (
-/turf/simulated/floor/airless{
-	icon_state = "damaged5"
-	},
-/area/awaymission/northblock)
 "ao" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor/airless{
-	icon_state = "damaged4"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "ap" = (
 /turf/simulated/floor/airless,
-/area/awaymission/northblock)
-"aq" = (
-/turf/simulated/floor/airless{
-	icon_state = "damaged4"
-	},
 /area/awaymission/northblock)
 "ar" = (
 /obj/machinery/door/window/eastleft{
@@ -89,26 +69,23 @@
 /turf/simulated/floor,
 /area/awaymission/northblock)
 "au" = (
-/obj/structure/computerframe{
-	anchored = 1
-	},
+/obj/structure/frame/computer,
 /turf/simulated/floor,
 /area/awaymission/northblock)
 "av" = (
 /obj/structure/window/reinforced/tinted,
 /obj/structure/window/reinforced/tinted{
-	dir = 8;
-	icon_state = "twindow"
+	dir = 8
 	},
 /obj/structure/table/standard,
-/obj/item/stack/sheet/metal{
+/obj/fiftyspawner/steel{
 	amount = 50
 	},
-/obj/item/stack/sheet/metal{
+/obj/fiftyspawner/steel{
 	amount = 50
 	},
-/obj/item/stack/sheet/glass,
-/obj/item/stack/sheet/plasteel,
+/obj/fiftyspawner/glass,
+/obj/fiftyspawner/plasteel,
 /turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "aw" = (
@@ -122,76 +99,49 @@
 /area/awaymission/northblock)
 "ay" = (
 /obj/structure/window/reinforced/tinted,
-/obj/machinery/portable_atmospherics/scrubber,
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "az" = (
 /obj/structure/window/reinforced/tinted,
-/obj/machinery/portable_atmospherics/pump,
+/obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "aA" = (
 /obj/structure/window/reinforced/tinted,
 /obj/structure/window/reinforced/tinted{
-	dir = 4;
-	icon_state = "twindow"
+	dir = 4
 	},
 /obj/structure/closet/secure_closet/engineering_electrical,
 /turf/simulated/floor/airless,
 /area/awaymission/northblock)
-"aB" = (
-/turf/simulated/floor/airless{
-	icon_state = "floorscorched2"
-	},
-/area/awaymission/northblock)
 "aC" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "wall3"
-	},
+/turf/simulated/shuttle/wall/dark,
 /area/awaymission/syndishuttle)
 "aD" = (
+/turf/simulated/shuttle/wall/dark,
 /turf/space,
-/turf/simulated/shuttle/wall{
-	dir = 1;
-	icon_state = "diagonalWall3"
-	},
 /area/awaymission/syndishuttle)
-"aE" = (
-/obj/machinery/door/airlock/engineering,
-/turf/simulated/floor/plating/airless,
-/area/awaymission/northblock)
-"aF" = (
-/turf/simulated/floor/airless{
-	icon_state = "damaged3"
-	},
-/area/awaymission/northblock)
-"aG" = (
-/turf/simulated/floor/airless{
-	icon_state = "damaged2"
-	},
-/area/awaymission/northblock)
 "aH" = (
 /obj/effect/decal/remains/robot,
-/turf/simulated/floor/airless{
-	icon_state = "damaged5"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "aI" = (
 /obj/structure/shuttle/engine/propulsion{
-	 icon_state = "burst_l";
+	 = on_state = "burst_l";
 	dir = 4
 	},
 /turf/space,
 /area/awaymission/syndishuttle)
 "aJ" = (
-/turf/simulated/floor/plating/airless,
+/turf/simulated/floor/airless,
 /area/awaymission/syndishuttle)
 "aK" = (
 /turf/space,
 /area/awaymission/syndishuttle)
 "aL" = (
 /obj/machinery/recharge_station,
-/turf/simulated/floor,
+/turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "aM" = (
 /obj/structure/table/standard,
@@ -203,30 +153,18 @@
 /area/awaymission/northblock)
 "aO" = (
 /obj/structure/shuttle/engine/propulsion{
-	 icon_state = "propulsion_r";
+	 = on_state = "propulsion_r";
 	dir = 4
 	},
 /turf/space,
 /area/awaymission/syndishuttle)
 "aP" = (
 /obj/structure/shuttle/engine/heater{
-	 icon_state = "heater";
+	 = on_state = "heater";
 	dir = 8
 	},
-/turf/simulated/floor/plating/airless,
+/turf/simulated/floor/airless,
 /area/awaymission/syndishuttle)
-"aQ" = (
-/turf/simulated/floor/plating/airless,
-/turf/simulated/shuttle/wall{
-	icon_state = "diagonalWall3"
-	},
-/area/awaymission/syndishuttle)
-"aR" = (
-/obj/structure/closet/secure_closet/engineering_personal,
-/turf/simulated/floor/airless{
-	icon_state = "damaged2"
-	},
-/area/awaymission/northblock)
 "aS" = (
 /obj/structure/closet/secure_closet/engineering_personal,
 /turf/simulated/floor/airless,
@@ -237,37 +175,23 @@
 /turf/simulated/floor,
 /area/awaymission/northblock)
 "aU" = (
-/obj/machinery/mech_bay_recharge_port,
+/obj/machinery/mech_recharger,
 /turf/simulated/floor,
 /area/awaymission/northblock)
 "aV" = (
-/obj/structure/stool/bed/chair/office/dark{
+/obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
 /turf/simulated/floor,
 /area/awaymission/northblock)
-"aW" = (
-/turf/simulated/floor{
-	icon_state = "bot";
-	dir = 1
-	},
-/area/awaymission/northblock)
 "aX" = (
-/obj/machinery/portable_atmospherics/canister/toxins{
+/obj/machinery/portable_atmospherics/canister/phoron{
 	destroyed = 1
 	},
 /turf/simulated/shuttle/plating,
 /area/awaymission/syndishuttle)
-"aY" = (
-/turf/simulated/shuttle/plating,
-/turf/simulated/shuttle/wall{
-	icon_state = "diagonalWall3"
-	},
-/area/awaymission/syndishuttle)
 "aZ" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "wall3"
-	},
+/turf/simulated/shuttle/wall/dark,
 /area)
 "ba" = (
 /turf/simulated/wall,
@@ -284,12 +208,10 @@
 /area/awaymission/northblock)
 "bd" = (
 /obj/structure/shuttle/engine/propulsion{
-	 icon_state = "burst_l";
+	 = on_state = "burst_l";
 	dir = 4
 	},
-/turf/simulated/shuttle/wall{
-	icon_state = "wall3"
-	},
+/turf/simulated/shuttle/plating,
 /area/awaymission/syndishuttle)
 "be" = (
 /obj/structure/shuttle/engine/heater,
@@ -300,70 +222,40 @@
 /area/awaymission/syndishuttle)
 "bg" = (
 /obj/machinery/sleeper,
-/turf/simulated/shuttle/floor{
-	icon_state = "floor4"
-	},
-/area/awaymission/syndishuttle)
-"bh" = (
-/obj/machinery/sleeper{
-	icon_state = "sleeper_0-r";
-	orient = "RIGHT"
-	},
-/turf/simulated/shuttle/floor{
-	icon_state = "floor4"
-	},
+/turf/simulated/shuttle/plating,
 /area/awaymission/syndishuttle)
 "bi" = (
 /obj/machinery/vending/snack,
-/turf/simulated/shuttle/floor{
-	icon_state = "floor4"
-	},
+/turf/simulated/shuttle/plating,
 /area/awaymission/syndishuttle)
 "bj" = (
 /obj/machinery/vending/cola,
-/turf/simulated/shuttle/floor{
-	icon_state = "floor4"
-	},
+/turf/simulated/shuttle/plating,
 /area/awaymission/syndishuttle)
 "bk" = (
 /obj/machinery/vending/cigarette,
-/turf/simulated/shuttle/floor{
-	icon_state = "floor4"
-	},
+/turf/simulated/shuttle/plating,
 /area/awaymission/syndishuttle)
 "bl" = (
 /obj/machinery/vending/coffee,
-/turf/simulated/shuttle/floor{
-	icon_state = "floor4"
-	},
+/turf/simulated/shuttle/plating,
 /area/awaymission/syndishuttle)
 "bm" = (
 /obj/structure/closet/syndicate,
-/obj/item/clothing/suit/space/rig/syndi,
-/obj/item/clothing/head/helmet/space/rig/syndi,
-/turf/simulated/shuttle/floor{
-	icon_state = "floor4"
-	},
-/area/awaymission/syndishuttle)
-"bn" = (
-/turf/simulated/shuttle/floor{
-	icon_state = "floor4"
-	},
+/obj/item/clothing/suit/space/void/merc,
+/obj/item/clothing/head/helmet/space/void/merc,
+/turf/simulated/shuttle/plating,
 /area/awaymission/syndishuttle)
 "bo" = (
 /obj/structure/closet/syndicate,
-/turf/simulated/shuttle/floor{
-	icon_state = "floor4"
-	},
+/turf/simulated/shuttle/plating,
 /area/awaymission/syndishuttle)
 "bp" = (
 /obj/structure/shuttle/engine/propulsion{
-	 icon_state = "propulsion";
+	 = on_state = "propulsion";
 	dir = 4
 	},
-/turf/simulated/shuttle/wall{
-	icon_state = "wall3"
-	},
+/turf/simulated/shuttle/plating,
 /area/awaymission/syndishuttle)
 "bq" = (
 /obj/structure/shuttle/engine/router,
@@ -371,7 +263,7 @@
 /area/awaymission/syndishuttle)
 "br" = (
 /obj/structure/shuttle/engine/heater{
-	 icon_state = "heater";
+	 = on_state = "heater";
 	dir = 8
 	},
 /turf/simulated/shuttle/plating,
@@ -395,147 +287,82 @@
 	},
 /area/awaymission/syndishuttle)
 "bw" = (
-/turf/simulated/floor/airless{
-	icon_state = "damaged5"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "bx" = (
 /obj/structure/girder/reinforced,
-/turf/simulated/floor/airless{
-	icon_state = "damaged4"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "by" = (
 /turf/simulated/wall/r_wall,
 /area/awaymission/research)
-"bz" = (
-/obj/machinery/portable_atmospherics/canister/toxins,
-/turf/simulated/shuttle/plating,
-/area/awaymission/syndishuttle)
 "bA" = (
-/obj/machinery/bot/medbot/mysterious{
+/mob/living/bot/medbot/mysterious{
 	desc = "A dark little medical robot. She looks somewhat underwhelmed.";
 	name = "Nightingale"
 	},
-/turf/simulated/shuttle/floor{
-	icon_state = "floor4"
-	},
+/turf/simulated/shuttle/plating,
 /area/awaymission/syndishuttle)
 "bB" = (
-/obj/structure/stool/bed/chair{
+/obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/simulated/shuttle/floor{
-	icon_state = "floor4"
-	},
+/turf/simulated/shuttle/plating,
 /area/awaymission/syndishuttle)
 "bC" = (
 /obj/structure/table/standard,
-/turf/simulated/shuttle/floor{
-	icon_state = "floor4"
-	},
+/turf/simulated/shuttle/plating,
 /area/awaymission/syndishuttle)
 "bD" = (
 /obj/structure/table/standard,
 /obj/item/paper/sc_safehint_paper_shuttle,
-/turf/simulated/shuttle/floor{
-	icon_state = "floor4"
-	},
-/area/awaymission/syndishuttle)
-"bE" = (
-/obj/structure/stool/bed/chair{
-	dir = 8
-	},
-/turf/simulated/shuttle/floor{
-	icon_state = "floor4"
-	},
+/turf/simulated/shuttle/plating,
 /area/awaymission/syndishuttle)
 "bF" = (
-/turf/space,
+/turf/simulated/floor/airless,
 /turf/simulated/shuttle/wall{
 	dir = 4;
 	icon_state = "diagonalWall3"
 	},
 /area/awaymission/syndishuttle)
-"bG" = (
-/turf/simulated/floor/airless{
-	icon_state = "damaged3"
-	},
-/area/awaymission/research)
-"bH" = (
-/turf/simulated/floor{
-	dir = 9;
-	icon_state = "warning"
-	},
-/area/awaymission/research)
-"bI" = (
-/turf/simulated/floor{
-	dir = 1;
-	icon_state = "warning"
-	},
-/area/awaymission/research)
 "bJ" = (
-/obj/item/shard,
+/obj/item/material/shard,
 /mob/living/carbon/alien/larva{
 	bruteloss = 25;
 	fireloss = 175;
 	stat = 2
 	},
-/turf/simulated/floor{
-	dir = 5;
-	icon_state = "warning"
-	},
-/area/awaymission/research)
-"bK" = (
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "bL" = (
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "bM" = (
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/simulated/floor{
-	dir = 9;
-	icon_state = "warning"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "bN" = (
 /obj/machinery/door/window/eastleft,
-/turf/simulated/floor{
-	dir = 5;
-	icon_state = "warning"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "bO" = (
 /obj/machinery/door/window/westright,
-/turf/simulated/floor{
-	dir = 9;
-	icon_state = "warning"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "bP" = (
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/simulated/floor{
-	dir = 5;
-	icon_state = "warning"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "bQ" = (
 /obj/structure/filingcabinet/filingcabinet,
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "bR" = (
 /obj/structure/window/reinforced,
@@ -544,9 +371,7 @@
 	},
 /obj/machinery/door/window/eastleft,
 /obj/machinery/door/window/westright,
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "bS" = (
 /mob/living/simple_mob/animal/passive/lizard,
@@ -556,85 +381,39 @@
 /turf/simulated/floor/grass,
 /area/awaymission/research)
 "bU" = (
-/mob/living/carbon/monkey,
+/mob/living/carbon/human/monkey,
 /turf/simulated/floor/grass,
 /area/awaymission/research)
 "bV" = (
 /obj/structure/shuttle/engine/propulsion{
-	 icon_state = "burst_r";
+	 = on_state = "burst_r";
 	dir = 4
 	},
-/turf/simulated/shuttle/wall{
-	icon_state = "wall3"
-	},
+/turf/simulated/shuttle/plating,
 /area/awaymission/syndishuttle)
 "bW" = (
 /obj/structure/shuttle/engine/heater{
-	 icon_state = "heater";
+	 = on_state = "heater";
 	dir = 1
 	},
 /turf/simulated/shuttle/plating,
 /area/awaymission/syndishuttle)
-"bX" = (
-/turf/simulated/shuttle/plating,
-/turf/simulated/shuttle/wall{
-	dir = 8;
-	icon_state = "diagonalWall3"
-	},
-/area/awaymission/syndishuttle)
-"bY" = (
-/obj/structure/girder/reinforced,
-/turf/simulated/floor/airless{
-	icon_state = "damaged3"
-	},
-/area/awaymission/research)
-"bZ" = (
-/turf/simulated/floor{
-	dir = 8;
-	icon_state = "warning"
-	},
-/area/awaymission/research)
-"ca" = (
-/turf/simulated/floor,
-/area/awaymission/research)
-"cb" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/turf/simulated/floor{
-	dir = 4;
-	icon_state = "warning"
-	},
-/area/awaymission/research)
 "cc" = (
 /mob/living/simple_mob/animal/space/alien/sentinel{
 	fireloss = 200;
 	stat = 2
 	},
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
-/area/awaymission/research)
-"cd" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/turf/simulated/floor{
-	dir = 8;
-	icon_state = "warning"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "ce" = (
-/mob/living/simple_mob/hostile/creature{
+/mob/living/simple_mob/creature{
 	name = "Experiment 35b"
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "cf" = (
 /obj/machinery/dna_scannernew,
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "cg" = (
 /obj/structure/window/reinforced{
@@ -647,9 +426,7 @@
 	anchored = 1;
 	state = 2
 	},
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "ci" = (
 /obj/machinery/atmospherics/pipe/simple{
@@ -657,52 +434,30 @@
 	icon_state = "intact";
 	level = 2
 	},
-/turf/simulated/floor/airless{
-	icon_state = "damaged3"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "cj" = (
 /obj/machinery/door/window/southleft,
-/turf/simulated/floor{
-	dir = 10;
-	icon_state = "warning"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "ck" = (
-/obj/item/shard{
-	icon_state = "small"
-	},
 /mob/living/carbon/alien/larva{
 	bruteloss = 50;
 	fireloss = 150;
 	stat = 2
 	},
-/turf/simulated/floor{
-	dir = 2;
-	icon_state = "warning"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "cl" = (
-/obj/item/shard{
-	icon_state = "medium"
-	},
-/obj/item/shard{
-	icon_state = "small"
-	},
 /obj/effect/alien/weeds/node,
-/turf/simulated/floor{
-	dir = 6;
-	icon_state = "warning"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "cm" = (
 /obj/structure/table/standard,
 /obj/item/clipboard,
 /obj/item/paper,
 /obj/item/paper,
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "cn" = (
 /obj/structure/window/reinforced{
@@ -712,57 +467,39 @@
 /mob/living/simple_mob/mechanical/hivebot{
 	opensdoors = 0
 	},
-/turf/simulated/floor{
-	dir = 10;
-	icon_state = "warning"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "co" = (
 /obj/structure/window/reinforced,
-/turf/simulated/floor{
-	dir = 2;
-	icon_state = "warning"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "cp" = (
 /obj/structure/window/reinforced{
 	dir = 4
 	},
 /obj/structure/window/reinforced,
-/turf/simulated/floor{
-	dir = 6;
-	icon_state = "warning"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "cq" = (
 /obj/machinery/door/window/southright,
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "cr" = (
 /obj/structure/window/reinforced{
 	dir = 8
 	},
 /obj/structure/window/reinforced,
-/turf/simulated/floor{
-	dir = 10;
-	icon_state = "warning"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "cs" = (
-/obj/structure/stool/bed/chair/office/light{
+/obj/structure/bed/chair/office/light{
 	dir = 4
 	},
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "ct" = (
 /obj/machinery/computer/scan_consolenew,
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "cu" = (
 /obj/structure/window/reinforced,
@@ -773,7 +510,7 @@
 /area/awaymission/research)
 "cv" = (
 /obj/structure/window/reinforced,
-/mob/living/carbon/monkey,
+/mob/living/carbon/human/monkey,
 /turf/simulated/floor/grass,
 /area/awaymission/research)
 "cw" = (
@@ -787,14 +524,14 @@
 /area/awaymission/research)
 "cy" = (
 /obj/structure/shuttle/engine/propulsion{
-	 icon_state = "propulsion";
+	 = on_state = "propulsion";
 	dir = 4
 	},
 /turf/space,
 /area/awaymission/research)
 "cz" = (
 /obj/structure/shuttle/engine/heater{
-	 icon_state = "heater";
+	 = on_state = "heater";
 	dir = 8
 	},
 /obj/structure/window/reinforced,
@@ -804,85 +541,50 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/simulated/floor/plating/airless,
-/area/awaymission/research)
-"cA" = (
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
-/area/awaymission/research)
-"cB" = (
-/obj/structure/window/reinforced,
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "cC" = (
 /obj/structure/shuttle/engine/propulsion{
-	 icon_state = "propulsion_l";
+	 = on_state = "propulsion_l";
 	dir = 4
 	},
 /turf/space,
 /area/awaymission/syndishuttle)
-"cD" = (
-/turf/simulated/floor/plating/airless,
-/turf/simulated/shuttle/wall{
-	dir = 8;
-	icon_state = "diagonalWall3"
-	},
-/area/awaymission/syndishuttle)
 "cE" = (
-/obj/machinery/portable_atmospherics/canister/toxins{
+/obj/machinery/portable_atmospherics/canister/phoron{
 	destroyed = 1
 	},
-/turf/simulated/floor/airless{
-	icon_state = "damaged4"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/northblock)
-"cF" = (
-/obj/machinery/door/window/eastleft,
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
-/area/awaymission/research)
 "cG" = (
 /obj/machinery/power/emitter{
 	anchored = 1;
 	dir = 1;
-	icon_state = "emitter";
 	state = 2
 	},
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "cH" = (
-/obj/item/clothing/mask/facehugger,
+/obj/item/toy/plushie/face_hugger,
 /mob/living/simple_mob/animal/space/alien/queen{
 	fireloss = 300;
 	stat = 2
 	},
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "cI" = (
 /obj/effect/decal/remains/human,
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "cJ" = (
 /obj/structure/table/standard,
 /obj/item/paper_bin,
 /obj/item/pen,
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "cK" = (
 /obj/structure/shuttle/engine/heater{
-	 icon_state = "heater";
+	 = on_state = "heater";
 	dir = 8
 	},
 /obj/structure/window/reinforced{
@@ -892,60 +594,48 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/simulated/floor/plating/airless,
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "cL" = (
 /obj/effect/decal/remains/human{
 	desc = "This guy seemed to have died in terrible way! Half his remains are dust.";
-	icon_state = "remains";
 	name = "Syndicate agent remains"
 	},
-/obj/item/clothing/suit/storage/labcoat,
+/obj/item/clothing/suit/storage/toggle/labcoat,
 /obj/item/clipboard{
 	pixel_x = -7;
 	pixel_y = -4
 	},
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "cM" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "cN" = (
 /obj/effect/rune,
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "cO" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "cP" = (
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 4
 	},
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "cQ" = (
 /obj/structure/lattice,
 /obj/machinery/atmospherics/pipe/simple,
-/turf/space,
+/turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "cR" = (
 /obj/machinery/atmospherics/pipe/simple{
@@ -953,30 +643,18 @@
 	icon_state = "intact";
 	level = 2
 	},
-/turf/simulated/floor/airless{
-	icon_state = "damaged2"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "cS" = (
 /obj/structure/closet/firecloset,
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
-/area/awaymission/research)
-"cT" = (
-/obj/effect/alien/weeds/node,
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "cU" = (
 /mob/living/simple_mob/animal/space/alien{
 	fireloss = 200;
 	stat = 2
 	},
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "cV" = (
 /obj/structure/window/reinforced,
@@ -996,28 +674,10 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
-/area/awaymission/research)
-"cX" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "cY" = (
 /turf/space,
-/area/awaymission/research)
-"cZ" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
 /area/awaymission/research)
 "da" = (
 /obj/machinery/door/airlock/atmos{
@@ -1027,7 +687,7 @@
 /area/awaymission/northblock)
 "db" = (
 /obj/machinery/shower{
-	 icon_state = "shower";
+	 = on_state = "shower";
 	dir = 4
 	},
 /obj/structure/window/reinforced/tinted,
@@ -1037,43 +697,32 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor{
-	icon_state = "delivery"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "dd" = (
 /obj/structure/closet/l3closet/scientist,
-/turf/simulated/floor{
-	icon_state = "delivery"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "de" = (
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "df" = (
 /obj/machinery/door/window/northleft{
 	name = "Windoor"
 	},
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "dg" = (
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "dh" = (
 /obj/structure/window/reinforced{
@@ -1087,17 +736,7 @@
 /obj/item/clothing/head/helmet/swat,
 /obj/effect/decal/remains/human,
 /obj/item/gun/energy/laser/practice/sc_laser,
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
-/area/awaymission/research)
-"di" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "dj" = (
 /obj/structure/sign/securearea{
@@ -1108,28 +747,22 @@
 /obj/item/clothing/head/helmet/swat,
 /obj/effect/decal/remains/human,
 /obj/item/gun/energy/laser/practice/sc_laser,
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "dk" = (
-/obj/machinery/door_control{
+/obj/machinery/button/remote/airlock{
 	id = "Narsiedoor";
 	name = "Blast Door Control";
 	pixel_x = -28
 	},
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "dl" = (
-/obj/machinery/door/poddoor{
+/obj/machinery/door/airlock/voidcraft/survival_pod{
 	id = "Narsiedoor";
 	name = "Blast Doors"
 	},
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "dm" = (
 /obj/machinery/power/emitter{
@@ -1137,15 +770,11 @@
 	dir = 8;
 	state = 2
 	},
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "dn" = (
 /obj/machinery/atmospherics/pipe/simple,
-/turf/simulated/floor/airless{
-	icon_state = "damaged2"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "do" = (
 /obj/structure/closet/firecloset,
@@ -1157,9 +786,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/airless{
-	icon_state = "floorscorched1"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "dq" = (
 /obj/machinery/door/airlock/highsecurity{
@@ -1168,21 +795,17 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "dr" = (
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
-/turf/simulated/floor{
-	icon_state = "delivery"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "ds" = (
 /obj/machinery/door/window/westright{
@@ -1194,12 +817,9 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "dt" = (
 /obj/structure/cable{
@@ -1207,61 +827,30 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "du" = (
 /obj/effect/decal/remains/human,
-/obj/item/clothing/suit/storage/labcoat,
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/obj/item/clothing/suit/storage/toggle/labcoat,
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "dv" = (
 /obj/machinery/door/airlock/hatch{
 	name = "High-Security Airlock"
 	},
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
-"dw" = (
-/obj/machinery/singularity/narsie/sc_Narsie{
-	pixel_x = -48;
-	pixel_y = -51
-	},
-/turf/space,
-/area/awaymission/research)
-"dx" = (
-/turf/simulated/floor{
-	dir = 0;
-	icon_state = "blue"
-	},
-/area/awaymission/northblock)
 "dy" = (
 /obj/machinery/message_server{
 	stat = 1
 	},
-/turf/simulated/floor{
-	dir = 0;
-	icon_state = "blue"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "dz" = (
 /obj/machinery/computer/message_monitor{
 	stat = 1
 	},
-/turf/simulated/floor{
-	dir = 0;
-	icon_state = "blue"
-	},
-/area/awaymission/northblock)
-"dA" = (
-/turf/simulated/floor{
-	dir = 8;
-	icon_state = "bluecorner"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "dB" = (
 /obj/structure/cable{
@@ -1269,25 +858,17 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/airless{
-	icon_state = "damaged5"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "dC" = (
 /obj/machinery/shower{
 	dir = 4;
-	icon_state = "shower";
 	pixel_y = -10
 	},
 /obj/structure/window/reinforced/tinted{
 	dir = 1
 	},
 /turf/simulated/floor,
-/area/awaymission/research)
-"dD" = (
-/turf/simulated/floor{
-	icon_state = "delivery"
-	},
 /area/awaymission/research)
 "dE" = (
 /obj/structure/window/reinforced,
@@ -1298,41 +879,27 @@
 	name = "Research APC";
 	pixel_x = -28
 	},
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "dF" = (
 /obj/machinery/door/window/southright{
 	name = "Windoor"
 	},
 /obj/effect/decal/remains/human,
-/obj/item/clothing/suit/storage/labcoat,
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
-/area/awaymission/research)
-"dG" = (
-/obj/structure/window/reinforced,
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/obj/item/clothing/suit/storage/toggle/labcoat,
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "dH" = (
 /obj/machinery/door/window/southright{
 	name = "Windoor"
 	},
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "dI" = (
 /obj/structure/window/reinforced,
 /obj/effect/decal/remains/human,
-/obj/item/clothing/suit/storage/labcoat,
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/obj/item/clothing/suit/storage/toggle/labcoat,
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "dJ" = (
 /obj/machinery/light{
@@ -1347,15 +914,11 @@
 /obj/item/clothing/head/helmet/swat,
 /obj/effect/decal/remains/human,
 /obj/item/gun/energy/laser/practice/sc_laser,
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "dK" = (
 /obj/machinery/light/small,
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "dL" = (
 /obj/structure/window/reinforced{
@@ -1364,9 +927,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "dM" = (
 /obj/structure/window/reinforced{
@@ -1375,35 +936,8 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
-"dN" = (
-/turf/simulated/floor{
-	icon_state = "bluecorner"
-	},
-/area/awaymission/northblock)
-"dO" = (
-/obj/structure/stool/bed/chair/office/light{
-	dir = 1
-	},
-/turf/simulated/floor/airless{
-	icon_state = "damaged3"
-	},
-/area/awaymission/northblock)
-"dP" = (
-/obj/structure/stool/bed/chair/office/light{
-	dir = 1
-	},
-/turf/simulated/floor,
-/area/awaymission/northblock)
-"dQ" = (
-/turf/simulated/floor{
-	icon_state = "blue";
-	dir = 8
-	},
-/area/awaymission/northblock)
 "dR" = (
 /obj/structure/showcase{
 	icon_state = "showcase_2"
@@ -1414,49 +948,17 @@
 /obj/structure/sign/goldenplaque{
 	pixel_y = 31
 	},
-/turf/simulated/floor/airless{
-	icon_state = "damaged2"
-	},
-/area/awaymission/northblock)
-"dT" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
-/turf/simulated/floor/airless{
-	icon_state = "floorscorched1"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "dU" = (
 /obj/structure/sign/atmosplaque{
 	pixel_y = 31
 	},
-/turf/simulated/floor/airless{
-	icon_state = "damaged2"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/northblock)
-"dV" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/airless{
-	icon_state = "floorscorched1"
-	},
-/area/awaymission/northblock)
-"dW" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
-/area/awaymission/research)
 "dX" = (
 /obj/structure/table,
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "dY" = (
 /obj/structure/table/standard,
@@ -1464,34 +966,16 @@
 	amount = 5
 	},
 /obj/item/tool/screwdriver,
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "dZ" = (
-/obj/structure/computerframe{
-	anchored = 1
-	},
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/obj/structure/frame/computer,
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "ea" = (
 /obj/machinery/light,
-/obj/structure/computerframe{
-	anchored = 1
-	},
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
-/area/awaymission/research)
-"eb" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/obj/structure/frame/computer,
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "ec" = (
 /turf/simulated/wall,
@@ -1504,98 +988,44 @@
 	dir = 8
 	},
 /obj/structure/grille,
-/obj/item/shard,
+/obj/item/material/shard,
 /turf/simulated/floor/plating,
 /area/awaymission/northblock)
 "ee" = (
 /obj/structure/table/standard,
-/turf/simulated/floor{
-	icon_state = "bluecorner"
-	},
-/area/awaymission/northblock)
-"ef" = (
-/turf/simulated/floor{
-	icon_state = "blue";
-	dir = 6
-	},
-/area/awaymission/northblock)
-"eg" = (
-/turf/simulated/floor{
-	icon_state = "blue";
-	dir = 10
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "eh" = (
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/simulated/floor{
-	dir = 0;
-	icon_state = "blue"
-	},
-/area/awaymission/northblock)
-"ei" = (
-/turf/simulated/floor{
-	dir = 9;
-	icon_state = "blue"
-	},
-/area/awaymission/northblock)
-"ej" = (
-/turf/simulated/floor{
-	dir = 1;
-	icon_state = "blue"
-	},
-/area/awaymission/northblock)
-"ek" = (
-/turf/simulated/floor{
-	dir = 5;
-	icon_state = "blue"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "el" = (
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 8
 	},
-/turf/simulated/floor/airless{
-	icon_state = "damaged3"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "em" = (
 /obj/structure/window/reinforced,
 /obj/machinery/computer/aiupload,
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "en" = (
 /obj/structure/window/reinforced,
 /obj/machinery/door/window/brigdoor/eastleft,
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "eo" = (
-/obj/machinery/atmospherics/unary/cold_sink/freezer{
+/obj/machinery/atmospherics/unary/freezer{
 	current_temperature = 80
 	},
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "ep" = (
 /obj/machinery/atmospherics/unary/vent_pump,
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
-/area/awaymission/research)
-"eq" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "er" = (
 /obj/structure/window/reinforced{
@@ -1608,21 +1038,8 @@
 /turf/simulated/floor/plating,
 /area/awaymission/northblock)
 "es" = (
-/obj/structure/computerframe{
-	anchored = 1
-	},
-/turf/simulated/floor{
-	icon_state = "blue";
-	dir = 4
-	},
-/area/awaymission/northblock)
-"et" = (
-/obj/structure/stool/bed/chair/office/light{
-	dir = 8
-	},
-/turf/simulated/floor/airless{
-	icon_state = "floorscorched1"
-	},
+/obj/structure/frame/computer,
+/turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "eu" = (
 /obj/structure/cable{
@@ -1637,8 +1054,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor,
 /area/awaymission/northblock)
@@ -1646,66 +1062,17 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
-/turf/simulated/floor/airless{
-	icon_state = "damaged3"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "ex" = (
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor,
-/area/awaymission/northblock)
-"ey" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/turf/simulated/floor/airless{
-	icon_state = "floorscorched1"
-	},
-/area/awaymission/northblock)
-"ez" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/turf/simulated/floor/airless{
-	icon_state = "damaged2"
-	},
-/area/awaymission/northblock)
-"eA" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/turf/simulated/floor{
-	icon_state = "blue";
-	dir = 4
-	},
-/area/awaymission/northblock)
-"eB" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/turf/simulated/floor/airless{
-	icon_state = "floorscorched2"
-	},
 /area/awaymission/northblock)
 "eC" = (
 /obj/structure/cable{
@@ -1718,9 +1085,7 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/airless{
-	icon_state = "floorscorched1"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "eD" = (
 /obj/structure/AIcore,
@@ -1745,9 +1110,7 @@
 	icon_state = "manifold";
 	level = 2
 	},
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "eI" = (
 /obj/machinery/atmospherics/pipe/simple{
@@ -1755,9 +1118,7 @@
 	icon_state = "intact";
 	level = 2
 	},
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "eJ" = (
 /obj/machinery/atmospherics/pipe/simple{
@@ -1768,13 +1129,11 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "eK" = (
 /obj/structure/shuttle/engine/heater{
-	 icon_state = "heater";
+	 = on_state = "heater";
 	dir = 8
 	},
 /obj/structure/window/reinforced{
@@ -1784,24 +1143,14 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced,
-/turf/simulated/floor/plating/airless,
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "eL" = (
 /obj/structure/window/reinforced{
 	dir = 8
 	},
 /obj/structure/grille,
-/obj/item/shard{
-	icon_state = "small"
-	},
 /turf/simulated/floor/plating,
-/area/awaymission/northblock)
-"eM" = (
-/obj/structure/table/standard,
-/turf/simulated/floor{
-	dir = 4;
-	icon_state = "bluecorner"
-	},
 /area/awaymission/northblock)
 "eN" = (
 /obj/machinery/power/apc{
@@ -1811,57 +1160,32 @@
 	pixel_x = 28
 	},
 /obj/structure/cable,
-/turf/simulated/floor{
-	dir = 9;
-	icon_state = "blue"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "eO" = (
 /obj/structure/window/reinforced,
-/turf/simulated/floor{
-	dir = 1;
-	icon_state = "blue"
-	},
-/area/awaymission/northblock)
-"eP" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/airless{
-	icon_state = "damaged2"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "eQ" = (
 /obj/structure/table/standard,
-/obj/item/reagent_containers/food/snacks/grown/potato,
 /obj/item/stack/cable_coil{
 	amount = 1
 	},
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "eR" = (
 /obj/structure/window/reinforced{
 	dir = 1
 	},
 /obj/structure/table/standard,
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "eS" = (
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/structure/computerframe{
-	anchored = 1
-	},
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/obj/structure/frame/computer,
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "eT" = (
 /obj/structure/window/reinforced{
@@ -1869,19 +1193,15 @@
 	},
 /obj/structure/table/standard,
 /obj/item/book/manual/research_and_development,
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "eU" = (
 /obj/structure/window/reinforced{
 	dir = 8
 	},
 /obj/effect/decal/remains/human,
-/obj/item/clothing/suit/storage/labcoat,
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/obj/item/clothing/suit/storage/toggle/labcoat,
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "eV" = (
 /obj/machinery/door/window/eastleft{
@@ -1890,9 +1210,7 @@
 /obj/machinery/door/window/westleft{
 	name = "Windoor"
 	},
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "eW" = (
 /obj/machinery/atmospherics/unary/vent_pump{
@@ -1905,65 +1223,26 @@
 	pressure_checks = 2;
 	pump_direction = 0
 	},
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "eX" = (
 /obj/machinery/r_n_d/server{
 	stat = 1
 	},
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
-"eY" = (
-/obj/machinery/power/emitter{
-	anchored = 1;
-	dir = 1;
-	icon_state = "emitter";
-	state = 2
-	},
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
-/area/awaymission/research)
-"eZ" = (
-/turf/simulated/floor{
-	dir = 4;
-	icon_state = "bluecorner"
-	},
-/area/awaymission/northblock)
-"fa" = (
-/obj/structure/stool/bed/chair/office/light,
-/turf/simulated/floor,
-/area/awaymission/northblock)
 "fb" = (
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/simulated/floor/airless{
-	icon_state = "floorscorched1"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "fc" = (
 /turf/simulated/floor,
 /area/awaymission/northblock)
 "fd" = (
 /obj/machinery/light/small,
-/turf/simulated/floor/airless{
-	icon_state = "floorscorched1"
-	},
-/area/awaymission/northblock)
-"fe" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/airless{
-	icon_state = "floorscorched2"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "ff" = (
 /obj/structure/table/standard,
@@ -1978,17 +1257,7 @@
 /obj/item/stock_parts/scanning_module{
 	pixel_y = -3
 	},
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
-/area/awaymission/research)
-"fg" = (
-/obj/structure/stool/bed/chair{
-	dir = 1
-	},
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "fh" = (
 /obj/structure/table/standard,
@@ -2005,48 +1274,22 @@
 	pixel_x = 3;
 	pixel_y = 3
 	},
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "fi" = (
 /obj/machinery/computer/crew,
-/turf/simulated/floor{
-	dir = 4;
-	icon_state = "bluecorner"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "fj" = (
 /obj/machinery/light/small,
-/obj/structure/computerframe{
-	anchored = 1
-	},
-/turf/simulated/floor{
-	dir = 1;
-	icon_state = "blue"
-	},
-/area/awaymission/northblock)
-"fk" = (
-/obj/structure/table/standard,
-/turf/simulated/floor{
-	dir = 1;
-	icon_state = "blue"
-	},
-/area/awaymission/northblock)
-"fl" = (
-/obj/structure/computerframe{
-	anchored = 1
-	},
-/turf/simulated/floor{
-	dir = 1;
-	icon_state = "bluecorner"
-	},
+/obj/structure/frame/computer,
+/turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "fm" = (
 /obj/machinery/door/airlock/gold{
 	name = "Airlock"
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "fn" = (
 /obj/structure/table/standard,
@@ -2056,9 +1299,7 @@
 	pixel_y = 5
 	},
 /obj/item/cell/crap,
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "fo" = (
 /obj/structure/table/standard,
@@ -2068,58 +1309,25 @@
 /obj/item/stock_parts/matter_bin{
 	pixel_x = -3
 	},
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "fp" = (
 /obj/machinery/door/window/eastleft{
 	name = "Windoor"
 	},
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "fq" = (
 /obj/structure/target_stake,
 /obj/item/target/syndicate,
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "fr" = (
 /obj/structure/closet/secure_closet/captains,
-/turf/simulated/floor{
-	icon_state = "grimy"
-	},
-/area/awaymission/northblock)
-"fs" = (
-/turf/simulated/floor{
-	icon_state = "grimy"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "ft" = (
 /turf/simulated/floor/airless,
-/area/awaymission/midblock)
-"fu" = (
-/turf/simulated/floor/airless{
-	icon_state = "floorscorched1"
-	},
-/area/awaymission/midblock)
-"fv" = (
-/turf/simulated/floor/airless{
-	icon_state = "damaged2"
-	},
-/area/awaymission/midblock)
-"fw" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/airless{
-	icon_state = "floorscorched1"
-	},
 /area/awaymission/midblock)
 "fx" = (
 /obj/structure/table/standard,
@@ -2128,49 +1336,29 @@
 	pixel_y = 5
 	},
 /obj/item/stock_parts/console_screen,
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "fy" = (
 /obj/structure/table/standard,
-/obj/item/stack/sheet/metal{
-	amount = 20;
-	pixel_x = -3;
-	pixel_y = -3
-	},
-/obj/item/stack/sheet/glass{
-	amount = 10;
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "fz" = (
 /obj/machinery/r_n_d/circuit_imprinter,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "fA" = (
 /obj/machinery/r_n_d/protolathe,
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "fB" = (
 /obj/machinery/r_n_d/destructive_analyzer,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "fC" = (
 /obj/structure/table/standard,
@@ -2179,9 +1367,7 @@
 	pixel_x = 5;
 	pixel_y = 5
 	},
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "fD" = (
 /obj/structure/table/holotable,
@@ -2194,25 +1380,15 @@
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "fE" = (
 /obj/structure/target_stake,
-/obj/item/grown/sunflower,
-/turf/simulated/floor{
-	icon_state = "showroomfloor"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/research)
 "fF" = (
-/obj/item/ammo_casing/c45,
-/obj/item/ammo_casing/c45{
-	pixel_x = 7
-	},
-/turf/simulated/floor{
-	icon_state = "grimy"
-	},
+/obj/item/ammo_casing/a45,
+/turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "fG" = (
 /obj/item/clothing/suit/space/syndicate,
@@ -2220,19 +1396,15 @@
 /obj/item/clothing/head/helmet/space/syndicate,
 /obj/effect/decal/remains/human{
 	desc = "This guy seemed to have died in terrible way! Half his remains are dust.";
-	icon_state = "remains";
 	name = "Syndicate agent remains"
 	},
 /obj/item/clothing/shoes/syndigaloshes,
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/item/gun/projectile/silenced/sc_silenced,
-/turf/simulated/floor{
-	icon_state = "grimy"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "fH" = (
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 8
 	},
 /turf/simulated/floor/airless,
@@ -2243,20 +1415,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/airless{
-	icon_state = "floorscorched1"
-	},
-/area/awaymission/midblock)
-"fJ" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/turf/simulated/floor/airless{
-	icon_state = "damaged5"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/midblock)
 "fK" = (
 /obj/structure/cable{
@@ -2264,9 +1423,7 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/airless{
-	icon_state = "damaged2"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/midblock)
 "fL" = (
 /turf/simulated/wall/cult,
@@ -2294,16 +1451,12 @@
 /area/awaymission/midblock)
 "fO" = (
 /turf/simulated/shuttle/wall{
-	 icon_state = "swall_s";
-	dir = 14;
-	dir = 2
+	 = on_state = "swall_s"
 	},
 /area/awaymission/arrivalblock)
 "fP" = (
 /turf/simulated/shuttle/wall{
-	 icon_state = "swall_t";
-	dir = 1;
-	dir = 2
+	 = on_state = "swall_t"
 	},
 /area/awaymission/arrivalblock)
 "fQ" = (
@@ -2339,10 +1492,7 @@
 "fT" = (
 /turf/space,
 /turf/simulated/shuttle/wall{
-	dir = 3;
-	icon_state = "swall_c";
-	dir = 2;
-	layer = 2
+	 = on_state = "swall_straight"
 	},
 /area/awaymission/arrivalblock)
 "fU" = (
@@ -2358,17 +1508,13 @@
 	pixel_x = 10;
 	pixel_y = 10
 	},
-/turf/simulated/floor{
-	icon_state = "grimy"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "fV" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/simulated/floor{
-	icon_state = "grimy"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "fW" = (
 /obj/structure/cable{
@@ -2382,25 +1528,16 @@
 /turf/simulated/wall,
 /area/awaymission/midblock)
 "fY" = (
-/obj/structure/stool/bed/chair{
+/obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/midblock)
 "fZ" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
-/area/awaymission/midblock)
-"ga" = (
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/midblock)
 "gb" = (
 /obj/structure/window/reinforced,
@@ -2412,69 +1549,36 @@
 /area/awaymission/midblock)
 "gc" = (
 /turf/simulated/shuttle/wall{
-	 icon_state = "swall_straight";
-	dir = 1;
-	dir = 2
+	 = on_state = "swall_straight"
 	},
 /area/awaymission/arrivalblock)
 "gd" = (
 /turf/simulated/shuttle/wall{
-	 icon_state = "swall";
-	dir = 1;
-	dir = 2
-	},
-/area/awaymission/arrivalblock)
-"ge" = (
-/turf/simulated/shuttle/floor{
-	icon_state = "floor3"
-	},
-/area/awaymission/arrivalblock)
-"gf" = (
-/obj/structure/stool/bed/chair{
-	dir = 1
-	},
-/turf/simulated/shuttle/floor{
-	icon_state = "floor3"
+	 = on_state = "swall"
 	},
 /area/awaymission/arrivalblock)
 "gg" = (
-/obj/structure/stool/bed/chair/comfy/brown{
+/obj/structure/bed/chair/comfy/brown{
 	dir = 1
 	},
-/turf/simulated/floor{
-	icon_state = "grimy"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "gh" = (
 /obj/item/storage/secure/safe/sc_ssafe{
 	pixel_x = 4;
 	pixel_y = -26
 	},
-/turf/simulated/floor{
-	icon_state = "grimy"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "gi" = (
-/obj/structure/stool/bed,
+/obj/structure/bed,
 /obj/item/bedsheet/captain,
 /obj/item/clothing/under/rank/captain,
 /obj/effect/decal/remains/human,
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/item/gun/energy/laser/retro/sc_retro,
-/turf/simulated/floor{
-	icon_state = "grimy"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/northblock)
-"gj" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/airless{
-	icon_state = "floorscorched2"
-	},
-/area/awaymission/midblock)
 "gk" = (
 /obj/structure/closet/wardrobe,
 /turf/simulated/floor,
@@ -2485,12 +1589,10 @@
 "gm" = (
 /obj/structure/closet/wardrobe/pjs,
 /obj/structure/window/reinforced/tinted{
-	dir = 8;
-	icon_state = "twindow"
+	dir = 8
 	},
 /obj/structure/window/reinforced/tinted{
-	dir = 4;
-	icon_state = "twindow"
+	dir = 4
 	},
 /obj/machinery/light/small{
 	dir = 1
@@ -2527,7 +1629,7 @@
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "gt" = (
-/obj/item/ammo_casing/shotgun,
+/obj/item/ammo_casing/a12g/pellet,
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "gu" = (
@@ -2535,19 +1637,13 @@
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "gv" = (
-/obj/structure/stool,
-/turf/simulated/floor,
-/area/awaymission/midblock)
-"gw" = (
-/obj/structure/stool/bed/chair,
+/obj/item/stool/padded,
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "gx" = (
 /obj/structure/table/woodentable,
-/obj/item/candle,
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
+/obj/item/flame/candle,
+/turf/simulated/floor/airless,
 /area/awaymission/midblock)
 "gy" = (
 /obj/structure/window/reinforced{
@@ -2576,9 +1672,7 @@
 /obj/machinery/status_display{
 	pixel_y = 32
 	},
-/turf/simulated/shuttle/floor{
-	icon_state = "floor3"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/arrivalblock)
 "gB" = (
 /obj/structure/window/reinforced{
@@ -2619,7 +1713,7 @@
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "gG" = (
-/obj/item/ammo_casing/shotgun,
+/obj/item/ammo_casing/a12g/pellet,
 /obj/machinery/power/apc{
 	cell_type = 5000;
 	dir = 8;
@@ -2627,32 +1721,30 @@
 	pixel_x = -28
 	},
 /obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+	d2 = 4;
+	icon_state = "0-4"
 	},
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "gH" = (
-/obj/item/ammo_casing/shotgun,
-/obj/item/ammo_casing/shotgun,
-/obj/item/ammo_casing/shotgun,
+/obj/item/ammo_casing/a12g/pellet,
+/obj/item/ammo_casing/a12g/pellet,
+/obj/item/ammo_casing/a12g/pellet,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "gI" = (
-/obj/item/ammo_casing/shotgun,
+/obj/item/ammo_casing/a12g/pellet,
 /obj/effect/decal/remains/human,
 /obj/item/clothing/under/rank/bartender,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/item/gun/projectile/shotgun/pump/sc_pump,
@@ -2663,13 +1755,12 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "gK" = (
-/obj/structure/stool,
+/obj/item/stool/padded,
 /obj/structure/cable{
 	d1 = 2;
 	d2 = 8;
@@ -2678,14 +1769,8 @@
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "gL" = (
-/obj/structure/stool/bed/chair{
+/obj/structure/bed/chair{
 	dir = 4
-	},
-/turf/simulated/floor,
-/area/awaymission/midblock)
-"gM" = (
-/obj/structure/stool/bed/chair{
-	dir = 8
 	},
 /turf/simulated/floor,
 /area/awaymission/midblock)
@@ -2703,7 +1788,6 @@
 "gP" = (
 /obj/effect/decal/remains/human{
 	desc = "This guy seemed to have died in terrible way! Half his remains are dust.";
-	icon_state = "remains";
 	name = "Syndicate agent remains"
 	},
 /obj/effect/landmark/sc_bible_spawner,
@@ -2712,21 +1796,7 @@
 "gQ" = (
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/drinks/bottle/holywater,
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
-/area/awaymission/midblock)
-"gR" = (
-/turf/simulated/floor{
-	dir = 1;
-	icon_state = "chapel"
-	},
-/area/awaymission/midblock)
-"gS" = (
-/turf/simulated/floor{
-	dir = 4;
-	icon_state = "chapel"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/midblock)
 "gT" = (
 /obj/structure/window/reinforced{
@@ -2742,56 +1812,42 @@
 /obj/machinery/door/unpowered/shuttle{
 	name = "Shuttle Airlock"
 	},
-/turf/simulated/shuttle/floor{
-	icon_state = "floor3"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/arrivalblock)
 "gV" = (
 /obj/machinery/door/airlock/external{
 	welded = 1
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/airless,
 /area/awaymission/arrivalblock)
 "gW" = (
 /obj/structure/sign/vacuum{
 	pixel_y = 32
 	},
 /obj/effect/decal/remains/human,
-/turf/simulated/floor{
-	dir = 2;
-	icon_state = "warning"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/arrivalblock)
 "gX" = (
 /obj/effect/decal/remains/human,
 /turf/simulated/floor{
-	 icon_state = "warningcorner";
+	 = on_state = "warningcorner";
 	dir = 1
 	},
 /area/awaymission/arrivalblock)
 "gY" = (
 /obj/machinery/computer/security,
-/turf/simulated/floor{
-	icon_state = "red";
-	dir = 9
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/arrivalblock)
 "gZ" = (
 /obj/machinery/computer/secure_data,
-/turf/simulated/floor{
-	icon_state = "red";
-	dir = 1
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/arrivalblock)
 "ha" = (
 /obj/structure/table/standard,
 /obj/item/book/manual/security_space_law,
 /obj/item/melee/baton,
 /obj/item/clothing/head/helmet/warden,
-/turf/simulated/floor{
-	icon_state = "red";
-	dir = 1
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/arrivalblock)
 "hb" = (
 /obj/structure/closet/wardrobe/red,
@@ -2801,32 +1857,14 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/simulated/floor{
-	icon_state = "red";
-	dir = 1
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/arrivalblock)
 "hc" = (
 /obj/structure/closet/secure_closet/security,
-/turf/simulated/floor{
-	icon_state = "red";
-	dir = 1
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/arrivalblock)
-"hd" = (
-/obj/structure/closet/secure_closet/security,
-/turf/simulated/floor{
-	icon_state = "red";
-	dir = 5
-	},
-/area/awaymission/arrivalblock)
-"he" = (
-/turf/simulated/floor/airless{
-	icon_state = "floorscorched2"
-	},
-/area/awaymission/midblock)
 "hf" = (
-/obj/structure/stool/bed,
+/obj/structure/bed,
 /obj/item/bedsheet/blue,
 /obj/structure/window/reinforced/tinted{
 	dir = 1
@@ -2835,17 +1873,15 @@
 /area/awaymission/midblock)
 "hg" = (
 /obj/structure/window/reinforced/tinted{
-	dir = 4;
-	icon_state = "twindow"
+	dir = 4
 	},
 /obj/structure/window/reinforced/tinted{
-	dir = 8;
-	icon_state = "twindow"
+	dir = 8
 	},
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "hh" = (
-/obj/structure/stool/bed,
+/obj/structure/bed,
 /obj/item/bedsheet/purple,
 /obj/structure/window/reinforced/tinted{
 	dir = 1
@@ -2854,7 +1890,7 @@
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "hi" = (
-/obj/structure/stool/bed,
+/obj/structure/bed,
 /obj/item/bedsheet/purple,
 /obj/structure/window/reinforced/tinted{
 	dir = 1
@@ -2867,18 +1903,18 @@
 /area/awaymission/midblock)
 "hk" = (
 /obj/structure/table/standard,
-/obj/item/ammo_casing/shotgun,
+/obj/item/ammo_casing/a12g/pellet,
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "hl" = (
 /obj/structure/table/standard,
-/obj/item/ammo_casing/shotgun,
-/obj/item/ammo_casing/shotgun,
-/obj/item/ammo_casing/shotgun,
+/obj/item/ammo_casing/a12g/pellet,
+/obj/item/ammo_casing/a12g/pellet,
+/obj/item/ammo_casing/a12g/pellet,
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "hm" = (
-/obj/structure/stool,
+/obj/item/stool/padded,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -2888,27 +1924,13 @@
 /area/awaymission/midblock)
 "hn" = (
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "ho" = (
 /obj/structure/table/woodentable,
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
-/area/awaymission/midblock)
-"hp" = (
-/turf/simulated/floor{
-	dir = 8;
-	icon_state = "chapel"
-	},
-/area/awaymission/midblock)
-"hq" = (
-/turf/simulated/floor{
-	icon_state = "chapel"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/midblock)
 "hr" = (
 /obj/structure/window/reinforced,
@@ -2952,25 +1974,13 @@
 /obj/effect/decal/remains/human,
 /turf/simulated/floor,
 /area/awaymission/arrivalblock)
-"hv" = (
-/turf/simulated/floor{
-	dir = 10;
-	icon_state = "warning"
-	},
-/area/awaymission/arrivalblock)
 "hw" = (
 /obj/structure/table/reinforced,
 /turf/simulated/floor,
 /area/awaymission/arrivalblock)
 "hx" = (
-/obj/structure/stool/bed/chair{
-	dir = 1
-	},
 /obj/effect/decal/remains/human,
-/turf/simulated/floor{
-	icon_state = "red";
-	dir = 8
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/arrivalblock)
 "hy" = (
 /turf/simulated/floor,
@@ -2993,10 +2003,7 @@
 /obj/machinery/door/window/southleft{
 	name = "Windoor"
 	},
-/turf/simulated/floor{
-	icon_state = "red";
-	dir = 4
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/arrivalblock)
 "hC" = (
 /obj/item/ammo_casing/a10mm{
@@ -3012,8 +2019,7 @@
 /area/awaymission/midblock)
 "hD" = (
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /obj/structure/cable{
 	d1 = 1;
@@ -3031,8 +2037,8 @@
 "hF" = (
 /obj/structure/table/standard,
 /obj/item/reagent_containers/food/condiment/enzyme,
-/obj/item/reagent_containers/food/condiment/peppermill,
-/obj/item/reagent_containers/food/condiment/saltshaker{
+/obj/item/reagent_containers/food/condiment/small/peppermill,
+/obj/item/reagent_containers/food/condiment/small/saltshaker{
 	pixel_x = 4;
 	pixel_y = 4
 	},
@@ -3061,21 +2067,15 @@
 	},
 /turf/simulated/shuttle/plating,
 /area/awaymission/arrivalblock)
-"hJ" = (
-/turf/simulated/floor{
-	icon_state = "red";
-	dir = 8
-	},
-/area/awaymission/arrivalblock)
 "hK" = (
-/obj/structure/stool/bed/chair{
+/obj/structure/bed/chair{
 	dir = 4
 	},
 /turf/simulated/floor,
 /area/awaymission/arrivalblock)
 "hL" = (
 /obj/structure/table/standard,
-/obj/item/storage/fancy/donut_box,
+/obj/item/storage/box/donut,
 /turf/simulated/floor,
 /area/awaymission/arrivalblock)
 "hM" = (
@@ -3084,20 +2084,14 @@
 /obj/item/flash,
 /turf/simulated/floor,
 /area/awaymission/arrivalblock)
-"hN" = (
-/turf/simulated/floor{
-	icon_state = "red";
-	dir = 4
-	},
-/area/awaymission/arrivalblock)
 "hO" = (
-/obj/structure/stool/bed,
+/obj/structure/bed,
 /obj/item/bedsheet/blue,
 /obj/effect/decal/remains/human,
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "hP" = (
-/obj/structure/stool/bed,
+/obj/structure/bed,
 /obj/item/bedsheet/purple,
 /turf/simulated/floor,
 /area/awaymission/midblock)
@@ -3108,7 +2102,7 @@
 "hR" = (
 /obj/structure/table/standard,
 /obj/item/book/manual/chef_recipes,
-/obj/item/kitchen/rollingpin,
+/obj/item/material/kitchen/rollingpin,
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "hS" = (
@@ -3122,8 +2116,8 @@
 /area/awaymission/midblock)
 "hT" = (
 /obj/effect/decal/remains/human,
-/obj/item/butch,
-/obj/item/kitchenknife,
+/obj/item/material/knife/butch,
+/obj/item/material/knife,
 /obj/item/clothing/head/chefhat,
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/simulated/floor,
@@ -3135,7 +2129,6 @@
 "hV" = (
 /obj/effect/decal/remains/human{
 	desc = "This guy seemed to have died in terrible way! Half his remains are dust.";
-	icon_state = "remains";
 	name = "Syndicate agent remains"
 	},
 /obj/item/ammo_casing/a10mm,
@@ -3147,9 +2140,7 @@
 /area/awaymission/midblock)
 "hW" = (
 /obj/machinery/light/small,
-/turf/simulated/floor{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/midblock)
 "hX" = (
 /obj/structure/window/reinforced{
@@ -3193,32 +2184,16 @@
 	pixel_x = -28
 	},
 /obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+	d2 = 4;
+	icon_state = "0-4"
 	},
-/turf/simulated/floor{
-	icon_state = "red";
-	dir = 8
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/arrivalblock)
 "ic" = (
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/turf/simulated/floor,
-/area/awaymission/arrivalblock)
-"id" = (
-/obj/structure/stool/bed/chair{
-	dir = 1
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor,
 /area/awaymission/arrivalblock)
@@ -3227,13 +2202,9 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
-/turf/simulated/floor{
-	icon_state = "red";
-	dir = 4
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/arrivalblock)
 "if" = (
 /obj/machinery/door/airlock/glass_security{
@@ -3243,17 +2214,15 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/airless,
 /area/awaymission/arrivalblock)
 "ig" = (
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/midblock)
@@ -3268,9 +2237,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/airless{
-	icon_state = "floorscorched1"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/midblock)
 "ii" = (
 /obj/machinery/microwave{
@@ -3281,7 +2248,7 @@
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "ij" = (
-/obj/structure/stool,
+/obj/item/stool/padded,
 /obj/item/ammo_casing/a10mm,
 /turf/simulated/floor,
 /area/awaymission/midblock)
@@ -3294,7 +2261,6 @@
 "il" = (
 /obj/effect/decal/remains/human{
 	desc = "This guy seemed to have died in terrible way! Half his remains are dust.";
-	icon_state = "remains";
 	name = "Syndicate agent remains"
 	},
 /obj/item/ammo_casing/a10mm,
@@ -3308,7 +2274,7 @@
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "im" = (
-/obj/structure/stool/bed/chair{
+/obj/structure/bed/chair{
 	dir = 4
 	},
 /obj/item/ammo_casing/a10mm,
@@ -3320,45 +2286,18 @@
 /obj/item/ammo_casing/a10mm,
 /turf/simulated/floor,
 /area/awaymission/midblock)
-"io" = (
-/obj/structure/stool/bed/chair{
-	dir = 8
-	},
-/obj/item/ammo_casing/a10mm,
-/obj/item/ammo_casing/a10mm,
-/obj/effect/decal/cleanable/blood/splatter,
-/turf/simulated/floor,
-/area/awaymission/midblock)
 "ip" = (
 /obj/item/ammo_casing/a10mm,
 /turf/simulated/floor,
 /area/awaymission/arrivalblock)
 "iq" = (
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 4
 	},
 /turf/simulated/floor,
 /area/awaymission/arrivalblock)
-"ir" = (
-/turf/simulated/floor{
-	icon_state = "red";
-	dir = 10
-	},
-/area/awaymission/arrivalblock)
-"is" = (
-/turf/simulated/floor{
-	icon_state = "red"
-	},
-/area/awaymission/arrivalblock)
-"it" = (
-/turf/simulated/floor{
-	icon_state = "red";
-	dir = 6
-	},
-/area/awaymission/arrivalblock)
 "iu" = (
-/obj/structure/stool/bed,
+/obj/structure/bed,
 /obj/item/bedsheet/blue,
 /turf/simulated/floor,
 /area/awaymission/midblock)
@@ -3392,7 +2331,6 @@
 "iB" = (
 /obj/effect/decal/remains/human{
 	desc = "This guy seemed to have died in terrible way! Half his remains are dust.";
-	icon_state = "remains";
 	name = "Syndicate agent remains"
 	},
 /obj/item/ammo_casing/a10mm,
@@ -3415,7 +2353,6 @@
 "iD" = (
 /obj/effect/decal/remains/human{
 	desc = "This guy seemed to have died in terrible way! Half his remains are dust.";
-	icon_state = "remains";
 	name = "Syndicate agent remains"
 	},
 /obj/item/ammo_casing/a10mm,
@@ -3429,21 +2366,12 @@
 /obj/item/ammo_casing/a10mm,
 /turf/simulated/floor,
 /area/awaymission/midblock)
-"iF" = (
-/obj/structure/stool/bed/chair{
-	dir = 1
-	},
-/turf/simulated/floor,
-/area/awaymission/midblock)
 "iG" = (
 /obj/structure/window/reinforced{
 	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
-	},
-/obj/item/shard{
-	icon_state = "medium"
 	},
 /obj/item/stack/rods,
 /turf/simulated/floor/plating,
@@ -3485,7 +2413,7 @@
 /area/awaymission/arrivalblock)
 "iL" = (
 /obj/machinery/door/airlock/security,
-/turf/simulated/floor,
+/turf/simulated/floor/airless,
 /area/awaymission/arrivalblock)
 "iM" = (
 /obj/machinery/door/airlock/glass,
@@ -3505,13 +2433,10 @@
 	dir = 8
 	},
 /obj/structure/grille,
-/obj/item/shard,
+/obj/item/material/shard,
 /turf/simulated/shuttle/plating,
 /area/awaymission/arrivalblock)
 "iP" = (
-/obj/item/shard{
-	icon_state = "small"
-	},
 /obj/item/stack/rods,
 /obj/effect/decal/remains/human,
 /turf/simulated/floor/plating,
@@ -3525,30 +2450,10 @@
 /obj/structure/toilet{
 	dir = 4
 	},
-/turf/simulated/floor{
-	icon_state = "red";
-	dir = 9
-	},
-/area/awaymission/arrivalblock)
-"iS" = (
-/turf/simulated/floor{
-	icon_state = "red";
-	dir = 1
-	},
-/area/awaymission/arrivalblock)
-"iT" = (
-/turf/simulated/floor/airless{
-	icon_state = "damaged3"
-	},
-/area/awaymission/arrivalblock)
-"iU" = (
-/turf/simulated/floor/airless{
-	icon_state = "damaged2"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/arrivalblock)
 "iV" = (
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 8
 	},
 /turf/simulated/floor/airless,
@@ -3583,8 +2488,7 @@
 /area/awaymission/southblock)
 "jb" = (
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/southblock)
@@ -3600,44 +2504,28 @@
 /area/awaymission/arrivalblock)
 "je" = (
 /obj/structure/closet/wardrobe/orange,
-/turf/simulated/floor{
-	icon_state = "red";
-	dir = 10
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/arrivalblock)
 "jf" = (
-/obj/structure/stool/bed,
-/turf/simulated/floor{
-	icon_state = "red"
-	},
+/obj/structure/bed,
+/turf/simulated/floor/airless,
 /area/awaymission/arrivalblock)
 "jg" = (
-/obj/structure/stool,
+/obj/item/stool/padded,
 /obj/machinery/light/small,
-/turf/simulated/floor{
-	icon_state = "red"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/arrivalblock)
 "jh" = (
 /obj/structure/table/reinforced,
-/turf/simulated/floor/airless{
-	icon_state = "damaged3"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/arrivalblock)
 "ji" = (
 /turf/space,
 /area/awaymission/arrivalblock)
 "jj" = (
 /obj/structure/girder,
-/turf/simulated/floor/airless{
-	icon_state = "damaged5"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/arrivalblock)
-"jk" = (
-/turf/simulated/floor/airless{
-	icon_state = "damaged4"
-	},
-/area/awaymission/southblock)
 "jl" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -3650,8 +2538,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/southblock)
@@ -3662,8 +2549,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/southblock)
@@ -3671,8 +2557,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/structure/cable{
 	d1 = 2;
@@ -3688,8 +2573,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/southblock)
@@ -3743,7 +2627,7 @@
 	name = "Glass Airlock";
 	req_access_txt = "0"
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/airless,
 /area/awaymission/southblock)
 "jx" = (
 /obj/machinery/door/airlock/glass,
@@ -3802,7 +2686,6 @@
 "jF" = (
 /obj/effect/decal/remains/human{
 	desc = "This guy seemed to have died in terrible way! Half his remains are dust.";
-	icon_state = "remains";
 	name = "Syndicate agent remains"
 	},
 /turf/simulated/floor,
@@ -3837,47 +2720,28 @@
 /turf/simulated/floor,
 /area/awaymission/southblock)
 "jL" = (
-/obj/structure/stool/bed/chair{
+/obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/simulated/floor{
-	icon_state = "white"
-	},
-/area/awaymission/southblock)
-"jM" = (
-/turf/simulated/floor{
-	icon_state = "whitehall";
-	dir = 1
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/southblock)
 "jN" = (
 /obj/structure/table/standard,
 /obj/item/pen,
-/turf/simulated/floor{
-	icon_state = "whitehall";
-	dir = 1
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/southblock)
 "jO" = (
 /obj/structure/noticeboard{
 	dir = 1;
 	pixel_y = 32
 	},
-/obj/structure/stool/bed/chair{
-	dir = 8
-	},
-/turf/simulated/floor{
-	icon_state = "white"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/southblock)
 "jP" = (
 /turf/simulated/floor,
 /area/awaymission/southblock)
 "jQ" = (
-/turf/simulated/floor{
-	dir = 4;
-	icon_state = "warning"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/gateroom)
 "jR" = (
 /obj/machinery/gateway{
@@ -3897,12 +2761,6 @@
 	},
 /turf/simulated/floor,
 /area/awaymission/gateroom)
-"jU" = (
-/turf/simulated/floor{
-	dir = 8;
-	icon_state = "warning"
-	},
-/area/awaymission/gateroom)
 "jV" = (
 /turf/simulated/floor/wood,
 /area/awaymission/southblock)
@@ -3911,7 +2769,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/southblock)
 "jX" = (
-/obj/structure/stool/bed/chair/comfy/brown{
+/obj/structure/bed/chair/comfy/brown{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
@@ -3959,7 +2817,7 @@
 /turf/simulated/floor,
 /area/awaymission/arrivalblock)
 "ke" = (
-/obj/machinery/portable_atmospherics/scrubber,
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor,
 /area/awaymission/southblock)
 "kf" = (
@@ -3977,46 +2835,26 @@
 /turf/simulated/floor,
 /area/awaymission/southblock)
 "kh" = (
-/obj/structure/stool/bed/chair{
+/obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/structure/stool/bed/chair{
+/obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/simulated/floor{
-	icon_state = "white"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/southblock)
 "ki" = (
 /obj/machinery/light/small,
-/turf/simulated/floor{
-	icon_state = "whitehall";
-	dir = 2
-	},
-/area/awaymission/southblock)
-"kj" = (
-/turf/simulated/floor{
-	icon_state = "whitehall";
-	dir = 2
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/southblock)
 "kk" = (
 /obj/structure/table/standard,
 /obj/item/paper_bin,
-/turf/simulated/floor{
-	icon_state = "whitehall";
-	dir = 2
-	},
-/area/awaymission/southblock)
-"kl" = (
-/turf/simulated/floor{
-	icon_state = "white"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/southblock)
 "km" = (
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /obj/structure/cable{
 	d1 = 1;
@@ -4033,9 +2871,9 @@
 /area/awaymission/gateroom)
 "ko" = (
 /obj/structure/cable{
+	d2 = 2;
 	icon_state = "0-2";
-	pixel_y = 1;
-	d2 = 2
+	pixel_y = 1
 	},
 /obj/machinery/gateway/centeraway{
 	calibrated = 0
@@ -4048,19 +2886,12 @@
 	},
 /turf/simulated/floor,
 /area/awaymission/gateroom)
-"kq" = (
-/obj/structure/stool/bed/chair/comfy/brown{
-	 icon_state = "comfychair_brown";
-	dir = 4
-	},
-/turf/simulated/floor/wood,
-/area/awaymission/southblock)
 "kr" = (
 /obj/structure/shuttle/engine/heater,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/simulated/floor/plating/airless,
+/turf/simulated/floor/airless,
 /area/awaymission/arrivalblock)
 "ks" = (
 /obj/structure/window/reinforced,
@@ -4084,31 +2915,21 @@
 /obj/structure/grille,
 /turf/simulated/floor/plating,
 /area/awaymission/arrivalblock)
-"ku" = (
-/obj/machinery/door/airlock/external{
-	welded = 1
-	},
-/turf/simulated/floor,
-/area/awaymission/arrivalblock)
 "kv" = (
 /obj/machinery/door/airlock/medical,
-/turf/simulated/floor,
+/turf/simulated/floor/airless,
 /area/awaymission/southblock)
 "kw" = (
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 8
 	},
-/turf/simulated/floor{
-	dir = 4;
-	icon_state = "warning"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/gateroom)
 "kx" = (
 /obj/machinery/gateway{
 	dir = 10
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/airless,
 /area/awaymission/gateroom)
 "ky" = (
 /obj/structure/cable{
@@ -4117,32 +2938,24 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/gateway,
-/turf/simulated/floor,
+/turf/simulated/floor/airless,
 /area/awaymission/gateroom)
 "kz" = (
 /obj/machinery/gateway{
 	dir = 6
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/airless,
 /area/awaymission/gateroom)
 "kA" = (
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
-/turf/simulated/floor{
-	dir = 8;
-	icon_state = "warning"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/gateroom)
 "kB" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/simulated/floor/wood,
-/area/awaymission/southblock)
-"kC" = (
-/obj/structure/stool/bed/chair/comfy/brown,
 /turf/simulated/floor/wood,
 /area/awaymission/southblock)
 "kD" = (
@@ -4152,7 +2965,7 @@
 /area/awaymission/southblock)
 "kE" = (
 /obj/structure/shuttle/engine/propulsion{
-	 icon_state = "propulsion_r"
+	 = on_state = "propulsion_r"
 	},
 /obj/structure/shuttle/engine/propulsion,
 /turf/simulated/shuttle/plating,
@@ -4163,20 +2976,20 @@
 /area/awaymission/arrivalblock)
 "kG" = (
 /obj/structure/shuttle/engine/propulsion{
-	 icon_state = "propulsion_l"
+	 = on_state = "propulsion_l"
 	},
 /obj/structure/shuttle/engine/propulsion{
-	 icon_state = "burst_l"
+	 = on_state = "burst_l"
 	},
 /obj/structure/shuttle/engine/propulsion{
-	 icon_state = "propulsion_l"
+	 = on_state = "propulsion_l"
 	},
 /obj/structure/shuttle/engine/propulsion,
 /turf/simulated/shuttle/plating,
 /area/awaymission/arrivalblock)
 "kH" = (
 /obj/structure/shuttle/engine/propulsion{
-	 icon_state = "propulsion_l";
+	 = on_state = "propulsion_l";
 	dir = 1
 	},
 /obj/structure/window/reinforced,
@@ -4184,18 +2997,11 @@
 /area/awaymission/arrivalblock)
 "kI" = (
 /obj/structure/shuttle/engine/propulsion{
-	 icon_state = "propulsion_r";
+	 = on_state = "propulsion_r";
 	dir = 1
 	},
 /obj/structure/window/reinforced,
 /turf/space,
-/area/awaymission/arrivalblock)
-"kJ" = (
-/turf/simulated/shuttle/wall{
-	 icon_state = "swall_s";
-	dir = 2;
-	dir = 2
-	},
 /area/awaymission/arrivalblock)
 "kK" = (
 /obj/machinery/vending/hydronutrients,
@@ -4212,39 +3018,31 @@
 /turf/simulated/floor,
 /area/awaymission/arrivalblock)
 "kN" = (
-/obj/item/melee/energy/sword/red,
+/obj/item/melee/energy/sword,
 /obj/item/clothing/shoes/syndigaloshes,
 /obj/item/clothing/under/syndicate,
 /obj/effect/decal/remains/human{
 	desc = "This guy seemed to have died in terrible way! Half his remains are dust.";
-	icon_state = "remains";
 	name = "Syndicate agent remains"
 	},
 /obj/item/paper/sc_safehint_paper_hydro,
 /turf/simulated/floor,
 /area/awaymission/arrivalblock)
 "kO" = (
-/obj/machinery/hydroponics,
+/obj/machinery/seed_extractor,
 /turf/simulated/floor,
 /area/awaymission/arrivalblock)
 "kP" = (
 /obj/structure/morgue,
-/turf/simulated/floor{
-	icon_state = "white"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/southblock)
 "kQ" = (
 /obj/machinery/vending/medical,
-/turf/simulated/floor{
-	icon_state = "white"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/southblock)
 "kR" = (
-/obj/structure/stool/bed/roller,
-/turf/simulated/floor{
-	icon_state = "whitehall";
-	dir = 1
-	},
+/obj/structure/bed/roller,
+/turf/simulated/floor/airless,
 /area/awaymission/southblock)
 "kS" = (
 /obj/structure/table/standard,
@@ -4257,7 +3055,7 @@
 	pixel_y = -2
 	},
 /turf/simulated/floor{
-	 icon_state = "warningcorner";
+	 = on_state = "warningcorner";
 	dir = 8
 	},
 /area/awaymission/gateroom)
@@ -4265,10 +3063,7 @@
 /obj/effect/landmark{
 	name = "awaystart"
 	},
-/turf/simulated/floor{
-	dir = 1;
-	icon_state = "warning"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/gateroom)
 "kU" = (
 /obj/structure/cable{
@@ -4279,82 +3074,37 @@
 /obj/effect/landmark{
 	name = "awaystart"
 	},
-/turf/simulated/floor{
-	dir = 1;
-	icon_state = "warning"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/gateroom)
 "kV" = (
 /obj/structure/table/standard,
 /obj/item/camera,
 /turf/simulated/floor{
-	 icon_state = "warningcorner";
+	 = on_state = "warningcorner";
 	dir = 4
 	},
 /area/awaymission/gateroom)
-"kW" = (
-/obj/structure/stool/bed/chair/comfy/brown{
-	 icon_state = "comfychair_brown";
-	dir = 8
-	},
-/turf/simulated/floor/wood,
-/area/awaymission/southblock)
 "kX" = (
-/obj/structure/stool/bed/chair{
+/obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/simulated/shuttle/floor{
-	icon_state = "floor3"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/arrivalblock)
-"kY" = (
-/obj/structure/stool/bed/chair,
-/turf/simulated/shuttle/floor{
-	icon_state = "floor3"
-	},
-/area/awaymission/arrivalblock)
-"kZ" = (
-/obj/structure/stool/bed/chair{
-	dir = 8
-	},
-/turf/simulated/shuttle/floor{
-	icon_state = "floor3"
-	},
-/area/awaymission/arrivalblock)
-"la" = (
-/obj/structure/morgue,
-/turf/simulated/floor{
-	 icon_state = "whitehall";
-	dir = 8
-	},
-/area/awaymission/southblock)
 "lb" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/simulated/floor{
-	icon_state = "whitehall";
-	dir = 4
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/southblock)
 "lc" = (
 /turf/simulated/floor{
-	 icon_state = "whitehall";
+	 = on_state = "whitehall";
 	dir = 8
-	},
-/area/awaymission/southblock)
-"ld" = (
-/turf/simulated/floor{
-	icon_state = "whitehall";
-	dir = 4
 	},
 /area/awaymission/southblock)
 "le" = (
 /obj/machinery/suit_storage_unit/standard_unit,
-/turf/simulated/floor{
-	dir = 5;
-	icon_state = "warning"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/gateroom)
 "lf" = (
 /obj/effect/landmark{
@@ -4382,8 +3132,7 @@
 /area/awaymission/gateroom)
 "li" = (
 /obj/structure/window/reinforced/tinted{
-	dir = 8;
-	icon_state = "twindow"
+	dir = 8
 	},
 /obj/structure/window/reinforced/tinted{
 	dir = 1
@@ -4397,31 +3146,14 @@
 /turf/simulated/floor,
 /area/awaymission/southblock)
 "lk" = (
-/obj/structure/stool/bed,
+/obj/structure/bed,
 /obj/structure/window/reinforced/tinted,
 /obj/item/bedsheet/medical,
 /obj/structure/window/reinforced/tinted{
 	dir = 1
 	},
-/turf/simulated/floor{
-	icon_state = "whitehall";
-	dir = 4
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/southblock)
-"ll" = (
-/obj/machinery/suit_storage_unit/standard_unit,
-/turf/simulated/floor{
-	dir = 4;
-	icon_state = "warning"
-	},
-/area/awaymission/gateroom)
-"lm" = (
-/obj/machinery/suit_storage_unit/standard_unit,
-/turf/simulated/floor{
-	dir = 8;
-	icon_state = "warning"
-	},
-/area/awaymission/gateroom)
 "ln" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/wood,
@@ -4436,7 +3168,6 @@
 /turf/simulated/floor,
 /area/awaymission/arrivalblock)
 "lq" = (
-/obj/item/grown/deathnettle,
 /obj/item/clothing/shoes/brown,
 /obj/item/clothing/under/rank/hydroponics,
 /obj/effect/decal/remains/human,
@@ -4445,44 +3176,25 @@
 /area/awaymission/arrivalblock)
 "lr" = (
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 8
 	},
 /turf/simulated/floor{
-	 icon_state = "whitehall";
+	 = on_state = "whitehall";
 	dir = 8
 	},
 /area/awaymission/southblock)
 "ls" = (
 /obj/structure/window/reinforced/tinted{
-	dir = 8;
-	icon_state = "twindow"
+	dir = 8
 	},
 /turf/simulated/floor,
 /area/awaymission/southblock)
 "lt" = (
-/obj/structure/stool/bed,
+/obj/structure/bed,
 /obj/structure/window/reinforced/tinted,
 /obj/item/bedsheet/medical,
-/turf/simulated/floor{
-	icon_state = "whitehall";
-	dir = 4
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/southblock)
-"lu" = (
-/obj/machinery/suit_storage_unit/standard_unit,
-/turf/simulated/floor{
-	dir = 6;
-	icon_state = "warning"
-	},
-/area/awaymission/gateroom)
-"lv" = (
-/obj/machinery/suit_storage_unit/standard_unit,
-/turf/simulated/floor{
-	dir = 10;
-	icon_state = "warning"
-	},
-/area/awaymission/gateroom)
 "lw" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
@@ -4510,20 +3222,6 @@
 /obj/structure/grille,
 /turf/simulated/floor/plating,
 /area/awaymission/southblock)
-"lz" = (
-/turf/simulated/shuttle/wall{
-	 icon_state = "swall_s";
-	dir = 1;
-	dir = 2
-	},
-/area/awaymission/arrivalblock)
-"lA" = (
-/turf/simulated/shuttle/wall{
-	 icon_state = "swall_straight";
-	dir = 4;
-	dir = 2
-	},
-/area/awaymission/arrivalblock)
 "lB" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced,
@@ -4537,13 +3235,6 @@
 	dir = 1
 	},
 /turf/simulated/shuttle/plating,
-/area/awaymission/arrivalblock)
-"lC" = (
-/turf/simulated/shuttle/wall{
-	 icon_state = "swall_s";
-	dir = 8;
-	dir = 2
-	},
 /area/awaymission/arrivalblock)
 "lD" = (
 /obj/structure/closet/crate/hydroponics,
@@ -4561,9 +3252,7 @@
 /area/awaymission/arrivalblock)
 "lG" = (
 /obj/machinery/computer/operating,
-/turf/simulated/floor{
-	icon_state = "white"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/southblock)
 "lH" = (
 /obj/machinery/optable,
@@ -4573,27 +3262,20 @@
 /obj/effect/decal/remains/human,
 /obj/item/tank/anesthetic,
 /obj/item/clothing/mask/breath,
-/turf/simulated/floor{
-	icon_state = "white"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/southblock)
 "lI" = (
 /obj/structure/sink{
 	pixel_y = 32
 	},
-/turf/simulated/floor{
-	icon_state = "white"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/southblock)
 "lJ" = (
-/obj/structure/stool/bed,
+/obj/structure/bed,
 /obj/structure/window/reinforced/tinted,
 /obj/item/bedsheet/medical,
 /obj/effect/decal/remains/human,
-/turf/simulated/floor{
-	icon_state = "whitehall";
-	dir = 4
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/southblock)
 "lK" = (
 /obj/effect/decal/remains/human,
@@ -4613,7 +3295,7 @@
 /obj/machinery/door/airlock/highsecurity{
 	name = "Security Airlock"
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/airless,
 /area/awaymission/gateroom)
 "lM" = (
 /turf/simulated/floor,
@@ -4654,11 +3336,9 @@
 "lS" = (
 /obj/effect/decal/remains/human,
 /obj/item/clothing/mask/surgical,
-/obj/item/clothing/suit/storage/labcoat,
-/obj/item/clothing/gloves/latex,
-/turf/simulated/floor{
-	icon_state = "white"
-	},
+/obj/item/clothing/suit/storage/toggle/labcoat,
+/obj/item/clothing/gloves/sterile/latex,
+/turf/simulated/floor/airless,
 /area/awaymission/southblock)
 "lT" = (
 /obj/machinery/door/window/westright{
@@ -4670,14 +3350,10 @@
 /obj/machinery/vending/wallmed1{
 	pixel_x = 31
 	},
-/turf/simulated/floor{
-	icon_state = "whitehall";
-	dir = 4
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/southblock)
 "lV" = (
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 8
 	},
 /turf/simulated/floor,
@@ -4694,22 +3370,9 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor,
-/area/awaymission/southblock)
-"lY" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/turf/simulated/floor{
-	dir = 1;
-	icon_state = "warning"
-	},
 /area/awaymission/southblock)
 "lZ" = (
 /obj/structure/cable{
@@ -4720,42 +3383,24 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
-/turf/simulated/floor{
-	dir = 1;
-	icon_state = "warning"
-	},
-/area/awaymission/southblock)
-"ma" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/turf/simulated/floor{
-	dir = 5;
-	icon_state = "warning"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/southblock)
 "mb" = (
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/engineering,
-/turf/simulated/floor,
+/turf/simulated/floor/airless,
 /area/awaymission/gateroom)
 "mc" = (
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor,
 /area/awaymission/gateroom)
@@ -4763,8 +3408,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/structure/cable{
 	d1 = 1;
@@ -4790,63 +3434,33 @@
 /area/awaymission/gateroom)
 "mf" = (
 /obj/structure/closet/secure_closet/medical2,
-/turf/simulated/floor{
-	icon_state = "white"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/southblock)
 "mg" = (
 /obj/structure/closet/crate/medical{
 	name = "Surgical Tools"
 	},
-/obj/item/cautery,
-/obj/item/circular_saw,
-/obj/item/hemostat,
-/obj/item/retractor,
-/obj/item/surgicaldrill,
-/obj/item/scalpel,
-/turf/simulated/floor{
-	icon_state = "white"
-	},
-/area/awaymission/southblock)
-"mh" = (
-/obj/structure/stool/bed/roller,
-/turf/simulated/floor{
-	icon_state = "white"
-	},
+/obj/item/surgical/cautery,
+/obj/item/surgical/circular_saw,
+/obj/item/surgical/hemostat,
+/obj/item/surgical/retractor,
+/obj/item/surgical/surgicaldrill,
+/obj/item/surgical/scalpel,
+/turf/simulated/floor/airless,
 /area/awaymission/southblock)
 "mi" = (
 /obj/structure/window/reinforced/tinted{
-	dir = 8;
-	icon_state = "twindow"
+	dir = 8
 	},
-/turf/simulated/floor{
-	icon_state = "whitehall";
-	dir = 2
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/southblock)
 "mj" = (
 /obj/machinery/sleeper,
-/turf/simulated/floor{
-	icon_state = "whitehall";
-	dir = 2
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/southblock)
 "mk" = (
 /obj/machinery/sleep_console,
-/turf/simulated/floor{
-	icon_state = "white"
-	},
-/area/awaymission/southblock)
-"ml" = (
-/turf/simulated/floor{
-	icon_state = "warning"
-	},
-/area/awaymission/southblock)
-"mm" = (
-/turf/simulated/floor{
-	dir = 6;
-	icon_state = "warning"
-	},
+/turf/simulated/floor/airless,
 /area/awaymission/southblock)
 "mn" = (
 /obj/structure/cable{
@@ -4861,8 +3475,7 @@
 /obj/machinery/power/apc{
 	dir = 4;
 	name = "Gateroom APC";
-	pixel_x = 28;
-	pixel_y = 0
+	pixel_x = 28
 	},
 /obj/structure/cable{
 	d2 = 8;
@@ -4870,6 +3483,18 @@
 	},
 /turf/simulated/floor,
 /area/awaymission/gateroom)
+"zB" = (
+/obj/machinery/door/airlock/command,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/airless,
+/area/awaymission/northblock)
+"Fz" = (
+/turf/simulated/floor/airless,
+/area/awaymission/arrivalblock)
 
 (1,1,1) = {"
 aa
@@ -5025,14 +3650,14 @@ aa
 aa
 aa
 aD
-aY
+aD
 bf
 br
 br
 br
 bf
-bX
-bF
+aD
+aD
 aa
 aa
 aa
@@ -5046,19 +3671,19 @@ aa
 aa
 aa
 fP
-gd
+Fz
 gA
-ge
-gf
-ge
-gf
-ge
-gf
-ge
-gf
-ge
-gf
-ge
+Fz
+Fz
+Fz
+Fz
+Fz
+Fz
+Fz
+Fz
+Fz
+Fz
+Fz
 kr
 kE
 aa
@@ -5092,12 +3717,12 @@ aa
 aa
 aa
 aD
-aY
+aD
 bs
 bf
-bz
-bX
-bF
+bf
+aD
+aD
 aa
 aa
 aa
@@ -5112,19 +3737,19 @@ aa
 aa
 aa
 fQ
-ge
-ge
-ge
-gf
-ge
-gf
-ge
-gf
-ge
-gf
-ge
-gf
-ge
+Fz
+Fz
+Fz
+Fz
+Fz
+Fz
+Fz
+Fz
+Fz
+Fz
+Fz
+Fz
+Fz
 kr
 kF
 aa
@@ -5162,7 +3787,7 @@ aD
 aC
 bu
 aC
-bF
+aD
 aa
 aa
 aa
@@ -5178,19 +3803,19 @@ aa
 aa
 aa
 fR
-gf
-ge
-ge
-ge
-ge
-ge
-ge
-ge
-ge
-ge
-ge
-ge
-ge
+Fz
+Fz
+Fz
+Fz
+Fz
+Fz
+Fz
+Fz
+Fz
+Fz
+Fz
+Fz
+Fz
 kr
 kF
 aa
@@ -5226,7 +3851,7 @@ aa
 aa
 aa
 aC
-bn
+bf
 aC
 aa
 aa
@@ -5244,19 +3869,19 @@ aa
 aa
 aa
 fS
-ge
-ge
-ge
-gf
-ge
-gf
-ge
-gf
-ge
-gf
-ge
-gf
-ge
+Fz
+Fz
+Fz
+Fz
+Fz
+Fz
+Fz
+Fz
+Fz
+Fz
+Fz
+Fz
+Fz
 kr
 kF
 aa
@@ -5292,7 +3917,7 @@ aa
 aa
 aa
 aC
-bn
+bf
 aC
 aa
 aa
@@ -5310,19 +3935,19 @@ af
 aa
 aa
 fP
-gd
+Fz
 gA
-ge
-gf
-ge
-gf
-ge
-gf
-ge
-gf
-ge
-gf
-ge
+Fz
+Fz
+Fz
+Fz
+Fz
+Fz
+Fz
+Fz
+Fz
+Fz
+Fz
 kr
 kG
 aa
@@ -5358,19 +3983,19 @@ aC
 aC
 aC
 aC
-bn
+bf
 aC
 aC
 aC
 aC
-bF
+aD
 aa
 af
 af
 af
 ee
 es
-eM
+ee
 aj
 aj
 aa
@@ -5409,7 +4034,7 @@ aa
 aa
 aa
 ad
-ag
+ap
 ad
 aa
 af
@@ -5423,21 +4048,21 @@ aa
 aD
 aC
 bg
-bn
-bn
-bn
+bf
+bf
+bf
 bg
 aC
-bF
+aD
 aa
 aa
 af
 af
-dN
-ef
-et
+ap
+ap
+ap
 af
-eZ
+ap
 aj
 aj
 aa
@@ -5488,11 +4113,11 @@ aa
 aa
 aa
 aC
-bh
-bn
-bn
-bn
-bh
+bf
+bf
+bf
+bf
+bf
 aC
 aa
 aa
@@ -5500,10 +4125,10 @@ aa
 af
 af
 af
-aG
-aF
-aG
-ek
+ap
+ap
+ap
+ap
 fi
 aj
 aa
@@ -5526,7 +4151,7 @@ fO
 gc
 gc
 gc
-lz
+fO
 aa
 aa
 aa
@@ -5541,11 +4166,11 @@ aa
 aa
 aa
 ae
-ag
+ap
 ad
 aa
 ah
-ag
+ap
 ah
 aa
 aa
@@ -5555,21 +4180,21 @@ aa
 aa
 aC
 bi
-bn
-bn
+bf
+bf
 bA
-bn
+bf
 aC
 aa
 aa
 aa
 af
-dx
-dO
+ap
+ap
 ae
 ae
 af
-fa
+fc
 fj
 aj
 aa
@@ -5577,7 +4202,7 @@ aa
 aa
 gC
 gX
-hv
+Fz
 hu
 hy
 iq
@@ -5592,7 +4217,7 @@ kH
 kX
 kX
 kX
-lA
+gc
 aa
 aa
 aa
@@ -5607,7 +4232,7 @@ aa
 aa
 aa
 af
-ag
+ap
 ad
 aa
 ad
@@ -5621,8 +4246,8 @@ aI
 aO
 aC
 bj
-bn
-bn
+bf
+bf
 bB
 bB
 aC
@@ -5631,12 +4256,12 @@ aK
 aC
 af
 dy
-aF
+ap
 ae
-aF
-aG
-aF
-fk
+ap
+ap
+ap
+ee
 aj
 aa
 aa
@@ -5653,11 +4278,11 @@ gC
 gC
 jD
 hu
-ku
+gV
 gU
-kY
-ge
-gf
+Fz
+Fz
+Fz
 lB
 aa
 aa
@@ -5673,11 +4298,11 @@ aa
 aa
 aa
 ad
-ag
+ap
 ad
 aa
 ah
-ag
+ap
 ad
 aa
 aa
@@ -5687,8 +4312,8 @@ aJ
 aP
 aC
 bk
-bn
-bn
+bf
+bf
 bC
 bC
 aC
@@ -5697,12 +4322,12 @@ aJ
 af
 aj
 dz
-dP
-aF
-aG
-aG
-fa
-ej
+ap
+ap
+ap
+ap
+ap
+ap
 aj
 aa
 aa
@@ -5710,9 +4335,9 @@ aa
 gC
 gY
 hx
-hJ
+Fz
 ib
-ir
+Fz
 gC
 iR
 je
@@ -5721,10 +4346,10 @@ jE
 ia
 ks
 kI
-kZ
-kZ
-kZ
-lA
+Fz
+Fz
+Fz
+gc
 aa
 aa
 aa
@@ -5738,37 +4363,37 @@ aa
 aa
 aa
 ab
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
 af
 af
 aK
-aQ
+aD
 aC
 bl
-bn
-bn
+bf
+bf
 bD
-bn
+bf
 aC
-cD
+aD
 af
 af
 aj
-dA
-dQ
-eg
+ap
+ap
+ap
 eu
 eN
-dQ
-fl
+ap
+es
 aj
 aa
 aa
@@ -5778,19 +4403,19 @@ gZ
 hy
 hy
 ic
-is
+Fz
 iI
-iS
+Fz
 jf
 gC
 jF
 hy
 kt
-kJ
+fO
 gc
 gc
 gc
-lC
+fO
 aa
 aa
 aa
@@ -5805,7 +4430,7 @@ aa
 aa
 aa
 ad
-ag
+ap
 ad
 aa
 ad
@@ -5819,10 +4444,10 @@ aa
 aD
 aC
 bm
-bn
-bn
-bE
-bE
+bf
+bf
+bf
+bf
 aC
 af
 af
@@ -5844,9 +4469,9 @@ ha
 hy
 hK
 ic
-is
+Fz
 iJ
-iS
+Fz
 jf
 gC
 ip
@@ -5871,7 +4496,7 @@ aa
 aa
 aa
 ah
-ag
+ap
 ah
 aa
 ad
@@ -5880,20 +4505,20 @@ ad
 aa
 aa
 ak
-ag
+ap
 aa
 aa
 aC
-bn
-bn
-bn
-bn
-bn
+bf
+bf
+bf
+bf
+bf
 aC
 af
 af
-aq
-aF
+ap
+ap
 af
 dR
 eh
@@ -5902,17 +4527,17 @@ eO
 dR
 aj
 fr
-fs
+ap
 fU
 gg
 gC
 hb
 hz
 hL
-id
-is
+ic
+Fz
 iK
-iS
+Fz
 jg
 gC
 jG
@@ -5937,22 +4562,22 @@ aa
 aa
 aa
 ad
-ag
+ap
 ad
 aa
 ae
-ag
+ap
 af
 aa
 aa
 aa
-ag
+ap
 aa
 aa
 aC
 bo
 bo
-bn
+bf
 bm
 bo
 aC
@@ -5962,23 +4587,23 @@ af
 dn
 aj
 af
-ei
+ap
 ex
-eg
+ap
 fb
 aj
-fs
+ap
 fF
-fs
+ap
 gh
 gC
 hc
 hA
 hM
-id
-is
+ic
+Fz
 gC
-iT
+Fz
 jh
 gC
 hy
@@ -6003,16 +4628,16 @@ aa
 aa
 aa
 ah
-ag
+ap
 ai
 aa
 ah
-ag
+ap
 af
 aa
 aa
 aa
-ag
+ap
 aa
 aa
 aZ
@@ -6025,26 +4650,26 @@ aC
 af
 af
 ae
-aG
+ap
 aj
 dS
-ej
+ap
 ew
-dx
+ap
 fc
 fm
-fs
+ap
 fG
 fV
 gi
 gC
-hd
+hc
 hB
-hN
+Fz
 ie
-it
+Fz
 iL
-iU
+Fz
 ji
 jt
 jH
@@ -6073,30 +4698,30 @@ ae
 ad
 aa
 ad
-ag
+ap
 ad
 aa
 aa
 aa
-ag
+ap
 aa
 aa
 aa
 aC
+bf
+bf
+bf
 aC
-bn
-aC
-aC
-bF
+aD
 af
 cQ
-aq
-aG
+ap
+ap
 aj
-dT
-ej
-ey
-dx
+ao
+ap
+ew
+ap
 fd
 aj
 aj
@@ -6144,25 +4769,25 @@ aa
 aa
 aa
 ak
-ag
+ap
 ak
 aa
 ba
 aa
 aK
-bn
+bf
 aC
-bF
+aD
 af
-aq
+ap
 af
-an
-an
+ap
+ap
 aj
 dU
-ej
-ez
-dx
+ap
+ew
+ap
 fc
 aj
 ft
@@ -6170,14 +4795,14 @@ fH
 ft
 ft
 ft
-he
+ft
 hC
-fu
+ft
 ig
 ft
 ft
 iV
-jk
+iX
 gC
 hy
 hy
@@ -6210,31 +4835,31 @@ aa
 aa
 ak
 ak
-ag
+ap
 ak
 ak
 aa
-aG
+ap
 aK
-bn
+bf
 aC
 af
 ci
-aG
+ap
 cR
-an
+ap
 do
 aj
-am
-ek
-eA
-ef
+ap
+ap
+ew
+ap
 fc
 aj
 ft
 fI
 fW
-gj
+fW
 fW
 fW
 hD
@@ -6276,13 +4901,13 @@ aa
 aj
 aj
 aj
-aE
+bb
 aj
 af
 af
 aj
-aC
-bn
+aJ
+aJ
 aC
 aj
 aj
@@ -6293,12 +4918,12 @@ aj
 aj
 aj
 aj
-ev
+zB
 aj
 aj
 aj
-fu
-fJ
+ft
+ig
 fX
 fX
 fX
@@ -6343,28 +4968,28 @@ aj
 al
 av
 af
-aF
+ap
 af
 aj
-am
-aC
-bn
+ap
+aJ
+aJ
 aK
-aq
-aF
-an
-aF
-am
-am
-am
-aq
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
 el
-eB
-aF
-aG
-aB
-fv
-fJ
+ew
+ap
+ap
+ap
+ft
+ig
 fX
 gk
 gD
@@ -6406,30 +5031,30 @@ aa
 aa
 aa
 aj
-am
+ap
 aw
-aF
-aF
+ap
+ap
 af
 aj
-aG
+ap
 bt
 bv
 bF
-aF
-aF
+ap
+ap
 cE
-aq
-aq
+ap
+ap
 dp
 dB
-dV
-dV
+dB
+dB
 eC
-eP
-fe
-fe
-fw
+dB
+dB
+dB
+fW
 fK
 fX
 gl
@@ -6472,17 +5097,17 @@ aa
 aa
 aa
 aj
-an
+ap
 ax
-aG
-am
-aG
+ap
+ap
+ap
 aj
-aq
-am
+ap
+ap
 bw
-bG
-bY
+bw
+bx
 by
 by
 by
@@ -6513,7 +5138,7 @@ jI
 ke
 jc
 kP
-la
+kP
 kP
 jc
 lG
@@ -6540,17 +5165,17 @@ aa
 aj
 ao
 ay
-am
-aG
-aR
+ap
+ap
+aS
 aj
-am
-aq
+ap
+ap
 bx
-bH
-bZ
+bw
+bw
 cj
-bK
+bw
 by
 db
 dr
@@ -6578,12 +5203,12 @@ jv
 jJ
 kf
 jc
-jM
-jP
-kj
+iX
+iX
+iX
 jc
 lH
-kl
+iX
 mg
 jc
 "}
@@ -6607,22 +5232,22 @@ aj
 ap
 af
 af
-aF
+ap
 aS
 aj
-am
-aq
+ap
+ap
 by
-bI
-ca
+bw
+bw
 ck
-bK
+bw
 by
 dc
 dr
-dD
+bw
 by
-dG
+co
 eE
 eF
 eE
@@ -6644,13 +5269,13 @@ jc
 jK
 kg
 jc
-kl
+iX
 lb
-kl
+iX
 jc
 lI
-kl
-mh
+iX
+kR
 jc
 "}
 (28,1,1) = {"
@@ -6670,25 +5295,25 @@ aa
 aa
 aa
 aj
-aq
+ap
 az
 aH
-am
-aF
+ap
+ap
 bb
 ap
-am
+ap
 by
 bJ
-cb
+bP
 cl
-cF
+bN
 by
 dd
 dr
 dd
 by
-dG
+co
 eF
 eF
 eF
@@ -6739,16 +5364,16 @@ aj
 ar
 aA
 ap
-am
-aF
+ap
+ap
 bc
-aG
+ap
 ap
 by
-bK
+bw
 cc
 cm
-bK
+bw
 by
 by
 ds
@@ -6782,7 +5407,7 @@ lc
 lr
 lc
 lc
-kl
+iX
 jc
 "}
 (30,1,1) = {"
@@ -6803,29 +5428,29 @@ aa
 aa
 aj
 ap
-an
-aB
-aB
+ap
+ap
+ap
 aT
 aj
 aj
 aj
 by
 bL
-bK
-bK
-bK
+bw
+bw
+bw
 cS
 de
 dt
 dE
 cS
-bK
-bK
-bK
-bK
-bK
-bK
+bw
+bw
+bw
+bw
+bw
+bw
 by
 fX
 gp
@@ -6839,16 +5464,16 @@ fX
 iX
 jm
 jc
-jM
+iX
 ki
 jc
-jM
+iX
 jP
 jP
 jP
 jP
 jP
-kj
+iX
 jc
 "}
 (31,1,1) = {"
@@ -6869,8 +5494,8 @@ aa
 aa
 aj
 as
-aB
-aq
+ap
+ap
 aL
 aU
 aj
@@ -6878,20 +5503,20 @@ aa
 aa
 by
 bM
-cd
+bM
 cn
-bK
-cT
+bw
+cl
 df
-bK
+bw
 dF
-dW
-dW
-dW
-dW
-dW
-dW
-dW
+bP
+bP
+bP
+bP
+bP
+bP
+bP
 by
 fX
 gq
@@ -6905,10 +5530,10 @@ fX
 ja
 jm
 jw
-jM
-kj
+iX
+iX
 kv
-jM
+iX
 jP
 li
 ls
@@ -6935,25 +5560,25 @@ aa
 aa
 aj
 at
-aq
+ap
 af
-am
-aB
+ap
+ap
 aj
 aa
 aa
 by
-bI
-ca
+bw
+bw
 co
 cG
 cU
 dg
-bK
-dG
-bK
-bK
-bK
+bw
+co
+bw
+bw
+bw
 eQ
 ff
 fn
@@ -7001,28 +5626,28 @@ aa
 aa
 aj
 au
-aB
-an
-aB
-am
+ap
+ap
+ap
+ap
 aj
 aa
 aa
 by
 bN
-cb
+bP
 cp
 cm
-bK
+bw
 dg
-bK
+bw
 dH
-bK
-bK
-bK
-bK
-bK
-bK
+bw
+bw
+bw
+bw
+bw
+bw
 fy
 by
 fX
@@ -7038,10 +5663,10 @@ iX
 jm
 jc
 jO
-kl
+iX
 jw
-kl
-ld
+iX
+iX
 lk
 lt
 lJ
@@ -7067,28 +5692,28 @@ aa
 aa
 aj
 au
-am
-am
+ap
+ap
 aM
 aV
 aj
 aa
 aa
 by
-bK
-bK
+bw
+bw
 cq
 cH
-bK
+bw
 dg
-bK
-dG
+bw
+co
 dX
-bK
-bK
+bw
+bw
 eR
-bK
-bK
+bw
+bw
 fz
 by
 fX
@@ -7133,28 +5758,28 @@ aa
 aa
 aj
 au
-aB
-aB
+ap
+ap
 aN
-aW
+ap
 aj
 aa
 aa
 by
 bO
-cd
+bM
 cr
-bK
-bK
+bw
+bw
 dg
-bK
-dG
+bw
+co
 dY
-bK
-bK
+bw
+bw
 eS
-fg
-bK
+bw
+bw
 fA
 by
 fX
@@ -7200,27 +5825,27 @@ aa
 aj
 aj
 aj
-aE
+bb
 aj
 aj
 aj
 aa
 aa
 by
-bI
+bw
 ce
 co
 cG
-bK
+bw
 dg
-bK
-dG
+bw
+co
 dZ
-bK
-bK
+bw
+bw
 eS
-bK
-bK
+bw
+bw
 fB
 by
 fX
@@ -7266,7 +5891,7 @@ aa
 aa
 ak
 ak
-ag
+ap
 ak
 ak
 aa
@@ -7274,15 +5899,15 @@ aa
 aa
 by
 bP
-cb
+bP
 cp
 cm
-cT
+cl
 dg
 du
-dG
+co
 ea
-bK
+bw
 dX
 eT
 fh
@@ -7332,7 +5957,7 @@ aa
 aa
 aa
 ak
-ag
+ap
 ak
 aa
 aa
@@ -7340,20 +5965,20 @@ aa
 aa
 by
 bQ
-bK
-bK
+bw
+bw
 cI
-bK
+bw
 dg
-bK
-dG
-eb
-eb
-eb
+bw
+co
+bM
+bM
+bM
 eU
-eb
-eb
-eb
+bM
+bM
+bM
 by
 fX
 gl
@@ -7372,11 +5997,11 @@ jQ
 kw
 kS
 le
-ll
-lu
+le
+le
 jz
-lY
-ml
+jm
+iX
 jc
 "}
 (39,1,1) = {"
@@ -7389,16 +6014,16 @@ aa
 aa
 aa
 ad
-ag
+ap
 ad
 aa
 ad
-ag
+ap
 ad
 aa
 aa
 aa
-ag
+ap
 aa
 aa
 aa
@@ -7406,20 +6031,20 @@ aa
 aa
 by
 bL
-bK
+bw
 cs
-bK
-bK
+bw
+bw
 df
-bK
+bw
 dH
-bK
-bK
-bK
-bK
-bK
-bK
-bK
+bw
+bw
+bw
+bw
+bw
+bw
+bw
 by
 fX
 gl
@@ -7441,8 +6066,8 @@ lf
 lf
 lf
 jz
-lY
-ml
+jm
+iX
 jc
 "}
 (40,1,1) = {"
@@ -7455,16 +6080,16 @@ aa
 aa
 aa
 ad
-ag
+ap
 ad
 aa
 ad
-ag
+ap
 ad
 aa
 aa
 aa
-ag
+ap
 aa
 aa
 aa
@@ -7475,26 +6100,26 @@ bR
 cf
 ct
 cJ
-bK
+bw
 dg
-bK
+bw
 dI
-bK
-bK
-bK
-bK
-bK
+bw
+bw
+bw
+bw
+bw
 fp
 fD
 by
 fX
-gw
+gl
 gu
 gl
 gu
 gl
 in
-iF
+gl
 fX
 iX
 iX
@@ -7508,7 +6133,7 @@ lg
 lg
 lL
 lZ
-ml
+iX
 jc
 "}
 (41,1,1) = {"
@@ -7521,16 +6146,16 @@ aa
 aa
 aa
 ad
-ag
+ap
 ad
 aa
 ad
-ag
+ap
 ad
 aa
 aa
 aa
-ag
+ap
 aa
 aa
 aa
@@ -7540,26 +6165,26 @@ by
 bS
 cg
 cu
-bK
-bK
+bw
+bw
 dg
-bK
-dG
+bw
+co
 ec
 ec
 ec
 eV
 ec
-bK
-bK
+bw
+bw
 by
 fX
 gl
-gM
+gl
 hn
-gM
+gl
 hV
-io
+ik
 gl
 fX
 iX
@@ -7573,8 +6198,8 @@ lf
 lf
 lf
 jz
-lY
-ml
+jm
+iX
 jc
 "}
 (42,1,1) = {"
@@ -7587,16 +6212,16 @@ aa
 aa
 aa
 ad
-ag
+ap
 ad
 aa
 ad
-ag
+ap
 ad
 aa
 aa
 ak
-ag
+ap
 aa
 aa
 aa
@@ -7606,18 +6231,18 @@ by
 bT
 bT
 cv
-bK
-bK
+bw
+bw
 dg
-bK
-dG
+bw
+co
 ec
 eo
 eH
 eW
 ec
-bK
-bK
+bw
+bw
 by
 fX
 fX
@@ -7631,16 +6256,16 @@ fX
 iX
 iX
 jz
-jU
-jU
+jQ
+jQ
 kA
 kV
 lh
-lm
-lv
+le
+le
 jz
-ma
-mm
+jm
+iX
 jc
 "}
 (43,1,1) = {"
@@ -7653,16 +6278,16 @@ aa
 aa
 aa
 ad
-ag
+ap
 ad
 aa
 ad
-ag
+ap
 ad
 aa
 ak
 ak
-ag
+ap
 aa
 aa
 aa
@@ -7672,18 +6297,18 @@ by
 bT
 bT
 cw
-bK
-bK
+bw
+bw
 dg
-bK
-dG
+bw
+co
 ec
-bK
+bw
 eI
-bK
+bw
 ec
-bK
-bK
+bw
+bw
 by
 fX
 ft
@@ -7718,17 +6343,17 @@ aa
 aa
 aa
 ac
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
 aa
 aa
 aa
@@ -7738,10 +6363,10 @@ by
 bU
 bT
 cx
-bK
-bK
+bw
+bw
 dh
-bK
+bw
 dJ
 ec
 ep
@@ -7768,7 +6393,7 @@ jV
 kB
 jV
 jV
-kq
+jV
 jz
 lM
 mc
@@ -7785,11 +6410,11 @@ aa
 aa
 aa
 ad
-ag
+ap
 ad
 aa
 ad
-ag
+ap
 ad
 aa
 aa
@@ -7832,7 +6457,7 @@ jc
 jV
 jV
 jV
-kq
+jV
 jV
 jY
 jz
@@ -7851,11 +6476,11 @@ aa
 aa
 aa
 ad
-ag
+ap
 ad
 aa
 ad
-ag
+ap
 ad
 aa
 aa
@@ -7872,9 +6497,9 @@ ak
 ak
 ak
 by
-di
-cA
-cA
+dc
+bw
+bw
 by
 ak
 ak
@@ -7897,7 +6522,7 @@ aa
 jc
 jW
 jV
-kC
+jV
 kD
 jX
 jV
@@ -7917,11 +6542,11 @@ aa
 aa
 aa
 ad
-ag
+ap
 ad
 aa
 ad
-ag
+ap
 ad
 aa
 aa
@@ -7939,7 +6564,7 @@ ak
 aa
 by
 dj
-cA
+bw
 dj
 by
 aa
@@ -7950,10 +6575,10 @@ aa
 aa
 fL
 fZ
-ga
+ft
 gO
 gO
-ga
+ft
 hW
 fL
 aa
@@ -7964,7 +6589,7 @@ jc
 jW
 jV
 jV
-kW
+jV
 jV
 ln
 jz
@@ -7983,11 +6608,11 @@ aa
 aa
 aa
 ad
-ag
+ap
 ad
 aa
 ad
-ag
+ap
 ad
 aa
 aa
@@ -8032,7 +6657,7 @@ jV
 jV
 jV
 jV
-kC
+jV
 lw
 aa
 aa
@@ -8049,11 +6674,11 @@ aa
 aa
 aa
 ad
-ag
+ap
 ad
 aa
 ad
-ag
+ap
 ad
 aa
 aa
@@ -8071,7 +6696,7 @@ aa
 aa
 by
 by
-cA
+bw
 by
 by
 aa
@@ -8081,12 +6706,12 @@ aa
 aa
 aa
 fL
-ga
-ga
+ft
+ft
 gO
 gO
-ga
-ga
+ft
+ft
 fL
 aa
 aa
@@ -8094,10 +6719,10 @@ aa
 aa
 jB
 jY
-kq
+jV
 kD
 jY
-kq
+jV
 jY
 lx
 aa
@@ -8137,8 +6762,8 @@ aa
 aa
 cV
 dk
-cA
-cA
+bw
+bw
 cV
 aa
 aa
@@ -8202,8 +6827,8 @@ ak
 aa
 cy
 by
-cA
-cA
+bw
+bw
 dK
 by
 cy
@@ -8213,12 +6838,12 @@ aa
 aa
 aa
 fL
-ga
-ga
+ft
+ft
 gO
 gO
-ga
-ga
+ft
+ft
 fL
 aa
 aa
@@ -8332,25 +6957,25 @@ aa
 aa
 by
 cz
-cA
+bw
 cW
-cA
-cA
-cA
+bw
+bw
+bw
 cW
-cA
+bw
 eK
 by
 aa
 aa
 aa
 fM
-ga
-ga
-gR
-hp
-ga
-ga
+ft
+ft
+ft
+ft
+ft
+ft
 fM
 aa
 aa
@@ -8397,25 +7022,25 @@ aa
 aa
 aa
 by
-cA
+bw
 cL
-cA
-cA
-cX
-cA
-cA
-cA
-cA
+bw
+bw
+bP
+bw
+bw
+bw
+bw
 by
 aa
 aa
 aa
 fN
 gb
-ga
-gS
-hq
-ga
+ft
+ft
+ft
+ft
 hX
 hY
 aa
@@ -8463,15 +7088,15 @@ aa
 aa
 aa
 by
-cA
-cA
-cX
+bw
+bw
+bP
 cM
 cN
 dL
-cX
-cA
-cA
+bP
+bw
+bw
 by
 aa
 aa
@@ -8529,15 +7154,15 @@ aa
 aa
 by
 by
-cA
-cB
+bw
+co
 cY
 cY
 cY
 cY
 cY
-eq
-cA
+dg
+bw
 by
 by
 aa
@@ -8595,7 +7220,7 @@ aa
 aa
 by
 ch
-cA
+bw
 cM
 cY
 cY
@@ -8603,8 +7228,8 @@ cY
 cY
 cY
 dL
-cA
-eY
+bw
+cG
 by
 aa
 aa
@@ -8661,16 +7286,16 @@ aa
 aa
 by
 ch
-cB
+co
 cN
 cY
 cY
-dw
+cY
 cY
 cY
 cN
-eq
-eY
+dg
+cG
 by
 aa
 aa
@@ -8727,7 +7352,7 @@ aa
 aa
 by
 ch
-cA
+bw
 cO
 cY
 cY
@@ -8735,8 +7360,8 @@ cY
 cY
 cY
 dM
-cA
-eY
+bw
+cG
 by
 aa
 aa
@@ -8793,15 +7418,15 @@ aa
 aa
 by
 by
-cA
-cB
+bw
+co
 cY
 cY
 cY
 cY
 cY
-eq
-cA
+dg
+bw
 by
 by
 aa
@@ -8859,15 +7484,15 @@ aa
 aa
 aa
 by
-cA
-cA
-cZ
+bw
+bw
+bM
 cO
 cN
 dM
-cZ
-cA
-cA
+bM
+bw
+bw
 by
 aa
 aa
@@ -8927,11 +7552,11 @@ aa
 by
 by
 cP
-cA
-cA
-cZ
-cA
-cA
+bw
+bw
+bM
+bw
+bw
 cP
 by
 by
