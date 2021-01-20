@@ -287,6 +287,11 @@
 	},
 /turf/simulated/floor/plating,
 /area/triumph_away/tradeport/engineering)
+"cX" = (
+/obj/structure/catwalk,
+/obj/effect/shuttle_landmark/triumph/trade/emt,
+/turf/simulated/floor/airless,
+/area/triumph_away/tradeport/pads)
 "cZ" = (
 /obj/structure/closet/crate/bin{
 	anchored = 1
@@ -4799,11 +4804,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/triumph_away/tradeport)
-"MY" = (
-/obj/effect/shuttle_landmark/triumph/trade/medical,
-/obj/structure/catwalk,
-/turf/simulated/floor/airless,
-/area/triumph_away/tradeport/pads)
 "Nd" = (
 /obj/structure/table/standard,
 /obj/machinery/chemical_dispenser/bar_alc/full,
@@ -19698,7 +19698,7 @@ Yk
 XO
 tu
 tu
-MY
+tu
 tu
 tu
 XO
@@ -20150,7 +20150,7 @@ XO
 XO
 XO
 XO
-tu
+cX
 tu
 XO
 XO

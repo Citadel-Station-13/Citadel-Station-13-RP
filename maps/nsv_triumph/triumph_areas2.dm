@@ -742,6 +742,17 @@
 /area/tradeport/pads
 	icon_state = "purple"
 
+//EMT Shuttle
+/area/shuttle/emt
+	requires_power = 1
+	icon_state = "shuttle2"
+
+/area/shuttle/emt/general
+	name = "\improper EMT Shuttle"
+
+/area/shuttle/emt/cockpit
+	name = "\improper EMT Shuttle Cockpit"
+
 // Tourbus
 /area/shuttle/tourbus
 	requires_power = 1
