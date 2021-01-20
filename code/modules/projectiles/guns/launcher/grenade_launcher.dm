@@ -12,7 +12,6 @@
 	throw_distance = 7
 	release_force = 5
 
-	var/obj/item/grenade/chambered
 	var/list/grenades = new/list()
 	var/max_grenades = 5 //holds this + one in the chamber
 	matter = list(DEFAULT_WALL_MATERIAL = 2000)
@@ -79,11 +78,13 @@
 	else
 		..()
 
+/*//This broke for no reason. Look into it.
 /obj/item/gun/launcher/grenade/consume_next_projectile()
 	if(chambered)
 		chambered.det_time = 10
 		chambered.activate(null)
 	return chambered
+*/
 
 /obj/item/gun/launcher/grenade/handle_post_fire(mob/user)
 	message_admins("[key_name_admin(user)] fired a grenade ([chambered.name]) from a grenade launcher ([src.name]).")

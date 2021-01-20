@@ -71,6 +71,16 @@
 	name = "\improper Engineering Electrical Shaft"
 	icon_state = "substation"
 
+/area/engineering/portnacelle
+	name = "\improper Port Nacelle"
+	icon_state = "engineering"
+	sound_env = SMALL_ENCLOSED
+
+/area/engineering/starboardnacelle
+	name = "\improper Starboard Nacelle"
+	icon_state = "engineering"
+	sound_env = SMALL_ENCLOSED
+
 /area/vacant/vacant_office
 	name = "\improper Vacant Office"
 	icon_state = "vacant_site"

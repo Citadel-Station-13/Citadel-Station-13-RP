@@ -345,8 +345,8 @@
 	name = "carp-sie plushie"
 	desc = "An adorable stuffed toy that resembles the god of all carp. The teeth look pretty sharp. Activate it to receive the blessing of Carp-Sie."
 	icon = 'icons/obj/toy.dmi'
-	icon_state = "baseplush"
-	item_state = "baseplush"
+	icon_state = "basecarp"
+	item_state = "basecarp"
 	force = 15
 	attack_verb = list("bitten", "eaten", "fin slapped")
 	hitsound = 'sound/weapons/bite.ogg'

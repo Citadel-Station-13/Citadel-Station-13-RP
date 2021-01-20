@@ -25,6 +25,12 @@
 	origin_tech = list(TECH_ILLEGAL = 2)
 	syndie = 1
 
+/obj/item/encryptionkey/trader
+	icon_state = "cypherkey"
+	channels = list("Trader" = 1, "Common" = 1)
+	origin_tech = list(TECH_ILLEGAL = 2)
+	syndie = 1
+
 /obj/item/encryptionkey/binary
 	icon_state = "bin_cypherkey"
 	translate_binary = 1
@@ -132,7 +138,7 @@
 	channels = list("Response Team" = 1, "Science" = 1, "Command" = 1, "Medical" = 1, "Engineering" = 1, "Security" = 1, "Supply" = 1, "Service" = 1)
 
 /obj/item/encryptionkey/omni		//Literally only for the admin intercoms
-	channels = list("Mercenary" = 1, "Raider" = 1, "Response Team" = 1, "Science" = 1, "Command" = 1, "Medical" = 1, "Engineering" = 1, "Security" = 1, "Supply" = 1, "Service" = 1)
+	channels = list("Mercenary" = 1, "Raider" = 1, "Trader" = 1, "Response Team" = 1, "Science" = 1, "Command" = 1, "Medical" = 1, "Engineering" = 1, "Security" = 1, "Supply" = 1, "Service" = 1)
 
 /obj/item/encryptionkey/heads/hop
 	name = "head of personnel's encryption key"
@@ -163,7 +169,7 @@
 /obj/item/encryptionkey/omni		//Literally only for the admin intercoms
 	name = "omni encryption key"
 	icon_state = "cap_cypherkey"
-	channels = list("Mercenary" = 1, "Raider" = 1, "Response Team" = 1, "Science" = 1, "Command" = 1, "Medical" = 1, "Engineering" = 1, "Security" = 1, "Supply" = 1, "Service" = 1, "Explorer" = 1)
+	channels = list("Mercenary" = 1, "Raider" = 1, "Trader" = 1, "Response Team" = 1, "Science" = 1, "Command" = 1, "Medical" = 1, "Engineering" = 1, "Security" = 1, "Supply" = 1, "Service" = 1, "Explorer" = 1)
 
 //Southern Cross file port. _sc
 /obj/item/encryptionkey/pilot

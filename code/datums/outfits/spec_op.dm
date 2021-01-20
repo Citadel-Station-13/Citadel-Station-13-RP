@@ -79,6 +79,7 @@
 	head = /obj/item/clothing/head/helmet/ert/para
 	back = /obj/item/storage/backpack/ert/para
 	l_pocket = /obj/item/grenade/chem_grenade/holy
+	l_hand = /obj/item/clothing/accessory/holster/holy
 
 	id_slot = slot_wear_id
 	id_type = /obj/item/card/id/centcom/ERT/PARA

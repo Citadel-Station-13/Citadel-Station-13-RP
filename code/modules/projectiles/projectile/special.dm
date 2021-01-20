@@ -336,3 +336,15 @@
 		W.shatter()
 		return 0
 	..()
+
+/obj/item/projectile/bullet/honker
+	damage = 0
+	nodamage = TRUE
+	hitsound = 'sound/items/bikehorn.ogg'
+	icon = 'icons/obj/items.dmi'
+	icon_state = "banana"
+	range = 200
+
+/obj/item/projectile/bullet/honker/Initialize()
+	. = ..()
+	SpinAnimation()

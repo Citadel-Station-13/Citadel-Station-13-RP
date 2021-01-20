@@ -322,9 +322,9 @@
 	allowed_roles = list("Chief Medical Officer")
 
 /datum/gear/suit/dept/cloak/qm
-	display_name = "Teshari - Chief Medical Officer Cloak"
+	display_name = "Teshari - Quartermaster Cloak"
 	path = /obj/item/clothing/suit/storage/teshari/cloak/jobs/qm
-	allowed_roles = list("Chief Medical Officer")
+	allowed_roles = list("Quartermaster")
 
 /datum/gear/suit/dept/cloak/cargo
 	display_name = "Teshari - Cargo Cloak"
