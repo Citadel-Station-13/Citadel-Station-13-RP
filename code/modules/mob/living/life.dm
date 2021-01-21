@@ -120,7 +120,7 @@
 
 /mob/living/proc/handle_weakened()
 	if(weakened)
-		weakened = max(weakened-1,0)
+		AdjustWeakened(-1)
 	return weakened
 
 /mob/living/proc/handle_stuttering()
