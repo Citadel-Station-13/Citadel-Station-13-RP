@@ -554,15 +554,6 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
-"bE" = (
-/obj/effect/floor_decal/techfloor/orange,
-/obj/machinery/door/airlock/glass_engineering{
-	name = "Engineering Hallway";
-	req_one_access = null
-	},
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/tiled,
-/area/engineering/lower/corridor)
 "bK" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 10
@@ -1566,7 +1557,8 @@
 /turf/simulated/wall/r_wall,
 /area/engineering/engine_room)
 "ft" = (
-/obj/structure/catwalk,
+/obj/machinery/door/airlock/maintenance/engi,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/engineering/break_room)
 "fu" = (
@@ -3064,8 +3056,7 @@
 /area/tcommsat/chamber)
 "kd" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/window/northleft,
-/obj/machinery/door/window/southleft,
+/obj/machinery/door/airlock/hatch,
 /turf/simulated/floor/tiled/techmaint,
 /area/tcommsat/computer)
 "ke" = (
@@ -3115,15 +3106,6 @@
 	icon_state = "techmaint"
 	},
 /area/tcommsat/entrance)
-"kn" = (
-/obj/machinery/status_display{
-	pixel_y = 30
-	},
-/obj/structure/dispenser{
-	phorontanks = 0
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/engineering/atmos/storage)
 "kp" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
@@ -3579,7 +3561,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled,
 /area/triumph/station/stairs_one)
 "lO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -4235,12 +4217,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
-/obj/machinery/door/airlock/glass_engineering{
-	name = "Engineering Hallway";
-	req_one_access = null
-	},
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled,
 /area/engineering/lower/corridor)
 "nR" = (
 /obj/machinery/power/apc{
@@ -4486,6 +4463,11 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/tcommsat/computer)
 "oN" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/radio/off,
+/obj/item/radio/off,
+/obj/item/radio/off,
+/obj/item/radio/off,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -4571,7 +4553,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 6
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled,
 /area/engineering/engine_room)
 "pb" = (
 /obj/machinery/light{
@@ -4705,17 +4687,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/monitoring)
-"pv" = (
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 1
-	},
-/obj/machinery/door/airlock/glass_engineering{
-	name = "Engineering Hallway";
-	req_one_access = null
-	},
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/tiled,
-/area/engineering/lower/corridor)
 "pw" = (
 /obj/machinery/computer/general_air_control/large_tank_control{
 	input_tag = "atmos_out";
@@ -5082,17 +5053,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/chief)
-"qK" = (
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 8
-	},
-/obj/machinery/door/airlock/glass_engineering{
-	name = "Engineering Hallway";
-	req_one_access = null
-	},
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/tiled,
-/area/engineering/hallway)
 "qL" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor,
@@ -5898,9 +5858,6 @@
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 6
 	},
-/obj/structure/window/reinforced/tinted/frosted{
-	dir = 4
-	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/storage)
 "tj" = (
@@ -6095,7 +6052,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled,
 /area/engineering/lower/corridor)
 "tM" = (
 /obj/effect/floor_decal/techfloor/orange{
@@ -6289,6 +6246,9 @@
 /obj/machinery/alarm{
 	frequency = 1441;
 	pixel_y = 22
+	},
+/obj/structure/dispenser{
+	phorontanks = 0
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/storage)
@@ -7203,8 +7163,6 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/portnacelle)
 "xi" = (
-/obj/machinery/door/airlock/maintenance/engi,
-/obj/machinery/door/firedoor,
 /turf/simulated/floor/wood,
 /area/engineering/break_room)
 "xk" = (
@@ -8526,33 +8484,6 @@
 /obj/machinery/atmospherics/pipe/simple/visible/universal,
 /turf/simulated/floor/plating,
 /area/engineering/atmos/monitoring)
-"Cc" = (
-/obj/structure/catwalk,
-/obj/effect/floor_decal/spline/fancy/wood,
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 8
-	},
-/obj/machinery/door/airlock/glass_engineering{
-	name = "Engineering Hallway";
-	req_one_access = null
-	},
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/plating,
-/area/engineering/lower/corridor)
 "Cd" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/machinery/atmospherics/pipe/manifold/visible/red{
@@ -9076,14 +9007,6 @@
 	dir = 4
 	},
 /turf/simulated/wall/r_wall,
-/area/engineering/atmos/storage)
-"DK" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/item/radio/off,
-/obj/item/radio/off,
-/obj/item/radio/off,
-/obj/item/radio/off,
-/turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/storage)
 "DM" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
@@ -10937,7 +10860,7 @@
 /area/engineering/locker_room)
 "Jm" = (
 /obj/effect/floor_decal/corner/paleblue/border,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled,
 /area/engineering/engine_room)
 "Jp" = (
 /obj/machinery/atmospherics/portables_connector{
@@ -11569,10 +11492,9 @@
 /area/engineering/lower/corridor)
 "Lp" = (
 /obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/hatch,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/window/northleft,
-/obj/machinery/door/window/southleft,
 /turf/simulated/floor/tiled/techmaint,
 /area/tcommsat/computer)
 "Lq" = (
@@ -12187,19 +12109,11 @@
 /turf/simulated/floor,
 /area/storage/tech)
 "Nq" = (
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 1
-	},
 /obj/machinery/status_display{
 	pixel_y = 30
 	},
-/obj/machinery/door/airlock/glass_engineering{
-	name = "Engineering Hallway";
-	req_one_access = null
-	},
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/tiled,
-/area/engineering/hallway)
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/atmos/storage)
 "Ns" = (
 /obj/machinery/shield_diffuser,
 /obj/structure/catwalk,
@@ -12383,11 +12297,6 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
-/obj/machinery/door/airlock/glass_engineering{
-	name = "Engineering Hallway";
-	req_one_access = null
-	},
-/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/engineering/lower/corridor)
 "NO" = (
@@ -12524,7 +12433,7 @@
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled,
 /area/engineering/engine_room)
 "Og" = (
 /obj/structure/window/reinforced{
@@ -13024,8 +12933,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/engineering/lower/corridor)
@@ -13501,10 +13410,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
-"Rl" = (
-/obj/structure/dispenser/phoron,
-/turf/simulated/floor/tiled/techmaint,
-/area/engineering/atmos/storage)
 "Rm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -13522,17 +13427,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_smes)
-"Ro" = (
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 4
-	},
-/obj/machinery/door/airlock/glass_engineering{
-	name = "Engineering Hallway";
-	req_one_access = null
-	},
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/tiled,
-/area/engineering/hallway)
 "Rp" = (
 /obj/machinery/access_button{
 	dir = 0;
@@ -14078,28 +13972,9 @@
 /turf/space,
 /area/space)
 "SF" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/effect/floor_decal/techfloor/orange,
-/obj/machinery/door/airlock/glass_engineering{
-	name = "Engineering Hallway";
-	req_one_access = null
-	},
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/tiled,
-/area/engineering/hallway)
+/obj/structure/dispenser/phoron,
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/atmos/storage)
 "SH" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red,
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
@@ -15130,7 +15005,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled,
 /area/engineering/engine_room)
 "VM" = (
 /obj/machinery/light,
@@ -26274,8 +26149,8 @@ gS
 gS
 gS
 gS
-Nq
-SF
+sf
+yg
 YJ
 YJ
 YJ
@@ -28699,8 +28574,8 @@ YJ
 YJ
 YJ
 NN
-Cc
-bE
+NG
+bv
 Tx
 th
 th
@@ -28839,15 +28714,15 @@ wy
 qO
 zJ
 QN
-qK
+Km
 gX
 NG
 bv
 Tx
-kn
-Rl
-DK
-ml
+Tx
+Tx
+Tx
+Nq
 ml
 ND
 wb
@@ -28981,7 +28856,7 @@ uy
 FB
 AY
 uy
-Ro
+mf
 mD
 NG
 bv
@@ -29270,7 +29145,7 @@ Ux
 nB
 pZ
 pz
-ml
+SF
 Ya
 Gh
 Ip
@@ -31112,7 +30987,7 @@ fX
 Fq
 Tk
 OD
-SX
+GQ
 Ud
 bv
 em
@@ -31396,9 +31271,9 @@ OD
 OD
 OD
 OD
-pv
+GQ
 nQ
-bE
+bv
 em
 em
 em
