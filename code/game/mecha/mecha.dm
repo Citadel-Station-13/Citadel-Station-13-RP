@@ -130,7 +130,7 @@
 	var/smoke_reserve = 5			//How many shots you have. Might make a reload later on. MIGHT.
 	var/smoke_ready = 1				//This is a check for the whether or not the cooldown is ongoing.
 	var/smoke_cooldown = 100		//How long you have between uses.
-	var/datum/effect/effect/system/smoke_spread/smoke_system = new
+	var/datum/effect_system/smoke_spread/smoke_system = new
 
 ////All of those are for the HUD buttons in the top left. See Grant and Remove procs in mecha_actions.
 
@@ -530,7 +530,12 @@
 	if(hasInternalDamage(MECHA_INT_CONTROL_LOST))
 		move_result = mechsteprand()
 	else if(src.dir!=direction)
-		move_result = mechturn(direction)
+	//Turning
+		if(strafing)
+			move_result = mechstep(direction)
+		else
+			move_result = mechturn(direction)
+
 	else
 		move_result	= mechstep(direction)
 	if(move_result)
@@ -558,11 +563,14 @@
 	return 1
 
 /obj/mecha/proc/mechstep(direction)
+	var/current_dir = dir	//For strafing
 	var/result = get_step(src,direction)
 	if(result && Move(result))
 		if(stomp_sound)
 			playsound(src,stomp_sound,40,1)
 		handle_equipment_movement()
+	if(strafing)	//Also for strafing
+		setDir(current_dir)
 	return result
 
 
@@ -1231,7 +1239,7 @@
 
 
 /obj/mecha/verb/toggle_internal_tank()
-	set name = "Toggle internal airtank usage."
+	set name = "Toggle internal airtank usage"
 	set category = "Exosuit Interface"
 	set src = usr.loc
 	set popup_menu = 0
@@ -1251,6 +1259,7 @@
 	set category = "Exosuit Interface"
 	set src = usr.loc
 	set popup_menu = 0
+	strafing()
 
 /obj/mecha/proc/strafing()
 	if(usr!=src.occupant)
@@ -1259,6 +1268,7 @@
 	src.occupant_message("Toggled strafing mode [strafing?"on":"off"].")
 	src.log_message("Toggled strafing mode [strafing?"on":"off"].")
 	return
+
 
 /obj/mecha/MouseDrop_T(mob/O, mob/user as mob)
 	//Humans can pilot mechs.
@@ -1389,6 +1399,11 @@
 	else
 		return 0
 
+
+/obj/mecha/AltClick(mob/living/user)
+	if(user == occupant)
+		strafing()
+
 /obj/mecha/verb/view_stats()
 	set name = "View Stats"
 	set category = "Exosuit Interface"
@@ -1421,7 +1436,7 @@
 	return
 
 
-/obj/mecha/proc/go_out()
+/obj/mecha/proc/go_out() //Eject/Exit the Mech. Yes this is for easier searching.
 	if(!src.occupant) return
 	var/atom/movable/mob_container
 	QDEL_NULL(minihud)
@@ -1474,7 +1489,6 @@
 		src.icon_state = src.reset_icon()+"-open"
 		src.setDir(dir_in)
 		src.verbs -= /obj/mecha/verb/eject
-
 
 		//src.zoom = 0
 
@@ -1826,7 +1840,7 @@
 		return*/
 
 	if(href_list["toggle_airtank"])
-		if(usr != src.occupant)	retur
+		if(usr != src.occupant)	return
 		src.internal_tank()
 		return
 	if (href_list["toggle_thrusters"])
