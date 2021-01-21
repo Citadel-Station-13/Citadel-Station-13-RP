@@ -17,8 +17,6 @@
 	//operation_req_access = list()
 	internal_damage_threshold = 25
 	force = 15
-	var/phasing = 0
-	var/phasing_energy_drain = 200
 	max_equip = 4
 
 	max_hull_equip = 3
@@ -26,6 +24,10 @@
 	max_utility_equip = 3
 	max_universal_equip = 3
 	max_special_equip = 4
+
+	phasing_possible = 1
+	switch_dmg_type_possible = 1
+
 
 /obj/mecha/combat/phazon/equipped/Initialize()
 	..()
@@ -35,6 +37,7 @@
 	ME.attach(src)
 	return
 
+/* Leaving this until we are really sure we don't need it for reference.
 /obj/mecha/combat/phazon/Bump(var/atom/obstacle)
 	if(phasing && get_charge()>=phasing_energy_drain)
 		spawn()
@@ -48,35 +51,7 @@
 	else
 		. = ..()
 	return
-
-/obj/mecha/combat/phazon/click_action(atom/target,mob/user)
-	if(phasing)
-		src.occupant_message("Unable to interact with objects while phasing")
-		return
-	else
-		return ..()
-
-/obj/mecha/combat/phazon/verb/switch_damtype()
-	set category = "Exosuit Interface"
-	set name = "Change melee damage type"
-	set src = usr.loc
-	set popup_menu = 0
-	if(usr!=src.occupant)
-		return
-
-	query_damtype()
-
-/obj/mecha/combat/phazon/proc/query_damtype()
-	var/new_damtype = alert(src.occupant,"Melee Damage Type",null,"Brute","Fire","Toxic")
-	switch(new_damtype)
-		if("Brute")
-			damtype = "brute"
-		if("Fire")
-			damtype = "fire"
-		if("Toxic")
-			damtype = "tox"
-	src.occupant_message("Melee damage type switched to [new_damtype ]")
-	return
+*/
 
 /obj/mecha/combat/phazon/get_commands()
 	var/output = {"<div class='wr'>
@@ -89,16 +64,6 @@
 						"}
 	output += ..()
 	return output
-
-/obj/mecha/combat/phazon/Topic(href, href_list)
-	..()
-	if (href_list["switch_damtype"])
-		src.switch_damtype()
-	if (href_list["phasing"])
-		phasing = !phasing
-		send_byjax(src.occupant,"exosuit.browser","phasing_command","[phasing?"Dis":"En"]able phasing")
-		src.occupant_message("<font color=\"[phasing?"#00f\">En":"#f00\">Dis"]abled phasing.</font>")
-	return
 
 /obj/mecha/combat/phazon/janus
 	name = "Phazon Prototype Janus Class"
@@ -120,7 +85,6 @@
 	wreckage = /obj/effect/decal/mecha_wreckage/janus
 	internal_damage_threshold = 25
 	force = 20
-	phasing = FALSE
 	phasing_energy_drain = 300
 
 	max_hull_equip = 2
@@ -128,6 +92,9 @@
 	max_utility_equip = 2
 	max_universal_equip = 2
 	max_special_equip = 2
+
+	phasing_possible = 1
+	switch_dmg_type_possible = 1
 
 /obj/mecha/combat/phazon/janus/take_damage(amount, type="brute")
 	..()

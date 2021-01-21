@@ -171,6 +171,7 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 
 	var/list/adding
 	var/list/other
+	var/list/miniobjs
 	var/list/obj/screen/hotkeybuttons
 
 	var/obj/screen/movable/action_button/hide_toggle/hide_actions_toggle
