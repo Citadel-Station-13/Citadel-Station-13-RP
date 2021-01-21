@@ -6009,6 +6009,13 @@
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/plating,
 /area/triumph/surfacebase/mining_main/uxstorage)
+"rA" = (
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -37
+	},
+/turf/simulated/floor/tiled,
+/area/quartermaster/warehouse)
 "rB" = (
 /obj/machinery/conveyor{
 	dir = 1;
@@ -7648,6 +7655,9 @@
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -37
 	},
 /turf/simulated/floor/wood,
 /area/quartermaster/qm)
@@ -9372,7 +9382,6 @@
 /area/hallway/primary/starboard)
 "BI" = (
 /obj/machinery/conveyor_switch/oneway{
-	convdir = -1;
 	id = "QMLoad2"
 	},
 /obj/machinery/light{
@@ -15419,6 +15428,17 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
+"Ud" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -37
+	},
+/turf/simulated/floor/tiled,
+/area/triumph/surfacebase/mining_main/refinery)
 "Uf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -26221,12 +26241,12 @@ iM
 ai
 oE
 oE
-Ou
+oE
 LW
 oE
 Mr
 OQ
-oE
+Ou
 KT
 cp
 ii
@@ -27303,7 +27323,7 @@ cP
 RB
 Ek
 Es
-uW
+Ud
 as
 El
 Da
@@ -28873,7 +28893,7 @@ kk
 qR
 kk
 KP
-KP
+rA
 et
 QH
 Cl
