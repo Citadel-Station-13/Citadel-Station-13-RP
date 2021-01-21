@@ -287,7 +287,7 @@
 	path = /obj/item/clothing/under/teshari/undercoat/jobs/iaa
 	allowed_roles = list("Internal Affairs Agent")
 
-/datum/gear/suit/dept/cloak/
+/datum/gear/suit/dept/cloak
 	whitelisted = SPECIES_TESHARI
 	sort_category = "Xenowear"
 
@@ -311,7 +311,7 @@
 	path = /obj/item/clothing/suit/storage/teshari/cloak/jobs/hos
 	allowed_roles = list("Head of Security")
 
-/datum/gear/suit/cloak/dept/ce
+/datum/gear/suit/dept/cloak/ce
 	display_name = "Teshari - Chief Engineer Cloak"
 	path = /obj/item/clothing/suit/storage/teshari/cloak/jobs/ce
 	allowed_roles = list("Chief Engineer")
