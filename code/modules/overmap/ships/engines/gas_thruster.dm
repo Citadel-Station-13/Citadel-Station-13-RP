@@ -220,7 +220,7 @@
 	idle_power_usage = 150
 
 	thrust_limit = 1		//Value between 1 and 0 to limit the resulting thrust
-	volume_per_burn = 20
+	volume_per_burn = 50
 	charge_per_burn = 1000
 	boot_time = 10
 
