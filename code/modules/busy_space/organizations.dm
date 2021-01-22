@@ -2049,7 +2049,11 @@
 			"Der Kommissar",
 			"Room of Chain and Glass",
 			"Carol's Last Ride",
-			"Scattered Like Crows"
+			"Scattered Like Crows",
+			"Where The Black Stars Hang",
+			"Dreams of Being Snow",
+			"Yours Truly, The Whale",
+			"Sigh Hawaii"
 			)
 	destination_names = list(
 			"unidentified sensor reading",
