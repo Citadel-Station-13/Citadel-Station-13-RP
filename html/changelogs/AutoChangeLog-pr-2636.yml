@@ -1,0 +1,7 @@
+author: "ThatOneTeshari"
+delete-after: True
+changes: 
+  - rscadd: "Added \"status_indicators.dmi\""
+  - rscadd: "Added \"status_indicators.dm"
+  - code_imp: "changed code in 36 files."
+  - admin: "changed code on paralyze to work with the new dm/dmi"
