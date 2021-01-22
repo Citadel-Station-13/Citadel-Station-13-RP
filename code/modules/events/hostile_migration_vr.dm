@@ -98,7 +98,7 @@
 
 // override: cancel if not main ship as this is too dumb to target the actual ship crossing it.
 /datum/event/hostile_migration/overmap/start()
-	if(!istype(victim, /obj/effect/overmap/visitable/ship/triumph))
+	if(istype(victim, /obj/effect/overmap/visitable/ship/landable))
 		kill()
 		return
 	return ..()
