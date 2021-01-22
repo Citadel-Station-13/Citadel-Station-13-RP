@@ -2636,7 +2636,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled,
 /area/crew_quarters/kitchen)
 "hy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -7406,7 +7406,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled,
 /area/crew_quarters/kitchen)
 "vt" = (
 /obj/structure/cable/green{
@@ -8179,7 +8179,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled,
 /area/crew_quarters/kitchen)
 "xM" = (
 /obj/structure/closet/crate/bin{
@@ -8253,7 +8253,7 @@
 /obj/effect/landmark/start{
 	name = "Chef"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled,
 /area/crew_quarters/kitchen)
 "ya" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -10221,7 +10221,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled,
 /area/crew_quarters/kitchen)
 "Ep" = (
 /obj/machinery/camera/network/cargo{
@@ -13748,7 +13748,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
 "Pc" = (
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled,
 /area/crew_quarters/kitchen)
 "Pd" = (
 /obj/structure/cable/green{
@@ -13798,7 +13798,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled,
 /area/crew_quarters/kitchen)
 "Pl" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
