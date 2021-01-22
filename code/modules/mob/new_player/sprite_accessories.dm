@@ -973,6 +973,50 @@
 		color_blend_mode = ICON_MULTIPLY
 		do_colouration = 1
 
+	myopia
+		name = "Myopia"
+		icon = 'icons/mob/human_face_vr.dmi'
+		icon_add = 'icons/mob/human_face_vr_add.dmi'
+		icon_state = "myopia"
+		flags = HAIR_VERY_SHORT
+
+	boyish
+		name = "Boyish"
+		icon = 'icons/mob/human_face_vr.dmi'
+		icon_add = 'icons/mob/human_face_vr_add.dmi'
+		icon_state = "bshort-1"
+
+	shortmess
+		name = "Short Mess"
+		icon = 'icons/mob/human_face_vr.dmi'
+		icon_add = 'icons/mob/human_face_vr_add.dmi'
+		icon_state = "bshort-2"
+
+	peaked
+		name = "Peaked"
+		icon = 'icons/mob/human_face_vr.dmi'
+		icon_add = 'icons/mob/human_face_vr_add.dmi'
+		icon_state = "bshort-3"
+
+	blindbangs
+		name = "Blind Bangs"
+		icon = 'icons/mob/human_face_vr.dmi'
+		icon_add = 'icons/mob/human_face_vr_add.dmi'
+		icon_state = "blindbangs"
+		flags = HAIR_TIEABLE
+
+	reallyblindbangs
+		name = "Grudge"
+		icon = 'icons/mob/human_face_vr.dmi'
+		icon_add = 'icons/mob/human_face_vr_add.dmi'
+		icon_state = "grudge"
+		flags = HAIR_TIEABLE
+
+
+
+
+
+
 /*
 ///////////////////////////////////
 /  =---------------------------=  /
@@ -2813,10 +2857,28 @@
 		color_blend_mode = ICON_MULTIPLY
 		body_parts = list(BP_HEAD)
 
+	short_snoot_nose
+		name = "Short Snout Nose"
+		icon_state = "snootnose"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_HEAD)
+
 	thirdeye
 		name = "Third Eye"
 		icon_state = "thirdeye"
 		body_parts = list(BP_HEAD)
+
+	fullhead
+		name = "Full Head Color"
+		icon_state = "fullhead"
+		body_parts = list(BP_HEAD)
+
+	panda_full
+		name = "Panda Limbs"
+		icon_state = "panda"
+		body_parts = list(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND)
+		color_blend_mode = ICON_ADD
+
 
 //skin styles - WIP
 //going to have to re-integrate this with surgery
