@@ -980,8 +980,8 @@
 		icon_state = "myopia"
 		flags = HAIR_VERY_SHORT
 
-	boyish
-		name = "Boyish"
+	shortish
+		name = "Shortish"
 		icon = 'icons/mob/human_face_vr.dmi'
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
 		icon_state = "bshort-1"
