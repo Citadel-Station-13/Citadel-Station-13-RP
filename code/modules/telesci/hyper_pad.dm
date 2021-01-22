@@ -33,14 +33,27 @@
 		detect()
 	set_light(3, 1, newcolor)
 
-/obj/machinery/hyperpad/attack_ai(mob/user)
-	attack_hand(user)
 
 /obj/machinery/hyperpad/operable()
 	return 1
 
 /obj/machinery/hyperpad/inoperable() //A lame way of making this machine always useable
 	return 0
+
+/obj/machinery/hyperpad/attack_ai(mob/user)
+	attack_hand(user)
+
+/obj/machinery/hyperpad/centre/attack_ghost(mob/observer/dead/ghost)
+	. = ..()
+	if(.)
+		return
+	if(linked_pad && !QDELETED(linked_pad))
+		ghost.forceMove(get_turf(linked_pad))
+
+/obj/machinery/hyperpad/attack_ghost(mob/observer/dead/ghost)
+	. = ..()
+	if(primary)
+		primary.attack_ghost(ghost)
 
 /obj/machinery/hyperpad/centre/attack_hand(mob/user)
 	. = ..()
@@ -136,6 +149,8 @@
 						continue
 				else if(!isobserver(ROI))
 					continue
+			if(isobserver(ROI))
+				continue
 			var/datum/effect_system/teleport_greyscale/tele1 = new /datum/effect_system/teleport_greyscale()
 			tele1.set_up(newcolor, get_turf(ROI))
 			var/datum/effect_system/teleport_greyscale/tele2 = new /datum/effect_system/teleport_greyscale()
