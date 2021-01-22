@@ -66,6 +66,11 @@
 	plane_holder.set_ao(VIS_OBJS, ao_enabled)
 	plane_holder.set_ao(VIS_MOBS, ao_enabled)
 
+	// Status indicators
+	var/status_enabled = client.is_preference_enabled(/datum/client_preference/status_indicators)
+	plane_holder.set_vis(VIS_STATUS, status_enabled)
+
+
 	if(!client.tooltips)
 		client.tooltips = new(client)
 

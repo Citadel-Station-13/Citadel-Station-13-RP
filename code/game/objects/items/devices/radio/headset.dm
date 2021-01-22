@@ -553,6 +553,18 @@
 	desc = "A bowman headset for search and rescue."
 	icon_state = "sar_headset_alt"
 
+/obj/item/radio/headset/pathfinder
+	name = "pathfinder's headset"
+	desc = "Headset used by Pathfinders for coordinating and executing expeditions."
+	icon_state = "exp_headset_path"
+	adhoc_fallback = TRUE
+	ks2type = /obj/item/encryptionkey/pathfinder
+
+/obj/item/radio/headset/pathfinder/alt
+	name = "pathfinder's bowman headset"
+	desc = "Headset used by Pathfinders for coordinating and executing expeditions."
+	icon_state = "exp_headset_path_alt"
+
 //Headset SC _vr files
 /obj/item/radio/headset/volunteer
 	name = "volunteer's headset"

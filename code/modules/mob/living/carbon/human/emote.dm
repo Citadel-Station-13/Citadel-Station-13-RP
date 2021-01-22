@@ -249,7 +249,7 @@
 			message = "faints."
 			if(src.sleeping)
 				return //Can't faint while asleep
-			src.sleeping += 10 //Short-short nap
+			Sleeping(10) //Short-short nap
 			m_type = 1
 
 		if("cough", "coughs")

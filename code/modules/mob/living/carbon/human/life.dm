@@ -1085,7 +1085,7 @@
 			drowsyness = max(0, drowsyness - 1)
 			eye_blurry = max(2, eye_blurry)
 			if (prob(5))
-				sleeping += 1
+				Sleeping(1)
 				Paralyse(5)
 
 		// If you're dirty, your gloves will become dirty, too.
