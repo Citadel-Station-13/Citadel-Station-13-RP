@@ -211,6 +211,19 @@
 		/obj/item/stock_parts/matter_bin = 1,
 		/obj/item/stock_parts/capacitor = 2)
 
+//Smaller Scale "nerfed" version for small ships/shuttles. Essentially a fusion of Ion stats with gas economy (hopefully).
+/obj/machinery/atmospherics/unary/engine/small
+	name = "small rocket nozzle"
+	desc = "A small rocket nozzle, expelling gas at hypersonic velocities to propel a shuttle or small vessel."
+
+	power_channel = EQUIP
+	idle_power_usage = 150
+
+	thrust_limit = 1		//Value between 1 and 0 to limit the resulting thrust
+	volume_per_burn = 50
+	charge_per_burn = 1000
+	boot_time = 10
+
 // Not Implemented - Variant that pulls power from cables.  Too complicated without bay's power components.
 // /obj/machinery/atmospherics/unary/engine/terminal
 // 	base_type = /obj/machinery/atmospherics/unary/engine

@@ -137,7 +137,7 @@
 	It also boasts an prosthetic line, which is provided to its employees as needed, and is used as an incentive \
 	for newly tested posibrains to remain with the company."
 	work = "research giant"
-	headquarters = "Luna, Sol"
+	headquarters = "The Frontier"
 
 	ship_prefixes = list("NTV" = "a general operations", "NEV" = "an exploration", "NGV" = "a hauling", "NDV" = "a patrol", "NRV" = "an emergency response", "NDV" = "an asset protection")
 	/// Scientist naming scheme
@@ -149,7 +149,7 @@
 		"Oppenheimer", "Renwick", "Hubble", "Alcubierre", "Robineau", "Glass")
 	/// Note that the current station being used will be pruned from this list upon being instantiated
 	destination_names = list(
-		"NT HQ on Luna", "NSS Exodus in Nyx", "NCS Northern Star in Vir",
+		"NT HQ", "NSS Exodus in Nyx", "NCS Northern Star in Vir",
 		"NLS Southern Cross in Vir", "NAS Vir Central Command",
 		"a dockyard orbiting Sif", "an asteroid orbiting Kara",
 		"an asteroid orbiting Rota", "Vir Interstellar Spaceport")
@@ -1192,7 +1192,8 @@
 			"Barnacle Jim",
 			"Charles in Charge",
 			"Strange Aeons",
-			"Red Queen"
+			"Red Queen",
+			"Eat Hot Chip & Lie"
 			)
 	/*
 	destination_names = list(
@@ -1481,10 +1482,10 @@
 // Governments
 
 /datum/lore/organization/gov/solgov
-	name = "Solar Confederate Government"
-	short_name = "SolGov "
-	acronym = "SCG"
-	desc = "SolGov is a decentralized confederation of human governmental entities based on Luna, Sol, which defines top-level law for their member states.  \
+	name = "Orion Confederation"
+	short_name = "OriCon "
+	acronym = "OCS"
+	desc = "" //Todo //"SolGov is a decentralized confederation of human governmental entities based on Luna, Sol, which defines top-level law for their member states.  \
 	Member states receive various benefits such as defensive pacts, trade agreements, social support and funding, and being able to participate \
 	in the Colonial Assembly.  The majority, but not all human territories are members of SolGov.  As such, SolGov is a major power and \
 	defacto represents humanity on the galactic stage. Military flight operations fall under the banner of the USDF."
@@ -1494,7 +1495,7 @@
 	motto = "Nil Mortalibus Ardui Est" // Latin, because latin.  Says 'Nothing is too steep for mortals'
 	autogenerate_destination_names = TRUE
 
-	ship_prefixes = list("SCG-A" = "an administrative", "SCG-T" = "a transportation", "SCG-D" = "a diplomatic", "SCG-F" = "a freight", "SCG-J" = "a prisoner transfer")
+	ship_prefixes = list("OCS-A" = "an administrative", "OCS-T" = "a transportation", "OCS-D" = "a diplomatic", "OCS-F" = "a freight", "OCS-J" = "a prisoner transfer")
 	//earth's biggest impact craters
 	ship_names = list(
 			"Wabar",
@@ -2003,3 +2004,62 @@
 			"a contract location"
 			)
 
+/datum/lore/organization/other/pmd
+	name = "Paracausal Monitoring Division"
+	short_name = ""
+	acronym = "PMD"
+	desc = "A formerly defunct wing of Central Command, the recent resurgence of supernatural activity in the galaxy has necessitated the return of the Paracausal Monitoring Divison.\
+	Unlike their cousins, the DDO, the PMD is a formally recognized member of the CentCom organizational structure. However, the vast majority of PMD operations are considered classified.\
+	Spotting local PMD vessels in transit is considered a bad omen, as they are likely laden with anomalous cargo, or en route to collect more. It is always hoped that they pass your destination by."
+	history = ""
+	work = "supernatural suppression"
+	headquarters = "PMD Austerlitz, Dark Frontier"
+	motto = "Many Eyes, One Vision"
+	lawful = TRUE
+	autogenerate_destination_names = TRUE
+
+	ship_prefixes = list ("PMD" = "an observation", "PDP" = "a patrol", "PDE" = "an escort", "PDC" = "a containment", "PDR" = "a response", "PDL" = "a logistics", "PDF" = "a freight", "PDJ" = "a prisoner transport")
+	flight_types = list(
+			"flight",
+			"mission",
+			"response",
+			"operation",
+			"interception"
+			)
+	//ship names: Freeform, inspired by phrases or names in music.
+	ship_names = list(
+			"Wicked Dickie",
+			"Naughty Nanny",
+			"Miriam's Alibi",
+			"Quitter's Halo",
+			"Darkened Dancer",
+			"Mayor's Income",
+			"Mischevious Angel",
+			"Argent Martian",
+			"Dancing Pig",
+			"A Light Extinguished",
+			"Jesse's Dynamite",
+			"Oceans of Time",
+			"Olde Headboard",
+			"Fletcher Christian",
+			"Forgetful Kennedy",
+			"Bloody Laredo",
+			"Cornerhouse Jacknife",
+			"Sign of the Cross",
+			"Der Kommissar",
+			"Room of Chain and Glass",
+			"Carol's Last Ride",
+			"Scattered Like Crows",
+			"Where The Black Stars Hang",
+			"Dreams of Being Snow",
+			"Yours Truly, The Whale",
+			"Sigh Hawaii"
+			)
+	destination_names = list(
+			"unidentified sensor reading",
+			"PMD Pitcairn",
+			"a PMD containment facility",
+			"a PMDresearch center",
+			"active distress signal",
+			"an active incident site"
+			)

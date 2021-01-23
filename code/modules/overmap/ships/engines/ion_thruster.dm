@@ -84,3 +84,16 @@
 							/obj/item/stack/cable_coil = 2,
 							/obj/item/stock_parts/matter_bin = 1,
 							/obj/item/stock_parts/capacitor = 2)
+
+//Nerfed Ion Engine for "limping" home/emergency propulsion.
+/obj/machinery/ion_engine/small
+	name = "backup ion propulsion device"
+	desc = "A compact ion propulsion device, using energy and minute amount of gas to generate thrust for emergency maneuvers."
+	icon = 'icons/turf/shuttle_parts.dmi'
+	icon_state = "nozzle"
+	power_channel = ENVIRON
+	idle_power_usage = 150
+	anchored = TRUE
+	on = 0
+	burn_cost = 5000
+	generated_thrust = 0.5
