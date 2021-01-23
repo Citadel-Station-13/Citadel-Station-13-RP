@@ -126,6 +126,16 @@
 	if(istype(O,/obj/item/reagent_containers/glass) || istype(O,/obj/item/reagent_containers/food/drinks) || istype(O,/obj/item/reagent_containers/food/condiment))
 		return 1
 
+/obj/machinery/smartfridge/food 
+	name = "\improper Hot Foods Display"
+	desc = "A climated storage for dishes waiting to be eaten"
+
+/obj/machinery/smartfridge/food/accept_check(obj/item/O)
+	if(istype(O,/obj/item/reagent_containers/food/snacks) && !istype(O,/obj/item/reagent_containers/food/snacks/grown))//No fruits
+		return 1
+	if(istype(O,/obj/item/reagent_containers/food/condiment))//condiments need storage as well
+		return 1
+	
 /obj/machinery/smartfridge/drying_rack
 	name = "\improper Drying Rack"
 	desc = "A machine for drying plants."
