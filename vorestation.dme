@@ -3278,6 +3278,7 @@
 #include "code\modules\tables\update_triggers.dm"
 #include "code\modules\telesci\bscyrstal.dm"
 #include "code\modules\telesci\construction.dm"
+#include "code\modules\telesci\hyper_pad.dm"
 #include "code\modules\telesci\quantum_pad.dm"
 #include "code\modules\telesci\telepad.dm"
 #include "code\modules\telesci\telesci_computer.dm"
