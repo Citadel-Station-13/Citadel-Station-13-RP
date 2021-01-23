@@ -383,14 +383,14 @@
 /turf/simulated/floor/tiled,
 /area/security/visitor)
 "apt" = (
-/obj/machinery/computer/ship/engines{
-	dir = 8
-	},
 /obj/effect/floor_decal/corner/orange/full{
 	dir = 1
 	},
 /obj/machinery/light{
 	dir = 4
+	},
+/obj/machinery/computer/ship/sensors{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
@@ -2082,7 +2082,7 @@
 /obj/effect/floor_decal/corner/orange{
 	dir = 6
 	},
-/obj/machinery/computer/ship/sensors{
+/obj/machinery/computer/ship/engines{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -7517,11 +7517,11 @@
 /turf/simulated/floor/tiled,
 /area/security/checkpoint2)
 "fgl" = (
-/obj/machinery/computer/ship/helm{
-	dir = 8
-	},
 /obj/effect/floor_decal/corner/orange{
 	dir = 6
+	},
+/obj/machinery/computer/ship/navigation{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
@@ -20290,11 +20290,11 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/computer/ship/navigation{
-	dir = 8
-	},
 /obj/effect/floor_decal/corner/orange/full{
 	dir = 4
+	},
+/obj/machinery/computer/ship/helm{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
