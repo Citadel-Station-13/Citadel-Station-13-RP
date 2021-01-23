@@ -366,6 +366,11 @@
 	desc = "An embroidered patch indicating the wearer's blood type as AB NEGATIVE."
 	icon_state = "abnegtag"
 
+/obj/item/clothing/accessory/armor/tag/press
+	name = "\improper PRESS tag"
+	desc = "An armor tag with the words PRESS emblazoned in bold white lettering."
+	icon_state = "presstag"
+
 /////////////////
 // Helmet Covers
 /////////////////

@@ -165,6 +165,12 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 	armor = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 10, bio = 0, rad = 0)
 
+/obj/item/clothing/suit/armor/caution
+	name = "improvised armor (caution sign)"
+	desc = "They used to beat you for pointing at the sign. Now, vengeance has come."
+	icon_state = "caution"
+	blood_overlay_type = "armor"
+	armor = list(melee = 5, bullet = 1, laser = 5, energy = 5, bomb = 1, bio = 50, rad = 0)
 
 //Reactive armor
 //When the wearer gets hit, this armor will teleport the user a short distance away (to safety or to more danger, no one knows. That's the fun of it!)

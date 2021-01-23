@@ -5,7 +5,7 @@
 	desc = "A special helmet designed for work in a hazardous, low-pressure environment. Has radiation shielding."
 	icon_state = "rig0-engineering"
 	item_state_slots = list(slot_r_hand_str = "eng_helm", slot_l_hand_str = "eng_helm")
-	armor = list(melee = 40, bullet = 5, laser = 20, energy = 5, bomb = 35, bio = 100, rad = 80)
+	armor = list(melee = 40, bullet = 5, laser = 20, energy = 5, bomb = 35, bio = 100, rad = 100)
 	min_pressure_protection = 0  * ONE_ATMOSPHERE
 	max_pressure_protection = 15 * ONE_ATMOSPHERE
 
@@ -15,7 +15,7 @@
 	icon_state = "rig-engineering"
 	item_state_slots = list(slot_r_hand_str = "eng_voidsuit", slot_l_hand_str = "eng_voidsuit")
 	slowdown = 1
-	armor = list(melee = 40, bullet = 5, laser = 20, energy = 5, bomb = 35, bio = 100, rad = 80)
+	armor = list(melee = 40, bullet = 5, laser = 20, energy = 5, bomb = 35, bio = 100, rad = 100)
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/storage/bag/ore,/obj/item/t_scanner,/obj/item/pickaxe, /obj/item/rcd)
 	min_pressure_protection = 0  * ONE_ATMOSPHERE
 	max_pressure_protection = 15 * ONE_ATMOSPHERE

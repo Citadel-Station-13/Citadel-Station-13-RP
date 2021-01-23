@@ -213,3 +213,10 @@
 	desc = "A sleek metallic plate that might denote the wearer as a member of Bishop."
 	icon_state = "tag_bishop"
 	badge_string = "Bishop"
+
+/obj/item/clothing/accessory/badge/corporate_tag/press
+	name = "Press Badge"
+	desc = "A plain plastic card that bears a poorly shot photo of the wearer, as well as the word 'PRESS', followed by an datastring."
+	icon_state = "pressbadge"
+	item_state = "pressbadge"
+	badge_string = "PRESS"
