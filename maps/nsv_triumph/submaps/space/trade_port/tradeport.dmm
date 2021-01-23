@@ -244,7 +244,6 @@
 	dir = 8;
 	light_range = 12
 	},
-/obj/random/single,
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/triumph_away/tradeport)
 "bs" = (
@@ -491,7 +490,6 @@
 /area/triumph_away/tradeport/commons)
 "cT" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/random/single,
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/triumph_away/tradeport)
 "cV" = (
@@ -1456,7 +1454,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/random/single,
 /obj/item/reagent_containers/food/snacks/candy_corn,
 /obj/item/reagent_containers/food/snacks/candy_corn,
 /obj/item/reagent_containers/food/snacks/candy_corn,
@@ -2629,22 +2626,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/triumph_away/tradeport/dock)
-"oi" = (
-/obj/effect/floor_decal/industrial/outline/grey,
-/obj/structure/table/rack/shelf/steel,
-/obj/random/single,
-/obj/random/single,
-/obj/random/single,
-/obj/random/single,
-/obj/random/single,
-/obj/random/single,
-/obj/random/single,
-/obj/random/single,
-/obj/random/single,
-/obj/random/single,
-/obj/random/single,
-/turf/simulated/floor/tiled/dark,
-/area/triumph_away/tradeport/facility)
 "on" = (
 /obj/structure/sign/warning/airlock,
 /turf/simulated/wall/r_wall,
@@ -3020,7 +3001,6 @@
 "qi" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/machinery/light,
-/obj/random/single,
 /turf/simulated/floor/tiled/old_tile/red,
 /area/triumph_away/tradeport)
 "qj" = (
@@ -3670,7 +3650,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/random/single,
 /turf/simulated/floor/tiled/steel,
 /area/triumph_away/tradeport)
 "tT" = (
@@ -4030,7 +4009,6 @@
 /area/triumph_away/tradeport/facility)
 "vr" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/random/single,
 /turf/simulated/floor/tiled/old_tile/red,
 /area/triumph_away/tradeport)
 "vt" = (
@@ -4093,7 +4071,6 @@
 /obj/machinery/camera{
 	dir = 4
 	},
-/obj/random/single,
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/triumph_away/tradeport)
 "vF" = (
@@ -4451,16 +4428,6 @@
 "xt" = (
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/structure/table/rack/shelf/steel,
-/obj/random/single,
-/obj/random/single,
-/obj/random/single,
-/obj/random/single,
-/obj/random/single,
-/obj/random/single,
-/obj/random/single,
-/obj/random/single,
-/obj/random/single,
-/obj/random/single,
 /turf/simulated/floor/tiled/dark,
 /area/triumph_away/tradeport/facility)
 "xv" = (
@@ -4838,7 +4805,6 @@
 /area/triumph_away/tradeport/dock)
 "zv" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/random/single,
 /turf/simulated/floor/tiled/steel,
 /area/triumph_away/tradeport)
 "zx" = (
@@ -5293,7 +5259,6 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/random/single,
 /turf/simulated/floor/tiled/old_tile/red,
 /area/triumph_away/tradeport)
 "Bw" = (
@@ -5561,16 +5526,6 @@
 "CX" = (
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/structure/table/rack/shelf/steel,
-/obj/random/single,
-/obj/random/single,
-/obj/random/single,
-/obj/random/single,
-/obj/random/single,
-/obj/random/single,
-/obj/random/single,
-/obj/random/single,
-/obj/random/single,
-/obj/random/single,
 /obj/item/pizzavoucher,
 /turf/simulated/floor/tiled/dark,
 /area/triumph_away/tradeport/facility)
@@ -5798,7 +5753,6 @@
 /obj/machinery/camera{
 	dir = 8
 	},
-/obj/random/single,
 /turf/simulated/floor/tiled/old_tile/red,
 /area/triumph_away/tradeport)
 "Ec" = (
@@ -5942,16 +5896,6 @@
 "EB" = (
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/structure/table/rack/shelf/steel,
-/obj/random/single,
-/obj/random/single,
-/obj/random/single,
-/obj/random/single,
-/obj/random/single,
-/obj/random/single,
-/obj/random/single,
-/obj/random/single,
-/obj/random/single,
-/obj/random/single,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/dark,
 /area/triumph_away/tradeport/facility)
@@ -6872,7 +6816,6 @@
 "JW" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/machinery/light,
-/obj/random/single,
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/triumph_away/tradeport)
 "JX" = (
@@ -7047,7 +6990,6 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/random/single,
 /turf/simulated/floor/tiled/steel,
 /area/triumph_away/tradeport)
 "KJ" = (
@@ -8950,7 +8892,6 @@
 /obj/machinery/camera{
 	dir = 1
 	},
-/obj/random/single,
 /turf/simulated/floor/tiled/old_tile/red,
 /area/triumph_away/tradeport)
 "TN" = (
@@ -8971,20 +8912,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/triumph_away/tradeport/commons)
-"TS" = (
-/obj/effect/floor_decal/industrial/outline/grey,
-/obj/structure/table/rack/shelf/steel,
-/obj/random/single,
-/obj/random/single,
-/obj/random/single,
-/obj/random/single,
-/obj/random/single,
-/obj/random/single,
-/obj/random/single,
-/obj/random/single,
-/obj/random/single,
-/turf/simulated/floor/tiled/dark,
-/area/triumph_away/tradeport/facility)
 "TW" = (
 /obj/machinery/door/blast/regular,
 /turf/simulated/wall/r_wall,
@@ -28396,7 +28323,7 @@ Go
 oL
 xt
 oL
-TS
+xt
 oL
 CX
 Go
@@ -28536,11 +28463,11 @@ oL
 He
 Go
 oL
-oi
+xt
 oL
 xt
 oL
-TS
+xt
 Go
 oL
 nb
