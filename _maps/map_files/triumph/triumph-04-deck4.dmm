@@ -10034,13 +10034,7 @@
 /turf/simulated/floor/wood,
 /area/hydroponics/garden)
 "hgp" = (
-/obj/structure/sign/directions/medical{
-	pixel_y = -42
-	},
-/obj/structure/sign/directions/command{
-	dir = 4;
-	pixel_y = -36
-	},
+/obj/effect/floor_decal/techfloor,
 /obj/structure/sign/directions/science{
 	pixel_y = -23
 	},
@@ -10048,7 +10042,13 @@
 	dir = 8;
 	pixel_y = -29
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/structure/sign/directions/command{
+	dir = 4;
+	pixel_y = -36
+	},
+/obj/structure/sign/directions/medical{
+	pixel_y = -42
+	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/primary/aft)
 "hgG" = (
@@ -25374,6 +25374,7 @@
 "rkX" = (
 /obj/effect/floor_decal/techfloor,
 /obj/effect/floor_decal/techfloor/hole,
+/obj/machinery/computer/timeclock/premade/south,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/primary/aft)
 "rlm" = (
@@ -27767,14 +27768,6 @@
 /obj/random/tech_supply,
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
-"sOs" = (
-/obj/machinery/door/airlock/glass_security{
-	name = "Equipment Storage";
-	req_one_access = list(2)
-	},
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/tiled/dark,
-/area/security/security_lockerroom)
 "sOB" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -32678,6 +32671,9 @@
 	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/red/border,
+/obj/machinery/camera/network/security{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/security/hallwayaux)
 "wdF" = (
@@ -42793,7 +42789,7 @@ oVv
 oVv
 bYn
 ugB
-sOs
+ugB
 ugB
 ugB
 ugB
@@ -46040,7 +46036,7 @@ lIJ
 nIw
 qNU
 tzJ
-kmY
+hgp
 brg
 qHU
 qHU
@@ -46182,8 +46178,8 @@ ioR
 mIQ
 cEx
 tzJ
-hgp
-brg
+sKM
+pFE
 qHU
 iyy
 dHb

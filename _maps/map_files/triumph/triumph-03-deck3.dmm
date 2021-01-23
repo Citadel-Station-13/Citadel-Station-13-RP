@@ -1389,17 +1389,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/xenobiology/xenoflora_storage)
-"boi" = (
-/obj/machinery/light{
-	dir = 8
-	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
 "boO" = (
 /obj/structure/closet/secure_closet/RD,
 /obj/item/aicard,
@@ -5368,16 +5357,9 @@
 /turf/simulated/floor/tiled,
 /area/rnd/breakroom)
 "ePf" = (
-/obj/machinery/light{
-	dir = 1
-	},
+/obj/machinery/camera/network/civilian,
 /obj/effect/floor_decal/techfloor{
-	dir = 9
-	},
-/obj/item/radio/intercom{
-	dir = 1;
-	name = "Station Intercom (General)";
-	pixel_y = 26
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
@@ -5801,9 +5783,6 @@
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/test_area)
 "foy" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 4
-	},
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
@@ -6313,18 +6292,17 @@
 	name = "\improper Robotics Surgery Room"
 	})
 "fKa" = (
-/obj/machinery/door/firedoor,
 /obj/structure/disposalpipe/segment,
-/obj/machinery/door/airlock{
-	name = "Custodial Closet";
-	req_access = list(26)
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
@@ -12175,13 +12153,8 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
@@ -12273,6 +12246,9 @@
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 5
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
@@ -15959,19 +15935,14 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "oNN" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
 	d1 = 2;
 	d2 = 8;
 	icon_state = "2-8"
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
-/area/janitor)
+/area/triumph/station/stairs_three)
 "oNV" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -16068,7 +16039,10 @@
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
 "oSS" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 4
+	},
+/obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -16228,14 +16202,20 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/virologyaccess)
 "oYT" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
+/obj/item/radio/intercom{
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 26
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 6
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/tiled,
-/area/janitor)
+/area/triumph/station/stairs_three)
 "oZn" = (
 /obj/structure/closet/crate,
 /obj/random/maintenance,
@@ -16734,11 +16714,8 @@
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
 "pqx" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
@@ -16852,13 +16829,13 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
 "pwn" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/techfloor/corner{
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
@@ -17938,11 +17915,13 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
 "qhN" = (
-/obj/machinery/computer/timeclock/premade/west,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
@@ -18427,6 +18406,9 @@
 	},
 /obj/machinery/light{
 	dir = 8
+	},
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
@@ -19390,9 +19372,6 @@
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
-	},
-/obj/effect/floor_decal/techfloor{
-	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
@@ -20986,12 +20965,15 @@
 /turf/simulated/wall/r_wall,
 /area/rnd/test_area)
 "sBl" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/floor_decal/techfloor{
+	dir = 9
+	},
+/obj/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
-/obj/structure/reagent_dispensers/watertank,
 /turf/simulated/floor/tiled,
-/area/janitor)
+/area/triumph/station/stairs_three)
 "sBD" = (
 /obj/effect/floor_decal/steeldecal/steel_decals9,
 /obj/effect/floor_decal/steeldecal/steel_decals9{
@@ -21833,18 +21815,6 @@
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "tkv" = (
-/obj/structure/cable/green{
-	icon_state = "0-2"
-	},
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
-/obj/machinery/camera/network/civilian,
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
 /obj/effect/floor_decal/techfloor/hole{
 	dir = 1
 	},
@@ -24829,16 +24799,14 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
 "vQV" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/closet/crate/trashcart,
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 8
+/obj/effect/floor_decal/techfloor{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/janitor)
+/area/triumph/station/stairs_three)
 "vRi" = (
 /obj/machinery/camera/network/civilian,
 /obj/effect/floor_decal/techfloor{
@@ -26385,15 +26353,14 @@
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
 "xeU" = (
-/obj/machinery/disposal,
-/obj/structure/disposalpipe/trunk{
-	dir = 8
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
 	},
-/obj/machinery/camera/network/civilian{
-	dir = 8
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
 	},
 /turf/simulated/floor/tiled,
-/area/janitor)
+/area/triumph/station/stairs_three)
 "xfh" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -26756,12 +26723,6 @@
 "xxE" = (
 /turf/simulated/wall,
 /area/medical/patient_a)
-"xxS" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
-/turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
 "xxY" = (
 /obj/machinery/vending/snack,
 /turf/simulated/floor/tiled,
@@ -27241,8 +27202,6 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/biostorage)
 "xUD" = (
-/obj/structure/janitorialcart,
-/obj/item/reagent_containers/glass/bucket,
 /obj/structure/cable/green{
 	d2 = 4;
 	icon_state = "0-4"
@@ -27252,10 +27211,14 @@
 	name = "west bump";
 	pixel_x = -28
 	},
-/obj/item/reagent_containers/spray/cleaner,
-/obj/item/reagent_containers/spray/cleaner,
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
-/area/janitor)
+/area/triumph/station/stairs_three)
 "xUI" = (
 /obj/machinery/power/sensor{
 	name = "Powernet Sensor - Medical Subgrid";
@@ -33801,8 +33764,8 @@ iXe
 sGT
 sBl
 xUD
-fxx
-ePf
+oSS
+nSl
 noo
 nSl
 qBZ
@@ -33947,8 +33910,8 @@ fKa
 rnz
 aJb
 jKh
-jKh
-pqx
+xeU
+uGD
 rMx
 uyi
 ubg
@@ -34084,13 +34047,13 @@ jEz
 rLt
 sGT
 vQV
-xeU
-fxx
+uGD
+pqx
 tkv
 lnI
-goC
 uGD
-oSS
+pqx
+uGD
 ikq
 uyi
 xjR
@@ -34225,10 +34188,10 @@ sGT
 eNU
 sGT
 sGT
-fxx
-fxx
-fxx
-xxS
+ePf
+uGD
+uGD
+uGD
 wmy
 uGD
 uGD
@@ -34368,7 +34331,7 @@ sQl
 bvp
 xdo
 ltk
-boi
+qhN
 qhN
 pwn
 dpY
