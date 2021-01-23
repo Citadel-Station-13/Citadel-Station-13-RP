@@ -316,7 +316,19 @@
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_two)
 "aT" = (
+<<<<<<< Updated upstream
 /obj/machinery/vending/cigarette,
+=======
+/obj/structure/table/marble,
+/obj/item/storage/pill_bottle/dice_nerd,
+/obj/item/deck/cards,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/obj/machinery/camera/network/civilian{
+	dir = 1
+	},
+>>>>>>> Stashed changes
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "aU" = (
@@ -504,8 +516,19 @@
 /turf/simulated/floor/plating,
 /area/vacant/vacant_shop)
 "bz" = (
+<<<<<<< Updated upstream
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+=======
+/obj/machinery/computer/arcade/orion_trail,
+/obj/machinery/alarm{
+	dir = 8;
+	pixel_x = 24
+	},
+/obj/machinery/camera/network/civilian{
+	dir = 8
+	},
+>>>>>>> Stashed changes
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "bA" = (
@@ -2373,10 +2396,25 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+<<<<<<< Updated upstream
 /obj/machinery/door/airlock{
 	name = "Bar Backroom";
 	req_access = list(25);
 	req_one_access = list(25)
+=======
+/obj/machinery/newscaster{
+	pixel_y = -31
+	},
+/obj/machinery/camera/network/civilian{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/crew_quarters/bar)
+"gB" = (
+/obj/structure/table/marble,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+>>>>>>> Stashed changes
 	},
 /turf/simulated/floor/wood,
 /area/triumph/surfacebase/bar_backroom)
@@ -4597,6 +4635,11 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_3)
+"mU" = (
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/machinery/light,
+/turf/simulated/floor/carpet/bcarpet,
+/area/crew_quarters/bar)
 "mW" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -6142,6 +6185,7 @@
 "rP" = (
 /turf/simulated/wall/r_wall,
 /area/quartermaster/warehouse)
+<<<<<<< Updated upstream
 "rR" = (
 /obj/structure/table/woodentable,
 /obj/item/reagent_scanner,
@@ -6149,6 +6193,14 @@
 /obj/item/pen,
 /turf/simulated/floor/wood,
 /area/triumph/surfacebase/bar_backroom)
+=======
+"rS" = (
+/obj/machinery/newscaster{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/dark,
+/area/crew_quarters/bar)
+>>>>>>> Stashed changes
 "rT" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -8594,8 +8646,17 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_6)
 "ze" = (
+<<<<<<< Updated upstream
 /turf/simulated/wall,
 /area/triumph/surfacebase/bar_backroom)
+=======
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/obj/machinery/camera/network/civilian,
+/turf/simulated/floor/carpet/bcarpet,
+/area/crew_quarters/bar)
+>>>>>>> Stashed changes
 "zf" = (
 /obj/structure/table/woodentable,
 /obj/machinery/light,
@@ -9004,6 +9065,7 @@
 	},
 /turf/simulated/wall,
 /area/crew_quarters/coffee_shop)
+<<<<<<< Updated upstream
 "Az" = (
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
@@ -9018,9 +9080,14 @@
 	name = "Bar";
 	req_access = list(25);
 	req_one_access = list(25)
+=======
+"AA" = (
+/obj/machinery/camera/network/civilian{
+	dir = 8
+>>>>>>> Stashed changes
 	},
-/turf/simulated/floor/tiled/dark,
-/area/crew_quarters/bar)
+/turf/simulated/floor/wood,
+/area/crew_quarters/coffee_shop)
 "AB" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -9393,6 +9460,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
 "BJ" = (
+<<<<<<< Updated upstream
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -9402,6 +9470,19 @@
 	icon_state = "4-8"
 	},
 /obj/item/stool/padded,
+=======
+/obj/item/radio/intercom{
+	dir = 4;
+	pixel_x = 24
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/obj/machinery/camera/network/civilian{
+	dir = 8
+	},
+>>>>>>> Stashed changes
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "BK" = (
@@ -13053,8 +13134,13 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_2)
 "MU" = (
+<<<<<<< Updated upstream
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
+=======
+/obj/machinery/camera/network/civilian{
+	dir = 4
+>>>>>>> Stashed changes
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/bar)
@@ -14743,7 +14829,14 @@
 /obj/machinery/ai_status_display{
 	pixel_y = -32
 	},
+<<<<<<< Updated upstream
 /turf/simulated/floor/wood,
+=======
+/obj/machinery/camera/network/civilian{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+>>>>>>> Stashed changes
 /area/crew_quarters/bar)
 "Sl" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -19816,8 +19909,8 @@ ii
 ii
 ii
 rC
-ii
 Ed
+<<<<<<< Updated upstream
 ii
 ii
 OI
@@ -19830,9 +19923,24 @@ ii
 OI
 ii
 ii
+=======
 Ed
-ii
-ii
+Ed
+Ed
+>>>>>>> Stashed changes
+Ed
+Ed
+Ed
+Ed
+Ed
+Ed
+Ed
+Ed
+Ed
+Ed
+Ed
+Ed
+Ed
 Ed
 Ed
 ii
@@ -20120,6 +20228,12 @@ Om
 eH
 ii
 ii
+<<<<<<< Updated upstream
+=======
+ii
+Ed
+ii
+>>>>>>> Stashed changes
 rC
 ii
 ii
@@ -20246,7 +20360,7 @@ ii
 eH
 kZ
 fn
-Az
+MU
 gt
 gt
 Le
@@ -20262,6 +20376,12 @@ vR
 eH
 ii
 ii
+<<<<<<< Updated upstream
+=======
+ii
+Ed
+ii
+>>>>>>> Stashed changes
 Ed
 Ed
 Ed
@@ -20404,6 +20524,12 @@ vR
 eH
 ii
 ii
+<<<<<<< Updated upstream
+=======
+ii
+Ed
+ii
+>>>>>>> Stashed changes
 Ed
 ii
 ii
@@ -20813,6 +20939,18 @@ Ts
 Ts
 Ts
 Ts
+<<<<<<< Updated upstream
+=======
+mU
+KS
+Om
+TZ
+Ub
+TZ
+TZ
+Ub
+CG
+>>>>>>> Stashed changes
 TZ
 ze
 ph
@@ -21661,7 +21799,11 @@ vl
 lA
 Rr
 JX
+<<<<<<< Updated upstream
 Cy
+=======
+rS
+>>>>>>> Stashed changes
 xa
 AA
 Kj
@@ -29903,7 +30045,7 @@ ou
 Bt
 Nk
 wJ
-Tf
+AA
 eC
 GJ
 rY

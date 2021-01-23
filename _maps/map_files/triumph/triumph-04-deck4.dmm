@@ -27707,6 +27707,17 @@
 /obj/random/tech_supply,
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
+<<<<<<< Updated upstream
+=======
+"sOs" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/red/border,
+/obj/machinery/camera/network/security{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/security/hallwayaux)
+>>>>>>> Stashed changes
 "sOB" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -45835,7 +45846,7 @@ myb
 qHU
 sEL
 igD
-vWr
+sOs
 wZd
 nWe
 nwd
@@ -45965,7 +45976,7 @@ lIJ
 nIw
 qNU
 tzJ
-kmY
+sKM
 brg
 qHU
 qHU

@@ -1549,9 +1549,10 @@
 /turf/simulated/wall/r_wall,
 /area/engineering/engine_room)
 "ft" = (
-/obj/structure/catwalk,
-/turf/simulated/floor/plating,
-/area/engineering/break_room)
+/obj/structure/lattice,
+/obj/structure/lattice,
+/turf/space,
+/area/space)
 "fu" = (
 /obj/machinery/light{
 	dir = 1
@@ -1560,8 +1561,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_room)
 "fv" = (
-/obj/machinery/vending/cigarette,
-/obj/item/barrier_tape_segment/engineering,
+/obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "fx" = (
@@ -1913,7 +1913,10 @@
 "gq" = (
 /obj/structure/closet/secure_closet/engineering_personal,
 /obj/effect/floor_decal/techfloor/orange{
-	dir = 5
+	dir = 1
+	},
+/obj/structure/window/reinforced/tinted/frosted{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
@@ -3104,6 +3107,18 @@
 	icon_state = "techmaint"
 	},
 /area/tcommsat/entrance)
+<<<<<<< Updated upstream
+=======
+"kn" = (
+/obj/structure/dispenser{
+	phorontanks = 0
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/atmos/storage)
+>>>>>>> Stashed changes
 "kp" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
@@ -4446,8 +4461,8 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/tcommsat/computer)
 "oN" = (
-/obj/machinery/light{
-	dir = 1
+/obj/machinery/status_display{
+	pixel_y = 30
 	},
 /obj/machinery/status_display{
 	pixel_y = 30
@@ -5035,6 +5050,17 @@
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/chief)
+<<<<<<< Updated upstream
+=======
+"qK" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass_engineering,
+/turf/simulated/floor/tiled,
+/area/engineering/hallway)
+>>>>>>> Stashed changes
 "qL" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor,
@@ -5829,7 +5855,10 @@
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk,
-/obj/machinery/door/airlock/maintenance/engi,
+/obj/machinery/door/airlock/vault{
+	name = "REACTOR ROOM";
+	req_one_access = list(10)
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/engi_engine)
 "tg" = (
@@ -6110,10 +6139,10 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/hatch,
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 8
 	},
+/obj/machinery/door/airlock/hatch,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_airlock)
 "tX" = (
@@ -6477,9 +6506,6 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "vk" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 4
-	},
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -6535,9 +6561,6 @@
 /area/maintenance/engineering)
 "vs" = (
 /obj/machinery/hologram/holopad,
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 1
-	},
 /obj/machinery/firealarm{
 	dir = 1;
 	pixel_y = 24
@@ -6679,19 +6702,13 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "vS" = (
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 8
+/obj/machinery/atmospherics/pipe/simple/heat_exchanging{
+	dir = 4
 	},
-/obj/structure/table/rack{
-	dir = 8;
-	layer = 2.6
-	},
-/obj/item/storage/belt,
-/obj/item/storage/belt,
-/obj/item/storage/belt,
-/obj/item/storage/belt,
-/turf/simulated/floor/tiled/techmaint,
-/area/engineering/locker_room)
+/obj/structure/lattice,
+/obj/structure/lattice,
+/turf/space,
+/area/space)
 "vT" = (
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 2
@@ -7145,7 +7162,7 @@
 /obj/machinery/door/airlock/maintenance/engi,
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/wood,
-/area/engineering/break_room)
+/area/maintenance/engi_engine)
 "xk" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
@@ -7947,6 +7964,9 @@
 	d1 = 2;
 	d2 = 8;
 	icon_state = "2-8"
+	},
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
@@ -9651,9 +9671,15 @@
 /turf/simulated/floor/carpet/blucarpet,
 /area/engineering/break_room)
 "Fy" = (
-/obj/machinery/vending/coffee,
-/turf/simulated/floor/plating,
-/area/maintenance/engineering)
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/obj/structure/table/bench/padded,
+/obj/effect/landmark/start{
+	name = "Station Engineer"
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/locker_room)
 "Fz" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/machinery/atmospherics/pipe/simple/visible/red{
@@ -10134,7 +10160,6 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/effect/floor_decal/techfloor/orange,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
 "GN" = (
@@ -10478,9 +10503,6 @@
 /area/engineering/engine_room)
 "HK" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
-/obj/effect/floor_decal/techfloor/orange/corner{
-	dir = 4
-	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
 "HL" = (
@@ -10961,7 +10983,6 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/effect/floor_decal/techfloor/orange/corner,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
 "JD" = (
@@ -11858,18 +11879,20 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/monitoring)
 "MB" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 5
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/closet/crate,
+/obj/item/stack/material/phoron{
+	amount = 25
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 9
-	},
+<<<<<<< Updated upstream
 /obj/machinery/light,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/crate,
 /obj/item/stack/material/phoron{
 	amount = 25
 	},
+=======
+>>>>>>> Stashed changes
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/storage)
 "MC" = (
@@ -11911,13 +11934,17 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "MI" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 8
-	},
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/power/port_gen/pacman{
 	anchored = 1
 	},
+<<<<<<< Updated upstream
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/power/port_gen/pacman{
+	anchored = 1
+	},
+=======
+>>>>>>> Stashed changes
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/storage)
 "MJ" = (
@@ -12020,7 +12047,11 @@
 /obj/item/smes_coil/super_io,
 /obj/item/smes_coil/super_io,
 /obj/effect/floor_decal/industrial/outline/yellow,
+<<<<<<< Updated upstream
 /turf/simulated/floor/tiled/techmaint,
+=======
+/turf/simulated/floor/tiled/techfloor/grid,
+>>>>>>> Stashed changes
 /area/engineering/storage)
 "MZ" = (
 /obj/machinery/light,
@@ -12130,7 +12161,14 @@
 /area/storage/tech)
 "Nq" = (
 /obj/effect/floor_decal/techfloor/orange{
+<<<<<<< Updated upstream
 	dir = 4
+=======
+	dir = 1
+	},
+/obj/machinery/status_display{
+	pixel_y = 30
+>>>>>>> Stashed changes
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass_engineering,
@@ -12208,6 +12246,17 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/engineering/foyer_mezzenine)
+<<<<<<< Updated upstream
+=======
+"NB" = (
+/obj/structure/table/rack{
+	dir = 8;
+	layer = 2.6
+	},
+/obj/item/storage/belt,
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/locker_room)
+>>>>>>> Stashed changes
 "ND" = (
 /obj/structure/window/reinforced{
 	dir = 8;
@@ -12269,6 +12318,29 @@
 /obj/structure/table/woodentable,
 /turf/simulated/floor/wood,
 /area/engineering/lower/corridor)
+<<<<<<< Updated upstream
+=======
+"NI" = (
+/obj/machinery/light,
+/obj/structure/table/reinforced,
+/obj/machinery/cell_charger,
+/obj/item/cell/high{
+	maxcharge = 15000
+	},
+/obj/item/tool/wrench,
+/obj/item/cell/high{
+	maxcharge = 15000
+	},
+/obj/item/cell/high{
+	maxcharge = 15000
+	},
+/obj/item/cell/high{
+	maxcharge = 15000
+	},
+/obj/effect/floor_decal/techfloor/orange,
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/locker_room)
+>>>>>>> Stashed changes
 "NK" = (
 /obj/machinery/meter,
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
@@ -13117,25 +13189,12 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_monitoring)
 "Qy" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
+/obj/structure/lattice,
+/obj/machinery/atmospherics/pipe/simple/heat_exchanging{
+	dir = 5
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 8
-	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/effect/floor_decal/techfloor/orange/corner{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/engineering/locker_room)
+/turf/space,
+/area/space)
 "Qz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -13432,6 +13491,17 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_smes)
+<<<<<<< Updated upstream
+=======
+"Ro" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass_engineering,
+/turf/simulated/floor/tiled,
+/area/engineering/hallway)
+>>>>>>> Stashed changes
 "Rp" = (
 /obj/machinery/access_button{
 	dir = 0;
@@ -13508,28 +13578,10 @@
 /turf/simulated/floor/plating,
 /area/storage/tech)
 "Rv" = (
-/obj/machinery/light,
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = -37
 	},
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 10
-	},
-/obj/structure/table/reinforced,
-/obj/machinery/cell_charger,
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
-/obj/item/tool/wrench,
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
+/obj/effect/floor_decal/techfloor/orange,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
 "Rx" = (
@@ -13553,8 +13605,9 @@
 /area/engineering/hallway)
 "Ry" = (
 /obj/structure/closet/secure_closet/engineering_welding,
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 6
+/obj/effect/floor_decal/techfloor/orange,
+/obj/structure/window/reinforced/tinted/frosted{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
@@ -13833,8 +13886,17 @@
 /turf/simulated/floor/reinforced,
 /area/engineering/engine_room)
 "So" = (
+<<<<<<< Updated upstream
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+=======
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+>>>>>>> Stashed changes
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "Sq" = (
@@ -13890,7 +13952,7 @@
 	dir = 1
 	},
 /obj/structure/closet/secure_closet/engineering_welding,
-/obj/effect/floor_decal/techfloor/orange{
+/obj/structure/window/reinforced/tinted/frosted{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -13975,10 +14037,16 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
+<<<<<<< Updated upstream
 /obj/machinery/vending/wallmed1{
 	name = "Emergency NanoMed";
 	pixel_y = 32
 	},
+=======
+/obj/effect/floor_decal/techfloor/orange,
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass_engineering,
+>>>>>>> Stashed changes
 /turf/simulated/floor/tiled,
 /area/engineering/lower/corridor)
 "SH" = (
@@ -14132,7 +14200,7 @@
 /area/engineering/engine_airlock)
 "Th" = (
 /obj/structure/closet/secure_closet/engineering_personal,
-/obj/effect/floor_decal/techfloor/orange{
+/obj/structure/window/reinforced/tinted/frosted{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -14913,12 +14981,12 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 9
-	},
 /obj/structure/table/bench/padded,
 /obj/effect/landmark/start{
 	name = "Station Engineer"
+	},
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
@@ -16169,12 +16237,6 @@
 	},
 /turf/simulated/floor/reinforced/n20,
 /area/engineering/atmos)
-"ZF" = (
-/obj/effect/floor_decal/techfloor/orange/corner{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/engineering/locker_room)
 "ZI" = (
 /obj/machinery/atmospherics/unary/outlet_injector{
 	dir = 4;
@@ -18766,13 +18828,13 @@ fN
 fN
 Zj
 fN
+fN
+fN
+fN
+fN
 Zj
 fN
-fN
-fN
 Zj
-fN
-fN
 Zj
 fN
 fN
@@ -18907,14 +18969,14 @@ fN
 fN
 fN
 Zj
+fN
+fN
+fN
+fN
+fN
+Zj
 LQ
 Bs
-XU
-XU
-XU
-Bs
-XU
-XU
 Bs
 XU
 XU
@@ -18931,17 +18993,17 @@ XU
 XU
 XU
 Bs
-XU
-XU
-Bs
-XU
-XU
-Bs
-XU
 XU
 XU
 Bs
 Fh
+fN
+Zj
+fN
+fN
+fN
+Zj
+fN
 Zj
 fN
 fN
@@ -19049,14 +19111,14 @@ fN
 fN
 fN
 eD
-Ww
+Zj
+Zj
+Zj
+Zj
+Zj
+ft
+vS
 BL
-Bs
-Bs
-Bs
-Bs
-Bs
-Bs
 Bs
 Bs
 Bs
@@ -19076,14 +19138,14 @@ Bs
 XU
 XU
 Bs
-XU
-XU
-Bs
-XU
-XU
-XU
-Bs
 He
+fN
+Zj
+fN
+fN
+fN
+Zj
+fN
 Zj
 fN
 fN
@@ -19191,14 +19253,14 @@ fN
 fN
 fN
 Zj
+fN
+fN
+fN
+fN
+fN
+Zj
 Rg
 yb
-XU
-XU
-XU
-Bs
-XU
-XU
 Bs
 XU
 XU
@@ -19218,14 +19280,14 @@ aj
 Bs
 Bs
 Bs
-Bs
-Bs
-Bs
-Bs
-Bs
-Bs
-Bs
 zX
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
 eD
 fN
 fN
@@ -19333,14 +19395,14 @@ fN
 fN
 fN
 Zj
+fN
+fN
+fN
+fN
+fN
+Zj
 Rg
 BL
-XU
-XU
-XU
-Bs
-XU
-XU
 Bs
 XU
 XU
@@ -19359,15 +19421,15 @@ XU
 Bs
 XU
 XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
 Bs
 He
+fN
+Zj
+fN
+fN
+fN
+Zj
+fN
 Zj
 fN
 fN
@@ -19475,14 +19537,14 @@ fN
 fN
 fN
 Zj
+fN
+fN
+fN
+fN
+fN
+Zj
 Rg
 yb
-XU
-XU
-XU
-Bs
-XU
-XU
 Bs
 XU
 XU
@@ -19501,15 +19563,15 @@ Bs
 Bs
 XU
 XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
 Bs
 Fh
+fN
+Zj
+fN
+fN
+fN
+Zj
+fN
 Zj
 fN
 fN
@@ -19617,14 +19679,14 @@ fN
 mq
 mq
 Zj
+fN
+fN
+fN
+fN
+fN
+Zj
 Rg
 BL
-XU
-XU
-XU
-Bs
-XU
-XU
 Bs
 XU
 XU
@@ -19643,15 +19705,15 @@ XU
 Bs
 XU
 XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
 Bs
 He
+fN
+Zj
+fN
+fN
+fN
+Zj
+fN
 Zj
 mq
 mq
@@ -19759,14 +19821,14 @@ LO
 ID
 AD
 Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+ft
 Ww
 yb
-Bs
-Bs
-Bs
-Bs
-Bs
-Bs
 Bs
 Bs
 Bs
@@ -19786,14 +19848,14 @@ Bs
 Bs
 Bs
 Bs
-Bs
-Bs
-Bs
-Bs
-Bs
-Bs
-Bs
-zX
+Qy
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
 Zj
 hQ
 ID
@@ -19900,14 +19962,14 @@ fN
 LO
 ID
 al
+Zj
+fN
+fN
+fN
+fN
+fN
 fN
 DM
-XU
-XU
-XU
-XU
-XU
-XU
 Fh
 BL
 XU
@@ -19928,14 +19990,14 @@ Bs
 XU
 XU
 XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
 He
+fN
+Zj
+fN
+fN
+fN
+fN
+fN
 fN
 If
 ID
@@ -20072,7 +20134,7 @@ XU
 Bs
 Fh
 fN
-fN
+Zj
 fN
 fN
 fN
@@ -20213,8 +20275,8 @@ Bs
 Bs
 Bs
 Jc
-fN
-fN
+Zj
+ft
 fN
 lc
 lc
@@ -20356,7 +20418,7 @@ XU
 Bs
 Fh
 fN
-fN
+Zj
 fN
 LT
 vm
@@ -25464,8 +25526,8 @@ MK
 ER
 MK
 MK
-MK
-MK
+xv
+xv
 cw
 wH
 xv
@@ -25607,7 +25669,7 @@ RI
 Iq
 Dv
 xi
-ft
+wH
 wH
 xa
 xv
@@ -26730,7 +26792,11 @@ tz
 NV
 wv
 Pa
+<<<<<<< Updated upstream
 QV
+=======
+NV
+>>>>>>> Stashed changes
 MI
 YJ
 ku
@@ -28282,7 +28348,7 @@ vR
 Hh
 ho
 dv
-Fy
+Yb
 fv
 dv
 RT
@@ -29566,12 +29632,12 @@ dv
 qb
 pO
 yk
-yk
-yk
+Fy
+FC
 vs
 GL
-yk
-yk
+NB
+NI
 yk
 uu
 RP
@@ -29709,10 +29775,10 @@ Da
 pO
 yk
 VA
-JB
-ZF
-Qy
-vS
+FC
+FC
+FY
+FC
 Rv
 yk
 GQ
