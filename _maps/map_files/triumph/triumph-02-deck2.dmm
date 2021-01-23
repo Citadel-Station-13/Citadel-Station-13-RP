@@ -558,7 +558,7 @@
 	},
 /obj/structure/reagent_dispensers/cookingoil,
 /turf/simulated/floor/tiled/dark,
-/area/crew_quarters/freezer)
+/area/crew_quarters/kitchen)
 "bP" = (
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/mining_ship/general)
@@ -1287,7 +1287,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
-/area/crew_quarters/freezer)
+/area/crew_quarters/kitchen)
 "ek" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -2515,7 +2515,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
-/area/crew_quarters/freezer)
+/area/crew_quarters/kitchen)
 "hl" = (
 /turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/sleep/Dorm_4)
@@ -3181,7 +3181,7 @@
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/crew_quarters/freezer)
+/area/crew_quarters/kitchen)
 "ji" = (
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/plating,
@@ -3554,7 +3554,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
-/area/crew_quarters/freezer)
+/area/crew_quarters/kitchen)
 "kk" = (
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
@@ -4713,7 +4713,7 @@
 	req_one_access = list(28)
 	},
 /turf/simulated/floor/tiled/dark,
-/area/crew_quarters/freezer)
+/area/crew_quarters/kitchen)
 "nv" = (
 /obj/machinery/alarm{
 	pixel_y = 22
@@ -5658,7 +5658,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
-/area/crew_quarters/freezer)
+/area/crew_quarters/kitchen)
 "qu" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
@@ -10537,7 +10537,7 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled,
-/area/crew_quarters/freezer)
+/area/crew_quarters/kitchen)
 "Fl" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
@@ -11249,7 +11249,7 @@
 	req_access = list(28)
 	},
 /turf/simulated/floor/tiled/freezer,
-/area/crew_quarters/freezer)
+/area/crew_quarters/kitchen)
 "Hp" = (
 /obj/machinery/light{
 	dir = 4
@@ -12284,7 +12284,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
-/area/crew_quarters/freezer)
+/area/crew_quarters/kitchen)
 "Kl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -12946,7 +12946,7 @@
 "Mx" = (
 /obj/machinery/appliance/grill,
 /turf/simulated/floor/tiled/dark,
-/area/crew_quarters/freezer)
+/area/crew_quarters/kitchen)
 "My" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -14943,7 +14943,7 @@
 "SG" = (
 /obj/machinery/appliance/cooker/oven,
 /turf/simulated/floor/tiled/dark,
-/area/crew_quarters/freezer)
+/area/crew_quarters/kitchen)
 "SH" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -15303,7 +15303,7 @@
 	},
 /obj/machinery/appliance/cooker/fryer,
 /turf/simulated/floor/tiled/dark,
-/area/crew_quarters/freezer)
+/area/crew_quarters/kitchen)
 "TH" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -15654,7 +15654,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/crew_quarters/freezer)
+/area/crew_quarters/kitchen)
 "UM" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
@@ -16353,9 +16353,9 @@
 /obj/structure/table/marble,
 /obj/machinery/door/blast/shutters{
 	dir = 8;
-	id = "bar";
+	id = "kitchen";
 	layer = 3.3;
-	name = "Bar Shutters"
+	name = "Kitchen Service Shutters"
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/kitchen)
@@ -23753,7 +23753,7 @@ ii
 vl
 ns
 Nh
-yq
+Zy
 jh
 Fi
 qt
@@ -23895,7 +23895,7 @@ ii
 vl
 ns
 ip
-yq
+Zy
 kj
 hk
 ej
@@ -23904,7 +23904,7 @@ SG
 Kj
 TF
 bN
-yq
+Zy
 sU
 UN
 rh
@@ -24037,16 +24037,16 @@ vl
 vl
 ns
 Nh
-yq
-yq
+Zy
+Zy
 Hn
-yq
-yq
-yq
-yq
-yq
-yq
-yq
+Zy
+Zy
+Zy
+Zy
+Zy
+Zy
+Zy
 Nw
 cV
 sH
