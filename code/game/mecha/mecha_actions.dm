@@ -15,7 +15,7 @@
 /obj/mecha/proc/GrantActions(mob/living/user, human_occupant = 0)
 	if(human_occupant)
 		eject_action.Grant(user, src)
-	internals_action.Grant(user, src)
+	//internals_action.Grant(user, src)
 	cycle_action.Grant(user, src)
 	lights_action.Grant(user, src)
 	stats_action.Grant(user, src)
@@ -39,7 +39,7 @@
 /obj/mecha/proc/RemoveActions(mob/living/user, human_occupant = 0)
 	if(human_occupant)
 		eject_action.Remove(user, src)
-	internals_action.Remove(user, src)
+	//internals_action.Remove(user, src)
 	cycle_action.Remove(user, src)
 	lights_action.Remove(user, src)
 	stats_action.Remove(user, src)
@@ -80,7 +80,7 @@
 	chassis.lights()
 
 
-
+/*
 /datum/action/innate/mecha/mech_toggle_internals
 	name = "Toggle Internal Airtank Usage"
 	button_icon_state = "mech_internals_off"
@@ -89,7 +89,7 @@
 	button_icon_state = "mech_internals_[chassis.use_internal_tank ? "off" : "on"]"
 	button.UpdateIcon()
 	chassis.internal_tank()
-
+*/
 
 
 /datum/action/innate/mecha/mech_view_stats

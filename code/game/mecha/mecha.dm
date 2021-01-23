@@ -135,7 +135,7 @@
 ////All of those are for the HUD buttons in the top left. See Grant and Remove procs in mecha_actions.
 
 	var/datum/action/innate/mecha/mech_eject/eject_action = new
-	var/datum/action/innate/mecha/mech_toggle_internals/internals_action = new
+//	var/datum/action/innate/mecha/mech_toggle_internals/internals_action = new
 	var/datum/action/innate/mecha/mech_toggle_lights/lights_action = new
 	var/datum/action/innate/mecha/mech_view_stats/stats_action = new
 	var/datum/action/innate/mecha/strafe/strafing_action = new
