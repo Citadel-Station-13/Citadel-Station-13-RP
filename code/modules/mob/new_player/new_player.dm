@@ -5,6 +5,7 @@
 	var/totalPlayersReady = 0
 	var/show_hidden_jobs = 0	// Show jobs that are set to "Never" in preferences
 	var/datum/browser/panel
+	var/verified = 0 // age verification variable
 	universal_speak = 1
 
 	invisibility = 101
@@ -22,8 +23,21 @@
 	set src = usr
 	new_player_panel_proc()
 
+/mob/new_player/proc/verifyage()
+	if(client) // sanity
+		var/alert = alert(src, "This is an 18+ roleplay server.\n(You must confirm that you are 18+ to proceed.)", "Age Verification", "I am 18+", "I am not 18+") 	
+		if(alert != "I am 18+")
+			var/text = "[key_name(usr)] failed initial age verification."
+			message_admins(text)
+			log_admin(text)
+			Logout()
+		else
+			verified = 1
 
 /mob/new_player/proc/new_player_panel_proc()
+	if(client && verified == 0) // check if the user has already completed the age verification this session
+		verifyage()
+
 	var/output = "<div align='center'>"
 	output +="<hr>"
 	output += "<p><a href='byond://?src=\ref[src];show_preferences=1'>Character Setup</A></p>"
