@@ -10298,6 +10298,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_4)
+"ED" = (
+/obj/machinery/camera/network/civilian{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/coffee_shop)
 "EE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -14887,7 +14893,8 @@
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/maintenance{
-	id_tag = "Dressroom"
+	id_tag = "Dressroom";
+	name = "Dressing room"
 	},
 /obj/structure/cable/green{
 	d1 = 4;
@@ -30006,7 +30013,7 @@ ou
 Bt
 Nk
 wJ
-Tf
+ED
 eC
 GJ
 rY
