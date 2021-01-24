@@ -626,11 +626,9 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/machinery/light,
-/obj/machinery/camera/network/engineering{
-	dir = 8
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 6
 	},
-/obj/effect/floor_decal/techfloor/orange,
 /turf/simulated/floor/tiled,
 /area/engineering/lower/corridor)
 "cc" = (
@@ -688,6 +686,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
+/obj/effect/floor_decal/spline/fancy/wood/corner,
 /turf/simulated/floor/plating,
 /area/engineering/lower/corridor)
 "cj" = (
@@ -2447,7 +2446,6 @@
 /turf/simulated/floor/wood,
 /area/engineering/lower/corridor)
 "hZ" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
 /obj/structure/cable{
 	d2 = 2;
 	icon_state = "0-2"
@@ -2459,7 +2457,7 @@
 	pixel_y = 28
 	},
 /obj/effect/floor_decal/techfloor/orange{
-	dir = 1
+	dir = 9
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_one)
@@ -2752,6 +2750,27 @@
 /obj/structure/reagent_dispensers/watertank,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/atmos/storage)
+"ji" = (
+/obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/fancy/wood/cee{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/engineering/lower/corridor)
 "jo" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 4
@@ -3551,7 +3570,6 @@
 /turf/simulated/floor/plating,
 /area/triumph/station/stairs_one)
 "lN" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -3565,12 +3583,13 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/obj/structure/catwalk,
-/obj/effect/floor_decal/spline/fancy/wood,
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
 	},
-/turf/simulated/floor/plating,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
 /area/triumph/station/stairs_one)
 "lO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -4291,7 +4310,6 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/light,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 10
 	},
@@ -4602,6 +4620,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engi_engine)
+"ph" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/techfloor/orange,
+/obj/machinery/light,
+/turf/simulated/floor/tiled,
+/area/engineering/lower/corridor)
 "pi" = (
 /obj/structure/table/reinforced,
 /obj/item/stack/cable_coil{
@@ -5359,6 +5387,11 @@
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/carpet/blucarpet,
 /area/crew_quarters/heads/chief)
+"rF" = (
+/obj/effect/floor_decal/techfloor/orange,
+/obj/machinery/light,
+/turf/simulated/floor/tiled,
+/area/engineering/lower/corridor)
 "rG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -5681,9 +5714,6 @@
 /area/engineering/break_room)
 "sH" = (
 /obj/structure/catwalk,
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
-	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
@@ -5698,12 +5728,14 @@
 /obj/effect/floor_decal/spline/fancy/wood/corner{
 	dir = 8
 	},
-/obj/effect/floor_decal/spline/fancy/wood/corner,
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 10
 	},
 /obj/structure/disposalpipe/junction{
 	dir = 4
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 5
 	},
 /turf/simulated/floor/plating,
 /area/engineering/lower/corridor)
@@ -5726,7 +5758,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/plating,
 /area/engineering/lower/corridor)
 "sO" = (
 /obj/structure/cable/green{
@@ -6066,22 +6098,17 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/structure/catwalk,
-/obj/effect/floor_decal/spline/fancy/wood,
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled,
 /area/engineering/lower/corridor)
 "tM" = (
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 1
-	},
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 1
-	},
 /obj/machinery/light{
 	dir = 1
+	},
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 9
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/lower/corridor)
@@ -7197,10 +7224,10 @@
 /obj/machinery/alarm{
 	pixel_y = 22
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals_central7,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
+/obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_one)
 "xq" = (
@@ -7721,9 +7748,8 @@
 	icon_state = "2-8"
 	},
 /obj/structure/catwalk,
-/obj/effect/floor_decal/spline/fancy/wood,
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
+/obj/effect/floor_decal/spline/fancy/wood/cee{
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/triumph/station/stairs_one)
@@ -8579,6 +8605,13 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
+"Cs" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/obj/machinery/camera/network/engineering,
+/turf/simulated/floor/tiled,
+/area/engineering/hallway)
 "Ct" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -9049,7 +9082,7 @@
 "DR" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /obj/effect/floor_decal/techfloor/orange{
-	dir = 1
+	dir = 5
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/lower/corridor)
@@ -9551,6 +9584,25 @@
 	},
 /turf/space,
 /area/space)
+"Fj" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/glass_engineering{
+	name = "Engineering Hallway";
+	req_one_access = null
+	},
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/tiled,
+/area/engineering/lower/corridor)
 "Fk" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
@@ -9704,6 +9756,26 @@
 "FC" = (
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
+"FE" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/lower/corridor)
 "FF" = (
 /obj/machinery/camera/network/engineering,
 /obj/effect/landmark/start{
@@ -10744,7 +10816,9 @@
 	dir = 1;
 	pixel_y = -24
 	},
-/obj/effect/floor_decal/techfloor/orange,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 10
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_one)
 "IP" = (
@@ -10974,6 +11048,24 @@
 /obj/machinery/pipedispenser/disposal,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/engineering/atmos)
+"JE" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/catwalk,
+/obj/effect/floor_decal/spline/fancy/wood/cee{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/engineering/lower/corridor)
 "JF" = (
 /obj/structure/cable/yellow{
 	d1 = 4;
@@ -11044,11 +11136,6 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor,
-/obj/structure/catwalk,
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
-	},
-/obj/effect/floor_decal/spline/fancy/wood,
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 8
 	},
@@ -11056,7 +11143,7 @@
 	name = "Engineering Hallway";
 	req_one_access = null
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled,
 /area/engineering/lower/corridor)
 "JW" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green{
@@ -11388,6 +11475,9 @@
 	},
 /obj/structure/closet/secure_closet/engineering_electrical,
 /obj/item/clothing/gloves/yellow,
+/obj/machinery/camera/network/engineering{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
 "La" = (
@@ -11609,15 +11699,11 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "LE" = (
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 1
+/obj/machinery/door/airlock/glass_engineering{
+	name = "Engineering Hallway";
+	req_one_access = null
 	},
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 1
-	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/engineering/lower/corridor)
 "LG" = (
@@ -11951,6 +12037,19 @@
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/portnacelle)
+"MP" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/techfloor/orange,
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/machinery/light,
+/turf/simulated/floor/tiled,
+/area/engineering/lower/corridor)
 "MS" = (
 /obj/machinery/light{
 	dir = 1
@@ -11972,9 +12071,6 @@
 /turf/simulated/floor/tiled,
 /area/engineering/lower/corridor)
 "MU" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
@@ -11989,6 +12085,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/spline/fancy/wood,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /turf/simulated/floor/plating,
 /area/triumph/station/stairs_one)
 "MV" = (
@@ -12635,7 +12732,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/plating,
 /area/engineering/lower/corridor)
 "OL" = (
 /obj/machinery/atmospherics/unary/vent_pump{
@@ -13266,11 +13363,6 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "QX" = (
-/obj/structure/catwalk,
-/obj/effect/floor_decal/spline/fancy/wood,
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -13285,10 +13377,12 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
-	dir = 8
+/obj/machinery/door/airlock/glass_engineering{
+	name = "Engineering Hallway";
+	req_one_access = null
 	},
-/turf/simulated/floor/plating,
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/tiled,
 /area/engineering/lower/corridor)
 "QY" = (
 /obj/machinery/light{
@@ -14264,7 +14358,9 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/obj/effect/floor_decal/techfloor/orange/corner,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/lower/corridor)
 "TD" = (
@@ -15131,6 +15227,26 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/tcommsat/entrance)
+"Wm" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/lower/corridor)
 "Wn" = (
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	dir = 4;
@@ -25714,7 +25830,7 @@ Lv
 xv
 Xc
 Zv
-qW
+MP
 MK
 JQ
 Fw
@@ -25998,7 +26114,7 @@ xv
 xv
 Gn
 nl
-JX
+am
 MK
 Uu
 Fw
@@ -26140,7 +26256,7 @@ dj
 YJ
 aT
 nl
-am
+ph
 MK
 LM
 Fw
@@ -26566,7 +26682,7 @@ MB
 yl
 GQ
 nl
-JX
+ph
 MK
 MK
 MK
@@ -27842,8 +27958,8 @@ Gp
 QV
 Or
 YJ
-GQ
-NG
+Kd
+Wm
 TC
 uY
 uY
@@ -27986,7 +28102,7 @@ ON
 YJ
 LE
 QX
-Ka
+LE
 Tx
 Tx
 Tx
@@ -28127,8 +28243,8 @@ UT
 Pf
 YJ
 tM
-NG
-bv
+FE
+di
 Tx
 fI
 fI
@@ -28269,7 +28385,7 @@ QV
 bD
 YJ
 Jz
-NG
+ji
 bv
 Tx
 FF
@@ -28684,7 +28800,7 @@ kB
 Vt
 gH
 dv
-RT
+Cs
 Ki
 Km
 yH
@@ -30966,9 +31082,9 @@ fX
 Fq
 Tk
 OD
-GQ
-Ud
-bv
+SX
+JE
+rF
 em
 Ex
 Bw
@@ -31250,9 +31366,9 @@ OD
 OD
 OD
 OD
-GQ
-Ud
-bv
+LE
+Fj
+LE
 em
 em
 em
