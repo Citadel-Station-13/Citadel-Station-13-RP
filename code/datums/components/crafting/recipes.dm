@@ -536,10 +536,12 @@
 	category = CAT_PRIMAL
 
 /datum/crafting_recipe/skullhelm
-	name = "Skull Helmet"
-	result = /obj/item/clothing/head/helmet/skull
+	name = "totemic skull hat"
 	time = 30
-	reqs = list(/obj/item/stack/sheet/bone = 4)
+	reqs = list(/obj/item/bone/skull = 1,
+				/obj/item/stack/sheet/mineral/wood = 20,
+				/obj/item/stack/cable_coil = 10)
+	result = /obj/item/clothing/head/skull
 	category = CAT_PRIMAL
 
 /datum/crafting_recipe/goliathcloak
@@ -723,3 +725,20 @@
 	reqs = list(/obj/item/tank/internals/oxygen = 2, /obj/item/extinguisher = 1, /obj/item/pipe = 3, /obj/item/stack/cable_coil = MAXCOIL)
 	category = CAT_MISC
 	tools = list(TOOL_WRENCH, TOOL_WELDER, TOOL_WIRECUTTER)
+
+/datum/crafting_recipe/buckethelmet
+	name = "improvised armor (bucket)"
+	time = 30
+	tools = list(TOOL_WELDER, TOOL_WIRECUTTER)
+	reqs = list(/obj/item/reagent_containers/glass/bucket = 1,
+				/obj/item/caution = 10)
+	result = /obj/item/clothing/head/helmet/bucket
+	category = CAT_MISC
+
+/datum/crafting_recipe/cautionplate
+	name = "improvised armor (caution sign)"
+	time = 30
+	reqs = list(/obj/item/stack/cable_coil = 1,
+				/obj/item/caution = 10)
+	result = /obj/item/clothing/suit/armor/caution
+	category = CAT_MISC

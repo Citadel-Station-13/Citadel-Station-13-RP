@@ -298,6 +298,30 @@
 	display_name = "Civilian Sundress - White"
 	path = /obj/item/clothing/under/sundress_white
 
+/datum/gear/uniform/turtlebaggy
+	display_name = "Civilian Baggy Turtleneck - Cream"
+	path = /obj/item/clothing/under/turtlebaggy
+
+/datum/gear/uniform/turtlebaggy/purple
+	display_name = "Civilian Baggy Turtleneck - Purple"
+	path = /obj/item/clothing/under/turtlebaggy/purple
+
+/datum/gear/uniform/turtlebaggy/red
+	display_name = "Civilian Baggy Turtleneck - Red"
+	path = /obj/item/clothing/under/turtlebaggy/red
+
+/datum/gear/uniform/turtlebaggy/blue
+	display_name = "Civilian Baggy Turtleneck - Blue"
+	path = /obj/item/clothing/under/turtlebaggy/blue
+
+/datum/gear/uniform/turtlebaggy/green
+	display_name = "Civilian Baggy Turtleneck - Green"
+	path = /obj/item/clothing/under/turtlebaggy/green
+
+/datum/gear/uniform/turtlebaggy/black
+	display_name = "Civilian Baggy Turtleneck - Black"
+	path = /obj/item/clothing/under/turtlebaggy/black
+
 /datum/gear/uniform/pentagramdress
 	display_name = "Pentagram Dress"
 	path = /obj/item/clothing/under/pentagramdress
@@ -625,6 +649,26 @@
 /datum/gear/uniform/sarigreen
 	display_name = "Civilian Sari - Green"
 	path = /obj/item/clothing/under/dress/sari/green
+
+/datum/gear/uniform/kamishimo
+	display_name = "kamishimo"
+	path = /obj/item/clothing/under/kamishimo
+
+/datum/gear/uniform/kimono
+	display_name = "plain kimono"
+	path = /obj/item/clothing/under/kimono
+
+/datum/gear/uniform/kimono_black
+	display_name = "black kimono"
+	path = /obj/item/clothing/under/kimono_black
+
+/datum/gear/uniform/kimono_sakura
+	display_name = "sakura kimono"
+	path = /obj/item/clothing/under/kimono_sakura
+
+/datum/gear/uniform/kimono_fancy
+	display_name = "festival kimono"
+	path = /obj/item/clothing/under/kimono_fancy
 
 /datum/gear/uniform/wrappedcoat
 	display_name = "Civilian Modern Wrapped Coat"

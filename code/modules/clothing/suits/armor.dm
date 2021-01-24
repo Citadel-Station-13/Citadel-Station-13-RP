@@ -167,7 +167,7 @@
 
 /obj/item/clothing/suit/armor/caution
 	name = "improvised armor (caution sign)"
-	desc = "They used to beat you for pointing at the sign. Now, vengeance has come."
+	desc = "They used to beat you for pointing at the sign. Now, vengeance has come. WARNING: This is just a sign with straps attached to anchor it. Vengeance not guaranteed."
 	icon_state = "caution"
 	blood_overlay_type = "armor"
 	armor = list(melee = 5, bullet = 1, laser = 5, energy = 5, bomb = 1, bio = 50, rad = 0)

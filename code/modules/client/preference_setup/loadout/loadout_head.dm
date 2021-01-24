@@ -204,6 +204,10 @@
 	display_name = "hat, fez"
 	path = /obj/item/clothing/head/fez
 
+/datum/gear/head/rice
+	display_name = "hat, rice"
+	path = /obj/item/clothing/head/rice
+
 /datum/gear/head/tophat
 	display_name = "hat, tophat"
 	path = /obj/item/clothing/head/that
