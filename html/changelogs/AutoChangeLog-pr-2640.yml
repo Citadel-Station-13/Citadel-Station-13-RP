@@ -1,0 +1,5 @@
+author: "ThatOneTeshari"
+delete-after: True
+changes: 
+  - rscadd: "Rig and Mech UI"
+  - rscadd: "Clickable buttons for Mechs, aka Mech UI"
