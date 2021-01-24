@@ -19,6 +19,7 @@ datum/preferences/proc/set_biological_gender(var/gender)
 	S["age"]					>> pref.age
 	S["spawnpoint"]				>> pref.spawnpoint
 	S["OOC_Notes"]				>> pref.metadata
+	S["verified"]				>> pref.verified
 
 /datum/category_item/player_setup_item/general/basic/save_character(var/savefile/S)
 	S["real_name"]				<< pref.real_name
@@ -29,6 +30,7 @@ datum/preferences/proc/set_biological_gender(var/gender)
 	S["age"]					<< pref.age
 	S["spawnpoint"]				<< pref.spawnpoint
 	S["OOC_Notes"]				<< pref.metadata
+	S["verified"]				<< pref.verified
 
 /datum/category_item/player_setup_item/general/basic/sanitize_character()
 	pref.age                = sanitize_integer(pref.age, get_min_age(), get_max_age(), initial(pref.age))
@@ -40,6 +42,7 @@ datum/preferences/proc/set_biological_gender(var/gender)
 	pref.nickname		= sanitize_name(pref.nickname)
 	pref.spawnpoint         = sanitize_inlist(pref.spawnpoint, spawntypes, initial(pref.spawnpoint))
 	pref.be_random_name     = sanitize_integer(pref.be_random_name, 0, 1, initial(pref.be_random_name))
+	pref.verified			= sanitize_integer(pref.verified, 0, 1, initial(pref.verified))
 
 // Moved from /datum/preferences/proc/copy_to()
 /datum/category_item/player_setup_item/general/basic/copy_to_mob(var/mob/living/carbon/human/character)

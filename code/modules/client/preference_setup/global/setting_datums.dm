@@ -330,3 +330,10 @@ var/list/_client_preferences_by_type
 	enabled_by_default = FALSE
 	enabled_description = "Obfuscate Ghost"
 	disabled_description = "Normal Ghost"
+
+/datum/client_preference/age_verified
+	description = "Age Verified Status"
+	key = "AGE_VERIFIED"
+	enabled_description = "Show"
+	disabled_description = "Hide"
+	enabled_by_default = FALSE

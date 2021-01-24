@@ -5,7 +5,6 @@
 	var/totalPlayersReady = 0
 	var/show_hidden_jobs = 0	// Show jobs that are set to "Never" in preferences
 	var/datum/browser/panel
-	var/verified = 0 // age verification variable
 	universal_speak = 1
 
 	invisibility = 101
@@ -32,10 +31,11 @@
 			log_admin(text)
 			Logout()
 		else
-			verified = 1
+			client.set_preference(/datum/client_preference/age_verified, 1)
+			SScharacter_setup.queue_preferences_save(client.prefs)
 
 /mob/new_player/proc/new_player_panel_proc()
-	if(client && verified == 0) // check if the user has already completed the age verification this session
+	if(client.prefs && !client.is_preference_enabled(/datum/client_preference/age_verified)) // check if the user has already completed the age verification this session
 		verifyage()
 
 	var/output = "<div align='center'>"
