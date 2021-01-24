@@ -424,8 +424,8 @@
 	icon_state = "knight_grey"
 	light_overlay = "gk_overlay"
 
-/obj/item/clothing/suit/space/void/exploration/grey_knight
+/obj/item/clothing/suit/space/void/para/grey_knight
 	name = "spell knight voidsuit"
 	desc = "An icredibly heavy suit of anti-magic armor worn by augmented PMD agents."
 	icon_state = "knight_grey"
-	var/anti_magic = FALSE
+	anti_magic = FALSE

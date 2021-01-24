@@ -36,7 +36,7 @@
 
 /obj/item/clothing/suit/space/void/wizard/berserk_knight
 	name = "berserk knight voidsuit"
-	desc = "A bizarre gem-encrusted suit that radiates magical energies."
+	desc = "A bloodsoaked suit that emits a nauseating aura of hatred."
 	icon_state = "knight_berserker"
 	item_state_slots = list(slot_r_hand_str = "syndie_voidsuit", slot_l_hand_str = "syndie_voidsuit")
 	armor = list(melee = 70, bullet = 20, laser = 20,energy = 20, bomb = 35, bio = 100, rad = 60)

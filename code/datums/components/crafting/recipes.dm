@@ -731,14 +731,14 @@
 	time = 30
 	tools = list(TOOL_WELDER, TOOL_WIRECUTTER)
 	reqs = list(/obj/item/reagent_containers/glass/bucket = 1,
-				/obj/item/caution = 10)
+				/obj/item/stack/cable_coil = 10)
 	result = /obj/item/clothing/head/helmet/bucket
 	category = CAT_MISC
 
 /datum/crafting_recipe/cautionplate
 	name = "improvised armor (caution sign)"
 	time = 30
-	reqs = list(/obj/item/stack/cable_coil = 1,
-				/obj/item/caution = 10)
+	reqs = list(/obj/item/caution = 1,
+				/obj/item/stack/cable_coil = 10)
 	result = /obj/item/clothing/suit/armor/caution
 	category = CAT_MISC
