@@ -8224,23 +8224,8 @@
 /turf/simulated/floor/tiled,
 /area/maintenance/lower/bar)
 "xZ" = (
-/obj/machinery/button/remote/blast_door{
-	dir = 4;
-	id = "kitchen-c";
-	name = "Kitchen public counter shutters";
-	pixel_x = -24;
-	pixel_y = -10
-	},
-/obj/machinery/button/remote/blast_door{
-	dir = 4;
-	id = "kitchen";
-	name = "Kitchen shutters";
-	pixel_x = -24
-	},
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
+/obj/machinery/smartfridge/food,
+/turf/simulated/wall,
 /area/crew_quarters/kitchen)
 "ya" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -15345,8 +15330,21 @@
 /turf/simulated/floor/wood,
 /area/vacant/vacant_shop)
 "TO" = (
-/obj/machinery/camera/network/civilian{
-	dir = 4
+/obj/machinery/button/remote/blast_door{
+	dir = 4;
+	id = "kitchen";
+	name = "Kitchen shutters";
+	pixel_x = -24
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 4;
+	id = "kitchen-c";
+	name = "Kitchen public counter shutters";
+	pixel_x = -24;
+	pixel_y = -10
+	},
+/obj/machinery/light{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
@@ -22624,8 +22622,8 @@ pw
 Aj
 FV
 LR
-PU
 LR
+PU
 Zy
 lD
 RG
@@ -22766,7 +22764,7 @@ Zy
 Wx
 Wx
 Wx
-Zy
+xZ
 Zy
 Zy
 Cg
@@ -22908,7 +22906,7 @@ ZP
 Pc
 Pc
 Pc
-xZ
+Pc
 TO
 WU
 sU
