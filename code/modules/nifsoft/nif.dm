@@ -101,6 +101,8 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 			//Free commlink and soulcatcher for return customers
 			new /datum/nifsoft/commlink(src)
 			new /datum/nifsoft/soulcatcher(src)
+			new /mob/living/carbon/human/proc/nsay
+			new /mob/living/carbon/human/proc/nme
 
 	//Free civilian AR included
 	new /datum/nifsoft/ar_civ(src)
