@@ -87,3 +87,8 @@
 	name = "Dyed Fishnets"
 	icon_state = "c_fishnet_lower"
 	has_color = TRUE
+
+/datum/category_item/underwear/bottom/jockstrap
+	name = "Jockstrap"
+	icon_state = "jockstrap"
+	has_color = TRUE

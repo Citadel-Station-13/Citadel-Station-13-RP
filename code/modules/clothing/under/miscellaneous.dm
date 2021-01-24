@@ -510,7 +510,7 @@
 /obj/item/clothing/under/pentagramdress
 	name = "pentagram dress"
 	desc = "A black dress with straps over the chest in the shape of a pentagram."
-	icon_state = "pentagram" 
+	icon_state = "pentagram"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 
 /obj/item/clothing/under/captainformal
@@ -784,6 +784,11 @@
 	name = "cow print bikini"
 	desc = "A rather skimpy cow patterned swimsuit."
 	icon_state = "swim_cow"
+
+/obj/item/clothing/under/swimsuit/stripper/captain
+	name = "sexy captain swimsuit"
+	desc = "A revealing stripper's costume patterned after the Captain's uniform."
+	icon_state = "lewdcap"
 
 /*
  * pyjamas
@@ -1174,10 +1179,11 @@
 	desc = "A comfy red sweater paired with a stylish charcoal skirt!"
 	icon_state = "redskirt"
 
-/obj/item/clothing/under/ert/para
+/obj/item/clothing/under/para
 	name = "PARA tactical uniform"
 	desc = "A standard grey jumpsuit, emblazoned with the Icon of the PMD. Close inspection of the embroidery reveals a complex web of glyphs written in an unknown language."
 	icon_state = "para_ert_uniform"
+	item_state_slots = list(slot_r_hand_str = "black", slot_l_hand_str = "black")
 
 /obj/item/clothing/under/blueshortskirt
 	name = "Short Skirt"
@@ -1208,3 +1214,90 @@
 	name = "Roman Lorica"
 	desc = "Replica lorica segmentata. It doesn't feel like it would actually afford much protection against modern weaponry."
 	icon_state = "roman"
+
+/obj/item/clothing/under/lobster
+	name = "lobster costume"
+	desc = "If you can dance, you've got a career in Law ahead."
+	icon_state = "lobster"
+
+/obj/item/clothing/under/mummy
+	name = "mummy bandages"
+	desc = "This aged and dirty wrap bears the dust of countless aeons. Keep away from water."
+	icon_state = "mummy"
+
+/obj/item/clothing/under/skeleton
+	name = "skeleton costume"
+	desc = "Too spooky, too scary. Those who don this costume are haunted by xylophones."
+	icon_state = "skeleton"
+
+/obj/item/clothing/under/red_mech
+	name = "red plug suit"
+	desc = "The ideal outfit for a psychotic bitch. Knowledge of German not required."
+	icon_state = "red_mech_suit"
+
+/obj/item/clothing/under/white_mech
+	name = "white plug suit"
+	desc = "For pilots whose color palettes match their personalities."
+	icon_state = "white_mech_suit"
+
+/obj/item/clothing/under/blue_mech
+	name = "blue plug suit"
+	desc = "If you want to sit in your bedroom and cry, this is the suit to do it in."
+	icon_state = "blue_mech_suit"
+
+/obj/item/clothing/under/kimono
+	name = "plain kimono"
+	desc = "The traditional dress of old Earth Japan, the kimono remains ubiquitous across the galaxy due to its comfort, simplicity, and versatility."
+	icon_state = "kimono"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+
+/obj/item/clothing/under/kimono_black
+	name = "black kimono"
+	desc = "A more somber and reserved pattern of kimono. Wear this to a funeral, or to the climactic sword battle."
+	icon_state = "kimono_black"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+
+/obj/item/clothing/under/kimono_sakura
+	name = "sakura pattern kimono"
+	desc = "The vibrant pink coloration and subtle flower pattern of this kimono represet the Sakura tree, which was saved from extinction during the Final War thanks to the efforts of conservationists on Luna."
+	icon_state = "kimono_sakura"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+
+/obj/item/clothing/under/kimono_fancy
+	name = "festival kimono"
+	desc = "A blue kimono similar to those traditionally worn to festivals. Its intricate embroidery and fine coloring are not meant to face much wear and tear."
+	icon_state = "kimono_fancy"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+
+/obj/item/clothing/under/kamishimo
+	name = "kamishimo"
+	desc = "Popular amongst samurai, these items of clothing are not frequently in vogue. However, their easily recognizable silhouette keeps them from falling into total obscurity."
+	icon_state = "kamishimo"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+
+/obj/item/clothing/under/turtlebaggy
+	name = "baggy turtleneck (cream)"
+	desc = "A cozy knit turtleneck. It's too baggy and comfortable to be tactical."
+	icon_state = "bb_turtle"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	rolled_sleeves = 0
+
+/obj/item/clothing/under/turtlebaggy/purple
+	name = "baggy turtleneck (purple)"
+	icon_state = "bb_turtlepur"
+
+/obj/item/clothing/under/turtlebaggy/red
+	name = "baggy turtleneck (red)"
+	icon_state = "bb_turtlered"
+
+/obj/item/clothing/under/turtlebaggy/blue
+	name = "baggy turtleneck (blue)"
+	icon_state = "bb_turtleblu"
+
+/obj/item/clothing/under/turtlebaggy/green
+	name = "baggy turtleneck (green)"
+	icon_state = "bb_turtlegrn"
+
+/obj/item/clothing/under/turtlebaggy/black
+	name = "baggy turtleneck (black)"
+	icon_state = "bb_turtleblk"

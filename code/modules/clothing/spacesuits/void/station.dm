@@ -215,6 +215,18 @@
 	armor = list(melee = 70, bullet = 20, laser = 30, energy = 5, bomb = 35, bio = 100, rad = 10)
 	allowed = list(/obj/item/gun,/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/melee/baton)
 
+//Cydonia Armor
+/obj/item/clothing/head/helmet/space/void/security/cydonia
+	name = "cydonian helmet"
+	desc = "A special helmet designed with form and function in mind, capable of protecting the wearer from trauma and hazardous environments."
+	icon_state = "knight_cydonia"
+	light_overlay = "ck_overlay"
+
+/obj/item/clothing/suit/space/void/security/cydonia
+	name = "cydonian voidsuit"
+	desc = "A bulky, but well armored suit capable of protecting the wearer from both trauma and hazardous environments."
+	icon_state = "knight_cydonia"
+
 //Atmospherics
 /obj/item/clothing/head/helmet/space/void/atmos
 	desc = "A special helmet designed for work in a hazardous, low pressure environments. Has improved thermal protection and minor radiation shielding."
@@ -360,28 +372,60 @@
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun)
 	slowdown = 1.5
 
-/obj/item/clothing/head/helmet/space/void/security/alt/para
+//PARA
+/obj/item/clothing/head/helmet/space/void/para
 	name = "PARA void helmet"
 	desc = "A voidsuit helmet bearing the icon of the PMD. Much like the 'MAW' system, this shields from memetic effects."
 	icon_state = "para_ert_void"
+	item_state_slots = list(slot_r_hand_str = "sec_helm", slot_l_hand_str = "sec_helm")
+	armor = list(melee = 70, bullet = 20, laser = 30, energy = 50, bomb = 35, bio = 100, rad = 10)
+	siemens_coefficient = 0.7
 	light_overlay = "helmet_light_dual" //explorer_light
 
-/obj/item/clothing/helmet/space/void/security/alt/para/Initialize(mob/living/carbon/human/H, src)
+/obj/item/clothing/helmet/space/void/para/Initialize(mob/living/carbon/human/H, src)
 	. = ..()
 	if(H.mind.isholy)
 		flash_protection = FLASH_PROTECTION_MAJOR
 	return
 
-/obj/item/clothing/suit/space/void/security/alt/para
+/obj/item/clothing/suit/space/void/para
 	name = "PARA void suit"
 	desc = "A spaceproof suit covered in foreign spells and magical protection, meant to defend a trained wearer in more than one way."
 	icon_state = "para_ert_void"
-	allowed = list(/obj/item/gun,/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/melee/baton, /obj/item/nullrod)
-
+	item_state_slots = list(slot_r_hand_str = "sec_voidsuit", slot_l_hand_str = "sec_voidsuit")
+	armor = list(melee = 70, bullet = 20, laser = 30, energy = 50, bomb = 35, bio = 100, rad = 10)
+	allowed = list(/obj/item/gun,/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/melee/baton,/obj/item/ammo_magazine,/obj/item/nullrod)
+	siemens_coefficient = 0.7
 	var/anti_magic = FALSE
 
-/obj/item/clothing/suit/space/void/security/alt/para/Initialize(mob/living/carbon/human/H, src)
+/obj/item/clothing/suit/space/void/para/Initialize(mob/living/carbon/human/H, src)
 	. = ..()
 	if(H.mind.isholy)
 		anti_magic = TRUE
 	return
+
+//Gimmick and "Costume" Tier Voidsuits
+
+/obj/item/clothing/head/helmet/space/void/para/soror
+	name = "inquisitorial bodyguard helmet"
+	desc = "A voidsuit helmet bearing the icon of the PMD. Much like the 'MAW' system, this shields from memetic effects."
+	icon_state = "knight_inq"
+	light_overlay = "ik_overlay"
+
+/obj/item/clothing/suit/space/void/para/soror
+	name = "inquisitorial bodyguard suit"
+	desc = "A spaceproof suit provided to PARA attached to Inquisitorial escort duty."
+	icon_state = "knight_inq"
+	anti_magic = FALSE
+
+/obj/item/clothing/head/helmet/space/void/para/grey_knight
+	name = "spell knight helmet"
+	desc = "A bulky silver helmet sometimes worn by PMD agents due to its arcane utility."
+	icon_state = "knight_grey"
+	light_overlay = "gk_overlay"
+
+/obj/item/clothing/suit/space/void/exploration/grey_knight
+	name = "spell knight voidsuit"
+	desc = "An icredibly heavy suit of anti-magic armor worn by augmented PMD agents."
+	icon_state = "knight_grey"
+	var/anti_magic = FALSE

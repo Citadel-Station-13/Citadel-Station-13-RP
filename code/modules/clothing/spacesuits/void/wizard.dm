@@ -24,3 +24,19 @@
 	sprite_sheets_refit = null
 	sprite_sheets_obj = null
 	wizard_garb = 1
+
+//Chaos Berserker "Costume" Armor
+/obj/item/clothing/head/helmet/space/void/wizard/berserk_knight
+	name = "berserk knight helmet"
+	desc = "A bulky helmet that radiates ravenous magical energies."
+	icon_state = "knight_berserker"
+	item_state_slots = list(slot_r_hand_str = "syndie_helm", slot_l_hand_str = "syndie_helm")
+	armor = list(melee = 70, bullet = 20, laser = 20,energy = 20, bomb = 35, bio = 100, rad = 60)
+	light_overlay = "bk_overlay"
+
+/obj/item/clothing/suit/space/void/wizard/berserk_knight
+	name = "berserk knight voidsuit"
+	desc = "A bizarre gem-encrusted suit that radiates magical energies."
+	icon_state = "knight_berserker"
+	item_state_slots = list(slot_r_hand_str = "syndie_voidsuit", slot_l_hand_str = "syndie_voidsuit")
+	armor = list(melee = 70, bullet = 20, laser = 20,energy = 20, bomb = 35, bio = 100, rad = 60)
