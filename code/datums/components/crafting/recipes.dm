@@ -535,6 +535,7 @@
 				 /obj/item/stack/sheet/sinew = 1)
 	category = CAT_PRIMAL
 
+/*
 /datum/crafting_recipe/skullhelm
 	name = "totemic skull hat"
 	time = 30
@@ -543,6 +544,7 @@
 				/obj/item/stack/cable_coil = 10)
 	result = /obj/item/clothing/head/skull
 	category = CAT_PRIMAL
+*/
 
 /datum/crafting_recipe/goliathcloak
 	name = "Goliath Cloak"
@@ -726,6 +728,8 @@
 	category = CAT_MISC
 	tools = list(TOOL_WRENCH, TOOL_WELDER, TOOL_WIRECUTTER)
 
+//Don't need these, actually.
+/*
 /datum/crafting_recipe/buckethelmet
 	name = "improvised armor (bucket)"
 	time = 30
@@ -742,3 +746,4 @@
 				/obj/item/stack/cable_coil = 10)
 	result = /obj/item/clothing/suit/armor/caution
 	category = CAT_MISC
+*/

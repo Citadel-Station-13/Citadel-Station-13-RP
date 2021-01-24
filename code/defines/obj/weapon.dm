@@ -246,6 +246,15 @@
 	w_class = ITEMSIZE_SMALL
 	attack_verb = list("warned", "cautioned", "smashed")
 
+/obj/item/caution/attackby(var/obj/item/D, mob/user as mob)
+	if(D.is_wirecutter())
+		to_chat(user, "<span class='notice'>You snap the handle of \the [src] with \the [D].  It's too warped to stand on its own now.</span>")
+		user.put_in_hands(new /obj/item/clothing/suit/armor/caution)
+		user.drop_from_inventory(src)
+		qdel(src)
+	else
+		return ..()
+
 /obj/item/caution/cone
 	desc = "This cone is trying to warn you of something!"
 	name = "warning cone"
