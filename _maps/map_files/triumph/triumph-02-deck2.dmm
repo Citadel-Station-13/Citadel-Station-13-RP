@@ -2225,6 +2225,9 @@
 	layer = 3.3;
 	name = "Kitchen Service Shutters"
 	},
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
 "gv" = (
@@ -6521,6 +6524,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_4)
+"sS" = (
+/obj/machinery/smartfridge/food,
+/turf/simulated/wall,
+/area/crew_quarters/kitchen)
 "sT" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -7800,6 +7807,9 @@
 	layer = 3.3;
 	name = "Kitchen Service Shutters"
 	},
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/kitchen)
 "wF" = (
@@ -8220,8 +8230,17 @@
 /turf/simulated/floor/tiled,
 /area/maintenance/lower/bar)
 "xZ" = (
-/obj/machinery/smartfridge/food,
-/turf/simulated/wall,
+/obj/structure/table/marble,
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 8
+	},
+/obj/machinery/door/blast/shutters{
+	dir = 8;
+	id = "kitchen";
+	layer = 3.3;
+	name = "Kitchen Service Shutters"
+	},
+/turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
 "ya" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -10908,6 +10927,19 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/starboard)
+"Gn" = (
+/obj/structure/table/marble,
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 8
+	},
+/obj/machinery/door/blast/shutters{
+	dir = 8;
+	id = "kitchen";
+	layer = 3.3;
+	name = "Kitchen Service Shutters"
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/crew_quarters/kitchen)
 "Gq" = (
 /obj/machinery/recharge_station,
 /turf/simulated/floor/carpet/sblucarpet,
@@ -13654,6 +13686,9 @@
 	layer = 3.3;
 	name = "Kitchen Service Shutters"
 	},
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/kitchen)
 "OK" = (
@@ -15332,6 +15367,9 @@
 	req_access = list(25);
 	req_one_access = list(25)
 	},
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/kitchen)
 "TM" = (
@@ -16391,6 +16429,9 @@
 	layer = 3.3;
 	name = "Kitchen Service Shutters"
 	},
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/kitchen)
 "Wy" = (
@@ -16541,6 +16582,9 @@
 	id = "kitchen-c";
 	layer = 3.3;
 	name = "Kitchen Service Shutters"
+	},
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 2
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/kitchen)
@@ -22799,7 +22843,7 @@ Eo
 Zy
 Wx
 Wx
-Wx
+Gn
 xZ
 Zy
 Zy
@@ -23370,7 +23414,7 @@ Xa
 os
 Pc
 LR
-WU
+sS
 sU
 ub
 RH

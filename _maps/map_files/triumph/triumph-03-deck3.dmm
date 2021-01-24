@@ -139,6 +139,7 @@
 	req_access = list();
 	req_one_access = list(7,29)
 	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
 "afL" = (
@@ -1685,6 +1686,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/purple{
 	dir = 4
 	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "bCW" = (
@@ -4578,6 +4580,7 @@
 	})
 "eeL" = (
 /obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay_aft)
 "eeU" = (
@@ -5027,6 +5030,7 @@
 	req_access = list(29,47);
 	req_one_access = list(47)
 	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
 "eDt" = (
@@ -5333,6 +5337,7 @@
 /area/crew_quarters/medical_restroom)
 "eNU" = (
 /obj/machinery/door/airlock/maintenance/rnd,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/assembly/chargebay)
 "eOj" = (
@@ -6689,6 +6694,7 @@
 /area/medical/surgeryprep)
 "gaL" = (
 /obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
 "gaW" = (
@@ -8033,6 +8039,7 @@
 /area/medical/virologyaccess)
 "hlm" = (
 /obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/rnd/research_foyer_auxiliary)
 "hlY" = (
@@ -11483,6 +11490,7 @@
 /area/medical/surgeryprep)
 "kEZ" = (
 /obj/machinery/door/airlock/maintenance/medical,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay_aft)
 "kFb" = (
@@ -26379,6 +26387,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/catwalk,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/maintenance/research)
 "xdJ" = (
