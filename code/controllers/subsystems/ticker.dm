@@ -86,6 +86,7 @@ SUBSYSTEM_DEF(ticker)
 	send2irc("Server lobby is loaded and open at byond://[config_legacy.serverurl ? config_legacy.serverurl : (config_legacy.server ? config_legacy.server : "[world.address]:[world.port]")]")
 	to_chat(world, "<span class='boldnotice'>Welcome to the pregame lobby!</span>")
 	to_chat(world, "Please set up your character and select ready. The round will start in [CONFIG_GET(number/lobby_countdown)] seconds.")
+	world << sound('sound/misc/server-ready.ogg', volume = 100)
 	current_state = GAME_STATE_PREGAME
 	if(Master.initializations_finished_with_no_players_logged_in)
 		start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)

@@ -260,6 +260,7 @@
 					temp = "Error: Unable to initiate cloning cycle."
 				else if(pod.growclone(C))
 					temp = "Initiating cloning cycle..."
+					playsound(src, 'sound/machines/medbayscanner1.ogg', 100, 1)
 					records.Remove(C)
 					qdel(C)
 					menu = 1

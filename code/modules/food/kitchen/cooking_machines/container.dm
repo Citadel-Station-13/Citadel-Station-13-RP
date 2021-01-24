@@ -155,3 +155,9 @@
 	shortname = "basket"
 	desc = "Put ingredients in this; designed for use with a deep fryer. Warranty void if used."
 	icon_state = "basket"
+
+/obj/item/reagent_containers/cooking_container/grill
+	name = "grill rack"
+	shortname = "rack"
+	desc = "Put ingredients 'in'/on this; designed for use with a grill. Warranty void if used incorrectly. Alt click to remove contents."
+	icon_state = "grillrack"

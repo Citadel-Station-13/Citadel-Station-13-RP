@@ -6,6 +6,7 @@
 	icon = 'icons/obj/card_cit.dmi'
 	icon_state = "permit-civilian"
 	body_parts_covered = 0
+	equip_sound = null
 
 	sprite_sheets = list()
 

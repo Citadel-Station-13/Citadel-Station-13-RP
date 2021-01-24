@@ -8,6 +8,9 @@
 	max_w_class = ITEMSIZE_NORMAL
 	slot_flags = SLOT_BELT
 	attack_verb = list("whipped", "lashed", "disciplined")
+	equip_sound = 'sound/items/toolbelt_equip.ogg'
+	drop_sound = 'sound/items/drop/toolbelt.ogg'
+	pickup_sound = 'sound/items/pickup/toolbelt.ogg'
 	sprite_sheets = list(
 		SPECIES_TESHARI = 'icons/mob/species/teshari/belt.dmi',
 		SPECIES_WEREBEAST = 'icons/mob/species/werebeast/belt.dmi'

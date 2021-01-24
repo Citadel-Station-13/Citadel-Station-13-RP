@@ -14,6 +14,9 @@
 	var/stored_name
 	var/badge_string = "Corporate Security"
 
+	drop_sound = 'sound/items/drop/ring.ogg'
+	pickup_sound = 'sound/items/pickup/ring.ogg'
+
 /obj/item/clothing/accessory/badge/old
 	name = "faded badge"
 	desc = "A faded badge, backed with leather. It bears the emblem of the Forensic division."

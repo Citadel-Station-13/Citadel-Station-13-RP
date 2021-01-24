@@ -24,6 +24,8 @@
 	var/visible_name = "a syringe"
 	var/time = 30
 	var/drawing = 0
+	drop_sound = 'sound/items/drop/glass.ogg'
+	pickup_sound = 'sound/items/pickup/glass.ogg'
 
 /obj/item/reagent_containers/syringe/on_reagent_change()
 	update_icon()

@@ -8,7 +8,7 @@
 //6 = code delta
 
 //config_legacy.alert_desc_blue_downto
-/var/datum/announcement/priority/security/security_announcement_up = new(do_log = 0, do_newscast = 1, new_sound = sound('sound/misc/notice1.ogg'))
+/var/datum/announcement/priority/security/security_announcement_up = new(do_log = 0, do_newscast = 1, new_sound = sound('sound/effects/alert_levels/alert_raise.ogg'))
 /var/datum/announcement/priority/security/security_announcement_down = new(do_log = 0, do_newscast = 1)
 
 /proc/set_security_level(var/level)
@@ -60,7 +60,7 @@
 				security_level = SEC_LEVEL_BLUE
 			if(SEC_LEVEL_RED)
 				if(security_level < SEC_LEVEL_RED)
-					security_announcement_up.Announce("[config_legacy.alert_desc_red_upto]", "Attention! Code red!", new_sound = 'sound/misc/voyalert.ogg')
+					security_announcement_up.Announce("[config_legacy.alert_desc_red_upto]", "Attention! Code red!", new_sound = 'sound/effects/alert_levels/red_alert.ogg')
 				else
 					security_announcement_down.Announce("[config_legacy.alert_desc_red_downto]", "Attention! Code red!", new_sound = 'sound/misc/voyalert.ogg')
 				security_level = SEC_LEVEL_RED
@@ -69,7 +69,7 @@
 				if(CC)
 					CC.post_status("alert", "redalert")*/
 			if(SEC_LEVEL_DELTA)
-				security_announcement_up.Announce("[config_legacy.alert_desc_delta]", "Attention! Delta alert level reached!", new_sound = 'sound/misc/deltakalaxon.ogg',volume=5)
+				security_announcement_up.Announce("[config_legacy.alert_desc_delta]", "Attention! Delta alert level reached!", new_sound = 'sound/effects/alert_levels/deltaklaxon.ogg')
 				security_level = SEC_LEVEL_DELTA
 
 		var/newlevel = get_security_level()

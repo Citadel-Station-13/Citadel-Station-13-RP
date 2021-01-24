@@ -144,7 +144,7 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 		return 0	//You can't send faxes to "Unknown"
 
 	flick("faxreceive", src)
-	playsound(loc, "sound/effects/printer.ogg", 50, 1)
+	playsound(src, "sound/machines/printer.ogg", 50, 1)
 
 
 	// give the sprite some time to flick
@@ -207,7 +207,7 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 	for(var/client/C in admins)
 		if(check_rights((R_ADMIN|R_MOD),0,C))
 			C << msg
-			C << 'sound/effects/printer.ogg'
+			C << 'sound/machines/printer.ogg'
 
 	// VoreStation Edit Start
 	var/faxid = export_fax(sent)

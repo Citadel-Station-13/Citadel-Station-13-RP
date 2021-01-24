@@ -81,6 +81,8 @@
 	icon = 'icons/obj/dice.dmi'
 	icon_state = "dicebag"
 	base_icon = "dicebag"
+	drop_sound = 'sound/items/drop/hat.ogg'
+	pickup_sound = 'sound/items/pickup/hat.ogg'
 
 /obj/item/storage/pill_bottle/dice/New()
 	..()
@@ -93,6 +95,8 @@
 	icon = 'icons/obj/dice.dmi'
 	icon_state = "magicdicebag"
 	base_icon = "magicdicebag"
+	drop_sound = 'sound/items/drop/hat.ogg'
+	pickup_sound = 'sound/items/pickup/hat.ogg'
 
 /obj/item/storage/pill_bottle/dice_nerd/New()
 	..()

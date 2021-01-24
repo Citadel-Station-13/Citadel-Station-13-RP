@@ -203,6 +203,8 @@
 /obj/item/disk
 	name = "disk"
 	icon = 'icons/obj/items.dmi'
+	drop_sound = 'sound/items/drop/disk.ogg'
+	pickup_sound =  'sound/items/pickup/disk.ogg'
 
 /obj/item/disk/nuclear
 	name = "nuclear authentication disk"
