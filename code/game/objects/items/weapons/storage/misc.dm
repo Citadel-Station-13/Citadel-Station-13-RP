@@ -67,3 +67,29 @@
 /obj/item/storage/box/wormcan/deluxe/update_icon(var/itemremoved = 0)
 	if (contents.len == 0)
 		icon_state = "wormcan_empty_deluxe"
+
+//Snowflake Survival Knife Code
+/obj/item/storage/box/survival_knife
+	name = "survival knife"
+	desc = "A hunting grade survival knife. The handle is hollow and may be unscrewed to store small survival items. Inset circuitry running along the spine implies a technical utility."
+	icon = 'icons/obj/kitchen.dmi'
+	icon_state = "survivalknife"
+	item_state = "knife"
+	max_storage_space = ITEMSIZE_COST_TINY * 3
+	sharp = 1
+	edge = 1
+	force = 15
+	throwforce = 15
+	attack_verb = list("stabbed", "chopped", "cut")
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	can_hold = list(
+		/obj/item/pen/crayon/chalk,
+		/obj/item/reagent_containers/pill,
+		/obj/item/gps/survival,
+		/obj/item/flame/match,
+		/obj/item/flame/lighter
+		)
+	starts_with = list(/obj/item/pen/crayon/chalk, /obj/item/reagent_containers/pill/nutriment, /obj/item/gps/survival)
+
+/obj/item/storage/box/survival_knife/is_multitool()
+	return TRUE

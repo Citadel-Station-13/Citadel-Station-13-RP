@@ -1230,6 +1230,11 @@
 	desc = "Too spooky, too scary. Those who don this costume are haunted by xylophones."
 	icon_state = "skeleton"
 
+/obj/item/clothing/under/scarecrow
+	name = "scarecrow costume"
+	desc = "Ideal for stalking someone through a field of hay. This suit is less practical on a space station."
+	icon_state = "scarecrow"
+
 /obj/item/clothing/under/red_mech
 	name = "red plug suit"
 	desc = "The ideal outfit for a psychotic bitch. Knowledge of German not required."
@@ -1301,3 +1306,10 @@
 /obj/item/clothing/under/turtlebaggy/black
 	name = "baggy turtleneck (black)"
 	icon_state = "bb_turtleblk"
+
+/obj/item/clothing/under/trader_coveralls
+	name = "nebula gas outfit"
+	desc = "A hardy and practical uniform distributed to Nebula Gas employees, meant to provide protection and comfort in industrial environments."
+	icon_state = "mechanic"
+	item_state_slots = list(slot_r_hand_str = "cargo", slot_l_hand_str = "cargo")
+	rolled_sleeves = 0

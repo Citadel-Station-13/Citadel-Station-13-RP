@@ -60,3 +60,63 @@
 	sec_briefcase.contents += new /obj/item/ammo_magazine/s357
 	sec_briefcase.contents += new /obj/item/plastique
 	H.equip_to_slot_or_del(sec_briefcase, slot_l_hand)
+
+/decl/hierarchy/outfit/samurai
+	name = "Vengeful Samurai"
+	uniform = /obj/item/clothing/under/color/black
+	shoes = /obj/item/clothing/shoes/boots/duty
+	gloves = /obj/item/clothing/gloves/brown
+	mask = /obj/item/clothing/mask/samurai
+	head = /obj/item/clothing/head/helmet/samurai
+	suit = /obj/item/clothing/suit/armor/samurai
+	r_hand = /obj/item/material/sword/katana
+
+/decl/hierarchy/outfit/samurai/equip(var/mob/living/carbon/human/H)
+	. = ..()
+	if(H.mind)
+		H.add_spell(list(/spell/targeted/ethereal_jaunt, /spell/noclothes))
+
+/decl/hierarchy/outfit/mummy
+	name = "Restless Mummy"
+	uniform = /obj/item/clothing/under/mummy
+	shoes = /obj/item/clothing/shoes/sandal
+	mask = /obj/item/clothing/mask/gas/mummy
+	head = /obj/item/clothing/head/nemes
+	suit = /obj/item/clothing/suit/pharaoh
+	r_hand = /obj/item/nullrod/egyptian
+
+/decl/hierarchy/outfit/mummy/equip(var/mob/living/carbon/human/H)
+	. = ..()
+	if(H.mind)
+		H.add_spell(list(/spell/aoe_turf/disable_tech, /spell/noclothes))
+
+/decl/hierarchy/outfit/scarecrow
+	name = "Menacing Scarecrow"
+	uniform = /obj/item/clothing/under/scarecrow
+	shoes = /obj/item/clothing/shoes/boots/workboots
+	mask = /obj/item/clothing/mask/gas/scarecrow
+	head = /obj/item/clothing/head/cowboy_hat/wide
+	l_pocket = /obj/item/material/knife/machete/hatchet
+	r_hand = /obj/item/material/twohanded/fireaxe/scythe
+
+/decl/hierarchy/outfit/mummy/equip(var/mob/living/carbon/human/H)
+	. = ..()
+	if(H.mind)
+		H.add_spell(list(/datum/technomancer/spell/blink, /spell/noclothes))
+
+/decl/hierarchy/outfit/animegirl
+	name = "Spurned Classmate"
+	uniform = /obj/item/clothing/under/schoolgirl
+	shoes = /obj/item/clothing/shoes/hitops/black
+	mask = /obj/item/clothing/mask/breath/medical
+	head = /obj/item/clothing/head/bunny
+	l_ear = /obj/item/radio/headset
+	glasses = /obj/item/clothing/glasses/eyepatchwhite
+	l_pocket = /obj/item/paper/crumpled
+	r_pocket = /obj/item/material/knife/machete/hatchet
+	r_hand = /obj/item/material/knife/plasteel
+
+/decl/hierarchy/outfit/animegirl/post_equip(var/mob/living/carbon/human/H)
+	var/victim = get_mannequin(H.ckey)
+	for(var/obj/item/carried_item in H.get_equipped_items(TRUE))
+		carried_item.add_blood(victim) //Same as above.

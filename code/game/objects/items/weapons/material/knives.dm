@@ -171,8 +171,8 @@
 		qdel(src)
 
 /obj/item/material/knife/tacknife/survival
-	name = "survival knife"
-	desc = "A hunting grade survival knife."
+	name = "streamlined survival knife"
+	desc = "A hunting grade survival knife. The bulky storage handle and inlaid circuitry have been replaced with a sleek grip and the ability to easily upgrade the blade."
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "survivalknife"
 	item_state = "knife"
