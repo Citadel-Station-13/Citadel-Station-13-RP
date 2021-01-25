@@ -517,7 +517,7 @@
 	armor = list(melee = 100, bullet = 00, laser = 5, energy = 0, bomb = 0, bio = 0, rad = 0)
 	w_class = ITEMSIZE_LARGE
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
+	flags_inv = HIDETIE|HIDEHOLSTER
 	siemens_coefficient = 0.6
 
 //Modular plate carriers
