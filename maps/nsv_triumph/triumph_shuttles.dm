@@ -28,9 +28,22 @@
 	base_turf = /turf/space
 	base_area = /area/space
 
+/obj/effect/shuttle_landmark/triumph/deck3/emt
+	name = "NSV Triumph - EMT Shuttle Dock"
+	landmark_tag = "triumph_emt_dock"
+	docking_controller = "emt_shuttle_docker"
+	base_turf = /turf/space
+	base_area = /area/space
+
 /obj/effect/shuttle_landmark/triumph/deck2/mining
 	name = "NSV Triumph Mining Dock"
 	landmark_tag = "triumph_mining_port"
+	base_turf = /turf/space
+	base_area = /area/space
+
+/obj/effect/shuttle_landmark/triumph/deck2/trade
+	name = "NSV Triumph Annex Dock"
+	landmark_tag = "triumph_annex_dock"
 	base_turf = /turf/space
 	base_area = /area/space
 
@@ -98,6 +111,53 @@
 	base_turf = /turf/space
 	base_area = /area/space
 
+/obj/effect/shuttle_landmark/triumph/trade
+	name = "Near Nebula Gas Food Mart"
+	landmark_tag = "nebula_space_SW"
+	base_turf = /turf/space
+	base_area = /area/space
+
+// EXCLUSIVE TRADE PORT NAV POINTS
+
+/obj/effect/shuttle_landmark/triumph/trade/mining
+	name = "Nebula Gas Landing Pad 2"
+	landmark_tag = "nebula_pad_2"
+	base_turf = /turf/simulated/shuttle/floor/black/airless
+	base_area = /area/triumph_away/tradeport/pads
+
+/obj/effect/shuttle_landmark/triumph/trade/excursion
+	name = "Nebula Gas Landing Pad 3"
+	landmark_tag = "nebula_pad_3"
+	base_turf = /turf/simulated/shuttle/floor/black/airless
+	base_area = /area/triumph_away/tradeport/pads
+
+/obj/effect/shuttle_landmark/triumph/trade/pirate
+	name = "Nebula Gas Landing Pad 4"
+	landmark_tag = "nebula_pad_4"
+	base_turf = /turf/simulated/shuttle/floor/black/airless
+	base_area = /area/triumph_away/tradeport/pads
+
+/obj/effect/shuttle_landmark/triumph/trade/emt
+	name = "Nebula Gas Landing Pad 5"
+	landmark_tag = "nebula_pad_5"
+	base_turf = /turf/simulated/shuttle/floor/black/airless
+	base_area = /area/triumph_away/tradeport/pads
+
+/obj/effect/shuttle_landmark/triumph/trade/civvie
+	name = "Nebula Gas Landing Pad 6"
+	landmark_tag = "nebula_pad_6"
+	base_turf = /turf/simulated/shuttle/floor/black/airless
+	base_area = /area/triumph_away/tradeport/pads
+
+// EXCLUSIVE TRADE PORT NAV POINT FOR DOCKING INSIDE
+
+/obj/effect/shuttle_landmark/triumph/trade/hangar
+	name = "Beruang Hangar"
+	landmark_tag = "tradeport_hangar"
+	docking_controller = "tradeport_hangar_dock"
+	base_turf = /turf/simulated/floor/tiled/techfloor/grid
+	base_area = /area/triumph_away/tradeport/dock
+
 // TRANSIT NAV POINTS
 
 /obj/effect/shuttle_landmark/transit/triumph/excursion
@@ -115,6 +175,14 @@
 /obj/effect/shuttle_landmark/transit/triumph/mining
 	name = "In transit"
 	landmark_tag = "nav_transit_mining"
+
+/obj/effect/shuttle_landmark/transit/triumph/trade
+	name = "In transit"
+	landmark_tag = "nav_transit_trade"
+
+/obj/effect/shuttle_landmark/transit/triumph/emt
+	name = "In transit"
+	landmark_tag = "nav_transit_emt"
 
 ////////////////////////////////////////
 // Triumph custom shuttle implemnetations
@@ -294,6 +362,49 @@
 /obj/machinery/computer/shuttle_control/explore/mining
 	name = "mining jump console"
 	shuttle_tag = "Mining Shuttle"
+
+// TRADE SHIP
+/datum/shuttle/autodock/overmap/trade
+	name = "Beruang Trade Ship"
+	warmup_time = 0
+	shuttle_area = list(/area/shuttle/trade_ship/cockpit, /area/shuttle/trade_ship/general)
+	current_location = "tradeport_hangar"
+	docking_controller_tag = "tradeport_hangar_docker"
+	landmark_transition = "nav_transit_trade"
+	fuel_consumption = 5
+	move_time = 10
+
+/area/shuttle/trade_ship
+	name = "Beruang Trade Ship"
+	icon_state = "shuttle"
+
+/area/shuttle/trade_ship/general
+	name = "\improper Beruang Trade Ship"
+
+/area/shuttle/trade_ship/cockpit
+	name = "\improper Beruang Trade Ship Cockpit"
+
+/obj/machinery/computer/shuttle_control/explore/trade
+	name = "short jump commerce console"
+	shuttle_tag = "Beruang Trade Ship"
+
+//EMT Shuttle
+/datum/shuttle/autodock/overmap/emt
+	name = "Dart EMT Shuttle"
+	warmup_time = 5
+	shuttle_area = list(/area/shuttle/emt/general, /area/shuttle/emt/cockpit)
+	current_location = "triumph_emt_dock"
+	docking_controller_tag = "emt_shuttle_docker"
+	landmark_transition = "nav_transit_emt"
+	move_time = 20
+
+/area/shuttle/emt
+	name = "Dart EMT Shuttle"
+	icon_state = "shuttle"
+
+/obj/machinery/computer/shuttle_control/explore/emt
+	name = "EMT jump console"
+	shuttle_tag = "Dart EMT Shuttle"
 
 ////////////////////////////////////////
 ////////      Tour Bus     /////////////

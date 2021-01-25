@@ -161,9 +161,6 @@
 		H.update_inv_l_hand()
 		H.update_inv_r_hand()
 
-
-
-
 /obj/item/melee/energy/AltClick(mob/living/user)
 	if(!colorable) //checks if is not colorable
 		return
@@ -313,6 +310,22 @@
 
 	return 1
 
+/obj/item/melee/energy/sword/attackby(obj/item/W, mob/living/user, params)
+	if(istype(W, /obj/item/melee/energy/sword))
+		if(HAS_TRAIT(W, TRAIT_NODROP) || HAS_TRAIT(src, TRAIT_NODROP))
+			to_chat(user, "<span class='warning'>\the [HAS_TRAIT(src, TRAIT_NODROP) ? src : W] is stuck to your hand, you can't attach it to \the [HAS_TRAIT(src, TRAIT_NODROP) ? W : src]!</span>")
+			return
+		if(istype(W, /obj/item/melee/energy/sword/charge))
+			to_chat(user,"<span class='warning'>These blades are incompatible, you can't attach them to each other!</span>")
+			return
+		else
+			to_chat(user, "<span class='notice'>You combine the two energy swords, making a single supermassive blade! You're cool.</span>")
+			new /obj/item/melee/energy/sword/dualsaber(user.drop_location())
+			qdel(W)
+			qdel(src)
+	else
+		return ..()
+
 /obj/item/melee/energy/sword/pirate
 	name = "energy cutlass"
 	desc = "Arrrr matey."
@@ -320,6 +333,32 @@
 	item_state = "cutlass"
 	colorable = TRUE
 
+//Return of the King
+/obj/item/melee/energy/sword/dualsaber
+	name = "double-bladed energy sword"
+	desc = "Handle with care."
+	icon_state = "dualsaber"
+	item_state = "dualsaber"
+	force = 3
+	active_force = 60
+	throwforce = 5
+	throw_speed = 3
+	armor_penetration = 35
+	colorable = TRUE
+	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 70)
+	projectile_parry_chance = 85
+
+/obj/item/melee/energy/sword/dualsaber/pre_attack(mob/target, mob/living/carbon/human/user)
+	if(prob(50))
+		INVOKE_ASYNC(src, .proc/jedi_spin, user)
+
+/obj/item/melee/energy/sword/dualsaber/proc/jedi_spin(mob/living/user)
+	for(var/i in list(NORTH,SOUTH,EAST,WEST))
+		user.setDir(i)
+		if(i == WEST)
+			user.emote("flip")
+		sleep(1)
 
 /*
  *Ionic Rapier
@@ -394,6 +433,50 @@
 /obj/item/melee/energy/sword/charge/loaded/New()
 	..()
 	bcell = new/obj/item/cell/device/weapon(src)
+
+/obj/item/melee/energy/sword/charge/attackby(obj/item/W, mob/living/user, params)
+	if(istype(W, /obj/item/melee/energy/sword/charge))
+		if(HAS_TRAIT(W, TRAIT_NODROP) || HAS_TRAIT(src, TRAIT_NODROP))
+			to_chat(user, "<span class='warning'>\the [HAS_TRAIT(src, TRAIT_NODROP) ? src : W] is stuck to your hand, you can't attach it to \the [HAS_TRAIT(src, TRAIT_NODROP) ? W : src]!</span>")
+			return
+		if(istype(W, /obj/item/melee/energy/sword))
+			to_chat(user,"<span class='warning'>These blades are incompatible, you can't attach them to each other!</span>")
+			return
+		else
+			to_chat(user, "<span class='notice'>You combine the two charge swords, making a single supermassive blade! You're cool.</span>")
+			new /obj/item/melee/energy/sword/charge/dualsaber(user.drop_location())
+			qdel(W)
+			qdel(src)
+	else
+		return ..()
+
+//Charge Type Double Esword
+/obj/item/melee/energy/sword/charge/dualsaber
+	name = "double-bladed charge sword"
+	desc = "Make sure you bought batteries."
+	icon_state = "dualsaber"
+	item_state = "dualsaber"
+	force = 3
+	active_force = 50
+	throwforce = 5
+	throw_speed = 3
+	armor_penetration = 30
+	colorable = TRUE
+	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 70)
+	projectile_parry_chance = 65
+	hitcost = 150
+
+/obj/item/melee/energy/sword/charge/dualsaber/pre_attack(mob/target, mob/living/carbon/human/user)
+	if(prob(50))
+		INVOKE_ASYNC(src, .proc/jedi_spin, user)
+
+/obj/item/melee/energy/sword/charge/dualsaber/proc/jedi_spin(mob/living/user)
+	for(var/i in list(NORTH,SOUTH,EAST,WEST))
+		user.setDir(i)
+		if(i == WEST)
+			user.emote("flip")
+		sleep(1)
 
 //Energy Blade (ninja uses this)
 

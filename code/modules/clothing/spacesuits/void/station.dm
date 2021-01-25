@@ -86,7 +86,7 @@
 	desc = "A special helmet designed for work in a hazardous, low pressure environment. Has reinforced plating."
 	icon_state = "rig0-mining"
 	item_state_slots = list(slot_r_hand_str = "mining_helm", slot_l_hand_str = "mining_helm")
-	armor = list(melee = 50, bullet = 5, laser = 20, energy = 5, bomb = 55, bio = 100, rad = 20)
+	armor = list(melee = 50, bullet = 5, laser = 20, energy = 5, bomb = 55, bio = 100, rad = 65)
 	light_overlay = "helmet_light_dual"
 
 /obj/item/clothing/suit/space/void/mining
@@ -95,7 +95,7 @@
 	icon_state = "rig-mining"
 	item_state_slots = list(slot_r_hand_str = "mining_voidsuit", slot_l_hand_str = "mining_voidsuit")
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/pickaxe)
-	armor = list(melee = 50, bullet = 5, laser = 20, energy = 5, bomb = 55, bio = 100, rad = 20)
+	armor = list(melee = 50, bullet = 5, laser = 20, energy = 5, bomb = 55, bio = 100, rad = 65)
 
 //Mining Surplus Voidsuit
 
@@ -103,13 +103,13 @@
 	name = "frontier mining voidsuit helmet"
 	desc = "An armored cheap voidsuit helmet. Someone must have through they were pretty cool when they painted a mohawk on it."
 	icon_state = "rig0-miningalt"
-	armor = list(melee = 50, bullet = 15, laser = 20,energy = 5, bomb = 55, bio = 100, rad = 0)
+	armor = list(melee = 50, bullet = 15, laser = 20,energy = 5, bomb = 55, bio = 100, rad = 20)
 
 /obj/item/clothing/suit/space/void/mining/alt
 	icon_state = "rig-miningalt"
 	name = "frontier mining voidsuit"
 	desc = "A cheap prospecting voidsuit. What it lacks in comfort it makes up for in armor plating and street cred."
-	armor = list(melee = 50, bullet = 15, laser = 20,energy = 5, bomb = 55, bio = 100, rad = 0)
+	armor = list(melee = 50, bullet = 15, laser = 20,energy = 5, bomb = 55, bio = 100, rad = 20)
 
 //Medical
 /obj/item/clothing/head/helmet/space/void/medical
@@ -261,7 +261,7 @@
 	icon_state = "helm_explorer"
 	item_state = "helm_explorer"
 	item_state_slots = list(slot_r_hand_str = "syndicate-helm-black", slot_l_hand_str = "syndicate-helm-black")
-	armor = list(melee = 40, bullet = 15, laser = 25,energy = 35, bomb = 30, bio = 100, rad = 70)
+	armor = list(melee = 40, bullet = 15, laser = 25,energy = 35, bomb = 30, bio = 70, rad = 70)
 	light_overlay = "helmet_light_dual" //explorer_light
 
 /obj/item/clothing/suit/space/void/exploration
@@ -269,7 +269,7 @@
 	desc = "A lightweight, radiation-resistant voidsuit, featuring the Explorer emblem on its chest plate. Designed for exploring unknown planetary environments."
 	icon_state = "void_explorer"
 	item_state_slots = list(slot_r_hand_str = "skrell_suit_black", slot_l_hand_str = "skrell_suit_black")
-	armor = list(melee = 40, bullet = 15, laser = 25,energy = 35, bomb = 30, bio = 100, rad = 70)
+	armor = list(melee = 40, bullet = 15, laser = 25,energy = 35, bomb = 30, bio = 70, rad = 70)
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/stack/flag,/obj/item/healthanalyzer,/obj/item/gps,/obj/item/radio/beacon, \
 	/obj/item/shovel,/obj/item/ammo_magazine,/obj/item/gun)
 
@@ -283,6 +283,23 @@
 	desc = "A lightweight, radiation-resistant voidsuit. Retrofitted for exploring unknown planetary environments."
 	icon_state = "void_explorer2"
 	item_state_slots = list(slot_r_hand_str = "skrell_suit_white", slot_l_hand_str = "skrell_suit_white")
+
+/obj/item/clothing/head/helmet/space/void/exploration/pathfinder
+	name = "pathfinder voidsuit helmet"
+	desc = "A comfortable helmet designed to provide protection for Pathfinder units on long-term operations."
+	icon_state = "helm_explorer_pf"
+	item_state = "helm_explorer_pf"
+	armor = list(melee = 40, bullet = 25, laser = 25,energy = 40, bomb = 30, bio = 100, rad = 70)
+
+/obj/item/clothing/suit/space/void/exploration/pathfinder
+	name = "pathfinder voidsuit"
+	desc = "A versatile, armored voidsuit, featuring the Pathfinder emblem on its chest plate. Designed for long deployments in unknown planetary environments."
+	icon_state = "void_explorer_pf"
+	item_state_slots = list(slot_r_hand_str = "skrell_suit_black", slot_l_hand_str = "skrell_suit_black")
+	armor = list(melee = 50, bullet = 40, laser = 45,energy = 45, bomb = 30, bio = 100, rad = 70)
+	move_speed = 7
+	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/stack/flag,/obj/item/healthanalyzer,/obj/item/gps,/obj/item/radio/beacon, \
+	/obj/item/shovel,/obj/item/ammo_magazine,/obj/item/gun)
 
 //Pilot
 /obj/item/clothing/head/helmet/space/void/pilot

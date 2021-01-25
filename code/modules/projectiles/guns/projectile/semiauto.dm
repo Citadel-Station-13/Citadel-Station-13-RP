@@ -19,3 +19,20 @@
 		icon_state = initial(icon_state)
 	else
 		icon_state = "[initial(icon_state)]-e"
+
+/obj/item/gun/projectile/garand/sniper
+	name = "M1A Garand"
+	desc = "A reproduction model of the rare M1A Garand rifle. This one seems to have been modified by a gun smith."
+	icon_state = "sgarand"
+	pin = /obj/item/firing_pin/explorer
+	magazine_type = /obj/item/ammo_magazine/m762garand/sniperhunter
+	w_class = ITEMSIZE_HUGE // We don't need this fitting in backpacks. 
+	accuracy = 100 //Forced missing fucking sucks ass
+	scoped_accuracy = 100
+
+/obj/item/gun/projectile/garand/sniper/verb/scope()
+	set category = "Object"
+	set name = "Use Scope"
+	set popup_menu = 1
+
+	toggle_scope(2.0)

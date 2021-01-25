@@ -249,7 +249,7 @@
 			message = "faints."
 			if(src.sleeping)
 				return //Can't faint while asleep
-			src.sleeping += 10 //Short-short nap
+			Sleeping(10) //Short-short nap
 			m_type = 1
 
 		if("cough", "coughs")
@@ -806,6 +806,9 @@
 					raise, salute, scream, sneeze, shake, shiver, shrug, sigh, signal-#1-10, slap-(none)/mob, smile, sneeze, sniff, snore, stare-(none)/mob, stopsway/swag, squeak, sway/wag, swish, tremble, twitch, \
 					twitch_v, vomit, weh, whimper, wink, yawn. Synthetics: beep, buzz, yes, no, rcough, rsneeze, ping. Vox: shriekshort, shriekloud")
 
+		else
+			to_chat(src, "<font color='blue'>Unusable emote '[act]'. Say *help for a list.</font>")
+			return
 
 	if (message)
 		custom_emote(m_type,message)
@@ -936,9 +939,6 @@
 			message = "purrs softly."
 			m_type = 2
 			playsound(loc, 'modular_citadel/sound/voice/purr.ogg', 50, 1, -1)
-
-		else
-			to_chat(src, "<font color='blue'>Unusable emote '[act]'. Say *help for a list.</font>")
 
 	if (message)
 		custom_emote(m_type,message)

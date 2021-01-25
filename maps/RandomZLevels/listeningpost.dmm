@@ -37,8 +37,8 @@
 /obj/structure/table/standard,
 /obj/item/paper/monitorkey,
 /obj/item/radio/intercom{
-	desc = "Talk through this. Evilly";
 	!INVALID_VAR! = 1;
+	desc = "Talk through this. Evilly";
 	frequency = 1213;
 	name = "Syndicate Intercom";
 	pixel_x = 32;
@@ -66,8 +66,7 @@
 	dir = 4
 	},
 /mob/living/simple_mob/humanoid/merc{
-	desc = "A weary looking syndicate operative.";
-	faction = "syndicate"
+	desc = "A weary looking syndicate operative."
 	},
 /turf/simulated/floor,
 /area/awaymission/listeningpost)
@@ -82,8 +81,8 @@
 /area/awaymission/listeningpost)
 "p" = (
 /obj/item/radio/intercom{
-	desc = "Talk through this. Evilly";
 	!INVALID_VAR! = 1;
+	desc = "Talk through this. Evilly";
 	frequency = 1213;
 	name = "Syndicate Intercom";
 	pixel_x = 32;
@@ -233,14 +232,12 @@
 /area/awaymission/listeningpost)
 "I" = (
 /obj/machinery/shower{
-	icon_state = "shower";
 	dir = 8
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/awaymission/listeningpost)
 "J" = (
 /obj/structure/toilet{
-	icon_state = "toilet00";
 	dir = 8
 	},
 /turf/simulated/floor/tiled/freezer,
@@ -256,28 +253,24 @@
 /area/mine/explored)
 "N" = (
 /obj/machinery/gateway{
-	icon_state = "off";
 	dir = 9
 	},
 /turf/simulated/floor/greengrid,
 /area/mine/explored)
 "O" = (
 /obj/machinery/gateway{
-	icon_state = "off";
 	dir = 1
 	},
 /turf/simulated/floor/greengrid,
 /area/mine/explored)
 "P" = (
 /obj/machinery/gateway{
-	icon_state = "off";
 	dir = 5
 	},
 /turf/simulated/floor/greengrid,
 /area/mine/explored)
 "Q" = (
 /obj/machinery/gateway{
-	icon_state = "off";
 	dir = 8
 	},
 /turf/simulated/floor/greengrid,
@@ -288,14 +281,12 @@
 /area/mine/explored)
 "S" = (
 /obj/machinery/gateway{
-	icon_state = "off";
 	dir = 4
 	},
 /turf/simulated/floor/greengrid,
 /area/mine/explored)
 "T" = (
 /obj/machinery/gateway{
-	icon_state = "off";
 	dir = 10
 	},
 /turf/simulated/floor/greengrid,
@@ -306,7 +297,6 @@
 /area/mine/explored)
 "V" = (
 /obj/machinery/gateway{
-	icon_state = "off";
 	dir = 6
 	},
 /turf/simulated/floor/greengrid,

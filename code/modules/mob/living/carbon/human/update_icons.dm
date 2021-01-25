@@ -1,4 +1,4 @@
-/*
+	/*
 	Global associative list for caching humanoid icons.
 	Index format m or f, followed by a string of 0 and 1 to represent bodyparts followed by husk fat hulk skeleton 1 or 0.
 */
@@ -435,14 +435,21 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 				hair_style = hair_styles_list["Short Hair"]
 
 		if(hair_style && (src.species.get_bodytype(src) in hair_style.species_allowed))
+			var/icon/grad_s
 			var/icon/hair_s = new/icon("icon" = hair_style.icon, "icon_state" = "[hair_style.icon_state]_s")
 			var/icon/hair_s_add
 			if(hair_style.icon_add)
 				hair_s_add = new/icon("icon" = hair_style.icon_add, "icon_state" = "[hair_style.icon_state]_s")
 			if(hair_style.do_colouration)
+				if(grad_style)
+					grad_s = new/icon("icon" = 'icons/mob/hair_gradients.dmi', "icon_state" = GLOB.hair_gradients[grad_style])
+					grad_s.Blend(hair_s, ICON_AND)
+					grad_s.Blend(rgb(r_grad, g_grad, b_grad), ICON_MULTIPLY)
 				hair_s.Blend(rgb(r_hair, g_hair, b_hair), ICON_MULTIPLY)
 				if(hair_s_add)
 					hair_s.Blend(hair_s_add, ICON_ADD)
+				if(grad_s)
+					hair_s.Blend(grad_s, ICON_OVERLAY)
 
 			face_standing.Blend(hair_s, ICON_OVERLAY)
 
@@ -1055,10 +1062,21 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 	var/depth = check_submerged()
 	if(!depth || lying)
 		return
-
-	overlays_standing[WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "human_swimming_[depth]", layer = BODY_LAYER+WATER_LAYER) //TODO: Improve
-
-	apply_layer(WATER_LAYER)
+	if(depth < 3)
+		overlays_standing[WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "human_swimming_[depth]", layer = BODY_LAYER+WATER_LAYER) //TODO: Improve
+		apply_layer(WATER_LAYER)
+	if(depth == 4)
+		overlays_standing[WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "hacid_1", layer = BODY_LAYER+WATER_LAYER)
+		apply_layer(WATER_LAYER)
+	if(depth == 5)
+		overlays_standing[WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "hacid_2", layer = BODY_LAYER+WATER_LAYER)
+		apply_layer(WATER_LAYER)
+	if(depth == 6)
+		overlays_standing[WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "hblood_1", layer = BODY_LAYER+WATER_LAYER)
+		apply_layer(WATER_LAYER)
+	if(depth == 7)
+		overlays_standing[WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "hblood_2", layer = BODY_LAYER+WATER_LAYER)
+		apply_layer(WATER_LAYER)
 
 /mob/living/carbon/human/update_acidsub()
 	if(QDESTROYING(src))
@@ -1070,7 +1088,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 	if(!depth || lying)
 		return
 
-	overlays_standing[WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "hacid_[depth]", layer = BODY_LAYER+WATER_LAYER) //TODO: Improve
+	overlays_standing[WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "hacid_1", layer = BODY_LAYER+WATER_LAYER) //TODO: Improve
 
 	apply_layer(WATER_LAYER)
 

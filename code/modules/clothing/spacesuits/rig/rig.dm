@@ -95,6 +95,7 @@
 	// Wiring! How exciting.
 	var/datum/wires/rig/wires
 	var/datum/effect_system/spark_spread/spark_system
+	var/datum/mini_hud/rig/minihud
 
 /obj/item/rig/get_cell()
 	return cell
@@ -346,6 +347,11 @@
 
 	// Success!
 	canremove = seal_target
+	if(M.hud_used)
+		if(canremove)
+			QDEL_NULL(minihud)
+		else
+			minihud = new (M.hud_used, src)
 	to_chat(M, "<font color='blue'><b>Your entire suit [canremove ? "loosens as the components relax" : "tightens around you as the components lock into place"].</b></font>")
 	M.client.screen -= booting_L
 	qdel(booting_L)

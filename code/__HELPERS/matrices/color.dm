@@ -17,6 +17,12 @@ list(0.393,0.349,0.272,0, 0.769,0.686,0.534,0, 0.189,0.168,0.131,0, 0,0,0,1, 0,0
 /proc/color_matrix_identity()
 	return list(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1, 0,0,0,0)
 
+/**
+  * Assembles a color matrix, defaulting to identity
+  */
+/proc/rgb_construct_color_matrix(rr = 1, rg, rb, gr, gg = 1, gb, br, bg, bb = 1, cr, cg, cb)
+	return list(rr, rg, rb, gr, gg, gb, br, bg, bb, cr, cg, cb)
+
 //Adds/subtracts overall lightness
 //0 is identity, 1 makes everything white, -1 makes everything black
 /proc/color_matrix_lightness(power)

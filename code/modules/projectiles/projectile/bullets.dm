@@ -110,7 +110,7 @@
 /obj/item/projectile/bullet/pistol/medium/silver
 	damage = 15
 	SA_bonus_damage = 45 // 60 total against demons
-	SA_vulnerability = MOB_CLASS_DEMONIC
+	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
 	embed_chance = -1
 	holy = TRUE
 
@@ -135,7 +135,7 @@
 	fire_sound = 'sound/weapons/gunshot4.ogg'
 	damage = 40
 	SA_bonus_damage = 80 // 120 total against demons
-	SA_vulnerability = MOB_CLASS_DEMONIC
+	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
 	embed_chance = -1
 	holy = TRUE
 
@@ -159,6 +159,9 @@
 /obj/item/projectile/bullet/pistol/spin // Special weak ammo for Service Spin mode.
 	fire_sound = 'sound/weapons/gunshot2.ogg'
 	damage = 5
+	SA_bonus_damage = 10 // 15 total against demons
+	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
+	holy = TRUE
 
 /* shotgun projectiles */
 
@@ -198,7 +201,7 @@
 	fire_sound = 'sound/weapons/Gunshot_shotgun.ogg'
 	damage = 10
 	SA_bonus_damage = 16 // Potential 156 Damage against demons at point blank.
-	SA_vulnerability = MOB_CLASS_DEMONIC
+	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
 	embed_chance = -1
 	pellets = 6
 	range_step = 1
@@ -211,7 +214,7 @@
 	damage = 50
 	armor_penetration = 15
 	SA_bonus_damage = 16 // Potential 156 Damage against demons at point blank.
-	SA_vulnerability = MOB_CLASS_DEMONIC
+	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
 	holy = TRUE
 
 //EMP shotgun 'slug', it's basically a beanbag that pops a tiny emp when it hits. //Not currently used
@@ -250,23 +253,30 @@
 	damage = 30
 	armor_penetration = 50 // At 30 or more armor, this will do more damage than standard rounds.
 
+/obj/item/projectile/bullet/rifle/a762/ap/silver
+	damage = 30
+	armor_penetration = 50 // At 30 or more armor, this will do more damage than standard rounds.
+	SA_bonus_damage = 30 // 60 total against demons
+	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
+	holy = TRUE
+
 /obj/item/projectile/bullet/rifle/a762/hp
 	damage = 40
 	armor_penetration = -50
 	penetrating = 0
 
 /obj/item/projectile/bullet/rifle/a762/hunter // Optimized for killing simple animals and not people, because Balance(tm)
-	damage = 20
-	SA_bonus_damage = 50 // 70 total on animals.
+	damage = 25
+	SA_bonus_damage = 45 // 70 total on animals.
 	SA_vulnerability = MOB_CLASS_ANIMAL
 	embed_chance = -1
 
 /obj/item/projectile/bullet/rifle/a762/sniperhunter
-	damage = 20 
-	SA_bonus_damage = 50 // 70 total on animals.
+	damage = 25
+	SA_bonus_damage = 45 // 70 total on animals.
 	SA_vulnerability = MOB_CLASS_ANIMAL
 	embed_chance = -1
-	hitscan = 1
+	speed = 0.4
 
 /obj/item/projectile/bullet/rifle/a762/silver // Hunting Demons with bolt action rifles.
 	damage = 20
@@ -323,6 +333,21 @@
 /obj/item/projectile/bullet/burstbullet/on_hit(var/atom/target, var/blocked = 0)
 	if(isturf(target))
 		explosion(target, -1, 0, 2)
+	..()
+
+/obj/item/projectile/bullet/burstbullet/service
+	name = "charge bullet"
+	fire_sound = 'sound/effects/Explosion1.ogg'
+	damage = 20
+	embed_chance = 0
+	edge = 1
+	SA_bonus_damage = 40 // 60 total damage against demons.
+	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
+	holy = TRUE
+
+/obj/item/projectile/bullet/burstbullet/service/on_hit(var/atom/target, var/blocked = 0)
+	if(isturf(target))
+		explosion(target, 0, 1, 2)
 	..()
 
 /* Incendiary */

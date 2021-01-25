@@ -179,3 +179,15 @@
 #define AMBIENCE_AESTHETIC list(\
 	'sound/ambience/vaporwave.ogg'\
 	)
+
+// Explosion sounds
+#define EXPLOSION_CREAKING list(\
+	'sound/effects/explosioncreak1.ogg',\
+	'sound/effects/explosioncreak2.ogg'\
+	)
+
+#define HULL_CREAKING list(\
+	'sound/effects/creak1.ogg',\
+	'sound/effects/creak2.ogg',\
+	'sound/effects/creak3.ogg'\
+	)

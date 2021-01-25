@@ -221,7 +221,7 @@
 	M.drowsyness = 0
 	M.stuttering = 0
 	M.SetConfused(0)
-	M.sleeping = 0
+	M.SetSleeping(0)
 	M.jitteriness = 0
 	M.radiation = 0
 	M.ExtinguishMob()
@@ -576,3 +576,65 @@
 	taste_description = "earthy"
 	reagent_state = LIQUID
 	color = "#62764E"
+
+////////////////////////////
+/// NW's shrinking serum ///
+////////////////////////////
+//Moved from Chemistry-Reagents-Medicine_vr.dm
+/datum/reagent/macrocillin
+	name = "Macrocillin"
+	id = "macrocillin"
+	description = "Glowing yellow liquid."
+	reagent_state = LIQUID
+	color = "#FFFF00" // rgb: 255, 255, 0
+	metabolism = 0.01
+	mrate_static = TRUE
+
+/datum/reagent/macrocillin/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	if(M.size_multiplier < RESIZE_HUGE)
+		M.resize(M.size_multiplier+0.01)//Incrrease 1% per tick.
+	return
+
+/datum/reagent/microcillin
+	name = "Microcillin"
+	id = "microcillin"
+	description = "Murky purple liquid."
+	reagent_state = LIQUID
+	color = "#800080"
+	metabolism = 0.01
+	mrate_static = TRUE
+
+/datum/reagent/microcillin/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	if(M.size_multiplier > RESIZE_TINY)
+		M.resize(M.size_multiplier-0.01) //Decrease 1% per tick.
+	return
+
+/datum/reagent/normalcillin
+	name = "Normalcillin"
+	id = "normalcillin"
+	description = "Translucent cyan liquid."
+	reagent_state = LIQUID
+	color = "#00FFFF"
+	metabolism = 0.01 //One unit will be just enough to bring someone from 200% to 100%
+	mrate_static = TRUE
+
+/datum/reagent/normalcillin/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	if(M.size_multiplier > RESIZE_NORMAL)
+		M.resize(M.size_multiplier-0.01) //Decrease by 1% size per tick.
+	else if(M.size_multiplier < RESIZE_NORMAL)
+		M.resize(M.size_multiplier+0.01) //Increase 1% per tick.
+	return
+
+/datum/reagent/sizeoxadone
+	name = "Sizeoxadone"
+	id = "sizeoxadone"
+	description = "A volatile liquid used as a precursor to size-altering chemicals. Causes dizziness if taken unprocessed."
+	reagent_state = LIQUID
+	color = "#1E90FF"
+	overdose = REAGENTS_OVERDOSE
+
+/datum/reagent/sizeoxadone/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	M.make_dizzy(1)
+	if(!M.confused) M.confused = 1
+	M.confused = max(M.confused, 20)
+	return

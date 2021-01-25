@@ -706,6 +706,69 @@
 /area/shuttle/mining_ship/general
 	name = "\improper Mining Shuttle"
 
+//Trade Ship
+/area/shuttle/trade_ship
+	requires_power = 1
+	icon_state = "shuttle2"
+	flags = RAD_SHIELDED
+
+/area/shuttle/trade_ship/general
+	name = "\improper Beruang Trade Shuttle"
+
+/area/shuttle/trade_ship/cockpit
+	name = "\improper Beruang Trade Shuttle Cockpit"
+
+//Trade Port
+
+/area/tradeport
+	name = "\improper Trade Port"
+	icon = 'icons/turf/areas_vr.dmi'
+	icon_state = "dark"
+	requires_power = 1
+
+/area/tradeport/facility
+	icon_state = "red"
+
+/area/tradeport/engineering
+	icon_state = "yellow"
+
+/area/tradeport/commons
+	icon_state = "green"
+
+/area/tradeport/dock
+	name = "\improper Trade Port Dock"
+	icon_state = "blue"
+
+/area/tradeport/pads
+	icon_state = "purple"
+
+/area/tradeport/spine
+	name = "\improper Commerce Spine"
+	icon_state = "red"
+
+/area/tradeport/commhall
+	name = "\improper Commerce Hall"
+	icon_state = "yellow"
+
+/area/tradeport/safari
+	name = "\improper Safari Shop"
+	icon_state = "green"
+
+/area/tradeport/safarizoo
+	name = "\improper Safari Zone"
+	icon_state = "blue"
+
+//EMT Shuttle
+/area/shuttle/emt
+	requires_power = 1
+	icon_state = "shuttle2"
+
+/area/shuttle/emt/general
+	name = "\improper EMT Shuttle"
+
+/area/shuttle/emt/cockpit
+	name = "\improper EMT Shuttle Cockpit"
+
 // Tourbus
 /area/shuttle/tourbus
 	requires_power = 1

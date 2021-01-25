@@ -11,7 +11,7 @@
 	starts_with = list(
 		/obj/item/storage/backpack/dufflebag/captain,
 		/obj/item/clothing/head/helmet,
-		/obj/item/clothing/suit/storage/vest,
+		/obj/item/clothing/suit/armor/vest/capcarapace,
 		/obj/item/cartridge/captain,
 		/obj/item/storage/lockbox/medal,
 		/obj/item/radio/headset/heads/captain,

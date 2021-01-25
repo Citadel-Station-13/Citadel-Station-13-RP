@@ -471,7 +471,7 @@
 // Use for objects performing visible actions
 // message is output to anyone who can see, e.g. "The [src] does something!"
 // blind_message (optional) is what blind people will hear e.g. "You hear something!"
-/atom/proc/visible_message(var/message, var/blind_message)
+/atom/proc/visible_message(var/message, var/self_message, var/blind_message)
 
 	//VOREStation Edit
 	var/list/see
@@ -490,7 +490,9 @@
 		O.show_message(message, 1, blind_message, 2)
 	for(var/mob in seeing_mobs)
 		var/mob/M = mob
-		if(M.see_invisible >= invisibility && MOB_CAN_SEE_PLANE(M, plane))
+		if(self_message && (M == src))
+			M.show_message( self_message, 1, blind_message, 2)
+		else if((M.see_invisible >= invisibility) && MOB_CAN_SEE_PLANE(M, plane))
 			M.show_message(message, 1, blind_message, 2)
 		else if(blind_message)
 			M.show_message(blind_message, 2)
