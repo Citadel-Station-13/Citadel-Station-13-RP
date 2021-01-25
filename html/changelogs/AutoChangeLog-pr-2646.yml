@@ -1,0 +1,4 @@
+author: "ThatOneTeshari"
+delete-after: True
+changes: 
+  - bugfix: "Fixes the 'stuck' Sleeping indicator after surgery."
