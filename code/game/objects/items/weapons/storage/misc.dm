@@ -90,6 +90,3 @@
 		/obj/item/flame/lighter
 		)
 	starts_with = list(/obj/item/pen/crayon/chalk, /obj/item/reagent_containers/pill/nutriment, /obj/item/gps/survival)
-
-/obj/item/storage/box/survival_knife/is_multitool()
-	return TRUE

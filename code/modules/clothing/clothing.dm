@@ -591,6 +591,7 @@
 	if((can_hold_knife == 1) && (istype(I, /obj/item/material/shard) || \
 	 istype(I, /obj/item/material/butterfly) || \
 	 istype(I, /obj/item/material/kitchen/utensil) || \
+	 istype(I, /obj/item/storage/box/survival_knife) ||\
 	 istype(I, /obj/item/material/knife/tacknife)))
 		if(holding)
 			to_chat(user, "<span class='warning'>\The [src] is already holding \a [holding].</span>")

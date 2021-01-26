@@ -637,3 +637,7 @@
 /obj/item/paper/manifest
 	name = "supply manifest"
 	var/is_copy = 1
+
+/obj/item/paper/particle_info
+	name = "Particle Control Panel - A Troubleshooter's Guide"
+	info = "If the Particle Control panel is not responding to inputs, simply toggle power to equipment and/or flip the breaker on your local Area Power Controller (APC). Turn the power off, and then back on again. This will resolve the issue."
