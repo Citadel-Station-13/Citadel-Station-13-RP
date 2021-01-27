@@ -4103,7 +4103,7 @@
 /obj/effect/floor_decal/corner/grey/diagonal{
 	dir = 4
 	},
-/obj/machinery/appliance/cooker/grill,
+/obj/machinery/appliance/grill,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
