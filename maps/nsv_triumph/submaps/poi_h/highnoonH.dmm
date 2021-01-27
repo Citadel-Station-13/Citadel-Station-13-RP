@@ -27,7 +27,7 @@
 "A" = (/mob/living/simple_mob/humanoid/merc/ranged/poi,/turf/simulated/floor/wood/classh,/area/triumph_away/poi_h/POIs/WW_Town)
 "B" = (/obj/structure/table/rack/shelf,/obj/item/gun/projectile/shotgun/pump/rifle,/turf/simulated/floor/wood,/area/triumph_away/poi_h/POIs/WW_Town)
 "C" = (/mob/living/simple_mob/humanoid/merc/ranged/grenadier/poi,/turf/simulated/floor/wood/classh,/area/triumph_away/poi_h/POIs/WW_Town)
-"D" = (/turf/simulated/mineral/outdoors/floor/classh,/area/triumph_away/poi_h/POIs/WW_Town)
+"D" = (/turf/simulated/mineral/outdoors/classh,/area/triumph_away/poi_h/POIs/WW_Town)
 "E" = (/obj/structure/largecrate,/turf/simulated/floor/wood/classh,/area/triumph_away/poi_h/POIs/WW_Town)
 "F" = (/obj/structure/table/woodentable,/obj/item/storage/box/shotgunshells,/obj/item/storage/box/shotgunshells,/turf/simulated/floor/wood/classh,/area/triumph_away/poi_h/POIs/WW_Town)
 "G" = (/obj/structure/table/rack/shelf,/obj/item/ammo_magazine/clip/c762/hunter,/obj/item/ammo_magazine/clip/c762/hunter,/obj/item/ammo_magazine/clip/c762/hunter,/turf/simulated/floor/wood,/area/triumph_away/poi_h/POIs/WW_Town)
