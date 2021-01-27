@@ -38,18 +38,21 @@
 	id_pda_assignment = "Admiral"
 
 /decl/hierarchy/outfit/merchant
-	name = "Merchant"
+	name = "Nebula Gas Merchant"
 	shoes = /obj/item/clothing/shoes/black
-	l_ear = /obj/item/radio/headset
-	uniform = /obj/item/clothing/under/color/grey
+	gloves = /obj/item/clothing/gloves/brown
+	back = /obj/item/storage/backpack/satchel
+	l_ear = /obj/item/radio/headset/trader
+	glasses = /obj/item/clothing/glasses/sunglasses
+	uniform = /obj/item/clothing/under/trader_coveralls
 	id_slot = slot_wear_id
 	id_type = /obj/item/card/id/external/merchant	//created a new ID so merchant can open their doors
 	pda_slot = slot_r_store
 	pda_type = /obj/item/pda/chef //cause I like the look
 	id_pda_assignment = "Merchant"
 
-/decl/hierarchy/outfit/merchant/vox
-	name = "Merchant - Vox"
+/decl/hierarchy/outfit/merchant/vox //This needs to be updated.
+	name = "Nebula Gas Merchant - Vox"
 	shoes = /obj/item/clothing/shoes/boots/jackboots/toeless
 	uniform = /obj/item/clothing/under/vox/vox_robes
 	suit = /obj/item/clothing/suit/armor/vox_scrap

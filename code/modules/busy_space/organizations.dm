@@ -2053,7 +2053,12 @@
 			"Where The Black Stars Hang",
 			"Dreams of Being Snow",
 			"Yours Truly, The Whale",
-			"Sigh Hawaii"
+			"Sigh Hawaii",
+			"Half Day Closing",
+			"Renholder's Opus",
+			"Tannhauser Bow",
+			"Silver Lake",
+			"Mozambique Vampire"
 			)
 	destination_names = list(
 			"unidentified sensor reading",
