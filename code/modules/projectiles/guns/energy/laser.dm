@@ -132,7 +132,7 @@
 	fire_delay = 20
 	w_class = ITEMSIZE_LARGE
 //	one_handed_penalty = 90 // The thing's heavy and huge.
-	accuracy = 45
+	accuracy = 75
 	charge_cost = 600
 
 /obj/item/gun/energy/lasercannon/mounted
@@ -140,7 +140,7 @@
 	self_recharge = 1
 	use_external_power = 1
 	recharge_time = 10
-	accuracy = 0 // Mounted cannons are just fine the way they are.
+	//accuracy = 0 // Mounted cannons are just fine the way they are.
 	one_handed_penalty = 0 // Not sure if two-handing gets checked for mounted weapons, but better safe than sorry.
 	projectile_type = /obj/item/projectile/beam/heavylaser
 	charge_cost = 400
@@ -171,8 +171,8 @@
 	fire_delay = 35
 	force = 10
 	w_class = ITEMSIZE_HUGE // So it can't fit in a backpack.
-	accuracy = -45 //shooting at the hip
-	scoped_accuracy = 0
+	accuracy = 25 //shooting at the hip
+	scoped_accuracy = 80
 //	requires_two_hands = 1
 //	one_handed_penalty = 60 // The weapon itself is heavy, and the long barrel makes it hard to hold steady with just one hand.
 
@@ -188,7 +188,7 @@
 	desc = "A modified version of the HI DMR 9E with a replacement firing pin and reduced shot capacity in exchange for a self recharging cell."
 	pin = /obj/item/firing_pin/explorer
 	cell_type = /obj/item/cell/device/weapon/recharge/sniper
-	accuracy = 100 //Forced missing fucking sucks ass
+	accuracy = 45 //Modifications include slightly better hip-firing furniture.
 	scoped_accuracy = 100
 	charge_cost = 600
 
@@ -205,8 +205,8 @@
 	fire_delay = 20
 	force = 8
 	w_class = ITEMSIZE_LARGE
-	accuracy = 10
-	scoped_accuracy = 15
+	accuracy = 70
+	scoped_accuracy = 95
 	var/scope_multiplier = 1.5
 
 /obj/item/gun/energy/monorifle/verb/sights()
@@ -224,8 +224,8 @@
 	item_state = "cshotgun"
 	charge_cost = 1000
 	force = 12
-	accuracy = 0
-	scoped_accuracy = 20
+	accuracy = 70
+	scoped_accuracy = 95
 
 ////////Laser Tag////////////////////
 
@@ -281,8 +281,8 @@
 
 	firemodes = list(
 		list(mode_name="single shot", burst = 1, fire_delay=4, move_delay=null, burst_accuracy = null, dispersion = null),
-		list(mode_name="three shot bursts", burst=3, fire_delay=10 , move_delay=4,    burst_accuracy=list(75,75,75), dispersion=list(1,1,1)),
-		list(mode_name="short bursts",	burst=5, fire_delay=10 ,move_delay=6, burst_accuracy = list(0,0,0,0,0), dispersion = list(4,4,4,4,4)),
+		list(mode_name="three shot bursts", burst=3, fire_delay=10 , move_delay=4,    burst_accuracy=list(65,65,65), dispersion=list(1,1,1)),
+		list(mode_name="short bursts",	burst=5, fire_delay=10 ,move_delay=6, burst_accuracy = list(65,65,65,65,65), dispersion = list(4,4,4,4,4)),
 		)
 
 /obj/item/gun/energy/zip

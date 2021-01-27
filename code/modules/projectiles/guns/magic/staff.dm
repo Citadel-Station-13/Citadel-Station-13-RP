@@ -1,5 +1,6 @@
 /obj/item/gun/magic/staff
 	slot_flags = SLOT_BACK
+	accuracy = 95
 
 /* //These two need to be fixed at the projectile level.
 /obj/item/gun/magic/staff/change

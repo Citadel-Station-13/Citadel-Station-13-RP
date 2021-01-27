@@ -8,6 +8,7 @@
 	projectile_type = /obj/item/projectile/beam
 	charge_cost = 120
 	sel_mode = 2
+	accuracy = 90
 
 	firemodes = list(
 		list(mode_name="stun", projectile_type=/obj/item/projectile/beam/stun, fire_delay=null, charge_cost = 120),

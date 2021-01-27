@@ -42,7 +42,6 @@ obj/item/gun/energy/phasegun/rifle
 	slot_flags = SLOT_BACK
 	charge_cost = 150
 	projectile_type = /obj/item/projectile/energy/phase/heavy
-	accuracy = 15
 	one_handed_penalty = 30
 
 /obj/item/gun/energy/phasegun/cannon
@@ -55,5 +54,5 @@ obj/item/gun/energy/phasegun/rifle
 	slot_flags = SLOT_BACK
 	charge_cost = 100
 	projectile_type = /obj/item/projectile/energy/phase/heavy/cannon
-	accuracy = 15
+	accuracy = 70
 	one_handed_penalty = 65

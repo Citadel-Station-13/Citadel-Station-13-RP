@@ -23,7 +23,7 @@
 	icon_state = "boltaction_c"
 	item_state = "boltaction_c"
 	ammo_type = /obj/item/ammo_casing/a762/blank
-	
+
 /obj/item/gun/projectile/shotgun/pump/rifle/ceremonial/holy
 	name = "blessed bolt-action rifle"
 	desc = "A bolt-action rifle with a heavy, high-quality wood stock that has a beautiful finish. Clearly not intended to be used in combat. Uses 7.62mm rounds."
@@ -73,7 +73,7 @@
 	load_method = SINGLE_CASING
 	ammo_type = /obj/item/ammo_casing/a357
 	action_sound = 'sound/weapons/riflebolt.ogg'
-	
+
 /obj/item/gun/projectile/shotgun/pump/rifle/lever/holy
 	name = "blessed lever-action"
 	ammo_type = /obj/item/ammo_casing/a357/silver
@@ -117,7 +117,7 @@
 	ammo_type = /obj/item/ammo_casing/a44
 	animated_pump = 1
 	action_sound = 'sound/weapons/riflebolt.ogg'
-	
+
 /obj/item/gun/projectile/shotgun/pump/rifle/lever/vintage/holy
 	name = "blessed lever-action"
 	ammo_type = /obj/item/ammo_casing/a44/silver
@@ -161,7 +161,7 @@
 	caliber = "12g"
 	load_method = SINGLE_CASING
 	action_sound = 'sound/weapons/riflebolt.ogg'
-	
+
 /obj/item/gun/projectile/shotgun/pump/rifle/lever/arnold/holy
 	name = "blessed lever-action shotgun"
 	ammo_type = /obj/item/ammo_casing/a12g/silver
@@ -179,7 +179,7 @@
 	caliber = "7.62mm"
 	action_sound = 'sound/weapons/riflebolt.ogg'
 	animated_pump = 1
-	
+
 /obj/item/gun/projectile/shotgun/pump/rifle/lever/win1895/holy
 	name = "blessed lever-action"
 	ammo_type = /obj/item/ammo_casing/a762/silver
@@ -199,7 +199,7 @@
 	pin = /obj/item/firing_pin/explorer
 	w_class = ITEMSIZE_HUGE // So it can't fit in a backpack.
 	ammo_type = /obj/item/ammo_casing/a762/sniperhunter
-	accuracy = 20 //Forced missing fucking sucks ass
+	accuracy = 50 //Forced missing fucking sucks ass
 	scoped_accuracy = 100
 
 /obj/item/gun/projectile/shotgun/pump/scopedrifle/verb/scope()
