@@ -55,10 +55,10 @@
 /turf/simulated/mineral/floor/vacuum,
 /area/template_noop)
 "E" = (
-/turf/simulated/mineral/classh,
+/turf/simulated/mineral/outdoors/classh,
 /area/template_noop)
 "I" = (
-/turf/simulated/mineral/floor/classh,
+/turf/simulated/mineral/outdoors/floor/classh,
 /area/template_noop)
 
 (1,1,1) = {"

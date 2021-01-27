@@ -1,7 +1,7 @@
-"a" = (/turf/simulated/floor/beach/sand/desert/classh,/area/triumph_away/poi_h/explored)
-"w" = (/turf/simulated/mineral/classh,/area/triumph_away/poi_h/explored)
-"D" = (/obj/random/mob/spider/mutant,/turf/simulated/floor/beach/sand/desert/classh,/area/triumph_away/poi_h/explored)
-"X" = (/mob/living/simple_mob/animal/giant_spider,/turf/simulated/floor/beach/sand/desert/classh,/area/triumph_away/poi_h/explored)
+"a" = (/turf/simulated/floor/outdoors/beach/sand/desert/classh,/area/triumph_away/poi_h/explored)
+"w" = (/turf/simulated/mineral/outdoors/classh,/area/triumph_away/poi_h/explored)
+"D" = (/obj/random/mob/spider/mutant,/turf/simulated/floor/outdoors/beach/sand/desert/classh,/area/triumph_away/poi_h/explored)
+"X" = (/mob/living/simple_mob/animal/giant_spider,/turf/simulated/floor/outdoors/beach/sand/desert/classh,/area/triumph_away/poi_h/explored)
 
 (1,1,1) = {"
 aawwaaaaaa

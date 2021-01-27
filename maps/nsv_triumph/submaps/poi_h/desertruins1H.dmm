@@ -1,11 +1,11 @@
-"a" = (/turf/simulated/floor/beach/sand/desert/classh,/area/triumph_away/poi_h/unexplored)
+"a" = (/turf/simulated/floor/outdoors/beach/sand/desert/classh,/area/triumph_away/poi_h/unexplored)
 "c" = (/turf/simulated/wall/sandstone/classh,/area/triumph_away/poi_h/explored)
-"l" = (/obj/structure/loot_pile/surface/bones,/turf/simulated/floor/beach/sand/desert/classh,/area/triumph_away/poi_h/explored)
-"n" = (/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/explored)
-"s" = (/obj/item/bone,/turf/simulated/floor/beach/sand/desert/classh,/area/triumph_away/poi_h/explored)
-"G" = (/obj/structure/loot_pile/surface/bones,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/explored)
-"W" = (/obj/item/bone,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/explored)
-"X" = (/turf/simulated/floor/beach/sand/desert/classh,/area/triumph_away/poi_h/explored)
+"l" = (/obj/structure/loot_pile/surface/bones,/turf/simulated/floor/outdoors/beach/sand/desert/classh,/area/triumph_away/poi_h/explored)
+"n" = (/turf/simulated/mineral/outdoors/floor/classh,/area/triumph_away/poi_h/explored)
+"s" = (/obj/item/bone,/turf/simulated/floor/outdoors/beach/sand/desert/classh,/area/triumph_away/poi_h/explored)
+"G" = (/obj/structure/loot_pile/surface/bones,/turf/simulated/mineral/outdoors/floor/classh,/area/triumph_away/poi_h/explored)
+"W" = (/obj/item/bone,/turf/simulated/mineral/outdoors/floor/classh,/area/triumph_away/poi_h/explored)
+"X" = (/turf/simulated/floor/outdoors/beach/sand/desert/classh,/area/triumph_away/poi_h/explored)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaa
