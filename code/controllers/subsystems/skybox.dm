@@ -158,6 +158,5 @@ SUBSYSTEM_DEF(skybox)
 
 /datum/skybox_settings/New()
 	..()
-	icon_state = pick("space1","space2","space3","space4","space5","space6")
 	if(random_color)
 		color = rgb(rand(0,255), rand(0,255), rand(0,255))
