@@ -146,9 +146,9 @@ SUBSYSTEM_DEF(skybox)
 // Settings datum that maps can override to play with their skyboxes
 /datum/skybox_settings
 	var/icon = 'icons/skybox/skybox.dmi'	// Path to our background. Lets us use anything we damn well please. Skyboxes need to be 736x736
-	var/icon_state = "space5"
+	var/icon_state
 	var/color
-	var/random_color = FALSE
+	var/random_color = TRUE
 
 	var/use_stars = TRUE
 	var/star_icon = 'icons/skybox/skybox.dmi'
@@ -158,5 +158,6 @@ SUBSYSTEM_DEF(skybox)
 
 /datum/skybox_settings/New()
 	..()
+	icon_state = pick("space1","space2","space3","space4","space5","space6")
 	if(random_color)
 		color = rgb(rand(0,255), rand(0,255), rand(0,255))

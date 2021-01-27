@@ -9,7 +9,7 @@ DESERT_TURF_CREATE(/turf/simulated/wall/planetary)
 DESERT_TURF_CREATE(/turf/simulated/wall)
 DESERT_TURF_CREATE(/turf/simulated/wall/sandstone)
 DESERT_TURF_CREATE(/turf/simulated/wall/sandstonediamond)
-DESERT_TURF_CREATE(/turf/simulated/floor/beach/sand/desert)
+DESERT_TURF_CREATE(/turf/simulated/floor/outdoors/beach/sand/desert)
 DESERT_TURF_CREATE(/turf/simulated/floor/wood)
 DESERT_TURF_CREATE(/turf/simulated/floor/tiled)
 DESERT_TURF_CREATE(/turf/simulated/floor)
@@ -19,10 +19,10 @@ DESERT_TURF_CREATE(/turf/simulated/floor/water/shoreline)
 DESERT_TURF_CREATE(/turf/simulated/floor/water/shoreline/corner)
 
 
-DESERT_TURF_CREATE(/turf/simulated/mineral)
-DESERT_TURF_CREATE(/turf/simulated/mineral/ignore_mapgen)
-DESERT_TURF_CREATE(/turf/simulated/mineral/floor)
-DESERT_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
+DESERT_TURF_CREATE(/turf/simulated/mineral/outdoors)
+DESERT_TURF_CREATE(/turf/simulated/mineral/outdoors/ignore_mapgen)
+DESERT_TURF_CREATE(/turf/simulated/mineral/outdoors/floor)
+DESERT_TURF_CREATE(/turf/simulated/mineral/outdoors/floor/ignore_mapgen)
 
 
 /turf/unsimulated/wall/planetary/desert
@@ -33,6 +33,18 @@ DESERT_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
 	density = 1
 	alpha = 0
 	blocks_air = 0
+
+/turf/simulated/floor/outdoors/beach/sand/desert
+	name = "desert"
+	desc = "It seems to go on and on.."
+	icon_state = "desert"
+	icon = 'icons/turf/outdoors.dmi'
+
+/turf/simulated/mineral/outdoors
+	name = "worn out path"
+	desc = "A chunk of dirt that has numerous footprints on it."
+	icon_state = "dirt-dark"
+	icon = 'icons/turf/outdoors.dmi'
 
 // -- Loot Spawners Stolen from UD Files -- //
 /obj/random/triumph

@@ -187,7 +187,7 @@
 	return 1
 
 /datum/skybox_settings/triumph
-	icon_state = "space2"
+	..()
 	use_stars = FALSE
 
 // Short range computers see only the main levels, others can see the surrounding surface levels.

@@ -10,9 +10,9 @@
 /area/triumph_away/poi_h
 	name = "Mining Planet"
 	icon_state = "away"
-	base_turf = /turf/simulated/mineral/floor/
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+	requires_power = 0
 	dynamic_lighting = 1
-	dynamic_lighting = TRUE
 
 /area/triumph_away/poi_h/explored
 	name = "Mining Planet - Explored (E)"
@@ -37,45 +37,42 @@
 
 /area/shuttle/excursion/poi_h
 	name = "Shuttle Landing Point"
-	base_turf = /turf/simulated/floor/beach/sand/desert/classh
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 	flags = RAD_SHIELDED
-	dynamic_lighting = 0
+
 
 /area/triumph_away/poi_h
 	name = "Class H World"
-	base_turf = /turf/simulated/floor/beach/sand/desert/classh
-	dynamic_lighting = 0
-	dynamic_lighting = FALSE
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
 /area/triumph_away/poi_h/POIs/WW_Town
 	name = "Ghost Town"
-	base_turf = /turf/simulated/floor/beach/sand/desert/classh
-	dynamic_lighting = 0
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+
 
 /area/triumph_away/poi_h/POIs/landing_pad
 	name = "Prefab Homestead"
-	base_turf = /turf/simulated/floor/beach/sand/desert/classh
-	dynamic_lighting = 0
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+
 
 /area/triumph_away/poi_h/POIs/solar_farm
 	name = "Prefab Solar Farm"
-	base_turf = /turf/simulated/floor/beach/sand/desert/classh
-	dynamic_lighting = 0
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+
 
 /area/triumph_away/poi_h/POIs/dirt_farm
 	name = "Abandoned Farmstead"
-	base_turf = /turf/simulated/floor/beach/sand/desert/classh
-	dynamic_lighting = 0
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+
 
 /area/triumph_away/poi_h/POIs/graveyard
 	name = "Desert Graveyard"
-	base_turf = /turf/simulated/floor/beach/sand/desert/classh
-	dynamic_lighting = 0
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+
 
 /area/triumph_away/poi_h/POIs/goldmine
 	name = "Desert Goldmine"
-	base_turf = /turf/simulated/floor/beach/sand/desert/classh
-	dynamic_lighting = 0
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
 
 /area/triumph_away/poi_h/explored
