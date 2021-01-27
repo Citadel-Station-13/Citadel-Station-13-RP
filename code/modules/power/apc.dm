@@ -1265,6 +1265,10 @@ obj/machinery/power/apc/proc/autoset(var/cur_state, var/on)
 					L.broken()
 				sleep(1)
 
+/obj/machinery/power/apc/proc/flicker_lights(var/chance = 100)
+	for(var/obj/machinery/light/L in area)
+		L.flicker(rand(15,25))
+
 /obj/machinery/power/apc/proc/setsubsystem(val)
 	if(cell && cell.charge > 0)
 		return (val==1) ? 0 : val

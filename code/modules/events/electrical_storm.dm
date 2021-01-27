@@ -54,7 +54,9 @@
 	// Decent chance to overload lighting circuit.
 	if(prob(3 * severity))
 		T.overload_lighting()
-
+	else if (prob(10 * severity))
+		for(var/obj/machinery/light/L in T.area)
+			L.flicker(rand(10,20))
 	// Relatively small chance to emag the apc as apc_damage event does.
 	if(prob(0.2 * severity))
 		T.emagged = 1

@@ -99,11 +99,11 @@
 		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Atmos Leak",			/datum/event/atmos_leak, 		30,		list(ASSIGNMENT_ENGINEER = 25), 1),
 		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Electrical Storm",	/datum/event/electrical_storm, 	10,		list(ASSIGNMENT_ENGINEER = 1, ASSIGNMENT_JANITOR = 5), 1),
 		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Meteor Strike",		/datum/event/meteor_strike,		10,		list(ASSIGNMENT_ENGINEER = 15), 1),
-		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Space Vines",			/datum/event/spacevine, 		35,		list(ASSIGNMENT_ENGINEER = 7), 1),
-		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Carp Migration",		/datum/event/carp_migration,	10,		list(ASSIGNMENT_SECURITY = 5), 1),
+		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Space Vines",			/datum/event/spacevine, 		55,		list(ASSIGNMENT_ENGINEER = 7), 1),
+		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Carp Migration",		/datum/event/carp_migration,	20,		list(ASSIGNMENT_SECURITY = 5), 1),
 		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Containment Breach",	/datum/event/prison_break/station,0,	list(ASSIGNMENT_ANY = 5), 1),
-		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Meteor Wave",			/datum/event/meteor_wave,		10,		list(ASSIGNMENT_ENGINEER = 15),	1),
-		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Cultist Invasion",	/datum/event/cult,				10,		list(ASSIGNMENT_SECURITY = 15),	1),
+		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Meteor Wave",			/datum/event/meteor_wave,		20,		list(ASSIGNMENT_ENGINEER = 15),	1),
+		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Cultist Invasion",	/datum/event/cult,				15,		list(ASSIGNMENT_SECURITY = 15),	1),
 	)
 	add_disabled_events(list(
 		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Blob",				/datum/event/blob, 				10,		list(ASSIGNMENT_ENGINEER = 60), 1),
