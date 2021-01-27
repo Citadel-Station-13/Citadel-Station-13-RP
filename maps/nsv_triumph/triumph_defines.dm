@@ -132,7 +132,7 @@
 
 	meteor_strike_areas = null
 
-	default_skybox = /datum/skybox_settings/triumph
+	default_skybox = /datum/skybox_settings/
 
 	unit_test_exempt_areas = list(
 		/area/vacant/vacant_site,
@@ -186,9 +186,6 @@
 /datum/map/triumph/perform_map_generation()
 	return 1
 
-/datum/skybox_settings/triumph
-	..()
-	use_stars = FALSE
 
 // Short range computers see only the main levels, others can see the surrounding surface levels.
 /datum/map/triumph/get_map_levels(var/srcz, var/long_range = TRUE)
