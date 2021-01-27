@@ -98,3 +98,15 @@
 	icon_closed = "alien_locker"
 	icon_opened = "alien_locker_open"
 	anchored = TRUE
+/obj/structure/closet/largecardboard
+	name = "Large Cardboard Box"
+	desc = "It was my destiny to be here."
+	icon_state = "box"
+	icon_closed = "box"
+	icon_opened = "boxopen"
+	seal_tool = /obj/item/duct_tape_roll
+	health = 10
+	breakout_time = 0.5
+	breakout_sound = 'sound/misc/boxtear.ogg'
+	open_sound = 'sound/misc/boxopen.ogg'
+	close_sound = 'sound/misc/boxclose.ogg'
