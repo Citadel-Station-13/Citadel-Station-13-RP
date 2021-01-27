@@ -468,3 +468,11 @@
 	icon_state = "generic"
 	primary_color = rgb(142,94,0)
 	secondary_color = rgb(191,159,95)
+
+/obj/item/card/id/external/merchant //created so that when assigning the outfit of merchant, it assigns a working ID
+	name = "external identification card"
+	desc = "An identification card of some sort. It does not look like it is issued by NT."
+	icon_state = "generic"
+	primary_color = rgb(142,94,0)
+	secondary_color = rgb(191,159,95)
+	access = list(160, 13)
