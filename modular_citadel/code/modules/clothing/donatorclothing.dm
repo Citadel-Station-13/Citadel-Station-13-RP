@@ -167,3 +167,46 @@
 	name = "chaote hood"
 	icon_state = "chaospriesth"
 	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
+
+/obj/item/clothing/under/skirt/donator/doopytoots
+	name = "high-waisted business skirt"
+	desc = "A well tailored skirt matched with a form fitting blouse, perfect for all those paper pushing needs."
+	icon_state = "hueyskirt"
+	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
+	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
+	rolled_down_sleeves_icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
+	rolled_sleeves = 0
+
+/obj/item/clothing/under/donator/mikubikini
+	name = "starlight singer bikini"
+	desc = " "
+	icon_state = "mikubikini"
+
+/obj/item/clothing/suit/donator/mikujacket
+	name = "starlight singer jacket"
+	desc = " "
+	icon_state = "mikujacket"
+	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
+	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
+
+/obj/item/clothing/head/donator/mikuhair
+	name = "starlight singer hair"
+	desc = " "
+	flags_inv = HIDEEARS|BLOCKHEADHAIR
+	icon_state = "mikuhair"
+	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
+	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
+
+/obj/item/clothing/gloves/donator/mikugloves
+	name = "starlight singer gloves"
+	desc = " "
+	icon_state = "mikugloves"
+	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
+	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
+
+/obj/item/clothing/shoes/donator/mikuleggings
+	name = "starlight singer leggings"
+	desc = " "
+	icon_state = "mikuleggings"
+	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
+	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'

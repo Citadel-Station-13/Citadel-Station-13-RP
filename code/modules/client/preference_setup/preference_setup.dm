@@ -270,19 +270,12 @@
 				return PREF_FBP_SOFTWARE
 	return 0 //Something went wrong!
 
-/datum/category_item/player_setup_item/proc/get_min_age()
+/datum/category_item/player_setup_item/proc/get_min_age() //Minimum limit is 18
+	var/min_age = 18
 	var/datum/species/S = GLOB.all_species[pref.species ? pref.species : "Human"]
-	if(!is_FBP())
-		return S.min_age // If they're not a robot, we can just use the species var.
-	var/FBP_type = get_FBP_type()
-	switch(FBP_type)
-		if(PREF_FBP_CYBORG)
-			return S.min_age
-		if(PREF_FBP_POSI)
-			return 1
-		if(PREF_FBP_SOFTWARE)
-			return 1
-	return S.min_age // welp
+	if(!is_FBP() && S.min_age > 18)
+		min_age = S.min_age
+	return min_age
 
 /datum/category_item/player_setup_item/proc/get_max_age()
 	var/datum/species/S = GLOB.all_species[pref.species ? pref.species : "Human"]
@@ -297,3 +290,7 @@
 		if(PREF_FBP_SOFTWARE)
 			return 150
 	return S.max_age // welp
+
+/datum/category_item/player_setup_item/proc/color_square(red, green, blue, hex)
+	var/color = hex ? hex : "#[num2hex(red, 2)][num2hex(green, 2)][num2hex(blue, 2)]"
+	return "<span style='font-face: fixedsys; font-size: 14px; background-color: [color]; color: [color]'>___</span>"

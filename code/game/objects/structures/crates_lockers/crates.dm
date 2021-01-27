@@ -12,6 +12,13 @@
 //	mouse_drag_pointer = MOUSE_ACTIVE_POINTER	//???
 	var/rigged = 0
 
+/obj/structure/closet/crate/CanPass(atom/movable/AM, turf/T)
+	. = ..()
+	if(. || !istype(AM, /obj/item))
+		return
+	var/obj/item/I = AM
+	return I.throwing
+
 /obj/structure/closet/crate/can_open()
 	return 1
 
@@ -100,6 +107,10 @@
 			playsound(src.loc, W.usesound, 100, 1)
 			rigged = 0
 			return
+	else if(istype(W, /obj/item/extraction_pack))
+		src.close()
+		return
+
 	else return attack_hand(user)
 
 /obj/structure/closet/crate/ex_act(severity)
@@ -348,7 +359,6 @@
 	starts_with = list(
 		/obj/random/mre = 6)
 
-
 /obj/structure/closet/crate/bin
 	name = "large bin"
 	desc = "A large bin."
@@ -356,7 +366,6 @@
 	icon_state = "largebin"
 	icon_opened = "largebinopen"
 	icon_closed = "largebin"
-
 
 /obj/structure/closet/crate/radiation
 	name = "radioactive gear crate"
@@ -525,3 +534,15 @@
 	starts_with = list(
 		/obj/item/reagent_containers/spray/plantbgone = 2,
 		/obj/item/material/minihoe)
+
+/obj/structure/closet/crate/hydroponics/exotic
+	name = "exotic seeds crate"
+	desc = "All you need to destroy that pesky planet."
+
+	starts_with = list(
+		/obj/item/seeds/random = 6,
+		/obj/item/seeds/replicapod = 2,
+		/obj/item/seeds/ambrosiavulgarisseed = 2,
+		/obj/item/seeds/kudzuseed,
+		/obj/item/seeds/libertymycelium,
+		/obj/item/seeds/reishimycelium)

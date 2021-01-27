@@ -232,8 +232,8 @@
 	START_PROCESSING(SSobj, src)
 
 /obj/item/beacon_locator/Destroy()
-	return ..()
 	STOP_PROCESSING(SSobj, src)
+	return ..()
 
 /obj/item/beacon_locator/process()
 	if(target_radio)

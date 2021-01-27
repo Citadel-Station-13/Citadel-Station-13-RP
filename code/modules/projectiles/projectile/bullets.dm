@@ -75,12 +75,19 @@
 /obj/item/projectile/bullet/pistol/hp
 	damage = 25
 	armor_penetration = -50
-	
+
 /obj/item/projectile/bullet/pistol/hunter
 	damage = 15
 	SA_bonus_damage = 25 // 40 total against animals
-	SA_vulnerability = SA_ANIMAL
+	SA_vulnerability = MOB_CLASS_ANIMAL
 	embed_chance = -1
+
+/obj/item/projectile/bullet/pistol/silver
+	damage = 15
+	SA_bonus_damage = 25 // 40 total against demons
+	SA_vulnerability = MOB_CLASS_DEMONIC
+	embed_chance = -1
+	holy = TRUE
 
 /obj/item/projectile/bullet/pistol/medium // .45 (and maybe .40 if it ever gets added) caliber security pistols. Balance between capacity and power.
 	fire_sound = 'sound/weapons/gunshot3.ogg' // Snappier sound.
@@ -97,12 +104,40 @@
 /obj/item/projectile/bullet/pistol/medium/hunter
 	damage = 15
 	SA_bonus_damage = 45 // 60 total against animals
-	SA_vulnerability = SA_ANIMAL
+	SA_vulnerability = MOB_CLASS_ANIMAL
 	embed_chance = -1
+
+/obj/item/projectile/bullet/pistol/medium/silver
+	damage = 15
+	SA_bonus_damage = 45 // 60 total against demons
+	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
+	embed_chance = -1
+	holy = TRUE
+
+/obj/item/projectile/bullet/pistol/medium/ap/suppressor // adminspawn only
+	name = "suppressor bullet" // this guy is Important and also Hates You
+	fire_sound = 'sound/weapons/doompistol.ogg' // converted from .wavs extracted from doom 2
+	damage = 10 // high rof kinda fucked up lets be real
+	agony = 10 // brute easily heals, agony not so much
+	armor_penetration = 30 // reduces shield blockchance
+	accuracy = -20 // he do miss actually
+	speed = 0.4 // if the pathfinder gets a funny burst rifle, they deserve a rival
+	// that's 2x projectile speed btw
+
+/obj/item/projectile/bullet/pistol/medium/ap/suppressor/turbo // spicy boys
+	speed = 0.2 // this is 4x projectile speed
 
 /obj/item/projectile/bullet/pistol/strong // .357 and .44 caliber stuff. High power pistols like the Mateba or Desert Eagle. Sacrifice capacity for power.
 	fire_sound = 'sound/weapons/gunshot4.ogg'
 	damage = 60
+
+/obj/item/projectile/bullet/pistol/strong/silver //Because all Demons need to die
+	fire_sound = 'sound/weapons/gunshot4.ogg'
+	damage = 40
+	SA_bonus_damage = 80 // 120 total against demons
+	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
+	embed_chance = -1
+	holy = TRUE
 
 /obj/item/projectile/bullet/pistol/rubber/strong // "Rubber" bullets for high power pistols.
 	fire_sound = 'sound/weapons/gunshot3.ogg' // Rubber shots have less powder, but these still have more punch than normal rubber shot.
@@ -120,6 +155,13 @@
 	sharp = 0
 	check_armour = "melee"
 	fire_sound ='sound/weapons/Gunshot_pathetic.ogg' // Rubber shots have less powder in the casing.
+
+/obj/item/projectile/bullet/pistol/spin // Special weak ammo for Service Spin mode.
+	fire_sound = 'sound/weapons/gunshot2.ogg'
+	damage = 5
+	SA_bonus_damage = 10 // 15 total against demons
+	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
+	holy = TRUE
 
 /* shotgun projectiles */
 
@@ -152,6 +194,28 @@
 	range_step = 2
 	spread_step = 30
 	armor_penetration = 10
+
+// This is my boomstick,
+/obj/item/projectile/bullet/pellet/shotgun/silver
+	name = "shrapnel"
+	fire_sound = 'sound/weapons/Gunshot_shotgun.ogg'
+	damage = 10
+	SA_bonus_damage = 16 // Potential 156 Damage against demons at point blank.
+	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
+	embed_chance = -1
+	pellets = 6
+	range_step = 1
+	spread_step = 20
+	holy = TRUE
+
+/obj/item/projectile/bullet/shotgun/stake
+	name = "stake"
+	fire_sound = 'sound/weapons/Gunshot_shotgun.ogg'
+	damage = 50
+	armor_penetration = 15
+	SA_bonus_damage = 16 // Potential 156 Damage against demons at point blank.
+	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
+	holy = TRUE
 
 //EMP shotgun 'slug', it's basically a beanbag that pops a tiny emp when it hits. //Not currently used
 /obj/item/projectile/bullet/shotgun/ion
@@ -189,15 +253,36 @@
 	damage = 30
 	armor_penetration = 50 // At 30 or more armor, this will do more damage than standard rounds.
 
+/obj/item/projectile/bullet/rifle/a762/ap/silver
+	damage = 30
+	armor_penetration = 50 // At 30 or more armor, this will do more damage than standard rounds.
+	SA_bonus_damage = 30 // 60 total against demons
+	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
+	holy = TRUE
+
 /obj/item/projectile/bullet/rifle/a762/hp
 	damage = 40
 	armor_penetration = -50
 	penetrating = 0
 
 /obj/item/projectile/bullet/rifle/a762/hunter // Optimized for killing simple animals and not people, because Balance(tm)
+	damage = 25
+	SA_bonus_damage = 45 // 70 total on animals.
+	SA_vulnerability = MOB_CLASS_ANIMAL
+	embed_chance = -1
+
+/obj/item/projectile/bullet/rifle/a762/sniperhunter
+	damage = 25
+	SA_bonus_damage = 45 // 70 total on animals.
+	SA_vulnerability = MOB_CLASS_ANIMAL
+	embed_chance = -1
+	speed = 0.4
+
+/obj/item/projectile/bullet/rifle/a762/silver // Hunting Demons with bolt action rifles.
 	damage = 20
 	SA_bonus_damage = 50 // 70 total on animals.
-	SA_vulnerability = SA_ANIMAL
+	SA_vulnerability = MOB_CLASS_DEMONIC
+	holy = TRUE
 
 /obj/item/projectile/bullet/rifle/a545
 	fire_sound = 'sound/weapons/Gunshot_light.ogg'
@@ -215,7 +300,7 @@
 /obj/item/projectile/bullet/rifle/a545/hunter
 	damage = 15
 	SA_bonus_damage = 35 // 50 total on animals.
-	SA_vulnerability = SA_ANIMAL
+	SA_vulnerability = MOB_CLASS_ANIMAL
 
 /obj/item/projectile/bullet/rifle/a145 // 14.5×114mm is bigger than a .50 BMG round.
 	fire_sound = 'sound/weapons/Gunshot_cannon.ogg' // This is literally an anti-tank rifle caliber. It better sound like a fucking cannon.
@@ -248,6 +333,21 @@
 /obj/item/projectile/bullet/burstbullet/on_hit(var/atom/target, var/blocked = 0)
 	if(isturf(target))
 		explosion(target, -1, 0, 2)
+	..()
+
+/obj/item/projectile/bullet/burstbullet/service
+	name = "charge bullet"
+	fire_sound = 'sound/effects/Explosion1.ogg'
+	damage = 20
+	embed_chance = 0
+	edge = 1
+	SA_bonus_damage = 40 // 60 total damage against demons.
+	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
+	holy = TRUE
+
+/obj/item/projectile/bullet/burstbullet/service/on_hit(var/atom/target, var/blocked = 0)
+	if(isturf(target))
+		explosion(target, 0, 1, 2)
 	..()
 
 /* Incendiary */

@@ -138,9 +138,67 @@
 
 /obj/item/cane/whitecane
 	name = "white cane"
-	desc = "A cane used by the blind."
+	desc = "A white cane. They are commonly used by the blind or visually impaired as a mobility tool or as a courtesy to others."
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "whitecane"
+
+/obj/item/cane/whitecane/attack(mob/M as mob, mob/user as mob)
+    if(user.a_intent == INTENT_HELP)
+        user.visible_message("<span class='notice'>\The [user] has lightly tapped [M] on the ankle with their white cane!</span>")
+        return TRUE
+    else
+        . = ..()
+
+//Code for Telescopic White Cane writen by Gozulio
+
+/obj/item/cane/whitecane/collapsible
+	name = "telescopic white cane"
+	desc = "A telescopic white cane. They are commonly used by the blind or visually impaired as a mobility tool or as a courtesy to others."
+	icon_state = "whitecane1in"
+	item_icons = list(
+			slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
+			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
+		)
+	slot_flags = SLOT_BELT
+	w_class = ITEMSIZE_SMALL
+	force = 3
+	var/on = 0
+
+/obj/item/cane/whitecane/collapsible/attack_self(mob/user as mob)
+	on = !on
+	if(on)
+		user.visible_message("<span class='notice'>\The [user] extends the white cane.</span>",\
+				"<span class='warning'>You extend the white cane.</span>",\
+				"You hear an ominous click.")
+		icon_state = "whitecane1out"
+		item_state_slots = list(slot_r_hand_str = "whitecane", slot_l_hand_str = "whitecane")
+		w_class = ITEMSIZE_NORMAL
+		force = 5
+		attack_verb = list("smacked", "struck", "cracked", "beaten")
+	else
+		user.visible_message("<span class='notice'>\The [user] collapses the white cane.</span>",\
+		"<span class='notice'>You collapse the white cane.</span>",\
+		"You hear a click.")
+		icon_state = "whitecane1in"
+		item_state_slots = list(slot_r_hand_str = null, slot_l_hand_str = null)
+		w_class = ITEMSIZE_SMALL
+		force = 3
+		attack_verb = list("hit", "poked", "prodded")
+
+	if(istype(user,/mob/living/carbon/human))
+		var/mob/living/carbon/human/H = user
+		H.update_inv_l_hand()
+		H.update_inv_r_hand()
+
+	playsound(src, 'sound/weapons/empty.ogg', 50, 1)
+	add_fingerprint(user)
+	return TRUE
+
+/obj/item/cane/crutch
+	name ="crutch"
+	desc = "A long stick with a crosspiece at the top, used to help with walking."
+	icon_state = "crutch"
+	item_state = "crutch"
 
 /obj/item/disk
 	name = "disk"
@@ -384,7 +442,7 @@
 
 /obj/item/storage/part_replacer
 	name = "rapid part exchange device"
-	desc = "Special mechanical module made to store, sort, and apply standard machine parts."
+	desc = "A special mechanical module made to store, sort, and apply standard machine parts."
 	icon_state = "RPED"
 	w_class = ITEMSIZE_HUGE
 	can_hold = list(/obj/item/stock_parts)
@@ -396,10 +454,11 @@
 	display_contents_with_number = 1
 	max_w_class = ITEMSIZE_NORMAL
 	max_storage_space = 100
+	var/panel_req = TRUE
 
 /obj/item/storage/part_replacer/adv
 	name = "advanced rapid part exchange device"
-	desc = "Special mechanical module made to store, sort, and apply standard machine parts.  This one has a greatly upgraded storage capacity"
+	desc = "A special mechanical module made to store, sort, and apply standard machine parts.  This one has a greatly upgraded storage capacity"
 	icon_state = "RPED"
 	w_class = ITEMSIZE_HUGE
 	can_hold = list(/obj/item/stock_parts)
@@ -411,6 +470,31 @@
 	display_contents_with_number = 1
 	max_w_class = ITEMSIZE_NORMAL
 	max_storage_space = 400
+
+/obj/item/storage/part_replacer/adv/discount_bluespace
+	name = "discount bluespace rapid part exchange device"
+	desc = "A special mechanical module made to store, sort, and apply standard machine parts.  This one has a further increased storage capacity, \
+	and the ability to work on machines with closed maintenance panels."
+	storage_slots = 400
+	max_storage_space = 800
+	panel_req = FALSE
+
+/obj/item/storage/part_replacer/drop_contents() // hacky-feeling tier-based drop system
+	hide_from(usr)
+	var/turf/T = get_turf(src)
+	var/lowest_rating = INFINITY // We want the lowest-part tier rating in the RPED so we only drop the lowest-tier parts.
+	/*
+	* Why not just use the stock part's rating variable?
+	* Future-proofing for a potential future where stock parts aren't the only thing that can fit in an RPED.
+	* see: /tg/ and /vg/'s RPEDs fitting power cells, beakers, etc.
+	*/
+	for(var/obj/item/B in contents)
+		if(B.rped_rating() < lowest_rating)
+			lowest_rating = B.rped_rating()
+	for(var/obj/item/B in contents)
+		if(B.rped_rating() > lowest_rating)
+			continue
+		remove_from_storage(B, T)
 
 /obj/item/stock_parts
 	name = "stock part"
@@ -424,6 +508,9 @@
 	src.pixel_x = rand(-5.0, 5)
 	src.pixel_y = rand(-5.0, 5)
 	..()
+
+/obj/item/stock_parts/get_rating()
+	return rating
 
 //Rank 1
 

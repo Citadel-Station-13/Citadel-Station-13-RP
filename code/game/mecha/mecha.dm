@@ -32,6 +32,7 @@
 	var/health = 300 //health is health
 	var/maxhealth = 300 //maxhealth is maxhealth.
 	var/deflect_chance = 10 //chance to deflect the incoming projectiles, hits, or lesser the effect of ex_act.
+
 	//the values in this list show how much damage will pass through, not how much will be absorbed.
 	var/list/damage_absorption = list("brute"=0.8,"fire"=1.2,"bullet"=0.9,"laser"=1,"energy"=1,"bomb"=1)
 	var/obj/item/cell/cell
@@ -81,6 +82,7 @@
 	var/obj/item/mecha_parts/mecha_equipment/selected
 	var/max_equip = 2
 	var/datum/events/events
+
 //mechaequipt2 stuffs
 	var/list/hull_equipment = new
 	var/list/weapon_equipment = new
@@ -92,10 +94,60 @@
 	var/max_utility_equip = 2
 	var/max_universal_equip = 2
 	var/max_special_equip = 1
+
 //Working exosuit vars
 	var/list/cargo = list()
 	var/cargo_capacity = 3
 
+	var/datum/mini_hud/mech/minihud
+
+//Mech actions
+
+	var/strafing = 0 				//Are we strafing or not?
+
+	var/defence_mode_possible = 0 	//Can we even use defence mode? This is used to assign it to mechs and check for verbs.
+	var/defence_mode = 0 			//Are we in defence mode
+	var/defence_deflect = 35		//How much it deflect
+
+	var/overload_possible = 0 		//Same as above. Don't forget to GRANT the verb&actions if you want everything to work proper.
+	var/overload = 0 				//Are our legs overloaded
+	var/overload_coeff = 1			//How much extra energy you use when use the L E G
+
+	var/zoom = 0
+	var/zoom_possible = 0
+
+	var/thrusters = 0
+	var/thrusters_possible = 0
+
+	var/phasing = 0					//Are we currently phasing
+	var/phasing_possible = 0		//This is to allow phasing.
+	var/can_phase = TRUE			//This is an internal check during the relevant procs.
+	var/phasing_energy_drain = 200
+
+	var/switch_dmg_type_possible = 0	//Can you switch damage type? It is mostly for the Phazon and its children.
+
+	var/smoke_possible = 0
+	var/smoke_reserve = 5			//How many shots you have. Might make a reload later on. MIGHT.
+	var/smoke_ready = 1				//This is a check for the whether or not the cooldown is ongoing.
+	var/smoke_cooldown = 100		//How long you have between uses.
+	var/datum/effect_system/smoke_spread/smoke_system = new
+
+////All of those are for the HUD buttons in the top left. See Grant and Remove procs in mecha_actions.
+
+	var/datum/action/innate/mecha/mech_eject/eject_action = new
+//	var/datum/action/innate/mecha/mech_toggle_internals/internals_action = new
+	var/datum/action/innate/mecha/mech_toggle_lights/lights_action = new
+	var/datum/action/innate/mecha/mech_view_stats/stats_action = new
+	var/datum/action/innate/mecha/strafe/strafing_action = new
+
+	var/datum/action/innate/mecha/mech_defence_mode/defence_action = new
+	var/datum/action/innate/mecha/mech_overload_mode/overload_action = new
+	var/datum/action/innate/mecha/mech_smoke/smoke_action = new
+	var/datum/action/innate/mecha/mech_zoom/zoom_action = new
+	var/datum/action/innate/mecha/mech_toggle_thrusters/thrusters_action = new
+	var/datum/action/innate/mecha/mech_cycle_equip/cycle_action = new
+	var/datum/action/innate/mecha/mech_switch_damtype/switch_damtype_action = new
+	var/datum/action/innate/mecha/mech_toggle_phasing/phasing_action = new
 
 /obj/mecha/drain_power(var/drain_check)
 
@@ -117,8 +169,14 @@
 	if(!add_airtank()) //we check this here in case mecha does not have an internal tank available by default - WIP
 		removeVerb(/obj/mecha/verb/connect_to_port)
 		removeVerb(/obj/mecha/verb/toggle_internal_tank)
+
 	spark_system.set_up(2, 0, src)
 	spark_system.attach(src)
+
+	if(smoke_possible)//I am pretty sure that's needed here.
+		src.smoke_system.set_up(3, 0, src)
+		src.smoke_system.attach(src)
+
 	add_cell()
 	add_iterators()
 	removeVerb(/obj/mecha/verb/disconnect_from_port)
@@ -186,11 +244,16 @@
 	cell = null
 	internal_tank = null
 
+	if(smoke_possible)	//Just making sure nothing is running.
+		qdel(smoke_system)
+
 	QDEL_NULL(pr_int_temp_processor)
 	QDEL_NULL(pr_inertial_movement)
 	QDEL_NULL(pr_give_air)
 	QDEL_NULL(pr_internal_damage)
 	QDEL_NULL(spark_system)
+	QDEL_NULL(minihud)
+
 
 	mechas_list -= src //global mech list
 	. = ..()
@@ -274,11 +337,11 @@
 		if(65 to 85)
 			to_chat(user, "It's slightly damaged.")
 		if(45 to 65)
-			to_chat(user, "It's badly damaged.")
+			. += "<span class='notice'>It's badly damaged.</span>"
 		if(25 to 45)
-			to_chat(user, "It's heavily damaged.")
+			. += "<span class='warning'>It's heavily damaged.</span>"
 		else
-			to_chat(user, "It's falling apart.")
+			. += "<span class='warning'><b> It's falling apart.</b> </span>"
 	if(equipment && equipment.len)
 		to_chat(user, "It's equipped with:")
 		for(var/obj/item/mecha_parts/mecha_equipment/ME in equipment)
@@ -326,6 +389,11 @@
 	if(state)
 		occupant_message("<font color='red'>Maintenance protocols in effect</font>")
 		return
+
+	if(phasing)//Phazon and other mechs with phasing.
+		src.occupant_message("Unable to interact with objects while phasing")//Haha dumbass.
+		return
+
 	if(!get_charge()) return
 	if(src == target) return
 	var/dir_to_target = get_dir(src,target)
@@ -411,7 +479,15 @@
 	if(state)
 		occupant_message("<font color='red'>Maintenance protocols in effect</font>")
 		return
+/*
+	if(zoom)
+		if(world.time - last_message > 20)
+			src.occupant_message("Unable to move while in zoom mode.")
+			last_message = world.time
+		return 0
+*/
 	return domove(direction)
+
 
 /obj/mecha/proc/domove(direction)
 
@@ -424,11 +500,42 @@
 		return 0
 	if(!has_charge(step_energy_drain))
 		return 0
+
+	//Can we even move, below is if yes.
+
+	if(defence_mode)//Check if we are currently locked down
+		if(world.time - last_message > 20)
+			src.occupant_message("<font color='red'>Unable to move while in defence mode</font>")
+			last_message = world.time
+		return 0
+
+	if(zoom)//:eyes:
+		if(world.time - last_message > 20)
+			src.occupant_message("Unable to move while in zoom mode.")
+			last_message = world.time
+		return 0
+
+	if(!thrusters && src.pr_inertial_movement.active()) //I think this mean 'if you try to move in space without thruster, u no move'
+		return 0
+
+	if(overload)//Check if you have leg overload
+		health--
+		if(health < initial(health) - initial(health)/3)
+			overload = 0
+			step_in = initial(step_in)
+			step_energy_drain = initial(step_energy_drain)
+			src.occupant_message("<font color='red'>Leg actuators damage threshold exceded. Disabling overload.</font>")
+
 	var/move_result = 0
 	if(hasInternalDamage(MECHA_INT_CONTROL_LOST))
 		move_result = mechsteprand()
 	else if(src.dir!=direction)
-		move_result = mechturn(direction)
+	//Turning
+		if(strafing)
+			move_result = mechstep(direction)
+		else
+			move_result = mechturn(direction)
+
 	else
 		move_result	= mechstep(direction)
 	if(move_result)
@@ -456,11 +563,14 @@
 	return 1
 
 /obj/mecha/proc/mechstep(direction)
+	var/current_dir = dir	//For strafing
 	var/result = get_step(src,direction)
 	if(result && Move(result))
 		if(stomp_sound)
 			playsound(src,stomp_sound,40,1)
 		handle_equipment_movement()
+	if(strafing)	//Also for strafing
+		setDir(current_dir)
 	return result
 
 
@@ -474,20 +584,33 @@
 
 /obj/mecha/Bump(var/atom/obstacle)
 //	src.inertia_dir = null
-	if(istype(obstacle, /obj))
+	if(istype(obstacle, /mob))//First we check if it is a mob. Mechs mostly shouln't go through them, even while phasing.
+		var/mob/M = obstacle
+		M.Move(get_step(obstacle,src.dir))
+	else if(istype(obstacle, /obj))//Then we check for regular obstacles.
 		var/obj/O = obstacle
-		if(istype(O, /obj/effect/portal)) //derpfix
-			src.anchored = 0
+		if(phasing && get_charge()>=phasing_energy_drain)//Phazon check. This could use an improvement elsewhere.
+			spawn()
+				if(can_phase)
+					can_phase = FALSE
+					flick("[initial_icon]-phase", src)
+					src.loc = get_step(src,src.dir)
+					src.use_power(phasing_energy_drain)
+					sleep(step_in*3)
+					can_phase = TRUE
+					occupant_message("Phazed.")
+			. = ..(obstacle)
+			return
+		if(istype(O, /obj/effect/portal))	//derpfix
+			src.anchored = 0				//I have no idea what this really fix.
 			O.Crossed(src)
 			spawn(0)//countering portal teleport spawn(0), hurr
 				src.anchored = 1
-		else if(!O.anchored)
-			step(obstacle,src.dir)
-		else //I have no idea why I disabled this
+		else if(O.anchored)
 			obstacle.Bumped(src)
-	else if(istype(obstacle, /mob))
-		step(obstacle,src.dir)
-	else
+		else
+			step(obstacle,src.dir)
+	else//No idea when this triggers, so i won't touch it.
 		. = ..(obstacle)
 	return
 
@@ -1064,6 +1187,7 @@
 	set category = "Exosuit Interface"
 	set src = usr.loc
 	set popup_menu = 0
+
 	if(!src.occupant) return
 	if(usr!=src.occupant)
 		return
@@ -1101,6 +1225,9 @@
 	set category = "Exosuit Interface"
 	set src = usr.loc
 	set popup_menu = 0
+	lights()
+
+/obj/mecha/verb/lights()
 	if(usr!=occupant)	return
 	lights = !lights
 	if(lights)	set_light(light_range + lights_power)
@@ -1112,15 +1239,34 @@
 
 
 /obj/mecha/verb/toggle_internal_tank()
-	set name = "Toggle internal airtank usage."
+	set name = "Toggle internal airtank usage"
 	set category = "Exosuit Interface"
 	set src = usr.loc
 	set popup_menu = 0
+	internal_tank()
+
+/obj/mecha/proc/internal_tank()
 	if(usr!=src.occupant)
 		return
 	use_internal_tank = !use_internal_tank
 	src.occupant_message("Now taking air from [use_internal_tank?"internal airtank":"environment"].")
 	src.log_message("Now taking air from [use_internal_tank?"internal airtank":"environment"].")
+	playsound(src, 'sound/mecha/gasdisconnected.ogg', 30, 1)
+	return
+
+/obj/mecha/verb/toggle_strafing()
+	set name = "Toggle strafing"
+	set category = "Exosuit Interface"
+	set src = usr.loc
+	set popup_menu = 0
+	strafing()
+
+/obj/mecha/proc/strafing()
+	if(usr!=src.occupant)
+		return
+	strafing = !strafing
+	src.occupant_message("Toggled strafing mode [strafing?"on":"off"].")
+	src.log_message("Toggled strafing mode [strafing?"on":"off"].")
 	return
 
 
@@ -1185,6 +1331,8 @@
 	if(enter_after(40,usr))
 		if(!src.occupant)
 			moved_inside(usr)
+			if(ishuman(occupant)) //Aeiou
+				GrantActions(occupant, 1)
 		else if(src.occupant!=usr)
 			to_chat(usr,"[src.occupant] was faster. Try better next time, loser.")
 	else
@@ -1206,6 +1354,29 @@
 		src.verbs += /obj/mecha/verb/eject
 		src.log_append_to_last("[H] moved in as pilot.")
 		src.icon_state = src.reset_icon()
+		if(occupant.hud_used)
+			minihud = new (occupant.hud_used, src)
+
+//This part removes all the verbs if you don't have them the _possible on your mech. This is a little clunky, but it lets you just add that to any mech.
+//And it's not like this 10yo code wasn't clunky before.
+
+		if(!smoke_possible)			//Can't use smoke? No verb for you.
+			verbs -= /obj/mecha/verb/toggle_smoke
+		if(!thrusters_possible)		//Can't use thrusters? No verb for you.
+			verbs -= /obj/mecha/verb/toggle_thrusters
+		if(!defence_mode_possible)	//Do i need to explain everything?
+			verbs -= /obj/mecha/verb/toggle_defence_mode
+		if(!overload_possible)
+			verbs -= /obj/mecha/verb/toggle_overload
+		if(!zoom_possible)
+			verbs -= /obj/mecha/verb/toggle_zoom
+		if(!phasing_possible)
+			verbs -= /obj/mecha/verb/toggle_phasing
+		if(!switch_dmg_type_possible)
+			verbs -= /obj/mecha/verb/switch_damtype
+
+		occupant.in_enclosed_vehicle = 1	//Useful for when you need to know if someone is in a mecho.
+
 		setDir(dir_in)
 		playsound(src, 'sound/machines/windowdoor.ogg', 50, 1)
 		if(!hasInternalDamage()) //Otherwise it's not nominal!
@@ -1227,6 +1398,11 @@
 		return 1
 	else
 		return 0
+
+
+/obj/mecha/AltClick(mob/living/user)
+	if(user == occupant)
+		strafing()
 
 /obj/mecha/verb/view_stats()
 	set name = "View Stats"
@@ -1260,11 +1436,13 @@
 	return
 
 
-/obj/mecha/proc/go_out()
+/obj/mecha/proc/go_out() //Eject/Exit the Mech. Yes this is for easier searching.
 	if(!src.occupant) return
 	var/atom/movable/mob_container
+	QDEL_NULL(minihud)
 	if(ishuman(occupant))
 		mob_container = src.occupant
+		RemoveActions(occupant, human_occupant=1)//AEIOU
 	else if(istype(occupant, /mob/living/carbon/brain))
 		var/mob/living/carbon/brain/brain = occupant
 		mob_container = brain.container
@@ -1306,10 +1484,20 @@
 				occupant.loc = mmi
 			mmi.mecha = null
 			src.occupant.canmove = 0
+		src.occupant.in_enclosed_vehicle = 0
 		src.occupant = null
 		src.icon_state = src.reset_icon()+"-open"
 		src.setDir(dir_in)
 		src.verbs -= /obj/mecha/verb/eject
+
+		//src.zoom = 0
+
+		// Doesn't seem needed.
+		if(src.occupant && src.occupant.client)
+			src.occupant.client.view = world.view
+			src.zoom = 0
+
+		strafing = 0
 	return
 
 /////////////////////////
@@ -1438,7 +1626,16 @@
 						<b>Lights: </b>[lights?"on":"off"]<br>
 						[src.dna?"<b>DNA-locked:</b><br> <span style='font-size:10px;letter-spacing:-1px;'>[src.dna]</span> \[<a href='?src=\ref[src];reset_dna=1'>Reset</a>\]<br>":null]
 					"}
-//Cargo components.
+	if(defence_mode_possible)
+		output += "<b>Defence mode: [defence_mode?"on":"off"]</b><br>"
+	if(overload_possible)
+		output += "<b>Leg actuators overload: [overload?"on":"off"]</b><br>"
+	if(smoke_possible)
+		output += "<b>Smoke:</b> [smoke_reserve]<br>"
+	if(thrusters_possible)
+		output += "<b>Thrusters:</b> [thrusters?"on":"off"]<br>"
+
+//Cargo components. Keep this last otherwise it does weird alignment issues.
 	output += "<b>Cargo Compartment Contents:</b><div style=\"margin-left: 15px;\">"
 	if(src.cargo.len)
 		for(var/obj/O in src.cargo)
@@ -1634,12 +1831,31 @@
 		return
 	if(href_list["toggle_lights"])
 		if(usr != src.occupant)	return
-		src.toggle_lights()
+		src.lights()
 		return
+/*
+	if(href_list["toggle_strafing"])
+		if(usr != src.occupant)	return
+		src.strafing()
+		return*/
+
 	if(href_list["toggle_airtank"])
 		if(usr != src.occupant)	return
-		src.toggle_internal_tank()
+		src.internal_tank()
 		return
+	if (href_list["toggle_thrusters"])
+		src.toggle_thrusters()
+	if (href_list["smoke"])
+		src.smoke()
+	if (href_list["toggle_zoom"])
+		src.zoom()
+	if(href_list["toggle_defence_mode"])
+		src.defence_mode()
+	if(href_list["switch_damtype"])
+		src.switch_damtype()
+	if(href_list["phasing"])
+		src.phasing()
+
 	if(href_list["rmictoggle"])
 		if(usr != src.occupant)	return
 		radio.broadcasting = !radio.broadcasting
@@ -1853,9 +2069,9 @@
 			else
 				AI.icon_state = "ai-crash"
 			src.occupant = cur_occupant
-*/
-	return
 
+	return
+*/
 ///////////////////////
 ///// Power stuff /////
 ///////////////////////

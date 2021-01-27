@@ -43,6 +43,10 @@ datum/preferences
 	var/r_hair = 0						//Hair color
 	var/g_hair = 0						//Hair color
 	var/b_hair = 0						//Hair color
+	var/grad_style = "None"				//Gradient style
+	var/r_grad = 0						//Gradient color
+	var/g_grad = 0						//Gradient color
+	var/b_grad = 0						//Gradient color
 	var/f_style = "Shaved"				//Face hair type
 	var/r_facial = 0					//Face hair color
 	var/g_facial = 0					//Face hair color
@@ -139,6 +143,9 @@ datum/preferences
 	var/datum/browser/panel
 
 	var/lastnews // Hash of last seen lobby news content.
+
+	var/show_in_directory = 1	//TFF 5/8/19 - show in Character Directory
+	var/sensorpref = 5			//TFF 5/8/19 - set character's suit sensor level
 
 /datum/preferences/New(client/C)
 	player_setup = new(src)
@@ -376,3 +383,35 @@ datum/preferences
 	panel = new(user, "Character Slots", "Character Slots", 300, 390, src)
 	panel.set_content(dat)
 	panel.open()
+
+//Vore noises.
+/client/verb/toggle_eating_noises()
+	set name = "Eating Noises"
+	set category = "Vore"
+	set desc = "Toggles Vore Eating noises."
+
+	var/pref_path = /datum/client_preference/eating_noises
+
+	toggle_preference(pref_path)
+
+	to_chat(src, "You will [ (is_preference_enabled(pref_path)) ? "now" : "no longer"] hear eating related vore noises.")
+
+	SScharacter_setup.queue_preferences_save(prefs)
+
+	feedback_add_details("admin_verb","TEatNoise") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+
+/client/verb/toggle_digestion_noises()
+	set name = "Digestion Noises"
+	set category = "Vore"
+	set desc = "Toggles Vore Digestion noises."
+
+	var/pref_path = /datum/client_preference/digestion_noises
+
+	toggle_preference(pref_path)
+
+	to_chat(src, "You will [ (is_preference_enabled(pref_path)) ? "now" : "no longer"] hear digestion related vore noises.")
+
+	SScharacter_setup.queue_preferences_save(prefs)
+
+	feedback_add_details("admin_verb","TDigestNoise") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

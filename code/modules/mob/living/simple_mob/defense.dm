@@ -227,9 +227,22 @@
 			visible_message(span("critical", "\The [src] flashes into ash as the lava consumes them!"))
 			ash()
 
+//Acid
+/mob/living/simple_mob/acid_act()
+	..()
+	// If a non-player simple_mob was submerged, inflict huge damage.
+	// If the damage is fatal, it is turned to gibs.
+	if(!client)
+		inflict_heat_damage(30)
+		inflict_poison_damage(10)
+		updatehealth()
+		if(health <= 0)
+			visible_message(span("critical", "\The [src] melts into slurry!"))
+			gib()
+			return // No point deafening something that wont exist.
+
 // Injections.
 /mob/living/simple_mob/can_inject(mob/user, error_msg, target_zone, ignore_thickness)
 	if(ignore_thickness)
 		return TRUE
 	return !thick_armor
-

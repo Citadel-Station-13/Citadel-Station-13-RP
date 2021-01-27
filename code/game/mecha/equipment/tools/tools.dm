@@ -127,7 +127,7 @@
 	name = "drill"
 	desc = "This is the drill that'll pierce the heavens! (Can be attached to: Combat and Engineering Exosuits)"
 	icon_state = "mecha_drill"
-	equip_cooldown = 30
+	equip_cooldown = 13
 	energy_drain = 10
 	force = 15
 	required_type = list(/obj/mecha/working/ripley, /obj/mecha/combat)
@@ -177,7 +177,7 @@
 	desc = "This is an upgraded version of the drill that'll pierce the heavens! (Can be attached to: Combat and Engineering Exosuits)"
 	icon_state = "mecha_diamond_drill"
 	origin_tech = list(TECH_MATERIAL = 4, TECH_ENGINEERING = 3)
-	equip_cooldown = 10
+	equip_cooldown = 2
 	force = 15
 
 /obj/item/mecha_parts/mecha_equipment/tool/drill/diamonddrill/action(atom/target)
@@ -1016,7 +1016,6 @@
 	return
 
 /obj/item/mecha_parts/mecha_equipment/combat_shield/proc/toggle_shield()
-	..()
 	if(chassis)
 		my_shield.attack_self(chassis.occupant)
 		if(my_shield.active)
@@ -1528,9 +1527,9 @@
 /obj/item/mecha_parts/mecha_equipment/speedboost/attach(obj/mecha/M as obj)
 	..()
 	if(enable_special)
-		chassis.step_in = (chassis.step_in-2) // Make the ripley as fast as a durand
+		chassis.step_in = 3 // As fast as a gygax without overload. Slower than Ody.
 	else
-		chassis.step_in = (chassis.step_in+1) // Improper parts slow the mech down
+		chassis.step_in = 6 // Improper parts slow the mech down
 	return
 
 /obj/item/mecha_parts/mecha_equipment/speedboost/detach()

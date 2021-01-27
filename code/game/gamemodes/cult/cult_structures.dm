@@ -158,11 +158,3 @@
 		var/t = pick(spawnable)
 		new t(src.loc)
 		qdel(src)
-
-/obj/effect/gateway/active/Crossed(var/atom/A)
-	if(!istype(A, /mob/living))
-		return
-
-	var/mob/living/M = A
-
-	to_chat(M, "<span class='danger'>Walking into \the [src] is probably a bad idea, you think.</span>")

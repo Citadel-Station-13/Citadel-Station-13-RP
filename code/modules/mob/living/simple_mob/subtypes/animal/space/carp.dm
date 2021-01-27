@@ -87,6 +87,8 @@
 
 	pixel_x = -16
 	default_pixel_x = -16
+	icon_expected_width = 64
+	icon_expected_height = 32
 
 	meat_amount = 5
 
@@ -108,6 +110,8 @@
 
 	pixel_y = -16
 	default_pixel_y = -16
+	icon_expected_width = 64
+	icon_expected_height = 64
 
 	meat_amount = 10
 
@@ -117,9 +121,9 @@
 	desc = "An obviously holographic, but still ferocious looking carp."
 	// Might be worth using a filter similar to AI holograms in the future.
 	icon = 'icons/mob/AI.dmi'
-	icon_state = "holo4"
-	icon_living = "holo4"
-	icon_dead = "holo4"
+	icon_state = "holo-carp"
+	icon_living = "holo-carp"
+	icon_dead = "holo-carp"
 	alpha = 127
 	icon_gib = null
 	meat_amount = 0

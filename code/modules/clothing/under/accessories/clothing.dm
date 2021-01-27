@@ -235,6 +235,18 @@
 	icon_state = "cloak"
 	item_state = "cloak"
 
+/obj/item/clothing/accessory/poncho/roles/cloak/glowing
+	name = "glowing cloak"
+	desc = "A fancy cloak with a RGB LED color strip along the trim, cycling through the colors of the rainbow."
+	icon_state = "cloakglowing"
+	item_state = "cloakglowing"
+
+/obj/item/clothing/accessory/poncho/roles/cloak/glowingdark
+	name = "dark glowing cloak"
+	desc = "A fancy, dark cloak with a RGB LED color strip along the trim, cycling through the colors of the rainbow."
+	icon_state = "cloakglowingdark"
+	item_state = "cloakglowingdark"
+
 /obj/item/clothing/accessory/hawaii
 	name = "flower-pattern shirt"
 	desc = "You probably need some welder googles to look at this."
@@ -320,6 +332,22 @@
 	siemens_coefficient = 0.9
 	w_class = ITEMSIZE_NORMAL
 	slot = ACCESSORY_SLOT_OVER
+
+	sprite_sheets = list(
+		"Teshari" = 'icons/mob/species/teshari/ties.dmi'
+		)
+
+/obj/item/clothing/accessory/sweater/equipped() // Solution for race-specific sprites for an accessory which is also a suit. Suit icons break if you don't use icon override which then also overrides race-specific sprites.
+	..()
+	var/mob/living/carbon/human/H = loc
+	if(istype(H) && H.wear_suit == src)
+		if(H.species.name == "Teshari")
+			icon_override = 'icons/mob/species/teshari/ties.dmi'
+		else if(H.species.name == "Vox")
+			icon_override = 'icons/mob/species/vox/ties.dmi'
+		else
+			icon_override = 'icons/mob/ties.dmi'
+		update_clothing_icon()
 
 /obj/item/clothing/accessory/sweater/pink
 	name = "pink sweater"

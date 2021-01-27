@@ -21,7 +21,10 @@
 					"Basic" = "secborg",
 					"Black Knight" = "securityrobot",
 					"Drone" = "drone-sec",
-					"Insekt" = "insekt-Sec"
+					"Insekt" = "insekt-Sec",
+					"Misato" = "tall2security",
+					"L3P1-D0T" = "Glitterfly-Security",
+					"Miss M" = "miss-security"
 					)
 
 /obj/item/robot_module/robot/security/general/New()
@@ -76,7 +79,8 @@
 					"K9 hound" = "k9",
 					"K9 Alternative" = "k92",
 					"Secborg model V-2" = "secborg",
-					"Borgi" = "borgi-sec"
+					"Borgi" = "borgi-sec",
+					"Otieborg" = "oties"
 					)
 	channels = list("Security" = 1)
 	networks = list(NETWORK_SECURITY)

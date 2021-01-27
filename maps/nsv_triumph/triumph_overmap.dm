@@ -12,14 +12,15 @@
 	burn_delay = 2 SECONDS
 	fore_dir = EAST	// Which direction the ship/z-level is facing.  It will move dust particles from that direction when moving.
 	base = TRUE		// Honestly unsure what this does but it seems the main sector or "Map" we're at has this so here it stays
-	start_x = 4
-	start_y = 5
 	// The waypoints that are avaliable once you are at this Navpoint
-	initial_generic_waypoints = list("nav_capitalship_docking2", "triumph_excursion_hangar", "triumph_space_SW")
+	initial_generic_waypoints = list("nav_capitalship_docking2", "triumph_excursion_hangar", "triumph_space_SW", "triumph_mining_port")
 
 	initial_restricted_waypoints = list(
 		"Excursion Shuttle" = list("triumph_excursion_hangar"),
-		"Civilian Transport" = list("triumph_civvie_home")
+		"Civilian Transport" = list("triumph_civvie_home"),
+		"Dart EMT Shuttle" = list("triumph_emt_dock"),
+		"Beruang Trade Ship" = list("triumph_annex_dock"),
+		"Mining Shuttle" = list("triumph_mining_port")
 		)
 
 // EXCURSION SHUTTLE DATA
@@ -81,6 +82,37 @@
 	name = "short jump raiding console"
 	shuttle_tag = "Pirate Skiff"
 */
+
+// Mining Shuttle
+
+/obj/effect/overmap/visitable/ship/landable/mining
+	name = "Mining Shuttle"
+	desc = "It ain't much, but it's honest work."
+	fore_dir = WEST
+	vessel_mass = 7000
+	vessel_size = SHIP_SIZE_SMALL
+	shuttle = "Mining Shuttle"
+
+// Trade Shuttle
+
+/obj/effect/overmap/visitable/ship/landable/trade
+	name = "Beruang Trade Ship"
+	desc = "You know our motto: 'We deliver!'"
+	fore_dir = WEST
+	vessel_mass = 25000
+	vessel_size = SHIP_SIZE_SMALL
+	shuttle = "Beruang Trade Ship"
+
+//EMT Shuttle
+
+/obj/effect/overmap/visitable/ship/landable/emt
+	name = "Dart EMT Shuttle"
+	desc = "The budget didn't allow for flashing lights."
+	fore_dir = EAST
+	vessel_mass = 9000
+	vessel_size = SHIP_SIZE_SMALL
+	shuttle = "Dart EMT Shuttle"
+
 // STATIC PLANET/BASE LOCATIONS
 
 // -- Datums -- //
@@ -92,8 +124,6 @@
 	color = "#BBBBBB"
 	known = FALSE
 	in_space = 1
-	start_x = 18
-	start_y = 23
 	initial_generic_waypoints = list("triumph_excursion_debrisfield")
 
 
@@ -102,9 +132,8 @@
 	desc = "ASdlke ERROR%%%% UNABLE TO----."
 	scanner_desc = @{"[i]Information[/i]: Scans report a planet with nearly no atmosphere, but life-signs are registered."}
 	in_space = 0
-	start_x = 17
-	start_y = 43
 	icon_state = "globe"
+	known = FALSE
 	color = "#882933"
 
 /obj/effect/overmap/visitable/sector/class_h
@@ -115,9 +144,8 @@ Atmosphere: Thin
 Weather: Sunny, little to no wind
 Lifesign: Multiple Fauna and humanoid life-signs detected."}
 	in_space = 0
-	start_x = 38
-	start_y = 7
 	icon_state = "globe"
+	known = FALSE
 	color = "#BA9066"
 
 
@@ -127,8 +155,6 @@ Lifesign: Multiple Fauna and humanoid life-signs detected."}
 	scanner_desc = @{"[i]Information[/i]
 Warning, unable to scan through sensor shielding systems at location. Possible heavy hostile life-signs."}
 	in_space = 1
-	start_x = 52
-	start_y = 56
 	known = FALSE
 	icon_state = "piratebase"
 	color = "#FF3333"
@@ -141,8 +167,6 @@ Warning, unable to scan through sensor shielding systems at location. Possible h
 Atmopshere: Mix of Oxygen, Nitrogen and Phoron. DANGER
 Lifesigns: No immediate life-signs detected."}
 	in_space = 0
-	start_x = 10
-	start_y = 19
 	icon_state = "globe"
 	color = "#8F6E4C"
 	initial_generic_waypoints = list("mining_outpost")
@@ -163,7 +187,35 @@ Lifesign: Multiple Fauna. No history of hostile life recorded
 Ownership: Planet is owned by the Happy Days and Sunshine Corporation.
 Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 	in_space = 0
-	start_x = 53
-	start_y = 11
 	icon_state = "globe"
+	known = FALSE
 	color = "#33BB33"
+
+/obj/effect/overmap/visitable/sector/frozen_planet
+	name = "Frozen Planet"
+	desc = "A world shrouded in cold and snow that seems to never let up."
+	scanner_desc = @{"[i]Information[/i]: A planet with a very cold atmosphere. Possible life signs detected."}
+	icon_state = "globe"
+	color = "#3434AA"
+	known = FALSE
+	in_space = 0
+
+/obj/effect/overmap/visitable/sector/trade_post
+	name = "Nebula Gas Food Mart"
+	desc = "A ubiquitous chain of traders common in this area of the Galaxy."
+	scanner_desc = @{"[i]Information[/i]: A trade post and fuel depot. Possible life signs detected."}
+	in_space = 1
+	known = FALSE
+	icon_state = "fueldepot"
+	color = "#8F6E4C"
+
+	initial_generic_waypoints = list("nebula_space_SW")
+
+	initial_restricted_waypoints = list(
+		"Beruang Trade Ship" = list("tradeport_hangar"),
+		"Mining Shuttle" = list("nebula_pad_2"),
+		"Excursion Shuttle" = list("nebula_pad_3"),
+		"Pirate Skiff" = list("nebula_pad_4"),
+		"Dart EMT Shuttle" = list("nebula_pad_5"),
+		"Civilian Transport" = list("nebula_pad_6")
+		)

@@ -58,7 +58,7 @@
 			updateUsrDialog()
 	else if(processing)
 		to_chat(user, "<span class='notice'>\The [src] is currently processing.</span>")
-	else if(istype(O, /obj/item/storage/bag/plants))
+	else if(istype(O, /obj/item/storage/bag))
 		var/i = 0
 		for(var/obj/item/reagent_containers/food/snacks/grown/G in contents)
 			i++
@@ -249,7 +249,7 @@
 		if("workboots")
 			new/obj/item/clothing/shoes/boots/workboots(loc)
 		if("leathershoes")
-			new/obj/item/clothing/shoes/leather(loc)
+			new/obj/item/clothing/shoes/laceup/brown(loc)
 		if("leatherchaps")
 			new/obj/item/clothing/under/pants/chaps
 		if("leathercoat")

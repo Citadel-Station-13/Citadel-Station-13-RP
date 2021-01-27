@@ -332,6 +332,15 @@ default behaviour is:
 		if(!isnull(M.disable_duration_percent))
 			amount = round(amount * M.disable_duration_percent)
 	..(amount)
+	if(stunned > 0)
+		add_status_indicator("stunned")
+
+/mob/living/SetStunned(amount)
+	..()
+	if(stunned <= 0)
+		remove_status_indicator("stunned")
+	else
+		add_status_indicator("stunned")
 
 /mob/living/AdjustStunned(amount)
 	if(amount > 0)
@@ -339,12 +348,25 @@ default behaviour is:
 			if(!isnull(M.disable_duration_percent))
 				amount = round(amount * M.disable_duration_percent)
 	..(amount)
+	if(stunned <= 0)
+		remove_status_indicator("stunned")
+	else
+		add_status_indicator("stunned")
 
 /mob/living/Weaken(amount)
 	for(var/datum/modifier/M in modifiers)
 		if(!isnull(M.disable_duration_percent))
 			amount = round(amount * M.disable_duration_percent)
 	..(amount)
+	if(weakened > 0)
+		add_status_indicator("weakened")
+
+/mob/living/SetWeakened(amount)
+	..()
+	if(weakened <= 0)
+		remove_status_indicator("weakened")
+	else
+		add_status_indicator("weakened")
 
 /mob/living/AdjustWeakened(amount)
 	if(amount > 0)
@@ -352,12 +374,25 @@ default behaviour is:
 			if(!isnull(M.disable_duration_percent))
 				amount = round(amount * M.disable_duration_percent)
 	..(amount)
+	if(weakened <= 0)
+		remove_status_indicator("weakened")
+	else
+		add_status_indicator("weakened")
 
 /mob/living/Paralyse(amount)
 	for(var/datum/modifier/M in modifiers)
 		if(!isnull(M.disable_duration_percent))
 			amount = round(amount * M.disable_duration_percent)
 	..(amount)
+	if(paralysis > 0)
+		add_status_indicator("paralysis")
+
+/mob/living/SetParalysis(amount)
+	..()
+	if(paralysis <= 0)
+		remove_status_indicator("paralysis")
+	else
+		add_status_indicator("paralysis")
 
 /mob/living/AdjustParalysis(amount)
 	if(amount > 0)
@@ -365,12 +400,25 @@ default behaviour is:
 			if(!isnull(M.disable_duration_percent))
 				amount = round(amount * M.disable_duration_percent)
 	..(amount)
+	if(paralysis <= 0)
+		remove_status_indicator("paralysis")
+	else
+		add_status_indicator("paralysis")
 
 /mob/living/Sleeping(amount)
 	for(var/datum/modifier/M in modifiers)
 		if(!isnull(M.disable_duration_percent))
 			amount = round(amount * M.disable_duration_percent)
 	..(amount)
+	if(sleeping > 0)
+		add_status_indicator("sleeping")
+
+/mob/living/SetSleeping(amount)
+	..()
+	if(sleeping <= 0)
+		remove_status_indicator("sleeping")
+	else
+		add_status_indicator("sleeping")
 
 /mob/living/AdjustSleeping(amount)
 	if(amount > 0)
@@ -378,12 +426,25 @@ default behaviour is:
 			if(!isnull(M.disable_duration_percent))
 				amount = round(amount * M.disable_duration_percent)
 	..(amount)
+	if(sleeping <= 0)
+		remove_status_indicator("sleeping")
+	else
+		add_status_indicator("sleeping")
 
 /mob/living/Confuse(amount)
 	for(var/datum/modifier/M in modifiers)
 		if(!isnull(M.disable_duration_percent))
 			amount = round(amount * M.disable_duration_percent)
 	..(amount)
+	if(confused > 0)
+		add_status_indicator("confused")
+
+/mob/living/SetConfused(amount)
+	..()
+	if(confused <= 0)
+		remove_status_indicator("confused")
+	else
+		add_status_indicator("confused")
 
 /mob/living/AdjustConfused(amount)
 	if(amount > 0)
@@ -391,12 +452,25 @@ default behaviour is:
 			if(!isnull(M.disable_duration_percent))
 				amount = round(amount * M.disable_duration_percent)
 	..(amount)
+	if(confused <= 0)
+		remove_status_indicator("confused")
+	else
+		add_status_indicator("confused")
 
 /mob/living/Blind(amount)
 	for(var/datum/modifier/M in modifiers)
 		if(!isnull(M.disable_duration_percent))
 			amount = round(amount * M.disable_duration_percent)
 	..(amount)
+	if(eye_blind > 0)
+		add_status_indicator("blinded")
+
+/mob/living/SetBlinded(amount)
+	..()
+	if(eye_blind <= 0)
+		remove_status_indicator("blinded")
+	else
+		add_status_indicator("blinded")
 
 /mob/living/AdjustBlinded(amount)
 	if(amount > 0)
@@ -404,6 +478,10 @@ default behaviour is:
 			if(!isnull(M.disable_duration_percent))
 				amount = round(amount * M.disable_duration_percent)
 	..(amount)
+	if(eye_blind <= 0)
+		remove_status_indicator("blinded")
+	else
+		add_status_indicator("blinded")
 
 // ++++ROCKDTBEN++++ MOB PROCS //END
 
@@ -887,6 +965,12 @@ default behaviour is:
 /mob/living/proc/update_water() // Involves overlays for humans.  Maybe we'll get submerged sprites for borgs in the future?
 	return
 
+/mob/living/proc/update_acidsub()
+	return
+
+/mob/living/proc/update_bloodsub()
+	return
+
 /mob/living/proc/can_feel_pain(var/check_organ)
 	if(isSynthetic())
 		return FALSE
@@ -904,22 +988,29 @@ default behaviour is:
 /mob/living/proc/is_sentient()
 	return TRUE
 
+/mob/living/get_icon_scale_x()
+	. = ..()
+	for(var/datum/modifier/M in modifiers)
+		if(!isnull(M.icon_scale_x_percent))
+			. *= M.icon_scale_x_percent
+
+/mob/living/get_icon_scale_y()
+	. = ..()
+	for(var/datum/modifier/M in modifiers)
+		if(!isnull(M.icon_scale_y_percent))
+			. *= M.icon_scale_y_percent
 
 /mob/living/update_transform()
 	// First, get the correct size.
-	var/desired_scale_x = size_multiplier //VOREStation edit
-	var/desired_scale_y = size_multiplier //VOREStation edit
-	for(var/datum/modifier/M in modifiers)
-		if(!isnull(M.icon_scale_x_percent))
-			desired_scale_x *= M.icon_scale_x_percent
-		if(!isnull(M.icon_scale_y_percent))
-			desired_scale_y *= M.icon_scale_y_percent
+	var/desired_scale_x = get_icon_scale_x()
+	var/desired_scale_y = get_icon_scale_y()
 
 	// Now for the regular stuff.
 	var/matrix/M = matrix()
 	M.Scale(desired_scale_x, desired_scale_y)
 	M.Translate(0, 16*(desired_scale_y-1))
 	//animate(src, transform = M, time = 10) //VOREStation edit
+	handle_status_indicators()
 
 // This handles setting the client's color variable, which makes everything look a specific color.
 // This proc is here so it can be called without needing to check if the client exists, or if the client relogs.
@@ -1106,3 +1197,11 @@ default behaviour is:
   */
 /mob/living/proc/get_standard_pixel_y_offset(lying = 0)
 	return default_pixel_y
+
+//Adds the anti-magic check back in.
+/mob/living/proc/anti_magic_check(magic = TRUE, holy = FALSE, chargecost = 1, self = FALSE)
+	. = ..()
+	if(.)
+		return
+	if((magic && HAS_TRAIT(src, TRAIT_ANTIMAGIC)) || (holy && HAS_TRAIT(src, TRAIT_HOLY)))
+		return src

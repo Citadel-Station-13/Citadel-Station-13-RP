@@ -19,11 +19,14 @@
 #define Z_LEVEL_UNKNOWN_PLANET			11
 #define Z_LEVEL_DESERT_PLANET			12
 #define Z_LEVEL_GAIA_PLANET				13
+#define Z_LEVEL_FROZEN_PLANET			14
 
-#define Z_LEVEL_ROGUEMINE_1				14
-#define Z_LEVEL_ROGUEMINE_2				15
-#define Z_LEVEL_ROGUEMINE_3				16
-#define Z_LEVEL_ROGUEMINE_4				17
+#define Z_LEVEL_ROGUEMINE_1				15
+#define Z_LEVEL_ROGUEMINE_2				16
+#define Z_LEVEL_ROGUEMINE_3				17
+#define Z_LEVEL_ROGUEMINE_4				18
+
+#define Z_LEVEL_TRADEPORT				19
 
 // Camera Networks
 #define NETWORK_TRIUMPH "Triumph"
@@ -158,7 +161,9 @@
 		list("ExoPlanet - Z1 Planet"), // Rogue Exoplanet
 		list("ExoPlanet - Z2 Planet"), // Desert Exoplanet
 		list("Gaia Planet - Z3 Planet"), // Gaia Planet
-		list("Asteroid Belt 1","Asteroid Belt 2","Asteroid Belt 3","Asteroid Belt 4")
+		list("Forzen Planet - Z4 Planet"), // Frozen Planet
+		list("Asteroid Belt 1","Asteroid Belt 2","Asteroid Belt 3","Asteroid Belt 4"),
+		list("Away Mission - Trade Port") // Trading Post
 	)
 
 	ai_shell_restricted = TRUE
@@ -172,7 +177,9 @@
 		Z_LEVEL_MININGPLANET,
 		Z_LEVEL_UNKNOWN_PLANET,
 		Z_LEVEL_DESERT_PLANET,
-		Z_LEVEL_GAIA_PLANET)
+		Z_LEVEL_GAIA_PLANET,
+		Z_LEVEL_FROZEN_PLANET,
+		Z_LEVEL_TRADEPORT)
 
 	lateload_single_pick = null //Nothing right now.
 
@@ -180,7 +187,7 @@
 	return 1
 
 /datum/skybox_settings/triumph
-	icon_state = "space3"
+	icon_state = "space2"
 	use_stars = FALSE
 
 // Short range computers see only the main levels, others can see the surrounding surface levels.

@@ -218,7 +218,7 @@
 				break
 
 	if((equip_preview_mob & EQUIP_PREVIEW_LOADOUT) && !(previewJob && (equip_preview_mob & EQUIP_PREVIEW_JOB) && (previewJob.type == /datum/job/ai || previewJob.type == /datum/job/cyborg)))
-		var/list/equipped_slots = list() //If more than one item takes the same slot only spawn the first
+		var/list/equipped_slots = list()
 		for(var/thing in gear)
 			var/datum/gear/G = gear_datums[thing]
 			if(G)
@@ -241,7 +241,8 @@
 				if(G.slot && !(G.slot in equipped_slots))
 					var/metadata = gear[G.display_name]
 					if(mannequin.equip_to_slot_or_del(G.spawn_item(mannequin, metadata), G.slot))
-						equipped_slots += G.slot
+						if(G.slot != slot_tie)
+							equipped_slots += G.slot
 
 	if((equip_preview_mob & EQUIP_PREVIEW_JOB) && previewJob)
 		mannequin.job = previewJob.title
@@ -266,3 +267,60 @@
 	preview_icon.Blend(stamp, ICON_OVERLAY, 49, 1)
 
 	preview_icon.Scale(preview_icon.Width() * 2, preview_icon.Height() * 2) // Scaling here to prevent blurring in the browser.
+
+//Taur support & sensor setting in prefs.
+/datum/preferences/update_preview_icon() // Lines up and un-overlaps character edit previews. Also un-splits taurs.
+	var/mob/living/carbon/human/dummy/mannequin/mannequin = get_mannequin(client_ckey)
+	mannequin.delete_inventory(TRUE)
+	dress_preview_mob(mannequin)
+	COMPILE_OVERLAYS(mannequin)
+
+	preview_icon = icon('icons/effects/128x72_vr.dmi', bgstate)
+	preview_icon.Scale(128, 72)
+
+	mannequin.dir = NORTH
+	var/icon/stamp = getFlatIcon(mannequin)
+	stamp.Scale(stamp.Width()*size_multiplier,stamp.Height()*size_multiplier)
+	preview_icon.Blend(stamp, ICON_OVERLAY, 64-stamp.Width()/2, 5)
+
+	mannequin.dir = WEST
+	stamp = getFlatIcon(mannequin)
+	stamp.Scale(stamp.Width()*size_multiplier,stamp.Height()*size_multiplier)
+	preview_icon.Blend(stamp, ICON_OVERLAY, 16-stamp.Width()/2, 5)
+
+	mannequin.dir = SOUTH
+	stamp = getFlatIcon(mannequin)
+	stamp.Scale(stamp.Width()*size_multiplier,stamp.Height()*size_multiplier)
+	preview_icon.Blend(stamp, ICON_OVERLAY, 112-stamp.Width()/2, 5)
+
+	preview_icon.Scale(preview_icon.Width() * 2, preview_icon.Height() * 2) // Scaling here to prevent blurring in the browser.
+
+//TFF 5/8/19 - add randomised sensor setting for random button clicking
+/datum/preferences/randomize_appearance_and_body_for(var/mob/living/carbon/human/H)
+	sensorpref = rand(1,5)
+
+/datum/preferences/proc/get_valid_hairstyles()
+	var/list/valid_hairstyles = list()
+	for(var/hairstyle in hair_styles_list)
+		var/datum/sprite_accessory/S = hair_styles_list[hairstyle]
+		if(!(species in S.species_allowed) && (!custom_base || !(custom_base in S.species_allowed))) //Custom species base species allowance
+			continue
+
+		valid_hairstyles[hairstyle] = hair_styles_list[hairstyle]
+
+	return valid_hairstyles
+
+/datum/preferences/proc/get_valid_facialhairstyles()
+	var/list/valid_facialhairstyles = list()
+	for(var/facialhairstyle in facial_hair_styles_list)
+		var/datum/sprite_accessory/S = facial_hair_styles_list[facialhairstyle]
+		if(biological_gender == MALE && S.gender == FEMALE)
+			continue
+		if(biological_gender == FEMALE && S.gender == MALE)
+			continue
+		if(!(species in S.species_allowed) && (!custom_base || !(custom_base in S.species_allowed))) //Custom species base species allowance
+			continue
+
+		valid_facialhairstyles[facialhairstyle] = facial_hair_styles_list[facialhairstyle]
+
+	return valid_facialhairstyles

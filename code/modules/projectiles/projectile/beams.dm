@@ -194,7 +194,7 @@
 	name = "sniper beam"
 	icon_state = "xray"
 	fire_sound = 'sound/weapons/gauss_shoot.ogg'
-	damage = 50
+	damage = 60
 	armor_penetration = 10
 	light_color = "#00CC33"
 

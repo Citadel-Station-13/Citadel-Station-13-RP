@@ -44,3 +44,41 @@ var/list/flesh_overlay_cache = list()
 			if(istype(get_step(src, direction), /turf/simulated/flesh))
 				var/turf/simulated/flesh/F = get_step(src, direction)
 				F.update_icon()
+
+/turf/simulated/bone
+	name = "bone wall"
+	desc = "This wall of aging bones is held together by sinew and dried gore. The empty eye sockets stare back at you."
+	icon = 'icons/turf/wall_masks.dmi'
+	icon_state = "bone"
+	opacity = 1
+	density = 1
+	blocks_air = 1
+
+/turf/simulated/bone/attackby()
+	return
+
+/turf/simulated/bone/Initialize(mapload)
+	. = ..()
+	update_icon(1)	//TODO: TG icon smoothing
+
+var/list/bone_overlay_cache = list()
+
+/turf/simulated/bone/update_icon(var/update_neighbors)
+	cut_overlays()
+
+	if(density)
+		icon = 'icons/turf/wall_masks.dmi'
+		icon_state = "bone"
+		for(var/direction in cardinal)
+			var/turf/T = get_step(src,direction)
+			if(istype(T) && !T.density)
+				var/place_dir = turn(direction, 180)
+				if(!bone_overlay_cache["bone[place_dir]"])
+					bone_overlay_cache["bone[place_dir]"] = image('icons/turf/wall_masks.dmi', "bone", dir = place_dir)
+				add_overlay(bone_overlay_cache["bone[place_dir]"])
+
+	if(update_neighbors)
+		for(var/direction in alldirs)
+			if(istype(get_step(src, direction), /turf/simulated/bone))
+				var/turf/simulated/bone/F = get_step(src, direction)
+				F.update_icon()

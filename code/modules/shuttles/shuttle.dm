@@ -305,7 +305,7 @@
 				if(isliving(AM))
 					var/mob/living/bug = AM
 					bug.gib()
-				else
+				else if(isobj(AM))
 					qdel(AM) //it just gets atomized I guess? TODO throw it into space somewhere, prevents people from using shuttles as an atom-smasher
 
 	var/list/powernets = list()

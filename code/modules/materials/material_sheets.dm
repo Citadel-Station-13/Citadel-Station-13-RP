@@ -16,6 +16,7 @@
 	var/datum/material/material
 	var/perunit = SHEET_MATERIAL_AMOUNT
 	var/apply_colour //temp pending icon rewrite
+	var/allow_window_autobuild = TRUE
 
 /obj/item/stack/material/Initialize(mapload, new_amount, merge = TRUE)
 	if(!default_type)
@@ -75,7 +76,7 @@
 	return transfer
 
 /obj/item/stack/material/attack_self(var/mob/user)
-	if(!material.build_windows(user, src))
+	if(!allow_window_autobuild || !material.build_windows(user, src))
 		..()
 
 /obj/item/stack/material/attackby(var/obj/item/W, var/mob/user)
@@ -447,6 +448,9 @@
 	no_variants = FALSE
 	var/fill_type = /obj/item/stack/material/sandbags
 
+	default_type = "emptysandbag"
+	perunit = 1
+
 /obj/item/stack/material/emptysandbag/attackby(var/obj/item/W, var/mob/user)
 	if(!istype(W, /obj/item/ore/glass))
 		var/time = (3 SECONDS)
@@ -471,3 +475,6 @@
 	singular_name = "sandbag"
 	icon_state = "sandbags"
 	no_variants = FALSE
+
+	default_type = "sandbags"
+	perunit = 1

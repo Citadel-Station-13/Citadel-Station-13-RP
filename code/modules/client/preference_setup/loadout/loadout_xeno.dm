@@ -80,7 +80,7 @@
 
 /datum/gear/ears/skrell/colored/band/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/ears/skrell/colored/chain
 	display_name = "Skrell - Colored Chain"
@@ -90,12 +90,7 @@
 
 /datum/gear/ears/skrell/colored/chain/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
-
-/datum/gear/mask/ipc_monitor
-	display_name = "Full Body Prosthetic - Display Monitor"
-	path = /obj/item/clothing/mask/monitor
-	sort_category = "Xenowear"
+	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/uniform/harness
 	display_name = "Full Body Prosthetic / Diona - Gear Harness"
@@ -110,7 +105,7 @@
 
 /datum/gear/shoes/footwraps/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/uniform/cohesionsuits
 	display_name = "Promethean - Cohesion Suit - Selection"
@@ -298,7 +293,7 @@
 
 /datum/gear/suit/dept/cloak/cap
 	display_name = "Teshari - Facility Director Cloak"
-	path = /obj/item/clothing/suit/storage/teshari/cloak/jobs/cap
+	path = /obj/item/clothing/suit/storage/teshari/cloak/jobs
 	allowed_roles = list("Facility Director")
 
 /datum/gear/suit/dept/cloak/hop
@@ -327,9 +322,9 @@
 	allowed_roles = list("Chief Medical Officer")
 
 /datum/gear/suit/dept/cloak/qm
-	display_name = "Teshari - Chief Medical Officer Cloak"
+	display_name = "Teshari - Quartermaster Cloak"
 	path = /obj/item/clothing/suit/storage/teshari/cloak/jobs/qm
-	allowed_roles = list("Chief Medical Officer")
+	allowed_roles = list("Quartermaster")
 
 /datum/gear/suit/dept/cloak/cargo
 	display_name = "Teshari - Cargo Cloak"
@@ -415,7 +410,7 @@
 
 /datum/gear/uniform/smockcolor/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/uniform/undercoatcolor
 	display_name = "Teshari - Civilian Undercoat - Colorable"
@@ -425,7 +420,7 @@
 
 /datum/gear/uniform/undercoatcolor/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/suit/cloakcolor
 	display_name = "Teshari - Civilian Cloak - Colorable"
@@ -435,7 +430,7 @@
 
 /datum/gear/suit/cloakcolor/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/suit/labcoat_tesh
 	display_name = "Teshari - Civilian Labcoat - Colorable"
@@ -445,7 +440,7 @@
 
 /datum/gear/suit/labcoat_tesh/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/suit/teshcoat
 	display_name = "Teshari - Civilian Smallcoatt - Colorable"
@@ -455,7 +450,7 @@
 
 /datum/gear/suit/teshcoat/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/suit/teshcoatwhite
 	display_name = "Teshari - Civilian Smallcoat Alt - Colorable"
@@ -465,7 +460,17 @@
 
 /datum/gear/suit/teshcoatwhite/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
+
+/datum/gear/accessory/teshneckscarf
+	display_name = "Teshari - Neckscarf - Colorable"
+	path = /obj/item/clothing/accessory/scarf/teshari/neckscarf
+	whitelisted = SPECIES_TESHARI
+	sort_category = "Xenowear"
+
+/datum/gear/accessory/teshneckscarf/New()
+	..()
+	gear_tweaks += gear_tweak_free_color_choice
 
 //VOX
 

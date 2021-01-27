@@ -12,7 +12,7 @@
 
 /datum/gear/suit/apron_white/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/suit/greatcoat
 	display_name = "Civilian Greatcoat"
@@ -104,7 +104,7 @@ datum/gear/suit/duster
 
 /datum/gear/suit/duster/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/suit/hazard_vest
 	display_name = "Civilian Hazard Vest - Selection"
@@ -288,7 +288,15 @@ datum/gear/suit/duster
 
 /datum/gear/suit/roles/poncho/cloak/custom/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
+
+/datum/gear/suit/roles/poncho/cloak/cloakglowing
+	display_name = "Civilian Cloak - Glowing Light"
+	path = /obj/item/clothing/accessory/poncho/roles/cloak/glowing
+
+/datum/gear/suit/roles/poncho/cloak/cloakglowingdark
+	display_name = "Civilian Cloak - Glowing Dark"
+	path = /obj/item/clothing/accessory/poncho/roles/cloak/glowingdark
 
 /datum/gear/suit/unathi_robe
 	display_name = "Civilian Roughspun Robe"
@@ -446,7 +454,7 @@ datum/gear/suit/duster
 
 /datum/gear/suit/miscellaneous/kimono/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/suit/miscellaneous/sec_dep_jacket
 	display_name = "Security Department Jacket"
@@ -474,7 +482,7 @@ datum/gear/suit/duster
 
 /datum/gear/suit/miscellaneous/peacoat/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/suit/miscellaneous/kamishimo
 	display_name = "Civilian Kamishimo"
@@ -520,7 +528,7 @@ datum/gear/suit/duster
 
 /datum/gear/suit/miscellaneous/cardigan/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 datum/gear/suit/miscellaneous/storage/lawyer/bridgeofficer
 	display_name = "Command Dress Jacket"
@@ -594,7 +602,7 @@ datum/gear/suit/miscellaneous/storage/lawyer/bridgeofficerparade
 
 /datum/gear/suit/labcoat_colorable/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/suit/jacket_modular
 	display_name = "Civilian Jacket - Modular"
@@ -638,3 +646,6 @@ datum/gear/suit/miscellaneous/storage/lawyer/bridgeofficerparade
 	path = /obj/item/clothing/suit/storage/toggle/operations_coat/engineering
 	allowed_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer")
 
+/datum/gear/suit/highwayman_jacket
+	display_name = "Black Jacket w/ Fur Lining"
+	path = /obj/item/clothing/suit/highwayman_jacket

@@ -43,10 +43,20 @@
 
 /obj/item/clothing/accessory/permit/drone
 	name = "drone identification card"
-	desc = "A card issued by the EIO, indicating that the owner is a Drone Intelligence. Drones are mandated to carry this card within SolGov space, by law."
+	desc = "A card issued by the EIO, indicating that the owner is a Drone Intelligence. Drones are mandated to carry this card within NanoTrasen space, by law."
 	icon_state = "permit-drone"
 
 /obj/item/clothing/accessory/permit/gun/paramedic
 	name = "paramedic weapon permit"
 	desc = "A card indicating that the owner is allowed to carry a weapon while on EVA retrieval missions."
 	icon_state = "permit-medical"
+
+/obj/item/clothing/accessory/permit/chaplain
+	name = "holy weapon permit"
+	desc = "A card indicating that the owner is allowed to carry a weapon for religious rites and purposes."
+	icon_state = "permit-holy"
+
+/obj/item/clothing/accessory/permit/gun/planetside
+	name = "explorer weapon permit"
+	desc = "A card indicating that the owner is allowed to carry weaponry during active exploration missions."
+

@@ -507,6 +507,12 @@
 	icon_state = "sundress_white"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 
+/obj/item/clothing/under/pentagramdress
+	name = "pentagram dress"
+	desc = "A black dress with straps over the chest in the shape of a pentagram."
+	icon_state = "pentagram" 
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+
 /obj/item/clothing/under/captainformal
 	name = "Facility Director's formal uniform"
 	desc = "A Facility Director's formal-wear, for special occasions."
@@ -1138,11 +1144,6 @@
 	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a dark grey base with red and yellow coloration."
 	icon_state = "bodysuit_security"
 
-/obj/item/clothing/under/bodysuit/bodysuitsecmed
-	name = "security medical bodysuit"
-	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a dark grey base with white plating an an eyecatching red trim."
-	icon_state = "bodysuit_secmed"
-
 /obj/item/clothing/under/bodysuit/bodysuitsecweewoo
 	name = "advanced security bodysuit"
 	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one sports a dark grey base with red and yellow coloration. The flashing lights fill you with confidence."
@@ -1177,3 +1178,33 @@
 	name = "PARA tactical uniform"
 	desc = "A standard grey jumpsuit, emblazoned with the Icon of the PMD. Close inspection of the embroidery reveals a complex web of glyphs written in an unknown language."
 	icon_state = "para_ert_uniform"
+
+/obj/item/clothing/under/blueshortskirt
+	name = "Short Skirt"
+	desc = "A light blue sweater with a black skirt."
+	icon_state = "blueshortskirt_female"
+
+/obj/item/clothing/under/greyskirt_female
+	name = "Grey Skirt"
+	desc = "A medium length, grey skirt with a long-sleeve, black sweater on top."
+	icon_state = "greyskirt_female"
+
+/obj/item/clothing/under/highwayman_clothes
+	name = "Highwayman Clothes"
+	desc = "For the dungeon crawling, adventurous robber."
+	icon_state = "highwayman_clothes"
+
+/obj/item/clothing/under/businessskirt_female
+	name = "Business Skirt"
+	desc = "A professional black jacket with a mundane brown skirt. Perfect for the office."
+	icon_state = "businessskirt_female"
+
+/obj/item/clothing/under/simpledress
+	name = "White Simple Dress"
+	desc = "A very short, plain white dress with a light blue sash."
+	icon_state = "simpledress"
+
+/obj/item/clothing/under/roman
+	name = "Roman Lorica"
+	desc = "Replica lorica segmentata. It doesn't feel like it would actually afford much protection against modern weaponry."
+	icon_state = "roman"

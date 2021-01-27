@@ -25,6 +25,12 @@
 	origin_tech = list(TECH_ILLEGAL = 2)
 	syndie = 1
 
+/obj/item/encryptionkey/trader
+	icon_state = "cypherkey"
+	channels = list("Trader" = 1, "Common" = 1)
+	origin_tech = list(TECH_ILLEGAL = 2)
+	syndie = 1
+
 /obj/item/encryptionkey/binary
 	icon_state = "bin_cypherkey"
 	translate_binary = 1
@@ -69,7 +75,7 @@
 	name = "secretary radio encryption key"
 	icon_state = "com_cypherkey"
 	channels = list("Command" = 1, "Service" = 0)
-
+/*
 /obj/item/encryptionkey/heads/captain
 	name = "Facility Director's encryption key"
 	icon_state = "cap_cypherkey"
@@ -85,7 +91,7 @@
 	name = "research director's encryption key"
 	icon_state = "rd_cypherkey"
 	channels = list("Science" = 1, "Command" = 1)
-
+*/
 /obj/item/encryptionkey/heads/hos
 	name = "head of security's encryption key"
 	icon_state = "hos_cypherkey"
@@ -100,12 +106,12 @@
 	name = "chief medical officer's encryption key"
 	icon_state = "cmo_cypherkey"
 	channels = list("Medical" = 1, "Command" = 1)
-
+/*
 /obj/item/encryptionkey/heads/hop
 	name = "head of personnel's encryption key"
 	icon_state = "hop_cypherkey"
 	channels = list("Supply" = 1, "Service" = 1, "Command" = 1, "Security" = 0)
-/*
+
 /obj/item/encryptionkey/headset_mine
 	name = "mining radio encryption key"
 	icon_state = "mine_cypherkey"
@@ -132,4 +138,56 @@
 	channels = list("Response Team" = 1, "Science" = 1, "Command" = 1, "Medical" = 1, "Engineering" = 1, "Security" = 1, "Supply" = 1, "Service" = 1)
 
 /obj/item/encryptionkey/omni		//Literally only for the admin intercoms
-	channels = list("Mercenary" = 1, "Raider" = 1, "Response Team" = 1, "Science" = 1, "Command" = 1, "Medical" = 1, "Engineering" = 1, "Security" = 1, "Supply" = 1, "Service" = 1)
+	channels = list("Mercenary" = 1, "Raider" = 1, "Trader" = 1, "Response Team" = 1, "Science" = 1, "Command" = 1, "Medical" = 1, "Engineering" = 1, "Security" = 1, "Supply" = 1, "Service" = 1)
+
+/obj/item/encryptionkey/heads/hop
+	name = "head of personnel's encryption key"
+	icon_state = "hop_cypherkey"
+	channels = list("Supply" = 1, "Service" = 1, "Command" = 1, "Security" = 0, "Explorer" = 0)
+
+/obj/item/encryptionkey/heads/ai_integrated
+	name = "ai integrated encryption key"
+	desc = "Integrated encryption key"
+	icon_state = "cap_cypherkey"
+	channels = list("Command" = 1, "Security" = 1, "Engineering" = 1, "Science" = 1, "Medical" = 1, "Supply" = 1, "Service" = 1, "AI Private" = 1, "Explorer" = 1)
+
+/obj/item/encryptionkey/heads/captain
+	name = "Facility Director's encryption key"
+	icon_state = "cap_cypherkey"
+	channels = list("Command" = 1, "Security" = 1, "Engineering" = 0, "Science" = 0, "Medical" = 0, "Supply" = 0, "Service" = 0, "Explorer" = 0)
+
+/obj/item/encryptionkey/heads/rd
+	name = "research director's encryption key"
+	icon_state = "rd_cypherkey"
+	channels = list("Command" = 1, "Science" = 1, "Explorer" = 1)
+
+/obj/item/encryptionkey/ert
+	name = "ert encryption key"
+	icon_state = "cap_cypherkey"
+	channels = list("Response Team" = 1, "Science" = 1, "Command" = 1, "Medical" = 1, "Engineering" = 1, "Security" = 1, "Supply" = 1, "Service" = 1, "Explorer" = 1)
+
+/obj/item/encryptionkey/omni		//Literally only for the admin intercoms
+	name = "omni encryption key"
+	icon_state = "cap_cypherkey"
+	channels = list("Mercenary" = 1, "Raider" = 1, "Trader" = 1, "Response Team" = 1, "Science" = 1, "Command" = 1, "Medical" = 1, "Engineering" = 1, "Security" = 1, "Supply" = 1, "Service" = 1, "Explorer" = 1)
+
+//Southern Cross file port. _sc
+/obj/item/encryptionkey/pilot
+	name = "pilot's encryption key"
+	icon_state = "com_cypherkey"
+	channels = list("Supply" = 1, "Explorer" = 1)
+
+/obj/item/encryptionkey/explorer
+	name = "explorer radio encryption key"
+	icon_state = "com_cypherkey"
+	channels = list("Science" = 1, "Explorer" = 1)
+
+/obj/item/encryptionkey/sar
+	name = "sar's encryption key"
+	icon_state = "med_cypherkey"
+	channels = list("Medical" = 1, "Explorer" = 1)
+
+/obj/item/encryptionkey/pathfinder
+	name = "pathfinder radio encryption key"
+	icon_state = "com_cypherkey"
+	channels = list("Supply" = 1, "Explorer" = 1, "Science" = 1)

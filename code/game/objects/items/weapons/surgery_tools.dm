@@ -206,6 +206,16 @@
 	throw_range = 5
 	attack_verb = list("attacked", "hit", "bludgeoned")
 
+
+/*
+ * Bio Regen
+ */
+/obj/item/surgical/bioregen
+	name="bioregenerator"
+	desc="A special tool used in surgeries which can pull toxins from and restore oxygen to organic tissue as well as recreate missing biological structures to allow otherwise irreperable flesh to be mended."
+	icon='icons/obj/surgery.dmi'
+	icon_state="bioregen"
+
 // Cyborg Tools
 
 /obj/item/surgical/retractor/cyborg

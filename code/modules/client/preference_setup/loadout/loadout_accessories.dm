@@ -25,7 +25,7 @@
 
 /datum/gear/accessory/armband/colored/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/accessory/wallet
 	display_name = "Wallet - Orange"
@@ -44,7 +44,7 @@
 
 /datum/gear/accessory/wallet/womens/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/accessory/clutch
 	display_name = "Clutch Bag"
@@ -53,7 +53,7 @@
 
 /datum/gear/accessory/clutch/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/accessory/purse
 	display_name = "Purse"
@@ -62,7 +62,7 @@
 
 /datum/gear/accessory/purse/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/accessory/wcoat
 	display_name = "Waistcoat - Selection"
@@ -115,6 +115,15 @@
 		var/obj/item/clothing/accessory/scarf_type = scarf
 		scarfs[initial(scarf_type.name)] = scarf_type
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(scarfs, /proc/cmp_text_asc))
+
+/datum/gear/accessory/scarfcolor
+	display_name = "Scarf Colorable"
+	path = /obj/item/clothing/accessory/scarf/white
+	cost = 1
+
+/datum/gear/accessory/scarfcolor/New()
+	..()
+	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/accessory/jacket
 	display_name = "Suit Jacket Selection"
@@ -268,7 +277,7 @@
 
 /datum/gear/accessory/sash/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/accessory/asym
 	display_name = "Asymmetric Jacket - Selection"
@@ -295,7 +304,7 @@
 
 /datum/gear/choker/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/collar
 	display_name = "Collar - Silver"
@@ -368,4 +377,4 @@
 
 /datum/gear/accessory/flops/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice

@@ -83,6 +83,7 @@
 /obj/item/clothing/head/pin/bow/big
 	icon_state = "whiteribbon"
 	name = "ribbon"
+	addblends = null
 
 /obj/item/clothing/head/pin/bow/big/red
 	icon_state = "redribbon"

@@ -1,6 +1,6 @@
 /obj/item/gun/projectile/contender
 	name = "Thompson Contender"
-	desc = "A perfect, pristine replica of an ancient one-shot hand-cannon. For when you really want to make a hole. This one has been modified to work almost like a bolt-action. Uses .357 rounds."
+	desc = "A perfect, pristine replica of an ancient one-shot hand-cannon. For when you really want to make a hole. This one has been modified to work almost like a bolt-action."
 	icon_state = "pockrifle"
 	var/icon_retracted = "pockrifle-empty"
 	item_state = "revolver"
@@ -37,7 +37,42 @@
 		return
 	..()
 
+/obj/item/gun/projectile/contender/a44
+	caliber = ".44"
+	ammo_type = /obj/item/ammo_casing/a44
+
+/obj/item/gun/projectile/contender/a762
+	caliber = "7.62mm"
+	ammo_type = /obj/item/ammo_casing/a762
+
 /obj/item/gun/projectile/contender/tacticool
-	desc = "A modified replica of an ancient one-shot hand-cannon, reinvented with a tactical look. For when you really want to make a hole. This one has been modified to work almost like a bolt-action. Uses .357 rounds."
+	desc = "A modified replica of an ancient one-shot hand-cannon, reinvented with a tactical look. For when you really want to make a hole. This one has been modified to work almost like a bolt-action."
 	icon_state = "pockrifle_b"
 	icon_retracted = "pockrifle_b-empty"
+
+/obj/item/gun/projectile/contender/tacticool/a44
+	caliber = ".44"
+	ammo_type = /obj/item/ammo_casing/a44
+
+/obj/item/gun/projectile/contender/tacticool/a762
+	caliber = "7.62mm"
+	ammo_type = /obj/item/ammo_casing/a762
+
+/obj/item/gun/projectile/contender/holy
+	name = "Divine Challenger"
+	desc = "A beautifully engraved pocket rifle with a silvered barrel made of incense wood.Sometimes one good hit is all you need to vanquish a great evil and these handcannons will deliver that one shot."
+	icon_state = "pockrifle_c"
+	icon_retracted = "pockrifle_c-empty"
+	ammo_type = /obj/item/ammo_casing/a357/silver
+	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_OCCULT = 1)
+	holy = TRUE
+
+/obj/item/gun/projectile/contender/holy/a44
+	caliber = ".44"
+	ammo_type = /obj/item/ammo_casing/a44/silver
+
+/obj/item/gun/projectile/contender/holy/a762
+	caliber = "7.62mm"
+	ammo_type = /obj/item/ammo_casing/a762/silver
+
+

@@ -44,6 +44,8 @@
 	var/cell_type =  /obj/item/cell/high
 	var/air_type =   /obj/item/tank/oxygen
 
+	var/unremovable_cell = FALSE
+
 	//Component/device holders.
 	var/obj/item/tank/air_supply                       // Air tank, if any.
 	var/obj/item/clothing/shoes/boots = null                  // Deployable boots, if any.
@@ -93,6 +95,7 @@
 	// Wiring! How exciting.
 	var/datum/wires/rig/wires
 	var/datum/effect_system/spark_spread/spark_system
+	var/datum/mini_hud/rig/minihud
 
 /obj/item/rig/get_cell()
 	return cell
@@ -344,6 +347,11 @@
 
 	// Success!
 	canremove = seal_target
+	if(M.hud_used)
+		if(canremove)
+			QDEL_NULL(minihud)
+		else
+			minihud = new (M.hud_used, src)
 	to_chat(M, "<font color='blue'><b>Your entire suit [canremove ? "loosens as the components relax" : "tightens around you as the components lock into place"].</b></font>")
 	M.client.screen -= booting_L
 	qdel(booting_L)
@@ -983,14 +991,21 @@
 	wearer.lay_down()
 	to_chat(user, "<span class='notice'>\The [wearer] is now [wearer.resting ? "resting" : "getting up"].</span>")
 
-/obj/item/rig/proc/forced_move(var/direction, var/mob/user)
+/obj/item/rig/proc/forced_move(var/direction, var/mob/user, var/ai_moving = TRUE)
 
 	// Why is all this shit in client/Move()? Who knows?
 	if(world.time < wearer_move_delay)
 		return
 
-	if(!wearer || !wearer.loc || !ai_can_move_suit(user, check_user_module = 1))
+
+	if(!wearer || !wearer.loc)
 		return
+
+
+
+	if(ai_moving)
+		if(!ai_can_move_suit(user, check_user_module = 1))
+			return
 
 	//This is sota the goto stop mobs from moving var
 	if(wearer.transforming || !wearer.canmove)
@@ -1057,7 +1072,10 @@
 			wearer_move_delay += 2
 			return wearer.buckled.relaymove(wearer,direction)
 
-	cell.use(200) //Arbitrary, TODO
+	var/power_cost = 200
+	if(!ai_moving)
+		power_cost = 20
+	cell.use(power_cost) //Arbitrary, TODO
 	wearer.Move(get_step(get_turf(wearer),direction),direction)
 
 // This returns the rig if you are contained inside one, but not if you are wearing it

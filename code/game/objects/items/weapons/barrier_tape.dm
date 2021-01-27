@@ -317,16 +317,16 @@ var/list/tape_roll_applications = list()
 		update_icon()
 		name = "crumpled [name]"
 
-/obj/item/barrier_tape_segment/CanAllowThrough(atom/movable/mover, turf/target)
-	if(!lifted && ismob(mover))
-		var/mob/M = mover
+/obj/item/barrier_tape_segment/Crossed(atom/movable/AM, oldloc)
+	. = ..()
+	if(!lifted && isliving(AM))
+		var/mob/living/M = AM //so that ghosts don't get spammed
 		add_fingerprint(M)
 		if(!allowed(M))	//only select few learn art of not crumpling the tape
 			to_chat(M, span("warning", "You are not supposed to go past \the [src]..."))
 			if(M.a_intent == INTENT_HELP && !(istype(M, /mob/living/simple_mob)))
 				return FALSE
 			crumple()
-	return ..()
 
 /obj/item/barrier_tape_segment/attackby(obj/item/W as obj, mob/user as mob)
 	breaktape(user)

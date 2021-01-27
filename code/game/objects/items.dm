@@ -96,6 +96,8 @@
 	var/deploytype = null	//Deploytype for switchtools. Only really used on switchtool subtype items, but this is on a general item level in case admins want to do some wierd fucky shit with custom switchtools.
 /obj/item/Initialize(mapload)
 	. = ..()
+	if(islist(origin_tech))
+		origin_tech = typelist(NAMEOF(src, origin_tech), origin_tech)
 	//Potential memory optimization: Making embed chance a getter if unset.
 	if(embed_chance == EMBED_CHANCE_UNSET)
 		if(sharp)
@@ -723,7 +725,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	return
 
 //Worn icon generation for on-mob sprites
-/obj/item/proc/make_worn_icon(var/body_type,var/slot_name,var/inhands,var/default_icon,var/default_layer,var/icon/clip_mask = null) //VOREStation edit - add 'clip mask' argument.
+/obj/item/proc/make_worn_icon(var/body_type,var/slot_name,var/inhands,var/default_icon,var/default_layer,var/icon/clip_mask = null)
 	//Get the required information about the base icon
 	var/icon/icon2use = get_worn_icon_file(body_type = body_type, slot_name = slot_name, default_icon = default_icon, inhands = inhands)
 	var/state2use = get_worn_icon_state(slot_name = slot_name)
@@ -745,13 +747,13 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	if(!inhands)
 		apply_custom(standing_icon)		//Pre-image overridable proc to customize the thing
 		apply_addblends(icon2use,standing_icon)		//Some items have ICON_ADD blend shaders
-		if(istype(clip_mask)) //VOREStation Edit - For taur bodies/tails clipping off parts of uniforms and suits.
-			standing_icon = get_icon_difference(standing_icon, clip_mask, 1)
 
 	var/image/standing = image(standing_icon)
 	standing.alpha = alpha
 	standing.color = color
 	standing.layer = layer2use
+	if(istype(clip_mask)) //For taur bodies/tails clipping off parts of uniforms and suits.
+		standing.filters += filter(type = "alpha", icon = clip_mask)
 
 	//Apply any special features
 	if(!inhands)
@@ -861,3 +863,12 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 
 /obj/item/proc/is_welder()
 	return FALSE
+
+// These procs are for RPEDs and part ratings. The concept for this was borrowed from /vg/station.
+// Gets the rating of the item, used in stuff like machine construction.
+/obj/item/proc/get_rating()
+	return FALSE
+
+// Like the above, but used for RPED sorting of parts.
+/obj/item/proc/rped_rating()
+	return get_rating()

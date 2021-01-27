@@ -462,6 +462,30 @@
 	inflict_heat_damage(40) // Another 40, however this is instantly applied to unprotected mobs.
 	adjustFireLoss(20) // Lava cannot be 100% resisted with fire protection.
 
+//Acid
+/mob/living/acid_act(var/mob/living/H)
+	if(H.mind.isholy)
+		return
+	else
+		make_dizzy(1)
+		adjustHalLoss(1)
+		if(!confused) confused = 1
+		confused = max(confused, 1)
+		inflict_heat_damage(5) // This is instantly applied to unprotected mobs.
+		inflict_poison_damage(5)
+		adjustFireLoss(5) // Acid cannot be 100% resisted by protection.
+		adjustToxLoss(5)
+
+//Blood
+//Acid
+/mob/living/blood_act(var/mob/living/H)
+	if(H.mind.isholy)
+		return
+	else
+		inflict_poison_damage(5)
+		adjustToxLoss(5)
+
+
 /mob/living/proc/reagent_permeability()
 	return 1
 	return round(FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE*(fire_stacks/FIRE_MAX_FIRESUIT_STACKS)**2)

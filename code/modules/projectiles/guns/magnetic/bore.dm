@@ -17,6 +17,7 @@
 
 	power_cost = 750
 	load_type = /obj/item/stack/material
+	no_pin_required = TRUE
 	var/mat_storage = 0			// How much material is stored inside? Input in multiples of 2000 as per auto/protolathe.
 	var/max_mat_storage = 8000	// How much material can be stored inside?
 	var/mat_cost = 500			// How much material is used per-shot?
@@ -168,9 +169,9 @@
 //phoron bore 2
 /obj/item/gun/magnetic/matfed/advanced
 	name = "advanced phoron bore"
-	description_fluff = "A revision of an ageing Grayson design, the NanoTrasen Man-Portable Phorogenic Tunneler, or NT-MPPT is capable of drilling through longer swathes of rock, at the cost of slightly worse power efficiency than the Grayson design."
+	description_fluff = "A revision of an aging Grayson design, the NanoTrasen Man-Portable Phorogenic Tunneler, or NT-MPPT is capable of drilling through longer swathes of rock, at the cost of slightly worse power efficiency than the Grayson design."
 	description_antag = "This device is exceptional at breaking down walls, though it is incredibly loud when doing so."
 	description_info = "The projectile of this tool will travel twelve tiles before dissipating, excavating mineral walls as it does so. It can be reloaded with phoron sheets, and can hold a maximum of ten sheets."
 	projectile_type = /obj/item/projectile/bullet/magnetic/bore/powerful
 	power_cost = 1000
-	max_mat_storage = 20000	// How much material can be stored inside?
+	max_mat_storage = 20000

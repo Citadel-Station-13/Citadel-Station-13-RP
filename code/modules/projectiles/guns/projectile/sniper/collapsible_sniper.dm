@@ -37,7 +37,7 @@
 
 	w_class = ITEMSIZE_NORMAL
 
-	icon = 'icons/obj/gun.dmi'
+	icon = 'icons/obj/gun/ballistic.dmi'
 
 	var/obj/item/sniper_rifle_part/barrel = null
 	var/obj/item/sniper_rifle_part/stock = null

@@ -48,7 +48,7 @@
 
 	var/taste_sensitivity = TASTE_NORMAL					// How sensitive the species is to minute tastes.
 
-	var/min_age = 17
+	var/min_age = 18
 	var/max_age = 70
 
 	// Language/culture vars.
@@ -181,7 +181,7 @@
 	var/item_slowdown_mod = 1								// How affected by item slowdown the species is.
 	var/primitive_form										// Lesser form, if any (ie. monkey for humans)
 	var/greater_form										// Greater form, if any, ie. human for monkeys.
-	var/holder_type
+	var/holder_type = /obj/item/holder/micro				// This allows you to pick up crew
 	var/gluttonous											// Can eat some mobs. 1 for mice, 2 for monkeys, 3 for people.
 
 	var/rarity_value = 1									// Relative rarity/collector value for this species.
@@ -227,10 +227,21 @@
 
 	var/pass_flags = 0
 
-	var/list/descriptors = list(
-		/datum/mob_descriptor/height,
-		/datum/mob_descriptor/build
-		)
+	var/list/descriptors = list()
+
+	//This is used in character setup preview generation (prefences_setup.dm) and human mob
+	//rendering (update_icons.dm)
+	var/color_mult = 0
+
+	//This is for overriding tail rendering with a specific icon in icobase, for static
+	//tails only, since tails would wag when dead if you used this
+	var/icobase_tail = 0
+
+	var/wing_hair
+	var/wing
+	var/wing_animation
+	var/icobase_wing
+	var/wikilink = null //link to wiki page for species
 
 /datum/species/New()
 	if(hud_type)
@@ -346,6 +357,17 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 			O.organ_tag = organ_tag
 		H.internal_organs_by_name[organ_tag] = O
 
+	if(H.nif)
+		var/type = H.nif.type
+		var/durability = H.nif.durability
+		var/list/nifsofts = H.nif.nifsofts
+		var/list/nif_savedata = H.nif.save_data.Copy()
+		..()
+
+		var/obj/item/nif/nif = new type(H,durability,nif_savedata)
+		nif.nifsofts = nifsofts
+	else
+		..()
 
 /datum/species/proc/hug(var/mob/living/carbon/human/H, var/mob/living/target)
 
@@ -476,3 +498,14 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 // Allow species to display interesting information in the human stat panels
 /datum/species/proc/Stat(var/mob/living/carbon/human/H)
 	return
+
+/datum/species/proc/update_attack_types()
+	unarmed_attacks = list()
+	for(var/u_type in unarmed_types)
+		unarmed_attacks += new u_type()
+
+/datum/species/proc/give_numbing_bite() //Holy SHIT this is hacky, but it works. Updating a mob's attacks mid game is insane.
+	unarmed_attacks = list()
+	unarmed_types += /datum/unarmed_attack/bite/sharp/numbing
+	for(var/u_type in unarmed_types)
+		unarmed_attacks += new u_type()

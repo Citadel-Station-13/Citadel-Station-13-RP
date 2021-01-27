@@ -83,7 +83,7 @@
 	materials = list(DEFAULT_WALL_MATERIAL = 8000, MAT_SILVER = 2000, MAT_DIAMOND = 1000)
 	build_path = /obj/item/gun/projectile/automatic/advanced_smg
 	sort_string = "MABAA"
-	
+
 /datum/design/item/weapon/ballistic/p90
 	id = "p90"
 	desc = "The H90K is a compact, large capacity submachine gun produced by Hephaestus Industries. Despite its fierce reputation, it still manages to feel like a toy. Uses 9mm rounds."
@@ -91,7 +91,7 @@
 	materials = list(DEFAULT_WALL_MATERIAL = 5000, MAT_PLASTIC = 5000, MAT_URANIUM = 1000)
 	build_path = /obj/item/gun/projectile/automatic/p90
 	sort_string = "MABAB"
-	
+
 // Ballistic ammo
 
 /datum/design/item/weapon/ballistic/ammo/AssembleDesignName()
@@ -125,59 +125,74 @@
 	build_path = /obj/item/ammo_magazine/m9mmp90
 	sort_string = "MABBC"
 
-datum/design/item/weapon/ballistic/ammo/m10x24/medium
-	name = "M41A Medium Magazine"
-	id = "ammo_10x24med"
+/datum/design/item/weapon/ballistic/ammo/m10x24/small
+	name = "M41A magazine, small"
+	id = "ammo_10x24_small"
+	desc = "A 32 round magazine for the M41A pulse rifle."
+	req_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 1)
+	materials = list(DEFAULT_WALL_MATERIAL = 2500, MAT_SILVER = 250)
+	build_path = /obj/item/ammo_magazine/m10x24mm/small
+	sort_string = "MABCA"
+
+/datum/design/item/weapon/ballistic/ammo/m10x24/small/hp
+	name = "M41A magazine, small, hollow-point"
+	id = "ammo_10x24_small_hp"
+	desc = "A 32 round hollow-point magazine for the M41A pulse rifle."
+	build_path = /obj/item/ammo_magazine/m10x24mm/small/hp
+	sort_string = "MABCB"
+
+/datum/design/item/weapon/ballistic/ammo/m10x24/small/ap
+	name = "M41A magazine, small, armor-piercing"
+	id = "ammo_10x24_small_ap"
+	desc = "A 32 round hollow-point magazine for the M41A pulse rifle."
+	build_path = /obj/item/ammo_magazine/m10x24mm/small/ap
+	sort_string = "MABCC"
+
+/datum/design/item/weapon/ballistic/ammo/m10x24/medium
+	name = "M41A magazine, medium"
+	id = "ammo_10x24_medium"
 	desc = "A 64 round magazine for the M41A pulse rifle."
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
 	materials = list(DEFAULT_WALL_MATERIAL = 5500, MAT_SILVER = 250)
 	build_path = /obj/item/ammo_magazine/m10x24mm/med
-	sort_string = "MABBD"
+	sort_string = "MABCD"
 
-datum/design/item/weapon/ballistic/ammo/m10x24/medium/hp
-	name = "M41A Medium HP Magazine"
-	id = "ammo_10x24medhp"
+/datum/design/item/weapon/ballistic/ammo/m10x24/medium/hp
+	name = "M41A magazine, medium, hollow-point"
+	id = "ammo_10x24_medium_hp"
 	desc = "A 64 hollow point round magazine for the M41A pulse rifle."
-	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 5500, MAT_SILVER = 250)
 	build_path = /obj/item/ammo_magazine/m10x24mm/med/hp
-	sort_string = "MABBE"
+	sort_string = "MABCE"
 
-datum/design/item/weapon/ballistic/ammo/m10x24/medium/ap
-	name = "M41A Medium AP Magazine"
-	id = "ammo_10x24medap"
+/datum/design/item/weapon/ballistic/ammo/m10x24/medium/ap
+	name = "M41A magazine, medium, armor-piercing"
+	id = "ammo_10x24medium_ap"
 	desc = "A 64 armor piercing round magazine for the M41A pulse rifle."
-	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 5500, MAT_SILVER = 250)
 	build_path = /obj/item/ammo_magazine/m10x24mm/med/ap
-	sort_string = "MABBF"
+	sort_string = "MABCF"
 
-datum/design/item/weapon/ballistic/ammo/m10x24/large
-	name = "M41A Large Magazine"
-	id = "ammo_10x24large"
+/datum/design/item/weapon/ballistic/ammo/m10x24/large
+	name = "M41A magazine, large"
+	id = "ammo_10x24_large"
 	desc = "A 96 round magazine for the M41A pulse rifle."
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3)
 	materials = list(DEFAULT_WALL_MATERIAL = 8500, MAT_SILVER = 250)
 	build_path = /obj/item/ammo_magazine/m10x24mm/large
-	sort_string = "MABBG"
+	sort_string = "MABCG"
 
-datum/design/item/weapon/ballistic/ammo/m10x24/large/hp
-	name = "M41A Large HP Magazine"
-	id = "ammo_10x24largehp"
+/datum/design/item/weapon/ballistic/ammo/m10x24/large/hp
+	name = "M41A magazine, large, hollow-point"
+	id = "ammo_10x24_large_hp"
 	desc = "A 96 hollow point round magazine for the M41A pulse rifle."
-	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3)
-	materials = list(DEFAULT_WALL_MATERIAL = 8500, MAT_SILVER = 250)
 	build_path = /obj/item/ammo_magazine/m10x24mm/large/hp
-	sort_string = "MABBH"
+	sort_string = "MABCH"
 
-datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
-	name = "M41A Large Magazine"
-	id = "ammo_10x24largeap"
+/datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
+	name = "M41A magazine, large, armor-piercing"
+	id = "ammo_10x24_large_ap"
 	desc = "A 96 armor piercing round magazine for the M41A pulse rifle."
-	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3)
-	materials = list(DEFAULT_WALL_MATERIAL = 8500, MAT_SILVER = 500)
 	build_path = /obj/item/ammo_magazine/m10x24mm/large/ap
-	sort_string = "MABBI"
+	sort_string = "MABCI"
 
 // Phase weapons
 
@@ -826,14 +841,6 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	build_path = /obj/item/firing_pin/test_range
 	sort_string = "MAVGA"
 
-/datum/design/item/pin/mindshield
-	name = "Loyalty"
-	id = "loyalty_pin"
-	req_tech = list(TECH_MATERIAL = 3, TECH_BIO = 3, TECH_POWER = 4, TECH_COMBAT = 4)
-	materials = list(DEFAULT_WALL_MATERIAL = 1000, "glass" = 500, "phoron" = 500, "gold" = 500)
-	build_path = /obj/item/firing_pin/implant/mindshield
-	sort_string = "MAVGB"
-
 /datum/design/item/pin/explorer
 	name = "Exploration"
 	id = "explorer_pin"
@@ -841,12 +848,4 @@ datum/design/item/weapon/ballistic/ammo/m10x24/large/ap
 	materials = list(DEFAULT_WALL_MATERIAL = 1000, "glass" = 500)
 	build_path = /obj/item/firing_pin/explorer
 	sort_string = "MAVGC"
-
-/datum/design/item/pin/dna
-	name = "DNA"
-	id = "dna_pin"
-	req_tech = list(TECH_MATERIAL = 3, TECH_BIO = 4, TECH_POWER = 3, TECH_COMBAT = 3)
-	materials = list(DEFAULT_WALL_MATERIAL = 1000, "glass" = 500, "uranium" = 500)
-	build_path = /obj/item/firing_pin/dna
-	sort_string = "MAVGD"
 

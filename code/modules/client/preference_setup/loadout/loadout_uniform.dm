@@ -57,6 +57,10 @@
 		jumpclothes[initial(jumps.name)] = jumps
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(jumpclothes, /proc/cmp_text_asc))
 
+/datum/gear/uniform/blueshortskirt
+	display_name = "Civilian Short Skirt"
+	path = /obj/item/clothing/under/blueshortskirt
+
 /datum/gear/uniform/skirt
 	display_name = "Civilian Skirts Selection"
 	path = /obj/item/clothing/under/skirt
@@ -294,6 +298,10 @@
 	display_name = "Civilian Sundress - White"
 	path = /obj/item/clothing/under/sundress_white
 
+/datum/gear/uniform/pentagramdress
+	display_name = "Pentagram Dress"
+	path = /obj/item/clothing/under/pentagramdress
+
 /datum/gear/uniform/dress_fire
 	display_name = "Civilian Flame Dress"
 	path = /obj/item/clothing/under/dress/dress_fire
@@ -359,7 +367,7 @@
 
 /datum/gear/uniform/longdress/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/uniform/shortplaindress
 	display_name = "Civilian Plain Dress"
@@ -367,7 +375,7 @@
 
 /datum/gear/uniform/shortplaindress/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/uniform/longwidedress
 	display_name = "Civilian Long Wide Dress"
@@ -375,7 +383,7 @@
 
 /datum/gear/uniform/longwidedress/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/uniform/reddress
 	display_name = "Civilian Red Dress - Belted"
@@ -450,11 +458,6 @@
 	display_name = "Civilian Outfit - Major Bill's"
 	path = /obj/item/clothing/under/mbill
 
-/datum/gear/uniform/pcrc
-	display_name = "Security Uniform - PCRC"
-	path = /obj/item/clothing/under/pcrc
-	allowed_roles = list("Security Officer","Head of Security","Warden")
-
 /datum/gear/uniform/brandsuit/grayson
 	display_name = "Civilian Outfit - Grayson"
 	path = /obj/item/clothing/under/grayson
@@ -477,7 +480,7 @@
 
 /datum/gear/uniform/yogapants/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/uniform/black_corset
 	display_name = "Civilian Black Corset"
@@ -637,7 +640,7 @@
 
 /datum/gear/uniform/pleated/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/uniform/lilacdress
 	display_name = "Civilian Lilac Dress"
@@ -740,7 +743,7 @@ datum/gear/uniform/leotardcolor
 
 /datum/gear/uniform/leotardcolor/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 datum/gear/uniform/verglasdress
 	display_name = "Civilian Verglas Dress"
@@ -752,7 +755,7 @@ datum/gear/uniform/fashionminiskirt
 
 /datum/gear/uniform/fashionminiskirt/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks += gear_tweak_free_color_choice
 
 datum/gear/uniform/bodysuiteva
 	display_name = "Civilian EVA Bodysuit"
@@ -788,11 +791,6 @@ datum/gear/uniform/bodysuitsec
 	display_name = "Security Bodysuit"
 	path = /obj/item/clothing/under/bodysuit/bodysuitsec
 	allowed_roles = list("Security Officer","Head of Security","Warden","Detective")
-
-datum/gear/uniform/bodysuitsecmed
-	display_name = "Security Medic Bodysuit"
-	path = /obj/item/clothing/under/bodysuit/bodysuitsecmed
-	allowed_roles = list("Security Officer","Head of Security","Medical Doctor")
 
 datum/gear/uniform/bodysuitseccom
 	display_name = "Security Command Bodysuit"
@@ -884,3 +882,20 @@ Swimsuits
 	display_name = "Janitor Jumpsuit - Alt"
 	path = /obj/item/clothing/under/rank/janitor/starcon
 	allowed_roles = list("Janitor")
+
+/datum/gear/uniform/greyskirt_female
+	display_name = "Civilian Grey Skirt"
+	path = /obj/item/clothing/under/greyskirt_female
+
+/datum/gear/uniform/highwayman_clothes
+	display_name = "Civilian Highwayman Outfit"
+	path = /obj/item/clothing/under/highwayman_clothes
+
+/datum/gear/uniform/businessskirt
+	display_name = "Civilian Business Skirt"
+	path = /obj/item/clothing/under/businessskirt_female
+
+/datum/gear/uniform/simpledress
+	display_name = "Civilian Simple Dress"
+	path = /obj/item/clothing/under/simpledress
+

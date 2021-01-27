@@ -106,7 +106,6 @@ var/list/organ_cache = list()
 	handle_organ_mod_special(TRUE)
 	if(owner && vital)
 		owner.death()
-		owner.can_defib = 0
 
 /obj/item/organ/proc/adjust_germ_level(var/amount)		// Unless you're setting germ level directly to 0, use this proc instead
 	germ_level = clamp(germ_level + amount, 0, INFECTION_LEVEL_MAX)
@@ -362,7 +361,6 @@ var/list/organ_cache = list()
 		if(user)
 			add_attack_logs(user,owner,"Removed vital organ [src.name]")
 		owner.death()
-		owner.can_defib = 0
 
 	handle_organ_mod_special(TRUE)
 

@@ -105,6 +105,9 @@
 		/obj/item/storage/fancy/candle_box = 2,
 		/obj/item/storage/fancy/whitecandle_box,
 		/obj/item/storage/fancy/blackcandle_box,
+		/obj/item/clothing/accessory/permit/chaplain,
+		/obj/item/clothing/accessory/holster/holy,
+		/obj/item/storage/fancy/chalk,
 		/obj/item/godfig = 2,
 		/obj/item/deck/tarot)
 
@@ -373,7 +376,7 @@
 		/obj/item/clothing/shoes/green,
 		/obj/item/clothing/shoes/purple,
 		/obj/item/clothing/shoes/red,
-		/obj/item/clothing/shoes/leather,
+		/obj/item/clothing/shoes/laceup/brown,
 		/obj/item/clothing/under/pants/classicjeans,
 		/obj/item/clothing/under/pants/mustangjeans,
 		/obj/item/clothing/under/pants/blackjeans,

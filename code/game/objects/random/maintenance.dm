@@ -65,8 +65,8 @@ something, make sure it's not in one of the other lists.*/
 				prob(1);/obj/item/clothing/shoes/syndigaloshes,
 				prob(4);/obj/item/clothing/shoes/black,
 				prob(4);/obj/item/clothing/shoes/laceup,
-				prob(4);/obj/item/clothing/shoes/black,
-				prob(4);/obj/item/clothing/shoes/leather,
+				prob(4);/obj/item/clothing/shoes/laceup/grey,
+				prob(4);/obj/item/clothing/shoes/laceup/brown,
 				prob(1);/obj/item/clothing/gloves/yellow,
 				prob(3);/obj/item/clothing/gloves/botanic_leather,
 				prob(2);/obj/item/clothing/gloves/sterile/latex,
@@ -106,7 +106,8 @@ something, make sure it's not in one of the other lists.*/
 				prob(1);/obj/item/card/emag_broken,
 				prob(2);/obj/item/camera,
 				prob(3);/obj/item/pda,
-				prob(3);/obj/item/radio/headset)
+				prob(3);/obj/item/radio/headset,
+				prob(1);/obj/item/pizzavoucher)
 
 /obj/random/maintenance/security
 /*Maintenance loot list. This one is for around security areas*/

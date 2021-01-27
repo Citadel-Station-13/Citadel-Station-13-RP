@@ -220,7 +220,7 @@
 	can_atmos_pass = ATMOS_PASS_NO
 	base_icon_state = "door_closed"
 	occupied_icon_state = "door_locked"
-	desc = "The tram station you might've came in from.  You could leave the base easily using this."
+	desc = "The tram station you might've came in from.  You could leave the base easily using this.<br><span class='userdanger'>Drag-drop yourself onto it while adjacent to leave.</span>"
 	on_store_message = "has departed on the tram."
 	on_store_name = "Travel Oversight"
 	on_enter_occupant_message = "The tram arrives at the platform; you step inside and take a seat."
@@ -228,6 +228,7 @@
 	on_store_visible_message_2 = "to the colony"
 	time_till_despawn = 10 SECONDS
 	spawnpoint_type = /datum/spawnpoint/tram
+
 /obj/machinery/cryopod/robot/door/tram/process()
 	if(SSemergencyshuttle.online() || SSemergencyshuttle.returned())
 		// Transform into a door!  But first despawn anyone inside
@@ -241,12 +242,9 @@
 	// Otherwise just operate normally
 	return ..()
 
-/obj/machinery/cryopod/robot/door/tram/Bumped(var/atom/movable/AM)
-	if(!ishuman(AM))
-		return
-
-	var/mob/living/carbon/human/user = AM
-
+/obj/machinery/cryopod/robot/door/tram/go_in(mob/living/M, mob/living/user)
+	if(M != user)
+		return ..()
 	var/choice = alert(user, "Do you want to depart via the tram? Your character will leave the round.","Departure","No","Yes")
 	if(user && Adjacent(user) && choice == "Yes")
 		var/mob/observer/dead/newghost = user.ghostize()
@@ -507,23 +505,6 @@ var/global/list/latejoin_tram   = list()
 /obj/machinery/cryopod/robot/door/dorms
 	spawnpoint_type = /datum/spawnpoint/tram
 
-//Dance pole
-/obj/structure/dancepole
-	name = "dance pole"
-	desc = "Engineered for your entertainment"
-	icon = 'icons/obj/objects.dmi'
-	icon_state = "dancepole"
-	density = 0
-	anchored = 1
-
-/obj/structure/dancepole/attackby(var/obj/item/O as obj, var/mob/user as mob)
-	if(O.is_wrench())
-		anchored = !anchored
-		playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
-		if(anchored)
-			to_chat(user, "<font color='blue'>You secure \the [src].</font>")
-		else
-			to_chat(user, "<font color='blue'>You unsecure \the [src].</font>")
 //
 // ### Wall Machines On Full Windows ###
 // To make sure wall-mounted machines placed on full-tile windows are clickable they must be above the window

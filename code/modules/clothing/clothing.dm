@@ -25,6 +25,7 @@
 	var/blood_sprite_state
 
 	var/update_icon_define = null	// Only needed if you've got multiple files for the same type of clothing
+	var/recent_struggle = 0
 
 //Updates the icons of the mob wearing the clothing item, if any.
 /obj/item/clothing/proc/update_clothing_icon()
@@ -90,6 +91,28 @@
 				. = check
 				break
 
+//micros in shoes
+/obj/item/clothing/relaymove(var/mob/living/user,var/direction)
+	if(recent_struggle)
+		return
+
+	recent_struggle = 1
+
+	spawn(100)
+		recent_struggle = 0
+
+	if(ishuman(src.loc))
+		var/mob/living/carbon/human/H = src.loc
+		if(H.shoes == src)
+			to_chat(H, "<font color='red'>[user]'s tiny body presses against you in \the [src], squirming!</font>")
+			to_chat(user, "<font color='red'>Your body presses out against [H]'s form! Well, what little you can get to!</font>")
+		else
+			to_chat(H, "<font color='red'>[user]'s form shifts around in the \the [src], squirming!</font>")
+			to_chat(user, "<font color='red'>You move around inside the [src], to no avail.</font>")
+	else
+		src.visible_message("<font color='red'>\The [src] moves a little!</font>")
+		to_chat(user, "<font color='red'>You throw yourself against the inside of \the [src]!</font>")
+
 /obj/item/clothing/proc/refit_for_species(var/target_species)
 	if(!species_restricted)
 		return //this item doesn't use the species_restricted system
@@ -139,7 +162,8 @@
 	throwforce = 2
 	slot_flags = SLOT_EARS
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/teshari/ears.dmi')
+		SPECIES_TESHARI = 'icons/mob/species/teshari/ears.dmi',
+		SPECIES_WEREBEAST = 'icons/mob/species/werebeast/ears.dmi')
 
 /obj/item/clothing/ears/attack_hand(mob/user as mob)
 	if (!user) return
@@ -221,8 +245,8 @@
 	attack_verb = list("challenged")
 	sprite_sheets = list(
 		SPECIES_TESHARI = 'icons/mob/species/teshari/gloves.dmi',
-		SPECIES_VOX = 'icons/mob/species/vox/gloves.dmi'
-		)
+		SPECIES_VOX = 'icons/mob/species/vox/gloves.dmi',
+		SPECIES_WEREBEAST = 'icons/mob/species/werebeast/hands.dmi')
 
 /obj/item/clothing/gloves/update_clothing_icon()
 	if (ismob(src.loc))
@@ -351,8 +375,8 @@
 
 	sprite_sheets = list(
 		SPECIES_TESHARI = 'icons/mob/species/teshari/head.dmi',
-		SPECIES_VOX = 'icons/mob/species/vox/head.dmi'
-		)
+		SPECIES_VOX = 'icons/mob/species/vox/head.dmi',
+		SPECIES_WEREBEAST = 'icons/mob/species/werebeast/head.dmi')
 
 /obj/item/clothing/head/attack_self(mob/user)
 	if(brightness_on)
@@ -444,7 +468,7 @@
 //Mask
 /obj/item/clothing/mask
 	name = "mask"
-	icon = 'icons/obj/clothing/masks.dmi'
+	icon = 'icons/obj/clothing/masks.dmi' //custom species support.
 	item_icons = list(
 		slot_l_hand_str = 'icons/mob/items/lefthand_masks.dmi',
 		slot_r_hand_str = 'icons/mob/items/righthand_masks.dmi',
@@ -452,13 +476,24 @@
 	body_parts_covered = HEAD
 	slot_flags = SLOT_MASK
 	body_parts_covered = FACE|EYES
+	item_icons = list(
+		slot_wear_mask_str = 'icons/mob/mask.dmi'
+		) //custom species support.
 	blood_sprite_state = "maskblood"
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/teshari/masks.dmi',
-		SPECIES_VOX = 'icons/mob/species/vox/masks.dmi',
-		SPECIES_TAJ = 'icons/mob/species/tajaran/mask.dmi',
-		SPECIES_UNATHI = 'icons/mob/species/unathi/mask.dmi'
-		)
+		SPECIES_TESHARI		= 'icons/mob/species/teshari/masks_vr.dmi',
+		SPECIES_VOX 		= 'icons/mob/species/vox/masks.dmi',
+		SPECIES_TAJ 		= 'icons/mob/species/tajaran/mask_vr.dmi',
+		SPECIES_UNATHI 		= 'icons/mob/species/unathi/mask_vr.dmi',
+		SPECIES_SERGAL 		= 'icons/mob/species/sergal/mask_vr.dmi',
+		SPECIES_NEVREAN 	= 'icons/mob/species/nevrean/mask_vr.dmi',
+		SPECIES_ZORREN_HIGH	= 'icons/mob/species/fox/mask_vr.dmi',
+		SPECIES_ZORREN_FLAT = 'icons/mob/species/fennec/mask_vr.dmi',
+		SPECIES_AKULA 		= 'icons/mob/species/akula/mask_vr.dmi',
+		SPECIES_VULPKANIN 	= 'icons/mob/species/vulpkanin/mask.dmi',
+		SPECIES_XENOCHIMERA	= 'icons/mob/species/tajaran/mask_vr.dmi',
+		SPECIES_WEREBEAST	= 'icons/mob/species/werebeast/masks.dmi'
+		) //custom species support.
 
 	var/voicechange = 0
 	var/list/say_messages
@@ -506,8 +541,20 @@
 	species_restricted = list("exclude",SPECIES_TESHARI, SPECIES_VOX)
 	sprite_sheets = list(
 		SPECIES_TESHARI = 'icons/mob/species/teshari/shoes.dmi',
-		SPECIES_VOX = 'icons/mob/species/vox/shoes.dmi'
-		)
+		SPECIES_VOX = 'icons/mob/species/vox/shoes.dmi',
+		SPECIES_WEREBEAST = 'icons/mob/species/werebeast/feet.dmi')
+
+	//there's a snake in my boot
+	var/list/inside_emotes = list()
+	var/recent_squish = 0
+
+/obj/item/clothing/shoes/New()
+	inside_emotes = list(
+		"<font color='red'>You feel weightless for a moment as \the [name] moves upwards.</font>",
+		"<font color='red'>\The [name] are a ride you've got no choice but to participate in as the wearer moves.</font>",
+		"<font color='red'>The wearer of \the [name] moves, pressing down on you.</font>",
+		"<font color='red'>More motion while \the [name] move, feet pressing down against you.</font>"
+	)
 
 /obj/item/clothing/shoes/proc/draw_knife()
 	set name = "Draw Boot Knife"
@@ -554,8 +601,28 @@
 		user.visible_message("<span class='notice'>\The [user] shoves \the [I] into \the [src].</span>")
 		verbs |= /obj/item/clothing/shoes/proc/draw_knife
 		update_icon()
+	else if(istype(I,/obj/item/holder/micro)) //MICROS IN MY SHOES
+		var/full = 0
+		for(var/mob/M in src)
+			full++
+		if(full >= 2)
+			to_chat(user,"<span class='warning'>You can't fit anyone else into \the [src]!</span>")
+		else
+			var/obj/item/holder/micro/holder = I
+			if(holder.held_mob && holder.held_mob in holder)
+				to_chat(holder.held_mob,"<span class='warning'>[user] stuffs you into \the [src]!</span>")
+				holder.held_mob.forceMove(src)
+				to_chat(user,"<span class='notice'>You stuff \the [holder.held_mob] into \the [src]!</span>")
 	else
 		return ..()
+
+/obj/item/clothing/shoes/attack_self(var/mob/user) //gtfo my shoe
+	for(var/mob/M in src)
+		M.forceMove(get_turf(user))
+		to_chat(M,"<span class='warning'>[user] shakes you out of \the [src]!</span>")
+		to_chat(user,"<span class='notice'>You shake [M] out of \the [src]!</span>")
+
+	..()
 
 /obj/item/clothing/shoes/verb/toggle_layer()
 	set name = "Switch Shoe Layer"
@@ -621,14 +688,50 @@
 	w_class = ITEMSIZE_NORMAL
 	preserve_item = 1
 
-
+	var/taurized = FALSE //Easier than trying to 'compare icons' to see if it's a taur suit
 	sprite_sheets = list(
 		SPECIES_TESHARI = 'icons/mob/species/teshari/suit.dmi',
-		SPECIES_VOX = 'icons/mob/species/vox/suit.dmi'
-		)
+		SPECIES_VOX = 'icons/mob/species/vox/suit.dmi',
+		SPECIES_WEREBEAST = 'icons/mob/species/werebeast/suit.dmi')
 
 	valid_accessory_slots = (ACCESSORY_SLOT_OVER | ACCESSORY_SLOT_ARMBAND)
 	restricted_accessory_slots = (ACCESSORY_SLOT_ARMBAND)
+
+//taurized suit support
+/obj/item/clothing/suit/equipped(var/mob/user, var/slot)
+	var/normalize = TRUE
+
+	//Pyramid of doom-y. Improve somehow?
+	if(!taurized && slot == slot_wear_suit && ishuman(user))
+		var/mob/living/carbon/human/H = user
+		if(isTaurTail(H.tail_style))
+			var/datum/sprite_accessory/tail/taur/taurtail = H.tail_style
+			if(taurtail.suit_sprites && (get_worn_icon_state(slot_wear_suit_str) in icon_states(taurtail.suit_sprites)))
+				icon_override = taurtail.suit_sprites
+				normalize = FALSE
+				taurized = TRUE
+
+	if(normalize && taurized)
+		icon_override = initial(icon_override)
+		taurized = FALSE
+
+	return ..()
+
+/obj/item/clothing/suit/make_worn_icon(var/body_type,var/slot_name,var/inhands,var/default_icon,var/default_layer = 0,var/icon/clip_mask) // Taur suits need to be shifted so its centered on their taur half.
+	var/image/standing = ..()
+	if(taurized) //Special snowflake var on suits
+		standing.pixel_x = -16
+		standing.layer = BODY_LAYER + 15 // 15 is above tail layer, so will not be covered by taurbody.
+	return standing
+
+/obj/item/clothing/suit/apply_accessories(var/image/standing) //Line up applied accessories properly with the body.
+	if(LAZYLEN(accessories) && taurized)
+		for(var/obj/item/clothing/accessory/A in accessories)
+			var/image/I = new(A.get_mob_overlay())
+			I.pixel_x = 16 //Opposite of the pixel_x on the suit (-16) from taurization to cancel it out and puts the accessory in the correct place on the body.
+			standing.add_overlay(I)
+	else
+		return ..()
 
 /obj/item/clothing/suit/update_clothing_icon()
 	if (ismob(src.loc))
@@ -653,19 +756,21 @@
 	blood_sprite_state = "uniformblood"
 
 	var/has_sensor = 1 //For the crew computer 2 = unable to change mode
-	var/sensor_mode = 0
+	//TFF 5/8/19 - sets /obj/item/clothing/under sensor setting default?
+	var/sensor_mode = 3
 		/*
 		1 = Report living/dead
 		2 = Report detailed damages
 		3 = Report location
 		*/
+	var/sensorpref = 5
 	var/displays_id = 1
 	var/rolled_down = -1 //0 = unrolled, 1 = rolled, -1 = cannot be toggled
 	var/rolled_sleeves = -1 //0 = unrolled, 1 = rolled, -1 = cannot be toggled
 	sprite_sheets = list(
 		SPECIES_TESHARI = 'icons/mob/species/teshari/uniform.dmi',
-		SPECIES_VOX = 'icons/mob/species/vox/uniform.dmi'
-		)
+		SPECIES_VOX = 'icons/mob/species/vox/uniform.dmi',
+		SPECIES_WEREBEAST = 'icons/mob/species/werebeast/uniform.dmi')
 
 	//convenience var for defining the icon state for the overlay used when the clothing is worn.
 	//Also used by rolling/unrolling.
@@ -696,7 +801,7 @@
 		return
 	..()
 
-/obj/item/clothing/under/New()
+/obj/item/clothing/under/New(var/mob/living/carbon/human/H) //need human arg for sensorprefs..
 	..()
 	if(worn_state)
 		if(!item_state_slots)
@@ -714,6 +819,18 @@
 		verbs -= /obj/item/clothing/under/verb/rollsuit
 	if(rolled_sleeves == -1)
 		verbs -= /obj/item/clothing/under/verb/rollsleeves
+
+	//TFF 5/8/19 - define numbers and specifics for suit sensor settings
+	sensorpref = isnull(H) ? 1 : (ishuman(H) ? H.sensorpref : 1)
+	switch(sensorpref)
+		if(1) sensor_mode = 0				//Sensors off
+		if(2) sensor_mode = 1				//Sensors on binary
+		if(3) sensor_mode = 2				//Sensors display vitals
+		if(4) sensor_mode = 3				//Sensors display vitals and enables tracking
+		if(5) sensor_mode = pick(0,1,2,3)	//Select a random setting
+		else
+			sensor_mode = pick(0,1,2,3)
+			log_debug("Invalid switch for suit sensors, defaulting to random. [sensorpref] chosen")
 
 /obj/item/clothing/under/proc/update_rolldown_status()
 	var/mob/living/carbon/human/H

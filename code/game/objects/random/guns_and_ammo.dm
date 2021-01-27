@@ -1,7 +1,7 @@
 /obj/random/gun/random
 	name = "Random Weapon"
 	desc = "This is a random energy or ballistic weapon."
-	icon = 'icons/obj/gun.dmi'
+	icon = 'icons/obj/gun/energy.dmi'
 	icon_state = "energystun100"
 
 /obj/random/gun/random/item_to_spawn()
@@ -11,7 +11,7 @@
 /obj/random/energy
 	name = "Random Energy Weapon"
 	desc = "This is a random weapon."
-	icon = 'icons/obj/gun.dmi'
+	icon = 'icons/obj/gun/energy.dmi'
 	icon_state = "energykill100"
 
 /obj/random/energy/item_to_spawn()
@@ -37,7 +37,7 @@
 /obj/random/energy/sec
 	name = "Random Security Energy Weapon"
 	desc = "This is a random security weapon."
-	icon = 'icons/obj/gun.dmi'
+	icon = 'icons/obj/gun/energy.dmi'
 	icon_state = "energykill100"
 
 /obj/random/energy/sec/item_to_spawn()
@@ -47,7 +47,7 @@
 /obj/random/projectile
 	name = "Random Projectile Weapon"
 	desc = "This is a random projectile weapon."
-	icon = 'icons/obj/gun.dmi'
+	icon = 'icons/obj/gun/ballistic.dmi'
 	icon_state = "revolver"
 
 /obj/random/projectile/item_to_spawn()
@@ -94,7 +94,7 @@
 /obj/random/projectile/sec
 	name = "Random Security Projectile Weapon"
 	desc = "This is a random security weapon."
-	icon = 'icons/obj/gun.dmi'
+	icon = 'icons/obj/gun/ballistic.dmi'
 	icon_state = "revolver"
 
 /obj/random/projectile/sec/item_to_spawn()
@@ -105,7 +105,7 @@
 /obj/random/projectile/shotgun
 	name = "Random Projectile Weapon"
 	desc = "This is a random projectile weapon."
-	icon = 'icons/obj/gun.dmi'
+	icon = 'icons/obj/gun/ballistic.dmi'
 	icon_state = "shotgun"
 
 /obj/random/projectile/item_to_spawn()
@@ -118,7 +118,7 @@
 /obj/random/handgun
 	name = "Random Handgun"
 	desc = "This is a random sidearm."
-	icon = 'icons/obj/gun.dmi'
+	icon = 'icons/obj/gun/ballistic.dmi'
 	icon_state = "secgundark"
 
 /obj/random/handgun/item_to_spawn()
@@ -137,7 +137,7 @@
 /obj/random/handgun/sec
 	name = "Random Security Handgun"
 	desc = "This is a random security sidearm."
-	icon = 'icons/obj/gun.dmi'
+	icon = 'icons/obj/gun/ballistic.dmi'
 	icon_state = "secgundark"
 
 /obj/random/handgun/sec/item_to_spawn()
@@ -164,7 +164,7 @@
 /obj/random/projectile/random
 	name = "Random Projectile Weapon"
 	desc = "This is a random weapon."
-	icon = 'icons/obj/gun.dmi'
+	icon = 'icons/obj/gun/ballistic.dmi'
 	icon_state = "revolver"
 
 /obj/random/projectile/random/item_to_spawn()
@@ -176,7 +176,7 @@
 /obj/random/multiple/gun/projectile/smg
 	name = "random smg projectile gun"
 	desc = "Loot for PoIs."
-	icon = 'icons/obj/gun.dmi'
+	icon = 'icons/obj/gun/ballistic.dmi'
 	icon_state = "saber"
 
 /obj/random/multiple/gun/projectile/smg/item_to_spawn()
@@ -210,7 +210,7 @@
 /obj/random/multiple/gun/projectile/rifle
 	name = "random rifle projectile gun"
 	desc = "Loot for PoIs."
-	icon = 'icons/obj/gun.dmi'
+	icon = 'icons/obj/gun/ballistic.dmi'
 	icon_state = "carbine"
 
 //Concerns about the bullpup, but currently seems to be only a slightly stronger z8. But we shall see.
@@ -252,7 +252,7 @@
 /obj/random/multiple/gun/projectile/handgun
 	name = "random handgun projectile gun"
 	desc = "Loot for PoIs."
-	icon = 'icons/obj/gun.dmi'
+	icon = 'icons/obj/gun/ballistic.dmi'
 	icon_state = "revolver"
 
 /obj/random/multiple/gun/projectile/handgun/item_to_spawn()
@@ -394,7 +394,7 @@
 /obj/random/multiple/gun/projectile/shotgun
 	name = "random shotgun projectile gun"
 	desc = "Loot for PoIs."
-	icon = 'icons/obj/gun.dmi'
+	icon = 'icons/obj/gun/ballistic.dmi'
 	icon_state = "shotgun"
 
 /obj/random/multiple/gun/projectile/shotgun/item_to_spawn()

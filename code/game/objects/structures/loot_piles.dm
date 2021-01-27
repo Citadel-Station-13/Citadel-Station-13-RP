@@ -152,8 +152,8 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/clothing/shoes/galoshes,
 		/obj/item/clothing/shoes/black,
 		/obj/item/clothing/shoes/laceup,
-		/obj/item/clothing/shoes/black,
-		/obj/item/clothing/shoes/leather,
+		/obj/item/clothing/shoes/laceup/grey,
+		/obj/item/clothing/shoes/laceup/brown,
 		/obj/item/clothing/gloves/botanic_leather,
 		/obj/item/clothing/gloves/sterile/latex,
 		/obj/item/clothing/gloves/white,
@@ -653,6 +653,9 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 
 /obj/structure/loot_pile/mecha/ripley/firefighter
 	icon_state = "firefighter-broken"
+
+/obj/structure/loot_pile/mecha/ripley/pirate
+	icon_state = "pirate-broken"
 
 /obj/structure/loot_pile/mecha/ripley/random_sprite
 	icon_states_to_use = list("ripley-broken", "firefighter-broken", "ripley-broken-old")
