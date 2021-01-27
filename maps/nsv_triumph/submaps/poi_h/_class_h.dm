@@ -40,7 +40,6 @@
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 	flags = RAD_SHIELDED
 
-
 /area/triumph_away/poi_h
 	name = "Class H World"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
@@ -49,31 +48,25 @@
 	name = "Ghost Town"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
-
 /area/triumph_away/poi_h/POIs/landing_pad
 	name = "Prefab Homestead"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
-
 
 /area/triumph_away/poi_h/POIs/solar_farm
 	name = "Prefab Solar Farm"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
-
 /area/triumph_away/poi_h/POIs/dirt_farm
 	name = "Abandoned Farmstead"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
-
 
 /area/triumph_away/poi_h/POIs/graveyard
 	name = "Desert Graveyard"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
-
 /area/triumph_away/poi_h/POIs/goldmine
 	name = "Desert Goldmine"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
-
 
 /area/triumph_away/poi_h/explored
 	name = "Class H World - Explored (E)"
