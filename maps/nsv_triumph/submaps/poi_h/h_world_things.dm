@@ -10,6 +10,7 @@ DESERT_TURF_CREATE(/turf/simulated/wall)
 DESERT_TURF_CREATE(/turf/simulated/wall/sandstone)
 DESERT_TURF_CREATE(/turf/simulated/wall/sandstonediamond)
 DESERT_TURF_CREATE(/turf/simulated/floor/outdoors/beach/sand/desert)
+DESERT_TURF_CREATE(/turf/simulated/floor/outdoors/beach/sand/dirt)
 DESERT_TURF_CREATE(/turf/simulated/floor/wood)
 DESERT_TURF_CREATE(/turf/simulated/floor/tiled)
 DESERT_TURF_CREATE(/turf/simulated/floor)
@@ -19,10 +20,10 @@ DESERT_TURF_CREATE(/turf/simulated/floor/water/shoreline)
 DESERT_TURF_CREATE(/turf/simulated/floor/water/shoreline/corner)
 
 
-DESERT_TURF_CREATE(/turf/simulated/mineral/outdoors)
-DESERT_TURF_CREATE(/turf/simulated/mineral/outdoors/ignore_mapgen)
-DESERT_TURF_CREATE(/turf/simulated/mineral/outdoors/floor)
-DESERT_TURF_CREATE(/turf/simulated/mineral/outdoors/floor/ignore_mapgen)
+DESERT_TURF_CREATE(/turf/simulated/mineral)
+DESERT_TURF_CREATE(/turf/simulated/mineral/ignore_mapgen)
+DESERT_TURF_CREATE(/turf/simulated/mineral/floor)
+DESERT_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
 
 
 /turf/unsimulated/wall/planetary/desert
@@ -40,9 +41,9 @@ DESERT_TURF_CREATE(/turf/simulated/mineral/outdoors/floor/ignore_mapgen)
 	icon_state = "desert"
 	icon = 'icons/turf/outdoors.dmi'
 
-/turf/simulated/mineral/outdoors
+/turf/simulated/floor/outdoors/beach/sand/dirt
 	name = "worn out path"
-	desc = "A chunk of dirt that has numerous footprints on it."
+	desc = "A compacted bit of sand with footprints all over it..."
 	icon_state = "dirt-dark"
 	icon = 'icons/turf/outdoors.dmi'
 

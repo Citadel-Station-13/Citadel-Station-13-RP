@@ -1,5 +1,5 @@
 "a" = (/turf/simulated/floor/outdoors/beach/sand/desert/classh,/area/triumph_away/poi_h/explored)
-"p" = (/turf/simulated/mineral/outdoors/classh,/area/triumph_away/poi_h/explored)
+"p" = (/turf/simulated/mineral/classh,/area/triumph_away/poi_h/explored)
 "r" = (/obj/random/mob/spider,/turf/simulated/floor/outdoors/beach/sand/desert/classh,/area/triumph_away/poi_h/explored)
 "T" = (/obj/random/mob/spider/mutant,/turf/simulated/floor/outdoors/beach/sand/desert/classh,/area/triumph_away/poi_h/explored)
 

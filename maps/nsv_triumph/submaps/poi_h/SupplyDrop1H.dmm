@@ -54,19 +54,16 @@
 "k" = (
 /turf/simulated/mineral/floor/vacuum,
 /area/template_noop)
-"E" = (
-/turf/simulated/mineral/outdoors/classh,
-/area/template_noop)
 "I" = (
-/turf/simulated/mineral/outdoors/floor/classh,
+/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
 /area/template_noop)
 
 (1,1,1) = {"
 I
-E
-E
-E
-E
+I
+I
+I
+I
 I
 b
 b
@@ -76,8 +73,8 @@ b
 (2,1,1) = {"
 I
 I
-E
-E
+I
+I
 I
 I
 I
@@ -93,8 +90,8 @@ k
 I
 I
 I
-E
-E
+I
+I
 I
 "}
 (4,1,1) = {"
@@ -105,8 +102,8 @@ k
 d
 g
 d
-E
-E
+I
+I
 I
 "}
 (5,1,1) = {"
@@ -118,7 +115,7 @@ d
 f
 d
 d
-E
+I
 I
 "}
 (6,1,1) = {"
@@ -148,8 +145,8 @@ I
 (8,1,1) = {"
 I
 I
-E
-E
+I
+I
 d
 i
 d
@@ -164,8 +161,8 @@ k
 k
 I
 I
-E
-E
+I
+I
 I
 I
 "}
