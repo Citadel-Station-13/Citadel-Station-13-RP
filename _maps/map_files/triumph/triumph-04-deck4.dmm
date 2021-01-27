@@ -7718,11 +7718,6 @@
 /obj/item/retail_scanner/security,
 /turf/simulated/floor/tiled/dark,
 /area/security/security_lockerroom)
-"fnY" = (
-/turf/simulated/floor/tiled/monofloor{
-	dir = 8
-	},
-/area/triumph/station/explorer_prep)
 "fow" = (
 /obj/structure/sign/warning/lethal_turrets{
 	pixel_y = -32
@@ -9169,12 +9164,6 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/ai)
-"gxB" = (
-/obj/machinery/light,
-/turf/simulated/floor/tiled/monofloor{
-	dir = 4
-	},
-/area/triumph/station/explorer_prep)
 "gxG" = (
 /obj/structure/table/reinforced,
 /turf/simulated/floor/tiled,
@@ -44478,7 +44467,7 @@ nIK
 sJC
 sJC
 gap
-fnY
+cVO
 cVO
 fCb
 hBD
@@ -44620,7 +44609,7 @@ nIK
 nIK
 sJC
 lrl
-gxB
+sdO
 sJC
 fCb
 fCb
