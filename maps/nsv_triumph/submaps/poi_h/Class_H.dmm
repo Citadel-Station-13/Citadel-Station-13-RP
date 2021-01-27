@@ -1,6 +1,6 @@
 "e" = (/turf/simulated/floor/outdoors/beach/sand/desert/classh,/area/triumph_away/poi_h/unexplored)
 "g" = (/turf/simulated/floor/outdoors/beach/sand/desert/classh,/area/triumph_away/poi_h/explored)
-"j" = (/turf/simulated/mineral/outdoors/classh,/area/triumph_away/poi_h/explored)
+"j" = (/turf/simulated/mineral/classh,/area/triumph_away/poi_h/explored)
 "l" = (/obj/effect/overmap/visitable/sector/class_h,/turf/simulated/floor/outdoors/beach/sand/desert/classh,/area/triumph_away/poi_h/explored)
 "o" = (/turf/simulated/floor/water/shoreline/corner/classh,/area/triumph_away/poi_h/explored)
 "s" = (/turf/simulated/floor/water/shoreline/corner/classh{dir = 1},/area/triumph_away/poi_h/explored)
