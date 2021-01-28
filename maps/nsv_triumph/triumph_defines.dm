@@ -187,7 +187,8 @@
 	return 1
 
 /datum/skybox_settings/triumph/New()
-	icon_state = pick("space1","space2","space3","space4","space5","space6")
+	icon_state = "space1" // This is set again to a static state until a proper RNG of a static backdrop for every new round is set-up.
+	return icon_state
 
 // Short range computers see only the main levels, others can see the surrounding surface levels.
 /datum/map/triumph/get_map_levels(var/srcz, var/long_range = TRUE)

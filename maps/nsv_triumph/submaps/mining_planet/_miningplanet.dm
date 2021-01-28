@@ -21,7 +21,6 @@
 	icon_state = "away"
 	base_turf = /turf/simulated/mineral/floor/
 	dynamic_lighting = 1
-	dynamic_lighting = TRUE
 
 /area/triumph_away/mining_planet/explored
 	name = "Mining Planet - Explored (E)"

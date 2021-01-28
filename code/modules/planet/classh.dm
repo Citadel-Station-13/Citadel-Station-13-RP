@@ -49,10 +49,10 @@ var/datum/planet/classh/planet_classh = null
 
 		if(0.50 to 0.70) // Sunrise/set
 			low_brightness = 0.8
-			low_color = "#CC3300"
+			low_color = "#999999"
 
 			high_brightness = 0.9
-			high_color = "#FF9933"
+			high_color = "#AAAAAA"
 			min = 0.50
 
 		if(0.70 to 1.00) // Noon
