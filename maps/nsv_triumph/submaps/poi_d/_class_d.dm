@@ -32,28 +32,23 @@
 	name = "Class D World"
 	icon_state = "away"
 	base_turf = /turf/simulated/mineral/floor/vacuum
-	dynamic_lighting = 0
-	dynamic_lighting = FALSE
+	dynamic_lighting = 1
 
 /area/triumph_away/poi_d/plains
 	name = "Class D World Plains"
 	base_turf = /turf/simulated/mineral/floor/vacuum
-	dynamic_lighting = 0
 
 /area/triumph_away/poi_d/crater
 	name = "Class D World Crater"
 	base_turf = /turf/simulated/mineral/floor/vacuum
-	dynamic_lighting = 0
 
 /area/triumph_away/poi_d/Mountain
 	name = "Class D World Mountain"
 	base_turf = /turf/simulated/mineral/floor/vacuum
-	dynamic_lighting = 0
 
 /area/triumph_away/poi_d/Crevices
 	name = "Class D World Crevices"
 	base_turf = /turf/simulated/mineral/floor/vacuum
-	dynamic_lighting = 0
 
 /area/triumph_away/poi_d/POIs/solar_farm
 	name = "Prefab Solar Farm"
