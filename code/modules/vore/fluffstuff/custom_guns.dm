@@ -723,7 +723,7 @@ END OF CITADEL CHANGES */
 	item_state = "phaser"
 	item_icons = list(slot_l_hand_str = 'icons/mob/items/lefthand_guns_vr.dmi', slot_r_hand_str = 'icons/mob/items/righthand_guns_vr.dmi', "slot_belt" = 'icons/mob/belt_vr.dmi')
 	item_state_slots = list(slot_r_hand_str = "phaser", slot_l_hand_str = "phaser", "slot_belt" = "phaser")
-	fire_sound = 'sound/weapons/laser2.ogg'
+	fire_sound = 'sound/weapons/laser_rifle_1.wav'
 	origin_tech = list(TECH_COMBAT = 4, TECH_MAGNET = 2, TECH_POWER = 4)
 	charge_cost = 300
 
@@ -801,6 +801,7 @@ END OF CITADEL CHANGES */
 	icon = 'icons/obj/gun/energy.dmi'
 	icon_state = "holdoutkill"
 	item_state = null
+	fire_sound = 'sound/weapons/laser_holdout_1.wav'
 	phase_power = 100
 
 	w_class = ITEMSIZE_SMALL
