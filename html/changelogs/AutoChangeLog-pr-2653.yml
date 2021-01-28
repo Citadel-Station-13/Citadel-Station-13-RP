@@ -1,0 +1,5 @@
+author: "drofoljaelisglis"
+delete-after: True
+changes: 
+  - tweak: "Changed the Frontier Phaser, Holdout Phaser, and Personal Defense Weapon's firing sounds."
+  - soundadd: "New weapon sounds, including one (currently) unused one."

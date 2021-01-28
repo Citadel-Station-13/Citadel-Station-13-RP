@@ -1827,7 +1827,7 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass_research{
-	name = "XenoArchelogy"
+	name = "XenoArcheology"
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
@@ -6213,6 +6213,10 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled/old_cargo/purple,
 /area/assembly/robotics)
+"fHa" = (
+/obj/structure/sign/department/robo,
+/turf/simulated/wall,
+/area/rnd/research_foyer_auxiliary)
 "fHG" = (
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/structure/closet/l3closet/scientist/double,
@@ -34098,7 +34102,7 @@ shT
 nGf
 nGf
 uwK
-vbo
+fHa
 nGf
 ivY
 vbo
