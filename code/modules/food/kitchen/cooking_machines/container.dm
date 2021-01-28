@@ -11,7 +11,8 @@
 	var/list/insertable = list(
 		/obj/item/reagent_containers/food/snacks,
 		/obj/item/holder,
-		/obj/item/paper
+		/obj/item/paper,
+		/obj/item/organ/internal/brain
 	)
 
 /obj/item/reagent_containers/cooking_container/Initialize()
