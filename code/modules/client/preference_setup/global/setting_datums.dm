@@ -330,9 +330,3 @@ var/list/_client_preferences_by_type
 	enabled_by_default = FALSE
 	enabled_description = "Obfuscate Ghost"
 	disabled_description = "Normal Ghost"
-
-/datum/client_preference/grammar
-	description = "Autocorrect Grammar"
-	key = "GRAMMAR"
-	enabled_description = "Enabled"
-	disabled_description = "Disabled"
