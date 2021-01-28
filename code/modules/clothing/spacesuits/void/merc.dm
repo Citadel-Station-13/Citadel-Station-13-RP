@@ -37,3 +37,17 @@
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/melee/energy/sword,/obj/item/handcuffs,/obj/item/material/twohanded/fireaxe,/obj/item/flamethrower)
 	siemens_coefficient = 0.7
+
+//Soviet Void Suit
+/obj/item/clothing/head/helmet/space/void/merc/soviet
+	name = "ancient red helmet"
+	desc = "An antique helmet which served as one of the inspirations for Gorlex's designs, a faded logo on the interior resembles a shattered sickle."
+	icon_state = "void_soviet"
+	armor = list(melee = 40, bullet = 60, laser = 20,energy = 15, bomb = 45, bio = 100, rad = 100)
+	light_overlay = "sr_overlay"
+
+/obj/item/clothing/suit/space/void/merc/soviet
+	name = "antique red voidsuit"
+	desc = "A well maintained antique voidsuit, the scent of stale sweat and vodka is impossible to remove. Many features of this suit bear morphological similarities to more modern Gorlex voidsuits."
+	icon_state = "void_soviet"
+	armor = list(melee = 40, bullet = 60, laser = 20, energy = 15, bomb = 45, bio = 100, rad = 100)

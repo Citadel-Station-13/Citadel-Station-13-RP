@@ -475,3 +475,51 @@
 	name = "Operations Security Staff Cap"
 	desc = "A red cap distributed to Security staff aboard NT vessels."
 	icon_state = "operations_cap_sec"
+
+/obj/item/clothing/head/rice
+	name = "rice hat"
+	desc = "A conical hat originating from old Earth Asia. Useful for keeping the sun and moisture out of your face when working in a humid environment."
+	icon_state = "rice_hat"
+	item_state_slots = list(slot_r_hand_str = "beret_white", slot_l_hand_str = "beret_white")
+	body_parts_covered = 0
+	flags_inv = BLOCKHAIR
+
+/obj/item/clothing/head/lobster
+	name = "lobster costume head"
+	desc = "Remember: Lobsters don't scream."
+	icon_state = "lobster_hat"
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
+	siemens_coefficient = 0.7
+	body_parts_covered = HEAD|FACE|EYES
+
+/obj/item/clothing/head/nemes
+	name = "nemes headdress"
+	desc = "A flowing cloth cap worn by the ruling class of Egypt, an old Earth country in Africa. Usually found on dessicated corpses or fetish cosplayers."
+	icon_state = "nemes_headdress"
+	item_state_slots = list(slot_r_hand_str = "beret_blue", slot_l_hand_str = "beret_blue")
+	body_parts_covered = 0
+	flags_inv = BLOCKHAIR
+
+/obj/item/clothing/head/pharaoh
+	name = "pharaoh cap"
+	desc = "An alternate headdress worn by ancient Egyptian Pharaohs. Studies have concluded that wearing this does not, in fact, make you an Egyptian."
+	icon_state = "pharaoh_hat"
+	item_state_slots = list(slot_r_hand_str = "beret_blue", slot_l_hand_str = "beret_blue")
+	body_parts_covered = 0
+	flags_inv = BLOCKHAIR
+
+/obj/item/clothing/head/skull
+	name = "totemic skull hat"
+	desc = "This bleached skull has been fitted with a band allowing it to be worn. Whether the foe was yours, or anothers, you do feel a little more intimidating with this on."
+	icon_state = "skull"
+	item_state_slots = list(slot_r_hand_str = "beret_white", slot_l_hand_str = "beret_white")
+	body_parts_covered = 0
+	flags_inv = 0
+
+/obj/item/clothing/head/bunny
+	name = "bunny costume head"
+	desc = "Popular with both mascots and heartbroken Japanese highschool girls."
+	icon_state = "bunnyhead"
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
+	siemens_coefficient = 0.7
+	body_parts_covered = HEAD|FACE|EYES
