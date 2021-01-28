@@ -104,7 +104,7 @@
 	requires_power = 0
 	})
 "eq" = (
-/mob/living/simple_mob/humanoid/merc/voxpirate/ranged,
+/mob/living/simple_mob/humanoid/merc/voxpirate/pirate,
 /turf/simulated/floor/reinforced,
 /area/triumph_away/piratebase/facility{
 	requires_power = 0
@@ -374,7 +374,7 @@
 	requires_power = 0
 	})
 "mE" = (
-/mob/living/simple_mob/humanoid/merc/voxpirate/ranged/captain,
+/mob/living/simple_mob/humanoid/merc/voxpirate/captain,
 /turf/simulated/floor/reinforced,
 /area/triumph_away/piratebase/facility{
 	requires_power = 0
@@ -626,7 +626,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/mob/living/simple_mob/humanoid/merc/voxpirate/ranged,
+/mob/living/simple_mob/humanoid/merc/voxpirate/pirate,
 /turf/simulated/floor/reinforced,
 /area/triumph_away/piratebase/facility{
 	requires_power = 0
@@ -791,6 +791,12 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/shuttle/pirate/general)
+"DX" = (
+/mob/living/simple_mob/humanoid/merc/voxpirate/technician,
+/turf/simulated/floor/reinforced,
+/area/triumph_away/piratebase/facility{
+	requires_power = 0
+	})
 "Ea" = (
 /obj/machinery/computer/shuttle_control/explore/pirate{
 	dir = 4
@@ -798,7 +804,7 @@
 /turf/simulated/floor/reinforced,
 /area/shuttle/pirate/general)
 "Em" = (
-/mob/living/simple_mob/humanoid/merc/voxpirate/ranged/suppressor,
+/mob/living/simple_mob/humanoid/merc/voxpirate/suppressor,
 /turf/simulated/floor/reinforced,
 /area/triumph_away/piratebase/facility{
 	requires_power = 0
@@ -935,7 +941,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/mob/living/simple_mob/humanoid/merc/voxpirate/ranged/suppressor,
+/mob/living/simple_mob/humanoid/merc/voxpirate/suppressor,
 /turf/simulated/floor/reinforced,
 /area/triumph_away/piratebase/facility{
 	requires_power = 0
@@ -1136,7 +1142,7 @@
 /area/shuttle/pirate/general)
 "Pr" = (
 /obj/machinery/light,
-/mob/living/simple_mob/humanoid/merc/voxpirate/ranged,
+/mob/living/simple_mob/humanoid/merc/voxpirate/pirate,
 /turf/simulated/floor/reinforced,
 /area/triumph_away/piratebase/facility{
 	requires_power = 0
@@ -1180,7 +1186,7 @@
 /obj/structure/sink{
 	pixel_y = 23
 	},
-/mob/living/simple_mob/humanoid/merc/voxpirate/ranged,
+/mob/living/simple_mob/humanoid/merc/voxpirate/pirate,
 /turf/simulated/floor/reinforced,
 /area/triumph_away/piratebase/facility{
 	requires_power = 0
@@ -1239,7 +1245,7 @@
 /turf/space,
 /area/triumph_away/piratebase/space)
 "Uh" = (
-/mob/living/simple_mob/humanoid/merc/voxpirate/ranged/boarder,
+/mob/living/simple_mob/humanoid/merc/voxpirate/boarder,
 /turf/simulated/floor/airless,
 /area/triumph_away/piratebase/facility{
 	requires_power = 0
@@ -1250,12 +1256,6 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
-	requires_power = 0
-	})
-"Vb" = (
-/mob/living/simple_mob/humanoid/merc/voxpirate/ranged/boarder,
 /turf/simulated/floor/reinforced,
 /area/triumph_away/piratebase/facility{
 	requires_power = 0
@@ -7238,7 +7238,7 @@ fl
 yq
 yq
 hT
-Vb
+vL
 hT
 hT
 hT
@@ -7526,14 +7526,14 @@ hT
 vL
 hT
 hT
-hT
+DX
 hT
 rM
 hT
 hT
 hT
 hT
-Vb
+vL
 hT
 hT
 hT
@@ -7795,7 +7795,7 @@ hT
 hT
 hT
 hT
-hT
+DX
 hT
 hT
 hT
@@ -7973,7 +7973,7 @@ hT
 hT
 hT
 hT
-hT
+DX
 hT
 hT
 hT
@@ -8642,7 +8642,7 @@ Tv
 ol
 hT
 hT
-hT
+DX
 hT
 hT
 hT
@@ -8656,7 +8656,7 @@ hT
 hT
 hT
 hT
-hT
+DX
 hT
 hT
 hT
@@ -8671,7 +8671,7 @@ hT
 yq
 yq
 hi
-hT
+DX
 hT
 hT
 Rx
@@ -8822,7 +8822,7 @@ hT
 hT
 hT
 hT
-hT
+DX
 hT
 hT
 ol
@@ -9098,13 +9098,13 @@ yq
 yq
 hT
 hT
-Vb
+vL
 hT
 yq
 hT
 hT
 hT
-Vb
+vL
 Em
 hT
 hT
@@ -9516,7 +9516,7 @@ rM
 hT
 hT
 hT
-Vb
+vL
 hT
 hT
 hT
@@ -10800,7 +10800,7 @@ yq
 hT
 yq
 yq
-Vb
+vL
 hT
 hT
 hT
@@ -10809,7 +10809,7 @@ hT
 hT
 JW
 hT
-Vb
+vL
 rM
 hT
 hT
@@ -10930,13 +10930,13 @@ yq
 yq
 hT
 hT
-Vb
+vL
 hT
 hT
 hT
 hT
 hT
-Vb
+vL
 hT
 hT
 hT
@@ -11059,7 +11059,7 @@ Tv
 Tv
 ol
 YV
-Vb
+vL
 hT
 eq
 hT
@@ -11075,7 +11075,7 @@ hT
 hT
 hT
 hT
-hT
+DX
 hT
 hT
 hT
@@ -11092,7 +11092,7 @@ yq
 hT
 hT
 rM
-Vb
+vL
 hT
 rM
 hT
@@ -11383,7 +11383,7 @@ vL
 LB
 yq
 hT
-Vb
+vL
 hT
 hT
 ol
@@ -11628,7 +11628,7 @@ Tv
 ol
 qL
 hT
-hT
+DX
 wT
 hT
 nx
@@ -11919,7 +11919,7 @@ wT
 yq
 hT
 hT
-Vb
+vL
 hT
 yq
 hT
@@ -12056,7 +12056,7 @@ hT
 hT
 hT
 hT
-hT
+DX
 ye
 yq
 hi
@@ -12209,13 +12209,13 @@ yq
 hT
 hT
 hT
-Vb
+vL
 hT
 hT
 hT
 hT
 hT
-Vb
+vL
 hT
 hT
 yq
@@ -12225,7 +12225,7 @@ vL
 hT
 JW
 hT
-Vb
+vL
 rM
 ye
 yq
@@ -12236,7 +12236,7 @@ hT
 yq
 vL
 hT
-hT
+DX
 hT
 Rp
 KJ
@@ -12515,7 +12515,7 @@ hT
 yq
 hT
 hT
-Vb
+vL
 hT
 yq
 hT
@@ -12623,7 +12623,7 @@ ol
 hT
 vL
 hT
-Vb
+vL
 eq
 hT
 vX
@@ -12934,7 +12934,7 @@ ng
 hT
 hT
 rM
-Vb
+vL
 hT
 rM
 hT
@@ -13055,7 +13055,7 @@ Jw
 yq
 hT
 hT
-hT
+DX
 hT
 yq
 hT
@@ -13074,7 +13074,7 @@ yq
 yq
 Ne
 hT
-Vb
+vL
 hT
 hT
 hT
@@ -13218,7 +13218,7 @@ Ne
 hT
 hT
 hT
-Vb
+vL
 hT
 hT
 hT
@@ -13480,7 +13480,7 @@ cM
 hT
 yq
 hT
-Vb
+vL
 hT
 ye
 yq
@@ -13628,7 +13628,7 @@ hT
 yq
 Xd
 hT
-Vb
+vL
 hT
 hT
 hT
@@ -13772,7 +13772,7 @@ hT
 hT
 hT
 hT
-hT
+DX
 hT
 hT
 yq
@@ -13798,7 +13798,7 @@ hT
 yq
 rM
 hT
-hT
+DX
 LB
 ol
 KJ
@@ -13920,7 +13920,7 @@ ye
 yq
 hi
 hT
-Vb
+vL
 hT
 hT
 hT
@@ -13939,7 +13939,7 @@ hT
 hT
 yq
 rM
-Vb
+vL
 hT
 LB
 ol
@@ -14056,7 +14056,7 @@ hi
 hT
 hT
 hT
-Vb
+vL
 hT
 hT
 yq
@@ -14191,7 +14191,7 @@ hT
 yq
 hT
 hT
-Vb
+vL
 hT
 yq
 Xd
@@ -14468,7 +14468,7 @@ Tv
 ol
 yq
 hX
-Vb
+vL
 hT
 vL
 JA
@@ -14488,7 +14488,7 @@ hT
 hT
 hT
 hT
-hT
+DX
 ye
 yq
 LB
@@ -14515,7 +14515,7 @@ hT
 hT
 kf
 hT
-hT
+DX
 hT
 hT
 hT
@@ -14928,7 +14928,7 @@ hT
 hT
 yq
 hT
-Vb
+vL
 hT
 hT
 yq
@@ -15227,7 +15227,7 @@ kf
 rM
 hT
 hT
-Vb
+DX
 kf
 hT
 hT
@@ -15339,7 +15339,7 @@ hT
 hT
 hT
 hT
-hT
+DX
 hT
 hT
 yq
@@ -15628,9 +15628,9 @@ Em
 hT
 yq
 hi
-Vb
+vL
 hT
-hT
+DX
 hT
 hT
 hT
@@ -16070,7 +16070,7 @@ Xd
 yq
 LB
 hT
-hT
+DX
 ye
 yq
 hi
@@ -16362,7 +16362,7 @@ hT
 hT
 hT
 hT
-hT
+DX
 hT
 hT
 hT
@@ -16496,7 +16496,7 @@ ye
 yq
 hT
 hT
-Vb
+vL
 hT
 Rx
 hT
@@ -16626,7 +16626,7 @@ hT
 ye
 yq
 hT
-Vb
+vL
 hT
 hT
 hT
@@ -17182,7 +17182,7 @@ Tv
 ol
 hT
 hT
-vL
+DX
 hT
 hT
 hT

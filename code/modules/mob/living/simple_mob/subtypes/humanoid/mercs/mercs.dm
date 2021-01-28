@@ -492,9 +492,9 @@
 ////////////////////////////////
 //Classifying these as Mercs, due to the general power level I want them at.
 
-/mob/living/simple_mob/humanoid/merc/voxpirate
-	name = "vox pirate"
-	desc = "A desperate looking Vox. Get your gun."
+/mob/living/simple_mob/humanoid/merc/voxpirate	//Don't use this one.
+	name = "vox mannequin"
+	desc = "You shouldn't be seeing this one."
 	icon = 'icons/mob/animal.dmi'
 	icon_state = "voxpirate"
 	icon_living = "voxpirate"
@@ -517,11 +517,6 @@
 	attacktext = list("slashed", "stabbed")
 	armor = list(melee = 60, bullet = 50, laser = 30, energy = 15, bomb = 35, bio = 100, rad = 100)	// Matching Merc voidsuit stats to represent toughness.
 
-	projectiletype = /obj/item/projectile/bullet/rifle/a762
-	projectilesound = 'sound/weapons/riflebolt.ogg'
-	needs_reload = TRUE
-	reload_max = 20
-
 	min_oxy = 0 //Vox are spaceproof.
 	max_oxy = 0
 	min_tox = 0
@@ -541,6 +536,19 @@
 	ai_holder_type = /datum/ai_holder/simple_mob/merc
 	say_list_type = /datum/say_list/merc/voxpirate
 
+/mob/living/simple_mob/humanoid/merc/voxpirate/pirate
+	name = "vox pirate"
+	desc = "A desperate looking Vox. Get your gun."
+
+	projectiletype = /obj/item/projectile/bullet/rifle/a762
+	projectilesound = 'sound/weapons/riflebolt.ogg'
+	needs_reload = TRUE
+	reload_max = 20
+
+////////////////////////////////
+//			Vox Melee
+////////////////////////////////
+
 /mob/living/simple_mob/humanoid/merc/voxpirate/boarder
 	name = "vox melee boarder"
 	desc = "A howling Vox with a sword. Run."
@@ -553,6 +561,7 @@
 	attack_sharp = 1
 	attack_edge = 1
 
+	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
 	corpse = /obj/effect/landmark/mobcorpse/vox/boarder_m
 	loot_list = list(/obj/item/melee/energy/sword = 100)
 
@@ -584,7 +593,7 @@
 //			Vox Ranged
 ////////////////////////////////
 
-/mob/living/simple_mob/humanoid/merc/voxpirate/ranged/boarder
+/mob/living/simple_mob/humanoid/merc/voxpirate/boarder
 	name = "vox ranged boarder"
 	desc = "A howling Vox with a shotgun. Get to cover!"
 	icon_state = "voxboarder_r"
@@ -594,6 +603,7 @@
 	projectiletype = /obj/item/projectile/bullet/pellet/shotgun
 	projectilesound = 'sound/weapons/Gunshot_shotgun.ogg'
 
+	ai_holder_type = /datum/ai_holder/simple_mob/ranged/aggressive
 	corpse = /obj/effect/landmark/mobcorpse/vox/boarder_r
 	loot_list = list(/obj/item/gun/projectile/shotgun/pump/combat = 100,
 					/obj/item/ammo_magazine/m12gdrum = 30,
@@ -603,7 +613,7 @@
 	needs_reload = TRUE
 	reload_max = 10
 
-/mob/living/simple_mob/humanoid/merc/voxpirate/ranged/technician
+/mob/living/simple_mob/humanoid/merc/voxpirate/technician
 	name = "vox salvage technician"
 	desc = "A screeching Vox with an ion rifle. Usually sent on scrapping operations."
 	icon_state = "voxboarder_t"
@@ -613,13 +623,14 @@
 	projectiletype = /obj/item/projectile/ion
 	projectilesound = 'sound/weapons/Laser.ogg'
 
+	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
 	corpse = /obj/effect/landmark/mobcorpse/vox/boarder_t
 	loot_list = list(/obj/item/gun/energy/ionrifle)
 
 	needs_reload = TRUE
 	reload_max = 25 //Suppressive tech weapon.
 
-/mob/living/simple_mob/humanoid/merc/voxpirate/ranged/suppressor
+/mob/living/simple_mob/humanoid/merc/voxpirate/suppressor
 	name = "vox suppressor"
 	desc = "Come on, feel the noise!"
 	icon_state = "voxsuppressor"
@@ -631,6 +642,7 @@
 	projectiletype = /obj/item/projectile/sonic/weak
 	projectilesound = 'sound/effects/basscannon.ogg'
 
+	ai_holder_type = /datum/ai_holder/simple_mob/destructive
 	corpse = /obj/effect/landmark/mobcorpse/vox/suppressor
 	loot_list = list(/obj/item/gun/energy/sonic = 100)
 
@@ -638,7 +650,7 @@
 	needs_reload = TRUE
 	reload_max = 30 //Gotta lay down that fire, son.
 
-/mob/living/simple_mob/humanoid/merc/voxpirate/ranged/captain
+/mob/living/simple_mob/humanoid/merc/voxpirate/captain
 	name = "vox pirate captain"
 	desc = "Walkings the plank, dustlung! Yayaya."
 	icon_state = "voxcaptain"
@@ -650,6 +662,7 @@
 	projectiletype = /obj/item/projectile/beam/darkmatter
 	projectilesound = 'sound/weapons/eLuger.ogg'
 
+	ai_holder_type = /datum/ai_holder/simple_mob/destructive
 	corpse = /obj/effect/landmark/mobcorpse/vox/captain
 	loot_list = list(/obj/item/gun/energy/darkmatter = 100)
 
