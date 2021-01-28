@@ -260,6 +260,14 @@
 	corpsemask = /obj/item/clothing/mask/breath
 	corpseid = 0
 
+/obj/effect/landmark/mobcorpse/vox/boarder_t
+	name = "vox salvage technician"
+	corpseuniform = /obj/item/clothing/under/rank/bartender
+	corpsesuit = /obj/item/clothing/suit/armor/bulletproof
+	corpseshoes = /obj/item/clothing/shoes/boots/workboots
+	corpsemask = /obj/item/clothing/mask/breath
+	corpseid = 0
+
 /obj/effect/landmark/mobcorpse/vox/suppressor
 	name = "vox suppressor"
 	corpseuniform = /obj/item/clothing/under/color/red

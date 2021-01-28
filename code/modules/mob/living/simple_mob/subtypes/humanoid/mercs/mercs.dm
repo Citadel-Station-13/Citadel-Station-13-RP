@@ -603,6 +603,22 @@
 	needs_reload = TRUE
 	reload_max = 10
 
+/mob/living/simple_mob/humanoid/merc/voxpirate/ranged/technician
+	name = "vox salvage technician"
+	desc = "A screeching Vox with an ion rifle. Usually sent on scrapping operations."
+	icon_state = "voxboarder_t"
+	icon_living = "voxboarder_t"
+	icon_dead = "voxboarder_t_dead"
+
+	projectiletype = /obj/item/projectile/ion
+	projectilesound = 'sound/weapons/Laser.ogg'
+
+	corpse = /obj/effect/landmark/mobcorpse/vox/boarder_t
+	loot_list = list(/obj/item/gun/energy/ionrifle)
+
+	needs_reload = TRUE
+	reload_max = 25 //Suppressive tech weapon.
+
 /mob/living/simple_mob/humanoid/merc/voxpirate/ranged/suppressor
 	name = "vox suppressor"
 	desc = "Come on, feel the noise!"
@@ -620,7 +636,7 @@
 
 	base_attack_cooldown = 5 // Two attacks a second or so.
 	needs_reload = TRUE
-	reload_max = 25 //Gotta lay down that fire, son.
+	reload_max = 30 //Gotta lay down that fire, son.
 
 /mob/living/simple_mob/humanoid/merc/voxpirate/ranged/captain
 	name = "vox pirate captain"
@@ -631,11 +647,11 @@
 
 	armor = list(melee = 60, bullet = 50, laser = 40, energy = 15, bomb = 30, bio = 100, rad = 100)	// Vox RIG armor values.
 
-	projectiletype = /obj/item/projectile/energy/darkmatter
+	projectiletype = /obj/item/projectile/beam/darkmatter
 	projectilesound = 'sound/weapons/eLuger.ogg'
 
 	corpse = /obj/effect/landmark/mobcorpse/vox/captain
 	loot_list = list(/obj/item/gun/energy/darkmatter = 100)
 
 	needs_reload = TRUE
-	reload_max = 10 //Other Vox should be carrying ammo.
+	reload_max = 15 //Other Vox should be carrying ammo.
