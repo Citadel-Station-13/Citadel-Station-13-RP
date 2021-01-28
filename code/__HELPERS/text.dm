@@ -23,7 +23,7 @@
  */
 
 //Used for preprocessing entered text
-/proc/sanitize(var/input, var/max_length = MAX_MESSAGE_LEN, var/encode = 1, var/trim = 1, var/extra = 1, var/grammar =1)
+/proc/sanitize(var/input, var/max_length = MAX_MESSAGE_LEN, var/encode = 1, var/trim = 1, var/extra = 1, var/grammar = 1)
 	if(!input)
 		return
 
@@ -32,9 +32,42 @@
 
 	if(extra)
 		input = replace_characters(input, list("\n"=" ","\t"=" "))
-
 	if(grammar)
-		input = replace_characters(input, list(" i "=" I ","i'm"="I'm"))
+		input = replace_characters(input, list(
+												" i "=" I ",
+												"i'm"="I'm",
+												"s's"="s'",
+												"wont"="won't",
+												"isnt"="isn't",
+												"dont"="don't",
+												"shouldnt"="shouldn't",
+												"cant"="can't",
+												" ive "=" I've ",
+												"whos"="who's",
+												"whove"="who've",
+												"whod"="who’d",
+												"whats"="what’s",
+												"whatd"="what’d",
+												"thats"="that’s",
+												"thatll"="that’ll",
+												"thatd"="that’d",
+												" nows "=" now’s ",
+												"isnt"="isn’t",
+												"arent"="aren’t",
+												"wasnt"="wasn’t",
+												"werent"="weren’t",
+												"havent"="haven’t",
+												"hasnt"="hasn’t",
+												"hadnt"="hadn’t",
+												"doesnt"="doesn’t",
+												"didnt"="didn’t",
+												" cant "=" can’t ",
+												"couldnt"="couldn’t",
+												"wont"="won’t",
+												"wouldnt"="wouldn’t",
+												"mustnt"="mustn’t",
+												"shouldnt"="shouldn’t"
+												))
 	if(encode)
 		// The below \ escapes have a space inserted to attempt to enable Travis auto-checking of span class usage. Please do not remove the space.
 		//In addition to processing html, html_encode removes byond formatting codes like "\ red", "\ i" and other.
