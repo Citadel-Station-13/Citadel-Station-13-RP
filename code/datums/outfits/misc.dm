@@ -43,7 +43,7 @@
 	l_ear = /obj/item/radio/headset
 	uniform = /obj/item/clothing/under/color/grey
 	id_slot = slot_wear_id
-	id_type = /obj/item/card/id/civilian	//merchant
+	id_type = /obj/item/card/id/external/merchant	//created a new ID so merchant can open their doors
 	pda_slot = slot_r_store
 	pda_type = /obj/item/pda/chef //cause I like the look
 	id_pda_assignment = "Merchant"

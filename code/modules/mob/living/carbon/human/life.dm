@@ -1277,9 +1277,17 @@
 						bodytemp.icon_state = "temp-1"
 					else
 						bodytemp.icon_state = "temp0"
+		if(blinded)
+			overlay_fullscreen("blind", /obj/screen/fullscreen/blind)
 
-		if(blinded)		overlay_fullscreen("blind", /obj/screen/fullscreen/blind)
-		else			clear_fullscreens()
+		else
+			clear_fullscreens()
+
+		if(blinded)
+			overlay_fullscreen("blind", /obj/screen/fullscreen/blind)
+
+		else if(!machine)
+			clear_fullscreens()
 
 		if(disabilities & NEARSIGHTED)	//this looks meh but saves a lot of memory by not requiring to add var/prescription
 			if(glasses)					//to every /obj/item
