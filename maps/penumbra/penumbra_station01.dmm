@@ -346,6 +346,7 @@
 /area/penumbra/perimeter/outer)
 "bG" = (
 /obj/machinery/door/airlock/maintenance/engi,
+/obj/structure/catwalk,
 /turf/simulated/wall/r_wall,
 /area/penumbra)
 "bH" = (
@@ -1419,6 +1420,18 @@
 /obj/machinery/recharge_station,
 /turf/simulated/shuttle/floor/purple,
 /area/penumbra/perimeter/inner)
+"fx" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 6
+	},
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/obj/structure/cable/yellow{
+	dir = 1
+	},
+/turf/simulated/floor,
+/area/penumbra)
 "fy" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 8
@@ -1620,8 +1633,8 @@
 /turf/simulated/floor/tiled/white,
 /area/penumbra)
 "gl" = (
-/obj/effect/wingrille_spawn/reinforced,
-/turf/simulated/floor/tiled/white,
+/obj/machinery/door/airlock/glass_medical,
+/turf/simulated/floor/lino,
 /area/penumbra)
 "gm" = (
 /obj/machinery/transhuman/resleever,
@@ -2549,6 +2562,12 @@
 /obj/machinery/computer/fission_monitor,
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos/monitoring)
+"jf" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/atmos/storage)
 "jg" = (
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos/monitoring)
@@ -3448,8 +3467,9 @@
 /turf/simulated/wall/r_wall,
 /area/engineering/foyer)
 "ma" = (
-/turf/simulated/wall/r_wall,
-/area/space)
+/obj/effect/wingrille_spawn/reinforced,
+/turf/simulated/floor/tiled/white,
+/area/penumbra)
 "mb" = (
 /obj/structure/cable/cyan{
 	icon_state = "2-8"
@@ -7659,9 +7679,13 @@
 /turf/simulated/mineral/floor,
 /area/penumbra/perimeter/outer)
 "vC" = (
-/obj/effect/zone_divider,
-/turf/simulated/wall/r_wall,
-/area/space)
+/obj/machinery/door/airlock/glass_atmos{
+	name = "Atmospherics Lobby";
+	req_one_access = null
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/yellow,
+/turf/simulated/floor/tiled/techmaint,
+/area/penumbra)
 "vD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -8721,6 +8745,14 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/penumbra/perimeter/inner)
+"yW" = (
+/obj/machinery/door/airlock/glass_atmos{
+	name = "Atmospherics Lobby";
+	req_one_access = null
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel,
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/atmos/storage)
 "yX" = (
 /obj/machinery/door/firedoor/glass,
 /obj/effect/wingrille_spawn/reinforced,
@@ -9240,6 +9272,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/penumbra/perimeter/inner)
+"Au" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 10
+	},
+/turf/simulated/floor,
+/area/penumbra)
 "Av" = (
 /obj/machinery/vending/coffee,
 /turf/simulated/floor/carpet/oracarpet,
@@ -9434,6 +9472,13 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/penumbra/perimeter/inner)
+"AX" = (
+/obj/machinery/compressor{
+	comp_id = "turbine_atmos";
+	dir = 8
+	},
+/turf/simulated/floor/reinforced/airless,
+/area/penumbra)
 "AY" = (
 /obj/machinery/light{
 	dir = 4
@@ -9542,6 +9587,13 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/engi_wash)
+"Bq" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 4
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor,
+/area/penumbra)
 "Br" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 5
@@ -9633,13 +9685,30 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/penumbra/station/engineering/engine)
+"BE" = (
+/obj/machinery/atmospherics/unary/vent_pump/siphon/on{
+	dir = 1;
+	external_pressure_bound = 0;
+	external_pressure_bound_default = 0
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/reinforced/airless,
+/area/penumbra)
 "BF" = (
 /obj/effect/zone_divider,
 /turf/simulated/shuttle/floor/voidcraft/dark,
 /area/penumbra/perimeter/inner)
 "BG" = (
-/obj/machinery/computer/turbine_computer,
-/turf/simulated/floor/tiled/techfloor,
+/obj/structure/catwalk,
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 6
+	},
+/turf/simulated/floor,
 /area/penumbra)
 "BH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -10025,8 +10094,11 @@
 /turf/simulated/floor/tiled/white,
 /area/penumbra/perimeter/outer)
 "CP" = (
-/obj/machinery/power/turbine,
-/turf/simulated/floor/tiled/techfloor,
+/obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 4
+	},
+/turf/simulated/floor,
 /area/penumbra)
 "CQ" = (
 /obj/machinery/door/airlock/glass_atmos{
@@ -10931,6 +11003,13 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/penumbra)
+"Fh" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel,
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor,
+/area/penumbra)
 "Fi" = (
 /obj/machinery/atmospherics/pipe/tank/nitrous_oxide{
 	dir = 8
@@ -11100,6 +11179,11 @@
 /obj/structure/anomaly_container,
 /turf/simulated/floor/plating,
 /area/penumbra/perimeter/inner)
+"FG" = (
+/obj/effect/wingrille_spawn/phoron,
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel,
+/turf/simulated/floor,
+/area/penumbra)
 "FH" = (
 /obj/effect/zone_divider,
 /turf/simulated/floor/reinforced/airless,
@@ -11301,6 +11385,23 @@
 	pixel_y = -43
 	},
 /turf/simulated/floor/tiled/steel,
+/area/penumbra)
+"Gf" = (
+/obj/machinery/button/remote/blast_door{
+	dir = 1;
+	pixel_x = -8;
+	pixel_y = -24
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 1;
+	pixel_x = 8;
+	pixel_y = -24
+	},
+/obj/machinery/button/ignition{
+	dir = 1;
+	pixel_y = -24
+	},
+/turf/simulated/floor,
 /area/penumbra)
 "Gg" = (
 /turf/simulated/floor/tiled/techmaint,
@@ -11715,8 +11816,11 @@
 /turf/simulated/floor/reinforced,
 /area/penumbra/perimeter/outer)
 "Hk" = (
-/obj/machinery/power/turbinemotor,
-/turf/simulated/floor/tiled/techfloor,
+/obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 10
+	},
+/turf/simulated/floor,
 /area/penumbra)
 "Hl" = (
 /obj/effect/zone_divider,
@@ -12200,6 +12304,13 @@
 /obj/machinery/photocopier,
 /turf/simulated/floor/carpet/blucarpet,
 /area/crew_quarters/heads/cmo)
+"II" = (
+/obj/effect/zone_divider,
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 4
+	},
+/turf/simulated/floor,
+/area/penumbra)
 "IK" = (
 /obj/machinery/porta_turret,
 /turf/simulated/floor/bluegrid,
@@ -12286,6 +12397,12 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
+/area/penumbra)
+"IX" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/reinforced/airless,
 /area/penumbra)
 "IY" = (
 /obj/effect/zone_divider,
@@ -12411,8 +12528,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/penumbra)
 "Jv" = (
-/obj/machinery/power/turbine,
-/turf/simulated/floor,
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel,
+/turf/simulated/floor/tiled/techmaint,
 /area/penumbra)
 "Jx" = (
 /obj/structure/table/reinforced,
@@ -13573,6 +13690,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/penumbra)
+"Nf" = (
+/obj/machinery/door/blast/regular{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced/airless,
+/area/penumbra)
 "Ng" = (
 /obj/effect/floor_decal/corner_kafel/purple/diagonal,
 /obj/effect/floor_decal/corner_kafel/gray/diagonal{
@@ -13971,6 +14094,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/engineering/break_room)
+"Ol" = (
+/obj/machinery/atmospherics/binary/pump{
+	dir = 4
+	},
+/turf/simulated/floor,
+/area/penumbra)
 "Om" = (
 /obj/machinery/atmospherics/omni/atmos_filter{
 	tag_east = 1;
@@ -14349,6 +14478,14 @@
 /obj/effect/zone_divider,
 /turf/simulated/floor/plating,
 /area/penumbra/perimeter/inner)
+"Pl" = (
+/obj/effect/wingrille_spawn/phoron,
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel,
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor,
+/area/penumbra)
 "Pm" = (
 /obj/structure/table/woodentable,
 /obj/item/pen/multi,
@@ -14364,9 +14501,11 @@
 /turf/simulated/floor/wood,
 /area/penumbra)
 "Po" = (
-/obj/machinery/compressor{
-	dir = 1
+/obj/machinery/door/airlock/maintenance/engi,
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel,
 /turf/simulated/floor,
 /area/penumbra)
 "Pp" = (
@@ -14394,6 +14533,13 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
+/area/penumbra)
+"Ps" = (
+/obj/machinery/computer/turbine_computer{
+	dir = 1;
+	id = "turbine_atmos"
+	},
+/turf/simulated/floor,
 /area/penumbra)
 "Pt" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -14684,6 +14830,12 @@
 /obj/effect/zone_divider,
 /turf/simulated/floor/carpet/blucarpet,
 /area/crew_quarters/heads/cmo)
+"Qg" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/atmos/storage)
 "Qh" = (
 /obj/machinery/atmospherics/trinary/atmos_filter{
 	dir = 8;
@@ -15103,6 +15255,16 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/penumbra/station/engineering/engine)
+"Rt" = (
+/obj/effect/wingrille_spawn/phoron,
+/turf/simulated/floor,
+/area/penumbra)
+"Ru" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 4
+	},
+/turf/simulated/floor,
+/area/penumbra)
 "Rv" = (
 /obj/machinery/atmospherics/omni/atmos_filter{
 	tag_east = 5;
@@ -15513,9 +15675,9 @@
 /turf/simulated/floor/tiled/neutral,
 /area/penumbra/perimeter/inner)
 "SB" = (
-/obj/machinery/door/airlock/glass_security,
-/turf/simulated/shuttle/floor/red,
-/area/space)
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel,
+/turf/simulated/floor,
+/area/penumbra)
 "SC" = (
 /obj/effect/floor_decal/corner/purple{
 	dir = 4
@@ -15940,6 +16102,15 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/penumbra/perimeter/outer)
+"TK" = (
+/obj/machinery/atmospherics/unary/outlet_injector{
+	dir = 1
+	},
+/obj/machinery/sparker{
+	pixel_x = -15
+	},
+/turf/simulated/floor/reinforced/airless,
+/area/penumbra)
 "TL" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/toolbox/electrical,
@@ -15965,9 +16136,22 @@
 /obj/effect/zone_divider,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/penumbra)
+"TQ" = (
+/obj/machinery/power/turbine{
+	dir = 8
+	},
+/obj/structure/cable/yellow{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced/airless,
+/area/penumbra)
 "TR" = (
-/turf/simulated/floor/tiled,
-/area/space)
+/obj/machinery/power/smes/buildable,
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/turf/simulated/floor,
+/area/penumbra)
 "TS" = (
 /obj/machinery/power/apc{
 	dir = 8;
@@ -16088,6 +16272,10 @@
 /obj/machinery/atmospherics/portables_connector,
 /turf/simulated/floor/tiled,
 /area/penumbra/perimeter/outer)
+"Ui" = (
+/obj/machinery/atmospherics/binary/pump,
+/turf/simulated/floor,
+/area/penumbra)
 "Uj" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 8
@@ -16496,8 +16684,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/penumbra/perimeter/inner)
 "Vi" = (
-/obj/effect/zone_divider,
-/turf/simulated/floor/lino,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor,
 /area/penumbra)
 "Vj" = (
 /obj/effect/floor_decal/corner/lime{
@@ -16752,6 +16942,10 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/penumbra/station/engineering/engine)
+"VY" = (
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/fuel,
+/turf/simulated/floor,
+/area/penumbra)
 "VZ" = (
 /obj/machinery/door/blast/regular{
 	id = "xenoarch_cell2"
@@ -16783,8 +16977,8 @@
 /turf/simulated/floor/reinforced/oxygen,
 /area/penumbra)
 "Wc" = (
-/obj/machinery/door/airlock/maintenance/common,
 /obj/structure/catwalk,
+/obj/machinery/door/airlock/maintenance/engi,
 /turf/simulated/floor,
 /area/engineering/locker_room)
 "Wd" = (
@@ -16838,8 +17032,14 @@
 /turf/simulated/floor/tiled,
 /area/engineering/break_room)
 "Wk" = (
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/fuel{
+	dir = 8
+	},
 /turf/simulated/floor,
-/area/space)
+/area/penumbra)
 "Wl" = (
 /obj/effect/floor_decal/corner_steel_grid{
 	dir = 4
@@ -17170,6 +17370,13 @@
 /obj/effect/landmark/start/jobs/librarian,
 /turf/simulated/floor/carpet,
 /area/penumbra)
+"Xg" = (
+/obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/atmos/storage)
 "Xh" = (
 /obj/structure/cable/yellow{
 	icon_state = "2-4"
@@ -17251,6 +17458,12 @@
 	},
 /turf/simulated/wall,
 /area/penumbra/perimeter/inner)
+"Xs" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/reinforced/airless,
+/area/penumbra)
 "Xt" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -17907,9 +18120,11 @@
 /turf/simulated/floor/tiled/white,
 /area/penumbra/perimeter/inner)
 "Zq" = (
-/obj/effect/zone_divider,
+/obj/machinery/atmospherics/portables_connector{
+	dir = 8
+	},
 /turf/simulated/floor,
-/area/space)
+/area/penumbra)
 "Zr" = (
 /obj/effect/zone_divider,
 /obj/machinery/hologram/holopad,
@@ -17948,8 +18163,10 @@
 /turf/simulated/floor,
 /area/penumbra/perimeter/inner)
 "Zy" = (
-/obj/machinery/atmospherics/pipeturbine,
-/turf/simulated/floor/tiled/techfloor,
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 5
+	},
+/turf/simulated/floor,
 /area/penumbra)
 "Zz" = (
 /obj/machinery/atmospherics/binary/pump/on{
@@ -36492,7 +36709,7 @@ bn
 bn
 bn
 bn
-ap
+bn
 ap
 ap
 ap
@@ -37006,8 +37223,8 @@ bn
 bn
 bn
 bn
-ap
-ap
+bn
+bf
 ap
 ap
 ap
@@ -37520,8 +37737,8 @@ bn
 bn
 bn
 bn
-ap
-ap
+bn
+bf
 ap
 ap
 ap
@@ -38031,11 +38248,11 @@ bn
 bn
 bn
 bn
+bt
 bn
 bn
 bn
-ap
-ap
+bf
 ap
 ap
 ap
@@ -38545,9 +38762,11 @@ bn
 bn
 bn
 bn
+bt
 bn
 bn
 bn
+bf
 ap
 ap
 ap
@@ -38556,13 +38775,11 @@ ap
 ap
 ap
 ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
+bf
+bf
+bf
+bf
+bf
 ap
 ap
 ap
@@ -39059,9 +39276,11 @@ bn
 bn
 bn
 bn
+bt
 bn
 bn
 bn
+bf
 ap
 ap
 ap
@@ -39070,13 +39289,11 @@ ap
 ap
 ap
 ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
+bf
+bn
+bn
+bn
+bf
 ap
 ap
 ac
@@ -39573,9 +39790,11 @@ bn
 bn
 bn
 bn
+bt
 bn
 bn
 bn
+bf
 ap
 ap
 ap
@@ -39584,13 +39803,11 @@ ap
 ap
 ap
 ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
+bf
+bn
+bn
+bn
+bf
 ap
 ap
 ac
@@ -40087,9 +40304,11 @@ bn
 bn
 bn
 bn
+bt
 bn
 bn
 bn
+bf
 ap
 ap
 ap
@@ -40098,13 +40317,11 @@ ap
 ap
 ap
 ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
+bf
+bn
+bn
+bn
+bf
 ap
 ac
 ac
@@ -40575,19 +40792,19 @@ bC
 bC
 bC
 bC
-bC
-bC
-bC
-bC
-bC
-bC
-bC
-bC
-bC
-bC
-bn
-bn
-bn
+hz
+av
+av
+hz
+hz
+hz
+hz
+hz
+hz
+hz
+bt
+bt
+bt
 bn
 bn
 bn
@@ -40601,24 +40818,24 @@ bn
 bn
 bn
 bn
+bt
 bn
 bn
 bn
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
+bf
+bf
+bf
+bf
+bf
+bf
+bf
+bf
+bf
+bf
+bt
+bt
+ay
+bf
 ap
 ac
 ac
@@ -41089,19 +41306,19 @@ bC
 bC
 bC
 bC
-bC
-bC
-bC
-bC
-bC
-bC
-bC
-bC
-bC
-bC
-bn
-bn
-bn
+hz
+jz
+jz
+jz
+hz
+jz
+jz
+jz
+hz
+jz
+ce
+ce
+bt
 bn
 bn
 bn
@@ -41115,25 +41332,25 @@ bn
 bn
 bn
 bn
+bt
 bn
 bn
 bn
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
+bn
+bn
+bn
+bn
+bn
+bn
+bn
+bt
+bn
+bn
+bn
+bn
+bn
+bf
+ac
 ac
 ac
 ac
@@ -41603,19 +41820,19 @@ bC
 bC
 bC
 bC
-bC
-bC
-bC
-bC
-bC
-bC
-bC
-bC
-bC
-bC
-bn
-bn
-bn
+hz
+jz
+jz
+jz
+hz
+jz
+jz
+jz
+hz
+jz
+ce
+ce
+bt
 bn
 bn
 bn
@@ -41629,27 +41846,27 @@ bn
 bn
 bn
 bn
+bt
+bn
+cS
+cS
+cS
+cS
+cS
+cS
+cS
+cS
+cS
+it
 bn
 bn
 bn
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
+bn
+bn
+bp
+ac
+ac
+ac
 ac
 ac
 ap
@@ -42117,19 +42334,19 @@ bC
 bC
 bC
 bC
-bC
-bC
-bC
-bC
-bC
-bC
-bC
-bC
-bC
-bC
-bn
-bn
-bn
+hz
+jz
+jz
+jz
+hz
+jz
+jz
+jz
+hz
+jz
+ce
+ce
+bt
 bn
 bn
 bn
@@ -42143,6 +42360,9 @@ bn
 bn
 bn
 bn
+bt
+bn
+cS
 bn
 bn
 bn
@@ -42151,19 +42371,16 @@ bn
 bn
 bn
 bn
+bt
 bn
 bn
 bn
 bn
 bn
-bn
-bn
-bn
-bn
-ap
-ap
-ap
-ap
+bp
+ac
+ac
+ac
 ac
 ac
 ac
@@ -42631,19 +42848,19 @@ bC
 bC
 bC
 bC
-bC
-bC
-bC
-bC
-bC
-bC
-bC
-bC
-bC
-bC
-bn
-bn
-bn
+hz
+jz
+jz
+jz
+hz
+jz
+jz
+jz
+hz
+jz
+ce
+ce
+bt
 bn
 bn
 bn
@@ -42657,27 +42874,27 @@ bn
 bn
 bn
 bn
+bt
+bn
+cS
+bn
+bt
+bt
+bt
+bt
+bt
+bt
+bt
+bt
 bn
 bn
 bn
 bn
 bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-ap
-ap
-ap
-ap
+bf
+ac
+ac
+ac
 ac
 ac
 ac
@@ -43145,19 +43362,19 @@ bC
 bC
 bC
 bC
-bC
-bC
-bC
-bC
-bC
-bC
-bC
-bC
-bC
-bC
-bn
-bn
-bn
+hz
+jz
+jz
+jz
+hz
+jz
+jz
+jz
+hz
+jz
+ce
+ce
+bt
 bn
 bn
 bn
@@ -43171,27 +43388,27 @@ bn
 bn
 bn
 bn
+bt
 bn
+cS
 bn
-bn
-bn
-Po
-Jv
-bn
-bn
-bn
-bn
+bt
 bn
 bn
 bn
 bn
 bn
 bn
-bn
-ap
-ap
-ap
-ap
+bf
+bf
+bf
+bf
+bf
+bf
+bf
+bf
+bf
+ac
 ac
 ac
 ac
@@ -43659,19 +43876,19 @@ bC
 bC
 bC
 bC
-bC
-bC
-bC
-bC
-bC
-bC
-bC
-bC
-bC
-bC
-bn
-bn
-bn
+hz
+hf
+oZ
+hf
+hz
+hf
+oZ
+hf
+hz
+hf
+gl
+ma
+bt
 bn
 bn
 bn
@@ -43685,26 +43902,26 @@ bn
 bn
 bn
 bn
+bt
 bn
+cS
 bn
-bn
-Zy
-Hk
-CP
-bn
-bn
-bn
+bt
 bn
 bn
 bn
 bn
 bn
 bn
-bn
-bn
-ap
-ap
-ac
+bf
+TR
+fx
+Fh
+Pl
+BE
+IX
+My
+Nf
 ac
 ac
 ac
@@ -44199,26 +44416,26 @@ bn
 bn
 bn
 bn
+bt
 bn
+cS
 bn
-bn
-Mp
-BG
-Mp
-bn
-bn
-bn
+bt
 bn
 bn
 bn
 bn
 bn
 bn
+bf
+Vi
+Ru
 bn
-bn
-ap
-ap
-ac
+Rt
+My
+Xs
+My
+Nf
 ac
 ac
 ac
@@ -44713,26 +44930,26 @@ bn
 bn
 bn
 bn
+bt
+bn
+cS
+bn
+bt
 bn
 bn
 bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-ap
-ap
-ac
+bt
+bt
+bt
+bf
+Vi
+Ru
+Gf
+bf
+bf
+TQ
+bf
+bf
 ac
 ac
 ac
@@ -45227,26 +45444,26 @@ bn
 bn
 bn
 bn
+bt
+bn
+cS
+bn
+bt
 bn
 bn
 bn
+bt
 bn
 bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-ap
-ap
-ac
+bf
+Vi
+Ol
+Ps
+bf
+bf
+AX
+bf
+bf
 ac
 ac
 ac
@@ -45738,29 +45955,29 @@ bn
 Lg
 bn
 bn
+bt
+bt
+bt
+bt
 bn
+cS
 bn
+bt
+bt
+bt
+bt
+bt
 bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-ap
-ac
-ac
+BG
+Po
+Wk
+VY
+Ui
+FG
+TK
+My
+My
+Nf
 ac
 ac
 ac
@@ -46257,24 +46474,24 @@ bn
 bn
 bn
 bn
+cS
+bn
+bt
 bn
 bn
 bn
 bn
 bn
+CP
+bf
+Zq
+Zq
 bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-ac
-ac
-ac
+Rt
+My
+My
+My
+Nf
 ac
 ac
 ac
@@ -46742,19 +46959,19 @@ bC
 bC
 bC
 bC
-hz
-av
-av
-hz
-hz
-hz
-hz
-hz
-hz
-hz
-hz
-bt
-bt
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bn
+bn
 bn
 bn
 bn
@@ -46771,24 +46988,24 @@ bn
 bn
 bn
 bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-ac
-ac
-ac
+cS
+cS
+it
+cS
+cS
+cS
+cS
+cS
+CP
+bf
+bf
+bf
+bf
+bf
+bf
+bf
+bf
+bf
 ac
 ac
 ac
@@ -47256,19 +47473,19 @@ bC
 bC
 bC
 bC
-hz
-jz
-jz
-jz
-hz
-jz
-jz
-jz
-hz
-jz
-jz
-ce
-bt
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bn
+bn
 bn
 bn
 bn
@@ -47287,21 +47504,21 @@ bn
 bn
 bn
 bn
+bt
 bn
 bn
 bn
 bn
 bn
+Hk
+SB
+Zy
+bt
 bn
 bn
 bn
 bn
-bn
-bn
-bn
-bn
-ac
-ac
+bf
 ac
 ac
 ac
@@ -47770,19 +47987,19 @@ bC
 bC
 bC
 bC
-hz
-jz
-jz
-jz
-hz
-jz
-jz
-jz
-hz
-jz
-jz
-ce
-bt
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bn
+bn
 bn
 bn
 bn
@@ -47807,15 +48024,15 @@ bf
 bf
 bf
 bn
+cS
+bn
+Ru
+bt
 bn
 bn
 bn
 bn
-bn
-bn
-bn
-ac
-ac
+bf
 ac
 ac
 ac
@@ -48284,19 +48501,19 @@ bC
 bC
 bC
 bC
-hz
-jz
-jz
-jz
-hz
-jz
-jz
-jz
-hz
-jz
-jz
-ce
-bt
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bn
+bn
 bn
 bn
 bn
@@ -48321,15 +48538,15 @@ My
 My
 bf
 bn
+cS
+bn
+Ru
+bt
 bn
 bn
 bn
 bn
-bn
-bn
-bn
-ac
-ac
+bf
 ac
 ac
 ac
@@ -48798,19 +49015,19 @@ PX
 PX
 PX
 PX
-PX
-VU
-VU
-VU
-PX
-VU
-VU
-VU
-PX
-VU
-VU
-Vi
-Bd
+NY
+NY
+NY
+NY
+NY
+NY
+NY
+NY
+NY
+NY
+NY
+Lg
+Lg
 Lg
 Lg
 Lg
@@ -48835,15 +49052,15 @@ Oj
 FH
 Bt
 Lg
+IL
+IL
+II
+Bd
 Lg
 Lg
 Lg
 Lg
-Lg
-Lg
-Lg
-qc
-qc
+Bt
 qc
 qc
 qc
@@ -49312,19 +49529,19 @@ bC
 bC
 bC
 hz
-hz
-jz
-jz
-jz
-hz
-jz
-jz
-jz
-hz
-jz
-jz
-ce
-bt
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bn
+bn
 bn
 bn
 bn
@@ -49350,14 +49567,14 @@ Gt
 bf
 bn
 bn
+cS
+Ru
+bt
 bn
 bn
 bn
 bn
-bn
-bn
-ac
-ac
+bf
 ac
 ac
 ac
@@ -49827,18 +50044,18 @@ aR
 bC
 hz
 hz
-hf
-oZ
-hf
-hz
-hf
-oZ
-hf
-hz
-hf
-oZ
-gl
-bt
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bC
+bn
+bn
 bn
 bn
 bn
@@ -49864,13 +50081,13 @@ Co
 bf
 bf
 bn
-bn
-bn
-bn
-bn
-bn
-bn
-bf
+cS
+Ru
+bt
+bt
+bt
+ay
+bt
 bf
 bp
 bp
@@ -50378,9 +50595,9 @@ PJ
 Ew
 bf
 bn
-bn
-bn
-bn
+cS
+Au
+Zy
 bn
 bn
 bn
@@ -50892,12 +51109,12 @@ UL
 mk
 bf
 bn
-bn
-bn
-bn
-bn
-bn
-bn
+cS
+cS
+Bq
+cS
+cS
+cS
 cS
 cS
 cS
@@ -51408,7 +51625,7 @@ bf
 bn
 bn
 bn
-bn
+Ru
 bn
 bn
 bn
@@ -51922,14 +52139,14 @@ bf
 bn
 ZA
 ZA
+Xg
 ZA
 ZA
 ZA
 ZA
-ZA
-bn
-cS
-bn
+bt
+ic
+bt
 KA
 KA
 KA
@@ -52436,7 +52653,7 @@ bf
 bf
 ZA
 CX
-MS
+jf
 LM
 MS
 IT
@@ -52950,7 +53167,7 @@ Xc
 Xc
 ZA
 FC
-MS
+jf
 MS
 MS
 IT
@@ -53464,7 +53681,7 @@ BS
 Xc
 ZA
 Ot
-MS
+jf
 MS
 MS
 IT
@@ -53978,7 +54195,7 @@ Xc
 Xc
 ZA
 Rb
-MS
+jf
 MS
 MS
 Wt
@@ -54492,7 +54709,7 @@ bf
 bf
 ZA
 ZA
-MS
+jf
 MS
 MS
 Wt
@@ -55001,12 +55218,12 @@ jh
 QC
 rK
 VL
-CQ
-jh
-jh
-jh
-Ep
-MS
+vC
+zY
+Jv
+Jv
+yW
+Qg
 MS
 MS
 PK
@@ -62214,9 +62431,9 @@ fS
 bp
 bp
 lK
-ma
-TR
-TR
+bf
+bj
+bj
 RQ
 RQ
 Ue
@@ -62724,13 +62941,13 @@ bt
 bc
 bc
 bc
-bt
+bf
 RY
 nl
 MC
-ma
-TR
-TR
+bf
+bj
+bj
 RQ
 lu
 Ty
@@ -62738,8 +62955,8 @@ Ty
 Ty
 gU
 RQ
-cS
-cS
+bn
+bn
 cS
 bn
 Sh
@@ -63242,9 +63459,9 @@ wQ
 JW
 JW
 TA
-SB
-TR
-TR
+wQ
+bj
+bj
 RQ
 lu
 Ty
@@ -63252,7 +63469,7 @@ Ty
 Ty
 JE
 RQ
-bf
+bn
 bn
 cS
 bn
@@ -63752,13 +63969,13 @@ bt
 bt
 ay
 bt
-bt
+bf
 JW
 WP
 TA
-ma
-ma
-ma
+bf
+bf
+bf
 RQ
 lu
 Ty
@@ -63766,7 +63983,7 @@ Ao
 Ty
 JE
 RQ
-bf
+bn
 bn
 cS
 bn
@@ -64266,13 +64483,13 @@ Bd
 Lg
 DM
 Lg
-Bd
+Bt
 QA
 QO
 CY
-vC
-Zq
-Zq
+Bt
+Lg
+Lg
 HR
 Lp
 VD
@@ -64280,7 +64497,7 @@ ZB
 VD
 IY
 HR
-Bt
+Lg
 Lg
 IL
 Lg
@@ -64780,13 +64997,13 @@ bt
 bn
 cS
 bn
-bt
-bt
-bt
-Bd
-ma
-Wk
-Wk
+bf
+bf
+bf
+Bt
+bf
+bn
+bn
 RQ
 lu
 Ty
@@ -64794,7 +65011,7 @@ Ty
 Ty
 LL
 RQ
-bf
+bn
 bn
 cS
 bn
@@ -65295,12 +65512,12 @@ bn
 cS
 bn
 bt
-JW
-JW
-TA
-ma
-Wk
-Wk
+bn
+bn
+Lg
+bt
+bn
+bn
 RQ
 lu
 Ty
@@ -65308,7 +65525,7 @@ Ty
 Ty
 LL
 RQ
-bf
+bn
 bn
 cS
 bn
@@ -65809,12 +66026,12 @@ bn
 cS
 bn
 bt
-JW
-JW
-TA
-ma
-Wk
-Wk
+bn
+bn
+Lg
+bt
+bn
+bn
 RQ
 RQ
 Wc
@@ -65822,7 +66039,7 @@ RQ
 RQ
 RQ
 RQ
-bf
+bn
 bn
 cS
 bn
@@ -66323,15 +66540,15 @@ bn
 cS
 bn
 bt
-bf
-bf
-Bt
-bf
+bt
+bt
+Bd
+bt
+bn
+bn
+bn
 bn
 cS
-bn
-bn
-bn
 bn
 bn
 bn
@@ -80673,8 +80890,8 @@ bC
 bC
 bC
 aR
-bC
-hz
+aR
+eC
 bz
 bz
 bc
@@ -81186,7 +81403,7 @@ hz
 hz
 hz
 hz
-qB
+hz
 hz
 hz
 bz
