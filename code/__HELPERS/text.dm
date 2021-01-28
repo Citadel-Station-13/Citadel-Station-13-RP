@@ -23,7 +23,7 @@
  */
 
 //Used for preprocessing entered text
-/proc/sanitize(var/input, var/max_length = MAX_MESSAGE_LEN, var/encode = 1, var/trim = 1, var/extra = 1)
+/proc/sanitize(var/input, var/max_length = MAX_MESSAGE_LEN, var/encode = 1, var/trim = 1, var/extra = 1, var/grammar =1)
 	if(!input)
 		return
 
@@ -33,6 +33,8 @@
 	if(extra)
 		input = replace_characters(input, list("\n"=" ","\t"=" "))
 
+	if(grammar)
+		input = replace_characters(input, list(" i "=" I ","i'm"="I'm"))
 	if(encode)
 		// The below \ escapes have a space inserted to attempt to enable Travis auto-checking of span class usage. Please do not remove the space.
 		//In addition to processing html, html_encode removes byond formatting codes like "\ red", "\ i" and other.
@@ -47,6 +49,7 @@
 	if(trim)
 		//Maybe, we need trim text twice? Here and before copytext?
 		input = trim(input)
+
 
 	return input
 
