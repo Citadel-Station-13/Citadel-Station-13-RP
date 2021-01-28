@@ -67,7 +67,7 @@
 			for(var/datum/wound/W in O.wounds)//for-loop that covers all wounds in the organ we are currently looking at.
 				if(W.bleeding() || W.internal)//Checks if the wound is bleeding or internal
 					W.damage = max(W.damage - wound_heal, 0)//reduces the damage, and sets it to 0 if its lower than 0
-					if(W.damage <= 0)//If the wound is healed, 
+					if(W.damage <= 0)//If the wound is healed,
 						O.wounds -= W//remove the wound
 
 /datum/reagent/bicaridine/topical//Main way to obtain is destiller
@@ -270,7 +270,7 @@
 			M.adjustBrainLoss(-20 * removed) //Deals braindamage to promethians
 			M.Weaken(6)
 	else if(alien != IS_DIONA)
-		M.adjustOxyLoss(-60 * removed) //Heals alot of oxyloss damage/but 
+		M.adjustOxyLoss(-60 * removed) //Heals alot of oxyloss damage/but
 		//keep in mind that Dexaline has a metabolism rate of 0.25*REM meaning only 0.25 units are removed every tick(if your metabolism takes usuall 1u per tick)
 
 	holder.remove_reagent("lexorin", 8 * removed) //VOREStation Edit
@@ -680,6 +680,31 @@
 			if(I.robotic >= ORGAN_ROBOT)
 				continue
 			if(I.damage > 0) //Peridaxon heals only non-robotic organs
+				I.damage = max(I.damage - removed, 0)
+				H.Confuse(5)
+			if(I.damage <= 5 && I.organ_tag == O_EYES)
+				H.eye_blurry = min(M.eye_blurry + 10, 250) //Eyes need to reset, or something
+				H.sdisabilities &= ~BLIND
+		if(alien == IS_SLIME)
+			H.add_chemical_effect(CE_PAINKILLER, 20)
+			if(prob(33))
+				H.Confuse(10)
+
+/datum/reagent/nanoperidaxon
+	name = "Nano-Peridaxon"
+	id = "nanoperidaxon"
+	description = "Nanite cultures have been mixed into this peridaxon, increasing its efficacy range. Medicate cautiously."
+	taste_description = "bitterness and iron"
+	reagent_state = LIQUID
+	color = "#664B9B"
+	overdose = 10
+	scannable = 1
+
+/datum/reagent/nanoperidaxon/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		for(var/obj/item/organ/I in H.internal_organs)
+			if(I.damage > 0)
 				I.damage = max(I.damage - removed, 0)
 				H.Confuse(5)
 			if(I.damage <= 5 && I.organ_tag == O_EYES)

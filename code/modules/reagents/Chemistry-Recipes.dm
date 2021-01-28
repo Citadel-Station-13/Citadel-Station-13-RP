@@ -302,6 +302,14 @@
 	catalysts = list("phoron" = 5)
 	result_amount = 2
 
+/datum/chemical_reaction/nanoperidaxon
+	//Heals ALL organs
+	name = "Nano-Peridaxon"
+	id = "nanoperidaxon"
+	result = "nanoperidaxon"
+	required_reagents = list("peridaxon" = 2, "nifrepairnanites" = 2)
+	result_amount = 2
+
 /datum/chemical_reaction/osteodaxon
 	//Heals bone fractures
 	name = "Osteodaxon"
