@@ -109,7 +109,7 @@
 		to_chat(src, "Only administrators may use this command.")
 		return
 
-	var/alert = alert(src, "Specify the Narration range.", "Narration", "Global", "Local") //differentiate between global and local
+	var/alert = alert(src, "Specify the Narration range.", "Narration", "Global", "Local", "Cancel") //differentiate between global and local
 	if(alert == "Global")
 		var/globalmsg = input("The text you enter will appear without prefix in the chat Globally.\nMessage:", text("Enter the text you wish to narrate to everyone:")) as text
 		to_chat(world, "[globalmsg]") 
