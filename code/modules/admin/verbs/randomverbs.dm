@@ -115,8 +115,8 @@
 		to_chat(world, "[globalmsg]") 
 		
 	if(alert == "Local")
+		var/localmsg = input("The text you enter will appear without prefix in the chat Locally.\nMessage:", text("Enter the text you wish to narrate to everyone in view:")) as text
 		for(var/mob/M as mob in view(src))
-			var/localmsg = input("The text you enter will appear without prefix in the chat Locally.\nMessage:", text("Enter the text you wish to narrate to everyone in view:")) as text
 			to_chat(M, "[localmsg]")
 			to_chat(src, "[localmsg]") // need to separately message the src since the src doesnt view itself as a type of mob in view
 
