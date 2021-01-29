@@ -642,6 +642,13 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
     icon_state = "frosted_tips"
     ckeys_allowed = list("tucker0666")
 
+/datum/sprite_accessory/ears/peekinghuman
+	name = "peeking ears"
+	desc = ""
+	icon_state = "earpeek"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
 /*
 ////////////////////////////
 /  =--------------------=  /

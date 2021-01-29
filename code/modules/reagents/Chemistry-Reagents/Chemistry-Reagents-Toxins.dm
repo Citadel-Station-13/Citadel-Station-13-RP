@@ -169,7 +169,7 @@
 /datum/reagent/toxin/cyanide/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
 	M.adjustOxyLoss(20 * removed)
-	M.sleeping += 1
+	M.Sleeping(1)
 
 /datum/reagent/toxin/mold
 	name = "Mold"
@@ -638,6 +638,37 @@
 		else if(prob(40))
 			M.heal_organ_damage(25 * removed, 0)
 
+/datum/reagent/advmutationtoxin
+	name = "Advanced Mutation Toxin"
+	id = "advmutationtoxin"
+	description = "A corruptive toxin produced by slimes. Turns the subject of the chemical into a Promethean."
+	reagent_state = LIQUID
+	color = "#13BC5E"
+
+/datum/reagent/advmutationtoxin/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(H.species.name != "Promethean")
+			to_chat(M, "<span class='danger'>Your flesh rapidly mutates!</span>")
+
+			var/list/backup_implants = list()
+			for(var/obj/item/organ/I in H.organs)
+				for(var/obj/item/implant/backup/BI in I.contents)
+					backup_implants += BI
+			if(backup_implants.len)
+				for(var/obj/item/implant/backup/BI in backup_implants)
+					BI.forceMove(src)
+
+			H.set_species("Promethean")
+			H.shapeshifter_set_colour("#05FF9B") //They can still change their color.
+
+			if(backup_implants.len)
+				var/obj/item/organ/external/torso = H.get_organ(BP_TORSO)
+				for(var/obj/item/implant/backup/BI in backup_implants)
+					BI.forceMove(torso)
+					torso.implants += BI
+
+
 /datum/reagent/soporific
 	name = "Soporific"
 	id = "stoxin"
@@ -676,13 +707,14 @@
 	else
 		if(alien == IS_SLIME) //They don't have eyes, and they don't really 'sleep'. Fumble their general senses.
 			M.eye_blurry = max(M.eye_blurry, 30)
+
 			if(prob(20))
 				M.ear_deaf = max(M.ear_deaf, 4)
 				M.Confuse(2)
 			else
 				M.Weaken(2)
 		else
-			M.sleeping = max(M.sleeping, 20)
+			M.Sleeping(20)
 		M.drowsyness = max(M.drowsyness, 60)
 
 /datum/reagent/chloralhydrate
@@ -726,7 +758,7 @@
 			M.Weaken(30)
 			M.Confuse(40)
 		else
-			M.sleeping = max(M.sleeping, 30)
+			M.Sleeping(30)
 
 	if(effective_dose > 1 * threshold)
 		M.adjustToxLoss(removed)
@@ -1064,3 +1096,17 @@ datum/reagent/talum_quem/affect_blood(var/mob/living/carbon/M, var/alien, var/re
 /datum/reagent/neurophage_nanites/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	M.adjustBrainLoss(2 * removed)	// Their job is to give you a bad time.
 	M.adjustBruteLoss(2 * removed)
+
+//Special toxins for solargrubs
+//Moved from Chemistry-Reagents-Vore_vr.dm
+/datum/reagent/grubshock
+	name = "200 V" //in other words a painful shock
+	id = "shockchem"
+	description = "A liquid that quickly dissapates to deliver a painful shock."
+	reagent_state = LIQUID
+	color = "#E4EC2F"
+	metabolism = 2.50
+	var/power = 9
+
+/datum/reagent/grubshock/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	M.take_organ_damage(0, removed * power * 0.2)

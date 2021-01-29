@@ -13,7 +13,7 @@
 
 /datum/reagent/inaprovaline/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien != IS_DIONA)
-		M.add_chemical_effect(CE_STABLE, 15)
+		M.add_chemical_effect(CE_STABLE, 15)//Reduces bleeding rate, and allowes the patient to breath even when in shock
 		M.add_chemical_effect(CE_PAINKILLER, 10)
 
 /datum/reagent/inaprovaline/topical//Main way to obtain is destiller
@@ -55,24 +55,20 @@
 	if(alien == IS_SLIME)
 		chem_effective = 0.75
 	if(alien != IS_DIONA)
-		M.heal_organ_damage(4 * removed * chem_effective, 0) //VOREStation Edit
+		M.heal_organ_damage(4 * removed * chem_effective, 0) //The first Parameter of the function is brute, the second burn damage
 
 /datum/reagent/bicaridine/overdose(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
-	var/wound_heal = 1.5 * removed
+	var/wound_heal = 1.5 * removed//Overdose enhances the healing effects
 	M.eye_blurry = min(M.eye_blurry + wound_heal, 250)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		for(var/obj/item/organ/external/O in H.bad_external_organs)
-			for(var/datum/wound/W in O.wounds)
-				if(W.bleeding())
-					W.damage = max(W.damage - wound_heal, 0)
-					if(W.damage <= 0)
-						O.wounds -= W
-				if(W.internal)
-					W.damage = max(W.damage - wound_heal, 0)
-					if(W.damage <= 0)
-						O.wounds -= W
+		for(var/obj/item/organ/external/O in H.bad_external_organs)//for-loop that covers all injured external organs
+			for(var/datum/wound/W in O.wounds)//for-loop that covers all wounds in the organ we are currently looking at.
+				if(W.bleeding() || W.internal)//Checks if the wound is bleeding or internal
+					W.damage = max(W.damage - wound_heal, 0)//reduces the damage, and sets it to 0 if its lower than 0
+					if(W.damage <= 0)//If the wound is healed, 
+						O.wounds -= W//remove the wound
 
 /datum/reagent/bicaridine/topical//Main way to obtain is destiller
 	name = "Bicaridaze"
@@ -92,8 +88,8 @@
 	if(alien == IS_SLIME)
 		chem_effective = 0.75
 	if(alien != IS_DIONA)
-		..(M, alien, removed * chem_effective)
-		M.adjustToxLoss(2 * removed)
+		..(M, alien, removed * chem_effective)//heals the patient like Bicardine would
+		M.adjustToxLoss(2 * removed)//deals toxic damage like the other topical gels
 
 /datum/reagent/bicaridine/topical/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
 	var/chem_effective = 1
@@ -101,6 +97,23 @@
 		chem_effective = 0.75
 	if(alien != IS_DIONA)
 		M.heal_organ_damage(6 * removed * chem_effective, 0)
+/datum/reagent/vermicetol//Moved from Chemistry-Reagents-Medicine_vr.dm
+	name = "Vermicetol"
+	id = "vermicetol"
+	description = "A potent chemical that treats physical damage at an exceptional rate."
+	taste_description = "heavy metals"
+	taste_mult = 3
+	reagent_state = SOLID
+	color = "#964e06"
+	overdose = REAGENTS_OVERDOSE * 0.5
+	scannable = 1
+
+/datum/reagent/vermicetol/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	var/chem_effective = 1
+	if(alien == IS_SLIME)
+		chem_effective = 0.75
+	if(alien != IS_DIONA)
+		M.heal_organ_damage(8 * removed * chem_effective, 0)
 
 /datum/reagent/calciumcarbonate
 	name = "calcium carbonate"
@@ -119,7 +132,7 @@
 
 /datum/reagent/calciumcarbonate/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien != IS_DIONA)
-		M.add_chemical_effect(CE_ANTACID, 3)
+		M.add_chemical_effect(CE_ANTACID, 3)//Antipuke effect
 
 /datum/reagent/kelotane
 	name = "Kelotane"
@@ -201,11 +214,11 @@
 		if(dose >= 15)
 			M.druggy = max(M.druggy, 5)
 	if(alien != IS_DIONA)
-		M.drowsyness = max(0, M.drowsyness - 6 * removed * chem_effective)
-		M.hallucination = max(0, M.hallucination - 9 * removed * chem_effective)
-		M.adjustToxLoss(-4 * removed * chem_effective)
+		M.drowsyness = max(0, M.drowsyness - 6 * removed * chem_effective)//reduces drowsyness to zero
+		M.hallucination = max(0, M.hallucination - 9 * removed * chem_effective)//reduces hallucination to 0
+		M.adjustToxLoss(-4 * removed * chem_effective)//Removes toxin damage
 		if(prob(10))
-			M.remove_a_modifier_of_type(/datum/modifier/poisoned)
+			M.remove_a_modifier_of_type(/datum/modifier/poisoned)//Removes the poisoned effect, which is super rare of its own
 
 /datum/reagent/carthatoline
 	name = "Carthatoline"
@@ -218,11 +231,11 @@
 /datum/reagent/carthatoline/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
 		return
-	if(M.getToxLoss() && prob(10))
+	if(M.getToxLoss() && prob(10))//if the patient has toxin damage 10% chance to cause vomiting
 		M.vomit(1)
 	M.adjustToxLoss(-8 * removed)
 	if(prob(30))
-		M.remove_a_modifier_of_type(/datum/modifier/poisoned)
+		M.remove_a_modifier_of_type(/datum/modifier/poisoned)//better chance to remove the poisoned effect
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		var/obj/item/organ/internal/liver/L = H.internal_organs_by_name[O_LIVER]
@@ -230,7 +243,7 @@
 			if(L.robotic >= ORGAN_ROBOT)
 				return
 			if(L.damage > 0)
-				L.damage = max(L.damage - 2 * removed, 0)
+				L.damage = max(L.damage - 2 * removed, 0)//Heals the liver
 		if(alien == IS_SLIME)
 			H.druggy = max(M.druggy, 5)
 
@@ -247,17 +260,18 @@
 
 /datum/reagent/dexalin/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_VOX)
-		M.adjustToxLoss(removed * 24) //VOREStation Edit
+		M.adjustToxLoss(removed * 24) //Vox breath phoron, oxygen is rather deadly to them
 	if(alien == IS_ALRAUNE)
 		M.adjustToxLoss(removed * 10) //cit change: oxygen is waste for plants
 	else if(alien == IS_SLIME && dose >= 15)
 		M.add_chemical_effect(CE_PAINKILLER, 15)
 		if(prob(15))
 			to_chat(M, "<span class='notice'>You have a moment of clarity as you collapse.</span>")
-			M.adjustBrainLoss(-20 * removed) //VOREStation Edit
+			M.adjustBrainLoss(-20 * removed) //Deals braindamage to promethians
 			M.Weaken(6)
 	else if(alien != IS_DIONA)
-		M.adjustOxyLoss(-60 * removed) //VOREStation Edit
+		M.adjustOxyLoss(-60 * removed) //Heals alot of oxyloss damage/but 
+		//keep in mind that Dexaline has a metabolism rate of 0.25*REM meaning only 0.25 units are removed every tick(if your metabolism takes usuall 1u per tick)
 
 	holder.remove_reagent("lexorin", 8 * removed) //VOREStation Edit
 
@@ -273,17 +287,17 @@
 
 /datum/reagent/dexalinp/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_VOX)
-		M.adjustToxLoss(removed * 9)
+		M.adjustToxLoss(removed * 9)//Again, vox dont like O2
 	if(alien == IS_ALRAUNE)
 		M.adjustToxLoss(removed * 5) //cit change: oxygen is waste for plants
 	else if(alien == IS_SLIME && dose >= 10)
 		M.add_chemical_effect(CE_PAINKILLER, 25)
 		if(prob(25))
 			to_chat(M, "<span class='notice'>You have a moment of clarity, as you feel your tubes lose pressure rapidly.</span>")
-			M.adjustBrainLoss(-8 * removed)
+			M.adjustBrainLoss(-8 * removed)//deals less braindamage than Dex
 			M.Weaken(3)
 	else if(alien != IS_DIONA)
-		M.adjustOxyLoss(-150 * removed)
+		M.adjustOxyLoss(-150 * removed)//Heals more oxyloss than Dex and has no metabolism reduction
 
 	holder.remove_reagent("lexorin", 3 * removed)
 
@@ -297,7 +311,7 @@
 	scannable = 1
 
 /datum/reagent/tricordrazine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	if(alien != IS_DIONA)
+	if(alien != IS_DIONA)//Heals everyone besides diona on all 4 base damage types.
 		var/chem_effective = 1
 		if(alien == IS_SLIME)
 			chem_effective = 0.5
@@ -324,9 +338,9 @@
 		var/chem_effective = 1
 		if(alien == IS_SLIME)
 			chem_effective = 0.5
-		M.adjustOxyLoss(-0.5 * removed * chem_effective)
-		M.heal_organ_damage(2 * removed, 2 * removed * chem_effective)
-		M.adjustToxLoss(-0.5 * removed * chem_effective)
+		M.adjustOxyLoss(-0.5 * removed * chem_effective)//Oxyloss is hard to treat with some gel you smear over you skin
+		M.heal_organ_damage(2 * removed, 2 * removed * chem_effective)//alittle more potent on brute and burns than Tricordrazine
+		M.adjustToxLoss(-0.5 * removed * chem_effective)//Same as Oxyloss
 
 /datum/reagent/tricorlidaze/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien != IS_DIONA)
@@ -338,12 +352,13 @@
 		var/packname = C.name
 		var/to_produce = min(C.amount, round(volume / 5))
 
-		var/obj/item/stack/medical/M = C.upgrade_stack(to_produce)
+		var/obj/item/stack/medical/M = C.upgrade_stack(to_produce)//Upgrades bruise packs into advanced trauma kits
 
 		if(M && M.amount)
 			holder.my_atom.visible_message("<span class='notice'>\The [packname] bubbles.</span>")
 			remove_self(to_produce * 5)
 
+//Cryo chems
 /datum/reagent/cryoxadone
 	name = "Cryoxadone"
 	id = "cryoxadone"
@@ -364,8 +379,8 @@
 			M.Weaken(10)
 			M.silent = max(M.silent, 10)
 			M.make_jittery(4)
-		M.adjustCloneLoss(-10 * removed * chem_effective)
-		M.adjustOxyLoss(-10 * removed * chem_effective)
+		M.adjustCloneLoss(-10 * removed * chem_effective)//Clone damage, either occured during cloning or from xenobiology slimes.
+		M.adjustOxyLoss(-10 * removed * chem_effective)//Also heals the standard damages
 		M.heal_organ_damage(10 * removed, 10 * removed * chem_effective)
 		M.adjustToxLoss(-10 * removed * chem_effective)
 
@@ -390,7 +405,7 @@
 			M.Weaken(20)
 			M.silent = max(M.silent, 20)
 			M.make_jittery(4)
-		M.adjustCloneLoss(-30 * removed * chem_effective)
+		M.adjustCloneLoss(-30 * removed * chem_effective)//Better version of cryox, but they can work at the same time
 		M.adjustOxyLoss(-30 * removed * chem_effective)
 		M.heal_organ_damage(30 * removed, 30 * removed * chem_effective)
 		M.adjustToxLoss(-30 * removed * chem_effective)
@@ -426,11 +441,10 @@
 			M.make_jittery(4)
 		if(M.stat != DEAD)
 			M.adjustCloneLoss(-5 * removed * chem_effective)
-		M.adjustOxyLoss(-20 * removed * chem_effective)
+		M.adjustOxyLoss(-20 * removed * chem_effective)//dehusking for cool people
 		M.adjustToxLoss(-40 * removed * chem_effective)
 
 /* Painkillers */
-
 /datum/reagent/paracetamol
 	name = "Paracetamol"
 	id = "paracetamol"
@@ -447,7 +461,7 @@
 	var/chem_effective = 1
 	if(alien == IS_SLIME)
 		chem_effective = 0.75
-	M.add_chemical_effect(CE_PAINKILLER, 25 * chem_effective)
+	M.add_chemical_effect(CE_PAINKILLER, 25 * chem_effective)//kinda weak painkilling, for non life threatening injuries
 
 /datum/reagent/paracetamol/overdose(var/mob/living/carbon/M, var/alien)
 	..()
@@ -472,7 +486,7 @@
 	if(alien == IS_SLIME)
 		chem_effective = 0.8
 		M.add_chemical_effect(CE_SLOWDOWN, 1)
-	M.add_chemical_effect(CE_PAINKILLER, 80 * chem_effective)
+	M.add_chemical_effect(CE_PAINKILLER, 80 * chem_effective)//more potent painkilling, for close to fatal injuries
 
 /datum/reagent/tramadol/overdose(var/mob/living/carbon/M, var/alien)
 	..()
@@ -495,7 +509,7 @@
 	if(alien == IS_SLIME)
 		chem_effective = 0.75
 		M.stuttering = min(50, max(0, M.stuttering + 5)) //If you can't feel yourself, and your main mode of speech is resonation, there's a problem.
-	M.add_chemical_effect(CE_PAINKILLER, 200 * chem_effective)
+	M.add_chemical_effect(CE_PAINKILLER, 200 * chem_effective)//Bad boy painkiller, for you and the fact that she left you
 	M.add_chemical_effect(CE_SLOWDOWN, 1)
 	M.eye_blurry = min(M.eye_blurry + 10, 250 * chem_effective)
 
@@ -504,10 +518,53 @@
 	M.druggy = max(M.druggy, 10)
 	M.hallucination = max(M.hallucination, 3)
 
+/datum/reagent/numbing_enzyme//Moved from Chemistry-Reagents-Medicine_vr.dm
+	name = "Numbing Enzyme"//Obtained from vore bellies, and numbing bite trait custom species
+	id = "numbenzyme"
+	description = "Some sort of organic painkiller."
+	taste_description = "sourness"
+	reagent_state = LIQUID
+	color = "#800080"
+	metabolism = 0.1 //Lasts up to 200 seconds if you give 20u which is OD.
+	mrate_static = TRUE
+	overdose = 20 //High OD. This is to make numbing bites have somewhat of a downside if you get bit too much. Have to go to medical for dialysis.
+	scannable = 0 //Let's not have medical mechs able to make an extremely strong organic painkiller
+
+/datum/reagent/numbing_enzyme/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	M.add_chemical_effect(CE_PAINKILLER, 200)//Similar to Oxycodone
+	if(prob(0.01)) //1 in 10000 chance per tick. Extremely rare.
+		to_chat(M,"<span class='warning'>Your body feels numb as a light, tingly sensation spreads throughout it, like some odd warmth.</span>")
+	//Not noted here, but a movement debuff of 1.5 is handed out in human_movement.dm when numbing_enzyme is in a person's bloodstream!
+
+/datum/reagent/numbing_enzyme/overdose(var/mob/living/carbon/M, var/alien)
+	//..() //Add this if you want it to do toxin damage. Personally, let's allow them to have the horrid effects below without toxin damage.
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(prob(1))
+			to_chat(H,"<span class='warning'>Your entire body feels numb and the sensation of pins and needles continually assaults you. You blink and the next thing you know, your legs give out momentarily!</span>")
+			H.AdjustWeakened(5) //Fall onto the floor for a few moments.
+			H.Confuse(15) //Be unable to walk correctly for a bit longer.
+		if(prob(1))
+			if(H.losebreath <= 1 && H.oxyloss <= 20) //Let's not suffocate them to the point that they pass out.
+				to_chat(H,"<span class='warning'>You feel a sharp stabbing pain in your chest and quickly realize that your lungs have stopped functioning!</span>") //Let's scare them a bit.
+				H.losebreath = 10
+				H.adjustOxyLoss(5)
+		if(prob(2))
+			to_chat(H,"<span class='warning'>You feel a dull pain behind your eyes and at thee back of your head...</span>")
+			H.hallucination += 20 //It messes with your mind for some reason.
+			H.eye_blurry += 20 //Groggy vision for a small bit.
+		if(prob(3))
+			to_chat(H,"<span class='warning'>You shiver, your body continually being assaulted by the sensation of pins and needles.</span>")
+			H.emote("shiver")
+			H.make_jittery(10)
+		if(prob(3))
+			to_chat(H,"<span class='warning'>Your tongue feels numb and unresponsive.</span>")
+			H.stuttering += 20
+
 /* Other medicine */
 
 /datum/reagent/synaptizine
-	name = "Synaptizine"
+	name = "Synaptizine"//Used to treat hallucination and remove mindbreaker
 	id = "synaptizine"
 	description = "Synaptizine is used to treat various diseases."
 	taste_description = "bitterness"
@@ -532,7 +589,7 @@
 	M.AdjustStunned(-1)
 	M.AdjustWeakened(-1)
 	holder.remove_reagent("mindbreaker", 5)
-	M.hallucination = max(0, M.hallucination - 10)
+	M.hallucination = max(0, M.hallucination - 10)//Primary use
 	M.adjustToxLoss(5 * removed * chem_effective) // It used to be incredibly deadly due to an oversight. Not anymore!
 	M.add_chemical_effect(CE_PAINKILLER, 20 * chem_effective)
 
@@ -579,7 +636,7 @@
 			M.Weaken(5)
 		if(dose >= 10 && M.paralysis < 40)
 			M.AdjustParalysis(1) //Messing with the core with a simple chemical probably isn't the best idea.
-	M.adjustBrainLoss(-8 * removed * chem_effective) //VOREStation Edit
+	M.adjustBrainLoss(-8 * removed * chem_effective) //the Brain damage heal
 	M.add_chemical_effect(CE_PAINKILLER, 10 * chem_effective)
 
 /datum/reagent/imidazoline
@@ -1343,6 +1400,24 @@
 				to_chat(M, "<span class='warning'>Your mind breaks apart...</span>")
 				M.hallucination += 200
 
+/datum/reagent/adranol//Moved from Chemistry-Reagents-Medicine_vr.dm
+	name = "Adranol"
+	id = "adranol"
+	description = "A mild sedative that calms the nerves and relaxes the patient."
+	taste_description = "milk"
+	reagent_state = SOLID
+	color = "#d5e2e5"
+
+/datum/reagent/adranol/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	if(alien == IS_DIONA)
+		return
+	if(M.confused)
+		M.Confuse(-8*removed)
+	if(M.eye_blurry)
+		M.eye_blurry = max(M.eye_blurry - 8*removed, 0)
+	if(M.jitteriness)
+		M.make_jittery(-8 * removed)
+
 /datum/reagent/qerr_quem
 	name = "Qerr-quem"
 	id = "querr_quem"
@@ -1382,3 +1457,76 @@
 	M.adjustOxyLoss(-4 * removed)
 	M.adjustToxLoss(-2 * removed)
 	M.adjustCloneLoss(-2 * removed)
+
+////////////////////////// Anti-Noms Drugs //////////////////////////
+/datum/reagent/ickypak
+	name = "Ickypak"
+	id = "ickypak"
+	description = "A foul-smelling green liquid, for inducing muscle contractions to expel accidentally ingested things."
+	reagent_state = LIQUID
+	color = "#0E900E"
+	overdose = REAGENTS_OVERDOSE
+
+/datum/reagent/ickypak/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	M.make_dizzy(1)
+	M.adjustHalLoss(2)
+
+	for(var/belly in M.vore_organs)
+		var/obj/belly/B = belly
+		for(var/atom/movable/A in B)
+			if(isliving(A))
+				var/mob/living/P = A
+				if(P.absorbed)
+					continue
+			if(prob(5))
+				playsound(M, 'sound/effects/splat.ogg', 50, 1)
+				B.release_specific_contents(A)
+
+/datum/reagent/unsorbitol
+	name = "Unsorbitol"
+	id = "unsorbitol"
+	description = "A frothy pink liquid, for causing cellular-level hetrogenous structure separation."
+	reagent_state = LIQUID
+	color = "#EF77E5"
+	overdose = REAGENTS_OVERDOSE
+
+/datum/reagent/unsorbitol/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	M.make_dizzy(1)
+	M.adjustHalLoss(1)
+	if(!M.confused) M.confused = 1
+	M.confused = max(M.confused, 20)
+	M.hallucination += 15
+
+	for(var/belly in M.vore_organs)
+		var/obj/belly/B = belly
+
+		if(B.digest_mode == DM_ABSORB) //Turn off absorbing on bellies
+			B.digest_mode = DM_HOLD
+
+		for(var/mob/living/P in B)
+			if(!P.absorbed)
+				continue
+
+			else if(prob(1))
+				playsound(M, 'sound/vore/schlorp.ogg', 50, 1)
+				P.absorbed = 0
+				M.visible_message("<font color='green'><b>Something spills into [M]'s [lowertext(B.name)]!</b></font>")
+
+//Nif repair juice
+/datum/reagent/nif_repair_nanites
+	name = "Programmed Nanomachines"
+	id = "nifrepairnanites"
+	description = "A thick grey slurry of NIF repair nanomachines."
+	taste_description = "metallic"
+	reagent_state = LIQUID
+	color = "#333333"
+	scannable = 1
+
+/datum/reagent/nif_repair_nanites/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(H.nif)
+			var/obj/item/nif/nif = H.nif //L o c a l
+			if(nif.stat == NIF_TEMPFAIL)
+				nif.stat = NIF_INSTALLING
+			nif.durability = min(nif.durability + removed, initial(nif.durability))

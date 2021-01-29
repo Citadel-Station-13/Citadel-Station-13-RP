@@ -168,7 +168,8 @@
 			/obj/structure/particle_accelerator/particle_emitter/left,
 			/obj/structure/particle_accelerator/particle_emitter/right,
 			/obj/structure/particle_accelerator/power_box,
-			/obj/structure/particle_accelerator/end_cap
+			/obj/structure/particle_accelerator/end_cap,
+			/obj/item/paper/particle_info
 			)
 	containertype = /obj/structure/closet/crate/secure/engineering
 	containername = "Particle Accelerator crate"

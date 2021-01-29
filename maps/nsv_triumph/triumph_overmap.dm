@@ -18,7 +18,9 @@
 	initial_restricted_waypoints = list(
 		"Excursion Shuttle" = list("triumph_excursion_hangar"),
 		"Civilian Transport" = list("triumph_civvie_home"),
-		"Beruang Trade Ship" = list("triumph_annex_dock")
+		"Dart EMT Shuttle" = list("triumph_emt_dock"),
+		"Beruang Trade Ship" = list("triumph_annex_dock"),
+		"Mining Shuttle" = list("triumph_mining_port")
 		)
 
 // EXCURSION SHUTTLE DATA
@@ -100,6 +102,16 @@
 	vessel_mass = 25000
 	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Beruang Trade Ship"
+
+//EMT Shuttle
+
+/obj/effect/overmap/visitable/ship/landable/emt
+	name = "Dart EMT Shuttle"
+	desc = "The budget didn't allow for flashing lights."
+	fore_dir = EAST
+	vessel_mass = 9000
+	vessel_size = SHIP_SIZE_SMALL
+	shuttle = "Dart EMT Shuttle"
 
 // STATIC PLANET/BASE LOCATIONS
 
@@ -201,9 +213,9 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 
 	initial_restricted_waypoints = list(
 		"Beruang Trade Ship" = list("tradeport_hangar"),
-		//Medical Ambulance - Doesn't exist yet: "Landing Pad 1" = list("nebula_pad_1"),
 		"Mining Shuttle" = list("nebula_pad_2"),
 		"Excursion Shuttle" = list("nebula_pad_3"),
 		"Pirate Skiff" = list("nebula_pad_4"),
+		"Dart EMT Shuttle" = list("nebula_pad_5"),
 		"Civilian Transport" = list("nebula_pad_6")
 		)
