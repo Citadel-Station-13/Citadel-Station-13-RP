@@ -4,6 +4,7 @@
 #define HUMAN_MAX_OXYLOSS 1 //Defines how much oxyloss humans can get per tick. A tile with no air at all (such as space) applies this value, otherwise it's a percentage of it.
 #define HUMAN_CRIT_MAX_OXYLOSS ( 2.0 / 6) //The amount of damage you'll get when in critical condition. We want this to be a 5 minute deal = 300s. There are 50HP to get through, so (1/6)*last_tick_duration per second. Breaths however only happen every 4 ticks. last_tick_duration = ~2.0 on average
 
+#define HEAT_DAMAGE_SYNTH 1.5 //Amount of damage applied for synths experiencing heat just above 360.15k such as space walking
 #define HEAT_DAMAGE_LEVEL_1 5 //Amount of damage applied when your body temperature just passes the 360.15k safety point
 #define HEAT_DAMAGE_LEVEL_2 10 //Amount of damage applied when your body temperature passes the 400K point
 #define HEAT_DAMAGE_LEVEL_3 20 //Amount of damage applied when your body temperature passes the 1000K point
@@ -22,6 +23,8 @@
 #define COLD_GAS_DAMAGE_LEVEL_3 3 //Amount of damage applied when the current breath's temperature passes the 120K point
 
 #define RADIATION_SPEED_COEFFICIENT 0.1
+
+var/last_message = 0
 
 /mob/living/carbon/human
 	var/oxygen_alert = 0
@@ -155,14 +158,18 @@
 // Calculate how much of the enviroment pressure-difference affects the human.
 /mob/living/carbon/human/calculate_affecting_pressure(var/pressure)
 	var/pressure_difference
-
+	
 	// First get the absolute pressure difference.
 	if(pressure < species.safe_pressure) // We are in an underpressure.
 		pressure_difference = species.safe_pressure - pressure
 
 	else //We are in an overpressure or standard atmosphere.
 		pressure_difference = pressure - species.safe_pressure
-
+	
+	if(isSynthetic())
+		pressure_difference = 0 //synthetics dont need pressure they're robutts
+		return
+	
 	if(pressure_difference < 5) // If the difference is small, don't bother calculating the fraction.
 		pressure_difference = 0
 
@@ -673,7 +680,10 @@
 				else
 					burn_dam = HEAT_DAMAGE_LEVEL_2
 			else
-				burn_dam = HEAT_DAMAGE_LEVEL_1
+				if(isSynthetic())
+					burn_dam = HEAT_DAMAGE_SYNTH
+				else
+					burn_dam = HEAT_DAMAGE_LEVEL_1
 
 		take_overall_damage(burn=burn_dam, used_weapon = "High Body Temperature")
 		fire_alert = max(fire_alert, 2)
@@ -1214,6 +1224,15 @@
 				if(250 to 350)					nutrition_icon.icon_state = "nutrition2"
 				if(150 to 250)					nutrition_icon.icon_state = "nutrition3"
 				else							nutrition_icon.icon_state = "nutrition4"
+
+		if(synthbattery_icon)
+			switch(nutrition)
+				if(450 to INFINITY)				synthbattery_icon.icon_state = "charge4"
+				if(300 to 450)					synthbattery_icon.icon_state = "blank"
+				if(200 to 300)					synthbattery_icon.icon_state = "charge4"
+				if(150 to 200)					synthbattery_icon.icon_state = "charge3"
+				if(100 to 150)					synthbattery_icon.icon_state = "charge2"
+				else							synthbattery_icon.icon_state = "charge1"
 
 		if(pressure)
 			pressure.icon_state = "pressure[pressure_alert]"
