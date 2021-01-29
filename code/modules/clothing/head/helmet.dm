@@ -202,6 +202,12 @@
 	desc = "A reproduction helmet fashioned to look like an ancient Roman Galea. It affords the same protections as standard helmets."
 	icon_state = "roman_c"
 
+/obj/item/clothing/head/helmet/samurai
+	name = "kabuto"
+	desc = "An authentic antique, this helmet from old Earth belongs to an ancient martial tradition. The advent of firearms made this style of protection obsolete. Unfortunately, this remains the case."
+	icon_state = "kabuto"
+	armor = list(melee = 100, bullet = 00, laser = 5, energy = 0, bomb = 0, bio = 0, rad = 0)
+
 //Non-hardsuit ERT helmets.
 /obj/item/clothing/head/helmet/ert
 	name = "emergency response team helmet"
@@ -234,17 +240,22 @@
 	desc = "A set of armor worn by medical members of the NanoTrasen Emergency Response Team. Has red and white highlights."
 	icon_state = "erthelmet_med"
 
-/obj/item/clothing/head/helmet/ert/para
+
+//PARA Armor
+/obj/item/clothing/head/helmet/para
 	name = "Oculus Malum visor"
 	desc = "This specialty visor, nicknamed the 'MAW' by PMD agents, grants trained Agents the ability to view Paracausal events without suffering memetic hazards."
 	icon_state = "para_ert_helmet"
+	item_state_slots = list(slot_r_hand_str = "syndicate-helm-green", slot_l_hand_str = "syndicate-helm-green")
+	armor = list(melee = 60, bullet = 60, laser = 60,energy = 60, bomb = 20, bio = 0, rad = 0)
+	valid_accessory_slots = null
 	action_button_name = "Cycle MAW"
 
 	flash_protection = FLASH_PROTECTION_MAJOR
 
 	var/blessed = TRUE
 
-/obj/item/clothing/head/helmet/ert/para/attack_self(mob/user as mob)
+/obj/item/clothing/head/helmet/para/attack_self(mob/user as mob)
 	if(src.icon_state == initial(icon_state) && user.mind.isholy && blessed)
 		blessed = FALSE
 		flash_protection = FLASH_PROTECTION_NONE
@@ -261,3 +272,26 @@
 		flash_protection = FLASH_PROTECTION_NONE
 		blessed = FALSE
 		to_chat(user, "<font color='blue'>The OM visor doesn't respond to you.</font>")
+
+/obj/item/clothing/head/helmet/para/inquisitor
+	name = "PMD Inquistor's Hat"
+	desc = "This wide brimmed hat projects authority and a vaguely mystical presence. It also grants its bearer the ability to view Paracausal events without suffering memetic hazards."
+	icon_state = "witchhunterhat"
+	item_state_slots = list(slot_r_hand_str = "beret_black", slot_l_hand_str = "beret_black")
+	armor = list(melee = 40, bullet = 30, laser = 30,energy = 10, bomb = 10, bio = 0, rad = 0)
+	action_button_name = "Enable Wards"
+
+/obj/item/clothing/head/helmet/para/inquisitor/attack_self(mob/user as mob)
+	if(user.mind.isholy && blessed)
+		blessed = FALSE
+		flash_protection = FLASH_PROTECTION_NONE
+		to_chat(user, "<font color='blue'>The hat's protective sigils fade as you dispel them.</font>")
+	else
+		blessed = TRUE
+		flash_protection = FLASH_PROTECTION_MAJOR
+		to_chat(user, "<font color='blue'>The hat's protective sigil glows as you visualize the activation word.</font>")
+
+	if(!user.mind.isholy)
+		flash_protection = FLASH_PROTECTION_NONE
+		blessed = FALSE
+		to_chat(user, "<font color='blue'>The hat does not respond to you.</font>")
