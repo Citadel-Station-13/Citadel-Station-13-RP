@@ -158,7 +158,6 @@ var/last_message = 0
 // Calculate how much of the enviroment pressure-difference affects the human.
 /mob/living/carbon/human/calculate_affecting_pressure(var/pressure)
 	var/pressure_difference
-	
 	// First get the absolute pressure difference.
 	if(pressure < species.safe_pressure) // We are in an underpressure.
 		pressure_difference = species.safe_pressure - pressure
@@ -166,9 +165,6 @@ var/last_message = 0
 	else //We are in an overpressure or standard atmosphere.
 		pressure_difference = pressure - species.safe_pressure
 	
-	if(isSynthetic())
-		pressure_difference = 0 //synthetics dont need pressure they're robutts
-		return
 	
 	if(pressure_difference < 5) // If the difference is small, don't bother calculating the fraction.
 		pressure_difference = 0
@@ -1263,39 +1259,51 @@ var/last_message = 0
 					if(260 to 280)			bodytemp.icon_state = "temp-3"
 					else					bodytemp.icon_state = "temp-4"
 			else
-				//TODO: precalculate all of this stuff when the species datum is created
-				var/base_temperature = species.body_temperature
-				if(base_temperature == null) //some species don't have a set metabolic temperature
-					base_temperature = (species.heat_level_1 + species.cold_level_1)/2
-
-				var/temp_step
-				if (bodytemperature >= base_temperature)
-					temp_step = (species.heat_level_1 - base_temperature)/4
-
-					if (bodytemperature >= species.heat_level_1)
-						bodytemp.icon_state = "temp4"
-					else if (bodytemperature >= base_temperature + temp_step*3)
-						bodytemp.icon_state = "temp3"
-					else if (bodytemperature >= base_temperature + temp_step*2)
-						bodytemp.icon_state = "temp2"
-					else if (bodytemperature >= base_temperature + temp_step*1)
-						bodytemp.icon_state = "temp1"
+		if(bodytemperature >= 361)
+			if(isSynthetic())
+				if(world.time >= last_message || last_message == 0)
+					if(src.nutrition <= 50) // do they have enough energy for this?
+						to_chat(src, "<font color='red' face='fixedsys'>Warning: Temperature at critically high levels.</font>")
+						to_chat(src, "<font color='red' face='fixedsys'>Warning: Power critical. Unable to deploy cooling systems.</font>")
+						return
 					else
-						bodytemp.icon_state = "temp0"
+						to_chat(src, "<font color='red' face='fixedsys'>Warning: Temperature at critically high levels.</font>")
+						add_modifier(/datum/modifier/synthcooling, 15 SECONDS) // enable cooling systems at cost of energy
+						src.nutrition -= 50
+					last_message = world.time + 60 SECONDS
+			//TODO: precalculate all of this stuff when the species datum is created
+			var/base_temperature = species.body_temperature
+			if(base_temperature == null) //some species don't have a set metabolic temperature
+				base_temperature = (species.heat_level_1 + species.cold_level_1)/2
 
-				else if (bodytemperature < base_temperature)
-					temp_step = (base_temperature - species.cold_level_1)/4
+			var/temp_step
+			if (bodytemperature >= base_temperature)
+				temp_step = (species.heat_level_1 - base_temperature)/4
 
-					if (bodytemperature <= species.cold_level_1)
-						bodytemp.icon_state = "temp-4"
-					else if (bodytemperature <= base_temperature - temp_step*3)
-						bodytemp.icon_state = "temp-3"
-					else if (bodytemperature <= base_temperature - temp_step*2)
-						bodytemp.icon_state = "temp-2"
-					else if (bodytemperature <= base_temperature - temp_step*1)
-						bodytemp.icon_state = "temp-1"
-					else
-						bodytemp.icon_state = "temp0"
+				if (bodytemperature >= species.heat_level_1)
+					bodytemp.icon_state = "temp4"
+				else if (bodytemperature >= base_temperature + temp_step*3)
+					bodytemp.icon_state = "temp3"
+				else if (bodytemperature >= base_temperature + temp_step*2)
+					bodytemp.icon_state = "temp2"
+				else if (bodytemperature >= base_temperature + temp_step*1)
+					bodytemp.icon_state = "temp1"
+				else
+					bodytemp.icon_state = "temp0"
+
+			else if (bodytemperature < base_temperature)
+				temp_step = (base_temperature - species.cold_level_1)/4
+
+				if (bodytemperature <= species.cold_level_1)
+					bodytemp.icon_state = "temp-4"
+				else if (bodytemperature <= base_temperature - temp_step*3)
+					bodytemp.icon_state = "temp-3"
+				else if (bodytemperature <= base_temperature - temp_step*2)
+					bodytemp.icon_state = "temp-2"
+				else if (bodytemperature <= base_temperature - temp_step*1)
+					bodytemp.icon_state = "temp-1"
+				else
+					bodytemp.icon_state = "temp0"
 		if(blinded)
 			overlay_fullscreen("blind", /obj/screen/fullscreen/blind)
 
