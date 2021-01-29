@@ -6,6 +6,7 @@
 	on_icon = "mixer_on"
 	cook_type = "candied"
 	appliancetype = CANDYMAKER
+	var/datum/looping_sound/candymaker/candymaker_loop
 	cooking_power = 0.6
 
 	output_options = list(
@@ -14,6 +15,28 @@
 		"Sucker" = /obj/item/reagent_containers/food/snacks/variable/sucker,
 		"Jelly" = /obj/item/reagent_containers/food/snacks/variable/jelly
 	)
+
+/obj/machinery/appliance/mixer/candy/Initialize()
+	. = ..()
+
+	candymaker_loop = new(list(src), FALSE)
+
+/obj/machinery/appliance/mixer/candy/Destroy()
+	. = ..()
+
+	QDEL_NULL(candymaker_loop)
+
+/obj/machinery/appliance/mixer/candy/update_icon()
+	. = ..()
+
+	if(!stat)
+		icon_state = on_icon
+		if(candymaker_loop)
+			candymaker_loop.start(src)
+	else
+		icon_state = off_icon
+		if(candymaker_loop)
+			candymaker_loop.stop(src)
 
 /obj/machinery/appliance/mixer/candy/change_product_appearance(obj/item/reagent_containers/food/snacks/product)
 	food_color = get_random_colour(1)
