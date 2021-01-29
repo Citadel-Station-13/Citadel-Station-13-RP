@@ -1,4 +1,4 @@
-"a" = (/turf/simulated/floor/beach/sand/desert/classh,/area/triumph_away/poi_h/unexplored)
+"a" = (/turf/simulated/floor/outdoors/beach/sand/desert/classh,/area/triumph_away/poi_h/unexplored)
 "d" = (/obj/effect/rune,/obj/random/humanoidremains,/turf/simulated/floor/bmarble,/area/triumph_away/poi_h/explored)
 "e" = (/obj/structure/simple_door/sandstone,/turf/simulated/floor/bmarble,/area/triumph_away/poi_h/explored)
 "k" = (/turf/simulated/floor/wmarble,/area/triumph_away/poi_h/explored)

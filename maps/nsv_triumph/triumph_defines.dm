@@ -186,9 +186,9 @@
 /datum/map/triumph/perform_map_generation()
 	return 1
 
-/datum/skybox_settings/triumph
-	icon_state = "space2"
-	use_stars = FALSE
+/datum/skybox_settings/triumph/New()
+	icon_state = "space1" // This is set again to a static state until a proper RNG of a static backdrop for every new round is set-up.
+	return icon_state
 
 // Short range computers see only the main levels, others can see the surrounding surface levels.
 /datum/map/triumph/get_map_levels(var/srcz, var/long_range = TRUE)

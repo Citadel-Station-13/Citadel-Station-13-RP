@@ -839,7 +839,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/cockpit)
 "eC" = (
-/obj/machinery/botany,
+/obj/machinery/portable_atmospherics/hydroponics,
 /turf/simulated/floor/grass,
 /area/triumph_away/tradeport)
 "eF" = (
@@ -4135,7 +4135,7 @@
 /turf/space,
 /area/triumph_away/tradeport/space)
 "vU" = (
-/obj/machinery/botany,
+/obj/machinery/portable_atmospherics/hydroponics,
 /obj/item/reagent_containers/glass/bucket,
 /turf/simulated/floor/grass,
 /area/triumph_away/tradeport)
@@ -5821,6 +5821,25 @@
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/triumph_away/tradeport/commons)
+"Er" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/structure/cable/yellow{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable/yellow{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/old_tile/red,
+/area/triumph_away/tradeport/spine)
 "Es" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -6429,6 +6448,7 @@
 	pixel_y = -28;
 	req_access = list(160)
 	},
+/obj/structure/cable/yellow,
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/triumph_away/tradeport/spine)
 "HA" = (
@@ -24393,7 +24413,7 @@ GH
 Ga
 xI
 pK
-Xj
+Er
 Hv
 pK
 El

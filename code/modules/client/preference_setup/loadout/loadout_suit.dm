@@ -38,6 +38,10 @@
 	display_name = "Civilian Bomber Jacket Alt"
 	path = /obj/item/clothing/suit/storage/bomber/alt
 
+/datum/gear/suit/storage/gothcoat
+	display_name = "Civilian Gothic Coat"
+	path = /obj/item/clothing/suit/storage/gothcoat
+
 /datum/gear/suit/leather_jacket
 	display_name = "Civilian Leather Jacket - Black"
 	path = /obj/item/clothing/suit/storage/toggle/leather_jacket

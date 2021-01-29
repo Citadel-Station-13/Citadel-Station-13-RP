@@ -61,6 +61,15 @@
 	siemens_coefficient = 0.9
 	armor = list(melee = 30, bullet = 20, laser = 20, energy = 20, bomb = 35, bio = 75, rad = 35)
 
+// Eldritch suit
+/obj/item/clothing/head/hood/eldritch
+	name = "eldritch hood"
+	desc = "A baggy hood smeared with some kind of waxy substance. Up close, what appeared to be burlap is revealed to actually be tanned skin."
+	icon_state = "eldritch"
+	flags = THICKMATERIAL
+	siemens_coefficient = 0.9
+	armor = list(melee = 20, bullet = 0, laser = 40, energy = 40, bomb = 20, bio = 30, rad = 20)
+
 // Costumes
 /obj/item/clothing/head/hood/carp_hood
 	name = "carp hood"
@@ -79,3 +88,4 @@
 /obj/item/clothing/head/hood/techpriest
 	name = "tech priest hood"
 	icon_state = "techpriesth"
+

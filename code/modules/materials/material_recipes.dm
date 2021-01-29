@@ -181,6 +181,7 @@
 	recipes += new/datum/stack_recipe("cardborg suit", /obj/item/clothing/suit/cardborg, 3, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("cardborg helmet", /obj/item/clothing/head/cardborg, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("pizza box", /obj/item/pizzabox, pass_stack_color = TRUE)
+	recipes += new/datum/stack_recipe("large cardboard box", /obj/structure/closet/largecardboard, 3, time = 25, one_per_turf = 1, on_floor = 1, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe_list("folders",list( \
 		new/datum/stack_recipe("blue folder", /obj/item/folder/blue), \
 		new/datum/stack_recipe("grey folder", /obj/item/folder), \

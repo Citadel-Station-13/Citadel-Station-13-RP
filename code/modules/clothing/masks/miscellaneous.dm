@@ -116,60 +116,7 @@
 	gas_transfer_coefficient = 0.90
 	siemens_coefficient = 0
 
-/obj/item/clothing/mask/pig
-	name = "pig mask"
-	desc = "A rubber pig mask."
-	icon_state = "pig"
-	flags_inv = HIDEFACE|BLOCKHAIR
-	w_class = ITEMSIZE_SMALL
-	siemens_coefficient = 0.9
-	body_parts_covered = HEAD|FACE|EYES
-
-/obj/item/clothing/mask/shark
-	name = "shark mask"
-	desc = "A rubber shark mask."
-	icon_state = "shark"
-	flags_inv = HIDEFACE
-	w_class = ITEMSIZE_SMALL
-	siemens_coefficient = 0.9
-	body_parts_covered = HEAD|FACE|EYES
-
-/obj/item/clothing/mask/dolphin
-	name = "dolphin mask"
-	desc = "A rubber dolphin mask."
-	icon_state = "dolphin"
-	flags_inv = HIDEFACE
-	w_class = ITEMSIZE_SMALL
-	siemens_coefficient = 0.9
-	body_parts_covered = HEAD|FACE|EYES
-
-/obj/item/clothing/mask/goblin
-	name = "goblin mask"
-	desc = "A rubber goblin mask."
-	icon_state = "goblin"
-	flags_inv = HIDEFACE
-	w_class = ITEMSIZE_SMALL
-	siemens_coefficient = 0.9
-	body_parts_covered = HEAD|FACE|EYES
-
-/obj/item/clothing/mask/demon
-	name = "demon mask"
-	desc = "A rubber demon mask."
-	icon_state = "demon"
-	flags_inv = HIDEFACE
-	w_class = ITEMSIZE_SMALL
-	siemens_coefficient = 0.9
-	body_parts_covered = HEAD|FACE|EYES
-
-/obj/item/clothing/mask/horsehead
-	name = "horse head mask"
-	desc = "A mask made of soft vinyl and latex, representing the head of a horse."
-	icon_state = "horsehead"
-	flags_inv = HIDEFACE|BLOCKHAIR
-	body_parts_covered = HEAD|FACE|EYES
-	w_class = ITEMSIZE_SMALL
-	siemens_coefficient = 0.9
-	
+//Nock Masks?
 /obj/item/clothing/mask/nock_scarab
 	name = "nock mask (blue, scarab)"
 	desc = "To Nock followers, masks symbolize rebirth and a new persona. Damaging the wearer's mask is generally considered an attack on their person itself."
@@ -235,6 +182,19 @@
 		eye.owner.eyeobj = null
 		eye.owner = null
 
+//Samurai
+/obj/item/clothing/mask/samurai
+	name = "menpo"
+	desc = "Antique facial armor hailing from old Earth. Designed to protect against sword blows and potentially arrows. This version has been carefully retrofitted to provide air."
+	icon_state = "menpo"
+	item_state_slots = list(slot_r_hand_str = "bandblack", slot_l_hand_str = "bandblack")
+	item_flags = AIRTIGHT|FLEXIBLEMATERIAL
+	body_parts_covered = FACE
+	w_class = ITEMSIZE_SMALL
+	gas_transfer_coefficient = 0.10
+	permeability_coefficient = 0.50
+
+//Bandanas
 /obj/item/clothing/mask/bandana
 	name = "black bandana"
 	desc = "A fine black bandana with nanotech lining. Can be worn on the head or face."

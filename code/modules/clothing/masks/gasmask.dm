@@ -149,6 +149,26 @@
 	armor = list(melee = 10, bullet = 5, laser = 5,energy = 5, bomb = 0, bio = 50, rad = 0)
 	siemens_coefficient = 0.9
 
+/obj/item/clothing/mask/gas/commando
+	name = "commando mask"
+	icon_state = "fullgas"
+	item_state_slots = list(slot_r_hand_str = "swat", slot_l_hand_str = "swat")
+	siemens_coefficient = 0.2
+
+/obj/item/clothing/mask/gas/cyborg
+	name = "cyborg visor"
+	desc = "Beep boop"
+	icon_state = "death"
+
+/obj/item/clothing/mask/gas/old
+	icon_state = "gas_mask"
+
+/obj/item/clothing/mask/gas/imperial
+	name = "imperial soldier facemask"
+	desc = "A close-fitting tactical mask that can be connected to an air supply."
+	icon_state = "ge_visor"
+
+//Costume Gas Masks
 /obj/item/clothing/mask/gas/clown_hat
 	name = "clown wig and mask"
 	desc = "A true prankster's facial attire. A clown is incomplete without their wig and mask."
@@ -167,12 +187,6 @@
 	icon_state = "mime"
 	item_state_slots = list(slot_r_hand_str = "mime", slot_l_hand_str = "mime")
 
-/obj/item/clothing/mask/gas/monkeymask
-	name = "monkey mask"
-	desc = "A mask used when acting as a monkey."
-	icon_state = "monkeymask"
-	body_parts_covered = HEAD|FACE|EYES
-
 /obj/item/clothing/mask/gas/sexymime
 	name = "sexy mime mask"
 	desc = "A traditional female mime's mask."
@@ -186,16 +200,23 @@
 	flags_inv = HIDEEARS|HIDEFACE
 	item_state_slots = list(slot_r_hand_str = "mime", slot_l_hand_str = "mime")
 
-/obj/item/clothing/mask/gas/commando
-	name = "commando mask"
-	icon_state = "fullgas"
-	item_state_slots = list(slot_r_hand_str = "swat", slot_l_hand_str = "swat")
-	siemens_coefficient = 0.2
+/obj/item/clothing/mask/gas/goblin
+	name = "goblin mask"
+	desc = "A professionally crafted goblin mask. Do you crave fast food?"
+	icon_state = "goblin"
+	body_parts_covered = HEAD|FACE|EYES
 
-/obj/item/clothing/mask/gas/cyborg
-	name = "cyborg visor"
-	desc = "Beep boop"
-	icon_state = "death"
+/obj/item/clothing/mask/gas/demon
+	name = "demon mask"
+	desc = "A professionally crafted demon mask. Its retro daemonic style is always trendy."
+	icon_state = "demon"
+	body_parts_covered = HEAD|FACE|EYES
+
+/obj/item/clothing/mask/gas/monkeymask
+	name = "monkey mask"
+	desc = "A mask used when acting as a monkey."
+	icon_state = "monkeymask"
+	body_parts_covered = HEAD|FACE|EYES
 
 /obj/item/clothing/mask/gas/owl_mask
 	name = "owl mask"
@@ -203,10 +224,103 @@
 	icon_state = "owl"
 	body_parts_covered = HEAD|FACE|EYES
 
-/obj/item/clothing/mask/gas/old
-	icon_state = "gas_mask"
+/obj/item/clothing/mask/gas/pig
+	name = "pig mask"
+	desc = "A professionally crafted pig mask. For the ballistics connoisseur."
+	icon_state = "pig"
+	body_parts_covered = HEAD|FACE|EYES
 
-/obj/item/clothing/mask/gas/imperial
-	name = "imperial soldier facemask"
-	desc = "A close-fitting tactical mask that can be connected to an air supply."
-	icon_state = "ge_visor"
+/obj/item/clothing/mask/gas/shark
+	name = "shark mask"
+	desc = "A professionally crafted shark mask. You can smell blood from a mile away."
+	icon_state = "shark"
+	body_parts_covered = HEAD|FACE|EYES
+
+/obj/item/clothing/mask/gas/dolphin
+	name = "dolphin mask"
+	desc = "A professionally crafted dolphin mask. Can you balance balls on your nose?"
+	icon_state = "dolphin"
+	body_parts_covered = HEAD|FACE|EYES
+
+/obj/item/clothing/mask/gas/horsehead
+	name = "horse head mask"
+	desc = "A mask made of soft vinyl and latex, representing the head of a horse."
+	icon_state = "horsehead"
+	body_parts_covered = HEAD|FACE|EYES
+
+/obj/item/clothing/mask/gas/frog
+	name = "frog mask"
+	desc = "A professionally crafted frog mask. Take your time."
+	icon_state = "frog"
+	body_parts_covered = HEAD|FACE|EYES
+
+/obj/item/clothing/mask/gas/rat
+	name = "rat mask"
+	desc = "A professionally crafted rat mask. Shhh."
+	icon_state = "rat"
+	body_parts_covered = HEAD|FACE|EYES
+
+/obj/item/clothing/mask/gas/fox
+	name = "fox mask"
+	desc = "A professionally crafted fox mask. Waiting for the perfect shot."
+	icon_state = "fox"
+	body_parts_covered = HEAD|FACE|EYES
+
+/obj/item/clothing/mask/gas/bee
+	name = "bee mask"
+	desc = "A professionally crafted bee mask. Even a drone can fly away."
+	icon_state = "bee"
+	body_parts_covered = HEAD|FACE|EYES
+
+/obj/item/clothing/mask/gas/bear
+	name = "bear mask"
+	desc = "A professionally crafted bear mask. For those who believe in the right to bear arms."
+	icon_state = "bear"
+	body_parts_covered = HEAD|FACE|EYES
+
+/obj/item/clothing/mask/gas/bat
+	name = "bat mask"
+	desc = "A professionally crafted bat mask. We just love hanging around."
+	icon_state = "bat"
+	body_parts_covered = HEAD|FACE|EYES
+
+/obj/item/clothing/mask/gas/raven
+	name = "raven mask"
+	desc = "A professionally crafted raven mask. Nevermore."
+	icon_state = "raven"
+	body_parts_covered = HEAD|FACE|EYES
+
+/obj/item/clothing/mask/gas/jackal
+	name = "jackal mask"
+	desc = "A professionally crafted jackal mask. A favorite of the Pharaoh."
+	icon_state = "jackal"
+	body_parts_covered = HEAD|FACE|EYES
+
+/obj/item/clothing/mask/gas/bumba
+	name = "smug tribal mask"
+	desc = "A hand carved wooden mask representing a now forgotten god who chose speed over strength."
+	icon_state = "bumba"
+	body_parts_covered = HEAD|FACE|EYES
+
+/obj/item/clothing/mask/gas/joy
+	name = "joyful mask"
+	desc = "A hard plastic mask designed after a popular emoticon. You can't tell if it's ironic or not."
+	icon_state = ""
+	body_parts_covered = HEAD|FACE|EYES
+
+/obj/item/clothing/mask/gas/scarecrow
+	name = "scarecrow mask"
+	desc = "A ominous gas mask covered in ragged burlap. Use it to hide from your fears."
+	icon_state = "scarecrow_sack"
+	body_parts_covered = HEAD|FACE|EYES
+
+/obj/item/clothing/mask/gas/mummy
+	name = "mummy head wraps"
+	desc = "A musty strip of ancient cloth wraps. How can you stand the smell?"
+	icon_state = "mummy_mask"
+	body_parts_covered = HEAD|FACE|EYES
+
+/obj/item/clothing/mask/gas/skeleton
+	name = "skeleton mask"
+	desc = "A crude plastic skull mask that is somehow still airtight."
+	icon_state = "death"
