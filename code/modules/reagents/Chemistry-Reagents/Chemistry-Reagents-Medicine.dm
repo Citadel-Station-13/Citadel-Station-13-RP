@@ -683,7 +683,7 @@
 				I.damage = max(I.damage - removed, 0)
 				H.Confuse(5)
 			if(I.damage <= 5 && I.organ_tag == O_EYES)
-				H.eye_blurry = min(M.eye_blurry + 10, 250) //Eyes need to reset, or something
+				H.eye_blurry = min(M.eye_blurry + 10, 100) //Eyes need to reset, or something
 				H.sdisabilities &= ~BLIND
 		if(alien == IS_SLIME)
 			H.add_chemical_effect(CE_PAINKILLER, 20)
@@ -708,7 +708,7 @@
 				I.damage = max(I.damage - removed, 0)
 				H.Confuse(5)
 			if(I.damage <= 5 && I.organ_tag == O_EYES)
-				H.eye_blurry = min(M.eye_blurry + 10, 250) //Eyes need to reset, or something
+				H.eye_blurry = min(M.eye_blurry + 10, 100) //Eyes need to reset, or something
 				H.sdisabilities &= ~BLIND
 		if(alien == IS_SLIME)
 			H.add_chemical_effect(CE_PAINKILLER, 20)
