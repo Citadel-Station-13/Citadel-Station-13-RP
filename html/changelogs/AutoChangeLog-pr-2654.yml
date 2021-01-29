@@ -1,7 +1,0 @@
-author: "Enzo-Leon"
-delete-after: True
-changes: 
-  - rscadd: "new proc call for APCs"
-  - balance: "Adjusted event weights"
-  - bugfix: "Desert planet lights & weather fixed."
-  - code_imp: "Updated APC code to add the flicker_lights proc call"
