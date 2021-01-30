@@ -11933,7 +11933,7 @@
 /area/engineering/engine_monitoring)
 "oMX" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red,
-/obj/machinery/atmospherics/pipe/simple/visible/purple{
+/obj/machinery/atmospherics/binary/pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
