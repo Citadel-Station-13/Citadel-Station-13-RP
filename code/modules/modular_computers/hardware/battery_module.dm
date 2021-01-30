@@ -75,4 +75,4 @@
 
 /obj/item/computer_hardware/battery_module/proc/charge_to_full()
 	if(battery)
-		battery.charge = battery.maxcharge
+		battery.charge = battery?.maxcharge
