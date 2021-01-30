@@ -1223,10 +1223,12 @@ var/last_message = 0
 
 		if(synthbattery_icon)
 			switch(nutrition)
-				if(450 to INFINITY)				synthbattery_icon.icon_state = "charge4"
-				if(300 to 450)					synthbattery_icon.icon_state = "charge3"
-				if(150 to 300)					synthbattery_icon.icon_state = "charge2"
+				if(350 to INFINITY)				synthbattery_icon.icon_state = "charge4"
+				if(250 to 350)					synthbattery_icon.icon_state = "charge3"
+				if(100 to 250)					synthbattery_icon.icon_state = "charge2"
 				else							synthbattery_icon.icon_state = "charge1"
+			if(stat == DEAD)
+				synthbattery_icon.icon_state = "charge0"
 
 		if(pressure)
 			pressure.icon_state = "pressure[pressure_alert]"
