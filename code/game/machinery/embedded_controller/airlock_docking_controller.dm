@@ -105,7 +105,7 @@
 	. = airlock_program.receive_user_command(command) || .	// Pass along to subprograms; bypass shortcircuit
 
 /datum/computer/file/embedded_program/docking/airlock/process()
-	airlock_program.process()
+	airlock_program?.process()
 	..()
 
 /datum/computer/file/embedded_program/docking/airlock/receive_signal(datum/signal/signal, receive_method, receive_param)
