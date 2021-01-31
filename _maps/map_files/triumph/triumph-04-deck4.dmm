@@ -26808,7 +26808,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/central)
 "skC" = (
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
 	frequency = 1380;
 	id_tag = "expshuttle_dock";
 	pixel_x = 32;
