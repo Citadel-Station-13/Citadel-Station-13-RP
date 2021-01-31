@@ -1655,7 +1655,6 @@
 /turf/simulated/floor/reinforced/phoron,
 /area/penumbra)
 "ceS" = (
-/obj/effect/zone_divider,
 /obj/structure/undies_wardrobe,
 /turf/simulated/floor/carpet/blucarpet,
 /area/penumbra)
@@ -11768,10 +11767,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/penumbra/perimeter/outer)
-"oCf" = (
-/obj/structure/undies_wardrobe,
-/turf/simulated/floor/carpet/blucarpet,
-/area/penumbra)
 "oCs" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 1
@@ -80875,7 +80870,7 @@ fXZ
 msE
 sPK
 oaj
-ceS
+oaj
 msE
 pWU
 msE
@@ -81389,7 +81384,7 @@ rfp
 kjM
 oJV
 rZK
-oCf
+oJV
 kjM
 she
 kjM
@@ -81903,7 +81898,7 @@ mSd
 kjM
 oJV
 gxr
-oJV
+ceS
 kjM
 she
 kjM
