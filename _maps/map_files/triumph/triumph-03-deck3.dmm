@@ -1679,6 +1679,7 @@
 	name = "Robotics RC";
 	pixel_y = 30
 	},
+/obj/item/duct_tape_roll,
 /turf/simulated/floor/tiled/old_cargo/purple,
 /area/assembly/robotics)
 "bBQ" = (
@@ -19076,6 +19077,7 @@
 "qYv" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/box/glasses,
+/obj/item/duct_tape_roll,
 /turf/simulated/floor/tiled/old_cargo/purple,
 /area/assembly/robotics)
 "qYA" = (
@@ -23056,6 +23058,11 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+"ukD" = (
+/obj/structure/table/glass,
+/obj/item/duct_tape_roll,
+/turf/simulated/floor/carpet/purcarpet,
+/area/rnd/breakroom)
 "ukG" = (
 /obj/structure/table/reinforced,
 /obj/item/reagent_containers/glass/beaker/large,
@@ -38674,7 +38681,7 @@ izT
 ewD
 rUT
 rUT
-rUT
+ukD
 hhg
 fKs
 wkL

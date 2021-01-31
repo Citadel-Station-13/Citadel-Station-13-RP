@@ -3348,6 +3348,11 @@
 	},
 /turf/simulated/shuttle/wall/voidcraft/blue,
 /area/shuttle/excursion/general)
+"crd" = (
+/obj/structure/table/woodentable,
+/obj/item/duct_tape_roll,
+/turf/simulated/floor/plating,
+/area/vacant/vacant_bar)
 "crn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -5318,6 +5323,7 @@
 /area/crew_quarters/sleep/RD_quarters)
 "dNq" = (
 /obj/structure/closet/firecloset,
+/obj/item/duct_tape_roll,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "dNM" = (
@@ -9122,6 +9128,8 @@
 	},
 /obj/item/robotanalyzer,
 /obj/machinery/light,
+/obj/item/duct_tape_roll,
+/obj/item/duct_tape_roll,
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
 "gwd" = (
@@ -44734,7 +44742,7 @@ cMy
 fCb
 xwI
 iYc
-vAH
+crd
 qVl
 qVl
 qVl
