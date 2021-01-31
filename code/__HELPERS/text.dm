@@ -264,7 +264,7 @@
 /proc/capitalize(var/t as text)
 	return uppertext(copytext(t, 1, 2)) + copytext(t, 2)
 
-/proc/autocorrect(var/input as text)
+/proc/autocorrect(var/input as text) // syntax is "stringtoreplace"="stringtoreplacewith"
 	return input = replace_characters(input, list(
 											" i "=" I ",
 											"i'm"="I'm",
