@@ -2756,6 +2756,7 @@
 	master_tag = "civvie_docker";
 	pixel_y = -40
 	},
+/obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
 "bWc" = (
@@ -8509,6 +8510,7 @@
 /obj/effect/map_helper/airlock/door/ext_door,
 /obj/effect/map_helper/airlock/sensor/ext_sensor,
 /obj/effect/map_helper/airlock/button/ext_button,
+/obj/structure/fans/tiny,
 /turf/simulated/shuttle/plating,
 /area/shuttle/excursion/general)
 "fVj" = (
@@ -14539,6 +14541,7 @@
 	id_tag = null
 	},
 /obj/effect/map_helper/airlock/atmos/pump_out_internal,
+/obj/machinery/embedded_controller/radio/airlock/airlock_controller,
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/general)
 "kdI" = (
@@ -22595,6 +22598,7 @@
 	frequency = 1384;
 	id_tag = "civvie_shuttle_exterior"
 	},
+/obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
 "pFE" = (
