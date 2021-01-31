@@ -1389,6 +1389,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/xenobiology/xenoflora_storage)
+"bnY" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
+	},
+/turf/simulated/floor,
+/area/shuttle/emt/general)
 "boO" = (
 /obj/structure/closet/secure_closet/RD,
 /obj/item/aicard,
@@ -1710,8 +1716,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "bFw" = (
-/obj/machinery/ion_engine{
-	density = 1;
+/obj/machinery/atmospherics/unary/engine/small{
 	dir = 4
 	},
 /turf/simulated/shuttle/plating/airless/carry,
@@ -1877,9 +1882,6 @@
 "bMJ" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
@@ -3812,12 +3814,6 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery2)
-"dAv" = (
-/obj/structure/shuttle/engine/heater{
-	dir = 8
-	},
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
-/area/shuttle/emt/general)
 "dAS" = (
 /obj/machinery/recharge_station,
 /turf/simulated/floor/tiled/white,
@@ -5252,7 +5248,9 @@
 /area/maintenance/substation/research)
 "eJu" = (
 /obj/machinery/meter,
-/obj/machinery/atmospherics/pipe/manifold/hidden/cyan,
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 5
+	},
 /turf/simulated/floor,
 /area/shuttle/emt/general)
 "eKA" = (
@@ -5889,6 +5887,12 @@
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
+	},
+/obj/machinery/access_button{
+	master_tag = "emt_shuttle_docker";
+	name = "exterior access button";
+	pixel_x = -30;
+	pixel_y = 10
 	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
@@ -8198,11 +8202,13 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/ward)
 "htH" = (
-/obj/machinery/atmospherics/pipe/tank/air,
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/machinery/atmospherics/pipe/tank/phoron{
+	volume = 30000
+	},
 /turf/simulated/floor,
 /area/shuttle/emt/general)
 "htI" = (
@@ -15369,8 +15375,8 @@
 /turf/simulated/floor/tiled,
 /area/medical/sleeper)
 "okn" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
-	dir = 5
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 9
 	},
 /turf/simulated/floor,
 /area/shuttle/emt/general)
@@ -17789,6 +17795,12 @@
 /obj/machinery/r_n_d/protolathe,
 /turf/simulated/floor/tiled,
 /area/rnd/reception_desk)
+"pXX" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/simulated/shuttle/wall/voidcraft/blue,
+/area/shuttle/emt/general)
 "pYd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -18372,6 +18384,13 @@
 /obj/machinery/door/airlock/voidcraft/vertical{
 	frequency = 1380;
 	id_tag = "emt_shuttle_interior"
+	},
+/obj/machinery/access_button{
+	dir = 1;
+	master_tag = "emt_shuttle_docker";
+	name = "interior access button";
+	pixel_x = -20;
+	pixel_y = -5
 	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
@@ -20673,8 +20692,10 @@
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/anomaly_lab)
 "smg" = (
-/obj/machinery/atmospherics/pipe/tank/phoron,
 /obj/effect/floor_decal/industrial/outline/red,
+/obj/machinery/atmospherics/pipe/tank/phoron{
+	volume = 30000
+	},
 /turf/simulated/floor,
 /area/shuttle/emt/general)
 "smK" = (
@@ -26329,7 +26350,6 @@
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
 	},
-/obj/machinery/portable_atmospherics/canister/phoron,
 /obj/machinery/light/small,
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor,
@@ -40398,7 +40418,7 @@ srO
 wrm
 srO
 bMJ
-dAv
+srO
 wBY
 bFw
 gVh
@@ -40536,7 +40556,7 @@ wyG
 vfm
 grz
 smg
-roW
+bnY
 mfr
 roW
 tOF
@@ -40962,7 +40982,7 @@ caM
 vfm
 grz
 grz
-grz
+pXX
 grz
 oFm
 aBb
