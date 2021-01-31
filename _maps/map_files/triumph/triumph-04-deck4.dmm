@@ -14541,7 +14541,6 @@
 	id_tag = null
 	},
 /obj/effect/map_helper/airlock/atmos/pump_out_internal,
-/obj/machinery/embedded_controller/radio/airlock/airlock_controller,
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/general)
 "kdI" = (
