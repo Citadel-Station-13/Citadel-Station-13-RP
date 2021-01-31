@@ -774,6 +774,16 @@
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
+"aEY" = (
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/meter,
+/turf/simulated/floor/tiled,
+/area/shuttle/excursion/cargo)
 "aFu" = (
 /obj/effect/shuttle_landmark/automatic/station_dockpoint1,
 /turf/space,
@@ -6886,12 +6896,12 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/voidcraft{
-	name = "Life Support"
-	},
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
+	},
+/obj/machinery/door/airlock/voidcraft{
+	name = "Life Support"
 	},
 /turf/simulated/floor,
 /area/shuttle/civvie/general)
@@ -26113,6 +26123,9 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/machinery/autolathe{
+	hacked = 1
+	},
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/cargo)
 "rGX" = (
@@ -39748,7 +39761,7 @@ qXa
 sfl
 tab
 dKK
-dKK
+aEY
 ltW
 ntt
 qyn

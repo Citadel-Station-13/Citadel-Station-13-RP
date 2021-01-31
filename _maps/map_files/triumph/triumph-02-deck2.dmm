@@ -4003,6 +4003,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
 	},
+/obj/machinery/meter,
 /turf/simulated/floor/airless,
 /area/shuttle/mining_ship/general)
 "lA" = (
