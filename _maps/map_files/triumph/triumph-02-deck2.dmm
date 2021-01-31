@@ -10918,7 +10918,8 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/portables_connector{
-	dir = 1
+	dir = 1;
+	name = "Engine Fuel Port"
 	},
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/steel,

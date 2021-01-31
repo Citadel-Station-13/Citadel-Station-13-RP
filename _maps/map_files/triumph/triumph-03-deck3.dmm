@@ -5706,6 +5706,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/research)
+"fjL" = (
+/obj/structure/disposalpipe/trunk,
+/obj/structure/disposaloutlet{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/rnd/xenobiology)
 "fjN" = (
 /obj/machinery/door/airlock{
 	name = "Unit 2"
@@ -6497,6 +6504,13 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/resleeving)
+"fSx" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/bed/chair/comfy/beige{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/rnd/xenobiology)
 "fSC" = (
 /obj/structure/bed/chair/office/dark,
 /turf/simulated/floor/carpet/sblucarpet,
@@ -8021,6 +8035,12 @@
 "hja" = (
 /turf/simulated/wall,
 /area/rnd/workshop)
+"hjn" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/rnd/xenobiology)
 "hjp" = (
 /obj/machinery/light{
 	dir = 4
@@ -10323,6 +10343,15 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
+"jBo" = (
+/obj/machinery/camera/network/research{
+	dir = 4;
+	network = list("Xenobiology")
+	},
+/obj/structure/bed,
+/obj/item/bedsheet/blue,
+/turf/simulated/floor/wood,
+/area/rnd/xenobiology)
 "jBU" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -12253,6 +12282,11 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/ward)
+"loM" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/table/wooden_reinforced,
+/turf/simulated/floor/wood,
+/area/rnd/xenobiology)
 "lpT" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -12610,6 +12644,13 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+"lJl" = (
+/obj/machinery/door/window/brigdoor/southright{
+	name = "Containment Pen";
+	req_access = list(55)
+	},
+/turf/simulated/floor/wood,
+/area/rnd/xenobiology)
 "lJw" = (
 /obj/structure/bed/chair/comfy/brown,
 /turf/simulated/floor/wood,
@@ -14678,6 +14719,10 @@
 /obj/effect/floor_decal/corner/paleblue/border,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
+"nwW" = (
+/obj/structure/closet,
+/turf/simulated/floor/wood,
+/area/rnd/xenobiology)
 "nyB" = (
 /obj/machinery/atmospherics/unary/freezer{
 	icon_state = "freezer_1";
@@ -15466,6 +15511,16 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/exam_room)
+"oqt" = (
+/obj/machinery/atmospherics/unary/outlet_injector{
+	dir = 1;
+	frequency = 1445;
+	id = "burn_in";
+	req_access = null;
+	volume_rate = 700
+	},
+/turf/simulated/floor/wood,
+/area/rnd/xenobiology)
 "oqL" = (
 /obj/machinery/light/small/emergency{
 	dir = 1
@@ -20520,7 +20575,7 @@
 	name = "Containment Blast Doors";
 	opacity = 0
 	},
-/turf/simulated/floor/reinforced,
+/turf/simulated/floor/wood,
 /area/rnd/xenobiology)
 "sgd" = (
 /obj/machinery/computer/transhuman/resleeving{
@@ -24176,6 +24231,9 @@
 "vfm" = (
 /turf/simulated/wall/r_wall,
 /area/medical/patient_wing)
+"vfs" = (
+/turf/simulated/floor/wood,
+/area/rnd/xenobiology)
 "vfN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -26356,7 +26414,8 @@
 /area/medical/resleeving)
 "xax" = (
 /obj/machinery/atmospherics/portables_connector{
-	dir = 1
+	dir = 1;
+	name = "Engine Fuel Port"
 	},
 /obj/machinery/light/small,
 /obj/effect/floor_decal/industrial/outline/red,
@@ -31559,9 +31618,9 @@ pYD
 gVh
 gVh
 dYm
-guO
-jLc
-nWW
+jBo
+hjn
+nwW
 hbo
 oiE
 eEi
@@ -31701,11 +31760,11 @@ pYD
 gVh
 gVh
 kjq
-qUP
-aMA
-nWW
+oqt
+vfs
+vfs
 sfs
-rjw
+lJl
 gYs
 tLb
 jYb
@@ -31843,9 +31902,9 @@ pYD
 gVh
 gVh
 jYb
-rVZ
-tgT
-tgT
+fjL
+loM
+fSx
 uHZ
 jmD
 hEl
