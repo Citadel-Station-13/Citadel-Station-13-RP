@@ -3831,9 +3831,8 @@
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_prep)
 "cEr" = (
-/obj/machinery/atmospherics/pipe/tank/air{
-	dir = 1
-	},
+/obj/machinery/portable_atmospherics/powered/scrubber,
+/obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/cargo)
 "cEx" = (
@@ -6530,7 +6529,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "eCV" = (
-/obj/effect/floor_decal/industrial/outline/blue,
 /obj/structure/cable/cyan{
 	d2 = 2;
 	icon_state = "0-2"
@@ -6539,6 +6537,7 @@
 	charge = 1.5e+007;
 	cur_coils = 3
 	},
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/general)
 "eDN" = (
@@ -12759,13 +12758,13 @@
 /turf/simulated/floor/lino,
 /area/chapel/office)
 "iRC" = (
-/obj/machinery/meter,
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
-	dir = 4
+/obj/machinery/atmospherics/pipe/tank/air{
+	dir = 8
 	},
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/cargo)
 "iSk" = (
@@ -14541,6 +14540,7 @@
 	id_tag = null
 	},
 /obj/effect/map_helper/airlock/atmos/pump_out_internal,
+/obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/general)
 "kdI" = (
@@ -14672,6 +14672,7 @@
 	id_tag = null
 	},
 /obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/general)
 "klp" = (
@@ -14942,6 +14943,7 @@
 	frequency = 1384;
 	id_tag = "civvie_vent"
 	},
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
 "kvw" = (
@@ -19097,6 +19099,7 @@
 	id_tag = null
 	},
 /obj/effect/map_helper/airlock/atmos/pump_out_internal,
+/obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/general)
 "nnL" = (
@@ -20171,10 +20174,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/civilian_hallway_mid)
 "obo" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
-	dir = 1
-	},
 /obj/effect/wingrille_spawn/reinforced_phoron,
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/cyan,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/shuttle/excursion/general)
 "obs" = (
@@ -21721,6 +21722,12 @@
 /obj/machinery/door/airlock/maintenance/engi,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/command)
+"oZY" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 6
+	},
+/turf/simulated/shuttle/wall/voidcraft/blue,
+/area/shuttle/excursion/general)
 "pah" = (
 /obj/structure/window/phoronreinforced/full,
 /obj/structure/grille,
@@ -22515,7 +22522,10 @@
 /turf/simulated/floor/carpet/sblucarpet,
 /area/chapel/main)
 "pAV" = (
-/obj/machinery/atmospherics/pipe/tank/air,
+/obj/machinery/atmospherics/pipe/tank/air{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/cargo)
 "pBe" = (
@@ -24899,8 +24909,10 @@
 /turf/simulated/floor/tiled/white,
 /area/security/forensics)
 "qXa" = (
-/obj/effect/floor_decal/industrial/warning/full,
-/obj/machinery/atmospherics/portables_connector,
+/obj/machinery/atmospherics/portables_connector{
+	name = "Engine Fuel Port"
+	},
+/obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/cargo)
 "qXb" = (
@@ -27235,6 +27247,7 @@
 	frequency = 1384;
 	id_tag = "civvie_vent"
 	},
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
 "szT" = (
@@ -28279,6 +28292,7 @@
 	pixel_y = 28
 	},
 /obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/general)
 "tiI" = (
@@ -31879,11 +31893,11 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "vIe" = (
-/obj/effect/floor_decal/industrial/warning/full,
 /obj/machinery/atmospherics/pipe/tank/phoron{
 	dir = 4;
 	volume = 30000
 	},
+/obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/cargo)
 "vIh" = (
@@ -32468,7 +32482,10 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/atmospherics/portables_connector,
+/obj/machinery/atmospherics/portables_connector{
+	name = "Engine Fuel Port"
+	},
+/obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor,
 /area/shuttle/civvie/general)
 "vWr" = (
@@ -33812,6 +33829,7 @@
 	cur_coils = 3
 	},
 /obj/structure/cable/cyan,
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor,
 /area/shuttle/civvie/general)
 "wVS" = (
@@ -39476,7 +39494,7 @@ sJC
 mAF
 xsI
 hYe
-hYe
+oZY
 obo
 ula
 hYe
