@@ -541,6 +541,7 @@
 	name = "dual holster gunbelt"
 	desc = "Belts like these were popular on old Earth, but were largely supplanted by modular holsters. This gunbelt is too bulky to be comfortably anchored to clothes without support."
 	icon_state = "dual_holster"
+	storage_slots = 2
 	max_w_class = ITEMSIZE_NORMAL
 	can_hold = list(
 		/obj/item/gun/energy/alien,
