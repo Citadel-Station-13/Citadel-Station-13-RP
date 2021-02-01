@@ -8,11 +8,11 @@
 "D" = (/obj/structure/sink/puddle,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/explored)
 "E" = (/obj/random/outcrop,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/explored)
 "K" = (/obj/random/obstruction,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/explored)
-"M" = (/obj/random/outcrop,/turf/simulated/floor/beach/sand/desert/classh,/area/triumph_away/poi_h/explored)
+"M" = (/obj/random/outcrop,/turf/simulated/floor/outdoors/beach/sand/desert/classh,/area/triumph_away/poi_h/explored)
 "N" = (/obj/structure/closet/crate/miningcar,/obj/random/multiple/triumph/ores,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/explored)
 "R" = (/obj/item/flashlight/lantern,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/explored)
 "S" = (/obj/random/obstruction,/turf/simulated/mineral/classh,/area/triumph_away/poi_h/explored)
-"W" = (/turf/simulated/floor/beach/sand/desert/classh,/area/triumph_away/poi_h/explored)
+"W" = (/turf/simulated/floor/outdoors/beach/sand/desert/classh,/area/triumph_away/poi_h/explored)
 
 (1,1,1) = {"
 aaaaWWWWaaaaaWWWaaaa

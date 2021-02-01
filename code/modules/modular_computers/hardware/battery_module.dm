@@ -74,5 +74,6 @@
 	return ..()
 
 /obj/item/computer_hardware/battery_module/proc/charge_to_full()
-	if(battery)
+	if(ispath(battery))
+		battery = new battery
 		battery.charge = battery.maxcharge

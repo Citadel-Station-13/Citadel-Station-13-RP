@@ -12969,7 +12969,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/foyer)
 "Mx" = (
-/obj/machinery/appliance/grill,
+/obj/machinery/appliance/cooker/grill,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
 "My" = (

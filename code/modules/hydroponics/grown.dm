@@ -7,6 +7,8 @@
 	desc = "Nutritious! Probably."
 	flags = NOCONDUCT
 	slot_flags = SLOT_HOLSTER
+	drop_sound = 'sound/items/drop/herb.ogg'
+	pickup_sound = 'sound/items/pickup/herb.ogg'
 
 	var/plantname
 	var/datum/seed/seed

@@ -58,12 +58,6 @@
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
-"aj" = (
-/obj/machinery/atmospherics/pipe/simple/heat_exchanging,
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/space,
-/area/space)
 "ak" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -10664,7 +10658,6 @@
 /obj/machinery/door/airlock/maintenance,
 /obj/structure/catwalk,
 /obj/machinery/door/firedoor,
-/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "Ie" = (
@@ -19303,7 +19296,7 @@ Zj
 Ww
 yb
 Bs
-aj
+Bs
 Bs
 Bs
 Bs

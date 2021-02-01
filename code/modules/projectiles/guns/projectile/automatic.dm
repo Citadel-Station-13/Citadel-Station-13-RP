@@ -336,6 +336,7 @@
 	item_state = "p90"
 	w_class = ITEMSIZE_NORMAL
 	caliber = "9mm"
+	fire_sound = 'sound/weapons/gunshot/gunshot_uzi.wav'
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2)
 	slot_flags = SLOT_BELT // ToDo: Belt sprite.
 	load_method = MAGAZINE
@@ -355,7 +356,7 @@
 	desc = "An H90K from Hephaestus Industries. This one has a different colored receiver and a sling."
 	icon_state = "p90smgC"
 	magazine_type = /obj/item/ammo_magazine/m9mmp90/hunter
-	slot_flags = SLOT_BELT|SLOT_BACK 
+	slot_flags = SLOT_BELT|SLOT_BACK
 	pin = /obj/item/firing_pin/explorer
 
 /obj/item/gun/projectile/automatic/p90/custom/update_icon()

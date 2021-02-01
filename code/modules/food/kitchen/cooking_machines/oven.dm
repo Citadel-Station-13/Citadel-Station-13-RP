@@ -7,6 +7,7 @@
 	appliancetype = OVEN
 	food_color = "#A34719"
 	can_burn_food = 1
+	var/datum/looping_sound/oven/oven_loop
 	active_power_usage = 6 KILOWATTS
 	//Based on a double deck electric convection oven
 
@@ -35,15 +36,29 @@
 		"Donut" = /obj/item/reagent_containers/food/snacks/variable/donut
 	)
 
+/obj/machinery/appliance/cooker/oven/Initialize()
+	. = ..()
+
+	oven_loop = new(list(src), FALSE)
+
+/obj/machinery/appliance/cooker/oven/Destroy()
+	QDEL_NULL(oven_loop)
+	return ..()
 
 /obj/machinery/appliance/cooker/oven/update_icon()
 	if (!open)
 		if (!stat)
 			icon_state = "ovenclosed_on"
+			if(oven_loop)
+				oven_loop.stop(src)
 		else
 			icon_state = "ovenclosed_off"
+			if(oven_loop)
+				oven_loop.stop(src)
 	else
 		icon_state = "ovenopen"
+		if(oven_loop)
+			oven_loop.stop(src)
 	..()
 
 /obj/machinery/appliance/cooker/oven/AltClick(var/mob/user)

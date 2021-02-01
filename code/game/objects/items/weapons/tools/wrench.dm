@@ -15,6 +15,8 @@
 	attack_verb = list("bashed", "battered", "bludgeoned", "whacked")
 	usesound = 'sound/items/ratchet.ogg'
 	toolspeed = 1
+	drop_sound = 'sound/items/drop/wrench.ogg'
+	pickup_sound = 'sound/items/pickup/wrench.ogg'
 
 /obj/item/tool/wrench/is_wrench()
 	return TRUE
