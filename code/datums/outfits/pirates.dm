@@ -17,7 +17,6 @@
 	flags = OUTFIT_HAS_JETPACK
 
 /decl/hierarchy/outfit/pirate/vox
-	hierarchy_type = /decl/hierarchy/outfit/pirate/vox
 	name = "Vox Raider"
 	uniform = /obj/item/clothing/under/color/black
 	suit = /obj/item/clothing/suit/armor/vox_scrap
