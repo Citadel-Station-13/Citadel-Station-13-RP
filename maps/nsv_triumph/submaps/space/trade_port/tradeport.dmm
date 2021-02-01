@@ -197,6 +197,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/triumph_away/tradeport/commons)
+"bc" = (
+/obj/structure/largecrate{
+	name = "large crate - PRODUCT"
+	},
+/turf/simulated/floor/tiled/old_tile/red,
+/area/triumph_away/tradeport/commhall)
 "bd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -1334,6 +1340,10 @@
 	},
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/triumph_away/tradeport/safari)
+"hr" = (
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/plating,
+/area/triumph_away/tradeport/commhall)
 "hx" = (
 /obj/machinery/door/firedoor/multi_tile{
 	req_one_access = list(160)
@@ -1411,6 +1421,12 @@
 	},
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/triumph_away/tradeport/spine)
+"hZ" = (
+/obj/structure/largecrate{
+	name = "large crate - PRODUCT"
+	},
+/turf/simulated/floor/plating,
+/area/triumph_away/tradeport/commhall)
 "ia" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/paper_bin{
@@ -1774,6 +1790,10 @@
 	},
 /turf/simulated/floor/carpet/blue,
 /area/triumph_away/tradeport/commons)
+"jA" = (
+/obj/structure/table/rack/shelf/steel,
+/turf/simulated/floor/plating,
+/area/triumph_away/tradeport/commhall)
 "jC" = (
 /obj/structure/railing,
 /obj/structure/railing{
@@ -2580,6 +2600,11 @@
 /obj/structure/railing,
 /turf/simulated/mineral/floor/vacuum,
 /area/space)
+"nP" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/gun/projectile/shotgun/doublebarrel,
+/turf/simulated/floor/plating,
+/area/triumph_away/tradeport/commhall)
 "nS" = (
 /obj/structure/railing{
 	dir = 8
@@ -2852,7 +2877,7 @@
 	dir = 4
 	},
 /obj/structure/statue/silver/janitor{
-	desc = "This statue commemorates Jim for employee of the month.";
+	desc = "This statue commemorates Farnsworth, the legendary Nebula Gas janitor. Even posthumously, Farnsworth retains the longest consecutive run of employee of the month awards.";
 	name = "Employee of the Month"
 	},
 /turf/simulated/floor/tiled/old_cargo/beige,
@@ -3442,6 +3467,9 @@
 	},
 /turf/simulated/floor/carpet/blue,
 /area/triumph_away/tradeport/commons)
+"sC" = (
+/turf/simulated/floor/tiled/old_tile/red,
+/area/triumph_away/tradeport/commhall)
 "sD" = (
 /obj/structure/railing{
 	dir = 8
@@ -3513,6 +3541,12 @@
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/triumph_away/tradeport/commons)
+"sX" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/triumph_away/tradeport/commhall)
 "sY" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -3679,7 +3713,7 @@
 	frequency = 8018;
 	id = "pumptwo";
 	name = "Pump Two";
-	target_pressure = 1500
+	target_pressure = 15000
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/airless,
@@ -4061,7 +4095,8 @@
 	dir = 8;
 	frequency = 8018;
 	id = "pumpthree";
-	name = "Pump Three"
+	name = "Pump Three";
+	target_pressure = 15000
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/airless,
@@ -4569,6 +4604,12 @@
 	},
 /turf/space,
 /area/triumph_away/tradeport/space)
+"yb" = (
+/obj/structure/largecrate{
+	name = "large crate - SUNDRIES and COMPONENTS"
+	},
+/turf/simulated/floor/plating,
+/area/triumph_away/tradeport/commhall)
 "yc" = (
 /obj/machinery/power/apc/alarms_hidden{
 	pixel_y = -28;
@@ -5049,6 +5090,12 @@
 /obj/structure/catwalk,
 /turf/simulated/mineral/floor/vacuum,
 /area/space)
+"AK" = (
+/obj/machinery/holosign/bar{
+	id = "cyndisign"
+	},
+/turf/simulated/wall/r_wall,
+/area/triumph_away/tradeport/commhall)
 "AM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/yellow{
@@ -5326,6 +5373,15 @@
 	},
 /turf/simulated/floor/tiled/old_tile/red,
 /area/triumph_away/tradeport)
+"BL" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/structure/largecrate{
+	name = "large crate - SUNDRIES and COMPONENTS"
+	},
+/turf/simulated/floor/plating,
+/area/triumph_away/tradeport/commhall)
 "BO" = (
 /obj/machinery/atmospherics/binary/pump/on{
 	dir = 4
@@ -5683,10 +5739,10 @@
 /obj/machinery/door/firedoor{
 	req_one_access = list(160)
 	},
-/obj/machinery/door/airlock/external/glass{
+/obj/machinery/door/airlock/uranium{
 	icon_state = "door_locked";
 	locked = 1;
-	name = "C&K's - Under Construction"
+	name = "C&K's - Coming Soon!"
 	},
 /turf/simulated/floor/airless,
 /area/triumph_away/tradeport/commhall)
@@ -5954,6 +6010,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/triumph_away/tradeport)
+"EM" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/old_tile/yellow,
+/area/triumph_away/tradeport/safari)
 "ES" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -5969,6 +6031,10 @@
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/triumph_away/tradeport/commons)
+"EU" = (
+/obj/machinery/light/flicker,
+/turf/simulated/floor/plating,
+/area/triumph_away/tradeport/commhall)
 "EY" = (
 /obj/structure/table/glass,
 /obj/item/reagent_containers/food/snacks/milosoup,
@@ -6151,6 +6217,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/old_tile/red,
 /area/triumph_away/tradeport)
+"FZ" = (
+/obj/structure/stasis_cage,
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/old_tile/beige,
+/area/triumph_away/tradeport/safari)
 "Ga" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
@@ -6469,7 +6543,8 @@
 	dir = 8;
 	frequency = 8018;
 	id = "pumpfive";
-	name = "Pump Five"
+	name = "Pump Five";
+	target_pressure = 15000
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/airless,
@@ -7080,6 +7155,12 @@
 /obj/structure/curtain/open/shower,
 /turf/simulated/floor/tiled/white,
 /area/triumph_away/tradeport/commons)
+"Lh" = (
+/obj/structure/largecrate{
+	name = "large crate - SUNDRIES and COMPONENTS"
+	},
+/turf/simulated/floor/tiled/old_tile/red,
+/area/triumph_away/tradeport/commhall)
 "Li" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -7455,6 +7536,12 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled/old_tile/red,
 /area/triumph_away/tradeport/spine)
+"Na" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_tile/red,
+/area/triumph_away/tradeport/commhall)
 "Nc" = (
 /obj/structure/transit_tube/station{
 	automatic_launch_time = 40
@@ -7627,7 +7714,8 @@
 	dir = 4;
 	frequency = 8018;
 	id = "pumpfour";
-	name = "Pump Four"
+	name = "Pump Four";
+	target_pressure = 15000
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/airless,
@@ -7806,14 +7894,10 @@
 	},
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/triumph_away/tradeport)
-"OB" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/structure/stasis_cage,
-/obj/effect/floor_decal/industrial/outline/blue,
-/turf/simulated/floor/tiled/old_tile/yellow,
-/area/triumph_away/tradeport/safari)
+"OF" = (
+/obj/structure/barricade,
+/turf/simulated/floor/plating,
+/area/triumph_away/tradeport/commhall)
 "OH" = (
 /obj/machinery/door/window/westleft{
 	name = "Storefront";
@@ -8547,7 +8631,7 @@
 	frequency = 8018;
 	id = "pumpone";
 	name = "Pump One";
-	target_pressure = 1500
+	target_pressure = 15000
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/airless,
@@ -9537,6 +9621,12 @@
 	},
 /turf/simulated/floor/tiled/old_tile/purple,
 /area/triumph_away/tradeport)
+"Xb" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/triumph_away/tradeport/commhall)
 "Xj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -9551,12 +9641,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile/red,
 /area/triumph_away/tradeport/spine)
-"Xk" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/old_tile/beige,
-/area/triumph_away/tradeport/safari)
 "Xp" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -9750,6 +9834,10 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled/dark,
 /area/triumph_away/tradeport/facility)
+"Ys" = (
+/obj/structure/table,
+/turf/simulated/floor/plating,
+/area/triumph_away/tradeport/commhall)
 "Yt" = (
 /obj/structure/table/marble,
 /obj/machinery/chemical_dispenser/bar_alc/full{
@@ -9872,7 +9960,8 @@
 	dir = 4;
 	frequency = 8018;
 	id = "pumpsix";
-	name = "Pump Six"
+	name = "Pump Six";
+	target_pressure = 15000
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/airless,
@@ -17175,17 +17264,17 @@ Gg
 Gg
 hl
 hl
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
+hl
+hl
+hl
+hl
+hl
+hl
+hl
+hl
+hl
+hl
+hl
 YG
 YG
 YG
@@ -17317,19 +17406,19 @@ GV
 Tm
 Tm
 hl
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
+Na
+GV
+GV
+GV
+GV
+sX
+GV
+hl
+hZ
+GV
+hl
+hl
+hl
 YG
 YG
 YG
@@ -17459,21 +17548,21 @@ Tm
 Tm
 Of
 hl
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
+GV
+GV
+GV
+Ys
+GV
+sC
+GV
+GV
+GV
+GV
+hZ
+hZ
+hl
+hl
+hl
 YG
 YG
 YG
@@ -17601,22 +17690,22 @@ oc
 ux
 Oi
 hl
-kh
-kh
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
+hr
+nP
+Ys
+GV
+GV
+sC
+GV
+hl
+GV
+GV
+GV
+GV
+GV
+GV
+hl
+hl
 YG
 YG
 YG
@@ -17743,22 +17832,22 @@ Dw
 Tm
 Tm
 hl
-kh
-kh
-YG
-kh
-kh
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
+GV
+sC
+sC
+sC
+GV
+GV
+sC
+hl
+GV
+sC
+sC
+GV
+GV
+GV
+GV
+hl
 YG
 YG
 YG
@@ -17885,22 +17974,22 @@ ZH
 Tm
 GV
 DH
-kh
-kh
-kh
-kh
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
+GV
+GV
+sC
+GV
+GV
+GV
+GV
+OF
+GV
+GV
+GV
+GV
+GV
+hZ
+EU
+hl
 YG
 YG
 YG
@@ -18026,23 +18115,23 @@ Tm
 Pu
 Tm
 GV
+AK
+GV
+GV
+GV
+sC
+sC
+sC
+Ys
 hl
-kh
-kh
-kh
-kh
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
+GV
+GV
+GV
+GV
+yb
+yb
+hZ
+hl
 YG
 YG
 YG
@@ -18169,22 +18258,22 @@ Fi
 RO
 dh
 hl
-kh
-kh
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+hl
+GV
+GV
+GV
+GV
+sC
+sC
+hl
+hl
 YG
 YG
 YG
@@ -18299,33 +18388,33 @@ aU
 tl
 lt
 OT
-qs
+EM
 Ru
 qs
 Ru
 qs
-Ru
+FZ
 hl
 VO
 Pu
 Tm
 Of
 hl
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
+GV
+sC
+sC
+sC
+GV
+GV
+Lh
+OF
+GV
+GV
+hZ
+bc
+hl
+hl
+hl
 YG
 YG
 YG
@@ -18441,31 +18530,31 @@ oD
 kW
 oS
 oS
-Xk
-Ah
-Cf
-Ah
-Cf
-OB
+oS
+oS
+oS
+oS
+oS
+oS
 hl
 Tm
 Pu
 Tm
 Tm
 hl
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
+Xb
+GV
+jA
+jA
+jA
+BL
+Lh
+hl
+GV
+hZ
+hl
+hl
+hl
 YG
 YG
 YG
@@ -18582,30 +18671,30 @@ tl
 tl
 tl
 GS
-oS
-oS
-oS
-oS
-oS
-oS
-oS
+YG
+YG
+YG
+YG
+YG
+YG
+YG
 hl
 Tm
 Pu
 Tm
 Tm
 hl
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
+hl
+hl
+hl
+hl
+hl
+hl
+hl
+hl
+hl
+hl
+hl
 YG
 YG
 YG
