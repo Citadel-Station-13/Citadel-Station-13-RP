@@ -10,7 +10,7 @@
 	icon_state = "healthhud"
 	item_state_slots = list(slot_r_hand_str = "headset", slot_l_hand_str = "headset")
 	body_parts_covered = 0
-	enables_planes = list(VIS_CH_STATUS,VIS_CH_HEALTH)
+	enables_planes = list(VIS_CH_STATUS,VIS_CH_HEALTH,VIS_CH_BACKUP)
 
 /obj/item/clothing/glasses/hud/health/prescription
 	name = "Prescription Health Scanner HUD"
@@ -54,7 +54,7 @@
 	var/datum/nano_module/arscreen
 	var/arscreen_path
 	var/flash_prot = 0 //0 for none, 1 for flash weapon protection, 2 for welder protection
-	enables_planes = list(VIS_CH_ID,VIS_CH_HEALTH_VR,VIS_AUGMENTED)
+	enables_planes = list(VIS_CH_ID,VIS_CH_HEALTH_VR,VIS_AUGMENTED,VIS_CH_BACKUP)
 	plane_slots = list(slot_glasses)
 
 /obj/item/clothing/glasses/omnihud/New()
@@ -271,4 +271,4 @@
 	icon_state = "medpatch"
 	item_state_slots = list(slot_r_hand_str = "headset", slot_l_hand_str = "headset")
 	body_parts_covered = 0
-	enables_planes = list(VIS_CH_STATUS,VIS_CH_HEALTH)
+	enables_planes = list(VIS_CH_STATUS,VIS_CH_HEALTH,VIS_CH_BACKUP)
