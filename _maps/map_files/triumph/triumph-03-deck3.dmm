@@ -13118,8 +13118,9 @@
 	},
 /area/rnd/research)
 "mfr" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/meter,
+/obj/machinery/atmospherics/binary/pump/on{
+	name = "main fuel pump"
+	},
 /turf/simulated/floor,
 /area/shuttle/emt/general)
 "mfs" = (
@@ -19574,7 +19575,10 @@
 /turf/simulated/floor/plating,
 /area/rnd/rdoffice)
 "roW" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 4
+	},
+/obj/machinery/meter,
 /turf/simulated/floor,
 /area/shuttle/emt/general)
 "rpI" = (
@@ -22727,8 +22731,9 @@
 /turf/simulated/floor/carpet/sblucarpet,
 /area/medical/psych)
 "tOF" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 4
+/obj/machinery/atmospherics/binary/pump{
+	dir = 1;
+	name = "secondary fuel pump"
 	},
 /turf/simulated/floor,
 /area/shuttle/emt/general)
@@ -40483,8 +40488,8 @@ grz
 keE
 srO
 wrm
-srO
 bMJ
+srO
 srO
 wBY
 bFw

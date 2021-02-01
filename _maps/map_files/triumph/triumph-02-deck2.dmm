@@ -7473,12 +7473,14 @@
 	},
 /obj/machinery/door/airlock/voidcraft{
 	frequency = 2020;
-	id_tag = "belt_shuttle_exterior"
+	id_tag = "belt_shuttle_exterior";
+	name = "maintenance hatch"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
+/obj/machinery/atmospherics/binary/pump{
+	dir = 4;
+	name = "secondary fuel pump"
 	},
-/turf/simulated/floor/tiled/steel,
+/turf/simulated/floor/airless,
 /area/shuttle/mining_ship/general)
 "vA" = (
 /obj/structure/dogbed,

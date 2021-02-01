@@ -48,6 +48,9 @@
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plating,
 /area/triumph_away/poi_h/explored)
+"x" = (
+/turf/simulated/floor/outdoors/beach/sand/dirtlight,
+/area/triumph_away/poi_h/unexplored)
 "A" = (
 /mob/living/simple_mob/faithless/strong,
 /obj/random/multiple/triumph/treasure,
@@ -259,8 +262,8 @@ K
 k
 s
 K
-a
-a
+x
+x
 "}
 (9,1,1) = {"
 a
@@ -279,7 +282,7 @@ k
 s
 Z
 I
-a
+x
 a
 "}
 (10,1,1) = {"
@@ -300,7 +303,7 @@ Z
 s
 K
 a
-a
+x
 "}
 (11,1,1) = {"
 a

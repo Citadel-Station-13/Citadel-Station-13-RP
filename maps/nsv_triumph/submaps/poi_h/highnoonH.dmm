@@ -256,7 +256,7 @@
 /turf/simulated/floor/wood,
 /area/triumph_away/poi_h/POIs/WW_Town)
 "Xx" = (
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
+/turf/simulated/floor/outdoors/beach/sand/dirtlight,
 /area/triumph_away/poi_h/POIs/WW_Town)
 
 (1,1,1) = {"

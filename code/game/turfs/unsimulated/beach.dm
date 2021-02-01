@@ -56,7 +56,7 @@
 /turf/simulated/floor/beach/sand/lowdesert/Initialize()
 	. = ..()
 	if(prob(5))
-		icon_state = "desert[rand(0,4)]"
+		icon_state = "lowdesert[rand(0,4)]"
 
 /turf/simulated/floor/beach/coastline
 	name = "Coastline"

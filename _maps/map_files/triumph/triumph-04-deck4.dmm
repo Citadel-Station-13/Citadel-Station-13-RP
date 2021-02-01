@@ -780,8 +780,9 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/meter,
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/cargo)
 "aFu" = (
@@ -4859,6 +4860,9 @@
 	pixel_y = -28;
 	req_one_access = list(19,43,67);
 	specialfunctions = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 10
 	},
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/general)
@@ -16345,8 +16349,9 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 8
+/obj/machinery/atmospherics/binary/pump/on{
+	dir = 1;
+	name = "main fuel pump"
 	},
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/cargo)
@@ -22269,6 +22274,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
+"pra" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/turf/simulated/shuttle/wall/voidcraft/blue,
+/area/shuttle/excursion/general)
 "prc" = (
 /obj/effect/floor_decal/spline/fancy{
 	dir = 5
@@ -26746,7 +26757,9 @@
 /turf/simulated/floor,
 /area/shuttle/civvie/general)
 "sfl" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/atmospherics/binary/pump{
+	name = "secondary fuel pump"
+	},
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/cargo)
 "sfo" = (
@@ -28118,6 +28131,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
 	},
+/obj/machinery/meter,
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/cargo)
 "taH" = (
@@ -39933,7 +39947,7 @@ xnp
 fzX
 hYe
 dwl
-aDO
+pra
 jED
 jED
 hYe

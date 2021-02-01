@@ -2,6 +2,9 @@
 "a" = (
 /turf/template_noop,
 /area/template_noop)
+"c" = (
+/turf/simulated/floor/outdoors/beach/sand/dirtlight,
+/area/triumph_away/poi_h/explored)
 "d" = (
 /obj/random/mob/spider/nurse,
 /obj/effect/spider/stickyweb,
@@ -257,7 +260,7 @@ n
 o
 o
 o
-X
+c
 "}
 (7,1,1) = {"
 n
@@ -277,8 +280,8 @@ q
 q
 o
 q
-X
-X
+c
+c
 o
 "}
 (8,1,1) = {"
@@ -296,12 +299,12 @@ p
 X
 X
 X
-X
-X
-X
-X
+c
+c
+c
+c
 o
-X
+c
 "}
 (9,1,1) = {"
 n
@@ -319,10 +322,10 @@ X
 X
 X
 X
-X
-X
+c
+c
 o
-X
+c
 o
 "}
 (10,1,1) = {"
@@ -343,8 +346,8 @@ q
 q
 o
 q
-X
-X
+c
+c
 o
 "}
 (11,1,1) = {"
@@ -367,7 +370,7 @@ o
 o
 o
 o
-X
+c
 "}
 (12,1,1) = {"
 a

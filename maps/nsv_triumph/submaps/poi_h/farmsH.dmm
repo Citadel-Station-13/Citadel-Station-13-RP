@@ -4,7 +4,7 @@
 /area/triumph_away/poi_h/unexplored)
 "d" = (
 /obj/item/corncob,
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
+/turf/simulated/floor/outdoors/beach/sand/dirtlight,
 /area/triumph_away/poi_h/POIs/dirt_farm)
 "f" = (
 /obj/structure/table/woodentable,
@@ -32,7 +32,7 @@
 /area/triumph_away/poi_h/POIs/dirt_farm)
 "m" = (
 /obj/structure/sink/puddle,
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
+/turf/simulated/floor/outdoors/beach/sand/dirtlight,
 /area/triumph_away/poi_h/POIs/dirt_farm)
 "o" = (
 /turf/simulated/wall/sandstone/classh,
@@ -77,7 +77,7 @@
 /turf/simulated/floor/beach/sand/lowdesert,
 /area/triumph_away/poi_h/POIs/dirt_farm)
 "J" = (
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
+/turf/simulated/floor/outdoors/beach/sand/dirtlight,
 /area/triumph_away/poi_h/unexplored)
 "K" = (
 /obj/structure/closet/crate,
@@ -115,6 +115,9 @@
 /obj/machinery/botany,
 /turf/simulated/floor/beach/sand/lowdesert,
 /area/triumph_away/poi_h/POIs/dirt_farm)
+"U" = (
+/turf/simulated/floor/outdoors/beach/sand/dirtlight,
+/area/triumph_away/poi_h/POIs/dirt_farm)
 "Z" = (
 /obj/structure/bed/chair/wood/wings,
 /turf/simulated/floor/wood/classh,
@@ -146,8 +149,8 @@ o
 o
 A
 A
-O
-O
+U
+U
 A
 A
 A
@@ -162,9 +165,9 @@ f
 r
 o
 p
-O
-O
-O
+U
+U
+U
 S
 S
 S
@@ -178,9 +181,9 @@ M
 M
 M
 v
-O
+U
 d
-O
+U
 d
 p
 p
@@ -195,10 +198,10 @@ M
 M
 s
 o
-O
-O
-O
-O
+U
+U
+U
+U
 S
 S
 S
@@ -212,10 +215,10 @@ M
 M
 o
 o
-O
-O
-O
-O
+U
+U
+U
+U
 p
 p
 p
@@ -229,10 +232,10 @@ w
 N
 o
 m
-O
+U
 S
-O
-O
+U
+U
 S
 S
 S
@@ -245,15 +248,15 @@ o
 o
 o
 o
-O
-O
+U
+U
 S
-O
-O
+U
+U
 d
-O
-O
-O
+U
+U
+U
 J
 "}
 (9,1,1) = {"
@@ -262,15 +265,15 @@ P
 p
 p
 p
-O
+U
 z
 S
-O
-O
-O
-O
-O
-O
+U
+U
+U
+U
+U
+U
 J
 "}
 (10,1,1) = {"
@@ -279,11 +282,11 @@ P
 p
 p
 p
-O
+U
 p
 S
-O
-O
+U
+U
 S
 S
 S
@@ -296,11 +299,11 @@ o
 o
 o
 o
-O
+U
 p
 p
-O
-O
+U
+U
 p
 p
 p
@@ -314,10 +317,10 @@ g
 O
 O
 d
-O
+U
 d
-O
-O
+U
+U
 p
 p
 p
@@ -330,11 +333,11 @@ o
 K
 O
 O
-O
-O
-O
-O
-O
+U
+U
+U
+U
+U
 S
 S
 S
@@ -350,8 +353,8 @@ o
 y
 y
 y
-O
-O
+U
+U
 y
 y
 y

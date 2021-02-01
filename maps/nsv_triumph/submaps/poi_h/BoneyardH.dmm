@@ -24,13 +24,13 @@
 /obj/structure/fence/corner{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/beach/sand/desert/classh,
+/turf/simulated/floor/outdoors/beach/sand/dirtlight,
 /area/triumph_away/poi_h/POIs/graveyard)
 "k" = (
 /obj/structure/fence/door/locked{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/beach/sand/desert/classh,
+/turf/simulated/floor/outdoors/beach/sand/dirtlight,
 /area/triumph_away/poi_h/POIs/graveyard)
 "l" = (
 /obj/structure/fence/cut/large{
@@ -47,7 +47,7 @@
 /area/triumph_away/poi_h/POIs/graveyard)
 "v" = (
 /obj/structure/fence/corner,
-/turf/simulated/floor/outdoors/beach/sand/desert/classh,
+/turf/simulated/floor/outdoors/beach/sand/dirtlight,
 /area/triumph_away/poi_h/POIs/graveyard)
 "y" = (
 /obj/structure/closet/coffin,
@@ -71,11 +71,11 @@
 /obj/item/material/gravemarker{
 	material = MAT_WOOD
 	},
-/turf/simulated/floor/outdoors/beach/sand/desert/classh,
+/turf/simulated/floor/outdoors/beach/sand/dirtlight,
 /area/triumph_away/poi_h/POIs/graveyard)
 "F" = (
 /obj/item/flame/lighter/zippo/engraved,
-/turf/simulated/floor/outdoors/beach/sand/desert/classh,
+/turf/simulated/floor/outdoors/beach/sand/dirtlight,
 /area/triumph_away/poi_h/POIs/graveyard)
 "H" = (
 /turf/simulated/wall/sandstone/classh,
@@ -84,26 +84,26 @@
 /obj/structure/fence{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/beach/sand/desert/classh,
+/turf/simulated/floor/outdoors/beach/sand/dirtlight,
 /area/triumph_away/poi_h/POIs/graveyard)
 "O" = (
 /obj/structure/fence/cut/large{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/beach/sand/desert/classh,
+/turf/simulated/floor/outdoors/beach/sand/dirtlight,
 /area/triumph_away/poi_h/POIs/graveyard)
 "T" = (
 /obj/item/shovel,
-/turf/simulated/floor/outdoors/beach/sand/desert/classh,
+/turf/simulated/floor/outdoors/beach/sand/dirtlight,
 /area/triumph_away/poi_h/POIs/graveyard)
 "U" = (
 /obj/structure/fence{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/beach/sand/desert/classh,
+/turf/simulated/floor/outdoors/beach/sand/dirtlight,
 /area/triumph_away/poi_h/POIs/graveyard)
 "X" = (
-/turf/simulated/floor/outdoors/beach/sand/desert/classh,
+/turf/simulated/floor/outdoors/beach/sand/dirtlight,
 /area/triumph_away/poi_h/POIs/graveyard)
 "Y" = (
 /obj/structure/fence{
