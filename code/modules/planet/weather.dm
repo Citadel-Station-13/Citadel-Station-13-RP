@@ -69,7 +69,7 @@
 /datum/weather_holder/proc/get_next_weather(var/datum/weather/W)
 	if(!current_weather) // At roundstart, choose a suitable initial weather.
 		return pickweight(roundstart_weather_chances)
-	return pickweight(W.transition_chances)
+	return pickweight(W?.transition_chances)
 
 /datum/weather_holder/proc/advance_forecast()
 	var/new_weather = forecast[1]
