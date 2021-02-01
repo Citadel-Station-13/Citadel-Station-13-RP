@@ -13118,7 +13118,7 @@
 	},
 /area/rnd/research)
 "mfr" = (
-/obj/machinery/atmospherics/binary/pump/on{
+/obj/machinery/atmospherics/binary/pump{
 	name = "main fuel pump"
 	},
 /turf/simulated/floor,

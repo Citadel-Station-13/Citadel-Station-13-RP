@@ -34358,7 +34358,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/civilian_hallway_mid)
 "xnp" = (
-/obj/machinery/atmospherics/binary/pump/on{
+/obj/machinery/atmospherics/binary/pump{
 	dir = 8;
 	name = "main fuel pump"
 	},
