@@ -23021,12 +23021,6 @@
 	pixel_x = -27
 	},
 /obj/effect/map_helper/airlock/door/int_door,
-/obj/effect/map_helper/airlock/sensor/int_sensor,
-/obj/machinery/shuttle_sensor{
-	dir = 4;
-	id_tag = null;
-	pixel_x = 28
-	},
 /obj/effect/map_helper/airlock/button/int_button,
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/general)
@@ -25680,10 +25674,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/hallwayaux)
-"rti" = (
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
-/turf/simulated/floor/tiled,
-/area/shuttle/excursion/general)
 "rto" = (
 /obj/machinery/light{
 	dir = 4
@@ -39379,7 +39369,7 @@ eEl
 skC
 xsI
 hYe
-rti
+ieD
 tii
 kln
 hYe
