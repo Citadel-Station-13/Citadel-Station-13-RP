@@ -2197,6 +2197,12 @@
 	icon_state = "4-8"
 	},
 /obj/structure/sign/deck/third,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/teleporter/departing)
 "caM" = (

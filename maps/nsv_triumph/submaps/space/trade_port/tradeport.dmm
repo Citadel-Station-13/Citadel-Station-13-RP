@@ -117,7 +117,8 @@
 /area/triumph_away/tradeport)
 "aB" = (
 /obj/machinery/light,
-/turf/simulated/floor/grass,
+/obj/structure/flora/pumpkin/carved/owo,
+/turf/simulated/floor/outdoors/dirt,
 /area/triumph_away/tradeport/cyndishow)
 "aD" = (
 /obj/structure/table/steel_reinforced,
@@ -273,6 +274,11 @@
 	},
 /turf/simulated/shuttle/floor/white,
 /area/triumph_away/tradeport/commons)
+"bz" = (
+/mob/living/carbon/human/dummy/mannequin/mummy,
+/obj/structure/fake_stairs/south,
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/triumph_away/tradeport/cyndishow)
 "bA" = (
 /turf/simulated/wall/r_wall,
 /area/triumph_away/tradeport/commons)
@@ -419,13 +425,6 @@
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/triumph_away/tradeport/facility)
-"cz" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/blood/tracks/footprints,
-/turf/simulated/floor/tiled/hydro,
-/area/triumph_away/tradeport/cyndishow)
 "cA" = (
 /obj/machinery/light{
 	dir = 8;
@@ -1001,7 +1000,9 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/vomit,
-/obj/effect/decal/cleanable/blood/tracks/footprints,
+/obj/structure/closet/medical_wall{
+	pixel_x = -32
+	},
 /turf/simulated/floor/tiled/hydro,
 /area/triumph_away/tradeport/cyndishow)
 "fe" = (
@@ -1514,10 +1515,10 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/floor/outdoors/dirtlight,
 /area/triumph_away/tradeport/cyndishow)
 "hR" = (
-/turf/simulated/floor/grass,
+/turf/simulated/floor/outdoors/dirtlight,
 /area/triumph_away/tradeport/cyndishow)
 "hS" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -1578,6 +1579,10 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled/dark,
 /area/triumph_away/tradeport/facility)
+"id" = (
+/obj/structure/flora/pumpkin/carved/girly,
+/turf/simulated/floor/outdoors/dirt,
+/area/triumph_away/tradeport/cyndishow)
 "ie" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1612,6 +1617,12 @@
 	},
 /turf/simulated/floor/tiled/old_tile/red,
 /area/triumph_away/tradeport)
+"im" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/triumph_away/tradeport/cyndishow)
 "in" = (
 /turf/simulated/floor/plating,
 /area/triumph_away/tradeport/cyndishow)
@@ -1693,6 +1704,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/triumph_away/tradeport/commons)
+"iE" = (
+/obj/structure/flora/pumpkin/carved/scream,
+/turf/simulated/floor/outdoors/dirt,
+/area/triumph_away/tradeport/cyndishow)
 "iF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -1810,6 +1825,13 @@
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/plating,
 /area/triumph_away/tradeport/pads)
+"ja" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/flora/ausbushes/fullgrass,
+/turf/simulated/floor/outdoors/dirt,
+/area/triumph_away/tradeport/cyndishow)
 "jb" = (
 /obj/machinery/light{
 	dir = 1
@@ -1838,12 +1860,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/triumph_away/tradeport/commons)
-"jl" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/simulated/floor/wood,
-/area/triumph_away/tradeport/cyndishow)
 "jm" = (
 /obj/machinery/door/airlock/multi_tile/glass,
 /obj/structure/cable/green{
@@ -2149,7 +2165,7 @@
 /turf/simulated/floor/plating,
 /area/triumph_away/tradeport/engineering)
 "kN" = (
-/obj/effect/decal/cleanable/blood/tracks/footprints,
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/tiled/hydro,
 /area/triumph_away/tradeport/cyndishow)
 "kQ" = (
@@ -2635,6 +2651,11 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
+"mY" = (
+/obj/structure/window/reinforced,
+/obj/random/humanoidremains,
+/turf/simulated/floor/beach/sand/desert,
+/area/triumph_away/tradeport/cyndishow)
 "mZ" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -2656,7 +2677,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/triumph_away/tradeport/facility)
 "nd" = (
-/obj/machinery/light,
+/obj/machinery/light/small/flicker,
 /turf/simulated/floor/tiled/hydro,
 /area/triumph_away/tradeport/cyndishow)
 "ng" = (
@@ -2690,10 +2711,6 @@
 	},
 /turf/simulated/shuttle/floor/white,
 /area/triumph_away/tradeport/commons)
-"np" = (
-/obj/machinery/light,
-/turf/simulated/floor/wood,
-/area/triumph_away/tradeport/cyndishow)
 "nr" = (
 /obj/machinery/light{
 	dir = 4
@@ -3063,6 +3080,9 @@
 	req_one_access = list(160)
 	},
 /obj/effect/map_helper/airlock/door/ext_door,
+/obj/machinery/door/airlock/glass_external{
+	name = "Nebula Gas - Employees Only"
+	},
 /turf/simulated/floor/plating,
 /area/triumph_away/tradeport)
 "pr" = (
@@ -3725,6 +3745,13 @@
 /obj/mecha/working/ripley/firefighter,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
+"sO" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/flora/ausbushes,
+/turf/simulated/floor/outdoors/dirt,
+/area/triumph_away/tradeport/cyndishow)
 "sR" = (
 /obj/machinery/door/firedoor/multi_tile{
 	dir = 8;
@@ -5606,6 +5633,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/triumph_away/tradeport/cyndi)
+"BM" = (
+/obj/effect/decal/remains/mummy1,
+/turf/simulated/floor/beach/sand/desert,
+/area/triumph_away/tradeport/cyndishow)
 "BO" = (
 /obj/machinery/atmospherics/binary/pump/on{
 	dir = 4
@@ -5742,6 +5773,11 @@
 /obj/machinery/light,
 /turf/simulated/floor/carpet/blue,
 /area/triumph_away/tradeport/commons)
+"Cx" = (
+/mob/living/carbon/human/dummy/mannequin/scarecrow,
+/obj/item/material/gravemarker,
+/turf/simulated/floor/outdoors/dirt,
+/area/triumph_away/tradeport/cyndishow)
 "Cy" = (
 /obj/structure/table/glass,
 /obj/item/radio/intercom/trader{
@@ -5765,6 +5801,12 @@
 /obj/structure/catwalk,
 /turf/simulated/floor,
 /area/triumph_away/tradeport/pads)
+"CF" = (
+/obj/structure/cult/pylon{
+	light = 1
+	},
+/turf/simulated/floor/beach/sand/desert,
+/area/triumph_away/tradeport/cyndishow)
 "CI" = (
 /turf/simulated/floor/tiled/neutral,
 /area/triumph_away/tradeport/facility)
@@ -6767,6 +6809,12 @@
 /obj/structure/transit_tube,
 /turf/simulated/floor/plating,
 /area/triumph_away/tradeport/spine)
+"Hd" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/simulated/floor/outdoors/dirt,
+/area/triumph_away/tradeport/cyndishow)
 "He" = (
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/structure/closet/crate,
@@ -6789,7 +6837,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/beach/sand/desert,
+/turf/simulated/floor/tiled/asteroid_steel,
 /area/triumph_away/tradeport/cyndishow)
 "Hs" = (
 /obj/structure/outcrop,
@@ -6950,6 +6998,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/neutral,
 /area/triumph_away/tradeport/facility)
+"Im" = (
+/obj/structure/flora/pumpkin/carved,
+/turf/simulated/floor/outdoors/dirt,
+/area/triumph_away/tradeport/cyndishow)
 "Ip" = (
 /obj/machinery/light,
 /obj/machinery/alarm/alarms_hidden{
@@ -7024,6 +7076,16 @@
 	},
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/triumph_away/tradeport/safari)
+"IL" = (
+/obj/structure/toilet{
+	dir = 8
+	},
+/obj/structure/window/reinforced/tinted{
+	dir = 1
+	},
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/tiled/hydro,
+/area/triumph_away/tradeport/cyndishow)
 "IQ" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /obj/effect/map_helper/airlock/atmos/chamber_pump,
@@ -7166,7 +7228,7 @@
 /area/triumph_away/tradeport/pads)
 "JQ" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/mobcorpse/shogun,
+/obj/item/digestion_remains/skull,
 /turf/simulated/floor/snow,
 /area/triumph_away/tradeport/cyndishow)
 "JT" = (
@@ -7672,6 +7734,10 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
 /area/triumph_away/tradeport/engineering)
+"Mm" = (
+/obj/structure/cult/pylon,
+/turf/simulated/floor/beach/sand/desert,
+/area/triumph_away/tradeport/cyndishow)
 "Mn" = (
 /obj/machinery/door/airlock/silver{
 	name = "Cyborgs"
@@ -7682,6 +7748,7 @@
 /mob/living/carbon/human/dummy/mannequin/animegirl{
 	dir = 1
 	},
+/obj/effect/decal/cleanable/blood/drip,
 /turf/simulated/floor/tiled/hydro,
 /area/triumph_away/tradeport/cyndishow)
 "Mp" = (
@@ -7761,6 +7828,17 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/old_tile/red,
 /area/triumph_away/tradeport/spine)
+"My" = (
+/obj/structure/toilet{
+	dir = 8
+	},
+/obj/structure/window/reinforced/tinted,
+/obj/structure/window/reinforced/tinted{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/simulated/floor/tiled/hydro,
+/area/triumph_away/tradeport/cyndishow)
 "MD" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
@@ -7972,6 +8050,10 @@
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/triumph_away/tradeport)
+"NH" = (
+/obj/structure/flora/pumpkin,
+/turf/simulated/floor/outdoors/dirt,
+/area/triumph_away/tradeport/cyndishow)
 "NK" = (
 /obj/machinery/door/window/westleft{
 	name = "Storefront";
@@ -8037,6 +8119,9 @@
 	},
 /turf/simulated/floor/tiled/old_tile/red,
 /area/triumph_away/tradeport)
+"NU" = (
+/turf/simulated/wall/sandstonediamond,
+/area/triumph_away/tradeport/cyndishow)
 "NW" = (
 /obj/machinery/door/airlock/silver{
 	name = "Toilet"
@@ -9214,10 +9299,6 @@
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/plating,
 /area/triumph_away/tradeport/safarizoo)
-"Ti" = (
-/obj/effect/decal/cleanable/blood/gibs/limb,
-/turf/simulated/floor/tiled/hydro,
-/area/triumph_away/tradeport/cyndishow)
 "Tk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -9421,6 +9502,16 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/triumph_away/tradeport/facility)
+"Um" = (
+/obj/structure/toilet{
+	dir = 8
+	},
+/obj/structure/window/reinforced/tinted,
+/obj/structure/window/reinforced/tinted{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/hydro,
+/area/triumph_away/tradeport/cyndishow)
 "Un" = (
 /obj/machinery/light{
 	dir = 1
@@ -9768,10 +9859,6 @@
 	},
 /obj/structure/cable/yellow,
 /turf/simulated/floor/wood,
-/area/triumph_away/tradeport/cyndishow)
-"Wm" = (
-/obj/effect/decal/cleanable/blood/gibs/body,
-/turf/simulated/floor/tiled/hydro,
 /area/triumph_away/tradeport/cyndishow)
 "Wn" = (
 /obj/machinery/light,
@@ -10634,6 +10721,10 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/triumph_away/tradeport/safari)
+"ZR" = (
+/obj/structure/flora/ausbushes/fullgrass,
+/turf/simulated/floor/outdoors/dirtlight,
+/area/triumph_away/tradeport/cyndishow)
 "ZT" = (
 /obj/machinery/light{
 	dir = 1
@@ -16993,8 +17084,8 @@ PW
 PW
 hQ
 hR
-hR
-hR
+ZR
+iE
 xK
 YG
 YG
@@ -17133,10 +17224,10 @@ FD
 EJ
 PW
 PW
-hQ
+sO
+Cx
 hR
-hR
-hR
+NH
 xK
 YG
 YG
@@ -17275,8 +17366,8 @@ JQ
 EJ
 PW
 PW
-hQ
-hR
+Hd
+NH
 hR
 aB
 xK
@@ -17417,10 +17508,10 @@ FD
 uv
 PW
 PW
-hQ
+Hd
+Im
 hR
-hR
-hR
+NH
 xK
 YG
 YG
@@ -17559,10 +17650,10 @@ FD
 EJ
 PW
 PW
-hQ
+ja
+id
 hR
-hR
-hR
+NH
 xK
 YG
 YG
@@ -17840,7 +17931,7 @@ tM
 jY
 xK
 in
-PW
+im
 PW
 PW
 in
@@ -17985,7 +18076,7 @@ PW
 PW
 PW
 PW
-np
+PW
 xK
 xK
 xK
@@ -18123,7 +18214,7 @@ jY
 tM
 jY
 xK
-jl
+PW
 in
 PW
 PW
@@ -18691,7 +18782,7 @@ tM
 jY
 tM
 xK
-jl
+PW
 in
 PW
 PW
@@ -18837,7 +18928,7 @@ PW
 PW
 PW
 PW
-np
+PW
 xK
 xK
 xK
@@ -18976,7 +19067,7 @@ jY
 tM
 xK
 in
-PW
+NY
 PW
 PW
 in
@@ -19257,7 +19348,7 @@ YG
 YG
 YG
 xK
-ta
+CF
 ta
 ta
 XL
@@ -19399,16 +19490,16 @@ YG
 YG
 YG
 xK
+NU
+NU
 ta
-ta
-ta
-XL
+mY
 PW
 PW
-cz
+SB
 kN
 tB
-Ti
+tB
 xK
 YG
 YG
@@ -19542,13 +19633,13 @@ YG
 YG
 xK
 Hp
-ta
+bz
 ta
 XL
 PW
 PW
 SB
-kN
+tB
 Mo
 nd
 xK
@@ -19683,15 +19774,15 @@ YG
 YG
 YG
 xK
-ta
-ta
+NU
+NU
 ta
 XL
 PW
 PW
 SB
 tB
-Wm
+bX
 tB
 xK
 YG
@@ -19825,16 +19916,16 @@ YG
 YG
 YG
 xK
+Mm
 ta
-ta
-ta
+BM
 XL
 PW
 PW
 SB
-bX
-tB
-tB
+Um
+My
+IL
 xK
 YG
 YG

@@ -172,13 +172,16 @@
 //Diorama Corpses
 /obj/effect/landmark/mobcorpse/shogun
 	name = "Shogun's Bodyguard"
-	corpseuniform = /obj/item/clothing/suit/kamishimo
+	corpseuniform = /obj/item/clothing/under/color/black
+	corpsesuit = /obj/item/clothing/suit/kamishimo
 	corpseshoes = /obj/item/clothing/shoes/sandal
 	corpsehelmet = /obj/item/clothing/head/rice
 
-//Explorer
-
-//Classmate? Might be inappropriate.
+/obj/effect/landmark/mobcorpse/safari
+	name = "Colonial Adventurer"
+	corpseuniform = /obj/item/clothing/under/safari
+	corpseshoes = /obj/item/clothing/shoes/boots/workboots
+	corpsehelmet = /obj/item/clothing/head/pith
 
 //////////////////////////
 //		Vox Bodies

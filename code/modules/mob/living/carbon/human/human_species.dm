@@ -209,3 +209,61 @@
 			if(!glasses)
 				H.equip_to_slot_or_del(new /obj/item/clothing/glasses/thermal/plain/eyepatch, slot_wear_suit)
 				H.update_inv_glasses()
+
+/mob/living/carbon/human/dummy/mannequin/mummy/Initialize()
+	. = ..()
+	name = "Wooden Mannequin"
+	real_name = "Wooden Mannequin"
+	mob_list -= src
+	living_mob_list -= src
+	dead_mob_list -= src
+	weight = rand(25,175)
+	gender = pick(MALE,FEMALE,NEUTER)
+	delete_inventory()
+
+	for(var/mob/living/carbon/human/dummy/mannequin/mummy/H in src.loc)
+		for(var/i = 1, i <= 2, i++)
+			if(!w_uniform)
+				H.equip_to_slot_or_del(new /obj/item/clothing/under/mummy, slot_w_uniform)
+				H.update_inv_w_uniform()
+			if(!shoes)
+				H.equip_to_slot_or_del(new /obj/item/clothing/shoes/sandal, slot_shoes)
+				H.update_inv_shoes()
+			if(!wear_mask)
+				H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/mummy, slot_wear_mask)
+				H.update_inv_wear_mask()
+			if(!head)
+				H.equip_to_slot_or_del(new /obj/item/clothing/head/nemes, slot_head)
+				H.update_inv_head()
+			if(!wear_suit)
+				H.equip_to_slot_or_del(new /obj/item/clothing/suit/pharaoh, slot_wear_suit)
+				H.update_inv_wear_suit()
+
+/mob/living/carbon/human/dummy/mannequin/scarecrow/Initialize()
+	. = ..()
+	name = "Wooden Mannequin"
+	real_name = "Wooden Mannequin"
+	mob_list -= src
+	living_mob_list -= src
+	dead_mob_list -= src
+	weight = rand(25,175)
+	gender = pick(MALE,FEMALE,NEUTER)
+	delete_inventory()
+
+	for(var/mob/living/carbon/human/dummy/mannequin/scarecrow/H in src.loc)
+		for(var/i = 1, i <= 2, i++)
+			if(!w_uniform)
+				H.equip_to_slot_or_del(new /obj/item/clothing/under/scarecrow, slot_w_uniform)
+				H.update_inv_w_uniform()
+			if(!shoes)
+				H.equip_to_slot_or_del(new /obj/item/clothing/shoes/boots/workboots, slot_shoes)
+				H.update_inv_shoes()
+			if(!wear_mask)
+				H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/scarecrow, slot_wear_mask)
+				H.update_inv_wear_mask()
+			if(!head)
+				H.equip_to_slot_or_del(new /obj/item/clothing/head/cowboy_hat/wide, slot_head)
+				H.update_inv_head()
+			if(!gloves)
+				H.equip_to_slot_or_del(new /obj/item/clothing/gloves/botanic_leather, slot_wear_suit)
+				H.update_inv_gloves()
