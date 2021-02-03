@@ -595,6 +595,10 @@
 /obj/structure/closet/secure_closet/freezer/meat,
 /turf/simulated/floor/wmarble,
 /area/triumph_away/tradeport/commons)
+"do" = (
+/mob/living/carbon/human/dummy/mannequin/samurai,
+/turf/space,
+/area/triumph_away/tradeport/space)
 "dq" = (
 /obj/machinery/door/airlock/silver{
 	name = "Restroom"
@@ -1399,6 +1403,11 @@
 /area/triumph_away/tradeport/safari)
 "hr" = (
 /obj/structure/table/steel_reinforced,
+/obj/machinery/door/blast/shutters{
+	dir = 2;
+	id = "cyndi";
+	name = "C&K Shutters"
+	},
 /turf/simulated/floor/wood,
 /area/triumph_away/tradeport/cyndi)
 "ht" = (
@@ -2265,6 +2274,21 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
+"lC" = (
+/obj/machinery/button/remote/blast_door{
+	dir = 4;
+	id = "cyndi";
+	name = "C&K Shutters";
+	pixel_x = -27;
+	pixel_y = -5
+	},
+/obj/machinery/button/holosign{
+	id = "cyndisign";
+	pixel_x = -26;
+	pixel_y = 5
+	},
+/turf/simulated/floor/wood,
+/area/triumph_away/tradeport/cyndi)
 "lD" = (
 /obj/machinery/firealarm{
 	dir = 8;
@@ -2658,11 +2682,15 @@
 /area/space)
 "nP" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/gun/projectile/shotgun/doublebarrel,
 /obj/structure/cable/yellow{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/obj/machinery/door/blast/shutters{
+	dir = 2;
+	id = "cyndi";
+	name = "C&K Shutters"
 	},
 /turf/simulated/floor/wood,
 /area/triumph_away/tradeport/cyndi)
@@ -4962,14 +4990,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/triumph_away/tradeport/safari)
-"zE" = (
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/plating,
-/area/triumph_away/tradeport/cyndishow)
 "zF" = (
 /obj/machinery/door/firedoor{
 	req_one_access = list(160)
@@ -6650,6 +6670,17 @@
 	},
 /turf/simulated/wall/r_wall,
 /area/triumph_away/tradeport/pads)
+"HE" = (
+/obj/machinery/door/window/westleft{
+	dir = 2
+	},
+/obj/machinery/door/blast/shutters{
+	dir = 2;
+	id = "cyndi";
+	name = "C&K Shutters"
+	},
+/turf/simulated/floor/wood,
+/area/triumph_away/tradeport/cyndi)
 "HH" = (
 /obj/away_mission_init/tradeport,
 /turf/space,
@@ -7603,6 +7634,8 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/structure/table/steel_reinforced,
+/obj/item/gun/projectile/shotgun/doublebarrel,
 /turf/simulated/floor/wood,
 /area/triumph_away/tradeport/cyndi)
 "Nc" = (
@@ -9443,9 +9476,6 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/carpet,
 /area/triumph_away/tradeport/commons)
-"VZ" = (
-/turf/simulated/mineral/floor/vacuum,
-/area/triumph_away/tradeport)
 "Wa" = (
 /obj/machinery/door/firedoor{
 	req_one_access = list(160)
@@ -17517,8 +17547,8 @@ hl
 Na
 ZI
 tM
-tM
-tM
+HE
+lC
 sX
 tM
 jY
@@ -17808,8 +17838,8 @@ tM
 jY
 xK
 jl
-PW
 in
+PW
 PW
 PW
 UJ
@@ -18090,8 +18120,8 @@ xV
 xV
 xV
 xV
-zE
-zE
+ws
+ws
 ws
 ws
 ws
@@ -18376,8 +18406,8 @@ jY
 tM
 xK
 jl
-PW
 in
+PW
 PW
 PW
 NY
@@ -18669,7 +18699,7 @@ YG
 YG
 YG
 YG
-YG
+do
 YG
 YG
 YG
@@ -25611,11 +25641,11 @@ WI
 WI
 WI
 WI
-VZ
-VZ
-VZ
-VZ
-VZ
+WI
+WI
+WI
+WI
+WI
 YG
 gV
 Ft
@@ -26321,9 +26351,9 @@ ZM
 ZM
 ZM
 ZM
-VZ
-VZ
-VZ
+ZM
+ZM
+ZM
 gV
 EP
 Kj
