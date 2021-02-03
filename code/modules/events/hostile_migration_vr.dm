@@ -96,6 +96,13 @@
 	command_announcement.Announce("Unidentified hostile lifesigns detected migrating towards [station_name()]'s [locstring]. Secure any exterior access, including ducting and ventilation.", "Hostile Vermin Boarding Alert", new_sound = 'sound/AI/aliens.ogg')
 	return
 
+// override: cancel if not main ship as this is too dumb to target the actual ship crossing it.
+/datum/event/hostile_migration/overmap/start()
+	if(istype(victim, /obj/effect/overmap/visitable/ship/landable))
+		kill()
+		return
+	return ..()
+
 #undef LOC_KITCHEN
 #undef LOC_LIBRARY
 #undef LOC_HALLWAYS

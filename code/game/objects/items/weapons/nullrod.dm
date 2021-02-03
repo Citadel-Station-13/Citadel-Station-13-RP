@@ -10,6 +10,8 @@
 	throw_range = 4
 	throwforce = 10
 	w_class = ITEMSIZE_SMALL
+	drop_sound = 'sound/items/drop/sword.ogg'
+	pickup_sound = 'sound/items/pickup/sword.ogg'
 
 	var/reskinned = FALSE
 	var/defend_chance = 0	// The base chance for the weapon to parry.
@@ -20,7 +22,7 @@
 			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
 			)
 
-	var/SA_bonus_damage = 25 // 40 total against demons and aberrations.
+	var/SA_bonus_damage = 35 // 50 total against demons and aberrations.
 	var/SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
 
 /obj/item/nullrod/Initialize()

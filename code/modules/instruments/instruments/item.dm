@@ -319,3 +319,12 @@
 			instruments[initial(A.name)] = A
 	return instruments
 */
+
+/obj/item/instrument/gameboy
+	name = "gameboy"
+	desc = "A bright teal Gameboy Color. This one has a copy of LSDJ slotted into the back. /There's also initals scratched crudely into the lower left hand corner spelling TAS./"
+	icon_state = "gameboy"
+	item_state = "gameboy"
+	attack_verb = ("bitcrushed")
+	hitsound = "sound/weapons/gboy.ogg"
+	allowed_instrument_ids = "square"

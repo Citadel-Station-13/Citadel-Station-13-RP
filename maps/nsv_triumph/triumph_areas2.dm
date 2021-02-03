@@ -742,6 +742,22 @@
 /area/tradeport/pads
 	icon_state = "purple"
 
+/area/tradeport/spine
+	name = "\improper Commerce Spine"
+	icon_state = "red"
+
+/area/tradeport/commhall
+	name = "\improper Commerce Hall"
+	icon_state = "yellow"
+
+/area/tradeport/safari
+	name = "\improper Safari Shop"
+	icon_state = "green"
+
+/area/tradeport/safarizoo
+	name = "\improper Safari Zone"
+	icon_state = "blue"
+
 //EMT Shuttle
 /area/shuttle/emt
 	requires_power = 1

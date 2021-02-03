@@ -68,10 +68,13 @@
 	if(health <= 0)
 		death()
 		return
-	weakened = 0
-	stunned = 0
-	paralysis = 0
+	SetWeakened(0)
+	SetStunned(0)
+	SetParalysis(0)
 
+	if(on && !client && !busy)
+		spawn(0)
+			handleAI()
 	if(on && !client && !busy)
 		spawn(0)
 			handleAI()

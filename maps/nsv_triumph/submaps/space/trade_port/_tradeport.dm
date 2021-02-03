@@ -59,3 +59,19 @@
 
 /area/triumph_away/tradeport/pads
 	icon_state = "purple"
+
+/area/triumph_away/tradeport/spine
+	name = "\improper Commerce Spine"
+	icon_state = "red"
+
+/area/triumph_away/tradeport/commhall
+	name = "\improper Commerce Hall"
+	icon_state = "yellow"
+
+/area/triumph_away/tradeport/safari
+	name = "\improper Safari Shop"
+	icon_state = "green"
+
+/area/triumph_away/tradeport/safarizoo
+	name = "\improper Safari Zone"
+	icon_state = "blue"

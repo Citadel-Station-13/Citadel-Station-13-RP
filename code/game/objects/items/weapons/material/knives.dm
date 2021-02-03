@@ -9,6 +9,8 @@
 	attack_verb = list("patted", "tapped")
 	force_divisor = 0.25 // 15 when wielded with hardness 60 (steel)
 	thrown_force_divisor = 0.25 // 5 when thrown with weight 20 (steel)
+	drop_sound = 'sound/items/drop/knife.ogg'
+	pickup_sound = 'sound/items/pickup/knife.ogg'
 
 /obj/item/material/butterfly/update_force()
 	if(active)
@@ -171,11 +173,18 @@
 		qdel(src)
 
 /obj/item/material/knife/tacknife/survival
-	name = "survival knife"
-	desc = "A hunting grade survival knife."
+	name = "streamlined survival knife"
+	desc = "A hunting grade survival knife. The bulky storage handle and inlaid circuitry have been replaced with a sleek grip and the ability to easily upgrade the blade."
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "survivalknife"
 	item_state = "knife"
 	applies_material_colour = FALSE
 	default_material = "plasteel" //VOREStation Edit
 	toolspeed = 2 // Use a real axe if you want to chop logs.
+
+/*Placing this here, in the interests of adding it to a Dataknife further down the line
+
+/obj/item/storage/box/survival_knife/is_multitool()
+	return TRUE
+
+*/

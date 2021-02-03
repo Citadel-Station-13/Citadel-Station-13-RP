@@ -8,7 +8,7 @@
 "m" = (/obj/random/obstruction,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/POIs/goldmine)
 "o" = (/turf/simulated/mineral/classh,/area/triumph_away/poi_h/POIs/goldmine)
 "p" = (/mob/living/simple_mob/animal/giant_spider,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/POIs/goldmine)
-"q" = (/turf/simulated/floor/beach/sand/desert/classh,/area/triumph_away/poi_h/POIs/goldmine)
+"q" = (/turf/simulated/floor/outdoors/beach/sand/desert/classh,/area/triumph_away/poi_h/POIs/goldmine)
 "r" = (/obj/random/mob/spider/nurse,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/POIs/goldmine)
 "s" = (/obj/effect/spider/stickyweb/dark,/obj/structure/outcrop/gold,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/POIs/goldmine)
 "u" = (/obj/effect/spider/stickyweb/dark,/turf/simulated/mineral/floor/classh,/area/triumph_away/poi_h/POIs/goldmine)
