@@ -169,6 +169,17 @@
 /obj/effect/landmark/mobcorpse/russian/ranged
 	corpsehelmet = /obj/item/clothing/head/ushanka
 
+//Diorama Corpses
+/obj/effect/landmark/mobcorpse/shogun
+	name = "Shogun's Bodyguard"
+	corpseuniform = /obj/item/clothing/suit/kamishimo
+	corpseshoes = /obj/item/clothing/shoes/sandal
+	corpsehelmet = /obj/item/clothing/head/rice
+
+//Explorer
+
+//Classmate? Might be inappropriate.
+
 //////////////////////////
 //		Vox Bodies
 //////////////////////////

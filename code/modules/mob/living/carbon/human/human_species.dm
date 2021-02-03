@@ -157,7 +157,7 @@
 	living_mob_list -= src
 	dead_mob_list -= src
 	weight = rand(25,175)
-	gender = pick(MALE,FEMALE,NEUTER)
+	gender = pick(MALE,NEUTER)
 	delete_inventory()
 
 	for(var/mob/living/carbon/human/dummy/mannequin/samurai/H in src.loc)
@@ -180,3 +180,32 @@
 			if(!wear_suit)
 				H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/samurai, slot_wear_suit)
 				H.update_inv_wear_suit()
+
+/mob/living/carbon/human/dummy/mannequin/animegirl/Initialize()
+	. = ..()
+	name = "Wooden Mannequin"
+	real_name = "Wooden Mannequin"
+	mob_list -= src
+	living_mob_list -= src
+	dead_mob_list -= src
+	weight = rand(25,175)
+	gender = pick(FEMALE,NEUTER)
+	delete_inventory()
+
+	for(var/mob/living/carbon/human/dummy/mannequin/animegirl/H in src.loc)
+		for(var/i = 1, i <= 2, i++)
+			if(!w_uniform)
+				H.equip_to_slot_or_del(new /obj/item/clothing/under/schoolgirl, slot_w_uniform)
+				H.update_inv_w_uniform()
+			if(!shoes)
+				H.equip_to_slot_or_del(new /obj/item/clothing/shoes/hitops/black, slot_shoes)
+				H.update_inv_shoes()
+			if(!wear_mask)
+				H.equip_to_slot_or_del(new /obj/item/clothing/mask/breath/medical, slot_wear_mask)
+				H.update_inv_wear_mask()
+			if(!head)
+				H.equip_to_slot_or_del(new /obj/item/clothing/head/bunny, slot_head)
+				H.update_inv_head()
+			if(!glasses)
+				H.equip_to_slot_or_del(new /obj/item/clothing/glasses/thermal/plain/eyepatch, slot_wear_suit)
+				H.update_inv_glasses()
