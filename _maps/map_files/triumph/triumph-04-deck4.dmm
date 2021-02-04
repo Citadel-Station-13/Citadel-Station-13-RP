@@ -12142,6 +12142,13 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
+/obj/machinery/button/remote/blast_door{
+	id = "armoryred";
+	name = "Armoury Access";
+	pixel_x = -6;
+	pixel_y = 25;
+	req_access = list(3)
+	},
 /turf/simulated/floor/tiled,
 /area/security/hallwayaux)
 "iwo" = (

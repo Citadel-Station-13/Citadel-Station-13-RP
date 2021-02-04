@@ -147,14 +147,12 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/exam_room)
 "afO" = (
+/obj/structure/closet/firecloset,
 /obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/techfloor/hole{
-	dir = 1
+	dir = 9
 	},
 /turf/simulated/floor/tiled,
-/area/hallway/primary/starboard)
+/area/triumph/station/stairs_three)
 "ahu" = (
 /obj/structure/table/standard,
 /obj/item/soap/nanotrasen,
@@ -3073,9 +3071,6 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor/hole{
-	dir = 1
-	},
 /obj/structure/closet/hydrant{
 	pixel_y = 32
 	},
@@ -3387,22 +3382,8 @@
 /turf/simulated/floor/tiled,
 /area/medical/chemistry)
 "ddE" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /obj/effect/floor_decal/techfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/techfloor/hole{
-	dir = 8
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
@@ -5524,7 +5505,6 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor,
-/obj/effect/floor_decal/techfloor/hole,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/starboard)
 "eWy" = (
@@ -7295,6 +7275,9 @@
 	dir = 1;
 	name = "Station Intercom (General)";
 	pixel_y = 21
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
@@ -10232,6 +10215,9 @@
 	dir = 1;
 	pixel_y = -22
 	},
+/obj/effect/floor_decal/techfloor{
+	dir = 6
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
 "jxi" = (
@@ -11597,6 +11583,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
 "kIT" = (
@@ -12010,10 +11999,17 @@
 /turf/simulated/wall/r_wall,
 /area/rnd/xenobiology)
 "lcy" = (
-/obj/effect/floor_decal/techfloor,
-/obj/effect/floor_decal/techfloor/hole,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
-/area/hallway/primary/starboard)
+/area/triumph/station/stairs_three)
 "lex" = (
 /obj/structure/sign/department/operational,
 /turf/simulated/wall,
@@ -15842,6 +15838,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
 "oFD" = (
@@ -16647,6 +16646,9 @@
 /obj/item/radio/intercom{
 	pixel_y = -24
 	},
+/obj/effect/floor_decal/techfloor{
+	dir = 10
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
 "pmg" = (
@@ -17195,18 +17197,17 @@
 /turf/simulated/floor/bluegrid,
 /area/rnd/xenobiology)
 "pDU" = (
-/obj/machinery/firealarm{
-	layer = 3.3;
-	pixel_y = 26
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
 /obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/techfloor/hole{
-	dir = 1
+	dir = 5
 	},
 /turf/simulated/floor/tiled,
-/area/hallway/primary/starboard)
+/area/triumph/station/stairs_three)
 "pEd" = (
 /obj/structure/window/phoronreinforced{
 	dir = 8
@@ -17385,6 +17386,9 @@
 /obj/machinery/camera/network/civilian,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
@@ -18786,11 +18790,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/storage)
-"qPe" = (
-/obj/effect/floor_decal/techfloor,
-/obj/effect/floor_decal/techfloor/hole,
-/turf/simulated/floor/tiled,
-/area/hallway/primary/aft)
 "qPu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -20110,7 +20109,6 @@
 /area/rnd/test_area)
 "rMx" = (
 /obj/effect/floor_decal/techfloor,
-/obj/effect/floor_decal/techfloor/hole,
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
 "rNa" = (
@@ -21888,12 +21886,6 @@
 /obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
-"tkv" = (
-/obj/effect/floor_decal/techfloor/hole{
-	dir = 1
-	},
-/turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
 "tkF" = (
 /obj/effect/landmark/start{
 	name = "Scientist"
@@ -23642,7 +23634,6 @@
 	pixel_y = -28
 	},
 /obj/effect/floor_decal/techfloor,
-/obj/effect/floor_decal/techfloor/hole,
 /obj/machinery/camera/network/civilian{
 	dir = 1
 	},
@@ -24982,7 +24973,6 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor,
-/obj/effect/floor_decal/techfloor/hole,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "vYL" = (
@@ -33267,7 +33257,7 @@ hkH
 hkH
 mjT
 vRi
-ddE
+noo
 mht
 lIB
 ioO
@@ -34118,7 +34108,7 @@ sGT
 vQV
 uGD
 pqx
-tkv
+uGD
 lnI
 uGD
 pqx
@@ -39520,7 +39510,7 @@ qKG
 qKG
 mSQ
 fZt
-qPe
+pKw
 eSK
 xJG
 xJG
@@ -40503,7 +40493,7 @@ aHU
 vGB
 ijh
 mfs
-lcy
+hNx
 gny
 gNq
 wqC
@@ -41069,7 +41059,7 @@ mfe
 arK
 tXi
 vma
-afO
+btG
 mfs
 pAk
 mBS
@@ -41355,7 +41345,7 @@ fAP
 vma
 btG
 mfs
-lcy
+hNx
 gny
 frZ
 frZ
@@ -41510,7 +41500,7 @@ frZ
 frZ
 frZ
 mBS
-oxT
+afO
 pmb
 ioO
 ioO
@@ -41652,7 +41642,7 @@ frZ
 frZ
 frZ
 gny
-uGD
+ddE
 wtR
 ioO
 eHG
@@ -42063,7 +42053,7 @@ bdR
 bdR
 bdR
 ioO
-pDU
+hRg
 mfs
 rVq
 mBS
@@ -42362,7 +42352,7 @@ frZ
 frZ
 frZ
 dZQ
-arU
+lcy
 uGD
 nVg
 gVh
@@ -42504,7 +42494,7 @@ frZ
 frZ
 frZ
 gny
-arU
+pDU
 jvS
 ioO
 bdR
