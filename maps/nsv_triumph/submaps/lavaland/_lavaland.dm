@@ -15,9 +15,29 @@
 /obj/away_mission_init/lavaland/Initialize()
 	return INITIALIZE_HINT_QDEL
 
+/area/shuttle/excursion/lavaland
+	name = "Shuttle Landing Point"
+	base_turf = /turf/simulated/mineral/floor/cave
+	flags = RAD_SHIELDED
+
+/area/triumph_away/lavaland
+	name = "Lava Land"
+	base_turf = /turf/simulated/mineral/floor/cave
+
+/area/triumph_away/lavaland/horrors
+	name = "Horrors"
+	base_turf = /turf/simulated/mineral/floor/cave
+
+/area/triumph_away/lavaland/dogs
+	name = "Dogs"
+	base_turf = /turf/simulated/mineral/floor/cave
+	
+/obj/effect/landmark/lavaland
+    name = "Lavaland TP Point"
+
 // lava land world areas
 /area/triumph_away/lavaland
-	name = "lava land"
+	name = "Lava Land"
 	icon_state = "away"
 	base_turf = /turf/simulated/mineral/floor/
 	dynamic_lighting = 1
