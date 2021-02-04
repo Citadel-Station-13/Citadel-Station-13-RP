@@ -40,12 +40,7 @@
 /turf/simulated/floor/wood,
 /area/triumph_away/tradeport/commons)
 "ai" = (
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/carpet/bcarpet,
 /area/triumph_away/tradeport/cyndi)
 "aj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -106,6 +101,19 @@
 	},
 /turf/simulated/floor/wood,
 /area/triumph_away/tradeport/commons)
+"ax" = (
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/triumph_away/tradeport/cyndishow)
 "aA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -116,8 +124,8 @@
 /turf/simulated/floor/tiled/neutral,
 /area/triumph_away/tradeport)
 "aB" = (
-/obj/machinery/light,
-/obj/structure/flora/pumpkin/carved/owo,
+/obj/machinery/light/small,
+/obj/structure/flora/pumpkin,
 /turf/simulated/floor/outdoors/dirt,
 /area/triumph_away/tradeport/cyndishow)
 "aD" = (
@@ -264,6 +272,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/triumph_away/tradeport/facility)
+"bu" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/vending/loadout/loadout_misc,
+/turf/simulated/floor/wood,
+/area/triumph_away/tradeport/cyndi)
 "bv" = (
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 5
@@ -325,6 +340,13 @@
 	},
 /turf/simulated/floor/tiled/old_tile/purple,
 /area/triumph_away/tradeport/spine)
+"bQ" = (
+/obj/machinery/camera,
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/triumph_away/tradeport/cyndishow)
 "bU" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
@@ -350,6 +372,28 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/triumph_away/tradeport/facility)
+"ca" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/triumph_away/tradeport/cyndishow)
+"ce" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/machinery/door/window/westleft{
+	name = "rare item display case";
+	req_access = list(160)
+	},
+/obj/structure/table/marble,
+/obj/item/melee/energy/hfmachete,
+/turf/simulated/floor/carpet/bcarpet,
+/area/triumph_away/tradeport/cyndishow)
 "cf" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
@@ -619,10 +663,6 @@
 /obj/structure/closet/secure_closet/freezer/meat,
 /turf/simulated/floor/wmarble,
 /area/triumph_away/tradeport/commons)
-"do" = (
-/mob/living/carbon/human/dummy/mannequin/samurai,
-/turf/space,
-/area/triumph_away/tradeport/space)
 "dq" = (
 /obj/machinery/door/airlock/silver{
 	name = "Restroom"
@@ -677,6 +717,30 @@
 	},
 /turf/simulated/floor/wood,
 /area/triumph_away/tradeport/safarizoo)
+"dD" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/item/material/knife/durasteel{
+	desc = "A hand sharpened knife, used for cutting valentine treats.";
+	name = "Leftie";
+	pixel_x = 5
+	},
+/obj/item/material/knife/machete/hatchet/durasteel{
+	desc = "A powerfully sharp axe, crafted with love.";
+	name = "Rightie"
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 1e+006
+	},
+/obj/structure/window/reinforced,
+/obj/structure/table/marble,
+/turf/simulated/floor/tiled/hydro,
+/area/triumph_away/tradeport/cyndishow)
 "dG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -775,6 +839,13 @@
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/triumph_away/tradeport/commons)
+"ef" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/stolenpackageplus,
+/obj/item/stolenpackageplus,
+/obj/item/stolenpackageplus,
+/turf/simulated/floor/wood,
+/area/triumph_away/tradeport/cyndi)
 "eh" = (
 /turf/simulated/wall/r_wall,
 /area/triumph_away/tradeport/dock)
@@ -887,6 +958,22 @@
 /obj/machinery/portable_atmospherics/hydroponics,
 /turf/simulated/floor/grass,
 /area/triumph_away/tradeport)
+"eD" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/silencer,
+/obj/item/silencer,
+/obj/item/silencer,
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/triumph_away/tradeport/cyndi)
+"eE" = (
+/obj/machinery/camera{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/triumph_away/tradeport/cyndishow)
 "eF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -896,6 +983,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/triumph_away/tradeport/safarizoo)
+"eI" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/triumph_away/tradeport/cyndishow)
 "eJ" = (
 /obj/effect/decal/cleanable/generic,
 /turf/simulated/floor/tiled/steel,
@@ -1020,6 +1113,18 @@
 	},
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/triumph_away/tradeport/safari)
+"fh" = (
+/obj/structure/table/steel_reinforced,
+/obj/machinery/door/blast/shutters{
+	dir = 2;
+	id = "cyndi";
+	name = "C&K Shutters"
+	},
+/obj/effect/floor_decal/spline/plain{
+	dir = 6
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/triumph_away/tradeport/cyndi)
 "fi" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -1075,19 +1180,6 @@
 "fH" = (
 /turf/simulated/wall/r_wall,
 /area/triumph_away/tradeport/engineering)
-"fJ" = (
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/turf/simulated/floor/wood,
-/area/triumph_away/tradeport/cyndi)
 "fP" = (
 /obj/structure/closet/crate/bin{
 	anchored = 1
@@ -1196,6 +1288,22 @@
 	},
 /turf/simulated/floor/carpet,
 /area/triumph_away/tradeport/commons)
+"gh" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/door/window/eastright{
+	name = "rare item display case";
+	req_access = list(160)
+	},
+/obj/structure/table/marble,
+/obj/item/powersink,
+/turf/simulated/floor/carpet/bcarpet,
+/area/triumph_away/tradeport/cyndishow)
 "gi" = (
 /obj/machinery/light{
 	dir = 8
@@ -1282,6 +1390,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
+"gu" = (
+/obj/machinery/vending/loadout,
+/turf/simulated/floor/wood,
+/area/triumph_away/tradeport/cyndi)
 "gx" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
@@ -1298,6 +1410,38 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/shuttle/trade_ship/general)
+"gC" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/machinery/door/window/westleft{
+	name = "rare item display case";
+	req_access = list(160)
+	},
+/obj/structure/table/marble,
+/obj/item/sword/fluff/joanaria/scisword,
+/obj/machinery/camera{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/triumph_away/tradeport/cyndishow)
+"gD" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/effect/floor_decal/plaque{
+	desc = "Although the orbital college where this chain of grisly murders once took place has been long since scuttled and scrapped, the public psyche has not yet forgotten the bloody deeds of the Valentine Killer.";
+	name = "The Valentine Killer"
+	},
+/turf/simulated/floor/tiled/hydro,
+/area/triumph_away/tradeport/cyndishow)
 "gI" = (
 /obj/structure/cable/yellow,
 /obj/machinery/power/smes/buildable{
@@ -1307,6 +1451,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/triumph_away/tradeport/engineering)
+"gK" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/effect/floor_decal/plaque{
+	desc = "This diorama features soil and produce cultivated from the very place of the infamous massacre. The scarecrow came with the purchase for free, and is a guest favorite for photographs.";
+	name = "Durian V Massacre"
+	},
+/turf/simulated/floor/outdoors/dirt,
+/area/triumph_away/tradeport/cyndishow)
 "gL" = (
 /obj/machinery/light{
 	dir = 1
@@ -1342,6 +1496,14 @@
 "gV" = (
 /turf/simulated/wall/r_wall,
 /area/triumph_away/tradeport/pads)
+"gX" = (
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/triumph_away/tradeport/cyndishow)
 "ha" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -1450,7 +1612,10 @@
 	id = "cyndi";
 	name = "C&K Shutters"
 	},
-/turf/simulated/floor/wood,
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/bcarpet,
 /area/triumph_away/tradeport/cyndi)
 "ht" = (
 /obj/machinery/light{
@@ -1459,6 +1624,22 @@
 /obj/machinery/atmospherics/portables_connector,
 /turf/simulated/floor/reinforced,
 /area/triumph_away/tradeport/pads)
+"hv" = (
+/obj/structure/table/steel_reinforced,
+/obj/machinery/door/blast/shutters{
+	dir = 2;
+	id = "cyndi";
+	name = "C&K Shutters"
+	},
+/obj/machinery/cash_register/trader{
+	dir = 8;
+	name = "C&K Cash Register"
+	},
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/triumph_away/tradeport/cyndi)
 "hx" = (
 /obj/machinery/door/firedoor/multi_tile{
 	req_one_access = list(160)
@@ -1507,6 +1688,15 @@
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade_ship/general)
+"hK" = (
+/obj/machinery/camera{
+	dir = 8
+	},
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/triumph_away/tradeport/cyndishow)
 "hL" = (
 /obj/structure/sign/graffiti/pisoff,
 /turf/simulated/floor/plating,
@@ -1581,6 +1771,7 @@
 /area/triumph_away/tradeport/facility)
 "id" = (
 /obj/structure/flora/pumpkin/carved/girly,
+/obj/effect/floor_decal/grass_edge,
 /turf/simulated/floor/outdoors/dirt,
 /area/triumph_away/tradeport/cyndishow)
 "ie" = (
@@ -1621,10 +1812,26 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/wood,
+/obj/effect/floor_decal/spline/plain,
+/turf/simulated/floor/carpet/bcarpet,
 /area/triumph_away/tradeport/cyndishow)
 "in" = (
-/turf/simulated/floor/plating,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/door/window/eastright{
+	name = "rare item display case";
+	req_access = list(160)
+	},
+/obj/structure/table/marble,
+/obj/item/stack/telecrystal{
+	amount = 20
+	},
+/turf/simulated/floor/carpet/bcarpet,
 /area/triumph_away/tradeport/cyndishow)
 "iq" = (
 /obj/machinery/light{
@@ -2039,7 +2246,7 @@
 /turf/simulated/floor/tiled/neutral,
 /area/triumph_away/tradeport/facility)
 "jY" = (
-/obj/structure/table/rack/shelf/steel,
+/obj/machinery/camera,
 /turf/simulated/floor/wood,
 /area/triumph_away/tradeport/cyndi)
 "ka" = (
@@ -2315,6 +2522,25 @@
 	},
 /turf/simulated/floor/wood,
 /area/triumph_away/tradeport/safari)
+"lu" = (
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/door/window/northright{
+	name = "rare item display case";
+	req_access = list(160)
+	},
+/obj/structure/table/marble,
+/obj/item/gun/energy/alien,
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/triumph_away/tradeport/cyndishow)
 "lx" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -2785,20 +3011,6 @@
 /obj/structure/railing,
 /turf/simulated/mineral/floor/vacuum,
 /area/space)
-"nP" = (
-/obj/structure/table/steel_reinforced,
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/door/blast/shutters{
-	dir = 2;
-	id = "cyndi";
-	name = "C&K Shutters"
-	},
-/turf/simulated/floor/wood,
-/area/triumph_away/tradeport/cyndi)
 "nS" = (
 /obj/structure/railing{
 	dir = 8
@@ -2848,6 +3060,19 @@
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/triumph_away/tradeport)
+"or" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/flame/lighter/zippo/red,
+/obj/item/flame/lighter/zippo/red,
+/obj/item/flame/lighter/zippo/red,
+/obj/item/flame/lighter/zippo/red,
+/obj/item/flame/lighter/zippo/red,
+/obj/item/flame/lighter/zippo/red,
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/triumph_away/tradeport/cyndi)
 "os" = (
 /obj/machinery/light{
 	dir = 4
@@ -3034,6 +3259,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/triumph_away/tradeport/commons)
+"ph" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/turf/simulated/floor/wood,
+/area/triumph_away/tradeport/cyndi)
 "pi" = (
 /turf/simulated/floor/beach/sand,
 /area/triumph_away/tradeport/safarizoo)
@@ -3158,6 +3389,11 @@
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/trade_ship/general)
+"pR" = (
+/obj/structure/flora/pumpkin,
+/obj/effect/floor_decal/grass_edge,
+/turf/simulated/floor/outdoors/dirt,
+/area/triumph_away/tradeport/cyndishow)
 "pU" = (
 /obj/structure/closet{
 	icon_closed = "cabinet_closed";
@@ -3368,6 +3604,15 @@
 	},
 /turf/simulated/floor/tiled/old_tile/purple,
 /area/triumph_away/tradeport/spine)
+"rh" = (
+/obj/machinery/camera{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/turf/simulated/floor/wood,
+/area/triumph_away/tradeport/cyndi)
 "rl" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/structure/largecrate/hoverpod,
@@ -3438,6 +3683,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plating,
 /area/triumph_away/tradeport/commhall)
 "rF" = (
@@ -3455,6 +3702,20 @@
 	},
 /turf/simulated/floor/tiled/old_tile/white,
 /area/triumph_away/tradeport)
+"rH" = (
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/triumph_away/tradeport/cyndi)
 "rJ" = (
 /obj/item/radio/intercom/trader{
 	pixel_y = -25
@@ -3640,6 +3901,13 @@
 	},
 /turf/simulated/floor/wood,
 /area/triumph_away/tradeport/commons)
+"sp" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/hydro,
+/area/triumph_away/tradeport/cyndishow)
 "sq" = (
 /turf/simulated/floor/water/shoreline,
 /area/triumph_away/tradeport/safarizoo)
@@ -3750,6 +4018,9 @@
 	dir = 1
 	},
 /obj/structure/flora/ausbushes,
+/obj/effect/floor_decal/grass_edge{
+	dir = 8
+	},
 /turf/simulated/floor/outdoors/dirt,
 /area/triumph_away/tradeport/cyndishow)
 "sR" = (
@@ -3770,6 +4041,9 @@
 	dir = 8
 	},
 /obj/structure/table/rack/shelf/steel,
+/obj/item/whetstone,
+/obj/item/whetstone,
+/obj/item/whetstone,
 /turf/simulated/floor/wood,
 /area/triumph_away/tradeport/cyndi)
 "sY" = (
@@ -3832,6 +4106,14 @@
 /obj/item/bedsheet/purple,
 /turf/simulated/floor/carpet,
 /area/triumph_away/tradeport/commons)
+"tq" = (
+/obj/structure/window/reinforced,
+/obj/effect/floor_decal/plaque{
+	desc = "This infamous set of antique armor belonged to an Old Earth warrior who died in battle. Although the details behind the Samurai's identity have long since been lost, rumors abound that this suit bears a powerful curse. Perhaps the spirit of that long dead Samurai still guards what is left of its remains.";
+	name = "Ancient Samurai"
+	},
+/turf/simulated/floor/snow,
+/area/triumph_away/tradeport/cyndishow)
 "tr" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 9
@@ -3939,6 +4221,19 @@
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/triumph_away/tradeport/commons)
+"tX" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/syndie/c4explosive,
+/obj/item/syndie/c4explosive,
+/obj/item/syndie/c4explosive,
+/obj/item/syndie/c4explosive,
+/obj/item/syndie/c4explosive,
+/obj/item/syndie/c4explosive,
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/triumph_away/tradeport/cyndi)
 "tY" = (
 /obj/machinery/light{
 	dir = 4
@@ -3953,6 +4248,13 @@
 /obj/machinery/smartfridge,
 /turf/simulated/floor/grass,
 /area/triumph_away/tradeport)
+"ue" = (
+/obj/structure/window/reinforced,
+/obj/effect/floor_decal/plaque{
+	desc = "Ancient tombs like these are common across multiple species. The final resting place of Ahten-Ka is a popular topic amongst modern occult enthusiasts, who still debate whether the strange occurrence at that cyclopean pyramid were in fact early instances of Low Frequency Wave interference on humankind."
+	},
+/turf/simulated/floor/beach/sand/desert,
+/area/triumph_away/tradeport/cyndishow)
 "uf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -3968,6 +4270,15 @@
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/triumph_away/tradeport/commons)
+"uh" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/triumph_away/tradeport/cyndishow)
 "uk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -4104,6 +4415,12 @@
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/triumph_away/tradeport/facility)
+"uM" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/triumph_away/tradeport/cyndishow)
 "uN" = (
 /obj/machinery/alarm/alarms_hidden{
 	dir = 8;
@@ -4130,6 +4447,13 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/triumph_away/tradeport/pads)
+"uQ" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/toy/syndicateballoon,
+/obj/item/toy/syndicateballoon,
+/obj/item/toy/syndicateballoon,
+/turf/simulated/floor/wood,
+/area/triumph_away/tradeport/cyndi)
 "uR" = (
 /obj/machinery/door/airlock/glass_external{
 	frequency = 8018;
@@ -4409,6 +4733,9 @@
 	pixel_x = 23;
 	req_one_access = list(160)
 	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
+	},
 /turf/simulated/floor/wood,
 /area/triumph_away/tradeport/cyndishow)
 "vU" = (
@@ -4555,6 +4882,18 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/airlock/centcom{
+	desc = "For the discerning client.";
+	name = "C&K Showroom";
+	req_access = list(160);
+	req_one_access = null
+	},
+/obj/machinery/door/blast/regular{
+	id = "ck_show";
+	name = "Showroom Blast Door"
+	},
 /turf/simulated/floor/wood,
 /area/triumph_away/tradeport/cyndishow)
 "ww" = (
@@ -4598,6 +4937,14 @@
 /obj/structure/undies_wardrobe,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/cockpit)
+"wK" = (
+/obj/machinery/power/apc/alarms_hidden{
+	pixel_y = -28;
+	req_access = list(160)
+	},
+/obj/structure/cable/yellow,
+/turf/simulated/floor/wood,
+/area/triumph_away/tradeport/cyndi)
 "wN" = (
 /turf/space,
 /area/space)
@@ -4648,12 +4995,38 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/neutral,
 /area/triumph_away/tradeport/facility)
+"wY" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/shield_projector,
+/obj/item/shield_projector,
+/obj/item/shield_projector,
+/turf/simulated/floor/wood,
+/area/triumph_away/tradeport/cyndi)
 "wZ" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/triumph_away/tradeport/dock)
+"xc" = (
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/triumph_away/tradeport/cyndi)
 "xd" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
@@ -4690,6 +5063,10 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
 /area/triumph_away/tradeport/engineering)
+"xi" = (
+/obj/machinery/vending/loadout/uniform,
+/turf/simulated/floor/wood,
+/area/triumph_away/tradeport/cyndi)
 "xl" = (
 /obj/machinery/camera,
 /obj/item/radio/intercom/trader{
@@ -4855,7 +5232,10 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/wood,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/bcarpet,
 /area/triumph_away/tradeport/cyndishow)
 "xS" = (
 /obj/effect/shuttle_landmark/triumph/trade/mining,
@@ -4876,6 +5256,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/wood,
 /area/triumph_away/tradeport/cyndi)
 "xW" = (
@@ -4893,6 +5275,19 @@
 	},
 /turf/space,
 /area/triumph_away/tradeport/space)
+"ya" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/shield_diffuser,
+/obj/item/shield_diffuser,
+/obj/item/shield_diffuser,
+/obj/machinery/camera{
+	dir = 1
+	},
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/triumph_away/tradeport/cyndi)
 "yc" = (
 /obj/machinery/power/apc/alarms_hidden{
 	pixel_y = -28;
@@ -5003,6 +5398,16 @@
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/triumph_away/tradeport/facility)
+"yE" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/extraction_pack,
+/obj/item/extraction_pack,
+/obj/item/extraction_pack,
+/obj/item/extraction_pack,
+/obj/item/extraction_pack,
+/obj/item/extraction_pack,
+/turf/simulated/floor/wood,
+/area/triumph_away/tradeport/cyndi)
 "yH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -5109,6 +5514,15 @@
 	},
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/triumph_away/tradeport/safari)
+"ze" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/turf/simulated/floor/wood,
+/area/triumph_away/tradeport/cyndi)
 "zi" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -5245,6 +5659,12 @@
 /obj/machinery/appliance/cooker/oven,
 /turf/simulated/floor/tiled/freezer,
 /area/triumph_away/tradeport)
+"Aa" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/triumph_away/tradeport/cyndishow)
 "Ae" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/scale,
@@ -5437,6 +5857,16 @@
 /obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/plating,
 /area/triumph_away/tradeport/engineering)
+"AZ" = (
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/wood,
+/area/triumph_away/tradeport/cyndishow)
 "Bd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
@@ -5621,6 +6051,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/triumph_away/tradeport)
+"BH" = (
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/wood,
+/area/triumph_away/tradeport/cyndishow)
 "BI" = (
 /obj/machinery/door/window/westleft{
 	dir = 2
@@ -5776,6 +6216,9 @@
 "Cx" = (
 /mob/living/carbon/human/dummy/mannequin/scarecrow,
 /obj/item/material/gravemarker,
+/obj/effect/floor_decal/grass_edge{
+	dir = 10
+	},
 /turf/simulated/floor/outdoors/dirt,
 /area/triumph_away/tradeport/cyndishow)
 "Cy" = (
@@ -6044,15 +6487,15 @@
 	req_one_access = list(160)
 	},
 /obj/machinery/door/airlock/uranium{
-	icon_state = "door_locked";
-	locked = 1;
-	name = "C&K's - Coming Soon!"
+	name = "Cyndi & Kate's Novelty Wares"
 	},
 /obj/structure/cable/yellow{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/airless,
 /area/triumph_away/tradeport/cyndi)
 "DL" = (
@@ -6113,6 +6556,20 @@
 	},
 /turf/simulated/floor/tiled/old_tile/red,
 /area/triumph_away/tradeport)
+"Eb" = (
+/obj/structure/cable/yellow{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/triumph_away/tradeport/cyndi)
 "Ec" = (
 /obj/machinery/light{
 	dir = 1
@@ -6346,7 +6803,13 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/wood,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/turf/simulated/floor/carpet/bcarpet,
 /area/triumph_away/tradeport/cyndishow)
 "EY" = (
 /obj/structure/table/glass,
@@ -6375,6 +6838,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/triumph_away/tradeport/engineering)
+"Fe" = (
+/obj/structure/table/steel_reinforced,
+/obj/machinery/door/blast/shutters{
+	dir = 2;
+	id = "cyndi";
+	name = "C&K Shutters"
+	},
+/obj/effect/floor_decal/spline/plain,
+/turf/simulated/floor/carpet/bcarpet,
+/area/triumph_away/tradeport/cyndi)
 "Fh" = (
 /obj/machinery/light{
 	dir = 1
@@ -6451,9 +6924,34 @@
 /obj/structure/window/reinforced/full,
 /turf/simulated/shuttle/plating,
 /area/shuttle/trade_ship/general)
+"Fw" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/door/window/westleft{
+	dir = 2;
+	name = "rare item display case";
+	req_access = list(160)
+	},
+/obj/structure/table/marble,
+/obj/item/key,
+/obj/effect/floor_decal/spline/plain{
+	dir = 6
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/triumph_away/tradeport/cyndishow)
 "Fy" = (
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
+"FA" = (
+/turf/simulated/floor/carpet/bcarpet,
+/area/triumph_away/tradeport/cyndishow)
 "FB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -6518,6 +7016,16 @@
 	},
 /turf/simulated/shuttle/floor/white,
 /area/triumph_away/tradeport/commons)
+"FW" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/gift,
+/obj/item/gift,
+/obj/item/gift,
+/obj/item/gift,
+/obj/item/gift,
+/obj/item/gift,
+/turf/simulated/floor/wood,
+/area/triumph_away/tradeport/cyndi)
 "FX" = (
 /obj/machinery/light{
 	dir = 4
@@ -6604,6 +7112,10 @@
 	},
 /turf/simulated/floor/tiled/old_tile/purple,
 /area/triumph_away/tradeport/spine)
+"Gm" = (
+/obj/machinery/vending/loadout/clothing,
+/turf/simulated/floor/wood,
+/area/triumph_away/tradeport/cyndi)
 "Go" = (
 /turf/simulated/wall/r_wall,
 /area/triumph_away/tradeport/facility)
@@ -6693,6 +7205,10 @@
 /obj/structure/bed/chair,
 /turf/simulated/floor/wood,
 /area/triumph_away/tradeport/commons)
+"GF" = (
+/obj/machinery/vending/loadout/costume,
+/turf/simulated/floor/wood,
+/area/triumph_away/tradeport/cyndi)
 "GG" = (
 /obj/machinery/door/airlock/glass{
 	name = "Showers"
@@ -6813,6 +7329,19 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/item/material/knife/ritual{
+	desc = "This curved blade, reminiscent of the harvest moon, brings an uncanny chill at the touch. Some wielders have claimed they hear the constant rustling of grain when holding it.";
+	name = "Harvest Blade"
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 1e+006
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced,
+/obj/structure/table/marble,
 /turf/simulated/floor/outdoors/dirt,
 /area/triumph_away/tradeport/cyndishow)
 "He" = (
@@ -6834,9 +7363,7 @@
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/shuttle/trade_ship/general)
 "Hp" = (
-/obj/machinery/light{
-	dir = 1
-	},
+/obj/effect/mist,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/triumph_away/tradeport/cyndishow)
 "Hs" = (
@@ -6894,7 +7421,8 @@
 	id = "cyndi";
 	name = "C&K Shutters"
 	},
-/turf/simulated/floor/wood,
+/obj/effect/floor_decal/spline/plain,
+/turf/simulated/floor/carpet/bcarpet,
 /area/triumph_away/tradeport/cyndi)
 "HH" = (
 /obj/away_mission_init/tradeport,
@@ -6988,6 +7516,10 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/triumph_away/tradeport/pads)
+"Ij" = (
+/obj/structure/flora/pumpkin/carved/owo,
+/turf/simulated/floor/outdoors/dirt,
+/area/triumph_away/tradeport/cyndishow)
 "Il" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -7000,6 +7532,7 @@
 /area/triumph_away/tradeport/facility)
 "Im" = (
 /obj/structure/flora/pumpkin/carved,
+/obj/effect/floor_decal/grass_edge,
 /turf/simulated/floor/outdoors/dirt,
 /area/triumph_away/tradeport/cyndishow)
 "Ip" = (
@@ -7084,6 +7617,7 @@
 	dir = 1
 	},
 /obj/effect/gibspawner/human,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/hydro,
 /area/triumph_away/tradeport/cyndishow)
 "IQ" = (
@@ -7218,6 +7752,22 @@
 	},
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/triumph_away/tradeport/safari)
+"Jz" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/machinery/door/window/westleft{
+	name = "rare item display case";
+	req_access = list(160)
+	},
+/obj/structure/table/marble,
+/obj/item/gun/energy/gun/fluff/dominator,
+/turf/simulated/floor/carpet/bcarpet,
+/area/triumph_away/tradeport/cyndishow)
 "JO" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -7366,7 +7916,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/triumph_away/tradeport/dock)
 "Ks" = (
-/obj/machinery/light{
+/obj/machinery/light/small{
 	dir = 1
 	},
 /turf/simulated/floor/snow,
@@ -7391,6 +7941,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/triumph_away/tradeport)
+"Kw" = (
+/obj/machinery/vending/loadout/gadget,
+/turf/simulated/floor/wood,
+/area/triumph_away/tradeport/cyndi)
 "Ky" = (
 /obj/structure/sink{
 	dir = 8;
@@ -7422,6 +7976,12 @@
 	},
 /turf/simulated/floor/tiled/old_tile/purple,
 /area/triumph_away/tradeport/spine)
+"KC" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/triumph_away/tradeport/cyndishow)
 "KF" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -7519,6 +8079,25 @@
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide,
 /turf/simulated/floor/plating,
 /area/triumph_away/tradeport/engineering)
+"Lm" = (
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/door/window/northleft{
+	name = "rare item display case";
+	req_access = list(160)
+	},
+/obj/structure/table/marble,
+/obj/item/gun/energy/decloner,
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/triumph_away/tradeport/cyndishow)
 "Lo" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
@@ -7561,6 +8140,28 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/triumph_away/tradeport/engineering)
+"Lw" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/door/window/westright{
+	dir = 2;
+	name = "rare item display case";
+	req_access = list(160)
+	},
+/obj/structure/table/marble,
+/obj/item/gun/energy/gun/fluff/gunsword,
+/obj/effect/floor_decal/spline/plain{
+	dir = 10
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/triumph_away/tradeport/cyndishow)
 "Lx" = (
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 2
@@ -7886,6 +8487,16 @@
 /obj/machinery/atmospherics/pipe/tank/air,
 /turf/simulated/floor/plating,
 /area/triumph_away/tradeport)
+"MQ" = (
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/wood,
+/area/triumph_away/tradeport/cyndishow)
 "MU" = (
 /obj/structure/closet/crate/bin{
 	anchored = 1
@@ -7910,8 +8521,11 @@
 	dir = 8
 	},
 /obj/structure/table/steel_reinforced,
-/obj/item/gun/projectile/shotgun/doublebarrel,
-/turf/simulated/floor/wood,
+/obj/item/gun/projectile/automatic/as24{
+	desc = "Never ask to speak to the manager.";
+	name = "Kate"
+	},
+/turf/simulated/floor/carpet/bcarpet,
 /area/triumph_away/tradeport/cyndi)
 "Nc" = (
 /obj/structure/transit_tube/station{
@@ -7940,6 +8554,15 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/triumph_away/tradeport/commons)
+"Ni" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/triumph_away/tradeport/cyndi)
 "Nk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -8054,6 +8677,27 @@
 /obj/structure/flora/pumpkin,
 /turf/simulated/floor/outdoors/dirt,
 /area/triumph_away/tradeport/cyndishow)
+"NJ" = (
+/obj/structure/window/reinforced,
+/obj/item/material/sword/katana{
+	applies_material_colour = 0;
+	default_material = "durasteel";
+	desc = "This blade's edge seems uncannily sharp, as if it could wilt leaves simply with a touch.";
+	name = "Masamune Blade"
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 1e+006
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/table/marble,
+/turf/simulated/floor/snow,
+/area/triumph_away/tradeport/cyndishow)
 "NK" = (
 /obj/machinery/door/window/westleft{
 	name = "Storefront";
@@ -8150,7 +8794,8 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/wood,
+/obj/effect/floor_decal/spline/plain,
+/turf/simulated/floor/carpet/bcarpet,
 /area/triumph_away/tradeport/cyndishow)
 "Oa" = (
 /obj/structure/cable/green{
@@ -8733,6 +9378,10 @@
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/triumph_away/tradeport/facility)
+"Qu" = (
+/obj/effect/floor_decal/grass_edge,
+/turf/simulated/floor/outdoors/dirtlight,
+/area/triumph_away/tradeport/cyndishow)
 "Qv" = (
 /obj/structure/table/standard,
 /obj/item/soap/deluxe,
@@ -8745,6 +9394,20 @@
 	},
 /turf/simulated/shuttle/floor/white,
 /area/triumph_away/tradeport/commons)
+"Qw" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/contraband/poster,
+/obj/item/contraband/poster,
+/obj/item/contraband/poster,
+/obj/item/contraband/poster,
+/obj/item/contraband/poster,
+/obj/item/contraband/poster,
+/obj/item/contraband/poster,
+/obj/item/contraband/poster,
+/obj/item/contraband/poster,
+/obj/item/contraband/poster,
+/turf/simulated/floor/wood,
+/area/triumph_away/tradeport/cyndi)
 "Qx" = (
 /obj/machinery/firealarm{
 	dir = 8;
@@ -8871,6 +9534,25 @@
 /obj/structure/grille,
 /turf/simulated/floor/tiled/dark,
 /area/triumph_away/tradeport/engineering)
+"QV" = (
+/obj/structure/window/reinforced,
+/obj/item/nullrod/egyptian{
+	desc = "This golden scepter was once the object of many fanciful tales. Old Earth archaeologists long believed it to be a myth. It was discovered by scavenger teams after the Final War, and has changed hands many times since.";
+	name = "The Staff of Ahten-Ka"
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 1e+006
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/table/marble,
+/turf/simulated/floor/beach/sand/desert,
+/area/triumph_away/tradeport/cyndishow)
 "QW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -9127,6 +9809,15 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/triumph_away/tradeport/pads)
+"Sl" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/turf/simulated/floor/wood,
+/area/triumph_away/tradeport/cyndi)
 "Sp" = (
 /obj/machinery/light,
 /obj/structure/undies_wardrobe,
@@ -9319,6 +10010,10 @@
 /obj/machinery/computer/security/telescreen,
 /turf/simulated/wall,
 /area/triumph_away/tradeport/commons)
+"Ts" = (
+/obj/machinery/vending/loadout/accessory,
+/turf/simulated/floor/wood,
+/area/triumph_away/tradeport/cyndi)
 "Tu" = (
 /obj/machinery/atm{
 	pixel_x = -32
@@ -9341,6 +10036,13 @@
 	},
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/triumph_away/tradeport)
+"Ty" = (
+/obj/machinery/camera,
+/obj/effect/floor_decal/spline/plain{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/triumph_away/tradeport/cyndishow)
 "Tz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -9410,6 +10112,13 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/triumph_away/tradeport/commons)
+"TO" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/melee/spike,
+/obj/item/melee/spike,
+/obj/item/melee/spike,
+/turf/simulated/floor/wood,
+/area/triumph_away/tradeport/cyndi)
 "TQ" = (
 /obj/machinery/door/firedoor{
 	req_one_access = list(160)
@@ -9437,6 +10146,16 @@
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/triumph_away/tradeport)
+"TZ" = (
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/old_tile/beige,
+/area/triumph_away/tradeport/commhall)
 "Ua" = (
 /obj/machinery/light{
 	dir = 4
@@ -9482,6 +10201,12 @@
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/plating,
 /area/triumph_away/tradeport)
+"Uj" = (
+/obj/structure/closet/syndicate/personal{
+	name = "Cyndi & Kate's Spare Uniforms"
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/triumph_away/tradeport/cyndi)
 "Uk" = (
 /obj/structure/cable/yellow{
 	dir = 4
@@ -9587,7 +10312,10 @@
 	dir = 8;
 	light_range = 12
 	},
-/turf/simulated/floor/wood,
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/bcarpet,
 /area/triumph_away/tradeport/cyndishow)
 "UN" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
@@ -9611,6 +10339,28 @@
 /obj/effect/step_trigger/teleporter/tradeport_loop/east,
 /turf/space,
 /area/triumph_away/tradeport/space)
+"UT" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/item/material/twohanded/baseballbat/penbat,
+/obj/machinery/door/window/eastright{
+	name = "rare item display case";
+	req_access = list(160)
+	},
+/obj/structure/table/marble,
+/obj/machinery/camera{
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/triumph_away/tradeport/cyndishow)
 "UV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -9858,7 +10608,7 @@
 	req_access = list(160)
 	},
 /obj/structure/cable/yellow,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/carpet/bcarpet,
 /area/triumph_away/tradeport/cyndishow)
 "Wn" = (
 /obj/machinery/light,
@@ -9885,6 +10635,12 @@
 	},
 /turf/simulated/floor/tiled/old_tile/red,
 /area/triumph_away/tradeport/spine)
+"Wv" = (
+/obj/machinery/camera{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/triumph_away/tradeport/cyndishow)
 "Ww" = (
 /obj/structure/sink{
 	dir = 8;
@@ -9894,6 +10650,7 @@
 	dir = 8;
 	pixel_x = -29
 	},
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/hydro,
 /area/triumph_away/tradeport/cyndishow)
 "Wx" = (
@@ -10076,13 +10833,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile/purple,
 /area/triumph_away/tradeport)
-"Xb" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/structure/table/rack/shelf/steel,
-/turf/simulated/floor/wood,
-/area/triumph_away/tradeport/cyndi)
 "Xg" = (
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/structure/stasis_cage,
@@ -10109,6 +10859,15 @@
 /obj/structure/catwalk,
 /turf/simulated/floor,
 /area/triumph_away/tradeport/pads)
+"Xn" = (
+/obj/machinery/camera{
+	dir = 4
+	},
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/triumph_away/tradeport/cyndishow)
 "Xp" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -10206,8 +10965,17 @@
 /area/triumph_away/tradeport/safarizoo)
 "XL" = (
 /obj/structure/window/reinforced,
+/obj/structure/cult/pylon{
+	light = 1
+	},
 /turf/simulated/floor/beach/sand/desert,
 /area/triumph_away/tradeport/cyndishow)
+"XM" = (
+/obj/machinery/camera{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/triumph_away/tradeport/cyndi)
 "XN" = (
 /obj/structure/table/woodentable,
 /obj/machinery/reagentgrinder,
@@ -10277,6 +11045,22 @@
 "Ye" = (
 /turf/simulated/floor/carpet/bcarpet,
 /area/triumph_away/tradeport/commons)
+"Yh" = (
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/door/window/northleft{
+	name = "rare item display case";
+	req_access = list(160)
+	},
+/obj/structure/table/marble,
+/obj/item/chameleon,
+/turf/simulated/floor/carpet/bcarpet,
+/area/triumph_away/tradeport/cyndishow)
 "Yk" = (
 /obj/structure/railing,
 /turf/space,
@@ -10645,8 +11429,6 @@
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/triumph_away/tradeport/pads)
 "ZH" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/structure/cable/yellow{
 	d1 = 1;
 	d2 = 4;
@@ -10657,16 +11439,21 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/triumph_away/tradeport/commhall)
 "ZI" = (
-/obj/machinery/power/apc/alarms_hidden{
-	pixel_x = -28;
-	req_access = list(160)
+/obj/machinery/button/remote/blast_door{
+	dir = 4;
+	id = "ck_show";
+	name = "Showroom Security";
+	pixel_x = -27
 	},
-/obj/structure/cable/yellow{
-	dir = 8
-	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/triumph_away/tradeport/cyndi)
+"ZJ" = (
+/obj/machinery/vending/loadout/overwear,
 /turf/simulated/floor/wood,
 /area/triumph_away/tradeport/cyndi)
 "ZK" = (
@@ -10697,6 +11484,10 @@
 "ZM" = (
 /turf/simulated/mineral/floor/vacuum,
 /area/triumph_away/tradeport/pads)
+"ZN" = (
+/obj/effect/floor_decal/spline/plain,
+/turf/simulated/floor/carpet/bcarpet,
+/area/triumph_away/tradeport/cyndishow)
 "ZP" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/clothing/gloves/black,
@@ -10723,6 +11514,7 @@
 /area/triumph_away/tradeport/safari)
 "ZR" = (
 /obj/structure/flora/ausbushes/fullgrass,
+/obj/effect/floor_decal/grass_edge,
 /turf/simulated/floor/outdoors/dirtlight,
 /area/triumph_away/tradeport/cyndishow)
 "ZT" = (
@@ -16938,8 +17730,8 @@ xK
 xK
 xK
 xK
-PW
-PW
+ca
+Xn
 xK
 xK
 xK
@@ -17080,8 +17872,8 @@ vn
 jq
 FD
 EJ
-PW
-PW
+eI
+Aa
 hQ
 hR
 ZR
@@ -17221,12 +18013,12 @@ xK
 FD
 FD
 FD
-EJ
-PW
-PW
+tq
+eI
+Aa
 sO
 Cx
-hR
+Qu
 NH
 xK
 YG
@@ -17363,12 +18155,12 @@ xK
 Ks
 Vm
 JQ
-EJ
-PW
-PW
+NJ
+eI
+Aa
 Hd
-NH
-hR
+pR
+Qu
 aB
 xK
 YG
@@ -17506,12 +18298,12 @@ FD
 su
 FD
 uv
-PW
-PW
-Hd
+eI
+Aa
+gK
 Im
-hR
-NH
+Qu
+Ij
 xK
 YG
 YG
@@ -17648,11 +18440,11 @@ jq
 FD
 FD
 EJ
-PW
-PW
+eI
+Aa
 ja
 id
-hR
+Qu
 NH
 xK
 YG
@@ -17790,8 +18582,8 @@ xK
 xK
 xK
 xK
-PW
-PW
+eI
+Aa
 xK
 xK
 xK
@@ -17923,18 +18715,18 @@ Tm
 hl
 Na
 ZI
-tM
+XM
 HE
 lC
 sX
 tM
-jY
+ef
 xK
 in
 im
-PW
-PW
-in
+eI
+Aa
+UT
 xK
 YG
 YG
@@ -18063,20 +18855,20 @@ Tm
 Tm
 Of
 hl
-tM
+Uj
 ai
+ai
+Fe
 tM
-hr
-tM
-jY
-tM
-jY
+FW
+ph
+ya
 xK
-PW
-PW
-PW
-PW
-PW
+FA
+ZN
+eI
+Aa
+KC
 xK
 xK
 xK
@@ -18206,22 +18998,22 @@ ux
 Oi
 hl
 hr
-nP
 hr
-hr
+hv
+fh
 tM
-jY
-tM
-jY
+TO
+ze
+eD
 xK
-PW
-in
-PW
-PW
-PW
+bQ
+Fw
+eI
+Aa
+KC
 UJ
-in
-PW
+gh
+eE
 xK
 xK
 YG
@@ -18348,22 +19140,22 @@ Tm
 Tm
 lr
 tM
-ai
 tM
 tM
 tM
 tM
 tM
-tM
+Eb
+wK
 xK
 PW
 PW
-PW
-PW
-in
+eI
+Aa
+Lm
 xR
-ws
-ws
+gX
+gX
 Wl
 xK
 YG
@@ -18486,27 +19278,27 @@ dG
 zD
 lX
 ZH
-RO
+TZ
 rD
 DH
 xV
-fJ
+xV
+rH
 xV
 xV
 xV
+xc
 xV
-xV
-xV
 ws
-ws
-ws
-ws
-ws
-ws
+BH
+BH
+MQ
+AZ
+ax
 EU
-PW
-PW
-in
+FA
+FA
+Yh
 xK
 YG
 YG
@@ -18633,22 +19425,22 @@ GV
 AK
 tM
 tM
+Ni
 tM
 tM
+gu
 tM
-tM
-tM
-tM
+Ts
 xK
 PW
 PW
-PW
-PW
-in
-PW
-PW
-PW
-PW
+eI
+Aa
+lu
+uM
+FA
+FA
+FA
 xK
 YG
 YG
@@ -18773,23 +19565,23 @@ Fi
 RO
 dh
 hl
-jY
 tM
-jY
+wY
+Ni
+uQ
 tM
-jY
+xi
 tM
-jY
-tM
+Gm
 xK
-PW
-in
-PW
-PW
-PW
-NY
-in
-PW
+Ty
+Lw
+eI
+Aa
+KC
+uh
+Jz
+Wv
 xK
 xK
 YG
@@ -18916,19 +19708,19 @@ Tm
 Of
 hl
 jY
+Qw
+Sl
+or
 tM
-jY
+ZJ
 tM
-jY
-tM
-jY
-tM
+GF
 xK
-PW
-PW
-PW
-PW
-PW
+FA
+ZN
+eI
+Aa
+KC
 xK
 xK
 xK
@@ -19057,26 +19849,26 @@ Pu
 Tm
 Tm
 hl
-Xb
-tM
-jY
-sC
-jY
 BL
-jY
+yE
+rh
+tX
+sC
+bu
 tM
+Kw
 xK
-in
+ce
 NY
-PW
-PW
-in
+eI
+Aa
+gC
 xK
 YG
 YG
 YG
 YG
-do
+YG
 YG
 YG
 YG
@@ -19210,8 +20002,8 @@ xK
 xK
 xK
 xK
-PW
-PW
+eI
+Aa
 xK
 xK
 xK
@@ -19352,8 +20144,8 @@ CF
 ta
 ta
 XL
-PW
-PW
+eI
+Aa
 fd
 wT
 qR
@@ -19494,9 +20286,9 @@ NU
 NU
 ta
 mY
-PW
-PW
-SB
+eI
+Aa
+gD
 kN
 tB
 tB
@@ -19635,10 +20427,10 @@ xK
 Hp
 bz
 ta
-XL
-PW
-PW
-SB
+QV
+eI
+Aa
+dD
 tB
 Mo
 nd
@@ -19777,9 +20569,9 @@ xK
 NU
 NU
 ta
-XL
-PW
-PW
+ue
+eI
+Aa
 SB
 tB
 bX
@@ -19920,9 +20712,9 @@ Mm
 ta
 BM
 XL
-PW
-PW
-SB
+eI
+Aa
+sp
 Um
 My
 IL
@@ -20063,7 +20855,7 @@ xK
 xK
 xK
 vT
-PW
+hK
 xK
 xK
 xK
