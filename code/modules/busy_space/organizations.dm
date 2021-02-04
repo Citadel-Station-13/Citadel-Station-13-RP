@@ -2058,7 +2058,9 @@
 			"Renholder's Opus",
 			"Tannhauser Bow",
 			"Silver Lake",
-			"Mozambique Vampire"
+			"Mozambique Vampire",
+			"Edith's Checkerspot Butterfly",
+			"A Retinue of Moons"
 			)
 	destination_names = list(
 			"unidentified sensor reading",

@@ -291,7 +291,11 @@
 /area/triumph_away/tradeport/commons)
 "bz" = (
 /mob/living/carbon/human/dummy/mannequin/mummy,
-/obj/structure/fake_stairs/south,
+/obj/structure/barricade{
+	icon = 'icons/obj/stairs.dmi';
+	icon_state = null;
+	name = "stairs"
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/triumph_away/tradeport/cyndishow)
 "bA" = (
@@ -6244,12 +6248,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor,
 /area/triumph_away/tradeport/pads)
-"CF" = (
-/obj/structure/cult/pylon{
-	light = 1
-	},
-/turf/simulated/floor/beach/sand/desert,
-/area/triumph_away/tradeport/cyndishow)
 "CI" = (
 /turf/simulated/floor/tiled/neutral,
 /area/triumph_away/tradeport/facility)
@@ -10965,9 +10963,7 @@
 /area/triumph_away/tradeport/safarizoo)
 "XL" = (
 /obj/structure/window/reinforced,
-/obj/structure/cult/pylon{
-	light = 1
-	},
+/obj/structure/cult/pylon,
 /turf/simulated/floor/beach/sand/desert,
 /area/triumph_away/tradeport/cyndishow)
 "XM" = (
@@ -20140,7 +20136,7 @@ YG
 YG
 YG
 xK
-CF
+Mm
 ta
 ta
 XL
@@ -26973,7 +26969,7 @@ UH
 UH
 oX
 NB
-vE
+tu
 gV
 DB
 vE
@@ -27399,7 +27395,7 @@ iZ
 iZ
 jc
 NB
-vE
+tu
 gV
 CC
 vE
