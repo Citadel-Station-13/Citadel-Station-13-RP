@@ -112,6 +112,17 @@
 "genre": "Arcade"
 },
 {
+"url": "https://files.catbox.moe/9b5uo4.mp3",
+"title": "A Mannequin Adrift",
+"duration": 2120,
+"artist": "The Scary Jokes",
+"secret": false,
+"emag": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Alternative"
+},
+{
 "url": "https://files.catbox.moe/evilyr.m4a",
 "title": "Age of Consent",
 "duration": 3150,
@@ -152,6 +163,17 @@
 "genre": "Alternative"
 },
 {
+"url": "https://files.catbox.moe/ag98bo.mp3",
+"title": "Buttercup",
+"duration": 2080,
+"artist": "Jack Stauber",
+"secret": false,
+"emag": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Alternative"
+},
+{
 "url": "https://files.catbox.moe/3zmjbi.m4a",
 "title": "Ceremony",
 "duration": 2660,
@@ -173,11 +195,44 @@
 "genre": "Alternative"
 },
 {
+"url": "https://files.catbox.moe/5blm5m.mp3",
+"title": "Everyday Robots",
+"duration": 2420,
+"artist": "Damon Albarn",
+"secret": false,
+"emag": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Alternative"
+},
+{
 "url": "https://files.catbox.moe/d874c4.m4a",
 "title": "Everything Counts",
 "duration": 2390,
 "artist": "Depeche Mode",
 "secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Alternative"
+},
+{
+"url": "https://files.catbox.moe/42ate6.mp3",
+"title": "Homage",
+"duration": 1770,
+"artist": "Mild High Club",
+"secret": false,
+"emag": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Alternative"
+},
+{
+"url": "https://files.catbox.moe/tununn.mp3",
+"title": "Little Fang",
+"duration": 2510,
+"artist": "Avery Tare's Slasher Flicks",
+"secret": false,
+"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Alternative"
@@ -213,6 +268,28 @@
 "genre": "Alternative"
 },
 {
+"url": "https://files.catbox.moe/w6wj7x.mp3",
+"title": "Modify",
+"duration": 1770,
+"artist": "Lemon Demon",
+"secret": false,
+"emag": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Alternative"
+},
+{
+"url": "https://files.catbox.moe/bhnkaz.mp3",
+"title": "Oh Klahoma",
+"duration": 1880,
+"artist": "Jack Stauber",
+"secret": false,
+"emag": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Alternative"
+},
+{
 "url": "https://files.catbox.moe/156qvn.m4a",
 "title": "On Top of the World",
 "duration": 1950,
@@ -243,6 +320,17 @@
 "genre": "Alternative"
 },
 {
+"url": "https://files.catbox.moe/svz1nw.mp3",
+"title": "Revolving Doors",
+"duration": 2060,
+"artist": "Gorillaz",
+"secret": false,
+"emag": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Alternative"
+},
+{
 "url": "https://files.catbox.moe/umynh4.m4a",
 "title": "The Prince's Dream",
 "duration": 1670,
@@ -268,6 +356,50 @@
 "duration": 3120,
 "artist": "Rik Schaffer",
 "secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Alternative"
+},
+{
+"url": "https://files.catbox.moe/pyasef.mp3",
+"title": "Sleeping Powder",
+"duration": 1660,
+"artist": "Gorillaz",
+"secret": false,
+"emag": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Alternative"
+},
+{
+"url": "https://files.catbox.moe/f2tfcf.mp3",
+"title": "Something For Your M.I.N.D.",
+"duration": 1870,
+"artist": "Superorganism",
+"secret": false,
+"emag": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Alternative"
+},
+{
+"url": "https://files.catbox.moe/e39mif.mp3",
+"title": "Toynbee Tiles",
+"duration": 2940,
+"artist": "The Scary Jokes",
+"secret": false,
+"emag": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Alternative"
+},
+{
+"url": "https://files.catbox.moe/4lp9u9.mp3",
+"title": "White Light",
+"duration": 1330,
+"artist": "Gorillaz",
+"secret": false,
+"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Alternative"
@@ -442,6 +574,17 @@
 "lobby": false,
 "jukebox": true,
 "genre": "Classical and Orchestral"
+},
+{
+"url": "https://files.catbox.moe/ut8fiu.mp3",
+"title": "Pale Machine",
+"duration": 2470,
+"artist": "Bo En",
+"secret": false,
+"emag": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Alternative"
 },
 {
 "url": "https://files.catbox.moe/8r1ifw.m4a",
@@ -1057,6 +1200,17 @@
 "genre": "Disco, Funk, Soul, and R&B"
 },
 {
+"url": "https://files.catbox.moe/h66cpe.mp3",
+"title": "3l3d3p",
+"duration": 1440,
+"artist": "ibitbt",
+"secret": false,
+"emag": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Electronic"
+},
+{
 "url": "https://files.catbox.moe/oq5l75.m4a",
 "title": "A Lost Sound",
 "duration": 3630,
@@ -1077,11 +1231,33 @@
 "genre": "Electronic"
 },
 {
+"url": "https://files.catbox.moe/do33zz.mp3",
+"title": "Becoming Insane ",
+"duration": 4480,
+"artist": "Infected Mushroom",
+"secret": false,
+"emag": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Electronic"
+},
+{
 "url": "https://files.catbox.moe/ke8uk5.m4a",
 "title": "Beware the Beast",
 "duration": 2260,
 "artist": "Carpenter Brut",
 "secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Electronic"
+},
+{
+"url": "https://files.catbox.moe/fst8dh.mp3",
+"title": "Browser History",
+"duration": 1390,
+"artist": "Graham Kartna",
+"secret": false,
+"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -1117,6 +1293,17 @@
 "genre": "Electronic"
 },
 {
+"url": "https://files.catbox.moe/b75511.mp3",
+"title": "Crimewave",
+"duration": 3140,
+"artist": "Crystal Castles",
+"secret": false,
+"emag": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Electronic"
+},
+{
 "url": "https://files.catbox.moe/2qdzcj.m4a",
 "title": "Crockett's Theme",
 "duration": 2040,
@@ -1142,6 +1329,50 @@
 "duration": 4850,
 "artist": "Sun Araw",
 "secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Electronic"
+},
+{
+"url": "https://files.catbox.moe/sartjg.mp3",
+"title": "Professional Griefers",
+"duration": 2460,
+"artist": "Deadmau5 (Ft. Gerard Way)",
+"secret": false,
+"emag": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Electronic"
+},
+{
+"url": "https://files.catbox.moe/6pdd3r.mp3",
+"title": "The Pretender (Foo Fighters Cover)",
+"duration": 3940,
+"artist": "Infected Mushroom",
+"secret": false,
+"emag": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Electronic"
+},
+{
+"url": "https://files.catbox.moe/z7z75y.mp3",
+"title": "Time Traveler",
+"duration": 2240,
+"artist": "KNOWER",
+"secret": false,
+"emag": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Electronic"
+},
+{
+"url": "https://files.catbox.moe/ief4jg.mp3",
+"title": "Warsaw",
+"duration": 2530,
+"artist": "PilotRedSun",
+"secret": false,
+"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -1333,6 +1564,17 @@
 "duration": 2180,
 "artist": "System96",
 "secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Electronic"
+},
+{
+"url": "https://files.catbox.moe/adsdvc.mp3",
+"title": "Welcome to Kitty City",
+"duration": 1080,
+"artist": "Cyriak",
+"secret": false,
+"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -1733,6 +1975,17 @@
 "duration": 2080,
 "artist": "Carpenter Brut",
 "secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Electronic"
+},
+{
+"url": "https://files.catbox.moe/anwn00.mp3",
+"title": "Untrust Us",
+"duration": 3250,
+"artist": "Crystal Castles",
+"secret": false,
+"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -2181,6 +2434,17 @@
 "genre": "Hip-Hop and Rap"
 },
 {
+"url": "https://files.catbox.moe/vbwv3g.mp3",
+"title": "Hacker",
+"duration": 2750,
+"artist": "Death Grips",
+"secret": false,
+"emag": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Hip-Hop and Rap"
+},
+{
 "url": "https://files.catbox.moe/cyszy2.m4a",
 "title": "I Hear Footsteps",
 "duration": 2210,
@@ -2251,6 +2515,17 @@
 "genre": "Hip-Hop and Rap"
 },
 {
+"url": "https://files.catbox.moe/vrmayi.mp3",
+"title": "Mastermind",
+"duration": 2140,
+"artist": "Deltron3030",
+"secret": false,
+"emag": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Hip-Hop and Rap"
+},
+{
 "url": "https://files.catbox.moe/o7hb3j.m4a",
 "title": "Meat Grinder",
 "duration": 1310,
@@ -2276,6 +2551,18 @@
 "duration": 8850,
 "artist": "The Sugar Hill Gang",
 "secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Hip-Hop and Rap"
+},
+
+{
+"url": "https://files.catbox.moe/em310d.mp3",
+"title": "Pump Up The Love",
+"duration": 2230,
+"artist": "2Mello",
+"secret": false,
+"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Hip-Hop and Rap"
@@ -2331,11 +2618,33 @@
 "genre": "Hip-Hop and Rap"
 },
 {
+"url": "https://files.catbox.moe/jln5bq.mp3",
+"title": "Virus",
+"duration": 2660,
+"artist": "Deltron3030",
+"secret": false,
+"emag": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Hip-Hop and Rap"
+},
+{
 "url": "https://files.catbox.moe/tk1zno.m4a",
 "title": "Voila",
 "duration": 2080,
 "artist": "Death Grips",
 "secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Hip-Hop and Rap"
+},
+{
+"url": "https://files.catbox.moe/13fqd1.mp3",
+"title": "You Might Think He Loves You for Your Money but I Know What He Really Loves You for It’s Your Brand New Leopard Skin Pillbox Hat",
+"duration": 1610,
+"artist": "Death Grips",
+"secret": false,
+"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Hip-Hop and Rap"
@@ -2600,6 +2909,17 @@
 "lobby": false,
 "jukebox": true,
 "genre": "Jazz and Lounge"
+},
+{
+"url": "https://files.catbox.moe/35vgjl.mp3",
+"title": "Old To The New",
+"duration": 2040,
+"artist": "2Mello",
+"secret": false,
+"emag": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Hip-Hop and Rap"
 },
 {
 "url": "https://files.catbox.moe/hanzhj.m4a",
@@ -5052,6 +5372,17 @@
 "genre": "Rock"
 },
 {
+"url": "https://files.catbox.moe/o6rf5a.mp3",
+"title": "New Kid In Town",
+"duration": 3050,
+"artist": "The Eagles",
+"secret": false,
+"emag": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Rock"
+},
+{
 "url": "https://files.catbox.moe/62lks9.m4a",
 "title": "No One Knows",
 "duration": 2580,
@@ -5196,6 +5527,17 @@
 "genre": "Rock"
 },
 {
+"url": "https://files.catbox.moe/7y7m9w.mp3",
+"title": "Rhiannon",
+"duration": 2500,
+"artist": "Fleetwood Mac",
+"secret": false,
+"emag": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Rock"
+},
+{
 "url": "https://files.catbox.moe/isus1b.m4a",
 "title": "Robot Stop",
 "duration": 2100,
@@ -5232,6 +5574,17 @@
 "duration": 2820,
 "artist": "Elton John",
 "secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Rock"
+},
+{
+"url": "https://files.catbox.moe/f1pn65.mp3",
+"title": "Run Through The Jungle",
+"duration": 1860,
+"artist": "Creedence Clearwater Revival",
+"secret": false,
+"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -5340,6 +5693,17 @@
 "genre": "Rock"
 },
 {
+"url": "https://files.catbox.moe/tiv8tr.mp3",
+"title": "Suzie Q",
+"duration": 2800,
+"artist": "Creedence Clearwater Revival",
+"secret": false,
+"emag": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Rock"
+},
+{
 "url": "https://files.catbox.moe/7808jz.m4a",
 "title": "Take It Easy",
 "duration": 2110,
@@ -5376,6 +5740,17 @@
 "duration": 2240,
 "artist": "Poison",
 "secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Rock"
+},
+{
+"url": "https://files.catbox.moe/irle02.mp3",
+"title": "Telephone Line",
+"duration": 2810,
+"artist": "Electric Light Orchestra",
+"secret": false,
+"emag": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
@@ -5634,389 +6009,5 @@
 "lobby": false,
 "jukebox": true,
 "genre": "Sol Common Precursors"
-},
-{
-"url": "https://files.catbox.moe/em310d.mp3",
-"title": "Pump Up The Love",
-"duration": 2230,
-"artist": "2Mello",
-"secret": false,
-"emag": false,
-"lobby": false,
-"jukebox": true,
-"genre": "Hip-Hop and Rap"
-},
-{
-"url": "https://files.catbox.moe/35vgjl.mp3",
-"title": "Old To The New",
-"duration": 2040,
-"artist": "2Mello",
-"secret": false,
-"emag": false,
-"lobby": false,
-"jukebox": true,
-"genre": "Hip-Hop and Rap"
-},
-{
-"url": "https://files.catbox.moe/h66cpe.mp3",
-"title": "3l3d3p",
-"duration": 1440,
-"artist": "ibitbt",
-"secret": false,
-"emag": false,
-"lobby": false,
-"jukebox": true,
-"genre": "Electronic"
-},
-{
-"url": "https://files.catbox.moe/tununn.mp3",
-"title": "Little Fang",
-"duration": 2510,
-"artist": "Avery Tare's Slasher Flicks",
-"secret": false,
-"emag": false,
-"lobby": false,
-"jukebox": true,
-"genre": "Alternative"
-},
-{
-"url": "https://files.catbox.moe/ut8fiu.mp3",
-"title": "Pale Machine",
-"duration": 2470,
-"artist": "Bo En",
-"secret": false,
-"emag": false,
-"lobby": false,
-"jukebox": true,
-"genre": "Alternative"
-},
-{
-"url": "https://files.catbox.moe/anwn00.mp3",
-"title": "Untrust Us",
-"duration": 3250,
-"artist": "Crystal Castles",
-"secret": false,
-"emag": false,
-"lobby": false,
-"jukebox": true,
-"genre": "Electronic"
-},
-{
-"url": "https://files.catbox.moe/b75511.mp3",
-"title": "Crimewave",
-"duration": 3140,
-"artist": "Crystal Castles",
-"secret": false,
-"emag": false,
-"lobby": false,
-"jukebox": true,
-"genre": "Electronic"
-},
-{
-"url": "https://files.catbox.moe/rycbqd.mp3",
-"title": "Fortunate Son",
-"duration": 1410,
-"artist": "Creedence Clearwater Revival",
-"secret": false,
-"emag": false,
-"lobby": false,
-"jukebox": true,
-"genre": "Rock"
-},
-{
-"url": "https://files.catbox.moe/f1pn65.mp3",
-"title": "Run Through The Jungle",
-"duration": 1860,
-"artist": "Creedence Clearwater Revival",
-"secret": false,
-"emag": false,
-"lobby": false,
-"jukebox": true,
-"genre": "Rock"
-},
-{
-"url": "https://files.catbox.moe/tiv8tr.mp3",
-"title": "Suzie Q",
-"duration": 2800,
-"artist": "Creedence Clearwater Revival",
-"secret": false,
-"emag": false,
-"lobby": false,
-"jukebox": true,
-"genre": "Rock"
-},
-{
-"url": "https://files.catbox.moe/adsdvc.mp3",
-"title": "Welcome to Kitty City",
-"duration": 1080,
-"artist": "Cyriak",
-"secret": false,
-"emag": false,
-"lobby": false,
-"jukebox": true,
-"genre": "Electronic"
-},
-{
-"url": "https://files.catbox.moe/5blm5m.mp3",
-"title": "Everyday Robots",
-"duration": 2420,
-"artist": "Damon Albarn",
-"secret": false,
-"emag": false,
-"lobby": false,
-"jukebox": true,
-"genre": "Alternative"
-},
-{
-"url": "https://files.catbox.moe/vbwv3g.mp3",
-"title": "Hacker",
-"duration": 2750,
-"artist": "Death Grips",
-"secret": false,
-"emag": false,
-"lobby": false,
-"jukebox": true,
-"genre": "Electronic"
-},
-{
-"url": "https://files.catbox.moe/13fqd1.mp3",
-"title": "You Might Think He Loves You for Your Money but I Know What He Really Loves You for It’s Your Brand New Leopard Skin Pillbox Hat",
-"duration": 1610,
-"artist": "Death Grips",
-"secret": false,
-"emag": false,
-"lobby": false,
-"jukebox": true,
-"genre": "Electronic"
-},
-{
-"url": "https://files.catbox.moe/vrmayi.mp3",
-"title": "Mastermind",
-"duration": 2140,
-"artist": "Deltron3030",
-"secret": false,
-"emag": false,
-"lobby": false,
-"jukebox": true,
-"genre": "Hip-Hop and Rap"
-},
-{
-"url": "https://files.catbox.moe/jln5bq.mp3",
-"title": "Virus",
-"duration": 2660,
-"artist": "Deltron3030",
-"secret": false,
-"emag": false,
-"lobby": false,
-"jukebox": true,
-"genre": "Hip-Hop and Rap"
-},
-{
-"url": "https://files.catbox.moe/sartjg.mp3",
-"title": "Professional Griefers",
-"duration": 2460,
-"artist": "Deadmau5 (Ft. Gerard Way)",
-"secret": false,
-"emag": false,
-"lobby": false,
-"jukebox": true,
-"genre": "Electronic"
-},
-{
-"url": "https://files.catbox.moe/o6rf5a.mp3",
-"title": "New Kid In Town",
-"duration": 3050,
-"artist": "The Eagles",
-"secret": false,
-"emag": false,
-"lobby": false,
-"jukebox": true,
-"genre": "Rock"
-},
-{
-"url": "https://files.catbox.moe/irle02.mp3",
-"title": "Telephone Line",
-"duration": 2810,
-"artist": "Electric Light Orchestra",
-"secret": false,
-"emag": false,
-"lobby": false,
-"jukebox": true,
-"genre": "Rock"
-},
-{
-"url": "https://files.catbox.moe/7y7m9w.mp3",
-"title": "Rhiannon",
-"duration": 2500,
-"artist": "Fleetwood Mac",
-"secret": false,
-"emag": false,
-"lobby": false,
-"jukebox": true,
-"genre": "Rock"
-},
-{
-"url": "https://files.catbox.moe/fst8dh.mp3",
-"title": "Browser History",
-"duration": 1390,
-"artist": "Graham Kartna",
-"secret": false,
-"emag": false,
-"lobby": false,
-"jukebox": true,
-"genre": "Electronic"
-},
-{
-"url": "https://files.catbox.moe/4lp9u9.mp3",
-"title": "White Light",
-"duration": 1330,
-"artist": "Gorillaz",
-"secret": false,
-"emag": false,
-"lobby": false,
-"jukebox": true,
-"genre": "Alternative"
-},{
-"url": "https://files.catbox.moe/pyasef.mp3",
-"title": "Sleeping Powder",
-"duration": 1660,
-"artist": "Gorillaz",
-"secret": false,
-"emag": false,
-"lobby": false,
-"jukebox": true,
-"genre": "Alternative"
-},
-{
-"url": "https://files.catbox.moe/svz1nw.mp3",
-"title": "Revolving Doors",
-"duration": 2060,
-"artist": "Gorillaz",
-"secret": false,
-"emag": false,
-"lobby": false,
-"jukebox": true,
-"genre": "Alternative"
-},
-{
-"url": "https://files.catbox.moe/6pdd3r.mp3",
-"title": "The Pretender (Foo Fighters Cover)",
-"duration": 3940,
-"artist": "Infected Mushroom",
-"secret": false,
-"emag": false,
-"lobby": false,
-"jukebox": true,
-"genre": "Electronic"
-},
-{
-"url": "https://files.catbox.moe/do33zz.mp3",
-"title": "Becoming Insane ",
-"duration": 4480,
-"artist": "Infected Mushroom",
-"secret": false,
-"emag": false,
-"lobby": false,
-"jukebox": true,
-"genre": "Electronic"
-},
-{
-"url": "https://files.catbox.moe/ag98bo.mp3",
-"title": "Buttercup",
-"duration": 2080,
-"artist": "Jack Stauber",
-"secret": false,
-"emag": false,
-"lobby": false,
-"jukebox": true,
-"genre": "Alternative"
-},
-{
-"url": "https://files.catbox.moe/bhnkaz.mp3",
-"title": "Oh Klahoma",
-"duration": 1880,
-"artist": "Jack Stauber",
-"secret": false,
-"emag": false,
-"lobby": false,
-"jukebox": true,
-"genre": "Alternative"
-},
-{
-"url": "https://files.catbox.moe/z7z75y.mp3",
-"title": "Time Traveler",
-"duration": 2240,
-"artist": "KNOWER",
-"secret": false,
-"emag": false,
-"lobby": false,
-"jukebox": true,
-"genre": "Electronic"
-},
-{
-"url": "https://files.catbox.moe/w6wj7x.mp3",
-"title": "Modify",
-"duration": 1770,
-"artist": "Lemon Demon",
-"secret": false,
-"emag": false,
-"lobby": false,
-"jukebox": true,
-"genre": "Alternative"
-},
-{
-"url": "https://files.catbox.moe/42ate6.mp3",
-"title": "Homage",
-"duration": 1770,
-"artist": "Mild High Club",
-"secret": false,
-"emag": false,
-"lobby": false,
-"jukebox": true,
-"genre": "Alternative"
-},
-{
-"url": "https://files.catbox.moe/ief4jg.mp3",
-"title": "Warsaw",
-"duration": 2530,
-"artist": "PilotRedSun",
-"secret": false,
-"emag": false,
-"lobby": false,
-"jukebox": true,
-"genre": "Electronic"
-},
-{
-"url": "https://files.catbox.moe/f2tfcf.mp3",
-"title": "Something For Your M.I.N.D.",
-"duration": 1870,
-"artist": "Superorganism",
-"secret": false,
-"emag": false,
-"lobby": false,
-"jukebox": true,
-"genre": "Alternative"
-},
-{
-"url": "https://files.catbox.moe/9b5uo4.mp3",
-"title": "A Mannequin Adrift",
-"duration": 2120,
-"artist": "The Scary Jokes",
-"secret": false,
-"emag": false,
-"lobby": false,
-"jukebox": true,
-"genre": "Alternative"
-},
-{
-"url": "https://files.catbox.moe/e39mif.mp3",
-"title": "Toynbee Tiles",
-"duration": 2940,
-"artist": "The Scary Jokes",
-"secret": false,
-"emag": false,
-"lobby": false,
-"jukebox": true,
-"genre": "Alternative"
 }
 ]
