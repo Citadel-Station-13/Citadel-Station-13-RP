@@ -25,15 +25,55 @@
 	base_turf = /turf/simulated/mineral/floor/cave
 
 /area/triumph_away/lavaland/horrors
-	name = "Horrors"
+	name = "Lava Land - Horrors"
 	base_turf = /turf/simulated/mineral/floor/cave
 
 /area/triumph_away/lavaland/dogs
-	name = "Dogs"
+	name = "Lava Land - Dogs"
 	base_turf = /turf/simulated/mineral/floor/cave
-	
-/obj/effect/landmark/lavaland
-    name = "Lavaland TP Point"
+
+/area/triumph_away/lavaland/idleruins
+	name = "Lava Land - Idle Ruins"
+	base_turf = /turf/simulated/mineral/floor/cave
+
+/obj/effect/landmark/lavaland_entry
+	name = "lavaland_entry"
+
+
+/obj/effect/landmark/lavaland_exit
+	name = "lavaland_exit"
+
+
+/obj/machinery/lavaland_entryportal
+	name = "Magmatic Rift Teleporter"
+	desc = "A bluespace quantum-linked telepad used for teleporting objects to other quantum pads."
+	icon = 'icons/obj/telescience.dmi'
+	icon_state = "qpad-idle"
+	anchored = 1
+	use_power = USE_POWER_IDLE
+	interact_offline = 0
+
+	attack_hand(mob/living/user as mob)
+		if(inoperable(MAINT))
+			return 1
+		else if(do_after(user, 50))
+			to_chat(user, "You feel reality shift around you.")
+			do_teleport(user, pick(lavaland_entry), local = FALSE)
+		return
+
+/obj/effect/lavaland_exitportal // effect so it cant be removed by griefers
+	name = "Magmatic Rift Teleporter"
+	desc = "A bluespace quantum-linked telepad used for teleporting objects to other quantum pads."
+	icon = 'icons/obj/telescience.dmi'
+	icon_state = "qpad-idle"
+	anchored = 1
+
+
+	attack_hand(mob/living/user as mob)
+		if(do_after(user, 50))
+			to_chat(user, "You feel reality shift around you.")
+			do_teleport(user, pick(lavaland_exit), local = FALSE)
+		return
 
 // lava land world areas
 /area/triumph_away/lavaland
@@ -42,10 +82,15 @@
 	base_turf = /turf/simulated/mineral/floor/
 	dynamic_lighting = 1
 
+/area/triumph_away/lavaland/entry
+	name = "Lava Land - Entry"
+	icon_state = "green"
+	base_turf = /turf/simulated/mineral/floor/
+
 /area/triumph_away/lavaland/explored
 	name = "lava land - Explored (E)"
 	icon_state = "red"
-	forced_ambience = list('sound/ambience/tension/tension.ogg', 'sound/ambience/tension/horror.ogg')
+	//forced_ambience = list('sound/ambience/tension/tension.ogg', 'sound/ambience/tension/horror.ogg')
 
 /area/triumph_away/lavaland/unexplored
 	name = "lava land - Unexplored (UE)"

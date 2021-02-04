@@ -1,0 +1,33 @@
+"a" = ()
+"d" = (/turf/template_noop,/area/template_noop)
+"g" = (/obj/item/material/knife/ritual/durasteel,/turf/simulated/floor/tiled/dark,/area/triumph_away/lavaland/idleruins)
+"h" = (/obj/structure/simple_door/wood,/turf/simulated/floor/tiled/dark,/area/triumph_away/lavaland/idleruins)
+"i" = (/obj/structure/bed/double/padded,/obj/item/bedsheet/hosdouble,/mob/living/simple_mob/animal/passive/snake,/turf/simulated/floor/wood,/area/triumph_away/lavaland/idleruins)
+"t" = (/turf/simulated/floor/tiled/dark,/area/triumph_away/lavaland/idleruins)
+"u" = (/turf/simulated/floor/wood,/area/triumph_away/lavaland/idleruins)
+"v" = (/mob/living/bot/medbot/mysterious,/turf/simulated/floor/wood,/area/triumph_away/lavaland/idleruins)
+"z" = (/obj/structure/closet/crate/freezer/rations,/turf/simulated/floor/wood,/area/triumph_away/lavaland/idleruins)
+"H" = (/turf/simulated/wall/wood,/area/triumph_away/lavaland/idleruins)
+"I" = (/obj/structure/simple_door/wood,/turf/simulated/floor/wood,/area/triumph_away/lavaland/idleruins)
+"L" = (/obj/structure/barricade,/turf/simulated/floor/tiled/dark,/area/triumph_away/lavaland/idleruins)
+"Q" = (/obj/item/reagent_containers/food/drinks/cans/waterbottle{pixel_x = 8},/obj/item/reagent_containers/food/drinks/cans/waterbottle,/turf/simulated/floor/wood,/area/triumph_away/lavaland/idleruins)
+"S" = (/turf/simulated/mineral/floor/cave,/area/triumph_away/lavaland/idleruins)
+"V" = (/obj/item/flame/candle/candelabra/everburn,/turf/simulated/floor/wood,/area/triumph_away/lavaland/idleruins)
+
+(1,1,1) = {"
+ddddddddddddddd
+dSSSdddddSSdddd
+dSSSdddddSSSSdd
+dSSSSSSSSSSSSSd
+dSHHhHHHHHHHHHd
+dSHgLtHthLHViHd
+dSHtttHtHtHuvHd
+dSHttthLHtHuQHd
+dSHtttHtHtIuzHd
+dSHHHHHHHHHHHHd
+dSSSSSSSSSSSSSd
+dSSSSSSSddSSSSd
+ddddSSSdddSSSSd
+ddddSSSdddSSSdd
+adddddddddddddd
+"}

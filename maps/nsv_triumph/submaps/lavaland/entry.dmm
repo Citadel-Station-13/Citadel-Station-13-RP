@@ -1,0 +1,30 @@
+"a" = (/turf/template_noop,/area/template_noop)
+"e" = (/turf/simulated/wall/wood,/area/triumph_away/lavaland/entry)
+"f" = (/turf/simulated/mineral/floor/cave,/area/triumph_away/lavaland/entry)
+"k" = (/obj/structure/flora/ausbushes/fullgrass,/obj/structure/flora/ausbushes/fullgrass,/turf/simulated/floor/outdoors/grass,/area/triumph_away/lavaland/entry)
+"u" = (/obj/structure/flora/ausbushes/fullgrass,/obj/structure/flora/ausbushes/sparsegrass,/turf/simulated/floor/outdoors/grass,/area/triumph_away/lavaland/entry)
+"D" = (/obj/effect/landmark/lavaland_entry,/obj/effect/decal/cleanable/ash,/obj/effect/lavaland_exitportal,/turf/simulated/floor/outdoors/grass,/area/triumph_away/lavaland/entry)
+"K" = (/obj/structure/flora/ausbushes/sparsegrass,/turf/simulated/floor/outdoors/grass,/area/triumph_away/lavaland/entry)
+"L" = (/turf/simulated/floor/outdoors/beach/sand/dirt/lavaland,/area/triumph_away/lavaland/entry)
+"N" = (/obj/structure/flora/ausbushes/fullgrass,/turf/simulated/floor/outdoors/grass,/area/triumph_away/lavaland/entry)
+"R" = (/obj/structure/flora/ausbushes/fullgrass,/obj/machinery/light_construct/flamp,/turf/simulated/floor/outdoors/grass,/area/triumph_away/lavaland/entry)
+"T" = (/obj/structure/flora/ausbushes/fullgrass,/obj/structure/flora/ausbushes/grassybush,/turf/simulated/floor/outdoors/grass,/area/triumph_away/lavaland/entry)
+"W" = (/obj/structure/flora/ausbushes/fullgrass,/obj/structure/flora/ausbushes/lavendergrass,/turf/simulated/floor/outdoors/grass,/area/triumph_away/lavaland/entry)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaa
+aaaaaaafffaaaaa
+aaaaffLffaaffaa
+aafaLfLLffaafaa
+aafafffLLffffaa
+affafeeNeeLfaaa
+aafafeTNReffaaa
+aafffKNDuKffaaa
+aaafLeWkNefffaa
+aaaffeeKeefffaa
+aaaaLfffffLLLfa
+aaafLfffffffLfa
+aaffaaafaaffffa
+affaaafffafffaa
+aaaaaaaaaaaaaaa
+"}

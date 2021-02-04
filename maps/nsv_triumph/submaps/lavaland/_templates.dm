@@ -32,3 +32,17 @@
 	cost = 5
 	fixed_orientation = TRUE
 	discard_prob = 0
+
+/datum/map_template/lavaland/entry
+	name = "Lava Land - Entry"
+	mappath = 'entry.dmm'
+	cost = -1
+	fixed_orientation = TRUE
+	discard_prob = 0
+
+/datum/map_template/lavaland/idleruins2
+	name = "Lava Land - Idle Ruins 2"
+	mappath = 'idleruins2.dmm'
+	cost = 5
+	fixed_orientation = TRUE
+	discard_prob = 0
