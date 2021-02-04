@@ -1,0 +1,49 @@
+"a" = (/turf/template_noop,/area/template_noop)
+"c" = (/obj/machinery/seed_storage/xenobotany,/turf/simulated/floor/outdoors/grass,/area/space)
+"f" = (/obj/effect/decal/remains,/obj/item/clothing/under/rank/hydroponics,/obj/item/clothing/suit/storage/toggle/labcoat/green,/obj/item/clothing/head/greenbandana,/turf/simulated/floor/outdoors/grass,/area/space)
+"m" = (/obj/machinery/portable_atmospherics/hydroponics,/turf/simulated/floor/outdoors/grass,/area/space)
+"n" = (/obj/machinery/vending/hydronutrients,/turf/simulated/floor/outdoors/grass,/area/space)
+"q" = (/obj/structure/bed/roller,/obj/structure/flora/ausbushes/sparsegrass,/turf/simulated/floor/outdoors/grass,/area/space)
+"r" = (/obj/machinery/seed_extractor,/turf/simulated/floor/outdoors/grass,/area/space)
+"s" = (/turf/simulated/mineral/triumph,/area/space)
+"v" = (/obj/structure/railing{dir = 1},/turf/simulated/floor/outdoors/grass,/area/space)
+"x" = (/turf/simulated/wall/wood,/area/space)
+"y" = (/obj/structure/railing{dir = 8},/turf/simulated/floor/outdoors/grass,/area/space)
+"z" = (/obj/structure/flora/ausbushes/lavendergrass,/turf/simulated/floor/outdoors/grass,/area/space)
+"A" = (/turf/simulated/floor/outdoors/dirt/lavaland,/area/space)
+"B" = (/obj/machinery/botany/editor,/turf/simulated/floor/outdoors/grass,/area/space)
+"C" = (/obj/structure/flora/ausbushes/sparsegrass,/turf/simulated/floor/outdoors/grass,/area/space)
+"F" = (/obj/structure/reagent_dispensers/watertank/high,/turf/simulated/floor/outdoors/grass,/area/space)
+"H" = (/obj/item/reagent_containers/spray/chemsprayer,/turf/simulated/floor/outdoors/grass,/area/space)
+"I" = (/turf/template_noop,/area/space)
+"L" = (/obj/item/reagent_containers/spray/plantbgone,/turf/simulated/floor/outdoors/grass,/area/space)
+"M" = (/turf/simulated/mineral/floor/cave,/area/space)
+"N" = (/turf/simulated/wall/thull,/area/space)
+"P" = (/obj/item/reagent_containers/spray/plantbgone,/obj/structure/flora/ausbushes/fullgrass,/turf/simulated/floor/outdoors/grass,/area/space)
+"Q" = (/obj/structure/railing,/turf/simulated/floor/outdoors/grass,/area/space)
+"S" = (/obj/structure/railing{dir = 4},/turf/simulated/floor/outdoors/grass,/area/space)
+"T" = (/turf/simulated/floor/outdoors/grass,/area/space)
+"U" = (/obj/item/seeds/killertomatoseed,/turf/simulated/floor/outdoors/grass,/area/space)
+"V" = (/obj/structure/flora/ausbushes/fullgrass,/turf/simulated/floor/outdoors/grass,/area/space)
+"W" = (/obj/structure/flora/ausbushes/grassybush,/turf/simulated/floor/outdoors/grass,/area/space)
+"X" = (/obj/structure/table/rack,/obj/item/shovel/spade,/obj/item/shovel/spade,/obj/item/material/minihoe,/obj/item/material/minihoe,/obj/item/material/knife/machete/hatchet,/obj/item/material/knife/machete/hatchet,/obj/item/reagent_containers/glass/bucket,/obj/item/reagent_containers/glass/bucket,/obj/item/analyzer/plant_analyzer,/obj/item/analyzer/plant_analyzer,/turf/simulated/floor/outdoors/grass,/area/space)
+"Y" = (/turf/simulated/floor/outdoors/dirt/lavaland,/area/template_noop)
+"Z" = (/obj/machinery/botany/extractor,/turf/simulated/floor/outdoors/grass,/area/space)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaa
+aAAAIIIIIIAAAAY
+aAxxxxxxxxxxxAY
+aIxmqBnrcZPmxAa
+aIxmUTTQTLHmxIa
+aIxmzTSFyCfmxIa
+aIxmTTSXyTTmxIa
+aAxmTCTvTTzmxAY
+aAxmTTTTTTUmxAY
+aAxxxxxTTxxxxAa
+aAAAANTTTNsAAAa
+aIAAANTWTNAAAIa
+aIAAVTTTTVAAMIa
+aaaaaaaaaaaaaaa
+"}

@@ -21,8 +21,14 @@
 
 /datum/map_template/lavaland/idleruins1
 	name = "Lava Land - Idle Ruins"
-	mappath = 'dogs.dmm'
+	mappath = 'idleruins1.dmm'
 	cost = 5
 	fixed_orientation = TRUE
 	discard_prob = 0
 
+/datum/map_template/lavaland/botany
+	name = "Lava Land - Botany"
+	mappath = 'botany.dmm'
+	cost = 5
+	fixed_orientation = TRUE
+	discard_prob = 0
