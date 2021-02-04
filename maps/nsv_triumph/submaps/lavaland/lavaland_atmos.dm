@@ -4,6 +4,7 @@
 LAVALAND_TURF_CREATE(/turf/simulated/wall/planetary/lavaland)
 
 LAVALAND_TURF_CREATE(/turf/simulated/wall)
+LAVALAND_TURF_CREATE(/turf/simulated/wall/wood)
 LAVALAND_TURF_CREATE(/turf/simulated/wall/sandstone)
 LAVALAND_TURF_CREATE(/turf/simulated/wall/sandstonediamond)
 LAVALAND_TURF_CREATE(/turf/simulated/floor/outdoors/beach/sand)

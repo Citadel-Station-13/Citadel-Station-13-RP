@@ -1,0 +1,30 @@
+"a" = (/turf/template_noop,/area/template_noop)
+"d" = (/turf/simulated/floor/wood,/area/space)
+"l" = (/obj/item/paper/crumpled/bloody{info = "<B>KEEP YOUR EYES CLOSED</B><BR>\n<BR>\nDONT LOOK<BR>\nGODS SAVE US<BR>\nDONT LOOK<BR>\nSTRONGER WHEN YOU LOOK AT IT<BR>\nDONT LOOK<BR>\nDONT LOOK<BR>\nPOWER<BR>\nDONT LOOK AT IT<BR>\nDONT LOOK<BR>\nDONT LOOK<BR>\nBEAR WITNESS<BR>\n<BR>\nI CAN FEEL IT IN MY HEAD<BR>\n<BR>\nDONT LOOK<BR>\nEYES NEVER SHUT<BR>\n<BR>\nPS.<BR>\nGODS SAVE US<BR>\nDONT LOOK AT IT<BR>\nIT SEES YOU<BR>\nKEEP YOUR EYES CLOSED DONT LOOK<BR>\nDONT LOOK<BR>\n<B>DONT LOOK</B><BR>\n<B>DONT LOOK</B><BR>\n<B>DONT LOOK</B>"; name = "DONT LOOK"},/obj/effect/decal/cleanable/blood,/turf/simulated/floor/wood,/area/space)
+"v" = (/obj/effect/floor_decal/asteroid,/turf/simulated/mineral/floor/cave,/area/space)
+"w" = (/turf/simulated/wall/wood,/area/space)
+"x" = (/obj/item/bone,/obj/effect/decal/cleanable/blood,/turf/simulated/floor/wood,/area/space)
+"y" = (/obj/item/bone,/obj/effect/decal/cleanable/blood,/turf/simulated/mineral/floor/cave,/area/space)
+"E" = (/turf/simulated/mineral/floor/cave,/area/space)
+"I" = (/obj/structure/barricade,/turf/simulated/floor/wood,/area/space)
+"N" = (/obj/structure/loot_pile/surface/bones,/obj/effect/decal/cleanable/blood,/turf/simulated/floor/wood,/area/space)
+"P" = (/obj/structure/loot_pile/surface/bones,/obj/effect/decal/cleanable/blood,/turf/simulated/mineral/floor/cave,/area/space)
+"T" = (/obj/effect/decal/cleanable/blood/gibs,/turf/simulated/floor/wood,/area/space)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaa
+aEEEaaaaaEEaaaa
+aEEEaaaaaEEEEaa
+aEEEEEEEEEEEEEa
+aEwwwwwwwvwwwwa
+aEwdddddPvEEdwa
+aEIddTdddyEdNwa
+aEIdddddTdddlwa
+aEwddddddddxdwa
+aEwwwwwwwwwwwwa
+aEEEEEEEEEEEEEa
+aEEEEEEEaaEEEEa
+aaaaEEEaaaEEEEa
+aaaaEEEaaaEEEaa
+aaaaaaaaaaaaaaa
+"}
