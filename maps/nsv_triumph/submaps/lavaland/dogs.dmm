@@ -1,8 +1,8 @@
 "a" = (/turf/template_noop,/area/template_noop)
 "m" = (/obj/structure/catwalk,/turf/simulated/floor/lava/outdoors,/area/triumph_away/lavaland/dogs)
-"B" = (/mob/living/simple_mob/vore/aggressive/corrupthound,/turf/simulated/floor/outdoors/beach/sand/dirt,/area/triumph_away/lavaland/dogs)
+"B" = (/mob/living/simple_mob/vore/aggressive/corrupthound,/turf/simulated/floor/outdoors/lavaland,/area/triumph_away/lavaland/dogs)
 "U" = (/turf/simulated/floor/lava/outdoors,/area/triumph_away/lavaland/dogs)
-"Z" = (/turf/simulated/floor/outdoors/beach/sand/dirt,/area/triumph_away/lavaland/dogs)
+"Z" = (/turf/simulated/floor/outdoors/lavaland,/area/triumph_away/lavaland/dogs)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaa

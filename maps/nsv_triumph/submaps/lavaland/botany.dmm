@@ -1,29 +1,23 @@
 "a" = (/turf/template_noop,/area/template_noop)
-"c" = (/obj/machinery/seed_storage/xenobotany,/turf/simulated/floor/outdoors/grass,/area/triumph_away/lavaland/idleruins)
-"f" = (/obj/effect/decal/remains,/obj/item/clothing/under/rank/hydroponics,/obj/item/clothing/suit/storage/toggle/labcoat/green,/obj/item/clothing/head/greenbandana,/turf/simulated/floor/outdoors/grass,/area/triumph_away/lavaland/idleruins)
+"c" = (/obj/machinery/seed_storage/xenobotany,/turf/simulated/floor/tiled,/area/triumph_away/lavaland/idleruins)
+"f" = (/obj/effect/decal/remains,/obj/item/clothing/under/rank/hydroponics,/obj/item/clothing/suit/storage/toggle/labcoat/green,/obj/item/clothing/head/greenbandana,/turf/simulated/floor/tiled,/area/triumph_away/lavaland/idleruins)
 "m" = (/obj/machinery/portable_atmospherics/hydroponics,/turf/simulated/floor/outdoors/grass,/area/triumph_away/lavaland/idleruins)
-"n" = (/obj/machinery/vending/hydronutrients,/turf/simulated/floor/outdoors/grass,/area/triumph_away/lavaland/idleruins)
-"q" = (/obj/structure/bed/roller,/obj/structure/flora/ausbushes/sparsegrass,/turf/simulated/floor/outdoors/grass,/area/triumph_away/lavaland/idleruins)
-"r" = (/obj/machinery/seed_extractor,/turf/simulated/floor/outdoors/grass,/area/triumph_away/lavaland/idleruins)
-"s" = (/turf/simulated/mineral/triumph,/area/triumph_away/lavaland/idleruins)
-"z" = (/obj/structure/flora/ausbushes/lavendergrass,/turf/simulated/floor/outdoors/grass,/area/triumph_away/lavaland/idleruins)
-"A" = (/turf/simulated/floor/outdoors/dirt/lavaland,/area/triumph_away/lavaland/idleruins)
-"B" = (/obj/machinery/botany/editor,/turf/simulated/floor/outdoors/grass,/area/triumph_away/lavaland/idleruins)
-"C" = (/obj/structure/flora/ausbushes/sparsegrass,/turf/simulated/floor/outdoors/grass,/area/triumph_away/lavaland/idleruins)
-"F" = (/obj/structure/reagent_dispensers/watertank/high,/turf/simulated/floor/outdoors/grass,/area/triumph_away/lavaland/idleruins)
-"H" = (/obj/item/reagent_containers/spray/chemsprayer,/turf/simulated/floor/outdoors/grass,/area/triumph_away/lavaland/idleruins)
+"n" = (/obj/machinery/vending/hydronutrients,/turf/simulated/floor/tiled,/area/triumph_away/lavaland/idleruins)
+"q" = (/obj/structure/bed/roller,/turf/simulated/floor/tiled,/area/triumph_away/lavaland/idleruins)
+"r" = (/obj/machinery/seed_extractor,/turf/simulated/floor/tiled,/area/triumph_away/lavaland/idleruins)
+"A" = (/turf/simulated/floor/outdoors/lavaland,/area/triumph_away/lavaland/idleruins)
+"B" = (/obj/machinery/botany/editor,/turf/simulated/floor/tiled,/area/triumph_away/lavaland/idleruins)
+"F" = (/obj/structure/reagent_dispensers/watertank/high,/turf/simulated/floor/tiled,/area/triumph_away/lavaland/idleruins)
+"H" = (/obj/item/reagent_containers/spray/chemsprayer,/turf/simulated/floor/tiled,/area/triumph_away/lavaland/idleruins)
 "I" = (/turf/template_noop,/area/triumph_away/lavaland/idleruins)
-"L" = (/obj/item/reagent_containers/spray/plantbgone,/turf/simulated/floor/outdoors/grass,/area/triumph_away/lavaland/idleruins)
 "M" = (/turf/simulated/mineral/floor/cave,/area/triumph_away/lavaland/idleruins)
 "N" = (/turf/simulated/wall/wood,/area/triumph_away/lavaland/idleruins)
-"P" = (/obj/item/reagent_containers/spray/plantbgone,/obj/structure/flora/ausbushes/fullgrass,/turf/simulated/floor/outdoors/grass,/area/triumph_away/lavaland/idleruins)
-"T" = (/turf/simulated/floor/outdoors/grass,/area/triumph_away/lavaland/idleruins)
-"U" = (/obj/item/seeds/killertomatoseed,/turf/simulated/floor/outdoors/grass,/area/triumph_away/lavaland/idleruins)
-"V" = (/obj/structure/flora/ausbushes/fullgrass,/turf/simulated/floor/outdoors/grass,/area/triumph_away/lavaland/idleruins)
-"W" = (/obj/structure/flora/ausbushes/grassybush,/turf/simulated/floor/outdoors/grass,/area/triumph_away/lavaland/idleruins)
-"X" = (/obj/structure/table/rack,/obj/item/shovel/spade,/obj/item/shovel/spade,/obj/item/material/minihoe,/obj/item/material/minihoe,/obj/item/material/knife/machete/hatchet,/obj/item/material/knife/machete/hatchet,/obj/item/reagent_containers/glass/bucket,/obj/item/reagent_containers/glass/bucket,/obj/item/analyzer/plant_analyzer,/obj/item/analyzer/plant_analyzer,/turf/simulated/floor/outdoors/grass,/area/triumph_away/lavaland/idleruins)
-"Y" = (/turf/simulated/floor/outdoors/dirt/lavaland,/area/template_noop)
-"Z" = (/obj/machinery/botany/extractor,/turf/simulated/floor/outdoors/grass,/area/triumph_away/lavaland/idleruins)
+"P" = (/obj/item/reagent_containers/spray/plantbgone,/turf/simulated/floor/tiled,/area/triumph_away/lavaland/idleruins)
+"U" = (/obj/item/seeds/killertomatoseed,/turf/simulated/floor/tiled,/area/triumph_away/lavaland/idleruins)
+"W" = (/turf/simulated/floor/tiled,/area/triumph_away/lavaland/idleruins)
+"X" = (/obj/structure/table/rack,/obj/item/shovel/spade,/obj/item/shovel/spade,/obj/item/material/minihoe,/obj/item/material/minihoe,/obj/item/material/knife/machete/hatchet,/obj/item/material/knife/machete/hatchet,/obj/item/reagent_containers/glass/bucket,/obj/item/reagent_containers/glass/bucket,/obj/item/analyzer/plant_analyzer,/obj/item/analyzer/plant_analyzer,/turf/simulated/floor/tiled,/area/triumph_away/lavaland/idleruins)
+"Y" = (/turf/simulated/floor/outdoors/lavaland,/area/template_noop)
+"Z" = (/obj/machinery/botany/extractor,/turf/simulated/floor/tiled,/area/triumph_away/lavaland/idleruins)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaa
@@ -31,14 +25,14 @@ aaaaaaaaaaaaaaa
 aAAAIIIIIIAAAAY
 aANNNNNNNNNNNAY
 aINmqBnrcZPmNAa
-aINmUTTTTLHmNIa
-aINmzTTFTCfmNIa
-aINmTTTXTTTmNIa
-aANmTCTTTTzmNAY
-aANmTTTTTTUmNAY
-aANNNNNTTNNNNAa
-aAAAANTTTNsAAAa
-aIAAANTWTNAAAIa
-aIAAVTTTTVAAMIa
+aINmUWWWWPHmNIa
+aINmWWWFWWfmNIa
+aINmWWWXWWWmNIa
+aANmWWWWWWWmNAY
+aANmWWWWWWUmNAY
+aANNNNNWNNNNNAa
+aAAAANWWWNAAAAa
+aIAAAAAAAAAAAIa
+aIAAAAAAAAAAMIa
 aaaaaaaaaaaaaaa
 "}

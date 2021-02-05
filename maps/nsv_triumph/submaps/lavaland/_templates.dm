@@ -2,6 +2,7 @@
 	name = "Lava Land POIs"
 	desc = "Submaps for Lava Land"
 	allow_duplicates = FALSE // TRUE means the same submap can spawn twice
+	annihilate = TRUE
 
 /datum/map_template/lavaland/horrors
 	name = "Lava Land - Shrine"
@@ -15,27 +16,20 @@
 	cost = 5
 	discard_prob = 0
 
-/datum/map_template/lavaland/idleruins1
-	name = "Lava Land - Idle Ruins"
-	mappath = 'idleruins1.dmm'
-	cost = 5
-	discard_prob = 0
-
 /datum/map_template/lavaland/botany
 	name = "Lava Land - Botany"
 	mappath = 'botany.dmm'
 	cost = 5
 	discard_prob = 0
 
+/datum/map_template/lavaland/idleruins1
+	name = "Lava Land - Idle Ruins"
+	mappath = 'idleruins1.dmm'
+	cost = 5
+	discard_prob = 0
 /datum/map_template/lavaland/idleruins2
 	name = "Lava Land - Idle Ruins 2"
 	mappath = 'idleruins2.dmm'
 	cost = 5
 	discard_prob = 0
 	fixed_orientation = TRUE // this really doesn't work, but i dont see a way to fix it without redoing the system
-
-/datum/map_template/lavaland/idleruins3
-	name = "Lava Land - Idle Ruins 3"
-	mappath = 'idleruins3.dmm'
-	cost = 5
-	discard_prob = 0

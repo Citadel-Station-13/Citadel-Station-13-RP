@@ -124,6 +124,12 @@
 	icon_state = "green"
 	base_turf = /turf/simulated/floor/outdoors/lavaland
 	requires_power = 0
+
+/area/triumph_away/lavaland/base/common
+	name = "Lava Land - Mining Base"
+	icon_state = "blue"
+	base_turf = /turf/simulated/floor/outdoors/lavaland
+	requires_power = 0
 /area/triumph_away/lavaland/explored
 	name = "Lava Land - Thoroughfare"
 	icon_state = "red"
