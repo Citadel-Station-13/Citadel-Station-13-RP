@@ -33,3 +33,11 @@
 	cost = 5
 	discard_prob = 0
 	fixed_orientation = TRUE // this really doesn't work, but i dont see a way to fix it without redoing the system
+
+/datum/map_template/lavaland/shelter
+	name = "Lava Land - Shelter"
+	mappath = 'shelter.dmm'
+	cost = 15
+	discard_prob = 0
+	allow_duplicates = TRUE
+	fixed_orientation = TRUE 

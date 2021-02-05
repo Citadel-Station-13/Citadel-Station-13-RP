@@ -26,6 +26,7 @@ LAVALAND_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
 
 LAVALAND_TURF_CREATE(/turf/simulated/floor/plating)
 LAVALAND_TURF_CREATE(/turf/simulated/floor/wood)
+LAVALAND_TURF_CREATE(/turf/simulated/floor/wood/broken)
 LAVALAND_TURF_CREATE(/turf/simulated/floor/tiled)
 LAVALAND_TURF_CREATE(/turf/simulated/tiled/old_tile)
 LAVALAND_TURF_CREATE(/turf/simulated/floor/tiled/monotile)
