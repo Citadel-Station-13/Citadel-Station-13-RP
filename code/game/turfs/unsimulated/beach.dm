@@ -27,6 +27,7 @@
 /turf/simulated/floor/beach
 	name = "Beach"
 	icon = 'icons/misc/beach.dmi'
+	initial_flooring = /decl/flooring/outdoors/beach
 	footstep_sounds = list("human" = list(
 		'sound/effects/footstep/carpet1.ogg',
 		'sound/effects/footstep/carpet2.ogg',
@@ -37,6 +38,7 @@
 /turf/simulated/floor/beach/sand
 	name = "Sand"
 	icon_state = "sand"
+	initial_flooring = /decl/flooring/outdoors/beach
 
 /turf/simulated/floor/beach/sand/desert
 	icon = 'icons/turf/desert.dmi'
@@ -55,6 +57,7 @@
 /turf/simulated/floor/beach/water
 	name = "Water"
 	icon_state = "water"
+	initial_flooring = /decl/flooring/outdoors/water
 
 /turf/simulated/floor/beach/water/ocean
 	icon_state = "seadeep"
