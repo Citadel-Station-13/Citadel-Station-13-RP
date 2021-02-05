@@ -17,24 +17,24 @@
 
 /area/shuttle/excursion/lavaland
 	name = "Shuttle Landing Point"
-	base_turf = /turf/simulated/mineral/floor/cave
+	base_turf = /turf/simulated/floor/outdoors/lavaland
 	flags = RAD_SHIELDED
 
 /area/triumph_away/lavaland
 	name = "Lava Land"
-	base_turf = /turf/simulated/mineral/floor/cave
+	base_turf = /turf/simulated/floor/outdoors/lavaland
 
 /area/triumph_away/lavaland/horrors
 	name = "Lava Land - Horrors"
-	base_turf = /turf/simulated/mineral/floor/cave
+	base_turf = /turf/simulated/floor/outdoors/lavaland
 
 /area/triumph_away/lavaland/dogs
 	name = "Lava Land - Dogs"
-	base_turf = /turf/simulated/mineral/floor/cave
+	base_turf = /turf/simulated/floor/outdoors/lavaland
 
 /area/triumph_away/lavaland/idleruins
 	name = "Lava Land - Idle Ruins"
-	base_turf = /turf/simulated/mineral/floor/cave
+	base_turf = /turf/simulated/floor/outdoors/lavaland
 
 /obj/effect/landmark/lavaland_entry
 	name = "lavaland_entry"
@@ -56,10 +56,28 @@
 	attack_hand(mob/living/user as mob)
 		if(inoperable(MAINT))
 			return 1
-		else if(do_after(user, 50))
+		else if(do_after(user, 10))
 			to_chat(user, "You feel reality shift around you.")
 			do_teleport(user, pick(lavaland_entry), local = FALSE)
+			move_object(user, pick(lavaland_entry))
 		return
+
+/obj/machinery/lavaland_entryportal/proc/move_object(atom/movable/AM, turf/T)
+	if(AM.anchored && !istype(AM, /obj/mecha))
+		return
+
+	if(isliving(AM))
+		var/mob/living/L = AM
+		if(L.pulling)
+			var/atom/movable/P = L.pulling
+			L.stop_pulling()
+			P.forceMove(T)
+			L.forceMove(T)
+			L.start_pulling(P)
+		else
+			L.forceMove(T)
+	else
+		AM.forceMove(T)
 
 /obj/effect/lavaland_exitportal // effect so it cant be removed by griefers
 	name = "Magmatic Rift Teleporter"
@@ -70,31 +88,62 @@
 
 
 	attack_hand(mob/living/user as mob)
-		if(do_after(user, 50))
+		if(do_after(user, 10))
 			to_chat(user, "You feel reality shift around you.")
 			do_teleport(user, pick(lavaland_exit), local = FALSE)
+			move_object(user, pick(lavaland_exit))
 		return
+
+/obj/effect/lavaland_exitportal/proc/move_object(atom/movable/AM, turf/T)
+	if(AM.anchored && !istype(AM, /obj/mecha))
+		return
+
+	if(isliving(AM))
+		var/mob/living/L = AM
+		if(L.pulling)
+			var/atom/movable/P = L.pulling
+			L.stop_pulling()
+			P.forceMove(T)
+			L.forceMove(T)
+			L.start_pulling(P)
+		else
+			L.forceMove(T)
+	else
+		AM.forceMove(T)
 
 // lava land world areas
 /area/triumph_away/lavaland
 	name = "Lava Land"
 	icon_state = "away"
-	base_turf = /turf/simulated/mineral/floor/
+	base_turf = /turf/simulated/floor/outdoors/lavaland
 	dynamic_lighting = 1
+	
 
-/area/triumph_away/lavaland/entry
-	name = "Lava Land - Entry"
+/area/triumph_away/lavaland/base
+	name = "Lava Land - Mining Base"
 	icon_state = "green"
-	base_turf = /turf/simulated/mineral/floor/
-
+	base_turf = /turf/simulated/floor/outdoors/lavaland
+	requires_power = 0
 /area/triumph_away/lavaland/explored
-	name = "lava land - Explored (E)"
+	name = "Lava Land - Thoroughfare"
 	icon_state = "red"
-	//forced_ambience = list('sound/ambience/tension/tension.ogg', 'sound/ambience/tension/horror.ogg')
+
 
 /area/triumph_away/lavaland/unexplored
-	name = "lava land - Unexplored (UE)"
+	name = "Lava Land - Unknown"
 	icon_state = "yellow"
+
+// Lava Land turfs
+/turf/simulated/floor/outdoors/lavaland
+	name = "ash sand"
+	desc = "Soft and ominous."
+	icon = 'icons/turf/flooring/asteroid.dmi'
+	icon_state = "asteroid"
+	outdoors = 1
+	flags = TURF_HAS_EDGES | TURF_REMOVE_SHOVEL
+	edge_blending_priority = 2
+	turf_layers = list(/turf/simulated/floor/outdoors/rocks)
+	initial_flooring = /decl/flooring/outdoors/lavaland
 
 // This is a special subtype of the thing that generates ores on a map
 // It will generate more rich ores because of the lower numbers than the normal one

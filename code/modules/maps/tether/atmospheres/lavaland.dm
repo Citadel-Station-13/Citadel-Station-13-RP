@@ -7,4 +7,4 @@
 	minimum_pressure = 110.1
 	maximum_pressure = 110.1
 	minimum_temp = 293.3
-	maximum_temp = 400.1
+	maximum_temp = 350.1

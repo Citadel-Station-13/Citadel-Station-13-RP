@@ -1,4 +1,3 @@
-"a" = ()
 "d" = (/turf/template_noop,/area/template_noop)
 "g" = (/obj/item/material/knife/ritual/durasteel,/turf/simulated/floor/tiled/dark,/area/triumph_away/lavaland/idleruins)
 "h" = (/obj/structure/simple_door/wood,/turf/simulated/floor/tiled/dark,/area/triumph_away/lavaland/idleruins)
