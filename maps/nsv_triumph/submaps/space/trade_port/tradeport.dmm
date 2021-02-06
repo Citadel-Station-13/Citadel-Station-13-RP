@@ -5578,7 +5578,7 @@
 	frequency = 1382;
 	id_tag = "safari_access";
 	name = "John Safari's Adventure Emporium";
-	req_access = list(160);
+	req_access = null;
 	tag = "safari_door"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -6484,9 +6484,6 @@
 /obj/machinery/door/firedoor{
 	req_one_access = list(160)
 	},
-/obj/machinery/door/airlock/uranium{
-	name = "Cyndi & Kate's Novelty Wares"
-	},
 /obj/structure/cable/yellow{
 	d1 = 1;
 	d2 = 2;
@@ -6494,6 +6491,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/airlock/phoron{
+	icon = 'icons/obj/doors/Dooruranium.dmi';
+	name = "Cyndi & Kate's Novelty Wares"
+	},
 /turf/simulated/floor/airless,
 /area/triumph_away/tradeport/cyndi)
 "DL" = (

@@ -22295,7 +22295,7 @@
 /obj/machinery/door/airlock/security{
 	name = "Interrogation";
 	req_access = newlist();
-	req_one_access = list(1,2,4,38)
+	req_one_access = list(4)
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
