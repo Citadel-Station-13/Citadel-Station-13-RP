@@ -25,7 +25,6 @@ var/datum/planet/lavaland/planet_lavaland = null
 
 	var/low_brightness = null
 	var/high_brightness = null
-
 	var/low_color = null
 	var/high_color = null
 	var/min = 0
