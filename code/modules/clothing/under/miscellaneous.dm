@@ -1319,3 +1319,13 @@
 	desc = "A sturdy canvas button-up and shorts, designed to provide protection without retaining heat."
 	icon_state = "safari"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+
+/obj/item/clothing/under/bsing
+	name = "blue performer's outfit"
+	desc = "A truly iconic outfit, still worn by enthusiasts and fans of Old Earth digital media."
+	icon_state = "bsing"
+
+/obj/item/clothing/under/ysing
+	name = "yellow performer's outfit"
+	desc = "Inspired by the original, this outfit is still stylish, although derivative."
+	icon_state = "ysing"

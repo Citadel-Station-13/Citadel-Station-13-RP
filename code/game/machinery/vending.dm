@@ -2456,7 +2456,11 @@
 					/obj/item/clothing/mask/gas/pig = 2,
 					/obj/item/clothing/mask/gas/rat = 2,
 					/obj/item/clothing/mask/gas/raven = 2,
-					/obj/item/clothing/mask/gas/shark = 2)
+					/obj/item/clothing/mask/gas/shark = 2,
+					/obj/item/clothing/under/bsing = 1,
+					/obj/item/clothing/shoes/boots/bsing = 1,
+					/obj/item/clothing/under/ysing = 1,
+					/obj/item/clothing/shoes/boots/ysing = 1)
 	prices = list(/obj/item/clothing/suit/storage/hooded/carp_costume = 75,
 					/obj/item/clothing/suit/storage/hooded/carp_costume = 75,
 					/obj/item/clothing/suit/chickensuit = 75,
@@ -2558,7 +2562,11 @@
 					/obj/item/clothing/mask/gas/pig = 250,
 					/obj/item/clothing/mask/gas/rat = 250,
 					/obj/item/clothing/mask/gas/raven = 250,
-					/obj/item/clothing/mask/gas/shark = 250)
+					/obj/item/clothing/mask/gas/shark = 250,
+					/obj/item/clothing/under/bsing = 500,
+					/obj/item/clothing/shoes/boots/bsing = 500,
+					/obj/item/clothing/under/ysing = 500,
+					/obj/item/clothing/shoes/boots/ysing = 500)
 	premium = list(/obj/item/clothing/suit/imperium_monk = 3)
 	contraband = list(/obj/item/clothing/head/syndicatefake = 1,
 					/obj/item/clothing/suit/syndicatefake = 1)

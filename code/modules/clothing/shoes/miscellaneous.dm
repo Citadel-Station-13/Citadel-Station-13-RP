@@ -213,3 +213,13 @@ obj/item/clothing/shoes/sandal/clogs
 	name = "Roman Caligae"
 	desc = "Hardy leather sandles capable of holding up for many miles."
 	icon_state = "roman"
+
+/obj/item/clothing/shoes/boots/bsing
+	name = "blue performer's boots"
+	desc = "Dancing in these makes you feel lighter than air."
+	icon_state = "bsing"
+
+/obj/item/clothing/shoes/boots/ysing
+	name = "yellow performer's boots"
+	desc = "Dance down the path laid out by your predecessor."
+	icon_state = "ysing"
