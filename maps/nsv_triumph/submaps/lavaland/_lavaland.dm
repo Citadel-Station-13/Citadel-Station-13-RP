@@ -146,7 +146,7 @@
 	icon = 'icons/turf/flooring/asteroid.dmi'
 	icon_state = "asteroid"
 	outdoors = 1
-	flags = TURF_HAS_EDGES | TURF_REMOVE_SHOVEL
+	flags = TURF_HAS_EDGES
 	edge_blending_priority = 2
 	turf_layers = list(/turf/simulated/floor/outdoors/rocks)
 	initial_flooring = /decl/flooring/outdoors/lavaland

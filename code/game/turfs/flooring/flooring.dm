@@ -360,7 +360,7 @@ var/list/flooring_types
 	desc = "Soft and ominous."
 	icon = 'icons/turf/flooring/asteroid.dmi'
 	icon_base = "asteroidfloor"
-	flags = TURF_HAS_EDGES | TURF_REMOVE_SHOVEL
+	flags = TURF_HAS_EDGES
 	footstep_sounds = list("human" = list(
 		'sound/effects/footstep/asteroid1.ogg',
 		'sound/effects/footstep/asteroid2.ogg',
