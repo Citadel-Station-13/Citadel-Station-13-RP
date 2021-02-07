@@ -110,7 +110,7 @@
 	. = ..()
 	if(!.)
 		return
-	var/datum/shuttle/boss_shuttle = SSshuttle.shuttles[core_landmark.shuttle_name]
+	var/datum/shuttle/boss_shuttle = SSshuttle.shuttles[core_landmark?.shuttle_name]
 	if(boss_shuttle.current_location != core_landmark)
 		return FALSE // Only available when our governing shuttle is in space.
 	if(shuttle == boss_shuttle) // Boss shuttle only lands on main landmark

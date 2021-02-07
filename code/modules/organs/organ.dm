@@ -4,6 +4,8 @@ var/list/organ_cache = list()
 	name = "organ"
 	icon = 'icons/obj/surgery.dmi'
 	germ_level = 0
+	drop_sound = 'sound/items/drop/flesh.ogg'
+	pickup_sound = 'sound/items/pickup/flesh.ogg'
 
 	// Strings.
 	var/organ_tag = "organ"				// Unique identifier.

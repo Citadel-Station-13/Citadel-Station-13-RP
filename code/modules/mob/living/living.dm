@@ -1002,14 +1002,14 @@ default behaviour is:
 
 /mob/living/update_transform()
 	// First, get the correct size.
-	var/desired_scale_x = get_icon_scale_x()
-	var/desired_scale_y = get_icon_scale_y()
+	var/desired_scale_x = size_multiplier
+	var/desired_scale_y = size_multiplier
 
 	// Now for the regular stuff.
 	var/matrix/M = matrix()
 	M.Scale(desired_scale_x, desired_scale_y)
 	M.Translate(0, 16*(desired_scale_y-1))
-	//animate(src, transform = M, time = 10) //VOREStation edit
+	animate(src, transform = M, time = 10)
 	handle_status_indicators()
 
 // This handles setting the client's color variable, which makes everything look a specific color.

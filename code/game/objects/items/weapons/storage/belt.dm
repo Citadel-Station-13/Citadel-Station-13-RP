@@ -8,6 +8,9 @@
 	max_w_class = ITEMSIZE_NORMAL
 	slot_flags = SLOT_BELT
 	attack_verb = list("whipped", "lashed", "disciplined")
+	equip_sound = 'sound/items/toolbelt_equip.ogg'
+	drop_sound = 'sound/items/drop/toolbelt.ogg'
+	pickup_sound = 'sound/items/pickup/toolbelt.ogg'
 	sprite_sheets = list(
 		SPECIES_TESHARI = 'icons/mob/species/teshari/belt.dmi',
 		SPECIES_WEREBEAST = 'icons/mob/species/werebeast/belt.dmi'
@@ -533,3 +536,46 @@
 	desc = "The fancy utility-belt holding the tools, cuffs and gadgets of the Go Go ERT-Rangers. The belt buckle is not real phoron, but it is still surprisingly comfortable to wear."
 	icon = 'icons/obj/clothing/ranger.dmi'
 	icon_state = "ranger_belt"
+
+/obj/item/storage/belt/dualholster
+	name = "dual holster gunbelt"
+	desc = "Belts like these were popular on old Earth, but were largely supplanted by modular holsters. This gunbelt is too bulky to be comfortably anchored to clothes without support."
+	icon_state = "dual_holster"
+	storage_slots = 2
+	max_w_class = ITEMSIZE_NORMAL
+	can_hold = list(
+		/obj/item/gun/energy/alien,
+		/obj/item/gun/energy/captain,
+		/obj/item/gun/energy/crossbow,
+		/obj/item/gun/energy/decloner,
+		/obj/item/gun/energy/floragun,
+		/obj/item/gun/energy/gun,
+		/obj/item/gun/energy/gun/nuclear,
+		/obj/item/gun/energy/ionrifle/pistol,
+		/obj/item/gun/energy/lasertag,
+		/obj/item/gun/energy/netgun,
+		/obj/item/gun/energy/phasegun/pistol,
+		/obj/item/gun/energy/pulse_rifle/M1911,
+		/obj/item/gun/energy/retro,
+		/obj/item/gun/energy/service,
+		/obj/item/gun/energy/stunrevolver,
+		/obj/item/gun/energy/taser,
+		/obj/item/gun/energy/toxgun,
+		/obj/item/gun/energy/zip,
+		/obj/item/gun/projectile/colt,
+		/obj/item/gun/projectile/contender,
+		/obj/item/gun/projectile/dartgun,
+		/obj/item/gun/projectile/deagle,
+		/obj/item/gun/projectile/derringer,
+		/obj/item/gun/projectile/gyropistol,
+		/obj/item/gun/projectile/luger,
+		/obj/item/gun/projectile/r9,
+		/obj/item/gun/projectile/revolver,
+		/obj/item/gun/projectile/sec,
+		/obj/item/gun/projectile/shotgun/doublebarrel/sawn,
+		/obj/item/gun/projectile/shotgun/flare,
+		/obj/item/gun/projectile/silenced,
+		/obj/item/gun/projectile/p92x,
+		/obj/item/gun/projectile/pistol,
+		/obj/item/gun/projectile/pirate
+		)
