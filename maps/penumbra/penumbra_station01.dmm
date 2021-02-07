@@ -201,6 +201,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_smes)
+"amE" = (
+/obj/effect/landmark{
+	name = "Observer-Start"
+	},
+/turf/simulated/floor/carpet,
+/area/penumbra)
 "anw" = (
 /turf/simulated/floor/tiled/dark,
 /area/penumbra)
@@ -517,6 +523,10 @@
 /obj/effect/zone_divider,
 /turf/simulated/floor/tiled/freezer,
 /area/penumbra/perimeter/inner)
+"aKu" = (
+/obj/effect/floor_decal/ss13/l12,
+/turf/simulated/floor/tiled/steel,
+/area/penumbra)
 "aKy" = (
 /obj/structure/flora/ausbushes/genericbush,
 /turf/simulated/floor/grass,
@@ -601,7 +611,7 @@
 /area/penumbra/perimeter/inner)
 "aQQ" = (
 /obj/structure/bed/chair/sofa/right,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/lino,
 /area/penumbra)
 "aRN" = (
 /obj/effect/floor_decal/corner_steel_grid{
@@ -728,6 +738,10 @@
 /obj/structure/table/standard,
 /turf/simulated/floor/tiled/white,
 /area/penumbra/perimeter/inner)
+"aYy" = (
+/obj/structure/stairs/south,
+/turf/simulated/floor/tiled/steel,
+/area/penumbra)
 "aZf" = (
 /obj/machinery/power/apc{
 	dir = 1;
@@ -934,6 +948,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/penumbra)
+"bkp" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
+/area/penumbra)
 "bkM" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 1
@@ -1016,12 +1036,9 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/storage)
 "bnW" = (
-/obj/machinery/disposal,
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/simulated/floor/wood,
-/area/penumbra)
+/obj/effect/floor_decal/sign/cmo,
+/turf/simulated/floor/tiled/white,
+/area/penumbra/perimeter/inner)
 "bok" = (
 /obj/machinery/suspension_gen,
 /obj/effect/floor_decal/corner/purple{
@@ -1256,6 +1273,10 @@
 /obj/machinery/door/airlock/glass_security,
 /turf/simulated/shuttle/floor/red,
 /area/penumbra)
+"bBT" = (
+/obj/effect/floor_decal/ss13/l13,
+/turf/simulated/floor/tiled/steel,
+/area/penumbra)
 "bCq" = (
 /obj/machinery/door/airlock/glass_medical,
 /turf/simulated/floor/lino,
@@ -1398,7 +1419,7 @@
 	id = "VaultAc";
 	name = "\improper Vault"
 	},
-/turf/space,
+/turf/simulated/floor/bluegrid,
 /area/penumbra)
 "bKS" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
@@ -1517,6 +1538,10 @@
 /obj/machinery/light,
 /turf/simulated/floor/wood,
 /area/penumbra/perimeter/outer)
+"bUu" = (
+/obj/effect/floor_decal/ss13/l2,
+/turf/simulated/floor/tiled/steel,
+/area/penumbra)
 "bVy" = (
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 1;
@@ -2604,6 +2629,10 @@
 "doW" = (
 /turf/simulated/floor/water/deep/indoors,
 /area/penumbra)
+"dpl" = (
+/obj/machinery/hologram/holopad,
+/turf/simulated/floor/carpet/bcarpet,
+/area/penumbra)
 "dpz" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan{
 	dir = 4
@@ -3124,6 +3153,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/penumbra/perimeter/inner)
+"dWx" = (
+/obj/effect/floor_decal/ss13/l8,
+/turf/simulated/floor/tiled/steel,
+/area/penumbra)
 "dXi" = (
 /obj/machinery/camera/network/civilian{
 	c_tag = "CO - Pool 1";
@@ -3297,11 +3330,6 @@
 /obj/machinery/pipedispenser,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/storage)
-"epF" = (
-/obj/machinery/hologram/holopad,
-/obj/effect/zone_divider,
-/turf/simulated/floor/wood,
-/area/penumbra)
 "epO" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -3509,6 +3537,12 @@
 /obj/effect/wingrille_spawn/reinforced_phoron,
 /turf/simulated/floor/reinforced,
 /area/penumbra/station/engineering/engine)
+"eAH" = (
+/obj/structure/bed/chair/wood/wings{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/penumbra)
 "eBg" = (
 /obj/effect/floor_decal/corner/purple{
 	dir = 9
@@ -3522,6 +3556,10 @@
 "eBA" = (
 /turf/simulated/floor/water/indoors,
 /area/penumbra/perimeter/inner)
+"eBB" = (
+/obj/effect/floor_decal/ss13/l14,
+/turf/simulated/floor/tiled/steel,
+/area/penumbra)
 "eEi" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 8
@@ -3545,15 +3583,6 @@
 /obj/item/reagent_containers/food/snacks/honeybun,
 /turf/simulated/floor/carpet/turcarpet,
 /area/penumbra/perimeter/inner)
-"eFg" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/railing{
-	dir = 1
-	},
-/turf/simulated/floor/water,
-/area/penumbra)
 "eFB" = (
 /obj/structure/morgue/crematorium,
 /turf/simulated/floor/reinforced,
@@ -3997,6 +4026,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/penumbra)
+"fic" = (
+/obj/effect/floor_decal/ss13/l11,
+/turf/simulated/floor/tiled/steel,
+/area/penumbra)
 "fik" = (
 /obj/machinery/door/airlock/security{
 	name = "Evidence Storage";
@@ -4262,6 +4295,10 @@
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/penumbra/perimeter/outer)
+"fuU" = (
+/obj/effect/floor_decal/ss13/l9,
+/turf/simulated/floor/tiled/steel,
+/area/penumbra)
 "fvf" = (
 /obj/machinery/recharge_station,
 /turf/simulated/floor/tiled/techfloor,
@@ -4936,6 +4973,10 @@
 /obj/structure/table/reinforced,
 /turf/simulated/shuttle/floor/red,
 /area/penumbra/perimeter/outer)
+"giz" = (
+/obj/effect/floor_decal/ss13/l4,
+/turf/simulated/floor/tiled/steel,
+/area/penumbra)
 "gjy" = (
 /obj/structure/catwalk,
 /obj/machinery/door/airlock/maintenance/engi,
@@ -5149,6 +5190,13 @@
 /obj/item/defib_kit/loaded,
 /turf/simulated/floor/tiled/white,
 /area/penumbra/perimeter/inner)
+"gBL" = (
+/obj/effect/zone_divider,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
+/area/penumbra)
 "gCa" = (
 /obj/machinery/door/airlock/maintenance/engi,
 /obj/structure/cable{
@@ -5561,6 +5609,10 @@
 /obj/machinery/vending/cigarette,
 /turf/simulated/floor/tiled,
 /area/penumbra/perimeter/outer)
+"heo" = (
+/obj/effect/floor_decal/ss13/l5,
+/turf/simulated/floor/tiled/steel,
+/area/penumbra)
 "heH" = (
 /obj/structure/closet/crate,
 /obj/random/maintenance/cargo,
@@ -6078,7 +6130,10 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/grass,
+/obj/effect/floor_decal/corner/yellow/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotile,
 /area/penumbra)
 "hKe" = (
 /obj/structure/table/reinforced,
@@ -6368,11 +6423,9 @@
 /turf/simulated/floor/carpet/blucarpet,
 /area/penumbra/perimeter/inner)
 "ifW" = (
-/obj/effect/landmark{
-	name = "Observer-Start"
-	},
-/turf/simulated/floor/wood,
-/area/penumbra)
+/obj/structure/railing,
+/turf/simulated/floor/tiled/white,
+/area/penumbra/perimeter/inner)
 "iga" = (
 /obj/machinery/telecomms/server/presets/security,
 /turf/simulated/floor/bluegrid,
@@ -6465,6 +6518,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/freezer,
 /area/penumbra/perimeter/inner)
+"imr" = (
+/obj/effect/floor_decal/ss13/l3,
+/turf/simulated/floor/tiled/steel,
+/area/penumbra)
 "inc" = (
 /obj/machinery/vending/medical,
 /turf/simulated/floor/tiled/white,
@@ -6526,6 +6583,10 @@
 "isq" = (
 /turf/simulated/shuttle/floor/purple,
 /area/penumbra/perimeter/inner)
+"isI" = (
+/obj/effect/floor_decal/ss13/l1,
+/turf/simulated/floor/tiled/steel,
+/area/penumbra)
 "itz" = (
 /obj/item/storage/secure/safe{
 	pixel_x = -24
@@ -6980,6 +7041,10 @@
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide,
 /turf/simulated/floor/reinforced,
 /area/engineering/engine_gas)
+"iWD" = (
+/obj/machinery/door/airlock/multi_tile/glass,
+/turf/simulated/floor/carpet,
+/area/penumbra)
 "iWH" = (
 /turf/simulated/wall/r_wall,
 /area/engineering/workshop)
@@ -7002,9 +7067,11 @@
 /turf/simulated/floor/tiled/monotile,
 /area/penumbra/perimeter/outer)
 "iYl" = (
-/obj/structure/bed/chair/wood/wings,
 /obj/effect/zone_divider,
-/turf/simulated/floor/wood,
+/obj/structure/bed/chair/wood/wings{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/bcarpet,
 /area/penumbra)
 "iYF" = (
 /obj/machinery/disposal,
@@ -7126,6 +7193,12 @@
 "jgc" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan{
 	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/penumbra)
+"jgI" = (
+/obj/machinery/atmospherics/binary/pump{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/penumbra)
@@ -7285,6 +7358,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/penumbra/perimeter/outer)
+"joJ" = (
+/obj/machinery/disposal,
+/turf/simulated/floor/carpet,
+/area/penumbra)
 "joS" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /turf/simulated/floor/grass,
@@ -7525,6 +7602,12 @@
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/tiled,
 /area/penumbra/perimeter/inner)
+"jBM" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/penumbra)
 "jCt" = (
 /obj/machinery/smartfridge/secure/virology,
 /turf/simulated/floor/tiled/white,
@@ -7647,6 +7730,13 @@
 /obj/item/pickaxe,
 /turf/simulated/floor/tiled/steel,
 /area/engineering/workshop)
+"jKv" = (
+/obj/effect/floor_decal/corner/yellow/border{
+	dir = 6
+	},
+/obj/structure/railing,
+/turf/simulated/floor/tiled/monotile,
+/area/penumbra)
 "jKB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -8254,8 +8344,8 @@
 /turf/simulated/wall,
 /area/penumbra/perimeter/inner)
 "kpb" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
-	dir = 6
+/obj/machinery/atmospherics/pipe/manifold/visible/yellow{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/penumbra)
@@ -8665,6 +8755,10 @@
 "kKQ" = (
 /turf/simulated/floor/carpet,
 /area/penumbra/perimeter/inner)
+"kLn" = (
+/obj/structure/bed/chair/sofa/left,
+/turf/simulated/floor/lino,
+/area/penumbra)
 "kLo" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/window/southleft{
@@ -9767,6 +9861,10 @@
 /obj/item/bedsheet/iandouble,
 /turf/simulated/floor/carpet,
 /area/penumbra)
+"mcc" = (
+/obj/effect/floor_decal/ss13/l6,
+/turf/simulated/floor/tiled/steel,
+/area/penumbra)
 "mdy" = (
 /obj/effect/floor_decal/corner/beige/diagonal,
 /obj/effect/floor_decal/corner/red/diagonal{
@@ -9848,6 +9946,10 @@
 /obj/item/storage/firstaid/toxin,
 /turf/unsimulated/shuttle/floor,
 /area/penumbra/perimeter/inner)
+"mhb" = (
+/obj/machinery/door/airlock,
+/turf/simulated/floor/carpet,
+/area/penumbra)
 "mhB" = (
 /obj/machinery/atmospherics/trinary/atmos_filter{
 	filter_type = 0
@@ -9962,6 +10064,10 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/penumbra)
+"mpi" = (
+/obj/effect/zone_divider,
+/turf/simulated/floor/carpet,
+/area/penumbra)
 "mrp" = (
 /obj/machinery/atmospherics/unary/vent_scrubber{
 	dir = 8
@@ -10025,6 +10131,11 @@
 /obj/structure/closet/secure_closet/hos,
 /turf/simulated/floor/carpet/bcarpet,
 /area/penumbra/perimeter/inner)
+"mxk" = (
+/obj/effect/zone_divider,
+/obj/machinery/hologram/holopad,
+/turf/simulated/floor/wood,
+/area/penumbra)
 "mxH" = (
 /obj/structure/bed/chair/comfy/brown,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -10044,7 +10155,7 @@
 "myM" = (
 /obj/item/stool/padded,
 /obj/effect/zone_divider,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/carpet,
 /area/penumbra)
 "myZ" = (
 /obj/machinery/atmospherics/binary/pump/on{
@@ -10461,12 +10572,12 @@
 /turf/simulated/floor/tiled/steel,
 /area/penumbra)
 "nfv" = (
-/obj/structure/flora/ausbushes/grassybush,
 /obj/machinery/light{
 	dir = 8
 	},
 /obj/effect/zone_divider,
-/turf/simulated/floor/grass,
+/obj/effect/floor_decal/corner/yellow/bordercorner,
+/turf/simulated/floor/tiled/monotile,
 /area/penumbra)
 "nfx" = (
 /obj/structure/table/woodentable,
@@ -10805,15 +10916,10 @@
 /turf/simulated/floor/tiled,
 /area/penumbra/perimeter/outer)
 "nvV" = (
-/obj/structure/table/wooden_reinforced,
-/obj/item/reagent_containers/food/condiment/small/saltshaker{
-	pixel_x = -3
-	},
-/obj/item/reagent_containers/food/condiment/small/peppermill{
-	pixel_x = 3
-	},
-/turf/simulated/floor/wood,
-/area/penumbra)
+/obj/effect/zone_divider,
+/obj/structure/stairs/east,
+/turf/simulated/floor/tiled/white,
+/area/penumbra/perimeter/inner)
 "nwg" = (
 /obj/machinery/door/airlock/glass_security,
 /turf/simulated/shuttle/floor/red,
@@ -11375,11 +11481,12 @@
 /turf/simulated/floor/plating,
 /area/penumbra/perimeter/outer)
 "oeA" = (
-/obj/machinery/light{
+/obj/effect/zone_divider,
+/obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/wood,
-/area/penumbra)
+/turf/simulated/floor/tiled/white,
+/area/penumbra/perimeter/inner)
 "oeK" = (
 /obj/structure/closet/secure_closet/personal,
 /turf/simulated/floor/tiled/freezer,
@@ -12045,6 +12152,15 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/penumbra)
+"oTc" = (
+/obj/effect/floor_decal/corner/yellow/border{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/penumbra)
 "oTg" = (
 /obj/machinery/computer/security,
 /turf/simulated/floor/tiled/steel,
@@ -12279,6 +12395,10 @@
 /obj/effect/zone_divider,
 /turf/unsimulated/shuttle/wall,
 /area/penumbra/perimeter/inner)
+"pjb" = (
+/obj/effect/floor_decal/ss13/l7,
+/turf/simulated/floor/tiled/steel,
+/area/penumbra)
 "pjw" = (
 /obj/machinery/button/remote/airlock{
 	pixel_x = -24;
@@ -12601,7 +12721,7 @@
 /area/penumbra/perimeter/inner)
 "pGN" = (
 /obj/machinery/door/airlock,
-/turf/simulated/floor,
+/turf/simulated/floor/carpet,
 /area/penumbra/perimeter/inner)
 "pGT" = (
 /obj/machinery/navbeacon/delivery/south{
@@ -12995,6 +13115,12 @@
 /obj/structure/table/gamblingtable,
 /turf/simulated/floor/wood,
 /area/penumbra)
+"qhZ" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel,
+/area/penumbra)
 "qie" = (
 /obj/effect/floor_decal/corner/lime{
 	dir = 10
@@ -13177,10 +13303,9 @@
 /turf/simulated/floor/reinforced/airless,
 /area/penumbra)
 "qsL" = (
-/obj/structure/table/wooden_reinforced,
-/obj/machinery/recharger,
-/turf/simulated/floor/wood,
-/area/penumbra)
+/obj/structure/bed/chair/sofa/right,
+/turf/simulated/floor/carpet,
+/area/penumbra/perimeter/inner)
 "qtn" = (
 /obj/structure/mirror{
 	pixel_x = 26;
@@ -13315,6 +13440,13 @@
 /obj/item/cell/hyper,
 /turf/simulated/mineral/floor,
 /area/penumbra/perimeter/outer)
+"qBv" = (
+/obj/machinery/media/jukebox,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/penumbra)
 "qCV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 10
@@ -13930,6 +14062,17 @@
 /obj/effect/zone_divider,
 /turf/simulated/floor/outdoors/snow/nerada8,
 /area/penumbra/perimeter/outer)
+"rpQ" = (
+/obj/effect/zone_divider,
+/obj/effect/floor_decal/corner/yellow/border{
+	dir = 6
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing,
+/turf/simulated/floor/tiled/monotile,
+/area/penumbra)
 "rqO" = (
 /obj/machinery/iv_drip,
 /turf/simulated/floor/tiled/white,
@@ -14049,6 +14192,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/penumbra/perimeter/inner)
+"rxl" = (
+/obj/effect/floor_decal/ss13/l10,
+/turf/simulated/floor/tiled/steel,
+/area/penumbra)
 "ryf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -14095,6 +14242,10 @@
 /obj/structure/bed/chair/sofa,
 /turf/simulated/floor/wood,
 /area/penumbra/perimeter/inner)
+"rBP" = (
+/obj/item/stool/padded,
+/turf/simulated/floor/carpet,
+/area/penumbra)
 "rCd" = (
 /obj/machinery/door/airlock/glass_command,
 /turf/simulated/shuttle/floor/voidcraft/light,
@@ -14242,6 +14393,12 @@
 	name = "tripai"
 	},
 /turf/simulated/floor/bluegrid,
+/area/penumbra)
+"rOC" = (
+/obj/effect/floor_decal/corner/yellow/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotile,
 /area/penumbra)
 "rPa" = (
 /obj/machinery/portable_atmospherics/canister/phoron,
@@ -14451,6 +14608,16 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/penumbra/perimeter/inner)
+"sbA" = (
+/obj/structure/table/wooden_reinforced,
+/obj/item/reagent_containers/food/condiment/small/saltshaker{
+	pixel_x = -3
+	},
+/obj/item/reagent_containers/food/condiment/small/peppermill{
+	pixel_x = 3
+	},
+/turf/simulated/floor/wood,
+/area/penumbra)
 "scx" = (
 /obj/machinery/computer/atmos_alert{
 	dir = 4
@@ -14912,7 +15079,7 @@
 /area/penumbra)
 "sHs" = (
 /obj/item/stool/padded,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/carpet,
 /area/penumbra/perimeter/inner)
 "sHN" = (
 /obj/machinery/recharger,
@@ -14966,6 +15133,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/penumbra/perimeter/inner)
+"sKT" = (
+/obj/structure/fake_stairs/west/bottom,
+/turf/simulated/floor/carpet,
+/area/penumbra)
 "sLc" = (
 /obj/machinery/keycard_auth{
 	pixel_y = -28
@@ -15277,11 +15448,9 @@
 /turf/simulated/floor/tiled/steel,
 /area/penumbra/perimeter/inner)
 "tfe" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/simulated/floor/wood,
-/area/penumbra)
+/obj/structure/bed/chair/sofa,
+/turf/simulated/floor/carpet,
+/area/penumbra/perimeter/inner)
 "tfD" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/outdoors/snow/nerada8,
@@ -15521,9 +15690,10 @@
 /turf/simulated/mineral/floor,
 /area/penumbra/perimeter/outer)
 "tza" = (
-/obj/structure/flora/ausbushes/genericbush,
 /obj/effect/zone_divider,
-/turf/simulated/floor/grass,
+/obj/effect/floor_decal/corner/yellow/border,
+/obj/structure/railing,
+/turf/simulated/floor/tiled/monotile,
 /area/penumbra)
 "tzY" = (
 /obj/structure/table/wooden_reinforced,
@@ -15648,6 +15818,15 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/penumbra/perimeter/inner)
+"tFW" = (
+/obj/effect/floor_decal/corner/yellow/border{
+	dir = 5
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/penumbra)
 "tGp" = (
 /obj/structure/railing{
 	dir = 1
@@ -15685,12 +15864,6 @@
 	dir = 1
 	},
 /turf/simulated/floor/carpet,
-/area/penumbra)
-"tHv" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/simulated/floor/water,
 /area/penumbra)
 "tHz" = (
 /obj/machinery/atm{
@@ -15884,12 +16057,9 @@
 /turf/simulated/floor/tiled,
 /area/penumbra/perimeter/inner)
 "tVn" = (
-/obj/machinery/media/jukebox,
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/simulated/floor/wood,
-/area/penumbra)
+/obj/structure/bed/chair/sofa/left,
+/turf/simulated/floor/carpet,
+/area/penumbra/perimeter/inner)
 "tVx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -15985,6 +16155,12 @@
 /obj/effect/floor_decal/corner/lime/border,
 /turf/simulated/floor/wood,
 /area/penumbra/perimeter/inner)
+"ueK" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
+/area/penumbra)
 "ufA" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan{
 	dir = 1
@@ -17150,11 +17326,7 @@
 /turf/simulated/floor/reinforced,
 /area/penumbra/station/engineering/engine)
 "vra" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/railing,
-/turf/simulated/floor/water,
+/turf/simulated/floor/tiled/monotile,
 /area/penumbra)
 "vrw" = (
 /obj/structure/catwalk,
@@ -17165,6 +17337,10 @@
 	dir = 6
 	},
 /turf/simulated/floor,
+/area/penumbra)
+"vrA" = (
+/obj/effect/floor_decal/ss13/l16,
+/turf/simulated/floor/tiled/steel,
 /area/penumbra)
 "vrY" = (
 /obj/machinery/atmospherics/pipe/manifold4w/visible/cyan,
@@ -18065,6 +18241,11 @@
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor,
 /area/penumbra/perimeter/inner)
+"wGT" = (
+/obj/effect/zone_divider,
+/obj/structure/stairs/south,
+/turf/simulated/floor/tiled/steel,
+/area/penumbra)
 "wHv" = (
 /obj/structure/table/rack,
 /obj/item/clothing/suit/bio_suit/anomaly,
@@ -18244,6 +18425,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
 /turf/simulated/floor,
 /area/penumbra)
+"wSB" = (
+/obj/structure/table/wooden_reinforced,
+/obj/machinery/recharger,
+/turf/simulated/floor/wood,
+/area/penumbra)
 "wSQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -18365,6 +18551,11 @@
 /obj/effect/zone_divider,
 /obj/machinery/portable_atmospherics/canister/nitrogen,
 /turf/simulated/floor/reinforced/nitrogen,
+/area/penumbra)
+"xbV" = (
+/obj/effect/zone_divider,
+/obj/structure/bed/chair/wood/wings,
+/turf/simulated/floor/wood,
 /area/penumbra)
 "xcn" = (
 /turf/simulated/shuttle/floor/red,
@@ -18577,7 +18768,11 @@
 /area/penumbra)
 "xvl" = (
 /obj/machinery/door/airlock/glass_command,
-/turf/space,
+/turf/simulated/floor/bluegrid,
+/area/penumbra)
+"xvo" = (
+/obj/effect/floor_decal/ss13/l15,
+/turf/simulated/floor/tiled/steel,
 /area/penumbra)
 "xvU" = (
 /obj/structure/table/rack,
@@ -53089,7 +53284,7 @@ yhY
 sGi
 wVY
 wVY
-wVY
+ciP
 nMv
 xKd
 cJJ
@@ -53603,7 +53798,7 @@ tQs
 jwZ
 ruD
 ruD
-ruD
+jgI
 ruD
 xKd
 kjM
@@ -71057,7 +71252,7 @@ ndM
 hur
 gdg
 pGN
-pzO
+kKQ
 pzO
 uQT
 tQs
@@ -71571,7 +71766,7 @@ ndM
 hur
 gdg
 nds
-hvC
+qsL
 pzO
 tQs
 tQs
@@ -72085,20 +72280,20 @@ dQu
 jOh
 bFW
 nds
-rBD
+tfe
 pzO
 tQs
 gGW
 dUu
 tud
-aQQ
+tQs
 hJV
-oWX
-sVH
-sVH
-mAx
+vra
+vra
+vra
+vra
 nfv
-tud
+jKv
 tud
 tud
 fJk
@@ -72599,20 +72794,20 @@ maa
 mJc
 maa
 nds
-jym
+tVn
 pzO
 tQs
 gGW
 dUu
 tud
-vuu
-dwg
-eFg
-tHv
-tHv
+tQs
+rOC
+vra
+vra
+vra
 vra
 tza
-tud
+sKT
 tud
 tud
 tud
@@ -73119,14 +73314,14 @@ kkf
 tud
 tud
 tud
-nAx
-dwg
-dwg
-lNd
-dwg
-dwg
-lKG
-tud
+tQs
+tFW
+oTc
+oTc
+oTc
+oTc
+rpQ
+aFV
 tud
 tud
 tud
@@ -73633,15 +73828,15 @@ tud
 tud
 tud
 tud
+tQs
+tAQ
+tAQ
+tAQ
+dpl
+tAQ
+jGg
+aFV
 tud
-tud
-tud
-tud
-tud
-tud
-chq
-dss
-dss
 tud
 tud
 tQs
@@ -73652,8 +73847,8 @@ dUI
 ksy
 dUI
 dUI
-dUI
-dUI
+aYy
+ueK
 ftj
 kjM
 mBg
@@ -74090,8 +74285,8 @@ hur
 hur
 nds
 nds
-nds
-nds
+aSH
+aSH
 nds
 kZQ
 nds
@@ -74147,16 +74342,16 @@ tud
 xuo
 tud
 tud
-tud
-tfe
-tud
-tud
-tud
-tud
+joJ
+tAQ
+eAH
+eAH
+eAH
+eAH
 iYl
-nHv
-fNA
-ckX
+aFV
+tud
+tud
 tud
 tQs
 dUI
@@ -74165,8 +74360,8 @@ dUI
 dUI
 dUI
 dUI
-dUI
-dUI
+qhZ
+qhZ
 dUI
 nfo
 whM
@@ -74661,16 +74856,16 @@ tud
 tud
 tud
 tud
+aFV
+tAQ
+tAQ
+tAQ
+tAQ
+tAQ
+jGg
+aFV
 tud
-tQs
-ecr
-ecr
-ecr
 tud
-iYl
-qhE
-fNA
-ckX
 tud
 tQs
 dUI
@@ -75175,21 +75370,21 @@ tud
 tud
 tud
 tud
+aFV
+tAQ
+eAH
+eAH
+eAH
+eAH
+iYl
+aFV
 tud
-tQs
-oRT
-oRT
-oRT
-tud
-epF
-xJd
-xJd
 tud
 hyU
 rPr
 dUI
-dUI
-dUI
+isI
+bUu
 dUI
 vww
 ofe
@@ -75685,25 +75880,25 @@ jQn
 mdy
 sHs
 sHs
-dUu
-dUu
-dUu
-tud
-tud
-tQs
-nvV
-oRT
-qsL
-tud
-chq
-tud
-tud
-tud
-tud
-okP
+rBP
+rBP
+rBP
+aFV
+aFV
+aFV
+aFV
+aFV
+aFV
+aFV
+mpi
+aFV
+aFV
+aFV
+aFV
+iWD
 dUI
-dUI
-dUI
+imr
+giz
 dUI
 eNR
 tGp
@@ -76201,23 +76396,23 @@ qoi
 qoi
 mYQ
 tEs
-dUu
-tud
-tud
-bnW
-ecr
-ecr
-ecr
-tud
-chq
-tud
-tud
-tud
-tud
-mBg
+rBP
+aFV
+aFV
+aFV
+aFV
+aFV
+amE
+aFV
+mpi
+aFV
+aFV
+aFV
+aFV
+aFV
 dUI
-dUI
-dUI
+heo
+mcc
 dUI
 cIs
 tGp
@@ -76715,23 +76910,23 @@ pzO
 pzO
 tud
 mYQ
-dUu
+rBP
+tud
+tud
+qBv
 tud
 tud
 tud
 tud
-tud
-ifW
-tud
-chq
+mpi
 ofh
-nAx
-tud
-tud
+kLn
+dai
+dai
 yhq
 dUI
-dUI
-dUI
+pjb
+dWx
 dUI
 cIs
 tGp
@@ -77229,23 +77424,23 @@ aDT
 pzO
 tud
 mYQ
-dUu
+rBP
 tud
 tud
+tQs
+ecr
+ecr
+ecr
 tud
-tud
-tud
-tud
-tud
-chq
+mpi
 tQs
 aQQ
-tud
-tud
+dai
+dai
 yhq
 dUI
-dUI
-dUI
+fuU
+rxl
 dUI
 cIs
 tGp
@@ -77743,23 +77938,23 @@ vPF
 pzO
 tud
 mYQ
-dUu
+rBP
 tud
 tud
-tVn
-ecr
-ecr
-ecr
+tQs
+sbA
+oRT
+wSB
 tud
-chq
-tud
-tud
-tud
-tud
-okP
+mpi
+aFV
+aFV
+aFV
+aFV
+iWD
 dUI
-dUI
-dUI
+fic
+aKu
 dUI
 cIs
 tGp
@@ -78257,23 +78452,23 @@ fWL
 pzO
 tud
 mYQ
-dUu
+rBP
 tud
 tud
 tQs
-nvV
 oRT
-qsL
+oRT
+oRT
 tud
-chq
-tud
-tud
-tud
-tud
-mBg
+mpi
+aFV
+aFV
+aFV
+aFV
+aFV
 dUI
-dUI
-dUI
+bBT
+eBB
 dUI
 cIs
 tGp
@@ -78771,23 +78966,23 @@ pzO
 tlU
 tud
 mYQ
-dUu
+rBP
 tud
 xuo
 tQs
-oRT
-oRT
-oRT
+ecr
+ecr
+ecr
 tud
-epF
+mxk
 dss
 dss
 tud
 hyU
 rPr
 dUI
-dUI
-dUI
+xvo
+vrA
 dUI
 eNR
 tGp
@@ -79285,15 +79480,15 @@ fsC
 pzO
 tud
 mYQ
-dUu
+rBP
 tud
 tud
-tQs
-ecr
-ecr
-ecr
+jBM
 tud
-iYl
+tud
+tud
+tud
+xbV
 nHv
 fNA
 ckX
@@ -79799,15 +79994,15 @@ kni
 pzO
 tud
 mYQ
-dUu
-tud
-tud
-oeA
+rBP
 tud
 tud
 tud
 tud
-iYl
+tud
+tud
+tud
+xbV
 qhE
 fNA
 ckX
@@ -80313,7 +80508,7 @@ mig
 pzO
 tud
 mYQ
-dUu
+rBP
 tud
 tud
 tud
@@ -80333,8 +80528,8 @@ dUI
 dUI
 dUI
 dUI
-dUI
-dUI
+bkp
+bkp
 dUI
 qoe
 kjM
@@ -80848,8 +81043,8 @@ wKw
 sfA
 wKw
 wKw
-wKw
-wKw
+wGT
+gBL
 rWc
 msE
 aGc
@@ -81341,7 +81536,7 @@ nds
 jKZ
 tQs
 tQs
-tud
+aFV
 tud
 vuu
 oYm
@@ -81854,8 +82049,8 @@ mfe
 hur
 hur
 dUI
-aVS
-tud
+mhb
+aFV
 tud
 nAx
 pYG
@@ -86967,7 +87162,7 @@ oWu
 hur
 nds
 qpR
-qpR
+bnW
 qpR
 qpR
 qpR
@@ -88000,7 +88195,7 @@ qpR
 qpR
 qpR
 qpR
-qpR
+ifW
 mGP
 nds
 iYQ
@@ -88514,8 +88709,8 @@ qpR
 qpR
 qpR
 qpR
-qpR
-mGP
+ifW
+nvV
 nds
 iYQ
 iYQ
@@ -89029,7 +89224,7 @@ qpR
 qpR
 qpR
 qpR
-mGP
+oeA
 nds
 iYQ
 iYQ
