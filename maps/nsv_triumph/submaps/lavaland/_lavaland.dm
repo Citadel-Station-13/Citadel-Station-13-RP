@@ -133,11 +133,12 @@
 /area/triumph_away/lavaland/explored
 	name = "Lava Land - Thoroughfare"
 	icon_state = "red"
-
+	/turf/simulated/floor/outdoors/lavaland
 
 /area/triumph_away/lavaland/unexplored
 	name = "Lava Land - Unknown"
 	icon_state = "yellow"
+	base_turf = /turf/simulated/floor/outdoors/lavaland
 
 // Lava Land turfs
 /turf/simulated/floor/outdoors/lavaland
@@ -148,6 +149,7 @@
 	outdoors = 1
 	flags = TURF_HAS_EDGES
 	edge_blending_priority = 2
+	base_icon_state = "asteroid"
 	turf_layers = list(/turf/simulated/floor/outdoors/rocks)
 	initial_flooring = /decl/flooring/outdoors/lavaland
 
@@ -155,8 +157,8 @@
 // It will generate more rich ores because of the lower numbers than the normal one
 /datum/random_map/noise/ore/lavaland
 	descriptor = "lava land mine ore distribution map"
-	deep_val = 0.6 //More riches, normal is 0.7 and 0.8
-	rare_val = 0.4
+	deep_val = 0.5 //More riches, normal is 0.7 and 0.8
+	rare_val = 0.5
 
 // The check_map_sanity proc is sometimes unsatisfied with how AMAZING our ores are
 /datum/random_map/noise/ore/lavaland/check_map_sanity()
