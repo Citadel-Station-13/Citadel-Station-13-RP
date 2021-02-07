@@ -283,7 +283,7 @@
 											"thatd"="that’d",
 											" nows "=" now’s ",
 											"isnt"="isn’t",
-											"arent"="aren’t",
+											" arent "=" aren’t ",
 											"wasnt"="wasn’t",
 											"werent"="weren’t",
 											"havent"="haven’t",
