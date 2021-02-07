@@ -205,7 +205,7 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 	desc = "A ubiquitous chain of traders common in this area of the Galaxy."
 	scanner_desc = @{"[i]Information[/i]: A trade post and fuel depot. Possible life signs detected."}
 	in_space = 1
-	known = FALSE
+	known = TRUE
 	icon_state = "fueldepot"
 	color = "#8F6E4C"
 

@@ -261,7 +261,9 @@
 /turf/simulated/floor/reinforced,
 /area/shuttle/pirate/general)
 "iL" = (
-/obj/machinery/atmospherics/pipe/tank/phoron,
+/obj/machinery/atmospherics/pipe/tank/phoron{
+	volume = 20000
+	},
 /turf/simulated/floor/reinforced,
 /area/shuttle/pirate/general)
 "iO" = (
@@ -848,12 +850,12 @@
 /turf/space,
 /area/triumph_away/piratebase/space)
 "Hr" = (
-/obj/structure/table/rack,
 /obj/machinery/light,
+/obj/machinery/nuclearbomb,
 /turf/simulated/floor/reinforced,
 /area/shuttle/pirate/general)
 "Hz" = (
-/obj/machinery/ion_engine{
+/obj/machinery/atmospherics/unary/engine/small{
 	dir = 8
 	},
 /turf/simulated/shuttle/plating/airless/carry,
@@ -1043,12 +1045,12 @@
 /turf/space,
 /area/triumph_away/piratebase/space)
 "Mm" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5
-	},
 /obj/machinery/meter,
 /obj/machinery/light{
 	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
 	},
 /turf/simulated/floor/reinforced,
 /area/shuttle/pirate/general)
@@ -1324,7 +1326,9 @@
 	requires_power = 0
 	})
 "Yz" = (
-/obj/machinery/nuclearbomb,
+/obj/machinery/atmospherics/portables_connector{
+	dir = 1
+	},
 /turf/simulated/floor/reinforced,
 /area/shuttle/pirate/general)
 "YD" = (
