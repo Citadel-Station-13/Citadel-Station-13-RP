@@ -20,3 +20,7 @@
 /area/triumph_away/gaia_planet/outside
 	name = "Gaia Planet - Outside (UE)"
 	icon_state = "yellow"
+
+/turf/simulated/floor/outdoors/beach/sand
+	name = "sand"
+	initial_flooring = /decl/flooring/outdoors/beach

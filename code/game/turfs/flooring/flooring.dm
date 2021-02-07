@@ -353,3 +353,43 @@ var/list/flooring_types
 	has_damage_range = 6
 	flags = TURF_ACID_IMMUNE | TURF_CAN_BREAK
 	can_paint = null
+
+/decl/flooring/outdoors/dirt
+	name = "dirt"
+	icon = 'icons/turf/outdoors.dmi'
+	icon_base = "dirt-dark"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/asteroid1.ogg',
+		'sound/effects/footstep/asteroid2.ogg',
+		'sound/effects/footstep/asteroid3.ogg',
+		'sound/effects/footstep/asteroid4.ogg'))
+
+/decl/flooring/outdoors/grass
+	name = "grass"
+	icon = 'icons/turf/outdoors.dmi'
+	icon_base = "grass"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/grass1.ogg',
+		'sound/effects/footstep/grass2.ogg',
+		'sound/effects/footstep/grass3.ogg',
+		'sound/effects/footstep/grass4.ogg'))
+
+/decl/flooring/outdoors/water
+	name = "water"
+	icon = 'icons/turf/outdoors.dmi'
+	icon_base = "seashallow"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/water1.ogg',
+		'sound/effects/footstep/water2.ogg',
+		'sound/effects/footstep/water3.ogg',
+		'sound/effects/footstep/water4.ogg'))
+
+/decl/flooring/outdoors/beach
+	name = "beach"
+	icon = 'icons/turf/outdoors.dmi'
+	icon_base = "sand"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/asteroid1.ogg',
+		'sound/effects/footstep/asteroid2.ogg',
+		'sound/effects/footstep/asteroid3.ogg',
+		'sound/effects/footstep/asteroid4.ogg'))
