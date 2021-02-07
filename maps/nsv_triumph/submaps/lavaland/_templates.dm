@@ -41,3 +41,11 @@
 	discard_prob = 0
 	allow_duplicates = TRUE
 	fixed_orientation = TRUE 
+
+/datum/map_template/lavaland/boss1
+	name = "Lava Land - Boss 1"
+	mappath = 'boss1.dmm'
+	cost = -1
+	discard_prob = 0
+	allow_duplicates = FALSE
+	fixed_orientation = TRUE
