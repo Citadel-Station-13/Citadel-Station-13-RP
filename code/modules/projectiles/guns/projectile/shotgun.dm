@@ -136,6 +136,7 @@
 	icon_state = "sawnshotgun"
 	item_state = "sawnshotgun"
 	recoil = 3
+	accuracy = 40
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	ammo_type = /obj/item/ammo_casing/a12g/pellet
 	w_class = ITEMSIZE_NORMAL
@@ -143,6 +144,7 @@
 
 /obj/item/gun/projectile/shotgun/doublebarrel/sawn/alt
 	icon_state = "shotpistol"
+	accuracy = 40
 
 /obj/item/gun/projectile/shotgun/doublebarrel/sawn/alt/holy // A Special Skin for the sawn off,makes it look like the sawn off from Blood.
 	ammo_type = /obj/item/ammo_casing/a12g/silver
@@ -159,6 +161,7 @@ obj/item/gun/projectile/shotgun/doublebarrel/quad
 	max_shells = 4
 	w_class = ITEMSIZE_LARGE
 	force = 5
+	accuracy = 40
 	slot_flags = SLOT_BACK
 	ammo_type = /obj/item/ammo_casing/a12g/pellet
 	caliber = "12g"
@@ -177,6 +180,7 @@ obj/item/gun/projectile/shotgun/doublebarrel/quad
 	icon_state = "supershotgun"
 	item_state = "supershotgun"
 	recoil = 0
+	accuracy = 80
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	ammo_type = /obj/item/ammo_casing/a12g/pellet
 	w_class = ITEMSIZE_NORMAL
@@ -214,7 +218,7 @@ obj/item/gun/projectile/shotgun/doublebarrel/quad
 	name = "Brass Flare Gun"
 	desc = "A Brass Flare Gun far more exspensuve and well made then the plastic ones mass produced for signalling. It fires using an odd clockwork mechanism. Loads using 12g"
 	icon_state = "flareg-holy"
-	accuracy = 0 //Strong Gun Better Accuracy
+	accuracy = 50 //Strong Gun Better Accuracy
 	holy = TRUE
 
 /obj/item/gun/projectile/shotgun/doublebarrel/axe
