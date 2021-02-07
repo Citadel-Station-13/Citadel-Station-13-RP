@@ -269,3 +269,18 @@
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit)
+
+// Eldritch suit
+/obj/item/clothing/suit/storage/hooded/eldritch
+	name = "eldritch garment"
+	desc = "A billowing garment that seeps a thick, waxy substance. Upon closer inspection this outfit is crafted out of tanned skin, the ritual icons and spells drawn onto it having been tattooed before removal."
+	icon_state = "eldritch_armor"
+	flags = HIDEHOLSTER|THICKMATERIAL
+	item_state_slots = list(slot_r_hand_str = "brown_jacket", slot_l_hand_str = "brown_jacket")
+	action_button_name = "Toggle Eldritch Hood"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	hoodtype = /obj/item/clothing/head/hood/eldritch
+	armor = list(melee = 20, bullet = 0, laser = 40, energy = 40, bomb = 20, bio = 30, rad = 20)
+	siemens_coefficient = 0.9
+	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
+	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/material/knife)

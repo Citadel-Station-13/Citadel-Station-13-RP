@@ -12,6 +12,7 @@
 #define WEATHER_EMBERFALL			"emberfall" // More adminbuse, from TG. Harmless.
 #define WEATHER_ASH_STORM			"ash storm" // Ripped from TG, like the above. Less harmless.
 #define WEATHER_FALLOUT				"fallout" // Modified emberfall, actually harmful. Admin only.
+#define WEATHER_SANDSTORM			"sandstorm"
 
 #define MOON_PHASE_NEW_MOON			"new moon"
 #define MOON_PHASE_WAXING_CRESCENT	"waxing crescent"

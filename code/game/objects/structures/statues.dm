@@ -301,3 +301,10 @@
 	name = "corgi statue"
 	desc = "This marble statue is shockingly lifelike."
 	icon_state = "corgi"
+
+/////////////////////marble/////////////////////////////////////////
+
+/obj/structure/statue/wood
+	name = "wood statue"
+	desc = "A simple wooden mannequin, generally used to display clothes or equipment. Water frequently."
+	icon_state = "fashion_m"

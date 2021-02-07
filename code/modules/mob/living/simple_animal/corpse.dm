@@ -169,6 +169,20 @@
 /obj/effect/landmark/mobcorpse/russian/ranged
 	corpsehelmet = /obj/item/clothing/head/ushanka
 
+//Diorama Corpses
+/obj/effect/landmark/mobcorpse/shogun
+	name = "Shogun's Bodyguard"
+	corpseuniform = /obj/item/clothing/under/color/black
+	corpsesuit = /obj/item/clothing/suit/kamishimo
+	corpseshoes = /obj/item/clothing/shoes/sandal
+	corpsehelmet = /obj/item/clothing/head/rice
+
+/obj/effect/landmark/mobcorpse/safari
+	name = "Colonial Adventurer"
+	corpseuniform = /obj/item/clothing/under/safari
+	corpseshoes = /obj/item/clothing/shoes/boots/workboots
+	corpsehelmet = /obj/item/clothing/head/pith
+
 //////////////////////////
 //		Vox Bodies
 //////////////////////////
@@ -254,6 +268,14 @@
 
 /obj/effect/landmark/mobcorpse/vox/boarder_r
 	name = "vox ranged boarder"
+	corpseuniform = /obj/item/clothing/under/rank/bartender
+	corpsesuit = /obj/item/clothing/suit/armor/bulletproof
+	corpseshoes = /obj/item/clothing/shoes/boots/workboots
+	corpsemask = /obj/item/clothing/mask/breath
+	corpseid = 0
+
+/obj/effect/landmark/mobcorpse/vox/boarder_t
+	name = "vox salvage technician"
 	corpseuniform = /obj/item/clothing/under/rank/bartender
 	corpsesuit = /obj/item/clothing/suit/armor/bulletproof
 	corpseshoes = /obj/item/clothing/shoes/boots/workboots

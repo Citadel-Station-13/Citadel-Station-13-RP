@@ -34,7 +34,7 @@
 	if(!glass) return
 	if(shattered)	return
 	shattered = 1
-	icon_state = "mirror_broke"
+	icon_state = "[icon_state]_broke"
 	playsound(src, "shatter", 70, 1)
 	desc = "Oh no, seven years of bad luck!"
 
@@ -141,3 +141,56 @@
 					raiders.update_access(vox)
 				qdel(user)
 	..()
+
+//Long mirrors.
+/obj/structure/mirror/long
+	name = "mirror"
+	desc = "A SalonPro Nano-Mirror(TM) brand mirror! The leading technology in hair salon products, utilizing nano-machinery to style your hair just right."
+	icon = 'icons/obj/watercloset.dmi'
+	icon_state = "long_mir_m"
+	density = 0
+	anchored = 1
+
+/obj/structure/mirror/long/left
+	name = "mirror"
+	desc = "A SalonPro Nano-Mirror(TM) brand mirror! The leading technology in hair salon products, utilizing nano-machinery to style your hair just right."
+	icon = 'icons/obj/watercloset.dmi'
+	icon_state = "long_mir_l"
+	density = 0
+	anchored = 1
+
+/obj/structure/mirror/long/right
+	name = "mirror"
+	desc = "A SalonPro Nano-Mirror(TM) brand mirror! The leading technology in hair salon products, utilizing nano-machinery to style your hair just right."
+	icon = 'icons/obj/watercloset.dmi'
+	icon_state = "long_mir_r"
+	density = 0
+	anchored = 1
+
+//Shattered versions.
+/obj/structure/mirror/long/broke
+	name = "mirror"
+	desc = "A SalonPro Nano-Mirror(TM) brand mirror! The leading technology in hair salon products, utilizing nano-machinery to style your hair just right."
+	icon = 'icons/obj/watercloset.dmi'
+	icon_state = "long_mir_m_broke"
+	density = 0
+	anchored = 1
+	shattered = 1
+
+/obj/structure/mirror/long/left_broke
+	name = "mirror"
+	desc = "A SalonPro Nano-Mirror(TM) brand mirror! The leading technology in hair salon products, utilizing nano-machinery to style your hair just right."
+	icon = 'icons/obj/watercloset.dmi'
+	icon_state = "long_mir_l_broke"
+	density = 0
+	anchored = 1
+	shattered = 1
+
+/obj/structure/mirror/long/right_broke
+	name = "mirror"
+	desc = "A SalonPro Nano-Mirror(TM) brand mirror! The leading technology in hair salon products, utilizing nano-machinery to style your hair just right."
+	icon = 'icons/obj/watercloset.dmi'
+	icon_state = "long_mir_r_broke"
+	density = 0
+	anchored = 1
+	shattered = 1

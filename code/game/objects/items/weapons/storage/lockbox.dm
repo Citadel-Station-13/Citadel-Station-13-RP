@@ -192,3 +192,16 @@
 		/obj/item/clothing/shoes/roman = 4,
 		/obj/item/shield/riot/roman = 4
 	)
+
+/obj/item/storage/lockbox/away
+	name = "Away Team Pack"
+	req_access = list(access_pathfinder)
+	storage_slots = 17
+	starts_with = list(
+		/obj/item/clothing/under/rank/trek/command/ds9 = 1,
+		/obj/item/clothing/under/rank/trek/engsec/ds9 = 2,
+		/obj/item/clothing/under/rank/trek/medsci/ds9 = 1,
+		/obj/item/clothing/suit/storage/trek/ds9 = 1,
+		/obj/item/gun/energy/retro = 4,
+		/obj/item/cell/device/weapon = 8
+	)
