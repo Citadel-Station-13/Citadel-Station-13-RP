@@ -75,3 +75,11 @@
 /area/triumph_away/tradeport/safarizoo
 	name = "\improper Safari Zone"
 	icon_state = "blue"
+
+/area/triumph_away/tradeport/cyndi
+	name = "\improper C&K Floor"
+	icon_state = "purple"
+
+/area/triumph_away/tradeport/cyndishow
+	name = "\improper C&K Showroom"
+	icon_state = "red"

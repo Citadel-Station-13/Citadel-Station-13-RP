@@ -1313,3 +1313,9 @@
 	icon_state = "mechanic"
 	item_state_slots = list(slot_r_hand_str = "cargo", slot_l_hand_str = "cargo")
 	rolled_sleeves = 0
+
+/obj/item/clothing/under/safari
+	name = "safari uniform"
+	desc = "A sturdy canvas button-up and shorts, designed to provide protection without retaining heat."
+	icon_state = "safari"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS

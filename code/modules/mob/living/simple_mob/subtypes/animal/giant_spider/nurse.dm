@@ -218,7 +218,7 @@
 	desc = "It's sticky, and blocks a lot of light."
 	light_color = "#FFFFFF"
 	light_range = 2
-	light_power = -3
+	light_power = -1
 
 // This is still stupid, but whatever.
 /mob/living/simple_mob/animal/giant_spider/nurse/hat

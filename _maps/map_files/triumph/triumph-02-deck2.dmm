@@ -340,6 +340,9 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/terminal,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
 /turf/simulated/floor/airless,
 /area/shuttle/mining_ship/general)
 "aX" = (
@@ -561,8 +564,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/mining_ship/general)
 "bR" = (
-/obj/machinery/ion_engine{
-	density = 1;
+/obj/machinery/atmospherics/unary/engine/small{
 	dir = 8
 	},
 /turf/simulated/shuttle/plating/airless/carry,
@@ -2388,6 +2390,13 @@
 "gM" = (
 /turf/simulated/floor/wood,
 /area/crew_quarters/fitness)
+"gN" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold4w/hidden,
+/turf/simulated/shuttle/wall/voidcraft/green,
+/area/shuttle/mining_ship/general)
 "gO" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -2505,6 +2514,17 @@
 /obj/machinery/computer/timeclock/premade/south,
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/port)
+"hi" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
+/area/shuttle/mining_ship/general)
 "hk" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -3457,6 +3477,14 @@
 "jT" = (
 /turf/simulated/wall,
 /area/triumph/station/stairs_two)
+"jU" = (
+/obj/machinery/atmospherics/pipe/tank/phoron{
+	dir = 1;
+	volume = 20000
+	},
+/obj/effect/floor_decal/industrial/outline/red,
+/turf/simulated/floor/airless,
+/area/shuttle/mining_ship/general)
 "jV" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
@@ -3973,6 +4001,11 @@
 	},
 /obj/item/gun/projectile/shotgun/flare,
 /obj/item/storage/box/flashshells,
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 1
+	},
+/obj/machinery/meter,
+/obj/item/duct_tape_roll,
 /turf/simulated/floor/airless,
 /area/shuttle/mining_ship/general)
 "lA" = (
@@ -4055,9 +4088,6 @@
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/freezer)
-"lJ" = (
-/turf/simulated/floor/airless,
-/area/shuttle/mining_ship/general)
 "lK" = (
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/machinery/light,
@@ -7137,6 +7167,7 @@
 	charge = 1.5e+007;
 	cur_coils = 3
 	},
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/airless,
 /area/shuttle/mining_ship/general)
 "uz" = (
@@ -7384,6 +7415,7 @@
 	},
 /obj/structure/table/marble,
 /obj/item/material/knife/butch,
+/obj/item/material/kitchen/rollingpin,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/lounge/kitchen_freezer)
 "vr" = (
@@ -7442,9 +7474,14 @@
 	},
 /obj/machinery/door/airlock/voidcraft{
 	frequency = 2020;
-	id_tag = "belt_shuttle_exterior"
+	id_tag = "belt_shuttle_exterior";
+	name = "maintenance hatch"
 	},
-/turf/simulated/floor/tiled/steel,
+/obj/machinery/atmospherics/binary/pump{
+	dir = 4;
+	name = "secondary fuel pump"
+	},
+/turf/simulated/floor/airless,
 /area/shuttle/mining_ship/general)
 "vA" = (
 /obj/structure/dogbed,
@@ -8212,6 +8249,7 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
+/obj/structure/closet/crate,
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/mining_ship/general)
 "xS" = (
@@ -9209,6 +9247,7 @@
 	},
 /obj/structure/table/reinforced,
 /obj/machinery/recharger,
+/obj/item/duct_tape_roll,
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "Bd" = (
@@ -10270,6 +10309,15 @@
 /obj/structure/flora/pottedplant/small,
 /turf/simulated/floor/wood,
 /area/triumph/station/stairs_two)
+"Eu" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/turf/simulated/shuttle/wall/voidcraft/green,
+/area/shuttle/mining_ship/general)
 "Ev" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
@@ -10867,13 +10915,16 @@
 /turf/simulated/floor/carpet/sblucarpet,
 /area/quartermaster/foyer)
 "Ge" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/ore_box,
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/atmospherics/portables_connector{
+	dir = 1;
+	name = "Engine Fuel Port"
+	},
+/obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/mining_ship/general)
 "Gf" = (
@@ -12051,6 +12102,7 @@
 	},
 /obj/item/suit_cooling_unit,
 /obj/item/suit_cooling_unit,
+/obj/item/duct_tape_roll,
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
 "Jv" = (
@@ -12552,6 +12604,9 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 6
+	},
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/mining_ship/general)
 "Ld" = (
@@ -12738,12 +12793,12 @@
 /area/crew_quarters/bar)
 "LB" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/closet/crate,
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/structure/ore_box,
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/mining_ship/general)
 "LH" = (
@@ -14947,7 +15002,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/maintenance{
 	id_tag = "Dressroom";
-	name = "Dressing room"
+	name = "Dressing Room"
 	},
 /obj/structure/cable/green{
 	d1 = 4;
@@ -16457,6 +16512,9 @@
 "WA" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 6
 	},
 /turf/simulated/shuttle/wall/voidcraft/green,
 /area/shuttle/mining_ship/general)
@@ -24532,7 +24590,7 @@ qM
 ii
 Rx
 um
-Lc
+hi
 HG
 Rx
 ii
@@ -24674,7 +24732,7 @@ qM
 ii
 Rx
 tP
-Lc
+hi
 HG
 Rx
 ii
@@ -25101,7 +25159,7 @@ ii
 Rx
 rv
 lz
-rv
+jU
 Rx
 ii
 nJ
@@ -25242,9 +25300,9 @@ qM
 ii
 Wm
 WA
-WA
-WA
-lJ
+gN
+Eu
+Rx
 ii
 nJ
 Nh
