@@ -18,6 +18,13 @@
 	for(var/area/A in all_areas)
 		if(A.z in zLevels)
 			A.gravitychange(gravity_is_on, A)
+			if(prob(50))
+				A << 'sound/effects/creak1.ogg'
+			else if (prob(33))
+				A << 'sound/effects/creak2.ogg'
+			else
+				A << 'sound/effects/creak3.ogg'
+
 
 /datum/event/gravity/end()
 	if(!gravity_is_on)

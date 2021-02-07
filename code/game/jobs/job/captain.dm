@@ -55,7 +55,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	ideal_character_age = 50
 
 	outfit_type = /decl/hierarchy/outfit/job/hop
-	alt_titles = list("Crew Resources Officer","First Officer", "Executive Officer")
+	alt_titles = list("Crew Resources Officer","First Officer", "Executive Officer", "Deputy Director")
 
 	access = list(access_security, access_sec_doors, access_brig, access_forensics_lockers,
 			            access_medical, access_engine, access_change_ids, access_ai_upload, access_eva, access_heads,

@@ -2,9 +2,6 @@
 /datum/hud/proc/unplayer_hud()
 	return
 
-/datum/hud/proc/ghost_hud()
-	return
-
 /datum/hud/proc/blob_hud(ui_style = 'icons/mob/screen1_Midnight.dmi')
 
 	blobpwrdisplay = new /obj/screen()

@@ -31,15 +31,16 @@ var/global/list/vantag_choices_list = list(
 		VANTAG_KILL		=	"Be Killed")
 
 //Blacklist to exclude items from object ingestion. Digestion blacklist located in digest_act_vr.dm
-var/global/list/item_vore_blacklist = list(
+GLOBAL_LIST_INIT(item_vore_blacklist, list(
 		/obj/item/hand_tele,
 		/obj/item/card/id/gold/captain/spare,
 		/obj/item/gun,
+		/obj/item/storage, //this was stupid why was this not here in the first place
 		/obj/item/pinpointer,
 		/obj/item/clothing/shoes/magboots,
 		/obj/item/blueprints,
 		/obj/item/clothing/head/helmet/space,
-		/obj/item/disk/nuclear)
+		/obj/item/disk/nuclear))
 //		/obj/item/clothing/suit/storage/hooded/wintercoat/roiz)
 
 //Classic Vore sounds

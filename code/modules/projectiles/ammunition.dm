@@ -7,6 +7,8 @@
 	throwforce = 1
 	w_class = ITEMSIZE_TINY
 	preserve_item = 1
+	drop_sound = 'sound/items/drop/ring.ogg'
+	pickup_sound = 'sound/items/pickup/ring.ogg'
 
 	var/leaves_residue = 1
 	var/caliber = ""					//Which kind of guns it can be loaded into
@@ -210,3 +212,6 @@
 	magazine_icondata_keys["[M.type]"] = icon_keys
 	magazine_icondata_states["[M.type]"] = ammo_states
 
+/obj/item/ammo_casing/proc/newshot() //For energy weapons, syringe gun, shotgun shells and wands (!).
+	if(!BB)
+		BB = new projectile_type(src, src)

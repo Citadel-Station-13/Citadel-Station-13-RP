@@ -17,7 +17,7 @@
 	src.modules += new /obj/item/multitool(src)
 	src.modules += new /obj/item/lightreplacer(src)
 	src.modules += new /obj/item/gripper(src)
-	src.modules += new /obj/item/soap(src)
+	src.modules += new /obj/item/mop(src)
 	src.modules += new /obj/item/gripper/no_use/loader(src)
 	src.modules += new /obj/item/extinguisher(src)
 	src.modules += new /obj/item/pipe_painter(src)

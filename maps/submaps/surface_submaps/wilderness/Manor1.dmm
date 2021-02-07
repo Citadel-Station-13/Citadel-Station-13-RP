@@ -239,7 +239,7 @@
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "ba" = (
-/obj/machinery/appliance/grill,
+/obj/machinery/appliance/cooker/grill,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "bb" = (

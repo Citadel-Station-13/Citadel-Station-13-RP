@@ -110,7 +110,7 @@
 			/obj/item/clothing/under/lawyer/bluesuit,
 			/obj/item/clothing/under/lawyer/purpsuit,
 			/obj/item/clothing/shoes/black = 2,
-			/obj/item/clothing/shoes/leather,
+			/obj/item/clothing/shoes/laceup/brown,
 			/obj/item/clothing/accessory/wcoat
 			)
 	name = "Formalwear closet"
@@ -346,7 +346,7 @@ datum/supply_pack/costumes/witch
 			/obj/item/clothing/under/pants/chaps,
 			/obj/item/clothing/under/pants/chaps/black,
 			/obj/item/clothing/under/harness,
-			/obj/item/clothing/shoes/leather,
+			/obj/item/clothing/shoes/laceup/brown,
 			/obj/item/clothing/shoes/boots/jungle,
 			/obj/item/clothing/shoes/boots/jackboots,
 			/obj/item/clothing/shoes/boots/cowboy,

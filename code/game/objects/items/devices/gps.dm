@@ -256,6 +256,15 @@ GLOBAL_LIST_EMPTY(GPS_list)
 /obj/item/gps/explorer/on
 	tracking = TRUE
 
+/obj/item/gps/survival
+	icon_state = "gps-exp"
+	gps_tag = "SOS0"
+	long_range = FALSE
+	local_mode = TRUE
+
+/obj/item/gps/survival/on
+	tracking = TRUE
+
 /obj/item/gps/robot
 	icon_state = "gps-borg"
 	gps_tag = "SYNTH0"

@@ -222,7 +222,7 @@
 	range = 25
 	damage = 5
 	SA_bonus_damage = 45	// 50 total on animals
-	SA_vulnerability = SA_ANIMAL
+	SA_vulnerability = MOB_CLASS_ANIMAL
 
 /obj/item/projectile/energy/phase/light
 	range = 15

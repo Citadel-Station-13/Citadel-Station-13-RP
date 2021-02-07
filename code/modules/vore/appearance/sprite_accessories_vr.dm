@@ -260,6 +260,14 @@
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 
+/datum/sprite_accessory/ears/bunnyalt
+	name = "bunny 2, dual-color"
+	desc = ""
+	icon_state = "bunny-alt"
+	extra_overlay = "bunny-alt-inner"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
 /datum/sprite_accessory/ears/antlers
 	name = "antlers"
 	desc = ""
@@ -406,7 +414,7 @@
 	extra_overlay = "vulp_jackal-inner"
 
 /datum/sprite_accessory/ears/bunny_floppy
-	name = "floopy bunny ears (colorable)"
+	name = "floppy bunny ears (colorable)"
 	desc = ""
 	icon_state = "floppy_bun"
 	do_colouration = 1
@@ -633,6 +641,13 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
     desc = ""
     icon_state = "frosted_tips"
     ckeys_allowed = list("tucker0666")
+
+/datum/sprite_accessory/ears/peekinghuman
+	name = "peeking ears"
+	desc = ""
+	icon_state = "earpeek"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
 
 /*
 ////////////////////////////

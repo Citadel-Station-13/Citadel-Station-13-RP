@@ -118,11 +118,6 @@
 	src.add_fingerprint(user)
 	doteleport(user)
 
-/obj/machinery/power/quantumpad/proc/sparks()
-	var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread()
-	sparks.set_up(5, 1, get_turf(src))
-	sparks.start()
-
 /obj/machinery/power/quantumpad/attack_ghost(mob/observer/dead/ghost)
 	. = ..()
 	if(.)
@@ -159,13 +154,9 @@
 		if(draw_power(power_to_use) != power_to_use)
 			to_chat(user, "<span class='warning'>Power is not sufficient to complete a teleport. Teleport aborted.</span>")
 			return
-		sparks()
-		linked_pad.sparks()
 
 		flick("qpad-beam", src)
-		playsound(get_turf(src), 'sound/weapons/emitter2.ogg', 25, 1, extrarange = 3, falloff = 5)
 		flick("qpad-beam", linked_pad)
-		playsound(get_turf(linked_pad), 'sound/weapons/emitter2.ogg', 25, 1, extrarange = 3, falloff = 5)
 		for(var/atom/movable/ROI in get_turf(src))
 			// if is anchored, don't let through
 			if(ROI.anchored)
@@ -179,7 +170,7 @@
 						continue
 				else if(!isobserver(ROI))
 					continue
-			do_teleport(ROI, get_turf(linked_pad), local = FALSE)
+			do_teleport(ROI, get_turf(linked_pad), local = FALSE, asoundin = 'sound/weapons/emitter2.ogg', asoundout = 'sound/weapons/emitter2.ogg')
 
 /obj/machinery/power/quantumpad/proc/initMappedLink()
 	. = FALSE

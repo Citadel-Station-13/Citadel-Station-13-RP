@@ -13,7 +13,11 @@
 					"Basic" = "robot_old",
 					"Android" = "droid",
 					"Drone" = "drone-standard",
-					"Insekt" = "insekt-Default"
+					"Insekt" = "insekt-Default",
+					"Misato" = "tall2standard",
+					"L3P1-D0T" = "Glitterfly-Standard",
+					"Convict" = "servitor",
+					"Miss M" = "miss-standard"
 					)
 
 

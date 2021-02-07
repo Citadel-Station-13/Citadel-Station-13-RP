@@ -86,6 +86,8 @@
 	controller = new(src)
 	update_nearby_tiles(need_rebuild=1)
 
+	//Disabling this "Broken" segment until someone can figure out why it's not accepting valid dirs and reporting broken.
+	/*
 	for(var/ship in SSshuttle.ships)
 		var/obj/effect/overmap/visitable/ship/S = ship
 		if(S.check_ownership(src))
@@ -93,6 +95,7 @@
 			if(dir != S.fore_dir)
 				set_broken(TRUE)
 			break
+	*/
 
 /obj/machinery/atmospherics/unary/engine/Destroy()
 	QDEL_NULL(controller)
@@ -210,6 +213,19 @@
 		/obj/item/pipe = 2,
 		/obj/item/stock_parts/matter_bin = 1,
 		/obj/item/stock_parts/capacitor = 2)
+
+//Smaller Scale "nerfed" version for small ships/shuttles. Essentially a fusion of Ion stats with gas economy (hopefully).
+/obj/machinery/atmospherics/unary/engine/small
+	name = "small rocket nozzle"
+	desc = "A small rocket nozzle, expelling gas at hypersonic velocities to propel a shuttle or small vessel."
+
+	power_channel = EQUIP
+	idle_power_usage = 150
+
+	thrust_limit = 1		//Value between 1 and 0 to limit the resulting thrust
+	volume_per_burn = 50
+	charge_per_burn = 1000
+	boot_time = 10
 
 // Not Implemented - Variant that pulls power from cables.  Too complicated without bay's power components.
 // /obj/machinery/atmospherics/unary/engine/terminal

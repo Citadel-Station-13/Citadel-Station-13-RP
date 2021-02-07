@@ -23,6 +23,8 @@
 		STOP_PROCESSING(SSobj, src)
 	return 1
 
+// The code block below handles the syringes' infection chance among storing a hash of the first user targeted on it.
+// 
 /obj/item/reagent_containers/syringe/proc/dirty(var/mob/living/carbon/human/target, var/obj/item/organ/external/eo)
 	if(!ishuman(loc))
 		return //Avoid borg syringe problems.
@@ -44,12 +46,13 @@
 	//Dirtiness should be very low if you're the first injectee. If you're spam-injecting 4 people in a row around you though,
 	//This gives the last one a 30% chance of infection.
 	var/infect_chance = dirtiness        //Start with dirtiness
-	if(infect_chance <= 10 && (hash in targets)) //Extra fast uses on target is free
+	infect_chance += (targets.len-1)*5    //Changed from a 10% increase to 5%.
+	if(infect_chance <= 20 && (hash in targets)) // Adjusted number as this should now work properly without infecting the first patient instantly.
 		infect_chance = 0
-	infect_chance += (targets.len-1)*10    //Extra 10% per extra target
-	if(prob(infect_chance))
-		log_and_message_admins("[loc] infected [target]'s [eo.name] with \the [src].")
-		infect_limb(eo)
+	else
+		if(prob(infect_chance))
+			log_and_message_admins("[loc] infected [target]'s [eo.name] with \the [src].")
+			infect_limb(eo)
 
 	//75% chance to spread a virus if we have one
 	if(LAZYLEN(viruses) && prob(75))

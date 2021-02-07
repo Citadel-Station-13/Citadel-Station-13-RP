@@ -38,6 +38,10 @@
 	display_name = "Civilian Bomber Jacket Alt"
 	path = /obj/item/clothing/suit/storage/bomber/alt
 
+/datum/gear/suit/storage/gothcoat
+	display_name = "Civilian Gothic Coat"
+	path = /obj/item/clothing/suit/storage/gothcoat
+
 /datum/gear/suit/leather_jacket
 	display_name = "Civilian Leather Jacket - Black"
 	path = /obj/item/clothing/suit/storage/toggle/leather_jacket
@@ -289,6 +293,14 @@ datum/gear/suit/duster
 /datum/gear/suit/roles/poncho/cloak/custom/New()
 	..()
 	gear_tweaks += gear_tweak_free_color_choice
+
+/datum/gear/suit/roles/poncho/cloak/cloakglowing
+	display_name = "Civilian Cloak - Glowing Light"
+	path = /obj/item/clothing/accessory/poncho/roles/cloak/glowing
+
+/datum/gear/suit/roles/poncho/cloak/cloakglowingdark
+	display_name = "Civilian Cloak - Glowing Dark"
+	path = /obj/item/clothing/accessory/poncho/roles/cloak/glowingdark
 
 /datum/gear/suit/unathi_robe
 	display_name = "Civilian Roughspun Robe"

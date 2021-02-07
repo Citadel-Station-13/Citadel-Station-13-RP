@@ -12,7 +12,10 @@
 					"Basic" = "JanBot2",
 					"Mopbot"  = "janitorrobot",
 					"Mop Gear Rex" = "mopgearrex",
-					"Drone" = "drone-janitor"
+					"Drone" = "drone-janitor",
+					"Misato" = "tall2janitor",
+					"L3P1-D0T" = "Glitterfly-Janitor",
+					"Miss M" = "miss-janitor"
 					)
 
 /obj/item/robot_module/robot/janitor/New()
@@ -69,7 +72,10 @@
 					"Bro" = "Brobot",
 					"Rich" = "maximillion",
 					"Drone - Service" = "drone-service",
-					"Drone - Hydro" = "drone-hydro"
+					"Drone - Hydro" = "drone-hydro",
+					"Misato" = "tall2service",
+					"L3P1-D0T" = "Glitterfly-Service",
+					"Miss M" = "miss-service"
 				  	)
 
 /obj/item/robot_module/robot/clerical/butler/New()
@@ -121,7 +127,10 @@
 					"Bro" = "Brobot",
 					"Rich" = "maximillion",
 					"Default" = "Service2",
-					"Drone" = "drone-blu"
+					"Drone" = "drone-blu",
+					"Misato" = "tall2service",
+					"L3P1-D0T" = "Glitterfly-Clerical",
+					"Miss M" = "miss-service"
 					)
 
 /obj/item/robot_module/robot/clerical/general/New()
@@ -204,7 +213,7 @@
 	var/obj/item/stack/material/cyborg/glass/G = new (src)
 	G.name = "glass recycler"
 	G.desc = "A device that refines recycled glass into sheets."
-	G.material = get_material_by_name("placeholder") //Hacky shit but we want sheets, not windows.
+	G.allow_window_autobuild = FALSE
 	G.synths = list(glass)
 	G.recipes = list()
 	G.recipes += new/datum/stack_recipe("glass sheet", /obj/item/stack/material/glass, 1, 1, 20)

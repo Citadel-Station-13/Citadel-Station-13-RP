@@ -65,7 +65,7 @@
 		return
 
 	if(compactor)
-		if(is_type_in_list(target,item_vore_blacklist))
+		if(is_type_in_list(target,GLOB.item_vore_blacklist))
 			to_chat(user, "<span class='warning'>You are hard-wired to not ingest this item.</span>")
 			return
 		if(istype(target, /obj/item) || istype(target, /obj/effect/decal/remains))

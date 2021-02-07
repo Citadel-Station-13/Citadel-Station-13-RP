@@ -29,12 +29,16 @@
 			if(!affecting)
 				to_chat(user, "<span class='warning'>The limb is missing!</span>")
 				return
-			if(affecting.status >= ORGAN_ROBOT)
+			if(affecting.robotic >= ORGAN_ROBOT)
 				to_chat(user, "<span class='notice'>\The [src] won't work on a robotic limb!</span>")
 				return
 
 			if(!H.can_inject(user, FALSE, L.zone_sel.selecting, pierce_material))
 				to_chat(user, "<span class='notice'>\The [src] can't be applied through such a thick material!</span>")
+				return
+			
+			if(affecting.open)// you cant place Bandaids on open surgeries, why chemical patches.
+				to_chat(user, "<span class='notice'>The [affecting.name] is cut open, you'll need more than a bandage!</span>")
 				return
 
 			to_chat(H, "<span class='notice'>\The [src] is placed on your [affecting].</span>")
@@ -42,6 +46,15 @@
 			if(reagents.total_volume)
 				reagents.trans_to_mob(M, reagents.total_volume, CHEM_TOUCH)
 			qdel(src)
+
+			for(var/datum/wound/W in affecting.wounds)
+				if (W.internal)//ignore internal wounds and check the remaining
+					continue
+				if(W.bandaged)//already bandaged wounds dont need to be bandaged again
+					continue
+				W.bandage()
+				break;//dont bandage more than one wound, its only one patch you can have in your stack
+			affecting.update_damages()
 			return 1
 
 	else if(istype(M, /mob/living/carbon/human))
@@ -50,12 +63,16 @@
 		if(!affecting)
 			to_chat(user, "<span class='warning'>The limb is missing!</span>")
 			return
-		if(affecting.status >= ORGAN_ROBOT)
+		
+		if(affecting.robotic >= ORGAN_ROBOT)
 			to_chat(user, "<span class='notice'>\The [src] won't work on a robotic limb!</span>")
 			return
 
 		if(!H.can_inject(user, FALSE, L.zone_sel.selecting, pierce_material))
 			to_chat(user, "<span class='notice'>\The [src] can't be applied through such a thick material!</span>")
+			return
+		if(affecting.open)// you cant place Bandaids on open surgeries, why chemical patches.
+			to_chat(user, "<span class='notice'>The [affecting.name] is cut open, you'll need more than a bandage!</span>")
 			return
 
 		user.visible_message("<span class='warning'>[user] attempts to place \the [src] onto [H]`s [affecting].</span>")
@@ -76,6 +93,15 @@
 		if(reagents.total_volume)
 			reagents.trans_to_mob(M, reagents.total_volume, CHEM_TOUCH)
 		qdel(src)
+
+		for(var/datum/wound/W in affecting.wounds)
+			if (W.internal)//ignore internal wounds and check the remaining
+				continue
+			if(W.bandaged)//already bandaged wounds dont need to be bandaged again
+				continue
+			W.bandage()
+			break;//dont bandage more than one wound, its only one patch you can have in your stack
+		affecting.update_damages()
 
 		return 1
 

@@ -123,7 +123,7 @@
 				M.Weaken(2)
 			M.drowsyness = max(M.drowsyness, 20)
 		else
-			M.sleeping = max(M.sleeping, 20)
+			M.Sleeping(20)
 			M.drowsyness = max(M.drowsyness, 60)
 
 /datum/reagent/nutriment/mayo
@@ -676,7 +676,8 @@ End Citadel Change */
 	M.nutrition += nutrition * removed
 	M.dizziness = max(0, M.dizziness + adj_dizzy)
 	M.drowsyness = max(0, M.drowsyness + adj_drowsy)
-	M.sleeping = max(0, M.sleeping + adj_sleepy)
+	M.AdjustSleeping(adj_sleepy)
+
 	if(adj_temp > 0 && M.bodytemperature < 310) // 310 is the normal bodytemp. 310.055
 		M.bodytemperature = min(310, M.bodytemperature + (adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT))
 	if(adj_temp < 0 && M.bodytemperature > 310)
@@ -763,7 +764,7 @@ End Citadel Change */
 				M.Weaken(2)
 			M.drowsyness = max(M.drowsyness, 20)
 		else
-			M.sleeping = max(M.sleeping, 20)
+			M.Sleeping(20)
 			M.drowsyness = max(M.drowsyness, 60)
 
 /datum/reagent/drink/juice/lemon
@@ -1344,7 +1345,7 @@ End Citadel Change */
 				M.Weaken(2)
 			M.drowsyness = max(M.drowsyness, 20)
 		else
-			M.sleeping = max(M.sleeping, 20)
+			M.Sleeping(20)
 			M.drowsyness = max(M.drowsyness, 60)
 
 /datum/reagent/drink/milkshake/chocoshake
@@ -1476,6 +1477,48 @@ End Citadel Change */
 
 	glass_name = "Space Mountain Wind"
 	glass_desc = "Space Mountain Wind. As you know, there are no mountains in space, only wind."
+	glass_special = list(DRINK_FIZZ)
+
+/datum/reagent/drink/soda/astral_wind
+	name = "Astral Wind"
+	id = "astral_wind"
+	description = "The soda is spiked with spices, lending it an unusual flavour."
+	taste_description = "bittersweet acidity"
+	color = "#002010"
+	adj_drowsy = -7
+	adj_sleepy = -2
+	adj_temp = -8
+
+	glass_name = "Astral Wind"
+	glass_desc = "Astral Wind. It's a touch more solid than most drinks."
+	glass_special = list(DRINK_FIZZ)
+
+/datum/reagent/drink/soda/solar_wind
+	name = "Solar Wind"
+	id = "solar_wind"
+	description = "The spices have reacted energetically, making the soda give off a warm orange hue."
+	taste_description = "Ultraviolet heat"
+	color = "#002010"
+	adj_drowsy = -10
+	adj_sleepy = -5
+	adj_temp = 15
+
+	glass_name = "Solar Wind"
+	glass_desc = "Solar Wind. Even the glass feels like it's been soaking up the sun."
+	glass_special = list(DRINK_FIZZ)
+
+/datum/reagent/drink/soda/vortex_chill
+	name = "Vortex Chill"
+	id = "vortex_chill"
+	description = "A splash of mint, and the temperature rapidly drops"
+	taste_description = "the wind-chill of the universe"
+	color = "#002010"
+	adj_drowsy = -10
+	adj_sleepy = -5
+	adj_temp = -15
+
+	glass_name = "Vortex Chill"
+	glass_desc = "Vortex Chill. Despite lacking ice it's constantly flowing cold."
 	glass_special = list(DRINK_FIZZ)
 
 /datum/reagent/drink/soda/dr_gibb
@@ -2037,7 +2080,7 @@ End Citadel Change */
 	..()
 	M.dizziness = max(0, M.dizziness - 5)
 	M.drowsyness = max(0, M.drowsyness - 3)
-	M.sleeping = max(0, M.sleeping - 2)
+	M.AdjustSleeping(-2)
 	if(M.bodytemperature > 310)
 		M.bodytemperature = max(310, M.bodytemperature - (5 * TEMPERATURE_DAMAGE_COEFFICIENT))
 	//if(alien == IS_TAJARA)
@@ -2538,6 +2581,17 @@ End Citadel Change */
 
 	glass_name = "gin fizz"
 	glass_desc = "Refreshingly lemony, deliciously dry."
+
+/datum/reagent/ethanol/nebula_riptide
+	name = "Nebula Riptide"
+	id = "nebula_riptide"
+	description = "The drink is compounded into form from a larger volume, leaving little to drink."
+	taste_description = "Burning hot, Freezing cold, and bitter irony"
+	color = "#09dbf7"
+	strength = 10
+
+	glass_name = "Nebula Riptide"
+	glass_desc = "Nebula Riptide. It's thick enough to stand on it's own, almost even parts spice and liquid."
 
 /datum/reagent/ethanol/grog
 	name = "Grog"
@@ -3996,3 +4050,82 @@ End Citadel Change */
 
 	glass_name = "the bubbly"
 	glass_desc = "An even classier looking drink, with floating bubbles."
+
+//Following was merged infrom _vr variant of this file
+/datum/reagent/nutriment
+	nutriment_factor = 10
+
+/datum/reagent/lipozine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	M.nutrition = max(M.nutrition - 20 * removed, 0)
+	M.overeatduration = 0
+	if(M.nutrition < 0)
+		M.nutrition = 0
+		
+/datum/reagent/ethanol/deathbell
+	name = "Deathbell"
+	id = "deathbell"
+	description = "A successful experiment to make the most alcoholic thing possible."
+	taste_description = "your brains smashed out by a smooth brick of hard, ice cold alcohol"
+	color = "#9f6aff"
+	taste_mult = 5
+	strength = 10
+	adj_temp = 10
+	targ_temp = 330
+
+	glass_name = "Deathbell"
+	glass_desc = "The perfect blend of the most alcoholic things a bartender can get their hands on."
+	
+/datum/reagent/ethanol/deathbell/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+	..()
+
+	if(dose * strength >= strength) // Early warning
+		M.make_dizzy(24) // Intentionally higher than normal to compensate for it's previous effects.
+	if(dose * strength >= strength * 2.5) // Slurring takes longer. Again, intentional.
+		M.slurring = max(M.slurring, 30)
+
+/datum/reagent/ethanol/monstertamer
+	name = "Monster Tamer"
+	id = "monstertamer"
+	description = "A questionably-delicious blend of a carnivore's favorite food and a potent neural depressant."
+	taste_description = "the gross yet satisfying combination of chewing on a raw steak while downing a shot of whiskey"
+	strength = 50
+	color = "#d3785d"
+	metabolism = REM * 2.5 // about right for mixing nutriment and ethanol.
+	var/alt_nutriment_factor = 5 //half as much as protein since it's half protein.
+	//using a new variable instead of nutriment_factor so we can call ..() without that adding nutrition for us without taking factors for protein into account
+
+	glass_name = "Monster Tamer"
+	glass_desc = "This looks like a vaguely-alcoholic slurry of meat. Gross."
+
+/datum/reagent/ethanol/monstertamer/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+	..()
+
+	if(M.species.gets_food_nutrition) //it's still food!
+		switch(alien)
+			if(IS_DIONA) //Diona don't get any nutrition from nutriment or protein.
+			if(IS_SKRELL) 
+				M.adjustToxLoss(0.25 * removed)  //Equivalent to half as much protein, since it's half protein.
+			if(IS_TESHARI)
+				M.nutrition += (alt_nutriment_factor * 1.2 * removed) //Give them the same nutrition they would get from protein.
+			if(IS_UNATHI)
+				M.nutrition += (alt_nutriment_factor * 1.125 * removed) //Give them the same nutrition they would get from protein.
+				//Takes into account the 0.5 factor for all nutriment which is applied on top of the 2.25 factor for protein.
+			//Chimera don't need their own case here since their factors for nutriment and protein cancel out.
+			else 
+				M.nutrition += (alt_nutriment_factor * removed)
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(H.feral > 0 && H.nutrition > 100 && H.traumatic_shock < min(60, H.nutrition/10) && H.jitteriness < 100) // same check as feral triggers to stop them immediately re-feralling
+			H.feral -= removed * 3 // should calm them down quick, provided they're actually in a state to STAY calm.
+			if (H.feral <=0) //check if they're unferalled
+				H.feral = 0
+				to_chat(H, "<span class='info'>Your mind starts to clear, soothed into a state of clarity as your senses return.</span>")
+				log_and_message_admins("is no longer feral.", H)
+
+/datum/reagent/ethanol/monstertamer/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	..()
+	if(alien == IS_SKRELL)
+		M.adjustToxLoss(removed)  //Equivalent to half as much protein, since it's half protein.
+	if(M.species.gets_food_nutrition)
+		if(alien == IS_SLIME || alien == IS_CHIMERA) //slimes and chimera can get nutrition from injected nutriment and protein
+			M.nutrition += (alt_nutriment_factor * removed)

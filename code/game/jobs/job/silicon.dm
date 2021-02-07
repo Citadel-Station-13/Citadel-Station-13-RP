@@ -12,7 +12,7 @@
 	account_allowed = 0
 	economic_modifier = 0
 
-	alt_titles = list("Overseer: Digitised Deluxe Edition")
+	alt_titles = list("CPU")
 
 /datum/job/ai/equip(var/mob/living/carbon/human/H)
 	if(!H)	return 0
@@ -39,8 +39,8 @@
 	flag = CYBORG
 	department_flag = ENGSEC
 	faction = "Station"
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 4
+	spawn_positions = 3
 	supervisors = "your laws and the AI"	//Nodrak
 	selection_color = "#254C25"
 	minimal_player_age = 1

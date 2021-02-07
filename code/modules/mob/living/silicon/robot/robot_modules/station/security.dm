@@ -21,7 +21,10 @@
 					"Basic" = "secborg",
 					"Black Knight" = "securityrobot",
 					"Drone" = "drone-sec",
-					"Insekt" = "insekt-Sec"
+					"Insekt" = "insekt-Sec",
+					"Misato" = "tall2security",
+					"L3P1-D0T" = "Glitterfly-Security",
+					"Miss M" = "miss-security"
 					)
 
 /obj/item/robot_module/robot/security/general/New()

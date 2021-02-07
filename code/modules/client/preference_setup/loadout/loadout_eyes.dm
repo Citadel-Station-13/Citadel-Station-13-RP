@@ -240,6 +240,7 @@
 /datum/gear/eyes/security/secpatch
 	display_name = "security hudpatch"
 	path = /obj/item/clothing/glasses/hud/security/eyepatch
+	allowed_roles = list("Security Officer","Head of Security","Warden","Detective","Facility Director")
 
 /datum/gear/eyes/arglasses/sec
 	display_name = "AR-S glasses"

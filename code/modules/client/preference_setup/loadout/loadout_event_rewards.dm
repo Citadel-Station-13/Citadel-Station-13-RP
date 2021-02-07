@@ -11,3 +11,9 @@
 	slot = slot_wear_suit               <------   Important to change to whichever slot the item should be worn on. If it's not a piece of clothing/equipment, leaving it blank should put it into their backpack.
 	ckeywhitelist = list("drofoljaelisglis")
 */
+/datum/gear/event_reward/gameboy
+	sort_category = "Event Rewards"
+	cost = 0
+	display_name = "Game Boy"
+	path = /obj/item/instrument/gameboy
+	ckeywhitelist = list("jaybird1")

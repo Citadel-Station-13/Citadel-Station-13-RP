@@ -8,7 +8,7 @@
 	matter = list(DEFAULT_WALL_MATERIAL = 150)
 	var/scanrange = 2
 	var/maxscanrange = 2
-	var/scan_time = 5 SECONDS
+	var/scan_time = 3 SECONDS
 	var/scan_exact_ores = FALSE
 	var/scan_exact_amounts = FALSE
 
@@ -28,7 +28,7 @@
 	. = ..()
 
 /obj/item/mining_scanner/attack_self(mob/user)
-	to_chat(user,"You begin sweeping \the [src] about, scanning for metal deposits.")
+	to_chat(user, "<span class='notice'>You begin sweeping \the [src] about, scanning for metal deposits.</span>")
 	playsound(loc, 'sound/items/goggles_charge.ogg', 50, 1, -6)
 
 	if(!do_after(user, scan_time))
@@ -83,6 +83,7 @@
 					result = "huge quantities of [ore_type]"
 		results += result
 	to_chat(user, results.Join("<br>"))
+
 
 /obj/item/mining_scanner/advanced
 	name = "advanced ore detector"

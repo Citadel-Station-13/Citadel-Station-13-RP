@@ -34,6 +34,7 @@
 	brute_mod =		0.30 // 70% brute reduction
 	burn_mod =		1.4 //60% burn weakness
 	oxy_mod =		0
+	radiation_mod = 0 // Their blobforms have rad immunity, so it only makes sense that their humanoid forms do too
  /*
 These values assume all limbs are hit by the damage. To get individual limb damages divide by 11.
 A worst-case sev 4 emp will do 88 damage pre-mitigation, and 140.8 post-mitigation (as resist is negative) spread out over all the limbs.
@@ -123,7 +124,9 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 		/mob/living/carbon/human/proc/tie_hair,
 		/mob/living/proc/glow_toggle,
 		/mob/living/proc/glow_color,
-		/mob/living/carbon/human/proc/lick_wounds) //prots get all the special verbs since they can't select traits.
+		/mob/living/carbon/human/proc/lick_wounds,
+		/mob/living/carbon/human/proc/rig_transform,
+		/mob/living/proc/usehardsuit) //prots get all the special verbs since they can't select traits.
 	var/global/list/abilities = list()
 
 	var/monochromatic = FALSE //IGNORE ME
@@ -154,18 +157,18 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 	H.synth_color = TRUE
 
 /datum/species/protean/equip_survival_gear(var/mob/living/carbon/human/H)
-	var/obj/item/stack/material/steel/metal_stack = new()
-	metal_stack.amount = 3
-
-	var/obj/item/clothing/accessory/permit/nanotech/permit = new()
+	var/obj/item/storage/box/box = new /obj/item/storage/box/survival/synth(H)
+	var/obj/item/stack/material/steel/metal_stack = new(box)
+	metal_stack.amount = 5
+	new /obj/item/fbp_backup_cell(box)
+	var/obj/item/clothing/accessory/permit/nanotech/permit = new(box)
 	permit.set_name(H.real_name)
 
 	if(H.backbag == 1) //Somewhat misleading, 1 == no bag (not boolean)
-		H.equip_to_slot_or_del(permit, slot_l_hand)
-		H.equip_to_slot_or_del(metal_stack, slot_r_hand)
+		H.equip_to_slot_or_del(box, slot_l_hand)
 	else
-		H.equip_to_slot_or_del(permit, slot_in_backpack)
-		H.equip_to_slot_or_del(metal_stack, slot_in_backpack)
+		H.equip_to_slot_or_del(box, slot_in_backpack)
+
 
 	spawn(0) //Let their real nif load if they have one
 		if(!H.nif)
@@ -173,6 +176,9 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 			new_nif.quick_implant(H)
 		else
 			H.nif.durability = rand(21,25)
+
+	var/obj/item/rig/protean/prig = new /obj/item/rig/protean(H)
+	prig.myprotean = H
 
 /datum/species/protean/hug(var/mob/living/carbon/human/H, var/mob/living/target)
 	return ..() //Wut
@@ -325,6 +331,9 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 	..()
 	holder.adjustBruteLoss(-9 ,include_robo = TRUE) //Looks high, but these are modified by species resistances to equal out at 3hp/sec.
 	holder.adjustFireLoss(-2.14,include_robo = TRUE) //Looks high, but these are modified by species resistances to equal out at 3hp/sec.
+	holder.adjustToxLoss(-3)
+	holder.radiation = max(holder.radiation - 30, 0) // I'm keeping this in and increasing it, just in the off chance the protean gets some rads, so that there's way to get rid of them
+
 
 
 	var/mob/living/carbon/human/H = holder
@@ -348,6 +357,27 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 	if(new_name)
 		src.name += " ([new_name])"
 		desc += "\nVALID THROUGH END OF: [time2text(world.timeofday, "Month") +" "+ num2text(text2num(time2text(world.timeofday, "YYYY"))+544)]\nREGISTRANT: [new_name]"
+
+/mob/living/carbon/human/proc/rig_transform()
+	set name = "Modify Form - Hardsuit"
+	set desc = "Allows a protean to solidify its form into one extremely similar to a hardsuit."
+	set category = "Abilities"
+
+	if(istype(loc, /obj/item/rig/protean))
+		var/obj/item/rig/protean/prig = loc
+		src.forceMove(get_turf(prig))
+		prig.forceMove(src)
+		return
+
+	if(isturf(loc))
+		var/obj/item/rig/protean/prig
+		for(var/obj/item/rig/protean/O in contents)
+			prig = O
+			break
+		if(prig)
+			prig.forceMove(get_turf(src))
+			src.forceMove(prig)
+			return
 
 #undef DAM_SCALE_FACTOR
 #undef METAL_PER_TICK
