@@ -41,6 +41,7 @@
 	initial_flooring = /decl/flooring/outdoors/beach
 
 /turf/simulated/floor/beach/sand/desert
+	name = "Dunes"
 	icon = 'icons/turf/desert.dmi'
 	icon_state = "desert"
 
@@ -48,6 +49,16 @@
 	. = ..()
 	if(prob(5))
 		icon_state = "desert[rand(0,4)]"
+
+/turf/simulated/floor/beach/sand/lowdesert
+	name = "\improper low desert"
+	icon = 'icons/turf/desert.dmi'
+	icon_state = "lowdesert"
+
+/turf/simulated/floor/beach/sand/lowdesert/Initialize()
+	. = ..()
+	if(prob(5))
+		icon_state = "lowdesert[rand(0,4)]"
 
 /turf/simulated/floor/beach/coastline
 	name = "Coastline"

@@ -100,14 +100,16 @@ var/datum/planet/classh/planet_classh = null
 		WEATHER_CLEAR		= new /datum/weather/classh/clear(),
 		WEATHER_OVERCAST	= new /datum/weather/classh/overcast(),
 		WEATHER_RAIN		= new /datum/weather/classh/rain(),
+		WEATHER_SANDSTORM	= new /datum/weather/classh/sandstorm(),
 		WEATHER_BLOOD_MOON	= new /datum/weather/classh/blood_moon(),
 		WEATHER_EMBERFALL	= new /datum/weather/classh/emberfall(),
 		WEATHER_ASH_STORM	= new /datum/weather/classh/ash_storm(),
 		WEATHER_FALLOUT		= new /datum/weather/classh/fallout()
 		)
 	roundstart_weather_chances = list(
-		WEATHER_CLEAR		= 80,
+		WEATHER_CLEAR		= 70,
 		WEATHER_OVERCAST	= 19,
+		WEATHER_SANDSTORM	= 10,
 		WEATHER_RAIN		= 1
 		)
 
@@ -187,6 +189,26 @@ var/datum/planet/classh/planet_classh = null
 			L.water_act(1)
 			if(show_message)
 				to_chat(L, effect_message)
+
+/datum/weather/classh/sandstorm
+	name = "sandstorm"
+	icon_state = "sandstorm"
+	wind_high = 4
+	wind_low = 2
+	light_modifier = 0.3
+	flight_failure_modifier = 10
+	transition_chances = list(
+		WEATHER_CLEAR = 45,
+		WEATHER_SANDSTORM = 50,
+		WEATHER_OVERCAST = 5
+		)
+	observed_message = "A strong wind kicks sand everywhere."
+	transition_messages = list(
+		"Strong winds howl around you as a sandstorm appears.",
+		"Rushing sand envelops you, and it becomes hard to see!"
+	)
+	outdoor_sounds_type = /datum/looping_sound/weather/outside_blizzard
+	indoor_sounds_type = /datum/looping_sound/weather/inside_blizzard
 
 /datum/weather/classh/blood_moon
 	name = "blood moon"

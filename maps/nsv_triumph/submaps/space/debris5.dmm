@@ -11,7 +11,7 @@
 /turf/simulated/floor/airless,
 /area/triumph_away/debrisfield/explored)
 "d" = (
-/turf/simulated/shuttle/wall/dark,
+/turf/simulated/shuttle/wall/voidcraft,
 /area/triumph_away/debrisfield/explored)
 "m" = (
 /obj/random/ammo,

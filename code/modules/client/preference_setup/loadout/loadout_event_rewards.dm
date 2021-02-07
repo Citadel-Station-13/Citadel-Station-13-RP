@@ -14,6 +14,6 @@
 /datum/gear/event_reward/gameboy
 	sort_category = "Event Rewards"
 	cost = 0
-	display_name = "A handheld gaming device from a time long past."
+	display_name = "Game Boy"
 	path = /obj/item/instrument/gameboy
 	ckeywhitelist = list("jaybird1")

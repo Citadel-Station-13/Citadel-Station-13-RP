@@ -5,7 +5,7 @@
 	icon_state = "cleaner"
 	item_state = "cleaner"
 	flags = OPENCONTAINER|NOBLUDGEON
-	slot_flags = SLOT_BELT
+	slot_flags = SLOT_BELT | SLOT_HOLSTER
 	throwforce = 3
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 2
