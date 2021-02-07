@@ -36,6 +36,11 @@
 	name = "Lava Land - Idle Ruins"
 	base_turf = /turf/simulated/floor/outdoors/lavaland
 
+/area/triumph_away/lavaland/bosses
+	name = "Lava Land - Boss"
+	base_turf = /turf/simulated/floor/outdoors/lavaland
+	requires_power = 0
+
 /obj/effect/landmark/lavaland_entry
 	name = "lavaland_entry"
 

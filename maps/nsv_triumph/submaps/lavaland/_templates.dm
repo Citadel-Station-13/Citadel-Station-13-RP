@@ -14,31 +14,31 @@
 	name = "Lava Land - Four Pillars"
 	mappath = 'dogs.dmm'
 	cost = 5
-	discard_prob = 0
+	discard_prob = 25
 
 /datum/map_template/lavaland/botany
 	name = "Lava Land - Botany"
 	mappath = 'botany.dmm'
 	cost = 5
-	discard_prob = 0
+	discard_prob = 25
 
 /datum/map_template/lavaland/idleruins1
 	name = "Lava Land - Idle Ruins"
 	mappath = 'idleruins1.dmm'
 	cost = 5
-	discard_prob = 0
+	discard_prob = 25
 /datum/map_template/lavaland/idleruins2
 	name = "Lava Land - Idle Ruins 2"
 	mappath = 'idleruins2.dmm'
 	cost = 5
-	discard_prob = 0
+	discard_prob = 25
 	fixed_orientation = TRUE // this really doesn't work, but i dont see a way to fix it without redoing the system
 
 /datum/map_template/lavaland/shelter
 	name = "Lava Land - Shelter"
 	mappath = 'shelter.dmm'
-	cost = 15
-	discard_prob = 0
+	cost = 5
+	discard_prob = 25
 	allow_duplicates = TRUE
 	fixed_orientation = TRUE 
 

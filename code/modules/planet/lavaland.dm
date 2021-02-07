@@ -100,8 +100,8 @@ var/datum/planet/lavaland/planet_lavaland = null
         WEATHER_CLEAR       = new /datum/weather/lavaland/clear()
 		)
 	roundstart_weather_chances = list(
-		WEATHER_ASH_STORM	= 75,
-		WEATHER_CLEAR	= 25
+		WEATHER_ASH_STORM	= 5,
+		WEATHER_CLEAR	= 95
 		)
 
 /datum/weather/lavaland
@@ -112,8 +112,8 @@ var/datum/planet/lavaland/planet_lavaland = null
 /datum/weather/lavaland/clear
 	name = "clear"
 	transition_chances = list(
-		WEATHER_CLEAR = 50,
-		WEATHER_ASH_STORM = 50
+		WEATHER_CLEAR = 90,
+		WEATHER_ASH_STORM = 10
 		)
 	transition_messages = list(
 		"The air clears up.",
@@ -125,7 +125,7 @@ var/datum/planet/lavaland/planet_lavaland = null
 
 /datum/weather/lavaland/ash_storm
 	name = "ash storm"
-	icon_state = "ashfall_heavy"
+	icon_state = "ashfall"
 	light_modifier = 0.5
 	light_color = "#1a1111ff"
 	temp_high = 323.15	// 50c
@@ -135,8 +135,8 @@ var/datum/planet/lavaland/planet_lavaland = null
 	flight_failure_modifier = 50
 	sky_visible = FALSE
 	transition_chances = list(
-		WEATHER_ASH_STORM = 25,
-		WEATHER_CLEAR = 75
+		WEATHER_ASH_STORM = 5,
+		WEATHER_CLEAR = 95
 		)
 	observed_message = "All that can be seen is black smoldering ash."
 	transition_messages = list(
