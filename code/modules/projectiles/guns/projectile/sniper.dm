@@ -16,8 +16,8 @@
 	max_shells = 1
 	ammo_type = /obj/item/ammo_casing/a145
 	projectile_type = /obj/item/projectile/bullet/rifle/a145
-	accuracy = -75
-	scoped_accuracy = 75
+	accuracy = -45
+	scoped_accuracy = 95
 //	one_handed_penalty = 90
 	var/bolt_open = 0
 
@@ -81,7 +81,7 @@
 	caliber = "7.62mm"
 	load_method = MAGAZINE
 	accuracy = -45 //shooting at the hip
-	scoped_accuracy = 0
+	scoped_accuracy = 95
 //	requires_two_hands = 1
 //	one_handed_penalty = 60 // The weapon itself is heavy, and the long barrel makes it hard to hold steady with just one hand.
 	fire_sound = 'sound/weapons/Gunshot_SVD.ogg' // Has a very unique sound.

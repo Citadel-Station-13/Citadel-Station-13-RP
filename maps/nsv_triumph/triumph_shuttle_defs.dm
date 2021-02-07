@@ -11,6 +11,8 @@
 	move_time = SHUTTLE_TRANSIT_DURATION_RETURN
 
 //////////////////////////////////////////////////////////////
+//Old Escape Pod
+/*
 /datum/shuttle/autodock/ferry/escape_pod/large_escape_pod1
 	name = "Large Escape Pod 1"
 	location = FERRY_LOCATION_STATION
@@ -21,7 +23,7 @@
 	landmark_transition = "escapepod1_transit"
 	docking_controller_tag = "large_escape_pod_1"
 	move_time = SHUTTLE_TRANSIT_DURATION_RETURN
-
+*/
 //////////////////////////////////////////////////////////////
 // Supply shuttle
 /datum/shuttle/autodock/ferry/supply/cargo

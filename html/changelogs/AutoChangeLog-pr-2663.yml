@@ -1,4 +1,4 @@
 author: "buffyuwu"
 delete-after: True
 changes: 
-  - rscadd: "adds local narrate verb"
+  - rscadd: "adds autocorrect"

@@ -1484,7 +1484,7 @@
 /datum/lore/organization/gov/solgov
 	name = "Orion Confederation"
 	short_name = "OriCon "
-	acronym = "OCS"
+	acronym = "TOC"
 	desc = "" //Todo //"SolGov is a decentralized confederation of human governmental entities based on Luna, Sol, which defines top-level law for their member states.  \
 	Member states receive various benefits such as defensive pacts, trade agreements, social support and funding, and being able to participate \
 	in the Colonial Assembly.  The majority, but not all human territories are members of SolGov.  As such, SolGov is a major power and \
@@ -1495,7 +1495,7 @@
 	motto = "Nil Mortalibus Ardui Est" // Latin, because latin.  Says 'Nothing is too steep for mortals'
 	autogenerate_destination_names = TRUE
 
-	ship_prefixes = list("OCS-A" = "an administrative", "OCS-T" = "a transportation", "OCS-D" = "a diplomatic", "OCS-F" = "a freight", "OCS-J" = "a prisoner transfer")
+	ship_prefixes = list("TOC-A" = "an administrative", "TOC-T" = "a transportation", "TOC-D" = "a diplomatic", "TOC-F" = "a freight", "TOC-J" = "a prisoner transfer")
 	//earth's biggest impact craters
 	ship_names = list(
 			"Wabar",
@@ -1572,7 +1572,7 @@
 			"Titan",
 			"Europa",
 			"the Jovian subcluster",
-			"a SolGov embassy",
+			"a Confederation embassy",
 			"a classified location"
 			)
 			// autogen will add a lot of other places as well.
@@ -2058,7 +2058,9 @@
 			"Renholder's Opus",
 			"Tannhauser Bow",
 			"Silver Lake",
-			"Mozambique Vampire"
+			"Mozambique Vampire",
+			"Edith's Checkerspot Butterfly",
+			"A Retinue of Moons"
 			)
 	destination_names = list(
 			"unidentified sensor reading",
