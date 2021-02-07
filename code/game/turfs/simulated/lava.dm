@@ -15,7 +15,7 @@
 	can_dirty = FALSE
 
 /turf/simulated/floor/lava/outdoors
-	outdoors = TRUE
+	outdoors = FALSE
 
 // For maximum pedantry.
 /turf/simulated/floor/lava/Initialize()
