@@ -359,7 +359,7 @@ var/list/flooring_types
 	name = "ash sand"
 	desc = "Soft and ominous."
 	icon = 'icons/turf/flooring/asteroid.dmi'
-	icon_base = "asteroidfloor"
+	icon_base = "asteroid"
 	flags = TURF_HAS_EDGES
 	footstep_sounds = list("human" = list(
 		'sound/effects/footstep/asteroid1.ogg',
