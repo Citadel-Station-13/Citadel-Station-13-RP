@@ -88,6 +88,7 @@ turf/simulated/mineral/floor/light_corner
 	opacity = 0
 	blocks_air = 0
 	can_build_into_floor = TRUE
+	SSplanets.addTurf(src)
 	update_general()
 
 /turf/simulated/mineral/proc/make_wall()
