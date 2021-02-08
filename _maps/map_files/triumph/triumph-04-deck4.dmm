@@ -353,15 +353,12 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/security_lockerroom)
 "apa" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	dir = 1;
-	icon_state = "1-2"
+/obj/machinery/alarm{
+	dir = 8;
+	pixel_x = 24
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/carpet,
-/area/security/detectives_office)
+/turf/simulated/floor/plating,
+/area/maintenance/security_port)
 "apk" = (
 /obj/structure/table/standard,
 /obj/random/firstaid,
@@ -1168,7 +1165,7 @@
 	},
 /obj/machinery/button/remote/blast_door{
 	id = "armoryred";
-	name = "Armoury Access";
+	name = "Armory Access";
 	pixel_x = -6;
 	pixel_y = 25;
 	req_access = list(3)
@@ -1744,14 +1741,12 @@
 /turf/simulated/floor/carpet/sblucarpet,
 /area/chapel/main)
 "bmi" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	dir = 1;
-	icon_state = "1-2"
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -23
 	},
-/turf/simulated/floor/carpet,
-/area/security/detectives_office)
+/turf/simulated/floor/tiled,
+/area/security/interrogation)
 "bnm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -3514,6 +3509,10 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/alarm{
+	dir = 8;
+	pixel_x = 24
+	},
 /turf/simulated/floor/tiled,
 /area/security/interrogation)
 "cvt" = (
@@ -3631,13 +3630,12 @@
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_showers)
 "czK" = (
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
+/obj/machinery/alarm{
+	dir = 8;
+	pixel_x = 24
 	},
-/turf/simulated/floor/lino,
-/area/security/detectives_office)
+/turf/simulated/floor/carpet/bcarpet,
+/area/security/training)
 "czV" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -4587,7 +4585,7 @@
 /obj/effect/floor_decal/corner/red/border,
 /obj/machinery/button/remote/blast_door{
 	id = "armoryred";
-	name = "Armoury Access";
+	name = "Armory Access";
 	pixel_x = -6;
 	pixel_y = -25;
 	req_access = list(3)
@@ -6420,19 +6418,15 @@
 /turf/simulated/shuttle/floor/voidcraft,
 /area/bridge)
 "ezJ" = (
-/obj/structure/cable/green{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
+/obj/effect/floor_decal/borderfloorblack/full,
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/machinery/flasher/portable,
+/obj/machinery/alarm{
+	frequency = 1441;
+	pixel_y = 22
 	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	dir = 1;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/lino,
-/area/security/detectives_office)
+/turf/simulated/floor/tiled/dark,
+/area/security/security_equiptment_storage)
 "eAk" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/cedouble,
@@ -7178,6 +7172,10 @@
 	dir = 1
 	},
 /obj/fiftyspawner/glass,
+/obj/machinery/alarm{
+	frequency = 1441;
+	pixel_y = 22
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "eTa" = (
@@ -8905,10 +8903,10 @@
 	pixel_x = 4;
 	pixel_y = 26
 	},
-/obj/machinery/media/jukebox,
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/machinery/fitness/punching_bag,
 /turf/simulated/floor/carpet/bcarpet,
 /area/security/training)
 "gnk" = (
@@ -9876,6 +9874,7 @@
 	pixel_x = 5;
 	pixel_y = 32
 	},
+/obj/structure/fitness/punchingbag,
 /turf/simulated/floor/carpet/bcarpet,
 /area/security/training)
 "hat" = (
@@ -11057,6 +11056,10 @@
 /area/security/warden)
 "hJY" = (
 /obj/structure/closet/wardrobe/captain,
+/obj/machinery/alarm{
+	frequency = 1441;
+	pixel_y = 22
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/captain)
 "hKb" = (
@@ -12170,6 +12173,13 @@
 	d1 = 2;
 	d2 = 4;
 	icon_state = "2-4"
+	},
+/obj/machinery/button/remote/blast_door{
+	id = "armoryred";
+	name = "Armory Access";
+	pixel_x = -6;
+	pixel_y = 25;
+	req_access = list(3)
 	},
 /turf/simulated/floor/tiled,
 /area/security/hallwayaux)
@@ -14678,12 +14688,6 @@
 /obj/item/book/manual/legal/sop_vol2,
 /obj/item/book/manual/legal/sop_vol3,
 /obj/item/book/manual/legal/sop_vol4,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	dir = 1;
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
@@ -16181,6 +16185,10 @@
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/obj/machinery/alarm{
+	frequency = 1441;
+	pixel_y = 22
 	},
 /turf/simulated/floor/wood,
 /area/security/breakroom)
@@ -17796,13 +17804,12 @@
 /turf/simulated/floor/tiled,
 /area/security/interrogation)
 "msj" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -22
 	},
-/turf/simulated/floor/carpet,
-/area/security/detectives_office)
+/turf/simulated/floor/tiled/white,
+/area/security/security_bathroom)
 "msm" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 8
@@ -18024,18 +18031,8 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/sleep/RD_quarters)
 "mBJ" = (
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
-	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
 	},
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
@@ -20035,7 +20032,6 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/structure/fitness/punchingbag,
 /turf/simulated/floor/carpet/bcarpet,
 /area/security/training)
 "nWP" = (
@@ -20609,11 +20605,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "opJ" = (
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
@@ -22292,12 +22283,12 @@
 /turf/simulated/floor/tiled,
 /area/security/security_equiptment_storage)
 "prx" = (
+/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/security{
 	name = "Interrogation";
-	req_access = newlist();
-	req_one_access = list(4)
+	req_access = list(4);
+	req_one_access = newlist()
 	},
-/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/security/interrogation)
 "psx" = (
@@ -29026,7 +29017,7 @@
 /turf/simulated/floor/tiled,
 /area/security/brig)
 "tQo" = (
-/obj/machinery/fitness/punching_bag,
+/obj/machinery/media/jukebox,
 /turf/simulated/floor/carpet/bcarpet,
 /area/security/training)
 "tQv" = (
@@ -32257,6 +32248,7 @@
 /obj/machinery/door/airlock{
 	name = "Public Heated Pool"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/sauna)
 "vQd" = (
@@ -32897,12 +32889,6 @@
 /obj/item/book/manual/legal/cr_vol2,
 /obj/item/book/manual/legal/cr_vol4,
 /obj/item/book/manual/legal/cr_vol5,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	dir = 1;
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
 "wkS" = (
@@ -43928,7 +43914,7 @@ jGr
 svi
 pXZ
 dNV
-ufw
+bmi
 gth
 xzh
 oFO
@@ -44631,10 +44617,10 @@ nIw
 qNU
 tzJ
 sKM
-rgM
+brg
 wkz
-bmi
-msj
+xIg
+xIg
 gCl
 jYf
 ojn
@@ -44660,7 +44646,7 @@ vWr
 wzg
 umi
 gMF
-nbt
+msj
 hjG
 wzg
 wzg
@@ -44773,9 +44759,9 @@ mIQ
 aWV
 tzJ
 sKM
-rgM
+brg
 kjd
-apa
+qAJ
 mBJ
 qAJ
 mLa
@@ -45060,7 +45046,7 @@ lSC
 brg
 cuC
 qaE
-czK
+qaE
 lHQ
 xIg
 krn
@@ -45202,7 +45188,7 @@ sKM
 sGw
 qaE
 qaE
-czK
+qaE
 xIg
 ade
 eXw
@@ -45344,7 +45330,7 @@ sKM
 rgM
 pZO
 pZO
-ezJ
+pZO
 wmt
 wmt
 rhT
@@ -45912,7 +45898,7 @@ nGR
 brg
 dHb
 dKr
-dHb
+apa
 iyy
 mkI
 uuS
@@ -46066,7 +46052,7 @@ vWr
 wZd
 vxV
 mhY
-nwd
+czK
 iai
 sGq
 wZd
@@ -47072,7 +47058,7 @@ wZa
 nCJ
 sNZ
 uWb
-omx
+ezJ
 oIi
 ruW
 iga

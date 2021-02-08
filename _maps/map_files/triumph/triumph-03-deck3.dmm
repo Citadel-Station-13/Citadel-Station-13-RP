@@ -930,7 +930,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "aMY" = (
-/turf/simulated/wall,
+/turf/simulated/wall/r_wall,
 /area/maintenance/medbay_aft)
 "aNd" = (
 /obj/machinery/door/firedoor/glass,
@@ -1537,6 +1537,10 @@
 /area/medical/psych_ward)
 "buE" = (
 /obj/machinery/camera/network/medbay{
+	dir = 8
+	},
+/obj/structure/table/woodentable,
+/obj/machinery/computer/med_data/laptop{
 	dir = 8
 	},
 /turf/simulated/floor/wood,
@@ -3396,25 +3400,14 @@
 /turf/simulated/floor/tiled,
 /area/medical/chemistry)
 "ddE" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
+/obj/effect/floor_decal/borderfloor{
+	dir = 10
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/effect/floor_decal/techfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/techfloor/hole{
-	dir = 8
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 10
 	},
 /turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/area/rnd/research_foyer_auxiliary)
 "ddT" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
@@ -4055,10 +4048,10 @@
 	pixel_x = 26
 	},
 /obj/structure/table/woodentable,
-/obj/item/toy/plushie/therapy/green,
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/item/flashlight/lamp/green,
 /turf/simulated/floor/wood,
 /area/medical/psych{
 	name = "\improper Psych Room 2"
@@ -5738,11 +5731,8 @@
 /turf/simulated/wall,
 /area/medical/recoveryrestroom)
 "fkn" = (
-/obj/structure/closet/secure_closet/psych,
-/turf/simulated/floor/wood,
-/area/medical/psych{
-	name = "\improper Psych Room 2"
-	})
+/turf/simulated/wall/r_wall,
+/area/hallway/primary/port)
 "fly" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -9841,10 +9831,6 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/structure/table/woodentable,
-/obj/machinery/computer/med_data/laptop{
-	dir = 8
-	},
 /obj/machinery/button/remote/airlock{
 	desc = "A remote control switch for the medbay recovery room door.";
 	dir = 8;
@@ -9853,6 +9839,7 @@
 	pixel_x = 28;
 	pixel_y = 9
 	},
+/obj/structure/closet/secure_closet/psych,
 /turf/simulated/floor/wood,
 /area/medical/psych{
 	name = "\improper Psych Room 2"
@@ -11248,7 +11235,9 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/steeldecal/steel_decals_central6,
+/obj/effect/floor_decal/corner/mauve/border,
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
 "kty" = (
@@ -19104,7 +19093,7 @@
 /obj/machinery/camera/network/outside{
 	dir = 8
 	},
-/turf/simulated/wall,
+/turf/simulated/wall/r_wall,
 /area/maintenance/research)
 "qXj" = (
 /obj/effect/floor_decal/borderfloor{
@@ -19650,7 +19639,6 @@
 "rru" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/structure/table/woodentable,
-/obj/item/flashlight/lamp/green,
 /turf/simulated/floor/wood,
 /area/medical/psych{
 	name = "\improper Psych Room 2"
@@ -20197,7 +20185,6 @@
 /area/rnd/test_area)
 "rMx" = (
 /obj/effect/floor_decal/techfloor,
-/obj/effect/floor_decal/techfloor/hole,
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
 "rNa" = (
@@ -21978,11 +21965,8 @@
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "tkv" = (
-/obj/effect/floor_decal/techfloor/hole{
-	dir = 1
-	},
-/turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
+/turf/simulated/wall/r_wall,
+/area/teleporter/departing)
 "tkF" = (
 /obj/effect/landmark/start{
 	name = "Scientist"
@@ -22972,6 +22956,7 @@
 	pixel_y = 6
 	},
 /obj/item/toy/plushie/kitten,
+/obj/item/toy/plushie/therapy/green,
 /turf/simulated/floor/wood,
 /area/medical/psych{
 	name = "\improper Psych Room 2"
@@ -23109,6 +23094,12 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "ukz" = (
@@ -23550,9 +23541,12 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "uCw" = (
-/obj/structure/closet/secure_closet/psych,
-/turf/simulated/floor/wood,
-/area/medical/psych)
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -23
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/resleeving)
 "uDj" = (
 /obj/machinery/sleep_console,
 /turf/simulated/floor/tiled/white,
@@ -25977,9 +25971,6 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
 "wHf" = (
-/obj/structure/bed/chair/comfy/brown{
-	dir = 4
-	},
 /obj/machinery/light{
 	dir = 8
 	},
@@ -25988,6 +25979,9 @@
 	pixel_x = -28;
 	req_access = list()
 	},
+/obj/structure/table/woodentable,
+/obj/item/toy/plushie/siamese_cat,
+/obj/item/toy/plushie/therapy/green,
 /turf/simulated/floor/wood,
 /area/medical/psych)
 "wHh" = (
@@ -26071,6 +26065,9 @@
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
 /area/rnd/breakroom)
 "wLq" = (
@@ -26658,9 +26655,7 @@
 /turf/simulated/floor/tiled,
 /area/teleporter/departing)
 "xme" = (
-/obj/structure/table/woodentable,
-/obj/item/toy/plushie/siamese_cat,
-/obj/item/toy/plushie/therapy/green,
+/obj/structure/closet/secure_closet/psych,
 /turf/simulated/floor/wood,
 /area/medical/psych)
 "xmf" = (
@@ -29803,17 +29798,17 @@ gVh
 bdR
 gVh
 gVh
-czP
-czP
-czP
-czP
-czP
+slN
+slN
+slN
+slN
+slN
 mQw
 mQw
-czP
-czP
-czP
-czP
+slN
+slN
+slN
+slN
 bdR
 gVh
 gVh
@@ -29945,7 +29940,7 @@ pYD
 pYD
 bdR
 pYD
-czP
+slN
 sQl
 kCl
 kSA
@@ -29955,7 +29950,7 @@ sQl
 dWM
 sQl
 dWM
-czP
+slN
 pYD
 pYD
 pYD
@@ -30086,8 +30081,8 @@ clG
 gVh
 asm
 gVh
-czP
-czP
+slN
+slN
 sQl
 ezT
 ezT
@@ -30226,30 +30221,30 @@ doH
 gVh
 clG
 gVh
-czP
-czP
-czP
+slN
+slN
+slN
 jOy
 sQl
 ezT
 sQl
-xuV
-xuV
+fkn
+fkn
 eLe
-xuV
-dLs
-dLs
-dLs
+fkn
+tkv
+tkv
+tkv
 kUK
 kUK
 kUK
-dLs
-dLs
-dLs
-xuV
+tkv
+tkv
+tkv
+fkn
 eLe
-xuV
-xuV
+fkn
+fkn
 lsY
 uHP
 lsY
@@ -30366,20 +30361,20 @@ dYm
 pIL
 pIL
 gVh
-czP
-czP
-czP
+slN
+slN
+slN
 sQl
 sQl
 sQl
 sQl
 ezT
 ieX
-xuV
+fkn
 vLu
 nOd
 gaW
-dLs
+tkv
 rKu
 tbg
 rWx
@@ -30387,11 +30382,11 @@ rWx
 rWx
 qwm
 ljr
-dLs
+tkv
 glo
 nOd
 rhL
-xuV
+fkn
 lsY
 uHP
 jtw
@@ -30508,7 +30503,7 @@ dYm
 pIL
 gVh
 gVh
-czP
+slN
 eGk
 sQl
 sQl
@@ -30517,11 +30512,11 @@ ezT
 ezT
 ezT
 lDl
-xuV
+fkn
 odT
 otQ
 lBT
-dLs
+tkv
 oUx
 anD
 pdH
@@ -30529,11 +30524,11 @@ anD
 pdH
 anD
 ncc
-dLs
+tkv
 xxY
 dge
 gaW
-xuV
+fkn
 lsY
 uHP
 uHP
@@ -30650,7 +30645,7 @@ dYm
 gVh
 gVh
 gVh
-czP
+slN
 ezT
 ezT
 ezT
@@ -30659,11 +30654,11 @@ sQl
 sQl
 kLL
 eGk
-xuV
+fkn
 wpm
 ntR
 ppa
-dLs
+tkv
 mym
 crI
 dnK
@@ -30671,11 +30666,11 @@ hrb
 vcq
 crI
 enA
-dLs
+tkv
 kob
 nOd
 ppa
-xuV
+fkn
 hju
 pXl
 lsY
@@ -30792,20 +30787,20 @@ dYm
 gVh
 gVh
 gVh
-czP
+slN
 ezT
 sQl
 sQl
 rpS
 dWM
-xuV
-xuV
-xuV
-xuV
+fkn
+fkn
+fkn
+fkn
 vrz
 kHF
 iCM
-dLs
+tkv
 vOc
 hQN
 eDb
@@ -30813,14 +30808,14 @@ xlS
 vQI
 vQI
 vQI
-dLs
+tkv
 qKL
 nOd
 gaW
-xuV
-xuV
-xuV
-xuV
+fkn
+fkn
+fkn
+fkn
 riD
 lsY
 rCE
@@ -30934,38 +30929,38 @@ dYm
 gVh
 asm
 gVh
-czP
+slN
 ezT
 sQl
-xuV
-xuV
-xuV
-xuV
+fkn
+fkn
+fkn
+fkn
 vTi
 oWy
 uqz
 nOd
 ntR
 nOd
-dLs
-dLs
+tkv
+tkv
 dLs
 dUK
 caG
 dUK
-dLs
-dLs
-dLs
+tkv
+tkv
+tkv
 uqK
 nOd
 nOd
 uiL
 tfY
 wpm
-xuV
-xuV
-xuV
-xuV
+fkn
+fkn
+fkn
+fkn
 uHP
 lJA
 aMY
@@ -31074,12 +31069,12 @@ jzj
 ctD
 dYm
 slN
-czP
-czP
-czP
+slN
+slN
+slN
 ezT
 hnF
-xuV
+fkn
 emp
 dMz
 qqc
@@ -31391,7 +31386,7 @@ kUl
 oPl
 oPl
 itT
-xuV
+fkn
 uHP
 lsY
 lsY
@@ -31504,8 +31499,8 @@ slN
 slN
 slN
 fcP
-czP
-xuV
+slN
+fkn
 lJw
 vIB
 kiX
@@ -31533,7 +31528,7 @@ hVx
 kcr
 mJq
 gzM
-bCW
+oHo
 aMY
 eeL
 aMY
@@ -31647,7 +31642,7 @@ mck
 slN
 ezT
 sQl
-xuV
+fkn
 aXf
 qGI
 kiX
@@ -32234,7 +32229,7 @@ iKp
 cOe
 wlT
 hVx
-uCw
+gxS
 mKz
 kdQ
 lZE
@@ -32520,7 +32515,7 @@ ygN
 ydf
 xQE
 rfh
-fkn
+nPz
 nPz
 fns
 nPz
@@ -33365,7 +33360,7 @@ hkH
 hkH
 mjT
 vRi
-ddE
+noo
 mht
 lIB
 ioO
@@ -33915,7 +33910,7 @@ kGK
 snk
 shp
 mWR
-snk
+ddE
 vbo
 nGf
 ref
@@ -34199,7 +34194,7 @@ knb
 shT
 nGf
 nGf
-uwK
+wpE
 fHa
 nGf
 ivY
@@ -34216,7 +34211,7 @@ sGT
 vQV
 uGD
 pqx
-tkv
+uGD
 lnI
 uGD
 pqx
@@ -36945,7 +36940,7 @@ wcL
 mWX
 sgd
 aQW
-vVp
+uCw
 fRC
 bbr
 sCe
@@ -42746,7 +42741,7 @@ mBS
 mBS
 idJ
 uvY
-nVg
+ioO
 gVh
 gVh
 pYD
