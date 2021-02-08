@@ -218,6 +218,10 @@
 	icon_state = "black_suit_fem"
 	item_state = "black_formal_skirt"
 
+/obj/item/clothing/under/suit_jacket/female/pleated_skirt
+	name = "executive pleated skirt"
+	icon_state = "black_suit_fem_skirt"
+
 /obj/item/clothing/under/suit_jacket/red
 	name = "red suit"
 	desc = "A red suit and blue tie. Somewhat formal."
@@ -1235,6 +1239,7 @@
 	desc = "Replica lorica segmentata. It doesn't feel like it would actually afford much protection against modern weaponry."
 	icon_state = "roman"
 
+//Costumes - Bring all of them down here sometime to help build categories?
 /obj/item/clothing/under/lobster
 	name = "lobster costume"
 	desc = "If you can dance, you've got a career in Law ahead."
@@ -1284,6 +1289,31 @@
 	name = "blue plug suit"
 	desc = "If you want to sit in your bedroom and cry, this is the suit to do it in."
 	icon_state = "blue_mech_suit"
+
+/obj/item/clothing/under/christmas
+	name = "holiday suit"
+	desc = "This costume hearkens back to Old Earth solstice traditions representing community interaction and an emphemeral concept known as 'holiday cheer'."
+	icon_state = "christmasmaler"
+
+/obj/item/clothing/under/christmas/green
+	name = "green holiday suit"
+	desc = "Commonly associated with faerie-like 'helpers', the color green represents vitality and the coming spring."
+	icon_state = "christmasmaleg"
+
+/obj/item/clothing/under/christmasfem
+	name = "sexy holiday suit"
+	desc = "Appreciation of more physical forms of comfort is important during the holidays. Even when it's cold out."
+	icon_state = "christmasfemaler"
+
+/obj/item/clothing/under/christmasfem/green
+	name = "sexy green holiday suit"
+	desc = "Something special for Santa's little helper."
+	icon_state = "christmasfemaleg"
+
+/obj/item/clothing/under/telegram
+	name = "singing courier"
+	desc = "Living telegram operators experience one of the largest on the job fatality rates of all courier-based occupations."
+	icon_state = "telegram"
 
 //Kimonos and Traditional Japanese
 /obj/item/clothing/under/kimono
@@ -1402,11 +1432,6 @@
 	name = "formal red coat"
 	desc = "Raise the taxes on their tea. What can go wrong?"
 	icon_state = "redcoatformal"
-
-/obj/item/clothing/under/syndiecombat
-	name = "syndicate combat suit"
-	desc = "This streamlined tactical suit is a cut above the tactical turtleneck. It has four more pockets."
-	icon_state = "syndicatecombat"
 
 //Colored Clown Suits
 /obj/item/clothing/under/rank/clown/orange

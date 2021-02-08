@@ -128,3 +128,22 @@
 	..(user)
 	if (magpulse)
 		to_chat(user, "It would be hard to take these off without relaxing your grip first.")//theoretically this message should only be seen by the wearer when the claws are equipped.
+
+/obj/item/clothing/shoes/magboots/advanced
+	name = "advanced magboots"
+	icon_state = "advmag0"
+
+/obj/item/clothing/shoes/magboots/advanced/set_slowdown()
+	if(magpulse)
+		slowdown -= 3
+	..()
+
+/obj/item/clothing/shoes/magboots/syndicate
+	name = "blood red magboots"
+	desc = "Prior to its dissolution, many Syndicate agents were tasked with stealing NanoTrasen's prototype advanced magboots. Reverse engineering these rare tactical boots was achieved shortly before the end of the conflict."
+	icon_state = "syndiemag0"
+
+/obj/item/clothing/shoes/magboots/syndicate/set_slowdown()
+	if(magpulse)
+		slowdown -= 3
+	..()

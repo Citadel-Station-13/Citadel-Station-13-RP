@@ -30,6 +30,10 @@
 	siemens_coefficient = 0.9
 	rolled_sleeves = 0
 
+/obj/item/clothing/under/rank/security/skirt_pleated
+	name = "security officer's pleated skirt"
+	icon_state = "sec_skirt"
+
 /obj/item/clothing/under/rank/security/turtleneck
 	name = "security turtleneck"
 	desc = "It's a stylish turtleneck made of a robust nanoweave. Nobody said the Law couldn't be fashionable."

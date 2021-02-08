@@ -21,6 +21,30 @@
 		cheongasms[initial(cheongasm_type.name)] = cheongasm_type
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(cheongasms, /proc/cmp_text_asc))
 
+/datum/gear/uniform/cheongsam_male
+	display_name = "Civilian Cheongsam (M) - Black"
+	path = /obj/item/clothing/under/cheong
+
+/datum/gear/uniform/cheongsam_male/white
+	display_name = "Civilian Cheongsam (M) - White"
+	path = /obj/item/clothing/under/cheong/white
+
+/datum/gear/uniform/cheongsam_male/red
+	display_name = "Civilian Cheongsam (M) - Red"
+	path = /obj/item/clothing/under/cheong/red
+
+/datum/gear/uniform/qipao
+	display_name = "Civilian Qipao"
+	path = /obj/item/clothing/under/qipao
+
+/datum/gear/uniform/qipao/white
+	display_name = "Civilian Qipao - White"
+	path = /obj/item/clothing/under/qipao/white
+
+/datum/gear/uniform/qipao/red
+	display_name = "Civilian Qipao - Red"
+	path = /obj/item/clothing/under/qipao/red
+
 /datum/gear/uniform/croptop
 	display_name = "Civilian Croptop Selection"
 	description = "Light shirts which shows the midsection of the wearer."
@@ -943,3 +967,6 @@ Swimsuits
 	display_name = "Civilian Simple Dress"
 	path = /obj/item/clothing/under/simpledress
 
+/datum/gear/uniform/formalredcoat
+	display_name = "Civilian Formal Coat - Red"
+	path = /obj/item/clothing/under/redcoatformal
