@@ -158,6 +158,7 @@
 	starts_with = list(
 		/obj/item/clothing/under/rank/chief_medical_officer,
 		/obj/item/clothing/under/rank/chief_medical_officer/skirt,
+		/obj/item/clothing/under/rank/chief_medical_officer/skirt_pleated,
 		/obj/item/clothing/suit/storage/toggle/labcoat/cmo,
 		/obj/item/clothing/suit/storage/toggle/labcoat/cmoalt,
 		/obj/item/cartridge/cmo,
