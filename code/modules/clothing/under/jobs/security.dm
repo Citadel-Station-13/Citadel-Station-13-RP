@@ -17,6 +17,10 @@
 	siemens_coefficient = 0.9
 	rolled_sleeves = 0
 
+/obj/item/clothing/under/rank/warden/skirt_pleated
+	name = "warden's pleated skirt"
+	icon_state = "rwarden_skirt"
+
 /obj/item/clothing/under/rank/security
 	name = "security officer's jumpsuit"
 	desc = "It's made of a slightly sturdier material than standard jumpsuits, to allow for robust protection."
@@ -98,6 +102,10 @@
 	desc = "A serious-looking tan dress shirt paired with freshly-pressed black slacks."
 	starting_accessories = list(/obj/item/clothing/accessory/tie/red_long)
 
+/obj/item/clothing/under/det/grey/skirt_pleated
+	name = "detective's grey pleated skirt"
+	icon_state = "greydet_skirt"
+
 /obj/item/clothing/under/det/black
 	icon_state = "detective3"
 	item_state_slots = list(slot_r_hand_str = "sl_suit", slot_l_hand_str = "sl_suit")
@@ -137,6 +145,14 @@
 	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	siemens_coefficient = 0.9
 	rolled_sleeves = 0
+
+/obj/item/clothing/under/rank/head_of_security/skirt_pleated
+	name = "head of security's pleated skirt"
+	icon_state = "rhos_skirt"
+
+/obj/item/clothing/under/rank/head_of_security/skirt_pleated/alt
+	name = "dark head of security's pleated skirt"
+	icon_state = "hosalt_skirt"
 
 /obj/item/clothing/under/rank/head_of_security/corp
 	icon_state = "hos_corporate"
