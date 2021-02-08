@@ -11,6 +11,7 @@
 	movement_cost = 4
 	outdoors = TRUE
 	layer = WATER_FLOOR_LAYER
+	initial_flooring = /decl/flooring/outdoors/water
 
 	can_dirty = FALSE	// It's water
 
