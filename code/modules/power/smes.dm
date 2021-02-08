@@ -30,6 +30,7 @@
 	var/output_used = 0				// amount of power actually outputted. may be less than output_level if the powernet returns excess power
 
 	//Holders for powerout event.
+	var/powerout_holders_used = FALSE
 	var/last_output_attempt	= 0
 	var/last_input_attempt	= 0
 	var/last_charge			= 0
