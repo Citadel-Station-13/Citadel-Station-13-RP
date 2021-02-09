@@ -142,7 +142,7 @@
 /area/triumph_away/lavaland/explored
 	name = "Lava Land - Thoroughfare"
 	icon_state = "red"
-	/turf/simulated/floor/outdoors/lavaland
+	base_turf = /turf/simulated/floor/outdoors/lavaland
 
 /area/triumph_away/lavaland/unexplored
 	name = "Lava Land - Unknown"
