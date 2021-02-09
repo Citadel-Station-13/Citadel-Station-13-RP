@@ -91,7 +91,7 @@ turf/simulated/mineral/floor/light_corner
 	update_general()
 
 /turf/simulated/mineral/proc/make_floor_lavaland() // so when a turf is mined in lavaland, it places the correct one
-	src.ChangeTurf(/turf/simulated/floor/outdoors/lavaland)
+	src.ChangeTurf(get_base_turf_by_area(src))
 
 /turf/simulated/mineral/proc/make_wall()
 	if(density && opacity)
@@ -577,9 +577,8 @@ turf/simulated/mineral/floor/light_corner
 		visible_message("<span class='notice'>An old dusty crate was buried within!</span>")
 		new /obj/structure/closet/crate/secure/loot(src)
 
-	var/turf/T = src.loc
-	var/area/A = get_area(T)
-	if(istype(A, /area/triumph_away/lavaland/))
+	var/the_z = get_z(src)
+	if(the_z == 20)
 		src.make_floor_lavaland()
 	else
 		make_floor()
