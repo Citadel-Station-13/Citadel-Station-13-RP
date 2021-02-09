@@ -91,7 +91,7 @@ turf/simulated/mineral/floor/light_corner
 	update_general()
 
 /turf/simulated/mineral/proc/make_floor_lavaland() // so when a turf is mined in lavaland, it places the correct one
-	ChangeTurf(/turf/simulated/floor/outdoors/lavaland)
+	src.ChangeTurf(/turf/simulated/floor/outdoors/lavaland)
 
 /turf/simulated/mineral/proc/make_wall()
 	if(density && opacity)
@@ -580,7 +580,7 @@ turf/simulated/mineral/floor/light_corner
 	var/turf/T = src.loc
 	var/area/A = get_area(T)
 	if(istype(A, /area/triumph_away/lavaland/))
-		make_floor_lavaland()
+		src.make_floor_lavaland()
 	else
 		make_floor()
 	update_icon(1)
