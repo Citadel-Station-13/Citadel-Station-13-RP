@@ -97,11 +97,13 @@ var/datum/planet/lavaland/planet_lavaland = null
 	temperature = T0C
 	allowed_weather_types = list(
 		WEATHER_ASH_STORM	= new /datum/weather/lavaland/ash_storm(),
-        WEATHER_CLEAR       = new /datum/weather/lavaland/clear()
+        WEATHER_CLEAR       = new /datum/weather/lavaland/clear(),
+		WEATHER_PRE_ASH_STORM = new /datum/weather/lavaland/pre_ash_storm()
 		)
 	roundstart_weather_chances = list(
 		WEATHER_ASH_STORM	= 5,
-		WEATHER_CLEAR	= 95
+		WEATHER_CLEAR	= 5,
+		WEATHER_PRE_ASH_STORM = 90
 		)
 
 /datum/weather/lavaland
@@ -111,14 +113,35 @@ var/datum/planet/lavaland/planet_lavaland = null
 
 /datum/weather/lavaland/clear
 	name = "clear"
+	timer_low_bound = 4			// How long this weather must run before it tries to change, in minutes
+	timer_high_bound = 4		// How long this weather can run before it tries to change, in minutes
 	transition_chances = list(
-		WEATHER_CLEAR = 90,
-		WEATHER_ASH_STORM = 10
+		WEATHER_CLEAR = 75,
+		WEATHER_PRE_ASH_STORM = 25
 		)
 	transition_messages = list(
 		"The air clears up.",
 		"The ash starts to fade.",
 		"The ruins are calm."
+		)
+	sky_visible = FALSE
+	observed_message = "The air smooths out."
+
+/datum/weather/lavaland/pre_ash_storm
+	name = "transitioning to ash"
+	timer_low_bound = 1			// How long this weather must run before it tries to change, in minutes
+	timer_high_bound = 1		// How long this weather can run before it tries to change, in minutes
+	icon_state = "ashfall_light"
+	wind_high = 4
+	wind_low = 2
+	transition_chances = list(
+		WEATHER_PRE_ASH_STORM = 10,
+		WEATHER_ASH_STORM = 90
+		)
+	transition_messages = list(
+		"The wind starts to pick up, and an ash storm grows on the horizon.",
+		"The crackling of approaching ash whips through the air.",
+		"A scorching ash storm begins to form in the distance."
 		)
 	sky_visible = FALSE
 	observed_message = "The air smooths out."

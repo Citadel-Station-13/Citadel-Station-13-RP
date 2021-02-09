@@ -20,7 +20,6 @@ var/list/mining_overlay_cache = list()
 	opacity = 1
 	density = 1
 	blocks_air = 1
-
 	can_dirty = FALSE
 
 	var/datum/ore/mineral
@@ -92,7 +91,7 @@ turf/simulated/mineral/floor/light_corner
 	update_general()
 
 /turf/simulated/mineral/proc/make_floor_lavaland() // so when a turf is mined in lavaland, it places the correct one
-	new /turf/simulated/floor/outdoors/lavaland(src)
+	ChangeTurf(/turf/simulated/floor/outdoors/lavaland)
 
 /turf/simulated/mineral/proc/make_wall()
 	if(density && opacity)
