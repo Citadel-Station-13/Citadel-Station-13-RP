@@ -91,6 +91,9 @@ turf/simulated/mineral/floor/light_corner
 	SSplanets.addTurf(src)
 	update_general()
 
+/turf/simulated/mineral/proc/make_floor_lavaland() // so when a turf is mined in lavaland, it places the correct one
+	new /turf/simulated/floor/outdoors/lavaland(src)
+
 /turf/simulated/mineral/proc/make_wall()
 	if(density && opacity)
 		return
@@ -575,7 +578,12 @@ turf/simulated/mineral/floor/light_corner
 		visible_message("<span class='notice'>An old dusty crate was buried within!</span>")
 		new /obj/structure/closet/crate/secure/loot(src)
 
-	make_floor()
+	var/turf/T = src.loc
+	var/area/A = get_area(T)
+	if(istype(A, /area/triumph_away/lavaland/))
+		make_floor_lavaland()
+	else
+		make_floor()
 	update_icon(1)
 
 /turf/simulated/mineral/proc/excavate_find(var/is_clean = 0, var/datum/find/F)
