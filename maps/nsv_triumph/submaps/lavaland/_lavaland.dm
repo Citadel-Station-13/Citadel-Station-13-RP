@@ -59,6 +59,8 @@
 	interact_offline = 0
 
 	attack_hand(mob/living/user as mob)
+		if(istype(user, /mob/living/silicon/ai)) // lets not teleport AI cores
+			return
 		if(inoperable(MAINT))
 			return 1
 		else if(do_after(user, 10))
@@ -93,6 +95,8 @@
 
 
 	attack_hand(mob/living/user as mob)
+		if(istype(usr, /mob/living/silicon/ai))
+			return
 		if(do_after(user, 10))
 			to_chat(user, "You feel reality shift around you.")
 			do_teleport(user, pick(lavaland_exit), local = FALSE)
