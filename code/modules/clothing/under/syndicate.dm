@@ -36,4 +36,4 @@
 /obj/item/clothing/under/syndicate/combat
 	name = "syndicate combat suit"
 	desc = "This streamlined tactical suit is a cut above the tactical turtleneck. It has four more pockets."
-	icon_state = "syndicatecombat"
+	icon_state = "syndicate_combat"
