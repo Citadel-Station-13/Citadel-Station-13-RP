@@ -4287,6 +4287,11 @@
 /obj/effect/floor_decal/techfloor/orange,
 /obj/machinery/door/airlock/glass_engineering,
 /obj/machinery/door/firedoor,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "nR" = (
