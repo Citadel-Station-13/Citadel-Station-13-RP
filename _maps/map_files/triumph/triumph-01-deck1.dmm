@@ -879,11 +879,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 5
 	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/tiled/techmaint,
 /area/tcommsat/computer)
 "cZ" = (
@@ -913,6 +908,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/tcommsat/computer)
@@ -1912,6 +1912,11 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
 "gl" = (
@@ -3121,6 +3126,11 @@
 /obj/machinery/door/window/southleft{
 	req_one_access = list(10)
 	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/tcommsat/computer)
 "ke" = (
@@ -3421,24 +3431,16 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/engineering/lower/corridor)
 "lf" = (
-/obj/structure/cable/green{
-	d2 = 4;
-	icon_state = "0-4"
-	},
 /obj/structure/window/reinforced/full,
 /obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/black,
 /obj/structure/cable/green{
 	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/cable/green{
-	d1 = 2;
 	d2 = 4;
-	icon_state = "2-4"
+	icon_state = "1-4"
 	},
+/obj/structure/cable/green,
 /turf/simulated/floor/plating,
 /area/tcommsat/computer)
 "lh" = (
@@ -6081,6 +6083,11 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "tD" = (
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
 /turf/simulated/floor/tiled/dark{
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
@@ -7099,8 +7106,13 @@
 	pixel_y = -28
 	},
 /obj/structure/cable/green{
-	d2 = 4;
-	icon_state = "0-4"
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/dark{
 	initial_gas_mix = "n2=100;TEMP=80"
@@ -7151,24 +7163,19 @@
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "wX" = (
-/obj/structure/cable/green{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
 /obj/machinery/light{
 	dir = 8
-	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
@@ -8553,11 +8560,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
-	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
@@ -11667,6 +11669,11 @@
 /obj/machinery/door/window/southleft{
 	req_one_access = list(10)
 	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/tcommsat/computer)
 "Lq" = (
@@ -12235,6 +12242,11 @@
 "Nh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/tcommsat/computer)
@@ -13499,17 +13511,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/break_room)
-"Rd" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/bed/chair/office/dark{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/tcommsat/computer)
 "Re" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -13624,11 +13625,6 @@
 /area/engineering/engine_smes)
 "Rt" = (
 /obj/machinery/computer/telecomms/monitor,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/tiled/techmaint,
 /area/tcommsat/computer)
 "Ru" = (
@@ -14575,11 +14571,6 @@
 /turf/simulated/floor/plating,
 /area/engineering/lower/corridor)
 "Ug" = (
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -15688,11 +15679,6 @@
 /turf/simulated/wall,
 /area/triumph/station/stairs_one)
 "XJ" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
 	},
@@ -27741,7 +27727,7 @@ dA
 lf
 cW
 Rt
-Rd
+Fs
 BT
 XJ
 Nd
