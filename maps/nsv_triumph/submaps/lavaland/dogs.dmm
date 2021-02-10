@@ -1,0 +1,24 @@
+"a" = (/turf/template_noop,/area/template_noop)
+"k" = (/obj/structure/catwalk,/obj/structure/closet/crate,/obj/random/multiple/triumph/treasure,/turf/simulated/floor/lava/outdoors,/area/triumph_away/lavaland/bosses)
+"m" = (/obj/structure/catwalk,/turf/simulated/floor/lava/outdoors,/area/triumph_away/lavaland/bosses)
+"B" = (/mob/living/simple_mob/vore/aggressive/corrupthound,/turf/simulated/floor/outdoors/lavaland,/area/triumph_away/lavaland/bosses)
+"U" = (/turf/simulated/floor/lava/outdoors,/area/triumph_away/lavaland/bosses)
+"Z" = (/turf/simulated/floor/outdoors/lavaland,/area/triumph_away/lavaland/bosses)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaa
+aaUUUUUUUUUUUaa
+aaUZZZZUZZZZUaa
+aaUZZBZUZZBZUaa
+aaUZZZZkZZZZUaa
+aaUZZZZUZZZZUaa
+aaUUmUUUUUmUUaa
+aaUZZZZUZZZZUaa
+aaUZBZZUZZZZUaa
+aaUZZZZmZZZZmaa
+aaUZZZZUZZZZUaa
+aaUUUUUUUUUUUaa
+aaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaa
+"}
