@@ -353,15 +353,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/security_lockerroom)
 "apa" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	dir = 1;
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/carpet,
-/area/security/detectives_office)
+/obj/structure/loot_pile/maint/trash,
+/turf/simulated/floor/plating,
+/area/maintenance/security_port)
 "apk" = (
 /obj/structure/table/standard,
 /obj/random/firstaid,
@@ -1168,7 +1162,7 @@
 	},
 /obj/machinery/button/remote/blast_door{
 	id = "armoryred";
-	name = "Armoury Access";
+	name = "Armory Access";
 	pixel_x = -6;
 	pixel_y = 25;
 	req_access = list(3)
@@ -1744,14 +1738,12 @@
 /turf/simulated/floor/carpet/sblucarpet,
 /area/chapel/main)
 "bmi" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	dir = 1;
-	icon_state = "1-2"
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -22
 	},
-/turf/simulated/floor/carpet,
-/area/security/detectives_office)
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/maintenance/security_port)
 "bnm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -2708,6 +2700,13 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/security/forensics)
+"bTf" = (
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -22
+	},
+/turf/simulated/floor/tiled/white,
+/area/security/security_bathroom)
 "bVl" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/structure/cable/green{
@@ -3631,13 +3630,12 @@
 /turf/simulated/floor/tiled,
 /area/triumph/station/explorer_showers)
 "czK" = (
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -22
 	},
-/turf/simulated/floor/lino,
-/area/security/detectives_office)
+/turf/simulated/floor/tiled,
+/area/security/interrogation)
 "czV" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -4587,7 +4585,7 @@
 /obj/effect/floor_decal/corner/red/border,
 /obj/machinery/button/remote/blast_door{
 	id = "armoryred";
-	name = "Armoury Access";
+	name = "Armory Access";
 	pixel_x = -6;
 	pixel_y = -25;
 	req_access = list(3)
@@ -4770,7 +4768,7 @@
 	name = "bookcase (Religious)"
 	},
 /obj/item/book/custom_library/religious,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/wood,
 /area/library)
 "duk" = (
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
@@ -5657,6 +5655,13 @@
 /obj/item/gun/projectile/colt,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
+"dYZ" = (
+/obj/machinery/alarm{
+	dir = 8;
+	pixel_x = 24
+	},
+/turf/simulated/floor/wood,
+/area/security/breakroom)
 "dZf" = (
 /obj/structure/sink{
 	dir = 8;
@@ -5729,7 +5734,7 @@
 /area/shuttle/civvie/general)
 "ebD" = (
 /obj/structure/bookcase/legal/combo,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/wood,
 /area/library)
 "ebP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -6420,19 +6425,14 @@
 /turf/simulated/shuttle/floor/voidcraft,
 /area/bridge)
 "ezJ" = (
-/obj/structure/cable/green{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -22
 	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	dir = 1;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/lino,
-/area/security/detectives_office)
+/turf/simulated/floor/wood,
+/area/crew_quarters/captain)
 "eAk" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/cedouble,
@@ -8905,10 +8905,10 @@
 	pixel_x = 4;
 	pixel_y = 26
 	},
-/obj/machinery/media/jukebox,
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/machinery/fitness/punching_bag,
 /turf/simulated/floor/carpet/bcarpet,
 /area/security/training)
 "gnk" = (
@@ -9114,7 +9114,7 @@
 	},
 /obj/item/book/custom_library/fiction,
 /obj/item/book/manual/the_humanized_mice,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/wood,
 /area/library)
 "gvI" = (
 /obj/machinery/cryopod{
@@ -9876,6 +9876,7 @@
 	pixel_x = 5;
 	pixel_y = 32
 	},
+/obj/structure/fitness/punchingbag,
 /turf/simulated/floor/carpet/bcarpet,
 /area/security/training)
 "hat" = (
@@ -10933,6 +10934,7 @@
 	icon_state = "fwindow";
 	id = "Interr"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/security/interrogation)
 "hFo" = (
@@ -12171,6 +12173,13 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
+/obj/machinery/button/remote/blast_door{
+	id = "armoryred";
+	name = "Armory Access";
+	pixel_x = -6;
+	pixel_y = 25;
+	req_access = list(3)
+	},
 /turf/simulated/floor/tiled,
 /area/security/hallwayaux)
 "iwo" = (
@@ -12540,7 +12549,7 @@
 /obj/structure/bookcase{
 	name = "bookcase (Fiction)"
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/wood,
 /area/library)
 "iKO" = (
 /obj/machinery/computer/timeclock/premade/south,
@@ -14678,12 +14687,6 @@
 /obj/item/book/manual/legal/sop_vol2,
 /obj/item/book/manual/legal/sop_vol3,
 /obj/item/book/manual/legal/sop_vol4,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	dir = 1;
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
@@ -15496,7 +15499,7 @@
 	dir = 9
 	},
 /obj/structure/bookcase/legal/combo,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/wood,
 /area/library)
 "kQn" = (
 /obj/machinery/light{
@@ -16066,10 +16069,8 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/lounge)
 "llT" = (
-/obj/machinery/camera/network/security{
-	dir = 1
-	},
-/turf/simulated/wall/r_wall,
+/obj/machinery/scale,
+/turf/simulated/floor/wood,
 /area/security/training)
 "llU" = (
 /obj/structure/table/reinforced,
@@ -17516,7 +17517,6 @@
 	dir = 5
 	},
 /obj/machinery/hologram/holopad,
-/obj/structure/filingcabinet,
 /turf/simulated/floor/tiled/white,
 /area/security/forensics)
 "miC" = (
@@ -17796,13 +17796,12 @@
 /turf/simulated/floor/tiled,
 /area/security/interrogation)
 "msj" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
+/obj/machinery/alarm{
+	dir = 8;
+	pixel_x = 24
 	},
-/turf/simulated/floor/carpet,
-/area/security/detectives_office)
+/turf/simulated/floor/carpet/bcarpet,
+/area/security/training)
 "msm" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 8
@@ -18024,18 +18023,8 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/sleep/RD_quarters)
 "mBJ" = (
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
-	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
 	},
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
@@ -20035,7 +20024,6 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/structure/fitness/punchingbag,
 /turf/simulated/floor/carpet/bcarpet,
 /area/security/training)
 "nWP" = (
@@ -20609,11 +20597,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "opJ" = (
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
@@ -20855,7 +20838,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/obj/machinery/scale,
 /turf/simulated/floor/wood,
 /area/security/training)
 "oBA" = (
@@ -22294,8 +22276,8 @@
 "prx" = (
 /obj/machinery/door/airlock/security{
 	name = "Interrogation";
-	req_access = newlist();
-	req_one_access = list(4)
+	req_access = list(4);
+	req_one_access = newlist()
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
@@ -22360,9 +22342,7 @@
 /obj/machinery/camera/network/security{
 	dir = 4
 	},
-/obj/structure/closet/crate/bin{
-	anchored = 1
-	},
+/obj/machinery/media/jukebox,
 /turf/simulated/floor/wood,
 /area/security/training)
 "puZ" = (
@@ -23755,6 +23735,13 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/triumph/station/excursion_dock)
+"qlY" = (
+/obj/machinery/alarm{
+	frequency = 1441;
+	pixel_y = 22
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/security_equiptment_storage)
 "qmb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/white,
@@ -24042,6 +24029,13 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/shuttle/civvie/general)
+"qvQ" = (
+/obj/machinery/alarm{
+	dir = 8;
+	pixel_x = 24
+	},
+/turf/simulated/floor/tiled,
+/area/security/security_equiptment_storage)
 "qwd" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -27163,6 +27157,7 @@
 	icon_state = "0-4"
 	},
 /obj/structure/grille,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/security/interrogation)
 "svu" = (
@@ -28095,7 +28090,7 @@
 	name = "bookcase (Religious)"
 	},
 /obj/item/book/manual/robotics_cyborgs,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/wood,
 /area/library)
 "sZq" = (
 /obj/structure/railing,
@@ -28985,6 +28980,7 @@
 	icon_state = "fwindow";
 	id = "Interr"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/security/interrogation)
 "tLZ" = (
@@ -29026,7 +29022,9 @@
 /turf/simulated/floor/tiled,
 /area/security/brig)
 "tQo" = (
-/obj/machinery/fitness/punching_bag,
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/security/training)
 "tQv" = (
@@ -31340,9 +31338,6 @@
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
 "vqy" = (
-/obj/structure/extinguisher_cabinet{
-	pixel_y = -31
-	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/red/border,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -31988,14 +31983,12 @@
 /obj/effect/floor_decal/corner/red/bordercorner2{
 	dir = 8
 	},
-/obj/structure/closet{
-	name = "Evidence Closet"
-	},
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/structure/filingcabinet,
 /turf/simulated/floor/tiled/white,
 /area/security/forensics)
 "vJX" = (
@@ -32897,12 +32890,6 @@
 /obj/item/book/manual/legal/cr_vol2,
 /obj/item/book/manual/legal/cr_vol4,
 /obj/item/book/manual/legal/cr_vol5,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	dir = 1;
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
 "wkS" = (
@@ -35411,6 +35398,10 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 9
 	},
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -22
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "ybe" = (
@@ -35474,6 +35465,10 @@
 /obj/structure/table/steel,
 /obj/item/tape_recorder,
 /obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/alarm{
+	frequency = 1441;
+	pixel_y = 22
+	},
 /turf/simulated/floor/tiled,
 /area/security/interrogation)
 "ycO" = (
@@ -43928,7 +43923,7 @@ jGr
 svi
 pXZ
 dNV
-ufw
+czK
 gth
 xzh
 oFO
@@ -44631,10 +44626,10 @@ nIw
 qNU
 tzJ
 sKM
-rgM
+brg
 wkz
-bmi
-msj
+xIg
+xIg
 gCl
 jYf
 ojn
@@ -44660,7 +44655,7 @@ vWr
 wzg
 umi
 gMF
-nbt
+bTf
 hjG
 wzg
 wzg
@@ -44773,9 +44768,9 @@ mIQ
 aWV
 tzJ
 sKM
-rgM
+brg
 kjd
-apa
+qAJ
 mBJ
 qAJ
 mLa
@@ -45060,7 +45055,7 @@ lSC
 brg
 cuC
 qaE
-czK
+qaE
 lHQ
 xIg
 krn
@@ -45202,7 +45197,7 @@ sKM
 sGw
 qaE
 qaE
-czK
+qaE
 xIg
 ade
 eXw
@@ -45344,7 +45339,7 @@ sKM
 rgM
 pZO
 pZO
-ezJ
+pZO
 wmt
 wmt
 rhT
@@ -45355,7 +45350,7 @@ igD
 vWr
 wZd
 tQo
-iPF
+llT
 puX
 kWg
 nla
@@ -45772,7 +45767,7 @@ sfo
 sfo
 fRS
 hzN
-sfo
+bmi
 sIc
 txO
 xjA
@@ -45927,7 +45922,7 @@ nwd
 nwd
 nwd
 sGq
-llT
+wZd
 bch
 xlj
 xlj
@@ -46066,13 +46061,13 @@ vWr
 wZd
 vxV
 mhY
-nwd
+msj
 iai
 sGq
 wZd
 fLs
 xlj
-xlj
+qvQ
 pCf
 uWb
 bWc
@@ -46080,7 +46075,7 @@ vWr
 xhR
 cHC
 opi
-lDQ
+dYZ
 uel
 xhR
 xhR
@@ -46195,7 +46190,7 @@ tzJ
 sKM
 pFE
 qHU
-iyy
+apa
 dHb
 dHb
 mkI
@@ -46481,7 +46476,7 @@ irp
 qHU
 ucZ
 qHU
-iyy
+apa
 dHb
 qHU
 tec
@@ -46504,7 +46499,7 @@ lpq
 pXC
 vqy
 uWb
-iga
+qlY
 iga
 iga
 iga
@@ -46928,7 +46923,7 @@ mJI
 hQJ
 wZa
 jiv
-jJt
+jGz
 uWb
 omx
 rRC
@@ -47046,7 +47041,7 @@ vgY
 mIF
 tmj
 lAq
-iyy
+apa
 mkI
 hWh
 lyp
@@ -52734,7 +52729,7 @@ vEn
 pJn
 vEn
 oUQ
-vEn
+ezJ
 pQH
 mmr
 iOF
