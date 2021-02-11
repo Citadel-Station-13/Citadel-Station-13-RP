@@ -354,6 +354,19 @@ var/list/flooring_types
 	flags = TURF_ACID_IMMUNE | TURF_CAN_BREAK
 	can_paint = null
 
+
+/decl/flooring/outdoors/lavaland
+	name = "ash sand"
+	desc = "Soft and ominous."
+	icon = 'icons/turf/flooring/asteroid.dmi'
+	icon_base = "asteroid"
+	flags = TURF_HAS_EDGES
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/asteroid1.ogg',
+		'sound/effects/footstep/asteroid2.ogg',
+		'sound/effects/footstep/asteroid3.ogg',
+		'sound/effects/footstep/asteroid4.ogg'))
+
 /decl/flooring/outdoors/dirt
 	name = "dirt"
 	icon = 'icons/turf/outdoors.dmi'
@@ -363,6 +376,7 @@ var/list/flooring_types
 		'sound/effects/footstep/asteroid2.ogg',
 		'sound/effects/footstep/asteroid3.ogg',
 		'sound/effects/footstep/asteroid4.ogg'))
+
 
 /decl/flooring/outdoors/grass
 	name = "grass"
@@ -393,3 +407,4 @@ var/list/flooring_types
 		'sound/effects/footstep/asteroid2.ogg',
 		'sound/effects/footstep/asteroid3.ogg',
 		'sound/effects/footstep/asteroid4.ogg'))
+

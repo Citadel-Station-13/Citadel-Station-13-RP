@@ -54,6 +54,7 @@ TRIUMPH_TURF_CREATE(/turf/simulated/mineral/floor)
 	if(mineral || ignore_mapgen)
 		return
 	var/mineral_name
+	outdoors = TRUE
 	if(rare_ore)
 		mineral_name = pickweight(list(
 			"marble" = 3,

@@ -1,0 +1,4 @@
+author: "TheLordME"
+delete-after: True
+changes: 
+  - bugfix: "Vendor Phoron Bores only need phoron and a powercell."
