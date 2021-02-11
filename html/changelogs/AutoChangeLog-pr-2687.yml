@@ -1,4 +1,0 @@
-author: "silicons"
-delete-after: True
-changes: 
-  - rscdel: "oxygen damage removed from neckgrabs, now only strangling does it"
