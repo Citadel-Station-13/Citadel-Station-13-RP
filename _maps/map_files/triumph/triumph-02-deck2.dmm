@@ -3087,20 +3087,6 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/sleep/Dorm_11)
-"iQ" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
-/obj/machinery/alarm{
-	pixel_y = 22
-	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/hallway/primary/port)
 "iR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -5282,6 +5268,15 @@
 /obj/structure/table/marble,
 /turf/simulated/floor/tiled/dark,
 /area/vacant/vacant_shop)
+"oY" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/machinery/alarm{
+	pixel_y = 22
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/hallway/primary/port)
 "oZ" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -23765,7 +23760,7 @@ qt
 qt
 UK
 nt
-iQ
+My
 VY
 RH
 Wg
@@ -24049,7 +24044,7 @@ yq
 yq
 Zy
 Zy
-sU
+oY
 UN
 rh
 BX
