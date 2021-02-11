@@ -320,6 +320,7 @@
 	return instruments
 */
 
+//Event Reward item.
 /obj/item/instrument/gameboy
 	name = "gameboy"
 	desc = "A bright teal Gameboy Color. This one has a copy of LSDJ slotted into the back. /There's also initals scratched crudely into the lower left hand corner spelling TAS./"

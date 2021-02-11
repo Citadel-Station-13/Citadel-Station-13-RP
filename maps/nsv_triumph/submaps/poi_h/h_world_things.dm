@@ -47,6 +47,12 @@ DESERT_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
 	icon_state = "dirt-dark"
 	icon = 'icons/turf/outdoors.dmi'
 
+/turf/simulated/floor/outdoors/beach/sand/dirtlight
+	name = "sun bleached path"
+	desc = "A cracked path of compacted sand, worn by heavy traffic and bleached by constant sunlight."
+	icon_state = "dirt-light"
+	icon = 'icons/turf/outdoors.dmi'
+
 // -- Loot Spawners Stolen from UD Files -- //
 /obj/random/triumph
 	name = "random triumph loot"

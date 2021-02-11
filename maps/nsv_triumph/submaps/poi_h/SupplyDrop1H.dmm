@@ -52,7 +52,7 @@
 /turf/simulated/wall/titanium,
 /area/triumph_away/poi_h/explored)
 "k" = (
-/turf/simulated/mineral/floor/vacuum,
+/turf/simulated/mineral/floor/classh,
 /area/template_noop)
 "I" = (
 /turf/simulated/floor/outdoors/beach/sand/dirt/classh,

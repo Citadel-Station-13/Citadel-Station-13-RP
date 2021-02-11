@@ -86,6 +86,8 @@
 	controller = new(src)
 	update_nearby_tiles(need_rebuild=1)
 
+	//Disabling this "Broken" segment until someone can figure out why it's not accepting valid dirs and reporting broken.
+	/*
 	for(var/ship in SSshuttle.ships)
 		var/obj/effect/overmap/visitable/ship/S = ship
 		if(S.check_ownership(src))
@@ -93,6 +95,7 @@
 			if(dir != S.fore_dir)
 				set_broken(TRUE)
 			break
+	*/
 
 /obj/machinery/atmospherics/unary/engine/Destroy()
 	QDEL_NULL(controller)

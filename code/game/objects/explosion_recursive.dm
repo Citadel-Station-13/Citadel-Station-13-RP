@@ -72,6 +72,8 @@ proc/explosion_rec(turf/epicenter, power)
 
 /turf/simulated/mineral
 	explosion_resistance = 2
+	outdoors = TRUE // for weather
+	edge_blending_priority = 3
 
 /turf/simulated/shuttle/floor
 	explosion_resistance = 1

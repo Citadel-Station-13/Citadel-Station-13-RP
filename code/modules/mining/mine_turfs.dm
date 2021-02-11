@@ -20,7 +20,6 @@ var/list/mining_overlay_cache = list()
 	opacity = 1
 	density = 1
 	blocks_air = 1
-
 	can_dirty = FALSE
 
 	var/datum/ore/mineral
@@ -88,7 +87,11 @@ turf/simulated/mineral/floor/light_corner
 	opacity = 0
 	blocks_air = 0
 	can_build_into_floor = TRUE
+	SSplanets.addTurf(src)
 	update_general()
+
+/turf/simulated/mineral/proc/make_floor_lavaland() // so when a turf is mined in lavaland, it places the correct one
+	src.ChangeTurf(get_base_turf_by_area(src))
 
 /turf/simulated/mineral/proc/make_wall()
 	if(density && opacity)
@@ -386,7 +389,7 @@ turf/simulated/mineral/floor/light_corner
 			var/obj/item/measuring_tape/P = W
 			user.visible_message("<span class='notice'>\The [user] extends \a [P] towards \the [src].</span>","<span class='notice'>You extend \the [P] towards \the [src].</span>")
 			if(do_after(user, 15))
-				to_chat(user, "<span class='notice'>\The [src] has been excavated to a depth of [2 * src.excavation_level]cm.</span>")
+				to_chat(user, "<span class='notice'>\The [src] has been excavated to a depth of [excavation_level]cm.</span>")
 			return
 
 		if(istype(W, /obj/item/xenoarch_multi_tool))
@@ -396,7 +399,7 @@ turf/simulated/mineral/floor/light_corner
 			else
 				user.visible_message("<span class='notice'>\The [user] extends \the [C] over \the [src], a flurry of red beams scanning \the [src]'s surface!</span>", "<span class='notice'>You extend \the [C] over \the [src], a flurry of red beams scanning \the [src]'s surface!</span>")
 				if(do_after(user, 15))
-					to_chat(user, "<span class='notice'>\The [src] has been excavated to a depth of [2 * src.excavation_level]cm.</span>")
+					to_chat(user, "<span class='notice'>\The [src] has been excavated to a depth of [excavation_level]cm.</span>")
 			return
 
 		if (istype(W, /obj/item/pickaxe))
@@ -574,7 +577,11 @@ turf/simulated/mineral/floor/light_corner
 		visible_message("<span class='notice'>An old dusty crate was buried within!</span>")
 		new /obj/structure/closet/crate/secure/loot(src)
 
-	make_floor()
+	var/the_z = get_z(src)
+	if(the_z == 20)
+		src.make_floor_lavaland()
+	else
+		make_floor()
 	update_icon(1)
 
 /turf/simulated/mineral/proc/excavate_find(var/is_clean = 0, var/datum/find/F)

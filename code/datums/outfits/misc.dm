@@ -54,8 +54,10 @@
 /decl/hierarchy/outfit/merchant/vox //This needs to be updated.
 	name = "Nebula Gas Merchant - Vox"
 	shoes = /obj/item/clothing/shoes/boots/jackboots/toeless
+	back = /obj/item/tank/vox
 	uniform = /obj/item/clothing/under/vox/vox_robes
 	suit = /obj/item/clothing/suit/armor/vox_scrap
+	mask = /obj/item/clothing/mask/breath
 
 /decl/hierarchy/outfit/zaddat
 	name = "Zaddat Suit"
