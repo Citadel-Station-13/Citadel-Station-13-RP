@@ -13,6 +13,9 @@
 	maxHealth = 200
 	health = 200
 	say_list_type = /datum/say_list/protean_blob
+	
+	brute_mod =		0.30
+	burn_mod =		1.3 // Gives protean blobs the same resistances and weaknesses as their humanoid forms
 
 	// ai_inactive = TRUE //Always off //VORESTATION AI TEMPORARY REMOVAL
 	show_stat_health = FALSE //We will do it ourselves
