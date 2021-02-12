@@ -98,9 +98,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 				qdel(src)
 			return FALSE
 		else
-			//Free commlink and soulcatcher for return customers
-			new /datum/nifsoft/commlink(src)
-			new /datum/nifsoft/soulcatcher(src)
+			addtimer(CALLBACK(src, .proc/install_free_return_software), 0)
 
 	//Free civilian AR included
 	new /datum/nifsoft/ar_civ(src)
@@ -112,6 +110,12 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 
 	//Draw me yo.
 	update_icon()
+
+// Creates software after the mob is hopefully loaded in
+/obj/item/nif/proc/install_free_return_software()
+	//Free commlink and soulcatcher for return customers
+	new /datum/nifsoft/commlink(src)
+	new /datum/nifsoft/soulcatcher(src)
 
 //Destructor cleans up references
 /obj/item/nif/Destroy()
