@@ -3,12 +3,12 @@
 /turf/template_noop,
 /area/template_noop)
 "c" = (
-/turf/simulated/floor/outdoors/beach/sand/dirtlight,
+/turf/simulated/floor/beach/sand/dirtlight,
 /area/triumph_away/poi_h/explored)
 "d" = (
 /obj/random/mob/spider/nurse,
 /obj/effect/spider/stickyweb,
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
+/turf/simulated/floor/beach/sand/dirt/classh,
 /area/triumph_away/poi_h/explored)
 "k" = (
 /obj/structure/table/marble,
@@ -18,7 +18,7 @@
 	},
 /obj/item/clothing/ears/earring/dangle/glass,
 /obj/effect/spider/stickyweb,
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
+/turf/simulated/floor/beach/sand/dirt/classh,
 /area/triumph_away/poi_h/explored)
 "l" = (
 /turf/simulated/wall/sandstone,
@@ -30,7 +30,7 @@
 	lit = 1
 	},
 /obj/item/clothing/accessory/necklace,
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
+/turf/simulated/floor/beach/sand/dirt/classh,
 /area/triumph_away/poi_h/explored)
 "n" = (
 /turf/simulated/mineral/classh,
@@ -40,7 +40,7 @@
 /area/triumph_away/poi_h/explored)
 "p" = (
 /obj/random/mob/spider,
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
+/turf/simulated/floor/beach/sand/dirt/classh,
 /area/triumph_away/poi_h/explored)
 "q" = (
 /turf/simulated/wall/sandstone/classh,
@@ -53,7 +53,7 @@
 	},
 /obj/item/clothing/gloves/ring/material/iron,
 /obj/effect/spider/stickyweb,
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
+/turf/simulated/floor/beach/sand/dirt/classh,
 /area/triumph_away/poi_h/explored)
 "E" = (
 /turf/simulated/wall/sandstonediamond/classh,
@@ -65,11 +65,11 @@
 	lit = 1
 	},
 /obj/item/clothing/ears/earring/stud/steel,
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
+/turf/simulated/floor/beach/sand/dirt/classh,
 /area/triumph_away/poi_h/explored)
 "K" = (
 /mob/living/simple_mob/animal/giant_spider,
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
+/turf/simulated/floor/beach/sand/dirt/classh,
 /area/triumph_away/poi_h/explored)
 "L" = (
 /obj/effect/floor_decal/plaque{
@@ -80,12 +80,12 @@
 /area/triumph_away/poi_h/explored)
 "N" = (
 /obj/effect/spider/stickyweb,
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
+/turf/simulated/floor/beach/sand/dirt/classh,
 /area/triumph_away/poi_h/explored)
 "O" = (
 /obj/structure/table/marble,
 /obj/effect/decal/remains/mummy2,
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
+/turf/simulated/floor/beach/sand/dirt/classh,
 /area/triumph_away/poi_h/explored)
 "S" = (
 /obj/structure/table/marble,
@@ -95,12 +95,12 @@
 	},
 /obj/item/clothing/ears/skrell/chain,
 /obj/effect/spider/stickyweb,
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
+/turf/simulated/floor/beach/sand/dirt/classh,
 /area/triumph_away/poi_h/explored)
 "T" = (
 /obj/structure/table/marble,
 /obj/effect/decal/remains/mummy1,
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
+/turf/simulated/floor/beach/sand/dirt/classh,
 /area/triumph_away/poi_h/explored)
 "U" = (
 /obj/structure/table/marble,
@@ -109,7 +109,7 @@
 	lit = 1
 	},
 /obj/item/clothing/gloves/ring/material/silver,
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
+/turf/simulated/floor/beach/sand/dirt/classh,
 /area/triumph_away/poi_h/explored)
 "W" = (
 /turf/simulated/wall/sandstone/classh{
@@ -117,17 +117,17 @@
 	},
 /area/triumph_away/poi_h/explored)
 "X" = (
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
+/turf/simulated/floor/beach/sand/dirt/classh,
 /area/triumph_away/poi_h/explored)
 "Y" = (
 /obj/random/mob/spider/mutant,
 /obj/effect/spider/stickyweb,
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
+/turf/simulated/floor/beach/sand/dirt/classh,
 /area/triumph_away/poi_h/explored)
 "Z" = (
 /obj/effect/decal/remains/mummy1,
 /obj/random/multiple/triumph/treasure,
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
+/turf/simulated/floor/beach/sand/dirt/classh,
 /area/triumph_away/poi_h/explored)
 
 (1,1,1) = {"

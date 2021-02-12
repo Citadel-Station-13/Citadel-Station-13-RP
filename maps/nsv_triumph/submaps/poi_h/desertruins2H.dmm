@@ -15,7 +15,7 @@
 "U" = (
 /obj/random/multiple/minevault,
 /obj/item/moneybag/vault,
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
+/turf/simulated/floor/beach/sand/dirt/classh,
 /area/triumph_away/poi_h/explored)
 "Z" = (
 /turf/simulated/wall/sandstone/classh{

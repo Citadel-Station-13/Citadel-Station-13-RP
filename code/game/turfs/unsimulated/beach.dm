@@ -27,7 +27,7 @@
 /turf/simulated/floor/beach
 	name = "Beach"
 	icon = 'icons/misc/beach.dmi'
-	initial_flooring = /decl/flooring/outdoors/beach
+	outdoors = TRUE
 	footstep_sounds = list("human" = list(
 		'sound/effects/footstep/carpet1.ogg',
 		'sound/effects/footstep/carpet2.ogg',
@@ -38,10 +38,10 @@
 /turf/simulated/floor/beach/sand
 	name = "Sand"
 	icon_state = "sand"
-	initial_flooring = /decl/flooring/outdoors/beach
 
 /turf/simulated/floor/beach/sand/desert
 	name = "Dunes"
+	desc = "It seems to go on and on.."
 	icon = 'icons/turf/desert.dmi'
 	icon_state = "desert"
 
@@ -59,6 +59,18 @@
 	. = ..()
 	if(prob(5))
 		icon_state = "lowdesert[rand(0,4)]"
+
+/turf/simulated/floor/beach/sand/dirt
+	name = "worn out path"
+	desc = "A compacted bit of sand with footprints all over it..."
+	icon_state = "dirt-dark"
+	icon = 'icons/turf/outdoors.dmi'
+
+/turf/simulated/floor/beach/sand/dirtlight
+	name = "sun bleached path"
+	desc = "A cracked path of compacted sand, worn by heavy traffic and bleached by constant sunlight."
+	icon_state = "dirt-light"
+	icon = 'icons/turf/outdoors.dmi'
 
 /turf/simulated/floor/beach/coastline
 	name = "Coastline"

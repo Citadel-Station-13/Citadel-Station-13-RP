@@ -4,7 +4,7 @@
 /area/triumph_away/poi_h/unexplored)
 "d" = (
 /obj/item/corncob,
-/turf/simulated/floor/outdoors/beach/sand/dirtlight,
+/turf/simulated/floor/beach/sand/dirtlight,
 /area/triumph_away/poi_h/POIs/dirt_farm)
 "f" = (
 /obj/structure/table/woodentable,
@@ -22,7 +22,7 @@
 /obj/item/reagent_containers/food/condiment/flour,
 /obj/item/reagent_containers/food/condiment/flour,
 /obj/item/reagent_containers/food/condiment/flour,
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
+/turf/simulated/floor/beach/sand/dirt/classh,
 /area/triumph_away/poi_h/POIs/dirt_farm)
 "h" = (
 /obj/structure/railing{
@@ -32,7 +32,7 @@
 /area/triumph_away/poi_h/POIs/dirt_farm)
 "m" = (
 /obj/structure/sink/puddle,
-/turf/simulated/floor/outdoors/beach/sand/dirtlight,
+/turf/simulated/floor/beach/sand/dirtlight,
 /area/triumph_away/poi_h/POIs/dirt_farm)
 "o" = (
 /turf/simulated/wall/sandstone/classh,
@@ -77,14 +77,14 @@
 /turf/simulated/floor/beach/sand/lowdesert,
 /area/triumph_away/poi_h/POIs/dirt_farm)
 "J" = (
-/turf/simulated/floor/outdoors/beach/sand/dirtlight,
+/turf/simulated/floor/beach/sand/dirtlight,
 /area/triumph_away/poi_h/unexplored)
 "K" = (
 /obj/structure/closet/crate,
 /obj/fiftyspawner/log,
 /obj/fiftyspawner/log,
 /obj/fiftyspawner/log,
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
+/turf/simulated/floor/beach/sand/dirt/classh,
 /area/triumph_away/poi_h/POIs/dirt_farm)
 "M" = (
 /turf/simulated/floor/wood/classh,
@@ -105,7 +105,7 @@
 /turf/simulated/floor/wood/classh,
 /area/triumph_away/poi_h/POIs/dirt_farm)
 "O" = (
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
+/turf/simulated/floor/beach/sand/dirt/classh,
 /area/triumph_away/poi_h/POIs/dirt_farm)
 "P" = (
 /obj/structure/railing,
@@ -116,7 +116,7 @@
 /turf/simulated/floor/beach/sand/lowdesert,
 /area/triumph_away/poi_h/POIs/dirt_farm)
 "U" = (
-/turf/simulated/floor/outdoors/beach/sand/dirtlight,
+/turf/simulated/floor/beach/sand/dirtlight,
 /area/triumph_away/poi_h/POIs/dirt_farm)
 "Z" = (
 /obj/structure/bed/chair/wood/wings,

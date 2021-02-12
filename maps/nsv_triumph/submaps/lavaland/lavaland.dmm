@@ -12,6 +12,7 @@
 "fg" = (/obj/machinery/light{dir = 1},/turf/simulated/floor/tiled/steel_grid,/area/triumph_away/lavaland/base)
 "fw" = (/mob/living/simple_mob/construct/shade,/turf/simulated/floor/outdoors/lavaland,/area/triumph_away/lavaland/explored)
 "gy" = (/obj/away_mission_init/lavaland,/turf/simulated/floor/outdoors/lavaland,/area/triumph_away/lavaland/explored)
+"gE" = (/obj/effect/floor_decal/industrial/warning{dir = 8},/turf/simulated/floor/tiled/monotile,/area/triumph_away/lavaland/base/common)
 "hU" = (/obj/structure/bed/chair/sofa/left{dir = 1; icon_state = "sofaend_left"},/obj/effect/floor_decal/spline/fancy/wood{dir = 4},/turf/simulated/floor/wood,/area/triumph_away/lavaland/base)
 "it" = (/obj/structure/table/marble,/obj/machinery/reagentgrinder,/obj/item/reagent_containers/glass/rag,/turf/simulated/floor/tiled/dark,/area/triumph_away/lavaland/base/common)
 "ix" = (/mob/living/simple_mob/animal/space/bats/roguemines,/turf/simulated/floor/outdoors/lavaland,/area/triumph_away/lavaland/unexplored)
@@ -29,6 +30,7 @@
 "oP" = (/turf/simulated/floor/carpet/bcarpet,/area/triumph_away/lavaland/base)
 "oR" = (/obj/structure/table/standard,/obj/machinery/recharger,/turf/simulated/floor/carpet/blucarpet,/area/triumph_away/lavaland/base)
 "pJ" = (/obj/structure/table/marble,/obj/effect/floor_decal/spline/fancy/wood{dir = 4},/turf/simulated/floor/wood,/area/triumph_away/lavaland/base)
+"qz" = (/obj/effect/floor_decal/industrial/warning{dir = 5},/turf/simulated/floor/tiled/monotile,/area/triumph_away/lavaland/base/common)
 "qE" = (/obj/structure/bed/double/padded,/obj/item/bedsheet/hosdouble,/turf/simulated/floor/carpet/purcarpet,/area/triumph_away/lavaland/base)
 "rB" = (/turf/simulated/floor/carpet/purcarpet,/area/triumph_away/lavaland/base)
 "rH" = (/obj/machinery/door/airlock/external,/obj/structure/fans/tiny,/turf/simulated/floor/tiled,/area/triumph_away/lavaland/base/common)
@@ -45,6 +47,7 @@
 "Bs" = (/obj/machinery/door/airlock{name = "Recovery"},/turf/simulated/floor/carpet/bcarpet,/area/triumph_away/lavaland/base/common)
 "BT" = (/mob/living/simple_mob/animal/space/bats/roguemines,/turf/simulated/mineral/triumph,/area/triumph_away/lavaland/explored)
 "BX" = (/obj/structure/closet/crate/large,/turf/simulated/floor/tiled,/area/triumph_away/lavaland/base/common)
+"Ch" = (/obj/effect/floor_decal/industrial/warning,/turf/simulated/floor/tiled/monotile,/area/triumph_away/lavaland/base/common)
 "CA" = (/obj/structure/bed/chair/sofa/left{icon_state = "sofaend_left"},/obj/effect/floor_decal/spline/fancy/wood{dir = 5},/turf/simulated/floor/wood,/area/triumph_away/lavaland/base)
 "DM" = (/obj/structure/table/marble,/obj/machinery/chemical_dispenser/bar_coffee/full,/turf/simulated/floor/tiled/dark,/area/triumph_away/lavaland/base/common)
 "EP" = (/obj/machinery/light{dir = 1},/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/old_tile,/area/triumph_away/lavaland/base)
@@ -52,8 +55,11 @@
 "Fy" = (/obj/structure/table/rack/shelf,/obj/random/multiple/triumph/miningdrills,/turf/simulated/floor/tiled/steel_grid,/area/triumph_away/lavaland/base)
 "Ho" = (/turf/simulated/floor/wood,/area/triumph_away/lavaland/base)
 "Hq" = (/obj/structure/curtain/open/shower/engineering,/turf/simulated/floor/tiled/old_tile,/area/triumph_away/lavaland/base)
+"Hz" = (/obj/effect/floor_decal/industrial/warning{dir = 1},/turf/simulated/floor/tiled/monotile,/area/triumph_away/lavaland/base/common)
 "Iu" = (/obj/effect/decal/cleanable/cobweb2,/obj/effect/decal/cleanable/dirt,/obj/structure/closet/crate/large,/turf/simulated/floor/tiled,/area/triumph_away/lavaland/base/common)
+"Js" = (/obj/effect/floor_decal/industrial/warning{dir = 6},/turf/simulated/floor/tiled/monotile,/area/triumph_away/lavaland/base/common)
 "Ks" = (/obj/machinery/recharge_station,/obj/machinery/light{dir = 4},/turf/simulated/floor/tiled/monotile,/area/triumph_away/lavaland/base)
+"Lj" = (/obj/effect/floor_decal/industrial/warning{dir = 4},/turf/simulated/floor/tiled/monotile,/area/triumph_away/lavaland/base/common)
 "LQ" = (/obj/structure/ore_box,/turf/simulated/floor/tiled,/area/triumph_away/lavaland/base/common)
 "LS" = (/obj/machinery/door/airlock/multi_tile/glass,/turf/simulated/floor/tiled,/area/triumph_away/lavaland/base)
 "MB" = (/obj/structure/grille,/obj/structure/window/reinforced/full,/obj/structure/curtain/black,/turf/simulated/floor/plating,/area/triumph_away/lavaland/base)
@@ -64,6 +70,7 @@
 "NH" = (/obj/structure/bed/chair/sofa/right{dir = 1; icon_state = "sofaend_right"},/obj/effect/floor_decal/spline/fancy/wood{dir = 8},/turf/simulated/floor/wood,/area/triumph_away/lavaland/base)
 "NS" = (/obj/machinery/vending/boozeomat{req_access = null; req_log_access = null},/turf/simulated/floor/tiled/dark,/area/triumph_away/lavaland/base/common)
 "Oy" = (/obj/structure/grille,/obj/structure/window/reinforced/full,/obj/structure/curtain/black,/turf/simulated/floor/plating,/area/triumph_away/lavaland/base/common)
+"Pr" = (/obj/effect/floor_decal/industrial/warning{dir = 10},/turf/simulated/floor/tiled/monotile,/area/triumph_away/lavaland/base/common)
 "PC" = (/obj/machinery/mech_recharger,/turf/simulated/floor/tiled/monotile,/area/triumph_away/lavaland/base)
 "Qa" = (/obj/structure/table/standard,/obj/item/towel/random,/turf/simulated/floor/tiled/old_tile,/area/triumph_away/lavaland/base)
 "Qs" = (/obj/structure/catwalk,/turf/simulated/floor/lava/outdoors,/area/triumph_away/lavaland/explored)
@@ -74,8 +81,8 @@
 "Rw" = (/turf/simulated/wall,/area/triumph_away/lavaland/base)
 "RL" = (/turf/simulated/mineral/triumph/rich,/area/triumph_away/lavaland/explored)
 "RX" = (/turf/simulated/mineral/triumph,/area/triumph_away/lavaland/unexplored)
-"Sm" = (/turf/simulated/floor/tiled/monotile,/area/triumph_away/lavaland/base/common)
-"WK" = (/obj/effect/landmark/lavaland_entry,/obj/effect/decal/cleanable/ash,/obj/effect/lavaland_exitportal,/obj/effect/floor_decal/industrial/warning/full,/turf/simulated/floor/tiled/monotile,/area/triumph_away/lavaland/base/common)
+"Sm" = (/obj/effect/floor_decal/industrial/warning{dir = 9},/turf/simulated/floor/tiled/monotile,/area/triumph_away/lavaland/base/common)
+"WK" = (/obj/machinery/hyperpad/centre{map_pad_id = "lavaland_away"; map_pad_link_id = "lavaland_station"; newcolor = "#fcba03"},/turf/simulated/floor/tiled/monotile,/area/triumph_away/lavaland/base/common)
 "WX" = (/turf/simulated/floor/lava/outdoors,/area/triumph_away/lavaland/explored)
 "Xq" = (/turf/simulated/mineral/triumph,/area/triumph_away/lavaland/base)
 "Xw" = (/obj/machinery/door/airlock{name = "Showers"},/turf/simulated/floor/tiled/old_tile,/area/triumph_away/lavaland/base)
@@ -210,9 +217,9 @@ RuMXRXRXRXRXRXRXRXRXRXRLMXMXWXWXWXMXMXMXMXMXMXMXWXWXWXXqXqXqXqXqXqXqMBQNpJHoHoHo
 RuMXRXRXRXRXRXxdRXRXRXRLMXMXWXWXWXMXMXMXMXMXMXWXWXWXWXXqXqXqXqtgXqXqRwNHhUHoHoHonoewewewewewewewewewXGbJMBXqXqXqXqXqXqXqMXMXWXWXMXMXMXMXMXMXMXMXMXMXMXlblblblblbMXMXMXMXRXRXRXRXRXRXRXRXRXaOaOaOWXMXMXMXMXMXMXxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdRXMXMXMXRu
 RuMXRXRXRXRXRXxdRXRXRXRLMXMXMXWXWXWXMXMXMXMXMXWXWXWXWXXqXqXqtgtgXqXqRwRwRwRwRwRwRwdbdbNbewerewewewewRwRwRwXqXqXqXqXqXqXqMXWXWXMXMXMXMXMXMXMXMXMXMXlblblblblblbMXMXMXMXRLRXRXRXRXRXRXaOaOaOaOaOaOWXWXMXMXMXMXMXRLxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdRXMXMXMXRu
 RuMXRXxdxdxdxdxdxdxdxdRLRLRLMXWXWXWXMXMXMXMXMXWXWXMXWXXqtgtgtgtgXqXqRwoRjFRwegsYRwDMuuNSewerewewewewewiLRwXqXqXqXqXqXqXqMXMXMXMXMXMXMXMXMXMXMXMXlblblblbMXMXMXMXMXMXWXWXaOaOaOaOaOaOaOaOaOaOaOaOWXWXWXMXMXMXMXRLxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdRXMXMXMXRu
-RuMXRXxdxdxdxdxdxdxdxdRLRLRLMXMXWXWXWXMXMXMXMXWXMXWXWXtgtgtgtgXqXqXqMBnznzRwoPoPRwewewewewitSmSmSmewewewMBXqXqXqXqXqXqXqMXMXMXMXMXMXMXMXMXlblblblblblbMXMXMXMXMXWXWXWXWXaOaOWXWXWXWXWXWXWXWXWXWXWXWXWXMXMXRXRXxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdRXMXMXMXRu
-RuMXRXxdxdxdxdxdxdxdxdRLRLRLMXMXWXWXWXMXMXMXMXWXWXWXWXtgtgXqXqXqXqXqRwRwcQRwBsRwRwyXdbXCernbSmWKSmeweweURwXqXqXqXqXqXqXqMXMXRLMXMXMXMXMXlblblblblbMXMXMXMXMXWXWXWXWXWXWXaOaOWXWXWXWXWXWXMXMXMXMXMXMXWXMXMXRXRXxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdRXMXMXMXRu
-RuMXRXxdxdxdxdxdxdxdxdRLRLRLRLMXMXWXWXWXMXMXMXWXWXWXWXtgXqXqXqXqXqXqMBzsewQuewewQuewewewewewSmSmSmewRwRwRwXqXqXqXqXqXqXqMXRLMXRLRLMXlblblblblbMXMXMXMXMXMXWXWXWXWXWXWXWXaORXMXMXMXWXWXWXMXMXWXMXWXWXWXMXMXRXRXxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdRXMXMXMXRu
+RuMXRXxdxdxdxdxdxdxdxdRLRLRLMXMXWXWXWXMXMXMXMXWXMXWXWXtgtgtgtgXqXqXqMBnznzRwoPoPRwewewewewitSmHzqzewewewMBXqXqXqXqXqXqXqMXMXMXMXMXMXMXMXMXlblblblblblbMXMXMXMXMXWXWXWXWXaOaOWXWXWXWXWXWXWXWXWXWXWXWXWXMXMXRXRXxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdRXMXMXMXRu
+RuMXRXxdxdxdxdxdxdxdxdRLRLRLMXMXWXWXWXMXMXMXMXWXWXWXWXtgtgXqXqXqXqXqRwRwcQRwBsRwRwyXdbXCernbgEWKLjeweweURwXqXqXqXqXqXqXqMXMXRLMXMXMXMXMXlblblblblbMXMXMXMXMXWXWXWXWXWXWXaOaOWXWXWXWXWXWXMXMXMXMXMXMXWXMXMXRXRXxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdRXMXMXMXRu
+RuMXRXxdxdxdxdxdxdxdxdRLRLRLRLMXMXWXWXWXMXMXMXWXWXWXWXtgXqXqXqXqXqXqMBzsewQuewewQuewewewewewPrChJsewRwRwRwXqXqXqXqXqXqXqMXRLMXRLRLMXlblblblblbMXMXMXMXMXMXWXWXWXWXWXWXWXaORXMXMXMXWXWXWXMXMXWXMXWXWXWXMXMXRXRXxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdRXMXMXMXRu
 RuMXRXxdxdxdxdxdxdxdxdRLRLRLRLRLMXWXWXWXWXMXMXWXWXWXWXXqXqXqXqXqXqXqMBQRewewewewewewewewewewewewewewLQLQMBXqXqXqXqXqXqXqMXMXlblblblblblblblbMXMXMXMXMXWXWXWXWXWXWXWXWXWXRXRXMXMXMXMXWXWXWXWXWXWXWXWXWXMXMXRXRXxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdRXMXMXMXRu
 RuMXRXxdxdxdxdxdxdxdxdRLRLRLMXRLMXMXWXWXWXMXMXWXWXWXWXXqXqXqXqXqXqXqRwRwRwRwanRwRwcxRwRwewewewewewewewewMBXqXqXqXqXqXqXqMXlblblblblblblbMXMXMXMXMXMXMXWXWXWXWXWXWXWXWXWXaOaOWXWXWXWXWXWXWXWXMXWXWXWXWXWXWXRXRXxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdRXMXMXMXRu
 RuMXRXxdxdxdxdxdxdxdxdRLRLRLMXMXRLMXWXWXWXWXMXWXWXWXWXXqXqXqXqXqXqXqXqXqRwtvtvRwrBrBrBRwRwewewewewewewRwRwXqXqXqXqXqXqXqMXlblblblblbMXMXMXMXMXMXMXWXWXWXWXWXWXWXWXWXWXWXaOaOMXMXMXMXMXMXMXMXMXMXMXWXWXWXWXaOaOxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdxdRXMXMXMXRu

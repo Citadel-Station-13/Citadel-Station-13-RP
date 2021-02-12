@@ -8,24 +8,6 @@
 	alpha = 0
 	blocks_air = 0
 
-/turf/simulated/floor/outdoors/beach/sand/desert
-	name = "desert"
-	desc = "It seems to go on and on.."
-	icon_state = "desert"
-	icon = 'icons/turf/outdoors.dmi'
-
-/turf/simulated/floor/outdoors/beach/sand/dirt
-	name = "worn out path"
-	desc = "A compacted bit of sand with footprints all over it..."
-	icon_state = "dirt-dark"
-	icon = 'icons/turf/outdoors.dmi'
-
-/turf/simulated/floor/outdoors/beach/sand/dirtlight
-	name = "sun bleached path"
-	desc = "A cracked path of compacted sand, worn by heavy traffic and bleached by constant sunlight."
-	icon_state = "dirt-light"
-	icon = 'icons/turf/outdoors.dmi'
-
 // -- Loot Spawners Stolen from UD Files -- //
 /obj/random/triumph
 	name = "random triumph loot"

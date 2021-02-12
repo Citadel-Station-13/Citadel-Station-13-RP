@@ -49,7 +49,7 @@
 /turf/simulated/floor/plating,
 /area/triumph_away/poi_h/explored)
 "x" = (
-/turf/simulated/floor/outdoors/beach/sand/dirtlight,
+/turf/simulated/floor/beach/sand/dirtlight,
 /area/triumph_away/poi_h/unexplored)
 "A" = (
 /mob/living/simple_mob/faithless/strong,

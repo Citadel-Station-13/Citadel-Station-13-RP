@@ -167,7 +167,6 @@
 
 // Gaia Planet Zone.
 #include "gaia_planet/_gaia_planet.dm"
-#include "gaia_planet/gaia_planet_things.dm"
 /datum/map_template/triumph_lateload/gaia_planet
 	name = "Gaia Planet - Z3 Planet"
 	desc = "A lush Gaia Class Planet."
