@@ -1,3 +1,14 @@
+/datum/atmosphere/planet/lavaland
+	base_gases = list(
+	/datum/gas/oxygen = 0.22,
+	/datum/gas/nitrogen = 0.78
+	)
+	base_target_pressure = 110.1
+	minimum_pressure = 110.1
+	maximum_pressure = 110.1
+	minimum_temp = 293.3
+	maximum_temp = 350.1
+
 #define LAVALAND_SET_ATMOS	initial_gas_mix=ATMOSPHERE_ID_LAVALAND
 #define LAVALAND_TURF_CREATE(x)	x/lavaland/initial_gas_mix=ATMOSPHERE_ID_LAVALAND
 

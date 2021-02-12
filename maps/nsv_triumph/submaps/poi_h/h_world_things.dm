@@ -1,31 +1,4 @@
 // -- Turfs -- //
-
-//Turfmakers
-#define DESERT_SET_ATMOS	initial_gas_mix=ATMOSPHERE_ID_CLASSH
-#define DESERT_TURF_CREATE(x)	x/classh/initial_gas_mix=ATMOSPHERE_ID_DESERT
-
-DESERT_TURF_CREATE(/turf/simulated/wall/planetary)
-
-DESERT_TURF_CREATE(/turf/simulated/wall)
-DESERT_TURF_CREATE(/turf/simulated/wall/sandstone)
-DESERT_TURF_CREATE(/turf/simulated/wall/sandstonediamond)
-DESERT_TURF_CREATE(/turf/simulated/floor/outdoors/beach/sand/desert)
-DESERT_TURF_CREATE(/turf/simulated/floor/outdoors/beach/sand/dirt)
-DESERT_TURF_CREATE(/turf/simulated/floor/wood)
-DESERT_TURF_CREATE(/turf/simulated/floor/tiled)
-DESERT_TURF_CREATE(/turf/simulated/floor)
-DESERT_TURF_CREATE(/turf/simulated/floor/water)
-DESERT_TURF_CREATE(/turf/simulated/floor/water/deep)
-DESERT_TURF_CREATE(/turf/simulated/floor/water/shoreline)
-DESERT_TURF_CREATE(/turf/simulated/floor/water/shoreline/corner)
-
-
-DESERT_TURF_CREATE(/turf/simulated/mineral)
-DESERT_TURF_CREATE(/turf/simulated/mineral/ignore_mapgen)
-DESERT_TURF_CREATE(/turf/simulated/mineral/floor)
-DESERT_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
-
-
 /turf/unsimulated/wall/planetary/desert
 	name = "Endless Sands"
 	desc = "You see nothing but featureless flat desert stretching outwards far beyond what the eye can see."

@@ -14490,7 +14490,7 @@
 /area/space)
 "nhq" = (
 /turf/simulated/wall/r_wall,
-/area/maintenance/medbay_aft)
+/area/maintenance/medbay/aft)
 "nhH" = (
 /obj/machinery/autolathe{
 	hacked = 1

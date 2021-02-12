@@ -7,20 +7,6 @@
 	icon_state = "object"
 	initial_generic_waypoints = list("tether_excursion_carpfarm")
 
-/area/awaymission/carpfarm
-	icon_state = "blank"
-	requires_power = 0
-
-/area/awaymission/carpfarm/arrival
-	icon_state = "away"
-	requires_power = 0
-
-/area/awaymission/carpfarm/base
-	icon_state = "away"
-
-/area/awaymission/carpfarm/base/entry
-	icon_state = "blue"
-
 /obj/item/paper/awaygate/carpfarm/suicide
 	name = "suicide letter"
 	info = "dear rescue,<br><br>my name markov. if reading this, i am dead. i <s>am</s> was miner for 3rd union of soviet socialist republiks. \

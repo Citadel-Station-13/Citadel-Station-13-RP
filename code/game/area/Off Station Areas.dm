@@ -160,18 +160,174 @@
 	icon_state = "shuttle2"
 	base_turf = /turf/simulated/floor/outdoors/dirt/triumph
 
+// Frozen planet world areas
+/area/triumph_away/frozen_planet
+	name = "Frozen Planet"
+	icon_state = "away"
+	base_turf = /turf/simulated/floor/outdoors/dirt
+	requires_power = 0
+	dynamic_lighting = 1
+
+/area/triumph_away/frozen_planet/facility
+	name = "Gaia Planet - Facility"
+	requires_power = 1
+	icon_state = "red"
+
+/area/triumph_away/frozen_planet/ruins
+	name = "Gaia Planet - Ruins"
+	icon_state = "green"
+
+/area/triumph_away/frozen_planet/outside
+	name = "Gaia Planet - Outside (UE)"
+	icon_state = "yellow"
+
+//Gaia planet world areas
+/area/triumph_away/gaia_planet
+	name = "Gaia Planet"
+	icon_state = "away"
+	base_turf = /turf/simulated/floor/outdoors/dirt
+	requires_power = 0
+	dynamic_lighting = 1
+
+/area/triumph_away/gaia_planet/inside
+	name = "Gaia Planet - Inside (E)"
+	icon_state = "red"
+
+/area/triumph_away/gaia_planet/outside
+	name = "Gaia Planet - Outside (UE)"
+	icon_state = "yellow"
+
+// Mining Planet world areas
+/area/triumph_away/mining_planet
+	name = "Mining Planet"
+	icon_state = "away"
+	base_turf = /turf/simulated/mineral/floor/
+	dynamic_lighting = 1
+
+/area/triumph_away/mining_planet/explored
+	name = "Mining Planet - Explored (E)"
+	icon_state = "red"
+	forced_ambience = list('sound/ambience/tension/tension.ogg', 'sound/ambience/tension/horror.ogg')
+
+/area/triumph_away/mining_planet/unexplored
+	name = "Mining Planet - Unexplored (UE)"
+	icon_state = "yellow"
+
+// Class D world areas
+/area/triumph_away/poi_d/POIs/ship
+	name = "Crashed Ship Fragment"
+	base_turf = /turf/simulated/mineral/floor/vacuum
+
+/area/triumph_away/poi_d/explored
+	name = "Class D World - Explored (E)"
+	icon_state = "explored"
+
+/area/triumph_away/poi_d/unexplored
+	name = "Class D World - Unexplored (UE)"
+	icon_state = "unexplored"
+
+/area/triumph_away/poi_d
+	name = "Class D World"
+	icon_state = "away"
+	base_turf = /turf/simulated/mineral/floor/vacuum
+	dynamic_lighting = 1
+
+/area/triumph_away/poi_d/plains
+	name = "Class D World Plains"
+	base_turf = /turf/simulated/mineral/floor/vacuum
+
+/area/triumph_away/poi_d/crater
+	name = "Class D World Crater"
+	base_turf = /turf/simulated/mineral/floor/vacuum
+
+/area/triumph_away/poi_d/Mountain
+	name = "Class D World Mountain"
+	base_turf = /turf/simulated/mineral/floor/vacuum
+
+/area/triumph_away/poi_d/Crevices
+	name = "Class D World Crevices"
+	base_turf = /turf/simulated/mineral/floor/vacuum
+
+/area/triumph_away/poi_d/POIs/solar_farm
+	name = "Prefab Solar Farm"
+	base_turf = /turf/simulated/mineral/floor/vacuum
+
+/area/triumph_away/poi_d/POIs/landing_pad
+	name = "Prefab Homestead"
+	base_turf = /turf/simulated/mineral/floor/vacuum
+	requires_power = FALSE
+
+/area/triumph_away/poi_d/POIs/reactor
+	name = "Prefab Reactor"
+	base_turf = /turf/simulated/mineral/floor/vacuum
+
+// Mining Planet world areas
+/area/triumph_away/poi_h
+	name = "Mining Planet"
+	icon_state = "away"
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+	requires_power = 0
+	dynamic_lighting = 1
+
+/area/triumph_away/poi_h/explored
+	name = "Mining Planet - Explored (E)"
+	icon_state = "red"
+	forced_ambience = list('sound/ambience/tension/tension.ogg', 'sound/ambience/tension/horror.ogg')
+
+/area/triumph_away/poi_h/unexplored
+	name = "Mining Planet - Unexplored (UE)"
+	icon_state = "yellow"
+
+/area/shuttle/excursion/poi_h
+	name = "Shuttle Landing Point"
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+	flags = RAD_SHIELDED
+
+/area/triumph_away/poi_h
+	name = "Class H World"
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+
+/area/triumph_away/poi_h/POIs/WW_Town
+	name = "Ghost Town"
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+
+/area/triumph_away/poi_h/POIs/landing_pad
+	name = "Prefab Homestead"
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+
+/area/triumph_away/poi_h/POIs/solar_farm
+	name = "Prefab Solar Farm"
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+
+/area/triumph_away/poi_h/POIs/dirt_farm
+	name = "Abandoned Farmstead"
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+
+/area/triumph_away/poi_h/POIs/graveyard
+	name = "Desert Graveyard"
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+
+/area/triumph_away/poi_h/POIs/goldmine
+	name = "Desert Goldmine"
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+
+/area/triumph_away/poi_h/explored
+	name = "Class H World - Explored (E)"
+	icon_state = "explored"
+
+/area/triumph_away/poi_h/unexplored
+	name = "Class H World - Unexplored (UE)"
+	icon_state = "unexplored"
+
 
 // Mining Underdark
 
-/*	Commented for now until planetary turf generation is consolidated.
-Uncomment when these areas can have their respective base turf.
 /area/mine/unexplored/underdark
 	name = "\improper Mining Underdark"
 	base_turf = /turf/simulated/mineral/floor/virgo3b
 /area/mine/explored/underdark
 	name = "\improper Mining Underdark"
 	base_turf = /turf/simulated/mineral/floor/virgo3b
-*/
 
 // Mining outpost areas
 /area/outpost/mining_main/passage
@@ -343,3 +499,273 @@ Uncomment when these areas can have their respective base turf.
 	name = "\improper docked with Tether"
 	icon_state = "shuttle"
 	dynamic_lighting = 0
+
+
+// Lavaland
+/area/shuttle/excursion/lavaland
+	name = "Shuttle Landing Point"
+	base_turf = /turf/simulated/floor/outdoors/lavaland
+	flags = RAD_SHIELDED
+
+/area/triumph_away/lavaland
+	name = "Lava Land"
+	base_turf = /turf/simulated/floor/outdoors/lavaland
+
+/area/triumph_away/lavaland/horrors
+	name = "Lava Land - Horrors"
+	base_turf = /turf/simulated/floor/outdoors/lavaland
+
+/area/triumph_away/lavaland/dogs
+	name = "Lava Land - Dogs"
+	base_turf = /turf/simulated/floor/outdoors/lavaland
+
+/area/triumph_away/lavaland/idleruins
+	name = "Lava Land - Idle Ruins"
+	base_turf = /turf/simulated/floor/outdoors/lavaland
+
+/area/triumph_away/lavaland/bosses
+	name = "Lava Land - Boss"
+	base_turf = /turf/simulated/floor/outdoors/lavaland
+	requires_power = 0
+
+/area/triumph_away/lavaland
+	name = "Lava Land"
+	icon_state = "away"
+	base_turf = /turf/simulated/floor/outdoors/lavaland
+	dynamic_lighting = 1
+
+/area/triumph_away/lavaland/base
+	name = "Lava Land - Mining Base"
+	icon_state = "green"
+	requires_power = 0
+
+/area/triumph_away/lavaland/base/common
+	name = "Lava Land - Mining Base"
+	icon_state = "blue"
+	requires_power = 0
+/area/triumph_away/lavaland/explored
+	name = "Lava Land - Thoroughfare"
+	icon_state = "red"
+
+/area/triumph_away/lavaland/unexplored
+	name = "Lava Land - Unknown"
+	icon_state = "yellow"
+
+
+// Away Missions
+/area/awaymission
+	name = "\improper Strange Location"
+	icon_state = "away"
+	ambience = AMBIENCE_FOREBODING
+
+/area/awaymission/gateway
+	name = "\improper Gateway"
+	icon_state = "teleporter"
+	music = "signal"
+
+/area/awaymission/example
+	name = "\improper Strange Station"
+	icon_state = "away"
+
+/area/awaymission/wwmines
+	name = "\improper Wild West Mines"
+	icon_state = "away1"
+	luminosity = 1
+	requires_power = 0
+
+/area/awaymission/wwgov
+	name = "\improper Wild West Mansion"
+	icon_state = "away2"
+	luminosity = 1
+	requires_power = 0
+
+/area/awaymission/wwrefine
+	name = "\improper Wild West Refinery"
+	icon_state = "away3"
+	luminosity = 1
+	requires_power = 0
+
+/area/awaymission/wwvault
+	name = "\improper Wild West Vault"
+	icon_state = "away3"
+	luminosity = 0
+
+/area/awaymission/wwvaultdoors
+	name = "\improper Wild West Vault Doors"  // this is to keep the vault area being entirely lit because of requires_power
+	icon_state = "away2"
+	requires_power = 0
+	luminosity = 0
+
+/area/awaymission/desert
+	name = "Mars"
+	icon_state = "away"
+
+/area/awaymission/BMPship1
+	name = "\improper Aft Block"
+	icon_state = "away1"
+
+/area/awaymission/BMPship2
+	name = "\improper Midship Block"
+	icon_state = "away2"
+
+/area/awaymission/BMPship3
+	name = "\improper Fore Block"
+	icon_state = "away3"
+
+/area/awaymission/spacebattle
+	name = "\improper Space Battle"
+	icon_state = "away"
+	requires_power = 0
+
+/area/awaymission/spacebattle/cruiser
+	name = "\improper NanoTrasen Cruiser"
+
+/area/awaymission/spacebattle/syndicate1
+	name = "\improper Syndicate Assault Ship 1"
+
+/area/awaymission/spacebattle/syndicate2
+	name = "\improper Syndicate Assault Ship 2"
+
+/area/awaymission/spacebattle/syndicate3
+	name = "\improper Syndicate Assault Ship 3"
+
+/area/awaymission/spacebattle/syndicate4
+	name = "\improper Syndicate War Sphere 1"
+
+/area/awaymission/spacebattle/syndicate5
+	name = "\improper Syndicate War Sphere 2"
+
+/area/awaymission/spacebattle/syndicate6
+	name = "\improper Syndicate War Sphere 3"
+
+/area/awaymission/spacebattle/syndicate7
+	name = "\improper Syndicate Fighter"
+
+/area/awaymission/spacebattle/secret
+	name = "\improper Hidden Chamber"
+
+/area/awaymission/listeningpost
+	name = "\improper Listening Post"
+	icon_state = "away"
+	requires_power = 0
+
+/area/awaymission/beach
+	name = "Beach"
+	icon_state = "null"
+	luminosity = 1
+	dynamic_lighting = 0
+	requires_power = 0
+
+/area/awaymission/carpfarm
+	icon_state = "blank"
+	requires_power = 0
+
+/area/awaymission/carpfarm/arrival
+	icon_state = "away"
+	requires_power = 0
+
+/area/awaymission/carpfarm/base
+	icon_state = "away"
+
+/area/awaymission/carpfarm/base/entry
+	icon_state = "blue"
+
+/area/awaymission/snow_outpost
+	icon_state = "blank"
+	requires_power = 0
+	base_turf = /turf/snow/snow2
+	ambience = list('sound/music/main.ogg', 'sound/ambience/maintenance/maintenance4.ogg', 'sound/ambience/sif/sif1.ogg', 'sound/ambience/ruins/ruins1.ogg')
+	base_turf = /turf/simulated/floor/snow/snow2
+
+/area/awaymission/snow_outpost/outside
+	icon_state = "away1"
+	requires_power = 1
+	always_unpowered = 1
+	dynamic_lighting = 1
+	power_light = 0
+	power_equip = 0
+	power_environ = 0
+	mobcountmax = 100
+	floracountmax = 7000
+	valid_mobs = list(/mob/living/simple_mob/animal/sif/savik, /mob/living/simple_mob/animal/wolf, /mob/living/simple_mob/animal/sif/shantak,
+					  /mob/living/simple_mob/animal/sif/kururak, /mob/living/simple_mob/animal/sif/frostfly)
+	valid_flora = list(/obj/structure/flora/tree/pine, /obj/structure/flora/tree/pine, /obj/structure/flora/tree/pine,
+					/obj/structure/flora/tree/dead, /obj/structure/flora/grass/brown, /obj/structure/flora/grass/green,
+					/obj/structure/flora/grass/both, /obj/structure/flora/bush, /obj/structure/flora/ausbushes/grassybush,
+					/obj/structure/flora/ausbushes/sunnybush, /obj/structure/flora/ausbushes/genericbush, /obj/structure/flora/ausbushes/pointybush,
+					/obj/structure/flora/ausbushes/lavendergrass, /obj/structure/flora/ausbushes/sparsegrass, /obj/structure/flora/ausbushes/fullgrass)
+
+/area/awaymission/snow_outpost/restricted // No mob spawns!
+	icon_state = "red"
+	mobcountmax = 1 // Hacky fix.
+	floracountmax = 100
+	valid_mobs = list(/obj/structure/flora/tree/pine) // Hacky fix.
+	valid_flora = list(/obj/structure/flora/tree/pine, /obj/structure/flora/tree/pine, /obj/structure/flora/tree/pine,
+					/obj/structure/flora/tree/dead, /obj/structure/flora/grass/brown, /obj/structure/flora/grass/green,
+					/obj/structure/flora/grass/both, /obj/structure/flora/bush, /obj/structure/flora/ausbushes/grassybush,
+					/obj/structure/flora/ausbushes/sunnybush, /obj/structure/flora/ausbushes/genericbush, /obj/structure/flora/ausbushes/pointybush,
+					/obj/structure/flora/ausbushes/lavendergrass, /obj/structure/flora/ausbushes/sparsegrass, /obj/structure/flora/ausbushes/fullgrass)
+
+/area/awaymission/snow_outpost/outpost
+	icon_state = "away"
+	ambience = list('sound/ambience/chapel/chapel1.ogg', 'sound/ambience/ruins/ruins5.ogg', 'sound/ambience/ruins/ruins1.ogg')  // Rykka was here. <3
+
+/area/awaymission/snowfield
+	icon_state = "blank"
+//	requires_power = 0
+	base_turf = /turf/snow/snow2
+	ambience = list('sound/ambience/ambispace.ogg','sound/music/title2.ogg','sound/music/space.ogg','sound/music/main.ogg','sound/music/traitor.ogg')
+	base_turf = /turf/simulated/floor/snow/snow2
+
+/area/awaymission/snowfield/outside
+	icon_state = "green"
+	requires_power = 1
+	always_unpowered = 1
+	dynamic_lighting = 1
+	power_light = 0
+	power_equip = 0
+	power_environ = 0
+	mobcountmax = 40
+	floracountmax = 2000
+
+	valid_mobs = list(/mob/living/simple_mob/animal/sif/sakimm/polar, /mob/living/simple_mob/animal/sif/diyaab/polar,
+					/mob/living/simple_mob/animal/sif/shantak/polar, /mob/living/simple_mob/animal/space/bear/polar,
+					/mob/living/simple_mob/animal/wolf)
+	valid_flora = list(/obj/structure/flora/tree/pine, /obj/structure/flora/tree/pine, /obj/structure/flora/tree/pine,
+					/obj/structure/flora/tree/dead, /obj/structure/flora/grass/brown, /obj/structure/flora/grass/green,
+					/obj/structure/flora/grass/both, /obj/structure/flora/bush, /obj/structure/flora/ausbushes/grassybush,
+					/obj/structure/flora/ausbushes/sunnybush, /obj/structure/flora/ausbushes/genericbush, /obj/structure/flora/ausbushes/pointybush,
+					/obj/structure/flora/ausbushes/lavendergrass, /obj/structure/flora/ausbushes/sparsegrass, /obj/structure/flora/ausbushes/fullgrass)
+
+/area/awaymission/snowfield/restricted // No mob spawns!
+	icon_state = "red"
+	mobcountmax = 1 // Hacky fix.
+	floracountmax = 120
+	valid_mobs = list(/obj/structure/flora/tree/pine) // Hacky fix.
+	valid_flora = list(/obj/structure/flora/tree/pine, /obj/structure/flora/tree/pine, /obj/structure/flora/tree/pine,
+					/obj/structure/flora/tree/dead, /obj/structure/flora/grass/brown, /obj/structure/flora/grass/green,
+					/obj/structure/flora/grass/both, /obj/structure/flora/bush, /obj/structure/flora/ausbushes/grassybush,
+					/obj/structure/flora/ausbushes/sunnybush, /obj/structure/flora/ausbushes/genericbush, /obj/structure/flora/ausbushes/pointybush,
+					/obj/structure/flora/ausbushes/lavendergrass, /obj/structure/flora/ausbushes/sparsegrass, /obj/structure/flora/ausbushes/fullgrass)
+
+/area/awaymission/snowfield/base
+	icon_state = "away"
+	ambience = null // Todo: Add better ambience.
+
+/area/awaymission/zoo
+	icon_state = "green"
+	requires_power = 0
+	dynamic_lighting = 0
+	ambience = list('sound/ambience/ambispace.ogg','sound/music/title2.ogg','sound/music/space.ogg','sound/music/main.ogg','sound/music/traitor.ogg')
+
+/area/awaymission/zoo/solars
+	icon_state = "yellow"
+
+/area/awaymission/zoo/tradeship
+	icon_state = "purple"
+
+/area/awaymission/zoo/syndieship
+	icon_state = "red"
+
+/area/awaymission/zoo/pirateship
+	icon_state = "bluenew"

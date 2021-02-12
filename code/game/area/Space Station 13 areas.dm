@@ -3180,6 +3180,13 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/alien/unknown/dorm4
 	name = "Unknown Dorm 4"
 
+/area/beach
+	name = "Keelin's private beach"
+	icon_state = "yellow"
+	luminosity = 1
+	dynamic_lighting = 0
+	requires_power = 0
+
 /area/wreck
 	ambience = AMBIENCE_RUINS
 
@@ -3325,118 +3332,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/exploration/pathfinder_office
 	name = "\improper Pathfinder's Office"
-
-
-// Away Missions
-/area/awaymission
-	name = "\improper Strange Location"
-	icon_state = "away"
-	ambience = AMBIENCE_FOREBODING
-
-/area/awaymission/gateway
-	name = "\improper Gateway"
-	icon_state = "teleporter"
-	music = "signal"
-
-/area/awaymission/example
-	name = "\improper Strange Station"
-	icon_state = "away"
-
-/area/awaymission/wwmines
-	name = "\improper Wild West Mines"
-	icon_state = "away1"
-	luminosity = 1
-	requires_power = 0
-
-/area/awaymission/wwgov
-	name = "\improper Wild West Mansion"
-	icon_state = "away2"
-	luminosity = 1
-	requires_power = 0
-
-/area/awaymission/wwrefine
-	name = "\improper Wild West Refinery"
-	icon_state = "away3"
-	luminosity = 1
-	requires_power = 0
-
-/area/awaymission/wwvault
-	name = "\improper Wild West Vault"
-	icon_state = "away3"
-	luminosity = 0
-
-/area/awaymission/wwvaultdoors
-	name = "\improper Wild West Vault Doors"  // this is to keep the vault area being entirely lit because of requires_power
-	icon_state = "away2"
-	requires_power = 0
-	luminosity = 0
-
-/area/awaymission/desert
-	name = "Mars"
-	icon_state = "away"
-
-/area/awaymission/BMPship1
-	name = "\improper Aft Block"
-	icon_state = "away1"
-
-/area/awaymission/BMPship2
-	name = "\improper Midship Block"
-	icon_state = "away2"
-
-/area/awaymission/BMPship3
-	name = "\improper Fore Block"
-	icon_state = "away3"
-
-/area/awaymission/spacebattle
-	name = "\improper Space Battle"
-	icon_state = "away"
-	requires_power = 0
-
-/area/awaymission/spacebattle/cruiser
-	name = "\improper NanoTrasen Cruiser"
-
-/area/awaymission/spacebattle/syndicate1
-	name = "\improper Syndicate Assault Ship 1"
-
-/area/awaymission/spacebattle/syndicate2
-	name = "\improper Syndicate Assault Ship 2"
-
-/area/awaymission/spacebattle/syndicate3
-	name = "\improper Syndicate Assault Ship 3"
-
-/area/awaymission/spacebattle/syndicate4
-	name = "\improper Syndicate War Sphere 1"
-
-/area/awaymission/spacebattle/syndicate5
-	name = "\improper Syndicate War Sphere 2"
-
-/area/awaymission/spacebattle/syndicate6
-	name = "\improper Syndicate War Sphere 3"
-
-/area/awaymission/spacebattle/syndicate7
-	name = "\improper Syndicate Fighter"
-
-/area/awaymission/spacebattle/secret
-	name = "\improper Hidden Chamber"
-
-/area/awaymission/listeningpost
-	name = "\improper Listening Post"
-	icon_state = "away"
-	requires_power = 0
-
-/area/awaymission/beach
-	name = "Beach"
-	icon_state = "null"
-	luminosity = 1
-	dynamic_lighting = 0
-	requires_power = 0
-
-/area/beach
-	name = "Keelin's private beach"
-	icon_state = "yellow"
-	luminosity = 1
-	dynamic_lighting = 0
-	requires_power = 0
 
 
 //Elevator areas

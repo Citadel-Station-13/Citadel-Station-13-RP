@@ -1,23 +1,3 @@
-// -- Areas -- //
-
-/area/awaymission/zoo
-	icon_state = "green"
-	requires_power = 0
-	dynamic_lighting = 0
-	ambience = list('sound/ambience/ambispace.ogg','sound/music/title2.ogg','sound/music/space.ogg','sound/music/main.ogg','sound/music/traitor.ogg')
-
-/area/awaymission/zoo/solars
-	icon_state = "yellow"
-
-/area/awaymission/zoo/tradeship
-	icon_state = "purple"
-
-/area/awaymission/zoo/syndieship
-	icon_state = "red"
-
-/area/awaymission/zoo/pirateship
-	icon_state = "bluenew"
-
 /obj/item/paper/zoo
 	name = "\improper Quarterly Report"
 	info = {"<i>There's nothing but spreadsheets and budget reports on this document, apparently regarding a zoo owned by NanoTrasen.</i>"}

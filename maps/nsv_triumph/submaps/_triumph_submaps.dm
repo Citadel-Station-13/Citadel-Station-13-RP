@@ -103,7 +103,6 @@
 // lavaland start
 #include "lavaland/_lavaland.dm"
 #include "lavaland/_templates.dm"
-#include "lavaland/lavaland_atmos.dm"
 /datum/map_template/triumph_lateload/lavaland
 	name = "Away Mission - Lava Land"
 	desc = "The fabled."
@@ -190,7 +189,6 @@
 
 // Frozen Planet Zone.
 #include "frozen_planet/_frozen_planet.dm"
-#include "frozen_planet/frozen_planet_things.dm"
 #include "frozen_planet/_templates.dm"
 /datum/map_template/triumph_lateload/frozen_planet
 	name = "Forzen Planet - Z4 Planet"
