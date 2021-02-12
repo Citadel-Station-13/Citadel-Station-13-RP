@@ -27,7 +27,7 @@
 #define Z_LEVEL_ROGUEMINE_4				18
 
 #define Z_LEVEL_TRADEPORT				19
-
+#define Z_LEVEL_LAVALAND				20
 // Camera Networks
 #define NETWORK_TRIUMPH "Triumph"
 #define NETWORK_TCOMMS "Telecommunications"
@@ -163,7 +163,8 @@
 		list("Gaia Planet - Z3 Planet"), // Gaia Planet
 		list("Forzen Planet - Z4 Planet"), // Frozen Planet
 		list("Asteroid Belt 1","Asteroid Belt 2","Asteroid Belt 3","Asteroid Belt 4"),
-		list("Away Mission - Trade Port") // Trading Post
+		list("Away Mission - Trade Port"), // Trading Post
+		list("Away Mission - Lava Land")
 	)
 
 	ai_shell_restricted = TRUE
@@ -179,7 +180,8 @@
 		Z_LEVEL_DESERT_PLANET,
 		Z_LEVEL_GAIA_PLANET,
 		Z_LEVEL_FROZEN_PLANET,
-		Z_LEVEL_TRADEPORT)
+		Z_LEVEL_TRADEPORT,
+		Z_LEVEL_LAVALAND)
 
 	lateload_single_pick = null //Nothing right now.
 

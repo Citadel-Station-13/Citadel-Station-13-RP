@@ -39,6 +39,7 @@
 #include "poi_h/Class_H.dmm"
 #include "frozen_planet/frozen_planet.dmm"
 #include "space/trade_port/tradeport.dmm"
+#include "lavaland/lavaland.dmm"
 #endif
 
 // Debris Fields
@@ -98,6 +99,28 @@
 	. = ..()
 	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_MININGPLANET, world.maxx - 4, world.maxy - 4) // Create the mining Z-level.
 	new /datum/random_map/noise/ore/mining_planet(null, 1, 1, Z_LEVEL_MININGPLANET, 64, 64)         // Create the mining ore distribution map.
+
+// lavaland start
+#include "lavaland/_lavaland.dm"
+#include "lavaland/_templates.dm"
+#include "lavaland/lavaland_atmos.dm"
+/datum/map_template/triumph_lateload/lavaland
+	name = "Away Mission - Lava Land"
+	desc = "The fabled."
+	mappath = 'lavaland/lavaland.dmm'
+	associated_map_datum = /datum/map_z_level/triumph_lateload/lavaland
+	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
+
+/datum/map_z_level/triumph_lateload/lavaland
+	name = "Away Mission - Lava Land"
+	z = Z_LEVEL_LAVALAND
+
+/datum/map_template/triumph_lateload/lavaland/on_map_loaded(z)
+	. = ..()
+	seed_submaps(list(Z_LEVEL_LAVALAND), 40, /area/triumph_away/lavaland/unexplored, /datum/map_template/lavaland)
+	new /datum/random_map/noise/ore/lavaland(null, 1, 1, Z_LEVEL_LAVALAND, 64, 64)         // Create the mining ore distribution map.
+	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_LAVALAND, world.maxx - 4, world.maxy - 4) // Create the lavaland Z-level.
+
 
 // Class D Rogue Planet Exploration Zone.
 #include "poi_d/_class_d.dm"

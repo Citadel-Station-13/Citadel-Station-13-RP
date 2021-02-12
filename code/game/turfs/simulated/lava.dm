@@ -6,16 +6,17 @@
 	gender = PLURAL // So it says "That's some lava." on examine.
 	icon = 'icons/turf/outdoors.dmi'
 	icon_state = "lava"
-	edge_blending_priority = -1
+	edge_blending_priority = 4
 	light_range = 2
 	light_power = 0.75
 	light_color = LIGHT_COLOR_LAVA
+	flags = TURF_HAS_EDGES
 	movement_cost = 2
 	can_build_into_floor = TRUE
 	can_dirty = FALSE
 
 /turf/simulated/floor/lava/outdoors
-	outdoors = TRUE
+	outdoors = FALSE
 
 // For maximum pedantry.
 /turf/simulated/floor/lava/Initialize()
