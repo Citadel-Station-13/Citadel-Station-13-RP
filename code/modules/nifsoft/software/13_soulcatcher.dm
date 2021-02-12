@@ -539,7 +539,7 @@
 		var/sane_message = sanitize(message)
 		SC.say_into(sane_message,src)
 
-/mob/living/carbon/human/proc/nme(message as text)
+/mob/living/carbon/human/proc/nme(message as message)
 	set name = "NMe"
 	set desc = "Emote into your NIF's Soulcatcher."
 	set category = "IC"
