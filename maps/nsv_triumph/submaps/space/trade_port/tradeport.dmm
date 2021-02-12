@@ -7777,7 +7777,7 @@
 /area/triumph_away/tradeport/pads)
 "JQ" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/digestion_remains/skull,
+/obj/item/bone/skull,
 /turf/simulated/floor/snow,
 /area/triumph_away/tradeport/cyndishow)
 "JT" = (
