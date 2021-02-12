@@ -61,6 +61,7 @@
 
 	starts_with = list(
 		/obj/item/clothing/under/rank/head_of_personnel,
+		/obj/item/clothing/under/rank/head_of_personnel/skirt_pleated,
 		/obj/item/clothing/under/dress/dress_hop,
 		/obj/item/clothing/under/dress/dress_hr,
 		/obj/item/clothing/under/lawyer/female,
@@ -158,6 +159,8 @@
 		/obj/item/clothing/suit/storage/vest/hos,
 		/obj/item/clothing/under/rank/head_of_security/jensen,
 		/obj/item/clothing/under/rank/head_of_security/corp,
+		/obj/item/clothing/under/rank/head_of_security/skirt_pleated,
+		/obj/item/clothing/under/rank/head_of_security/skirt_pleated/alt,
 		/obj/item/clothing/under/solgov/mildress/marine/command,
 		/obj/item/clothing/suit/storage/vest/hoscoat/jensen,
 		/obj/item/clothing/suit/storage/vest/hoscoat,
@@ -220,6 +223,7 @@
 		/obj/item/clothing/suit/storage/vest/warden,
 		/obj/item/clothing/under/rank/warden,
 		/obj/item/clothing/under/rank/warden/corp,
+		/obj/item/clothing/under/rank/warden/skirt_pleated,
 		/obj/item/clothing/suit/storage/vest/wardencoat,
 		/obj/item/clothing/suit/storage/vest/wardencoat/alt,
 		/obj/item/clothing/head/helmet/dermal,
