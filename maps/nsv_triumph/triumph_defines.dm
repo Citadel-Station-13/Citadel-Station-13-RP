@@ -1,9 +1,3 @@
-
-// Turfmakers
-#define TRIUMPH_SET_ATMOS	initial_gas_mix = ATMOSPHERE_ID_TRIUMPH
-#define TRIUMPH_TURF_CREATE(x)	x/triumph/initial_gas_mix = ATMOSPHERE_ID_TRIUMPH;x/triumph/outdoors=TRUE;x/triumph/allow_gas_overlays = FALSE
-#define TRIUMPH_TURF_CREATE_UN(x)	x/triumph/initial_gas_mix=ATMOSPHERE_ID_TRIUMPH
-
 // Normal map defs
 #define Z_LEVEL_DECK_ONE				1
 #define Z_LEVEL_DECK_TWO				2
