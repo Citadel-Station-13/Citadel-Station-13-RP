@@ -84,6 +84,15 @@
 	icon_state = "ian"
 	item_state_slots = list(slot_r_hand_str = "ian", slot_l_hand_str = "ian") //Does not exist -S2-
 
+/obj/item/clothing/head/hood/bee_hood
+	name = "bee hood"
+	desc = "A hood that looks just like a bee's."
+	icon_state = "bee"
+
+/obj/item/clothing/head/hood/flash_hood
+	name = "flash top"
+	desc = "A plastic dome that resembles the button on a flash."
+	icon_state = "flashsuit"
 
 /obj/item/clothing/head/hood/techpriest
 	name = "tech priest hood"

@@ -114,3 +114,8 @@
 	item_state_slots = list(slot_r_hand_str = "science_labcoat", slot_l_hand_str = "science_labcoat")
 	sprite_sheets = list(
 		SPECIES_TESHARI = 'icons/mob/species/teshari/suit.dmi')
+
+/obj/item/clothing/suit/storage/toggle/labcoat/robotics
+	name = "Roboticist labcoat"
+	desc = "A suit that protects against oil, acid, and burn hazards. Has a red stripe on the shoulder."
+	icon_state = "labcoat_robo"

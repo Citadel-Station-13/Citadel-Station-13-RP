@@ -213,3 +213,28 @@ obj/item/clothing/shoes/sandal/clogs
 	name = "Roman Caligae"
 	desc = "Hardy leather sandles capable of holding up for many miles."
 	icon_state = "roman"
+
+/obj/item/clothing/shoes/boots/bsing
+	name = "blue performer's boots"
+	desc = "Dancing in these makes you feel lighter than air."
+	icon_state = "bsing"
+
+/obj/item/clothing/shoes/boots/ysing
+	name = "yellow performer's boots"
+	desc = "Dance down the path laid out by your predecessor."
+	icon_state = "ysing"
+
+/obj/item/clothing/shoes/santa
+	name = "santa boots"
+	desc = "If you smack these boots, a cloud of fine coal will sometimes puff out."
+	icon_state = "santaboots"
+
+/obj/item/clothing/shoes/holiday
+	name = "holiday shoes"
+	desc = "These red, fur lined boots keep you warm inside and out."
+	icon_state = "christmasbootsr"
+
+/obj/item/clothing/shoes/holiday/green
+	name = "green holiday shoes"
+	desc = "The tips of these fur lined boots curl slightly, lending them a whimsical flair."
+	icon_state = "christmasbootsg"
