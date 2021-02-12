@@ -12968,10 +12968,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/foyer)
-"Mx" = (
-/obj/machinery/appliance/grill,
-/turf/simulated/floor/tiled/dark,
-/area/crew_quarters/kitchen)
 "My" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -23977,7 +23973,7 @@ Zy
 kj
 hk
 ej
-Mx
+LR
 SG
 Kj
 TF

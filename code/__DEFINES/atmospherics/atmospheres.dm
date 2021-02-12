@@ -17,3 +17,5 @@
 /// Triumph Planet Atmos ID (If needed)
 
 #define ATMOSPHERE_ID_TRIUMPH			/datum/atmosphere/planet/virgo3b
+
+#define ATMOSPHERE_ID_LAVALAND			/datum/atmosphere/planet/lavaland
