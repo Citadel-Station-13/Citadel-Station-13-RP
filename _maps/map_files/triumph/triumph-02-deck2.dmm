@@ -32,6 +32,14 @@
 /obj/item/paper_bin,
 /turf/simulated/floor/carpet/turcarpet,
 /area/crew_quarters/visitor_dining)
+"af" = (
+/obj/structure/table/marble,
+/obj/item/storage/box/donkpockets,
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/crew_quarters/kitchen)
 "ag" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -7479,7 +7487,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
 "vv" = (
@@ -9505,6 +9515,9 @@
 /obj/machinery/hologram/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/kitchen)
@@ -12151,14 +12164,6 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area_hallway)
-"JF" = (
-/obj/structure/table/marble,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 1
-	},
-/obj/item/storage/box/donkpockets,
-/turf/simulated/floor/tiled/dark,
-/area/crew_quarters/kitchen)
 "JG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -12193,12 +12198,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area_hallway)
-"JL" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
-	},
-/turf/simulated/floor/tiled/dark,
-/area/crew_quarters/kitchen)
 "JM" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
@@ -16632,7 +16631,7 @@
 	name = "Chef"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 8
+	dir = 10
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/kitchen)
@@ -23188,7 +23187,7 @@ nG
 VS
 Xl
 vu
-ZZ
+os
 RV
 LR
 WU
@@ -23330,7 +23329,7 @@ PG
 SL
 SQ
 BT
-os
+ZZ
 Pc
 LR
 WU
@@ -23472,7 +23471,7 @@ xL
 pH
 Ce
 Xa
-os
+af
 Pc
 LR
 WU
@@ -23613,8 +23612,8 @@ Tw
 oo
 vk
 Tg
-JL
-JF
+LR
+os
 Pc
 LR
 WU
