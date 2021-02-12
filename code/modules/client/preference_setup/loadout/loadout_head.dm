@@ -147,6 +147,10 @@
 	display_name = "cowboy, black"
 	path = /obj/item/clothing/head/cowboy_hat/black
 
+/datum/gear/head/cowboy/pink
+	display_name = "cowboy, pink"
+	path = /obj/item/clothing/head/cowboy_hat/pink
+
 /datum/gear/head/cowboy/wide
 	display_name = "cowboy, wide"
 	path = /obj/item/clothing/head/cowboy_hat/wide
