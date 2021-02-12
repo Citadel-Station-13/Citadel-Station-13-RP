@@ -45,11 +45,9 @@
 /area/submap/spa)
 "aj" = (
 /obj/structure/railing{
-	icon_state = "railing0";
 	dir = 1
 	},
 /obj/structure/railing{
-	icon_state = "railing0";
 	dir = 8
 	},
 /turf/simulated/floor/water,
@@ -60,7 +58,6 @@
 /area/submap/spa)
 "al" = (
 /obj/structure/railing{
-	icon_state = "railing0";
 	dir = 1
 	},
 /obj/structure/flora/ausbushes/sunnybush,
@@ -80,18 +77,15 @@
 /area/submap/spa)
 "ao" = (
 /obj/structure/railing{
-	icon_state = "railing0";
 	dir = 4
 	},
 /obj/structure/railing{
-	icon_state = "railing0";
 	dir = 1
 	},
 /turf/simulated/floor/water,
 /area/submap/spa)
 "ap" = (
 /obj/structure/railing{
-	icon_state = "railing0";
 	dir = 8
 	},
 /turf/simulated/floor/water,
@@ -101,7 +95,6 @@
 /area/submap/spa)
 "ar" = (
 /obj/structure/railing{
-	icon_state = "railing0";
 	dir = 4
 	},
 /turf/simulated/floor/water,
@@ -109,14 +102,12 @@
 "as" = (
 /obj/structure/flora/ausbushes/palebush,
 /obj/structure/railing{
-	icon_state = "railing0";
 	dir = 4
 	},
 /turf/simulated/floor/water,
 /area/submap/spa)
 "at" = (
 /obj/structure/railing{
-	icon_state = "railing0";
 	dir = 8
 	},
 /obj/structure/flora/ausbushes/palebush,
@@ -128,7 +119,6 @@
 /area/submap/spa)
 "av" = (
 /obj/structure/railing{
-	icon_state = "railing0";
 	dir = 8
 	},
 /obj/structure/railing,
@@ -174,7 +164,6 @@
 "aD" = (
 /obj/structure/railing,
 /obj/structure/railing{
-	icon_state = "railing0";
 	dir = 4
 	},
 /turf/simulated/floor/water,
@@ -188,14 +177,12 @@
 /area/submap/spa)
 "aF" = (
 /obj/structure/bed/chair/wood{
-	icon_state = "wooden_chair";
 	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/submap/spa)
 "aG" = (
 /obj/structure/bed/chair/wood{
-	icon_state = "wooden_chair";
 	dir = 8
 	},
 /turf/simulated/floor/wood,
@@ -240,7 +227,6 @@
 /area/submap/spa)
 "aQ" = (
 /obj/structure/bed/chair/wood{
-	icon_state = "wooden_chair";
 	dir = 1
 	},
 /turf/simulated/floor/wood,
@@ -301,21 +287,18 @@
 /area/submap/spa)
 "bb" = (
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 9
 	},
 /turf/simulated/floor/reinforced,
 /area/submap/spa)
 "bc" = (
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
 /area/submap/spa)
 "bd" = (
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 5
 	},
 /turf/simulated/floor/reinforced,
@@ -340,14 +323,12 @@
 "bg" = (
 /obj/structure/sink{
 	dir = 8;
-	icon_state = "sink";
 	pixel_x = -16
 	},
 /turf/simulated/floor/tiled/white,
 /area/submap/spa)
 "bh" = (
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 8
 	},
 /turf/simulated/floor/reinforced,
@@ -363,7 +344,6 @@
 /area/submap/spa)
 "bk" = (
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
@@ -376,7 +356,6 @@
 /area/submap/spa)
 "bm" = (
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 10
 	},
 /turf/simulated/floor/reinforced,
@@ -403,7 +382,6 @@
 /area/submap/spa)
 "bq" = (
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 6
 	},
 /turf/simulated/floor/reinforced,
@@ -444,7 +422,6 @@
 /area/submap/spa)
 "bw" = (
 /obj/structure/toilet{
-	icon_state = "toilet00";
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -457,9 +434,7 @@
 /area/submap/spa)
 "by" = (
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /turf/simulated/floor/grass,
 /area/submap/spa)
@@ -494,9 +469,7 @@
 /area/submap/spa)
 "bD" = (
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /turf/simulated/floor/reinforced,
 /area/submap/spa)

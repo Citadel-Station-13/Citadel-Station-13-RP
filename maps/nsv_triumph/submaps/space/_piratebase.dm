@@ -37,7 +37,7 @@
 
 /area/triumph_away/piratebase
 	name = "Away Mission - Pirate Base"
-	icon = 'icons/turf/areas_vr.dmi'
+	icon = 'icons/turf/areas.dmi'
 	icon_state = "dark"
 
 /area/triumph_away/piratebase/space

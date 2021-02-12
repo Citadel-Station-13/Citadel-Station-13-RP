@@ -151,6 +151,9 @@
 /area/shuttle/research/outpost
 	icon_state = "shuttle"
 
+/area/supply
+	flags = BLUE_SHIELDED
+
 /area/supply/station
 	name = "Supply Shuttle"
 	icon_state = "shuttle3"

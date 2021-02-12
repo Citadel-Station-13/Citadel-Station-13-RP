@@ -37,7 +37,7 @@
 
 /area/triumph_away/tradeport
 	name = "Away Mission - Trade Port"
-	icon = 'icons/turf/areas_vr.dmi'
+	icon = 'icons/turf/areas.dmi'
 	icon_state = "dark"
 	flags = RAD_SHIELDED
 	requires_power = 1

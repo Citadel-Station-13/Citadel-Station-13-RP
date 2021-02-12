@@ -57,7 +57,7 @@
 	landmark_tag = "triumph_excursion_hangar"
 	docking_controller = "expshuttle_dock"
 	base_turf = /turf/simulated/floor/tiled/techfloor/grid
-	base_area = /area/triumph/station/excursion_dock
+	base_area = /area/exploration/excursion_dock
 
 
 // ON STATION NAV POINTS
