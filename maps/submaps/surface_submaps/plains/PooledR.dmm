@@ -59,11 +59,11 @@
 /turf/simulated/floor/water,
 /area/submap/PooledR)
 "p" = (
-/turf/simulated/floor/water/deep,
+/turf/simulated/floor/outdoors/water/deep,
 /area/submap/PooledR)
 "q" = (
 /mob/living/simple_mob/animal/passive/fish/bass,
-/turf/simulated/floor/water/deep,
+/turf/simulated/floor/outdoors/water/deep,
 /area/submap/PooledR)
 
 (1,1,1) = {"

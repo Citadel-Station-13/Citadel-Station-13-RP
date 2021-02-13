@@ -12,7 +12,7 @@
 /turf/simulated/floor/water,
 /area/submap/Boathouse)
 "ae" = (
-/turf/simulated/floor/water/deep,
+/turf/simulated/floor/outdoors/water/deep,
 /area/submap/Boathouse)
 "af" = (
 /obj/structure/flora/tree/sif,
@@ -97,7 +97,7 @@
 /area/submap/Boathouse)
 "av" = (
 /turf/simulated/floor/wood{
-	 icon_state = "wood_broken6"
+	 = on_state = "wood_broken6"
 	},
 /area/submap/Boathouse)
 "aw" = (
@@ -131,7 +131,7 @@
 /area/submap/Boathouse)
 "aB" = (
 /turf/simulated/floor/wood{
-	 icon_state = "wood_broken2"
+	 = on_state = "wood_broken2"
 	},
 /area/submap/Boathouse)
 "aC" = (
@@ -139,14 +139,14 @@
 	dir = 8
 	},
 /obj/structure/railing{
-	 icon_state = "railing0";
+	 = on_state = "railing0";
 	dir = 1
 	},
 /turf/simulated/floor/water,
 /area/submap/Boathouse)
 "aD" = (
 /obj/structure/railing{
-	 icon_state = "railing0";
+	 = on_state = "railing0";
 	dir = 1
 	},
 /turf/simulated/floor/water,
@@ -167,7 +167,7 @@
 /area/submap/Boathouse)
 "aH" = (
 /obj/structure/railing{
-	 icon_state = "railing0";
+	 = on_state = "railing0";
 	dir = 8
 	},
 /turf/simulated/floor/water,
@@ -179,16 +179,16 @@
 /area/submap/Boathouse)
 "aJ" = (
 /turf/simulated/floor/wood{
-	 icon_state = "wood_broken4"
+	 = on_state = "wood_broken4"
 	},
 /area/submap/Boathouse)
 "aK" = (
 /obj/structure/railing{
-	 icon_state = "railing0";
+	 = on_state = "railing0";
 	dir = 8
 	},
 /obj/structure/railing{
-	 icon_state = "railing0";
+	 = on_state = "railing0";
 	dir = 1
 	},
 /turf/simulated/floor/water,
