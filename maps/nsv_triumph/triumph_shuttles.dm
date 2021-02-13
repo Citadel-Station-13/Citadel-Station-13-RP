@@ -123,31 +123,31 @@
 	name = "Nebula Gas Landing Pad 2"
 	landmark_tag = "nebula_pad_2"
 	base_turf = /turf/simulated/shuttle/floor/black/airless
-	base_area = /area/triumph_away/tradeport/pads
+	base_area = /area/tradeport/pads
 
 /obj/effect/shuttle_landmark/triumph/trade/excursion
 	name = "Nebula Gas Landing Pad 3"
 	landmark_tag = "nebula_pad_3"
 	base_turf = /turf/simulated/shuttle/floor/black/airless
-	base_area = /area/triumph_away/tradeport/pads
+	base_area = /area/tradeport/pads
 
 /obj/effect/shuttle_landmark/triumph/trade/pirate
 	name = "Nebula Gas Landing Pad 4"
 	landmark_tag = "nebula_pad_4"
 	base_turf = /turf/simulated/shuttle/floor/black/airless
-	base_area = /area/triumph_away/tradeport/pads
+	base_area = /area/tradeport/pads
 
 /obj/effect/shuttle_landmark/triumph/trade/emt
 	name = "Nebula Gas Landing Pad 5"
 	landmark_tag = "nebula_pad_5"
 	base_turf = /turf/simulated/shuttle/floor/black/airless
-	base_area = /area/triumph_away/tradeport/pads
+	base_area = /area/tradeport/pads
 
 /obj/effect/shuttle_landmark/triumph/trade/civvie
 	name = "Nebula Gas Landing Pad 6"
 	landmark_tag = "nebula_pad_6"
 	base_turf = /turf/simulated/shuttle/floor/black/airless
-	base_area = /area/triumph_away/tradeport/pads
+	base_area = /area/tradeport/pads
 
 // EXCLUSIVE TRADE PORT NAV POINT FOR DOCKING INSIDE
 
@@ -156,7 +156,7 @@
 	landmark_tag = "tradeport_hangar"
 	docking_controller = "tradeport_hangar_dock"
 	base_turf = /turf/simulated/floor/tiled/techfloor/grid
-	base_area = /area/triumph_away/tradeport/dock
+	base_area = /area/tradeport/dock
 
 // TRANSIT NAV POINTS
 

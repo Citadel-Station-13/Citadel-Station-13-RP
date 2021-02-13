@@ -1561,7 +1561,7 @@
 	dir = 9
 	},
 /obj/effect/mist,
-/turf/simulated/floor/water/pool,
+/turf/simulated/floor/outdoors/water/pool,
 /area/triumph/surfacebase/sauna)
 "bfs" = (
 /obj/structure/bookcase/legal/combo,
@@ -1942,7 +1942,7 @@
 	dir = 1
 	},
 /obj/structure/flora/ausbushes/fernybush,
-/turf/simulated/floor/water/indoors,
+/turf/simulated/floor/outdoors/water/indoors,
 /area/hydroponics/garden)
 "buj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -3958,7 +3958,7 @@
 /obj/effect/floor_decal/spline/fancy{
 	dir = 10
 	},
-/turf/simulated/floor/water/indoors,
+/turf/simulated/floor/outdoors/water/indoors,
 /area/hydroponics/garden)
 "cKZ" = (
 /obj/machinery/door/airlock/maintenance/command,
@@ -7652,7 +7652,7 @@
 	dir = 6
 	},
 /obj/effect/mist,
-/turf/simulated/floor/water/pool,
+/turf/simulated/floor/outdoors/water/pool,
 /area/triumph/surfacebase/sauna)
 "flL" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -8837,7 +8837,7 @@
 	dir = 8
 	},
 /obj/structure/flora/ausbushes/fernybush,
-/turf/simulated/floor/water/indoors,
+/turf/simulated/floor/outdoors/water/indoors,
 /area/hydroponics/garden)
 "glA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -11937,7 +11937,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/turf/simulated/floor/water/pool,
+/turf/simulated/floor/outdoors/water/pool,
 /area/triumph/surfacebase/sauna)
 "inp" = (
 /obj/machinery/power/breakerbox/activated{
@@ -12060,7 +12060,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/turf/simulated/floor/water/pool,
+/turf/simulated/floor/outdoors/water/pool,
 /area/triumph/surfacebase/sauna)
 "iqx" = (
 /obj/effect/floor_decal/borderfloor{
@@ -12635,7 +12635,7 @@
 /turf/simulated/floor/tiled,
 /area/security/brig)
 "iNL" = (
-/turf/simulated/floor/water/indoors,
+/turf/simulated/floor/outdoors/water/indoors,
 /area/hydroponics/garden)
 "iNN" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -12826,7 +12826,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/water/indoors,
+/turf/simulated/floor/outdoors/water/indoors,
 /area/hydroponics/garden)
 "iSW" = (
 /obj/effect/mist,
@@ -18238,7 +18238,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 9
 	},
-/turf/simulated/floor/water/pool,
+/turf/simulated/floor/outdoors/water/pool,
 /area/triumph/surfacebase/sauna)
 "mJI" = (
 /obj/structure/table/reinforced,
@@ -20779,12 +20779,12 @@
 /obj/effect/floor_decal/spline/fancy,
 /obj/structure/railing,
 /obj/structure/flora/ausbushes/stalkybush,
-/turf/simulated/floor/water/indoors,
+/turf/simulated/floor/outdoors/water/indoors,
 /area/hydroponics/garden)
 "oxJ" = (
 /obj/effect/floor_decal/spline/plain,
 /obj/effect/mist,
-/turf/simulated/floor/water/pool,
+/turf/simulated/floor/outdoors/water/pool,
 /area/triumph/surfacebase/sauna)
 "oxK" = (
 /obj/effect/floor_decal/borderfloor,
@@ -22254,7 +22254,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/water/indoors,
+/turf/simulated/floor/outdoors/water/indoors,
 /area/hydroponics/garden)
 "prp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -24309,7 +24309,7 @@
 	dir = 10
 	},
 /obj/effect/mist,
-/turf/simulated/floor/water/pool,
+/turf/simulated/floor/outdoors/water/pool,
 /area/triumph/surfacebase/sauna)
 "qDq" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -24342,7 +24342,7 @@
 /obj/effect/floor_decal/spline/fancy{
 	dir = 1
 	},
-/turf/simulated/floor/water/indoors,
+/turf/simulated/floor/outdoors/water/indoors,
 /area/hydroponics/garden)
 "qEc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -25149,7 +25149,7 @@
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/cockpit)
 "reN" = (
-/turf/simulated/floor/water/pool,
+/turf/simulated/floor/outdoors/water/pool,
 /area/triumph/surfacebase/sauna)
 "rff" = (
 /obj/structure/cable/green{
@@ -25578,7 +25578,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 5
 	},
-/turf/simulated/floor/water/pool,
+/turf/simulated/floor/outdoors/water/pool,
 /area/triumph/surfacebase/sauna)
 "rrA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -26544,7 +26544,7 @@
 /area/bridge)
 "rZq" = (
 /obj/structure/flora/ausbushes/stalkybush,
-/turf/simulated/floor/water/indoors,
+/turf/simulated/floor/outdoors/water/indoors,
 /area/hydroponics/garden)
 "rZF" = (
 /obj/structure/window/reinforced/tinted/frosted{
@@ -29683,7 +29683,7 @@
 	dir = 5
 	},
 /obj/effect/mist,
-/turf/simulated/floor/water/pool,
+/turf/simulated/floor/outdoors/water/pool,
 /area/triumph/surfacebase/sauna)
 "uoi" = (
 /obj/structure/cable/green{
@@ -30721,7 +30721,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/turf/simulated/floor/water/pool,
+/turf/simulated/floor/outdoors/water/pool,
 /area/triumph/surfacebase/sauna)
 "uXX" = (
 /obj/structure/toilet{
@@ -32490,7 +32490,7 @@
 "vWU" = (
 /obj/structure/railing,
 /obj/effect/floor_decal/spline/fancy,
-/turf/simulated/floor/water/indoors,
+/turf/simulated/floor/outdoors/water/indoors,
 /area/hydroponics/garden)
 "vXc" = (
 /obj/structure/cable/green{
@@ -32900,7 +32900,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/water/indoors,
+/turf/simulated/floor/outdoors/water/indoors,
 /area/hydroponics/garden)
 "wkW" = (
 /obj/machinery/camera/network/security{
@@ -33448,7 +33448,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/turf/simulated/floor/water/pool,
+/turf/simulated/floor/outdoors/water/pool,
 /area/triumph/surfacebase/sauna)
 "wHh" = (
 /obj/structure/table/woodentable,
@@ -34417,7 +34417,7 @@
 /obj/effect/floor_decal/spline/fancy{
 	dir = 9
 	},
-/turf/simulated/floor/water/indoors,
+/turf/simulated/floor/outdoors/water/indoors,
 /area/hydroponics/garden)
 "xqV" = (
 /obj/structure/closet/crate/bin{

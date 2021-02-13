@@ -203,3 +203,32 @@
 				prob(30);/mob/living/simple_mob/animal/passive/mouse/brown,
 				prob(30);/mob/living/simple_mob/animal/passive/mouse/gray,
 				prob(25);/obj/random/mouseremains) //because figuring out how to come up with it picking nothing is beyond my coding ability.
+
+/obj/random/outside_mob
+	name = "Random Mob"
+	desc = "Eek!"
+	icon = 'icons/mob/screen1.dmi'
+	icon_state = "x"
+	spawn_nothing_percentage = 10
+	var/faction = "wild animal"
+
+/obj/random/outside_mob/item_to_spawn() // Special version for mobs to have the same faction.
+	return pick(
+				prob(50);/mob/living/simple_mob/animal/passive/gaslamp,
+//				prob(50);/mob/living/simple_mob/otie/feral, // Removed until Otie code is unfucked.
+				prob(20);/mob/living/simple_mob/vore/aggressive/dino/virgo3b,
+				prob(1);/mob/living/simple_mob/vore/aggressive/dragon/virgo3b)
+
+/obj/random/outside_mob/spawn_item()
+	. = ..()
+	if(istype(., /mob/living/simple_mob))
+		var/mob/living/simple_mob/this_mob = .
+		this_mob.faction = src.faction
+		if (this_mob.minbodytemp > 200) // Temporary hotfix. Eventually I'll add code to change all mob vars to fit the environment they are spawned in.
+			this_mob.minbodytemp = 200
+		//wander the mobs around so they aren't always in the same spots
+		var/turf/T = null
+		for(var/i = 1 to 20)
+			T = get_step_rand(this_mob) || T
+		if(T)
+			this_mob.forceMove(T)

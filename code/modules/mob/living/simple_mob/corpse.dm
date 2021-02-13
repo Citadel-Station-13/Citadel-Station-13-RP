@@ -300,3 +300,6 @@
 	corpsemask = /obj/item/clothing/mask/breath
 	corpsehelmet = /obj/item/clothing/head/helmet/riot
 	corpseid = 0
+
+/obj/effect/landmark/mobcorpse/syndicatecommando
+	name = "Mercenary Commando"

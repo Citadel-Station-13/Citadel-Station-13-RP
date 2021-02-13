@@ -462,3 +462,13 @@
 	return pick(prob(5);/turf/simulated/floor/lava,
 				prob(3);/turf/simulated/floor/outdoors/rocks/caves,
 				prob(1);/turf/simulated/mineral)
+
+/obj/random/trash_pile
+	name = "Random Trash Pile"
+	desc = "Hot Garbage."
+	icon = 'icons/obj/trash_piles.dmi'
+	icon_state = "randompile"
+	spawn_nothing_percentage = 0
+
+/obj/random/trash_pile/item_to_spawn()
+	return	/obj/structure/trash_pile

@@ -30,22 +30,3 @@
 
 /obj/away_mission_init/debrisfield/Initialize()
 	return INITIALIZE_HINT_QDEL
-
-//And some special areas, including our shuttle landing spot (must be unique)
-/area/shuttle/excursion/debrisfield
-	name = "\improper Excursion Shuttle - Debris Field"
-
-/area/triumph_away/debrisfield
-	name = "Away Mission - Debris Field"
-	icon = 'icons/turf/areas.dmi'
-	icon_state = "dark"
-
-/area/triumph_away/debrisfield/explored
-	icon_state = "debrisexplored"
-
-/area/triumph_away/debrisfield/unexplored
-	icon_state = "debrisunexplored"
-
-/area/triumph_away/debrisfield/derelict
-	icon_state = "debrisexplored"
-	forced_ambience = list('sound/ambience/tension/tension.ogg', 'sound/ambience/tension/horror.ogg')

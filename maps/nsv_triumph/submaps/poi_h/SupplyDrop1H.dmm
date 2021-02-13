@@ -7,22 +7,22 @@
 /area/template_noop)
 "d" = (
 /turf/simulated/wall/titanium,
-/area/triumph_away/poi_h/explored)
+/area/poi_h/explored)
 "e" = (
 /obj/structure/droppod_door{
 	dir = 1
 	},
 /turf/simulated/wall/titanium,
-/area/triumph_away/poi_h/explored)
+/area/poi_h/explored)
 "f" = (
 /turf/simulated/floor/reinforced,
-/area/triumph_away/poi_h/explored)
+/area/poi_h/explored)
 "g" = (
 /obj/structure/droppod_door{
 	dir = 8
 	},
 /turf/simulated/wall/titanium,
-/area/triumph_away/poi_h/explored)
+/area/poi_h/explored)
 "h" = (
 /obj/structure/closet/crate,
 /obj/item/gun/energy/stunrevolver,
@@ -40,22 +40,22 @@
 /obj/item/flame/lighter/random,
 /obj/item/gps,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/poi_h/explored)
+/area/poi_h/explored)
 "i" = (
 /obj/structure/droppod_door{
 	dir = 4
 	},
 /turf/simulated/wall/titanium,
-/area/triumph_away/poi_h/explored)
+/area/poi_h/explored)
 "j" = (
 /obj/structure/droppod_door,
 /turf/simulated/wall/titanium,
-/area/triumph_away/poi_h/explored)
+/area/poi_h/explored)
 "k" = (
 /turf/simulated/mineral/floor/classh,
 /area/template_noop)
 "I" = (
-/turf/simulated/floor/beach/sand/dirt/classh,
+/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
 /area/template_noop)
 
 (1,1,1) = {"

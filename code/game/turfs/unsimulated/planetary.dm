@@ -52,6 +52,13 @@
 	initial_gas_mix = GAS_STRING_MAGNI
 
 /turf/unsimulated/wall/planetary/desert
+	name = "Endless Sands"
+	desc = "You see nothing but featureless flat desert stretching outwards far beyond what the eye can see."
+	icon_state = "desert"
+	opacity = 0
+	density = 1
+	alpha = 0
+	blocks_air = 0
 	initial_gas_mix = GAS_STRING_STP_HOT
 
 /turf/unsimulated/wall/planetary/virgo3b
@@ -59,8 +66,6 @@
 	desc = "An eight-meter tall carbyne wall. For when the wildlife on your planet is mostly militant megacorps."
 	alpha = 0xFF
 	VIRGO3B_SET_ATMOS
-
-// This line below is placeholder for Triumph as the code base here gets really angry if there isn't an actual planet atmos to set. Might do something for Tirumph in the future to allow this.
 
 /turf/unsimulated/wall/planetary/triumph
 	name = "facility wall"

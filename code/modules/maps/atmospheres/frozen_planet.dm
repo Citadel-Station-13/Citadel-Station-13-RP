@@ -26,7 +26,6 @@ FROZEN_TURF_CREATE(/turf/simulated/floor/outdoors/snow)
 FROZEN_TURF_CREATE(/turf/simulated/floor/snow2)
 FROZEN_TURF_CREATE(/turf/simulated/floor/outdoors/ice)
 FROZEN_TURF_CREATE(/turf/simulated/floor/outdoors/shelfice)
-
 FROZEN_TURF_CREATE(/turf/simulated/mineral)
 FROZEN_TURF_CREATE(/turf/simulated/mineral/ignore_mapgen)
 FROZEN_TURF_CREATE(/turf/simulated/mineral/floor)
