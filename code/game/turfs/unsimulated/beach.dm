@@ -28,6 +28,7 @@
 	name = "Beach"
 	icon = 'icons/misc/beach.dmi'
 	outdoors = TRUE
+	can_dirty = FALSE
 	footstep_sounds = list("human" = list(
 		'sound/effects/footstep/carpet1.ogg',
 		'sound/effects/footstep/carpet2.ogg',
