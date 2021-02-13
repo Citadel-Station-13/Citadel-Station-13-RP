@@ -36,7 +36,7 @@
 	min_age =		18
 	max_age =		200
 	
-	total_Health =	125  // Makes them Unathi level tough. Nothing too much, also mildly justified as proteans can't ever go into crit, as they blob instead
+	total_health =	125  // Makes them Unathi level tough. Nothing too much, also mildly justified as proteans can't ever go into crit, as they blob instead
 
 	brute_mod =		0.30 // 70% brute reduction
 	burn_mod =		1.3 //30% burn weakness. This, combined with the increased total health makes them able to survive more than 1 laser shot before being blobbed. The cap's still 2 shots, though -- The previous value of 1.4 was 40% weakness, not 60%
