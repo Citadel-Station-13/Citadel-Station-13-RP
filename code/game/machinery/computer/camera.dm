@@ -14,10 +14,10 @@
 	var/cache_id = 0
 	circuit = /obj/item/circuitboard/security
 
-/obj/machinery/computer/security/New()
+/obj/machinery/computer/security/Initialize(mapload)
 	if(!network)
 		network = GLOB.using_map.station_networks.Copy()
-	..()
+	. = ..()
 	if(network.len)
 		current_network = network[1]
 
@@ -280,10 +280,10 @@
 	circuit = /obj/item/circuitboard/security/engineering
 	light_color = "#FAC54B"
 
-/obj/machinery/computer/security/engineering/New()
+/obj/machinery/computer/security/engineering/Initialize(mapload)
 	if(!network)
 		network = engineering_networks.Copy()
-	..()
+	. = ..()
 
 /obj/machinery/computer/security/nuclear
 	name = "head mounted camera monitor"
@@ -292,6 +292,6 @@
 	network = list(NETWORK_MERCENARY)
 	circuit = null
 
-/obj/machinery/computer/security/nuclear/New()
-	..()
+/obj/machinery/computer/security/nuclear/Initialize(mapload)
+	. = ..()
 	req_access = list(150)

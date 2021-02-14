@@ -12,17 +12,11 @@
 	var/time = 30.0
 	var/title = "Mass Driver Controls"
 
-
-/obj/machinery/computer/pod/New()
-	..()
-	spawn( 5 )
-		for(var/obj/machinery/mass_driver/M in machines)
-			if(M.id == id)
-				connected = M
-			else
-		return
-	return
-
+/obj/machinery/computer/pod/Initialize(mapload)
+	. ..()
+	for(var/obj/machinery/mass_driver/M in machines)
+		if(M.id == id)
+			connected = M
 
 /obj/machinery/computer/pod/proc/alarm()
 	if(stat & (NOPOWER|BROKEN))

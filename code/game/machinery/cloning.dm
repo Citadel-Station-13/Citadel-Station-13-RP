@@ -524,8 +524,8 @@
 		buf.dna.SE=new_SE
 		buf.dna.SetSEValueRange(MONKEYBLOCK,0xDAC, 0xFFF)
 
-/obj/item/disk/data/New()
-	..()
+/obj/item/disk/data/Initialize(mapload)
+	. = ..()
 	var/diskcolor = pick(0,1,2)
 	icon_state = "datadisk[diskcolor]"
 

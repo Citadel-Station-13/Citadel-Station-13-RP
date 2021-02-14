@@ -17,13 +17,12 @@
 	var/portable = 1
 	circuit = /obj/item/circuitboard/recharger
 
-/obj/machinery/recharger/New()
+/obj/machinery/recharger/Initialize(mapload)
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/capacitor(src)
 	component_parts += new /obj/item/stack/cable_coil(src, 5)
 	RefreshParts()
-	..()
-	return
+	return ..()
 
 /obj/machinery/recharger/examine(mob/user)
 	if(!..(user, 5))

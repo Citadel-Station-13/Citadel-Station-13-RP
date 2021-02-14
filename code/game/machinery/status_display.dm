@@ -247,6 +247,7 @@
 			mode = STATUS_DISPLAY_TIME
 	update()
 
+#undef FONT_SIZE
 #undef FONT_COLOR
 #undef FONT_STYLE
-#undef SCROLL_SPEED
+#undef CHARS_PER_LINE

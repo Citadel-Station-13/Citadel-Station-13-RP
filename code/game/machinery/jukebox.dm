@@ -59,14 +59,14 @@
 	)
 
 
-/obj/machinery/media/jukebox/New()
+/obj/machinery/media/jukebox/Initialize(mapload)
 	. = ..()
 	default_apply_parts()
 
 /obj/machinery/media/jukebox/Destroy()
 	qdel(wires)
 	wires = null
-	..()
+	return ..()
 
 // On initialization, copy our tracks from the global list
 /obj/machinery/media/jukebox/Initialize()

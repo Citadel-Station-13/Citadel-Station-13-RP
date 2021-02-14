@@ -471,7 +471,6 @@
 		Weaken(4)
 		updatehealth()
 		return
-	return
 
 //Using /atom/movable instead of /obj/item because I'm not sure what all humans can pick up or wear
 /atom/movable
