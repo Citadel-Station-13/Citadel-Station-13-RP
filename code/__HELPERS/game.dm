@@ -358,7 +358,6 @@ proc
 				if(T.opacity)
 					return 0
 		return 1
-#undef SIGN
 
 /proc/flick_overlay(image/I, list/show_to, duration, gc_after)
 	for(var/client/C in show_to)
