@@ -7,12 +7,12 @@
 	var/id = ""
 	// Whether this software is a toggle or not
 	// Toggled software should override toggle() and is_active()
-	// Non-toggled software should override on_ui_interact() and Topic()
+	// Non-toggled software should override on_nano_ui_interact() and Topic()
 	var/toggle = 1
 	// Whether pAIs should automatically receive this module at no cost
 	var/default = 0
 
-	proc/on_ui_interact(mob/living/silicon/infomorph/user, datum/nanoui/ui=null, force_open=1)
+	proc/on_nano_ui_interact(mob/living/silicon/infomorph/user, datum/nanoui/ui=null, force_open=1)
 		return
 
 	proc/toggle(mob/living/silicon/infomorph/user)
@@ -27,7 +27,7 @@
 	id = "manifest"
 	toggle = 0
 
-	on_ui_interact(mob/living/silicon/infomorph/user, datum/nanoui/ui=null, force_open=1)
+	on_nano_ui_interact(mob/living/silicon/infomorph/user, datum/nanoui/ui=null, force_open=1)
 		data_core.get_manifest_list()
 
 		var/data[0]
@@ -48,7 +48,7 @@
 	id = "med_records"
 	toggle = 0
 
-	on_ui_interact(mob/living/silicon/infomorph/user, datum/nanoui/ui=null, force_open=1)
+	on_nano_ui_interact(mob/living/silicon/infomorph/user, datum/nanoui/ui=null, force_open=1)
 		var/data[0]
 
 		var/records[0]
@@ -102,7 +102,7 @@
 	id = "sec_records"
 	toggle = 0
 
-	on_ui_interact(mob/living/silicon/infomorph/user, datum/nanoui/ui=null, force_open=1)
+	on_nano_ui_interact(mob/living/silicon/infomorph/user, datum/nanoui/ui=null, force_open=1)
 		var/data[0]
 
 		var/records[0]
@@ -160,7 +160,7 @@
 	id = "door_jack"
 	toggle = 0
 
-	on_ui_interact(mob/living/silicon/infomorph/user, datum/nanoui/ui=null, force_open=1)
+	on_nano_ui_interact(mob/living/silicon/infomorph/user, datum/nanoui/ui=null, force_open=1)
 		var/data[0]
 
 		data["cable"] = user.cable != null
@@ -243,7 +243,7 @@
 	id = "atmos_sense"
 	toggle = 0
 
-	on_ui_interact(mob/living/silicon/infomorph/user, datum/nanoui/ui=null, force_open=1)
+	on_nano_ui_interact(mob/living/silicon/infomorph/user, datum/nanoui/ui=null, force_open=1)
 		var/data[0]
 
 		var/turf/T = get_turf_or_move(user.loc)
@@ -308,7 +308,7 @@
 	id = "signaller"
 	toggle = 0
 
-	on_ui_interact(mob/living/silicon/infomorph/user, datum/nanoui/ui=null, force_open=1)
+	on_nano_ui_interact(mob/living/silicon/infomorph/user, datum/nanoui/ui=null, force_open=1)
 		var/data[0]
 
 		data["frequency"] = format_frequency(user.sradio.frequency)

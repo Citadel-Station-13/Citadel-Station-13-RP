@@ -121,7 +121,7 @@
 
 	ar_interact(var/mob/living/carbon/human/user)
 		if(arscreen)
-			arscreen.ui_interact(user,"main",null,1,glasses_state)
+			arscreen.nano_ui_interact(user,"main",null,1,glasses_state)
 		return 1
 
 /obj/item/clothing/glasses/omnihud/sec
@@ -136,7 +136,7 @@
 
 	ar_interact(var/mob/living/carbon/human/user)
 		if(arscreen)
-			arscreen.ui_interact(user,"main",null,1,glasses_state)
+			arscreen.nano_ui_interact(user,"main",null,1,glasses_state)
 		return 1
 
 /obj/item/clothing/glasses/omnihud/eng
@@ -150,7 +150,7 @@
 
 	ar_interact(var/mob/living/carbon/human/user)
 		if(arscreen)
-			arscreen.ui_interact(user,"main",null,1,glasses_state)
+			arscreen.nano_ui_interact(user,"main",null,1,glasses_state)
 		return 1
 
 /obj/item/clothing/glasses/omnihud/rnd

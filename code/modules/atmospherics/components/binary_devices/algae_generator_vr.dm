@@ -141,7 +141,7 @@
 /obj/machinery/atmospherics/binary/algae_farm/attack_hand(mob/user)
 	if(..())
 		return 1
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /obj/machinery/atmospherics/binary/algae_farm/RefreshParts()
 	..()
@@ -166,7 +166,7 @@
 
 	moles_per_tick = initial(moles_per_tick) + (manip_rating**2 - 1)
 
-/obj/machinery/atmospherics/binary/algae_farm/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/nano_ui/master_ui = null, var/datum/topic_state/state = default_state)
+/obj/machinery/atmospherics/binary/algae_farm/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/nano_ui/master_ui = null, var/datum/topic_state/state = default_state)
 	var/data[0]
 	data["panelOpen"] = panel_open
 

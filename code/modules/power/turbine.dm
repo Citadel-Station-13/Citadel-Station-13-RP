@@ -347,9 +347,9 @@
 	src.interact(user)
 
 /obj/machinery/computer/turbine_computer/interact(mob/user)
-	return ui_interact(user)
+	return nano_ui_interact(user)
 
-/obj/machinery/computer/turbine_computer/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/computer/turbine_computer/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/list/data = list()
 	data["connected"] = (compressor && compressor.turbine) ? TRUE : FALSE
 	data["compressor_broke"] = (!compressor || (compressor.stat & BROKEN)) ? TRUE : FALSE

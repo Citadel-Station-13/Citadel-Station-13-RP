@@ -245,7 +245,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 	initialize_exonet(user)
 	alert_called = 0
 	update_icon()
-	ui_interact(user)
+	nano_ui_interact(user)
 	if(video_source)
 		watch_video(user)
 

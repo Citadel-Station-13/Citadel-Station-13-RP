@@ -49,7 +49,7 @@
 	set name = "Alarm Monitor"
 	set category = "Subystems"
 
-	alarm_monitor.ui_interact(usr, state = self_state)
+	alarm_monitor.nano_ui_interact(usr, state = self_state)
 
 /********************
 *	Atmos Control	*
@@ -58,7 +58,7 @@
 	set category = "Subystems"
 	set name = "Atmospherics Control"
 
-	atmos_control.ui_interact(usr, state = self_state)
+	atmos_control.nano_ui_interact(usr, state = self_state)
 
 /********************
 *	Crew Monitor	*
@@ -67,7 +67,7 @@
 	set category = "Subystems"
 	set name = "Crew Monitor"
 
-	crew_monitor.ui_interact(usr, state = self_state)
+	crew_monitor.nano_ui_interact(usr, state = self_state)
 
 /****************
 *	Law Manager	*
@@ -76,7 +76,7 @@
 	set name = "Law Manager"
 	set category = "Subystems"
 
-	law_manager.ui_interact(usr, state = conscious_state)
+	law_manager.nano_ui_interact(usr, state = conscious_state)
 
 /********************
 *	Power Monitor	*
@@ -85,7 +85,7 @@
 	set category = "Subystems"
 	set name = "Power Monitor"
 
-	power_monitor.ui_interact(usr, state = self_state)
+	power_monitor.nano_ui_interact(usr, state = self_state)
 
 /************
 *	RCON	*
@@ -94,4 +94,4 @@
 	set category = "Subystems"
 	set name = "RCON"
 
-	rcon.ui_interact(usr, state = self_state)
+	rcon.nano_ui_interact(usr, state = self_state)

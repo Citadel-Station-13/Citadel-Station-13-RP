@@ -4,25 +4,25 @@
 	return list()
 
 /datum/topic_state/default/can_use_topic(var/src_object, var/mob/user)
-	return user.default_can_use_topic(src_object)
+	return user.nano_default_can_use_topic(src_object)
 
-/mob/proc/default_can_use_topic(var/src_object)
+/mob/proc/nano_default_can_use_topic(var/src_object)
 	return STATUS_CLOSE // By default no mob can do anything with NanoUI
 
-/mob/observer/dead/default_can_use_topic(var/src_object)
+/mob/observer/dead/nano_default_can_use_topic(var/src_object)
 	if(can_admin_interact())
 		return STATUS_INTERACTIVE							// Admins are more equal
 	if(!client || get_dist(src_object, src)	> client.view)	// Preventing ghosts from having a million windows open by limiting to objects in range
 		return STATUS_CLOSE
 	return STATUS_UPDATE									// Ghosts can view updates
 
-/mob/living/silicon/pai/default_can_use_topic(var/src_object)
+/mob/living/silicon/pai/nano_default_can_use_topic(var/src_object)
 	if((src_object == src || src_object == radio || src_object == communicator) && !stat)
 		return STATUS_INTERACTIVE
 	else
 		return ..()
 
-/mob/living/silicon/robot/default_can_use_topic(var/src_object)
+/mob/living/silicon/robot/nano_default_can_use_topic(var/src_object)
 	. = shared_nano_interaction()
 	if(. <= STATUS_DISABLED)
 		return
@@ -32,7 +32,7 @@
 		return STATUS_INTERACTIVE	// interactive (green visibility)
 	return STATUS_DISABLED			// no updates, completely disabled (red visibility)
 
-/mob/living/silicon/ai/default_can_use_topic(var/src_object)
+/mob/living/silicon/ai/nano_default_can_use_topic(var/src_object)
 	. = shared_nano_interaction()
 	if(. != STATUS_INTERACTIVE)
 		return
@@ -75,7 +75,7 @@
 		return STATUS_DISABLED 		// no updates, completely disabled (red visibility)
 	return STATUS_CLOSE
 
-/mob/living/default_can_use_topic(var/src_object)
+/mob/living/nano_default_can_use_topic(var/src_object)
 	. = shared_nano_interaction(src_object)
 	if(. != STATUS_CLOSE)
 		if(loc)
@@ -83,7 +83,7 @@
 	if(STATUS_INTERACTIVE)
 		return STATUS_UPDATE
 
-/mob/living/carbon/human/default_can_use_topic(var/src_object)
+/mob/living/carbon/human/nano_default_can_use_topic(var/src_object)
 	. = shared_nano_interaction(src_object)
 	if(. != STATUS_CLOSE)
 		. = min(., shared_living_nano_distance(src_object))

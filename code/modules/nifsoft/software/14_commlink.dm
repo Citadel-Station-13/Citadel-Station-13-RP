@@ -21,7 +21,7 @@
 	activate()
 		if((. = ..()))
 			nif.comm.initialize_exonet(nif.human)
-			nif.comm.ui_interact(nif.human,key_state = commlink_state)
+			nif.comm.nano_ui_interact(nif.human,key_state = commlink_state)
 			spawn(0)
 				deactivate()
 
