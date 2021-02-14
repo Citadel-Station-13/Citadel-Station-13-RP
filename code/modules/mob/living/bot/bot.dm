@@ -148,11 +148,10 @@
 	return attack_hand(user)
 
 /mob/living/bot/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
-	var/verb = "beeps"
+	verb = "beeps"
 
 	message = sanitize(message)
-
-	..(message, null, verb)
+	return ..()
 
 /mob/living/bot/speech_bubble_appearance()
 	return "machine"

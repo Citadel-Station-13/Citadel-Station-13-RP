@@ -2,12 +2,12 @@
 
 	message = sanitize(message)
 
-	var/verb = say_quote(message)
+	verb = say_quote(message)
 
 	if(copytext(message,1,2) == "*")
 		return emote(copytext(message,2))
 
-	return ..(message, null, verb)
+	return ..()
 
 /mob/living/carbon/slime/say_quote(var/text)
 	var/ending = copytext(text, length(text))
