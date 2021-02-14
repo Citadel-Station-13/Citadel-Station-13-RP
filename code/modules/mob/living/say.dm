@@ -216,9 +216,9 @@ proc/get_radio_key_from_channel(var/channel)
 	message = handle_autohiss(message, speaking)
 
 	//autocorrect common typos
-	if(client?.is_preference_enabled(/datum/client_preference/autocorrect)) 
+	if(client?.is_preference_enabled(/datum/client_preference/autocorrect))
 		message = autocorrect(message)
-	
+
 	//Whisper vars
 	var/w_scramble_range = 5	//The range at which you get ***as*th**wi****
 	var/w_adverb				//An adverb prepended to the verb in whispers

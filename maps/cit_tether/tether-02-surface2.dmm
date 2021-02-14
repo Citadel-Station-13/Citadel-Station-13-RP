@@ -11621,7 +11621,7 @@
 /area/engineering/atmos/hallway)
 "wl" = (
 /obj/structure/table/glass,
-/obj/item/wrench,
+/obj/item/tool/wrench,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/monitoring)
 "wm" = (
@@ -13419,7 +13419,7 @@
 	pixel_y = 32
 	},
 /obj/machinery/cell_charger,
-/obj/item/wrench,
+/obj/item/tool/wrench,
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},

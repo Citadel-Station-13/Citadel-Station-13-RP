@@ -622,7 +622,7 @@
 			to_chat(user,"<span class='warning'>You can't fit anyone else into \the [src]!</span>")
 		else
 			var/obj/item/holder/micro/holder = I
-			if(holder.held_mob && holder.held_mob in holder)
+			if(holder.held_mob && (holder.held_mob in holder))
 				to_chat(holder.held_mob,"<span class='warning'>[user] stuffs you into \the [src]!</span>")
 				holder.held_mob.forceMove(src)
 				to_chat(user,"<span class='notice'>You stuff \the [holder.held_mob] into \the [src]!</span>")
@@ -864,7 +864,7 @@
 		under_icon = INV_W_UNIFORM_DEF_ICON
 
 	// The _s is because the icon update procs append it.
-	if((under_icon == rolled_down_icon && "[worn_state]_s" in icon_states(under_icon)) || ("[worn_state]_d_s" in icon_states(under_icon)))
+	if((under_icon == rolled_down_icon && ("[worn_state]_s" in icon_states(under_icon))) || ("[worn_state]_d_s" in icon_states(under_icon)))
 		if(rolled_down != 1)
 			rolled_down = 0
 	else
