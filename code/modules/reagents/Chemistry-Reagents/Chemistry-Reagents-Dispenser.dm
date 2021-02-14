@@ -50,7 +50,7 @@
 	id = "chlorine"
 	description = "A chemical element with a characteristic odour."
 	taste_description = "pool water"
-	reagent_state = GAS
+	reagent_state = REAGENT_GAS
 	color = "#808080"
 
 /datum/reagent/chlorine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -206,7 +206,7 @@
 	id = "fluorine"
 	description = "A highly-reactive chemical element."
 	taste_description = "acid"
-	reagent_state = GAS
+	reagent_state = REAGENT_GAS
 	color = "#808080"
 
 /datum/reagent/fluorine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -220,7 +220,7 @@
 	id = "hydrogen"
 	description = "A colorless, odorless, nonmetallic, tasteless, highly combustible diatomic gas."
 	taste_mult = 0 //no taste
-	reagent_state = GAS
+	reagent_state = REAGENT_GAS
 	color = "#808080"
 
 /datum/reagent/iron
@@ -271,7 +271,7 @@
 	id = "nitrogen"
 	description = "A colorless, odorless, tasteless gas."
 	taste_mult = 0 //no taste
-	reagent_state = GAS
+	reagent_state = REAGENT_GAS
 	color = "#808080"
 
 /datum/reagent/oxygen
@@ -279,7 +279,7 @@
 	id = "oxygen"
 	description = "A colorless, odorless gas."
 	taste_mult = 0
-	reagent_state = GAS
+	reagent_state = REAGENT_GAS
 	color = "#808080"
 
 /datum/reagent/oxygen/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)

@@ -352,7 +352,8 @@
 					T.loc = hound.loc
 			playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 			update_patient()
-			deliverylists[delivery_tag].Cut()
+			var/list/tagged = deliverylists[delivery_tag]
+			tagged.Cut()
 		sleeperUI(usr)
 		return
 	if(href_list["sync"])

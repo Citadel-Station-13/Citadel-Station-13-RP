@@ -4,7 +4,6 @@
 #define LOC_LIBRARY 3
 #define LOC_HYDRO 4
 #define LOC_VAULT 5
-#define LOC_CONSTR 6
 #define LOC_TECH 7
 #define LOC_GARDEN 8
 

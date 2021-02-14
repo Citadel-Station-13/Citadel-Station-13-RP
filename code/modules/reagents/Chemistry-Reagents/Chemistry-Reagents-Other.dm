@@ -336,7 +336,7 @@
 	description = "A caustic substance commonly used in fertilizer or household cleaners."
 	taste_description = "mordant"
 	taste_mult = 2
-	reagent_state = GAS
+	reagent_state = REAGENT_GAS
 	color = "#404030"
 
 /datum/reagent/ammonia/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
