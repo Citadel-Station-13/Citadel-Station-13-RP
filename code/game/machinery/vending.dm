@@ -1914,6 +1914,8 @@
 					/obj/item/clothing/under/dress/westernbustle = 5,
 					/obj/item/clothing/under/wedding/bride_white = 5,
 					/obj/item/clothing/under/redcoatformal = 2,
+					/obj/item/clothing/under/leotardcolor = 5,
+					/obj/item/clothing/under/leotard = 5,
 					/obj/item/storage/backpack/ = 5,
 					/obj/item/storage/backpack/messenger = 5,
 					/obj/item/storage/backpack/satchel = 5)
@@ -2102,6 +2104,8 @@
 					/obj/item/clothing/under/dress/westernbustle = 25,
 					/obj/item/clothing/under/wedding/bride_white = 25,
 					/obj/item/clothing/under/redcoatformal = 75,
+					/obj/item/clothing/under/leotardcolor = 25,
+					/obj/item/clothing/under/leotard = 25,
 					/obj/item/storage/backpack/ = 25,
 					/obj/item/storage/backpack/messenger = 25,
 					/obj/item/storage/backpack/satchel = 25)
