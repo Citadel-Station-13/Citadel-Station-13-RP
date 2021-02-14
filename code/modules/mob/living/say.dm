@@ -356,7 +356,7 @@ proc/get_radio_key_from_channel(var/channel)
 		if(sb_alpha < 0)
 			break
 	speech_bubble.loc = loc_before_turf
-	speech_bubble.alpha = CLAMP(sb_alpha, 0, 255)
+	speech_bubble.alpha = clamp(sb_alpha, 0, 255)
 	images_to_clients[speech_bubble] = list()
 
 	// Attempt Multi-Z Talking

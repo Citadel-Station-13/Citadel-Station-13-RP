@@ -263,14 +263,14 @@
 	update_icon()
 
 
-/mob/living/simple_mob/say(var/message,var/datum/language/language)
+/mob/living/simple_mob/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	var/verb = "says"
 	if(speak_emote.len)
 		verb = pick(speak_emote)
 
 	message = sanitize(message)
 
-	..(message, null, verb)
+	return ..()
 
 /mob/living/simple_mob/get_speech_ending(verb, var/ending)
 	return verb

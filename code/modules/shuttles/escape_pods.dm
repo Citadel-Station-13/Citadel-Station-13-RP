@@ -83,8 +83,6 @@
 		return TOPIC_REFRESH
 	return 0
 
-
-
 // This controller is for the escape pod berth (station side)
 /obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod_berth
 	name = "escape pod berth controller"
