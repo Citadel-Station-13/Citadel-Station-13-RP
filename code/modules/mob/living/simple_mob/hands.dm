@@ -12,9 +12,9 @@
 
 /mob/living/simple_mob/put_in_hands(obj/item/I, del_on_fail = FALSE, merge_stacks = TRUE, forced = FALSE) // No hands.
 	if(has_hands)
-		put_in_active_hand(W)
+		put_in_active_hand(I)
 		return 1
-	W.forceMove(get_turf(src))
+	I.forceMove(get_turf(src))
 	return 1
 
 //Puts the item into our active hand if possible. returns 1 on success.

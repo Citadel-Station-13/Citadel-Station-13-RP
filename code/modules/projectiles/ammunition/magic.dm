@@ -34,7 +34,7 @@
 		if(target.anti_magic_check())
 			target.visible_message("<span class='warning'>[src] vanishes on contact with [target]!</span>")
 			return blocked
-		if(target.revive(full_heal = 1))
+		if(target.revive()) // full_heal = TRUE
 			to_chat(target, "<span class='notice'>You rise with a start, you're alive!!!</span>")
 		else if(target.stat != DEAD)
 			to_chat(target, "<span class='notice'>You feel great!</span>")
