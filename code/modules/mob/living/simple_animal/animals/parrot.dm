@@ -697,7 +697,7 @@
 	available_channels = list(":e")
 	..()
 
-/mob/living/simple_mob/parrot/say(var/message)
+/mob/living/simple_mob/parrot/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 
 	if(stat)
 		return

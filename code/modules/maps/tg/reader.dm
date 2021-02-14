@@ -174,7 +174,6 @@
 					for(var/i = 1 to new_key_list.len)
 						new_key_list[i] = list()
 						new_key_list[i].len = num_rows
-
 				num_rows++ // Buffering against the base index of 1
 				num_cols++
 				// Populate the new list

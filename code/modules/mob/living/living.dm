@@ -1200,8 +1200,8 @@ default behaviour is:
 
 //Adds the anti-magic check back in.
 /mob/living/proc/anti_magic_check(magic = TRUE, holy = FALSE, chargecost = 1, self = FALSE)
-	. = ..()
-	if(.)
-		return
+//	. = ..()
+//	if(.)
+//		return
 	if((magic && HAS_TRAIT(src, TRAIT_ANTIMAGIC)) || (holy && HAS_TRAIT(src, TRAIT_HOLY)))
 		return src
