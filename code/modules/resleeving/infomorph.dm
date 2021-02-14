@@ -425,7 +425,7 @@ var/list/infomorph_emotions = list(
 	if(silence_time)
 		to_chat(src, "<font color=green>Communication circuits remain uninitialized.</font>")
 	else
-		..(msg)
+		return ..()
 
 /mob/living/silicon/infomorph/handle_message_mode(message_mode, message, verb, speaking, used_radios, alt_name)
 	switch(message_mode)

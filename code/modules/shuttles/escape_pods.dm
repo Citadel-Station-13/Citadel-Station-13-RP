@@ -68,6 +68,7 @@
 		ui.open()
 		ui.set_auto_update(1)
 
+/* THIS IS BROKEN
 /obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/Topic(href, href_list)
 	if((. = ..()))
 		return
@@ -82,6 +83,7 @@
 			pod.launch(src)
 		return TOPIC_REFRESH
 	return 0
+*/
 
 // This controller is for the escape pod berth (station side)
 /obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod_berth

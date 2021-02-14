@@ -130,7 +130,7 @@
 	else
 		..()
 
-/mob/living/simple_mob/protean_blob/stun_effect_act()
+/mob/living/simple_mob/protean_blob/stun_effect_act(var/stun_amount, var/agony_amount, var/def_zone, var/used_weapon=null)
 	return FALSE //ok so tasers hurt protean blobs what the fuck
 
 /mob/living/simple_mob/protean_blob/adjustBruteLoss(var/amount,var/include_robo)
