@@ -12,9 +12,6 @@
 #define LAVALAND_SET_ATMOS	initial_gas_mix=ATMOSPHERE_ID_LAVALAND
 #define LAVALAND_TURF_CREATE(x)	x/lavaland/initial_gas_mix=ATMOSPHERE_ID_LAVALAND
 
-LAVALAND_TURF_CREATE(/turf/template_noop)
-LAVALAND_TURF_CREATE(/turf/simulated/wall/planetary/lavaland)
-LAVALAND_TURF_CREATE(/turf/simulated/floor/planetary/lavaland)
 LAVALAND_TURF_CREATE(/turf/simulated/shuttle/floor)
 LAVALAND_TURF_CREATE(/turf/simulated/shuttle/wall)
 LAVALAND_TURF_CREATE(/turf/simulated/wall)
@@ -26,7 +23,7 @@ LAVALAND_TURF_CREATE(/turf/simulated/floor/outdoors/beach/sand)
 LAVALAND_TURF_CREATE(/turf/simulated/floor/outdoors/beach/sand/desert)
 LAVALAND_TURF_CREATE(/turf/simulated/floor/outdoors/grass)
 LAVALAND_TURF_CREATE(/turf/simulated/floor/water)
-LAVALAND_TURF_CREATE(/turf/simulated/floor/lava/outdoors)
+LAVALAND_TURF_CREATE(/turf/simulated/floor/outdoors/lava)
 LAVALAND_TURF_CREATE(/turf/simulated/floor/outdoors/water/deep)
 LAVALAND_TURF_CREATE(/turf/simulated/floor/outdoors/water/shoreline)
 LAVALAND_TURF_CREATE(/turf/simulated/floor/outdoors/water/shoreline/corner)

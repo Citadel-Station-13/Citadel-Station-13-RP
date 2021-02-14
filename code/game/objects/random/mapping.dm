@@ -459,7 +459,7 @@
 	turf_outdoors = FALSE
 
 /obj/random/turf/lava/item_to_spawn()
-	return pick(prob(5);/turf/simulated/floor/lava,
+	return pick(prob(5);/turf/simulated/floor/outdoors/lava,
 				prob(3);/turf/simulated/floor/outdoors/rocks/caves,
 				prob(1);/turf/simulated/mineral)
 
