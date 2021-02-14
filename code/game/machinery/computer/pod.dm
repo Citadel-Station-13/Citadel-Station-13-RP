@@ -13,7 +13,7 @@
 	var/title = "Mass Driver Controls"
 
 /obj/machinery/computer/pod/Initialize(mapload)
-	. ..()
+	. = ..()
 	for(var/obj/machinery/mass_driver/M in machines)
 		if(M.id == id)
 			connected = M
