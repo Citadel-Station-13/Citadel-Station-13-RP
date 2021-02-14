@@ -99,7 +99,7 @@
 		deactivate()
 	..()
 
-/obj/machinery/power/supply_beacon/process()
+/obj/machinery/power/supply_beacon/process(delta_time)
 	if(expended)
 		return PROCESS_KILL
 	if(!use_power)

@@ -610,7 +610,7 @@
 	SSradiation.radiate(src, charge_amt/12) //just a little bit of radiation. It's the price you pay for being powered by magic I guess
 	return 1
 
-/obj/item/shockpaddles/standalone/process()
+/obj/item/shockpaddles/standalone/process(delta_time)
 	if(fail_counter > 0)
 		SSradiation.radiate(src, fail_counter--)
 	else

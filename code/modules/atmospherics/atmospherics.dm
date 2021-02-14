@@ -116,7 +116,7 @@ Pipelines + Other Objects -> Pipe network
 
 	return node.pipe_color
 
-/obj/machinery/atmospherics/process()
+/obj/machinery/atmospherics/process(delta_time)
 	last_flow_rate = 0
 	last_power_draw = 0
 

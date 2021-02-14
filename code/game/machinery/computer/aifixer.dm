@@ -91,7 +91,7 @@
 	onclose(user, "computer")
 	return
 
-/obj/machinery/computer/aifixer/process()
+/obj/machinery/computer/aifixer/process(delta_time)
 	if(..())
 		src.updateDialog()
 		return

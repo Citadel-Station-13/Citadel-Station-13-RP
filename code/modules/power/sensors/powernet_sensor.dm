@@ -52,7 +52,7 @@
 // Proc: process()
 // Parameters: None
 // Description: This has to be here because we need sensors to remain in Machines list.
-/obj/machinery/power/sensor/process()
+/obj/machinery/power/sensor/process(delta_time)
 	return 1
 
 // Proc: reading_to_text()
@@ -178,7 +178,7 @@
 			APC_entry["total_load"] = reading_to_text(A.lastused_total)
 			// Hopefully removes those goddamn \improper s which are screwing up the UI
 			var/N = A.area.name
-			if(findtext(N, "ÿ"))
+			if(findtext(N, "ï¿½"))
 				N = copytext(N, 3)
 			APC_entry["name"] = N
 			// Add data into main list of APC data.

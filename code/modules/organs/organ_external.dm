@@ -576,7 +576,7 @@ This function completely restores a damaged organ to perfect condition.
 		return 1
 	return 0
 
-/obj/item/organ/external/process()
+/obj/item/organ/external/process(delta_time)
 	if(owner)
 		//Dismemberment
 		//if(parent && parent.is_stump()) //should never happen

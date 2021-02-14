@@ -103,7 +103,7 @@
 			playsound(src, "sound/machines/printer.ogg", 30, 1)
 		return TOPIC_HANDLED
 
-/obj/machinery/computer/ship/sensors/process()
+/obj/machinery/computer/ship/sensors/process(delta_time)
 	..()
 	if(!linked)
 		return
@@ -186,7 +186,7 @@
 	update_use_power(!use_power)
 	update_icon()
 
-/obj/machinery/shipsensors/process()
+/obj/machinery/shipsensors/process(delta_time)
 	if(use_power) //can't run in non-vacuum
 		if(!in_vacuum())
 			toggle()

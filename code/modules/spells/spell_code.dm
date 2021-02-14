@@ -64,7 +64,7 @@ var/list/spells = typesof(/spell) //needed for the badmin verb for now
 	//still_recharging_msg = "<span class='notice'>[name] is still recharging.</span>"
 	charge_counter = charge_max
 
-/spell/process()
+/spell/process(delta_time)
 	spawn while(charge_counter < charge_max)
 		charge_counter++
 		sleep(1)

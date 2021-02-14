@@ -28,7 +28,7 @@
 	main_hud.remove_minihud(src)
 
 // Update the hud
-/datum/mini_hud/process()
+/datum/mini_hud/process(delta_time)
 	return PROCESS_KILL // You shouldn't be here!
 
 // Return a list of screen objects we use
@@ -69,7 +69,7 @@
 		owner_rig = null
 	return ..()
 
-/datum/mini_hud/rig/process()
+/datum/mini_hud/rig/process(delta_time)
 	if(!owner_rig)
 		qdel(src)
 		return
@@ -119,7 +119,7 @@
 		owner_mech = null
 	return ..()
 
-/datum/mini_hud/mech/process()
+/datum/mini_hud/mech/process(delta_time)
 	if(!owner_mech)
 		qdel(src)
 		return

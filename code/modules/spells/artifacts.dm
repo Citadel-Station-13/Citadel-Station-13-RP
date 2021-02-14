@@ -72,7 +72,7 @@
 	START_PROCESSING(SSobj, src)
 	return
 
-/obj/effect/rend/process()
+/obj/effect/rend/process(delta_time)
 	if(!spawn_fast)
 		if(locate(/mob) in loc)
 			return
@@ -128,7 +128,7 @@
 	current_size = STAGE_FOUR
 	allowed_size = STAGE_FOUR
 
-/obj/singularity/wizard/process()
+/obj/singularity/wizard/process(delta_time)
 	move()
 	eat()
 	return

@@ -89,7 +89,7 @@ GLOBAL_LIST_EMPTY(all_turbines)
 					circ2.temperature_overlay = "circ-[extreme]cold"
 		return 1
 
-/obj/machinery/power/generator/process()
+/obj/machinery/power/generator/process(delta_time)
 	if(!circ1 || !circ2 || !anchored || stat & (BROKEN|NOPOWER))
 		stored_energy = 0
 		return

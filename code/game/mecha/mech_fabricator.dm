@@ -43,7 +43,7 @@
 	update_categories()
 	. = ..()
 
-/obj/machinery/mecha_part_fabricator/process()
+/obj/machinery/mecha_part_fabricator/process(delta_time)
 	..()
 	if(stat)
 		return

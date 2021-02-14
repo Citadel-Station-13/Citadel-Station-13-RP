@@ -148,7 +148,7 @@
 	var/datum/matter_synth/water = null
 	reagent_ids = list("inaprovaline", "dexalin", "bicaridine", "kelotane", "anti_toxin", "alkysine", "imidazoline", "spaceacillin", "paracetamol")
 
-/obj/item/reagent_containers/borghypo/hound/process() //Recharges in smaller steps and uses the water reserves as well.
+/obj/item/reagent_containers/borghypo/hound/process(delta_time) //Recharges in smaller steps and uses the water reserves as well.
 	if(isrobot(loc))
 		var/mob/living/silicon/robot/R = loc
 		if(R && R.cell)

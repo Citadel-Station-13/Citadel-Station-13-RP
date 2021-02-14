@@ -46,7 +46,7 @@
 	var/obj/item/ai_card  // Reference to the MMI, posibrain, intellicard or pAI card previously holding the AI.
 	var/obj/item/ai_verbs/verb_holder
 
-/obj/item/rig_module/ai_container/process()
+/obj/item/rig_module/ai_container/process(delta_time)
 	if(integrated_ai)
 		var/obj/item/rig/rig = get_rig()
 		if(rig && rig.ai_override_enabled)
@@ -416,7 +416,7 @@
 		return 1
 	return 0
 
-/obj/item/rig_module/power_sink/process()
+/obj/item/rig_module/power_sink/process(delta_time)
 
 	if(!interfaced_with)
 		return ..()

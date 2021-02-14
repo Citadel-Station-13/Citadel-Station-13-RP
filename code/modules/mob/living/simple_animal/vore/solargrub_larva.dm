@@ -224,7 +224,7 @@ var/global/list/grub_machine_overlays = list()
 	grub = null
 	return ..()
 
-/obj/machinery/abstract_grub_machine/process()
+/obj/machinery/abstract_grub_machine/process(delta_time)
 	if(!draining)
 		return
 	var/area/A = get_area(src)

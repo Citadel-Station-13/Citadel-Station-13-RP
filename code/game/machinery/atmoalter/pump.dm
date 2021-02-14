@@ -60,7 +60,7 @@
 
 	..(severity)
 
-/obj/machinery/portable_atmospherics/powered/pump/process()
+/obj/machinery/portable_atmospherics/powered/pump/process(delta_time)
 	..()
 	var/power_draw = -1
 

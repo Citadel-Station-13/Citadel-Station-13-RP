@@ -1,4 +1,3 @@
-#define PROCESS_ACCURACY 10
 
 /obj/item/organ/internal/kidneys
 	name = "kidneys"
@@ -7,7 +6,7 @@
 	organ_tag = O_KIDNEYS
 	parent_organ = BP_GROIN
 
-/obj/item/organ/internal/kidneys/process()
+/obj/item/organ/internal/kidneys/process(delta_time)
 	..()
 
 	if(!owner)
@@ -19,9 +18,9 @@
 	var/datum/reagent/coffee = locate(/datum/reagent/drink/coffee) in owner.reagents.reagent_list
 	if(coffee)
 		if(is_bruised())
-			owner.adjustToxLoss(0.1 * PROCESS_ACCURACY)
+			owner.adjustToxLoss(0.1 * (delta_time * 5))
 		else if(is_broken())
-			owner.adjustToxLoss(0.3 * PROCESS_ACCURACY)
+			owner.adjustToxLoss(0.3 * (delta_time * 5))
 
 /obj/item/organ/internal/kidneys/handle_organ_proc_special()
 	. = ..()

@@ -141,7 +141,7 @@
 		to_chat(user, "<span class='warning'>\The [src] cannot hold more [S.name].</span>")
 	return 1
 
-/obj/machinery/partslathe/process()
+/obj/machinery/partslathe/process(delta_time)
 	..()
 	if(stat)
 		update_icon()

@@ -908,7 +908,7 @@
 	updateUsrDialog()
 	return
 
-/obj/machinery/suit_cycler/process()
+/obj/machinery/suit_cycler/process(delta_time)
 
 	if(electrified > 0)
 		electrified--

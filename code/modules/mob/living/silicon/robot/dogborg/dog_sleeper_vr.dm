@@ -622,7 +622,7 @@
 		update_patient()
 	return
 
-/obj/item/dogborg/sleeper/process()
+/obj/item/dogborg/sleeper/process(delta_time)
 	if(!istype(src.loc,/mob/living/silicon/robot))
 		return
 

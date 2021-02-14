@@ -253,7 +253,7 @@
 	if(prob(50))
 		homing_offset_y = -homing_offset_y
 
-/obj/item/projectile/process()
+/obj/item/projectile/process(delta_time)
 	last_process = world.time
 	if(!loc || !fired || !trajectory)
 		fired = FALSE

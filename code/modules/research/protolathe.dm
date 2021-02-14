@@ -30,7 +30,7 @@
 	component_parts += new /obj/item/reagent_containers/glass/beaker(src)
 	RefreshParts()
 
-/obj/machinery/r_n_d/protolathe/process()
+/obj/machinery/r_n_d/protolathe/process(delta_time)
 	..()
 	if(stat)
 		update_icon()

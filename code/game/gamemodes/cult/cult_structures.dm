@@ -103,7 +103,7 @@
 	last_activation = world.time
 	return 0
 
-/obj/structure/cult/pylon/process()
+/obj/structure/cult/pylon/process(delta_time)
 	if(!isbroken && (last_activation < world.time + activation_cooldown) && pylon_unique())
 		flick("[initial(icon_state)]-surge",src)
 

@@ -1,4 +1,3 @@
-#define PROCESS_ACCURACY 10
 
 /obj/item/organ/internal/liver
 	name = "liver"
@@ -6,26 +5,26 @@
 	organ_tag = "liver"
 	parent_organ = BP_GROIN
 
-/obj/item/organ/internal/liver/process()
+/obj/item/organ/internal/liver/process(delta_time)
 	..()
 	if(!owner) return
 
-	if(owner.life_tick % PROCESS_ACCURACY == 0)
+	if(owner.life_tick % (delta_time * 5) == 0)
 
 		//High toxins levels are dangerous
 		if(owner.getToxLoss() >= 50 && !owner.reagents.has_reagent("anti_toxin"))
 			//Healthy liver suffers on its own
 			if (src.damage < min_broken_damage)
-				src.damage += 0.2 * PROCESS_ACCURACY
+				src.damage += 0.2 * (delta_time * 5)
 			//Damaged one shares the fun
 			else
 				var/obj/item/organ/internal/O = pick(owner.internal_organs)
 				if(O)
-					O.damage += 0.2  * PROCESS_ACCURACY
+					O.damage += 0.2  * (delta_time * 5)
 
 		//Detox can heal small amounts of damage
 		if (src.damage && src.damage < src.min_bruised_damage && owner.reagents.has_reagent("anti_toxin"))
-			src.damage -= 0.2 * PROCESS_ACCURACY
+			src.damage -= 0.2 * (delta_time * 5)
 
 		if(src.damage < 0)
 			src.damage = 0
@@ -39,11 +38,11 @@
 
 		// Do some reagent processing.
 		if(owner.chem_effects[CE_ALCOHOL_TOXIC])
-			take_damage(owner.chem_effects[CE_ALCOHOL_TOXIC] * 0.1 * PROCESS_ACCURACY, prob(1)) // Chance to warn them
+			take_damage(owner.chem_effects[CE_ALCOHOL_TOXIC] * 0.1 * (delta_time * 5), prob(1)) // Chance to warn them
 			if(filter_effect < 2)	//Liver is badly damaged, you're drinking yourself to death
-				owner.adjustToxLoss(owner.chem_effects[CE_ALCOHOL_TOXIC] * 0.2 * PROCESS_ACCURACY)
+				owner.adjustToxLoss(owner.chem_effects[CE_ALCOHOL_TOXIC] * 0.2 * (delta_time * 5))
 			if(filter_effect < 3)
-				owner.adjustToxLoss(owner.chem_effects[CE_ALCOHOL_TOXIC] * 0.1 * PROCESS_ACCURACY)
+				owner.adjustToxLoss(owner.chem_effects[CE_ALCOHOL_TOXIC] * 0.1 * (delta_time * 5))
 
 /obj/item/organ/internal/liver/handle_germ_effects()
 	. = ..() //Up should return an infection level as an integer

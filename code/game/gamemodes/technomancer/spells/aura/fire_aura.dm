@@ -17,7 +17,7 @@
 	aspect = ASPECT_FIRE
 	glow_color = "#FF6A00"
 
-/obj/item/spell/aura/fire/process()
+/obj/item/spell/aura/fire/process(delta_time)
 	if(!pay_energy(100))
 		qdel(src)
 	var/list/nearby_things = range(round(calculate_spell_power(4)),owner)

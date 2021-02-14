@@ -63,7 +63,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/card/id/guest/process()
+/obj/item/card/id/guest/process(delta_time)
 	if(expired == 0 && world.time >= expiration_time)
 		visible_message("<span class='warning'>\The [src] flashes a few times before turning red.</span>")
 		icon_state = "guest_invalid"

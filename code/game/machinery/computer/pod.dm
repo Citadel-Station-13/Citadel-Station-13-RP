@@ -137,7 +137,7 @@
 	return
 
 
-/obj/machinery/computer/pod/process()
+/obj/machinery/computer/pod/process(delta_time)
 	if(!..())
 		return
 	if(timing)

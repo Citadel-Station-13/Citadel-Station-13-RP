@@ -36,7 +36,7 @@
 	QDEL_NULL(cell)
 	return ..()
 
-/obj/item/suit_cooling_unit/process()
+/obj/item/suit_cooling_unit/process(delta_time)
 	if (!on || !cell)
 		return PROCESS_KILL
 

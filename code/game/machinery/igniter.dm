@@ -23,7 +23,7 @@
 	icon_state = text("igniter[]", on)
 	return
 
-/obj/machinery/igniter/process()	//ugh why is this even in process()?
+/obj/machinery/igniter/process(delta_time)	//ugh why is this even in process()?
 	if(on && !(stat & NOPOWER))
 		var/turf/location = src.loc
 		if(isturf(location))

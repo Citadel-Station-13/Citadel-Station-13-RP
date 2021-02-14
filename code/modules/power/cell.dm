@@ -45,7 +45,7 @@
 /obj/item/cell/get_cell()
 	return src
 
-/obj/item/cell/process()
+/obj/item/cell/process(delta_time)
 	if(self_recharge)
 		if(world.time >= last_use + charge_delay)
 			give(charge_amount)

@@ -89,7 +89,7 @@
 	else if(!LAZYLEN(tracks)) //We don't even have default tracks
 		stat |= BROKEN // No tracks configured this round!
 
-/obj/machinery/media/jukebox/process()
+/obj/machinery/media/jukebox/process(delta_time)
 	if(!playing)
 		return
 	if(inoperable())

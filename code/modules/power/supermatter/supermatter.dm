@@ -238,7 +238,7 @@
 
 	return ..()
 
-/obj/machinery/power/supermatter/process()
+/obj/machinery/power/supermatter/process(delta_time)
 
 	var/turf/L = loc
 
@@ -504,7 +504,7 @@
 	START_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/broken_sm/process()
+/obj/item/broken_sm/process(delta_time)
 	SSradiation.radiate(src, 50)
 
 /obj/item/broken_sm/Destroy()

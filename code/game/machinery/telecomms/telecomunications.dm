@@ -164,7 +164,7 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 	else
 		on = 0
 
-/obj/machinery/telecomms/process()
+/obj/machinery/telecomms/process(delta_time)
 	update_power()
 
 	// Check heat and generate some
@@ -336,7 +336,7 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 	component_parts += new /obj/item/stack/cable_coil(src, 2)
 	RefreshParts()
 
-/obj/machinery/telecomms/hub/process()
+/obj/machinery/telecomms/hub/process(delta_time)
 	. = ..()
 	telecomms_map.Cut()
 

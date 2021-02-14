@@ -30,7 +30,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/electronic_assembly/process()
+/obj/item/electronic_assembly/process(delta_time)
 	handle_idle_power()
 
 /obj/item/electronic_assembly/proc/handle_idle_power()

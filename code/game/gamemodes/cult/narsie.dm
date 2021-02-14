@@ -58,7 +58,7 @@ var/global/list/narsie_list = list()
 				SSemergencyshuttle.call_evac()
 				SSemergencyshuttle.launch_time = 0	// Cannot recall
 
-/obj/singularity/narsie/process()
+/obj/singularity/narsie/process(delta_time)
 	eat()
 
 	if (!target || prob(5))

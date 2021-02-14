@@ -64,7 +64,7 @@
 			secondary_effect = null
 
 
-/obj/machinery/artifact/process()
+/obj/machinery/artifact/process(delta_time)
 	var/turf/L = loc
 	if(!istype(L)) 	// We're inside a container or on null turf, either way stop processing effects
 		return

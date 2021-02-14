@@ -149,5 +149,5 @@
 		spawn(600)
 			update_locked = 0
 
-/obj/machinery/power/breakerbox/process()
+/obj/machinery/power/breakerbox/process(delta_time)
 	return 1

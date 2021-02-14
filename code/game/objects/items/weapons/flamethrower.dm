@@ -31,7 +31,7 @@
 	QDEL_NULL(ptank)
 	. = ..()
 
-/obj/item/flamethrower/process()
+/obj/item/flamethrower/process(delta_time)
 	if(!lit)
 		STOP_PROCESSING(SSobj, src)
 		return null

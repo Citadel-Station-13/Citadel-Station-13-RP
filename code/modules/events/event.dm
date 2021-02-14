@@ -107,7 +107,7 @@
 
 // Do not override this proc, instead use the appropiate procs.
 // This proc will handle the calls to the appropiate procs.
-/datum/event/process()
+/datum/event/process(delta_time)
 	if(activeFor > startWhen && activeFor < endWhen)
 		tick()
 

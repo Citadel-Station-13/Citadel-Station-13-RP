@@ -172,7 +172,7 @@
 			break
 
 ///Called on SSmood process
-/datum/component/mood/process()
+/datum/component/mood/process(delta_time)
 	switch(mood_level)
 		if(1)
 			setSanity(sanity-0.3, SANITY_INSANE)

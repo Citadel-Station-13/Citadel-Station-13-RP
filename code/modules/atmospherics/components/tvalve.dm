@@ -169,7 +169,7 @@
 	else
 		src.go_to_side()
 
-/obj/machinery/atmospherics/tvalve/process()
+/obj/machinery/atmospherics/tvalve/process(delta_time)
 	..()
 	. = PROCESS_KILL
 

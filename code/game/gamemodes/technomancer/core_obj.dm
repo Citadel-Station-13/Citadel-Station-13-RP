@@ -80,7 +80,7 @@
 	energy = min(energy + amount, max_energy)
 	return 1
 
-/obj/item/technomancer_core/process()
+/obj/item/technomancer_core/process(delta_time)
 	var/old_energy = energy
 	regenerate()
 	pay_dues()

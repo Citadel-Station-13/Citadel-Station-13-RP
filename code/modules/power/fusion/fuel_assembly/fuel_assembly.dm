@@ -41,7 +41,7 @@
 	overlays += list(I, image(icon, "fuel_assembly_bracket"))
 	rod_quantities[fuel_type] = initial_amount
 
-/obj/item/fuel_assembly/process()
+/obj/item/fuel_assembly/process(delta_time)
 	if(!radioactivity)
 		return PROCESS_KILL
 

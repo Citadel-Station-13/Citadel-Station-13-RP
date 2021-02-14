@@ -149,7 +149,7 @@
 	if(can_access_camera(jump_to))
 		switch_to_camera(user,jump_to)
 
-/obj/machinery/computer/security/process()
+/obj/machinery/computer/security/process(delta_time)
 	if(cache_id != camera_repository.camera_cache_id)
 		cache_id = camera_repository.camera_cache_id
 		SSnanoui.update_uis(src)

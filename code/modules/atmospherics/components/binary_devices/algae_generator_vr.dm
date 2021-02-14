@@ -54,7 +54,7 @@
 	. = ..()
 	internal = null
 
-/obj/machinery/atmospherics/binary/algae_farm/process()
+/obj/machinery/atmospherics/binary/algae_farm/process(delta_time)
 	..()
 	recent_moles_transferred = 0
 

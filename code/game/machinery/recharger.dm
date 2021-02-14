@@ -126,7 +126,7 @@
 			charging = null
 			update_icon()
 
-/obj/machinery/recharger/process()
+/obj/machinery/recharger/process(delta_time)
 	if(stat & (NOPOWER|BROKEN) || !anchored)
 		update_use_power(USE_POWER_OFF)
 		icon_state = icon_state_idle

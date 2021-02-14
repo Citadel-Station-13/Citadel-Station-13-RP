@@ -51,7 +51,7 @@
 	qdel(radio)
 	. = ..()
 
-/obj/machinery/power/fission/process()
+/obj/machinery/power/fission/process(delta_time)
 	var/turf/L = loc
 
 	if(isnull(L))		// We have a null turf...something is wrong, stop processing this entity.
@@ -554,7 +554,7 @@
 		return INITIALIZE_HINT_QDEL
 	START_PROCESSING(SSobj, src)
 
-/obj/nuclear_mistake_spawner/process()
+/obj/nuclear_mistake_spawner/process(delta_time)
 	if(my_mob && my_mob.stat != DEAD)
 		return //No need
 
