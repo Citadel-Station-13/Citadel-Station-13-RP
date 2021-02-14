@@ -104,8 +104,8 @@ var/datum/planet/gaia_planet/planet_gaia_planet = null
 		WEATHER_BLOOD_MOON	= new /datum/weather/gaia_planet/blood_moon(),
 		)
 	roundstart_weather_chances = list(
-		WEATHER_CLEAR		= 45,
-		WEATHER_OVERCAST	= 45,
+		WEATHER_CLEAR		= 75,
+		WEATHER_OVERCAST	= 15,
 		WEATHER_RAIN		= 5,
 		WEATHER_STORM		= 4,
 		WEATHER_BLOODMOON	= 1
@@ -119,8 +119,8 @@ var/datum/planet/gaia_planet/planet_gaia_planet = null
 /datum/weather/gaia_planet/clear
 	name = "clear"
 	transition_chances = list(
-		WEATHER_CLEAR = 60,
-		WEATHER_OVERCAST = 40
+		WEATHER_CLEAR = 90,
+		WEATHER_OVERCAST = 10
 		)
 	transition_messages = list(
 		"The sky clears up.",
@@ -134,10 +134,10 @@ var/datum/planet/gaia_planet/planet_gaia_planet = null
 	name = "overcast"
 	light_modifier = 0.8
 	transition_chances = list(
-		WEATHER_CLEAR = 20,
-		WEATHER_OVERCAST = 60,
-		WEATHER_RAIN = 17,
-		WEATHER_BLOODMOON = 3
+		WEATHER_CLEAR = 70,
+		WEATHER_OVERCAST = 10,
+		WEATHER_RAIN = 19,
+		WEATHER_BLOODMOON = 1
 		)
 	observed_message = "It is overcast, all you can see are clouds."
 	transition_messages = list(
@@ -156,9 +156,9 @@ var/datum/planet/gaia_planet/planet_gaia_planet = null
 	effect_message = "<span class='warning'>Rain falls on you.</span>"
 
 	transition_chances = list(
-		WEATHER_OVERCAST = 30,
-		WEATHER_RAIN = 50,
-		WEATHER_STORM = 20
+		WEATHER_OVERCAST = 40,
+		WEATHER_RAIN = 55,
+		WEATHER_STORM = 5
 		)
 	observed_message = "It is raining."
 	transition_messages = list(
@@ -212,8 +212,8 @@ var/datum/planet/gaia_planet/planet_gaia_planet = null
 
 
 	transition_chances = list(
-		WEATHER_RAIN = 45,
-		WEATHER_STORM = 40,
+		WEATHER_RAIN = 40,
+		WEATHER_STORM = 45,
 		WEATHER_OVERCAST = 5
 		)
 
@@ -262,8 +262,8 @@ var/datum/planet/gaia_planet/planet_gaia_planet = null
 	light_color = "#FF0000"
 	flight_failure_modifier = 25
 	transition_chances = list(
-		WEATHER_BLOODMOON = 80,
-		WEATHER_OVERCAST = 20
+		WEATHER_BLOODMOON = 90,
+		WEATHER_OVERCAST = 10
 		)
 	observed_message = "Everything is red. Something really ominous is going on."
 	transition_messages = list(

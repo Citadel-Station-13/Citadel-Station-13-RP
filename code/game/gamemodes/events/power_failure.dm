@@ -12,6 +12,7 @@
 		S.last_charge			= S.charge
 		S.last_output_attempt	= S.output_attempt
 		S.last_input_attempt 	= S.input_attempt
+		S.powerout_holders_used = TRUE
 		S.charge = 0
 		S.inputting(0)
 		S.outputting(0)
@@ -35,11 +36,13 @@
 		var/area/current_area = get_area(S)
 		if(current_area.type in skipped_areas || isNotStationLevel(S.z))
 			continue
-		S.charge = S.last_charge
-		S.output_attempt = S.last_output_attempt
-		S.input_attempt = S.last_input_attempt
-		S.update_icon()
-		S.power_change()
+		if(S.powerout_holders_used)
+			S.charge = S.last_charge
+			S.output_attempt = S.last_output_attempt
+			S.input_attempt = S.last_input_attempt
+			S.powerout_holders_used = FALSE
+			S.update_icon()
+			S.power_change()
 
 /proc/power_restore_quick(var/announce = 1)
 

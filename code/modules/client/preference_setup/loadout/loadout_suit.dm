@@ -38,6 +38,10 @@
 	display_name = "Civilian Bomber Jacket Alt"
 	path = /obj/item/clothing/suit/storage/bomber/alt
 
+/datum/gear/suit/storage/gothcoat
+	display_name = "Civilian Gothic Coat"
+	path = /obj/item/clothing/suit/storage/gothcoat
+
 /datum/gear/suit/leather_jacket
 	display_name = "Civilian Leather Jacket - Black"
 	path = /obj/item/clothing/suit/storage/toggle/leather_jacket
@@ -170,6 +174,21 @@ datum/gear/suit/duster
 	display_name = "Medical Labcoat - EMT"
 	path = /obj/item/clothing/suit/storage/toggle/labcoat/emt
 	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist", "Psychiatrist")
+
+/datum/gear/suit/labcoat/scientist
+	display_name = "Research Labcoat"
+	path = /obj/item/clothing/suit/storage/toggle/labcoat/science
+	allowed_roles = list("Scientist","Roboticist","Research Director")
+
+/datum/gear/suit/labcoat/roboticist
+	display_name = "Research Labcoat - Robotics"
+	path = /obj/item/clothing/suit/storage/toggle/labcoat/robotics
+	allowed_roles = list("Roboticist")
+
+/datum/gear/suit/labcoat/rd
+	display_name = "Research Labcoat - Research Director"
+	path = /obj/item/clothing/suit/storage/toggle/labcoat/rd
+	allowed_roles = list("Research Director")
 
 /datum/gear/suit/roles/surgical_apron
 	display_name = "Medical Surgical Apron"

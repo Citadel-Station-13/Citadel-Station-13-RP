@@ -302,7 +302,7 @@
 /area/submap/Diner)
 "aZ" = (
 /obj/effect/floor_decal/corner/red/diagonal,
-/obj/machinery/appliance/grill,
+/obj/machinery/appliance/cooker/grill,
 /turf/simulated/floor/tiled/white,
 /area/submap/Diner)
 "ba" = (

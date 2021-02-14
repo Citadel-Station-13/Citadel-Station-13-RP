@@ -3,13 +3,13 @@
 /obj/structure/table/steel_reinforced,
 /obj/machinery/light,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "ax" = (
 /obj/machinery/light/flamp,
 /turf/simulated/floor/airless,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "aC" = (
@@ -17,7 +17,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "aF" = (
@@ -30,7 +30,7 @@
 	req_one_access = null
 	},
 /turf/simulated/floor/airless,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "be" = (
@@ -53,7 +53,7 @@
 "bT" = (
 /obj/machinery/portable_atmospherics/canister/phoron,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "bW" = (
@@ -61,14 +61,14 @@
 	pixel_y = 18
 	},
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "cd" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/random/medical,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "cJ" = (
@@ -79,13 +79,13 @@
 	dir = 4
 	},
 /turf/space,
-/area/triumph_away/piratebase/space)
+/area/space)
 "cM" = (
 /obj/structure/sink{
 	pixel_y = 23
 	},
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "dA" = (
@@ -94,19 +94,19 @@
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "dN" = (
 /obj/machinery/vending/boozeomat,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "eq" = (
-/mob/living/simple_mob/humanoid/merc/voxpirate/ranged,
+/mob/living/simple_mob/humanoid/merc/voxpirate/pirate,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "ez" = (
@@ -115,11 +115,11 @@
 	dir = 8
 	},
 /turf/space,
-/area/triumph_away/piratebase/space)
+/area/space)
 "fl" = (
 /obj/machinery/power/smes/buildable/point_of_interest,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "fC" = (
@@ -127,7 +127,7 @@
 	dir = 2
 	},
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "fD" = (
@@ -135,32 +135,32 @@
 /obj/fiftyspawner/phoron,
 /obj/machinery/light,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "fT" = (
 /obj/machinery/vending/fitness,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "fV" = (
 /obj/machinery/auto_cloner,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "fY" = (
 /obj/effect/overmap/visitable/sector/pirate_base,
 /turf/space,
-/area/triumph_away/piratebase/space)
+/area/space)
 "gj" = (
 /obj/machinery/portable_atmospherics/canister/phoron,
 /obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "gm" = (
@@ -169,14 +169,14 @@
 /obj/structure/table/steel_reinforced,
 /obj/fiftyspawner/deuterium,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "gw" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/cell/device/weapon/recharge/captain,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "gQ" = (
@@ -184,7 +184,7 @@
 /obj/item/cell/hyper,
 /obj/item/storage/secure/briefcase/ml3m_pack_cmo,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "hc" = (
@@ -192,7 +192,7 @@
 /obj/fiftyspawner/phoron,
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/burstlaser,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "hi" = (
@@ -200,7 +200,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "hB" = (
@@ -211,7 +211,7 @@
 /area/shuttle/pirate/general)
 "hT" = (
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "hX" = (
@@ -222,14 +222,14 @@
 	dir = 8
 	},
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "ie" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/reagent_containers/food/snacks/dionaroast,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "ig" = (
@@ -237,7 +237,7 @@
 /obj/item/cell/device/weapon/gunsword,
 /obj/random/tool,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "ip" = (
@@ -248,31 +248,33 @@
 	dir = 8
 	},
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "iq" = (
 /obj/machinery/sleeper/survival_pod,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "iI" = (
 /turf/simulated/floor/reinforced,
 /area/shuttle/pirate/general)
 "iL" = (
-/obj/machinery/atmospherics/pipe/tank/phoron,
+/obj/machinery/atmospherics/pipe/tank/phoron{
+	volume = 20000
+	},
 /turf/simulated/floor/reinforced,
 /area/shuttle/pirate/general)
 "iO" = (
 /obj/structure/railing,
 /obj/structure/lattice,
 /turf/space,
-/area/triumph_away/piratebase/space)
+/area/space)
 "iQ" = (
 /obj/effect/step_trigger/teleporter/piratebase_loop/west,
 /turf/space,
-/area/triumph_away/piratebase/space)
+/area/space)
 "iT" = (
 /obj/structure/table/rack,
 /obj/fiftyspawner/phoron,
@@ -284,20 +286,20 @@
 	},
 /obj/structure/lattice,
 /turf/space,
-/area/triumph_away/piratebase/space)
+/area/space)
 "jU" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/projectile/beam/medical_cell/omni3,
 /obj/random/tool,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "kf" = (
 /obj/structure/table/steel_reinforced,
 /obj/random/tool,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "kg" = (
@@ -317,7 +319,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "kU" = (
@@ -335,12 +337,12 @@
 "ls" = (
 /obj/effect/shuttle_landmark/automatic,
 /turf/space,
-/area/triumph_away/piratebase/space)
+/area/space)
 "lH" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/storage/firstaid/bonemed,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "lI" = (
@@ -351,17 +353,17 @@
 	dir = 8
 	},
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "lP" = (
 /obj/effect/step_trigger/teleporter/piratebase_loop/north,
 /turf/space,
-/area/triumph_away/piratebase/space)
+/area/space)
 "mh" = (
 /obj/structure/dispenser/phoron,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "mz" = (
@@ -370,39 +372,39 @@
 	dir = 8
 	},
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "mE" = (
-/mob/living/simple_mob/humanoid/merc/voxpirate/ranged/captain,
+/mob/living/simple_mob/humanoid/merc/voxpirate/captain,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "mK" = (
 /obj/structure/closet,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "na" = (
 /obj/structure/lattice,
 /turf/space,
-/area/triumph_away/piratebase/space)
+/area/space)
 "ng" = (
 /obj/machinery/vending/snack,
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "nx" = (
 /obj/structure/bed/padded,
 /obj/machinery/light,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "nB" = (
@@ -411,10 +413,10 @@
 	},
 /obj/structure/lattice,
 /turf/space,
-/area/triumph_away/piratebase/space)
+/area/space)
 "ol" = (
 /turf/simulated/shuttle/wall/voidcraft/green,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "op" = (
@@ -422,7 +424,7 @@
 	pixel_x = 32
 	},
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "oy" = (
@@ -435,13 +437,13 @@
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/xray,
 /obj/machinery/light,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "pp" = (
 /obj/machinery/vending/coffee,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "qL" = (
@@ -449,7 +451,7 @@
 /obj/random/mre,
 /obj/random/tool,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "rA" = (
@@ -463,7 +465,7 @@
 "rM" = (
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "rQ" = (
@@ -472,12 +474,12 @@
 	},
 /obj/structure/railing,
 /turf/space,
-/area/triumph_away/piratebase/space)
+/area/space)
 "rX" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/storage/firstaid/insiderepair,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "sb" = (
@@ -485,7 +487,7 @@
 	pixel_y = -32
 	},
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "tv" = (
@@ -494,7 +496,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "tJ" = (
@@ -507,7 +509,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "tO" = (
@@ -515,13 +517,13 @@
 	dir = 4
 	},
 /turf/space,
-/area/triumph_away/piratebase/space)
+/area/space)
 "ud" = (
 /obj/structure/toilet{
 	pixel_y = 16
 	},
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "ul" = (
@@ -530,12 +532,12 @@
 	},
 /obj/structure/lattice,
 /turf/space,
-/area/triumph_away/piratebase/space)
+/area/space)
 "uu" = (
 /obj/structure/table/steel_reinforced,
 /obj/fiftyspawner/mhydrogen,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "uv" = (
@@ -544,7 +546,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "uH" = (
@@ -559,21 +561,21 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/item/projectile/beam/medical_cell/toxin3,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "uJ" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/projectile/beam/medical_cell/burn3,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "uV" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/random/energy,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "uX" = (
@@ -581,13 +583,13 @@
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "vL" = (
 /mob/living/simple_mob/humanoid/merc/voxpirate/boarder,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "vW" = (
@@ -595,13 +597,13 @@
 	faction = "voxpirate"
 	},
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "vX" = (
 /obj/machinery/door/airlock/phoron,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "wb" = (
@@ -609,14 +611,14 @@
 /obj/item/projectile/beam/medical_cell/corpse_mend,
 /obj/random/tool,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "wF" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/cell/device/weapon/gunsword,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "wN" = (
@@ -626,22 +628,22 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/mob/living/simple_mob/humanoid/merc/voxpirate/ranged,
+/mob/living/simple_mob/humanoid/merc/voxpirate/pirate,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "wT" = (
 /obj/structure/bed/padded,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "wZ" = (
 /obj/structure/table/steel_reinforced,
 /obj/fiftyspawner/uranium,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "xo" = (
@@ -649,7 +651,7 @@
 /obj/item/storage/firstaid/adv,
 /obj/machinery/cell_charger,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "xM" = (
@@ -661,12 +663,12 @@
 "ye" = (
 /obj/machinery/light,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "yq" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "yr" = (
@@ -674,19 +676,19 @@
 /obj/item/projectile/beam/medical_cell/stabilize2,
 /obj/random/tool,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "yw" = (
 /obj/structure/catwalk,
 /turf/space,
-/area/triumph_away/piratebase/space)
+/area/space)
 "yz" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/projectile/beam/medical_cell/toxin3,
 /obj/random/tool,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "yA" = (
@@ -694,19 +696,19 @@
 /obj/item/cell/device/weapon,
 /obj/random/tool,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "zT" = (
 /turf/simulated/floor/airless,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "Ar" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/storage/firstaid/clotting,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "Az" = (
@@ -716,19 +718,19 @@
 	},
 /obj/random/mre,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "AH" = (
 /obj/machinery/door/airlock/external,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "Bd" = (
 /obj/structure/catwalk,
 /turf/space,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "Cq" = (
@@ -737,28 +739,28 @@
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "CZ" = (
 /obj/structure/table/steel_reinforced,
 /obj/fiftyspawner/gold,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "Dl" = (
 /obj/structure/table/steel_reinforced,
 /obj/random/medical,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "Dz" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/material/sword/katana/durasteel,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "DE" = (
@@ -766,7 +768,7 @@
 /obj/item/cell/slime,
 /obj/random/mre,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "DH" = (
@@ -781,7 +783,7 @@
 	},
 /obj/machinery/light,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "DP" = (
@@ -791,6 +793,12 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/shuttle/pirate/general)
+"DX" = (
+/mob/living/simple_mob/humanoid/merc/voxpirate/technician,
+/turf/simulated/floor/reinforced,
+/area/piratebase/facility{
+	requires_power = 0
+	})
 "Ea" = (
 /obj/machinery/computer/shuttle_control/explore/pirate{
 	dir = 4
@@ -798,16 +806,16 @@
 /turf/simulated/floor/reinforced,
 /area/shuttle/pirate/general)
 "Em" = (
-/mob/living/simple_mob/humanoid/merc/voxpirate/ranged/suppressor,
+/mob/living/simple_mob/humanoid/merc/voxpirate/suppressor,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "EB" = (
 /obj/machinery/light,
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "EW" = (
@@ -817,37 +825,37 @@
 	dir = 8
 	},
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "Fl" = (
 /turf/unsimulated/mineral/triumph,
-/area/triumph_away/piratebase/space)
+/area/space)
 "Ft" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/cell/hyper,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "Gb" = (
 /obj/machinery/door/airlock/external,
 /obj/structure/fans/tiny,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "GX" = (
 /obj/away_mission_init/piratebase,
 /turf/space,
-/area/triumph_away/piratebase/space)
+/area/space)
 "Hr" = (
-/obj/structure/table/rack,
 /obj/machinery/light,
+/obj/machinery/nuclearbomb,
 /turf/simulated/floor/reinforced,
 /area/shuttle/pirate/general)
 "Hz" = (
-/obj/machinery/ion_engine{
+/obj/machinery/atmospherics/unary/engine/small{
 	dir = 8
 	},
 /turf/simulated/shuttle/plating/airless/carry,
@@ -858,12 +866,12 @@
 	dir = 4
 	},
 /turf/space,
-/area/triumph_away/piratebase/space)
+/area/space)
 "HY" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/gun/energy/gun/fluff/gunsword,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "Il" = (
@@ -871,7 +879,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/airless,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "Io" = (
@@ -888,14 +896,14 @@
 "Iz" = (
 /obj/machinery/vending/cola,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "IJ" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/reagent_containers/food/snacks/chickenfillet,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "Jl" = (
@@ -913,7 +921,7 @@
 /obj/structure/closet,
 /obj/random/tool,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "JA" = (
@@ -921,30 +929,30 @@
 	dir = 8
 	},
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "JC" = (
 /obj/structure/table/steel_reinforced,
 /obj/fiftyspawner/diamond,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "JF" = (
 /obj/machinery/light{
 	dir = 8
 	},
-/mob/living/simple_mob/humanoid/merc/voxpirate/ranged/suppressor,
+/mob/living/simple_mob/humanoid/merc/voxpirate/suppressor,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "JH" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/cell/device/weapon,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "JT" = (
@@ -956,31 +964,31 @@
 /obj/structure/table/steel_reinforced,
 /obj/random/mre,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "Kw" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/projectile/beam/medical_cell/stabilize2,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "KJ" = (
 /turf/space,
-/area/triumph_away/piratebase/space)
+/area/space)
 "KP" = (
 /obj/structure/lattice,
 /obj/structure/railing{
 	dir = 1
 	},
 /turf/space,
-/area/triumph_away/piratebase/space)
+/area/space)
 "KY" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/random/cigarettes,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "Lg" = (
@@ -991,7 +999,7 @@
 /obj/structure/table/steel_reinforced,
 /obj/machinery/recharger,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "Ls" = (
@@ -1003,11 +1011,11 @@
 	dir = 1
 	},
 /turf/space,
-/area/triumph_away/piratebase/space)
+/area/space)
 "LB" = (
 /obj/structure/closet/crate/secure,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "LM" = (
@@ -1016,7 +1024,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "LT" = (
@@ -1035,14 +1043,14 @@
 	dir = 8
 	},
 /turf/space,
-/area/triumph_away/piratebase/space)
+/area/space)
 "Mm" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5
-	},
 /obj/machinery/meter,
 /obj/machinery/light{
 	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
 	},
 /turf/simulated/floor/reinforced,
 /area/shuttle/pirate/general)
@@ -1066,7 +1074,7 @@
 "Ne" = (
 /obj/machinery/vending/snack,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "Nz" = (
@@ -1092,7 +1100,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/airless,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "Of" = (
@@ -1113,7 +1121,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "OI" = (
@@ -1136,23 +1144,23 @@
 /area/shuttle/pirate/general)
 "Pr" = (
 /obj/machinery/light,
-/mob/living/simple_mob/humanoid/merc/voxpirate/ranged,
+/mob/living/simple_mob/humanoid/merc/voxpirate/pirate,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "PJ" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/random/curseditem,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "Qe" = (
 /obj/structure/table/steel_reinforced,
 /obj/fiftyspawner/durasteel,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "Qo" = (
@@ -1173,32 +1181,32 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/item/projectile/beam/medical_cell/brute3,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "QK" = (
 /obj/structure/sink{
 	pixel_y = 23
 	},
-/mob/living/simple_mob/humanoid/merc/voxpirate/ranged,
+/mob/living/simple_mob/humanoid/merc/voxpirate/pirate,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "QV" = (
 /turf/simulated/shuttle/wall/voidcraft/green,
-/area/triumph_away/piratebase/facility)
+/area/piratebase/facility)
 "Rp" = (
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "Rx" = (
 /obj/machinery/door/airlock/multi_tile/metal/mait,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "RQ" = (
@@ -1223,25 +1231,25 @@
 "Th" = (
 /obj/effect/step_trigger/teleporter/piratebase_loop/east,
 /turf/space,
-/area/triumph_away/piratebase/space)
+/area/space)
 "Tv" = (
 /turf/simulated/mineral/vacuum,
-/area/triumph_away/piratebase/space)
+/area/space)
 "Tx" = (
 /obj/structure/railing{
 	dir = 1
 	},
 /turf/space,
-/area/triumph_away/piratebase/space)
+/area/space)
 "TU" = (
 /obj/structure/lattice,
 /obj/structure/railing,
 /turf/space,
-/area/triumph_away/piratebase/space)
+/area/space)
 "Uh" = (
-/mob/living/simple_mob/humanoid/merc/voxpirate/ranged/boarder,
+/mob/living/simple_mob/humanoid/merc/voxpirate/boarder,
 /turf/simulated/floor/airless,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "Um" = (
@@ -1251,13 +1259,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
-	requires_power = 0
-	})
-"Vb" = (
-/mob/living/simple_mob/humanoid/merc/voxpirate/ranged/boarder,
-/turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "Vr" = (
@@ -1265,42 +1267,42 @@
 	dir = 8
 	},
 /turf/space,
-/area/triumph_away/piratebase/space)
+/area/space)
 "Vu" = (
 /obj/effect/step_trigger/teleporter/piratebase_loop/south,
 /turf/space,
-/area/triumph_away/piratebase/space)
+/area/space)
 "Wg" = (
 /obj/structure/lattice,
 /obj/structure/railing{
 	dir = 4
 	},
 /turf/space,
-/area/triumph_away/piratebase/space)
+/area/space)
 "WB" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/random/firstaid,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "WS" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/pickaxe/diamonddrill,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "Xd" = (
 /obj/structure/closet/crate/critter,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "Xf" = (
 /obj/structure/railing,
 /turf/space,
-/area/triumph_away/piratebase/space)
+/area/space)
 "Xy" = (
 /obj/machinery/light{
 	dir = 1
@@ -1313,25 +1315,27 @@
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "Yv" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/random/drinkbottle,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "Yz" = (
-/obj/machinery/nuclearbomb,
+/obj/machinery/atmospherics/portables_connector{
+	dir = 1
+	},
 /turf/simulated/floor/reinforced,
 /area/shuttle/pirate/general)
 "YD" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/projectile/beam/medical_cell/antirad,
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "YV" = (
@@ -1342,7 +1346,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
-/area/triumph_away/piratebase/facility{
+/area/piratebase/facility{
 	requires_power = 0
 	})
 "YY" = (
@@ -7238,7 +7242,7 @@ fl
 yq
 yq
 hT
-Vb
+vL
 hT
 hT
 hT
@@ -7526,14 +7530,14 @@ hT
 vL
 hT
 hT
-hT
+DX
 hT
 rM
 hT
 hT
 hT
 hT
-Vb
+vL
 hT
 hT
 hT
@@ -7795,7 +7799,7 @@ hT
 hT
 hT
 hT
-hT
+DX
 hT
 hT
 hT
@@ -7973,7 +7977,7 @@ hT
 hT
 hT
 hT
-hT
+DX
 hT
 hT
 hT
@@ -8642,7 +8646,7 @@ Tv
 ol
 hT
 hT
-hT
+DX
 hT
 hT
 hT
@@ -8656,7 +8660,7 @@ hT
 hT
 hT
 hT
-hT
+DX
 hT
 hT
 hT
@@ -8671,7 +8675,7 @@ hT
 yq
 yq
 hi
-hT
+DX
 hT
 hT
 Rx
@@ -8822,7 +8826,7 @@ hT
 hT
 hT
 hT
-hT
+DX
 hT
 hT
 ol
@@ -9098,13 +9102,13 @@ yq
 yq
 hT
 hT
-Vb
+vL
 hT
 yq
 hT
 hT
 hT
-Vb
+vL
 Em
 hT
 hT
@@ -9516,7 +9520,7 @@ rM
 hT
 hT
 hT
-Vb
+vL
 hT
 hT
 hT
@@ -10800,7 +10804,7 @@ yq
 hT
 yq
 yq
-Vb
+vL
 hT
 hT
 hT
@@ -10809,7 +10813,7 @@ hT
 hT
 JW
 hT
-Vb
+vL
 rM
 hT
 hT
@@ -10930,13 +10934,13 @@ yq
 yq
 hT
 hT
-Vb
+vL
 hT
 hT
 hT
 hT
 hT
-Vb
+vL
 hT
 hT
 hT
@@ -11059,7 +11063,7 @@ Tv
 Tv
 ol
 YV
-Vb
+vL
 hT
 eq
 hT
@@ -11075,7 +11079,7 @@ hT
 hT
 hT
 hT
-hT
+DX
 hT
 hT
 hT
@@ -11092,7 +11096,7 @@ yq
 hT
 hT
 rM
-Vb
+vL
 hT
 rM
 hT
@@ -11383,7 +11387,7 @@ vL
 LB
 yq
 hT
-Vb
+vL
 hT
 hT
 ol
@@ -11628,7 +11632,7 @@ Tv
 ol
 qL
 hT
-hT
+DX
 wT
 hT
 nx
@@ -11919,7 +11923,7 @@ wT
 yq
 hT
 hT
-Vb
+vL
 hT
 yq
 hT
@@ -12056,7 +12060,7 @@ hT
 hT
 hT
 hT
-hT
+DX
 ye
 yq
 hi
@@ -12209,13 +12213,13 @@ yq
 hT
 hT
 hT
-Vb
+vL
 hT
 hT
 hT
 hT
 hT
-Vb
+vL
 hT
 hT
 yq
@@ -12225,7 +12229,7 @@ vL
 hT
 JW
 hT
-Vb
+vL
 rM
 ye
 yq
@@ -12236,7 +12240,7 @@ hT
 yq
 vL
 hT
-hT
+DX
 hT
 Rp
 KJ
@@ -12515,7 +12519,7 @@ hT
 yq
 hT
 hT
-Vb
+vL
 hT
 yq
 hT
@@ -12623,7 +12627,7 @@ ol
 hT
 vL
 hT
-Vb
+vL
 eq
 hT
 vX
@@ -12934,7 +12938,7 @@ ng
 hT
 hT
 rM
-Vb
+vL
 hT
 rM
 hT
@@ -13055,7 +13059,7 @@ Jw
 yq
 hT
 hT
-hT
+DX
 hT
 yq
 hT
@@ -13074,7 +13078,7 @@ yq
 yq
 Ne
 hT
-Vb
+vL
 hT
 hT
 hT
@@ -13218,7 +13222,7 @@ Ne
 hT
 hT
 hT
-Vb
+vL
 hT
 hT
 hT
@@ -13480,7 +13484,7 @@ cM
 hT
 yq
 hT
-Vb
+vL
 hT
 ye
 yq
@@ -13628,7 +13632,7 @@ hT
 yq
 Xd
 hT
-Vb
+vL
 hT
 hT
 hT
@@ -13772,7 +13776,7 @@ hT
 hT
 hT
 hT
-hT
+DX
 hT
 hT
 yq
@@ -13798,7 +13802,7 @@ hT
 yq
 rM
 hT
-hT
+DX
 LB
 ol
 KJ
@@ -13920,7 +13924,7 @@ ye
 yq
 hi
 hT
-Vb
+vL
 hT
 hT
 hT
@@ -13939,7 +13943,7 @@ hT
 hT
 yq
 rM
-Vb
+vL
 hT
 LB
 ol
@@ -14056,7 +14060,7 @@ hi
 hT
 hT
 hT
-Vb
+vL
 hT
 hT
 yq
@@ -14191,7 +14195,7 @@ hT
 yq
 hT
 hT
-Vb
+vL
 hT
 yq
 Xd
@@ -14468,7 +14472,7 @@ Tv
 ol
 yq
 hX
-Vb
+vL
 hT
 vL
 JA
@@ -14488,7 +14492,7 @@ hT
 hT
 hT
 hT
-hT
+DX
 ye
 yq
 LB
@@ -14515,7 +14519,7 @@ hT
 hT
 kf
 hT
-hT
+DX
 hT
 hT
 hT
@@ -14928,7 +14932,7 @@ hT
 hT
 yq
 hT
-Vb
+vL
 hT
 hT
 yq
@@ -15227,7 +15231,7 @@ kf
 rM
 hT
 hT
-Vb
+DX
 kf
 hT
 hT
@@ -15339,7 +15343,7 @@ hT
 hT
 hT
 hT
-hT
+DX
 hT
 hT
 yq
@@ -15628,9 +15632,9 @@ Em
 hT
 yq
 hi
-Vb
+vL
 hT
-hT
+DX
 hT
 hT
 hT
@@ -16070,7 +16074,7 @@ Xd
 yq
 LB
 hT
-hT
+DX
 ye
 yq
 hi
@@ -16362,7 +16366,7 @@ hT
 hT
 hT
 hT
-hT
+DX
 hT
 hT
 hT
@@ -16496,7 +16500,7 @@ ye
 yq
 hT
 hT
-Vb
+vL
 hT
 Rx
 hT
@@ -16626,7 +16630,7 @@ hT
 ye
 yq
 hT
-Vb
+vL
 hT
 hT
 hT
@@ -17182,7 +17186,7 @@ Tv
 ol
 hT
 hT
-vL
+DX
 hT
 hT
 hT

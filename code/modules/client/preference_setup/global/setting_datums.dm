@@ -153,6 +153,18 @@ var/list/_client_preferences_by_type
 	enabled_description = "Show"
 	disabled_description = "Hide"
 
+/datum/client_preference/pickup_sounds
+	description = "Picked Up Item Sounds"
+	key = "SOUND_PICKED"
+	enabled_description = "Enabled"
+	disabled_description = "Disabled"
+
+/datum/client_preference/drop_sounds
+	description = "Dropped Item Sounds"
+	key = "SOUND_DROPPED"
+	enabled_description = "Enabled"
+	disabled_description = "Disabled"
+
 /datum/client_preference/hotkeys_default
 	description ="Hotkeys Default"
 	key = "HUD_HOTKEYS"
@@ -330,3 +342,9 @@ var/list/_client_preferences_by_type
 	enabled_by_default = FALSE
 	enabled_description = "Obfuscate Ghost"
 	disabled_description = "Normal Ghost"
+
+/datum/client_preference/autocorrect
+	description = "Autocorrect"
+	key = "AUTOCORRECT"
+	enabled_description = "Enabled"
+	disabled_description = "Disabled"

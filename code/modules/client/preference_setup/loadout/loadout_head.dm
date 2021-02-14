@@ -147,6 +147,10 @@
 	display_name = "cowboy, black"
 	path = /obj/item/clothing/head/cowboy_hat/black
 
+/datum/gear/head/cowboy/pink
+	display_name = "cowboy, pink"
+	path = /obj/item/clothing/head/cowboy_hat/pink
+
 /datum/gear/head/cowboy/wide
 	display_name = "cowboy, wide"
 	path = /obj/item/clothing/head/cowboy_hat/wide
@@ -203,6 +207,10 @@
 /datum/gear/head/fez
 	display_name = "hat, fez"
 	path = /obj/item/clothing/head/fez
+
+/datum/gear/head/rice
+	display_name = "hat, rice"
+	path = /obj/item/clothing/head/rice
 
 /datum/gear/head/tophat
 	display_name = "hat, tophat"

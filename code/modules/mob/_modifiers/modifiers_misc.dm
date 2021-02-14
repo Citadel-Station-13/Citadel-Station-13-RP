@@ -343,3 +343,15 @@ the artifact triggers the rage.
 /datum/modifier/homeothermic/tick()
 	..()
 	holder.bodytemperature = round((holder.bodytemperature + T20C) / 2)
+
+/datum/modifier/synthcooling // a version of the above for synths to maintain temperature
+	name = "synthetic cooling"
+	desc = "You expend energy to cool your systems."
+
+	on_created_text = "<span class='notice' face='fixedsys'>Cooling systems online.</span>"
+	on_expired_text = "<span class='notice' face='fixedsys'>Cooling systems recharging. . .</span>"
+	stacks = MODIFIER_STACK_EXTEND
+
+/datum/modifier/synthcooling/tick()
+	..()
+	holder.bodytemperature = round((holder.bodytemperature + T20C) / 2)

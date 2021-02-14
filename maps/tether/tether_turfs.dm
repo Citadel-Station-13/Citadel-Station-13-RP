@@ -1,5 +1,4 @@
 //Simulated
-VIRGO3B_TURF_CREATE(/turf/simulated/open)
 /turf/simulated/open/virgo3b
 	edge_blending_priority = 0.5 //Turfs which also have e_b_p and higher than this will plop decorative edges onto this turf
 /turf/simulated/open/virgo3b/Initialize(mapload)
@@ -7,18 +6,12 @@ VIRGO3B_TURF_CREATE(/turf/simulated/open)
 	if(outdoors)
 		SSplanets.addTurf(src)
 
-VIRGO3B_TURF_CREATE(/turf/simulated/floor)
+
 
 /turf/simulated/floor/virgo3b_indoors
 	VIRGO3B_SET_ATMOS
 	allow_gas_overlays = FALSE
 
-VIRGO3B_TURF_CREATE(/turf/simulated/floor/reinforced)
-VIRGO3B_TURF_CREATE(/turf/simulated/floor/tiled/steel_dirty)
-
-VIRGO3B_TURF_CREATE(/turf/simulated/floor/outdoors/dirt)
-VIRGO3B_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
-VIRGO3B_TURF_CREATE(/turf/simulated/floor/outdoors/grass/sif)
 /turf/simulated/floor/outdoors/grass/sif
 	turf_layers = list(
 		/turf/simulated/floor/outdoors/rocks/virgo3b,
@@ -44,9 +37,7 @@ VIRGO3B_TURF_CREATE(/turf/simulated/floor/outdoors/grass/sif)
 /turf/simulated/mineral/floor/vacuum
 	initial_gas_mix = GAS_STRING_VACUUM
 
-VIRGO3B_TURF_CREATE(/turf/simulated/mineral)
-VIRGO3B_TURF_CREATE(/turf/simulated/mineral/floor)
-	//This proc is responsible for ore generation on surface turfs
+//This proc is responsible for ore generation on surface turfs
 /turf/simulated/mineral/virgo3b/make_ore(var/rare_ore)
 	if(mineral || ignore_mapgen)
 		return

@@ -44,6 +44,7 @@
 		new	/datum/data/mining_equipment("Conscript Pack",		/obj/item/storage/lockbox/russian,						250),
 		new	/datum/data/mining_equipment("Holy Crusade Pack",		/obj/item/storage/lockbox/crusade,						200),
 		new	/datum/data/mining_equipment("Maniple Pack",		/obj/item/storage/lockbox/maniple,						200),
+		new /datum/data/mining_equipment("Away Team Pack",		/obj/item/storage/lockbox/away,							1000),
 		new /datum/data/mining_equipment("Survey Tools - Shovel",		/obj/item/shovel,											40),
 		new /datum/data/mining_equipment("Survey Tools - Mechanical Trap",	/obj/item/beartrap,										50),
 		new /datum/data/mining_equipment("Defense Equipment - Smoke Bomb",/obj/item/grenade/smokebomb,								10),

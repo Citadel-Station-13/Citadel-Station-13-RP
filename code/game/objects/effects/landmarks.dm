@@ -76,7 +76,14 @@
 			endgame_exits += loc
 			delete_me = 1
 			return
-
+		if("lavaland_entry")
+			lavaland_entry += loc
+			delete_me = 1
+			return
+		if("lavaland_exit")
+			lavaland_exit += loc
+			delete_me = 1
+			return
 	landmarks_list += src
 	return 1
 

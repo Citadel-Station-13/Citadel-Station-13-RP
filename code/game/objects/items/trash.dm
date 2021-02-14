@@ -6,6 +6,8 @@
 	icon = 'icons/obj/trash.dmi'
 	w_class = ITEMSIZE_SMALL
 	desc = "This is rubbish."
+	drop_sound = 'sound/items/drop/wrapper.ogg'
+	pickup_sound = 'sound/items/pickup/wrapper.ogg'
 
 /obj/item/trash/raisins
 	name = "\improper 4no raisins"
@@ -36,8 +38,10 @@
 	icon_state = "sosjerky"
 
 /obj/item/trash/unajerky
-	name = "Moghes Imported Sissalik Jerky"
+	name = "Moghes Imported Sissalik Jerky tin"
 	icon_state = "unathitinred"
+	drop_sound = 'sound/items/drop/soda.ogg'
+	pickup_sound = 'sound/items/pickup/soda.ogg'
 
 /obj/item/trash/syndi_cakes
 	name = "syndi cakes"

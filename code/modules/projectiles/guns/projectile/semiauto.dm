@@ -26,8 +26,8 @@
 	icon_state = "sgarand"
 	pin = /obj/item/firing_pin/explorer
 	magazine_type = /obj/item/ammo_magazine/m762garand/sniperhunter
-	w_class = ITEMSIZE_HUGE // We don't need this fitting in backpacks. 
-	accuracy = 100 //Forced missing fucking sucks ass
+	w_class = ITEMSIZE_HUGE // We don't need this fitting in backpacks.
+	accuracy = 70 //Forced missing fucking sucks ass
 	scoped_accuracy = 100
 
 /obj/item/gun/projectile/garand/sniper/verb/scope()

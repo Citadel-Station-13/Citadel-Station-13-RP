@@ -313,7 +313,8 @@ datum/supply_pack/costumes/witch
 			/obj/item/clothing/under/skirt/swept,
 			/obj/item/clothing/under/skirt/outfit/plaid_blue,
 			/obj/item/clothing/under/skirt/outfit/plaid_purple,
-			/obj/item/clothing/under/skirt/outfit/plaid_red
+			/obj/item/clothing/under/skirt/outfit/plaid_red,
+			/obj/item/clothing/under/skirt/outfit/plaid_green
 			)
 	cost = 40
 	containertype = /obj/structure/closet/crate

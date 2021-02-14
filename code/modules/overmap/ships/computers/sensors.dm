@@ -100,6 +100,7 @@
 		if(istype(O) && !QDELETED(O) && (O in view(7,linked)))
 			playsound(loc, "sound/machines/dotprinter.ogg", 30, 1)
 			new/obj/item/paper/(get_turf(src), O.get_scan_data(user), "paper (Sensor Scan - [O])")
+			playsound(src, "sound/machines/printer.ogg", 30, 1)
 		return TOPIC_HANDLED
 
 /obj/machinery/computer/ship/sensors/process()
