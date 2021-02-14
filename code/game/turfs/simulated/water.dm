@@ -345,11 +345,7 @@ var/list/shoreline_icon_cache = list()
 	if(blood_wade(AM))
 		START_PROCESSING(SSobj, src)
 
-<<<<<<< HEAD
-/turf/simulated/floor/water/blood/process(delta_time)
-=======
-/turf/simulated/floor/outdoors/water/blood/process()
->>>>>>> citrp/master
+/turf/simulated/floor/outdoors/water/blood/process(delta_time)
 	if(!blood_wade())
 		STOP_PROCESSING(SSobj, src)
 
