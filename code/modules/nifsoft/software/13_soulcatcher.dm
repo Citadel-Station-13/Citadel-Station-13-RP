@@ -308,7 +308,7 @@
 		return
 
 	. = ..()
-	
+
 	if(!client)
 		return
 
@@ -341,7 +341,7 @@
 		return FALSE
 	..()
 
-/mob/living/carbon/brain/caught_soul/show_message()
+/mob/living/carbon/brain/caught_soul/show_message(msg, type, alt, alt_type)
 	if(ext_blind || !client)
 		return FALSE
 	..()

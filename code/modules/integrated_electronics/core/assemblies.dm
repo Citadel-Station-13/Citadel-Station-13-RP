@@ -351,10 +351,12 @@
 	return FALSE
 
 /obj/item/electronic_assembly/on_loc_moved(oldloc)
+	. = ..()
 	for(var/obj/O in contents)
 		O.on_loc_moved(oldloc)
 
 /obj/item/electronic_assembly/Moved(var/oldloc)
+	. = ..()
 	for(var/obj/O in contents)
 		O.on_loc_moved(oldloc)
 

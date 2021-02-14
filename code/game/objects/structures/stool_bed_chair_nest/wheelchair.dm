@@ -54,7 +54,7 @@
 	if(pulling_along && (get_dist(src, pulling_along) > 1))
 		pulling_along = null
 		user.pulledby = null
-		if(user==pulling_along)
+		if(user == pulling_along)
 			return
 	if(pulling_along && (get_dir(src.loc, pulling_along.loc) == direction))
 		to_chat(user, "<span class='warning'>You cannot go there.</span>")
@@ -63,9 +63,7 @@
 		to_chat(user, "<span class='warning'>You cannot drive while being pushed.</span>")
 		return
 
-
  	last_active_move = world.time
-
 
 	// Let's roll
 	driving = 1
