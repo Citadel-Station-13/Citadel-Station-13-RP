@@ -337,6 +337,7 @@
 	var/created = FALSE //prevents creation of more then one locker if it has multiple hits
 	var/locker_suck = TRUE
 
+/*
 /obj/item/projectile/magic/locker/proc/prehit(atom/A, var/mob/living/L)
 	if(ismob(A) && locker_suck)
 		var/mob/M = A
@@ -349,6 +350,7 @@
 		M.forceMove(src)
 		return FALSE
 	return ..()
+*/
 
 /obj/item/projectile/magic/locker/on_hit(target)
 	if(created)

@@ -22,10 +22,10 @@
 	update_icon()
 	return ..(loc)
 
-/obj/effect/blob/CanAllowThrough(var/atom/movable/mover, vra/turf/target)
+/obj/effect/blob/CanAllowThrough(atom/movable/mover, turf/target)
 	return FALSE
 
-/obj/effect/blob/ex_act(var/severity)
+/obj/effect/blob/ex_act(severity)
 	switch(severity)
 		if(1)
 			take_damage(rand(100, 120) / brute_resist)

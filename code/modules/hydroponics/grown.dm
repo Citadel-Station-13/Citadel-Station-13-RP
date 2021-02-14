@@ -159,6 +159,7 @@
 	overlays |= plant_icon
 
 /obj/item/reagent_containers/food/snacks/grown/Crossed(var/mob/living/M)
+	. = ..()
 	if(seed && seed.get_trait(TRAIT_JUICY) == 2)
 		if(istype(M))
 
@@ -177,7 +178,8 @@
 			M.Weaken(5)
 			seed.thrown_at(src,M)
 			sleep(-1)
-			if(src) qdel(src)
+			if(src)
+				qdel(src)
 			return
 
 /obj/item/reagent_containers/food/snacks/grown/throw_impact(atom/hit_atom)
