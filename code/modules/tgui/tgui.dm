@@ -33,6 +33,8 @@
 	var/status = UI_INTERACTIVE
 	/// Topic state used to determine status/interactability.
 	var/datum/ui_state/state = null
+	// The map z-level to display.
+	var/map_z_level = 1
 
 /**
  * public
@@ -267,6 +269,15 @@
 		return
 	if(needs_update)
 		window.send_message("update", get_payload())
+
+
+/**
+	Sets the current map z level of the tgui window (so we know which Z we need to be interacting with.)
+ */
+
+/datum/tgui/proc/set_map_z_level(nz)
+	map_z_level = nz
+
 
 /**
  * private
