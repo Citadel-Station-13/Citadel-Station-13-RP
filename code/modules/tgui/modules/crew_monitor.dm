@@ -25,7 +25,7 @@
 
 /datum/tgui_module/crew_monitor/ui_interact(mob/user, datum/tgui/ui = null)
 	var/z = get_z(user)
-	var/list/map_levels = GLOB.using_map.get_map_levels(z, TRUE, om_range = DEFAULT_OVERMAP_RANGE)
+	var/list/map_levels = GLOB.using_map.get_map_levels(z, FALSE)
 
 	if(!map_levels.len)
 		to_chat(user, "<span class='warning'>The crew monitor doesn't seem like it'll work here.</span>")
@@ -46,7 +46,7 @@
 	data["isAI"] = isAI(user)
 
 	var/z = get_z(user)
-	var/list/map_levels = uniqueList(GLOB.using_map.get_map_levels(z, TRUE, om_range = DEFAULT_OVERMAP_RANGE))
+	var/list/map_levels = uniqueList(GLOB.using_map.get_map_levels(z, FALSE))
 	data["map_levels"] = map_levels
 
 	data["crewmembers"] = list()

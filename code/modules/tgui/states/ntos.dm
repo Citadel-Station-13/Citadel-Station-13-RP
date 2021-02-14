@@ -12,4 +12,4 @@ GLOBAL_DATUM_INIT(ntos_state, /datum/ui_state/ntos, new)
 	var/datum/computer_file/program/P = src_object
 	if(!istype(P) || !P.computer)
 		return FALSE
-	return user.default_can_use_ui_topic(P.computer) // Call the individual mob-overridden procs.
+	return UI_INTERACTIVE

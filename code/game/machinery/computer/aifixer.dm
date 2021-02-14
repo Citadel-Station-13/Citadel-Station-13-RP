@@ -92,7 +92,7 @@
 				to_chat(usr, "<span class='notice'>Reconstruction in progress. This will take several minutes.</span>")
 				playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 25, FALSE)
 				restoring = TRUE
-				var/mob/observer/dead/ghost = occupier.get_ghost()
+				var/mob/observer/dead/ghost //TODO: FIX THIS SHIT
 				if(ghost)
 					ghost.notify_revive("Your core files are being restored!", source = src)
 				. = TRUE
