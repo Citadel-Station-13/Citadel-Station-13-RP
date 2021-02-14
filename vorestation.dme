@@ -2177,6 +2177,7 @@
 #include "code\modules\maps\atmospheres\frozen_planet.dm"
 #include "code\modules\maps\atmospheres\gaia_planet.dm"
 #include "code\modules\maps\atmospheres\lavaland.dm"
+#include "code\modules\maps\atmospheres\nerada8.dm"
 #include "code\modules\maps\atmospheres\triumph.dm"
 #include "code\modules\maps\atmospheres\virgo2.dm"
 #include "code\modules\maps\atmospheres\virgo3b.dm"
