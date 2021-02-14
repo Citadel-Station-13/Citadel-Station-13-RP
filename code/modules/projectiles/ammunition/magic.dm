@@ -465,7 +465,7 @@
 			return
 		M.take_overall_damage(0,10) //between this 10 burn, the 10 brute, the explosion brute, and the onfire burn, your at about 65 damage if you stop drop and roll immediately
 	var/turf/T = get_turf(target)
-	explosion(T, -1, exp_heavy, exp_light, exp_flash, 0, flame_range = exp_fire)
+	explosion(T, -1, exp_heavy, exp_light, exp_flash, 0)//, flame_range = exp_fire)
 
 /obj/item/projectile/magic/aoe/fireball/infernal
 	name = "infernal fireball"

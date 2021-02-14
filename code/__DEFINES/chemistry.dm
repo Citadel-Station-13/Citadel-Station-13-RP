@@ -8,8 +8,9 @@
 
 #define MINIMUM_CHEMICAL_VOLUME 0.01
 
-#define SOLID 1
-#define LIQUID 2
+// states of matter
+#define REAGENT_SOLID 1
+#define REAGENT_LIQUID 2
 #define REAGENT_GAS 3
 
 #define REAGENTS_OVERDOSE 30

@@ -527,7 +527,7 @@
 	for(var/datum/reagent/R in A.reagents.reagent_list)
 		if(R.id in known_reagents)
 			occupant_message("Reagent \"[R.name]\" already present in database, skipping.")
-		else if(R.reagent_state == 2 && add_known_reagent(R.id,R.name))
+		else if(R.reagent_state == LIQUID && add_known_reagent(R.id,R.name))
 			occupant_message("Reagent analyzed, identified as [R.name] and added to database.")
 			send_byjax(chassis.occupant,"msyringegun.browser","reagents_form",get_reagents_form())
 		else

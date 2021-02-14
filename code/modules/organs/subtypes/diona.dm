@@ -7,6 +7,8 @@
 	if(!diona)
 		return 0
 
+	. = TRUE
+
 	spawn(1) // So it has time to be thrown about by the gib() proc.
 		var/mob/living/carbon/alien/diona/D = new(target)
 		var/datum/ghosttrap/plant/P = get_ghost_trap("living plant")
@@ -15,8 +17,6 @@
 			if(D)
 				if(!D.ckey || !D.client)
 					D.death()
-		return 1
-
 /obj/item/organ/external/diona
 	name = "tendril"
 	cannot_break = 1
