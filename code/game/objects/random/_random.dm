@@ -137,3 +137,4 @@ var/list/multi_point_spawns
 		for(var/entry in spawn_points)
 			qdel(entry)
 	return 1
+

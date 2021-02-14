@@ -1,7 +1,7 @@
 /mob/living/simple_mob/animal/passive/mouse
 	name = "mouse"
 	real_name = "mouse"
-	desc = "It's a small rodent."
+	desc = "A small rodent, often seen hiding in maintenance areas and making a nuisance of itself. And stealing cheese, or annoying the chef. SQUEAK! <3"
 	tt_desc = "E Mus musculus"
 	icon_state = "mouse_gray"
 	item_state = "mouse_gray"
@@ -13,8 +13,8 @@
 
 	mob_size = MOB_MINISCULE
 	pass_flags = PASSTABLE
-//	can_pull_size = ITEMSIZE_TINY
-//	can_pull_mobs = MOB_PULL_NONE
+	can_pull_size = ITEMSIZE_TINY
+	can_pull_mobs = MOB_PULL_NONE
 	layer = MOB_LAYER
 	density = 0
 
@@ -34,6 +34,11 @@
 	say_list_type = /datum/say_list/mouse
 
 	var/body_color //brown, gray and white, leave blank for random
+
+	nutrition = 20	//To prevent draining maint mice for infinite food. Low nutrition has no mechanical effect on simplemobs, so wont hurt mice themselves.
+
+	no_vore = 1 //Mice can't eat others due to the amount of bugs caused by it.
+	vore_taste = "cheese"
 
 /mob/living/simple_mob/animal/passive/mouse/New()
 	..()
@@ -130,3 +135,15 @@
 	speak = list("Squeek!","SQUEEK!","Squeek?")
 	emote_hear = list("squeeks","squeaks","squiks")
 	emote_see = list("runs in a circle", "shakes", "scritches at something")
+
+/mob/living/simple_mob/animal/passive/mouse/attack_hand(mob/living/hander)
+	if(hander.a_intent == INTENT_HELP) //if lime intent
+		get_scooped(hander) //get scooped
+	else
+		..()
+
+/obj/item/holder/mouse/attack_self(var/mob/U)
+	for(var/mob/living/simple_mob/M in src.contents)
+		if((INTENT_HELP) && U.canClick()) //a little snowflakey, but makes it use the same cooldown as interacting with non-inventory objects
+			U.setClickCooldown(U.get_attack_speed()) //if there's a cleaner way in baycode, I'll change this
+			U.visible_message("<span class='notice'>[U] [M.response_help] \the [M].</span>")

@@ -326,4 +326,3 @@ var/datum/planet/classh/planet_classh = null
 		return
 	if(T.outdoors)
 		SSradiation.radiate(T, rand(fallout_rad_low, fallout_rad_high))
-

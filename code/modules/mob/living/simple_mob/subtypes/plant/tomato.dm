@@ -1,4 +1,4 @@
-/mob/living/simple_mob/tomato
+/mob/living/simple_mob/hostile/tomato
 	name = "tomato"
 	desc = "It's a horrifyingly enormous beef tomato, and it's packing extra beef!"
 	tt_desc = "X Solanum abominable"
@@ -25,3 +25,17 @@
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
 
 	meat_type = /obj/item/reagent_containers/food/snacks/tomatomeat
+
+/mob/living/simple_mob/hostile/tomato/space
+	min_oxy = 0
+	max_oxy = 0
+	min_tox = 0
+	max_tox = 0
+	min_co2 = 0
+	max_co2 = 0
+	min_n2 = 0
+	max_n2 = 0
+	minbodytemp = 0
+
+/mob/living/simple_mob/hostile/tomato/space/Process_Spacemove(var/check_drift = 0)
+	return TRUE

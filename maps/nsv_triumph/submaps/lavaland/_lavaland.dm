@@ -15,32 +15,6 @@
 /obj/away_mission_init/lavaland/Initialize()
 	return INITIALIZE_HINT_QDEL
 
-/area/shuttle/excursion/lavaland
-	name = "Shuttle Landing Point"
-	base_turf = /turf/simulated/floor/outdoors/lavaland
-	flags = RAD_SHIELDED
-
-/area/triumph_away/lavaland
-	name = "Lava Land"
-	base_turf = /turf/simulated/floor/outdoors/lavaland
-
-/area/triumph_away/lavaland/horrors
-	name = "Lava Land - Horrors"
-	base_turf = /turf/simulated/floor/outdoors/lavaland
-
-/area/triumph_away/lavaland/dogs
-	name = "Lava Land - Dogs"
-	base_turf = /turf/simulated/floor/outdoors/lavaland
-
-/area/triumph_away/lavaland/idleruins
-	name = "Lava Land - Idle Ruins"
-	base_turf = /turf/simulated/floor/outdoors/lavaland
-
-/area/triumph_away/lavaland/bosses
-	name = "Lava Land - Boss"
-	base_turf = /turf/simulated/floor/outdoors/lavaland
-	requires_power = 0
-
 /obj/effect/landmark/lavaland_entry
 	name = "lavaland_entry"
 
@@ -119,35 +93,6 @@
 			L.forceMove(T)
 	else
 		AM.forceMove(T)
-
-// lava land world areas
-/area/triumph_away/lavaland
-	name = "Lava Land"
-	icon_state = "away"
-	base_turf = /turf/simulated/floor/outdoors/lavaland
-	dynamic_lighting = 1
-	
-
-/area/triumph_away/lavaland/base
-	name = "Lava Land - Mining Base"
-	icon_state = "green"
-	base_turf = /turf/simulated/floor/outdoors/lavaland
-	requires_power = 0
-
-/area/triumph_away/lavaland/base/common
-	name = "Lava Land - Mining Base"
-	icon_state = "blue"
-	base_turf = /turf/simulated/floor/outdoors/lavaland
-	requires_power = 0
-/area/triumph_away/lavaland/explored
-	name = "Lava Land - Thoroughfare"
-	icon_state = "red"
-	base_turf = /turf/simulated/floor/outdoors/lavaland
-
-/area/triumph_away/lavaland/unexplored
-	name = "Lava Land - Unknown"
-	icon_state = "yellow"
-	base_turf = /turf/simulated/floor/outdoors/lavaland
 
 // Lava Land turfs
 /turf/simulated/floor/outdoors/lavaland
