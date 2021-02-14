@@ -52,7 +52,7 @@
 	if(propelled)
 		return
 	if(pulling_along)
-		if(get_dist(src, pulling_along) > 1))
+		if(get_dist(src, pulling_along) > 1)
 			pulling_along = null
 			user.pulledby = null
 			if(user == pulling_along)
