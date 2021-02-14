@@ -207,11 +207,11 @@
 		B.setDir(newdir)
 	bloodiness--
 
-/obj/structure/bed/chair/wheelchair/buckle_mob(mob/M as mob, mob/user as mob)
+/obj/structure/bed/chair/wheelchair/buckle_mob(mob/living/M, forced = FALSE, check_loc = TRUE)
 	if(M == pulling_along)
 		pulling_along = null
 		usr.pulledby = null
-	..()
+	return ..()
 
 /obj/item/wheelchair
 	name = "wheelchair"

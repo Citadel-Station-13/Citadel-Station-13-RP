@@ -94,7 +94,7 @@ GLOBAL_LIST_EMPTY(GPS_list)
 		if(!(T.z in dat["z_level_detection"]))
 			continue
 
-		var/gps_data[0]
+		var/list/gps_data[0]
 		gps_data["ref"] = G
 		gps_data["gps_tag"] = G.gps_tag
 
@@ -133,7 +133,8 @@ GLOBAL_LIST_EMPTY(GPS_list)
 	<a href='?src=\ref[src];range=1'>\[Toggle Scan Range\]</a> \
 	[can_hide_signal ? "<a href='?src=\ref[src];hide=1'>\[Toggle Signal Visibility\]</a>":""]"
 
-	if(gps_data["gps_list"].len)
+	var/list/gps_list = gps_data["gps_list"]
+	if(gps_list.len)
 		dat += "Detected signals;"
 		for(var/gps in gps_data["gps_list"])
 			if(istype(gps_data["ref"], /obj/item/gps/internal/poi))
@@ -307,13 +308,14 @@ GLOBAL_LIST_EMPTY(GPS_list)
 
 	var/list/dat = list()
 	var/list/gps_data = display_list()
+	var/list/gps_list = gps_data["gps_list"]
 
 	dat += "Current location: [gps_data["my_area_name"]] <b>([gps_data["curr_x"]], [gps_data["curr_y"]], [gps_data["curr_z_name"]])</b>"
 	dat += "[hide_signal ? "Tagged" : "Broadcasting"] as '[gps_tag]'. <a href='?src=\ref[src];tag=1'>\[Change Tag\]</a> \
 	<a href='?src=\ref[src];range=1'>\[Toggle Scan Range\]</a> \
 	[can_hide_signal ? "<a href='?src=\ref[src];hide=1'>\[Toggle Signal Visibility\]</a>":""]"
 
-	if(gps_data["gps_list"].len)
+	if(gps_list.len)
 		dat += "Detected signals;"
 		for(var/gps in gps_data["gps_list"])
 			dat += "     [gps["gps_tag"]]: [gps["area_name"]] ([gps["x"]], [gps["y"]], [gps["z_name"]]) [gps["local"] ? "Dist: [gps["distance"]]m Dir: [gps["degrees"]]° ([gps["direction"]])" :""]"

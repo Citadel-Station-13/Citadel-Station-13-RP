@@ -219,7 +219,7 @@
 	R.verbs |= /mob/living/proc/shred_limb
 	R.verbs |= /mob/living/silicon/robot/proc/rest_style
 
-	if(R.client && R.client.ckey in list("nezuli"))
+	if(R.client && (R.client.ckey in list("nezuli")))
 		sprites += "Alina"
 		sprites["Alina"] = "alina-med"
 	..()

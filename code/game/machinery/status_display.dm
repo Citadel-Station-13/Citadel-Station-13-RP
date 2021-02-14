@@ -250,4 +250,4 @@
 #undef FONT_SIZE
 #undef FONT_COLOR
 #undef FONT_STYLE
-#undef CHARS_PER_LINE
+#undef SCROLL_SPEED

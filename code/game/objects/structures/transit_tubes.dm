@@ -156,7 +156,7 @@
 
 /obj/structure/transit_tube/station/proc/launch_pod()
 	for(var/obj/structure/transit_tube_pod/pod in loc)
-		if(!pod.moving && pod.dir in directions())
+		if(!pod.moving && (pod.dir in directions()))
 			spawn(5)
 				pod_moving = 1
 				close_animation()
