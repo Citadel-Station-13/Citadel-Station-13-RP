@@ -931,7 +931,7 @@
 /area/medical/psych_ward)
 "aMY" = (
 /turf/simulated/wall,
-/area/maintenance/medbay_aft)
+/area/maintenance/medbay/aft)
 "aNd" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/table/reinforced,
@@ -1349,7 +1349,7 @@
 "blW" = (
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/plating,
-/area/maintenance/medbay_aft)
+/area/maintenance/medbay/aft)
 "bmc" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
@@ -2964,7 +2964,7 @@
 	pixel_y = -24
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/medbay_fore)
+/area/maintenance/medbay/fore)
 "cKK" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -4590,7 +4590,7 @@
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
-/area/maintenance/medbay_aft)
+/area/maintenance/medbay/aft)
 "eeU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -4656,7 +4656,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/white,
-/area/maintenance/medbay_fore)
+/area/maintenance/medbay/fore)
 "eiW" = (
 /obj/machinery/light{
 	dir = 8;
@@ -5071,7 +5071,7 @@
 	pixel_x = 24
 	},
 /turf/simulated/floor/tiled/white,
-/area/maintenance/medbay_fore)
+/area/maintenance/medbay/fore)
 "eDV" = (
 /obj/random/maintenance/medical,
 /obj/machinery/atmospherics/pipe/simple/hidden/universal,
@@ -5603,7 +5603,7 @@
 	pixel_y = -22
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/medbay_fore)
+/area/maintenance/medbay/fore)
 "faj" = (
 /obj/structure/mirror{
 	pixel_y = 30
@@ -8074,7 +8074,7 @@
 "hju" = (
 /obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/plating,
-/area/maintenance/medbay_aft)
+/area/maintenance/medbay/aft)
 "hkH" = (
 /turf/simulated/wall/r_wall,
 /area/assembly/robotics)
@@ -9345,7 +9345,7 @@
 	pixel_x = -22
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/medbay_aft)
+/area/maintenance/medbay/aft)
 "ivt" = (
 /obj/machinery/alarm/monitor/isolation{
 	alarm_id = "isolation_one";
@@ -9495,7 +9495,7 @@
 "iEx" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/tiled/white,
-/area/maintenance/medbay_fore)
+/area/maintenance/medbay/fore)
 "iEI" = (
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
@@ -10253,7 +10253,7 @@
 	name = "blobstart"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/medbay_aft)
+/area/maintenance/medbay/aft)
 "jtF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -10312,7 +10312,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/maintenance/medbay_fore)
+/area/maintenance/medbay/fore)
 "jyE" = (
 /obj/structure/cable/green{
 	d2 = 4;
@@ -10635,7 +10635,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/medbay_aft)
+/area/maintenance/medbay/aft)
 "jPJ" = (
 /obj/item/storage/toolbox/mechanical{
 	pixel_x = 2;
@@ -10875,7 +10875,7 @@
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/white,
-/area/maintenance/medbay_fore)
+/area/maintenance/medbay/fore)
 "jZR" = (
 /obj/item/roller_holder,
 /obj/effect/floor_decal/industrial/outline/blue,
@@ -11502,7 +11502,7 @@
 	pixel_y = 28
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/medbay_aft)
+/area/maintenance/medbay/aft)
 "kCf" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -11562,7 +11562,7 @@
 /obj/machinery/door/airlock/maintenance/medical,
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
-/area/maintenance/medbay_aft)
+/area/maintenance/medbay/aft)
 "kFb" = (
 /obj/machinery/botany/extractor,
 /obj/effect/floor_decal/borderfloor{
@@ -12366,7 +12366,7 @@
 /area/medical/surgeryprep)
 "lsY" = (
 /turf/simulated/floor/plating,
-/area/maintenance/medbay_aft)
+/area/maintenance/medbay/aft)
 "ltk" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -12699,7 +12699,7 @@
 "lJA" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/plating,
-/area/maintenance/medbay_aft)
+/area/maintenance/medbay/aft)
 "lJD" = (
 /obj/machinery/papershredder,
 /obj/machinery/light{
@@ -13532,7 +13532,7 @@
 /obj/random/maintenance,
 /obj/random/maintenance,
 /turf/simulated/floor/plating,
-/area/maintenance/medbay_aft)
+/area/maintenance/medbay/aft)
 "muj" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -14221,7 +14221,7 @@
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
-/area/maintenance/medbay_aft)
+/area/maintenance/medbay/aft)
 "mVj" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
@@ -14490,7 +14490,7 @@
 /area/space)
 "nhq" = (
 /turf/simulated/wall/r_wall,
-/area/maintenance/medbay_aft)
+/area/maintenance/medbay/aft)
 "nhH" = (
 /obj/machinery/autolathe{
 	hacked = 1
@@ -14550,7 +14550,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/medbay_aft)
+/area/maintenance/medbay/aft)
 "nmP" = (
 /obj/structure/disposaloutlet{
 	dir = 4
@@ -15801,7 +15801,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/white,
-/area/maintenance/medbay_fore)
+/area/maintenance/medbay/fore)
 "oAV" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
@@ -16408,7 +16408,7 @@
 /obj/random/maintenance,
 /obj/random/maintenance,
 /turf/simulated/floor/plating,
-/area/maintenance/medbay_aft)
+/area/maintenance/medbay/aft)
 "oZD" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -17297,7 +17297,7 @@
 /obj/structure/table/rack,
 /obj/random/maintenance/research,
 /turf/simulated/floor/plating,
-/area/maintenance/medbay_aft)
+/area/maintenance/medbay/aft)
 "pCW" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/tiled/white,
@@ -17724,7 +17724,7 @@
 	pixel_x = -32
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/medbay_aft)
+/area/maintenance/medbay/aft)
 "pRY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -17899,7 +17899,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/medbay_aft)
+/area/maintenance/medbay/aft)
 "pXD" = (
 /obj/machinery/r_n_d/protolathe,
 /turf/simulated/floor/tiled,
@@ -18357,7 +18357,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/white,
-/area/maintenance/medbay_fore)
+/area/maintenance/medbay/fore)
 "qsg" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
@@ -19331,7 +19331,7 @@
 /obj/structure/closet/crate,
 /obj/random/maintenance/research,
 /turf/simulated/floor/plating,
-/area/maintenance/medbay_aft)
+/area/maintenance/medbay/aft)
 "rci" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -19382,7 +19382,7 @@
 	pixel_y = -24
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/medbay_aft)
+/area/maintenance/medbay/aft)
 "reP" = (
 /obj/machinery/button/remote/blast_door{
 	id = "xenobiovs";
@@ -19433,7 +19433,7 @@
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
-/area/maintenance/medbay_fore)
+/area/maintenance/medbay/fore)
 "rfX" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -19489,7 +19489,7 @@
 /obj/random/maintenance/clean,
 /obj/structure/closet/crate/mimic,
 /turf/simulated/floor/plating,
-/area/maintenance/medbay_aft)
+/area/maintenance/medbay/aft)
 "riG" = (
 /obj/machinery/light{
 	dir = 4
@@ -19609,7 +19609,7 @@
 /obj/random/maintenance/clean,
 /obj/random/maintenance,
 /turf/simulated/floor/plating,
-/area/maintenance/medbay_aft)
+/area/maintenance/medbay/aft)
 "row" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -19979,7 +19979,7 @@
 	pixel_x = 24
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/medbay_aft)
+/area/maintenance/medbay/aft)
 "rDl" = (
 /obj/machinery/alarm{
 	frequency = 1441;
@@ -23711,7 +23711,7 @@
 "uHP" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/maintenance/medbay_aft)
+/area/maintenance/medbay/aft)
 "uHY" = (
 /obj/structure/cable/green,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -24411,7 +24411,7 @@
 /area/rnd/test_area)
 "vin" = (
 /turf/simulated/floor/tiled/white,
-/area/maintenance/medbay_fore)
+/area/maintenance/medbay/fore)
 "vjv" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
@@ -25008,7 +25008,7 @@
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
 /turf/simulated/floor/tiled/white,
-/area/maintenance/medbay_fore)
+/area/maintenance/medbay/fore)
 "vQp" = (
 /turf/simulated/wall/r_wall,
 /area/medical/patient_b)
@@ -25459,7 +25459,7 @@
 	pixel_x = 24
 	},
 /turf/simulated/floor/tiled/white,
-/area/maintenance/medbay_fore)
+/area/maintenance/medbay/fore)
 "wjM" = (
 /turf/simulated/wall,
 /area/rnd/rdoffice)
@@ -27344,7 +27344,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/medbay_fore)
+/area/maintenance/medbay/fore)
 "xRb" = (
 /obj/machinery/light{
 	dir = 1
@@ -27666,7 +27666,7 @@
 /area/rnd/hallway)
 "ydf" = (
 /turf/simulated/wall,
-/area/maintenance/medbay_fore)
+/area/maintenance/medbay/fore)
 "ydh" = (
 /obj/machinery/papershredder,
 /obj/machinery/light{
@@ -27775,7 +27775,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/white,
-/area/maintenance/medbay_fore)
+/area/maintenance/medbay/fore)
 "yjF" = (
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 8

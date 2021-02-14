@@ -313,8 +313,6 @@
 		return 1
 	if(ispath(MP, /mob/living/simple_mob/construct))
 		return 1
-	if(ispath(MP, /mob/living/simple_mob/tomato))
-		return 1
 	if(ispath(MP, /mob/living/simple_mob/animal/passive/mouse))
 		return 1 //It is impossible to pull up the player panel for mice (Fixed! - Nodrak)
 	if(ispath(MP, /mob/living/simple_mob/animal/space/bear))

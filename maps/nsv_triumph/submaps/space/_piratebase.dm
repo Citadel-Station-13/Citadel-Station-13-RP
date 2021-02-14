@@ -30,19 +30,3 @@
 
 /obj/away_mission_init/piratebase/Initialize()
 	return INITIALIZE_HINT_QDEL
-
-//And some special areas, including our shuttle landing spot (must be unique)
-/area/shuttle/excursion/piratebase
-	name = "\improper Excursion Shuttle - Pirate Base"
-
-/area/triumph_away/piratebase
-	name = "Away Mission - Pirate Base"
-	icon = 'icons/turf/areas_vr.dmi'
-	icon_state = "dark"
-
-/area/triumph_away/piratebase/space
-	icon_state = "debrisunexplored"
-
-/area/triumph_away/piratebase/facility
-	icon_state = "debrisexplored"
-	forced_ambience = list('sound/ambience/tension/tension.ogg', 'sound/ambience/tension/horror.ogg')

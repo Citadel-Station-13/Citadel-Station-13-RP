@@ -4,8 +4,6 @@
 	#include "triumph_turfs.dm"
 	#include "triumph_things.dm"
 	#include "triumph_phoronlock.dm"
-	#include "triumph_areas.dm"
-	#include "triumph_areas2.dm"
 	#include "triumph_shuttle_defs.dm"
 	#include "triumph_shuttles.dm"
 	#include "triumph_telecomms.dm"
