@@ -11,6 +11,7 @@
 	starts_with = list(
 		/obj/item/clothing/under/rank/cargotech,
 		/obj/item/clothing/under/rank/cargotech/skirt,
+		/obj/item/clothing/under/rank/cargotech/skirt_pleated,
 		/obj/item/clothing/under/rank/cargotech/jeans,
 		/obj/item/clothing/under/rank/cargotech/jeans/female,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/cargo,
@@ -44,6 +45,7 @@
 	starts_with = list(
 		/obj/item/clothing/under/rank/cargo,
 		/obj/item/clothing/under/rank/cargo/skirt,
+		/obj/item/clothing/under/rank/cargo/skirt_pleated,
 		/obj/item/clothing/under/rank/cargo/jeans,
 		/obj/item/clothing/under/rank/cargo/jeans/female,
 		/obj/item/clothing/shoes/brown,

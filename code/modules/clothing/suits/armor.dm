@@ -520,6 +520,12 @@
 	flags_inv = HIDETIE|HIDEHOLSTER
 	siemens_coefficient = 0.6
 
+/obj/item/clothing/suit/armor/combat/syndicate
+	name = "syndicate combat vest"
+	desc = "A heavily armored vest worn over a thick coat. The gold embroidery suggests whoever wears this possesses a high rank."
+	icon_state = "syndievest"
+	blood_overlay_type = "armor"
+
 //Modular plate carriers
 /obj/item/clothing/suit/armor/pcarrier
 	name = "plate carrier"
