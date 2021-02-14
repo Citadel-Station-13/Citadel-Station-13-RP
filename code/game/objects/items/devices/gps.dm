@@ -81,7 +81,8 @@ GLOBAL_LIST_EMPTY(GPS_list)
 	dat["curr_y"] = curr.y
 	dat["curr_z"] = curr.z
 	dat["curr_z_name"] = GLOB.using_map.get_zlevel_name(curr.z)
-	dat["gps_list"] = list()
+	var/list/gps_list = list()
+	dat["gps_list"] = gps_list
 	dat["z_level_detection"] = GLOB.using_map.get_map_levels(curr.z, long_range)
 
 	for(var/obj/item/gps/G in GLOB.GPS_list - src)
@@ -112,8 +113,7 @@ GLOBAL_LIST_EMPTY(GPS_list)
 		gps_data["local"] = (curr.z == T.z)
 		gps_data["x"] = T.x
 		gps_data["y"] = T.y
-
-		dat["gps_list"][++dat["gps_list"].len] = gps_data
+		gps_list[++gps_list.len] = gps_data
 
 	return dat
 

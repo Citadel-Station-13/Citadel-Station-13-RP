@@ -159,33 +159,37 @@
 
 			// Rotate the list according to orientation
 			if(orientation != SOUTH)
-				var/num_cols = key_list[1].len
+				var/list/firstlist = key_list[1]
+				var/num_cols = firstlist.len
 				var/num_rows = key_list.len
 				var/list/new_key_list = list()
 				// If it's rotated 180 degrees, the dimensions are the same
 				if(orientation == NORTH)
 					new_key_list.len = num_rows
 					for(var/i = 1 to new_key_list.len)
-						new_key_list[i] = list()
-						new_key_list[i].len = num_cols
+						var/list/L = list()
+						L.len = num_cols
+						new_key_list[i] = L
 				// Else, the dimensions are swapped
 				else
 					new_key_list.len = num_cols
 					for(var/i = 1 to new_key_list.len)
-						new_key_list[i] = list()
-						new_key_list[i].len = num_rows
+						var/list/L = list()
+						L.len = num_rows
+						new_key_list[i] = L
 				num_rows++ // Buffering against the base index of 1
 				num_cols++
 				// Populate the new list
 				for(var/i = 1 to new_key_list.len)
-					for(var/j = 1 to new_key_list[i].len)
+					var/list/L = new_key_list[i]
+					for(var/j = 1 to L.len)
 						switch(orientation)
 							if(NORTH)
-								new_key_list[i][j] = key_list[num_rows - i][num_cols - j]
+								L[j] = key_list[num_rows - i][num_cols - j]
 							if(EAST)
-								new_key_list[i][j] = key_list[num_rows - j][i]
+								L[j] = key_list[num_rows - j][i]
 							if(WEST)
-								new_key_list[i][j] = key_list[j][num_cols - i]
+								L[j] = key_list[j][num_cols - i]
 
 				key_list = new_key_list
 
@@ -196,7 +200,8 @@
 				for(var/i = 1 to key_list.len)
 					if(ycrd <= world.maxy && ycrd >= 1)
 						xcrd = xcrdStart
-						for(var/j = 1 to key_list[1].len)
+						var/list/firstcolumn = key_list[1]
+						for(var/j = 1 to firstcolumn.len)
 							if(xcrd > world.maxx)
 								if(cropMap)
 									break

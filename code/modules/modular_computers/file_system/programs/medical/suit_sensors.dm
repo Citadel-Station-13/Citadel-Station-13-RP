@@ -41,8 +41,8 @@
 	data["crewmembers"] = list()
 	for(var/z in data["map_levels"])			// VOREStation Edit
 		data["crewmembers"] += crew_repository.health_data(z)
-
-	if(!data["map_levels"].len)
+	var/list/map_levels = data["map_levels"]
+	if(!map_levels.len)
 		to_chat(user, "<span class='warning'>The crew monitor doesn't seem like it'll work here.</span>")
 		if(ui)									// VOREStation Addition
 			ui.close()							// VOREStation Addition
