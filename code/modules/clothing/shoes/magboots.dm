@@ -128,3 +128,58 @@
 	..(user)
 	if (magpulse)
 		to_chat(user, "It would be hard to take these off without relaxing your grip first.")//theoretically this message should only be seen by the wearer when the claws are equipped.
+
+/obj/item/clothing/shoes/magboots/advanced
+	name = "advanced magboots"
+	icon_state = "advmag0"
+
+/obj/item/clothing/shoes/magboots/advanced/set_slowdown()
+	if(magpulse)
+		slowdown -= 3
+	..()
+
+/obj/item/clothing/shoes/magboots/advanced/attack_self(mob/user)
+	if(magpulse)
+		item_flags &= ~NOSLIP
+		magpulse = 0
+		set_slowdown()
+		force = 3
+		if(icon_base) icon_state = "advmag0"
+		to_chat(user, "You disable the mag-pulse traction system.")
+	else
+		item_flags |= NOSLIP
+		magpulse = 1
+		set_slowdown()
+		force = 5
+		if(icon_base) icon_state = "advmag1"
+		to_chat(user, "You enable the mag-pulse traction system.")
+	user.update_inv_shoes()	//so our mob-overlays update
+	user.update_action_buttons()
+
+/obj/item/clothing/shoes/magboots/syndicate
+	name = "blood red magboots"
+	desc = "Prior to its dissolution, many Syndicate agents were tasked with stealing NanoTrasen's prototype advanced magboots. Reverse engineering these rare tactical boots was achieved shortly before the end of the conflict."
+	icon_state = "syndiemag0"
+
+/obj/item/clothing/shoes/magboots/syndicate/set_slowdown()
+	if(magpulse)
+		slowdown -= 3
+	..()
+
+/obj/item/clothing/shoes/magboots/syndicate/attack_self(mob/user)
+	if(magpulse)
+		item_flags &= ~NOSLIP
+		magpulse = 0
+		set_slowdown()
+		force = 3
+		if(icon_base) icon_state = "syndiemag0"
+		to_chat(user, "You disable the mag-pulse traction system.")
+	else
+		item_flags |= NOSLIP
+		magpulse = 1
+		set_slowdown()
+		force = 5
+		if(icon_base) icon_state = "syndiemag1"
+		to_chat(user, "You enable the mag-pulse traction system.")
+	user.update_inv_shoes()	//so our mob-overlays update
+	user.update_action_buttons()
