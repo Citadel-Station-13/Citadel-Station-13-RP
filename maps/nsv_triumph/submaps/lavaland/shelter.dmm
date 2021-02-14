@@ -1,12 +1,12 @@
 "a" = (/turf/template_noop,/area/template_noop)
-"d" = (/turf/simulated/floor/wood,/area/triumph_away/lavaland/idleruins)
-"e" = (/obj/effect/decal/remains/human,/turf/simulated/floor/wood,/area/triumph_away/lavaland/idleruins)
-"n" = (/turf/simulated/wall,/area/triumph_away/lavaland/idleruins)
-"p" = (/obj/effect/decal/remains/robot,/turf/simulated/floor/wood,/area/triumph_away/lavaland/idleruins)
-"E" = (/obj/item/material/twohanded/spear/plasteel,/obj/effect/decal/remains/lizard,/turf/simulated/floor/wood,/area/triumph_away/lavaland/idleruins)
-"O" = (/turf/simulated/floor/wood/broken,/area/triumph_away/lavaland/idleruins)
+"d" = (/turf/simulated/floor/wood,/area/lavaland/idleruins)
+"e" = (/obj/effect/decal/remains/human,/turf/simulated/floor/wood,/area/lavaland/idleruins)
+"n" = (/turf/simulated/wall,/area/lavaland/idleruins)
+"p" = (/obj/effect/decal/remains/robot,/turf/simulated/floor/wood,/area/lavaland/idleruins)
+"E" = (/obj/item/material/twohanded/spear/plasteel,/obj/effect/decal/remains/lizard,/turf/simulated/floor/wood,/area/lavaland/idleruins)
+"O" = (/turf/simulated/floor/wood/broken,/area/lavaland/idleruins)
 "P" = (/turf/simulated/floor/outdoors/lavaland,/area/template_noop)
-"X" = (/turf/simulated/floor/outdoors/lavaland,/area/triumph_away/lavaland/idleruins)
+"X" = (/turf/simulated/floor/outdoors/lavaland,/area/lavaland/idleruins)
 
 (1,1,1) = {"
 aaaaaaaaaa

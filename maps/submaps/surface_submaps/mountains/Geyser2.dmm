@@ -11,21 +11,18 @@
 /area/template_noop)
 "d" = (
 /obj/structure/fence/corner{
-	icon_state = "corner";
 	dir = 9
 	},
 /turf/simulated/floor/outdoors/rocks/caves,
 /area/template_noop)
 "e" = (
 /obj/structure/fence{
-	icon_state = "straight";
 	dir = 8
 	},
 /turf/simulated/floor/outdoors/rocks/caves,
 /area/template_noop)
 "f" = (
 /obj/structure/fence/corner{
-	icon_state = "corner";
 	dir = 5
 	},
 /turf/simulated/floor/outdoors/rocks/caves,
@@ -44,7 +41,6 @@
 /area/template_noop)
 "j" = (
 /obj/structure/fence/corner{
-	icon_state = "corner";
 	dir = 10
 	},
 /turf/simulated/floor/outdoors/rocks/caves,
@@ -55,7 +51,6 @@
 /area/template_noop)
 "l" = (
 /obj/structure/fence/corner{
-	icon_state = "corner";
 	dir = 6
 	},
 /turf/simulated/floor/outdoors/rocks/caves,
@@ -74,7 +69,7 @@
 	},
 /obj/random/humanoidremains,
 /obj/random/medical/lite,
-/turf/simulated/floor/water/deep{
+/turf/simulated/floor/outdoors/water/deep{
 	outdoors = 0
 	},
 /area/template_noop)

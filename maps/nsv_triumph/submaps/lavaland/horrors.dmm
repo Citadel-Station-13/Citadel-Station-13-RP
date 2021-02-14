@@ -1,13 +1,13 @@
-"m" = (/obj/effect/decal/cleanable/blood,/turf/simulated/floor/outdoors/lavaland,/area/triumph_away/lavaland/horrors)
-"o" = (/obj/effect/decal/cleanable/blood/gibs,/obj/structure/table/bench/sifwooden/padded,/turf/simulated/floor/outdoors/lavaland,/area/triumph_away/lavaland/horrors)
-"p" = (/obj/effect/decal/cleanable/blood,/obj/effect/decal/cleanable/blood,/turf/simulated/floor/outdoors/lavaland,/area/triumph_away/lavaland/horrors)
+"m" = (/obj/effect/decal/cleanable/blood,/turf/simulated/floor/outdoors/lavaland,/area/lavaland/horrors)
+"o" = (/obj/effect/decal/cleanable/blood/gibs,/obj/structure/table/bench/sifwooden/padded,/turf/simulated/floor/outdoors/lavaland,/area/lavaland/horrors)
+"p" = (/obj/effect/decal/cleanable/blood,/obj/effect/decal/cleanable/blood,/turf/simulated/floor/outdoors/lavaland,/area/lavaland/horrors)
 "u" = (/turf/template_noop,/area/template_noop)
-"x" = (/obj/structure/statue/gold/rd,/turf/simulated/floor/outdoors/lavaland,/area/triumph_away/lavaland/horrors)
+"x" = (/obj/structure/statue/gold/rd,/turf/simulated/floor/outdoors/lavaland,/area/lavaland/horrors)
 "M" = (/turf/simulated/floor/outdoors/lavaland,/area/template_noop)
-"N" = (/turf/template_noop,/area/triumph_away/lavaland/horrors)
-"S" = (/obj/item/flame/candle/candelabra/everburn,/turf/simulated/floor/outdoors/lavaland,/area/triumph_away/lavaland/horrors)
-"Y" = (/obj/effect/decal/cleanable/blood/gibs,/obj/effect/decal/cleanable/blood,/obj/structure/table/bench/sifwooden/padded,/turf/simulated/floor/outdoors/lavaland,/area/triumph_away/lavaland/horrors)
-"Z" = (/turf/simulated/floor/outdoors/lavaland,/area/triumph_away/lavaland/horrors)
+"N" = (/turf/template_noop,/area/lavaland/horrors)
+"S" = (/obj/item/flame/candle/candelabra/everburn,/turf/simulated/floor/outdoors/lavaland,/area/lavaland/horrors)
+"Y" = (/obj/effect/decal/cleanable/blood/gibs,/obj/effect/decal/cleanable/blood,/obj/structure/table/bench/sifwooden/padded,/turf/simulated/floor/outdoors/lavaland,/area/lavaland/horrors)
+"Z" = (/turf/simulated/floor/outdoors/lavaland,/area/lavaland/horrors)
 
 (1,1,1) = {"
 uuuuuuuuuuuuuuu

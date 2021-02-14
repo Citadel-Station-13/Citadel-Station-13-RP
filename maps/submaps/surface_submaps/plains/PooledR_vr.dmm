@@ -51,7 +51,7 @@
 /turf/template_noop,
 /area/submap/PooledR)
 "n" = (
-/turf/simulated/floor/water/deep,
+/turf/simulated/floor/outdoors/water/deep,
 /area/submap/PooledR)
 
 (1,1,1) = {"
