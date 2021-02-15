@@ -1,4 +1,4 @@
-[icon2html(thing = src, target = usr)]/obj/item/eftpos
+/obj/item/eftpos
 	name = "\improper EFTPOS scanner"
 	desc = "Swipe your ID card to make purchases electronically."
 	icon = 'icons/obj/device.dmi'
