@@ -57,7 +57,7 @@ nanoui is used to open and update nano browser uis
 	var/list/datum/nanoui/children = list()
 	var/datum/topic_state/state = null
 
-	var/static/datum/asset/simple/nanoui/namespaced/nano_asset
+	var/static/datum/asset/simple/namespaced/nanoui/nano_asset
 
  /**
   * Create a new nanoui instance.

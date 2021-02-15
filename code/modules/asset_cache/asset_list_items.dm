@@ -185,7 +185,7 @@
 
 	var/list/parent_dirs = list(
 		"nano/js/",
-		"nano/templates"
+		"nano/templates/"
 	)
 
 	var/list/filenames = null
