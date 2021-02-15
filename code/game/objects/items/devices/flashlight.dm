@@ -81,19 +81,23 @@
 		set_light(0)
 
 /obj/item/flashlight/examine(mob/user)
-	. = ..()
+	..()
 	if(power_use && brightness_level)
-		. += "\The [src] is set to [brightness_level]. "
+		var/tempdesc
+		tempdesc += "\The [src] is set to [brightness_level]. "
 		if(cell)
-			. += "\The [src] has a \the [cell] attached. "
+			tempdesc += "\The [src] has a \the [cell] attached. "
+
 			if(cell.charge <= cell.maxcharge*0.25)
-				. += "It appears to have a low amount of power remaining."
+				tempdesc += "It appears to have a low amount of power remaining."
 			else if(cell.charge > cell.maxcharge*0.25 && cell.charge <= cell.maxcharge*0.5)
-				. += "It appears to have an average amount of power remaining."
+				tempdesc += "It appears to have an average amount of power remaining."
 			else if(cell.charge > cell.maxcharge*0.5 && cell.charge <= cell.maxcharge*0.75)
-				. += "It appears to have an above average amount of power remaining."
+				tempdesc += "It appears to have an above average amount of power remaining."
 			else if(cell.charge > cell.maxcharge*0.75 && cell.charge <= cell.maxcharge)
-				. += "It appears to have a high amount of power remaining."
+				tempdesc += "It appears to have a high amount of power remaining."
+
+		to_chat(user, "[tempdesc]")
 
 /obj/item/flashlight/attack_self(mob/user)
 	if(power_use)

@@ -19,10 +19,11 @@
 		return temp_access
 
 /obj/item/card/id/guest/examine(mob/user)
+	..(user)
 	if (world.time < expiration_time)
-		. += "<span class='notice'>This pass expires at [worldtime2stationtime(expiration_time)].</span>"
+		to_chat(user, "<span class='notice'>This pass expires at [worldtime2stationtime(expiration_time)].</span>")
 	else
-		. += "<span class='warning'>It expired at [worldtime2stationtime(expiration_time)].</span>"
+		to_chat(user, "<span class='warning'>It expired at [worldtime2stationtime(expiration_time)].</span>")
 
 /obj/item/card/id/guest/read()
 	if(!Adjacent(usr))

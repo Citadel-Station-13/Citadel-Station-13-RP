@@ -57,9 +57,9 @@
 	return ..()
 
 /obj/item/weldingtool/examine(mob/user)
-	. = ..()
-	if(max_fuel)
-		. += "\icon[src] The [src.name] contains [get_fuel()]/[src.max_fuel] units of fuel!"
+	if(..(user, 0))
+		if(max_fuel)
+			to_chat(user, text("\icon[] The [] contains []/[] units of fuel!", src, src.name, get_fuel(),src.max_fuel ))
 
 /obj/item/weldingtool/attack(atom/A, mob/living/user, def_zone)
 	if(ishuman(A) && user.a_intent == INTENT_HELP)
@@ -550,14 +550,13 @@
 	return power_supply
 
 /obj/item/weldingtool/electric/examine(mob/user)
-	. = ..()
 	if(get_dist(src, user) > 1)
-		return
-	else					// The << need to stay, for some reason no they dont
+		to_chat(user, desc)
+	else					// The << need to stay, for some reason
 		if(power_supply)
-			. += "\icon[src] The [src] has [get_fuel()] charge left."
+			user << text("\icon[] The [] has [] charge left.", src, src.name, get_fuel())
 		else
-			. += "\icon[src] The [src] has no power cell!"
+			user << text("\icon[] The [] has no power cell!", src, src.name)
 
 /obj/item/weldingtool/electric/get_fuel()
 	if(use_external_power)

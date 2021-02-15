@@ -534,8 +534,9 @@
 	to_chat(user, "You flip the write-protect tab to [read_only ? "protected" : "unprotected"].")
 
 /obj/item/disk/data/examine(mob/user)
-	. = ..()
-	. += "<span class = 'notice'>The write-protect tab is set to [read_only ? "protected" : "unprotected"].</span>"
+	..(user)
+	to_chat(user, text("The write-protect tab is set to [read_only ? "protected" : "unprotected"]."))
+	return
 
 /*
  *	Diskette Box

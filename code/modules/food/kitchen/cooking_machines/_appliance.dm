@@ -73,13 +73,14 @@
 		qdel(CI)
 	return ..()
 
-/obj/machinery/appliance/examine(mob/user)
-	. = ..()
-	if(Adjacent(user))
+/obj/machinery/appliance/examine(var/mob/user)
+	..()
+	if(Adjacent(usr))
 		list_contents(user)
+		return 1
 
 /obj/machinery/appliance/proc/list_contents(var/mob/user)
-	if(cooking_objs.len)
+	if (cooking_objs.len)
 		var/string = "Contains..."
 		for (var/a in cooking_objs)
 			var/datum/cooking_item/CI = a

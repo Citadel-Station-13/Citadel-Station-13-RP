@@ -61,11 +61,11 @@ var/list/blobs = list()
 			return TRUE
 
 /obj/structure/blob/examine(mob/user)
-	. = ..()
+	..()
 	if(!overmind)
-		. += "It seems inert." // Dead blob.
+		to_chat(user, "It seems inert.") // Dead blob.
 	else
-		. += overmind.blob_type.desc
+		to_chat(user, overmind.blob_type.desc)
 
 /obj/structure/blob/get_description_info()
 	if(overmind)

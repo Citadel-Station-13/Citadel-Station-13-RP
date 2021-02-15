@@ -87,9 +87,9 @@
 	. = ..()
 	var/biomass = get_biomass_volume()
 	if(biomass)
-		. +="<span class='notice'>It is loaded with [biomass] units of biomass.</span>"
+		to_chat(user, "<span class='notice'>It is loaded with [biomass] units of biomass.</span>")
 	else
-		. += "<span class='notice'>It is not loaded with any biomass.</span>"
+		to_chat(user, "<span class='notice'>It is not loaded with any biomass.</span>")
 
 /obj/machinery/organ_printer/RefreshParts()
 	// Print Delay updating

@@ -15,12 +15,13 @@
 	pickup_sound = 'sound/items/pickup/glass.ogg'
 
 
-/obj/item/reagent_containers/dropper/examine(mob/user)
-	. = ..()
+/obj/item/reagent_containers/dropper/examine(var/mob/user)
+	if(!..(user, 2))
+		return
 	if(reagents && reagents.reagent_list.len)
-		. += "<span class='notice'>It contains [reagents.total_volume] units of liquid.</span>"
+		to_chat(user, "<span class='notice'>It contains [reagents.total_volume] units of liquid.</span>")
 	else
-		. += "<span class='notice'>It is empty.</span>"
+		to_chat(user, "<span class='notice'>It is empty.</span>")
 
 /obj/item/reagent_containers/dropper/afterattack(var/obj/target, var/mob/user, var/proximity)
 	if(!target.reagents || !proximity) return

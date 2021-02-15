@@ -73,17 +73,18 @@
 	playsound(user.loc, 'sound/items/drink.ogg', rand(10, 50), 1)
 
 /obj/item/reagent_containers/food/drinks/examine(mob/user)
-	. = ..()
+	if(!..(user, 1))
+		return
 	if(!reagents || reagents.total_volume == 0)
-		. += "<span class='notice'>\The [src] is empty!</span>"
+		to_chat(user, "<span class='notice'>\The [src] is empty!</span>")
 	else if (reagents.total_volume <= volume * 0.25)
-		. += "<span class='notice'>\The [src] is almost empty!</span>"
+		to_chat(user, "<span class='notice'>\The [src] is almost empty!</span>")
 	else if (reagents.total_volume <= volume * 0.66)
-		. += "<span class='notice'>\The [src] is half full!</span>"
+		to_chat(user, "<span class='notice'>\The [src] is half full!</span>")
 	else if (reagents.total_volume <= volume * 0.90)
-		. += "<span class='notice'>\The [src] is almost full!</span>"
+		to_chat(user, "<span class='notice'>\The [src] is almost full!</span>")
 	else
-		. += "<span class='notice'>\The [src] is full!</span>"
+		to_chat(user, "<span class='notice'>\The [src] is full!</span>")
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -325,3 +326,4 @@
 
 /obj/item/reagent_containers/food/drinks/britcup/on_reagent_change()
 	..()
+

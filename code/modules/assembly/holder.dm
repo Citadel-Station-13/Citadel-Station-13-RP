@@ -85,12 +85,12 @@
 */
 
 /obj/item/assembly_holder/examine(mob/user)
-	. = ..()
+	..(user)
 	if ((in_range(src, user) || src.loc == user))
 		if (src.secured)
-			. += "\The [src] is ready!"
+			to_chat(user, "\The [src] is ready!")
 		else
-			. += "\The [src] can be attached!"
+			to_chat(user, "\The [src] can be attached!")
 	return
 
 

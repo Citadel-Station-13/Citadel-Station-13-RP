@@ -112,18 +112,20 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 	return 1
 
 /obj/structure/particle_accelerator/examine(mob/user)
-	. = ..()
 	switch(src.construction_state)
 		if(0)
-			. += "A [name], looks like it's not attached to the flooring."
+			src.desc = text("A [name], looks like it's not attached to the flooring")
 		if(1)
-			. += "A [name], it is missing some cables."
+			src.desc = text("A [name], it is missing some cables")
 		if(2)
-			. += "A [name], the panel is open."
+			src.desc = text("A [name], the panel is open")
 		if(3)
-			. += "The [name] is assembled."
+			src.desc = text("The [name] is assembled")
 			if(powered)
-				. += desc_holder
+				src.desc = src.desc_holder
+	..()
+	return
+
 
 /obj/structure/particle_accelerator/attackby(obj/item/W, mob/user)
 	if(istool(W))
@@ -290,18 +292,19 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 	return
 
 /obj/machinery/particle_accelerator/examine(mob/user)
-	. = ..()
 	switch(src.construction_state)
 		if(0)
-			. += "A [name], looks like it's not attached to the flooring."
+			src.desc = text("A [name], looks like it's not attached to the flooring")
 		if(1)
-			. += "A [name], it is missing some cables."
+			src.desc = text("A [name], it is missing some cables")
 		if(2)
-			. += "A [name], the panel is open."
+			src.desc = text("A [name], the panel is open")
 		if(3)
-			. += "The [name] is assembled."
+			src.desc = text("The [name] is assembled")
 			if(powered)
-				. += desc_holder
+				src.desc = src.desc_holder
+	..()
+	return
 
 
 /obj/machinery/particle_accelerator/attackby(obj/item/W, mob/user)

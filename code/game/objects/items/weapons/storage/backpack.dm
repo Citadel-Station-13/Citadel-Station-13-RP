@@ -369,12 +369,13 @@
 	max_storage_space = ITEMSIZE_COST_NORMAL * 5
 
 /obj/item/storage/backpack/parachute/examine(mob/user)
-	. = ..()
+	var/msg = desc
 	if(get_dist(src, user) <= 1)
 		if(parachute)
-			. += " It seems to be packed."
+			msg += " It seems to be packed."
 		else
-			. += " It seems to be unpacked."
+			msg += " It seems to be unpacked."
+	to_chat(user, msg)
 
 /obj/item/storage/backpack/parachute/handleParachute()
 	parachute = FALSE	//If you parachute in, the parachute has probably been used.

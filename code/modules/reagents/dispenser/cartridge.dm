@@ -22,14 +22,14 @@
 		setLabel(R.name)
 
 /obj/item/reagent_containers/chem_disp_cartridge/examine(mob/user)
-	. = ..()
-	. += "It has a capacity of [volume] units."
+	..()
+	to_chat(user, "It has a capacity of [volume] units.")
 	if(reagents.total_volume <= 0)
-		. += "It is empty."
+		to_chat(user, "It is empty.")
 	else
-		. += "It contains [reagents.total_volume] units of liquid."
+		to_chat(user, "It contains [reagents.total_volume] units of liquid.")
 	if(!is_open_container())
-		. += "The cap is sealed."
+		to_chat(user, "The cap is sealed.")
 
 /obj/item/reagent_containers/chem_disp_cartridge/verb/verb_set_label(L as text)
 	set name = "Set Cartridge Label"

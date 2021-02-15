@@ -30,10 +30,10 @@
 			if(81 to 100)
 				overlays += "bees3"
 
-/obj/machinery/beehive/examine(mob/user)
-	. = ..()
+/obj/machinery/beehive/examine(var/mob/user)
+	..()
 	if(!closed)
-		. += "The lid is open."
+		to_chat(user, "The lid is open.")
 
 /obj/machinery/beehive/attackby(var/obj/item/I, var/mob/user)
 	if(I.is_crowbar())

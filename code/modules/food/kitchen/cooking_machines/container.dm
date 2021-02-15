@@ -22,14 +22,14 @@
 
 
 /obj/item/reagent_containers/cooking_container/examine(var/mob/user)
-	. = ..()
+	..()
 	if (contents.len)
 		var/string = "It contains....</br>"
 		for (var/atom/movable/A in contents)
 			string += "[A.name] </br>"
-		. += string
+		user << span("notice", string)
 	if (reagents.total_volume)
-		. += "<span class = 'notice'>It contains [reagents.total_volume]u of reagents.</span>"
+		user << span("notice", "It contains [reagents.total_volume]u of reagents.")
 
 
 /obj/item/reagent_containers/cooking_container/attackby(var/obj/item/I as obj, var/mob/user as mob)

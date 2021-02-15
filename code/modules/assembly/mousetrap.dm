@@ -8,9 +8,9 @@
 
 
 /obj/item/assembly/mousetrap/examine(mob/user)
-	. = ..()
+	..(user)
 	if(armed)
-		. += "It looks like it's armed."
+		to_chat(user, "It looks like it's armed.")
 
 /obj/item/assembly/mousetrap/update_icon()
 	if(armed)

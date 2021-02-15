@@ -39,10 +39,12 @@
 		overlays.Cut()
 
 /obj/machinery/cell_charger/examine(mob/user)
-	. = ..()
-	. += "<span class = 'notice'>[charging ? "[charging]" : "Nothing"] is in [src].</span>"
+	if(!..(user, 5))
+		return
+
+	to_chat(user, "[charging ? "[charging]" : "Nothing"] is in [src].")
 	if(charging)
-		. += "<span class = 'notice'>Current charge: [charging.charge] / [charging.maxcharge]</span>"
+		to_chat(user, "Current charge: [charging.charge] / [charging.maxcharge]")
 
 /obj/machinery/cell_charger/attackby(obj/item/W, mob/user)
 	if(stat & BROKEN)

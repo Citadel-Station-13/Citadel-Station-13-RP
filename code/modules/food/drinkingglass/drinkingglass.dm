@@ -27,22 +27,22 @@
 
 	matter = list("glass" = 60)
 
-/obj/item/reagent_containers/food/drinks/glass2/examine(mob/user)
-	. = ..()
+/obj/item/reagent_containers/food/drinks/glass2/examine(mob/M as mob)
+	..()
 
 	for(var/I in extras)
 		if(istype(I, /obj/item/glass_extra))
-			. += "There is \a [I] in \the [src]."
+			to_chat(M, "There is \a [I] in \the [src].")
 		else if(istype(I, /obj/item/reagent_containers/food/snacks/fruit_slice))
-			. += "There is \a [I] on the rim."
+			to_chat(M, "There is \a [I] on the rim.")
 		else
-			. += "There is \a [I] somewhere on the glass. Somehow."
+			to_chat(M, "There is \a [I] somewhere on the glass. Somehow.")
 
 	if(has_ice())
-		. += "There is some ice floating in the drink."
+		to_chat(M, "There is some ice floating in the drink.")
 
 	if(has_fizz())
-		. += "It is fizzing slightly."
+		to_chat(M, "It is fizzing slightly.")
 
 /obj/item/reagent_containers/food/drinks/glass2/proc/has_ice()
 	if(reagents.reagent_list.len > 0)

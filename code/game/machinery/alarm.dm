@@ -784,6 +784,8 @@
 	spawn(rand(0,15))
 		update_icon()
 
+/obj/machinery/alarm/examine(mob/user)
+	..(user)
 /*
 AIR ALARM CIRCUIT
 Just a object used in constructing air alarms

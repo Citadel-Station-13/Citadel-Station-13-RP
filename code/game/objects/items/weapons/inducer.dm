@@ -245,12 +245,14 @@
 
 /obj/item/inducer/examine(mob/living/M)
 	. = ..()
+	var/dat = ""
 	if(cell)
-		. += "<br><span class='notice'>Its display shows: [round(cell.charge)] / [cell.maxcharge].</span>"
+		dat += "<br><span class='notice'>Its display shows: [round(cell.charge)] / [cell.maxcharge].</span>"
 	else
-		. += "<br><span class='notice'>Its display is dark.</span>"
+		dat += "<br><span class='notice'>Its display is dark.</span>"
 	if(opened)
-		. += "<br><span class='notice'>Its battery compartment is open.</span>"
+		dat += "<br><span class='notice'>Its battery compartment is open.</span>"
+	to_chat(M, dat)
 
 /obj/item/inducer/update_icon()
 	..()

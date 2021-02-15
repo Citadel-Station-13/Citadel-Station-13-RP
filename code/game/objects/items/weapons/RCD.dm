@@ -73,8 +73,12 @@
 
 
 /obj/item/rcd/examine(mob/user)
-	. = ..()
-	. += "It currently holds [stored_matter]/[max_stored_matter] matter-units."
+	..()
+	to_chat(user, display_resources())
+
+// Used to show how much stuff (matter units, cell charge, etc) is left inside.
+/obj/item/rcd/proc/display_resources()
+	return "It currently holds [stored_matter]/[max_stored_matter] matter-units."
 
 // Used to add new cartridges.
 /obj/item/rcd/attackby(obj/item/W, mob/user)
@@ -307,7 +311,7 @@
 /obj/item/rcd/electric/update_icon()
 	return
 
-/obj/item/rcd/electric/proc/display_resources()
+/obj/item/rcd/electric/display_resources()
 	var/obj/item/cell/cell = get_cell()
 	if(cell)
 		return "The power source connected to \the [src] has a charge of [cell.percent()]%."
@@ -401,6 +405,9 @@
 		return FALSE
 	return ..()
 
+/obj/item/rcd/debug/display_resources()
+	return "It has UNLIMITED POWER!"
+
 
 
 // Ammo for the (non-electric) RCDs.
@@ -429,8 +436,12 @@
 	remaining = RCD_MAX_CAPACITY
 
 /obj/item/rcd_ammo/examine(mob/user)
-	. = ..()
-	. += "It currently holds [remaining]/[initial(remaining)] matter-units."
+	..()
+	to_chat(user, display_resources())
+
+// Used to show how much stuff (matter units, cell charge, etc) is left inside.
+/obj/item/rcd_ammo/proc/display_resources()
+	return "It currently holds [remaining]/[initial(remaining)] matter-units."
 
 // RCD Construction Effects
 
@@ -487,3 +498,4 @@
 
 /obj/effect/constructing_effect/proc/end()
 	qdel(src)
+

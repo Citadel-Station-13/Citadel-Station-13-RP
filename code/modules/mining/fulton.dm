@@ -25,9 +25,9 @@ var/global/list/total_extraction_beacons = list()
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "phoroncrate"
 
-/obj/item/extraction_pack/examine(mob/user)
+/obj/item/extraction_pack/examine()
 	. = ..()
-	. +="It has [uses_left] use\s remaining."
+	usr.show_message("It has [uses_left] use\s remaining.", 1)
 
 /obj/item/extraction_pack/attack_self(mob/user)
 	var/list/possible_beacons = list()

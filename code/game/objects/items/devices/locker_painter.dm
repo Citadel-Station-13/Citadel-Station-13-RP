@@ -125,8 +125,8 @@
 		choose_colour_secure()
 
 /obj/item/closet_painter/examine(mob/user)
-	. = ..()
-	. += "<span class = 'notice'>It is configured to produce the '[colour]' paint scheme or the '[colour_secure]' secure closet paint scheme.</span>"
+	..(user)
+	to_chat(user, "It is configured to produce the '[colour]' paint scheme or the '[colour_secure]' secure closet paint scheme.")
 
 /obj/item/closet_painter/verb/choose_colour()
 	set name = "Choose Colour"

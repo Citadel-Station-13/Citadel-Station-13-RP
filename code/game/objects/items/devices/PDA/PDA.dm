@@ -65,8 +65,8 @@ GLOBAL_LIST_EMPTY(PDAs)
 	var/obj/item/paicard/pai = null	// A slot for a personal AI device
 
 /obj/item/pda/examine(mob/user)
-	. = ..()
-	. += "The time [stationtime2text()] is displayed in the corner of the screen."
+	if(..(user, 1))
+		to_chat(user, "The time [stationtime2text()] is displayed in the corner of the screen.")
 
 /obj/item/pda/CtrlClick()
 	if (issilicon(usr))

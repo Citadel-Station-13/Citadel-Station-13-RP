@@ -210,11 +210,11 @@
 		syringe.reagents.trans_to_mob(H, 30, CHEM_BLOOD)
 
 /obj/structure/closet/body_bag/cryobag/examine(mob/user)
-	. = ..()
+	..()
 	if(Adjacent(user)) //The bag's rather thick and opaque from a distance.
-		. += "<span class='info'>You peer into \the [src].</span>"
+		to_chat(user, "<span class='info'>You peer into \the [src].</span>")
 		if(syringe)
-			. += "<span class='info'>It has a syringe added to it.</span>"
+			to_chat(user, "<span class='info'>It has a syringe added to it.</span>")
 		for(var/mob/living/L in contents)
 			L.examine(user)
 

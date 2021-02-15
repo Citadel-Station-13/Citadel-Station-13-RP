@@ -598,15 +598,16 @@ obj/structure/cable/proc/cableColor(var/colorC)
 		w_class = ITEMSIZE_SMALL
 
 /obj/item/stack/cable_coil/examine(mob/user)
-	. = ..()
+	var/msg = ""
 
 	if(get_amount() == 1)
-		. += "A short piece of power cable."
+		msg += "A short piece of power cable."
 	else if(get_amount() == 2)
-		. += "A piece of power cable."
+		msg += "A piece of power cable."
 	else
-		. += "A coil of power cable. There are [get_amount()] lengths of cable in the coil."
+		msg += "A coil of power cable. There are [get_amount()] lengths of cable in the coil."
 
+	to_chat(user, msg)
 
 
 /obj/item/stack/cable_coil/verb/make_restraint()
@@ -976,7 +977,10 @@ obj/structure/cable/proc/cableColor(var/colorC)
 /obj/item/stack/cable_coil/alien/update_wclass()
 	return 0
 
+/obj/item/stack/cable_coil/alien/examine(mob/user)
+	var/msg = "A spool of cable. It doesn't seem to have a beginning, or an end."
 
+	to_chat(user, msg)
 
 /obj/item/stack/cable_coil/alien/attack_hand(mob/user as mob)
 	if (user.get_inactive_hand() == src)

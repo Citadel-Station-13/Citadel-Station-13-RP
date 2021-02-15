@@ -149,9 +149,9 @@
 /obj/machinery/oxygen_pump/examine(var/mob/user)
 	. = ..()
 	if(tank)
-		. += "<span class = 'notice'>The meter shows [round(tank.air_contents.return_pressure())] kPa.</span>"
+		to_chat(user, "The meter shows [round(tank.air_contents.return_pressure())] kPa.")
 	else
-		. += "<span class='warning'>It is missing a tank!</span>"
+		to_chat(user, "<span class='warning'>It is missing a tank!</span>")
 
 
 /obj/machinery/oxygen_pump/process()

@@ -25,12 +25,14 @@
 	. = ..()
 
 /obj/structure/reagent_dispensers/examine(mob/user)
+	if(!..(user, 2))
+		return
 	to_chat(user, "<span class='notice'>It contains:</span>")
 	if(reagents && reagents.reagent_list.len)
 		for(var/datum/reagent/R in reagents.reagent_list)
-			. += "<span class='notice'>[R.volume] units of [R.name]</span>"
+			to_chat(user, "<span class='notice'>[R.volume] units of [R.name]</span>")
 	else
-		. += "<span class='notice'>Nothing.</span>"
+		to_chat(user, "<span class='notice'>Nothing.</span>")
 
 /obj/structure/reagent_dispensers/verb/set_APTFT() //set amount_per_transfer_from_this
 	set name = "Set transfer amount"
@@ -98,11 +100,12 @@
 	reagents.add_reagent("fuel",1000)
 
 /obj/structure/reagent_dispensers/fueltank/examine(mob/user)
-	. = ..()
+	if(!..(user, 2))
+		return
 	if (modded)
-		. += "<span class='warning'>THe fuel faucet is wrenched open, leaking the fuel!</span>"
+		to_chat(user, "<span class='warning'>Fuel faucet is wrenched open, leaking the fuel!</span>")
 	if(rig)
-		. += "<span class='notice'>There is some kind of device rigged to the tank.</span>"
+		to_chat(user, "<span class='notice'>There is some kind of device rigged to the tank.</span>")
 
 /obj/structure/reagent_dispensers/fueltank/attack_hand()
 	if (rig)
@@ -233,7 +236,7 @@
 /obj/structure/reagent_dispensers/water_cooler/examine(mob/user)
 	..()
 	if(cupholder)
-		. += "<span class='notice'>There are [cups] cups in the cup dispenser.</span>"
+		to_chat(user, "<span class='notice'>There are [cups] cups in the cup dispenser.</span>")
 
 /obj/structure/reagent_dispensers/water_cooler/attackby(obj/item/I as obj, mob/user as mob)
 	if(I.is_wrench())

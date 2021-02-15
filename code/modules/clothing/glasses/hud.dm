@@ -171,7 +171,6 @@
 	icon = 'icons/obj/clothing/glasses.dmi'
 	icon_override = null
 	icon_state = "purple"
-	clothing_flags = SCAN_REAGENTS
 
 /obj/item/clothing/glasses/omnihud/eng/meson
 	name = "meson scanner HUD"

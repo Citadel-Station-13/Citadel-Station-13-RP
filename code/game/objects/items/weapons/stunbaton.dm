@@ -104,11 +104,13 @@
 		set_light(0)
 
 /obj/item/melee/baton/examine(mob/user)
-	. = ..()
+	if(!..(user, 1))
+		return
+
 	if(bcell)
-		. += "<span class='notice'>The baton is [round(bcell.percent())]% charged.</span>"
+		user <<"<span class='notice'>The baton is [round(bcell.percent())]% charged.</span>"
 	if(!bcell)
-		. += "<span class='warning'>The baton does not have a power source installed.</span>"
+		to_chat(user, "<span class='warning'>The baton does not have a power source installed.</span>")
 
 /obj/item/melee/baton/attackby(obj/item/W, mob/user)
 	if(use_external_power)

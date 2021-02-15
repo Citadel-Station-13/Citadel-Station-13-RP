@@ -151,10 +151,7 @@
 	flags |= NOBLUDGEON
 
 /obj/item/duct_tape_piece/examine(mob/user)
-	if(stuck)
-		return stuck.examine(user)
-	else
-		..()
+	return stuck.examine(user)
 
 /obj/item/duct_tape_piece/proc/attach(var/obj/item/W)
 	stuck = W

@@ -27,9 +27,9 @@
 	var/obj/item/clothing/accessory/badge/corptag	// The tag on the bag.
 
 /obj/structure/closet/body_bag/cryobag/robobag/examine(mob/user)
-	. = ..()
+	..()
 	if(Adjacent(user) && corptag)
-		. += "<span class='notice'>\The [src] has a [corptag] attached to it.</span>"
+		to_chat(user, "<span class='notice'>\The [src] has a [corptag] attached to it.</span>")
 
 /obj/structure/closet/body_bag/cryobag/robobag/update_icon()
 	overlays.Cut()

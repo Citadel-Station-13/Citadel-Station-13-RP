@@ -188,11 +188,11 @@
 	return
 
 /obj/item/gun/projectile/automatic/z8/examine(mob/user)
-	. = ..()
+	..()
 	if(launcher.chambered)
-		. += "\The [launcher] has \a [launcher.chambered] loaded."
+		to_chat(user, "\The [launcher] has \a [launcher.chambered] loaded.")
 	else
-		. += "\The [launcher] is empty."
+		to_chat(user, "\The [launcher] is empty.")
 
 /obj/item/gun/projectile/automatic/l6_saw
 	name = "light machine gun"

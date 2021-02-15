@@ -244,9 +244,7 @@
 				. += "Nothing."
 		else
 			. += "<span class='danger'>You can't see inside.</span>"
-
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
-
 // called by mobs when e.g. having the atom as their machine, pulledby, loc (AKA mob being inside the atom) or buckled var set.
 // see code/modules/mob/mob_movement.dm for more.
 /atom/proc/relaymove()

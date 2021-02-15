@@ -71,16 +71,17 @@
 	// Good to go.
 	return 1
 
-/obj/item/computer_hardware/examine(mob/user)
+/obj/item/computer_hardware/examine(var/mob/user)
 	. = ..()
 	if(damage > damage_failure)
-		. += "<span class='danger'>It seems to be severely damaged!</span>"
+		to_chat(user, "<span class='danger'>It seems to be severely damaged!</span>")
 	else if(damage > damage_malfunction)
-		. += "<span class='notice'>It seems to be damaged!</span>"
+		to_chat(user, "<span class='notice'>It seems to be damaged!</span>")
 	else if(damage)
-		. += "It seems to be slightly damaged."
+		to_chat(user, "It seems to be slightly damaged.")
 
 // Damages the component. Contains necessary checks. Negative damage "heals" the component.
 /obj/item/computer_hardware/take_damage(var/amount)
 	damage += round(amount) 					// We want nice rounded numbers here.
 	damage = between(0, damage, max_damage)		// Clamp the value.
+

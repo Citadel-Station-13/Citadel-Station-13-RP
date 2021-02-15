@@ -33,11 +33,11 @@
 	..()
 
 /obj/item/slime_extract/examine(mob/user)
-	. = ..()
+	..()
 	if(uses)
-		. += "This extract has [uses] more use\s."
+		to_chat(user, "This extract has [uses] more use\s.")
 	else
-		. += "This extract is inert."
+		to_chat(user, "This extract is inert.")
 
 /datum/chemical_reaction/slime
 	var/required = null
@@ -997,3 +997,13 @@
 /datum/chemical_reaction/slime/rainbow_unity/on_reaction(var/datum/reagents/holder)
 	new /obj/item/slimepotion/unity(get_turf(holder.my_atom))
 	..()
+
+/datum/chemical_reaction/slime/sapphire_mutation//Was in chemistry-reagents_vr.dm
+	name = "Slime Mutation Toxins"
+	id = "slime_mutation_tox"
+	result = "mutationtoxin"
+	required_reagents = list("blood" = 5)
+	result_amount = 30
+	required = /obj/item/slime_extract/sapphire
+
+

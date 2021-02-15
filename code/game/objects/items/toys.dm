@@ -401,8 +401,8 @@
 		return
 
 /obj/item/toy/waterflower/examine(mob/user)
-	. = ..()
-	. += "[src] has [src.reagents.total_volume] units of water left!"
+	if(..(user, 0))
+		user << text("\icon[] [] units of water left!", src, src.reagents.total_volume)
 
 /*
  * Bosun's whistle

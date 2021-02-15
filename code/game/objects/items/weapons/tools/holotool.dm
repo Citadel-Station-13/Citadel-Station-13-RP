@@ -62,8 +62,8 @@
 		stored_modules |= new module(src)
 
 /obj/item/switchtool/examine()
-	. = ..()
-	. += "This one is capable of holding [get_formatted_modules()]."
+	..()
+	to_chat(usr, "This one is capable of holding [get_formatted_modules()].")
 
 /obj/item/switchtool/attack_self(mob/user)
 	if(!user)

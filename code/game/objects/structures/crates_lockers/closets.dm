@@ -65,22 +65,21 @@
 	return
 
 /obj/structure/closet/examine(mob/user)
-	. = ..()
-	if(!opened)
+	if(..(user, 1) && !opened)
 		var/content_size = 0
 		for(var/obj/item/I in src.contents)
 			if(!I.anchored)
 				content_size += CEILING(I.w_class/2, 1)
 		if(!content_size)
-			. += "It is empty."
+			to_chat(user, "It is empty.")
 		else if(storage_capacity > content_size*4)
-			. += "It is barely filled."
+			to_chat(user, "It is barely filled.")
 		else if(storage_capacity > content_size*2)
-			. += "It is less than half full."
+			to_chat(user, "It is less than half full.")
 		else if(storage_capacity > content_size)
-			. += "There is still some free space."
+			to_chat(user, "There is still some free space.")
 		else
-			. += "It is full."
+			to_chat(user, "It is full.")
 
 /obj/structure/closet/CanAllowThrough(atom/movable/mover, turf/target)
 	if(wall_mounted)

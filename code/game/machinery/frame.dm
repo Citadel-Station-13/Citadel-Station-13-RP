@@ -210,9 +210,9 @@
 	density = TRUE
 
 /obj/structure/frame/examine(mob/user)
-	. = ..()
+	..()
 	if(circuit)
-		. += "It has \a [circuit] installed."
+		to_chat(user, "It has \a [circuit] installed.")
 
 /obj/structure/frame/proc/update_desc()
 	var/D

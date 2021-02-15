@@ -86,7 +86,8 @@
 	playsound(src, 'sound/misc/buzzbeep.ogg', 50, 1)
 
 /obj/item/mmi/digital/posibrain/examine(mob/user)
-	. = ..()
+	if(!..(user))
+		return
 
 	var/msg = "<span class='info'>*---------*</span>\nThis is \icon[src] \a <EM>[src]</EM>!\n[desc]\n"
 	msg += "<span class='warning'>"
@@ -100,7 +101,7 @@
 	else
 		msg += "<span class='deadsay'>It appears to be completely inactive.</span>\n"
 	msg += "</span><span class='info'>*---------*</span>"
-	. += msg
+	user << msg
 	return
 
 /obj/item/mmi/digital/posibrain/emp_act(severity)

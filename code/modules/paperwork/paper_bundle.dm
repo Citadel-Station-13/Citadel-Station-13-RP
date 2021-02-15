@@ -97,11 +97,10 @@
 				to_chat(user, "<font color='red'>You must hold \the [P] steady to burn \the [src].</font>")
 
 /obj/item/paper_bundle/examine(mob/user)
-	. = ..()
-	if(Adjacent(user))
+	if(..(user, 1))
 		src.show_content(user)
 	else
-		. += "<span class='notice'>It is too far away.</span>"
+		to_chat(user, "<span class='notice'>It is too far away.</span>")
 	return
 
 /obj/item/paper_bundle/proc/show_content(mob/user as mob)

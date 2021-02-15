@@ -81,8 +81,8 @@
 		src.startgibbing(user)
 
 /obj/machinery/gibber/examine()
-	. = ..()
-	. += "The safety guard is [emagged ? "<span class='danger'>disabled</span>" : "enabled"]."
+	..()
+	to_chat(usr, "The safety guard is [emagged ? "<span class='danger'>disabled</span>" : "enabled"].")
 
 /obj/machinery/gibber/emag_act(var/remaining_charges, var/mob/user)
 	emagged = !emagged
@@ -232,3 +232,5 @@
 			thing.throw_at(get_edge_target_turf(src,gib_throw_dir),rand(0,3),emagged ? 100 : 50) // Being pelted with bits of meat and bone would hurt.
 
 		update_icon()
+
+

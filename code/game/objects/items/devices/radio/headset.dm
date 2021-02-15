@@ -43,12 +43,11 @@
 	return list_secure_channels()
 
 /obj/item/radio/headset/examine(mob/user)
-	. = ..()
-	if(!radio_desc)
+	if(!(..(user, 1) && radio_desc))
 		return
 
-	. += "The following channels are available:"
-	. += radio_desc
+	to_chat(user, "The following channels are available:")
+	to_chat(user, radio_desc)
 
 /obj/item/radio/headset/handle_message_mode(mob/living/M as mob, message, channel)
 	if (channel == "special")

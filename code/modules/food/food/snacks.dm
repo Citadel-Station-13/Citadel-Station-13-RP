@@ -149,17 +149,18 @@
 	return 0
 
 /obj/item/reagent_containers/food/snacks/examine(mob/user)
-	. = ..()
+	if(!..(user, 1))
+		return
 	if (coating) // BEGIN CITADEL CHANGE
-		. += "<span class='notice'>It's coated in [coating.name]!</span>"
+		to_chat(user, "<span class='notice'>It's coated in [coating.name]!</span>") // END CITADEL CHANGE
 	if (bitecount==0)
 		return
 	else if (bitecount==1)
-		. += "<font color='blue'>\The [src] was bitten by someone!</font>"
+		to_chat(user, "<font color='blue'>\The [src] was bitten by someone!</font>")
 	else if (bitecount<=3)
-		. += "<font color='blue'>\The [src] was bitten [bitecount] times!</font>"
+		to_chat(user, "<font color='blue'>\The [src] was bitten [bitecount] times!</font>")
 	else
-		. += "<font color='blue'>\The [src] was bitten multiple times!</font>"
+		to_chat(user, "<font color='blue'>\The [src] was bitten multiple times!</font>")
 
 /obj/item/reagent_containers/food/snacks/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/storage))

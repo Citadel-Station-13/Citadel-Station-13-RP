@@ -267,15 +267,15 @@
 			qdel(src)
 
 /obj/machinery/power/emitter/examine(mob/user)
-	. = ..()
+	..()
 	var/integrity_percentage = round((integrity / initial(integrity)) * 100)
 	switch(integrity_percentage)
 		if(0 to 30)
-			. += "<span class='danger'>\The [src] is close to falling apart!</span>"
+			to_chat(user, "<span class='danger'>\The [src] is close to falling apart!</span>")
 		if(31 to 70)
-			. += "<span class='danger'>\The [src] is damaged.</span>"
+			to_chat(user, "<span class='danger'>\The [src] is damaged.</span>")
 		if(77 to 99)
-			. += "<span class='warning'>\The [src] is slightly damaged.</span>"
+			to_chat(user, "<span class='warning'>\The [src] is slightly damaged.</span>")
 
 //R-UST port
 /obj/machinery/power/emitter/proc/get_initial_fire_delay()

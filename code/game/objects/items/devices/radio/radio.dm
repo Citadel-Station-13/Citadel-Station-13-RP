@@ -554,9 +554,9 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	. = ..()
 	if ((in_range(src, user) || loc == user))
 		if (b_stat)
-			. += "<span class='notice'>\The [src] can be attached and modified!</span>"
+			user.show_message("<span class='notice'>\The [src] can be attached and modified!</span>")
 		else
-			. += "<span class='notice'>\The [src] can not be modified or attached!</span>"
+			user.show_message("<span class='notice'>\The [src] can not be modified or attached!</span>")
 	return
 
 /obj/item/radio/attackby(obj/item/W as obj, mob/user as mob)

@@ -214,22 +214,22 @@
 	attack_same = FALSE
 
 /mob/living/simple_animal/slime/examine(mob/user)
-	. = ..()
+	..()
 	if(hat)
-		. += "It is wearing \a [hat]." //slime hat. slat? hlime?
+		to_chat(user, "It is wearing \a [hat].")
 
 	if(stat == DEAD)
-		. += "It appears to be dead."
+		to_chat(user, "It appears to be dead.")
 	else if(incapacitated(INCAPACITATION_DISABLED))
-		. += "It appears to be incapacitated."
+		to_chat(user, "It appears to be incapacitated.")
 	else if(rabid)
-		. += "It seems very, very angry and upset."
+		to_chat(user, "It seems very, very angry and upset.")
 	else if(obedience >= 5)
-		. += "It looks rather obedient."
+		to_chat(user, "It looks rather obedient.")
 	else if(discipline)
-		. += "It has been subjugated by force, at least for now."
+		to_chat(user, "It has been subjugated by force, at least for now.")
 	else if(docile)
-		. += "It appears to have been pacified."
+		to_chat(user, "It appears to have been pacified.")
 
 /mob/living/simple_animal/slime/water_act(amount) // This is called if a slime enters a water tile.
 	adjustBruteLoss(40 * amount)
@@ -467,3 +467,4 @@
 
 	lines.Add(description_info)
 	return lines.Join("\n")
+
