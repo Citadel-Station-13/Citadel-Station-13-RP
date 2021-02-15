@@ -552,7 +552,7 @@
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
 		to_chat(H, "<span class='notice'>You hear an awful ringing in your ears.</span>")
-		H << 'sound/weapons/flash.ogg'
+		SEND_SOUND(H, sound('sound/weapons/flash'))
 
 /datum/disease2/effect/vomiting
 	name = "Vomiting"

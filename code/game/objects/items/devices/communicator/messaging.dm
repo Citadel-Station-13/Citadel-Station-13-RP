@@ -36,7 +36,7 @@
 				return
 			to_chat(src, "<span class='notice'>[icon2html(thing = origin_atom, target = src)] Receiving communicator request from [origin_atom].  To answer, use the <b>Call Communicator</b> \
 			verb, and select that name to answer the call.</span>")
-			src << 'sound/machines/defib_SafetyOn.ogg'
+			SEND_SOUND(src, sound('sound/machines/defib_SafetyOn'))
 			comm.voice_invites |= src
 	if(message == "ping")
 		if(client && client.prefs.communicator_visibility)
@@ -45,7 +45,7 @@
 			exonet.send_message(origin_address, "64 bytes received from [exonet.address] ecmp_seq=1 ttl=51 time=[random] ms")
 	if(message == "text")
 		to_chat(src, "<span class='notice'>[icon2html(thing = origin_atom, target = src)] Received text message from [origin_atom]: <b>\"[text]\"</b></span>")
-		src << 'sound/machines/defib_safetyOff.ogg'
+		SEND_SOUND(src, sound('sound/machines/defib_safetyOff'))
 		exonet_messages.Add("<b>From [origin_atom]:</b><br>[text]")
 		return
 

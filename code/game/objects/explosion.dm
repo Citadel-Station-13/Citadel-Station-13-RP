@@ -57,11 +57,11 @@ proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impa
 						if(!istype(M.loc,/turf/space))
 							if(creaking_explosion)
 								if(prob(65))
-									M << 'sound/effects/explosioncreak1.ogg'
+									SEND_SOUND(M, sound('sound/effects/explosioncreak1'))
 								else
-									M << 'sound/effects/explosioncreak2.ogg'
+									SEND_SOUND(M, sound('sound/effects/explosioncreak2'))
 							else
-								M << 'sound/effects/explosionfar.ogg'
+								SEND_SOUND(M, sound('sound/effects/explosionfar'))
 
 				if(creaking_explosion)
 					addtimer(CALLBACK(M, /mob/proc/playsound_local, epicenter, null, rand(25, 40), 1, frequency, null, null, FALSE, 'sound/effects/creak1.ogg', null, null, null, null, 0), 5 SECONDS)

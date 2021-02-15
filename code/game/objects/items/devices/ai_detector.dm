@@ -95,22 +95,22 @@
 		switch(new_state)
 			if(PROXIMITY_OFF_CAMERANET)
 				to_chat(carrier, "<span class='notice'>[icon2html(thing = src, target = carrier)] Now outside of camera network.</span>")
-				carrier << 'sound/machines/defib_failed.ogg'
+				SEND_SOUND(carrier, sound('sound/machines/defib_failed'))
 			if(PROXIMITY_NONE)
 				to_chat(carrier, "<span class='notice'>[icon2html(thing = src, target = carrier)] Now within camera network, AI and cameras unfocused.</span>")
-				carrier << 'sound/machines/defib_safetyOff.ogg'
+				SEND_SOUND(carrier, sound('sound/machines/defib_safetyOff'))
 			if(PROXIMITY_NEAR)
 				to_chat(carrier, "<span class='warning'>[icon2html(thing = src, target = carrier)] Warning: AI focus at nearby location.</span>")
-				carrier << 'sound/machines/defib_SafetyOn.ogg'
+				SEND_SOUND(carrier, sound('sound/machines/defib_SafetyOn'))
 			if(PROXIMITY_ON_SCREEN)
 				to_chat(carrier, "<font size='3'><span class='danger'>[icon2html(thing = src, target = carrier)] Alert: AI or camera focused at current location!</span></font>")
-				carrier <<'sound/machines/defib_ready.ogg'
+				SEND_SOUND(carrier, sound('sound/machines/defib_ready'))
 			if(PROXIMITY_TRACKING)
 				to_chat(carrier, "<font size='3'><span class='danger'>[icon2html(thing = src, target = carrier)] Danger: AI is actively tracking you!</span></font>")
-				carrier << 'sound/machines/defib_success.ogg'
+				SEND_SOUND(carrier, sound('sound/machines/defib_success'))
 			if(PROXIMITY_TRACKING_FAIL)
 				to_chat(carrier, "<font size='3'><span class='danger'>[icon2html(thing = src, target = carrier)] Danger: AI is attempting to actively track you, but you are outside of the camera network!</span></font>")
-				carrier <<'sound/machines/defib_ready.ogg'
+				SEND_SOUND(carrier, sound('sound/machines/defib_ready'))
 
 
 #undef PROXIMITY_OFF_CAMERANET

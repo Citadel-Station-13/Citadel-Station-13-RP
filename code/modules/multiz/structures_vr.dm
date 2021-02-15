@@ -69,7 +69,7 @@
 		return	//do not send ghosts, zshadows, ai eyes, etc
 	var/obj/effect/landmark/dest = pick(eventdestinations)
 	if(dest)
-		M << 'sound/effects/phasein.ogg'
+		SEND_SOUND(M, sound('sound/effects/phasein'))
 		playsound(src, 'sound/effects/phasein.ogg', 100, 1)
 		M.forceMove(dest.loc)
 	return

@@ -168,7 +168,7 @@
 	SSticker.mode:explosion_in_progress = 1
 	for(var/mob/M in world)
 		if(M.client)
-			M << 'sound/machines/Alarm.ogg'
+			SEND_SOUND(M, sound('sound/machines/Alarm'))
 	to_chat(world, "<span class='notice'><b>Incoming missile detected.. Impact in 10..</b></span>")
 	for (var/i=9 to 1 step -1)
 		sleep(10)

@@ -219,7 +219,7 @@
 			global_announcer.autosay("DANGER: SUPERMATTER CRYSTAL DEGRADATION IN PROGRESS! INTEGRITY AT [integrity]%", "Supermatter Monitor")
 			for(var/mob/M in player_list)
 				if(!istype(M,/mob/new_player) && !isdeaf(M))
-					M << 'sound/ambience/engine_alert2.ogg'
+					SEND_SOUND(M, sound('sound/ambience/engine_alert2'))
 		else if(safe_warned && public_alert)
 			global_announcer.autosay(alert_msg, "Supermatter Monitor")
 			public_alert = 0

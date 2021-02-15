@@ -23,7 +23,7 @@
 		if((R_ADMIN|R_MOD) & C.holder.rights)
 			if(C.is_preference_enabled(/datum/client_preference/admin/show_chat_prayers))
 				C << msg
-				C << 'sound/effects/ding.ogg'
+				SEND_SOUND(C, sound('sound/effects/ding'))
 	to_chat(usr, "Your prayers have been received by the gods.")
 
 	feedback_add_details("admin_verb","PR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -34,11 +34,11 @@
 	for(var/client/C in admins)
 		if((R_ADMIN|R_MOD) & C.holder.rights)
 			C << msg
-			C << 'sound/machines/signal.ogg'
+			SEND_SOUND(C, sound('sound/machines/signal'))
 
 /proc/Syndicate_announce(var/msg, var/mob/Sender)
 	msg = "<font color='blue'><b><font color=crimson>ILLEGAL:</font>[key_name(Sender, 1)] (<A HREF='?_src_=holder;adminplayeropts=\ref[Sender]'>PP</A>) (<A HREF='?_src_=vars;Vars=\ref[Sender]'>VV</A>) (<A HREF='?_src_=holder;subtlemessage=\ref[Sender]'>SM</A>) ([admin_jump_link(Sender, null)]) (<A HREF='?_src_=holder;secretsadmin=check_antagonist'>CA</A>) (<A HREF='?_src_=holder;BlueSpaceArtillery=\ref[Sender]'>BSA</A>) (<A HREF='?_src_=holder;SyndicateReply=\ref[Sender]'>RPLY</A>):</b> [msg]</font>"
 	for(var/client/C in admins)
 		if((R_ADMIN|R_MOD) & C.holder.rights)
 			C << msg
-			C << 'sound/machines/signal.ogg'
+			SEND_SOUND(C, sound('sound/machines/signal'))

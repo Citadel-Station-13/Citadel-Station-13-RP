@@ -515,7 +515,7 @@
 
 	for(var/mob/M in player_list) // For everyone else.
 		if(M.z == T.z && get_dist(M, T) > world.view && !M.ear_deaf && !istype(M.loc,/turf/space))
-			M << 'sound/effects/explosionfar.ogg'
+			SEND_SOUND(M, sound('sound/effects/explosionfar'))
 
 	exploding = FALSE
 

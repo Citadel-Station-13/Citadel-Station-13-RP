@@ -255,7 +255,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 	for(var/client/X in admins)
 		if(X.is_preference_enabled(/datum/client_preference/holder/play_adminhelp_ping))
-			X << 'sound/effects/adminhelp.ogg'
+			SEND_SOUND(X, sound('sound/effects/adminhelp'))
 		window_flash(X)
 		to_chat(X, chat_msg)
 
@@ -342,7 +342,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 	if(initiator)
 		if(initiator.is_preference_enabled(/datum/client_preference/holder/play_adminhelp_ping))
-			initiator << 'sound/effects/adminhelp.ogg'
+			SEND_SOUND(initiator, sound('sound/effects/adminhelp'))
 
 		to_chat(initiator, "<font color='red' size='4'><b>- AdminHelp Rejected! -</b></font>")
 		to_chat(initiator, "<font color='red'><b>Your admin help was rejected.</b></font>")
