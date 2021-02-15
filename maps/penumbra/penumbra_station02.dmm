@@ -18,6 +18,12 @@
 /obj/effect/zone_divider,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/penumbra)
+"abs" = (
+/obj/effect/floor_decal/chapel{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/penumbra)
 "abR" = (
 /turf/simulated/floor/tiled/dark,
 /area/penumbra/perimeter/inner)
@@ -28,6 +34,12 @@
 /obj/structure/cable/yellow,
 /turf/simulated/floor/reinforced,
 /area/penumbra/station/engineering/engine)
+"acu" = (
+/obj/effect/floor_decal/chapel{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/penumbra)
 "adC" = (
 /mob/living/simple_mob/animal/passive/fish/solarfish,
 /turf/simulated/floor/outdoors/water/deep/indoors,
@@ -70,6 +82,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/penumbra)
+"afm" = (
+/obj/machinery/door/airlock,
+/turf/simulated/floor/lino,
+/area/penumbra/perimeter/inner)
 "ahf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -245,6 +261,10 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/penumbra)
+"ats" = (
+/obj/structure/bed/double/padded,
+/turf/simulated/floor/lino,
+/area/penumbra/perimeter/inner)
 "atH" = (
 /obj/effect/zone_divider,
 /obj/machinery/computer/security{
@@ -305,6 +325,15 @@
 /obj/machinery/door/airlock/glass_science,
 /turf/simulated/shuttle/floor/purple,
 /area/penumbra/perimeter/inner)
+"avD" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 8
+	},
+/obj/structure/window/reinforced/tinted{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/penumbra)
 "axH" = (
 /obj/machinery/computer/station_alert{
 	dir = 8
@@ -3292,10 +3321,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/penumbra/perimeter/outer)
-"etU" = (
-/obj/machinery/door/airlock,
-/turf/simulated/floor/lino,
-/area/penumbra/perimeter/inner)
 "euy" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
@@ -4256,12 +4281,6 @@
 "fwu" = (
 /obj/machinery/telecomms/bus/preset_one,
 /turf/simulated/floor/bluegrid,
-/area/penumbra)
-"fwT" = (
-/obj/effect/floor_decal/chapel{
-	dir = 8
-	},
-/turf/simulated/floor/wood,
 /area/penumbra)
 "fxv" = (
 /obj/effect/zone_divider,
@@ -6506,12 +6525,6 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/yellow,
 /obj/effect/wingrille_spawn/phoron,
 /turf/simulated/floor/tiled/techfloor,
-/area/penumbra)
-"iye" = (
-/obj/effect/floor_decal/chapel{
-	dir = 1
-	},
-/turf/simulated/floor/wood,
 /area/penumbra)
 "iyh" = (
 /obj/structure/flora/pottedplant/largebush,
@@ -98478,13 +98491,13 @@ dUI
 dUI
 tQs
 tud
-tud
-tud
+abs
+acu
 tAQ
 tAQ
 tAQ
-tud
-tud
+abs
+acu
 tud
 tQs
 dUI
@@ -98992,13 +99005,13 @@ dUI
 dUI
 tQs
 tud
-tud
-tud
+apg
+jQw
 oRT
 oRT
 oRT
-tud
-tud
+apg
+jQw
 tud
 tQs
 dUI
@@ -99506,13 +99519,13 @@ dUI
 dUI
 tQs
 tud
-iye
-fwT
 tud
 tud
 tud
-iye
-fwT
+tud
+tud
+tud
+tQs
 tud
 tQs
 dUI
@@ -100020,13 +100033,13 @@ dUI
 dUI
 tQs
 tud
-apg
-jQw
 tud
 tud
 tud
-apg
-jQw
+tud
+tud
+tud
+tQs
 tud
 tQs
 dUI
@@ -100540,8 +100553,8 @@ tud
 tud
 tud
 tud
-tud
-tud
+tQs
+avD
 tQs
 dUI
 dUI
@@ -101051,11 +101064,11 @@ kMZ
 kMZ
 kMZ
 nds
-nds
-axU
-nds
+afm
 nds
 nds
+nds
+pzO
 nds
 hur
 hur
@@ -101567,10 +101580,10 @@ kMZ
 iYQ
 iYQ
 iYQ
-iYQ
-iYQ
-iYQ
 nds
+iYQ
+iYQ
+afm
 hur
 hur
 hur
@@ -102081,10 +102094,10 @@ vbD
 iYQ
 iYQ
 iYQ
+nds
 iYQ
 iYQ
-iYQ
-etU
+nds
 hur
 hur
 hur
@@ -102592,10 +102605,10 @@ kMZ
 dJX
 dJX
 kMZ
-iYQ
-iYQ
-iYQ
-iYQ
+hzE
+tOX
+riY
+nds
 iYQ
 iYQ
 nds
@@ -103106,10 +103119,10 @@ kMZ
 dJX
 dJX
 kMZ
-iYQ
-iYQ
-iYQ
-iYQ
+hzE
+tOX
+riY
+nds
 iYQ
 iYQ
 nds
@@ -103620,12 +103633,12 @@ kMZ
 kMZ
 gNU
 kMZ
-iYQ
-iYQ
-iYQ
-iYQ
-iYQ
-iYQ
+hzE
+tOX
+riY
+nds
+ats
+tOX
 nds
 hur
 hur
