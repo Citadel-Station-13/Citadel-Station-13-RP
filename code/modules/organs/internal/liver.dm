@@ -7,9 +7,10 @@
 
 /obj/item/organ/internal/liver/process(delta_time)
 	..()
-	if(!owner) return
+	if(!owner)
+		return
 
-	if(owner.life_tick % (delta_time * 5) == 0)
+	if((owner.life_tick % 10) == 0)
 
 		//High toxins levels are dangerous
 		if(owner.getToxLoss() >= 50 && !owner.reagents.has_reagent("anti_toxin"))

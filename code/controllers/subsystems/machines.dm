@@ -101,11 +101,12 @@ SUBSYSTEM_DEF(machines)
 		src.current_run = global.pipe_networks.Copy()
 	//cache for sanic speed (lists are references anyways)
 	var/list/current_run = src.current_run
+	var/dt = (flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
 	while(current_run.len)
 		var/datum/pipe_network/PN = current_run[current_run.len]
 		current_run.len--
 		if(istype(PN) && !QDELETED(PN))
-			PN.process(wait)
+			PN.process(dt)
 		else
 			global.pipe_networks.Remove(PN)
 			if(!QDELETED(PN))
@@ -118,10 +119,11 @@ SUBSYSTEM_DEF(machines)
 		src.current_run = global.processing_machines.Copy()
 
 	var/list/current_run = src.current_run
+	var/dt = (flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
 	while(current_run.len)
 		var/obj/machinery/M = current_run[current_run.len]
 		current_run.len--
-		if(istype(M) && !QDELETED(M) && !(M.process(wait) == PROCESS_KILL))
+		if(istype(M) && !QDELETED(M) && !(M.process(dt) == PROCESS_KILL))
 			if(M.use_power)
 				M.auto_use_power()
 		else
