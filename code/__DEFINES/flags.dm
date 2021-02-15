@@ -44,6 +44,10 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 #define FLEXIBLEMATERIAL		(1<<4)	// At the moment, masks with this flag will not prevent eating even if they are covering your face.
 #define ALLOW_SURVIVALFOOD		(1<<5)	// Allows special survival food items to be eaten through it
 
+// Flags for the clothing_flags var on /obj/item/clothing
+//flags for clothing_flags. only 1 exists at the moment because this is an examine refactor not a clothing refactor
+#define SCAN_REAGENTS			(1<<10)	// Allows helmets and glasses to scan reagents.
+
 // Flags for pass_flags. - Used in /atom/var/pass_flags
 #define PASSTABLE				(1<<0)
 #define PASSGLASS				(1<<1)
