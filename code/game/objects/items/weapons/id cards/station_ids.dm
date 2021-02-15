@@ -34,12 +34,8 @@
 	var/survey_points = 0	// For redeeming at explorer equipment vendors.
 
 /obj/item/card/id/examine(mob/user)
-	set src in oview(1)
-	if(in_range(usr, src))
-		show(usr)
-		usr << desc
-	else
-		to_chat(usr, "<span class='warning'>It is too far away.</span>")
+	. = ..()
+	show(user)
 
 /obj/item/card/id/proc/prevent_tracking()
 	return 0

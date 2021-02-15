@@ -146,12 +146,12 @@
 	return ..()
 
 /obj/item/organ/external/examine()
-	..()
+	. = ..()
 	if(in_range(usr, src) || istype(usr, /mob/observer/dead))
 		for(var/obj/item/I in contents)
 			if(istype(I, /obj/item/organ))
 				continue
-			to_chat(usr, "<span class='danger'>There is \a [I] sticking out of it.</span>")
+			. += "<span class='danger'>There is \a [I] sticking out of it.</span>"
 	return
 
 /obj/item/organ/external/attackby(obj/item/W as obj, mob/living/user as mob)
