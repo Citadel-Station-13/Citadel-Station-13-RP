@@ -146,7 +146,7 @@
 
 /obj/item/weldpack/examine(mob/user)
 	. = ..()
-	. += "\icon[src] [src] has [src.reagents.total_volume] units of fuel left!"
+	. += "[icon2html(thing = src, target = world)] [src] has [src.reagents.total_volume] units of fuel left!"
 	return
 
 /obj/item/weldpack/survival

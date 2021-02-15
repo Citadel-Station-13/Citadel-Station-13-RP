@@ -88,8 +88,8 @@
 	return dat
 
 /obj/item/card/id/attack_self(mob/user as mob)
-	user.visible_message("\The [user] shows you: \icon[src] [src.name]. The assignment on the card: [src.assignment]",\
-		"You flash your ID card: \icon[src] [src.name]. The assignment on the card: [src.assignment]")
+	user.visible_message("\The [user] shows you: [icon2html(thing = src, target = world)] [src.name]. The assignment on the card: [src.assignment]",\
+		"You flash your ID card: [icon2html(thing = src, target = user)] [src.name]. The assignment on the card: [src.assignment]")
 
 	src.add_fingerprint(user)
 	return
@@ -105,7 +105,7 @@
 	set category = "Object"
 	set src in usr
 
-	usr << text("\icon[] []: The current assignment on the card is [].", src, src.name, src.assignment)
+	to_chat(usr, "[icon2html(thing = src, target = usr)] [src.name]: The current assignment on the card is [src.assignment]."
 	to_chat(usr, "The blood type on the card is [blood_type].")
 	to_chat(usr, "The DNA hash on the card is [dna_hash].")
 	to_chat(usr, "The fingerprint hash on the card is [fingerprint_hash].")

@@ -227,7 +227,7 @@
 
 		// This is not a status display message, since it's something the character
 		// themselves is meant to see BEFORE putting the money in
-		to_chat(usr, "\icon[cashmoney] <span class='warning'>That is not enough money.</span>")
+		to_chat(user, "[icon2html(thing = cashmoney, target = user)] <span class='warning'>That is not enough money.</span>")
 		return 0
 
 	if(istype(cashmoney, /obj/item/spacecash))
@@ -236,7 +236,7 @@
 		cashmoney.worth -= currently_vending.price
 
 		if(cashmoney.worth <= 0)
-			usr.drop_from_inventory(cashmoney)
+			user.drop_from_inventory(cashmoney)
 			qdel(cashmoney)
 		else
 			cashmoney.update_icon()

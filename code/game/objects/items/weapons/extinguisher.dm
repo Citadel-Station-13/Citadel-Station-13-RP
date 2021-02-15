@@ -47,7 +47,7 @@
 
 /obj/item/extinguisher/examine(mob/user)
 	. = ..()
-	. += "\icon[src] [src.name] contains [src.reagents.total_volume] units of water left!"
+	. += "[icon2html(thing = src, target = user)] [src.name] contains [src.reagents.total_volume] units of water left!"
 
 /obj/item/extinguisher/attack_self(mob/user as mob)
 	safety = !safety

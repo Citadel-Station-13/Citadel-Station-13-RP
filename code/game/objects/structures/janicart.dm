@@ -25,7 +25,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 
 /obj/structure/janitorialcart/examine(mob/user)
 	. = ..()
-	. += "[src] \icon[src] contains [reagents.total_volume] unit\s of liquid!"
+	. += "[src] [icon2html(thing = src, target = user)] contains [reagents.total_volume] unit\s of liquid!"
 	//everything else is visible, so doesn't need to be mentioned
 
 
@@ -187,7 +187,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 
 /obj/structure/bed/chair/janicart/examine(mob/user)
 	. = ..()
-	. += "\icon[src] This [callme] contains [reagents.total_volume] unit\s of water!"
+	. += "[icon2html(thing = src, target = user)] This [callme] contains [reagents.total_volume] unit\s of water!"
 	if(mybag)
 		. += "\A [mybag] is hanging on the [callme]."
 

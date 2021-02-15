@@ -59,7 +59,7 @@
 /obj/item/weldingtool/examine(mob/user)
 	. = ..()
 	if(max_fuel)
-		. += "\icon[src] The [src.name] contains [get_fuel()]/[src.max_fuel] units of fuel!"
+		. += "[icon2html(thing = src, target = world)] The [src.name] contains [get_fuel()]/[src.max_fuel] units of fuel!"
 
 /obj/item/weldingtool/attack(atom/A, mob/living/user, def_zone)
 	if(ishuman(A) && user.a_intent == INTENT_HELP)
@@ -555,9 +555,9 @@
 		return
 	else					// The << need to stay, for some reason no they dont
 		if(power_supply)
-			. += "\icon[src] The [src] has [get_fuel()] charge left."
+			. += "[icon2html(thing = src, target = world)] The [src] has [get_fuel()] charge left."
 		else
-			. += "\icon[src] The [src] has no power cell!"
+			. += "[icon2html(thing = src, target = world)] The [src] has no power cell!"
 
 /obj/item/weldingtool/electric/get_fuel()
 	if(use_external_power)

@@ -5,7 +5,7 @@
 	desc = "Emits a visible or invisible beam and is triggered when the beam is interrupted."
 	icon_state = "infrared"
 	origin_tech = list(TECH_MAGNET = 2)
-	matter = list(DEFAULT_WALL_MATERIAL = 1000, "glass" = 500, "waste" = 100)
+	matter = list(DEFAULT_WALL_MATERIAL = 1000, "glass" = 500)
 
 	wires = WIRE_PULSE
 
@@ -97,7 +97,7 @@
 	if((!secured)||(!on)||(cooldown > 0))	return 0
 	pulse(0)
 	if(!holder)
-		visible_message("\icon[src] *beep* *beep*")
+		visible_message("[icon2html(thing = src, target = world)] *beep* *beep*")
 	cooldown = 2
 	spawn(10)
 		process_cooldown()

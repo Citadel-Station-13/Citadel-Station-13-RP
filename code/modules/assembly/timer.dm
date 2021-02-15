@@ -3,7 +3,7 @@
 	desc = "Used to time things. Works well with contraptions which has to count down. Tick tock."
 	icon_state = "timer"
 	origin_tech = list(TECH_MAGNET = 1)
-	matter = list(DEFAULT_WALL_MATERIAL = 500, "glass" = 50, "waste" = 10)
+	matter = list(DEFAULT_WALL_MATERIAL = 500, "glass" = 50)
 
 	wires = WIRE_PULSE
 
@@ -37,7 +37,7 @@
 	if(!secured)	return 0
 	pulse(0)
 	if(!holder)
-		visible_message("\icon[src] *beep* *beep*", "*beep* *beep*")
+		visible_message("[icon2html(thing = src, target = world)] *beep* *beep*", "*beep* *beep*")
 	cooldown = 2
 	spawn(10)
 		process_cooldown()

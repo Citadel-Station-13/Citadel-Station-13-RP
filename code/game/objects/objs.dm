@@ -58,7 +58,7 @@
 /obj/CanUseTopic(var/mob/user, var/datum/topic_state/state = default_state)
 	if(user.CanUseObjTopic(src))
 		return ..()
-	to_chat(user, "<span class='danger'>\icon[src]Access Denied!</span>")
+	to_chat(user, "<span class='danger'>[icon2html(thing = src, target = user)] Access Denied!</span>")
 	return STATUS_CLOSE
 
 /mob/living/silicon/CanUseObjTopic(var/obj/O)
@@ -204,9 +204,10 @@
 			return
 		var/materials_list
 		var/i = 1
-		for(var/m in matter)
+		while(i<matter.len)
 			materials_list += matter[i]
 			materials_list += ", "
 			i++
+		materials_list += matter[i]
 		. += "<u>It is made out of [materials_list]</u>."
 	return
