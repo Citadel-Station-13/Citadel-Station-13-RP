@@ -115,8 +115,8 @@
 			qdel(speech_bubble)
 
 		for(var/mob/M in hearers(comm)) //simplifed since it's just a speech bubble
-			M << speech_bubble
-		src << speech_bubble
+			SEND_IMAGE(M, speech_bubble)
+		SEND_IMAGE(src, speech_bubble)
 
 	..(message, speaking, verb, alt_name, whispering) //mob/living/say() can do the actual talking.
 

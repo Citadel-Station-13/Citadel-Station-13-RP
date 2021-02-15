@@ -234,7 +234,7 @@
 		else
 			output += "[IO.name] - <span style='color:green;'>OK</span>\n"
 
-	src << output
+	to_chat(src, output)
 
 /mob/living/carbon/human/proc/setmonitor_state()
 	set name = "Set monitor display"
@@ -307,7 +307,7 @@
 		else // No need to check distance if they're standing right on-top of us
 			feedback += "right on top of you."
 		feedback += "</span>"
-		src << jointext(feedback,null)
+		to_chat(src, jointext(feedback,null))
 	if(!heard_something)
 		to_chat(src, "<span class='notice'>You hear no movement but your own.</span>")
 

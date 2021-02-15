@@ -9,7 +9,7 @@
 
 	var t = invalidFeedTarget(M)
 	if (t)
-		src << t
+		to_chat(src, t)
 		return
 
 	Feedon(M)

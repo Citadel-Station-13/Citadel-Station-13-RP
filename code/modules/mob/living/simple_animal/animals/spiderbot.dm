@@ -78,7 +78,7 @@
 						ghost_can_reenter = 1
 						break
 			if(!ghost_can_reenter)
-				user << "<span class='notice'>[O] is completely unresponsive; there's no point.</span>"
+				to_chat(user, "<span class='notice'>[O] is completely unresponsive; there's no point.</span>")
 				return
 
 		if(B.brainmob.stat == DEAD)
