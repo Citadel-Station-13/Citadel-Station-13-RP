@@ -77,6 +77,7 @@
 		radio_connection.post_signal(src, signal)
 
 /obj/machinery/meter/examine(mob/user)
+	. = ..()
 	if(get_dist(user, src) > 3 && !(istype(user, /mob/living/silicon/ai) || istype(user, /mob/observer/dead)))
 		. += "<span class='warning'>You are too far away to read it.</span>"
 
@@ -92,7 +93,7 @@
 	else
 		. += "The connect error light is blinking."
 
-	. = ..()
+
 
 /obj/machinery/meter/attackby(var/obj/item/W, var/mob/user)
 	if(W.is_wrench())

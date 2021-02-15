@@ -244,8 +244,7 @@
 					. += "[total_volume] units of various reagents"
 			else
 				. += "Nothing."
-		else
-			. += "<span class='danger'>You can't see inside.</span>"
+
 
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
 
