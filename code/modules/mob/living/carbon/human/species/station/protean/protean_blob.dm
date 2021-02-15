@@ -23,8 +23,8 @@
 
 	harm_intent_damage = 2
 	melee_damage_lower = 10
-	melee_damage_upper = 10
-	attacktext = list("slashed")
+	melee_damage_upper = 15 // Mild increase to blob damage
+	attacktext = list("smashed", "rammed") // Why would an amorphous blob be slicing stuff?
 
 	aquatic_movement = 1
 	min_oxy = 0
@@ -94,7 +94,7 @@
 /mob/living/simple_mob/protean_blob/updatehealth()
 	if(humanform)
 		//Set the max
-		maxHealth = humanform.getMaxHealth()*2 //HUMANS, and their 'double health', bleh.
+		maxHealth = humanform.getMaxHealth() * 1.6 //As the base humanoid health was increased, the number was changed to make the maxhealth stay at 200
 		//Set us to their health, but, human health ignores robolimbs so we do it 'the hard way'
 		health = maxHealth - humanform.getOxyLoss() - humanform.getToxLoss() - humanform.getCloneLoss() - humanform.getActualFireLoss() - humanform.getActualBruteLoss()
 
