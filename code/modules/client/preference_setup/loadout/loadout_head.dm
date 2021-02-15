@@ -329,6 +329,14 @@
 	..()
 	gear_tweaks += gear_tweak_free_color_choice
 
+/datum/gear/head/traveller
+	display_name = "traveller's hat"
+	path = /obj/item/clothing/head/traveller
+
+/datum/gear/head/traveller/New()
+	..()
+	gear_tweaks += gear_tweak_free_color_choice
+
 /datum/gear/head/welding/
 	display_name = "welding, normal (engineering/robotics)"
 	path = /obj/item/clothing/head/welding
