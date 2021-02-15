@@ -308,7 +308,7 @@
 
 		if (temp_adj > BODYTEMP_HEATING_MAX) temp_adj = BODYTEMP_HEATING_MAX
 		if (temp_adj < BODYTEMP_COOLING_MAX) temp_adj = BODYTEMP_COOLING_MAX
-		//world << "Breath: [breath.temperature], [src]: [bodytemperature], Adjusting: [temp_adj]"
+		//to_chat(world, "Breath: [breath.temperature], [src]: [bodytemperature], Adjusting: [temp_adj]")
 		H.bodytemperature += temp_adj
 
 	else if(breath.temperature >= heat_discomfort_level)

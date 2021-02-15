@@ -112,8 +112,8 @@
 	var/alert = alert(src, "Specify the Narration range.", "Narration", "Global", "Local", "Cancel") //differentiate between global and local
 	if(alert == "Global")
 		var/globalmsg = input("The text you enter will appear without prefix in the chat Globally.\nMessage:", text("Enter the text you wish to narrate to everyone:")) as text
-		to_chat(world, "[globalmsg]") 
-		
+		to_chat(world, "[globalmsg]")
+
 	if(alert == "Local")
 		var/localmsg = input("The text you enter will appear without prefix in the chat Locally.\nMessage:", text("Enter the text you wish to narrate to everyone in view:")) as text
 		for(var/mob/M as mob in view(src))
@@ -159,7 +159,7 @@
 		to_chat(src, "Only administrators may use this command.")
 		return
 	M.status_flags ^= GODMODE
-	usr << "<font color='blue'> Toggled [(M.status_flags & GODMODE) ? "ON" : "OFF"]</font>"
+	to_chat(usr, "<font color='blue'> Toggled [(M.status_flags & GODMODE) ? "ON" : "OFF"]</font>")
 
 	log_admin("[key_name(usr)] has toggled [key_name(M)]'s nodamage to [(M.status_flags & GODMODE) ? "On" : "Off"]")
 	var/msg = "[key_name_admin(usr)] has toggled [ADMIN_LOOKUPFLW(M)]'s nodamage to [(M.status_flags & GODMODE) ? "On" : "Off"]"

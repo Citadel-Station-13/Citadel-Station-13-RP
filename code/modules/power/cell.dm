@@ -269,5 +269,5 @@
 
 /obj/item/cell/suicide_act(mob/user)
 	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
-	viewers(user) << "<span class='danger'>\The [user] is licking the electrodes of \the [src]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>"
+	viewers(user)to_chat(, "<span class='danger'>\The [user] is licking the electrodes of \the [src]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>")
 	return (FIRELOSS)

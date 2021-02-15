@@ -108,7 +108,7 @@
 		return
 
 	if(bcell)
-		user <<"<span class='notice'>The baton is [round(bcell.percent())]% charged.</span>"
+		to_chat(user, "<span class='notice'>The baton is [round(bcell.percent())]% charged.</span>")
 	if(!bcell)
 		to_chat(user, "<span class='warning'>The baton does not have a power source installed.</span>")
 

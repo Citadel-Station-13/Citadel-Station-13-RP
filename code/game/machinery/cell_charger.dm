@@ -27,7 +27,7 @@
 	if(charging && !(stat & (BROKEN|NOPOWER)))
 
 		var/newlevel = 	round(charging.percent() * 4.0 / 99)
-		//world << "nl: [newlevel]"
+		//to_chat(world, "nl: [newlevel]")
 
 		if(chargelevel != newlevel)
 
@@ -117,7 +117,7 @@
 
 
 /obj/machinery/cell_charger/process(delta_time)
-	//world << "ccpt [charging] [stat]"
+	//to_chat(world, "ccpt [charging] [stat]")
 	if((stat & (BROKEN|NOPOWER)) || !anchored)
 		update_use_power(USE_POWER_OFF)
 		return

@@ -176,7 +176,7 @@
 	update_coverage()
 	// DECONSTRUCTION
 	if(W.is_screwdriver())
-		//user << "<span class='notice'>You start to [panel_open ? "close" : "open"] the camera's panel.</span>"
+		//to_chat(user, "<span class='notice'>You start to [panel_open ? "close" : "open"] the camera's panel.</span>")
 		//if(toggle_panel(user)) // No delay because no one likes screwdrivers trying to be hip and have a duration cooldown
 		panel_open = !panel_open
 		user.visible_message("<span class='warning'>[user] screws the camera's panel [panel_open ? "open" : "closed"]!</span>",
@@ -224,8 +224,8 @@
 		to_chat(U, "You hold \a [itemname] up to the camera ...")
 		for(var/mob/living/silicon/ai/O in living_mob_list)
 			if(!O.client) continue
-			if(U.name == "Unknown") O << "<b>[U]</b> holds \a [itemname] up to one of your cameras ..."
-			else O << "<b><a href='byond://?src=\ref[O];track2=\ref[O];track=\ref[U];trackname=[U.name]'>[U]</a></b> holds \a [itemname] up to one of your cameras ..."
+			if(U.name == "Unknown") to_chat(O, "<b>[U]</b> holds \a [itemname] up to one of your cameras ...")
+			else to_chat(O, "<b><a href='byond://?src=\ref[O];track2=\ref[O];track=\ref[U];trackname=[U.name]'>[U]</a></b> holds \a [itemname] up to one of your cameras ...")
 			O << browse(text("<HTML><HEAD><TITLE>[]</TITLE></HEAD><BODY><TT>[]</TT></BODY></HTML>", itemname, info), text("window=[]", itemname))
 		for(var/mob/O in player_list)
 			if (istype(O.machine, /obj/machinery/computer/security))

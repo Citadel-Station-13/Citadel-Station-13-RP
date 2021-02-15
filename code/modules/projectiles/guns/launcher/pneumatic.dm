@@ -35,7 +35,7 @@
 	var/N = input("Percentage of tank used per shot:","[src]") as null|anything in possible_pressure_amounts
 	if (N)
 		pressure_setting = N
-		usr << "You dial the pressure valve to [pressure_setting]%."
+		to_chat(usr, "You dial the pressure valve to [pressure_setting]%.")
 
 /obj/item/gun/launcher/pneumatic/proc/eject_tank(mob/user) //Remove the tank.
 	if(!tank)
@@ -101,7 +101,7 @@
 /obj/item/gun/launcher/pneumatic/examine(mob/user)
 	if(!..(user, 2))
 		return
-	user << "The valve is dialed to [pressure_setting]%."
+	to_chat(user, "The valve is dialed to [pressure_setting]%.")
 	if(tank)
 		to_chat(user, "The tank dial reads [tank.air_contents.return_pressure()] kPa.")
 	else
@@ -152,11 +152,11 @@
 /obj/item/cannonframe/examine(mob/user)
 	..(user)
 	switch(buildstate)
-		if(1) user << "It has a pipe segment installed."
-		if(2) user << "It has a pipe segment welded in place."
-		if(3) user << "It has an outer chassis installed."
-		if(4) user << "It has an outer chassis welded in place."
-		if(5) user << "It has a transfer valve installed."
+		if(1) to_chat(user, "It has a pipe segment installed.")
+		if(2) to_chat(user, "It has a pipe segment welded in place.")
+		if(3) to_chat(user, "It has an outer chassis installed.")
+		if(4) to_chat(user, "It has an outer chassis welded in place.")
+		if(5) to_chat(user, "It has a transfer valve installed.")
 
 /obj/item/cannonframe/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/pipe))
