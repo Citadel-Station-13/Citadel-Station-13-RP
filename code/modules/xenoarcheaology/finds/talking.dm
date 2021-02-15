@@ -48,7 +48,7 @@
 		var/list/w = heard_words["[lowertext(seperate[Xa])]"]
 		if(w)
 			w.Add("[lowertext(seperate[next])]")
-		//world << "Adding [lowertext(seperate[next])] to [lowertext(seperate[Xa])]"
+		//to_chat(world, "Adding [lowertext(seperate[next])] to [lowertext(seperate[Xa])]")
 
 	if(prob(30))
 		var/list/options = list("[holder_atom] seems to be listening intently to [source]...",\
@@ -66,7 +66,7 @@
 		to_chat(world, "[uppertext(v)]")
 		var/list/d = heard_words["[v]"]
 		for(var/X in d)
-			world << "[X]"*/
+			to_chat(world, "[X]")*/
 
 /datum/talking_atom/proc/SaySomething(var/word = null)
 	if(!holder_atom)

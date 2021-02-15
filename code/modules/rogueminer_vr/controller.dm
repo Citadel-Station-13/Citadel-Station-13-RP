@@ -109,7 +109,7 @@ var/datum/controller/rogue/rm_controller
 	//decay() //Decay removed for now, since people aren't getting high scores as it is.
 
 /datum/controller/rogue/proc/decay(var/manual = 0)
-	world.log << "RM(stats): DECAY on controller from [difficulty] to [difficulty+(RM_DIFF_DECAY_AMT)] min 100." //DEBUG code for playtest stats gathering.
+	to_chat(world.log, "RM(stats): DECAY on controller from [difficulty] to [difficulty+(RM_DIFF_DECAY_AMT)] min 100.") //DEBUG code for playtest stats gathering.
 	adjust_difficulty(RM_DIFF_DECAY_AMT)
 
 	if(!manual) //If it was called manually somehow, then don't start the timer, just decay now.
@@ -120,7 +120,7 @@ var/datum/controller/rogue/rm_controller
 /datum/controller/rogue/proc/dbg(var/message)
 	ASSERT(message) //I want a stack trace if there's no message
 	if(debugging)
-		world.log << "[message]"
+		to_chat(world.log, "[message]")
 
 /datum/controller/rogue/proc/adjust_difficulty(var/amt)
 	ASSERT(amt)
@@ -187,7 +187,7 @@ var/datum/controller/rogue/rm_controller
 		ZM_target = pick(clean_zones)
 
 	if(ZM_target)
-		world.log << "RM(stats): SCORING [ready_zones.len] zones (if unscored)." //DEBUG code for playtest stats gathering.
+		to_chat(world.log, "RM(stats): SCORING [ready_zones.len] zones (if unscored).") //DEBUG code for playtest stats gathering.
 		for(var/datum/rogue/zonemaster/ZM_toscore in ready_zones) //Score all the zones first.
 			if(ZM_toscore.scored) continue
 			ZM_toscore.score_zone()

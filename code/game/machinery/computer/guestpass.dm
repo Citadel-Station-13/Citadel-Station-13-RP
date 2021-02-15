@@ -212,7 +212,7 @@
 				var/dat = "<h3>Activity log of guest pass terminal #[uid]</h3><br>"
 				for (var/entry in internal_log)
 					dat += "[entry]<br><hr>"
-				//usr << "Printing the log, standby..."
+				//to_chat(usr, "Printing the log, standby...")
 				//sleep(50)
 				var/obj/item/paper/P = new/obj/item/paper( loc )
 				P.name = "activity log"

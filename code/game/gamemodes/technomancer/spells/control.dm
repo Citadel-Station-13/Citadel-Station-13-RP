@@ -126,8 +126,8 @@
 			if(pay_energy(25 * controlled_mobs.len))
 				attack_all(L)
 				log_and_message_admins("has commanded their army of [controlled_mobs.len] to attack [L].")
-				user << "<span class='notice'>You command your [controlled_mobs.len > 1 ? "entities" : "[controlled_mobs[1]]"] to \
-				attack \the [L].</span>"
+				to_chat(user, "<span class='notice'>You command your [controlled_mobs.len > 1 ? "entities" : "[controlled_mobs[1]]")] to \
+				attack \the [L].</span>")
 				//This is to stop someone from controlling beepsky and getting him to stun someone 5 times a second.
 				user.setClickCooldown(8)
 				adjust_instability(controlled_mobs.len)
@@ -140,6 +140,6 @@
 		if(pay_energy(10 * controlled_mobs.len))
 			move_all(T)
 			adjust_instability(controlled_mobs.len)
-			user << "<span class='notice'>You command your [controlled_mobs.len > 1 ? "entities" : "[controlled_mobs[1]]"] to move \
+			to_chat(user, "<span class='notice'>You command your [controlled_mobs.len > 1 ? "entities" : "[controlled_mobs[1]]")] to move \
 			towards \the [T].</span>"
 

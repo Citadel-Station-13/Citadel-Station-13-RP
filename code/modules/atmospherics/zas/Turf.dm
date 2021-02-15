@@ -97,7 +97,7 @@
 	var/s_block = c_airblock(src)
 	if(s_block & AIR_BLOCKED)
 		#ifdef ZASDBG
-		if(verbose) world << "Self-blocked."
+		if(verbose) to_chat(world, "Self-blocked.")
 		//dbg(blocked)
 		#endif
 		if(zone)
@@ -129,7 +129,7 @@
 		if(block & AIR_BLOCKED)
 
 			#ifdef ZASDBG
-			if(verbose) world << "[d] is blocked."
+			if(verbose) to_chat(world, "[d] is blocked.")
 			//unsim.dbg(air_blocked, turn(180,d))
 			#endif
 
@@ -139,7 +139,7 @@
 		if(r_block & AIR_BLOCKED)
 
 			#ifdef ZASDBG
-			if(verbose) world << "[d] is blocked."
+			if(verbose) to_chat(world, "[d] is blocked.")
 			//dbg(air_blocked, d)
 			#endif
 
@@ -170,7 +170,7 @@
 					//    we are blocking them and not blocking ourselves - this prevents tiny zones from forming on doorways.
 					if(((block & ZONE_BLOCKED) && !(r_block & ZONE_BLOCKED)) || ((r_block & ZONE_BLOCKED) && !(s_block & ZONE_BLOCKED)))
 						#ifdef ZASDBG
-						if(verbose) world << "[d] is zone blocked."
+						if(verbose) to_chat(world, "[d] is zone blocked.")
 						//dbg(zone_blocked, d)
 						#endif
 
@@ -184,22 +184,22 @@
 
 						#ifdef ZASDBG
 						dbg(assigned)
-						if(verbose) world << "Added to [zone]"
+						if(verbose) to_chat(world, "Added to [zone]")
 						#endif
 
 				else if(sim.zone != zone)
 
 					#ifdef ZASDBG
-					if(verbose) world << "Connecting to [sim.zone]"
+					if(verbose) to_chat(world, "Connecting to [sim.zone]")
 					#endif
 
 					air_master.connect(src, sim)
 
 
 			#ifdef ZASDBG
-				else if(verbose) world << "[d] has same zone."
+				else if(verbose) to_chat(world, "[d] has same zone.")
 
-			else if(verbose) world << "[d] has invalid zone."
+			else if(verbose) to_chat(world, "[d] has invalid zone.")
 			#endif
 
 		else
