@@ -88,7 +88,7 @@
 /obj/item/mmi/digital/posibrain/examine(mob/user)
 	. = ..()
 
-	var/msg = "<span class='info'>*---------*</span>\nThis is \icon[src] \a <EM>[src]</EM>!\n[desc]\n"
+	var/msg = "<span class='info'>*---------*</span>\nThis is [icon2html(thing = src, target = user)] \a <EM>[src]</EM>!\n[desc]\n"
 	msg += "<span class='warning'>"
 
 	if(src.brainmob && src.brainmob.key)

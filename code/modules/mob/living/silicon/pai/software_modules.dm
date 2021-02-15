@@ -519,7 +519,7 @@
 		if(href_list["send"])
 			P.sradio.send_signal("ACTIVATE")
 			for(var/mob/O in hearers(1, P.loc))
-				O.show_message(text("\icon[] *beep* *beep*", P), 3, "*beep* *beep*", 2)
+				to_chat(O, "[icon2html(thing = src, target = O)] *beep beep*")
 			return 1
 
 		else if(href_list["freq"])

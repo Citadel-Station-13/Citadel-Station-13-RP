@@ -133,7 +133,7 @@
 
 			positive_locations.Add(D)
 
-			to_chat(user, "<span class='notice'>\icon[src] [src] pings.</span>")
+			to_chat(user, "<span class='notice'>[icon2html(thing = src, target = world)] [src] pings.</span>")
 
 	else if(istype(A, /obj/structure/boulder))
 		var/obj/structure/boulder/B = A
@@ -151,7 +151,7 @@
 
 			positive_locations.Add(D)
 
-			to_chat(user, "<span class='notice'>\icon[src] [src] pings [pick("madly","wildly","excitedly","crazily")]!</span>")
+			to_chat(user, "<span class='notice'>[icon2html(thing = src, target = world)] [src] pings [pick("madly","wildly","excitedly","crazily")]!</span>")
 
 /obj/item/depth_scanner/attack_self(var/mob/living/user)
 	interact(user)
@@ -346,4 +346,3 @@
 	set name = "Scan for Anomalies"
 	set desc = "Scan for artifacts and anomalies within your vicinity."
 	anomaly_scanner.interact(user)
-

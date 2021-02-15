@@ -118,7 +118,7 @@
 		var/turf/T = get_turf(container)
 		var/list/seen = viewers(4, T)
 		for(var/mob/M in seen)
-			M.show_message("<span class='notice'>\icon[container] [mix_message]</span>", 1)
+			M.show_message("<span class='notice'>[icon2html(thing = src, target = M)] [mix_message]</span>", 1)
 		playsound(T, reaction_sound, 80, 1)
 
 //obtains any special data that will be provided to the reaction products
@@ -629,11 +629,3 @@
 	result = "unsorbitol"
 	required_reagents = list("mutagen" = 3, "lipozine" = 2)
 	result_amount = 5
-
-
-
-
-
-
-
-

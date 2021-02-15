@@ -293,7 +293,7 @@
 /mob/living/simple_mob/spiderbot/examine(mob/user)
 	. = ..()
 	if(src.held_item)
-		. += "It is carrying \icon[src.held_item] \a [src.held_item]."
+		. += "It is carrying [icon2html(thing = src, target = world)] \a [src.held_item]."
 
 /mob/living/simple_mob/spiderbot/cannot_use_vents()
 	return

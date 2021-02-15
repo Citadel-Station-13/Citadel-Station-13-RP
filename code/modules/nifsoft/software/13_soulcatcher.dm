@@ -64,12 +64,12 @@
 /datum/nifsoft/soulcatcher/proc/notify_into(var/message)
 	var/sound = nif.good_sound
 
-	to_chat(nif.human,"<b>\[\icon[nif.big_icon]NIF\]</b> <b>Soulcatcher</b> displays, \"<span class='notice'>[message]</span>\"")
+	to_chat(nif.human,"<b>\[[icon2html(thing = nif.big_icon, target = nif.human)]NIF\]</b> <b>Soulcatcher</b> displays, \"<span class='notice'>[message]</span>\"")
 	nif.human << sound
 
 	for(var/brainmob in brainmobs)
 		var/mob/living/carbon/brain/caught_soul/CS = brainmob
-		to_chat(CS,"<b>\[\icon[nif.big_icon]NIF\]</b> <b>Soulcatcher</b> displays, \"<span class='notice'>[message]</span>\"")
+		to_chat(CS,"<b>\[[icon2html(thing = nif.big_icon, target = CS)]NIF\]</b> <b>Soulcatcher</b> displays, \"<span class='notice'>[message]</span>\"")
 		brainmob << sound
 
 /datum/nifsoft/soulcatcher/proc/say_into(var/message, var/mob/living/sender, var/mob/eyeobj)
@@ -85,10 +85,10 @@
 
 	//Not AR Projecting
 	else
-		to_chat(nif.human,"<b>\[\icon[nif.big_icon]NIF\]</b> <b>[sender_name]</b> speaks, \"[message]\"")
+		to_chat(nif.human,"<b>\[[icon2html(thing = nif.big_icon, target = nif.human)]NIF\]</b> <b>[sender_name]</b> speaks, \"[message]\"")
 		for(var/brainmob in brainmobs)
 			var/mob/living/carbon/brain/caught_soul/CS = brainmob
-			to_chat(CS,"<b>\[\icon[nif.big_icon]NIF\]</b> <b>[sender_name]</b> speaks, \"[message]\"")
+			to_chat(CS,"<b>\[[icon2html(thing = nif.big_icon, target = CS)]NIF\]</b> <b>[sender_name]</b> speaks, \"[message]\"")
 
 	log_nsay(message,nif.human.real_name,sender)
 
@@ -105,10 +105,10 @@
 
 	//Not AR Projecting
 	else
-		to_chat(nif.human,"<b>\[\icon[nif.big_icon]NIF\]</b> <b>[sender_name]</b> [message]")
+		to_chat(nif.human,"<b>\[[icon2html(thing = nif.big_icon, target = nif.human)]NIF\]</b> <b>[sender_name]</b> [message]")
 		for(var/brainmob in brainmobs)
 			var/mob/living/carbon/brain/caught_soul/CS = brainmob
-			to_chat(CS,"<b>\[\icon[nif.big_icon]NIF\]</b> <b>[sender_name]</b> [message]")
+			to_chat(CS,"<b>\[[icon2html(thing = nif.big_icon, target = CS)]NIF\]</b> <b>[sender_name]</b> [message]")
 
 	log_nme(message,nif.human.real_name,sender)
 
@@ -308,7 +308,7 @@
 		return
 
 	. = ..()
-	
+
 	if(!client)
 		return
 
