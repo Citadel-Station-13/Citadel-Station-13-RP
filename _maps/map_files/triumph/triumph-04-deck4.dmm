@@ -5142,6 +5142,8 @@
 /area/exploration/pathfinder_office)
 "dGE" = (
 /obj/structure/table/rack/shelf/steel,
+/obj/item/rig_module/mounted/egun,
+/obj/item/rig_module/mounted/egun,
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "dHb" = (
@@ -11513,8 +11515,6 @@
 /area/crew_quarters/sleep/CE_quarters)
 "hXL" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/rig_module/mounted/egun,
-/obj/item/rig_module/mounted/egun,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -11524,6 +11524,12 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 5
 	},
+/obj/item/ammo_magazine/m762,
+/obj/item/ammo_magazine/m762,
+/obj/item/ammo_magazine/m762,
+/obj/item/ammo_magazine/m762,
+/obj/item/gun/projectile/automatic/z8,
+/obj/item/gun/projectile/automatic/z8,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "hYd" = (
