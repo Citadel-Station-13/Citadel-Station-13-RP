@@ -36,8 +36,8 @@ var/global/datum/locations/milky_way/all_locations = new()
 			choice = input(user, "Please choose a location.","Locations") as null|anything in choice.contents
 		else
 			break
-	user << choice.name
-	user << choice.desc
+	to_chat(user, choice.name)
+	to_chat(user, choice.desc)
 	return choice
 
 //	var/datum/locations/choice = input(user, "Please choose a location.","Locations") as null|anything in all_locations

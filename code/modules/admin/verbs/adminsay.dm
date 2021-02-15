@@ -63,10 +63,6 @@
 	if(check_rights(R_ADMIN, 0))
 		sender_name = "<span class='admin'>[sender_name]</span>"
 	for(var/client/C in admins)
-<<<<<<< HEAD
-		C << "<span class='event_channel'>" +  "EVENT:" + " <span class='name'>[sender_name]</span>([admin_jump_link(mob, C.holder)]): <span class='message'>[msg]</span></span>"
-=======
-		to_chat(C, "<span class='event_channel'>" + create_text_tag("event", "EVENT:", C) + " <span class='name'>[sender_name]</span>([admin_jump_link(mob, C.holder)]): <span class='message'>[msg]</span></span>")
->>>>>>> output_5
+		to_chat(C, "<span class='event_channel'>" +  "EVENT:" + " <span class='name'>[sender_name]</span>([admin_jump_link(mob, C.holder)]): <span class='message'>[msg]</span></span>")
 
 	feedback_add_details("admin_verb","GS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

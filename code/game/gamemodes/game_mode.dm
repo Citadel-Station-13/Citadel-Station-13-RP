@@ -337,7 +337,7 @@ var/global/list/additional_antag_types = list()
 		text += " (<b>[escaped_total>0 ? escaped_total : "none"] [SSemergencyshuttle.evac ? "escaped" : "transferred"]</b>) and <b>[ghosts] ghosts</b>.<br>"
 	else
 		text += "There were <b>no survivors</b> (<b>[ghosts] ghosts</b>)."
-	world << text
+	to_chat(world, text)
 
 	if(clients > 0)
 		feedback_set("round_end_clients",clients)
@@ -505,7 +505,7 @@ proc/display_roundstart_logout_report()
 
 	for(var/mob/M in mob_list)
 		if(M.client && M.client.holder)
-			M << msg
+			to_chat(M, msg)
 
 proc/get_nt_opposed()
 	var/list/dudes = list()
