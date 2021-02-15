@@ -173,12 +173,12 @@
 	parents = list("changelog.html" = 'html/changelog.html')
 
 /datum/asset/simple/namespaced/nanoui
-	keep_locate_name = TRUE
+	keep_local_name = TRUE
 
 /datum/asset/simple/namespaced/nanoui/register()
 	var/list/static_dirs = list(
 		"nano/css/",
-		"nano/images/"
+		"nano/images/",
 		"nano/images/status_icons/",
 		"nano/images/modular_computers/",
 	)
