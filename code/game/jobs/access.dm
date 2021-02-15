@@ -104,6 +104,7 @@
 
 /var/list/priv_all_access
 /proc/get_all_accesses()
+	RETURN_TYPE(/list)
 	if(!priv_all_access)
 		priv_all_access = get_access_ids()
 

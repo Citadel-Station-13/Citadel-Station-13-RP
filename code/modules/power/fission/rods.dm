@@ -28,7 +28,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/fuelrod/process()
+/obj/item/fuelrod/process(delta_time)
 	if(isnull(loc))
 		return PROCESS_KILL
 

@@ -527,7 +527,7 @@
 	for(var/datum/reagent/R in A.reagents.reagent_list)
 		if(R.id in known_reagents)
 			occupant_message("Reagent \"[R.name]\" already present in database, skipping.")
-		else if(R.reagent_state == 2 && add_known_reagent(R.id,R.name))
+		else if(R.reagent_state == REAGENT_LIQUID && add_known_reagent(R.id,R.name))
 			occupant_message("Reagent analyzed, identified as [R.name] and added to database.")
 			send_byjax(chassis.occupant,"msyringegun.browser","reagents_form",get_reagents_form())
 		else
@@ -637,7 +637,7 @@
 		to_chat(chassis.occupant, "<span class='notice'>\The [chassis] shudders as something jams!</span>")
 		log_message("[src.name] has malfunctioned. Maintenance required.")
 
-/obj/item/mecha_parts/mecha_equipment/crisis_drone/process()	// Will continually try to find the nearest person above the threshold that is a valid target, and try to heal them.
+/obj/item/mecha_parts/mecha_equipment/crisis_drone/process(delta_time)	// Will continually try to find the nearest person above the threshold that is a valid target, and try to heal them.
 	if(chassis && enabled && chassis.has_charge(energy_drain) && (chassis.occupant || enable_special))
 		var/mob/living/Targ = Target
 		var/TargDamage = 0

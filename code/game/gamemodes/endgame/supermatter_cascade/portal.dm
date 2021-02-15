@@ -21,7 +21,7 @@
 /obj/singularity/narsie/large/exit/update_icon()
 	overlays = 0
 
-/obj/singularity/narsie/large/exit/process()
+/obj/singularity/narsie/large/exit/process(delta_time)
 	for(var/mob/M in player_list)
 		if(M.client)
 			M.see_rift(src)

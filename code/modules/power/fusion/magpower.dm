@@ -13,7 +13,7 @@
 	var/active = 0 //are we even on?
 	var/id_tag //needed for !!rasins!!
 
-/obj/machinery/power/hydromagnetic_trap/process()
+/obj/machinery/power/hydromagnetic_trap/process(delta_time)
 	if(!powernet && anchored == 1)
 		return
 	spawn(1)

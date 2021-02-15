@@ -370,7 +370,7 @@
 	create_reagents(usable_volume)
 
 
-/obj/item/organ/internal/fruitgland/process()
+/obj/item/organ/internal/fruitgland/process(delta_time)
 	if(!owner) return
 	var/obj/item/organ/external/parent = owner.get_organ(parent_organ)
 	var/before_gen

@@ -24,7 +24,7 @@
 	RegisterSignal(parent, list(COMSIG_PARENT_QDELETING), .proc/stop_spawning)
 	START_PROCESSING(SSprocessing, src)
 
-/datum/component/spawner/process()
+/datum/component/spawner/process(delta_time)
 	try_spawn_mob()
 
 

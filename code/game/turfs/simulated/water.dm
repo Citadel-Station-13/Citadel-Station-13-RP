@@ -225,7 +225,7 @@ var/list/shoreline_icon_cache = list()
 	if(burn_stuff(AM))
 		START_PROCESSING(SSobj, src)
 
-/turf/simulated/floor/outdoors/water/acid/process()
+/turf/simulated/floor/outdoors/water/acid/process(delta_time)
 	if(!burn_stuff())
 		STOP_PROCESSING(SSobj, src)
 
@@ -345,7 +345,7 @@ var/list/shoreline_icon_cache = list()
 	if(blood_wade(AM))
 		START_PROCESSING(SSobj, src)
 
-/turf/simulated/floor/outdoors/water/blood/process()
+/turf/simulated/floor/outdoors/water/blood/process(delta_time)
 	if(!blood_wade())
 		STOP_PROCESSING(SSobj, src)
 

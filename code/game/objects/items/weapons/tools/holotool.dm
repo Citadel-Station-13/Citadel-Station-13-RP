@@ -418,7 +418,7 @@
 	desc = "This should not exist."
 	deploytype = "multitool"
 
-/obj/item/weldingtool/holoswitch/process()
+/obj/item/weldingtool/holoswitch/process(delta_time)
 	..()
 	if(get_fuel() < get_max_fuel() && nextrefueltick < world.time)
 		nextrefueltick = world.time + 10

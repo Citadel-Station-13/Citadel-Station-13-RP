@@ -34,7 +34,7 @@
 	if(use_overlays)
 		create_overlays()
 
-/datum/component/plumbing/process()
+/datum/component/plumbing/process(delta_time)
 	if(!demand_connects || !reagents)
 		STOP_PROCESSING(SSfluids, src)
 		return

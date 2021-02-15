@@ -87,9 +87,8 @@
 			src.occupant_message("You push [target] out of the way.")
 			src.visible_message("[src] pushes [target] out of the way.")
 
-		melee_can_hit = 0
-		if(do_after(melee_cooldown))
-			melee_can_hit = 1
+		melee_can_hit = FALSE
+		addtimer(VARSET_CALLBACK(src, melee_can_hit, TRUE), melee_cooldown)
 		return
 
 	else
@@ -102,9 +101,8 @@
 						target:attackby(src,src.occupant)
 					else
 						playsound(src, 'sound/weapons/smash.ogg', 50, 1)
-					melee_can_hit = 0
-					if(do_after(melee_cooldown))
-						melee_can_hit = 1
+					melee_can_hit = FALSE
+					addtimer(VARSET_CALLBACK(src, melee_can_hit, TRUE), melee_cooldown)
 					break
 	return
 

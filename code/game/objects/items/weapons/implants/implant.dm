@@ -117,7 +117,7 @@ GLOBAL_LIST_BOILERPLATE(all_tracking_implants, /obj/item/implant/tracking)
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/implant/tracking/process()
+/obj/item/implant/tracking/process(delta_time)
 	var/implant_location = src.loc
 	if(ismob(implant_location))
 		var/mob/living/L = implant_location
@@ -505,7 +505,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 <b>Integrity:</b> Implant will occasionally be degraded by the body's immune system and thus will occasionally malfunction."}
 	return dat
 
-/obj/item/implant/death_alarm/process()
+/obj/item/implant/death_alarm/process(delta_time)
 	if (!implanted) return
 	var/mob/M = imp_in
 

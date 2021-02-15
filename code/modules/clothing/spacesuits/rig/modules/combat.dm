@@ -197,7 +197,7 @@
 
 	gun_type = /obj/item/gun/energy/crossbow/ninja
 
-/obj/item/rig_module/mounted/energy_blade/process()
+/obj/item/rig_module/mounted/energy_blade/process(delta_time)
 
 	if(holder && holder.wearer)
 		if(!(locate(/obj/item/melee/energy/blade) in holder.wearer))
@@ -294,7 +294,7 @@
 	held_blade = new /obj/item/material/knife/machete/armblade/rig
 	held_blade.storing_module = src
 
-/obj/item/rig_module/armblade/process()
+/obj/item/rig_module/armblade/process(delta_time)
 
 	if(holder && holder.wearer)
 		if(!(locate(/obj/item/material/knife/machete/armblade) in holder.wearer))

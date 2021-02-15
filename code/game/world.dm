@@ -105,10 +105,6 @@ GLOBAL_LIST(topic_status_cache)
 		if(config_legacy.ToRban)
 			ToRban_autoupdate()
 
-#undef RECOMMENDED_VERSION
-
-	return
-
 /world/proc/InitTgs()
 	TgsNew(new /datum/tgs_event_handler/impl, TGS_SECURITY_TRUSTED)
 	GLOB.revdata.load_tgs_info()

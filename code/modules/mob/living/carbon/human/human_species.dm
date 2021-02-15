@@ -2,8 +2,6 @@
 	real_name = "Test Dummy"
 	status_flags = GODMODE|CANPUSH
 
-	/mob/living/carbon/human/dummy/proc/get_icon()
-
 /mob/living/carbon/human/dummy/mannequin/Initialize()
 	. = ..()
 	mob_list -= src

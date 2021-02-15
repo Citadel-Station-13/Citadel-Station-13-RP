@@ -1485,10 +1485,11 @@
 	name = "Orion Confederation"
 	short_name = "OriCon "
 	acronym = "TOC"
-	desc = "" //Todo //"SolGov is a decentralized confederation of human governmental entities based on Luna, Sol, which defines top-level law for their member states.  \
-	Member states receive various benefits such as defensive pacts, trade agreements, social support and funding, and being able to participate \
-	in the Colonial Assembly.  The majority, but not all human territories are members of SolGov.  As such, SolGov is a major power and \
-	defacto represents humanity on the galactic stage. Military flight operations fall under the banner of the USDF."
+	desc = ""
+	/*//Todo //"SolGov is a decentralized confederation of human governmental entities based on Luna, Sol, which defines top-level law for their member states.
+	Member states receive various benefits such as defensive pacts, trade agreements, social support and funding, and being able to participate
+	in the Colonial Assembly.  The majority, but not all human territories are members of SolGov.  As such, SolGov is a major power and
+	defacto represents humanity on the galactic stage. Military flight operations fall under the banner of the USDF."*/
 	history = "" // Todo
 	work = "governing polity of humanity's Confederation"
 	headquarters = "Luna, Sol"

@@ -15,14 +15,13 @@
 	var/current_tag = null
 	var/datum/nano_module/rcon/rcon
 
-/obj/machinery/computer/rcon/New()
-	..()
+/obj/machinery/computer/rcon/Initialize(mapload)
+	. = ..()
 	rcon = new(src)
 
 /obj/machinery/computer/rcon/Destroy()
-	qdel(rcon)
-	rcon = null
-	..()
+	QDEL_NULL(rcon)
+	return ..()
 
 // Proc: attack_hand()
 // Parameters: 1 (user - Person which clicked this computer)

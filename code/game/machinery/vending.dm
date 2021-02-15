@@ -570,7 +570,7 @@
 
 	SSnanoui.update_uis(src)
 
-/obj/machinery/vending/process()
+/obj/machinery/vending/process(delta_time)
 	if(stat & (BROKEN|NOPOWER))
 		return
 

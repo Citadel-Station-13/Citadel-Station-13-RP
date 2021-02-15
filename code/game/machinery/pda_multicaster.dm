@@ -88,7 +88,7 @@
 		idle_power_usage = 0
 	update_icon()
 
-/obj/machinery/pda_multicaster/process()
+/obj/machinery/pda_multicaster/process(delta_time)
 	update_power()
 
 /obj/machinery/pda_multicaster/emp_act(severity)

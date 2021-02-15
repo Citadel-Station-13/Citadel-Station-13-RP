@@ -7,6 +7,7 @@ var/global/list/disposal_pipe_recipes = null
 var/global/list/all_pipe_recipes = null
 
 /hook/startup/proc/init_pipe_recipes()
+	RETURN_TYPE(/list)
 	global.atmos_pipe_recipes = list(
 		"Pipes" = list(
 			new /datum/pipe_recipe/pipe("Pipe",					/obj/machinery/atmospherics/pipe/simple),

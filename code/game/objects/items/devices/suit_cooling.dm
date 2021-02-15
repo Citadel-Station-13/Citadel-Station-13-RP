@@ -36,7 +36,7 @@
 	QDEL_NULL(cell)
 	return ..()
 
-/obj/item/suit_cooling_unit/process()
+/obj/item/suit_cooling_unit/process(delta_time)
 	if (!on || !cell)
 		return PROCESS_KILL
 
@@ -79,7 +79,8 @@
 			var/obj/mecha/M = H.loc
 			return M.return_temperature()
 		else if(istype(H.loc, /obj/machinery/atmospherics/unary/cryo_cell))
-			return H.loc:air_contents.temperature
+			var/obj/machinery/atmospherics/unary/cryo_cell/C = H.loc
+			return C.air_contents.temperature
 
 	var/turf/T = get_turf(src)
 	if(istype(T, /turf/space))

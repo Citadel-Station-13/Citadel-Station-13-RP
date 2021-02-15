@@ -377,7 +377,7 @@
 
 	return 1
 
-/obj/machinery/appliance/process()
+/obj/machinery/appliance/process(delta_time)
 	if (cooking_power > 0 && cooking)
 		for (var/i in cooking_objs)
 			do_cooking_tick(i)

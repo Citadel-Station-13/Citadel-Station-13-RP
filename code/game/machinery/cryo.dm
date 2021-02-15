@@ -53,7 +53,7 @@
 		beaker = null
 	. = ..()
 
-/obj/machinery/atmospherics/unary/cryo_cell/process()
+/obj/machinery/atmospherics/unary/cryo_cell/process(delta_time)
 	..()
 	if(!node)
 		return

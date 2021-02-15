@@ -93,7 +93,7 @@ var/list/floor_light_cache = list()
 		update_brightness()
 		return
 
-/obj/machinery/floor_light/process()
+/obj/machinery/floor_light/process(delta_time)
 	..()
 	var/need_update
 	if((!anchored || broken()) && on)

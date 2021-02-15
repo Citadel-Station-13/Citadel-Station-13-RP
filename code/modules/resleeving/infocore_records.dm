@@ -93,6 +93,7 @@
 		init_from_mob(copyfrom, add_to_db, ckeylock)
 
 /datum/transhuman/body_record/Destroy()
+	. = ..()
 	mydna = null
 	client_ref = null
 	mind_ref = null

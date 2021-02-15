@@ -12,7 +12,7 @@
 	START_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/poi/pascalb/process()
+/obj/item/poi/pascalb/process(delta_time)
 	SSradiation.radiate(src, 5)
 
 /obj/item/poi/pascalb/Destroy()
@@ -40,7 +40,7 @@
 	START_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/poi/brokenoldreactor/process()
+/obj/item/poi/brokenoldreactor/process(delta_time)
 	SSradiation.radiate(src, 25)
 
 /obj/item/poi/brokenoldreactor/Destroy()

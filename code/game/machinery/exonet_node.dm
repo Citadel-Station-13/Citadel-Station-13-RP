@@ -81,7 +81,7 @@
 // Proc: process()
 // Parameters: None
 // Description: Calls the procs below every tick.
-/obj/machinery/exonet_node/process()
+/obj/machinery/exonet_node/process(delta_time)
 	update_power()
 
 // Proc: attackby()

@@ -118,7 +118,7 @@
 	..()
 
 
-/datum/game_mode/epidemic/process()
+/datum/game_mode/epidemic/process(delta_time)
 	if(stage == 1 && cruiser_seconds() < 60 * 30)
 		announce_to_kill_crew()
 		stage = 2

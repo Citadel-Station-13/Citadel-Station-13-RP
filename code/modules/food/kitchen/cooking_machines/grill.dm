@@ -101,7 +101,7 @@
 */
 
 /* // Test remove this too.
-/obj/machinery/appliance/grill/process()
+/obj/machinery/appliance/grill/process(delta_time)
 	if (!stat)
 		for (var/i in cooking_objs)
 			do_cooking_tick(i)

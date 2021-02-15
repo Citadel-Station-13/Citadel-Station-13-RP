@@ -93,7 +93,7 @@
 	viewers(user) << "<span class='danger'>[user] is impaling [T.himself] with the [src.name]! It looks like [T.he] [T.is] trying to commit suicide.</span>"
 	return(BRUTELOSS)
 
-/obj/item/melee/changeling/process()  //Stolen from ninja swords.
+/obj/item/melee/changeling/process(delta_time)  //Stolen from ninja swords.
 	if(!creator || loc != creator || !creator.item_is_in_hands(src))
 		// Tidy up a bit.
 		if(istype(loc,/mob/living))

@@ -64,7 +64,7 @@
 	onclose(user, "computer")
 	return
 
-/obj/machinery/computer/curer/process()
+/obj/machinery/computer/curer/process(delta_time)
 	..()
 
 	if(stat & (NOPOWER|BROKEN))

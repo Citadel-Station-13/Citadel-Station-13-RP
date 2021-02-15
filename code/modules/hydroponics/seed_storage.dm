@@ -80,7 +80,7 @@
 			))
 	return
 
-/obj/machinery/seed_storage/process()
+/obj/machinery/seed_storage/process(delta_time)
 	..()
 	if(seconds_electrified > 0)
 		seconds_electrified--

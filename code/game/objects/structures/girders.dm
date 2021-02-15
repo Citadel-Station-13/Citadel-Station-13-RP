@@ -28,7 +28,7 @@
 		STOP_PROCESSING(SSobj, src)
 	. = ..()
 
-/obj/structure/girder/process()
+/obj/structure/girder/process(delta_time)
 	if(!radiate())
 		STOP_PROCESSING(SSobj, src)
 		return

@@ -29,7 +29,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/spell/energy_siphon/process()
+/obj/item/spell/energy_siphon/process(delta_time)
 	if(!siphoning)
 		return
 	if(!pay_energy(100))

@@ -27,7 +27,7 @@
 	log_and_message_admins("has stopped maintaining [src].")
 	return ..()
 
-/obj/item/spell/radiance/process()
+/obj/item/spell/radiance/process(delta_time)
 	var/turf/T = get_turf(src)
 	var/datum/gas_mixture/removed = null
 	var/datum/gas_mixture/env = null

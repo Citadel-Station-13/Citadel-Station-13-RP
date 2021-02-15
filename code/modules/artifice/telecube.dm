@@ -89,7 +89,7 @@
 
 	return
 
-/obj/item/telecube/process()
+/obj/item/telecube/process(delta_time)
 	..()
 	update_icon()
 

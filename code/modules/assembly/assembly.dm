@@ -113,7 +113,7 @@
 	return
 
 
-/obj/item/assembly/process()
+/obj/item/assembly/process(delta_time)
 	STOP_PROCESSING(SSobj, src)
 	return
 

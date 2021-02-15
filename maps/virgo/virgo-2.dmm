@@ -4647,7 +4647,7 @@
 	icon_state = "plant-09";
 	name = "Esteban";
 	pixel_y = 8;
-	
+
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade/centcom)
@@ -6907,11 +6907,11 @@
 "asq" = (
 /obj/structure/table/reinforced,
 /obj/item/crowbar,
-/obj/item/screwdriver,
-/obj/item/wrench,
+/obj/item/tool/screwdriver,
+/obj/item/tool/wrench,
 /obj/item/crowbar,
-/obj/item/screwdriver,
-/obj/item/wrench,
+/obj/item/tool/screwdriver,
+/obj/item/tool/wrench,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -7169,7 +7169,7 @@
 /area/centcom/specops)
 "asQ" = (
 /obj/structure/table/reinforced,
-/obj/item/wrench,
+/obj/item/tool/wrench,
 /obj/item/storage/box,
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -7459,8 +7459,8 @@
 "atq" = (
 /obj/structure/table/reinforced,
 /obj/item/crowbar,
-/obj/item/screwdriver,
-/obj/item/wrench,
+/obj/item/tool/screwdriver,
+/obj/item/tool/wrench,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -7946,7 +7946,7 @@
 "auk" = (
 /obj/structure/table/reinforced,
 /obj/item/crowbar,
-/obj/item/screwdriver,
+/obj/item/tool/screwdriver,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -10502,7 +10502,7 @@
 	name = "Flasher";
 	pixel_x = 27;
 	pixel_y = 0;
-	
+
 	},
 /turf/simulated/shuttle/floor/darkred,
 /area/syndicate_station/start)
@@ -11311,7 +11311,7 @@
 /area/syndicate_station/start)
 "aAQ" = (
 /obj/structure/table/standard,
-/obj/item/screwdriver,
+/obj/item/tool/screwdriver,
 /obj/effect/spawner/newbomb/timer/syndicate,
 /turf/simulated/shuttle/floor/darkred,
 /area/syndicate_station/start)
@@ -13195,7 +13195,7 @@
 	pixel_x = -4;
 	pixel_y = 0
 	},
-/obj/item/wrench,
+/obj/item/tool/wrench,
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/escape/centcom)
 "aEY" = (
@@ -14703,7 +14703,7 @@
 	pixel_x = -4;
 	pixel_y = 0
 	},
-/obj/item/wrench,
+/obj/item/tool/wrench,
 /obj/structure/table/reinforced,
 /obj/item/reagent_containers/glass/beaker/cryoxadone,
 /turf/simulated/shuttle/floor/white,
@@ -15170,7 +15170,7 @@
 /obj/effect/floor_decal/corner/white{
 	dir = 6;
 	icon_state = "corner_white";
-	
+
 	},
 /turf/unsimulated/floor{
 	icon_state = "steel"
@@ -15380,7 +15380,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "plant-24";
 	pixel_y = 8;
-	
+
 	},
 /obj/structure/table/woodentable{
 	dir = 5
@@ -15459,7 +15459,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "plant-06";
 	pixel_y = 8;
-	
+
 	},
 /obj/effect/floor_decal/corner/red{
 	dir = 8
@@ -16632,7 +16632,7 @@
 /obj/effect/floor_decal/corner/white{
 	dir = 9;
 	icon_state = "corner_white";
-	
+
 	},
 /turf/unsimulated/floor{
 	icon_state = "steel"
@@ -16868,7 +16868,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "plant-20";
 	pixel_y = 8;
-	
+
 	},
 /turf/unsimulated/floor{
 	icon_state = "steel"
@@ -17323,7 +17323,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "plant-06";
 	pixel_y = 8;
-	
+
 	},
 /turf/unsimulated/floor{
 	icon_state = "steel"
@@ -17334,7 +17334,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "plant-04";
 	pixel_y = 8;
-	
+
 	},
 /turf/unsimulated/floor{
 	icon_state = "steel"
@@ -18374,7 +18374,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5;
 	icon_state = "intact";
-	
+
 	},
 /turf/unsimulated/floor{
 	icon_state = "white"
@@ -18390,7 +18390,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4;
 	icon_state = "map";
-	
+
 	},
 /obj/effect/floor_decal/corner/blue{
 	dir = 6
@@ -18550,7 +18550,7 @@
 	pixel_x = 7;
 	pixel_y = 1
 	},
-/obj/item/wrench,
+/obj/item/tool/wrench,
 /obj/effect/floor_decal/corner/blue/full,
 /turf/unsimulated/floor{
 	icon_state = "white"
@@ -20208,7 +20208,7 @@
 	},
 /area/tdome/tdomeadmin)
 "aTG" = (
-/obj/item/wrench,
+/obj/item/tool/wrench,
 /turf/unsimulated/floor{
 	icon_state = "lino"
 	},
@@ -21016,7 +21016,7 @@
 /turf/simulated/shuttle/floor/red,
 /area/space)
 "aVJ" = (
-/obj/item/wrench,
+/obj/item/tool/wrench,
 /obj/item/mop,
 /turf/simulated/shuttle/plating,
 /area/space)
@@ -21330,7 +21330,7 @@
 /obj/effect/decal/cleanable/cobweb2{
 	icon_state = "spiderling";
 	name = "dead spider";
-	
+
 	},
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -22864,7 +22864,7 @@
 "bcC" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "plant-20";
-	
+
 	},
 /turf/unsimulated/floor{
 	icon_state = "vault";
@@ -23007,7 +23007,7 @@
 	dir = 8;
 	icon = 'icons/turf/shuttle_vr.dmi';
 	icon_state = "wall_ofloor";
-	
+
 	},
 /area/bigship)
 "bde" = (
@@ -23605,7 +23605,7 @@
 	dir = 2;
 	icon = 'icons/turf/shuttle_vr.dmi';
 	icon_state = "wall_pfloor";
-	
+
 	},
 /area/bigship)
 "bgL" = (
@@ -23613,7 +23613,7 @@
 	dir = 1;
 	icon = 'icons/turf/shuttle_vr.dmi';
 	icon_state = "wall_pfloor";
-	
+
 	},
 /area/bigship)
 "bhG" = (
@@ -23633,7 +23633,7 @@
 	dir = 2;
 	icon = 'icons/turf/shuttle_vr.dmi';
 	icon_state = "wall_ofloor";
-	
+
 	},
 /area/bigship)
 "bie" = (
@@ -23641,7 +23641,7 @@
 	dir = 1;
 	icon = 'icons/turf/shuttle_vr.dmi';
 	icon_state = "wall_ofloor";
-	
+
 	},
 /area/bigship)
 "biT" = (

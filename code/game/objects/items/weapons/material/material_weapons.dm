@@ -160,7 +160,7 @@
 
 /*
 Commenting this out pending rebalancing of radiation based on small objects.
-/obj/item/material/process()
+/obj/item/material/process(delta_time)
 	if(!material.radioactivity)
 		return
 	for(var/mob/living/L in range(1,src))
