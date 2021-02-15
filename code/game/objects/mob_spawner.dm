@@ -16,7 +16,7 @@
 	/mob/living/simple_mob/animal/passive/cat = 25
 	)
 
-	var/total_spawns = -1 //Total mob spawns, over all time, -1 for no limit
+	var/total_spawns = -1 //Total mob spawns, over all time, -1 for no limiteee
 	var/simultaneous_spawns = 3 //Max spawned mobs active at one time
 	var/mob_faction
 
