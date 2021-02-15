@@ -18,8 +18,8 @@ fundamental differences
 	var/datum/looping_sound/mixer/mixer_loop
 
 /obj/machinery/appliance/mixer/examine(var/mob/user)
-	..()
-	user << span("notice", "It is currently set to make a [selected_option]")
+	. = ..()
+	. += "<span class = 'notice'>It is currently set to make a [selected_option].</span>"
 
 /obj/machinery/appliance/mixer/New()
 	. = ..()

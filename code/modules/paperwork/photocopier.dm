@@ -22,7 +22,7 @@
 	. = ..()
 	default_apply_parts()
 
-/obj/machinery/photocopier/examine(mob/user as mob)
+/obj/machinery/photocopier/examine(mob/user)
 	. = ..()
 	if(Adjacent(user))
 		. += "The screen shows there's [toner ? "[toner]" : "no"] toner left in the printer."

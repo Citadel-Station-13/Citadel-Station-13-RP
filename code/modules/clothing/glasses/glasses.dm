@@ -122,6 +122,7 @@ BLIND     // can't see anything
 	action_button_name = "Toggle Goggles"
 	item_flags = AIRTIGHT
 	body_parts_covered = EYES
+	clothing_flags = SCAN_REAGENTS
 
 /obj/item/clothing/glasses/science/New()
 	..()

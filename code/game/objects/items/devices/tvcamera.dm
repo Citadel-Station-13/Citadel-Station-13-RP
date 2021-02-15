@@ -23,9 +23,9 @@
 	..()
 
 /obj/item/tvcamera/examine()
-	..()
-	to_chat(usr, "Video feed is [camera.status ? "on" : "off"]")
-	to_chat(usr, "Audio feed is [radio.broadcasting ? "on" : "off"]")
+	. = ..()
+	. += "Video feed is [camera.status ? "on" : "off"]."
+	. += "Audio feed is [radio.broadcasting ? "on" : "off"]."
 
 /obj/item/tvcamera/Initialize()
 	. = ..()
@@ -93,4 +93,3 @@
 		H.update_inv_r_hand()
 		H.update_inv_l_hand()
 		H.update_inv_belt()
-

@@ -31,13 +31,13 @@
 	transaction_devices += src // Global reference list to be properly set up by /proc/setup_economy()
 
 
-/obj/machinery/cash_register/examine(mob/user as mob)
-	..(user)
+/obj/machinery/cash_register/examine(mob/user)
+	. = ..()
 	if(cash_open)
 		if(cash_stored)
-			to_chat(user, "It holds [cash_stored] Thaler\s of money.")
+			. += "It holds [cash_stored] thaler\s of money."
 		else
-			to_chat(user, "It's completely empty.")
+			. += "It's completely empty."
 
 
 /obj/machinery/cash_register/attack_hand(mob/user as mob)

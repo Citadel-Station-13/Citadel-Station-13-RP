@@ -678,3 +678,6 @@ var/global/image/backplane
 		return
 
 	item.screen_loc = screen_place
+
+/mob/proc/can_see_reagents()
+	return stat == DEAD || issilicon(src) //Dead guys and silicons can always see reagents
