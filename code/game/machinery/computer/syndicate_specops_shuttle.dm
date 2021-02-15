@@ -195,7 +195,7 @@ var/syndicate_elite_shuttle_timeleft = 0
 		return
 
 //	if (sent_syndicate_strike_team == 0)
-//		usr << "<span class='warning'>The strike team has not yet deployed.</span>"
+//		to_chat(usr, "<span class='warning'>The strike team has not yet deployed.</span>")
 //		return
 
 	if(..())

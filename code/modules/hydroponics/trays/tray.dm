@@ -295,7 +295,7 @@
 		return
 
 	if(closed_system)
-		if(user) user << "You can't harvest from the plant while the lid is shut."
+		if(user) to_chat(user, "You can't harvest from the plant while the lid is shut.")
 		return
 
 	if(user)

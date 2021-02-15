@@ -67,7 +67,7 @@
 		return
 
 	if(F.decals && F.decals.len > 5 && painting_decal != /obj/effect/floor_decal/reset)
-		user << "<span class='warning'>\The [F] has been painted too much; you need to clear it off.</span>"
+		to_chat(user, "<span class='warning'>\The [F] has been painted too much; you need to clear it off.</span>")
 		return
 
 	var/painting_dir = 0

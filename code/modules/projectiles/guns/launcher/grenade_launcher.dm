@@ -122,4 +122,4 @@
 		playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1)
 		chambered = null
 	else
-		user << "<span class='warning'>[src] is empty.</span>"
+		to_chat(user, "<span class='warning'>[src] is empty.</span>")

@@ -102,7 +102,7 @@
 
 /obj/structure/inflatable/proc/deflate()
 	playsound(loc, 'sound/machines/hiss.ogg', 75, 1)
-	//user << "<span class='notice'>You slowly deflate the inflatable wall.</span>"
+	//to_chat(user, "<span class='notice'>You slowly deflate the inflatable wall.</span>")
 	visible_message("[src] slowly deflates.")
 	spawn(50)
 		var/obj/item/inflatable/R = new /obj/item/inflatable(loc)

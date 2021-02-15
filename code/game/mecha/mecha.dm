@@ -1042,7 +1042,7 @@
 		to_chat(user,"Genetic sequence or serial number incompatible with locking mechanism.")
 		return 0
 	//Added a message here since people assume their first click failed or something./N
-//	user << "Installing MMI, please stand by."
+//	to_chat(user, "Installing MMI, please stand by.")
 
 	visible_message("<span class='notice'>[usr] starts to insert a brain into [src.name]</span>")
 
@@ -1317,7 +1317,7 @@
 			to_chat(L, span("warning", "You have other entities attached to yourself. Remove them first."))
 			return
 
-//	usr << "You start climbing into [src.name]"
+//	to_chat(usr, "You start climbing into [src.name]")
 
 	visible_message("<span class='notice'>\The [usr] starts to climb into [src.name]</span>")
 

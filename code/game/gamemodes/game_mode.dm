@@ -115,8 +115,8 @@ var/global/list/additional_antag_types = list()
 
 /datum/game_mode/proc/announce() //to be called when round starts
 	to_chat(world, "<B>The current game mode is [capitalize(name)]!</B>")
-	if(round_description) world << "[round_description]"
-	if(round_autoantag) world << "Antagonists will be added to the round automagically as needed."
+	if(round_description) to_chat(world, "[round_description]")
+	if(round_autoantag) to_chat(world, "Antagonists will be added to the round automagically as needed.")
 	if(antag_templates && antag_templates.len)
 		var/antag_summary = "<b>Possible antagonist types:</b> "
 		var/i = 1
@@ -533,7 +533,7 @@ proc/get_nt_opposed()
 	set category = "OOC"
 
 	if(!SSticker || !SSticker.mode)
-		usr << "Something is terribly wrong; there is no gametype."
+		to_chat(usr, "Something is terribly wrong; there is no gametype.")
 		return
 
 	if(master_mode != "secret")

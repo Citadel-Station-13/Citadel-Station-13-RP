@@ -35,7 +35,7 @@
 	var/N = input("Percentage of tank used per shot:","[src]") as null|anything in possible_pressure_amounts
 	if (N)
 		pressure_setting = N
-		usr << "You dial the pressure valve to [pressure_setting]%."
+		to_chat(usr, "You dial the pressure valve to [pressure_setting]%.")
 
 /obj/item/gun/launcher/pneumatic/proc/eject_tank(mob/user) //Remove the tank.
 	if(!tank)
