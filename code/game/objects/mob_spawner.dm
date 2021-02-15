@@ -381,3 +381,71 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 		/mob/living/simple_mob/animal/space/alien/sentinel = 4,
 		/mob/living/simple_mob/animal/space/alien/sentinel/praetorian = 2
 	)
+
+/obj/structure/mob_spawner/scanner/corgi
+	name = "Corgi Lazy Spawner"
+	desc = "This is a proof of concept, not sure why you would use this one"
+	spawn_delay = 3 MINUTES
+	mob_faction = "Corgi"
+	spawn_types = list(
+	/mob/living/simple_mob/animal/passive/dog/corgi = 75,
+	/mob/living/simple_mob/animal/passive/dog/corgi/puppy = 50
+	)
+
+	simultaneous_spawns = 5
+	range = 7
+	destructible = 1
+	health = 200
+	total_spawns = 100
+
+/obj/structure/mob_spawner/scanner/wild_animals
+	name = "Wilderness Lazy Spawner"
+	spawn_delay = 10 MINUTES
+	range = 10
+	simultaneous_spawns = 1
+	mob_faction = "wild animal"
+	total_spawns = -1
+	destructible = 0
+	anchored = 1
+	invisibility = 101
+	spawn_types = list(
+	/mob/living/simple_mob/animal/passive/gaslamp = 20,
+//	/mob/living/simple_mob/otie/feral = 10,
+	/mob/living/simple_mob/vore/aggressive/dino/virgo3b = 5,
+	/mob/living/simple_mob/vore/aggressive/dragon/virgo3b = 1
+	)
+
+/obj/structure/mob_spawner/scanner/xenos
+	name = "Xenomorph Egg"
+	spawn_delay = 10 MINUTES
+	range = 10
+	simultaneous_spawns = 1
+	mob_faction = "xeno"
+	total_spawns = -1
+	destructible = 1
+	health = 50
+	anchored = 1
+	icon = 'icons/mob/actions.dmi'
+	icon_state = "alien_egg"
+	spawn_types = list(
+	/mob/living/simple_mob/animal/space/alien/drone = 20,
+	/mob/living/simple_mob/animal/space/alien = 10,
+	/mob/living/simple_mob/animal/space/alien/sentinel = 5,
+	/mob/living/simple_mob/animal/space/alien/queen = 1
+	)
+
+/obj/structure/mob_spawner/scanner/xenos/royal
+	name = "Royal Xenomorph Egg"
+	spawn_delay = 10 MINUTES
+	range = 10
+	simultaneous_spawns = 1
+	mob_faction = "xeno"
+	total_spawns = 1
+	destructible = 1
+	health = 50
+	anchored = 1
+	icon = 'icons/mob/actions.dmi'
+	icon_state = "alien_egg"
+	spawn_types = list(
+	/mob/living/simple_mob/animal/space/alien/queen = 5,
+	)
