@@ -263,14 +263,14 @@
 	update_icon()
 
 
-/mob/living/simple_mob/say(var/message,var/datum/language/language)
-	var/verb = "says"
+/mob/living/simple_mob/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
+	verb = "says"
 	if(speak_emote.len)
 		verb = pick(speak_emote)
 
 	message = sanitize(message)
 
-	..(message, null, verb)
+	return ..()
 
 /mob/living/simple_mob/get_speech_ending(verb, var/ending)
 	return verb
@@ -290,7 +290,6 @@
 		else
 			user.visible_message("<span class='danger'>[user] butchers \the [src] messily!</span>")
 			gib()
-
 
 /mob/living/simple_mob/is_sentient()
 	return mob_class & MOB_CLASS_HUMANOID|MOB_CLASS_ANIMAL|MOB_CLASS_SLIME // Update this if needed.

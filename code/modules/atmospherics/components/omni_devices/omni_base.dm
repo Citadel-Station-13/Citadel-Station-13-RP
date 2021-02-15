@@ -62,7 +62,7 @@
 /obj/machinery/atmospherics/omni/proc/error_check()
 	return
 
-/obj/machinery/atmospherics/omni/process()
+/obj/machinery/atmospherics/omni/process(delta_time)
 	last_power_draw = 0
 	last_flow_rate = 0
 

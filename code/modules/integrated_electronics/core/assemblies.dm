@@ -30,7 +30,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/electronic_assembly/process()
+/obj/item/electronic_assembly/process(delta_time)
 	handle_idle_power()
 
 /obj/item/electronic_assembly/proc/handle_idle_power()
@@ -347,10 +347,12 @@
 	return FALSE
 
 /obj/item/electronic_assembly/on_loc_moved(oldloc)
+	. = ..()
 	for(var/obj/O in contents)
 		O.on_loc_moved(oldloc)
 
 /obj/item/electronic_assembly/Moved(var/oldloc)
+	. = ..()
 	for(var/obj/O in contents)
 		O.on_loc_moved(oldloc)
 

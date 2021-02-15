@@ -154,7 +154,7 @@
 		. += "<span class='warning'>It is missing a tank!</span>"
 
 
-/obj/machinery/oxygen_pump/process()
+/obj/machinery/oxygen_pump/process(delta_time)
 	if(breather)
 		if(!can_apply_to_target(breather))
 			if(tank)
@@ -253,7 +253,7 @@
 
 	var/last_area = null
 
-/obj/machinery/oxygen_pump/mobile/process()
+/obj/machinery/oxygen_pump/mobile/process(delta_time)
 	..()
 
 	var/turf/T = get_turf(src)
@@ -277,7 +277,7 @@
 	name = "portable patient stabilizer"
 	desc = "A portable oxygen pump with a retractable mask used for stabilizing patients in the field."
 
-/obj/machinery/oxygen_pump/mobile/stabilizer/process()
+/obj/machinery/oxygen_pump/mobile/stabilizer/process(delta_time)
 	if(breather)
 		if(!can_apply_to_target(breather))
 			if(tank)

@@ -137,7 +137,7 @@
 		set_frequency(frequency)
 		src.broadcast_status()
 
-/obj/machinery/atmospherics/unary/vent_scrubber/process()
+/obj/machinery/atmospherics/unary/vent_scrubber/process(delta_time)
 	..()
 
 	if (hibernate)

@@ -29,7 +29,7 @@
 	name = "flame"
 	eye_safety_modifier = 3
 
-/obj/item/weldingtool/spell/process()
+/obj/item/weldingtool/spell/process(delta_time)
 	return
 
 //Needed to make the spell welder have infinite fuel.  Don't worry, it uses energy instead.

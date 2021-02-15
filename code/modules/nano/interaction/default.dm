@@ -80,8 +80,10 @@
 	if(. != STATUS_CLOSE)
 		if(loc)
 			. = min(., loc.contents_nano_distance(src_object, src))
+/*
 	if(STATUS_INTERACTIVE)
 		return STATUS_UPDATE
+*/
 
 /mob/living/carbon/human/nano_default_can_use_topic(var/src_object)
 	. = shared_nano_interaction(src_object)

@@ -439,7 +439,7 @@
 	var/last_event = 0
 	var/rad_power = 7.5
 
-/obj/machinery/door/airlock/process()
+/obj/machinery/door/airlock/process(delta_time)
 	// Deliberate no call to parent.
 	if(main_power_lost_until > 0 && world.time >= main_power_lost_until)
 		regainMainPower()
@@ -453,7 +453,7 @@
 	if (..() == PROCESS_KILL && !(main_power_lost_until > 0 || backup_power_lost_until > 0 || electrified_until > 0))
 		. = PROCESS_KILL
 
-/obj/machinery/door/airlock/uranium/process()
+/obj/machinery/door/airlock/uranium/process(delta_time)
 	if(world.time > last_event+20)
 		if(prob(50))
 			SSradiation.radiate(src, rad_power)

@@ -48,7 +48,7 @@
 	dismantle_wall(null, null, TRUE)
 	return ..()
 
-/turf/simulated/wall/process()
+/turf/simulated/wall/process(delta_time)
 	// Calling parent will kill processing
 	if(!radiate())
 		return PROCESS_KILL

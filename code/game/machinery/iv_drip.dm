@@ -81,7 +81,7 @@
 		return ..()
 
 
-/obj/machinery/iv_drip/process()
+/obj/machinery/iv_drip/process(delta_time)
 	set background = 1
 
 	if(attached)

@@ -37,7 +37,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	drop_sound = 'sound/items/drop/food.ogg'
 	pickup_sound = 'sound/items/pickup/food.ogg'
 
-/obj/item/flame/match/process()
+/obj/item/flame/match/process(delta_time)
 	if(isliving(loc))
 		var/mob/living/M = loc
 		M.IgniteMob()
@@ -112,7 +112,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		else // else just remove some of the reagents
 			reagents.remove_any(REM)
 
-/obj/item/clothing/mask/smokable/process()
+/obj/item/clothing/mask/smokable/process(delta_time)
 	var/turf/location = get_turf(src)
 	smoke(1)
 	if(smoketime < 1)
@@ -579,7 +579,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	else
 		..()
 
-/obj/item/flame/lighter/process()
+/obj/item/flame/lighter/process(delta_time)
 	var/turf/location = get_turf(src)
 	if(location)
 		location.hotspot_expose(700, 5)

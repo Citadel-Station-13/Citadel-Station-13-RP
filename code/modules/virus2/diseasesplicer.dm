@@ -87,7 +87,7 @@
 		ui.set_initial_data(data)
 		ui.open()
 
-/obj/machinery/computer/diseasesplicer/process()
+/obj/machinery/computer/diseasesplicer/process(delta_time)
 	if(stat & (NOPOWER|BROKEN))
 		return
 

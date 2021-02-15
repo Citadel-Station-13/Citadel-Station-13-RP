@@ -44,7 +44,7 @@
 	return
 
 
-/obj/item/assembly/timer/process()
+/obj/item/assembly/timer/process(delta_time)
 	if(timing && (time > 0))
 		time--
 	if(timing && time <= 0)

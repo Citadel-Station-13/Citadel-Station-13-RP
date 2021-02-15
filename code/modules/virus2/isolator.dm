@@ -109,7 +109,7 @@
 		ui.set_initial_data(data)
 		ui.open()
 
-/obj/machinery/disease2/isolator/process()
+/obj/machinery/disease2/isolator/process(delta_time)
 	if (isolating > 0)
 		isolating -= 1
 		if (isolating == 0)

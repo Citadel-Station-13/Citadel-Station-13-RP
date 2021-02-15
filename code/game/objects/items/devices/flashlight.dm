@@ -52,7 +52,7 @@
 		to_chat(user, "<span class='notice'>You set the brightness level on \the [src] to [brightness_level].</span>")
 		update_icon()
 
-/obj/item/flashlight/process()
+/obj/item/flashlight/process(delta_time)
 	if(!on || !cell)
 		return PROCESS_KILL
 
@@ -336,7 +336,7 @@
 	fuel = rand(800, 1000) // Sorry for changing this so much but I keep under-estimating how long X number of ticks last in seconds.
 	..()
 
-/obj/item/flashlight/flare/process()
+/obj/item/flashlight/flare/process(delta_time)
 	var/turf/pos = get_turf(src)
 	if(pos)
 		pos.hotspot_expose(produce_heat, 5)
@@ -396,7 +396,7 @@
 	fuel = rand(1600, 2000)
 	..()
 
-/obj/item/flashlight/glowstick/process()
+/obj/item/flashlight/glowstick/process(delta_time)
 	fuel = max(fuel - 1, 0)
 	if(!fuel || !on)
 		turn_off()

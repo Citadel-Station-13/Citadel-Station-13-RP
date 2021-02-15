@@ -149,7 +149,7 @@ fundamental differences
 			mixer_loop.stop(src)
 
 
-/obj/machinery/appliance/mixer/process()
+/obj/machinery/appliance/mixer/process(delta_time)
 	if (!stat)
 		for (var/i in cooking_objs)
 			do_cooking_tick(i)

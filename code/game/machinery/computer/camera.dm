@@ -111,10 +111,10 @@
 	circuit = /obj/item/circuitboard/security/engineering
 	light_color = "#FAC54B"
 
-/obj/machinery/computer/security/engineering/New()
+/obj/machinery/computer/security/engineering/Initialize(mapload)
 	if(!network)
 		network = engineering_networks.Copy()
-	..()
+	. = ..()
 
 /obj/machinery/computer/security/nuclear
 	name = "head mounted camera monitor"
@@ -123,6 +123,6 @@
 	network = list(NETWORK_MERCENARY)
 	circuit = null
 
-/obj/machinery/computer/security/nuclear/New()
-	..()
+/obj/machinery/computer/security/nuclear/Initialize(mapload)
+	. = ..()
 	req_access = list(150)

@@ -296,7 +296,3 @@
 				playsound(src, 'sound/machines/chime.ogg', 50, 1)
 				src.visible_message("[icon2html(thing = src, target = world)] \The [src] chimes.")
 				transaction_paid = 1
-	else
-		..()
-
-	//emag?

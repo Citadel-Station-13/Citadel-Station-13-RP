@@ -119,7 +119,7 @@
 	description = "A strange metallic liquid which can rearrange itself to take the form of other metals it touches."
 	taste_description = "metallic"
 	taste_mult = 1.1
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#666666"
 	strength = 20
 
@@ -203,7 +203,7 @@
 	description = "A strange metallic liquid which can bind other metals together that would otherwise require intense heat to alloy."
 	taste_description = "metallic"
 	taste_mult = 1.1
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#666666"
 	strength = 20
 
@@ -227,7 +227,7 @@
 	id = "steel"
 	description = "An 'alloy' of iron and carbon, forced to bind together by another strange metallic liquid."
 	taste_description = "metallic"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#888888"
 
 
@@ -242,7 +242,7 @@
 	id = "plasteel"
 	description = "An 'alloy' of iron, carbon, and platinum, forced to bind together by another strange metallic liquid."
 	taste_description = "metallic"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#AAAAAA"
 
 

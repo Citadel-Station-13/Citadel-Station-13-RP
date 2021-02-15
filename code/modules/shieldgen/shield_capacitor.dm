@@ -101,7 +101,7 @@
 	user << browse(t, "window=shield_capacitor;size=500x400")
 	user.set_machine(src)
 
-/obj/machinery/shield_capacitor/process()
+/obj/machinery/shield_capacitor/process(delta_time)
 	if (!anchored)
 		active = 0
 

@@ -538,8 +538,6 @@
 	desc = "A peaked helmet once popular among Old Earth militaries and expeditionary forces."
 	icon_state = "pith"
 	item_state_slots = list(slot_r_hand_str = "beret_white", slot_l_hand_str = "beret_white")
-	body_parts_covered = HEAD
-	flags_inv = BLOCKHAIR
 
 /obj/item/clothing/head/reindeer
 	name = "reindeer antlers"
@@ -608,3 +606,8 @@
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
 	siemens_coefficient = 0.7
 	body_parts_covered = HEAD|FACE|EYES
+
+/obj/item/clothing/head/traveller
+	name = "traveller's hat"
+	desc = "A wide brimmed hat made of sturdy material. Its floppy, poitned top is similar to those worn by Old Earth bards or sorcerors."
+	icon_state = "traveller"

@@ -56,7 +56,7 @@
 /datum/shuttle/autodock/web_shuttle/proc/build_destinations()
 	return
 
-/datum/shuttle/autodock/web_shuttle/process()
+/datum/shuttle/autodock/web_shuttle/process(delta_time)
 	if(moving_status == SHUTTLE_IDLE)
 		if(web_master.autopath)	// We're currently flying a path.
 			autopilot_say("Continuing route.")
@@ -495,7 +495,7 @@
 	icon_state = "airlock_sensor_standby"
 	var/id_tag
 
-/obj/machinery/shuttle_sensor/process()
+/obj/machinery/shuttle_sensor/process(delta_time)
 	return PROCESS_KILL	//nty
 
 /obj/machinery/shuttle_sensor/proc/air_list()

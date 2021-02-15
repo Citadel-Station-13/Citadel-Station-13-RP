@@ -31,7 +31,7 @@
 		P = locate(/obj/machinery/atmospherics/pipe) in loc
 	return P
 
-/obj/machinery/meter/process()
+/obj/machinery/meter/process(delta_time)
 	if(!target)
 		icon_state = "meterX"
 		return 0

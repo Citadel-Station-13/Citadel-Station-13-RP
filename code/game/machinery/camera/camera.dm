@@ -7,7 +7,7 @@
 	idle_power_usage = 5
 	active_power_usage = 10
 	plane = MOB_PLANE
-	layer = ABOVE_MOB_LAYER
+	layer = BELOW_MOB_LAYER
 
 	var/list/network = list(NETWORK_DEFAULT)
 	var/c_tag = null
@@ -58,7 +58,9 @@
 	M.machine_visual = null
 	return 1
 
-/obj/machinery/camera/New()
+/obj/machinery/camera/Initialize(mapload)
+	if (dir == NORTH)
+		layer = ABOVE_MOB_LAYER
 	wires = new(src)
 	assembly = new(src)
 	assembly.state = 4
@@ -81,7 +83,7 @@
 	if(!c_tag)
 		var/area/A = get_area(src)
 		c_tag = "[A ? A.name : "Unknown"] #[rand(111,999)]"
-	..()
+	return ..()
 	// VOREStation Edit End
 
 /obj/machinery/camera/Destroy()
@@ -93,7 +95,7 @@
 	wires = null
 	return ..()
 
-/obj/machinery/camera/process()
+/obj/machinery/camera/process(delta_time)
 	if((stat & EMPED) && world.time >= affected_by_emp_until)
 		stat &= ~EMPED
 		cancelCameraAlarm()

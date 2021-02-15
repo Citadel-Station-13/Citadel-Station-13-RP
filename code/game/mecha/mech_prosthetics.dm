@@ -47,7 +47,7 @@
 	manufacturer = basic_robolimb.company
 	update_categories()
 
-/obj/machinery/pros_fabricator/process()
+/obj/machinery/pros_fabricator/process(delta_time)
 	..()
 	if(stat)
 		return

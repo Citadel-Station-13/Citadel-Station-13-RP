@@ -521,7 +521,7 @@
 /obj/item/melee/energy/blade/dropped()
 	spawn(1) if(src) qdel(src)
 
-/obj/item/melee/energy/blade/process()
+/obj/item/melee/energy/blade/process(delta_time)
 	if(!creator || loc != creator || !creator.item_is_in_hands(src))
 		// Tidy up a bit.
 		if(istype(loc,/mob/living))

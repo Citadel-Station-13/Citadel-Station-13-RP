@@ -79,7 +79,7 @@
 	user << browse(dat, "window=anodevice;size=400x500")
 	onclose(user, "anodevice")
 
-/obj/item/anodevice/process()
+/obj/item/anodevice/process(delta_time)
 	if(activated)
 		if(inserted_battery && inserted_battery.battery_effect && (inserted_battery.stored_charge > 0) )
 			//make sure the effect is active

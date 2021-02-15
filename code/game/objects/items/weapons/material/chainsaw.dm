@@ -91,7 +91,7 @@ obj/item/chainsaw/proc/turnOn(mob/user as mob)
 		else
 			to_chat(user, "<span class='notice'>Don't move while you're refilling the chainsaw.</span>")
 
-/obj/item/chainsaw/process()
+/obj/item/chainsaw/process(delta_time)
 	if(!on)
 		return
 

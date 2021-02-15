@@ -17,13 +17,13 @@
 	var/power = 0
 
 
-/obj/machinery/lapvend/New()
-	..()
-	spawn(4)
-		power_change()
-		return
-	return
+/obj/machinery/lapvend/Initialize(mapload)
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
 
+/obj/machinery/lapvend/LateInitialize()
+	. = ..()
+	power_change()
 
 /obj/machinery/lapvend/attackby(obj/item/W as obj, mob/user as mob)
 	var/obj/item/card/id/I = W.GetID()

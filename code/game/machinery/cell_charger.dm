@@ -114,7 +114,7 @@
 	..(severity)
 
 
-/obj/machinery/cell_charger/process()
+/obj/machinery/cell_charger/process(delta_time)
 	//world << "ccpt [charging] [stat]"
 	if((stat & (BROKEN|NOPOWER)) || !anchored)
 		update_use_power(USE_POWER_OFF)

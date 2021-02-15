@@ -24,7 +24,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/multitool/ai_detector/process()
+/obj/item/multitool/ai_detector/process(delta_time)
 	var/old_detect_state = detect_state
 	var/new_detect_state = detect_ai()
 	detect_state = new_detect_state

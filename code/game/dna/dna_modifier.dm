@@ -323,7 +323,7 @@
 	return 1
 
 /*
-/obj/machinery/computer/scan_consolenew/process() //not really used right now
+/obj/machinery/computer/scan_consolenew/process(delta_time) //not really used right now
 	if(stat & (NOPOWER|BROKEN))
 		return
 	if (!( src.status )) //remove this

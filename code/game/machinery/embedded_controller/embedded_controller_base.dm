@@ -37,7 +37,7 @@
 	//if(program)
 	//	return program.receive_user_command(href_list["command"])
 
-/obj/machinery/embedded_controller/process()
+/obj/machinery/embedded_controller/process(delta_time)
 	if(program)
 		program.process()
 

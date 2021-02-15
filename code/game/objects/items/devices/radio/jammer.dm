@@ -58,7 +58,7 @@ var/global/list/active_radio_jammers = list()
 	on = TRUE
 	update_icon()
 
-/obj/item/radio_jammer/process()
+/obj/item/radio_jammer/process(delta_time)
 	if(!power_source || !power_source.check_charge(tick_cost))
 		var/mob/living/notify
 		if(isliving(loc))

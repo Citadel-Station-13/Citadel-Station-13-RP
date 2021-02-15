@@ -139,7 +139,7 @@
 	else
 		src.open()
 
-/obj/machinery/atmospherics/valve/process()
+/obj/machinery/atmospherics/valve/process(delta_time)
 	..()
 	. = PROCESS_KILL
 

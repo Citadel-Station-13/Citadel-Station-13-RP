@@ -113,7 +113,7 @@
 
 	add_fingerprint(usr)
 
-/obj/machinery/atmospherics/unary/freezer/process()
+/obj/machinery/atmospherics/unary/freezer/process(delta_time)
 	..()
 
 	if(stat & (NOPOWER|BROKEN) || !use_power)

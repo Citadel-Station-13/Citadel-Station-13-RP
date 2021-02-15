@@ -576,7 +576,7 @@ This function completely restores a damaged organ to perfect condition.
 		return 1
 	return 0
 
-/obj/item/organ/external/process()
+/obj/item/organ/external/process(delta_time)
 	if(owner)
 		//Dismemberment
 		//if(parent && parent.is_stump()) //should never happen
@@ -826,7 +826,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 		tbrute = 3
 	return "[tbrute][tburn]"
 
-/obj/item/organ/external/take_damage()
+/obj/item/organ/external/take_damage(brute, burn, sharp, edge, used_weapon = null, list/forbidden_limbs = list(), permutation = 0)
 	..()
 
 	if(!cannot_amputate)

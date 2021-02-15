@@ -53,7 +53,7 @@
 	flooring = newflooring
 	footstep_sounds = newflooring.footstep_sounds
 	// VOREStation Edit - We are plating switching to flooring, swap out old_decals for decals
-	var/tmp/list/overfloor_decals = old_decals
+	var/list/overfloor_decals = old_decals
 	old_decals = decals
 	decals = overfloor_decals
 	// VOREStation Edit End
@@ -67,7 +67,7 @@
 	cut_overlays()
 	// VOREStation Edit - We are flooring switching to plating, swap out old_decals for decals.
 	if(flooring)
-		var/tmp/list/underfloor_decals = old_decals
+		var/list/underfloor_decals = old_decals
 		old_decals = decals
 		decals = underfloor_decals
 	// VOREStation Edit End

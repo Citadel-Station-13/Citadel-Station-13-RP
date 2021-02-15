@@ -112,7 +112,7 @@ var/list/organ_cache = list()
 /obj/item/organ/proc/adjust_germ_level(var/amount)		// Unless you're setting germ level directly to 0, use this proc instead
 	germ_level = clamp(germ_level + amount, 0, INFECTION_LEVEL_MAX)
 
-/obj/item/organ/process()
+/obj/item/organ/process(delta_time)
 
 	if(loc != owner)
 		owner = null

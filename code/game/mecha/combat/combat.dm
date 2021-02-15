@@ -94,9 +94,8 @@
 			src.occupant_message("You push [T] out of the way.")
 			src.visible_message("[src] pushes [T] out of the way.")
 
-		melee_can_hit = 0
-		if(do_after(melee_cooldown))
-			melee_can_hit = 1
+		melee_can_hit = FALSE
+		addtimer(VARSET_CALLBACK(src, melee_can_hit, TRUE), melee_cooldown)
 		return
 
 	else
@@ -113,11 +112,8 @@
 				else
 					T:take_damage(force)
 
-				melee_can_hit = 0
-
-				if(do_after(melee_cooldown))
-					melee_can_hit = 1
-	return
+				melee_can_hit = FALSE
+				addtimer(VARSET_CALLBACK(src, melee_can_hit, TRUE), melee_cooldown)
 
 /*
 /obj/mecha/combat/proc/mega_shake(target)

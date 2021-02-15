@@ -236,8 +236,8 @@
 /obj/item/card/id
 	var/last_job_switch
 
-/obj/item/card/id/New()
-	.=..()
+/obj/item/card/id/Initialize(mapload)
+	. = ..()
 	last_job_switch = world.time
 
 //

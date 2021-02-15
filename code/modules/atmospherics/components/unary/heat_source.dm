@@ -61,7 +61,7 @@
 	return
 
 
-/obj/machinery/atmospherics/unary/heater/process()
+/obj/machinery/atmospherics/unary/heater/process(delta_time)
 	..()
 
 	if(stat & (NOPOWER|BROKEN) || !use_power)

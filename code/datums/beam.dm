@@ -160,7 +160,7 @@
 	..()
 	on_contact(A)
 
-/obj/effect/ebeam/reactive/process()
+/obj/effect/ebeam/reactive/process(delta_time)
 	for(var/A in loc)
 		on_contact(A)
 

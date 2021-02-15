@@ -16,7 +16,7 @@
 	qdel(cell)
 	cell = new /obj/item/cell/high(src)
 
-/obj/machinery/suspension_gen/process()
+/obj/machinery/suspension_gen/process(delta_time)
 	if(suspension_field)
 		cell.charge -= power_use
 

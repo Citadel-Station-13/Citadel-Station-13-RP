@@ -26,7 +26,7 @@
 			RemoveInfectionImages(affected_mob)
 	..()
 
-/obj/item/alien_embryo/process()
+/obj/item/alien_embryo/process(delta_time)
 	if(!affected_mob)	return
 	if(loc != affected_mob)
 		affected_mob.status_flags &= ~(XENO_HOST)

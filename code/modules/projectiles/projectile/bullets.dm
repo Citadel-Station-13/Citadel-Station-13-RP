@@ -392,7 +392,7 @@
 
 	combustion = FALSE
 
-/obj/item/projectile/bullet/pistol/cap/process()
+/obj/item/projectile/bullet/pistol/cap/process(delta_time)
 	loc = null
 	qdel(src)
 
@@ -405,6 +405,6 @@
 	embed_chance = 0
 	sharp = 0
 
-/obj/item/projectile/bullet/blank/cap/process()
+/obj/item/projectile/bullet/blank/cap/process(delta_time)
 	loc = null
 	qdel(src)

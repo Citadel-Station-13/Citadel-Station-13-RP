@@ -27,6 +27,7 @@
 	return max_z
 
 /proc/get_area(atom/A)
+	RETURN_TYPE(/area)
 	if(isarea(A))
 		return A
 	var/turf/T = get_turf(A)
@@ -327,8 +328,6 @@
 
 	return list("mobs" = mobs, "objs" = objs)
 
-#define SIGN(X) ((X<0)?-1:1)	// I know this is redefining but my smol brain can't figure out why it won't work without this. -Zandario
-
 proc
 	inLineOfSight(X1,Y1,X2,Y2,Z=1,PX1=16.5,PY1=16.5,PX2=16.5,PY2=16.5)
 		var/turf/T
@@ -359,7 +358,6 @@ proc
 				if(T.opacity)
 					return 0
 		return 1
-#undef SIGN
 
 /proc/flick_overlay(image/I, list/show_to, duration, gc_after)
 	for(var/client/C in show_to)

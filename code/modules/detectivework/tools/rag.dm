@@ -210,7 +210,7 @@
 	update_name()
 	update_icon()
 
-/obj/item/reagent_containers/glass/rag/process()
+/obj/item/reagent_containers/glass/rag/process(delta_time)
 	if(!can_ignite())
 		visible_message("<span class='warning'>\The [src] burns out.</span>")
 		extinguish()

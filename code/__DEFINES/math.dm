@@ -16,6 +16,7 @@
 #define TICK_USAGE_TO_MS(starting_tickusage) (TICK_DELTA_TO_MS(world.tick_usage - starting_tickusage))
 
 #define PERCENT(val) (round((val)*100, 0.1))
+#define CLAMP01(x) (clamp(x, 0, 1))
 
 //time of day but automatically adjusts to the server going into the next day within the same round.
 //for when you need a reliable time number that doesn't depend on byond time.
@@ -216,5 +217,3 @@
 #define NORM(x, y) (sqrt(SQUAREDNORM(x,y)))
 #define ISPOWEROFTWO(x) ((x & (x - 1)) == 0)
 #define ROUNDUPTOPOWEROFTWO(x) (2 ** -round(-log(2,x)))
-
-#define DEFAULT(a, b) (a? a : b)

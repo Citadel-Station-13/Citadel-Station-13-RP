@@ -60,7 +60,7 @@
 /datum/artifact_effect/proc/DoEffectPulse(var/atom/holder)
 /datum/artifact_effect/proc/UpdateMove()
 
-/datum/artifact_effect/process()
+/datum/artifact_effect/process(delta_time)
 	if(chargelevel < chargelevelmax)
 		chargelevel++
 

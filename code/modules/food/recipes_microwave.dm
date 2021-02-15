@@ -1305,3 +1305,11 @@ I said no!
 		/obj/item/pen/crayon/rainbow
 	)
 	result = /obj/item/reagent_containers/food/snacks/crayonburger_rbw
+
+/datum/recipe/rkibble
+	reagents = list("milk" = 5, "oil" = 10)
+	items = list(
+		/obj/item/robot_parts/head,
+		/obj/item/stack/rods
+	)
+	result = /obj/item/trash/rkibble

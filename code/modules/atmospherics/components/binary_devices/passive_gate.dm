@@ -50,7 +50,7 @@
 /obj/machinery/atmospherics/binary/passive_gate/hide(var/i)
 	update_underlays()
 
-/obj/machinery/atmospherics/binary/passive_gate/process()
+/obj/machinery/atmospherics/binary/passive_gate/process(delta_time)
 	..()
 
 	last_flow_rate = 0

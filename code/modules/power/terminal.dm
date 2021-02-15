@@ -35,7 +35,7 @@
 
 // Needed so terminals are not removed from machines list.
 // Powernet rebuilds need this to work properly.
-/obj/machinery/power/terminal/process()
+/obj/machinery/power/terminal/process(delta_time)
 	return 1
 
 /obj/machinery/power/terminal/overload(var/obj/machinery/power/source)

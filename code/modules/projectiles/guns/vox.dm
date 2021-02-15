@@ -27,7 +27,7 @@
 	STOP_PROCESSING(SSobj, src)
 	..()
 
-/obj/item/gun/launcher/spikethrower/process()
+/obj/item/gun/launcher/spikethrower/process(delta_time)
 	if(spikes < max_spikes && world.time > last_regen + spike_gen_time)
 		spikes++
 		last_regen = world.time

@@ -46,7 +46,7 @@
 	return
 
 
-/obj/item/assembly/infra/process()//Old code
+/obj/item/assembly/infra/process(delta_time)//Old code
 	if(!on)
 		if(first)
 			qdel(first)
@@ -182,7 +182,7 @@
 		return
 	return
 
-/obj/effect/beam/i_beam/process()
+/obj/effect/beam/i_beam/process(delta_time)
 
 	if((loc && loc.density) || !master)
 		qdel(src)

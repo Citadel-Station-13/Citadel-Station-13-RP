@@ -1,4 +1,3 @@
-#define PROCESS_ACCURACY 10
 
 /obj/item/organ/internal/eyes
 	name = "eyeballs"
@@ -77,7 +76,7 @@
 	if(is_broken() && !oldbroken && owner && !owner.stat)
 		to_chat(owner, "<span class='danger'>You go blind!</span>")
 
-/obj/item/organ/internal/eyes/process() //Eye damage replaces the old eye_stat var.
+/obj/item/organ/internal/eyes/process(delta_time) //Eye damage replaces the old eye_stat var.
 	..()
 	if(!owner) return
 

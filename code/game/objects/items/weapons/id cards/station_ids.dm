@@ -205,7 +205,7 @@
 
 /obj/item/card/id/centcom/ERT/PARA
 	name = "\improper PARA ID"
-	assignment = "Paracausal Anomaly Respone Agent"
+	assignment = "Paracausal Anomaly Response Agent"
 	icon_state = "ert-id"
 
 /obj/item/card/id/centcom/ERT/PARA/Initialize()

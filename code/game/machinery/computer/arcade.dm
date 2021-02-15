@@ -35,8 +35,8 @@
 							/obj/item/toy/stickhorse						= 2
 							)
 
-/obj/machinery/computer/arcade/New()
-	..()
+/obj/machinery/computer/arcade/Initialize(mapload)
+	. = ..()
 	// If it's a generic arcade machine, pick a random arcade
 	// circuit board for it and make the new machine
 	if(!circuit)
@@ -102,8 +102,8 @@
 	var/blocked = 0 //Player cannot attack/heal while set
 	var/turtle = 0
 
-/obj/machinery/computer/arcade/battle/New()
-	..()
+/obj/machinery/computer/arcade/battle/Initialize(mapload)
+	. = ..()
 	var/name_action
 	var/name_part1
 	var/name_part2

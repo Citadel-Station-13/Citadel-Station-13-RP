@@ -235,7 +235,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/beacon_locator/process()
+/obj/item/beacon_locator/process(delta_time)
 	if(target_radio)
 		setDir(get_dir(src,target_radio))
 		switch(get_dist(src,target_radio))

@@ -89,7 +89,7 @@
 		return
 	..()
 
-/obj/machinery/xenobio/process()
+/obj/machinery/xenobio/process(delta_time)
 
 	..()
 	if(!active) return

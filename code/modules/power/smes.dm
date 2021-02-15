@@ -134,7 +134,7 @@
 /obj/machinery/power/smes/proc/chargedisplay()
 	return round(5.5*charge/(capacity ? capacity : 5e6))
 
-/obj/machinery/power/smes/process()
+/obj/machinery/power/smes/process(delta_time)
 	if(stat & BROKEN)	return
 
 	//store machine state to see if we need to update the icon overlays
@@ -467,7 +467,7 @@
 	output_level = 250000
 	should_be_mapped = 1
 
-/obj/machinery/power/smes/magical/process()
+/obj/machinery/power/smes/magical/process(delta_time)
 	charge = 5000000
 	..()
 
@@ -478,7 +478,7 @@
 	input_level = 500000
 	output_level = 1000000
 
-/obj/machinery/power/smes/buildable/main/process()
+/obj/machinery/power/smes/buildable/main/process(delta_time)
 
 	percentfull = 100.0*charge/capacity
 

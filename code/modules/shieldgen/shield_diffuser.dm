@@ -27,7 +27,7 @@
 /obj/machinery/shield_diffuser/hides_under_flooring()
 	return 1
 
-/obj/machinery/shield_diffuser/process()
+/obj/machinery/shield_diffuser/process(delta_time)
 	if(alarm)
 		alarm--
 		if(!alarm)

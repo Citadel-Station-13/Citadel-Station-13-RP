@@ -365,7 +365,7 @@
 /obj/item/borg/combat/shield/attack_self(var/mob/living/user)
 	set_shield_level()
 
-/obj/item/borg/combat/shield/process()
+/obj/item/borg/combat/shield/process(delta_time)
 	if(active)
 		if(flash_count && (last_flash + shield_refresh < world.time))
 			flash_count = 0

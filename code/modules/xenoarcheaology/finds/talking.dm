@@ -15,7 +15,7 @@
 	if(holder_atom)
 		START_PROCESSING(SSobj, src)
 
-/datum/talking_atom/process()
+/datum/talking_atom/process(delta_time)
 	if(!holder_atom)
 		STOP_PROCESSING(SSobj, src)
 

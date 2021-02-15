@@ -570,7 +570,7 @@
 
 	SSnanoui.update_uis(src)
 
-/obj/machinery/vending/process()
+/obj/machinery/vending/process(delta_time)
 	if(stat & (BROKEN|NOPOWER))
 		return
 
@@ -2473,6 +2473,8 @@
 					/obj/item/clothing/under/blue_mech = 1,
 					/obj/item/clothing/head/bunny = 1,
 					/obj/item/clothing/suit/bunny = 1,
+					/obj/item/clothing/head/santa = 1,
+					/obj/item/clothing/head/santa/green = 1,
 					/obj/item/clothing/head/reindeer = 2,
 					/obj/item/clothing/head/holiday = 2,
 					/obj/item/clothing/head/holiday/green = 2,
@@ -2614,6 +2616,8 @@
 					/obj/item/clothing/under/christmasfem = 150,
 					/obj/item/clothing/under/christmasfem/green = 150,
 					/obj/item/clothing/shoes/santa = 200,
+					/obj/item/clothing/head/santa = 150,
+					/obj/item/clothing/head/santa/green = 150,
 					/obj/item/clothing/shoes/holiday = 75,
 					/obj/item/clothing/shoes/holiday/green = 75,
 					/obj/item/clothing/mask/gas/bat = 250,

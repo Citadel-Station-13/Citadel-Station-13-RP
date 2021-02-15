@@ -116,7 +116,7 @@
 	..()
 	return
 
-/obj/item/weldingtool/process()
+/obj/item/weldingtool/process(delta_time)
 	if(welding)
 		++burned_fuel_for
 		if(burned_fuel_for >= WELDER_FUEL_BURN_INTERVAL)
@@ -414,7 +414,7 @@
 	origin_tech = list(TECH_PHORON = 5 ,TECH_ENGINEERING = 5)
 	always_process = TRUE
 
-/obj/item/weldingtool/alien/process()
+/obj/item/weldingtool/alien/process(delta_time)
 	if(get_fuel() <= get_max_fuel())
 		reagents.add_reagent("fuel", 1)
 	..()
@@ -433,7 +433,7 @@
 	always_process = TRUE
 	var/nextrefueltick = 0
 
-/obj/item/weldingtool/experimental/process()
+/obj/item/weldingtool/experimental/process(delta_time)
 	..()
 	if(get_fuel() < get_max_fuel() && nextrefueltick < world.time)
 		nextrefueltick = world.time + 10
@@ -483,7 +483,7 @@
 	mounted_pack = null
 	return ..()
 
-/obj/item/weldingtool/tubefed/process()
+/obj/item/weldingtool/tubefed/process(delta_time)
 	if(mounted_pack)
 		if(!istype(mounted_pack.loc,/mob/living/carbon/human))
 			mounted_pack.return_nozzle()

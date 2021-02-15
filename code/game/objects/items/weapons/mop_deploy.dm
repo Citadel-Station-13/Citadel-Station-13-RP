@@ -58,7 +58,7 @@
 /obj/item/mop_deploy/dropped()
 	spawn(1) if(!QDELETED(src)) qdel(src)
 
-/obj/item/mop_deploy/process()
+/obj/item/mop_deploy/process(delta_time)
 	if(!creator || loc != creator || !creator.item_is_in_hands(src))
 		// Tidy up a bit.
 		if(istype(loc,/mob/living))

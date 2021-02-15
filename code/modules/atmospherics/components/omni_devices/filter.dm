@@ -58,7 +58,7 @@
 
 	return 0
 
-/obj/machinery/atmospherics/omni/atmos_filter/process()
+/obj/machinery/atmospherics/omni/atmos_filter/process(delta_time)
 	if(!..())
 		return 0
 

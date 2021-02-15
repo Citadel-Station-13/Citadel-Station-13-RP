@@ -156,7 +156,7 @@ Class Procs:
 				qdel(A)
 	return ..()
 
-/obj/machinery/process()//If you dont use process or power why are you here
+/obj/machinery/process(delta_time)//If you dont use process or power why are you here
 	if(!(use_power || idle_power_usage || active_power_usage))
 		return PROCESS_KILL
 

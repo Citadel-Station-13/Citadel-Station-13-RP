@@ -406,7 +406,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 			R.receive_signal(signal)
 
 		// Receiving code can be located in Telecommunications.dm
-		if(signal.data["done"] && position.z in signal.data["level"])
+		if(signal.data["done"] && (position.z in signal.data["level"]))
 			return TRUE //Huzzah, sent via subspace
 
 		else if(adhoc_fallback) //Less huzzah, we have to fallback
@@ -461,7 +461,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	for(var/obj/machinery/telecomms/receiver/R in telecomms_list)
 		R.receive_signal(signal)
 
-	if(signal.data["done"] && position.z in signal.data["level"])
+	if(signal.data["done"] && (position.z in signal.data["level"]))
 		if(adhoc_fallback)
 			to_chat(loc,"<span class='notice'>\The [src] pings as it reestablishes subspace communications.</span>")
 			subspace_transmission = TRUE

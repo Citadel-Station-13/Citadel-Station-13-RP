@@ -536,4 +536,3 @@ GLOBAL_LIST_INIT(binary, list("0","1"))
 
 /proc/random_color()
 	return random_string(6, GLOB.hex_characters)
-

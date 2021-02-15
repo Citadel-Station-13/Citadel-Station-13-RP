@@ -45,7 +45,7 @@
 		if(istype(P, /obj/item/stock_parts/manipulator))
 			repair += P.rating * 2
 
-/obj/machinery/mech_recharger/process()
+/obj/machinery/mech_recharger/process(delta_time)
 	..()
 	if(!charging)
 		return

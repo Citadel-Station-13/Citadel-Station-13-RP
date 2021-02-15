@@ -302,12 +302,6 @@
 	pr_give_air = new /datum/global_iterator/mecha_tank_give_air(list(src))
 	pr_internal_damage = new /datum/global_iterator/mecha_internal_damage(list(src),0)
 
-/obj/mecha/proc/do_after(delay as num)
-	sleep(delay)
-	if(src)
-		return 1
-	return 0
-
 /obj/mecha/proc/enter_after(delay as num, var/mob/user as mob, var/numticks = 5)
 	var/delayfraction = delay/numticks
 
@@ -539,14 +533,13 @@
 	else
 		move_result	= mechstep(direction)
 	if(move_result)
-		can_move = 0
+		can_move = FALSE
+		addtimer(VARSET_CALLBACK(src, can_move, TRUE), step_in)
 		use_power(step_energy_drain)
 		if(istype(src.loc, /turf/space))
 			if(!src.check_for_support())
 				src.pr_inertial_movement.start(list(src,direction))
 				src.log_message("Movement control lost. Inertial movement started.")
-		if(do_after(step_in))
-			can_move = 1
 		return 1
 	return 0
 
