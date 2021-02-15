@@ -104,10 +104,11 @@
 /datum/reagent/topical/neurolaze/affect_touch(mob/living/carbon/M, alien, removed)
     if(alien != IS_DIONA)
         M.add_chemical_effect(CE_PAINKILLER, 100)//Half oxycodone
+        M.make_jittery(50*removed)//Your nerves are itching
+        M.make_dizzy(80*removed)//Screenshake.
+        M.add_chemical_effect(CE_SPEEDBOOST, 1)
         if(prob(5))// Speed boost and emotes
             M.emote(pick("twitch", "blink_r", "shiver"))
-            M.add_chemical_effect(CE_SPEEDBOOST, 1)
-            M.make_jittery(25)//Your nerves are itching
         if(world.time > (data + (60*10)))
             data = world.time
             to_chat(M, "<span class='warning'>You feel like all your nerves are itching.</span>")
@@ -115,6 +116,7 @@
 /datum/reagent/topical/neurolaze/affect_blood(mob/living/carbon/M, alien, removed)
     if(alien != IS_DIONA)
         M.apply_damage(5 * removed, HALLOSS)//holodeck boxing glove damage
+        M.make_jittery(200)
 
 /datum/reagent/topical/neurolaze/affect_ingest(mob/living/carbon/M, alien, removed)
     if(alien != IS_DIONA)
