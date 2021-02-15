@@ -76,12 +76,7 @@
 		BP_L_LEG = skip_body & EXAMINE_SKIPLEGS,
 		BP_R_LEG = skip_body & EXAMINE_SKIPLEGS)
 
-	. += "<span class='info'>*---------*<br>This is "
-
-	if(icon)
-		. += "[icon2html(thing = src, target = user)] " //fucking BYOND: this should stop dreamseeker crashing if we -somehow- examine somebody before their icon is generated
-
-	. += "<EM>[src.name]</EM>"
+	. += "<span class='info'>*---------*<br>This is [icon2html(thing = src, target = user)] <EM>[src.name]</EM>"
 
 	var/datum/gender/T = gender_datums[get_visible_gender()]
 
