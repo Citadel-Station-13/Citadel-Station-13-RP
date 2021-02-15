@@ -4,9 +4,10 @@
 #define NERADA8_TURF_CREATE_UN(x)	x/nerada8/initial_gas_mix=ATMOSPHERE_ID_NERADA8
 
 //Normal map defs
-#define Z_LEVEL_SURFACE_MAIN				1
-#define Z_LEVEL_ABDUCTION					2
-#define Z_LEVEL_CENTCOM						3
+#define Z_LEVEL_SURFACE_CAVES				1
+#define Z_LEVEL_SURFACE_MAIN				2
+#define Z_LEVEL_SURFACE_ROOF				3
+#define Z_LEVEL_CENTCOM						4
 
 /datum/map/penumbra
 	name = "Penumbra"
@@ -99,26 +100,38 @@
 	return 1*/
 
 // Short range computers see only the six main levels, others can see the surrounding surface levels.
-/*/datum/map/penumbra/get_map_levels(var/srcz, var/long_range = TRUE)
+/datum/map/penumbra/get_map_levels(var/srcz, var/long_range = TRUE)
 	if (long_range && (srcz in map_levels))
 		return map_levels
-	else if (srcz >= Z_LEVEL_SURFACE_LOW && srcz <= Z_LEVEL_SPACE_HIGH)
+	else if (srcz >= Z_LEVEL_SURFACE_CAVES && srcz <= Z_LEVEL_SURFACE_ROOF)
 		return list(
+			Z_LEVEL_SURFACE_CAVES,
 			Z_LEVEL_SURFACE_MAIN,
-			Z_LEVEL_SURFACE_MID,
-			Z_LEVEL_SURFACE_HIGH,
-			Z_LEVEL_SPACE_LOW,
-			Z_LEVEL_SPACE_MID,
-			Z_LEVEL_SPACE_HIGH)
+			Z_LEVEL_SURFACE_ROOF)
 	else
 		return ..()
-*/
+
+/datum/map_z_level/penumbra/surface_caves
+	z = Z_LEVEL_SURFACE_CAVES
+	name = "Caves"
+	flags = MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
+	base_turf = /turf/simulated/floor/outdoors/rocks/nerada8
+	holomap_legend_x = 220
+	holomap_legend_y = 160
 
 /datum/map_z_level/penumbra/surface_main
 	z = Z_LEVEL_SURFACE_MAIN
 	name = "Surface"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
-	base_turf = /turf/simulated/floor/outdoors/rocks/nerada8
+	base_turf = /turf/simulated/open
+	holomap_legend_x = 220
+	holomap_legend_y = 160
+
+/datum/map_z_level/penumbra/surface_roof
+	z = Z_LEVEL_SURFACE_ROOF
+	name = "Roof"
+	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
+	base_turf = /turf/simulated/open
 	holomap_legend_x = 220
 	holomap_legend_y = 160
 
@@ -129,7 +142,7 @@
 #define PENUMBRA_HOLOMAP_MARGIN_X ((HOLOMAP_ICON_SIZE - (2*PENUMBRA_MAP_SIZE) - PENUMBRA_HOLOMAP_CENTER_GUTTER) / 2) // 100
 #define PENUMBRA_HOLOMAP_MARGIN_Y ((HOLOMAP_ICON_SIZE - (3*PENUMBRA_MAP_SIZE)) / 2) // 60
 
-/datum/map_z_level/tether/colony
+/datum/map_z_level/penumbra/centcom
 	z = Z_LEVEL_CENTCOM
 	name = "Colony"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_CONTACT|MAP_LEVEL_XENOARCH_EXEMPT

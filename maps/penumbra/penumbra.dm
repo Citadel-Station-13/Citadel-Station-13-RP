@@ -7,7 +7,7 @@
 	//#include "penumbra_shuttle_defs.dm"
 	#include "penumbra_nerada8.dm"
 
-	//#include "penumbra_station01.dmm"
+	#include "penumbra_station01.dmm"
 
 	//#include "submaps/_penumbra_submaps.dm"
 
