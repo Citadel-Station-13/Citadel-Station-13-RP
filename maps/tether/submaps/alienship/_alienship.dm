@@ -160,7 +160,7 @@
 				L.drop_from_inventory(I, loc)
 		L.Paralyse(10)
 		L.forceMove(get_turf(pick(teleport_to)))
-		SEND_SOUND(L, sound('sound/effects/bamf'))
+		SEND_SOUND(L, sound('sound/effects/bamf.ogg'))
 		to_chat(L,"<span class='warning'>You're starting to come to. You feel like you've been out for a few minutes, at least...</span>")
 
 /area/tether_away/alienship

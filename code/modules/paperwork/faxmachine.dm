@@ -207,7 +207,7 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 	for(var/client/C in admins)
 		if(check_rights((R_ADMIN|R_MOD),0,C))
 			C << msg
-			SEND_SOUND(C, sound('sound/machines/printer'))
+			SEND_SOUND(C, sound('sound/machines/printer.ogg'))
 
 	// VoreStation Edit Start
 	var/faxid = export_fax(sent)

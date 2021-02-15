@@ -1163,7 +1163,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 	if(L)
 		if(reception_message)
-			L << reception_message
+			to_chat(L, reception_message)
 		SSnanoui.update_user_uis(L, src) // Update the receiving user's PDA UI so that they can see the new message
 
 /obj/item/pda/proc/new_news(var/message)

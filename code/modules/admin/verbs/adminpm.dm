@@ -164,7 +164,7 @@
 
 			//play the recieving admin the adminhelp sound (if they have them enabled)
 			if(recipient.is_preference_enabled(/datum/client_preference/holder/play_adminhelp_ping))
-				SEND_SOUND(recipient, sound('sound/effects/adminhelp'))
+				SEND_SOUND(recipient, sound('sound/effects/adminhelp.ogg'))
 
 		else
 			if(holder)	//sender is an admin but recipient is not. Do BIG RED TEXT
@@ -179,7 +179,7 @@
 				admin_ticket_log(recipient, "<font color='blue'>PM From [key_name_admin(src)]: [keywordparsedmsg]</font>")
 
 				//always play non-admin recipients the adminhelp sound
-				SEND_SOUND(recipient, sound('sound/effects/adminhelp'))
+				SEND_SOUND(recipient, sound('sound/effects/adminhelp.ogg'))
 
 				//AdminPM popup for ApocStation and anybody else who wants to use it. Set it with POPUP_ADMIN_PM in config_legacy.txt ~Carn
 				if(config_legacy.popup_admin_pm)
@@ -264,7 +264,7 @@
 
 	window_flash(C)
 	//always play non-admin recipients the adminhelp sound
-	SEND_SOUND(C, sound('sound/effects/adminhelp'))
+	SEND_SOUND(C, sound('sound/effects/adminhelp.ogg'))
 
 	C.ircreplyamount = IRCREPLYCOUNT
 

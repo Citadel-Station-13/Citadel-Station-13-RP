@@ -126,7 +126,7 @@ obj/machinery/gateway/centerstation/process(delta_time)
 	if(!awaygate)	return
 
 	use_power(5000)
-	SEND_SOUND(M, sound('sound/effects/phasein'))
+	SEND_SOUND(M, sound('sound/effects/phasein.ogg'))
 	playsound(src, 'sound/effects/phasein.ogg', 100, 1)
 	if(awaygate.calibrated)
 		M.forceMove(get_step(awaygate.loc, SOUTH))
@@ -243,7 +243,7 @@ obj/machinery/gateway/centerstation/process(delta_time)
 				return
 	M.forceMove(get_step(stationgate.loc, SOUTH))
 	M.setDir(SOUTH)
-	SEND_SOUND(M, sound('sound/effects/phasein'))
+	SEND_SOUND(M, sound('sound/effects/phasein.ogg'))
 	playsound(src, 'sound/effects/phasein.ogg', 100, 1)
 
 

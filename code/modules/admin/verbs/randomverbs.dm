@@ -545,7 +545,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		else
 			M.add_ion_law(input)
 			for(var/mob/living/silicon/ai/O in mob_list)
-				O << input + "<font color='red'>... LAWS UPDATED!</font>"
+				to_chat(O, input + "<font color='red'>... LAWS UPDATED!</font>")
 				O.show_laws()
 
 	log_admin("Admin [key_name(usr)] has added a new AI law - [input]")
@@ -905,9 +905,9 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	set category = "Special Verbs"
 	set name = "Attack Log"
 
-	usr << text("<font color='red'><b>Attack Log for []</b></font>", mob)
+	to_chat(usr, text("<font color='red'><b>Attack Log for []</b></font>", mob))
 	for(var/t in M.attack_log)
-		usr << t
+		to_chat(usr, t)
 	feedback_add_details("admin_verb","ATTL") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 

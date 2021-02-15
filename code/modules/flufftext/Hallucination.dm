@@ -112,27 +112,27 @@ mob/living/carbon/proc/handle_hallucinations()
 				//Strange audio
 				//to_chat(src, "Strange Audio")
 				switch(rand(1,12))
-					if(1) SEND_SOUND(src, sound('sound/machines/airlock'))
+					if(1) SEND_SOUND(src, sound('sound/machines/airlock.ogg'))
 					if(2)
-						if(prob(50))SEND_SOUND(src, sound('sound/effects/Explosion1'))
-						else SEND_SOUND(src, sound('sound/effects/Explosion2'))
-					if(3) SEND_SOUND(src, sound('sound/effects/explosionfar'))
-					if(4) SEND_SOUND(src, sound('sound/effects/Glassbr1'))
-					if(5) SEND_SOUND(src, sound('sound/effects/Glassbr2'))
-					if(6) SEND_SOUND(src, sound('sound/effects/Glassbr3'))
-					if(7) SEND_SOUND(src, sound('sound/machines/twobeep'))
-					if(8) SEND_SOUND(src, sound('sound/machines/windowdoor'))
+						if(prob(50))SEND_SOUND(src, sound('sound/effects/Explosion1.ogg'))
+						else SEND_SOUND(src, sound('sound/effects/Explosion2.ogg'))
+					if(3) SEND_SOUND(src, sound('sound/effects/explosionfar.ogg'))
+					if(4) SEND_SOUND(src, sound('sound/effects/Glassbr1.ogg'))
+					if(5) SEND_SOUND(src, sound('sound/effects/Glassbr2.ogg'))
+					if(6) SEND_SOUND(src, sound('sound/effects/Glassbr3.ogg'))
+					if(7) SEND_SOUND(src, sound('sound/machines/twobeep.ogg'))
+					if(8) SEND_SOUND(src, sound('sound/machines/windowdoor.ogg'))
 					if(9)
 						//To make it more realistic, I added two gunshots (enough to kill)
-						SEND_SOUND(src, sound('sound/weapons/Gunshot1'))
+						SEND_SOUND(src, sound('sound/weapons/Gunshot1.ogg'))
 						spawn(rand(10,30))
-							SEND_SOUND(src, sound('sound/weapons/Gunshot2'))
-					if(10) SEND_SOUND(src, sound('sound/weapons/smash'))
+							SEND_SOUND(src, sound('sound/weapons/Gunshot2.ogg'))
+					if(10) SEND_SOUND(src, sound('sound/weapons/smash.ogg'))
 					if(11)
 						//Same as above, but with tasers.
-						SEND_SOUND(src, sound('sound/weapons/Taser'))
+						SEND_SOUND(src, sound('sound/weapons/Taser.ogg'))
 						spawn(rand(10,30))
-							SEND_SOUND(src, sound('sound/weapons/Taser'))
+							SEND_SOUND(src, sound('sound/weapons/Taser.ogg'))
 				//Rare audio
 					if(12)
 //These sounds are (mostly) taken from Hidden: Source
@@ -141,7 +141,7 @@ mob/living/carbon/proc/handle_hallucinations()
 							'sound/hallucinations/growl3.ogg', 'sound/hallucinations/im_here1.ogg', 'sound/hallucinations/im_here2.ogg', 'sound/hallucinations/i_see_you1.ogg', 'sound/hallucinations/i_see_you2.ogg',\
 							'sound/hallucinations/look_up1.ogg', 'sound/hallucinations/look_up2.ogg', 'sound/hallucinations/over_here1.ogg', 'sound/hallucinations/over_here2.ogg', 'sound/hallucinations/over_here3.ogg',\
 							'sound/hallucinations/turn_around1.ogg', 'sound/hallucinations/turn_around2.ogg', 'sound/hallucinations/veryfar_noise.ogg', 'sound/hallucinations/wail.ogg')
-						src << pick(creepyasssounds)
+						SEND_SOUND(src, pick(creepyasssounds))
 			if(66 to 70)
 				//Flashes of danger
 				//to_chat(src, "Danger Flash")
@@ -282,8 +282,7 @@ proc/check_panel(mob/M)
 	else if(src.dir == WEST)
 		qdel(src.currentimage)
 		src.currentimage = new /image(left,src)
-	my_target << currentimage
-
+	SEND_IMAGE(my_target, currentimage)
 
 /obj/effect/fake_attacker/proc/attack_loop()
 	while(1)
@@ -324,7 +323,7 @@ proc/check_panel(mob/M)
 	var/obj/effect/overlay/O = new/obj/effect/overlay(target.loc)
 	O.name = "blood"
 	var/image/I = image('icons/effects/blood.dmi',O,"floor[rand(1,7)]",O.dir,1)
-	target << I
+	SEND_IMAGE(target, I)
 	spawn(300)
 		qdel(O)
 	return
@@ -384,28 +383,5 @@ GLOBAL_LIST_INIT(non_fakeattack_weapons, list(/obj/item/gun/projectile, /obj/ite
 	F.right = image(clone,dir = EAST)
 	F.up = image(clone,dir = NORTH)
 	F.down = image(clone,dir = SOUTH)
-
-//	F.base = new /icon(clone.stand_icon)
-//	F.currentimage = new /image(clone)
-
-/*
-
-
-
-	F.left = new /icon(clone.stand_icon,dir=WEST)
-	for(var/icon/i in clone.overlays)
-		F.left.Blend(i)
-	F.up = new /icon(clone.stand_icon,dir=NORTH)
-	for(var/icon/i in clone.overlays)
-		F.up.Blend(i)
-	F.down = new /icon(clone.stand_icon,dir=SOUTH)
-	for(var/icon/i in clone.overlays)
-		F.down.Blend(i)
-	F.right = new /icon(clone.stand_icon,dir=EAST)
-	for(var/icon/i in clone.overlays)
-		F.right.Blend(i)
-
-	target << F.up
-	*/
 
 	F.updateimage()

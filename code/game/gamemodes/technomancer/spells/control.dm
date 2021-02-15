@@ -100,8 +100,8 @@
 	if(isliving(hit_atom))
 		var/mob/living/L = hit_atom
 		if(L == user && !controlled_mobs.len)
-			user << "<span class='warning'>This function doesn't work on higher-intelligence entities, however since you're \
-			trying to use it on yourself, perhaps you're an exception?  Regardless, nothing happens.</span>"
+			to_chat(user, "<span class='warning'>This function doesn't work on higher-intelligence entities, however since you're \
+			trying to use it on yourself, perhaps you're an exception?  Regardless, nothing happens.</span>")
 			return 0
 
 		if(L.mob_class & allowed_mob_classes)
@@ -139,6 +139,6 @@
 		if(pay_energy(10 * controlled_mobs.len))
 			move_all(T)
 			adjust_instability(controlled_mobs.len)
-			to_chat(user, "<span class='notice'>You command your [controlled_mobs.len > 1 ? "entities" : "[controlled_mobs[1]]")] to move \
-			towards \the [T].</span>"
+			to_chat(user, "<span class='notice'>You command your [controlled_mobs.len > 1 ? "entities" : "[controlled_mobs[1]]"] to move \
+			towards \the [T].</span>")
 

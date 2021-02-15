@@ -63,8 +63,8 @@
 				targets.Add(T)
 
 		if(!targets.len)
-			user << "\The [src] was unable to locate a suitable teleport destination, as all the possibilities \
-			were nonexistant or hazardous. Try a different area."
+			to_chat(user, "\The [src] was unable to locate a suitable teleport destination, as all the possibilities \
+			were nonexistant or hazardous. Try a different area.")
 			return
 		var/turf/simulated/destination = null
 

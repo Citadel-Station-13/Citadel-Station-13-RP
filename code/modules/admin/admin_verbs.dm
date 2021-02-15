@@ -1074,7 +1074,7 @@ var/list/admin_verbs_event_manager = list(
 
 	for (var/mob/T as mob in mob_list)
 		to_chat(T, "<br><center><span class='notice'><b><font size=4>Man up.<br> Deal with it.</font></b><br>Move along.</span></center><br>")
-		SEND_SOUND(T, sound('sound/voice/ManUp1'))
+		SEND_SOUND(T, sound('sound/voice/ManUp1.ogg'))
 
 	log_admin("[key_name(usr)] told everyone to man up and deal with it.")
 	message_admins("<font color='blue'>[key_name_admin(usr)] told everyone to man up and deal with it.</font>", 1)

@@ -1159,7 +1159,6 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 #undef MUTATIONS_LAYER
 #undef SKIN_LAYER
 #undef DAMAGE_LAYER
-#undef DAMAGE_LAYER
 #undef SURGERY_LAYER
 #undef UNDERWEAR_LAYER
 #undef SHOES_LAYER_ALT

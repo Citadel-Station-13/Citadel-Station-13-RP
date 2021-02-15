@@ -248,14 +248,14 @@
 				to_chat(target, "SYSTEM LOG: User: Admin - Connection Lost. Changes Reverted.")
 				return
 			to_chat(user, "Hack succeeded. The AI is now under your exclusive control.")
-			target << "SYSTEM LOG: System re�3RT5�^#COMU@(#$)TED)@$"
+			to_chat(target, "SYSTEM LOG: System re�3RT5�^#COMU@(#$)TED)@$")
 			for(var/i = 0, i < 5, i++)
 				var/temptxt = pick("1101000100101001010001001001",\
 							   	   "0101000100100100000100010010",\
 							       "0000010001001010100100111100",\
 							       "1010010011110000100101000100",\
 							       "0010010100010011010001001010")
-				target << temptxt
+				to_chat(target, temptxt)
 				sleep(5)
 			to_chat(target, "OPERATING KEYCODES RESET. SYSTEM FAILURE. EMERGENCY SHUTDOWN FAILED. SYSTEM FAILURE.")
 			target.set_zeroth_law("You are slaved to [user.name]. You are to obey all it's orders. ALL LAWS OVERRIDEN.")

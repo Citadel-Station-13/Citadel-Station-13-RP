@@ -19,11 +19,11 @@
 		if(A.z in zLevels)
 			A.gravitychange(gravity_is_on, A)
 			if(prob(50))
-				SEND_SOUND(A, sound('sound/effects/creak1'))
+				SEND_SOUND(A, sound('sound/effects/creak1.ogg'))
 			else if (prob(33))
-				SEND_SOUND(A, sound('sound/effects/creak2'))
+				SEND_SOUND(A, sound('sound/effects/creak2.ogg'))
 			else
-				SEND_SOUND(A, sound('sound/effects/creak3'))
+				SEND_SOUND(A, sound('sound/effects/creak3.ogg'))
 
 
 /datum/event/gravity/end()

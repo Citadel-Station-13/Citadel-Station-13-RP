@@ -84,9 +84,9 @@
 		for (var/a in cooking_objs)
 			var/datum/cooking_item/CI = a
 			string += "-\a [CI.container.label(null, CI.combine_target)], [report_progress(CI)]</br>"
-		usr << string
+		to_chat(user, string)
 	else
-		usr << span("notice","It is empty.")
+		to_chat(user, "<span class='notice'>It is empty.</span>")
 
 /obj/machinery/appliance/proc/report_progress(var/datum/cooking_item/CI)
 	if (!CI || !CI.max_cookwork)

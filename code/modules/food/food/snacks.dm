@@ -3822,7 +3822,7 @@ END CITADEL CHANGE */
 		return 0
 
 	if (C.volume < req)
-		user << span("warning", "There's not enough [C.name] to coat the [src]!")
+		to_chat(user, span("warning", "There's not enough [C.name] to coat the [src]!"))
 		return 0
 
 	var/id = C.id

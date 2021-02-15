@@ -166,7 +166,7 @@ Class Procs:
 			E.recheck()
 
 /zone/proc/dbg_data(mob/M)
-	M << name
+	to_chat(M, name)
 	for(var/g in air.gas)
 		to_chat(M, "[GLOB.meta_gas_names[g]]: [air.gas[g]]")
 	to_chat(M, "P: [air.return_pressure()] kPa V: [air.volume]L T: [air.temperature]�K ([air.temperature - T0C]�C)")
