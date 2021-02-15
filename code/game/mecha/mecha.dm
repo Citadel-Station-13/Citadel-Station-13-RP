@@ -638,7 +638,7 @@
 	internal_damage |= int_dam_flag
 	pr_internal_damage.start()
 	log_append_to_last("Internal damage of type [int_dam_flag].",1)
-	occupant << sound('sound/mecha/internaldmgalarm.ogg',volume=50) //Better sounding.
+	SEND_SOUND(occupant, sound('sound/mecha/internaldmgalarm.ogg',volume=50)) //Better sounding.
 	return
 
 /obj/mecha/proc/clearInternalDamage(int_dam_flag)
@@ -1082,7 +1082,7 @@
 		setDir(dir_in)
 		src.log_message("[mmi_as_oc] moved in as pilot.")
 		if(!hasInternalDamage())
-			src.occupant << sound('sound/mecha/nominal.ogg',volume=50)
+			SEND_SOUND(src.occupant, sound('sound/mecha/nominal.ogg',volume=50))
 		return 1
 	else
 		return 0
@@ -1377,17 +1377,17 @@
 				if(MECH_FACTION_NT)//The good guys category
 					if(firstactivation)//First time = long activation sound
 						firstactivation = 1
-						src.occupant << sound('sound/mecha/LongNanoActivation.ogg',volume=50)
+						SEND_SOUND(src.occupant, sound('sound/mecha/LongNanoActivation.ogg',volume=50))
 					else
-						src.occupant << sound('sound/mecha/nominalnano.ogg',volume=50)
+						SEND_SOUND(src.occupant, sound('sound/mecha/nominalnano.ogg',volume=50))
 				if(MECH_FACTION_SYNDI)//Bad guys
 					if(firstactivation)
 						firstactivation = 1
-						src.occupant << sound('sound/mecha/LongSyndiActivation.ogg',volume=50)
+						SEND_SOUND(src.occupant, sound('sound/mecha/LongSyndiActivation.ogg',volume=50))
 					else
-						src.occupant << sound('sound/mecha/nominalsyndi.ogg',volume=50)
+						SEND_SOUND(src.occupant, sound('sound/mecha/nominalsyndi.ogg',volume=50))
 				else//Everyone else gets the normal noise
-					src.occupant << sound('sound/mecha/nominal.ogg',volume=50)
+					SEND_SOUND(src.occupant, sound('sound/mecha/nominal.ogg',volume=50))
 		return 1
 	else
 		return 0

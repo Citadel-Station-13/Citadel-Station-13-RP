@@ -49,7 +49,7 @@
 	//New message handling won't hurt if someone enables epidemic
 	post_comm_message("Cent. Com. CONFIDENTIAL REPORT", intercepttext)
 
-	world << sound('sound/AI/commandreport.ogg')
+	SEND_SOUND(world, sound('sound/AI/commandreport.ogg'))
 
 	// add an extra law to the AI to make sure it cooperates with the heads
 	var/extra_law = "Crew authorized to know of pathogen [virus_name]'s existence are: Heads of command. Do not allow unauthorized personnel to gain knowledge of [virus_name]. Aid authorized personnel in quarantining and neutrlizing the outbreak. This law overrides all other laws."
@@ -63,7 +63,7 @@
 	intercepttext += "<B>CRUISER WILL ARRIVE IN [round(cruiser_seconds()/60)] MINUTES</B><BR>"
 
 	post_comm_message("Cent. Com. CONFIDENTIAL REPORT", intercepttext)
-	world << sound('sound/AI/commandreport.ogg')
+	SEND_SOUND(world, sound('sound/AI/commandreport.ogg'))
 
 
 /datum/game_mode/epidemic/post_setup()

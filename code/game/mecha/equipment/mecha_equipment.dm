@@ -92,19 +92,19 @@
 		if(istype(src, /obj/item/mecha_parts/mecha_equipment/weapon))//Gun
 			switch(chassis.mech_faction)
 				if(MECH_FACTION_NT)
-					src.chassis.occupant << sound('sound/mecha/weapdestrnano.ogg',volume=70)
+					SEND_SOUND(src.chassis.occupant, sound('sound/mecha/weapdestrnano.ogg',volume=70))
 				if(MECH_FACTION_SYNDI)
-					src.chassis.occupant  << sound('sound/mecha/weapdestrsyndi.ogg',volume=60)
+					SEND_SOUND(src.chassis.occupant, sound('sound/mecha/weapdestrsyndi.ogg',volume=60))
 				else
-					src.chassis.occupant  << sound('sound/mecha/weapdestr.ogg',volume=50)
+					SEND_SOUND(src.chassis.occupant, sound('sound/mecha/weapdestr.ogg',volume=50))
 		else //Not a gun
 			switch(chassis.mech_faction)
 				if(MECH_FACTION_NT)
-					src.chassis.occupant  << sound('sound/mecha/critdestrnano.ogg',volume=70)
+					SEND_SOUND(src.chassis.occupant, sound('sound/mecha/critdestrnano.ogg',volume=70))
 				if(MECH_FACTION_SYNDI)
-					src.chassis.occupant  << sound('sound/mecha/critdestrsyndi.ogg',volume=70)
+					SEND_SOUND(src.chassis.occupant, sound('sound/mecha/critdestrsyndi.ogg',volume=70))
 				else
-					src.chassis.occupant  << sound('sound/mecha/critdestr.ogg',volume=50)
+					SEND_SOUND(src.chassis.occupant, sound('sound/mecha/critdestr.ogg',volume=50))
 	spawn
 		qdel(src)
 	return

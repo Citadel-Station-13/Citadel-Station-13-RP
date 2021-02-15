@@ -94,7 +94,7 @@
 				restoring = TRUE
 				var/mob/observer/dead/ghost //TODO: FIX THIS SHIT
 				if(ghost)
-					ghost.notify_revive("Your core files are being restored!", source = src)
+					ghost.notify_revive("Your core files are being restored!")
 				. = TRUE
 
 /obj/machinery/computer/aifixer/proc/Fix()

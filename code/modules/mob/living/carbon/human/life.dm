@@ -1715,7 +1715,7 @@ var/last_message = 0
 
 		if(heartbeat >= rate)
 			heartbeat = 0
-			src << sound('sound/effects/singlebeat.ogg',0,0,0,50)
+			SEND_SOUND(src, sound('sound/effects/singlebeat.ogg',0,0,0,50))
 		else
 			heartbeat++
 

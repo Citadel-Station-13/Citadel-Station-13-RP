@@ -205,7 +205,7 @@
 
 /obj/item/pen/crayon/suicide_act(mob/user)
 	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
-	viewers(user)to_chat(, "<font color='red'><b>[user] is jamming the [src.name] up [TU.his] nose and into [TU.his] brain. It looks like [TU.he] [TU.is] trying to commit suicide.</b></font>")
+	user.visible_message("<font color='red'><b>[user] is jamming the [src.name] up [TU.his] nose and into [TU.his] brain. It looks like [TU.he] [TU.is] trying to commit suicide.</b></font>")
 	return (BRUTELOSS|OXYLOSS)
 
 /obj/item/pen/crayon/New()
@@ -235,7 +235,7 @@
 
 /obj/item/pen/crayon/chalk/suicide_act(mob/user)
 	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
-	viewers(user)to_chat(, "<font color='red'><b>[user] is jamming the [src.name] up [TU.his] nose and into [TU.his] brain. It looks like [TU.he] [TU.is] trying to perform human transmutation!</b></font>")
+	user.visible_message("<font color='red'><b>[user] is jamming the [src.name] up [TU.his] nose and into [TU.his] brain. It looks like [TU.he] [TU.is] trying to perform human transmutation!</b></font>")
 	return (BRUTELOSS|OXYLOSS)
 
 /obj/item/pen/crayon/chalk/New()

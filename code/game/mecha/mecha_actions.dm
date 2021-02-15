@@ -351,7 +351,7 @@
 		src.occupant_message("<font color='[src.zoom?"blue":"red"]'>Zoom mode [zoom?"en":"dis"]abled.</font>")
 		if(zoom)
 			src.occupant.set_viewsize(12)
-			src.occupant << sound('sound/mecha/imag_enh.ogg',volume=50)
+			SEND_SOUND(src.occupant, sound('sound/mecha/imag_enh.ogg',volume=50))
 		else
 			src.occupant.set_viewsize() // Reset to default
 	return
