@@ -12,7 +12,7 @@
 /turf/simulated/floor/water,
 /area/submap/Boathouse)
 "ae" = (
-/turf/simulated/floor/water/deep,
+/turf/simulated/floor/outdoors/water/deep,
 /area/submap/Boathouse)
 "af" = (
 /obj/structure/flora/tree/sif,
@@ -118,7 +118,7 @@
 /area/submap/Boathouse)
 "az" = (
 /obj/structure/table/woodentable,
-/obj/item/tape_roll,
+/obj/item/duct_tape_roll,
 /obj/random/firstaid,
 /turf/simulated/floor/wood,
 /area/submap/Boathouse)
@@ -134,19 +134,8 @@
 	icon_state = "wood_broken2"
 	},
 /area/submap/Boathouse)
-"aC" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/structure/railing{
-	icon_state = "railing0";
-	dir = 1
-	},
-/turf/simulated/floor/water,
-/area/submap/Boathouse)
 "aD" = (
 /obj/structure/railing{
-	icon_state = "railing0";
 	dir = 1
 	},
 /turf/simulated/floor/water,
@@ -165,13 +154,6 @@
 /obj/item/oar,
 /turf/simulated/floor/wood,
 /area/submap/Boathouse)
-"aH" = (
-/obj/structure/railing{
-	icon_state = "railing0";
-	dir = 8
-	},
-/turf/simulated/floor/water,
-/area/submap/Boathouse)
 "aI" = (
 /obj/structure/table/woodentable,
 /obj/random/powercell,
@@ -184,11 +166,9 @@
 /area/submap/Boathouse)
 "aK" = (
 /obj/structure/railing{
-	icon_state = "railing0";
 	dir = 8
 	},
 /obj/structure/railing{
-	icon_state = "railing0";
 	dir = 1
 	},
 /turf/simulated/floor/water,
@@ -198,7 +178,7 @@
 /turf/simulated/floor/wood,
 /area/submap/Boathouse)
 "aM" = (
-/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/tram,
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary,
 /turf/simulated/floor/wood,
 /area/submap/Boathouse)
 "aN" = (
@@ -1069,14 +1049,14 @@ ai
 ao
 ak
 ak
-aC
+aK
 aw
 ao
 ak
 ak
 aK
-aH
-aH
+aw
+aw
 ai
 aL
 ai
@@ -1320,8 +1300,8 @@ aw
 ad
 ad
 ad
-aH
-aH
+aw
+aw
 ad
 ad
 ad

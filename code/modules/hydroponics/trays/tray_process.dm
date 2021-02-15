@@ -1,4 +1,4 @@
-/obj/machinery/portable_atmospherics/hydroponics/process()
+/obj/machinery/portable_atmospherics/hydroponics/process(delta_time)
 	if(frozen == 1)
 		return
 

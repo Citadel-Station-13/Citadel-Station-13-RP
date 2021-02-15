@@ -113,7 +113,7 @@
 	var/onfire = 0
 	body_parts_covered = HEAD
 
-/obj/item/clothing/head/cakehat/process()
+/obj/item/clothing/head/cakehat/process(delta_time)
 	if(!onfire)
 		STOP_PROCESSING(SSobj, src)
 		return
@@ -257,7 +257,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/clothing/head/psy_crown/process()
+/obj/item/clothing/head/psy_crown/process(delta_time)
 	if(isliving(loc))
 		var/mob/living/L = loc
 		if(world.time >= cooldown && L.is_sentient() && L.get_tension() >= tension_threshold)

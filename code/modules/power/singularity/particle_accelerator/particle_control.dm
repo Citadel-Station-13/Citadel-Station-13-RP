@@ -143,7 +143,7 @@
 		update_use_power(USE_POWER_IDLE)
 
 
-/obj/machinery/particle_accelerator/control_box/process()
+/obj/machinery/particle_accelerator/control_box/process(delta_time)
 	if(src.active)
 		//a part is missing!
 		if( length(connected_parts) < 6 )

@@ -36,7 +36,7 @@
 	assigned_proc = new assigned_proc(source, verb_name, verb_desc)
 	return 1
 
-/obj/item/implant/reagent_generator/process()
+/obj/item/implant/reagent_generator/process(delta_time)
 	var/before_gen
 	if(imp_in && generated_reagents)
 		before_gen = reagents.total_volume

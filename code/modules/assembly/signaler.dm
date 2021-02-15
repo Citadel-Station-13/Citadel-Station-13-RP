@@ -165,7 +165,7 @@ Code:
 	radio_connection = radio_controller.add_object(src, frequency, RADIO_CHAT)
 	return
 
-/obj/item/assembly/signaler/process()
+/obj/item/assembly/signaler/process(delta_time)
 	if(!deadman)
 		STOP_PROCESSING(SSobj, src)
 	var/mob/M = src.loc

@@ -75,7 +75,7 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 /obj/singularity/Bumped(atom/A)
 	consume(A)
 
-/obj/singularity/process()
+/obj/singularity/process(delta_time)
 	eat()
 	dissipate()
 	check_energy()

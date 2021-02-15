@@ -46,7 +46,7 @@
 	START_PROCESSING(SSobj, src)
 	..()
 
-/obj/structure/closet/statue/process()
+/obj/structure/closet/statue/process(delta_time)
 	timer--
 	for(var/mob/living/M in src) //Go-go gadget stasis field
 		M.setToxLoss(intialTox)

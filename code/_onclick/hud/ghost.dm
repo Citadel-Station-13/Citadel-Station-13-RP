@@ -92,7 +92,6 @@
 	G.zMove(DOWN)
 
 /datum/hud/proc/ghost_hud(apply_to_client = TRUE)
-	..()
 
 	var/list/adding = list()
 

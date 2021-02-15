@@ -45,6 +45,7 @@
 	var/loop = null;  // Magic self-reference to stop the handler from being GC'd before user takes action.
 
 /datum/vore_look/Destroy()
+	. = ..()
 	loop = null
 	selected = null
 	return QDEL_HINT_HARDDEL // TODO - Until I can better analyze how this weird thing works, lets be safe

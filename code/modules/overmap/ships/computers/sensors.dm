@@ -49,7 +49,7 @@
 				continue
 			if(!O.scannable)
 				continue
-			var/bearing = round(90 - ATAN2(O.x - linked.x, O.y - linked.y),5)
+			var/bearing = round(90 - arctan(O.x - linked.x, O.y - linked.y),5)
 			if(bearing < 0)
 				bearing += 360
 			contacts.Add(list(list("name"=O.name, "ref"="\ref[O]", "bearing"=bearing)))
@@ -89,7 +89,7 @@
 			if(!CanInteract(user,state))
 				return TOPIC_NOACTION
 			if (nrange)
-				sensors.set_range(CLAMP(nrange, 1, world.view))
+				sensors.set_range(clamp(nrange, 1, world.view))
 			return TOPIC_REFRESH
 		if (href_list["toggle"])
 			sensors.toggle()
@@ -103,7 +103,7 @@
 			playsound(src, "sound/machines/printer.ogg", 30, 1)
 		return TOPIC_HANDLED
 
-/obj/machinery/computer/ship/sensors/process()
+/obj/machinery/computer/ship/sensors/process(delta_time)
 	..()
 	if(!linked)
 		return
@@ -186,7 +186,7 @@
 	update_use_power(!use_power)
 	update_icon()
 
-/obj/machinery/shipsensors/process()
+/obj/machinery/shipsensors/process(delta_time)
 	if(use_power) //can't run in non-vacuum
 		if(!in_vacuum())
 			toggle()

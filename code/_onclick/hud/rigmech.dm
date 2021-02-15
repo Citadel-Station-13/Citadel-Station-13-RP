@@ -28,7 +28,7 @@
 	main_hud.remove_minihud(src)
 
 // Update the hud
-/datum/mini_hud/process()
+/datum/mini_hud/process(delta_time)
 	return PROCESS_KILL // You shouldn't be here!
 
 // Return a list of screen objects we use
@@ -69,7 +69,7 @@
 		owner_rig = null
 	return ..()
 
-/datum/mini_hud/rig/process()
+/datum/mini_hud/rig/process(delta_time)
 	if(!owner_rig)
 		qdel(src)
 		return
@@ -78,7 +78,7 @@
 	var/obj/item/tank/rigtank = owner_rig.air_supply
 
 	var/charge_percentage = rigcell ? rigcell.charge / rigcell.maxcharge : 0
-	var/air_percentage = rigtank ? CLAMP(rigtank.air_contents.total_moles / 17.4693, 0, 1) : 0
+	var/air_percentage = rigtank ? clamp(rigtank.air_contents.total_moles / 17.4693, 0, 1) : 0
 	var/air_on = owner_rig.wearer?.internal ? 1 : 0
 
 	power.icon_state = "pwr[round(charge_percentage / 0.2, 1)]"
@@ -119,7 +119,7 @@
 		owner_mech = null
 	return ..()
 
-/datum/mini_hud/mech/process()
+/datum/mini_hud/mech/process(delta_time)
 	if(!owner_mech)
 		qdel(src)
 		return
@@ -128,7 +128,7 @@
 	var/obj/machinery/portable_atmospherics/canister/mechtank = owner_mech.internal_tank
 
 	var/charge_percentage = mechcell ? mechcell.charge / mechcell.maxcharge : 0
-	var/air_percentage = mechtank ? CLAMP(mechtank.air_contents.total_moles / 1863.47, 0, 1) : 0
+	var/air_percentage = mechtank ? clamp(mechtank.air_contents.total_moles / 1863.47, 0, 1) : 0
 	var/health_percentage = owner_mech.health / owner_mech.maxhealth
 	var/air_on = owner_mech.use_internal_tank
 

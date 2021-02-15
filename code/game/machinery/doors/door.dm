@@ -79,7 +79,7 @@
 	update_nearby_tiles()
 	. = ..()
 
-/obj/machinery/door/process()
+/obj/machinery/door/process(delta_time)
 	if(close_door_at && world.time >= close_door_at)
 		if(autoclose)
 			close_door_at = next_close_time()
@@ -265,7 +265,8 @@
 			return
 
 		if(repairing && I.is_crowbar())
-			var/obj/item/stack/material/repairing_sheet = get_material().place_sheet(loc)
+			var/datum/material/M = get_material()
+			var/obj/item/stack/material/repairing_sheet = M.place_sheet(loc)
 			repairing_sheet.amount += repairing-1
 			repairing = 0
 			to_chat(user, "<span class='notice'>You remove \the [repairing_sheet].</span>")

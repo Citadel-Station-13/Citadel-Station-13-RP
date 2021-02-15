@@ -93,7 +93,7 @@
 		else
 			hud.screen_loc = ui_lhand
 
-/obj/item/grab/process()
+/obj/item/grab/process(delta_time)
 	if(QDELETED(src)) // GC is trying to delete us, we'll kill our processing so we can cleanly GC
 		return PROCESS_KILL
 

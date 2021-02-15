@@ -75,7 +75,7 @@
 		icon_state += "off"
 		update_use_power(USE_POWER_OFF)
 
-/obj/machinery/atmospherics/trinary/atmos_filter/process()
+/obj/machinery/atmospherics/trinary/atmos_filter/process(delta_time)
 	..()
 
 	last_power_draw = 0

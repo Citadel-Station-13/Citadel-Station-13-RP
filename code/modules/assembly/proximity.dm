@@ -57,7 +57,7 @@
 	return
 
 
-/obj/item/assembly/prox_sensor/process()
+/obj/item/assembly/prox_sensor/process(delta_time)
 	if(scanning)
 		var/turf/mainloc = get_turf(src)
 		for(var/mob/living/A in range(range,mainloc))

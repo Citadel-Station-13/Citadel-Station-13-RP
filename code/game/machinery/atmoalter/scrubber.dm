@@ -58,7 +58,7 @@
 
 	return
 
-/obj/machinery/portable_atmospherics/powered/scrubber/process()
+/obj/machinery/portable_atmospherics/powered/scrubber/process(delta_time)
 	..()
 
 	var/power_draw = -1
@@ -192,7 +192,7 @@
 	if (old_stat != stat)
 		update_icon()
 
-/obj/machinery/portable_atmospherics/powered/scrubber/huge/process()
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/process(delta_time)
 	if(!anchored || (stat & (NOPOWER|BROKEN)))
 		on = 0
 		last_flow_rate = 0

@@ -43,7 +43,7 @@
 	ATC = GLOB.lore_atc
 	crew_announcement.newscast = 1
 
-/obj/machinery/computer/communications/process()
+/obj/machinery/computer/communications/process(delta_time)
 	if(..())
 		if(state != STATE_STATUSDISPLAY)
 			src.updateDialog()

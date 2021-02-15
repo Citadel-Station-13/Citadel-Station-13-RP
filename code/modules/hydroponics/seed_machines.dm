@@ -50,7 +50,7 @@
 	var/failed_task = 0
 	var/disk_needs_genes = 0
 
-/obj/machinery/botany/process()
+/obj/machinery/botany/process(delta_time)
 
 	..()
 	if(!active) return

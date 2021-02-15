@@ -19,7 +19,7 @@ obj/machinery/airlock_sensor/phoron
 	name = "phoronlock sensor"
 	var/previousPhoron
 
-obj/machinery/airlock_sensor/phoron/process()
+obj/machinery/airlock_sensor/phoron/process(delta_time)
 	if(on)
 		var/datum/gas_mixture/air_sample = return_air()
 		var/pressure = round(air_sample.return_pressure(), 0.1)
@@ -97,7 +97,7 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 	var/target_temp = T20C
 	var/heating_power = 150000
 
-/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock/process()
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock/process(delta_time)
 	..()
 
 	if(on)
@@ -225,7 +225,7 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 // Note: This code doesn't wait for pumps and scrubbers to be offline like other code does
 // The idea is to make the doors open and close faster, since there isn't much harm really.
 // But lets evaluate how it actually works in the game.
-/datum/computer/file/embedded_program/airlock/phoron/process()
+/datum/computer/file/embedded_program/airlock/phoron/process(delta_time)
 	switch(state)
 		if(STATE_IDLE)
 			if(target_state == TARGET_INOPEN)

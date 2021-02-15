@@ -22,8 +22,9 @@ SUBSYSTEM_DEF(alarms)
 	return ..()
 
 /datum/controller/subsystem/alarms/fire()
+	var/dt = (flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
 	for(var/datum/alarm_handler/A in all_handlers)
-		A.process()
+		A.process(dt)
 
 /datum/controller/subsystem/alarms/proc/active_alarms()
 	. = list()

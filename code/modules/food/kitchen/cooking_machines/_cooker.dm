@@ -61,7 +61,7 @@
 	light.pixel_y = light_y
 	add_overlay(light)
 
-/obj/machinery/appliance/cooker/process()
+/obj/machinery/appliance/cooker/process(delta_time)
 	if (!stat)
 		heat_up()
 	else

@@ -214,7 +214,7 @@
 		overlays += grille_image
 
 
-/obj/structure/bonfire/process()
+/obj/structure/bonfire/process(delta_time)
 	if(!check_oxygen())
 		extinguish()
 		return
@@ -382,7 +382,7 @@
 	else
 		set_light(0)
 
-/obj/structure/fireplace/process()
+/obj/structure/fireplace/process(delta_time)
 	if(!check_oxygen())
 		extinguish()
 		return

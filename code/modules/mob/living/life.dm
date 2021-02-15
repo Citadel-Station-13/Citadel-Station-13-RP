@@ -51,7 +51,7 @@
 	update_pulling()
 
 	for(var/obj/item/grab/G in src)
-		G.process()
+		G.process(2)
 
 	if(handle_regular_status_updates()) // Status & health update, are we dead or alive etc.
 		handle_disabilities() // eye, ear, brain damages

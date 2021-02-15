@@ -57,8 +57,8 @@
 	desc = "Simple rocket nozzle, expelling gas at hypersonic velocities to propell the ship."
 	icon = 'icons/turf/shuttle_parts.dmi'
 	icon_state = "nozzle"
-	opacity = 1
-	density = 1
+	opacity = TRUE
+	density = TRUE
 	can_atmos_pass = ATMOS_PASS_NO
 	connect_types = CONNECT_TYPE_REGULAR|CONNECT_TYPE_FUEL
 
@@ -77,9 +77,6 @@
 	var/boot_time = 35
 	var/next_on
 	var/blockage
-
-/obj/machinery/atmospherics/unary/engine/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
-	return 0
 
 /obj/machinery/atmospherics/unary/engine/Initialize()
 	. = ..()

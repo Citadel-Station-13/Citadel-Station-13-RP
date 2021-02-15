@@ -8,8 +8,8 @@
 	var/mob/living/silicon/ai/occupant = null
 	var/active = 0
 
-/obj/machinery/computer/aifixer/New()
-	..()
+/obj/machinery/computer/aifixer/Initialize(mapload)
+	. = ..()
 	update_icon()
 
 /obj/machinery/computer/aifixer/proc/load_ai(var/mob/living/silicon/ai/transfer, var/obj/item/aicard/card, var/mob/user)
@@ -91,7 +91,7 @@
 	onclose(user, "computer")
 	return
 
-/obj/machinery/computer/aifixer/process()
+/obj/machinery/computer/aifixer/process(delta_time)
 	if(..())
 		src.updateDialog()
 		return

@@ -114,11 +114,12 @@ SUBSYSTEM_DEF(planets)
 			return
 
 	var/list/currentrun = src.currentrun
+	var/dt = (flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
 	while(currentrun.len)
 		var/datum/planet/P = currentrun[currentrun.len]
 		currentrun.len--
 
-		P.process(last_fire)
+		P.process(dt, last_fire)
 
 		//Sun light needs changing
 		if(P.needs_work & PLANET_PROCESS_SUN)

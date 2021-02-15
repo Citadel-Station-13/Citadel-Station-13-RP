@@ -7,11 +7,6 @@
 	for(var/datum/category_item/player_setup_item/PI in items)
 		. += "[PI.content(user)]<br>"
 
-//used for pref.alternate_option
-#define GET_RANDOM_JOB 0
-#define BE_ASSISTANT 1
-#define RETURN_TO_LOBBY 2
-
 /datum/category_item/player_setup_item/occupation
 	name = "Occupation"
 	sort_order = 1

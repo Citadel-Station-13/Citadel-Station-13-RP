@@ -76,7 +76,7 @@
 	if(aiming_at)
 		to_chat(aiming_at, "<span class='[use_span]'>You are [message].</span>")
 
-/obj/aiming_overlay/process()
+/obj/aiming_overlay/process(delta_time)
 	if(!owner)
 		qdel(src)
 		return

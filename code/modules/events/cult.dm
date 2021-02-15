@@ -66,7 +66,7 @@
 	for(var/areapath in typesof(spawn_area_type))
 		var/area/A = locate(areapath)
 		for(var/obj/machinery/atmospherics/unary/vent_pump/temp_vent in A.contents)
-			if(temp_vent.network && temp_vent.loc.z in GLOB.using_map.station_levels)
+			if(temp_vent.network && (temp_vent.loc.z in GLOB.using_map.station_levels))
 				vents += temp_vent
 
 	var/cult_spawn = list(/mob/living/simple_mob/humanoid/cultist/human, /mob/living/simple_mob/humanoid/cultist/tesh,
@@ -88,7 +88,7 @@
 
 // Overmap version
 /datum/event/cult/overmap/announce()
-	command_announcement.Announce("Attention [station_name()], the ship has run into a hostile sub-sector and reports of humanoid and non-humanoid entities are warping onto the ships! Advise immediate removal of these intruders before productivy aboard gets hindered!", "Screaming Signals Intercepted", new_sound = 'sound/effects/c_alarm.mp3',volume=5)
+	command_announcement.Announce("Attention [station_name()], the ship has run into a hostile sub-sector and reports of humanoid and non-humanoid entities are warping onto the ships! Advise immediate removal of these intruders before productivy aboard gets hindered!", "Screaming Signals Intercepted", new_sound = 'sound/effects/c_alarm.mp3')//,volume=5)
 	return
 
 /datum/event/cult/overmap/start()		// override - cancel if not main ship since it doesn't properly target the actual triggering ship

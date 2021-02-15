@@ -34,7 +34,7 @@
 	STOP_PROCESSING(SSobj, src)
 	..()
 
-/obj/item/ammo_magazine/smart/process()
+/obj/item/ammo_magazine/smart/process(delta_time)
 	if(!holding_gun)	// Yes, this is awful, sorry. Don't know a better way to figure out if we've been moved into or out of a gun.
 		if(istype(src.loc, /obj/item/gun))
 			holding_gun = src.loc
