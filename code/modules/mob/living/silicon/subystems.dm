@@ -67,7 +67,7 @@
 	set category = "Subystems"
 	set name = "Crew Monitor"
 
-	crew_monitor.ui_interact(usr, state = self_state)
+	crew_monitor.ui_interact(usr)
 
 /****************
 *	Law Manager	*
