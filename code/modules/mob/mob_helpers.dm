@@ -95,7 +95,7 @@ proc/getsensorlevel(A)
 		return
 	if(!isobserver(user)) // Are they a ghost?
 		return
-	if(!check_rights_for(user.client, R_ADMIN)) // Are they allowed?
+	if(!check_rights(R_ADMIN, 0, user)) // Are they allowed?
 		return
 	if(!user.client.AI_Interact) // Do they have it enabled?
 		return

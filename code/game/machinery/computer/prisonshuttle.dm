@@ -54,7 +54,7 @@ var/prison_shuttle_timeleft = 0
 	if(..())
 		return
 
-	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (istype(usr, /mob/living/silicon)) || IsAdminGhost(user))
+	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (istype(usr, /mob/living/silicon)) || IsAdminGhost(usr))
 		usr.set_machine(src)
 
 	if (href_list["sendtodock"])

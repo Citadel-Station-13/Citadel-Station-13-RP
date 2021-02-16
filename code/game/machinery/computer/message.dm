@@ -286,9 +286,9 @@
 		return 1
 	if(stat & (NOPOWER|BROKEN))
 		return
-	if(!istype(usr, /mob/living) && !IsAdminGhost(user))
+	if(!istype(usr, /mob/living) && !IsAdminGhost(usr))
 		return
-	if (((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (istype(usr, /mob/living/silicon))) || IsAdminGhost(user))
+	if (((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (istype(usr, /mob/living/silicon))) || IsAdminGhost(usr))
 		//Authenticate
 		if (href_list["auth"])
 			if(auth)

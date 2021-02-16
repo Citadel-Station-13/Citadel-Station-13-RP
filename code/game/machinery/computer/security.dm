@@ -216,7 +216,7 @@ What a mess.*/
 		active1 = null
 	if (!( data_core.security.Find(active2) ))
 		active2 = null
-	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(loc, /turf))) || (istype(usr, /mob/living/silicon)) || IsAdminGhost(user))
+	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(loc, /turf))) || (istype(usr, /mob/living/silicon)) || IsAdminGhost(usr))
 		usr.set_machine(src)
 		switch(href_list["choice"])
 // SORTING!
@@ -260,7 +260,7 @@ What a mess.*/
 				active2 = null
 
 			if("Log In")
-				if (istype(usr, /mob/living/silicon/ai) || IsAdminGhost(user))
+				if (istype(usr, /mob/living/silicon/ai) || IsAdminGhost(usr))
 					src.active1 = null
 					src.active2 = null
 					src.authenticated = usr.name
@@ -283,7 +283,7 @@ What a mess.*/
 //RECORD FUNCTIONS
 			if("Search Records")
 				var/t1 = input("Search String: (Partial Name or ID or Fingerprints or Rank)", "Secure. records", null, null)  as text
-				if ((!( t1 ) || usr.stat || !( authenticated ) || usr.restrained() || !in_range(src, usr)) && IsAdminGhost(user))
+				if ((!( t1 ) || usr.stat || !( authenticated ) || usr.restrained() || !in_range(src, usr)) && IsAdminGhost(usr))
 					return
 				Perp = new/list()
 				t1 = lowertext(t1)
@@ -387,7 +387,7 @@ What a mess.*/
 					return
 				var/a2 = active2
 				var/t1 = sanitize(input("Add Comment:", "Secure. records", null, null)  as message)
-				if ((!( t1 ) || !( authenticated ) || usr.stat || usr.restrained() || (!in_range(src, usr) && (!istype(usr, /mob/living/silicon))) || active2 != a2) && IsAdminGhost(user))
+				if ((!( t1 ) || !( authenticated ) || usr.stat || usr.restrained() || (!in_range(src, usr) && (!istype(usr, /mob/living/silicon))) || active2 != a2) && IsAdminGhost(usr))
 					return
 				var/counter = 1
 				while(active2.fields[text("com_[]", counter)])
