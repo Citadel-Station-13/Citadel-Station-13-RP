@@ -13,6 +13,13 @@
 	can_pull_size = ITEMSIZE_SMALL
 	can_pull_mobs = MOB_PULL_SAME
 	mob_size = MOB_SMALL
+
+	emote_type = 2		// pAIs emotes are heard, not seen, so they can be seen through a container (eg. person)
+
+	idcard_type = /obj/item/card/id
+	/// Alow ID modifications to internal ID
+	var/idaccessible = 0
+
 	/// pais don't care about other speeds until movespeed mods are ported
 	var/movement_speed = 2
 
@@ -59,6 +66,8 @@
 	var/datum/data/record/securityActive1		// Could probably just combine all these into one
 	var/datum/data/record/securityActive2
 
+	var/translator_on = 0 // keeps track of the translator module
+
 	var/obj/machinery/door/hackdoor		// The airlock being hacked
 	var/hackprogress = 0				// Possible values: 0 - 100, >= 100 means the hack is complete and will be reset upon next check
 
@@ -93,6 +102,40 @@
 	var/brightness_power = 5
 
 	var/icon/custom_holoform_icon
+
+	var/static/list/possible_say_verbs = list(
+		"says",
+		"chirps",
+		"barks",
+		"states",
+		"beeps",
+		"clicks",
+		"mewls",
+		"poofs"
+	)
+	var/static/list/possible_exclaim_verbs = list(
+		"exclaims",
+		"declares",
+		"woofs",
+		"rings",
+		"chirrups",
+		"clacks",
+		"mrowls",
+		"buzzes"
+	)
+	var/static/list/possible_yell_verbs = list(
+		"yells",
+		"alarms",
+		"screams",
+		"screeches"
+	)
+	var/static/list/possible_ask_verbs = list(
+		"asks",
+		"inquires",
+		"queries",
+		"cheeps",
+		"questions"
+	)
 
 /mob/living/silicon/pai/Destroy()
 	QDEL_NULL(internal_instrument)
@@ -368,92 +411,100 @@
 
 	//Basic /tg/ cyborgs
 	.["Cyborg - Engineering (default)"] = process_holoform_icon_filter(icon('icons/mob/robots.dmi', "engineer"), HOLOFORM_FILTER_PAI, FALSE)
+/*
 	.["Cyborg - Engineering (loaderborg)"] = process_holoform_icon_filter(icon('modular_citadel/icons/mob/robots.dmi', "loaderborg"), HOLOFORM_FILTER_PAI, FALSE)
 	.["Cyborg - Engineering (handyeng)"] = process_holoform_icon_filter(icon('modular_citadel/icons/mob/robots.dmi', "handyeng"), HOLOFORM_FILTER_PAI, FALSE)
 	.["Cyborg - Engineering (sleekeng)"] = process_holoform_icon_filter(icon('modular_citadel/icons/mob/robots.dmi', "sleekeng"), HOLOFORM_FILTER_PAI, FALSE)
-	.["Cyborg - Engineering (marinaeng)"] = process_holoform_icon_filter(icon('modular_citadel/icons/mob/robots.dmi', "marinaeng"), HOLOFORM_FILTER_PAI, FALSE)
+	.["Cyborg - Engineering (marinaeng)"] = process_holoform_icon_filter(icon('modular_citadel/icons/mob/robots.dmi', "marinaENG"), HOLOFORM_FILTER_PAI, FALSE)
+*/
 	.["Cyborg - Medical (default)"] = process_holoform_icon_filter(icon('icons/mob/robots.dmi', "medical"), HOLOFORM_FILTER_PAI, FALSE)
-	.["Cyborg - Medical (marinamed)"] = process_holoform_icon_filter(icon('modular_citadel/icons/mob/robots.dmi', "marinamed"), HOLOFORM_FILTER_PAI, FALSE)
+/*
+	.["Cyborg - Medical (marinamed)"] = process_holoform_icon_filter(icon('modular_citadel/icons/mob/robots.dmi', "marinaMD"), HOLOFORM_FILTER_PAI, FALSE)
 	.["Cyborg - Medical (eyebotmed)"] = process_holoform_icon_filter(icon('modular_citadel/icons/mob/robots.dmi', "eyebotmed"), HOLOFORM_FILTER_PAI, FALSE)
+*/
 	.["Cyborg - Security (default)"] = process_holoform_icon_filter(icon('icons/mob/robots.dmi', "sec"), HOLOFORM_FILTER_PAI, FALSE)
+/*
 	.["Cyborg - Security (sleeksec)"] = process_holoform_icon_filter(icon('modular_citadel/icons/mob/robots.dmi', "sleeksec"), HOLOFORM_FILTER_PAI, FALSE)
 	.["Cyborg - Security (marinasec)"] = process_holoform_icon_filter(icon('modular_citadel/icons/mob/robots.dmi', "marinasec"), HOLOFORM_FILTER_PAI, FALSE)
+*/
 	.["Cyborg - Clown (default)"] = process_holoform_icon_filter(icon('icons/mob/robots.dmi', "clown"), HOLOFORM_FILTER_PAI, FALSE)
 
 	//Citadel dogborgs
+/* All disabled. wanna enable them? Go through and check the icon states, c'ause I can't be arsed to.
 	//Engi
-	curr = icon('modular_citadel/icons/mob/widerobot.dmi', "valeeng")
-	curr.Insert(icon('modular_citadel/icons/mob/widerobot.dmi', "valeeng-rest"), "rest")
-	curr.Insert(icon('modular_citadel/icons/mob/widerobot.dmi', "valeeng-sit"), "sit")
-	curr.Insert(icon('modular_citadel/icons/mob/widerobot.dmi', "valeeng-bellyup"), "bellyup")
+	curr = icon('icons/mob/widerobot_vr.dmi', "valeeng")
+	curr.Insert(icon('icons/mob/widerobot_vr.dmi', "valeeng-rest"), "rest")
+	curr.Insert(icon('icons/mob/widerobot_vr.dmi', "valeeng-sit"), "sit")
+	curr.Insert(icon('icons/mob/widerobot_vr.dmi', "valeeng-bellyup"), "bellyup")
 	process_holoform_icon_filter(curr, HOLOFORM_FILTER_PAI, FALSE)
 	.["Cyborg - Engineering (dog - valeeng)"] = curr
-	curr = icon('modular_citadel/icons/mob/widerobot.dmi', "pupdozer")
-	curr.Insert(icon('modular_citadel/icons/mob/widerobot.dmi', "pupdozer-rest"), "rest")
-	curr.Insert(icon('modular_citadel/icons/mob/widerobot.dmi', "pupdozer-sit"), "sit")
-	curr.Insert(icon('modular_citadel/icons/mob/widerobot.dmi', "pupdozer-bellyup"), "bellyup")
+	curr = icon('icons/mob/widerobot_vr.dmi', "pupdozer")
+	curr.Insert(icon('icons/mob/widerobot_vr.dmi', "pupdozer-rest"), "rest")
+	curr.Insert(icon('icons/mob/widerobot_vr.dmi', "pupdozer-sit"), "sit")
+	curr.Insert(icon('icons/mob/widerobot_vr.dmi', "pupdozer-bellyup"), "bellyup")
 	process_holoform_icon_filter(curr, HOLOFORM_FILTER_PAI, FALSE)
 	.["Cyborg - Engineering (dog - pupdozer)"] = curr
 	//Med
-	curr = icon('modular_citadel/icons/mob/widerobot.dmi', "medihound")
-	curr.Insert(icon('modular_citadel/icons/mob/widerobot.dmi', "medihound-rest"), "rest")
-	curr.Insert(icon('modular_citadel/icons/mob/widerobot.dmi', "medihound-sit"), "sit")
-	curr.Insert(icon('modular_citadel/icons/mob/widerobot.dmi', "medihound-bellyup"), "bellyup")
+	curr = icon('icons/mob/widerobot_vr.dmi', "medihound")
+	curr.Insert(icon('icons/mob/widerobot_vr.dmi', "medihound-rest"), "rest")
+	curr.Insert(icon('icons/mob/widerobot_vr.dmi', "medihound-sit"), "sit")
+	curr.Insert(icon('icons/mob/widerobot_vr.dmi', "medihound-bellyup"), "bellyup")
 	process_holoform_icon_filter(curr, HOLOFORM_FILTER_PAI, FALSE)
 	.["Cyborg - Medical (dog - medihound)"] = curr
-	curr = icon('modular_citadel/icons/mob/widerobot.dmi', "medihounddark")
-	curr.Insert(icon('modular_citadel/icons/mob/widerobot.dmi', "medihounddark-rest"), "rest")
-	curr.Insert(icon('modular_citadel/icons/mob/widerobot.dmi', "medihounddark-sit"), "sit")
-	curr.Insert(icon('modular_citadel/icons/mob/widerobot.dmi', "medihounddark-bellyup"), "bellyup")
+	curr = icon('icons/mob/widerobot_vr.dmi', "medihounddark")
+	curr.Insert(icon('icons/mob/widerobot_vr.dmi', "medihounddark-rest"), "rest")
+	curr.Insert(icon('icons/mob/widerobot_vr.dmi', "medihounddark-sit"), "sit")
+	curr.Insert(icon('icons/mob/widerobot_vr.dmi', "medihounddark-bellyup"), "bellyup")
 	process_holoform_icon_filter(curr, HOLOFORM_FILTER_PAI, FALSE)
 	.["Cyborg - Medical (dog - medihounddark)"] = curr
-	curr = icon('modular_citadel/icons/mob/widerobot.dmi', "valemed")
-	curr.Insert(icon('modular_citadel/icons/mob/widerobot.dmi', "valemed-rest"), "rest")
-	curr.Insert(icon('modular_citadel/icons/mob/widerobot.dmi', "valemed-sit"), "sit")
-	curr.Insert(icon('modular_citadel/icons/mob/widerobot.dmi', "valemed-bellyup"), "bellyup")
+	curr = icon('icons/mob/widerobot_vr.dmi', "valemed")
+	curr.Insert(icon('icons/mob/widerobot_vr.dmi', "valemed-rest"), "rest")
+	curr.Insert(icon('icons/mob/widerobot_vr.dmi', "valemed-sit"), "sit")
+	curr.Insert(icon('icons/mob/widerobot_vr.dmi', "valemed-bellyup"), "bellyup")
 	process_holoform_icon_filter(curr, HOLOFORM_FILTER_PAI, FALSE)
 	.["Cyborg - Medical (dog - valemed)"] = curr
 	//Sec
-	curr = icon('modular_citadel/icons/mob/widerobot.dmi', "k9")
-	curr.Insert(icon('modular_citadel/icons/mob/widerobot.dmi', "k9-rest"), "rest")
-	curr.Insert(icon('modular_citadel/icons/mob/widerobot.dmi', "k9-sit"), "sit")
-	curr.Insert(icon('modular_citadel/icons/mob/widerobot.dmi', "k9-bellyup"), "bellyup")
+	curr = icon('icons/mob/widerobot_vr.dmi', "k9")
+	curr.Insert(icon('icons/mob/widerobot_vr.dmi', "k9-rest"), "rest")
+	curr.Insert(icon('icons/mob/widerobot_vr.dmi', "k9-sit"), "sit")
+	curr.Insert(icon('icons/mob/widerobot_vr.dmi', "k9-bellyup"), "bellyup")
 	process_holoform_icon_filter(curr, HOLOFORM_FILTER_PAI, FALSE)
 	.["Cyborg - Security (dog - k9)"] = curr
-	curr = icon('modular_citadel/icons/mob/widerobot.dmi', "k9dark")
-	curr.Insert(icon('modular_citadel/icons/mob/widerobot.dmi', "k9dark-rest"), "rest")
-	curr.Insert(icon('modular_citadel/icons/mob/widerobot.dmi', "k9dark-sit"), "sit")
-	curr.Insert(icon('modular_citadel/icons/mob/widerobot.dmi', "k9dark-bellyup"), "bellyup")
+	curr = icon('icons/mob/widerobot_vr.dmi', "k9dark")
+	curr.Insert(icon('icons/mob/widerobot_vr.dmi', "k9dark-rest"), "rest")
+	curr.Insert(icon('icons/mob/widerobot_vr.dmi', "k9dark-sit"), "sit")
+	curr.Insert(icon('icons/mob/widerobot_vr.dmi', "k9dark-bellyup"), "bellyup")
 	process_holoform_icon_filter(curr, HOLOFORM_FILTER_PAI, FALSE)
 	.["Cyborg - Security (dog - k9dark)"] = curr
-	curr = icon('modular_citadel/icons/mob/widerobot.dmi', "valesec")
-	curr.Insert(icon('modular_citadel/icons/mob/widerobot.dmi', "valesec-rest"), "rest")
-	curr.Insert(icon('modular_citadel/icons/mob/widerobot.dmi', "valesec-sit"), "sit")
-	curr.Insert(icon('modular_citadel/icons/mob/widerobot.dmi', "valesec-bellyup"), "bellyup")
+	curr = icon('icons/mob/widerobot_vr.dmi', "valesec")
+	curr.Insert(icon('icons/mob/widerobot_vr.dmi', "valesec-rest"), "rest")
+	curr.Insert(icon('icons/mob/widerobot_vr.dmi', "valesec-sit"), "sit")
+	curr.Insert(icon('icons/mob/widerobot_vr.dmi', "valesec-bellyup"), "bellyup")
 	process_holoform_icon_filter(curr, HOLOFORM_FILTER_PAI, FALSE)
 	.["Cyborg - Security (dog - valesec)"] = curr
 	//Service
-	curr = icon('modular_citadel/icons/mob/widerobot.dmi', "valeserv")
-	curr.Insert(icon('modular_citadel/icons/mob/widerobot.dmi', "valeserv-rest"), "rest")
-	curr.Insert(icon('modular_citadel/icons/mob/widerobot.dmi', "valeserv-sit"), "sit")
-	curr.Insert(icon('modular_citadel/icons/mob/widerobot.dmi', "valeserv-bellyup"), "bellyup")
+	curr = icon('icons/mob/widerobot_vr.dmi', "valeserv")
+	curr.Insert(icon('icons/mob/widerobot_vr.dmi', "valeserv-rest"), "rest")
+	curr.Insert(icon('icons/mob/widerobot_vr.dmi', "valeserv-sit"), "sit")
+	curr.Insert(icon('icons/mob/widerobot_vr.dmi', "valeserv-bellyup"), "bellyup")
 	process_holoform_icon_filter(curr, HOLOFORM_FILTER_PAI, FALSE)
 	.["Cyborg - Service (dog - valeserv)"] = curr
-	curr = icon('modular_citadel/icons/mob/widerobot.dmi', "valeservdark")
-	curr.Insert(icon('modular_citadel/icons/mob/widerobot.dmi', "valeservdark-rest"), "rest")
-	curr.Insert(icon('modular_citadel/icons/mob/widerobot.dmi', "valeservdark-sit"), "sit")
-	curr.Insert(icon('modular_citadel/icons/mob/widerobot.dmi', "valeservdark-bellyup"), "bellyup")
+	curr = icon('icons/mob/widerobot_vr.dmi', "valeservdark")
+	curr.Insert(icon('icons/mob/widerobot_vr.dmi', "valeservdark-rest"), "rest")
+	curr.Insert(icon('icons/mob/widerobot_vr.dmi', "valeservdark-sit"), "sit")
+	curr.Insert(icon('icons/mob/widerobot_vr.dmi', "valeservdark-bellyup"), "bellyup")
 	process_holoform_icon_filter(curr, HOLOFORM_FILTER_PAI, FALSE)
 	.["Cyborg - Service (dog - valeservdark)"] = curr
 	//Sci
-	curr = icon('modular_citadel/icons/mob/widerobot.dmi', "valesci")
-	curr.Insert(icon('modular_citadel/icons/mob/widerobot.dmi', "valesci-rest"), "rest")
-	curr.Insert(icon('modular_citadel/icons/mob/widerobot.dmi', "valesci-sit"), "sit")
-	curr.Insert(icon('modular_citadel/icons/mob/widerobot.dmi', "valesci-bellyup"), "bellyup")
+	curr = icon('icons/mob/widerobot_vr.dmi', "valesci")
+	curr.Insert(icon('icons/mob/widerobot_vr.dmi', "valesci-rest"), "rest")
+	curr.Insert(icon('icons/mob/widerobot_vr.dmi', "valesci-sit"), "sit")
+	curr.Insert(icon('icons/mob/widerobot_vr.dmi', "valesci-bellyup"), "bellyup")
 	process_holoform_icon_filter(curr, HOLOFORM_FILTER_PAI, FALSE)
 	.["Cyborg - Science (dog - valesci)"] = curr
 	//Misc
-	.["Cyborg - Misc (dog - blade)"] = process_holoform_icon_filter(icon('modular_citadel/icons/mob/widerobot.dmi', "blade"), HOLOFORM_FILTER_PAI, FALSE)
+	.["Cyborg - Misc (dog - blade)"] = process_holoform_icon_filter(icon('icons/mob/widerobot_vr.dmi', "blade"), HOLOFORM_FILTER_PAI, FALSE)
+*/
 
 	// Gorillas
 	.["Gorilla (standing)"] = process_holoform_icon_filter(icon('icons/mob/gorilla.dmi', "standing"), HOLOFORM_FILTER_PAI, FALSE)
@@ -479,3 +530,89 @@
 	.["Cyborg - Security (dog - valesci)"] = -16
 	//Misc
 	.["Cyborg - Misc (dog - blade)"] = -16
+
+/mob/living/silicon/pai/verb/suicide()
+	set hidden = 1
+	var/confirm = alert("Are you sure you want to commit suicide?", "Confirm Suicide", "Yes", "No")
+	if(confirm == "Yes")
+		var/turf/T = get_turf(src.loc)
+		T.visible_message("<span class='notice'>[src] flashes a message across its screen, \"Wiping core files. Please acquire a new personality to continue using pAI device functions.\"</span>", null, \
+		 "<span class='notice'>[src] bleeps electronically.</span>")
+
+		suicide_log()
+
+		death(0)
+	else
+		to_chat(src, "Aborting suicide attempt.")
+
+/mob/living/silicon/pai/verb/allowmodification()
+	set name = "Change Access Modifcation Permission"
+	set category = "pAI Commands"
+	set desc = "Allows people to modify your access or block people from modifying your access."
+
+	if(idaccessible == 0)
+		idaccessible = 1
+		to_chat(src, "<span class='notice'>You allow access modifications.</span>")
+
+	else
+		idaccessible = 0
+		to_chat(src, "<span class='notice'>You block access modfications.</span>")
+
+// No binary for pAIs.
+/mob/living/silicon/pai/binarycheck()
+	return 0
+
+/mob/living/silicon/pai/attackby(obj/item/W as obj, mob/user as mob)
+	var/obj/item/card/id/ID = W.GetID()
+	if(ID)
+		if (idaccessible == 1)
+			switch(alert(user, "Do you wish to add access to [src] or remove access from [src]?",,"Add Access","Remove Access", "Cancel"))
+				if("Add Access")
+					idcard.access |= ID.access
+					to_chat(user, "<span class='notice'>You add the access from the [W] to [src].</span>")
+					return
+				if("Remove Access")
+					idcard.access = list()
+					to_chat(user, "<span class='notice'>You remove the access from [src].</span>")
+					return
+				if("Cancel")
+					return
+		else if (istype(W, /obj/item/card/id) && idaccessible == 0)
+			to_chat(user, "<span class='notice'>[src] is not accepting access modifcations at this time.</span>")
+			return
+
+/mob/living/silicon/pai/verb/choose_verb_say()
+	set category = "pAI Commands"
+	set name = "Choose Say Verb"
+
+	var/choice = input(usr,"What theme would you like to use for your speech verbs?") as null|anything in possible_say_verbs
+	if(!choice)
+		return
+	verb_say = choice
+
+/mob/living/silicon/pai/verb/choose_verb_ask()
+	set category = "pAI Commands"
+	set name = "Choose Ask Verb"
+
+	var/choice = input(usr,"What theme would you like to use for your speech verbs?") as null|anything in possible_ask_verbs
+	if(!choice)
+		return
+	verb_ask = choice
+
+/mob/living/silicon/pai/verb/choose_verb_yell()
+	set category = "pAI Commands"
+	set name = "Choose Yell Verb"
+
+	var/choice = input(usr,"What theme would you like to use for your speech verbs?") as null|anything in possible_yell_verbs
+	if(!choice)
+		return
+	verb_yell = choice
+
+/mob/living/silicon/pai/verb/choose_verb_exclaim()
+	set category = "pAI Commands"
+	set name = "Choose Exclaim Verb"
+
+	var/choice = input(usr,"What theme would you like to use for your speech verbs?") as null|anything in possible_exclaim_verbs
+	if(!choice)
+		return
+	verb_exclaim = choice

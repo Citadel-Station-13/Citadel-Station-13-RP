@@ -22,11 +22,19 @@
 		var/obj/item/pda/P = card.loc
 		P.pai = null
 		P.visible_message("<span class='notice'>[src] ejects itself from [P]!</span>")
-	if(isliving(card.loc))
+	else if(isliving(card.loc))
 		var/mob/living/L = card.loc
 		if(!L.temporarilyRemoveItemFromInventory(card))
 			to_chat(src, "<span class='warning'>Error: Unable to expand to mobile form. Chassis is restrained by some device or person.</span>")
 			return FALSE
+		var/datum/belly/inside_belly = check_belly(card) //VOREStation edit.
+		if(inside_belly) //VOREStation edit.
+			to_chat(src, "<span class='notice'>There is no room to unfold in here. You're good and stuck.</span>") //VOREStation edit.
+			return FALSE //VOREStation edit.
+	//I'm not sure how much of this is necessary, but I would rather avoid issues.
+	else if(istype(card.loc,/obj/item/rig_module))
+		to_chat(src, "There is no room to unfold inside this rig module. You're good and stuck.")
+		return FALSE
 	if(istype(card.loc, /obj/item/integrated_circuit/input/pAI_connector))
 		var/obj/item/integrated_circuit/input/pAI_connector/C = card.loc
 		C.RemovepAI()
