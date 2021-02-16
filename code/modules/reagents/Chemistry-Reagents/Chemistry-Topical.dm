@@ -165,5 +165,72 @@
         if(world.time > (data + (5*60*10)))
             data = world.time
             to_chat(M, "<span class='notice'>Your skin feels refreshed and sooth.</span>")
-    
-    
+
+//Remove before merge
+/obj/item/storage/box/touch_bottles
+	name = "Box of Touch-Medicine"
+	desc = "A box with already prepared Medicine for application via touch."
+	starts_with = list(/obj/item/reagent_containers/glass/bottle/inaprovalaze = 1,
+                        /obj/item/reagent_containers/glass/bottle/bicarilaze = 1,
+                        /obj/item/reagent_containers/glass/bottle/kelotalaze = 1,
+                        /obj/item/reagent_containers/glass/bottle/tricoralaze = 1,
+                        /obj/item/reagent_containers/glass/bottle/neurolaze = 1,
+                        /obj/item/reagent_containers/glass/bottle/sterilaze = 1,
+                        /obj/item/reagent_containers/glass/bottle/cleansalaze = 1,
+                        /obj/item/reagent_containers/glass/bottle/lotion = 1)
+
+/obj/item/reagent_containers/glass/bottle/inaprovalaze
+	name = "Inaprovalaze bottle"
+	desc = "A small bottle of Inaprovalaze. Do NOT drink."
+	icon = 'icons/obj/chemical.dmi'
+	icon_state = "bottle-2"
+	prefill = list("inaprovalaze" = 60)
+
+/obj/item/reagent_containers/glass/bottle/bicarilaze
+	name = "Bicarilaze bottle"
+	desc = "A small bottle of Bicarilaze. Do NOT drink."
+	icon = 'icons/obj/chemical.dmi'
+	icon_state = "bottle-2"
+	prefill = list("bicarilaze" = 60)
+
+/obj/item/reagent_containers/glass/bottle/kelotalaze
+	name = "Kelotalaze bottle"
+	desc = "A small bottle of Kelotalaze. Do NOT drink."
+	icon = 'icons/obj/chemical.dmi'
+	icon_state = "bottle-2"
+	prefill = list("kelotalaze" = 60)
+
+/obj/item/reagent_containers/glass/bottle/tricoralaze
+	name = "Tricoralaze bottle"
+	desc = "A small bottle of Tricoralaze. Do NOT drink."
+	icon = 'icons/obj/chemical.dmi'
+	icon_state = "bottle-2"
+	prefill = list("tricoralaze" = 60)
+
+/obj/item/reagent_containers/glass/bottle/neurolaze
+	name = "Neurolaze bottle"
+	desc = "A small bottle of Neurolaze. Do NOT drink."
+	icon = 'icons/obj/chemical.dmi'
+	icon_state = "bottle-2"
+	prefill = list("neurolaze" = 60)
+
+/obj/item/reagent_containers/glass/bottle/sterilaze
+	name = "Sterilaze bottle"
+	desc = "A small bottle of Sterilaze. Do NOT drink."
+	icon = 'icons/obj/chemical.dmi'
+	icon_state = "bottle-2"
+	prefill = list("sterilaze" = 60)
+
+/obj/item/reagent_containers/glass/bottle/cleansalaze
+	name = "Cleansalaze bottle"
+	desc = "A small bottle of Cleansalaze. Do NOT drink."
+	icon = 'icons/obj/chemical.dmi'
+	icon_state = "bottle-2"
+	prefill = list("cleansalaze" = 60)
+
+/obj/item/reagent_containers/glass/bottle/lotion
+	name = "Lotion bottle"
+	desc = "A small bottle of Lotion. Do NOT drink."
+	icon = 'icons/obj/chemical.dmi'
+	icon_state = "bottle-2"
+	prefill = list("lotion" = 60)
