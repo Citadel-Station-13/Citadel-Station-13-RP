@@ -110,8 +110,8 @@
 
 /mob/living/silicon/pai/start_pulling(atom/movable/AM, state, force = move_force, supress_message = FALSE)
 	if(ispAI(AM))
-		return ..()
-	return FALSE
+		return TRUE
+	return ..()
 
 /mob/living/silicon/pai/proc/toggle_integrated_light()
 	if(!light_range)

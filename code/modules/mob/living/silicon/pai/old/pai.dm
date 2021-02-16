@@ -1,37 +1,11 @@
 /mob/living/silicon/pai
-	name = "pAI"
-	icon = 'icons/mob/pai.dmi'
-	icon_state = "pai-repairbot"
 
 	emote_type = 2		// pAIs emotes are heard, not seen, so they can be seen through a container (eg. person)
-	pass_flags = 1
-	mob_size = MOB_SMALL
 
 	holder_type = /obj/item/holder/pai
 
-	can_pull_size = ITEMSIZE_SMALL
-	can_pull_mobs = MOB_PULL_SMALLER
-
 	idcard_type = /obj/item/card/id
 	var/idaccessible = 0
-
-	var/obj/item/radio/radio		// Our primary radio
-	var/obj/item/communicator/integrated/communicator	// Our integrated communicator.
-
-	var/chassis = "pai-repairbot"   // A record of your chosen chassis.
-	var/global/list/possible_chassis = list(
-		"Drone" = "pai-repairbot",
-		"Cat" = "pai-cat",
-		"Mouse" = "pai-mouse",
-		"Monkey" = "pai-monkey",
-		"Corgi" = "pai-borgi",
-		"Fox" = "pai-fox",
-		"Parrot" = "pai-parrot",
-		"Rabbit" = "pai-rabbit",
-		"Bear" = "pai-bear",  //VOREStation Edit
-		"Fennec" = "pai-fen",  // VOREStation Edit - Rykka
-		"Fennec" = "pai-typezero"  //VOREStation Edit
-		)
 
 	var/global/list/possible_say_verbs = list(
 		"Robotic" = list("states","declares","queries"),
@@ -42,15 +16,6 @@
 		"Canine" = list("yaps","barks","woofs")
 		)
 
-	var/obj/item/pai_cable/cable		// The cable we produce and use when door or camera jacking
-
-	var/master				// Name of the one who commands us
-	var/master_dna			// DNA string for owner verification
-							// Keeping this separate from the laws var, it should be much more difficult to modify
-	var/pai_law0 = "Serve your master."
-	var/pai_laws				// String for additional operating instructions our master might give us
-
-	var/silence_time			// Timestamp when we were silenced (normally via EMP burst), set to null after silence has faded
 
 // Various software-specific vars
 
@@ -71,45 +36,11 @@
 	var/datum/data/record/securityActive1		// Could probably just combine all these into one
 	var/datum/data/record/securityActive2
 
-	var/obj/machinery/door/hackdoor		// The airlock being hacked
-	var/hackprogress = 0				// Possible values: 0 - 1000, >= 1000 means the hack is complete and will be reset upon next check
-	var/hack_aborted = 0
-
 	var/obj/item/integated_radio/signal/sradio // AI's signaller
 
 	var/translator_on = 0 // keeps track of the translator module
 
 	var/current_pda_messaging = null
-
-/mob/living/silicon/pai/New(var/obj/item/paicard)
-	src.loc = paicard
-	card = paicard
-	sradio = new(src)
-	communicator = new(src)
-	if(card)
-		if(!card.radio)
-			card.radio = new /obj/item/radio(src.card)
-		radio = card.radio
-
-	//Default languages without universal translator software
-	add_language(LANGUAGE_SOL_COMMON, 1)
-	add_language(LANGUAGE_TRADEBAND, 1)
-	add_language(LANGUAGE_GUTTER, 1)
-	add_language(LANGUAGE_EAL, 1)
-	add_language(LANGUAGE_TERMINUS, 1)
-	add_language(LANGUAGE_SIGN, 0)
-
-	verbs += /mob/living/silicon/pai/proc/choose_chassis
-	verbs += /mob/living/silicon/pai/proc/choose_verbs
-
-	//PDA
-	pda = new(src)
-	spawn(5)
-		pda.ownjob = "Personal Assistant"
-		pda.owner = text("[]", src)
-		pda.name = pda.owner + " (" + pda.ownjob + ")"
-		pda.toff = 1
-	..()
 
 /mob/living/silicon/pai/verb/reset_record_view()
 	set category = "pAI Commands"

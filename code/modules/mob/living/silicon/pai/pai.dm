@@ -10,11 +10,17 @@
 	health = 500
 	maxHealth = 500
 	layer = BELOW_MOB_LAYER
+	can_pull_size = ITEMSIZE_SMALL
+	can_pull_mobs = MOB_PULL_SAME
+	mob_size = MOB_SMALL
 	/// pais don't care about other speeds until movespeed mods are ported
 	var/movement_speed = 2
 
 	var/obj/item/instrument/piano_synth/internal_instrument
 	silicon_privileges = PRIVILEGES_PAI
+
+#warn make communicator accessible
+	var/obj/item/communicator/integrated/communicator	// Our integrated communicator.
 
 	var/network = "ss13"
 	var/obj/machinery/camera/current = null
@@ -113,6 +119,8 @@
 	if(!radio)
 		radio = new /obj/item/radio/headset/silicon/pai(src)
 
+	communicator = new(src)
+
 	//PDA
 	pda = new(src)
 	spawn(5)
@@ -136,13 +144,24 @@
 	var/datum/action/innate/pai/light/AL = new /datum/action/innate/pai/light
 	var/datum/action/innate/custom_holoform/custom_holoform = new /datum/action/innate/custom_holoform
 
-	var/datum/action/language_menu/ALM = new
+// 	var/datum/action/language_menu/ALM = new
+
 	SW.Grant(src)
 	AS.Grant(src)
 	AC.Grant(src)
 	AR.Grant(src)
 	AL.Grant(src)
-	ALM.Grant(src)
+
+//	ALM.Grant(src)
+
+	//Default languages without universal translator software
+	add_language(LANGUAGE_SOL_COMMON, 1)
+	add_language(LANGUAGE_TRADEBAND, 1)
+	add_language(LANGUAGE_GUTTER, 1)
+	add_language(LANGUAGE_EAL, 1)
+	add_language(LANGUAGE_TERMINUS, 1)
+	add_language(LANGUAGE_SIGN, 0)
+
 	custom_holoform.Grant(src)
 	emitter_next_use = world.time + 10 SECONDS
 
@@ -154,12 +173,6 @@
 	. = ..()
 	if(possible_chassis[chassis])
 		AddElement(/datum/element/mob_holder, chassis, 'icons/mob/pai_item_head.dmi', 'icons/mob/pai_item_rh.dmi', 'icons/mob/pai_item_lh.dmi', ITEM_SLOT_HEAD)
-
-/mob/living/silicon/pai/BiologicalLife(seconds, times_fired)
-	if(!(. = ..()))
-		return
-	if(hacking)
-		process_hack()
 
 /mob/living/silicon/pai/proc/process_hack()
 
@@ -311,6 +324,8 @@
 //	if(!(. = ..()))
 //		return
 	silent = max(silent - 1, 0)
+	if(hacking)
+		process_hack()
 
 /mob/living/silicon/pai/updatehealth()
 	if(status_flags & GODMODE)
