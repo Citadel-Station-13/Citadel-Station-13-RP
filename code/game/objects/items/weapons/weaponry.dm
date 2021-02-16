@@ -62,7 +62,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/effect/energy_net/process()
+/obj/effect/energy_net/process(delta_time)
 	if(!has_buckled_mobs())
 		qdel(src)
 

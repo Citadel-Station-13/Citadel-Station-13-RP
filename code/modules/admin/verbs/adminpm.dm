@@ -262,7 +262,7 @@
 
 	admin_ticket_log(C, "<font color='blue'>PM From [irc_tagged]: [msg]</font>")
 
-	window_flash(C, ignorepref = TRUE)
+	window_flash(C)
 	//always play non-admin recipients the adminhelp sound
 	C << 'sound/effects/adminhelp.ogg'
 

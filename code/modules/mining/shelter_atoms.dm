@@ -171,7 +171,7 @@
 	verbs -= /obj/structure/table/proc/do_put
 	..()
 
-/obj/structure/table/survival_pod/dismantle(obj/item/wrench/W, mob/user)
+/obj/structure/table/survival_pod/dismantle(obj/item/tool/wrench/W, mob/user)
 	to_chat(user, "<span class='warning'>You cannot dismantle \the [src].</span>")
 	return
 

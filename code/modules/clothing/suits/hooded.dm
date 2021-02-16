@@ -85,6 +85,24 @@
 	action_button_name = "Toggle Ian Hood"
 	hoodtype = /obj/item/clothing/head/hood/ian_hood
 
+/obj/item/clothing/suit/storage/hooded/bee_costume
+	name = "bee costume"
+	desc = "A giant bee costume, popular at parties and random bar functions."
+	icon_state = "bee"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	flags_inv = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
+	action_button_name = "Toggle Bee Hood"
+	hoodtype = /obj/item/clothing/head/hood/bee_hood
+
+/obj/item/clothing/suit/storage/hooded/flash_costume
+	name = "flash costume"
+	desc = "Once a common sight at Security hosted balls, this outfit has oddly fallen out of favor recently."
+	icon_state = "flashsuit"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	flags_inv = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
+	action_button_name = "Toggle Flash Top"
+	hoodtype = /obj/item/clothing/head/hood/flash_hood
+
 /obj/item/clothing/suit/storage/hooded/techpriest /// TO DO - FIND A WAY TO HIDE FEET PROPERLY
 	name = "tech priest robe"
 	desc = "A robe for those that worship the Omnissiah. Also toasters.. for.. some reason."

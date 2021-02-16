@@ -70,7 +70,7 @@
 	return
 
 
-/obj/machinery/atmospherics/pipe/simple/heat_exchanging/process()
+/obj/machinery/atmospherics/pipe/simple/heat_exchanging/process(delta_time)
 	if(!parent)
 		..()
 	else

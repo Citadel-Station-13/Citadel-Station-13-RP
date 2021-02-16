@@ -214,7 +214,7 @@
 	. = ..()
 	if(old_buckled)
 		for(var/mob/M in old_buckled)
-			buckle_mob(M, force = TRUE)
+			buckle_mob(M, forced = TRUE)
 
 /obj/structure/bed/roller/update_icon()
 	return

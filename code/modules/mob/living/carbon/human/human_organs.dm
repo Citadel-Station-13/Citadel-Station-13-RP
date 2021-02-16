@@ -37,7 +37,7 @@
 
 	//processing internal organs is pretty cheap, do that first.
 	for(var/obj/item/organ/I in internal_organs)
-		I.process()
+		I.process(2)
 
 	handle_stance()
 	handle_grasp()
@@ -53,7 +53,7 @@
 			bad_external_organs -= E
 			continue
 		else
-			E.process()
+			E.process(2)
 			number_wounds += E.number_wounds
 
 			if (!lying && !buckled && world.time - l_move_time < 15)

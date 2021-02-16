@@ -21,7 +21,7 @@
 	if(possible_species && possible_species.len)
 		produce_species = pick(possible_species)
 
-/obj/machinery/vr_sleeper/alien/process()
+/obj/machinery/vr_sleeper/alien/process(delta_time)
 	if(stat & (BROKEN))
 		if(occupant)
 			go_out()

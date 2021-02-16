@@ -9,11 +9,6 @@ SUBSYSTEM_DEF(jobs)
 	var/list/job_debug = list()
 		//List of all jobs
 
-
-#define GET_RANDOM_JOB 0
-#define BE_ASSISTANT 1
-#define RETURN_TO_LOBBY 2
-
 /datum/controller/subsystem/jobs/Initialize()
 	SetupOccupations()
 	LoadJobs("config/jobs.txt")

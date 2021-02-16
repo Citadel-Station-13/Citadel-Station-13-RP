@@ -1,9 +1,3 @@
-
-// Turfmakers
-#define TRIUMPH_SET_ATMOS	initial_gas_mix = ATMOSPHERE_ID_TRIUMPH
-#define TRIUMPH_TURF_CREATE(x)	x/triumph/initial_gas_mix = ATMOSPHERE_ID_TRIUMPH;x/triumph/outdoors=TRUE;x/triumph/allow_gas_overlays = FALSE
-#define TRIUMPH_TURF_CREATE_UN(x)	x/triumph/initial_gas_mix=ATMOSPHERE_ID_TRIUMPH
-
 // Normal map defs
 #define Z_LEVEL_DECK_ONE				1
 #define Z_LEVEL_DECK_TWO				2
@@ -137,13 +131,11 @@
 	unit_test_exempt_areas = list(
 		/area/vacant/vacant_site,
 		/area/vacant/vacant_site/east,
-		/area/triumph_away,
 		/area/solar/)
 	unit_test_exempt_from_atmos = list(
 		/area/engineering/atmos/intake,
 		/area/tcommsat/chamber,
 		/area/engineering/engineering_airlock,
-		/area/triumph_away,
 		/area/solar/)
 
 	belter_docked_z = 		list(Z_LEVEL_DECK_TWO)

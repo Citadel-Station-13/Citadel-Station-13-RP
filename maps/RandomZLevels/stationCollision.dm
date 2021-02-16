@@ -175,7 +175,7 @@ var/sc_safecode5 = "[rand(0,9)]"
 /obj/machinery/singularity/narsie/sc_Narsie/admin_investigate_setup()
 	return
 
-/obj/machinery/singularity/narsie/sc_Narsie/process()
+/obj/machinery/singularity/narsie/sc_Narsie/process(delta_time)
 	eat()
 	if(prob(25))
 		mezzer()

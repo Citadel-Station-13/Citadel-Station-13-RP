@@ -4,7 +4,7 @@
 	var/list/dispense_reagents = list()
 	var/process_tick = 0
 
-/obj/machinery/chemical_dispenser/process()
+/obj/machinery/chemical_dispenser/process(delta_time)
 	if(!_recharge_reagents)
 		return
 	if(stat & (BROKEN|NOPOWER))

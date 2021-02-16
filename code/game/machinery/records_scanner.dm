@@ -22,7 +22,7 @@ obj/machinery/scanner/New()
 		if(!outputdir)
 			outputdir = 8
 
-/obj/machinery/scanner/process()
+/obj/machinery/scanner/process(delta_time)
 	if(stat & NOPOWER)
 		return
 	use_power(50)

@@ -147,6 +147,10 @@
 	display_name = "cowboy, black"
 	path = /obj/item/clothing/head/cowboy_hat/black
 
+/datum/gear/head/cowboy/pink
+	display_name = "cowboy, pink"
+	path = /obj/item/clothing/head/cowboy_hat/pink
+
 /datum/gear/head/cowboy/wide
 	display_name = "cowboy, wide"
 	path = /obj/item/clothing/head/cowboy_hat/wide
@@ -322,6 +326,14 @@
 	path = /obj/item/clothing/head/pin/bow
 
 /datum/gear/head/bow/small/New()
+	..()
+	gear_tweaks += gear_tweak_free_color_choice
+
+/datum/gear/head/traveller
+	display_name = "traveller's hat"
+	path = /obj/item/clothing/head/traveller
+
+/datum/gear/head/traveller/New()
 	..()
 	gear_tweaks += gear_tweak_free_color_choice
 

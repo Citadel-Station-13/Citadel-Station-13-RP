@@ -30,6 +30,7 @@
 /obj/item/gun/magic/staff/healing/handle_suicide() //Stops people trying to commit suicide to heal themselves
 	return
 
+/*
 /obj/item/gun/magic/staff/chaos
 	name = "staff of chaos"
 	desc = "An artefact that spits bolts of chaotic magic that can potentially do anything."
@@ -47,6 +48,7 @@
 /obj/item/gun/magic/staff/chaos/proc/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0, stam_cost = 0)
 	projectile_type = pick(allowed_projectile_types)
 	. = ..()
+*/
 
 /obj/item/gun/magic/staff/door
 	name = "staff of door creation"

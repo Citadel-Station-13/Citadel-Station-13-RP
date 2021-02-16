@@ -120,7 +120,7 @@
 	attempting = 0
 	return 1
 
-/obj/machinery/clonepod/transhuman/process()
+/obj/machinery/clonepod/transhuman/process(delta_time)
 	if(stat & NOPOWER)
 		if(occupant)
 			locked = 0
@@ -221,7 +221,7 @@
 		store_rating = store_rating * MB.rating
 	max_res_amount = store_rating
 
-/obj/machinery/transhuman/synthprinter/process()
+/obj/machinery/transhuman/synthprinter/process(delta_time)
 	if(stat & NOPOWER)
 		if(busy)
 			busy = 0

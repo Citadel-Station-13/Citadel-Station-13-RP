@@ -119,7 +119,7 @@
 	return 1
 
 
-/obj/item/powersink/process()
+/obj/item/powersink/process(delta_time)
 	drained_this_tick = 0
 	power_drained -= min(dissipation_rate, power_drained)
 	if(power_drained > max_power * 0.95)

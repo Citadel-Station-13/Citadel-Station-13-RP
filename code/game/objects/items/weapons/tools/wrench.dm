@@ -31,7 +31,6 @@
 	name = "strange wrench"
 	desc = "A wrench with many common uses. Can be usually found in your hand."
 	icon = 'icons/obj/tools.dmi'
-	/datum/category_item/catalogue/anomalous/precursor_a/alien_wrench
 	icon_state = "hybwrench"
 	slot_flags = SLOT_BELT
 	force = 8
@@ -43,8 +42,6 @@
 	usesound = 'sound/effects/stealthoff.ogg'
 	toolspeed = 0.5
 	reach = 2
-
-
 
 /datum/category_item/catalogue/anomalous/precursor_a/alien_wrench
 	name = "Precursor Alpha Object - Fastener Torque Tool"

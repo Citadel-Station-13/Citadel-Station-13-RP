@@ -28,23 +28,23 @@
 	icon_state = "unathi_liver"
 
 //Unathi liver acts as kidneys, too.
-/obj/item/organ/internal/liver/unathi/process()
+/obj/item/organ/internal/liver/unathi/process(delta_time)
 	..()
 	if(!owner) return
 
 	var/datum/reagent/coffee = locate(/datum/reagent/drink/coffee) in owner.reagents.reagent_list
 	if(coffee)
 		if(is_bruised())
-			owner.adjustToxLoss(0.1 * PROCESS_ACCURACY)
+			owner.adjustToxLoss(0.1 * (delta_time * 5))
 		else if(is_broken())
-			owner.adjustToxLoss(0.3 * PROCESS_ACCURACY)
+			owner.adjustToxLoss(0.3 * (delta_time * 5))
 
 	var/datum/reagent/sugar = locate(/datum/reagent/sugar) in owner.reagents.reagent_list
 	if(sugar)
 		if(is_bruised())
-			owner.adjustToxLoss(0.1 * PROCESS_ACCURACY)
+			owner.adjustToxLoss(0.1 * (delta_time * 5))
 		else if(is_broken())
-			owner.adjustToxLoss(0.3 * PROCESS_ACCURACY)
+			owner.adjustToxLoss(0.3 * (delta_time * 5))
 
 /obj/item/organ/internal/brain/unathi
 	color = "#b3cbc3"

@@ -63,7 +63,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/card/id/guest/process()
+/obj/item/card/id/guest/process(delta_time)
 	if(expired == 0 && world.time >= expiration_time)
 		visible_message("<span class='warning'>\The [src] flashes a few times before turning red.</span>")
 		icon_state = "guest_invalid"
@@ -94,10 +94,9 @@
 	var/list/internal_log = list()
 	var/mode = 0  // 0 - making pass, 1 - viewing logs
 
-/obj/machinery/computer/guestpass/New()
-	..()
+/obj/machinery/computer/guestpass/Initialize(mapload)
+	. = ..()
 	uid = "[rand(100,999)]-G[rand(10,99)]"
-
 
 /obj/machinery/computer/guestpass/attackby(obj/I, mob/user)
 	if(istype(I, /obj/item/card/id))

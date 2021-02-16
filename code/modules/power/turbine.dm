@@ -142,7 +142,7 @@
 				to_chat(user, "<span class='alert'>Turbine not connected.</span>")
 				stat |= BROKEN
 
-/obj/machinery/compressor/process()
+/obj/machinery/compressor/process(delta_time)
 	if(!turbine)
 		stat = BROKEN
 	if(stat & BROKEN || panel_open)
@@ -240,7 +240,7 @@
 				to_chat(user, "<span class='alert'>Compressor not connected.</span>")
 				stat |= BROKEN
 
-/obj/machinery/power/turbine/process()
+/obj/machinery/power/turbine/process(delta_time)
 	if(!compressor)
 		stat = BROKEN
 	if((stat & BROKEN) || panel_open)

@@ -7,7 +7,7 @@
 	id = "berserkmed"
 	description = "A liquid that is capable of causing a prolonged state of heightened aggression and durability."
 	taste_description = "metal"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#ff5555"
 	metabolism = REM
 

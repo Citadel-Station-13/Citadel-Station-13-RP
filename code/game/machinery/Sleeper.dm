@@ -249,7 +249,7 @@
 	. = ..()
 	update_icon()
 
-/obj/machinery/sleeper/process()
+/obj/machinery/sleeper/process(delta_time)
 	if(stat & (NOPOWER|BROKEN))
 		return
 	if(occupant)

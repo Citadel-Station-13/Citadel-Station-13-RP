@@ -39,7 +39,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/machinery/mineral/mint/process()
+/obj/machinery/mineral/mint/process(delta_time)
 	if (input)
 		var/obj/item/stack/O
 		O = locate(/obj/item/stack, input.loc)

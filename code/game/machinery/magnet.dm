@@ -120,7 +120,7 @@
 					spawn()
 						magnetic_process()
 
-/obj/machinery/magnetic_module/process()
+/obj/machinery/magnetic_module/process(delta_time)
 	if(stat & NOPOWER)
 		on = 0
 
@@ -227,7 +227,7 @@
 		filter_path() // renders rpath
 
 
-/obj/machinery/magnetic_controller/process()
+/obj/machinery/magnetic_controller/process(delta_time)
 	if(magnets.len == 0 && autolink)
 		for(var/obj/machinery/magnetic_module/M in machines)
 			if(M.freq == frequency && M.code == code)

@@ -120,7 +120,7 @@
 /datum/file/program/holodeck/Reset()
 	emergencyShutdown()
 
-/datum/file/program/holodeck/process()
+/datum/file/program/holodeck/process(delta_time)
 	if(active)
 		if(!checkInteg(linkedholodeck))
 			damaged = 1

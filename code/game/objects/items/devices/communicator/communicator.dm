@@ -194,7 +194,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 // Proc: process()
 // Parameters: None
 // Description: Ticks the update_ticks variable, and checks to see if it needs to disconnect communicators every five ticks..
-/obj/item/communicator/process()
+/obj/item/communicator/process(delta_time)
 	update_ticks++
 	if(update_ticks % 5)
 		if(!node)

@@ -164,8 +164,8 @@ var/last_message = 0
 
 	else //We are in an overpressure or standard atmosphere.
 		pressure_difference = pressure - species.safe_pressure
-	
-	
+
+
 	if(pressure_difference < 5) // If the difference is small, don't bother calculating the fraction.
 		pressure_difference = 0
 
@@ -655,7 +655,8 @@ var/last_message = 0
 			var/obj/mecha/M = loc
 			loc_temp =  M.return_temperature()
 		else if(istype(loc, /obj/machinery/atmospherics/unary/cryo_cell))
-			loc_temp = loc:air_contents.temperature
+			var/obj/machinery/atmospherics/unary/cryo_cell/CC = loc
+			loc_temp = CC.air_contents.temperature
 		else
 			loc_temp = environment.temperature
 
@@ -1412,7 +1413,7 @@ var/last_message = 0
 			see_in_dark = species.darksight
 			see_invisible = see_in_dark>2 ? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default
 
-		var/tmp/glasses_processed = 0
+		var/glasses_processed = 0
 		var/obj/item/rig/rig = back
 		if(istype(rig) && rig.visor)
 			if(!rig.helmet || (head && rig.helmet == head))

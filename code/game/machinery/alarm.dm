@@ -143,7 +143,7 @@
 	if(!master_is_operating())
 		elect_master()
 
-/obj/machinery/alarm/process()
+/obj/machinery/alarm/process(delta_time)
 	if((stat & (NOPOWER|BROKEN)) || shorted)
 		return
 
@@ -893,7 +893,7 @@ FIRE ALARM
 	alarm()
 	return
 
-/obj/machinery/firealarm/process()//Note: this processing was mostly phased out due to other code, and only runs when needed
+/obj/machinery/firealarm/process(delta_time)//Note: this processing was mostly phased out due to other code, and only runs when needed
 	if(stat & (NOPOWER|BROKEN))
 		return
 

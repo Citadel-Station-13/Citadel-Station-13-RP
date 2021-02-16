@@ -211,7 +211,7 @@
 	spawn(cooldown)
 		icon_state = "pointer"
 
-/obj/item/laser_pointer/process()
+/obj/item/laser_pointer/process(delta_time)
 	if(prob(20 - recharge_locked*5))
 		energy += 1
 		if(energy >= max_energy)

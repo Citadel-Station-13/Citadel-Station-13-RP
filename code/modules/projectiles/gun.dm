@@ -699,7 +699,7 @@
 			recoil = round(recoil*zoom_amount+1) //recoil is worse when looking through a scope
 
 //make sure accuracy and recoil are reset regardless of how the item is unzoomed.
-/obj/item/gun/zoom()
+/obj/item/gun/zoom(tileoffset = 14, viewsize = 9, mob/user = usr)
 	..()
 	if(!zoom)
 		accuracy = initial(accuracy)
