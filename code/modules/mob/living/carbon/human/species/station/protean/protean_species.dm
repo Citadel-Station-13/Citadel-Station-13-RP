@@ -44,7 +44,7 @@
 	radiation_mod = 0 // Their blobforms have rad immunity, so it only makes sense that their humanoid forms do too
 	toxins_mod =	0 // This is necessary to make them not instantly die to ions/low yield EMPs, also it makes sense as the refactory would reset or repurpose corrupted nanites
 	
-	hunger_factor = 0.3 // Better power storage, perhaps? This is not additive. Whoops
+	hunger_factor = 0.04 // Better power storage, perhaps? This is not additive. Whoops
  /*
 These values assume all limbs are hit by the damage. To get individual limb damages divide by 11.
 A worst-case sev 4 emp will do 88 damage pre-mitigation, and 114.4 post-mitigation (as resist is negative) spread out over all the limbs.
