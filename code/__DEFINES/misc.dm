@@ -394,11 +394,6 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 
 #define CLIENT_FROM_VAR(I) (ismob(I) ? I:client : (istype(I, /client) ? I : (istype(I, /datum/mind) ? I:current?:client : null)))
 
-#define VARSET_FROM_LIST(L, V) if(L && L[#V]) V = L[#V]
-#define VARSET_FROM_LIST_IF(L, V, C...) if(L && L[#V] && (C)) V = L[#V]
-#define VARSET_TO_LIST(L, V) if(L) L[#V] = V
-#define VARSET_TO_LIST_IF(L, V, C...) if(L && (C)) L[#V] = V
-
 #define RADIATION_THRESHOLD_CUTOFF	0.1	// Radiation will not affect a tile when below this value.
 
 #define CUSTOM_HOLOFORM_DELAY		10 SECONDS			//prevents spamming to make lag. it's pretty expensive to do this.

@@ -1,3 +1,4 @@
+GLOBAL_LIST_EMPTY(pai_list)
 /mob/living/silicon/pai
 	name = "pAI"
 	icon = 'icons/mob/pai.dmi'
@@ -214,8 +215,8 @@
 
 /mob/living/silicon/pai/ComponentInitialize()
 	. = ..()
-	if(possible_chassis[chassis])
-		AddElement(/datum/element/mob_holder, chassis, 'icons/mob/pai_item_head.dmi', 'icons/mob/pai_item_rh.dmi', 'icons/mob/pai_item_lh.dmi', ITEM_SLOT_HEAD)
+//	if(possible_chassis[chassis])
+//		AddElement(/datum/element/mob_holder, chassis, 'icons/mob/pai_item_head.dmi', 'icons/mob/pai_item_rh.dmi', 'icons/mob/pai_item_lh.dmi', ITEM_SLOT_HEAD)
 
 /mob/living/silicon/pai/proc/process_hack()
 

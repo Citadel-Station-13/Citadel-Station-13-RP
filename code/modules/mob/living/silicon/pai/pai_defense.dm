@@ -23,10 +23,10 @@
 			qdel(src)
 		if(2)
 			fold_in(force = 1)
-			DefaultCombatKnockdown(400)
+			Weaken(10)
 		if(3)
 			fold_in(force = 1)
-			DefaultCombatKnockdown(200)
+			Weaken(5)
 
 /mob/living/silicon/pai/on_attack_hand(mob/living/carbon/human/user)
 	switch(user.a_intent)
@@ -47,9 +47,11 @@
 					user.visible_message("<span class='notice'>[user] promptly scoops up [user.p_their()] pAI's card.</span>",
 						"<span class='notice'>You promptly scoops up your pAI's card.</span>")
 			else
+/*
 				if(HAS_TRAIT(user, TRAIT_PACIFISM))
 					to_chat(user, "<span class='notice'>You don't want to hurt [src]!</span>")
 					return
+*/
 				visible_message("<span class='danger'>[user] stomps on [src]!.</span>",
 					"<span class='userdanger'>[user] stomps on you!.</span>", target = user,
 					target_message = "<span class='danger'>You stomp on [src]!.</span>")
@@ -62,7 +64,7 @@
 		fold_in(force = TRUE)
 		visible_message("<span class='warning'>The electrically-charged projectile disrupts [src]'s holomatrix, forcing [src] to fold in!</span>")
 	. = ..()
-	return BULLET_ACT_FORCE_PIERCE
+//	return BULLET_ACT_FORCE_PIERCE
 
 /mob/living/silicon/pai/stripPanelUnequip(obj/item/what, mob/who, where) //prevents stripping
 	to_chat(src, "<span class='warning'>Your holochassis stutters and warps intensely as you attempt to interact with the object, forcing you to cease lest the field fail.</span>")
@@ -101,9 +103,6 @@
 		take_holo_damage(amount)
 	else
 		take_holo_damage(amount * 0.25)
-
-/mob/living/silicon/pai/adjustOrganLoss(slot, amount, maximum = 500) //I kept this in, unlike tg
-	DefaultCombatKnockdown(amount * 0.2)
 
 /mob/living/silicon/pai/getBruteLoss()
 	return emittermaxhealth - emitterhealth
