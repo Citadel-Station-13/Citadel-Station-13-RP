@@ -6,8 +6,8 @@
 	var/in_use = FALSE
 	vore_flags = NO_VORE
 
-/mob/living/carbon/human/vore
-	vore_flags = DEVOURABLE | DIGESTABLE | FEEDING
+// /mob/living/carbon/human/vore
+//	vore_flags = DEVOURABLE | DIGESTABLE | FEEDING
 
 INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 
@@ -22,9 +22,10 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 	return
 
 /mob/living/carbon/human/dummy/proc/wipe_state()
-	delete_equipment()
+	// delete_equipment()
+	QDEL_LIST(contents)
 	set_species(/datum/species/human)
-	icon_render_key = null
+	// icon_render_key = null
 	cut_overlays()
 
 //Inefficient pooling/caching way.

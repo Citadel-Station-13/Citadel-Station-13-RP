@@ -44,7 +44,7 @@
 				visible_message("<span class='notice'>Responding to its master's touch, [src] disengages its holochassis emitter, rapidly losing coherence.</span>")
 				fold_in()
 				if(user.put_in_hands(card))
-					user.visible_message("<span class='notice'>[user] promptly scoops up [user.p_their()] pAI's card.</span>",
+					user.visible_message("<span class='notice'>[user] promptly scoops up their pAI's card.</span>",
 						"<span class='notice'>You promptly scoops up your pAI's card.</span>")
 			else
 /*

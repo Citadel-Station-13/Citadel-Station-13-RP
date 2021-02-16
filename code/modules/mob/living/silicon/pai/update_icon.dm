@@ -14,14 +14,43 @@
 				icon_state = "bellyup"
 			else if("rest" in states)
 				icon_state = "rest"
-		rotate_on_lying = FALSE
+		// rotate_on_lying = FALSE
 	else if(chassis == "custom")
 		icon = custom_holoform_icon
 		icon_state = ""
-		rotate_on_lying = TRUE
+		// rotate_on_lying = TRUE
 	else
 		icon = initial(icon)
 		icon_state = "[chassis][resting? "_rest" : (stat == DEAD? "_dead" : "")]"
-		rotate_on_lying = FALSE
+		// rotate_on_lying = FALSE
 	pixel_x = ((chassis == "dynamic") && chassis_pixel_offsets_x[dynamic_chassis]) || 0
 	update_transform()
+
+#warn snowflake in laying down because baycode transform is a trash fire
+//IMPORTANT: Multiple animate() calls do not stack well, so try to do them all at once if you can.
+/*
+/mob/living/update_transform()
+	var/matrix/ntransform = matrix(transform) //aka transform.Copy()
+	var/final_pixel_y = pixel_y
+	var/changed = 0
+	if(lying != lying_prev && rotate_on_lying)
+		changed++
+		ntransform.TurnTo(lying_prev,lying)
+		if(lying == 0) //Lying to standing
+			final_pixel_y = get_standard_pixel_y_offset()
+		else //if(lying != 0)
+			if(lying_prev == 0) //Standing to lying
+				pixel_y = get_standard_pixel_y_offset()
+				final_pixel_y = get_standard_pixel_y_offset(lying)
+				if(dir & (EAST|WEST)) //Facing east or west
+					setDir(pick(NORTH, SOUTH)) //So you fall on your side rather than your face or ass
+
+	if(resize != RESIZE_DEFAULT_SIZE)
+		changed++
+		ntransform.Scale(resize)
+		resize = RESIZE_DEFAULT_SIZE
+
+	if(changed)
+		animate(src, transform = ntransform, time = 2, pixel_y = final_pixel_y, easing = EASE_IN|EASE_OUT)
+		floating_need_update = TRUE
+*/
