@@ -37,6 +37,6 @@
 			if(M.mind) // Observers don't have minds, but they should still see AOOC.
 				A = get_antag_data(M.mind.special_role)
 			if((M.mind && M.mind.special_role && A && A.can_hear_aooc) || isobserver(M)) // Antags must have their type be allowed to AOOC to see AOOC.  This prevents, say, ERT from seeing AOOC.
-				to_chat(M, "<span class='ooc'><span class='aooc'>Antag-OOC: <EM>[player_display]:</EM> <span class='message'>[msg]</span></span></span>")
+				to_chat(M, "<span class='ooc'><span class='aooc'>Antag-OOC:<EM>[player_display]: </EM> <span class='message'>[msg]</span></span></span>")
 
 	log_aooc(msg,src)

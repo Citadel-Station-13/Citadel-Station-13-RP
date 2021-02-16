@@ -22,6 +22,19 @@
 		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
 		return
 
+	if(IsGuestKey(key))
+		to_chat(src, "Guests may not use OOC.")
+		return
+
+	if(!is_preference_enabled(/datum/client_preference/show_ooc))
+		to_chat(src, "<span class='warning'>You have OOC muted.</span>")
+		return
+
+	msg = sanitize(msg)
+	if(!msg)	return
+
+
+
 	if(!mob)
 		return
 
@@ -91,9 +104,9 @@
 					else
 						display_name = holder.fakekey
 			if(holder && !holder.fakekey && (holder.rights & R_ADMIN) && config_legacy.allow_admin_ooccolor && (src.prefs.ooccolor != initial(src.prefs.ooccolor))) // keeping this for the badmins
-				to_chat(target, "<font color='[src.prefs.ooccolor]'><span class='prefix [ooc_style]'>" + "OOC: " + "<EM>[display_name]:</EM>[msg]</span></font>")
+				to_chat(target, "<font color='[src.prefs.ooccolor]'><span class='prefix [ooc_style]'><span class='ooc'>" + "OOC:" + "<EM>[display_name]: </EM>[msg]</span></span></font>")
 			else
-				to_chat(target, "<span class='message linkify'>OOC: <EM>[display_name]:</EM>[msg]</span>")
+				to_chat(target, "<span class='ooc'><span class='[ooc_style]'><span class='message linkify'>OOC:<EM>[display_name]: </EM>[msg]</span></span></span>")
 
 /client/proc/looc_wrapper()
 	var/message = input("","looc (text)") as text|null
@@ -187,12 +200,12 @@
 		if(target in admins)
 			admin_stuff += "/([key])"
 
-		to_chat(target, "<span class='ooc'><span class='looc'>" +  "LOOC:" + " <EM>[display_name][admin_stuff]:</EM> <span class='message'>[msg]</span></span></span>")
+		to_chat(target, "<span class='ooc'><span class='looc'>" +  "LOOC:" + " <EM>[display_name][admin_stuff]: </EM> <span class='message'>[msg]</span></span></span>")
 
 	for(var/client/target in r_receivers)
 		var/admin_stuff = "/([key])([admin_jump_link(mob, target.holder)])"
 
-		to_chat(target, "<span class='ooc'><span class='looc'>" + "LOOC:" + " <span class='prefix'>(R)</span><EM>[display_name][admin_stuff]:</EM> <span class='message'>[msg]</span></span></span>")
+		to_chat(target, "<span class='ooc'><span class='looc'>" + "LOOC:" + " <span class='prefix'>(R)</span><EM>[display_name][admin_stuff]: </EM> <span class='message'>[msg]</span></span></span>")
 
 /mob/proc/get_looc_source()
 	return src
