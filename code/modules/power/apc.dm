@@ -858,12 +858,11 @@
 /obj/machinery/power/apc/proc/isWireCut(var/wireIndex)
 	return wires.IsIndexCut(wireIndex)
 
-
 /obj/machinery/power/apc/proc/can_use(mob/user as mob, var/loud = 0) //used by attack_hand() and Topic()
 	if(!user.client)
 		return 0
-	if(isobserver(user) && is_admin(user) ) //This is to allow nanoUI interaction by ghost admins.
-		return 1
+	if(IsAdminGhost(user)) //This is to allow nanoUI interaction by ghost admins.
+		return TRUE
 	if (user.stat)
 		return 0
 	if(inoperable())

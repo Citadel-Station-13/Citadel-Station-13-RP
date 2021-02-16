@@ -408,7 +408,7 @@
 /obj/machinery/vending/Topic(href, href_list)
 	if(stat & (BROKEN|NOPOWER))
 		return
-	if(usr.stat || usr.restrained())
+	if(!IsAdminGhost(user) && (usr.stat || usr.restrained()))
 		return
 
 	if(href_list["remove_coin"] && !istype(usr,/mob/living/silicon))
@@ -423,7 +423,7 @@
 		coin = null
 		categories &= ~CAT_COIN
 
-	if((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))))
+	if(IsAdminGhost(user) || (usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))))
 		if((href_list["vend"]) && (vend_ready) && (!currently_vending))
 			if((!allowed(usr)) && !emagged && scan_id)	//For SECURE VENDING MACHINES YEAH
 				to_chat(usr, "<span class='warning'>Access denied.</span>")	//Unless emagged of course
@@ -438,7 +438,7 @@
 			if(!(R.category & categories))
 				return
 
-			if(R.price <= 0)
+			if((R.price <= 0) || IsAdminGhost(user))
 				vend(R, usr)
 			else if(istype(usr,/mob/living/silicon)) //If the item is not free, provide feedback if a synth is trying to buy something.
 				to_chat(usr, "<span class='danger'>Lawed unit recognized.  Lawed units cannot complete this transaction.  Purchase canceled.</span>")
@@ -1914,6 +1914,8 @@
 					/obj/item/clothing/under/dress/westernbustle = 5,
 					/obj/item/clothing/under/wedding/bride_white = 5,
 					/obj/item/clothing/under/redcoatformal = 2,
+					/obj/item/clothing/under/leotardcolor = 5,
+					/obj/item/clothing/under/leotard = 5,
 					/obj/item/storage/backpack/ = 5,
 					/obj/item/storage/backpack/messenger = 5,
 					/obj/item/storage/backpack/satchel = 5)
@@ -2102,6 +2104,8 @@
 					/obj/item/clothing/under/dress/westernbustle = 25,
 					/obj/item/clothing/under/wedding/bride_white = 25,
 					/obj/item/clothing/under/redcoatformal = 75,
+					/obj/item/clothing/under/leotardcolor = 25,
+					/obj/item/clothing/under/leotard = 25,
 					/obj/item/storage/backpack/ = 25,
 					/obj/item/storage/backpack/messenger = 25,
 					/obj/item/storage/backpack/satchel = 25)

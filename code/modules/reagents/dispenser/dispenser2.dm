@@ -112,8 +112,10 @@
 		return ..()
 
 /obj/machinery/chemical_dispenser/nano_ui_interact(mob/user, ui_key = "main",var/datum/nanoui/ui = null, var/force_open = 1)
-	if(stat & (BROKEN|NOPOWER)) return
-	if(user.stat || user.restrained()) return
+	if(stat & (BROKEN|NOPOWER))
+		return
+	if((user.stat || user.restrained()) && !IsAdminGhost(user))
+		return
 
 	// this is the data which will be sent to the ui
 	var/data[0]
