@@ -50,3 +50,9 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 #define PASSGRILLE				(1<<2)
 #define PASSBLOB				(1<<3)
 #define PASSMOB					(1<<4)
+
+//silicon_privileges flags on /mob
+#define PRIVILEGES_SILICON	(1<<0)
+#define PRIVILEGES_PAI		(1<<1)
+#define PRIVILEGES_BOT		(1<<2)
+#define PRIVILEGES_DRONE	(1<<3)

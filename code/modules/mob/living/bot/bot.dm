@@ -6,6 +6,7 @@
 	layer = MOB_LAYER
 	universal_speak = 1
 	density = 0
+	silicon_privileges = PRIVILEDGES_BOT
 
 	makes_dirt = FALSE	// No more dirt from Beepsky
 
