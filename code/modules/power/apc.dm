@@ -251,6 +251,7 @@
 	addtimer(CALLBACK(src, .proc/update), 5)
 
 /obj/machinery/power/apc/examine(mob/user)
+	. = ..()
 	if(Adjacent(user))
 		if(stat & BROKEN)
 			. += "This APC is broken."
@@ -274,7 +275,6 @@
 				. += "The cover is closed, but the panel is flashing an error."
 			else
 				. += "The cover is closed."
-
 
 // update the APC icon to show the three base states
 // also add overlays for indicator lights
