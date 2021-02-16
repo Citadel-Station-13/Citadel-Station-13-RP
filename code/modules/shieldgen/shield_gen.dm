@@ -151,7 +151,7 @@
 	user << browse(t, "window=shield_generator;size=500x400")
 	user.set_machine(src)
 
-/obj/machinery/shield_gen/process()
+/obj/machinery/shield_gen/process(delta_time)
 	if (!anchored && active)
 		toggle()
 

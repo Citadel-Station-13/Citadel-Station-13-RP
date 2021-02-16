@@ -216,7 +216,7 @@
 		return INITIALIZE_HINT_QDEL
 	START_PROCESSING(SSobj, src)
 
-/obj/endeavor_away_spawner/process()
+/obj/endeavor_away_spawner/process(delta_time)
 	if(my_mob && my_mob.stat != DEAD)
 		return //No need
 

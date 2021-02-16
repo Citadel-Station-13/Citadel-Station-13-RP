@@ -64,7 +64,7 @@
 	// Otherwise only those on the current z-level will hear it.
 	var/sound = get_sfx("thunder")
 	for(var/mob/M in player_list)
-		if((P && M.z in P.expected_z_levels) || M.z == T.z)
+		if((P && (M.z in P.expected_z_levels)) || M.z == T.z)
 			if(M.is_preference_enabled(/datum/client_preference/weather_sounds))
 				M.playsound_local(get_turf(M), soundin = sound, vol = 70, vary = FALSE, is_global = TRUE)
 
@@ -95,6 +95,6 @@
 				C.ear_deaf += 10
 			to_chat(L, span("danger", "Lightning struck nearby, and the thunderclap is deafening!"))
 
-#undef GROUNDING_ROD_RANGE
+#undef LIGHTNING_REDIRECT_RANGE
 #undef LIGHTNING_ZAP_RANGE
 #undef LIGHTNING_POWER

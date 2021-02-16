@@ -38,7 +38,7 @@
 /obj/item/gun/magnetic/get_cell()
 	return cell
 
-/obj/item/gun/magnetic/process()
+/obj/item/gun/magnetic/process(delta_time)
 	if(capacitor)
 		if(cell)
 			if(capacitor.charge < capacitor.max_charge && cell.checked_use(power_per_tick))

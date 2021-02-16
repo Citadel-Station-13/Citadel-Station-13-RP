@@ -49,7 +49,7 @@
 /obj/item/gun/energy/get_cell()
 	return power_supply
 
-/obj/item/gun/energy/process()
+/obj/item/gun/energy/process(delta_time)
 	if(self_recharge) //Every [recharge_time] ticks, recharge a shot for the battery
 		if(world.time > last_shot + charge_delay)	//Doesn't work if you've fired recently
 			if(!power_supply || power_supply.charge >= power_supply.maxcharge)

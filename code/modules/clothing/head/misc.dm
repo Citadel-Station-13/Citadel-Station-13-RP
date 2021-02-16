@@ -308,6 +308,11 @@
 	desc = "For the tiniest of cowboys."
 	icon_state = "cowboy_small"
 
+/obj/item/clothing/head/cowboy_hat/pink
+	name = "pink cowboy hat"
+	desc = "Did you know pink used to be a masculine color?"
+	icon_state = "cowboyhat_pink"
+
 /obj/item/clothing/head/witchwig
 	name = "witch costume wig"
 	desc = "Eeeee~heheheheheheh!"
@@ -533,5 +538,76 @@
 	desc = "A peaked helmet once popular among Old Earth militaries and expeditionary forces."
 	icon_state = "pith"
 	item_state_slots = list(slot_r_hand_str = "beret_white", slot_l_hand_str = "beret_white")
+
+/obj/item/clothing/head/reindeer
+	name = "reindeer antlers"
+	desc = "A set of costume antlers with a glowing red nose, an Old Earth favorite."
+	icon_state = "reindeer0"
+	action_button_name = "Toggle Nose"
+
+/obj/item/clothing/head/reindeer/attack_self(mob/user as mob)
+	if(src.icon_state == initial(icon_state))
+		src.icon_state = "[icon_state]_on"
+		to_chat(user, "You turn the glowing nose on.")
+	else
+		src.icon_state = initial(icon_state)
+		to_chat(user, "You turn the glowing nose off.")
+	update_clothing_icon()	//so our mob-overlays update
+
+/obj/item/clothing/head/crown
+	name = "banded crown"
+	desc = "A simple crown, fashioned out of gold."
+	icon_state = "crown"
 	body_parts_covered = HEAD
 	flags_inv = BLOCKHAIR
+
+/obj/item/clothing/head/crown/fancy
+	name = "coronation crown"
+	desc = "An opulent crown, crafted for ceremonial purposes."
+	icon_state = "fancycrown"
+	body_parts_covered = HEAD
+	flags_inv = BLOCKHAIR
+
+/obj/item/clothing/head/scarecrow
+	name = "field hat"
+	desc = "A ragged burlap hat, bleached and worn by years of exposure to blistering sunlight."
+	icon_state = "scarecrow_hat"
+	body_parts_covered = HEAD
+	flags_inv = BLOCKHAIR
+
+/obj/item/clothing/head/holiday
+	name = "red holiday hat"
+	desc = "A floppy, fur lined cap. Made famous by an Old Earth mythical figure."
+	icon_state = "christmashat"
+	body_parts_covered = HEAD
+	flags_inv = BLOCKHAIR
+
+/obj/item/clothing/head/holiday/green
+	name = "green holiday hat"
+	desc = "A floppy, fur lined cap. Made famous by a cabal of toy crafting elves."
+	icon_state = "christmashatg"
+	body_parts_covered = HEAD
+	flags_inv = BLOCKHAIR
+
+/obj/item/clothing/head/telegram
+	name = "telegram cap"
+	desc = "A red box hat, affixed with an elastic strap."
+	icon_state = "telegram"
+
+/obj/item/clothing/head/widehat_red
+	name = "broad red hat"
+	desc = "A wide brimmed velvet hat with a feather affixed to the band."
+	icon_state = "widehat_red"
+
+/obj/item/clothing/head/snowman
+	name = "snowman head"
+	desc = "A chilly pile of reinforced ice, fashioned to look like a snowman's head."
+	icon_state = "snowman"
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
+	siemens_coefficient = 0.7
+	body_parts_covered = HEAD|FACE|EYES
+
+/obj/item/clothing/head/traveller
+	name = "traveller's hat"
+	desc = "A wide brimmed hat made of sturdy material. Its floppy, poitned top is similar to those worn by Old Earth bards or sorcerors."
+	icon_state = "traveller"

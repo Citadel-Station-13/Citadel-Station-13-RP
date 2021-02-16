@@ -14,7 +14,13 @@
 		/area/shuttle,
 		/area/crew_quarters,
 		/area/holodeck,
-		/area/engineering/engine_room
+		/area/engineering/engine_room,
+		/area/triumph/surfacebase/tram,
+		/area/triumph/surfacebase/atrium_one,
+		/area/triumph/surfacebase/atrium_two,
+		/area/triumph/surfacebase/atrium_three,
+		/area/teleporter/departing,
+		/area/hallway/station/upper
 	)
 
 // Decide which area will be targeted!

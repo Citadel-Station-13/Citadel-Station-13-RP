@@ -2,33 +2,33 @@
 "a" = (
 /obj/effect/overmap/visitable/sector/mining_planet,
 /turf/unsimulated/mineral/triumph,
-/area/triumph_away/mining_planet/unexplored)
+/area/mining_planet/unexplored)
 "f" = (
 /obj/away_mission_init/mining_planet,
 /turf/unsimulated/mineral/triumph,
-/area/triumph_away/mining_planet/unexplored)
+/area/mining_planet/unexplored)
 "j" = (
 /obj/effect/shuttle_landmark/automatic,
 /turf/simulated/mineral/floor/ignore_cavegen,
-/area/triumph_away/mining_planet/explored)
+/area/mining_planet/explored)
 "r" = (
 /turf/simulated/mineral/floor/ignore_cavegen,
-/area/triumph_away/mining_planet/explored)
+/area/mining_planet/explored)
 "w" = (
 /turf/simulated/mineral/triumph/rich,
-/area/triumph_away/mining_planet/unexplored)
+/area/mining_planet/unexplored)
 "A" = (
 /turf/simulated/mineral/triumph,
-/area/triumph_away/mining_planet/unexplored)
+/area/mining_planet/unexplored)
 "F" = (
 /turf/simulated/mineral/floor/ignore_cavegen,
-/area/triumph_away/mining_planet/unexplored)
+/area/mining_planet/unexplored)
 "N" = (
 /turf/simulated/mineral/floor,
-/area/triumph_away/mining_planet/unexplored)
+/area/mining_planet/unexplored)
 "O" = (
 /turf/unsimulated/mineral/triumph,
-/area/triumph_away/mining_planet/unexplored)
+/area/mining_planet/unexplored)
 
 (1,1,1) = {"
 O

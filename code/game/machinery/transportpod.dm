@@ -17,7 +17,7 @@
 	var/limit_x = 3
 	var/limit_y = 3
 
-/obj/machinery/transportpod/process()
+/obj/machinery/transportpod/process(delta_time)
 	if(occupant)
 		if(in_transit)
 			var/locNum = rand(0, 7) //pick a random location

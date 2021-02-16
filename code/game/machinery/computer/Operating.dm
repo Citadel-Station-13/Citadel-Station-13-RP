@@ -10,8 +10,8 @@
 	var/mob/living/carbon/human/victim = null
 	var/obj/machinery/optable/table = null
 
-/obj/machinery/computer/operating/New()
-	..()
+/obj/machinery/computer/operating/Initialize(mapload)
+	. = ..()
 	for(var/direction in list(NORTH,EAST,SOUTH,WEST))
 		table = locate(/obj/machinery/optable, get_step(src, direction))
 		if (table)

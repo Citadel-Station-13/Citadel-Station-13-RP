@@ -1019,7 +1019,7 @@
 	else
 		return 0
 
-/obj/machinery/power/apc/process()
+/obj/machinery/power/apc/process(delta_time)
 
 	if(stat & (BROKEN|MAINT))
 		return

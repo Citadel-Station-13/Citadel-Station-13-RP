@@ -379,7 +379,7 @@
 		qdel(src)
 
 
-/obj/item/reagent_containers/food/snacks/egg/slime/process()
+/obj/item/reagent_containers/food/snacks/egg/slime/process(delta_time)
 	var/turf/location = get_turf(src)
 	var/datum/gas_mixture/environment = location.return_air()
 	if (environment.phoron > MOLES_PHORON_VISIBLE)//phoron exposure causes the egg to hatch

@@ -2,8 +2,6 @@
 	real_name = "Test Dummy"
 	status_flags = GODMODE|CANPUSH
 
-	/mob/living/carbon/human/dummy/proc/get_icon()
-
 /mob/living/carbon/human/dummy/mannequin/Initialize()
 	. = ..()
 	mob_list -= src
@@ -262,7 +260,7 @@
 				H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/scarecrow, slot_wear_mask)
 				H.update_inv_wear_mask()
 			if(!head)
-				H.equip_to_slot_or_del(new /obj/item/clothing/head/cowboy_hat/wide, slot_head)
+				H.equip_to_slot_or_del(new /obj/item/clothing/head/scarecrow, slot_head)
 				H.update_inv_head()
 			if(!gloves)
 				H.equip_to_slot_or_del(new /obj/item/clothing/gloves/botanic_leather, slot_wear_suit)

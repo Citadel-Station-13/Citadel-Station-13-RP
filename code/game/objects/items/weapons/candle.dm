@@ -51,7 +51,7 @@
 		set_light(CANDLE_LUM)
 		START_PROCESSING(SSobj, src)
 
-/obj/item/flame/candle/process()
+/obj/item/flame/candle/process(delta_time)
 	if(!lit)
 		return
 	wax--

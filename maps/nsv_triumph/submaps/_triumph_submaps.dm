@@ -45,7 +45,6 @@
 // Debris Fields
 #include "space/_debrisfield.dm"
 #include "space/_templates.dm"
-#include "space/debrisfield_things.dm"
 /datum/map_template/triumph_lateload/away_debrisfield
 	name = "Debris Field - Z1 Space"
 	desc = "A random debris field out in space."
@@ -60,11 +59,10 @@
 
 /datum/map_template/triumph_lateload/away_debrisfield/on_map_loaded(z)
 	. = ..()
-	seed_submaps(list(Z_LEVEL_DEBRISFIELD), 125, /area/triumph_away/debrisfield/unexplored, /datum/map_template/debrisfield/)
+	seed_submaps(list(Z_LEVEL_DEBRISFIELD), 125, /area/space/debrisfield/unexplored, /datum/map_template/debrisfield/)
 
 // Pirate base
 #include "space/_piratebase.dm"
-#include "space/piratebase_things.dm"
 
 /datum/map_template/triumph_lateload/away_piratebase
 	name = "Away Mission - Pirate Base"
@@ -103,7 +101,6 @@
 // lavaland start
 #include "lavaland/_lavaland.dm"
 #include "lavaland/_templates.dm"
-#include "lavaland/lavaland_atmos.dm"
 /datum/map_template/triumph_lateload/lavaland
 	name = "Away Mission - Lava Land"
 	desc = "The fabled."
@@ -117,7 +114,7 @@
 
 /datum/map_template/triumph_lateload/lavaland/on_map_loaded(z)
 	. = ..()
-	seed_submaps(list(Z_LEVEL_LAVALAND), 40, /area/triumph_away/lavaland/unexplored, /datum/map_template/lavaland)
+	seed_submaps(list(Z_LEVEL_LAVALAND), 40, /area/lavaland/unexplored, /datum/map_template/lavaland)
 	new /datum/random_map/noise/ore/lavaland(null, 1, 1, Z_LEVEL_LAVALAND, 64, 64)         // Create the mining ore distribution map.
 	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_LAVALAND, world.maxx - 4, world.maxy - 4) // Create the lavaland Z-level.
 
@@ -125,7 +122,6 @@
 // Class D Rogue Planet Exploration Zone.
 #include "poi_d/_class_d.dm"
 #include "poi_d/_templates.dm"
-#include "poi_d/d_world_things.dm"
 /datum/map_template/triumph_lateload/away_d_world
 	name = "ExoPlanet - Z1 Planet"
 	desc = "A random unknown planet."
@@ -135,7 +131,7 @@
 
 /datum/map_template/triumph_lateload/away_d_world/on_map_loaded(z)
 	. = ..()
-	seed_submaps(list(Z_LEVEL_UNKNOWN_PLANET), 150, /area/triumph_away/poi_d/unexplored, /datum/map_template/Class_D)
+	seed_submaps(list(Z_LEVEL_UNKNOWN_PLANET), 150, /area/poi_d/unexplored, /datum/map_template/Class_D)
 
 	//new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, Z_LEVEL_UNKNOWN_PLANET, world.maxx - 30, world.maxy - 30)
 	//new /datum/random_map/noise/ore/poi_d(null, 1, 1, Z_LEVEL_UNKNOWN_PLANET, 64, 64)
@@ -147,7 +143,6 @@
 // Class H Desert Planet Exploration Zone.
 #include "poi_h/_class_h.dm"
 #include "poi_h/_templates.dm"
-#include "poi_h/h_world_things.dm"
 /datum/map_template/triumph_lateload/away_h_world
 	name = "ExoPlanet - Z2 Planet"
 	desc = "A random unknown planet."
@@ -157,7 +152,7 @@
 
 /datum/map_template/triumph_lateload/away_h_world/on_map_loaded(z)
 	. = ..()
-	seed_submaps(list(Z_LEVEL_DESERT_PLANET), 150, /area/triumph_away/poi_h/unexplored, /datum/map_template/Class_H)
+	seed_submaps(list(Z_LEVEL_DESERT_PLANET), 150, /area/poi_h/unexplored, /datum/map_template/Class_H)
 
 	//new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, Z_LEVEL_UNKNOWN_PLANET, world.maxx - 30, world.maxy - 30)
 	//new /datum/random_map/noise/ore/poi_d(null, 1, 1, Z_LEVEL_UNKNOWN_PLANET, 64, 64)
@@ -168,7 +163,6 @@
 
 // Gaia Planet Zone.
 #include "gaia_planet/_gaia_planet.dm"
-#include "gaia_planet/gaia_planet_things.dm"
 /datum/map_template/triumph_lateload/gaia_planet
 	name = "Gaia Planet - Z3 Planet"
 	desc = "A lush Gaia Class Planet."
@@ -178,7 +172,7 @@
 
 /datum/map_template/triumph_lateload/gaia_planet/on_map_loaded(z)
 	. = ..()
-//	seed_submaps(list(Z_LEVEL_DESERT_PLANET), 150, /area/triumph_away/poi_h/unexplored, /datum/map_template/Class_H)
+//	seed_submaps(list(Z_LEVEL_DESERT_PLANET), 150, /area/poi_h/unexplored, /datum/map_template/Class_H)
 
 	//new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, Z_LEVEL_UNKNOWN_PLANET, world.maxx - 30, world.maxy - 30)
 	//new /datum/random_map/noise/ore/poi_d(null, 1, 1, Z_LEVEL_UNKNOWN_PLANET, 64, 64)
@@ -190,7 +184,6 @@
 
 // Frozen Planet Zone.
 #include "frozen_planet/_frozen_planet.dm"
-#include "frozen_planet/frozen_planet_things.dm"
 #include "frozen_planet/_templates.dm"
 /datum/map_template/triumph_lateload/frozen_planet
 	name = "Forzen Planet - Z4 Planet"
@@ -201,7 +194,7 @@
 
 /datum/map_template/triumph_lateload/frozen_planet/on_map_loaded(z)
 	. = ..()
-	seed_submaps(list(Z_LEVEL_FROZEN_PLANET), 125, /area/triumph_away/frozen_planet/ruins, /datum/map_template/frozen_planet/)
+	seed_submaps(list(Z_LEVEL_FROZEN_PLANET), 125, /area/frozen_planet/ruins, /datum/map_template/frozen_planet/)
 
 
 /datum/map_z_level/triumph_lateload/frozen_planet
@@ -311,100 +304,6 @@
 		var/mob/living/L = A
 		L.fall_impact(T, 42, 90, FALSE, TRUE)	//You will not be defibbed from this.
 
-/////////////////////////////
-/obj/triumph_away_spawner
-	name = "RENAME ME, JERK"
-	desc = "Spawns the mobs!"
-	icon = 'icons/mob/screen1.dmi'
-	icon_state = "x"
-	invisibility = 101
-	mouse_opacity = 0
-	density = 0
-	anchored = 1
-
-	//Weighted with values (not %chance, but relative weight)
-	//Can be left value-less for all equally likely
-	var/list/mobs_to_pick_from
-
-	//When the below chance fails, the spawner is marked as depleted and stops spawning
-	var/prob_spawn = 100	//Chance of spawning a mob whenever they don't have one
-	var/prob_fall = 5		//Above decreases by this much each time one spawns
-
-	//Settings to help mappers/coders have their mobs do what they want in this case
-	var/faction				//To prevent infighting if it spawns various mobs, set a faction
-	var/atmos_comp			//TRUE will set all their survivability to be within 20% of the current air
-	//var/guard				//# will set the mobs to remain nearby their spawn point within this dist
-
-	//Internal use only
-	var/mob/living/simple_mob/my_mob
-	var/depleted = FALSE
-
-/obj/triumph_away_spawner/Initialize()
-	. = ..()
-
-	if(!LAZYLEN(mobs_to_pick_from))
-		log_world("Mob spawner at [x],[y],[z] ([get_area(src)]) had no mobs_to_pick_from set on it!")
-		return INITIALIZE_HINT_QDEL
-	START_PROCESSING(SSobj, src)
-
-/obj/triumph_away_spawner/process()
-	if(my_mob && my_mob.stat != DEAD)
-		return //No need
-
-	if(LAZYLEN(loc.human_mobs(world.view)))
-		return //I'll wait.
-
-	if(prob(prob_spawn))
-		prob_spawn -= prob_fall
-		var/picked_type = pickweight(mobs_to_pick_from)
-		my_mob = new picked_type(get_turf(src))
-		my_mob.low_priority = TRUE
-
-		if(faction)
-			my_mob.faction = faction
-
-		if(atmos_comp)
-			var/turf/T = get_turf(src)
-			var/datum/gas_mixture/env = T.return_air()
-			if(env)
-				my_mob.minbodytemp = env.temperature * 0.8
-				my_mob.maxbodytemp = env.temperature * 1.2
-
-				var/list/gaslist = env.gas
-				my_mob.min_oxy = gaslist[/datum/gas/oxygen] * 0.8
-				my_mob.min_tox = gaslist[/datum/gas/phoron] * 0.8
-				my_mob.min_n2 = gaslist[/datum/gas/nitrogen] * 0.8
-				my_mob.min_co2 = gaslist[/datum/gas/carbon_dioxide] * 0.8
-				my_mob.max_oxy = gaslist[/datum/gas/oxygen] * 1.2
-				my_mob.max_tox = gaslist[/datum/gas/phoron] * 1.2
-				my_mob.max_n2 = gaslist[/datum/gas/nitrogen] * 1.2
-				my_mob.max_co2 = gaslist[/datum/gas/carbon_dioxide] * 1.2
-/* //VORESTATION AI TEMPORARY REMOVAL
-		if(guard)
-			my_mob.returns_home = TRUE
-			my_mob.wander_distance = guard
-*/
-		return
-	else
-		STOP_PROCESSING(SSobj, src)
-		depleted = TRUE
-		return
-/*
-//Shadekin spawner. Could have them show up on any mission, so it's here.
-//Make sure to put them away from others, so they don't get demolished by rude mobs.
-/obj/triumph_away_spawner/shadekin
-	name = "Shadekin Spawner"
-	icon = 'icons/mob/vore_shadekin.dmi'
-	icon_state = "spawner"
-
-	faction = "shadekin"
-	prob_spawn = 1
-	prob_fall = 1
-	//guard = 10 //Don't wander too far, to stay alive.
-	mobs_to_pick_from = list(
-		/mob/living/simple_mob/shadekin
-	)
-*/
 //// MINING LEVELS
 /datum/map_template/triumph_lateload/roguemines1
 	name = "Asteroid Belt 1"

@@ -6,7 +6,7 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "ax" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green,
 /turf/simulated/floor/old_tile/blue/frozen_world{
@@ -14,15 +14,15 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "aT" = (
 /obj/machinery/atmospherics/pipe/tank/air,
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "aV" = (
 /obj/structure/table/standard,
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "bG" = (
 /obj/structure/table/rack/shelf,
 /obj/machinery/light,
@@ -31,7 +31,7 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "bU" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Airlock";
@@ -43,7 +43,7 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "bY" = (
 /obj/structure/barricade,
 /obj/machinery/door/airlock/centcom{
@@ -56,7 +56,7 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "ch" = (
 /obj/structure/barricade,
 /turf/simulated/floor/old_tile/blue/frozen_world{
@@ -64,7 +64,7 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "ck" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -74,7 +74,7 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "cq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -88,7 +88,7 @@
 	},
 /obj/structure/blob/normal,
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "cs" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -102,13 +102,13 @@
 	},
 /obj/structure/blob/normal,
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "cD" = (
 /obj/machinery/atmospherics/pipe/tank{
 	name = "Waste Tank"
 	},
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "cP" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 9
@@ -118,13 +118,13 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "cY" = (
 /obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "dd" = (
 /obj/vehicle/train/rover/engine/dunebuggy,
 /turf/simulated/floor/old_tile/blue/frozen_world{
@@ -132,7 +132,7 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "dy" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/green{
 	dir = 4
@@ -142,19 +142,19 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "ej" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /obj/structure/blob/normal,
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "eu" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green,
 /obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "eC" = (
 /obj/structure/table/standard,
 /turf/simulated/floor/old_tile/blue/frozen_world{
@@ -162,7 +162,7 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "eY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -172,13 +172,13 @@
 	},
 /obj/structure/blob/normal,
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "fb" = (
 /obj/machinery/artifact,
 /obj/structure/anomaly_container,
 /obj/structure/blob/normal,
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "fk" = (
 /obj/structure/table/wooden_reinforced,
 /obj/item/storage/pill_bottle/dice_nerd,
@@ -188,7 +188,7 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "fn" = (
 /obj/machinery/atmospherics/unary/heater{
 	dir = 4
@@ -198,7 +198,7 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "gk" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -215,23 +215,23 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "gP" = (
 /obj/machinery/light,
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "hp" = (
 /obj/machinery/crystal/ice,
 /turf/simulated/floor/outdoors/snow/frozen_world,
-/area/triumph_away/frozen_planet/outside)
+/area/frozen_planet/outside)
 "hC" = (
 /obj/away_mission_init/frozen_planet,
 /turf/simulated/floor/outdoors/snow/frozen_world,
-/area/triumph_away/frozen_planet/outside)
+/area/frozen_planet/outside)
 "hM" = (
 /obj/structure/flora/tree/pine,
 /turf/simulated/floor/outdoors/snow/frozen_world,
-/area/triumph_away/frozen_planet/outside)
+/area/frozen_planet/outside)
 "iu" = (
 /obj/structure/table/standard,
 /obj/item/paper/carbon{
@@ -239,7 +239,7 @@
 	name = "rushed letter"
 	},
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "iJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -249,20 +249,20 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "iO" = (
 /obj/structure/blob/normal,
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "iW" = (
 /obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "jw" = (
 /obj/structure/blob/normal,
 /turf/simulated/floor/old_tile/green/frozen_world{
@@ -270,23 +270,23 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "jC" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
 /obj/structure/blob/normal,
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "kb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/blob/normal,
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "ki" = (
 /obj/structure/barricade,
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "kz" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -298,11 +298,11 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "kD" = (
 /obj/structure/railing,
 /turf/simulated/floor/outdoors/ice/frozen_world,
-/area/triumph_away/frozen_planet/outside)
+/area/frozen_planet/outside)
 "kP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -313,13 +313,13 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "lq" = (
 /obj/random/mob/robotic/hivebot{
 	mob_faction = "frozen"
 	},
 /turf/simulated/floor/outdoors/snow/frozen_world,
-/area/triumph_away/frozen_planet/outside)
+/area/frozen_planet/outside)
 "lC" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -341,11 +341,11 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "lF" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/green,
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "lY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -362,7 +362,7 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "mt" = (
 /obj/structure/barricade,
 /obj/structure/blob/normal,
@@ -371,25 +371,25 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "mM" = (
 /obj/structure/table/sandbags,
 /turf/simulated/floor/outdoors/snow/frozen_world,
-/area/triumph_away/frozen_planet/outside)
+/area/frozen_planet/outside)
 "oa" = (
 /obj/machinery/alarm/alarms_hidden{
 	pixel_y = 24
 	},
 /obj/structure/blob/normal,
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "ob" = (
 /obj/machinery/door/blast/shutters,
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "od" = (
 /turf/simulated/floor/outdoors/shelfice/frozen_world,
-/area/triumph_away/frozen_planet/outside)
+/area/frozen_planet/outside)
 "oe" = (
 /obj/machinery/alarm/alarms_hidden{
 	pixel_y = 24
@@ -399,11 +399,11 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "pk" = (
 /obj/structure/table/wooden_reinforced,
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "qj" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -416,7 +416,7 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "qZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -426,7 +426,7 @@
 	},
 /obj/structure/blob/normal,
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "rk" = (
 /obj/machinery/power/port_gen/pacman,
 /obj/structure/cable{
@@ -434,7 +434,7 @@
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "rF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -447,14 +447,14 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "rL" = (
 /turf/simulated/floor/old_tile/green/frozen_world{
 	color = "#63A83A";
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "rN" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Airlock";
@@ -465,18 +465,18 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "sn" = (
 /obj/machinery/computer/gyrotron_control,
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "ss" = (
 /obj/machinery/alarm/alarms_hidden{
 	pixel_y = 24
 	},
 /obj/structure/barricade,
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "sA" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -489,10 +489,10 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "sB" = (
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "sN" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Airlock";
@@ -503,17 +503,17 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "tF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "tI" = (
 /obj/structure/railing{
 	dir = 1
 	},
 /turf/simulated/floor/outdoors/ice/frozen_world,
-/area/triumph_away/frozen_planet/outside)
+/area/frozen_planet/outside)
 "uA" = (
 /obj/structure/blob/normal,
 /obj/machinery/light,
@@ -522,7 +522,7 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "uG" = (
 /obj/structure/table/wooden_reinforced,
 /turf/simulated/floor/old_tile/blue/frozen_world{
@@ -530,7 +530,7 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "vy" = (
 /obj/machinery/artifact_scanpad,
 /turf/simulated/floor/old_tile/green/frozen_world{
@@ -538,22 +538,22 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "vJ" = (
 /obj/machinery/atmospherics/pipe/manifold4w/visible/green,
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "vS" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/structure/blob/normal,
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "wg" = (
 /obj/structure/blob/normal,
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "wk" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -570,7 +570,7 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "wl" = (
 /obj/machinery/atmospherics/pipe/simple/visible/universal,
 /turf/simulated/floor/old_tile/blue/frozen_world{
@@ -578,30 +578,30 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "wL" = (
 /obj/structure/table/rack/shelf,
 /obj/machinery/light,
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "wQ" = (
 /mob/living/simple_mob/animal/space/tree{
 	faction = "frozen"
 	},
 /turf/simulated/floor/outdoors/snow/frozen_world,
-/area/triumph_away/frozen_planet/outside)
+/area/frozen_planet/outside)
 "wW" = (
 /obj/structure/blob/normal,
 /obj/structure/blob/normal,
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "xS" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/machinery/light,
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "yi" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -611,7 +611,7 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "zl" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
@@ -621,7 +621,7 @@
 	pixel_y = 30
 	},
 /turf/simulated/floor/outdoors/snow/frozen_world,
-/area/triumph_away/frozen_planet/outside)
+/area/frozen_planet/outside)
 "zo" = (
 /obj/structure/table/marble,
 /turf/simulated/floor/old_tile/blue/frozen_world{
@@ -629,14 +629,14 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "zK" = (
 /turf/simulated/floor/outdoors/snow/frozen_world,
-/area/triumph_away/frozen_planet/ruins)
+/area/frozen_planet/ruins)
 "AG" = (
 /obj/structure/flora/tree/dead,
 /turf/simulated/floor/outdoors/snow/frozen_world,
-/area/triumph_away/frozen_planet/outside)
+/area/frozen_planet/outside)
 "AK" = (
 /obj/structure/closet/statue,
 /turf/simulated/floor/old_tile/green/frozen_world{
@@ -644,7 +644,7 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "AQ" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -656,7 +656,7 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "BE" = (
 /obj/structure/cable{
 	d2 = 2;
@@ -670,7 +670,7 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "BH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/blob/normal,
@@ -679,7 +679,7 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "Cn" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -691,7 +691,7 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "Cu" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/old_tile/blue/frozen_world{
@@ -699,12 +699,12 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "Dd" = (
 /obj/machinery/door/airlock/external/glass,
 /obj/structure/barricade,
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "Df" = (
 /obj/structure/cable{
 	d2 = 8;
@@ -716,7 +716,7 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "Dm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -730,10 +730,10 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "Dw" = (
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/outside)
+/area/frozen_planet/outside)
 "EH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -746,7 +746,7 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "Fu" = (
 /obj/machinery/power/emitter/gyrotron{
 	dir = 1
@@ -756,16 +756,16 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "FO" = (
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "Go" = (
 /turf/simulated/floor/wood/frozen_world,
-/area/triumph_away/frozen_planet/outside)
+/area/frozen_planet/outside)
 "Gw" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -777,7 +777,7 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "GL" = (
 /obj/machinery/atmospherics/binary/pump/on,
 /obj/machinery/light{
@@ -788,14 +788,14 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "Hh" = (
 /obj/machinery/atmospherics/pipe/simple/visible/universal,
 /obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "Hj" = (
 /obj/machinery/light{
 	dir = 1
@@ -805,28 +805,28 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "Hl" = (
 /obj/machinery/door/blast/shutters,
 /obj/structure/barricade,
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "Hm" = (
 /obj/structure/flora/tree/dead,
 /turf/simulated/floor/outdoors/snow/frozen_world,
-/area/triumph_away/frozen_planet/ruins)
+/area/frozen_planet/ruins)
 "HC" = (
 /obj/structure/anomaly_container,
 /obj/machinery/artifact,
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "II" = (
 /turf/simulated/floor/old_tile/blue/frozen_world{
 	color = "#8ba7ad";
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "IK" = (
 /obj/machinery/alarm/alarms_hidden{
 	pixel_y = 24
@@ -837,7 +837,7 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "IP" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -845,7 +845,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "Jv" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -853,7 +853,7 @@
 	},
 /obj/structure/blob/normal,
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "JC" = (
 /obj/structure/blob/normal,
 /obj/structure/blob/normal,
@@ -862,7 +862,7 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "JS" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Airlock";
@@ -870,17 +870,17 @@
 	},
 /obj/structure/blob/normal,
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "KC" = (
 /obj/machinery/atmospherics/portables_connector,
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "Ln" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 9
 	},
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "Lq" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/alarms_hidden{
@@ -890,7 +890,7 @@
 	start_charge = 0
 	},
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "Ms" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock/centcom{
@@ -902,7 +902,7 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "Mw" = (
 /obj/structure/table/rack/shelf,
 /turf/simulated/floor/old_tile/green/frozen_world{
@@ -910,17 +910,17 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "MJ" = (
 /obj/machinery/door/airlock/multi_tile/metal/mait{
 	dir = 2
 	},
 /obj/structure/blob/normal,
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "MR" = (
 /turf/simulated/floor/outdoors/snow/frozen_world,
-/area/triumph_away/frozen_planet/outside)
+/area/frozen_planet/outside)
 "NC" = (
 /obj/structure/bedsheetbin,
 /obj/structure/blob/normal,
@@ -929,15 +929,15 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "NH" = (
 /obj/structure/table/marble,
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "OB" = (
 /obj/structure/bonfire,
 /turf/simulated/floor/outdoors/snow/frozen_world,
-/area/triumph_away/frozen_planet/outside)
+/area/frozen_planet/outside)
 "OT" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -949,13 +949,13 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "Pn" = (
 /obj/structure/anomaly_container,
 /obj/machinery/artifact,
 /obj/structure/blob/normal,
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "PA" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Airlock";
@@ -967,11 +967,11 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "PL" = (
 /obj/effect/overmap/visitable/sector/frozen_planet,
 /turf/simulated/floor/outdoors/snow/frozen_world,
-/area/triumph_away/frozen_planet/outside)
+/area/frozen_planet/outside)
 "PO" = (
 /obj/structure/table/standard,
 /obj/structure/table/standard,
@@ -980,40 +980,40 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "Qg" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "Qt" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/green{
 	dir = 8
 	},
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "QK" = (
 /obj/structure/barricade,
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "Rd" = (
 /obj/effect/shuttle_landmark/automatic{
 	docking_controller = "frozen"
 	},
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/outside)
+/area/frozen_planet/outside)
 "Rn" = (
 /obj/machinery/artifact_harvester,
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "Rw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/wall/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "RX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -1028,28 +1028,28 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "SG" = (
 /obj/structure/flora/tree/pine,
 /turf/simulated/floor/outdoors/snow/frozen_world,
-/area/triumph_away/frozen_planet/ruins)
+/area/frozen_planet/ruins)
 "SZ" = (
 /obj/effect/shuttle_landmark/automatic{
 	docking_controller = "frozen"
 	},
 /turf/simulated/floor/outdoors/snow/frozen_world,
-/area/triumph_away/frozen_planet/outside)
+/area/frozen_planet/outside)
 "Tn" = (
 /mob/living/simple_mob/animal/space/tree{
 	faction = "frozen"
 	},
 /turf/simulated/floor/outdoors/snow/frozen_world,
-/area/triumph_away/frozen_planet/ruins)
+/area/frozen_planet/ruins)
 "Tr" = (
 /obj/structure/blob/normal,
 /obj/machinery/light,
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "Tt" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 5
@@ -1059,7 +1059,7 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "Ug" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -1069,7 +1069,7 @@
 	},
 /obj/structure/blob/normal,
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "Vc" = (
 /obj/machinery/power/port_gen/pacman,
 /obj/structure/cable{
@@ -1081,17 +1081,17 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "Vr" = (
 /turf/simulated/floor/old_tile/blue/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "Vx" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Airlock";
 	req_one_access = null
 	},
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "VA" = (
 /obj/structure/table/wooden_reinforced,
 /obj/structure/blob/normal,
@@ -1100,11 +1100,11 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "Wm" = (
 /obj/machinery/door/airlock/external/glass,
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "Wn" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /obj/structure/blob/normal,
@@ -1113,10 +1113,10 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "WI" = (
 /turf/simulated/floor/outdoors/ice/frozen_world,
-/area/triumph_away/frozen_planet/outside)
+/area/frozen_planet/outside)
 "WJ" = (
 /obj/structure/bed,
 /turf/simulated/floor/old_tile/green/frozen_world{
@@ -1124,13 +1124,13 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "XK" = (
 /obj/machinery/alarm/alarms_hidden{
 	pixel_y = 24
 	},
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "XX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/blob/normal,
@@ -1139,10 +1139,10 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "Yr" = (
 /turf/simulated/wall/frozen_world,
-/area/triumph_away/frozen_planet/outside)
+/area/frozen_planet/outside)
 "YA" = (
 /obj/machinery/artifact_analyser,
 /turf/simulated/floor/old_tile/green/frozen_world{
@@ -1150,21 +1150,21 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
 	icon_state = "tile_full"
 	},
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "Zr" = (
 /obj/machinery/atmospherics/pipe/simple/visible/black,
 /obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "ZB" = (
 /turf/simulated/wall/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 "ZK" = (
 /obj/structure/table/rack/shelf,
 /turf/simulated/floor/frozen_world,
-/area/triumph_away/frozen_planet/facility)
+/area/frozen_planet/facility)
 
 (1,1,1) = {"
 Yr

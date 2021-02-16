@@ -111,7 +111,7 @@ var/list/blob_cores = list()
 	overlays += blob_overlay
 	overlays += mutable_appearance('icons/mob/blob.dmi', "blob_core_overlay")
 
-/obj/structure/blob/core/process()
+/obj/structure/blob/core/process(delta_time)
 	set waitfor = FALSE
 	if(QDELETED(src))
 		return

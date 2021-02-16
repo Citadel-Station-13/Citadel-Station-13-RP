@@ -139,7 +139,7 @@
 			TryCraft()
 	return 0
 
-/obj/machinery/particle_smasher/process()
+/obj/machinery/particle_smasher/process(delta_time)
 	if(!src.anchored)	// Rapidly loses focus.
 		if(energy)
 			SSradiation.radiate(src, round(((src.energy-150)/50)*5,1))

@@ -39,7 +39,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/effect/phase_shift/process()
+/obj/effect/phase_shift/process(delta_time)
 	for(var/mob/living/L in contents)
 		L.adjust_instability(2)
 

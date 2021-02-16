@@ -20,7 +20,7 @@
 	if(!mapped_in)
 		to_chat(world, "<b><font color='red'>WARNING:</font><font color='black'> Map testing power source activated at: X:[src.loc.x] Y:[src.loc.y] Z:[src.loc.z]</font></b>")
 
-/obj/machinery/power/fractal_reactor/process()
+/obj/machinery/power/fractal_reactor/process(delta_time)
 	if(!powernet && !powernet_connection_failed)
 		if(!connect_to_network())
 			powernet_connection_failed = 1

@@ -41,7 +41,7 @@
 		if(neighbor.seed == src.seed)
 			neighbor.neighbors -= T
 
-/obj/effect/plant/process()
+/obj/effect/plant/process(delta_time)
 
 	// Something is very wrong, kill ourselves.
 	if(!seed)

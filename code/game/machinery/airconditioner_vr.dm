@@ -67,7 +67,7 @@
 		change_mode(MODE_IDLE)
 	update_icon()
 
-/obj/machinery/power/thermoregulator/process()
+/obj/machinery/power/thermoregulator/process(delta_time)
 	if(!on)
 		return
 	if(!powernet)

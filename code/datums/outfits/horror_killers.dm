@@ -100,7 +100,7 @@
 	shoes = /obj/item/clothing/shoes/boots/workboots
 	gloves = /obj/item/clothing/gloves/botanic_leather
 	mask = /obj/item/clothing/mask/gas/scarecrow
-	head = /obj/item/clothing/head/cowboy_hat/wide
+	head = /obj/item/clothing/head/scarecrow
 	l_pocket = /obj/item/material/knife/machete/hatchet
 	r_hand = /obj/item/material/twohanded/fireaxe/scythe
 

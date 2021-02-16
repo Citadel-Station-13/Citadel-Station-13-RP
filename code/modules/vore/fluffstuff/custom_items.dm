@@ -436,7 +436,7 @@
 		process() //Nownownow
 	return ..() //Okfine
 
-/obj/item/clothing/accessory/collar/vmcrystal/process()
+/obj/item/clothing/accessory/collar/vmcrystal/process(delta_time)
 	check_owner()
 	if((state > 1) || !owner)
 		STOP_PROCESSING(SSobj, src)
@@ -650,7 +650,7 @@
 		set_light(0)
 		soundloop.stop()
 
-/obj/item/storage/backpack/saddlebag/tempest/process()
+/obj/item/storage/backpack/saddlebag/tempest/process(delta_time)
 	if(!ambulance)
 		STOP_PROCESSING(SSobj, src)
 		return
@@ -1444,7 +1444,7 @@
 
 	ready = FALSE
 	update_icon()
-	
+
 	//Failure chance
 	if(prob(failure_chance) && (beacons.len >= 2))
 		var/list/wrong_choices = beacons - destination.tele_name

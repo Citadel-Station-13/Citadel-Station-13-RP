@@ -15,21 +15,17 @@
 		target = null
 	return ..()
 
-/obj/structure/portal_subtle/Bumped(mob/M as mob|obj)
-	if(istype(M,/mob) && !(istype(M,/mob/living)))
+/obj/structure/portal_subtle/Bumped(atom/movable/AM)
+	. = ..()
+	if(istype(AM, /mob) && !istype(AM, /mob/living))
 		return	//do not send ghosts, zshadows, ai eyes, etc
-	spawn(0)
-		src.teleport(M)
-		return
-	return
+	teleport(AM)
 
-/obj/structure/portal_subtle/Crossed(AM as mob|obj)
+/obj/structure/portal_subtle/Crossed(atom/movable/AM)
+	. = ..()
 	if(istype(AM,/mob) && !(istype(AM,/mob/living)))
 		return	//do not send ghosts, zshadows, ai eyes, etc
-	spawn(0)
-		src.teleport(AM)
-		return
-	return
+	teleport(AM)
 
 /obj/structure/portal_subtle/attack_hand(mob/user as mob)
 	if(istype(user) && !(istype(user,/mob/living)))

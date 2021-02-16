@@ -2,33 +2,33 @@
 "a" = (
 /obj/structure/lattice,
 /turf/space,
-/area/triumph_away/debrisfield/explored)
+/area/space/debrisfield/explored)
 "b" = (
 /turf/space,
-/area/triumph_away/debrisfield/explored)
+/area/space/debrisfield/explored)
 "c" = (
 /turf/simulated/floor/airless,
-/area/triumph_away/debrisfield/explored)
+/area/space/debrisfield/explored)
 "d" = (
 /obj/structure/girder,
 /turf/simulated/floor/airless,
-/area/triumph_away/debrisfield/explored)
+/area/space/debrisfield/explored)
 "m" = (
 /obj/random/maintenance/research,
 /turf/simulated/floor/airless,
-/area/triumph_away/debrisfield/explored)
+/area/space/debrisfield/explored)
 "w" = (
-/obj/triumph_away_spawner/debrisfield/carp,
+/obj/mob_spawner/carp,
 /turf/simulated/floor/airless,
-/area/triumph_away/debrisfield/explored)
+/area/space/debrisfield/explored)
 "L" = (
-/obj/triumph_away_spawner/debrisfield/carp/hard,
+/obj/mob_spawner/carp/hard,
 /turf/space,
-/area/triumph_away/debrisfield/explored)
+/area/space/debrisfield/explored)
 "M" = (
 /obj/random/maintenance/engineering,
 /turf/simulated/floor/airless,
-/area/triumph_away/debrisfield/explored)
+/area/space/debrisfield/explored)
 
 (1,1,1) = {"
 a
