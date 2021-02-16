@@ -30,9 +30,6 @@
 		to_chat(src, "<span class='warning'>You have OOC muted.</span>")
 		return
 
-	msg = sanitize(msg)
-	if(!msg)	return
-
 
 
 	if(!mob)
