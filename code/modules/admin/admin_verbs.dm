@@ -1093,7 +1093,7 @@ var/list/admin_verbs_event_manager = list(
 
 /client/proc/toggle_AI_interact()
 	set name = "Toggle Admin AI Interact"
-	set category = "Admin.Game"
+	set category = "Admin
 	set desc = "Allows you to interact with most machines as an AI would as a ghost"
 
 	AI_Interact = !AI_Interact

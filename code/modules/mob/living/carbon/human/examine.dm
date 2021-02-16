@@ -290,13 +290,21 @@
 	if(suiciding)
 		. += "<span class='warning'>[T.He] appears to have commited suicide... there is no hope of recovery.</span>"
 
-	. += attempt_vr(src,"examine_weight",args) //VOREStation Code
-	. += attempt_vr(src,"examine_nutrition",args) //VOREStation Code
-	. += attempt_vr(src,"examine_bellies",args) //VOREStation Code
-	. += attempt_vr(src,"examine_pickup_size",args) //VOREStation Code
-	. += attempt_vr(src,"examine_step_size",args) //VOREStation Code
-	. += attempt_vr(src,"examine_nif",args) //VOREStation Code
-	. += attempt_vr(src,"examine_chimera",args) //VOREStation Code
+
+	if(attempt_vr(src,"examine_weight",args))
+		. += attempt_vr(src,"examine_weight",args) //VOREStation Code
+	if(attempt_vr(src,"examine_nutrition",args))
+		. += attempt_vr(src,"examine_nutrition",args) //VOREStation Code
+	if(attempt_vr(src,"examine_bellies",args))
+		. += attempt_vr(src,"examine_bellies",args) //VOREStation Code
+	if(attempt_vr(src,"examine_pickup_size",args))
+		. += attempt_vr(src,"examine_pickup_size",args) //VOREStation Code
+	if(attempt_vr(src,"examine_step_size",args))
+		. += attempt_vr(src,"examine_step_size",args) //VOREStation Code
+	if(attempt_vr(src,"examine_nif",args))
+		. += attempt_vr(src,"examine_nif",args) //VOREStation Code
+	if(attempt_vr(src,"examine_chimera",args))
+		. += attempt_vr(src,"examine_chimera",args) //VOREStation Code
 
 	if(mSmallsize in mutations)
 		. += "[T.He] [T.is] very short!"
