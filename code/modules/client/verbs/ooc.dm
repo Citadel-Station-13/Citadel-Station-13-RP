@@ -61,7 +61,7 @@
 		return
 
 	if((msg[1] in list(".",";",":","#") || findtext_char(msg, "say", 1, 5))) //SSticker.HasRoundStarted() &&
-		if(alert("Your message \"[raw_msg]\" looks like it was meant for in game communication, say it in OOC?", "Meant for OOC?", "Yes", "No") != "Yes")
+		if(alert("Your message \"[raw_msg]\" looks like it was meant for in game communication, say it in OOC?", "Meant for OOC?", "No", "Yes") != "Yes")
 			return
 
 	if(!holder)

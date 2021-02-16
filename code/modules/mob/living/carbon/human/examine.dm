@@ -79,7 +79,8 @@
 
 	. += "<span class='info'>*---------*"
 
-	. += "This is [icon2html(thing = src, target = user)] <EM>[src.name]</EM>"
+	var/whoismsg //species, name, icon e tc.
+	whoismsg = "This is [icon2html(thing = src, target = user)] <EM>[src.name]</EM>"
 
 	var/datum/gender/T = gender_datums[get_visible_gender()]
 
@@ -101,7 +102,7 @@
 	if(!((skip_gear & EXAMINE_SKIPJUMPSUIT) && (skip_body & EXAMINE_SKIPFACE)))
 		//VOREStation Add Start
 		if(custom_species)
-			. += ", a <b>[src.custom_species]</b>"
+			whoismsg += ", a <b>[src.custom_species]</b>"
 		else if(looks_synth)
 		//VOREStation Add End
 			var/use_gender = "a synthetic"
@@ -110,16 +111,17 @@
 			else if(gender == FEMALE)
 				use_gender = "a gynoid"
 
-			. += ", <b><font color='#555555'>[use_gender]!</font></b>"
+			whoismsg += ", <b><font color='#555555'>[use_gender]!</font></b>"
 
 		else if(species.name != "Human")
-			. += ", <b><font color='[species.get_flesh_colour(src)]'>\a [species.get_examine_name()]!</font></b>"
+			whoismsg += ", <b><font color='[species.get_flesh_colour(src)]'>\a [species.get_examine_name()]!</font></b>"
 
 	var/extra_species_text = species.get_additional_examine_text(src)
 	if(extra_species_text)
-		. += "[extra_species_text]"
+		whoismsg += "[extra_species_text]"
 
-	. += ""
+	. += whoismsg
+
 
 	//uniform
 	if(w_uniform && !(skip_gear & EXAMINE_SKIPJUMPSUIT) && w_uniform.show_examine)
