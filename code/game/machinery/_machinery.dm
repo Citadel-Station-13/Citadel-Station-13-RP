@@ -234,7 +234,8 @@ Class Procs:
 		return attack_hand(user)
 
 /obj/machinery/attack_hand(mob/user as mob)
-
+	if(IsAdminGhost(user))
+		return FALSE
 	if(inoperable(MAINT))
 		return 1
 	if(user.lying || user.stat)
