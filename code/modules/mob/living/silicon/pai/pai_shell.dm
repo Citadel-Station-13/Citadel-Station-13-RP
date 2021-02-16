@@ -154,3 +154,6 @@
 
 /mob/living/silicon/pai/movement_delay()
 	return movement_speed
+
+/mob/living/silicon/pai/restrained()
+	return holoform? ..() : FALSE

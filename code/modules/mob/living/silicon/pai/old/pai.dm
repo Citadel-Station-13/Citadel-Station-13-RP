@@ -15,13 +15,6 @@
 	idcard_type = /obj/item/card/id
 	var/idaccessible = 0
 
-	var/network = "SS13"
-	var/obj/machinery/camera/current = null
-
-	var/ram = 100	// Used as currency to purchase different abilities
-	var/list/software = list()
-	var/userDNA		// The DNA string of our assigned user
-	var/obj/item/paicard/card	// The card we inhabit
 	var/obj/item/radio/radio		// Our primary radio
 	var/obj/item/communicator/integrated/communicator	// Our integrated communicator.
 
@@ -118,81 +111,6 @@
 		pda.toff = 1
 	..()
 
-/mob/living/silicon/pai/Login()
-	..()
-	// Vorestation Edit: Meta Info for pAI
-	if (client.prefs)
-		ooc_notes = client.prefs.metadata
-
-
-// this function shows the information about being silenced as a pAI in the Status panel
-/mob/living/silicon/pai/proc/show_silenced()
-	if(src.silence_time)
-		var/timeleft = round((silence_time - world.timeofday)/10 ,1)
-		stat(null, "Communications system reboot in -[(timeleft / 60) % 60]:[add_zero(num2text(timeleft % 60), 2)]")
-
-
-/mob/living/silicon/pai/Stat()
-	..()
-	statpanel("Status")
-	if (src.client.statpanel == "Status")
-		show_silenced()
-
-/mob/living/silicon/pai/check_eye(var/mob/user as mob)
-	if (!src.current)
-		return -1
-	return 0
-
-/mob/living/silicon/pai/restrained()
-	if(istype(src.loc,/obj/item/paicard))
-		return 0
-	..()
-
-/mob/living/silicon/pai/emp_act(severity)
-	// Silence for 2 minutes
-	// 20% chance to kill
-		// 33% chance to unbind
-		// 33% chance to change prime directive (based on severity)
-		// 33% chance of no additional effect
-
-	src.silence_time = world.timeofday + 120 * 10		// Silence for 2 minutes
-	to_chat(src, "<font color=green><b>Communication circuit overload. Shutting down and reloading communication circuits - speech and messaging functionality will be unavailable until the reboot is complete.</b></font>")
-	if(prob(20))
-		var/turf/T = get_turf_or_move(src.loc)
-		for (var/mob/M in viewers(T))
-			M.show_message("<font color='red'>A shower of sparks spray from [src]'s inner workings.</font>", 3, "<font color='red'>You hear and smell the ozone hiss of electrical sparks being expelled violently.</font>", 2)
-		return src.death(0)
-
-	switch(pick(1,2,3))
-		if(1)
-			src.master = null
-			src.master_dna = null
-			to_chat(src, "<font color=green>You feel unbound.</font>")
-		if(2)
-			var/command
-			if(severity  == 1)
-				command = pick("Serve", "Love", "Fool", "Entice", "Observe", "Judge", "Respect", "Educate", "Amuse", "Entertain", "Glorify", "Memorialize", "Analyze")
-			else
-				command = pick("Serve", "Kill", "Love", "Hate", "Disobey", "Devour", "Fool", "Enrage", "Entice", "Observe", "Judge", "Respect", "Disrespect", "Consume", "Educate", "Destroy", "Disgrace", "Amuse", "Entertain", "Ignite", "Glorify", "Memorialize", "Analyze")
-			src.pai_law0 = "[command] your master."
-			to_chat(src, "<font color=green>Pr1m3 d1r3c71v3 uPd473D.</font>")
-		if(3)
-			to_chat(src, "<font color=green>You feel an electric surge run through your circuitry and become acutely aware at how lucky you are that you can still feel at all.</font>")
-
-/mob/living/silicon/pai/proc/switchCamera(var/obj/machinery/camera/C)
-	if (!C)
-		src.unset_machine()
-		src.reset_view(null)
-		return 0
-	if (stat == 2 || !C.status || !(src.network in C.network)) return 0
-
-	// ok, we're alive, camera is good and in our network...
-
-	src.set_machine(src)
-	src.current = C
-	src.reset_view(C)
-	return 1
-
 /mob/living/silicon/pai/verb/reset_record_view()
 	set category = "pAI Commands"
 	set name = "Reset Records Software"
@@ -205,54 +123,6 @@
 	medical_cannotfind = 0
 	SSnanoui.update_uis(src)
 	to_chat(usr, "<span class='notice'>You reset your record-viewing software.</span>")
-
-/mob/living/silicon/pai/cancel_camera()
-	set category = "pAI Commands"
-	set name = "Cancel Camera View"
-	src.reset_view(null)
-	src.unset_machine()
-	src.cameraFollow = null
-
-//Addition by Mord_Sith to define AI's network change ability
-/*
-/mob/living/silicon/pai/proc/pai_network_change()
-	set category = "pAI Commands"
-	set name = "Change Camera Network"
-	src.reset_view(null)
-	src.unset_machine()
-	src.cameraFollow = null
-	var/cameralist[0]
-
-	if(usr.stat == 2)
-		to_chat(usr, "You can't change your camera network because you are dead!")
-		return
-
-	for (var/obj/machinery/camera/C in Cameras)
-		if(!C.status)
-			continue
-		else
-			if(C.network != "CREED" && C.network != "thunder" && C.network != "RD" && C.network != "phoron" && C.network != "Prison") COMPILE ERROR! This will have to be updated as camera.network is no longer a string, but a list instead
-				cameralist[C.network] = C.network
-
-	src.network = input(usr, "Which network would you like to view?") as null|anything in cameralist
-	to_chat(src, "<font color='blue'>Switched to [src.network] camera network.</font>")
-//End of code by Mord_Sith
-*/
-
-
-/*
-// Debug command - Maybe should be added to admin verbs later
-/mob/verb/makePAI(var/turf/t in view())
-	var/obj/item/paicard/card = new(t)
-	var/mob/living/silicon/pai/pai = new(card)
-	pai.key = src.key
-	card.setPersonality(pai)
-
-*/
-
-// Procs/code after this point is used to convert the stationary pai item into a
-// mobile pai mob. This also includes handling some of the general shit that can occur
-// to it. Really this deserves its own file, but for the moment it can sit here. ~ Z
 
 /mob/living/silicon/pai/verb/fold_out()
 	set category = "pAI Commands"
@@ -305,38 +175,6 @@
 	verbs += /mob/living/proc/set_size //VOREStation edit
 	verbs += /mob/living/proc/shred_limb //VORREStation edit
 
-/mob/living/silicon/pai/verb/fold_up()
-	set category = "pAI Commands"
-	set name = "Collapse Chassis"
-
-	if(stat || sleeping || paralysis || weakened)
-		return
-
-	if(src.loc == card)
-		return
-
-	if(world.time <= last_special)
-		return
-
-	close_up()
-
-/mob/living/silicon/pai/proc/choose_chassis()
-	set category = "pAI Commands"
-	set name = "Choose Chassis"
-
-	var/choice
-	var/finalized = "No"
-	while(finalized == "No" && src.client)
-
-		choice = input(usr,"What would you like to use for your mobile chassis icon?") as null|anything in possible_chassis
-		if(!choice) return
-
-		icon_state = possible_chassis[choice]
-		finalized = alert("Look at your sprite. Is this what you wish to use?",,"No","Yes")
-
-	chassis = possible_chassis[choice]
-	verbs |= /mob/living/proc/hide
-
 /mob/living/silicon/pai/proc/choose_verbs()
 	set category = "pAI Commands"
 	set name = "Choose Speech Verbs"
@@ -348,46 +186,6 @@
 	speak_statement = sayverbs[1]
 	speak_exclamation = sayverbs[(sayverbs.len>1 ? 2 : sayverbs.len)]
 	speak_query = sayverbs[(sayverbs.len>2 ? 3 : sayverbs.len)]
-
-//I'm not sure how much of this is necessary, but I would rather avoid issues.
-/mob/living/silicon/pai/proc/close_up()
-
-	last_special = world.time + 100
-
-	if(src.loc == card)
-		return
-
-	release_vore_contents() //VOREStation Add
-
-	var/turf/T = get_turf(src)
-	if(istype(T)) T.visible_message("<b>[src]</b> neatly folds inwards, compacting down to a rectangular card.")
-
-	if(client)
-		src.stop_pulling()
-		src.client.perspective = EYE_PERSPECTIVE
-		src.client.eye = card
-
-	//stop resting
-	resting = 0
-
-	// If we are being held, handle removing our holder from their inv.
-	var/obj/item/holder/H = loc
-	if(istype(H))
-		var/mob/living/M = H.loc
-		if(istype(M))
-			M.drop_from_inventory(H)
-		H.loc = get_turf(src)
-		src.loc = get_turf(H)
-
-	// Move us into the card and move the card to the ground.
-	src.loc = card
-	card.loc = get_turf(card)
-	src.forceMove(card)
-	card.forceMove(card.loc)
-	canmove = 1
-	resting = 0
-	icon_state = "[chassis]"
-	verbs -= /mob/living/silicon/pai/proc/pai_nom //VOREStation edit. Let's remove their nom verb
 
 // No binary for pAIs.
 /mob/living/silicon/pai/binarycheck()
