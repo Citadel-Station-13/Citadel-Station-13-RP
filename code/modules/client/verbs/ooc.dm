@@ -100,8 +100,8 @@
 						display_name = "[holder.fakekey]/([src.key])"
 					else
 						display_name = holder.fakekey
-			if(holder && !holder.fakekey && (holder.rights & R_ADMIN) && config_legacy.allow_admin_ooccolor && (src.prefs.ooccolor != initial(src.prefs.ooccolor))) // keeping this for the badmins
-				to_chat(target, "<span class='prefix [ooc_style]'><span class='ooc'><span style='[src.prefs.ooccolor]'>" + "OOC: " + "<EM>[display_name]: </EM>[msg]</span></span></span>")
+			if(holder && !holder.fakekey && (holder.rights & R_ADMIN) && config_legacy.allow_admin_ooccolor) // keeping this for the badmins
+				to_chat(target, "<span class='prefix [ooc_style]'><span class='ooc'><font color='[prefs.ooccolor]'>" + "OOC: " + "<EM>[display_name]: </EM>[msg]<</font>/span></span>")
 			else
 				to_chat(target, "<span class='ooc'><span class='[ooc_style]'><span class='message linkify'>OOC: <EM>[display_name]: </EM>[msg]</span></span></span>")
 

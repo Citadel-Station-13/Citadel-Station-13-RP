@@ -65,6 +65,7 @@
 	..()
 
 /obj/item/lightreplacer/examine(mob/user)
+	. = ..()
 	. += "It has [uses] lights remaining."
 
 /obj/item/lightreplacer/attackby(obj/item/W, mob/user)
