@@ -479,8 +479,8 @@
 
 /mob/living/carbon/human/proc/examine_weight()
 	if(!show_pudge()) //Some clothing or equipment can hide this.
-		return ""
-	var/message = ""
+		return null
+	var/message
 	var/weight_examine = round(weight)
 	var/t_He 	= "It" //capitalised for use at the start of each line.
 	var/t_he	= "it"
@@ -546,8 +546,8 @@
 
 /mob/living/carbon/human/proc/examine_nutrition()
 	if(!show_pudge()) //Some clothing or equipment can hide this.
-		return ""
-	var/message = ""
+		return null
+	var/message
 	var/nutrition_examine = round(nutrition)
 	var/t_He 	= "It" //capitalised for use at the start of each line.
 	var/t_His 	= "Its"
@@ -622,13 +622,13 @@
 	return FALSE
 
 /mob/living/carbon/human/proc/examine_pickup_size(mob/living/H)
-	var/message = ""
+	var/message
 	if(istype(H) && (H.get_effective_size() - src.get_effective_size()) >= 0.50)
 		message = "<font color='blue'>They are small enough that you could easily pick them up!</font>\n"
 	return message
 
 /mob/living/carbon/human/proc/examine_step_size(mob/living/H)
-	var/message = ""
+	var/message
 	if(istype(H) && (H.get_effective_size() - src.get_effective_size()) >= 0.75)
 		message = "<font color='red'>They are small enough that you could easily trample them!</font>\n"
 	return message
