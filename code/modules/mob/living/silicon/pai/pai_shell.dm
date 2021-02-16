@@ -139,3 +139,18 @@
 
 /mob/living/silicon/pai/can_buckle_others(mob/living/target, atom/buckle_to)
 	return ispAI(target) && ..()
+
+/mob/living/silicon/pai/verb/pai_nom(var/mob/living/T in oview(1))
+	set name = "pAI Nom"
+	set category = "pAI Commands"
+	set desc = "Allows you to eat someone while unfolded. Can't be used while in card form."
+
+	if (stat != CONSCIOUS)
+		return
+	if(!holoform)
+		to_chat(src, "<span class='warning'>How are you going to do that without folding out?")
+		return
+	return feed_grabbed_to_self(src,T)
+
+/mob/living/silicon/pai/movement_delay()
+	return movement_speed

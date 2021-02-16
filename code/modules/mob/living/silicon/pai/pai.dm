@@ -10,6 +10,9 @@
 	health = 500
 	maxHealth = 500
 	layer = BELOW_MOB_LAYER
+	/// pais don't care about other speeds until movespeed mods are ported
+	var/movement_speed = 2
+
 	var/obj/item/instrument/piano_synth/internal_instrument
 	silicon_privileges = PRIVILEGES_PAI
 
@@ -279,9 +282,9 @@
 /mob/living/silicon/pai/Process_Spacemove(movement_dir = 0)
 	. = ..()
 	if(!.)
-		add_movespeed_modifier(/datum/movespeed_modifier/pai_spacewalk)
+		//add_movespeed_modifier(/datum/movespeed_modifier/pai_spacewalk)
 		return TRUE
-	remove_movespeed_modifier(/datum/movespeed_modifier/pai_spacewalk)
+	//remove_movespeed_modifier(/datum/movespeed_modifier/pai_spacewalk)
 	return TRUE
 
 /mob/living/silicon/pai/examine(mob/user)
