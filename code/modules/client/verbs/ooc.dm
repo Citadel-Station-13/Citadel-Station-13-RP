@@ -197,7 +197,7 @@
 		if(target in admins)
 			admin_stuff += "/([key])"
 
-		to_chat(target, "<span class='looc'>" +  "LOOC: " + " <EM>[display_name][admin_stuff]: </EM> <span class='message'>[msg]</span></span>")
+		to_chat(target, "<span class='looc'>" +  "LOOC: " + "<EM>[display_name][admin_stuff]: </EM><span class='message'>[msg]</span></span>")
 
 	for(var/client/target in r_receivers)
 		var/admin_stuff = "/([key])([admin_jump_link(mob, target.holder)])"
