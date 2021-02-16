@@ -67,6 +67,15 @@
 	ammo_type = /obj/item/ammo_casing/a12g
 	load_method = SINGLE_CASING|SPEEDLOADER
 
+/obj/item/gun/projectile/shotgun/pump/combat/warden
+	name = "warden's shotgun"
+	desc = "A heavily modified Hephaestus Industries KS-40. This version bears multiple after-market mods, including a laser sight to help compensate for its shortened stock. 'Property of the Warden' has been etched into the side of the reciever. Uses 12g rounds."
+	icon_state = "shotgun_w"
+	item_state = "wshotgun"
+	slot_flags = SLOT_BELT|SLOT_HOLSTER
+	w_class = ITEMSIZE_NORMAL
+	ammo_type = /obj/item/ammo_casing/a12g/beanbag
+
 /obj/item/gun/projectile/shotgun/doublebarrel
 	name = "double-barreled shotgun"
 	desc = "A truely classic weapon. No need to change what works. Uses 12g rounds."
