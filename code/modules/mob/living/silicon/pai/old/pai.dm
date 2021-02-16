@@ -349,43 +349,6 @@
 	speak_exclamation = sayverbs[(sayverbs.len>1 ? 2 : sayverbs.len)]
 	speak_query = sayverbs[(sayverbs.len>2 ? 3 : sayverbs.len)]
 
-/mob/living/silicon/pai/lay_down()
-	set name = "Rest"
-	set category = "IC"
-
-	// Pass lying down or getting up to our pet human, if we're in a rig.
-	if(istype(src.loc,/obj/item/paicard))
-		resting = 0
-		var/obj/item/rig/rig = src.get_rig()
-		if(istype(rig))
-			rig.force_rest(src)
-	else
-		resting = !resting
-		icon_state = resting ? "[chassis]_rest" : "[chassis]"
-		update_icon() //VOREStation edit
-		to_chat(src, "<span class='notice'>You are now [resting ? "resting" : "getting up"]</span>")
-
-	canmove = !resting
-
-//Overriding this will stop a number of headaches down the track.
-/mob/living/silicon/pai/attackby(obj/item/W as obj, mob/user as mob)
-	if(W.force)
-		visible_message("<span class='danger'>[user.name] attacks [src] with [W]!</span>")
-		src.adjustBruteLoss(W.force)
-		src.updatehealth()
-	else
-		visible_message("<span class='warning'>[user.name] bonks [src] harmlessly with [W].</span>")
-	spawn(1)
-		if(stat != 2) close_up()
-	return
-
-/mob/living/silicon/pai/attack_hand(mob/user as mob)
-	if(user.a_intent == INTENT_HELP)
-		visible_message("<span class='notice'>[user.name] pats [src].</span>")
-	else
-		visible_message("<span class='danger'>[user.name] boops [src] on the head.</span>")
-		close_up()
-
 //I'm not sure how much of this is necessary, but I would rather avoid issues.
 /mob/living/silicon/pai/proc/close_up()
 
