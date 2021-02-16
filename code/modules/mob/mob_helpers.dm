@@ -444,7 +444,7 @@ proc/is_blind(A)
 					else										// Everyone else (dead people who didn't ghost yet, etc.)
 						lname = name
 				lname = "<span class='name'>[lname]</span> "
-			to_chat(M, "<span class='deadsay'>" + "DEAD: "+ " [lname][follow][message]</span>")
+			to_chat(M, "<span class='deadsay'>" + "<b>DEAD:</b> "+ " [lname][follow][message]</span>")
 
 /proc/say_dead_object(var/message, var/obj/subject = null)
 	for(var/mob/M in player_list)
