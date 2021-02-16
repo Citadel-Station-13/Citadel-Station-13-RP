@@ -416,7 +416,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 							var/sqlcategory = sanitizeSQL(upload_category)
 							var/DBQuery/query = dbcon_old.NewQuery("INSERT INTO library (author, title, content, category) VALUES ('[sqlauthor]', '[sqltitle]', '[sqlcontent]', '[sqlcategory]')")
 							if(!query.Execute())
-								usr << query.ErrorMsg()
+								to_chat(usr, query.ErrorMsg())
 							else
 								log_game("[usr.name]/[usr.key] has uploaded the book titled [scanner.cache.name], [length(scanner.cache.dat)] signs")
 								alert("Upload Complete.")

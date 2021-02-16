@@ -5,7 +5,7 @@
 	desc = "Emits a visible or invisible beam and is triggered when the beam is interrupted."
 	icon_state = "infrared"
 	origin_tech = list(TECH_MAGNET = 2)
-	matter = list(DEFAULT_WALL_MATERIAL = 1000, "glass" = 500, "waste" = 100)
+	matter = list(DEFAULT_WALL_MATERIAL = 1000, "glass" = 500)
 
 	wires = WIRE_PULSE
 
@@ -64,9 +64,9 @@
 			I.vis_spread(visible)
 			spawn(0)
 				if(I)
-					//world << "infra: setting limit"
+					//to_chat(world, "infra: setting limit")
 					I.limit = 8
-					//world << "infra: processing beam \ref[I]"
+					//to_chat(world, "infra: processing beam \ref[I]")
 					I.process()
 				return
 	return
@@ -97,7 +97,7 @@
 	if((!secured)||(!on)||(cooldown > 0))	return 0
 	pulse(0)
 	if(!holder)
-		visible_message("\icon[src] *beep* *beep*")
+		visible_message("[icon2html(thing = src, target = world)] *beep* *beep*")
 	cooldown = 2
 	spawn(10)
 		process_cooldown()
@@ -173,11 +173,11 @@
 	return
 
 /obj/effect/beam/i_beam/proc/vis_spread(v)
-	//world << "i_beam \ref[src] : vis_spread"
+	//to_chat(world, "i_beam \ref[src] : vis_spread")
 	visible = v
 	spawn(0)
 		if(next)
-			//world << "i_beam \ref[src] : is next [next.type] \ref[next], calling spread"
+			//to_chat(world, "i_beam \ref[src] : is next [next.type] \ref[next], calling spread")
 			next.vis_spread(v)
 		return
 	return
@@ -199,34 +199,34 @@
 		invisibility = 0
 
 
-	//world << "now [src.left] left"
+	//to_chat(world, "now [src.left] left")
 	var/obj/effect/beam/i_beam/I = new /obj/effect/beam/i_beam(loc)
 	I.master = master
 	I.density = 1
 	I.setDir(dir)
-	//world << "created new beam \ref[I] at [I.x] [I.y] [I.z]"
+	//to_chat(world, "created new beam \ref[I] at [I.x] [I.y] [I.z]")
 	step(I, I.dir)
 
 	if(I)
-		//world << "step worked, now at [I.x] [I.y] [I.z]"
+		//to_chat(world, "step worked, now at [I.x] [I.y] [I.z]")
 		if(!(next))
-			//world << "no next"
+			//to_chat(world, "no next")
 			I.density = 0
-			//world << "spreading"
+			//to_chat(world, "spreading")
 			I.vis_spread(visible)
 			next = I
 			spawn(0)
-				//world << "limit = [limit] "
+				//to_chat(world, "limit = [limit] ")
 				if((I && limit > 0))
 					I.limit = limit - 1
-					//world << "calling next process"
+					//to_chat(world, "calling next process")
 					I.process()
 				return
 		else
-			//world << "is a next: \ref[next], deleting beam \ref[I]"
+			//to_chat(world, "is a next: \ref[next], deleting beam \ref[I]")
 			qdel(I)
 	else
-		//world << "step failed, deleting \ref[next]"
+		//to_chat(world, "step failed, deleting \ref[next]")
 		qdel(next)
 	spawn(10)
 		process()

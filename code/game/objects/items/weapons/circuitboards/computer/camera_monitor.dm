@@ -45,7 +45,7 @@
 
 /obj/item/circuitboard/security/construct(var/obj/machinery/computer/security/C)
 	if (..(C))
-		C.network = network.Copy()
+		C.set_network(network.Copy())
 
 /obj/item/circuitboard/security/deconstruct(var/obj/machinery/computer/security/C)
 	if (..(C))

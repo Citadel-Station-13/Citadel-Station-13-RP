@@ -19,4 +19,3 @@ SUBSYSTEM_DEF(nanoui)
 	for(var/thing in processing_uis)
 		var/datum/nanoui/UI = thing
 		UI.process()
-

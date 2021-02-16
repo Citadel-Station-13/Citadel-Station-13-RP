@@ -1,7 +1,7 @@
-// Proc: ui_interact()
+// Proc: nano_ui_interact()
 // Parameters: 4 (standard NanoUI arguments)
 // Description: Uses a bunch of for loops to turn lists into lists of lists, so they can be displayed in nanoUI, then displays various buttons to the user.
-/obj/item/communicator/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/key_state = null)
+/obj/item/communicator/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/key_state = null)
 	// this is the data which will be sent to the ui
 	var/data[0]						//General nanoUI information
 	var/communicators[0]			//List of communicators

@@ -96,8 +96,8 @@
 				to_chat(usr, "<span class='notice'>***********************************************************</span>")
 			if(3) // Edit
 				to_chat(usr, "<span class='notice'>***********************************************************</span>")
-				usr << "<span class='notice'>Right Mouse Button on buildmode button = Select var(type) & value</span>"
-				usr << "<span class='notice'>Left Mouse Button on turf/obj/mob      = Set var(type) & value</span>"
+				to_chat(usr, "<span class='notice'>Right Mouse Button on buildmode button = Select var(type) & value</span>")
+				to_chat(usr, "<span class='notice'>Left Mouse Button on turf/obj/mob      = Set var(type) & value</span>")
 				to_chat(usr, "<span class='notice'>Right Mouse Button on turf/obj/mob     = Reset var's value</span>")
 				to_chat(usr, "<span class='notice'>***********************************************************</span>")
 			if(4) // Throw
@@ -366,7 +366,7 @@
 				to_chat(user, "<span class='notice'>[object]([object.type]) copied to buildmode.</span>")
 			if(pa.Find("middle"))
 				holder.buildmode.objholder = text2path("[object.type]")
-				if(holder.buildmode.objsay)	usr << "[object.type]"
+				if(holder.buildmode.objsay)	to_chat(usr, "[object.type]")
 
 
 		if(3) // Edit

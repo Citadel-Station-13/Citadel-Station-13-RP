@@ -65,4 +65,4 @@
 		label = str
 		to_chat(user, "<span class='notice'>You set the text to '[str]'.</span>")
 	else
-		user << "<span class='notice'>You turn off \the [src].</span>"
+		to_chat(user, "<span class='notice'>You turn off \the [src].</span>")

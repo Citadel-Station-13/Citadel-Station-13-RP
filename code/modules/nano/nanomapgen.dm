@@ -57,7 +57,7 @@
 	Tile.Scale((endX - startX + 1) * NANOMAP_ICON_SIZE, (endY - startY + 1) * NANOMAP_ICON_SIZE) // VOREStation Edit - Scale image to actual size mapped.
 
 	log_world("NanoMapGen: <B>GENERATE MAP ([startX],[startY],[currentZ]) to ([endX],[endY],[currentZ])</B>")
-	usr << "NanoMapGen: <B>GENERATE MAP ([startX],[startY],[currentZ]) to ([endX],[endY],[currentZ])</B>"
+	to_chat(usr, "NanoMapGen: <B>GENERATE MAP ([startX],[startY],[currentZ]) to ([endX],[endY],[currentZ])</B>")
 
 	var/count = 0;
 	for(var/WorldX = startX, WorldX <= endX, WorldX++)

@@ -206,7 +206,7 @@ var/list/sacrificed = list()
 			if(cultists.len >= 9)
 				if(!narsie_cometh)//so we don't initiate Hell more than one time.
 					to_chat(world, "<font size='15' color='red'><b>THE VEIL HAS BEEN SHATTERED!</b></font>")
-					world << sound('sound/effects/weather/wind/wind_5_1.ogg')
+					SEND_SOUND(world, sound('sound/effects/weather/wind/wind_5_1.ogg'))
 
 					SetUniversalState(/datum/universal_state/hell)
 					narsie_cometh = 1
@@ -366,9 +366,9 @@ var/list/sacrificed = list()
 			else if(!corpse_to_raise.client && corpse_to_raise.mind) //Don't force the dead person to come back if they don't want to.
 				for(var/mob/observer/dead/ghost in player_list)
 					if(ghost.mind == corpse_to_raise.mind)
-						ghost << "<b><font color = #330033><font size = 3>The cultist [usr.real_name] is trying to \
+						to_chat(ghost, "<b><font color = #330033><font size = 3>The cultist [usr.real_name] is trying to \
 						revive you. Return to your body if you want to be resurrected into the service of Nar'Sie!</b> \
-						(Verbs -> Ghost -> Re-enter corpse)</font></font>"
+						(Verbs -> Ghost -> Re-enter corpse)</font></font>")
 						break
 
 			sleep(10 SECONDS)

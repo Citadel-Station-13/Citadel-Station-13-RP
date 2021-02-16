@@ -88,5 +88,6 @@
 	return
 
 /obj/item/evidencebag/examine(mob/user)
-	..(user)
-	if (stored_item) user.examinate(stored_item)
+	. = ..()
+	if(stored_item)
+		stored_item.examine(user)
