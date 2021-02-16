@@ -25,7 +25,7 @@ GLOBAL_LIST_EMPTY(pai_list)
 	var/movement_speed = 2
 
 	var/obj/item/instrument/piano_synth/internal_instrument
-	silicon_privileges = PRIVILEGES_PAI
+	// silicon_privileges = PRIVILEGES_PAI
 
 #warn make communicator accessible
 	var/obj/item/communicator/integrated/communicator	// Our integrated communicator.
@@ -98,8 +98,7 @@ GLOBAL_LIST_EMPTY(pai_list)
 	var/radio_short_cooldown = 3 MINUTES
 	var/radio_short_timerid
 
-	mobility_flags = NONE
-	var/silent = FALSE
+	// mobility_flags = NONE
 	var/brightness_power = 5
 
 	var/icon/custom_holoform_icon

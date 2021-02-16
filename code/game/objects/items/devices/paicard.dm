@@ -8,8 +8,9 @@
 	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = ITEM_SLOT_BELT
 	var/mob/living/silicon/pai/pai
-	resistance_flags = FIRE_PROOF | ACID_PROOF
-	max_integrity = 200
+	unacidable = TRUE
+	// resistance_flags = FIRE_PROOF | ACID_PROOF
+	// max_integrity = 200
 
 /obj/item/paicard/suicide_act(mob/living/user)
 	user.visible_message("<span class='suicide'>[user] is staring sadly at [src]! [user.p_they()] can't keep living without real human intimacy!</span>")
@@ -166,3 +167,41 @@
 		return
 	if(pai && !pai.holoform)
 		pai.emp_act(severity)
+
+// hilariously hilariously stupid but until the say rewrite we're stuck with this
+/obj/item/paicard/see_emote(mob/living/M, text)
+	if(pai && pai.client && !pai.canmove)
+		var/rendered = "<span class='message'>[text]</span>"
+		pai.show_message(rendered, 2)
+	..()
+
+/obj/item/paicard/show_message(msg, type, alt, alt_type)
+	if(pai && pai.client)
+		var/rendered = "<span class='message'>[msg]</span>"
+		pai.show_message(rendered, type)
+	..()
+
+#warn ghost click to join
+/*
+/obj/item/paicard/attack_ghost(mob/user as mob)
+	if(src.pai != null) //Have a person in them already?
+		user.examinate(src)
+		return
+	var/choice = input(user, "You sure you want to inhabit this PAI?") in list("Yes", "No")
+	var/pai_name = input(user, "Choose your character's name", "Character Name") as text
+	var/actual_pai_name = sanitize_name(pai_name)
+	var/pai_key
+	if (isnull(pai_name))
+		return
+	if(choice == "Yes")
+		pai_key = user.key
+	else
+		return
+	var/turf/location = get_turf(src)
+	var/obj/item/paicard/card = new(location)
+	var/mob/living/silicon/pai/pai = new(card)
+	qdel(src)
+	pai.key = pai_key
+	card.setPersonality(pai)
+	pai.SetName(actual_pai_name)
+*/

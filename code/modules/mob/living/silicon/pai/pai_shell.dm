@@ -24,10 +24,13 @@
 		P.visible_message("<span class='notice'>[src] ejects itself from [P]!</span>")
 	else if(isliving(card.loc))
 		var/mob/living/L = card.loc
+		L.drop_from_inventory(src)
+/*
 		if(!L.temporarilyRemoveItemFromInventory(card))
 			to_chat(src, "<span class='warning'>Error: Unable to expand to mobile form. Chassis is restrained by some device or person.</span>")
 			return FALSE
-		var/datum/belly/inside_belly = check_belly(card) //VOREStation edit.
+*/		var/datum/belly/inside_belly = check_belly(card) //VOREStation edit.
+
 		if(inside_belly) //VOREStation edit.
 			to_chat(src, "<span class='notice'>There is no room to unfold in here. You're good and stuck.</span>") //VOREStation edit.
 			return FALSE //VOREStation edit.
@@ -35,6 +38,7 @@
 	else if(istype(card.loc,/obj/item/rig_module))
 		to_chat(src, "There is no room to unfold inside this rig module. You're good and stuck.")
 		return FALSE
+/*
 	if(istype(card.loc, /obj/item/integrated_circuit/input/pAI_connector))
 		var/obj/item/integrated_circuit/input/pAI_connector/C = card.loc
 		C.RemovepAI()
@@ -42,6 +46,7 @@
 		playsound(src, 'sound/items/Crowbar.ogg', 50, 1)
 		C.installed_pai = null
 		C.push_data()
+*/
 	forceMove(get_turf(card))
 	card.forceMove(src)
 	update_mobility()
@@ -75,7 +80,8 @@
 	set_light(0)
 	holoform = FALSE
 	set_resting(FALSE, TRUE, FALSE)
-	update_mobility()
+	update_canmove()
+	// update_mobility()
 
 /mob/living/silicon/pai/proc/choose_chassis()
 	if(!isturf(loc) && loc != card)
@@ -102,12 +108,15 @@
 				return FALSE
 			chassis = "dynamic"
 			dynamic_chassis = choice
-	resist_a_rest(FALSE, TRUE)
+	resting = FALSE
+	// resist_a_rest(FALSE, TRUE)
 	update_icon()
+/*
 	if(possible_chassis[old_chassis])
 		RemoveElement(/datum/element/mob_holder, old_chassis, 'icons/mob/pai_item_head.dmi', 'icons/mob/pai_item_rh.dmi', 'icons/mob/pai_item_lh.dmi', ITEM_SLOT_HEAD)
 	if(possible_chassis[chassis])
 		AddElement(/datum/element/mob_holder, chassis, 'icons/mob/pai_item_head.dmi', 'icons/mob/pai_item_rh.dmi', 'icons/mob/pai_item_lh.dmi', ITEM_SLOT_HEAD)
+*/
 	to_chat(src, "<span class='boldnotice'>You switch your holochassis projection composite to [chassis]</span>")
 
 /mob/living/silicon/pai/lay_down()
@@ -145,8 +154,10 @@
 	to_chat(usr, "<span class='boldnotice'>You are now lying on your [dynamic_chassis_bellyup? "back" : "front"].</span>")
 	update_icon()
 
+/*
 /mob/living/silicon/pai/can_buckle_others(mob/living/target, atom/buckle_to)
 	return ispAI(target) && ..()
+*/
 
 /mob/living/silicon/pai/verb/pai_nom(var/mob/living/T in oview(1))
 	set name = "pAI Nom"

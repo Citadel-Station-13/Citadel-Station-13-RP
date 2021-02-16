@@ -5,10 +5,10 @@
 
 /mob/living/silicon/pai/emp_act(severity)
 	. = ..()
-	if(. & EMP_PROTECT_SELF)
-		return
+	// if(. & EMP_PROTECT_SELF)
+	// 	return
 	take_holo_damage(severity/2)
-	DefaultCombatKnockdown(severity*4)
+	Weaken(severity*4)
 	silent = max(silent, (PAI_EMP_SILENCE_DURATION) / SSmobs.wait / severity)
 	if(holoform)
 		fold_in(force = TRUE)
